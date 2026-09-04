@@ -9,6 +9,11 @@ import {
   type ServiceCategory,
   type StationIndexEntry,
 } from '../domain/network.ts'
+import {
+  MAX_STATION_LABELS,
+  rankStationsForLabels,
+  stationLabelBudget,
+} from './station-labels.ts'
 
 export type MapCameraAction = 'zoom-in' | 'zoom-out' | 'reset'
 
@@ -27,6 +32,7 @@ interface NationalNetworkSceneProps {
   readonly playbackRate: number
   readonly selectedCategory?: ServiceCategory
   readonly selectedStation?: StationIndexEntry
+  readonly stations: readonly StationIndexEntry[]
 }
 
 type ProjectedStop = readonly [x: number, y: number, z: number]
@@ -184,6 +190,213 @@ function stationCentre(
   })
   if (count) centre.multiplyScalar(1 / count)
   return centre
+}
+
+interface StationLabelDatum {
+  readonly station: StationIndexEntry
+  readonly position: THREE.Vector3
+  readonly texture: THREE.CanvasTexture
+  readonly aspect: number
+  readonly rank: number
+  readonly emphasised: boolean
+}
+
+function stationLabelTexture(name: string): {
+  texture: THREE.CanvasTexture
+  aspect: number
+} {
+  const canvas = document.createElement('canvas')
+  const measuringContext = canvas.getContext('2d')
+  const font = '500 30px "DM Mono", monospace'
+  measuringContext?.save()
+  if (measuringContext) measuringContext.font = font
+  const measuredWidth = measuringContext?.measureText(name).width ?? name.length * 19
+  measuringContext?.restore()
+  canvas.width = Math.ceil(THREE.MathUtils.clamp(measuredWidth + 86, 220, 760))
+  canvas.height = 92
+
+  const context = canvas.getContext('2d')
+  if (context) {
+    context.font = font
+    context.textBaseline = 'middle'
+    context.shadowColor = 'rgba(5, 4, 16, 0.95)'
+    context.shadowBlur = 10
+    context.lineWidth = 7
+    context.strokeStyle = 'rgba(5, 4, 16, 0.9)'
+    context.strokeText(name, 62, 46)
+    context.fillStyle = '#f8f7ff'
+    context.fillText(name, 62, 46)
+    context.beginPath()
+    context.arc(31, 46, 6, 0, Math.PI * 2)
+    context.fillStyle = '#8dfaff'
+    context.shadowColor = '#8dfaff'
+    context.shadowBlur = 18
+    context.fill()
+  }
+
+  const texture = new THREE.CanvasTexture(canvas)
+  texture.colorSpace = THREE.SRGBColorSpace
+  texture.minFilter = THREE.LinearFilter
+  texture.generateMipmaps = false
+  return { texture, aspect: canvas.width / canvas.height }
+}
+
+function StationLabels({
+  stations,
+  snapshot,
+  projectedStops,
+  selectedStation,
+  selectedTrain,
+}: {
+  readonly stations: readonly StationIndexEntry[]
+  readonly snapshot: NetworkSnapshot
+  readonly projectedStops: readonly ProjectedStop[]
+  readonly selectedStation?: StationIndexEntry
+  readonly selectedTrain?: NetworkTrain
+}) {
+  const { camera, size } = useThree()
+  const sprites = useRef<Array<THREE.Sprite | null>>([])
+  const routeStationNames = useMemo(() => {
+    if (!selectedTrain) return new Set<string>()
+    return new Set(
+      selectedTrain.stops
+        .map(([stopIndex]) => snapshot.stops[stopIndex]?.[2])
+        .filter((name): name is string => Boolean(name)),
+    )
+  }, [selectedTrain, snapshot.stops])
+  const labels = useMemo(() => {
+    const ranked = rankStationsForLabels(stations)
+    const stationByName = new Map(ranked.map((station) => [station.name, station]))
+    const ordered: StationIndexEntry[] = []
+    const usedNames = new Set<string>()
+    const add = (station: StationIndexEntry | undefined) => {
+      if (!station || usedNames.has(station.name)) return
+      usedNames.add(station.name)
+      ordered.push(station)
+    }
+
+    add(selectedStation)
+    routeStationNames.forEach((name) => add(stationByName.get(name)))
+    ranked.slice(0, MAX_STATION_LABELS).forEach(add)
+
+    return ordered.map((station) => {
+      const { texture, aspect } = stationLabelTexture(station.name)
+      const centre = stationCentre(station, projectedStops)
+      return {
+        station,
+        position: new THREE.Vector3(centre.x, 0.48, centre.z),
+        texture,
+        aspect,
+        rank: ranked.indexOf(station),
+        emphasised:
+          station.name === selectedStation?.name || routeStationNames.has(station.name),
+      } satisfies StationLabelDatum
+    })
+  }, [projectedStops, routeStationNames, selectedStation, stations])
+
+  useEffect(
+    () => () => {
+      labels.forEach(({ texture }) => texture.dispose())
+    },
+    [labels],
+  )
+
+  useFrame(() => {
+    const budget = stationLabelBudget(camera.position.y)
+    const projected = new THREE.Vector3()
+    const candidates: Array<{
+      index: number
+      x: number
+      y: number
+      distance: number
+      priority: number
+    }> = []
+
+    labels.forEach((label, index) => {
+      const sprite = sprites.current[index]
+      if (!sprite) return
+      sprite.visible = false
+      if (selectedTrain && !label.emphasised) return
+      if (!label.emphasised && (label.rank < 0 || label.rank >= budget)) return
+
+      projected.copy(label.position).project(camera)
+      if (
+        projected.z < -1 ||
+        projected.z > 1 ||
+        projected.x < -1.08 ||
+        projected.x > 1.08 ||
+        projected.y < -1.08 ||
+        projected.y > 1.08
+      ) {
+        return
+      }
+      candidates.push({
+        index,
+        x: (projected.x * 0.5 + 0.5) * size.width,
+        y: (-projected.y * 0.5 + 0.5) * size.height,
+        distance: camera.position.distanceTo(label.position),
+        priority:
+          label.station.name === selectedStation?.name ? 0 : label.emphasised ? 1 : 2,
+      })
+    })
+
+    candidates.sort(
+      (first, second) =>
+        first.priority - second.priority || first.distance - second.distance,
+    )
+    const occupied: Array<{ left: number; right: number; top: number; bottom: number }> = []
+    const worldHeight = 0.7 * THREE.MathUtils.clamp(camera.position.y / 37, 0.48, 1)
+
+    for (const candidate of candidates) {
+      const label = labels[candidate.index]
+      const width = THREE.MathUtils.clamp(label.station.name.length * 7 + 24, 62, 190)
+      const box = {
+        left: candidate.x - width / 2,
+        right: candidate.x + width / 2,
+        top: candidate.y - 11,
+        bottom: candidate.y + 11,
+      }
+      const overlaps = occupied.some(
+        (other) =>
+          box.left < other.right + 5 &&
+          box.right > other.left - 5 &&
+          box.top < other.bottom + 4 &&
+          box.bottom > other.top - 4,
+      )
+      if (overlaps) continue
+
+      const sprite = sprites.current[candidate.index]
+      if (!sprite) continue
+      sprite.visible = true
+      sprite.scale.set(label.aspect * worldHeight, worldHeight, 1)
+      ;(sprite.material as THREE.SpriteMaterial).opacity = label.emphasised ? 1 : 0.78
+      occupied.push(box)
+    }
+  })
+
+  return (
+    <>
+      {labels.map((label, index) => (
+        <sprite
+          key={label.station.name}
+          ref={(sprite) => {
+            sprites.current[index] = sprite
+          }}
+          position={label.position}
+          renderOrder={10}
+        >
+          <spriteMaterial
+            map={label.texture}
+            transparent
+            opacity={0}
+            depthTest={false}
+            depthWrite={false}
+            toneMapped={false}
+          />
+        </sprite>
+      ))}
+    </>
+  )
 }
 
 function SelectedStationRoutes({
@@ -603,6 +816,13 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
         />
       )}
       <TrainSwarm {...props} projectedStops={projectedStops} />
+      <StationLabels
+        stations={props.stations}
+        snapshot={props.snapshot}
+        projectedStops={projectedStops}
+        selectedStation={props.selectedStation}
+        selectedTrain={props.selectedTrain}
+      />
       <NetworkCamera
         selectedTrain={props.selectedTrain}
         time={props.time}

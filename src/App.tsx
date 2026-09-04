@@ -342,6 +342,7 @@ export function App() {
         {isNetwork && network ? (
           <NationalNetworkScene
             snapshot={network}
+            stations={stationIndex}
             isPlaying={isPlaying}
             time={networkTime}
             selectedTrain={selectedTrain}
