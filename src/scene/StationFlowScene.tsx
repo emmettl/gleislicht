@@ -15,6 +15,7 @@ import {
   type NetworkStop,
   type ServiceCategory,
 } from '../domain/network.ts'
+import { createGlowPointTexture } from './glow-point-texture.ts'
 
 interface StationFlowSceneProps {
   readonly timeline: NetworkSnapshot['metadata']
@@ -184,6 +185,7 @@ function StationTraffic({
   const glow = useRef<THREE.Points>(null)
   const localTime = useRef(time)
   const lastReport = useRef(0)
+  const pointTexture = useMemo(() => createGlowPointTexture(), [])
   const platformRows = useMemo(
     () =>
       new Map(
@@ -223,6 +225,7 @@ function StationTraffic({
   }, [time])
 
   useEffect(() => () => geometry.dispose(), [geometry])
+  useEffect(() => () => pointTexture.dispose(), [pointTexture])
 
   useFrame((state, delta) => {
     if (isPlaying) {
@@ -285,6 +288,7 @@ function StationTraffic({
     <>
       <points ref={glow} geometry={geometry}>
         <pointsMaterial
+          map={pointTexture}
           vertexColors
           size={1.32}
           transparent
@@ -295,6 +299,7 @@ function StationTraffic({
       </points>
       <points ref={points} geometry={geometry}>
         <pointsMaterial
+          map={pointTexture}
           vertexColors
           size={0.3}
           transparent

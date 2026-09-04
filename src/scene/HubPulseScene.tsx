@@ -8,6 +8,7 @@ import {
   type NetworkSnapshot,
   type ServiceCategory,
 } from '../domain/network.ts'
+import { createGlowPointTexture } from './glow-point-texture.ts'
 
 interface HubPulseSceneProps {
   readonly timeline: NetworkSnapshot['metadata']
@@ -179,6 +180,7 @@ function HubTraffic({
   const glow = useRef<THREE.Points>(null)
   const localTime = useRef(time)
   const lastReport = useRef(0)
+  const pointTexture = useMemo(() => createGlowPointTexture(), [])
   const palette = useMemo(
     () =>
       Object.fromEntries(
@@ -206,6 +208,14 @@ function HubTraffic({
   useEffect(() => {
     localTime.current = time
   }, [time])
+
+  useEffect(
+    () => () => {
+      geometry.dispose()
+      pointTexture.dispose()
+    },
+    [geometry, pointTexture],
+  )
 
   useFrame((state, delta) => {
     if (isPlaying) {
@@ -274,6 +284,7 @@ function HubTraffic({
     <>
       <points ref={glow} geometry={geometry}>
         <pointsMaterial
+          map={pointTexture}
           vertexColors
           size={1.15}
           transparent
@@ -284,6 +295,7 @@ function HubTraffic({
       </points>
       <points ref={points} geometry={geometry}>
         <pointsMaterial
+          map={pointTexture}
           vertexColors
           size={0.27}
           transparent
