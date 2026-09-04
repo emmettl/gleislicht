@@ -1,6 +1,10 @@
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { useEffect, useMemo, useRef } from 'react'
 import * as THREE from 'three'
+import type {
+  BoundaryCoordinate,
+  SwissBoundary,
+} from '../domain/boundary.ts'
 import {
   positionForTrain,
   SERVICE_COLORS,
@@ -31,6 +35,7 @@ export interface MapCameraCommand {
 }
 
 interface NationalNetworkSceneProps {
+  readonly boundary?: SwissBoundary
   readonly snapshot: NetworkSnapshot
   readonly isPlaying: boolean
   readonly time: number
@@ -46,20 +51,47 @@ interface NationalNetworkSceneProps {
 
 type ProjectedStop = readonly [x: number, y: number, z: number]
 
-function projectStops(snapshot: NetworkSnapshot): readonly ProjectedStop[] {
+interface NetworkProjection {
+  readonly centreLongitude: number
+  readonly centreLatitude: number
+  readonly longitudeScale: number
+  readonly scale: number
+}
+
+function createNetworkProjection(snapshot: NetworkSnapshot): NetworkProjection {
   const { bounds } = snapshot
   const centreLongitude = (bounds.minLongitude + bounds.maxLongitude) / 2
   const centreLatitude = (bounds.minLatitude + bounds.maxLatitude) / 2
   const longitudeScale = Math.cos((centreLatitude * Math.PI) / 180)
   const projectedWidth =
     (bounds.maxLongitude - bounds.minLongitude) * longitudeScale
-  const scale = 51 / projectedWidth
+  return {
+    centreLongitude,
+    centreLatitude,
+    longitudeScale,
+    scale: 51 / projectedWidth,
+  }
+}
 
-  return snapshot.stops.map(([longitude, latitude]) => [
-    (longitude - centreLongitude) * longitudeScale * scale,
-    0,
-    -(latitude - centreLatitude) * scale,
-  ])
+function projectCoordinate(
+  [longitude, latitude]: BoundaryCoordinate,
+  projection: NetworkProjection,
+  height = 0,
+): ProjectedStop {
+  return [
+    (longitude - projection.centreLongitude) *
+      projection.longitudeScale *
+      projection.scale,
+    height,
+    -(latitude - projection.centreLatitude) * projection.scale,
+  ]
+}
+
+function projectStops(snapshot: NetworkSnapshot): readonly ProjectedStop[] {
+  const projection = createNetworkProjection(snapshot)
+  return snapshot.stops.map(([longitude, latitude]) =>
+    projectCoordinate([longitude, latitude], projection),
+  )
 }
 
 function projectedTrainPosition(
@@ -90,6 +122,81 @@ function NationalGround() {
         <planeGeometry args={[64, 36, 64, 36]} />
         <meshBasicMaterial color="#424b98" transparent opacity={0.1} wireframe />
       </mesh>
+    </group>
+  )
+}
+
+function CountryBorder({
+  boundary,
+  snapshot,
+  subdued,
+}: {
+  readonly boundary: SwissBoundary
+  readonly snapshot: NetworkSnapshot
+  readonly subdued: boolean
+}) {
+  const tubes = useMemo(() => {
+    const projection = createNetworkProjection(snapshot)
+    return boundary.rings.flatMap((ring, index) => {
+      const coordinates =
+        ring.length > 1 &&
+        ring[0][0] === ring[ring.length - 1][0] &&
+        ring[0][1] === ring[ring.length - 1][1]
+          ? ring.slice(0, -1)
+          : ring
+      if (coordinates.length < 4) return []
+      const points = coordinates.map((coordinate) => {
+        const [x, y, z] = projectCoordinate(coordinate, projection, 0.075)
+        return new THREE.Vector3(x, y, z)
+      })
+      const curve = new THREE.CatmullRomCurve3(points, true, 'centripetal', 0.5)
+      const segments = THREE.MathUtils.clamp(points.length * 2, 24, 920)
+      return [{
+        id: `${index}:${coordinates.length}`,
+        glow: new THREE.TubeGeometry(curve, segments, 0.13, 5, true),
+        core: new THREE.TubeGeometry(curve, segments, 0.026, 5, true),
+      }]
+    })
+  }, [boundary.rings, snapshot])
+
+  useEffect(
+    () => () => {
+      tubes.forEach(({ glow, core }) => {
+        glow.dispose()
+        core.dispose()
+      })
+    },
+    [tubes],
+  )
+
+  return (
+    <group>
+      {tubes.map(({ id, glow, core }) => (
+        <group key={id}>
+          <mesh geometry={glow}>
+            <meshBasicMaterial
+              color="#56e9ff"
+              transparent
+              opacity={subdued ? 0.035 : 0.12}
+              blending={THREE.AdditiveBlending}
+              depthWrite={false}
+              toneMapped={false}
+              fog={false}
+            />
+          </mesh>
+          <mesh geometry={core} renderOrder={2}>
+            <meshBasicMaterial
+              color="#b9fbff"
+              transparent
+              opacity={subdued ? 0.28 : 0.84}
+              blending={THREE.AdditiveBlending}
+              depthWrite={false}
+              toneMapped={false}
+              fog={false}
+            />
+          </mesh>
+        </group>
+      ))}
     </group>
   )
 }
@@ -1114,6 +1221,13 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
       <fog attach="fog" args={['#050410', 34, 69]} />
       <ambientLight intensity={0.85} color="#7d87ff" />
       <NationalGround />
+      {props.boundary && (
+        <CountryBorder
+          boundary={props.boundary}
+          snapshot={props.snapshot}
+          subdued={Boolean(props.selectedTrain || props.selectedStation)}
+        />
+      )}
       <RailGraph
         snapshot={props.snapshot}
         projectedStops={projectedStops}

@@ -26,7 +26,7 @@ Search the national view by station, service, train number, origin, or destinati
 
 Click a service category in the colour legend to highlight that fleet and dim the other trains; click the active category again to clear the filter. The same focus carries into the Takt hub view.
 
-The national map supports mouse-wheel or pinch zoom, pointer or touch drag to pan, and on-screen zoom/reset controls. Soft distance limits keep the network inside the useful fog range. Station names reveal progressively as the camera approaches, prioritising busy interchanges and suppressing overlapping labels. During a selected-train follow, its own calling points take priority. The follow camera temporarily takes control; releasing it returns to the previous map position.
+The national map supports mouse-wheel or pinch zoom, pointer or touch drag to pan, and on-screen zoom/reset controls. Soft distance limits keep the network inside the useful fog range. A glowing national outline is derived from swisstopo's official swissBOUNDARIES3D geometry and remains visible, at lower intensity, during focused studies. Station names reveal progressively as the camera approaches, prioritising busy interchanges and suppressing overlapping labels. During a selected-train follow, its own calling points take priority. The follow camera temporarily takes control; releasing it returns to the previous map position.
 
 The **trains · auto/on/off** map control manages moving train labels. Auto begins with long-distance services, reveals more categories with zoom, and follows active station or service-category filters. On raises the density while retaining collision suppression; Off keeps the moving lights unlabelled.
 
@@ -34,7 +34,7 @@ Open **Takt hubs** to move between Zürich HB, Bern, Basel SBB and Genève acros
 
 Sound is optional and off by default. Turning on the adaptive score lazily loads the Driftbox synthesis engine and plays one of three Gleislicht arrangements: **Night Grid** for the national map, **Taktwerk** for station pulses, and **Valley Signal** for corridor or train-follow views. Mode changes crossfade between two live transports. See [docs/SOUNDTRACK.md](./docs/SOUNDTRACK.md) for the musical and technical design.
 
-The committed GTFS snapshot is regenerated with `npm run data:gtfs`; see [docs/DATA-PIPELINE.md](./docs/DATA-PIPELINE.md).
+The committed GTFS and boundary snapshots are regenerated with `npm run data:gtfs` and `npm run data:boundary`; see [docs/DATA-PIPELINE.md](./docs/DATA-PIPELINE.md).
 The eventual public deployment is GitHub Pages; see [docs/PUBLISHING.md](./docs/PUBLISHING.md).
 
 ## Technical shape

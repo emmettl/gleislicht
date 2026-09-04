@@ -20,6 +20,7 @@ This is an iterative art-and-data project. Each stage should end in a coherent v
 - [x] Resolve service-day rules, exceptions, after-midnight times and source/version metadata.
 - [x] Produce a compact morning artifact instead of shipping the 232 MB GTFS ZIP.
 - [x] Render the Friday morning window in a national view with a deterministic simulation clock.
+- [x] Frame the network with a simplified, luminous swissBOUNDARIES3D national outline.
 - [ ] Replace straight stop-to-stop segments with matched rail geometry; the source feed has no `shapes.txt`.
 - [x] Add a compact full-day artifact for the four hub pulse studies.
 - [ ] Extend the national network itself from the two-hour study to a compact full service day.
@@ -79,6 +80,7 @@ The national GTFS-RT feed supplies trip updates and alerts, not vehicle position
 - [Swiss GTFS Static cookbook](https://opentransportdata.swiss/en/cookbook/timetable-cookbook/gtfs/) and the current timetable-year dataset
 - [Swiss GTFS Realtime cookbook](https://opentransportdata.swiss/en/cookbook/realtime-prediction-cookbook/gtfs-rt/) and paired GTFS-RT dataset
 - [swissALTI3D](https://www.swisstopo.admin.ch/en/height-model-swissalti3d) plus the applicable [open-geodata terms](https://www.swisstopo.admin.ch/en/terms-of-use-free-geodata-and-geoservices)
+- [swissBOUNDARIES3D](https://www.swisstopo.admin.ch/en/landscape-model-swissboundaries3d) for the national outline
 
 ## Early technical decisions
 

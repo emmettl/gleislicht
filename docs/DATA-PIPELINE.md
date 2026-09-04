@@ -28,9 +28,20 @@ The command writes two complementary artifacts: the compact two-hour national ne
 
 The current Swiss GTFS archive has no `shapes.txt`. Until rail geometry is joined from a suitable infrastructure dataset, the national study interpolates directly between stop coordinates. The result is schedule-derived and geographically honest at stations, but straight between them. The interface and snapshot metadata say so explicitly.
 
+## National boundary
+
+The luminous country outline is generated separately from swisstopo's official `swissBOUNDARIES3D` GeoPackage. Download the current LV95 GeoPackage and run:
+
+```bash
+npm run data:boundary -- --source /path/to/swissBOUNDARIES3D.gpkg
+```
+
+The ingester selects the Swiss national-area feature, converts its EPSG:2056 coordinates to WGS84, preserves interior boundary rings, and applies a conservative metre-based simplification for WebGL. The resulting `public/data/swiss-boundary.json` is about 10 KB; it records the source edition, transformation and simplification tolerance alongside the coordinates. The UI links the required `© swisstopo` attribution directly to the product page.
+
 ## Reproducibility rules
 
 - The source ZIP is temporary build input and must not be committed.
+- The source swissBOUNDARIES3D GeoPackage is temporary build input and must not be committed.
 - The output records feed version, service date, time window, publisher and model.
 - Refreshes are reviewed as data changes, not mixed into unrelated visual edits.
 - Realtime updates must be paired with their corresponding static feed version.

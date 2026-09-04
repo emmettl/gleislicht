@@ -23,6 +23,7 @@ import {
   type ServiceCategory,
   type StationIndexEntry,
 } from './domain/network.ts'
+import type { SwissBoundary } from './domain/boundary.ts'
 import { GleislichtScene } from './scene/GleislichtScene.tsx'
 import { HubPulseScene } from './scene/HubPulseScene.tsx'
 import {
@@ -84,6 +85,7 @@ export function App() {
   const [networkTime, setNetworkTime] = useState(7 * 3600 + 45 * 60)
   const [hubTime, setHubTime] = useState(7 * 3600 + 45 * 60)
   const [network, setNetwork] = useState<NetworkSnapshot>()
+  const [boundary, setBoundary] = useState<SwissBoundary>()
   const [hubDay, setHubDay] = useState<HubDaySnapshot>()
   const [dataError, setDataError] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
@@ -298,6 +300,18 @@ export function App() {
       .catch((error: unknown) => {
         if (error instanceof DOMException && error.name === 'AbortError') return
       })
+    fetch(`${import.meta.env.BASE_URL}data/swiss-boundary.json`, {
+      signal: controller.signal,
+    })
+      .then((response) => {
+        if (!response.ok) throw new Error(`Boundary snapshot returned ${response.status}`)
+        return response.json() as Promise<SwissBoundary>
+      })
+      .then(setBoundary)
+      .catch((error: unknown) => {
+        if (error instanceof DOMException && error.name === 'AbortError') return
+        console.warn('Unable to load the Swiss national boundary', error)
+      })
     return () => controller.abort()
   }, [])
 
@@ -349,6 +363,7 @@ export function App() {
       <div className="scene" aria-hidden="true">
         {isNetwork && network ? (
           <NationalNetworkScene
+            boundary={boundary}
             snapshot={network}
             stations={stationIndex}
             trainLabelMode={trainLabelMode}
@@ -879,13 +894,20 @@ export function App() {
 
       <footer>
         {isTimetable ? (
-          <a
-            href={network?.metadata.sourceUrl}
-            target="_blank"
-            rel="noreferrer"
-          >
-            Swiss GTFS · {network?.metadata.feedVersion ?? 'loading'}
-          </a>
+          <span className="source-links">
+            <a
+              href={network?.metadata.sourceUrl}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Swiss GTFS · {network?.metadata.feedVersion ?? 'loading'}
+            </a>
+            {isNetwork && boundary && (
+              <a href={boundary.metadata.productUrl} target="_blank" rel="noreferrer">
+                border · {boundary.metadata.attribution}
+              </a>
+            )}
+          </span>
         ) : (
           <span>{prototypeJourney.operator}</span>
         )}
