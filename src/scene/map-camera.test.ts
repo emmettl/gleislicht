@@ -9,7 +9,7 @@ import {
 describe('map camera zoom', () => {
   it('uses a closer home framing for the Zürich study', () => {
     expect(homeMapDistanceScale('switzerland')).toBe(1)
-    expect(homeMapDistanceScale('zurich')).toBeLessThan(1)
+    expect(homeMapDistanceScale('zurich')).toBeCloseTo(0.06)
     expect(homeMapDistanceScale('zurich')).toBeGreaterThan(MIN_MAP_DISTANCE_SCALE)
   })
 
@@ -28,10 +28,10 @@ describe('map camera zoom', () => {
   })
 
   it('also softens the closest zoom boundary', () => {
-    const result = applyMapZoom(0.14, 0.5)
+    const result = applyMapZoom(0.04, 0.5)
 
     expect(result).toBeGreaterThan(MIN_MAP_DISTANCE_SCALE)
-    expect(result).toBeLessThan(0.14)
+    expect(result).toBeLessThan(0.04)
   })
 
   it('provides several close-range steps below the previous limit', () => {

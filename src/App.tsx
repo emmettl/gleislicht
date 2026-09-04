@@ -483,8 +483,14 @@ export function App() {
       <div className="scene" aria-hidden="true">
         {isNetwork && network ? (
           <NationalNetworkScene
-            boundary={networkStudy === 'national' ? boundary : undefined}
+            boundary={boundary}
             snapshot={network}
+            referenceSnapshot={nationalNetwork ?? network}
+            contextSnapshot={
+              networkStudy === 'zurich-city' && zurichCityNetwork
+                ? nationalNetwork
+                : undefined
+            }
             stations={stationIndex}
             trainLabelMode={trainLabelMode}
             isPlaying={isPlaying}

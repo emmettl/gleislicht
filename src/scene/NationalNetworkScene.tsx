@@ -42,6 +42,8 @@ export interface MapCameraCommand {
 interface NationalNetworkSceneProps {
   readonly boundary?: SwissBoundary
   readonly snapshot: NetworkSnapshot
+  readonly referenceSnapshot: NetworkSnapshot
+  readonly contextSnapshot?: NetworkSnapshot
   readonly isPlaying: boolean
   readonly time: number
   readonly selectedTrain?: NetworkTrain
@@ -93,8 +95,10 @@ function projectCoordinate(
   ]
 }
 
-function projectStops(snapshot: NetworkSnapshot): readonly ProjectedStop[] {
-  const projection = createNetworkProjection(snapshot)
+function projectStops(
+  snapshot: NetworkSnapshot,
+  projection: NetworkProjection,
+): readonly ProjectedStop[] {
   return snapshot.stops.map(([longitude, latitude]) =>
     projectCoordinate([longitude, latitude], projection),
   )
@@ -134,15 +138,14 @@ function NationalGround() {
 
 function CountryBorder({
   boundary,
-  snapshot,
+  projection,
   subdued,
 }: {
   readonly boundary: SwissBoundary
-  readonly snapshot: NetworkSnapshot
+  readonly projection: NetworkProjection
   readonly subdued: boolean
 }) {
   const tubes = useMemo(() => {
-    const projection = createNetworkProjection(snapshot)
     return boundary.rings.flatMap((ring, index) => {
       const coordinates =
         ring.length > 1 &&
@@ -163,7 +166,7 @@ function CountryBorder({
         core: new THREE.TubeGeometry(curve, segments, 0.026, 5, true),
       }]
     })
-  }, [boundary.rings, snapshot])
+  }, [boundary.rings, projection])
 
   useEffect(
     () => () => {
@@ -504,7 +507,7 @@ function StationLabels({
     )
     const occupied: Array<{ left: number; right: number; top: number; bottom: number }> = []
     const visibleTextureNames = new Set<string>()
-    const worldHeight = 0.7 * THREE.MathUtils.clamp(camera.position.y / 37, 0.18, 1)
+    const worldHeight = 0.7 * THREE.MathUtils.clamp(camera.position.y / 37, 0.03, 1)
     let visible = 0
 
     for (const candidate of candidates) {
@@ -760,7 +763,7 @@ function TrainLabels({
     const occupied: Array<{ left: number; right: number; top: number; bottom: number }> = []
     const visibleTextureKeys = new Set<string>()
     const nextRetainedTrainIds = new Set<string>()
-    const worldHeight = 0.62 * THREE.MathUtils.clamp(camera.position.y / 37, 0.5, 1)
+    const worldHeight = 0.62 * THREE.MathUtils.clamp(camera.position.y / 37, 0.03, 1)
     let visible = 0
 
     for (const candidate of candidates) {
@@ -1146,6 +1149,7 @@ function NetworkCamera({
   cameraCommand,
   selectedStation,
   cameraFraming,
+  mapFocus,
 }: {
   readonly selectedTrain?: NetworkTrain
   readonly time: number
@@ -1153,6 +1157,7 @@ function NetworkCamera({
   readonly cameraCommand?: MapCameraCommand
   readonly selectedStation?: StationIndexEntry
   readonly cameraFraming: MapCameraFraming
+  readonly mapFocus: THREE.Vector3
 }) {
   const { camera, gl } = useThree()
   const desiredPosition = useMemo(() => new THREE.Vector3(0, 37, 26), [])
@@ -1163,28 +1168,28 @@ function NetworkCamera({
   const lastCommand = useRef(0)
 
   useEffect(() => {
-    mapTarget.current.set(0, 0, 0)
+    mapTarget.current.copy(mapFocus)
     distanceScale.current = homeMapDistanceScale(cameraFraming)
-  }, [cameraFraming])
+  }, [cameraFraming, mapFocus])
 
   useEffect(() => {
     if (!cameraCommand || cameraCommand.id === lastCommand.current) return
     lastCommand.current = cameraCommand.id
     if (cameraCommand.action === 'reset') {
-      mapTarget.current.set(0, 0, 0)
+      mapTarget.current.copy(mapFocus)
       distanceScale.current = homeMapDistanceScale(cameraFraming)
       return
     }
     const multiplier = cameraCommand.action === 'zoom-in' ? 0.78 : 1.28
     distanceScale.current = applyMapZoom(distanceScale.current, multiplier)
-  }, [cameraCommand, cameraFraming])
+  }, [cameraCommand, cameraFraming, mapFocus])
 
   useEffect(() => {
     if (!selectedStation) return
     const centre = stationCentre(selectedStation, projectedStops)
     mapTarget.current.copy(centre)
-    distanceScale.current = 0.55
-  }, [projectedStops, selectedStation])
+    distanceScale.current = homeMapDistanceScale(cameraFraming) * 0.55
+  }, [cameraFraming, projectedStops, selectedStation])
 
   useEffect(() => {
     const element = gl.domElement
@@ -1272,7 +1277,31 @@ function NetworkCamera({
 }
 
 function NetworkWorld(props: NationalNetworkSceneProps) {
-  const projectedStops = useMemo(() => projectStops(props.snapshot), [props.snapshot])
+  const projection = useMemo(
+    () => createNetworkProjection(props.referenceSnapshot),
+    [props.referenceSnapshot],
+  )
+  const projectedStops = useMemo(
+    () => projectStops(props.snapshot, projection),
+    [projection, props.snapshot],
+  )
+  const contextProjectedStops = useMemo(
+    () =>
+      props.contextSnapshot
+        ? projectStops(props.contextSnapshot, projection)
+        : undefined,
+    [projection, props.contextSnapshot],
+  )
+  const mapFocus = useMemo(() => {
+    const { bounds } = props.snapshot
+    const centre: BoundaryCoordinate = [
+      (bounds.minLongitude + bounds.maxLongitude) / 2,
+      (bounds.minLatitude + bounds.maxLatitude) / 2,
+    ]
+    const [x, , z] = projectCoordinate(centre, projection)
+    return new THREE.Vector3(x, 0, z)
+  }, [projection, props.snapshot])
+  const hasContext = Boolean(props.contextSnapshot && contextProjectedStops)
 
   return (
     <>
@@ -1282,8 +1311,17 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
       {props.boundary && (
         <CountryBorder
           boundary={props.boundary}
-          snapshot={props.snapshot}
-          subdued={Boolean(props.selectedTrain || props.selectedStation)}
+          projection={projection}
+          subdued={Boolean(
+            props.selectedTrain || props.selectedStation || hasContext
+          )}
+        />
+      )}
+      {props.contextSnapshot && contextProjectedStops && (
+        <RailGraph
+          snapshot={props.contextSnapshot}
+          projectedStops={contextProjectedStops}
+          subdued
         />
       )}
       <RailGraph
@@ -1325,6 +1363,7 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
         cameraCommand={props.cameraCommand}
         selectedStation={props.selectedStation}
         cameraFraming={props.cameraFraming}
+        mapFocus={mapFocus}
       />
     </>
   )
