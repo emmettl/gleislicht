@@ -115,11 +115,11 @@ function NationalGround() {
   return (
     <group position={[0, -0.11, 0]}>
       <mesh rotation={[-Math.PI / 2, 0, 0]}>
-        <planeGeometry args={[64, 36, 64, 36]} />
+        <planeGeometry args={[66, 56, 64, 48]} />
         <meshBasicMaterial color="#090b1f" transparent opacity={0.7} />
       </mesh>
       <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.015, 0]}>
-        <planeGeometry args={[64, 36, 64, 36]} />
+        <planeGeometry args={[66, 56, 64, 48]} />
         <meshBasicMaterial color="#424b98" transparent opacity={0.1} wireframe />
       </mesh>
     </group>

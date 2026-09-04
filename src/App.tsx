@@ -39,6 +39,7 @@ import {
 
 type View = 'network' | 'hub' | 'journey'
 type SoundtrackState = 'off' | 'starting' | 'on' | 'error'
+type NetworkStudy = 'national' | 'zurich-city'
 
 const SOUNDTRACK_TITLES: Record<SoundtrackMode, string> = {
   network: 'Night Grid',
@@ -88,7 +89,11 @@ export function App() {
   const [journeyProgress, setJourneyProgress] = useState(0.11)
   const [networkTime, setNetworkTime] = useState(7 * 3600 + 45 * 60)
   const [hubTime, setHubTime] = useState(7 * 3600 + 45 * 60)
-  const [network, setNetwork] = useState<NetworkSnapshot>()
+  const [networkStudy, setNetworkStudy] = useState<NetworkStudy>('national')
+  const [nationalNetwork, setNationalNetwork] = useState<NetworkSnapshot>()
+  const [zurichCityNetwork, setZurichCityNetwork] = useState<NetworkSnapshot>()
+  const [regionalNetworkLoading, setRegionalNetworkLoading] = useState(false)
+  const [regionalNetworkError, setRegionalNetworkError] = useState(false)
   const [boundary, setBoundary] = useState<SwissBoundary>()
   const [hubDay, setHubDay] = useState<HubDaySnapshot>()
   const [dataError, setDataError] = useState(false)
@@ -108,6 +113,10 @@ export function App() {
   const [soundtrackState, setSoundtrackState] = useState<SoundtrackState>('off')
   const [soundtrackVolume, setSoundtrackVolume] = useState(0.56)
   const soundtrackRef = useRef<GleislichtSoundtrack | null>(null)
+  const network =
+    networkStudy === 'zurich-city'
+      ? (zurichCityNetwork ?? nationalNetwork)
+      : nationalNetwork
 
   const soundtrackMode: SoundtrackMode =
     view === 'hub' ? 'hub' : view === 'journey' || selectedTrainId ? 'journey' : 'network'
@@ -195,6 +204,16 @@ export function App() {
   const searchResultCount = stationSearchResults.length + searchResults.length
   const resolvedActiveSearchIndex =
     activeSearchIndex < searchResultCount ? activeSearchIndex : -1
+  const visibleServiceCategories = useMemo(() => {
+    const present = new Set(
+      view === 'hub'
+        ? hubCalls.map((call) => call.train.category)
+        : (network?.trains.map((train) => train.category) ?? []),
+    )
+    return SERVICE_CATEGORIES.filter(
+      (category) => category.id !== 'other' && present.has(category.id),
+    )
+  }, [hubCalls, network, view])
 
   const handleJourneyProgress = useCallback((nextProgress: number) => {
     setJourneyProgress(nextProgress)
@@ -245,6 +264,22 @@ export function App() {
     [network, networkTime],
   )
 
+  const selectNetworkStudy = useCallback(
+    (study: NetworkStudy) => {
+      setNetworkStudy(study)
+      setView('network')
+      setSelectedCategory(undefined)
+      releaseSelection()
+      if (study === 'zurich-city' && !zurichCityNetwork) {
+        setRegionalNetworkLoading(true)
+        setRegionalNetworkError(false)
+      }
+      const snapshot = study === 'zurich-city' ? zurichCityNetwork : nationalNetwork
+      if (snapshot) setNetworkTime(snapshot.metadata.focusTime)
+    },
+    [nationalNetwork, releaseSelection, zurichCityNetwork],
+  )
+
   const handleContextAction = useCallback(() => {
     if (view === 'network' && (selectedTrainId || selectedStationName)) {
       releaseSelection()
@@ -290,7 +325,7 @@ export function App() {
         return response.json() as Promise<NetworkSnapshot>
       })
       .then((snapshot) => {
-        setNetwork(snapshot)
+        setNationalNetwork(snapshot)
         setNetworkTime(snapshot.metadata.focusTime)
       })
       .catch((error: unknown) => {
@@ -325,6 +360,30 @@ export function App() {
       })
     return () => controller.abort()
   }, [])
+
+  useEffect(() => {
+    if (networkStudy !== 'zurich-city' || zurichCityNetwork) return
+    const controller = new AbortController()
+    fetch(`${import.meta.env.BASE_URL}data/zurich-city-morning.json`, {
+      signal: controller.signal,
+    })
+      .then((response) => {
+        if (!response.ok) throw new Error(`Zürich city snapshot returned ${response.status}`)
+        return response.json() as Promise<NetworkSnapshot>
+      })
+      .then((snapshot) => {
+        setZurichCityNetwork(snapshot)
+        setNetworkTime(snapshot.metadata.focusTime)
+      })
+      .catch((error: unknown) => {
+        if (error instanceof DOMException && error.name === 'AbortError') return
+        setRegionalNetworkError(true)
+      })
+      .finally(() => {
+        if (!controller.signal.aborted) setRegionalNetworkLoading(false)
+      })
+    return () => controller.abort()
+  }, [networkStudy, zurichCityNetwork])
 
   useEffect(() => {
     if (!searchOpen || resolvedActiveSearchIndex < 0) return
@@ -381,7 +440,7 @@ export function App() {
       <div className="scene" aria-hidden="true">
         {isNetwork && network ? (
           <NationalNetworkScene
-            boundary={boundary}
+            boundary={networkStudy === 'national' ? boundary : undefined}
             snapshot={network}
             stations={stationIndex}
             trainLabelMode={trainLabelMode}
@@ -511,7 +570,11 @@ export function App() {
                 type="search"
                 role="combobox"
                 value={searchQuery}
-                placeholder="Find IC 1, Zürich, train 701…"
+                placeholder={
+                  networkStudy === 'national'
+                    ? 'Find IC 1, Zürich, train 701…'
+                    : 'Find tram 4, bus 31, Zürich HB…'
+                }
                 autoComplete="off"
                 aria-autocomplete="list"
                 aria-controls="train-search-results"
@@ -556,6 +619,27 @@ export function App() {
                 }}
               />
             </label>
+            <nav className="network-study-picker" aria-label="Network study">
+              <span className="sr-only">Scale</span>
+              <button
+                type="button"
+                title="Switzerland rail network"
+                aria-label="Show Switzerland rail network"
+                aria-pressed={networkStudy === 'national'}
+                onClick={() => selectNetworkStudy('national')}
+              >
+                CH
+              </button>
+              <button
+                type="button"
+                title="Zürich city multimodal network"
+                aria-label="Show Zürich city multimodal network"
+                aria-pressed={networkStudy === 'zurich-city'}
+                onClick={() => selectNetworkStudy('zurich-city')}
+              >
+                ZH
+              </button>
+            </nav>
             {searchQuery && (
               <button
                 className="clear-search"
@@ -620,7 +704,7 @@ export function App() {
                   )
                 })}
               {!stationSearchResults.length && !searchResults.length && (
-                <p>No stations or trains found in this morning window.</p>
+                <p>No stations or services found in this morning window.</p>
               )}
             </div>
           )}
@@ -723,13 +807,30 @@ export function App() {
           </div>
         </section>
       ) : isNetwork ? (
-        <section className="journey-card network-card" aria-label="Swiss network status">
+        <section
+          className="journey-card network-card"
+          aria-label={
+            networkStudy === 'national'
+              ? 'Swiss network status'
+              : 'Zürich city network status'
+          }
+        >
           <div className="network-count-row">
             <strong>{network ? numberFormat.format(activeTrainCount) : '—'}</strong>
-            <span>trains in motion</span>
+            <span>
+              {networkStudy === 'national' ? 'trains in motion' : 'vehicles in motion'}
+            </span>
           </div>
           <p className="between">
-            {dataError ? 'Schedule unavailable' : 'Scheduled rail · morning window'}
+            {networkStudy === 'zurich-city'
+              ? regionalNetworkError
+                ? 'City schedule unavailable'
+                : regionalNetworkLoading
+                  ? 'Loading separate city study…'
+                  : 'Tram · bus · rail · funicular'
+              : dataError
+                ? 'Schedule unavailable'
+                : 'Scheduled rail · morning window'}
           </p>
           <div className="metric-grid">
             <div>
@@ -836,13 +937,13 @@ export function App() {
           <button
             className="train-label-toggle"
             type="button"
-            aria-label={`Train labels: ${trainLabelMode}. Activate for ${NEXT_TRAIN_LABEL_MODE[trainLabelMode]}.`}
+            aria-label={`${networkStudy === 'national' ? 'Train' : 'Vehicle'} labels: ${trainLabelMode}. Activate for ${NEXT_TRAIN_LABEL_MODE[trainLabelMode]}.`}
             onClick={() =>
               setTrainLabelMode((current) => NEXT_TRAIN_LABEL_MODE[current])
             }
           >
             <span aria-hidden="true">▱</span>
-            trains · {trainLabelMode}
+            {networkStudy === 'national' ? 'trains' : 'vehicles'} · {trainLabelMode}
           </button>
         </div>
       )}
@@ -850,10 +951,9 @@ export function App() {
       {isTimetable && !selectedTrain && (
         <div
           className={`service-legend${selectedCategory ? ' has-filter' : ''}`}
-          aria-label="Filter trains by service category"
+          aria-label="Filter moving services by category"
         >
-          {SERVICE_CATEGORIES.filter((category) => category.id !== 'other').map(
-            (category) => (
+          {visibleServiceCategories.map((category) => (
               <button
                 key={category.id}
                 type="button"
@@ -867,8 +967,7 @@ export function App() {
                 <i style={{ backgroundColor: category.color }} />
                 {category.label}
               </button>
-            ),
-          )}
+          ))}
         </div>
       )}
 
@@ -939,21 +1038,32 @@ export function App() {
             <span className="button-icon camera-icon" aria-hidden="true" />
             {selectedTrain || selectedStation
               ? selectedTrain
-                ? 'Release train'
+                ? networkStudy === 'national'
+                  ? 'Release train'
+                  : 'Release service'
                 : 'Clear station'
               : isNetwork
                 ? 'Corridor study'
-                : 'National view'}
+                : networkStudy === 'national'
+                  ? 'National view'
+                  : 'Zürich city view'}
             <kbd>C</kbd>
           </button>
           {isTimetable && !selectedTrain && (
             <button
               type="button"
               aria-pressed={isHub}
-              onClick={() => setView(isHub ? 'network' : 'hub')}
+              onClick={() => {
+                setSelectedCategory(undefined)
+                setView(isHub ? 'network' : 'hub')
+              }}
             >
               <span className="button-icon takt-icon" aria-hidden="true">◎</span>
-              {isHub ? 'National view' : 'Takt hubs'}
+              {isHub
+                ? networkStudy === 'national'
+                  ? 'National view'
+                  : 'Zürich city'
+                : 'Takt hubs'}
             </button>
           )}
         </div>
@@ -969,7 +1079,7 @@ export function App() {
             >
               Swiss GTFS · {network?.metadata.feedVersion ?? 'loading'}
             </a>
-            {isNetwork && boundary && (
+            {isNetwork && networkStudy === 'national' && boundary && (
               <a href={boundary.metadata.productUrl} target="_blank" rel="noreferrer">
                 border · {boundary.metadata.attribution}
               </a>

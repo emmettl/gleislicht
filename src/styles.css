@@ -645,6 +645,36 @@ h1 {
   color: rgba(229, 231, 255, 0.38);
 }
 
+.network-study-picker {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 3px;
+  padding: 0 5px;
+  border-left: 1px solid rgba(193, 204, 255, 0.14);
+}
+
+.network-study-picker button {
+  min-width: 31px;
+  min-height: 28px;
+  justify-content: center;
+  padding: 0 6px;
+  border-color: transparent;
+  background: transparent;
+  color: var(--muted);
+  font-family: 'DM Mono', ui-monospace, monospace;
+  font-size: 0.59rem;
+}
+
+.network-study-picker button:hover,
+.network-study-picker button[aria-pressed='true'] {
+  border-color: rgba(141, 250, 255, 0.28);
+  background: rgba(55, 48, 118, 0.46);
+  color: var(--ink);
+  box-shadow: inset 0 -1px 0 var(--cyan);
+  transform: none;
+}
+
 .clear-search {
   min-width: 42px;
   min-height: 42px;

@@ -24,6 +24,14 @@ The command writes two complementary artifacts: the compact two-hour national ne
 5. emits only national trips overlapping the requested time window; and
 6. emits all calls during the civil day at the four hub-study stations.
 
+The same streaming ingester can create a separate multimodal regional artifact. The committed Zürich city study is regenerated from the same national archive with:
+
+```bash
+npm run data:zurich -- --archive /path/to/GTFS_FP2026_YYYYMMDD.zip
+```
+
+This preset selects a tight city bounding box and all supported Swiss GTFS route types—rail, tram, metro, bus, ferry, cableway and funicular—while skipping the unrelated hub artifact. The resulting JSON is fetched only after the city scale is selected. The source archive's lack of `shapes.txt` still applies; the dedicated ZVV/VBZ feed is the planned source for shape-aware tram and bus geometry.
+
 ## Known geometry limitation
 
 The current Swiss GTFS archive has no `shapes.txt`. Until rail geometry is joined from a suitable infrastructure dataset, the national study interpolates directly between stop coordinates. The result is schedule-derived and geographically honest at stations, but straight between them. The interface and snapshot metadata say so explicitly.

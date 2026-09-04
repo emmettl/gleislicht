@@ -14,6 +14,12 @@ export type ServiceCategory =
   | 'regional-express'
   | 's-bahn'
   | 'regional'
+  | 'tram'
+  | 'metro'
+  | 'bus'
+  | 'ferry'
+  | 'cableway'
+  | 'funicular'
   | 'other'
 
 export const SERVICE_CATEGORIES: ReadonlyArray<{
@@ -27,6 +33,12 @@ export const SERVICE_CATEGORIES: ReadonlyArray<{
   { id: 'regional-express', label: 'RE', color: '#4fc3ff' },
   { id: 's-bahn', label: 'S-Bahn', color: '#7dffbb' },
   { id: 'regional', label: 'Regional', color: '#fff3a6' },
+  { id: 'tram', label: 'Tram', color: '#ff6ea9' },
+  { id: 'metro', label: 'Metro', color: '#a78bfa' },
+  { id: 'bus', label: 'Bus', color: '#ff9f43' },
+  { id: 'ferry', label: 'Ferry', color: '#48c6ef' },
+  { id: 'cableway', label: 'Cableway', color: '#d7ff70' },
+  { id: 'funicular', label: 'Funicular', color: '#f8f38d' },
   { id: 'other', label: 'Other', color: '#b9c1da' },
 ]
 
@@ -41,6 +53,7 @@ export interface NetworkTrain {
   readonly headsign: string
   readonly shortName: string
   readonly category: ServiceCategory
+  readonly mode?: string
   readonly start: number
   readonly end: number
   readonly stops: readonly TrainStop[]
@@ -57,6 +70,7 @@ export interface NetworkSnapshot {
     readonly sourceUrl: string
     readonly model: string
     readonly note: string
+    readonly modes?: readonly string[]
   }
   readonly bounds: {
     readonly minLongitude: number

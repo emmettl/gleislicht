@@ -27,7 +27,22 @@ This is an iterative art-and-data project. Each stage should end in a coherent v
 
 **Exit:** thousands of scheduled movements form a recognisable, scrubbable national rail network.
 
-## 2 — Real terrain, real corridors
+## 2 — Regional and urban pulse
+
+- [x] Generalise GTFS preprocessing across Swiss rail, tram, bus, ferry, cableway, funicular and metro route types.
+- [x] Produce a separately loaded Zürich city morning artifact and scale switcher.
+- [x] Keep the national page load rail-only and derive the city study on demand.
+- [ ] Join the official ZVV/VBZ GTFS shapes after validating stop, trip and date alignment.
+- [ ] Add a ZVV overview with zoom-dependent aggregation and regional map hierarchy.
+- [ ] Add a Genève/TPG study with French labels and carefully handled cross-border services.
+- [ ] Select a rural PostBus corridor from measured schedule and terrain criteria.
+- [ ] Build a synchronized 24-hour rural PostBus versus Zürich tram contrast mode.
+
+**Exit:** regional connections and urban density read clearly at their own scales, and the rural–urban contrast is compelling without falsifying frequency or position.
+
+See [docs/REGIONAL-STUDIES.md](./docs/REGIONAL-STUDIES.md) for the study and packaging model.
+
+## 3 — Real terrain, real corridors
 
 - Establish LV95/WGS84/WebGL coordinate transforms and a single distance model.
 - Build an offline swissALTI3D processing path: crop, resample, quantise and tile.
@@ -37,7 +52,7 @@ This is an iterative art-and-data project. Each stage should end in a coherent v
 
 **Exit:** Zürich–Chur and one Alpine corridor run over recognisable real terrain on laptop and mobile GPUs.
 
-## 3 — Realtime without pretending
+## 4 — Realtime without pretending
 
 - Fetch GTFS Realtime on a small server-side poller using the required API key, redirects and user-agent.
 - Decode binary protobuf and align updates with the exact paired GTFS Static release.
@@ -49,7 +64,7 @@ The national GTFS-RT feed supplies trip updates and alerts, not vehicle position
 
 **Exit:** the current service day changes credibly when operations change, with provenance visible on demand.
 
-## 4 — The visual instrument
+## 5 — The visual instrument
 
 - [x] Add the first national → selected-train camera descent and route highlight.
 - [x] Search and select by train number, service, origin or destination.
@@ -66,7 +81,7 @@ The national GTFS-RT feed supplies trip updates and alerts, not vehicle position
 
 **Exit:** viewers can explore deliberately or let Gleislicht compose a journey for them.
 
-## 5 — Publish and sustain
+## 6 — Publish and sustain
 
 - Automated source refreshes with validation and atomic artifact versions.
 - Regression fixtures for DST changes, midnight rollover, missing shapes and feed mismatch.
@@ -81,6 +96,8 @@ The national GTFS-RT feed supplies trip updates and alerts, not vehicle position
 - [Swiss GTFS Realtime cookbook](https://opentransportdata.swiss/en/cookbook/realtime-prediction-cookbook/gtfs-rt/) and paired GTFS-RT dataset
 - [swissALTI3D](https://www.swisstopo.admin.ch/en/height-model-swissalti3d) plus the applicable [open-geodata terms](https://www.swisstopo.admin.ch/en/terms-of-use-free-geodata-and-geoservices)
 - [swissBOUNDARIES3D](https://www.swisstopo.admin.ch/en/landscape-model-swissboundaries3d) for the national outline
+- [ZVV/VBZ tram and bus GTFS](https://data.stadt-zuerich.ch/dataset/vbz_fahrplandaten_gtfs) for shape-aware Zürich regional geometry
+- [ZVV network plans](https://www.zvv.ch/en/timetable-and-information/network.html) for regional information hierarchy, not as geographic source data
 
 ## Early technical decisions
 

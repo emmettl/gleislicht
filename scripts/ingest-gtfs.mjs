@@ -81,12 +81,28 @@ function weekdayField(date) {
   ][new Date(`${date}T12:00:00Z`).getUTCDay()]
 }
 
-function isRailRouteType(value) {
+export function transportModeForRouteType(value) {
   const routeType = Number(value)
-  return routeType === 2 || (routeType >= 100 && routeType < 200)
+  if (routeType === 0 || (routeType >= 900 && routeType < 1000)) return 'tram'
+  if (routeType === 1 || (routeType >= 400 && routeType < 500)) return 'metro'
+  if (routeType === 2 || (routeType >= 100 && routeType < 200)) return 'rail'
+  if (
+    routeType === 3 ||
+    routeType === 11 ||
+    (routeType >= 200 && routeType < 300) ||
+    (routeType >= 700 && routeType < 800)
+  ) return 'bus'
+  if (routeType === 4 || (routeType >= 1000 && routeType < 1100)) return 'ferry'
+  if (routeType === 6 || (routeType >= 1300 && routeType < 1400)) {
+    return 'cableway'
+  }
+  if (routeType === 7 || (routeType >= 1400 && routeType < 1500)) {
+    return 'funicular'
+  }
+  return undefined
 }
 
-function serviceCategory(routeName) {
+function railServiceCategory(routeName) {
   const name = routeName.toUpperCase().replaceAll(' ', '')
   if (/^(EC|ICE|TGV|RJX|RJ|NJ|EN)/.test(name)) return 'international'
   if (/^IC/.test(name)) return 'intercity'
@@ -95,6 +111,10 @@ function serviceCategory(routeName) {
   if (/^(S\d|SN\d)/.test(name)) return 's-bahn'
   if (/^(R\d|RB|TER|C\d)/.test(name)) return 'regional'
   return 'other'
+}
+
+function routeCategory(routeName, mode) {
+  return mode === 'rail' ? railServiceCategory(routeName) : mode
 }
 
 async function* rowsFromArchive(archive, fileName) {
@@ -156,20 +176,23 @@ async function activeServices(archive, serviceDate) {
   return services
 }
 
-async function railRoutes(archive) {
+async function routesForModes(archive, modes) {
   const routes = new Map()
   for await (const row of rowsFromArchive(archive, 'routes.txt')) {
-    if (!isRailRouteType(row.route_type)) continue
+    const mode = transportModeForRouteType(row.route_type)
+    if (!mode || !modes.has(mode)) continue
+    const name = row.route_short_name || row.route_long_name || mode
     routes.set(row.route_id, {
-      name: row.route_short_name || row.route_long_name || 'Rail',
+      name,
       type: Number(row.route_type),
-      category: serviceCategory(row.route_short_name || row.route_long_name || ''),
+      mode,
+      category: routeCategory(name, mode),
     })
   }
   return routes
 }
 
-async function activeRailTrips(archive, routes, services) {
+async function activeTrips(archive, routes, services) {
   const trips = new Map()
   for await (const row of rowsFromArchive(archive, 'trips.txt')) {
     const route = routes.get(row.route_id)
@@ -179,6 +202,7 @@ async function activeRailTrips(archive, routes, services) {
       headsign: row.trip_headsign,
       shortName: row.trip_short_name,
       category: route.category,
+      mode: route.mode,
     })
   }
   return trips
@@ -205,6 +229,7 @@ function createSnapshotBuilder({
   windowStart,
   windowEnd,
   focusTime,
+  displayBounds,
 }) {
   const stops = []
   const stopIndexes = new Map()
@@ -223,10 +248,10 @@ function createSnapshotBuilder({
     const stop = sourceStops.get(stopId)
     if (!stop) return undefined
     if (
-      stop.longitude < DISPLAY_BOUNDS.minLongitude ||
-      stop.longitude > DISPLAY_BOUNDS.maxLongitude ||
-      stop.latitude < DISPLAY_BOUNDS.minLatitude ||
-      stop.latitude > DISPLAY_BOUNDS.maxLatitude
+      stop.longitude < displayBounds.minLongitude ||
+      stop.longitude > displayBounds.maxLongitude ||
+      stop.latitude < displayBounds.minLatitude ||
+      stop.latitude > displayBounds.maxLatitude
     ) {
       return undefined
     }
@@ -359,6 +384,40 @@ function parseClock(value) {
   return parseGtfsTime(`${value}:00`)
 }
 
+export function parseBounds(value) {
+  if (!value) return DISPLAY_BOUNDS
+  const [minLongitude, minLatitude, maxLongitude, maxLatitude] = value
+    .split(',')
+    .map(Number)
+  if (
+    ![minLongitude, minLatitude, maxLongitude, maxLatitude].every(Number.isFinite) ||
+    minLongitude >= maxLongitude ||
+    minLatitude >= maxLatitude
+  ) {
+    throw new Error(`Invalid bounds: ${value}`)
+  }
+  return { minLongitude, minLatitude, maxLongitude, maxLatitude }
+}
+
+export function parseModes(value) {
+  const supported = new Set([
+    'rail',
+    'tram',
+    'metro',
+    'bus',
+    'ferry',
+    'cableway',
+    'funicular',
+  ])
+  if (value === 'all') return supported
+  const modes = new Set(value.split(',').filter(Boolean))
+  for (const mode of modes) {
+    if (!supported.has(mode)) throw new Error(`Unsupported transport mode: ${mode}`)
+  }
+  if (!modes.size) throw new Error('At least one transport mode is required')
+  return modes
+}
+
 async function writeJson(filePath, value) {
   await mkdir(dirname(filePath), { recursive: true })
   await new Promise((resolvePromise, rejectPromise) => {
@@ -374,7 +433,8 @@ async function main() {
     console.log(
       'Usage: npm run data:gtfs -- --archive /path/feed.zip --date YYYY-MM-DD ' +
         '[--window-start 06:45] [--window-end 08:45] [--focus 07:45] ' +
-        '[--output morning.json] [--hub-output day.json]',
+        '[--modes rail|all|rail,tram,bus] [--bounds minLon,minLat,maxLon,maxLat] ' +
+        '[--output morning.json] [--hub-output day.json|none]',
     )
     return
   }
@@ -385,7 +445,10 @@ async function main() {
   const windowEndLabel = argument('window-end', '08:45')
   const focusLabel = argument('focus', '07:45')
   const output = resolve(argument('output', DEFAULT_OUTPUT))
-  const hubOutput = resolve(argument('hub-output', DEFAULT_HUB_OUTPUT))
+  const hubOutputArgument = argument('hub-output', DEFAULT_HUB_OUTPUT)
+  const hubOutput = hubOutputArgument === 'none' ? undefined : resolve(hubOutputArgument)
+  const modes = parseModes(argument('modes', 'rail'))
+  const displayBounds = parseBounds(argument('bounds'))
   const windowStart = parseClock(windowStartLabel)
   const windowEnd = parseClock(windowEndLabel)
   const focusTime = parseClock(focusLabel)
@@ -394,24 +457,31 @@ async function main() {
   const [feed, services, routes, sourceStops] = await Promise.all([
     readFeedInfo(archive),
     activeServices(archive, serviceDate),
-    railRoutes(archive),
+    routesForModes(archive, modes),
     stopsById(archive),
   ])
-  console.log(`Selected ${services.size} active services and ${routes.size} rail routes.`)
+  console.log(
+    `Selected ${services.size} active services and ${routes.size} routes for ${[...modes].join(', ')}.`,
+  )
 
-  const trips = await activeRailTrips(archive, routes, services)
-  console.log(`Selected ${trips.size} active rail trips. Reading stop times…`)
+  const trips = await activeTrips(archive, routes, services)
+  console.log(`Selected ${trips.size} active trips. Reading stop times…`)
   const builder = createSnapshotBuilder({
     trips,
     sourceStops,
     windowStart,
     windowEnd,
     focusTime,
+    displayBounds,
   })
-  const hubBuilder = createHubDayBuilder({ trips, sourceStops })
-  const rowsRead = await readStopTimes(archive, trips, [builder, hubBuilder])
+  const hubBuilder = hubOutput ? createHubDayBuilder({ trips, sourceStops }) : undefined
+  const rowsRead = await readStopTimes(
+    archive,
+    trips,
+    hubBuilder ? [builder, hubBuilder] : [builder],
+  )
   const snapshot = builder.finish()
-  const hubs = hubBuilder.finish()
+  const hubs = hubBuilder?.finish()
 
   const result = {
     metadata: {
@@ -424,6 +494,7 @@ async function main() {
       sourceUrl: DATASET_URL,
       model: 'scheduled station-to-station interpolation',
       note: 'The Swiss GTFS feed contains no shapes.txt; positions follow straight stop segments.',
+      modes: [...modes],
     },
     bounds: snapshot.bounds,
     stops: snapshot.stops,
@@ -431,7 +502,7 @@ async function main() {
     trains: snapshot.trains,
   }
 
-  const hubResult = {
+  const hubResult = hubs ? {
     metadata: {
       publisher: feed.feed_publisher_name,
       feedVersion: feed.feed_version,
@@ -444,18 +515,22 @@ async function main() {
       note: 'A full civil-day view of calls at four major Swiss railway hubs.',
     },
     hubs,
-  }
+  } : undefined
 
-  await Promise.all([writeJson(output, result), writeJson(hubOutput, hubResult)])
+  const writes = [writeJson(output, result)]
+  if (hubOutput && hubResult) writes.push(writeJson(hubOutput, hubResult))
+  await Promise.all(writes)
   console.log(
-    `Wrote ${snapshot.trains.length} morning trips, ${snapshot.edges.length} rail edges, ` +
+    `Wrote ${snapshot.trains.length} morning trips, ${snapshot.edges.length} network edges, ` +
       `${snapshot.stops.length} stops and ${snapshot.trainsAtFocus} trains moving at ${focusLabel}.`,
   )
   console.log(`Read ${rowsRead.toLocaleString('en')} stop-time rows → ${output}`)
-  console.log(
-    `Wrote ${Object.values(hubs).reduce((total, calls) => total + calls.length, 0)} ` +
-      `full-day hub calls → ${hubOutput}`,
-  )
+  if (hubOutput && hubs) {
+    console.log(
+      `Wrote ${Object.values(hubs).reduce((total, calls) => total + calls.length, 0)} ` +
+        `full-day hub calls → ${hubOutput}`,
+    )
+  }
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {

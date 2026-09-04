@@ -11,7 +11,13 @@ const CATEGORY_PRIORITY: Readonly<Record<ServiceCategory, number>> = {
   'regional-express': 3,
   's-bahn': 4,
   regional: 5,
-  other: 6,
+  tram: 6,
+  metro: 7,
+  bus: 8,
+  ferry: 9,
+  funicular: 10,
+  cableway: 11,
+  other: 12,
 }
 
 export function trainLabelBudget(

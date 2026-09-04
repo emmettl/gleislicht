@@ -4,10 +4,12 @@
 
 **Gleislicht: Switzerland in motion** makes the Swiss railway system feel alive rather than diagrammatic. It is a data visualisation, but its emotional register is a late-night window seat: dark valleys, bright infrastructure, distant signals and trains leaving traces through the landscape.
 
-The experience should work at two scales:
+The experience should work at four scales:
 
 1. **The network breathes.** A national view reveals the timetable as a living system—departures gathering around cities, intercity pulses crossing the plateau, and thinner regional threads reaching into valleys.
 2. **A single journey becomes cinema.** Choose a train and the camera descends to follow a luminous, lightly abstracted vehicle through real terrain. The landscape is recognisably Swiss but deliberately low-poly and atmospheric rather than photoreal.
+3. **Regional networks reveal exchange.** ZVV, TPG and later regional studies show rail, tram, bus, boat and funicular services feeding one another without crowding the national view.
+4. **Cities become electric.** A full-detail city study embraces the hectic texture of Zürich trams and buses, while a synchronized rural study makes the spacious pulse of PostBus services equally tangible.
 
 ## Product principles
 
@@ -18,6 +20,7 @@ The experience should work at two scales:
 - **A visual instrument.** Time, camera and layers can be played. The interface should feel closer to a synthesiser display than a transport planner.
 - **A score, not background music.** Each scale has its own composed electronic cue; transitions between map, hub and journey are musical continuations of the same world. Sound remains opt-in.
 - **Runs beautifully on an ordinary laptop.** Progressive detail, compact preprocessed data and measured GPU budgets matter more than maximal fidelity.
+- **Load only the chosen scale.** National, regional, city and corridor artifacts remain separate so local detail never bloats the opening national study.
 
 ## Visual thesis
 
