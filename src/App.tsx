@@ -545,7 +545,11 @@ export function App() {
       <header className="masthead">
         <div>
           <p className="eyebrow">Gleislicht</p>
-          <h1>{text.subtitle}</h1>
+          <h1>
+            {isNetwork && networkStudy === 'zurich-city'
+              ? text.zurichSubtitle
+              : text.subtitle}
+          </h1>
         </div>
         <div className="masthead-meta">
           <div className="masthead-topline">
