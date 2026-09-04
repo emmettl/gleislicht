@@ -9,12 +9,20 @@ import {
   type ServiceCategory,
 } from '../domain/network.ts'
 
+export type MapCameraAction = 'zoom-in' | 'zoom-out' | 'reset'
+
+export interface MapCameraCommand {
+  readonly id: number
+  readonly action: MapCameraAction
+}
+
 interface NationalNetworkSceneProps {
   readonly snapshot: NetworkSnapshot
   readonly isPlaying: boolean
   readonly time: number
   readonly selectedTrain?: NetworkTrain
   readonly onTime: (time: number) => void
+  readonly cameraCommand?: MapCameraCommand
 }
 
 type ProjectedStop = readonly [x: number, y: number, z: number]
@@ -310,15 +318,98 @@ function NetworkCamera({
   selectedTrain,
   time,
   projectedStops,
+  cameraCommand,
 }: {
   readonly selectedTrain?: NetworkTrain
   readonly time: number
   readonly projectedStops: readonly ProjectedStop[]
+  readonly cameraCommand?: MapCameraCommand
 }) {
-  const { camera } = useThree()
+  const { camera, gl } = useThree()
   const desiredPosition = useMemo(() => new THREE.Vector3(0, 37, 26), [])
   const desiredTarget = useMemo(() => new THREE.Vector3(), [])
   const currentTarget = useMemo(() => new THREE.Vector3(), [])
+  const mapTarget = useRef(new THREE.Vector3())
+  const distanceScale = useRef(1)
+  const lastCommand = useRef(0)
+
+  useEffect(() => {
+    if (!cameraCommand || cameraCommand.id === lastCommand.current) return
+    lastCommand.current = cameraCommand.id
+    if (cameraCommand.action === 'reset') {
+      mapTarget.current.set(0, 0, 0)
+      distanceScale.current = 1
+      return
+    }
+    const multiplier = cameraCommand.action === 'zoom-in' ? 0.78 : 1.28
+    distanceScale.current = THREE.MathUtils.clamp(
+      distanceScale.current * multiplier,
+      0.3,
+      1.7,
+    )
+  }, [cameraCommand])
+
+  useEffect(() => {
+    const element = gl.domElement
+    const pointers = new Map<number, { x: number; y: number }>()
+    let pinchDistance: number | undefined
+
+    const onPointerDown = (event: PointerEvent) => {
+      if (selectedTrain || (event.pointerType === 'mouse' && event.button !== 0)) return
+      pointers.set(event.pointerId, { x: event.clientX, y: event.clientY })
+      element.setPointerCapture(event.pointerId)
+    }
+    const onPointerMove = (event: PointerEvent) => {
+      const previous = pointers.get(event.pointerId)
+      if (!previous || selectedTrain) return
+      pointers.set(event.pointerId, { x: event.clientX, y: event.clientY })
+      if (pointers.size === 1) {
+        const panScale = 0.045 * distanceScale.current
+        mapTarget.current.x -= (event.clientX - previous.x) * panScale
+        mapTarget.current.z -= (event.clientY - previous.y) * panScale
+        mapTarget.current.x = THREE.MathUtils.clamp(mapTarget.current.x, -25, 25)
+        mapTarget.current.z = THREE.MathUtils.clamp(mapTarget.current.z, -16, 16)
+      } else if (pointers.size === 2) {
+        const [first, second] = [...pointers.values()]
+        const nextDistance = Math.hypot(first.x - second.x, first.y - second.y)
+        if (pinchDistance && nextDistance > 0) {
+          distanceScale.current = THREE.MathUtils.clamp(
+            distanceScale.current * (pinchDistance / nextDistance),
+            0.3,
+            1.7,
+          )
+        }
+        pinchDistance = nextDistance
+      }
+      event.preventDefault()
+    }
+    const onPointerUp = (event: PointerEvent) => {
+      pointers.delete(event.pointerId)
+      if (pointers.size < 2) pinchDistance = undefined
+    }
+    const onWheel = (event: WheelEvent) => {
+      if (selectedTrain) return
+      distanceScale.current = THREE.MathUtils.clamp(
+        distanceScale.current * Math.exp(event.deltaY * 0.0012),
+        0.3,
+        1.7,
+      )
+      event.preventDefault()
+    }
+
+    element.addEventListener('pointerdown', onPointerDown)
+    element.addEventListener('pointermove', onPointerMove)
+    element.addEventListener('pointerup', onPointerUp)
+    element.addEventListener('pointercancel', onPointerUp)
+    element.addEventListener('wheel', onWheel, { passive: false })
+    return () => {
+      element.removeEventListener('pointerdown', onPointerDown)
+      element.removeEventListener('pointermove', onPointerMove)
+      element.removeEventListener('pointerup', onPointerUp)
+      element.removeEventListener('pointercancel', onPointerUp)
+      element.removeEventListener('wheel', onWheel)
+    }
+  }, [gl, selectedTrain])
 
   useFrame((_, delta) => {
     const trainPosition = selectedTrain
@@ -328,8 +419,12 @@ function NetworkCamera({
       desiredTarget.set(trainPosition[0], 0, trainPosition[2])
       desiredPosition.set(trainPosition[0] + 4.2, 4.8, trainPosition[2] + 6.5)
     } else {
-      desiredTarget.set(0, 0, 0)
-      desiredPosition.set(0, 37, 26)
+      desiredTarget.copy(mapTarget.current)
+      desiredPosition.set(
+        mapTarget.current.x,
+        37 * distanceScale.current,
+        mapTarget.current.z + 26 * distanceScale.current,
+      )
     }
 
     const damping = 1 - Math.exp(-delta * (trainPosition ? 1.7 : 2.3))
@@ -369,6 +464,7 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
         selectedTrain={props.selectedTrain}
         time={props.time}
         projectedStops={projectedStops}
+        cameraCommand={props.cameraCommand}
       />
     </>
   )

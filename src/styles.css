@@ -58,6 +58,19 @@ input {
   z-index: -3;
 }
 
+.view-network .scene canvas {
+  touch-action: none;
+  cursor: grab;
+}
+
+.view-network .scene canvas:active {
+  cursor: grabbing;
+}
+
+.view-network.has-selection .scene canvas {
+  cursor: default;
+}
+
 .atmosphere {
   z-index: -2;
   pointer-events: none;
@@ -309,6 +322,41 @@ h1 {
   height: 28px;
   background: linear-gradient(var(--pink), transparent);
   content: '';
+}
+
+.map-navigation {
+  position: absolute;
+  top: calc(19% + 56px);
+  right: clamp(24px, 4vw, 58px);
+  z-index: 5;
+}
+
+.map-navigation > span {
+  display: block;
+  margin-bottom: 6px;
+  color: rgba(229, 231, 255, 0.42);
+  font-family: 'DM Mono', ui-monospace, monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.08em;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.map-navigation > div {
+  display: flex;
+  justify-content: flex-end;
+  gap: 4px;
+}
+
+.map-navigation button {
+  width: 36px;
+  min-height: 34px;
+  justify-content: center;
+  padding: 0;
+  border-color: rgba(193, 204, 255, 0.18);
+  color: var(--cyan);
+  font-family: 'DM Mono', ui-monospace, monospace;
+  font-size: 1rem;
 }
 
 .train-search {
@@ -782,6 +830,14 @@ footer {
   }
 
   .prototype-note {
+    display: none;
+  }
+
+  .map-navigation {
+    top: 168px;
+  }
+
+  .map-navigation > span {
     display: none;
   }
 

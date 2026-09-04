@@ -11,7 +11,11 @@ import {
 } from './domain/network.ts'
 import { GleislichtScene } from './scene/GleislichtScene.tsx'
 import { HubPulseScene } from './scene/HubPulseScene.tsx'
-import { NationalNetworkScene } from './scene/NationalNetworkScene.tsx'
+import {
+  NationalNetworkScene,
+  type MapCameraAction,
+  type MapCameraCommand,
+} from './scene/NationalNetworkScene.tsx'
 
 type View = 'network' | 'hub' | 'journey'
 
@@ -44,6 +48,10 @@ export function App() {
   const [searchOpen, setSearchOpen] = useState(false)
   const [selectedTrainId, setSelectedTrainId] = useState<string>()
   const [selectedHubId, setSelectedHubId] = useState<HubId>('zurich')
+  const [mapCameraCommand, setMapCameraCommand] = useState<MapCameraCommand>({
+    id: 0,
+    action: 'reset',
+  })
 
   const journeyPosition = useMemo(
     () => positionOnJourney(prototypeJourney, journeyProgress),
@@ -107,6 +115,9 @@ export function App() {
   }, [])
   const handleNetworkTime = useCallback((nextTime: number) => {
     setNetworkTime(nextTime)
+  }, [])
+  const moveMapCamera = useCallback((action: MapCameraAction) => {
+    setMapCameraCommand((current) => ({ id: current.id + 1, action }))
   }, [])
 
   const releaseTrain = useCallback(() => {
@@ -192,6 +203,7 @@ export function App() {
             time={networkTime}
             selectedTrain={selectedTrain}
             onTime={handleNetworkTime}
+            cameraCommand={mapCameraCommand}
           />
         ) : isHub && network ? (
           <HubPulseScene
@@ -452,6 +464,35 @@ export function App() {
       </div>
 
       {isNetwork && !selectedTrain && <div className="north-marker">N</div>}
+
+      {isNetwork && !selectedTrain && (
+        <div className="map-navigation" aria-label="Map navigation">
+          <span>drag · wheel / pinch</span>
+          <div>
+            <button
+              type="button"
+              aria-label="Zoom map in"
+              onClick={() => moveMapCamera('zoom-in')}
+            >
+              +
+            </button>
+            <button
+              type="button"
+              aria-label="Zoom map out"
+              onClick={() => moveMapCamera('zoom-out')}
+            >
+              −
+            </button>
+            <button
+              type="button"
+              aria-label="Reset map position and zoom"
+              onClick={() => moveMapCamera('reset')}
+            >
+              ↺
+            </button>
+          </div>
+        </div>
+      )}
 
       {isTimetable && !selectedTrain && (
         <div className="service-legend" aria-label="Service colour legend">
