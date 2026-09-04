@@ -1383,6 +1383,12 @@ input:focus-visible {
   font-size: 0.72rem;
 }
 
+.record-icon {
+  color: #ff416c;
+  font-size: 0.62rem;
+  text-shadow: 0 0 10px #ff416c;
+}
+
 .camera-icon {
   width: 12px;
   height: 8px;

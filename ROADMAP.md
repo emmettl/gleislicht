@@ -8,7 +8,7 @@ This is an iterative art-and-data project. Each stage should end in a coherent v
 - [x] Create a full-screen follow-camera prototype with procedural wireframe terrain.
 - [x] Separate journey/timetable concepts from Three.js rendering.
 - [x] Label synthetic data and add pause, scrub and camera controls.
-- [ ] Tune camera damping, scale, colour and fog using several representative screen sizes.
+- [x] Tune camera damping, scale, colour and fog across representative phone, tablet and desktop sizes.
 - [x] Set and enforce the first mobile transfer budget; establish frame-time telemetry with the terrain work.
 
 **Exit:** the prototype communicates “night train through luminous Swiss topography” in its first few seconds.
@@ -91,7 +91,7 @@ The national GTFS-RT feed supplies trip updates and alerts, not vehicle position
 - [x] Add opt-in local performance telemetry without personal tracking.
 - [x] Add an accessible non-WebGL fallback.
 - [x] Publish a source, attribution and methodology page.
-- Recording/export workflow for shareable daily studies.
+- [x] Add a user-initiated recording/export workflow for shareable visual studies.
 - [x] Publish the reviewed static build through GitHub Pages; private previews remain non-canonical.
 
 ## Data sources to validate in implementation

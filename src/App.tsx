@@ -86,6 +86,7 @@ const StationFlowScene = lazy(() =>
 
 type View = 'network' | 'hub' | 'journey'
 type SoundtrackState = 'off' | 'starting' | 'on' | 'error'
+type RecordingState = 'idle' | 'recording' | 'saving' | 'error'
 type NetworkStudy =
   | 'national'
   | 'zvv-region'
@@ -222,7 +223,14 @@ export function App() {
   const [trainLabelMode, setTrainLabelMode] = useState<TrainLabelMode>('auto')
   const [soundtrackState, setSoundtrackState] = useState<SoundtrackState>('off')
   const [soundtrackVolume, setSoundtrackVolume] = useState(0.56)
+  const [recordingSupported] = useState(
+    () =>
+      typeof MediaRecorder !== 'undefined' &&
+      typeof HTMLCanvasElement.prototype.captureStream === 'function',
+  )
+  const [recordingState, setRecordingState] = useState<RecordingState>('idle')
   const soundtrackRef = useRef<GleislichtSoundtrack | null>(null)
+  const recordingRef = useRef<{ stop: () => void; cancel: () => void } | null>(null)
   const mobileMapToolsRef = useRef<HTMLDetailsElement>(null)
   const searchInteractionRef = useRef(false)
   const timelineTimeRef = useRef(networkTime)
@@ -634,6 +642,33 @@ export function App() {
     }
   }, [soundtrackMode, soundtrackState, soundtrackVolume])
 
+  const toggleRecording = useCallback(async () => {
+    if (recordingState === 'recording') {
+      setRecordingState('saving')
+      recordingRef.current?.cancel()
+      return
+    }
+    if (recordingState === 'saving') return
+    const canvas = document.querySelector<HTMLCanvasElement>('.scene canvas')
+    if (!canvas) return
+    try {
+      const { recordCanvas } = await import('./recording.ts')
+      setRecordingState('recording')
+      recordingRef.current = recordCanvas(canvas, {
+        duration: 12_000,
+        onSaving: () => setRecordingState('saving'),
+        onComplete: () => {
+          recordingRef.current = null
+          setRecordingState('idle')
+        },
+      })
+    } catch (error: unknown) {
+      console.warn('Unable to record the Gleislicht canvas', error)
+      recordingRef.current = null
+      setRecordingState('error')
+    }
+  }, [recordingState])
+
   useEffect(() => {
     document.documentElement.lang = language
     document.title = text.pageTitle
@@ -896,6 +931,8 @@ export function App() {
     () => () => {
       soundtrackRef.current?.dispose()
       soundtrackRef.current = null
+      recordingRef.current?.stop()
+      recordingRef.current = null
     },
     [],
   )
@@ -2257,6 +2294,15 @@ export function App() {
               <a className="methodology-link" href="./methodology.html">
                 {text.readMethodology}
               </a>
+              {recordingSupported && (
+                <button type="button" onClick={() => void toggleRecording()}>
+                  {recordingState === 'recording'
+                    ? text.stopRecording
+                    : recordingState === 'saving'
+                      ? text.savingRecording
+                      : text.recordLoop}
+                </button>
+              )}
             </div>
           </details>
         </div>
@@ -2308,6 +2354,16 @@ export function App() {
                       ? text.genevaView
                     : text.zurichView
                 : text.taktHubs}
+            </button>
+          )}
+          {recordingSupported && (
+            <button type="button" onClick={() => void toggleRecording()}>
+              <span className="button-icon record-icon" aria-hidden="true">●</span>
+              {recordingState === 'recording'
+                ? text.stopRecording
+                : recordingState === 'saving'
+                  ? text.savingRecording
+                  : text.recordLoop}
             </button>
           )}
         </div>
