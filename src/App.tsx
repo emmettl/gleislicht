@@ -1142,7 +1142,13 @@ export function App() {
       <header className="masthead">
         <div>
           <p className="eyebrow">Gleislicht</p>
-          <h1>
+          <h1
+            className={
+              isNetwork && networkStudy === 'national' && !isContrast
+                ? 'national-title'
+                : undefined
+            }
+          >
             {isNetwork
               ? isContrast
                 ? text.contrastSubtitle

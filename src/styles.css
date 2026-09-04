@@ -1958,6 +1958,16 @@ footer {
     line-height: 0.94;
   }
 
+  .masthead h1.national-title {
+    max-width: calc(
+      100vw - 132px - env(safe-area-inset-left) - env(safe-area-inset-right)
+    );
+    font-size: clamp(1rem, 5vw, 1.22rem);
+    letter-spacing: -0.045em;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
   .masthead-meta {
     flex-direction: row;
     align-items: flex-start;

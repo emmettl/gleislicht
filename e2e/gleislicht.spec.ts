@@ -167,6 +167,19 @@ test('the mobile shell keeps header, search and timeline in one viewport', async
 
   const viewport = page.viewportSize()
   expect(viewport).not.toBeNull()
+  const title = page.locator('.masthead h1')
+  await expect(title).toHaveCSS('white-space', 'nowrap')
+  const titleBox = await title.boundingBox()
+  expect(titleBox, 'the national title should have a layout box').not.toBeNull()
+  expect(titleBox?.height).toBeLessThan(28)
+  const mastheadControlsBox = await page.locator('.masthead-meta').boundingBox()
+  expect(
+    titleBox && mastheadControlsBox
+      ? titleBox.x + titleBox.width <= mastheadControlsBox.x
+      : false,
+    'the national title should clear the header controls',
+  ).toBe(true)
+
   const selectors = [
     '.masthead h1',
     '.train-search',
