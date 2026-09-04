@@ -67,9 +67,27 @@ npm run data:zvv:shapes -- \
 
 The resulting `zvv-region-morning.json` contains 5,204 trips and is fetched only when ZVV is selected. Its 65,025 matched tram/bus segment occurrences give 98.4% shape coverage. The 4.6 MB JSON compresses to about 1.0 MB over HTTP, so it does not require time chunking for this two-hour study.
 
+The Genève study is cut from the same national timetable but admits local tram and bus routes only when they belong to TPG's published agency ID. That keeps the regional study operator-specific without clipping TPG services at the border:
+
+```bash
+npm run data:geneva -- \
+  --archive /path/to/GTFS_FP2026_YYYYMMDD.zip \
+  --date 2026-09-04
+```
+
+Download the current TPG line layer as GeoJSON from the official [SITG feature service](https://sitg.ge.ch/donnees/tpg-lignes), requesting WGS84 coordinates, then enrich the snapshot:
+
+```bash
+npm run data:geneva:shapes -- \
+  --geometry /path/to/tpg-lines.geojson \
+  --feed-version YYYY-MM-DD
+```
+
+The line layer is a route-labelled street graph rather than GTFS `shapes.txt`. The enrichment snaps timetable stops to their matching TPG line and finds the shortest valid path between each pair; it rejects implausible detours and refuses to write below 70% coverage. The current artifact contains 1,804 trips and 2,080 stops, including cross-border services, and matches 37,182 of 38,486 local segment occurrences (96.6%). Its 1.8 MB JSON compresses to about 408 KB and is fetched only when **GE** is selected.
+
 ## Known geometry limitation
 
-The current Swiss GTFS archive has no `shapes.txt`. Until rail geometry is joined from a suitable infrastructure dataset, the national study and Zürich rail services interpolate directly between stop coordinates. Zürich tram and bus services use the aligned ZVV geometry described above; any unmatched local segment falls back to straight stop interpolation. The result remains schedule-derived rather than a claim of GPS tracking, and the snapshot metadata records that distinction.
+The current Swiss GTFS archive has no `shapes.txt`. Until rail geometry is joined from a suitable infrastructure dataset, the national study and regional rail services interpolate directly between stop coordinates. Zürich tram and bus services use the aligned ZVV geometry; Genève tram, trolleybus and bus services use TPG/SITG line geometry. Any unmatched local segment falls back to straight stop interpolation. The result remains schedule-derived rather than a claim of GPS tracking, and the snapshot metadata records that distinction.
 
 ## National boundary
 

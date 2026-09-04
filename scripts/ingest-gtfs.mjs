@@ -183,6 +183,7 @@ async function routesForModes(archive, modes) {
     if (!mode || !modes.has(mode)) continue
     const name = row.route_short_name || row.route_long_name || mode
     routes.set(row.route_id, {
+      agencyId: row.agency_id,
       name,
       type: Number(row.route_type),
       mode,
@@ -198,6 +199,7 @@ async function activeTrips(archive, routes, services) {
     const route = routes.get(row.route_id)
     if (!route || !services.has(row.service_id)) continue
     trips.set(row.trip_id, {
+      agencyId: route.agencyId,
       route: route.name,
       headsign: row.trip_headsign,
       shortName: row.trip_short_name,
@@ -244,6 +246,7 @@ function createSnapshotBuilder({
   focusTime,
   displayBounds,
   allowedLocalStopIds,
+  allowedLocalAgencyIds,
 }) {
   const stops = []
   const stopIndexes = new Map()
@@ -289,28 +292,33 @@ function createSnapshotBuilder({
     const metadata = trips.get(tripId)
     if (!metadata || tripStops.length < 2) return
 
-    if (
-      allowedLocalStopIds &&
-      (metadata.mode === 'tram' || metadata.mode === 'bus')
-    ) {
-      const localStopsInBounds = tripStops.filter((tripStop) => {
-        const stop = sourceStops.get(tripStop.stopId)
-        return (
-          stop &&
-          stop.longitude >= displayBounds.minLongitude &&
-          stop.longitude <= displayBounds.maxLongitude &&
-          stop.latitude >= displayBounds.minLatitude &&
-          stop.latitude <= displayBounds.maxLatitude
-        )
-      })
-      const allowedCount = localStopsInBounds.filter((tripStop) =>
-        allowedLocalStopIds.has(canonicalStopId(tripStop.stopId)),
-      ).length
+    if (metadata.mode === 'tram' || metadata.mode === 'bus') {
       if (
-        localStopsInBounds.length < 2 ||
-        allowedCount / localStopsInBounds.length < 0.8
+        allowedLocalAgencyIds &&
+        !allowedLocalAgencyIds.has(metadata.agencyId)
       ) {
         return
+      }
+      if (allowedLocalStopIds) {
+        const localStopsInBounds = tripStops.filter((tripStop) => {
+          const stop = sourceStops.get(tripStop.stopId)
+          return (
+            stop &&
+            stop.longitude >= displayBounds.minLongitude &&
+            stop.longitude <= displayBounds.maxLongitude &&
+            stop.latitude >= displayBounds.minLatitude &&
+            stop.latitude <= displayBounds.maxLatitude
+          )
+        })
+        const allowedCount = localStopsInBounds.filter((tripStop) =>
+          allowedLocalStopIds.has(canonicalStopId(tripStop.stopId)),
+        ).length
+        if (
+          localStopsInBounds.length < 2 ||
+          allowedCount / localStopsInBounds.length < 0.8
+        ) {
+          return
+        }
       }
     }
 
@@ -463,6 +471,13 @@ export function parseModes(value) {
   return modes
 }
 
+export function parseAgencyIds(value) {
+  if (!value) return undefined
+  const agencyIds = new Set(value.split(',').map((id) => id.trim()).filter(Boolean))
+  if (!agencyIds.size) throw new Error('At least one local agency ID is required')
+  return agencyIds
+}
+
 async function writeJson(filePath, value) {
   await mkdir(dirname(filePath), { recursive: true })
   await new Promise((resolvePromise, rejectPromise) => {
@@ -544,6 +559,7 @@ async function main() {
         '[--window-start 06:45] [--window-end 08:45] [--focus 07:45] ' +
         '[--modes rail|all|rail,tram,bus] [--bounds minLon,minLat,maxLon,maxLat] ' +
         '[--local-stop-archive /path/regional.zip] [--output morning.json] ' +
+        '[--local-agencies 881,199] ' +
         '[--hub-output day.json|none] [--chunk-hours 3]',
     )
     return
@@ -567,6 +583,7 @@ async function main() {
   const localStopArchive = localStopArchiveArgument
     ? resolve(localStopArchiveArgument)
     : undefined
+  const allowedLocalAgencyIds = parseAgencyIds(argument('local-agencies'))
   const displayBounds = parseBounds(argument('bounds'))
   const windowStart = parseClock(windowStartLabel)
   const windowEnd = parseClock(windowEndLabel)
@@ -594,6 +611,7 @@ async function main() {
     focusTime,
     displayBounds,
     allowedLocalStopIds,
+    allowedLocalAgencyIds,
   })
   const hubBuilder = hubOutput ? createHubDayBuilder({ trips, sourceStops }) : undefined
   const rowsRead = await readStopTimes(
@@ -616,6 +634,9 @@ async function main() {
       model: 'scheduled station-to-station interpolation',
       note: 'The Swiss GTFS feed contains no shapes.txt; positions follow straight stop segments.',
       modes: [...modes],
+      ...(allowedLocalAgencyIds
+        ? { localAgencyIds: [...allowedLocalAgencyIds] }
+        : {}),
     },
     bounds: snapshot.bounds,
     stops: snapshot.stops,

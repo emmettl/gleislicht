@@ -8,6 +8,7 @@ import {
 describe('regional level of detail', () => {
   it('normalises the ZVV home view to the national camera scale', () => {
     expect(regionalCameraHeight(37 * 0.24, 'zvv')).toBeCloseTo(37)
+    expect(regionalCameraHeight(37 * 0.13, 'geneva')).toBeCloseTo(37)
     expect(regionalCameraHeight(12, 'switzerland')).toBe(12)
   })
 

@@ -730,6 +730,7 @@ h1 {
 
 .train-search label {
   flex: 1;
+  min-width: 0;
 }
 
 .train-search input[type='search'] {
@@ -1327,7 +1328,15 @@ footer {
   }
 
   .network-study-picker {
+    max-width: 220px;
+    overflow-x: auto;
     padding: 0 2px;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: none;
+  }
+
+  .network-study-picker::-webkit-scrollbar {
+    display: none;
   }
 
   .network-study-picker button,
@@ -1605,6 +1614,14 @@ footer {
 
   .sound-copy strong {
     max-width: 70px;
+  }
+
+  .search-mark {
+    display: none;
+  }
+
+  .network-study-picker {
+    max-width: 176px;
   }
 }
 

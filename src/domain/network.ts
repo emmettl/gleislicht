@@ -76,6 +76,7 @@ export interface NetworkSnapshot {
     readonly model: string
     readonly note: string
     readonly modes?: readonly string[]
+    readonly localAgencyIds?: readonly string[]
     readonly geometry?: {
       readonly publisher: string
       readonly feedVersion: string

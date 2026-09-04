@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import {
   chunkNetworkSnapshot,
+  parseAgencyIds,
   parseBounds,
   parseModes,
   transportModeForRouteType,
@@ -37,6 +38,8 @@ describe('Swiss GTFS transport modes', () => {
       maxLongitude: 8.63,
       maxLatitude: 47.44,
     })
+    expect([...parseAgencyIds('881, 199')]).toEqual(['881', '199'])
+    expect(parseAgencyIds(undefined)).toBeUndefined()
   })
 })
 

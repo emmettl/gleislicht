@@ -34,7 +34,7 @@ This is an iterative art-and-data project. Each stage should end in a coherent v
 - [x] Keep the national page load rail-only and derive the city study on demand.
 - [x] Join the official ZVV/VBZ GTFS shapes after validating line, stop and date alignment.
 - [x] Add a ZVV overview with zoom-dependent aggregation and regional map hierarchy.
-- [ ] Add a Genève/TPG study with French labels and carefully handled cross-border services.
+- [x] Add a Genève/TPG study with French labels and carefully handled cross-border services.
 - [ ] Select a rural PostBus corridor from measured schedule and terrain criteria.
 - [ ] Build a synchronized 24-hour rural PostBus versus Zürich tram contrast mode.
 
@@ -99,6 +99,7 @@ The national GTFS-RT feed supplies trip updates and alerts, not vehicle position
 - [swissBOUNDARIES3D](https://www.swisstopo.admin.ch/en/landscape-model-swissboundaries3d) for the national outline
 - [ZVV/VBZ tram and bus GTFS](https://data.stadt-zuerich.ch/dataset/vbz_fahrplandaten_gtfs) for shape-aware Zürich regional geometry
 - [ZVV network plans](https://www.zvv.ch/en/timetable-and-information/network.html) for regional information hierarchy, not as geographic source data
+- [TPG line geometry from SITG](https://sitg.ge.ch/donnees/tpg-lignes) for Genève tram, trolleybus and bus paths, including cross-border branches
 
 ## Early technical decisions
 

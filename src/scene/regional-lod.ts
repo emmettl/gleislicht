@@ -8,7 +8,7 @@ export function regionalCameraHeight(
   cameraHeight: number,
   framing: MapCameraFraming,
 ): number {
-  return framing === 'zvv'
+  return framing === 'zvv' || framing === 'geneva'
     ? cameraHeight / homeMapDistanceScale(framing)
     : cameraHeight
 }
@@ -19,7 +19,7 @@ export function vehicleIsVisibleAtZoom(
   framing: MapCameraFraming,
   focused = false,
 ): boolean {
-  if (focused || framing !== 'zvv') return true
+  if (focused || (framing !== 'zvv' && framing !== 'geneva')) return true
   const relativeHeight = regionalCameraHeight(cameraHeight, framing)
   if (category === 'bus') return relativeHeight < 22
   if (category === 'tram') return relativeHeight < 30
@@ -30,7 +30,7 @@ export function localNetworkDetailAtZoom(
   cameraHeight: number,
   framing: MapCameraFraming,
 ): number {
-  if (framing !== 'zvv') return 1
+  if (framing !== 'zvv' && framing !== 'geneva') return 1
   const relativeHeight = regionalCameraHeight(cameraHeight, framing)
   return Math.min(1, Math.max(0, (32 - relativeHeight) / 12))
 }

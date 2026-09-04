@@ -67,7 +67,7 @@ import { foldSearchText } from './search-text.ts'
 
 type View = 'network' | 'hub' | 'journey'
 type SoundtrackState = 'off' | 'starting' | 'on' | 'error'
-type NetworkStudy = 'national' | 'zvv-region' | 'zurich-city'
+type NetworkStudy = 'national' | 'zvv-region' | 'geneva-tpg' | 'zurich-city'
 type NationalTimeRange = 'morning' | 'day'
 type HubStudy = 'pulse' | 'station'
 
@@ -141,6 +141,7 @@ export function App() {
   const [nationalDayError, setNationalDayError] = useState(false)
   const [zurichCityNetwork, setZurichCityNetwork] = useState<NetworkSnapshot>()
   const [zvvRegionNetwork, setZvvRegionNetwork] = useState<NetworkSnapshot>()
+  const [genevaTpgNetwork, setGenevaTpgNetwork] = useState<NetworkSnapshot>()
   const [regionalNetworkLoading, setRegionalNetworkLoading] = useState(false)
   const [regionalNetworkError, setRegionalNetworkError] = useState(false)
   const [boundary, setBoundary] = useState<SwissBoundary>()
@@ -197,9 +198,11 @@ export function App() {
       ? (zurichCityNetwork ?? nationalNetwork)
       : networkStudy === 'zvv-region'
         ? (zvvRegionNetwork ?? nationalNetwork)
-      : nationalTimeRange === 'day'
-        ? (nationalDayNetwork ?? nationalNetwork)
-        : nationalNetwork
+        : networkStudy === 'geneva-tpg'
+          ? (genevaTpgNetwork ?? nationalNetwork)
+          : nationalTimeRange === 'day'
+            ? (nationalDayNetwork ?? nationalNetwork)
+            : nationalNetwork
 
   const soundtrackMode: SoundtrackMode =
     view === 'hub' ? 'hub' : view === 'journey' || selectedTrainId ? 'journey' : 'network'
@@ -430,12 +433,18 @@ export function App() {
       setSelectedCategory(undefined)
       releaseSelection()
       if (study === 'national') setNationalTimeRange(timeRange)
+      if (study === 'geneva-tpg') setSelectedHubId('geneva')
+      if (study === 'zvv-region' || study === 'zurich-city') {
+        setSelectedHubId('zurich')
+      }
       const regionalSnapshot =
         study === 'zurich-city'
           ? zurichCityNetwork
           : study === 'zvv-region'
             ? zvvRegionNetwork
-            : undefined
+            : study === 'geneva-tpg'
+              ? genevaTpgNetwork
+              : undefined
       setRegionalNetworkLoading(study !== 'national' && !regionalSnapshot)
       if (study !== 'national') setRegionalNetworkError(false)
       if (study === 'national' && timeRange === 'day') {
@@ -453,6 +462,7 @@ export function App() {
     },
     [
       nationalDayNetwork,
+      genevaTpgNetwork,
       nationalDayManifest,
       nationalNetwork,
       nationalTimeRange,
@@ -649,25 +659,34 @@ export function App() {
   useEffect(() => {
     if (networkStudy === 'national') return
     const existingNetwork =
-      networkStudy === 'zurich-city' ? zurichCityNetwork : zvvRegionNetwork
+      networkStudy === 'zurich-city'
+        ? zurichCityNetwork
+        : networkStudy === 'zvv-region'
+          ? zvvRegionNetwork
+          : genevaTpgNetwork
     if (existingNetwork) return
     const controller = new AbortController()
     const isCity = networkStudy === 'zurich-city'
+    const isZvv = networkStudy === 'zvv-region'
     const fileName = isCity
       ? 'zurich-city-morning.json'
-      : 'zvv-region-morning.json'
+      : isZvv
+        ? 'zvv-region-morning.json'
+        : 'geneva-tpg-morning.json'
     fetch(`${import.meta.env.BASE_URL}data/${fileName}`, {
       signal: controller.signal,
     })
       .then((response) => {
         if (!response.ok) {
-          throw new Error(`${isCity ? 'Zürich city' : 'ZVV'} snapshot returned ${response.status}`)
+          const studyName = isCity ? 'Zürich city' : isZvv ? 'ZVV' : 'Genève / TPG'
+          throw new Error(`${studyName} snapshot returned ${response.status}`)
         }
         return response.json() as Promise<NetworkSnapshot>
       })
       .then((snapshot) => {
         if (isCity) setZurichCityNetwork(snapshot)
-        else setZvvRegionNetwork(snapshot)
+        else if (isZvv) setZvvRegionNetwork(snapshot)
+        else setGenevaTpgNetwork(snapshot)
         setNetworkTime(snapshot.metadata.focusTime)
       })
       .catch((error: unknown) => {
@@ -678,7 +697,7 @@ export function App() {
         if (!controller.signal.aborted) setRegionalNetworkLoading(false)
       })
     return () => controller.abort()
-  }, [networkStudy, zurichCityNetwork, zvvRegionNetwork])
+  }, [genevaTpgNetwork, networkStudy, zurichCityNetwork, zvvRegionNetwork])
 
   useEffect(() => {
     if (!searchOpen || resolvedActiveSearchIndex < 0) return
@@ -742,7 +761,11 @@ export function App() {
             referenceSnapshot={nationalNetwork ?? network}
             contextSnapshot={
               networkStudy !== 'national' &&
-              (networkStudy === 'zurich-city' ? zurichCityNetwork : zvvRegionNetwork)
+              (networkStudy === 'zurich-city'
+                ? zurichCityNetwork
+                : networkStudy === 'zvv-region'
+                  ? zvvRegionNetwork
+                  : genevaTpgNetwork)
                 ? nationalNetwork
                 : undefined
             }
@@ -762,7 +785,9 @@ export function App() {
                 ? 'zurich'
                 : networkStudy === 'zvv-region' && zvvRegionNetwork
                   ? 'zvv'
-                : 'switzerland'
+                  : networkStudy === 'geneva-tpg' && genevaTpgNetwork
+                    ? 'geneva'
+                    : 'switzerland'
             }
           />
         ) : isHub && network && hubStudy === 'station' ? (
@@ -809,6 +834,8 @@ export function App() {
                 ? text.zurichSubtitle
                 : networkStudy === 'zvv-region'
                   ? text.zvvSubtitle
+                  : networkStudy === 'geneva-tpg'
+                    ? text.genevaSubtitle
                   : text.subtitle
               : text.subtitle}
           </h1>
@@ -945,6 +972,8 @@ export function App() {
                     ? text.nationalPlaceholder
                     : networkStudy === 'zvv-region'
                       ? text.regionalPlaceholder
+                      : networkStudy === 'geneva-tpg'
+                        ? text.genevaPlaceholder
                       : text.cityPlaceholder
                 }
                 autoComplete="off"
@@ -1029,6 +1058,15 @@ export function App() {
                 onClick={() => selectNetworkStudy('zvv-region')}
               >
                 ZVV
+              </button>
+              <button
+                type="button"
+                title={text.genevaNetwork}
+                aria-label={text.showGenevaNetwork}
+                aria-pressed={networkStudy === 'geneva-tpg'}
+                onClick={() => selectNetworkStudy('geneva-tpg')}
+              >
+                GE
               </button>
               <button
                 type="button"
@@ -1327,6 +1365,8 @@ export function App() {
               ? text.swissNetworkStatus
               : networkStudy === 'zvv-region'
                 ? text.zvvNetworkStatus
+                : networkStudy === 'geneva-tpg'
+                  ? text.genevaNetworkStatus
                 : text.zurichNetworkStatus
           }
         >
@@ -1347,13 +1387,19 @@ export function App() {
               ? regionalNetworkError
                 ? networkStudy === 'zvv-region'
                   ? text.zvvUnavailable
+                  : networkStudy === 'geneva-tpg'
+                    ? text.genevaUnavailable
                   : text.cityUnavailable
                 : regionalNetworkLoading
                   ? networkStudy === 'zvv-region'
                     ? text.loadingZvv
+                    : networkStudy === 'geneva-tpg'
+                      ? text.loadingGeneva
                     : text.loadingCity
                   : networkStudy === 'zvv-region'
                     ? text.zvvModes
+                    : networkStudy === 'geneva-tpg'
+                      ? text.genevaModes
                     : text.cityModes
               : isNationalDay
                 ? nationalDayError
@@ -1611,6 +1657,8 @@ export function App() {
                   ? text.nationalView
                   : networkStudy === 'zvv-region'
                     ? text.zvvView
+                    : networkStudy === 'geneva-tpg'
+                      ? text.genevaView
                     : text.zurichView}
             <kbd>C</kbd>
           </button>
@@ -1629,6 +1677,8 @@ export function App() {
                   ? text.nationalView
                   : networkStudy === 'zvv-region'
                     ? text.zvvView
+                    : networkStudy === 'geneva-tpg'
+                      ? text.genevaView
                     : text.zurichView
                 : text.taktHubs}
             </button>
@@ -1652,7 +1702,7 @@ export function App() {
                 target="_blank"
                 rel="noreferrer"
               >
-                {text.stopGeometry} · ZVV
+                {text.stopGeometry} · {networkStudy === 'geneva-tpg' ? 'TPG / SITG' : 'ZVV'}
               </a>
             )}
             {isNetwork && networkStudy === 'national' && boundary && (
