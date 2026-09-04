@@ -2,6 +2,27 @@ export const MIN_MAP_DISTANCE_SCALE = 0.02
 export const MAX_MAP_DISTANCE_SCALE = 1.18
 export type MapCameraFraming = 'switzerland' | 'zvv' | 'geneva' | 'zurich'
 
+const LANDSCAPE_MAP_FIELD_OF_VIEW = 44
+const MAX_PORTRAIT_MAP_FIELD_OF_VIEW = 82
+
+/**
+ * Keeps roughly the same horizontal map coverage when the canvas becomes
+ * portrait-shaped. A fixed vertical FOV makes a national map look accidentally
+ * magnified on phones because the horizontal FOV collapses with the aspect ratio.
+ */
+export function mapCameraFieldOfView(viewportAspect: number): number {
+  if (!Number.isFinite(viewportAspect) || viewportAspect >= 1) {
+    return LANDSCAPE_MAP_FIELD_OF_VIEW
+  }
+
+  const safeAspect = Math.max(0.45, viewportAspect)
+  const baseHalfFov = (LANDSCAPE_MAP_FIELD_OF_VIEW * Math.PI) / 360
+  const fittedFieldOfView =
+    (Math.atan(Math.tan(baseHalfFov) / safeAspect) * 360) / Math.PI
+
+  return Math.min(MAX_PORTRAIT_MAP_FIELD_OF_VIEW, fittedFieldOfView)
+}
+
 export function homeMapDistanceScale(framing: MapCameraFraming): number {
   if (framing === 'zurich') return 0.06
   if (framing === 'geneva') return 0.13

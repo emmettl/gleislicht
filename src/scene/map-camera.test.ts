@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest'
 import {
   applyMapZoom,
   homeMapDistanceScale,
+  mapCameraFieldOfView,
   mapCameraDampingRate,
   mapPanScale,
   mapWheelZoomMultiplier,
@@ -10,6 +11,18 @@ import {
 } from './map-camera.ts'
 
 describe('map camera zoom', () => {
+  it('widens portrait framing without changing landscape framing', () => {
+    expect(mapCameraFieldOfView(16 / 9)).toBe(44)
+    expect(mapCameraFieldOfView(1)).toBe(44)
+    expect(mapCameraFieldOfView(9 / 16)).toBeGreaterThan(70)
+    expect(mapCameraFieldOfView(9 / 16)).toBeLessThanOrEqual(82)
+  })
+
+  it('caps extreme portrait framing and handles invalid measurements', () => {
+    expect(mapCameraFieldOfView(0.25)).toBe(82)
+    expect(mapCameraFieldOfView(Number.NaN)).toBe(44)
+  })
+
   it('uses a closer home framing for the Zürich study', () => {
     expect(homeMapDistanceScale('switzerland')).toBe(1)
     expect(homeMapDistanceScale('zvv')).toBeCloseTo(0.24)

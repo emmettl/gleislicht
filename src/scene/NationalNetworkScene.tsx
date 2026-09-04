@@ -45,6 +45,7 @@ import {
   applyMapZoom,
   homeMapDistanceScale,
   mapCameraDampingRate,
+  mapCameraFieldOfView,
   mapPanScale,
   mapWheelZoomMultiplier,
   type MapCameraFraming,
@@ -2085,7 +2086,7 @@ function NetworkCamera({
   readonly cameraFraming: MapCameraFraming
   readonly mapFocus: THREE.Vector3
 }) {
-  const { camera, gl } = useThree()
+  const { camera, gl, size } = useThree()
   const desiredPosition = useMemo(() => new THREE.Vector3(0, 37, 26), [])
   const desiredTarget = useMemo(() => new THREE.Vector3(), [])
   const currentTarget = useMemo(() => new THREE.Vector3(), [])
@@ -2093,6 +2094,15 @@ function NetworkCamera({
   const distanceScale = useRef(1)
   const directTouch = useRef(false)
   const lastCommand = useRef(0)
+
+  useEffect(() => {
+    if (!(camera instanceof THREE.PerspectiveCamera) || size.height <= 0) return
+    const fieldOfView = mapCameraFieldOfView(size.width / size.height)
+    const focalLength =
+      (0.5 * camera.getFilmHeight()) /
+      Math.tan(THREE.MathUtils.degToRad(fieldOfView * 0.5))
+    camera.setFocalLength(focalLength)
+  }, [camera, size.height, size.width])
 
   useEffect(() => {
     mapTarget.current.copy(mapFocus)
