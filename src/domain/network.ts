@@ -96,6 +96,62 @@ export interface StationIndexEntry {
   readonly routes: readonly StationRoute[]
 }
 
+export interface NetworkRouteIndexEntry {
+  readonly id: string
+  readonly name: string
+  readonly category: ServiceCategory
+  readonly trainIds: readonly string[]
+  readonly stopIndexes: readonly number[]
+  readonly headsigns: readonly string[]
+}
+
+export function buildRouteIndex(
+  snapshot: NetworkSnapshot,
+): readonly NetworkRouteIndexEntry[] {
+  const records = new Map<
+    string,
+    {
+      name: string
+      category: ServiceCategory
+      trainIds: Set<string>
+      stopIndexes: Set<number>
+      headsigns: Set<string>
+    }
+  >()
+
+  for (const train of snapshot.trains) {
+    const id = `${train.category}:${train.route}`
+    const record = records.get(id) ?? {
+      name: train.route,
+      category: train.category,
+      trainIds: new Set<string>(),
+      stopIndexes: new Set<number>(),
+      headsigns: new Set<string>(),
+    }
+    record.trainIds.add(train.id)
+    train.stops.forEach(([stopIndex]) => record.stopIndexes.add(stopIndex))
+    if (train.headsign) record.headsigns.add(train.headsign)
+    records.set(id, record)
+  }
+
+  return [...records.entries()]
+    .map(([id, record]) => ({
+      id,
+      name: record.name,
+      category: record.category,
+      trainIds: [...record.trainIds],
+      stopIndexes: [...record.stopIndexes],
+      headsigns: [...record.headsigns].sort((first, second) =>
+        first.localeCompare(second, 'de-CH'),
+      ),
+    }))
+    .sort(
+      (first, second) =>
+        first.category.localeCompare(second.category, 'en') ||
+        first.name.localeCompare(second.name, 'de-CH', { numeric: true }),
+    )
+}
+
 export function buildStationIndex(
   snapshot: NetworkSnapshot,
 ): readonly StationIndexEntry[] {

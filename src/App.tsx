@@ -22,12 +22,14 @@ import {
 } from './domain/hub.ts'
 import { positionOnJourney, prototypeJourney } from './domain/journey.ts'
 import {
+  buildRouteIndex,
   buildStationIndex,
   formatServiceTime,
   positionForTrain,
   SERVICE_CATEGORIES,
   SERVICE_COLORS,
   type NetworkSnapshot,
+  type NetworkRouteIndexEntry,
   type NetworkTrain,
   type ServiceCategory,
   type StationIndexEntry,
@@ -132,6 +134,7 @@ export function App() {
   const [activeSearchIndex, setActiveSearchIndex] = useState(-1)
   const [selectedTrainId, setSelectedTrainId] = useState<string>()
   const [selectedStationName, setSelectedStationName] = useState<string>()
+  const [selectedRouteId, setSelectedRouteId] = useState<string>()
   const [selectedHubId, setSelectedHubId] = useState<HubId>('zurich')
   const [hubStudy, setHubStudy] = useState<HubStudy>('pulse')
   const [mapCameraCommand, setMapCameraCommand] = useState<MapCameraCommand>({
@@ -178,9 +181,17 @@ export function App() {
     () => (network ? buildStationIndex(network) : []),
     [network],
   )
+  const routeIndex = useMemo(
+    () => (network ? buildRouteIndex(network) : []),
+    [network],
+  )
   const selectedStation = useMemo(
     () => stationIndex.find((station) => station.name === selectedStationName),
     [selectedStationName, stationIndex],
+  )
+  const selectedRoute = useMemo(
+    () => routeIndex.find((route) => route.id === selectedRouteId),
+    [routeIndex, selectedRouteId],
   )
   const selectedPosition = useMemo(
     () => (selectedTrain ? positionForTrain(selectedTrain, networkTime) : undefined),
@@ -238,7 +249,26 @@ export function App() {
       })
       .slice(0, 5)
   }, [language, searchQuery, stationIndex])
-  const searchResultCount = stationSearchResults.length + searchResults.length
+  const routeSearchResults = useMemo(() => {
+    const query = foldSearchText(searchQuery)
+    if (!query) return []
+    return routeIndex
+      .filter((route) =>
+        foldSearchText(
+          `${serviceCategoryLabel(language, route.category)} ${route.category.replaceAll('-', ' ')} ${route.name}`,
+        ).includes(query),
+      )
+      .sort(
+        (first, second) =>
+          second.trainIds.length - first.trainIds.length ||
+          first.name.localeCompare(second.name, LANGUAGE_LOCALES[language], {
+            numeric: true,
+          }),
+      )
+      .slice(0, 5)
+  }, [language, routeIndex, searchQuery])
+  const searchResultCount =
+    stationSearchResults.length + routeSearchResults.length + searchResults.length
   const resolvedActiveSearchIndex =
     activeSearchIndex < searchResultCount ? activeSearchIndex : -1
   const visibleServiceCategories = useMemo(() => {
@@ -265,18 +295,37 @@ export function App() {
   const releaseSelection = useCallback(() => {
     setSelectedTrainId(undefined)
     setSelectedStationName(undefined)
+    setSelectedRouteId(undefined)
     setSearchQuery('')
     setActiveSearchIndex(-1)
   }, [])
 
   const selectStation = useCallback((station: StationIndexEntry) => {
     setSelectedTrainId(undefined)
+    setSelectedRouteId(undefined)
     setSelectedStationName(station.name)
     setSearchQuery(station.name)
     setSearchOpen(false)
     setActiveSearchIndex(-1)
     setView('network')
   }, [])
+
+  const selectRoute = useCallback(
+    (route: NetworkRouteIndexEntry) => {
+      setSelectedTrainId(undefined)
+      setSelectedStationName(undefined)
+      setSelectedRouteId(route.id)
+      setSelectedCategory(undefined)
+      setSearchQuery(
+        `${serviceCategoryLabel(language, route.category)} ${route.name}`,
+      )
+      setSearchOpen(false)
+      setActiveSearchIndex(-1)
+      setView('network')
+      setIsPlaying(true)
+    },
+    [language],
+  )
 
   const selectTrain = useCallback(
     (train: NetworkTrain) => {
@@ -292,6 +341,7 @@ export function App() {
       setNetworkTime(targetTime)
       setSelectedTrainId(train.id)
       setSelectedStationName(undefined)
+      setSelectedRouteId(undefined)
       setSearchQuery(`${train.route} ${train.shortName} → ${train.headsign}`)
       setSearchOpen(false)
       setActiveSearchIndex(-1)
@@ -318,12 +368,15 @@ export function App() {
   )
 
   const handleContextAction = useCallback(() => {
-    if (view === 'network' && (selectedTrainId || selectedStationName)) {
+    if (
+      view === 'network' &&
+      (selectedTrainId || selectedStationName || selectedRouteId)
+    ) {
       releaseSelection()
       return
     }
     setView((value) => (value === 'network' ? 'journey' : 'network'))
-  }, [releaseSelection, selectedStationName, selectedTrainId, view])
+  }, [releaseSelection, selectedRouteId, selectedStationName, selectedTrainId, view])
 
   const toggleSoundtrack = useCallback(async () => {
     if (soundtrackState === 'starting') return
@@ -485,7 +538,7 @@ export function App() {
 
   return (
     <main
-      className={`experience view-${view}${selectedTrain || selectedStation ? ' has-selection' : ''}`}
+      className={`experience view-${view}${selectedTrain || selectedStation || selectedRoute ? ' has-selection' : ''}`}
     >
       <div className="scene" aria-hidden="true">
         {isNetwork && network ? (
@@ -507,6 +560,7 @@ export function App() {
             cameraCommand={mapCameraCommand}
             playbackRate={playbackRate}
             selectedCategory={selectedCategory}
+            selectedRoute={selectedRoute}
             selectedStation={selectedStation}
             cameraFraming={
               networkStudy === 'zurich-city' && zurichCityNetwork
@@ -648,13 +702,31 @@ export function App() {
                 resolvedActiveSearchIndex < stationSearchResults.length
               ) {
                 selectStation(stationSearchResults[resolvedActiveSearchIndex])
-              } else if (resolvedActiveSearchIndex >= stationSearchResults.length) {
-                const train = searchResults[
-                  resolvedActiveSearchIndex - stationSearchResults.length
-                ]
+              } else if (
+                resolvedActiveSearchIndex >= stationSearchResults.length &&
+                resolvedActiveSearchIndex <
+                  stationSearchResults.length + routeSearchResults.length
+              ) {
+                const route =
+                  routeSearchResults[
+                    resolvedActiveSearchIndex - stationSearchResults.length
+                  ]
+                if (route) selectRoute(route)
+              } else if (
+                resolvedActiveSearchIndex >=
+                stationSearchResults.length + routeSearchResults.length
+              ) {
+                const train =
+                  searchResults[
+                    resolvedActiveSearchIndex -
+                      stationSearchResults.length -
+                      routeSearchResults.length
+                  ]
                 if (train) selectTrain(train)
               } else if (stationSearchResults[0]) {
                 selectStation(stationSearchResults[0])
+              } else if (routeSearchResults[0]) {
+                selectRoute(routeSearchResults[0])
               } else if (searchResults[0]) {
                 selectTrain(searchResults[0])
               }
@@ -688,6 +760,12 @@ export function App() {
                   if (!event.target.value) releaseSelection()
                   else if (event.target.value !== selectedStation?.name) {
                     setSelectedStationName(undefined)
+                  }
+                  const selectedRouteQuery = selectedRoute
+                    ? `${serviceCategoryLabel(language, selectedRoute.category)} ${selectedRoute.name}`
+                    : undefined
+                  if (event.target.value !== selectedRouteQuery) {
+                    setSelectedRouteId(undefined)
                   }
                 }}
                 onKeyDown={(event) => {
@@ -776,9 +854,43 @@ export function App() {
                   </span>
                 </button>
               ))}
+              {routeSearchResults.map((route, routeIndex) => {
+                const index = stationSearchResults.length + routeIndex
+                return (
+                  <button
+                    id={`train-search-result-${index}`}
+                    className={`route-result${resolvedActiveSearchIndex === index ? ' is-active' : ''}`}
+                    key={route.id}
+                    type="button"
+                    role="option"
+                    aria-selected={route.id === selectedRouteId}
+                    onMouseEnter={() => setActiveSearchIndex(index)}
+                    onClick={() => selectRoute(route)}
+                  >
+                    <span
+                      className="route-result-mark"
+                      style={{ color: SERVICE_COLORS[route.category] }}
+                      aria-hidden="true"
+                    >
+                      ━
+                    </span>
+                    <span className="result-service">
+                      {serviceCategoryLabel(language, route.category)} {route.name}
+                    </span>
+                    <span className="result-route">
+                      {numberFormat.format(route.trainIds.length)} {text.trips.toLocaleLowerCase(LANGUAGE_LOCALES[language])}
+                      {' · '}
+                      {numberFormat.format(route.stopIndexes.length)} {text.stops.toLocaleLowerCase(LANGUAGE_LOCALES[language])}
+                    </span>
+                  </button>
+                )
+              })}
               {searchResults.map((train, trainIndex) => {
                   const origin = network?.stops[train.stops[0]?.[0]]?.[2]
-                  const index = stationSearchResults.length + trainIndex
+                  const index =
+                    stationSearchResults.length +
+                    routeSearchResults.length +
+                    trainIndex
                   return (
                     <button
                       id={`train-search-result-${index}`}
@@ -917,6 +1029,42 @@ export function App() {
             </div>
           </div>
         </section>
+      ) : isNetwork && selectedRoute ? (
+        <section
+          className="journey-card route-card"
+          aria-label={`${text.selectedLine}: ${serviceCategoryLabel(language, selectedRoute.category)} ${selectedRoute.name}`}
+          style={
+            {
+              '--service-accent': SERVICE_COLORS[selectedRoute.category],
+            } as CSSProperties
+          }
+        >
+          <div className="service-row">
+            <span
+              className="service-dot"
+              style={{ backgroundColor: SERVICE_COLORS[selectedRoute.category] }}
+            />
+            <span className="service">
+              {serviceCategoryLabel(language, selectedRoute.category)}{' '}
+              {selectedRoute.name}
+            </span>
+          </div>
+          <p className="between">
+            {selectedRoute.headsigns.slice(0, 2).join(' ↔ ') || text.morningStudy}
+          </p>
+          <div className="metric-grid">
+            <div>
+              <span>{text.trips}</span>
+              <strong>{numberFormat.format(selectedRoute.trainIds.length)}</strong>
+              <small>2h</small>
+            </div>
+            <div>
+              <span>{text.stops}</span>
+              <strong>{numberFormat.format(selectedRoute.stopIndexes.length)}</strong>
+              <small>{text.unique}</small>
+            </div>
+          </div>
+        </section>
       ) : isNetwork && selectedStation ? (
         <section
           className="journey-card station-card"
@@ -1025,12 +1173,17 @@ export function App() {
             <span>
               {selectedTrain
                 ? text.scheduledFollow
+                : selectedRoute
+                  ? text.lineRouteFocus
                 : selectedStation
                   ? text.stationRouteFocus
                   : text.gtfsSchedule}
             </span>
             <span>
               {selectedTrain?.category ??
+                (selectedRoute
+                  ? `${serviceCategoryLabel(language, selectedRoute.category)} ${selectedRoute.name}`
+                  : undefined) ??
                 selectedStation?.name ??
                 (selectedCategory
                   ? serviceCategoryLabel(language, selectedCategory)
@@ -1096,7 +1249,7 @@ export function App() {
         </div>
       )}
 
-      {isTimetable && !selectedTrain && (
+      {isTimetable && !selectedTrain && !selectedRoute && (
         <div
           className={`service-legend${selectedCategory ? ' has-filter' : ''}`}
           aria-label={text.filterServices}
@@ -1189,12 +1342,14 @@ export function App() {
           </button>
           <button type="button" onClick={handleContextAction}>
             <span className="button-icon camera-icon" aria-hidden="true" />
-            {selectedTrain || selectedStation
+            {selectedTrain || selectedRoute || selectedStation
               ? selectedTrain
                 ? networkStudy === 'national'
                   ? text.releaseTrain
                   : text.releaseService
-                : text.clearStation
+                : selectedRoute
+                  ? text.releaseService
+                  : text.clearStation
               : isNetwork
                 ? text.corridorStudy
                 : networkStudy === 'national'
@@ -1202,7 +1357,7 @@ export function App() {
                   : text.zurichView}
             <kbd>C</kbd>
           </button>
-          {isTimetable && !selectedTrain && (
+          {isTimetable && !selectedTrain && !selectedRoute && (
             <button
               type="button"
               aria-pressed={isHub}

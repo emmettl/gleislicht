@@ -9,6 +9,7 @@ import {
   positionForTrain,
   SERVICE_COLORS,
   type NetworkSnapshot,
+  type NetworkRouteIndexEntry,
   type NetworkTrain,
   type ServiceCategory,
   type StationIndexEntry,
@@ -58,6 +59,7 @@ interface NationalNetworkSceneProps {
   readonly cameraCommand?: MapCameraCommand
   readonly playbackRate: number
   readonly selectedCategory?: ServiceCategory
+  readonly selectedRoute?: NetworkRouteIndexEntry
   readonly selectedStation?: StationIndexEntry
   readonly stations: readonly StationIndexEntry[]
   readonly trainLabelMode: TrainLabelMode
@@ -475,6 +477,122 @@ function SelectedRoute({
   return <primitive object={line} />
 }
 
+function SelectedLinePaths({
+  route,
+  snapshot,
+  projectedStops,
+}: {
+  readonly route: NetworkRouteIndexEntry
+  readonly snapshot: NetworkSnapshot
+  readonly projectedStops: readonly ProjectedStop[]
+}) {
+  const glowMaterial = useRef<THREE.LineBasicMaterial>(null)
+  const stopTexture = useMemo(() => trainLightTexture('halo'), [])
+  const geometries = useMemo(() => {
+    const trainIds = new Set(route.trainIds)
+    const usedEdges = new Set<string>()
+    const pathPositions: number[] = []
+
+    for (const train of snapshot.trains) {
+      if (!trainIds.has(train.id)) continue
+      for (let index = 1; index < train.stops.length; index += 1) {
+        const firstIndex = train.stops[index - 1][0]
+        const secondIndex = train.stops[index][0]
+        const key =
+          firstIndex < secondIndex
+            ? `${firstIndex}:${secondIndex}`
+            : `${secondIndex}:${firstIndex}`
+        if (usedEdges.has(key)) continue
+        const first = projectedStops[firstIndex]
+        const second = projectedStops[secondIndex]
+        if (!first || !second) continue
+        usedEdges.add(key)
+        pathPositions.push(
+          first[0],
+          0.15,
+          first[2],
+          second[0],
+          0.15,
+          second[2],
+        )
+      }
+    }
+
+    const stopPositions = route.stopIndexes.flatMap((stopIndex) => {
+      const stop = projectedStops[stopIndex]
+      return stop ? [stop[0], 0.19, stop[2]] : []
+    })
+    const path = new THREE.BufferGeometry()
+    path.setAttribute(
+      'position',
+      new THREE.Float32BufferAttribute(pathPositions, 3),
+    )
+    const stops = new THREE.BufferGeometry()
+    stops.setAttribute(
+      'position',
+      new THREE.Float32BufferAttribute(stopPositions, 3),
+    )
+    return { path, stops }
+  }, [projectedStops, route.stopIndexes, route.trainIds, snapshot.trains])
+
+  useEffect(
+    () => () => {
+      geometries.path.dispose()
+      geometries.stops.dispose()
+    },
+    [geometries],
+  )
+
+  useEffect(() => () => stopTexture.dispose(), [stopTexture])
+
+  useFrame(({ clock }) => {
+    if (!glowMaterial.current) return
+    glowMaterial.current.opacity =
+      0.28 + (Math.sin(clock.elapsedTime * 2.4) * 0.5 + 0.5) * 0.24
+  })
+
+  const color = SERVICE_COLORS[route.category]
+  return (
+    <group>
+      <lineSegments geometry={geometries.path} renderOrder={5}>
+        <lineBasicMaterial
+          color={color}
+          transparent
+          opacity={0.98}
+          blending={THREE.AdditiveBlending}
+          depthWrite={false}
+          toneMapped={false}
+        />
+      </lineSegments>
+      <lineSegments geometry={geometries.path} renderOrder={4}>
+        <lineBasicMaterial
+          ref={glowMaterial}
+          color={color}
+          transparent
+          opacity={0.4}
+          blending={THREE.AdditiveBlending}
+          depthWrite={false}
+          toneMapped={false}
+        />
+      </lineSegments>
+      <points geometry={geometries.stops} renderOrder={6}>
+        <pointsMaterial
+          color={color}
+          map={stopTexture}
+          size={0.28}
+          transparent
+          opacity={0.96}
+          alphaTest={0.01}
+          blending={THREE.AdditiveBlending}
+          depthWrite={false}
+          sizeAttenuation
+          toneMapped={false}
+        />
+      </points>
+    </group>
+  )
+}
+
 function stationCentre(
   station: StationIndexEntry,
   projectedStops: readonly ProjectedStop[],
@@ -551,6 +669,7 @@ function StationLabels({
   stations,
   snapshot,
   projectedStops,
+  selectedRoute,
   selectedStation,
   selectedTrain,
   cameraFraming,
@@ -558,6 +677,7 @@ function StationLabels({
   readonly stations: readonly StationIndexEntry[]
   readonly snapshot: NetworkSnapshot
   readonly projectedStops: readonly ProjectedStop[]
+  readonly selectedRoute?: NetworkRouteIndexEntry
   readonly selectedStation?: StationIndexEntry
   readonly selectedTrain?: NetworkTrain
   readonly cameraFraming: MapCameraFraming
@@ -566,13 +686,15 @@ function StationLabels({
   const sprites = useRef<Array<THREE.Sprite | null>>([])
   const textures = useRef(new Map<string, StationLabelTexture>())
   const routeStationNames = useMemo(() => {
-    if (!selectedTrain) return new Set<string>()
+    const stopIndexes = selectedTrain
+      ? selectedTrain.stops.map(([stopIndex]) => stopIndex)
+      : (selectedRoute?.stopIndexes ?? [])
     return new Set(
-      selectedTrain.stops
-        .map(([stopIndex]) => snapshot.stops[stopIndex]?.[2])
+      stopIndexes
+        .map((stopIndex) => snapshot.stops[stopIndex]?.[2])
         .filter((name): name is string => Boolean(name)),
     )
-  }, [selectedTrain, snapshot.stops])
+  }, [selectedRoute, selectedTrain, snapshot.stops])
   const labels = useMemo(() => {
     const ranked = rankStationsForLabels(stations)
     const stationByName = new Map(ranked.map((station) => [station.name, station]))
@@ -630,7 +752,7 @@ function StationLabels({
     })
 
     labels.forEach((label, index) => {
-      if (selectedTrain && !label.emphasised) return
+      if ((selectedTrain || selectedRoute) && !label.emphasised) return
       if (!label.emphasised && (label.rank < 0 || label.rank >= rankLimit)) return
 
       projected.copy(label.position).project(camera)
@@ -798,6 +920,7 @@ function TrainLabels({
   snapshot,
   projectedStops,
   selectedTrain,
+  selectedRoute,
   selectedStation,
   selectedCategory,
   trainLabelMode,
@@ -815,6 +938,10 @@ function TrainLabels({
   const selectedStationTrainIds = useMemo(
     () => new Set(selectedStation?.trainIds ?? []),
     [selectedStation],
+  )
+  const selectedRouteTrainIds = useMemo(
+    () => new Set(selectedRoute?.trainIds ?? []),
+    [selectedRoute],
   )
 
   useEffect(() => {
@@ -863,6 +990,7 @@ function TrainLabels({
     for (const train of snapshot.trains) {
       const selected = train.id === selectedTrain?.id
       if (selectedTrain && !selected) continue
+      if (selectedRoute && !selectedRouteTrainIds.has(train.id)) continue
       if (!selected && selectedStation && !selectedStationTrainIds.has(train.id)) continue
       if (!selected && selectedCategory && train.category !== selectedCategory) continue
       if (
@@ -1097,6 +1225,7 @@ function TrainSwarm({
   snapshot,
   projectedStops,
   selectedTrain,
+  selectedRoute,
   isPlaying,
   time,
   onTime,
@@ -1113,6 +1242,10 @@ function TrainSwarm({
   const selectedStationTrainIds = useMemo(
     () => new Set(selectedStation?.trainIds ?? []),
     [selectedStation],
+  )
+  const selectedRouteTrainIds = useMemo(
+    () => new Set(selectedRoute?.trainIds ?? []),
+    [selectedRoute],
   )
   const lightTextures = useMemo(
     () => ({
@@ -1186,11 +1319,13 @@ function TrainSwarm({
         !selectedStation || selectedStationTrainIds.has(train.id)
       const categoryIncludesTrain =
         !selectedCategory || selectedCategory === train.category
+      const routeIncludesTrain =
+        !selectedRoute || selectedRouteTrainIds.has(train.id)
       const intensity = selectedTrain
         ? selectedTrain.id === train.id
           ? 1
           : 0.025
-        : !stationIncludesTrain || !categoryIncludesTrain
+        : !stationIncludesTrain || !categoryIncludesTrain || !routeIncludesTrain
           ? 0.025
           : 1
       mutableColors[offset] = color.r * intensity
@@ -1219,7 +1354,11 @@ function TrainSwarm({
           map={lightTextures.halo}
           size={0.9}
           transparent
-          opacity={selectedTrain || selectedCategory || selectedStation ? 0.08 : 0.18}
+          opacity={
+            selectedTrain || selectedRoute || selectedCategory || selectedStation
+              ? 0.08
+              : 0.18
+          }
           alphaTest={0.005}
           depthWrite={false}
           blending={THREE.AdditiveBlending}
@@ -1263,6 +1402,7 @@ function VehicleTrails({
   snapshot,
   projectedStops,
   selectedTrain,
+  selectedRoute,
   selectedCategory,
   selectedStation,
   isPlaying,
@@ -1276,6 +1416,10 @@ function VehicleTrails({
   const selectedStationTrainIds = useMemo(
     () => new Set(selectedStation?.trainIds ?? []),
     [selectedStation],
+  )
+  const selectedRouteTrainIds = useMemo(
+    () => new Set(selectedRoute?.trainIds ?? []),
+    [selectedRoute],
   )
   const palette = useMemo(
     () =>
@@ -1344,6 +1488,7 @@ function VehicleTrails({
 
     for (const train of snapshot.trains) {
       if (selectedTrain && train.id !== selectedTrain.id) continue
+      if (selectedRoute && !selectedRouteTrainIds.has(train.id)) continue
       if (selectedCategory && train.category !== selectedCategory) continue
       if (selectedStation && !selectedStationTrainIds.has(train.id)) continue
 
@@ -1612,6 +1757,7 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
           projection={projection}
           subdued={Boolean(
             props.selectedTrain ||
+              props.selectedRoute ||
               props.selectedStation ||
               props.selectedCategory ||
               hasContext
@@ -1630,7 +1776,10 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
         snapshot={props.snapshot}
         projectedStops={projectedStops}
         subdued={Boolean(
-          props.selectedTrain || props.selectedStation || props.selectedCategory
+          props.selectedTrain ||
+            props.selectedRoute ||
+            props.selectedStation ||
+            props.selectedCategory
         )}
       />
       {props.selectedTrain && (
@@ -1642,6 +1791,13 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
             projectedStops={projectedStops}
           />
         </>
+      )}
+      {props.selectedRoute && (
+        <SelectedLinePaths
+          route={props.selectedRoute}
+          snapshot={props.snapshot}
+          projectedStops={projectedStops}
+        />
       )}
       {props.selectedStation && (
         <SelectedStationRoutes
@@ -1658,6 +1814,7 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
         stations={props.stations}
         snapshot={props.snapshot}
         projectedStops={projectedStops}
+        selectedRoute={props.selectedRoute}
         selectedStation={props.selectedStation}
         selectedTrain={props.selectedTrain}
         cameraFraming={props.cameraFraming}

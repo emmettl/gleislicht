@@ -367,6 +367,18 @@ h1 {
   box-shadow: inset 3px 0 0 rgba(141, 250, 255, 0.62), 0 0 34px rgba(141, 250, 255, 0.14);
 }
 
+.route-card {
+  border-left-color: var(--service-accent, var(--pink));
+  background: linear-gradient(135deg, rgba(24, 10, 42, 0.88), rgba(7, 7, 22, 0.5));
+  box-shadow: inset 3px 0 0 var(--service-accent, var(--pink)),
+    0 0 38px color-mix(in srgb, var(--service-accent, var(--pink)) 18%, transparent);
+}
+
+.route-card .service {
+  color: var(--service-accent, var(--cyan));
+  text-shadow: 0 0 12px color-mix(in srgb, var(--service-accent, var(--cyan)) 62%, transparent);
+}
+
 .station-card-mark {
   color: var(--pink);
   font-size: 1.15rem;
@@ -833,12 +845,23 @@ h1 {
   background: rgba(26, 21, 66, 0.24);
 }
 
+.search-results > .route-result {
+  background: rgba(32, 17, 57, 0.36);
+}
+
 .station-result-mark {
   align-self: center;
   color: var(--pink);
   font-size: 0.82rem;
   line-height: 1;
   text-shadow: 0 0 9px var(--pink);
+}
+
+.route-result-mark {
+  align-self: center;
+  font-size: 0.88rem;
+  line-height: 1;
+  text-shadow: 0 0 11px currentColor;
 }
 
 .search-results p {
