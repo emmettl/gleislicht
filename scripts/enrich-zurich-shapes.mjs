@@ -1,6 +1,6 @@
 import { spawn } from 'node:child_process'
 import { readFile, rename, writeFile } from 'node:fs/promises'
-import { basename, resolve } from 'node:path'
+import { basename, dirname, resolve } from 'node:path'
 import { createInterface } from 'node:readline'
 import { parseCsvLine, transportModeForRouteType } from './ingest-gtfs.mjs'
 
@@ -391,7 +391,8 @@ async function main() {
   if (process.argv.includes('--help')) {
     console.log(
       'Usage: node scripts/enrich-zurich-shapes.mjs --archive /path/2026_google_transit.zip ' +
-        '[--snapshot public/data/zurich-city-morning.json] [--feed-version 2026_google_transit]',
+        '[--snapshot public/data/zurich-city-morning.json] [--feed-version 2026_google_transit]. ' +
+        'The snapshot may also be a chunked 24-hour manifest.',
     )
     return
   }
@@ -399,7 +400,29 @@ async function main() {
   const archive = resolve(requiredArgument('archive'))
   const feedVersion = argument('feed-version', basename(archive, '.zip'))
   const snapshotPath = resolve(argument('snapshot', DEFAULT_SNAPSHOT))
-  const snapshot = JSON.parse(await readFile(snapshotPath, 'utf8'))
+  const document = JSON.parse(await readFile(snapshotPath, 'utf8'))
+  const isDayManifest =
+    Array.isArray(document.chunks) && !Array.isArray(document.trains)
+  const chunkRecords = isDayManifest
+    ? await Promise.all(
+        document.chunks.map(async (descriptor) => ({
+          path: resolve(dirname(snapshotPath), descriptor.path),
+          payload: JSON.parse(
+            await readFile(resolve(dirname(snapshotPath), descriptor.path), 'utf8'),
+          ),
+        })),
+      )
+    : []
+  const uniqueTrains = isDayManifest
+    ? [
+        ...new Map(
+          chunkRecords
+            .flatMap(({ payload }) => payload.trains)
+            .map((train) => [train.id, train]),
+        ).values(),
+      ]
+    : document.trains
+  const snapshot = isDayManifest ? { ...document, trains: uniqueTrains } : document
   const serviceDate = snapshot.metadata.serviceDate
   const { targets, totalSegments: targetOccurrences } = targetSegments(snapshot)
   if (!targets.size) {
@@ -420,30 +443,51 @@ async function main() {
     throw new Error(`Only ${(coverage * 100).toFixed(1)}% of tram/bus segments aligned; refusing a weak join.`)
   }
 
-  const result = {
-    ...snapshot,
-    metadata: {
-      ...snapshot.metadata,
-      model: 'scheduled interpolation with ZVV shape-aware tram and bus paths',
-      note: 'Rail uses straight stop segments; Zürich tram and bus movement follows matched official ZVV shapes.',
-      geometry: {
-        publisher: 'Zürcher Verkehrsverbund (ZVV)',
-        feedVersion,
-        sourceUrl: SOURCE_URL,
-        model: 'line and directed stop-pair alignment using shared Swiss stop identifiers',
-        matchedSegments: geometry.matchedSegments,
-        totalSegments: geometry.totalSegments,
-      },
+  const metadata = {
+    ...snapshot.metadata,
+    model: 'scheduled interpolation with ZVV shape-aware tram and bus paths',
+    note: 'Rail uses straight stop segments; Zürich tram and bus movement follows matched official ZVV shapes.',
+    geometry: {
+      publisher: 'Zürcher Verkehrsverbund (ZVV)',
+      feedVersion,
+      sourceUrl: SOURCE_URL,
+      model: 'line and directed stop-pair alignment using shared Swiss stop identifiers',
+      matchedSegments: geometry.matchedSegments,
+      totalSegments: geometry.totalSegments,
     },
+  }
+  const result = {
+    ...document,
+    metadata,
     paths: geometry.paths,
     edgePaths: geometry.edgePaths,
-    trains: geometry.trains,
+    ...(isDayManifest ? {} : { trains: geometry.trains }),
   }
-  const temporaryPath = `${snapshotPath}.tmp`
-  await writeFile(temporaryPath, JSON.stringify(result))
-  await rename(temporaryPath, snapshotPath)
+  const enrichedTrains = new Map(geometry.trains.map((train) => [train.id, train]))
+  const pendingWrites = chunkRecords.map(({ path, payload }) => ({
+    path,
+    temporaryPath: `${path}.tmp`,
+    value: {
+      ...payload,
+      trains: payload.trains.map((train) => enrichedTrains.get(train.id) ?? train),
+    },
+  }))
+  const manifestWrite = {
+    path: snapshotPath,
+    temporaryPath: `${snapshotPath}.tmp`,
+    value: result,
+  }
+  await Promise.all(
+    [...pendingWrites, manifestWrite].map(({ temporaryPath, value }) =>
+      writeFile(temporaryPath, JSON.stringify(value)),
+    ),
+  )
+  await Promise.all(
+    pendingWrites.map(({ temporaryPath, path }) => rename(temporaryPath, path)),
+  )
+  await rename(manifestWrite.temporaryPath, manifestWrite.path)
   console.log(
-    `Wrote ${geometry.paths.length} deduplicated paths with ${(coverage * 100).toFixed(1)}% segment coverage → ${snapshotPath}`,
+    `Wrote ${geometry.paths.length} deduplicated paths with ${(coverage * 100).toFixed(1)}% segment coverage${isDayManifest ? ` across ${chunkRecords.length} chunks` : ''} → ${snapshotPath}`,
   )
 }
 

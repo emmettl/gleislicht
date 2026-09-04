@@ -35,6 +35,8 @@ export function networkSnapshotForDayChunk(
     bounds: manifest.bounds,
     stops: manifest.stops,
     edges: manifest.edges,
+    paths: manifest.paths,
+    edgePaths: manifest.edgePaths,
     trains: chunk?.trains ?? [],
   }
 }

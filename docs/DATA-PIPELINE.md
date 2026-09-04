@@ -53,6 +53,20 @@ npm run data:zurich:shapes -- \
 
 The enrichment keeps the national timetable as the source of service truth. It joins ZVV geometry by service category, published line name and directed Swiss `sloid` stop pair, normalising platform suffixes where one feed uses the parent stop. The build refuses to write if fewer than 80% of tram and bus segment occurrences align. The current artifact aligns 36,065 of 36,578 occurrences (98.6%), deduplicates the result into 1,843 paths, and records both sources and the measured coverage in its metadata.
 
+The Zürich side of the rural–urban contrast uses a separate tram-only civil day:
+
+```bash
+npm run data:zurich:day -- \
+  --archive /path/to/GTFS_FP2026_YYYYMMDD.zip \
+  --date 2026-09-04
+
+npm run data:zurich:day:shapes -- \
+  --archive /path/to/2026_google_transit.zip \
+  --feed-version 2026_google_transit
+```
+
+This writes a 24-hour topology manifest and eight three-hour movement chunks. The shape enrichment deduplicates trips that overlap chunk boundaries, resolves the official ZVV path once per directed stop pair, stores those shared paths in the manifest, then adds only compact path references to each chunk. The committed study contains 5,329 tram trips, 628 stops and 735 weighted edges. It aligns 95,814 of 97,900 segment occurrences (97.9%); two lines not present under the same designation in the annual ZVV feed retain honest straight stop interpolation. The manifest is about 42 KB compressed and the busiest movement block about 112 KB compressed.
+
 The wider ZVV study uses the regional feed's 5,880-stop footprint as its measured extent and as an admission set for local services. This prevents a rectangular crop from accidentally importing neighbouring non-ZVV bus networks while retaining national rail as the regional spine:
 
 ```bash

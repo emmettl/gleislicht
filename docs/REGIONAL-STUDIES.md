@@ -33,12 +33,15 @@ data/
   zurich-city-morning.json
   zvv-region-morning.json
   geneva-tpg-morning.json
+  zurich-tram-day-manifest.json
+  zurich-tram-day-chunks/
+    <three-hour-window>.json
   kiental-postbus-day-manifest.json
   kiental-postbus-day-chunks/
     <three-hour-window>.json
 ```
 
-Only the selected artifact is fetched. The full-day Kiental study already uses a small topology manifest and three-hour movement chunks, so its eventual contrast mode can follow the clock without imposing a large first download. A later shared study catalogue can expose bounds, modes, time windows, source versions and byte sizes before any study loads.
+Only the selected artifact is fetched. The full-day Kiental and Zürich tram studies use topology manifests and three-hour movement chunks, so the contrast mode can follow one clock without imposing either dataset on the initial page. Zürich's shared, shape-aware topology compresses to about 42 KB; its busiest three-hour movement block is about 112 KB compressed. A later shared study catalogue can expose bounds, modes, time windows, source versions and byte sizes before any study loads.
 
 Zürich's separate ZVV/VBZ GTFS now supplies shape geometry for the city study. It covers ZVV tram and bus services, includes `shapes.txt`, is published weekly, and is licensed CC0. The national GTFS remains the timetable baseline; the regional feed is joined by published line and directed Swiss stop identifier after service-date validation. The committed artifact matches 98.6% of tram and bus segment occurrences and falls back to direct stop interpolation for the remainder.
 
@@ -59,4 +62,5 @@ Genève uses the same national timetable baseline and the official TPG line laye
 3. ✓ ZVV overview with zoom-dependent aggregation and regional line hierarchy.
 4. ✓ Genève/TPG as the second regional system, including French labels and cross-border edges.
 5. ✓ Select Kiental–Griesalp as the measured rural PostBus study.
-6. Build the synchronized rural–urban contrast mode.
+6. ✓ Build shape-aware, progressively loaded 24-hour datasets for both sides of the contrast.
+7. Build the synchronized rural–urban contrast interface.

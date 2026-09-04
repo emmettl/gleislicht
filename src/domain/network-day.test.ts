@@ -26,6 +26,8 @@ const manifest: NetworkDayManifest = {
   },
   stops: [],
   edges: [],
+  paths: [[[8.5, 47.3], [8.6, 47.4]]],
+  edgePaths: [0],
   tripCount: 100,
   chunks: [
     { id: '00-03', windowStart: 0, windowEnd: 10_800, path: '00.json', tripCount: 20 },
@@ -53,5 +55,7 @@ describe('network day chunks', () => {
     const snapshot = networkSnapshotForDayChunk(manifest)
     expect(snapshot.metadata.windowEnd).toBe(86_400)
     expect(snapshot.trains).toEqual([])
+    expect(snapshot.paths).toBe(manifest.paths)
+    expect(snapshot.edgePaths).toBe(manifest.edgePaths)
   })
 })

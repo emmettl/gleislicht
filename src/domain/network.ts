@@ -113,6 +113,8 @@ export interface NetworkDayManifest {
   readonly bounds: NetworkSnapshot['bounds']
   readonly stops: NetworkSnapshot['stops']
   readonly edges: NetworkSnapshot['edges']
+  readonly paths?: NetworkSnapshot['paths']
+  readonly edgePaths?: NetworkSnapshot['edgePaths']
   readonly tripCount: number
   readonly chunks: readonly NetworkDayChunkDescriptor[]
 }

@@ -17,6 +17,8 @@
     "data:day": "node scripts/ingest-gtfs.mjs --window-start 00:00 --window-end 24:00 --output public/data/swiss-rail-day-manifest.json --hub-output none --chunk-hours 3",
     "data:zurich": "node scripts/ingest-gtfs.mjs --modes all --bounds 8.45,47.32,8.63,47.44 --output public/data/zurich-city-morning.json --hub-output none",
     "data:zurich:shapes": "node scripts/enrich-zurich-shapes.mjs",
+    "data:zurich:day": "node scripts/ingest-gtfs.mjs --window-start 00:00 --window-end 24:00 --focus 12:00 --modes tram --bounds 8.45,47.32,8.63,47.44 --output public/data/zurich-tram-day-manifest.json --hub-output none --chunk-hours 3",
+    "data:zurich:day:shapes": "node scripts/enrich-zurich-shapes.mjs --snapshot public/data/zurich-tram-day-manifest.json",
     "data:zvv": "node scripts/ingest-gtfs.mjs --modes all --bounds 8.32,47.15,9.02,47.72 --output public/data/zvv-region-morning.json --hub-output none",
     "data:zvv:shapes": "node scripts/enrich-zurich-shapes.mjs --snapshot public/data/zvv-region-morning.json",
     "data:geneva": "node scripts/ingest-gtfs.mjs --modes all --bounds 5.90,46.05,6.35,46.38 --local-agencies 881 --output public/data/geneva-tpg-morning.json --hub-output none",
