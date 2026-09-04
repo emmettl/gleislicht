@@ -35,6 +35,18 @@ npm run data:day -- \
 
 This writes a compact `public/data/swiss-rail-day-manifest.json` containing the shared topology and eight three-hour movement files under `public/data/swiss-rail-day-chunks/`. The browser requests none of them during the initial morning view. Selecting **24H** loads the manifest and the current three-hour block first, then prefetches the neighbouring blocks for seamless playback. Trips crossing a boundary are present in both adjoining blocks. The renderer also uses a coarse time index so each animation frame considers only services near the current time.
 
+### Reviewed national refreshes
+
+The `Refresh national timetable data` GitHub Actions workflow checks the official current-resource permalink twice weekly and can also be run manually for a chosen service date. It regenerates the morning, full-day and hub studies together in an isolated runner, then runs `npm run data:validate`, the unit tests, typecheck, production build and transfer budget before opening or updating a review pull request. Publishing therefore changes the national artifact set only through a validated commit; the automation never overwrites the independently shape-enriched regional studies.
+
+Run the same structural checks locally after any manual regeneration:
+
+```bash
+npm run data:validate
+```
+
+The validator requires a shared feed version and service date, credible minimum train/stop/edge/call counts, all four hub collections, and a complete set of manifest-matched day chunks. These are deliberately conservative integrity checks rather than a claim that unchanged counts prove timetable correctness.
+
 The same streaming ingester can create a separate multimodal regional artifact. The committed Zürich city study is regenerated from the same national archive with:
 
 ```bash

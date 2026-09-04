@@ -1,0 +1,100 @@
+name: Refresh national timetable data
+
+on:
+  schedule:
+    - cron: '17 5 * * 3,6'
+  workflow_dispatch:
+    inputs:
+      service_date:
+        description: Service day to publish (YYYY-MM-DD)
+        required: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: refresh-national-data
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    env:
+      BRANCH_NAME: automation/refresh-national-data
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Resolve service date and timetable year
+        id: edition
+        env:
+          REQUESTED_DATE: ${{ inputs.service_date }}
+        run: |
+          service_date="${REQUESTED_DATE:-$(date -u +%F)}"
+          calendar_year="${service_date%%-*}"
+          month_day="${service_date:5:2}${service_date:8:2}"
+          timetable_year="$calendar_year"
+          if [[ "$month_day" > "1212" ]]; then
+            timetable_year="$((calendar_year + 1))"
+          fi
+          echo "service_date=$service_date" >> "$GITHUB_OUTPUT"
+          echo "timetable_year=$timetable_year" >> "$GITHUB_OUTPUT"
+
+      - name: Download current official GTFS archive
+        run: |
+          curl --fail --location --retry 3 \
+            "https://data.opentransportdata.swiss/en/dataset/timetable-${{ steps.edition.outputs.timetable_year }}-gtfs2020/permalink" \
+            --output "$RUNNER_TEMP/swiss-gtfs.zip"
+          unzip -t "$RUNNER_TEMP/swiss-gtfs.zip" >/dev/null
+
+      - name: Regenerate national studies
+        run: |
+          npm run data:gtfs -- \
+            --archive "$RUNNER_TEMP/swiss-gtfs.zip" \
+            --date "${{ steps.edition.outputs.service_date }}"
+          npm run data:day -- \
+            --archive "$RUNNER_TEMP/swiss-gtfs.zip" \
+            --date "${{ steps.edition.outputs.service_date }}"
+
+      - name: Validate generated artifacts and application
+        run: |
+          npm run data:validate
+          npm test
+          npm run typecheck
+          npm run build
+          npm run check:bundle
+
+      - name: Open or update review pull request
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -C "$BRANCH_NAME"
+          git add public/data/swiss-rail-morning.json \
+            public/data/swiss-hub-day.json \
+            public/data/swiss-rail-day-manifest.json \
+            public/data/swiss-rail-day-chunks
+          if git diff --cached --quiet; then
+            echo "The current validated artifact already matches the official feed."
+            exit 0
+          fi
+          feed_version="$(node -p "JSON.parse(require('fs').readFileSync('public/data/swiss-rail-morning.json')).metadata.feedVersion")"
+          git commit -m "Refresh national GTFS ${feed_version}"
+          git push --force origin "HEAD:$BRANCH_NAME"
+          if ! gh pr view "$BRANCH_NAME" >/dev/null 2>&1; then
+            gh pr create \
+              --base main \
+              --head "$BRANCH_NAME" \
+              --title "Refresh national GTFS ${feed_version}" \
+              --body "Automated, validated national timetable refresh for service day ${{ steps.edition.outputs.service_date }}. Regional shape-enriched studies are intentionally unchanged."
+          fi

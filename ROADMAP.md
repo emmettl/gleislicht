@@ -86,7 +86,7 @@ The national GTFS-RT feed supplies trip updates and alerts, not vehicle position
 
 ## 6 — Publish and sustain
 
-- Automated source refreshes with validation and atomic artifact versions.
+- [x] Add reviewed, automated national source refreshes with validation and atomic artifact versions.
 - Regression fixtures for DST changes, midnight rollover, missing shapes and feed mismatch.
 - Performance telemetry without personal tracking.
 - [x] Add an accessible non-WebGL fallback.

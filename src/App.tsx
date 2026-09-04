@@ -140,6 +140,16 @@ function formatTimelineBoundary(value: number): string {
   return value === 24 * 3600 ? '24:00' : formatServiceTime(value)
 }
 
+function formatStudyDate(value: string, locale: string): string {
+  return new Intl.DateTimeFormat(locale, {
+    weekday: 'long',
+    day: '2-digit',
+    month: 'long',
+    year: 'numeric',
+    timeZone: 'UTC',
+  }).format(new Date(`${value}T12:00:00Z`))
+}
+
 function supportsWebGL(): boolean {
   try {
     const canvas = document.createElement('canvas')
@@ -1110,7 +1120,14 @@ export function App() {
               <span className="pulse" />
               <span>{text.motionStudy}</span>
               <span className="coordinate">
-                {isTimetable ? text.studyDate : '47.194° N · 9.312° E'}
+                {isTimetable
+                  ? timeline?.serviceDate
+                    ? formatStudyDate(
+                        timeline.serviceDate,
+                        LANGUAGE_LOCALES[language],
+                      )
+                    : text.studyDate
+                  : '47.194° N · 9.312° E'}
               </span>
             </div>
             <nav className="language-picker" aria-label={text.languagePicker}>

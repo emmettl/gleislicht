@@ -50,7 +50,7 @@ Open **Takt hubs** to move between Zürich HB, Bern, Basel SBB and Genève acros
 
 Sound is optional and off by default. Turning on the adaptive score lazily loads the Driftbox synthesis engine and plays one of three Gleislicht arrangements: **Night Grid** for the national map, **Taktwerk** for station pulses, and **Valley Signal** for corridor or train-follow views. Mode changes crossfade between two live transports. See [docs/SOUNDTRACK.md](./docs/SOUNDTRACK.md) for the musical and technical design.
 
-The committed GTFS and geography snapshots are regenerated with `npm run data:gtfs`, `npm run data:day`, `npm run data:zvv`, `npm run data:zvv:shapes`, `npm run data:geneva`, `npm run data:geneva:shapes`, `npm run data:postbus:kiental`, `npm run data:zurich`, `npm run data:zurich:shapes`, `npm run data:zurich:day`, `npm run data:zurich:day:shapes`, `npm run data:boundary` and `npm run data:lakes`; see [docs/DATA-PIPELINE.md](./docs/DATA-PIPELINE.md).
+The committed GTFS and geography snapshots are regenerated with `npm run data:gtfs`, `npm run data:day`, `npm run data:zvv`, `npm run data:zvv:shapes`, `npm run data:geneva`, `npm run data:geneva:shapes`, `npm run data:postbus:kiental`, `npm run data:zurich`, `npm run data:zurich:shapes`, `npm run data:zurich:day`, `npm run data:zurich:day:shapes`, `npm run data:boundary` and `npm run data:lakes`. `npm run data:validate` checks the shared national artifact set, and a twice-weekly workflow proposes validated national refreshes as review pull requests; see [docs/DATA-PIPELINE.md](./docs/DATA-PIPELINE.md).
 The eventual public deployment is GitHub Pages; see [docs/PUBLISHING.md](./docs/PUBLISHING.md).
 
 ## Technical shape
