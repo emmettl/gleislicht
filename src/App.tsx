@@ -39,6 +39,7 @@ import {
   nextSearchResultIndex,
   type SearchNavigationKey,
 } from './search-navigation.ts'
+import { foldSearchText } from './search-text.ts'
 
 type View = 'network' | 'hub' | 'journey'
 type SoundtrackState = 'off' | 'starting' | 'on' | 'error'
@@ -81,10 +82,9 @@ function matchesTrain(
   const stopNames = train.stops.map(
     ([stopIndex]) => network.stops[stopIndex]?.[2] ?? '',
   )
-  return [train.route, train.shortName, train.headsign, ...stopNames]
-    .join(' ')
-    .toLocaleLowerCase('de-CH')
-    .includes(query)
+  return foldSearchText(
+    [train.route, train.shortName, train.headsign, ...stopNames].join(' '),
+  ).includes(query)
 }
 
 export function App() {
@@ -176,7 +176,7 @@ export function App() {
   const selectedTo =
     network && selectedPosition ? network.stops[selectedPosition.toStop]?.[2] : undefined
   const searchResults = useMemo(() => {
-    const query = searchQuery.trim().toLocaleLowerCase('de-CH')
+    const query = foldSearchText(searchQuery)
     if (!network || query.length < 1) return []
     return network.trains
       .filter((train) => matchesTrain(train, query, network))
@@ -192,13 +192,13 @@ export function App() {
       .slice(0, 8)
   }, [network, networkTime, searchQuery])
   const stationSearchResults = useMemo(() => {
-    const query = searchQuery.trim().toLocaleLowerCase('de-CH')
+    const query = foldSearchText(searchQuery)
     if (!query) return []
     return stationIndex
-      .filter((station) => station.name.toLocaleLowerCase('de-CH').includes(query))
+      .filter((station) => foldSearchText(station.name).includes(query))
       .sort((first, second) => {
-        const firstName = first.name.toLocaleLowerCase('de-CH')
-        const secondName = second.name.toLocaleLowerCase('de-CH')
+        const firstName = foldSearchText(first.name)
+        const secondName = foldSearchText(second.name)
         return (
           Number(secondName.startsWith(query)) - Number(firstName.startsWith(query)) ||
           second.trainIds.length - first.trainIds.length ||
