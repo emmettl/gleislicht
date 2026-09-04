@@ -15,12 +15,13 @@ This is an iterative art-and-data project. Each stage should end in a coherent v
 
 ## 1 — Scheduled Switzerland
 
-- Add a repeatable ingestion script for the current Swiss GTFS Static archive.
-- Parse agencies, routes, trips, stop times, stops, calendars and shapes offline.
-- Resolve service-day rules, trips crossing midnight and stable source/version metadata.
-- Produce compact spatial and time-indexed artifacts instead of shipping the GTFS ZIP.
-- Render a representative timetable day in a national orthographic view.
-- Add a deterministic simulation clock and interpolation along shape distance.
+- [x] Add a repeatable, streaming ingestion script for the current Swiss GTFS Static archive.
+- [x] Parse rail routes, trips, stop times, stops and service calendars offline.
+- [x] Resolve service-day rules, exceptions, after-midnight times and source/version metadata.
+- [x] Produce a compact morning artifact instead of shipping the 232 MB GTFS ZIP.
+- [x] Render the Friday morning window in a national view with a deterministic simulation clock.
+- [ ] Replace straight stop-to-stop segments with matched rail geometry; the source feed has no `shapes.txt`.
+- [ ] Extend from the two-hour study to a compact full service day.
 
 **Exit:** thousands of scheduled movements form a recognisable, scrubbable national rail network.
 

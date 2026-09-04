@@ -3,7 +3,6 @@ import { useEffect, useMemo, useRef } from 'react'
 import * as THREE from 'three'
 
 interface GleislichtSceneProps {
-  readonly cameraMode: 'follow' | 'overview'
   readonly isPlaying: boolean
   readonly progress: number
   readonly onProgress: (progress: number) => void
@@ -132,7 +131,6 @@ function Train() {
 }
 
 function MovingWorld({
-  cameraMode,
   isPlaying,
   progress,
   onProgress,
@@ -166,16 +164,11 @@ function MovingWorld({
       train.current.lookAt(routePosition.clone().add(routeTangent))
     }
 
-    if (cameraMode === 'follow') {
-      cameraPosition
-        .copy(routePosition)
-        .addScaledVector(routeTangent, -6.6)
-        .add(new THREE.Vector3(0, 2.8, 0))
-      cameraTarget.copy(routePosition).addScaledVector(routeTangent, 5)
-    } else {
-      cameraPosition.set(17, 23, 36)
-      cameraTarget.set(0, 0, -5)
-    }
+    cameraPosition
+      .copy(routePosition)
+      .addScaledVector(routeTangent, -6.6)
+      .add(new THREE.Vector3(0, 2.8, 0))
+    cameraTarget.copy(routePosition).addScaledVector(routeTangent, 5)
 
     camera.position.lerp(cameraPosition, 1 - Math.exp(-delta * 2.7))
     camera.lookAt(cameraTarget)
@@ -215,4 +208,3 @@ export function GleislichtScene(props: GleislichtSceneProps) {
     </Canvas>
   )
 }
-
