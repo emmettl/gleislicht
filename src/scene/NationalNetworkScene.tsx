@@ -20,9 +20,9 @@ import {
 } from './station-labels.ts'
 import {
   categoryIsVisibleInAutoMode,
+  compareTrainLabelCandidates,
   MAX_TRAIN_LABELS,
   trainLabelBudget,
-  trainLabelPriority,
   type TrainLabelMode,
 } from './train-labels.ts'
 import { applyMapZoom } from './map-camera.ts'
@@ -619,6 +619,7 @@ function TrainLabels({
   const { camera, size } = useThree()
   const sprites = useRef<Array<THREE.Sprite | null>>([])
   const textures = useRef(new Map<string, TrainLabelTexture>())
+  const retainedTrainIds = useRef(new Set<string>())
   const localTime = useRef(time)
   const selectedStationTrainIds = useMemo(
     () => new Set(selectedStation?.trainIds ?? []),
@@ -653,7 +654,10 @@ function TrainLabels({
         ? 0
         : 1
       : trainLabelBudget(camera.position.y, trainLabelMode)
-    if (!labelBudget) return
+    if (!labelBudget) {
+      retainedTrainIds.current.clear()
+      return
+    }
 
     const projected = new THREE.Vector3()
     const candidates: Array<{
@@ -661,8 +665,8 @@ function TrainLabels({
       position: ProjectedStop
       x: number
       y: number
-      distance: number
       selected: boolean
+      retained: boolean
     }> = []
 
     for (const train of snapshot.trains) {
@@ -697,21 +701,31 @@ function TrainLabels({
         position,
         x: (projected.x * 0.5 + 0.5) * size.width,
         y: (-projected.y * 0.5 + 0.5) * size.height,
-        distance: camera.position.distanceTo(projected.set(position[0], 0.76, position[2])),
         selected,
+        retained: retainedTrainIds.current.has(train.id),
       })
     }
 
     candidates.sort(
       (first, second) =>
         Number(second.selected) - Number(first.selected) ||
-        trainLabelPriority(first.train.category) -
-          trainLabelPriority(second.train.category) ||
-        first.distance - second.distance,
+        compareTrainLabelCandidates(
+          {
+            id: first.train.id,
+            category: first.train.category,
+            retained: first.retained,
+          },
+          {
+            id: second.train.id,
+            category: second.train.category,
+            retained: second.retained,
+          },
+        ),
     )
 
     const occupied: Array<{ left: number; right: number; top: number; bottom: number }> = []
     const visibleTextureKeys = new Set<string>()
+    const nextRetainedTrainIds = new Set<string>()
     const worldHeight = 0.62 * THREE.MathUtils.clamp(camera.position.y / 37, 0.5, 1)
     let visible = 0
 
@@ -749,6 +763,7 @@ function TrainLabels({
         textures.current.set(textureKey, textureEntry)
       }
       visibleTextureKeys.add(textureKey)
+      nextRetainedTrainIds.add(candidate.train.id)
 
       sprite.visible = true
       sprite.position.set(candidate.position[0], 0.76, candidate.position[2])
@@ -762,6 +777,8 @@ function TrainLabels({
       occupied.push(box)
       visible += 1
     }
+
+    retainedTrainIds.current = nextRetainedTrainIds
 
     if (textures.current.size > 180) {
       for (const [key, entry] of textures.current) {

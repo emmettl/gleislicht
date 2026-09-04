@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import {
   categoryIsVisibleInAutoMode,
+  compareTrainLabelCandidates,
   trainLabelBudget,
   trainLabelPriority,
 } from './train-labels.ts'
@@ -26,5 +27,19 @@ describe('train labels', () => {
     expect(trainLabelPriority('intercity')).toBeLessThan(
       trainLabelPriority('regional'),
     )
+  })
+
+  it('retains visible labels before choosing deterministic replacements', () => {
+    const candidates = [
+      { id: 'train-20', category: 's-bahn', retained: false },
+      { id: 'train-10', category: 's-bahn', retained: false },
+      { id: 'train-30', category: 's-bahn', retained: true },
+    ] as const
+
+    expect([...candidates].sort(compareTrainLabelCandidates).map(({ id }) => id)).toEqual([
+      'train-30',
+      'train-10',
+      'train-20',
+    ])
   })
 })

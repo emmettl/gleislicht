@@ -39,6 +39,23 @@ export function trainLabelPriority(category: ServiceCategory): number {
   return CATEGORY_PRIORITY[category]
 }
 
+export interface TrainLabelCandidatePriority {
+  readonly id: string
+  readonly category: ServiceCategory
+  readonly retained: boolean
+}
+
+export function compareTrainLabelCandidates(
+  first: TrainLabelCandidatePriority,
+  second: TrainLabelCandidatePriority,
+): number {
+  return (
+    trainLabelPriority(first.category) - trainLabelPriority(second.category) ||
+    Number(second.retained) - Number(first.retained) ||
+    first.id.localeCompare(second.id, 'de-CH', { numeric: true })
+  )
+}
+
 export function categoryIsVisibleInAutoMode(
   category: ServiceCategory,
   cameraHeight: number,
