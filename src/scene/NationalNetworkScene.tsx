@@ -358,7 +358,7 @@ function stationLabelTexture(name: string): {
 } {
   const canvas = document.createElement('canvas')
   const measuringContext = canvas.getContext('2d')
-  const font = '500 30px "DM Mono", monospace'
+  const font = '500 30px "Helvetica Neue", Helvetica, Arial, sans-serif'
   measuringContext?.save()
   if (measuringContext) measuringContext.font = font
   const measuredWidth = measuringContext?.measureText(name).width ?? name.length * 19
