@@ -268,6 +268,13 @@ h1 {
   transform: none;
 }
 
+.mobile-language-picker,
+.mobile-study-picker,
+.mobile-map-tools,
+.mobile-transport-actions {
+  display: none;
+}
+
 .soundtrack-control {
   width: 210px;
   font-family: 'DM Mono', ui-monospace, monospace;
@@ -1756,5 +1763,362 @@ footer {
 
   button {
     transition: none;
+  }
+}
+
+/* Compact control deck: on phones the map is the interface, not a backdrop. */
+@media (max-width: 700px) {
+  .masthead {
+    padding: calc(12px + env(safe-area-inset-top))
+      calc(12px + env(safe-area-inset-right)) 0
+      calc(12px + env(safe-area-inset-left));
+  }
+
+  .eyebrow {
+    margin-bottom: 2px;
+    font-size: 0.58rem;
+  }
+
+  h1 {
+    max-width: 172px;
+    font-size: clamp(1.2rem, 6vw, 1.52rem);
+    line-height: 0.94;
+  }
+
+  .masthead-meta {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .masthead-topline {
+    gap: 0;
+  }
+
+  .language-picker {
+    display: none;
+  }
+
+  .mobile-language-picker {
+    display: block;
+  }
+
+  .mobile-language-picker select,
+  .mobile-study-picker select,
+  .mobile-map-tools select,
+  .mobile-speed-select select {
+    min-height: 42px;
+    border: 1px solid rgba(193, 204, 255, 0.24);
+    border-radius: 0;
+    outline: 0;
+    background: rgba(7, 7, 22, 0.82);
+    color: var(--ink);
+    font-family: 'DM Mono', ui-monospace, monospace;
+    font-size: 0.66rem;
+    color-scheme: dark;
+  }
+
+  .mobile-language-picker select {
+    width: 54px;
+    padding: 0 6px;
+  }
+
+  .soundtrack-control {
+    width: 44px;
+  }
+
+  .soundtrack-control > button {
+    width: 44px;
+    min-height: 42px;
+    justify-content: center;
+    padding: 0;
+  }
+
+  .soundtrack-control .sound-copy,
+  .soundtrack-control .sound-state,
+  .soundtrack-control .volume-control {
+    display: none;
+  }
+
+  .soundtrack-control .sound-bars {
+    width: 18px;
+    height: 17px;
+  }
+
+  .train-search {
+    top: calc(80px + env(safe-area-inset-top));
+    right: calc(12px + env(safe-area-inset-right));
+    left: calc(12px + env(safe-area-inset-left));
+  }
+
+  .train-search form,
+  .train-search input[type='search'] {
+    min-height: 44px;
+  }
+
+  .train-search input[type='search'] {
+    padding: 0 8px;
+    font-size: 0.67rem;
+  }
+
+  .search-mark {
+    width: 12px;
+    height: 12px;
+    margin-left: 11px;
+  }
+
+  .network-study-picker {
+    display: none;
+  }
+
+  .mobile-study-picker {
+    display: block;
+    flex: 0 0 auto;
+    border-left: 1px solid rgba(193, 204, 255, 0.14);
+  }
+
+  .mobile-study-picker select {
+    width: 78px;
+    border: 0;
+    background: rgba(18, 16, 48, 0.7);
+    text-align: center;
+  }
+
+  .clear-search {
+    min-width: 40px;
+    min-height: 42px;
+  }
+
+  .network-card {
+    top: calc(134px + env(safe-area-inset-top));
+    left: calc(12px + env(safe-area-inset-left));
+    width: auto;
+    max-width: 190px;
+    padding: 7px 10px 8px;
+    background: rgba(7, 7, 22, 0.72);
+    clip-path: none;
+  }
+
+  .network-card .network-count-row {
+    gap: 6px;
+  }
+
+  .network-card .network-count-row strong {
+    font-size: 1.2rem;
+  }
+
+  .network-card .network-count-row span {
+    font-size: 0.58rem;
+  }
+
+  .network-card .between,
+  .network-card .metric-grid {
+    display: none;
+  }
+
+  .contrast-card {
+    max-width: 210px;
+  }
+
+  .contrast-card .contrast-card-title {
+    margin: 0;
+    font-size: 0.56rem;
+  }
+
+  .map-navigation,
+  .service-legend,
+  .north-marker {
+    display: none;
+  }
+
+  .mobile-map-tools {
+    position: absolute;
+    top: calc(134px + env(safe-area-inset-top));
+    right: calc(12px + env(safe-area-inset-right));
+    display: block;
+    z-index: 7;
+  }
+
+  .mobile-map-tools details,
+  .mobile-more-controls {
+    position: relative;
+  }
+
+  .mobile-map-tools summary,
+  .mobile-more-controls summary {
+    display: flex;
+    width: 44px;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(193, 204, 255, 0.25);
+    background: rgba(7, 7, 22, 0.82);
+    color: var(--cyan);
+    font-family: 'DM Mono', ui-monospace, monospace;
+    cursor: pointer;
+    list-style: none;
+    backdrop-filter: blur(14px);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .mobile-map-tools summary::-webkit-details-marker,
+  .mobile-more-controls summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .mobile-map-tools details[open] summary,
+  .mobile-more-controls[open] summary {
+    border-color: rgba(141, 250, 255, 0.62);
+    background: rgba(26, 23, 64, 0.92);
+  }
+
+  .mobile-map-tools details > div {
+    position: absolute;
+    top: 49px;
+    right: 0;
+    width: 204px;
+    padding: 7px;
+    border: 1px solid rgba(193, 204, 255, 0.25);
+    background: rgba(6, 6, 20, 0.94);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(18px);
+  }
+
+  .mobile-zoom-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+    margin-bottom: 7px;
+  }
+
+  .mobile-zoom-row button {
+    min-width: 0;
+    min-height: 42px;
+    justify-content: center;
+    padding: 0;
+  }
+
+  .mobile-map-tools label {
+    display: grid;
+    grid-template-columns: 68px 1fr;
+    gap: 7px;
+    align-items: center;
+    color: var(--muted);
+    font-family: 'DM Mono', ui-monospace, monospace;
+    font-size: 0.56rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .mobile-map-tools label + label {
+    margin-top: 5px;
+  }
+
+  .mobile-map-tools select {
+    width: 100%;
+    padding: 0 5px;
+  }
+
+  .transport {
+    right: calc(12px + env(safe-area-inset-right));
+    bottom: calc(12px + env(safe-area-inset-bottom));
+    left: calc(12px + env(safe-area-inset-left));
+    padding: 7px 9px 8px;
+    border: 1px solid rgba(193, 204, 255, 0.13);
+    background: rgba(5, 4, 16, 0.64);
+    backdrop-filter: blur(10px);
+  }
+
+  .progress-copy {
+    margin-bottom: 0;
+    font-size: 0.55rem;
+  }
+
+  .scrubber {
+    gap: 6px;
+  }
+
+  .scrubber input[type='range'] {
+    height: 34px;
+  }
+
+  .progress-value {
+    min-width: 32px;
+    font-size: 0.58rem;
+  }
+
+  .speed-picker,
+  .button-row {
+    display: none;
+  }
+
+  .mobile-transport-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 5px;
+    margin-top: 1px;
+  }
+
+  .mobile-transport-actions > button,
+  .mobile-more-controls > summary {
+    width: 44px;
+    min-height: 42px;
+    padding: 0;
+  }
+
+  .mobile-play {
+    justify-content: center;
+    color: var(--cyan);
+  }
+
+  .mobile-speed-select select {
+    width: 62px;
+    padding: 0 7px;
+    border-color: rgba(255, 94, 219, 0.32);
+  }
+
+  .mobile-more-controls > div {
+    position: absolute;
+    right: 0;
+    bottom: 49px;
+    width: 190px;
+    padding: 6px;
+    border: 1px solid rgba(193, 204, 255, 0.25);
+    background: rgba(6, 6, 20, 0.96);
+    box-shadow: 0 -12px 32px rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(18px);
+  }
+
+  .mobile-more-controls button {
+    width: 100%;
+    min-height: 44px;
+    justify-content: flex-start;
+  }
+
+  .mobile-more-controls button + button {
+    margin-top: 4px;
+  }
+
+  footer {
+    display: none;
+  }
+}
+
+@media (max-width: 360px) {
+  .train-search {
+    top: calc(76px + env(safe-area-inset-top));
+  }
+
+  .network-card,
+  .mobile-map-tools {
+    top: calc(130px + env(safe-area-inset-top));
+  }
+
+  .search-mark {
+    display: none;
+  }
+
+  .mobile-study-picker select {
+    width: 72px;
   }
 }

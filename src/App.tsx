@@ -1005,6 +1005,20 @@ export function App() {
                 </button>
               ))}
             </nav>
+            <label className="mobile-language-picker">
+              <span className="sr-only">{text.languagePicker}</span>
+              <select
+                value={language}
+                aria-label={text.languagePicker}
+                onChange={(event) => setLanguage(event.target.value as UiLanguage)}
+              >
+                {UI_LANGUAGES.map((option) => (
+                  <option key={option.id} value={option.id}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
+            </label>
           </div>
           <section
             className={`soundtrack-control is-${soundtrackState}`}
@@ -1232,6 +1246,38 @@ export function App() {
                 ZH
               </button>
             </nav>
+            <label className="mobile-study-picker">
+              <span className="sr-only">{text.networkStudy}</span>
+              <select
+                aria-label={text.networkStudy}
+                value={
+                  isContrast
+                    ? 'contrast'
+                    : networkStudy === 'national'
+                      ? `national-${nationalTimeRange}`
+                      : networkStudy
+                }
+                onChange={(event) => {
+                  const study = event.target.value
+                  if (study === 'national-morning') {
+                    selectNetworkStudy('national', 'morning')
+                  } else if (study === 'national-day') {
+                    selectNetworkStudy('national', 'day')
+                  } else if (study === 'contrast') {
+                    selectNetworkStudy('contrast')
+                  } else {
+                    selectNetworkStudy(study as NetworkStudy)
+                  }
+                }}
+              >
+                <option value="national-morning">CH</option>
+                <option value="national-day">CH · 24H</option>
+                <option value="contrast">ZH ↔ 220</option>
+                <option value="zvv-region">ZVV</option>
+                <option value="geneva-tpg">GE</option>
+                <option value="zurich-city">ZH</option>
+              </select>
+            </label>
             {searchQuery && (
               <button
                 className="clear-search"
@@ -1738,6 +1784,76 @@ export function App() {
         </div>
       )}
 
+      {isNetwork && (
+        <div className="mobile-map-tools">
+          <details>
+            <summary aria-label={text.mapControls}>⌖</summary>
+            <div>
+              {!selectedTrain && (
+                <div className="mobile-zoom-row">
+                  <button
+                    type="button"
+                    aria-label={text.zoomIn}
+                    onClick={() => moveMapCamera('zoom-in')}
+                  >
+                    +
+                  </button>
+                  <button
+                    type="button"
+                    aria-label={text.zoomOut}
+                    onClick={() => moveMapCamera('zoom-out')}
+                  >
+                    −
+                  </button>
+                  <button
+                    type="button"
+                    aria-label={text.resetMap}
+                    onClick={() => moveMapCamera('reset')}
+                  >
+                    ↺
+                  </button>
+                </div>
+              )}
+              <label>
+                <span>{text.services}</span>
+                <select
+                  value={selectedCategory ?? ''}
+                  aria-label={text.filterServices}
+                  onChange={(event) =>
+                    setSelectedCategory(
+                      (event.target.value || undefined) as
+                        | ServiceCategory
+                        | undefined,
+                    )
+                  }
+                >
+                  <option value="">{text.allServices}</option>
+                  {visibleServiceCategories.map((category) => (
+                    <option key={category.id} value={category.id}>
+                      {serviceCategoryLabel(language, category.id)}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <label>
+                <span>{text.labels}</span>
+                <select
+                  value={trainLabelMode}
+                  aria-label={text.vehicleLabels}
+                  onChange={(event) =>
+                    setTrainLabelMode(event.target.value as TrainLabelMode)
+                  }
+                >
+                  <option value="auto">{text.labelModes.auto}</option>
+                  <option value="on">{text.labelModes.on}</option>
+                  <option value="off">{text.labelModes.off}</option>
+                </select>
+              </label>
+            </div>
+          </details>
+        </div>
+      )}
+
       {isTimetable && !selectedTrain && !selectedRoute && (
         <div
           className={`service-legend${selectedCategory ? ' has-filter' : ''}`}
@@ -1821,6 +1937,68 @@ export function App() {
             </div>
           </div>
         )}
+        <div className="mobile-transport-actions">
+          <button
+            className="mobile-play"
+            type="button"
+            aria-label={isPlaying ? text.pauseMotion : text.resumeMotion}
+            onClick={() => setIsPlaying((value) => !value)}
+          >
+            <span aria-hidden="true">{isPlaying ? 'Ⅱ' : '▶'}</span>
+          </button>
+          {isTimetable && (
+            <label className="mobile-speed-select">
+              <span className="sr-only">{text.playbackSpeed}</span>
+              <select
+                value={playbackRate}
+                aria-label={text.playbackSpeed}
+                onChange={(event) => setPlaybackRate(Number(event.target.value))}
+              >
+                {PLAYBACK_RATES.map((rate) => (
+                  <option key={rate.label} value={rate.value}>
+                    {rate.label}
+                  </option>
+                ))}
+              </select>
+            </label>
+          )}
+          <details className="mobile-more-controls">
+            <summary aria-label={text.moreControls}>•••</summary>
+            <div>
+              <button type="button" onClick={handleContextAction}>
+                {selectedTrain || selectedRoute || selectedStation
+                  ? selectedTrain
+                    ? networkStudy === 'national'
+                      ? text.releaseTrain
+                      : text.releaseService
+                    : selectedRoute
+                      ? text.releaseService
+                      : text.clearStation
+                  : isNetwork
+                    ? text.corridorStudy
+                    : networkStudy === 'national'
+                      ? text.nationalView
+                      : networkStudy === 'zvv-region'
+                        ? text.zvvView
+                        : networkStudy === 'geneva-tpg'
+                          ? text.genevaView
+                          : text.zurichView}
+              </button>
+              {isTimetable && !isContrast && !selectedTrain && !selectedRoute && (
+                <button
+                  type="button"
+                  aria-pressed={isHub}
+                  onClick={() => {
+                    setSelectedCategory(undefined)
+                    setView(isHub ? 'network' : 'hub')
+                  }}
+                >
+                  {isHub ? text.nationalView : text.taktHubs}
+                </button>
+              )}
+            </div>
+          </details>
+        </div>
         <div className="button-row">
           <button type="button" onClick={() => setIsPlaying((value) => !value)}>
             <span className="button-icon" aria-hidden="true">
