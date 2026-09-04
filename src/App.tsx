@@ -834,6 +834,23 @@ export function App() {
   }, [soundtrackMode, soundtrackState])
 
   useEffect(() => {
+    if (soundtrackState !== 'on') return
+    const resumeSoundtrack = () => {
+      if (document.visibilityState === 'visible') {
+        soundtrackRef.current?.resume().catch((error: unknown) => {
+          console.warn('Unable to resume the Gleislicht soundtrack', error)
+        })
+      }
+    }
+    document.addEventListener('visibilitychange', resumeSoundtrack)
+    window.addEventListener('pageshow', resumeSoundtrack)
+    return () => {
+      document.removeEventListener('visibilitychange', resumeSoundtrack)
+      window.removeEventListener('pageshow', resumeSoundtrack)
+    }
+  }, [soundtrackState])
+
+  useEffect(() => {
     soundtrackRef.current?.setVolume(soundtrackVolume)
   }, [soundtrackVolume])
 

@@ -10,6 +10,7 @@ import {
 } from '@driftbox/engine'
 
 export type SoundtrackMode = 'network' | 'hub' | 'journey'
+export type SoundtrackPerformanceProfile = 'full' | 'mobile'
 
 export const SOUNDTRACK_TITLES: Record<SoundtrackMode, string> = {
   network: 'Night Grid',
@@ -18,6 +19,7 @@ export const SOUNDTRACK_TITLES: Record<SoundtrackMode, string> = {
 }
 
 const CROSSFADE_SECONDS = 4.8
+const MOBILE_FADE_SECONDS = 0.32
 const ENGINE_GAIN = 0.74
 
 function groundedBassLine(length: number): BassStep[] {
@@ -140,10 +142,38 @@ function journeySong(): Song {
   }
 }
 
-export function buildGleislichtSong(mode: SoundtrackMode): Song {
-  if (mode === 'hub') return hubSong()
-  if (mode === 'journey') return journeySong()
-  return networkSong()
+function mobileMix(song: Song): Song {
+  return {
+    ...song,
+    kit: {
+      ...song.kit,
+      sends: song.kit.sends
+        ? Object.fromEntries(
+            Object.entries(song.kit.sends).map(([voice, sends]) => [
+              voice,
+              { ...sends, reverb: sends.reverb * 0.58 },
+            ]),
+          )
+        : undefined,
+    },
+    fx: song.fx
+      ? {
+          ...song.fx,
+          // Long convolution tails are the most expensive part of the mix on phones.
+          // Keep the delay intact so the atmosphere survives the shorter room.
+          reverbSize: Math.min(0.46, song.fx.reverbSize * 0.62),
+        }
+      : undefined,
+  }
+}
+
+export function buildGleislichtSong(
+  mode: SoundtrackMode,
+  profile: SoundtrackPerformanceProfile = 'full',
+): Song {
+  const song =
+    mode === 'hub' ? hubSong() : mode === 'journey' ? journeySong() : networkSong()
+  return profile === 'mobile' ? mobileMix(song) : song
 }
 
 interface Deck {
@@ -164,6 +194,7 @@ export class GleislichtSoundtrack {
   private readonly context: AudioContext
   private readonly master: GainNode
   private readonly decks: [Deck, Deck]
+  private readonly profile: SoundtrackPerformanceProfile
   private activeDeck = 0
   private desiredMode: SoundtrackMode = 'network'
   private volume: number
@@ -171,8 +202,9 @@ export class GleislichtSoundtrack {
   private transitionPromise: Promise<void> | null = null
   private generation = 0
 
-  constructor(volume = 0.56) {
-    this.context = new AudioContext()
+  constructor(volume = 0.56, profile = preferredPerformanceProfile()) {
+    this.profile = profile
+    this.context = createSoundtrackContext()
     this.master = this.context.createGain()
     this.master.gain.value = 0
     this.master.connect(this.context.destination)
@@ -219,6 +251,10 @@ export class GleislichtSoundtrack {
   private async runTransitions(): Promise<void> {
     while (this.playing && this.decks[this.activeDeck].mode !== this.desiredMode) {
       const nextMode = this.desiredMode
+      if (this.profile === 'mobile') {
+        await this.runMobileTransition(nextMode)
+        continue
+      }
       const previousIndex = this.activeDeck
       const nextIndex = previousIndex === 0 ? 1 : 0
       const previous = this.decks[previousIndex]
@@ -245,9 +281,36 @@ export class GleislichtSoundtrack {
     }
   }
 
+  private async runMobileTransition(nextMode: SoundtrackMode): Promise<void> {
+    const deck = this.decks[this.activeDeck]
+    const generation = this.generation
+    const now = this.context.currentTime
+    this.master.gain.cancelScheduledValues(now)
+    this.master.gain.setValueAtTime(this.master.gain.value, now)
+    this.master.gain.linearRampToValueAtTime(0, now + MOBILE_FADE_SECONDS)
+
+    await wait(MOBILE_FADE_SECONDS * 1000)
+    if (!this.playing || generation !== this.generation) return
+
+    deck.engine?.stop()
+    this.loadDeck(deck, nextMode)
+    await deck.engine?.start()
+    if (!this.playing || generation !== this.generation) return
+
+    const resumeAt = this.context.currentTime
+    deck.gain.gain.cancelScheduledValues(resumeAt)
+    deck.gain.gain.setValueAtTime(1, resumeAt)
+    this.master.gain.cancelScheduledValues(resumeAt)
+    this.master.gain.setValueAtTime(0, resumeAt)
+    this.master.gain.linearRampToValueAtTime(
+      this.volume,
+      resumeAt + MOBILE_FADE_SECONDS,
+    )
+  }
+
   private loadDeck(deck: Deck, mode: SoundtrackMode): void {
     deck.engine?.dispose()
-    deck.engine = new DriftboxEngine(buildGleislichtSong(mode), {
+    deck.engine = new DriftboxEngine(buildGleislichtSong(mode, this.profile), {
       context: this.context,
       destination: deck.gain,
       gain: ENGINE_GAIN,
@@ -261,6 +324,12 @@ export class GleislichtSoundtrack {
     const now = this.context.currentTime
     this.master.gain.cancelScheduledValues(now)
     this.master.gain.setTargetAtTime(this.volume, now, 0.08)
+  }
+
+  async resume(): Promise<void> {
+    if (this.playing && this.context.state !== 'running') {
+      await this.context.resume()
+    }
   }
 
   stop(): void {
@@ -288,5 +357,27 @@ export class GleislichtSoundtrack {
     for (const deck of this.decks) deck.engine?.dispose()
     this.master.disconnect()
     void this.context.close()
+  }
+}
+
+function preferredPerformanceProfile(): SoundtrackPerformanceProfile {
+  return window.matchMedia('(pointer: coarse)').matches &&
+    window.matchMedia('(max-width: 900px)').matches
+    ? 'mobile'
+    : 'full'
+}
+
+function createSoundtrackContext(): AudioContext {
+  const options: AudioContextOptions = {
+    // This is an authored soundtrack, not an instrument being played from the UI.
+    // A larger output buffer is inaudible as latency but valuable protection against
+    // iOS dropping render blocks while WebGL and JSON parsing share the device.
+    latencyHint: 'playback',
+  }
+  try {
+    return new AudioContext(options)
+  } catch {
+    // Older WebKit builds may reject constructor hints even though Web Audio works.
+    return new AudioContext()
   }
 }

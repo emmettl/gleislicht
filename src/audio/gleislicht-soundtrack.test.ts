@@ -9,7 +9,7 @@ const modes: SoundtrackMode[] = ['network', 'hub', 'journey']
 
 describe('Gleislicht soundtrack', () => {
   it('provides a distinct named arrangement for each visual mode', () => {
-    const songs = modes.map(buildGleislichtSong)
+    const songs = modes.map((mode) => buildGleislichtSong(mode))
 
     expect(new Set(Object.values(SOUNDTRACK_TITLES)).size).toBe(3)
     expect(new Set(songs.map((song) => song.bpm)).size).toBe(3)
@@ -40,6 +40,24 @@ describe('Gleislicht soundtrack', () => {
       )
       expect(audibleSteps?.length ?? 0).toBeLessThanOrEqual(1)
       expect(audibleSteps?.every((step) => !step.slide) ?? true).toBe(true)
+    }
+  })
+
+  it('keeps the mobile arrangements atmospheric with shorter reverb tails', () => {
+    for (const mode of modes) {
+      const full = buildGleislichtSong(mode)
+      const mobile = buildGleislichtSong(mode, 'mobile')
+
+      expect(mobile.fx?.delayTime).toBe(full.fx?.delayTime)
+      expect(mobile.fx?.reverbSize).toBeLessThanOrEqual(0.46)
+      expect(mobile.fx?.reverbSize).toBeLessThan(full.fx?.reverbSize ?? 1)
+      expect(mobile.patterns).toEqual(full.patterns)
+      for (const [voice, sends] of Object.entries(mobile.kit.sends ?? {})) {
+        expect(sends.delay).toBe(full.kit.sends?.[voice]?.delay)
+        expect(sends.reverb).toBeLessThanOrEqual(
+          full.kit.sends?.[voice]?.reverb ?? 1,
+        )
+      }
     }
   })
 })
