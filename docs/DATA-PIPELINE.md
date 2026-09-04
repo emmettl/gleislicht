@@ -121,7 +121,9 @@ This produces a 4.3 KB manifest and eight three-hour chunks totalling about 19 K
 
 ## Known geometry limitation
 
-The current Swiss GTFS archive has no `shapes.txt`. Until rail geometry is joined from a suitable infrastructure dataset, the national study and regional rail services interpolate directly between stop coordinates. Zürich tram and bus services use the aligned ZVV geometry; Genève tram, trolleybus and bus services use TPG/SITG line geometry. Any unmatched local segment falls back to straight stop interpolation. The result remains schedule-derived rather than a claim of GPS tracking, and the snapshot metadata records that distinction.
+The current Swiss GTFS archive has no `shapes.txt`. Until rail geometry is joined from a suitable infrastructure dataset, the national study and regional rail services normally interpolate between stop coordinates. Zürich tram and bus services use the aligned ZVV geometry; Genève tram, trolleybus and bus services use TPG/SITG line geometry.
+
+At render time, a fallback segment that crosses a substantial distance through a federal lake polygon is routed around the shorter shoreline arc. Crossings below roughly 1.25 km at national scale remain direct so real bridge links such as the Seedamm are not removed. Supplied GTFS or regional geometry always wins. This lake avoidance is a visual correction for an obviously impossible chord, not a substitute for infrastructure geometry; the same derived path is used by network lines, selected routes, vehicle interpolation, trails, labels and the follow camera. The result remains schedule-derived rather than a claim of GPS tracking, and the snapshot metadata records that distinction.
 
 ## National boundary
 

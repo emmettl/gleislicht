@@ -1,5 +1,5 @@
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
-import { useEffect, useMemo, useRef } from 'react'
+import { createContext, useContext, useEffect, useMemo, useRef } from 'react'
 import * as THREE from 'three'
 import type {
   BoundaryCoordinate,
@@ -61,6 +61,11 @@ import {
   type ProjectedNetworkPath,
 } from './network-paths.ts'
 import {
+  createLakeAvoidingPathMap,
+  lakeAvoidingPathForStops,
+  type LakeAvoidingPathMap,
+} from './lake-aware-paths.ts'
+import {
   localNetworkDetailAtZoom,
   regionalCameraHeight,
   vehicleIsVisibleAtZoom,
@@ -95,6 +100,11 @@ interface NationalNetworkSceneProps {
 }
 
 type ProjectedStop = readonly [x: number, y: number, z: number]
+
+const EMPTY_LAKE_AVOIDING_PATHS: LakeAvoidingPathMap = new Map()
+const LakeAvoidingPathsContext = createContext<LakeAvoidingPathMap>(
+  EMPTY_LAKE_AVOIDING_PATHS,
+)
 
 const STATION_SURFACE_Y = 0.035
 
@@ -159,14 +169,24 @@ function segmentPoints(
   segmentIndex: number,
   projectedStops: readonly ProjectedStop[],
   projectedPaths: readonly ProjectedNetworkPath[],
+  lakeAvoidingPaths: LakeAvoidingPathMap = EMPTY_LAKE_AVOIDING_PATHS,
 ): readonly ProjectedStop[] {
   const pathIndex = train.pathSegments?.[segmentIndex]
   if (pathIndex !== undefined && pathIndex !== null) {
     const path = projectedPaths[pathIndex]
     if (path?.points.length) return path.points
   }
-  const from = projectedStops[train.stops[segmentIndex]?.[0]]
-  const to = projectedStops[train.stops[segmentIndex + 1]?.[0]]
+  const fromIndex = train.stops[segmentIndex]?.[0]
+  const toIndex = train.stops[segmentIndex + 1]?.[0]
+  if (fromIndex === undefined || toIndex === undefined) return []
+  const detour = lakeAvoidingPathForStops(
+    lakeAvoidingPaths,
+    fromIndex,
+    toIndex,
+  )
+  if (detour) return detour.points
+  const from = projectedStops[fromIndex]
+  const to = projectedStops[toIndex]
   return from && to ? [from, to] : []
 }
 
@@ -187,6 +207,7 @@ function projectedTrainPosition(
   time: number,
   projectedStops: readonly ProjectedStop[],
   projectedPaths: readonly ProjectedNetworkPath[] = [],
+  lakeAvoidingPaths: LakeAvoidingPathMap = EMPTY_LAKE_AVOIDING_PATHS,
 ): ProjectedStop | undefined {
   const position = positionForTrain(train, time)
   if (!position) return undefined
@@ -200,6 +221,15 @@ function projectedTrainPosition(
       : projectedPaths[pathIndex]
   if (path) {
     const point = pointAlongProjectedPath(path, position.progress)
+    if (point) return [point[0], 0.2, point[2]]
+  }
+  const detour = lakeAvoidingPathForStops(
+    lakeAvoidingPaths,
+    position.fromStop,
+    position.toStop,
+  )
+  if (detour) {
+    const point = pointAlongProjectedPath(detour, position.progress)
     if (point) return [point[0], 0.2, point[2]]
   }
   const from = projectedStops[position.fromStop]
@@ -416,6 +446,7 @@ function RailGraph({
   projectedPaths,
   cameraFraming,
   subdued,
+  lakeAvoidingPaths,
   showTraffic = true,
 }: {
   readonly snapshot: NetworkSnapshot
@@ -423,6 +454,7 @@ function RailGraph({
   readonly projectedPaths: readonly ProjectedNetworkPath[]
   readonly cameraFraming: MapCameraFraming
   readonly subdued: boolean
+  readonly lakeAvoidingPaths: LakeAvoidingPathMap
   readonly showTraffic?: boolean
 }) {
   const { camera } = useThree()
@@ -441,11 +473,16 @@ function RailGraph({
         pathIndex === undefined || pathIndex === null
           ? undefined
           : projectedPaths[pathIndex]
+      const detour = lakeAvoidingPathForStops(
+        lakeAvoidingPaths,
+        fromIndex,
+        toIndex,
+      )
       appendLineSegments(
         pathIndex === undefined || pathIndex === null
           ? structuralPositions
           : localPositions,
-        path?.points ?? [from, to],
+        path?.points ?? detour?.points ?? [from, to],
         0,
       )
     })
@@ -460,7 +497,13 @@ function RailGraph({
       new THREE.Float32BufferAttribute(localPositions, 3),
     )
     return { structural, local }
-  }, [projectedPaths, projectedStops, snapshot.edgePaths, snapshot.edges])
+  }, [
+    lakeAvoidingPaths,
+    projectedPaths,
+    projectedStops,
+    snapshot.edgePaths,
+    snapshot.edges,
+  ])
 
   const stationGeometry = useMemo(() => {
     const positions = new Float32Array(projectedStops.length * 3)
@@ -513,6 +556,7 @@ function RailGraph({
           snapshot={snapshot}
           projectedStops={projectedStops}
           projectedPaths={projectedPaths}
+          lakeAvoidingPaths={lakeAvoidingPaths}
           subdued={subdued}
         />
       )}
@@ -539,11 +583,13 @@ function TrafficFlowLayer({
   snapshot,
   projectedStops,
   projectedPaths,
+  lakeAvoidingPaths,
   subdued,
 }: {
   readonly snapshot: NetworkSnapshot
   readonly projectedStops: readonly ProjectedStop[]
   readonly projectedPaths: readonly ProjectedNetworkPath[]
+  readonly lakeAvoidingPaths: LakeAvoidingPathMap
   readonly subdued: boolean
 }) {
   const pulseMaterial = useRef<THREE.LineBasicMaterial>(null)
@@ -566,7 +612,12 @@ function TrafficFlowLayer({
         pathIndex === undefined || pathIndex === null
           ? undefined
           : projectedPaths[pathIndex]
-      const points = path?.points ?? [from, to]
+      const detour = lakeAvoidingPathForStops(
+        lakeAvoidingPaths,
+        fromIndex,
+        toIndex,
+      )
+      const points = path?.points ?? detour?.points ?? [from, to]
 
       const color = quiet.clone().lerp(busy, strength)
       color.multiplyScalar(0.2 + strength * 0.8)
@@ -602,7 +653,7 @@ function TrafficFlowLayer({
       new THREE.Float32BufferAttribute(pulseColors, 3),
     )
     return { weighted, pulse }
-  }, [projectedPaths, projectedStops, snapshot])
+  }, [lakeAvoidingPaths, projectedPaths, projectedStops, snapshot])
 
   useEffect(
     () => () => {
@@ -751,10 +802,17 @@ function SelectedRoute({
   readonly projectedStops: readonly ProjectedStop[]
   readonly projectedPaths: readonly ProjectedNetworkPath[]
 }) {
+  const lakeAvoidingPaths = useContext(LakeAvoidingPathsContext)
   const line = useMemo(() => {
     const points: THREE.Vector3[] = []
     for (let index = 0; index < train.stops.length - 1; index += 1) {
-      segmentPoints(train, index, projectedStops, projectedPaths).forEach(
+      segmentPoints(
+        train,
+        index,
+        projectedStops,
+        projectedPaths,
+        lakeAvoidingPaths,
+      ).forEach(
         ([x, , z], pointIndex) => {
           if (index > 0 && pointIndex === 0) return
           points.push(new THREE.Vector3(x, 0.12, z))
@@ -769,7 +827,7 @@ function SelectedRoute({
       blending: THREE.AdditiveBlending,
     })
     return new THREE.Line(geometry, material)
-  }, [projectedPaths, projectedStops, train])
+  }, [lakeAvoidingPaths, projectedPaths, projectedStops, train])
 
   useEffect(
     () => () => {
@@ -793,6 +851,7 @@ function SelectedLinePaths({
   readonly projectedStops: readonly ProjectedStop[]
   readonly projectedPaths: readonly ProjectedNetworkPath[]
 }) {
+  const lakeAvoidingPaths = useContext(LakeAvoidingPathsContext)
   const glowMaterial = useRef<THREE.LineBasicMaterial>(null)
   const stopTextures = useMemo(
     () => ({
@@ -824,6 +883,7 @@ function SelectedLinePaths({
           index - 1,
           projectedStops,
           projectedPaths,
+          lakeAvoidingPaths,
         )
         if (points.length < 2) continue
         usedEdges.add(key)
@@ -849,6 +909,7 @@ function SelectedLinePaths({
   }, [
     projectedPaths,
     projectedStops,
+    lakeAvoidingPaths,
     route.stopIndexes,
     route.trainIds,
     snapshot.trains,
@@ -1396,6 +1457,7 @@ function TrainLabels({
   readonly trainTimeIndex: TrainTimeIndex
 }) {
   const { camera, size } = useThree()
+  const lakeAvoidingPaths = useContext(LakeAvoidingPathsContext)
   const sprites = useRef<Array<THREE.Sprite | null>>([])
   const textures = useRef(new Map<string, TrainLabelTexture>())
   const retainedTrainIds = useRef(new Set<string>())
@@ -1490,6 +1552,7 @@ function TrainLabels({
         localTime.current,
         projectedStops,
         projectedPaths,
+        lakeAvoidingPaths,
       )
       if (!position) continue
       projected.set(position[0], 0.76, position[2]).project(camera)
@@ -1719,6 +1782,7 @@ function SelectedStationRoutes({
   readonly projectedPaths: readonly ProjectedNetworkPath[]
   readonly selectedCategory?: ServiceCategory
 }) {
+  const lakeAvoidingPaths = useContext(LakeAvoidingPathsContext)
   const textures = useMemo(
     () => ({
       halo: trainLightTexture('halo'),
@@ -1752,6 +1816,7 @@ function SelectedStationRoutes({
           index - 1,
           projectedStops,
           projectedPaths,
+          lakeAvoidingPaths,
         )
         if (points.length < 2) continue
         const positions: number[] = []
@@ -1784,6 +1849,7 @@ function SelectedStationRoutes({
   }, [
     projectedPaths,
     projectedStops,
+    lakeAvoidingPaths,
     selectedCategory,
     snapshot.trains,
     station.trainIds,
@@ -1899,6 +1965,7 @@ function TrainSwarm({
   readonly projectedPaths: readonly ProjectedNetworkPath[]
   readonly trainTimeIndex: TrainTimeIndex
 }) {
+  const lakeAvoidingPaths = useContext(LakeAvoidingPathsContext)
   const points = useRef<THREE.Points>(null)
   const glow = useRef<THREE.Points>(null)
   const localTime = useRef(time)
@@ -2015,6 +2082,7 @@ function TrainSwarm({
         localTime.current,
         projectedStops,
         projectedPaths,
+        lakeAvoidingPaths,
       )
       if (!position) continue
       const markerKind = vehicleMarkerKind(train.category)
@@ -2159,6 +2227,7 @@ function VehicleTrails({
   readonly projectedPaths: readonly ProjectedNetworkPath[]
   readonly trainTimeIndex: TrainTimeIndex
 }) {
+  const lakeAvoidingPaths = useContext(LakeAvoidingPathsContext)
   const localTime = useRef(time)
   const lastUpdate = useRef(-1)
   const selectedStationTrainIds = useMemo(
@@ -2256,6 +2325,7 @@ function VehicleTrails({
           sampleTime,
           projectedStops,
           projectedPaths,
+          lakeAvoidingPaths,
         ),
       )
       const color = palette[train.category] ?? palette.other
@@ -2322,6 +2392,7 @@ function SelectedTrainMarker({
   readonly projectedStops: readonly ProjectedStop[]
   readonly projectedPaths: readonly ProjectedNetworkPath[]
 }) {
+  const lakeAvoidingPaths = useContext(LakeAvoidingPathsContext)
   const marker = useRef<THREE.Group>(null)
   const color = SERVICE_COLORS[train.category]
 
@@ -2332,6 +2403,7 @@ function SelectedTrainMarker({
       time,
       projectedStops,
       projectedPaths,
+      lakeAvoidingPaths,
     )
     marker.current.visible = Boolean(position)
     if (!position) return
@@ -2375,6 +2447,7 @@ function NetworkCamera({
   readonly mapFocus: THREE.Vector3
 }) {
   const { camera, gl, size } = useThree()
+  const lakeAvoidingPaths = useContext(LakeAvoidingPathsContext)
   const desiredPosition = useMemo(() => new THREE.Vector3(0, 37, 26), [])
   const desiredTarget = useMemo(() => new THREE.Vector3(), [])
   const currentTarget = useMemo(() => new THREE.Vector3(), [])
@@ -2496,7 +2569,13 @@ function NetworkCamera({
 
   useFrame((_, delta) => {
     const trainPosition = selectedTrain
-      ? projectedTrainPosition(selectedTrain, time, projectedStops, projectedPaths)
+      ? projectedTrainPosition(
+          selectedTrain,
+          time,
+          projectedStops,
+          projectedPaths,
+          lakeAvoidingPaths,
+        )
       : undefined
     if (trainPosition) {
       desiredTarget.set(trainPosition[0], 0, trainPosition[2])
@@ -2550,6 +2629,37 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
         : undefined,
     [projection, props.contextSnapshot],
   )
+  const projectedLakeRings = useMemo(
+    () =>
+      props.lakes?.lakes.flatMap((lake) =>
+        lake.polygons.flatMap((polygon) => {
+          const outerRing = polygon[0]
+          return outerRing
+            ? [
+                outerRing.map((coordinate) =>
+                  projectCoordinate(coordinate, projection),
+                ),
+              ]
+            : []
+        }),
+      ) ?? [],
+    [projection, props.lakes],
+  )
+  const lakeAvoidingPaths = useMemo(
+    () =>
+      createLakeAvoidingPathMap(
+        props.snapshot.edges,
+        props.snapshot.edgePaths,
+        projectedStops,
+        projectedLakeRings,
+      ),
+    [
+      projectedLakeRings,
+      projectedStops,
+      props.snapshot.edgePaths,
+      props.snapshot.edges,
+    ],
+  )
   const mapFocus = useMemo(() => {
     const { bounds } = props.snapshot
     const centre: BoundaryCoordinate = [
@@ -2572,7 +2682,7 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
   )
 
   return (
-    <>
+    <LakeAvoidingPathsContext.Provider value={lakeAvoidingPaths}>
       <fog attach="fog" args={['#050410', 34, 69]} />
       <ambientLight intensity={0.85} color="#7d87ff" />
       <NationalGround />
@@ -2608,6 +2718,7 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
           projectedPaths={contextProjectedPaths}
           cameraFraming="switzerland"
           subdued
+          lakeAvoidingPaths={EMPTY_LAKE_AVOIDING_PATHS}
           showTraffic={false}
         />
       )}
@@ -2616,6 +2727,7 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
         projectedStops={projectedStops}
         projectedPaths={projectedPaths}
         cameraFraming={props.cameraFraming}
+        lakeAvoidingPaths={lakeAvoidingPaths}
         subdued={Boolean(
           props.selectedTrain ||
             props.selectedRoute ||
@@ -2698,7 +2810,7 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
         cameraFraming={props.cameraFraming}
         mapFocus={mapFocus}
       />
-    </>
+    </LakeAvoidingPathsContext.Provider>
   )
 }
 
