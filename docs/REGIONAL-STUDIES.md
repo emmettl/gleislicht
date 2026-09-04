@@ -14,12 +14,12 @@ The Genève study retains French source names and uses TPG's operator identity r
 
 ## The rural–urban contrast
 
-PostBus deserves more than being another orange category in a huge map. A later **contrast study** should run two places against one synchronized 24-hour clock:
+PostBus deserves more than being another orange category in a huge map. The **contrast study** runs two places against one synchronized 24-hour clock:
 
 - a Zürich core around HB, Central, Bellevue and Stadelhofen, where tram and bus departures read as an almost continuous electrical texture; and
 - one rural PostBus territory, where long runs, timed rail connections and quiet gaps become the composition.
 
-The same playback speed, colour key and time axis make the difference in frequency legible. The comparison can begin as a split view, then become an authored crossfade for director mode. Candidate rural studies should be selected from the data after measuring route length, service frequency, rail interchange timing and terrain character—not from a picturesque guess.
+The same playback speed, colour key and time axis make the difference in frequency legible. The first interface is a responsive split view: side-by-side on wide screens and stacked on phones, with independent pan and pinch controls. Each side loads its current three-hour movement block first and prefetches adjacent blocks as the shared clock moves. A later director mode can turn this into an authored crossfade.
 
 That selection is now complete: Kiental–Griesalp route 220 provides 20 trips between 06:13 and 18:42 on the study date, an 11 km scheduled stop chain, a compact terrain footprint and the officially documented 28% final climb. The decision and alternatives are recorded in [POSTBUS-CORRIDOR.md](./POSTBUS-CORRIDOR.md).
 
@@ -63,4 +63,4 @@ Genève uses the same national timetable baseline and the official TPG line laye
 4. ✓ Genève/TPG as the second regional system, including French labels and cross-border edges.
 5. ✓ Select Kiental–Griesalp as the measured rural PostBus study.
 6. ✓ Build shape-aware, progressively loaded 24-hour datasets for both sides of the contrast.
-7. Build the synchronized rural–urban contrast interface.
+7. ✓ Build the synchronized rural–urban contrast interface.

@@ -65,10 +65,16 @@ import {
   type SearchNavigationKey,
 } from './search-navigation.ts'
 import { foldSearchText } from './search-text.ts'
+import { useProgressiveNetworkDay } from './use-progressive-network-day.ts'
 
 type View = 'network' | 'hub' | 'journey'
 type SoundtrackState = 'off' | 'starting' | 'on' | 'error'
-type NetworkStudy = 'national' | 'zvv-region' | 'geneva-tpg' | 'zurich-city'
+type NetworkStudy =
+  | 'national'
+  | 'zvv-region'
+  | 'geneva-tpg'
+  | 'zurich-city'
+  | 'contrast'
 type NationalTimeRange = 'morning' | 'day'
 type HubStudy = 'pulse' | 'station'
 
@@ -168,6 +174,17 @@ export function App() {
   const [soundtrackVolume, setSoundtrackVolume] = useState(0.56)
   const soundtrackRef = useRef<GleislichtSoundtrack | null>(null)
   const text = UI_TEXT[language]
+  const isContrast = networkStudy === 'contrast'
+  const zurichContrast = useProgressiveNetworkDay(
+    'zurich-tram-day-manifest.json',
+    isContrast,
+    networkTime,
+  )
+  const kientalContrast = useProgressiveNetworkDay(
+    'kiental-postbus-day-manifest.json',
+    isContrast,
+    networkTime,
+  )
   const numberFormat = useMemo(
     () => new Intl.NumberFormat(LANGUAGE_LOCALES[language]),
     [language],
@@ -196,7 +213,9 @@ export function App() {
       nationalDayChunks[nationalDayChunkDescriptor.id],
   )
   const network =
-    networkStudy === 'zurich-city'
+    isContrast
+      ? (zurichContrast.network ?? nationalNetwork)
+      : networkStudy === 'zurich-city'
       ? (zurichCityNetwork ?? nationalNetwork)
       : networkStudy === 'zvv-region'
         ? (zvvRegionNetwork ?? nationalNetwork)
@@ -221,6 +240,38 @@ export function App() {
         0,
       ) ?? 0,
     [network, networkTime],
+  )
+  const zurichContrastActiveCount = useMemo(
+    () =>
+      zurichContrast.network?.trains.reduce(
+        (count, train) =>
+          train.start <= networkTime && train.end >= networkTime
+            ? count + 1
+            : count,
+        0,
+      ) ?? 0,
+    [networkTime, zurichContrast.network],
+  )
+  const kientalContrastActiveCount = useMemo(
+    () =>
+      kientalContrast.network?.trains.reduce(
+        (count, train) =>
+          train.start <= networkTime && train.end >= networkTime
+            ? count + 1
+            : count,
+        0,
+      ) ?? 0,
+    [kientalContrast.network, networkTime],
+  )
+  const zurichContrastStations = useMemo(
+    () =>
+      zurichContrast.network ? buildStationIndex(zurichContrast.network) : [],
+    [zurichContrast.network],
+  )
+  const kientalContrastStations = useMemo(
+    () =>
+      kientalContrast.network ? buildStationIndex(kientalContrast.network) : [],
+    [kientalContrast.network],
   )
   const selectedTrain = useMemo(
     () => network?.trains.find((train) => train.id === selectedTrainId),
@@ -333,12 +384,21 @@ export function App() {
     const present = new Set(
       view === 'hub'
         ? hubCalls.map((call) => call.train.category)
-        : (network?.trains.map((train) => train.category) ?? []),
+        : isContrast
+          ? [
+              ...(zurichContrast.network?.trains.map(
+                (train) => train.category,
+              ) ?? []),
+              ...(kientalContrast.network?.trains.map(
+                (train) => train.category,
+              ) ?? []),
+            ]
+          : (network?.trains.map((train) => train.category) ?? []),
     )
     return SERVICE_CATEGORIES.filter(
       (category) => category.id !== 'other' && present.has(category.id),
     )
-  }, [hubCalls, network, view])
+  }, [hubCalls, isContrast, kientalContrast.network, network, view, zurichContrast.network])
 
   const handleJourneyProgress = useCallback((nextProgress: number) => {
     setJourneyProgress(nextProgress)
@@ -368,6 +428,7 @@ export function App() {
   const moveMapCamera = useCallback((action: MapCameraAction) => {
     setMapCameraCommand((current) => ({ id: current.id + 1, action }))
   }, [])
+  const ignoreNetworkTime = useCallback(() => {}, [])
 
   const releaseSelection = useCallback(() => {
     setSelectedTrainId(undefined)
@@ -447,8 +508,13 @@ export function App() {
             : study === 'geneva-tpg'
               ? genevaTpgNetwork
               : undefined
-      setRegionalNetworkLoading(study !== 'national' && !regionalSnapshot)
-      if (study !== 'national') setRegionalNetworkError(false)
+      setRegionalNetworkLoading(
+        study !== 'national' && study !== 'contrast' && !regionalSnapshot,
+      )
+      if (study !== 'national' && study !== 'contrast') {
+        setRegionalNetworkError(false)
+      }
+      if (study === 'contrast') setNetworkTime(12 * 3600)
       if (study === 'national' && timeRange === 'day') {
         setNationalDayError(false)
         if (!nationalDayManifest) setNationalDayLoading(true)
@@ -671,7 +737,7 @@ export function App() {
   ])
 
   useEffect(() => {
-    if (networkStudy === 'national') return
+    if (networkStudy === 'national' || networkStudy === 'contrast') return
     const existingNetwork =
       networkStudy === 'zurich-city'
         ? zurichCityNetwork
@@ -765,10 +831,69 @@ export function App() {
 
   return (
     <main
-      className={`experience view-${view}${selectedTrain || selectedStation || selectedRoute ? ' has-selection' : ''}`}
+      className={`experience view-${view}${isContrast ? ' is-contrast' : ''}${selectedTrain || selectedStation || selectedRoute ? ' has-selection' : ''}`}
     >
       <div className="scene" aria-hidden="true">
-        {isNetwork && network ? (
+        {isNetwork && isContrast ? (
+          <div className="contrast-scenes">
+            <section className="contrast-panel contrast-panel-city">
+              {zurichContrast.network ? (
+                <NationalNetworkScene
+                  snapshot={zurichContrast.network}
+                  referenceSnapshot={zurichContrast.network}
+                  stations={zurichContrastStations}
+                  trainLabelMode={trainLabelMode}
+                  isPlaying={isPlaying}
+                  time={networkTime}
+                  onTime={handleNetworkTime}
+                  cameraCommand={mapCameraCommand}
+                  playbackRate={playbackRate}
+                  selectedCategory={selectedCategory}
+                  cameraFraming="switzerland"
+                />
+              ) : (
+                <div className="contrast-loader" />
+              )}
+              <div className="contrast-caption">
+                <span>Zürich</span>
+                <strong>
+                  {zurichContrast.chunkReady
+                    ? numberFormat.format(zurichContrastActiveCount)
+                    : '—'}
+                </strong>
+                <small>{text.tramsInMotion}</small>
+              </div>
+            </section>
+            <section className="contrast-panel contrast-panel-valley">
+              {kientalContrast.network ? (
+                <NationalNetworkScene
+                  snapshot={kientalContrast.network}
+                  referenceSnapshot={kientalContrast.network}
+                  stations={kientalContrastStations}
+                  trainLabelMode={trainLabelMode}
+                  isPlaying={false}
+                  time={networkTime}
+                  onTime={ignoreNetworkTime}
+                  cameraCommand={mapCameraCommand}
+                  playbackRate={playbackRate}
+                  selectedCategory={selectedCategory}
+                  cameraFraming="switzerland"
+                />
+              ) : (
+                <div className="contrast-loader" />
+              )}
+              <div className="contrast-caption">
+                <span>Kiental · 220</span>
+                <strong>
+                  {kientalContrast.chunkReady
+                    ? numberFormat.format(kientalContrastActiveCount)
+                    : '—'}
+                </strong>
+                <small>{text.vehiclesInMotion}</small>
+              </div>
+            </section>
+          </div>
+        ) : isNetwork && network ? (
           <NationalNetworkScene
             boundary={boundary}
             lakes={lakes}
@@ -845,7 +970,9 @@ export function App() {
           <p className="eyebrow">Gleislicht</p>
           <h1>
             {isNetwork
-              ? networkStudy === 'zurich-city'
+              ? isContrast
+                ? text.contrastSubtitle
+                : networkStudy === 'zurich-city'
                 ? text.zurichSubtitle
                 : networkStudy === 'zvv-region'
                   ? text.zvvSubtitle
@@ -983,7 +1110,9 @@ export function App() {
                 role="combobox"
                 value={searchQuery}
                 placeholder={
-                  networkStudy === 'national'
+                  isContrast
+                    ? text.contrastPlaceholder
+                    : networkStudy === 'national'
                     ? text.nationalPlaceholder
                     : networkStudy === 'zvv-region'
                       ? text.regionalPlaceholder
@@ -992,6 +1121,7 @@ export function App() {
                       : text.cityPlaceholder
                 }
                 autoComplete="off"
+                disabled={isContrast}
                 aria-autocomplete="list"
                 aria-controls="train-search-results"
                 aria-expanded={searchOpen && Boolean(searchQuery.trim())}
@@ -1064,6 +1194,15 @@ export function App() {
                 onClick={() => selectNetworkStudy('national', 'day')}
               >
                 24H
+              </button>
+              <button
+                type="button"
+                title={text.contrastNetwork}
+                aria-label={text.showContrastNetwork}
+                aria-pressed={isContrast}
+                onClick={() => selectNetworkStudy('contrast')}
+              >
+                ↔
               </button>
               <button
                 type="button"
@@ -1281,6 +1420,40 @@ export function App() {
             </div>
           </div>
         </section>
+      ) : isNetwork && isContrast ? (
+        <section
+          className="journey-card network-card contrast-card"
+          aria-label={text.contrastNetworkStatus}
+        >
+          <p className="contrast-card-title">{text.cityValley}</p>
+          <div className="metric-grid">
+            <div>
+              <span>Zürich</span>
+              <strong>
+                {zurichContrast.chunkReady
+                  ? numberFormat.format(zurichContrastActiveCount)
+                  : '—'}
+              </strong>
+              <small>{serviceCategoryLabel(language, 'tram')}</small>
+            </div>
+            <div>
+              <span>Kiental</span>
+              <strong>
+                {kientalContrast.chunkReady
+                  ? numberFormat.format(kientalContrastActiveCount)
+                  : '—'}
+              </strong>
+              <small>PostBus 220</small>
+            </div>
+          </div>
+          <p className="between">
+            {zurichContrast.error || kientalContrast.error
+              ? text.contrastUnavailable
+              : zurichContrast.loading || kientalContrast.loading
+                ? text.loadingContrast
+                : text.synchronisedDay}
+          </p>
+        </section>
       ) : isNetwork && selectedTrain ? (
         <section className="journey-card selected-card" aria-label={text.selectedTrain}>
           <div className="service-row">
@@ -1398,7 +1571,7 @@ export function App() {
             </span>
           </div>
           <p className="between">
-            {networkStudy !== 'national'
+              {networkStudy !== 'national'
               ? regionalNetworkError
                 ? networkStudy === 'zvv-region'
                   ? text.zvvUnavailable
@@ -1514,7 +1687,7 @@ export function App() {
         )}
       </div>
 
-      {isNetwork && !selectedTrain && <div className="north-marker">N</div>}
+      {isNetwork && !selectedTrain && !isContrast && <div className="north-marker">N</div>}
 
       {isNetwork && (
         <div className="map-navigation" aria-label={text.mapControls}>
@@ -1677,7 +1850,7 @@ export function App() {
                     : text.zurichView}
             <kbd>C</kbd>
           </button>
-          {isTimetable && !selectedTrain && !selectedRoute && (
+          {isTimetable && !isContrast && !selectedTrain && !selectedRoute && (
             <button
               type="button"
               aria-pressed={isHub}

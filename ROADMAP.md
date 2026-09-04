@@ -37,7 +37,7 @@ This is an iterative art-and-data project. Each stage should end in a coherent v
 - [x] Add a ZVV overview with zoom-dependent aggregation and regional map hierarchy.
 - [x] Add a Genève/TPG study with French labels and carefully handled cross-border services.
 - [x] Select Kiental–Griesalp route 220 from measured schedule and terrain criteria.
-- [ ] Build a synchronized 24-hour rural PostBus versus Zürich tram contrast mode.
+- [x] Build a synchronized, progressively loaded 24-hour rural PostBus versus Zürich tram contrast mode.
 
 **Exit:** regional connections and urban density read clearly at their own scales, and the rural–urban contrast is compelling without falsifying frequency or position.
 
@@ -91,7 +91,7 @@ The national GTFS-RT feed supplies trip updates and alerts, not vehicle position
 - Performance telemetry without personal tracking; accessible non-WebGL fallback.
 - Source, attribution and methodology pages.
 - Recording/export workflow for shareable daily studies.
-- Publish the reviewed static build through GitHub Pages; private previews remain non-canonical.
+- [x] Publish the reviewed static build through GitHub Pages; private previews remain non-canonical.
 
 ## Data sources to validate in implementation
 
