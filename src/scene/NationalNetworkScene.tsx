@@ -787,7 +787,13 @@ function SelectedLinePaths({
   readonly projectedPaths: readonly ProjectedNetworkPath[]
 }) {
   const glowMaterial = useRef<THREE.LineBasicMaterial>(null)
-  const stopTexture = useMemo(() => trainLightTexture('halo'), [])
+  const stopTextures = useMemo(
+    () => ({
+      halo: trainLightTexture('halo'),
+      core: trainLightTexture('spark'),
+    }),
+    [],
+  )
   const geometries = useMemo(() => {
     const trainIds = new Set(route.trainIds)
     const usedEdges = new Set<string>()
@@ -849,12 +855,18 @@ function SelectedLinePaths({
     [geometries],
   )
 
-  useEffect(() => () => stopTexture.dispose(), [stopTexture])
+  useEffect(
+    () => () => {
+      stopTextures.halo.dispose()
+      stopTextures.core.dispose()
+    },
+    [stopTextures],
+  )
 
   useFrame(({ clock }) => {
     if (!glowMaterial.current) return
     glowMaterial.current.opacity =
-      0.28 + (Math.sin(clock.elapsedTime * 2.4) * 0.5 + 0.5) * 0.24
+      0.12 + (Math.sin(clock.elapsedTime * 1.8) * 0.5 + 0.5) * 0.12
   })
 
   const color = SERVICE_COLORS[route.category]
@@ -864,7 +876,7 @@ function SelectedLinePaths({
         <lineBasicMaterial
           color={color}
           transparent
-          opacity={0.98}
+          opacity={0.92}
           blending={THREE.AdditiveBlending}
           depthWrite={false}
           toneMapped={false}
@@ -875,7 +887,7 @@ function SelectedLinePaths({
           ref={glowMaterial}
           color={color}
           transparent
-          opacity={0.4}
+          opacity={0.18}
           blending={THREE.AdditiveBlending}
           depthWrite={false}
           toneMapped={false}
@@ -884,14 +896,28 @@ function SelectedLinePaths({
       <points geometry={geometries.stops} renderOrder={6}>
         <pointsMaterial
           color={color}
-          map={stopTexture}
-          size={0.28}
+          map={stopTextures.halo}
+          size={5.2}
           transparent
-          opacity={0.96}
+          opacity={0.3}
           alphaTest={0.01}
           blending={THREE.AdditiveBlending}
           depthWrite={false}
-          sizeAttenuation
+          sizeAttenuation={false}
+          toneMapped={false}
+        />
+      </points>
+      <points geometry={geometries.stops} renderOrder={7}>
+        <pointsMaterial
+          color={color}
+          map={stopTextures.core}
+          size={2.1}
+          transparent
+          opacity={0.9}
+          alphaTest={0.02}
+          blending={THREE.AdditiveBlending}
+          depthWrite={false}
+          sizeAttenuation={false}
           toneMapped={false}
         />
       </points>
