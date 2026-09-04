@@ -26,7 +26,7 @@ Search the national view by service, train number, origin, or destination. Selec
 
 The national map supports mouse-wheel or pinch zoom, pointer or touch drag to pan, and on-screen zoom/reset controls. A selected-train follow temporarily takes control of the camera; releasing it returns to the previous map position.
 
-Open **Takt hubs** to move between Zürich HB, Bern, Basel SBB and Genève. See [docs/HUB-STUDY.md](./docs/HUB-STUDY.md) for the visual model and the deliberately careful wording around Zürich's “busiest” status.
+Open **Takt hubs** to move between Zürich HB, Bern, Basel SBB and Genève across a continuous 24-hour schedule. Four tempo settings run from 1× to 64×, turning the clock-face timetable into a slow study or a rapid daily pulse. See [docs/HUB-STUDY.md](./docs/HUB-STUDY.md) for the visual model and the deliberately careful wording around Zürich's “busiest” status.
 
 The committed GTFS snapshot is regenerated with `npm run data:gtfs`; see [docs/DATA-PIPELINE.md](./docs/DATA-PIPELINE.md).
 The eventual public deployment is GitHub Pages; see [docs/PUBLISHING.md](./docs/PUBLISHING.md).

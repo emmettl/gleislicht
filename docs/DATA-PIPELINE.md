@@ -2,7 +2,7 @@
 
 Gleislicht treats the national GTFS archive as source material, not a web asset. The current archive is roughly 232 MB compressed and expands to several gigabytes, so it is streamed from the ZIP during preprocessing. Only the compact visual snapshot is committed and shipped.
 
-## Generate the morning snapshot
+## Generate the visual snapshots
 
 Download the latest archive from the [Swiss timetable dataset](https://data.opentransportdata.swiss/en/dataset/timetable-2026-gtfs2020), then run:
 
@@ -15,13 +15,14 @@ npm run data:gtfs -- \
   --focus 07:45
 ```
 
-The script:
+The command writes two complementary artifacts: the compact two-hour national network and a 24-hour call sequence for Zürich HB, Bern, Basel SBB and Genève. The script:
 
 1. resolves the active services from `calendar.txt` and `calendar_dates.txt`;
 2. selects standard and extended GTFS rail route types;
 3. streams the very large `trips.txt` and `stop_times.txt` members without extracting them;
 4. derives the scheduled rail graph from consecutive stops; and
-5. emits only trips overlapping the requested time window.
+5. emits only national trips overlapping the requested time window; and
+6. emits all calls during the civil day at the four hub-study stations.
 
 ## Known geometry limitation
 

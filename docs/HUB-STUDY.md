@@ -11,7 +11,7 @@ The first version uses the same two-hour scheduled GTFS artifact as the national
 - Basel SBB — a tri-national gateway.
 - Genève — the western gateway.
 
-Every scheduled call becomes one light. During the 15 minutes before arrival it moves inward along the bearing of its previous stop; during the station dwell it strikes the centre; during the 15 minutes after departure it travels outward toward its next stop. Colour encodes the existing service categories. The three rings mark five-minute intervals.
+Every scheduled call across the full civil day becomes one light. During the 15 minutes before arrival it moves inward along the bearing of its previous stop; during the station dwell it strikes the centre; during the 15 minutes after departure it travels outward toward its next stop. Colour encodes the existing service categories. The three rings mark five-minute intervals. The day loops continuously and can run at four authored tempos from a contemplative 1× to a 64× rush.
 
 This is a timetable visualisation, not a platform diagram or live operating display. Several GTFS platform stop IDs are deliberately combined under the shared station name.
 
@@ -31,4 +31,4 @@ Sources: [Zürich Tourism station overview](https://www.zuerich.com/en/inform-pl
 - Add destination labels at the outer edge without turning the piece into a departure board.
 - Compare a normal pulse with a delayed or disrupted one once realtime updates are available.
 - Let a selected train bridge hub mode and the future terrain-backed corridor view.
-- Develop an authored 60-minute loop that reveals repeating `:00`, `:15`, `:30`, and `:45` structures.
+- Add a repeat-overlay mode that makes recurring `:00`, `:15`, `:30`, and `:45` structures explicit without losing the continuous day.

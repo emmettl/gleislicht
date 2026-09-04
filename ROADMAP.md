@@ -21,7 +21,8 @@ This is an iterative art-and-data project. Each stage should end in a coherent v
 - [x] Produce a compact morning artifact instead of shipping the 232 MB GTFS ZIP.
 - [x] Render the Friday morning window in a national view with a deterministic simulation clock.
 - [ ] Replace straight stop-to-stop segments with matched rail geometry; the source feed has no `shapes.txt`.
-- [ ] Extend from the two-hour study to a compact full service day.
+- [x] Add a compact full-day artifact for the four hub pulse studies.
+- [ ] Extend the national network itself from the two-hour study to a compact full service day.
 
 **Exit:** thousands of scheduled movements form a recognisable, scrubbable national rail network.
 
@@ -53,7 +54,7 @@ The national GTFS-RT feed supplies trip updates and alerts, not vehicle position
 - [x] Search and select by train number, service, origin or destination.
 - [x] Colour-code motion by service class while preserving night-view legibility.
 - [x] Add a hub-scale Takt pulse for Zürich HB, Bern, Basel SBB and Genève.
-- [ ] Turn the first 15-minute orbit into an authored 60-minute Takt composition.
+- [x] Loop the hub orbit across a full day with four authored playback tempos.
 - [ ] Replace the map-level selected-train follow with a terrain-backed corridor transition.
 - Time-of-day presets, speed control and a short looping “director mode.”
 - Authored palettes and camera behaviours for plateau, lake and Alpine routes.

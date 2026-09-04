@@ -1,5 +1,12 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import { callsAtHub, callsNearTime, HUBS, nextHubCall, type HubId } from './domain/hub.ts'
+import {
+  callsAtHub,
+  callsNearTime,
+  HUBS,
+  nextHubCall,
+  type HubDaySnapshot,
+  type HubId,
+} from './domain/hub.ts'
 import { positionOnJourney, prototypeJourney } from './domain/journey.ts'
 import {
   formatServiceTime,
@@ -20,9 +27,19 @@ import {
 type View = 'network' | 'hub' | 'journey'
 
 const numberFormat = new Intl.NumberFormat('de-CH')
+const PLAYBACK_RATES = [
+  { label: '1×', value: 30 },
+  { label: '4×', value: 120 },
+  { label: '16×', value: 480 },
+  { label: '64×', value: 1920 },
+] as const
 
 function formatPercent(value: number): string {
   return `${Math.round(value * 100)}%`
+}
+
+function formatTimelineBoundary(value: number): string {
+  return value === 24 * 3600 ? '24:00' : formatServiceTime(value)
 }
 
 function matchesTrain(
@@ -42,7 +59,9 @@ export function App() {
   const [view, setView] = useState<View>('network')
   const [journeyProgress, setJourneyProgress] = useState(0.11)
   const [networkTime, setNetworkTime] = useState(7 * 3600 + 45 * 60)
+  const [hubTime, setHubTime] = useState(7 * 3600 + 45 * 60)
   const [network, setNetwork] = useState<NetworkSnapshot>()
+  const [hubDay, setHubDay] = useState<HubDaySnapshot>()
   const [dataError, setDataError] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
   const [searchOpen, setSearchOpen] = useState(false)
@@ -52,6 +71,7 @@ export function App() {
     id: 0,
     action: 'reset',
   })
+  const [playbackRate, setPlaybackRate] = useState(120)
 
   const journeyPosition = useMemo(
     () => positionOnJourney(prototypeJourney, journeyProgress),
@@ -76,16 +96,16 @@ export function App() {
   )
   const selectedHub = HUBS.find((hub) => hub.id === selectedHubId) ?? HUBS[0]
   const hubCalls = useMemo(
-    () => (network ? callsAtHub(network, selectedHub) : []),
-    [network, selectedHub],
+    () => hubDay?.hubs[selectedHub.id] ?? (network ? callsAtHub(network, selectedHub) : []),
+    [hubDay, network, selectedHub],
   )
   const nearbyHubCalls = useMemo(
-    () => callsNearTime(hubCalls, networkTime),
-    [hubCalls, networkTime],
+    () => callsNearTime(hubCalls, hubTime),
+    [hubCalls, hubTime],
   )
   const upcomingHubCall = useMemo(
-    () => nextHubCall(hubCalls, networkTime),
-    [hubCalls, networkTime],
+    () => nextHubCall(hubCalls, hubTime),
+    [hubCalls, hubTime],
   )
   const selectedFrom =
     network && selectedPosition
@@ -171,6 +191,20 @@ export function App() {
         if (error instanceof DOMException && error.name === 'AbortError') return
         setDataError(true)
       })
+    fetch(`${import.meta.env.BASE_URL}data/swiss-hub-day.json`, {
+      signal: controller.signal,
+    })
+      .then((response) => {
+        if (!response.ok) throw new Error(`Hub snapshot returned ${response.status}`)
+        return response.json() as Promise<HubDaySnapshot>
+      })
+      .then((snapshot) => {
+        setHubDay(snapshot)
+        setHubTime(snapshot.metadata.focusTime)
+      })
+      .catch((error: unknown) => {
+        if (error instanceof DOMException && error.name === 'AbortError') return
+      })
     return () => controller.abort()
   }, [])
 
@@ -191,7 +225,9 @@ export function App() {
   const isNetwork = view === 'network'
   const isHub = view === 'hub'
   const isTimetable = isNetwork || isHub
-  const networkReady = isTimetable && network
+  const timeline = isHub ? (hubDay?.metadata ?? network?.metadata) : network?.metadata
+  const timelineTime = isHub ? hubTime : networkTime
+  const timelineReady = isTimetable && timeline
 
   return (
     <main className={`experience view-${view}${selectedTrain ? ' has-selection' : ''}`}>
@@ -204,15 +240,17 @@ export function App() {
             selectedTrain={selectedTrain}
             onTime={handleNetworkTime}
             cameraCommand={mapCameraCommand}
+            playbackRate={playbackRate}
           />
         ) : isHub && network ? (
           <HubPulseScene
-            snapshot={network}
+            timeline={hubDay?.metadata ?? network.metadata}
             hub={selectedHub}
             calls={hubCalls}
             isPlaying={isPlaying}
-            time={networkTime}
-            onTime={handleNetworkTime}
+            time={hubTime}
+            onTime={setHubTime}
+            playbackRate={playbackRate}
           />
         ) : (
           <GleislichtScene
@@ -343,19 +381,20 @@ export function App() {
 
       {isHub ? (
         <section className="journey-card hub-card" aria-label={`${selectedHub.name} pulse`}>
-          <p className="hub-kicker">takt / 15 minute field</p>
+          <p className="hub-kicker">takt / 24 hour loop</p>
           <div className="network-count-row">
             <strong>{nearbyHubCalls.length}</strong>
             <span>arrivals + departures in orbit</span>
           </div>
           <p className="between">
-            {selectedHub.character} <span>/</span> {hubCalls.length} calls in 2h
+            {selectedHub.character} <span>/</span>{' '}
+            {numberFormat.format(hubCalls.length)} calls today
           </p>
           <div className="metric-grid">
             <div>
               <span>next strike</span>
               <strong>
-                {upcomingHubCall ? formatServiceTime(upcomingHubCall.stop[1]) : '—'}
+                {upcomingHubCall ? formatServiceTime(upcomingHubCall.arrival) : '—'}
               </strong>
               <small>{upcomingHubCall?.train.route ?? 'end'}</small>
             </div>
@@ -510,16 +549,16 @@ export function App() {
       <section className="transport" aria-label="Playback controls">
         <div className="progress-copy">
           <span>
-            {networkReady
-              ? formatServiceTime(network.metadata.windowStart)
+            {timelineReady
+              ? formatServiceTime(timeline.windowStart)
               : journeyPosition.previous.departure}
           </span>
           <span className="route-id">
-            {isTimetable ? formatServiceTime(networkTime) : prototypeJourney.id}
+            {isTimetable ? formatServiceTime(timelineTime) : prototypeJourney.id}
           </span>
           <span>
-            {networkReady
-              ? formatServiceTime(network.metadata.windowEnd)
+            {timelineReady
+              ? formatTimelineBoundary(timeline.windowEnd)
               : prototypeJourney.stops.at(-1)?.departure}
           </span>
         </div>
@@ -529,21 +568,39 @@ export function App() {
           </span>
           <input
             type="range"
-            min={networkReady ? network.metadata.windowStart : 0}
-            max={networkReady ? network.metadata.windowEnd : 1}
-            step={networkReady ? 10 : 0.001}
-            value={networkReady ? networkTime : journeyProgress}
+            min={timelineReady ? timeline.windowStart : 0}
+            max={timelineReady ? timeline.windowEnd : 1}
+            step={timelineReady ? 10 : 0.001}
+            value={timelineReady ? timelineTime : journeyProgress}
             disabled={isTimetable && !network}
             onChange={(event) => {
               const value = Number(event.target.value)
-              if (networkReady) setNetworkTime(value)
+              if (isHub) setHubTime(value)
+              else if (timelineReady) setNetworkTime(value)
               else setJourneyProgress(value)
             }}
           />
           <span className="progress-value">
-            {networkReady ? formatServiceTime(networkTime) : formatPercent(journeyProgress)}
+            {timelineReady ? formatServiceTime(timelineTime) : formatPercent(journeyProgress)}
           </span>
         </label>
+        {isTimetable && (
+          <div className="speed-picker" aria-label="Playback speed">
+            <span>tempo</span>
+            <div>
+              {PLAYBACK_RATES.map((rate) => (
+                <button
+                  key={rate.label}
+                  type="button"
+                  aria-pressed={playbackRate === rate.value}
+                  onClick={() => setPlaybackRate(rate.value)}
+                >
+                  {rate.label}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
         <div className="button-row">
           <button type="button" onClick={() => setIsPlaying((value) => !value)}>
             <span className="button-icon" aria-hidden="true">

@@ -62,7 +62,10 @@ describe('hub calls', () => {
   it('combines platform stop ids under one named station', () => {
     const calls = callsAtHub(snapshot, HUBS[0])
     expect(calls).toHaveLength(2)
-    expect(calls[0]).toMatchObject({ previousStop: 0, nextStop: 3 })
+    expect(calls[0]).toMatchObject({
+      previousStop: [8, 47, 'Winterthur'],
+      nextStop: [9, 47, 'Chur'],
+    })
   })
 
   it('selects the calls participating in the current pulse window', () => {
@@ -72,5 +75,6 @@ describe('hub calls', () => {
       'two:2',
     ])
     expect(nextHubCall(calls, 700)?.train.id).toBe('two')
+    expect(nextHubCall(calls, 1300)?.train.id).toBe('one')
   })
 })

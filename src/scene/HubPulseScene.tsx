@@ -4,33 +4,32 @@ import * as THREE from 'three'
 import type { HubCall, HubDefinition } from '../domain/hub.ts'
 import {
   SERVICE_COLORS,
+  type NetworkStop,
   type NetworkSnapshot,
   type ServiceCategory,
 } from '../domain/network.ts'
 
 interface HubPulseSceneProps {
-  readonly snapshot: NetworkSnapshot
+  readonly timeline: NetworkSnapshot['metadata']
   readonly hub: HubDefinition
   readonly calls: readonly HubCall[]
   readonly isPlaying: boolean
   readonly time: number
   readonly onTime: (time: number) => void
+  readonly playbackRate: number
 }
 
 const pulseHorizon = 15 * 60
 
 function directionForStop(
-  snapshot: NetworkSnapshot,
-  hubStop: number,
-  neighbourStop: number | undefined,
+  hubStop: NetworkStop,
+  neighbourStop: NetworkStop | undefined,
   fallback: number,
 ): number {
-  const hub = snapshot.stops[hubStop]
-  const neighbour = neighbourStop === undefined ? undefined : snapshot.stops[neighbourStop]
-  if (!hub || !neighbour) return fallback
-  const longitudeScale = Math.cos((hub[1] * Math.PI) / 180)
-  const x = (neighbour[0] - hub[0]) * longitudeScale
-  const z = -(neighbour[1] - hub[1])
+  if (!neighbourStop) return fallback
+  const longitudeScale = Math.cos((hubStop[1] * Math.PI) / 180)
+  const x = (neighbourStop[0] - hubStop[0]) * longitudeScale
+  const z = -(neighbourStop[1] - hubStop[1])
   return Math.atan2(z, x)
 }
 
@@ -90,18 +89,16 @@ function OrbitalRings() {
 }
 
 function CorridorSpokes({
-  snapshot,
   calls,
 }: {
-  readonly snapshot: NetworkSnapshot
   readonly calls: readonly HubCall[]
 }) {
   const geometries = useMemo(() => {
     const seen = new Set<string>()
     return calls.flatMap((call, index) => {
       const directions = [
-        directionForStop(snapshot, call.stop[0], call.previousStop, index),
-        directionForStop(snapshot, call.stop[0], call.nextStop, index + Math.PI),
+        directionForStop(call.hubStop, call.previousStop, index),
+        directionForStop(call.hubStop, call.nextStop, index + Math.PI),
       ]
       return directions.flatMap((angle) => {
         const key = `${Math.round(angle * 28)}:${call.train.category}`
@@ -121,7 +118,7 @@ function CorridorSpokes({
         return [{ key, line: new THREE.Line(geometry, material) }]
       })
     })
-  }, [calls, snapshot])
+  }, [calls])
 
   useEffect(
     () => () =>
@@ -166,11 +163,12 @@ function StationCore({ hub }: { readonly hub: HubDefinition }) {
 }
 
 function HubTraffic({
-  snapshot,
   calls,
   isPlaying,
   time,
   onTime,
+  timeline,
+  playbackRate,
 }: Omit<HubPulseSceneProps, 'hub'>) {
   const points = useRef<THREE.Points>(null)
   const glow = useRef<THREE.Points>(null)
@@ -206,9 +204,9 @@ function HubTraffic({
 
   useFrame((state, delta) => {
     if (isPlaying) {
-      localTime.current += delta * 20
-      if (localTime.current > snapshot.metadata.windowEnd) {
-        localTime.current = snapshot.metadata.windowStart
+      localTime.current += delta * playbackRate
+      if (localTime.current > timeline.windowEnd) {
+        localTime.current = timeline.windowStart
       }
     }
 
@@ -221,7 +219,11 @@ function HubTraffic({
     let active = 0
 
     calls.forEach((call, index) => {
-      const [hubStop, arrival, departure] = call.stop
+      const cycle = timeline.windowEnd - timeline.windowStart
+      const midpoint = (call.arrival + call.departure) / 2
+      const cycleOffset = Math.round((localTime.current - midpoint) / cycle) * cycle
+      const arrival = call.arrival + cycleOffset
+      const departure = call.departure + cycleOffset
       if (
         localTime.current < arrival - pulseHorizon ||
         localTime.current > departure + pulseHorizon
@@ -235,8 +237,8 @@ function HubTraffic({
         ? (arrival - localTime.current) / pulseHorizon
         : (localTime.current - departure) / pulseHorizon
       const direction = arriving
-        ? directionForStop(snapshot, hubStop, call.previousStop, index)
-        : directionForStop(snapshot, hubStop, call.nextStop, index + Math.PI)
+        ? directionForStop(call.hubStop, call.previousStop, index)
+        : directionForStop(call.hubStop, call.nextStop, index + Math.PI)
       const radius = dwelling ? 0.35 : 0.55 + THREE.MathUtils.clamp(progress, 0, 1) * 10
       const offset = active * 3
       positionArray[offset] = Math.cos(direction) * radius
@@ -297,7 +299,7 @@ function HubWorld(props: HubPulseSceneProps) {
         <meshBasicMaterial color="#272852" wireframe transparent opacity={0.09} />
       </mesh>
       <OrbitalRings />
-      <CorridorSpokes snapshot={props.snapshot} calls={props.calls} />
+      <CorridorSpokes calls={props.calls} />
       <StationCore hub={props.hub} />
       <HubTraffic {...props} />
     </>

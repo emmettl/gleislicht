@@ -5,6 +5,7 @@ import { dirname, resolve } from 'node:path'
 import { createInterface } from 'node:readline'
 
 const DEFAULT_OUTPUT = 'public/data/swiss-rail-morning.json'
+const DEFAULT_HUB_OUTPUT = 'public/data/swiss-hub-day.json'
 const DATASET_URL =
   'https://data.opentransportdata.swiss/en/dataset/timetable-2026-gtfs2020'
 const DISPLAY_BOUNDS = {
@@ -13,6 +14,12 @@ const DISPLAY_BOUNDS = {
   maxLongitude: 10.7,
   maxLatitude: 48,
 }
+const HUB_NAMES = new Map([
+  ['Zürich HB', 'zurich'],
+  ['Bern', 'bern'],
+  ['Basel SBB', 'basel'],
+  ['Genève', 'geneva'],
+])
 
 function argument(name, fallback) {
   const index = process.argv.indexOf(`--${name}`)
@@ -280,7 +287,46 @@ function createSnapshotBuilder({
   return { addTrip, finish }
 }
 
-async function readStopTimes(archive, trips, builder) {
+function createHubDayBuilder({ trips, sourceStops }) {
+  const hubs = Object.fromEntries([...HUB_NAMES.values()].map((id) => [id, []]))
+
+  function compactStop(stop) {
+    if (!stop) return undefined
+    const source = sourceStops.get(stop.stopId)
+    if (!source) return undefined
+    return [source.longitude, source.latitude, source.name]
+  }
+
+  function addTrip(tripId, tripStops) {
+    const train = trips.get(tripId)
+    if (!train) return
+    tripStops.forEach((stop, index) => {
+      const source = sourceStops.get(stop.stopId)
+      const hubId = source ? HUB_NAMES.get(source.name) : undefined
+      if (!hubId || stop.arrival > 86400 || stop.departure < 0) return
+      hubs[hubId].push({
+        id: `${tripId}:${stop.stopId}`,
+        train: { id: tripId, ...train },
+        arrival: stop.arrival,
+        departure: stop.departure,
+        hubStop: compactStop(stop),
+        previousStop: compactStop(tripStops[index - 1]),
+        nextStop: compactStop(tripStops[index + 1]),
+      })
+    })
+  }
+
+  function finish() {
+    for (const calls of Object.values(hubs)) {
+      calls.sort((first, second) => first.arrival - second.arrival)
+    }
+    return hubs
+  }
+
+  return { addTrip, finish }
+}
+
+async function readStopTimes(archive, trips, builders) {
   let currentTripId
   let currentStops = []
   let rowsRead = 0
@@ -288,7 +334,9 @@ async function readStopTimes(archive, trips, builder) {
   for await (const row of rowsFromArchive(archive, 'stop_times.txt')) {
     rowsRead += 1
     if (row.trip_id !== currentTripId) {
-      if (currentTripId) builder.addTrip(currentTripId, currentStops)
+      if (currentTripId) {
+        for (const builder of builders) builder.addTrip(currentTripId, currentStops)
+      }
       currentTripId = row.trip_id
       currentStops = []
     }
@@ -300,7 +348,9 @@ async function readStopTimes(archive, trips, builder) {
       })
     }
   }
-  if (currentTripId) builder.addTrip(currentTripId, currentStops)
+  if (currentTripId) {
+    for (const builder of builders) builder.addTrip(currentTripId, currentStops)
+  }
   return rowsRead
 }
 
@@ -323,7 +373,8 @@ async function main() {
   if (process.argv.includes('--help')) {
     console.log(
       'Usage: npm run data:gtfs -- --archive /path/feed.zip --date YYYY-MM-DD ' +
-        '[--window-start 06:45] [--window-end 08:45] [--focus 07:45] [--output file.json]',
+        '[--window-start 06:45] [--window-end 08:45] [--focus 07:45] ' +
+        '[--output morning.json] [--hub-output day.json]',
     )
     return
   }
@@ -334,6 +385,7 @@ async function main() {
   const windowEndLabel = argument('window-end', '08:45')
   const focusLabel = argument('focus', '07:45')
   const output = resolve(argument('output', DEFAULT_OUTPUT))
+  const hubOutput = resolve(argument('hub-output', DEFAULT_HUB_OUTPUT))
   const windowStart = parseClock(windowStartLabel)
   const windowEnd = parseClock(windowEndLabel)
   const focusTime = parseClock(focusLabel)
@@ -356,8 +408,10 @@ async function main() {
     windowEnd,
     focusTime,
   })
-  const rowsRead = await readStopTimes(archive, trips, builder)
+  const hubBuilder = createHubDayBuilder({ trips, sourceStops })
+  const rowsRead = await readStopTimes(archive, trips, [builder, hubBuilder])
   const snapshot = builder.finish()
+  const hubs = hubBuilder.finish()
 
   const result = {
     metadata: {
@@ -377,12 +431,31 @@ async function main() {
     trains: snapshot.trains,
   }
 
-  await writeJson(output, result)
+  const hubResult = {
+    metadata: {
+      publisher: feed.feed_publisher_name,
+      feedVersion: feed.feed_version,
+      serviceDate,
+      windowStart: 0,
+      windowEnd: 86400,
+      focusTime,
+      sourceUrl: DATASET_URL,
+      model: 'scheduled station calls',
+      note: 'A full civil-day view of calls at four major Swiss railway hubs.',
+    },
+    hubs,
+  }
+
+  await Promise.all([writeJson(output, result), writeJson(hubOutput, hubResult)])
   console.log(
     `Wrote ${snapshot.trains.length} morning trips, ${snapshot.edges.length} rail edges, ` +
       `${snapshot.stops.length} stops and ${snapshot.trainsAtFocus} trains moving at ${focusLabel}.`,
   )
   console.log(`Read ${rowsRead.toLocaleString('en')} stop-time rows → ${output}`)
+  console.log(
+    `Wrote ${Object.values(hubs).reduce((total, calls) => total + calls.length, 0)} ` +
+      `full-day hub calls → ${hubOutput}`,
+  )
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {

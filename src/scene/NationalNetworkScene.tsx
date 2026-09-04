@@ -23,6 +23,7 @@ interface NationalNetworkSceneProps {
   readonly selectedTrain?: NetworkTrain
   readonly onTime: (time: number) => void
   readonly cameraCommand?: MapCameraCommand
+  readonly playbackRate: number
 }
 
 type ProjectedStop = readonly [x: number, y: number, z: number]
@@ -172,6 +173,7 @@ function TrainSwarm({
   isPlaying,
   time,
   onTime,
+  playbackRate,
 }: NationalNetworkSceneProps & {
   readonly projectedStops: readonly ProjectedStop[]
 }) {
@@ -209,7 +211,7 @@ function TrainSwarm({
 
   useFrame((state, delta) => {
     if (isPlaying) {
-      localTime.current += delta * 30
+      localTime.current += delta * playbackRate
       if (localTime.current > snapshot.metadata.windowEnd) {
         localTime.current = snapshot.metadata.windowStart
       }

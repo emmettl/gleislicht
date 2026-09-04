@@ -1,4 +1,8 @@
-import type { NetworkSnapshot, NetworkTrain, TrainStop } from './network.ts'
+import type {
+  NetworkSnapshot,
+  NetworkStop,
+  ServiceCategory,
+} from './network.ts'
 
 export type HubId = 'zurich' | 'bern' | 'basel' | 'geneva'
 
@@ -38,10 +42,23 @@ export const HUBS: readonly HubDefinition[] = [
 
 export interface HubCall {
   readonly id: string
-  readonly train: NetworkTrain
-  readonly stop: TrainStop
-  readonly previousStop?: number
-  readonly nextStop?: number
+  readonly train: {
+    readonly id: string
+    readonly route: string
+    readonly headsign: string
+    readonly shortName: string
+    readonly category: ServiceCategory
+  }
+  readonly arrival: number
+  readonly departure: number
+  readonly hubStop: NetworkStop
+  readonly previousStop?: NetworkStop
+  readonly nextStop?: NetworkStop
+}
+
+export interface HubDaySnapshot {
+  readonly metadata: NetworkSnapshot['metadata']
+  readonly hubs: Readonly<Record<HubId, readonly HubCall[]>>
 }
 
 export function callsAtHub(
@@ -60,31 +77,41 @@ export function callsAtHub(
     )
     if (callIndex < 0) continue
     const stop = train.stops[callIndex]
+    const hubStop = snapshot.stops[stop[0]]
+    if (!hubStop) continue
     calls.push({
       id: `${train.id}:${stop[0]}`,
       train,
-      stop,
-      previousStop: train.stops[callIndex - 1]?.[0],
-      nextStop: train.stops[callIndex + 1]?.[0],
+      arrival: stop[1],
+      departure: stop[2],
+      hubStop,
+      previousStop: snapshot.stops[train.stops[callIndex - 1]?.[0]],
+      nextStop: snapshot.stops[train.stops[callIndex + 1]?.[0]],
     })
   }
 
-  return calls.sort((first, second) => first.stop[1] - second.stop[1])
+  return calls.sort((first, second) => first.arrival - second.arrival)
 }
 
 export function callsNearTime(
   calls: readonly HubCall[],
   time: number,
   horizon = 15 * 60,
+  cycle = 24 * 3600,
 ): readonly HubCall[] {
-  return calls.filter(
-    (call) => time >= call.stop[1] - horizon && time <= call.stop[2] + horizon,
-  )
+  return calls.filter((call) => {
+    const midpoint = (call.arrival + call.departure) / 2
+    const cycleOffset = Math.round((time - midpoint) / cycle) * cycle
+    return (
+      time >= call.arrival + cycleOffset - horizon &&
+      time <= call.departure + cycleOffset + horizon
+    )
+  })
 }
 
 export function nextHubCall(
   calls: readonly HubCall[],
   time: number,
 ): HubCall | undefined {
-  return calls.find((call) => call.stop[1] >= time)
+  return calls.find((call) => call.arrival >= time) ?? calls[0]
 }
