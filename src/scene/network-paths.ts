@@ -60,3 +60,32 @@ export function pointAlongProjectedPath(
     from[2] + (to[2] - from[2]) * segmentProgress,
   ]
 }
+
+export function projectedPathRunsForward(
+  path: ProjectedNetworkPath,
+  from: ProjectedPathPoint,
+): boolean {
+  const first = path.points[0]
+  const last = path.points.at(-1)
+  if (!first || !last) return true
+  const distanceToFirst =
+    (first[0] - from[0]) ** 2 +
+    (first[1] - from[1]) ** 2 +
+    (first[2] - from[2]) ** 2
+  const distanceToLast =
+    (last[0] - from[0]) ** 2 +
+    (last[1] - from[1]) ** 2 +
+    (last[2] - from[2]) ** 2
+  return distanceToFirst <= distanceToLast
+}
+
+export function pointAlongProjectedPathFrom(
+  path: ProjectedNetworkPath,
+  progress: number,
+  from: ProjectedPathPoint,
+): ProjectedPathPoint | undefined {
+  return pointAlongProjectedPath(
+    path,
+    projectedPathRunsForward(path, from) ? progress : 1 - progress,
+  )
+}

@@ -2391,13 +2391,21 @@ export function App() {
             >
               Swiss GTFS · {network?.metadata.feedVersion ?? text.loading}
             </a>
-            {isNetwork && networkStudy !== 'national' && network?.metadata.geometry && (
+            {isNetwork && network?.metadata.geometry && (
               <a
-                href={network.metadata.geometry.sourceUrl}
+                href={
+                  network.metadata.geometry.productUrl ??
+                  network.metadata.geometry.sourceUrl
+                }
                 target="_blank"
                 rel="noreferrer"
               >
-                {text.stopGeometry} · {networkStudy === 'geneva-tpg' ? 'TPG / SITG' : 'ZVV'}
+                {text.stopGeometry} ·{' '}
+                {networkStudy === 'national'
+                  ? 'BAV / OFT'
+                  : networkStudy === 'geneva-tpg'
+                    ? 'TPG / SITG'
+                    : 'ZVV'}
               </a>
             )}
             {isNetwork && networkStudy === 'national' && boundary && (

@@ -13,10 +13,11 @@ const BUDGETS = {
   css: 10 * 1024,
   // The official timetable is regenerated twice weekly and its compressed
   // first-view payload naturally moves with the number and shape of services.
-  // Keep enough headroom for that feed churn while retaining a hard mobile
-  // ceiling that will catch a genuinely accidental payload expansion.
-  data: 360 * 1024,
-  total: 700 * 1024,
+  // The official FOT rail paths add roughly 100 KiB compressed, buying real
+  // alignment without a runtime map dependency. Keep enough headroom for feed
+  // churn while retaining a hard mobile ceiling for accidental expansion.
+  data: 450 * 1024,
+  total: 790 * 1024,
 }
 
 async function gzipSize(filePath) {

@@ -58,7 +58,9 @@ import {
 } from './map-camera.ts'
 import {
   pointAlongProjectedPath,
+  pointAlongProjectedPathFrom,
   prepareProjectedPath,
+  projectedPathRunsForward,
   type ProjectedNetworkPath,
 } from './network-paths.ts'
 import {
@@ -175,7 +177,12 @@ function segmentPoints(
   const pathIndex = train.pathSegments?.[segmentIndex]
   if (pathIndex !== undefined && pathIndex !== null) {
     const path = projectedPaths[pathIndex]
-    if (path?.points.length) return path.points
+    if (path?.points.length) {
+      const fromIndex = train.stops[segmentIndex]?.[0]
+      const from = fromIndex === undefined ? undefined : projectedStops[fromIndex]
+      if (!from || projectedPathRunsForward(path, from)) return path.points
+      return [...path.points].reverse()
+    }
   }
   const fromIndex = train.stops[segmentIndex]?.[0]
   const toIndex = train.stops[segmentIndex + 1]?.[0]
@@ -221,7 +228,10 @@ function projectedTrainPosition(
       ? undefined
       : projectedPaths[pathIndex]
   if (path) {
-    const point = pointAlongProjectedPath(path, position.progress)
+    const from = projectedStops[position.fromStop]
+    const point = from
+      ? pointAlongProjectedPathFrom(path, position.progress, from)
+      : pointAlongProjectedPath(path, position.progress)
     if (point) return [point[0], 0.2, point[2]]
   }
   const detour = lakeAvoidingPathForStops(

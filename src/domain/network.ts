@@ -82,9 +82,13 @@ export interface NetworkSnapshot {
       readonly publisher: string
       readonly feedVersion: string
       readonly sourceUrl: string
+      readonly productUrl?: string
       readonly model: string
       readonly matchedSegments: number
       readonly totalSegments: number
+      readonly resolvedStops?: number
+      readonly totalStops?: number
+      readonly simplificationToleranceMetres?: number
     }
   }
   readonly bounds: {

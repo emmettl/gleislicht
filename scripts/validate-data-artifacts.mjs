@@ -27,6 +27,17 @@ assert(Array.isArray(morning.edges) && morning.edges.length > 500, 'Morning stud
 assert(day.tripCount > 10_000, 'Full-day study has too few trips')
 assert(Array.isArray(day.chunks) && day.chunks.length >= 8, 'Full-day study is missing time chunks')
 
+for (const [name, artifact] of [['morning', morning], ['full-day', day]]) {
+  const geometry = artifact.metadata?.geometry
+  assert(Array.isArray(artifact.paths) && artifact.paths.length > 1_000, `${name} study has too few rail paths`)
+  assert(Array.isArray(artifact.edgePaths), `${name} study has no edge-path index`)
+  assert(geometry?.publisher === 'Federal Office of Transport (FOT)', `${name} study has no FOT geometry provenance`)
+  assert(
+    geometry.matchedSegments / geometry.totalSegments >= 0.65,
+    `${name} study has insufficient rail geometry coverage`,
+  )
+}
+
 for (const hub of ['zurich', 'bern', 'basel', 'geneva']) {
   assert(Array.isArray(hubs.hubs?.[hub]), `Hub study is missing ${hub}`)
   assert(hubs.hubs[hub].length > 100, `Hub study has too few ${hub} calls`)

@@ -58,6 +58,12 @@ jobs:
             --output "$RUNNER_TEMP/swiss-gtfs.zip"
           unzip -t "$RUNNER_TEMP/swiss-gtfs.zip" >/dev/null
 
+      - name: Download official rail geometry
+        run: |
+          curl --fail --location --retry 3 \
+            "https://data.geo.admin.ch/ch.bav.schienennetz/schienennetz/schienennetz_2056_de.xtf" \
+            --output "$RUNNER_TEMP/schienennetz_2056_de.xtf"
+
       - name: Regenerate national studies
         run: |
           npm run data:gtfs -- \
@@ -66,6 +72,13 @@ jobs:
           npm run data:day -- \
             --archive "$RUNNER_TEMP/swiss-gtfs.zip" \
             --date "${{ steps.edition.outputs.service_date }}"
+          npm run data:rail:shapes -- \
+            --source "$RUNNER_TEMP/schienennetz_2056_de.xtf" \
+            --tolerance 160
+          npm run data:rail:shapes -- \
+            --source "$RUNNER_TEMP/schienennetz_2056_de.xtf" \
+            --snapshot public/data/swiss-rail-day-manifest.json \
+            --tolerance 160
 
       - name: Validate generated artifacts and application
         run: |

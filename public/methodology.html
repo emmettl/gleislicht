@@ -44,7 +44,7 @@
           <dt>Time</dt><dd>The clock is deterministic and scrubbable. The morning study covers two hours; full-day studies load in three-hour chunks around the selected time.</dd>
           <dt>Brightness</dt><dd>Route glow expresses scheduled frequency on a segment. Short trails show recent simulated movement, not historical location records.</dd>
           <dt>Selection</dt><dd>Station selection reveals all scheduled paths touching that stop in the loaded study. Line and category selection dims unrelated movement.</dd>
-          <dt>Geometry</dt><dd>Zürich and Genève regional studies use published operator geometry where matched. National stop-to-stop paths are approximations and are routed around major lake surfaces when no authoritative rail shape is available.</dd>
+          <dt>Geometry</dt><dd>National trains use matched Federal Office of Transport infrastructure geometry. Zürich and Genève regional studies use published operator geometry where matched. Unresolved segments remain scheduled approximations, with major lake crossings corrected by the shoreline fallback.</dd>
         </dl>
       </section>
 
@@ -52,6 +52,7 @@
         <h2>Sources and packaging</h2>
         <ul>
           <li><a href="https://opentransportdata.swiss/en/cookbook/timetable-cookbook/gtfs/">Swiss GTFS Static</a> supplies routes, service calendars, trips, stops and stop times.</li>
+          <li><a href="https://map.geo.admin.ch/#/map?lang=en&amp;center=2660000,1190000&amp;z=1&amp;topic=ech&amp;layers=ch.bav.schienennetz">Federal Office of Transport rail network</a> supplies national infrastructure alignment.</li>
           <li><a href="https://www.swisstopo.admin.ch/en/landscape-model-swissboundaries3d">swissBOUNDARIES3D</a> supplies the simplified national outline.</li>
           <li>Federal open hydrography is simplified offline into the major lake layer, with source attribution retained in the artifact.</li>
           <li><a href="https://data.stadt-zuerich.ch/dataset/vbz_fahrplandaten_gtfs">ZVV / VBZ GTFS</a> and <a href="https://sitg.ge.ch/donnees/tpg-lignes">TPG / SITG</a> provide regional line geometry.</li>

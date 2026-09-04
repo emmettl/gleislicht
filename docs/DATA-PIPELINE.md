@@ -35,9 +35,24 @@ npm run data:day -- \
 
 This writes a compact `public/data/swiss-rail-day-manifest.json` containing the shared topology and eight three-hour movement files under `public/data/swiss-rail-day-chunks/`. The browser requests none of them during the initial morning view. Selecting **24H** loads the manifest and the current three-hour block first, then prefetches the neighbouring blocks for seamless playback. Trips crossing a boundary are present in both adjoining blocks. The renderer also uses a coarse time index so each animation frame considers only services near the current time.
 
+The national GTFS does not include `shapes.txt`, so join both timetable artifacts to the Federal Office of Transport rail network after generation:
+
+```bash
+npm run data:rail:shapes -- \
+  --source /path/to/schienennetz_2056_de.xtf \
+  --tolerance 160
+
+npm run data:rail:shapes -- \
+  --source /path/to/schienennetz_2056_de.xtf \
+  --snapshot public/data/swiss-rail-day-manifest.json \
+  --tolerance 160
+```
+
+The join resolves timetable stops through their Swiss stop identifier where available, then by normalized name and proximity. It finds the shortest credible route through the official graph, deduplicates bidirectional stop pairs into shared paths and stores compact path references on trains and weighted edges. The committed morning artifact matches about 87% of segment occurrences and 3,246 of 3,670 timetable stops. A 160-metre simplification tolerance preserves meaningful railway curvature while keeping the compressed opening payload below 0.8 MiB. Cross-border and unresolved segments remain visibly schedule-derived fallbacks.
+
 ### Reviewed national refreshes
 
-The `Refresh national timetable data` GitHub Actions workflow checks the official current-resource permalink twice weekly and can also be run manually for a chosen service date. It regenerates the morning, full-day and hub studies together in an isolated runner, then runs `npm run data:validate`, the unit tests, typecheck, production build and transfer budget before force-updating the dedicated `automation/refresh-national-data` review branch. The run summary links either to its open pull request or to GitHub's pre-filled comparison page for the first review. Keeping first-time PR creation manual avoids granting every repository workflow permission to approve pull requests. Publishing therefore changes the national artifact set only through a reviewed, validated commit; the automation never overwrites the independently shape-enriched regional studies.
+The `Refresh national timetable data` GitHub Actions workflow checks the official current-resource permalink twice weekly and can also be run manually for a chosen service date. It regenerates the morning, full-day and hub studies together in an isolated runner, downloads and joins the official rail geometry, then runs `npm run data:validate`, the unit tests, typecheck, production build and transfer budget before force-updating the dedicated `automation/refresh-national-data` review branch. The run summary links either to its open pull request or to GitHub's pre-filled comparison page for the first review. Keeping first-time PR creation manual avoids granting every repository workflow permission to approve pull requests. Publishing therefore changes the national artifact set only through a reviewed, validated commit; the automation never overwrites the independently shape-enriched regional studies.
 
 Run the same structural checks locally after any manual regeneration:
 
@@ -131,11 +146,11 @@ npm run data:postbus:kiental -- \
 
 This produces a 4.3 KB manifest and eight three-hour chunks totalling about 19 KB. The complete study contains 20 route-220 trips plus 48 nearby rail trips, 33 stops and 34 edges. Empty overnight chunks are retained intentionally so the future Zürich–Kiental contrast uses one honest 24-hour clock. See [POSTBUS-CORRIDOR.md](./POSTBUS-CORRIDOR.md) for the selection evidence.
 
-## Known geometry limitation
+## Geometry model and limits
 
-The current Swiss GTFS archive has no `shapes.txt`. Until rail geometry is joined from a suitable infrastructure dataset, the national study and regional rail services normally interpolate between stop coordinates. Zürich tram and bus services use the aligned ZVV geometry; Genève tram, trolleybus and bus services use TPG/SITG line geometry.
+The current Swiss GTFS archive has no `shapes.txt`. National rail movements are therefore joined to the Federal Office of Transport's published `ch.bav.schienennetz` infrastructure graph. This is authoritative railway alignment, but not a trip-specific path declaration: where parallel alternatives exist, the preprocessing step chooses the shortest credible infrastructure route between matched timetable stops. Zürich tram and bus services use the aligned ZVV geometry; Genève tram, trolleybus and bus services use TPG/SITG line geometry.
 
-At render time, a fallback segment that crosses a substantial distance through a federal lake polygon is routed around the shorter shoreline arc. Crossings below roughly 1.25 km at national scale remain direct so real bridge links such as the Seedamm are not removed. Supplied GTFS or regional geometry always wins. This lake avoidance is a visual correction for an obviously impossible chord, not a substitute for infrastructure geometry; the same derived path is used by network lines, selected routes, vehicle interpolation, trails, labels and the follow camera. The result remains schedule-derived rather than a claim of GPS tracking, and the snapshot metadata records that distinction.
+At render time, an unresolved fallback segment that crosses a substantial distance through a federal lake polygon is routed around the shorter shoreline arc. Crossings below roughly 1.25 km at national scale remain direct so real bridge links such as the Seedamm are not removed. Supplied infrastructure or regional geometry always wins. The same derived path is used by network lines, selected routes, vehicle interpolation, trails, labels and the follow camera. Movement remains scheduled interpolation rather than a claim of GPS tracking, and the snapshot metadata records both provenance and measured coverage.
 
 ## National boundary
 
@@ -160,6 +175,7 @@ For a repeatable offline build, save the GeoAdmin `identify` response and pass i
 ## Reproducibility rules
 
 - The source ZIP is temporary build input and must not be committed.
+- The source Federal Office of Transport XTF is temporary build input and must not be committed.
 - The source swissBOUNDARIES3D GeoPackage is temporary build input and must not be committed.
 - A saved GeoAdmin lake response is temporary build input and must not be committed.
 - The output records feed version, service date, time window, publisher and model.
