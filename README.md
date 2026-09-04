@@ -34,6 +34,8 @@ The national and Zürich maps support mouse-wheel or pinch zoom, pointer or touc
 
 Rail sections are weighted by the number of scheduled vehicle traversals in the active study window. A logarithmic scale keeps quieter branches legible while increasingly frequent corridors move from violet to cyan; only the busiest band breathes slowly, distinguishing network intensity from the faster motion of individual vehicles. Parallel platform-level edges are aggregated by their named station pair before weighting.
 
+Active trains and regional vehicles leave a short three-band trail reconstructed directly from their recent timetable positions. The 135-second scheduled history fades with age, carries the service-category colour, and follows train, station and category filters without accumulating stale paths after timeline seeks.
+
 The **trains · auto/on/off** map control manages moving train labels. Auto begins with long-distance services, reveals more categories with zoom, and follows active station or service-category filters. On raises the density while retaining collision suppression; Off keeps the moving lights unlabelled.
 
 Open **Takt hubs** to move between Zürich HB, Bern, Basel SBB and Genève across a continuous 24-hour schedule. Switch between **Pulse**, the abstract clock-face composition, and **Tracks**, a schematic station plan driven by the feed's real platform assignments. Four tempo settings run from 1× to 64×, turning the day into a slow study or a rapid station flow. See [docs/HUB-STUDY.md](./docs/HUB-STUDY.md) for the visual model and the deliberately careful wording around Zürich's “busiest” status.

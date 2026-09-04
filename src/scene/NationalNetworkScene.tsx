@@ -30,6 +30,10 @@ import {
 } from './train-labels.ts'
 import { edgeTrafficWeights } from './traffic-weights.ts'
 import {
+  VEHICLE_TRAIL_SEGMENTS,
+  vehicleTrailSampleTimes,
+} from './vehicle-trails.ts'
+import {
   applyMapZoom,
   homeMapDistanceScale,
   type MapCameraFraming,
@@ -1225,6 +1229,150 @@ function TrainSwarm({
   )
 }
 
+function VehicleTrails({
+  snapshot,
+  projectedStops,
+  selectedTrain,
+  selectedCategory,
+  selectedStation,
+  isPlaying,
+  time,
+  playbackRate,
+}: NationalNetworkSceneProps & {
+  readonly projectedStops: readonly ProjectedStop[]
+}) {
+  const localTime = useRef(time)
+  const lastUpdate = useRef(-1)
+  const selectedStationTrainIds = useMemo(
+    () => new Set(selectedStation?.trainIds ?? []),
+    [selectedStation],
+  )
+  const palette = useMemo(
+    () =>
+      Object.fromEntries(
+        Object.entries(SERVICE_COLORS).map(([category, color]) => [
+          category,
+          new THREE.Color(color),
+        ]),
+      ) as Record<ServiceCategory, THREE.Color>,
+    [],
+  )
+  const geometries = useMemo(
+    () =>
+      Array.from({ length: VEHICLE_TRAIL_SEGMENTS }, () => {
+        const geometry = new THREE.BufferGeometry()
+        geometry.setAttribute(
+          'position',
+          new THREE.BufferAttribute(
+            new Float32Array(snapshot.trains.length * 6),
+            3,
+          ),
+        )
+        geometry.setAttribute(
+          'color',
+          new THREE.BufferAttribute(
+            new Float32Array(snapshot.trains.length * 6),
+            3,
+          ),
+        )
+        geometry.setDrawRange(0, 0)
+        return geometry
+      }),
+    [snapshot.trains.length],
+  )
+
+  useEffect(() => {
+    localTime.current = time
+  }, [time])
+
+  useEffect(
+    () => () => {
+      geometries.forEach((geometry) => geometry.dispose())
+    },
+    [geometries],
+  )
+
+  useFrame(({ clock }, delta) => {
+    if (isPlaying) {
+      localTime.current += delta * playbackRate
+      if (localTime.current > snapshot.metadata.windowEnd) {
+        localTime.current = snapshot.metadata.windowStart
+      }
+    }
+    if (clock.elapsedTime - lastUpdate.current < 1 / 30) return
+    lastUpdate.current = clock.elapsedTime
+
+    const sampleTimes = vehicleTrailSampleTimes(localTime.current)
+    const segmentCounts = new Array<number>(VEHICLE_TRAIL_SEGMENTS).fill(0)
+    const positionArrays = geometries.map(
+      (geometry) =>
+        geometry.getAttribute('position').array as Float32Array,
+    )
+    const colorArrays = geometries.map(
+      (geometry) => geometry.getAttribute('color').array as Float32Array,
+    )
+
+    for (const train of snapshot.trains) {
+      if (selectedTrain && train.id !== selectedTrain.id) continue
+      if (selectedCategory && train.category !== selectedCategory) continue
+      if (selectedStation && !selectedStationTrainIds.has(train.id)) continue
+
+      const samples = sampleTimes.map((sampleTime) =>
+        projectedTrainPosition(train, sampleTime, projectedStops),
+      )
+      const color = palette[train.category] ?? palette.other
+
+      for (let index = 0; index < VEHICLE_TRAIL_SEGMENTS; index += 1) {
+        const current = samples[index]
+        const previous = samples[index + 1]
+        if (!current || !previous) continue
+        const distanceSquared =
+          (current[0] - previous[0]) ** 2 +
+          (current[2] - previous[2]) ** 2
+        if (distanceSquared < 0.000001) continue
+
+        const offset = segmentCounts[index] * 6
+        positionArrays[index].set(current, offset)
+        positionArrays[index].set(previous, offset + 3)
+        colorArrays[index].set(
+          [color.r, color.g, color.b, color.r, color.g, color.b],
+          offset,
+        )
+        segmentCounts[index] += 1
+      }
+    }
+
+    geometries.forEach((geometry, index) => {
+      geometry.getAttribute('position').needsUpdate = true
+      geometry.getAttribute('color').needsUpdate = true
+      geometry.setDrawRange(0, segmentCounts[index] * 2)
+    })
+  })
+
+  const opacity = [0.4, 0.22, 0.1]
+  return (
+    <group position={[0, -0.035, 0]}>
+      {geometries.map((geometry, index) => (
+        <lineSegments
+          key={index}
+          geometry={geometry}
+          frustumCulled={false}
+          renderOrder={3 + index}
+        >
+          <lineBasicMaterial
+            vertexColors
+            transparent
+            opacity={opacity[index]}
+            blending={THREE.AdditiveBlending}
+            depthWrite={false}
+            toneMapped={false}
+          />
+        </lineSegments>
+      ))}
+    </group>
+  )
+}
+
 function SelectedTrainMarker({
   train,
   time,
@@ -1468,6 +1616,7 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
           selectedCategory={props.selectedCategory}
         />
       )}
+      <VehicleTrails {...props} projectedStops={projectedStops} />
       <TrainSwarm {...props} projectedStops={projectedStops} />
       <TrainLabels {...props} projectedStops={projectedStops} />
       <StationLabels
