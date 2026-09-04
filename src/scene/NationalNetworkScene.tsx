@@ -444,6 +444,66 @@ function trainLightTexture(kind: 'halo' | 'orb' | 'spark'): THREE.CanvasTexture 
   return texture
 }
 
+type VehicleMarkerKind = 'rail' | 'tram' | 'bus'
+
+const VEHICLE_MARKER_KINDS: readonly VehicleMarkerKind[] = [
+  'rail',
+  'tram',
+  'bus',
+]
+
+function vehicleMarkerKind(category: ServiceCategory): VehicleMarkerKind {
+  if (category === 'tram') return 'tram'
+  if (category === 'bus') return 'bus'
+  return 'rail'
+}
+
+function vehicleGlyphTexture(kind: 'tram' | 'bus'): THREE.CanvasTexture {
+  const canvas = document.createElement('canvas')
+  canvas.width = 96
+  canvas.height = 96
+  const context = canvas.getContext('2d')
+  if (context) {
+    context.strokeStyle = 'rgba(255, 255, 255, 0.98)'
+    context.fillStyle = 'rgba(255, 255, 255, 1)'
+    context.shadowColor = 'rgba(255, 255, 255, 0.75)'
+    context.shadowBlur = 7
+    context.lineJoin = 'round'
+    context.lineCap = 'round'
+
+    if (kind === 'tram') {
+      context.lineWidth = 9
+      context.beginPath()
+      context.moveTo(48, 17)
+      context.lineTo(76, 48)
+      context.lineTo(48, 79)
+      context.lineTo(20, 48)
+      context.closePath()
+      context.stroke()
+      context.beginPath()
+      context.arc(48, 48, 7, 0, Math.PI * 2)
+      context.fill()
+    } else {
+      context.lineWidth = 15
+      context.beginPath()
+      context.moveTo(25, 48)
+      context.lineTo(71, 48)
+      context.stroke()
+      context.shadowBlur = 0
+      context.fillStyle = 'rgba(255, 255, 255, 0.72)'
+      context.beginPath()
+      context.arc(28, 48, 3.5, 0, Math.PI * 2)
+      context.arc(68, 48, 3.5, 0, Math.PI * 2)
+      context.fill()
+    }
+  }
+  const texture = new THREE.CanvasTexture(canvas)
+  texture.colorSpace = THREE.SRGBColorSpace
+  texture.minFilter = THREE.LinearFilter
+  texture.generateMipmaps = false
+  return texture
+}
+
 function SelectedRoute({
   train,
   projectedStops,
@@ -1252,6 +1312,8 @@ function TrainSwarm({
       halo: trainLightTexture('halo'),
       orb: trainLightTexture('orb'),
       spark: trainLightTexture('spark'),
+      tram: vehicleGlyphTexture('tram'),
+      bus: vehicleGlyphTexture('bus'),
     }),
     [],
   )
@@ -1265,19 +1327,32 @@ function TrainSwarm({
       ) as Record<ServiceCategory, THREE.Color>,
     [],
   )
-  const geometry = useMemo(() => {
-    const next = new THREE.BufferGeometry()
-    next.setAttribute(
-      'position',
-      new THREE.BufferAttribute(new Float32Array(snapshot.trains.length * 3), 3),
-    )
-    next.setAttribute(
-      'color',
-      new THREE.BufferAttribute(new Float32Array(snapshot.trains.length * 3), 3),
-    )
-    next.setDrawRange(0, 0)
-    return next
-  }, [snapshot.trains.length])
+  const geometries = useMemo(() => {
+    const categoryCounts: Record<VehicleMarkerKind, number> = {
+      rail: 0,
+      tram: 0,
+      bus: 0,
+    }
+    snapshot.trains.forEach((train) => {
+      categoryCounts[vehicleMarkerKind(train.category)] += 1
+    })
+    return Object.fromEntries(
+      VEHICLE_MARKER_KINDS.map((kind) => {
+        const geometry = new THREE.BufferGeometry()
+        const length = categoryCounts[kind] * 3
+        geometry.setAttribute(
+          'position',
+          new THREE.BufferAttribute(new Float32Array(length), 3),
+        )
+        geometry.setAttribute(
+          'color',
+          new THREE.BufferAttribute(new Float32Array(length), 3),
+        )
+        geometry.setDrawRange(0, 0)
+        return [kind, geometry]
+      }),
+    ) as Record<VehicleMarkerKind, THREE.BufferGeometry>
+  }, [snapshot.trains])
 
   useEffect(() => {
     localTime.current = time
@@ -1288,8 +1363,17 @@ function TrainSwarm({
       lightTextures.halo.dispose()
       lightTextures.orb.dispose()
       lightTextures.spark.dispose()
+      lightTextures.tram.dispose()
+      lightTextures.bus.dispose()
     },
     [lightTextures],
+  )
+
+  useEffect(
+    () => () => {
+      Object.values(geometries).forEach((geometry) => geometry.dispose())
+    },
+    [geometries],
   )
 
   useFrame((state, delta) => {
@@ -1300,19 +1384,25 @@ function TrainSwarm({
       }
     }
 
-    const mutableGeometry = points.current?.geometry
-    if (!mutableGeometry) return
-    const positionAttribute = mutableGeometry.getAttribute(
-      'position',
-    ) as THREE.BufferAttribute
-    const colorAttribute = mutableGeometry.getAttribute('color') as THREE.BufferAttribute
-    const mutablePositions = positionAttribute.array as Float32Array
-    const mutableColors = colorAttribute.array as Float32Array
-    let active = 0
+    const activeCounts: Record<VehicleMarkerKind, number> = {
+      rail: 0,
+      tram: 0,
+      bus: 0,
+    }
     for (const train of snapshot.trains) {
       const position = projectedTrainPosition(train, localTime.current, projectedStops)
       if (!position) continue
-      const offset = active * 3
+      const markerKind = vehicleMarkerKind(train.category)
+      const mutableGeometry = geometries[markerKind]
+      const positionAttribute = mutableGeometry.getAttribute(
+        'position',
+      ) as THREE.BufferAttribute
+      const colorAttribute = mutableGeometry.getAttribute(
+        'color',
+      ) as THREE.BufferAttribute
+      const mutablePositions = positionAttribute.array as Float32Array
+      const mutableColors = colorAttribute.array as Float32Array
+      const offset = activeCounts[markerKind] * 3
       mutablePositions.set(position, offset)
       const color = palette[train.category] ?? palette.other
       const stationIncludesTrain =
@@ -1331,12 +1421,15 @@ function TrainSwarm({
       mutableColors[offset] = color.r * intensity
       mutableColors[offset + 1] = color.g * intensity
       mutableColors[offset + 2] = color.b * intensity
-      active += 1
+      activeCounts[markerKind] += 1
     }
 
-    positionAttribute.needsUpdate = true
-    colorAttribute.needsUpdate = true
-    mutableGeometry.setDrawRange(0, active)
+    VEHICLE_MARKER_KINDS.forEach((kind) => {
+      const mutableGeometry = geometries[kind]
+      mutableGeometry.getAttribute('position').needsUpdate = true
+      mutableGeometry.getAttribute('color').needsUpdate = true
+      mutableGeometry.setDrawRange(0, activeCounts[kind])
+    })
     if (points.current) points.current.frustumCulled = false
     if (glow.current) glow.current.frustumCulled = false
 
@@ -1348,52 +1441,77 @@ function TrainSwarm({
 
   return (
     <>
-      <points ref={glow} geometry={geometry} frustumCulled={false}>
-        <pointsMaterial
-          vertexColors
-          map={lightTextures.halo}
-          size={0.9}
-          transparent
-          opacity={
-            selectedTrain || selectedRoute || selectedCategory || selectedStation
-              ? 0.08
-              : 0.18
-          }
-          alphaTest={0.005}
-          depthWrite={false}
-          blending={THREE.AdditiveBlending}
-          sizeAttenuation
-          toneMapped={false}
-        />
-      </points>
-      <points ref={points} geometry={geometry} frustumCulled={false}>
-        <pointsMaterial
-          vertexColors
-          map={lightTextures.orb}
-          size={0.28}
-          transparent
-          opacity={0.92}
-          alphaTest={0.015}
-          depthWrite={false}
-          blending={THREE.AdditiveBlending}
-          sizeAttenuation
-          toneMapped={false}
-        />
-      </points>
-      <points geometry={geometry} frustumCulled={false}>
-        <pointsMaterial
-          vertexColors
-          map={lightTextures.spark}
-          size={0.095}
-          transparent
-          opacity={1}
-          alphaTest={0.025}
-          depthWrite={false}
-          blending={THREE.AdditiveBlending}
-          sizeAttenuation
-          toneMapped={false}
-        />
-      </points>
+      {VEHICLE_MARKER_KINDS.map((kind) => {
+        const isCityVehicle = kind === 'tram' || kind === 'bus'
+        const glyphTexture =
+          kind === 'tram'
+            ? lightTextures.tram
+            : kind === 'bus'
+              ? lightTextures.bus
+              : lightTextures.orb
+        return (
+          <group key={kind}>
+            <points
+              ref={kind === 'rail' ? glow : undefined}
+              geometry={geometries[kind]}
+              frustumCulled={false}
+            >
+              <pointsMaterial
+                vertexColors
+                map={lightTextures.halo}
+                size={isCityVehicle ? 7.5 : 9}
+                transparent
+                opacity={
+                  selectedTrain || selectedRoute || selectedCategory || selectedStation
+                    ? 0.055
+                    : isCityVehicle
+                      ? 0.11
+                      : 0.15
+                }
+                alphaTest={0.005}
+                depthWrite={false}
+                blending={THREE.AdditiveBlending}
+                sizeAttenuation={false}
+                toneMapped={false}
+              />
+            </points>
+            <points
+              ref={kind === 'rail' ? points : undefined}
+              geometry={geometries[kind]}
+              frustumCulled={false}
+            >
+              <pointsMaterial
+                vertexColors
+                map={glyphTexture}
+                size={kind === 'rail' ? 4.6 : 6.2}
+                transparent
+                opacity={isCityVehicle ? 0.95 : 0.9}
+                alphaTest={0.035}
+                depthWrite={false}
+                blending={THREE.AdditiveBlending}
+                sizeAttenuation={false}
+                toneMapped={false}
+              />
+            </points>
+            {kind === 'rail' && (
+              <points geometry={geometries[kind]} frustumCulled={false}>
+                <pointsMaterial
+                  vertexColors
+                  map={lightTextures.spark}
+                  size={1.8}
+                  transparent
+                  opacity={1}
+                  alphaTest={0.025}
+                  depthWrite={false}
+                  blending={THREE.AdditiveBlending}
+                  sizeAttenuation={false}
+                  toneMapped={false}
+                />
+              </points>
+            )}
+          </group>
+        )
+      })}
     </>
   )
 }
