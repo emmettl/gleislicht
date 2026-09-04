@@ -1189,9 +1189,9 @@ function TrainSwarm({
       const intensity = selectedTrain
         ? selectedTrain.id === train.id
           ? 1
-          : 0.11
+          : 0.025
         : !stationIncludesTrain || !categoryIncludesTrain
-          ? 0.08
+          ? 0.025
           : 1
       mutableColors[offset] = color.r * intensity
       mutableColors[offset + 1] = color.g * intensity
@@ -1219,7 +1219,7 @@ function TrainSwarm({
           map={lightTextures.halo}
           size={0.9}
           transparent
-          opacity={selectedTrain || selectedCategory || selectedStation ? 0.12 : 0.18}
+          opacity={selectedTrain || selectedCategory || selectedStation ? 0.08 : 0.18}
           alphaTest={0.005}
           depthWrite={false}
           blending={THREE.AdditiveBlending}
@@ -1611,7 +1611,10 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
           boundary={props.boundary}
           projection={projection}
           subdued={Boolean(
-            props.selectedTrain || props.selectedStation || hasContext
+            props.selectedTrain ||
+              props.selectedStation ||
+              props.selectedCategory ||
+              hasContext
           )}
         />
       )}
@@ -1626,7 +1629,9 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
       <RailGraph
         snapshot={props.snapshot}
         projectedStops={projectedStops}
-        subdued={Boolean(props.selectedTrain || props.selectedStation)}
+        subdued={Boolean(
+          props.selectedTrain || props.selectedStation || props.selectedCategory
+        )}
       />
       {props.selectedTrain && (
         <>

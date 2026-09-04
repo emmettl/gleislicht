@@ -1,4 +1,11 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type CSSProperties,
+} from 'react'
 import type {
   GleislichtSoundtrack,
   SoundtrackMode,
@@ -1099,6 +1106,11 @@ export function App() {
                 key={category.id}
                 type="button"
                 aria-pressed={selectedCategory === category.id}
+                style={
+                  {
+                    '--service-accent': category.color,
+                  } as CSSProperties
+                }
                 onClick={() =>
                   setSelectedCategory((current) =>
                     current === category.id ? undefined : category.id,

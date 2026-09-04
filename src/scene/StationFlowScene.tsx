@@ -262,7 +262,7 @@ function StationTraffic({
       positionArray[offset + 2] = z
       const color = palette[call.train.category] ?? palette.other
       const intensity =
-        selectedCategory && selectedCategory !== call.train.category ? 0.06 : 1
+        selectedCategory && selectedCategory !== call.train.category ? 0.025 : 1
       colorArray[offset] = color.r * intensity
       colorArray[offset + 1] = color.g * intensity
       colorArray[offset + 2] = color.b * intensity

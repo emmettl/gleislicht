@@ -348,11 +348,13 @@ h1 {
 .selected-card {
   border-left-color: rgba(255, 94, 219, 0.72);
   background: linear-gradient(135deg, rgba(20, 12, 43, 0.86), rgba(7, 7, 22, 0.5));
+  box-shadow: inset 3px 0 0 rgba(255, 94, 219, 0.58), 0 0 34px rgba(255, 79, 216, 0.16);
 }
 
 .station-card {
   border-left-color: rgba(141, 250, 255, 0.78);
   background: linear-gradient(135deg, rgba(8, 28, 48, 0.84), rgba(7, 7, 22, 0.5));
+  box-shadow: inset 3px 0 0 rgba(141, 250, 255, 0.62), 0 0 34px rgba(141, 250, 255, 0.14);
 }
 
 .station-card-mark {
@@ -804,10 +806,16 @@ h1 {
 
 .search-results > button:hover,
 .search-results > button:focus-visible,
-.search-results > button.is-active,
-.search-results > button[aria-selected='true'] {
+.search-results > button.is-active {
   background: rgba(70, 72, 140, 0.28);
   box-shadow: inset 2px 0 0 var(--cyan);
+  transform: none;
+}
+
+.search-results > button[aria-selected='true'] {
+  background: rgba(70, 72, 140, 0.48);
+  color: #fff;
+  box-shadow: inset 4px 0 0 var(--cyan), 0 0 22px rgba(141, 250, 255, 0.12);
   transform: none;
 }
 
@@ -901,12 +909,20 @@ h1 {
 }
 
 .service-legend button[aria-pressed='true'] {
-  border-color: rgba(141, 250, 255, 0.42);
-  box-shadow: inset 0 -1px 0 var(--cyan), 0 0 16px rgba(141, 250, 255, 0.08);
+  border-color: var(--service-accent, var(--cyan));
+  background: color-mix(
+    in srgb,
+    var(--service-accent, var(--cyan)) 22%,
+    rgba(9, 8, 29, 0.88)
+  );
+  color: #fff;
+  box-shadow: inset 0 -2px 0 var(--service-accent, var(--cyan)),
+    0 0 24px color-mix(in srgb, var(--service-accent, var(--cyan)) 30%, transparent);
+  text-shadow: 0 0 10px color-mix(in srgb, var(--service-accent, var(--cyan)) 58%, transparent);
 }
 
 .service-legend.has-filter button:not([aria-pressed='true']) {
-  opacity: 0.3;
+  opacity: 0.14;
 }
 
 .service-legend i {
@@ -914,6 +930,12 @@ h1 {
   height: 6px;
   border-radius: 50%;
   box-shadow: 0 0 8px currentColor;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.service-legend button[aria-pressed='true'] i {
+  box-shadow: 0 0 4px #fff, 0 0 16px var(--service-accent, var(--cyan));
+  transform: scale(1.45);
 }
 
 .transport {
