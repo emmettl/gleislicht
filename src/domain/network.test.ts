@@ -6,6 +6,7 @@ const train: NetworkTrain = {
   route: 'IC 1',
   headsign: 'St. Gallen',
   shortName: '701',
+  category: 'intercity',
   start: 100,
   end: 400,
   stops: [
@@ -43,4 +44,3 @@ describe('formatServiceTime', () => {
     expect(formatServiceTime(7 * 3600 + 45 * 60)).toBe('07:45')
   })
 })
-

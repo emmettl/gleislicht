@@ -22,7 +22,10 @@ npm run build
 
 Keyboard controls: `Space` pauses or resumes; `C` switches between follow and network cameras.
 
+Search the national view by service, train number, origin, or destination. Selecting a result isolates its scheduled path and carries the camera down to follow it. Train lights are colour-coded by service class from international and InterCity through S-Bahn and regional services.
+
 The committed GTFS snapshot is regenerated with `npm run data:gtfs`; see [docs/DATA-PIPELINE.md](./docs/DATA-PIPELINE.md).
+The eventual public deployment is GitHub Pages; see [docs/PUBLISHING.md](./docs/PUBLISHING.md).
 
 ## Technical shape
 

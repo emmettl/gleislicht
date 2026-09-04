@@ -79,6 +79,17 @@ function isRailRouteType(value) {
   return routeType === 2 || (routeType >= 100 && routeType < 200)
 }
 
+function serviceCategory(routeName) {
+  const name = routeName.toUpperCase().replaceAll(' ', '')
+  if (/^(EC|ICE|TGV|RJX|RJ|NJ|EN)/.test(name)) return 'international'
+  if (/^IC/.test(name)) return 'intercity'
+  if (/^IR/.test(name)) return 'interregio'
+  if (/^RE/.test(name)) return 'regional-express'
+  if (/^(S\d|SN\d)/.test(name)) return 's-bahn'
+  if (/^(R\d|RB|TER|C\d)/.test(name)) return 'regional'
+  return 'other'
+}
+
 async function* rowsFromArchive(archive, fileName) {
   const child = spawn('unzip', ['-p', archive, fileName], {
     stdio: ['ignore', 'pipe', 'pipe'],
@@ -145,6 +156,7 @@ async function railRoutes(archive) {
     routes.set(row.route_id, {
       name: row.route_short_name || row.route_long_name || 'Rail',
       type: Number(row.route_type),
+      category: serviceCategory(row.route_short_name || row.route_long_name || ''),
     })
   }
   return routes
@@ -159,6 +171,7 @@ async function activeRailTrips(archive, routes, services) {
       route: route.name,
       headsign: row.trip_headsign,
       shortName: row.trip_short_name,
+      category: route.category,
     })
   }
   return trips
@@ -249,6 +262,7 @@ function createSnapshotBuilder({
       route: metadata.route,
       headsign: metadata.headsign,
       shortName: metadata.shortName,
+      category: metadata.category,
       start,
       end,
       stops: indexedStops,

@@ -49,8 +49,10 @@ The national GTFS-RT feed supplies trip updates and alerts, not vehicle position
 
 ## 4 — The visual instrument
 
-- Seamless national → corridor → follow-camera transitions.
-- Search and select by train, line, origin or destination.
+- [x] Add the first national → selected-train camera descent and route highlight.
+- [x] Search and select by train number, service, origin or destination.
+- [x] Colour-code motion by service class while preserving night-view legibility.
+- [ ] Replace the map-level selected-train follow with a terrain-backed corridor transition.
 - Time-of-day presets, speed control and a short looping “director mode.”
 - Authored palettes and camera behaviours for plateau, lake and Alpine routes.
 - Optional spatial audio derived from speed, tunnel state and terrain—never autoplayed.
@@ -64,6 +66,7 @@ The national GTFS-RT feed supplies trip updates and alerts, not vehicle position
 - Performance telemetry without personal tracking; accessible non-WebGL fallback.
 - Source, attribution and methodology pages.
 - Recording/export workflow for shareable daily studies.
+- Publish the reviewed static build through GitHub Pages; private previews remain non-canonical.
 
 ## Data sources to validate in implementation
 

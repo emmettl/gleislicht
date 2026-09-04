@@ -7,11 +7,40 @@ export type NetworkStop = readonly [
 export type NetworkEdge = readonly [from: number, to: number]
 export type TrainStop = readonly [stopIndex: number, arrival: number, departure: number]
 
+export type ServiceCategory =
+  | 'international'
+  | 'intercity'
+  | 'interregio'
+  | 'regional-express'
+  | 's-bahn'
+  | 'regional'
+  | 'other'
+
+export const SERVICE_CATEGORIES: ReadonlyArray<{
+  readonly id: ServiceCategory
+  readonly label: string
+  readonly color: string
+}> = [
+  { id: 'international', label: 'International', color: '#ffd166' },
+  { id: 'intercity', label: 'IC', color: '#ff4fd8' },
+  { id: 'interregio', label: 'IR', color: '#9d7bff' },
+  { id: 'regional-express', label: 'RE', color: '#4fc3ff' },
+  { id: 's-bahn', label: 'S-Bahn', color: '#7dffbb' },
+  { id: 'regional', label: 'Regional', color: '#fff3a6' },
+  { id: 'other', label: 'Other', color: '#b9c1da' },
+]
+
+export const SERVICE_COLORS: Readonly<Record<ServiceCategory, string>> =
+  Object.fromEntries(
+    SERVICE_CATEGORIES.map((category) => [category.id, category.color]),
+  ) as Record<ServiceCategory, string>
+
 export interface NetworkTrain {
   readonly id: string
   readonly route: string
   readonly headsign: string
   readonly shortName: string
+  readonly category: ServiceCategory
   readonly start: number
   readonly end: number
   readonly stops: readonly TrainStop[]
@@ -83,4 +112,3 @@ export function formatServiceTime(totalSeconds: number): string {
   const minutes = Math.floor((normalized % 3600) / 60)
   return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`
 }
-

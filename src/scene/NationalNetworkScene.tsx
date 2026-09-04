@@ -3,13 +3,17 @@ import { useEffect, useMemo, useRef } from 'react'
 import * as THREE from 'three'
 import {
   positionForTrain,
+  SERVICE_COLORS,
   type NetworkSnapshot,
+  type NetworkTrain,
+  type ServiceCategory,
 } from '../domain/network.ts'
 
 interface NationalNetworkSceneProps {
   readonly snapshot: NetworkSnapshot
   readonly isPlaying: boolean
   readonly time: number
+  readonly selectedTrain?: NetworkTrain
   readonly onTime: (time: number) => void
 }
 
@@ -31,6 +35,23 @@ function projectStops(snapshot: NetworkSnapshot): readonly ProjectedStop[] {
   ])
 }
 
+function projectedTrainPosition(
+  train: NetworkTrain,
+  time: number,
+  projectedStops: readonly ProjectedStop[],
+): ProjectedStop | undefined {
+  const position = positionForTrain(train, time)
+  if (!position) return undefined
+  const from = projectedStops[position.fromStop]
+  const to = projectedStops[position.toStop]
+  if (!from || !to) return undefined
+  return [
+    THREE.MathUtils.lerp(from[0], to[0], position.progress),
+    0.2,
+    THREE.MathUtils.lerp(from[2], to[2], position.progress),
+  ]
+}
+
 function NationalGround() {
   return (
     <group position={[0, -0.11, 0]}>
@@ -49,9 +70,11 @@ function NationalGround() {
 function RailGraph({
   snapshot,
   projectedStops,
+  subdued,
 }: {
   readonly snapshot: NetworkSnapshot
   readonly projectedStops: readonly ProjectedStop[]
+  readonly subdued: boolean
 }) {
   const railGeometry = useMemo(() => {
     const positions = new Float32Array(snapshot.edges.length * 6)
@@ -84,7 +107,7 @@ function RailGraph({
         <lineBasicMaterial
           color="#7296bb"
           transparent
-          opacity={0.25}
+          opacity={subdued ? 0.07 : 0.25}
           blending={THREE.AdditiveBlending}
         />
       </lineSegments>
@@ -93,7 +116,7 @@ function RailGraph({
           color="#a18cff"
           size={0.065}
           transparent
-          opacity={0.4}
+          opacity={subdued ? 0.12 : 0.4}
           sizeAttenuation
         />
       </points>
@@ -101,9 +124,43 @@ function RailGraph({
   )
 }
 
+function SelectedRoute({
+  train,
+  projectedStops,
+}: {
+  readonly train: NetworkTrain
+  readonly projectedStops: readonly ProjectedStop[]
+}) {
+  const line = useMemo(() => {
+    const points = train.stops
+      .map(([stopIndex]) => projectedStops[stopIndex])
+      .filter((point): point is ProjectedStop => Boolean(point))
+      .map(([x, , z]) => new THREE.Vector3(x, 0.12, z))
+    const geometry = new THREE.BufferGeometry().setFromPoints(points)
+    const material = new THREE.LineBasicMaterial({
+      color: SERVICE_COLORS[train.category],
+      transparent: true,
+      opacity: 0.95,
+      blending: THREE.AdditiveBlending,
+    })
+    return new THREE.Line(geometry, material)
+  }, [projectedStops, train])
+
+  useEffect(
+    () => () => {
+      line.geometry.dispose()
+      ;(line.material as THREE.Material).dispose()
+    },
+    [line],
+  )
+
+  return <primitive object={line} />
+}
+
 function TrainSwarm({
   snapshot,
   projectedStops,
+  selectedTrain,
   isPlaying,
   time,
   onTime,
@@ -114,10 +171,24 @@ function TrainSwarm({
   const glow = useRef<THREE.Points>(null)
   const localTime = useRef(time)
   const lastReport = useRef(0)
+  const palette = useMemo(
+    () =>
+      Object.fromEntries(
+        Object.entries(SERVICE_COLORS).map(([category, color]) => [
+          category,
+          new THREE.Color(color),
+        ]),
+      ) as Record<ServiceCategory, THREE.Color>,
+    [],
+  )
   const geometry = useMemo(() => {
     const next = new THREE.BufferGeometry()
     next.setAttribute(
       'position',
+      new THREE.BufferAttribute(new Float32Array(snapshot.trains.length * 3), 3),
+    )
+    next.setAttribute(
+      'color',
       new THREE.BufferAttribute(new Float32Array(snapshot.trains.length * 3), 3),
     )
     next.setDrawRange(0, 0)
@@ -138,31 +209,28 @@ function TrainSwarm({
 
     const mutableGeometry = points.current?.geometry
     if (!mutableGeometry) return
-    const attribute = mutableGeometry.getAttribute('position') as THREE.BufferAttribute
-    const mutablePositions = attribute.array as Float32Array
+    const positionAttribute = mutableGeometry.getAttribute(
+      'position',
+    ) as THREE.BufferAttribute
+    const colorAttribute = mutableGeometry.getAttribute('color') as THREE.BufferAttribute
+    const mutablePositions = positionAttribute.array as Float32Array
+    const mutableColors = colorAttribute.array as Float32Array
     let active = 0
     for (const train of snapshot.trains) {
-      const trainPosition = positionForTrain(train, localTime.current)
-      if (!trainPosition) continue
-      const from = projectedStops[trainPosition.fromStop]
-      const to = projectedStops[trainPosition.toStop]
-      if (!from || !to) continue
+      const position = projectedTrainPosition(train, localTime.current, projectedStops)
+      if (!position) continue
       const offset = active * 3
-      mutablePositions[offset] = THREE.MathUtils.lerp(
-        from[0],
-        to[0],
-        trainPosition.progress,
-      )
-      mutablePositions[offset + 1] = 0.18
-      mutablePositions[offset + 2] = THREE.MathUtils.lerp(
-        from[2],
-        to[2],
-        trainPosition.progress,
-      )
+      mutablePositions.set(position, offset)
+      const color = palette[train.category] ?? palette.other
+      const intensity = selectedTrain && selectedTrain.id !== train.id ? 0.11 : 1
+      mutableColors[offset] = color.r * intensity
+      mutableColors[offset + 1] = color.g * intensity
+      mutableColors[offset + 2] = color.b * intensity
       active += 1
     }
 
-    attribute.needsUpdate = true
+    positionAttribute.needsUpdate = true
+    colorAttribute.needsUpdate = true
     mutableGeometry.setDrawRange(0, active)
     if (points.current) points.current.frustumCulled = false
     if (glow.current) glow.current.frustumCulled = false
@@ -177,10 +245,10 @@ function TrainSwarm({
     <>
       <points ref={glow} geometry={geometry}>
         <pointsMaterial
-          color="#ff48d7"
-          size={0.7}
+          vertexColors
+          size={0.72}
           transparent
-          opacity={0.13}
+          opacity={selectedTrain ? 0.1 : 0.18}
           depthWrite={false}
           blending={THREE.AdditiveBlending}
           sizeAttenuation
@@ -188,10 +256,10 @@ function TrainSwarm({
       </points>
       <points ref={points} geometry={geometry}>
         <pointsMaterial
-          color="#e9fdff"
-          size={0.19}
+          vertexColors
+          size={0.2}
           transparent
-          opacity={0.94}
+          opacity={0.96}
           depthWrite={false}
           blending={THREE.AdditiveBlending}
           sizeAttenuation
@@ -201,22 +269,107 @@ function TrainSwarm({
   )
 }
 
+function SelectedTrainMarker({
+  train,
+  time,
+  projectedStops,
+}: {
+  readonly train: NetworkTrain
+  readonly time: number
+  readonly projectedStops: readonly ProjectedStop[]
+}) {
+  const marker = useRef<THREE.Group>(null)
+  const color = SERVICE_COLORS[train.category]
+
+  useFrame((state) => {
+    if (!marker.current) return
+    const position = projectedTrainPosition(train, time, projectedStops)
+    marker.current.visible = Boolean(position)
+    if (!position) return
+    marker.current.position.set(...position)
+    const pulse = 1 + Math.sin(state.clock.elapsedTime * 4) * 0.12
+    marker.current.scale.setScalar(pulse)
+  })
+
+  return (
+    <group ref={marker}>
+      <mesh>
+        <sphereGeometry args={[0.24, 12, 12]} />
+        <meshStandardMaterial
+          color="#ffffff"
+          emissive={color}
+          emissiveIntensity={4}
+        />
+      </mesh>
+      <pointLight color={color} intensity={7} distance={4.5} />
+    </group>
+  )
+}
+
+function NetworkCamera({
+  selectedTrain,
+  time,
+  projectedStops,
+}: {
+  readonly selectedTrain?: NetworkTrain
+  readonly time: number
+  readonly projectedStops: readonly ProjectedStop[]
+}) {
+  const { camera } = useThree()
+  const desiredPosition = useMemo(() => new THREE.Vector3(0, 37, 26), [])
+  const desiredTarget = useMemo(() => new THREE.Vector3(), [])
+  const currentTarget = useMemo(() => new THREE.Vector3(), [])
+
+  useFrame((_, delta) => {
+    const trainPosition = selectedTrain
+      ? projectedTrainPosition(selectedTrain, time, projectedStops)
+      : undefined
+    if (trainPosition) {
+      desiredTarget.set(trainPosition[0], 0, trainPosition[2])
+      desiredPosition.set(trainPosition[0] + 4.2, 4.8, trainPosition[2] + 6.5)
+    } else {
+      desiredTarget.set(0, 0, 0)
+      desiredPosition.set(0, 37, 26)
+    }
+
+    const damping = 1 - Math.exp(-delta * (trainPosition ? 1.7 : 2.3))
+    camera.position.lerp(desiredPosition, damping)
+    currentTarget.lerp(desiredTarget, damping)
+    camera.lookAt(currentTarget)
+  })
+
+  return null
+}
+
 function NetworkWorld(props: NationalNetworkSceneProps) {
   const projectedStops = useMemo(() => projectStops(props.snapshot), [props.snapshot])
-  const { camera } = useThree()
-
-  useEffect(() => {
-    camera.position.set(0, 37, 26)
-    camera.lookAt(0, 0, 0)
-  }, [camera])
 
   return (
     <>
       <fog attach="fog" args={['#050410', 34, 69]} />
       <ambientLight intensity={0.85} color="#7d87ff" />
       <NationalGround />
-      <RailGraph snapshot={props.snapshot} projectedStops={projectedStops} />
+      <RailGraph
+        snapshot={props.snapshot}
+        projectedStops={projectedStops}
+        subdued={Boolean(props.selectedTrain)}
+      />
+      {props.selectedTrain && (
+        <>
+          <SelectedRoute train={props.selectedTrain} projectedStops={projectedStops} />
+          <SelectedTrainMarker
+            train={props.selectedTrain}
+            time={props.time}
+            projectedStops={projectedStops}
+          />
+        </>
+      )}
       <TrainSwarm {...props} projectedStops={projectedStops} />
+      <NetworkCamera
+        selectedTrain={props.selectedTrain}
+        time={props.time}
+        projectedStops={projectedStops}
+      />
     </>
   )
 }
