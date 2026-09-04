@@ -11,8 +11,12 @@ const INITIAL_DATA_FILES = [
 const BUDGETS = {
   javaScript: 320 * 1024,
   css: 10 * 1024,
-  data: 320 * 1024,
-  total: 630 * 1024,
+  // The official timetable is regenerated twice weekly and its compressed
+  // first-view payload naturally moves with the number and shape of services.
+  // Keep enough headroom for that feed churn while retaining a hard mobile
+  // ceiling that will catch a genuinely accidental payload expansion.
+  data: 360 * 1024,
+  total: 700 * 1024,
 }
 
 async function gzipSize(filePath) {
