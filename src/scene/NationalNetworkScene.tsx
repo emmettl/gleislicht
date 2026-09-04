@@ -16,8 +16,10 @@ import {
 import {
   MAX_STATION_LABELS,
   rankStationsForLabels,
+  stationLabelCameraHeight,
   stationLabelBudget,
   stationLabelRankLimit,
+  stationLabelText,
 } from './station-labels.ts'
 import {
   categoryIsVisibleInAutoMode,
@@ -354,6 +356,7 @@ function stationCentre(
 
 interface StationLabelDatum {
   readonly station: StationIndexEntry
+  readonly displayName: string
   readonly position: THREE.Vector3
   readonly rank: number
   readonly emphasised: boolean
@@ -407,12 +410,14 @@ function StationLabels({
   projectedStops,
   selectedStation,
   selectedTrain,
+  cameraFraming,
 }: {
   readonly stations: readonly StationIndexEntry[]
   readonly snapshot: NetworkSnapshot
   readonly projectedStops: readonly ProjectedStop[]
   readonly selectedStation?: StationIndexEntry
   readonly selectedTrain?: NetworkTrain
+  readonly cameraFraming: MapCameraFraming
 }) {
   const { camera, size } = useThree()
   const sprites = useRef<Array<THREE.Sprite | null>>([])
@@ -444,13 +449,14 @@ function StationLabels({
       const centre = stationCentre(station, projectedStops)
       return {
         station,
+        displayName: stationLabelText(station.name, cameraFraming),
         position: new THREE.Vector3(centre.x, 0.48, centre.z),
         rank: ranked.indexOf(station),
         emphasised:
           station.name === selectedStation?.name || routeStationNames.has(station.name),
       } satisfies StationLabelDatum
     })
-  }, [projectedStops, routeStationNames, selectedStation, stations])
+  }, [cameraFraming, projectedStops, routeStationNames, selectedStation, stations])
 
   useEffect(
     () => () => {
@@ -461,8 +467,12 @@ function StationLabels({
   )
 
   useFrame(() => {
-    const budget = stationLabelBudget(camera.position.y)
-    const rankLimit = stationLabelRankLimit(camera.position.y)
+    const semanticHeight = stationLabelCameraHeight(
+      camera.position.y,
+      cameraFraming,
+    )
+    const budget = stationLabelBudget(semanticHeight)
+    const rankLimit = stationLabelRankLimit(semanticHeight)
     const projected = new THREE.Vector3()
     const candidates: Array<{
       index: number
@@ -507,13 +517,13 @@ function StationLabels({
     )
     const occupied: Array<{ left: number; right: number; top: number; bottom: number }> = []
     const visibleTextureNames = new Set<string>()
-    const worldHeight = 0.7 * THREE.MathUtils.clamp(camera.position.y / 37, 0.03, 1)
+    const worldHeight = 0.7 * THREE.MathUtils.clamp(camera.position.y / 37, 0.02, 1)
     let visible = 0
 
     for (const candidate of candidates) {
       if (visible >= budget || visible >= MAX_STATION_LABELS) break
       const label = labels[candidate.index]
-      const width = THREE.MathUtils.clamp(label.station.name.length * 7 + 24, 62, 190)
+      const width = THREE.MathUtils.clamp(label.displayName.length * 7 + 24, 62, 190)
       const box = {
         left: candidate.x - width / 2,
         right: candidate.x + width / 2,
@@ -533,7 +543,7 @@ function StationLabels({
       if (!sprite) continue
       let textureEntry = textures.current.get(label.station.name)
       if (!textureEntry) {
-        textureEntry = stationLabelTexture(label.station.name)
+        textureEntry = stationLabelTexture(label.displayName)
         textures.current.set(label.station.name, textureEntry)
       } else {
         textures.current.delete(label.station.name)
@@ -763,7 +773,7 @@ function TrainLabels({
     const occupied: Array<{ left: number; right: number; top: number; bottom: number }> = []
     const visibleTextureKeys = new Set<string>()
     const nextRetainedTrainIds = new Set<string>()
-    const worldHeight = 0.62 * THREE.MathUtils.clamp(camera.position.y / 37, 0.03, 1)
+    const worldHeight = 0.62 * THREE.MathUtils.clamp(camera.position.y / 37, 0.02, 1)
     let visible = 0
 
     for (const candidate of candidates) {
@@ -1355,6 +1365,7 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
         projectedStops={projectedStops}
         selectedStation={props.selectedStation}
         selectedTrain={props.selectedTrain}
+        cameraFraming={props.cameraFraming}
       />
       <NetworkCamera
         selectedTrain={props.selectedTrain}

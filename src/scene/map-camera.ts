@@ -1,4 +1,4 @@
-export const MIN_MAP_DISTANCE_SCALE = 0.03
+export const MIN_MAP_DISTANCE_SCALE = 0.02
 export const MAX_MAP_DISTANCE_SCALE = 1.18
 export type MapCameraFraming = 'switzerland' | 'zurich'
 
