@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="field" x1="8" y1="4" x2="56" y2="60" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f02e4f" />
+      <stop offset="0.58" stop-color="#cf1742" />
+      <stop offset="1" stop-color="#71174a" />
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2.4" />
+    </filter>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#050410" />
+  <rect x="3" y="3" width="58" height="58" rx="12" fill="url(#field)" />
+  <path
+    d="M45 19.5C41.2 14.7 35.5 12 29.4 12 18.7 12 11 20.4 11 31.5S18.9 52 30.2 52C40.8 52 49 44.4 49 34H33"
+    fill="none"
+    stroke="#050410"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="9"
+  />
+  <path
+    d="M45 19.5C41.2 14.7 35.5 12 29.4 12 18.7 12 11 20.4 11 31.5S18.9 52 30.2 52C40.8 52 49 44.4 49 34H33"
+    fill="none"
+    stroke="#8dfaff"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="6"
+    opacity="0.55"
+    filter="url(#glow)"
+  />
+  <path
+    d="M45 19.5C41.2 14.7 35.5 12 29.4 12 18.7 12 11 20.4 11 31.5S18.9 52 30.2 52C40.8 52 49 44.4 49 34H33"
+    fill="none"
+    stroke="#c8ffff"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="3"
+  />
+  <circle cx="33" cy="34" r="7" fill="#ff5edb" opacity="0.45" filter="url(#glow)" />
+  <circle cx="33" cy="34" r="4.25" fill="#ff5edb" />
+  <circle cx="33" cy="34" r="1.7" fill="#fff" />
+</svg>
