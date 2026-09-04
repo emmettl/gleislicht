@@ -4,7 +4,7 @@ A cinematic browser visualisation of Switzerland's railway network, built from o
 
 The current motion study opens on a national morning view derived from the official Swiss GTFS timetable, with 764 scheduled rail services moving inside Switzerland at 07:45. A lazily loaded Zürich city study reveals the same morning at street scale across trains, trams, buses and funiculars. A hub-scale Takt pulse makes scheduled calls at Zürich HB, Bern, Basel SBB and Genève contract toward the station and radiate out again. A follow-camera study uses a synthetic Zürich–Chur journey and procedural terrain. All interpolation models are labelled clearly.
 
-The complete interface is available in German, French and Italian. It follows the visitor's supported browser language, falls back to German, and remembers changes made with the **DE / FR / IT** switch.
+The complete interface is available in English, German, French and Italian. It follows the visitor's supported browser language, falls back to English, and remembers changes made with the **EN / DE / FR / IT** switch.
 
 ## Run it
 

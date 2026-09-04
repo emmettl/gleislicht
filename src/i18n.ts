@@ -1,18 +1,20 @@
 import type { ServiceCategory } from './domain/network.ts'
 
-export type UiLanguage = 'de' | 'fr' | 'it'
+export type UiLanguage = 'en' | 'de' | 'fr' | 'it'
 
 export const UI_LANGUAGES: ReadonlyArray<{
   readonly id: UiLanguage
   readonly label: string
   readonly name: string
 }> = [
+  { id: 'en', label: 'EN', name: 'English' },
   { id: 'de', label: 'DE', name: 'Deutsch' },
   { id: 'fr', label: 'FR', name: 'Français' },
   { id: 'it', label: 'IT', name: 'Italiano' },
 ]
 
 export const LANGUAGE_LOCALES: Readonly<Record<UiLanguage, string>> = {
+  en: 'en-CH',
   de: 'de-CH',
   fr: 'fr-CH',
   it: 'it-CH',
@@ -21,6 +23,21 @@ export const LANGUAGE_LOCALES: Readonly<Record<UiLanguage, string>> = {
 const CATEGORY_LABELS: Readonly<
   Record<UiLanguage, Readonly<Record<ServiceCategory, string>>>
 > = {
+  en: {
+    international: 'International',
+    intercity: 'IC',
+    interregio: 'IR',
+    'regional-express': 'RE',
+    's-bahn': 'S-Bahn',
+    regional: 'Regional',
+    tram: 'Tram',
+    metro: 'Metro',
+    bus: 'Bus',
+    ferry: 'Ferry',
+    cableway: 'Cableway',
+    funicular: 'Funicular',
+    other: 'Other',
+  },
   de: {
     international: 'International',
     intercity: 'IC',
@@ -69,6 +86,123 @@ const CATEGORY_LABELS: Readonly<
 }
 
 export const UI_TEXT = {
+  en: {
+    pageTitle: 'Gleislicht — Switzerland in motion',
+    pageDescription: 'A cinematic visualisation of the Swiss railway network.',
+    languagePicker: 'Language',
+    subtitle: 'Switzerland in motion',
+    motionStudy: 'Motion study 005',
+    studyDate: 'Friday · 04 September 2026',
+    adaptiveSoundtrack: 'Adaptive soundtrack',
+    audioUnavailable: 'Audio unavailable',
+    adaptiveScore: 'Adaptive score',
+    tuning: 'tuning…',
+    on: 'on',
+    off: 'off',
+    volume: 'Volume',
+    find: 'Find a station, train, service, or destination',
+    nationalPlaceholder: 'Find IC 1, Zürich, or train 701…',
+    cityPlaceholder: 'Find tram 4, bus 31, or Zürich HB…',
+    networkStudy: 'Network study',
+    scale: 'Scale',
+    swissNetwork: 'Switzerland rail network',
+    showSwissNetwork: 'Show Switzerland rail network',
+    zurichNetwork: 'Zürich city multimodal network',
+    showZurichNetwork: 'Show Zürich city multimodal network',
+    clearSearch: 'Clear search and selection',
+    matchingResults: 'Matching stations and trains',
+    routesAndCalls: (routes: number, calls: number) =>
+      `${routes} routes · ${calls} scheduled calls`,
+    noResults: 'No stations or services found in this morning window.',
+    taktStation: 'Takt station',
+    taktPulse: 'Takt pulse',
+    pulse: 'Pulse',
+    stationFlow: 'Station flow',
+    taktLoop: 'Takt / 24-hour loop',
+    stationPlatforms: 'Station / scheduled platforms',
+    taktVisualisation: 'Takt visualisation',
+    tracks: 'Tracks',
+    orbitMovements: 'Arrivals + departures in orbit',
+    stationMovements: 'Movements on the station plan',
+    scheduledTracks: (count: number) => `${count} scheduled tracks`,
+    callsToday: (count: string) => `${count} calls today`,
+    hubCharacter: {
+      zurich: "Switzerland's busiest station",
+      bern: 'The national interchange',
+      basel: 'The tri-national gateway',
+      geneva: 'The western gateway',
+    },
+    nextStrike: 'Next strike',
+    direction: 'Direction',
+    trackShort: 'Gl.',
+    end: 'End',
+    selectedTrain: 'Selected train',
+    betweenStations: 'Between stations',
+    train: 'Train',
+    arrival: 'Arrival',
+    plan: 'Plan',
+    routesServing: (name: string) => `Routes serving ${name}`,
+    allScheduledPaths: 'All scheduled paths',
+    morningStudy: 'Morning study',
+    routes: 'Routes',
+    unique: 'unique',
+    calls: 'Calls',
+    swissNetworkStatus: 'Swiss network status',
+    zurichNetworkStatus: 'Zürich city network status',
+    trainsInMotion: 'Trains in motion',
+    vehiclesInMotion: 'Vehicles in motion',
+    cityUnavailable: 'City schedule unavailable',
+    loadingCity: 'Loading separate city study…',
+    cityModes: 'Tram · bus · rail · funicular',
+    scheduleUnavailable: 'Schedule unavailable',
+    scheduledRail: 'Scheduled rail · morning window',
+    trips: 'Trips',
+    feed: 'Feed',
+    currentJourney: 'Current simulated journey',
+    velocity: 'Velocity',
+    next: 'Next',
+    scheduledFollow: 'Scheduled follow',
+    stationRouteFocus: 'Station route focus',
+    gtfsSchedule: 'GTFS schedule',
+    stopGeometry: 'Stop geometry',
+    scheduledStationCalls: 'Scheduled station calls',
+    platformAssignments: 'GTFS platform assignments',
+    orbit15: '15-minute orbit',
+    schematicPlan: 'Schematic track plan',
+    prototypeRoute: 'Prototype route',
+    syntheticTerrain: 'Synthetic terrain',
+    mapControls: 'Map display controls',
+    mapGesture: 'Drag · wheel / pinch',
+    zoomIn: 'Zoom map in',
+    zoomOut: 'Zoom map out',
+    resetMap: 'Reset map position and zoom',
+    trainLabels: 'Train labels',
+    vehicleLabels: 'Vehicle labels',
+    labelModes: { auto: 'auto', on: 'on', off: 'off' },
+    labelsAction: (kind: string, current: string, nextMode: string) =>
+      `${kind}: ${current}. Activate for ${nextMode}.`,
+    filterServices: 'Filter moving services by category',
+    playbackControls: 'Playback controls',
+    timeOfDay: 'Time of day',
+    journeyProgress: 'Journey progress',
+    playbackSpeed: 'Playback speed',
+    tempo: 'Tempo',
+    pauseMotion: 'Pause motion',
+    resumeMotion: 'Resume motion',
+    spaceKey: 'Space',
+    releaseTrain: 'Release train',
+    releaseService: 'Release service',
+    clearStation: 'Clear station',
+    corridorStudy: 'Corridor study',
+    nationalView: 'National view',
+    zurichView: 'Zürich city',
+    taktHubs: 'Takt hubs',
+    loading: 'loading',
+    border: 'border',
+    arrivalsDirection: 'Arrivals inward / departures outward',
+    interpolation: 'Scheduled interpolation / no GPS',
+    simulation: 'Simulation / no live data',
+  },
   de: {
     pageTitle: 'Gleislicht — Schweiz in Bewegung',
     pageDescription: 'Eine filmische Visualisierung des Schweizer Bahnnetzes.',
@@ -425,9 +559,16 @@ export const UI_TEXT = {
 export function resolveUiLanguage(candidates: readonly (string | null | undefined)[]): UiLanguage {
   for (const candidate of candidates) {
     const language = candidate?.trim().toLowerCase().split(/[-_]/)[0]
-    if (language === 'de' || language === 'fr' || language === 'it') return language
+    if (
+      language === 'en' ||
+      language === 'de' ||
+      language === 'fr' ||
+      language === 'it'
+    ) {
+      return language
+    }
   }
-  return 'de'
+  return 'en'
 }
 
 export function serviceCategoryLabel(
