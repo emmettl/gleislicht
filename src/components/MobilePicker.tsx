@@ -51,8 +51,16 @@ export function MobilePicker({
       if (!rootRef.current?.contains(event.target as Node)) setOpen(false)
     }
 
+    const handleFocusIn = (event: FocusEvent) => {
+      if (!rootRef.current?.contains(event.target as Node)) setOpen(false)
+    }
+
     document.addEventListener('pointerdown', handlePointerDown)
-    return () => document.removeEventListener('pointerdown', handlePointerDown)
+    document.addEventListener('focusin', handleFocusIn)
+    return () => {
+      document.removeEventListener('pointerdown', handlePointerDown)
+      document.removeEventListener('focusin', handleFocusIn)
+    }
   }, [open])
 
   useEffect(() => {
@@ -111,9 +119,6 @@ export function MobilePicker({
     <div
       ref={rootRef}
       className={`mobile-picker mobile-picker--${menuPlacement}${className ? ` ${className}` : ''}`}
-      onBlur={(event) => {
-        if (!event.currentTarget.contains(event.relatedTarget)) setOpen(false)
-      }}
     >
       <button
         ref={triggerRef}
