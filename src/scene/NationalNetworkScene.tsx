@@ -7,6 +7,7 @@ import {
   type NetworkSnapshot,
   type NetworkTrain,
   type ServiceCategory,
+  type StationIndexEntry,
 } from '../domain/network.ts'
 
 export type MapCameraAction = 'zoom-in' | 'zoom-out' | 'reset'
@@ -25,6 +26,7 @@ interface NationalNetworkSceneProps {
   readonly cameraCommand?: MapCameraCommand
   readonly playbackRate: number
   readonly selectedCategory?: ServiceCategory
+  readonly selectedStation?: StationIndexEntry
 }
 
 type ProjectedStop = readonly [x: number, y: number, z: number]
@@ -167,6 +169,111 @@ function SelectedRoute({
   return <primitive object={line} />
 }
 
+function stationCentre(
+  station: StationIndexEntry,
+  projectedStops: readonly ProjectedStop[],
+): THREE.Vector3 {
+  const centre = new THREE.Vector3()
+  let count = 0
+  station.stopIndexes.forEach((stopIndex) => {
+    const stop = projectedStops[stopIndex]
+    if (!stop) return
+    centre.x += stop[0]
+    centre.z += stop[2]
+    count += 1
+  })
+  if (count) centre.multiplyScalar(1 / count)
+  return centre
+}
+
+function SelectedStationRoutes({
+  station,
+  snapshot,
+  projectedStops,
+  selectedCategory,
+}: {
+  readonly station: StationIndexEntry
+  readonly snapshot: NetworkSnapshot
+  readonly projectedStops: readonly ProjectedStop[]
+  readonly selectedCategory?: ServiceCategory
+}) {
+  const lines = useMemo(() => {
+    const trainIds = new Set(station.trainIds)
+    const edgesByCategory = new Map<ServiceCategory, Map<string, number[]>>()
+    for (const train of snapshot.trains) {
+      if (!trainIds.has(train.id)) continue
+      if (selectedCategory && train.category !== selectedCategory) continue
+      const categoryEdges = edgesByCategory.get(train.category) ?? new Map()
+      for (let index = 1; index < train.stops.length; index += 1) {
+        const firstIndex = train.stops[index - 1][0]
+        const secondIndex = train.stops[index][0]
+        const key =
+          firstIndex < secondIndex
+            ? `${firstIndex}:${secondIndex}`
+            : `${secondIndex}:${firstIndex}`
+        if (categoryEdges.has(key)) continue
+        const first = projectedStops[firstIndex]
+        const second = projectedStops[secondIndex]
+        if (!first || !second) continue
+        categoryEdges.set(key, [
+          first[0],
+          0.14,
+          first[2],
+          second[0],
+          0.14,
+          second[2],
+        ])
+      }
+      edgesByCategory.set(train.category, categoryEdges)
+    }
+
+    return [...edgesByCategory.entries()].map(([category, edges]) => {
+      const geometry = new THREE.BufferGeometry()
+      geometry.setAttribute(
+        'position',
+        new THREE.Float32BufferAttribute([...edges.values()].flat(), 3),
+      )
+      return { category, geometry }
+    })
+  }, [projectedStops, selectedCategory, snapshot.trains, station.trainIds])
+
+  useEffect(
+    () => () => lines.forEach(({ geometry }) => geometry.dispose()),
+    [lines],
+  )
+
+  const centre = useMemo(
+    () => stationCentre(station, projectedStops),
+    [projectedStops, station],
+  )
+
+  return (
+    <>
+      {lines.map(({ category, geometry }) => (
+        <lineSegments key={category} geometry={geometry}>
+          <lineBasicMaterial
+            color={SERVICE_COLORS[category]}
+            transparent
+            opacity={0.92}
+            blending={THREE.AdditiveBlending}
+          />
+        </lineSegments>
+      ))}
+      <group position={[centre.x, 0.28, centre.z]}>
+        <mesh rotation={[Math.PI / 2, 0, 0]}>
+          <torusGeometry args={[0.48, 0.055, 8, 48]} />
+          <meshBasicMaterial color="#ffffff" blending={THREE.AdditiveBlending} />
+        </mesh>
+        <mesh>
+          <sphereGeometry args={[0.14, 12, 12]} />
+          <meshStandardMaterial color="#ffffff" emissive="#8dfaff" emissiveIntensity={5} />
+        </mesh>
+        <pointLight color="#8dfaff" intensity={7} distance={5} />
+      </group>
+    </>
+  )
+}
+
 function TrainSwarm({
   snapshot,
   projectedStops,
@@ -176,6 +283,7 @@ function TrainSwarm({
   onTime,
   playbackRate,
   selectedCategory,
+  selectedStation,
 }: NationalNetworkSceneProps & {
   readonly projectedStops: readonly ProjectedStop[]
 }) {
@@ -183,6 +291,10 @@ function TrainSwarm({
   const glow = useRef<THREE.Points>(null)
   const localTime = useRef(time)
   const lastReport = useRef(0)
+  const selectedStationTrainIds = useMemo(
+    () => new Set(selectedStation?.trainIds ?? []),
+    [selectedStation],
+  )
   const palette = useMemo(
     () =>
       Object.fromEntries(
@@ -234,11 +346,15 @@ function TrainSwarm({
       const offset = active * 3
       mutablePositions.set(position, offset)
       const color = palette[train.category] ?? palette.other
+      const stationIncludesTrain =
+        !selectedStation || selectedStationTrainIds.has(train.id)
+      const categoryIncludesTrain =
+        !selectedCategory || selectedCategory === train.category
       const intensity = selectedTrain
         ? selectedTrain.id === train.id
           ? 1
           : 0.11
-        : selectedCategory && selectedCategory !== train.category
+        : !stationIncludesTrain || !categoryIncludesTrain
           ? 0.08
           : 1
       mutableColors[offset] = color.r * intensity
@@ -266,7 +382,7 @@ function TrainSwarm({
           vertexColors
           size={0.72}
           transparent
-          opacity={selectedTrain || selectedCategory ? 0.12 : 0.18}
+          opacity={selectedTrain || selectedCategory || selectedStation ? 0.12 : 0.18}
           depthWrite={false}
           blending={THREE.AdditiveBlending}
           sizeAttenuation
@@ -329,11 +445,13 @@ function NetworkCamera({
   time,
   projectedStops,
   cameraCommand,
+  selectedStation,
 }: {
   readonly selectedTrain?: NetworkTrain
   readonly time: number
   readonly projectedStops: readonly ProjectedStop[]
   readonly cameraCommand?: MapCameraCommand
+  readonly selectedStation?: StationIndexEntry
 }) {
   const { camera, gl } = useThree()
   const desiredPosition = useMemo(() => new THREE.Vector3(0, 37, 26), [])
@@ -358,6 +476,13 @@ function NetworkCamera({
       1.7,
     )
   }, [cameraCommand])
+
+  useEffect(() => {
+    if (!selectedStation) return
+    const centre = stationCentre(selectedStation, projectedStops)
+    mapTarget.current.copy(centre)
+    distanceScale.current = 0.55
+  }, [projectedStops, selectedStation])
 
   useEffect(() => {
     const element = gl.domElement
@@ -457,7 +582,7 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
       <RailGraph
         snapshot={props.snapshot}
         projectedStops={projectedStops}
-        subdued={Boolean(props.selectedTrain)}
+        subdued={Boolean(props.selectedTrain || props.selectedStation)}
       />
       {props.selectedTrain && (
         <>
@@ -469,12 +594,21 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
           />
         </>
       )}
+      {props.selectedStation && (
+        <SelectedStationRoutes
+          station={props.selectedStation}
+          snapshot={props.snapshot}
+          projectedStops={projectedStops}
+          selectedCategory={props.selectedCategory}
+        />
+      )}
       <TrainSwarm {...props} projectedStops={projectedStops} />
       <NetworkCamera
         selectedTrain={props.selectedTrain}
         time={props.time}
         projectedStops={projectedStops}
         cameraCommand={props.cameraCommand}
+        selectedStation={props.selectedStation}
       />
     </>
   )

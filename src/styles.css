@@ -170,6 +170,17 @@ h1 {
   background: linear-gradient(135deg, rgba(20, 12, 43, 0.86), rgba(7, 7, 22, 0.5));
 }
 
+.station-card {
+  border-left-color: rgba(141, 250, 255, 0.78);
+  background: linear-gradient(135deg, rgba(8, 28, 48, 0.84), rgba(7, 7, 22, 0.5));
+}
+
+.station-card-mark {
+  color: var(--pink);
+  font-size: 1.15rem;
+  text-shadow: 0 0 12px var(--pink);
+}
+
 .hub-card {
   border-left-color: rgba(255, 94, 219, 0.75);
   background: linear-gradient(135deg, rgba(25, 10, 44, 0.83), rgba(6, 9, 28, 0.52));
@@ -527,9 +538,22 @@ h1 {
 }
 
 .search-results > button:hover,
-.search-results > button:focus-visible {
+.search-results > button:focus-visible,
+.search-results > button[aria-selected='true'] {
   background: rgba(70, 72, 140, 0.18);
   transform: none;
+}
+
+.search-results > .station-result {
+  background: rgba(26, 21, 66, 0.24);
+}
+
+.station-result-mark {
+  align-self: center;
+  color: var(--pink);
+  font-size: 0.82rem;
+  line-height: 1;
+  text-shadow: 0 0 9px var(--pink);
 }
 
 .search-results p {

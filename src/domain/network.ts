@@ -69,6 +69,68 @@ export interface NetworkSnapshot {
   readonly trains: readonly NetworkTrain[]
 }
 
+export interface StationRoute {
+  readonly name: string
+  readonly category: ServiceCategory
+}
+
+export interface StationIndexEntry {
+  readonly name: string
+  readonly stopIndexes: readonly number[]
+  readonly trainIds: readonly string[]
+  readonly routes: readonly StationRoute[]
+}
+
+export function buildStationIndex(
+  snapshot: NetworkSnapshot,
+): readonly StationIndexEntry[] {
+  const records = new Map<
+    string,
+    {
+      stopIndexes: number[]
+      trainIds: Set<string>
+      routes: Map<string, StationRoute>
+    }
+  >()
+
+  snapshot.stops.forEach((stop, index) => {
+    const record = records.get(stop[2]) ?? {
+      stopIndexes: [],
+      trainIds: new Set<string>(),
+      routes: new Map<string, StationRoute>(),
+    }
+    record.stopIndexes.push(index)
+    records.set(stop[2], record)
+  })
+
+  for (const train of snapshot.trains) {
+    const visitedNames = new Set<string>()
+    for (const [stopIndex] of train.stops) {
+      const name = snapshot.stops[stopIndex]?.[2]
+      if (!name || visitedNames.has(name)) continue
+      visitedNames.add(name)
+      const record = records.get(name)
+      if (!record) continue
+      record.trainIds.add(train.id)
+      record.routes.set(`${train.category}:${train.route}`, {
+        name: train.route,
+        category: train.category,
+      })
+    }
+  }
+
+  return [...records.entries()]
+    .filter(([, record]) => record.trainIds.size > 0)
+    .map(([name, record]) => ({
+      name,
+      stopIndexes: record.stopIndexes,
+      trainIds: [...record.trainIds],
+      routes: [...record.routes.values()].sort((first, second) =>
+        first.name.localeCompare(second.name, 'de-CH'),
+      ),
+    }))
+}
+
 export interface TrainPosition {
   readonly fromStop: number
   readonly toStop: number

@@ -9,6 +9,7 @@ import {
 } from './domain/hub.ts'
 import { positionOnJourney, prototypeJourney } from './domain/journey.ts'
 import {
+  buildStationIndex,
   formatServiceTime,
   positionForTrain,
   SERVICE_CATEGORIES,
@@ -16,6 +17,7 @@ import {
   type NetworkSnapshot,
   type NetworkTrain,
   type ServiceCategory,
+  type StationIndexEntry,
 } from './domain/network.ts'
 import { GleislichtScene } from './scene/GleislichtScene.tsx'
 import { HubPulseScene } from './scene/HubPulseScene.tsx'
@@ -48,8 +50,10 @@ function matchesTrain(
   query: string,
   network: NetworkSnapshot,
 ): boolean {
-  const firstStop = network.stops[train.stops[0]?.[0]]?.[2] ?? ''
-  return [train.route, train.shortName, train.headsign, firstStop]
+  const stopNames = train.stops.map(
+    ([stopIndex]) => network.stops[stopIndex]?.[2] ?? '',
+  )
+  return [train.route, train.shortName, train.headsign, ...stopNames]
     .join(' ')
     .toLocaleLowerCase('de-CH')
     .includes(query)
@@ -67,6 +71,7 @@ export function App() {
   const [searchQuery, setSearchQuery] = useState('')
   const [searchOpen, setSearchOpen] = useState(false)
   const [selectedTrainId, setSelectedTrainId] = useState<string>()
+  const [selectedStationName, setSelectedStationName] = useState<string>()
   const [selectedHubId, setSelectedHubId] = useState<HubId>('zurich')
   const [mapCameraCommand, setMapCameraCommand] = useState<MapCameraCommand>({
     id: 0,
@@ -91,6 +96,14 @@ export function App() {
   const selectedTrain = useMemo(
     () => network?.trains.find((train) => train.id === selectedTrainId),
     [network, selectedTrainId],
+  )
+  const stationIndex = useMemo(
+    () => (network ? buildStationIndex(network) : []),
+    [network],
+  )
+  const selectedStation = useMemo(
+    () => stationIndex.find((station) => station.name === selectedStationName),
+    [selectedStationName, stationIndex],
   )
   const selectedPosition = useMemo(
     () => (selectedTrain ? positionForTrain(selectedTrain, networkTime) : undefined),
@@ -131,6 +144,22 @@ export function App() {
       })
       .slice(0, 8)
   }, [network, networkTime, searchQuery])
+  const stationSearchResults = useMemo(() => {
+    const query = searchQuery.trim().toLocaleLowerCase('de-CH')
+    if (!query) return []
+    return stationIndex
+      .filter((station) => station.name.toLocaleLowerCase('de-CH').includes(query))
+      .sort((first, second) => {
+        const firstName = first.name.toLocaleLowerCase('de-CH')
+        const secondName = second.name.toLocaleLowerCase('de-CH')
+        return (
+          Number(secondName.startsWith(query)) - Number(firstName.startsWith(query)) ||
+          second.trainIds.length - first.trainIds.length ||
+          first.name.localeCompare(second.name, 'de-CH')
+        )
+      })
+      .slice(0, 5)
+  }, [searchQuery, stationIndex])
 
   const handleJourneyProgress = useCallback((nextProgress: number) => {
     setJourneyProgress(nextProgress)
@@ -142,9 +171,18 @@ export function App() {
     setMapCameraCommand((current) => ({ id: current.id + 1, action }))
   }, [])
 
-  const releaseTrain = useCallback(() => {
+  const releaseSelection = useCallback(() => {
     setSelectedTrainId(undefined)
+    setSelectedStationName(undefined)
     setSearchQuery('')
+  }, [])
+
+  const selectStation = useCallback((station: StationIndexEntry) => {
+    setSelectedTrainId(undefined)
+    setSelectedStationName(station.name)
+    setSearchQuery(station.name)
+    setSearchOpen(false)
+    setView('network')
   }, [])
 
   const selectTrain = useCallback(
@@ -160,6 +198,7 @@ export function App() {
           )
       setNetworkTime(targetTime)
       setSelectedTrainId(train.id)
+      setSelectedStationName(undefined)
       setSearchQuery(`${train.route} ${train.shortName} → ${train.headsign}`)
       setSearchOpen(false)
       setView('network')
@@ -169,12 +208,12 @@ export function App() {
   )
 
   const handleContextAction = useCallback(() => {
-    if (view === 'network' && selectedTrainId) {
-      releaseTrain()
+    if (view === 'network' && (selectedTrainId || selectedStationName)) {
+      releaseSelection()
       return
     }
     setView((value) => (value === 'network' ? 'journey' : 'network'))
-  }, [releaseTrain, selectedTrainId, view])
+  }, [releaseSelection, selectedStationName, selectedTrainId, view])
 
   useEffect(() => {
     const controller = new AbortController()
@@ -232,7 +271,9 @@ export function App() {
   const timelineReady = isTimetable && timeline
 
   return (
-    <main className={`experience view-${view}${selectedTrain ? ' has-selection' : ''}`}>
+    <main
+      className={`experience view-${view}${selectedTrain || selectedStation ? ' has-selection' : ''}`}
+    >
       <div className="scene" aria-hidden="true">
         {isNetwork && network ? (
           <NationalNetworkScene
@@ -244,6 +285,7 @@ export function App() {
             cameraCommand={mapCameraCommand}
             playbackRate={playbackRate}
             selectedCategory={selectedCategory}
+            selectedStation={selectedStation}
           />
         ) : isHub && network ? (
           <HubPulseScene
@@ -296,12 +338,13 @@ export function App() {
             role="search"
             onSubmit={(event) => {
               event.preventDefault()
-              if (searchResults[0]) selectTrain(searchResults[0])
+              if (stationSearchResults[0]) selectStation(stationSearchResults[0])
+              else if (searchResults[0]) selectTrain(searchResults[0])
             }}
           >
             <span className="search-mark" aria-hidden="true" />
             <label>
-              <span className="sr-only">Find a train, service, or destination</span>
+              <span className="sr-only">Find a station, train, service, or destination</span>
               <input
                 type="search"
                 value={searchQuery}
@@ -310,7 +353,10 @@ export function App() {
                 onChange={(event) => {
                   setSearchQuery(event.target.value)
                   setSearchOpen(true)
-                  if (!event.target.value) setSelectedTrainId(undefined)
+                  if (!event.target.value) releaseSelection()
+                  else if (event.target.value !== selectedStation?.name) {
+                    setSelectedStationName(undefined)
+                  }
                 }}
                 onKeyDown={(event) => {
                   if (event.key === 'Escape') {
@@ -324,17 +370,36 @@ export function App() {
               <button
                 className="clear-search"
                 type="button"
-                aria-label="Clear train search"
-                onClick={releaseTrain}
+                aria-label="Clear search and selection"
+                onClick={releaseSelection}
               >
                 ×
               </button>
             )}
           </form>
           {searchOpen && searchQuery.trim() && (
-            <div className="search-results" role="listbox" aria-label="Matching trains">
-              {searchResults.length ? (
-                searchResults.map((train) => {
+            <div
+              className="search-results"
+              role="listbox"
+              aria-label="Matching stations and trains"
+            >
+              {stationSearchResults.map((station) => (
+                <button
+                  className="station-result"
+                  key={`station:${station.name}`}
+                  type="button"
+                  role="option"
+                  aria-selected={station.name === selectedStationName}
+                  onClick={() => selectStation(station)}
+                >
+                  <span className="station-result-mark" aria-hidden="true">◎</span>
+                  <span className="result-service">{station.name}</span>
+                  <span className="result-route">
+                    {station.routes.length} routes · {station.trainIds.length} scheduled calls
+                  </span>
+                </button>
+              ))}
+              {searchResults.map((train) => {
                   const origin = network?.stops[train.stops[0]?.[0]]?.[2]
                   return (
                     <button
@@ -356,9 +421,9 @@ export function App() {
                       </span>
                     </button>
                   )
-                })
-              ) : (
-                <p>No trains found in this morning window.</p>
+                })}
+              {!stationSearchResults.length && !searchResults.length && (
+                <p>No stations or trains found in this morning window.</p>
               )}
             </div>
           )}
@@ -438,6 +503,28 @@ export function App() {
             </div>
           </div>
         </section>
+      ) : isNetwork && selectedStation ? (
+        <section className="journey-card station-card" aria-label={`Routes serving ${selectedStation.name}`}>
+          <div className="service-row">
+            <span className="station-card-mark" aria-hidden="true">◎</span>
+            <span className="service">{selectedStation.name}</span>
+          </div>
+          <p className="between">
+            all scheduled paths <span>/</span> morning study
+          </p>
+          <div className="metric-grid">
+            <div>
+              <span>routes</span>
+              <strong>{selectedStation.routes.length}</strong>
+              <small>unique</small>
+            </div>
+            <div>
+              <span>calls</span>
+              <strong>{selectedStation.trainIds.length}</strong>
+              <small>2h</small>
+            </div>
+          </div>
+        </section>
       ) : isNetwork ? (
         <section className="journey-card network-card" aria-label="Swiss network status">
           <div className="network-count-row">
@@ -495,8 +582,19 @@ export function App() {
           </>
         ) : isNetwork ? (
           <>
-            <span>{selectedTrain ? 'scheduled follow' : 'GTFS schedule'}</span>
-            <span>{selectedTrain?.category ?? selectedCategory ?? 'stop geometry'}</span>
+            <span>
+              {selectedTrain
+                ? 'scheduled follow'
+                : selectedStation
+                  ? 'station route focus'
+                  : 'GTFS schedule'}
+            </span>
+            <span>
+              {selectedTrain?.category ??
+                selectedStation?.name ??
+                selectedCategory ??
+                'stop geometry'}
+            </span>
           </>
         ) : (
           <>
@@ -627,8 +725,10 @@ export function App() {
           </button>
           <button type="button" onClick={handleContextAction}>
             <span className="button-icon camera-icon" aria-hidden="true" />
-            {selectedTrain
-              ? 'Release train'
+            {selectedTrain || selectedStation
+              ? selectedTrain
+                ? 'Release train'
+                : 'Clear station'
               : isNetwork
                 ? 'Corridor study'
                 : 'National view'}
