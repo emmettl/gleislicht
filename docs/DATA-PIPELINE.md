@@ -152,6 +152,18 @@ The current Swiss GTFS archive has no `shapes.txt`. National rail movements are 
 
 At render time, an unresolved fallback segment that crosses a substantial distance through a federal lake polygon is routed around the shorter shoreline arc. Crossings below roughly 1.25 km at national scale remain direct so real bridge links such as the Seedamm are not removed. Supplied infrastructure or regional geometry always wins. The same derived path is used by network lines, selected routes, vehicle interpolation, trails, labels and the follow camera. Movement remains scheduled interpolation rather than a claim of GPS tracking, and the snapshot metadata records both provenance and measured coverage.
 
+## Zürich–Chur terrain corridor
+
+The first measured follow-camera scene is generated independently from the opening map payload:
+
+```bash
+npm run data:corridor
+```
+
+The script discovers the current full-coverage swissALTIRegio Cloud Optimized GeoTIFF through swisstopo's STAC catalogue, finds the best shape-matched Zürich HB–Chur service in the committed national snapshot, and crops a nine-kilometre margin around it. It range-reads and resamples the federal raster into a compact 241 × 185 low-poly grid. Rail elevations come from the separate GeoAdmin elevation-profile service so the vehicle remains attached to the route even where a coarse terrain cell contains a steep valley wall. Federal lake polygons and each corridor stop are transformed into the same LV95-local metre frame.
+
+The resulting `public/data/zurich-chur-corridor.json` records source release, CRS and attribution alongside 121 profiled rail points. It is requested only when the corridor view opens. The renderer uses the complete grid on desktop and a half-resolution level of detail on narrow screens; neither browser downloads nor parses the source raster.
+
 ## National boundary
 
 The luminous country outline is generated separately from swisstopo's official `swissBOUNDARIES3D` GeoPackage. Download the current LV95 GeoPackage and run:

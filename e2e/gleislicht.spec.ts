@@ -44,6 +44,20 @@ test('keyboard search selection remains complete', async ({ page }) => {
   await expect(page.locator('.station-card')).toContainText('Basel SBB')
 })
 
+test('a Zürich–Chur train descends into measured terrain', async ({ page }) => {
+  const search = page.locator('.train-search input[type="search"]')
+  await search.fill('2355')
+  await page.locator('.search-results button').filter({ hasText: '2355' }).click()
+
+  const descent = page.getByRole('button', { name: /Descend into real terrain/i })
+  await expect(descent).toBeVisible()
+  await descent.click()
+
+  await expect(page.getByRole('heading', { level: 1 })).toContainText('Zürich → Chur')
+  await expect(page.locator('.prototype-note')).toContainText('swissALTIRegio')
+  await expect(page.locator('footer a[href*="swissaltiregio"]')).toBeAttached()
+})
+
 test('region selection changes the active study', async ({ page }, testInfo) => {
   if (testInfo.project.name === 'iphone-webkit') {
     const picker = page.locator('.mobile-study-picker')

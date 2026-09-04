@@ -23,6 +23,12 @@ import {
   type HubDaySnapshot,
   type HubId,
 } from './domain/hub.ts'
+import {
+  corridorProgressForTime,
+  isZurichChurTrain,
+  journeyForCorridor,
+  type CorridorSnapshot,
+} from './domain/corridor.ts'
 import { positionOnJourney, prototypeJourney } from './domain/journey.ts'
 import {
   adjacentDayChunks,
@@ -202,6 +208,8 @@ export function App() {
   const [regionalNetworkError, setRegionalNetworkError] = useState(false)
   const [boundary, setBoundary] = useState<SwissBoundary>()
   const [lakes, setLakes] = useState<SwissLakes>()
+  const [corridor, setCorridor] = useState<CorridorSnapshot>()
+  const [corridorError, setCorridorError] = useState(false)
   const [hubDay, setHubDay] = useState<HubDaySnapshot>()
   const [dataError, setDataError] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
@@ -290,10 +298,6 @@ export function App() {
   const soundtrackMode: SoundtrackMode =
     view === 'hub' ? 'hub' : view === 'journey' || selectedTrainId ? 'journey' : 'network'
 
-  const journeyPosition = useMemo(
-    () => positionOnJourney(prototypeJourney, journeyProgress),
-    [journeyProgress],
-  )
   const activeTrainCount = useMemo(
     () =>
       network?.trains.reduce(
@@ -338,6 +342,18 @@ export function App() {
   const selectedTrain = useMemo(
     () => network?.trains.find((train) => train.id === selectedTrainId),
     [network, selectedTrainId],
+  )
+  const corridorTrainSelected = isZurichChurTrain(selectedTrain, network)
+  const activeJourney = useMemo(
+    () =>
+      corridor
+        ? journeyForCorridor(corridor, selectedTrain, network)
+        : prototypeJourney,
+    [corridor, network, selectedTrain],
+  )
+  const journeyPosition = useMemo(
+    () => positionOnJourney(activeJourney, journeyProgress),
+    [activeJourney, journeyProgress],
   )
   const stationIndex = useMemo(
     () => (network ? buildStationIndex(network) : []),
@@ -551,6 +567,19 @@ export function App() {
     [network, networkTime],
   )
 
+  const enterTerrainCorridor = useCallback(() => {
+    if (!selectedTrain || !network || !isZurichChurTrain(selectedTrain, network)) {
+      return
+    }
+    setJourneyProgress(
+      corridorProgressForTime(selectedTrain, network, networkTime),
+    )
+    setCorridorError(false)
+    setSearchOpen(false)
+    setView('journey')
+    setIsPlaying(true)
+  }, [network, networkTime, selectedTrain])
+
   const selectNetworkStudy = useCallback(
     (study: NetworkStudy, timeRange: NationalTimeRange = nationalTimeRange) => {
       setDirectorMode(false)
@@ -746,6 +775,27 @@ export function App() {
       })
     return () => controller.abort()
   }, [hubDay, view])
+
+  useEffect(() => {
+    if (view !== 'journey' || corridor) return
+    const controller = new AbortController()
+    fetch(`${import.meta.env.BASE_URL}data/zurich-chur-corridor.json`, {
+      signal: controller.signal,
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Terrain corridor returned ${response.status}`)
+        }
+        return response.json() as Promise<CorridorSnapshot>
+      })
+      .then(setCorridor)
+      .catch((error: unknown) => {
+        if (error instanceof DOMException && error.name === 'AbortError') return
+        console.warn('Unable to load the Zürich–Chur terrain corridor', error)
+        setCorridorError(true)
+      })
+    return () => controller.abort()
+  }, [corridor, view])
 
   useEffect(() => {
     if (
@@ -1128,6 +1178,7 @@ export function App() {
         ) : (
           <Suspense fallback={null}>
             <GleislichtScene
+              corridor={corridor}
               isPlaying={isPlaying && !isNetwork}
               progress={journeyProgress}
               onProgress={handleJourneyProgress}
@@ -1161,7 +1212,7 @@ export function App() {
                   : text.subtitle
               : isHub
                 ? text.taktHubs
-                : text.subtitle}
+                : text.corridorSubtitle}
           </h1>
         </div>
         <div className="masthead-meta">
@@ -1772,6 +1823,16 @@ export function App() {
               <small>{text.plan}</small>
             </div>
           </div>
+          {corridorTrainSelected && (
+            <button
+              className="corridor-entry"
+              type="button"
+              onClick={enterTerrainCorridor}
+            >
+              <span aria-hidden="true">↘</span>
+              {text.enterTerrain}
+            </button>
+          )}
         </section>
       ) : isNetwork && selectedRoute ? (
         <section
@@ -1934,9 +1995,9 @@ export function App() {
       ) : (
         <section className="journey-card" aria-label={text.currentJourney}>
           <div className="service-row">
-            <span className="service">{prototypeJourney.service}</span>
+            <span className="service">{activeJourney.service}</span>
             <span className="arrow">→</span>
-            <span>{prototypeJourney.destination}</span>
+            <span>{activeJourney.destination}</span>
           </div>
           <p className="between">
             {journeyPosition.previous.name} <span>/</span> {journeyPosition.next.name}
@@ -1944,7 +2005,7 @@ export function App() {
           <div className="metric-grid">
             <div>
               <span>{text.velocity}</span>
-              <strong>{prototypeJourney.speedKmh}</strong>
+              <strong>{activeJourney.speedKmh}</strong>
               <small>km/h</small>
             </div>
             <div>
@@ -1992,8 +2053,14 @@ export function App() {
           </>
         ) : (
           <>
-            <span>{text.prototypeRoute}</span>
-            <span>{text.syntheticTerrain}</span>
+            <span>{text.realTerrainRoute}</span>
+            <span>
+              {corridor
+                ? `swissALTIRegio · ${corridor.metadata.releaseDate}`
+                : corridorError
+                  ? text.terrainUnavailable
+                  : text.loadingTerrain}
+            </span>
           </>
         )}
       </div>
@@ -2156,12 +2223,12 @@ export function App() {
               : journeyPosition.previous.departure}
           </span>
           <span className="route-id">
-            {isTimetable ? formatServiceTime(timelineTime) : prototypeJourney.id}
+            {isTimetable ? formatServiceTime(timelineTime) : activeJourney.id}
           </span>
           <span>
             {timelineReady
               ? formatTimelineBoundary(timeline.windowEnd)
-              : prototypeJourney.stops.at(-1)?.departure}
+              : activeJourney.stops.at(-1)?.departure}
           </span>
         </div>
         <label className="scrubber">
@@ -2439,7 +2506,15 @@ export function App() {
             <a href="./methodology.html">{text.methodology}</a>
           </span>
         ) : (
-          <span>{prototypeJourney.operator}</span>
+          <span className="source-links">
+            {corridor ? (
+              <a href={corridor.metadata.productUrl} target="_blank" rel="noreferrer">
+                Terrain · © swisstopo
+              </a>
+            ) : (
+              activeJourney.operator
+            )}
+          </span>
         )}
         <span>
           {isHub

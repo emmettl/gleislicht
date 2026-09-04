@@ -39,7 +39,7 @@ People fascinated by trains, Switzerland, maps, motion graphics or generative ar
 
 Swiss GTFS Static is the source of scheduled services, stops, trips and shapes. GTFS Realtime enriches those schedules with trip updates and service alerts, but the official national feed currently does **not** publish vehicle positions. Consequently, most on-track positions will be an honest interpolation between timed stops and shapes, adjusted by realtime trip updates where available—not a claim of GPS tracking.
 
-Terrain should be derived from swisstopo's swissALTI3D elevation model and shipped as simplified route or map tiles with the required attribution. Full source archives should be processed offline, never downloaded or parsed in the browser.
+Terrain should be derived from swisstopo's swissALTIRegio or swissALTI3D elevation models and shipped as simplified corridor artifacts with the required attribution. Full source rasters should be processed offline, never downloaded or parsed in the browser.
 
 ## What this is not—yet
 

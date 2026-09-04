@@ -46,11 +46,12 @@ The measured corridor decision is recorded in [docs/POSTBUS-CORRIDOR.md](./docs/
 
 ## 3 — Real terrain, real corridors
 
-- Establish LV95/WGS84/WebGL coordinate transforms and a single distance model.
-- Build an offline swissALTI3D processing path: crop, resample, quantise and tile.
-- Create corridor-level terrain LODs around selected rail shapes.
-- Add terrain-integrated water depth, major station lights and tunnel-aware line treatment.
-- Show mandatory `© swisstopo` attribution wherever derived terrain appears.
+- [x] Establish LV95/WGS84/WebGL coordinate transforms and a single distance model.
+- [x] Build an offline swissALTIRegio processing path: crop, resample, quantise and package on demand.
+- [x] Create desktop and mobile terrain LODs around the matched Zürich–Chur rail shape.
+- [x] Add terrain-integrated lake surfaces and station beacons to the first measured corridor.
+- [ ] Add tunnel-aware line treatment and a higher-resolution Alpine corridor crop.
+- [x] Show mandatory `© swisstopo` attribution wherever derived terrain appears.
 
 **Exit:** Zürich–Chur and one Alpine corridor run over recognisable real terrain on laptop and mobile GPUs.
 
@@ -76,7 +77,7 @@ The national GTFS-RT feed supplies trip updates and alerts, not vehicle position
 - [x] Add a hub-scale Takt pulse for Zürich HB, Bern, Basel SBB and Genève.
 - [x] Loop the hub orbit across a full day with four authored playback tempos.
 - [x] Add an alternate station-flow view with scheduled GTFS platform assignments.
-- [ ] Replace the map-level selected-train follow with a terrain-backed corridor transition.
+- [x] Replace the first supported map-level selected-train follow with a terrain-backed corridor transition.
 - [x] Add time-of-day presets, speed control and a short looping “director mode.”
 - Authored palettes and camera behaviours for plateau, lake and Alpine routes.
 - [x] Add three opt-in Driftbox cues with adaptive crossfades between network, hub and journey modes.
@@ -98,7 +99,7 @@ The national GTFS-RT feed supplies trip updates and alerts, not vehicle position
 
 - [Swiss GTFS Static cookbook](https://opentransportdata.swiss/en/cookbook/timetable-cookbook/gtfs/) and the current timetable-year dataset
 - [Swiss GTFS Realtime cookbook](https://opentransportdata.swiss/en/cookbook/realtime-prediction-cookbook/gtfs-rt/) and paired GTFS-RT dataset
-- [swissALTI3D](https://www.swisstopo.admin.ch/en/height-model-swissalti3d) plus the applicable [open-geodata terms](https://www.swisstopo.admin.ch/en/terms-of-use-free-geodata-and-geoservices)
+- [swissALTIRegio](https://www.swisstopo.admin.ch/en/height-model-swissaltiregio) for wide-area terrain, [swissALTI3D](https://www.swisstopo.admin.ch/en/height-model-swissalti3d) for tighter future crops, plus the applicable [open-geodata terms](https://www.swisstopo.admin.ch/en/terms-of-use-free-geodata-and-geoservices)
 - [swissBOUNDARIES3D](https://www.swisstopo.admin.ch/en/landscape-model-swissboundaries3d) for the national outline
 - [FOEN Swiss hydrographic network](https://www.bafu.admin.ch/en/the-swiss-hydrographic-network) for named lake surfaces
 - [Federal Office of Transport rail network](https://map.geo.admin.ch/#/map?lang=en&center=2660000,1190000&z=1&topic=ech&layers=ch.bav.schienennetz) for national infrastructure geometry
