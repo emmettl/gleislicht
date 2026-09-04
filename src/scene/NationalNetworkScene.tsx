@@ -151,6 +151,41 @@ function RailGraph({
   )
 }
 
+function trainLightTexture(kind: 'halo' | 'orb' | 'spark'): THREE.CanvasTexture {
+  const canvas = document.createElement('canvas')
+  canvas.width = 96
+  canvas.height = 96
+  const context = canvas.getContext('2d')
+  if (context) {
+    const gradient = context.createRadialGradient(43, 39, 0, 48, 48, 46)
+    if (kind === 'halo') {
+      gradient.addColorStop(0, 'rgba(255, 255, 255, 0.95)')
+      gradient.addColorStop(0.12, 'rgba(255, 255, 255, 0.72)')
+      gradient.addColorStop(0.34, 'rgba(255, 255, 255, 0.3)')
+      gradient.addColorStop(0.72, 'rgba(255, 255, 255, 0.07)')
+      gradient.addColorStop(1, 'rgba(255, 255, 255, 0)')
+    } else if (kind === 'orb') {
+      gradient.addColorStop(0, 'rgba(255, 255, 255, 1)')
+      gradient.addColorStop(0.18, 'rgba(255, 255, 255, 0.98)')
+      gradient.addColorStop(0.5, 'rgba(255, 255, 255, 0.78)')
+      gradient.addColorStop(0.76, 'rgba(255, 255, 255, 0.3)')
+      gradient.addColorStop(1, 'rgba(255, 255, 255, 0)')
+    } else {
+      gradient.addColorStop(0, 'rgba(255, 255, 255, 1)')
+      gradient.addColorStop(0.32, 'rgba(255, 255, 255, 0.96)')
+      gradient.addColorStop(0.68, 'rgba(255, 255, 255, 0.18)')
+      gradient.addColorStop(1, 'rgba(255, 255, 255, 0)')
+    }
+    context.fillStyle = gradient
+    context.fillRect(0, 0, canvas.width, canvas.height)
+  }
+  const texture = new THREE.CanvasTexture(canvas)
+  texture.colorSpace = THREE.SRGBColorSpace
+  texture.minFilter = THREE.LinearFilter
+  texture.generateMipmaps = false
+  return texture
+}
+
 function SelectedRoute({
   train,
   projectedStops,
@@ -764,6 +799,14 @@ function TrainSwarm({
     () => new Set(selectedStation?.trainIds ?? []),
     [selectedStation],
   )
+  const lightTextures = useMemo(
+    () => ({
+      halo: trainLightTexture('halo'),
+      orb: trainLightTexture('orb'),
+      spark: trainLightTexture('spark'),
+    }),
+    [],
+  )
   const palette = useMemo(
     () =>
       Object.fromEntries(
@@ -791,6 +834,15 @@ function TrainSwarm({
   useEffect(() => {
     localTime.current = time
   }, [time])
+
+  useEffect(
+    () => () => {
+      lightTextures.halo.dispose()
+      lightTextures.orb.dispose()
+      lightTextures.spark.dispose()
+    },
+    [lightTextures],
+  )
 
   useFrame((state, delta) => {
     if (isPlaying) {
@@ -846,26 +898,46 @@ function TrainSwarm({
 
   return (
     <>
-      <points ref={glow} geometry={geometry}>
+      <points ref={glow} geometry={geometry} frustumCulled={false}>
         <pointsMaterial
           vertexColors
-          size={0.72}
+          map={lightTextures.halo}
+          size={0.9}
           transparent
           opacity={selectedTrain || selectedCategory || selectedStation ? 0.12 : 0.18}
+          alphaTest={0.005}
           depthWrite={false}
           blending={THREE.AdditiveBlending}
           sizeAttenuation
+          toneMapped={false}
         />
       </points>
-      <points ref={points} geometry={geometry}>
+      <points ref={points} geometry={geometry} frustumCulled={false}>
         <pointsMaterial
           vertexColors
-          size={0.2}
+          map={lightTextures.orb}
+          size={0.28}
           transparent
-          opacity={0.96}
+          opacity={0.92}
+          alphaTest={0.015}
           depthWrite={false}
           blending={THREE.AdditiveBlending}
           sizeAttenuation
+          toneMapped={false}
+        />
+      </points>
+      <points geometry={geometry} frustumCulled={false}>
+        <pointsMaterial
+          vertexColors
+          map={lightTextures.spark}
+          size={0.095}
+          transparent
+          opacity={1}
+          alphaTest={0.025}
+          depthWrite={false}
+          blending={THREE.AdditiveBlending}
+          sizeAttenuation
+          toneMapped={false}
         />
       </points>
     </>
