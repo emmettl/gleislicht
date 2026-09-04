@@ -8,11 +8,10 @@ The intended public home for Gleislicht is GitHub Pages. During development, pri
 - `base: './'` keeps scripts, styles and data assets working both at a domain root and beneath `/gleislicht/`.
 - The GTFS pipeline runs before release; the published site reads only the committed compact snapshot and needs no server or secret.
 
-## Release shape—when the project is ready
+## Release shape
 
-1. Create or connect the GitHub repository.
-2. Add a GitHub Actions Pages workflow that installs with `npm ci`, runs the checks, builds, and uploads `dist/`.
-3. Protect the production environment and publish only from `main` after the data snapshot and attribution are reviewed.
-4. Set the repository's Pages source to GitHub Actions.
+The public repository is `emmettl/gleislicht`, and its canonical site is:
 
-The workflow is intentionally not added yet: pushing source should not make the current study public before it is ready.
+<https://emmettl.github.io/gleislicht/>
+
+The Pages workflow installs with `npm ci`, runs tests, typechecking and linting, builds the static client, and uploads only `dist/`. It deploys on every push to `main` and can also be started manually. GitHub's `github-pages` environment records the public URL and prevents a partially validated build from replacing the current site.
