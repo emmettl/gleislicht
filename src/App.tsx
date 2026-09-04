@@ -1659,6 +1659,26 @@ export function App() {
             <span className="station-card-mark" aria-hidden="true">◎</span>
             <span className="service">{selectedStation.name}</span>
           </div>
+          <div
+            className="station-route-strip"
+            aria-label={text.routesServing(selectedStation.name)}
+          >
+            {selectedStation.routes.slice(0, 4).map((route) => (
+              <span
+                key={`${route.category}:${route.name}`}
+                style={
+                  {
+                    '--route-accent': SERVICE_COLORS[route.category],
+                  } as CSSProperties
+                }
+              >
+                {route.name}
+              </span>
+            ))}
+            {selectedStation.routes.length > 4 && (
+              <small>+{selectedStation.routes.length - 4}</small>
+            )}
+          </div>
           <p className="between">
             {text.allScheduledPaths} <span>/</span>{' '}
             {isNationalDay ? text.fullDayStudy : text.morningStudy}

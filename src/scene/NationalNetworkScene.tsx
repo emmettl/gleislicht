@@ -293,7 +293,7 @@ function LakeLayer({
         <meshBasicMaterial
           color="#08233b"
           transparent
-          opacity={subdued ? 0.66 : 0.9}
+          opacity={subdued ? 0.42 : 0.9}
           depthWrite={false}
           side={THREE.DoubleSide}
           fog={false}
@@ -303,7 +303,7 @@ function LakeLayer({
         <meshBasicMaterial
           color="#20a9cb"
           transparent
-          opacity={subdued ? 0.07 : 0.13}
+          opacity={subdued ? 0.035 : 0.13}
           blending={THREE.AdditiveBlending}
           depthWrite={false}
           side={THREE.DoubleSide}
@@ -319,7 +319,7 @@ function LakeLayer({
         <lineBasicMaterial
           color="#54dff7"
           transparent
-          opacity={subdued ? 0.13 : 0.31}
+          opacity={subdued ? 0.06 : 0.31}
           blending={THREE.AdditiveBlending}
           depthWrite={false}
           toneMapped={false}
@@ -380,7 +380,7 @@ function CountryBorder({
             <meshBasicMaterial
               color="#56e9ff"
               transparent
-              opacity={subdued ? 0.035 : 0.12}
+              opacity={subdued ? 0.018 : 0.12}
               blending={THREE.AdditiveBlending}
               depthWrite={false}
               toneMapped={false}
@@ -391,7 +391,7 @@ function CountryBorder({
             <meshBasicMaterial
               color="#b9fbff"
               transparent
-              opacity={subdued ? 0.28 : 0.84}
+              opacity={subdued ? 0.13 : 0.84}
               blending={THREE.AdditiveBlending}
               depthWrite={false}
               toneMapped={false}
@@ -479,7 +479,7 @@ function RailGraph({
     stationMaterial.current.size = 0.065 * cameraScale
     const detail = localNetworkDetailAtZoom(camera.position.y, cameraFraming)
     localNetworkMaterial.current.opacity = subdued
-      ? 0.02 + detail * 0.05
+      ? 0.008 + detail * 0.025
       : 0.025 + detail * 0.115
   })
 
@@ -489,7 +489,7 @@ function RailGraph({
         <lineBasicMaterial
           color="#7296bb"
           transparent
-          opacity={subdued ? 0.07 : 0.14}
+          opacity={subdued ? 0.035 : 0.14}
           blending={THREE.AdditiveBlending}
         />
       </lineSegments>
@@ -498,7 +498,7 @@ function RailGraph({
           ref={localNetworkMaterial}
           color="#7296bb"
           transparent
-          opacity={subdued ? 0.07 : 0.14}
+          opacity={subdued ? 0.035 : 0.14}
           blending={THREE.AdditiveBlending}
         />
       </lineSegments>
@@ -517,7 +517,7 @@ function RailGraph({
           map={stationTexture}
           size={0.065}
           transparent
-          opacity={subdued ? 0.12 : 0.4}
+          opacity={subdued ? 0.055 : 0.4}
           alphaTest={0.015}
           depthWrite={false}
           blending={THREE.AdditiveBlending}
@@ -610,7 +610,7 @@ function TrafficFlowLayer({
     if (!pulseMaterial.current) return
     const wave = 0.5 + Math.sin(clock.elapsedTime * 1.35) * 0.5
     pulseMaterial.current.opacity = subdued
-      ? 0.025 + wave * 0.02
+      ? 0.012 + wave * 0.012
       : 0.1 + wave * 0.12
   })
 
@@ -620,7 +620,7 @@ function TrafficFlowLayer({
         <lineBasicMaterial
           vertexColors
           transparent
-          opacity={subdued ? 0.1 : 0.62}
+          opacity={subdued ? 0.045 : 0.62}
           blending={THREE.AdditiveBlending}
           depthWrite={false}
           toneMapped={false}
@@ -1494,6 +1494,91 @@ function TrainLabels({
   )
 }
 
+function SelectedStationRouteLayer({
+  category,
+  pathGeometry,
+  stopGeometry,
+  haloTexture,
+  coreTexture,
+}: {
+  readonly category: ServiceCategory
+  readonly pathGeometry: THREE.BufferGeometry
+  readonly stopGeometry: THREE.BufferGeometry
+  readonly haloTexture: THREE.Texture
+  readonly coreTexture: THREE.Texture
+}) {
+  const glowMaterial = useRef<THREE.LineBasicMaterial>(null)
+
+  useFrame(({ clock }) => {
+    if (!glowMaterial.current) return
+    const pulse = Math.sin(clock.elapsedTime * 1.55) * 0.5 + 0.5
+    glowMaterial.current.opacity = 0.18 + pulse * 0.13
+  })
+
+  const color = SERVICE_COLORS[category]
+  return (
+    <group>
+      <lineSegments geometry={pathGeometry} renderOrder={7}>
+        <lineBasicMaterial
+          color={color}
+          transparent
+          opacity={1}
+          blending={THREE.AdditiveBlending}
+          depthTest={false}
+          depthWrite={false}
+          toneMapped={false}
+          fog={false}
+        />
+      </lineSegments>
+      <lineSegments geometry={pathGeometry} renderOrder={6}>
+        <lineBasicMaterial
+          ref={glowMaterial}
+          color="#ffffff"
+          transparent
+          opacity={0.24}
+          blending={THREE.AdditiveBlending}
+          depthTest={false}
+          depthWrite={false}
+          toneMapped={false}
+          fog={false}
+        />
+      </lineSegments>
+      <points geometry={stopGeometry} renderOrder={8}>
+        <pointsMaterial
+          color={color}
+          map={haloTexture}
+          size={4.2}
+          transparent
+          opacity={0.36}
+          alphaTest={0.01}
+          blending={THREE.AdditiveBlending}
+          depthTest={false}
+          depthWrite={false}
+          sizeAttenuation={false}
+          toneMapped={false}
+          fog={false}
+        />
+      </points>
+      <points geometry={stopGeometry} renderOrder={9}>
+        <pointsMaterial
+          color="#ffffff"
+          map={coreTexture}
+          size={1.7}
+          transparent
+          opacity={0.88}
+          alphaTest={0.02}
+          blending={THREE.AdditiveBlending}
+          depthTest={false}
+          depthWrite={false}
+          sizeAttenuation={false}
+          toneMapped={false}
+          fog={false}
+        />
+      </points>
+    </group>
+  )
+}
+
 function SelectedStationRoutes({
   station,
   snapshot,
@@ -1507,13 +1592,23 @@ function SelectedStationRoutes({
   readonly projectedPaths: readonly ProjectedNetworkPath[]
   readonly selectedCategory?: ServiceCategory
 }) {
+  const textures = useMemo(
+    () => ({
+      halo: trainLightTexture('halo'),
+      core: trainLightTexture('spark'),
+    }),
+    [],
+  )
   const lines = useMemo(() => {
     const trainIds = new Set(station.trainIds)
-    const edgesByCategory = new Map<ServiceCategory, Map<string, number[]>>()
+    const pathsByCategory = new Map<ServiceCategory, Map<string, number[]>>()
+    const stopsByCategory = new Map<ServiceCategory, Set<number>>()
     for (const train of snapshot.trains) {
       if (!trainIds.has(train.id)) continue
       if (selectedCategory && train.category !== selectedCategory) continue
-      const categoryEdges = edgesByCategory.get(train.category) ?? new Map()
+      const categoryPaths = pathsByCategory.get(train.category) ?? new Map()
+      const categoryStops = stopsByCategory.get(train.category) ?? new Set()
+      train.stops.forEach(([stopIndex]) => categoryStops.add(stopIndex))
       for (let index = 1; index < train.stops.length; index += 1) {
         const firstIndex = train.stops[index - 1][0]
         const secondIndex = train.stops[index][0]
@@ -1524,7 +1619,7 @@ function SelectedStationRoutes({
               ? `${firstIndex}:${secondIndex}`
               : `${secondIndex}:${firstIndex}`
             : `path:${pathIndex}`
-        if (categoryEdges.has(key)) continue
+        if (categoryPaths.has(key)) continue
         const points = segmentPoints(
           train,
           index - 1,
@@ -1534,18 +1629,30 @@ function SelectedStationRoutes({
         if (points.length < 2) continue
         const positions: number[] = []
         appendLineSegments(positions, points, 0.14)
-        categoryEdges.set(key, positions)
+        categoryPaths.set(key, positions)
       }
-      edgesByCategory.set(train.category, categoryEdges)
+      pathsByCategory.set(train.category, categoryPaths)
+      stopsByCategory.set(train.category, categoryStops)
     }
 
-    return [...edgesByCategory.entries()].map(([category, edges]) => {
-      const geometry = new THREE.BufferGeometry()
-      geometry.setAttribute(
+    return [...pathsByCategory.entries()].map(([category, paths]) => {
+      const pathGeometry = new THREE.BufferGeometry()
+      pathGeometry.setAttribute(
         'position',
-        new THREE.Float32BufferAttribute([...edges.values()].flat(), 3),
+        new THREE.Float32BufferAttribute([...paths.values()].flat(), 3),
       )
-      return { category, geometry }
+      const stopPositions = [...(stopsByCategory.get(category) ?? [])].flatMap(
+        (stopIndex) => {
+          const stop = projectedStops[stopIndex]
+          return stop ? [stop[0], 0.2, stop[2]] : []
+        },
+      )
+      const stopGeometry = new THREE.BufferGeometry()
+      stopGeometry.setAttribute(
+        'position',
+        new THREE.Float32BufferAttribute(stopPositions, 3),
+      )
+      return { category, pathGeometry, stopGeometry }
     })
   }, [
     projectedPaths,
@@ -1556,27 +1663,81 @@ function SelectedStationRoutes({
   ])
 
   useEffect(
-    () => () => lines.forEach(({ geometry }) => geometry.dispose()),
+    () => () =>
+      lines.forEach(({ pathGeometry, stopGeometry }) => {
+        pathGeometry.dispose()
+        stopGeometry.dispose()
+      }),
     [lines],
+  )
+
+  useEffect(
+    () => () => {
+      textures.halo.dispose()
+      textures.core.dispose()
+    },
+    [textures],
   )
 
   const centre = useMemo(
     () => stationCentre(station, projectedStops),
     [projectedStops, station],
   )
+  const centreGeometry = useMemo(() => {
+    const geometry = new THREE.BufferGeometry()
+    geometry.setAttribute(
+      'position',
+      new THREE.Float32BufferAttribute([centre.x, 0.3, centre.z], 3),
+    )
+    return geometry
+  }, [centre])
+
+  useEffect(() => () => centreGeometry.dispose(), [centreGeometry])
 
   return (
     <>
-      {lines.map(({ category, geometry }) => (
-        <lineSegments key={category} geometry={geometry}>
-          <lineBasicMaterial
-            color={SERVICE_COLORS[category]}
-            transparent
-            opacity={0.92}
-            blending={THREE.AdditiveBlending}
-          />
-        </lineSegments>
+      {lines.map(({ category, pathGeometry, stopGeometry }) => (
+        <SelectedStationRouteLayer
+          key={category}
+          category={category}
+          pathGeometry={pathGeometry}
+          stopGeometry={stopGeometry}
+          haloTexture={textures.halo}
+          coreTexture={textures.core}
+        />
       ))}
+      <points geometry={centreGeometry} renderOrder={10}>
+        <pointsMaterial
+          color="#8dfaff"
+          map={textures.halo}
+          size={25}
+          transparent
+          opacity={0.78}
+          alphaTest={0.01}
+          blending={THREE.AdditiveBlending}
+          depthTest={false}
+          depthWrite={false}
+          sizeAttenuation={false}
+          toneMapped={false}
+          fog={false}
+        />
+      </points>
+      <points geometry={centreGeometry} renderOrder={11}>
+        <pointsMaterial
+          color="#ffffff"
+          map={textures.core}
+          size={5.4}
+          transparent
+          opacity={1}
+          alphaTest={0.02}
+          blending={THREE.AdditiveBlending}
+          depthTest={false}
+          depthWrite={false}
+          sizeAttenuation={false}
+          toneMapped={false}
+          fog={false}
+        />
+      </points>
       <group position={[centre.x, 0.28, centre.z]}>
         <mesh rotation={[Math.PI / 2, 0, 0]}>
           <torusGeometry args={[0.48, 0.055, 8, 48]} />

@@ -489,6 +489,32 @@ h1 {
   text-shadow: 0 0 12px var(--pink);
 }
 
+.station-route-strip {
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  gap: 5px;
+  margin-top: 10px;
+  font-family: 'DM Mono', ui-monospace, monospace;
+  white-space: nowrap;
+}
+
+.station-route-strip > span {
+  flex: 0 0 auto;
+  padding: 3px 5px;
+  border: 1px solid color-mix(in srgb, var(--route-accent) 58%, transparent);
+  background: color-mix(in srgb, var(--route-accent) 13%, rgba(7, 7, 22, 0.86));
+  color: var(--ink);
+  font-size: 0.56rem;
+  box-shadow: inset 2px 0 0 var(--route-accent),
+    0 0 10px color-mix(in srgb, var(--route-accent) 16%, transparent);
+}
+
+.station-route-strip > small {
+  color: var(--cyan);
+  font-size: 0.55rem;
+}
+
 .hub-card {
   border-left-color: rgba(255, 94, 219, 0.75);
   background: linear-gradient(135deg, rgba(25, 10, 44, 0.83), rgba(6, 9, 28, 0.52));
