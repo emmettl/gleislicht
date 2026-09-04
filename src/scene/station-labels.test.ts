@@ -5,7 +5,9 @@ import {
   stationLabelCameraHeight,
   stationLabelBudget,
   stationLabelRankLimit,
+  stationLabelScreenHeight,
   stationLabelText,
+  stationLabelWorldHeight,
 } from './station-labels.ts'
 
 const station = (
@@ -23,6 +25,22 @@ const station = (
 })
 
 describe('station labels', () => {
+  it('keeps a readable screen-space hierarchy', () => {
+    expect(stationLabelScreenHeight(false, false)).toBe(40)
+    expect(stationLabelScreenHeight(false, true)).toBe(46)
+    expect(stationLabelScreenHeight(true, true)).toBe(56)
+  })
+
+  it('converts target pixels into perspective world height', () => {
+    const near = stationLabelWorldHeight(20, 44, 800, 40)
+    const far = stationLabelWorldHeight(40, 44, 800, 40)
+    const portrait = stationLabelWorldHeight(40, 82, 800, 40)
+
+    expect(far).toBeCloseTo(near * 2)
+    expect(portrait).toBeGreaterThan(far)
+    expect(stationLabelWorldHeight(40, 44, 0, 40)).toBe(0)
+  })
+
   it('reveals more labels as the camera gets closer', () => {
     expect(stationLabelBudget(37)).toBe(8)
     expect(stationLabelBudget(25)).toBe(20)

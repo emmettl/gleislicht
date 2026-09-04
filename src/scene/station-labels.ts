@@ -6,6 +6,35 @@ import {
 
 export const MAX_STATION_LABELS = 96
 
+export function stationLabelScreenHeight(
+  selected: boolean,
+  emphasised: boolean,
+): number {
+  if (selected) return 56
+  if (emphasised) return 46
+  return 40
+}
+
+export function stationLabelWorldHeight(
+  cameraDepth: number,
+  verticalFieldOfView: number,
+  viewportHeight: number,
+  screenHeight: number,
+): number {
+  if (
+    cameraDepth <= 0 ||
+    viewportHeight <= 0 ||
+    screenHeight <= 0 ||
+    !Number.isFinite(verticalFieldOfView)
+  ) {
+    return 0
+  }
+
+  const halfFieldOfView = (verticalFieldOfView * Math.PI) / 360
+  const visibleWorldHeight = 2 * cameraDepth * Math.tan(halfFieldOfView)
+  return (screenHeight / viewportHeight) * visibleWorldHeight
+}
+
 export function stationLabelCameraHeight(
   cameraHeight: number,
   framing: MapCameraFraming,

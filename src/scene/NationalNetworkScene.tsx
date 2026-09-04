@@ -26,7 +26,9 @@ import {
   stationLabelCameraHeight,
   stationLabelBudget,
   stationLabelRankLimit,
+  stationLabelScreenHeight,
   stationLabelText,
+  stationLabelWorldHeight,
 } from './station-labels.ts'
 import {
   categoryIsVisibleInAutoMode,
@@ -965,7 +967,7 @@ function stationLabelTexture(name: string): StationLabelTexture {
   if (measuringContext) measuringContext.font = font
   const measuredWidth = measuringContext?.measureText(name).width ?? name.length * 19
   measuringContext?.restore()
-  canvas.width = Math.ceil(THREE.MathUtils.clamp(measuredWidth + 86, 220, 760))
+  canvas.width = Math.ceil(THREE.MathUtils.clamp(measuredWidth + 86, 150, 760))
   canvas.height = 92
 
   const context = canvas.getContext('2d')
@@ -1072,11 +1074,13 @@ function StationLabels({
     const budget = stationLabelBudget(semanticHeight)
     const rankLimit = stationLabelRankLimit(semanticHeight)
     const projected = new THREE.Vector3()
+    const viewPosition = new THREE.Vector3()
     const candidates: Array<{
       index: number
       x: number
       y: number
       distance: number
+      depth: number
       priority: number
     }> = []
 
@@ -1088,6 +1092,7 @@ function StationLabels({
       if ((selectedTrain || selectedRoute) && !label.emphasised) return
       if (!label.emphasised && (label.rank < 0 || label.rank >= rankLimit)) return
 
+      viewPosition.copy(label.position).applyMatrix4(camera.matrixWorldInverse)
       projected.copy(label.position).project(camera)
       if (
         projected.z < -1 ||
@@ -1104,6 +1109,7 @@ function StationLabels({
         x: (projected.x * 0.5 + 0.5) * size.width,
         y: (-projected.y * 0.5 + 0.5) * size.height,
         distance: camera.position.distanceTo(label.position),
+        depth: Math.max(0.01, -viewPosition.z),
         priority:
           label.station.name === selectedStation?.name ? 0 : label.emphasised ? 1 : 2,
       })
@@ -1115,18 +1121,25 @@ function StationLabels({
     )
     const occupied: Array<{ left: number; right: number; top: number; bottom: number }> = []
     const visibleTextureNames = new Set<string>()
-    const worldHeight = 0.7 * THREE.MathUtils.clamp(camera.position.y / 37, 0.02, 1)
+    const verticalFieldOfView =
+      camera instanceof THREE.PerspectiveCamera ? camera.fov : 44
     let visible = 0
 
     for (const candidate of candidates) {
       if (visible >= budget || visible >= MAX_STATION_LABELS) break
       const label = labels[candidate.index]
-      const width = THREE.MathUtils.clamp(label.displayName.length * 7 + 24, 62, 190)
+      const selected = label.station.name === selectedStation?.name
+      const screenHeight = stationLabelScreenHeight(selected, label.emphasised)
+      const width = THREE.MathUtils.clamp(
+        label.displayName.length * screenHeight * 0.2 + screenHeight,
+        screenHeight * 1.6,
+        screenHeight * 8.25,
+      )
       const box = {
-        left: candidate.x - 10,
-        right: candidate.x + width - 10,
-        top: candidate.y - 11,
-        bottom: candidate.y + 11,
+        left: candidate.x - screenHeight * 0.34,
+        right: candidate.x + width - screenHeight * 0.34,
+        top: candidate.y - screenHeight * 0.5,
+        bottom: candidate.y + screenHeight * 0.5,
       }
       const overlaps = occupied.some(
         (other) =>
@@ -1151,6 +1164,12 @@ function StationLabels({
       sprite.visible = true
       sprite.position.copy(label.position)
       sprite.center.set(textureEntry.anchorX, 0.5)
+      const worldHeight = stationLabelWorldHeight(
+        candidate.depth,
+        verticalFieldOfView,
+        size.height,
+        screenHeight,
+      )
       sprite.scale.set(textureEntry.aspect * worldHeight, worldHeight, 1)
       const material = sprite.material as THREE.SpriteMaterial
       if (material.map !== textureEntry.texture) {
