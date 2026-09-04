@@ -1899,23 +1899,26 @@ footer {
   .network-card {
     top: calc(134px + env(safe-area-inset-top));
     left: calc(12px + env(safe-area-inset-left));
-    width: auto;
-    max-width: 190px;
-    padding: 7px 10px 8px;
+    width: max-content;
+    max-width: calc(100vw - 92px - env(safe-area-inset-left) - env(safe-area-inset-right));
+    padding: 5px 8px 6px;
     background: rgba(7, 7, 22, 0.72);
     clip-path: none;
   }
 
   .network-card .network-count-row {
-    gap: 6px;
+    gap: 5px;
   }
 
   .network-card .network-count-row strong {
-    font-size: 1.2rem;
+    font-size: 1rem;
+    line-height: 1;
   }
 
   .network-card .network-count-row span {
     font-size: 0.58rem;
+    line-height: 1.15;
+    white-space: nowrap;
   }
 
   .network-card .between,
