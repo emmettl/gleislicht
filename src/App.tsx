@@ -8,6 +8,8 @@ import {
   callsNearTime,
   HUBS,
   nextHubCall,
+  platformCodeForCall,
+  platformsForCalls,
   type HubDaySnapshot,
   type HubId,
 } from './domain/hub.ts'
@@ -26,6 +28,7 @@ import {
 import type { SwissBoundary } from './domain/boundary.ts'
 import { GleislichtScene } from './scene/GleislichtScene.tsx'
 import { HubPulseScene } from './scene/HubPulseScene.tsx'
+import { StationFlowScene } from './scene/StationFlowScene.tsx'
 import {
   NationalNetworkScene,
   type MapCameraAction,
@@ -40,6 +43,7 @@ import {
 type View = 'network' | 'hub' | 'journey'
 type SoundtrackState = 'off' | 'starting' | 'on' | 'error'
 type NetworkStudy = 'national' | 'zurich-city'
+type HubStudy = 'pulse' | 'station'
 
 const SOUNDTRACK_TITLES: Record<SoundtrackMode, string> = {
   network: 'Night Grid',
@@ -103,6 +107,7 @@ export function App() {
   const [selectedTrainId, setSelectedTrainId] = useState<string>()
   const [selectedStationName, setSelectedStationName] = useState<string>()
   const [selectedHubId, setSelectedHubId] = useState<HubId>('zurich')
+  const [hubStudy, setHubStudy] = useState<HubStudy>('pulse')
   const [mapCameraCommand, setMapCameraCommand] = useState<MapCameraCommand>({
     id: 0,
     action: 'reset',
@@ -163,6 +168,7 @@ export function App() {
     () => nextHubCall(hubCalls, hubTime),
     [hubCalls, hubTime],
   )
+  const hubPlatforms = useMemo(() => platformsForCalls(hubCalls), [hubCalls])
   const selectedFrom =
     network && selectedPosition
       ? network.stops[selectedPosition.fromStop]?.[2]
@@ -453,6 +459,17 @@ export function App() {
             selectedCategory={selectedCategory}
             selectedStation={selectedStation}
           />
+        ) : isHub && network && hubStudy === 'station' ? (
+          <StationFlowScene
+            timeline={hubDay?.metadata ?? network.metadata}
+            hub={selectedHub}
+            calls={hubCalls}
+            isPlaying={isPlaying}
+            time={hubTime}
+            onTime={setHubTime}
+            playbackRate={playbackRate}
+            selectedCategory={selectedCategory}
+          />
         ) : isHub && network ? (
           <HubPulseScene
             timeline={hubDay?.metadata ?? network.metadata}
@@ -712,7 +729,7 @@ export function App() {
       )}
 
       {isHub && (
-        <nav className="hub-picker" aria-label="Takt pulse station">
+        <nav className="hub-picker" aria-label="Takt station">
           <span>Takt pulse</span>
           <div>
             {HUBS.map((hub) => (
@@ -730,15 +747,44 @@ export function App() {
       )}
 
       {isHub ? (
-        <section className="journey-card hub-card" aria-label={`${selectedHub.name} pulse`}>
-          <p className="hub-kicker">takt / 24 hour loop</p>
+        <section
+          className="journey-card hub-card"
+          aria-label={`${selectedHub.name} ${hubStudy === 'pulse' ? 'pulse' : 'station flow'}`}
+        >
+          <div className="hub-card-header">
+            <p className="hub-kicker">
+              {hubStudy === 'pulse' ? 'takt / 24 hour loop' : 'station / scheduled platforms'}
+            </p>
+            <div className="hub-study-picker" aria-label="Takt visualisation">
+              <button
+                type="button"
+                aria-pressed={hubStudy === 'pulse'}
+                onClick={() => setHubStudy('pulse')}
+              >
+                pulse
+              </button>
+              <button
+                type="button"
+                aria-pressed={hubStudy === 'station'}
+                onClick={() => setHubStudy('station')}
+              >
+                tracks
+              </button>
+            </div>
+          </div>
           <div className="network-count-row">
             <strong>{nearbyHubCalls.length}</strong>
-            <span>arrivals + departures in orbit</span>
+            <span>
+              {hubStudy === 'pulse'
+                ? 'arrivals + departures in orbit'
+                : 'movements on the station plan'}
+            </span>
           </div>
           <p className="between">
             {selectedHub.character} <span>/</span>{' '}
-            {numberFormat.format(hubCalls.length)} calls today
+            {hubStudy === 'station'
+              ? `${hubPlatforms.length} scheduled tracks`
+              : `${numberFormat.format(hubCalls.length)} calls today`}
           </p>
           <div className="metric-grid">
             <div>
@@ -746,7 +792,11 @@ export function App() {
               <strong>
                 {upcomingHubCall ? formatServiceTime(upcomingHubCall.arrival) : '—'}
               </strong>
-              <small>{upcomingHubCall?.train.route ?? 'end'}</small>
+              <small>
+                {upcomingHubCall
+                  ? `${upcomingHubCall.train.route} · Gl. ${platformCodeForCall(upcomingHubCall)}`
+                  : 'end'}
+              </small>
             </div>
             <div>
               <span>direction</span>
@@ -875,8 +925,10 @@ export function App() {
       <div className="prototype-note">
         {isHub ? (
           <>
-            <span>scheduled station calls</span>
-            <span>15 minute orbit</span>
+            <span>
+              {hubStudy === 'pulse' ? 'scheduled station calls' : 'GTFS platform assignments'}
+            </span>
+            <span>{hubStudy === 'pulse' ? '15 minute orbit' : 'schematic track plan'}</span>
           </>
         ) : isNetwork ? (
           <>

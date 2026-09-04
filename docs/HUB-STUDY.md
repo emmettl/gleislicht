@@ -13,7 +13,7 @@ The first version uses the same two-hour scheduled GTFS artifact as the national
 
 Every scheduled call across the full civil day becomes one light. During the 15 minutes before arrival it moves inward along the bearing of its previous stop; during the station dwell it strikes the centre; during the 15 minutes after departure it travels outward toward its next stop. Colour encodes the existing service categories. The three rings mark five-minute intervals. The day loops continuously and can run at four authored tempos from a contemplative 1× to a 64× rush.
 
-This is a timetable visualisation, not a platform diagram or live operating display. Several GTFS platform stop IDs are deliberately combined under the shared station name.
+The alternate **Tracks** view unfolds those same calls onto their GTFS `platform_code` assignments. It is a schematic station plan: the platform labels and scheduled arrival, dwell and departure times are real, while the parallel-track geometry is deliberately abstract rather than survey-accurate. Unassigned calls remain visible on a separate `Gl. ?` row instead of being silently discarded.
 
 ## A note on “Europe's busiest”
 
@@ -27,7 +27,8 @@ Sources: [Zürich Tourism station overview](https://www.zuerich.com/en/inform-pl
 
 ## Next iterations
 
-- Use platform and track assignments where the feed makes them dependable.
+- [x] Use GTFS platform assignments in a schematic station-flow view.
+- Join a surveyed or authoritative station plan before presenting the track geometry as geographically real.
 - Add destination labels at the outer edge without turning the piece into a departure board.
 - Compare a normal pulse with a delayed or disrupted one once realtime updates are available.
 - Let a selected train bridge hub mode and the future terrain-backed corridor view.

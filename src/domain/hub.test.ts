@@ -1,5 +1,14 @@
 import { describe, expect, it } from 'vitest'
-import { callsAtHub, callsNearTime, HUBS, nextHubCall } from './hub.ts'
+import {
+  callsAtHub,
+  callsNearTime,
+  HUBS,
+  nextHubCall,
+  platformCodeForCall,
+  platformTrackForCall,
+  platformsForCalls,
+  stationMotionForCall,
+} from './hub.ts'
 import type { NetworkSnapshot } from './network.ts'
 
 const snapshot: NetworkSnapshot = {
@@ -22,8 +31,8 @@ const snapshot: NetworkSnapshot = {
   },
   stops: [
     [8, 47, 'Winterthur'],
-    [8.5, 47.3, 'Zürich HB'],
-    [8.6, 47.4, 'Zürich HB'],
+    [8.5, 47.3, 'Zürich HB', '7'],
+    [8.6, 47.4, 'Zürich HB', '31'],
     [9, 47, 'Chur'],
   ],
   edges: [],
@@ -76,5 +85,36 @@ describe('hub calls', () => {
     ])
     expect(nextHubCall(calls, 700)?.train.id).toBe('two')
     expect(nextHubCall(calls, 1300)?.train.id).toBe('one')
+  })
+
+  it('orders real platform assignments naturally', () => {
+    const calls = callsAtHub(snapshot, HUBS[0])
+    expect(platformCodeForCall(calls[0])).toBe('7')
+    expect(platformsForCalls(calls)).toEqual(['7', '31'])
+  })
+
+  it('groups platform sectors onto their physical track', () => {
+    const call = {
+      ...callsAtHub(snapshot, HUBS[0])[0],
+      hubStop: [8.5, 47.3, 'Zürich HB', '7A-D'],
+    } as const
+    expect(platformTrackForCall(call)).toBe('7')
+  })
+
+  it('moves a call through approach, dwell and departure phases', () => {
+    const call = callsAtHub(snapshot, HUBS[0])[0]
+    expect(stationMotionForCall(call, 300, 300)).toEqual({
+      phase: 'approaching',
+      progress: 0,
+    })
+    expect(stationMotionForCall(call, 600, 300)).toEqual({
+      phase: 'dwelling',
+      progress: 1,
+    })
+    expect(stationMotionForCall(call, 810, 300)).toEqual({
+      phase: 'departing',
+      progress: 0.5,
+    })
+    expect(stationMotionForCall(call, 1200, 300)).toBeUndefined()
   })
 })

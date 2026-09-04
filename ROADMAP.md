@@ -73,6 +73,7 @@ The national GTFS-RT feed supplies trip updates and alerts, not vehicle position
 - [x] Add context-aware, switchable labels for moving trains.
 - [x] Add a hub-scale Takt pulse for Zürich HB, Bern, Basel SBB and Genève.
 - [x] Loop the hub orbit across a full day with four authored playback tempos.
+- [x] Add an alternate station-flow view with scheduled GTFS platform assignments.
 - [ ] Replace the map-level selected-train follow with a terrain-backed corridor transition.
 - Time-of-day presets, speed control and a short looping “director mode.”
 - Authored palettes and camera behaviours for plateau, lake and Alpine routes.

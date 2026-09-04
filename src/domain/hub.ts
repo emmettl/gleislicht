@@ -61,6 +61,61 @@ export interface HubDaySnapshot {
   readonly hubs: Readonly<Record<HubId, readonly HubCall[]>>
 }
 
+export const UNASSIGNED_PLATFORM = '—'
+
+export type StationMotionPhase = 'approaching' | 'dwelling' | 'departing'
+
+export interface StationMotion {
+  readonly phase: StationMotionPhase
+  readonly progress: number
+}
+
+export function platformCodeForCall(call: HubCall): string {
+  return call.hubStop[3]?.trim() || UNASSIGNED_PLATFORM
+}
+
+export function platformTrackForCall(call: HubCall): string {
+  const code = platformCodeForCall(call)
+  if (code === UNASSIGNED_PLATFORM || code.includes('/')) return code
+  return /^\d+/.exec(code)?.[0] ?? code
+}
+
+export function platformsForCalls(calls: readonly HubCall[]): readonly string[] {
+  return [...new Set(calls.map(platformTrackForCall))].sort((first, second) => {
+    if (first === UNASSIGNED_PLATFORM) return 1
+    if (second === UNASSIGNED_PLATFORM) return -1
+    return first.localeCompare(second, 'de-CH', {
+      numeric: true,
+      sensitivity: 'base',
+    })
+  })
+}
+
+export function stationMotionForCall(
+  call: HubCall,
+  time: number,
+  horizon = 6 * 60,
+  cycle = 24 * 3600,
+): StationMotion | undefined {
+  const midpoint = (call.arrival + call.departure) / 2
+  const cycleOffset = Math.round((time - midpoint) / cycle) * cycle
+  const arrival = call.arrival + cycleOffset
+  const departure = call.departure + cycleOffset
+
+  if (time < arrival - horizon || time > departure + horizon) return undefined
+  if (time < arrival) {
+    return {
+      phase: 'approaching',
+      progress: (time - (arrival - horizon)) / horizon,
+    }
+  }
+  if (time <= departure) return { phase: 'dwelling', progress: 1 }
+  return {
+    phase: 'departing',
+    progress: (time - departure) / horizon,
+  }
+}
+
 export function callsAtHub(
   snapshot: NetworkSnapshot,
   hub: HubDefinition,

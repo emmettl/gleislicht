@@ -218,6 +218,7 @@ async function stopsById(archive) {
       name: row.stop_name,
       latitude,
       longitude,
+      platformCode: row.platform_code,
     })
   }
   return stops
@@ -319,7 +320,7 @@ function createHubDayBuilder({ trips, sourceStops }) {
     if (!stop) return undefined
     const source = sourceStops.get(stop.stopId)
     if (!source) return undefined
-    return [source.longitude, source.latitude, source.name]
+    return [source.longitude, source.latitude, source.name, source.platformCode]
   }
 
   function addTrip(tripId, tripStops) {

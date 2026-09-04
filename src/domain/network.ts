@@ -2,6 +2,7 @@ export type NetworkStop = readonly [
   longitude: number,
   latitude: number,
   name: string,
+  platformCode?: string,
 ]
 
 export type NetworkEdge = readonly [from: number, to: number]

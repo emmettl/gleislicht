@@ -32,7 +32,7 @@ The national map supports mouse-wheel or pinch zoom, pointer or touch drag to pa
 
 The **trains · auto/on/off** map control manages moving train labels. Auto begins with long-distance services, reveals more categories with zoom, and follows active station or service-category filters. On raises the density while retaining collision suppression; Off keeps the moving lights unlabelled.
 
-Open **Takt hubs** to move between Zürich HB, Bern, Basel SBB and Genève across a continuous 24-hour schedule. Four tempo settings run from 1× to 64×, turning the clock-face timetable into a slow study or a rapid daily pulse. See [docs/HUB-STUDY.md](./docs/HUB-STUDY.md) for the visual model and the deliberately careful wording around Zürich's “busiest” status.
+Open **Takt hubs** to move between Zürich HB, Bern, Basel SBB and Genève across a continuous 24-hour schedule. Switch between **Pulse**, the abstract clock-face composition, and **Tracks**, a schematic station plan driven by the feed's real platform assignments. Four tempo settings run from 1× to 64×, turning the day into a slow study or a rapid station flow. See [docs/HUB-STUDY.md](./docs/HUB-STUDY.md) for the visual model and the deliberately careful wording around Zürich's “busiest” status.
 
 Sound is optional and off by default. Turning on the adaptive score lazily loads the Driftbox synthesis engine and plays one of three Gleislicht arrangements: **Night Grid** for the national map, **Taktwerk** for station pulses, and **Valley Signal** for corridor or train-follow views. Mode changes crossfade between two live transports. See [docs/SOUNDTRACK.md](./docs/SOUNDTRACK.md) for the musical and technical design.
 
