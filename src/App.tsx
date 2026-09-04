@@ -188,6 +188,8 @@ export function App() {
   const [soundtrackState, setSoundtrackState] = useState<SoundtrackState>('off')
   const [soundtrackVolume, setSoundtrackVolume] = useState(0.56)
   const soundtrackRef = useRef<GleislichtSoundtrack | null>(null)
+  const mobileMapToolsRef = useRef<HTMLDetailsElement>(null)
+  const searchInteractionRef = useRef(false)
   const text = UI_TEXT[language]
   const isContrast = networkStudy === 'contrast'
   const zurichContrast = useProgressiveNetworkDay(
@@ -1097,8 +1099,23 @@ export function App() {
       {isNetwork && (
         <section
           className="train-search"
-          onFocus={() => setSearchOpen(true)}
+          onFocus={() => {
+            setSearchOpen(true)
+            if (mobileMapToolsRef.current) mobileMapToolsRef.current.open = false
+          }}
+          onPointerDownCapture={() => {
+            searchInteractionRef.current = true
+          }}
+          onPointerUpCapture={() => {
+            window.setTimeout(() => {
+              searchInteractionRef.current = false
+            }, 0)
+          }}
+          onPointerCancelCapture={() => {
+            searchInteractionRef.current = false
+          }}
           onBlur={(event) => {
+            if (searchInteractionRef.current) return
             if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
               setSearchOpen(false)
               setActiveSearchIndex(-1)
@@ -1814,7 +1831,7 @@ export function App() {
 
       {isNetwork && (
         <div className="mobile-map-tools">
-          <details>
+          <details ref={mobileMapToolsRef}>
             <summary aria-label={text.mapControls}>⌖</summary>
             <div>
               {!selectedTrain && (
