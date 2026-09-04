@@ -197,6 +197,7 @@ export function App() {
   const [selectedRouteId, setSelectedRouteId] = useState<string>()
   const [selectedHubId, setSelectedHubId] = useState<HubId>('zurich')
   const [hubStudy, setHubStudy] = useState<HubStudy>('pulse')
+  const [showTaktOverlay, setShowTaktOverlay] = useState(true)
   const [mapCameraCommand, setMapCameraCommand] = useState<MapCameraCommand>({
     id: 0,
     action: 'reset',
@@ -1069,6 +1070,7 @@ export function App() {
               onTime={setHubTime}
               playbackRate={playbackRate}
               selectedCategory={selectedCategory}
+              showTaktOverlay={showTaktOverlay}
             />
           </Suspense>
         ) : (
@@ -1587,6 +1589,15 @@ export function App() {
               >
                 {text.tracks}
               </button>
+              {hubStudy === 'pulse' && (
+                <button
+                  type="button"
+                  aria-pressed={showTaktOverlay}
+                  onClick={() => setShowTaktOverlay((value) => !value)}
+                >
+                  {text.quarterGrid}
+                </button>
+              )}
             </div>
           </div>
           <div className="network-count-row">

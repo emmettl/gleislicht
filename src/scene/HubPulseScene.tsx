@@ -19,9 +19,58 @@ interface HubPulseSceneProps {
   readonly onTime: (time: number) => void
   readonly playbackRate: number
   readonly selectedCategory?: ServiceCategory
+  readonly showTaktOverlay: boolean
 }
 
 const pulseHorizon = 15 * 60
+
+function textSprite(
+  text: string,
+  color: string,
+  scale: readonly [number, number],
+): THREE.Sprite {
+  const canvas = document.createElement('canvas')
+  canvas.width = 512
+  canvas.height = 96
+  const context = canvas.getContext('2d')
+  if (context) {
+    context.fillStyle = 'rgba(5, 4, 16, 0.9)'
+    context.strokeStyle = 'rgba(141, 250, 255, 0.58)'
+    context.lineWidth = 2
+    context.beginPath()
+    context.roundRect(3, 3, 506, 90, 14)
+    context.fill()
+    context.stroke()
+    context.fillStyle = color
+    context.font = '700 31px Helvetica, Arial, sans-serif'
+    context.textAlign = 'center'
+    context.textBaseline = 'middle'
+    context.shadowColor = color
+    context.shadowBlur = 12
+    context.fillText(text, 256, 49, 472)
+    context.shadowBlur = 0
+    context.fillText(text, 256, 49, 472)
+  }
+  const texture = new THREE.CanvasTexture(canvas)
+  texture.colorSpace = THREE.SRGBColorSpace
+  const material = new THREE.SpriteMaterial({
+    map: texture,
+    transparent: true,
+    depthTest: false,
+    fog: false,
+    toneMapped: false,
+  })
+  const sprite = new THREE.Sprite(material)
+  sprite.scale.set(scale[0], scale[1], 1)
+  sprite.renderOrder = 12
+  return sprite
+}
+
+function disposeTextSprite(sprite: THREE.Sprite) {
+  const material = sprite.material as THREE.SpriteMaterial
+  material.map?.dispose()
+  material.dispose()
+}
 
 function directionForStop(
   hubStop: NetworkStop,
@@ -152,7 +201,10 @@ function ClockHands({
 }
 
 function ClockFace(
-  props: Pick<HubPulseSceneProps, 'time' | 'isPlaying' | 'playbackRate' | 'timeline'>,
+  props: Pick<
+    HubPulseSceneProps,
+    'time' | 'isPlaying' | 'playbackRate' | 'timeline' | 'showTaktOverlay'
+  >,
 ) {
   return (
     <>
@@ -177,9 +229,75 @@ function ClockFace(
         ))}
         <TickMarks />
       </group>
+      {props.showTaktOverlay && <QuarterHourOverlay />}
       <ClockHands {...props} />
     </>
   )
+}
+
+function QuarterHourOverlay() {
+  const labels = useMemo(
+    () =>
+      [':00', ':15', ':30', ':45'].map((label, index) => {
+        const angle = Math.PI / 2 - (index / 4) * Math.PI * 2
+        const sprite = textSprite(label, index === 0 ? '#f9f7ff' : '#ff8be7', [1.7, 0.42])
+        sprite.position.set(Math.cos(angle) * 4.5, 0.72, Math.sin(angle) * 4.5)
+        return sprite
+      }),
+    [],
+  )
+
+  useEffect(() => () => labels.forEach(disposeTextSprite), [labels])
+
+  return labels.map((sprite, index) => (
+    <primitive key={index} object={sprite} />
+  ))
+}
+
+function HubDestinationLabels({ calls }: { readonly calls: readonly HubCall[] }) {
+  const labels = useMemo(() => {
+    const bins = new Map<
+      number,
+      { angle: number; destinations: Map<string, number> }
+    >()
+    calls.forEach((call, index) => {
+      if (!call.nextStop) return
+      const angle = directionForStop(call.hubStop, call.nextStop, index)
+      const normalized = (angle + Math.PI * 2) % (Math.PI * 2)
+      const bin = Math.round((normalized / (Math.PI * 2)) * 18) % 18
+      const current = bins.get(bin) ?? {
+        angle,
+        destinations: new Map<string, number>(),
+      }
+      current.destinations.set(
+        call.train.headsign,
+        (current.destinations.get(call.train.headsign) ?? 0) + 1,
+      )
+      bins.set(bin, current)
+    })
+
+    return [...bins.values()]
+      .map(({ angle, destinations }) => {
+        const [destination, count] = [...destinations.entries()].sort(
+          (first, second) => second[1] - first[1],
+        )[0]
+        return { angle, destination, count }
+      })
+      .sort((first, second) => second.count - first.count)
+      .slice(0, 9)
+      .map(({ angle, destination }) => {
+        const label = destination.length > 24 ? `${destination.slice(0, 23)}…` : destination
+        const sprite = textSprite(label, '#c9fcff', [3.65, 0.68])
+        sprite.position.set(Math.cos(angle) * 12.35, 0.8, Math.sin(angle) * 12.35)
+        return sprite
+      })
+  }, [calls])
+
+  useEffect(() => () => labels.forEach(disposeTextSprite), [labels])
+
+  return labels.map((sprite, index) => (
+    <primitive key={index} object={sprite} />
+  ))
 }
 
 function CorridorSpokes({
@@ -414,12 +532,14 @@ function HubWorld(props: HubPulseSceneProps) {
         isPlaying={props.isPlaying}
         playbackRate={props.playbackRate}
         timeline={props.timeline}
+        showTaktOverlay={props.showTaktOverlay}
       />
       <CorridorSpokes
         calls={props.calls}
         selectedCategory={props.selectedCategory}
       />
       <StationCore hub={props.hub} />
+      <HubDestinationLabels calls={props.calls} />
       <HubTraffic {...props} />
     </>
   )

@@ -71,6 +71,15 @@ test('the 24-hour study exposes authored day moments and a director loop', async
   await expect(director).toHaveAccessibleName('Stop director')
 })
 
+test('the hub clock exposes its quarter-hour structure', async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name === 'iphone-webkit')
+  await page.getByRole('button', { name: 'Takt hubs' }).click()
+  const quarterGrid = page.getByRole('button', { name: '¼ grid' })
+  await expect(quarterGrid).toHaveAttribute('aria-pressed', 'true')
+  await quarterGrid.click()
+  await expect(quarterGrid).toHaveAttribute('aria-pressed', 'false')
+})
+
 test('the mobile shell keeps header, search and timeline in one viewport', async ({
   page,
 }, testInfo) => {

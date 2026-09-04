@@ -29,7 +29,7 @@ Sources: [Zürich Tourism station overview](https://www.zuerich.com/en/inform-pl
 
 - [x] Use GTFS platform assignments in a schematic station-flow view.
 - Join a surveyed or authoritative station plan before presenting the track geometry as geographically real.
-- Add destination labels at the outer edge without turning the piece into a departure board.
+- [x] Add frequency-ranked destination labels at the outer edge without turning the piece into a departure board.
 - Compare a normal pulse with a delayed or disrupted one once realtime updates are available.
 - Let a selected train bridge hub mode and the future terrain-backed corridor view.
-- Add a repeat-overlay mode that makes recurring `:00`, `:15`, `:30`, and `:45` structures explicit without losing the continuous day.
+- [x] Add a repeat-overlay mode that makes recurring `:00`, `:15`, `:30`, and `:45` structures explicit without losing the continuous day.
