@@ -10,8 +10,9 @@ export function homeMapDistanceScale(framing: MapCameraFraming): number {
 }
 
 const EDGE_EASING = 0.42
-const MOUSE_PAN_SCALE = 0.045
+const MOUSE_PAN_SCALE = 0.064
 const TOUCH_PAN_SCALE = 0.078
+const WHEEL_ZOOM_SENSITIVITY = 0.002
 
 export function mapPanScale(
   distanceScale: number,
@@ -28,7 +29,16 @@ export function mapCameraDampingRate(
   directTouch: boolean,
 ): number {
   if (followingTrain) return 1.7
-  return directTouch ? 11 : 2.3
+  return directTouch ? 11 : 8
+}
+
+export function mapWheelZoomMultiplier(
+  deltaY: number,
+  deltaMode = 0,
+): number {
+  const normalizedDelta =
+    deltaY * (deltaMode === 1 ? 16 : deltaMode === 2 ? 320 : 1)
+  return Math.exp(normalizedDelta * WHEEL_ZOOM_SENSITIVITY)
 }
 
 /**

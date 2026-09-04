@@ -46,6 +46,7 @@ import {
   homeMapDistanceScale,
   mapCameraDampingRate,
   mapPanScale,
+  mapWheelZoomMultiplier,
   type MapCameraFraming,
 } from './map-camera.ts'
 import {
@@ -2150,7 +2151,7 @@ function NetworkCamera({
       if (selectedTrain) return
       distanceScale.current = applyMapZoom(
         distanceScale.current,
-        Math.exp(event.deltaY * 0.0012),
+        mapWheelZoomMultiplier(event.deltaY, event.deltaMode),
       )
       event.preventDefault()
     }

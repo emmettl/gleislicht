@@ -4,6 +4,7 @@ import {
   homeMapDistanceScale,
   mapCameraDampingRate,
   mapPanScale,
+  mapWheelZoomMultiplier,
   MAX_MAP_DISTANCE_SCALE,
   MIN_MAP_DISTANCE_SCALE,
 } from './map-camera.ts'
@@ -49,15 +50,22 @@ describe('map camera zoom', () => {
     expect(third).toBeGreaterThan(MIN_MAP_DISTANCE_SCALE)
   })
 
-  it('makes a finger drag more direct than a mouse drag at the same zoom', () => {
+  it('keeps finger and mouse drags responsive at the same zoom', () => {
     expect(mapPanScale(1, 'touch')).toBeCloseTo(0.078)
-    expect(mapPanScale(1, 'touch')).toBeGreaterThan(mapPanScale(1, 'mouse') * 1.7)
+    expect(mapPanScale(1, 'mouse')).toBeCloseTo(0.064)
+    expect(mapPanScale(1, 'touch')).toBeGreaterThan(mapPanScale(1, 'mouse'))
     expect(mapPanScale(0.2, 'touch')).toBeCloseTo(0.0156)
   })
 
-  it('catches the camera up quickly during direct touch manipulation', () => {
+  it('catches the camera up quickly during pointer manipulation', () => {
     expect(mapCameraDampingRate(false, true)).toBe(11)
-    expect(mapCameraDampingRate(false, false)).toBe(2.3)
+    expect(mapCameraDampingRate(false, false)).toBe(8)
     expect(mapCameraDampingRate(true, true)).toBe(1.7)
+  })
+
+  it('turns wheel movement into a brisk zoom multiplier', () => {
+    expect(mapWheelZoomMultiplier(100)).toBeCloseTo(Math.exp(0.2))
+    expect(mapWheelZoomMultiplier(-100)).toBeCloseTo(Math.exp(-0.2))
+    expect(mapWheelZoomMultiplier(3, 1)).toBeCloseTo(Math.exp(0.096))
   })
 })
