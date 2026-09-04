@@ -26,6 +26,14 @@ import {
   type StationIndexEntry,
 } from './domain/network.ts'
 import type { SwissBoundary } from './domain/boundary.ts'
+import {
+  LANGUAGE_LOCALES,
+  resolveUiLanguage,
+  serviceCategoryLabel,
+  UI_LANGUAGES,
+  UI_TEXT,
+  type UiLanguage,
+} from './i18n.ts'
 import { GleislichtScene } from './scene/GleislichtScene.tsx'
 import { HubPulseScene } from './scene/HubPulseScene.tsx'
 import { StationFlowScene } from './scene/StationFlowScene.tsx'
@@ -58,13 +66,23 @@ const NEXT_TRAIN_LABEL_MODE: Readonly<Record<TrainLabelMode, TrainLabelMode>> = 
   off: 'auto',
 }
 
-const numberFormat = new Intl.NumberFormat('de-CH')
+const LANGUAGE_STORAGE_KEY = 'gleislicht-language'
 const PLAYBACK_RATES = [
   { label: '1×', value: 30 },
   { label: '4×', value: 120 },
   { label: '16×', value: 480 },
   { label: '64×', value: 1920 },
 ] as const
+
+function initialUiLanguage(): UiLanguage {
+  let savedLanguage: string | null = null
+  try {
+    savedLanguage = window.localStorage.getItem(LANGUAGE_STORAGE_KEY)
+  } catch {
+    // A blocked storage API should not prevent the interface from loading.
+  }
+  return resolveUiLanguage([savedLanguage, ...navigator.languages])
+}
 
 function formatPercent(value: number): string {
   return `${Math.round(value * 100)}%`
@@ -88,6 +106,7 @@ function matchesTrain(
 }
 
 export function App() {
+  const [language, setLanguage] = useState<UiLanguage>(initialUiLanguage)
   const [isPlaying, setIsPlaying] = useState(true)
   const [view, setView] = useState<View>('network')
   const [journeyProgress, setJourneyProgress] = useState(0.11)
@@ -118,6 +137,11 @@ export function App() {
   const [soundtrackState, setSoundtrackState] = useState<SoundtrackState>('off')
   const [soundtrackVolume, setSoundtrackVolume] = useState(0.56)
   const soundtrackRef = useRef<GleislichtSoundtrack | null>(null)
+  const text = UI_TEXT[language]
+  const numberFormat = useMemo(
+    () => new Intl.NumberFormat(LANGUAGE_LOCALES[language]),
+    [language],
+  )
   const network =
     networkStudy === 'zurich-city'
       ? (zurichCityNetwork ?? nationalNetwork)
@@ -186,11 +210,11 @@ export function App() {
         return (
           firstActive - secondActive ||
           first.start - second.start ||
-          first.route.localeCompare(second.route, 'de-CH')
+          first.route.localeCompare(second.route, LANGUAGE_LOCALES[language])
         )
       })
       .slice(0, 8)
-  }, [network, networkTime, searchQuery])
+  }, [language, network, networkTime, searchQuery])
   const stationSearchResults = useMemo(() => {
     const query = foldSearchText(searchQuery)
     if (!query) return []
@@ -202,11 +226,11 @@ export function App() {
         return (
           Number(secondName.startsWith(query)) - Number(firstName.startsWith(query)) ||
           second.trainIds.length - first.trainIds.length ||
-          first.name.localeCompare(second.name, 'de-CH')
+          first.name.localeCompare(second.name, LANGUAGE_LOCALES[language])
         )
       })
       .slice(0, 5)
-  }, [searchQuery, stationIndex])
+  }, [language, searchQuery, stationIndex])
   const searchResultCount = stationSearchResults.length + searchResults.length
   const resolvedActiveSearchIndex =
     activeSearchIndex < searchResultCount ? activeSearchIndex : -1
@@ -320,6 +344,19 @@ export function App() {
       setSoundtrackState('error')
     }
   }, [soundtrackMode, soundtrackState, soundtrackVolume])
+
+  useEffect(() => {
+    document.documentElement.lang = language
+    document.title = text.pageTitle
+    document
+      .querySelector('meta[name="description"]')
+      ?.setAttribute('content', text.pageDescription)
+    try {
+      window.localStorage.setItem(LANGUAGE_STORAGE_KEY, language)
+    } catch {
+      // Language still applies for this visit when storage is unavailable.
+    }
+  }, [language, text.pageDescription, text.pageTitle])
 
   useEffect(() => {
     const controller = new AbortController()
@@ -469,6 +506,7 @@ export function App() {
             onTime={setHubTime}
             playbackRate={playbackRate}
             selectedCategory={selectedCategory}
+            platformPrefix={text.trackShort}
           />
         ) : isHub && network ? (
           <HubPulseScene
@@ -496,19 +534,35 @@ export function App() {
       <header className="masthead">
         <div>
           <p className="eyebrow">Gleislicht</p>
-          <h1>Switzerland in motion</h1>
+          <h1>{text.subtitle}</h1>
         </div>
         <div className="masthead-meta">
-          <div className="study-meta">
-            <span className="pulse" />
-            <span>motion study 005</span>
-            <span className="coordinate">
-              {isTimetable ? 'Friday · 04 September 2026' : '47.194° N · 9.312° E'}
-            </span>
+          <div className="masthead-topline">
+            <div className="study-meta">
+              <span className="pulse" />
+              <span>{text.motionStudy}</span>
+              <span className="coordinate">
+                {isTimetable ? text.studyDate : '47.194° N · 9.312° E'}
+              </span>
+            </div>
+            <nav className="language-picker" aria-label={text.languagePicker}>
+              {UI_LANGUAGES.map((option) => (
+                <button
+                  key={option.id}
+                  type="button"
+                  title={option.name}
+                  lang={option.id}
+                  aria-pressed={language === option.id}
+                  onClick={() => setLanguage(option.id)}
+                >
+                  {option.label}
+                </button>
+              ))}
+            </nav>
           </div>
           <section
             className={`soundtrack-control is-${soundtrackState}`}
-            aria-label="Adaptive soundtrack"
+            aria-label={text.adaptiveSoundtrack}
           >
             <button
               type="button"
@@ -520,20 +574,24 @@ export function App() {
                 <i /><i /><i /><i />
               </span>
               <span className="sound-copy">
-                <small>{soundtrackState === 'error' ? 'audio unavailable' : 'adaptive score'}</small>
+                <small>
+                  {soundtrackState === 'error'
+                    ? text.audioUnavailable
+                    : text.adaptiveScore}
+                </small>
                 <strong>
                   {soundtrackState === 'starting'
-                    ? 'tuning…'
+                    ? text.tuning
                     : SOUNDTRACK_TITLES[soundtrackMode]}
                 </strong>
               </span>
               <span className="sound-state">
-                {soundtrackState === 'on' ? 'on' : 'off'}
+                {soundtrackState === 'on' ? text.on : text.off}
               </span>
             </button>
             {soundtrackState === 'on' && (
               <label className="volume-control">
-                <span>volume</span>
+                <span>{text.volume}</span>
                 <input
                   type="range"
                   min="0"
@@ -582,15 +640,15 @@ export function App() {
           >
             <span className="search-mark" aria-hidden="true" />
             <label>
-              <span className="sr-only">Find a station, train, service, or destination</span>
+              <span className="sr-only">{text.find}</span>
               <input
                 type="search"
                 role="combobox"
                 value={searchQuery}
                 placeholder={
                   networkStudy === 'national'
-                    ? 'Find IC 1, Zürich, train 701…'
-                    : 'Find tram 4, bus 31, Zürich HB…'
+                    ? text.nationalPlaceholder
+                    : text.cityPlaceholder
                 }
                 autoComplete="off"
                 aria-autocomplete="list"
@@ -636,12 +694,12 @@ export function App() {
                 }}
               />
             </label>
-            <nav className="network-study-picker" aria-label="Network study">
-              <span className="sr-only">Scale</span>
+            <nav className="network-study-picker" aria-label={text.networkStudy}>
+              <span className="sr-only">{text.scale}</span>
               <button
                 type="button"
-                title="Switzerland rail network"
-                aria-label="Show Switzerland rail network"
+                title={text.swissNetwork}
+                aria-label={text.showSwissNetwork}
                 aria-pressed={networkStudy === 'national'}
                 onClick={() => selectNetworkStudy('national')}
               >
@@ -649,8 +707,8 @@ export function App() {
               </button>
               <button
                 type="button"
-                title="Zürich city multimodal network"
-                aria-label="Show Zürich city multimodal network"
+                title={text.zurichNetwork}
+                aria-label={text.showZurichNetwork}
                 aria-pressed={networkStudy === 'zurich-city'}
                 onClick={() => selectNetworkStudy('zurich-city')}
               >
@@ -661,7 +719,7 @@ export function App() {
               <button
                 className="clear-search"
                 type="button"
-                aria-label="Clear search and selection"
+                aria-label={text.clearSearch}
                 onClick={releaseSelection}
               >
                 ×
@@ -673,7 +731,7 @@ export function App() {
               id="train-search-results"
               className="search-results"
               role="listbox"
-              aria-label="Matching stations and trains"
+              aria-label={text.matchingResults}
             >
               {stationSearchResults.map((station, index) => (
                 <button
@@ -689,7 +747,10 @@ export function App() {
                   <span className="station-result-mark" aria-hidden="true">◎</span>
                   <span className="result-service">{station.name}</span>
                   <span className="result-route">
-                    {station.routes.length} routes · {station.trainIds.length} scheduled calls
+                    {text.routesAndCalls(
+                      station.routes.length,
+                      station.trainIds.length,
+                    )}
                   </span>
                 </button>
               ))}
@@ -721,7 +782,7 @@ export function App() {
                   )
                 })}
               {!stationSearchResults.length && !searchResults.length && (
-                <p>No stations or services found in this morning window.</p>
+                <p>{text.noResults}</p>
               )}
             </div>
           )}
@@ -729,8 +790,8 @@ export function App() {
       )}
 
       {isHub && (
-        <nav className="hub-picker" aria-label="Takt station">
-          <span>Takt pulse</span>
+        <nav className="hub-picker" aria-label={text.taktStation}>
+          <span>{text.taktPulse}</span>
           <div>
             {HUBS.map((hub) => (
               <button
@@ -749,26 +810,26 @@ export function App() {
       {isHub ? (
         <section
           className="journey-card hub-card"
-          aria-label={`${selectedHub.name} ${hubStudy === 'pulse' ? 'pulse' : 'station flow'}`}
+          aria-label={`${selectedHub.name} ${hubStudy === 'pulse' ? text.pulse : text.stationFlow}`}
         >
           <div className="hub-card-header">
             <p className="hub-kicker">
-              {hubStudy === 'pulse' ? 'takt / 24 hour loop' : 'station / scheduled platforms'}
+              {hubStudy === 'pulse' ? text.taktLoop : text.stationPlatforms}
             </p>
-            <div className="hub-study-picker" aria-label="Takt visualisation">
+            <div className="hub-study-picker" aria-label={text.taktVisualisation}>
               <button
                 type="button"
                 aria-pressed={hubStudy === 'pulse'}
                 onClick={() => setHubStudy('pulse')}
               >
-                pulse
+                {text.pulse}
               </button>
               <button
                 type="button"
                 aria-pressed={hubStudy === 'station'}
                 onClick={() => setHubStudy('station')}
               >
-                tracks
+                {text.tracks}
               </button>
             </div>
           </div>
@@ -776,30 +837,30 @@ export function App() {
             <strong>{nearbyHubCalls.length}</strong>
             <span>
               {hubStudy === 'pulse'
-                ? 'arrivals + departures in orbit'
-                : 'movements on the station plan'}
+                ? text.orbitMovements
+                : text.stationMovements}
             </span>
           </div>
           <p className="between">
-            {selectedHub.character} <span>/</span>{' '}
+            {text.hubCharacter[selectedHub.id]} <span>/</span>{' '}
             {hubStudy === 'station'
-              ? `${hubPlatforms.length} scheduled tracks`
-              : `${numberFormat.format(hubCalls.length)} calls today`}
+              ? text.scheduledTracks(hubPlatforms.length)
+              : text.callsToday(numberFormat.format(hubCalls.length))}
           </p>
           <div className="metric-grid">
             <div>
-              <span>next strike</span>
+              <span>{text.nextStrike}</span>
               <strong>
                 {upcomingHubCall ? formatServiceTime(upcomingHubCall.arrival) : '—'}
               </strong>
               <small>
                 {upcomingHubCall
-                  ? `${upcomingHubCall.train.route} · Gl. ${platformCodeForCall(upcomingHubCall)}`
-                  : 'end'}
+                  ? `${upcomingHubCall.train.route} · ${text.trackShort} ${platformCodeForCall(upcomingHubCall)}`
+                  : text.end}
               </small>
             </div>
             <div>
-              <span>direction</span>
+              <span>{text.direction}</span>
               <strong className="destination-metric">
                 {upcomingHubCall?.train.headsign ?? '—'}
               </strong>
@@ -807,7 +868,7 @@ export function App() {
           </div>
         </section>
       ) : isNetwork && selectedTrain ? (
-        <section className="journey-card selected-card" aria-label="Selected train">
+        <section className="journey-card selected-card" aria-label={text.selectedTrain}>
           <div className="service-row">
             <span
               className="service-dot"
@@ -818,39 +879,42 @@ export function App() {
             <span>{selectedTrain.headsign}</span>
           </div>
           <p className="between">
-            {selectedFrom ?? 'Between stations'} <span>/</span>{' '}
+            {selectedFrom ?? text.betweenStations} <span>/</span>{' '}
             {selectedTo ?? selectedTrain.headsign}
           </p>
           <div className="metric-grid">
             <div>
-              <span>train</span>
+              <span>{text.train}</span>
               <strong>{selectedTrain.shortName || '—'}</strong>
-              <small>{selectedTrain.category}</small>
+              <small>{serviceCategoryLabel(language, selectedTrain.category)}</small>
             </div>
             <div>
-              <span>arrival</span>
+              <span>{text.arrival}</span>
               <strong>{formatServiceTime(selectedTrain.end)}</strong>
-              <small>plan</small>
+              <small>{text.plan}</small>
             </div>
           </div>
         </section>
       ) : isNetwork && selectedStation ? (
-        <section className="journey-card station-card" aria-label={`Routes serving ${selectedStation.name}`}>
+        <section
+          className="journey-card station-card"
+          aria-label={text.routesServing(selectedStation.name)}
+        >
           <div className="service-row">
             <span className="station-card-mark" aria-hidden="true">◎</span>
             <span className="service">{selectedStation.name}</span>
           </div>
           <p className="between">
-            all scheduled paths <span>/</span> morning study
+            {text.allScheduledPaths} <span>/</span> {text.morningStudy}
           </p>
           <div className="metric-grid">
             <div>
-              <span>routes</span>
+              <span>{text.routes}</span>
               <strong>{selectedStation.routes.length}</strong>
-              <small>unique</small>
+              <small>{text.unique}</small>
             </div>
             <div>
-              <span>calls</span>
+              <span>{text.calls}</span>
               <strong>{selectedStation.trainIds.length}</strong>
               <small>2h</small>
             </div>
@@ -861,42 +925,44 @@ export function App() {
           className="journey-card network-card"
           aria-label={
             networkStudy === 'national'
-              ? 'Swiss network status'
-              : 'Zürich city network status'
+              ? text.swissNetworkStatus
+              : text.zurichNetworkStatus
           }
         >
           <div className="network-count-row">
             <strong>{network ? numberFormat.format(activeTrainCount) : '—'}</strong>
             <span>
-              {networkStudy === 'national' ? 'trains in motion' : 'vehicles in motion'}
+              {networkStudy === 'national'
+                ? text.trainsInMotion
+                : text.vehiclesInMotion}
             </span>
           </div>
           <p className="between">
             {networkStudy === 'zurich-city'
               ? regionalNetworkError
-                ? 'City schedule unavailable'
+                ? text.cityUnavailable
                 : regionalNetworkLoading
-                  ? 'Loading separate city study…'
-                  : 'Tram · bus · rail · funicular'
+                  ? text.loadingCity
+                  : text.cityModes
               : dataError
-                ? 'Schedule unavailable'
-                : 'Scheduled rail · morning window'}
+                ? text.scheduleUnavailable
+                : text.scheduledRail}
           </p>
           <div className="metric-grid">
             <div>
-              <span>trips</span>
+              <span>{text.trips}</span>
               <strong>{network ? numberFormat.format(network.trains.length) : '—'}</strong>
               <small>2h</small>
             </div>
             <div>
-              <span>feed</span>
+              <span>{text.feed}</span>
               <strong>{network?.metadata.feedVersion.slice(4) ?? '—'}</strong>
               <small>2026</small>
             </div>
           </div>
         </section>
       ) : (
-        <section className="journey-card" aria-label="Current simulated journey">
+        <section className="journey-card" aria-label={text.currentJourney}>
           <div className="service-row">
             <span className="service">{prototypeJourney.service}</span>
             <span className="arrow">→</span>
@@ -907,12 +973,12 @@ export function App() {
           </p>
           <div className="metric-grid">
             <div>
-              <span>velocity</span>
+              <span>{text.velocity}</span>
               <strong>{prototypeJourney.speedKmh}</strong>
               <small>km/h</small>
             </div>
             <div>
-              <span>next</span>
+              <span>{text.next}</span>
               <strong>
                 {Math.max(1, Math.round((1 - journeyPosition.legProgress) * 14))}
               </strong>
@@ -926,30 +992,33 @@ export function App() {
         {isHub ? (
           <>
             <span>
-              {hubStudy === 'pulse' ? 'scheduled station calls' : 'GTFS platform assignments'}
+              {hubStudy === 'pulse'
+                ? text.scheduledStationCalls
+                : text.platformAssignments}
             </span>
-            <span>{hubStudy === 'pulse' ? '15 minute orbit' : 'schematic track plan'}</span>
+            <span>{hubStudy === 'pulse' ? text.orbit15 : text.schematicPlan}</span>
           </>
         ) : isNetwork ? (
           <>
             <span>
               {selectedTrain
-                ? 'scheduled follow'
+                ? text.scheduledFollow
                 : selectedStation
-                  ? 'station route focus'
-                  : 'GTFS schedule'}
+                  ? text.stationRouteFocus
+                  : text.gtfsSchedule}
             </span>
             <span>
               {selectedTrain?.category ??
                 selectedStation?.name ??
-                selectedCategory ??
-                'stop geometry'}
+                (selectedCategory
+                  ? serviceCategoryLabel(language, selectedCategory)
+                  : text.stopGeometry)}
             </span>
           </>
         ) : (
           <>
-            <span>prototype route</span>
-            <span>synthetic terrain</span>
+            <span>{text.prototypeRoute}</span>
+            <span>{text.syntheticTerrain}</span>
           </>
         )}
       </div>
@@ -957,28 +1026,28 @@ export function App() {
       {isNetwork && !selectedTrain && <div className="north-marker">N</div>}
 
       {isNetwork && (
-        <div className="map-navigation" aria-label="Map display controls">
+        <div className="map-navigation" aria-label={text.mapControls}>
           {!selectedTrain && (
             <>
-              <span>drag · wheel / pinch</span>
+              <span>{text.mapGesture}</span>
               <div>
                 <button
                   type="button"
-                  aria-label="Zoom map in"
+                  aria-label={text.zoomIn}
                   onClick={() => moveMapCamera('zoom-in')}
                 >
                   +
                 </button>
                 <button
                   type="button"
-                  aria-label="Zoom map out"
+                  aria-label={text.zoomOut}
                   onClick={() => moveMapCamera('zoom-out')}
                 >
                   −
                 </button>
                 <button
                   type="button"
-                  aria-label="Reset map position and zoom"
+                  aria-label={text.resetMap}
                   onClick={() => moveMapCamera('reset')}
                 >
                   ↺
@@ -989,13 +1058,18 @@ export function App() {
           <button
             className="train-label-toggle"
             type="button"
-            aria-label={`${networkStudy === 'national' ? 'Train' : 'Vehicle'} labels: ${trainLabelMode}. Activate for ${NEXT_TRAIN_LABEL_MODE[trainLabelMode]}.`}
+            aria-label={text.labelsAction(
+              networkStudy === 'national' ? text.trainLabels : text.vehicleLabels,
+              text.labelModes[trainLabelMode],
+              text.labelModes[NEXT_TRAIN_LABEL_MODE[trainLabelMode]],
+            )}
             onClick={() =>
               setTrainLabelMode((current) => NEXT_TRAIN_LABEL_MODE[current])
             }
           >
             <span aria-hidden="true">▱</span>
-            {networkStudy === 'national' ? 'trains' : 'vehicles'} · {trainLabelMode}
+            {networkStudy === 'national' ? text.trainLabels : text.vehicleLabels} ·{' '}
+            {text.labelModes[trainLabelMode]}
           </button>
         </div>
       )}
@@ -1003,7 +1077,7 @@ export function App() {
       {isTimetable && !selectedTrain && (
         <div
           className={`service-legend${selectedCategory ? ' has-filter' : ''}`}
-          aria-label="Filter moving services by category"
+          aria-label={text.filterServices}
         >
           {visibleServiceCategories.map((category) => (
               <button
@@ -1017,13 +1091,13 @@ export function App() {
                 }
               >
                 <i style={{ backgroundColor: category.color }} />
-                {category.label}
+                {serviceCategoryLabel(language, category.id)}
               </button>
           ))}
         </div>
       )}
 
-      <section className="transport" aria-label="Playback controls">
+      <section className="transport" aria-label={text.playbackControls}>
         <div className="progress-copy">
           <span>
             {timelineReady
@@ -1041,7 +1115,7 @@ export function App() {
         </div>
         <label className="scrubber">
           <span className="sr-only">
-            {isTimetable ? 'Time of day' : 'Journey progress'}
+            {isTimetable ? text.timeOfDay : text.journeyProgress}
           </span>
           <input
             type="range"
@@ -1062,8 +1136,8 @@ export function App() {
           </span>
         </label>
         {isTimetable && (
-          <div className="speed-picker" aria-label="Playback speed">
-            <span>tempo</span>
+          <div className="speed-picker" aria-label={text.playbackSpeed}>
+            <span>{text.tempo}</span>
             <div>
               {PLAYBACK_RATES.map((rate) => (
                 <button
@@ -1083,22 +1157,22 @@ export function App() {
             <span className="button-icon" aria-hidden="true">
               {isPlaying ? 'Ⅱ' : '▶'}
             </span>
-            {isPlaying ? 'Pause motion' : 'Resume motion'}
-            <kbd>Space</kbd>
+            {isPlaying ? text.pauseMotion : text.resumeMotion}
+            <kbd>{text.spaceKey}</kbd>
           </button>
           <button type="button" onClick={handleContextAction}>
             <span className="button-icon camera-icon" aria-hidden="true" />
             {selectedTrain || selectedStation
               ? selectedTrain
                 ? networkStudy === 'national'
-                  ? 'Release train'
-                  : 'Release service'
-                : 'Clear station'
+                  ? text.releaseTrain
+                  : text.releaseService
+                : text.clearStation
               : isNetwork
-                ? 'Corridor study'
+                ? text.corridorStudy
                 : networkStudy === 'national'
-                  ? 'National view'
-                  : 'Zürich city view'}
+                  ? text.nationalView
+                  : text.zurichView}
             <kbd>C</kbd>
           </button>
           {isTimetable && !selectedTrain && (
@@ -1113,9 +1187,9 @@ export function App() {
               <span className="button-icon takt-icon" aria-hidden="true">◎</span>
               {isHub
                 ? networkStudy === 'national'
-                  ? 'National view'
-                  : 'Zürich city'
-                : 'Takt hubs'}
+                  ? text.nationalView
+                  : text.zurichView
+                : text.taktHubs}
             </button>
           )}
         </div>
@@ -1129,11 +1203,11 @@ export function App() {
               target="_blank"
               rel="noreferrer"
             >
-              Swiss GTFS · {network?.metadata.feedVersion ?? 'loading'}
+              Swiss GTFS · {network?.metadata.feedVersion ?? text.loading}
             </a>
             {isNetwork && networkStudy === 'national' && boundary && (
               <a href={boundary.metadata.productUrl} target="_blank" rel="noreferrer">
-                border · {boundary.metadata.attribution}
+                {text.border} · {boundary.metadata.attribution}
               </a>
             )}
           </span>
@@ -1142,10 +1216,10 @@ export function App() {
         )}
         <span>
           {isHub
-            ? 'arrivals inward / departures outward'
+            ? text.arrivalsDirection
             : isNetwork
-              ? 'scheduled interpolation / no GPS'
-              : 'simulation / no live data'}
+              ? text.interpolation
+              : text.simulation}
         </span>
       </footer>
     </main>

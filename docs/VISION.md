@@ -21,6 +21,7 @@ The experience should work at four scales:
 - **A score, not background music.** Each scale has its own composed electronic cue; transitions between map, hub and journey are musical continuations of the same world. Sound remains opt-in.
 - **Runs beautifully on an ordinary laptop.** Progressive detail, compact preprocessed data and measured GPU budgets matter more than maximal fidelity.
 - **Load only the chosen scale.** National, regional, city and corridor artifacts remain separate so local detail never bloats the opening national study.
+- **Swiss by default.** The complete interface speaks German, French and Italian, follows the visitor's language when possible, and keeps station and service names authentic.
 
 ## Visual thesis
 

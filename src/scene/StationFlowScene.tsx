@@ -25,6 +25,7 @@ interface StationFlowSceneProps {
   readonly onTime: (time: number) => void
   readonly playbackRate: number
   readonly selectedCategory?: ServiceCategory
+  readonly platformPrefix: string
 }
 
 const flowHorizon = 6 * 60
@@ -47,7 +48,10 @@ function approachSide(
   return eastWest + northSouth * 0.38 < 0 ? -1 : 1
 }
 
-function createPlatformTexture(platform: string): THREE.CanvasTexture {
+function createPlatformTexture(
+  platform: string,
+  platformPrefix: string,
+): THREE.CanvasTexture {
   const canvas = document.createElement('canvas')
   canvas.width = 256
   canvas.height = 96
@@ -60,7 +64,13 @@ function createPlatformTexture(platform: string): THREE.CanvasTexture {
     context.shadowColor = '#8dfaff'
     context.shadowBlur = 18
     context.fillStyle = '#dffeff'
-    context.fillText(platform === UNASSIGNED_PLATFORM ? 'Gl. ?' : `Gl. ${platform}`, 128, 48)
+    context.fillText(
+      platform === UNASSIGNED_PLATFORM
+        ? `${platformPrefix} ?`
+        : `${platformPrefix} ${platform}`,
+      128,
+      48,
+    )
   }
   const texture = new THREE.CanvasTexture(canvas)
   texture.colorSpace = THREE.SRGBColorSpace
@@ -68,10 +78,19 @@ function createPlatformTexture(platform: string): THREE.CanvasTexture {
   return texture
 }
 
-function PlatformPlan({ platforms }: { readonly platforms: readonly string[] }) {
+function PlatformPlan({
+  platforms,
+  platformPrefix,
+}: {
+  readonly platforms: readonly string[]
+  readonly platformPrefix: string
+}) {
   const labels = useMemo(
-    () => platforms.map((platform) => createPlatformTexture(platform)),
-    [platforms],
+    () =>
+      platforms.map((platform) =>
+        createPlatformTexture(platform, platformPrefix),
+      ),
+    [platformPrefix, platforms],
   )
 
   useEffect(
@@ -295,7 +314,10 @@ function StationWorld(
     <>
       <fog attach="fog" args={['#050410', 25, 69]} />
       <ambientLight intensity={0.72} color="#7879d8" />
-      <PlatformPlan platforms={props.platforms} />
+      <PlatformPlan
+        platforms={props.platforms}
+        platformPrefix={props.platformPrefix}
+      />
       <StationTraffic {...props} platforms={props.platforms} />
       <object3D name={props.hub.id} />
     </>

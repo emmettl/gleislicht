@@ -146,6 +146,43 @@ h1 {
   gap: 14px;
 }
 
+.masthead-topline {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.language-picker {
+  display: flex;
+  gap: 3px;
+  padding: 2px;
+  border: 1px solid rgba(193, 204, 255, 0.14);
+  background: rgba(7, 7, 22, 0.42);
+  backdrop-filter: blur(12px);
+}
+
+.language-picker button {
+  min-width: 30px;
+  min-height: 24px;
+  justify-content: center;
+  padding: 0 5px;
+  border-color: transparent;
+  background: transparent;
+  color: rgba(229, 231, 255, 0.46);
+  font-family: 'DM Mono', ui-monospace, monospace;
+  font-size: 0.56rem;
+  letter-spacing: 0.08em;
+}
+
+.language-picker button:hover,
+.language-picker button[aria-pressed='true'] {
+  border-color: rgba(141, 250, 255, 0.25);
+  background: rgba(55, 48, 118, 0.46);
+  color: var(--ink);
+  box-shadow: inset 0 -1px 0 var(--cyan);
+  transform: none;
+}
+
 .soundtrack-control {
   width: 210px;
   font-family: 'DM Mono', ui-monospace, monospace;
@@ -1110,8 +1147,8 @@ footer {
     align-items: flex-start;
   }
 
-  .study-meta {
-    max-width: 125px;
+  .masthead-topline .study-meta {
+    display: none;
   }
 
   .masthead-meta {
