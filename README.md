@@ -26,7 +26,7 @@ Search the national view by station, service, train number, origin, or destinati
 
 Click a service category in the colour legend to highlight that fleet and dim the other trains; click the active category again to clear the filter. The same focus carries into the Takt hub view.
 
-The national map supports mouse-wheel or pinch zoom, pointer or touch drag to pan, and on-screen zoom/reset controls. Station names reveal progressively as the camera approaches, prioritising busy interchanges and suppressing overlapping labels. During a selected-train follow, its own calling points take priority. The follow camera temporarily takes control; releasing it returns to the previous map position.
+The national map supports mouse-wheel or pinch zoom, pointer or touch drag to pan, and on-screen zoom/reset controls. Soft distance limits keep the network inside the useful fog range. Station names reveal progressively as the camera approaches, prioritising busy interchanges and suppressing overlapping labels. During a selected-train follow, its own calling points take priority. The follow camera temporarily takes control; releasing it returns to the previous map position.
 
 The **trains · auto/on/off** map control manages moving train labels. Auto begins with long-distance services, reveals more categories with zoom, and follows active station or service-category filters. On raises the density while retaining collision suppression; Off keeps the moving lights unlabelled.
 

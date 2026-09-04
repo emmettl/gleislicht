@@ -21,6 +21,7 @@ import {
   trainLabelPriority,
   type TrainLabelMode,
 } from './train-labels.ts'
+import { applyMapZoom } from './map-camera.ts'
 
 export type MapCameraAction = 'zoom-in' | 'zoom-out' | 'reset'
 
@@ -938,11 +939,7 @@ function NetworkCamera({
       return
     }
     const multiplier = cameraCommand.action === 'zoom-in' ? 0.78 : 1.28
-    distanceScale.current = THREE.MathUtils.clamp(
-      distanceScale.current * multiplier,
-      0.3,
-      1.7,
-    )
+    distanceScale.current = applyMapZoom(distanceScale.current, multiplier)
   }, [cameraCommand])
 
   useEffect(() => {
@@ -976,10 +973,9 @@ function NetworkCamera({
         const [first, second] = [...pointers.values()]
         const nextDistance = Math.hypot(first.x - second.x, first.y - second.y)
         if (pinchDistance && nextDistance > 0) {
-          distanceScale.current = THREE.MathUtils.clamp(
-            distanceScale.current * (pinchDistance / nextDistance),
-            0.3,
-            1.7,
+          distanceScale.current = applyMapZoom(
+            distanceScale.current,
+            pinchDistance / nextDistance,
           )
         }
         pinchDistance = nextDistance
@@ -992,10 +988,9 @@ function NetworkCamera({
     }
     const onWheel = (event: WheelEvent) => {
       if (selectedTrain) return
-      distanceScale.current = THREE.MathUtils.clamp(
-        distanceScale.current * Math.exp(event.deltaY * 0.0012),
-        0.3,
-        1.7,
+      distanceScale.current = applyMapZoom(
+        distanceScale.current,
+        Math.exp(event.deltaY * 0.0012),
       )
       event.preventDefault()
     }
