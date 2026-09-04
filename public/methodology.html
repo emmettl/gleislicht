@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#050410" />
+    <meta name="description" content="How Gleislicht turns Swiss open transport schedules into an animated visual study." />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <title>Data & methodology — Gleislicht</title>
+    <style>
+      :root { color-scheme: dark; font-family: Helvetica, Arial, sans-serif; background: #050410; color: #eefeff; }
+      * { box-sizing: border-box; }
+      body { min-height: 100vh; margin: 0; background: radial-gradient(circle at 75% 12%, #17244a 0, transparent 28rem), linear-gradient(145deg, #050410, #0b0923); }
+      main { width: min(780px, calc(100% - 40px)); margin: 0 auto; padding: max(48px, env(safe-area-inset-top)) 0 96px; }
+      nav, .kicker, dt { font: 0.72rem/1.4 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .14em; text-transform: uppercase; }
+      nav a, a { color: #8dfaff; }
+      h1 { max-width: 700px; margin: 48px 0 20px; font-size: clamp(2.8rem, 9vw, 6.4rem); line-height: .88; letter-spacing: -.06em; }
+      .lede { max-width: 650px; color: #c7c9de; font-size: clamp(1.12rem, 2.5vw, 1.45rem); line-height: 1.5; }
+      section { margin-top: 60px; padding-top: 22px; border-top: 1px solid rgba(141,250,255,.22); }
+      h2 { margin: 0 0 20px; font-size: clamp(1.45rem, 4vw, 2.2rem); }
+      p, li, dd { color: #b9bbd1; line-height: 1.65; }
+      strong { color: #eefeff; }
+      ul { padding-left: 1.2rem; }
+      li + li { margin-top: 10px; }
+      dl { display: grid; grid-template-columns: minmax(110px, 170px) 1fr; gap: 18px 24px; }
+      dt { color: #ff5edb; }
+      dd { margin: 0; }
+      .notice { margin-top: 36px; padding: 18px 20px; border: 1px solid rgba(255,94,219,.34); background: rgba(14,10,38,.75); }
+      footer { margin-top: 72px; color: #777b9e; font: .68rem/1.6 ui-monospace, SFMono-Regular, Menlo, monospace; text-transform: uppercase; }
+      @media (max-width: 560px) { main { width: min(100% - 28px, 780px); } dl { grid-template-columns: 1fr; gap: 6px; } dd + dt { margin-top: 16px; } }
+    </style>
+  </head>
+  <body>
+    <main>
+      <nav><a href="./">← Back to Gleislicht</a></nav>
+      <p class="kicker">Motion study 005 · provenance</p>
+      <h1>Data in.<br />Light out.</h1>
+      <p class="lede">Gleislicht is a cinematic reading of public transport schedules—not a control room and not a live vehicle tracker. Every moving light is grounded in a published timetable; the atmosphere is interpretive.</p>
+
+      <section>
+        <h2>What the movement means</h2>
+        <dl>
+          <dt>Position</dt><dd>Interpolated between consecutive scheduled stops. Unless explicitly marked otherwise, dots are not GPS positions.</dd>
+          <dt>Time</dt><dd>The clock is deterministic and scrubbable. The morning study covers two hours; full-day studies load in three-hour chunks around the selected time.</dd>
+          <dt>Brightness</dt><dd>Route glow expresses scheduled frequency on a segment. Short trails show recent simulated movement, not historical location records.</dd>
+          <dt>Selection</dt><dd>Station selection reveals all scheduled paths touching that stop in the loaded study. Line and category selection dims unrelated movement.</dd>
+          <dt>Geometry</dt><dd>Zürich and Genève regional studies use published operator geometry where matched. National stop-to-stop paths are approximations and are routed around major lake surfaces when no authoritative rail shape is available.</dd>
+        </dl>
+      </section>
+
+      <section>
+        <h2>Sources and packaging</h2>
+        <ul>
+          <li><a href="https://opentransportdata.swiss/en/cookbook/timetable-cookbook/gtfs/">Swiss GTFS Static</a> supplies routes, service calendars, trips, stops and stop times.</li>
+          <li><a href="https://www.swisstopo.admin.ch/en/landscape-model-swissboundaries3d">swissBOUNDARIES3D</a> supplies the simplified national outline.</li>
+          <li>Federal open hydrography is simplified offline into the major lake layer, with source attribution retained in the artifact.</li>
+          <li><a href="https://data.stadt-zuerich.ch/dataset/vbz_fahrplandaten_gtfs">ZVV / VBZ GTFS</a> and <a href="https://sitg.ge.ch/donnees/tpg-lignes">TPG / SITG</a> provide regional line geometry.</li>
+        </ul>
+        <p>The browser never receives the source GTFS archive. Repeatable Node scripts validate and compress each study into small static JSON artifacts. National 24-hour data is split so the initial morning view remains fast.</p>
+      </section>
+
+      <section>
+        <h2>Limits, privacy and accessibility</h2>
+        <p><strong>Realtime:</strong> the current release is scheduled simulation. Swiss GTFS Realtime offers predictions and alerts rather than national GPS vehicle positions; it will only be presented as realtime-adjusted interpolation once a paired, timestamped feed is operating.</p>
+        <p><strong>Privacy:</strong> Gleislicht contains no analytics, advertising, accounts or personal tracking. Language preference is stored locally in the browser.</p>
+        <p><strong>Accessibility:</strong> keyboard search, reduced interface density on small screens, labelled controls and a non-WebGL explanation are built in. The map remains a visual artwork; the status cards and search results carry the essential textual information.</p>
+        <div class="notice">Visual design is interpretive. Schedules, times and source metadata are factual; terrain ambience, glow, trails and music are artistic encodings.</div>
+      </section>
+
+      <footer>Gleislicht · Switzerland in motion · open-data visual study</footer>
+    </main>
+  </body>
+</html>

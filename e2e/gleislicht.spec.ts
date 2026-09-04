@@ -8,6 +8,15 @@ test.beforeEach(async ({ page }) => {
   await expect(page.locator('.scene canvas')).toBeVisible()
 })
 
+test('methodology and provenance remain available without the visual client', async ({
+  page,
+}) => {
+  await page.goto('/methodology.html')
+  await expect(page.getByRole('heading', { level: 1 })).toContainText('Data in.')
+  await expect(page.getByRole('heading', { name: 'Sources and packaging' })).toBeVisible()
+  await expect(page.getByText(/no analytics, advertising, accounts/i)).toBeVisible()
+})
+
 test('search selects a station and exposes its serving routes', async ({ page }) => {
   const search = page.locator('.train-search input[type="search"]')
   await search.fill('Bern')
@@ -41,6 +50,25 @@ test('region selection changes the active study', async ({ page }, testInfo) => 
     'Zürich in motion',
   )
   await expect(page.locator('.network-card')).toContainText('Vehicles in motion')
+})
+
+test('the 24-hour study exposes authored day moments and a director loop', async ({
+  page,
+}, testInfo) => {
+  test.skip(
+    testInfo.project.name === 'iphone-webkit',
+    'Desktop controls are covered directly; mobile uses the same actions',
+  )
+  await page.getByRole('button', { name: /24-hour Switzerland study/i }).click()
+  const evening = page.getByRole('button', { name: /Evening rush · 17:15/i })
+  await expect(evening).toBeVisible()
+  await evening.click()
+  await expect(page.locator('.route-id')).toHaveText('17:15')
+  const director = page.locator('.director-toggle')
+  await expect(director).toHaveAccessibleName('Director loop')
+  await director.click()
+  await expect(director).toHaveAttribute('aria-pressed', 'true')
+  await expect(director).toHaveAccessibleName('Stop director')
 })
 
 test('the mobile shell keeps header, search and timeline in one viewport', async ({

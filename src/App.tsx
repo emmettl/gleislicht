@@ -114,6 +114,14 @@ const PLAYBACK_RATES = [
   { label: '64×', value: 1920 },
 ] as const
 
+const DAY_PRESETS = [
+  { id: 'dawn', time: 5 * 3600 + 30 * 60 },
+  { id: 'rush', time: 7 * 3600 + 45 * 60 },
+  { id: 'noon', time: 12 * 3600 },
+  { id: 'evening', time: 17 * 3600 + 15 * 60 },
+  { id: 'night', time: 22 * 3600 + 30 * 60 },
+] as const
+
 function initialUiLanguage(): UiLanguage {
   let savedLanguage: string | null = null
   try {
@@ -132,6 +140,15 @@ function formatTimelineBoundary(value: number): string {
   return value === 24 * 3600 ? '24:00' : formatServiceTime(value)
 }
 
+function supportsWebGL(): boolean {
+  try {
+    const canvas = document.createElement('canvas')
+    return Boolean(canvas.getContext('webgl2') ?? canvas.getContext('webgl'))
+  } catch {
+    return false
+  }
+}
+
 function trainSearchText(
   train: NetworkTrain,
   network: NetworkSnapshot,
@@ -145,6 +162,7 @@ function trainSearchText(
 }
 
 export function App() {
+  const [webglAvailable] = useState(supportsWebGL)
   const [language, setLanguage] = useState<UiLanguage>(initialUiLanguage)
   const [isPlaying, setIsPlaying] = useState(true)
   const [view, setView] = useState<View>('network')
@@ -184,6 +202,7 @@ export function App() {
     action: 'reset',
   })
   const [playbackRate, setPlaybackRate] = useState(120)
+  const [directorMode, setDirectorMode] = useState(false)
   const [selectedCategory, setSelectedCategory] = useState<ServiceCategory>()
   const [trainLabelMode, setTrainLabelMode] = useState<TrainLabelMode>('auto')
   const [soundtrackState, setSoundtrackState] = useState<SoundtrackState>('off')
@@ -191,6 +210,7 @@ export function App() {
   const soundtrackRef = useRef<GleislichtSoundtrack | null>(null)
   const mobileMapToolsRef = useRef<HTMLDetailsElement>(null)
   const searchInteractionRef = useRef(false)
+  const timelineTimeRef = useRef(networkTime)
   const text = UI_TEXT[language]
   const isContrast = networkStudy === 'contrast'
   const zurichContrast = useProgressiveNetworkDay(
@@ -509,6 +529,7 @@ export function App() {
 
   const selectNetworkStudy = useCallback(
     (study: NetworkStudy, timeRange: NationalTimeRange = nationalTimeRange) => {
+      setDirectorMode(false)
       setNetworkStudy(study)
       setView('network')
       setSelectedCategory(undefined)
@@ -559,6 +580,7 @@ export function App() {
   )
 
   const handleContextAction = useCallback(() => {
+    setDirectorMode(false)
     if (
       view === 'network' &&
       (selectedTrainId || selectedStationName || selectedRouteId)
@@ -870,13 +892,62 @@ export function App() {
   const timeline = isHub ? (hubDay?.metadata ?? network?.metadata) : network?.metadata
   const timelineTime = isHub ? hubTime : networkTime
   const timelineReady = isTimetable && timeline
+  const hasFullDayTimeline = Boolean(
+    timelineReady &&
+      timeline.windowStart <= DAY_PRESETS[0].time &&
+      timeline.windowEnd >= DAY_PRESETS.at(-1)!.time,
+  )
+
+  const jumpToTime = useCallback(
+    (time: number) => {
+      setIsPlaying(true)
+      if (isHub) setHubTime(time)
+      else handleNetworkTime(time)
+    },
+    [handleNetworkTime, isHub],
+  )
+
+  useEffect(() => {
+    timelineTimeRef.current = timelineTime
+  }, [timelineTime])
+
+  useEffect(() => {
+    if (!directorMode || !hasFullDayTimeline) return
+    let presetIndex = DAY_PRESETS.reduce(
+      (closest, preset, index) =>
+        Math.abs(preset.time - timelineTimeRef.current) <
+        Math.abs(DAY_PRESETS[closest].time - timelineTimeRef.current)
+          ? index
+          : closest,
+      0,
+    )
+    const interval = window.setInterval(() => {
+      presetIndex = (presetIndex + 1) % DAY_PRESETS.length
+      jumpToTime(DAY_PRESETS[presetIndex].time)
+      if (isNetwork) moveMapCamera('reset')
+    }, 9000)
+    return () => window.clearInterval(interval)
+  }, [
+    directorMode,
+    hasFullDayTimeline,
+    isNetwork,
+    jumpToTime,
+    moveMapCamera,
+  ])
 
   return (
     <main
       className={`experience view-${view}${isContrast ? ' is-contrast' : ''}${selectedTrain || selectedStation || selectedRoute ? ' has-selection' : ''}`}
     >
-      <div className="scene" aria-hidden="true">
-        {isNetwork && isContrast ? (
+      <div className="scene" aria-hidden={webglAvailable ? true : undefined}>
+        {!webglAvailable ? (
+          <section className="no-webgl" role="status">
+            <span aria-hidden="true">◎</span>
+            <h2>{text.webglUnavailable}</h2>
+            <p>{text.webglUnavailableDescription}</p>
+            <a href="./methodology.html">{text.readMethodology}</a>
+          </section>
+        ) : isNetwork && isContrast ? (
           <div className="contrast-scenes">
             <section className="contrast-panel contrast-panel-city">
               {zurichContrast.network ? (
@@ -2027,6 +2098,33 @@ export function App() {
             {timelineReady ? formatServiceTime(timelineTime) : formatPercent(journeyProgress)}
           </span>
         </label>
+        {isTimetable && hasFullDayTimeline && (
+          <div className="time-presets" aria-label={text.timePresets}>
+            <span>{text.day}</span>
+            <div>
+              {DAY_PRESETS.map((preset) => (
+                <button
+                  key={preset.id}
+                  type="button"
+                  title={text.dayPresetNames[preset.id]}
+                  aria-label={`${text.dayPresetNames[preset.id]} · ${formatServiceTime(preset.time)}`}
+                  aria-pressed={Math.abs(timelineTime - preset.time) < 5 * 60}
+                  onClick={() => jumpToTime(preset.time)}
+                >
+                  {formatServiceTime(preset.time)}
+                </button>
+              ))}
+              <button
+                className="director-toggle"
+                type="button"
+                aria-pressed={directorMode}
+                onClick={() => setDirectorMode((value) => !value)}
+              >
+                {directorMode ? text.stopDirector : text.directorMode}
+              </button>
+            </div>
+          </div>
+        )}
         {isTimetable && (
           <div className="speed-picker" aria-label={text.playbackSpeed}>
             <span>{text.tempo}</span>
@@ -2100,6 +2198,32 @@ export function App() {
                   {isHub ? text.nationalView : text.taktHubs}
                 </button>
               )}
+              {hasFullDayTimeline && (
+                <div className="mobile-day-presets" aria-label={text.timePresets}>
+                  <span>{text.timePresets}</span>
+                  {DAY_PRESETS.map((preset) => (
+                    <button
+                      key={preset.id}
+                      type="button"
+                      aria-pressed={Math.abs(timelineTime - preset.time) < 5 * 60}
+                      onClick={() => jumpToTime(preset.time)}
+                    >
+                      {text.dayPresetNames[preset.id]}
+                      <small>{formatServiceTime(preset.time)}</small>
+                    </button>
+                  ))}
+                  <button
+                    type="button"
+                    aria-pressed={directorMode}
+                    onClick={() => setDirectorMode((value) => !value)}
+                  >
+                    {directorMode ? text.stopDirector : text.directorMode}
+                  </button>
+                </div>
+              )}
+              <a className="methodology-link" href="./methodology.html">
+                {text.readMethodology}
+              </a>
             </div>
           </details>
         </div>
@@ -2185,6 +2309,7 @@ export function App() {
                 {text.lakes} · {lakes.metadata.attribution}
               </a>
             )}
+            <a href="./methodology.html">{text.methodology}</a>
           </span>
         ) : (
           <span>{prototypeJourney.operator}</span>

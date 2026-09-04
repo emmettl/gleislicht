@@ -77,7 +77,7 @@ The national GTFS-RT feed supplies trip updates and alerts, not vehicle position
 - [x] Loop the hub orbit across a full day with four authored playback tempos.
 - [x] Add an alternate station-flow view with scheduled GTFS platform assignments.
 - [ ] Replace the map-level selected-train follow with a terrain-backed corridor transition.
-- Time-of-day presets, speed control and a short looping “director mode.”
+- [x] Add time-of-day presets, speed control and a short looping “director mode.”
 - Authored palettes and camera behaviours for plateau, lake and Alpine routes.
 - [x] Add three opt-in Driftbox cues with adaptive crossfades between network, hub and journey modes.
 - Extend the score with spatial details derived from speed, tunnel state and terrain—never autoplayed.
@@ -88,8 +88,9 @@ The national GTFS-RT feed supplies trip updates and alerts, not vehicle position
 
 - Automated source refreshes with validation and atomic artifact versions.
 - Regression fixtures for DST changes, midnight rollover, missing shapes and feed mismatch.
-- Performance telemetry without personal tracking; accessible non-WebGL fallback.
-- Source, attribution and methodology pages.
+- Performance telemetry without personal tracking.
+- [x] Add an accessible non-WebGL fallback.
+- [x] Publish a source, attribution and methodology page.
 - Recording/export workflow for shareable daily studies.
 - [x] Publish the reviewed static build through GitHub Pages; private previews remain non-canonical.
 

@@ -68,6 +68,43 @@ button {
   z-index: -3;
 }
 
+.no-webgl {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  padding: 25vh 24px 18vh;
+  background:
+    radial-gradient(circle at 50% 48%, rgba(33, 91, 108, 0.38), transparent 32%),
+    linear-gradient(145deg, #050410, #0b0923);
+  color: var(--ink);
+  text-align: center;
+}
+
+.no-webgl > span {
+  color: var(--pink);
+  font-size: clamp(2.6rem, 8vw, 5rem);
+  text-shadow: 0 0 28px var(--pink);
+}
+
+.no-webgl h2 {
+  max-width: 620px;
+  margin: 18px 0 8px;
+  font-size: clamp(1.35rem, 4vw, 2.5rem);
+}
+
+.no-webgl p {
+  max-width: 560px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.no-webgl a,
+.methodology-link {
+  color: var(--cyan);
+}
+
 .view-network .scene canvas {
   touch-action: none;
   cursor: grab;
@@ -1206,6 +1243,53 @@ input[type='range']::-webkit-slider-thumb {
   margin-top: 7px;
 }
 
+.time-presets {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 9px;
+  min-height: 27px;
+  margin-top: 7px;
+}
+
+.time-presets > span,
+.mobile-day-presets > span {
+  color: rgba(229, 231, 255, 0.4);
+  font-family: 'DM Mono', ui-monospace, monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.time-presets > div {
+  display: flex;
+  gap: 3px;
+}
+
+.time-presets button {
+  min-width: 46px;
+  min-height: 27px;
+  justify-content: center;
+  padding: 0 7px;
+  border-color: rgba(193, 204, 255, 0.14);
+  background: rgba(7, 7, 22, 0.48);
+  color: var(--muted);
+  font-family: 'DM Mono', ui-monospace, monospace;
+  font-size: 0.57rem;
+}
+
+.time-presets button[aria-pressed='true'] {
+  border-color: rgba(141, 250, 255, 0.58);
+  color: var(--ink);
+  background: rgba(26, 64, 79, 0.58);
+  box-shadow: inset 0 -1px 0 var(--cyan), 0 0 15px rgba(141, 250, 255, 0.1);
+}
+
+.time-presets .director-toggle {
+  min-width: 88px;
+  color: var(--cyan);
+}
+
 .speed-picker > span {
   color: rgba(229, 231, 255, 0.4);
   font-family: 'DM Mono', ui-monospace, monospace;
@@ -2215,6 +2299,7 @@ footer {
   }
 
   .speed-picker,
+  .time-presets,
   .button-row {
     display: none;
   }
@@ -2273,8 +2358,44 @@ footer {
     justify-content: flex-start;
   }
 
+  .mobile-more-controls .methodology-link {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    margin-top: 4px;
+    padding: 0 13px;
+    border: 1px solid var(--line);
+    background: var(--panel);
+    text-decoration: none;
+  }
+
   .mobile-more-controls button + button {
     margin-top: 4px;
+  }
+
+  .mobile-day-presets {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid rgba(193, 204, 255, 0.16);
+  }
+
+  .mobile-day-presets > span {
+    display: block;
+    padding: 3px 7px 7px;
+  }
+
+  .mobile-day-presets button {
+    justify-content: space-between;
+  }
+
+  .mobile-day-presets button small {
+    color: var(--cyan);
+    font-family: 'DM Mono', ui-monospace, monospace;
+  }
+
+  .mobile-day-presets button[aria-pressed='true'] {
+    border-color: rgba(141, 250, 255, 0.55);
+    background: rgba(26, 64, 79, 0.52);
   }
 
   footer {
