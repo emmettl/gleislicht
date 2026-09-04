@@ -224,6 +224,18 @@ async function stopsById(archive) {
   return stops
 }
 
+function canonicalStopId(stopId) {
+  return stopId.split('::')[0]
+}
+
+async function localStopIds(archive) {
+  const stopIds = new Set()
+  for await (const row of rowsFromArchive(archive, 'stops.txt')) {
+    stopIds.add(canonicalStopId(row.stop_id))
+  }
+  return stopIds
+}
+
 function createSnapshotBuilder({
   trips,
   sourceStops,
@@ -231,6 +243,7 @@ function createSnapshotBuilder({
   windowEnd,
   focusTime,
   displayBounds,
+  allowedLocalStopIds,
 }) {
   const stops = []
   const stopIndexes = new Map()
@@ -275,6 +288,31 @@ function createSnapshotBuilder({
   function addTrip(tripId, tripStops) {
     const metadata = trips.get(tripId)
     if (!metadata || tripStops.length < 2) return
+
+    if (
+      allowedLocalStopIds &&
+      (metadata.mode === 'tram' || metadata.mode === 'bus')
+    ) {
+      const localStopsInBounds = tripStops.filter((tripStop) => {
+        const stop = sourceStops.get(tripStop.stopId)
+        return (
+          stop &&
+          stop.longitude >= displayBounds.minLongitude &&
+          stop.longitude <= displayBounds.maxLongitude &&
+          stop.latitude >= displayBounds.minLatitude &&
+          stop.latitude <= displayBounds.maxLatitude
+        )
+      })
+      const allowedCount = localStopsInBounds.filter((tripStop) =>
+        allowedLocalStopIds.has(canonicalStopId(tripStop.stopId)),
+      ).length
+      if (
+        localStopsInBounds.length < 2 ||
+        allowedCount / localStopsInBounds.length < 0.8
+      ) {
+        return
+      }
+    }
 
     const indexedStops = tripStops
       .map((stop) => {
@@ -505,7 +543,8 @@ async function main() {
       'Usage: npm run data:gtfs -- --archive /path/feed.zip --date YYYY-MM-DD ' +
         '[--window-start 06:45] [--window-end 08:45] [--focus 07:45] ' +
         '[--modes rail|all|rail,tram,bus] [--bounds minLon,minLat,maxLon,maxLat] ' +
-        '[--output morning.json] [--hub-output day.json|none] [--chunk-hours 3]',
+        '[--local-stop-archive /path/regional.zip] [--output morning.json] ' +
+        '[--hub-output day.json|none] [--chunk-hours 3]',
     )
     return
   }
@@ -524,17 +563,22 @@ async function main() {
     throw new Error('--chunk-hours must be a positive number')
   }
   const modes = parseModes(argument('modes', 'rail'))
+  const localStopArchiveArgument = argument('local-stop-archive')
+  const localStopArchive = localStopArchiveArgument
+    ? resolve(localStopArchiveArgument)
+    : undefined
   const displayBounds = parseBounds(argument('bounds'))
   const windowStart = parseClock(windowStartLabel)
   const windowEnd = parseClock(windowEndLabel)
   const focusTime = parseClock(focusLabel)
 
   console.log('Reading feed metadata and service calendar…')
-  const [feed, services, routes, sourceStops] = await Promise.all([
+  const [feed, services, routes, sourceStops, allowedLocalStopIds] = await Promise.all([
     readFeedInfo(archive),
     activeServices(archive, serviceDate),
     routesForModes(archive, modes),
     stopsById(archive),
+    localStopArchive ? localStopIds(localStopArchive) : undefined,
   ])
   console.log(
     `Selected ${services.size} active services and ${routes.size} routes for ${[...modes].join(', ')}.`,
@@ -549,6 +593,7 @@ async function main() {
     windowEnd,
     focusTime,
     displayBounds,
+    allowedLocalStopIds,
   })
   const hubBuilder = hubOutput ? createHubDayBuilder({ trips, sourceStops }) : undefined
   const rowsRead = await readStopTimes(

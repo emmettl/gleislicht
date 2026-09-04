@@ -33,7 +33,7 @@ This is an iterative art-and-data project. Each stage should end in a coherent v
 - [x] Produce a separately loaded Zürich city morning artifact and scale switcher.
 - [x] Keep the national page load rail-only and derive the city study on demand.
 - [x] Join the official ZVV/VBZ GTFS shapes after validating line, stop and date alignment.
-- [ ] Add a ZVV overview with zoom-dependent aggregation and regional map hierarchy.
+- [x] Add a ZVV overview with zoom-dependent aggregation and regional map hierarchy.
 - [ ] Add a Genève/TPG study with French labels and carefully handled cross-border services.
 - [ ] Select a rural PostBus corridor from measured schedule and terrain criteria.
 - [ ] Build a synchronized 24-hour rural PostBus versus Zürich tram contrast mode.

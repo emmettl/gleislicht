@@ -9,6 +9,7 @@ import {
 describe('map camera zoom', () => {
   it('uses a closer home framing for the Zürich study', () => {
     expect(homeMapDistanceScale('switzerland')).toBe(1)
+    expect(homeMapDistanceScale('zvv')).toBeCloseTo(0.24)
     expect(homeMapDistanceScale('zurich')).toBeCloseTo(0.06)
     expect(homeMapDistanceScale('zurich')).toBeGreaterThan(MIN_MAP_DISTANCE_SCALE)
   })

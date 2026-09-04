@@ -8,7 +8,7 @@ The national rail study should remain spacious. Multimodal detail belongs in sep
 2. **Regional network — connective tissue.** ZVV and later TPG studies show the relationship between S-Bahn or regional rail and the tram, bus, boat and funicular services that feed it. At the widest zoom, frequent urban services are aggregated into luminous corridors; individual vehicles and stops reveal as the camera descends. This follows the hierarchy of a regional network map rather than attempting to show every vehicle equally at every scale.
 3. **City — full-fat motion.** Zürich city is deliberately dense: trains, trams, buses and funiculars all remain individually visible. The first compact artifact contains 2,797 scheduled trips in the 06:45–08:45 window, with 404 vehicles moving at 07:45, but is downloaded only when the city study is selected.
 
-The first implementation now switches between the national rail atlas and Zürich city. ZVV-wide and Genève/TPG studies come after the zoom-dependent aggregation model is ready.
+The interface now switches between the national rail atlas, a ZVV-wide study and Zürich city. The ZVV home view keeps rail movements explicit while local street geometry reads mainly through weighted corridor glow; individual trams appear after the first zoom descent and buses at a closer level. Any explicit category, line, station or vehicle selection overrides the aggregation immediately.
 
 ## The rural–urban contrast
 
@@ -28,7 +28,7 @@ data/
   swiss-rail-morning.json
   zurich-city-morning.json
   regions/
-    zvv-overview-<window>.json
+    zvv-region-morning.json
     geneva-tpg-<window>.json
     postbus-<corridor>-<window>.json
 ```
@@ -49,6 +49,6 @@ Zürich's separate ZVV/VBZ GTFS now supplies shape geometry for the city study. 
 
 1. Zürich city from the national GTFS, using the existing scheduled interpolation renderer.
 2. ✓ Shape-aware Zürich tram and bus geometry from the official ZVV/VBZ regional feed.
-3. ZVV overview with zoom-dependent aggregation and regional line hierarchy.
+3. ✓ ZVV overview with zoom-dependent aggregation and regional line hierarchy.
 4. Genève/TPG as the second city system, including French labels and cross-border edges.
 5. One measured rural PostBus study and the synchronized rural–urban contrast mode.

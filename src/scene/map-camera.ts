@@ -1,9 +1,11 @@
 export const MIN_MAP_DISTANCE_SCALE = 0.02
 export const MAX_MAP_DISTANCE_SCALE = 1.18
-export type MapCameraFraming = 'switzerland' | 'zurich'
+export type MapCameraFraming = 'switzerland' | 'zvv' | 'zurich'
 
 export function homeMapDistanceScale(framing: MapCameraFraming): number {
-  return framing === 'zurich' ? 0.06 : 1
+  if (framing === 'zurich') return 0.06
+  if (framing === 'zvv') return 0.24
+  return 1
 }
 
 const EDGE_EASING = 0.42

@@ -53,6 +53,20 @@ npm run data:zurich:shapes -- \
 
 The enrichment keeps the national timetable as the source of service truth. It joins ZVV geometry by service category, published line name and directed Swiss `sloid` stop pair, normalising platform suffixes where one feed uses the parent stop. The build refuses to write if fewer than 80% of tram and bus segment occurrences align. The current artifact aligns 36,065 of 36,578 occurrences (98.6%), deduplicates the result into 1,843 paths, and records both sources and the measured coverage in its metadata.
 
+The wider ZVV study uses the regional feed's 5,880-stop footprint as its measured extent and as an admission set for local services. This prevents a rectangular crop from accidentally importing neighbouring non-ZVV bus networks while retaining national rail as the regional spine:
+
+```bash
+npm run data:zvv -- \
+  --archive /path/to/GTFS_FP2026_YYYYMMDD.zip \
+  --local-stop-archive /path/to/2026_google_transit.zip
+
+npm run data:zvv:shapes -- \
+  --archive /path/to/2026_google_transit.zip \
+  --feed-version 2026_google_transit
+```
+
+The resulting `zvv-region-morning.json` contains 5,204 trips and is fetched only when ZVV is selected. Its 65,025 matched tram/bus segment occurrences give 98.4% shape coverage. The 4.6 MB JSON compresses to about 1.0 MB over HTTP, so it does not require time chunking for this two-hour study.
+
 ## Known geometry limitation
 
 The current Swiss GTFS archive has no `shapes.txt`. Until rail geometry is joined from a suitable infrastructure dataset, the national study and Zürich rail services interpolate directly between stop coordinates. Zürich tram and bus services use the aligned ZVV geometry described above; any unmatched local segment falls back to straight stop interpolation. The result remains schedule-derived rather than a claim of GPS tracking, and the snapshot metadata records that distinction.

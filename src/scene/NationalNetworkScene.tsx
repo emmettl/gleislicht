@@ -50,6 +50,11 @@ import {
   prepareProjectedPath,
   type ProjectedNetworkPath,
 } from './network-paths.ts'
+import {
+  localNetworkDetailAtZoom,
+  regionalCameraHeight,
+  vehicleIsVisibleAtZoom,
+} from './regional-lod.ts'
 
 export type MapCameraAction = 'zoom-in' | 'zoom-out' | 'reset'
 
@@ -288,20 +293,24 @@ function RailGraph({
   snapshot,
   projectedStops,
   projectedPaths,
+  cameraFraming,
   subdued,
   showTraffic = true,
 }: {
   readonly snapshot: NetworkSnapshot
   readonly projectedStops: readonly ProjectedStop[]
   readonly projectedPaths: readonly ProjectedNetworkPath[]
+  readonly cameraFraming: MapCameraFraming
   readonly subdued: boolean
   readonly showTraffic?: boolean
 }) {
   const { camera } = useThree()
   const stationMaterial = useRef<THREE.PointsMaterial>(null)
+  const localNetworkMaterial = useRef<THREE.LineBasicMaterial>(null)
   const stationTexture = useMemo(() => trainLightTexture('orb'), [])
   const railGeometry = useMemo(() => {
-    const positions: number[] = []
+    const structuralPositions: number[] = []
+    const localPositions: number[] = []
     snapshot.edges.forEach(([fromIndex, toIndex], edgeIndex) => {
       const from = projectedStops[fromIndex]
       const to = projectedStops[toIndex]
@@ -311,14 +320,25 @@ function RailGraph({
         pathIndex === undefined || pathIndex === null
           ? undefined
           : projectedPaths[pathIndex]
-      appendLineSegments(positions, path?.points ?? [from, to], 0)
+      appendLineSegments(
+        pathIndex === undefined || pathIndex === null
+          ? structuralPositions
+          : localPositions,
+        path?.points ?? [from, to],
+        0,
+      )
     })
-    const geometry = new THREE.BufferGeometry()
-    geometry.setAttribute(
+    const structural = new THREE.BufferGeometry()
+    structural.setAttribute(
       'position',
-      new THREE.Float32BufferAttribute(positions, 3),
+      new THREE.Float32BufferAttribute(structuralPositions, 3),
     )
-    return geometry
+    const local = new THREE.BufferGeometry()
+    local.setAttribute(
+      'position',
+      new THREE.Float32BufferAttribute(localPositions, 3),
+    )
+    return { structural, local }
   }, [projectedPaths, projectedStops, snapshot.edgePaths, snapshot.edges])
 
   const stationGeometry = useMemo(() => {
@@ -332,20 +352,35 @@ function RailGraph({
   useEffect(
     () => () => {
       stationTexture.dispose()
+      railGeometry.structural.dispose()
+      railGeometry.local.dispose()
     },
-    [stationTexture],
+    [railGeometry, stationTexture],
   )
 
   useFrame(() => {
-    if (!stationMaterial.current) return
+    if (!stationMaterial.current || !localNetworkMaterial.current) return
     const cameraScale = THREE.MathUtils.clamp(camera.position.y / 37, 0.02, 1)
     stationMaterial.current.size = 0.065 * cameraScale
+    const detail = localNetworkDetailAtZoom(camera.position.y, cameraFraming)
+    localNetworkMaterial.current.opacity = subdued
+      ? 0.02 + detail * 0.05
+      : 0.025 + detail * 0.115
   })
 
   return (
     <>
-      <lineSegments geometry={railGeometry}>
+      <lineSegments geometry={railGeometry.structural}>
         <lineBasicMaterial
+          color="#7296bb"
+          transparent
+          opacity={subdued ? 0.07 : 0.14}
+          blending={THREE.AdditiveBlending}
+        />
+      </lineSegments>
+      <lineSegments geometry={railGeometry.local}>
+        <lineBasicMaterial
+          ref={localNetworkMaterial}
           color="#7296bb"
           transparent
           opacity={subdued ? 0.07 : 0.14}
@@ -1086,6 +1121,7 @@ function TrainLabels({
   time,
   playbackRate,
   trainTimeIndex,
+  cameraFraming,
 }: NationalNetworkSceneProps & {
   readonly projectedStops: readonly ProjectedStop[]
   readonly projectedPaths: readonly ProjectedNetworkPath[]
@@ -1128,11 +1164,15 @@ function TrainLabels({
     sprites.current.forEach((sprite) => {
       if (sprite) sprite.visible = false
     })
+    const semanticCameraHeight = regionalCameraHeight(
+      camera.position.y,
+      cameraFraming,
+    )
     const labelBudget = selectedTrain
       ? trainLabelMode === 'off'
         ? 0
         : 1
-      : trainLabelBudget(camera.position.y, trainLabelMode)
+      : trainLabelBudget(semanticCameraHeight, trainLabelMode)
     if (!labelBudget) {
       retainedTrainIds.current.clear()
       return
@@ -1154,11 +1194,25 @@ function TrainLabels({
       if (selectedRoute && !selectedRouteTrainIds.has(train.id)) continue
       if (!selected && selectedStation && !selectedStationTrainIds.has(train.id)) continue
       if (!selected && selectedCategory && train.category !== selectedCategory) continue
+      const focused = Boolean(
+        selected || selectedRoute || selectedStation || selectedCategory,
+      )
+      if (
+        !vehicleIsVisibleAtZoom(
+          train.category,
+          camera.position.y,
+          cameraFraming,
+          focused,
+        )
+      ) {
+        continue
+      }
       if (
         !selected &&
+        !focused &&
         !selectedCategory &&
         trainLabelMode === 'auto' &&
-        !categoryIsVisibleInAutoMode(train.category, camera.position.y)
+        !categoryIsVisibleInAutoMode(train.category, semanticCameraHeight)
       ) {
         continue
       }
@@ -1410,6 +1464,7 @@ function TrainSwarm({
   selectedCategory,
   selectedStation,
   trainTimeIndex,
+  cameraFraming,
 }: NationalNetworkSceneProps & {
   readonly projectedStops: readonly ProjectedStop[]
   readonly projectedPaths: readonly ProjectedNetworkPath[]
@@ -1510,6 +1565,22 @@ function TrainSwarm({
       bus: 0,
     }
     for (const train of trainsNearTime(trainTimeIndex, localTime.current)) {
+      const focused = Boolean(
+        selectedTrain?.id === train.id ||
+          (selectedRoute && selectedRouteTrainIds.has(train.id)) ||
+          (selectedStation && selectedStationTrainIds.has(train.id)) ||
+          selectedCategory === train.category,
+      )
+      if (
+        !vehicleIsVisibleAtZoom(
+          train.category,
+          state.camera.position.y,
+          cameraFraming,
+          focused,
+        )
+      ) {
+        continue
+      }
       const position = projectedTrainPosition(
         train,
         localTime.current,
@@ -1653,6 +1724,7 @@ function VehicleTrails({
   time,
   playbackRate,
   trainTimeIndex,
+  cameraFraming,
 }: NationalNetworkSceneProps & {
   readonly projectedStops: readonly ProjectedStop[]
   readonly projectedPaths: readonly ProjectedNetworkPath[]
@@ -1713,7 +1785,7 @@ function VehicleTrails({
     [geometries],
   )
 
-  useFrame(({ clock }, delta) => {
+  useFrame(({ clock, camera }, delta) => {
     if (isPlaying) {
       localTime.current += delta * playbackRate
       if (localTime.current > snapshot.metadata.windowEnd) {
@@ -1738,6 +1810,16 @@ function VehicleTrails({
       if (selectedRoute && !selectedRouteTrainIds.has(train.id)) continue
       if (selectedCategory && train.category !== selectedCategory) continue
       if (selectedStation && !selectedStationTrainIds.has(train.id)) continue
+      if (
+        !vehicleIsVisibleAtZoom(
+          train.category,
+          camera.position.y,
+          cameraFraming,
+          Boolean(selectedTrain || selectedRoute || selectedCategory || selectedStation),
+        )
+      ) {
+        continue
+      }
 
       const samples = sampleTimes.map((sampleTime) =>
         projectedTrainPosition(
@@ -2051,6 +2133,7 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
           snapshot={props.contextSnapshot}
           projectedStops={contextProjectedStops}
           projectedPaths={contextProjectedPaths}
+          cameraFraming="switzerland"
           subdued
           showTraffic={false}
         />
@@ -2059,6 +2142,7 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
         snapshot={props.snapshot}
         projectedStops={projectedStops}
         projectedPaths={projectedPaths}
+        cameraFraming={props.cameraFraming}
         subdued={Boolean(
           props.selectedTrain ||
             props.selectedRoute ||
