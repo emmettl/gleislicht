@@ -30,6 +30,8 @@ The national map supports mouse-wheel or pinch zoom, pointer or touch drag to pa
 
 Open **Takt hubs** to move between Zürich HB, Bern, Basel SBB and Genève across a continuous 24-hour schedule. Four tempo settings run from 1× to 64×, turning the clock-face timetable into a slow study or a rapid daily pulse. See [docs/HUB-STUDY.md](./docs/HUB-STUDY.md) for the visual model and the deliberately careful wording around Zürich's “busiest” status.
 
+Sound is optional and off by default. Turning on the adaptive score lazily loads the Driftbox synthesis engine and plays one of three Gleislicht arrangements: **Night Grid** for the national map, **Taktwerk** for station pulses, and **Valley Signal** for corridor or train-follow views. Mode changes crossfade between two live transports. See [docs/SOUNDTRACK.md](./docs/SOUNDTRACK.md) for the musical and technical design.
+
 The committed GTFS snapshot is regenerated with `npm run data:gtfs`; see [docs/DATA-PIPELINE.md](./docs/DATA-PIPELINE.md).
 The eventual public deployment is GitHub Pages; see [docs/PUBLISHING.md](./docs/PUBLISHING.md).
 
@@ -37,6 +39,7 @@ The eventual public deployment is GitHub Pages; see [docs/PUBLISHING.md](./docs/
 
 - Vite + React + strict TypeScript
 - Three.js through React Three Fiber
+- Driftbox's Web Audio engine for a fully synthesised, adaptive soundtrack
 - oxlint, Vitest, and a small domain layer kept separate from rendering
 - static deployment for the visual client; preprocessing jobs will turn large GTFS/topography sources into compact, versioned web assets
 

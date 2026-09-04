@@ -1,4 +1,8 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import type {
+  GleislichtSoundtrack,
+  SoundtrackMode,
+} from './audio/gleislicht-soundtrack.ts'
 import {
   callsAtHub,
   callsNearTime,
@@ -28,6 +32,13 @@ import {
 } from './scene/NationalNetworkScene.tsx'
 
 type View = 'network' | 'hub' | 'journey'
+type SoundtrackState = 'off' | 'starting' | 'on' | 'error'
+
+const SOUNDTRACK_TITLES: Record<SoundtrackMode, string> = {
+  network: 'Night Grid',
+  hub: 'Taktwerk',
+  journey: 'Valley Signal',
+}
 
 const numberFormat = new Intl.NumberFormat('de-CH')
 const PLAYBACK_RATES = [
@@ -79,6 +90,12 @@ export function App() {
   })
   const [playbackRate, setPlaybackRate] = useState(120)
   const [selectedCategory, setSelectedCategory] = useState<ServiceCategory>()
+  const [soundtrackState, setSoundtrackState] = useState<SoundtrackState>('off')
+  const [soundtrackVolume, setSoundtrackVolume] = useState(0.56)
+  const soundtrackRef = useRef<GleislichtSoundtrack | null>(null)
+
+  const soundtrackMode: SoundtrackMode =
+    view === 'hub' ? 'hub' : view === 'journey' || selectedTrainId ? 'journey' : 'network'
 
   const journeyPosition = useMemo(
     () => positionOnJourney(prototypeJourney, journeyProgress),
@@ -215,6 +232,33 @@ export function App() {
     setView((value) => (value === 'network' ? 'journey' : 'network'))
   }, [releaseSelection, selectedStationName, selectedTrainId, view])
 
+  const toggleSoundtrack = useCallback(async () => {
+    if (soundtrackState === 'starting') return
+    if (soundtrackState === 'on') {
+      soundtrackRef.current?.stop()
+      setSoundtrackState('off')
+      return
+    }
+
+    setSoundtrackState('starting')
+    try {
+      let soundtrack = soundtrackRef.current
+      if (!soundtrack) {
+        const { GleislichtSoundtrack: Soundtrack } = await import(
+          './audio/gleislicht-soundtrack.ts'
+        )
+        soundtrack = new Soundtrack(soundtrackVolume)
+        soundtrackRef.current = soundtrack
+      }
+      soundtrack.setVolume(soundtrackVolume)
+      await soundtrack.start(soundtrackMode)
+      setSoundtrackState('on')
+    } catch (error: unknown) {
+      console.error('Unable to start the Gleislicht soundtrack', error)
+      setSoundtrackState('error')
+    }
+  }, [soundtrackMode, soundtrackState, soundtrackVolume])
+
   useEffect(() => {
     const controller = new AbortController()
     fetch(`${import.meta.env.BASE_URL}data/swiss-rail-morning.json`, {
@@ -262,6 +306,26 @@ export function App() {
     window.addEventListener('keydown', onKeyDown)
     return () => window.removeEventListener('keydown', onKeyDown)
   }, [handleContextAction])
+
+  useEffect(() => {
+    if (soundtrackState !== 'on') return
+    soundtrackRef.current?.transition(soundtrackMode).catch((error: unknown) => {
+      console.error('Unable to transition the Gleislicht soundtrack', error)
+      setSoundtrackState('error')
+    })
+  }, [soundtrackMode, soundtrackState])
+
+  useEffect(() => {
+    soundtrackRef.current?.setVolume(soundtrackVolume)
+  }, [soundtrackVolume])
+
+  useEffect(
+    () => () => {
+      soundtrackRef.current?.dispose()
+      soundtrackRef.current = null
+    },
+    [],
+  )
 
   const isNetwork = view === 'network'
   const isHub = view === 'hub'
@@ -315,12 +379,53 @@ export function App() {
           <p className="eyebrow">Gleislicht</p>
           <h1>Switzerland in motion</h1>
         </div>
-        <div className="study-meta">
-          <span className="pulse" />
-          <span>motion study 004</span>
-          <span className="coordinate">
-            {isTimetable ? 'Friday · 04 September 2026' : '47.194° N · 9.312° E'}
-          </span>
+        <div className="masthead-meta">
+          <div className="study-meta">
+            <span className="pulse" />
+            <span>motion study 005</span>
+            <span className="coordinate">
+              {isTimetable ? 'Friday · 04 September 2026' : '47.194° N · 9.312° E'}
+            </span>
+          </div>
+          <section
+            className={`soundtrack-control is-${soundtrackState}`}
+            aria-label="Adaptive soundtrack"
+          >
+            <button
+              type="button"
+              aria-pressed={soundtrackState === 'on'}
+              disabled={soundtrackState === 'starting'}
+              onClick={() => void toggleSoundtrack()}
+            >
+              <span className="sound-bars" aria-hidden="true">
+                <i /><i /><i /><i />
+              </span>
+              <span className="sound-copy">
+                <small>{soundtrackState === 'error' ? 'audio unavailable' : 'adaptive score'}</small>
+                <strong>
+                  {soundtrackState === 'starting'
+                    ? 'tuning…'
+                    : SOUNDTRACK_TITLES[soundtrackMode]}
+                </strong>
+              </span>
+              <span className="sound-state">
+                {soundtrackState === 'on' ? 'on' : 'off'}
+              </span>
+            </button>
+            {soundtrackState === 'on' && (
+              <label className="volume-control">
+                <span>volume</span>
+                <input
+                  type="range"
+                  min="0"
+                  max="1"
+                  step="0.01"
+                  value={soundtrackVolume}
+                  onChange={(event) => setSoundtrackVolume(Number(event.target.value))}
+                />
+              </label>
+            )}
+          </section>
         </div>
       </header>
 

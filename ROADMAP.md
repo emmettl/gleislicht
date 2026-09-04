@@ -58,7 +58,8 @@ The national GTFS-RT feed supplies trip updates and alerts, not vehicle position
 - [ ] Replace the map-level selected-train follow with a terrain-backed corridor transition.
 - Time-of-day presets, speed control and a short looping “director mode.”
 - Authored palettes and camera behaviours for plateau, lake and Alpine routes.
-- Optional spatial audio derived from speed, tunnel state and terrain—never autoplayed.
+- [x] Add three opt-in Driftbox cues with adaptive crossfades between network, hub and journey modes.
+- Extend the score with spatial details derived from speed, tunnel state and terrain—never autoplayed.
 
 **Exit:** viewers can explore deliberately or let Gleislicht compose a journey for them.
 

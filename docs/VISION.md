@@ -16,6 +16,7 @@ The experience should work at two scales:
 - **Legible provenance.** Planned, estimated and genuinely observed information must never be visually conflated. Synthetic or missing data is labelled.
 - **From atlas to window seat.** Transitions between network, corridor and train views are continuous enough to preserve a sense of place.
 - **A visual instrument.** Time, camera and layers can be played. The interface should feel closer to a synthesiser display than a transport planner.
+- **A score, not background music.** Each scale has its own composed electronic cue; transitions between map, hub and journey are musical continuations of the same world. Sound remains opt-in.
 - **Runs beautifully on an ordinary laptop.** Progressive detail, compact preprocessed data and measured GPU budgets matter more than maximal fidelity.
 
 ## Visual thesis
@@ -50,4 +51,3 @@ Terrain should be derived from swisstopo's swissALTI3D elevation model and shipp
 - A typical laptop holds a smooth frame rate with the representative service count.
 - Data age, source and interpolation status are understandable without breaking the atmosphere.
 - A one-minute screen recording is interesting even with no narration.
-

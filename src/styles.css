@@ -138,6 +138,138 @@ h1 {
   text-align: right;
 }
 
+.masthead-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 14px;
+}
+
+.soundtrack-control {
+  width: 210px;
+  font-family: 'DM Mono', ui-monospace, monospace;
+}
+
+.soundtrack-control > button {
+  width: 100%;
+  min-height: 46px;
+  padding: 7px 10px;
+  border-color: rgba(193, 204, 255, 0.16);
+  background: rgba(7, 7, 22, 0.48);
+}
+
+.soundtrack-control > button:disabled {
+  cursor: progress;
+}
+
+.soundtrack-control > button[aria-pressed='true'] {
+  border-color: rgba(141, 250, 255, 0.4);
+  background: rgba(14, 18, 43, 0.7);
+  box-shadow: inset 0 -1px 0 rgba(141, 250, 255, 0.42), 0 0 20px rgba(141, 250, 255, 0.06);
+}
+
+.sound-bars {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  width: 18px;
+  height: 20px;
+}
+
+.sound-bars i {
+  width: 2px;
+  height: 5px;
+  background: var(--muted);
+  box-shadow: 0 0 7px transparent;
+}
+
+.sound-bars i:nth-child(2) {
+  height: 12px;
+}
+
+.sound-bars i:nth-child(3) {
+  height: 8px;
+}
+
+.soundtrack-control.is-on .sound-bars i {
+  background: var(--cyan);
+  box-shadow: 0 0 7px rgba(141, 250, 255, 0.72);
+  animation: sound-bar 900ms ease-in-out infinite alternate;
+}
+
+.soundtrack-control.is-on .sound-bars i:nth-child(2) {
+  animation-delay: -600ms;
+}
+
+.soundtrack-control.is-on .sound-bars i:nth-child(3) {
+  animation-delay: -300ms;
+}
+
+.soundtrack-control.is-on .sound-bars i:nth-child(4) {
+  animation-delay: -750ms;
+}
+
+.sound-copy {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  text-transform: uppercase;
+}
+
+.sound-copy small {
+  color: rgba(229, 231, 255, 0.4);
+  font-size: 0.5rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+}
+
+.sound-copy strong {
+  overflow: hidden;
+  max-width: 128px;
+  color: var(--ink);
+  font-size: 0.66rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sound-state {
+  color: rgba(229, 231, 255, 0.42);
+  font-size: 0.51rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.soundtrack-control.is-on .sound-state {
+  color: var(--pink);
+}
+
+.volume-control {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 9px;
+  align-items: center;
+  padding: 6px 10px 2px;
+  color: rgba(229, 231, 255, 0.42);
+  font-size: 0.5rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.volume-control input[type='range'] {
+  height: 14px;
+}
+
+.volume-control input[type='range']::-webkit-slider-thumb {
+  width: 8px;
+  height: 8px;
+  margin-top: -3.5px;
+  border-width: 1px;
+}
+
 .coordinate {
   grid-column: 1 / -1;
 }
@@ -874,6 +1006,11 @@ footer {
   100% { box-shadow: 0 0 0 0 rgba(255, 94, 219, 0); }
 }
 
+@keyframes sound-bar {
+  from { transform: scaleY(0.42); }
+  to { transform: scaleY(1); }
+}
+
 @media (max-width: 700px) {
   .masthead {
     align-items: flex-start;
@@ -881,6 +1018,33 @@ footer {
 
   .study-meta {
     max-width: 125px;
+  }
+
+  .masthead-meta {
+    gap: 10px;
+  }
+
+  .soundtrack-control {
+    width: 154px;
+  }
+
+  .soundtrack-control > button {
+    min-height: 40px;
+    padding: 5px 7px;
+  }
+
+  .sound-copy small {
+    display: none;
+  }
+
+  .sound-copy strong {
+    max-width: 84px;
+    font-size: 0.58rem;
+  }
+
+  .volume-control {
+    padding-right: 5px;
+    padding-left: 5px;
   }
 
   .coordinate {
@@ -962,7 +1126,8 @@ footer {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .pulse {
+  .pulse,
+  .soundtrack-control.is-on .sound-bars i {
     animation: none;
   }
 
