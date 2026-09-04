@@ -66,6 +66,8 @@ interface NationalNetworkSceneProps {
 
 type ProjectedStop = readonly [x: number, y: number, z: number]
 
+const STATION_SURFACE_Y = 0.035
+
 interface NetworkProjection {
   readonly centreLongitude: number
   readonly centreLatitude: number
@@ -270,7 +272,7 @@ function RailGraph({
           subdued={subdued}
         />
       )}
-      <points geometry={stationGeometry} position={[0, 0.035, 0]}>
+      <points geometry={stationGeometry} position={[0, STATION_SURFACE_Y, 0]}>
         <pointsMaterial
           color="#a18cff"
           size={0.065}
@@ -479,6 +481,7 @@ interface StationLabelDatum {
 interface StationLabelTexture {
   readonly texture: THREE.CanvasTexture
   readonly aspect: number
+  readonly anchorX: number
 }
 
 function stationLabelTexture(name: string): StationLabelTexture {
@@ -515,7 +518,11 @@ function stationLabelTexture(name: string): StationLabelTexture {
   texture.colorSpace = THREE.SRGBColorSpace
   texture.minFilter = THREE.LinearFilter
   texture.generateMipmaps = false
-  return { texture, aspect: canvas.width / canvas.height }
+  return {
+    texture,
+    aspect: canvas.width / canvas.height,
+    anchorX: 31 / canvas.width,
+  }
 }
 
 function StationLabels({
@@ -564,7 +571,7 @@ function StationLabels({
       return {
         station,
         displayName: stationLabelText(station.name, cameraFraming),
-        position: new THREE.Vector3(centre.x, 0.48, centre.z),
+        position: new THREE.Vector3(centre.x, STATION_SURFACE_Y, centre.z),
         rank: ranked.indexOf(station),
         emphasised:
           station.name === selectedStation?.name || routeStationNames.has(station.name),
@@ -639,8 +646,8 @@ function StationLabels({
       const label = labels[candidate.index]
       const width = THREE.MathUtils.clamp(label.displayName.length * 7 + 24, 62, 190)
       const box = {
-        left: candidate.x - width / 2,
-        right: candidate.x + width / 2,
+        left: candidate.x - 10,
+        right: candidate.x + width - 10,
         top: candidate.y - 11,
         bottom: candidate.y + 11,
       }
@@ -666,6 +673,7 @@ function StationLabels({
       visibleTextureNames.add(label.station.name)
       sprite.visible = true
       sprite.position.copy(label.position)
+      sprite.center.set(textureEntry.anchorX, 0.5)
       sprite.scale.set(textureEntry.aspect * worldHeight, worldHeight, 1)
       const material = sprite.material as THREE.SpriteMaterial
       if (material.map !== textureEntry.texture) {
