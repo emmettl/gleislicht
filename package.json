@@ -13,6 +13,7 @@
     "test:watch": "vitest",
     "data:boundary": "node scripts/ingest-boundary.mjs",
     "data:gtfs": "node scripts/ingest-gtfs.mjs",
+    "data:day": "node scripts/ingest-gtfs.mjs --window-start 00:00 --window-end 24:00 --output public/data/swiss-rail-day.json --hub-output none",
     "data:zurich": "node scripts/ingest-gtfs.mjs --modes all --bounds 8.45,47.32,8.63,47.44 --output public/data/zurich-city-morning.json --hub-output none",
     "preview": "vite preview"
   },

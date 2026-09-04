@@ -23,7 +23,7 @@ This is an iterative art-and-data project. Each stage should end in a coherent v
 - [x] Frame the network with a simplified, luminous swissBOUNDARIES3D national outline.
 - [ ] Replace straight stop-to-stop segments with matched rail geometry; the source feed has no `shapes.txt`.
 - [x] Add a compact full-day artifact for the four hub pulse studies.
-- [ ] Extend the national network itself from the two-hour study to a compact full service day.
+- [x] Add a separately loaded full service-day national study while preserving the fast morning load.
 
 **Exit:** thousands of scheduled movements form a recognisable, scrubbable national rail network.
 

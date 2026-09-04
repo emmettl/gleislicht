@@ -61,6 +61,7 @@ import { foldSearchText } from './search-text.ts'
 type View = 'network' | 'hub' | 'journey'
 type SoundtrackState = 'off' | 'starting' | 'on' | 'error'
 type NetworkStudy = 'national' | 'zurich-city'
+type NationalTimeRange = 'morning' | 'day'
 type HubStudy = 'pulse' | 'station'
 
 const SOUNDTRACK_TITLES: Record<SoundtrackMode, string> = {
@@ -101,17 +102,16 @@ function formatTimelineBoundary(value: number): string {
   return value === 24 * 3600 ? '24:00' : formatServiceTime(value)
 }
 
-function matchesTrain(
+function trainSearchText(
   train: NetworkTrain,
-  query: string,
   network: NetworkSnapshot,
-): boolean {
+): string {
   const stopNames = train.stops.map(
     ([stopIndex]) => network.stops[stopIndex]?.[2] ?? '',
   )
   return foldSearchText(
     [train.route, train.shortName, train.headsign, ...stopNames].join(' '),
-  ).includes(query)
+  )
 }
 
 export function App() {
@@ -122,7 +122,12 @@ export function App() {
   const [networkTime, setNetworkTime] = useState(7 * 3600 + 45 * 60)
   const [hubTime, setHubTime] = useState(7 * 3600 + 45 * 60)
   const [networkStudy, setNetworkStudy] = useState<NetworkStudy>('national')
+  const [nationalTimeRange, setNationalTimeRange] =
+    useState<NationalTimeRange>('morning')
   const [nationalNetwork, setNationalNetwork] = useState<NetworkSnapshot>()
+  const [nationalDayNetwork, setNationalDayNetwork] = useState<NetworkSnapshot>()
+  const [nationalDayLoading, setNationalDayLoading] = useState(false)
+  const [nationalDayError, setNationalDayError] = useState(false)
   const [zurichCityNetwork, setZurichCityNetwork] = useState<NetworkSnapshot>()
   const [regionalNetworkLoading, setRegionalNetworkLoading] = useState(false)
   const [regionalNetworkError, setRegionalNetworkError] = useState(false)
@@ -155,7 +160,9 @@ export function App() {
   const network =
     networkStudy === 'zurich-city'
       ? (zurichCityNetwork ?? nationalNetwork)
-      : nationalNetwork
+      : nationalTimeRange === 'day'
+        ? (nationalDayNetwork ?? nationalNetwork)
+        : nationalNetwork
 
   const soundtrackMode: SoundtrackMode =
     view === 'hub' ? 'hub' : view === 'journey' || selectedTrainId ? 'journey' : 'network'
@@ -183,6 +190,14 @@ export function App() {
   )
   const routeIndex = useMemo(
     () => (network ? buildRouteIndex(network) : []),
+    [network],
+  )
+  const trainSearchDocuments = useMemo(
+    () =>
+      network?.trains.map((train) => ({
+        train,
+        text: trainSearchText(train, network),
+      })) ?? [],
     [network],
   )
   const selectedStation = useMemo(
@@ -220,8 +235,9 @@ export function App() {
   const searchResults = useMemo(() => {
     const query = foldSearchText(searchQuery)
     if (!network || query.length < 1) return []
-    return network.trains
-      .filter((train) => matchesTrain(train, query, network))
+    return trainSearchDocuments
+      .filter((document) => document.text.includes(query))
+      .map((document) => document.train)
       .sort((first, second) => {
         const firstActive = first.start <= networkTime && first.end >= networkTime ? 0 : 1
         const secondActive = second.start <= networkTime && second.end >= networkTime ? 0 : 1
@@ -232,7 +248,7 @@ export function App() {
         )
       })
       .slice(0, 8)
-  }, [language, network, networkTime, searchQuery])
+  }, [language, network, networkTime, searchQuery, trainSearchDocuments])
   const stationSearchResults = useMemo(() => {
     const query = foldSearchText(searchQuery)
     if (!query) return []
@@ -352,19 +368,35 @@ export function App() {
   )
 
   const selectNetworkStudy = useCallback(
-    (study: NetworkStudy) => {
+    (study: NetworkStudy, timeRange: NationalTimeRange = nationalTimeRange) => {
       setNetworkStudy(study)
       setView('network')
       setSelectedCategory(undefined)
       releaseSelection()
+      if (study === 'national') setNationalTimeRange(timeRange)
       if (study === 'zurich-city' && !zurichCityNetwork) {
         setRegionalNetworkLoading(true)
         setRegionalNetworkError(false)
       }
-      const snapshot = study === 'zurich-city' ? zurichCityNetwork : nationalNetwork
+      if (study === 'national' && timeRange === 'day' && !nationalDayNetwork) {
+        setNationalDayLoading(true)
+        setNationalDayError(false)
+      }
+      const snapshot =
+        study === 'zurich-city'
+          ? zurichCityNetwork
+          : timeRange === 'day'
+            ? nationalDayNetwork
+            : nationalNetwork
       if (snapshot) setNetworkTime(snapshot.metadata.focusTime)
     },
-    [nationalNetwork, releaseSelection, zurichCityNetwork],
+    [
+      nationalDayNetwork,
+      nationalNetwork,
+      nationalTimeRange,
+      releaseSelection,
+      zurichCityNetwork,
+    ],
   )
 
   const handleContextAction = useCallback(() => {
@@ -465,6 +497,38 @@ export function App() {
   }, [])
 
   useEffect(() => {
+    if (
+      networkStudy !== 'national' ||
+      nationalTimeRange !== 'day' ||
+      nationalDayNetwork
+    ) {
+      return
+    }
+    const controller = new AbortController()
+    fetch(`${import.meta.env.BASE_URL}data/swiss-rail-day.json`, {
+      signal: controller.signal,
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Full-day GTFS snapshot returned ${response.status}`)
+        }
+        return response.json() as Promise<NetworkSnapshot>
+      })
+      .then((snapshot) => {
+        setNationalDayNetwork(snapshot)
+        setNetworkTime(snapshot.metadata.focusTime)
+      })
+      .catch((error: unknown) => {
+        if (error instanceof DOMException && error.name === 'AbortError') return
+        setNationalDayError(true)
+      })
+      .finally(() => {
+        if (!controller.signal.aborted) setNationalDayLoading(false)
+      })
+    return () => controller.abort()
+  }, [nationalDayNetwork, nationalTimeRange, networkStudy])
+
+  useEffect(() => {
     if (networkStudy !== 'zurich-city' || zurichCityNetwork) return
     const controller = new AbortController()
     fetch(`${import.meta.env.BASE_URL}data/zurich-city-morning.json`, {
@@ -532,6 +596,8 @@ export function App() {
   const isNetwork = view === 'network'
   const isHub = view === 'hub'
   const isTimetable = isNetwork || isHub
+  const isNationalDay =
+    networkStudy === 'national' && nationalTimeRange === 'day'
   const timeline = isHub ? (hubDay?.metadata ?? network?.metadata) : network?.metadata
   const timelineTime = isHub ? hubTime : networkTime
   const timelineReady = isTimetable && timeline
@@ -798,12 +864,25 @@ export function App() {
               <span className="sr-only">{text.scale}</span>
               <button
                 type="button"
-                title={text.swissNetwork}
-                aria-label={text.showSwissNetwork}
-                aria-pressed={networkStudy === 'national'}
-                onClick={() => selectNetworkStudy('national')}
+                title={text.swissMorningNetwork}
+                aria-label={text.showSwissMorningNetwork}
+                aria-pressed={
+                  networkStudy === 'national' && nationalTimeRange === 'morning'
+                }
+                onClick={() => selectNetworkStudy('national', 'morning')}
               >
                 CH
+              </button>
+              <button
+                type="button"
+                title={text.swissDayNetwork}
+                aria-label={text.showSwissDayNetwork}
+                aria-pressed={
+                  networkStudy === 'national' && nationalTimeRange === 'day'
+                }
+                onClick={() => selectNetworkStudy('national', 'day')}
+              >
+                24H
               </button>
               <button
                 type="button"
@@ -915,8 +994,10 @@ export function App() {
                     </button>
                   )
                 })}
-              {!stationSearchResults.length && !searchResults.length && (
-                <p>{text.noResults}</p>
+              {!stationSearchResults.length &&
+                !routeSearchResults.length &&
+                !searchResults.length && (
+                <p>{isNationalDay ? text.noResultsDay : text.noResults}</p>
               )}
             </div>
           )}
@@ -1050,13 +1131,14 @@ export function App() {
             </span>
           </div>
           <p className="between">
-            {selectedRoute.headsigns.slice(0, 2).join(' ↔ ') || text.morningStudy}
+            {selectedRoute.headsigns.slice(0, 2).join(' ↔ ') ||
+              (isNationalDay ? text.fullDayStudy : text.morningStudy)}
           </p>
           <div className="metric-grid">
             <div>
               <span>{text.trips}</span>
               <strong>{numberFormat.format(selectedRoute.trainIds.length)}</strong>
-              <small>2h</small>
+              <small>{isNationalDay ? '24h' : '2h'}</small>
             </div>
             <div>
               <span>{text.stops}</span>
@@ -1075,7 +1157,8 @@ export function App() {
             <span className="service">{selectedStation.name}</span>
           </div>
           <p className="between">
-            {text.allScheduledPaths} <span>/</span> {text.morningStudy}
+            {text.allScheduledPaths} <span>/</span>{' '}
+            {isNationalDay ? text.fullDayStudy : text.morningStudy}
           </p>
           <div className="metric-grid">
             <div>
@@ -1086,7 +1169,7 @@ export function App() {
             <div>
               <span>{text.calls}</span>
               <strong>{selectedStation.trainIds.length}</strong>
-              <small>2h</small>
+              <small>{isNationalDay ? '24h' : '2h'}</small>
             </div>
           </div>
         </section>
@@ -1100,7 +1183,11 @@ export function App() {
           }
         >
           <div className="network-count-row">
-            <strong>{network ? numberFormat.format(activeTrainCount) : '—'}</strong>
+            <strong>
+              {network && (!isNationalDay || nationalDayNetwork)
+                ? numberFormat.format(activeTrainCount)
+                : '—'}
+            </strong>
             <span>
               {networkStudy === 'national'
                 ? text.trainsInMotion
@@ -1114,15 +1201,25 @@ export function App() {
                 : regionalNetworkLoading
                   ? text.loadingCity
                   : text.cityModes
-              : dataError
-                ? text.scheduleUnavailable
-                : text.scheduledRail}
+              : isNationalDay
+                ? nationalDayError
+                  ? text.dayScheduleUnavailable
+                  : nationalDayLoading
+                    ? text.loadingDay
+                    : text.scheduledRailDay
+                : dataError
+                  ? text.scheduleUnavailable
+                  : text.scheduledRail}
           </p>
           <div className="metric-grid">
             <div>
               <span>{text.trips}</span>
-              <strong>{network ? numberFormat.format(network.trains.length) : '—'}</strong>
-              <small>2h</small>
+              <strong>
+                {network && (!isNationalDay || nationalDayNetwork)
+                  ? numberFormat.format(network.trains.length)
+                  : '—'}
+              </strong>
+              <small>{isNationalDay ? '24h' : '2h'}</small>
             </div>
             <div>
               <span>{text.feed}</span>

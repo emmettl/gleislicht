@@ -15,6 +15,11 @@ import {
   type StationIndexEntry,
 } from '../domain/network.ts'
 import {
+  buildTrainTimeIndex,
+  trainsNearTime,
+  type TrainTimeIndex,
+} from '../domain/train-time-index.ts'
+import {
   MAX_STATION_LABELS,
   rankStationsForLabels,
   stationLabelCameraHeight,
@@ -32,6 +37,7 @@ import {
 import { edgeTrafficWeights } from './traffic-weights.ts'
 import {
   VEHICLE_TRAIL_SEGMENTS,
+  VEHICLE_TRAIL_STEP_SECONDS,
   vehicleTrailSampleTimes,
 } from './vehicle-trails.ts'
 import {
@@ -987,8 +993,10 @@ function TrainLabels({
   isPlaying,
   time,
   playbackRate,
+  trainTimeIndex,
 }: NationalNetworkSceneProps & {
   readonly projectedStops: readonly ProjectedStop[]
+  readonly trainTimeIndex: TrainTimeIndex
 }) {
   const { camera, size } = useThree()
   const sprites = useRef<Array<THREE.Sprite | null>>([])
@@ -1047,7 +1055,7 @@ function TrainLabels({
       retained: boolean
     }> = []
 
-    for (const train of snapshot.trains) {
+    for (const train of trainsNearTime(trainTimeIndex, localTime.current)) {
       const selected = train.id === selectedTrain?.id
       if (selectedTrain && !selected) continue
       if (selectedRoute && !selectedRouteTrainIds.has(train.id)) continue
@@ -1292,8 +1300,10 @@ function TrainSwarm({
   playbackRate,
   selectedCategory,
   selectedStation,
+  trainTimeIndex,
 }: NationalNetworkSceneProps & {
   readonly projectedStops: readonly ProjectedStop[]
+  readonly trainTimeIndex: TrainTimeIndex
 }) {
   const points = useRef<THREE.Points>(null)
   const glow = useRef<THREE.Points>(null)
@@ -1389,7 +1399,7 @@ function TrainSwarm({
       tram: 0,
       bus: 0,
     }
-    for (const train of snapshot.trains) {
+    for (const train of trainsNearTime(trainTimeIndex, localTime.current)) {
       const position = projectedTrainPosition(train, localTime.current, projectedStops)
       if (!position) continue
       const markerKind = vehicleMarkerKind(train.category)
@@ -1526,8 +1536,10 @@ function VehicleTrails({
   isPlaying,
   time,
   playbackRate,
+  trainTimeIndex,
 }: NationalNetworkSceneProps & {
   readonly projectedStops: readonly ProjectedStop[]
+  readonly trainTimeIndex: TrainTimeIndex
 }) {
   const localTime = useRef(time)
   const lastUpdate = useRef(-1)
@@ -1604,7 +1616,7 @@ function VehicleTrails({
       (geometry) => geometry.getAttribute('color').array as Float32Array,
     )
 
-    for (const train of snapshot.trains) {
+    for (const train of trainsNearTime(trainTimeIndex, localTime.current)) {
       if (selectedTrain && train.id !== selectedTrain.id) continue
       if (selectedRoute && !selectedRouteTrainIds.has(train.id)) continue
       if (selectedCategory && train.category !== selectedCategory) continue
@@ -1863,6 +1875,16 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
     return new THREE.Vector3(x, 0, z)
   }, [projection, props.snapshot])
   const hasContext = Boolean(props.contextSnapshot && contextProjectedStops)
+  const trainTimeIndex = useMemo(
+    () =>
+      buildTrainTimeIndex(
+        props.snapshot.trains,
+        props.snapshot.metadata.windowStart,
+        props.snapshot.metadata.windowEnd,
+        VEHICLE_TRAIL_SEGMENTS * VEHICLE_TRAIL_STEP_SECONDS,
+      ),
+    [props.snapshot],
+  )
 
   return (
     <>
@@ -1925,9 +1947,21 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
           selectedCategory={props.selectedCategory}
         />
       )}
-      <VehicleTrails {...props} projectedStops={projectedStops} />
-      <TrainSwarm {...props} projectedStops={projectedStops} />
-      <TrainLabels {...props} projectedStops={projectedStops} />
+      <VehicleTrails
+        {...props}
+        projectedStops={projectedStops}
+        trainTimeIndex={trainTimeIndex}
+      />
+      <TrainSwarm
+        {...props}
+        projectedStops={projectedStops}
+        trainTimeIndex={trainTimeIndex}
+      />
+      <TrainLabels
+        {...props}
+        projectedStops={projectedStops}
+        trainTimeIndex={trainTimeIndex}
+      />
       <StationLabels
         stations={props.stations}
         snapshot={props.snapshot}

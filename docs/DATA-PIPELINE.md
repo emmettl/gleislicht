@@ -24,6 +24,17 @@ The command writes two complementary artifacts: the compact two-hour national ne
 5. emits only national trips overlapping the requested time window; and
 6. emits all calls during the civil day at the four hub-study stations.
 
+The national 24-hour study is generated separately from the same feed release:
+
+```bash
+npm run data:day -- \
+  --archive /path/to/GTFS_FP2026_YYYYMMDD.zip \
+  --date 2026-09-04 \
+  --focus 07:45
+```
+
+This writes `public/data/swiss-rail-day.json`. The browser does not request it during the initial morning view; it is fetched only when the viewer selects **24H**. The renderer uses a coarse time index so the full-day file can remain searchable while each animation frame considers only services near the current time.
+
 The same streaming ingester can create a separate multimodal regional artifact. The committed Zürich city study is regenerated from the same national archive with:
 
 ```bash
