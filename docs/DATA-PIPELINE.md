@@ -119,10 +119,21 @@ npm run data:boundary -- --source /path/to/swissBOUNDARIES3D.gpkg
 
 The ingester selects the Swiss national-area feature, converts its EPSG:2056 coordinates to WGS84, preserves interior boundary rings, and applies a conservative metre-based simplification for WebGL. The resulting `public/data/swiss-boundary.json` is about 10 KB; it records the source edition, transformation and simplification tolerance alongside the coordinates. The UI links the required `© swisstopo` attribution directly to the product page.
 
+## Lakes
+
+Lake surfaces come from the federal Vector25 lake layer exposed by the GeoAdmin API. The source covers natural and artificial water bodies, includes the complete shared border lakes and remains the federal reference hydrographic network. Regenerate the web artifact directly from the API with:
+
+```bash
+npm run data:lakes
+```
+
+For a repeatable offline build, save the GeoAdmin `identify` response and pass it with `--source`. The ingester selects named water bodies of at least 0.1 km², preserves multipart polygons and islands, then simplifies shorelines to 60 metres. The committed artifact contains 160 lake features and 5,357 shoreline points in 114 KB of JSON, or about 38 KB compressed. It is loaded independently from GTFS and rendered below every national and regional transport layer. The UI links `© FOEN, swisstopo` attribution to the [Swiss hydrographic network](https://www.bafu.admin.ch/en/the-swiss-hydrographic-network).
+
 ## Reproducibility rules
 
 - The source ZIP is temporary build input and must not be committed.
 - The source swissBOUNDARIES3D GeoPackage is temporary build input and must not be committed.
+- A saved GeoAdmin lake response is temporary build input and must not be committed.
 - The output records feed version, service date, time window, publisher and model.
 - Refreshes are reviewed as data changes, not mixed into unrelated visual edits.
 - Realtime updates must be paired with their corresponding static feed version.

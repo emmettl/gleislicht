@@ -42,6 +42,7 @@ import {
   type StationIndexEntry,
 } from './domain/network.ts'
 import type { SwissBoundary } from './domain/boundary.ts'
+import type { SwissLakes } from './domain/lakes.ts'
 import {
   LANGUAGE_LOCALES,
   resolveUiLanguage,
@@ -145,6 +146,7 @@ export function App() {
   const [regionalNetworkLoading, setRegionalNetworkLoading] = useState(false)
   const [regionalNetworkError, setRegionalNetworkError] = useState(false)
   const [boundary, setBoundary] = useState<SwissBoundary>()
+  const [lakes, setLakes] = useState<SwissLakes>()
   const [hubDay, setHubDay] = useState<HubDaySnapshot>()
   const [dataError, setDataError] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
@@ -566,6 +568,18 @@ export function App() {
         if (error instanceof DOMException && error.name === 'AbortError') return
         console.warn('Unable to load the Swiss national boundary', error)
       })
+    fetch(`${import.meta.env.BASE_URL}data/swiss-lakes.json`, {
+      signal: controller.signal,
+    })
+      .then((response) => {
+        if (!response.ok) throw new Error(`Lake snapshot returned ${response.status}`)
+        return response.json() as Promise<SwissLakes>
+      })
+      .then(setLakes)
+      .catch((error: unknown) => {
+        if (error instanceof DOMException && error.name === 'AbortError') return
+        console.warn('Unable to load the Swiss lake layer', error)
+      })
     return () => controller.abort()
   }, [])
 
@@ -757,6 +771,7 @@ export function App() {
         {isNetwork && network ? (
           <NationalNetworkScene
             boundary={boundary}
+            lakes={lakes}
             snapshot={network}
             referenceSnapshot={nationalNetwork ?? network}
             contextSnapshot={
@@ -1708,6 +1723,11 @@ export function App() {
             {isNetwork && networkStudy === 'national' && boundary && (
               <a href={boundary.metadata.productUrl} target="_blank" rel="noreferrer">
                 {text.border} · {boundary.metadata.attribution}
+              </a>
+            )}
+            {isNetwork && lakes && (
+              <a href={lakes.metadata.productUrl} target="_blank" rel="noreferrer">
+                {text.lakes} · {lakes.metadata.attribution}
               </a>
             )}
           </span>

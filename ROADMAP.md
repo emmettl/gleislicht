@@ -21,6 +21,7 @@ This is an iterative art-and-data project. Each stage should end in a coherent v
 - [x] Produce a compact morning artifact instead of shipping the 232 MB GTFS ZIP.
 - [x] Render the Friday morning window in a national view with a deterministic simulation clock.
 - [x] Frame the network with a simplified, luminous swissBOUNDARIES3D national outline.
+- [x] Ground the network with simplified federal lake polygons and luminous shorelines.
 - [ ] Replace straight stop-to-stop segments with matched rail geometry; the source feed has no `shapes.txt`.
 - [x] Add a compact full-day artifact for the four hub pulse studies.
 - [x] Add a separately loaded full service-day national study while preserving the fast morning load.
@@ -48,7 +49,7 @@ The measured corridor decision is recorded in [docs/POSTBUS-CORRIDOR.md](./docs/
 - Establish LV95/WGS84/WebGL coordinate transforms and a single distance model.
 - Build an offline swissALTI3D processing path: crop, resample, quantise and tile.
 - Create corridor-level terrain LODs around selected rail shapes.
-- Add understated water, major station lights and tunnel-aware line treatment.
+- Add terrain-integrated water depth, major station lights and tunnel-aware line treatment.
 - Show mandatory `© swisstopo` attribution wherever derived terrain appears.
 
 **Exit:** Zürich–Chur and one Alpine corridor run over recognisable real terrain on laptop and mobile GPUs.
@@ -98,6 +99,7 @@ The national GTFS-RT feed supplies trip updates and alerts, not vehicle position
 - [Swiss GTFS Realtime cookbook](https://opentransportdata.swiss/en/cookbook/realtime-prediction-cookbook/gtfs-rt/) and paired GTFS-RT dataset
 - [swissALTI3D](https://www.swisstopo.admin.ch/en/height-model-swissalti3d) plus the applicable [open-geodata terms](https://www.swisstopo.admin.ch/en/terms-of-use-free-geodata-and-geoservices)
 - [swissBOUNDARIES3D](https://www.swisstopo.admin.ch/en/landscape-model-swissboundaries3d) for the national outline
+- [FOEN Swiss hydrographic network](https://www.bafu.admin.ch/en/the-swiss-hydrographic-network) for named lake surfaces
 - [ZVV/VBZ tram and bus GTFS](https://data.stadt-zuerich.ch/dataset/vbz_fahrplandaten_gtfs) for shape-aware Zürich regional geometry
 - [ZVV network plans](https://www.zvv.ch/en/timetable-and-information/network.html) for regional information hierarchy, not as geographic source data
 - [TPG line geometry from SITG](https://sitg.ge.ch/donnees/tpg-lignes) for Genève tram, trolleybus and bus paths, including cross-border branches

@@ -5,6 +5,7 @@ import type {
   BoundaryCoordinate,
   SwissBoundary,
 } from '../domain/boundary.ts'
+import type { SwissLakes } from '../domain/lakes.ts'
 import {
   positionForTrain,
   SERVICE_COLORS,
@@ -65,6 +66,7 @@ export interface MapCameraCommand {
 
 interface NationalNetworkSceneProps {
   readonly boundary?: SwissBoundary
+  readonly lakes?: SwissLakes
   readonly snapshot: NetworkSnapshot
   readonly referenceSnapshot: NetworkSnapshot
   readonly contextSnapshot?: NetworkSnapshot
@@ -211,6 +213,115 @@ function NationalGround() {
         <planeGeometry args={[66, 56, 64, 48]} />
         <meshBasicMaterial color="#424b98" transparent opacity={0.1} wireframe />
       </mesh>
+    </group>
+  )
+}
+
+function LakeLayer({
+  lakes,
+  projection,
+  subdued,
+}: {
+  readonly lakes: SwissLakes
+  readonly projection: NetworkProjection
+  readonly subdued: boolean
+}) {
+  const geometry = useMemo(() => {
+    const shapes: THREE.Shape[] = []
+    const shorelinePositions: number[] = []
+
+    for (const lake of lakes.lakes) {
+      for (const polygon of lake.polygons) {
+        const [outerRing, ...holes] = polygon
+        if (!outerRing || outerRing.length < 4) continue
+        const outer = outerRing.map((coordinate) => {
+          const [x, , z] = projectCoordinate(coordinate, projection)
+          return new THREE.Vector2(x, z)
+        })
+        const shape = new THREE.Shape(outer)
+        for (const holeRing of holes) {
+          const hole = holeRing.map((coordinate) => {
+            const [x, , z] = projectCoordinate(coordinate, projection)
+            return new THREE.Vector2(x, z)
+          })
+          if (hole.length >= 4) shape.holes.push(new THREE.Path(hole))
+        }
+        shapes.push(shape)
+
+        for (const ring of polygon) {
+          const projected = ring.map((coordinate) =>
+            projectCoordinate(coordinate, projection),
+          )
+          if (projected.length < 2) continue
+          const isClosed =
+            projected[0][0] === projected.at(-1)?.[0] &&
+            projected[0][2] === projected.at(-1)?.[2]
+          appendLineSegments(
+            shorelinePositions,
+            isClosed ? projected : [...projected, projected[0]],
+            0,
+          )
+        }
+      }
+    }
+
+    const fill = new THREE.ShapeGeometry(shapes)
+    fill.rotateX(Math.PI / 2)
+    const shoreline = new THREE.BufferGeometry()
+    shoreline.setAttribute(
+      'position',
+      new THREE.Float32BufferAttribute(shorelinePositions, 3),
+    )
+    return { fill, shoreline }
+  }, [lakes.lakes, projection])
+
+  useEffect(
+    () => () => {
+      geometry.fill.dispose()
+      geometry.shoreline.dispose()
+    },
+    [geometry],
+  )
+
+  return (
+    <group position={[0, -0.072, 0]}>
+      <mesh geometry={geometry.fill} renderOrder={1}>
+        <meshBasicMaterial
+          color="#08233b"
+          transparent
+          opacity={subdued ? 0.66 : 0.9}
+          depthWrite={false}
+          side={THREE.DoubleSide}
+          fog={false}
+        />
+      </mesh>
+      <mesh geometry={geometry.fill} position={[0, 0.007, 0]} renderOrder={1}>
+        <meshBasicMaterial
+          color="#20a9cb"
+          transparent
+          opacity={subdued ? 0.07 : 0.13}
+          blending={THREE.AdditiveBlending}
+          depthWrite={false}
+          side={THREE.DoubleSide}
+          toneMapped={false}
+          fog={false}
+        />
+      </mesh>
+      <lineSegments
+        geometry={geometry.shoreline}
+        position={[0, 0.014, 0]}
+        renderOrder={2}
+      >
+        <lineBasicMaterial
+          color="#54dff7"
+          transparent
+          opacity={subdued ? 0.13 : 0.31}
+          blending={THREE.AdditiveBlending}
+          depthWrite={false}
+          toneMapped={false}
+          fog={false}
+        />
+      </lineSegments>
     </group>
   )
 }
@@ -2115,6 +2226,18 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
       <fog attach="fog" args={['#050410', 34, 69]} />
       <ambientLight intensity={0.85} color="#7d87ff" />
       <NationalGround />
+      {props.lakes && (
+        <LakeLayer
+          lakes={props.lakes}
+          projection={projection}
+          subdued={Boolean(
+            props.selectedTrain ||
+              props.selectedRoute ||
+              props.selectedStation ||
+              props.selectedCategory
+          )}
+        />
+      )}
       {props.boundary && (
         <CountryBorder
           boundary={props.boundary}
