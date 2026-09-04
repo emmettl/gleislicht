@@ -17,6 +17,7 @@ interface HubPulseSceneProps {
   readonly time: number
   readonly onTime: (time: number) => void
   readonly playbackRate: number
+  readonly selectedCategory?: ServiceCategory
 }
 
 const pulseHorizon = 15 * 60
@@ -90,8 +91,10 @@ function OrbitalRings() {
 
 function CorridorSpokes({
   calls,
+  selectedCategory,
 }: {
   readonly calls: readonly HubCall[]
+  readonly selectedCategory?: ServiceCategory
 }) {
   const geometries = useMemo(() => {
     const seen = new Set<string>()
@@ -112,13 +115,14 @@ function CorridorSpokes({
         const material = new THREE.LineBasicMaterial({
           color: SERVICE_COLORS[call.train.category],
           transparent: true,
-          opacity: 0.12,
+          opacity:
+            selectedCategory && selectedCategory !== call.train.category ? 0.025 : 0.12,
           blending: THREE.AdditiveBlending,
         })
         return [{ key, line: new THREE.Line(geometry, material) }]
       })
     })
-  }, [calls])
+  }, [calls, selectedCategory])
 
   useEffect(
     () => () =>
@@ -169,6 +173,7 @@ function HubTraffic({
   onTime,
   timeline,
   playbackRate,
+  selectedCategory,
 }: Omit<HubPulseSceneProps, 'hub'>) {
   const points = useRef<THREE.Points>(null)
   const glow = useRef<THREE.Points>(null)
@@ -245,9 +250,11 @@ function HubTraffic({
       positionArray[offset + 1] = dwelling ? 0.42 : 0.16 + Math.sin(index) * 0.05
       positionArray[offset + 2] = Math.sin(direction) * radius
       const color = palette[call.train.category] ?? palette.other
-      colorArray[offset] = color.r
-      colorArray[offset + 1] = color.g
-      colorArray[offset + 2] = color.b
+      const intensity =
+        selectedCategory && selectedCategory !== call.train.category ? 0.07 : 1
+      colorArray[offset] = color.r * intensity
+      colorArray[offset + 1] = color.g * intensity
+      colorArray[offset + 2] = color.b * intensity
       active += 1
     })
 
@@ -299,7 +306,10 @@ function HubWorld(props: HubPulseSceneProps) {
         <meshBasicMaterial color="#272852" wireframe transparent opacity={0.09} />
       </mesh>
       <OrbitalRings />
-      <CorridorSpokes calls={props.calls} />
+      <CorridorSpokes
+        calls={props.calls}
+        selectedCategory={props.selectedCategory}
+      />
       <StationCore hub={props.hub} />
       <HubTraffic {...props} />
     </>

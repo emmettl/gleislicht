@@ -15,6 +15,7 @@ import {
   SERVICE_COLORS,
   type NetworkSnapshot,
   type NetworkTrain,
+  type ServiceCategory,
 } from './domain/network.ts'
 import { GleislichtScene } from './scene/GleislichtScene.tsx'
 import { HubPulseScene } from './scene/HubPulseScene.tsx'
@@ -72,6 +73,7 @@ export function App() {
     action: 'reset',
   })
   const [playbackRate, setPlaybackRate] = useState(120)
+  const [selectedCategory, setSelectedCategory] = useState<ServiceCategory>()
 
   const journeyPosition = useMemo(
     () => positionOnJourney(prototypeJourney, journeyProgress),
@@ -241,6 +243,7 @@ export function App() {
             onTime={handleNetworkTime}
             cameraCommand={mapCameraCommand}
             playbackRate={playbackRate}
+            selectedCategory={selectedCategory}
           />
         ) : isHub && network ? (
           <HubPulseScene
@@ -251,6 +254,7 @@ export function App() {
             time={hubTime}
             onTime={setHubTime}
             playbackRate={playbackRate}
+            selectedCategory={selectedCategory}
           />
         ) : (
           <GleislichtScene
@@ -492,7 +496,7 @@ export function App() {
         ) : isNetwork ? (
           <>
             <span>{selectedTrain ? 'scheduled follow' : 'GTFS schedule'}</span>
-            <span>{selectedTrain?.category ?? 'stop geometry'}</span>
+            <span>{selectedTrain?.category ?? selectedCategory ?? 'stop geometry'}</span>
           </>
         ) : (
           <>
@@ -534,13 +538,25 @@ export function App() {
       )}
 
       {isTimetable && !selectedTrain && (
-        <div className="service-legend" aria-label="Service colour legend">
+        <div
+          className={`service-legend${selectedCategory ? ' has-filter' : ''}`}
+          aria-label="Filter trains by service category"
+        >
           {SERVICE_CATEGORIES.filter((category) => category.id !== 'other').map(
             (category) => (
-              <span key={category.id}>
+              <button
+                key={category.id}
+                type="button"
+                aria-pressed={selectedCategory === category.id}
+                onClick={() =>
+                  setSelectedCategory((current) =>
+                    current === category.id ? undefined : category.id,
+                  )
+                }
+              >
                 <i style={{ backgroundColor: category.color }} />
                 {category.label}
-              </span>
+              </button>
             ),
           )}
         </div>

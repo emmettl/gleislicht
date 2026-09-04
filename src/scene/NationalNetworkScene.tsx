@@ -24,6 +24,7 @@ interface NationalNetworkSceneProps {
   readonly onTime: (time: number) => void
   readonly cameraCommand?: MapCameraCommand
   readonly playbackRate: number
+  readonly selectedCategory?: ServiceCategory
 }
 
 type ProjectedStop = readonly [x: number, y: number, z: number]
@@ -174,6 +175,7 @@ function TrainSwarm({
   time,
   onTime,
   playbackRate,
+  selectedCategory,
 }: NationalNetworkSceneProps & {
   readonly projectedStops: readonly ProjectedStop[]
 }) {
@@ -232,7 +234,13 @@ function TrainSwarm({
       const offset = active * 3
       mutablePositions.set(position, offset)
       const color = palette[train.category] ?? palette.other
-      const intensity = selectedTrain && selectedTrain.id !== train.id ? 0.11 : 1
+      const intensity = selectedTrain
+        ? selectedTrain.id === train.id
+          ? 1
+          : 0.11
+        : selectedCategory && selectedCategory !== train.category
+          ? 0.08
+          : 1
       mutableColors[offset] = color.r * intensity
       mutableColors[offset + 1] = color.g * intensity
       mutableColors[offset + 2] = color.b * intensity
@@ -258,7 +266,7 @@ function TrainSwarm({
           vertexColors
           size={0.72}
           transparent
-          opacity={selectedTrain ? 0.1 : 0.18}
+          opacity={selectedTrain || selectedCategory ? 0.12 : 0.18}
           depthWrite={false}
           blending={THREE.AdditiveBlending}
           sizeAttenuation

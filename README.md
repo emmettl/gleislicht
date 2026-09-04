@@ -24,6 +24,8 @@ Keyboard controls: `Space` pauses or resumes; `C` returns to or switches from th
 
 Search the national view by service, train number, origin, or destination. Selecting a result isolates its scheduled path and carries the camera down to follow it. Train lights are colour-coded by service class from international and InterCity through S-Bahn and regional services.
 
+Click a service category in the colour legend to highlight that fleet and dim the other trains; click the active category again to clear the filter. The same focus carries into the Takt hub view.
+
 The national map supports mouse-wheel or pinch zoom, pointer or touch drag to pan, and on-screen zoom/reset controls. A selected-train follow temporarily takes control of the camera; releasing it returns to the previous map position.
 
 Open **Takt hubs** to move between Zürich HB, Bern, Basel SBB and Genève across a continuous 24-hour schedule. Four tempo settings run from 1× to 64×, turning the clock-face timetable into a slow study or a rapid daily pulse. See [docs/HUB-STUDY.md](./docs/HUB-STUDY.md) for the visual model and the deliberately careful wording around Zürich's “busiest” status.
