@@ -52,6 +52,8 @@ The national GTFS-RT feed supplies trip updates and alerts, not vehicle position
 - [x] Add the first national → selected-train camera descent and route highlight.
 - [x] Search and select by train number, service, origin or destination.
 - [x] Colour-code motion by service class while preserving night-view legibility.
+- [x] Add a hub-scale Takt pulse for Zürich HB, Bern, Basel SBB and Genève.
+- [ ] Turn the first 15-minute orbit into an authored 60-minute Takt composition.
 - [ ] Replace the map-level selected-train follow with a terrain-backed corridor transition.
 - Time-of-day presets, speed control and a short looping “director mode.”
 - Authored palettes and camera behaviours for plateau, lake and Alpine routes.

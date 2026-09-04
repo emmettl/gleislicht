@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
+import { callsAtHub, callsNearTime, HUBS, nextHubCall, type HubId } from './domain/hub.ts'
 import { positionOnJourney, prototypeJourney } from './domain/journey.ts'
 import {
   formatServiceTime,
@@ -9,9 +10,10 @@ import {
   type NetworkTrain,
 } from './domain/network.ts'
 import { GleislichtScene } from './scene/GleislichtScene.tsx'
+import { HubPulseScene } from './scene/HubPulseScene.tsx'
 import { NationalNetworkScene } from './scene/NationalNetworkScene.tsx'
 
-type View = 'network' | 'journey'
+type View = 'network' | 'hub' | 'journey'
 
 const numberFormat = new Intl.NumberFormat('de-CH')
 
@@ -41,6 +43,7 @@ export function App() {
   const [searchQuery, setSearchQuery] = useState('')
   const [searchOpen, setSearchOpen] = useState(false)
   const [selectedTrainId, setSelectedTrainId] = useState<string>()
+  const [selectedHubId, setSelectedHubId] = useState<HubId>('zurich')
 
   const journeyPosition = useMemo(
     () => positionOnJourney(prototypeJourney, journeyProgress),
@@ -62,6 +65,19 @@ export function App() {
   const selectedPosition = useMemo(
     () => (selectedTrain ? positionForTrain(selectedTrain, networkTime) : undefined),
     [networkTime, selectedTrain],
+  )
+  const selectedHub = HUBS.find((hub) => hub.id === selectedHubId) ?? HUBS[0]
+  const hubCalls = useMemo(
+    () => (network ? callsAtHub(network, selectedHub) : []),
+    [network, selectedHub],
+  )
+  const nearbyHubCalls = useMemo(
+    () => callsNearTime(hubCalls, networkTime),
+    [hubCalls, networkTime],
+  )
+  const upcomingHubCall = useMemo(
+    () => nextHubCall(hubCalls, networkTime),
+    [hubCalls, networkTime],
   )
   const selectedFrom =
     network && selectedPosition
@@ -162,17 +178,28 @@ export function App() {
   }, [handleContextAction])
 
   const isNetwork = view === 'network'
-  const networkReady = isNetwork && network
+  const isHub = view === 'hub'
+  const isTimetable = isNetwork || isHub
+  const networkReady = isTimetable && network
 
   return (
     <main className={`experience view-${view}${selectedTrain ? ' has-selection' : ''}`}>
       <div className="scene" aria-hidden="true">
-        {networkReady ? (
+        {isNetwork && network ? (
           <NationalNetworkScene
             snapshot={network}
             isPlaying={isPlaying}
             time={networkTime}
             selectedTrain={selectedTrain}
+            onTime={handleNetworkTime}
+          />
+        ) : isHub && network ? (
+          <HubPulseScene
+            snapshot={network}
+            hub={selectedHub}
+            calls={hubCalls}
+            isPlaying={isPlaying}
+            time={networkTime}
             onTime={handleNetworkTime}
           />
         ) : (
@@ -194,9 +221,9 @@ export function App() {
         </div>
         <div className="study-meta">
           <span className="pulse" />
-          <span>motion study 003</span>
+          <span>motion study 004</span>
           <span className="coordinate">
-            {isNetwork ? 'Friday · 04 September 2026' : '47.194° N · 9.312° E'}
+            {isTimetable ? 'Friday · 04 September 2026' : '47.194° N · 9.312° E'}
           </span>
         </div>
       </header>
@@ -284,7 +311,51 @@ export function App() {
         </section>
       )}
 
-      {isNetwork && selectedTrain ? (
+      {isHub && (
+        <nav className="hub-picker" aria-label="Takt pulse station">
+          <span>Takt pulse</span>
+          <div>
+            {HUBS.map((hub) => (
+              <button
+                key={hub.id}
+                type="button"
+                aria-pressed={hub.id === selectedHub.id}
+                onClick={() => setSelectedHubId(hub.id)}
+              >
+                {hub.displayName}
+              </button>
+            ))}
+          </div>
+        </nav>
+      )}
+
+      {isHub ? (
+        <section className="journey-card hub-card" aria-label={`${selectedHub.name} pulse`}>
+          <p className="hub-kicker">takt / 15 minute field</p>
+          <div className="network-count-row">
+            <strong>{nearbyHubCalls.length}</strong>
+            <span>arrivals + departures in orbit</span>
+          </div>
+          <p className="between">
+            {selectedHub.character} <span>/</span> {hubCalls.length} calls in 2h
+          </p>
+          <div className="metric-grid">
+            <div>
+              <span>next strike</span>
+              <strong>
+                {upcomingHubCall ? formatServiceTime(upcomingHubCall.stop[1]) : '—'}
+              </strong>
+              <small>{upcomingHubCall?.train.route ?? 'end'}</small>
+            </div>
+            <div>
+              <span>direction</span>
+              <strong className="destination-metric">
+                {upcomingHubCall?.train.headsign ?? '—'}
+              </strong>
+            </div>
+          </div>
+        </section>
+      ) : isNetwork && selectedTrain ? (
         <section className="journey-card selected-card" aria-label="Selected train">
           <div className="service-row">
             <span
@@ -362,7 +433,12 @@ export function App() {
       )}
 
       <div className="prototype-note">
-        {isNetwork ? (
+        {isHub ? (
+          <>
+            <span>scheduled station calls</span>
+            <span>15 minute orbit</span>
+          </>
+        ) : isNetwork ? (
           <>
             <span>{selectedTrain ? 'scheduled follow' : 'GTFS schedule'}</span>
             <span>{selectedTrain?.category ?? 'stop geometry'}</span>
@@ -377,7 +453,7 @@ export function App() {
 
       {isNetwork && !selectedTrain && <div className="north-marker">N</div>}
 
-      {isNetwork && !selectedTrain && (
+      {isTimetable && !selectedTrain && (
         <div className="service-legend" aria-label="Service colour legend">
           {SERVICE_CATEGORIES.filter((category) => category.id !== 'other').map(
             (category) => (
@@ -398,7 +474,7 @@ export function App() {
               : journeyPosition.previous.departure}
           </span>
           <span className="route-id">
-            {isNetwork ? formatServiceTime(networkTime) : prototypeJourney.id}
+            {isTimetable ? formatServiceTime(networkTime) : prototypeJourney.id}
           </span>
           <span>
             {networkReady
@@ -408,7 +484,7 @@ export function App() {
         </div>
         <label className="scrubber">
           <span className="sr-only">
-            {isNetwork ? 'Time of day' : 'Journey progress'}
+            {isTimetable ? 'Time of day' : 'Journey progress'}
           </span>
           <input
             type="range"
@@ -416,7 +492,7 @@ export function App() {
             max={networkReady ? network.metadata.windowEnd : 1}
             step={networkReady ? 10 : 0.001}
             value={networkReady ? networkTime : journeyProgress}
-            disabled={isNetwork && !network}
+            disabled={isTimetable && !network}
             onChange={(event) => {
               const value = Number(event.target.value)
               if (networkReady) setNetworkTime(value)
@@ -444,11 +520,21 @@ export function App() {
                 : 'National view'}
             <kbd>C</kbd>
           </button>
+          {isTimetable && !selectedTrain && (
+            <button
+              type="button"
+              aria-pressed={isHub}
+              onClick={() => setView(isHub ? 'network' : 'hub')}
+            >
+              <span className="button-icon takt-icon" aria-hidden="true">◎</span>
+              {isHub ? 'National view' : 'Takt hubs'}
+            </button>
+          )}
         </div>
       </section>
 
       <footer>
-        {isNetwork ? (
+        {isTimetable ? (
           <a
             href={network?.metadata.sourceUrl}
             target="_blank"
@@ -460,7 +546,11 @@ export function App() {
           <span>{prototypeJourney.operator}</span>
         )}
         <span>
-          {isNetwork ? 'scheduled interpolation / no GPS' : 'simulation / no live data'}
+          {isHub
+            ? 'arrivals inward / departures outward'
+            : isNetwork
+              ? 'scheduled interpolation / no GPS'
+              : 'simulation / no live data'}
         </span>
       </footer>
     </main>

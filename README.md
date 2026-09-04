@@ -2,7 +2,7 @@
 
 A cinematic browser visualisation of Switzerland's railway network, built from open timetable data and real topography. The long-term idea is to move between a national network view and intimate, camera-led journeys through a luminous low-poly landscape.
 
-The current motion study opens on a national morning view derived from the official Swiss GTFS timetable, with 764 scheduled rail services moving inside Switzerland at 07:45. A second follow-camera study uses a synthetic Zürich–Chur journey and procedural terrain. Both interpolation models are labelled clearly.
+The current motion study opens on a national morning view derived from the official Swiss GTFS timetable, with 764 scheduled rail services moving inside Switzerland at 07:45. A hub-scale Takt pulse makes scheduled calls at Zürich HB, Bern, Basel SBB and Genève contract toward the station and radiate out again. A third follow-camera study uses a synthetic Zürich–Chur journey and procedural terrain. All interpolation models are labelled clearly.
 
 ## Run it
 
@@ -20,9 +20,11 @@ npm test
 npm run build
 ```
 
-Keyboard controls: `Space` pauses or resumes; `C` switches between follow and network cameras.
+Keyboard controls: `Space` pauses or resumes; `C` returns to or switches from the national view.
 
 Search the national view by service, train number, origin, or destination. Selecting a result isolates its scheduled path and carries the camera down to follow it. Train lights are colour-coded by service class from international and InterCity through S-Bahn and regional services.
+
+Open **Takt hubs** to move between Zürich HB, Bern, Basel SBB and Genève. See [docs/HUB-STUDY.md](./docs/HUB-STUDY.md) for the visual model and the deliberately careful wording around Zürich's “busiest” status.
 
 The committed GTFS snapshot is regenerated with `npm run data:gtfs`; see [docs/DATA-PIPELINE.md](./docs/DATA-PIPELINE.md).
 The eventual public deployment is GitHub Pages; see [docs/PUBLISHING.md](./docs/PUBLISHING.md).

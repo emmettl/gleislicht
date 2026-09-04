@@ -157,6 +157,29 @@ h1 {
   background: linear-gradient(135deg, rgba(20, 12, 43, 0.86), rgba(7, 7, 22, 0.5));
 }
 
+.hub-card {
+  border-left-color: rgba(255, 94, 219, 0.75);
+  background: linear-gradient(135deg, rgba(25, 10, 44, 0.83), rgba(6, 9, 28, 0.52));
+}
+
+.hub-kicker {
+  margin: 0 0 8px;
+  color: var(--pink);
+  font-family: 'DM Mono', ui-monospace, monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.destination-metric {
+  display: block !important;
+  overflow: hidden;
+  font-size: 1rem !important;
+  line-height: 1.7;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .service-row {
   display: flex;
   align-items: baseline;
@@ -295,6 +318,60 @@ h1 {
   width: min(440px, calc(100vw - 48px));
   transform: translateX(-50%);
   z-index: 8;
+}
+
+.hub-picker {
+  position: absolute;
+  top: clamp(112px, 17vh, 158px);
+  left: 50%;
+  display: flex;
+  width: min(620px, calc(100vw - 48px));
+  min-height: 46px;
+  align-items: center;
+  gap: 14px;
+  padding: 6px 7px 6px 15px;
+  border: 1px solid rgba(193, 204, 255, 0.25);
+  background: rgba(7, 7, 22, 0.72);
+  backdrop-filter: blur(16px);
+  transform: translateX(-50%);
+  z-index: 8;
+}
+
+.hub-picker > span {
+  flex: 0 0 auto;
+  color: var(--pink);
+  font-family: 'DM Mono', ui-monospace, monospace;
+  font-size: 0.64rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.hub-picker > div {
+  display: grid;
+  flex: 1;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+}
+
+.hub-picker button {
+  min-height: 32px;
+  justify-content: center;
+  padding: 0 8px;
+  border-color: transparent;
+  background: transparent;
+  color: var(--muted);
+  font-family: 'DM Mono', ui-monospace, monospace;
+  font-size: 0.68rem;
+  white-space: nowrap;
+}
+
+.hub-picker button:hover,
+.hub-picker button[aria-pressed='true'] {
+  border-color: rgba(141, 250, 255, 0.36);
+  background: rgba(61, 46, 112, 0.42);
+  color: var(--ink);
+  box-shadow: inset 0 -1px 0 var(--cyan), 0 0 18px rgba(141, 250, 255, 0.08);
+  transform: none;
 }
 
 .train-search form {
@@ -523,6 +600,12 @@ input[type='range']:disabled {
     linear-gradient(180deg, rgba(7, 5, 25, 0.8) 0%, transparent 21%, transparent 72%, rgba(5, 4, 16, 0.9) 100%);
 }
 
+.view-hub .atmosphere {
+  background:
+    radial-gradient(circle at 50% 53%, transparent 0 19%, rgba(10, 4, 27, 0.3) 60%, #050410 112%),
+    linear-gradient(180deg, rgba(7, 5, 25, 0.84) 0%, transparent 25%, transparent 68%, rgba(5, 4, 16, 0.93) 100%);
+}
+
 .has-selection .atmosphere {
   background:
     radial-gradient(circle at 55% 53%, transparent 0 18%, rgba(5, 4, 16, 0.24) 58%, #050410 110%),
@@ -599,6 +682,12 @@ input:focus-visible {
   transform: skewX(-18deg);
 }
 
+.takt-icon {
+  color: var(--pink);
+  font-size: 1rem;
+  text-shadow: 0 0 10px var(--pink);
+}
+
 kbd {
   margin-left: 5px;
   padding: 2px 5px;
@@ -668,6 +757,21 @@ footer {
     top: 108px;
   }
 
+  .hub-picker {
+    top: 108px;
+    display: block;
+    padding: 7px;
+  }
+
+  .hub-picker > span {
+    display: none;
+  }
+
+  .hub-picker button {
+    padding: 0 4px;
+    font-size: 0.61rem;
+  }
+
   .search-results > button {
     grid-template-columns: 10px 76px 1fr;
   }
@@ -683,7 +787,7 @@ footer {
 
   .button-row {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(112px, 1fr));
   }
 
   button {
