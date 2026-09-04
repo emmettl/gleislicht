@@ -112,6 +112,20 @@ const LakeAvoidingPathsContext = createContext<LakeAvoidingPathMap>(
 
 const STATION_SURFACE_Y = 0.035
 
+const MAP_LAYER = {
+  selectionGlow: 6,
+  selectionCore: 7,
+  selectionStopGlow: 8,
+  selectionStopCore: 9,
+  vehicleGlow: 10,
+  vehicleCore: 11,
+  vehicleSpark: 12,
+  focusMarkerGlow: 13,
+  focusMarkerCore: 14,
+  trainLabel: 16,
+  stationLabel: 20,
+} as const
+
 interface NetworkProjection {
   readonly centreLongitude: number
   readonly centreLatitude: number
@@ -836,7 +850,10 @@ function SelectedRoute({
       color: SERVICE_COLORS[train.category],
       transparent: true,
       opacity: 0.95,
-      blending: THREE.AdditiveBlending,
+      blending: THREE.NormalBlending,
+      depthTest: false,
+      depthWrite: false,
+      toneMapped: false,
     })
     return new THREE.Line(geometry, material)
   }, [lakeAvoidingPaths, projectedPaths, projectedStops, train])
@@ -849,7 +866,7 @@ function SelectedRoute({
     [line],
   )
 
-  return <primitive object={line} />
+  return <primitive object={line} renderOrder={MAP_LAYER.selectionCore} />
 }
 
 function SelectedLinePaths({
@@ -952,28 +969,41 @@ function SelectedLinePaths({
   const color = SERVICE_COLORS[route.category]
   return (
     <group>
-      <lineSegments geometry={geometries.path} renderOrder={5}>
+      <lineSegments
+        geometry={geometries.path}
+        renderOrder={MAP_LAYER.selectionCore}
+      >
         <lineBasicMaterial
           color={color}
           transparent
-          opacity={0.92}
-          blending={THREE.AdditiveBlending}
+          opacity={0.96}
+          blending={THREE.NormalBlending}
+          depthTest={false}
           depthWrite={false}
           toneMapped={false}
+          fog={false}
         />
       </lineSegments>
-      <lineSegments geometry={geometries.path} renderOrder={4}>
+      <lineSegments
+        geometry={geometries.path}
+        renderOrder={MAP_LAYER.selectionGlow}
+      >
         <lineBasicMaterial
           ref={glowMaterial}
           color={color}
           transparent
           opacity={0.18}
           blending={THREE.AdditiveBlending}
+          depthTest={false}
           depthWrite={false}
           toneMapped={false}
+          fog={false}
         />
       </lineSegments>
-      <points geometry={geometries.stops} renderOrder={6}>
+      <points
+        geometry={geometries.stops}
+        renderOrder={MAP_LAYER.selectionStopGlow}
+      >
         <pointsMaterial
           color={color}
           map={stopTextures.halo}
@@ -982,12 +1012,17 @@ function SelectedLinePaths({
           opacity={0.3}
           alphaTest={0.01}
           blending={THREE.AdditiveBlending}
+          depthTest={false}
           depthWrite={false}
           sizeAttenuation={false}
           toneMapped={false}
+          fog={false}
         />
       </points>
-      <points geometry={geometries.stops} renderOrder={7}>
+      <points
+        geometry={geometries.stops}
+        renderOrder={MAP_LAYER.selectionStopCore}
+      >
         <pointsMaterial
           color={color}
           map={stopTextures.core}
@@ -995,10 +1030,12 @@ function SelectedLinePaths({
           transparent
           opacity={0.9}
           alphaTest={0.02}
-          blending={THREE.AdditiveBlending}
+          blending={THREE.NormalBlending}
+          depthTest={false}
           depthWrite={false}
           sizeAttenuation={false}
           toneMapped={false}
+          fog={false}
         />
       </points>
     </group>
@@ -1408,7 +1445,7 @@ function StationLabels({
             sprites.current[index] = sprite
           }}
           visible={false}
-          renderOrder={20}
+          renderOrder={MAP_LAYER.stationLabel}
         >
           <spriteMaterial
             transparent
@@ -1708,7 +1745,7 @@ function TrainLabels({
             sprites.current[index] = sprite
           }}
           visible={false}
-          renderOrder={12}
+          renderOrder={MAP_LAYER.trainLabel}
         >
           <spriteMaterial
             transparent
@@ -1747,19 +1784,25 @@ function SelectedStationRouteLayer({
   const color = SERVICE_COLORS[category]
   return (
     <group>
-      <lineSegments geometry={pathGeometry} renderOrder={7}>
+      <lineSegments
+        geometry={pathGeometry}
+        renderOrder={MAP_LAYER.selectionCore}
+      >
         <lineBasicMaterial
           color={color}
           transparent
           opacity={1}
-          blending={THREE.AdditiveBlending}
+          blending={THREE.NormalBlending}
           depthTest={false}
           depthWrite={false}
           toneMapped={false}
           fog={false}
         />
       </lineSegments>
-      <lineSegments geometry={pathGeometry} renderOrder={6}>
+      <lineSegments
+        geometry={pathGeometry}
+        renderOrder={MAP_LAYER.selectionGlow}
+      >
         <lineBasicMaterial
           ref={glowMaterial}
           color="#ffffff"
@@ -1772,7 +1815,10 @@ function SelectedStationRouteLayer({
           fog={false}
         />
       </lineSegments>
-      <points geometry={stopGeometry} renderOrder={8}>
+      <points
+        geometry={stopGeometry}
+        renderOrder={MAP_LAYER.selectionStopGlow}
+      >
         <pointsMaterial
           color={color}
           map={haloTexture}
@@ -1788,7 +1834,10 @@ function SelectedStationRouteLayer({
           fog={false}
         />
       </points>
-      <points geometry={stopGeometry} renderOrder={9}>
+      <points
+        geometry={stopGeometry}
+        renderOrder={MAP_LAYER.selectionStopCore}
+      >
         <pointsMaterial
           color="#ffffff"
           map={coreTexture}
@@ -1796,7 +1845,7 @@ function SelectedStationRouteLayer({
           transparent
           opacity={0.88}
           alphaTest={0.02}
-          blending={THREE.AdditiveBlending}
+          blending={THREE.NormalBlending}
           depthTest={false}
           depthWrite={false}
           sizeAttenuation={false}
@@ -1938,7 +1987,10 @@ function SelectedStationRoutes({
           coreTexture={textures.core}
         />
       ))}
-      <points geometry={centreGeometry} renderOrder={10}>
+      <points
+        geometry={centreGeometry}
+        renderOrder={MAP_LAYER.focusMarkerGlow}
+      >
         <pointsMaterial
           color="#8dfaff"
           map={textures.halo}
@@ -1954,7 +2006,10 @@ function SelectedStationRoutes({
           fog={false}
         />
       </points>
-      <points geometry={centreGeometry} renderOrder={11}>
+      <points
+        geometry={centreGeometry}
+        renderOrder={MAP_LAYER.focusMarkerCore}
+      >
         <pointsMaterial
           color="#ffffff"
           map={textures.core}
@@ -2187,6 +2242,7 @@ function TrainSwarm({
               ref={kind === 'rail' ? glow : undefined}
               geometry={geometries[kind]}
               frustumCulled={false}
+              renderOrder={MAP_LAYER.vehicleGlow}
             >
               <pointsMaterial
                 vertexColors
@@ -2201,6 +2257,7 @@ function TrainSwarm({
                       : 0.15
                 }
                 alphaTest={0.005}
+                depthTest={false}
                 depthWrite={false}
                 blending={THREE.AdditiveBlending}
                 sizeAttenuation={false}
@@ -2211,6 +2268,7 @@ function TrainSwarm({
               ref={kind === 'rail' ? points : undefined}
               geometry={geometries[kind]}
               frustumCulled={false}
+              renderOrder={MAP_LAYER.vehicleCore}
             >
               <pointsMaterial
                 vertexColors
@@ -2219,6 +2277,7 @@ function TrainSwarm({
                 transparent
                 opacity={isCityVehicle ? 0.95 : 0.9}
                 alphaTest={0.035}
+                depthTest={false}
                 depthWrite={false}
                 blending={THREE.AdditiveBlending}
                 sizeAttenuation={false}
@@ -2226,7 +2285,11 @@ function TrainSwarm({
               />
             </points>
             {kind === 'rail' && (
-              <points geometry={geometries[kind]} frustumCulled={false}>
+              <points
+                geometry={geometries[kind]}
+                frustumCulled={false}
+                renderOrder={MAP_LAYER.vehicleSpark}
+              >
                 <pointsMaterial
                   vertexColors
                   map={lightTextures.spark}
@@ -2234,6 +2297,7 @@ function TrainSwarm({
                   transparent
                   opacity={1}
                   alphaTest={0.025}
+                  depthTest={false}
                   depthWrite={false}
                   blending={THREE.AdditiveBlending}
                   sizeAttenuation={false}
@@ -2453,12 +2517,16 @@ function SelectedTrainMarker({
 
   return (
     <group ref={marker}>
-      <mesh>
+      <mesh renderOrder={MAP_LAYER.focusMarkerCore}>
         <sphereGeometry args={[0.24, 12, 12]} />
         <meshStandardMaterial
           color="#ffffff"
           emissive={color}
           emissiveIntensity={4}
+          transparent
+          opacity={1}
+          depthTest={false}
+          depthWrite={false}
         />
       </mesh>
       <pointLight color={color} intensity={7} distance={4.5} />

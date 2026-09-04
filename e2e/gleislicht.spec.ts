@@ -73,6 +73,25 @@ test('region selection changes the active study', async ({ page }, testInfo) => 
   await expect(page.locator('.network-card')).toContainText('Vehicles in motion')
 })
 
+test('a Zürich tram line remains selectable at every layout', async ({
+  page,
+}, testInfo) => {
+  if (testInfo.project.name === 'iphone-webkit') {
+    const picker = page.locator('.mobile-study-picker')
+    await picker.locator('.mobile-picker__trigger').click()
+    await picker.getByRole('option').filter({ hasText: 'ZH' }).click()
+  } else {
+    await page.locator('.network-study-picker button').filter({ hasText: 'ZH' }).click()
+  }
+
+  const search = page.locator('.train-search input[type="search"]')
+  await search.fill('Tram 10')
+  await page.locator('.search-results .route-result').first().click()
+
+  await expect(page.locator('.route-card')).toContainText('Tram 10')
+  await expect(search).toHaveValue('Tram 10')
+})
+
 test('the 24-hour study exposes authored day moments and a director loop', async ({
   page,
 }, testInfo) => {
