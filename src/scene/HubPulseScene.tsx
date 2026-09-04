@@ -40,16 +40,19 @@ function TickMarks() {
     const group = new THREE.Group()
     Array.from({ length: 60 }, (_, index) => {
       const angle = (index / 60) * Math.PI * 2
-      const inner = index % 5 === 0 ? 10.25 : 10.45
-      const outer = 10.8
+      const quarter = index % 15 === 0
+      const hour = index % 5 === 0
+      const inner = quarter ? 9.82 : hour ? 10.14 : 10.44
+      const outer = 10.86
       const geometry = new THREE.BufferGeometry().setFromPoints([
         new THREE.Vector3(Math.cos(angle) * inner, Math.sin(angle) * inner, 0),
         new THREE.Vector3(Math.cos(angle) * outer, Math.sin(angle) * outer, 0),
       ])
       const material = new THREE.LineBasicMaterial({
-        color: index % 5 === 0 ? '#ff5edb' : '#8992c7',
+        color: quarter ? '#e9feff' : hour ? '#ff5edb' : '#8992c7',
         transparent: true,
-        opacity: index % 5 === 0 ? 0.48 : 0.18,
+        opacity: quarter ? 0.92 : hour ? 0.5 : 0.2,
+        blending: THREE.AdditiveBlending,
       })
       group.add(new THREE.Line(geometry, material))
     })
@@ -70,23 +73,112 @@ function TickMarks() {
   return <primitive object={ticks} />
 }
 
-function OrbitalRings() {
+function ClockHands({
+  time,
+  isPlaying,
+  playbackRate,
+  timeline,
+}: Pick<HubPulseSceneProps, 'time' | 'isPlaying' | 'playbackRate' | 'timeline'>) {
+  const hourHand = useRef<THREE.Group>(null)
+  const minuteHand = useRef<THREE.Group>(null)
+  const secondHand = useRef<THREE.Group>(null)
+  const localTime = useRef(time)
+
+  useEffect(() => {
+    localTime.current = time
+  }, [time])
+
+  useFrame((_, delta) => {
+    if (isPlaying) {
+      localTime.current += delta * playbackRate
+      if (localTime.current > timeline.windowEnd) {
+        localTime.current = timeline.windowStart
+      }
+    }
+
+    const timeOfDay = ((localTime.current % 86_400) + 86_400) % 86_400
+    const hourAngle = (timeOfDay / 43_200) * Math.PI * 2
+    const minuteAngle = ((timeOfDay % 3_600) / 3_600) * Math.PI * 2
+    const secondAngle = ((timeOfDay % 60) / 60) * Math.PI * 2
+    if (hourHand.current) hourHand.current.rotation.y = -hourAngle
+    if (minuteHand.current) minuteHand.current.rotation.y = -minuteAngle
+    if (secondHand.current) secondHand.current.rotation.y = -secondAngle
+  })
+
   return (
-    <group rotation={[-Math.PI / 2, 0, 0]}>
-      {[3.8, 7.2, 10.6].map((radius, index) => (
-        <mesh key={radius}>
-          <ringGeometry args={[radius - 0.025, radius + 0.025, 128]} />
+    <group>
+      <group ref={hourHand} position={[0, 0.32, 0]}>
+        <mesh position={[0, 0, -2.15]}>
+          <boxGeometry args={[0.3, 0.08, 4.3]} />
           <meshBasicMaterial
-            color={index === 1 ? '#8dfaff' : '#786bcb'}
-            transparent
-            opacity={index === 1 ? 0.28 : 0.17}
-            side={THREE.DoubleSide}
+            color="#ff5edb"
             blending={THREE.AdditiveBlending}
           />
         </mesh>
-      ))}
-      <TickMarks />
+      </group>
+      <group ref={minuteHand} position={[0, 0.4, 0]}>
+        <mesh position={[0, 0, -3.65]}>
+          <boxGeometry args={[0.16, 0.07, 7.3]} />
+          <meshBasicMaterial
+            color="#e9feff"
+            blending={THREE.AdditiveBlending}
+          />
+        </mesh>
+      </group>
+      <group ref={secondHand} position={[0, 0.48, 0]}>
+        <mesh position={[0, 0, -4.15]}>
+          <boxGeometry args={[0.055, 0.055, 8.3]} />
+          <meshBasicMaterial
+            color="#ff416c"
+            blending={THREE.AdditiveBlending}
+          />
+        </mesh>
+        <mesh position={[0, 0, -7.28]}>
+          <sphereGeometry args={[0.2, 12, 12]} />
+          <meshBasicMaterial color="#ff416c" />
+        </mesh>
+        <mesh position={[0, 0, 0.82]}>
+          <boxGeometry args={[0.055, 0.055, 1.64]} />
+          <meshBasicMaterial color="#ff416c" />
+        </mesh>
+      </group>
+      <mesh position={[0, 0.57, 0]}>
+        <sphereGeometry args={[0.26, 16, 16]} />
+        <meshBasicMaterial color="#f5feff" />
+      </mesh>
+      <pointLight color="#ff416c" intensity={2.8} distance={7} position={[0, 1, 0]} />
     </group>
+  )
+}
+
+function ClockFace(
+  props: Pick<HubPulseSceneProps, 'time' | 'isPlaying' | 'playbackRate' | 'timeline'>,
+) {
+  return (
+    <>
+      <group rotation={[-Math.PI / 2, 0, 0]}>
+        {[3.8, 7.2, 10.72].map((radius, index) => (
+          <mesh key={radius}>
+            <ringGeometry
+              args={[
+                radius - (index === 2 ? 0.055 : 0.022),
+                radius + (index === 2 ? 0.055 : 0.022),
+                128,
+              ]}
+            />
+            <meshBasicMaterial
+              color={index === 2 ? '#e9feff' : index === 1 ? '#8dfaff' : '#786bcb'}
+              transparent
+              opacity={index === 2 ? 0.42 : index === 1 ? 0.16 : 0.1}
+              side={THREE.DoubleSide}
+              blending={THREE.AdditiveBlending}
+            />
+          </mesh>
+        ))}
+        <TickMarks />
+      </group>
+      <ClockHands {...props} />
+    </>
   )
 }
 
@@ -317,7 +409,12 @@ function HubWorld(props: HubPulseSceneProps) {
         <planeGeometry args={[36, 36, 48, 48]} />
         <meshBasicMaterial color="#272852" wireframe transparent opacity={0.09} />
       </mesh>
-      <OrbitalRings />
+      <ClockFace
+        time={props.time}
+        isPlaying={props.isPlaying}
+        playbackRate={props.playbackRate}
+        timeline={props.timeline}
+      />
       <CorridorSpokes
         calls={props.calls}
         selectedCategory={props.selectedCategory}
