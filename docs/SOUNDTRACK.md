@@ -4,7 +4,7 @@ Gleislicht uses [`@driftbox/engine`](https://github.com/emmettl/driftbox), a Web
 
 ## The three cues
 
-- **Night Grid — national network.** A 108 BPM, heavily swung ambient-house arrangement. Sparse low pulses leave visual space for the national map; long dub echoes make individual hits feel like signals crossing the country.
+- **Night Grid — national network.** A restrained 108 BPM ambient-house arrangement. One rounded sub pulse grounds each bar while the mobile, sliding 303 line stays silent; long dub echoes make individual hits feel like signals crossing the country.
 - **Taktwerk — station hubs.** A brighter 116 BPM pattern whose regular kick and accumulating hats mirror arrivals contracting into a hub and departures radiating outward.
 - **Valley Signal — corridor and train follow.** An 88 BPM, deliberately unmoored piece built from uneven phrases, dark delay and a low carrier tone. It is the slowest and most spacious cue for the camera-led valley view.
 

@@ -3,7 +3,9 @@ import {
   cloudsSong,
   defaultFx,
   DriftboxEngine,
+  emptyBassLine,
   transmissionSong,
+  type BassStep,
   type Song,
 } from '@driftbox/engine'
 
@@ -18,13 +20,51 @@ export const SOUNDTRACK_TITLES: Record<SoundtrackMode, string> = {
 const CROSSFADE_SECONDS = 4.8
 const ENGINE_GAIN = 0.74
 
+function groundedBassLine(length: number): BassStep[] {
+  const line = emptyBassLine(length)
+  line[0] = { note: 0, accent: false, slide: false }
+  return line
+}
+
 function networkSong(): Song {
   const song = cloudsSong()
+  const patterns = song.patterns.map((pattern) => ({
+    ...pattern,
+    // Night Grid needs a horizon, not a lead bass. Clouds' 303.a line skips and slides
+    // through a pentatonic melody; keep only one soft root pulse at the start of each bar.
+    bass:
+      pattern.id === 'gap' ? undefined : { '303.b': groundedBassLine(pattern.length) },
+  }))
+  const kit = {
+    ...song.kit,
+    bass: song.kit.bass
+      ? {
+          ...song.kit.bass,
+          '303.b': {
+            ...song.kit.bass['303.b'],
+            cutoff: 0.12,
+            resonance: 0.12,
+            envMod: 0.08,
+            decay: 0.86,
+            accent: 0.12,
+            level: 0.34,
+          },
+        }
+      : undefined,
+    sends: {
+      ...song.kit.sends,
+      '303.a': { delay: 0, reverb: 0 },
+      '303.b': { delay: 0.08, reverb: 0.16 },
+    },
+  }
+
   return {
     ...song,
     bpm: 108,
-    swing: 0.36,
+    swing: 0.2,
     visual: 'gleislicht-network',
+    patterns,
+    kit,
     chain: [
       { pattern: 'clear', repeat: 4 },
       { pattern: 'drift', repeat: 8 },

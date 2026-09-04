@@ -28,4 +28,18 @@ describe('Gleislicht soundtrack', () => {
     expect(first.patterns).not.toBe(second.patterns)
     expect(first.kit).not.toBe(second.kit)
   })
+
+  it('keeps Night Grid grounded without the skipping 303 line', () => {
+    const song = buildGleislichtSong('network')
+
+    for (const pattern of song.patterns) {
+      expect(pattern.bass?.['303.a']).toBeUndefined()
+
+      const audibleSteps = pattern.bass?.['303.b']?.filter(
+        (step) => step.note !== null && step.gate !== false,
+      )
+      expect(audibleSteps?.length ?? 0).toBeLessThanOrEqual(1)
+      expect(audibleSteps?.every((step) => !step.slide) ?? true).toBe(true)
+    }
+  })
 })
