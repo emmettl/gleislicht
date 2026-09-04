@@ -1140,6 +1140,38 @@ footer {
   }
 }
 
+@media (max-width: 420px) {
+  .network-card {
+    width: auto;
+    max-width: calc(100vw - 32px);
+    padding: 11px 14px 12px;
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
+  }
+
+  .network-card .network-count-row {
+    gap: 8px;
+  }
+
+  .network-card .network-count-row strong {
+    font-size: 1.55rem;
+  }
+
+  .network-card .network-count-row span {
+    max-width: none;
+    font-size: 0.67rem;
+    white-space: nowrap;
+  }
+
+  .network-card .between {
+    margin: 3px 0 0;
+    font-size: 0.58rem;
+  }
+
+  .network-card .metric-grid {
+    display: none;
+  }
+}
+
 @media (max-height: 690px) {
   .journey-card {
     top: 23%;
