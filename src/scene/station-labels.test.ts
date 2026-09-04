@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import type { StationIndexEntry } from '../domain/network.ts'
 import {
+  compareStationLabelCandidates,
   rankStationsForLabels,
   stationIndexAtScreenPoint,
   stationLabelCameraHeight,
@@ -105,5 +106,37 @@ describe('station labels', () => {
       'Interchange',
       'Small',
     ])
+  })
+
+  it('retains visible labels before replacing them during camera motion', () => {
+    const candidates = [
+      {
+        name: 'New nearby stop',
+        rank: 4,
+        priority: 2,
+        retained: false,
+        distance: 5,
+      },
+      {
+        name: 'Stable visible stop',
+        rank: 8,
+        priority: 2,
+        retained: true,
+        distance: 20,
+      },
+      {
+        name: 'Selected stop',
+        rank: 20,
+        priority: 0,
+        retained: false,
+        distance: 30,
+      },
+    ]
+
+    expect(
+      [...candidates]
+        .sort(compareStationLabelCandidates)
+        .map(({ name }) => name),
+    ).toEqual(['Selected stop', 'Stable visible stop', 'New nearby stop'])
   })
 })

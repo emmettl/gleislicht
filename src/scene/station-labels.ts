@@ -12,6 +12,27 @@ export interface StationScreenPoint {
   readonly y: number
 }
 
+export interface StationLabelCandidatePriority {
+  readonly name: string
+  readonly rank: number
+  readonly priority: number
+  readonly retained: boolean
+  readonly distance: number
+}
+
+export function compareStationLabelCandidates(
+  first: StationLabelCandidatePriority,
+  second: StationLabelCandidatePriority,
+): number {
+  return (
+    first.priority - second.priority ||
+    Number(second.retained) - Number(first.retained) ||
+    first.rank - second.rank ||
+    first.distance - second.distance ||
+    first.name.localeCompare(second.name, 'de-CH')
+  )
+}
+
 export function stationTapRadius(pointerType: string): number {
   return pointerType === 'touch' || pointerType === 'pen' ? 30 : 16
 }

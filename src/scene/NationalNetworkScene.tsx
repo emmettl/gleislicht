@@ -21,6 +21,7 @@ import {
   type TrainTimeIndex,
 } from '../domain/train-time-index.ts'
 import {
+  compareStationLabelCandidates,
   MAX_STATION_LABELS,
   rankStationsForLabels,
   stationIndexAtScreenPoint,
@@ -1193,6 +1194,7 @@ function StationLabels({
   const { camera, size } = useThree()
   const sprites = useRef<Array<THREE.Sprite | null>>([])
   const textures = useRef(new Map<string, StationLabelTexture>())
+  const retainedStationNames = useRef(new Set<string>())
   const routeStationNames = useMemo(() => {
     const stopIndexes = selectedTrain
       ? selectedTrain.stops.map(([stopIndex]) => stopIndex)
@@ -1239,6 +1241,10 @@ function StationLabels({
     [],
   )
 
+  useEffect(() => {
+    retainedStationNames.current.clear()
+  }, [cameraFraming, selectedRoute, selectedStation, selectedTrain])
+
   useFrame(() => {
     const semanticHeight = stationLabelCameraHeight(
       camera.position.y,
@@ -1255,6 +1261,8 @@ function StationLabels({
       distance: number
       depth: number
       priority: number
+      rank: number
+      retained: boolean
     }> = []
 
     sprites.current.forEach((sprite) => {
@@ -1285,15 +1293,32 @@ function StationLabels({
         depth: Math.max(0.01, -viewPosition.z),
         priority:
           label.station.name === selectedStation?.name ? 0 : label.emphasised ? 1 : 2,
+        rank: label.rank,
+        retained: retainedStationNames.current.has(label.station.name),
       })
     })
 
-    candidates.sort(
-      (first, second) =>
-        first.priority - second.priority || first.distance - second.distance,
+    candidates.sort((first, second) =>
+      compareStationLabelCandidates(
+        {
+          name: labels[first.index].station.name,
+          rank: first.rank,
+          priority: first.priority,
+          retained: first.retained,
+          distance: first.distance,
+        },
+        {
+          name: labels[second.index].station.name,
+          rank: second.rank,
+          priority: second.priority,
+          retained: second.retained,
+          distance: second.distance,
+        },
+      ),
     )
     const occupied: Array<{ left: number; right: number; top: number; bottom: number }> = []
     const visibleTextureNames = new Set<string>()
+    const nextRetainedStationNames = new Set<string>()
     const verticalFieldOfView =
       camera instanceof THREE.PerspectiveCamera ? camera.fov : 44
     let visible = 0
@@ -1330,6 +1355,7 @@ function StationLabels({
         textures.current.set(label.station.name, textureEntry)
       }
       visibleTextureNames.add(label.station.name)
+      nextRetainedStationNames.add(label.station.name)
       sprite.visible = true
       sprite.position.copy(label.position)
       sprite.center.set(textureEntry.anchorX, 0.5)
@@ -1349,6 +1375,8 @@ function StationLabels({
       occupied.push(box)
       visible += 1
     }
+
+    retainedStationNames.current = nextRetainedStationNames
 
     if (textures.current.size > 192) {
       for (const [name, entry] of textures.current) {
