@@ -37,7 +37,7 @@ This writes a compact `public/data/swiss-rail-day-manifest.json` containing the 
 
 ### Reviewed national refreshes
 
-The `Refresh national timetable data` GitHub Actions workflow checks the official current-resource permalink twice weekly and can also be run manually for a chosen service date. It regenerates the morning, full-day and hub studies together in an isolated runner, then runs `npm run data:validate`, the unit tests, typecheck, production build and transfer budget before opening or updating a review pull request. Publishing therefore changes the national artifact set only through a validated commit; the automation never overwrites the independently shape-enriched regional studies.
+The `Refresh national timetable data` GitHub Actions workflow checks the official current-resource permalink twice weekly and can also be run manually for a chosen service date. It regenerates the morning, full-day and hub studies together in an isolated runner, then runs `npm run data:validate`, the unit tests, typecheck, production build and transfer budget before force-updating the dedicated `automation/refresh-national-data` review branch. The run summary links either to its open pull request or to GitHub's pre-filled comparison page for the first review. Keeping first-time PR creation manual avoids granting every repository workflow permission to approve pull requests. Publishing therefore changes the national artifact set only through a reviewed, validated commit; the automation never overwrites the independently shape-enriched regional studies.
 
 Run the same structural checks locally after any manual regeneration:
 

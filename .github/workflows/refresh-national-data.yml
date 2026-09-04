@@ -75,7 +75,7 @@ jobs:
           npm run build
           npm run check:bundle
 
-      - name: Open or update review pull request
+      - name: Publish validated review branch
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -91,10 +91,10 @@ jobs:
           feed_version="$(node -p "JSON.parse(require('fs').readFileSync('public/data/swiss-rail-morning.json')).metadata.feedVersion")"
           git commit -m "Refresh national GTFS ${feed_version}"
           git push --force origin "HEAD:$BRANCH_NAME"
-          if ! gh pr view "$BRANCH_NAME" >/dev/null 2>&1; then
-            gh pr create \
-              --base main \
-              --head "$BRANCH_NAME" \
-              --title "Refresh national GTFS ${feed_version}" \
-              --body "Automated, validated national timetable refresh for service day ${{ steps.edition.outputs.service_date }}. Regional shape-enriched studies are intentionally unchanged."
+          review_url="$(gh pr list --head "$BRANCH_NAME" --state open --json url --jq '.[0].url')"
+          if [[ -n "$review_url" ]]; then
+            echo "Updated existing review: $review_url" >> "$GITHUB_STEP_SUMMARY"
+          else
+            compare_url="https://github.com/${GITHUB_REPOSITORY}/compare/main...${BRANCH_NAME}?expand=1"
+            echo "Validated data are ready for review: $compare_url" >> "$GITHUB_STEP_SUMMARY"
           fi
