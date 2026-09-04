@@ -38,6 +38,9 @@ test('search selects a station and exposes its serving routes', async ({ page })
 test('keyboard search selection remains complete', async ({ page }) => {
   const search = page.locator('.train-search input[type="search"]')
   await search.fill('Basel SBB')
+  await expect(page.locator('.search-results .station-result').first()).toContainText(
+    'Basel SBB',
+  )
   await search.press('ArrowDown')
   await search.press('Enter')
 
