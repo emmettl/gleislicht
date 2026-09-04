@@ -40,6 +40,12 @@ jobs:
       - name: Lint
         run: npm run lint
 
+      - name: Install browser test engines
+        run: npx playwright install --with-deps chromium webkit
+
+      - name: Browser regression tests
+        run: npm run test:e2e
+
       - name: Build
         run: npm run build
 

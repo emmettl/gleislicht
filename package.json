@@ -12,6 +12,8 @@
     "typecheck": "tsc -b",
     "test": "vitest run",
     "test:watch": "vitest",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
     "data:boundary": "node scripts/ingest-boundary.mjs",
     "data:lakes": "node scripts/ingest-lakes.mjs",
     "data:gtfs": "node scripts/ingest-gtfs.mjs",
@@ -39,6 +41,7 @@
     "three": "^0.185.1"
   },
   "devDependencies": {
+    "@playwright/test": "^1.62.1",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.7",
     "@types/three": "^0.185.4",

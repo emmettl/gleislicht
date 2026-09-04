@@ -1747,10 +1747,6 @@ footer {
     transform: none;
   }
 
-  .view-network:not(.has-selection) .network-card {
-    display: none;
-  }
-
   .view-network:not(.has-selection) .map-navigation {
     top: calc(184px + env(safe-area-inset-top));
   }
