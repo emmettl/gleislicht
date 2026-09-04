@@ -230,6 +230,9 @@ function RailGraph({
   readonly subdued: boolean
   readonly showTraffic?: boolean
 }) {
+  const { camera } = useThree()
+  const stationMaterial = useRef<THREE.PointsMaterial>(null)
+  const stationTexture = useMemo(() => trainLightTexture('orb'), [])
   const railGeometry = useMemo(() => {
     const positions = new Float32Array(snapshot.edges.length * 6)
     let writeIndex = 0
@@ -255,6 +258,19 @@ function RailGraph({
     return geometry
   }, [projectedStops])
 
+  useEffect(
+    () => () => {
+      stationTexture.dispose()
+    },
+    [stationTexture],
+  )
+
+  useFrame(() => {
+    if (!stationMaterial.current) return
+    const cameraScale = THREE.MathUtils.clamp(camera.position.y / 37, 0.02, 1)
+    stationMaterial.current.size = 0.065 * cameraScale
+  })
+
   return (
     <>
       <lineSegments geometry={railGeometry}>
@@ -274,11 +290,17 @@ function RailGraph({
       )}
       <points geometry={stationGeometry} position={[0, STATION_SURFACE_Y, 0]}>
         <pointsMaterial
+          ref={stationMaterial}
           color="#a18cff"
+          map={stationTexture}
           size={0.065}
           transparent
           opacity={subdued ? 0.12 : 0.4}
+          alphaTest={0.015}
+          depthWrite={false}
+          blending={THREE.AdditiveBlending}
           sizeAttenuation
+          toneMapped={false}
         />
       </points>
     </>
