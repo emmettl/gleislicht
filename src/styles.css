@@ -236,6 +236,34 @@ footer {
   letter-spacing: 0.14em;
 }
 
+.performance-monitor {
+  position: absolute;
+  right: clamp(24px, 4vw, 58px);
+  bottom: clamp(56px, 8vh, 84px);
+  z-index: 8;
+  display: grid;
+  min-width: 168px;
+  padding: 10px 12px;
+  border: 1px solid rgba(141, 250, 255, 0.34);
+  background: rgba(5, 4, 16, 0.86);
+  font-family: 'DM Mono', ui-monospace, monospace;
+  text-align: right;
+}
+
+.performance-monitor span,
+.performance-monitor small {
+  color: var(--muted);
+  font-size: 0.52rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.performance-monitor strong {
+  margin: 4px 0 2px;
+  color: var(--cyan);
+  font-size: 1rem;
+}
+
 .eyebrow {
   margin: 0 0 5px;
   color: var(--cyan);
@@ -2400,6 +2428,13 @@ footer {
 
   footer {
     display: none;
+  }
+
+  .performance-monitor {
+    right: calc(12px + env(safe-area-inset-right));
+    bottom: calc(102px + env(safe-area-inset-bottom));
+    min-width: 142px;
+    padding: 7px 9px;
   }
 }
 

@@ -1,11 +1,13 @@
 import { describe, expect, it } from 'vitest'
 import {
   chunkNetworkSnapshot,
+  parseGtfsTime,
   parseAgencyIds,
   parseBounds,
   parseModes,
   parseRouteIds,
   transportModeForRouteType,
+  weekdayField,
 } from './ingest-gtfs.mjs'
 
 const compactSnapshot = {
@@ -45,6 +47,17 @@ describe('Swiss GTFS transport modes', () => {
       '96-930-j26-1',
       '96-931-j26-1',
     ])
+  })
+})
+
+describe('service-day calendar edge cases', () => {
+  it('keeps after-midnight GTFS times on the originating service day', () => {
+    expect(parseGtfsTime('25:13:05')).toBe(90_785)
+  })
+
+  it('resolves weekdays independently of Swiss daylight-saving transitions', () => {
+    expect(weekdayField('2026-03-29')).toBe('sunday')
+    expect(weekdayField('2026-10-25')).toBe('sunday')
   })
 })
 

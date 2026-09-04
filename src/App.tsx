@@ -66,6 +66,7 @@ import {
 } from './search-navigation.ts'
 import { foldSearchText } from './search-text.ts'
 import { useProgressiveNetworkDay } from './use-progressive-network-day.ts'
+import { useLocalPerformance } from './use-local-performance.ts'
 
 const GleislichtScene = lazy(() =>
   import('./scene/GleislichtScene.tsx').then(({ GleislichtScene: Scene }) => ({
@@ -173,6 +174,9 @@ function trainSearchText(
 
 export function App() {
   const [webglAvailable] = useState(supportsWebGL)
+  const [performanceEnabled] = useState(() =>
+    new URLSearchParams(window.location.search).has('perf'),
+  )
   const [language, setLanguage] = useState<UiLanguage>(initialUiLanguage)
   const [isPlaying, setIsPlaying] = useState(true)
   const [view, setView] = useState<View>('network')
@@ -223,6 +227,7 @@ export function App() {
   const searchInteractionRef = useRef(false)
   const timelineTimeRef = useRef(networkTime)
   const text = UI_TEXT[language]
+  const performanceSample = useLocalPerformance(performanceEnabled)
   const isContrast = networkStudy === 'contrast'
   const zurichContrast = useProgressiveNetworkDay(
     'zurich-tram-day-manifest.json',
@@ -2307,6 +2312,18 @@ export function App() {
           )}
         </div>
       </section>
+
+      {performanceEnabled && (
+        <aside className="performance-monitor" aria-label="Local performance monitor">
+          <span>Local only · no analytics</span>
+          <strong>{performanceSample ? `${performanceSample.fps} FPS` : 'measuring…'}</strong>
+          <small>
+            {performanceSample
+              ? `${performanceSample.slowFramePercent}% slow frames`
+              : '1 second sample'}
+          </small>
+        </aside>
+      )}
 
       <footer>
         {isTimetable ? (

@@ -69,7 +69,7 @@ function compactDate(value) {
   return value.replaceAll('-', '')
 }
 
-function weekdayField(date) {
+export function weekdayField(date) {
   return [
     'sunday',
     'monday',

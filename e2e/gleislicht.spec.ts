@@ -17,6 +17,13 @@ test('methodology and provenance remain available without the visual client', as
   await expect(page.getByText(/no analytics, advertising, accounts/i)).toBeVisible()
 })
 
+test('local performance telemetry is opt-in and remains on-device', async ({ page }) => {
+  await page.goto('/?perf=1')
+  const monitor = page.getByLabel('Local performance monitor')
+  await expect(monitor).toContainText('Local only · no analytics')
+  await expect(monitor).toContainText(/FPS/, { timeout: 5_000 })
+})
+
 test('search selects a station and exposes its serving routes', async ({ page }) => {
   const search = page.locator('.train-search input[type="search"]')
   await search.fill('Bern')

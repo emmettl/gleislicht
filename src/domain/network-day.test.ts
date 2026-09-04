@@ -42,6 +42,24 @@ describe('network day chunks', () => {
     expect(dayChunkForTime(manifest, 10_800).id).toBe('03-06')
   })
 
+  it('keeps the final instant of a service day in the final chunk', () => {
+    const fullDay = {
+      ...manifest,
+      metadata: { ...manifest.metadata, windowEnd: 86_400 },
+      chunks: [
+        ...manifest.chunks,
+        {
+          id: '21-24',
+          windowStart: 75_600,
+          windowEnd: 86_400,
+          path: '21.json',
+          tripCount: 10,
+        },
+      ],
+    }
+    expect(dayChunkForTime(fullDay, 86_400).id).toBe('21-24')
+  })
+
   it('returns the current chunk and its neighbours for prefetching', () => {
     const current = dayChunkForTime(manifest, 15_000)
     expect(adjacentDayChunks(manifest, current).map((chunk) => chunk.id)).toEqual([
