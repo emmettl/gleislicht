@@ -337,6 +337,7 @@ h1 {
 
 .mobile-language-picker,
 .mobile-study-picker,
+.mobile-hub-picker,
 .mobile-map-tools,
 .mobile-transport-actions {
   display: none;
@@ -859,7 +860,7 @@ h1 {
   text-transform: uppercase;
 }
 
-.hub-picker > div {
+.hub-picker-tabs {
   display: grid;
   flex: 1;
   grid-template-columns: repeat(4, 1fr);
@@ -1629,23 +1630,39 @@ footer {
   }
 
   .hub-picker {
-    top: calc(124px + env(safe-area-inset-top));
-    right: calc(16px + env(safe-area-inset-right));
-    left: calc(16px + env(safe-area-inset-left));
+    top: calc(80px + env(safe-area-inset-top));
+    right: calc(12px + env(safe-area-inset-right));
+    left: auto;
     width: auto;
     display: block;
-    padding: 7px;
+    min-height: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    backdrop-filter: none;
     transform: none;
   }
 
-  .hub-picker > span {
+  .hub-picker > span,
+  .hub-picker-tabs {
     display: none;
   }
 
-  .hub-picker button {
-    min-height: 44px;
-    padding: 0 4px;
-    font-size: 0.61rem;
+  .mobile-hub-picker {
+    display: block;
+  }
+
+  .mobile-hub-picker .mobile-picker__trigger {
+    width: 142px;
+    min-height: 42px;
+    padding: 0 10px;
+    border: 1px solid rgba(141, 250, 255, 0.28);
+    background: rgba(7, 7, 22, 0.76);
+    color: var(--ink);
+  }
+
+  .mobile-hub-picker .mobile-picker__menu {
+    min-width: 196px;
   }
 
   .search-results > button {
@@ -2430,6 +2447,106 @@ footer {
   .mobile-day-presets button[aria-pressed='true'] {
     border-color: rgba(141, 250, 255, 0.55);
     background: rgba(26, 64, 79, 0.52);
+  }
+
+  .view-hub .hub-card {
+    top: calc(132px + env(safe-area-inset-top));
+    right: calc(12px + env(safe-area-inset-right));
+    left: calc(12px + env(safe-area-inset-left));
+    display: grid;
+    width: auto;
+    grid-template-columns: minmax(82px, 0.6fr) minmax(0, 1.7fr);
+    gap: 7px 12px;
+    padding: 9px 10px 10px;
+    clip-path: none;
+    background: linear-gradient(120deg, rgba(22, 9, 41, 0.78), rgba(5, 7, 24, 0.56));
+    backdrop-filter: blur(10px);
+    transform: none;
+  }
+
+  .view-hub .hub-card-header {
+    grid-column: 1 / -1;
+    align-items: center;
+    margin: 0;
+  }
+
+  .view-hub .hub-kicker {
+    max-width: 76px;
+    font-size: 0.53rem;
+    line-height: 1.25;
+  }
+
+  .view-hub .hub-study-picker {
+    display: grid;
+    flex: 1;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    padding: 0;
+  }
+
+  .view-hub .hub-study-picker button {
+    min-height: 42px;
+    padding: 0 5px;
+    font-size: 0.5rem;
+  }
+
+  .view-hub .hub-card .network-count-row {
+    display: block;
+    padding-top: 7px;
+    border-top: 1px solid var(--line);
+  }
+
+  .view-hub .hub-card .network-count-row strong {
+    display: block;
+    font-size: 1.45rem;
+    line-height: 1;
+  }
+
+  .view-hub .hub-card .network-count-row span {
+    display: block;
+    max-width: 76px;
+    margin-top: 4px;
+    font-size: 0.56rem;
+    line-height: 1.08;
+  }
+
+  .view-hub .hub-card .between {
+    display: none;
+  }
+
+  .view-hub .hub-card .metric-grid {
+    gap: 8px;
+  }
+
+  .view-hub .hub-card .metric-grid > div {
+    min-width: 0;
+    padding-top: 7px;
+  }
+
+  .view-hub .hub-card .metric-grid span {
+    font-size: 0.5rem;
+  }
+
+  .view-hub .hub-card .metric-grid strong,
+  .view-hub .hub-card .destination-metric {
+    display: block;
+    overflow: hidden;
+    margin-top: 5px;
+    font-size: 0.78rem !important;
+    line-height: 1.15;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .view-hub .hub-card .metric-grid small {
+    display: none;
+  }
+
+  .view-hub .transport {
+    padding: 5px 8px 6px;
+  }
+
+  .view-hub .progress-value {
+    display: none;
   }
 
   footer {

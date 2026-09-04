@@ -1153,7 +1153,9 @@ export function App() {
                   : networkStudy === 'geneva-tpg'
                     ? text.genevaSubtitle
                   : text.subtitle
-              : text.subtitle}
+              : isHub
+                ? text.taktHubs
+                : text.subtitle}
           </h1>
         </div>
         <div className="masthead-meta">
@@ -1609,7 +1611,7 @@ export function App() {
       {isHub && (
         <nav className="hub-picker" aria-label={text.taktStation}>
           <span>{text.taktPulse}</span>
-          <div>
+          <div className="hub-picker-tabs">
             {HUBS.map((hub) => (
               <button
                 key={hub.id}
@@ -1621,6 +1623,16 @@ export function App() {
               </button>
             ))}
           </div>
+          <MobilePicker
+            className="mobile-hub-picker"
+            ariaLabel={text.taktStation}
+            value={selectedHub.id}
+            options={HUBS.map((hub) => ({
+              value: hub.id,
+              label: hub.displayName,
+            }))}
+            onChange={(hubId) => setSelectedHubId(hubId as HubId)}
+          />
         </nav>
       )}
 

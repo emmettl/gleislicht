@@ -88,6 +88,43 @@ test('the hub clock exposes its quarter-hour structure', async ({ page }, testIn
   await expect(quarterGrid).toHaveAttribute('aria-pressed', 'false')
 })
 
+test('the mobile Takt chrome leaves the clock visible and usable', async ({
+  page,
+}, testInfo) => {
+  test.skip(testInfo.project.name !== 'iphone-webkit')
+
+  const moreControls = page.locator('.mobile-more-controls')
+  await moreControls.locator('summary').click()
+  await moreControls.getByRole('button', { name: 'Takt hubs' }).click()
+  await moreControls.locator('summary').click()
+
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Takt hubs')
+  await expect(page.locator('.hub-picker-tabs')).toBeHidden()
+  const hubPicker = page.locator('.mobile-hub-picker')
+  await expect(hubPicker).toBeVisible()
+  await hubPicker.locator('.mobile-picker__trigger').click()
+  await hubPicker.getByRole('option', { name: 'Bern' }).click()
+  await expect(hubPicker.locator('.mobile-picker__trigger')).toContainText('Bern')
+
+  const viewport = page.viewportSize()
+  const pickerBox = await page.locator('.hub-picker').boundingBox()
+  const cardBox = await page.locator('.hub-card').boundingBox()
+  const transportBox = await page.locator('.transport').boundingBox()
+  expect(viewport).not.toBeNull()
+  expect(pickerBox).not.toBeNull()
+  expect(cardBox).not.toBeNull()
+  expect(transportBox).not.toBeNull()
+  if (!viewport || !pickerBox || !cardBox || !transportBox) return
+
+  expect(cardBox.height).toBeLessThan(175)
+  expect(cardBox.width).toBeGreaterThan(viewport.width - 30)
+  expect(pickerBox.y + pickerBox.height).toBeLessThanOrEqual(cardBox.y + 1)
+  expect(cardBox.y + cardBox.height).toBeLessThan(transportBox.y)
+  expect(transportBox.y + transportBox.height).toBeLessThanOrEqual(
+    viewport.height + 1,
+  )
+})
+
 test('wide and compact desktop layouts keep primary overlays separated', async ({
   page,
 }, testInfo) => {
