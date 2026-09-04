@@ -1268,7 +1268,7 @@ footer {
   }
 }
 
-@media (max-width: 420px) {
+@media (max-width: 620px) {
   .network-card {
     width: auto;
     max-width: calc(100vw - 32px);
