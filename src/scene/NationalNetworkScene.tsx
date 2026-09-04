@@ -25,7 +25,11 @@ import {
   trainLabelBudget,
   type TrainLabelMode,
 } from './train-labels.ts'
-import { applyMapZoom } from './map-camera.ts'
+import {
+  applyMapZoom,
+  homeMapDistanceScale,
+  type MapCameraFraming,
+} from './map-camera.ts'
 
 export type MapCameraAction = 'zoom-in' | 'zoom-out' | 'reset'
 
@@ -47,6 +51,7 @@ interface NationalNetworkSceneProps {
   readonly selectedStation?: StationIndexEntry
   readonly stations: readonly StationIndexEntry[]
   readonly trainLabelMode: TrainLabelMode
+  readonly cameraFraming: MapCameraFraming
 }
 
 type ProjectedStop = readonly [x: number, y: number, z: number]
@@ -1111,12 +1116,14 @@ function NetworkCamera({
   projectedStops,
   cameraCommand,
   selectedStation,
+  cameraFraming,
 }: {
   readonly selectedTrain?: NetworkTrain
   readonly time: number
   readonly projectedStops: readonly ProjectedStop[]
   readonly cameraCommand?: MapCameraCommand
   readonly selectedStation?: StationIndexEntry
+  readonly cameraFraming: MapCameraFraming
 }) {
   const { camera, gl } = useThree()
   const desiredPosition = useMemo(() => new THREE.Vector3(0, 37, 26), [])
@@ -1127,16 +1134,21 @@ function NetworkCamera({
   const lastCommand = useRef(0)
 
   useEffect(() => {
+    mapTarget.current.set(0, 0, 0)
+    distanceScale.current = homeMapDistanceScale(cameraFraming)
+  }, [cameraFraming])
+
+  useEffect(() => {
     if (!cameraCommand || cameraCommand.id === lastCommand.current) return
     lastCommand.current = cameraCommand.id
     if (cameraCommand.action === 'reset') {
       mapTarget.current.set(0, 0, 0)
-      distanceScale.current = 1
+      distanceScale.current = homeMapDistanceScale(cameraFraming)
       return
     }
     const multiplier = cameraCommand.action === 'zoom-in' ? 0.78 : 1.28
     distanceScale.current = applyMapZoom(distanceScale.current, multiplier)
-  }, [cameraCommand])
+  }, [cameraCommand, cameraFraming])
 
   useEffect(() => {
     if (!selectedStation) return
@@ -1283,6 +1295,7 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
         projectedStops={projectedStops}
         cameraCommand={props.cameraCommand}
         selectedStation={props.selectedStation}
+        cameraFraming={props.cameraFraming}
       />
     </>
   )

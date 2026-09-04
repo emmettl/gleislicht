@@ -26,7 +26,7 @@ Keyboard controls: `Space` pauses or resumes; `C` returns to or switches from th
 
 Search the national view by station, service, train number, origin, or destination. The result list supports arrow-key navigation, Home/End, Enter to select, and Escape to close. Selecting a train isolates its scheduled path and carries the camera down to follow it. Selecting a station centres the map, marks the station, and illuminates the complete scheduled paths of every service calling there in the morning study. Train lights are colour-coded by service class from international and InterCity through S-Bahn and regional services.
 
-Use the **CH / ZH** switch in the search bar to move between Switzerland's rail atlas and the separate Zürich city artifact. The city view keeps tram, bus, rail and funicular movements distinct without adding their data to the national page load. See [docs/REGIONAL-STUDIES.md](./docs/REGIONAL-STUDIES.md) for the ZVV, Genève/TPG and rural PostBus direction.
+Use the **CH / ZH** switch in the search bar to move between Switzerland's rail atlas and the separate Zürich city artifact. The camera eases into a closer fit around the Zürich study when ZH is selected and restores the national framing on CH; Reset always returns to the active study's home view. The city view keeps tram, bus, rail and funicular movements distinct without adding their data to the national page load. See [docs/REGIONAL-STUDIES.md](./docs/REGIONAL-STUDIES.md) for the ZVV, Genève/TPG and rural PostBus direction.
 
 Click a service category in the colour legend to highlight that fleet and dim the other trains; click the active category again to clear the filter. The same focus carries into the Takt hub view.
 

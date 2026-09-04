@@ -495,6 +495,11 @@ export function App() {
             playbackRate={playbackRate}
             selectedCategory={selectedCategory}
             selectedStation={selectedStation}
+            cameraFraming={
+              networkStudy === 'zurich-city' && zurichCityNetwork
+                ? 'zurich'
+                : 'switzerland'
+            }
           />
         ) : isHub && network && hubStudy === 'station' ? (
           <StationFlowScene

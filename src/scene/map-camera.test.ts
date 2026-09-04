@@ -1,11 +1,18 @@
 import { describe, expect, it } from 'vitest'
 import {
   applyMapZoom,
+  homeMapDistanceScale,
   MAX_MAP_DISTANCE_SCALE,
   MIN_MAP_DISTANCE_SCALE,
 } from './map-camera.ts'
 
 describe('map camera zoom', () => {
+  it('uses a closer home framing for the Zürich study', () => {
+    expect(homeMapDistanceScale('switzerland')).toBe(1)
+    expect(homeMapDistanceScale('zurich')).toBeLessThan(1)
+    expect(homeMapDistanceScale('zurich')).toBeGreaterThan(MIN_MAP_DISTANCE_SCALE)
+  })
+
   it('preserves direct movement inside the useful zoom range', () => {
     expect(applyMapZoom(1, 0.9)).toBeCloseTo(0.9)
     expect(applyMapZoom(0.8, 1.1)).toBeCloseTo(0.88)
