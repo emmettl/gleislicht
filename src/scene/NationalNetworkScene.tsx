@@ -54,6 +54,7 @@ import {
   mapCameraFieldOfView,
   mapPanScale,
   mapWheelZoomMultiplier,
+  minimumMapDistanceScale,
   type MapCameraFraming,
 } from './map-camera.ts'
 import {
@@ -2493,15 +2494,27 @@ function NetworkCamera({
   const distanceScale = useRef(1)
   const directTouch = useRef(false)
   const lastCommand = useRef(0)
+  const viewportAspect = size.height > 0 ? size.width / size.height : 1
+  const minimumDistanceScale = minimumMapDistanceScale(
+    cameraFraming,
+    viewportAspect,
+  )
 
   useEffect(() => {
     if (!(camera instanceof THREE.PerspectiveCamera) || size.height <= 0) return
-    const fieldOfView = mapCameraFieldOfView(size.width / size.height)
+    const fieldOfView = mapCameraFieldOfView(viewportAspect)
     const focalLength =
       (0.5 * camera.getFilmHeight()) /
       Math.tan(THREE.MathUtils.degToRad(fieldOfView * 0.5))
     camera.setFocalLength(focalLength)
-  }, [camera, size.height, size.width])
+  }, [camera, size.height, viewportAspect])
+
+  useEffect(() => {
+    distanceScale.current = Math.max(
+      minimumDistanceScale,
+      distanceScale.current,
+    )
+  }, [minimumDistanceScale])
 
   useEffect(() => {
     mapTarget.current.copy(mapFocus)
@@ -2517,8 +2530,12 @@ function NetworkCamera({
       return
     }
     const multiplier = cameraCommand.action === 'zoom-in' ? 0.78 : 1.28
-    distanceScale.current = applyMapZoom(distanceScale.current, multiplier)
-  }, [cameraCommand, cameraFraming, mapFocus])
+    distanceScale.current = applyMapZoom(
+      distanceScale.current,
+      multiplier,
+      minimumDistanceScale,
+    )
+  }, [cameraCommand, cameraFraming, mapFocus, minimumDistanceScale])
 
   useEffect(() => {
     if (!selectedStation) return
@@ -2569,6 +2586,7 @@ function NetworkCamera({
           distanceScale.current = applyMapZoom(
             distanceScale.current,
             pinchDistance / nextDistance,
+            minimumDistanceScale,
           )
         }
         pinchDistance = nextDistance
@@ -2587,6 +2605,7 @@ function NetworkCamera({
       distanceScale.current = applyMapZoom(
         distanceScale.current,
         mapWheelZoomMultiplier(event.deltaY, event.deltaMode),
+        minimumDistanceScale,
       )
       event.preventDefault()
     }
@@ -2603,7 +2622,7 @@ function NetworkCamera({
       element.removeEventListener('pointercancel', onPointerUp)
       element.removeEventListener('wheel', onWheel)
     }
-  }, [gl, selectedTrain])
+  }, [gl, minimumDistanceScale, selectedTrain])
 
   useFrame((_, delta) => {
     const trainPosition = selectedTrain

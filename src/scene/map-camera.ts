@@ -2,6 +2,10 @@ export const MIN_MAP_DISTANCE_SCALE = 0.02
 export const MAX_MAP_DISTANCE_SCALE = 1.18
 export type MapCameraFraming = 'switzerland' | 'zvv' | 'geneva' | 'zurich'
 
+const MIN_REGIONAL_MAP_DISTANCE_SCALE = 0.012
+const MIN_CITY_MAP_DISTANCE_SCALE = 0.01
+const MIN_PORTRAIT_CITY_MAP_DISTANCE_SCALE = 0.008
+
 const LANDSCAPE_MAP_FIELD_OF_VIEW = 44
 const MAX_PORTRAIT_MAP_FIELD_OF_VIEW = 82
 
@@ -28,6 +32,16 @@ export function homeMapDistanceScale(framing: MapCameraFraming): number {
   if (framing === 'geneva') return 0.13
   if (framing === 'zvv') return 0.24
   return 1
+}
+
+export function minimumMapDistanceScale(
+  framing: MapCameraFraming,
+  viewportAspect: number,
+): number {
+  if (framing === 'switzerland') return MIN_MAP_DISTANCE_SCALE
+  if (framing === 'zvv') return MIN_REGIONAL_MAP_DISTANCE_SCALE
+  if (viewportAspect < 0.8) return MIN_PORTRAIT_CITY_MAP_DISTANCE_SCALE
+  return MIN_CITY_MAP_DISTANCE_SCALE
 }
 
 const EDGE_EASING = 0.42
@@ -67,14 +81,22 @@ export function mapWheelZoomMultiplier(
  * limits. Repeated wheel or pinch input can approach an edge but never push the map
  * through the scene fog.
  */
-export function applyMapZoom(current: number, multiplier: number): number {
+export function applyMapZoom(
+  current: number,
+  multiplier: number,
+  minimumScale = MIN_MAP_DISTANCE_SCALE,
+): number {
+  const safeMinimum = Math.min(
+    MAX_MAP_DISTANCE_SCALE,
+    Math.max(0.001, minimumScale),
+  )
   const safeCurrent = Math.min(
     MAX_MAP_DISTANCE_SCALE,
-    Math.max(MIN_MAP_DISTANCE_SCALE, current),
+    Math.max(safeMinimum, current),
   )
   const proposed = safeCurrent * multiplier
-  if (proposed < MIN_MAP_DISTANCE_SCALE) {
-    return safeCurrent + (MIN_MAP_DISTANCE_SCALE - safeCurrent) * EDGE_EASING
+  if (proposed < safeMinimum) {
+    return safeCurrent + (safeMinimum - safeCurrent) * EDGE_EASING
   }
   if (proposed > MAX_MAP_DISTANCE_SCALE) {
     return safeCurrent + (MAX_MAP_DISTANCE_SCALE - safeCurrent) * EDGE_EASING

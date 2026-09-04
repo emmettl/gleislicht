@@ -8,6 +8,7 @@ import {
   mapWheelZoomMultiplier,
   MAX_MAP_DISTANCE_SCALE,
   MIN_MAP_DISTANCE_SCALE,
+  minimumMapDistanceScale,
 } from './map-camera.ts'
 
 describe('map camera zoom', () => {
@@ -29,6 +30,18 @@ describe('map camera zoom', () => {
     expect(homeMapDistanceScale('geneva')).toBeCloseTo(0.13)
     expect(homeMapDistanceScale('zurich')).toBeCloseTo(0.06)
     expect(homeMapDistanceScale('zurich')).toBeGreaterThan(MIN_MAP_DISTANCE_SCALE)
+  })
+
+  it('allows a substantially tighter close zoom in portrait city studies', () => {
+    expect(minimumMapDistanceScale('switzerland', 390 / 844)).toBe(0.02)
+    expect(minimumMapDistanceScale('zvv', 390 / 844)).toBe(0.012)
+    expect(minimumMapDistanceScale('geneva', 390 / 844)).toBe(0.008)
+    expect(minimumMapDistanceScale('zurich', 390 / 844)).toBe(0.008)
+    expect(minimumMapDistanceScale('zurich', 16 / 9)).toBe(0.01)
+
+    const closeCityZoom = applyMapZoom(0.011, 0.5, 0.008)
+    expect(closeCityZoom).toBeGreaterThan(0.008)
+    expect(closeCityZoom).toBeLessThan(0.011)
   })
 
   it('preserves direct movement inside the useful zoom range', () => {
