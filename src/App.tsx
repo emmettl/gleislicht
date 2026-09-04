@@ -1023,7 +1023,7 @@ export function App() {
                 selectedStation?.name ??
                 (selectedCategory
                   ? serviceCategoryLabel(language, selectedCategory)
-                  : text.stopGeometry)}
+                  : text.trafficFrequency)}
             </span>
           </>
         ) : (

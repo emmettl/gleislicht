@@ -28,6 +28,7 @@ import {
   trainLabelBudget,
   type TrainLabelMode,
 } from './train-labels.ts'
+import { edgeTrafficWeights } from './traffic-weights.ts'
 import {
   applyMapZoom,
   homeMapDistanceScale,
@@ -216,10 +217,12 @@ function RailGraph({
   snapshot,
   projectedStops,
   subdued,
+  showTraffic = true,
 }: {
   readonly snapshot: NetworkSnapshot
   readonly projectedStops: readonly ProjectedStop[]
   readonly subdued: boolean
+  readonly showTraffic?: boolean
 }) {
   const railGeometry = useMemo(() => {
     const positions = new Float32Array(snapshot.edges.length * 6)
@@ -252,10 +255,17 @@ function RailGraph({
         <lineBasicMaterial
           color="#7296bb"
           transparent
-          opacity={subdued ? 0.07 : 0.25}
+          opacity={subdued ? 0.07 : 0.14}
           blending={THREE.AdditiveBlending}
         />
       </lineSegments>
+      {showTraffic && (
+        <TrafficFlowLayer
+          snapshot={snapshot}
+          projectedStops={projectedStops}
+          subdued={subdued}
+        />
+      )}
       <points geometry={stationGeometry} position={[0, 0.035, 0]}>
         <pointsMaterial
           color="#a18cff"
@@ -266,6 +276,106 @@ function RailGraph({
         />
       </points>
     </>
+  )
+}
+
+function TrafficFlowLayer({
+  snapshot,
+  projectedStops,
+  subdued,
+}: {
+  readonly snapshot: NetworkSnapshot
+  readonly projectedStops: readonly ProjectedStop[]
+  readonly subdued: boolean
+}) {
+  const pulseMaterial = useRef<THREE.LineBasicMaterial>(null)
+  const geometries = useMemo(() => {
+    const { strengths } = edgeTrafficWeights(snapshot)
+    const weightedPositions: number[] = []
+    const weightedColors: number[] = []
+    const pulsePositions: number[] = []
+    const pulseColors: number[] = []
+    const quiet = new THREE.Color('#18204a')
+    const busy = new THREE.Color('#8dfaff')
+
+    snapshot.edges.forEach(([fromIndex, toIndex], edgeIndex) => {
+      const strength = strengths[edgeIndex] ?? 0
+      const from = projectedStops[fromIndex]
+      const to = projectedStops[toIndex]
+      if (!strength || !from || !to) return
+
+      const color = quiet.clone().lerp(busy, strength)
+      color.multiplyScalar(0.2 + strength * 0.8)
+      weightedPositions.push(...from, ...to)
+      weightedColors.push(color.r, color.g, color.b, color.r, color.g, color.b)
+
+      if (strength >= 0.82) {
+        pulsePositions.push(...from, ...to)
+        pulseColors.push(color.r, color.g, color.b, color.r, color.g, color.b)
+      }
+    })
+
+    const weighted = new THREE.BufferGeometry()
+    weighted.setAttribute(
+      'position',
+      new THREE.Float32BufferAttribute(weightedPositions, 3),
+    )
+    weighted.setAttribute(
+      'color',
+      new THREE.Float32BufferAttribute(weightedColors, 3),
+    )
+    const pulse = new THREE.BufferGeometry()
+    pulse.setAttribute(
+      'position',
+      new THREE.Float32BufferAttribute(pulsePositions, 3),
+    )
+    pulse.setAttribute(
+      'color',
+      new THREE.Float32BufferAttribute(pulseColors, 3),
+    )
+    return { weighted, pulse }
+  }, [projectedStops, snapshot])
+
+  useEffect(
+    () => () => {
+      geometries.weighted.dispose()
+      geometries.pulse.dispose()
+    },
+    [geometries],
+  )
+
+  useFrame(({ clock }) => {
+    if (!pulseMaterial.current) return
+    const wave = 0.5 + Math.sin(clock.elapsedTime * 1.35) * 0.5
+    pulseMaterial.current.opacity = subdued
+      ? 0.025 + wave * 0.02
+      : 0.1 + wave * 0.12
+  })
+
+  return (
+    <group position={[0, 0.055, 0]}>
+      <lineSegments geometry={geometries.weighted} renderOrder={1}>
+        <lineBasicMaterial
+          vertexColors
+          transparent
+          opacity={subdued ? 0.1 : 0.62}
+          blending={THREE.AdditiveBlending}
+          depthWrite={false}
+          toneMapped={false}
+        />
+      </lineSegments>
+      <lineSegments geometry={geometries.pulse} renderOrder={2}>
+        <lineBasicMaterial
+          ref={pulseMaterial}
+          vertexColors
+          transparent
+          opacity={subdued ? 0.035 : 0.16}
+          blending={THREE.AdditiveBlending}
+          depthWrite={false}
+          toneMapped={false}
+        />
+      </lineSegments>
+    </group>
   )
 }
 
@@ -1332,6 +1442,7 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
           snapshot={props.contextSnapshot}
           projectedStops={contextProjectedStops}
           subdued
+          showTraffic={false}
         />
       )}
       <RailGraph
