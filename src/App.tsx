@@ -12,6 +12,7 @@ import type {
   GleislichtSoundtrack,
   SoundtrackMode,
 } from './audio/gleislicht-soundtrack.ts'
+import { MobilePicker } from './components/MobilePicker.tsx'
 import {
   callsAtHub,
   callsNearTime,
@@ -1035,20 +1036,19 @@ export function App() {
                 </button>
               ))}
             </nav>
-            <label className="mobile-language-picker">
-              <span className="sr-only">{text.languagePicker}</span>
-              <select
-                value={language}
-                aria-label={text.languagePicker}
-                onChange={(event) => setLanguage(event.target.value as UiLanguage)}
-              >
-                {UI_LANGUAGES.map((option) => (
-                  <option key={option.id} value={option.id}>
-                    {option.label}
-                  </option>
-                ))}
-              </select>
-            </label>
+            <MobilePicker
+              className="mobile-language-picker"
+              ariaLabel={text.languagePicker}
+              value={language}
+              options={UI_LANGUAGES.map((option) => ({
+                value: option.id,
+                label: option.label,
+                detail: option.name,
+              }))}
+              onChange={(nextLanguage) =>
+                setLanguage(nextLanguage as UiLanguage)
+              }
+            />
           </div>
           <section
             className={`soundtrack-control is-${soundtrackState}`}
@@ -1291,38 +1291,61 @@ export function App() {
                 ZH
               </button>
             </nav>
-            <label className="mobile-study-picker">
-              <span className="sr-only">{text.networkStudy}</span>
-              <select
-                aria-label={text.networkStudy}
-                value={
-                  isContrast
-                    ? 'contrast'
+            <MobilePicker
+              className="mobile-study-picker"
+              ariaLabel={text.networkStudy}
+              value={
+                isContrast
+                  ? 'contrast'
+                  : networkStudy === 'national'
+                    ? `national-${nationalTimeRange}`
+                    : networkStudy
+              }
+              options={[
+                {
+                  value: 'national-morning',
+                  label: 'CH',
+                  detail: text.swissMorningNetwork,
+                },
+                {
+                  value: 'national-day',
+                  label: '24H',
+                  detail: text.swissDayNetwork,
+                },
+                {
+                  value: 'contrast',
+                  label: '↔',
+                  detail: text.contrastNetwork,
+                },
+                { value: 'zvv-region', label: 'ZVV', detail: text.zvvNetwork },
+                { value: 'geneva-tpg', label: 'GE', detail: text.genevaNetwork },
+                { value: 'zurich-city', label: 'ZH', detail: text.zurichNetwork },
+              ]}
+              triggerLabel={
+                isContrast
+                  ? '↔'
+                  : networkStudy === 'national' && nationalTimeRange === 'day'
+                    ? '24H'
                     : networkStudy === 'national'
-                      ? `national-${nationalTimeRange}`
-                      : networkStudy
+                      ? 'CH'
+                      : networkStudy === 'zvv-region'
+                        ? 'ZVV'
+                        : networkStudy === 'geneva-tpg'
+                          ? 'GE'
+                          : 'ZH'
+              }
+              onChange={(study) => {
+                if (study === 'national-morning') {
+                  selectNetworkStudy('national', 'morning')
+                } else if (study === 'national-day') {
+                  selectNetworkStudy('national', 'day')
+                } else if (study === 'contrast') {
+                  selectNetworkStudy('contrast')
+                } else {
+                  selectNetworkStudy(study as NetworkStudy)
                 }
-                onChange={(event) => {
-                  const study = event.target.value
-                  if (study === 'national-morning') {
-                    selectNetworkStudy('national', 'morning')
-                  } else if (study === 'national-day') {
-                    selectNetworkStudy('national', 'day')
-                  } else if (study === 'contrast') {
-                    selectNetworkStudy('contrast')
-                  } else {
-                    selectNetworkStudy(study as NetworkStudy)
-                  }
-                }}
-              >
-                <option value="national-morning">CH</option>
-                <option value="national-day">CH · 24H</option>
-                <option value="contrast">ZH ↔ 220</option>
-                <option value="zvv-region">ZVV</option>
-                <option value="geneva-tpg">GE</option>
-                <option value="zurich-city">ZH</option>
-              </select>
-            </label>
+              }}
+            />
             {searchQuery && (
               <button
                 className="clear-search"
@@ -1859,41 +1882,42 @@ export function App() {
                   </button>
                 </div>
               )}
-              <label>
+              <div className="mobile-tool-field">
                 <span>{text.services}</span>
-                <select
+                <MobilePicker
+                  ariaLabel={text.filterServices}
                   value={selectedCategory ?? ''}
-                  aria-label={text.filterServices}
-                  onChange={(event) =>
+                  options={[
+                    { value: '', label: text.allServices },
+                    ...visibleServiceCategories.map((category) => ({
+                      value: category.id,
+                      label: serviceCategoryLabel(language, category.id),
+                    })),
+                  ]}
+                  onChange={(category) =>
                     setSelectedCategory(
-                      (event.target.value || undefined) as
+                      (category || undefined) as
                         | ServiceCategory
                         | undefined,
                     )
                   }
-                >
-                  <option value="">{text.allServices}</option>
-                  {visibleServiceCategories.map((category) => (
-                    <option key={category.id} value={category.id}>
-                      {serviceCategoryLabel(language, category.id)}
-                    </option>
-                  ))}
-                </select>
-              </label>
-              <label>
+                />
+              </div>
+              <div className="mobile-tool-field">
                 <span>{text.labels}</span>
-                <select
+                <MobilePicker
+                  ariaLabel={text.vehicleLabels}
                   value={trainLabelMode}
-                  aria-label={text.vehicleLabels}
-                  onChange={(event) =>
-                    setTrainLabelMode(event.target.value as TrainLabelMode)
+                  options={[
+                    { value: 'auto', label: text.labelModes.auto },
+                    { value: 'on', label: text.labelModes.on },
+                    { value: 'off', label: text.labelModes.off },
+                  ]}
+                  onChange={(labelMode) =>
+                    setTrainLabelMode(labelMode as TrainLabelMode)
                   }
-                >
-                  <option value="auto">{text.labelModes.auto}</option>
-                  <option value="on">{text.labelModes.on}</option>
-                  <option value="off">{text.labelModes.off}</option>
-                </select>
-              </label>
+                />
+              </div>
             </div>
           </details>
         </div>
@@ -1992,20 +2016,17 @@ export function App() {
             <span aria-hidden="true">{isPlaying ? 'Ⅱ' : '▶'}</span>
           </button>
           {isTimetable && (
-            <label className="mobile-speed-select">
-              <span className="sr-only">{text.playbackSpeed}</span>
-              <select
-                value={playbackRate}
-                aria-label={text.playbackSpeed}
-                onChange={(event) => setPlaybackRate(Number(event.target.value))}
-              >
-                {PLAYBACK_RATES.map((rate) => (
-                  <option key={rate.label} value={rate.value}>
-                    {rate.label}
-                  </option>
-                ))}
-              </select>
-            </label>
+            <MobilePicker
+              className="mobile-speed-select"
+              menuPlacement="up"
+              ariaLabel={text.playbackSpeed}
+              value={String(playbackRate)}
+              options={PLAYBACK_RATES.map((rate) => ({
+                value: String(rate.value),
+                label: rate.label,
+              }))}
+              onChange={(rate) => setPlaybackRate(Number(rate))}
+            />
           )}
           <details className="mobile-more-controls">
             <summary aria-label={text.moreControls}>•••</summary>
