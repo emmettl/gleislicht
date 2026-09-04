@@ -1,7 +1,7 @@
 import { spawn } from 'node:child_process'
 import { createWriteStream } from 'node:fs'
 import { mkdir } from 'node:fs/promises'
-import { dirname, resolve } from 'node:path'
+import { basename, dirname, extname, join, resolve } from 'node:path'
 import { createInterface } from 'node:readline'
 
 const DEFAULT_OUTPUT = 'public/data/swiss-rail-morning.json'
@@ -429,13 +429,77 @@ async function writeJson(filePath, value) {
   })
 }
 
+export function chunkNetworkSnapshot(snapshot, chunkSeconds, chunkDirectoryName) {
+  if (!Number.isFinite(chunkSeconds) || chunkSeconds <= 0) {
+    throw new Error('Chunk duration must be a positive number of seconds')
+  }
+  const chunks = []
+  for (
+    let windowStart = snapshot.metadata.windowStart;
+    windowStart < snapshot.metadata.windowEnd;
+    windowStart += chunkSeconds
+  ) {
+    const windowEnd = Math.min(
+      snapshot.metadata.windowEnd,
+      windowStart + chunkSeconds,
+    )
+    const startHour = String(Math.floor(windowStart / 3600)).padStart(2, '0')
+    const endHour = String(Math.ceil(windowEnd / 3600)).padStart(2, '0')
+    const id = `${startHour}-${endHour}`
+    const trains = snapshot.trains.filter(
+      (train) => train.start <= windowEnd && train.end >= windowStart,
+    )
+    chunks.push({
+      descriptor: {
+        id,
+        windowStart,
+        windowEnd,
+        path: `${chunkDirectoryName}/${id}.json`,
+        tripCount: trains.length,
+      },
+      payload: { windowStart, windowEnd, trains },
+    })
+  }
+
+  return {
+    manifest: {
+      metadata: snapshot.metadata,
+      bounds: snapshot.bounds,
+      stops: snapshot.stops,
+      edges: snapshot.edges,
+      tripCount: snapshot.trains.length,
+      chunks: chunks.map(({ descriptor }) => descriptor),
+    },
+    chunks,
+  }
+}
+
+async function writeChunkedNetworkSnapshot(output, snapshot, chunkHours) {
+  const outputDirectory = dirname(output)
+  const outputStem = basename(output, extname(output)).replace(/-manifest$/, '')
+  const chunkDirectoryName = `${outputStem}-chunks`
+  const chunkDirectory = join(outputDirectory, chunkDirectoryName)
+  const { manifest, chunks } = chunkNetworkSnapshot(
+    snapshot,
+    chunkHours * 3600,
+    chunkDirectoryName,
+  )
+  await Promise.all([
+    writeJson(output, manifest),
+    ...chunks.map(({ descriptor, payload }) =>
+      writeJson(join(outputDirectory, descriptor.path), payload),
+    ),
+  ])
+  return { chunkDirectory, chunkCount: chunks.length }
+}
+
 async function main() {
   if (process.argv.includes('--help')) {
     console.log(
       'Usage: npm run data:gtfs -- --archive /path/feed.zip --date YYYY-MM-DD ' +
         '[--window-start 06:45] [--window-end 08:45] [--focus 07:45] ' +
         '[--modes rail|all|rail,tram,bus] [--bounds minLon,minLat,maxLon,maxLat] ' +
-        '[--output morning.json] [--hub-output day.json|none]',
+        '[--output morning.json] [--hub-output day.json|none] [--chunk-hours 3]',
     )
     return
   }
@@ -448,6 +512,11 @@ async function main() {
   const output = resolve(argument('output', DEFAULT_OUTPUT))
   const hubOutputArgument = argument('hub-output', DEFAULT_HUB_OUTPUT)
   const hubOutput = hubOutputArgument === 'none' ? undefined : resolve(hubOutputArgument)
+  const chunkHoursArgument = argument('chunk-hours')
+  const chunkHours = chunkHoursArgument ? Number(chunkHoursArgument) : undefined
+  if (chunkHours !== undefined && (!Number.isFinite(chunkHours) || chunkHours <= 0)) {
+    throw new Error('--chunk-hours must be a positive number')
+  }
   const modes = parseModes(argument('modes', 'rail'))
   const displayBounds = parseBounds(argument('bounds'))
   const windowStart = parseClock(windowStartLabel)
@@ -518,11 +587,15 @@ async function main() {
     hubs,
   } : undefined
 
-  const writes = [writeJson(output, result)]
+  const writes = [
+    chunkHours
+      ? writeChunkedNetworkSnapshot(output, result, chunkHours)
+      : writeJson(output, result),
+  ]
   if (hubOutput && hubResult) writes.push(writeJson(hubOutput, hubResult))
   await Promise.all(writes)
   console.log(
-    `Wrote ${snapshot.trains.length} morning trips, ${snapshot.edges.length} network edges, ` +
+    `Wrote ${snapshot.trains.length} trips, ${snapshot.edges.length} network edges, ` +
       `${snapshot.stops.length} stops and ${snapshot.trainsAtFocus} trains moving at ${focusLabel}.`,
   )
   console.log(`Read ${rowsRead.toLocaleString('en')} stop-time rows → ${output}`)

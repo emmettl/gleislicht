@@ -33,7 +33,7 @@ npm run data:day -- \
   --focus 07:45
 ```
 
-This writes `public/data/swiss-rail-day.json`. The browser does not request it during the initial morning view; it is fetched only when the viewer selects **24H**. The renderer uses a coarse time index so the full-day file can remain searchable while each animation frame considers only services near the current time.
+This writes a compact `public/data/swiss-rail-day-manifest.json` containing the shared topology and eight three-hour movement files under `public/data/swiss-rail-day-chunks/`. The browser requests none of them during the initial morning view. Selecting **24H** loads the manifest and the current three-hour block first, then prefetches the neighbouring blocks for seamless playback. Trips crossing a boundary are present in both adjoining blocks. The renderer also uses a coarse time index so each animation frame considers only services near the current time.
 
 The same streaming ingester can create a separate multimodal regional artifact. The committed Zürich city study is regenerated from the same national archive with:
 

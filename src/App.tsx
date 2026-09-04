@@ -22,12 +22,19 @@ import {
 } from './domain/hub.ts'
 import { positionOnJourney, prototypeJourney } from './domain/journey.ts'
 import {
+  adjacentDayChunks,
+  dayChunkForTime,
+  networkSnapshotForDayChunk,
+} from './domain/network-day.ts'
+import {
   buildRouteIndex,
   buildStationIndex,
   formatServiceTime,
   positionForTrain,
   SERVICE_CATEGORIES,
   SERVICE_COLORS,
+  type NetworkDayChunk,
+  type NetworkDayManifest,
   type NetworkSnapshot,
   type NetworkRouteIndexEntry,
   type NetworkTrain,
@@ -125,7 +132,11 @@ export function App() {
   const [nationalTimeRange, setNationalTimeRange] =
     useState<NationalTimeRange>('morning')
   const [nationalNetwork, setNationalNetwork] = useState<NetworkSnapshot>()
-  const [nationalDayNetwork, setNationalDayNetwork] = useState<NetworkSnapshot>()
+  const [nationalDayManifest, setNationalDayManifest] =
+    useState<NetworkDayManifest>()
+  const [nationalDayChunks, setNationalDayChunks] = useState<
+    Readonly<Record<string, NetworkDayChunk>>
+  >({})
   const [nationalDayLoading, setNationalDayLoading] = useState(false)
   const [nationalDayError, setNationalDayError] = useState(false)
   const [zurichCityNetwork, setZurichCityNetwork] = useState<NetworkSnapshot>()
@@ -156,6 +167,29 @@ export function App() {
   const numberFormat = useMemo(
     () => new Intl.NumberFormat(LANGUAGE_LOCALES[language]),
     [language],
+  )
+  const nationalDayChunkDescriptor = useMemo(
+    () =>
+      nationalDayManifest
+        ? dayChunkForTime(nationalDayManifest, networkTime)
+        : undefined,
+    [nationalDayManifest, networkTime],
+  )
+  const nationalDayNetwork = useMemo(
+    () =>
+      nationalDayManifest
+        ? networkSnapshotForDayChunk(
+            nationalDayManifest,
+            nationalDayChunkDescriptor
+              ? nationalDayChunks[nationalDayChunkDescriptor.id]
+              : undefined,
+          )
+        : undefined,
+    [nationalDayChunkDescriptor, nationalDayChunks, nationalDayManifest],
+  )
+  const nationalDayChunkReady = Boolean(
+    nationalDayChunkDescriptor &&
+      nationalDayChunks[nationalDayChunkDescriptor.id],
   )
   const network =
     networkStudy === 'zurich-city'
@@ -301,9 +335,28 @@ export function App() {
   const handleJourneyProgress = useCallback((nextProgress: number) => {
     setJourneyProgress(nextProgress)
   }, [])
-  const handleNetworkTime = useCallback((nextTime: number) => {
-    setNetworkTime(nextTime)
-  }, [])
+  const handleNetworkTime = useCallback(
+    (nextTime: number) => {
+      if (
+        networkStudy === 'national' &&
+        nationalTimeRange === 'day' &&
+        nationalDayManifest
+      ) {
+        const descriptor = dayChunkForTime(nationalDayManifest, nextTime)
+        if (!nationalDayChunks[descriptor.id]) {
+          setNationalDayLoading(true)
+          setNationalDayError(false)
+        }
+      }
+      setNetworkTime(nextTime)
+    },
+    [
+      nationalDayChunks,
+      nationalDayManifest,
+      nationalTimeRange,
+      networkStudy,
+    ],
+  )
   const moveMapCamera = useCallback((action: MapCameraAction) => {
     setMapCameraCommand((current) => ({ id: current.id + 1, action }))
   }, [])
@@ -378,9 +431,9 @@ export function App() {
         setRegionalNetworkLoading(true)
         setRegionalNetworkError(false)
       }
-      if (study === 'national' && timeRange === 'day' && !nationalDayNetwork) {
-        setNationalDayLoading(true)
+      if (study === 'national' && timeRange === 'day') {
         setNationalDayError(false)
+        if (!nationalDayManifest) setNationalDayLoading(true)
       }
       const snapshot =
         study === 'zurich-city'
@@ -392,6 +445,7 @@ export function App() {
     },
     [
       nationalDayNetwork,
+      nationalDayManifest,
       nationalNetwork,
       nationalTimeRange,
       releaseSelection,
@@ -500,23 +554,24 @@ export function App() {
     if (
       networkStudy !== 'national' ||
       nationalTimeRange !== 'day' ||
-      nationalDayNetwork
+      nationalDayManifest
     ) {
       return
     }
     const controller = new AbortController()
-    fetch(`${import.meta.env.BASE_URL}data/swiss-rail-day.json`, {
+    fetch(`${import.meta.env.BASE_URL}data/swiss-rail-day-manifest.json`, {
       signal: controller.signal,
     })
       .then((response) => {
         if (!response.ok) {
-          throw new Error(`Full-day GTFS snapshot returned ${response.status}`)
+          throw new Error(`Full-day GTFS manifest returned ${response.status}`)
         }
-        return response.json() as Promise<NetworkSnapshot>
+        return response.json() as Promise<NetworkDayManifest>
       })
-      .then((snapshot) => {
-        setNationalDayNetwork(snapshot)
-        setNetworkTime(snapshot.metadata.focusTime)
+      .then((manifest) => {
+        setNationalDayManifest(manifest)
+        setNationalDayLoading(true)
+        setNetworkTime(manifest.metadata.focusTime)
       })
       .catch((error: unknown) => {
         if (error instanceof DOMException && error.name === 'AbortError') return
@@ -524,9 +579,63 @@ export function App() {
       })
       .finally(() => {
         if (!controller.signal.aborted) setNationalDayLoading(false)
+    })
+    return () => controller.abort()
+  }, [nationalDayManifest, nationalTimeRange, networkStudy])
+
+  useEffect(() => {
+    if (
+      networkStudy !== 'national' ||
+      nationalTimeRange !== 'day' ||
+      !nationalDayManifest ||
+      !nationalDayChunkDescriptor
+    ) {
+      return
+    }
+    const currentMissing = !nationalDayChunks[nationalDayChunkDescriptor.id]
+    const targets = currentMissing
+      ? [nationalDayChunkDescriptor]
+      : adjacentDayChunks(nationalDayManifest, nationalDayChunkDescriptor).filter(
+          (chunk) => !nationalDayChunks[chunk.id],
+        )
+    if (!targets.length) return
+
+    const controller = new AbortController()
+    Promise.all(
+      targets.map(async (descriptor) => {
+        const response = await fetch(
+          `${import.meta.env.BASE_URL}data/${descriptor.path}`,
+          { signal: controller.signal },
+        )
+        if (!response.ok) {
+          throw new Error(`Full-day GTFS chunk returned ${response.status}`)
+        }
+        return [descriptor.id, await response.json()] as const
+      }),
+    )
+      .then((entries) => {
+        setNationalDayChunks((current) => ({
+          ...current,
+          ...Object.fromEntries(entries),
+        }))
+      })
+      .catch((error: unknown) => {
+        if (error instanceof DOMException && error.name === 'AbortError') return
+        if (currentMissing) setNationalDayError(true)
+      })
+      .finally(() => {
+        if (currentMissing && !controller.signal.aborted) {
+          setNationalDayLoading(false)
+        }
       })
     return () => controller.abort()
-  }, [nationalDayNetwork, nationalTimeRange, networkStudy])
+  }, [
+    nationalDayChunkDescriptor,
+    nationalDayChunks,
+    nationalDayManifest,
+    nationalTimeRange,
+    networkStudy,
+  ])
 
   useEffect(() => {
     if (networkStudy !== 'zurich-city' || zurichCityNetwork) return
@@ -1138,7 +1247,7 @@ export function App() {
             <div>
               <span>{text.trips}</span>
               <strong>{numberFormat.format(selectedRoute.trainIds.length)}</strong>
-              <small>{isNationalDay ? '24h' : '2h'}</small>
+              <small>{isNationalDay ? '3h' : '2h'}</small>
             </div>
             <div>
               <span>{text.stops}</span>
@@ -1169,7 +1278,7 @@ export function App() {
             <div>
               <span>{text.calls}</span>
               <strong>{selectedStation.trainIds.length}</strong>
-              <small>{isNationalDay ? '24h' : '2h'}</small>
+              <small>{isNationalDay ? '3h' : '2h'}</small>
             </div>
           </div>
         </section>
@@ -1184,7 +1293,7 @@ export function App() {
         >
           <div className="network-count-row">
             <strong>
-              {network && (!isNationalDay || nationalDayNetwork)
+              {network && (!isNationalDay || nationalDayChunkReady)
                 ? numberFormat.format(activeTrainCount)
                 : '—'}
             </strong>
@@ -1215,9 +1324,13 @@ export function App() {
             <div>
               <span>{text.trips}</span>
               <strong>
-                {network && (!isNationalDay || nationalDayNetwork)
-                  ? numberFormat.format(network.trains.length)
-                  : '—'}
+                {isNationalDay
+                  ? nationalDayManifest
+                    ? numberFormat.format(nationalDayManifest.tripCount)
+                    : '—'
+                  : network
+                    ? numberFormat.format(network.trains.length)
+                    : '—'}
               </strong>
               <small>{isNationalDay ? '24h' : '2h'}</small>
             </div>
@@ -1404,7 +1517,7 @@ export function App() {
             onChange={(event) => {
               const value = Number(event.target.value)
               if (isHub) setHubTime(value)
-              else if (timelineReady) setNetworkTime(value)
+              else if (timelineReady) handleNetworkTime(value)
               else setJourneyProgress(value)
             }}
           />

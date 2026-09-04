@@ -1,9 +1,22 @@
 import { describe, expect, it } from 'vitest'
 import {
+  chunkNetworkSnapshot,
   parseBounds,
   parseModes,
   transportModeForRouteType,
 } from './ingest-gtfs.mjs'
+
+const compactSnapshot = {
+  metadata: { windowStart: 0, windowEnd: 21_600 },
+  bounds: {},
+  stops: [],
+  edges: [],
+  trains: [
+    { id: 'early', start: 600, end: 1_200 },
+    { id: 'boundary', start: 10_700, end: 11_000 },
+    { id: 'late', start: 18_500, end: 20_000 },
+  ],
+}
 
 describe('Swiss GTFS transport modes', () => {
   it('recognises the standard and Swiss extended mode codes', () => {
@@ -24,5 +37,29 @@ describe('Swiss GTFS transport modes', () => {
       maxLongitude: 8.63,
       maxLatitude: 47.44,
     })
+  })
+})
+
+describe('chunked network snapshots', () => {
+  it('keeps topology in a manifest and overlaps boundary-crossing trips', () => {
+    const { manifest, chunks } = chunkNetworkSnapshot(
+      compactSnapshot,
+      10_800,
+      'day-chunks',
+    )
+
+    expect(manifest.tripCount).toBe(3)
+    expect(manifest.chunks.map((chunk) => chunk.path)).toEqual([
+      'day-chunks/00-03.json',
+      'day-chunks/03-06.json',
+    ])
+    expect(chunks[0].payload.trains.map((train) => train.id)).toEqual([
+      'early',
+      'boundary',
+    ])
+    expect(chunks[1].payload.trains.map((train) => train.id)).toEqual([
+      'boundary',
+      'late',
+    ])
   })
 })

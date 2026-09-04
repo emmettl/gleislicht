@@ -119,7 +119,7 @@ export const UI_TEXT = {
     routesAndCalls: (routes: number, calls: number) =>
       `${routes} routes · ${calls} scheduled calls`,
     noResults: 'No stations or services found in this morning window.',
-    noResultsDay: 'No stations or services found in this full-day study.',
+    noResultsDay: 'No stations or services found near this time.',
     taktStation: 'Takt station',
     taktPulse: 'Takt pulse',
     pulse: 'Pulse',
@@ -250,7 +250,7 @@ export const UI_TEXT = {
     routesAndCalls: (routes: number, calls: number) =>
       `${routes} Linien · ${calls} fahrplanmässige Halte`,
     noResults: 'Keine Bahnhöfe oder Verbindungen in diesem Morgenfenster gefunden.',
-    noResultsDay: 'Keine Bahnhöfe oder Verbindungen in dieser Tagesstudie gefunden.',
+    noResultsDay: 'Keine Bahnhöfe oder Verbindungen um diese Zeit gefunden.',
     taktStation: 'Taktbahnhof',
     taktPulse: 'Taktpuls',
     pulse: 'Puls',
@@ -381,7 +381,7 @@ export const UI_TEXT = {
     routesAndCalls: (routes: number, calls: number) =>
       `${routes} lignes · ${calls} arrêts planifiés`,
     noResults: 'Aucune gare ni liaison trouvée dans cette plage matinale.',
-    noResultsDay: 'Aucune gare ni liaison trouvée dans cette étude journalière.',
+    noResultsDay: 'Aucune gare ni liaison trouvée autour de cette heure.',
     taktStation: 'Gare cadencée',
     taktPulse: 'Pulsation cadencée',
     pulse: 'Pulsation',
@@ -512,7 +512,7 @@ export const UI_TEXT = {
     routesAndCalls: (routes: number, calls: number) =>
       `${routes} linee · ${calls} fermate pianificate`,
     noResults: 'Nessuna stazione o corsa trovata nella fascia mattutina.',
-    noResultsDay: 'Nessuna stazione o corsa trovata nello studio giornaliero.',
+    noResultsDay: 'Nessuna stazione o corsa trovata vicino a quest’ora.',
     taktStation: 'Stazione cadenzata',
     taktPulse: 'Impulso cadenzato',
     pulse: 'Impulso',

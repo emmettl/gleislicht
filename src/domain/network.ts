@@ -84,6 +84,29 @@ export interface NetworkSnapshot {
   readonly trains: readonly NetworkTrain[]
 }
 
+export interface NetworkDayChunkDescriptor {
+  readonly id: string
+  readonly windowStart: number
+  readonly windowEnd: number
+  readonly path: string
+  readonly tripCount: number
+}
+
+export interface NetworkDayManifest {
+  readonly metadata: NetworkSnapshot['metadata']
+  readonly bounds: NetworkSnapshot['bounds']
+  readonly stops: NetworkSnapshot['stops']
+  readonly edges: NetworkSnapshot['edges']
+  readonly tripCount: number
+  readonly chunks: readonly NetworkDayChunkDescriptor[]
+}
+
+export interface NetworkDayChunk {
+  readonly windowStart: number
+  readonly windowEnd: number
+  readonly trains: readonly NetworkTrain[]
+}
+
 export interface StationRoute {
   readonly name: string
   readonly category: ServiceCategory
