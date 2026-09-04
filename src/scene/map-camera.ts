@@ -10,6 +10,26 @@ export function homeMapDistanceScale(framing: MapCameraFraming): number {
 }
 
 const EDGE_EASING = 0.42
+const MOUSE_PAN_SCALE = 0.045
+const TOUCH_PAN_SCALE = 0.078
+
+export function mapPanScale(
+  distanceScale: number,
+  pointerType: string,
+): number {
+  return (
+    (pointerType === 'touch' ? TOUCH_PAN_SCALE : MOUSE_PAN_SCALE) *
+    distanceScale
+  )
+}
+
+export function mapCameraDampingRate(
+  followingTrain: boolean,
+  directTouch: boolean,
+): number {
+  if (followingTrain) return 1.7
+  return directTouch ? 11 : 2.3
+}
 
 /**
  * Keeps zoom direct through the useful range, then eases asymptotically toward the

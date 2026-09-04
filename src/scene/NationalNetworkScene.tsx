@@ -44,6 +44,8 @@ import {
 import {
   applyMapZoom,
   homeMapDistanceScale,
+  mapCameraDampingRate,
+  mapPanScale,
   type MapCameraFraming,
 } from './map-camera.ts'
 import {
@@ -2062,6 +2064,7 @@ function NetworkCamera({
   const currentTarget = useMemo(() => new THREE.Vector3(), [])
   const mapTarget = useRef(new THREE.Vector3())
   const distanceScale = useRef(1)
+  const directTouch = useRef(false)
   const lastCommand = useRef(0)
 
   useEffect(() => {
@@ -2090,20 +2093,35 @@ function NetworkCamera({
 
   useEffect(() => {
     const element = gl.domElement
-    const pointers = new Map<number, { x: number; y: number }>()
+    const pointers = new Map<
+      number,
+      { x: number; y: number; pointerType: string }
+    >()
     let pinchDistance: number | undefined
 
     const onPointerDown = (event: PointerEvent) => {
       if (selectedTrain || (event.pointerType === 'mouse' && event.button !== 0)) return
-      pointers.set(event.pointerId, { x: event.clientX, y: event.clientY })
+      pointers.set(event.pointerId, {
+        x: event.clientX,
+        y: event.clientY,
+        pointerType: event.pointerType,
+      })
+      if (event.pointerType === 'touch') directTouch.current = true
       element.setPointerCapture(event.pointerId)
     }
     const onPointerMove = (event: PointerEvent) => {
       const previous = pointers.get(event.pointerId)
       if (!previous || selectedTrain) return
-      pointers.set(event.pointerId, { x: event.clientX, y: event.clientY })
+      pointers.set(event.pointerId, {
+        x: event.clientX,
+        y: event.clientY,
+        pointerType: previous.pointerType,
+      })
       if (pointers.size === 1) {
-        const panScale = 0.045 * distanceScale.current
+        const panScale = mapPanScale(
+          distanceScale.current,
+          previous.pointerType,
+        )
         mapTarget.current.x -= (event.clientX - previous.x) * panScale
         mapTarget.current.z -= (event.clientY - previous.y) * panScale
         mapTarget.current.x = THREE.MathUtils.clamp(mapTarget.current.x, -25, 25)
@@ -2123,6 +2141,9 @@ function NetworkCamera({
     }
     const onPointerUp = (event: PointerEvent) => {
       pointers.delete(event.pointerId)
+      directTouch.current = [...pointers.values()].some(
+        (pointer) => pointer.pointerType === 'touch',
+      )
       if (pointers.size < 2) pinchDistance = undefined
     }
     const onWheel = (event: WheelEvent) => {
@@ -2164,7 +2185,11 @@ function NetworkCamera({
       )
     }
 
-    const damping = 1 - Math.exp(-delta * (trainPosition ? 1.7 : 2.3))
+    const damping =
+      1 -
+      Math.exp(
+        -delta * mapCameraDampingRate(Boolean(trainPosition), directTouch.current),
+      )
     camera.position.lerp(desiredPosition, damping)
     currentTarget.lerp(desiredTarget, damping)
     camera.lookAt(currentTarget)
