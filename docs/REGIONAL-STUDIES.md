@@ -35,7 +35,7 @@ data/
 
 Only the selected artifact is fetched. A future small manifest will expose bounds, modes, time windows, source versions and byte sizes before a study loads. Full-day regional studies should be split into time chunks so a 24-hour pulse does not impose a large first download.
 
-Zürich's separate ZVV/VBZ GTFS is a valuable later geometry enhancement: it covers ZVV tram and bus services, includes `shapes.txt`, is published weekly, and is licensed CC0. The national GTFS remains the timetable baseline; the regional feed should be joined only after stop, trip and date alignment has been validated.
+Zürich's separate ZVV/VBZ GTFS now supplies shape geometry for the city study. It covers ZVV tram and bus services, includes `shapes.txt`, is published weekly, and is licensed CC0. The national GTFS remains the timetable baseline; the regional feed is joined by published line and directed Swiss stop identifier after service-date validation. The committed artifact matches 98.6% of tram and bus segment occurrences and falls back to direct stop interpolation for the remainder.
 
 ## Visual grammar
 
@@ -48,7 +48,7 @@ Zürich's separate ZVV/VBZ GTFS is a valuable later geometry enhancement: it cov
 ## Delivery sequence
 
 1. Zürich city from the national GTFS, using the existing scheduled interpolation renderer.
-2. Shape-aware Zürich tram and bus geometry from the official ZVV/VBZ regional feed.
+2. ✓ Shape-aware Zürich tram and bus geometry from the official ZVV/VBZ regional feed.
 3. ZVV overview with zoom-dependent aggregation and regional line hierarchy.
 4. Genève/TPG as the second city system, including French labels and cross-border edges.
 5. One measured rural PostBus study and the synchronized rural–urban contrast mode.

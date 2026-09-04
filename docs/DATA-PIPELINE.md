@@ -41,11 +41,21 @@ The same streaming ingester can create a separate multimodal regional artifact. 
 npm run data:zurich -- --archive /path/to/GTFS_FP2026_YYYYMMDD.zip
 ```
 
-This preset selects a tight city bounding box and all supported Swiss GTFS route types—rail, tram, metro, bus, ferry, cableway and funicular—while skipping the unrelated hub artifact. The resulting JSON is fetched only after the city scale is selected. The source archive's lack of `shapes.txt` still applies; the dedicated ZVV/VBZ feed is the planned source for shape-aware tram and bus geometry.
+This preset selects a tight city bounding box and all supported Swiss GTFS route types—rail, tram, metro, bus, ferry, cableway and funicular—while skipping the unrelated hub artifact. The resulting JSON is fetched only after the city scale is selected.
+
+Enrich that base artifact with the matching annual ZVV/VBZ GTFS archive:
+
+```bash
+npm run data:zurich:shapes -- \
+  --archive /path/to/2026_google_transit.zip \
+  --feed-version 2026_google_transit
+```
+
+The enrichment keeps the national timetable as the source of service truth. It joins ZVV geometry by service category, published line name and directed Swiss `sloid` stop pair, normalising platform suffixes where one feed uses the parent stop. The build refuses to write if fewer than 80% of tram and bus segment occurrences align. The current artifact aligns 36,065 of 36,578 occurrences (98.6%), deduplicates the result into 1,843 paths, and records both sources and the measured coverage in its metadata.
 
 ## Known geometry limitation
 
-The current Swiss GTFS archive has no `shapes.txt`. Until rail geometry is joined from a suitable infrastructure dataset, the national study interpolates directly between stop coordinates. The result is schedule-derived and geographically honest at stations, but straight between them. The interface and snapshot metadata say so explicitly.
+The current Swiss GTFS archive has no `shapes.txt`. Until rail geometry is joined from a suitable infrastructure dataset, the national study and Zürich rail services interpolate directly between stop coordinates. Zürich tram and bus services use the aligned ZVV geometry described above; any unmatched local segment falls back to straight stop interpolation. The result remains schedule-derived rather than a claim of GPS tracking, and the snapshot metadata records that distinction.
 
 ## National boundary
 

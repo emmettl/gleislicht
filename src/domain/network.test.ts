@@ -29,6 +29,7 @@ describe('positionForTrain', () => {
       fromStop: 0,
       toStop: 1,
       progress: 0.5,
+      segmentIndex: 0,
     })
   })
 

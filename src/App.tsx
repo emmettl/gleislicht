@@ -1597,6 +1597,15 @@ export function App() {
             >
               Swiss GTFS · {network?.metadata.feedVersion ?? text.loading}
             </a>
+            {isNetwork && networkStudy === 'zurich-city' && network?.metadata.geometry && (
+              <a
+                href={network.metadata.geometry.sourceUrl}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {text.stopGeometry} · ZVV
+              </a>
+            )}
             {isNetwork && networkStudy === 'national' && boundary && (
               <a href={boundary.metadata.productUrl} target="_blank" rel="noreferrer">
                 {text.border} · {boundary.metadata.attribution}

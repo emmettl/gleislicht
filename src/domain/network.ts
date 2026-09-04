@@ -3,9 +3,12 @@ export type NetworkStop = readonly [
   latitude: number,
   name: string,
   platformCode?: string,
+  sourceId?: string,
 ]
 
 export type NetworkEdge = readonly [from: number, to: number]
+export type NetworkPathPoint = readonly [longitude: number, latitude: number]
+export type NetworkPath = readonly NetworkPathPoint[]
 export type TrainStop = readonly [stopIndex: number, arrival: number, departure: number]
 
 export type ServiceCategory =
@@ -58,6 +61,7 @@ export interface NetworkTrain {
   readonly start: number
   readonly end: number
   readonly stops: readonly TrainStop[]
+  readonly pathSegments?: readonly (number | null)[]
 }
 
 export interface NetworkSnapshot {
@@ -72,6 +76,14 @@ export interface NetworkSnapshot {
     readonly model: string
     readonly note: string
     readonly modes?: readonly string[]
+    readonly geometry?: {
+      readonly publisher: string
+      readonly feedVersion: string
+      readonly sourceUrl: string
+      readonly model: string
+      readonly matchedSegments: number
+      readonly totalSegments: number
+    }
   }
   readonly bounds: {
     readonly minLongitude: number
@@ -81,6 +93,8 @@ export interface NetworkSnapshot {
   }
   readonly stops: readonly NetworkStop[]
   readonly edges: readonly NetworkEdge[]
+  readonly paths?: readonly NetworkPath[]
+  readonly edgePaths?: readonly (number | null)[]
   readonly trains: readonly NetworkTrain[]
 }
 
@@ -229,6 +243,7 @@ export interface TrainPosition {
   readonly fromStop: number
   readonly toStop: number
   readonly progress: number
+  readonly segmentIndex?: number
 }
 
 export function positionForTrain(
@@ -251,6 +266,7 @@ export function positionForTrain(
         fromStop: previous[0],
         toStop: next[0],
         progress: Math.min(1, Math.max(0, (time - previous[2]) / duration)),
+        segmentIndex: index - 1,
       }
     }
     if (time <= next[2]) {

@@ -258,7 +258,13 @@ function createSnapshotBuilder({
     }
     const index = stops.length
     stopIndexes.set(stopId, index)
-    stops.push([stop.longitude, stop.latitude, stop.name])
+    stops.push([
+      stop.longitude,
+      stop.latitude,
+      stop.name,
+      stop.platformCode || '',
+      stopId,
+    ])
     bounds.minLongitude = Math.min(bounds.minLongitude, stop.longitude)
     bounds.minLatitude = Math.min(bounds.minLatitude, stop.latitude)
     bounds.maxLongitude = Math.max(bounds.maxLongitude, stop.longitude)
