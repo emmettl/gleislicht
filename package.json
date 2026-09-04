@@ -20,6 +20,8 @@
     "data:zvv:shapes": "node scripts/enrich-zurich-shapes.mjs --snapshot public/data/zvv-region-morning.json",
     "data:geneva": "node scripts/ingest-gtfs.mjs --modes all --bounds 5.90,46.05,6.35,46.38 --local-agencies 881 --output public/data/geneva-tpg-morning.json --hub-output none",
     "data:geneva:shapes": "node scripts/enrich-geneva-shapes.mjs --snapshot public/data/geneva-tpg-morning.json",
+    "data:postbus:kiental": "node scripts/ingest-gtfs.mjs --window-start 00:00 --window-end 24:00 --focus 12:00 --modes rail,bus --bounds 7.67,46.52,7.79,46.65 --local-agencies 801 --local-route-ids 96-100-0-j26-1 --output public/data/kiental-postbus-day-manifest.json --hub-output none --chunk-hours 3",
+    "data:postbus:analyze": "node scripts/analyze-postbus-corridors.mjs",
     "preview": "vite preview"
   },
   "engines": {

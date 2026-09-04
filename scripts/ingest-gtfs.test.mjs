@@ -4,6 +4,7 @@ import {
   parseAgencyIds,
   parseBounds,
   parseModes,
+  parseRouteIds,
   transportModeForRouteType,
 } from './ingest-gtfs.mjs'
 
@@ -40,6 +41,10 @@ describe('Swiss GTFS transport modes', () => {
     })
     expect([...parseAgencyIds('881, 199')]).toEqual(['881', '199'])
     expect(parseAgencyIds(undefined)).toBeUndefined()
+    expect([...parseRouteIds('96-930-j26-1, 96-931-j26-1')]).toEqual([
+      '96-930-j26-1',
+      '96-931-j26-1',
+    ])
   })
 })
 

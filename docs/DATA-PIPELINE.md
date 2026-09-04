@@ -85,6 +85,26 @@ npm run data:geneva:shapes -- \
 
 The line layer is a route-labelled street graph rather than GTFS `shapes.txt`. The enrichment snaps timetable stops to their matching TPG line and finds the shortest valid path between each pair; it rejects implausible detours and refuses to write below 70% coverage. The current artifact contains 1,804 trips and 2,080 stops, including cross-border services, and matches 37,182 of 38,486 local segment occurrences (96.6%). Its 1.8 MB JSON compresses to about 408 KB and is fetched only when **GE** is selected.
 
+## Rural PostBus selection and artifact
+
+Rank active PostBus corridors by scheduled trip count, service span, stop-chain length and stop footprint:
+
+```bash
+npm run data:postbus:analyze -- \
+  --archive /path/to/GTFS_FP2026_YYYYMMDD.zip \
+  --date 2026-09-04
+```
+
+The committed choice is Kiental route 220, exact GTFS route ID `96-100-0-j26-1`. Route IDs—not display numbers—are used because several unrelated PostBus lines publish the number 220. Generate its full-day topology and movement chunks with:
+
+```bash
+npm run data:postbus:kiental -- \
+  --archive /path/to/GTFS_FP2026_YYYYMMDD.zip \
+  --date 2026-09-04
+```
+
+This produces a 4.3 KB manifest and eight three-hour chunks totalling about 19 KB. The complete study contains 20 route-220 trips plus 48 nearby rail trips, 33 stops and 34 edges. Empty overnight chunks are retained intentionally so the future Zürich–Kiental contrast uses one honest 24-hour clock. See [POSTBUS-CORRIDOR.md](./POSTBUS-CORRIDOR.md) for the selection evidence.
+
 ## Known geometry limitation
 
 The current Swiss GTFS archive has no `shapes.txt`. Until rail geometry is joined from a suitable infrastructure dataset, the national study and regional rail services interpolate directly between stop coordinates. Zürich tram and bus services use the aligned ZVV geometry; Genève tram, trolleybus and bus services use TPG/SITG line geometry. Any unmatched local segment falls back to straight stop interpolation. The result remains schedule-derived rather than a claim of GPS tracking, and the snapshot metadata records that distinction.

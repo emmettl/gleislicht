@@ -117,7 +117,7 @@ function routeCategory(routeName, mode) {
   return mode === 'rail' ? railServiceCategory(routeName) : mode
 }
 
-async function* rowsFromArchive(archive, fileName) {
+export async function* rowsFromArchive(archive, fileName) {
   const child = spawn('unzip', ['-p', archive, fileName], {
     stdio: ['ignore', 'pipe', 'pipe'],
   })
@@ -156,7 +156,7 @@ async function readFeedInfo(archive) {
   throw new Error('feed_info.txt contains no data')
 }
 
-async function activeServices(archive, serviceDate) {
+export async function activeServices(archive, serviceDate) {
   const date = compactDate(serviceDate)
   const weekday = weekdayField(serviceDate)
   const services = new Set()
@@ -200,6 +200,7 @@ async function activeTrips(archive, routes, services) {
     if (!route || !services.has(row.service_id)) continue
     trips.set(row.trip_id, {
       agencyId: route.agencyId,
+      routeId: row.route_id,
       route: route.name,
       headsign: row.trip_headsign,
       shortName: row.trip_short_name,
@@ -210,7 +211,7 @@ async function activeTrips(archive, routes, services) {
   return trips
 }
 
-async function stopsById(archive) {
+export async function stopsById(archive) {
   const stops = new Map()
   for await (const row of rowsFromArchive(archive, 'stops.txt')) {
     const latitude = Number(row.stop_lat)
@@ -247,6 +248,7 @@ function createSnapshotBuilder({
   displayBounds,
   allowedLocalStopIds,
   allowedLocalAgencyIds,
+  allowedLocalRouteIds,
 }) {
   const stops = []
   const stopIndexes = new Map()
@@ -297,6 +299,9 @@ function createSnapshotBuilder({
         allowedLocalAgencyIds &&
         !allowedLocalAgencyIds.has(metadata.agencyId)
       ) {
+        return
+      }
+      if (allowedLocalRouteIds && !allowedLocalRouteIds.has(metadata.routeId)) {
         return
       }
       if (allowedLocalStopIds) {
@@ -478,6 +483,13 @@ export function parseAgencyIds(value) {
   return agencyIds
 }
 
+export function parseRouteIds(value) {
+  if (!value) return undefined
+  const routeIds = new Set(value.split(',').map((id) => id.trim()).filter(Boolean))
+  if (!routeIds.size) throw new Error('At least one local route ID is required')
+  return routeIds
+}
+
 async function writeJson(filePath, value) {
   await mkdir(dirname(filePath), { recursive: true })
   await new Promise((resolvePromise, rejectPromise) => {
@@ -560,6 +572,7 @@ async function main() {
         '[--modes rail|all|rail,tram,bus] [--bounds minLon,minLat,maxLon,maxLat] ' +
         '[--local-stop-archive /path/regional.zip] [--output morning.json] ' +
         '[--local-agencies 881,199] ' +
+        '[--local-route-ids 96-930-j26-1] ' +
         '[--hub-output day.json|none] [--chunk-hours 3]',
     )
     return
@@ -584,6 +597,7 @@ async function main() {
     ? resolve(localStopArchiveArgument)
     : undefined
   const allowedLocalAgencyIds = parseAgencyIds(argument('local-agencies'))
+  const allowedLocalRouteIds = parseRouteIds(argument('local-route-ids'))
   const displayBounds = parseBounds(argument('bounds'))
   const windowStart = parseClock(windowStartLabel)
   const windowEnd = parseClock(windowEndLabel)
@@ -612,6 +626,7 @@ async function main() {
     displayBounds,
     allowedLocalStopIds,
     allowedLocalAgencyIds,
+    allowedLocalRouteIds,
   })
   const hubBuilder = hubOutput ? createHubDayBuilder({ trips, sourceStops }) : undefined
   const rowsRead = await readStopTimes(
@@ -636,6 +651,9 @@ async function main() {
       modes: [...modes],
       ...(allowedLocalAgencyIds
         ? { localAgencyIds: [...allowedLocalAgencyIds] }
+        : {}),
+      ...(allowedLocalRouteIds
+        ? { localRouteIds: [...allowedLocalRouteIds] }
         : {}),
     },
     bounds: snapshot.bounds,

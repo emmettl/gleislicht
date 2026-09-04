@@ -21,6 +21,8 @@ PostBus deserves more than being another orange category in a huge map. A later 
 
 The same playback speed, colour key and time axis make the difference in frequency legible. The comparison can begin as a split view, then become an authored crossfade for director mode. Candidate rural studies should be selected from the data after measuring route length, service frequency, rail interchange timing and terrain character—not from a picturesque guess.
 
+That selection is now complete: Kiental–Griesalp route 220 provides 20 trips between 06:13 and 18:42 on the study date, an 11 km scheduled stop chain, a compact terrain footprint and the officially documented 28% final climb. The decision and alternatives are recorded in [POSTBUS-CORRIDOR.md](./POSTBUS-CORRIDOR.md).
+
 ## Data architecture
 
 The official national GTFS remains the baseline because it contains all Swiss public transport and gives every study the same service date and identifiers. Preprocessing produces independent web artifacts:
@@ -31,11 +33,12 @@ data/
   zurich-city-morning.json
   zvv-region-morning.json
   geneva-tpg-morning.json
-  regions/
-    postbus-<corridor>-<window>.json
+  kiental-postbus-day-manifest.json
+  kiental-postbus-day-chunks/
+    <three-hour-window>.json
 ```
 
-Only the selected artifact is fetched. A future small manifest will expose bounds, modes, time windows, source versions and byte sizes before a study loads. Full-day regional studies should be split into time chunks so a 24-hour pulse does not impose a large first download.
+Only the selected artifact is fetched. The full-day Kiental study already uses a small topology manifest and three-hour movement chunks, so its eventual contrast mode can follow the clock without imposing a large first download. A later shared study catalogue can expose bounds, modes, time windows, source versions and byte sizes before any study loads.
 
 Zürich's separate ZVV/VBZ GTFS now supplies shape geometry for the city study. It covers ZVV tram and bus services, includes `shapes.txt`, is published weekly, and is licensed CC0. The national GTFS remains the timetable baseline; the regional feed is joined by published line and directed Swiss stop identifier after service-date validation. The committed artifact matches 98.6% of tram and bus segment occurrences and falls back to direct stop interpolation for the remainder.
 
@@ -55,4 +58,5 @@ Genève uses the same national timetable baseline and the official TPG line laye
 2. ✓ Shape-aware Zürich tram and bus geometry from the official ZVV/VBZ regional feed.
 3. ✓ ZVV overview with zoom-dependent aggregation and regional line hierarchy.
 4. ✓ Genève/TPG as the second regional system, including French labels and cross-border edges.
-5. One measured rural PostBus study and the synchronized rural–urban contrast mode.
+5. ✓ Select Kiental–Griesalp as the measured rural PostBus study.
+6. Build the synchronized rural–urban contrast mode.
