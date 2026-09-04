@@ -2,12 +2,15 @@ import { describe, expect, it } from 'vitest'
 import type { StationIndexEntry } from '../domain/network.ts'
 import {
   rankStationsForLabels,
+  stationIndexAtScreenPoint,
   stationLabelCameraHeight,
   stationLabelBudget,
   stationLabelRankLimit,
   stationLabelScreenHeight,
+  stationLabelScreenWidth,
   stationLabelText,
   stationLabelWorldHeight,
+  stationTapRadius,
 } from './station-labels.ts'
 
 const station = (
@@ -25,10 +28,27 @@ const station = (
 })
 
 describe('station labels', () => {
+  it('uses a forgiving touch target without making mouse selection vague', () => {
+    expect(stationTapRadius('touch')).toBe(30)
+    expect(stationTapRadius('pen')).toBe(30)
+    expect(stationTapRadius('mouse')).toBe(16)
+  })
+
+  it('selects the closest station inside the screen-space target', () => {
+    const points = [
+      { index: 0, x: 100, y: 100 },
+      { index: 1, x: 112, y: 104 },
+    ]
+
+    expect(stationIndexAtScreenPoint(110, 103, points, 30)).toBe(1)
+    expect(stationIndexAtScreenPoint(160, 160, points, 30)).toBeUndefined()
+  })
+
   it('keeps a readable screen-space hierarchy', () => {
     expect(stationLabelScreenHeight(false, false)).toBe(40)
     expect(stationLabelScreenHeight(false, true)).toBe(46)
     expect(stationLabelScreenHeight(true, true)).toBe(56)
+    expect(stationLabelScreenWidth('Bern', 40)).toBe(72)
   })
 
   it('converts target pixels into perspective world height', () => {

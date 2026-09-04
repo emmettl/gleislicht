@@ -962,6 +962,7 @@ export function App() {
             selectedCategory={selectedCategory}
             selectedRoute={selectedRoute}
             selectedStation={selectedStation}
+            onSelectStation={selectStation}
             cameraFraming={
               networkStudy === 'zurich-city' && zurichCityNetwork
                 ? 'zurich'

@@ -6,6 +6,36 @@ import {
 
 export const MAX_STATION_LABELS = 96
 
+export interface StationScreenPoint {
+  readonly index: number
+  readonly x: number
+  readonly y: number
+}
+
+export function stationTapRadius(pointerType: string): number {
+  return pointerType === 'touch' || pointerType === 'pen' ? 30 : 16
+}
+
+export function stationIndexAtScreenPoint(
+  x: number,
+  y: number,
+  stations: readonly StationScreenPoint[],
+  radius: number,
+): number | undefined {
+  let selectedIndex: number | undefined
+  let closestSquaredDistance = radius * radius
+
+  stations.forEach((station) => {
+    const squaredDistance =
+      (station.x - x) ** 2 + (station.y - y) ** 2
+    if (squaredDistance > closestSquaredDistance) return
+    selectedIndex = station.index
+    closestSquaredDistance = squaredDistance
+  })
+
+  return selectedIndex
+}
+
 export function stationLabelScreenHeight(
   selected: boolean,
   emphasised: boolean,
@@ -13,6 +43,19 @@ export function stationLabelScreenHeight(
   if (selected) return 56
   if (emphasised) return 46
   return 40
+}
+
+export function stationLabelScreenWidth(
+  label: string,
+  screenHeight: number,
+): number {
+  return Math.min(
+    screenHeight * 8.25,
+    Math.max(
+      screenHeight * 1.6,
+      label.length * screenHeight * 0.2 + screenHeight,
+    ),
+  )
 }
 
 export function stationLabelWorldHeight(
