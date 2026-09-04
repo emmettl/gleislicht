@@ -32,6 +32,10 @@ import {
   type MapCameraCommand,
 } from './scene/NationalNetworkScene.tsx'
 import type { TrainLabelMode } from './scene/train-labels.ts'
+import {
+  nextSearchResultIndex,
+  type SearchNavigationKey,
+} from './search-navigation.ts'
 
 type View = 'network' | 'hub' | 'journey'
 type SoundtrackState = 'off' | 'starting' | 'on' | 'error'
@@ -90,6 +94,7 @@ export function App() {
   const [dataError, setDataError] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
   const [searchOpen, setSearchOpen] = useState(false)
+  const [activeSearchIndex, setActiveSearchIndex] = useState(-1)
   const [selectedTrainId, setSelectedTrainId] = useState<string>()
   const [selectedStationName, setSelectedStationName] = useState<string>()
   const [selectedHubId, setSelectedHubId] = useState<HubId>('zurich')
@@ -187,6 +192,9 @@ export function App() {
       })
       .slice(0, 5)
   }, [searchQuery, stationIndex])
+  const searchResultCount = stationSearchResults.length + searchResults.length
+  const resolvedActiveSearchIndex =
+    activeSearchIndex < searchResultCount ? activeSearchIndex : -1
 
   const handleJourneyProgress = useCallback((nextProgress: number) => {
     setJourneyProgress(nextProgress)
@@ -202,6 +210,7 @@ export function App() {
     setSelectedTrainId(undefined)
     setSelectedStationName(undefined)
     setSearchQuery('')
+    setActiveSearchIndex(-1)
   }, [])
 
   const selectStation = useCallback((station: StationIndexEntry) => {
@@ -209,6 +218,7 @@ export function App() {
     setSelectedStationName(station.name)
     setSearchQuery(station.name)
     setSearchOpen(false)
+    setActiveSearchIndex(-1)
     setView('network')
   }, [])
 
@@ -228,6 +238,7 @@ export function App() {
       setSelectedStationName(undefined)
       setSearchQuery(`${train.route} ${train.shortName} → ${train.headsign}`)
       setSearchOpen(false)
+      setActiveSearchIndex(-1)
       setView('network')
       setIsPlaying(true)
     },
@@ -314,6 +325,13 @@ export function App() {
       })
     return () => controller.abort()
   }, [])
+
+  useEffect(() => {
+    if (!searchOpen || resolvedActiveSearchIndex < 0) return
+    document
+      .getElementById(`train-search-result-${resolvedActiveSearchIndex}`)
+      ?.scrollIntoView({ block: 'nearest' })
+  }, [resolvedActiveSearchIndex, searchOpen])
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
@@ -461,6 +479,7 @@ export function App() {
           onBlur={(event) => {
             if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
               setSearchOpen(false)
+              setActiveSearchIndex(-1)
             }
           }}
         >
@@ -468,8 +487,21 @@ export function App() {
             role="search"
             onSubmit={(event) => {
               event.preventDefault()
-              if (stationSearchResults[0]) selectStation(stationSearchResults[0])
-              else if (searchResults[0]) selectTrain(searchResults[0])
+              if (
+                resolvedActiveSearchIndex >= 0 &&
+                resolvedActiveSearchIndex < stationSearchResults.length
+              ) {
+                selectStation(stationSearchResults[resolvedActiveSearchIndex])
+              } else if (resolvedActiveSearchIndex >= stationSearchResults.length) {
+                const train = searchResults[
+                  resolvedActiveSearchIndex - stationSearchResults.length
+                ]
+                if (train) selectTrain(train)
+              } else if (stationSearchResults[0]) {
+                selectStation(stationSearchResults[0])
+              } else if (searchResults[0]) {
+                selectTrain(searchResults[0])
+              }
             }}
           >
             <span className="search-mark" aria-hidden="true" />
@@ -477,12 +509,22 @@ export function App() {
               <span className="sr-only">Find a station, train, service, or destination</span>
               <input
                 type="search"
+                role="combobox"
                 value={searchQuery}
                 placeholder="Find IC 1, Zürich, train 701…"
                 autoComplete="off"
+                aria-autocomplete="list"
+                aria-controls="train-search-results"
+                aria-expanded={searchOpen && Boolean(searchQuery.trim())}
+                aria-activedescendant={
+                  searchOpen && resolvedActiveSearchIndex >= 0
+                    ? `train-search-result-${resolvedActiveSearchIndex}`
+                    : undefined
+                }
                 onChange={(event) => {
                   setSearchQuery(event.target.value)
                   setSearchOpen(true)
+                  setActiveSearchIndex(-1)
                   if (!event.target.value) releaseSelection()
                   else if (event.target.value !== selectedStation?.name) {
                     setSelectedStationName(undefined)
@@ -490,8 +532,26 @@ export function App() {
                 }}
                 onKeyDown={(event) => {
                   if (event.key === 'Escape') {
+                    event.preventDefault()
                     setSearchOpen(false)
-                    event.currentTarget.blur()
+                    setActiveSearchIndex(-1)
+                    return
+                  }
+                  if (
+                    event.key === 'ArrowDown' ||
+                    event.key === 'ArrowUp' ||
+                    event.key === 'Home' ||
+                    event.key === 'End'
+                  ) {
+                    event.preventDefault()
+                    setSearchOpen(true)
+                    setActiveSearchIndex((current) =>
+                      nextSearchResultIndex(
+                        current < searchResultCount ? current : -1,
+                        searchResultCount,
+                        event.key as SearchNavigationKey,
+                      ),
+                    )
                   }
                 }}
               />
@@ -509,17 +569,20 @@ export function App() {
           </form>
           {searchOpen && searchQuery.trim() && (
             <div
+              id="train-search-results"
               className="search-results"
               role="listbox"
               aria-label="Matching stations and trains"
             >
-              {stationSearchResults.map((station) => (
+              {stationSearchResults.map((station, index) => (
                 <button
-                  className="station-result"
+                  id={`train-search-result-${index}`}
+                  className={`station-result${resolvedActiveSearchIndex === index ? ' is-active' : ''}`}
                   key={`station:${station.name}`}
                   type="button"
                   role="option"
                   aria-selected={station.name === selectedStationName}
+                  onMouseEnter={() => setActiveSearchIndex(index)}
                   onClick={() => selectStation(station)}
                 >
                   <span className="station-result-mark" aria-hidden="true">◎</span>
@@ -529,14 +592,18 @@ export function App() {
                   </span>
                 </button>
               ))}
-              {searchResults.map((train) => {
+              {searchResults.map((train, trainIndex) => {
                   const origin = network?.stops[train.stops[0]?.[0]]?.[2]
+                  const index = stationSearchResults.length + trainIndex
                   return (
                     <button
+                      id={`train-search-result-${index}`}
+                      className={resolvedActiveSearchIndex === index ? 'is-active' : undefined}
                       key={train.id}
                       type="button"
                       role="option"
                       aria-selected={train.id === selectedTrainId}
+                      onMouseEnter={() => setActiveSearchIndex(index)}
                       onClick={() => selectTrain(train)}
                     >
                       <span

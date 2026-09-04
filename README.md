@@ -22,7 +22,7 @@ npm run build
 
 Keyboard controls: `Space` pauses or resumes; `C` returns to or switches from the national view.
 
-Search the national view by station, service, train number, origin, or destination. Selecting a train isolates its scheduled path and carries the camera down to follow it. Selecting a station centres the map, marks the station, and illuminates the complete scheduled paths of every service calling there in the morning study. Train lights are colour-coded by service class from international and InterCity through S-Bahn and regional services.
+Search the national view by station, service, train number, origin, or destination. The result list supports arrow-key navigation, Home/End, Enter to select, and Escape to close. Selecting a train isolates its scheduled path and carries the camera down to follow it. Selecting a station centres the map, marks the station, and illuminates the complete scheduled paths of every service calling there in the morning study. Train lights are colour-coded by service class from international and InterCity through S-Bahn and regional services.
 
 Click a service category in the colour legend to highlight that fleet and dim the other trains; click the active category again to clear the filter. The same focus carries into the Takt hub view.
 
