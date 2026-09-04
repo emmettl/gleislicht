@@ -28,9 +28,20 @@ describe('map camera zoom', () => {
   })
 
   it('also softens the closest zoom boundary', () => {
-    const result = applyMapZoom(0.34, 0.5)
+    const result = applyMapZoom(0.14, 0.5)
 
     expect(result).toBeGreaterThan(MIN_MAP_DISTANCE_SCALE)
-    expect(result).toBeLessThan(0.34)
+    expect(result).toBeLessThan(0.14)
+  })
+
+  it('provides several close-range steps below the previous limit', () => {
+    const first = applyMapZoom(0.3, 0.78)
+    const second = applyMapZoom(first, 0.78)
+    const third = applyMapZoom(second, 0.78)
+
+    expect(first).toBeLessThan(0.3)
+    expect(second).toBeLessThan(first)
+    expect(third).toBeLessThan(second)
+    expect(third).toBeGreaterThan(MIN_MAP_DISTANCE_SCALE)
   })
 })

@@ -9,6 +9,14 @@ export function stationLabelBudget(cameraHeight: number): number {
   return MAX_STATION_LABELS
 }
 
+export function stationLabelRankLimit(cameraHeight: number): number {
+  if (cameraHeight >= 30) return 8
+  if (cameraHeight >= 22) return 20
+  if (cameraHeight >= 15) return 48
+  if (cameraHeight >= 10) return MAX_STATION_LABELS
+  return Number.POSITIVE_INFINITY
+}
+
 export function rankStationsForLabels(
   stations: readonly StationIndexEntry[],
 ): readonly StationIndexEntry[] {

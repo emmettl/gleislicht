@@ -1,6 +1,10 @@
 import { describe, expect, it } from 'vitest'
 import type { StationIndexEntry } from '../domain/network.ts'
-import { rankStationsForLabels, stationLabelBudget } from './station-labels.ts'
+import {
+  rankStationsForLabels,
+  stationLabelBudget,
+  stationLabelRankLimit,
+} from './station-labels.ts'
 
 const station = (
   name: string,
@@ -22,6 +26,11 @@ describe('station labels', () => {
     expect(stationLabelBudget(25)).toBe(20)
     expect(stationLabelBudget(18)).toBe(48)
     expect(stationLabelBudget(11)).toBe(96)
+  })
+
+  it('admits every local station at the new close zoom levels', () => {
+    expect(stationLabelRankLimit(11)).toBe(96)
+    expect(stationLabelRankLimit(8)).toBe(Number.POSITIVE_INFINITY)
   })
 
   it('prioritises busy and well-connected stations', () => {

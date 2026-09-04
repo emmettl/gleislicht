@@ -17,6 +17,7 @@ import {
   MAX_STATION_LABELS,
   rankStationsForLabels,
   stationLabelBudget,
+  stationLabelRankLimit,
 } from './station-labels.ts'
 import {
   categoryIsVisibleInAutoMode,
@@ -351,16 +352,16 @@ function stationCentre(
 interface StationLabelDatum {
   readonly station: StationIndexEntry
   readonly position: THREE.Vector3
-  readonly texture: THREE.CanvasTexture
-  readonly aspect: number
   readonly rank: number
   readonly emphasised: boolean
 }
 
-function stationLabelTexture(name: string): {
-  texture: THREE.CanvasTexture
-  aspect: number
-} {
+interface StationLabelTexture {
+  readonly texture: THREE.CanvasTexture
+  readonly aspect: number
+}
+
+function stationLabelTexture(name: string): StationLabelTexture {
   const canvas = document.createElement('canvas')
   const measuringContext = canvas.getContext('2d')
   const font = '500 30px "Helvetica Neue", Helvetica, Arial, sans-serif'
@@ -412,6 +413,7 @@ function StationLabels({
 }) {
   const { camera, size } = useThree()
   const sprites = useRef<Array<THREE.Sprite | null>>([])
+  const textures = useRef(new Map<string, StationLabelTexture>())
   const routeStationNames = useMemo(() => {
     if (!selectedTrain) return new Set<string>()
     return new Set(
@@ -433,16 +435,13 @@ function StationLabels({
 
     add(selectedStation)
     routeStationNames.forEach((name) => add(stationByName.get(name)))
-    ranked.slice(0, MAX_STATION_LABELS).forEach(add)
+    ranked.forEach(add)
 
     return ordered.map((station) => {
-      const { texture, aspect } = stationLabelTexture(station.name)
       const centre = stationCentre(station, projectedStops)
       return {
         station,
         position: new THREE.Vector3(centre.x, 0.48, centre.z),
-        texture,
-        aspect,
         rank: ranked.indexOf(station),
         emphasised:
           station.name === selectedStation?.name || routeStationNames.has(station.name),
@@ -452,13 +451,15 @@ function StationLabels({
 
   useEffect(
     () => () => {
-      labels.forEach(({ texture }) => texture.dispose())
+      textures.current.forEach(({ texture }) => texture.dispose())
+      textures.current.clear()
     },
-    [labels],
+    [],
   )
 
   useFrame(() => {
     const budget = stationLabelBudget(camera.position.y)
+    const rankLimit = stationLabelRankLimit(camera.position.y)
     const projected = new THREE.Vector3()
     const candidates: Array<{
       index: number
@@ -468,12 +469,13 @@ function StationLabels({
       priority: number
     }> = []
 
+    sprites.current.forEach((sprite) => {
+      if (sprite) sprite.visible = false
+    })
+
     labels.forEach((label, index) => {
-      const sprite = sprites.current[index]
-      if (!sprite) return
-      sprite.visible = false
       if (selectedTrain && !label.emphasised) return
-      if (!label.emphasised && (label.rank < 0 || label.rank >= budget)) return
+      if (!label.emphasised && (label.rank < 0 || label.rank >= rankLimit)) return
 
       projected.copy(label.position).project(camera)
       if (
@@ -501,9 +503,12 @@ function StationLabels({
         first.priority - second.priority || first.distance - second.distance,
     )
     const occupied: Array<{ left: number; right: number; top: number; bottom: number }> = []
-    const worldHeight = 0.7 * THREE.MathUtils.clamp(camera.position.y / 37, 0.48, 1)
+    const visibleTextureNames = new Set<string>()
+    const worldHeight = 0.7 * THREE.MathUtils.clamp(camera.position.y / 37, 0.18, 1)
+    let visible = 0
 
     for (const candidate of candidates) {
+      if (visible >= budget || visible >= MAX_STATION_LABELS) break
       const label = labels[candidate.index]
       const width = THREE.MathUtils.clamp(label.station.name.length * 7 + 24, 62, 190)
       const box = {
@@ -521,28 +526,52 @@ function StationLabels({
       )
       if (overlaps) continue
 
-      const sprite = sprites.current[candidate.index]
+      const sprite = sprites.current[visible]
       if (!sprite) continue
+      let textureEntry = textures.current.get(label.station.name)
+      if (!textureEntry) {
+        textureEntry = stationLabelTexture(label.station.name)
+        textures.current.set(label.station.name, textureEntry)
+      } else {
+        textures.current.delete(label.station.name)
+        textures.current.set(label.station.name, textureEntry)
+      }
+      visibleTextureNames.add(label.station.name)
       sprite.visible = true
-      sprite.scale.set(label.aspect * worldHeight, worldHeight, 1)
-      ;(sprite.material as THREE.SpriteMaterial).opacity = label.emphasised ? 1 : 0.78
+      sprite.position.copy(label.position)
+      sprite.scale.set(textureEntry.aspect * worldHeight, worldHeight, 1)
+      const material = sprite.material as THREE.SpriteMaterial
+      if (material.map !== textureEntry.texture) {
+        material.map = textureEntry.texture
+        material.needsUpdate = true
+      }
+      material.opacity = label.emphasised ? 1 : 0.78
       occupied.push(box)
+      visible += 1
+    }
+
+    if (textures.current.size > 192) {
+      for (const [name, entry] of textures.current) {
+        if (visibleTextureNames.has(name)) continue
+        entry.texture.dispose()
+        textures.current.delete(name)
+        if (textures.current.size <= 192) break
+      }
     }
   })
 
   return (
     <>
-      {labels.map((label, index) => (
+      {Array.from({ length: MAX_STATION_LABELS }, (_, index) => (
         <sprite
-          key={label.station.name}
+          key={index}
           ref={(sprite) => {
             sprites.current[index] = sprite
           }}
-          position={label.position}
+          visible={false}
           renderOrder={20}
         >
           <spriteMaterial
-            map={label.texture}
             transparent
             opacity={0}
             depthTest={false}
