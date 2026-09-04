@@ -7,6 +7,7 @@ export default defineConfig({
   // the /gleislicht/ project path used by GitHub Pages.
   base: './',
   build: {
+    manifest: true,
     target: 'es2022',
   },
 })

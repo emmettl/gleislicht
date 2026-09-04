@@ -6,6 +6,8 @@ Public study: <https://emmettl.github.io/gleislicht/>
 
 The current motion study opens on a national morning view derived from the official Swiss GTFS timetable, with 764 scheduled rail services moving inside Switzerland at 07:45. A separate **24H** study expands the national clock to a complete service day; it loads the current three-hour block on demand and prefetches adjacent blocks, keeping both the opening view and full-day transition light. A lazily loaded Zürich city study reveals the same morning at street scale across trains, trams, buses and funiculars. A hub-scale Takt pulse makes scheduled calls at Zürich HB, Bern, Basel SBB and Genève contract toward the station and radiate out again. A follow-camera study uses a synthetic Zürich–Chur journey and procedural terrain. All interpolation models are labelled clearly.
 
+The mobile first view has an enforced 630 KiB compressed transfer ceiling covering application JavaScript, CSS, the national morning timetable, boundary and lakes. Hub data, soundtrack code, station visualisations and the synthetic corridor scene load only when selected. Run `npm run build && npm run check:bundle` to verify the same budget locally; the Pages workflow rejects regressions automatically.
+
 The complete interface is available in English, German, French and Italian. It follows the visitor's supported browser language, falls back to English, and remembers changes made with the **EN / DE / FR / IT** switch.
 
 ## Run it

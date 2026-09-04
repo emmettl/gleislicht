@@ -9,7 +9,7 @@ This is an iterative art-and-data project. Each stage should end in a coherent v
 - [x] Separate journey/timetable concepts from Three.js rendering.
 - [x] Label synthetic data and add pause, scrub and camera controls.
 - [ ] Tune camera damping, scale, colour and fog using several representative screen sizes.
-- [ ] Set initial frame-time and bundle-size budgets.
+- [x] Set and enforce the first mobile transfer budget; establish frame-time telemetry with the terrain work.
 
 **Exit:** the prototype communicates “night train through luminous Swiss topography” in its first few seconds.
 

@@ -1,4 +1,6 @@
 import {
+  lazy,
+  Suspense,
   useCallback,
   useEffect,
   useMemo,
@@ -51,9 +53,6 @@ import {
   UI_TEXT,
   type UiLanguage,
 } from './i18n.ts'
-import { GleislichtScene } from './scene/GleislichtScene.tsx'
-import { HubPulseScene } from './scene/HubPulseScene.tsx'
-import { StationFlowScene } from './scene/StationFlowScene.tsx'
 import {
   NationalNetworkScene,
   type MapCameraAction,
@@ -66,6 +65,22 @@ import {
 } from './search-navigation.ts'
 import { foldSearchText } from './search-text.ts'
 import { useProgressiveNetworkDay } from './use-progressive-network-day.ts'
+
+const GleislichtScene = lazy(() =>
+  import('./scene/GleislichtScene.tsx').then(({ GleislichtScene: Scene }) => ({
+    default: Scene,
+  })),
+)
+const HubPulseScene = lazy(() =>
+  import('./scene/HubPulseScene.tsx').then(({ HubPulseScene: Scene }) => ({
+    default: Scene,
+  })),
+)
+const StationFlowScene = lazy(() =>
+  import('./scene/StationFlowScene.tsx').then(({ StationFlowScene: Scene }) => ({
+    default: Scene,
+  })),
+)
 
 type View = 'network' | 'hub' | 'journey'
 type SoundtrackState = 'off' | 'starting' | 'on' | 'error'
@@ -608,20 +623,6 @@ export function App() {
         if (error instanceof DOMException && error.name === 'AbortError') return
         setDataError(true)
       })
-    fetch(`${import.meta.env.BASE_URL}data/swiss-hub-day.json`, {
-      signal: controller.signal,
-    })
-      .then((response) => {
-        if (!response.ok) throw new Error(`Hub snapshot returned ${response.status}`)
-        return response.json() as Promise<HubDaySnapshot>
-      })
-      .then((snapshot) => {
-        setHubDay(snapshot)
-        setHubTime(snapshot.metadata.focusTime)
-      })
-      .catch((error: unknown) => {
-        if (error instanceof DOMException && error.name === 'AbortError') return
-      })
     fetch(`${import.meta.env.BASE_URL}data/swiss-boundary.json`, {
       signal: controller.signal,
     })
@@ -648,6 +649,27 @@ export function App() {
       })
     return () => controller.abort()
   }, [])
+
+  useEffect(() => {
+    if (view !== 'hub' || hubDay) return
+    const controller = new AbortController()
+    fetch(`${import.meta.env.BASE_URL}data/swiss-hub-day.json`, {
+      signal: controller.signal,
+    })
+      .then((response) => {
+        if (!response.ok) throw new Error(`Hub snapshot returned ${response.status}`)
+        return response.json() as Promise<HubDaySnapshot>
+      })
+      .then((snapshot) => {
+        setHubDay(snapshot)
+        setHubTime(snapshot.metadata.focusTime)
+      })
+      .catch((error: unknown) => {
+        if (error instanceof DOMException && error.name === 'AbortError') return
+        console.warn('Unable to load the hub day study', error)
+      })
+    return () => controller.abort()
+  }, [hubDay, view])
 
   useEffect(() => {
     if (
@@ -931,34 +953,40 @@ export function App() {
             }
           />
         ) : isHub && network && hubStudy === 'station' ? (
-          <StationFlowScene
-            timeline={hubDay?.metadata ?? network.metadata}
-            hub={selectedHub}
-            calls={hubCalls}
-            isPlaying={isPlaying}
-            time={hubTime}
-            onTime={setHubTime}
-            playbackRate={playbackRate}
-            selectedCategory={selectedCategory}
-            platformPrefix={text.trackShort}
-          />
+          <Suspense fallback={null}>
+            <StationFlowScene
+              timeline={hubDay?.metadata ?? network.metadata}
+              hub={selectedHub}
+              calls={hubCalls}
+              isPlaying={isPlaying}
+              time={hubTime}
+              onTime={setHubTime}
+              playbackRate={playbackRate}
+              selectedCategory={selectedCategory}
+              platformPrefix={text.trackShort}
+            />
+          </Suspense>
         ) : isHub && network ? (
-          <HubPulseScene
-            timeline={hubDay?.metadata ?? network.metadata}
-            hub={selectedHub}
-            calls={hubCalls}
-            isPlaying={isPlaying}
-            time={hubTime}
-            onTime={setHubTime}
-            playbackRate={playbackRate}
-            selectedCategory={selectedCategory}
-          />
+          <Suspense fallback={null}>
+            <HubPulseScene
+              timeline={hubDay?.metadata ?? network.metadata}
+              hub={selectedHub}
+              calls={hubCalls}
+              isPlaying={isPlaying}
+              time={hubTime}
+              onTime={setHubTime}
+              playbackRate={playbackRate}
+              selectedCategory={selectedCategory}
+            />
+          </Suspense>
         ) : (
-          <GleislichtScene
-            isPlaying={isPlaying && !isNetwork}
-            progress={journeyProgress}
-            onProgress={handleJourneyProgress}
-          />
+          <Suspense fallback={null}>
+            <GleislichtScene
+              isPlaying={isPlaying && !isNetwork}
+              progress={journeyProgress}
+              onProgress={handleJourneyProgress}
+            />
+          </Suspense>
         )}
       </div>
 
