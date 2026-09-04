@@ -27,6 +27,10 @@ body,
   margin: 0;
 }
 
+html {
+  overscroll-behavior: none;
+}
+
 body {
   min-height: 100vh;
   overflow: hidden;
@@ -35,6 +39,10 @@ body {
 button,
 input {
   font: inherit;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
 }
 
 .experience {
@@ -61,6 +69,8 @@ input {
 .view-network .scene canvas {
   touch-action: none;
   cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .view-network .scene canvas:active {
@@ -1175,8 +1185,30 @@ footer {
 }
 
 @media (max-width: 700px) {
+  html,
+  body,
+  #root {
+    min-width: 0;
+  }
+
+  .experience {
+    min-height: 100svh;
+  }
+
   .masthead {
     align-items: flex-start;
+    padding: calc(16px + env(safe-area-inset-top))
+      calc(16px + env(safe-area-inset-right)) 0
+      calc(16px + env(safe-area-inset-left));
+  }
+
+  .eyebrow {
+    font-size: 0.67rem;
+  }
+
+  h1 {
+    max-width: 148px;
+    font-size: clamp(1.55rem, 7vw, 1.9rem);
   }
 
   .masthead-topline .study-meta {
@@ -1187,12 +1219,23 @@ footer {
     gap: 10px;
   }
 
+  .language-picker {
+    gap: 0;
+    padding: 0;
+  }
+
+  .language-picker button {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0;
+  }
+
   .soundtrack-control {
-    width: 154px;
+    width: 176px;
   }
 
   .soundtrack-control > button {
-    min-height: 40px;
+    min-height: 44px;
     padding: 5px 7px;
   }
 
@@ -1208,6 +1251,10 @@ footer {
   .volume-control {
     padding-right: 5px;
     padding-left: 5px;
+  }
+
+  .volume-control input[type='range'] {
+    height: 44px;
   }
 
   .coordinate {
@@ -1228,18 +1275,53 @@ footer {
   }
 
   .hub-study-picker button {
-    padding: 0 6px;
+    min-height: 44px;
+    padding: 0 8px;
     font-size: 0.54rem;
   }
 
   .train-search {
-    top: 108px;
+    top: calc(124px + env(safe-area-inset-top));
+    width: auto;
+    right: calc(16px + env(safe-area-inset-right));
+    left: calc(16px + env(safe-area-inset-left));
+    transform: none;
+  }
+
+  .train-search form {
+    min-height: 48px;
+  }
+
+  .search-mark {
+    margin-left: 12px;
+  }
+
+  .train-search input[type='search'] {
+    min-height: 48px;
+    padding-right: 9px;
+    padding-left: 10px;
+    font-size: 0.72rem;
+  }
+
+  .network-study-picker {
+    padding: 0 2px;
+  }
+
+  .network-study-picker button,
+  .clear-search {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0;
   }
 
   .hub-picker {
-    top: 108px;
+    top: calc(124px + env(safe-area-inset-top));
+    right: calc(16px + env(safe-area-inset-right));
+    left: calc(16px + env(safe-area-inset-left));
+    width: auto;
     display: block;
     padding: 7px;
+    transform: none;
   }
 
   .hub-picker > span {
@@ -1247,17 +1329,45 @@ footer {
   }
 
   .hub-picker button {
+    min-height: 44px;
     padding: 0 4px;
     font-size: 0.61rem;
   }
 
   .search-results > button {
+    min-height: 52px;
     grid-template-columns: 10px 76px 1fr;
   }
 
+  .search-results {
+    max-height: min(360px, calc(100dvh - 300px));
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
   .service-legend {
-    bottom: 198px;
-    gap: 6px 11px;
+    right: calc(16px + env(safe-area-inset-right));
+    bottom: calc(300px + env(safe-area-inset-bottom));
+    left: calc(16px + env(safe-area-inset-left));
+    max-width: none;
+    justify-content: flex-start;
+    gap: 4px;
+    overflow-x: auto;
+    padding: 0 2px;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    touch-action: pan-x;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .service-legend::-webkit-scrollbar {
+    display: none;
+  }
+
+  .service-legend button {
+    min-height: 44px;
+    flex: 0 0 auto;
+    padding: 0 10px;
   }
 
   .prototype-note {
@@ -1265,16 +1375,100 @@ footer {
   }
 
   .map-navigation {
-    top: 168px;
+    top: calc(276px + env(safe-area-inset-top));
+    right: calc(16px + env(safe-area-inset-right));
+    left: calc(16px + env(safe-area-inset-left));
+    display: flex;
+    justify-content: flex-end;
+    gap: 6px;
   }
 
   .map-navigation > span {
     display: none;
   }
 
+  .map-navigation > div {
+    gap: 4px;
+  }
+
+  .map-navigation button {
+    width: 44px;
+    min-height: 44px;
+  }
+
+  .map-navigation .train-label-toggle {
+    width: auto;
+    min-width: 118px;
+    min-height: 44px;
+    margin: 0;
+    padding: 0 8px;
+  }
+
+  .view-network.has-selection .journey-card {
+    top: calc(184px + env(safe-area-inset-top));
+    right: calc(16px + env(safe-area-inset-right));
+    left: calc(16px + env(safe-area-inset-left));
+    width: auto;
+    max-width: none;
+    padding: 11px 14px 12px;
+  }
+
+  .view-network.has-selection .journey-card .between {
+    margin: 4px 0 0;
+  }
+
+  .view-network.has-selection .journey-card .metric-grid,
+  .view-network.has-selection .service-legend {
+    display: none;
+  }
+
+  .transport {
+    right: calc(16px + env(safe-area-inset-right));
+    bottom: calc(52px + env(safe-area-inset-bottom));
+    left: calc(16px + env(safe-area-inset-left));
+  }
+
+  .scrubber {
+    gap: 8px;
+  }
+
+  input[type='range'] {
+    height: 44px;
+  }
+
+  input[type='range']::-webkit-slider-runnable-track {
+    height: 2px;
+  }
+
+  input[type='range']::-webkit-slider-thumb {
+    width: 24px;
+    height: 24px;
+    margin-top: -11px;
+  }
+
+  .speed-picker {
+    gap: 6px;
+  }
+
+  .speed-picker > div {
+    gap: 2px;
+  }
+
+  .speed-picker button {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0 6px;
+  }
+
   .button-row {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(112px, 1fr));
+    gap: 8px;
+  }
+
+  .button-row button {
+    min-height: 48px;
+    padding: 0 9px;
   }
 
   .speed-picker {
@@ -1282,7 +1476,20 @@ footer {
   }
 
   button {
+    min-height: 44px;
     justify-content: center;
+  }
+
+  footer {
+    right: calc(16px + env(safe-area-inset-right));
+    bottom: calc(8px + env(safe-area-inset-bottom));
+    left: calc(16px + env(safe-area-inset-left));
+    justify-content: flex-start;
+    font-size: 0.52rem;
+  }
+
+  footer > span:last-child {
+    display: none;
   }
 
   kbd {
@@ -1292,8 +1499,10 @@ footer {
 
 @media (max-width: 620px) {
   .network-card {
+    top: calc(184px + env(safe-area-inset-top));
+    left: calc(16px + env(safe-area-inset-left));
     width: auto;
-    max-width: calc(100vw - 32px);
+    max-width: 190px;
     padding: 11px 14px 12px;
     clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
   }
@@ -1331,6 +1540,54 @@ footer {
 
   .transport {
     bottom: 45px;
+  }
+}
+
+@media (max-width: 700px) and (max-height: 690px) {
+  .view-network .journey-card {
+    top: calc(184px + env(safe-area-inset-top));
+    transform: none;
+  }
+
+  .view-network:not(.has-selection) .network-card {
+    display: none;
+  }
+
+  .view-network:not(.has-selection) .map-navigation {
+    top: calc(184px + env(safe-area-inset-top));
+  }
+
+  .transport {
+    bottom: calc(44px + env(safe-area-inset-bottom));
+  }
+
+  .service-legend {
+    bottom: calc(292px + env(safe-area-inset-bottom));
+  }
+}
+
+@media (max-width: 360px) {
+  h1 {
+    max-width: 99px;
+    font-size: 1.25rem;
+  }
+
+  .language-picker button {
+    min-width: 40px;
+  }
+
+  .soundtrack-control {
+    width: 160px;
+  }
+
+  .sound-copy strong {
+    max-width: 70px;
+  }
+}
+
+@media (hover: none) {
+  button:hover {
+    transform: none;
   }
 }
 
