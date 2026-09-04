@@ -534,7 +534,7 @@ function StationLabels({
             sprites.current[index] = sprite
           }}
           position={label.position}
-          renderOrder={10}
+          renderOrder={20}
         >
           <spriteMaterial
             map={label.texture}
