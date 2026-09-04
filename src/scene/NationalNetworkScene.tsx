@@ -14,6 +14,13 @@ import {
   rankStationsForLabels,
   stationLabelBudget,
 } from './station-labels.ts'
+import {
+  categoryIsVisibleInAutoMode,
+  MAX_TRAIN_LABELS,
+  trainLabelBudget,
+  trainLabelPriority,
+  type TrainLabelMode,
+} from './train-labels.ts'
 
 export type MapCameraAction = 'zoom-in' | 'zoom-out' | 'reset'
 
@@ -33,6 +40,7 @@ interface NationalNetworkSceneProps {
   readonly selectedCategory?: ServiceCategory
   readonly selectedStation?: StationIndexEntry
   readonly stations: readonly StationIndexEntry[]
+  readonly trainLabelMode: TrainLabelMode
 }
 
 type ProjectedStop = readonly [x: number, y: number, z: number]
@@ -387,6 +395,253 @@ function StationLabels({
         >
           <spriteMaterial
             map={label.texture}
+            transparent
+            opacity={0}
+            depthTest={false}
+            depthWrite={false}
+            toneMapped={false}
+          />
+        </sprite>
+      ))}
+    </>
+  )
+}
+
+interface TrainLabelTexture {
+  readonly texture: THREE.CanvasTexture
+  readonly aspect: number
+}
+
+function createTrainLabelTexture(label: string, color: string): TrainLabelTexture {
+  const canvas = document.createElement('canvas')
+  const measuringContext = canvas.getContext('2d')
+  const font = '500 27px "DM Mono", monospace'
+  if (measuringContext) measuringContext.font = font
+  const measuredWidth = measuringContext?.measureText(label).width ?? label.length * 17
+  canvas.width = Math.ceil(THREE.MathUtils.clamp(measuredWidth + 88, 190, 720))
+  canvas.height = 74
+
+  const context = canvas.getContext('2d')
+  if (context) {
+    context.fillStyle = 'rgba(5, 4, 16, 0.82)'
+    context.beginPath()
+    context.roundRect(5, 6, canvas.width - 10, canvas.height - 12, 10)
+    context.fill()
+    context.strokeStyle = 'rgba(193, 204, 255, 0.35)'
+    context.lineWidth = 2
+    context.stroke()
+
+    context.beginPath()
+    context.arc(31, 37, 6, 0, Math.PI * 2)
+    context.fillStyle = color
+    context.shadowColor = color
+    context.shadowBlur = 15
+    context.fill()
+
+    context.font = font
+    context.textBaseline = 'middle'
+    context.shadowColor = 'rgba(5, 4, 16, 0.95)'
+    context.shadowBlur = 7
+    context.fillStyle = '#f8f7ff'
+    context.fillText(label, 56, 38)
+  }
+
+  const texture = new THREE.CanvasTexture(canvas)
+  texture.colorSpace = THREE.SRGBColorSpace
+  texture.minFilter = THREE.LinearFilter
+  texture.generateMipmaps = false
+  return { texture, aspect: canvas.width / canvas.height }
+}
+
+function trainLabelText(train: NetworkTrain, selected: boolean): string {
+  const identity = train.shortName
+    ? `${train.route} · ${train.shortName}`
+    : train.route
+  return selected ? `${identity} → ${train.headsign}` : identity
+}
+
+function TrainLabels({
+  snapshot,
+  projectedStops,
+  selectedTrain,
+  selectedStation,
+  selectedCategory,
+  trainLabelMode,
+  isPlaying,
+  time,
+  playbackRate,
+}: NationalNetworkSceneProps & {
+  readonly projectedStops: readonly ProjectedStop[]
+}) {
+  const { camera, size } = useThree()
+  const sprites = useRef<Array<THREE.Sprite | null>>([])
+  const textures = useRef(new Map<string, TrainLabelTexture>())
+  const localTime = useRef(time)
+  const selectedStationTrainIds = useMemo(
+    () => new Set(selectedStation?.trainIds ?? []),
+    [selectedStation],
+  )
+
+  useEffect(() => {
+    localTime.current = time
+  }, [time])
+
+  useEffect(
+    () => () => {
+      textures.current.forEach(({ texture }) => texture.dispose())
+      textures.current.clear()
+    },
+    [],
+  )
+
+  useFrame((_, delta) => {
+    if (isPlaying) {
+      localTime.current += delta * playbackRate
+      if (localTime.current > snapshot.metadata.windowEnd) {
+        localTime.current = snapshot.metadata.windowStart
+      }
+    }
+
+    sprites.current.forEach((sprite) => {
+      if (sprite) sprite.visible = false
+    })
+    const labelBudget = selectedTrain
+      ? trainLabelMode === 'off'
+        ? 0
+        : 1
+      : trainLabelBudget(camera.position.y, trainLabelMode)
+    if (!labelBudget) return
+
+    const projected = new THREE.Vector3()
+    const candidates: Array<{
+      train: NetworkTrain
+      position: ProjectedStop
+      x: number
+      y: number
+      distance: number
+      selected: boolean
+    }> = []
+
+    for (const train of snapshot.trains) {
+      const selected = train.id === selectedTrain?.id
+      if (selectedTrain && !selected) continue
+      if (!selected && selectedStation && !selectedStationTrainIds.has(train.id)) continue
+      if (!selected && selectedCategory && train.category !== selectedCategory) continue
+      if (
+        !selected &&
+        !selectedCategory &&
+        trainLabelMode === 'auto' &&
+        !categoryIsVisibleInAutoMode(train.category, camera.position.y)
+      ) {
+        continue
+      }
+
+      const position = projectedTrainPosition(train, localTime.current, projectedStops)
+      if (!position) continue
+      projected.set(position[0], 0.76, position[2]).project(camera)
+      if (
+        projected.z < -1 ||
+        projected.z > 1 ||
+        projected.x < -1.08 ||
+        projected.x > 1.08 ||
+        projected.y < -1.08 ||
+        projected.y > 1.08
+      ) {
+        continue
+      }
+      candidates.push({
+        train,
+        position,
+        x: (projected.x * 0.5 + 0.5) * size.width,
+        y: (-projected.y * 0.5 + 0.5) * size.height,
+        distance: camera.position.distanceTo(projected.set(position[0], 0.76, position[2])),
+        selected,
+      })
+    }
+
+    candidates.sort(
+      (first, second) =>
+        Number(second.selected) - Number(first.selected) ||
+        trainLabelPriority(first.train.category) -
+          trainLabelPriority(second.train.category) ||
+        first.distance - second.distance,
+    )
+
+    const occupied: Array<{ left: number; right: number; top: number; bottom: number }> = []
+    const visibleTextureKeys = new Set<string>()
+    const worldHeight = 0.62 * THREE.MathUtils.clamp(camera.position.y / 37, 0.5, 1)
+    let visible = 0
+
+    for (const candidate of candidates) {
+      if (visible >= labelBudget || visible >= MAX_TRAIN_LABELS) break
+      const text = trainLabelText(candidate.train, candidate.selected)
+      const width = THREE.MathUtils.clamp(text.length * 6.4 + 28, 68, 210)
+      const box = {
+        left: candidate.x - width / 2,
+        right: candidate.x + width / 2,
+        top: candidate.y - 12,
+        bottom: candidate.y + 12,
+      }
+      const overlaps = occupied.some(
+        (other) =>
+          box.left < other.right + 5 &&
+          box.right > other.left - 5 &&
+          box.top < other.bottom + 4 &&
+          box.bottom > other.top - 4,
+      )
+      if (overlaps && !candidate.selected) continue
+
+      const sprite = sprites.current[visible]
+      if (!sprite) continue
+      const textureKey = `${candidate.train.category}:${text}`
+      let textureEntry = textures.current.get(textureKey)
+      if (!textureEntry) {
+        textureEntry = createTrainLabelTexture(
+          text,
+          SERVICE_COLORS[candidate.train.category],
+        )
+        textures.current.set(textureKey, textureEntry)
+      } else {
+        textures.current.delete(textureKey)
+        textures.current.set(textureKey, textureEntry)
+      }
+      visibleTextureKeys.add(textureKey)
+
+      sprite.visible = true
+      sprite.position.set(candidate.position[0], 0.76, candidate.position[2])
+      sprite.scale.set(textureEntry.aspect * worldHeight, worldHeight, 1)
+      const material = sprite.material as THREE.SpriteMaterial
+      if (material.map !== textureEntry.texture) {
+        material.map = textureEntry.texture
+        material.needsUpdate = true
+      }
+      material.opacity = candidate.selected ? 1 : 0.9
+      occupied.push(box)
+      visible += 1
+    }
+
+    if (textures.current.size > 180) {
+      for (const [key, entry] of textures.current) {
+        if (visibleTextureKeys.has(key)) continue
+        entry.texture.dispose()
+        textures.current.delete(key)
+        if (textures.current.size <= 180) break
+      }
+    }
+  })
+
+  return (
+    <>
+      {Array.from({ length: MAX_TRAIN_LABELS }, (_, index) => (
+        <sprite
+          key={index}
+          ref={(sprite) => {
+            sprites.current[index] = sprite
+          }}
+          visible={false}
+          renderOrder={12}
+        >
+          <spriteMaterial
             transparent
             opacity={0}
             depthTest={false}
@@ -816,6 +1071,7 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
         />
       )}
       <TrainSwarm {...props} projectedStops={projectedStops} />
+      <TrainLabels {...props} projectedStops={projectedStops} />
       <StationLabels
         stations={props.stations}
         snapshot={props.snapshot}

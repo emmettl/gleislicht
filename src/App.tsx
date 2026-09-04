@@ -30,6 +30,7 @@ import {
   type MapCameraAction,
   type MapCameraCommand,
 } from './scene/NationalNetworkScene.tsx'
+import type { TrainLabelMode } from './scene/train-labels.ts'
 
 type View = 'network' | 'hub' | 'journey'
 type SoundtrackState = 'off' | 'starting' | 'on' | 'error'
@@ -38,6 +39,12 @@ const SOUNDTRACK_TITLES: Record<SoundtrackMode, string> = {
   network: 'Night Grid',
   hub: 'Taktwerk',
   journey: 'Valley Signal',
+}
+
+const NEXT_TRAIN_LABEL_MODE: Readonly<Record<TrainLabelMode, TrainLabelMode>> = {
+  auto: 'on',
+  on: 'off',
+  off: 'auto',
 }
 
 const numberFormat = new Intl.NumberFormat('de-CH')
@@ -90,6 +97,7 @@ export function App() {
   })
   const [playbackRate, setPlaybackRate] = useState(120)
   const [selectedCategory, setSelectedCategory] = useState<ServiceCategory>()
+  const [trainLabelMode, setTrainLabelMode] = useState<TrainLabelMode>('auto')
   const [soundtrackState, setSoundtrackState] = useState<SoundtrackState>('off')
   const [soundtrackVolume, setSoundtrackVolume] = useState(0.56)
   const soundtrackRef = useRef<GleislichtSoundtrack | null>(null)
@@ -343,6 +351,7 @@ export function App() {
           <NationalNetworkScene
             snapshot={network}
             stations={stationIndex}
+            trainLabelMode={trainLabelMode}
             isPlaying={isPlaying}
             time={networkTime}
             selectedTrain={selectedTrain}
@@ -712,32 +721,47 @@ export function App() {
 
       {isNetwork && !selectedTrain && <div className="north-marker">N</div>}
 
-      {isNetwork && !selectedTrain && (
-        <div className="map-navigation" aria-label="Map navigation">
-          <span>drag · wheel / pinch</span>
-          <div>
-            <button
-              type="button"
-              aria-label="Zoom map in"
-              onClick={() => moveMapCamera('zoom-in')}
-            >
-              +
-            </button>
-            <button
-              type="button"
-              aria-label="Zoom map out"
-              onClick={() => moveMapCamera('zoom-out')}
-            >
-              −
-            </button>
-            <button
-              type="button"
-              aria-label="Reset map position and zoom"
-              onClick={() => moveMapCamera('reset')}
-            >
-              ↺
-            </button>
-          </div>
+      {isNetwork && (
+        <div className="map-navigation" aria-label="Map display controls">
+          {!selectedTrain && (
+            <>
+              <span>drag · wheel / pinch</span>
+              <div>
+                <button
+                  type="button"
+                  aria-label="Zoom map in"
+                  onClick={() => moveMapCamera('zoom-in')}
+                >
+                  +
+                </button>
+                <button
+                  type="button"
+                  aria-label="Zoom map out"
+                  onClick={() => moveMapCamera('zoom-out')}
+                >
+                  −
+                </button>
+                <button
+                  type="button"
+                  aria-label="Reset map position and zoom"
+                  onClick={() => moveMapCamera('reset')}
+                >
+                  ↺
+                </button>
+              </div>
+            </>
+          )}
+          <button
+            className="train-label-toggle"
+            type="button"
+            aria-label={`Train labels: ${trainLabelMode}. Activate for ${NEXT_TRAIN_LABEL_MODE[trainLabelMode]}.`}
+            onClick={() =>
+              setTrainLabelMode((current) => NEXT_TRAIN_LABEL_MODE[current])
+            }
+          >
+            <span aria-hidden="true">▱</span>
+            trains · {trainLabelMode}
+          </button>
         </div>
       )}
 

@@ -502,6 +502,25 @@ h1 {
   font-size: 1rem;
 }
 
+.map-navigation .train-label-toggle {
+  width: auto;
+  min-width: 126px;
+  min-height: 30px;
+  margin-top: 5px;
+  margin-left: auto;
+  padding: 0 9px;
+  color: var(--muted);
+  font-size: 0.57rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.train-label-toggle span {
+  color: var(--pink);
+  font-size: 0.85rem;
+  text-shadow: 0 0 9px rgba(255, 94, 219, 0.65);
+}
+
 .train-search {
   position: absolute;
   top: clamp(112px, 17vh, 158px);

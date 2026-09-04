@@ -54,6 +54,7 @@ The national GTFS-RT feed supplies trip updates and alerts, not vehicle position
 - [x] Search and select by train number, service, origin or destination.
 - [x] Colour-code motion by service class while preserving night-view legibility.
 - [x] Reveal collision-aware station labels progressively with map zoom.
+- [x] Add context-aware, switchable labels for moving trains.
 - [x] Add a hub-scale Takt pulse for Zürich HB, Bern, Basel SBB and Genève.
 - [x] Loop the hub orbit across a full day with four authored playback tempos.
 - [ ] Replace the map-level selected-train follow with a terrain-backed corridor transition.
