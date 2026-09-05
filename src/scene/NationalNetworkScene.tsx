@@ -50,6 +50,7 @@ import {
   categoryIsVisibleInAutoMode,
   compareTrainLabelCandidates,
   MAX_TRAIN_LABELS,
+  nonRailCategorySuppressesTrainLabels,
   trainLabelArrivalOpacity,
   trainLabelBudget,
   trainLabelScreenHeight,
@@ -1612,6 +1613,7 @@ function TrainLabels({
   selectedStation,
   selectedCategory,
   airCategorySelected,
+  roadCategorySelected,
   trainLabelMode,
   isPlaying,
   time,
@@ -1665,7 +1667,10 @@ function TrainLabels({
       camera.position.y,
       cameraFraming,
     )
-    const labelBudget = airCategorySelected
+    const labelBudget = nonRailCategorySuppressesTrainLabels(
+      airCategorySelected,
+      roadCategorySelected,
+    )
       ? 0
       : selectedTrain
       ? trainLabelMode === 'off'

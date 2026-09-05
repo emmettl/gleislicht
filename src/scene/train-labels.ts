@@ -5,6 +5,13 @@ export type TrainLabelMode = 'auto' | 'on' | 'off'
 export const MAX_TRAIN_LABELS = 56
 export const TRAIN_LABEL_ARRIVAL_FADE_SECONDS = 1.6
 
+export function nonRailCategorySuppressesTrainLabels(
+  airCategorySelected = false,
+  roadCategorySelected = false,
+): boolean {
+  return airCategorySelected || roadCategorySelected
+}
+
 export function trainLabelArrivalOpacity(
   time: number,
   end: number,

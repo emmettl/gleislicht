@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest'
 import {
   categoryIsVisibleInAutoMode,
   compareTrainLabelCandidates,
+  nonRailCategorySuppressesTrainLabels,
   trainLabelArrivalOpacity,
   trainLabelBudget,
   trainLabelPriority,
@@ -10,6 +11,12 @@ import {
 } from './train-labels.ts'
 
 describe('train labels', () => {
+  it('suppresses rail labels while a non-rail category is isolated', () => {
+    expect(nonRailCategorySuppressesTrainLabels()).toBe(false)
+    expect(nonRailCategorySuppressesTrainLabels(true, false)).toBe(true)
+    expect(nonRailCategorySuppressesTrainLabels(false, true)).toBe(true)
+  })
+
   it('gives arriving labels a playback-rate-independent afterglow', () => {
     expect(trainLabelArrivalOpacity(1_000, 1_000, 1)).toBe(1)
     expect(trainLabelArrivalOpacity(1_000.8, 1_000, 1)).toBeCloseTo(0.5)
