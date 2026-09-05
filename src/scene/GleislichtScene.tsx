@@ -1,7 +1,11 @@
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { useEffect, useMemo, useRef } from 'react'
 import * as THREE from 'three'
-import type { CorridorSnapshot } from '../domain/corridor.ts'
+import {
+  vehicleKindForCorridor,
+  type CorridorSnapshot,
+  type CorridorVehicleKind,
+} from '../domain/corridor.ts'
 
 interface GleislichtSceneProps {
   readonly corridor?: CorridorSnapshot
@@ -466,62 +470,153 @@ function SignalField() {
 }
 
 function RailVehicle() {
-  const windowOffsets = [-0.52, -0.16, 0.2, 0.56]
+  const windowOffsets = [
+    -1.02,
+    -0.68,
+    -0.34,
+    0.2,
+    0.54,
+    0.88,
+    1.48,
+    1.82,
+    2.16,
+    2.5,
+    2.84,
+    3.18,
+  ]
   return (
-    <group scale={0.72}>
-      <mesh position={[0, 0.3, -0.04]}>
-        <boxGeometry args={[0.5, 0.38, 1.55]} />
+    <group scale={0.42}>
+      <mesh position={[0, 0.37, -0.08]}>
+        <boxGeometry args={[0.56, 0.5, 2.45]} />
         <meshStandardMaterial
-          color="#fff4ff"
-          emissive="#806cff"
-          emissiveIntensity={2.7}
+          color="#f2f7ff"
+          emissive="#6c6fff"
+          emissiveIntensity={2.4}
           wireframe
         />
       </mesh>
-      <mesh position={[0, 0.3, 0.92]} rotation={[Math.PI / 2, Math.PI / 4, 0]}>
-        <coneGeometry args={[0.34, 0.48, 4]} />
+      <mesh position={[0, 0.37, 2.42]}>
+        <boxGeometry args={[0.56, 0.5, 2.38]} />
+        <meshStandardMaterial
+          color="#f2f7ff"
+          emissive="#6c6fff"
+          emissiveIntensity={2.4}
+          wireframe
+        />
+      </mesh>
+      <mesh
+        position={[0, 0.34, 3.74]}
+        rotation={[Math.PI / 2, Math.PI / 4, 0]}
+      >
+        <coneGeometry args={[0.38, 0.42, 4]} />
         <meshStandardMaterial
           color="#fff4ff"
           emissive="#ff4fdf"
-          emissiveIntensity={3.8}
+          emissiveIntensity={3.4}
           wireframe
         />
       </mesh>
-      <mesh position={[0, 0.55, -0.18]}>
-        <boxGeometry args={[0.34, 0.09, 0.98]} />
+      <mesh position={[0, 0.67, -0.16]}>
+        <boxGeometry args={[0.44, 0.07, 2.02]} />
         <meshBasicMaterial color="#9afcff" transparent opacity={0.22} />
+      </mesh>
+      <mesh position={[0, 0.67, 2.42]}>
+        <boxGeometry args={[0.44, 0.07, 1.98]} />
+        <meshBasicMaterial color="#9afcff" transparent opacity={0.22} />
+      </mesh>
+      <mesh position={[0, 0.37, -0.2]}>
+        <boxGeometry args={[0.59, 0.52, 0.035]} />
+        <meshBasicMaterial
+          color="#ff78df"
+          transparent
+          opacity={0.72}
+          wireframe
+          toneMapped={false}
+        />
+      </mesh>
+      <mesh position={[0, 0.4, 3.624]}>
+        <planeGeometry args={[0.38, 0.24]} />
+        <meshBasicMaterial
+          color="#8dfaff"
+          transparent
+          opacity={0.88}
+          toneMapped={false}
+        />
       </mesh>
       {[-1, 1].flatMap((side) =>
         windowOffsets.map((offset) => (
           <mesh
             key={`${side}-${offset}`}
-            position={[side * 0.254, 0.36, offset]}
+            position={[side * 0.284, 0.43, offset]}
             rotation={[0, side * Math.PI / 2, 0]}
           >
-            <planeGeometry args={[0.22, 0.13]} />
+            <planeGeometry args={[0.25, 0.16]} />
             <meshBasicMaterial
-              color={offset > 0.48 ? '#ff78df' : '#8dfaff'}
+              color={offset > 0.8 ? '#ff78df' : '#8dfaff'}
               transparent
-              opacity={0.82}
+              opacity={0.84}
               toneMapped={false}
             />
           </mesh>
         )),
       )}
-      {[-0.48, 0.48].flatMap((z) =>
-        [-1, 1].map((side) => (
-          <mesh
-            key={`${z}-${side}`}
-            position={[side * 0.29, 0.12, z]}
-            rotation={[0, 0, Math.PI / 2]}
-          >
-            <cylinderGeometry args={[0.085, 0.085, 0.08, 10]} />
-            <meshBasicMaterial color="#28103d" />
+      {[-0.82, 0.72, 1.68, 2.94].map((z) => (
+        <group key={z} position={[0, 0.13, z]}>
+          <mesh>
+            <boxGeometry args={[0.54, 0.14, 0.34]} />
+            <meshBasicMaterial color="#160e29" />
           </mesh>
-        )),
-      )}
-      <pointLight color="#ff4fdf" intensity={8} distance={5} position={[0, 0.5, 1.05]} />
-      <pointLight color="#78f7ff" intensity={5} distance={4} position={[0, 0.35, -0.8]} />
+        </group>
+      ))}
+      <mesh position={[0, 0.39, -1.306]} rotation={[0, Math.PI, 0]}>
+        <planeGeometry args={[0.32, 0.3]} />
+        <meshBasicMaterial
+          color="#88eaff"
+          transparent
+          opacity={0.6}
+          toneMapped={false}
+        />
+      </mesh>
+      {[-0.16, 0.16].map((x) => (
+        <mesh key={x} position={[x, 0.27, -1.325]}>
+          <sphereGeometry args={[0.035, 8, 8]} />
+          <meshBasicMaterial color="#ff4fdf" toneMapped={false} />
+        </mesh>
+      ))}
+      <group position={[0, 0.75, -0.28]}>
+        <mesh position={[-0.1, 0.14, 0]} rotation={[0, 0, -0.56]}>
+          <boxGeometry args={[0.025, 0.38, 0.025]} />
+          <meshBasicMaterial color="#ff78df" toneMapped={false} />
+        </mesh>
+        <mesh position={[0.1, 0.14, 0]} rotation={[0, 0, 0.56]}>
+          <boxGeometry args={[0.025, 0.38, 0.025]} />
+          <meshBasicMaterial color="#ff78df" toneMapped={false} />
+        </mesh>
+        <mesh position={[0.1, 0.43, 0]} rotation={[0, 0, -0.56]}>
+          <boxGeometry args={[0.025, 0.38, 0.025]} />
+          <meshBasicMaterial color="#ff78df" toneMapped={false} />
+        </mesh>
+        <mesh position={[-0.1, 0.43, 0]} rotation={[0, 0, 0.56]}>
+          <boxGeometry args={[0.025, 0.38, 0.025]} />
+          <meshBasicMaterial color="#ff78df" toneMapped={false} />
+        </mesh>
+        <mesh position={[0, 0.62, 0]}>
+          <boxGeometry args={[0.46, 0.025, 0.05]} />
+          <meshBasicMaterial color="#fff4ff" toneMapped={false} />
+        </mesh>
+      </group>
+      <pointLight
+        color="#ff4fdf"
+        intensity={8}
+        distance={5}
+        position={[0, 0.5, 3.84]}
+      />
+      <pointLight
+        color="#78f7ff"
+        intensity={5}
+        distance={4}
+        position={[0, 0.38, -1.1]}
+      />
     </group>
   )
 }
@@ -583,8 +678,8 @@ function PostBusVehicle() {
   )
 }
 
-function JourneyVehicle({ bus }: { readonly bus: boolean }) {
-  return bus ? <PostBusVehicle /> : <RailVehicle />
+function JourneyVehicle({ kind }: { readonly kind: CorridorVehicleKind }) {
+  return kind === 'bus' ? <PostBusVehicle /> : <RailVehicle />
 }
 
 function MovingWorld({
@@ -600,6 +695,7 @@ function MovingWorld({
   const lastReport = useRef(0)
   const { camera } = useThree()
   const alpine = corridor?.id === 'kiental-griesalp'
+  const vehicleKind = vehicleKindForCorridor(corridor)
   const routeCurve = useMemo(() => routeCurveFor(corridor), [corridor])
   const rail = useMemo(
     () => makeRouteLine(routeCurve, alpine ? '#fff2b3' : '#b9ffff', 0.92),
@@ -719,7 +815,9 @@ function MovingWorld({
           ? { behind: 1.82, height: 1.02, ahead: 1.55, sweep: 0.3 }
           : { behind: 2.15, height: 0.92, ahead: 1.65, sweep: 0.22 }
     const sweep =
-      Math.sin(current * Math.PI * 5) * cameraStyle.sweep * (1 - tunnelMix)
+      ((vehicleKind === 'train' ? 0.38 : 0) +
+        Math.sin(current * Math.PI * 5) * cameraStyle.sweep) *
+      (1 - tunnelMix)
     cameraPosition
       .copy(routePosition)
       .addScaledVector(
@@ -775,7 +873,7 @@ function MovingWorld({
       {corridor && <StationBeacons corridor={corridor} curve={routeCurve} />}
       {corridor && <TunnelInfrastructure corridor={corridor} curve={routeCurve} />}
       <group ref={train}>
-        <JourneyVehicle bus={alpine} />
+        <JourneyVehicle kind={vehicleKind} />
       </group>
     </>
   )

@@ -74,6 +74,14 @@ export interface CorridorSnapshot {
   readonly lakes: readonly CorridorLake[]
 }
 
+export type CorridorVehicleKind = 'train' | 'bus'
+
+export function vehicleKindForCorridor(
+  corridor?: Pick<CorridorSnapshot, 'id'>,
+): CorridorVehicleKind {
+  return corridor?.id === 'kiental-griesalp' ? 'bus' : 'train'
+}
+
 export function isZurichChurTrain(
   train: NetworkTrain | undefined,
   network: NetworkSnapshot | undefined,

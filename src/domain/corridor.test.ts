@@ -3,6 +3,7 @@ import {
   corridorProgressForTime,
   isZurichChurTrain,
   journeyForCorridor,
+  vehicleKindForCorridor,
   type CorridorSnapshot,
 } from './corridor.ts'
 import type { NetworkSnapshot, NetworkTrain } from './network.ts'
@@ -23,6 +24,7 @@ const network = {
 } as unknown as NetworkSnapshot
 
 const corridor = {
+  id: 'zurich-chur',
   route: {
     service: 'IR35',
     representativeTrain: '2353',
@@ -39,6 +41,11 @@ const corridor = {
 } as unknown as CorridorSnapshot
 
 describe('terrain corridor journey', () => {
+  it('assigns distinct vehicles to rail and PostBus corridors', () => {
+    expect(vehicleKindForCorridor(corridor)).toBe('train')
+    expect(vehicleKindForCorridor({ id: 'kiental-griesalp' })).toBe('bus')
+  })
+
   it('recognises only Zürich-to-Chur services in travel order', () => {
     expect(isZurichChurTrain(train, network)).toBe(true)
     expect(
