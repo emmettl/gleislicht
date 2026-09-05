@@ -40,6 +40,7 @@ import {
   categoryIsVisibleInAutoMode,
   compareTrainLabelCandidates,
   MAX_TRAIN_LABELS,
+  trainLabelArrivalOpacity,
   trainLabelBudget,
   trainLabelScreenHeight,
   trainLabelScreenWidth,
@@ -1630,6 +1631,7 @@ function TrainLabels({
       depth: number
       selected: boolean
       retained: boolean
+      arrivalOpacity: number
     }> = []
 
     for (const train of trainsNearTime(trainTimeIndex, localTime.current)) {
@@ -1661,9 +1663,15 @@ function TrainLabels({
         continue
       }
 
+      const arrivalOpacity = trainLabelArrivalOpacity(
+        localTime.current,
+        train.end,
+        playbackRate,
+      )
+      if (arrivalOpacity <= 0) continue
       const position = projectedTrainPosition(
         train,
-        localTime.current,
+        Math.min(localTime.current, train.end),
         projectedStops,
         projectedPaths,
         lakeAvoidingPaths,
@@ -1690,6 +1698,7 @@ function TrainLabels({
         depth: Math.max(0.01, -viewPosition.z),
         selected,
         retained: retainedTrainIds.current.has(train.id),
+        arrivalOpacity,
       })
     }
 
@@ -1772,7 +1781,7 @@ function TrainLabels({
         material.map = textureEntry.texture
         material.needsUpdate = true
       }
-      material.opacity = candidate.selected ? 1 : 0.9
+      material.opacity = (candidate.selected ? 1 : 0.9) * candidate.arrivalOpacity
       occupied.push(box)
       visible += 1
     }

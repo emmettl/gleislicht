@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest'
 import {
   categoryIsVisibleInAutoMode,
   compareTrainLabelCandidates,
+  trainLabelArrivalOpacity,
   trainLabelBudget,
   trainLabelPriority,
   trainLabelScreenHeight,
@@ -9,6 +10,13 @@ import {
 } from './train-labels.ts'
 
 describe('train labels', () => {
+  it('gives arriving labels a playback-rate-independent afterglow', () => {
+    expect(trainLabelArrivalOpacity(1_000, 1_000, 1)).toBe(1)
+    expect(trainLabelArrivalOpacity(1_000.8, 1_000, 1)).toBeCloseTo(0.5)
+    expect(trainLabelArrivalOpacity(1_003.2, 1_000, 4)).toBeCloseTo(0.5)
+    expect(trainLabelArrivalOpacity(1_102.4, 1_000, 64)).toBe(0)
+  })
+
   it('keeps automatic labels sparse until the camera approaches', () => {
     expect(trainLabelBudget(37, 'auto')).toBe(8)
     expect(trainLabelBudget(25, 'auto')).toBe(16)

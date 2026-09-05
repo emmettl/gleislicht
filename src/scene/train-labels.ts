@@ -3,6 +3,18 @@ import type { ServiceCategory } from '../domain/network.ts'
 export type TrainLabelMode = 'auto' | 'on' | 'off'
 
 export const MAX_TRAIN_LABELS = 56
+export const TRAIN_LABEL_ARRIVAL_FADE_SECONDS = 1.6
+
+export function trainLabelArrivalOpacity(
+  time: number,
+  end: number,
+  playbackRate: number,
+): number {
+  if (time <= end) return 1
+  const timetableFadeSeconds =
+    TRAIN_LABEL_ARRIVAL_FADE_SECONDS * Math.max(1, playbackRate)
+  return Math.max(0, 1 - (time - end) / timetableFadeSeconds)
+}
 
 export function trainLabelScreenHeight(
   viewportWidth: number,
