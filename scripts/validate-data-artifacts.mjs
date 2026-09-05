@@ -15,6 +15,7 @@ const morning = await readJson('swiss-rail-morning.json')
 const hubs = await readJson('swiss-hub-day.json')
 const day = await readJson('swiss-rail-day-manifest.json')
 const kientalCorridor = await readJson('kiental-griesalp-corridor.json')
+const zurichChurCorridor = await readJson('zurich-chur-corridor.json')
 
 const artifacts = [morning, hubs, day]
 const serviceDates = new Set(artifacts.map((artifact) => artifact.metadata?.serviceDate))
@@ -71,6 +72,15 @@ assert(kientalCorridor.terrain?.elevations?.length > 90_000, 'Kiental terrain gr
 assert(kientalCorridor.route?.points?.length > 100, 'Kiental road geometry is too coarse')
 assert(kientalCorridor.route?.stops?.length === 19, 'Kiental corridor does not contain the complete route 220 run')
 assert(kientalCorridor.route?.distanceMetres > 13_000, 'Kiental corridor road distance is implausibly short')
+assert(zurichChurCorridor.route?.tunnels?.length >= 7, 'Zürich–Chur corridor has too few matched tunnels')
+assert(
+  zurichChurCorridor.route.tunnels.some((tunnel) => tunnel.name === 'Zimmerberg Basistunnel'),
+  'Zürich–Chur corridor is missing the Zimmerberg Basistunnel',
+)
+assert(
+  zurichChurCorridor.route.tunnels.some((tunnel) => tunnel.name === 'Kerenzerbergtunnel'),
+  'Zürich–Chur corridor is missing the Kerenzerbergtunnel',
+)
 
 console.log(
   `Validated national GTFS ${[...feedVersions][0]} for ${[...serviceDates][0]}: ` +

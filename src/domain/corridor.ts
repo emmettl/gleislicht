@@ -28,6 +28,15 @@ export interface CorridorLake {
   readonly rings: readonly (readonly (readonly [number, number])[])[]
 }
 
+export interface CorridorTunnel {
+  readonly id: string
+  readonly name: string
+  readonly lengthMetres: number
+  readonly line: string
+  readonly startProgress: number
+  readonly endProgress: number
+}
+
 export interface CorridorSnapshot {
   readonly id: string
   readonly metadata: {
@@ -43,6 +52,9 @@ export interface CorridorSnapshot {
     readonly routeSource?: string
     readonly routeAttribution?: string
     readonly routeProductUrl?: string
+    readonly tunnelSource?: string
+    readonly tunnelSourceUrl?: string
+    readonly tunnelProductUrl?: string
   }
   readonly origin: {
     readonly easting: number
@@ -57,6 +69,7 @@ export interface CorridorSnapshot {
     readonly distanceMetres: number
     readonly points: readonly (readonly [number, number, number])[]
     readonly stops: readonly CorridorRouteStop[]
+    readonly tunnels?: readonly CorridorTunnel[]
   }
   readonly lakes: readonly CorridorLake[]
 }

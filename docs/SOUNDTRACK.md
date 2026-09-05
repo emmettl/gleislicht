@@ -16,6 +16,8 @@ Two Driftbox engines share a single `AudioContext`. Only one deck is normally au
 
 This keeps transitions musical without coupling visual playback speed to musical tempo. The 1×–64× timeline control changes the data animation, while each cue retains its intended groove.
 
+Within a terrain journey, the renderer publishes a low-rate environment signal derived from route progress, scheduled vehicle speed, tunnel intervals and the surrounding elevation grid. A smoothed low-pass filter closes as the camera enters a tunnel, resonance rises slightly, and terrain openness adds a small stereo drift. These changes colour the existing Valley Signal performance rather than retriggering notes, so scrubbing remains stable and the sound does not imitate literal train audio.
+
 ## Playback policy
 
 Sound is off by default and starts only from the listener's explicit button press, as required by browser autoplay policies. The engine is loaded lazily on first use, so silent visits do not download the audio code. Volume is local to the session; no preference or analytics data is stored.

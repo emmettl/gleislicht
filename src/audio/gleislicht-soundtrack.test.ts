@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import {
   buildGleislichtSong,
+  soundtrackEnvironmentMix,
   SOUNDTRACK_TITLES,
   type SoundtrackMode,
 } from './gleislicht-soundtrack.ts'
@@ -59,5 +60,26 @@ describe('Gleislicht soundtrack', () => {
         )
       }
     }
+  })
+})
+
+describe('adaptive journey environment', () => {
+  it('closes the spectrum and raises resonance inside a tunnel', () => {
+    const open = soundtrackEnvironmentMix({
+      progress: 0.3,
+      tunnel: 0,
+      openness: 0.9,
+      speed: 0.7,
+    })
+    const tunnel = soundtrackEnvironmentMix({
+      progress: 0.3,
+      tunnel: 1,
+      openness: 0.9,
+      speed: 0.7,
+    })
+
+    expect(tunnel.cutoff).toBeLessThan(open.cutoff * 0.2)
+    expect(tunnel.resonance).toBeGreaterThan(open.resonance)
+    expect(tunnel.gain).toBeLessThan(open.gain)
   })
 })

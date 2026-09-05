@@ -164,7 +164,9 @@ npm run data:corridor
 
 The script discovers the current full-coverage swissALTIRegio Cloud Optimized GeoTIFF through swisstopo's STAC catalogue, finds the best shape-matched Zürich HB–Chur service in the committed national snapshot, and crops a nine-kilometre margin around it. It range-reads and resamples the federal raster into a compact 241 × 185 low-poly grid. Rail elevations come from the separate GeoAdmin elevation-profile service so the vehicle remains attached to the route even where a coarse terrain cell contains a steep valley wall. Federal lake polygons and each corridor stop are transformed into the same LV95-local metre frame.
 
-The resulting `public/data/zurich-chur-corridor.json` records source release, CRS and attribution alongside 121 profiled rail points. It is requested only when the corridor view opens. The renderer uses the complete grid on desktop and a half-resolution level of detail on narrow screens; neither browser downloads nor parses the source raster.
+The same build pages through SBB's published railway-tunnel catalogue. It restricts candidates to the corridor's infrastructure lines, snaps each published portal to the profiled route, and projects the recorded tunnel length forward along that route. The artifact therefore stores named progress intervals for seven matched tunnels—including Zimmerberg Basistunnel and Kerenzerbergtunnel—rather than asking the client to infer underground sections from terrain.
+
+The resulting `public/data/zurich-chur-corridor.json` records source release, CRS, tunnel provenance and attribution alongside 121 profiled rail points. It is requested only when the corridor view opens. The renderer uses the complete grid on desktop and a half-resolution level of detail on narrow screens; neither browser downloads nor parses the source raster.
 
 ## Kiental–Griesalp terrain corridor
 

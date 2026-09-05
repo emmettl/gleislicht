@@ -11,6 +11,9 @@ const STAC_ITEM_URL =
   'https://data.geo.admin.ch/api/stac/v1/collections/ch.swisstopo.swissaltiregio/items/swissaltiregio'
 const PRODUCT_URL = 'https://www.swisstopo.admin.ch/en/height-model-swissaltiregio'
 const PROFILE_URL = 'https://api3.geo.admin.ch/rest/services/profile.json'
+const SBB_TUNNEL_API =
+  'https://data.sbb.ch/api/explore/v2.1/catalog/datasets/tunnel/records'
+const SBB_TUNNEL_PRODUCT_URL = 'https://data.sbb.ch/explore/dataset/tunnel/'
 const ATTRIBUTION =
   'Bundesamt für Landestopografie swisstopo; Tarquini S., I. Isola, M. Favalli, A. Battistini, G. Dotta (2023), TINITALY 1.1; DGM Österreich, geoland.at; DGM1, Bayerische Vermessungsverwaltung; DGM1, Baden-Württemberg: LGL, dl-de/by-2-0; RGEAlti, IGN France, July 2023'
 
@@ -123,6 +126,45 @@ function cumulativeDistances(points) {
   return distances
 }
 
+export function matchSbbTunnels(routePoints, tunnels) {
+  const distances = cumulativeDistances(routePoints)
+  const totalDistance = distances.at(-1) ?? 0
+  const corridorLines = new Set(['722', '890'])
+  return tunnels.flatMap((tunnel) => {
+    if (
+      !corridorLines.has(String(tunnel.linie)) ||
+      !tunnel.geopos ||
+      !Number.isFinite(tunnel.lange_bahntunnel)
+    ) {
+      return []
+    }
+    const coordinate = wgs84ToLv95(tunnel.geopos.lon, tunnel.geopos.lat)
+    let closestIndex = 0
+    let closestDistance = Number.POSITIVE_INFINITY
+    for (let index = 0; index < routePoints.length; index += 1) {
+      const distance = squaredDistance(routePoints[index], coordinate)
+      if (distance < closestDistance) {
+        closestDistance = distance
+        closestIndex = index
+      }
+    }
+    if (Math.sqrt(closestDistance) > 700 || totalDistance <= 0) return []
+    const startDistance = distances[closestIndex]
+    const endDistance = Math.min(
+      totalDistance,
+      startDistance + tunnel.lange_bahntunnel,
+    )
+    return [{
+      id: tunnel.uuid,
+      name: tunnel.name,
+      lengthMetres: Math.round(tunnel.lange_bahntunnel),
+      line: String(tunnel.linie),
+      startProgress: Number((startDistance / totalDistance).toFixed(5)),
+      endProgress: Number((endDistance / totalDistance).toFixed(5)),
+    }]
+  }).sort((first, second) => first.startProgress - second.startProgress)
+}
+
 function stopProgresses(routePoints, stopCoordinates) {
   const distances = cumulativeDistances(routePoints)
   let minimumIndex = 0
@@ -159,6 +201,7 @@ export function buildCorridorArtifact({
   routeProfile,
   releaseDate,
   sourceUrl,
+  tunnels = [],
 }) {
   const route = corridorRoute(network)
   const routeLv95 = routeProfile.map(({ easting, northing }) => [easting, northing])
@@ -209,6 +252,9 @@ export function buildCorridorArtifact({
       model: '10 m federal terrain sampled offline to a corridor-level low-poly grid',
       railSource: network.metadata.geometry,
       profileSourceUrl: PROFILE_URL,
+      tunnelSource: 'SBB Infrastruktur open data',
+      tunnelSourceUrl: SBB_TUNNEL_API,
+      tunnelProductUrl: SBB_TUNNEL_PRODUCT_URL,
     },
     origin: {
       easting: Math.round(centreEasting),
@@ -238,9 +284,27 @@ export function buildCorridorArtifact({
         progress: Number(progresses[index].toFixed(5)),
         departure,
       })),
+      tunnels: matchSbbTunnels(routeLv95, tunnels),
     },
     lakes: corridorLakes,
   }
+}
+
+async function fetchSbbTunnels() {
+  const records = []
+  let offset = 0
+  while (true) {
+    const url = new URL(SBB_TUNNEL_API)
+    url.searchParams.set('limit', '100')
+    url.searchParams.set('offset', String(offset))
+    const response = await fetch(url)
+    if (!response.ok) throw new Error(`SBB tunnel API returned ${response.status}`)
+    const payload = await response.json()
+    records.push(...payload.results)
+    offset += payload.results.length
+    if (offset >= payload.total_count || payload.results.length === 0) break
+  }
+  return records
 }
 
 async function fetchRouteProfile(routeLv95) {
@@ -283,10 +347,11 @@ async function main() {
   const networkPath = resolve(ROOT, process.env.GLEISLICHT_NETWORK ?? DEFAULT_NETWORK)
   const lakesPath = resolve(ROOT, process.env.GLEISLICHT_LAKES ?? DEFAULT_LAKES)
   const outputPath = resolve(ROOT, process.env.GLEISLICHT_OUTPUT ?? DEFAULT_OUTPUT)
-  const [network, lakes, itemResponse] = await Promise.all([
+  const [network, lakes, itemResponse, tunnels] = await Promise.all([
     readFile(networkPath, 'utf8').then(JSON.parse),
     readFile(lakesPath, 'utf8').then(JSON.parse),
     fetch(STAC_ITEM_URL),
+    fetchSbbTunnels(),
   ])
   if (!itemResponse.ok) throw new Error(`swissALTIRegio STAC returned ${itemResponse.status}`)
   const item = await itemResponse.json()
@@ -343,11 +408,12 @@ async function main() {
     },
     releaseDate: item.properties.datetime.slice(0, 10),
     sourceUrl: asset.href,
+    tunnels,
   })
   await mkdir(dirname(outputPath), { recursive: true })
   await writeFile(outputPath, `${JSON.stringify(artifact)}\n`)
   console.log(
-    `Wrote ${outputPath} (${artifact.terrain.columns}×${artifact.terrain.rows}, ${artifact.route.points.length} profiled rail points, ${artifact.lakes.length} lake polygons)`,
+    `Wrote ${outputPath} (${artifact.terrain.columns}×${artifact.terrain.rows}, ${artifact.route.points.length} profiled rail points, ${artifact.route.tunnels.length} tunnels, ${artifact.lakes.length} lake polygons)`,
   )
 }
 

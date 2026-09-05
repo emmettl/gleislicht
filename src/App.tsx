@@ -66,6 +66,7 @@ import type {
   MapCameraCommand,
 } from './scene/NationalNetworkScene.tsx'
 import type { TrainLabelMode } from './scene/train-labels.ts'
+import type { JourneyEnvironment } from './scene/GleislichtScene.tsx'
 import {
   nextSearchResultIndex,
   type SearchNavigationKey,
@@ -194,6 +195,13 @@ export function App() {
   const [isPlaying, setIsPlaying] = useState(true)
   const [view, setView] = useState<View>('network')
   const [journeyProgress, setJourneyProgress] = useState(0.11)
+  const [journeyEnvironment, setJourneyEnvironment] = useState<JourneyEnvironment>({
+    progress: 0.11,
+    tunnel: 0,
+    openness: 0.7,
+    speed: 0.6,
+    region: 'plateau',
+  })
   const [networkTime, setNetworkTime] = useState(7 * 3600 + 45 * 60)
   const [hubTime, setHubTime] = useState(7 * 3600 + 45 * 60)
   const [networkStudy, setNetworkStudy] = useState<NetworkStudy>('national')
@@ -491,6 +499,16 @@ export function App() {
   const handleJourneyProgress = useCallback((nextProgress: number) => {
     setJourneyProgress(nextProgress)
   }, [])
+  const handleJourneyEnvironment = useCallback((next: JourneyEnvironment) => {
+    soundtrackRef.current?.setEnvironment(next)
+    setJourneyEnvironment((current) =>
+      current.tunnelName !== next.tunnelName ||
+      current.region !== next.region ||
+      Math.abs(current.openness - next.openness) > 0.08
+        ? next
+        : current,
+    )
+  }, [])
   const handleNetworkTime = useCallback(
     (nextTime: number) => {
       if (
@@ -581,6 +599,28 @@ export function App() {
     [network, networkTime],
   )
 
+  const openTerrainCorridor = useCallback(
+    (nextCorridorId: TerrainCorridorId, nextProgress = 0.015) => {
+      setJourneyCorridorId(nextCorridorId)
+      setCorridor((current) =>
+        current?.id === nextCorridorId ? current : undefined,
+      )
+      setJourneyProgress(nextProgress)
+      setJourneyEnvironment((current) => ({
+        ...current,
+        progress: nextProgress,
+        tunnel: 0,
+        tunnelName: undefined,
+        region: nextCorridorId === 'kiental-griesalp' ? 'alpine' : 'plateau',
+      }))
+      setCorridorError(false)
+      setSearchOpen(false)
+      setView('journey')
+      setIsPlaying(true)
+    },
+    [],
+  )
+
   const enterTerrainCorridor = useCallback(() => {
     if (!selectedTrain || !network || !corridorTrainSelected) {
       return
@@ -588,26 +628,14 @@ export function App() {
     const nextCorridorId = isKientalGriesalpTrain(selectedTrain, network)
       ? 'kiental-griesalp'
       : 'zurich-chur'
-    setJourneyCorridorId(nextCorridorId)
-    setCorridor((current) => current?.id === nextCorridorId ? current : undefined)
-    setJourneyProgress(nextCorridorId === 'zurich-chur'
+    openTerrainCorridor(nextCorridorId, nextCorridorId === 'zurich-chur'
       ? corridorProgressForTime(selectedTrain, network, networkTime)
       : 0.015)
-    setCorridorError(false)
-    setSearchOpen(false)
-    setView('journey')
-    setIsPlaying(true)
-  }, [corridorTrainSelected, network, networkTime, selectedTrain])
+  }, [corridorTrainSelected, network, networkTime, openTerrainCorridor, selectedTrain])
 
   const enterKientalCorridor = useCallback(() => {
-    setJourneyCorridorId('kiental-griesalp')
-    setCorridor((current) => current?.id === 'kiental-griesalp' ? current : undefined)
-    setJourneyProgress(0.015)
-    setCorridorError(false)
-    setSearchOpen(false)
-    setView('journey')
-    setIsPlaying(true)
-  }, [])
+    openTerrainCorridor('kiental-griesalp')
+  }, [openTerrainCorridor])
 
   const selectNetworkStudy = useCallback(
     (study: NetworkStudy, timeRange: NationalTimeRange = nationalTimeRange) => {
@@ -1006,6 +1034,16 @@ export function App() {
     soundtrackRef.current?.setVolume(soundtrackVolume)
   }, [soundtrackVolume])
 
+  useEffect(() => {
+    if (view === 'journey') return
+    soundtrackRef.current?.setEnvironment({
+      progress: 0,
+      tunnel: 0,
+      openness: 1,
+      speed: 0.5,
+    })
+  }, [view])
+
   useEffect(
     () => () => {
       soundtrackRef.current?.dispose()
@@ -1069,7 +1107,7 @@ export function App() {
 
   return (
     <main
-      className={`experience view-${view}${isContrast ? ' is-contrast' : ''}${selectedTrain || selectedStation || selectedRoute ? ' has-selection' : ''}`}
+      className={`experience view-${view}${isContrast ? ' is-contrast' : ''}${selectedTrain || selectedStation || selectedRoute ? ' has-selection' : ''}${!isTimetable ? ` corridor-${journeyCorridorId}` : ''}`}
     >
       <div className="scene" aria-hidden={webglAvailable ? true : undefined}>
         <Suspense fallback={null}>
@@ -1211,7 +1249,9 @@ export function App() {
               corridor={corridor}
               isPlaying={isPlaying && !isNetwork}
               progress={journeyProgress}
+              speedKmh={activeJourney.speedKmh}
               onProgress={handleJourneyProgress}
+              onEnvironment={handleJourneyEnvironment}
             />
           </Suspense>
           )}
@@ -1339,6 +1379,27 @@ export function App() {
           </section>
         </div>
       </header>
+
+      {!isTimetable && (
+        <nav className="journey-picker" aria-label={text.journeyPicker}>
+          <button
+            type="button"
+            aria-pressed={journeyCorridorId === 'zurich-chur'}
+            onClick={() => openTerrainCorridor('zurich-chur')}
+          >
+            <span>IR35</span>
+            Zürich → Chur
+          </button>
+          <button
+            type="button"
+            aria-pressed={journeyCorridorId === 'kiental-griesalp'}
+            onClick={() => openTerrainCorridor('kiental-griesalp')}
+          >
+            <span>220</span>
+            Kiental → Griesalp
+          </button>
+        </nav>
+      )}
 
       {isNetwork && (
         <section
@@ -2043,7 +2104,16 @@ export function App() {
             <span>{activeJourney.destination}</span>
           </div>
           <p className="between">
-            {journeyPosition.previous.name} <span>/</span> {journeyPosition.next.name}
+            {journeyEnvironment.tunnel > 0.35 && journeyEnvironment.tunnelName ? (
+              <>
+                {text.tunnel} <span>/</span> {journeyEnvironment.tunnelName}
+              </>
+            ) : (
+              <>
+                {journeyPosition.previous.name} <span>/</span>{' '}
+                {journeyPosition.next.name}
+              </>
+            )}
           </p>
           <div className="metric-grid">
             <div>
@@ -2104,6 +2174,7 @@ export function App() {
                   ? text.terrainUnavailable
                   : text.loadingTerrain}
             </span>
+            <span>{text.routeRegions[journeyEnvironment.region]}</span>
           </>
         )}
       </div>
@@ -2562,6 +2633,15 @@ export function App() {
                     rel="noreferrer"
                   >
                     Route · © OpenStreetMap contributors
+                  </a>
+                )}
+                {corridor.metadata.tunnelProductUrl && (
+                  <a
+                    href={corridor.metadata.tunnelProductUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Tunnels · SBB Infrastruktur
                   </a>
                 )}
               </>

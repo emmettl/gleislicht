@@ -12,6 +12,26 @@ import {
 export type SoundtrackMode = 'network' | 'hub' | 'journey'
 export type SoundtrackPerformanceProfile = 'full' | 'mobile'
 
+export interface SoundtrackEnvironment {
+  readonly progress: number
+  readonly tunnel: number
+  readonly openness: number
+  readonly speed: number
+}
+
+export function soundtrackEnvironmentMix(environment: SoundtrackEnvironment) {
+  const tunnel = Math.min(1, Math.max(0, environment.tunnel))
+  const openness = Math.min(1, Math.max(0, environment.openness))
+  const speed = Math.min(1, Math.max(0, environment.speed))
+  const openAirCutoff = 4_800 + openness * 8_000 + speed * 1_200
+  return {
+    cutoff: Math.max(680, openAirCutoff * (1 - tunnel * 0.86)),
+    resonance: 0.7 + tunnel * 3.1,
+    gain: 0.9 + openness * 0.1 - tunnel * 0.08,
+    pan: Math.sin(environment.progress * Math.PI * 6) * openness * 0.08,
+  }
+}
+
 export const SOUNDTRACK_TITLES: Record<SoundtrackMode, string> = {
   network: 'Night Grid',
   hub: 'Taktwerk',
@@ -193,6 +213,9 @@ function wait(milliseconds: number): Promise<void> {
 export class GleislichtSoundtrack {
   private readonly context: AudioContext
   private readonly master: GainNode
+  private readonly environmentFilter: BiquadFilterNode
+  private readonly environmentGain: GainNode
+  private readonly environmentPan: StereoPannerNode
   private readonly decks: [Deck, Deck]
   private readonly profile: SoundtrackPerformanceProfile
   private activeDeck = 0
@@ -207,7 +230,19 @@ export class GleislichtSoundtrack {
     this.context = createSoundtrackContext()
     this.master = this.context.createGain()
     this.master.gain.value = 0
-    this.master.connect(this.context.destination)
+    this.environmentFilter = this.context.createBiquadFilter()
+    this.environmentFilter.type = 'lowpass'
+    this.environmentFilter.frequency.value = 12_000
+    this.environmentFilter.Q.value = 0.7
+    this.environmentGain = this.context.createGain()
+    this.environmentGain.gain.value = 1
+    this.environmentPan = this.context.createStereoPanner()
+    this.environmentPan.pan.value = 0
+    this.master
+      .connect(this.environmentFilter)
+      .connect(this.environmentGain)
+      .connect(this.environmentPan)
+      .connect(this.context.destination)
     this.volume = volume
 
     this.decks = [0, 1].map(() => {
@@ -326,6 +361,19 @@ export class GleislichtSoundtrack {
     this.master.gain.setTargetAtTime(this.volume, now, 0.08)
   }
 
+  setEnvironment(environment: SoundtrackEnvironment): void {
+    const mix = soundtrackEnvironmentMix(environment)
+    const now = this.context.currentTime
+    this.environmentFilter.frequency.setTargetAtTime(
+      mix.cutoff,
+      now,
+      0.16,
+    )
+    this.environmentFilter.Q.setTargetAtTime(mix.resonance, now, 0.2)
+    this.environmentGain.gain.setTargetAtTime(mix.gain, now, 0.18)
+    this.environmentPan.pan.setTargetAtTime(mix.pan, now, 0.28)
+  }
+
   async resume(): Promise<void> {
     if (this.playing && this.context.state !== 'running') {
       await this.context.resume()
@@ -356,6 +404,9 @@ export class GleislichtSoundtrack {
     this.stop()
     for (const deck of this.decks) deck.engine?.dispose()
     this.master.disconnect()
+    this.environmentFilter.disconnect()
+    this.environmentGain.disconnect()
+    this.environmentPan.disconnect()
     void this.context.close()
   }
 }

@@ -51,7 +51,7 @@ The measured corridor decision is recorded in [docs/POSTBUS-CORRIDOR.md](./docs/
 - [x] Create desktop and mobile terrain LODs around the matched Zürich–Chur rail shape.
 - [x] Add terrain-integrated lake surfaces and station beacons to the first measured corridor.
 - [x] Add a higher-resolution swissALTI3D Alpine corridor crop for Kiental–Griesalp, with road-following route geometry.
-- [ ] Add tunnel-aware line treatment to the Zürich–Chur rail corridor.
+- [x] Add tunnel-aware line treatment to the Zürich–Chur rail corridor from SBB infrastructure records.
 - [x] Show mandatory `© swisstopo` attribution wherever derived terrain appears.
 
 **Exit:** Zürich–Chur and one Alpine corridor run over recognisable real terrain on laptop and mobile GPUs.
@@ -79,10 +79,11 @@ The national GTFS-RT feed supplies trip updates and alerts, not vehicle position
 - [x] Loop the hub orbit across a full day with four authored playback tempos.
 - [x] Add an alternate station-flow view with scheduled GTFS platform assignments.
 - [x] Replace the first supported map-level selected-train follow with a terrain-backed corridor transition.
+- [x] Add a first-class selector for switching directly between the authored terrain journeys.
 - [x] Add time-of-day presets, speed control and a short looping “director mode.”
-- Authored palettes and camera behaviours for plateau, lake and Alpine routes.
+- [x] Add authored palettes and camera behaviours for plateau, lake and Alpine routes.
 - [x] Add three opt-in Driftbox cues with adaptive crossfades between network, hub and journey modes.
-- Extend the score with spatial details derived from speed, tunnel state and terrain—never autoplayed.
+- [x] Extend the score with spatial details derived from speed, tunnel state and terrain—never autoplayed.
 
 **Exit:** viewers can explore deliberately or let Gleislicht compose a journey for them.
 
@@ -104,6 +105,7 @@ The national GTFS-RT feed supplies trip updates and alerts, not vehicle position
 - [swissBOUNDARIES3D](https://www.swisstopo.admin.ch/en/landscape-model-swissboundaries3d) for the national outline
 - [FOEN Swiss hydrographic network](https://www.bafu.admin.ch/en/the-swiss-hydrographic-network) for named lake surfaces
 - [Federal Office of Transport rail network](https://map.geo.admin.ch/#/map?lang=en&center=2660000,1190000&z=1&topic=ech&layers=ch.bav.schienennetz) for national infrastructure geometry
+- [SBB railway tunnels](https://data.sbb.ch/explore/dataset/tunnel/) for named tunnel portals and published lengths on measured rail journeys
 - [ZVV/VBZ tram and bus GTFS](https://data.stadt-zuerich.ch/dataset/vbz_fahrplandaten_gtfs) for shape-aware Zürich regional geometry
 - [ZVV network plans](https://www.zvv.ch/en/timetable-and-information/network.html) for regional information hierarchy, not as geographic source data
 - [TPG line geometry from SITG](https://sitg.ge.ch/donnees/tpg-lignes) for Genève tram, trolleybus and bus paths, including cross-border branches

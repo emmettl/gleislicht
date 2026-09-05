@@ -7,7 +7,18 @@ interface GleislichtSceneProps {
   readonly corridor?: CorridorSnapshot
   readonly isPlaying: boolean
   readonly progress: number
+  readonly speedKmh?: number
   readonly onProgress: (progress: number) => void
+  readonly onEnvironment?: (environment: JourneyEnvironment) => void
+}
+
+export interface JourneyEnvironment {
+  readonly progress: number
+  readonly tunnel: number
+  readonly tunnelName?: string
+  readonly openness: number
+  readonly speed: number
+  readonly region: 'plateau' | 'lake' | 'alpine'
 }
 
 const HORIZONTAL_METRES_PER_UNIT = 1800
@@ -69,6 +80,30 @@ function makeRouteLine(
     opacity,
     blending: THREE.AdditiveBlending,
     depthWrite: false,
+    toneMapped: false,
+  })
+  return new THREE.Line(geometry, material)
+}
+
+function makeRouteLineRange(
+  curve: THREE.CatmullRomCurve3,
+  start: number,
+  end: number,
+  color: string,
+  opacity: number,
+): THREE.Line {
+  const count = Math.max(8, Math.ceil((end - start) * 520))
+  const points = Array.from({ length: count + 1 }, (_, index) =>
+    curve.getPointAt(THREE.MathUtils.lerp(start, end, index / count)),
+  )
+  const geometry = new THREE.BufferGeometry().setFromPoints(points)
+  const material = new THREE.LineBasicMaterial({
+    color,
+    transparent: true,
+    opacity,
+    blending: THREE.AdditiveBlending,
+    depthWrite: false,
+    depthTest: false,
     toneMapped: false,
   })
   return new THREE.Line(geometry, material)
@@ -261,6 +296,144 @@ function StationBeacons({
   )
 }
 
+function TunnelInfrastructure({
+  corridor,
+  curve,
+}: {
+  readonly corridor: CorridorSnapshot
+  readonly curve: THREE.CatmullRomCurve3
+}) {
+  const tunnels = useMemo(
+    () => corridor.route.tunnels ?? [],
+    [corridor.route.tunnels],
+  )
+  const lines = useMemo(
+    () =>
+      tunnels.map((tunnel) =>
+        makeRouteLineRange(
+          curve,
+          tunnel.startProgress,
+          tunnel.endProgress,
+          '#ff77df',
+          0.9,
+        ),
+      ),
+    [curve, tunnels],
+  )
+  const portals = useMemo(
+    () =>
+      tunnels.flatMap((tunnel) =>
+        [tunnel.startProgress, tunnel.endProgress].map((progress, index) => {
+          const position = curve.getPointAt(progress)
+          const tangent = curve.getTangentAt(progress).normalize()
+          const quaternion = new THREE.Quaternion().setFromUnitVectors(
+            new THREE.Vector3(0, 0, 1),
+            tangent,
+          )
+          return { id: `${tunnel.id}-${index}`, position, quaternion }
+        }),
+      ),
+    [curve, tunnels],
+  )
+  useEffect(
+    () => () =>
+      lines.forEach((line) => {
+        line.geometry.dispose()
+        ;(line.material as THREE.Material).dispose()
+      }),
+    [lines],
+  )
+  if (!tunnels.length) return null
+  return (
+    <group>
+      {lines.map((line, index) => (
+        <primitive key={tunnels[index].id} object={line} renderOrder={9} />
+      ))}
+      {portals.map((portal) => (
+        <group
+          key={portal.id}
+          position={portal.position}
+          quaternion={portal.quaternion}
+        >
+          <mesh renderOrder={10}>
+            <torusGeometry args={[0.13, 0.012, 8, 24]} />
+            <meshBasicMaterial
+              color="#ff8ae6"
+              transparent
+              opacity={0.72}
+              blending={THREE.AdditiveBlending}
+              depthWrite={false}
+              depthTest={false}
+              toneMapped={false}
+            />
+          </mesh>
+        </group>
+      ))}
+    </group>
+  )
+}
+
+function sampleTerrainLocal(corridor: CorridorSnapshot, x: number, z: number) {
+  const column = Math.max(
+    0,
+    Math.min(
+      corridor.terrain.columns - 1,
+      Math.round(
+        ((x + corridor.terrain.widthMetres / 2) / corridor.terrain.widthMetres) *
+          (corridor.terrain.columns - 1),
+      ),
+    ),
+  )
+  const row = Math.max(
+    0,
+    Math.min(
+      corridor.terrain.rows - 1,
+      Math.round(
+        ((z + corridor.terrain.depthMetres / 2) / corridor.terrain.depthMetres) *
+          (corridor.terrain.rows - 1),
+      ),
+    ),
+  )
+  return corridor.terrain.elevations[row * corridor.terrain.columns + column]
+}
+
+function terrainOpennessProfile(
+  corridor: CorridorSnapshot | undefined,
+  curve: THREE.CatmullRomCurve3,
+) {
+  if (!corridor) return [0.7]
+  const radius = corridor.id === 'kiental-griesalp' ? 420 : 900
+  const scale = horizontalScale(corridor)
+  return Array.from({ length: 129 }, (_, index) => {
+    const point = curve.getPointAt(index / 128)
+    const routeElevation =
+      corridor.terrain.minElevation + point.y * verticalScale(corridor)
+    let rise = 0
+    for (let direction = 0; direction < 8; direction += 1) {
+      const angle = (direction / 8) * Math.PI * 2
+      const elevation = sampleTerrainLocal(
+        corridor,
+        point.x * scale + Math.cos(angle) * radius,
+        point.z * scale + Math.sin(angle) * radius,
+      )
+      rise += Math.max(0, elevation - routeElevation)
+    }
+    return THREE.MathUtils.clamp(1 - rise / 8 / 620, 0.08, 1)
+  })
+}
+
+function routeRegion(corridor: CorridorSnapshot | undefined, progress: number) {
+  if (corridor?.id === 'kiental-griesalp' || progress > 0.72) return 'alpine'
+  if (progress >= 0.28) return 'lake'
+  return 'plateau'
+}
+
+function activeTunnel(corridor: CorridorSnapshot | undefined, progress: number) {
+  return corridor?.route.tunnels?.find(
+    (tunnel) => progress >= tunnel.startProgress && progress <= tunnel.endProgress,
+  )
+}
+
 function SignalField() {
   const geometry = useMemo(() => {
     const points: number[] = []
@@ -319,7 +492,14 @@ function Train({ alpine }: { readonly alpine: boolean }) {
   )
 }
 
-function MovingWorld({ corridor, isPlaying, progress, onProgress }: GleislichtSceneProps) {
+function MovingWorld({
+  corridor,
+  isPlaying,
+  progress,
+  speedKmh = 96,
+  onProgress,
+  onEnvironment,
+}: GleislichtSceneProps) {
   const train = useRef<THREE.Group>(null)
   const localProgress = useRef(progress)
   const lastReport = useRef(0)
@@ -340,6 +520,31 @@ function MovingWorld({ corridor, isPlaying, progress, onProgress }: GleislichtSc
   const routeTangent = useMemo(() => new THREE.Vector3(), [])
   const side = useMemo(() => new THREE.Vector3(), [])
   const up = useMemo(() => new THREE.Vector3(0, 1, 0), [])
+  const tunnelAmount = useRef(0)
+  const opennessProfile = useMemo(
+    () => terrainOpennessProfile(corridor, routeCurve),
+    [corridor, routeCurve],
+  )
+  const backgroundColors = useMemo(
+    () => ({
+      plateau: new THREE.Color('#050410'),
+      lake: new THREE.Color('#020b18'),
+      alpine: new THREE.Color(alpine ? '#070b12' : '#06100f'),
+      tunnel: new THREE.Color('#010105'),
+    }),
+    [alpine],
+  )
+  const fogColors = useMemo(
+    () => ({
+      plateau: new THREE.Color('#071226'),
+      lake: new THREE.Color('#06304a'),
+      alpine: new THREE.Color(alpine ? '#14211f' : '#10252a'),
+      tunnel: new THREE.Color('#07030c'),
+    }),
+    [alpine],
+  )
+  const nextBackground = useMemo(() => new THREE.Color(), [])
+  const nextFog = useMemo(() => new THREE.Color(), [])
 
   useEffect(() => {
     localProgress.current = progress
@@ -357,6 +562,21 @@ function MovingWorld({ corridor, isPlaying, progress, onProgress }: GleislichtSc
   useFrame((state, delta) => {
     if (isPlaying) localProgress.current = (localProgress.current + delta * 0.012) % 1
     const current = localProgress.current
+    const tunnel = activeTunnel(corridor, current)
+    tunnelAmount.current = THREE.MathUtils.damp(
+      tunnelAmount.current,
+      tunnel ? 1 : 0,
+      5.5,
+      delta,
+    )
+    const region = routeRegion(corridor, current)
+    const tunnelMix = tunnelAmount.current
+    const background = state.scene.background as THREE.Color
+    const fog = state.scene.fog as THREE.Fog
+    nextBackground.copy(backgroundColors[region]).lerp(backgroundColors.tunnel, tunnelMix)
+    nextFog.copy(fogColors[region]).lerp(fogColors.tunnel, tunnelMix)
+    background.lerp(nextBackground, 1 - Math.exp(-delta * 1.8))
+    fog.color.lerp(nextFog, 1 - Math.exp(-delta * 2.2))
     routeCurve.getPointAt(current, routePosition)
     routeCurve.getTangentAt(current, routeTangent).normalize()
     if (train.current) {
@@ -364,21 +584,48 @@ function MovingWorld({ corridor, isPlaying, progress, onProgress }: GleislichtSc
       train.current.lookAt(routePosition.clone().add(routeTangent))
     }
     side.crossVectors(routeTangent, up).normalize()
-    const sweep = Math.sin(current * Math.PI * 5) * 0.22
+    const cameraStyle = !corridor
+      ? { behind: 2.15, height: 2.8, ahead: 5, sweep: 0.22 }
+      : alpine
+      ? { behind: 1.35, height: 1.15, ahead: 1.15, sweep: 0.24 }
+      : region === 'lake'
+        ? { behind: 2.55, height: 1.32, ahead: 2.35, sweep: 0.52 }
+        : region === 'alpine'
+          ? { behind: 1.82, height: 1.02, ahead: 1.55, sweep: 0.3 }
+          : { behind: 2.15, height: 0.92, ahead: 1.65, sweep: 0.22 }
+    const sweep =
+      Math.sin(current * Math.PI * 5) * cameraStyle.sweep * (1 - tunnelMix)
     cameraPosition
       .copy(routePosition)
-      .addScaledVector(routeTangent, alpine ? -1.35 : -2.15)
+      .addScaledVector(
+        routeTangent,
+        -THREE.MathUtils.lerp(cameraStyle.behind, 0.72, tunnelMix),
+      )
       .addScaledVector(side, sweep)
-      .addScaledVector(up, alpine ? 1.15 : corridor ? 0.92 : 2.8)
+      .addScaledVector(
+        up,
+        THREE.MathUtils.lerp(cameraStyle.height, 0.34, tunnelMix),
+      )
     cameraTarget
       .copy(routePosition)
-      .addScaledVector(routeTangent, alpine ? 1.15 : corridor ? 1.65 : 5)
+      .addScaledVector(
+        routeTangent,
+        THREE.MathUtils.lerp(cameraStyle.ahead, 1.35, tunnelMix),
+      )
       .addScaledVector(up, 0.12)
     camera.position.lerp(cameraPosition, 1 - Math.exp(-delta * 2.35))
     camera.lookAt(cameraTarget)
     if (state.clock.elapsedTime - lastReport.current > 0.1) {
       lastReport.current = state.clock.elapsedTime
       onProgress(current)
+      onEnvironment?.({
+        progress: current,
+        tunnel: tunnelMix,
+        tunnelName: tunnel?.name,
+        openness: opennessProfile[Math.round(current * (opennessProfile.length - 1))],
+        speed: THREE.MathUtils.clamp(speedKmh / 160, 0, 1),
+        region,
+      })
     }
   })
 
@@ -394,6 +641,7 @@ function MovingWorld({ corridor, isPlaying, progress, onProgress }: GleislichtSc
       <primitive object={railGlow} renderOrder={4} />
       <primitive object={rail} renderOrder={5} />
       {corridor && <StationBeacons corridor={corridor} curve={routeCurve} />}
+      {corridor && <TunnelInfrastructure corridor={corridor} curve={routeCurve} />}
       <group ref={train}>
         <Train alpine={alpine} />
       </group>

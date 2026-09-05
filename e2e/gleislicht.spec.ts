@@ -59,6 +59,10 @@ test('a Zürich–Chur train descends into measured terrain', async ({ page }) =
   await expect(page.getByRole('heading', { level: 1 })).toContainText('Zürich → Chur')
   await expect(page.locator('.prototype-note')).toContainText('swissALTIRegio')
   await expect(page.locator('footer a[href*="swissaltiregio"]')).toBeAttached()
+  await expect(page.getByRole('navigation', { name: 'Measured journeys' })).toBeVisible()
+  await page.locator('.scrubber input[type="range"]').fill('0.04')
+  await expect(page.locator('.journey-card')).toContainText('Zimmerberg Basistunnel')
+  await expect(page.locator('footer a[href*="dataset/tunnel"]')).toBeAttached()
 })
 
 test('the city–valley comparison opens the measured Kiental road journey', async ({
@@ -79,6 +83,9 @@ test('the city–valley comparison opens the measured Kiental road journey', asy
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Kiental → Griesalp')
   await expect(page.locator('.prototype-note')).toContainText('swissALTI3D')
   await expect(page.locator('footer a[href*="openstreetmap.org/copyright"]')).toBeAttached()
+  await expect(
+    page.getByRole('button', { name: /220 Kiental → Griesalp/i }),
+  ).toHaveAttribute('aria-pressed', 'true')
 })
 
 test('region selection changes the active study', async ({ page }, testInfo) => {
