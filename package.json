@@ -14,6 +14,8 @@
     "test:watch": "vitest",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
+    "worker:check": "tsc -p realtime-worker/tsconfig.json",
+    "worker:build": "wrangler deploy --config wrangler.realtime.jsonc --dry-run --outdir .worker-dist",
     "data:boundary": "node scripts/ingest-boundary.mjs",
     "data:lakes": "node scripts/ingest-lakes.mjs",
     "data:corridor": "node scripts/ingest-corridor-terrain.mjs",
@@ -46,15 +48,18 @@
     "three": "^0.185.1"
   },
   "devDependencies": {
+    "@cloudflare/workers-types": "^5.20260905.1",
     "@playwright/test": "^1.62.1",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.7",
     "@types/three": "^0.185.4",
     "@vitejs/plugin-react": "^6.1.1",
     "geotiff": "^3.0.5",
+    "gtfs-realtime-bindings": "^2.2.0",
     "oxlint": "^1.81.0",
     "typescript": "~7.0.2",
     "vite": "^8.2.2",
-    "vitest": "^5.0.0"
+    "vitest": "^5.0.0",
+    "wrangler": "^4.129.0"
   }
 }

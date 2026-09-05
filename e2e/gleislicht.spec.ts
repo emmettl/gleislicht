@@ -24,6 +24,19 @@ test('local performance telemetry is opt-in and remains on-device', async ({ pag
   await expect(monitor).toContainText(/measuring|FPS/)
 })
 
+test('the operations demo is explicit and returns cleanly to the schedule', async ({
+  page,
+}) => {
+  const operations = page.getByRole('button', {
+    name: 'Toggle scheduled and operations view',
+  })
+  await expect(operations).toHaveText('DEMO')
+  await expect(page.locator('.network-card')).toContainText('Operations demo')
+  await operations.click()
+  await expect(operations).toHaveText('PLAN')
+  await expect(page.locator('.network-card')).toContainText('Scheduled rail')
+})
+
 test('search selects a station and exposes its serving routes', async ({ page }) => {
   const search = page.locator('.train-search input[type="search"]')
   await search.fill('Bern')

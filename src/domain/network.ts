@@ -62,6 +62,14 @@ export interface NetworkTrain {
   readonly end: number
   readonly stops: readonly TrainStop[]
   readonly pathSegments?: readonly (number | null)[]
+  readonly realtime?: RealtimeTrainState
+}
+
+export interface RealtimeTrainState {
+  readonly status: 'adjusted' | 'cancelled'
+  readonly delaySeconds: number
+  readonly skippedStops: number
+  readonly generatedAt: string
 }
 
 export interface NetworkSnapshot {
@@ -258,7 +266,12 @@ export function positionForTrain(
   train: NetworkTrain,
   time: number,
 ): TrainPosition | undefined {
-  if (time < train.start || time > train.end || train.stops.length < 2) {
+  if (
+    train.realtime?.status === 'cancelled' ||
+    time < train.start ||
+    time > train.end ||
+    train.stops.length < 2
+  ) {
     return undefined
   }
 

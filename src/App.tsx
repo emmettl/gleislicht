@@ -51,6 +51,11 @@ import {
   type ServiceCategory,
   type StationIndexEntry,
 } from './domain/network.ts'
+import {
+  applyRealtimeSnapshot,
+  type RealtimeApplication,
+  type RealtimeSnapshot,
+} from './domain/realtime.ts'
 import type { SwissBoundary } from './domain/boundary.ts'
 import type { SwissLakes } from './domain/lakes.ts'
 import {
@@ -108,6 +113,11 @@ type NetworkStudy =
 type NationalTimeRange = 'morning' | 'day'
 type HubStudy = 'pulse' | 'station'
 type TerrainCorridorId = 'zurich-chur' | 'kiental-griesalp'
+type OperationsMode = 'scheduled' | 'demo' | 'live'
+type RealtimeLoadState = 'idle' | 'loading' | 'ready' | 'error'
+
+const REALTIME_ENDPOINT = import.meta.env.VITE_GLEISLICHT_REALTIME_URL?.trim()
+const REALTIME_STALE_AFTER_MS = 90_000
 
 const SOUNDTRACK_TITLES: Record<SoundtrackMode, string> = {
   network: 'Night Grid',
@@ -228,6 +238,13 @@ export function App() {
   const [corridorError, setCorridorError] = useState(false)
   const [hubDay, setHubDay] = useState<HubDaySnapshot>()
   const [dataError, setDataError] = useState(false)
+  const [operationsMode, setOperationsMode] = useState<OperationsMode>(
+    REALTIME_ENDPOINT ? 'live' : 'demo',
+  )
+  const [realtimeSnapshot, setRealtimeSnapshot] = useState<RealtimeSnapshot>()
+  const [realtimeLoadState, setRealtimeLoadState] =
+    useState<RealtimeLoadState>('idle')
+  const [realtimeClock, setRealtimeClock] = useState(() => Date.now())
   const [searchQuery, setSearchQuery] = useState('')
   const [searchOpen, setSearchOpen] = useState(false)
   const [activeSearchIndex, setActiveSearchIndex] = useState(-1)
@@ -298,7 +315,7 @@ export function App() {
     nationalDayChunkDescriptor &&
       nationalDayChunks[nationalDayChunkDescriptor.id],
   )
-  const network =
+  const baseNetwork =
     isContrast
       ? (zurichContrast.network ?? nationalNetwork)
       : networkStudy === 'zurich-city'
@@ -311,6 +328,31 @@ export function App() {
             ? (nationalDayNetwork ?? nationalNetwork)
             : nationalNetwork
 
+  const realtimeApplication = useMemo<RealtimeApplication | undefined>(
+    () =>
+      baseNetwork && realtimeSnapshot && operationsMode !== 'scheduled'
+        ? applyRealtimeSnapshot(baseNetwork, realtimeSnapshot)
+        : undefined,
+    [baseNetwork, operationsMode, realtimeSnapshot],
+  )
+  const realtimeAgeMs = realtimeSnapshot
+    ? Math.max(
+        0,
+        realtimeClock -
+          Date.parse(
+            realtimeSnapshot.metadata.receivedAt ??
+              realtimeSnapshot.metadata.generatedAt,
+          ),
+      )
+    : 0
+  const realtimeStale =
+    realtimeSnapshot?.metadata.kind === 'live' &&
+    realtimeAgeMs > REALTIME_STALE_AFTER_MS
+  const realtimeActive = Boolean(
+    realtimeApplication?.compatible && !realtimeStale,
+  )
+  const network = realtimeActive ? realtimeApplication?.network : baseNetwork
+
   const soundtrackMode: SoundtrackMode =
     view === 'hub' ? 'hub' : view === 'journey' || selectedTrainId ? 'journey' : 'network'
 
@@ -318,7 +360,11 @@ export function App() {
     () =>
       network?.trains.reduce(
         (count, train) =>
-          train.start <= networkTime && train.end >= networkTime ? count + 1 : count,
+          train.realtime?.status !== 'cancelled' &&
+          train.start <= networkTime &&
+          train.end >= networkTime
+            ? count + 1
+            : count,
         0,
       ) ?? 0,
     [network, networkTime],
@@ -542,6 +588,16 @@ export function App() {
     setSelectedRouteId(undefined)
     setSearchQuery('')
     setActiveSearchIndex(-1)
+  }, [])
+
+  const toggleOperationsMode = useCallback(() => {
+    setOperationsMode((current) =>
+      current === 'scheduled'
+        ? REALTIME_ENDPOINT
+          ? 'live'
+          : 'demo'
+        : 'scheduled',
+    )
   }, [])
 
   const selectStation = useCallback((station: StationIndexEntry) => {
@@ -813,6 +869,58 @@ export function App() {
   }, [])
 
   useEffect(() => {
+    if (operationsMode === 'scheduled') return
+    const controller = new AbortController()
+    const source =
+      operationsMode === 'live' && REALTIME_ENDPOINT
+        ? REALTIME_ENDPOINT
+        : `${import.meta.env.BASE_URL}data/realtime-demo.json`
+    let interval: number | undefined
+    const load = async () => {
+      setRealtimeLoadState((current) =>
+        current === 'ready' ? current : 'loading',
+      )
+      try {
+        const response = await fetch(source, {
+          signal: controller.signal,
+          cache: 'no-store',
+        })
+        if (!response.ok) {
+          throw new Error(`Realtime snapshot returned ${response.status}`)
+        }
+        const snapshot = (await response.json()) as RealtimeSnapshot
+        if (!controller.signal.aborted) {
+          setRealtimeSnapshot(snapshot)
+          setRealtimeClock(Date.now())
+          setRealtimeLoadState('ready')
+        }
+      } catch (error: unknown) {
+        if (!controller.signal.aborted) {
+          console.warn('Unable to load realtime adjustments', error)
+          setRealtimeLoadState('error')
+        }
+      }
+    }
+    void load()
+    if (operationsMode === 'live') {
+      interval = window.setInterval(() => void load(), 30_000)
+    }
+    return () => {
+      controller.abort()
+      if (interval !== undefined) window.clearInterval(interval)
+    }
+  }, [operationsMode])
+
+  useEffect(() => {
+    if (operationsMode !== 'live') return
+    const interval = window.setInterval(
+      () => setRealtimeClock(Date.now()),
+      15_000,
+    )
+    return () => window.clearInterval(interval)
+  }, [operationsMode])
+
+  useEffect(() => {
     if (view !== 'hub' || hubDay) return
     const controller = new AbortController()
     fetch(`${import.meta.env.BASE_URL}data/swiss-hub-day.json`, {
@@ -1059,6 +1167,32 @@ export function App() {
   const isTimetable = isNetwork || isHub
   const isNationalDay =
     networkStudy === 'national' && nationalTimeRange === 'day'
+  const operationsBadge =
+    operationsMode === 'scheduled'
+      ? 'PLAN'
+      : realtimeLoadState === 'loading'
+        ? 'SYNC'
+        : realtimeLoadState === 'error'
+          ? 'OFF'
+          : !realtimeApplication?.compatible
+            ? 'MATCH'
+            : realtimeStale
+              ? 'STALE'
+              : realtimeSnapshot?.metadata.kind === 'live'
+                ? 'LIVE'
+                : 'DEMO'
+  const operationsDescription =
+    operationsMode === 'scheduled'
+      ? text.operationsPlan
+      : realtimeLoadState === 'loading'
+        ? text.operationsLoading
+        : realtimeLoadState === 'error'
+          ? text.operationsUnavailable
+          : !realtimeApplication?.compatible
+            ? text.operationsMismatch
+            : realtimeStale
+              ? text.operationsStale
+              : `${realtimeSnapshot?.metadata.kind === 'live' ? text.operationsLive : text.operationsDemo} · ${realtimeApplication.summary.adjusted} adjusted · ${realtimeApplication.summary.cancelled} cancelled`
   const timeline = isHub ? (hubDay?.metadata ?? network?.metadata) : network?.metadata
   const timelineTime = isHub ? hubTime : networkTime
   const timelineReady = isTimetable && timeline
@@ -2045,9 +2179,22 @@ export function App() {
                 ? text.trainsInMotion
                 : text.vehiclesInMotion}
             </span>
+            {networkStudy === 'national' && (
+              <button
+                type="button"
+                className={`operations-badge ${realtimeActive ? 'is-active' : ''}`}
+                onClick={toggleOperationsMode}
+                aria-label={text.toggleOperations}
+                title={operationsDescription}
+              >
+                {operationsBadge}
+              </button>
+            )}
           </div>
           <p className="between">
-              {networkStudy !== 'national'
+              {networkStudy === 'national' && operationsMode !== 'scheduled'
+                ? operationsDescription
+                : networkStudy !== 'national'
               ? regionalNetworkError
                 ? networkStudy === 'zvv-region'
                   ? text.zvvUnavailable

@@ -771,6 +771,27 @@ function trainLightTexture(kind: 'halo' | 'orb' | 'spark'): THREE.CanvasTexture 
   return texture
 }
 
+function realtimeRingTexture(): THREE.CanvasTexture {
+  const canvas = document.createElement('canvas')
+  canvas.width = 96
+  canvas.height = 96
+  const context = canvas.getContext('2d')
+  if (context) {
+    context.strokeStyle = 'rgba(255, 255, 255, 0.96)'
+    context.lineWidth = 7
+    context.shadowColor = 'rgba(255, 255, 255, 0.8)'
+    context.shadowBlur = 10
+    context.beginPath()
+    context.arc(48, 48, 30, 0, Math.PI * 2)
+    context.stroke()
+  }
+  const texture = new THREE.CanvasTexture(canvas)
+  texture.colorSpace = THREE.SRGBColorSpace
+  texture.minFilter = THREE.LinearFilter
+  texture.generateMipmaps = false
+  return texture
+}
+
 type VehicleMarkerKind = 'rail' | 'tram' | 'bus'
 
 const VEHICLE_MARKER_KINDS: readonly VehicleMarkerKind[] = [
@@ -1547,7 +1568,14 @@ function trainLabelText(train: NetworkTrain, selected: boolean): string {
   const identity = train.shortName
     ? `${train.route} · ${train.shortName}`
     : train.route
-  return selected ? `${identity} → ${train.headsign}` : identity
+  const delay = train.realtime?.delaySeconds
+  const realtimeSuffix =
+    train.realtime?.status === 'adjusted' && delay
+      ? ` · ${delay > 0 ? '+' : '−'}${Math.round(Math.abs(delay) / 60)}′`
+      : ''
+  return selected
+    ? `${identity}${realtimeSuffix} → ${train.headsign}`
+    : `${identity}${realtimeSuffix}`
 }
 
 function TrainLabels({
@@ -2196,6 +2224,7 @@ function TrainSwarm({
       halo: trainLightTexture('halo'),
       orb: trainLightTexture('orb'),
       spark: trainLightTexture('spark'),
+      realtime: realtimeRingTexture(),
       tram: vehicleGlyphTexture('tram'),
       bus: vehicleGlyphTexture('bus'),
     }),
@@ -2237,6 +2266,15 @@ function TrainSwarm({
       }),
     ) as Record<VehicleMarkerKind, THREE.BufferGeometry>
   }, [snapshot.trains])
+  const realtimeGeometry = useMemo(() => {
+    const geometry = new THREE.BufferGeometry()
+    geometry.setAttribute(
+      'position',
+      new THREE.BufferAttribute(new Float32Array(snapshot.trains.length * 3), 3),
+    )
+    geometry.setDrawRange(0, 0)
+    return geometry
+  }, [snapshot.trains])
 
   useEffect(() => {
     localTime.current = time
@@ -2247,6 +2285,7 @@ function TrainSwarm({
       lightTextures.halo.dispose()
       lightTextures.orb.dispose()
       lightTextures.spark.dispose()
+      lightTextures.realtime.dispose()
       lightTextures.tram.dispose()
       lightTextures.bus.dispose()
     },
@@ -2256,8 +2295,9 @@ function TrainSwarm({
   useEffect(
     () => () => {
       Object.values(geometries).forEach((geometry) => geometry.dispose())
+      realtimeGeometry.dispose()
     },
-    [geometries],
+    [geometries, realtimeGeometry],
   )
 
   useFrame((state, delta) => {
@@ -2273,6 +2313,7 @@ function TrainSwarm({
       tram: 0,
       bus: 0,
     }
+    let activeRealtimeCount = 0
     for (const train of trainsNearTime(trainTimeIndex, localTime.current)) {
       const focused = Boolean(
         selectedTrain?.id === train.id ||
@@ -2328,6 +2369,12 @@ function TrainSwarm({
       mutableColors[offset + 1] = color.g * intensity
       mutableColors[offset + 2] = color.b * intensity
       activeCounts[markerKind] += 1
+      if (train.realtime?.status === 'adjusted') {
+        const realtimePositions = realtimeGeometry.getAttribute('position')
+          .array as Float32Array
+        realtimePositions.set(position, activeRealtimeCount * 3)
+        activeRealtimeCount += 1
+      }
     }
 
     VEHICLE_MARKER_KINDS.forEach((kind) => {
@@ -2336,6 +2383,8 @@ function TrainSwarm({
       mutableGeometry.getAttribute('color').needsUpdate = true
       mutableGeometry.setDrawRange(0, activeCounts[kind])
     })
+    realtimeGeometry.getAttribute('position').needsUpdate = true
+    realtimeGeometry.setDrawRange(0, activeRealtimeCount)
     if (points.current) points.current.frustumCulled = false
     if (glow.current) glow.current.frustumCulled = false
 
@@ -2427,6 +2476,25 @@ function TrainSwarm({
           </group>
         )
       })}
+      <points
+        geometry={realtimeGeometry}
+        frustumCulled={false}
+        renderOrder={MAP_LAYER.focusMarkerGlow}
+      >
+        <pointsMaterial
+          color="#8dfaff"
+          map={lightTextures.realtime}
+          size={10}
+          transparent
+          opacity={0.9}
+          alphaTest={0.02}
+          depthTest={false}
+          depthWrite={false}
+          blending={THREE.AdditiveBlending}
+          sizeAttenuation={false}
+          toneMapped={false}
+        />
+      </points>
     </>
   )
 }

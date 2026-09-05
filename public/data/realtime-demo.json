@@ -1,0 +1,30 @@
+{
+  "metadata": {
+    "kind": "fixture",
+    "generatedAt": "2026-09-04T05:45:00Z",
+    "staticFeedVersion": "20260902",
+    "serviceDate": "2026-09-04",
+    "sourceUrl": "https://opentransportdata.swiss/en/cookbook/realtime-prediction-cookbook/gtfs-rt/",
+    "model": "Clearly labelled operations demo: representative GTFS-RT adjustments applied to the matching static timetable"
+  },
+  "updates": [
+    {
+      "tripId": ".ojp-91-13-I.1.TA.167.j26",
+      "delaySeconds": 300
+    },
+    {
+      "tripId": ".ojp-91-15-B.1.TA.1491.j26",
+      "scheduleRelationship": "cancelled"
+    },
+    {
+      "tripId": ".ojp-91-16-B.1.TA.1381.j26",
+      "delaySeconds": 180,
+      "stopTimeUpdates": [
+        {
+          "stopPosition": 3,
+          "scheduleRelationship": "skipped"
+        }
+      ]
+    }
+  ]
+}

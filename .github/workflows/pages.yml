@@ -40,6 +40,9 @@ jobs:
       - name: Lint
         run: npm run lint
 
+      - name: Check realtime edge adapter
+        run: npm run worker:check && npm run worker:build
+
       - name: Install browser test engines
         run: npx playwright install --with-deps chromium webkit
 

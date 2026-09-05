@@ -1,0 +1,11 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "gleislicht-realtime",
+  "main": "realtime-worker/index.ts",
+  "compatibility_date": "2026-09-05",
+  "compatibility_flags": ["nodejs_compat"],
+  "vars": {
+    "STATIC_FEED_VERSION": "20260902",
+    "ALLOWED_ORIGINS": "https://emmettl.github.io,http://127.0.0.1:5173,http://localhost:5173"
+  }
+}

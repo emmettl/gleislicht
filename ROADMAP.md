@@ -58,15 +58,20 @@ The measured corridor decision is recorded in [docs/POSTBUS-CORRIDOR.md](./docs/
 
 ## 4 — Realtime without pretending
 
-- Fetch GTFS Realtime on a small server-side poller using the required API key, redirects and user-agent.
-- Decode binary protobuf and align updates with the exact paired GTFS Static release.
-- Apply delays, cancellations and changed stop sequences to scheduled animation.
-- Visually distinguish planned interpolation, realtime-adjusted interpolation and unavailable data.
-- Surface feed age and graceful stale/offline states.
+- [x] Build a small server-side poller contract with the required API key, redirects, user-agent, 30-second edge cache and restrictive CORS.
+- [x] Decode binary protobuf and refuse to combine updates with a different GTFS Static release or service day.
+- [x] Apply delays, cancellations and exactly matched skipped stops to scheduled animation.
+- [x] Visually distinguish scheduled and realtime-adjusted interpolation, including delayed-train rings and label offsets.
+- [x] Surface loading, feed mismatch, stale and offline fallbacks in a compact operations control.
+- [x] Ship an explicitly labelled deterministic demo so the complete interaction can be reviewed without credentials.
+- [ ] Provision the poller secret and URL, then regenerate current-day static artifacts before enabling LIVE by default.
+- [ ] Add service-alert presentation after the Trip Updates path has run reliably in production.
 
 The national GTFS-RT feed supplies trip updates and alerts, not vehicle positions. Unless another properly licensed position source is added, “live” means timetable motion corrected by realtime predictions—not GPS dots.
 
 **Exit:** the current service day changes credibly when operations change, with provenance visible on demand.
+
+See [docs/REALTIME.md](./docs/REALTIME.md) for the trust model, deployment contract and activation checklist.
 
 ## 5 — The visual instrument
 

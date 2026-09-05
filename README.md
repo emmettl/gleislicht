@@ -10,6 +10,8 @@ The mobile first view has an enforced 790 KiB compressed transfer ceiling coveri
 
 The complete interface is available in English, German, French and Italian. It follows the visitor's supported browser language, falls back to English, and remembers changes made with the **EN / DE / FR / IT** switch.
 
+The national card also carries a compact **PLAN / DEMO / LIVE** operations switch. The bundled demo applies representative delays, a cancellation and a skipped stop to the exactly matching static feed so the interaction remains reviewable without a credential or invented GPS positions. A separate Cloudflare Worker adapter is ready to decode the official GTFS-RT Trip Updates feed at the edge; it falls back to the schedule on feed-version mismatch, stale data or failure. Production LIVE activation intentionally remains off until a feed key and a current matching static service day are configured. See [docs/REALTIME.md](./docs/REALTIME.md).
+
 ## Run it
 
 ```bash
@@ -24,6 +26,8 @@ npm run lint
 npm run typecheck
 npm test
 npm run build
+npm run worker:check
+npm run worker:build
 ```
 
 Keyboard controls: `Space` pauses or resumes; `C` returns to or switches from the national view.
