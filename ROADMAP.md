@@ -117,6 +117,21 @@ See [docs/REALTIME.md](./docs/REALTIME.md) for the trust model, deployment contr
 
 See [docs/LUFTRAUM.md](./docs/LUFTRAUM.md) for the data contract, filtering and visual grammar.
 
+## 8 — AUTO
+
+- [x] Define road movement as aggregate reconstruction rather than individual vehicle tracking.
+- [x] Anchor Road Study 001 to current ASTRA detector sites along the A1 through Zürich.
+- [x] Add a deterministic two-hour calibration artifact without increasing the opening payload.
+- [x] Reconstruct separate light- and heavy-vehicle streams from flow, speed and corridor length.
+- [x] Render warm-white and amber traffic beneath the cyan rail and magenta air layers.
+- [x] Make AUTO an optional, isolatable service category with multilingual provenance.
+- [ ] Begin authenticated one-minute snapshot recording and replace calibration values with a complete measured hour.
+- [ ] Judge the A1 composition on real phones before adding A2 Gotthard or a recorded full day.
+
+**Exit:** the three layers remain visually and methodologically distinct: scheduled rail journeys, observed aircraft trajectories and synthetic traffic reconstructed from aggregate measurement.
+
+See [docs/AUTO.md](./docs/AUTO.md) for the data contract, reconstruction and recording path.
+
 ## Data sources to validate in implementation
 
 - [Swiss GTFS Static cookbook](https://opentransportdata.swiss/en/cookbook/timetable-cookbook/gtfs/) and the current timetable-year dataset
@@ -131,6 +146,7 @@ See [docs/LUFTRAUM.md](./docs/LUFTRAUM.md) for the data contract, filtering and 
 - [TPG line geometry from SITG](https://sitg.ge.ch/donnees/tpg-lignes) for Genève tram, trolleybus and bus paths, including cross-border branches
 - [Kiental–Griesalp route 220](https://www.postauto.ch/en/leisure-offers/excursion-tips/kiental-griesalp-route) for the first measured rural PostBus and terrain study
 - [ADSB.lol historical data](https://www.adsb.lol/docs/open-data/historical/) for the optional observed-aircraft study, distributed under ODbL 1.0
+- [ASTRA / FEDRO road traffic counters](https://opentransportdata.swiss/en/cookbook/road-traffic-cookbook/rt-road-traffic-counters/) and the [Measurement Site Table](https://data.opentransportdata.swiss/en/dataset/trafficcounters) for directional aggregate flow, speed and detector geography
 
 ## Early technical decisions
 

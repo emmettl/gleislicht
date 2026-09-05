@@ -35,7 +35,7 @@
       <nav><a href="./">← Back to Gleislicht</a></nav>
       <p class="kicker">Motion study 005 · provenance</p>
       <h1>Data in.<br />Light out.</h1>
-      <p class="lede">Gleislicht is a cinematic reading of public transport schedules—not a control room and not a live vehicle tracker. Every moving light is grounded in a published timetable; the atmosphere is interpretive.</p>
+      <p class="lede">Gleislicht is a cinematic reading of transport data—not a control room and not a live vehicle tracker. Rail, air and road each retain the very different certainty their source provides; the atmosphere is interpretive.</p>
 
       <section>
         <h2>What the movement means</h2>
@@ -47,6 +47,7 @@
           <dt>Geometry</dt><dd>National trains use matched Federal Office of Transport infrastructure geometry. Zürich and Genève regional studies use published operator geometry where matched. Unresolved segments remain scheduled approximations, with major lake crossings corrected by the shoreline fallback.</dd>
           <dt>Terrain</dt><dd>The Zürich–Chur corridor uses measured swissALTIRegio elevations and named SBB tunnel records. Kiental–Griesalp uses a separate swissALTI3D crop and road-following OpenStreetMap geometry. Terrain meshes, lake surfaces, route profiles and camera scale are prepared offline; lighting, vertical emphasis and vehicle forms are artistic.</dd>
           <dt>Air</dt><dd>LUFTRAUM is a separately loaded historical observation layer. Aircraft positions, altitude and groundspeed come from ADS-B receiver data; heading and vertical rate are derived between samples, and gaps longer than 45 seconds are not interpolated. Altitude is visually compressed.</dd>
+          <dt>Road</dt><dd>AUTO is a separately loaded traffic-flow reconstruction. The A1 path uses real ASTRA detector geography, while Road Study 001's flow and speed values are explicitly representative calibration—not historical observations. Warm-white and amber marks are synthetic samples of aggregate light- and heavy-vehicle density; no mark represents a tracked automobile.</dd>
         </dl>
       </section>
 
@@ -62,13 +63,14 @@
           <li>Federal open hydrography is simplified offline into the major lake layer, with source attribution retained in the artifact.</li>
           <li><a href="https://data.stadt-zuerich.ch/dataset/vbz_fahrplandaten_gtfs">ZVV / VBZ GTFS</a> and <a href="https://sitg.ge.ch/donnees/tpg-lignes">TPG / SITG</a> provide regional line geometry.</li>
           <li><a href="https://www.adsb.lol/docs/open-data/historical/">ADSB.lol historical data</a>, distributed under ODbL 1.0, supplies the optional observed-aircraft study for 07:00–08:00 CEST on 4 September 2026.</li>
+          <li><a href="https://opentransportdata.swiss/en/cookbook/road-traffic-cookbook/rt-road-traffic-counters/">ASTRA / FEDRO realtime road counters</a> define the DATEX II flow and speed contract; the separately published <a href="https://data.opentransportdata.swiss/en/dataset/trafficcounters">Measurement Site Table</a> supplies Road Study 001's detector locations.</li>
         </ul>
         <p>The browser never receives the source GTFS archive. Repeatable Node scripts validate and compress each study into small static JSON artifacts. National 24-hour data is split so the initial morning view remains fast.</p>
       </section>
 
       <section>
         <h2>Limits, privacy and accessibility</h2>
-        <p><strong>Realtime:</strong> rail remains a scheduled simulation. Swiss GTFS Realtime offers predictions and alerts rather than national GPS vehicle positions; it will only be presented as realtime-adjusted interpolation once a paired, timestamped feed is operating. LUFTRAUM is explicitly historical observed data, not a live aircraft display.</p>
+        <p><strong>Realtime:</strong> rail remains a scheduled simulation. Swiss GTFS Realtime offers predictions and alerts rather than national GPS vehicle positions; it will only be presented as realtime-adjusted interpolation once a paired, timestamped feed is operating. LUFTRAUM is explicitly historical observed data, not a live aircraft display. ASTRA retains only the latest complete traffic-counter minute, so AUTO remains labelled calibration until Gleislicht has recorded and validated its own historical series.</p>
         <p><strong>Privacy:</strong> Gleislicht contains no analytics, advertising, accounts or personal tracking. Language preference is stored locally in the browser. Add <code>?perf=1</code> to the URL for an on-device frame-rate monitor; its measurements are never transmitted.</p>
         <p><strong>Accessibility:</strong> keyboard search, reduced interface density on small screens, labelled controls and a non-WebGL explanation are built in. The map remains a visual artwork; the status cards and search results carry the essential textual information.</p>
         <p><strong>Export:</strong> supporting browsers can record a silent twelve-second canvas loop locally. The video is assembled and downloaded on-device; no frames are uploaded.</p>

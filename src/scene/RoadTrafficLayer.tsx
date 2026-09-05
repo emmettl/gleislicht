@@ -1,0 +1,227 @@
+import { useFrame } from '@react-three/fiber'
+import { useEffect, useMemo, useRef } from 'react'
+import * as THREE from 'three'
+import {
+  roadConditionsAtTime,
+  roadDistanceTravelledKm,
+  visualVehicleCount,
+  type RoadTrafficSnapshot,
+} from '../domain/road.ts'
+import type { NetworkProjection } from './NationalNetworkScene.tsx'
+
+const LIGHT_COLOR = new THREE.Color('#fff1cf')
+const HEAVY_COLOR = new THREE.Color('#ff9d52')
+const MAX_LIGHT_PER_DIRECTION = 110
+const MAX_HEAVY_PER_DIRECTION = 32
+
+function projectRoadCoordinate(
+  coordinate: readonly [number, number],
+  projection: NetworkProjection,
+  height = 0.11,
+): THREE.Vector3 {
+  return new THREE.Vector3(
+    (coordinate[0] - projection.centreLongitude) *
+      projection.longitudeScale *
+      projection.scale,
+    height,
+    -(coordinate[1] - projection.centreLatitude) * projection.scale,
+  )
+}
+
+function RoadDirectionFlow({
+  snapshot,
+  corridor,
+  direction,
+  curve,
+  time,
+  isPlaying,
+  playbackRate,
+  subdued,
+}: {
+  readonly snapshot: RoadTrafficSnapshot
+  readonly corridor: RoadTrafficSnapshot['corridors'][number]
+  readonly direction: RoadTrafficSnapshot['corridors'][number]['directions'][number]
+  readonly curve: THREE.CatmullRomCurve3
+  readonly time: number
+  readonly isPlaying: boolean
+  readonly playbackRate: number
+  readonly subdued: boolean
+}) {
+  const localTime = useRef(time)
+  const lightsRef = useRef<THREE.InstancedMesh>(null)
+  const heavyRef = useRef<THREE.InstancedMesh>(null)
+  const transformRef = useRef(new THREE.Object3D())
+  const pointRef = useRef(new THREE.Vector3())
+  const aheadRef = useRef(new THREE.Vector3())
+  const tangentRef = useRef(new THREE.Vector3())
+  const vehicleAxisRef = useRef(new THREE.Vector3(0, 1, 0))
+
+  useEffect(() => {
+    localTime.current = time
+  }, [time])
+
+  useFrame((_, delta) => {
+    if (isPlaying) {
+      localTime.current += delta * playbackRate
+      if (localTime.current > snapshot.metadata.windowEnd) {
+        localTime.current = snapshot.metadata.windowStart
+      }
+    }
+    const conditions = roadConditionsAtTime(direction, localTime.current)
+    const transform = transformRef.current
+    const point = pointRef.current
+    const ahead = aheadRef.current
+    const tangent = tangentRef.current
+    const vehicleAxis = vehicleAxisRef.current
+    const lightCount = visualVehicleCount(
+      conditions.lightFlowPerHour,
+      conditions.lightSpeedKmh,
+      corridor.distanceKm,
+      snapshot.metadata.visualSampleRate,
+      MAX_LIGHT_PER_DIRECTION,
+    )
+    const heavyCount = visualVehicleCount(
+      conditions.heavyFlowPerHour,
+      conditions.heavySpeedKmh,
+      corridor.distanceKm,
+      snapshot.metadata.visualSampleRate * 1.7,
+      MAX_HEAVY_PER_DIRECTION,
+    )
+
+    const updateMesh = (
+      mesh: THREE.InstancedMesh | null,
+      count: number,
+      vehicle: 'light' | 'heavy',
+    ) => {
+      if (!mesh) return
+      const travelled = roadDistanceTravelledKm(
+        direction,
+        localTime.current,
+        vehicle,
+      )
+      for (let index = 0; index < count; index += 1) {
+        const offset = (index + (vehicle === 'heavy' ? 0.37 : 0.08)) / Math.max(1, count)
+        let progress = (offset + travelled / corridor.distanceKm) % 1
+        if (direction.reverse) progress = 1 - progress
+        curve.getPointAt(progress, point)
+        const aheadProgress =
+          (progress + (direction.reverse ? -0.001 : 0.001) + 1) % 1
+        curve.getPointAt(aheadProgress, ahead)
+        transform.position.copy(point)
+        transform.position.x += direction.reverse ? -0.045 : 0.045
+        tangent.copy(ahead).sub(point).normalize()
+        transform.quaternion.setFromUnitVectors(vehicleAxis, tangent)
+        const pulse = 0.88 + 0.12 * Math.sin(index * 2.31 + localTime.current * 0.045)
+        transform.scale.setScalar(pulse)
+        transform.updateMatrix()
+        mesh.setMatrixAt(index, transform.matrix)
+      }
+      mesh.count = count
+      mesh.instanceMatrix.needsUpdate = true
+    }
+
+    updateMesh(lightsRef.current, lightCount, 'light')
+    updateMesh(heavyRef.current, heavyCount, 'heavy')
+  })
+
+  return (
+    <>
+      <instancedMesh
+        ref={lightsRef}
+        args={[undefined, undefined, MAX_LIGHT_PER_DIRECTION]}
+        renderOrder={5}
+        frustumCulled={false}
+      >
+        <capsuleGeometry args={[0.027, 0.16, 3, 5]} />
+        <meshBasicMaterial
+          color={LIGHT_COLOR}
+          transparent
+          opacity={subdued ? 0.07 : 0.84}
+          blending={THREE.AdditiveBlending}
+          depthWrite={false}
+          toneMapped={false}
+        />
+      </instancedMesh>
+      <instancedMesh
+        ref={heavyRef}
+        args={[undefined, undefined, MAX_HEAVY_PER_DIRECTION]}
+        renderOrder={5}
+        frustumCulled={false}
+      >
+        <capsuleGeometry args={[0.045, 0.24, 3, 5]} />
+        <meshBasicMaterial
+          color={HEAVY_COLOR}
+          transparent
+          opacity={subdued ? 0.06 : 0.78}
+          blending={THREE.AdditiveBlending}
+          depthWrite={false}
+          toneMapped={false}
+        />
+      </instancedMesh>
+    </>
+  )
+}
+
+export function RoadTrafficLayer({
+  snapshot,
+  time,
+  isPlaying,
+  playbackRate,
+  projection,
+  subdued = false,
+}: {
+  readonly snapshot: RoadTrafficSnapshot
+  readonly time: number
+  readonly isPlaying: boolean
+  readonly playbackRate: number
+  readonly projection: NetworkProjection
+  readonly subdued?: boolean
+}) {
+  const corridors = useMemo(
+    () =>
+      snapshot.corridors.map((corridor) => {
+        const points = corridor.path.map((coordinate) =>
+          projectRoadCoordinate(coordinate, projection),
+        )
+        const curve = new THREE.CatmullRomCurve3(points, false, 'centripetal', 0.5)
+        const roadPoints = curve.getPoints(180)
+        const roadSegments = roadPoints.flatMap((point, index) =>
+          index ? [roadPoints[index - 1], point] : [],
+        )
+        const road = new THREE.BufferGeometry().setFromPoints(roadSegments)
+        return { corridor, curve, road }
+      }),
+    [projection, snapshot.corridors],
+  )
+
+  useEffect(
+    () => () => corridors.forEach(({ road }) => road.dispose()),
+    [corridors],
+  )
+
+  return corridors.map(({ corridor, curve, road }) => (
+    <group key={corridor.id}>
+      <lineSegments geometry={road} renderOrder={4}>
+        <lineBasicMaterial
+          color="#c78a60"
+          transparent
+          opacity={subdued ? 0.025 : 0.15}
+          depthWrite={false}
+        />
+      </lineSegments>
+      {corridor.directions.map((direction) => (
+        <RoadDirectionFlow
+          key={direction.id}
+          snapshot={snapshot}
+          corridor={corridor}
+          direction={direction}
+          curve={curve}
+          time={time}
+          isPlaying={isPlaying}
+          playbackRate={playbackRate}
+          subdued={subdued}
+        />
+      ))}
+    </group>
+  ))
+}

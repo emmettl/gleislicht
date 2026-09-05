@@ -68,6 +68,10 @@ import {
 import type { SwissBoundary } from './domain/boundary.ts'
 import type { SwissLakes } from './domain/lakes.ts'
 import {
+  reconstructedVehicleCount,
+  type RoadTrafficSnapshot,
+} from './domain/road.ts'
+import {
   LANGUAGE_LOCALES,
   resolveUiLanguage,
   serviceCategoryLabel,
@@ -126,6 +130,7 @@ type TerrainCorridorId = 'zurich-chur' | 'kiental-griesalp'
 type OperationsMode = 'scheduled' | 'demo' | 'live'
 type RealtimeLoadState = 'idle' | 'loading' | 'ready' | 'error'
 type AirLoadState = 'idle' | 'loading' | 'ready' | 'error'
+type RoadLoadState = 'idle' | 'loading' | 'ready' | 'error'
 
 const REALTIME_ENDPOINT = import.meta.env.VITE_GLEISLICHT_REALTIME_URL?.trim()
 const REALTIME_STALE_AFTER_MS = 90_000
@@ -267,6 +272,10 @@ export function App() {
   const [airSnapshot, setAirSnapshot] = useState<AirSnapshot>()
   const [airLoadState, setAirLoadState] = useState<AirLoadState>('idle')
   const [selectedAirTrackId, setSelectedAirTrackId] = useState<string>()
+  const [roadEnabled, setRoadEnabled] = useState(false)
+  const [roadCategorySelected, setRoadCategorySelected] = useState(false)
+  const [roadSnapshot, setRoadSnapshot] = useState<RoadTrafficSnapshot>()
+  const [roadLoadState, setRoadLoadState] = useState<RoadLoadState>('idle')
   const [selectedHubId, setSelectedHubId] = useState<HubId>('zurich')
   const [hubStudy, setHubStudy] = useState<HubStudy>('pulse')
   const [showTaktOverlay, setShowTaktOverlay] = useState(true)
@@ -455,6 +464,13 @@ export function App() {
         ? activeAirTracks(activeAirSnapshot, networkTime).length
         : 0,
     [activeAirSnapshot, airEnabled, networkTime],
+  )
+  const activeRoadVehicleCount = useMemo(
+    () =>
+      roadEnabled && roadSnapshot
+        ? reconstructedVehicleCount(roadSnapshot, networkTime)
+        : 0,
+    [networkTime, roadEnabled, roadSnapshot],
   )
   const corridorTrainSelected =
     isZurichChurTrain(selectedTrain, network) ||
@@ -674,6 +690,7 @@ export function App() {
 
   const selectStation = useCallback((station: StationIndexEntry) => {
     setAirCategorySelected(false)
+    setRoadCategorySelected(false)
     setSelectedAirTrackId(undefined)
     setSelectedTrainId(undefined)
     setSelectedRouteId(undefined)
@@ -691,6 +708,7 @@ export function App() {
   const selectRoute = useCallback(
     (route: NetworkRouteIndexEntry) => {
       setAirCategorySelected(false)
+      setRoadCategorySelected(false)
       setSelectedTrainId(undefined)
       setSelectedAirTrackId(undefined)
       setSelectedStationName(undefined)
@@ -711,6 +729,7 @@ export function App() {
     (train: NetworkTrain) => {
       if (!network) return
       setAirCategorySelected(false)
+      setRoadCategorySelected(false)
       const currentTimeIsActive = train.start <= networkTime && train.end >= networkTime
       const firstMovingMoment = Math.min(train.end, train.start + 60)
       const targetTime = currentTimeIsActive
@@ -736,6 +755,7 @@ export function App() {
   const selectAirTrack = useCallback(
     (trackId: string) => {
       setAirCategorySelected(false)
+      setRoadCategorySelected(false)
       const track =
         activeAirSnapshot?.tracks.find((candidate) => candidate.id === trackId) ??
         airDay.manifest?.aircraft.find((candidate) => candidate.id === trackId)
@@ -780,6 +800,26 @@ export function App() {
       )
     }
   }, [airEnabled, airSnapshot, isNationalDay, networkTime, releaseSelection])
+
+  const toggleRoadLayer = useCallback(() => {
+    if (roadEnabled) {
+      setRoadEnabled(false)
+      setRoadCategorySelected(false)
+      return
+    }
+    releaseSelection()
+    setRoadLoadState(roadSnapshot ? 'ready' : 'loading')
+    setRoadEnabled(true)
+    if (
+      roadSnapshot &&
+      (networkTime < roadSnapshot.metadata.windowStart ||
+        networkTime > roadSnapshot.metadata.windowEnd)
+    ) {
+      setNetworkTime(
+        (roadSnapshot.metadata.windowStart + roadSnapshot.metadata.windowEnd) / 2,
+      )
+    }
+  }, [networkTime, releaseSelection, roadEnabled, roadSnapshot])
 
   const openTerrainCorridor = useCallback(
     (nextCorridorId: TerrainCorridorId, nextProgress = 0.015) => {
@@ -828,6 +868,10 @@ export function App() {
       releaseSelection()
       if (study !== 'national') setAirEnabled(false)
       if (study !== 'national') setAirCategorySelected(false)
+      if (study !== 'national' || timeRange === 'day') setRoadEnabled(false)
+      if (study !== 'national' || timeRange === 'day') {
+        setRoadCategorySelected(false)
+      }
       if (study === 'national') setNationalTimeRange(timeRange)
       if (study === 'geneva-tpg') setSelectedHubId('geneva')
       if (study === 'zvv-region' || study === 'zurich-city') {
@@ -1038,6 +1082,39 @@ export function App() {
       })
     return () => controller.abort()
   }, [airEnabled, airSnapshot, isNationalDay])
+
+  useEffect(() => {
+    if (!roadEnabled || isNationalDay || roadSnapshot) return
+    const controller = new AbortController()
+    fetch(`${import.meta.env.BASE_URL}data/swiss-road-morning.json`, {
+      signal: controller.signal,
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Road study returned ${response.status}`)
+        }
+        return response.json() as Promise<RoadTrafficSnapshot>
+      })
+      .then((snapshot) => {
+        if (controller.signal.aborted) return
+        setRoadSnapshot(snapshot)
+        setRoadLoadState('ready')
+        if (
+          timelineTimeRef.current < snapshot.metadata.windowStart ||
+          timelineTimeRef.current > snapshot.metadata.windowEnd
+        ) {
+          setNetworkTime(
+            (snapshot.metadata.windowStart + snapshot.metadata.windowEnd) / 2,
+          )
+        }
+      })
+      .catch((error: unknown) => {
+        if (error instanceof DOMException && error.name === 'AbortError') return
+        console.warn('Unable to load Road Study 001', error)
+        setRoadLoadState('error')
+      })
+    return () => controller.abort()
+  }, [isNationalDay, roadEnabled, roadSnapshot])
 
   useEffect(() => {
     if (operationsMode === 'scheduled') return
@@ -1416,7 +1493,7 @@ export function App() {
 
   return (
     <main
-      className={`experience view-${view}${isContrast ? ' is-contrast' : ''}${airEnabled ? ' has-air-layer' : ''}${airCategorySelected ? ' has-air-category' : ''}${selectedTrain || selectedStation || selectedRoute || selectedAirTrack ? ' has-selection' : ''}${!isTimetable ? ` corridor-${journeyCorridorId}` : ''}`}
+      className={`experience view-${view}${isContrast ? ' is-contrast' : ''}${airEnabled ? ' has-air-layer' : ''}${airCategorySelected ? ' has-air-category' : ''}${roadEnabled ? ' has-road-layer' : ''}${roadCategorySelected ? ' has-road-category' : ''}${selectedTrain || selectedStation || selectedRoute || selectedAirTrack ? ' has-selection' : ''}${!isTimetable ? ` corridor-${journeyCorridorId}` : ''}`}
     >
       <div className="scene" aria-hidden={webglAvailable ? true : undefined}>
         <Suspense fallback={null}>
@@ -1520,6 +1597,12 @@ export function App() {
                 : undefined
             }
             airCategorySelected={airCategorySelected}
+            roadSnapshot={
+              networkStudy === 'national' && roadEnabled
+                ? roadSnapshot
+                : undefined
+            }
+            roadCategorySelected={roadCategorySelected}
             selectedAirTrack={selectedAirTrack}
             onSelectAirTrack={selectAirTrack}
             cameraFraming={
@@ -1581,9 +1664,13 @@ export function App() {
       <header className="masthead">
         <div>
           <p className="eyebrow">
-            {isNetwork && networkStudy === 'national' && airEnabled
-              ? 'GLEISLICHT — LUFTRAUM'
-              : 'Gleislicht'}
+            {isNetwork && networkStudy === 'national' && airEnabled && roadEnabled
+              ? 'GLEISLICHT — LUFT / AUTO'
+              : isNetwork && networkStudy === 'national' && airEnabled
+                ? 'GLEISLICHT — LUFTRAUM'
+                : isNetwork && networkStudy === 'national' && roadEnabled
+                  ? 'GLEISLICHT — AUTO'
+                  : 'Gleislicht'}
           </p>
           <h1
             className={
@@ -1956,6 +2043,17 @@ export function App() {
               >
                 {text.luftraum}
               </button>
+              <button
+                className="road-toggle"
+                type="button"
+                title={roadEnabled ? text.hideRoadLayer : text.showRoadLayer}
+                aria-label={roadEnabled ? text.hideRoadLayer : text.showRoadLayer}
+                aria-pressed={roadEnabled}
+                disabled={networkStudy !== 'national' || isNationalDay}
+                onClick={toggleRoadLayer}
+              >
+                {text.auto}
+              </button>
             </nav>
             <MobilePicker
               className="mobile-study-picker"
@@ -2022,6 +2120,17 @@ export function App() {
               onClick={toggleAirLayer}
             >
               {text.luftraum}
+            </button>
+            <button
+              className="mobile-road-toggle"
+              type="button"
+              title={roadEnabled ? text.hideRoadLayer : text.showRoadLayer}
+              aria-label={roadEnabled ? text.hideRoadLayer : text.showRoadLayer}
+              aria-pressed={roadEnabled}
+              disabled={networkStudy !== 'national' || isNationalDay}
+              onClick={toggleRoadLayer}
+            >
+              {text.auto}
             </button>
             {searchQuery && (
               <button
@@ -2531,6 +2640,23 @@ export function App() {
                     : `${numberFormat.format(activeAircraftCount)} ${text.luftraum}`}
               </span>
             )}
+            {networkStudy === 'national' && roadEnabled && (
+              <span
+                className="road-count"
+                aria-live="polite"
+                aria-label={
+                  roadLoadState === 'ready'
+                    ? `${numberFormat.format(activeRoadVehicleCount)} ${text.estimatedRoadVehicles}`
+                    : undefined
+                }
+              >
+                {roadLoadState === 'error'
+                  ? text.roadUnavailable
+                  : roadLoadState !== 'ready'
+                    ? text.loadingRoad
+                    : `${numberFormat.format(activeRoadVehicleCount)} ${text.auto}`}
+              </span>
+            )}
           </div>
           <p className="between">
               {networkStudy === 'national' && operationsMode !== 'scheduled'
@@ -2650,14 +2776,21 @@ export function App() {
                   ? `${serviceCategoryLabel(language, selectedRoute.category)} ${selectedRoute.name}`
                   : undefined) ??
                 selectedStation?.name ??
-                (airCategorySelected
+                (roadCategorySelected
+                  ? text.trafficReconstruction
+                  : airCategorySelected
                   ? text.observedAirLayer
                   : selectedCategory
                     ? serviceCategoryLabel(language, selectedCategory)
+                    : roadEnabled
+                      ? text.trafficReconstruction
                     : airEnabled
                       ? text.observedAirLayer
                       : text.trafficFrequency)}
             </span>
+            {roadEnabled && (
+              <span>{text.astraCalibration}</span>
+            )}
           </>
         ) : (
           <>
@@ -2760,7 +2893,13 @@ export function App() {
                 <span>{text.services}</span>
                 <MobilePicker
                   ariaLabel={text.filterServices}
-                  value={airCategorySelected ? 'air' : (selectedCategory ?? '')}
+                  value={
+                    roadCategorySelected
+                      ? 'road'
+                      : airCategorySelected
+                        ? 'air'
+                        : (selectedCategory ?? '')
+                  }
                   options={[
                     { value: '', label: text.allServices },
                     ...visibleServiceCategories.map((category) => ({
@@ -2770,11 +2909,15 @@ export function App() {
                     ...(networkStudy === 'national' && airEnabled
                       ? [{ value: 'air', label: text.luftraum }]
                       : []),
+                    ...(networkStudy === 'national' && roadEnabled
+                      ? [{ value: 'road', label: text.auto }]
+                      : []),
                   ]}
                   onChange={(category) => {
                     setAirCategorySelected(category === 'air')
+                    setRoadCategorySelected(category === 'road')
                     setSelectedCategory(
-                      category && category !== 'air'
+                      category && category !== 'air' && category !== 'road'
                         ? (category as ServiceCategory)
                         : undefined,
                     )
@@ -2803,7 +2946,7 @@ export function App() {
 
       {isTimetable && !selectedTrain && !selectedAirTrack && !selectedRoute && (
         <div
-          className={`service-legend${selectedCategory || airCategorySelected ? ' has-filter' : ''}`}
+          className={`service-legend${selectedCategory || airCategorySelected || roadCategorySelected ? ' has-filter' : ''}`}
           aria-label={text.filterServices}
         >
           {visibleServiceCategories.map((category) => (
@@ -2818,6 +2961,7 @@ export function App() {
                 }
                 onClick={() => {
                   setAirCategorySelected(false)
+                  setRoadCategorySelected(false)
                   setSelectedCategory((current) =>
                     current === category.id ? undefined : category.id,
                   )
@@ -2834,11 +2978,27 @@ export function App() {
               style={{ '--service-accent': '#ff5edb' } as CSSProperties}
               onClick={() => {
                 setSelectedCategory(undefined)
+                setRoadCategorySelected(false)
                 setAirCategorySelected((current) => !current)
               }}
             >
               <i style={{ backgroundColor: '#ff5edb' }} />
               {text.luftraum}
+            </button>
+          )}
+          {isNetwork && networkStudy === 'national' && roadEnabled && (
+            <button
+              type="button"
+              aria-pressed={roadCategorySelected}
+              style={{ '--service-accent': '#ffb36b' } as CSSProperties}
+              onClick={() => {
+                setSelectedCategory(undefined)
+                setAirCategorySelected(false)
+                setRoadCategorySelected((current) => !current)
+              }}
+            >
+              <i style={{ backgroundColor: '#ffb36b' }} />
+              {text.auto}
             </button>
           )}
         </div>
@@ -3159,6 +3319,15 @@ export function App() {
                 rel="noreferrer"
               >
                 Luftraum · ADSB.lol / {activeAirSnapshot.metadata.license}
+              </a>
+            )}
+            {isNetwork && roadEnabled && roadSnapshot && (
+              <a
+                href={roadSnapshot.metadata.sourceUrl}
+                target="_blank"
+                rel="noreferrer"
+              >
+                AUTO · ASTRA / FEDRO
               </a>
             )}
             <a href="./methodology.html">{text.methodology}</a>

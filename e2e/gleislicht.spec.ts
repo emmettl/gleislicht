@@ -130,6 +130,61 @@ test('LUFT can be isolated like a rail service category', async ({
   }
 })
 
+test('AUTO stays lazy, discloses reconstruction, and can be isolated', async ({
+  page,
+}, testInfo) => {
+  const roadRequests: string[] = []
+  page.on('request', (request) => {
+    if (request.url().includes('swiss-road-morning.json')) {
+      roadRequests.push(request.url())
+    }
+  })
+
+  await page.waitForTimeout(150)
+  expect(roadRequests).toEqual([])
+
+  const toggle = page.locator(
+    testInfo.project.name === 'iphone-webkit'
+      ? '.mobile-road-toggle'
+      : '.network-study-picker .road-toggle',
+  )
+  const response = page.waitForResponse((candidate) =>
+    candidate.url().includes('swiss-road-morning.json'),
+  )
+  await toggle.click()
+  await response
+
+  await expect(toggle).toHaveAttribute('aria-pressed', 'true')
+  await expect(page.locator('.network-card .road-count')).toContainText('AUTO')
+  await expect(page.locator('.network-card .road-count')).toHaveAttribute(
+    'aria-label',
+    /estimated road vehicles/i,
+  )
+  await expect(page.locator('.prototype-note')).toContainText(
+    'Traffic-flow reconstruction / no vehicle tracking',
+  )
+  await expect(page.locator('.prototype-note')).toContainText(
+    'representative calibration',
+  )
+  expect(roadRequests).toHaveLength(1)
+
+  if (testInfo.project.name === 'iphone-webkit') {
+    const tools = page.locator('.mobile-map-tools details')
+    await tools.locator('summary').click()
+    const services = tools.locator('.mobile-tool-field').first().locator('.mobile-picker')
+    await services.locator('.mobile-picker__trigger').click()
+    await services.getByRole('option', { name: 'AUTO' }).click()
+    await expect(services.locator('.mobile-picker__trigger')).toContainText('AUTO')
+  } else {
+    const autoCategory = page.locator('.service-legend').getByRole('button', {
+      name: 'AUTO',
+    })
+    await autoCategory.click()
+    await expect(autoCategory).toHaveAttribute('aria-pressed', 'true')
+    await expect(page.locator('.service-legend')).toHaveClass(/has-filter/)
+  }
+})
+
 test('search selects a station and exposes its serving routes', async ({ page }) => {
   const search = page.locator('.train-search input[type="search"]')
   await search.fill('Bern')

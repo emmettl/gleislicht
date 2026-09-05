@@ -18,6 +18,7 @@ const kientalCorridor = await readJson('kiental-griesalp-corridor.json')
 const zurichChurCorridor = await readJson('zurich-chur-corridor.json')
 const air = await readJson('swiss-air-morning.json')
 const airDay = await readJson('swiss-air-day-manifest.json')
+const road = await readJson('swiss-road-morning.json')
 
 const artifacts = [morning, hubs, day]
 const serviceDates = new Set(artifacts.map((artifact) => artifact.metadata?.serviceDate))
@@ -149,10 +150,39 @@ for (const [index, descriptor] of airDay.chunks.entries()) {
   )
 }
 
+assert(
+  road.metadata?.publisher === 'Federal Roads Office (ASTRA / FEDRO)',
+  'Road study has no ASTRA provenance',
+)
+assert(
+  road.metadata?.measurementKind === 'representative-calibration',
+  'Road Study 001 must disclose its calibration data',
+)
+assert(
+  road.metadata?.model === 'Traffic-flow reconstruction / no vehicle tracking',
+  'Road study is missing its reconstruction disclosure',
+)
+assert(road.metadata?.serviceDate === [...serviceDates][0], 'Road study does not match the railway service day')
+assert(road.metadata?.windowStart === 24_300, 'Road study does not start at 06:45')
+assert(road.metadata?.windowEnd === 31_500, 'Road study does not end at 08:45')
+assert(road.metadata?.sampleIntervalSeconds === 60, 'Road study has an unexpected sample cadence')
+assert(Array.isArray(road.corridors) && road.corridors.length === 1, 'Road Study 001 must contain one corridor')
+assert(road.corridors[0].path.length >= 15, 'Road Study 001 path is too coarse')
+assert(road.corridors[0].directions.length === 2, 'Road Study 001 must contain both directions')
+assert(
+  road.corridors[0].directions.every((direction) =>
+    direction.detectorIds.length >= 10 &&
+    direction.samples.length === 121 &&
+    direction.samples.every((sample) => sample.length === 5)
+  ),
+  'Road Study 001 contains malformed directions',
+)
+
 console.log(
   `Validated national GTFS ${[...feedVersions][0]} for ${[...serviceDates][0]}: ` +
     `${morning.trains.length.toLocaleString('en')} morning trips, ` +
     `${day.tripCount.toLocaleString('en')} day trips, ${day.chunks.length} chunks and ` +
     `${air.tracks.length.toLocaleString('en')} morning aircraft and ` +
-    `${airDay.trackCount.toLocaleString('en')} day aircraft.`,
+    `${airDay.trackCount.toLocaleString('en')} day aircraft, and ` +
+    `${road.corridors[0].directions.length} reconstructed road directions.`,
 )

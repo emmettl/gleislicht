@@ -6,6 +6,7 @@ import type {
   SwissBoundary,
 } from '../domain/boundary.ts'
 import type { SwissLakes } from '../domain/lakes.ts'
+import type { RoadTrafficSnapshot } from '../domain/road.ts'
 import {
   positionForAirTrack,
   type AirSnapshot,
@@ -89,6 +90,7 @@ import {
 } from './regional-lod.ts'
 import { AirTrafficLayer } from './AirTrafficLayer.tsx'
 import { projectAirPosition } from './air-projection.ts'
+import { RoadTrafficLayer } from './RoadTrafficLayer.tsx'
 
 export type MapCameraAction =
   | 'zoom-in'
@@ -122,6 +124,8 @@ interface NationalNetworkSceneProps {
   readonly cameraFraming: MapCameraFraming
   readonly airSnapshot?: AirSnapshot
   readonly airCategorySelected?: boolean
+  readonly roadSnapshot?: RoadTrafficSnapshot
+  readonly roadCategorySelected?: boolean
   readonly selectedAirTrack?: AirTrack
   readonly onSelectAirTrack?: (trackId: string) => void
 }
@@ -3077,7 +3081,8 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
               props.selectedRoute ||
               props.selectedStation ||
               props.selectedCategory ||
-              props.airCategorySelected
+              props.airCategorySelected ||
+              props.roadCategorySelected
           )}
         />
       )}
@@ -3091,6 +3096,7 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
               props.selectedStation ||
               props.selectedCategory ||
               props.airCategorySelected ||
+              props.roadCategorySelected ||
               hasContext
           )}
         />
@@ -3117,9 +3123,26 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
             props.selectedRoute ||
             props.selectedStation ||
             props.selectedCategory ||
-            props.airCategorySelected
+            props.airCategorySelected ||
+            props.roadCategorySelected
         )}
       />
+      {props.roadSnapshot && (
+        <RoadTrafficLayer
+          snapshot={props.roadSnapshot}
+          time={props.time}
+          isPlaying={props.isPlaying}
+          playbackRate={props.playbackRate}
+          projection={projection}
+          subdued={Boolean(
+            props.selectedTrain ||
+              props.selectedRoute ||
+              props.selectedStation ||
+              props.selectedCategory ||
+              props.airCategorySelected
+          )}
+        />
+      )}
       {props.airSnapshot && (
         <AirTrafficLayer
           snapshot={props.airSnapshot}
@@ -3134,7 +3157,8 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
             props.selectedTrain ||
               props.selectedRoute ||
               props.selectedStation ||
-              props.selectedCategory
+              props.selectedCategory ||
+              props.roadCategorySelected
           )}
         />
       )}

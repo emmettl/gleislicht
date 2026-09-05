@@ -11,6 +11,7 @@ The experience should work at four scales:
 3. **Regional networks reveal exchange.** ZVV, TPG and later regional studies show rail, tram, bus, boat and funicular services feeding one another without crowding the national view.
 4. **Cities become electric.** A full-detail city study embraces the hectic texture of Zürich trams and buses, while a synchronized rural study makes the spacious pulse of PostBus services equally tangible.
 5. **The sky remains a visitor.** The optional LUFTRAUM study places sparse observed aircraft above the railway without granting them a permanent network or equal visual weight.
+6. **The road becomes a measured field.** AUTO turns aggregate motorway flow and speed into warm synthetic streams, clearly distinct from both scheduled trains and observed aircraft.
 
 ## Product principles
 
@@ -29,6 +30,8 @@ The experience should work at four scales:
 _Night geography drawn by infrastructure._
 
 The base world is deep indigo-black. Terrain is a sparse violet wire mesh with just enough filled surface to hold fog and depth. Rail lines sit above it as cool cyan filaments. Active vehicles carry a warmer magenta core, becoming bright punctuation rather than map pins. Typography is restrained, technical and monospaced where it reports state; the title remains human and quiet.
+
+LUFTRAUM and AUTO extend this grammar without flattening it. Aircraft are dim magenta needles with ephemeral trails and real, compressed altitude. Road traffic is warm white with amber heavy vehicles, bound to physical corridors but explicitly reconstructed from aggregate counters. Rail remains the brightest and densest infrastructure layer.
 
 The reference screenshot suggests the core spectacle: hundreds of journeys reveal the national network simply by moving. Gleislicht adds a more authored camera language and swaps satellite-map realism for low-poly topographic atmosphere.
 

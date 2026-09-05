@@ -36,6 +36,7 @@
     "data:postbus:analyze": "node scripts/analyze-postbus-corridors.mjs",
     "data:validate": "node scripts/validate-data-artifacts.mjs",
     "data:air": "node scripts/ingest-adsb-heatmap.mjs",
+    "data:road": "node scripts/build-road-study.mjs",
     "preview": "vite preview"
   },
   "engines": {
