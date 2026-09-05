@@ -76,6 +76,26 @@ interface ProjectedMapPoint {
 const SELECTION_HORIZONTAL_SAFE_INSET = 0.1
 const SELECTION_VERTICAL_SAFE_INSET = 0.14
 
+export const STATION_SELECTION_PULSE_COUNT = 3
+
+interface StationSelectionPulseFrame {
+  readonly radiusPixels: number
+  readonly opacity: number
+}
+
+/** A staggered, steadily expanding signal with a soft exponential tail. */
+export function stationSelectionPulseFrame(
+  elapsedSeconds: number,
+  ringIndex: number,
+): StationSelectionPulseFrame {
+  const offset = ringIndex / STATION_SELECTION_PULSE_COUNT
+  const phase = (((elapsedSeconds * 0.42 + offset) % 1) + 1) % 1
+  return {
+    radiusPixels: 14 + (92 - 14) * phase,
+    opacity: 0.64 * Math.pow(1 - phase, 1.7),
+  }
+}
+
 /**
  * Treats a selected place close to the edge as out of view as well. The small
  * inset leaves room for its marker and label instead of merely keeping the

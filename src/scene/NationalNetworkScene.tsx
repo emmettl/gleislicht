@@ -60,6 +60,8 @@ import {
   mapSelectionNeedsReveal,
   mapWheelZoomMultiplier,
   minimumMapDistanceScale,
+  STATION_SELECTION_PULSE_COUNT,
+  stationSelectionPulseFrame,
   type MapCameraFraming,
 } from './map-camera.ts'
 import {
@@ -1904,6 +1906,62 @@ function SelectedStationRouteLayer({
   )
 }
 
+function SelectedStationPulse({ centre }: { readonly centre: THREE.Vector3 }) {
+  const meshes = useRef<Array<THREE.Mesh | null>>([])
+  const materials = useRef<Array<THREE.MeshBasicMaterial | null>>([])
+  const origin = useMemo(
+    () => new THREE.Vector3(centre.x, 0.29, centre.z),
+    [centre],
+  )
+
+  useFrame(({ camera, clock, size }) => {
+    if (!(camera instanceof THREE.PerspectiveCamera) || size.height <= 0) return
+    const distance = camera.position.distanceTo(origin)
+    const visibleWorldHeight =
+      2 * distance * Math.tan(THREE.MathUtils.degToRad(camera.fov * 0.5))
+    const worldUnitsPerPixel = visibleWorldHeight / size.height
+
+    for (let index = 0; index < STATION_SELECTION_PULSE_COUNT; index += 1) {
+      const mesh = meshes.current[index]
+      const material = materials.current[index]
+      if (!mesh || !material) continue
+      const frame = stationSelectionPulseFrame(clock.elapsedTime, index)
+      mesh.scale.setScalar(frame.radiusPixels * worldUnitsPerPixel)
+      material.opacity = frame.opacity
+    }
+  })
+
+  return (
+    <group position={origin}>
+      {Array.from({ length: STATION_SELECTION_PULSE_COUNT }, (_, index) => (
+        <mesh
+          key={index}
+          ref={(mesh) => {
+            meshes.current[index] = mesh
+          }}
+          rotation={[Math.PI / 2, 0, 0]}
+          renderOrder={MAP_LAYER.focusMarkerGlow}
+        >
+          <torusGeometry args={[1, 0.026, 6, 72]} />
+          <meshBasicMaterial
+            ref={(material) => {
+              materials.current[index] = material
+            }}
+            color="#8dfaff"
+            transparent
+            opacity={0}
+            blending={THREE.AdditiveBlending}
+            depthTest={false}
+            depthWrite={false}
+            toneMapped={false}
+            fog={false}
+          />
+        </mesh>
+      ))}
+    </group>
+  )
+}
+
 function SelectedStationRoutes({
   station,
   snapshot,
@@ -2034,6 +2092,7 @@ function SelectedStationRoutes({
           coreTexture={textures.core}
         />
       ))}
+      <SelectedStationPulse centre={centre} />
       <points
         geometry={centreGeometry}
         renderOrder={MAP_LAYER.focusMarkerGlow}

@@ -10,6 +10,8 @@ import {
   MAX_MAP_DISTANCE_SCALE,
   MIN_MAP_DISTANCE_SCALE,
   minimumMapDistanceScale,
+  STATION_SELECTION_PULSE_COUNT,
+  stationSelectionPulseFrame,
 } from './map-camera.ts'
 
 describe('map camera zoom', () => {
@@ -97,6 +99,19 @@ describe('map camera zoom', () => {
     expect(mapSelectionNeedsReveal({ x: 0, y: -0.87, z: 0 })).toBe(true)
     expect(mapSelectionNeedsReveal({ x: 0, y: 0, z: 1.01 })).toBe(true)
     expect(mapSelectionNeedsReveal({ x: Number.NaN, y: 0, z: 0 })).toBe(true)
+  })
+
+  it('staggers expanding station-selection rings and fades each one out', () => {
+    const first = stationSelectionPulseFrame(0, 0)
+    const later = stationSelectionPulseFrame(1, 0)
+    const staggered = stationSelectionPulseFrame(0, 1)
+
+    expect(STATION_SELECTION_PULSE_COUNT).toBe(3)
+    expect(first.radiusPixels).toBe(14)
+    expect(first.opacity).toBeCloseTo(0.64)
+    expect(later.radiusPixels).toBeGreaterThan(first.radiusPixels)
+    expect(later.opacity).toBeLessThan(first.opacity)
+    expect(staggered.radiusPixels).toBeGreaterThan(first.radiusPixels)
   })
 
   it('turns wheel movement into a brisk zoom multiplier', () => {
