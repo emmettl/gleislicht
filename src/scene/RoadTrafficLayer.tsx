@@ -5,14 +5,107 @@ import {
   roadConditionsAtTime,
   roadDistanceTravelledKm,
   visualVehicleCount,
+  type RoadTopologySnapshot,
   type RoadTrafficSnapshot,
 } from '../domain/road.ts'
 import type { NetworkProjection } from './NationalNetworkScene.tsx'
+import { createGlowPointTexture } from './glow-point-texture.ts'
 
 const LIGHT_COLOR = new THREE.Color('#fff1cf')
 const HEAVY_COLOR = new THREE.Color('#ff9d52')
 const MAX_LIGHT_PER_DIRECTION = 110
 const MAX_HEAVY_PER_DIRECTION = 32
+
+function RoadTopology({
+  snapshot,
+  projection,
+  subdued,
+}: {
+  readonly snapshot: RoadTopologySnapshot
+  readonly projection: NetworkProjection
+  readonly subdued: boolean
+}) {
+  const pointTexture = useMemo(() => createGlowPointTexture(), [])
+  const geometry = useMemo(() => {
+    const mainlinePoints: THREE.Vector3[] = []
+    const connectorPoints: THREE.Vector3[] = []
+    for (const path of snapshot.paths) {
+      const target = path.mainline ? mainlinePoints : connectorPoints
+      for (let index = 1; index < path.points.length; index += 1) {
+        target.push(
+          projectRoadCoordinate(path.points[index - 1], projection, 0.065),
+          projectRoadCoordinate(path.points[index], projection, 0.065),
+        )
+      }
+    }
+    const seenStations = new Set<string>()
+    const sitePoints = snapshot.sites.flatMap((site) => {
+      if (
+        site.match.confidence !== 'high' ||
+        !site.match.projectedCoordinate ||
+        seenStations.has(site.stationId)
+      ) {
+        return []
+      }
+      seenStations.add(site.stationId)
+      return [
+        projectRoadCoordinate(site.match.projectedCoordinate, projection, 0.085),
+      ]
+    })
+    return {
+      mainline: new THREE.BufferGeometry().setFromPoints(mainlinePoints),
+      connectors: new THREE.BufferGeometry().setFromPoints(connectorPoints),
+      sites: new THREE.BufferGeometry().setFromPoints(sitePoints),
+    }
+  }, [projection, snapshot.paths, snapshot.sites])
+
+  useEffect(
+    () => () => {
+      geometry.mainline.dispose()
+      geometry.connectors.dispose()
+      geometry.sites.dispose()
+    },
+    [geometry],
+  )
+
+  useEffect(() => () => pointTexture.dispose(), [pointTexture])
+
+  return (
+    <group>
+      <lineSegments geometry={geometry.connectors} renderOrder={3}>
+        <lineBasicMaterial
+          color="#bc8058"
+          transparent
+          opacity={subdued ? 0.008 : 0.018}
+          depthWrite={false}
+        />
+      </lineSegments>
+      <lineSegments geometry={geometry.mainline} renderOrder={3}>
+        <lineBasicMaterial
+          color="#ffb36b"
+          transparent
+          opacity={subdued ? 0.018 : 0.062}
+          blending={THREE.AdditiveBlending}
+          depthWrite={false}
+        />
+      </lineSegments>
+      <points geometry={geometry.sites} renderOrder={4}>
+        <pointsMaterial
+          map={pointTexture}
+          color="#ffd18d"
+          size={0.1}
+          sizeAttenuation
+          transparent
+          opacity={subdued ? 0.08 : 0.34}
+          alphaTest={0.015}
+          blending={THREE.AdditiveBlending}
+          depthWrite={false}
+          toneMapped={false}
+        />
+      </points>
+    </group>
+  )
+}
 
 function projectRoadCoordinate(
   coordinate: readonly [number, number],
@@ -164,6 +257,7 @@ function RoadDirectionFlow({
 
 export function RoadTrafficLayer({
   snapshot,
+  topology,
   time,
   isPlaying,
   playbackRate,
@@ -171,6 +265,7 @@ export function RoadTrafficLayer({
   subdued = false,
 }: {
   readonly snapshot: RoadTrafficSnapshot
+  readonly topology?: RoadTopologySnapshot
   readonly time: number
   readonly isPlaying: boolean
   readonly playbackRate: number
@@ -199,29 +294,40 @@ export function RoadTrafficLayer({
     [corridors],
   )
 
-  return corridors.map(({ corridor, curve, road }) => (
-    <group key={corridor.id}>
-      <lineSegments geometry={road} renderOrder={4}>
-        <lineBasicMaterial
-          color="#c78a60"
-          transparent
-          opacity={subdued ? 0.025 : 0.15}
-          depthWrite={false}
-        />
-      </lineSegments>
-      {corridor.directions.map((direction) => (
-        <RoadDirectionFlow
-          key={direction.id}
-          snapshot={snapshot}
-          corridor={corridor}
-          direction={direction}
-          curve={curve}
-          time={time}
-          isPlaying={isPlaying}
-          playbackRate={playbackRate}
+  return (
+    <group>
+      {topology && (
+        <RoadTopology
+          snapshot={topology}
+          projection={projection}
           subdued={subdued}
         />
+      )}
+      {corridors.map(({ corridor, curve, road }) => (
+        <group key={corridor.id}>
+          <lineSegments geometry={road} renderOrder={4}>
+            <lineBasicMaterial
+              color="#c78a60"
+              transparent
+              opacity={subdued ? 0.025 : 0.15}
+              depthWrite={false}
+            />
+          </lineSegments>
+          {corridor.directions.map((direction) => (
+            <RoadDirectionFlow
+              key={direction.id}
+              snapshot={snapshot}
+              corridor={corridor}
+              direction={direction}
+              curve={curve}
+              time={time}
+              isPlaying={isPlaying}
+              playbackRate={playbackRate}
+              subdued={subdued}
+            />
+          ))}
+        </group>
       ))}
     </group>
-  ))
+  )
 }

@@ -48,6 +48,67 @@ export interface RoadTrafficSnapshot {
   readonly corridors: readonly RoadTrafficCorridor[]
 }
 
+export interface RoadTopologyPath {
+  readonly id: string
+  readonly road: string
+  readonly axisName: string
+  readonly position: string
+  readonly mainline: boolean
+  readonly points: readonly (readonly [longitude: number, latitude: number])[]
+}
+
+export interface RoadTopologySite {
+  readonly id: string
+  readonly stationId: string
+  readonly direction: 'positive' | 'negative'
+  readonly detectorIds: readonly string[]
+  readonly carriageways: readonly string[]
+  readonly coordinate: readonly [longitude: number, latitude: number]
+  readonly match: {
+    readonly confidence: 'high' | 'review' | 'unmatched'
+    readonly distanceMetres?: number
+    readonly road?: string
+    readonly axisName?: string
+    readonly axisPosition?: string
+    readonly segmentId?: string
+    readonly mainline?: boolean
+    readonly projectedCoordinate?: readonly [longitude: number, latitude: number]
+    readonly competingRoad?: string
+    readonly competingDistanceMetres?: number
+  }
+}
+
+export interface RoadTopologySnapshot {
+  readonly metadata: {
+    readonly publisher: string
+    readonly sourceUrl: string
+    readonly sourceAsset: string
+    readonly sourceCrs: string
+    readonly sourceDate: string
+    readonly sourceUpdated: string
+    readonly measurementSiteUrl: string
+    readonly measurementSiteTableVersion: number
+    readonly measurementSitePublishedAt: string
+    readonly model: string
+    readonly coverage: {
+      readonly federalStations: number
+      readonly federalDetectorRecords: number
+      readonly usableDirectionalGroups: number
+      readonly matchedDirectionalGroups: number
+      readonly highConfidenceDirectionalGroups: number
+      readonly reviewDirectionalGroups: number
+      readonly unmatchedDirectionalGroups: number
+      readonly matchedStations: number
+      readonly medianMatchDistanceMetres: number
+      readonly p95MatchDistanceMetres: number
+      readonly roads: number
+      readonly axisSegments: number
+    }
+  }
+  readonly paths: readonly RoadTopologyPath[]
+  readonly sites: readonly RoadTopologySite[]
+}
+
 export interface RoadTrafficConditions {
   readonly lightFlowPerHour: number
   readonly lightSpeedKmh: number

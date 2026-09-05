@@ -126,6 +126,8 @@ See [docs/LUFTRAUM.md](./docs/LUFTRAUM.md) for the data contract, filtering and 
 - [x] Render warm-white and amber traffic beneath the cyan rail and magenta air layers.
 - [x] Make AUTO an optional, isolatable service category with multilingual provenance.
 - [x] Add a credential-safe, filtered one-minute ASTRA recorder and a completeness-gated compiler.
+- [x] Audit all federal counters against official national-road axes and render the lazy national skeleton.
+- [ ] Resolve the 59 ambiguous directional matches before they can drive section-level flow.
 - [ ] Begin authenticated one-minute snapshot recording and replace calibration values with a complete measured hour.
 - [ ] Judge the A1 composition on real phones before adding A2 Gotthard or a recorded full day.
 

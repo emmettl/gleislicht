@@ -6,7 +6,10 @@ import type {
   SwissBoundary,
 } from '../domain/boundary.ts'
 import type { SwissLakes } from '../domain/lakes.ts'
-import type { RoadTrafficSnapshot } from '../domain/road.ts'
+import type {
+  RoadTopologySnapshot,
+  RoadTrafficSnapshot,
+} from '../domain/road.ts'
 import {
   positionForAirTrack,
   type AirSnapshot,
@@ -125,6 +128,7 @@ interface NationalNetworkSceneProps {
   readonly airSnapshot?: AirSnapshot
   readonly airCategorySelected?: boolean
   readonly roadSnapshot?: RoadTrafficSnapshot
+  readonly roadTopology?: RoadTopologySnapshot
   readonly roadCategorySelected?: boolean
   readonly selectedAirTrack?: AirTrack
   readonly onSelectAirTrack?: (trackId: string) => void
@@ -3130,6 +3134,7 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
       {props.roadSnapshot && (
         <RoadTrafficLayer
           snapshot={props.roadSnapshot}
+          topology={props.roadTopology}
           time={props.time}
           isPlaying={props.isPlaying}
           playbackRate={props.playbackRate}

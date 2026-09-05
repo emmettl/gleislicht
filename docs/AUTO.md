@@ -35,6 +35,20 @@ The number shown in the status card is an approximate corridor occupancy derived
 - Window: 06:45–08:45 on the shared study day
 - Loading: only after AUTO is selected
 
+## National motorway topology audit
+
+AUTO now also loads a compact skeleton derived from FEDRO's official Axis of National Routes dataset. It contains 3,080 simplified axis segments across 25 numbered national roads and remains separate from the opening railway payload. High-confidence counter sites appear as restrained warm points; the complete axes remain dim until AUTO is selected.
+
+The current Measurement Site Table contains 458 federal station IDs and 1,765 detector records. After removing emergency lanes and records without a usable direction, 848 directional groups remain. The reproducible spatial audit reports 659 high-confidence matches, 59 matches requiring review and 130 unmatched groups. In station terms, 379 of 458 federal sites touch the national-axis model. Unmatched sites are retained in the artifact and are never silently forced onto the nearest motorway; the federal feed also contains counters on other important roads.
+
+```sh
+npm run data:road:topology -- \
+  --axes /path/to/ch.astra.nationalstrassenachsen.xtf \
+  --measurement-sites /path/to/astra-measurement-site-table.xml
+```
+
+Coordinates in the counter table are coarse, so a match is considered high confidence only within 800 metres and when a competing numbered road is at least 180 metres farther away. Matches up to 1,500 metres are explicitly marked `review`; anything farther remains `unmatched`. Only high-confidence sites may drive a future measured section model.
+
 ## From calibration to recorded data
 
 The repository includes an authenticated recorder for ASTRA's DATEX II 2.3 SOAP feed. It asks only for the eleven A1 counter groups used by this study, makes one pull after each minute publication, and writes append-only snapshots with receipt time, source publication time and detector-table version. The API key is read only from the process environment and the ignored recording directory is created with owner-only files.

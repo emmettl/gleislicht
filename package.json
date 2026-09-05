@@ -37,6 +37,7 @@
     "data:validate": "node scripts/validate-data-artifacts.mjs",
     "data:air": "node scripts/ingest-adsb-heatmap.mjs",
     "data:road": "node scripts/build-road-study.mjs",
+    "data:road:topology": "node scripts/ingest-national-road-topology.mjs",
     "data:road:record": "node scripts/record-astra-traffic.mjs",
     "data:road:record:watch": "node scripts/record-astra-traffic.mjs --watch",
     "data:road:compile": "node scripts/compile-astra-road-study.mjs",

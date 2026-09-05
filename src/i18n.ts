@@ -233,6 +233,8 @@ export const UI_TEXT = {
     estimatedRoadVehicles: 'estimated road vehicles on the study corridor',
     trafficReconstruction: 'Traffic-flow reconstruction / no vehicle tracking',
     astraCalibration: 'ASTRA detector sites · representative calibration',
+    astraTopology: (matched: number, total: number) =>
+      `${matched}/${total} federal sites aligned to national axes`,
     altitude: 'Altitude',
     groundSpeed: 'Groundspeed',
     heading: 'Heading',
@@ -456,6 +458,8 @@ export const UI_TEXT = {
     estimatedRoadVehicles: 'geschätzte Strassenfahrzeuge im Studienkorridor',
     trafficReconstruction: 'Verkehrsfluss-Rekonstruktion / keine Fahrzeugverfolgung',
     astraCalibration: 'ASTRA-Messstellen · repräsentative Kalibrierung',
+    astraTopology: (matched: number, total: number) =>
+      `${matched}/${total} Bundesmessstellen den Nationalstrassen zugeordnet`,
     altitude: 'Höhe',
     groundSpeed: 'Geschwindigkeit',
     heading: 'Kurs',
@@ -679,6 +683,8 @@ export const UI_TEXT = {
     estimatedRoadVehicles: 'véhicules routiers estimés sur le corridor étudié',
     trafficReconstruction: 'Reconstruction du flux routier / aucun suivi de véhicule',
     astraCalibration: 'Capteurs OFROU · calibrage représentatif',
+    astraTopology: (matched: number, total: number) =>
+      `${matched}/${total} postes fédéraux alignés sur les axes nationaux`,
     altitude: 'Altitude',
     groundSpeed: 'Vitesse sol',
     heading: 'Cap',
@@ -902,6 +908,8 @@ export const UI_TEXT = {
     estimatedRoadVehicles: 'veicoli stradali stimati nel corridoio di studio',
     trafficReconstruction: 'Ricostruzione del flusso / nessun tracciamento dei veicoli',
     astraCalibration: 'Rilevatori USTRA · calibrazione rappresentativa',
+    astraTopology: (matched: number, total: number) =>
+      `${matched}/${total} postazioni federali allineate agli assi nazionali`,
     altitude: 'Altitudine',
     groundSpeed: 'Velocità al suolo',
     heading: 'Rotta',

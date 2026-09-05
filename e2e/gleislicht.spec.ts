@@ -135,7 +135,10 @@ test('AUTO stays lazy, discloses reconstruction, and can be isolated', async ({
 }, testInfo) => {
   const roadRequests: string[] = []
   page.on('request', (request) => {
-    if (request.url().includes('swiss-road-morning.json')) {
+    if (
+      request.url().includes('swiss-road-morning.json') ||
+      request.url().includes('swiss-road-topology.json')
+    ) {
       roadRequests.push(request.url())
     }
   })
@@ -166,7 +169,10 @@ test('AUTO stays lazy, discloses reconstruction, and can be isolated', async ({
   await expect(page.locator('.prototype-note')).toContainText(
     'representative calibration',
   )
-  expect(roadRequests).toHaveLength(1)
+  await expect(page.locator('.prototype-note')).toContainText(
+    '379/458 federal sites aligned',
+  )
+  expect(roadRequests).toHaveLength(2)
 
   if (testInfo.project.name === 'iphone-webkit') {
     const tools = page.locator('.mobile-map-tools details')

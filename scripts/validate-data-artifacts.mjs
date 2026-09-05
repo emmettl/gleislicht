@@ -19,6 +19,7 @@ const zurichChurCorridor = await readJson('zurich-chur-corridor.json')
 const air = await readJson('swiss-air-morning.json')
 const airDay = await readJson('swiss-air-day-manifest.json')
 const road = await readJson('swiss-road-morning.json')
+const roadTopology = await readJson('swiss-road-topology.json')
 
 const artifacts = [morning, hubs, day]
 const serviceDates = new Set(artifacts.map((artifact) => artifact.metadata?.serviceDate))
@@ -176,6 +177,43 @@ assert(
     direction.samples.every((sample) => sample.length === 5)
   ),
   'Road Study 001 contains malformed directions',
+)
+assert(
+  roadTopology.metadata?.publisher === 'Federal Roads Office (ASTRA / FEDRO)',
+  'National road topology has no ASTRA provenance',
+)
+assert(
+  roadTopology.metadata?.model === 'Measured counter topology / no vehicle tracking',
+  'National road topology is missing its methodological disclosure',
+)
+assert(
+  roadTopology.metadata?.coverage?.federalStations >= 400,
+  'National road topology contains too few federal counter stations',
+)
+assert(
+  roadTopology.metadata.coverage.matchedDirectionalGroups /
+      roadTopology.metadata.coverage.usableDirectionalGroups >=
+    0.8,
+  'National road topology matches too few usable counter directions',
+)
+assert(
+  roadTopology.metadata.coverage.highConfidenceDirectionalGroups >= 600,
+  'National road topology has too few high-confidence counter matches',
+)
+assert(
+  roadTopology.metadata.coverage.roads >= 20 &&
+    roadTopology.paths.length >= 3_000,
+  'National road topology has insufficient official axis geometry',
+)
+assert(
+  roadTopology.paths.every((path) =>
+    /^N\d+$/.test(path.road) &&
+    path.points.length >= 2 &&
+    path.points.every((point) =>
+      point.length === 2 && point.every(Number.isFinite)
+    )
+  ),
+  'National road topology contains malformed paths',
 )
 
 console.log(

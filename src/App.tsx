@@ -69,6 +69,7 @@ import type { SwissBoundary } from './domain/boundary.ts'
 import type { SwissLakes } from './domain/lakes.ts'
 import {
   reconstructedVehicleCount,
+  type RoadTopologySnapshot,
   type RoadTrafficSnapshot,
 } from './domain/road.ts'
 import {
@@ -275,6 +276,7 @@ export function App() {
   const [roadEnabled, setRoadEnabled] = useState(false)
   const [roadCategorySelected, setRoadCategorySelected] = useState(false)
   const [roadSnapshot, setRoadSnapshot] = useState<RoadTrafficSnapshot>()
+  const [roadTopology, setRoadTopology] = useState<RoadTopologySnapshot>()
   const [roadLoadState, setRoadLoadState] = useState<RoadLoadState>('idle')
   const [selectedHubId, setSelectedHubId] = useState<HubId>('zurich')
   const [hubStudy, setHubStudy] = useState<HubStudy>('pulse')
@@ -1084,20 +1086,30 @@ export function App() {
   }, [airEnabled, airSnapshot, isNationalDay])
 
   useEffect(() => {
-    if (!roadEnabled || isNationalDay || roadSnapshot) return
+    if (!roadEnabled || isNationalDay || (roadSnapshot && roadTopology)) return
     const controller = new AbortController()
-    fetch(`${import.meta.env.BASE_URL}data/swiss-road-morning.json`, {
-      signal: controller.signal,
-    })
-      .then((response) => {
+    Promise.all([
+      fetch(`${import.meta.env.BASE_URL}data/swiss-road-morning.json`, {
+        signal: controller.signal,
+      }).then((response) => {
         if (!response.ok) {
           throw new Error(`Road study returned ${response.status}`)
         }
         return response.json() as Promise<RoadTrafficSnapshot>
-      })
-      .then((snapshot) => {
+      }),
+      fetch(`${import.meta.env.BASE_URL}data/swiss-road-topology.json`, {
+        signal: controller.signal,
+      }).then((response) => {
+        if (!response.ok) {
+          throw new Error(`Road topology returned ${response.status}`)
+        }
+        return response.json() as Promise<RoadTopologySnapshot>
+      }),
+    ])
+      .then(([snapshot, topology]) => {
         if (controller.signal.aborted) return
         setRoadSnapshot(snapshot)
+        setRoadTopology(topology)
         setRoadLoadState('ready')
         if (
           timelineTimeRef.current < snapshot.metadata.windowStart ||
@@ -1110,11 +1122,11 @@ export function App() {
       })
       .catch((error: unknown) => {
         if (error instanceof DOMException && error.name === 'AbortError') return
-        console.warn('Unable to load Road Study 001', error)
+        console.warn('Unable to load the road study and national topology', error)
         setRoadLoadState('error')
       })
     return () => controller.abort()
-  }, [isNationalDay, roadEnabled, roadSnapshot])
+  }, [isNationalDay, roadEnabled, roadSnapshot, roadTopology])
 
   useEffect(() => {
     if (operationsMode === 'scheduled') return
@@ -1600,6 +1612,11 @@ export function App() {
             roadSnapshot={
               networkStudy === 'national' && roadEnabled
                 ? roadSnapshot
+                : undefined
+            }
+            roadTopology={
+              networkStudy === 'national' && roadEnabled
+                ? roadTopology
                 : undefined
             }
             roadCategorySelected={roadCategorySelected}
@@ -2789,7 +2806,15 @@ export function App() {
                       : text.trafficFrequency)}
             </span>
             {roadEnabled && (
-              <span>{text.astraCalibration}</span>
+              <span>
+                {text.astraCalibration}
+                {roadTopology
+                  ? ` · ${text.astraTopology(
+                      roadTopology.metadata.coverage.matchedStations,
+                      roadTopology.metadata.coverage.federalStations,
+                    )}`
+                  : ''}
+              </span>
             )}
           </>
         ) : (
@@ -3323,7 +3348,7 @@ export function App() {
             )}
             {isNetwork && roadEnabled && roadSnapshot && (
               <a
-                href={roadSnapshot.metadata.sourceUrl}
+                href={roadTopology?.metadata.sourceUrl ?? roadSnapshot.metadata.sourceUrl}
                 target="_blank"
                 rel="noreferrer"
               >
