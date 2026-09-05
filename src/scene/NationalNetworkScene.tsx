@@ -3,9 +3,9 @@ import { createContext, useContext, useEffect, useMemo, useRef } from 'react'
 import * as THREE from 'three'
 import type {
   BoundaryCoordinate,
-  SwissBoundary,
+  MapBoundary,
 } from '../domain/boundary.ts'
-import type { SwissLakes } from '../domain/lakes.ts'
+import type { MapWaterBodies } from '../domain/lakes.ts'
 import type {
   RoadTopologySnapshot,
   RoadTrafficSnapshot,
@@ -18,13 +18,13 @@ import {
 } from '../domain/air.ts'
 import {
   positionForTrain,
-  SERVICE_COLORS,
   type NetworkSnapshot,
   type NetworkRouteIndexEntry,
   type NetworkTrain,
   type ServiceCategory,
   type StationIndexEntry,
 } from '../domain/network.ts'
+import { SERVICE_COLORS } from '../theme/visual-language.ts'
 import {
   buildTrainTimeIndex,
   trainsNearTime,
@@ -112,8 +112,8 @@ export interface MapCameraCommand {
 }
 
 interface NationalNetworkSceneProps {
-  readonly boundary?: SwissBoundary
-  readonly lakes?: SwissLakes
+  readonly boundary?: MapBoundary
+  readonly lakes?: MapWaterBodies
   readonly snapshot: NetworkSnapshot
   readonly referenceSnapshot: NetworkSnapshot
   readonly contextSnapshot?: NetworkSnapshot
@@ -326,7 +326,7 @@ function LakeLayer({
   projection,
   subdued,
 }: {
-  readonly lakes: SwissLakes
+  readonly lakes: MapWaterBodies
   readonly projection: NetworkProjection
   readonly subdued: boolean
 }) {
@@ -435,7 +435,7 @@ function CountryBorder({
   projection,
   subdued,
 }: {
-  readonly boundary: SwissBoundary
+  readonly boundary: MapBoundary
   readonly projection: NetworkProjection
   readonly subdued: boolean
 }) {

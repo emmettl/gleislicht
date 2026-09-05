@@ -1,18 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Inter:wght@400;500;600&display=swap');
-
-:root {
-  color: #f8f7ff;
-  background: #050410;
-  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  --ink: #f8f7ff;
-  --muted: rgba(229, 231, 255, 0.58);
-  --line: rgba(193, 204, 255, 0.2);
-  --cyan: #8dfaff;
-  --pink: #ff5edb;
-  --panel: rgba(7, 7, 22, 0.58);
-}
+@import './styles/tokens.css';
 
 * {
   box-sizing: border-box;
@@ -54,7 +41,7 @@ button {
   height: 100svh;
   min-height: 600px;
   overflow: hidden;
-  background: #050410;
+  background: var(--background);
 }
 
 .scene,

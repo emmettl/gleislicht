@@ -1,13 +1,13 @@
 import type { BoundaryCoordinate } from './boundary.ts'
 
-export interface SwissLake {
+export interface MapWaterBody {
   readonly id: string
   readonly name: string
   readonly areaSquareKilometres: number
   readonly polygons: readonly (readonly (readonly BoundaryCoordinate[])[])[]
 }
 
-export interface SwissLakes {
+export interface MapWaterBodies {
   readonly metadata: {
     readonly source: string
     readonly sourceUrl: string
@@ -19,5 +19,11 @@ export interface SwissLakes {
     readonly simplificationToleranceMetres: number
     readonly minimumAreaSquareKilometres: number
   }
-  readonly lakes: readonly SwissLake[]
+  readonly lakes: readonly MapWaterBody[]
 }
+
+/** @deprecated Use MapWaterBody for edition-neutral rendering. */
+export type SwissLake = MapWaterBody
+
+/** @deprecated Use MapWaterBodies for edition-neutral rendering. */
+export type SwissLakes = MapWaterBodies

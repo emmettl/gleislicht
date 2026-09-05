@@ -1,6 +1,6 @@
 export type BoundaryCoordinate = readonly [longitude: number, latitude: number]
 
-export interface SwissBoundary {
+export interface MapBoundary {
   readonly metadata: {
     readonly source: string
     readonly sourceUrl: string
@@ -13,3 +13,6 @@ export interface SwissBoundary {
   }
   readonly rings: readonly (readonly BoundaryCoordinate[])[]
 }
+
+/** @deprecated Use MapBoundary for edition-neutral rendering. */
+export type SwissBoundary = MapBoundary

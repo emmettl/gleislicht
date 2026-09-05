@@ -10,11 +10,11 @@ import {
   type HubDefinition,
 } from '../domain/hub.ts'
 import {
-  SERVICE_COLORS,
   type NetworkSnapshot,
   type NetworkStop,
   type ServiceCategory,
 } from '../domain/network.ts'
+import { SERVICE_COLORS } from '../theme/visual-language.ts'
 import { createGlowPointTexture } from './glow-point-texture.ts'
 
 interface StationFlowSceneProps {

@@ -1,0 +1,17 @@
+:root {
+  color: var(--ink);
+  background: var(--background);
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  --background: #050410;
+  --ink: #f8f7ff;
+  --muted: rgba(229, 231, 255, 0.58);
+  --line: rgba(193, 204, 255, 0.2);
+  --cyan: #8dfaff;
+  --pink: #ff5edb;
+  --panel: rgba(7, 7, 22, 0.58);
+  --air: #ff5edb;
+  --road-light: #fff1cf;
+  --road-heavy: #ff9d52;
+}

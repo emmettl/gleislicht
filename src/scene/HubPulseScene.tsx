@@ -3,11 +3,11 @@ import { useEffect, useMemo, useRef } from 'react'
 import * as THREE from 'three'
 import type { HubCall, HubDefinition } from '../domain/hub.ts'
 import {
-  SERVICE_COLORS,
   type NetworkStop,
   type NetworkSnapshot,
   type ServiceCategory,
 } from '../domain/network.ts'
+import { SERVICE_COLORS } from '../theme/visual-language.ts'
 import { createGlowPointTexture } from './glow-point-texture.ts'
 
 interface HubPulseSceneProps {

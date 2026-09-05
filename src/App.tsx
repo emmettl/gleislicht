@@ -50,8 +50,6 @@ import {
   buildStationIndex,
   formatServiceTime,
   positionForTrain,
-  SERVICE_CATEGORIES,
-  SERVICE_COLORS,
   type NetworkDayChunk,
   type NetworkDayManifest,
   type NetworkSnapshot,
@@ -60,13 +58,23 @@ import {
   type ServiceCategory,
   type StationIndexEntry,
 } from './domain/network.ts'
+import { editionDataUrl } from './editions/edition.ts'
+import type {
+  SwitzerlandEdition,
+  SwitzerlandNetworkStudy as NetworkStudy,
+  SwitzerlandTerrainCorridorId as TerrainCorridorId,
+} from './editions/switzerland.ts'
+import {
+  SERVICE_CATEGORIES,
+  SERVICE_COLORS,
+} from './theme/visual-language.ts'
 import {
   applyRealtimeSnapshot,
   type RealtimeApplication,
   type RealtimeSnapshot,
 } from './domain/realtime.ts'
-import type { SwissBoundary } from './domain/boundary.ts'
-import type { SwissLakes } from './domain/lakes.ts'
+import type { MapBoundary } from './domain/boundary.ts'
+import type { MapWaterBodies } from './domain/lakes.ts'
 import {
   reconstructedVehicleCount,
   type RoadTopologyRoad,
@@ -126,15 +134,8 @@ const StationFlowScene = lazy(() =>
 type View = 'network' | 'hub' | 'journey'
 type SoundtrackState = 'off' | 'starting' | 'on' | 'error'
 type RecordingState = 'idle' | 'recording' | 'saving' | 'error'
-type NetworkStudy =
-  | 'national'
-  | 'zvv-region'
-  | 'geneva-tpg'
-  | 'zurich-city'
-  | 'contrast'
 type NationalTimeRange = 'morning' | 'day'
 type HubStudy = 'pulse' | 'station'
-type TerrainCorridorId = 'zurich-chur' | 'kiental-griesalp'
 type OperationsMode = 'scheduled' | 'demo' | 'live'
 type RealtimeLoadState = 'idle' | 'loading' | 'ready' | 'error'
 type AirLoadState = 'idle' | 'loading' | 'ready' | 'error'
@@ -155,7 +156,6 @@ const NEXT_TRAIN_LABEL_MODE: Readonly<Record<TrainLabelMode, TrainLabelMode>> = 
   off: 'auto',
 }
 
-const LANGUAGE_STORAGE_KEY = 'gleislicht-language'
 const PLAYBACK_RATES = [
   { label: '1×', value: 30 },
   { label: '4×', value: 120 },
@@ -171,10 +171,10 @@ const DAY_PRESETS = [
   { id: 'night', time: 22 * 3600 + 30 * 60 },
 ] as const
 
-function initialUiLanguage(): UiLanguage {
+function initialUiLanguage(edition: SwitzerlandEdition): UiLanguage {
   let savedLanguage: string | null = null
   try {
-    savedLanguage = window.localStorage.getItem(LANGUAGE_STORAGE_KEY)
+    savedLanguage = window.localStorage.getItem(edition.languageStorageKey)
   } catch {
     // A blocked storage API should not prevent the interface from loading.
   }
@@ -220,12 +220,18 @@ function trainSearchText(
   )
 }
 
-export function App() {
+interface AppProps {
+  readonly edition: SwitzerlandEdition
+}
+
+export function App({ edition }: AppProps) {
   const [webglAvailable] = useState(supportsWebGL)
   const [performanceEnabled] = useState(() =>
     new URLSearchParams(window.location.search).has('perf'),
   )
-  const [language, setLanguage] = useState<UiLanguage>(initialUiLanguage)
+  const [language, setLanguage] = useState<UiLanguage>(() =>
+    initialUiLanguage(edition),
+  )
   const [isPlaying, setIsPlaying] = useState(true)
   const [view, setView] = useState<View>('network')
   const [journeyProgress, setJourneyProgress] = useState(0.11)
@@ -236,8 +242,8 @@ export function App() {
     speed: 0.6,
     region: 'plateau',
   })
-  const [networkTime, setNetworkTime] = useState(7 * 3600 + 45 * 60)
-  const [hubTime, setHubTime] = useState(7 * 3600 + 45 * 60)
+  const [networkTime, setNetworkTime] = useState(edition.defaultNetworkTime)
+  const [hubTime, setHubTime] = useState(edition.defaultHubTime)
   const [networkStudy, setNetworkStudy] = useState<NetworkStudy>('national')
   const [nationalTimeRange, setNationalTimeRange] =
     useState<NationalTimeRange>('morning')
@@ -254,8 +260,8 @@ export function App() {
   const [genevaTpgNetwork, setGenevaTpgNetwork] = useState<NetworkSnapshot>()
   const [regionalNetworkLoading, setRegionalNetworkLoading] = useState(false)
   const [regionalNetworkError, setRegionalNetworkError] = useState(false)
-  const [boundary, setBoundary] = useState<SwissBoundary>()
-  const [lakes, setLakes] = useState<SwissLakes>()
+  const [boundary, setBoundary] = useState<MapBoundary>()
+  const [lakes, setLakes] = useState<MapWaterBodies>()
   const [corridor, setCorridor] = useState<CorridorSnapshot>()
   const [journeyCorridorId, setJourneyCorridorId] =
     useState<TerrainCorridorId>('zurich-chur')
@@ -316,22 +322,22 @@ export function App() {
   const isNationalDay =
     networkStudy === 'national' && nationalTimeRange === 'day'
   const airDay = useProgressiveAirDay(
-    'swiss-air-day-manifest.json',
+    edition.data.air.dayManifest,
     airEnabled && isNationalDay,
     networkTime,
   )
   const nationalRoad = useProgressiveRoadStudy(
-    'swiss-road-national-manifest.json',
+    edition.data.road.nationalManifest,
     roadEnabled && Boolean(roadTopology),
     networkTime,
   )
   const zurichContrast = useProgressiveNetworkDay(
-    'zurich-tram-day-manifest.json',
+    edition.data.contrast.cityDayManifest,
     isContrast,
     networkTime,
   )
   const kientalContrast = useProgressiveNetworkDay(
-    'kiental-postbus-day-manifest.json',
+    edition.data.contrast.ruralDayManifest,
     isContrast,
     networkTime,
   )
@@ -1075,15 +1081,15 @@ export function App() {
       .querySelector('meta[name="description"]')
       ?.setAttribute('content', text.pageDescription)
     try {
-      window.localStorage.setItem(LANGUAGE_STORAGE_KEY, language)
+      window.localStorage.setItem(edition.languageStorageKey, language)
     } catch {
       // Language still applies for this visit when storage is unavailable.
     }
-  }, [language, text.pageDescription, text.pageTitle])
+  }, [edition.languageStorageKey, language, text.pageDescription, text.pageTitle])
 
   useEffect(() => {
     const controller = new AbortController()
-    fetch(`${import.meta.env.BASE_URL}data/swiss-rail-morning.json`, {
+    fetch(editionDataUrl(edition.data.nationalMorning), {
       signal: controller.signal,
     })
       .then((response) => {
@@ -1098,24 +1104,24 @@ export function App() {
         if (error instanceof DOMException && error.name === 'AbortError') return
         setDataError(true)
       })
-    fetch(`${import.meta.env.BASE_URL}data/swiss-boundary.json`, {
+    fetch(editionDataUrl(edition.data.boundary), {
       signal: controller.signal,
     })
       .then((response) => {
         if (!response.ok) throw new Error(`Boundary snapshot returned ${response.status}`)
-        return response.json() as Promise<SwissBoundary>
+        return response.json() as Promise<MapBoundary>
       })
       .then(setBoundary)
       .catch((error: unknown) => {
         if (error instanceof DOMException && error.name === 'AbortError') return
         console.warn('Unable to load the Swiss national boundary', error)
       })
-    fetch(`${import.meta.env.BASE_URL}data/swiss-lakes.json`, {
+    fetch(editionDataUrl(edition.data.water), {
       signal: controller.signal,
     })
       .then((response) => {
         if (!response.ok) throw new Error(`Lake snapshot returned ${response.status}`)
-        return response.json() as Promise<SwissLakes>
+        return response.json() as Promise<MapWaterBodies>
       })
       .then(setLakes)
       .catch((error: unknown) => {
@@ -1123,12 +1129,12 @@ export function App() {
         console.warn('Unable to load the Swiss lake layer', error)
       })
     return () => controller.abort()
-  }, [])
+  }, [edition.data.boundary, edition.data.nationalMorning, edition.data.water])
 
   useEffect(() => {
     if (!airEnabled || isNationalDay || airSnapshot) return
     const controller = new AbortController()
-    fetch(`${import.meta.env.BASE_URL}data/swiss-air-morning.json`, {
+    fetch(editionDataUrl(edition.data.air.morning), {
       signal: controller.signal,
     })
       .then((response) => {
@@ -1156,13 +1162,13 @@ export function App() {
         setAirLoadState('error')
       })
     return () => controller.abort()
-  }, [airEnabled, airSnapshot, isNationalDay])
+  }, [airEnabled, airSnapshot, edition.data.air.morning, isNationalDay])
 
   useEffect(() => {
     if (!roadEnabled || (roadSnapshot && roadTopology)) return
     const controller = new AbortController()
     Promise.all([
-      fetch(`${import.meta.env.BASE_URL}data/swiss-road-morning.json`, {
+      fetch(editionDataUrl(edition.data.road.morning), {
         signal: controller.signal,
       }).then((response) => {
         if (!response.ok) {
@@ -1170,7 +1176,7 @@ export function App() {
         }
         return response.json() as Promise<RoadTrafficSnapshot>
       }),
-      fetch(`${import.meta.env.BASE_URL}data/swiss-road-topology.json`, {
+      fetch(editionDataUrl(edition.data.road.topology), {
         signal: controller.signal,
       }).then((response) => {
         if (!response.ok) {
@@ -1199,7 +1205,13 @@ export function App() {
         setRoadLoadState('error')
       })
     return () => controller.abort()
-  }, [roadEnabled, roadSnapshot, roadTopology])
+  }, [
+    edition.data.road.morning,
+    edition.data.road.topology,
+    roadEnabled,
+    roadSnapshot,
+    roadTopology,
+  ])
 
   useEffect(() => {
     if (operationsMode === 'scheduled') return
@@ -1207,7 +1219,7 @@ export function App() {
     const source =
       operationsMode === 'live' && REALTIME_ENDPOINT
         ? REALTIME_ENDPOINT
-        : `${import.meta.env.BASE_URL}data/realtime-demo.json`
+        : editionDataUrl(edition.data.realtimeDemo)
     let interval: number | undefined
     const load = async () => {
       setRealtimeLoadState((current) =>
@@ -1242,7 +1254,7 @@ export function App() {
       controller.abort()
       if (interval !== undefined) window.clearInterval(interval)
     }
-  }, [operationsMode])
+  }, [edition.data.realtimeDemo, operationsMode])
 
   useEffect(() => {
     if (operationsMode !== 'live') return
@@ -1256,7 +1268,7 @@ export function App() {
   useEffect(() => {
     if (view !== 'hub' || hubDay) return
     const controller = new AbortController()
-    fetch(`${import.meta.env.BASE_URL}data/swiss-hub-day.json`, {
+    fetch(editionDataUrl(edition.data.hubDay), {
       signal: controller.signal,
     })
       .then((response) => {
@@ -1272,12 +1284,12 @@ export function App() {
         console.warn('Unable to load the hub day study', error)
       })
     return () => controller.abort()
-  }, [hubDay, view])
+  }, [edition.data.hubDay, hubDay, view])
 
   useEffect(() => {
     if (view !== 'journey' || corridor) return
     const controller = new AbortController()
-    fetch(`${import.meta.env.BASE_URL}data/${journeyCorridorId}-corridor.json`, {
+    fetch(editionDataUrl(edition.data.corridors[journeyCorridorId]), {
       signal: controller.signal,
     })
       .then((response) => {
@@ -1293,7 +1305,7 @@ export function App() {
         setCorridorError(true)
       })
     return () => controller.abort()
-  }, [corridor, journeyCorridorId, view])
+  }, [corridor, edition.data.corridors, journeyCorridorId, view])
 
   useEffect(() => {
     if (
@@ -1304,7 +1316,7 @@ export function App() {
       return
     }
     const controller = new AbortController()
-    fetch(`${import.meta.env.BASE_URL}data/swiss-rail-day-manifest.json`, {
+    fetch(editionDataUrl(edition.data.nationalDayManifest), {
       signal: controller.signal,
     })
       .then((response) => {
@@ -1326,7 +1338,12 @@ export function App() {
         if (!controller.signal.aborted) setNationalDayLoading(false)
     })
     return () => controller.abort()
-  }, [nationalDayManifest, nationalTimeRange, networkStudy])
+  }, [
+    edition.data.nationalDayManifest,
+    nationalDayManifest,
+    nationalTimeRange,
+    networkStudy,
+  ])
 
   useEffect(() => {
     if (
@@ -1394,12 +1411,8 @@ export function App() {
     const controller = new AbortController()
     const isCity = networkStudy === 'zurich-city'
     const isZvv = networkStudy === 'zvv-region'
-    const fileName = isCity
-      ? 'zurich-city-morning.json'
-      : isZvv
-        ? 'zvv-region-morning.json'
-        : 'geneva-tpg-morning.json'
-    fetch(`${import.meta.env.BASE_URL}data/${fileName}`, {
+    const fileName = edition.data.regional[networkStudy]
+    fetch(editionDataUrl(fileName), {
       signal: controller.signal,
     })
       .then((response) => {
@@ -1423,7 +1436,13 @@ export function App() {
         if (!controller.signal.aborted) setRegionalNetworkLoading(false)
       })
     return () => controller.abort()
-  }, [genevaTpgNetwork, networkStudy, zurichCityNetwork, zvvRegionNetwork])
+  }, [
+    edition.data.regional,
+    genevaTpgNetwork,
+    networkStudy,
+    zurichCityNetwork,
+    zvvRegionNetwork,
+  ])
 
   useEffect(() => {
     if (!searchOpen || resolvedActiveSearchIndex < 0) return
