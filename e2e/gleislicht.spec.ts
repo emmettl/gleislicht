@@ -361,9 +361,13 @@ test('the mobile Takt chrome leaves the clock visible and usable', async ({
   expect(transportBox).not.toBeNull()
   if (!viewport || !pickerBox || !cardBox || !transportBox) return
 
-  expect(cardBox.height).toBeLessThan(175)
+  expect(cardBox.height).toBeLessThanOrEqual(110)
   expect(cardBox.width).toBeGreaterThan(viewport.width - 30)
-  expect(pickerBox.y + pickerBox.height).toBeLessThanOrEqual(cardBox.y + 1)
+  expect(pickerBox.y).toBeGreaterThanOrEqual(cardBox.y - 1)
+  expect(pickerBox.y + pickerBox.height).toBeLessThanOrEqual(
+    cardBox.y + cardBox.height + 1,
+  )
+  expect(transportBox.height).toBeLessThanOrEqual(68)
   expect(cardBox.y + cardBox.height).toBeLessThan(transportBox.y)
   expect(transportBox.y + transportBox.height).toBeLessThanOrEqual(
     viewport.height + 1,
