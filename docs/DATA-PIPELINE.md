@@ -213,14 +213,19 @@ For a repeatable offline build, save the GeoAdmin `identify` response and pass i
 
 ## Historical LUFTRAUM study
 
-The optional air layer is prepared from ADSB.lol's compact historical heatmap stream rather than its much larger per-aircraft JSON archive. Two adjacent 30-minute slices provide one matching hour at ten-second cadence:
+The optional air layer is prepared from ADSB.lol's compact historical heatmap stream rather than its much larger per-aircraft JSON archive. Five adjacent 30-minute slices are cropped to the national study's exact 06:45–08:45 window at ten-second cadence:
 
 ```bash
 npm run data:air -- \
+  --input /path/to/heatmap/09.bin.ttf \
   --input /path/to/heatmap/10.bin.ttf \
   --input /path/to/heatmap/11.bin.ttf \
-  --date 2026-09-04 \
-  --utc-offset 2
+  --input /path/to/heatmap/12.bin.ttf \
+  --input /path/to/heatmap/13.bin.ttf \
+  --service-date 2026-09-04 \
+  --utc-offset 2 \
+  --window-start 06:45 \
+  --window-end 08:45
 ```
 
-The ingester decodes the timestamped position, barometric altitude, groundspeed and callsign events, clips them to a generous Swiss extent, rejects ground/stale/noisy tracks, and writes `public/data/swiss-air-0700-0800.json`. The compact web artifact preserves the ADSB.lol release URL and ODbL 1.0 terms. It is fetched only after **LUFT** is enabled; no source archive or heatmap slice ships to the browser. See [LUFTRAUM.md](./LUFTRAUM.md) for the display contract and limitations.
+The ingester decodes the timestamped position, barometric altitude, groundspeed and callsign events, crops them to explicit service-time bounds, clips them to a generous Swiss extent, rejects ground/stale/noisy tracks, and writes `public/data/swiss-air-morning.json`. The compact web artifact preserves the ADSB.lol release URL and ODbL 1.0 terms. It is fetched only after **LUFT** is enabled; no source archive or heatmap slice ships to the browser. See [LUFTRAUM.md](./LUFTRAUM.md) for the display contract and limitations.

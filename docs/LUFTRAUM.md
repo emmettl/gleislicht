@@ -4,7 +4,7 @@ LUFTRAUM is an optional atmospheric study above Gleislicht's national railway at
 
 ## First experiment
 
-The committed study replays observed ADS-B positions over and around Switzerland from **07:00–08:00 CEST on 4 September 2026**, alongside the matching scheduled railway day. It contains 415 aircraft tracks and 25,858 position samples at an effective ten-second cadence. The browser fetches the 0.95 MB JSON only when **LUFT** is selected; it compresses to about 346 KiB over HTTP and does not count toward the national first-view transfer budget.
+The committed study replays observed ADS-B positions over and around Switzerland from **06:45–08:45 CEST on 4 September 2026**, exactly matching the default national railway window. It contains 668 aircraft tracks and 49,655 position samples at an effective ten-second cadence. The browser fetches the 1.86 MB JSON only when **LUFT** is selected; it compresses to about 680 KiB over HTTP and does not count toward the national first-view transfer budget.
 
 This is historical observation, not a schedule and not a live feed. Latitude, longitude, barometric altitude and groundspeed are decoded from the historical receiver aggregate. Heading and vertical rate are derived between adjacent samples. The client interpolates only across gaps of 45 seconds or less; longer gaps remain visibly absent rather than being bridged with invented motion.
 
@@ -28,15 +28,20 @@ Regenerate from one or more extracted `heatmap/*.bin.ttf` slices:
 
 ```bash
 npm run data:air -- \
+  --input /path/to/09.bin.ttf \
   --input /path/to/10.bin.ttf \
   --input /path/to/11.bin.ttf \
+  --input /path/to/12.bin.ttf \
+  --input /path/to/13.bin.ttf \
   --service-date 2026-09-04 \
   --utc-offset 2 \
-  --output public/data/swiss-air-0700-0800.json
+  --window-start 06:45 \
+  --window-end 08:45 \
+  --output public/data/swiss-air-morning.json
 ```
 
 The output embeds the date, time bounds, filter description, source release, licence and sample cadence. `npm run data:validate` checks these invariants with the rest of the published data set.
 
 ## Decision gate
 
-The next question is artistic rather than infrastructural: does a sparse observed sky deepen the composition? A longer historical window or a live edge poller should follow only if the one-hour layer remains legible, performs well on iPhone, and reinforces rather than obscures the railway story.
+The next question is artistic rather than infrastructural: does a sparse observed sky deepen the composition across the complete morning study? A live edge poller or full-day historical study should follow only if this layer remains legible, performs well on iPhone, and reinforces rather than obscures the railway story.

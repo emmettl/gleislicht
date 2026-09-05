@@ -12,10 +12,12 @@ const DEFAULT_BOUNDS = [5.45, 45.55, 10.75, 48.2]
 function parseArguments(argv) {
   const options = {
     inputs: [],
-    output: 'public/data/swiss-air-0700-0800.json',
+    output: 'public/data/swiss-air-morning.json',
     serviceDate: '2026-09-04',
     utcOffsetHours: 2,
     bounds: DEFAULT_BOUNDS,
+    windowStart: 6 * 3600 + 45 * 60,
+    windowEnd: 8 * 3600 + 45 * 60,
   }
   for (let index = 0; index < argv.length; index += 1) {
     const argument = argv[index]
@@ -23,10 +25,12 @@ function parseArguments(argv) {
     else if (argument === '--output') options.output = argv[++index]
     else if (argument === '--service-date') options.serviceDate = argv[++index]
     else if (argument === '--utc-offset') options.utcOffsetHours = Number(argv[++index])
+    else if (argument === '--window-start') options.windowStart = parseServiceTime(argv[++index])
+    else if (argument === '--window-end') options.windowEnd = parseServiceTime(argv[++index])
     else if (argument === '--bounds') {
       options.bounds = argv[++index].split(',').map(Number)
     } else if (argument === '--help') {
-      console.log('Usage: node scripts/ingest-adsb-heatmap.mjs --input 10.bin.ttf --input 11.bin.ttf [--output file]')
+      console.log('Usage: node scripts/ingest-adsb-heatmap.mjs --input 09.bin.ttf ... --window-start 06:45 --window-end 08:45 [--output file]')
       process.exit(0)
     } else throw new Error(`Unknown argument: ${argument}`)
   }
@@ -34,7 +38,21 @@ function parseArguments(argv) {
   if (options.bounds.length !== 4 || options.bounds.some(Number.isNaN)) {
     throw new Error('--bounds must be minLon,minLat,maxLon,maxLat')
   }
+  if (options.windowStart >= options.windowEnd) {
+    throw new Error('--window-start must be earlier than --window-end')
+  }
   return options
+}
+
+function parseServiceTime(value) {
+  const match = /^(\d{1,2}):(\d{2})$/.exec(value)
+  if (!match) throw new Error(`Invalid service time: ${value}`)
+  const hours = Number(match[1])
+  const minutes = Number(match[2])
+  if (hours > 24 || minutes > 59 || (hours === 24 && minutes !== 0)) {
+    throw new Error(`Invalid service time: ${value}`)
+  }
+  return hours * 3600 + minutes * 60
 }
 
 function decodeCallsign(buffer, offset) {
@@ -93,6 +111,10 @@ function decodeSlice(buffer, options, records) {
       new Date(timestamp).getUTCMinutes() * 60 +
       new Date(timestamp).getUTCSeconds() +
       options.utcOffsetHours * 3600
+    if (
+      localSeconds < options.windowStart ||
+      localSeconds > options.windowEnd
+    ) continue
     const record = records.get(id) ?? { id, callsign: '', samples: [] }
     record.callsign = callsigns.get(address) || record.callsign
     record.samples.push([
@@ -138,14 +160,12 @@ async function main() {
     .map(transportScaleTrack)
     .filter(Boolean)
     .sort((first, second) => first.id.localeCompare(second.id))
-  const windowStart = Math.min(...tracks.map((track) => track.start))
-  const windowEnd = Math.max(...tracks.map((track) => track.end))
   const artifact = {
     metadata: {
       publisher: 'ADSB.lol',
       serviceDate: options.serviceDate,
-      windowStart,
-      windowEnd,
+      windowStart: options.windowStart,
+      windowEnd: options.windowEnd,
       sourceUrl: `https://github.com/adsblol/globe_history_${options.serviceDate.slice(0, 4)}/releases/tag/v${options.serviceDate.replaceAll('-', '.')}-planes-readsb-prod-0`,
       license: 'ODbL 1.0',
       licenseUrl: 'https://opendatacommons.org/licenses/odbl/1-0/',

@@ -37,12 +37,12 @@ test('the operations demo is explicit and returns cleanly to the schedule', asyn
   await expect(page.locator('.network-card')).toContainText('Scheduled rail')
 })
 
-test('LUFTRAUM stays lazy and replays the matching observed hour', async ({
+test('LUFTRAUM stays lazy and matches the national morning window', async ({
   page,
 }, testInfo) => {
   const airRequests: string[] = []
   page.on('request', (request) => {
-    if (request.url().includes('swiss-air-0700-0800.json')) {
+    if (request.url().includes('swiss-air-morning.json')) {
       airRequests.push(request.url())
     }
   })
@@ -57,7 +57,7 @@ test('LUFTRAUM stays lazy and replays the matching observed hour', async ({
   )
   await expect(toggle).toBeVisible()
   const response = page.waitForResponse((candidate) =>
-    candidate.url().includes('swiss-air-0700-0800.json'),
+    candidate.url().includes('swiss-air-morning.json'),
   )
   await toggle.click()
   await response
@@ -69,7 +69,7 @@ test('LUFTRAUM stays lazy and replays the matching observed hour', async ({
     /Aircraft aloft/,
   )
   await expect(page.locator('.prototype-note')).toContainText(
-    'Observed airspace',
+    'Observed airspace · 06:45–08:45',
   )
   expect(airRequests).toHaveLength(1)
 

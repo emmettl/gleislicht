@@ -16,7 +16,7 @@ const hubs = await readJson('swiss-hub-day.json')
 const day = await readJson('swiss-rail-day-manifest.json')
 const kientalCorridor = await readJson('kiental-griesalp-corridor.json')
 const zurichChurCorridor = await readJson('zurich-chur-corridor.json')
-const air = await readJson('swiss-air-0700-0800.json')
+const air = await readJson('swiss-air-morning.json')
 
 const artifacts = [morning, hubs, day]
 const serviceDates = new Set(artifacts.map((artifact) => artifact.metadata?.serviceDate))
@@ -86,9 +86,16 @@ assert(air.metadata?.publisher === 'ADSB.lol', 'Air study has no ADSB.lol proven
 assert(air.metadata?.license === 'ODbL 1.0', 'Air study has the wrong data licence')
 assert(air.metadata?.serviceDate === [...serviceDates][0], 'Air study does not match the railway service day')
 assert(air.metadata?.sampleIntervalSeconds === 10, 'Air study has an unexpected sample cadence')
-assert(air.metadata?.windowStart === 25_200, 'Air study does not start at 07:00 CEST')
-assert(air.metadata?.windowEnd >= 28_790, 'Air study does not cover the complete historical hour')
-assert(Array.isArray(air.tracks) && air.tracks.length > 300, 'Air study has too few aircraft tracks')
+assert(air.metadata?.windowStart === 24_300, 'Air study does not start at 06:45 CEST')
+assert(air.metadata?.windowEnd === 31_500, 'Air study does not end at 08:45 CEST')
+assert(Array.isArray(air.tracks) && air.tracks.length > 600, 'Air study has too few aircraft tracks')
+assert(
+  air.tracks.every((track) =>
+    track.start >= air.metadata.windowStart &&
+    track.end <= air.metadata.windowEnd
+  ),
+  'Air study contains samples outside the national morning window',
+)
 assert(
   air.tracks.every((track) =>
     typeof track.id === 'string' &&

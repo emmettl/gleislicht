@@ -971,7 +971,7 @@ export function App() {
   useEffect(() => {
     if (!airEnabled || airSnapshot) return
     const controller = new AbortController()
-    fetch(`${import.meta.env.BASE_URL}data/swiss-air-0700-0800.json`, {
+    fetch(`${import.meta.env.BASE_URL}data/swiss-air-morning.json`, {
       signal: controller.signal,
     })
       .then((response) => {
