@@ -4,6 +4,24 @@ export type TrainLabelMode = 'auto' | 'on' | 'off'
 
 export const MAX_TRAIN_LABELS = 56
 
+export function trainLabelScreenHeight(
+  viewportWidth: number,
+  selected: boolean,
+): number {
+  if (viewportWidth <= 600) return selected ? 52 : 44
+  return selected ? 46 : 38
+}
+
+export function trainLabelScreenWidth(
+  label: string,
+  screenHeight: number,
+): number {
+  return Math.min(
+    screenHeight * 9,
+    Math.max(screenHeight * 2.4, screenHeight * (1.2 + label.length * 0.2)),
+  )
+}
+
 const CATEGORY_PRIORITY: Readonly<Record<ServiceCategory, number>> = {
   international: 0,
   intercity: 1,

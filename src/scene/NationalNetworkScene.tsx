@@ -39,6 +39,8 @@ import {
   compareTrainLabelCandidates,
   MAX_TRAIN_LABELS,
   trainLabelBudget,
+  trainLabelScreenHeight,
+  trainLabelScreenWidth,
   type TrainLabelMode,
 } from './train-labels.ts'
 import { edgeTrafficWeights } from './traffic-weights.ts'
@@ -1585,11 +1587,13 @@ function TrainLabels({
     }
 
     const projected = new THREE.Vector3()
+    const viewPosition = new THREE.Vector3()
     const candidates: Array<{
       train: NetworkTrain
       position: ProjectedStop
       x: number
       y: number
+      depth: number
       selected: boolean
       retained: boolean
     }> = []
@@ -1631,7 +1635,9 @@ function TrainLabels({
         lakeAvoidingPaths,
       )
       if (!position) continue
-      projected.set(position[0], 0.76, position[2]).project(camera)
+      projected.set(position[0], 0.76, position[2])
+      viewPosition.copy(projected).applyMatrix4(camera.matrixWorldInverse)
+      projected.project(camera)
       if (
         projected.z < -1 ||
         projected.z > 1 ||
@@ -1647,6 +1653,7 @@ function TrainLabels({
         position,
         x: (projected.x * 0.5 + 0.5) * size.width,
         y: (-projected.y * 0.5 + 0.5) * size.height,
+        depth: Math.max(0.01, -viewPosition.z),
         selected,
         retained: retainedTrainIds.current.has(train.id),
       })
@@ -1672,18 +1679,20 @@ function TrainLabels({
     const occupied: Array<{ left: number; right: number; top: number; bottom: number }> = []
     const visibleTextureKeys = new Set<string>()
     const nextRetainedTrainIds = new Set<string>()
-    const worldHeight = 0.62 * THREE.MathUtils.clamp(camera.position.y / 37, 0.02, 1)
+    const verticalFieldOfView =
+      camera instanceof THREE.PerspectiveCamera ? camera.fov : 44
     let visible = 0
 
     for (const candidate of candidates) {
       if (visible >= labelBudget || visible >= MAX_TRAIN_LABELS) break
       const text = trainLabelText(candidate.train, candidate.selected)
-      const width = THREE.MathUtils.clamp(text.length * 6.4 + 28, 68, 210)
+      const screenHeight = trainLabelScreenHeight(size.width, candidate.selected)
+      const width = trainLabelScreenWidth(text, screenHeight)
       const box = {
         left: candidate.x - width / 2,
         right: candidate.x + width / 2,
-        top: candidate.y - 12,
-        bottom: candidate.y + 12,
+        top: candidate.y - screenHeight / 2,
+        bottom: candidate.y + screenHeight / 2,
       }
       const overlaps = occupied.some(
         (other) =>
@@ -1713,6 +1722,12 @@ function TrainLabels({
 
       sprite.visible = true
       sprite.position.set(candidate.position[0], 0.76, candidate.position[2])
+      const worldHeight = stationLabelWorldHeight(
+        candidate.depth,
+        verticalFieldOfView,
+        size.height,
+        screenHeight,
+      )
       sprite.scale.set(textureEntry.aspect * worldHeight, worldHeight, 1)
       const material = sprite.material as THREE.SpriteMaterial
       if (material.map !== textureEntry.texture) {
