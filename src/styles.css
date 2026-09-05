@@ -513,6 +513,16 @@ h1 {
   text-transform: uppercase;
 }
 
+.contrast-corridor-entry {
+  border-color: rgba(255, 176, 82, 0.5);
+  background: linear-gradient(90deg, rgba(71, 46, 19, 0.62), rgba(76, 28, 65, 0.48));
+}
+
+.contrast-corridor-entry span {
+  color: #ffb85c;
+  text-shadow: 0 0 12px rgba(255, 155, 67, 0.78);
+}
+
 @media (min-width: 1100px) {
   h1 {
     max-width: 620px;
@@ -2243,6 +2253,14 @@ footer {
   .contrast-card .contrast-card-title {
     margin: 0;
     font-size: 0.56rem;
+  }
+
+  .contrast-card .contrast-corridor-entry {
+    min-height: 34px;
+    margin-top: 8px;
+    padding-inline: 8px;
+    font-size: 0.52rem;
+    line-height: 1.25;
   }
 
   .map-navigation,

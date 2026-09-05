@@ -14,6 +14,7 @@ function assert(condition, message) {
 const morning = await readJson('swiss-rail-morning.json')
 const hubs = await readJson('swiss-hub-day.json')
 const day = await readJson('swiss-rail-day-manifest.json')
+const kientalCorridor = await readJson('kiental-griesalp-corridor.json')
 
 const artifacts = [morning, hubs, day]
 const serviceDates = new Set(artifacts.map((artifact) => artifact.metadata?.serviceDate))
@@ -63,6 +64,13 @@ for (const descriptor of day.chunks) {
   assert(Array.isArray(chunk.trains), `${descriptor.id} has no train array`)
   assert(chunk.trains.length === descriptor.tripCount, `${descriptor.id} trip count differs from its manifest`)
 }
+
+assert(kientalCorridor.id === 'kiental-griesalp', 'Kiental terrain corridor has the wrong id')
+assert(kientalCorridor.metadata?.source === 'swissALTI3D', 'Kiental terrain corridor is not sourced from swissALTI3D')
+assert(kientalCorridor.terrain?.elevations?.length > 90_000, 'Kiental terrain grid is too coarse')
+assert(kientalCorridor.route?.points?.length > 100, 'Kiental road geometry is too coarse')
+assert(kientalCorridor.route?.stops?.length === 19, 'Kiental corridor does not contain the complete route 220 run')
+assert(kientalCorridor.route?.distanceMetres > 13_000, 'Kiental corridor road distance is implausibly short')
 
 console.log(
   `Validated national GTFS ${[...feedVersions][0]} for ${[...serviceDates][0]}: ` +

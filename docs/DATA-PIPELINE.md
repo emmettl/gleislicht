@@ -166,6 +166,18 @@ The script discovers the current full-coverage swissALTIRegio Cloud Optimized Ge
 
 The resulting `public/data/zurich-chur-corridor.json` records source release, CRS and attribution alongside 121 profiled rail points. It is requested only when the corridor view opens. The renderer uses the complete grid on desktop and a half-resolution level of detail on narrow screens; neither browser downloads nor parses the source raster.
 
+## Kiental–Griesalp terrain corridor
+
+Build the selectable Alpine PostBus journey after generating the Kiental day manifest:
+
+```sh
+npm run data:corridor:kiental
+```
+
+The script selects the first complete 19-stop route 220 run to Griesalp, asks the OpenStreetMap routing service for its road trace, and simplifies that trace to a stable metre-scale polyline which preserves the hairpins. It then discovers the intersecting 2 m swissALTI3D COG tiles through swisstopo's STAC catalogue and range-reads only the cells needed for a 257 × 359 low-poly corridor grid. The 443 KB result is stored separately at `public/data/kiental-griesalp-corridor.json` and is loaded only when the user enters the Kiental journey.
+
+Terrain is © swisstopo. Road geometry is © OpenStreetMap contributors, ODbL. Both source links and the precise timetable metadata remain embedded in the artifact and visible in the journey footer.
+
 ## National boundary
 
 The luminous country outline is generated separately from swisstopo's official `swissBOUNDARIES3D` GeoPackage. Download the current LV95 GeoPackage and run:

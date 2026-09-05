@@ -50,7 +50,8 @@ The measured corridor decision is recorded in [docs/POSTBUS-CORRIDOR.md](./docs/
 - [x] Build an offline swissALTIRegio processing path: crop, resample, quantise and package on demand.
 - [x] Create desktop and mobile terrain LODs around the matched Zürich–Chur rail shape.
 - [x] Add terrain-integrated lake surfaces and station beacons to the first measured corridor.
-- [ ] Add tunnel-aware line treatment and a higher-resolution Alpine corridor crop.
+- [x] Add a higher-resolution swissALTI3D Alpine corridor crop for Kiental–Griesalp, with road-following route geometry.
+- [ ] Add tunnel-aware line treatment to the Zürich–Chur rail corridor.
 - [x] Show mandatory `© swisstopo` attribution wherever derived terrain appears.
 
 **Exit:** Zürich–Chur and one Alpine corridor run over recognisable real terrain on laptop and mobile GPUs.

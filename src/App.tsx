@@ -25,6 +25,7 @@ import {
 } from './domain/hub.ts'
 import {
   corridorProgressForTime,
+  isKientalGriesalpTrain,
   isZurichChurTrain,
   journeyForCorridor,
   type CorridorSnapshot,
@@ -60,10 +61,9 @@ import {
   UI_TEXT,
   type UiLanguage,
 } from './i18n.ts'
-import {
-  NationalNetworkScene,
-  type MapCameraAction,
-  type MapCameraCommand,
+import type {
+  MapCameraAction,
+  MapCameraCommand,
 } from './scene/NationalNetworkScene.tsx'
 import type { TrainLabelMode } from './scene/train-labels.ts'
 import {
@@ -78,6 +78,11 @@ const GleislichtScene = lazy(() =>
   import('./scene/GleislichtScene.tsx').then(({ GleislichtScene: Scene }) => ({
     default: Scene,
   })),
+)
+const NationalNetworkScene = lazy(() =>
+  import('./scene/NationalNetworkScene.tsx').then(
+    ({ NationalNetworkScene: Scene }) => ({ default: Scene }),
+  ),
 )
 const HubPulseScene = lazy(() =>
   import('./scene/HubPulseScene.tsx').then(({ HubPulseScene: Scene }) => ({
@@ -101,6 +106,7 @@ type NetworkStudy =
   | 'contrast'
 type NationalTimeRange = 'morning' | 'day'
 type HubStudy = 'pulse' | 'station'
+type TerrainCorridorId = 'zurich-chur' | 'kiental-griesalp'
 
 const SOUNDTRACK_TITLES: Record<SoundtrackMode, string> = {
   network: 'Night Grid',
@@ -209,6 +215,8 @@ export function App() {
   const [boundary, setBoundary] = useState<SwissBoundary>()
   const [lakes, setLakes] = useState<SwissLakes>()
   const [corridor, setCorridor] = useState<CorridorSnapshot>()
+  const [journeyCorridorId, setJourneyCorridorId] =
+    useState<TerrainCorridorId>('zurich-chur')
   const [corridorError, setCorridorError] = useState(false)
   const [hubDay, setHubDay] = useState<HubDaySnapshot>()
   const [dataError, setDataError] = useState(false)
@@ -343,7 +351,9 @@ export function App() {
     () => network?.trains.find((train) => train.id === selectedTrainId),
     [network, selectedTrainId],
   )
-  const corridorTrainSelected = isZurichChurTrain(selectedTrain, network)
+  const corridorTrainSelected =
+    isZurichChurTrain(selectedTrain, network) ||
+    isKientalGriesalpTrain(selectedTrain, network)
   const activeJourney = useMemo(
     () =>
       corridor
@@ -572,17 +582,32 @@ export function App() {
   )
 
   const enterTerrainCorridor = useCallback(() => {
-    if (!selectedTrain || !network || !isZurichChurTrain(selectedTrain, network)) {
+    if (!selectedTrain || !network || !corridorTrainSelected) {
       return
     }
-    setJourneyProgress(
-      corridorProgressForTime(selectedTrain, network, networkTime),
-    )
+    const nextCorridorId = isKientalGriesalpTrain(selectedTrain, network)
+      ? 'kiental-griesalp'
+      : 'zurich-chur'
+    setJourneyCorridorId(nextCorridorId)
+    setCorridor((current) => current?.id === nextCorridorId ? current : undefined)
+    setJourneyProgress(nextCorridorId === 'zurich-chur'
+      ? corridorProgressForTime(selectedTrain, network, networkTime)
+      : 0.015)
     setCorridorError(false)
     setSearchOpen(false)
     setView('journey')
     setIsPlaying(true)
-  }, [network, networkTime, selectedTrain])
+  }, [corridorTrainSelected, network, networkTime, selectedTrain])
+
+  const enterKientalCorridor = useCallback(() => {
+    setJourneyCorridorId('kiental-griesalp')
+    setCorridor((current) => current?.id === 'kiental-griesalp' ? current : undefined)
+    setJourneyProgress(0.015)
+    setCorridorError(false)
+    setSearchOpen(false)
+    setView('journey')
+    setIsPlaying(true)
+  }, [])
 
   const selectNetworkStudy = useCallback(
     (study: NetworkStudy, timeRange: NationalTimeRange = nationalTimeRange) => {
@@ -783,7 +808,7 @@ export function App() {
   useEffect(() => {
     if (view !== 'journey' || corridor) return
     const controller = new AbortController()
-    fetch(`${import.meta.env.BASE_URL}data/zurich-chur-corridor.json`, {
+    fetch(`${import.meta.env.BASE_URL}data/${journeyCorridorId}-corridor.json`, {
       signal: controller.signal,
     })
       .then((response) => {
@@ -795,11 +820,11 @@ export function App() {
       .then(setCorridor)
       .catch((error: unknown) => {
         if (error instanceof DOMException && error.name === 'AbortError') return
-        console.warn('Unable to load the Zürich–Chur terrain corridor', error)
+        console.warn(`Unable to load the ${journeyCorridorId} terrain corridor`, error)
         setCorridorError(true)
       })
     return () => controller.abort()
-  }, [corridor, view])
+  }, [corridor, journeyCorridorId, view])
 
   useEffect(() => {
     if (
@@ -1047,7 +1072,8 @@ export function App() {
       className={`experience view-${view}${isContrast ? ' is-contrast' : ''}${selectedTrain || selectedStation || selectedRoute ? ' has-selection' : ''}`}
     >
       <div className="scene" aria-hidden={webglAvailable ? true : undefined}>
-        {!webglAvailable ? (
+        <Suspense fallback={null}>
+          {!webglAvailable ? (
           <section className="no-webgl" role="status">
             <span aria-hidden="true">◎</span>
             <h2>{text.webglUnavailable}</h2>
@@ -1188,7 +1214,8 @@ export function App() {
               onProgress={handleJourneyProgress}
             />
           </Suspense>
-        )}
+          )}
+        </Suspense>
       </div>
 
       <div className="atmosphere" />
@@ -1216,7 +1243,9 @@ export function App() {
                   : text.subtitle
               : isHub
                 ? text.taktHubs
-                : text.corridorSubtitle}
+                : journeyCorridorId === 'kiental-griesalp'
+                  ? 'Kiental → Griesalp'
+                  : text.corridorSubtitle}
           </h1>
         </div>
         <div className="masthead-meta">
@@ -1232,7 +1261,9 @@ export function App() {
                         LANGUAGE_LOCALES[language],
                       )
                     : text.studyDate
-                  : '47.194° N · 9.312° E'}
+                  : journeyCorridorId === 'kiental-griesalp'
+                    ? '46.582° N · 7.730° E'
+                    : '47.194° N · 9.312° E'}
               </span>
             </div>
             <nav className="language-picker" aria-label={text.languagePicker}>
@@ -1799,6 +1830,14 @@ export function App() {
                 ? text.loadingContrast
                 : text.synchronisedDay}
           </p>
+          <button
+            className="corridor-entry contrast-corridor-entry"
+            type="button"
+            onClick={enterKientalCorridor}
+          >
+            <span aria-hidden="true">↘</span>
+            {text.enterTerrain} · Kiental–Griesalp
+          </button>
         </section>
       ) : isNetwork && selectedTrain ? (
         <section className="journey-card selected-card" aria-label={text.selectedTrain}>
@@ -2060,7 +2099,7 @@ export function App() {
             <span>{text.realTerrainRoute}</span>
             <span>
               {corridor
-                ? `swissALTIRegio · ${corridor.metadata.releaseDate}`
+                ? `${corridor.metadata.source} · ${corridor.metadata.releaseDate}`
                 : corridorError
                   ? text.terrainUnavailable
                   : text.loadingTerrain}
@@ -2512,9 +2551,20 @@ export function App() {
         ) : (
           <span className="source-links">
             {corridor ? (
-              <a href={corridor.metadata.productUrl} target="_blank" rel="noreferrer">
-                Terrain · © swisstopo
-              </a>
+              <>
+                <a href={corridor.metadata.productUrl} target="_blank" rel="noreferrer">
+                  Terrain · © swisstopo
+                </a>
+                {corridor.metadata.routeProductUrl && (
+                  <a
+                    href={corridor.metadata.routeProductUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Route · © OpenStreetMap contributors
+                  </a>
+                )}
+              </>
             ) : (
               activeJourney.operator
             )}

@@ -40,6 +40,9 @@ export interface CorridorSnapshot {
     readonly model: string
     readonly railSource: unknown
     readonly profileSourceUrl: string
+    readonly routeSource?: string
+    readonly routeAttribution?: string
+    readonly routeProductUrl?: string
   }
   readonly origin: {
     readonly easting: number
@@ -67,6 +70,17 @@ export function isZurichChurTrain(
   const zurichIndex = names.indexOf('Zürich HB')
   const churIndex = names.indexOf('Chur')
   return zurichIndex >= 0 && churIndex > zurichIndex
+}
+
+export function isKientalGriesalpTrain(
+  train: NetworkTrain | undefined,
+  network: NetworkSnapshot | undefined,
+): boolean {
+  if (!train || !network || train.route !== '220') return false
+  const names = train.stops.map(([stopIndex]) => network.stops[stopIndex]?.[2])
+  const reichenbachIndex = names.indexOf('Reichenbach i. K., Bahnhof')
+  const griesalpIndex = names.indexOf('Griesalp, Kurhaus')
+  return reichenbachIndex >= 0 && griesalpIndex > reichenbachIndex
 }
 
 export function journeyForCorridor(

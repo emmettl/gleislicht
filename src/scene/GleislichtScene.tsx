@@ -13,6 +13,14 @@ interface GleislichtSceneProps {
 const HORIZONTAL_METRES_PER_UNIT = 1800
 const VERTICAL_METRES_PER_UNIT = 390
 
+function horizontalScale(corridor?: CorridorSnapshot) {
+  return corridor?.id === 'kiental-griesalp' ? 650 : HORIZONTAL_METRES_PER_UNIT
+}
+
+function verticalScale(corridor: CorridorSnapshot) {
+  return corridor.id === 'kiental-griesalp' ? 300 : VERTICAL_METRES_PER_UNIT
+}
+
 const fallbackRouteCurve = new THREE.CatmullRomCurve3(
   [
     new THREE.Vector3(-1.5, 0.25, 38),
@@ -29,7 +37,7 @@ const fallbackRouteCurve = new THREE.CatmullRomCurve3(
 )
 
 function elevationToWorld(elevation: number, corridor: CorridorSnapshot) {
-  return (elevation - corridor.terrain.minElevation) / VERTICAL_METRES_PER_UNIT
+  return (elevation - corridor.terrain.minElevation) / verticalScale(corridor)
 }
 
 function routeCurveFor(corridor?: CorridorSnapshot) {
@@ -38,9 +46,9 @@ function routeCurveFor(corridor?: CorridorSnapshot) {
     corridor.route.points.map(
       ([x, z, elevation]) =>
         new THREE.Vector3(
-          x / HORIZONTAL_METRES_PER_UNIT,
+          x / horizontalScale(corridor),
           elevationToWorld(elevation, corridor) + 0.055,
-          z / HORIZONTAL_METRES_PER_UNIT,
+          z / horizontalScale(corridor),
         ),
     ),
     false,
@@ -66,16 +74,26 @@ function makeRouteLine(
   return new THREE.Line(geometry, material)
 }
 
-function TerrainMeshes({ geometry }: { readonly geometry: THREE.PlaneGeometry }) {
+function TerrainMeshes({
+  geometry,
+  alpine = false,
+}: {
+  readonly geometry: THREE.PlaneGeometry
+  readonly alpine?: boolean
+}) {
   useEffect(() => () => geometry.dispose(), [geometry])
   return (
     <group>
       <mesh geometry={geometry} receiveShadow>
-        <meshStandardMaterial color="#070b1b" roughness={0.94} metalness={0.06} />
+        <meshStandardMaterial
+          color={alpine ? '#10131b' : '#070b1b'}
+          roughness={0.94}
+          metalness={0.06}
+        />
       </mesh>
       <mesh geometry={geometry} position={[0, 0.018, 0]}>
         <meshBasicMaterial
-          color="#5665bd"
+          color={alpine ? '#4f7d79' : '#5665bd'}
           transparent
           opacity={0.2}
           wireframe
@@ -114,8 +132,8 @@ function MeasuredTerrain({ corridor }: { readonly corridor: CorridorSnapshot }) 
     const columns = Math.ceil((corridor.terrain.columns - 1) / stride) + 1
     const rows = Math.ceil((corridor.terrain.rows - 1) / stride) + 1
     const next = new THREE.PlaneGeometry(
-      corridor.terrain.widthMetres / HORIZONTAL_METRES_PER_UNIT,
-      corridor.terrain.depthMetres / HORIZONTAL_METRES_PER_UNIT,
+      corridor.terrain.widthMetres / horizontalScale(corridor),
+      corridor.terrain.depthMetres / horizontalScale(corridor),
       columns - 1,
       rows - 1,
     )
@@ -141,7 +159,7 @@ function MeasuredTerrain({ corridor }: { readonly corridor: CorridorSnapshot }) 
     next.computeVertexNormals()
     return next
   }, [corridor])
-  return <TerrainMeshes geometry={geometry} />
+  return <TerrainMeshes geometry={geometry} alpine={corridor.id === 'kiental-griesalp'} />
 }
 
 function CorridorLakes({ corridor }: { readonly corridor: CorridorSnapshot }) {
@@ -154,8 +172,8 @@ function CorridorLakes({ corridor }: { readonly corridor: CorridorSnapshot }) {
           outerRing.map(
             ([x, z]) =>
               new THREE.Vector2(
-                x / HORIZONTAL_METRES_PER_UNIT,
-                -z / HORIZONTAL_METRES_PER_UNIT,
+                x / horizontalScale(corridor),
+                -z / horizontalScale(corridor),
               ),
           ),
         )
@@ -166,8 +184,8 @@ function CorridorLakes({ corridor }: { readonly corridor: CorridorSnapshot }) {
               ring.map(
                 ([x, z]) =>
                   new THREE.Vector2(
-                    x / HORIZONTAL_METRES_PER_UNIT,
-                    -z / HORIZONTAL_METRES_PER_UNIT,
+                  x / horizontalScale(corridor),
+                  -z / horizontalScale(corridor),
                   ),
               ),
             ),
@@ -274,16 +292,17 @@ function SignalField() {
   )
 }
 
-function Train() {
+function Train({ alpine }: { readonly alpine: boolean }) {
+  const offsets = alpine ? [-0.48, 0.34] : [-1.08, -0.36, 0.36, 1.08]
   return (
-    <group scale={0.72}>
-      {[-1.08, -0.36, 0.36, 1.08].map((offset, index) => (
+    <group scale={alpine ? 0.58 : 0.72}>
+      {offsets.map((offset, index) => (
         <group key={offset} position={[0, 0.2, offset * 0.42]}>
           <mesh>
             <boxGeometry args={[0.38, 0.28, 0.38]} />
             <meshStandardMaterial
-              color="#fff4ff"
-              emissive={index === 0 ? '#ff4fdf' : '#806cff'}
+              color={alpine ? '#fff3c4' : '#fff4ff'}
+              emissive={alpine ? '#ff9b43' : index === 0 ? '#ff4fdf' : '#806cff'}
               emissiveIntensity={3.6}
               wireframe
             />
@@ -294,7 +313,7 @@ function Train() {
           </mesh>
         </group>
       ))}
-      <pointLight color="#ff4fdf" intensity={8} distance={5} position={[0, 0.5, 0.8]} />
+      <pointLight color={alpine ? '#ff9b43' : '#ff4fdf'} intensity={8} distance={5} position={[0, 0.5, 0.8]} />
       <pointLight color="#78f7ff" intensity={5} distance={4} position={[0, 0.35, -0.8]} />
     </group>
   )
@@ -305,11 +324,15 @@ function MovingWorld({ corridor, isPlaying, progress, onProgress }: GleislichtSc
   const localProgress = useRef(progress)
   const lastReport = useRef(0)
   const { camera } = useThree()
+  const alpine = corridor?.id === 'kiental-griesalp'
   const routeCurve = useMemo(() => routeCurveFor(corridor), [corridor])
-  const rail = useMemo(() => makeRouteLine(routeCurve, '#b9ffff', 0.92), [routeCurve])
+  const rail = useMemo(
+    () => makeRouteLine(routeCurve, alpine ? '#fff2b3' : '#b9ffff', 0.92),
+    [alpine, routeCurve],
+  )
   const railGlow = useMemo(
-    () => makeRouteLine(routeCurve, '#ff4fdf', 0.32),
-    [routeCurve],
+    () => makeRouteLine(routeCurve, alpine ? '#ff8c42' : '#ff4fdf', 0.32),
+    [alpine, routeCurve],
   )
   const cameraPosition = useMemo(() => new THREE.Vector3(), [])
   const cameraTarget = useMemo(() => new THREE.Vector3(), [])
@@ -344,12 +367,12 @@ function MovingWorld({ corridor, isPlaying, progress, onProgress }: GleislichtSc
     const sweep = Math.sin(current * Math.PI * 5) * 0.22
     cameraPosition
       .copy(routePosition)
-      .addScaledVector(routeTangent, -2.15)
+      .addScaledVector(routeTangent, alpine ? -1.35 : -2.15)
       .addScaledVector(side, sweep)
-      .addScaledVector(up, corridor ? 0.92 : 2.8)
+      .addScaledVector(up, alpine ? 1.15 : corridor ? 0.92 : 2.8)
     cameraTarget
       .copy(routePosition)
-      .addScaledVector(routeTangent, corridor ? 1.65 : 5)
+      .addScaledVector(routeTangent, alpine ? 1.15 : corridor ? 1.65 : 5)
       .addScaledVector(up, 0.12)
     camera.position.lerp(cameraPosition, 1 - Math.exp(-delta * 2.35))
     camera.lookAt(cameraTarget)
@@ -361,10 +384,10 @@ function MovingWorld({ corridor, isPlaying, progress, onProgress }: GleislichtSc
 
   return (
     <>
-      <fog attach="fog" args={['#040410', corridor ? 5 : 12, corridor ? 34 : 76]} />
-      <ambientLight intensity={0.34} color="#8fa0ff" />
-      <directionalLight position={[-9, 15, 8]} color="#757eff" intensity={1.35} />
-      <hemisphereLight args={['#9b70ff', '#050511', 0.82]} />
+      <fog attach="fog" args={[alpine ? '#070b12' : '#040410', corridor ? 5 : 12, alpine ? 27 : corridor ? 34 : 76]} />
+      <ambientLight intensity={0.34} color={alpine ? '#9bc2b9' : '#8fa0ff'} />
+      <directionalLight position={[-9, 15, 8]} color={alpine ? '#ffc47a' : '#757eff'} intensity={1.35} />
+      <hemisphereLight args={[alpine ? '#86bfb0' : '#9b70ff', '#050511', 0.82]} />
       {corridor ? <MeasuredTerrain corridor={corridor} /> : <FallbackTerrain />}
       {corridor && <CorridorLakes corridor={corridor} />}
       <SignalField />
@@ -372,7 +395,7 @@ function MovingWorld({ corridor, isPlaying, progress, onProgress }: GleislichtSc
       <primitive object={rail} renderOrder={5} />
       {corridor && <StationBeacons corridor={corridor} curve={routeCurve} />}
       <group ref={train}>
-        <Train />
+        <Train alpine={alpine} />
       </group>
     </>
   )

@@ -61,6 +61,26 @@ test('a Zürich–Chur train descends into measured terrain', async ({ page }) =
   await expect(page.locator('footer a[href*="swissaltiregio"]')).toBeAttached()
 })
 
+test('the city–valley comparison opens the measured Kiental road journey', async ({
+  page,
+}, testInfo) => {
+  if (testInfo.project.name === 'iphone-webkit') {
+    const picker = page.locator('.mobile-study-picker')
+    await picker.locator('.mobile-picker__trigger').click()
+    await picker.getByRole('option').filter({ hasText: '↔' }).click()
+  } else {
+    await page.getByRole('button', { name: /synchronized city.+valley comparison/i }).click()
+  }
+
+  const descent = page.getByRole('button', { name: /Kiental–Griesalp/i })
+  await expect(descent).toBeVisible()
+  await descent.click()
+
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Kiental → Griesalp')
+  await expect(page.locator('.prototype-note')).toContainText('swissALTI3D')
+  await expect(page.locator('footer a[href*="openstreetmap.org/copyright"]')).toBeAttached()
+})
+
 test('region selection changes the active study', async ({ page }, testInfo) => {
   if (testInfo.project.name === 'iphone-webkit') {
     const picker = page.locator('.mobile-study-picker')

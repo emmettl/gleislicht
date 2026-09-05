@@ -37,7 +37,7 @@ Distances are sums of straight distances between scheduled stops, so they are se
 - A manifest holds the 33-stop rail-and-bus topology; eight three-hour movement chunks keep the 24-hour clock progressive.
 - Only route 220 is admitted as local bus traffic. Nearby BLS rail remains visible as the transfer spine at Reichenbach.
 - Both sides of the future contrast share one clock, speed and play state. Empty rural hours stay empty; they are part of the comparison.
-- The first renderer may use honest stop interpolation. Road alignment and swissALTI3D terrain arrive together so the hairpins are never presented as precise before the geometry supports them.
+- The comparison map uses honest stop interpolation. Its selectable journey switches to a 13.9 km road-following trace derived from OpenStreetMap via OSRM, over a separate 257 × 359 swissALTI3D terrain crop.
 - The PostBus side keeps the existing orange service colour, with a warmer yellow terrain response reserved for the authored corridor view.
 
-Regenerate the measurements with `npm run data:postbus:analyze` and the selected progressive artifact with `npm run data:postbus:kiental`; details are in [DATA-PIPELINE.md](./DATA-PIPELINE.md).
+Regenerate the measurements with `npm run data:postbus:analyze`, the progressive artifact with `npm run data:postbus:kiental`, and the terrain journey with `npm run data:corridor:kiental`; details are in [DATA-PIPELINE.md](./DATA-PIPELINE.md). Terrain is © swisstopo. Road geometry is © OpenStreetMap contributors and distributed under the ODbL.
