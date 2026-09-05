@@ -13,6 +13,7 @@ This is historical observation, not a schedule and not a live feed. Latitude, lo
 - Aircraft are small magenta needles; trains retain their brighter category colours and structural prominence.
 - Altitude is genuine but vertically compressed into the scene so climbing, descending and overflying layers are legible without dwarfing the country.
 - Each aircraft leaves only its previous three minutes as a fading curve. There is no permanent air-route layer.
+- Aircraft callsigns inherit the map's **vehicle labels · auto/on/off** policy. Auto is deliberately sparse, zoom reveals more, stable retention limits flashing, and collision suppression keeps labels from piling up. A selected aircraft takes priority while the whole air label layer remains dimmer and smaller than rail.
 - Selecting a needle tilts and eases the camera into a follow view and shows callsign, ICAO address, altitude, groundspeed and heading.
 - Releasing the selection returns control to the national map. Regional studies intentionally omit the air layer in this first experiment.
 

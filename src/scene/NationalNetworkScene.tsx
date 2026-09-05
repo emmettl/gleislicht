@@ -3099,6 +3099,7 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
           projection={projection}
           selectedTrackId={props.selectedAirTrack?.id}
           onSelectTrack={props.onSelectAirTrack}
+          labelMode={props.trainLabelMode}
         />
       )}
       {props.selectedTrain && (

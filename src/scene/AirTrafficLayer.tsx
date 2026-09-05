@@ -1,3 +1,4 @@
+import { useFrame, useThree } from '@react-three/fiber'
 import { useEffect, useMemo, useRef } from 'react'
 import * as THREE from 'three'
 import {
@@ -8,17 +9,37 @@ import {
   projectAirPosition,
   type AirProjection,
 } from './air-projection.ts'
+import {
+  airLabelBudget,
+  airLabelScreenHeight,
+  airLabelScreenWidth,
+  compareAirLabelCandidates,
+  MAX_AIR_LABELS,
+} from './air-labels.ts'
+import { stationLabelWorldHeight } from './station-labels.ts'
+import type { TrainLabelMode } from './train-labels.ts'
 
 const AIR_COLOR = new THREE.Color('#ff5edb')
 const SELECTED_AIR_COLOR = new THREE.Color('#fff5ff')
 const TRAIL_SECONDS = 180
 const MAX_SAMPLE_GAP_SECONDS = 45
 
+interface CurrentAircraft {
+  readonly track: AirSnapshot['tracks'][number]
+  readonly position: NonNullable<ReturnType<typeof positionForAirTrack>>
+  readonly projected: readonly [number, number, number]
+}
+
+interface AirLabelTexture {
+  readonly texture: THREE.CanvasTexture
+  readonly aspect: number
+}
+
 function currentAircraft(
   snapshot: AirSnapshot,
   time: number,
   projection: AirProjection,
-) {
+): readonly CurrentAircraft[] {
   return snapshot.tracks.flatMap((track) => {
     const position = positionForAirTrack(track, time)
     return position
@@ -27,18 +48,243 @@ function currentAircraft(
   })
 }
 
+function createAirLabelTexture(label: string): AirLabelTexture {
+  const canvas = document.createElement('canvas')
+  const context = canvas.getContext('2d')
+  const font = '500 26px "DM Mono", ui-monospace, monospace'
+  const horizontalPadding = 25
+  const markerWidth = 18
+  const height = 58
+  if (!context) {
+    canvas.width = 180
+    canvas.height = height
+  } else {
+    context.font = font
+    canvas.width = Math.ceil(
+      context.measureText(label).width + horizontalPadding * 2 + markerWidth,
+    )
+    canvas.height = height
+    context.clearRect(0, 0, canvas.width, canvas.height)
+
+    context.fillStyle = 'rgba(8, 5, 22, 0.68)'
+    context.strokeStyle = 'rgba(255, 94, 219, 0.32)'
+    context.lineWidth = 1.5
+    context.beginPath()
+    context.roundRect(1, 1, canvas.width - 2, canvas.height - 2, 7)
+    context.fill()
+    context.stroke()
+
+    context.save()
+    context.translate(21, height / 2)
+    context.rotate(Math.PI / 4)
+    context.fillStyle = '#ff5edb'
+    context.fillRect(-4, -4, 8, 8)
+    context.restore()
+
+    context.font = font
+    context.textBaseline = 'middle'
+    context.shadowColor = 'rgba(255, 94, 219, 0.55)'
+    context.shadowBlur = 5
+    context.fillStyle = '#f7dff5'
+    context.fillText(label, horizontalPadding + markerWidth, height / 2)
+  }
+
+  const texture = new THREE.CanvasTexture(canvas)
+  texture.colorSpace = THREE.SRGBColorSpace
+  texture.minFilter = THREE.LinearFilter
+  texture.generateMipmaps = false
+  return { texture, aspect: canvas.width / canvas.height }
+}
+
+function AirTrafficLabels({
+  aircraft,
+  mode,
+  selectedTrackId,
+}: {
+  readonly aircraft: readonly CurrentAircraft[]
+  readonly mode: TrainLabelMode
+  readonly selectedTrackId?: string
+}) {
+  const { camera, size } = useThree()
+  const sprites = useRef<Array<THREE.Sprite | null>>([])
+  const textures = useRef(new Map<string, AirLabelTexture>())
+  const retainedTrackIds = useRef(new Set<string>())
+
+  useEffect(
+    () => () => {
+      textures.current.forEach(({ texture }) => texture.dispose())
+      textures.current.clear()
+    },
+    [],
+  )
+
+  useFrame(() => {
+    sprites.current.forEach((sprite) => {
+      if (sprite) sprite.visible = false
+    })
+    const labelBudget = airLabelBudget(
+      camera.position.y,
+      mode,
+      Boolean(selectedTrackId),
+    )
+    if (!labelBudget) {
+      retainedTrackIds.current.clear()
+      return
+    }
+
+    const projected = new THREE.Vector3()
+    const viewPosition = new THREE.Vector3()
+    const candidates = aircraft.flatMap((item) => {
+      const selected = item.track.id === selectedTrackId
+      if (selectedTrackId && !selected) return []
+      projected.set(...item.projected)
+      viewPosition.copy(projected).applyMatrix4(camera.matrixWorldInverse)
+      projected.project(camera)
+      if (
+        projected.z < -1 ||
+        projected.z > 1 ||
+        projected.x < -1.08 ||
+        projected.x > 1.08 ||
+        projected.y < -1.08 ||
+        projected.y > 1.08
+      ) {
+        return []
+      }
+      return [{
+        item,
+        selected,
+        retained: retainedTrackIds.current.has(item.track.id),
+        x: (projected.x * 0.5 + 0.5) * size.width,
+        y: (-projected.y * 0.5 + 0.5) * size.height,
+        depth: Math.max(0.01, -viewPosition.z),
+      }]
+    })
+
+    candidates.sort(
+      (first, second) =>
+        Number(second.selected) - Number(first.selected) ||
+        compareAirLabelCandidates(
+          {
+            id: first.item.track.id,
+            callsign: first.item.track.callsign,
+            retained: first.retained,
+          },
+          {
+            id: second.item.track.id,
+            callsign: second.item.track.callsign,
+            retained: second.retained,
+          },
+        ),
+    )
+
+    const occupied: Array<{ left: number; right: number; top: number; bottom: number }> = []
+    const nextRetainedTrackIds = new Set<string>()
+    const visibleTextureKeys = new Set<string>()
+    const verticalFieldOfView =
+      camera instanceof THREE.PerspectiveCamera ? camera.fov : 44
+    let visible = 0
+
+    for (const candidate of candidates) {
+      if (visible >= labelBudget || visible >= MAX_AIR_LABELS) break
+      const label = candidate.item.track.callsign
+      const screenHeight = airLabelScreenHeight(
+        size.width,
+        candidate.selected,
+        camera.position.y,
+      )
+      const width = airLabelScreenWidth(label, screenHeight)
+      const box = {
+        left: candidate.x - width / 2,
+        right: candidate.x + width / 2,
+        top: candidate.y - screenHeight / 2,
+        bottom: candidate.y + screenHeight / 2,
+      }
+      const overlaps = occupied.some(
+        (other) =>
+          box.left < other.right + 6 &&
+          box.right > other.left - 6 &&
+          box.top < other.bottom + 5 &&
+          box.bottom > other.top - 5,
+      )
+      if (overlaps && !candidate.selected) continue
+
+      const sprite = sprites.current[visible]
+      if (!sprite) continue
+      let textureEntry = textures.current.get(label)
+      if (!textureEntry) {
+        textureEntry = createAirLabelTexture(label)
+        textures.current.set(label, textureEntry)
+      } else {
+        textures.current.delete(label)
+        textures.current.set(label, textureEntry)
+      }
+      visibleTextureKeys.add(label)
+      nextRetainedTrackIds.add(candidate.item.track.id)
+
+      sprite.visible = true
+      sprite.position.set(...candidate.item.projected)
+      const worldHeight = stationLabelWorldHeight(
+        candidate.depth,
+        verticalFieldOfView,
+        size.height,
+        screenHeight,
+      )
+      sprite.scale.set(textureEntry.aspect * worldHeight, worldHeight, 1)
+      const material = sprite.material as THREE.SpriteMaterial
+      if (material.map !== textureEntry.texture) {
+        material.map = textureEntry.texture
+        material.needsUpdate = true
+      }
+      material.opacity = candidate.selected ? 0.96 : 0.62
+      occupied.push(box)
+      visible += 1
+    }
+
+    retainedTrackIds.current = nextRetainedTrackIds
+    if (textures.current.size > 96) {
+      for (const [key, entry] of textures.current) {
+        if (visibleTextureKeys.has(key)) continue
+        entry.texture.dispose()
+        textures.current.delete(key)
+        if (textures.current.size <= 96) break
+      }
+    }
+  })
+
+  return Array.from({ length: MAX_AIR_LABELS }, (_, index) => (
+    <sprite
+      key={index}
+      ref={(sprite) => {
+        sprites.current[index] = sprite
+      }}
+      visible={false}
+      renderOrder={17}
+    >
+      <spriteMaterial
+        transparent
+        opacity={0}
+        depthTest={false}
+        depthWrite={false}
+        toneMapped={false}
+      />
+    </sprite>
+  ))
+}
+
 export function AirTrafficLayer({
   snapshot,
   time,
   projection,
   selectedTrackId,
   onSelectTrack,
+  labelMode,
 }: {
   readonly snapshot: AirSnapshot
   readonly time: number
   readonly projection: AirProjection
   readonly selectedTrackId?: string
   readonly onSelectTrack?: (trackId: string) => void
+  readonly labelMode: TrainLabelMode
 }) {
   const aircraft = useMemo(
     () => currentAircraft(snapshot, time, projection),
@@ -141,7 +387,8 @@ export function AirTrafficLayer({
   )
 
   return (
-    <group
+    <>
+      <group
       onPointerDown={(event) => {
         if (event.instanceId === undefined) return
         event.stopPropagation()
@@ -149,7 +396,7 @@ export function AirTrafficLayer({
         if (track) onSelectTrack?.(track.id)
       }}
     >
-      <lineSegments geometry={trailGeometry} renderOrder={22}>
+      <lineSegments geometry={trailGeometry} renderOrder={15}>
         <lineBasicMaterial
           vertexColors
           transparent
@@ -161,7 +408,7 @@ export function AirTrafficLayer({
       <instancedMesh
         ref={bodyRef}
         args={[undefined, undefined, snapshot.tracks.length]}
-        renderOrder={24}
+        renderOrder={18}
       >
         <boxGeometry args={[0.055, 0.035, 0.64]} />
         <meshBasicMaterial
@@ -175,7 +422,7 @@ export function AirTrafficLayer({
       <instancedMesh
         ref={wingRef}
         args={[undefined, undefined, snapshot.tracks.length]}
-        renderOrder={24}
+        renderOrder={18}
       >
         <boxGeometry args={[0.36, 0.025, 0.035]} />
         <meshBasicMaterial
@@ -201,6 +448,12 @@ export function AirTrafficLayer({
           distance={4}
         />
       )}
-    </group>
+      </group>
+      <AirTrafficLabels
+        aircraft={aircraft}
+        mode={labelMode}
+        selectedTrackId={selectedTrackId}
+      />
+    </>
   )
 }

@@ -2587,7 +2587,7 @@ export function App() {
             className="train-label-toggle"
             type="button"
             aria-label={text.labelsAction(
-              networkStudy === 'national' ? text.trainLabels : text.vehicleLabels,
+              text.vehicleLabels,
               text.labelModes[trainLabelMode],
               text.labelModes[NEXT_TRAIN_LABEL_MODE[trainLabelMode]],
             )}
@@ -2596,8 +2596,7 @@ export function App() {
             }
           >
             <span aria-hidden="true">▱</span>
-            {networkStudy === 'national' ? text.trainLabels : text.vehicleLabels} ·{' '}
-            {text.labelModes[trainLabelMode]}
+            {text.vehicleLabels} · {text.labelModes[trainLabelMode]}
           </button>
         </div>
       )}
