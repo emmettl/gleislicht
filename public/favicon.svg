@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <defs>
     <linearGradient id="field" x1="8" y1="4" x2="56" y2="60" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#f02e4f" />
-      <stop offset="0.58" stop-color="#cf1742" />
-      <stop offset="1" stop-color="#71174a" />
+      <stop stop-color="#17133f" />
+      <stop offset="0.58" stop-color="#0d1838" />
+      <stop offset="1" stop-color="#071923" />
     </linearGradient>
     <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
       <feGaussianBlur stdDeviation="2.4" />
