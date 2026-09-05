@@ -465,31 +465,126 @@ function SignalField() {
   )
 }
 
-function Train({ alpine }: { readonly alpine: boolean }) {
-  const offsets = alpine ? [-0.48, 0.34] : [-1.08, -0.36, 0.36, 1.08]
+function RailVehicle() {
+  const windowOffsets = [-0.52, -0.16, 0.2, 0.56]
   return (
-    <group scale={alpine ? 0.58 : 0.72}>
-      {offsets.map((offset, index) => (
-        <group key={offset} position={[0, 0.2, offset * 0.42]}>
-          <mesh>
-            <boxGeometry args={[0.38, 0.28, 0.38]} />
-            <meshStandardMaterial
-              color={alpine ? '#fff3c4' : '#fff4ff'}
-              emissive={alpine ? '#ff9b43' : index === 0 ? '#ff4fdf' : '#806cff'}
-              emissiveIntensity={3.6}
-              wireframe
+    <group scale={0.72}>
+      <mesh position={[0, 0.3, -0.04]}>
+        <boxGeometry args={[0.5, 0.38, 1.55]} />
+        <meshStandardMaterial
+          color="#fff4ff"
+          emissive="#806cff"
+          emissiveIntensity={2.7}
+          wireframe
+        />
+      </mesh>
+      <mesh position={[0, 0.3, 0.92]} rotation={[Math.PI / 2, Math.PI / 4, 0]}>
+        <coneGeometry args={[0.34, 0.48, 4]} />
+        <meshStandardMaterial
+          color="#fff4ff"
+          emissive="#ff4fdf"
+          emissiveIntensity={3.8}
+          wireframe
+        />
+      </mesh>
+      <mesh position={[0, 0.55, -0.18]}>
+        <boxGeometry args={[0.34, 0.09, 0.98]} />
+        <meshBasicMaterial color="#9afcff" transparent opacity={0.22} />
+      </mesh>
+      {[-1, 1].flatMap((side) =>
+        windowOffsets.map((offset) => (
+          <mesh
+            key={`${side}-${offset}`}
+            position={[side * 0.254, 0.36, offset]}
+            rotation={[0, side * Math.PI / 2, 0]}
+          >
+            <planeGeometry args={[0.22, 0.13]} />
+            <meshBasicMaterial
+              color={offset > 0.48 ? '#ff78df' : '#8dfaff'}
+              transparent
+              opacity={0.82}
+              toneMapped={false}
             />
           </mesh>
-          <mesh position={[0, 0.02, 0]} scale={1.045}>
-            <boxGeometry args={[0.38, 0.28, 0.38]} />
-            <meshBasicMaterial color="#9afcff" transparent opacity={0.065} />
+        )),
+      )}
+      {[-0.48, 0.48].flatMap((z) =>
+        [-1, 1].map((side) => (
+          <mesh
+            key={`${z}-${side}`}
+            position={[side * 0.29, 0.12, z]}
+            rotation={[0, 0, Math.PI / 2]}
+          >
+            <cylinderGeometry args={[0.085, 0.085, 0.08, 10]} />
+            <meshBasicMaterial color="#28103d" />
           </mesh>
-        </group>
-      ))}
-      <pointLight color={alpine ? '#ff9b43' : '#ff4fdf'} intensity={8} distance={5} position={[0, 0.5, 0.8]} />
+        )),
+      )}
+      <pointLight color="#ff4fdf" intensity={8} distance={5} position={[0, 0.5, 1.05]} />
       <pointLight color="#78f7ff" intensity={5} distance={4} position={[0, 0.35, -0.8]} />
     </group>
   )
+}
+
+function PostBusVehicle() {
+  const sideWindows = [-0.42, -0.12, 0.18, 0.48]
+  return (
+    <group scale={0.62}>
+      <mesh position={[0, 0.36, 0]}>
+        <boxGeometry args={[0.62, 0.58, 1.42]} />
+        <meshStandardMaterial
+          color="#fff3c4"
+          emissive="#ff9b43"
+          emissiveIntensity={2.5}
+          wireframe
+        />
+      </mesh>
+      <mesh position={[0, 0.69, -0.03]}>
+        <boxGeometry args={[0.5, 0.08, 1.18]} />
+        <meshBasicMaterial color="#ffe4a0" transparent opacity={0.22} />
+      </mesh>
+      <mesh position={[0, 0.43, 0.714]}>
+        <planeGeometry args={[0.46, 0.3]} />
+        <meshBasicMaterial color="#8dfaff" transparent opacity={0.86} toneMapped={false} />
+      </mesh>
+      {[-1, 1].flatMap((side) =>
+        sideWindows.map((offset) => (
+          <mesh
+            key={`${side}-${offset}`}
+            position={[side * 0.314, 0.47, offset]}
+            rotation={[0, side * Math.PI / 2, 0]}
+          >
+            <planeGeometry args={[0.22, 0.24]} />
+            <meshBasicMaterial color="#8dfaff" transparent opacity={0.72} toneMapped={false} />
+          </mesh>
+        )),
+      )}
+      {[-0.45, 0.45].flatMap((z) =>
+        [-1, 1].map((side) => (
+          <mesh
+            key={`${z}-${side}`}
+            position={[side * 0.35, 0.16, z]}
+            rotation={[0, 0, Math.PI / 2]}
+          >
+            <cylinderGeometry args={[0.13, 0.13, 0.09, 10]} />
+            <meshBasicMaterial color="#23152b" />
+          </mesh>
+        )),
+      )}
+      {[-0.17, 0.17].map((x) => (
+        <mesh key={x} position={[x, 0.26, 0.73]}>
+          <sphereGeometry args={[0.045, 8, 6]} />
+          <meshBasicMaterial color="#fff3a6" toneMapped={false} />
+        </mesh>
+      ))}
+      <pointLight color="#ff9b43" intensity={7} distance={4} position={[0, 0.48, 0.9]} />
+      <pointLight color="#78f7ff" intensity={4} distance={3} position={[0, 0.4, -0.7]} />
+    </group>
+  )
+}
+
+function JourneyVehicle({ bus }: { readonly bus: boolean }) {
+  return bus ? <PostBusVehicle /> : <RailVehicle />
 }
 
 function MovingWorld({
@@ -516,10 +611,19 @@ function MovingWorld({
   )
   const cameraPosition = useMemo(() => new THREE.Vector3(), [])
   const cameraTarget = useMemo(() => new THREE.Vector3(), [])
+  const cameraLookTarget = useMemo(() => new THREE.Vector3(), [])
   const routePosition = useMemo(() => new THREE.Vector3(), [])
   const routeTangent = useMemo(() => new THREE.Vector3(), [])
+  const directionStart = useMemo(() => new THREE.Vector3(), [])
+  const directionEnd = useMemo(() => new THREE.Vector3(), [])
+  const desiredDirection = useMemo(() => new THREE.Vector3(), [])
+  const smoothedDirection = useMemo(() => new THREE.Vector3(0, 0, -1), [])
   const side = useMemo(() => new THREE.Vector3(), [])
   const up = useMemo(() => new THREE.Vector3(0, 1, 0), [])
+  const forward = useMemo(() => new THREE.Vector3(0, 0, 1), [])
+  const vehicleQuaternion = useMemo(() => new THREE.Quaternion(), [])
+  const cameraReady = useRef(false)
+  const lastCameraProgress = useRef(progress)
   const tunnelAmount = useRef(0)
   const opennessProfile = useMemo(
     () => terrainOpennessProfile(corridor, routeCurve),
@@ -549,6 +653,10 @@ function MovingWorld({
   useEffect(() => {
     localProgress.current = progress
   }, [progress])
+  useEffect(() => {
+    cameraReady.current = false
+    lastCameraProgress.current = localProgress.current
+  }, [routeCurve])
   useEffect(
     () => () => {
       rail.geometry.dispose()
@@ -581,9 +689,26 @@ function MovingWorld({
     routeCurve.getTangentAt(current, routeTangent).normalize()
     if (train.current) {
       train.current.position.copy(routePosition)
-      train.current.lookAt(routePosition.clone().add(routeTangent))
+      vehicleQuaternion.setFromUnitVectors(forward, routeTangent)
+      train.current.quaternion.slerp(
+        vehicleQuaternion,
+        1 - Math.exp(-delta * 6),
+      )
     }
-    side.crossVectors(routeTangent, up).normalize()
+    const directionSpan = alpine ? 0.012 : 0.009
+    routeCurve.getPointAt(Math.max(0, current - directionSpan), directionStart)
+    routeCurve.getPointAt(Math.min(1, current + directionSpan), directionEnd)
+    desiredDirection.subVectors(directionEnd, directionStart).normalize()
+    const progressJumped = Math.abs(current - lastCameraProgress.current) > 0.075
+    lastCameraProgress.current = current
+    if (!cameraReady.current || progressJumped) {
+      smoothedDirection.copy(desiredDirection)
+    } else {
+      smoothedDirection
+        .lerp(desiredDirection, 1 - Math.exp(-delta * 0.8))
+        .normalize()
+    }
+    side.crossVectors(smoothedDirection, up).normalize()
     const cameraStyle = !corridor
       ? { behind: 2.15, height: 2.8, ahead: 5, sweep: 0.22 }
       : alpine
@@ -598,7 +723,7 @@ function MovingWorld({
     cameraPosition
       .copy(routePosition)
       .addScaledVector(
-        routeTangent,
+        smoothedDirection,
         -THREE.MathUtils.lerp(cameraStyle.behind, 0.72, tunnelMix),
       )
       .addScaledVector(side, sweep)
@@ -609,12 +734,19 @@ function MovingWorld({
     cameraTarget
       .copy(routePosition)
       .addScaledVector(
-        routeTangent,
+        smoothedDirection,
         THREE.MathUtils.lerp(cameraStyle.ahead, 1.35, tunnelMix),
       )
       .addScaledVector(up, 0.12)
-    camera.position.lerp(cameraPosition, 1 - Math.exp(-delta * 2.35))
-    camera.lookAt(cameraTarget)
+    if (!cameraReady.current || progressJumped) {
+      camera.position.copy(cameraPosition)
+      cameraLookTarget.copy(cameraTarget)
+      cameraReady.current = true
+    } else {
+      camera.position.lerp(cameraPosition, 1 - Math.exp(-delta * 1.45))
+      cameraLookTarget.lerp(cameraTarget, 1 - Math.exp(-delta * 0.7))
+    }
+    camera.lookAt(cameraLookTarget)
     if (state.clock.elapsedTime - lastReport.current > 0.1) {
       lastReport.current = state.clock.elapsedTime
       onProgress(current)
@@ -643,7 +775,7 @@ function MovingWorld({
       {corridor && <StationBeacons corridor={corridor} curve={routeCurve} />}
       {corridor && <TunnelInfrastructure corridor={corridor} curve={routeCurve} />}
       <group ref={train}>
-        <Train alpine={alpine} />
+        <JourneyVehicle bus={alpine} />
       </group>
     </>
   )
