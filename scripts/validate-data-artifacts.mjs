@@ -202,7 +202,8 @@ assert(
 )
 assert(
   roadTopology.metadata.coverage.continuityResolvedDirectionalGroups >= 40 &&
-    roadTopology.metadata.coverage.reviewDirectionalGroups <= 15,
+    roadTopology.metadata.coverage.authoritativeResolvedDirectionalGroups >= 10 &&
+    roadTopology.metadata.coverage.reviewDirectionalGroups === 0,
   'National road topology has not resolved enough ambiguous counter matches',
 )
 assert(
@@ -229,7 +230,10 @@ assert(
         section.distanceKm > 0 &&
         section.distanceKm <= 45 &&
         section.fromCoordinate.every(Number.isFinite) &&
-        section.toCoordinate.every(Number.isFinite),
+        section.toCoordinate.every(Number.isFinite) &&
+        (!section.path ||
+          (section.path.length >= 2 &&
+            section.path.every((point) => point.every(Number.isFinite)))),
     ),
   'National road topology contains malformed counter sections',
 )

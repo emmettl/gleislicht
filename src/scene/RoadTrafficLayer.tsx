@@ -8,6 +8,10 @@ import {
   type RoadTopologySnapshot,
   type RoadTrafficSnapshot,
 } from '../domain/road.ts'
+import {
+  nationalRoadConditionsAtTime,
+  type NationalRoadStudySnapshot,
+} from '../domain/road-day.ts'
 import type { NetworkProjection } from './NationalNetworkScene.tsx'
 import { createGlowPointTexture } from './glow-point-texture.ts'
 
@@ -15,6 +19,8 @@ const LIGHT_COLOR = new THREE.Color('#fff1cf')
 const HEAVY_COLOR = new THREE.Color('#ff9d52')
 const MAX_LIGHT_PER_DIRECTION = 110
 const MAX_HEAVY_PER_DIRECTION = 32
+const MAX_NATIONAL_LIGHT = 1_500
+const MAX_NATIONAL_HEAVY = 520
 
 function RoadTopology({
   snapshot,
@@ -55,7 +61,8 @@ function RoadTopology({
     const sitePoints = snapshot.sites.flatMap((site) => {
       if (
         (site.match.confidence !== 'high' &&
-          site.match.confidence !== 'continuity') ||
+          site.match.confidence !== 'continuity' &&
+          site.match.confidence !== 'authoritative') ||
         !site.match.projectedCoordinate ||
         seenStations.has(site.stationId)
       ) {
@@ -330,6 +337,180 @@ function RoadDirectionFlow({
   )
 }
 
+function NationalRoadTrafficFlow({
+  snapshot,
+  topology,
+  projection,
+  time,
+  isPlaying,
+  playbackRate,
+  selectedRoadId,
+  subdued,
+}: {
+  readonly snapshot: NationalRoadStudySnapshot
+  readonly topology: RoadTopologySnapshot
+  readonly projection: NetworkProjection
+  readonly time: number
+  readonly isPlaying: boolean
+  readonly playbackRate: number
+  readonly selectedRoadId?: string
+  readonly subdued: boolean
+}) {
+  const localTime = useRef(time)
+  const lightsRef = useRef<THREE.InstancedMesh>(null)
+  const heavyRef = useRef<THREE.InstancedMesh>(null)
+  const transform = useMemo(() => new THREE.Object3D(), [])
+  const point = useMemo(() => new THREE.Vector3(), [])
+  const ahead = useMemo(() => new THREE.Vector3(), [])
+  const tangent = useMemo(() => new THREE.Vector3(), [])
+  const vehicleAxis = useMemo(() => new THREE.Vector3(0, 1, 0), [])
+  const conditionCache = useRef(
+    new Map<number, ReturnType<typeof nationalRoadConditionsAtTime>>(),
+  )
+  const sections = useMemo(() => {
+    const topologyById = new Map(topology.sections.map((section) => [section.id, section]))
+    return snapshot.sections.flatMap((section) => {
+      if (selectedRoadId && section.road !== selectedRoadId) return []
+      const topologySection = topologyById.get(section.id)
+      if (!topologySection) return []
+      const coordinates = topologySection.path ?? [
+        topologySection.fromCoordinate,
+        topologySection.toCoordinate,
+      ]
+      const points = coordinates.map((coordinate) =>
+        projectRoadCoordinate(coordinate, projection, 0.12),
+      )
+      const curve = new THREE.CatmullRomCurve3(points, false, 'centripetal', 0.5)
+      return [{ ...section, curve }]
+    })
+  }, [projection, selectedRoadId, snapshot.sections, topology.sections])
+
+  useEffect(() => {
+    localTime.current = time
+  }, [time])
+
+  useFrame((_, delta) => {
+    if (isPlaying) {
+      localTime.current += delta * playbackRate
+      if (localTime.current > snapshot.metadata.windowEnd) {
+        localTime.current = snapshot.metadata.windowStart
+      }
+    }
+    let lightIndex = 0
+    let heavyIndex = 0
+    conditionCache.current.clear()
+    const conditionsFor = (siteIndex: number) => {
+      const existing = conditionCache.current.get(siteIndex)
+      if (existing) return existing
+      const value = nationalRoadConditionsAtTime(
+        snapshot,
+        siteIndex,
+        localTime.current,
+      )
+      conditionCache.current.set(siteIndex, value)
+      return value
+    }
+    const update = (
+      mesh: THREE.InstancedMesh | null,
+      section: (typeof sections)[number],
+      count: number,
+      speedKmh: number,
+      vehicle: 'light' | 'heavy',
+    ) => {
+      if (!mesh || !count || !section.distanceKm) return
+      for (let index = 0; index < count; index += 1) {
+        const maximum = vehicle === 'light' ? MAX_NATIONAL_LIGHT : MAX_NATIONAL_HEAVY
+        if ((vehicle === 'light' ? lightIndex : heavyIndex) >= maximum) return
+        const targetIndex = vehicle === 'light' ? lightIndex++ : heavyIndex++
+        const seed = ((targetIndex * 0.61803398875) % 1 + index / count) % 1
+        const travelled =
+          ((localTime.current - snapshot.metadata.windowStart) * speedKmh) / 3_600
+        const progress = (seed + travelled / section.distanceKm) % 1
+        section.curve.getPointAt(progress, point)
+        section.curve.getPointAt(Math.min(1, progress + 0.003), ahead)
+        transform.position.copy(point)
+        transform.quaternion.setFromUnitVectors(
+          vehicleAxis,
+          tangent.copy(ahead).sub(point).normalize(),
+        )
+        transform.scale.setScalar(
+          0.82 + 0.18 * Math.sin(targetIndex * 1.71 + localTime.current * 0.035),
+        )
+        transform.updateMatrix()
+        mesh.setMatrixAt(targetIndex, transform.matrix)
+      }
+    }
+
+    for (const section of sections) {
+      const from = conditionsFor(section.fromSiteIndex)
+      const to = conditionsFor(section.toSiteIndex)
+      const lightFlow = (from.lightFlowPerHour + to.lightFlowPerHour) / 2
+      const lightSpeed = (from.lightSpeedKmh + to.lightSpeedKmh) / 2
+      const heavyFlow = (from.heavyFlowPerHour + to.heavyFlowPerHour) / 2
+      const heavySpeed = (from.heavySpeedKmh + to.heavySpeedKmh) / 2
+      update(
+        lightsRef.current,
+        section,
+        Math.min(3, Math.round(lightFlow / (selectedRoadId ? 550 : 1_100))),
+        lightSpeed,
+        'light',
+      )
+      update(
+        heavyRef.current,
+        section,
+        Math.min(2, Math.round(heavyFlow / (selectedRoadId ? 180 : 320))),
+        heavySpeed,
+        'heavy',
+      )
+    }
+    if (lightsRef.current) {
+      lightsRef.current.count = lightIndex
+      lightsRef.current.instanceMatrix.needsUpdate = true
+    }
+    if (heavyRef.current) {
+      heavyRef.current.count = heavyIndex
+      heavyRef.current.instanceMatrix.needsUpdate = true
+    }
+  })
+
+  return (
+    <>
+      <instancedMesh
+        ref={lightsRef}
+        args={[undefined, undefined, MAX_NATIONAL_LIGHT]}
+        renderOrder={10}
+        frustumCulled={false}
+      >
+        <capsuleGeometry args={[0.022, 0.12, 3, 5]} />
+        <meshBasicMaterial
+          color={LIGHT_COLOR}
+          transparent
+          opacity={subdued ? 0.1 : selectedRoadId ? 0.92 : 0.58}
+          blending={THREE.AdditiveBlending}
+          depthWrite={false}
+          toneMapped={false}
+        />
+      </instancedMesh>
+      <instancedMesh
+        ref={heavyRef}
+        args={[undefined, undefined, MAX_NATIONAL_HEAVY]}
+        renderOrder={10}
+        frustumCulled={false}
+      >
+        <capsuleGeometry args={[0.035, 0.18, 3, 5]} />
+        <meshBasicMaterial
+          color={HEAVY_COLOR}
+          transparent
+          opacity={subdued ? 0.08 : selectedRoadId ? 0.86 : 0.52}
+          blending={THREE.AdditiveBlending}
+          depthWrite={false}
+          toneMapped={false}
+        />
+      </instancedMesh>
+    </>
+  )
+}
+
 export function RoadTrafficLayer({
   snapshot,
   topology,
@@ -339,8 +520,9 @@ export function RoadTrafficLayer({
   projection,
   subdued = false,
   selectedRoadId,
+  nationalSnapshot,
 }: {
-  readonly snapshot: RoadTrafficSnapshot
+  readonly snapshot?: RoadTrafficSnapshot
   readonly topology?: RoadTopologySnapshot
   readonly time: number
   readonly isPlaying: boolean
@@ -348,10 +530,11 @@ export function RoadTrafficLayer({
   readonly projection: NetworkProjection
   readonly subdued?: boolean
   readonly selectedRoadId?: string
+  readonly nationalSnapshot?: NationalRoadStudySnapshot
 }) {
   const corridors = useMemo(
     () =>
-      snapshot.corridors.map((corridor) => {
+      (snapshot?.corridors ?? []).map((corridor) => {
         const points = corridor.path.map((coordinate) =>
           projectRoadCoordinate(coordinate, projection),
         )
@@ -363,7 +546,7 @@ export function RoadTrafficLayer({
         const road = new THREE.BufferGeometry().setFromPoints(roadSegments)
         return { corridor, curve, road }
       }),
-    [projection, snapshot.corridors],
+    [projection, snapshot?.corridors],
   )
 
   useEffect(
@@ -381,7 +564,19 @@ export function RoadTrafficLayer({
           selectedRoadId={selectedRoadId}
         />
       )}
-      {corridors.map(({ corridor, curve, road }) => {
+      {nationalSnapshot && topology && (
+        <NationalRoadTrafficFlow
+          snapshot={nationalSnapshot}
+          topology={topology}
+          projection={projection}
+          time={time}
+          isPlaying={isPlaying}
+          playbackRate={playbackRate}
+          selectedRoadId={selectedRoadId}
+          subdued={subdued}
+        />
+      )}
+      {!nationalSnapshot && snapshot && corridors.map(({ corridor, curve, road }) => {
         const corridorRoad = corridor.road.replace(/^A/, 'N')
         const corridorSubdued =
           subdued || Boolean(selectedRoadId && selectedRoadId !== corridorRoad)

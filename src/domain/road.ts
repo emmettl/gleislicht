@@ -65,8 +65,15 @@ export interface RoadTopologySite {
   readonly carriageways: readonly string[]
   readonly coordinate: readonly [longitude: number, latitude: number]
   readonly match: {
-    readonly confidence: 'high' | 'continuity' | 'review' | 'unmatched'
-    readonly method?: 'neighbouring-counters'
+    readonly confidence:
+      | 'high'
+      | 'continuity'
+      | 'authoritative'
+      | 'review'
+      | 'unmatched'
+    readonly method?: 'neighbouring-counters' | 'federal-tmc'
+    readonly tmcLocationCodes?: readonly string[]
+    readonly tmcLocationTableVersions?: readonly string[]
     readonly distanceMetres?: number
     readonly road?: string
     readonly axisName?: string
@@ -106,6 +113,7 @@ export interface RoadTopologySection {
   readonly toSiteId: string
   readonly fromCoordinate: readonly [longitude: number, latitude: number]
   readonly toCoordinate: readonly [longitude: number, latitude: number]
+  readonly path?: readonly (readonly [longitude: number, latitude: number])[]
   readonly distanceKm: number
 }
 
@@ -120,6 +128,8 @@ export interface RoadTopologySnapshot {
     readonly measurementSiteUrl: string
     readonly measurementSiteTableVersion: number
     readonly measurementSitePublishedAt: string
+    readonly tmcLocationUrl?: string
+    readonly tmcLocationTableVersion?: string
     readonly model: string
     readonly coverage: {
       readonly federalStations: number
@@ -128,6 +138,7 @@ export interface RoadTopologySnapshot {
       readonly matchedDirectionalGroups: number
       readonly highConfidenceDirectionalGroups: number
       readonly continuityResolvedDirectionalGroups: number
+      readonly authoritativeResolvedDirectionalGroups: number
       readonly reviewDirectionalGroups: number
       readonly unmatchedDirectionalGroups: number
       readonly matchedStations: number

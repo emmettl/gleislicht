@@ -92,7 +92,9 @@ export async function nationalSiteReferences(path) {
     topology.sites
       .filter(
         ({ match }) =>
-          match.confidence === 'high' || match.confidence === 'continuity',
+          match.confidence === 'high' ||
+          match.confidence === 'continuity' ||
+          match.confidence === 'authoritative',
       )
       .map(({ stationId }) => `${stationId}/#`),
   )

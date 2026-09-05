@@ -10,6 +10,8 @@ const SOURCE_ASSET =
   'https://data.geo.admin.ch/ch.astra.nationalstrassenachsen/nationalstrassenachsen/nationalstrassenachsen_2056.xtf.zip'
 const MEASUREMENT_SITE_URL =
   'https://data.opentransportdata.swiss/en/dataset/trafficcounters'
+const TMC_LOCATION_URL =
+  'https://data.opentransportdata.swiss/dataset/rds-tmc'
 const GRID_SIZE = 10_000
 const HIGH_CONFIDENCE_DISTANCE = 800
 const AMBIGUITY_DISTANCE = 180
@@ -186,6 +188,8 @@ export function parseAstraMeasurementSites(xml) {
       direction,
       lane,
       carriageway: text(match[2], 'carriageway'),
+      alertCLocationCode: text(match[2], 'specificLocation'),
+      alertCLocationTableVersion: text(match[2], 'alertCLocationTableVersion'),
       longitude,
       latitude,
       usable:
@@ -205,10 +209,18 @@ export function parseAstraMeasurementSites(xml) {
       direction: record.direction,
       detectorIds: [],
       carriageways: new Set(),
+      alertCLocationCodes: new Set(),
+      alertCLocationTableVersions: new Set(),
       coordinates: [],
     }
     group.detectorIds.push(record.id)
     if (record.carriageway) group.carriageways.add(record.carriageway)
+    if (record.alertCLocationCode) {
+      group.alertCLocationCodes.add(record.alertCLocationCode)
+    }
+    if (record.alertCLocationTableVersion) {
+      group.alertCLocationTableVersions.add(record.alertCLocationTableVersion)
+    }
     group.coordinates.push([record.longitude, record.latitude])
     grouped.set(key, group)
   }
@@ -225,6 +237,10 @@ export function parseAstraMeasurementSites(xml) {
       direction: group.direction,
       detectorIds: group.detectorIds.sort(),
       carriageways: [...group.carriageways].sort(),
+      alertCLocationCodes: [...group.alertCLocationCodes].sort(),
+      alertCLocationTableVersions: [
+        ...group.alertCLocationTableVersions,
+      ].sort(),
       coordinate: [longitude, latitude],
       lv95: wgs84ToLv95(longitude, latitude),
     }
@@ -234,6 +250,42 @@ export function parseAstraMeasurementSites(xml) {
     records,
     groups,
   }
+}
+
+function parseSemicolonTable(body) {
+  const [headerLine, ...lines] = body.trim().split(/\r?\n/)
+  const headers = headerLine.replace(/^\uFEFF/, '').split(';')
+  return lines.map((line) =>
+    Object.fromEntries(
+      line.split(';').map((value, index) => [headers[index], value]),
+    ),
+  )
+}
+
+function nationalRoadNumber(value) {
+  const number = value?.match(/^A(\d+)$/)?.[1]
+  return number ? `N${number}` : undefined
+}
+
+export function parseTmcRoadReferences(pointsBody, segmentsBody, roadsBody) {
+  const segmentRoads = new Map(
+    parseSemicolonTable(segmentsBody).flatMap((row) => {
+      const road = nationalRoadNumber(row.ROADNUMBER)
+      return road ? [[row.LCD, road]] : []
+    }),
+  )
+  const roads = new Map(
+    parseSemicolonTable(roadsBody).flatMap((row) => {
+      const road = nationalRoadNumber(row.ROADNUMBER)
+      return road ? [[row.LCD, road]] : []
+    }),
+  )
+  return new Map(
+    parseSemicolonTable(pointsBody).flatMap((row) => {
+      const road = segmentRoads.get(row.SEG_LCD) ?? roads.get(row.ROA_LCD)
+      return road ? [[row.LCD, road]] : []
+    }),
+  )
 }
 
 function gridKey(easting, northing) {
@@ -397,6 +449,32 @@ export function resolveContinuityMatches(matches) {
   })
 }
 
+export function resolveAuthoritativeMatches(matches, tmcRoadReferences) {
+  if (!tmcRoadReferences) return matches
+  return matches.map((group) => {
+    if (group.match.confidence !== 'review') return group
+    const roads = new Set(
+      group.alertCLocationCodes
+        .map((code) => tmcRoadReferences.get(code))
+        .filter(Boolean),
+    )
+    if (roads.size !== 1) return group
+    const [road] = roads
+    const candidate = group.candidateMatches.find(
+      ({ segment }) => segment.road === road,
+    )
+    if (!candidate) return group
+    return {
+      ...group,
+      match: {
+        ...candidateMatch(candidate, 'authoritative', 'federal-tmc'),
+        tmcLocationCodes: group.alertCLocationCodes,
+        tmcLocationTableVersions: group.alertCLocationTableVersions,
+      },
+    }
+  })
+}
+
 function coordinateDistanceKm(first, second) {
   const meanLatitude = ((first[1] + second[1]) / 2) * (Math.PI / 180)
   const longitudeKm = (second[0] - first[0]) * 111.32 * Math.cos(meanLatitude)
@@ -404,7 +482,78 @@ function coordinateDistanceKm(first, second) {
   return Math.hypot(longitudeKm, latitudeKm)
 }
 
-function buildCounterSections(road, roadGroups) {
+function pathDistanceKm(points) {
+  return points.slice(1).reduce(
+    (distance, point, index) =>
+      distance + coordinateDistanceKm(points[index], point),
+    0,
+  )
+}
+
+function buildAxisPathIndex(segments) {
+  const grouped = Map.groupBy(segments, ({ axisName }) => axisName)
+  return new Map(
+    [...grouped].map(([axisName, values]) => {
+      const components = []
+      for (const segment of values.sort((left, right) => left.sequence - right.sequence)) {
+        let points = segment.displayPoints
+        const current = components.at(-1)
+        if (!current) {
+          components.push([...points])
+          continue
+        }
+        const forwardGap = Math.hypot(
+          current.at(-1)[0] - points[0][0],
+          current.at(-1)[1] - points[0][1],
+        )
+        const reverseGap = Math.hypot(
+          current.at(-1)[0] - points.at(-1)[0],
+          current.at(-1)[1] - points.at(-1)[1],
+        )
+        if (Math.min(forwardGap, reverseGap) > 2_000) {
+          components.push([...points])
+          continue
+        }
+        if (reverseGap < forwardGap) points = [...points].reverse()
+        current.push(...points.slice(1))
+      }
+      return [axisName, components]
+    }),
+  )
+}
+
+function roadPathBetween(fromGroup, toGroup, axisPaths) {
+  if (!fromGroup.match.axisName || fromGroup.match.axisName !== toGroup.match.axisName) {
+    return undefined
+  }
+  const from = wgs84ToLv95(...fromGroup.match.projectedCoordinate)
+  const to = wgs84ToLv95(...toGroup.match.projectedCoordinate)
+  const candidates = (axisPaths.get(fromGroup.match.axisName) ?? []).map((points) => {
+    const nearestIndex = (target) =>
+      points.reduce(
+        (best, point, index) => {
+          const distance = Math.hypot(point[0] - target[0], point[1] - target[1])
+          return distance < best.distance ? { index, distance } : best
+        },
+        { index: 0, distance: Infinity },
+      )
+    const fromMatch = nearestIndex(from)
+    const toMatch = nearestIndex(to)
+    return { points, fromMatch, toMatch, score: fromMatch.distance + toMatch.distance }
+  })
+  const selected = candidates.sort((left, right) => left.score - right.score)[0]
+  if (!selected || selected.score > 3_000) return undefined
+  const forward = selected.fromMatch.index <= selected.toMatch.index
+  const intermediate = forward
+    ? selected.points.slice(selected.fromMatch.index, selected.toMatch.index + 1)
+    : selected.points
+        .slice(selected.toMatch.index, selected.fromMatch.index + 1)
+        .reverse()
+  const path = [from, ...intermediate, to].map(lv95ToWgs84)
+  return pathDistanceKm(path) <= MAXIMUM_SECTION_DISTANCE_KM ? path : undefined
+}
+
+function buildCounterSections(road, roadGroups, axisPaths) {
   const nodesByStation = new Map()
   for (const group of roadGroups) {
     const coordinate = group.match.projectedCoordinate
@@ -414,7 +563,7 @@ function buildCounterSections(road, roadGroups) {
       coordinate,
       directions: new Map(),
     }
-    node.directions.set(group.direction, group.id)
+    node.directions.set(group.direction, group)
     nodesByStation.set(group.stationId, node)
   }
   const nodes = [...nodesByStation.values()].sort((left, right) =>
@@ -449,20 +598,25 @@ function buildCounterSections(road, roadGroups) {
 
   return edges.flatMap(({ from, to, distanceKm }) =>
     ['positive', 'negative'].flatMap((direction) => {
-      const fromSiteId = from.directions.get(direction)
-      const toSiteId = to.directions.get(direction)
-      if (!fromSiteId || !toSiteId) return []
+      const fromGroup = from.directions.get(direction)
+      const toGroup = to.directions.get(direction)
+      if (!fromGroup || !toGroup) return []
       const reverse = direction === 'negative'
+      const sectionFrom = reverse ? toGroup : fromGroup
+      const sectionTo = reverse ? fromGroup : toGroup
+      const path = roadPathBetween(sectionFrom, sectionTo, axisPaths)
+      const measuredDistanceKm = path ? pathDistanceKm(path) : distanceKm
       return [
         {
           id: `${road}:${direction}:${from.stationId}:${to.stationId}`,
           road,
           direction,
-          fromSiteId: reverse ? toSiteId : fromSiteId,
-          toSiteId: reverse ? fromSiteId : toSiteId,
+          fromSiteId: sectionFrom.id,
+          toSiteId: sectionTo.id,
           fromCoordinate: reverse ? to.coordinate : from.coordinate,
           toCoordinate: reverse ? from.coordinate : to.coordinate,
-          distanceKm: Number(distanceKm.toFixed(2)),
+          path,
+          distanceKm: Number(measuredDistanceKm.toFixed(2)),
         },
       ]
     }),
@@ -496,15 +650,24 @@ function percentile(values, fraction) {
 export function buildRoadTopologyArtifact(
   axes,
   sites,
-  { sourceDate = '2026-08-01', sourceUpdated = '2026-09-01T03:32:13Z' } = {},
+  {
+    sourceDate = '2026-08-01',
+    sourceUpdated = '2026-09-01T03:32:13Z',
+    tmcRoadReferences,
+    tmcLocationTableVersion,
+  } = {},
 ) {
-  const matches = resolveContinuityMatches(
-    matchCounterGroups(sites.groups, axes.segments),
+  const matches = resolveAuthoritativeMatches(
+    resolveContinuityMatches(matchCounterGroups(sites.groups, axes.segments)),
+    tmcRoadReferences,
   )
   const matched = matches.filter(({ match }) => match.confidence !== 'unmatched')
   const highConfidence = matches.filter(({ match }) => match.confidence === 'high')
   const continuityResolved = matches.filter(
     ({ match }) => match.confidence === 'continuity',
+  )
+  const authoritativeResolved = matches.filter(
+    ({ match }) => match.confidence === 'authoritative',
   )
   const review = matches.filter(({ match }) => match.confidence === 'review')
   const unmatched = matches.filter(({ match }) => match.confidence === 'unmatched')
@@ -524,12 +687,15 @@ export function buildRoadTopologyArtifact(
   }))
   const eligibleMatches = matches.filter(
     ({ match }) =>
-      match.confidence === 'high' || match.confidence === 'continuity',
+      match.confidence === 'high' ||
+      match.confidence === 'continuity' ||
+      match.confidence === 'authoritative',
   )
   const sections = roads.flatMap((road) =>
     buildCounterSections(
       road,
       eligibleMatches.filter(({ match }) => match.road === road),
+      buildAxisPathIndex(axes.segments.filter((segment) => segment.road === road)),
     ),
   )
   const roadSummaries = roads.map((road) => {
@@ -564,6 +730,8 @@ export function buildRoadTopologyArtifact(
       measurementSiteUrl: MEASUREMENT_SITE_URL,
       measurementSiteTableVersion: sites.metadata.tableVersion,
       measurementSitePublishedAt: sites.metadata.publicationTime,
+      tmcLocationUrl: TMC_LOCATION_URL,
+      tmcLocationTableVersion,
       model: 'Measured counter topology / no vehicle tracking',
       coverage: {
         federalStations: stationIds.size,
@@ -572,6 +740,7 @@ export function buildRoadTopologyArtifact(
         matchedDirectionalGroups: matched.length,
         highConfidenceDirectionalGroups: highConfidence.length,
         continuityResolvedDirectionalGroups: continuityResolved.length,
+        authoritativeResolvedDirectionalGroups: authoritativeResolved.length,
         reviewDirectionalGroups: review.length,
         unmatchedDirectionalGroups: unmatched.length,
         matchedStations: matchedStationIds.size,
@@ -585,7 +754,7 @@ export function buildRoadTopologyArtifact(
         ambiguityDistanceMetres: AMBIGUITY_DISTANCE,
         maximumDistanceMetres: MAXIMUM_MATCH_DISTANCE,
         note:
-          'Counter coordinates are coarse. Continuity matches use nearby accepted counters on the same road; remaining review matches are retained for audit and cannot drive measured section flow.',
+          'Counter coordinates are coarse. Continuity matches use nearby accepted counters on the same road; FEDRO TMC point-to-road references resolve interchange ambiguity without proximity guesses.',
       },
     },
     roads: roadSummaries,
@@ -606,22 +775,38 @@ export function buildRoadTopologyArtifact(
 async function main() {
   if (process.argv.includes('--help')) {
     console.log(
-      'Usage: npm run data:road:topology -- --axes <nationalstrassenachsen.xtf> --measurement-sites <astra-mst.xml> [--output public/data/swiss-road-topology.json]',
+      'Usage: npm run data:road:topology -- --axes <nationalstrassenachsen.xtf> --measurement-sites <astra-mst.xml> [--tmc-points POINTS.DAT --tmc-segments SEGMENTS.DAT --tmc-roads ROADS.DAT --tmc-version 7.5] [--output public/data/swiss-road-topology.json]',
     )
     return
   }
   const axesPath = resolve(requiredArgument('axes'))
   const measurementSitesPath = resolve(requiredArgument('measurement-sites'))
   const output = resolve(argument('output', DEFAULT_OUTPUT))
+  const tmcPointsPath = argument('tmc-points')
+  const tmcSegmentsPath = argument('tmc-segments')
+  const tmcRoadsPath = argument('tmc-roads')
   const axes = parseNationalRoadAxes(await readFile(axesPath, 'utf8'))
   const sites = parseAstraMeasurementSites(
     await readFile(measurementSitesPath, 'utf8'),
   )
-  const artifact = buildRoadTopologyArtifact(axes, sites)
+  const hasTmcPaths = tmcPointsPath && tmcSegmentsPath && tmcRoadsPath
+  const tmcRoadReferences = hasTmcPaths
+    ? parseTmcRoadReferences(
+        await readFile(resolve(tmcPointsPath), 'latin1'),
+        await readFile(resolve(tmcSegmentsPath), 'latin1'),
+        await readFile(resolve(tmcRoadsPath), 'latin1'),
+      )
+    : undefined
+  const artifact = buildRoadTopologyArtifact(axes, sites, {
+    tmcRoadReferences,
+    tmcLocationTableVersion: hasTmcPaths
+      ? argument('tmc-version', 'unknown')
+      : undefined,
+  })
   await writeFile(output, `${JSON.stringify(artifact)}\n`)
   const { coverage } = artifact.metadata
   console.log(
-    `Wrote ${output}: ${coverage.matchedDirectionalGroups}/${coverage.usableDirectionalGroups} directional groups matched across ${coverage.roads} national roads (${coverage.highConfidenceDirectionalGroups} spatial, ${coverage.continuityResolvedDirectionalGroups} continuity, ${coverage.reviewDirectionalGroups} review, ${coverage.unmatchedDirectionalGroups} unmatched)`,
+    `Wrote ${output}: ${coverage.matchedDirectionalGroups}/${coverage.usableDirectionalGroups} directional groups matched across ${coverage.roads} national roads (${coverage.highConfidenceDirectionalGroups} spatial, ${coverage.continuityResolvedDirectionalGroups} continuity, ${coverage.authoritativeResolvedDirectionalGroups} authoritative, ${coverage.reviewDirectionalGroups} review, ${coverage.unmatchedDirectionalGroups} unmatched)`,
   )
 }
 

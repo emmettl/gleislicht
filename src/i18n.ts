@@ -233,6 +233,7 @@ export const UI_TEXT = {
     estimatedRoadVehicles: 'estimated road vehicles on the study corridor',
     trafficReconstruction: 'Traffic-flow reconstruction / no vehicle tracking',
     astraCalibration: 'ASTRA detector sites · representative calibration',
+    astraRecorded: 'ASTRA one-minute observations · progressive study',
     astraTopology: (matched: number, total: number) =>
       `${matched}/${total} federal sites aligned to national axes`,
     nationalMotorway: 'National motorway',
@@ -468,6 +469,7 @@ export const UI_TEXT = {
     estimatedRoadVehicles: 'geschätzte Strassenfahrzeuge im Studienkorridor',
     trafficReconstruction: 'Verkehrsfluss-Rekonstruktion / keine Fahrzeugverfolgung',
     astraCalibration: 'ASTRA-Messstellen · repräsentative Kalibrierung',
+    astraRecorded: 'ASTRA-Minutenmessungen · progressive Studie',
     astraTopology: (matched: number, total: number) =>
       `${matched}/${total} Bundesmessstellen den Nationalstrassen zugeordnet`,
     nationalMotorway: 'Nationalstrasse',
@@ -703,6 +705,7 @@ export const UI_TEXT = {
     estimatedRoadVehicles: 'véhicules routiers estimés sur le corridor étudié',
     trafficReconstruction: 'Reconstruction du flux routier / aucun suivi de véhicule',
     astraCalibration: 'Capteurs OFROU · calibrage représentatif',
+    astraRecorded: 'Mesures OFROU à la minute · étude progressive',
     astraTopology: (matched: number, total: number) =>
       `${matched}/${total} postes fédéraux alignés sur les axes nationaux`,
     nationalMotorway: 'Route nationale',
@@ -938,6 +941,7 @@ export const UI_TEXT = {
     estimatedRoadVehicles: 'veicoli stradali stimati nel corridoio di studio',
     trafficReconstruction: 'Ricostruzione del flusso / nessun tracciamento dei veicoli',
     astraCalibration: 'Rilevatori USTRA · calibrazione rappresentativa',
+    astraRecorded: 'Misure USTRA al minuto · studio progressivo',
     astraTopology: (matched: number, total: number) =>
       `${matched}/${total} postazioni federali allineate agli assi nazionali`,
     nationalMotorway: 'Strada nazionale',

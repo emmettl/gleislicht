@@ -73,6 +73,7 @@ import {
   type RoadTopologySnapshot,
   type RoadTrafficSnapshot,
 } from './domain/road.ts'
+import { reconstructedNationalVehicleCount } from './domain/road-day.ts'
 import {
   roadCorridorSearchValue,
   searchRoadCorridors,
@@ -98,6 +99,7 @@ import {
 import { foldSearchText } from './search-text.ts'
 import { useProgressiveNetworkDay } from './use-progressive-network-day.ts'
 import { useProgressiveAirDay } from './use-progressive-air-day.ts'
+import { useProgressiveRoadStudy } from './use-progressive-road-study.ts'
 import { useLocalPerformance } from './use-local-performance.ts'
 
 const GleislichtScene = lazy(() =>
@@ -318,6 +320,11 @@ export function App() {
     airEnabled && isNationalDay,
     networkTime,
   )
+  const nationalRoad = useProgressiveRoadStudy(
+    'swiss-road-national-manifest.json',
+    roadEnabled && Boolean(roadTopology),
+    networkTime,
+  )
   const zurichContrast = useProgressiveNetworkDay(
     'zurich-tram-day-manifest.json',
     isContrast,
@@ -402,6 +409,12 @@ export function App() {
           ? 'ready'
           : 'loading'
       : airLoadState
+  const nationalRoadInWindow = Boolean(
+    nationalRoad.snapshot &&
+      nationalRoad.chunkReady &&
+      networkTime >= nationalRoad.snapshot.metadata.windowStart &&
+      networkTime <= nationalRoad.snapshot.metadata.windowEnd,
+  )
 
   const soundtrackMode: SoundtrackMode =
     view === 'hub' ? 'hub' : view === 'journey' || selectedTrainId ? 'journey' : 'network'
@@ -475,10 +488,23 @@ export function App() {
   )
   const activeRoadVehicleCount = useMemo(
     () =>
-      roadEnabled && roadSnapshot
-        ? reconstructedVehicleCount(roadSnapshot, networkTime)
+      roadEnabled && nationalRoad.snapshot && nationalRoadInWindow
+        ? reconstructedNationalVehicleCount(
+            nationalRoad.snapshot,
+            networkTime,
+            selectedRoadId,
+          )
+        : roadEnabled && roadSnapshot
+          ? reconstructedVehicleCount(roadSnapshot, networkTime)
         : 0,
-    [networkTime, roadEnabled, roadSnapshot],
+    [
+      nationalRoadInWindow,
+      nationalRoad.snapshot,
+      networkTime,
+      roadEnabled,
+      roadSnapshot,
+      selectedRoadId,
+    ],
   )
   const corridorTrainSelected =
     isZurichChurTrain(selectedTrain, network) ||
@@ -1133,7 +1159,7 @@ export function App() {
   }, [airEnabled, airSnapshot, isNationalDay])
 
   useEffect(() => {
-    if (!roadEnabled || isNationalDay || (roadSnapshot && roadTopology)) return
+    if (!roadEnabled || (roadSnapshot && roadTopology)) return
     const controller = new AbortController()
     Promise.all([
       fetch(`${import.meta.env.BASE_URL}data/swiss-road-morning.json`, {
@@ -1173,7 +1199,7 @@ export function App() {
         setRoadLoadState('error')
       })
     return () => controller.abort()
-  }, [isNationalDay, roadEnabled, roadSnapshot, roadTopology])
+  }, [roadEnabled, roadSnapshot, roadTopology])
 
   useEffect(() => {
     if (operationsMode === 'scheduled') return
@@ -1657,8 +1683,15 @@ export function App() {
             }
             airCategorySelected={airCategorySelected}
             roadSnapshot={
-              networkStudy === 'national' && roadEnabled
+              networkStudy === 'national' && roadEnabled && !isNationalDay
                 ? roadSnapshot
+                : undefined
+            }
+            nationalRoadSnapshot={
+              networkStudy === 'national' &&
+              roadEnabled &&
+              nationalRoadInWindow
+                ? nationalRoad.snapshot
                 : undefined
             }
             roadTopology={
@@ -2943,7 +2976,9 @@ export function App() {
             </span>
             {roadEnabled && (
               <span>
-                {text.astraCalibration}
+                {nationalRoad.snapshot && nationalRoadInWindow
+                  ? text.astraRecorded
+                  : text.astraCalibration}
                 {roadTopology
                   ? ` · ${text.astraTopology(
                       roadTopology.metadata.coverage.matchedStations,

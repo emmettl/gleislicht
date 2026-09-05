@@ -16,6 +16,7 @@ describe('national ASTRA recording scope', () => {
           { stationId: 'CH:0002', match: { confidence: 'high' } },
           { stationId: 'CH:0002', match: { confidence: 'high' } },
           { stationId: 'CH:0003', match: { confidence: 'continuity' } },
+          { stationId: 'CH:0006', match: { confidence: 'authoritative' } },
           { stationId: 'CH:0004', match: { confidence: 'review' } },
           { stationId: 'CH:0005', match: { confidence: 'unmatched' } },
         ],
@@ -24,6 +25,7 @@ describe('national ASTRA recording scope', () => {
     await expect(nationalSiteReferences(path)).resolves.toEqual([
       'CH:0002/#',
       'CH:0003/#',
+      'CH:0006/#',
     ])
   })
 })

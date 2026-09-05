@@ -4,6 +4,8 @@ import {
   matchCounterGroups,
   parseAstraMeasurementSites,
   parseNationalRoadAxes,
+  parseTmcRoadReferences,
+  resolveAuthoritativeMatches,
   resolveContinuityMatches,
 } from './ingest-national-road-topology.mjs'
 
@@ -83,6 +85,50 @@ describe('national AUTO topology ingestion', () => {
       confidence: 'continuity',
       method: 'neighbouring-counters',
       road: 'N1',
+    })
+  })
+
+  it('resolves an interchange from the authoritative FEDRO TMC road reference', () => {
+    const points =
+      'CID;TABCD;LCD;CLASS;TCD;STCD;JUNCTIONNUMBER;RNID;N1ID;N2ID;POL_LCD;OTH_LCD;SEG_LCD;ROA_LCD\n51;9;10101;P;1;2;11;;1148;;32779;;1472;'
+    const segments =
+      'CID;TABCD;LCD;CLASS;TCD;STCD;ROADNUMBER;RNID;N1ID;N2ID;ROA_LCD;SEG_LCD;POL_LCD;RDID\n51;9;1472;L;3;0;A13;;1088;1134;1018;;8;27411'
+    const roads =
+      'CID;TABCD;LCD;CLASS;TCD;STCD;ROADNUMBER;RNID;N1ID;N2ID;POL_LCD;PES_LEV;RDID\n'
+    const references = parseTmcRoadReferences(points, segments, roads)
+    const [resolved] = resolveAuthoritativeMatches(
+      [
+        {
+          id: 'CH:0035:negative',
+          stationId: 'CH:0035',
+          direction: 'negative',
+          alertCLocationCodes: ['10101'],
+          alertCLocationTableVersions: ['6.9'],
+          match: { confidence: 'review' },
+          candidateMatches: [
+            {
+              distance: 191,
+              projected: [0, 0],
+              segment: {
+                road: 'N13',
+                axisName: 'N13',
+                position: 'plus',
+                id: 'segment-N13',
+                mainline: true,
+              },
+            },
+          ],
+        },
+      ],
+      references,
+    )
+    expect(references.get('10101')).toBe('N13')
+    expect(resolved.match).toMatchObject({
+      confidence: 'authoritative',
+      method: 'federal-tmc',
+      road: 'N13',
+      tmcLocationCodes: ['10101'],
+      tmcLocationTableVersions: ['6.9'],
     })
   })
 })

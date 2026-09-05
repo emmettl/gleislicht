@@ -1,5 +1,8 @@
 import { describe, expect, it } from 'vitest'
-import { compileNationalRoadStudy } from './compile-astra-national-study.mjs'
+import {
+  compileNationalRoadStudy,
+  splitNationalRoadStudy,
+} from './compile-astra-national-study.mjs'
 
 const topology = {
   sites: [
@@ -16,6 +19,11 @@ const topology = {
     {
       id: 'CH:0003:positive',
       detectorIds: ['CH:0003.01'],
+      match: { confidence: 'authoritative' },
+    },
+    {
+      id: 'CH:0004:positive',
+      detectorIds: ['CH:0004.01'],
       match: { confidence: 'review' },
     },
   ],
@@ -39,7 +47,7 @@ function snapshot(minute) {
       measurementSiteTableVersion: 23,
       recordingScope: 'national',
     },
-    measurements: ['CH:0001.01', 'CH:0002.01'].map((siteId, index) => ({
+    measurements: ['CH:0001.01', 'CH:0002.01', 'CH:0003.01'].map((siteId, index) => ({
       siteId,
       measurementTime,
       lightFlowPerHour: 1_000 + index * 100,
@@ -59,17 +67,39 @@ describe('national ASTRA study compilation', () => {
     )
     expect(result.metadata).toMatchObject({
       serviceDate: '2026-09-05',
-      acceptedSites: 2,
+      acceptedSites: 3,
       sections: 1,
       completeMinutes: 2,
       minimumSiteCoverage: 1,
     })
-    expect(result.siteIds).toEqual(['CH:0001:positive', 'CH:0002:positive'])
+    expect(result.siteIds).toEqual([
+      'CH:0001:positive',
+      'CH:0002:positive',
+      'CH:0003:positive',
+    ])
     expect(result.sections[0]).toMatchObject({
       fromSiteIndex: 0,
       toSiteIndex: 1,
     })
     expect(result.minutes).toHaveLength(2)
-    expect(result.minutes[0][1]).toHaveLength(2)
+    expect(result.minutes[0][1]).toHaveLength(3)
+  })
+
+  it('splits a compiled study into progressively loadable time chunks', () => {
+    const study = compileNationalRoadStudy(
+      [snapshot('45'), snapshot('46')],
+      topology,
+      { minimumSamples: 2 },
+    )
+    const split = splitNationalRoadStudy(study, { chunkSeconds: 900 })
+    expect(split.manifest.chunks).toEqual([
+      expect.objectContaining({
+        id: '0845-0846',
+        path: 'swiss-road-national/0845-0846.json',
+        minuteCount: 2,
+        valueCount: 6,
+      }),
+    ])
+    expect(split.chunks[0].body.minutes).toHaveLength(2)
   })
 })

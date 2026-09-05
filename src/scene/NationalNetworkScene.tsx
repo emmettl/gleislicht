@@ -10,6 +10,7 @@ import type {
   RoadTopologySnapshot,
   RoadTrafficSnapshot,
 } from '../domain/road.ts'
+import type { NationalRoadStudySnapshot } from '../domain/road-day.ts'
 import {
   positionForAirTrack,
   type AirSnapshot,
@@ -131,6 +132,7 @@ interface NationalNetworkSceneProps {
   readonly airSnapshot?: AirSnapshot
   readonly airCategorySelected?: boolean
   readonly roadSnapshot?: RoadTrafficSnapshot
+  readonly nationalRoadSnapshot?: NationalRoadStudySnapshot
   readonly roadTopology?: RoadTopologySnapshot
   readonly roadCategorySelected?: boolean
   readonly selectedRoadId?: string
@@ -3149,9 +3151,10 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
             props.selectedRoadId
         )}
       />
-      {props.roadSnapshot && (
+      {(props.roadSnapshot || props.roadTopology) && (
         <RoadTrafficLayer
           snapshot={props.roadSnapshot}
+          nationalSnapshot={props.nationalRoadSnapshot}
           topology={props.roadTopology}
           time={props.time}
           isPlaying={props.isPlaying}

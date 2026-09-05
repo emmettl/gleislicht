@@ -201,6 +201,79 @@ test('AUTO stays lazy, discloses reconstruction, and can be isolated', async ({
   )
 })
 
+test('AUTO progressively adopts a recorded national minute chunk', async ({
+  page,
+}, testInfo) => {
+  await page.route('**/data/swiss-road-national-manifest.json', async (route) => {
+    await route.fulfill({
+      contentType: 'application/json',
+      body: JSON.stringify({
+        metadata: {
+          publisher: 'Federal Roads Office (ASTRA / FEDRO)',
+          serviceDate: '2026-09-04',
+          windowStart: 24_300,
+          windowEnd: 31_500,
+          sourceUrl: 'https://opentransportdata.swiss/',
+          measurementSiteTableVersion: 23,
+          measurementKind: 'recorded',
+          model: 'Section traffic-flow reconstruction / no vehicle tracking',
+          sampleIntervalSeconds: 60,
+          acceptedSites: 2,
+          sections: 1,
+          minimumSiteCoverage: 1,
+          firstMeasurementTime: '2026-09-04T04:45:00Z',
+          lastMeasurementTime: '2026-09-04T06:45:00Z',
+          completeMinutes: 121,
+        },
+        siteIds: ['CH:0017:positive', 'CH:0072:positive'],
+        sections: [
+          {
+            id: 'N1:positive:CH:0017:CH:0072',
+            road: 'N1',
+            direction: 'positive',
+            fromSiteIndex: 0,
+            toSiteIndex: 1,
+            distanceKm: 1.11,
+          },
+        ],
+        chunks: [
+          {
+            id: '06-09',
+            windowStart: 24_300,
+            windowEnd: 31_500,
+            path: 'swiss-road-national/test.json',
+            minuteCount: 2,
+            valueCount: 4,
+          },
+        ],
+      }),
+    })
+  })
+  await page.route('**/data/swiss-road-national/test.json', async (route) => {
+    await route.fulfill({
+      contentType: 'application/json',
+      body: JSON.stringify({
+        windowStart: 24_300,
+        windowEnd: 31_500,
+        minutes: [
+          [27_900, [[0, 1_000, 80, 100, 70], [1, 1_100, 78, 110, 68]]],
+          [27_960, [[0, 1_020, 79, 102, 69], [1, 1_120, 77, 112, 67]]],
+        ],
+      }),
+    })
+  })
+
+  const toggle = page.locator(
+    testInfo.project.name === 'iphone-webkit'
+      ? '.mobile-road-toggle'
+      : '.network-study-picker .road-toggle',
+  )
+  await toggle.click()
+  await expect(page.locator('.prototype-note')).toContainText(
+    'ASTRA one-minute observations',
+  )
+})
+
 test('search selects a station and exposes its serving routes', async ({ page }) => {
   const search = page.locator('.train-search input[type="search"]')
   await search.fill('Bern')

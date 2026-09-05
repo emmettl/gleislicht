@@ -1,5 +1,5 @@
-import { readdir, readFile, writeFile } from 'node:fs/promises'
-import { resolve } from 'node:path'
+import { mkdir, readdir, readFile, writeFile } from 'node:fs/promises'
+import { basename, dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import {
   aggregateDirection,
@@ -8,12 +8,20 @@ import {
 
 const DEFAULT_INPUT = 'recordings/astra-national'
 const DEFAULT_TOPOLOGY = 'public/data/swiss-road-topology.json'
-const DEFAULT_OUTPUT = 'public/data/swiss-road-national-recorded.json'
+const DEFAULT_MANIFEST = 'public/data/swiss-road-national-manifest.json'
+const DEFAULT_CHUNK_DIRECTORY = 'public/data/swiss-road-national'
+const DEFAULT_CHUNK_SECONDS = 60 * 60
 const MINIMUM_SITE_COVERAGE = 0.6
 const MAXIMUM_MINUTE_GAP_SECONDS = 75
 
 function rounded(value) {
   return Math.round(value * 10) / 10
+}
+
+function chunkTimeLabel(seconds) {
+  const hour = Math.floor(seconds / 3_600)
+  const minute = Math.floor((seconds % 3_600) / 60)
+  return `${String(hour).padStart(2, '0')}${String(minute).padStart(2, '0')}`
 }
 
 function validateRecordedMinutes(records, tableVersions, minimumSamples) {
@@ -50,7 +58,9 @@ export function compileNationalRoadStudy(
 ) {
   const acceptedSites = topology.sites.filter(
     ({ match }) =>
-      match.confidence === 'high' || match.confidence === 'continuity',
+      match.confidence === 'high' ||
+      match.confidence === 'continuity' ||
+      match.confidence === 'authoritative',
   )
   if (!acceptedSites.length) throw new Error('Topology has no accepted ASTRA sites')
   const siteIndex = new Map(
@@ -149,6 +159,52 @@ export function compileNationalRoadStudy(
   }
 }
 
+export function splitNationalRoadStudy(
+  study,
+  { chunkSeconds = DEFAULT_CHUNK_SECONDS, chunkDirectoryName = 'swiss-road-national' } = {},
+) {
+  if (!Number.isFinite(chunkSeconds) || chunkSeconds < 60) {
+    throw new Error('National road chunk duration must be at least 60 seconds')
+  }
+  const chunkGroups = new Map()
+  for (const minute of study.minutes) {
+    const chunkStart =
+      study.metadata.windowStart +
+      Math.floor((minute[0] - study.metadata.windowStart) / chunkSeconds) *
+        chunkSeconds
+    const minutes = chunkGroups.get(chunkStart) ?? []
+    minutes.push(minute)
+    chunkGroups.set(chunkStart, minutes)
+  }
+  const chunks = [...chunkGroups.entries()].map(([windowStart, minutes]) => {
+    const windowEnd = Math.min(
+      study.metadata.windowEnd,
+      windowStart + chunkSeconds,
+    )
+    const id = `${chunkTimeLabel(windowStart)}-${chunkTimeLabel(windowEnd)}`
+    return {
+      descriptor: {
+        id,
+        windowStart,
+        windowEnd,
+        path: `${chunkDirectoryName}/${id}.json`,
+        minuteCount: minutes.length,
+        valueCount: minutes.reduce((total, minute) => total + minute[1].length, 0),
+      },
+      body: { windowStart, windowEnd, minutes },
+    }
+  })
+  return {
+    manifest: {
+      metadata: study.metadata,
+      siteIds: study.siteIds,
+      sections: study.sections,
+      chunks: chunks.map(({ descriptor }) => descriptor),
+    },
+    chunks,
+  }
+}
+
 function argumentValue(name) {
   return process.argv
     .slice(2)
@@ -159,13 +215,16 @@ function argumentValue(name) {
 async function main() {
   if (process.argv.includes('--help')) {
     console.log(
-      'Usage: npm run data:road:compile:national -- [--input=recordings/astra-national] [--topology=public/data/swiss-road-topology.json] [--output=public/data/swiss-road-national-recorded.json] [--date=YYYY-MM-DD] [--minimum-samples=60]',
+      'Usage: npm run data:road:compile:national -- [--input=recordings/astra-national] [--topology=public/data/swiss-road-topology.json] [--manifest=public/data/swiss-road-national-manifest.json] [--chunk-directory=public/data/swiss-road-national] [--chunk-seconds=3600] [--date=YYYY-MM-DD] [--minimum-samples=60]',
     )
     return
   }
   const input = resolve(argumentValue('input') ?? DEFAULT_INPUT)
   const topologyPath = resolve(argumentValue('topology') ?? DEFAULT_TOPOLOGY)
-  const output = resolve(argumentValue('output') ?? DEFAULT_OUTPUT)
+  const manifestPath = resolve(argumentValue('manifest') ?? DEFAULT_MANIFEST)
+  const chunkDirectory = resolve(
+    argumentValue('chunk-directory') ?? DEFAULT_CHUNK_DIRECTORY,
+  )
   const filenames = (await readdir(input))
     .filter((filename) => filename.endsWith('.json'))
     .sort()
@@ -179,9 +238,20 @@ async function main() {
     serviceDate: argumentValue('date'),
     minimumSamples: Number(argumentValue('minimum-samples') ?? 60),
   })
-  await writeFile(output, `${JSON.stringify(artifact)}\n`)
+  const split = splitNationalRoadStudy(artifact, {
+    chunkSeconds: Number(argumentValue('chunk-seconds') ?? DEFAULT_CHUNK_SECONDS),
+    chunkDirectoryName: basename(chunkDirectory),
+  })
+  await mkdir(dirname(manifestPath), { recursive: true })
+  await mkdir(chunkDirectory, { recursive: true })
+  await Promise.all([
+    writeFile(manifestPath, `${JSON.stringify(split.manifest)}\n`),
+    ...split.chunks.map(({ descriptor, body }) =>
+      writeFile(join(chunkDirectory, `${descriptor.id}.json`), `${JSON.stringify(body)}\n`),
+    ),
+  ])
   console.log(
-    `Wrote ${output}: ${artifact.metadata.completeMinutes} minutes across ${artifact.metadata.acceptedSites} accepted sites and ${artifact.metadata.sections} directional sections`,
+    `Wrote ${manifestPath} and ${split.chunks.length} progressive chunks: ${artifact.metadata.completeMinutes} minutes across ${artifact.metadata.acceptedSites} accepted sites and ${artifact.metadata.sections} directional sections`,
   )
 }
 
