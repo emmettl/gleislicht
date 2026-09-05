@@ -60,6 +60,15 @@ test('keyboard search selection remains complete', async ({ page }) => {
   await expect(page.locator('.station-card')).toContainText('Basel SBB')
 })
 
+test('typing in search never triggers global keyboard shortcuts', async ({ page }) => {
+  const search = page.locator('.train-search input[type="search"]')
+  await search.pressSequentially('c p')
+
+  await expect(search).toBeVisible()
+  await expect(search).toHaveValue('c p')
+  await expect(page.getByRole('button', { name: /Pause motion/i })).toBeVisible()
+})
+
 test('a Zürich–Chur train descends into measured terrain', async ({ page }) => {
   const search = page.locator('.train-search input[type="search"]')
   await search.fill('2355')

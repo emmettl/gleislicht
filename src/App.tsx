@@ -1101,9 +1101,15 @@ export function App() {
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
+      const target = event.target as HTMLElement | null
+      if (
+        target?.closest(
+          'input, textarea, select, [contenteditable="true"]',
+        )
+      ) {
+        return
+      }
       if (event.key === ' ' || event.key.toLowerCase() === 'p') {
-        const target = event.target as HTMLElement | null
-        if (target?.tagName === 'INPUT') return
         event.preventDefault()
         setIsPlaying((value) => !value)
       }
@@ -1644,6 +1650,7 @@ export function App() {
                   }
                 }}
                 onKeyDown={(event) => {
+                  event.stopPropagation()
                   if (event.key === 'Escape') {
                     event.preventDefault()
                     setSearchOpen(false)
