@@ -125,6 +125,7 @@ See [docs/LUFTRAUM.md](./docs/LUFTRAUM.md) for the data contract, filtering and 
 - [x] Reconstruct separate light- and heavy-vehicle streams from flow, speed and corridor length.
 - [x] Render warm-white and amber traffic beneath the cyan rail and magenta air layers.
 - [x] Make AUTO an optional, isolatable service category with multilingual provenance.
+- [x] Add a credential-safe, filtered one-minute ASTRA recorder and a completeness-gated compiler.
 - [ ] Begin authenticated one-minute snapshot recording and replace calibration values with a complete measured hour.
 - [ ] Judge the A1 composition on real phones before adding A2 Gotthard or a recorded full day.
 

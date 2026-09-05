@@ -37,6 +37,25 @@ The number shown in the status card is an approximate corridor occupancy derived
 
 ## From calibration to recorded data
 
-The next data step is a small authenticated recorder which makes one permitted SOAP/DATEX II pull per minute and writes append-only snapshots with receipt time, source publication time and detector-table version. Once a continuous hour passes completeness checks, it can replace the calibration samples without changing the browser contract or renderer.
+The repository includes an authenticated recorder for ASTRA's DATEX II 2.3 SOAP feed. It asks only for the eleven A1 counter groups used by this study, makes one pull after each minute publication, and writes append-only snapshots with receipt time, source publication time and detector-table version. The API key is read only from the process environment and the ignored recording directory is created with owner-only files.
+
+```sh
+# One snapshot; add -- --raw to retain the source XML beside it.
+ASTRA_API_KEY=... npm run data:road:record
+
+# Continue at one pull per minute. A failed pull is reported, never fabricated.
+ASTRA_API_KEY=... npm run data:road:record:watch
+```
+
+Each directional cross-section can contain several lanes. The compiler sums those parallel lane flows and uses a flow-weighted lane speed. It then takes the median across successive counter sites, because summing those sites would count essentially the same motorway stream repeatedly. A minute is usable only when at least 60% of the configured sites in both directions report all four light/heavy flow and speed values.
+
+```sh
+npm run data:road:compile -- \
+  --input=recordings/astra \
+  --date=2026-09-05 \
+  --output=public/data/swiss-road-recorded.json
+```
+
+Compilation requires at least 60 complete, consecutive minutes by default and rejects gaps over 75 seconds, mixed Swiss service dates and sparse directions. Its output uses the existing browser contract but declares `measurementKind: recorded` plus the precise UTC range, complete-minute count and minimum coverage. It does not overwrite the calibration artifact by default: a measured road study should be paired with rail data for the same service date and reviewed before becoming the public default.
 
 Possible later studies include the A2 Gotthard approach and a full recorded day. `Fahrstrom` remains an appealing artwork title, but AUTO is the unambiguous interface name while the project also depicts railway traction infrastructure.

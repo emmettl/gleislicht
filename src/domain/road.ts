@@ -38,6 +38,12 @@ export interface RoadTrafficSnapshot {
     readonly note: string
     readonly sampleIntervalSeconds: number
     readonly visualSampleRate: number
+    readonly recording?: {
+      readonly firstMeasurementTime: string
+      readonly lastMeasurementTime: string
+      readonly completeMinutes: number
+      readonly minimumDirectionCoverage: number
+    }
   }
   readonly corridors: readonly RoadTrafficCorridor[]
 }
