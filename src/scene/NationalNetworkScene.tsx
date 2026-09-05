@@ -1720,7 +1720,11 @@ function TrainLabels({
     for (const candidate of candidates) {
       if (visible >= labelBudget || visible >= MAX_TRAIN_LABELS) break
       const text = trainLabelText(candidate.train, candidate.selected)
-      const screenHeight = trainLabelScreenHeight(size.width, candidate.selected)
+      const screenHeight = trainLabelScreenHeight(
+        size.width,
+        candidate.selected,
+        semanticCameraHeight,
+      )
       const width = trainLabelScreenWidth(text, screenHeight)
       const box = {
         left: candidate.x - width / 2,

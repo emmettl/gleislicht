@@ -45,10 +45,13 @@ describe('train labels', () => {
     ])
   })
 
-  it('keeps iPhone train labels at a readable screen size', () => {
-    expect(trainLabelScreenHeight(390, false)).toBe(44)
-    expect(trainLabelScreenHeight(390, true)).toBe(52)
-    expect(trainLabelScreenHeight(1024, false)).toBe(38)
-    expect(trainLabelScreenWidth('IC1 · 710', 44)).toBeGreaterThanOrEqual(120)
+  it('keeps iPhone overview labels restrained and close labels readable', () => {
+    expect(trainLabelScreenHeight(390, false, 37)).toBe(32)
+    expect(trainLabelScreenHeight(390, true, 37)).toBe(40)
+    expect(trainLabelScreenHeight(390, false, 24)).toBe(38)
+    expect(trainLabelScreenHeight(390, false, 14)).toBe(44)
+    expect(trainLabelScreenHeight(390, true, 14)).toBe(52)
+    expect(trainLabelScreenHeight(1024, false, 37)).toBe(38)
+    expect(trainLabelScreenWidth('IC1 · 710', 32)).toBeGreaterThanOrEqual(90)
   })
 })

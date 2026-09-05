@@ -7,8 +7,16 @@ export const MAX_TRAIN_LABELS = 56
 export function trainLabelScreenHeight(
   viewportWidth: number,
   selected: boolean,
+  cameraHeight: number,
 ): number {
-  if (viewportWidth <= 600) return selected ? 52 : 44
+  if (viewportWidth <= 600) {
+    const overviewProgress = Math.min(
+      1,
+      Math.max(0, (cameraHeight - 18) / 12),
+    )
+    const closeHeight = selected ? 52 : 44
+    return closeHeight - overviewProgress * 12
+  }
   return selected ? 46 : 38
 }
 
