@@ -31,5 +31,12 @@ describe('air search', () => {
 
   it('uses a compact searchable selection value', () => {
     expect(airTrackSearchValue(tracks[0])).toBe('SWR18K · 4B1801')
+    expect(
+      airTrackSearchValue({
+        ...tracks[0],
+        id: '4b1801-24300',
+        icaoAddress: '4b1801',
+      }),
+    ).toBe('SWR18K · 4B1801')
   })
 })
