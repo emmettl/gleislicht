@@ -15,7 +15,7 @@ export function trainLabelScreenHeight(
       Math.max(0, (cameraHeight - 18) / 12),
     )
     const closeHeight = selected ? 52 : 44
-    return closeHeight - overviewProgress * 12
+    return closeHeight - overviewProgress * 20
   }
   return selected ? 46 : 38
 }
