@@ -189,6 +189,16 @@ test('AUTO stays lazy, discloses reconstruction, and can be isolated', async ({
     await expect(autoCategory).toHaveAttribute('aria-pressed', 'true')
     await expect(page.locator('.service-legend')).toHaveClass(/has-filter/)
   }
+
+  const search = page.locator('.train-search input[type="search"]')
+  await search.fill('Gotthard')
+  const roadResult = page.locator('.search-results .road-result').first()
+  await expect(roadResult).toContainText('A2')
+  await roadResult.click()
+  await expect(page.locator('.road-corridor-card')).toContainText('A2')
+  await expect(page.locator('.road-corridor-card')).toContainText(
+    'measurement-ready',
+  )
 })
 
 test('search selects a station and exposes its serving routes', async ({ page }) => {

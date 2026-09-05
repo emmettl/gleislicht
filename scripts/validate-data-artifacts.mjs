@@ -201,9 +201,37 @@ assert(
   'National road topology has too few high-confidence counter matches',
 )
 assert(
+  roadTopology.metadata.coverage.continuityResolvedDirectionalGroups >= 40 &&
+    roadTopology.metadata.coverage.reviewDirectionalGroups <= 15,
+  'National road topology has not resolved enough ambiguous counter matches',
+)
+assert(
   roadTopology.metadata.coverage.roads >= 20 &&
     roadTopology.paths.length >= 3_000,
   'National road topology has insufficient official axis geometry',
+)
+assert(
+  roadTopology.roads.length >= 20 &&
+    roadTopology.roads.every(
+      (road) =>
+        /^N\d+$/.test(road.id) &&
+        /^A\d+$/.test(road.label) &&
+        road.focus.every(Number.isFinite) &&
+        Number.isFinite(road.cameraScale),
+    ),
+  'National road topology contains malformed corridor summaries',
+)
+assert(
+  roadTopology.sections.length >= 500 &&
+    roadTopology.sections.every(
+      (section) =>
+        /^N\d+$/.test(section.road) &&
+        section.distanceKm > 0 &&
+        section.distanceKm <= 45 &&
+        section.fromCoordinate.every(Number.isFinite) &&
+        section.toCoordinate.every(Number.isFinite),
+    ),
+  'National road topology contains malformed counter sections',
 )
 assert(
   roadTopology.paths.every((path) =>

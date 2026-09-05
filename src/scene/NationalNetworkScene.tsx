@@ -100,10 +100,13 @@ export type MapCameraAction =
   | 'zoom-out'
   | 'reset'
   | 'reveal-station'
+  | 'focus-road'
 
 export interface MapCameraCommand {
   readonly id: number
   readonly action: MapCameraAction
+  readonly focus?: readonly [longitude: number, latitude: number]
+  readonly distanceScale?: number
 }
 
 interface NationalNetworkSceneProps {
@@ -130,6 +133,7 @@ interface NationalNetworkSceneProps {
   readonly roadSnapshot?: RoadTrafficSnapshot
   readonly roadTopology?: RoadTopologySnapshot
   readonly roadCategorySelected?: boolean
+  readonly selectedRoadId?: string
   readonly selectedAirTrack?: AirTrack
   readonly onSelectAirTrack?: (trackId: string) => void
 }
@@ -2837,6 +2841,16 @@ function NetworkCamera({
       }
       return
     }
+    if (cameraCommand.action === 'focus-road') {
+      if (!cameraCommand.focus) return
+      const [x, , z] = projectCoordinate(cameraCommand.focus, airProjection)
+      mapTarget.current.set(x, 0, z)
+      distanceScale.current = Math.max(
+        minimumDistanceScale,
+        cameraCommand.distanceScale ?? 0.58,
+      )
+      return
+    }
     const multiplier = cameraCommand.action === 'zoom-in' ? 0.78 : 1.28
     distanceScale.current = applyMapZoom(
       distanceScale.current,
@@ -2847,6 +2861,7 @@ function NetworkCamera({
     camera,
     cameraCommand,
     cameraFraming,
+    airProjection,
     mapFocus,
     minimumDistanceScale,
     projectedStops,
@@ -3086,7 +3101,8 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
               props.selectedStation ||
               props.selectedCategory ||
               props.airCategorySelected ||
-              props.roadCategorySelected
+              props.roadCategorySelected ||
+              props.selectedRoadId
           )}
         />
       )}
@@ -3101,6 +3117,7 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
               props.selectedCategory ||
               props.airCategorySelected ||
               props.roadCategorySelected ||
+              props.selectedRoadId ||
               hasContext
           )}
         />
@@ -3128,7 +3145,8 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
             props.selectedStation ||
             props.selectedCategory ||
             props.airCategorySelected ||
-            props.roadCategorySelected
+            props.roadCategorySelected ||
+            props.selectedRoadId
         )}
       />
       {props.roadSnapshot && (
@@ -3139,6 +3157,7 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
           isPlaying={props.isPlaying}
           playbackRate={props.playbackRate}
           projection={projection}
+          selectedRoadId={props.selectedRoadId}
           subdued={Boolean(
             props.selectedTrain ||
               props.selectedRoute ||

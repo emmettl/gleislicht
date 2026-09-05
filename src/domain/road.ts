@@ -65,7 +65,8 @@ export interface RoadTopologySite {
   readonly carriageways: readonly string[]
   readonly coordinate: readonly [longitude: number, latitude: number]
   readonly match: {
-    readonly confidence: 'high' | 'review' | 'unmatched'
+    readonly confidence: 'high' | 'continuity' | 'review' | 'unmatched'
+    readonly method?: 'neighbouring-counters'
     readonly distanceMetres?: number
     readonly road?: string
     readonly axisName?: string
@@ -76,6 +77,36 @@ export interface RoadTopologySite {
     readonly competingRoad?: string
     readonly competingDistanceMetres?: number
   }
+}
+
+export interface RoadTopologyRoad {
+  readonly id: string
+  readonly label: string
+  readonly officialLabel: string
+  readonly description?: string
+  readonly bounds: {
+    readonly minLongitude: number
+    readonly maxLongitude: number
+    readonly minLatitude: number
+    readonly maxLatitude: number
+  }
+  readonly focus: readonly [longitude: number, latitude: number]
+  readonly cameraScale: number
+  readonly pathCount: number
+  readonly stationCount: number
+  readonly directionalSiteCount: number
+  readonly sectionCount: number
+}
+
+export interface RoadTopologySection {
+  readonly id: string
+  readonly road: string
+  readonly direction: 'positive' | 'negative'
+  readonly fromSiteId: string
+  readonly toSiteId: string
+  readonly fromCoordinate: readonly [longitude: number, latitude: number]
+  readonly toCoordinate: readonly [longitude: number, latitude: number]
+  readonly distanceKm: number
 }
 
 export interface RoadTopologySnapshot {
@@ -96,6 +127,7 @@ export interface RoadTopologySnapshot {
       readonly usableDirectionalGroups: number
       readonly matchedDirectionalGroups: number
       readonly highConfidenceDirectionalGroups: number
+      readonly continuityResolvedDirectionalGroups: number
       readonly reviewDirectionalGroups: number
       readonly unmatchedDirectionalGroups: number
       readonly matchedStations: number
@@ -105,7 +137,9 @@ export interface RoadTopologySnapshot {
       readonly axisSegments: number
     }
   }
+  readonly roads: readonly RoadTopologyRoad[]
   readonly paths: readonly RoadTopologyPath[]
+  readonly sections: readonly RoadTopologySection[]
   readonly sites: readonly RoadTopologySite[]
 }
 

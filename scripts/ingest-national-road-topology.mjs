@@ -14,6 +14,23 @@ const GRID_SIZE = 10_000
 const HIGH_CONFIDENCE_DISTANCE = 800
 const AMBIGUITY_DISTANCE = 180
 const MAXIMUM_MATCH_DISTANCE = 1_500
+const CONTINUITY_RADIUS = 25_000
+const CONTINUITY_DECAY = 8_000
+const CONTINUITY_MINIMUM_SCORE = 0.55
+const CONTINUITY_SCORE_RATIO = 1.55
+const CONTINUITY_SCORE_MARGIN = 0.35
+const MAXIMUM_SECTION_DISTANCE_KM = 45
+
+const ROAD_DESCRIPTIONS = {
+  N1: 'Genève · Lausanne · Bern · Zürich · St. Margrethen',
+  N2: 'Basel · Gotthard · Chiasso',
+  N3: 'Basel · Zürich · Sargans',
+  N4: 'Schaffhausen · Zürich · Altdorf',
+  N5: 'Yverdon · Neuchâtel · Biel',
+  N6: 'Biel · Bern · Wimmis',
+  N9: 'Vallorbe · Lausanne · Simplon',
+  N13: 'St. Margrethen · Chur · Bellinzona',
+}
 
 function argument(name, fallback) {
   const index = process.argv.indexOf(`--${name}`)
@@ -288,6 +305,11 @@ export function matchCounterGroups(groups, segments) {
       : undefined
     return {
       ...group,
+      candidateMatches: candidates.slice(0, 3).map((candidate) => ({
+        distance: candidate.distance,
+        projected: candidate.projected,
+        segment: candidate.segment,
+      })),
       match:
         confidence === 'unmatched'
           ? { confidence, distanceMetres }
@@ -309,6 +331,162 @@ export function matchCounterGroups(groups, segments) {
   })
 }
 
+function candidateMatch(candidate, confidence, method) {
+  return {
+    confidence,
+    method,
+    distanceMetres: Math.round(candidate.distance),
+    road: candidate.segment.road,
+    axisName: candidate.segment.axisName,
+    axisPosition: candidate.segment.position,
+    segmentId: candidate.segment.id,
+    mainline: candidate.segment.mainline,
+    projectedCoordinate: lv95ToWgs84(candidate.projected),
+  }
+}
+
+function continuityScore(group, road, anchors) {
+  const nearbyStations = new Map()
+  for (const anchor of anchors) {
+    if (anchor.match.road !== road || anchor.stationId === group.stationId) continue
+    const distance = Math.hypot(
+      group.lv95[0] - anchor.lv95[0],
+      group.lv95[1] - anchor.lv95[1],
+    )
+    if (distance > CONTINUITY_RADIUS) continue
+    const current = nearbyStations.get(anchor.stationId)
+    if (current === undefined || distance < current) {
+      nearbyStations.set(anchor.stationId, distance)
+    }
+  }
+  return [...nearbyStations.values()].reduce(
+    (score, distance) => score + Math.exp(-distance / CONTINUITY_DECAY),
+    0,
+  )
+}
+
+export function resolveContinuityMatches(matches) {
+  const anchors = matches.filter(({ match }) => match.confidence === 'high')
+  return matches.map((group) => {
+    if (group.match.confidence !== 'review') return group
+    const scored = group.candidateMatches
+      .filter(({ distance }) => distance <= MAXIMUM_MATCH_DISTANCE)
+      .map((candidate) => ({
+        candidate,
+        score: continuityScore(group, candidate.segment.road, anchors),
+      }))
+      .sort(
+        (left, right) =>
+          right.score - left.score ||
+          left.candidate.distance - right.candidate.distance,
+      )
+    const winner = scored[0]
+    const runnerUp = scored[1]
+    if (!winner || winner.score < CONTINUITY_MINIMUM_SCORE) return group
+    if (
+      runnerUp &&
+      (winner.score < runnerUp.score * CONTINUITY_SCORE_RATIO ||
+        winner.score - runnerUp.score < CONTINUITY_SCORE_MARGIN)
+    ) {
+      return group
+    }
+    return {
+      ...group,
+      match: candidateMatch(winner.candidate, 'continuity', 'neighbouring-counters'),
+    }
+  })
+}
+
+function coordinateDistanceKm(first, second) {
+  const meanLatitude = ((first[1] + second[1]) / 2) * (Math.PI / 180)
+  const longitudeKm = (second[0] - first[0]) * 111.32 * Math.cos(meanLatitude)
+  const latitudeKm = (second[1] - first[1]) * 110.57
+  return Math.hypot(longitudeKm, latitudeKm)
+}
+
+function buildCounterSections(road, roadGroups) {
+  const nodesByStation = new Map()
+  for (const group of roadGroups) {
+    const coordinate = group.match.projectedCoordinate
+    if (!coordinate) continue
+    const node = nodesByStation.get(group.stationId) ?? {
+      stationId: group.stationId,
+      coordinate,
+      directions: new Map(),
+    }
+    node.directions.set(group.direction, group.id)
+    nodesByStation.set(group.stationId, node)
+  }
+  const nodes = [...nodesByStation.values()].sort((left, right) =>
+    left.stationId.localeCompare(right.stationId),
+  )
+  if (nodes.length < 2) return []
+
+  const visited = new Set([nodes[0].stationId])
+  const edges = []
+  while (visited.size < nodes.length) {
+    let closest
+    for (const from of nodes) {
+      if (!visited.has(from.stationId)) continue
+      for (const to of nodes) {
+        if (visited.has(to.stationId)) continue
+        const distanceKm = coordinateDistanceKm(from.coordinate, to.coordinate)
+        if (!closest || distanceKm < closest.distanceKm) {
+          closest = { from, to, distanceKm }
+        }
+      }
+    }
+    if (!closest || closest.distanceKm > MAXIMUM_SECTION_DISTANCE_KM) {
+      const seed = nodes.find((node) => !visited.has(node.stationId))
+      if (!seed) break
+      visited.add(seed.stationId)
+      continue
+    }
+    visited.add(closest.to.stationId)
+    if (closest.distanceKm < 0.02) continue
+    edges.push(closest)
+  }
+
+  return edges.flatMap(({ from, to, distanceKm }) =>
+    ['positive', 'negative'].flatMap((direction) => {
+      const fromSiteId = from.directions.get(direction)
+      const toSiteId = to.directions.get(direction)
+      if (!fromSiteId || !toSiteId) return []
+      const reverse = direction === 'negative'
+      return [
+        {
+          id: `${road}:${direction}:${from.stationId}:${to.stationId}`,
+          road,
+          direction,
+          fromSiteId: reverse ? toSiteId : fromSiteId,
+          toSiteId: reverse ? fromSiteId : toSiteId,
+          fromCoordinate: reverse ? to.coordinate : from.coordinate,
+          toCoordinate: reverse ? from.coordinate : to.coordinate,
+          distanceKm: Number(distanceKm.toFixed(2)),
+        },
+      ]
+    }),
+  )
+}
+
+function roadBounds(paths) {
+  const coordinates = paths.flatMap(({ points }) => points)
+  const longitudes = coordinates.map(([longitude]) => longitude)
+  const latitudes = coordinates.map(([, latitude]) => latitude)
+  return {
+    minLongitude: Math.min(...longitudes),
+    maxLongitude: Math.max(...longitudes),
+    minLatitude: Math.min(...latitudes),
+    maxLatitude: Math.max(...latitudes),
+  }
+}
+
+function cameraScaleForBounds(bounds) {
+  const longitudeSpan = bounds.maxLongitude - bounds.minLongitude
+  const latitudeSpan = bounds.maxLatitude - bounds.minLatitude
+  return Number(Math.max(0.36, Math.min(0.95, Math.max(longitudeSpan / 4.3, latitudeSpan / 2.2))).toFixed(2))
+}
+
 function percentile(values, fraction) {
   if (!values.length) return 0
   const sorted = [...values].sort((left, right) => left - right)
@@ -320,9 +498,14 @@ export function buildRoadTopologyArtifact(
   sites,
   { sourceDate = '2026-08-01', sourceUpdated = '2026-09-01T03:32:13Z' } = {},
 ) {
-  const matches = matchCounterGroups(sites.groups, axes.segments)
+  const matches = resolveContinuityMatches(
+    matchCounterGroups(sites.groups, axes.segments),
+  )
   const matched = matches.filter(({ match }) => match.confidence !== 'unmatched')
   const highConfidence = matches.filter(({ match }) => match.confidence === 'high')
+  const continuityResolved = matches.filter(
+    ({ match }) => match.confidence === 'continuity',
+  )
   const review = matches.filter(({ match }) => match.confidence === 'review')
   const unmatched = matches.filter(({ match }) => match.confidence === 'unmatched')
   const distances = matched.map(({ match }) => match.distanceMetres)
@@ -331,6 +514,45 @@ export function buildRoadTopologyArtifact(
   const roads = [...new Set(axes.segments.map(({ road }) => road))].sort(
     (left, right) => Number(left.slice(1)) - Number(right.slice(1)),
   )
+  const paths = axes.segments.map((segment) => ({
+    id: segment.id,
+    road: segment.road,
+    axisName: segment.axisName,
+    position: segment.position,
+    mainline: segment.mainline,
+    points: segment.displayPoints.map(lv95ToWgs84),
+  }))
+  const eligibleMatches = matches.filter(
+    ({ match }) =>
+      match.confidence === 'high' || match.confidence === 'continuity',
+  )
+  const sections = roads.flatMap((road) =>
+    buildCounterSections(
+      road,
+      eligibleMatches.filter(({ match }) => match.road === road),
+    ),
+  )
+  const roadSummaries = roads.map((road) => {
+    const roadPaths = paths.filter((path) => path.road === road)
+    const roadSites = eligibleMatches.filter(({ match }) => match.road === road)
+    const bounds = roadBounds(roadPaths)
+    return {
+      id: road,
+      label: `A${road.slice(1)}`,
+      officialLabel: road,
+      description: ROAD_DESCRIPTIONS[road],
+      bounds,
+      focus: [
+        Number(((bounds.minLongitude + bounds.maxLongitude) / 2).toFixed(5)),
+        Number(((bounds.minLatitude + bounds.maxLatitude) / 2).toFixed(5)),
+      ],
+      cameraScale: cameraScaleForBounds(bounds),
+      pathCount: roadPaths.length,
+      stationCount: new Set(roadSites.map(({ stationId }) => stationId)).size,
+      directionalSiteCount: roadSites.length,
+      sectionCount: sections.filter((section) => section.road === road).length,
+    }
+  })
   return {
     metadata: {
       publisher: 'Federal Roads Office (ASTRA / FEDRO)',
@@ -349,6 +571,7 @@ export function buildRoadTopologyArtifact(
         usableDirectionalGroups: matches.length,
         matchedDirectionalGroups: matched.length,
         highConfidenceDirectionalGroups: highConfidence.length,
+        continuityResolvedDirectionalGroups: continuityResolved.length,
         reviewDirectionalGroups: review.length,
         unmatchedDirectionalGroups: unmatched.length,
         matchedStations: matchedStationIds.size,
@@ -362,17 +585,12 @@ export function buildRoadTopologyArtifact(
         ambiguityDistanceMetres: AMBIGUITY_DISTANCE,
         maximumDistanceMetres: MAXIMUM_MATCH_DISTANCE,
         note:
-          'Counter coordinates are coarse. Review matches are retained for audit but must not drive measured section flow until resolved.',
+          'Counter coordinates are coarse. Continuity matches use nearby accepted counters on the same road; remaining review matches are retained for audit and cannot drive measured section flow.',
       },
     },
-    paths: axes.segments.map((segment) => ({
-      id: segment.id,
-      road: segment.road,
-      axisName: segment.axisName,
-      position: segment.position,
-      mainline: segment.mainline,
-      points: segment.displayPoints.map(lv95ToWgs84),
-    })),
+    roads: roadSummaries,
+    paths,
+    sections,
     sites: matches.map((group) => ({
       id: group.id,
       stationId: group.stationId,
@@ -403,7 +621,7 @@ async function main() {
   await writeFile(output, `${JSON.stringify(artifact)}\n`)
   const { coverage } = artifact.metadata
   console.log(
-    `Wrote ${output}: ${coverage.matchedDirectionalGroups}/${coverage.usableDirectionalGroups} directional groups matched across ${coverage.roads} national roads (${coverage.highConfidenceDirectionalGroups} high confidence, ${coverage.reviewDirectionalGroups} review, ${coverage.unmatchedDirectionalGroups} unmatched)`,
+    `Wrote ${output}: ${coverage.matchedDirectionalGroups}/${coverage.usableDirectionalGroups} directional groups matched across ${coverage.roads} national roads (${coverage.highConfidenceDirectionalGroups} spatial, ${coverage.continuityResolvedDirectionalGroups} continuity, ${coverage.reviewDirectionalGroups} review, ${coverage.unmatchedDirectionalGroups} unmatched)`,
   )
 }
 

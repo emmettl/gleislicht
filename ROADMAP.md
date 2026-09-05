@@ -127,7 +127,9 @@ See [docs/LUFTRAUM.md](./docs/LUFTRAUM.md) for the data contract, filtering and 
 - [x] Make AUTO an optional, isolatable service category with multilingual provenance.
 - [x] Add a credential-safe, filtered one-minute ASTRA recorder and a completeness-gated compiler.
 - [x] Audit all federal counters against official national-road axes and render the lazy national skeleton.
-- [ ] Resolve the 59 ambiguous directional matches before they can drive section-level flow.
+- [x] Resolve 49 of 59 ambiguous directional matches from neighbouring-counter continuity.
+- [x] Build 601 measurement-ready directional sections and searchable A-road corridor focus.
+- [ ] Resolve the final 10 interchange directions from an authoritative road identifier rather than proximity.
 - [ ] Begin authenticated one-minute snapshot recording and replace calibration values with a complete measured hour.
 - [ ] Judge the A1 composition on real phones before adding A2 Gotthard or a recorded full day.
 

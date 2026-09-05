@@ -639,6 +639,23 @@ h1 {
   text-shadow: 0 0 12px color-mix(in srgb, var(--service-accent, var(--cyan)) 62%, transparent);
 }
 
+.road-corridor-card {
+  border-left-color: rgba(255, 179, 107, 0.84);
+  background: linear-gradient(135deg, rgba(50, 30, 18, 0.9), rgba(7, 7, 22, 0.54));
+  box-shadow: inset 3px 0 0 rgba(255, 179, 107, 0.68),
+    0 0 38px rgba(255, 157, 82, 0.16);
+}
+
+.road-corridor-card .service,
+.road-card-mark {
+  color: #ffcc8d;
+  text-shadow: 0 0 13px rgba(255, 157, 82, 0.72);
+}
+
+.road-card-mark {
+  font-size: 1.05rem;
+}
+
 .station-card-mark {
   color: var(--pink);
   font-size: 1.15rem;
@@ -931,6 +948,28 @@ h1 {
   font-size: 0.57rem;
   letter-spacing: 0.07em;
   text-transform: uppercase;
+}
+
+.map-navigation .road-corridor-quick {
+  max-width: 226px;
+  margin-top: 5px;
+  margin-left: auto;
+}
+
+.map-navigation .road-corridor-quick button {
+  width: auto;
+  min-width: 40px;
+  min-height: 29px;
+  padding: 0 7px;
+  color: rgba(255, 204, 141, 0.7);
+  font-size: 0.55rem;
+}
+
+.map-navigation .road-corridor-quick button[aria-pressed='true'] {
+  border-color: rgba(255, 179, 107, 0.72);
+  background: rgba(80, 48, 27, 0.82);
+  color: #fff1cf;
+  box-shadow: inset 0 -1px 0 #ffb36b, 0 0 16px rgba(255, 157, 82, 0.18);
 }
 
 .train-label-toggle span {
@@ -1240,6 +1279,10 @@ h1 {
   background: rgba(54, 15, 59, 0.28);
 }
 
+.search-results > .road-result {
+  background: rgba(58, 35, 20, 0.3);
+}
+
 .station-result-mark {
   align-self: center;
   color: var(--pink);
@@ -1261,6 +1304,14 @@ h1 {
   font-size: 0.56rem;
   line-height: 1;
   text-shadow: 0 0 12px var(--pink);
+}
+
+.road-result-mark {
+  align-self: center;
+  color: #ffb36b;
+  font-size: 0.88rem;
+  line-height: 1;
+  text-shadow: 0 0 12px rgba(255, 157, 82, 0.78);
 }
 
 .search-results p {
@@ -2156,6 +2207,29 @@ footer {
 
   .network-study-picker {
     max-width: 220px;
+  }
+}
+
+@media (max-width: 700px) {
+  .view-network.has-selection .road-corridor-card {
+    right: auto;
+    width: min(228px, calc(100vw - 68px));
+    max-width: none;
+    padding: 8px 10px 9px;
+  }
+
+  .road-corridor-card .service-row {
+    font-size: 0.72rem;
+  }
+
+  .road-corridor-card .between {
+    margin: 5px 0 0;
+    font-size: 0.54rem;
+    line-height: 1.3;
+  }
+
+  .road-corridor-card .metric-grid {
+    display: none;
   }
 }
 

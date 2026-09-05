@@ -20,50 +20,84 @@ function RoadTopology({
   snapshot,
   projection,
   subdued,
+  selectedRoadId,
 }: {
   readonly snapshot: RoadTopologySnapshot
   readonly projection: NetworkProjection
   readonly subdued: boolean
+  readonly selectedRoadId?: string
 }) {
   const pointTexture = useMemo(() => createGlowPointTexture(), [])
   const geometry = useMemo(() => {
     const mainlinePoints: THREE.Vector3[] = []
     const connectorPoints: THREE.Vector3[] = []
+    const selectedMainlinePoints: THREE.Vector3[] = []
+    const selectedConnectorPoints: THREE.Vector3[] = []
     for (const path of snapshot.paths) {
       const target = path.mainline ? mainlinePoints : connectorPoints
+      const selectedTarget = path.mainline
+        ? selectedMainlinePoints
+        : selectedConnectorPoints
       for (let index = 1; index < path.points.length; index += 1) {
-        target.push(
-          projectRoadCoordinate(path.points[index - 1], projection, 0.065),
-          projectRoadCoordinate(path.points[index], projection, 0.065),
+        const first = projectRoadCoordinate(
+          path.points[index - 1],
+          projection,
+          0.065,
         )
+        const second = projectRoadCoordinate(path.points[index], projection, 0.065)
+        target.push(first, second)
+        if (path.road === selectedRoadId) selectedTarget.push(first, second)
       }
     }
     const seenStations = new Set<string>()
+    const seenSelectedStations = new Set<string>()
+    const selectedSitePoints: THREE.Vector3[] = []
     const sitePoints = snapshot.sites.flatMap((site) => {
       if (
-        site.match.confidence !== 'high' ||
+        (site.match.confidence !== 'high' &&
+          site.match.confidence !== 'continuity') ||
         !site.match.projectedCoordinate ||
         seenStations.has(site.stationId)
       ) {
         return []
       }
       seenStations.add(site.stationId)
-      return [
-        projectRoadCoordinate(site.match.projectedCoordinate, projection, 0.085),
-      ]
+      const point = projectRoadCoordinate(
+        site.match.projectedCoordinate,
+        projection,
+        0.085,
+      )
+      if (
+        site.match.road === selectedRoadId &&
+        !seenSelectedStations.has(site.stationId)
+      ) {
+        selectedSitePoints.push(point)
+        seenSelectedStations.add(site.stationId)
+      }
+      return [point]
     })
     return {
       mainline: new THREE.BufferGeometry().setFromPoints(mainlinePoints),
       connectors: new THREE.BufferGeometry().setFromPoints(connectorPoints),
       sites: new THREE.BufferGeometry().setFromPoints(sitePoints),
+      selectedMainline: new THREE.BufferGeometry().setFromPoints(
+        selectedMainlinePoints,
+      ),
+      selectedConnectors: new THREE.BufferGeometry().setFromPoints(
+        selectedConnectorPoints,
+      ),
+      selectedSites: new THREE.BufferGeometry().setFromPoints(selectedSitePoints),
     }
-  }, [projection, snapshot.paths, snapshot.sites])
+  }, [projection, selectedRoadId, snapshot.paths, snapshot.sites])
 
   useEffect(
     () => () => {
       geometry.mainline.dispose()
       geometry.connectors.dispose()
       geometry.sites.dispose()
+      geometry.selectedMainline.dispose()
+      geometry.selectedConnectors.dispose()
+      geometry.selectedSites.dispose()
     },
     [geometry],
   )
@@ -76,7 +110,7 @@ function RoadTopology({
         <lineBasicMaterial
           color="#bc8058"
           transparent
-          opacity={subdued ? 0.008 : 0.018}
+          opacity={selectedRoadId ? 0.003 : subdued ? 0.008 : 0.018}
           depthWrite={false}
         />
       </lineSegments>
@@ -84,7 +118,7 @@ function RoadTopology({
         <lineBasicMaterial
           color="#ffb36b"
           transparent
-          opacity={subdued ? 0.018 : 0.062}
+          opacity={selectedRoadId ? 0.008 : subdued ? 0.018 : 0.062}
           blending={THREE.AdditiveBlending}
           depthWrite={false}
         />
@@ -96,13 +130,54 @@ function RoadTopology({
           size={0.1}
           sizeAttenuation
           transparent
-          opacity={subdued ? 0.08 : 0.34}
+          opacity={selectedRoadId ? 0.05 : subdued ? 0.08 : 0.34}
           alphaTest={0.015}
           blending={THREE.AdditiveBlending}
           depthWrite={false}
           toneMapped={false}
         />
       </points>
+      {selectedRoadId && (
+        <>
+          <lineSegments geometry={geometry.selectedConnectors} renderOrder={7}>
+            <lineBasicMaterial
+              color="#ff9d52"
+              transparent
+              opacity={0.22}
+              blending={THREE.AdditiveBlending}
+              depthTest={false}
+              depthWrite={false}
+              toneMapped={false}
+            />
+          </lineSegments>
+          <lineSegments geometry={geometry.selectedMainline} renderOrder={8}>
+            <lineBasicMaterial
+              color="#fff1cf"
+              transparent
+              opacity={0.92}
+              blending={THREE.AdditiveBlending}
+              depthTest={false}
+              depthWrite={false}
+              toneMapped={false}
+            />
+          </lineSegments>
+          <points geometry={geometry.selectedSites} renderOrder={9}>
+            <pointsMaterial
+              map={pointTexture}
+              color="#ffbc70"
+              size={0.15}
+              sizeAttenuation
+              transparent
+              opacity={0.86}
+              alphaTest={0.015}
+              blending={THREE.AdditiveBlending}
+              depthTest={false}
+              depthWrite={false}
+              toneMapped={false}
+            />
+          </points>
+        </>
+      )}
     </group>
   )
 }
@@ -263,6 +338,7 @@ export function RoadTrafficLayer({
   playbackRate,
   projection,
   subdued = false,
+  selectedRoadId,
 }: {
   readonly snapshot: RoadTrafficSnapshot
   readonly topology?: RoadTopologySnapshot
@@ -271,6 +347,7 @@ export function RoadTrafficLayer({
   readonly playbackRate: number
   readonly projection: NetworkProjection
   readonly subdued?: boolean
+  readonly selectedRoadId?: string
 }) {
   const corridors = useMemo(
     () =>
@@ -301,15 +378,20 @@ export function RoadTrafficLayer({
           snapshot={topology}
           projection={projection}
           subdued={subdued}
+          selectedRoadId={selectedRoadId}
         />
       )}
-      {corridors.map(({ corridor, curve, road }) => (
+      {corridors.map(({ corridor, curve, road }) => {
+        const corridorRoad = corridor.road.replace(/^A/, 'N')
+        const corridorSubdued =
+          subdued || Boolean(selectedRoadId && selectedRoadId !== corridorRoad)
+        return (
         <group key={corridor.id}>
           <lineSegments geometry={road} renderOrder={4}>
             <lineBasicMaterial
               color="#c78a60"
               transparent
-              opacity={subdued ? 0.025 : 0.15}
+              opacity={corridorSubdued ? 0.012 : 0.15}
               depthWrite={false}
             />
           </lineSegments>
@@ -323,11 +405,12 @@ export function RoadTrafficLayer({
               time={time}
               isPlaying={isPlaying}
               playbackRate={playbackRate}
-              subdued={subdued}
+              subdued={corridorSubdued}
             />
           ))}
         </group>
-      ))}
+        )
+      })}
     </group>
   )
 }

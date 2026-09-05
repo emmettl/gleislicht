@@ -39,7 +39,9 @@ The number shown in the status card is an approximate corridor occupancy derived
 
 AUTO now also loads a compact skeleton derived from FEDRO's official Axis of National Routes dataset. It contains 3,080 simplified axis segments across 25 numbered national roads and remains separate from the opening railway payload. High-confidence counter sites appear as restrained warm points; the complete axes remain dim until AUTO is selected.
 
-The current Measurement Site Table contains 458 federal station IDs and 1,765 detector records. After removing emergency lanes and records without a usable direction, 848 directional groups remain. The reproducible spatial audit reports 659 high-confidence matches, 59 matches requiring review and 130 unmatched groups. In station terms, 379 of 458 federal sites touch the national-axis model. Unmatched sites are retained in the artifact and are never silently forced onto the nearest motorway; the federal feed also contains counters on other important roads.
+The current Measurement Site Table contains 458 federal station IDs and 1,765 detector records. After removing emergency lanes and records without a usable direction, 848 directional groups remain. The reproducible spatial audit reports 659 direct spatial matches, 49 matches resolved from neighbouring-counter continuity, 10 interchange matches still requiring review and 130 unmatched groups. In station terms, 379 of 458 federal sites touch the national-axis model. Unmatched sites are retained in the artifact and are never silently forced onto the nearest motorway; the federal feed also contains counters on other important roads.
+
+The accepted sites form 601 directional counter-to-counter sections after colocated detector records are collapsed. These are measurement-ready topology, not invented traffic observations: they define where a complete recorded feed can attach flow and speed. AUTO exposes every published A-road corridor through search, adds direct focus controls for A1, A2, A3, A9 and A13, and frames a selected corridor without removing its national context.
 
 ```sh
 npm run data:road:topology -- \
@@ -47,7 +49,7 @@ npm run data:road:topology -- \
   --measurement-sites /path/to/astra-measurement-site-table.xml
 ```
 
-Coordinates in the counter table are coarse, so a match is considered high confidence only within 800 metres and when a competing numbered road is at least 180 metres farther away. Matches up to 1,500 metres are explicitly marked `review`; anything farther remains `unmatched`. Only high-confidence sites may drive a future measured section model.
+Coordinates in the counter table are coarse, so a match is considered directly high confidence only within 800 metres and when a competing numbered road is at least 180 metres farther away. A second pass may accept a candidate when nearby directly accepted stations overwhelmingly support the same road. Matches up to 1,500 metres without that continuity evidence remain `review`; anything farther remains `unmatched`. Only direct and continuity-resolved sites participate in the section model.
 
 ## From calibration to recorded data
 
@@ -59,7 +61,22 @@ ASTRA_API_KEY=... npm run data:road:record
 
 # Continue at one pull per minute. A failed pull is reported, never fabricated.
 ASTRA_API_KEY=... npm run data:road:record:watch
+
+# Record every direct or continuity-resolved federal site into a separate archive.
+ASTRA_API_KEY=... npm run data:road:record:watch -- --scope=national
 ```
+
+National recording derives its explicit station filters from the committed topology and records the scope and requested-station count in every snapshot. It still makes one filtered request per minute; it does not multiply the polling cadence by the number of roads. The national archive is kept separate from the A1 study by default.
+
+Once at least 60 complete national minutes exist, the national compiler validates continuity and coverage, aggregates parallel lanes at each accepted directional site and emits compact site samples plus references for every usable section:
+
+```sh
+npm run data:road:compile:national -- \
+  --input=recordings/astra-national \
+  --date=2026-09-05
+```
+
+The output is deliberately separate from the public calibration until its date can be paired with matching rail and air studies and reviewed on real devices.
 
 Each directional cross-section can contain several lanes. The compiler sums those parallel lane flows and uses a flow-weighted lane speed. It then takes the median across successive counter sites, because summing those sites would count essentially the same motorway stream repeatedly. A minute is usable only when at least 60% of the configured sites in both directions report all four light/heavy flow and speed values.
 

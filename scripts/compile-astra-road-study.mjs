@@ -66,7 +66,7 @@ export function aggregateDirection(measurements, detectorGroups) {
   }
 }
 
-function swissDateAndTime(isoTimestamp) {
+export function swissDateAndTime(isoTimestamp) {
   const parts = new Intl.DateTimeFormat('en-CA', {
     timeZone: 'Europe/Zurich',
     year: 'numeric',

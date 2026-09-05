@@ -69,9 +69,14 @@ import type { SwissBoundary } from './domain/boundary.ts'
 import type { SwissLakes } from './domain/lakes.ts'
 import {
   reconstructedVehicleCount,
+  type RoadTopologyRoad,
   type RoadTopologySnapshot,
   type RoadTrafficSnapshot,
 } from './domain/road.ts'
+import {
+  roadCorridorSearchValue,
+  searchRoadCorridors,
+} from './road-search.ts'
 import {
   LANGUAGE_LOCALES,
   resolveUiLanguage,
@@ -278,6 +283,7 @@ export function App() {
   const [roadSnapshot, setRoadSnapshot] = useState<RoadTrafficSnapshot>()
   const [roadTopology, setRoadTopology] = useState<RoadTopologySnapshot>()
   const [roadLoadState, setRoadLoadState] = useState<RoadLoadState>('idle')
+  const [selectedRoadId, setSelectedRoadId] = useState<string>()
   const [selectedHubId, setSelectedHubId] = useState<HubId>('zurich')
   const [hubStudy, setHubStudy] = useState<HubStudy>('pulse')
   const [showTaktOverlay, setShowTaktOverlay] = useState(true)
@@ -512,6 +518,10 @@ export function App() {
     () => routeIndex.find((route) => route.id === selectedRouteId),
     [routeIndex, selectedRouteId],
   )
+  const selectedRoad = useMemo(
+    () => roadTopology?.roads.find((road) => road.id === selectedRoadId),
+    [roadTopology, selectedRoadId],
+  )
   const selectedPosition = useMemo(
     () => (selectedTrain ? positionForTrain(selectedTrain, networkTime) : undefined),
     [networkTime, selectedTrain],
@@ -587,6 +597,13 @@ export function App() {
       )
       .slice(0, 5)
   }, [language, routeIndex, searchQuery])
+  const roadSearchResults = useMemo(
+    () =>
+      roadEnabled
+        ? searchRoadCorridors(roadTopology?.roads ?? [], searchQuery)
+        : [],
+    [roadEnabled, roadTopology?.roads, searchQuery],
+  )
   const airSearchResults = useMemo(
     () =>
       airEnabled
@@ -607,6 +624,7 @@ export function App() {
   const searchResultCount =
     stationSearchResults.length +
     routeSearchResults.length +
+    roadSearchResults.length +
     airSearchResults.length +
     searchResults.length
   const resolvedActiveSearchIndex =
@@ -676,6 +694,7 @@ export function App() {
     setSelectedStationName(undefined)
     setSelectedRouteId(undefined)
     setSelectedAirTrackId(undefined)
+    setSelectedRoadId(undefined)
     setSearchQuery('')
     setActiveSearchIndex(-1)
   }, [])
@@ -696,6 +715,7 @@ export function App() {
     setSelectedAirTrackId(undefined)
     setSelectedTrainId(undefined)
     setSelectedRouteId(undefined)
+    setSelectedRoadId(undefined)
     setSelectedStationName(station.name)
     setSearchQuery(station.name)
     setSearchOpen(false)
@@ -714,6 +734,7 @@ export function App() {
       setSelectedTrainId(undefined)
       setSelectedAirTrackId(undefined)
       setSelectedStationName(undefined)
+      setSelectedRoadId(undefined)
       setSelectedRouteId(route.id)
       setSelectedCategory(undefined)
       setSearchQuery(
@@ -745,6 +766,7 @@ export function App() {
       setSelectedAirTrackId(undefined)
       setSelectedStationName(undefined)
       setSelectedRouteId(undefined)
+      setSelectedRoadId(undefined)
       setSearchQuery(`${train.route} ${train.shortName} → ${train.headsign}`)
       setSearchOpen(false)
       setActiveSearchIndex(-1)
@@ -771,6 +793,7 @@ export function App() {
       setSelectedTrainId(undefined)
       setSelectedStationName(undefined)
       setSelectedRouteId(undefined)
+      setSelectedRoadId(undefined)
       setSelectedCategory(undefined)
       setSelectedAirTrackId(trackId)
       setSearchQuery(track ? airTrackSearchValue(track) : '')
@@ -807,6 +830,7 @@ export function App() {
     if (roadEnabled) {
       setRoadEnabled(false)
       setRoadCategorySelected(false)
+      setSelectedRoadId(undefined)
       return
     }
     releaseSelection()
@@ -822,6 +846,27 @@ export function App() {
       )
     }
   }, [networkTime, releaseSelection, roadEnabled, roadSnapshot])
+
+  const selectRoad = useCallback((road: RoadTopologyRoad) => {
+    setSelectedTrainId(undefined)
+    setSelectedStationName(undefined)
+    setSelectedRouteId(undefined)
+    setSelectedAirTrackId(undefined)
+    setSelectedCategory(undefined)
+    setAirCategorySelected(false)
+    setRoadCategorySelected(true)
+    setSelectedRoadId(road.id)
+    setSearchQuery(roadCorridorSearchValue(road))
+    setSearchOpen(false)
+    setActiveSearchIndex(-1)
+    setView('network')
+    setMapCameraCommand((current) => ({
+      id: current.id + 1,
+      action: 'focus-road',
+      focus: road.focus,
+      distanceScale: road.cameraScale,
+    }))
+  }, [])
 
   const openTerrainCorridor = useCallback(
     (nextCorridorId: TerrainCorridorId, nextProgress = 0.015) => {
@@ -926,7 +971,8 @@ export function App() {
       (selectedTrainId ||
         selectedStationName ||
         selectedRouteId ||
-        selectedAirTrackId)
+        selectedAirTrackId ||
+        selectedRoadId)
     ) {
       releaseSelection()
       return
@@ -935,6 +981,7 @@ export function App() {
   }, [
     releaseSelection,
     selectedAirTrackId,
+    selectedRoadId,
     selectedRouteId,
     selectedStationName,
     selectedTrainId,
@@ -1505,7 +1552,7 @@ export function App() {
 
   return (
     <main
-      className={`experience view-${view}${isContrast ? ' is-contrast' : ''}${airEnabled ? ' has-air-layer' : ''}${airCategorySelected ? ' has-air-category' : ''}${roadEnabled ? ' has-road-layer' : ''}${roadCategorySelected ? ' has-road-category' : ''}${selectedTrain || selectedStation || selectedRoute || selectedAirTrack ? ' has-selection' : ''}${!isTimetable ? ` corridor-${journeyCorridorId}` : ''}`}
+      className={`experience view-${view}${isContrast ? ' is-contrast' : ''}${airEnabled ? ' has-air-layer' : ''}${airCategorySelected ? ' has-air-category' : ''}${roadEnabled ? ' has-road-layer' : ''}${roadCategorySelected ? ' has-road-category' : ''}${selectedTrain || selectedStation || selectedRoute || selectedAirTrack || selectedRoad ? ' has-selection' : ''}${!isTimetable ? ` corridor-${journeyCorridorId}` : ''}`}
     >
       <div className="scene" aria-hidden={webglAvailable ? true : undefined}>
         <Suspense fallback={null}>
@@ -1620,6 +1667,7 @@ export function App() {
                 : undefined
             }
             roadCategorySelected={roadCategorySelected}
+            selectedRoadId={selectedRoadId}
             selectedAirTrack={selectedAirTrack}
             onSelectAirTrack={selectAirTrack}
             cameraFraming={
@@ -1877,19 +1925,39 @@ export function App() {
                 resolvedActiveSearchIndex <
                   stationSearchResults.length +
                     routeSearchResults.length +
+                    roadSearchResults.length
+              ) {
+                const road =
+                  roadSearchResults[
+                    resolvedActiveSearchIndex -
+                      stationSearchResults.length -
+                      routeSearchResults.length
+                  ]
+                if (road) selectRoad(road)
+              } else if (
+                resolvedActiveSearchIndex >=
+                  stationSearchResults.length +
+                    routeSearchResults.length +
+                    roadSearchResults.length &&
+                resolvedActiveSearchIndex <
+                  stationSearchResults.length +
+                    routeSearchResults.length +
+                    roadSearchResults.length +
                     airSearchResults.length
               ) {
                 const aircraft =
                   airSearchResults[
                     resolvedActiveSearchIndex -
                       stationSearchResults.length -
-                      routeSearchResults.length
+                      routeSearchResults.length -
+                      roadSearchResults.length
                   ]
                 if (aircraft) selectAirTrack(aircraft.id)
               } else if (
                 resolvedActiveSearchIndex >=
-                stationSearchResults.length +
+                  stationSearchResults.length +
                   routeSearchResults.length +
+                  roadSearchResults.length +
                   airSearchResults.length
               ) {
                 const train =
@@ -1897,6 +1965,7 @@ export function App() {
                     resolvedActiveSearchIndex -
                       stationSearchResults.length -
                       routeSearchResults.length -
+                      roadSearchResults.length -
                       airSearchResults.length
                   ]
                 if (train) selectTrain(train)
@@ -1904,6 +1973,8 @@ export function App() {
                 selectStation(stationSearchResults[0])
               } else if (routeSearchResults[0]) {
                 selectRoute(routeSearchResults[0])
+              } else if (roadSearchResults[0]) {
+                selectRoad(roadSearchResults[0])
               } else if (airSearchResults[0]) {
                 selectAirTrack(airSearchResults[0].id)
               } else if (searchResults[0]) {
@@ -1960,6 +2031,12 @@ export function App() {
                     event.target.value !== airTrackSearchValue(selectedAirTrack)
                   ) {
                     setSelectedAirTrackId(undefined)
+                  }
+                  if (
+                    selectedRoad &&
+                    event.target.value !== roadCorridorSearchValue(selectedRoad)
+                  ) {
+                    setSelectedRoadId(undefined)
                   }
                 }}
                 onKeyDown={(event) => {
@@ -2221,10 +2298,38 @@ export function App() {
                   </button>
                 )
               })}
+              {roadSearchResults.map((road, roadIndex) => {
+                const index =
+                  stationSearchResults.length +
+                  routeSearchResults.length +
+                  roadIndex
+                return (
+                  <button
+                    id={`train-search-result-${index}`}
+                    className={`road-result${resolvedActiveSearchIndex === index ? ' is-active' : ''}`}
+                    key={`road:${road.id}`}
+                    type="button"
+                    role="option"
+                    aria-selected={road.id === selectedRoadId}
+                    onMouseEnter={() => setActiveSearchIndex(index)}
+                    onClick={() => selectRoad(road)}
+                  >
+                    <span className="road-result-mark" aria-hidden="true">━</span>
+                    <span className="result-service">
+                      {road.label} <b>{road.officialLabel}</b>
+                    </span>
+                    <span className="result-route">
+                      {road.description ?? text.nationalMotorway} ·{' '}
+                      {text.roadSections(road.sectionCount)}
+                    </span>
+                  </button>
+                )
+              })}
               {airSearchResults.map((track, airIndex) => {
                 const index =
                   stationSearchResults.length +
                   routeSearchResults.length +
+                  roadSearchResults.length +
                   airIndex
                 return (
                   <button
@@ -2252,6 +2357,7 @@ export function App() {
                   const index =
                     stationSearchResults.length +
                     routeSearchResults.length +
+                    roadSearchResults.length +
                     airSearchResults.length +
                     trainIndex
                   return (
@@ -2280,6 +2386,7 @@ export function App() {
                 })}
               {!stationSearchResults.length &&
                 !routeSearchResults.length &&
+                !roadSearchResults.length &&
                 !airSearchResults.length &&
                 !searchResults.length && (
                 <p>{isNationalDay ? text.noResultsDay : text.noResults}</p>
@@ -2605,6 +2712,33 @@ export function App() {
             </div>
           </div>
         </section>
+      ) : isNetwork && selectedRoad ? (
+        <section
+          className="journey-card road-corridor-card"
+          aria-label={`${text.selectedRoadCorridor}: ${selectedRoad.label}`}
+        >
+          <div className="service-row">
+            <span className="road-card-mark" aria-hidden="true">━</span>
+            <span className="service">{selectedRoad.label}</span>
+            <span className="arrow">/</span>
+            <span>{selectedRoad.officialLabel}</span>
+          </div>
+          <p className="between">
+            {selectedRoad.description ?? text.nationalMotorway}
+          </p>
+          <div className="metric-grid">
+            <div>
+              <span>{text.counterSites}</span>
+              <strong>{selectedRoad.stationCount}</strong>
+              <small>{text.aligned}</small>
+            </div>
+            <div>
+              <span>{text.sections}</span>
+              <strong>{selectedRoad.sectionCount}</strong>
+              <small>{text.measurementReady}</small>
+            </div>
+          </div>
+        </section>
       ) : isNetwork ? (
         <section
           className="journey-card network-card"
@@ -2793,7 +2927,9 @@ export function App() {
                   ? `${serviceCategoryLabel(language, selectedRoute.category)} ${selectedRoute.name}`
                   : undefined) ??
                 selectedStation?.name ??
-                (roadCategorySelected
+                (selectedRoad
+                  ? `${selectedRoad.label} · ${text.roadSections(selectedRoad.sectionCount)}`
+                  : roadCategorySelected
                   ? text.trafficReconstruction
                   : airCategorySelected
                   ? text.observedAirLayer
@@ -2832,7 +2968,7 @@ export function App() {
         )}
       </div>
 
-      {isNetwork && !selectedTrain && !selectedAirTrack && !isContrast && (
+      {isNetwork && !selectedTrain && !selectedAirTrack && !selectedRoad && !isContrast && (
         <div className="north-marker">N</div>
       )}
 
@@ -2881,6 +3017,30 @@ export function App() {
             <span aria-hidden="true">▱</span>
             {text.vehicleLabels} · {text.labelModes[trainLabelMode]}
           </button>
+          {roadEnabled && roadTopology && (
+            <div className="road-corridor-quick" aria-label={text.roadCorridors}>
+              {roadTopology.roads
+                .filter((road) =>
+                  ['N1', 'N2', 'N3', 'N9', 'N13'].includes(road.id),
+                )
+                .map((road) => (
+                  <button
+                    key={road.id}
+                    type="button"
+                    title={road.description}
+                    aria-label={`${text.selectRoadCorridor} ${road.label}`}
+                    aria-pressed={selectedRoadId === road.id}
+                    onClick={() =>
+                      selectedRoadId === road.id
+                        ? releaseSelection()
+                        : selectRoad(road)
+                    }
+                  >
+                    {road.label}
+                  </button>
+                ))}
+            </div>
+          )}
         </div>
       )}
 
@@ -2941,6 +3101,7 @@ export function App() {
                   onChange={(category) => {
                     setAirCategorySelected(category === 'air')
                     setRoadCategorySelected(category === 'road')
+                    setSelectedRoadId(undefined)
                     setSelectedCategory(
                       category && category !== 'air' && category !== 'road'
                         ? (category as ServiceCategory)
@@ -2964,6 +3125,31 @@ export function App() {
                   }
                 />
               </div>
+              {roadEnabled && roadTopology && (
+                <div className="mobile-tool-field">
+                  <span>{text.roadCorridors}</span>
+                  <MobilePicker
+                    ariaLabel={text.selectRoadCorridor}
+                    value={selectedRoadId ?? ''}
+                    options={[
+                      { value: '', label: text.allMotorways },
+                      ...roadTopology.roads.map((road) => ({
+                        value: road.id,
+                        label: road.label,
+                        detail:
+                          road.description ?? text.roadSections(road.sectionCount),
+                      })),
+                    ]}
+                    onChange={(roadId) => {
+                      const road = roadTopology.roads.find(
+                        (candidate) => candidate.id === roadId,
+                      )
+                      if (road) selectRoad(road)
+                      else releaseSelection()
+                    }}
+                  />
+                </div>
+              )}
             </div>
           </details>
         </div>
@@ -2987,6 +3173,7 @@ export function App() {
                 onClick={() => {
                   setAirCategorySelected(false)
                   setRoadCategorySelected(false)
+                  setSelectedRoadId(undefined)
                   setSelectedCategory((current) =>
                     current === category.id ? undefined : category.id,
                   )
@@ -3004,6 +3191,7 @@ export function App() {
               onClick={() => {
                 setSelectedCategory(undefined)
                 setRoadCategorySelected(false)
+                setSelectedRoadId(undefined)
                 setAirCategorySelected((current) => !current)
               }}
             >
@@ -3019,6 +3207,7 @@ export function App() {
               onClick={() => {
                 setSelectedCategory(undefined)
                 setAirCategorySelected(false)
+                setSelectedRoadId(undefined)
                 setRoadCategorySelected((current) => !current)
               }}
             >

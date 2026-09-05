@@ -41,6 +41,7 @@
     "data:road:record": "node scripts/record-astra-traffic.mjs",
     "data:road:record:watch": "node scripts/record-astra-traffic.mjs --watch",
     "data:road:compile": "node scripts/compile-astra-road-study.mjs",
+    "data:road:compile:national": "node scripts/compile-astra-national-study.mjs",
     "preview": "vite preview"
   },
   "engines": {
