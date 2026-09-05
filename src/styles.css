@@ -1210,6 +1210,10 @@ h1 {
   background: rgba(32, 17, 57, 0.36);
 }
 
+.search-results > .air-result {
+  background: rgba(54, 15, 59, 0.28);
+}
+
 .station-result-mark {
   align-self: center;
   color: var(--pink);
@@ -1223,6 +1227,14 @@ h1 {
   font-size: 0.88rem;
   line-height: 1;
   text-shadow: 0 0 11px currentColor;
+}
+
+.air-result-mark {
+  align-self: center;
+  color: var(--pink);
+  font-size: 0.56rem;
+  line-height: 1;
+  text-shadow: 0 0 12px var(--pink);
 }
 
 .search-results p {

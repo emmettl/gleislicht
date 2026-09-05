@@ -107,6 +107,7 @@ export const UI_TEXT = {
     volume: 'Volume',
     find: 'Find a station, train, service, or destination',
     nationalPlaceholder: 'Find IC 1, Zürich, or train 701…',
+    airSearchPlaceholder: 'Find SWR18K or ICAO 4B…',
     regionalPlaceholder: 'Find S12, bus 850, or Winterthur…',
     genevaPlaceholder: 'Find tram 12, bus 60, or Cornavin…',
     cityPlaceholder: 'Find tram 4, bus 31, or Zürich HB…',
@@ -129,6 +130,7 @@ export const UI_TEXT = {
     showGenevaNetwork: 'Show the Genève / TPG regional network',
     clearSearch: 'Clear search and selection',
     matchingResults: 'Matching stations, lines, and trains',
+    matchingAirResults: 'Matching stations, lines, trains, and aircraft',
     routesAndCalls: (routes: number, calls: number) =>
       `${routes} routes · ${calls} scheduled calls`,
     noResults: 'No stations or services found in this morning window.',
@@ -320,6 +322,7 @@ export const UI_TEXT = {
     volume: 'Lautstärke',
     find: 'Bahnhof, Zug, Linie oder Ziel suchen',
     nationalPlaceholder: 'IC 1, Zürich oder Zug 701 suchen…',
+    airSearchPlaceholder: 'SWR18K oder ICAO 4B… suchen',
     regionalPlaceholder: 'S12, Bus 850 oder Winterthur suchen…',
     genevaPlaceholder: 'Tram 12, Bus 60 oder Cornavin suchen…',
     cityPlaceholder: 'Tram 4, Bus 31 oder Zürich HB suchen…',
@@ -342,6 +345,7 @@ export const UI_TEXT = {
     showGenevaNetwork: 'Multimodales Regionalnetz Genf / TPG zeigen',
     clearSearch: 'Suche und Auswahl löschen',
     matchingResults: 'Passende Bahnhöfe, Linien und Züge',
+    matchingAirResults: 'Passende Bahnhöfe, Linien, Züge und Flugzeuge',
     routesAndCalls: (routes: number, calls: number) =>
       `${routes} Linien · ${calls} fahrplanmässige Halte`,
     noResults: 'Keine Bahnhöfe oder Verbindungen in diesem Morgenfenster gefunden.',
@@ -533,6 +537,7 @@ export const UI_TEXT = {
     volume: 'Volume',
     find: 'Rechercher une gare, un train, une ligne ou une destination',
     nationalPlaceholder: 'Rechercher IC 1, Zürich ou train 701…',
+    airSearchPlaceholder: 'Rechercher SWR18K ou ICAO 4B…',
     regionalPlaceholder: 'Rechercher S12, bus 850 ou Winterthur…',
     genevaPlaceholder: 'Rechercher tram 12, bus 60 ou Cornavin…',
     cityPlaceholder: 'Rechercher tram 4, bus 31 ou Zürich HB…',
@@ -555,6 +560,7 @@ export const UI_TEXT = {
     showGenevaNetwork: 'Afficher le réseau régional Genève / TPG',
     clearSearch: 'Effacer la recherche et la sélection',
     matchingResults: 'Gares, lignes et trains correspondants',
+    matchingAirResults: 'Gares, lignes, trains et avions correspondants',
     routesAndCalls: (routes: number, calls: number) =>
       `${routes} lignes · ${calls} arrêts planifiés`,
     noResults: 'Aucune gare ni liaison trouvée dans cette plage matinale.',
@@ -746,6 +752,7 @@ export const UI_TEXT = {
     volume: 'Volume',
     find: 'Cerca stazione, treno, linea o destinazione',
     nationalPlaceholder: 'Cerca IC 1, Zürich o treno 701…',
+    airSearchPlaceholder: 'Cerca SWR18K o ICAO 4B…',
     regionalPlaceholder: 'Cerca S12, bus 850 o Winterthur…',
     genevaPlaceholder: 'Cerca tram 12, bus 60 o Cornavin…',
     cityPlaceholder: 'Cerca tram 4, bus 31 o Zürich HB…',
@@ -768,6 +775,7 @@ export const UI_TEXT = {
     showGenevaNetwork: 'Mostra la rete regionale Ginevra / TPG',
     clearSearch: 'Cancella ricerca e selezione',
     matchingResults: 'Stazioni, linee e treni corrispondenti',
+    matchingAirResults: 'Stazioni, linee, treni e aerei corrispondenti',
     routesAndCalls: (routes: number, calls: number) =>
       `${routes} linee · ${calls} fermate pianificate`,
     noResults: 'Nessuna stazione o corsa trovata nella fascia mattutina.',

@@ -12,6 +12,10 @@ import type {
   GleislichtSoundtrack,
   SoundtrackMode,
 } from './audio/gleislicht-soundtrack.ts'
+import {
+  airTrackSearchValue,
+  searchAirTracks,
+} from './air-search.ts'
 import { MobilePicker } from './components/MobilePicker.tsx'
 import {
   activeAirTracks,
@@ -546,8 +550,18 @@ export function App() {
       )
       .slice(0, 5)
   }, [language, routeIndex, searchQuery])
+  const airSearchResults = useMemo(
+    () =>
+      airEnabled && airSnapshot
+        ? searchAirTracks(airSnapshot.tracks, searchQuery, networkTime)
+        : [],
+    [airEnabled, airSnapshot, networkTime, searchQuery],
+  )
   const searchResultCount =
-    stationSearchResults.length + routeSearchResults.length + searchResults.length
+    stationSearchResults.length +
+    routeSearchResults.length +
+    airSearchResults.length +
+    searchResults.length
   const resolvedActiveSearchIndex =
     activeSearchIndex < searchResultCount ? activeSearchIndex : -1
   const visibleServiceCategories = useMemo(() => {
@@ -687,17 +701,28 @@ export function App() {
     [network, networkTime],
   )
 
-  const selectAirTrack = useCallback((trackId: string) => {
-    setSelectedTrainId(undefined)
-    setSelectedStationName(undefined)
-    setSelectedRouteId(undefined)
-    setSelectedCategory(undefined)
-    setSelectedAirTrackId(trackId)
-    setSearchQuery('')
-    setSearchOpen(false)
-    setActiveSearchIndex(-1)
-    setIsPlaying(true)
-  }, [])
+  const selectAirTrack = useCallback(
+    (trackId: string) => {
+      const track = airSnapshot?.tracks.find((candidate) => candidate.id === trackId)
+      if (track) {
+        setNetworkTime((current) =>
+          current >= track.start && current <= track.end
+            ? current
+            : Math.min(track.end, track.start + 10),
+        )
+      }
+      setSelectedTrainId(undefined)
+      setSelectedStationName(undefined)
+      setSelectedRouteId(undefined)
+      setSelectedCategory(undefined)
+      setSelectedAirTrackId(trackId)
+      setSearchQuery(track ? airTrackSearchValue(track) : '')
+      setSearchOpen(false)
+      setActiveSearchIndex(-1)
+      setIsPlaying(true)
+    },
+    [airSnapshot],
+  )
 
   const toggleAirLayer = useCallback(() => {
     if (airEnabled) {
@@ -1705,19 +1730,39 @@ export function App() {
                 if (route) selectRoute(route)
               } else if (
                 resolvedActiveSearchIndex >=
-                stationSearchResults.length + routeSearchResults.length
+                  stationSearchResults.length + routeSearchResults.length &&
+                resolvedActiveSearchIndex <
+                  stationSearchResults.length +
+                    routeSearchResults.length +
+                    airSearchResults.length
+              ) {
+                const aircraft =
+                  airSearchResults[
+                    resolvedActiveSearchIndex -
+                      stationSearchResults.length -
+                      routeSearchResults.length
+                  ]
+                if (aircraft) selectAirTrack(aircraft.id)
+              } else if (
+                resolvedActiveSearchIndex >=
+                stationSearchResults.length +
+                  routeSearchResults.length +
+                  airSearchResults.length
               ) {
                 const train =
                   searchResults[
                     resolvedActiveSearchIndex -
                       stationSearchResults.length -
-                      routeSearchResults.length
+                      routeSearchResults.length -
+                      airSearchResults.length
                   ]
                 if (train) selectTrain(train)
               } else if (stationSearchResults[0]) {
                 selectStation(stationSearchResults[0])
               } else if (routeSearchResults[0]) {
                 selectRoute(routeSearchResults[0])
+              } else if (airSearchResults[0]) {
+                selectAirTrack(airSearchResults[0].id)
               } else if (searchResults[0]) {
                 selectTrain(searchResults[0])
               }
@@ -1733,6 +1778,8 @@ export function App() {
                 placeholder={
                   isContrast
                     ? text.contrastPlaceholder
+                    : airEnabled
+                      ? text.airSearchPlaceholder
                     : networkStudy === 'national'
                     ? text.nationalPlaceholder
                     : networkStudy === 'zvv-region'
@@ -1764,6 +1811,12 @@ export function App() {
                     : undefined
                   if (event.target.value !== selectedRouteQuery) {
                     setSelectedRouteId(undefined)
+                  }
+                  if (
+                    selectedAirTrack &&
+                    event.target.value !== airTrackSearchValue(selectedAirTrack)
+                  ) {
+                    setSelectedAirTrackId(undefined)
                   }
                 }}
                 onKeyDown={(event) => {
@@ -1947,7 +2000,9 @@ export function App() {
               id="train-search-results"
               className="search-results"
               role="listbox"
-              aria-label={text.matchingResults}
+              aria-label={
+                airEnabled ? text.matchingAirResults : text.matchingResults
+              }
             >
               {stationSearchResults.map((station, index) => (
                 <button
@@ -2001,11 +2056,37 @@ export function App() {
                   </button>
                 )
               })}
+              {airSearchResults.map((track, airIndex) => {
+                const index =
+                  stationSearchResults.length +
+                  routeSearchResults.length +
+                  airIndex
+                return (
+                  <button
+                    id={`train-search-result-${index}`}
+                    className={`air-result${resolvedActiveSearchIndex === index ? ' is-active' : ''}`}
+                    key={`air:${track.id}`}
+                    type="button"
+                    role="option"
+                    aria-selected={track.id === selectedAirTrackId}
+                    onMouseEnter={() => setActiveSearchIndex(index)}
+                    onClick={() => selectAirTrack(track.id)}
+                  >
+                    <span className="air-result-mark" aria-hidden="true">◆</span>
+                    <span className="result-service">{track.callsign}</span>
+                    <span className="result-route">
+                      {text.luftraum} · {track.id.toUpperCase()} ·{' '}
+                      {formatServiceTime(track.start)}–{formatServiceTime(track.end)}
+                    </span>
+                  </button>
+                )
+              })}
               {searchResults.map((train, trainIndex) => {
                   const origin = network?.stops[train.stops[0]?.[0]]?.[2]
                   const index =
                     stationSearchResults.length +
                     routeSearchResults.length +
+                    airSearchResults.length +
                     trainIndex
                   return (
                     <button
@@ -2033,6 +2114,7 @@ export function App() {
                 })}
               {!stationSearchResults.length &&
                 !routeSearchResults.length &&
+                !airSearchResults.length &&
                 !searchResults.length && (
                 <p>{isNationalDay ? text.noResultsDay : text.noResults}</p>
               )}

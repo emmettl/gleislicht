@@ -82,6 +82,14 @@ test('LUFTRAUM stays lazy and replays the matching observed hour', async ({
       expect(toggleBox.x + toggleBox.width).toBeLessThanOrEqual(viewport.width + 1)
     }
   }
+
+  const search = page.locator('.train-search input[type="search"]')
+  await search.fill('010205')
+  const aircraftResult = page.locator('.search-results .air-result').first()
+  await expect(aircraftResult).toContainText('MSR783')
+  await expect(aircraftResult).toContainText('010205')
+  await search.press('Enter')
+  await expect(page.locator('.air-card')).toContainText('MSR783')
 })
 
 test('search selects a station and exposes its serving routes', async ({ page }) => {
