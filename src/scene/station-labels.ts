@@ -5,6 +5,19 @@ import {
 } from './map-camera.ts'
 
 export const MAX_STATION_LABELS = 96
+export const STATION_LABEL_SETTLE_SECONDS = 0.16
+
+export function stationLabelsCanRepopulate(stableSeconds: number): boolean {
+  return stableSeconds >= STATION_LABEL_SETTLE_SECONDS
+}
+
+export function stableStationLabelBudget(
+  targetBudget: number,
+  retainedCount: number,
+  canRepopulate: boolean,
+): number {
+  return canRepopulate ? targetBudget : Math.max(targetBudget, retainedCount)
+}
 
 export interface StationScreenPoint {
   readonly index: number

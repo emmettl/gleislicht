@@ -32,7 +32,9 @@ import {
   stationLabelScreenWidth,
   stationLabelText,
   stationLabelWorldHeight,
+  stationLabelsCanRepopulate,
   stationTapRadius,
+  stableStationLabelBudget,
 } from './station-labels.ts'
 import {
   categoryIsVisibleInAutoMode,
@@ -1245,6 +1247,10 @@ function StationLabels({
   const sprites = useRef<Array<THREE.Sprite | null>>([])
   const textures = useRef(new Map<string, StationLabelTexture>())
   const retainedStationNames = useRef(new Set<string>())
+  const previousCameraPosition = useRef(new THREE.Vector3())
+  const previousCameraQuaternion = useRef(new THREE.Quaternion())
+  const cameraWasSampled = useRef(false)
+  const cameraStableSeconds = useRef(Number.POSITIVE_INFINITY)
   const routeStationNames = useMemo(() => {
     const stopIndexes = selectedTrain
       ? selectedTrain.stops.map(([stopIndex]) => stopIndex)
@@ -1295,12 +1301,27 @@ function StationLabels({
     retainedStationNames.current.clear()
   }, [cameraFraming, selectedRoute, selectedStation, selectedTrain])
 
-  useFrame(() => {
+  useFrame((_, delta) => {
     const semanticHeight = stationLabelCameraHeight(
       camera.position.y,
       cameraFraming,
     )
-    const budget = stationLabelBudget(semanticHeight)
+    const cameraMoved = cameraWasSampled.current && (
+      previousCameraPosition.current.distanceToSquared(camera.position) > 0.000025 ||
+      1 - Math.abs(previousCameraQuaternion.current.dot(camera.quaternion)) > 0.000001
+    )
+    cameraWasSampled.current = true
+    previousCameraPosition.current.copy(camera.position)
+    previousCameraQuaternion.current.copy(camera.quaternion)
+    cameraStableSeconds.current = cameraMoved
+      ? 0
+      : cameraStableSeconds.current + delta
+    const canRepopulate = stationLabelsCanRepopulate(cameraStableSeconds.current)
+    const budget = stableStationLabelBudget(
+      stationLabelBudget(semanticHeight),
+      retainedStationNames.current.size,
+      canRepopulate,
+    )
     const rankLimit = stationLabelRankLimit(semanticHeight)
     const projected = new THREE.Vector3()
     const viewPosition = new THREE.Vector3()
@@ -1320,8 +1341,14 @@ function StationLabels({
     })
 
     labels.forEach((label, index) => {
+      const retained = retainedStationNames.current.has(label.station.name)
       if ((selectedTrain || selectedRoute) && !label.emphasised) return
-      if (!label.emphasised && (label.rank < 0 || label.rank >= rankLimit)) return
+      if (!label.emphasised && !retained && !canRepopulate) return
+      if (
+        !label.emphasised &&
+        (label.rank < 0 || label.rank >= rankLimit) &&
+        (canRepopulate || !retained)
+      ) return
 
       viewPosition.copy(label.position).applyMatrix4(camera.matrixWorldInverse)
       projected.copy(label.position).project(camera)
@@ -1344,7 +1371,7 @@ function StationLabels({
         priority:
           label.station.name === selectedStation?.name ? 0 : label.emphasised ? 1 : 2,
         rank: label.rank,
-        retained: retainedStationNames.current.has(label.station.name),
+        retained,
       })
     })
 
@@ -2737,7 +2764,8 @@ function NetworkCamera({
     camera.position.lerp(desiredPosition, damping)
     currentTarget.lerp(desiredTarget, damping)
     camera.lookAt(currentTarget)
-  })
+    camera.updateMatrixWorld()
+  }, -1)
 
   return null
 }

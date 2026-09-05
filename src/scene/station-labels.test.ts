@@ -11,7 +11,9 @@ import {
   stationLabelScreenWidth,
   stationLabelText,
   stationLabelWorldHeight,
+  stationLabelsCanRepopulate,
   stationTapRadius,
+  stableStationLabelBudget,
 } from './station-labels.ts'
 
 const station = (
@@ -138,5 +140,12 @@ describe('station labels', () => {
         .sort(compareStationLabelCandidates)
         .map(({ name }) => name),
     ).toEqual(['Selected stop', 'Stable visible stop', 'New nearby stop'])
+  })
+
+  it('holds the visible label set until camera motion has settled', () => {
+    expect(stationLabelsCanRepopulate(0.08)).toBe(false)
+    expect(stationLabelsCanRepopulate(0.16)).toBe(true)
+    expect(stableStationLabelBudget(20, 48, false)).toBe(48)
+    expect(stableStationLabelBudget(20, 48, true)).toBe(20)
   })
 })
