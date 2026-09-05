@@ -48,7 +48,9 @@ npm run data:rail:shapes -- \
   --tolerance 160
 ```
 
-The join resolves timetable stops through their Swiss stop identifier where available, then by normalized name and proximity. It finds the shortest credible route through the official graph, deduplicates bidirectional stop pairs into shared paths and stores compact path references on trains and weighted edges. The committed morning artifact matches about 87% of segment occurrences and 3,246 of 3,670 timetable stops. A 160-metre simplification tolerance preserves meaningful railway curvature while keeping the compressed opening payload below 0.8 MiB. Cross-border and unresolved segments remain visibly schedule-derived fallbacks.
+The join resolves timetable stops through their Swiss stop identifier where available, then by normalized name and proximity. It finds the shortest credible route through the official graph, deduplicates bidirectional stop pairs into shared paths and stores compact path references on trains and weighted edges. Topology edges are resolved independently of the selected time window, so platform-specific GTFS records cannot leave straight structural chords behind when the moving service already has measured geometry. The committed morning artifact matches about 87% of segment occurrences and 3,246 of 3,670 timetable stops. A 160-metre simplification tolerance preserves meaningful railway curvature while keeping the compressed opening payload below 0.8 MiB. Cross-border and unresolved segments remain visibly schedule-derived fallbacks.
+
+For an already-enriched artifact made by an older version of the pipeline, `npm run data:rail:repair-edges` safely reuses a measured path only between same-named station pairs whose endpoints remain within 2.5 km. This is a migration aid; fresh enrichments perform the direct infrastructure lookup above.
 
 ### Reviewed national refreshes
 

@@ -19,6 +19,7 @@
     "data:corridor": "node scripts/ingest-corridor-terrain.mjs",
     "data:gtfs": "node scripts/ingest-gtfs.mjs",
     "data:rail:shapes": "node scripts/enrich-swiss-rail-geometry.mjs",
+    "data:rail:repair-edges": "node scripts/backfill-swiss-rail-edge-paths.mjs",
     "data:day": "node scripts/ingest-gtfs.mjs --window-start 00:00 --window-end 24:00 --output public/data/swiss-rail-day-manifest.json --hub-output none --chunk-hours 3",
     "data:zurich": "node scripts/ingest-gtfs.mjs --modes all --bounds 8.45,47.32,8.63,47.44 --output public/data/zurich-city-morning.json --hub-output none",
     "data:zurich:shapes": "node scripts/enrich-zurich-shapes.mjs",

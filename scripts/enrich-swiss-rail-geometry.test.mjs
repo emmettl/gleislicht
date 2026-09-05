@@ -65,4 +65,35 @@ describe('Swiss rail geometry enrichment', () => {
     expect(result.trains[0].pathSegments).toEqual([0])
     expect(result.edgePaths).toEqual([0])
   })
+
+  it('routes topology edges whose duplicate platform records are absent from the window', () => {
+    const network = parseRailNetworkXtf(xtf, 20)
+    const start = network.nodes.get('a').coordinate
+    const end = network.nodes.get('c').coordinate
+    const snapshot = {
+      stops: [
+        [start[0], start[1], 'Zürich HB', '', 'ch:1:sloid:3000:1'],
+        [end[0], end[1], 'Winterthur', '', 'ch:1:sloid:3002:1'],
+        [start[0], start[1], 'Zürich HB', '', 'ch:1:sloid:3000:2'],
+        [end[0], end[1], 'Winterthur', '', 'ch:1:sloid:3002:2'],
+      ],
+      edges: [[0, 1], [2, 3]],
+      trains: [
+        {
+          id: 'train',
+          route: 'IC',
+          headsign: 'Winterthur',
+          shortName: '1',
+          category: 'intercity',
+          start: 0,
+          end: 600,
+          stops: [[0, 0, 0], [1, 600, 600]],
+        },
+      ],
+    }
+
+    const result = applyRailGeometry(snapshot, network)
+    expect(result.paths).toHaveLength(1)
+    expect(result.edgePaths).toEqual([0, 0])
+  })
 })

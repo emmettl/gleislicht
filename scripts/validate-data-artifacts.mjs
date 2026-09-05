@@ -36,6 +36,19 @@ for (const [name, artifact] of [['morning', morning], ['full-day', day]]) {
     geometry.matchedSegments / geometry.totalSegments >= 0.65,
     `${name} study has insufficient rail geometry coverage`,
   )
+  for (const destination of ['Bern', 'Basel SBB']) {
+    const corridorEdges = artifact.edges
+      .map((edge, edgeIndex) => ({ edge, edgeIndex }))
+      .filter(({ edge: [fromIndex, toIndex] }) => {
+        const names = [artifact.stops[fromIndex][2], artifact.stops[toIndex][2]]
+        return names.includes('Zürich HB') && names.includes(destination)
+      })
+    assert(corridorEdges.length > 0, `${name} study is missing Zürich HB–${destination}`)
+    assert(
+      corridorEdges.every(({ edgeIndex }) => artifact.edgePaths[edgeIndex] !== null),
+      `${name} study has straight Zürich HB–${destination} topology chords`,
+    )
+  }
 }
 
 for (const hub of ['zurich', 'bern', 'basel', 'geneva']) {

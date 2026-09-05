@@ -392,7 +392,13 @@ export function applyRailGeometry(snapshot, network) {
   })
   const edgePaths = snapshot.edges.map(([fromIndex, toIndex]) => {
     const counts = edgePathCounts.get(`${fromIndex}:${toIndex}`)
-    return counts ? [...counts].sort((first, second) => second[1] - first[1])[0][0] : null
+    if (counts) return [...counts].sort((first, second) => second[1] - first[1])[0][0]
+
+    // The topology contains platform-specific GTFS stop records that may not occur
+    // in the selected time window. Resolve those edges directly as well, otherwise
+    // a measured route used by moving trains can still appear as a straight chord
+    // in the quieter structural network.
+    return pathIndexFor(fromIndex, toIndex)
   })
   return {
     paths,
