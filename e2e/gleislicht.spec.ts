@@ -37,6 +37,53 @@ test('the operations demo is explicit and returns cleanly to the schedule', asyn
   await expect(page.locator('.network-card')).toContainText('Scheduled rail')
 })
 
+test('LUFTRAUM stays lazy and replays the matching observed hour', async ({
+  page,
+}, testInfo) => {
+  const airRequests: string[] = []
+  page.on('request', (request) => {
+    if (request.url().includes('swiss-air-0700-0800.json')) {
+      airRequests.push(request.url())
+    }
+  })
+
+  await page.waitForTimeout(150)
+  expect(airRequests).toEqual([])
+
+  const toggle = page.locator(
+    testInfo.project.name === 'iphone-webkit'
+      ? '.mobile-air-toggle'
+      : '.network-study-picker .air-toggle',
+  )
+  await expect(toggle).toBeVisible()
+  const response = page.waitForResponse((candidate) =>
+    candidate.url().includes('swiss-air-0700-0800.json'),
+  )
+  await toggle.click()
+  await response
+
+  await expect(toggle).toHaveAttribute('aria-pressed', 'true')
+  await expect(page.locator('.network-card .air-count')).toContainText('LUFT')
+  await expect(page.locator('.network-card .air-count')).toHaveAttribute(
+    'aria-label',
+    /Aircraft aloft/,
+  )
+  await expect(page.locator('.prototype-note')).toContainText(
+    'Observed airspace',
+  )
+  expect(airRequests).toHaveLength(1)
+
+  if (testInfo.project.name === 'iphone-webkit') {
+    const viewport = page.viewportSize()
+    const toggleBox = await toggle.boundingBox()
+    expect(viewport).not.toBeNull()
+    expect(toggleBox).not.toBeNull()
+    if (viewport && toggleBox) {
+      expect(toggleBox.x + toggleBox.width).toBeLessThanOrEqual(viewport.width + 1)
+    }
+  }
+})
+
 test('search selects a station and exposes its serving routes', async ({ page }) => {
   const search = page.locator('.train-search input[type="search"]')
   await search.fill('Bern')

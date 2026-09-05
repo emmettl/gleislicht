@@ -102,6 +102,21 @@ See [docs/REALTIME.md](./docs/REALTIME.md) for the trust model, deployment contr
 - [x] Add a user-initiated recording/export workflow for shareable visual studies.
 - [x] Publish the reviewed static build through GitHub Pages; private previews remain non-canonical.
 
+## 7 — LUFTRAUM
+
+- [x] Add a named, optional air study without turning the railway atlas into a generic transport map.
+- [x] Prepare one matching historical hour of observed ADS-B positions as a compact static artifact.
+- [x] Filter ground traffic, stale tracks and slow low-level light-aircraft noise in preprocessing.
+- [x] Replay aircraft deterministically on the shared clock with compressed real altitude.
+- [x] Render aircraft as restrained magenta needles with short, ephemeral trails—never a permanent air network.
+- [x] Lazy-load the complete study only after the visitor selects **LUFT**.
+- [x] Make aircraft selectable and expose callsign, altitude, groundspeed, heading and a tilted follow camera.
+- [ ] Judge the visual experiment on real phones before considering a longer window, richer filtering or live polling.
+
+**Exit:** the observed sky reads as a sparse atmospheric stratum above the deliberately built rail lattice, while the opening national study remains railway-first and unchanged in payload.
+
+See [docs/LUFTRAUM.md](./docs/LUFTRAUM.md) for the data contract, filtering and visual grammar.
+
 ## Data sources to validate in implementation
 
 - [Swiss GTFS Static cookbook](https://opentransportdata.swiss/en/cookbook/timetable-cookbook/gtfs/) and the current timetable-year dataset
@@ -115,6 +130,7 @@ See [docs/REALTIME.md](./docs/REALTIME.md) for the trust model, deployment contr
 - [ZVV network plans](https://www.zvv.ch/en/timetable-and-information/network.html) for regional information hierarchy, not as geographic source data
 - [TPG line geometry from SITG](https://sitg.ge.ch/donnees/tpg-lignes) for Genève tram, trolleybus and bus paths, including cross-border branches
 - [Kiental–Griesalp route 220](https://www.postauto.ch/en/leisure-offers/excursion-tips/kiental-griesalp-route) for the first measured rural PostBus and terrain study
+- [ADSB.lol historical data](https://www.adsb.lol/docs/open-data/historical/) for the optional observed-aircraft study, distributed under ODbL 1.0
 
 ## Early technical decisions
 

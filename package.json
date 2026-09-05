@@ -35,6 +35,7 @@
     "data:postbus:kiental": "node scripts/ingest-gtfs.mjs --window-start 00:00 --window-end 24:00 --focus 12:00 --modes rail,bus --bounds 7.67,46.52,7.79,46.65 --local-agencies 801 --local-route-ids 96-100-0-j26-1 --output public/data/kiental-postbus-day-manifest.json --hub-output none --chunk-hours 3",
     "data:postbus:analyze": "node scripts/analyze-postbus-corridors.mjs",
     "data:validate": "node scripts/validate-data-artifacts.mjs",
+    "data:air": "node scripts/ingest-adsb-heatmap.mjs",
     "preview": "vite preview"
   },
   "engines": {

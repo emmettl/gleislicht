@@ -10,6 +10,7 @@ The experience should work at four scales:
 2. **A single journey becomes cinema.** Choose a train and the camera descends to follow a luminous, lightly abstracted vehicle through real terrain. The landscape is recognisably Swiss but deliberately low-poly and atmospheric rather than photoreal.
 3. **Regional networks reveal exchange.** ZVV, TPG and later regional studies show rail, tram, bus, boat and funicular services feeding one another without crowding the national view.
 4. **Cities become electric.** A full-detail city study embraces the hectic texture of Zürich trams and buses, while a synchronized rural study makes the spacious pulse of PostBus services equally tangible.
+5. **The sky remains a visitor.** The optional LUFTRAUM study places sparse observed aircraft above the railway without granting them a permanent network or equal visual weight.
 
 ## Product principles
 

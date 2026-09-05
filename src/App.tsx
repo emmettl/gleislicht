@@ -14,6 +14,11 @@ import type {
 } from './audio/gleislicht-soundtrack.ts'
 import { MobilePicker } from './components/MobilePicker.tsx'
 import {
+  activeAirTracks,
+  positionForAirTrack,
+  type AirSnapshot,
+} from './domain/air.ts'
+import {
   callsAtHub,
   callsNearTime,
   HUBS,
@@ -115,6 +120,7 @@ type HubStudy = 'pulse' | 'station'
 type TerrainCorridorId = 'zurich-chur' | 'kiental-griesalp'
 type OperationsMode = 'scheduled' | 'demo' | 'live'
 type RealtimeLoadState = 'idle' | 'loading' | 'ready' | 'error'
+type AirLoadState = 'idle' | 'loading' | 'ready' | 'error'
 
 const REALTIME_ENDPOINT = import.meta.env.VITE_GLEISLICHT_REALTIME_URL?.trim()
 const REALTIME_STALE_AFTER_MS = 90_000
@@ -251,6 +257,10 @@ export function App() {
   const [selectedTrainId, setSelectedTrainId] = useState<string>()
   const [selectedStationName, setSelectedStationName] = useState<string>()
   const [selectedRouteId, setSelectedRouteId] = useState<string>()
+  const [airEnabled, setAirEnabled] = useState(false)
+  const [airSnapshot, setAirSnapshot] = useState<AirSnapshot>()
+  const [airLoadState, setAirLoadState] = useState<AirLoadState>('idle')
+  const [selectedAirTrackId, setSelectedAirTrackId] = useState<string>()
   const [selectedHubId, setSelectedHubId] = useState<HubId>('zurich')
   const [hubStudy, setHubStudy] = useState<HubStudy>('pulse')
   const [showTaktOverlay, setShowTaktOverlay] = useState(true)
@@ -404,6 +414,24 @@ export function App() {
   const selectedTrain = useMemo(
     () => network?.trains.find((train) => train.id === selectedTrainId),
     [network, selectedTrainId],
+  )
+  const selectedAirTrack = useMemo(
+    () => airSnapshot?.tracks.find((track) => track.id === selectedAirTrackId),
+    [airSnapshot, selectedAirTrackId],
+  )
+  const selectedAirPosition = useMemo(
+    () =>
+      selectedAirTrack
+        ? positionForAirTrack(selectedAirTrack, networkTime)
+        : undefined,
+    [networkTime, selectedAirTrack],
+  )
+  const activeAircraftCount = useMemo(
+    () =>
+      airEnabled && airSnapshot
+        ? activeAirTracks(airSnapshot, networkTime).length
+        : 0,
+    [airEnabled, airSnapshot, networkTime],
   )
   const corridorTrainSelected =
     isZurichChurTrain(selectedTrain, network) ||
@@ -586,6 +614,7 @@ export function App() {
     setSelectedTrainId(undefined)
     setSelectedStationName(undefined)
     setSelectedRouteId(undefined)
+    setSelectedAirTrackId(undefined)
     setSearchQuery('')
     setActiveSearchIndex(-1)
   }, [])
@@ -601,6 +630,7 @@ export function App() {
   }, [])
 
   const selectStation = useCallback((station: StationIndexEntry) => {
+    setSelectedAirTrackId(undefined)
     setSelectedTrainId(undefined)
     setSelectedRouteId(undefined)
     setSelectedStationName(station.name)
@@ -617,6 +647,7 @@ export function App() {
   const selectRoute = useCallback(
     (route: NetworkRouteIndexEntry) => {
       setSelectedTrainId(undefined)
+      setSelectedAirTrackId(undefined)
       setSelectedStationName(undefined)
       setSelectedRouteId(route.id)
       setSelectedCategory(undefined)
@@ -644,6 +675,7 @@ export function App() {
           )
       setNetworkTime(targetTime)
       setSelectedTrainId(train.id)
+      setSelectedAirTrackId(undefined)
       setSelectedStationName(undefined)
       setSelectedRouteId(undefined)
       setSearchQuery(`${train.route} ${train.shortName} → ${train.headsign}`)
@@ -654,6 +686,38 @@ export function App() {
     },
     [network, networkTime],
   )
+
+  const selectAirTrack = useCallback((trackId: string) => {
+    setSelectedTrainId(undefined)
+    setSelectedStationName(undefined)
+    setSelectedRouteId(undefined)
+    setSelectedCategory(undefined)
+    setSelectedAirTrackId(trackId)
+    setSearchQuery('')
+    setSearchOpen(false)
+    setActiveSearchIndex(-1)
+    setIsPlaying(true)
+  }, [])
+
+  const toggleAirLayer = useCallback(() => {
+    if (airEnabled) {
+      setAirEnabled(false)
+      setSelectedAirTrackId(undefined)
+      return
+    }
+    releaseSelection()
+    setAirLoadState(airSnapshot ? 'ready' : 'loading')
+    setAirEnabled(true)
+    if (
+      airSnapshot &&
+      (networkTime < airSnapshot.metadata.windowStart ||
+        networkTime > airSnapshot.metadata.windowEnd)
+    ) {
+      setNetworkTime(
+        (airSnapshot.metadata.windowStart + airSnapshot.metadata.windowEnd) / 2,
+      )
+    }
+  }, [airEnabled, airSnapshot, networkTime, releaseSelection])
 
   const openTerrainCorridor = useCallback(
     (nextCorridorId: TerrainCorridorId, nextProgress = 0.015) => {
@@ -700,6 +764,7 @@ export function App() {
       setView('network')
       setSelectedCategory(undefined)
       releaseSelection()
+      if (study !== 'national') setAirEnabled(false)
       if (study === 'national') setNationalTimeRange(timeRange)
       if (study === 'geneva-tpg') setSelectedHubId('geneva')
       if (study === 'zvv-region' || study === 'zurich-city') {
@@ -749,13 +814,23 @@ export function App() {
     setDirectorMode(false)
     if (
       view === 'network' &&
-      (selectedTrainId || selectedStationName || selectedRouteId)
+      (selectedTrainId ||
+        selectedStationName ||
+        selectedRouteId ||
+        selectedAirTrackId)
     ) {
       releaseSelection()
       return
     }
     setView((value) => (value === 'network' ? 'journey' : 'network'))
-  }, [releaseSelection, selectedRouteId, selectedStationName, selectedTrainId, view])
+  }, [
+    releaseSelection,
+    selectedAirTrackId,
+    selectedRouteId,
+    selectedStationName,
+    selectedTrainId,
+    view,
+  ])
 
   const toggleSoundtrack = useCallback(async () => {
     if (soundtrackState === 'starting') return
@@ -867,6 +942,39 @@ export function App() {
       })
     return () => controller.abort()
   }, [])
+
+  useEffect(() => {
+    if (!airEnabled || airSnapshot) return
+    const controller = new AbortController()
+    fetch(`${import.meta.env.BASE_URL}data/swiss-air-0700-0800.json`, {
+      signal: controller.signal,
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Luftraum snapshot returned ${response.status}`)
+        }
+        return response.json() as Promise<AirSnapshot>
+      })
+      .then((snapshot) => {
+        if (controller.signal.aborted) return
+        setAirSnapshot(snapshot)
+        setAirLoadState('ready')
+        if (
+          timelineTimeRef.current < snapshot.metadata.windowStart ||
+          timelineTimeRef.current > snapshot.metadata.windowEnd
+        ) {
+          setNetworkTime(
+            (snapshot.metadata.windowStart + snapshot.metadata.windowEnd) / 2,
+          )
+        }
+      })
+      .catch((error: unknown) => {
+        if (error instanceof DOMException && error.name === 'AbortError') return
+        console.warn('Unable to load the historical Luftraum study', error)
+        setAirLoadState('error')
+      })
+    return () => controller.abort()
+  }, [airEnabled, airSnapshot])
 
   useEffect(() => {
     if (operationsMode === 'scheduled') return
@@ -1247,7 +1355,7 @@ export function App() {
 
   return (
     <main
-      className={`experience view-${view}${isContrast ? ' is-contrast' : ''}${selectedTrain || selectedStation || selectedRoute ? ' has-selection' : ''}${!isTimetable ? ` corridor-${journeyCorridorId}` : ''}`}
+      className={`experience view-${view}${isContrast ? ' is-contrast' : ''}${airEnabled ? ' has-air-layer' : ''}${selectedTrain || selectedStation || selectedRoute || selectedAirTrack ? ' has-selection' : ''}${!isTimetable ? ` corridor-${journeyCorridorId}` : ''}`}
     >
       <div className="scene" aria-hidden={webglAvailable ? true : undefined}>
         <Suspense fallback={null}>
@@ -1345,6 +1453,11 @@ export function App() {
             selectedRoute={selectedRoute}
             selectedStation={selectedStation}
             onSelectStation={selectStation}
+            airSnapshot={
+              networkStudy === 'national' && airEnabled ? airSnapshot : undefined
+            }
+            selectedAirTrack={selectedAirTrack}
+            onSelectAirTrack={selectAirTrack}
             cameraFraming={
               networkStudy === 'zurich-city' && zurichCityNetwork
                 ? 'zurich'
@@ -1403,7 +1516,11 @@ export function App() {
 
       <header className="masthead">
         <div>
-          <p className="eyebrow">Gleislicht</p>
+          <p className="eyebrow">
+            {isNetwork && networkStudy === 'national' && airEnabled
+              ? 'GLEISLICHT — LUFTRAUM'
+              : 'Gleislicht'}
+          </p>
           <h1
             className={
               isNetwork && networkStudy === 'national' && !isContrast
@@ -1736,6 +1853,17 @@ export function App() {
               >
                 ZH
               </button>
+              <button
+                className="air-toggle"
+                type="button"
+                title={airEnabled ? text.hideAirLayer : text.showAirLayer}
+                aria-label={airEnabled ? text.hideAirLayer : text.showAirLayer}
+                aria-pressed={airEnabled}
+                disabled={networkStudy !== 'national'}
+                onClick={toggleAirLayer}
+              >
+                {text.luftraum}
+              </button>
             </nav>
             <MobilePicker
               className="mobile-study-picker"
@@ -1792,6 +1920,17 @@ export function App() {
                 }
               }}
             />
+            <button
+              className="mobile-air-toggle"
+              type="button"
+              title={airEnabled ? text.hideAirLayer : text.showAirLayer}
+              aria-label={airEnabled ? text.hideAirLayer : text.showAirLayer}
+              aria-pressed={airEnabled}
+              disabled={networkStudy !== 'national'}
+              onClick={toggleAirLayer}
+            >
+              {text.luftraum}
+            </button>
             {searchQuery && (
               <button
                 className="clear-search"
@@ -2041,6 +2180,61 @@ export function App() {
             {text.enterTerrain} · Kiental–Griesalp
           </button>
         </section>
+      ) : isNetwork && selectedAirTrack ? (
+        <section
+          className="journey-card selected-card air-card"
+          aria-label={text.observedAircraft}
+        >
+          <div className="service-row">
+            <span className="air-card-mark" aria-hidden="true">
+              ✦
+            </span>
+            <span className="service">{selectedAirTrack.callsign}</span>
+            <span className="arrow">↗</span>
+            <span>{text.luftraum}</span>
+          </div>
+          <p className="between">
+            {selectedAirPosition
+              ? `${text.heading} ${Math.round(selectedAirPosition.headingDegrees)
+                  .toString()
+                  .padStart(3, '0')}°`
+              : text.signalGap}{' '}
+            <span>/</span> {selectedAirTrack.id.toUpperCase()}
+          </p>
+          <p className="air-compact-metrics">
+            {selectedAirPosition
+              ? `${numberFormat.format(
+                  Math.round(selectedAirPosition.altitudeFeet / 100) * 100,
+                )} ft · ${numberFormat.format(
+                  Math.round(selectedAirPosition.groundSpeedKnots),
+                )} kt`
+              : text.signalGap}
+          </p>
+          <div className="metric-grid">
+            <div>
+              <span>{text.altitude}</span>
+              <strong>
+                {selectedAirPosition
+                  ? numberFormat.format(
+                      Math.round(selectedAirPosition.altitudeFeet / 100) * 100,
+                    )
+                  : '—'}
+              </strong>
+              <small>ft</small>
+            </div>
+            <div>
+              <span>{text.groundSpeed}</span>
+              <strong>
+                {selectedAirPosition
+                  ? numberFormat.format(
+                      Math.round(selectedAirPosition.groundSpeedKnots),
+                    )
+                  : '—'}
+              </strong>
+              <small>kt</small>
+            </div>
+          </div>
+        </section>
       ) : isNetwork && selectedTrain ? (
         <section className="journey-card selected-card" aria-label={text.selectedTrain}>
           <div className="service-row">
@@ -2197,6 +2391,23 @@ export function App() {
                 {operationsBadge}
               </button>
             )}
+            {networkStudy === 'national' && airEnabled && (
+              <span
+                className="air-count"
+                aria-live="polite"
+                aria-label={
+                  airLoadState === 'ready'
+                    ? `${numberFormat.format(activeAircraftCount)} ${text.aircraftInMotion}`
+                    : undefined
+                }
+              >
+                {airLoadState === 'error'
+                  ? text.airUnavailable
+                  : airLoadState !== 'ready'
+                    ? text.loadingAir
+                    : `${numberFormat.format(activeAircraftCount)} ${text.luftraum}`}
+              </span>
+            )}
           </div>
           <p className="between">
               {networkStudy === 'national' && operationsMode !== 'scheduled'
@@ -2299,23 +2510,28 @@ export function App() {
         ) : isNetwork ? (
           <>
             <span>
-              {selectedTrain
-                ? text.scheduledFollow
-                : selectedRoute
-                  ? text.lineRouteFocus
-                : selectedStation
-                  ? text.stationRouteFocus
-                  : text.gtfsSchedule}
+              {selectedAirTrack
+                ? text.observedAircraft
+                : selectedTrain
+                  ? text.scheduledFollow
+                  : selectedRoute
+                    ? text.lineRouteFocus
+                    : selectedStation
+                      ? text.stationRouteFocus
+                      : text.gtfsSchedule}
             </span>
             <span>
-              {selectedTrain?.category ??
+              {selectedAirTrack?.callsign ??
+                selectedTrain?.category ??
                 (selectedRoute
                   ? `${serviceCategoryLabel(language, selectedRoute.category)} ${selectedRoute.name}`
                   : undefined) ??
                 selectedStation?.name ??
                 (selectedCategory
                   ? serviceCategoryLabel(language, selectedCategory)
-                  : text.trafficFrequency)}
+                  : airEnabled
+                    ? text.observedAirLayer
+                    : text.trafficFrequency)}
             </span>
           </>
         ) : (
@@ -2333,11 +2549,13 @@ export function App() {
         )}
       </div>
 
-      {isNetwork && !selectedTrain && !isContrast && <div className="north-marker">N</div>}
+      {isNetwork && !selectedTrain && !selectedAirTrack && !isContrast && (
+        <div className="north-marker">N</div>
+      )}
 
       {isNetwork && (
         <div className="map-navigation" aria-label={text.mapControls}>
-          {!selectedTrain && (
+          {!selectedTrain && !selectedAirTrack && (
             <>
               <span>{text.mapGesture}</span>
               <div>
@@ -2389,7 +2607,7 @@ export function App() {
           <details ref={mobileMapToolsRef}>
             <summary aria-label={text.mapControls}>⌖</summary>
             <div>
-              {!selectedTrain && (
+              {!selectedTrain && !selectedAirTrack && (
                 <div className="mobile-zoom-row">
                   <button
                     type="button"
@@ -2455,7 +2673,7 @@ export function App() {
         </div>
       )}
 
-      {isTimetable && !selectedTrain && !selectedRoute && (
+      {isTimetable && !selectedTrain && !selectedAirTrack && !selectedRoute && (
         <div
           className={`service-legend${selectedCategory ? ' has-filter' : ''}`}
           aria-label={text.filterServices}
@@ -2591,14 +2809,19 @@ export function App() {
             <summary aria-label={text.moreControls}>•••</summary>
             <div>
               <button type="button" onClick={handleContextAction}>
-                {selectedTrain || selectedRoute || selectedStation
-                  ? selectedTrain
-                    ? networkStudy === 'national'
-                      ? text.releaseTrain
-                      : text.releaseService
-                    : selectedRoute
-                      ? text.releaseService
-                      : text.clearStation
+                {selectedAirTrack ||
+                selectedTrain ||
+                selectedRoute ||
+                selectedStation
+                  ? selectedAirTrack
+                    ? text.releaseAircraft
+                    : selectedTrain
+                      ? networkStudy === 'national'
+                        ? text.releaseTrain
+                        : text.releaseService
+                      : selectedRoute
+                        ? text.releaseService
+                        : text.clearStation
                   : isNetwork
                     ? text.corridorStudy
                     : networkStudy === 'national'
@@ -2609,7 +2832,11 @@ export function App() {
                           ? text.genevaView
                           : text.zurichView}
               </button>
-              {isTimetable && !isContrast && !selectedTrain && !selectedRoute && (
+              {isTimetable &&
+                !isContrast &&
+                !selectedTrain &&
+                !selectedAirTrack &&
+                !selectedRoute && (
                 <button
                   type="button"
                   aria-pressed={isHub}
@@ -2669,14 +2896,19 @@ export function App() {
           </button>
           <button type="button" onClick={handleContextAction}>
             <span className="button-icon camera-icon" aria-hidden="true" />
-            {selectedTrain || selectedRoute || selectedStation
-              ? selectedTrain
-                ? networkStudy === 'national'
-                  ? text.releaseTrain
-                  : text.releaseService
-                : selectedRoute
-                  ? text.releaseService
-                  : text.clearStation
+            {selectedAirTrack ||
+            selectedTrain ||
+            selectedRoute ||
+            selectedStation
+              ? selectedAirTrack
+                ? text.releaseAircraft
+                : selectedTrain
+                  ? networkStudy === 'national'
+                    ? text.releaseTrain
+                    : text.releaseService
+                  : selectedRoute
+                    ? text.releaseService
+                    : text.clearStation
               : isNetwork
                 ? text.corridorStudy
                 : networkStudy === 'national'
@@ -2685,10 +2917,14 @@ export function App() {
                     ? text.zvvView
                     : networkStudy === 'geneva-tpg'
                       ? text.genevaView
-                    : text.zurichView}
+                      : text.zurichView}
             <kbd>C</kbd>
           </button>
-          {isTimetable && !isContrast && !selectedTrain && !selectedRoute && (
+          {isTimetable &&
+            !isContrast &&
+            !selectedTrain &&
+            !selectedAirTrack &&
+            !selectedRoute && (
             <button
               type="button"
               aria-pressed={isHub}
@@ -2769,6 +3005,15 @@ export function App() {
             {isNetwork && lakes && (
               <a href={lakes.metadata.productUrl} target="_blank" rel="noreferrer">
                 {text.lakes} · {lakes.metadata.attribution}
+              </a>
+            )}
+            {isNetwork && airEnabled && airSnapshot && (
+              <a
+                href={airSnapshot.metadata.sourceUrl}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Luftraum · ADSB.lol / {airSnapshot.metadata.license}
               </a>
             )}
             <a href="./methodology.html">{text.methodology}</a>

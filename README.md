@@ -12,6 +12,8 @@ The complete interface is available in English, German, French and Italian. It f
 
 The national card also carries a compact **PLAN / DEMO / LIVE** operations switch. The bundled demo applies representative delays, a cancellation and a skipped stop to the exactly matching static feed so the interaction remains reviewable without a credential or invented GPS positions. A separate Cloudflare Worker adapter is ready to decode the official GTFS-RT Trip Updates feed at the edge; it falls back to the schedule on feed-version mismatch, stale data or failure. Production LIVE activation intentionally remains off until a feed key and a current matching static service day are configured. See [docs/REALTIME.md](./docs/REALTIME.md).
 
+The national atlas also offers **LUFT**, a deliberately optional historical ADS-B study. Selecting it lazy-loads one matching hour of observed aircraft positions and draws dim magenta needles with three-minute ephemeral trails above the brighter railway lattice. Altitude is real but visually compressed; selecting an aircraft reveals its callsign, altitude, groundspeed and heading in a tilted follow view. See [docs/LUFTRAUM.md](./docs/LUFTRAUM.md).
+
 ## Run it
 
 ```bash
@@ -56,7 +58,7 @@ Open **Takt hubs** to move between Zürich HB, Bern, Basel SBB and Genève acros
 
 Sound is optional and off by default. Turning on the adaptive score lazily loads the Driftbox synthesis engine and plays one of three Gleislicht arrangements: **Night Grid** for the national map, **Taktwerk** for station pulses, and **Valley Signal** for corridor or train-follow views. Mode changes crossfade between two live transports. Inside a journey, speed, terrain openness and tunnel state continuously shape a restrained spatial filter without changing the timeline or musical tempo. See [docs/SOUNDTRACK.md](./docs/SOUNDTRACK.md) for the musical and technical design.
 
-The committed GTFS and geography snapshots are regenerated with `npm run data:gtfs`, `npm run data:day`, `npm run data:rail:shapes`, `npm run data:zvv`, `npm run data:zvv:shapes`, `npm run data:geneva`, `npm run data:geneva:shapes`, `npm run data:postbus:kiental`, `npm run data:corridor:kiental`, `npm run data:zurich`, `npm run data:zurich:shapes`, `npm run data:zurich:day`, `npm run data:zurich:day:shapes`, `npm run data:boundary`, `npm run data:lakes` and `npm run data:corridor`. `npm run data:validate` checks the shared national artifact set and the Alpine corridor, and a twice-weekly workflow publishes validated national refreshes to a dedicated review branch; see [docs/DATA-PIPELINE.md](./docs/DATA-PIPELINE.md).
+The committed GTFS and geography snapshots are regenerated with `npm run data:gtfs`, `npm run data:day`, `npm run data:rail:shapes`, `npm run data:zvv`, `npm run data:zvv:shapes`, `npm run data:geneva`, `npm run data:geneva:shapes`, `npm run data:postbus:kiental`, `npm run data:corridor:kiental`, `npm run data:zurich`, `npm run data:zurich:shapes`, `npm run data:zurich:day`, `npm run data:zurich:day:shapes`, `npm run data:boundary`, `npm run data:lakes`, `npm run data:corridor` and `npm run data:air`. `npm run data:validate` checks the shared national artifact set, the Alpine corridor and the historical air snapshot, and a twice-weekly workflow publishes validated national refreshes to a dedicated review branch; see [docs/DATA-PIPELINE.md](./docs/DATA-PIPELINE.md).
 The eventual public deployment is GitHub Pages; see [docs/PUBLISHING.md](./docs/PUBLISHING.md).
 
 ## Technical shape

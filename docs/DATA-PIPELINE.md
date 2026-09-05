@@ -9,7 +9,7 @@ Download the latest archive from the [Swiss timetable dataset](https://data.open
 ```bash
 npm run data:gtfs -- \
   --archive /path/to/GTFS_FP2026_YYYYMMDD.zip \
-  --date 2026-09-04 \
+  --service-date 2026-09-04 \
   --window-start 06:45 \
   --window-end 08:45 \
   --focus 07:45
@@ -206,6 +206,21 @@ For a repeatable offline build, save the GeoAdmin `identify` response and pass i
 - The source Federal Office of Transport XTF is temporary build input and must not be committed.
 - The source swissBOUNDARIES3D GeoPackage is temporary build input and must not be committed.
 - A saved GeoAdmin lake response is temporary build input and must not be committed.
+- Raw ADSB.lol daily archives and extracted heatmap slices are temporary build inputs and must not be committed.
 - The output records feed version, service date, time window, publisher and model.
 - Refreshes are reviewed as data changes, not mixed into unrelated visual edits.
 - Realtime updates must be paired with their corresponding static feed version.
+
+## Historical LUFTRAUM study
+
+The optional air layer is prepared from ADSB.lol's compact historical heatmap stream rather than its much larger per-aircraft JSON archive. Two adjacent 30-minute slices provide one matching hour at ten-second cadence:
+
+```bash
+npm run data:air -- \
+  --input /path/to/heatmap/10.bin.ttf \
+  --input /path/to/heatmap/11.bin.ttf \
+  --date 2026-09-04 \
+  --utc-offset 2
+```
+
+The ingester decodes the timestamped position, barometric altitude, groundspeed and callsign events, clips them to a generous Swiss extent, rejects ground/stale/noisy tracks, and writes `public/data/swiss-air-0700-0800.json`. The compact web artifact preserves the ADSB.lol release URL and ODbL 1.0 terms. It is fetched only after **LUFT** is enabled; no source archive or heatmap slice ships to the browser. See [LUFTRAUM.md](./LUFTRAUM.md) for the display contract and limitations.

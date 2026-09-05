@@ -7,6 +7,11 @@ import type {
 } from '../domain/boundary.ts'
 import type { SwissLakes } from '../domain/lakes.ts'
 import {
+  positionForAirTrack,
+  type AirSnapshot,
+  type AirTrack,
+} from '../domain/air.ts'
+import {
   positionForTrain,
   SERVICE_COLORS,
   type NetworkSnapshot,
@@ -82,6 +87,8 @@ import {
   regionalCameraHeight,
   vehicleIsVisibleAtZoom,
 } from './regional-lod.ts'
+import { AirTrafficLayer } from './AirTrafficLayer.tsx'
+import { projectAirPosition } from './air-projection.ts'
 
 export type MapCameraAction =
   | 'zoom-in'
@@ -113,6 +120,9 @@ interface NationalNetworkSceneProps {
   readonly stations: readonly StationIndexEntry[]
   readonly trainLabelMode: TrainLabelMode
   readonly cameraFraming: MapCameraFraming
+  readonly airSnapshot?: AirSnapshot
+  readonly selectedAirTrack?: AirTrack
+  readonly onSelectAirTrack?: (trackId: string) => void
 }
 
 type ProjectedStop = readonly [x: number, y: number, z: number]
@@ -138,7 +148,7 @@ const MAP_LAYER = {
   stationLabel: 20,
 } as const
 
-interface NetworkProjection {
+export interface NetworkProjection {
   readonly centreLongitude: number
   readonly centreLatitude: number
   readonly longitudeScale: number
@@ -2730,6 +2740,8 @@ function NetworkCamera({
   selectedStation,
   cameraFraming,
   mapFocus,
+  selectedAirTrack,
+  airProjection,
 }: {
   readonly selectedTrain?: NetworkTrain
   readonly time: number
@@ -2739,6 +2751,8 @@ function NetworkCamera({
   readonly selectedStation?: StationIndexEntry
   readonly cameraFraming: MapCameraFraming
   readonly mapFocus: THREE.Vector3
+  readonly selectedAirTrack?: AirTrack
+  readonly airProjection: NetworkProjection
 }) {
   const { camera, gl, size } = useThree()
   const lakeAvoidingPaths = useContext(LakeAvoidingPathsContext)
@@ -2818,7 +2832,7 @@ function NetworkCamera({
     let pinchDistance: number | undefined
 
     const onPointerDown = (event: PointerEvent) => {
-      if (selectedTrain || (event.pointerType === 'mouse' && event.button !== 0)) return
+      if (selectedTrain || selectedAirTrack || (event.pointerType === 'mouse' && event.button !== 0)) return
       pointers.set(event.pointerId, {
         x: event.clientX,
         y: event.clientY,
@@ -2829,7 +2843,7 @@ function NetworkCamera({
     }
     const onPointerMove = (event: PointerEvent) => {
       const previous = pointers.get(event.pointerId)
-      if (!previous || selectedTrain) return
+      if (!previous || selectedTrain || selectedAirTrack) return
       pointers.set(event.pointerId, {
         x: event.clientX,
         y: event.clientY,
@@ -2866,7 +2880,7 @@ function NetworkCamera({
       if (pointers.size < 2) pinchDistance = undefined
     }
     const onWheel = (event: WheelEvent) => {
-      if (selectedTrain) return
+      if (selectedTrain || selectedAirTrack) return
       distanceScale.current = applyMapZoom(
         distanceScale.current,
         mapWheelZoomMultiplier(event.deltaY, event.deltaMode),
@@ -2887,7 +2901,7 @@ function NetworkCamera({
       element.removeEventListener('pointercancel', onPointerUp)
       element.removeEventListener('wheel', onWheel)
     }
-  }, [gl, minimumDistanceScale, selectedTrain])
+  }, [gl, minimumDistanceScale, selectedAirTrack, selectedTrain])
 
   useFrame((_, delta) => {
     const trainPosition = selectedTrain
@@ -2899,9 +2913,25 @@ function NetworkCamera({
           lakeAvoidingPaths,
         )
       : undefined
+    const airState = selectedAirTrack
+      ? positionForAirTrack(selectedAirTrack, time)
+      : undefined
+    const airPosition = airState
+      ? projectAirPosition(airState, airProjection)
+      : undefined
     if (trainPosition) {
       desiredTarget.set(trainPosition[0], 0, trainPosition[2])
       desiredPosition.set(trainPosition[0] + 4.2, 4.8, trainPosition[2] + 6.5)
+    } else if (airPosition && airState) {
+      const heading = THREE.MathUtils.degToRad(airState.headingDegrees)
+      const forwardX = Math.sin(heading)
+      const forwardZ = -Math.cos(heading)
+      desiredTarget.set(...airPosition)
+      desiredPosition.set(
+        airPosition[0] - forwardX * 5.5 + 2.4,
+        airPosition[1] + 4.2,
+        airPosition[2] - forwardZ * 5.5 + 2.4,
+      )
     } else {
       desiredTarget.copy(mapTarget.current)
       desiredPosition.set(
@@ -2914,7 +2944,11 @@ function NetworkCamera({
     const damping =
       1 -
       Math.exp(
-        -delta * mapCameraDampingRate(Boolean(trainPosition), directTouch.current),
+        -delta *
+          mapCameraDampingRate(
+            Boolean(trainPosition || airPosition),
+            directTouch.current,
+          ),
       )
     camera.position.lerp(desiredPosition, damping)
     currentTarget.lerp(desiredTarget, damping)
@@ -3058,6 +3092,15 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
             props.selectedCategory
         )}
       />
+      {props.airSnapshot && (
+        <AirTrafficLayer
+          snapshot={props.airSnapshot}
+          time={props.time}
+          projection={projection}
+          selectedTrackId={props.selectedAirTrack?.id}
+          onSelectTrack={props.onSelectAirTrack}
+        />
+      )}
       {props.selectedTrain && (
         <>
           <SelectedRoute
@@ -3132,6 +3175,8 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
         selectedStation={props.selectedStation}
         cameraFraming={props.cameraFraming}
         mapFocus={mapFocus}
+        selectedAirTrack={props.selectedAirTrack}
+        airProjection={projection}
       />
     </LakeAvoidingPathsContext.Provider>
   )

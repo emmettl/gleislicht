@@ -46,6 +46,7 @@
           <dt>Selection</dt><dd>Station selection reveals all scheduled paths touching that stop in the loaded study. Line and category selection dims unrelated movement.</dd>
           <dt>Geometry</dt><dd>National trains use matched Federal Office of Transport infrastructure geometry. Zürich and Genève regional studies use published operator geometry where matched. Unresolved segments remain scheduled approximations, with major lake crossings corrected by the shoreline fallback.</dd>
           <dt>Terrain</dt><dd>The Zürich–Chur corridor uses measured swissALTIRegio elevations and named SBB tunnel records. Kiental–Griesalp uses a separate swissALTI3D crop and road-following OpenStreetMap geometry. Terrain meshes, lake surfaces, route profiles and camera scale are prepared offline; lighting, vertical emphasis and vehicle forms are artistic.</dd>
+          <dt>Air</dt><dd>LUFTRAUM is a separately loaded historical observation layer. Aircraft positions, altitude and groundspeed come from ADS-B receiver data; heading and vertical rate are derived between samples, and gaps longer than 45 seconds are not interpolated. Altitude is visually compressed.</dd>
         </dl>
       </section>
 
@@ -60,13 +61,14 @@
           <li><a href="https://www.swisstopo.admin.ch/en/height-model-swissalti3d">swissALTI3D</a> supplies the measured high-resolution terrain for Kiental–Griesalp; its road trace is derived from <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a> under the ODbL.</li>
           <li>Federal open hydrography is simplified offline into the major lake layer, with source attribution retained in the artifact.</li>
           <li><a href="https://data.stadt-zuerich.ch/dataset/vbz_fahrplandaten_gtfs">ZVV / VBZ GTFS</a> and <a href="https://sitg.ge.ch/donnees/tpg-lignes">TPG / SITG</a> provide regional line geometry.</li>
+          <li><a href="https://www.adsb.lol/docs/open-data/historical/">ADSB.lol historical data</a>, distributed under ODbL 1.0, supplies the optional observed-aircraft study for 07:00–08:00 CEST on 4 September 2026.</li>
         </ul>
         <p>The browser never receives the source GTFS archive. Repeatable Node scripts validate and compress each study into small static JSON artifacts. National 24-hour data is split so the initial morning view remains fast.</p>
       </section>
 
       <section>
         <h2>Limits, privacy and accessibility</h2>
-        <p><strong>Realtime:</strong> the current release is scheduled simulation. Swiss GTFS Realtime offers predictions and alerts rather than national GPS vehicle positions; it will only be presented as realtime-adjusted interpolation once a paired, timestamped feed is operating.</p>
+        <p><strong>Realtime:</strong> rail remains a scheduled simulation. Swiss GTFS Realtime offers predictions and alerts rather than national GPS vehicle positions; it will only be presented as realtime-adjusted interpolation once a paired, timestamped feed is operating. LUFTRAUM is explicitly historical observed data, not a live aircraft display.</p>
         <p><strong>Privacy:</strong> Gleislicht contains no analytics, advertising, accounts or personal tracking. Language preference is stored locally in the browser. Add <code>?perf=1</code> to the URL for an on-device frame-rate monitor; its measurements are never transmitted.</p>
         <p><strong>Accessibility:</strong> keyboard search, reduced interface density on small screens, labelled controls and a non-WebGL explanation are built in. The map remains a visual artwork; the status cards and search results carry the essential textual information.</p>
         <p><strong>Export:</strong> supporting browsers can record a silent twelve-second canvas loop locally. The video is assembled and downloaded on-device; no frames are uploaded.</p>

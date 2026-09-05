@@ -16,6 +16,7 @@ const hubs = await readJson('swiss-hub-day.json')
 const day = await readJson('swiss-rail-day-manifest.json')
 const kientalCorridor = await readJson('kiental-griesalp-corridor.json')
 const zurichChurCorridor = await readJson('zurich-chur-corridor.json')
+const air = await readJson('swiss-air-0700-0800.json')
 
 const artifacts = [morning, hubs, day]
 const serviceDates = new Set(artifacts.map((artifact) => artifact.metadata?.serviceDate))
@@ -81,9 +82,26 @@ assert(
   zurichChurCorridor.route.tunnels.some((tunnel) => tunnel.name === 'Kerenzerbergtunnel'),
   'Zürich–Chur corridor is missing the Kerenzerbergtunnel',
 )
+assert(air.metadata?.publisher === 'ADSB.lol', 'Air study has no ADSB.lol provenance')
+assert(air.metadata?.license === 'ODbL 1.0', 'Air study has the wrong data licence')
+assert(air.metadata?.serviceDate === [...serviceDates][0], 'Air study does not match the railway service day')
+assert(air.metadata?.sampleIntervalSeconds === 10, 'Air study has an unexpected sample cadence')
+assert(air.metadata?.windowStart === 25_200, 'Air study does not start at 07:00 CEST')
+assert(air.metadata?.windowEnd >= 28_790, 'Air study does not cover the complete historical hour')
+assert(Array.isArray(air.tracks) && air.tracks.length > 300, 'Air study has too few aircraft tracks')
+assert(
+  air.tracks.every((track) =>
+    typeof track.id === 'string' &&
+    typeof track.callsign === 'string' &&
+    track.samples.length >= 4 &&
+    track.samples.every((sample) => sample.length === 5),
+  ),
+  'Air study contains malformed tracks',
+)
 
 console.log(
   `Validated national GTFS ${[...feedVersions][0]} for ${[...serviceDates][0]}: ` +
     `${morning.trains.length.toLocaleString('en')} morning trips, ` +
-    `${day.tripCount.toLocaleString('en')} day trips and ${day.chunks.length} chunks.`,
+    `${day.tripCount.toLocaleString('en')} day trips, ${day.chunks.length} chunks and ` +
+    `${air.tracks.length.toLocaleString('en')} historical aircraft.`,
 )
