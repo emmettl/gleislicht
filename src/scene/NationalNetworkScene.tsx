@@ -57,6 +57,7 @@ import {
   mapCameraDampingRate,
   mapCameraFieldOfView,
   mapPanScale,
+  mapSelectionNeedsReveal,
   mapWheelZoomMultiplier,
   minimumMapDistanceScale,
   type MapCameraFraming,
@@ -79,7 +80,11 @@ import {
   vehicleIsVisibleAtZoom,
 } from './regional-lod.ts'
 
-export type MapCameraAction = 'zoom-in' | 'zoom-out' | 'reset'
+export type MapCameraAction =
+  | 'zoom-in'
+  | 'zoom-out'
+  | 'reset'
+  | 'reveal-station'
 
 export interface MapCameraCommand {
   readonly id: number
@@ -2639,20 +2644,30 @@ function NetworkCamera({
       distanceScale.current = homeMapDistanceScale(cameraFraming)
       return
     }
+    if (cameraCommand.action === 'reveal-station') {
+      if (!selectedStation) return
+      const centre = stationCentre(selectedStation, projectedStops)
+      camera.updateMatrixWorld()
+      if (mapSelectionNeedsReveal(centre.clone().project(camera))) {
+        mapTarget.current.copy(centre)
+      }
+      return
+    }
     const multiplier = cameraCommand.action === 'zoom-in' ? 0.78 : 1.28
     distanceScale.current = applyMapZoom(
       distanceScale.current,
       multiplier,
       minimumDistanceScale,
     )
-  }, [cameraCommand, cameraFraming, mapFocus, minimumDistanceScale])
-
-  useEffect(() => {
-    if (!selectedStation) return
-    const centre = stationCentre(selectedStation, projectedStops)
-    mapTarget.current.copy(centre)
-    distanceScale.current = homeMapDistanceScale(cameraFraming) * 0.55
-  }, [cameraFraming, projectedStops, selectedStation])
+  }, [
+    camera,
+    cameraCommand,
+    cameraFraming,
+    mapFocus,
+    minimumDistanceScale,
+    projectedStops,
+    selectedStation,
+  ])
 
   useEffect(() => {
     const element = gl.domElement

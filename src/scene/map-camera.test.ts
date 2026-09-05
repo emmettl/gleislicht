@@ -5,6 +5,7 @@ import {
   mapCameraFieldOfView,
   mapCameraDampingRate,
   mapPanScale,
+  mapSelectionNeedsReveal,
   mapWheelZoomMultiplier,
   MAX_MAP_DISTANCE_SCALE,
   MIN_MAP_DISTANCE_SCALE,
@@ -87,6 +88,15 @@ describe('map camera zoom', () => {
     expect(mapCameraDampingRate(false, true)).toBe(11)
     expect(mapCameraDampingRate(false, false)).toBe(8)
     expect(mapCameraDampingRate(true, true)).toBe(1.7)
+  })
+
+  it('only reveals selections outside the safe viewport', () => {
+    expect(mapSelectionNeedsReveal({ x: 0, y: 0, z: 0 })).toBe(false)
+    expect(mapSelectionNeedsReveal({ x: 0.89, y: 0.85, z: 0 })).toBe(false)
+    expect(mapSelectionNeedsReveal({ x: 0.91, y: 0, z: 0 })).toBe(true)
+    expect(mapSelectionNeedsReveal({ x: 0, y: -0.87, z: 0 })).toBe(true)
+    expect(mapSelectionNeedsReveal({ x: 0, y: 0, z: 1.01 })).toBe(true)
+    expect(mapSelectionNeedsReveal({ x: Number.NaN, y: 0, z: 0 })).toBe(true)
   })
 
   it('turns wheel movement into a brisk zoom multiplier', () => {

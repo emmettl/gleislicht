@@ -67,6 +67,31 @@ export function mapCameraDampingRate(
   return directTouch ? 11 : 8
 }
 
+interface ProjectedMapPoint {
+  readonly x: number
+  readonly y: number
+  readonly z: number
+}
+
+const SELECTION_HORIZONTAL_SAFE_INSET = 0.1
+const SELECTION_VERTICAL_SAFE_INSET = 0.14
+
+/**
+ * Treats a selected place close to the edge as out of view as well. The small
+ * inset leaves room for its marker and label instead of merely keeping the
+ * station's centre one pixel inside the canvas.
+ */
+export function mapSelectionNeedsReveal(point: ProjectedMapPoint): boolean {
+  if (![point.x, point.y, point.z].every(Number.isFinite)) return true
+
+  return (
+    point.z < -1 ||
+    point.z > 1 ||
+    Math.abs(point.x) > 1 - SELECTION_HORIZONTAL_SAFE_INSET ||
+    Math.abs(point.y) > 1 - SELECTION_VERTICAL_SAFE_INSET
+  )
+}
+
 export function mapWheelZoomMultiplier(
   deltaY: number,
   deltaMode = 0,

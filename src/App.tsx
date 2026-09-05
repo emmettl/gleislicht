@@ -524,6 +524,10 @@ export function App() {
     setSearchOpen(false)
     setActiveSearchIndex(-1)
     setView('network')
+    setMapCameraCommand((current) => ({
+      id: current.id + 1,
+      action: 'reveal-station',
+    }))
   }, [])
 
   const selectRoute = useCallback(
