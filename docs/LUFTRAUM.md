@@ -16,6 +16,7 @@ This is historical observation, not a schedule and not a live feed. Latitude, lo
 - Altitude is genuine but vertically compressed into the scene so climbing, descending and overflying layers are legible without dwarfing the country.
 - Each aircraft leaves only its previous three minutes as a fading curve. There is no permanent air-route layer.
 - Aircraft callsigns inherit the map's **vehicle labels · auto/on/off** policy. Auto is deliberately sparse, zoom reveals more, stable retention limits flashing, and collision suppression keeps labels from piling up. A selected aircraft takes priority while the whole air label layer remains dimmer and smaller than rail.
+- Enabling LUFT adds it to the same service-category control as IC, IR and S-Bahn. Selecting LUFT suppresses rail labels and trails and strongly dims the infrastructure and trains; choosing a rail category applies the reciprocal treatment to aircraft.
 - While LUFT is active, the shared Find box matches both the displayed callsign and the aircraft's six-character ICAO address. Search results remain keyboard navigable; selecting a track moves the clock into its observed interval and enters the same follow view as selecting its needle.
 - Selecting a needle tilts and eases the camera into a follow view and shows callsign, ICAO address, altitude, groundspeed and heading.
 - Releasing the selection returns control to the national map. Regional studies intentionally omit the air layer in this first experiment.

@@ -121,6 +121,7 @@ interface NationalNetworkSceneProps {
   readonly trainLabelMode: TrainLabelMode
   readonly cameraFraming: MapCameraFraming
   readonly airSnapshot?: AirSnapshot
+  readonly airCategorySelected?: boolean
   readonly selectedAirTrack?: AirTrack
   readonly onSelectAirTrack?: (trackId: string) => void
 }
@@ -1596,6 +1597,7 @@ function TrainLabels({
   selectedRoute,
   selectedStation,
   selectedCategory,
+  airCategorySelected,
   trainLabelMode,
   isPlaying,
   time,
@@ -1649,7 +1651,9 @@ function TrainLabels({
       camera.position.y,
       cameraFraming,
     )
-    const labelBudget = selectedTrain
+    const labelBudget = airCategorySelected
+      ? 0
+      : selectedTrain
       ? trainLabelMode === 'off'
         ? 0
         : 1
@@ -2208,6 +2212,7 @@ function TrainSwarm({
   onTime,
   playbackRate,
   selectedCategory,
+  airCategorySelected,
   selectedStation,
   trainTimeIndex,
   cameraFraming,
@@ -2368,7 +2373,9 @@ function TrainSwarm({
         !selectedCategory || selectedCategory === train.category
       const routeIncludesTrain =
         !selectedRoute || selectedRouteTrainIds.has(train.id)
-      const intensity = selectedTrain
+      const intensity = airCategorySelected
+        ? 0.025
+        : selectedTrain
         ? selectedTrain.id === train.id
           ? 1
           : 0.025
@@ -2428,7 +2435,11 @@ function TrainSwarm({
                 size={isCityVehicle ? 7.5 : 9}
                 transparent
                 opacity={
-                  selectedTrain || selectedRoute || selectedCategory || selectedStation
+                  selectedTrain ||
+                  selectedRoute ||
+                  selectedCategory ||
+                  selectedStation ||
+                  airCategorySelected
                     ? 0.055
                     : isCityVehicle
                       ? 0.11
@@ -2516,6 +2527,7 @@ function VehicleTrails({
   selectedTrain,
   selectedRoute,
   selectedCategory,
+  airCategorySelected,
   selectedStation,
   isPlaying,
   time,
@@ -2604,6 +2616,7 @@ function VehicleTrails({
     )
 
     for (const train of trainsNearTime(trainTimeIndex, localTime.current)) {
+      if (airCategorySelected) continue
       if (selectedTrain && train.id !== selectedTrain.id) continue
       if (selectedRoute && !selectedRouteTrainIds.has(train.id)) continue
       if (selectedCategory && train.category !== selectedCategory) continue
@@ -3051,7 +3064,8 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
             props.selectedTrain ||
               props.selectedRoute ||
               props.selectedStation ||
-              props.selectedCategory
+              props.selectedCategory ||
+              props.airCategorySelected
           )}
         />
       )}
@@ -3064,6 +3078,7 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
               props.selectedRoute ||
               props.selectedStation ||
               props.selectedCategory ||
+              props.airCategorySelected ||
               hasContext
           )}
         />
@@ -3089,7 +3104,8 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
           props.selectedTrain ||
             props.selectedRoute ||
             props.selectedStation ||
-            props.selectedCategory
+            props.selectedCategory ||
+            props.airCategorySelected
         )}
       />
       {props.airSnapshot && (
@@ -3100,6 +3116,12 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
           selectedTrackId={props.selectedAirTrack?.id}
           onSelectTrack={props.onSelectAirTrack}
           labelMode={props.trainLabelMode}
+          subdued={Boolean(
+            props.selectedTrain ||
+              props.selectedRoute ||
+              props.selectedStation ||
+              props.selectedCategory
+          )}
         />
       )}
       {props.selectedTrain && (

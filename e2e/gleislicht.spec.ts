@@ -92,6 +92,44 @@ test('LUFTRAUM stays lazy and matches the national morning window', async ({
   await expect(page.locator('.air-card')).toContainText('MSR783')
 })
 
+test('LUFT can be isolated like a rail service category', async ({
+  page,
+}, testInfo) => {
+  const toggle = page.locator(
+    testInfo.project.name === 'iphone-webkit'
+      ? '.mobile-air-toggle'
+      : '.network-study-picker .air-toggle',
+  )
+  await toggle.click()
+  await expect(page.locator('.network-card .air-count')).toHaveAttribute(
+    'aria-label',
+    /Aircraft aloft/,
+  )
+
+  if (testInfo.project.name === 'iphone-webkit') {
+    const tools = page.locator('.mobile-map-tools details')
+    await tools.locator('summary').click()
+    const services = tools.locator('.mobile-tool-field').first().locator('.mobile-picker')
+    await services.locator('.mobile-picker__trigger').click()
+    await services.getByRole('option', { name: 'LUFT' }).click()
+    await expect(services.locator('.mobile-picker__trigger')).toContainText('LUFT')
+    await services.locator('.mobile-picker__trigger').click()
+    await services.getByRole('option', { name: 'IC', exact: true }).click()
+    await expect(services.locator('.mobile-picker__trigger')).toContainText('IC')
+  } else {
+    const legend = page.locator('.service-legend')
+    const airCategory = legend.getByRole('button', { name: 'LUFT' })
+    const intercity = legend.getByRole('button', { name: 'IC', exact: true })
+    await airCategory.click()
+    await expect(airCategory).toHaveAttribute('aria-pressed', 'true')
+    await expect(legend).toHaveClass(/has-filter/)
+    await expect(intercity).toHaveCSS('opacity', '0.14')
+    await intercity.click()
+    await expect(intercity).toHaveAttribute('aria-pressed', 'true')
+    await expect(airCategory).toHaveAttribute('aria-pressed', 'false')
+  }
+})
+
 test('search selects a station and exposes its serving routes', async ({ page }) => {
   const search = page.locator('.train-search input[type="search"]')
   await search.fill('Bern')

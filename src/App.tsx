@@ -263,6 +263,7 @@ export function App() {
   const [selectedStationName, setSelectedStationName] = useState<string>()
   const [selectedRouteId, setSelectedRouteId] = useState<string>()
   const [airEnabled, setAirEnabled] = useState(false)
+  const [airCategorySelected, setAirCategorySelected] = useState(false)
   const [airSnapshot, setAirSnapshot] = useState<AirSnapshot>()
   const [airLoadState, setAirLoadState] = useState<AirLoadState>('idle')
   const [selectedAirTrackId, setSelectedAirTrackId] = useState<string>()
@@ -672,6 +673,7 @@ export function App() {
   }, [])
 
   const selectStation = useCallback((station: StationIndexEntry) => {
+    setAirCategorySelected(false)
     setSelectedAirTrackId(undefined)
     setSelectedTrainId(undefined)
     setSelectedRouteId(undefined)
@@ -688,6 +690,7 @@ export function App() {
 
   const selectRoute = useCallback(
     (route: NetworkRouteIndexEntry) => {
+      setAirCategorySelected(false)
       setSelectedTrainId(undefined)
       setSelectedAirTrackId(undefined)
       setSelectedStationName(undefined)
@@ -707,6 +710,7 @@ export function App() {
   const selectTrain = useCallback(
     (train: NetworkTrain) => {
       if (!network) return
+      setAirCategorySelected(false)
       const currentTimeIsActive = train.start <= networkTime && train.end >= networkTime
       const firstMovingMoment = Math.min(train.end, train.start + 60)
       const targetTime = currentTimeIsActive
@@ -731,6 +735,7 @@ export function App() {
 
   const selectAirTrack = useCallback(
     (trackId: string) => {
+      setAirCategorySelected(false)
       const track =
         activeAirSnapshot?.tracks.find((candidate) => candidate.id === trackId) ??
         airDay.manifest?.aircraft.find((candidate) => candidate.id === trackId)
@@ -757,6 +762,7 @@ export function App() {
   const toggleAirLayer = useCallback(() => {
     if (airEnabled) {
       setAirEnabled(false)
+      setAirCategorySelected(false)
       setSelectedAirTrackId(undefined)
       return
     }
@@ -821,6 +827,7 @@ export function App() {
       setSelectedCategory(undefined)
       releaseSelection()
       if (study !== 'national') setAirEnabled(false)
+      if (study !== 'national') setAirCategorySelected(false)
       if (study === 'national') setNationalTimeRange(timeRange)
       if (study === 'geneva-tpg') setSelectedHubId('geneva')
       if (study === 'zvv-region' || study === 'zurich-city') {
@@ -1409,7 +1416,7 @@ export function App() {
 
   return (
     <main
-      className={`experience view-${view}${isContrast ? ' is-contrast' : ''}${airEnabled ? ' has-air-layer' : ''}${selectedTrain || selectedStation || selectedRoute || selectedAirTrack ? ' has-selection' : ''}${!isTimetable ? ` corridor-${journeyCorridorId}` : ''}`}
+      className={`experience view-${view}${isContrast ? ' is-contrast' : ''}${airEnabled ? ' has-air-layer' : ''}${airCategorySelected ? ' has-air-category' : ''}${selectedTrain || selectedStation || selectedRoute || selectedAirTrack ? ' has-selection' : ''}${!isTimetable ? ` corridor-${journeyCorridorId}` : ''}`}
     >
       <div className="scene" aria-hidden={webglAvailable ? true : undefined}>
         <Suspense fallback={null}>
@@ -1512,6 +1519,7 @@ export function App() {
                 ? activeAirSnapshot
                 : undefined
             }
+            airCategorySelected={airCategorySelected}
             selectedAirTrack={selectedAirTrack}
             onSelectAirTrack={selectAirTrack}
             cameraFraming={
@@ -2642,11 +2650,13 @@ export function App() {
                   ? `${serviceCategoryLabel(language, selectedRoute.category)} ${selectedRoute.name}`
                   : undefined) ??
                 selectedStation?.name ??
-                (selectedCategory
-                  ? serviceCategoryLabel(language, selectedCategory)
-                  : airEnabled
-                    ? text.observedAirLayer
-                    : text.trafficFrequency)}
+                (airCategorySelected
+                  ? text.observedAirLayer
+                  : selectedCategory
+                    ? serviceCategoryLabel(language, selectedCategory)
+                    : airEnabled
+                      ? text.observedAirLayer
+                      : text.trafficFrequency)}
             </span>
           </>
         ) : (
@@ -2750,21 +2760,25 @@ export function App() {
                 <span>{text.services}</span>
                 <MobilePicker
                   ariaLabel={text.filterServices}
-                  value={selectedCategory ?? ''}
+                  value={airCategorySelected ? 'air' : (selectedCategory ?? '')}
                   options={[
                     { value: '', label: text.allServices },
                     ...visibleServiceCategories.map((category) => ({
                       value: category.id,
                       label: serviceCategoryLabel(language, category.id),
                     })),
+                    ...(networkStudy === 'national' && airEnabled
+                      ? [{ value: 'air', label: text.luftraum }]
+                      : []),
                   ]}
-                  onChange={(category) =>
+                  onChange={(category) => {
+                    setAirCategorySelected(category === 'air')
                     setSelectedCategory(
-                      (category || undefined) as
-                        | ServiceCategory
-                        | undefined,
+                      category && category !== 'air'
+                        ? (category as ServiceCategory)
+                        : undefined,
                     )
-                  }
+                  }}
                 />
               </div>
               <div className="mobile-tool-field">
@@ -2789,7 +2803,7 @@ export function App() {
 
       {isTimetable && !selectedTrain && !selectedAirTrack && !selectedRoute && (
         <div
-          className={`service-legend${selectedCategory ? ' has-filter' : ''}`}
+          className={`service-legend${selectedCategory || airCategorySelected ? ' has-filter' : ''}`}
           aria-label={text.filterServices}
         >
           {visibleServiceCategories.map((category) => (
@@ -2802,16 +2816,31 @@ export function App() {
                     '--service-accent': category.color,
                   } as CSSProperties
                 }
-                onClick={() =>
+                onClick={() => {
+                  setAirCategorySelected(false)
                   setSelectedCategory((current) =>
                     current === category.id ? undefined : category.id,
                   )
-                }
+                }}
               >
                 <i style={{ backgroundColor: category.color }} />
                 {serviceCategoryLabel(language, category.id)}
               </button>
           ))}
+          {isNetwork && networkStudy === 'national' && airEnabled && (
+            <button
+              type="button"
+              aria-pressed={airCategorySelected}
+              style={{ '--service-accent': '#ff5edb' } as CSSProperties}
+              onClick={() => {
+                setSelectedCategory(undefined)
+                setAirCategorySelected((current) => !current)
+              }}
+            >
+              <i style={{ backgroundColor: '#ff5edb' }} />
+              {text.luftraum}
+            </button>
+          )}
         </div>
       )}
 
@@ -2956,6 +2985,7 @@ export function App() {
                   aria-pressed={isHub}
                   onClick={() => {
                     setSelectedCategory(undefined)
+                    setAirCategorySelected(false)
                     setView(isHub ? 'network' : 'hub')
                   }}
                 >
@@ -3044,6 +3074,7 @@ export function App() {
               aria-pressed={isHub}
               onClick={() => {
                 setSelectedCategory(undefined)
+                setAirCategorySelected(false)
                 setView(isHub ? 'network' : 'hub')
               }}
             >

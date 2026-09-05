@@ -278,6 +278,7 @@ export function AirTrafficLayer({
   selectedTrackId,
   onSelectTrack,
   labelMode,
+  subdued = false,
 }: {
   readonly snapshot: AirSnapshot
   readonly time: number
@@ -285,6 +286,7 @@ export function AirTrafficLayer({
   readonly selectedTrackId?: string
   readonly onSelectTrack?: (trackId: string) => void
   readonly labelMode: TrainLabelMode
+  readonly subdued?: boolean
 }) {
   const aircraft = useMemo(
     () => currentAircraft(snapshot, time, projection),
@@ -400,7 +402,7 @@ export function AirTrafficLayer({
         <lineBasicMaterial
           vertexColors
           transparent
-          opacity={0.7}
+          opacity={subdued ? 0.08 : 0.7}
           blending={THREE.AdditiveBlending}
           depthWrite={false}
         />
@@ -414,7 +416,7 @@ export function AirTrafficLayer({
         <meshBasicMaterial
           vertexColors
           transparent
-          opacity={0.52}
+          opacity={subdued ? 0.08 : 0.52}
           blending={THREE.AdditiveBlending}
           depthWrite={false}
         />
@@ -428,7 +430,7 @@ export function AirTrafficLayer({
         <meshBasicMaterial
           vertexColors
           transparent
-          opacity={0.4}
+          opacity={subdued ? 0.06 : 0.4}
           blending={THREE.AdditiveBlending}
           depthWrite={false}
         />
@@ -451,7 +453,7 @@ export function AirTrafficLayer({
       </group>
       <AirTrafficLabels
         aircraft={aircraft}
-        mode={labelMode}
+        mode={subdued ? 'off' : labelMode}
         selectedTrackId={selectedTrackId}
       />
     </>
