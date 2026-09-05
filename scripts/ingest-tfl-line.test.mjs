@@ -123,4 +123,29 @@ describe('TfL line adapter', () => {
       train.pathSegments.length === train.stops.length - 1
     )).toBe(true)
   })
+
+  it.each([
+    ['DLR', 'fixtures/tfl/all-change-dlr-bank-morning.json', 'dlr', 'metro', 51, 24],
+    ['Tramlink', 'fixtures/tfl/all-change-tram-beckenham-morning.json', 'tram', 'tram', 17, 27],
+    ['Northern', 'fixtures/tfl/all-change-northern-morden-morning.json', 'tube', 'metro', 84, 50],
+  ])('keeps the committed %s branch proof renderable', async (_label, path, mode, category, trainCount, stopCount) => {
+    const snapshot = JSON.parse(await readFile(path, 'utf8'))
+
+    expect(snapshot.metadata.modes).toEqual([mode])
+    expect(snapshot.stops).toHaveLength(stopCount)
+    expect(snapshot.trains).toHaveLength(trainCount)
+    expect(snapshot.trains.every((train) =>
+      train.category === category &&
+      train.stops.length >= 2 &&
+      train.pathSegments.length === train.stops.length - 1 &&
+      train.pathSegments.every((pathIndex) => snapshot.paths[pathIndex])
+    )).toBe(true)
+  })
+
+  it('retains TfL dwell time while collapsing duplicate interval stops', async () => {
+    const snapshot = JSON.parse(
+      await readFile('fixtures/tfl/all-change-dlr-bank-morning.json', 'utf8'),
+    )
+    expect(snapshot.trains.some((train) => train.stops.some(([, arrival, departure]) => departure > arrival))).toBe(true)
+  })
 })

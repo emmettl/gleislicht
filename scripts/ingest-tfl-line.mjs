@@ -7,8 +7,6 @@ import { pathToFileURL } from 'node:url'
 
 const DEFAULT_WINDOW_START = 6 * 3600 + 45 * 60
 const DEFAULT_WINDOW_END = 8 * 3600 + 45 * 60
-const DEFAULT_SCHEDULE = 'Monday - Friday'
-
 function argument(argv, name, fallback) {
   const index = argv.indexOf(`--${name}`)
   return index === -1 ? fallback : argv[index + 1]
@@ -38,7 +36,7 @@ function parseArguments(argv) {
     direction: argument(argv, 'direction', 'outbound'),
     origin: argument(argv, 'origin'),
     serviceDate: argument(argv, 'service-date'),
-    schedule: argument(argv, 'schedule', DEFAULT_SCHEDULE),
+    schedule: argument(argv, 'schedule'),
     output: argument(argv, 'output'),
     routeSequencePath: argument(argv, 'route-sequence'),
     timetablePath: argument(argv, 'timetable'),
@@ -102,8 +100,8 @@ async function loadSources(options) {
   }
 }
 
-function linePoints(routeSequence) {
-  const encoded = routeSequence.lineStrings?.[0]
+function linePoints(routeSequence, lineStringIndex = 0) {
+  const encoded = routeSequence.lineStrings?.[lineStringIndex]
   if (!encoded) throw new Error('TfL route sequence has no line string')
   const decoded = JSON.parse(encoded)
   let points = decoded
@@ -183,7 +181,7 @@ function boundsFor(stops) {
 }
 
 function cleanStationName(name) {
-  return name.replace(/ Underground Station$/, '')
+  return name.replace(/ (?:Underground Station|DLR Station|Rail Station|Tram Stop|London Overground Station)$/, '')
 }
 
 function sourceSha256(value) {
@@ -194,7 +192,7 @@ export function compileTflLineProof({
   routeSequence,
   timetable,
   serviceDate,
-  scheduleName = DEFAULT_SCHEDULE,
+  scheduleName,
   windowStart = DEFAULT_WINDOW_START,
   windowEnd = DEFAULT_WINDOW_END,
   retrievedAt,
@@ -209,17 +207,27 @@ export function compileTflLineProof({
   }
 
   const route = timetable.timetable?.routes?.[0]
-  const schedule = route?.schedules?.find(({ name }) => name === scheduleName)
+  const schedule = selectSchedule(route?.schedules ?? [], serviceDate, scheduleName)
   if (!route || !schedule) {
-    throw new Error(`TfL timetable has no ${scheduleName} schedule`)
+    throw new Error(`TfL timetable has no suitable ${scheduleName ?? 'weekday'} schedule`)
   }
-  const sourceStops = timetable.stops ?? []
+  const routeStops = [
+    ...(routeSequence.stations ?? []),
+    ...(routeSequence.stopPointSequences ?? []).flatMap(({ stopPoint }) => stopPoint ?? []),
+  ]
+  const referencedStopIds = new Set([
+    timetable.timetable.departureStopId,
+    ...route.stationIntervals.flatMap(({ intervals }) => intervals.map(({ stopId }) => stopId)),
+  ])
+  const stopCatalogue = [...(timetable.stops ?? []), ...routeStops]
+    .filter((stop, index, stops) => stop?.id && stops.findIndex(({ id }) => id === stop.id) === index)
+  const departureStop = stopCatalogue.find(({ id }) => id === timetable.timetable.departureStopId)
+  const sourceStops = [departureStop, ...stopCatalogue]
+    .filter((stop, index, stops) => stop?.id && referencedStopIds.has(stop.id) && stops.findIndex(({ id }) => id === stop.id) === index)
   if (sourceStops.length < 2) throw new Error('TfL timetable has too few stops')
-  if (sourceStops[0].id !== timetable.timetable.departureStopId) {
-    throw new Error('TfL timetable stops do not begin at the departure stop')
-  }
 
   const stopIndexById = new Map(sourceStops.map((stop, index) => [stop.id, index]))
+  const stopById = new Map(sourceStops.map((stop) => [stop.id, stop]))
   const compactStops = sourceStops.map((stop) => [
     Number(stop.lon),
     Number(stop.lat),
@@ -227,9 +235,6 @@ export function compileTflLineProof({
     '',
     stop.id,
   ])
-  const paths = pathsBetweenStops(linePoints(routeSequence), sourceStops)
-  const edges = sourceStops.slice(0, -1).map((_, index) => [index, index + 1])
-  const edgePaths = paths.map((_, index) => index)
   const intervalById = new Map(
     route.stationIntervals.map((stationInterval) => [
       String(stationInterval.id),
@@ -237,23 +242,59 @@ export function compileTflLineProof({
     ]),
   )
 
+  const paths = []
+  const edges = []
+  const edgePaths = []
+  const pathIndexByBranchSegment = new Map()
+  const pathSegmentsByIntervalId = new Map()
   const trains = []
   for (const [journeyIndex, journey] of schedule.knownJourneys.entries()) {
     const departure = secondsForJourney(journey)
     const intervals = intervalById.get(String(journey.intervalId))
     if (!intervals?.length) continue
-    const destination = intervals.at(-1)
-    const end = departure + Math.round(destination.timeToArrival * 60)
+    const groupedIntervals = collapseDwellIntervals(intervals)
+    const destination = groupedIntervals.at(-1)
+    const end = departure + Math.round(destination.arrivalMinutes * 60)
     if (end < windowStart || departure > windowEnd) continue
 
-    const trainStops = [[0, departure, departure]]
-    for (const interval of intervals) {
+    const journeyStopIds = [timetable.timetable.departureStopId, ...groupedIntervals.map(({ stopId }) => stopId)]
+    const branch = matchBranch(routeSequence, journeyStopIds)
+    let pathSegments = pathSegmentsByIntervalId.get(String(journey.intervalId))
+    if (!pathSegments) {
+      const branchStops = journeyStopIds.map((stopId) => {
+        const stop = stopById.get(stopId)
+        if (!stop) throw new Error(`TfL branch references unknown stop ${stopId}`)
+        return stop
+      })
+      const branchPaths = pathsBetweenStops(linePoints(routeSequence, branch.lineStringIndex), branchStops)
+      pathSegments = branchPaths.map((path, index) => {
+        const from = stopIndexById.get(journeyStopIds[index])
+        const to = stopIndexById.get(journeyStopIds[index + 1])
+        if (from === undefined || to === undefined) throw new Error('TfL branch stop is missing from the stop catalogue')
+        const segmentKey = `${branch.lineStringIndex}:${from}:${to}`
+        const existingPathIndex = pathIndexByBranchSegment.get(segmentKey)
+        if (existingPathIndex !== undefined) return existingPathIndex
+        const pathIndex = paths.length
+        paths.push(path)
+        edges.push([from, to])
+        edgePaths.push(pathIndex)
+        pathIndexByBranchSegment.set(segmentKey, pathIndex)
+        return pathIndex
+      })
+      pathSegmentsByIntervalId.set(String(journey.intervalId), pathSegments)
+    }
+
+    const departureStopIndex = stopIndexById.get(timetable.timetable.departureStopId)
+    if (departureStopIndex === undefined) throw new Error('TfL departure stop is missing from the stop catalogue')
+    const trainStops = [[departureStopIndex, departure, departure]]
+    for (const interval of groupedIntervals) {
       const stopIndex = stopIndexById.get(interval.stopId)
       if (stopIndex === undefined) {
         throw new Error(`TfL interval references unknown stop ${interval.stopId}`)
       }
-      const arrival = departure + Math.round(interval.timeToArrival * 60)
-      trainStops.push([stopIndex, arrival, arrival])
+      const arrival = departure + Math.round(interval.arrivalMinutes * 60)
+      const stopDeparture = departure + Math.round(interval.departureMinutes * 60)
+      trainStops.push([stopIndex, arrival, stopDeparture])
     }
     const destinationStop = sourceStops[trainStops.at(-1)[0]]
     trains.push({
@@ -261,12 +302,12 @@ export function compileTflLineProof({
       route: routeSequence.lineName,
       headsign: cleanStationName(destinationStop.name),
       shortName: routeSequence.lineName,
-      category: 'metro',
+      category: categoryForMode(routeSequence.mode),
       mode: routeSequence.mode ?? 'tube',
       start: departure,
       end,
       stops: trainStops,
-      pathSegments: trainStops.slice(1).map((_, index) => index),
+      pathSegments,
     })
   }
   if (!trains.length) throw new Error('TfL timetable produced no journeys in the study window')
@@ -285,7 +326,7 @@ export function compileTflLineProof({
       license: 'Transport for London Data Service terms and conditions',
       licenseUrl: 'https://tfl.gov.uk/corporate/terms-and-conditions/transport-data-service',
       model: 'TfL recurring weekday timetable interpolation / not realtime',
-      note: `${scheduleName} departures from ${cleanStationName(sourceStops[0].name)}; a bounded adapter proof for Motion Studies 006, not a complete London service-day claim.`,
+      note: `${schedule.name} departures from ${cleanStationName(stopById.get(timetable.timetable.departureStopId).name)} across ${pathSegmentsByIntervalId.size} branch pattern${pathSegmentsByIntervalId.size === 1 ? '' : 's'}; a bounded adapter proof for Motion Studies 006, not a complete London service-day claim.`,
       modes: [routeSequence.mode ?? 'tube'],
       geometry: {
         publisher: 'Transport for London',
@@ -304,6 +345,68 @@ export function compileTflLineProof({
     edgePaths,
     trains,
   }
+}
+
+function scheduleScore(name, weekday) {
+  const normalised = name.toLowerCase()
+  const weekdayName = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'][weekday]
+  if (normalised === weekdayName) return 100
+  if (weekday >= 1 && weekday <= 5 && /monday\s*(?:-|to)\s*friday/.test(normalised)) return 90
+  if (weekday >= 1 && weekday <= 4 && /monday\s*(?:-|to)\s*thursday/.test(normalised)) return 85
+  if (weekday === 6 && /saturday/.test(normalised)) return 80
+  if (weekday === 0 && /sunday/.test(normalised)) return 80
+  if (weekday >= 1 && weekday <= 5 && /weekday/.test(normalised)) return 70
+  return 0
+}
+
+function selectSchedule(schedules, serviceDate, requestedName) {
+  if (requestedName) return schedules.find(({ name }) => name === requestedName)
+  const weekday = new Date(`${serviceDate}T12:00:00Z`).getUTCDay()
+  const ranked = schedules
+    .map((schedule) => ({ schedule, score: scheduleScore(schedule.name, weekday) }))
+    .sort((first, second) => second.score - first.score)
+  return ranked[0]?.score > 0 ? ranked[0].schedule : undefined
+}
+
+function collapseDwellIntervals(intervals) {
+  const collapsed = []
+  for (const interval of intervals) {
+    const minutes = Number(interval.timeToArrival)
+    const previous = collapsed.at(-1)
+    if (previous?.stopId === interval.stopId) {
+      previous.departureMinutes = Math.max(previous.departureMinutes, minutes)
+    } else {
+      collapsed.push({
+        stopId: interval.stopId,
+        arrivalMinutes: minutes,
+        departureMinutes: minutes,
+      })
+    }
+  }
+  return collapsed
+}
+
+function matchBranch(routeSequence, journeyStopIds) {
+  const branches = routeSequence.orderedLineRoutes ?? []
+  const exactIndex = branches.findIndex(({ naptanIds }) =>
+    naptanIds?.length === journeyStopIds.length &&
+    naptanIds.every((stopId, index) => stopId === journeyStopIds[index]))
+  if (exactIndex >= 0) return { lineStringIndex: exactIndex, name: branches[exactIndex].name }
+  const prefixMatch = branches
+    .map((branch, lineStringIndex) => ({ branch, lineStringIndex }))
+    .filter(({ branch }) =>
+      branch.naptanIds?.length >= journeyStopIds.length &&
+      journeyStopIds.every((stopId, index) => stopId === branch.naptanIds[index]))
+    .sort((first, second) => first.branch.naptanIds.length - second.branch.naptanIds.length)[0]
+  if (prefixMatch) return { lineStringIndex: prefixMatch.lineStringIndex, name: prefixMatch.branch.name }
+  if (routeSequence.lineStrings?.length === 1) return { lineStringIndex: 0, name: routeSequence.lineName }
+  throw new Error(`TfL timetable branch ${journeyStopIds[0]} → ${journeyStopIds.at(-1)} has no matching route sequence`)
+}
+
+function categoryForMode(mode) {
+  if (mode === 'tram') return 'tram'
+  if (mode === 'elizabeth-line' || mode === 'overground') return 'rail'
+  return 'metro'
 }
 
 async function main() {

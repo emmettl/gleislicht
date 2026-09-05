@@ -43,6 +43,11 @@
     "data:road:compile": "node scripts/compile-astra-road-study.mjs",
     "data:road:compile:national": "node scripts/compile-astra-national-study.mjs",
     "data:london:proof": "node scripts/ingest-tfl-line.mjs --line bakerloo --direction outbound --origin 940GZZLUEAC --service-date 2026-09-04 --output fixtures/tfl/all-change-bakerloo-morning.json",
+    "data:london:proof:dlr": "node scripts/ingest-tfl-line.mjs --line dlr --direction outbound --origin 940GZZDLBNK --service-date 2026-09-04 --output fixtures/tfl/all-change-dlr-bank-morning.json",
+    "data:london:proof:tram": "node scripts/ingest-tfl-line.mjs --line tram --direction outbound --origin 940GZZCRBEK --service-date 2026-09-04 --output fixtures/tfl/all-change-tram-beckenham-morning.json",
+    "data:london:proof:northern": "node scripts/ingest-tfl-line.mjs --line northern --direction outbound --origin 940GZZLUMDN --service-date 2026-09-04 --output fixtures/tfl/all-change-northern-morden-morning.json",
+    "data:london:proofs": "npm run data:london:proof && npm run data:london:proof:dlr && npm run data:london:proof:tram && npm run data:london:proof:northern",
+    "data:london:catalogue": "node scripts/ingest-tfl-rail-catalogue.mjs",
     "preview": "vite preview"
   },
   "engines": {

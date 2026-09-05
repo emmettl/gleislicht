@@ -18,11 +18,22 @@ Start with one ordinary weekday from 06:45–08:45 and keep the first payload ra
 
 The first authored moment should show trains converging across central London while orbital and outer branches remain legible. A Thames-crossing follow view would provide the edition's first unmistakably London-specific composition.
 
-## Adapter proof
+## Adapter proofs
 
-The first compiled fixture is deliberately smaller than the first visible edition: 39 weekday Bakerloo journeys overlapping 06:45–08:45, running outbound from Elephant & Castle across 25 NaPTAN stations. It uses TfL's timetable station intervals for movement timing and splits the official route-sequence line string into 24 station-to-station paths. The 25 KiB artifact lives under `fixtures/tfl/`, so it exercises the shared network contract without entering Gleislicht's public payload or edition selector.
+The first compiled fixtures are deliberately smaller than the first visible edition. They exercise the shared network contract without entering Gleislicht's public payload or edition selector:
 
-Run `npm run data:london:proof` to refresh the proof from the Unified API. Anonymous access currently works for this bounded request; `TFL_API_KEY` is supported and should be used for repeated access, in line with TfL's developer guidance. The generated metadata records retrieval time, source hashes, both endpoints, TfL's data-service terms, the recurring weekday model and the fact that this is not realtime or a complete London service-day claim.
+- Bakerloo: 39 weekday journeys from Elephant & Castle across 25 NaPTAN stations;
+- Northern: 84 journeys from Morden across short turns and the Bank/Charing Cross branch structures;
+- DLR: 51 journeys from Bank split correctly toward Lewisham and Woolwich Arsenal; and
+- Tramlink: 17 journeys from Beckenham Junction, using TfL's alternate `Monday to Friday` schedule spelling.
+
+The compiler now collapses TfL's repeated arrival/dwell interval records into one stop call with distinct arrival and departure times. Each interval pattern is matched to the ordered NaPTAN IDs for its own route branch before the official line string is split. Shared segments are reused, while genuinely different branches retain different geometry.
+
+Run `npm run data:london:proofs` to refresh all four movement proofs from the Unified API, or use the individual proof scripts for a bounded request. `TFL_API_KEY` is supported and should be used for repeated access, in line with TfL's developer guidance. The generated metadata records retrieval time, source hashes, both endpoints, TfL's data-service terms, the selected recurring weekday schedule and the fact that these are not realtime or complete London service-day claims.
+
+`npm run data:london:catalogue` separately discovers every currently advertised line in the five rail-led modes. Its compact committed catalogue preserves 20 line identities and 125 directional branch definitions, each with ordered NaPTAN stops and a geometry hash. Three NaPTAN hierarchy samples retain interchange, entrance and platform children without inventing absent platform names.
+
+The topology is complete enough to plan the opening lattice, but movement coverage is deliberately honest: the same Unified API timetable probe returned no timetable endpoint for the tested Elizabeth line and Mildmay origins. Those two modes remain topology-only until a suitable timetable source or endpoint is verified; the adapter does not synthesize departures to make the matrix appear complete.
 
 ## Data strategy
 
@@ -46,7 +57,9 @@ Sources:
 - [x] Map the Bakerloo `tube` mode and line identity into the edition-neutral network schema.
 - [x] Resolve NaPTAN stops, route geometry and recurring weekday station intervals.
 - [x] Produce a source-audited two-hour fixture before attempting the whole city.
-- [ ] Generalise the proof across the remaining rail-led modes, branches and platform-level stop structures.
+- [x] Generalise dwell handling and route matching across Tube branches, DLR and Tramlink.
+- [x] Catalogue all five rail-led modes, 20 current line identities, 125 directional branches and representative platform/interchange structures.
+- [ ] Resolve a dependable timetable source for Elizabeth line and London Overground, whose tested Unified API timetable endpoints were unavailable.
 
 ### LDN 1 — Morning lattice
 
