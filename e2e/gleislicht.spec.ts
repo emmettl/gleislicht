@@ -5,6 +5,7 @@ test.beforeEach(async ({ page }) => {
   await expect(page.getByRole('heading', { level: 1 })).toContainText(
     'Switzerland in motion',
   )
+  await expect(page.locator('.study-meta')).toContainText('MOTION STUDIES · 005')
   await expect(page.locator('.scene canvas')).toBeVisible()
 })
 

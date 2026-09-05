@@ -138,20 +138,21 @@ See [docs/LUFTRAUM.md](./docs/LUFTRAUM.md) for the data contract, filtering and 
 
 See [docs/AUTO.md](./docs/AUTO.md) for the data contract, reconstruction and recording path.
 
-## 9 — Editions / London
+## 9 — Motion Studies / All Change
 
 - [x] Separate the visual language and CSS tokens from transport-domain types.
 - [x] Define a typed edition contract for identity, time, theme and lazy data assets.
 - [x] Move the complete Switzerland asset catalogue behind that contract.
 - [x] Generalise boundary and water types without changing existing artifacts.
 - [x] Define the first London study, source strategy and staged delivery plan.
+- [x] Establish Motion Studies as the catalogue identity: 005 Gleislicht / Switzerland and 006 All Change / London.
 - [ ] Build the TfL adapter proof from a bounded weekday rail fixture.
 - [ ] Compile the London morning lattice with Greater London and Thames geometry.
 - [ ] Add a dedicated London entry point once the fixture passes source and payload validation.
 - [ ] Add progressive 24-hour chunks and London-specific pulse studies.
 - [ ] Evaluate surface buses as separate borough or corridor studies.
 
-**Exit:** Switzerland and London are independently authored editions of the same visual instrument, sharing runtime behaviour and visual grammar without sharing place-specific assumptions.
+**Exit:** Gleislicht and All Change are independently authored Motion Studies, sharing runtime behaviour and visual grammar without sharing titles or place-specific assumptions.
 
 See [docs/EDITIONS.md](./docs/EDITIONS.md) for the reusable boundary and [docs/LONDON.md](./docs/LONDON.md) for the second-edition plan.
 

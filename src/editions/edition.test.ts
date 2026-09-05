@@ -1,11 +1,18 @@
 import { describe, expect, it, vi } from 'vitest'
 import { SWITZERLAND_EDITION } from './switzerland.ts'
 import { resolveEdition } from './index.ts'
+import {
+  ALL_CHANGE_STUDY,
+  GLEISLICHT_STUDY,
+  MOTION_STUDIES_CATALOGUE,
+  motionStudyMark,
+} from './catalogue.ts'
 import { applyVisualTheme, SERVICE_CATEGORIES } from '../theme/visual-language.ts'
 
-describe('Gleislicht editions', () => {
+describe('Motion Studies editions', () => {
   it('keeps the Swiss dataset catalogue outside the application shell', () => {
     expect(SWITZERLAND_EDITION.id).toBe('switzerland')
+    expect(SWITZERLAND_EDITION.identity).toBe(GLEISLICHT_STUDY)
     expect(SWITZERLAND_EDITION.data.nationalMorning).toBe(
       'swiss-rail-morning.json',
     )
@@ -20,7 +27,29 @@ describe('Gleislicht editions', () => {
   it('resolves editions at the entry point and rejects configuration mistakes', () => {
     expect(resolveEdition()).toBe(SWITZERLAND_EDITION)
     expect(resolveEdition('switzerland')).toBe(SWITZERLAND_EDITION)
-    expect(() => resolveEdition('london')).toThrow('Unknown Gleislicht edition')
+    expect(() => resolveEdition('london')).toThrow(
+      'Unknown Motion Studies edition',
+    )
+  })
+
+  it('gives every work its own identity inside the shared catalogue', () => {
+    expect(GLEISLICHT_STUDY).toMatchObject({
+      catalogueNumber: '005',
+      title: 'Gleislicht',
+      placeName: 'Switzerland',
+      status: 'released',
+    })
+    expect(ALL_CHANGE_STUDY).toMatchObject({
+      catalogueNumber: '006',
+      title: 'All Change',
+      descriptor: 'A London motion study',
+      status: 'planned',
+    })
+    expect(
+      new Set(MOTION_STUDIES_CATALOGUE.map(({ catalogueNumber }) => catalogueNumber))
+        .size,
+    ).toBe(MOTION_STUDIES_CATALOGUE.length)
+    expect(motionStudyMark(GLEISLICHT_STUDY)).toBe('MOTION STUDIES · 005')
   })
 
   it('exposes the complete shared transport visual language', () => {

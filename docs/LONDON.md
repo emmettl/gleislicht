@@ -1,8 +1,10 @@
-# London edition
+# 006 — All Change
 
-Working title: **GLEISLICHT — LONDON / London in motion**
+**A London motion study**
 
-London is the next edition because its transport system offers a useful inversion of Switzerland: an intensely layered metropolitan network whose identity comes from interchange, radial pressure, orbital lines and the River Thames rather than a national clockface and Alpine geography.
+**All Change** is unmistakably London railway language: an instruction, a description of constant interchange, and a slightly ominous title for a glowing city after dark. It also names what is happening technically—the instrument is changing shape as it becomes capable of another place.
+
+London is the next Motion Studies work because its transport system offers a useful inversion of Switzerland: an intensely layered metropolitan network whose identity comes from interchange, radial pressure, orbital lines and the River Thames rather than a national clockface and Alpine geography.
 
 ## First study
 
@@ -11,7 +13,7 @@ Start with one ordinary weekday from 06:45–08:45 and keep the first payload ra
 - London Underground, Elizabeth line, London Overground, DLR and Tramlink;
 - Greater London boundary and the Thames as the dominant geographic anchors;
 - real line geometry, station labels, service search, route isolation and follow cameras;
-- existing Gleislicht cyan motion grammar, with restrained official line colours used for selection rather than turning the whole scene into a conventional Tube map; and
+- the shared cyan motion grammar, with restrained official line colours used for selection rather than turning the whole scene into a conventional Tube map; and
 - deterministic timetable interpolation with explicit provenance.
 
 The first authored moment should show trains converging across central London while orbital and outer branches remain legible. A Thames-crossing follow view would provide the edition's first unmistakably London-specific composition.
@@ -22,7 +24,7 @@ Transport for London's Unified API is the primary adapter target. TfL describes 
 
 The initial geographic shell can use the Greater London boundary published by the London Datastore from Ordnance Survey Boundary-Line under the Open Government Licence. The Thames needs a separate simplified water polygon appropriate to the viewport.
 
-TfL attribution and branding rules are part of the edition contract: the project must not imply that Gleislicht is an official TfL application, and each artifact must retain its source and licence metadata.
+TfL attribution and branding rules are part of the edition contract: the project must not imply that All Change is an official TfL application, and each artifact must retain its source and licence metadata.
 
 Sources:
 
@@ -66,4 +68,4 @@ Sources:
 
 ## Exit criterion
 
-London must feel like another work made with the same instrument—not Switzerland with different filenames, and not a generic dark-mode transport dashboard.
+All Change must feel like another work made with the same instrument—not Gleislicht with different filenames, and not a generic dark-mode transport dashboard.

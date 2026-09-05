@@ -1,5 +1,13 @@
 import type { VisualTheme } from '../theme/visual-language.ts'
 
+export interface MotionStudyIdentity {
+  readonly series: 'Motion Studies'
+  readonly catalogueNumber: string
+  readonly title: string
+  readonly placeName: string
+  readonly descriptor: string
+}
+
 export interface EditionDataCatalog<
   RegionalStudyId extends string = string,
   CorridorId extends string = string,
@@ -27,12 +35,12 @@ export interface EditionDataCatalog<
   readonly corridors: Readonly<Record<CorridorId, string>>
 }
 
-export interface GleislichtEdition<
+export interface MotionStudyEdition<
   RegionalStudyId extends string = string,
   CorridorId extends string = string,
 > {
   readonly id: string
-  readonly placeName: string
+  readonly identity: MotionStudyIdentity
   readonly timezone: string
   readonly languageStorageKey: string
   readonly defaultNetworkTime: number

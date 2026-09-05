@@ -1,4 +1,5 @@
-import type { GleislichtEdition } from './edition.ts'
+import type { MotionStudyEdition } from './edition.ts'
+import { GLEISLICHT_STUDY } from './catalogue.ts'
 import { GLEISLICHT_THEME } from '../theme/visual-language.ts'
 
 export type SwitzerlandRegionalStudyId =
@@ -15,14 +16,14 @@ export type SwitzerlandTerrainCorridorId =
   | 'zurich-chur'
   | 'kiental-griesalp'
 
-export type SwitzerlandEdition = GleislichtEdition<
+export type SwitzerlandEdition = MotionStudyEdition<
   SwitzerlandRegionalStudyId,
   SwitzerlandTerrainCorridorId
 >
 
 export const SWITZERLAND_EDITION: SwitzerlandEdition = {
   id: 'switzerland',
-  placeName: 'Switzerland',
+  identity: GLEISLICHT_STUDY,
   timezone: 'Europe/Zurich',
   languageStorageKey: 'gleislicht-language',
   defaultNetworkTime: 7 * 3600 + 45 * 60,

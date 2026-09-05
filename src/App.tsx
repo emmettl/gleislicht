@@ -59,6 +59,7 @@ import {
   type StationIndexEntry,
 } from './domain/network.ts'
 import { editionDataUrl } from './editions/edition.ts'
+import { motionStudyMark } from './editions/catalogue.ts'
 import type {
   SwitzerlandEdition,
   SwitzerlandNetworkStudy as NetworkStudy,
@@ -1817,7 +1818,7 @@ export function App({ edition }: AppProps) {
           <div className="masthead-topline">
             <div className="study-meta">
               <span className="pulse" />
-              <span>{text.motionStudy}</span>
+              <span>{motionStudyMark(edition.identity)}</span>
               <span className="coordinate">
                 {isTimetable
                   ? timeline?.serviceDate
