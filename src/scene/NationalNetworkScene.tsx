@@ -2747,6 +2747,8 @@ function SelectedTrainMarker({
 function NetworkCamera({
   selectedTrain,
   time,
+  isPlaying,
+  playbackRate,
   projectedStops,
   projectedPaths,
   cameraCommand,
@@ -2758,6 +2760,8 @@ function NetworkCamera({
 }: {
   readonly selectedTrain?: NetworkTrain
   readonly time: number
+  readonly isPlaying: boolean
+  readonly playbackRate: number
   readonly projectedStops: readonly ProjectedStop[]
   readonly projectedPaths: readonly ProjectedNetworkPath[]
   readonly cameraCommand?: MapCameraCommand
@@ -2774,6 +2778,7 @@ function NetworkCamera({
   const currentTarget = useMemo(() => new THREE.Vector3(), [])
   const mapTarget = useRef(new THREE.Vector3())
   const distanceScale = useRef(1)
+  const localTime = useRef(time)
   const directTouch = useRef(false)
   const lastCommand = useRef(0)
   const viewportAspect = size.height > 0 ? size.width / size.height : 1
@@ -2781,6 +2786,10 @@ function NetworkCamera({
     cameraFraming,
     viewportAspect,
   )
+
+  useEffect(() => {
+    localTime.current = time
+  }, [time])
 
   useEffect(() => {
     if (!(camera instanceof THREE.PerspectiveCamera) || size.height <= 0) return
@@ -2917,17 +2926,20 @@ function NetworkCamera({
   }, [gl, minimumDistanceScale, selectedAirTrack, selectedTrain])
 
   useFrame((_, delta) => {
+    if (isPlaying) {
+      localTime.current += delta * playbackRate
+    }
     const trainPosition = selectedTrain
       ? projectedTrainPosition(
           selectedTrain,
-          time,
+          localTime.current,
           projectedStops,
           projectedPaths,
           lakeAvoidingPaths,
         )
       : undefined
     const airState = selectedAirTrack
-      ? positionForAirTrack(selectedAirTrack, time)
+      ? positionForAirTrack(selectedAirTrack, localTime.current)
       : undefined
     const airPosition = airState
       ? projectAirPosition(airState, airProjection)
@@ -3112,6 +3124,8 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
         <AirTrafficLayer
           snapshot={props.airSnapshot}
           time={props.time}
+          isPlaying={props.isPlaying}
+          playbackRate={props.playbackRate}
           projection={projection}
           selectedTrackId={props.selectedAirTrack?.id}
           onSelectTrack={props.onSelectAirTrack}
@@ -3192,6 +3206,8 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
       <NetworkCamera
         selectedTrain={props.selectedTrain}
         time={props.time}
+        isPlaying={props.isPlaying}
+        playbackRate={props.playbackRate}
         projectedStops={projectedStops}
         projectedPaths={projectedPaths}
         cameraCommand={props.cameraCommand}

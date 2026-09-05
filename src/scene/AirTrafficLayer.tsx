@@ -48,6 +48,20 @@ function currentAircraft(
   })
 }
 
+function latestObservedSample(
+  track: AirSnapshot['tracks'][number],
+  time: number,
+) {
+  let low = 0
+  let high = track.samples.length - 1
+  while (low < high) {
+    const middle = Math.ceil((low + high) / 2)
+    if (track.samples[middle][0] <= time) low = middle
+    else high = middle - 1
+  }
+  return track.samples[low]
+}
+
 function createAirLabelTexture(label: string): AirLabelTexture {
   const canvas = document.createElement('canvas')
   const context = canvas.getContext('2d')
@@ -97,11 +111,11 @@ function createAirLabelTexture(label: string): AirLabelTexture {
 }
 
 function AirTrafficLabels({
-  aircraft,
+  aircraftRef,
   mode,
   selectedTrackId,
 }: {
-  readonly aircraft: readonly CurrentAircraft[]
+  readonly aircraftRef: { readonly current: readonly CurrentAircraft[] }
   readonly mode: TrainLabelMode
   readonly selectedTrackId?: string
 }) {
@@ -134,7 +148,7 @@ function AirTrafficLabels({
 
     const projected = new THREE.Vector3()
     const viewPosition = new THREE.Vector3()
-    const candidates = aircraft.flatMap((item) => {
+    const candidates = aircraftRef.current.flatMap((item) => {
       const selected = item.track.id === selectedTrackId
       if (selectedTrackId && !selected) return []
       projected.set(...item.projected)
@@ -274,6 +288,8 @@ function AirTrafficLabels({
 export function AirTrafficLayer({
   snapshot,
   time,
+  isPlaying,
+  playbackRate,
   projection,
   selectedTrackId,
   onSelectTrack,
@@ -282,26 +298,56 @@ export function AirTrafficLayer({
 }: {
   readonly snapshot: AirSnapshot
   readonly time: number
+  readonly isPlaying: boolean
+  readonly playbackRate: number
   readonly projection: AirProjection
   readonly selectedTrackId?: string
   readonly onSelectTrack?: (trackId: string) => void
   readonly labelMode: TrainLabelMode
   readonly subdued?: boolean
 }) {
-  const aircraft = useMemo(
-    () => currentAircraft(snapshot, time, projection),
-    [projection, snapshot, time],
+  const localTime = useRef(time)
+  const aircraftRef = useRef<readonly CurrentAircraft[]>(
+    currentAircraft(snapshot, time, projection),
   )
   const bodyRef = useRef<THREE.InstancedMesh>(null)
   const wingRef = useRef<THREE.InstancedMesh>(null)
   const hitRef = useRef<THREE.InstancedMesh>(null)
+  const selectedLightRef = useRef<THREE.PointLight>(null)
+  const trailHeadGeometry = useMemo(() => {
+    const geometry = new THREE.BufferGeometry()
+    geometry.setAttribute(
+      'position',
+      new THREE.BufferAttribute(new Float32Array(snapshot.tracks.length * 6), 3),
+    )
+    geometry.setDrawRange(0, 0)
+    return geometry
+  }, [snapshot.tracks.length])
+
+  useEffect(() => () => trailHeadGeometry.dispose(), [trailHeadGeometry])
+
   useEffect(() => {
+    localTime.current = time
+  }, [time])
+
+  useFrame((_, delta) => {
+    if (isPlaying) {
+      localTime.current += delta * playbackRate
+      if (localTime.current > snapshot.metadata.windowEnd) {
+        localTime.current = snapshot.metadata.windowStart
+      }
+    }
+    const aircraft = currentAircraft(snapshot, localTime.current, projection)
+    aircraftRef.current = aircraft
     const body = bodyRef.current
     const wing = wingRef.current
     const hit = hitRef.current
     if (!body || !wing || !hit) return
 
     const transform = new THREE.Object3D()
+    const trailHeadPositions = trailHeadGeometry.getAttribute('position')
+      .array as Float32Array
+    let trailHeadCount = 0
     for (const [index, item] of aircraft.entries()) {
       const isSelected = item.track.id === selectedTrackId
       transform.position.set(...item.projected)
@@ -332,14 +378,44 @@ export function AirTrafficLayer({
       transform.scale.setScalar(1)
       transform.updateMatrix()
       hit.setMatrixAt(index, transform.matrix)
+
+      const latestSample = latestObservedSample(item.track, localTime.current)
+      if (
+        latestSample &&
+        localTime.current > latestSample[0] &&
+        localTime.current - latestSample[0] <= MAX_SAMPLE_GAP_SECONDS
+      ) {
+        const from = projectAirPosition(
+          {
+            longitude: latestSample[1],
+            latitude: latestSample[2],
+            altitudeFeet: latestSample[3],
+          },
+          projection,
+        )
+        const offset = trailHeadCount * 6
+        trailHeadPositions.set(from, offset)
+        trailHeadPositions.set(item.projected, offset + 3)
+        trailHeadCount += 1
+      }
     }
     for (const mesh of [body, wing, hit]) {
       mesh.count = aircraft.length
       mesh.instanceMatrix.needsUpdate = true
       if (mesh.instanceColor) mesh.instanceColor.needsUpdate = true
-      mesh.computeBoundingSphere()
     }
-  }, [aircraft, selectedTrackId])
+    trailHeadGeometry.getAttribute('position').needsUpdate = true
+    trailHeadGeometry.setDrawRange(0, trailHeadCount * 2)
+    const selectedAircraft = aircraft.find(
+      ({ track }) => track.id === selectedTrackId,
+    )
+    if (selectedLightRef.current) {
+      selectedLightRef.current.visible = Boolean(selectedAircraft)
+      if (selectedAircraft) {
+        selectedLightRef.current.position.set(...selectedAircraft.projected)
+      }
+    }
+  })
   const trailGeometry = useMemo(() => {
     const positions: number[] = []
     const colors: number[] = []
@@ -384,17 +460,13 @@ export function AirTrafficLayer({
   }, [projection, snapshot.tracks, time])
   useEffect(() => () => trailGeometry.dispose(), [trailGeometry])
 
-  const selectedAircraft = aircraft.find(
-    ({ track }) => track.id === selectedTrackId,
-  )
-
   return (
     <>
       <group
       onPointerDown={(event) => {
         if (event.instanceId === undefined) return
         event.stopPropagation()
-        const track = aircraft[event.instanceId]?.track
+        const track = aircraftRef.current[event.instanceId]?.track
         if (track) onSelectTrack?.(track.id)
       }}
     >
@@ -407,10 +479,24 @@ export function AirTrafficLayer({
           depthWrite={false}
         />
       </lineSegments>
+      <lineSegments
+        geometry={trailHeadGeometry}
+        renderOrder={15}
+        frustumCulled={false}
+      >
+        <lineBasicMaterial
+          color={AIR_COLOR}
+          transparent
+          opacity={subdued ? 0.08 : 0.42}
+          blending={THREE.AdditiveBlending}
+          depthWrite={false}
+        />
+      </lineSegments>
       <instancedMesh
         ref={bodyRef}
         args={[undefined, undefined, snapshot.tracks.length]}
         renderOrder={18}
+        frustumCulled={false}
       >
         <boxGeometry args={[0.055, 0.035, 0.64]} />
         <meshBasicMaterial
@@ -425,6 +511,7 @@ export function AirTrafficLayer({
         ref={wingRef}
         args={[undefined, undefined, snapshot.tracks.length]}
         renderOrder={18}
+        frustumCulled={false}
       >
         <boxGeometry args={[0.36, 0.025, 0.035]} />
         <meshBasicMaterial
@@ -438,21 +525,21 @@ export function AirTrafficLayer({
       <instancedMesh
         ref={hitRef}
         args={[undefined, undefined, snapshot.tracks.length]}
+        frustumCulled={false}
       >
         <sphereGeometry args={[0.62, 6, 6]} />
         <meshBasicMaterial transparent opacity={0} depthWrite={false} />
       </instancedMesh>
-      {selectedAircraft && (
-        <pointLight
-          position={selectedAircraft.projected}
-          color="#ff5edb"
-          intensity={4}
-          distance={4}
-        />
-      )}
+      <pointLight
+        ref={selectedLightRef}
+        visible={false}
+        color="#ff5edb"
+        intensity={4}
+        distance={4}
+      />
       </group>
       <AirTrafficLabels
-        aircraft={aircraft}
+        aircraftRef={aircraftRef}
         mode={subdued ? 'off' : labelMode}
         selectedTrackId={selectedTrackId}
       />

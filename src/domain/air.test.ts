@@ -51,6 +51,31 @@ describe('air track replay', () => {
     ).toBeGreaterThan(270)
   })
 
+  it('curves through observations without snapping its heading', () => {
+    const turningTrack: AirTrack = {
+      id: 'turning',
+      callsign: 'SWR456',
+      start: 0,
+      end: 30,
+      samples: [
+        [0, 8.0, 47.0, 10_000, 240],
+        [10, 8.1, 47.0, 10_000, 240],
+        [20, 8.1, 47.1, 10_000, 240],
+        [30, 8.2, 47.1, 10_000, 240],
+      ],
+    }
+    const before = positionForAirTrack(turningTrack, 19.999)
+    const after = positionForAirTrack(turningTrack, 20.001)
+
+    expect(before?.longitude).toBeCloseTo(8.1, 3)
+    expect(before?.latitude).toBeCloseTo(47.1, 3)
+    expect(after?.longitude).toBeCloseTo(8.1, 3)
+    expect(after?.latitude).toBeCloseTo(47.1, 3)
+    expect(
+      Math.abs((before?.headingDegrees ?? 0) - (after?.headingDegrees ?? 0)),
+    ).toBeLessThan(1)
+  })
+
   it('finds tracks active at the shared study time', () => {
     const snapshot = {
       metadata: {},
