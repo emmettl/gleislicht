@@ -87,6 +87,30 @@ test('a Zürich–Chur train descends into measured terrain', async ({ page }) =
   await expect(page.locator('footer a[href*="dataset/tunnel"]')).toBeAttached()
 })
 
+test('the iPhone journey chrome leaves the landscape dominant', async ({
+  page,
+}, testInfo) => {
+  test.skip(testInfo.project.name !== 'iphone-webkit')
+
+  const search = page.locator('.train-search input[type="search"]')
+  await search.fill('2355')
+  await page.locator('.search-results button').filter({ hasText: '2355' }).click()
+  await page.getByRole('button', { name: /Descend into real terrain/i }).click()
+
+  const pickerBox = await page.locator('.journey-picker').boundingBox()
+  const cardBox = await page.locator('.journey-card').boundingBox()
+  const transportBox = await page.locator('.transport').boundingBox()
+
+  expect(pickerBox?.height).toBeLessThanOrEqual(50)
+  expect(cardBox?.height).toBeLessThanOrEqual(96)
+  expect(transportBox?.height).toBeLessThanOrEqual(96)
+  expect(
+    cardBox && transportBox
+      ? transportBox.y - (cardBox.y + cardBox.height)
+      : 0,
+  ).toBeGreaterThan(250)
+})
+
 test('the city–valley comparison opens the measured Kiental road journey', async ({
   page,
 }, testInfo) => {

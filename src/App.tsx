@@ -1528,7 +1528,7 @@ export function App() {
             onClick={() => openTerrainCorridor('zurich-chur')}
           >
             <span>IR35</span>
-            Zürich → Chur
+            <span className="journey-name">Zürich → Chur</span>
           </button>
           <button
             type="button"
@@ -1536,7 +1536,7 @@ export function App() {
             onClick={() => openTerrainCorridor('kiental-griesalp')}
           >
             <span>220</span>
-            Kiental → Griesalp
+            <span className="journey-name">Kiental → Griesalp</span>
           </button>
         </nav>
       )}
