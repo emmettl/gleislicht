@@ -228,4 +228,19 @@ npm run data:air -- \
   --window-end 08:45
 ```
 
-The ingester decodes the timestamped position, barometric altitude, groundspeed and callsign events, crops them to explicit service-time bounds, clips them to a generous Swiss extent, rejects ground/stale/noisy tracks, and writes `public/data/swiss-air-morning.json`. The compact web artifact preserves the ADSB.lol release URL and ODbL 1.0 terms. It is fetched only after **LUFT** is enabled; no source archive or heatmap slice ships to the browser. See [LUFTRAUM.md](./LUFTRAUM.md) for the display contract and limitations.
+The ingester decodes the timestamped position, barometric altitude, groundspeed and callsign events, crops them to explicit service-time bounds, clips them to a generous Swiss extent, rejects ground/stale/noisy tracks, and writes `public/data/swiss-air-morning.json`. The compact web artifact preserves the ADSB.lol release URL and ODbL 1.0 terms. It is fetched only after **LUFT** is enabled; no source archive or heatmap slice ships to the browser.
+
+The complete local day uses four slices from the previous UTC date plus the service date's first 44 slices. Placing those chronologically named files in one temporary directory allows the same ingester to produce a manifest and one-hour chunks:
+
+```bash
+npm run data:air -- \
+  --input-directory /path/to/dated-heatmap-slices \
+  --service-date 2026-09-04 \
+  --utc-offset 2 \
+  --window-start 00:00 \
+  --window-end 24:00 \
+  --chunk-hours 1 \
+  --output public/data/swiss-air-day-manifest.json
+```
+
+The manifest carries the complete callsign/ICAO search index; each hour carries only motion samples plus a small continuity overlap. **CH · 24H** fetches the active hour first and prefetches its neighbours. `npm run data:validate` verifies all 24 descriptors, counts, bounds and overlaps. See [LUFTRAUM.md](./LUFTRAUM.md) for the display contract, payload measurements and limitations.

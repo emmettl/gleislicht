@@ -17,6 +17,7 @@ const day = await readJson('swiss-rail-day-manifest.json')
 const kientalCorridor = await readJson('kiental-griesalp-corridor.json')
 const zurichChurCorridor = await readJson('zurich-chur-corridor.json')
 const air = await readJson('swiss-air-morning.json')
+const airDay = await readJson('swiss-air-day-manifest.json')
 
 const artifacts = [morning, hubs, day]
 const serviceDates = new Set(artifacts.map((artifact) => artifact.metadata?.serviceDate))
@@ -105,10 +106,53 @@ assert(
   ),
   'Air study contains malformed tracks',
 )
+assert(airDay.metadata?.publisher === 'ADSB.lol', 'Air day has no ADSB.lol provenance')
+assert(airDay.metadata?.license === 'ODbL 1.0', 'Air day has the wrong data licence')
+assert(airDay.metadata?.serviceDate === [...serviceDates][0], 'Air day does not match the railway service day')
+assert(airDay.metadata?.windowStart === 0, 'Air day does not start at midnight')
+assert(airDay.metadata?.windowEnd === 86_400, 'Air day does not end at 24:00')
+assert(airDay.trackCount > 3_000, 'Air day has too few indexed aircraft')
+assert(airDay.sampleCount > 500_000, 'Air day has too few position samples')
+assert(Array.isArray(airDay.aircraft) && airDay.aircraft.length === airDay.trackCount, 'Air day index count differs from its manifest')
+assert(new Set(airDay.aircraft.map((track) => track.id)).size === airDay.trackCount, 'Air day segment ids are not unique')
+assert(
+  airDay.aircraft.every((track) =>
+    /^[0-9a-f]{6}$/.test(track.icaoAddress) &&
+    typeof track.callsign === 'string' &&
+    track.start <= track.end &&
+    track.chunkIds.length > 0
+  ),
+  'Air day contains malformed flight-segment index entries',
+)
+assert(Array.isArray(airDay.chunks) && airDay.chunks.length === 24, 'Air day is missing hourly chunks')
+
+for (const [index, descriptor] of airDay.chunks.entries()) {
+  const chunk = await readJson(descriptor.path)
+  assert(descriptor.windowStart === index * 3_600, `${descriptor.id} has the wrong start time`)
+  assert(descriptor.windowEnd === (index + 1) * 3_600, `${descriptor.id} has the wrong end time`)
+  assert(chunk.windowStart === descriptor.windowStart, `${descriptor.id} start time differs from its manifest`)
+  assert(chunk.windowEnd === descriptor.windowEnd, `${descriptor.id} end time differs from its manifest`)
+  assert(chunk.tracks.length === descriptor.trackCount, `${descriptor.id} track count differs from its manifest`)
+  assert(
+    chunk.tracks.reduce((sum, track) => sum + track.samples.length, 0) === descriptor.sampleCount,
+    `${descriptor.id} sample count differs from its manifest`,
+  )
+  assert(
+    chunk.tracks.every((track) =>
+      track.samples.length >= 2 &&
+      track.samples.every((sample) =>
+        sample[0] >= descriptor.windowStart - 180 &&
+        sample[0] <= descriptor.windowEnd + 45
+      )
+    ),
+    `${descriptor.id} has malformed tracks or invalid continuity overlap`,
+  )
+}
 
 console.log(
   `Validated national GTFS ${[...feedVersions][0]} for ${[...serviceDates][0]}: ` +
     `${morning.trains.length.toLocaleString('en')} morning trips, ` +
     `${day.tripCount.toLocaleString('en')} day trips, ${day.chunks.length} chunks and ` +
-    `${air.tracks.length.toLocaleString('en')} historical aircraft.`,
+    `${air.tracks.length.toLocaleString('en')} morning aircraft and ` +
+    `${airDay.trackCount.toLocaleString('en')} day aircraft.`,
 )

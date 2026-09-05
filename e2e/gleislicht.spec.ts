@@ -243,6 +243,49 @@ test('the 24-hour study exposes authored day moments and a director loop', async
   await expect(director).toHaveAccessibleName('Stop director')
 })
 
+test('24-hour LUFT streams hourly motion and searches the complete day', async ({
+  page,
+}, testInfo) => {
+  const requested: string[] = []
+  page.on('request', (request) => {
+    if (request.url().includes('swiss-air-')) requested.push(request.url())
+  })
+
+  if (testInfo.project.name === 'iphone-webkit') {
+    const picker = page.locator('.mobile-study-picker')
+    await picker.locator('.mobile-picker__trigger').click()
+    await picker.getByRole('option').filter({ hasText: '24H' }).click()
+  } else {
+    await page.getByRole('button', { name: /24-hour Switzerland study/i }).click()
+  }
+  const manifestResponse = page.waitForResponse((response) =>
+    response.url().includes('swiss-air-day-manifest.json'),
+  )
+  const currentHourResponse = page.waitForResponse((response) =>
+    /swiss-air-day-\d\d\.json$/.test(response.url()),
+  )
+  await page.locator(
+    testInfo.project.name === 'iphone-webkit'
+      ? '.mobile-air-toggle'
+      : '.network-study-picker .air-toggle',
+  ).click()
+  await Promise.all([manifestResponse, currentHourResponse])
+  await expect(page.locator('.network-card .air-count')).toContainText('LUFT')
+  expect(requested.some((url) => url.includes('swiss-air-morning.json'))).toBe(false)
+
+  const search = page.locator('.train-search input[type="search"]')
+  await search.fill('ETH501')
+  const earlyFlight = page.locator('.search-results .air-result').first()
+  await expect(earlyFlight).toContainText('ETH501')
+  const earlyHourResponse = page.waitForResponse((response) =>
+    response.url().includes('swiss-air-day-00.json'),
+  )
+  await earlyFlight.click()
+  await earlyHourResponse
+  await expect(page.locator('.air-card')).toContainText('ETH501')
+  await expect.poll(async () => Number(await page.locator('.scrubber input').inputValue())).toBeLessThan(3_600)
+})
+
 test('the hub clock exposes its quarter-hour structure', async ({ page }, testInfo) => {
   test.skip(testInfo.project.name === 'iphone-webkit')
   await page.getByRole('button', { name: 'Takt hubs' }).click()

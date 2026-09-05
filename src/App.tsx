@@ -87,6 +87,7 @@ import {
 } from './search-navigation.ts'
 import { foldSearchText } from './search-text.ts'
 import { useProgressiveNetworkDay } from './use-progressive-network-day.ts'
+import { useProgressiveAirDay } from './use-progressive-air-day.ts'
 import { useLocalPerformance } from './use-local-performance.ts'
 
 const GleislichtScene = lazy(() =>
@@ -292,6 +293,13 @@ export function App() {
   const text = UI_TEXT[language]
   const performanceSample = useLocalPerformance(performanceEnabled)
   const isContrast = networkStudy === 'contrast'
+  const isNationalDay =
+    networkStudy === 'national' && nationalTimeRange === 'day'
+  const airDay = useProgressiveAirDay(
+    'swiss-air-day-manifest.json',
+    airEnabled && isNationalDay,
+    networkTime,
+  )
   const zurichContrast = useProgressiveNetworkDay(
     'zurich-tram-day-manifest.json',
     isContrast,
@@ -366,6 +374,16 @@ export function App() {
     realtimeApplication?.compatible && !realtimeStale,
   )
   const network = realtimeActive ? realtimeApplication?.network : baseNetwork
+  const activeAirSnapshot = isNationalDay ? airDay.snapshot : airSnapshot
+  const activeAirLoadState: AirLoadState = !airEnabled
+    ? 'idle'
+    : isNationalDay
+      ? airDay.error
+        ? 'error'
+        : airDay.chunkReady
+          ? 'ready'
+          : 'loading'
+      : airLoadState
 
   const soundtrackMode: SoundtrackMode =
     view === 'hub' ? 'hub' : view === 'journey' || selectedTrainId ? 'journey' : 'network'
@@ -420,8 +438,8 @@ export function App() {
     [network, selectedTrainId],
   )
   const selectedAirTrack = useMemo(
-    () => airSnapshot?.tracks.find((track) => track.id === selectedAirTrackId),
-    [airSnapshot, selectedAirTrackId],
+    () => activeAirSnapshot?.tracks.find((track) => track.id === selectedAirTrackId),
+    [activeAirSnapshot, selectedAirTrackId],
   )
   const selectedAirPosition = useMemo(
     () =>
@@ -432,10 +450,10 @@ export function App() {
   )
   const activeAircraftCount = useMemo(
     () =>
-      airEnabled && airSnapshot
-        ? activeAirTracks(airSnapshot, networkTime).length
+      airEnabled && activeAirSnapshot
+        ? activeAirTracks(activeAirSnapshot, networkTime).length
         : 0,
-    [airEnabled, airSnapshot, networkTime],
+    [activeAirSnapshot, airEnabled, networkTime],
   )
   const corridorTrainSelected =
     isZurichChurTrain(selectedTrain, network) ||
@@ -552,10 +570,20 @@ export function App() {
   }, [language, routeIndex, searchQuery])
   const airSearchResults = useMemo(
     () =>
-      airEnabled && airSnapshot
-        ? searchAirTracks(airSnapshot.tracks, searchQuery, networkTime)
+      airEnabled
+        ? isNationalDay
+          ? searchAirTracks(
+              airDay.manifest?.aircraft ?? [],
+              searchQuery,
+              networkTime,
+            )
+          : searchAirTracks(
+              activeAirSnapshot?.tracks ?? [],
+              searchQuery,
+              networkTime,
+            )
         : [],
-    [airEnabled, airSnapshot, networkTime, searchQuery],
+    [activeAirSnapshot, airDay.manifest, airEnabled, isNationalDay, networkTime, searchQuery],
   )
   const searchResultCount =
     stationSearchResults.length +
@@ -703,7 +731,9 @@ export function App() {
 
   const selectAirTrack = useCallback(
     (trackId: string) => {
-      const track = airSnapshot?.tracks.find((candidate) => candidate.id === trackId)
+      const track =
+        activeAirSnapshot?.tracks.find((candidate) => candidate.id === trackId) ??
+        airDay.manifest?.aircraft.find((candidate) => candidate.id === trackId)
       if (track) {
         setNetworkTime((current) =>
           current >= track.start && current <= track.end
@@ -721,7 +751,7 @@ export function App() {
       setActiveSearchIndex(-1)
       setIsPlaying(true)
     },
-    [airSnapshot],
+    [activeAirSnapshot, airDay.manifest],
   )
 
   const toggleAirLayer = useCallback(() => {
@@ -734,6 +764,7 @@ export function App() {
     setAirLoadState(airSnapshot ? 'ready' : 'loading')
     setAirEnabled(true)
     if (
+      !isNationalDay &&
       airSnapshot &&
       (networkTime < airSnapshot.metadata.windowStart ||
         networkTime > airSnapshot.metadata.windowEnd)
@@ -742,7 +773,7 @@ export function App() {
         (airSnapshot.metadata.windowStart + airSnapshot.metadata.windowEnd) / 2,
       )
     }
-  }, [airEnabled, airSnapshot, networkTime, releaseSelection])
+  }, [airEnabled, airSnapshot, isNationalDay, networkTime, releaseSelection])
 
   const openTerrainCorridor = useCallback(
     (nextCorridorId: TerrainCorridorId, nextProgress = 0.015) => {
@@ -969,7 +1000,7 @@ export function App() {
   }, [])
 
   useEffect(() => {
-    if (!airEnabled || airSnapshot) return
+    if (!airEnabled || isNationalDay || airSnapshot) return
     const controller = new AbortController()
     fetch(`${import.meta.env.BASE_URL}data/swiss-air-morning.json`, {
       signal: controller.signal,
@@ -999,7 +1030,7 @@ export function App() {
         setAirLoadState('error')
       })
     return () => controller.abort()
-  }, [airEnabled, airSnapshot])
+  }, [airEnabled, airSnapshot, isNationalDay])
 
   useEffect(() => {
     if (operationsMode === 'scheduled') return
@@ -1304,8 +1335,6 @@ export function App() {
   const isNetwork = view === 'network'
   const isHub = view === 'hub'
   const isTimetable = isNetwork || isHub
-  const isNationalDay =
-    networkStudy === 'national' && nationalTimeRange === 'day'
   const operationsBadge =
     operationsMode === 'scheduled'
       ? 'PLAN'
@@ -1479,7 +1508,9 @@ export function App() {
             selectedStation={selectedStation}
             onSelectStation={selectStation}
             airSnapshot={
-              networkStudy === 'national' && airEnabled ? airSnapshot : undefined
+              networkStudy === 'national' && airEnabled
+                ? activeAirSnapshot
+                : undefined
             }
             selectedAirTrack={selectedAirTrack}
             onSelectAirTrack={selectAirTrack}
@@ -2075,7 +2106,8 @@ export function App() {
                     <span className="air-result-mark" aria-hidden="true">◆</span>
                     <span className="result-service">{track.callsign}</span>
                     <span className="result-route">
-                      {text.luftraum} · {track.id.toUpperCase()} ·{' '}
+                      {text.luftraum} ·{' '}
+                      {(track.icaoAddress ?? track.id).toUpperCase()} ·{' '}
                       {formatServiceTime(track.start)}–{formatServiceTime(track.end)}
                     </span>
                   </button>
@@ -2281,7 +2313,8 @@ export function App() {
                   .toString()
                   .padStart(3, '0')}°`
               : text.signalGap}{' '}
-            <span>/</span> {selectedAirTrack.id.toUpperCase()}
+            <span>/</span>{' '}
+            {(selectedAirTrack.icaoAddress ?? selectedAirTrack.id).toUpperCase()}
           </p>
           <p className="air-compact-metrics">
             {selectedAirPosition
@@ -2478,14 +2511,14 @@ export function App() {
                 className="air-count"
                 aria-live="polite"
                 aria-label={
-                  airLoadState === 'ready'
+                  activeAirLoadState === 'ready'
                     ? `${numberFormat.format(activeAircraftCount)} ${text.aircraftInMotion}`
                     : undefined
                 }
               >
-                {airLoadState === 'error'
+                {activeAirLoadState === 'error'
                   ? text.airUnavailable
-                  : airLoadState !== 'ready'
+                  : activeAirLoadState !== 'ready'
                     ? text.loadingAir
                     : `${numberFormat.format(activeAircraftCount)} ${text.luftraum}`}
               </span>
@@ -3088,13 +3121,13 @@ export function App() {
                 {text.lakes} · {lakes.metadata.attribution}
               </a>
             )}
-            {isNetwork && airEnabled && airSnapshot && (
+            {isNetwork && airEnabled && activeAirSnapshot && (
               <a
-                href={airSnapshot.metadata.sourceUrl}
+                href={activeAirSnapshot.metadata.sourceUrl}
                 target="_blank"
                 rel="noreferrer"
               >
-                Luftraum · ADSB.lol / {airSnapshot.metadata.license}
+                Luftraum · ADSB.lol / {activeAirSnapshot.metadata.license}
               </a>
             )}
             <a href="./methodology.html">{text.methodology}</a>

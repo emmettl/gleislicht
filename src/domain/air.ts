@@ -8,6 +8,7 @@ export type AirSample = readonly [
 
 export interface AirTrack {
   readonly id: string
+  readonly icaoAddress?: string
   readonly callsign: string
   readonly start: number
   readonly end: number
