@@ -42,6 +42,7 @@
     "data:road:record:watch": "node scripts/record-astra-traffic.mjs --watch",
     "data:road:compile": "node scripts/compile-astra-road-study.mjs",
     "data:road:compile:national": "node scripts/compile-astra-national-study.mjs",
+    "data:london:proof": "node scripts/ingest-tfl-line.mjs --line bakerloo --direction outbound --origin 940GZZLUEAC --service-date 2026-09-04 --output fixtures/tfl/all-change-bakerloo-morning.json",
     "preview": "vite preview"
   },
   "engines": {

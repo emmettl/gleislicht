@@ -1,0 +1,126 @@
+import { readFile } from 'node:fs/promises'
+import { describe, expect, it } from 'vitest'
+import { compileTflLineProof, parseClock } from './ingest-tfl-line.mjs'
+
+const routeSequence = {
+  lineId: 'test-line',
+  lineName: 'Test Line',
+  direction: 'outbound',
+  mode: 'tube',
+  lineStrings: ['[[[-0.12,51.5],[-0.13,51.51],[-0.14,51.52]]]'],
+}
+
+const stops = [
+  { id: 'A', name: 'Alpha Underground Station', lon: -0.12, lat: 51.5 },
+  { id: 'B', name: 'Bravo Underground Station', lon: -0.13, lat: 51.51 },
+  { id: 'C', name: 'Charlie Underground Station', lon: -0.14, lat: 51.52 },
+]
+
+const timetable = {
+  lineId: 'test-line',
+  direction: 'outbound',
+  stops,
+  timetable: {
+    departureStopId: 'A',
+    routes: [
+      {
+        stationIntervals: [
+          {
+            id: '0',
+            intervals: [
+              { stopId: 'B', timeToArrival: 2 },
+              { stopId: 'C', timeToArrival: 5 },
+            ],
+          },
+        ],
+        schedules: [
+          {
+            name: 'Monday - Friday',
+            knownJourneys: [
+              { hour: '6', minute: '42', intervalId: 0 },
+              { hour: '7', minute: '00', intervalId: 0 },
+              { hour: '8', minute: '46', intervalId: 0 },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+}
+
+describe('TfL line adapter', () => {
+  it('parses service-day clock times including 24:00', () => {
+    expect(parseClock('06:45')).toBe(24_300)
+    expect(parseClock('24:00')).toBe(86_400)
+    expect(() => parseClock('24:01')).toThrow('Invalid clock time')
+  })
+
+  it('compiles overlapping weekday journeys into the shared network contract', () => {
+    const snapshot = compileTflLineProof({
+      routeSequence,
+      timetable,
+      serviceDate: '2026-09-04',
+      retrievedAt: '2026-09-06T00:00:00.000Z',
+      routeUrl: 'https://api.tfl.gov.uk/Line/test-line/Route/Sequence/Outbound',
+      timetableUrl: 'https://api.tfl.gov.uk/Line/test-line/Timetable/A',
+    })
+
+    expect(snapshot.metadata.publisher).toBe('Transport for London')
+    expect(snapshot.metadata.model).toContain('not realtime')
+    expect(snapshot.metadata.sourceSha256).toMatch(/^[a-f0-9]{64}$/)
+    expect(snapshot.metadata.geometry.sourceSha256).toMatch(/^[a-f0-9]{64}$/)
+    expect(snapshot.stops.map((stop) => stop[2])).toEqual([
+      'Alpha',
+      'Bravo',
+      'Charlie',
+    ])
+    expect(snapshot.trains).toHaveLength(2)
+    expect(snapshot.trains[0]).toMatchObject({
+      category: 'metro',
+      start: parseClock('06:42'),
+      end: parseClock('06:47'),
+      pathSegments: [0, 1],
+    })
+    expect(snapshot.paths).toHaveLength(2)
+    expect(snapshot.edgePaths).toEqual([0, 1])
+  })
+
+  it('rejects mismatched topology and timetable sources', () => {
+    expect(() =>
+      compileTflLineProof({
+        routeSequence: { ...routeSequence, lineId: 'wrong-line' },
+        timetable,
+        serviceDate: '2026-09-04',
+        retrievedAt: '2026-09-06T00:00:00.000Z',
+        routeUrl: 'route',
+        timetableUrl: 'timetable',
+      }),
+    ).toThrow('line IDs disagree')
+  })
+
+  it('keeps the committed Bakerloo proof source-audited and renderable', async () => {
+    const snapshot = JSON.parse(
+      await readFile('fixtures/tfl/all-change-bakerloo-morning.json', 'utf8'),
+    )
+
+    expect(snapshot.metadata).toMatchObject({
+      publisher: 'Transport for London',
+      serviceDate: '2026-09-04',
+      windowStart: 24_300,
+      windowEnd: 31_500,
+      model: 'TfL recurring weekday timetable interpolation / not realtime',
+    })
+    expect(snapshot.metadata.licenseUrl).toContain('transport-data-service')
+    expect(snapshot.metadata.sourceSha256).toMatch(/^[a-f0-9]{64}$/)
+    expect(snapshot.metadata.geometry.sourceSha256).toMatch(/^[a-f0-9]{64}$/)
+    expect(snapshot.metadata.geometry.matchedSegments).toBe(24)
+    expect(snapshot.stops).toHaveLength(25)
+    expect(snapshot.trains).toHaveLength(39)
+    expect(snapshot.trains.every((train) =>
+      train.start <= snapshot.metadata.windowEnd &&
+      train.end >= snapshot.metadata.windowStart &&
+      train.stops.length >= 2 &&
+      train.pathSegments.length === train.stops.length - 1
+    )).toBe(true)
+  })
+})

@@ -56,6 +56,10 @@ export interface NetworkSnapshot {
     readonly windowEnd: number
     readonly focusTime: number
     readonly sourceUrl: string
+    readonly sourceSha256?: string
+    readonly retrievedAt?: string
+    readonly license?: string
+    readonly licenseUrl?: string
     readonly model: string
     readonly note: string
     readonly modes?: readonly string[]
@@ -65,6 +69,7 @@ export interface NetworkSnapshot {
       readonly publisher: string
       readonly feedVersion: string
       readonly sourceUrl: string
+      readonly sourceSha256?: string
       readonly productUrl?: string
       readonly model: string
       readonly matchedSegments: number

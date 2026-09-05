@@ -18,6 +18,12 @@ Start with one ordinary weekday from 06:45–08:45 and keep the first payload ra
 
 The first authored moment should show trains converging across central London while orbital and outer branches remain legible. A Thames-crossing follow view would provide the edition's first unmistakably London-specific composition.
 
+## Adapter proof
+
+The first compiled fixture is deliberately smaller than the first visible edition: 39 weekday Bakerloo journeys overlapping 06:45–08:45, running outbound from Elephant & Castle across 25 NaPTAN stations. It uses TfL's timetable station intervals for movement timing and splits the official route-sequence line string into 24 station-to-station paths. The 25 KiB artifact lives under `fixtures/tfl/`, so it exercises the shared network contract without entering Gleislicht's public payload or edition selector.
+
+Run `npm run data:london:proof` to refresh the proof from the Unified API. Anonymous access currently works for this bounded request; `TFL_API_KEY` is supported and should be used for repeated access, in line with TfL's developer guidance. The generated metadata records retrieval time, source hashes, both endpoints, TfL's data-service terms, the recurring weekday model and the fact that this is not realtime or a complete London service-day claim.
+
 ## Data strategy
 
 Transport for London's Unified API is the primary adapter target. TfL describes it as a common multimodal model and exposes timetables, arrivals, routes, lines, topology and geographic data. API access should remain in offline tooling or a small credential-holding edge adapter; compact studies stay static and deterministic in the browser.
@@ -37,9 +43,10 @@ Sources:
 
 ### LDN 0 — Adapter proof
 
-- Map TfL modes and line identifiers into the edition-neutral network schema.
-- Resolve NaPTAN stops, platforms, line geometry and service-day times.
-- Produce a source-audited two-hour fixture before attempting the whole city.
+- [x] Map the Bakerloo `tube` mode and line identity into the edition-neutral network schema.
+- [x] Resolve NaPTAN stops, route geometry and recurring weekday station intervals.
+- [x] Produce a source-audited two-hour fixture before attempting the whole city.
+- [ ] Generalise the proof across the remaining rail-led modes, branches and platform-level stop structures.
 
 ### LDN 1 — Morning lattice
 
