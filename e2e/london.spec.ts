@@ -111,7 +111,9 @@ test('route 26 buses load progressively as a separate street study', async ({
   expect((await eveningChunkResponse).ok()).toBe(true)
   await expect(page.locator('.london-status-card')).toContainText('36 journeys')
 
-  await page.getByRole('button', { name: 'Morning study' }).click()
+  const morningStudy = page.getByRole('button', { name: 'Morning study' })
+  await morningStudy.focus()
+  await page.keyboard.press('Enter')
   await expect(experience).toHaveAttribute('data-study-window', 'morning')
   await expect(experience).toHaveAttribute('data-bus-enabled', 'false')
   await expect(page.getByRole('button', { name: 'Diagram layout' })).toBeEnabled()
