@@ -54,7 +54,7 @@ This ordering leaves room for discovery while keeping the gates honest. New York
 These are strong candidates, not promises or an implementation queue:
 
 - **NORIKAE — A Tokyo motion study** — the preferred next-city investigation. Neon would not be cosmetically imposed here: the railway already reads as circuitry. Overlapping operator empires, stacked lines, colossal stations, rapid and suburban services, and the Yamanote loop pulsing around the centre could let the physical city almost disappear beneath the transport system at night.
-- **Hong Kong** — rail, ferries, harbour and mountains in genuine three-dimensional tension; unusually rich emotional geography.
+- **Hong Kong** — rail, ferries, harbour and mountains in genuine three-dimensional tension; unusually rich emotional geography. The source audit points toward a surface-and-void study: exact harbour ferries and measured station volumes are strong, while individual MTR trajectories are not yet defensible from the official public data.
 - **Berlin** — Ringbahn pulse with U-Bahn, S-Bahn and tram strata.
 - **San Francisco** — cable cars, street-running Muni, BART, ferries and extreme terrain at a cinematic scale.
 - **Venice** — the conceptual outlier: scheduled boats become the network and water becomes the infrastructure.
@@ -65,5 +65,7 @@ They remain deliberately unnumbered until each produces a title, a source path a
 Tokyo's initial source and feasibility audit is recorded in [TOKYO.md](./TOKYO.md). It separates a durable Toei proof from the unresolved Tokyo Metro publication terms and the Challenge 2026-only Yamanote/private-railway coverage.
 
 San Francisco's initial [source and feasibility audit](./SAN-FRANCISCO.md) finds an unusually strong technical path through 511's current and historical regional feeds, stop-level observation archive and DataSF terrain. Public release remains gated on the relationship between 511's sublicensing/update terms and SFMTA's separate revocable transit-data licence; the title and signature action also remain open.
+
+Hong Kong's initial [source and feasibility audit](./HONG-KONG.md) finds a strong publication and geography baseline: exact Star Ferry timetables, headway-based tram services, five-metre terrain and 98 official indoor MTR station envelopes. It also finds the defining limit early: the public MTR API provides station forecasts without trip or vehicle identity, while the government GTFS omits heavy rail and models the relevant tram layer as headways rather than exact departures. The first proof therefore keeps rail structural until a defensible motion source appears.
 
 MANIFEST's initial [AIS and trade-source audit](./MANIFEST.md) finds the visual study feasible, but gates individual global tracks on written derived-publication rights. It recommends a pinned historical composition rather than a live ship finder and defines the evidence boundary between observed motion, reported vessel fields, inferred port-to-port voyages and aggregate commodity statistics.
