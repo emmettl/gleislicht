@@ -122,8 +122,8 @@ export async function buildRailLedCatalogue({ retrievedAt = new Date().toISOStri
       { mode: 'tube', status: 'compiled', lines: ['bakerloo', 'northern'], fixtures: ['all-change-bakerloo-morning.json', 'all-change-northern-morden-morning.json'] },
       { mode: 'dlr', status: 'compiled', lines: ['dlr'], fixtures: ['all-change-dlr-bank-morning.json'] },
       { mode: 'tram', status: 'compiled', lines: ['tram'], fixtures: ['all-change-tram-beckenham-morning.json'] },
-      { mode: 'elizabeth-line', status: 'topology-only', lines: ['elizabeth'], note: 'The Unified API timetable probe from Abbey Wood returned no timetable endpoint on 2026-09-05.' },
-      { mode: 'overground', status: 'topology-only', lines: ['liberty', 'lioness', 'mildmay', 'suffragette', 'weaver', 'windrush'], note: 'The Unified API timetable probe from Stratford on Mildmay returned no timetable endpoint on 2026-09-05.' },
+      { mode: 'elizabeth-line', status: 'compiled-from-pdf', lines: ['elizabeth'], fixtures: ['all-change-elizabeth-morning.json'], note: 'The Unified API timetable probe from Abbey Wood returned no timetable endpoint; the official current public timetable PDF supplies the bounded movement proof.' },
+      { mode: 'overground', status: 'compiled-from-pdf', lines: ['lioness'], fixtures: ['all-change-lioness-morning.json'], note: 'The Unified API timetable probe from Stratford on Mildmay returned no timetable endpoint; the official current Lioness public timetable PDF supplies the bounded movement proof. The remaining five Overground lines are catalogued topology only.' },
     ],
   }
 }

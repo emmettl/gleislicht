@@ -100,7 +100,7 @@ async function loadSources(options) {
   }
 }
 
-function linePoints(routeSequence, lineStringIndex = 0) {
+export function linePoints(routeSequence, lineStringIndex = 0) {
   const encoded = routeSequence.lineStrings?.[lineStringIndex]
   if (!encoded) throw new Error('TfL route sequence has no line string')
   const decoded = JSON.parse(encoded)
@@ -146,7 +146,7 @@ function nearestMonotonicIndexes(points, stops) {
   return indexes
 }
 
-function pathsBetweenStops(points, stops) {
+export function pathsBetweenStops(points, stops) {
   const indexes = nearestMonotonicIndexes(points, stops)
   return stops.slice(0, -1).map((stop, index) => {
     const next = stops[index + 1]
@@ -163,7 +163,7 @@ function secondsForJourney(journey) {
   return Number(journey.hour) * 3600 + Number(journey.minute) * 60
 }
 
-function boundsFor(stops) {
+export function boundsFor(stops) {
   return stops.reduce(
     (bounds, stop) => ({
       minLongitude: Math.min(bounds.minLongitude, stop.lon),
@@ -180,11 +180,11 @@ function boundsFor(stops) {
   )
 }
 
-function cleanStationName(name) {
+export function cleanStationName(name) {
   return name.replace(/ (?:Underground Station|DLR Station|Rail Station|Tram Stop|London Overground Station)$/, '')
 }
 
-function sourceSha256(value) {
+export function sourceSha256(value) {
   return createHash('sha256').update(JSON.stringify(value)).digest('hex')
 }
 
