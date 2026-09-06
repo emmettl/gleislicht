@@ -1,7 +1,11 @@
 import { describe, expect, it } from 'vitest'
 import {
+  callsForHubFlowLens,
   callsAtHub,
   callsNearTime,
+  hubFlowOrientation,
+  hubFlowSummary,
+  hubNightSignalMix,
   nextHubCall,
   platformCodeForCall,
   platformTrackForCall,
@@ -139,5 +143,41 @@ describe('hub calls', () => {
       progress: 0.5,
     })
     expect(stationMotionForCall(call, 1200, 300)).toBeUndefined()
+  })
+
+  it('classifies local movement geometry as radial or orbital', () => {
+    const hubStop = [0.1, 51.5, 'East hub'] as const
+    const radialCall = {
+      ...callsAtHub(snapshot, TEST_HUB)[0],
+      hubStop,
+      previousStop: [0.05, 51.5, 'West'] as const,
+      nextStop: [0.15, 51.5, 'East'] as const,
+    }
+    const orbitalCall = {
+      ...radialCall,
+      id: 'orbital',
+      previousStop: [0.1, 51.45, 'South'] as const,
+      nextStop: [0.1, 51.55, 'North'] as const,
+    }
+    const centre = [0, 51.5] as const
+
+    expect(hubFlowOrientation(radialCall, centre)).toBe('radial')
+    expect(hubFlowOrientation(orbitalCall, centre)).toBe('orbital')
+    expect(hubFlowSummary([radialCall, orbitalCall], centre)).toEqual({
+      all: 2,
+      radial: 1,
+      orbital: 1,
+    })
+    expect(callsForHubFlowLens([radialCall, orbitalCall], 'orbital', centre)).toEqual([
+      orbitalCall,
+    ])
+  })
+
+  it('crossfades the pulse field into and out of night', () => {
+    expect(hubNightSignalMix(12 * 3_600)).toBe(0)
+    expect(hubNightSignalMix(22.5 * 3_600)).toBe(0.5)
+    expect(hubNightSignalMix(2 * 3_600)).toBe(1)
+    expect(hubNightSignalMix(5.75 * 3_600)).toBe(0.5)
+    expect(hubNightSignalMix(7 * 3_600)).toBe(0)
   })
 })

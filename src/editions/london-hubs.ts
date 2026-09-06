@@ -2,6 +2,9 @@ import type { HubDefinition } from '../domain/hub.ts'
 
 export type LondonHubId = 'kings-cross' | 'bank' | 'waterloo' | 'stratford'
 
+/** Charing Cross gives the radial/orbital comparison a stable London datum. */
+export const LONDON_PULSE_CENTRE = [-0.1278, 51.5074] as const
+
 /** Contrasting interchanges, chosen for network character rather than rank. */
 export const LONDON_HUBS: readonly HubDefinition<LondonHubId>[] = [
   {

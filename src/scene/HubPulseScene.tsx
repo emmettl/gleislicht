@@ -20,6 +20,7 @@ interface HubPulseSceneProps {
   readonly playbackRate: number
   readonly selectedCategory?: ServiceCategory
   readonly showTaktOverlay: boolean
+  readonly nightMix?: number
 }
 
 const pulseHorizon = 15 * 60
@@ -311,11 +312,17 @@ function CorridorSpokes({
     const seen = new Set<string>()
     return calls.flatMap((call, index) => {
       const directions = [
-        directionForStop(call.hubStop, call.previousStop, index),
-        directionForStop(call.hubStop, call.nextStop, index + Math.PI),
+        {
+          angle: directionForStop(call.hubStop, call.previousStop, index),
+          flow: 'arrival',
+        },
+        {
+          angle: directionForStop(call.hubStop, call.nextStop, index + Math.PI),
+          flow: 'departure',
+        },
       ]
-      return directions.flatMap((angle) => {
-        const key = `${Math.round(angle * 28)}:${call.train.category}`
+      return directions.flatMap(({ angle, flow }) => {
+        const key = `${flow}:${Math.round(angle * 28)}:${call.train.category}`
         if (seen.has(key)) return []
         seen.add(key)
         const points = [
@@ -323,8 +330,10 @@ function CorridorSpokes({
           new THREE.Vector3(Math.cos(angle) * 12.5, 0.02, Math.sin(angle) * 12.5),
         ]
         const geometry = new THREE.BufferGeometry().setFromPoints(points)
+        const serviceColor = new THREE.Color(SERVICE_COLORS[call.train.category])
+        serviceColor.lerp(new THREE.Color(flow === 'arrival' ? '#8dfaff' : '#ff5edb'), 0.46)
         const material = new THREE.LineBasicMaterial({
-          color: SERVICE_COLORS[call.train.category],
+          color: serviceColor,
           transparent: true,
           opacity:
             selectedCategory && selectedCategory !== call.train.category ? 0.025 : 0.12,
@@ -391,14 +400,24 @@ function HubTraffic({
   const localTime = useRef(time)
   const lastReport = useRef(0)
   const pointTexture = useMemo(() => createGlowPointTexture(), [])
-  const palette = useMemo(
+  const flowPalette = useMemo(
     () =>
       Object.fromEntries(
-        Object.entries(SERVICE_COLORS).map(([category, color]) => [
-          category,
-          new THREE.Color(color),
-        ]),
-      ) as Record<ServiceCategory, THREE.Color>,
+        Object.entries(SERVICE_COLORS).map(([category, color]) => {
+          const service = new THREE.Color(color)
+          return [
+            category,
+            {
+              arrival: service.clone().lerp(new THREE.Color('#8dfaff'), 0.5),
+              departure: service.clone().lerp(new THREE.Color('#ff5edb'), 0.46),
+              dwell: service.clone().lerp(new THREE.Color('#f9f7ff'), 0.34),
+            },
+          ]
+        }),
+      ) as Record<
+        ServiceCategory,
+        { arrival: THREE.Color; departure: THREE.Color; dwell: THREE.Color }
+      >,
     [],
   )
   const geometry = useMemo(() => {
@@ -461,15 +480,21 @@ function HubTraffic({
       const progress = arriving
         ? (arrival - localTime.current) / pulseHorizon
         : (localTime.current - departure) / pulseHorizon
-      const direction = arriving
+      const baseDirection = arriving
         ? directionForStop(call.hubStop, call.previousStop, index)
         : directionForStop(call.hubStop, call.nextStop, index + Math.PI)
+      const direction = baseDirection + (dwelling ? 0 : arriving ? -0.028 : 0.028)
       const radius = dwelling ? 0.35 : 0.55 + THREE.MathUtils.clamp(progress, 0, 1) * 10
       const offset = active * 3
       positionArray[offset] = Math.cos(direction) * radius
       positionArray[offset + 1] = dwelling ? 0.42 : 0.16 + Math.sin(index) * 0.05
       positionArray[offset + 2] = Math.sin(direction) * radius
-      const color = palette[call.train.category] ?? palette.other
+      const categoryFlow = flowPalette[call.train.category] ?? flowPalette.other
+      const color = dwelling
+        ? categoryFlow.dwell
+        : arriving
+          ? categoryFlow.arrival
+          : categoryFlow.departure
       const intensity =
         selectedCategory && selectedCategory !== call.train.category ? 0.025 : 1
       colorArray[offset] = color.r * intensity
@@ -518,11 +543,72 @@ function HubTraffic({
   )
 }
 
+function NightSignalField({ mix }: { readonly mix: number }) {
+  const group = useRef<THREE.Group>(null)
+  const pointTexture = useMemo(() => createGlowPointTexture(), [])
+  const geometry = useMemo(() => {
+    const positions = new Float32Array(72 * 3)
+    for (let index = 0; index < 72; index += 1) {
+      const angle = index * 2.399963
+      const radius = 3.2 + ((index * 37) % 100) / 100 * 11.5
+      positions[index * 3] = Math.cos(angle) * radius
+      positions[index * 3 + 1] = 0.04 + (index % 5) * 0.018
+      positions[index * 3 + 2] = Math.sin(angle) * radius
+    }
+    const next = new THREE.BufferGeometry()
+    next.setAttribute('position', new THREE.BufferAttribute(positions, 3))
+    return next
+  }, [])
+
+  useEffect(
+    () => () => {
+      geometry.dispose()
+      pointTexture.dispose()
+    },
+    [geometry, pointTexture],
+  )
+  useFrame((state) => {
+    if (group.current) group.current.rotation.y = state.clock.elapsedTime * 0.018
+  })
+
+  if (mix <= 0.001) return null
+  return (
+    <group ref={group}>
+      <points geometry={geometry}>
+        <pointsMaterial
+          map={pointTexture}
+          color="#ff5edb"
+          size={0.09 + mix * 0.11}
+          transparent
+          opacity={mix * 0.52}
+          depthWrite={false}
+          blending={THREE.AdditiveBlending}
+        />
+      </points>
+      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.01, 0]}>
+        <ringGeometry args={[13.7, 13.76, 128]} />
+        <meshBasicMaterial
+          color="#ff5edb"
+          transparent
+          opacity={mix * 0.17}
+          side={THREE.DoubleSide}
+          blending={THREE.AdditiveBlending}
+        />
+      </mesh>
+    </group>
+  )
+}
+
 function HubWorld(props: HubPulseSceneProps) {
+  const nightMix = props.nightMix ?? 0
+  const fogColor = useMemo(
+    () => new THREE.Color('#050410').lerp(new THREE.Color('#10031d'), nightMix),
+    [nightMix],
+  )
   return (
     <>
-      <fog attach="fog" args={['#050410', 18, 44]} />
-      <ambientLight intensity={0.7} color="#7978d8" />
+      <fog attach="fog" args={[fogColor, 18 - nightMix * 2, 44]} />
+      <ambientLight intensity={0.7 - nightMix * 0.18} color="#7978d8" />
       <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.05, 0]}>
         <planeGeometry args={[36, 36, 48, 48]} />
         <meshBasicMaterial color="#272852" wireframe transparent opacity={0.09} />
@@ -539,6 +625,7 @@ function HubWorld(props: HubPulseSceneProps) {
         selectedCategory={props.selectedCategory}
       />
       <StationCore hub={props.hub} />
+      <NightSignalField mix={nightMix} />
       <HubDestinationLabels calls={props.calls} />
       <HubTraffic {...props} />
     </>
@@ -546,13 +633,18 @@ function HubWorld(props: HubPulseSceneProps) {
 }
 
 export function HubPulseScene(props: HubPulseSceneProps) {
+  const nightMix = props.nightMix ?? 0
+  const background = useMemo(
+    () => new THREE.Color('#050410').lerp(new THREE.Color('#0c0219'), nightMix),
+    [nightMix],
+  )
   return (
     <Canvas
       camera={{ position: [0, 15.5, 15.5], fov: 44, near: 0.1, far: 70 }}
       dpr={[1, 1.65]}
       gl={{ antialias: true, alpha: false }}
     >
-      <color attach="background" args={['#050410']} />
+      <color attach="background" args={[background]} />
       <HubWorld {...props} />
     </Canvas>
   )

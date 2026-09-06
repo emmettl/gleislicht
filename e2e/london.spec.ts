@@ -219,6 +219,11 @@ test('interchange pulse preserves the shared clock and switches character', asyn
   await expect(page.locator('.london-status-card')).toContainText(
     'movements in orbit',
   )
+  await page.getByRole('button', { name: 'radial movements' }).click()
+  await expect(experience).toHaveAttribute('data-pulse-lens', 'radial')
+  await expect(page.locator('.london-status-card')).toContainText(
+    'radial movements',
+  )
   await expect(page.getByRole('button', { name: 'Exit interchange pulse' })).toBeVisible()
   await expect(page.locator('.london-map-tools')).not.toBeVisible()
 
@@ -226,6 +231,7 @@ test('interchange pulse preserves the shared clock and switches character', asyn
     'stratford',
   )
   await expect(page.locator('.london-status-card')).toContainText('Stratford')
+  await expect(experience).toHaveAttribute('data-pulse-lens', 'all')
   await page.locator('.london-transport input[type="range"]').fill('28800')
   await expect(page.locator('.london-time-copy')).toContainText('08:00')
 

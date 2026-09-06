@@ -40,9 +40,13 @@ import {
   type StationIndexEntry,
 } from '../domain/network.ts'
 import {
+  callsForHubFlowLens,
   callsAtHub,
   callsNearTime,
+  hubFlowSummary,
+  hubNightSignalMix,
   nextHubCall,
+  type HubFlowLens,
 } from '../domain/hub.ts'
 import {
   adjacentDayChunks,
@@ -69,6 +73,7 @@ import {
 import { LONDON_AIRPORTS } from '../editions/london-airports.ts'
 import {
   LONDON_HUBS,
+  LONDON_PULSE_CENTRE,
   type LondonHubId,
 } from '../editions/london-hubs.ts'
 import {
@@ -289,6 +294,7 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
   const [trainLabelMode, setTrainLabelMode] = useState<TrainLabelMode>('auto')
   const [limitedChrome, setLimitedChrome] = useState(false)
   const [pulseHubId, setPulseHubId] = useState<LondonHubId>()
+  const [pulseLens, setPulseLens] = useState<HubFlowLens>('all')
   const [query, setQuery] = useState('')
   const [searchOpen, setSearchOpen] = useState(false)
   const [activeSearchIndex, setActiveSearchIndex] = useState(0)
@@ -374,10 +380,19 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
   const pulseHub = pulseHubId
     ? LONDON_HUBS.find((hub) => hub.id === pulseHubId)
     : undefined
-  const pulseCalls = useMemo(
+  const allPulseCalls = useMemo(
     () => (network && pulseHub ? callsAtHub(network, pulseHub) : []),
     [network, pulseHub],
   )
+  const pulseSummary = useMemo(
+    () => hubFlowSummary(allPulseCalls, LONDON_PULSE_CENTRE),
+    [allPulseCalls],
+  )
+  const pulseCalls = useMemo(
+    () => callsForHubFlowLens(allPulseCalls, pulseLens, LONDON_PULSE_CENTRE),
+    [allPulseCalls, pulseLens],
+  )
+  const pulseNightMix = hubNightSignalMix(time)
   const nearbyPulseCalls = useMemo(
     () => callsNearTime(pulseCalls, time),
     [pulseCalls, time],
@@ -633,6 +648,17 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
         ? positionForAirTrack(selectedAirTrack, time)
         : undefined,
     [selectedAirTrack, time],
+  )
+  const selectedAirTelemetry = useMemo(
+    () =>
+      selectedAirTrack
+        ? selectedAirPosition ??
+          positionForAirTrack(
+            selectedAirTrack,
+            Math.max(selectedAirTrack.start, Math.min(selectedAirTrack.end, time)),
+          )
+        : undefined,
+    [selectedAirPosition, selectedAirTrack, time],
   )
   const activeAircraftCount = useMemo(
     () =>
@@ -1041,7 +1067,7 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
 
   return (
     <main
-      className={`experience view-${pulseHub ? 'hub' : 'network'} london-experience${pulseHub ? ' is-pulse-study' : ''}${limitedChrome ? ' is-limited-chrome' : ''}${airEnabled ? ' has-air-layer' : ''}${airCategorySelected ? ' has-air-category' : ''}${selectedAirport ? ' has-airport-selection' : ''}${roadEnabled ? ' has-road-layer' : ''}${roadCategorySelected ? ' has-road-category' : ''}${surfaceEnabled ? ' has-surface-layer' : ''}${selectedStation || selectedRoute || selectedTrain || selectedAirTrackId || selectedAirport || selectedRoad || selectedCategory || airCategorySelected || roadCategorySelected ? ' has-selection' : ''}`}
+      className={`experience view-${pulseHub ? 'hub' : 'network'} london-experience${pulseHub ? ' is-pulse-study' : ''}${pulseHub && pulseNightMix > 0.5 ? ' is-pulse-night' : ''}${limitedChrome ? ' is-limited-chrome' : ''}${airEnabled ? ' has-air-layer' : ''}${airCategorySelected ? ' has-air-category' : ''}${selectedAirport ? ' has-airport-selection' : ''}${roadEnabled ? ' has-road-layer' : ''}${roadCategorySelected ? ' has-road-category' : ''}${surfaceEnabled ? ' has-surface-layer' : ''}${selectedStation || selectedRoute || selectedTrain || selectedAirTrackId || selectedAirport || selectedRoad || selectedCategory || airCategorySelected || roadCategorySelected ? ' has-selection' : ''}`}
       data-limited-chrome={limitedChrome}
       data-spatial-layout={layout}
       data-study-window={studyWindow}
@@ -1051,6 +1077,8 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
       data-selected-airport={selectedAirport?.id}
       data-selected-road={selectedRoad?.id}
       data-surface-enabled={surfaceEnabled}
+      data-pulse-lens={pulseHub ? pulseLens : undefined}
+      data-pulse-night={pulseHub ? pulseNightMix.toFixed(2) : undefined}
     >
       <div className="scene" aria-hidden={webglAvailable ? true : undefined}>
         <Suspense fallback={null}>
@@ -1071,6 +1099,7 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
               playbackRate={playbackRate}
               selectedCategory={selectedCategory}
               showTaktOverlay
+              nightMix={pulseNightMix}
             />
           ) : network ? (
             <NationalNetworkScene
@@ -1356,22 +1385,40 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
         aria-live="polite"
       >
         {pulseHub && (
-          <label className="london-pulse-picker">
-            <span>Interchange</span>
-            <select
-              aria-label="Pulse interchange"
-              value={pulseHub.id}
-              onChange={(event) =>
-                setPulseHubId(event.target.value as LondonHubId)
-              }
-            >
-              {LONDON_HUBS.map((hub) => (
-                <option key={hub.id} value={hub.id}>
-                  {hub.displayName}
-                </option>
+          <>
+            <label className="london-pulse-picker">
+              <span>{pulseNightMix > 0.5 ? 'Night signal' : 'Interchange'}</span>
+              <select
+                aria-label="Pulse interchange"
+                value={pulseHub.id}
+                onChange={(event) => {
+                  setPulseLens('all')
+                  setPulseHubId(event.target.value as LondonHubId)
+                }}
+              >
+                {LONDON_HUBS.map((hub) => (
+                  <option key={hub.id} value={hub.id}>
+                    {hub.displayName}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <div className="london-pulse-lenses" role="group" aria-label="Pulse flow lens">
+              {(['all', 'radial', 'orbital'] as const).map((lens) => (
+                <button
+                  key={lens}
+                  type="button"
+                  aria-label={`${lens} movements`}
+                  aria-pressed={pulseLens === lens}
+                  disabled={pulseSummary[lens] === 0}
+                  onClick={() => setPulseLens(lens)}
+                >
+                  <span>{lens}</span>
+                  <small>{pulseSummary[lens].toLocaleString('en-GB')}</small>
+                </button>
               ))}
-            </select>
-          </label>
+            </div>
+          </>
         )}
         {loadError ? (
           <p>Opening study unavailable.</p>
@@ -1393,7 +1440,7 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
                     ? activeAircraftCount.toLocaleString('en-GB')
                     : activeTrainCount.toLocaleString('en-GB')}
               </strong>
-              <span>{pulseHub ? 'movements in orbit' : selectedRoad ? 'motorway selected' : roadCategorySelected ? 'vehicles reconstructed' : selectedAirport ? 'airport movements' : selectedAirIndexEntry || airCategorySelected ? 'aircraft observed' : surfaceEnabled ? 'vehicles in motion' : 'trains in motion'}</span>
+              <span>{pulseHub ? pulseLens === 'all' ? 'movements in orbit' : `${pulseLens} movements` : selectedRoad ? 'motorway selected' : roadCategorySelected ? 'vehicles reconstructed' : selectedAirport ? 'airport movements' : selectedAirIndexEntry || airCategorySelected ? 'aircraft observed' : surfaceEnabled ? 'vehicles in motion' : 'trains in motion'}</span>
             </div>
             <p>
               {pulseHub
@@ -1404,17 +1451,17 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
                   ? 'London motorway flow'
               : selectedAirport
                 ? selectedAirport.name
-                : selectedAirPosition
-                ? `Heading ${Math.round(selectedAirPosition.headingDegrees).toString().padStart(3, '0')}°`
+                : selectedAirTelemetry
+                ? `Heading ${Math.round(selectedAirTelemetry.headingDegrees).toString().padStart(3, '0')}°`
                 : selectedStation?.name ?? selectedRoute?.name ?? (selectedTrain ? `${selectedTrain.route} ${selectedTrain.shortName}` : airCategorySelected ? 'Observed London airspace' : studyWindow === 'day' ? '24-hour lattice' : 'Morning lattice')}
             </p>
             <small>
               {pulseHub
-                ? `${pulseHub.character} · ${pulseCalls.length.toLocaleString('en-GB')} calls in the loaded study`
+                ? `${pulseHub.character} · ${pulseCalls.length.toLocaleString('en-GB')} ${pulseLens === 'all' ? '' : `${pulseLens} `}calls in the loaded study`
                 : selectedRoad || roadCategorySelected
                 ? selectedDescription ?? `${reconstructedRoadVehicleCount.toLocaleString('en-GB')} reconstructed at ${formatServiceTime(time)} · observed ${roadObservationDate}`
-                : selectedAirPosition
-                ? `${Math.round(selectedAirPosition.altitudeFeet / 100) * 100} ft · ${Math.round(selectedAirPosition.groundSpeedKnots)} kt · ${selectedDescription}`
+                : selectedAirTelemetry
+                ? `${Math.round(selectedAirTelemetry.altitudeFeet / 100) * 100} ft · ${Math.round(selectedAirTelemetry.groundSpeedKnots)} kt · ${selectedDescription}`
                 : selectedDescription ?? (airCategorySelected ? `${activeAircraftCount.toLocaleString('en-GB')} active at ${formatServiceTime(time)}` : `${scheduledJourneyCount?.toLocaleString('en-GB')} scheduled journeys`)}
             </small>
             {pulseHub && upcomingPulseCall && (

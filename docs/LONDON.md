@@ -183,7 +183,7 @@ Sources:
 - [x] Add `D` / `G` keyboard shortcuts for the layout switch without allowing them to escape from the search field.
 - [x] Include reduced-motion layout switching in the desktop and iPhone browser matrix.
 - [x] Create the first shared-clock pulse study for four contrasting interchanges rather than simply ranking the largest stations.
-- Explore radial versus orbital pulse views and night-service transitions.
+- [x] Add geometry-derived **ALL / RADIAL / ORBITAL** pulse lenses, opposing arrival/departure flow signals and a shared-clock night transition.
 
 ### LDN 3 — Surface city
 
