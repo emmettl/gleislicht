@@ -2,9 +2,22 @@
 
 **A London motion study**
 
+*London, geographically and otherwise.*
+
 **All Change** is unmistakably London railway language: an instruction, a description of constant interchange, and a slightly ominous title for a glowing city after dark. It also names what is happening technically—the instrument is changing shape as it becomes capable of another place.
 
 London is the next Motion Studies work because its transport system offers a useful inversion of Switzerland: an intensely layered metropolitan network whose identity comes from interchange, radial pressure, orbital lines and the River Thames rather than a national clockface and Alpine geography.
+
+## Thesis: two simultaneous Londons
+
+The edition is not merely transport moving around London. Its subject is the gap between two equally real conceptions of the city:
+
+- the **physical city** of crooked tracks, uneven distances, tunnels, the Thames and actual geography; and
+- the **mental city** of Beck-space, where station order and interchange matter while distance politely lies.
+
+Every train remains the same journey while the city changes underneath it. A service approaching King's Cross does not cut, restart or become a diagrammatic substitute: miles collapse around its unchanged route progress until the crooked physical railway resolves into a legible connection.
+
+This makes the title operate on three levels: interchange, movement and the map literally changing its conception of space. The transformation is therefore not an optional display convenience; it is All Change's defining authored study.
 
 ## First study
 
@@ -23,6 +36,8 @@ The first authored moment should show trains converging across central London wh
 London should be legible in two coordinate systems. **GEOGRAPHY** shows the physical city: real track geometry, distances, the Greater London boundary and the Thames. **DIAGRAM** is an independently authored, Beck-inspired topological composition: station order, interchange and line relationships take precedence over distance and bearing. It must evoke London's diagrammatic tradition without reproducing TfL's current map artwork.
 
 The switch is a continuous transformation, not a scene change. The clock, active vehicles, search result, selected service or station, label policy and playback state must survive it. Water and boundary geography recede as the diagram becomes dominant; interchange structure and restrained line identity become clearer. The Thames may remain as a simplified orienting stroke because it is meaningful in both Londons.
+
+The transition should be theatrical but intelligible. Terrain flattens, the Thames simplifies, stations settle onto an octilinear grid, curves resolve into horizontal, vertical and 45-degree runs, and labels rotate into their diagram positions. The camera moves from geographic perspective toward a near-orthographic diagram view. Each gesture must explain the changing spatial model; spectacle follows from that explanation rather than covering it.
 
 ### Runtime model
 
@@ -132,4 +147,4 @@ Sources:
 
 ## Exit criterion
 
-All Change must feel like another work made with the same instrument—not Gleislicht with different filenames, and not a generic dark-mode transport dashboard.
+All Change must feel like another work made with the same instrument—not Gleislicht with different filenames, and not a generic dark-mode transport dashboard. Its signature image is a living London changing between physical and mental space without interrupting a single journey.
