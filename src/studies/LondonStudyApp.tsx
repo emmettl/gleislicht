@@ -49,6 +49,7 @@ import {
   dayChunkForTime,
   networkSnapshotForDayChunk,
 } from '../domain/network-day.ts'
+import { mergeNetworkLayers } from '../domain/network-layers.ts'
 import { reconstructedNationalVehicleCount } from '../domain/road-day.ts'
 import type { RoadTopologySnapshot } from '../domain/road.ts'
 import {
@@ -131,6 +132,8 @@ const LONDON_CATEGORIES: readonly {
     detail: 'Cross-city and orbital rail',
   },
   { id: 'tram', label: 'Tramlink', detail: 'South London tram services' },
+  { id: 'ferry', label: 'River', detail: 'Scheduled Thames river services' },
+  { id: 'cableway', label: 'Cable', detail: 'London Cable Car cabins' },
 ]
 
 type SearchChoice =
@@ -280,6 +283,9 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
   const [selectedRoad, setSelectedRoad] = useState<LondonMotorway>()
   const [roadTopology, setRoadTopology] = useState<RoadTopologySnapshot>()
   const [roadLoadError, setRoadLoadError] = useState(false)
+  const [surfaceEnabled, setSurfaceEnabled] = useState(false)
+  const [surfaceNetwork, setSurfaceNetwork] = useState<NetworkSnapshot>()
+  const [surfaceLoadError, setSurfaceLoadError] = useState(false)
   const [trainLabelMode, setTrainLabelMode] = useState<TrainLabelMode>('auto')
   const [limitedChrome, setLimitedChrome] = useState(false)
   const [pulseHubId, setPulseHubId] = useState<LondonHubId>()
@@ -346,13 +352,25 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
     ? dayChunks[dayChunkDescriptor.id]
     : undefined
   const dayLoading = studyWindow === 'day' && !dayError && !activeDayChunk
-  const network = useMemo(
+  const baseNetwork = useMemo(
     () =>
       studyWindow === 'day' && dayManifest
         ? networkSnapshotForDayChunk(dayManifest, activeDayChunk)
         : morningNetwork,
     [activeDayChunk, dayManifest, morningNetwork, studyWindow],
   )
+  const network = useMemo(() => {
+    if (
+      !baseNetwork ||
+      !surfaceEnabled ||
+      !surfaceNetwork ||
+      baseNetwork.metadata.windowStart !== surfaceNetwork.metadata.windowStart ||
+      baseNetwork.metadata.windowEnd !== surfaceNetwork.metadata.windowEnd
+    ) {
+      return baseNetwork
+    }
+    return mergeNetworkLayers([baseNetwork, surfaceNetwork])
+  }, [baseNetwork, surfaceEnabled, surfaceNetwork])
   const pulseHub = pulseHubId
     ? LONDON_HUBS.find((hub) => hub.id === pulseHubId)
     : undefined
@@ -464,6 +482,25 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
       })
     return () => controller.abort()
   }, [edition.data.road.topology, roadEnabled, roadTopology])
+
+  useEffect(() => {
+    if (!surfaceEnabled || surfaceNetwork) return
+    const controller = new AbortController()
+    fetch(editionDataUrl(edition.data.surface.day), {
+      signal: controller.signal,
+    })
+      .then((response) => {
+        if (!response.ok) throw new Error(`Surface study returned ${response.status}`)
+        return response.json() as Promise<NetworkSnapshot>
+      })
+      .then(setSurfaceNetwork)
+      .catch((error: unknown) => {
+        if (error instanceof DOMException && error.name === 'AbortError') return
+        console.error('Unable to load the All Change surface study', error)
+        setSurfaceLoadError(true)
+      })
+    return () => controller.abort()
+  }, [edition.data.surface.day, surfaceEnabled, surfaceNetwork])
 
   const animateLayout = useCallback((target: number) => {
     cancelAnimationFrame(layoutFrameRef.current)
@@ -644,6 +681,10 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
     !roadDay.error &&
     !roadDay.unavailable &&
     (!roadTopology || roadDay.loading)
+  const surfaceLoading =
+    surfaceEnabled &&
+    !surfaceLoadError &&
+    (!surfaceNetwork || studyWindow !== 'day' || !dayManifest || !activeDayChunk)
   const roadObservationDate = formatStudyDate(
     roadDay.manifest?.metadata.serviceDate,
   )
@@ -733,6 +774,7 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
       setDayError(false)
       setStudyWindow(nextWindow)
       if (nextWindow === 'morning') {
+        setSurfaceEnabled(false)
         setTime(edition.defaultNetworkTime)
       }
     },
@@ -904,6 +946,19 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
     activateLayout('geographic')
   }, [activateLayout, clearSelection, roadEnabled])
 
+  const toggleSurfaceLayer = useCallback(() => {
+    clearSelection()
+    if (surfaceEnabled) {
+      setSurfaceEnabled(false)
+      return
+    }
+    setSurfaceLoadError(false)
+    setDayError(false)
+    setStudyWindow('day')
+    setSurfaceEnabled(true)
+    activateLayout('geographic')
+  }, [activateLayout, clearSelection, surfaceEnabled])
+
   const onSearchKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
     event.stopPropagation()
     if (event.key === 'ArrowDown') {
@@ -932,6 +987,7 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
       } else if (event.key.toLowerCase() === 'l') {
         setTrainLabelMode((value) => LABEL_MODES[value])
       } else if (event.key.toLowerCase() === 'd') {
+        if (surfaceEnabled) return
         const diagram = edition.data.opening.layouts.find(
           (option) => option.id === 'diagram',
         )
@@ -962,6 +1018,7 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
     edition.data.opening.layouts,
     limitedChrome,
     pulseHubId,
+    surfaceEnabled,
   ])
 
   const selectedDescription = selectedStation
@@ -979,12 +1036,12 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
               : undefined
   const scheduledJourneyCount =
     studyWindow === 'day' && dayManifest
-      ? dayManifest.tripCount
+      ? dayManifest.tripCount + (surfaceEnabled ? (surfaceNetwork?.trains.length ?? 0) : 0)
       : network?.trains.length
 
   return (
     <main
-      className={`experience view-${pulseHub ? 'hub' : 'network'} london-experience${pulseHub ? ' is-pulse-study' : ''}${limitedChrome ? ' is-limited-chrome' : ''}${airEnabled ? ' has-air-layer' : ''}${airCategorySelected ? ' has-air-category' : ''}${selectedAirport ? ' has-airport-selection' : ''}${roadEnabled ? ' has-road-layer' : ''}${roadCategorySelected ? ' has-road-category' : ''}${selectedStation || selectedRoute || selectedTrain || selectedAirTrackId || selectedAirport || selectedRoad || selectedCategory || airCategorySelected || roadCategorySelected ? ' has-selection' : ''}`}
+      className={`experience view-${pulseHub ? 'hub' : 'network'} london-experience${pulseHub ? ' is-pulse-study' : ''}${limitedChrome ? ' is-limited-chrome' : ''}${airEnabled ? ' has-air-layer' : ''}${airCategorySelected ? ' has-air-category' : ''}${selectedAirport ? ' has-airport-selection' : ''}${roadEnabled ? ' has-road-layer' : ''}${roadCategorySelected ? ' has-road-category' : ''}${surfaceEnabled ? ' has-surface-layer' : ''}${selectedStation || selectedRoute || selectedTrain || selectedAirTrackId || selectedAirport || selectedRoad || selectedCategory || airCategorySelected || roadCategorySelected ? ' has-selection' : ''}`}
       data-limited-chrome={limitedChrome}
       data-spatial-layout={layout}
       data-study-window={studyWindow}
@@ -993,6 +1050,7 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
       data-layout-transitioning={layoutTransitioning}
       data-selected-airport={selectedAirport?.id}
       data-selected-road={selectedRoad?.id}
+      data-surface-enabled={surfaceEnabled}
     >
       <div className="scene" aria-hidden={webglAvailable ? true : undefined}>
         <Suspense fallback={null}>
@@ -1064,7 +1122,7 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
         <div className="london-study-mark">
           <span>{edition.identity.descriptor}</span>
           <small>
-            Rail study · {studyWindow === 'day' ? '24-hour Friday' : '06:45–08:45'}
+            {surfaceEnabled ? 'Rail + surface' : 'Rail'} study · {studyWindow === 'day' ? '24-hour Friday' : '06:45–08:45'}
           </small>
         </div>
       </header>
@@ -1072,7 +1130,8 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
       <section className="london-layout-switch" aria-label="Spatial layout">
         {edition.data.opening.layouts.map((option) => {
           const artifact = 'artifact' in option ? option.artifact : undefined
-          const available = option.id === 'geographic' || Boolean(artifact)
+          const available =
+            option.id === 'geographic' || (Boolean(artifact) && !surfaceEnabled)
           const loading = option.id === 'diagram' && layoutLoading
           return (
             <button
@@ -1158,6 +1217,18 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
           <span className="london-mobile-label">≋</span>
           {roadLoading && <small>Loading</small>}
         </button>
+        <button
+          className="london-surface-toggle"
+          type="button"
+          aria-label={surfaceEnabled ? 'Hide River Bus and cable car' : 'Show River Bus and cable car'}
+          aria-pressed={surfaceEnabled}
+          aria-busy={surfaceLoading}
+          onClick={toggleSurfaceLayer}
+        >
+          <span className="london-wide-label">Surface</span>
+          <span className="london-mobile-label">≈</span>
+          {surfaceLoading && <small>Loading</small>}
+        </button>
         {layoutError && (
           <span className="london-layout-status" role="status">
             Diagram unavailable
@@ -1178,6 +1249,11 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
             Road study unavailable
           </span>
         )}
+        {surfaceLoadError && (
+          <span className="london-surface-status" role="status">
+            Surface study unavailable
+          </span>
+        )}
       </section>
 
       <section className="london-search train-search">
@@ -1196,7 +1272,7 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
             <input
               type="search"
               value={query}
-              placeholder={airEnabled ? "Find Heathrow, M25, DLR, or flight" : "Find King's Cross, Heathrow, M25, or DLR"}
+              placeholder={surfaceEnabled ? 'Find RB6, Canary Wharf, or cable car' : airEnabled ? "Find Heathrow, M25, DLR, or flight" : "Find King's Cross, Heathrow, M25, or DLR"}
               autoComplete="off"
               aria-controls="london-search-results"
               aria-expanded={searchOpen && choices.length > 0}
@@ -1317,7 +1393,7 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
                     ? activeAircraftCount.toLocaleString('en-GB')
                     : activeTrainCount.toLocaleString('en-GB')}
               </strong>
-              <span>{pulseHub ? 'movements in orbit' : selectedRoad ? 'motorway selected' : roadCategorySelected ? 'vehicles reconstructed' : selectedAirport ? 'airport movements' : selectedAirIndexEntry || airCategorySelected ? 'aircraft observed' : 'trains in motion'}</span>
+              <span>{pulseHub ? 'movements in orbit' : selectedRoad ? 'motorway selected' : roadCategorySelected ? 'vehicles reconstructed' : selectedAirport ? 'airport movements' : selectedAirIndexEntry || airCategorySelected ? 'aircraft observed' : surfaceEnabled ? 'vehicles in motion' : 'trains in motion'}</span>
             </div>
             <p>
               {pulseHub

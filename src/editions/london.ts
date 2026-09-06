@@ -75,6 +75,9 @@ export interface LondonDataCatalog extends EditionDataCatalog {
     readonly topology: string
     readonly dayManifest: string
   }
+  readonly surface: {
+    readonly day: string
+  }
 }
 
 export type LondonEdition = MotionStudyEdition<LondonDataCatalog> & {
@@ -118,6 +121,9 @@ export const LONDON_EDITION: LondonEdition = {
     road: {
       topology: 'all-change-road-topology.json',
       dayManifest: 'all-change-road-day-manifest.json',
+    },
+    surface: {
+      day: 'all-change-surface-day.json',
     },
   },
 }

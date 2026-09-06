@@ -7,6 +7,7 @@ import type {
 export interface HubDefinition<HubId extends string = string> {
   readonly id: HubId
   readonly name: string
+  readonly aliases?: readonly string[]
   readonly displayName: string
   readonly character: string
 }
@@ -91,9 +92,10 @@ export function callsAtHub(
   snapshot: NetworkSnapshot,
   hub: HubDefinition,
 ): readonly HubCall[] {
+  const hubNames = new Set([hub.name, ...(hub.aliases ?? [])])
   const hubStopIndexes = new Set<number>()
   snapshot.stops.forEach((stop, index) => {
-    if (stop[2] === hub.name) hubStopIndexes.add(index)
+    if (hubNames.has(stop[2])) hubStopIndexes.add(index)
   })
 
   const calls: HubCall[] = []

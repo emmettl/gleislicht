@@ -159,6 +159,7 @@ See [docs/AUTO.md](./docs/AUTO.md) for the data contract, reconstruction and rec
 - [x] Add an optional observed-aircraft layer for London with matching two-hour and progressively loaded 24-hour studies, searchable flight codes, airport approach/departure selection and category emphasis.
 - [x] Add an optional National Highways motorway study with real detector geometry, recorded flow/speed, progressive 24-hour loading, ROAD isolation and searchable corridor focus.
 - [x] Add the first London-specific interchange pulse study across four contrasting hubs.
+- [x] Add a separately loaded 24-hour London surface study for scheduled River Bus and cable-car movement.
 - [ ] Evaluate surface buses as separate borough or corridor studies.
 
 **Exit:** Gleislicht and All Change are independently authored Motion Studies, sharing runtime behaviour and visual grammar without sharing titles or place-specific assumptions.

@@ -83,6 +83,23 @@ describe('hub calls', () => {
     })
   })
 
+  it('includes explicitly declared station-name aliases', () => {
+    const aliasedSnapshot: NetworkSnapshot = {
+      ...snapshot,
+      stops: snapshot.stops.map((stop, index) =>
+        index === 2
+          ? [stop[0], stop[1], 'Zürich HB (Rail)', stop[3], stop[4]]
+          : stop,
+      ),
+    }
+
+    const calls = callsAtHub(aliasedSnapshot, {
+      ...TEST_HUB,
+      aliases: ['Zürich HB (Rail)'],
+    })
+    expect(calls).toHaveLength(2)
+  })
+
   it('selects the calls participating in the current pulse window', () => {
     const calls = callsAtHub(snapshot, TEST_HUB)
     expect(callsNearTime(calls, 900, 5 * 60).map((call) => call.id)).toEqual([

@@ -149,6 +149,34 @@ describe('TfL line adapter', () => {
     expect(snapshot.trains.some((train) => train.stops.some(([, arrival, departure]) => departure > arrival))).toBe(true)
   })
 
+  it('keeps the optional surface study mode-specific and renderable', async () => {
+    const snapshot = JSON.parse(
+      await readFile('fixtures/tfl/all-change-surface-day.json', 'utf8'),
+    )
+
+    expect(snapshot.metadata).toMatchObject({
+      publisher: 'Transport for London',
+      serviceDate: '2026-09-04',
+      windowStart: 0,
+      windowEnd: 86_400,
+      modes: expect.arrayContaining(['river-bus', 'cable-car']),
+    })
+    expect(snapshot.trains).toHaveLength(492)
+    expect(new Set(snapshot.trains.map(({ category }) => category))).toEqual(
+      new Set(['ferry', 'cableway']),
+    )
+    expect(snapshot.stops.some((stop) => stop[2] === 'Canary Wharf')).toBe(true)
+    expect(snapshot.stops.some((stop) => stop[2] === 'Royal Docks')).toBe(true)
+    expect(
+      snapshot.trains.every(
+        (train) =>
+          train.stops.length >= 2 &&
+          train.pathSegments.length === train.stops.length - 1 &&
+          train.pathSegments.every((pathIndex) => snapshot.paths[pathIndex]),
+      ),
+    ).toBe(true)
+  })
+
   it('matches limited-stop journeys as ordered branch subsequences', () => {
     const limitedStopTimetable = structuredClone(timetable)
     limitedStopTimetable.stops.push({ id: 'D', name: 'Delta Underground Station', lon: -0.135, lat: 51.515 })

@@ -67,7 +67,7 @@ The first prototype should cover the complete rail-led morning lattice rather th
 - deterministic geometry and label results for recording and scrubbing;
 - a reversible keyboard- and touch-accessible **GEOGRAPHY / DIAGRAM** control;
 - a reduced-motion path that changes layout without a sweeping animation; and
-- mobile frame time and artifact size included in the London-specific performance gates. The iPhone browser matrix rejects a diagram that cannot deliver at least 18 animation frames in 1.8 seconds or whose 95th-percentile frame interval exceeds 125 ms; the deliberately broad threshold catches gross regressions without pretending hosted software WebGL is a device benchmark.
+- mobile frame time and artifact size included in the London-specific performance gates. The local iPhone browser matrix requires at least 18 animation frames in 1.8 seconds with a 95th-percentile interval below 125 ms. Hosted CI uses a 12-frame / 175 ms liveness floor because its headless WebKit software renderer is not a physical-device benchmark.
 
 ## Adapter proofs
 
@@ -115,6 +115,12 @@ The optional **ROAD** study reconstructs traffic on the M1, M3, M4, M11, M23, M2
 The first full-day artifact records Friday 5 September 2025, a comparable historical weekday because observations for the railway study's future 2026 date do not yet exist. The compiler samples 304 active mainline detector directions at roughly one-kilometre spacing on radial roads and two-kilometre spacing around the M25. It joins them into 292 directional motorway sections and preserves all 96 quarter-hour WebTRIS observations with complete selected-site coverage. This date remains visible in the selection card so the composition never implies that the road and rail layers are contemporaneous observations.
 
 Topology, a small manifest and four six-hour motion chunks are fetched only after ROAD is enabled. The complete optional study is about 222 KiB compressed; the largest motion chunk is about 43 KiB. `npm run data:london:roads` deterministically rebuilds the artifacts from the official site inventory and daily-report API, while the London payload gate validates coverage, time sequence and size. The methodology remains explicit: **traffic-flow reconstruction / no vehicle tracking**.
+
+## SURFACE — Thames crossings
+
+The optional **SURFACE** study adds the three currently advertised scheduled River Bus lines—RB1, RB4 and RB6—and London Cable Car in both directions. It is a physical-map layer, so enabling it enters the 24-hour Friday study and keeps the current clock while diagram mode rests. RB4 and RB6 are already visible during the morning opening; RB1 and the cable car begin later according to the published timetable.
+
+The 492-journey artifact contains 26 source-identified stops and 77 route-path segments, and is about 21 KiB compressed. It stays outside the opening request graph. River and cable movements retain separate `ferry` and `cableway` categories, remain searchable by route or stop, and can be isolated through the same legend policy as rail. `npm run data:london:surface` rebuilds the file from TfL route sequences and Journey Planner timetables; the compiler records source hashes and states that positions are scheduled interpolation rather than observed craft or cabin telemetry.
 
 ## Data strategy
 
@@ -182,7 +188,7 @@ Sources:
 ### LDN 3 — Surface city
 
 - Add buses as separately loaded borough or corridor studies; never ship the complete bus network in the opening scene.
-- Add River Bus and cable-car movement where they add geographic meaning.
+- [x] Add a separately loaded 24-hour River Bus and cable-car study where the Thames and east-London crossing add geographic meaning.
 - Consider a deliberate central-London contrast between subterranean rail and street-level flow.
 
 ### LDN 4 — Observed London

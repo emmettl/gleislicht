@@ -26,6 +26,7 @@ const BUDGETS = {
   roadManifestGzip: 8 * 1024,
   roadChunkGzip: 50 * 1024,
   roadDayTotalGzip: 250 * 1024,
+  surfaceGzip: 32 * 1024,
 }
 
 const networkBytes = await readFile(
@@ -203,6 +204,32 @@ if (
   dayTotalGzip > BUDGETS.dayTotalGzip
 ) {
   throw new Error('London progressive day budget exceeded')
+}
+
+const surfaceBytes = await readFile(
+  resolve('fixtures/tfl/all-change-surface-day.json'),
+)
+const surface = JSON.parse(surfaceBytes.toString('utf8'))
+const surfaceCategories = new Set(surface.trains.map(({ category }) => category))
+if (
+  surface.metadata?.windowStart !== 0 ||
+  surface.metadata?.windowEnd !== 86_400 ||
+  surface.metadata?.serviceDate !== dayManifest.metadata?.serviceDate ||
+  !surfaceCategories.has('ferry') ||
+  !surfaceCategories.has('cableway') ||
+  surface.metadata?.modes?.some(
+    (mode) => mode !== 'river-bus' && mode !== 'cable-car',
+  )
+) {
+  throw new Error('London surface study violates its 24-hour mode contract')
+}
+const surfaceGzip = gzipSync(surfaceBytes, { level: 9 }).byteLength
+console.log('All Change optional surface-study budget:')
+console.log(
+  `  full day   ${kibibytes(surfaceGzip)} / ${kibibytes(BUDGETS.surfaceGzip)}`,
+)
+if (surfaceGzip > BUDGETS.surfaceGzip) {
+  throw new Error('London optional surface-study budget exceeded')
 }
 
 const airMorningBytes = await readFile(

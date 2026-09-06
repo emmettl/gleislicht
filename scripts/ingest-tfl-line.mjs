@@ -181,7 +181,10 @@ export function boundsFor(stops) {
 }
 
 export function cleanStationName(name) {
-  return name.replace(/ (?:Underground Station|DLR Station|Rail Station|Tram Stop|London Overground Station)$/, '')
+  return name.replace(
+    / (?:Underground Station|DLR Station|Rail Station|Tram Stop|London Overground Station|Pier)$/,
+    '',
+  )
 }
 
 export function sourceSha256(value) {
@@ -436,6 +439,8 @@ function matchBranch(routeSequence, journeyStopIds) {
 
 function categoryForMode(mode) {
   if (mode === 'tram') return 'tram'
+  if (mode === 'river-bus') return 'ferry'
+  if (mode === 'cable-car') return 'cableway'
   if (mode === 'elizabeth-line' || mode === 'overground') return 'rail'
   return 'metro'
 }

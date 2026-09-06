@@ -100,6 +100,10 @@ const artifacts = [
     source: 'fixtures/tfl/all-change-day-manifest.json',
     destination: 'public/data/all-change-day-manifest.json',
   },
+  {
+    source: 'fixtures/tfl/all-change-surface-day.json',
+    destination: 'public/data/all-change-surface-day.json',
+  },
   ...londonDayManifest.chunks.map(({ path }) => ({
     source: `fixtures/tfl/${path}`,
     destination: `public/data/${path}`,

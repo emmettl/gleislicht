@@ -28,12 +28,42 @@ test('boots as a separate edition without loading Swiss network data', async ({
   expect(resources.some((url) => url.includes('all-change-diagram.json'))).toBe(false)
   expect(resources.some((url) => url.includes('all-change-air-'))).toBe(false)
   expect(resources.some((url) => url.includes('all-change-road-'))).toBe(false)
+  expect(resources.some((url) => url.includes('all-change-surface-'))).toBe(false)
   expect(resources.some((url) => url.includes('swiss-rail-morning.json'))).toBe(false)
 
   await expect(page.locator('.london-status-card')).toContainText('trains in motion')
   await expect(page.locator('.london-transport')).toContainText('06:45')
   await expect(page.locator('.london-transport')).toContainText('08:45')
   await expect(page.getByRole('button', { name: /Diagram/ })).toBeEnabled()
+})
+
+test('River Bus and cable car load as a separate 24-hour surface study', async ({
+  page,
+}) => {
+  const surfaceResponse = page.waitForResponse((response) =>
+    response.url().includes('all-change-surface-day.json'),
+  )
+  await page.getByRole('button', { name: 'Show River Bus and cable car' }).click()
+  expect((await surfaceResponse).ok()).toBe(true)
+
+  const experience = page.locator('.london-experience')
+  await expect(experience).toHaveAttribute('data-study-window', 'day')
+  await expect(experience).toHaveAttribute('data-surface-enabled', 'true')
+  await expect(page.getByRole('button', { name: 'Diagram layout' })).toBeDisabled()
+  await expect(page.getByRole('button', { name: 'River', exact: true })).toBeVisible()
+  await expect(page.getByRole('button', { name: 'Cable', exact: true })).toBeVisible()
+  await expect(page.locator('.london-status-card')).toContainText('vehicles in motion')
+
+  const search = page.getByRole('searchbox', {
+    name: 'Find a London station, line, service, airport, flight or motorway',
+  })
+  await search.fill('RB6')
+  await expect(page.getByRole('option', { name: /RB6/ }).first()).toBeVisible()
+
+  await page.getByRole('button', { name: 'Morning study' }).click()
+  await expect(experience).toHaveAttribute('data-study-window', 'morning')
+  await expect(experience).toHaveAttribute('data-surface-enabled', 'false')
+  await expect(page.getByRole('button', { name: 'Diagram layout' })).toBeEnabled()
 })
 
 test('station search selects and reveals a London interchange', async ({ page }) => {
@@ -231,6 +261,8 @@ test('observed aircraft load lazily, join category emphasis and are searchable b
   await category.click()
   await expect(experience).toHaveClass(/has-air-category/)
   await expect(page.locator('.london-status-card')).toContainText('aircraft observed')
+  await page.getByRole('button', { name: 'Pause motion' }).click()
+  await expect(page.getByRole('button', { name: 'Resume motion' })).toBeVisible()
 
   const search = page.getByRole('searchbox', {
     name: 'Find a London station, line, service, airport, flight or motorway',

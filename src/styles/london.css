@@ -126,7 +126,8 @@
 
 .london-day-status,
 .london-air-status,
-.london-road-status {
+.london-road-status,
+.london-surface-status {
   position: absolute;
   top: calc(100% + 6px);
   right: 0;
@@ -156,6 +157,16 @@
   animation: london-road-breathe 1.1s ease-in-out infinite alternate;
 }
 
+.london-surface-toggle[aria-pressed='true'] {
+  border-color: rgba(118, 208, 189, 0.62) !important;
+  color: #bdfdf0 !important;
+  box-shadow: inset 0 -2px 0 #76d0bd, 0 0 18px rgba(118, 208, 189, 0.14) !important;
+}
+
+.london-surface-toggle[aria-busy='true'] {
+  animation: london-surface-breathe 1.1s ease-in-out infinite alternate;
+}
+
 @keyframes london-road-breathe {
   to {
     color: #ffbd82;
@@ -167,6 +178,13 @@
   to {
     color: var(--pink);
     text-shadow: 0 0 10px rgba(255, 99, 207, 0.72);
+  }
+}
+
+@keyframes london-surface-breathe {
+  to {
+    color: #bdfdf0;
+    text-shadow: 0 0 10px rgba(118, 208, 189, 0.72);
   }
 }
 
@@ -519,6 +537,15 @@
     display: none;
   }
 
+  .london-experience[data-spatial-layout='geographic']
+    .london-layout-switch
+    button[aria-label='Geography layout'],
+  .london-experience[data-spatial-layout='diagram']
+    .london-layout-switch
+    button[aria-label='Diagram layout'] {
+    display: none;
+  }
+
   .london-search.train-search {
     top: calc(66px + env(safe-area-inset-top));
     right: calc(12px + env(safe-area-inset-right));
@@ -717,6 +744,10 @@
   }
 
   .london-road-toggle[aria-busy='true'] {
+    animation: none;
+  }
+
+  .london-surface-toggle[aria-busy='true'] {
     animation: none;
   }
 

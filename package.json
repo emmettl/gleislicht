@@ -73,6 +73,7 @@
     "data:london:catalogue": "node scripts/ingest-tfl-rail-catalogue.mjs",
     "data:london:airports": "node scripts/enrich-airport-associations.mjs",
     "data:london:roads": "node scripts/compile-webtris-london-study.mjs",
+    "data:london:surface": "node scripts/compile-tfl-surface-study.mjs",
     "data:new-york:proof": "node scripts/ingest-mta-lexington-proof.mjs",
     "data:new-york:geography": "node scripts/compile-new-york-geography.mjs",
     "data:new-york:diagram": "node scripts/compile-new-york-diagram.mjs",

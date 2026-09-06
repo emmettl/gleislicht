@@ -25,6 +25,7 @@ export const LONDON_HUBS: readonly HubDefinition<LondonHubId>[] = [
   {
     id: 'stratford',
     name: 'Stratford',
+    aliases: ['Stratford (London)'],
     displayName: 'Stratford',
     character: 'orbital meeting radial',
   },
