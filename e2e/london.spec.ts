@@ -81,6 +81,8 @@ test('the complete Friday loads progressively without changing the opening paylo
   await expect(page.locator('.london-transport')).toContainText('24:00')
   await expect(page.locator('.london-status-card')).toContainText('10,455 scheduled journeys')
 
+  await page.getByRole('button', { name: 'Pause motion' }).click()
+  await expect(page.getByRole('button', { name: 'Resume motion' })).toBeVisible()
   const eveningChunkResponse = page.waitForResponse((response) =>
     response.url().includes('all-change-day-chunks/18-20.json'),
   )
