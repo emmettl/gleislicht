@@ -326,6 +326,85 @@
   box-shadow: 0 0 13px rgba(155, 121, 255, 0.85);
 }
 
+.paris-layer-menu {
+  position: absolute;
+  bottom: clamp(204px, 25vh, 255px);
+  left: 50%;
+  z-index: 8;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  width: min(540px, calc(100% - 40px));
+  transform: translateX(-50%);
+  border: 1px solid rgba(225, 193, 255, 0.24);
+  background: rgba(11, 5, 18, 0.94);
+  backdrop-filter: blur(20px);
+}
+
+.paris-layer-menu button {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 10px;
+  align-items: center;
+  min-height: 58px;
+  padding: 10px 13px;
+  border: 0;
+  border-right: 1px solid rgba(225, 193, 255, 0.14);
+  background: transparent;
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+}
+
+.paris-layer-menu button:last-child {
+  border-right: 0;
+}
+
+.paris-layer-menu button[aria-pressed='true'] {
+  background: rgba(244, 207, 85, 0.12);
+  box-shadow: inset 0 -2px 0 var(--cyan);
+}
+
+.paris-layer-menu i {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.paris-layer-menu i.central-cross {
+  background: linear-gradient(135deg, #d86bc7 0 32%, #9b79ff 33% 65%, #65b5ff 66%);
+  box-shadow: 0 0 12px rgba(155, 121, 255, 0.8);
+}
+
+.paris-layer-menu i.regional-rer {
+  background: linear-gradient(135deg, #ffd85e 0 32%, #55cf9b 33% 65%, #d86fcb 66%);
+  box-shadow: 0 0 12px rgba(85, 207, 155, 0.72);
+}
+
+.paris-layer-menu span {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+}
+
+.paris-layer-menu strong,
+.paris-layer-menu small {
+  overflow: hidden;
+  font-family: 'DM Mono', ui-monospace, monospace;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.paris-layer-menu strong {
+  font-size: 0.62rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.paris-layer-menu small {
+  color: var(--muted);
+  font-size: 0.48rem;
+}
+
 .paris-routes .paris-connection-button i {
   border: 1px solid var(--cyan);
   background: transparent;
@@ -444,6 +523,7 @@
 .correspondances-experience.is-limited-chrome .paris-search,
 .correspondances-experience.is-limited-chrome .paris-status,
 .correspondances-experience.is-limited-chrome .paris-routes,
+.correspondances-experience.is-limited-chrome .paris-layer-menu,
 .correspondances-experience.is-limited-chrome .paris-map-tools,
 .correspondances-experience.is-limited-chrome .paris-footer {
   display: none;
@@ -554,6 +634,27 @@
 
   .paris-routes button i {
     grid-row: auto;
+  }
+
+  .paris-layer-menu {
+    right: 12px;
+    bottom: calc(164px + env(safe-area-inset-bottom));
+    left: 12px;
+    width: auto;
+    transform: none;
+  }
+
+  .paris-layer-menu button {
+    min-height: 52px;
+    padding: 8px 10px;
+  }
+
+  .paris-layer-menu strong {
+    font-size: 0.52rem;
+  }
+
+  .paris-layer-menu small {
+    font-size: 0.42rem;
   }
 
   .paris-transport {

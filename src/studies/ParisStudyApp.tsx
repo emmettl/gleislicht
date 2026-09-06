@@ -230,6 +230,11 @@ export function ParisStudyApp({ edition }: { readonly edition: ParisEdition }) {
   const [centralCrossEnabled, setCentralCrossEnabled] = useState(false)
   const [centralCrossLoading, setCentralCrossLoading] = useState(false)
   const [centralCrossError, setCentralCrossError] = useState(false)
+  const [regionalRerNetwork, setRegionalRerNetwork] = useState<NetworkSnapshot>()
+  const [regionalRerEnabled, setRegionalRerEnabled] = useState(false)
+  const [regionalRerLoading, setRegionalRerLoading] = useState(false)
+  const [regionalRerError, setRegionalRerError] = useState(false)
+  const [layerMenuOpen, setLayerMenuOpen] = useState(false)
   const [geography, setGeography] = useState<ParisGeographySnapshot>()
   const [loadError, setLoadError] = useState(false)
   const [time, setTime] = useState(edition.defaultNetworkTime)
@@ -259,28 +264,49 @@ export function ParisStudyApp({ edition }: { readonly edition: ParisEdition }) {
     studyWindow === 'day' && centralCrossEnabled,
     time,
   )
+  const regionalRerDayStudy = useProgressiveNetworkDay(
+    edition.data.layers.regionalRerDayManifest,
+    studyWindow === 'day' && regionalRerEnabled,
+    time,
+  )
   const baseNetwork = studyWindow === 'day'
     ? (dayStudy.network ?? openingNetwork)
     : openingNetwork
   const centralCrossLayer = studyWindow === 'day'
     ? centralCrossDayStudy.network
     : centralCrossNetwork
+  const regionalRerLayer = studyWindow === 'day'
+    ? regionalRerDayStudy.network
+    : regionalRerNetwork
   const network = useMemo(() => {
+    if (!baseNetwork) return undefined
+    const optionalLayers: NetworkSnapshot[] = []
     if (
-      !baseNetwork ||
-      !centralCrossEnabled ||
-      !centralCrossLayer ||
-      centralCrossLayer.metadata.windowStart !== baseNetwork.metadata.windowStart ||
-      centralCrossLayer.metadata.windowEnd !== baseNetwork.metadata.windowEnd
+      centralCrossEnabled &&
+      centralCrossLayer?.metadata.windowStart === baseNetwork.metadata.windowStart &&
+      centralCrossLayer.metadata.windowEnd === baseNetwork.metadata.windowEnd
     ) {
-      return baseNetwork
+      optionalLayers.push(centralCrossLayer)
     }
-    return mergeNetworkLayers([baseNetwork, centralCrossLayer])
-  }, [baseNetwork, centralCrossEnabled, centralCrossLayer])
+    if (
+      regionalRerEnabled &&
+      regionalRerLayer?.metadata.windowStart === baseNetwork.metadata.windowStart &&
+      regionalRerLayer.metadata.windowEnd === baseNetwork.metadata.windowEnd
+    ) {
+      optionalLayers.push(regionalRerLayer)
+    }
+    return optionalLayers.length
+      ? mergeNetworkLayers([baseNetwork, ...optionalLayers])
+      : baseNetwork
+  }, [baseNetwork, centralCrossEnabled, centralCrossLayer, regionalRerEnabled, regionalRerLayer])
   const centralCrossLayerLoading = studyWindow === 'day'
     ? centralCrossDayStudy.loading
     : centralCrossLoading
   const centralCrossLayerError = centralCrossError || centralCrossDayStudy.error
+  const regionalRerLayerLoading = studyWindow === 'day'
+    ? regionalRerDayStudy.loading
+    : regionalRerLoading
+  const regionalRerLayerError = regionalRerError || regionalRerDayStudy.error
 
   useEffect(() => {
     let cancelled = false
@@ -329,6 +355,30 @@ export function ParisStudyApp({ edition }: { readonly edition: ParisEdition }) {
       cancelled = true
     }
   }, [centralCrossEnabled, centralCrossNetwork, edition.data.layers.centralCrossMorning, studyWindow])
+
+  useEffect(() => {
+    if (studyWindow !== 'morning' || !regionalRerEnabled || regionalRerNetwork) return
+    let cancelled = false
+    fetch(editionDataUrl(edition.data.layers.regionalRerMorning))
+      .then((response) => {
+        if (!response.ok) throw new Error('Regional RER layer unavailable')
+        return response.json() as Promise<NetworkSnapshot>
+      })
+      .then((snapshot) => {
+        if (!cancelled) setRegionalRerNetwork(snapshot)
+      })
+      .catch(() => {
+        if (cancelled) return
+        setRegionalRerError(true)
+        setRegionalRerEnabled(false)
+      })
+      .finally(() => {
+        if (!cancelled) setRegionalRerLoading(false)
+      })
+    return () => {
+      cancelled = true
+    }
+  }, [edition.data.layers.regionalRerMorning, regionalRerEnabled, regionalRerNetwork, studyWindow])
 
   const stations = useMemo(
     () => (network ? buildStationIndex(network) : []),
@@ -386,6 +436,7 @@ export function ParisStudyApp({ edition }: { readonly edition: ParisEdition }) {
 
   const toggleCentralCross = useCallback(() => {
     clearSelection()
+    setLayerMenuOpen(false)
     if (centralCrossEnabled) {
       setCentralCrossEnabled(false)
       moveCamera('reset')
@@ -397,6 +448,21 @@ export function ParisStudyApp({ edition }: { readonly edition: ParisEdition }) {
     setScaleView('region')
     moveCamera('reset')
   }, [centralCrossEnabled, centralCrossNetwork, clearSelection, moveCamera, studyWindow])
+
+  const toggleRegionalRer = useCallback(() => {
+    clearSelection()
+    setLayerMenuOpen(false)
+    if (regionalRerEnabled) {
+      setRegionalRerEnabled(false)
+      moveCamera('reset')
+      return
+    }
+    setRegionalRerError(false)
+    setRegionalRerLoading(studyWindow === 'morning' && !regionalRerNetwork)
+    setRegionalRerEnabled(true)
+    setScaleView('region')
+    moveCamera('reset')
+  }, [clearSelection, moveCamera, regionalRerEnabled, regionalRerNetwork, studyWindow])
 
   const toggleScaleView = useCallback(() => {
     if (!network) return
@@ -539,6 +605,20 @@ export function ParisStudyApp({ edition }: { readonly edition: ParisEdition }) {
   const activeHubStudy = activeHubStudyIndex >= 0
     ? PARIS_HUB_STUDIES[activeHubStudyIndex]
     : undefined
+  const activeOptionalLayerCount = Number(centralCrossEnabled) + Number(regionalRerEnabled)
+  const optionalLayerLoading = centralCrossLayerLoading || regionalRerLayerLoading
+  const optionalLayerError = centralCrossLayerError || regionalRerLayerError
+  const plannedTripCount = studyWindow === 'day'
+    ? (dayStudy.manifest?.tripCount ?? 0) +
+      (centralCrossEnabled ? (centralCrossDayStudy.manifest?.tripCount ?? 0) : 0) +
+      (regionalRerEnabled ? (regionalRerDayStudy.manifest?.tripCount ?? 0) : 0)
+    : (network?.trains.length ?? 0)
+  const activeNetworkLabel = [
+    'Métro 1',
+    'RER A',
+    ...(centralCrossEnabled ? ['Métro 4 · 14', 'RER B'] : []),
+    ...(regionalRerEnabled ? ['RER C · D · E'] : []),
+  ].join(' · ')
 
   return (
     <main
@@ -593,7 +673,7 @@ export function ParisStudyApp({ edition }: { readonly edition: ParisEdition }) {
           <h1>Correspondances</h1>
           <small>Le centre respire; la région répond.</small>
         </div>
-        <aside><span>A Paris motion study</span><small>{centralCrossEnabled ? 'Métro 1 · 4 · 14 · RER A · B' : 'Métro 1 · RER A'} · {studyWindow === 'day' ? '24 heures' : '07:00–09:00'}</small></aside>
+        <aside><span>A Paris motion study</span><small>{activeNetworkLabel} · {studyWindow === 'day' ? '24 heures' : '07:00–09:00'}</small></aside>
       </header>
 
       <section className="paris-search" aria-label="Rechercher un mouvement">
@@ -676,11 +756,11 @@ export function ParisStudyApp({ edition }: { readonly edition: ParisEdition }) {
                 ? `${selectedRoute.trainIds.length} missions · ${selectedRoute.stopIndexes.length} stations`
                 : selectedTrain
                   ? `${selectedTrain.route} · ${formatServiceTime(selectedTrain.start)}–${formatServiceTime(selectedTrain.end)}`
-                  : centralCrossLayerLoading
-                    ? 'La croisée nord–sud se charge séparément…'
-                    : centralCrossLayerError
-                      ? 'Couche nord–sud indisponible · le socle reste actif'
-                      : `${studyWindow === 'day' ? (dayStudy.manifest?.tripCount ?? network.trains.length) : network.trains.length} missions planifiées · ${centralCrossEnabled ? 'Paris croisé · ' : ''}pas de temps réel`}</small>
+                  : optionalLayerLoading
+                    ? 'Les couches choisies se chargent séparément…'
+                    : optionalLayerError
+                      ? 'Une couche est indisponible · le socle reste actif'
+                      : `${plannedTripCount} missions planifiées · ${activeOptionalLayerCount ? `${activeOptionalLayerCount} couche${activeOptionalLayerCount > 1 ? 's' : ''} active${activeOptionalLayerCount > 1 ? 's' : ''} · ` : ''}pas de temps réel`}</small>
           </>
         ) : <p>Paris se dessine…</p>}
       </section>
@@ -688,9 +768,16 @@ export function ParisStudyApp({ edition }: { readonly edition: ParisEdition }) {
       <nav className="paris-routes" aria-label="Lignes de l’étude">
         <button type="button" aria-label="Isoler Métro 1" aria-pressed={selectedRoute?.name === 'Métro 1'} onClick={() => selectRoute('Métro 1')}><i /> Métro 1 <small>le centre</small></button>
         <button type="button" aria-label="Isoler RER A" aria-pressed={selectedRoute?.name === 'RER A'} onClick={() => selectRoute('RER A')}><i /> RER A <small>la région</small></button>
-        <button className="paris-layer-button" type="button" aria-label="Couche nord–sud Métro 4, Métro 14 et RER B" aria-pressed={centralCrossEnabled} aria-busy={centralCrossLayerLoading} onClick={toggleCentralCross}><i /> {centralCrossLayerLoading ? '…' : 'N–S'} <small>M4 · M14 · RER B</small></button>
+        <button className="paris-layer-button" type="button" aria-label="Afficher les couches" aria-expanded={layerMenuOpen} onClick={() => setLayerMenuOpen((open) => !open)}><i /> Couches <small>{activeOptionalLayerCount ? `${activeOptionalLayerCount} active${activeOptionalLayerCount > 1 ? 's' : ''}` : 'réseau optionnel'}</small></button>
         <button className="paris-connection-button" type="button" aria-label="Prochaine correspondance" onClick={showNextConnection}><i /> {activeHubStudy?.title ?? 'Correspondance'} <small>{activeHubStudy ? selectedConnection?.complex.name : '3 hubs · données IDFM'}</small></button>
       </nav>
+
+      {layerMenuOpen && (
+        <section className="paris-layer-menu" aria-label="Couches du réseau">
+          <button type="button" aria-label="Couche nord–sud Métro 4, Métro 14 et RER B" aria-pressed={centralCrossEnabled} aria-busy={centralCrossLayerLoading} onClick={toggleCentralCross}><i className="central-cross" /> <span><strong>{centralCrossLayerLoading ? 'Chargement…' : 'Croisée nord–sud'}</strong><small>Métro 4 · Métro 14 · RER B</small></span></button>
+          <button type="button" aria-label="Couche régionale RER C, RER D et RER E" aria-pressed={regionalRerEnabled} aria-busy={regionalRerLayerLoading} onClick={toggleRegionalRer}><i className="regional-rer" /> <span><strong>{regionalRerLayerLoading ? 'Chargement…' : 'Région étendue'}</strong><small>RER C · RER D · RER E</small></span></button>
+        </section>
+      )}
 
       <aside className="paris-map-tools" aria-label="Contrôles de la carte">
         <button type="button" aria-label="Zoom avant" onClick={() => moveCamera('zoom-in')}>+</button>

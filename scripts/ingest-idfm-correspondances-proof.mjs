@@ -30,6 +30,15 @@ const STUDIES = {
       ['IDFM:C01743', { name: 'RER B', category: 'regional-express', mode: 'rail' }],
     ],
   },
+  'regional-rer': {
+    output: 'fixtures/idfm/correspondances-regional-rer-morning.json',
+    label: 'RER C / RER D / RER E regional layer',
+    routes: [
+      ['IDFM:C01727', { name: 'RER C', category: 'regional-express', mode: 'rail' }],
+      ['IDFM:C01728', { name: 'RER D', category: 'regional-express', mode: 'rail' }],
+      ['IDFM:C01729', { name: 'RER E', category: 'regional-express', mode: 'rail' }],
+    ],
+  },
 }
 
 function argument(name, fallback) {

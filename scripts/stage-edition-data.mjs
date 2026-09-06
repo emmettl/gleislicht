@@ -16,6 +16,12 @@ const parisCentralCrossDayManifest = JSON.parse(
     'utf8',
   ),
 )
+const parisRegionalRerDayManifest = JSON.parse(
+  await readFile(
+    resolve('fixtures/idfm/correspondances-regional-rer-day-manifest.json'),
+    'utf8',
+  ),
+)
 
 const artifacts = [
   {
@@ -31,6 +37,18 @@ const artifacts = [
     destination: 'public/data/correspondances-central-cross-day-manifest.json',
   },
   ...parisCentralCrossDayManifest.chunks.map(({ path }) => ({
+    source: `fixtures/idfm/${path}`,
+    destination: `public/data/${path}`,
+  })),
+  {
+    source: 'fixtures/idfm/correspondances-regional-rer-morning.json',
+    destination: 'public/data/correspondances-regional-rer-morning.json',
+  },
+  {
+    source: 'fixtures/idfm/correspondances-regional-rer-day-manifest.json',
+    destination: 'public/data/correspondances-regional-rer-day-manifest.json',
+  },
+  ...parisRegionalRerDayManifest.chunks.map(({ path }) => ({
     source: `fixtures/idfm/${path}`,
     destination: `public/data/${path}`,
   })),

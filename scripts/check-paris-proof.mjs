@@ -32,6 +32,21 @@ const centralCrossDayManifestGzipBytes = gzipSync(
   centralCrossDayManifestBytes,
   { level: 9 },
 ).byteLength
+const regionalRerBytes = await readFile(
+  'fixtures/idfm/correspondances-regional-rer-morning.json',
+)
+const regionalRer = JSON.parse(regionalRerBytes.toString('utf8'))
+const regionalRerGzipBytes = gzipSync(regionalRerBytes, { level: 9 }).byteLength
+const regionalRerDayManifestBytes = await readFile(
+  'fixtures/idfm/correspondances-regional-rer-day-manifest.json',
+)
+const regionalRerDayManifest = JSON.parse(
+  regionalRerDayManifestBytes.toString('utf8'),
+)
+const regionalRerDayManifestGzipBytes = gzipSync(
+  regionalRerDayManifestBytes,
+  { level: 9 },
+).byteLength
 
 if (snapshot.metadata?.publisher !== 'Île-de-France Mobilités') {
   throw new Error('Paris proof has no authoritative publisher')
@@ -147,6 +162,27 @@ if (
 ) {
   throw new Error('Paris central-cross day manifest lost its source or chunk contract')
 }
+if (
+  regionalRer.metadata?.sourceSha256 !== snapshot.metadata?.sourceSha256 ||
+  regionalRer.metadata?.serviceDate !== snapshot.metadata?.serviceDate ||
+  regionalRer.trains?.length !== 322 ||
+  regionalRer.stops?.length !== 157 ||
+  JSON.stringify([...new Set(regionalRer.trains.map((train) => train.route))].sort()) !==
+    JSON.stringify(['RER C', 'RER D', 'RER E']) ||
+  regionalRerGzipBytes > 120 * 1024
+) {
+  throw new Error('Paris regional RER layer lost its source, contents or payload contract')
+}
+if (
+  regionalRerDayManifest.metadata?.sourceSha256 !== snapshot.metadata?.sourceSha256 ||
+  regionalRerDayManifest.metadata?.windowStart !== 0 ||
+  regionalRerDayManifest.metadata?.windowEnd !== 86_400 ||
+  regionalRerDayManifest.tripCount !== 1_422 ||
+  regionalRerDayManifest.chunks?.length !== 12 ||
+  regionalRerDayManifestGzipBytes > 70 * 1024
+) {
+  throw new Error('Paris regional RER day manifest lost its source or chunk contract')
+}
 for (const descriptor of dayManifest.chunks) {
   const chunkBytes = await readFile(resolve('fixtures/idfm', descriptor.path))
   const chunk = JSON.parse(chunkBytes.toString('utf8'))
@@ -172,6 +208,21 @@ for (const descriptor of centralCrossDayManifest.chunks) {
   ) {
     throw new Error(
       `Paris central-cross day chunk ${descriptor.id} violates its manifest or budget`,
+    )
+  }
+}
+for (const descriptor of regionalRerDayManifest.chunks) {
+  const chunkBytes = await readFile(resolve('fixtures/idfm', descriptor.path))
+  const chunk = JSON.parse(chunkBytes.toString('utf8'))
+  if (
+    chunk.windowStart !== descriptor.windowStart ||
+    chunk.windowEnd !== descriptor.windowEnd ||
+    chunk.trains.length !== descriptor.tripCount ||
+    chunkBytes.byteLength !== descriptor.bytes ||
+    gzipSync(chunkBytes, { level: 9 }).byteLength > 65 * 1024
+  ) {
+    throw new Error(
+      `Paris regional RER day chunk ${descriptor.id} violates its manifest or budget`,
     )
   }
 }
@@ -240,6 +291,10 @@ console.log(
 console.log(
   `Correspondances central-cross day: ${centralCrossDayManifest.tripCount} trips in ` +
     `${centralCrossDayManifest.chunks.length} progressive chunks; largest chunk stays below 82 KiB gzip.`,
+)
+console.log(
+  `Correspondances regional RER: ${regionalRer.trains.length} morning trips / ` +
+    `${regionalRerDayManifest.tripCount} daily trips; ${(regionalRerGzipBytes / 1024).toFixed(1)} KiB opening layer.`,
 )
 console.log(
   `Correspondances mobile first view: ${(javaScriptGzip / 1024).toFixed(1)} KiB JS / ` +
