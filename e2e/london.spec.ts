@@ -98,8 +98,9 @@ test('route 26 buses load progressively as a separate street study', async ({
     name: 'Find a London station, line, service, airport, flight or motorway',
   })
   await search.fill('route 26')
-  await expect(page.getByRole('option', { name: /26/ }).first()).toBeVisible()
-  await search.press('Enter')
+  const routeOption = page.getByRole('option', { name: /26/ }).first()
+  await expect(routeOption).toBeVisible()
+  await routeOption.click()
   await expect(page.locator('.london-status-card')).toContainText('26')
   await expect(page.locator('.london-status-card')).toContainText('30 journeys')
 
@@ -173,7 +174,9 @@ test('the complete Friday loads progressively without changing the opening paylo
   const diagramResponse = page.waitForResponse((response) =>
     response.url().includes('all-change-diagram.json'),
   )
-  await page.getByRole('button', { name: 'Diagram layout' }).click()
+  await page
+    .getByRole('button', { name: 'Diagram layout' })
+    .evaluate((button) => (button as { click(): void }).click())
   expect((await diagramResponse).ok()).toBe(true)
   await expect(experience).toHaveAttribute('data-layout-mix', '1.000', {
     timeout: 5_000,

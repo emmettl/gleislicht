@@ -14,7 +14,10 @@ export default defineConfig({
   // the Chromium project is rendering in parallel. Retry that isolated test
   // once in CI; local runs remain strict and immediate.
   retries: runningInCi ? 1 : 0,
-  workers: 2,
+  // Two continuously rendered WebGL editions can starve Chromium's input and
+  // animation loop on the shared CI runner. Keep local feedback parallel, but
+  // make the publication gate deterministic.
+  workers: runningInCi ? 1 : 2,
   reporter: 'list',
   use: {
     baseURL: 'http://127.0.0.1:4173',
