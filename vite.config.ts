@@ -13,6 +13,8 @@ export default defineConfig({
       input: {
         gleislicht: 'index.html',
         london: 'london.html',
+        newYork: 'new-york.html',
+        paris: 'paris.html',
       },
     },
   },

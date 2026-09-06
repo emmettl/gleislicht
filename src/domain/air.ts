@@ -12,6 +12,7 @@ export interface AirTrack {
   readonly callsign: string
   readonly start: number
   readonly end: number
+  readonly airportIds?: readonly string[]
   readonly samples: readonly AirSample[]
 }
 

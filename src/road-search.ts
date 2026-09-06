@@ -1,19 +1,28 @@
-import type { RoadTopologyRoad } from './domain/road.ts'
 import { foldSearchText } from './search-text.ts'
 
 const ROAD_TERMS = 'motorway autobahn autoroute autostrada autostrasse'
 
-function searchText(road: RoadTopologyRoad): string {
+export interface RoadSearchCorridor {
+  readonly id: string
+  readonly label: string
+  readonly officialLabel: string
+  readonly description?: string
+  readonly focus: readonly [longitude: number, latitude: number]
+  readonly cameraScale: number
+  readonly stationCount?: number
+}
+
+function searchText(road: RoadSearchCorridor): string {
   return foldSearchText(
     `${road.label} ${road.officialLabel} ${road.description ?? ''} ${ROAD_TERMS}`,
   )
 }
 
-export function searchRoadCorridors(
-  roads: readonly RoadTopologyRoad[],
+export function searchRoadCorridors<Road extends RoadSearchCorridor>(
+  roads: readonly Road[],
   query: string,
   maximum = 5,
-): readonly RoadTopologyRoad[] {
+): readonly Road[] {
   const foldedQuery = foldSearchText(query)
   if (!foldedQuery) return []
   return roads
@@ -24,13 +33,13 @@ export function searchRoadCorridors(
       return (
         Number(secondText.startsWith(foldedQuery)) -
           Number(firstText.startsWith(foldedQuery)) ||
-        second.stationCount - first.stationCount ||
-        Number(first.id.slice(1)) - Number(second.id.slice(1))
+        (second.stationCount ?? 0) - (first.stationCount ?? 0) ||
+        first.id.localeCompare(second.id, 'en', { numeric: true })
       )
     })
     .slice(0, maximum)
 }
 
-export function roadCorridorSearchValue(road: RoadTopologyRoad): string {
+export function roadCorridorSearchValue(road: RoadSearchCorridor): string {
   return road.description ? `${road.label} · ${road.description}` : road.label
 }

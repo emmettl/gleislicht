@@ -6,6 +6,7 @@ export interface AirSearchTrack {
   readonly callsign: string
   readonly start: number
   readonly end: number
+  readonly airportIds?: readonly string[]
 }
 
 export function airTrackSearchText(track: AirSearchTrack): string {

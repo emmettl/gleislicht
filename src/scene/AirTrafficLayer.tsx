@@ -6,6 +6,10 @@ import {
   type AirSnapshot,
 } from '../domain/air.ts'
 import {
+  airportAirTrackIds,
+  type StudyAirport,
+} from '../domain/airport.ts'
+import {
   projectAirPosition,
   type AirProjection,
 } from './air-projection.ts'
@@ -21,6 +25,7 @@ import type { TrainLabelMode } from './train-labels.ts'
 
 const AIR_COLOR = new THREE.Color('#ff5edb')
 const SELECTED_AIR_COLOR = new THREE.Color('#fff5ff')
+const SUBDUED_AIR_COLOR = new THREE.Color('#160a1d')
 const TRAIL_SECONDS = 180
 const MAX_SAMPLE_GAP_SECONDS = 45
 
@@ -114,10 +119,12 @@ function AirTrafficLabels({
   aircraftRef,
   mode,
   selectedTrackId,
+  airportTrackIds,
 }: {
   readonly aircraftRef: { readonly current: readonly CurrentAircraft[] }
   readonly mode: TrainLabelMode
   readonly selectedTrackId?: string
+  readonly airportTrackIds?: ReadonlySet<string>
 }) {
   const { camera, size } = useThree()
   const sprites = useRef<Array<THREE.Sprite | null>>([])
@@ -151,6 +158,7 @@ function AirTrafficLabels({
     const candidates = aircraftRef.current.flatMap((item) => {
       const selected = item.track.id === selectedTrackId
       if (selectedTrackId && !selected) return []
+      if (airportTrackIds && !airportTrackIds.has(item.track.id)) return []
       projected.set(...item.projected)
       viewPosition.copy(projected).applyMatrix4(camera.matrixWorldInverse)
       projected.project(camera)
@@ -285,6 +293,60 @@ function AirTrafficLabels({
   ))
 }
 
+function AirportFocusMarker({
+  airport,
+  projection,
+}: {
+  readonly airport: StudyAirport
+  readonly projection: AirProjection
+}) {
+  const group = useRef<THREE.Group>(null)
+  const position = useMemo(
+    () =>
+      projectAirPosition(
+        {
+          longitude: airport.longitude,
+          latitude: airport.latitude,
+          altitudeFeet: 0,
+        },
+        projection,
+      ),
+    [airport, projection],
+  )
+
+  useFrame(({ clock }) => {
+    if (!group.current) return
+    const pulse = 1 + (Math.sin(clock.elapsedTime * 2.4) + 1) * 0.18
+    group.current.scale.setScalar(pulse)
+  })
+
+  return (
+    <group ref={group} position={position} renderOrder={19}>
+      <mesh rotation={[-Math.PI / 2, 0, 0]}>
+        <ringGeometry args={[0.32, 0.38, 48]} />
+        <meshBasicMaterial
+          color={AIR_COLOR}
+          transparent
+          opacity={0.88}
+          blending={THREE.AdditiveBlending}
+          depthWrite={false}
+        />
+      </mesh>
+      <mesh rotation={[-Math.PI / 2, 0, 0]}>
+        <ringGeometry args={[0.62, 0.65, 64]} />
+        <meshBasicMaterial
+          color={AIR_COLOR}
+          transparent
+          opacity={0.32}
+          blending={THREE.AdditiveBlending}
+          depthWrite={false}
+        />
+      </mesh>
+      <pointLight color={AIR_COLOR} intensity={2.4} distance={3.2} />
+    </group>
+  )
+}
+
 export function AirTrafficLayer({
   snapshot,
   time,
@@ -292,6 +354,7 @@ export function AirTrafficLayer({
   playbackRate,
   projection,
   selectedTrackId,
+  selectedAirport,
   onSelectTrack,
   labelMode,
   subdued = false,
@@ -302,6 +365,7 @@ export function AirTrafficLayer({
   readonly playbackRate: number
   readonly projection: AirProjection
   readonly selectedTrackId?: string
+  readonly selectedAirport?: StudyAirport
   readonly onSelectTrack?: (trackId: string) => void
   readonly labelMode: TrainLabelMode
   readonly subdued?: boolean
@@ -314,6 +378,13 @@ export function AirTrafficLayer({
   const wingRef = useRef<THREE.InstancedMesh>(null)
   const hitRef = useRef<THREE.InstancedMesh>(null)
   const selectedLightRef = useRef<THREE.PointLight>(null)
+  const airportTrackIds = useMemo(
+    () =>
+      selectedAirport
+        ? airportAirTrackIds(snapshot.tracks, selectedAirport)
+        : undefined,
+    [selectedAirport, snapshot.tracks],
+  )
   const trailHeadGeometry = useMemo(() => {
     const geometry = new THREE.BufferGeometry()
     geometry.setAttribute(
@@ -350,6 +421,8 @@ export function AirTrafficLayer({
     let trailHeadCount = 0
     for (const [index, item] of aircraft.entries()) {
       const isSelected = item.track.id === selectedTrackId
+      const servesSelectedAirport =
+        !airportTrackIds || airportTrackIds.has(item.track.id)
       transform.position.set(...item.projected)
       transform.rotation.set(
         0,
@@ -364,7 +437,14 @@ export function AirTrafficLayer({
       )
       transform.updateMatrix()
       body.setMatrixAt(index, transform.matrix)
-      body.setColorAt(index, isSelected ? SELECTED_AIR_COLOR : AIR_COLOR)
+      body.setColorAt(
+        index,
+        isSelected
+          ? SELECTED_AIR_COLOR
+          : servesSelectedAirport
+            ? AIR_COLOR
+            : SUBDUED_AIR_COLOR,
+      )
 
       transform.scale.set(
         isSelected ? 1.6 : 1,
@@ -373,7 +453,10 @@ export function AirTrafficLayer({
       )
       transform.updateMatrix()
       wing.setMatrixAt(index, transform.matrix)
-      wing.setColorAt(index, AIR_COLOR)
+      wing.setColorAt(
+        index,
+        servesSelectedAirport ? AIR_COLOR : SUBDUED_AIR_COLOR,
+      )
 
       transform.scale.setScalar(1)
       transform.updateMatrix()
@@ -420,6 +503,8 @@ export function AirTrafficLayer({
     const positions: number[] = []
     const colors: number[] = []
     for (const track of snapshot.tracks) {
+      const servesSelectedAirport =
+        !airportTrackIds || airportTrackIds.has(track.id)
       const samples = track.samples.filter(
         (sample) => sample[0] <= time && sample[0] >= time - TRAIL_SECONDS,
       )
@@ -438,8 +523,9 @@ export function AirTrafficLayer({
         positions.push(...fromPoint, ...toPoint)
         const fromFade = Math.max(0.08, 1 - (time - from[0]) / TRAIL_SECONDS)
         const toFade = Math.max(0.08, 1 - (time - to[0]) / TRAIL_SECONDS)
-        const fromColor = AIR_COLOR.clone().multiplyScalar(fromFade * 0.58)
-        const toColor = AIR_COLOR.clone().multiplyScalar(toFade * 0.58)
+        const emphasis = servesSelectedAirport ? 0.78 : 0.025
+        const fromColor = AIR_COLOR.clone().multiplyScalar(fromFade * emphasis)
+        const toColor = AIR_COLOR.clone().multiplyScalar(toFade * emphasis)
         colors.push(
           fromColor.r,
           fromColor.g,
@@ -457,7 +543,7 @@ export function AirTrafficLayer({
     )
     geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3))
     return geometry
-  }, [projection, snapshot.tracks, time])
+  }, [airportTrackIds, projection, snapshot.tracks, time])
   useEffect(() => () => trailGeometry.dispose(), [trailGeometry])
 
   return (
@@ -542,7 +628,11 @@ export function AirTrafficLayer({
         aircraftRef={aircraftRef}
         mode={subdued ? 'off' : labelMode}
         selectedTrackId={selectedTrackId}
+        airportTrackIds={airportTrackIds}
       />
+      {selectedAirport && (
+        <AirportFocusMarker airport={selectedAirport} projection={projection} />
+      )}
     </>
   )
 }

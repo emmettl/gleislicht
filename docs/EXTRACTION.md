@@ -11,6 +11,8 @@ The repository now contains two real public entries, not one application with a 
 | `@motionstudies/web` | Theme application, browser bootstrap and reusable compact controls | A complete edition shell |
 | `gleislicht` | Swiss catalogue, translations, Takt hubs, LUFT/AUTO/corridor studies, source adapters and assets | London data or titles |
 | `allchange` | London catalogue, local chrome, geography/diagram compilers, future hub studies and assets | Swiss data or titles |
+| `localexpress` | New York catalogue, local/express semantics, borough geography, map-layout authorship, source adapters and assets | London diagram assumptions or Swiss service categories |
+| `correspondances` | Paris catalogue, centre–periphery behavior, interchange studies, French authored voice, source adapters and assets | New York stopping-pattern assumptions or operator branding in shared packages |
 
 The package names are targets, not a commitment to publish three packages. They describe dependency direction. The first extraction may combine the small web layer with core if that produces a more useful API.
 
@@ -29,6 +31,8 @@ The package names are targets, not a commitment to publish three packages. They 
 
 ## Mechanical extraction order
 
+Before step one, compile a bounded New York local/express proof against the current local modules. That third implementation is the extraction test: anything genuinely shared by Switzerland, London and New York has earned a package boundary; merely anticipated reuse has not.
+
 1. Move the domain contracts and pure tests without changing imports or behaviour.
 2. Move the scene layer against those exported contracts.
 3. Move browser mounting and theme-token application.
@@ -36,4 +40,4 @@ The package names are targets, not a commitment to publish three packages. They 
 5. Run both complete browser matrices and compare the generated request graphs.
 6. Only then create the npm organisation and split repositories, preserving Git history with subtree filtering if useful.
 
-An extraction is complete when both existing pages render byte-for-byte-equivalent data artifacts, preserve their independent metadata and pass the same interaction and transfer gates. Package publication is an operational consequence, not the architectural milestone.
+An extraction is complete when every implemented page renders byte-for-byte-equivalent data artifacts, preserves its independent metadata and passes the same interaction and transfer gates. Package publication is an operational consequence, not the architectural milestone. Paris should consume the extracted seam as a client, not become the experiment used to discover it.

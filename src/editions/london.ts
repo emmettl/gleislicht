@@ -19,6 +19,35 @@ const ALL_CHANGE_THEME = {
   roadHeavy: '#ff9d52',
 } satisfies VisualTheme
 
+/**
+ * TfL's August 2026 screen colours, gently lifted where the literal colour
+ * would disappear into All Change's near-black field. These belong to the
+ * diagram view; geography retains the Motion Studies modal palette.
+ * Source: https://content.tfl.gov.uk/tfl-colour-standard.pdf
+ */
+export const ALL_CHANGE_ROUTE_COLORS: Readonly<Record<string, string>> = {
+  Bakerloo: '#b26300',
+  Central: '#dc241f',
+  Circle: '#ffc80a',
+  DLR: '#00afad',
+  District: '#007d32',
+  'Elizabeth line': '#60399e',
+  'Hammersmith & City': '#f589a6',
+  Jubilee: '#838d93',
+  Liberty: '#767a7c',
+  Lioness: '#faa61a',
+  Metropolitan: '#9b0058',
+  Mildmay: '#0077ad',
+  Northern: '#777480',
+  Piccadilly: '#1839c6',
+  Suffragette: '#5bbd72',
+  Tram: '#5fb526',
+  Victoria: '#039be5',
+  'Waterloo & City': '#76d0bd',
+  Weaver: '#823a62',
+  Windrush: '#ed1b00',
+}
+
 export interface LondonDataCatalog extends EditionDataCatalog {
   readonly opening: {
     readonly network: string
@@ -40,6 +69,10 @@ export interface LondonDataCatalog extends EditionDataCatalog {
   }
   readonly air: {
     readonly morning: string
+    readonly dayManifest: string
+  }
+  readonly road: {
+    readonly topology: string
     readonly dayManifest: string
   }
 }
@@ -81,6 +114,10 @@ export const LONDON_EDITION: LondonEdition = {
     air: {
       morning: 'all-change-air-morning.json',
       dayManifest: 'all-change-air-day-manifest.json',
+    },
+    road: {
+      topology: 'all-change-road-topology.json',
+      dayManifest: 'all-change-road-day-manifest.json',
     },
   },
 }

@@ -6,6 +6,7 @@ export interface AirDayAircraft {
   readonly callsign: string
   readonly start: number
   readonly end: number
+  readonly airportIds?: readonly string[]
   readonly chunkIds: readonly string[]
 }
 

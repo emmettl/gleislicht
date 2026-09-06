@@ -5,7 +5,9 @@ Motion Studies is a catalogue of authored transport works made with one visual i
 | No. | Work | Place | Status |
 | --- | --- | --- | --- |
 | 005 | **Gleislicht** | Switzerland | Released |
-| 006 | **All Change** | London | Interactive foundation |
+| 006 | **All Change** | London | Authored foundation |
+| 007 | **Local / Express** | New York | Interactive foundation; publication gated |
+| 008 | **Correspondances** | Paris | Interactive foundation |
 
 Each work receives a locally meaningful title and descriptor. The shared series identity appears as a quiet catalogue mark; the work title remains dominant.
 
@@ -44,5 +46,7 @@ Alternate layouts are edition data, not alternate networks. `src/domain/spatial-
 5. Add local modes and authored studies where they reveal something distinctive about the place.
 
 This is configuration-driven reuse, not a generic map skin. Every work should have a reason to exist, a name rooted in its place, and at least one visual study that could only belong there.
+
+The catalogue programme and admission criteria live in [CATALOGUE.md](./CATALOGUE.md). The next edition briefs are [NEW-YORK.md](./NEW-YORK.md) and [PARIS.md](./PARIS.md). Their numbers and theses are committed; both now have bounded, source-pinned interactive foundations, with New York publication gated pending MTA clarification and Paris carrying its Licence Mobilité provenance in the artifact.
 
 The concrete repository/package split is recorded in [the extraction seam](./EXTRACTION.md). Its import direction is enforced in CI before any npm organisation or additional repository is created.

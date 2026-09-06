@@ -4,8 +4,50 @@ import { dirname, resolve } from 'node:path'
 const londonDayManifest = JSON.parse(
   await readFile(resolve('fixtures/tfl/all-change-day-manifest.json'), 'utf8'),
 )
+const newYorkDayManifest = JSON.parse(
+  await readFile(resolve('fixtures/mta/local-express-day-manifest.json'), 'utf8'),
+)
+const parisDayManifest = JSON.parse(
+  await readFile(resolve('fixtures/idfm/correspondances-day-manifest.json'), 'utf8'),
+)
 
 const artifacts = [
+  {
+    source: 'fixtures/idfm/correspondances-morning.json',
+    destination: 'public/data/correspondances-morning.json',
+  },
+  {
+    source: 'fixtures/idfm/correspondances-geography.json',
+    destination: 'public/data/correspondances-geography.json',
+  },
+  {
+    source: 'fixtures/idfm/correspondances-day-manifest.json',
+    destination: 'public/data/correspondances-day-manifest.json',
+  },
+  ...parisDayManifest.chunks.map(({ path }) => ({
+    source: `fixtures/idfm/${path}`,
+    destination: `public/data/${path}`,
+  })),
+  {
+    source: 'fixtures/mta/local-express-lexington-morning.json',
+    destination: 'public/data/local-express-lexington-morning.json',
+  },
+  {
+    source: 'fixtures/mta/local-express-geography.json',
+    destination: 'public/data/local-express-geography.json',
+  },
+  {
+    source: 'fixtures/mta/local-express-diagram.json',
+    destination: 'public/data/local-express-diagram.json',
+  },
+  {
+    source: 'fixtures/mta/local-express-day-manifest.json',
+    destination: 'public/data/local-express-day-manifest.json',
+  },
+  ...newYorkDayManifest.chunks.map(({ path }) => ({
+    source: `fixtures/mta/${path}`,
+    destination: `public/data/${path}`,
+  })),
   {
     source: 'fixtures/tfl/all-change-rail-led-morning.json',
     destination: 'public/data/all-change-rail-led-morning.json',

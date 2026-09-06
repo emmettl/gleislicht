@@ -34,6 +34,7 @@ export interface NetworkTrain {
   readonly shortName: string
   readonly category: ServiceCategory
   readonly mode?: string
+  readonly servicePattern?: 'local' | 'express'
   readonly start: number
   readonly end: number
   readonly stops: readonly TrainStop[]
@@ -70,6 +71,16 @@ export interface NetworkSnapshot {
     }
     readonly localAgencyIds?: readonly string[]
     readonly localRouteIds?: readonly string[]
+    readonly servicePatternStudy?: {
+      readonly model: string
+      readonly localTrips: number
+      readonly expressTrips: number
+      readonly passEvents: readonly ServicePatternPassEvent[]
+    }
+    readonly interchangeStudy?: {
+      readonly model: string
+      readonly complexes: readonly InterchangeComplex[]
+    }
     readonly geometry?: {
       readonly publisher: string
       readonly feedVersion: string
@@ -95,6 +106,32 @@ export interface NetworkSnapshot {
   readonly paths?: readonly NetworkPath[]
   readonly edgePaths?: readonly (number | null)[]
   readonly trains: readonly NetworkTrain[]
+}
+
+export interface InterchangeLink {
+  readonly fromStopId: string
+  readonly toStopId: string
+  readonly minimumTransferSeconds: number
+}
+
+export interface InterchangeComplex {
+  readonly id: string
+  readonly name: string
+  readonly longitude: number
+  readonly latitude: number
+  readonly stopIds: readonly string[]
+  readonly links: readonly InterchangeLink[]
+}
+
+export interface ServicePatternPassEvent {
+  readonly id: string
+  readonly localTrainId: string
+  readonly expressTrainId: string
+  readonly fromStopId: string
+  readonly toStopId: string
+  readonly time: number
+  readonly startDeltaSeconds: number
+  readonly endDeltaSeconds: number
 }
 
 export interface NetworkDayChunkDescriptor {

@@ -23,6 +23,7 @@ test('boots as a separate edition without loading Swiss network data', async ({
   expect(resources.some((url) => url.includes('all-change-geography.json'))).toBe(true)
   expect(resources.some((url) => url.includes('all-change-diagram.json'))).toBe(false)
   expect(resources.some((url) => url.includes('all-change-air-'))).toBe(false)
+  expect(resources.some((url) => url.includes('all-change-road-'))).toBe(false)
   expect(resources.some((url) => url.includes('swiss-rail-morning.json'))).toBe(false)
 
   await expect(page.locator('.london-status-card')).toContainText('trains in motion')
@@ -33,7 +34,7 @@ test('boots as a separate edition without loading Swiss network data', async ({
 
 test('station search selects and reveals a London interchange', async ({ page }) => {
   const search = page.getByRole('searchbox', {
-    name: 'Find a London station, line, service or flight',
+    name: 'Find a London station, line, service, airport, flight or motorway',
   })
   await search.fill('Whitechapel')
   const result = page.getByRole('option', { name: /Whitechapel/ }).first()
@@ -97,7 +98,7 @@ test('diagram geometry loads lazily and preserves the current station', async ({
   page,
 }) => {
   const search = page.getByRole('searchbox', {
-    name: 'Find a London station, line, service or flight',
+    name: 'Find a London station, line, service, airport, flight or motorway',
   })
   await search.fill('Whitechapel')
   await expect(page.getByRole('option', { name: /Whitechapel/ }).first()).toBeVisible()
@@ -146,6 +147,68 @@ test('reduced motion changes spatial layout without a sweep', async ({ page }) =
   )
 })
 
+test('limited chrome leaves the visualization and timeline in control', async ({
+  page,
+}) => {
+  const experience = page.locator('.london-experience')
+  const timeline = page.locator('.london-transport')
+  const enter = page.getByRole('button', { name: 'Enter limited chrome' })
+
+  await enter.click()
+  await expect(experience).toHaveAttribute('data-limited-chrome', 'true')
+  await expect(timeline).toBeVisible()
+  await expect(page.getByRole('button', { name: 'Exit limited chrome' })).toBeVisible()
+  await expect(page.locator('.london-masthead')).not.toBeVisible()
+  await expect(page.locator('.london-search')).not.toBeVisible()
+  await expect(page.locator('.london-status-card')).not.toBeVisible()
+  await expect(page.locator('.london-service-legend')).not.toBeVisible()
+  await expect(page.locator('.london-map-tools')).not.toBeVisible()
+  await expect(page.locator('.london-layout-switch')).not.toBeVisible()
+
+  await page.keyboard.press('Escape')
+  await expect(experience).toHaveAttribute('data-limited-chrome', 'false')
+  await expect(page.locator('.london-masthead')).toBeVisible()
+
+  await page.keyboard.press('f')
+  await expect(experience).toHaveAttribute('data-limited-chrome', 'true')
+})
+
+test('interchange pulse preserves the shared clock and switches character', async ({
+  page,
+}) => {
+  await page.getByRole('button', { name: 'Interchange pulse' }).click()
+  const experience = page.locator('.london-experience')
+  await expect(experience).toHaveClass(/is-pulse-study/)
+  await expect(page.locator('.london-status-card')).toContainText("King's Cross")
+  await expect(page.locator('.london-status-card')).toContainText(
+    'movements in orbit',
+  )
+  await expect(page.getByRole('button', { name: 'Exit interchange pulse' })).toBeVisible()
+  await expect(page.locator('.london-map-tools')).not.toBeVisible()
+
+  await page.getByRole('combobox', { name: 'Pulse interchange' }).selectOption(
+    'stratford',
+  )
+  await expect(page.locator('.london-status-card')).toContainText('Stratford')
+  await page.locator('.london-transport input[type="range"]').fill('28800')
+  await expect(page.locator('.london-time-copy')).toContainText('08:00')
+
+  expect(
+    await page.evaluate(() => {
+      const browser = globalThis as unknown as {
+        readonly document: {
+          readonly documentElement: { readonly scrollWidth: number }
+        }
+        readonly innerWidth: number
+      }
+      return browser.document.documentElement.scrollWidth - browser.innerWidth
+    }),
+  ).toBeLessThanOrEqual(1)
+
+  await page.getByRole('button', { name: 'Exit interchange pulse' }).click()
+  await expect(experience).not.toHaveClass(/is-pulse-study/)
+})
+
 test('observed aircraft load lazily, join category emphasis and are searchable by code', async ({
   page,
 }) => {
@@ -164,7 +227,7 @@ test('observed aircraft load lazily, join category emphasis and are searchable b
   await expect(page.locator('.london-status-card')).toContainText('aircraft observed')
 
   const search = page.getByRole('searchbox', {
-    name: 'Find a London station, line, service or flight',
+    name: 'Find a London station, line, service, airport, flight or motorway',
   })
   await search.fill('BAW925')
   await expect(page.getByRole('option', { name: /BAW925/ })).toBeVisible()
@@ -172,6 +235,91 @@ test('observed aircraft load lazily, join category emphasis and are searchable b
   await expect(search).toHaveValue('BAW925 · 405A49')
   await expect(page.locator('.london-status-card')).toContainText('BAW925')
   await expect(page.locator('.london-status-card')).toContainText(/ft · \d+ kt/)
+})
+
+test('airport search enters air-only mode and isolates its observed flights', async ({
+  page,
+}) => {
+  const search = page.getByRole('searchbox', {
+    name: 'Find a London station, line, service, airport, flight or motorway',
+  })
+  await search.fill('LHR')
+  const airport = page.getByRole('option', {
+    name: /Heathrow Airport/,
+  })
+  await expect(airport).toBeVisible()
+
+  const airResponse = page.waitForResponse((response) =>
+    response.url().includes('all-change-air-morning.json'),
+  )
+  await search.press('Enter')
+  expect((await airResponse).ok()).toBe(true)
+
+  const experience = page.locator('.london-experience')
+  await expect(experience).toHaveClass(/has-air-layer/)
+  await expect(experience).toHaveClass(/has-air-category/)
+  await expect(experience).toHaveClass(/has-airport-selection/)
+  await expect(experience).toHaveAttribute('data-selected-airport', 'heathrow')
+  await expect(search).toHaveValue('Heathrow Airport · LHR')
+  await expect(page.locator('.london-status-card')).toContainText('LHR')
+  await expect(page.locator('.london-status-card')).toContainText(
+    'airport movements',
+  )
+  await expect(page.getByRole('button', { name: 'Hide observed aircraft' })).toHaveAttribute(
+    'aria-pressed',
+    'true',
+  )
+})
+
+test('motorway search loads observed flow lazily and enters ROAD isolation', async ({
+  page,
+}) => {
+  const search = page.getByRole('searchbox', {
+    name: 'Find a London station, line, service, airport, flight or motorway',
+  })
+  await search.fill('M25')
+  await expect(page.getByRole('option', { name: /M25.*London Orbital/ })).toBeVisible()
+
+  const topologyResponse = page.waitForResponse((response) =>
+    response.url().includes('all-change-road-topology.json'),
+  )
+  const manifestResponse = page.waitForResponse((response) =>
+    response.url().includes('all-change-road-day-manifest.json'),
+  )
+  const morningResponse = page.waitForResponse((response) =>
+    response.url().includes('all-change-road-day/06-12.json'),
+  )
+  await search.press('Enter')
+  expect((await topologyResponse).ok()).toBe(true)
+  expect((await manifestResponse).ok()).toBe(true)
+  expect((await morningResponse).ok()).toBe(true)
+
+  const experience = page.locator('.london-experience')
+  await expect(experience).toHaveClass(/has-road-layer/)
+  await expect(experience).toHaveClass(/has-road-category/)
+  await expect(experience).toHaveAttribute('data-selected-road', 'M25')
+  await expect(search).toHaveValue('M25 · London Orbital')
+  await expect(page.locator('.london-status-card')).toContainText('M25')
+  await expect(page.locator('.london-status-card')).toContainText(
+    'vehicles reconstructed',
+  )
+  await expect(page.locator('.london-status-card')).toContainText(
+    /observed 05 Sep(?:t)? 2025/,
+  )
+  await expect(
+    page.getByRole('button', { name: 'Hide reconstructed motorway traffic' }),
+  ).toHaveAttribute('aria-pressed', 'true')
+  expect(
+    await page.evaluate(() => {
+      const browser = globalThis as unknown as {
+        readonly document: {
+          readonly documentElement: { readonly scrollWidth: number }
+        }
+        readonly innerWidth: number
+      }
+      return browser.document.documentElement.scrollWidth - browser.innerWidth
+    }),
+  ).toBeLessThanOrEqual(1)
 })
 
 test('the London air day follows the 24-hour clock in progressive hourly chunks', async ({
@@ -188,4 +336,42 @@ test('the London air day follows the 24-hour clock in progressive hourly chunks'
   expect((await manifestResponse).ok()).toBe(true)
   expect((await hourResponse).ok()).toBe(true)
   await expect(page.locator('.london-experience')).toHaveClass(/has-air-layer/)
+})
+
+test('the iPhone diagram maintains an interactive frame cadence', async ({
+  page,
+}, testInfo) => {
+  test.skip(testInfo.project.name !== 'iphone-webkit')
+  await page.getByRole('button', { name: /Diagram/ }).click()
+  await expect(page.locator('.london-experience')).toHaveAttribute(
+    'data-layout-mix',
+    '1.000',
+    { timeout: 5_000 },
+  )
+  await page.keyboard.press('f')
+
+  const intervals = await page.evaluate(
+    () =>
+      new Promise<number[]>((resolve) => {
+        const browser = globalThis as unknown as {
+          readonly performance: { now(): number }
+          requestAnimationFrame(callback: (time: number) => void): number
+        }
+        const samples: number[] = []
+        let previous = browser.performance.now()
+        const started = previous
+        const sample = (now: number) => {
+          samples.push(now - previous)
+          previous = now
+          if (now - started >= 1_800) resolve(samples.slice(2))
+          else browser.requestAnimationFrame(sample)
+        }
+        browser.requestAnimationFrame(sample)
+      }),
+  )
+  const sorted = [...intervals].sort((first, second) => first - second)
+  const p95 = sorted[Math.floor(sorted.length * 0.95)] ?? Number.POSITIVE_INFINITY
+
+  expect(intervals.length).toBeGreaterThanOrEqual(18)
+  expect(p95).toBeLessThan(125)
 })

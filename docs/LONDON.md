@@ -37,6 +37,8 @@ London should be legible in two coordinate systems. **GEOGRAPHY** shows the phys
 
 The switch is a continuous transformation, not a scene change. The clock, active vehicles, search result, selected service or station, label policy and playback state must survive it. Water and boundary geography recede as the diagram becomes dominant; interchange structure and restrained line identity become clearer. The Thames may remain as a simplified orienting stroke because it is meaningful in both Londons.
 
+An optional **limited chrome** presentation mode leaves only the visualization and its timeline visible. It is implemented as an application view rather than depending on browser fullscreen support, so it behaves consistently on iPhone as well as desktop. The timeline retains an explicit exit button; `F` toggles the mode and Escape restores the complete interface without clearing the current selection.
+
 The transition should be theatrical but intelligible. Terrain flattens, the Thames simplifies, stations settle onto an octilinear grid, curves resolve into horizontal, vertical and 45-degree runs, and labels rotate into their diagram positions. The camera moves from geographic perspective toward a near-orthographic diagram view. Each gesture must explain the changing spatial model; spectacle follows from that explanation rather than covering it.
 
 ### Runtime model
@@ -52,7 +54,11 @@ The transition should be theatrical but intelligible. Terrain flattens, the Tham
 
 The diagram layout should be generated offline and committed as a small deterministic artifact. An octilinear constraint solver may provide the first arrangement, but the finished result is an authored composition with explicit overrides for central interchanges, branches and the Thames. The compiler must verify that station order, branch membership, termini and interchange identity are identical in both layouts, while permitting only declared visual crossings.
 
-The first complete diagram artifact now provides that mechanical baseline. `npm run data:london:diagram` applies a deterministic topology relaxation, assigns all 505 source-identified stops to unique grid positions and emits 1,414 path-index-compatible horizontal, vertical or 45-degree routes. The resulting artifact is 61.7 KiB raw and 9.5 KiB compressed. Its source-network and authored-override hashes, stop coverage, identity uniqueness, path coverage and octilinear geometry are enforced by the London build gate. `fixtures/tfl/all-change-diagram-overrides.json` is the intentionally separate, initially empty visual-editing seam: future station grid positions and path bends can be curated there without modifying the solver, timetable artifact or runtime.
+The first complete diagram artifact now provides that mechanical baseline. `npm run data:london:diagram` applies a central-London lens before snapping paths to horizontal, vertical and 45-degree segments. The lens enlarges the dense interchange field, compresses long outer branches, coalesces source IDs that describe the same named interchange and routes both travel directions through the same bend. All 505 source-identified stops and 1,414 path indexes remain stable through the morph. The resulting artifact is 62.1 KiB raw and 9.4 KiB compressed, including its separately authored Thames stroke. Its source-network and authored-override hashes, stop coverage, identity uniqueness, path coverage, Thames presence and octilinear geometry are enforced by the London build gate. `fixtures/tfl/all-change-diagram-overrides.json` remains the separate visual-editing seam: principal interchange cells, selected path bends and contextual strokes can be curated there without modifying the timetable artifact or runtime.
+
+As the diagram resolves, the generic cyan traffic field recedes and an edition-owned line-identity layer appears. It uses TfL's current screen palette as a source, with only the darkest colours lifted for legibility in the Motion Studies night field; geography remains in the shared modal palette. This keeps the diagram recognisably London without presenting a reproduction of TfL's map artwork or making the physical view resemble a journey planner.
+
+The first **PULSE** study reuses the shared clock-face engine around four deliberately contrasting interchanges: King's Cross St. Pancras, Bank, Waterloo and Stratford. Calls are derived from the same currently loaded timetable slice, so changing the main clock, playback speed or service-category emphasis also changes the orbit. The interchange can be changed from a compact status-card selector, `P` toggles the study, and selecting a geographic search result returns to the network without losing time.
 
 The first prototype should cover the complete rail-led morning lattice rather than a single showcase line; the value of the transformation is seeing the entire city's physical irregularity resolve into logical structure. Acceptance criteria are:
 
@@ -61,7 +67,7 @@ The first prototype should cover the complete rail-led morning lattice rather th
 - deterministic geometry and label results for recording and scrubbing;
 - a reversible keyboard- and touch-accessible **GEOGRAPHY / DIAGRAM** control;
 - a reduced-motion path that changes layout without a sweeping animation; and
-- mobile frame time and artifact size included in the London-specific performance gates.
+- mobile frame time and artifact size included in the London-specific performance gates. The iPhone browser matrix rejects a diagram that cannot deliver at least 18 animation frames in 1.8 seconds or whose 95th-percentile frame interval exceeds 125 ms; the deliberately broad threshold catches gross regressions without pretending hosted software WebGL is a device benchmark.
 
 ## Adapter proofs
 
@@ -96,9 +102,19 @@ The opening 06:45–08:45 BST artifact contains 374 filtered flight tracks and 1
 
 The 24-hour study indexes 3,182 flight segments and 137,886 samples. A 64 KiB compressed manifest supports callsign and six-character ICAO-address search across the whole day; 24 overlapping one-hour motion files are loaded progressively around the shared railway clock. The busiest file is 132 KiB compressed and the complete air day is about 1.92 MiB compressed, but is never parsed as one browser payload.
 
-Selecting a search result or aircraft needle moves the clock into its observed interval, enters the shared damped follow camera and exposes callsign, ICAO address, altitude, groundspeed and derived heading. Aircraft and trains share the same context-sensitive label control. Callsigns are observational identifiers, not reliable origin/destination metadata.
+Selecting a search result or aircraft needle moves the clock into its observed interval, enters the shared damped follow camera and exposes callsign, ICAO address, altitude, groundspeed and derived heading. Aircraft and trains share the same context-sensitive label control. Heathrow (`LHR` / `EGLL`), London City (`LCY` / `EGLC`) and Gatwick (`LGW` / `EGKK`) are also first-class search results. Selecting one restores geographic space, frames its location, isolates AIR and retains emphasis on the observed tracks which enter its low-altitude approach envelope; unrelated aircraft, rail labels and surface movement recede.
+
+Airport association is deliberately observational rather than scheduled. A track is associated when its recorded samples enter the airport's explicit low-altitude approach envelope, and the resulting identifier is baked into the morning artifact, every progressive day chunk and the day manifest. This preserves the association after an aircraft climbs away while avoiding a false claim that callsign alone reveals origin or destination. The current artifacts identify 144 Heathrow, 46 London City and 27 Gatwick tracks in the morning study, and 1,343, 385 and 153 respectively across the complete day.
 
 The source is the ADSB.lol historical heatmap release for 4 September 2026, cropped to `-0.75,51.2,0.4,51.75` and interpreted at BST (`UTC+1`). The same ground, stale-position and slow/light-aircraft filters as LUFTRAUM are applied offline. Published artifacts preserve ADSB.lol provenance and the ODbL 1.0 licence; raw receiver slices never ship to the browser.
+
+## ROAD — London Orbital
+
+The optional **ROAD** study reconstructs traffic on the M1, M3, M4, M11, M23, M25 and M40 from National Highways WebTRIS observations. It does not represent tracked automobiles. Each warm light particle is a deterministic visual sample of the measured directional flow, while particle speed and the heavier amber stream follow the detector's mean speed and vehicle-length classes. Selecting ROAD applies the same highlight/dim convention as a rail category; searching a motorway isolates its corridor and frames it geographically.
+
+The first full-day artifact records Friday 5 September 2025, a comparable historical weekday because observations for the railway study's future 2026 date do not yet exist. The compiler samples 304 active mainline detector directions at roughly one-kilometre spacing on radial roads and two-kilometre spacing around the M25. It joins them into 292 directional motorway sections and preserves all 96 quarter-hour WebTRIS observations with complete selected-site coverage. This date remains visible in the selection card so the composition never implies that the road and rail layers are contemporaneous observations.
+
+Topology, a small manifest and four six-hour motion chunks are fetched only after ROAD is enabled. The complete optional study is about 222 KiB compressed; the largest motion chunk is about 43 KiB. `npm run data:london:roads` deterministically rebuilds the artifacts from the official site inventory and daily-report API, while the London payload gate validates coverage, time sequence and size. The methodology remains explicit: **traffic-flow reconstruction / no vehicle tracking**.
 
 ## Data strategy
 
@@ -119,6 +135,8 @@ Sources:
 - [Greater London boundary layer](https://gis.london.gov.uk/arcgis/rest/services/apps/webmap_context_layer/MapServer/0)
 - [River Thames layer](https://gis.london.gov.uk/arcgis/rest/services/apps/webmap_context_layer/MapServer/1)
 - [ADSB.lol historical data](https://www.adsb.lol/docs/open-data/historical/)
+- [National Highways WebTRIS](https://webtris.nationalhighways.co.uk/)
+- [TfL colour standard](https://content.tfl.gov.uk/tfl-colour-standard.pdf)
 
 ## Roadmap
 
@@ -142,20 +160,23 @@ Sources:
 - [x] Ship a dedicated `/london.html` preview with its own catalogue, theme, metadata and request graph over the shared renderer, camera, search and playback engine.
 - [x] Hold the complete first view, including the immediately requested 3D renderer and opening data, below a 650 KiB compressed transfer ceiling.
 - [x] Cover the London bootstrap, data isolation, layout capability and keyboard station selection in the desktop and iPhone browser matrix.
-- Add a London-specific frame-time gate when the first visible edition scene exists.
+- [x] Add a phone-safe limited-chrome presentation mode which preserves the timeline, clock, playback and selection state.
+- [x] Add a London-specific frame-time gate when the first visible edition scene exists.
 
 ### LDN 2 — Day, pulse and dual geometry
 
 - [x] Add a complete Friday study with 10,455 journeys in twelve progressively loaded two-hour chunks.
 - [x] Keep the 24-hour topology and movements out of the opening request graph; verify chunk size and SHA-256 before adoption.
 - [x] Compile an independent Beck-inspired diagram baseline with stable stop identities, route-path indexes and octilinear geometry.
+- [x] Replace generic graph relaxation with a London-shaped central lens, shared interchange cells and direction-invariant schematic bends.
 - [x] Animate continuously between **GEOGRAPHY** and **DIAGRAM** without resetting time, selection or follow context; recede physical geography and move toward a top-down camera as the diagram resolves.
 - [x] Preserve the accepted station/train label set during the morph and provide an immediate reduced-motion path.
 - [x] Keep the diagram lazy, hash-bound to its network and below a 16 KiB compressed transfer ceiling.
-- Add an authored override layer for interchanges, branch spacing, crossings, label placement and a simplified Thames.
+- [x] Add an authored override layer for principal interchanges and a simplified Thames, leaving branch bends and label placement in the same curation seam for later visual passes.
+- [x] Add an edition-owned line palette which echoes TfL line identities in diagram mode without overwhelming the Motion Studies night palette.
 - [x] Add `D` / `G` keyboard shortcuts for the layout switch without allowing them to escape from the search field.
 - [x] Include reduced-motion layout switching in the desktop and iPhone browser matrix.
-- Create hub studies for a small set of contrasting interchanges rather than simply ranking the largest stations.
+- [x] Create the first shared-clock pulse study for four contrasting interchanges rather than simply ranking the largest stations.
 - Explore radial versus orbital pulse views and night-service transitions.
 
 ### LDN 3 — Surface city
@@ -170,7 +191,7 @@ Sources:
 - Record bounded historical studies for deterministic playback rather than presenting current API predictions as vehicle telemetry.
 - [x] Add an optional, same-clock aviation study with a lazy two-hour opening slice and a progressively loaded 24-hour replay.
 - [x] Reuse the restrained needle/trail grammar, category isolation, callsign/ICAO search, label policy, metrics and altitude-aware follow camera without making aviation part of the default payload.
-- Evaluate a London road layer independently; All Change does not need to reproduce Switzerland's complete triad by default.
+- [x] Add an independently lazy 24-hour motorway study from WebTRIS detector flow and speed, with ROAD isolation, corridor search and explicit non-tracking semantics.
 
 ## Exit criterion
 

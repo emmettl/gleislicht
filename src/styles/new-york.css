@@ -1,0 +1,606 @@
+[data-edition='new-york'] body {
+  background: #03070a;
+}
+
+.new-york-experience {
+  --ny-gutter: clamp(20px, 3.4vw, 52px);
+}
+
+.new-york-experience .atmosphere {
+  background:
+    linear-gradient(90deg, rgba(3, 7, 10, 0.72), transparent 28%, transparent 72%, rgba(3, 7, 10, 0.68)),
+    linear-gradient(180deg, rgba(3, 7, 10, 0.9), transparent 24%, transparent 70%, rgba(3, 7, 10, 0.92));
+}
+
+.ny-masthead {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 5;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: var(--ny-gutter);
+  pointer-events: none;
+}
+
+.ny-masthead p,
+.ny-masthead small,
+.ny-masthead aside,
+.ny-status p,
+.ny-status small {
+  margin: 0;
+}
+
+.ny-masthead p,
+.ny-masthead aside,
+.ny-masthead small {
+  font-family: 'DM Mono', ui-monospace, monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+}
+
+.ny-masthead p {
+  margin-bottom: 6px;
+  color: var(--cyan);
+  font-size: 0.65rem;
+}
+
+.ny-masthead h1 {
+  display: flex;
+  gap: 0.14em;
+  max-width: none;
+  margin: 0;
+  font: 600 clamp(2.3rem, 5vw, 5.6rem)/0.88 Inter, 'Helvetica Neue', sans-serif;
+  letter-spacing: -0.075em;
+  text-transform: uppercase;
+}
+
+.ny-masthead h1 i {
+  color: var(--pink);
+  font-style: normal;
+  font-weight: 400;
+}
+
+.ny-masthead > div > small {
+  display: block;
+  margin-top: 10px;
+  color: rgba(247, 251, 245, 0.68);
+  font-size: 0.62rem;
+}
+
+.ny-masthead aside {
+  display: grid;
+  gap: 7px;
+  justify-items: end;
+  color: rgba(247, 251, 245, 0.72);
+  font-size: 0.62rem;
+  text-align: right;
+}
+
+.ny-masthead aside small {
+  color: var(--muted);
+  font-size: 0.53rem;
+}
+
+.ny-layout-switch,
+.ny-time-switch {
+  position: absolute;
+  top: calc(var(--ny-gutter) + 67px);
+  z-index: 8;
+  display: flex;
+  padding: 4px;
+  border: 1px solid rgba(130, 255, 174, 0.2);
+  background: rgba(3, 10, 8, 0.72);
+  backdrop-filter: blur(18px);
+}
+
+.ny-layout-switch {
+  right: var(--ny-gutter);
+}
+
+.ny-time-switch {
+  right: calc(var(--ny-gutter) + 164px);
+}
+
+.ny-layout-switch button,
+.ny-time-switch button,
+.ny-patterns button,
+.ny-map-tools button,
+.ny-transport button,
+.ny-transport select,
+.ny-search form > button {
+  border: 1px solid rgba(172, 255, 196, 0.18);
+  border-radius: 0;
+  background: rgba(4, 13, 10, 0.82);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.ny-layout-switch button,
+.ny-time-switch button {
+  min-height: 38px;
+  padding: 0 14px;
+  border-color: transparent;
+  color: var(--muted);
+  font: 500 0.61rem/1 'DM Mono', ui-monospace, monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.ny-layout-switch button[aria-pressed='true'],
+.ny-time-switch button[aria-pressed='true'] {
+  border-color: rgba(130, 255, 174, 0.4);
+  background: rgba(29, 70, 46, 0.55);
+  color: white;
+  box-shadow: inset 0 -2px 0 var(--cyan), 0 0 20px rgba(130, 255, 174, 0.1);
+}
+
+.ny-search {
+  position: absolute;
+  top: clamp(145px, 18vh, 190px);
+  left: 50%;
+  z-index: 10;
+  width: min(44vw, 610px);
+  transform: translateX(-50%);
+}
+
+.ny-search form {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr) auto;
+  align-items: center;
+  min-height: 54px;
+  padding: 0 13px;
+  border: 1px solid rgba(130, 255, 174, 0.27);
+  background: rgba(3, 9, 8, 0.8);
+  backdrop-filter: blur(18px);
+}
+
+.ny-search:focus-within form {
+  border-color: rgba(130, 255, 174, 0.72);
+  box-shadow: 0 0 24px rgba(130, 255, 174, 0.07);
+}
+
+.ny-search .search-mark {
+  width: 17px;
+  height: 17px;
+  border: 1px solid var(--cyan);
+  border-radius: 50%;
+}
+
+.ny-search .search-mark::after {
+  width: 8px;
+  background: var(--cyan);
+}
+
+.ny-search label,
+.ny-search input {
+  min-width: 0;
+  width: 100%;
+}
+
+.ny-search input {
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--ink);
+  font: 400 0.86rem/1 'DM Mono', ui-monospace, monospace;
+}
+
+.ny-search input::placeholder {
+  color: rgba(220, 235, 224, 0.36);
+}
+
+.ny-search form > button {
+  width: 32px;
+  height: 32px;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+}
+
+.ny-search-results {
+  display: grid;
+  max-height: min(50vh, 390px);
+  overflow-y: auto;
+  border: 1px solid rgba(130, 255, 174, 0.28);
+  border-top: 0;
+  background: rgba(3, 9, 8, 0.96);
+  backdrop-filter: blur(20px);
+}
+
+.ny-search-results button {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 14px;
+  min-height: 48px;
+  padding: 11px 14px;
+  border: 0;
+  border-bottom: 1px solid rgba(130, 255, 174, 0.12);
+  background: transparent;
+  color: var(--ink);
+  text-align: left;
+}
+
+.ny-search-results button:hover,
+.ny-search-results button[aria-selected='true'] {
+  background: rgba(73, 164, 98, 0.2);
+}
+
+.ny-search-results strong {
+  font: 500 0.76rem/1.25 'DM Mono', ui-monospace, monospace;
+}
+
+.ny-search-results small,
+.ny-search-results p {
+  margin: 0;
+  color: var(--muted);
+  font: 400 0.5rem/1.2 'DM Mono', ui-monospace, monospace;
+  letter-spacing: 0.08em;
+}
+
+.ny-search-results p {
+  padding: 18px;
+}
+
+.ny-status {
+  position: absolute;
+  top: clamp(185px, 25vh, 270px);
+  left: var(--ny-gutter);
+  z-index: 6;
+  width: min(290px, 25vw);
+  padding: 19px 21px;
+  border: 1px solid rgba(130, 255, 174, 0.22);
+  border-left: 2px solid var(--cyan);
+  background: rgba(3, 9, 8, 0.77);
+  backdrop-filter: blur(17px);
+}
+
+.ny-status.is-pass {
+  border-color: rgba(255, 241, 93, 0.38);
+  border-left-color: #fff15d;
+  box-shadow: 0 0 42px rgba(255, 241, 93, 0.06);
+}
+
+.ny-status > div {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.ny-status > div strong {
+  color: var(--cyan);
+  font: 300 2.1rem/1 'DM Mono', ui-monospace, monospace;
+  text-shadow: 0 0 15px rgba(130, 255, 174, 0.38);
+}
+
+.ny-status > div span {
+  font-size: 0.82rem;
+}
+
+.ny-status p {
+  margin-top: 12px;
+  font-size: 0.93rem;
+}
+
+.ny-status small {
+  display: block;
+  margin-top: 7px;
+  color: var(--muted);
+  font: 400 0.57rem/1.45 'DM Mono', ui-monospace, monospace;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.ny-patterns {
+  position: absolute;
+  bottom: clamp(142px, 17vh, 184px);
+  left: 50%;
+  z-index: 7;
+  display: flex;
+  transform: translateX(-50%);
+  border: 1px solid rgba(130, 255, 174, 0.18);
+  background: rgba(3, 9, 8, 0.73);
+  backdrop-filter: blur(18px);
+}
+
+.ny-patterns button {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 0 8px;
+  align-items: center;
+  min-width: 160px;
+  min-height: 54px;
+  padding: 10px 14px;
+  border: 0;
+  border-right: 1px solid rgba(130, 255, 174, 0.14);
+  color: var(--muted);
+  font: 500 0.67rem/1 'DM Mono', ui-monospace, monospace;
+  letter-spacing: 0.06em;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.ny-patterns button:last-child {
+  border-right: 0;
+}
+
+.ny-patterns button i {
+  grid-row: 1 / span 2;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #69d98b;
+  box-shadow: 0 0 12px currentColor;
+}
+
+.ny-patterns button:nth-child(2) i {
+  background: #b9ff63;
+}
+
+.ny-patterns .ny-pass-button i {
+  border: 1px solid #fff15d;
+  background: transparent;
+}
+
+.ny-patterns button small {
+  grid-column: 2;
+  margin-top: 5px;
+  color: rgba(220, 235, 224, 0.42);
+  font-size: 0.48rem;
+}
+
+.ny-patterns button:hover,
+.ny-patterns button[aria-pressed='true'] {
+  background: rgba(62, 151, 90, 0.22);
+  color: white;
+  box-shadow: inset 0 -2px 0 var(--cyan);
+}
+
+.ny-map-tools {
+  position: absolute;
+  top: 50%;
+  right: var(--ny-gutter);
+  z-index: 7;
+  display: grid;
+  grid-template-columns: repeat(2, 44px);
+  transform: translateY(-50%);
+}
+
+.ny-map-tools button,
+.ny-transport button,
+.ny-transport select {
+  min-height: 44px;
+  font: 500 0.7rem/1 'DM Mono', ui-monospace, monospace;
+}
+
+.ny-map-tools button:hover,
+.ny-transport button:hover {
+  border-color: rgba(130, 255, 174, 0.65);
+  color: var(--cyan);
+}
+
+.ny-transport {
+  position: absolute;
+  right: max(var(--ny-gutter), calc(50% - 390px));
+  bottom: 48px;
+  left: max(var(--ny-gutter), calc(50% - 390px));
+  z-index: 8;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 5px 16px;
+  padding: 12px 14px;
+  border: 1px solid rgba(130, 255, 174, 0.2);
+  background: rgba(3, 9, 8, 0.82);
+  backdrop-filter: blur(18px);
+}
+
+.ny-transport > div {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+  color: var(--muted);
+  font: 400 0.58rem/1 'DM Mono', ui-monospace, monospace;
+  letter-spacing: 0.1em;
+}
+
+.ny-transport > div strong {
+  color: var(--cyan);
+  font-weight: 500;
+}
+
+.ny-transport label {
+  display: flex;
+  align-items: center;
+}
+
+.ny-transport input[type='range'] {
+  width: 100%;
+}
+
+.ny-transport aside {
+  display: flex;
+}
+
+.ny-transport button,
+.ny-transport select {
+  min-width: 48px;
+  padding: 0 11px;
+}
+
+.ny-footer {
+  position: absolute;
+  right: var(--ny-gutter);
+  bottom: 15px;
+  left: var(--ny-gutter);
+  z-index: 4;
+  display: flex;
+  justify-content: space-between;
+  color: rgba(220, 235, 224, 0.35);
+  font: 400 0.48rem/1 'DM Mono', ui-monospace, monospace;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+.new-york-experience.is-limited-chrome .ny-masthead,
+.new-york-experience.is-limited-chrome .ny-layout-switch,
+.new-york-experience.is-limited-chrome .ny-time-switch,
+.new-york-experience.is-limited-chrome .ny-search,
+.new-york-experience.is-limited-chrome .ny-status,
+.new-york-experience.is-limited-chrome .ny-patterns,
+.new-york-experience.is-limited-chrome .ny-map-tools,
+.new-york-experience.is-limited-chrome .ny-footer {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .new-york-experience {
+    --ny-gutter: 18px;
+    min-height: 520px;
+  }
+
+  .ny-masthead {
+    padding-top: max(18px, env(safe-area-inset-top));
+  }
+
+  .ny-masthead p {
+    margin-bottom: 4px;
+    font-size: 0.54rem;
+  }
+
+  .ny-masthead h1 {
+    gap: 0.11em;
+    font-size: clamp(1.6rem, 8vw, 2.05rem);
+    letter-spacing: -0.065em;
+  }
+
+  .ny-masthead > div > small {
+    display: none;
+  }
+
+  .ny-masthead aside {
+    display: none;
+  }
+
+  .ny-layout-switch {
+    top: max(74px, calc(env(safe-area-inset-top) + 55px));
+    right: var(--ny-gutter);
+  }
+
+  .ny-time-switch {
+    top: max(74px, calc(env(safe-area-inset-top) + 55px));
+    right: auto;
+    left: var(--ny-gutter);
+  }
+
+  .ny-layout-switch button,
+  .ny-time-switch button {
+    min-height: 34px;
+    padding: 0 10px;
+    font-size: 0.54rem;
+  }
+
+  .ny-search {
+    top: max(119px, calc(env(safe-area-inset-top) + 100px));
+    width: calc(100% - 36px);
+  }
+
+  .ny-search form {
+    min-height: 48px;
+  }
+
+  .ny-search input {
+    font-size: 0.74rem;
+  }
+
+  .ny-status {
+    top: max(179px, calc(env(safe-area-inset-top) + 160px));
+    width: auto;
+    max-width: calc(100% - 100px);
+    padding: 10px 13px;
+  }
+
+  .ny-status > div strong {
+    font-size: 1.45rem;
+  }
+
+  .ny-status > div span,
+  .ny-status p {
+    font-size: 0.7rem;
+  }
+
+  .ny-status small {
+    font-size: 0.46rem;
+  }
+
+  .ny-map-tools {
+    top: max(179px, calc(env(safe-area-inset-top) + 160px));
+    right: var(--ny-gutter);
+    grid-template-columns: 37px;
+    transform: none;
+  }
+
+  .ny-map-tools button {
+    min-height: 37px;
+  }
+
+  .ny-map-tools button:nth-child(2),
+  .ny-map-tools button:nth-child(4) {
+    display: none;
+  }
+
+  .ny-patterns {
+    right: 12px;
+    bottom: calc(118px + env(safe-area-inset-bottom));
+    left: 12px;
+    width: auto;
+    transform: none;
+  }
+
+  .ny-patterns button {
+    min-width: 0;
+    min-height: 48px;
+    flex: 1;
+    padding: 8px;
+    font-size: 0.56rem;
+  }
+
+  .ny-patterns button small {
+    display: none;
+  }
+
+  .ny-patterns button i {
+    grid-row: auto;
+  }
+
+  .ny-transport {
+    right: 12px;
+    bottom: calc(12px + env(safe-area-inset-bottom));
+    left: 12px;
+    grid-template-columns: 1fr auto;
+    padding: 10px;
+  }
+
+  .ny-transport button,
+  .ny-transport select {
+    min-width: 42px;
+    min-height: 40px;
+    padding: 0 8px;
+  }
+
+  .ny-footer {
+    display: none;
+  }
+
+  .new-york-experience.is-limited-chrome .ny-transport {
+    display: grid;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .new-york-experience .scanlines {
+    opacity: 0.06;
+  }
+}

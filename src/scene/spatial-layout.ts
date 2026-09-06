@@ -13,6 +13,9 @@ import {
 export interface ProjectedSpatialLayout {
   readonly stops: readonly ProjectedPathPoint[]
   readonly paths: readonly ProjectedNetworkPath[]
+  readonly context?: {
+    readonly waterPaths: readonly ProjectedNetworkPath[]
+  }
 }
 function layoutProjection(layout: SpatialLayoutSnapshot, targetWidth: number) {
   const width = Math.max(0.000001, layout.bounds.maxX - layout.bounds.minX)
@@ -50,7 +53,15 @@ export function projectSpatialLayout(
       ? prepareProjectedPath(coordinates.map(project))
       : geographicPath
   })
-  return { stops, paths }
+  const waterPaths =
+    layout.context?.waterPaths
+      ?.filter((path) => path.length >= 2)
+      .map((path) => prepareProjectedPath(path.map(project))) ?? []
+  return {
+    stops,
+    paths,
+    context: waterPaths.length > 0 ? { waterPaths } : undefined,
+  }
 }
 
 function pointAt(
@@ -102,5 +113,5 @@ export function blendProjectedSpatialLayout(
     })
     return prepareProjectedPath(points)
   })
-  return { stops, paths }
+  return { stops, paths, context: alternate.context }
 }

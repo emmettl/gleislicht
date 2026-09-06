@@ -5,7 +5,9 @@ import type {
   BoundaryCoordinate,
   MapBoundary,
 } from '../domain/boundary.ts'
+import type { StudyAirport } from '../domain/airport.ts'
 import type { MapWaterBodies } from '../domain/lakes.ts'
+import type { MapReferencePaths } from '../domain/map-reference.ts'
 import type { SpatialLayoutSnapshot } from '../domain/spatial-layout.ts'
 import type {
   RoadTopologySnapshot,
@@ -109,6 +111,7 @@ export type MapCameraAction =
   | 'reset'
   | 'reveal-station'
   | 'focus-road'
+  | 'focus-location'
 
 export interface MapCameraCommand {
   readonly id: number
@@ -120,12 +123,16 @@ export interface MapCameraCommand {
 interface NationalNetworkSceneProps {
   readonly boundary?: MapBoundary
   readonly lakes?: MapWaterBodies
+  readonly referencePaths?: MapReferencePaths
   readonly snapshot: NetworkSnapshot
   readonly referenceSnapshot: NetworkSnapshot
   readonly contextSnapshot?: NetworkSnapshot
   readonly isPlaying: boolean
   readonly time: number
   readonly selectedTrain?: NetworkTrain
+  /** A small set of simultaneous journeys to compare without choosing a single train. */
+  readonly comparisonTrains?: readonly NetworkTrain[]
+  readonly comparisonColors?: readonly string[]
   readonly onTime: (time: number) => void
   readonly cameraCommand?: MapCameraCommand
   readonly playbackRate: number
@@ -144,10 +151,16 @@ interface NationalNetworkSceneProps {
   readonly roadCategorySelected?: boolean
   readonly selectedRoadId?: string
   readonly selectedAirTrack?: AirTrack
+  readonly selectedAirport?: StudyAirport
   readonly onSelectAirTrack?: (trackId: string) => void
   readonly spatialLayout?: SpatialLayoutSnapshot
   readonly spatialLayoutMix?: number
   readonly layoutTransitioning?: boolean
+  readonly routeColors?: Readonly<Record<string, string>>
+  /** Route identity may emerge independently of a spatial-layout morph. */
+  readonly routeColorMix?: number
+  /** Strengthens aggregate edge flow when an edition deliberately pulls back. */
+  readonly trafficOverviewEmphasis?: number
 }
 
 type ProjectedStop = readonly [x: number, y: number, z: number]
@@ -158,6 +171,19 @@ const LakeAvoidingPathsContext = createContext<LakeAvoidingPathMap>(
 )
 
 const STATION_SURFACE_Y = 0.035
+
+function mixedRouteColor(
+  category: ServiceCategory,
+  routeName: string,
+  routeColors: Readonly<Record<string, string>> | undefined,
+  mix: number,
+): string {
+  const identityColor = routeColors?.[routeName]
+  if (!identityColor || mix <= 0) return SERVICE_COLORS[category]
+  return `#${new THREE.Color(SERVICE_COLORS[category])
+    .lerp(new THREE.Color(identityColor), THREE.MathUtils.clamp(mix, 0, 1))
+    .getHexString()}`
+}
 
 const MAP_LAYER = {
   selectionGlow: 6,
@@ -441,6 +467,131 @@ function LakeLayer({
   )
 }
 
+function DiagramWaterLayer({
+  paths,
+  opacity,
+}: {
+  readonly paths: readonly ProjectedNetworkPath[]
+  readonly opacity: number
+}) {
+  const geometry = useMemo(() => {
+    const positions: number[] = []
+    paths.forEach((path) => appendLineSegments(positions, path.points, 0.025))
+    const line = new THREE.BufferGeometry()
+    line.setAttribute(
+      'position',
+      new THREE.Float32BufferAttribute(positions, 3),
+    )
+    const ribbons = paths
+      .filter((path) => path.points.length >= 2)
+      .map((path) => {
+        const curve = new THREE.CatmullRomCurve3(
+          path.points.map(([x, , z]) => new THREE.Vector3(x, 0.02, z)),
+          false,
+          'centripetal',
+        )
+        return new THREE.TubeGeometry(
+          curve,
+          Math.max(24, path.points.length * 6),
+          0.085,
+          5,
+          false,
+        )
+      })
+    return { line, ribbons }
+  }, [paths])
+
+  useEffect(
+    () => () => {
+      geometry.line.dispose()
+      geometry.ribbons.forEach((ribbon) => ribbon.dispose())
+    },
+    [geometry],
+  )
+
+  return (
+    <group>
+      {geometry.ribbons.map((ribbon, index) => (
+        <mesh key={index} geometry={ribbon} renderOrder={1}>
+          <meshBasicMaterial
+            color="#075277"
+            transparent
+            opacity={opacity * 0.78}
+            depthTest={false}
+            depthWrite={false}
+            toneMapped={false}
+            fog={false}
+          />
+        </mesh>
+      ))}
+      <lineSegments geometry={geometry.line} renderOrder={2}>
+        <lineBasicMaterial
+          color="#55d6e8"
+          transparent
+          opacity={opacity * 0.28}
+          blending={THREE.AdditiveBlending}
+          depthTest={false}
+          depthWrite={false}
+          toneMapped={false}
+          fog={false}
+        />
+      </lineSegments>
+    </group>
+  )
+}
+
+function ReferencePathLayer({
+  references,
+  projection,
+  subdued,
+}: {
+  readonly references: MapReferencePaths
+  readonly projection: NetworkProjection
+  readonly subdued: boolean
+}) {
+  const paths = useMemo(
+    () => references.references.map((reference) => {
+      const positions: number[] = []
+      for (const path of reference.paths) {
+        appendLineSegments(
+          positions,
+          path.map((coordinate) => projectCoordinate(coordinate, projection)),
+          0.028,
+        )
+      }
+      const geometry = new THREE.BufferGeometry()
+      geometry.setAttribute(
+        'position',
+        new THREE.Float32BufferAttribute(positions, 3),
+      )
+      return { ...reference, geometry }
+    }),
+    [projection, references.references],
+  )
+
+  useEffect(
+    () => () => paths.forEach(({ geometry }) => geometry.dispose()),
+    [paths],
+  )
+
+  return (
+    <group>
+      {paths.map(({ id, color, geometry }) => (
+        <lineSegments key={id} geometry={geometry} renderOrder={1}>
+          <lineBasicMaterial
+            color={color ?? '#c9a9dd'}
+            transparent
+            opacity={subdued ? 0.04 : 0.2}
+            depthWrite={false}
+            toneMapped={false}
+            fog={false}
+          />
+        </lineSegments>
+      ))}
+    </group>
+  )
+}
+
 function CountryBorder({
   boundary,
   projection,
@@ -525,6 +676,9 @@ function RailGraph({
   subdued,
   lakeAvoidingPaths,
   showTraffic = true,
+  routeColors,
+  routeColorMix = 0,
+  trafficOverviewEmphasis = 0,
 }: {
   readonly snapshot: NetworkSnapshot
   readonly projectedStops: readonly ProjectedStop[]
@@ -533,6 +687,9 @@ function RailGraph({
   readonly subdued: boolean
   readonly lakeAvoidingPaths: LakeAvoidingPathMap
   readonly showTraffic?: boolean
+  readonly routeColors?: Readonly<Record<string, string>>
+  readonly routeColorMix?: number
+  readonly trafficOverviewEmphasis?: number
 }) {
   const { camera } = useThree()
   const stationMaterial = useRef<THREE.PointsMaterial>(null)
@@ -604,9 +761,10 @@ function RailGraph({
     const cameraScale = THREE.MathUtils.clamp(camera.position.y / 37, 0.02, 1)
     stationMaterial.current.size = 0.065 * cameraScale
     const detail = localNetworkDetailAtZoom(camera.position.y, cameraFraming)
-    localNetworkMaterial.current.opacity = subdued
-      ? 0.008 + detail * 0.025
-      : 0.025 + detail * 0.115
+    const identityAttenuation = 1 - routeColorMix * 0.72
+    localNetworkMaterial.current.opacity =
+      (subdued ? 0.008 + detail * 0.025 : 0.025 + detail * 0.115) *
+      identityAttenuation
   })
 
   return (
@@ -615,7 +773,7 @@ function RailGraph({
         <lineBasicMaterial
           color="#7296bb"
           transparent
-          opacity={subdued ? 0.035 : 0.14}
+          opacity={(subdued ? 0.035 : 0.14) * (1 - routeColorMix * 0.72)}
           blending={THREE.AdditiveBlending}
         />
       </lineSegments>
@@ -634,6 +792,19 @@ function RailGraph({
           projectedStops={projectedStops}
           projectedPaths={projectedPaths}
           lakeAvoidingPaths={lakeAvoidingPaths}
+          subdued={subdued}
+          identityMix={routeColorMix}
+          overviewEmphasis={trafficOverviewEmphasis}
+        />
+      )}
+      {routeColors && routeColorMix > 0.001 && (
+        <RouteIdentityLayer
+          snapshot={snapshot}
+          projectedStops={projectedStops}
+          projectedPaths={projectedPaths}
+          lakeAvoidingPaths={lakeAvoidingPaths}
+          routeColors={routeColors}
+          opacity={routeColorMix}
           subdued={subdued}
         />
       )}
@@ -656,18 +827,113 @@ function RailGraph({
   )
 }
 
-function TrafficFlowLayer({
+function RouteIdentityLayer({
   snapshot,
   projectedStops,
   projectedPaths,
   lakeAvoidingPaths,
+  routeColors,
+  opacity,
   subdued,
 }: {
   readonly snapshot: NetworkSnapshot
   readonly projectedStops: readonly ProjectedStop[]
   readonly projectedPaths: readonly ProjectedNetworkPath[]
   readonly lakeAvoidingPaths: LakeAvoidingPathMap
+  readonly routeColors: Readonly<Record<string, string>>
+  readonly opacity: number
   readonly subdued: boolean
+}) {
+  const routes = useMemo(() => {
+    const records = new Map<
+      string,
+      { color: string; positions: number[]; segments: Set<string> }
+    >()
+
+    for (const train of snapshot.trains) {
+      const color = routeColors[train.route]
+      if (!color) continue
+      const record = records.get(train.route) ?? {
+        color,
+        positions: [],
+        segments: new Set<string>(),
+      }
+      for (let index = 1; index < train.stops.length; index += 1) {
+        const fromIndex = train.stops[index - 1][0]
+        const toIndex = train.stops[index][0]
+        const pathIndex = train.pathSegments?.[index - 1]
+        const key =
+          pathIndex === undefined || pathIndex === null
+            ? fromIndex < toIndex
+              ? `${fromIndex}:${toIndex}`
+              : `${toIndex}:${fromIndex}`
+            : `path:${pathIndex}`
+        if (record.segments.has(key)) continue
+        const points = segmentPoints(
+          train,
+          index - 1,
+          projectedStops,
+          projectedPaths,
+          lakeAvoidingPaths,
+        )
+        if (points.length < 2) continue
+        record.segments.add(key)
+        appendLineSegments(record.positions, points, 0.075)
+      }
+      records.set(train.route, record)
+    }
+
+    return [...records.entries()].map(([name, record]) => {
+      const geometry = new THREE.BufferGeometry()
+      geometry.setAttribute(
+        'position',
+        new THREE.Float32BufferAttribute(record.positions, 3),
+      )
+      return { name, color: record.color, geometry }
+    })
+  }, [lakeAvoidingPaths, projectedPaths, projectedStops, routeColors, snapshot])
+
+  useEffect(
+    () => () => routes.forEach(({ geometry }) => geometry.dispose()),
+    [routes],
+  )
+
+  return (
+    <group>
+      {routes.map(({ name, color, geometry }) => (
+        <lineSegments key={name} geometry={geometry} renderOrder={3}>
+          <lineBasicMaterial
+            color={color}
+            transparent
+            opacity={opacity * (subdued ? 0.12 : 0.52)}
+            blending={THREE.AdditiveBlending}
+            depthTest={false}
+            depthWrite={false}
+            toneMapped={false}
+            fog={false}
+          />
+        </lineSegments>
+      ))}
+    </group>
+  )
+}
+
+function TrafficFlowLayer({
+  snapshot,
+  projectedStops,
+  projectedPaths,
+  lakeAvoidingPaths,
+  subdued,
+  identityMix = 0,
+  overviewEmphasis = 0,
+}: {
+  readonly snapshot: NetworkSnapshot
+  readonly projectedStops: readonly ProjectedStop[]
+  readonly projectedPaths: readonly ProjectedNetworkPath[]
+  readonly lakeAvoidingPaths: LakeAvoidingPathMap
+  readonly subdued: boolean
+  readonly identityMix?: number
+  readonly overviewEmphasis?: number
 }) {
   const pulseMaterial = useRef<THREE.LineBasicMaterial>(null)
   const geometries = useMemo(() => {
@@ -743,9 +1009,10 @@ function TrafficFlowLayer({
   useFrame(({ clock }) => {
     if (!pulseMaterial.current) return
     const wave = 0.5 + Math.sin(clock.elapsedTime * 1.35) * 0.5
-    pulseMaterial.current.opacity = subdued
-      ? 0.012 + wave * 0.012
-      : 0.1 + wave * 0.12
+    pulseMaterial.current.opacity =
+      (subdued ? 0.012 + wave * 0.012 : 0.1 + wave * 0.12) *
+      (1 - identityMix * 0.72) *
+      (1 + overviewEmphasis * 1.15)
   })
 
   return (
@@ -754,7 +1021,11 @@ function TrafficFlowLayer({
         <lineBasicMaterial
           vertexColors
           transparent
-          opacity={subdued ? 0.045 : 0.62}
+          opacity={
+            (subdued ? 0.045 : 0.62) *
+            (1 - identityMix * 0.78) *
+            (1 + overviewEmphasis * 1.2)
+          }
           blending={THREE.AdditiveBlending}
           depthWrite={false}
           toneMapped={false}
@@ -895,13 +1166,17 @@ function SelectedRoute({
   train,
   projectedStops,
   projectedPaths,
+  color = SERVICE_COLORS[train.category],
+  comparisonLayer,
 }: {
   readonly train: NetworkTrain
   readonly projectedStops: readonly ProjectedStop[]
   readonly projectedPaths: readonly ProjectedNetworkPath[]
+  readonly color?: string
+  readonly comparisonLayer?: 'foundation' | 'foreground'
 }) {
   const lakeAvoidingPaths = useContext(LakeAvoidingPathsContext)
-  const line = useMemo(() => {
+  const geometry = useMemo(() => {
     const points: THREE.Vector3[] = []
     for (let index = 0; index < train.stops.length - 1; index += 1) {
       segmentPoints(
@@ -913,13 +1188,29 @@ function SelectedRoute({
       ).forEach(
         ([x, , z], pointIndex) => {
           if (index > 0 && pointIndex === 0) return
+          const previous = points.at(-1)
+          if (previous && Math.hypot(previous.x - x, previous.z - z) < 0.0001) {
+            return
+          }
           points.push(new THREE.Vector3(x, 0.12, z))
         },
       )
     }
-    const geometry = new THREE.BufferGeometry().setFromPoints(points)
+    const line = new THREE.BufferGeometry().setFromPoints(points)
+    if (!comparisonLayer || points.length < 2) return { line }
+    const curve = new THREE.CatmullRomCurve3(points, false, 'centripetal')
+    const coreRadius = comparisonLayer === 'foundation' ? 0.045 : 0.022
+    const glowRadius = comparisonLayer === 'foundation' ? 0.15 : 0.085
+    const segments = THREE.MathUtils.clamp(points.length * 2, 32, 720)
+    return {
+      line,
+      core: new THREE.TubeGeometry(curve, segments, coreRadius, 5, false),
+      glow: new THREE.TubeGeometry(curve, segments, glowRadius, 5, false),
+    }
+  }, [comparisonLayer, lakeAvoidingPaths, projectedPaths, projectedStops, train])
+  const material = useMemo(() => {
     const material = new THREE.LineBasicMaterial({
-      color: SERVICE_COLORS[train.category],
+      color,
       transparent: true,
       opacity: 0.95,
       blending: THREE.NormalBlending,
@@ -927,18 +1218,64 @@ function SelectedRoute({
       depthWrite: false,
       toneMapped: false,
     })
-    return new THREE.Line(geometry, material)
-  }, [lakeAvoidingPaths, projectedPaths, projectedStops, train])
+    return material
+  }, [color])
+  const line = useMemo(
+    () => new THREE.Line(geometry.line, material),
+    [geometry.line, material],
+  )
 
   useEffect(
     () => () => {
-      line.geometry.dispose()
-      ;(line.material as THREE.Material).dispose()
+      geometry.line.dispose()
+      geometry.core?.dispose()
+      geometry.glow?.dispose()
+      material.dispose()
     },
-    [line],
+    [geometry, material],
   )
 
-  return <primitive object={line} renderOrder={MAP_LAYER.selectionCore} />
+  return (
+    <group>
+      {geometry.glow && (
+        <mesh
+          geometry={geometry.glow}
+          renderOrder={MAP_LAYER.selectionGlow + (comparisonLayer === 'foreground' ? 2 : 0)}
+        >
+          <meshBasicMaterial
+            color={color}
+            transparent
+            opacity={comparisonLayer === 'foundation' ? 0.16 : 0.2}
+            blending={THREE.AdditiveBlending}
+            depthTest={false}
+            depthWrite={false}
+            toneMapped={false}
+            fog={false}
+          />
+        </mesh>
+      )}
+      {geometry.core && (
+        <mesh
+          geometry={geometry.core}
+          renderOrder={MAP_LAYER.selectionCore + (comparisonLayer === 'foreground' ? 2 : 0)}
+        >
+          <meshBasicMaterial
+            color={color}
+            transparent
+            opacity={0.88}
+            depthTest={false}
+            depthWrite={false}
+            toneMapped={false}
+            fog={false}
+          />
+        </mesh>
+      )}
+      <primitive
+        object={line}
+        renderOrder={MAP_LAYER.selectionCore + (comparisonLayer === 'foreground' ? 3 : 1)}
+      />
+    </group>
+  )
 }
 
 function SelectedLinePaths({
@@ -946,11 +1283,13 @@ function SelectedLinePaths({
   snapshot,
   projectedStops,
   projectedPaths,
+  color = SERVICE_COLORS[route.category],
 }: {
   readonly route: NetworkRouteIndexEntry
   readonly snapshot: NetworkSnapshot
   readonly projectedStops: readonly ProjectedStop[]
   readonly projectedPaths: readonly ProjectedNetworkPath[]
+  readonly color?: string
 }) {
   const lakeAvoidingPaths = useContext(LakeAvoidingPathsContext)
   const glowMaterial = useRef<THREE.LineBasicMaterial>(null)
@@ -1038,7 +1377,6 @@ function SelectedLinePaths({
       0.12 + (Math.sin(clock.elapsedTime * 1.8) * 0.5 + 0.5) * 0.12
   })
 
-  const color = SERVICE_COLORS[route.category]
   return (
     <group>
       <lineSegments
@@ -1303,6 +1641,7 @@ function StationLabels({
   selectedTrain,
   cameraFraming,
   layoutTransitioning = false,
+  hidden = false,
 }: {
   readonly stations: readonly StationIndexEntry[]
   readonly snapshot: NetworkSnapshot
@@ -1312,6 +1651,7 @@ function StationLabels({
   readonly selectedTrain?: NetworkTrain
   readonly cameraFraming: MapCameraFraming
   readonly layoutTransitioning?: boolean
+  readonly hidden?: boolean
 }) {
   const { camera, size } = useThree()
   const sprites = useRef<Array<THREE.Sprite | null>>([])
@@ -1409,6 +1749,10 @@ function StationLabels({
     sprites.current.forEach((sprite) => {
       if (sprite) sprite.visible = false
     })
+    if (hidden) {
+      retainedStationNames.current.clear()
+      return
+    }
 
     labels.forEach((label, index) => {
       const retained = retainedStationNames.current.has(label.station.name)
@@ -1608,7 +1952,11 @@ function createTrainLabelTexture(label: string, color: string): TrainLabelTextur
   return { texture, aspect: canvas.width / canvas.height }
 }
 
-function trainLabelText(train: NetworkTrain, selected: boolean): string {
+function trainLabelText(
+  train: NetworkTrain,
+  selected: boolean,
+  compared = false,
+): string {
   const identity = train.shortName
     ? `${train.route} · ${train.shortName}`
     : train.route
@@ -1617,6 +1965,12 @@ function trainLabelText(train: NetworkTrain, selected: boolean): string {
     train.realtime?.status === 'adjusted' && delay
       ? ` · ${delay > 0 ? '+' : '−'}${Math.round(Math.abs(delay) / 60)}′`
       : ''
+  if (compared) {
+    const comparisonIdentity = [train.shortName, train.servicePattern?.toUpperCase()]
+      .filter(Boolean)
+      .join(' · ')
+    return `${comparisonIdentity || train.route}${realtimeSuffix} → ${train.headsign}`
+  }
   return selected
     ? `${identity}${realtimeSuffix} → ${train.headsign}`
     : `${identity}${realtimeSuffix}`
@@ -1627,6 +1981,7 @@ function TrainLabels({
   projectedStops,
   projectedPaths,
   selectedTrain,
+  comparisonTrains,
   selectedRoute,
   selectedStation,
   selectedCategory,
@@ -1639,6 +1994,9 @@ function TrainLabels({
   trainTimeIndex,
   cameraFraming,
   layoutTransitioning = false,
+  routeColors,
+  spatialLayoutMix = 0,
+  routeColorMix = spatialLayoutMix,
 }: NationalNetworkSceneProps & {
   readonly projectedStops: readonly ProjectedStop[]
   readonly projectedPaths: readonly ProjectedNetworkPath[]
@@ -1657,6 +2015,10 @@ function TrainLabels({
   const selectedRouteTrainIds = useMemo(
     () => new Set(selectedRoute?.trainIds ?? []),
     [selectedRoute],
+  )
+  const comparisonTrainIds = useMemo(
+    () => new Set(comparisonTrains?.map((train) => train.id) ?? []),
+    [comparisonTrains],
   )
 
   useEffect(() => {
@@ -1691,6 +2053,10 @@ function TrainLabels({
       roadCategorySelected,
     )
       ? 0
+      : comparisonTrains?.length
+        ? trainLabelMode === 'off'
+          ? 0
+          : comparisonTrains.length
       : selectedTrain
       ? trainLabelMode === 'off'
         ? 0
@@ -1712,11 +2078,14 @@ function TrainLabels({
       selected: boolean
       retained: boolean
       arrivalOpacity: number
+      comparisonIndex: number
     }> = []
 
     for (const train of trainsNearTime(trainTimeIndex, localTime.current)) {
-      const selected = train.id === selectedTrain?.id
+      const selected =
+        train.id === selectedTrain?.id || comparisonTrainIds.has(train.id)
       const retained = retainedTrainIds.current.has(train.id)
+      if (comparisonTrains?.length && !selected) continue
       if (selectedTrain && !selected) continue
       if (layoutTransitioning && !selected && !retained) continue
       if (selectedRoute && !selectedRouteTrainIds.has(train.id)) continue
@@ -1781,6 +2150,9 @@ function TrainLabels({
         selected,
         retained,
         arrivalOpacity,
+        comparisonIndex: comparisonTrains?.findIndex(
+          (candidate) => candidate.id === train.id,
+        ) ?? -1,
       })
     }
 
@@ -1810,7 +2182,11 @@ function TrainLabels({
 
     for (const candidate of candidates) {
       if (visible >= labelBudget || visible >= MAX_TRAIN_LABELS) break
-      const text = trainLabelText(candidate.train, candidate.selected)
+      const text = trainLabelText(
+        candidate.train,
+        candidate.selected,
+        candidate.comparisonIndex >= 0,
+      )
       const screenHeight = trainLabelScreenHeight(
         size.width,
         candidate.selected,
@@ -1839,7 +2215,12 @@ function TrainLabels({
       if (!textureEntry) {
         textureEntry = createTrainLabelTexture(
           text,
-          SERVICE_COLORS[candidate.train.category],
+          mixedRouteColor(
+            candidate.train.category,
+            candidate.train.route,
+            routeColors,
+            routeColorMix,
+          ),
         )
         textures.current.set(textureKey, textureEntry)
       } else {
@@ -1850,7 +2231,17 @@ function TrainLabels({
       nextRetainedTrainIds.add(candidate.train.id)
 
       sprite.visible = true
-      sprite.position.set(candidate.position[0], 0.76, candidate.position[2])
+      const comparisonOffset =
+        candidate.comparisonIndex < 0
+          ? 0
+          : candidate.comparisonIndex === 0
+            ? -0.22
+            : 0.22
+      sprite.position.set(
+        candidate.position[0],
+        0.76 + comparisonOffset,
+        candidate.position[2],
+      )
       const worldHeight = stationLabelWorldHeight(
         candidate.depth,
         verticalFieldOfView,
@@ -2248,6 +2639,7 @@ function TrainSwarm({
   projectedStops,
   projectedPaths,
   selectedTrain,
+  comparisonTrains,
   selectedRoute,
   isPlaying,
   time,
@@ -2258,6 +2650,9 @@ function TrainSwarm({
   selectedStation,
   trainTimeIndex,
   cameraFraming,
+  routeColors,
+  spatialLayoutMix = 0,
+  routeColorMix = spatialLayoutMix,
 }: NationalNetworkSceneProps & {
   readonly projectedStops: readonly ProjectedStop[]
   readonly projectedPaths: readonly ProjectedNetworkPath[]
@@ -2275,6 +2670,10 @@ function TrainSwarm({
   const selectedRouteTrainIds = useMemo(
     () => new Set(selectedRoute?.trainIds ?? []),
     [selectedRoute],
+  )
+  const comparisonTrainIds = useMemo(
+    () => new Set(comparisonTrains?.map((train) => train.id) ?? []),
+    [comparisonTrains],
   )
   const lightTextures = useMemo(
     () => ({
@@ -2296,6 +2695,23 @@ function TrainSwarm({
         ]),
       ) as Record<ServiceCategory, THREE.Color>,
     [],
+  )
+  const trainPalette = useMemo(
+    () =>
+      new Map(
+        snapshot.trains.map((train) => [
+          train.id,
+          new THREE.Color(
+            mixedRouteColor(
+              train.category,
+              train.route,
+              routeColors,
+              routeColorMix,
+            ),
+          ),
+        ]),
+      ),
+    [routeColorMix, routeColors, snapshot.trains],
   )
   const geometries = useMemo(() => {
     const categoryCounts: Record<VehicleMarkerKind, number> = {
@@ -2374,6 +2790,7 @@ function TrainSwarm({
     for (const train of trainsNearTime(trainTimeIndex, localTime.current)) {
       const focused = Boolean(
         selectedTrain?.id === train.id ||
+          comparisonTrainIds.has(train.id) ||
           (selectedRoute && selectedRouteTrainIds.has(train.id)) ||
           (selectedStation && selectedStationTrainIds.has(train.id)) ||
           selectedCategory === train.category,
@@ -2408,7 +2825,8 @@ function TrainSwarm({
       const mutableColors = colorAttribute.array as Float32Array
       const offset = activeCounts[markerKind] * 3
       mutablePositions.set(position, offset)
-      const color = palette[train.category] ?? palette.other
+      const color =
+        trainPalette.get(train.id) ?? palette[train.category] ?? palette.other
       const stationIncludesTrain =
         !selectedStation || selectedStationTrainIds.has(train.id)
       const categoryIncludesTrain =
@@ -2417,6 +2835,10 @@ function TrainSwarm({
         !selectedRoute || selectedRouteTrainIds.has(train.id)
       const intensity = airCategorySelected
         ? 0.025
+        : comparisonTrains?.length
+          ? comparisonTrainIds.has(train.id)
+            ? 1
+            : 0.025
         : selectedTrain
         ? selectedTrain.id === train.id
           ? 1
@@ -2567,6 +2989,7 @@ function VehicleTrails({
   projectedStops,
   projectedPaths,
   selectedTrain,
+  comparisonTrains,
   selectedRoute,
   selectedCategory,
   airCategorySelected,
@@ -2576,6 +2999,9 @@ function VehicleTrails({
   playbackRate,
   trainTimeIndex,
   cameraFraming,
+  routeColors,
+  spatialLayoutMix = 0,
+  routeColorMix = spatialLayoutMix,
 }: NationalNetworkSceneProps & {
   readonly projectedStops: readonly ProjectedStop[]
   readonly projectedPaths: readonly ProjectedNetworkPath[]
@@ -2592,6 +3018,10 @@ function VehicleTrails({
     () => new Set(selectedRoute?.trainIds ?? []),
     [selectedRoute],
   )
+  const comparisonTrainIds = useMemo(
+    () => new Set(comparisonTrains?.map((train) => train.id) ?? []),
+    [comparisonTrains],
+  )
   const palette = useMemo(
     () =>
       Object.fromEntries(
@@ -2601,6 +3031,23 @@ function VehicleTrails({
         ]),
       ) as Record<ServiceCategory, THREE.Color>,
     [],
+  )
+  const trainPalette = useMemo(
+    () =>
+      new Map(
+        snapshot.trains.map((train) => [
+          train.id,
+          new THREE.Color(
+            mixedRouteColor(
+              train.category,
+              train.route,
+              routeColors,
+              routeColorMix,
+            ),
+          ),
+        ]),
+      ),
+    [routeColorMix, routeColors, snapshot.trains],
   )
   const geometries = useMemo(
     () =>
@@ -2659,6 +3106,7 @@ function VehicleTrails({
 
     for (const train of trainsNearTime(trainTimeIndex, localTime.current)) {
       if (airCategorySelected) continue
+      if (comparisonTrains?.length && !comparisonTrainIds.has(train.id)) continue
       if (selectedTrain && train.id !== selectedTrain.id) continue
       if (selectedRoute && !selectedRouteTrainIds.has(train.id)) continue
       if (selectedCategory && train.category !== selectedCategory) continue
@@ -2683,7 +3131,8 @@ function VehicleTrails({
           lakeAvoidingPaths,
         ),
       )
-      const color = palette[train.category] ?? palette.other
+      const color =
+        trainPalette.get(train.id) ?? palette[train.category] ?? palette.other
 
       for (let index = 0; index < VEHICLE_TRAIL_SEGMENTS; index += 1) {
         const current = samples[index]
@@ -2741,15 +3190,16 @@ function SelectedTrainMarker({
   time,
   projectedStops,
   projectedPaths,
+  color = SERVICE_COLORS[train.category],
 }: {
   readonly train: NetworkTrain
   readonly time: number
   readonly projectedStops: readonly ProjectedStop[]
   readonly projectedPaths: readonly ProjectedNetworkPath[]
+  readonly color?: string
 }) {
   const lakeAvoidingPaths = useContext(LakeAvoidingPathsContext)
   const marker = useRef<THREE.Group>(null)
-  const color = SERVICE_COLORS[train.category]
 
   useFrame((state) => {
     if (!marker.current) return
@@ -2868,12 +3318,24 @@ function NetworkCamera({
       if (!selectedStation) return
       const centre = stationCentre(selectedStation, projectedStops)
       camera.updateMatrixWorld()
-      if (mapSelectionNeedsReveal(centre.clone().project(camera))) {
+      if (
+        cameraCommand.distanceScale !== undefined ||
+        mapSelectionNeedsReveal(centre.clone().project(camera))
+      ) {
         mapTarget.current.copy(centre)
+      }
+      if (cameraCommand.distanceScale !== undefined) {
+        distanceScale.current = Math.max(
+          minimumDistanceScale,
+          cameraCommand.distanceScale,
+        )
       }
       return
     }
-    if (cameraCommand.action === 'focus-road') {
+    if (
+      cameraCommand.action === 'focus-road' ||
+      cameraCommand.action === 'focus-location'
+    ) {
       if (!cameraCommand.focus) return
       const [x, , z] = projectCoordinate(cameraCommand.focus, airProjection)
       mapTarget.current.set(x, 0, z)
@@ -3155,6 +3617,37 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
       ),
     [props.snapshot],
   )
+  const routeColorMix =
+    props.routeColorMix ?? props.spatialLayoutMix ?? 0
+  const selectedTrainRouteColor = props.selectedTrain
+    ? mixedRouteColor(
+        props.selectedTrain.category,
+        props.selectedTrain.route,
+        props.routeColors,
+        routeColorMix,
+      )
+    : undefined
+  const selectedLineRouteColor = props.selectedRoute
+    ? mixedRouteColor(
+        props.selectedRoute.category,
+        props.selectedRoute.name,
+        props.routeColors,
+        routeColorMix,
+      )
+    : undefined
+  const comparisonTrainIds = new Set(
+    props.comparisonTrains?.map((train) => train.id) ?? [],
+  )
+  const hasComparison = comparisonTrainIds.size > 0
+  const comparisonColors = props.comparisonTrains?.map((train, index) =>
+    props.comparisonColors?.[index] ??
+    mixedRouteColor(
+      train.category,
+      train.route,
+      props.routeColors,
+      routeColorMix,
+    ),
+  )
 
   return (
     <LakeAvoidingPathsContext.Provider value={lakeAvoidingPaths}>
@@ -3168,6 +3661,7 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
           opacityScale={1 - (props.spatialLayoutMix ?? 0)}
           subdued={Boolean(
             props.selectedTrain ||
+              hasComparison ||
               props.selectedRoute ||
               props.selectedStation ||
               props.selectedCategory ||
@@ -3177,6 +3671,12 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
           )}
         />
       )}
+      {projectedLayout.context?.waterPaths && (
+        <DiagramWaterLayer
+          paths={projectedLayout.context.waterPaths}
+          opacity={props.spatialLayoutMix ?? 0}
+        />
+      )}
       {props.boundary && (
         <CountryBorder
           boundary={props.boundary}
@@ -3184,6 +3684,7 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
           opacityScale={1 - (props.spatialLayoutMix ?? 0)}
           subdued={Boolean(
             props.selectedTrain ||
+              hasComparison ||
               props.selectedRoute ||
               props.selectedStation ||
               props.selectedCategory ||
@@ -3191,6 +3692,19 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
               props.roadCategorySelected ||
               props.selectedRoadId ||
               hasContext
+          )}
+        />
+      )}
+      {props.referencePaths && (
+        <ReferencePathLayer
+          references={props.referencePaths}
+          projection={projection}
+          subdued={Boolean(
+            props.selectedTrain ||
+              hasComparison ||
+              props.selectedRoute ||
+              props.selectedStation ||
+              props.selectedCategory
           )}
         />
       )}
@@ -3213,6 +3727,7 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
         lakeAvoidingPaths={lakeAvoidingPaths}
         subdued={Boolean(
           props.selectedTrain ||
+            hasComparison ||
             props.selectedRoute ||
             props.selectedStation ||
             props.selectedCategory ||
@@ -3220,6 +3735,9 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
             props.roadCategorySelected ||
             props.selectedRoadId
         )}
+        routeColors={props.routeColors}
+        routeColorMix={routeColorMix}
+        trafficOverviewEmphasis={props.trafficOverviewEmphasis}
       />
       {(props.roadSnapshot || props.roadTopology) && (
         <RoadTrafficLayer
@@ -3233,6 +3751,7 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
           selectedRoadId={props.selectedRoadId}
           subdued={Boolean(
             props.selectedTrain ||
+              hasComparison ||
               props.selectedRoute ||
               props.selectedStation ||
               props.selectedCategory ||
@@ -3248,10 +3767,12 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
           playbackRate={props.playbackRate}
           projection={projection}
           selectedTrackId={props.selectedAirTrack?.id}
+          selectedAirport={props.selectedAirport}
           onSelectTrack={props.onSelectAirTrack}
           labelMode={props.trainLabelMode}
           subdued={Boolean(
             props.selectedTrain ||
+              hasComparison ||
               props.selectedRoute ||
               props.selectedStation ||
               props.selectedCategory ||
@@ -3265,6 +3786,7 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
             train={props.selectedTrain}
             projectedStops={projectedStops}
             projectedPaths={projectedPaths}
+            color={selectedTrainRouteColor}
           />
           <SelectedTrainMarker
             train={props.selectedTrain}
@@ -3274,15 +3796,34 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
           />
         </>
       )}
+      {props.comparisonTrains?.map((train, index) => (
+        <group key={`comparison:${train.id}`}>
+          <SelectedRoute
+            train={train}
+            projectedStops={projectedStops}
+            projectedPaths={projectedPaths}
+            color={comparisonColors?.[index]}
+            comparisonLayer={index === 0 ? 'foundation' : 'foreground'}
+          />
+          <SelectedTrainMarker
+            train={train}
+            time={props.time}
+            projectedStops={projectedStops}
+            projectedPaths={projectedPaths}
+            color={comparisonColors?.[index]}
+          />
+        </group>
+      ))}
       {props.selectedRoute && (
         <SelectedLinePaths
           route={props.selectedRoute}
           snapshot={props.snapshot}
           projectedStops={projectedStops}
           projectedPaths={projectedPaths}
+          color={selectedLineRouteColor}
         />
       )}
-      {props.selectedStation && (
+      {props.selectedStation && !hasComparison && (
         <SelectedStationRoutes
           station={props.selectedStation}
           snapshot={props.snapshot}
@@ -3318,12 +3859,15 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
         selectedTrain={props.selectedTrain}
         cameraFraming={props.cameraFraming}
         layoutTransitioning={props.layoutTransitioning}
+        hidden={props.airCategorySelected}
       />
       <StationTapTarget
         stations={props.stations}
         projectedStops={projectedStops}
         cameraFraming={props.cameraFraming}
-        onSelectStation={props.onSelectStation}
+        onSelectStation={
+          props.airCategorySelected ? undefined : props.onSelectStation
+        }
       />
       <NetworkCamera
         selectedTrain={props.selectedTrain}

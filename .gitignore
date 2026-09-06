@@ -16,3 +16,4 @@ public/data/all-change-day-chunks/
 fixtures/tfl/all-change-unified-day.json
 fixtures/tfl/all-change-pdf-day.json
 fixtures/tfl/all-change-rail-led-day.json
+fixtures/mta/local-express-lexington-day.json

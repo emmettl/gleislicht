@@ -30,6 +30,10 @@ export interface SpatialLayoutSnapshot {
   readonly stops: readonly SpatialLayoutStop[]
   /** Path indexes deliberately match the source network's `paths` array. */
   readonly paths: readonly (readonly SpatialLayoutCoordinate[])[]
+  readonly context?: {
+    /** Edition-authored water strokes or other geographic cues in layout space. */
+    readonly waterPaths?: readonly (readonly SpatialLayoutCoordinate[])[]
+  }
 }
 
 export interface SpatialLayoutCoverage {

@@ -1,0 +1,115 @@
+[
+  {
+    "id": "M25",
+    "label": "M25",
+    "officialLabel": "M25",
+    "description": "London Orbital",
+    "focus": [-0.13, 51.49],
+    "cameraScale": 0.78,
+    "bounds": {
+      "minLongitude": -0.57,
+      "maxLongitude": 0.3,
+      "minLatitude": 51.25,
+      "maxLatitude": 51.73
+    },
+    "sampleSpacingChainage": 20,
+    "maximumChainage": 6000,
+    "closed": true
+  },
+  {
+    "id": "M1",
+    "label": "M1",
+    "officialLabel": "M1",
+    "description": "London · Watford approach",
+    "focus": [-0.32, 51.66],
+    "cameraScale": 0.36,
+    "bounds": {
+      "minLongitude": -0.42,
+      "maxLongitude": -0.22,
+      "minLatitude": 51.57,
+      "maxLatitude": 51.75
+    },
+    "sampleSpacingChainage": 10,
+    "closed": false
+  },
+  {
+    "id": "M3",
+    "label": "M3",
+    "officialLabel": "M3",
+    "description": "Sunbury · Surrey approach",
+    "focus": [-0.61, 51.36],
+    "cameraScale": 0.31,
+    "bounds": {
+      "minLongitude": -0.75,
+      "maxLongitude": -0.52,
+      "minLatitude": 51.31,
+      "maxLatitude": 51.41
+    },
+    "sampleSpacingChainage": 10,
+    "closed": false
+  },
+  {
+    "id": "M4",
+    "label": "M4",
+    "officialLabel": "M4",
+    "description": "Central London · Heathrow · Slough",
+    "focus": [-0.5, 51.49],
+    "cameraScale": 0.35,
+    "bounds": {
+      "minLongitude": -0.75,
+      "maxLongitude": -0.32,
+      "minLatitude": 51.47,
+      "maxLatitude": 51.51
+    },
+    "sampleSpacingChainage": 10,
+    "closed": false
+  },
+  {
+    "id": "M11",
+    "label": "M11",
+    "officialLabel": "M11",
+    "description": "Wanstead · Essex approach",
+    "focus": [0.13, 51.7],
+    "cameraScale": 0.25,
+    "bounds": {
+      "minLongitude": 0.11,
+      "maxLongitude": 0.16,
+      "minLatitude": 51.67,
+      "maxLatitude": 51.75
+    },
+    "sampleSpacingChainage": 10,
+    "closed": false
+  },
+  {
+    "id": "M23",
+    "label": "M23",
+    "officialLabel": "M23",
+    "description": "Croydon · Gatwick approach",
+    "focus": [-0.13, 51.24],
+    "cameraScale": 0.25,
+    "bounds": {
+      "minLongitude": -0.15,
+      "maxLongitude": -0.11,
+      "minLatitude": 51.2,
+      "maxLatitude": 51.27
+    },
+    "sampleSpacingChainage": 10,
+    "closed": false
+  },
+  {
+    "id": "M40",
+    "label": "M40",
+    "officialLabel": "M40",
+    "description": "Uxbridge · Buckinghamshire approach",
+    "focus": [-0.58, 51.58],
+    "cameraScale": 0.3,
+    "bounds": {
+      "minLongitude": -0.68,
+      "maxLongitude": -0.49,
+      "minLatitude": 51.55,
+      "maxLatitude": 51.61
+    },
+    "sampleSpacingChainage": 10,
+    "closed": false
+  }
+]

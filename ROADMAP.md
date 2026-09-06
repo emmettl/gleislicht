@@ -149,17 +149,45 @@ See [docs/AUTO.md](./docs/AUTO.md) for the data contract, reconstruction and rec
 - [x] Build the TfL adapter proof from a bounded weekday Bakerloo fixture with NaPTAN stops, route geometry and station intervals.
 - [x] Compile the London morning lattice with Greater London and Thames geometry.
 - [x] Add a dedicated London entry point once the fixture passes source and payload validation.
+- [x] Add a limited-chrome London presentation mode that leaves the timeline available on desktop and iPhone.
 - [x] Add an edition-neutral alternate-layout contract and a lazy, deterministic Beck-inspired diagram artifact.
 - [x] Animate continuously between London's geographic and diagram spaces without resetting journeys or selection.
+- [x] Reshape the logical layout around central-London expansion, compressed outer branches, shared interchange cells and stable two-way bends.
+- [x] Add authored interchange/path overrides, a simplified Thames and an optional TfL-echoing line palette to complete the iconic-map composition.
 - [x] Enforce the future package/repository boundary in CI so shared runtime code remains place-neutral.
 - [x] Add a separately loaded, integrity-checked 24-hour London timetable in progressive two-hour chunks.
-- [x] Add an optional observed-aircraft layer for London with matching two-hour and progressively loaded 24-hour studies, searchable flight codes and category emphasis.
-- [ ] Add London-specific pulse studies.
+- [x] Add an optional observed-aircraft layer for London with matching two-hour and progressively loaded 24-hour studies, searchable flight codes, airport approach/departure selection and category emphasis.
+- [x] Add an optional National Highways motorway study with real detector geometry, recorded flow/speed, progressive 24-hour loading, ROAD isolation and searchable corridor focus.
+- [x] Add the first London-specific interchange pulse study across four contrasting hubs.
 - [ ] Evaluate surface buses as separate borough or corridor studies.
 
 **Exit:** Gleislicht and All Change are independently authored Motion Studies, sharing runtime behaviour and visual grammar without sharing titles or place-specific assumptions.
 
 See [docs/EDITIONS.md](./docs/EDITIONS.md) for the reusable boundary and [docs/LONDON.md](./docs/LONDON.md) for the second-edition plan.
+
+## 10 — Catalogue programme
+
+- [x] Fix the first four-work catalogue: 005 Gleislicht, 006 All Change, 007 Local / Express and 008 Correspondances.
+- [x] Give New York and Paris distinct visual theses, signature studies and edition-level exit criteria.
+- [x] Define admission criteria that prevent Motion Studies becoming one renderer with interchangeable bounding boxes.
+- [x] Finish All Change's authored diagram overrides, interchange pulse studies and mobile frame-time gate.
+- [x] Audit licensing, service-day semantics, identifiers, geometry and historical reproducibility for New York and Paris before ingesting complete feeds; keep New York unpublished while its application terms remain unresolved.
+- [x] Prove one bounded New York local/express corridor through the current edition contract.
+- [x] Turn that proof into an independent Local / Express entry point with Manhattan shoreline context, a lazy directional diagram, pattern isolation, search and a scheduled-overtake director.
+- [x] Make the overtake director isolate both journeys, preserve local/express route identity and frame the completed order reversal.
+- [x] Add an integrity-checked authored diagram layer for station rhythm, direction gaps, bends and schematic rivers.
+- [x] Complete the 007 publication review and keep its page/data out of Pages until MTA clarifies transformation and application licensing.
+- [x] Compile the bounded 007 service day into twelve lazy two-hour chunks while preserving the fast opening study.
+- [x] Enforce a 390 KiB compressed first-view budget and desktop/iPhone browser gates for the New York foundation.
+- [ ] Use that third adapter proof—not calendar ambition—as the extraction trigger for `@motionstudies/core`, `@motionstudies/three` and the edition repositories.
+- [ ] Build 007 Local / Express through a rail-first opening study, then its geographic/topological transformation and overtaking composition.
+- [x] Build 008 Correspondances through a Métro/RER opening study, a continuous centre–periphery scale study and three source-backed interchange compositions.
+- [x] Give Correspondances an independent source-pinned shell, exact transfer evidence, official Seine/city context and a lazy 24-hour two-line study within a phone-first payload gate.
+- [ ] Keep Tokyo, Hong Kong, Berlin, San Francisco and Venice unnumbered until each has passed the catalogue admission test.
+
+**Exit:** every announced edition has a local argument, a defensible source model, an authored signature image and an independent payload budget; shared packages exist because three real works proved the seam.
+
+See [docs/CATALOGUE.md](./docs/CATALOGUE.md), [docs/NEW-YORK.md](./docs/NEW-YORK.md) and [docs/PARIS.md](./docs/PARIS.md).
 
 ## Data sources to validate in implementation
 

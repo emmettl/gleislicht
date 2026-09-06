@@ -22,6 +22,10 @@ const BUDGETS = {
   airManifestGzip: 75 * 1024,
   airChunkGzip: 145 * 1024,
   airDayTotalGzip: 2_100 * 1024,
+  roadTopologyGzip: 65 * 1024,
+  roadManifestGzip: 8 * 1024,
+  roadChunkGzip: 50 * 1024,
+  roadDayTotalGzip: 250 * 1024,
 }
 
 const networkBytes = await readFile(
@@ -53,6 +57,9 @@ if (new Set(layout.stops.map(([sourceId]) => sourceId)).size !== network.stops.l
 }
 if (layout.paths?.length !== network.paths.length) {
   throw new Error('London diagram path indexes do not match the opening network')
+}
+if (!layout.context?.waterPaths?.some((path) => path.length >= 2)) {
+  throw new Error('London diagram is missing its authored Thames context path')
 }
 
 const dayManifestBytes = await readFile(
@@ -267,6 +274,79 @@ if (
   airDayTotalGzip > BUDGETS.airDayTotalGzip
 ) {
   throw new Error('London optional air-study budget exceeded')
+}
+
+const roadTopologyBytes = await readFile(
+  resolve('public/data/all-change-road-topology.json'),
+)
+const roadTopology = JSON.parse(roadTopologyBytes.toString('utf8'))
+const roadManifestBytes = await readFile(
+  resolve('public/data/all-change-road-day-manifest.json'),
+)
+const roadManifest = JSON.parse(roadManifestBytes.toString('utf8'))
+if (
+  roadTopology.metadata?.publisher !== 'National Highways' ||
+  roadTopology.roads?.length !== 7 ||
+  roadTopology.sites?.length !== roadManifest.siteIds?.length ||
+  roadManifest.metadata?.windowStart !== 0 ||
+  roadManifest.metadata?.windowEnd !== 86_400 ||
+  roadManifest.metadata?.measurementKind !== 'recorded' ||
+  roadManifest.metadata?.minimumSiteCoverage !== 1 ||
+  roadManifest.chunks?.length !== 4
+) {
+  throw new Error('London road topology and day manifest violate the study contract')
+}
+const roadTopologyGzip = gzipSync(roadTopologyBytes, { level: 9 }).byteLength
+const roadManifestGzip = gzipSync(roadManifestBytes, { level: 9 }).byteLength
+let roadDayTotalGzip = roadTopologyGzip + roadManifestGzip
+let largestRoadChunkGzip = 0
+for (const [index, descriptor] of roadManifest.chunks.entries()) {
+  const expectedStart = index * 6 * 3600
+  if (
+    descriptor.windowStart !== expectedStart ||
+    descriptor.windowEnd !== expectedStart + 6 * 3600 ||
+    descriptor.path !== `all-change-road-day/${descriptor.id}.json`
+  ) {
+    throw new Error(`London road chunk ${descriptor.id} breaks the six-hour sequence`)
+  }
+  const bytes = await readFile(resolve('public/data', descriptor.path))
+  const chunk = JSON.parse(bytes.toString('utf8'))
+  const valueCount = chunk.minutes.reduce(
+    (total, [, values]) => total + values.length,
+    0,
+  )
+  if (
+    chunk.windowStart !== descriptor.windowStart ||
+    chunk.windowEnd !== descriptor.windowEnd ||
+    chunk.minutes.length !== descriptor.minuteCount ||
+    valueCount !== descriptor.valueCount
+  ) {
+    throw new Error(`London road chunk ${descriptor.id} disagrees with its manifest`)
+  }
+  const compressed = gzipSync(bytes, { level: 9 }).byteLength
+  roadDayTotalGzip += compressed
+  largestRoadChunkGzip = Math.max(largestRoadChunkGzip, compressed)
+}
+console.log('All Change optional road-study budget:')
+console.log(
+  `  topology   ${kibibytes(roadTopologyGzip)} / ${kibibytes(BUDGETS.roadTopologyGzip)}`,
+)
+console.log(
+  `  manifest   ${kibibytes(roadManifestGzip)} / ${kibibytes(BUDGETS.roadManifestGzip)}`,
+)
+console.log(
+  `  max chunk  ${kibibytes(largestRoadChunkGzip)} / ${kibibytes(BUDGETS.roadChunkGzip)}`,
+)
+console.log(
+  `  full day   ${kibibytes(roadDayTotalGzip)} / ${kibibytes(BUDGETS.roadDayTotalGzip)}`,
+)
+if (
+  roadTopologyGzip > BUDGETS.roadTopologyGzip ||
+  roadManifestGzip > BUDGETS.roadManifestGzip ||
+  largestRoadChunkGzip > BUDGETS.roadChunkGzip ||
+  roadDayTotalGzip > BUDGETS.roadDayTotalGzip
+) {
+  throw new Error('London optional road-study budget exceeded')
 }
 
 const manifest = JSON.parse(

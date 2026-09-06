@@ -21,6 +21,11 @@ import {
   type AirTrack,
 } from '../domain/air.ts'
 import {
+  airportAirTrackIds,
+  searchAirports,
+  type StudyAirport,
+} from '../domain/airport.ts'
+import {
   buildRouteIndex,
   buildStationIndex,
   formatServiceTime,
@@ -35,10 +40,17 @@ import {
   type StationIndexEntry,
 } from '../domain/network.ts'
 import {
+  callsAtHub,
+  callsNearTime,
+  nextHubCall,
+} from '../domain/hub.ts'
+import {
   adjacentDayChunks,
   dayChunkForTime,
   networkSnapshotForDayChunk,
 } from '../domain/network-day.ts'
+import { reconstructedNationalVehicleCount } from '../domain/road-day.ts'
+import type { RoadTopologySnapshot } from '../domain/road.ts'
 import {
   spatialLayoutCoverage,
   type SpatialLayoutSnapshot,
@@ -49,9 +61,25 @@ import {
   londonWater,
   type LondonGeographySnapshot,
 } from '../editions/london-geography.ts'
-import type { LondonEdition } from '../editions/london.ts'
+import {
+  ALL_CHANGE_ROUTE_COLORS,
+  type LondonEdition,
+} from '../editions/london.ts'
+import { LONDON_AIRPORTS } from '../editions/london-airports.ts'
+import {
+  LONDON_HUBS,
+  type LondonHubId,
+} from '../editions/london-hubs.ts'
+import {
+  LONDON_MOTORWAYS,
+  type LondonMotorway,
+} from '../editions/london-motorways.ts'
 import { motionStudyMark } from '../editions/catalogue.ts'
 import { foldSearchText } from '../search-text.ts'
+import {
+  roadCorridorSearchValue,
+  searchRoadCorridors,
+} from '../road-search.ts'
 import type {
   MapCameraAction,
   MapCameraCommand,
@@ -59,11 +87,18 @@ import type {
 import type { TrainLabelMode } from '../scene/train-labels.ts'
 import { SERVICE_COLORS } from '../theme/visual-language.ts'
 import { useProgressiveAirDay } from '../use-progressive-air-day.ts'
+import { useProgressiveRoadStudy } from '../use-progressive-road-study.ts'
 
 const NationalNetworkScene = lazy(() =>
   import('../scene/NationalNetworkScene.tsx').then(
     ({ NationalNetworkScene: Scene }) => ({ default: Scene }),
   ),
+)
+
+const HubPulseScene = lazy(() =>
+  import('../scene/HubPulseScene.tsx').then(({ HubPulseScene: Scene }) => ({
+    default: Scene,
+  })),
 )
 
 const PLAYBACK_RATES = [
@@ -99,6 +134,8 @@ const LONDON_CATEGORIES: readonly {
 ]
 
 type SearchChoice =
+  | { readonly kind: 'airport'; readonly value: StudyAirport }
+  | { readonly kind: 'road'; readonly value: LondonMotorway }
   | { readonly kind: 'station'; readonly value: StationIndexEntry }
   | { readonly kind: 'route'; readonly value: NetworkRouteIndexEntry }
   | { readonly kind: 'train'; readonly value: NetworkTrain }
@@ -138,6 +175,16 @@ function stationCentre(
   ]
 }
 
+function formatStudyDate(serviceDate?: string): string {
+  if (!serviceDate) return 'historical Friday'
+  return new Intl.DateTimeFormat('en-GB', {
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric',
+    timeZone: 'UTC',
+  }).format(new Date(`${serviceDate}T12:00:00Z`))
+}
+
 async function verifiedDayChunk(
   response: Response,
   descriptor: NetworkDayChunkDescriptor,
@@ -163,12 +210,20 @@ function searchChoices(
   snapshot: NetworkSnapshot,
   stations: readonly StationIndexEntry[],
   routes: readonly NetworkRouteIndexEntry[],
+  airports: readonly StudyAirport[],
+  roads: readonly LondonMotorway[],
   aircraft: readonly AirSearchTrack[],
   time: number,
 ): readonly SearchChoice[] {
   const folded = foldSearchText(query.trim())
   if (!folded) return []
 
+  const airportMatches = searchAirports(airports, query, 4).map(
+    (value): SearchChoice => ({ kind: 'airport', value }),
+  )
+  const roadMatches = searchRoadCorridors(roads, query, 4).map(
+    (value): SearchChoice => ({ kind: 'road', value }),
+  )
   const stationMatches = stations
     .filter((station) => foldSearchText(station.name).includes(folded))
     .slice(0, 5)
@@ -187,7 +242,14 @@ function searchChoices(
     (value): SearchChoice => ({ kind: 'air', value }),
   )
 
-  return [...airMatches, ...stationMatches, ...routeMatches, ...trainMatches].slice(0, 9)
+  return [
+    ...airportMatches,
+    ...roadMatches,
+    ...airMatches,
+    ...stationMatches,
+    ...routeMatches,
+    ...trainMatches,
+  ].slice(0, 9)
 }
 
 export function LondonStudyApp({ edition }: { readonly edition: LondonEdition }) {
@@ -212,7 +274,15 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
   const [morningAir, setMorningAir] = useState<AirSnapshot>()
   const [airLoadError, setAirLoadError] = useState(false)
   const [selectedAirTrackId, setSelectedAirTrackId] = useState<string>()
+  const [selectedAirport, setSelectedAirport] = useState<StudyAirport>()
+  const [roadEnabled, setRoadEnabled] = useState(false)
+  const [roadCategorySelected, setRoadCategorySelected] = useState(false)
+  const [selectedRoad, setSelectedRoad] = useState<LondonMotorway>()
+  const [roadTopology, setRoadTopology] = useState<RoadTopologySnapshot>()
+  const [roadLoadError, setRoadLoadError] = useState(false)
   const [trainLabelMode, setTrainLabelMode] = useState<TrainLabelMode>('auto')
+  const [limitedChrome, setLimitedChrome] = useState(false)
+  const [pulseHubId, setPulseHubId] = useState<LondonHubId>()
   const [query, setQuery] = useState('')
   const [searchOpen, setSearchOpen] = useState(false)
   const [activeSearchIndex, setActiveSearchIndex] = useState(0)
@@ -231,6 +301,11 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
   const airDay = useProgressiveAirDay(
     edition.data.air.dayManifest,
     airEnabled && studyWindow === 'day',
+    time,
+  )
+  const roadDay = useProgressiveRoadStudy(
+    edition.data.road.dayManifest,
+    roadEnabled,
     time,
   )
 
@@ -277,6 +352,21 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
         ? networkSnapshotForDayChunk(dayManifest, activeDayChunk)
         : morningNetwork,
     [activeDayChunk, dayManifest, morningNetwork, studyWindow],
+  )
+  const pulseHub = pulseHubId
+    ? LONDON_HUBS.find((hub) => hub.id === pulseHubId)
+    : undefined
+  const pulseCalls = useMemo(
+    () => (network && pulseHub ? callsAtHub(network, pulseHub) : []),
+    [network, pulseHub],
+  )
+  const nearbyPulseCalls = useMemo(
+    () => callsNearTime(pulseCalls, time),
+    [pulseCalls, time],
+  )
+  const upcomingPulseCall = useMemo(
+    () => nextHubCall(pulseCalls, time),
+    [pulseCalls, time],
   )
 
   useEffect(() => {
@@ -355,6 +445,25 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
       })
     return () => controller.abort()
   }, [airEnabled, edition.data.air.morning, morningAir, studyWindow])
+
+  useEffect(() => {
+    if (!roadEnabled || roadTopology) return
+    const controller = new AbortController()
+    fetch(editionDataUrl(edition.data.road.topology), {
+      signal: controller.signal,
+    })
+      .then((response) => {
+        if (!response.ok) throw new Error(`Road topology returned ${response.status}`)
+        return response.json() as Promise<RoadTopologySnapshot>
+      })
+      .then(setRoadTopology)
+      .catch((error: unknown) => {
+        if (error instanceof DOMException && error.name === 'AbortError') return
+        console.error('Unable to load the All Change road topology', error)
+        setRoadLoadError(true)
+      })
+    return () => controller.abort()
+  }, [edition.data.road.topology, roadEnabled, roadTopology])
 
   const animateLayout = useCallback((target: number) => {
     cancelAnimationFrame(layoutFrameRef.current)
@@ -461,6 +570,8 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
             network,
             stations,
             routes,
+            LONDON_AIRPORTS,
+            LONDON_MOTORWAYS,
             airEnabled ? searchableAircraft : [],
             time,
           )
@@ -493,19 +604,63 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
         : 0,
     [activeAirSnapshot, airEnabled, time],
   )
+  const selectedAirportTrackIds = useMemo(
+    () =>
+      selectedAirport && activeAirSnapshot
+        ? airportAirTrackIds(activeAirSnapshot.tracks, selectedAirport)
+        : undefined,
+    [activeAirSnapshot, selectedAirport],
+  )
+  const activeAirportAircraftCount = useMemo(
+    () =>
+      selectedAirportTrackIds && activeAirSnapshot
+        ? activeAirTracks(activeAirSnapshot, time).reduce(
+            (count, track) =>
+              count + Number(selectedAirportTrackIds.has(track.id)),
+            0,
+          )
+        : 0,
+    [activeAirSnapshot, selectedAirportTrackIds, time],
+  )
   const airLoading =
     airEnabled &&
     !airLoadError &&
     !airDay.error &&
     (studyWindow === 'day' ? airDay.loading : !morningAir)
+  const reconstructedRoadVehicleCount = useMemo(
+    () =>
+      roadEnabled && roadDay.snapshot
+        ? reconstructedNationalVehicleCount(
+            roadDay.snapshot,
+            time,
+            selectedRoad?.id,
+          )
+        : 0,
+    [roadDay.snapshot, roadEnabled, selectedRoad?.id, time],
+  )
+  const roadLoading =
+    roadEnabled &&
+    !roadLoadError &&
+    !roadDay.error &&
+    !roadDay.unavailable &&
+    (!roadTopology || roadDay.loading)
+  const roadObservationDate = formatStudyDate(
+    roadDay.manifest?.metadata.serviceDate,
+  )
 
   const moveCamera = useCallback(
     (
       action: MapCameraAction,
       focus?: readonly [longitude: number, latitude: number],
+      distanceScale?: number,
     ) => {
       cameraCommandId.current += 1
-      setCameraCommand({ id: cameraCommandId.current, action, focus })
+      setCameraCommand({
+        id: cameraCommandId.current,
+        action,
+        focus,
+        distanceScale,
+      })
     },
     [],
   )
@@ -544,6 +699,7 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
     nextLayout: SpatialLayoutId,
     artifact?: string,
   ) => {
+    setPulseHubId(undefined)
     desiredLayoutRef.current = nextLayout
     setLayout(nextLayout)
     if (nextLayout === 'geographic') {
@@ -561,7 +717,11 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
     setSelectedRoute(undefined)
     setSelectedTrain(undefined)
     setSelectedAirTrackId(undefined)
+    setSelectedAirport(undefined)
+    setSelectedRoad(undefined)
     setAirCategorySelected(false)
+    setRoadCategorySelected(false)
+    setPulseHubId(undefined)
     setQuery('')
     setSearchOpen(false)
   }, [])
@@ -585,7 +745,10 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
       setSelectedRoute(undefined)
       setSelectedTrain(undefined)
       setSelectedAirTrackId(undefined)
+      setSelectedAirport(undefined)
+      setSelectedRoad(undefined)
       setAirCategorySelected(false)
+      setRoadCategorySelected(false)
       setSelectedCategory(undefined)
       setQuery(station.name)
       setSearchOpen(false)
@@ -598,15 +761,57 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
 
   const activateChoice = useCallback(
     (choice: SearchChoice) => {
-      if (choice.kind === 'station') {
+      setPulseHubId(undefined)
+      if (choice.kind === 'airport') {
+        const airport = choice.value
+        setSelectedAirport(airport)
+        setAirEnabled(true)
+        setAirLoadError(false)
+        setAirCategorySelected(true)
+        setSelectedAirTrackId(undefined)
+        setSelectedTrain(undefined)
+        setSelectedRoute(undefined)
+        setSelectedStation(undefined)
+        setSelectedCategory(undefined)
+        setSelectedRoad(undefined)
+        setRoadCategorySelected(false)
+        setQuery(`${airport.name} · ${airport.iata}`)
+        setSearchOpen(false)
+        activateLayout('geographic')
+        moveCamera(
+          'focus-location',
+          [airport.longitude, airport.latitude],
+          0.3,
+        )
+      } else if (choice.kind === 'station') {
         selectStation(choice.value)
+      } else if (choice.kind === 'road') {
+        const road = choice.value
+        setRoadEnabled(true)
+        setRoadLoadError(false)
+        setRoadCategorySelected(true)
+        setSelectedRoad(road)
+        setAirCategorySelected(false)
+        setSelectedAirport(undefined)
+        setSelectedAirTrackId(undefined)
+        setSelectedTrain(undefined)
+        setSelectedRoute(undefined)
+        setSelectedStation(undefined)
+        setSelectedCategory(undefined)
+        setQuery(roadCorridorSearchValue(road))
+        setSearchOpen(false)
+        activateLayout('geographic')
+        moveCamera('focus-location', road.focus, road.cameraScale)
       } else if (choice.kind === 'route') {
         setSelectedRoute(choice.value)
         setSelectedStation(undefined)
         setSelectedTrain(undefined)
         setSelectedCategory(undefined)
         setSelectedAirTrackId(undefined)
+        setSelectedAirport(undefined)
+        setSelectedRoad(undefined)
         setAirCategorySelected(false)
+        setRoadCategorySelected(false)
         setQuery(choice.value.name)
         setSearchOpen(false)
       } else if (choice.kind === 'train') {
@@ -615,7 +820,10 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
         setSelectedStation(undefined)
         setSelectedCategory(undefined)
         setSelectedAirTrackId(undefined)
+        setSelectedAirport(undefined)
+        setSelectedRoad(undefined)
         setAirCategorySelected(false)
+        setRoadCategorySelected(false)
         setQuery(`${choice.value.route} ${choice.value.shortName}`.trim())
         setSearchOpen(false)
       } else {
@@ -626,17 +834,20 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
             : Math.min(track.end, track.start + 10),
         )
         setSelectedAirTrackId(track.id)
+        setSelectedAirport(undefined)
+        setSelectedRoad(undefined)
         setSelectedTrain(undefined)
         setSelectedRoute(undefined)
         setSelectedStation(undefined)
         setSelectedCategory(undefined)
         setAirCategorySelected(false)
+        setRoadCategorySelected(false)
         setQuery(airTrackSearchValue(track))
         setSearchOpen(false)
         setIsPlaying(true)
       }
     },
-    [selectStation],
+    [activateLayout, moveCamera, selectStation],
   )
 
   const toggleAirLayer = useCallback(() => {
@@ -644,6 +855,7 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
       setAirEnabled(false)
       setAirCategorySelected(false)
       setSelectedAirTrackId(undefined)
+      setSelectedAirport(undefined)
       return
     }
     clearSelection()
@@ -664,17 +876,33 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
           : Math.min(track.end, track.start + 10),
       )
       setSelectedAirTrackId(track.id)
+      setSelectedAirport(undefined)
+      setSelectedRoad(undefined)
       setSelectedTrain(undefined)
       setSelectedRoute(undefined)
       setSelectedStation(undefined)
       setSelectedCategory(undefined)
       setAirCategorySelected(false)
+      setRoadCategorySelected(false)
       setQuery(airTrackSearchValue(track))
       setSearchOpen(false)
       setIsPlaying(true)
     },
     [activeAirSnapshot, searchableAircraft],
   )
+
+  const toggleRoadLayer = useCallback(() => {
+    if (roadEnabled) {
+      setRoadEnabled(false)
+      setRoadCategorySelected(false)
+      setSelectedRoad(undefined)
+      return
+    }
+    clearSelection()
+    setRoadLoadError(false)
+    setRoadEnabled(true)
+    activateLayout('geographic')
+  }, [activateLayout, clearSelection, roadEnabled])
 
   const onSearchKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
     event.stopPropagation()
@@ -713,13 +941,28 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
         )
       } else if (event.key.toLowerCase() === 'g') {
         activateLayout('geographic')
+      } else if (event.key.toLowerCase() === 'p') {
+        if (pulseHubId) setPulseHubId(undefined)
+        else {
+          clearSelection()
+          setPulseHubId('kings-cross')
+        }
+      } else if (event.key.toLowerCase() === 'f') {
+        setLimitedChrome((value) => !value)
       } else if (event.key === 'Escape') {
-        clearSelection()
+        if (limitedChrome) setLimitedChrome(false)
+        else clearSelection()
       }
     }
     window.addEventListener('keydown', onKeyDown)
     return () => window.removeEventListener('keydown', onKeyDown)
-  }, [activateLayout, clearSelection, edition.data.opening.layouts])
+  }, [
+    activateLayout,
+    clearSelection,
+    edition.data.opening.layouts,
+    limitedChrome,
+    pulseHubId,
+  ])
 
   const selectedDescription = selectedStation
     ? `${selectedStation.routes.length} lines · ${selectedStation.trainIds.length} calls`
@@ -729,7 +972,11 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
         ? `${formatServiceTime(selectedTrain.start)}–${formatServiceTime(selectedTrain.end)} · ${selectedTrain.headsign}`
         : selectedAirIndexEntry
           ? `${formatServiceTime(selectedAirIndexEntry.start)}–${formatServiceTime(selectedAirIndexEntry.end)} · ${(selectedAirIndexEntry.icaoAddress ?? selectedAirIndexEntry.id).toUpperCase()}`
-        : undefined
+          : selectedAirport
+            ? `${activeAirportAircraftCount.toLocaleString('en-GB')} observed approaches + departures at ${formatServiceTime(time)}`
+            : selectedRoad
+              ? `${reconstructedRoadVehicleCount.toLocaleString('en-GB')} vehicles reconstructed at ${formatServiceTime(time)} · observed ${roadObservationDate}`
+              : undefined
   const scheduledJourneyCount =
     studyWindow === 'day' && dayManifest
       ? dayManifest.tripCount
@@ -737,12 +984,15 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
 
   return (
     <main
-      className={`experience view-network london-experience${airEnabled ? ' has-air-layer' : ''}${airCategorySelected ? ' has-air-category' : ''}${selectedStation || selectedRoute || selectedTrain || selectedAirTrackId || selectedCategory || airCategorySelected ? ' has-selection' : ''}`}
+      className={`experience view-${pulseHub ? 'hub' : 'network'} london-experience${pulseHub ? ' is-pulse-study' : ''}${limitedChrome ? ' is-limited-chrome' : ''}${airEnabled ? ' has-air-layer' : ''}${airCategorySelected ? ' has-air-category' : ''}${selectedAirport ? ' has-airport-selection' : ''}${roadEnabled ? ' has-road-layer' : ''}${roadCategorySelected ? ' has-road-category' : ''}${selectedStation || selectedRoute || selectedTrain || selectedAirTrackId || selectedAirport || selectedRoad || selectedCategory || airCategorySelected || roadCategorySelected ? ' has-selection' : ''}`}
+      data-limited-chrome={limitedChrome}
       data-spatial-layout={layout}
       data-study-window={studyWindow}
       data-day-loading={dayLoading}
       data-layout-mix={layoutMix.toFixed(3)}
       data-layout-transitioning={layoutTransitioning}
+      data-selected-airport={selectedAirport?.id}
+      data-selected-road={selectedRoad?.id}
     >
       <div className="scene" aria-hidden={webglAvailable ? true : undefined}>
         <Suspense fallback={null}>
@@ -752,6 +1002,18 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
               <h2>This study needs WebGL</h2>
               <p>Open All Change in a browser with hardware-accelerated graphics.</p>
             </section>
+          ) : network && pulseHub ? (
+            <HubPulseScene
+              timeline={network.metadata}
+              hub={pulseHub}
+              calls={pulseCalls}
+              isPlaying={isPlaying}
+              time={time}
+              onTime={setTime}
+              playbackRate={playbackRate}
+              selectedCategory={selectedCategory}
+              showTaktOverlay
+            />
           ) : network ? (
             <NationalNetworkScene
               boundary={boundary}
@@ -773,11 +1035,19 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
               airSnapshot={airEnabled ? activeAirSnapshot : undefined}
               airCategorySelected={airCategorySelected}
               selectedAirTrack={selectedAirTrack}
+              selectedAirport={selectedAirport}
               onSelectAirTrack={selectAirTrack}
+              roadTopology={roadEnabled ? roadTopology : undefined}
+              nationalRoadSnapshot={
+                roadEnabled ? roadDay.snapshot : undefined
+              }
+              roadCategorySelected={roadCategorySelected}
+              selectedRoadId={selectedRoad?.id}
               cameraFraming={edition.mapFraming}
               spatialLayout={spatialLayout}
               spatialLayoutMix={layoutMix}
               layoutTransitioning={layoutTransitioning}
+              routeColors={ALL_CHANGE_ROUTE_COLORS}
             />
           ) : null}
         </Suspense>
@@ -809,7 +1079,7 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
               key={option.id}
               type="button"
               aria-label={`${option.label} layout`}
-              aria-pressed={layout === option.id}
+              aria-pressed={!pulseHub && layout === option.id}
               aria-keyshortcuts={option.id === 'diagram' ? 'D' : 'G'}
               aria-busy={loading}
               disabled={!available || loading || !network}
@@ -824,6 +1094,24 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
             </button>
           )
         })}
+        <button
+          className="london-pulse-toggle"
+          type="button"
+          aria-label={pulseHub ? 'Exit interchange pulse' : 'Interchange pulse'}
+          aria-pressed={Boolean(pulseHub)}
+          aria-keyshortcuts="P"
+          disabled={!network}
+          onClick={() => {
+            if (pulseHub) setPulseHubId(undefined)
+            else {
+              clearSelection()
+              setPulseHubId('kings-cross')
+            }
+          }}
+        >
+          <span className="london-wide-label">Pulse</span>
+          <span className="london-mobile-label">◎</span>
+        </button>
         <span className="london-switch-divider" aria-hidden="true" />
         <button
           type="button"
@@ -858,6 +1146,18 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
           <span className="london-mobile-label">✦</span>
           {airLoading && <small>Loading</small>}
         </button>
+        <button
+          className="london-road-toggle"
+          type="button"
+          aria-label={roadEnabled ? 'Hide reconstructed motorway traffic' : 'Show reconstructed motorway traffic'}
+          aria-pressed={roadEnabled}
+          aria-busy={roadLoading}
+          onClick={toggleRoadLayer}
+        >
+          <span className="london-wide-label">Road</span>
+          <span className="london-mobile-label">≋</span>
+          {roadLoading && <small>Loading</small>}
+        </button>
         {layoutError && (
           <span className="london-layout-status" role="status">
             Diagram unavailable
@@ -871,6 +1171,11 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
         {(airLoadError || airDay.error) && (
           <span className="london-air-status" role="status">
             Air study unavailable
+          </span>
+        )}
+        {(roadLoadError || roadDay.error || roadDay.unavailable) && (
+          <span className="london-road-status" role="status">
+            Road study unavailable
           </span>
         )}
       </section>
@@ -887,11 +1192,11 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
         >
           <span className="search-mark" aria-hidden="true" />
           <label>
-            <span className="sr-only">Find a London station, line, service or flight</span>
+            <span className="sr-only">Find a London station, line, service, airport, flight or motorway</span>
             <input
               type="search"
               value={query}
-              placeholder={airEnabled ? "Find King's Cross, DLR, or flight" : "Find King's Cross, Victoria, or DLR"}
+              placeholder={airEnabled ? "Find Heathrow, M25, DLR, or flight" : "Find King's Cross, Heathrow, M25, or DLR"}
               autoComplete="off"
               aria-controls="london-search-results"
               aria-expanded={searchOpen && choices.length > 0}
@@ -920,11 +1225,15 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
             id="london-search-results"
             className="search-results"
             role="listbox"
-            aria-label="Matching stations, lines, services and flights"
+            aria-label="Matching stations, lines, services, airports, flights and motorways"
           >
             {choices.map((choice, index) => {
               const label =
-                choice.kind === 'air'
+                choice.kind === 'airport'
+                  ? choice.value.name
+                  : choice.kind === 'road'
+                    ? roadCorridorSearchValue(choice.value)
+                  : choice.kind === 'air'
                   ? choice.value.callsign
                   : choice.kind === 'station'
                   ? choice.value.name
@@ -932,7 +1241,11 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
                     ? choice.value.name
                     : `${choice.value.route} ${choice.value.shortName}`.trim()
               const detail =
-                choice.kind === 'air'
+                choice.kind === 'airport'
+                  ? `AIRPORT · ${choice.value.iata} / ${choice.value.icao}`
+                  : choice.kind === 'road'
+                    ? 'MOTORWAY · OBSERVED FLOW'
+                  : choice.kind === 'air'
                   ? `AIR · ${(choice.value.icaoAddress ?? choice.value.id).toUpperCase()}`
                   : choice.kind === 'station'
                   ? `${choice.value.routes.length} lines`
@@ -950,7 +1263,7 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
                   onClick={() => activateChoice(choice)}
                 >
                   <span aria-hidden="true">
-                    {choice.kind === 'air' ? '◆' : choice.kind === 'station' ? '◎' : choice.kind === 'route' ? '━' : '●'}
+                    {choice.kind === 'airport' ? '✦' : choice.kind === 'road' ? '≋' : choice.kind === 'air' ? '◆' : choice.kind === 'station' ? '◎' : choice.kind === 'route' ? '━' : '●'}
                   </span>
                   <strong>{label}</strong>
                   <small>{detail}</small>
@@ -963,33 +1276,77 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
       </section>
 
       <section
-        className={`london-status-card${selectedAirIndexEntry || airCategorySelected ? ' is-air-selection' : ''}`}
+        className={`london-status-card${pulseHub ? ' is-pulse-selection' : ''}${selectedAirIndexEntry || selectedAirport || airCategorySelected ? ' is-air-selection' : ''}${selectedRoad || roadCategorySelected ? ' is-road-selection' : ''}`}
         aria-live="polite"
       >
+        {pulseHub && (
+          <label className="london-pulse-picker">
+            <span>Interchange</span>
+            <select
+              aria-label="Pulse interchange"
+              value={pulseHub.id}
+              onChange={(event) =>
+                setPulseHubId(event.target.value as LondonHubId)
+              }
+            >
+              {LONDON_HUBS.map((hub) => (
+                <option key={hub.id} value={hub.id}>
+                  {hub.displayName}
+                </option>
+              ))}
+            </select>
+          </label>
+        )}
         {loadError ? (
           <p>Opening study unavailable.</p>
         ) : network ? (
           <>
             <div>
               <strong>
-                {selectedAirIndexEntry
+                {pulseHub
+                  ? nearbyPulseCalls.length.toLocaleString('en-GB')
+                  : selectedRoad
+                  ? selectedRoad.label
+                  : roadCategorySelected
+                    ? reconstructedRoadVehicleCount.toLocaleString('en-GB')
+                  : selectedAirport
+                  ? selectedAirport.iata
+                  : selectedAirIndexEntry
                   ? selectedAirIndexEntry.callsign
                   : airCategorySelected
                     ? activeAircraftCount.toLocaleString('en-GB')
                     : activeTrainCount.toLocaleString('en-GB')}
               </strong>
-              <span>{selectedAirIndexEntry || airCategorySelected ? 'aircraft observed' : 'trains in motion'}</span>
+              <span>{pulseHub ? 'movements in orbit' : selectedRoad ? 'motorway selected' : roadCategorySelected ? 'vehicles reconstructed' : selectedAirport ? 'airport movements' : selectedAirIndexEntry || airCategorySelected ? 'aircraft observed' : 'trains in motion'}</span>
             </div>
             <p>
-              {selectedAirPosition
+              {pulseHub
+                ? pulseHub.displayName
+                : selectedRoad
+                ? selectedRoad.description
+                : roadCategorySelected
+                  ? 'London motorway flow'
+              : selectedAirport
+                ? selectedAirport.name
+                : selectedAirPosition
                 ? `Heading ${Math.round(selectedAirPosition.headingDegrees).toString().padStart(3, '0')}°`
                 : selectedStation?.name ?? selectedRoute?.name ?? (selectedTrain ? `${selectedTrain.route} ${selectedTrain.shortName}` : airCategorySelected ? 'Observed London airspace' : studyWindow === 'day' ? '24-hour lattice' : 'Morning lattice')}
             </p>
             <small>
-              {selectedAirPosition
+              {pulseHub
+                ? `${pulseHub.character} · ${pulseCalls.length.toLocaleString('en-GB')} calls in the loaded study`
+                : selectedRoad || roadCategorySelected
+                ? selectedDescription ?? `${reconstructedRoadVehicleCount.toLocaleString('en-GB')} reconstructed at ${formatServiceTime(time)} · observed ${roadObservationDate}`
+                : selectedAirPosition
                 ? `${Math.round(selectedAirPosition.altitudeFeet / 100) * 100} ft · ${Math.round(selectedAirPosition.groundSpeedKnots)} kt · ${selectedDescription}`
                 : selectedDescription ?? (airCategorySelected ? `${activeAircraftCount.toLocaleString('en-GB')} active at ${formatServiceTime(time)}` : `${scheduledJourneyCount?.toLocaleString('en-GB')} scheduled journeys`)}
             </small>
+            {pulseHub && upcomingPulseCall && (
+              <small className="london-pulse-next">
+                Next {formatServiceTime(upcomingPulseCall.arrival)} ·{' '}
+                {upcomingPulseCall.train.route} → {upcomingPulseCall.train.headsign}
+              </small>
+            )}
           </>
         ) : (
           <p>Drawing London…</p>
@@ -998,7 +1355,7 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
 
       {network && (
         <section
-          className={`london-service-legend service-legend${selectedCategory || airCategorySelected ? ' has-filter' : ''}`}
+          className={`london-service-legend service-legend${selectedCategory || airCategorySelected || roadCategorySelected ? ' has-filter' : ''}`}
           aria-label="Transport layers"
         >
           {availableCategories.map((category) => (
@@ -1020,7 +1377,10 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
                 setSelectedRoute(undefined)
                 setSelectedTrain(undefined)
                 setSelectedAirTrackId(undefined)
+                setSelectedAirport(undefined)
+                setSelectedRoad(undefined)
                 setAirCategorySelected(false)
+                setRoadCategorySelected(false)
               }}
             >
               <i style={{ backgroundColor: SERVICE_COLORS[category.id] }} />
@@ -1041,16 +1401,42 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
                 setSelectedRoute(undefined)
                 setSelectedTrain(undefined)
                 setSelectedAirTrackId(undefined)
+                setSelectedAirport(undefined)
+                setSelectedRoad(undefined)
+                setRoadCategorySelected(false)
               }}
             >
               <i style={{ backgroundColor: edition.theme.air }} />
               AIR
             </button>
           )}
+          {roadEnabled && (
+            <button
+              className="london-road-category"
+              type="button"
+              aria-pressed={roadCategorySelected}
+              title="Observed motorway flow reconstructed as synthetic traffic"
+              style={{ '--service-accent': edition.theme.roadHeavy } as CSSProperties}
+              onClick={() => {
+                setRoadCategorySelected((value) => !value)
+                setSelectedCategory(undefined)
+                setSelectedStation(undefined)
+                setSelectedRoute(undefined)
+                setSelectedTrain(undefined)
+                setSelectedAirTrackId(undefined)
+                setSelectedAirport(undefined)
+                setSelectedRoad(undefined)
+                setAirCategorySelected(false)
+              }}
+            >
+              <i style={{ backgroundColor: edition.theme.roadHeavy }} />
+              ROAD
+            </button>
+          )}
         </section>
       )}
 
-      <aside className="london-map-tools" aria-label="Map controls">
+      {!pulseHub && <aside className="london-map-tools" aria-label="Map controls">
         <button type="button" aria-label="Zoom in" onClick={() => moveCamera('zoom-in')}>+</button>
         <button type="button" aria-label="Zoom out" onClick={() => moveCamera('zoom-out')}>−</button>
         <button type="button" aria-label="Reset map" onClick={() => moveCamera('reset')}>↺</button>
@@ -1061,7 +1447,7 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
         >
           L·{trainLabelMode.slice(0, 1).toUpperCase()}
         </button>
-      </aside>
+      </aside>}
 
       {network && (
         <section className="london-transport" aria-label="Playback controls">
@@ -1102,7 +1488,23 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
                 <option key={rate.value} value={rate.value}>{rate.label}</option>
               ))}
             </select>
-            {(selectedStation || selectedRoute || selectedTrain || selectedAirTrackId || selectedCategory || airCategorySelected) && (
+            <button
+              className="london-cinema-toggle"
+              type="button"
+              aria-label={limitedChrome ? 'Exit limited chrome' : 'Enter limited chrome'}
+              aria-pressed={limitedChrome}
+              aria-keyshortcuts="F"
+              title={limitedChrome ? 'Restore interface (F)' : 'Limited chrome (F)'}
+              onClick={() => setLimitedChrome((value) => !value)}
+            >
+              <span className="london-wide-label">
+                {limitedChrome ? 'Exit' : 'Focus'}
+              </span>
+              <span className="london-mobile-label">
+                {limitedChrome ? '×' : '⛶'}
+              </span>
+            </button>
+            {(selectedStation || selectedRoute || selectedTrain || selectedAirTrackId || selectedAirport || selectedRoad || selectedCategory || airCategorySelected || roadCategorySelected) && (
               <button type="button" onClick={clearSelection}>Release</button>
             )}
           </div>
@@ -1110,7 +1512,7 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
       )}
 
       <footer className="london-footer">
-        <span>TfL timetable + ADS-B observation · not realtime</span>
+        <span>TfL timetable · ADS-B + WebTRIS observation · not realtime</span>
         <span>GLA boundary + Thames · OGL v3.0</span>
       </footer>
     </main>

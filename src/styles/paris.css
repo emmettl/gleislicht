@@ -1,0 +1,581 @@
+[data-edition='paris'] body {
+  background: #07040d;
+}
+
+.correspondances-experience {
+  --paris-gutter: clamp(20px, 3.4vw, 52px);
+}
+
+.correspondances-experience .atmosphere {
+  background:
+    radial-gradient(circle at 52% 52%, rgba(239, 75, 104, 0.09), transparent 28%),
+    linear-gradient(90deg, rgba(7, 4, 13, 0.74), transparent 29%, transparent 71%, rgba(7, 4, 13, 0.68)),
+    linear-gradient(180deg, rgba(7, 4, 13, 0.91), transparent 25%, transparent 70%, rgba(7, 4, 13, 0.94));
+}
+
+.paris-masthead {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 5;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: var(--paris-gutter);
+  pointer-events: none;
+}
+
+.paris-masthead p,
+.paris-masthead h1,
+.paris-masthead small,
+.paris-masthead aside,
+.paris-status p,
+.paris-status small {
+  margin: 0;
+}
+
+.paris-masthead p,
+.paris-masthead aside,
+.paris-masthead small {
+  font-family: 'DM Mono', ui-monospace, monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+}
+
+.paris-masthead p {
+  margin-bottom: 5px;
+  color: var(--cyan);
+  font-size: 0.63rem;
+}
+
+.paris-masthead h1 {
+  color: var(--ink);
+  font: 500 clamp(2.45rem, 5.1vw, 5.9rem)/0.9 Inter, 'Helvetica Neue', sans-serif;
+  letter-spacing: -0.072em;
+  text-transform: uppercase;
+}
+
+.paris-masthead > div > small {
+  display: block;
+  margin-top: 10px;
+  color: rgba(255, 249, 241, 0.64);
+  font-size: 0.58rem;
+}
+
+.paris-masthead aside {
+  display: grid;
+  gap: 7px;
+  justify-items: end;
+  color: rgba(255, 249, 241, 0.72);
+  font-size: 0.6rem;
+  text-align: right;
+}
+
+.paris-masthead aside small {
+  color: var(--muted);
+  font-size: 0.52rem;
+}
+
+.paris-search {
+  position: absolute;
+  top: clamp(142px, 18vh, 190px);
+  left: 50%;
+  z-index: 10;
+  width: min(44vw, 610px);
+  transform: translateX(-50%);
+}
+
+.paris-search form {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr) auto;
+  align-items: center;
+  min-height: 54px;
+  padding: 0 13px;
+  border: 1px solid rgba(244, 207, 85, 0.3);
+  background: rgba(11, 5, 18, 0.83);
+  backdrop-filter: blur(18px);
+}
+
+.paris-time-switch {
+  display: flex;
+  align-self: stretch;
+  margin: -1px -14px -1px 6px;
+}
+
+.paris-time-switch button {
+  min-width: 48px;
+  border: 0;
+  border-left: 1px solid rgba(225, 193, 255, 0.19);
+  background: rgba(18, 8, 27, 0.88);
+  color: var(--muted);
+  font: 500 0.57rem/1 'DM Mono', ui-monospace, monospace;
+  cursor: pointer;
+}
+
+.paris-time-switch button[aria-pressed='true'] {
+  background: rgba(244, 207, 85, 0.13);
+  color: var(--cyan);
+  box-shadow: inset 0 -2px 0 var(--cyan);
+}
+
+.paris-time-switch .paris-scale-toggle {
+  min-width: 68px;
+  color: rgba(238, 224, 241, 0.72);
+}
+
+.paris-search:focus-within form {
+  border-color: rgba(244, 207, 85, 0.78);
+  box-shadow: 0 0 26px rgba(244, 207, 85, 0.08);
+}
+
+.paris-search .search-mark {
+  position: relative;
+  width: 17px;
+  height: 17px;
+  border: 1px solid var(--cyan);
+  border-radius: 50%;
+}
+
+.paris-search .search-mark::after {
+  position: absolute;
+  right: -6px;
+  bottom: -4px;
+  width: 8px;
+  height: 1px;
+  background: var(--cyan);
+  content: '';
+  transform: rotate(45deg);
+  transform-origin: left center;
+}
+
+.paris-search label,
+.paris-search input {
+  min-width: 0;
+  width: 100%;
+}
+
+.paris-search input {
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--ink);
+  font: 400 0.84rem/1 'DM Mono', ui-monospace, monospace;
+}
+
+.paris-search input::placeholder {
+  color: rgba(238, 224, 241, 0.34);
+}
+
+.paris-search form > button,
+.paris-map-tools button,
+.paris-routes button,
+.paris-transport button,
+.paris-transport select {
+  border: 1px solid rgba(225, 193, 255, 0.19);
+  border-radius: 0;
+  background: rgba(13, 6, 20, 0.86);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.paris-search form > button {
+  width: 32px;
+  height: 32px;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+}
+
+.paris-search-results {
+  display: grid;
+  max-height: min(50vh, 390px);
+  overflow-y: auto;
+  border: 1px solid rgba(244, 207, 85, 0.3);
+  border-top: 0;
+  background: rgba(11, 5, 18, 0.97);
+  backdrop-filter: blur(20px);
+}
+
+.paris-search-results button {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 14px;
+  min-height: 48px;
+  padding: 11px 14px;
+  border: 0;
+  border-bottom: 1px solid rgba(225, 193, 255, 0.12);
+  background: transparent;
+  color: var(--ink);
+  text-align: left;
+}
+
+.paris-search-results button:hover,
+.paris-search-results button[aria-selected='true'] {
+  background: rgba(244, 207, 85, 0.13);
+}
+
+.paris-search-results strong {
+  font: 500 0.75rem/1.25 'DM Mono', ui-monospace, monospace;
+}
+
+.paris-search-results small,
+.paris-search-results p {
+  margin: 0;
+  color: var(--muted);
+  font: 400 0.49rem/1.2 'DM Mono', ui-monospace, monospace;
+  letter-spacing: 0.07em;
+}
+
+.paris-search-results p {
+  padding: 18px;
+}
+
+.paris-status {
+  position: absolute;
+  top: clamp(190px, 25vh, 270px);
+  left: var(--paris-gutter);
+  z-index: 6;
+  width: min(300px, 25vw);
+  padding: 18px 21px;
+  border: 1px solid rgba(225, 193, 255, 0.23);
+  border-left: 2px solid var(--cyan);
+  background: rgba(11, 5, 18, 0.79);
+  backdrop-filter: blur(17px);
+}
+
+.paris-status > div {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.paris-status > div strong {
+  color: var(--cyan);
+  font: 300 2.08rem/1 'DM Mono', ui-monospace, monospace;
+  text-shadow: 0 0 15px rgba(244, 207, 85, 0.28);
+}
+
+.paris-status > div span {
+  font-size: 0.8rem;
+}
+
+.paris-status p {
+  margin-top: 11px;
+  font-size: 0.91rem;
+}
+
+.paris-status small {
+  display: block;
+  margin-top: 7px;
+  color: var(--muted);
+  font: 400 0.56rem/1.45 'DM Mono', ui-monospace, monospace;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.paris-routes {
+  position: absolute;
+  bottom: clamp(140px, 17vh, 184px);
+  left: 50%;
+  z-index: 7;
+  display: flex;
+  transform: translateX(-50%);
+  border: 1px solid rgba(225, 193, 255, 0.19);
+  background: rgba(11, 5, 18, 0.76);
+  backdrop-filter: blur(18px);
+}
+
+.paris-routes button {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 0 8px;
+  align-items: center;
+  min-width: 180px;
+  min-height: 54px;
+  padding: 10px 15px;
+  border: 0;
+  border-right: 1px solid rgba(225, 193, 255, 0.14);
+  color: var(--muted);
+  font: 500 0.68rem/1 'DM Mono', ui-monospace, monospace;
+  letter-spacing: 0.06em;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.paris-routes button:last-child {
+  border-right: 0;
+}
+
+.paris-routes button i {
+  grid-row: 1 / span 2;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ffd75d;
+  box-shadow: 0 0 13px #ffd75d;
+}
+
+.paris-routes button:nth-child(2) i {
+  background: #ff4e70;
+  box-shadow: 0 0 13px #ff4e70;
+}
+
+.paris-routes .paris-connection-button i {
+  border: 1px solid var(--cyan);
+  background: transparent;
+  box-shadow: 0 0 12px rgba(244, 207, 85, 0.5);
+}
+
+.paris-routes button small {
+  grid-column: 2;
+  margin-top: 5px;
+  color: rgba(238, 224, 241, 0.42);
+  font-size: 0.48rem;
+}
+
+.paris-routes button:hover,
+.paris-routes button[aria-pressed='true'] {
+  background: rgba(244, 207, 85, 0.13);
+  color: white;
+  box-shadow: inset 0 -2px 0 var(--cyan);
+}
+
+.paris-map-tools {
+  position: absolute;
+  top: 50%;
+  right: var(--paris-gutter);
+  z-index: 7;
+  display: grid;
+  grid-template-columns: repeat(2, 44px);
+  transform: translateY(-50%);
+}
+
+.paris-map-tools button,
+.paris-transport button,
+.paris-transport select {
+  min-height: 44px;
+  font: 500 0.69rem/1 'DM Mono', ui-monospace, monospace;
+}
+
+.paris-map-tools button:hover,
+.paris-transport button:hover {
+  border-color: rgba(244, 207, 85, 0.64);
+  color: var(--cyan);
+}
+
+.paris-transport {
+  position: absolute;
+  right: max(var(--paris-gutter), calc(50% - 390px));
+  bottom: 48px;
+  left: max(var(--paris-gutter), calc(50% - 390px));
+  z-index: 8;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 5px 16px;
+  padding: 12px 14px;
+  border: 1px solid rgba(225, 193, 255, 0.2);
+  background: rgba(11, 5, 18, 0.84);
+  backdrop-filter: blur(18px);
+}
+
+.paris-transport > div {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+  color: var(--muted);
+  font: 400 0.58rem/1 'DM Mono', ui-monospace, monospace;
+  letter-spacing: 0.1em;
+}
+
+.paris-transport > div strong {
+  color: var(--cyan);
+  font-weight: 500;
+}
+
+.paris-transport label {
+  display: flex;
+  align-items: center;
+}
+
+.paris-transport input[type='range'] {
+  width: 100%;
+}
+
+.paris-transport aside {
+  display: flex;
+}
+
+.paris-transport button,
+.paris-transport select {
+  min-width: 48px;
+  padding: 0 11px;
+}
+
+.paris-footer {
+  position: absolute;
+  right: var(--paris-gutter);
+  bottom: 15px;
+  left: var(--paris-gutter);
+  z-index: 4;
+  display: flex;
+  justify-content: space-between;
+  color: rgba(238, 224, 241, 0.34);
+  font: 400 0.48rem/1 'DM Mono', ui-monospace, monospace;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+.paris-footer a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: rgba(244, 207, 85, 0.34);
+  text-underline-offset: 2px;
+  pointer-events: auto;
+}
+
+.correspondances-experience.is-limited-chrome .paris-masthead,
+.correspondances-experience.is-limited-chrome .paris-search,
+.correspondances-experience.is-limited-chrome .paris-status,
+.correspondances-experience.is-limited-chrome .paris-routes,
+.correspondances-experience.is-limited-chrome .paris-map-tools,
+.correspondances-experience.is-limited-chrome .paris-footer {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .correspondances-experience {
+    --paris-gutter: 18px;
+    min-height: 520px;
+  }
+
+  .paris-masthead {
+    padding-top: max(16px, env(safe-area-inset-top));
+  }
+
+  .paris-masthead p {
+    margin-bottom: 3px;
+    font-size: 0.5rem;
+  }
+
+  .paris-masthead h1 {
+    font-size: clamp(1.45rem, 7.1vw, 1.95rem);
+    letter-spacing: -0.058em;
+  }
+
+  .paris-masthead > div > small,
+  .paris-masthead aside {
+    display: none;
+  }
+
+  .paris-search {
+    top: max(78px, calc(env(safe-area-inset-top) + 59px));
+    width: calc(100% - 36px);
+  }
+
+  .paris-search form {
+    min-height: 46px;
+  }
+
+  .paris-search input {
+    font-size: 0.72rem;
+  }
+
+  .paris-time-switch button {
+    min-width: 38px;
+  }
+
+  .paris-time-switch .paris-scale-toggle {
+    min-width: 48px;
+    font-size: 0.48rem;
+  }
+
+  .paris-status {
+    top: max(136px, calc(env(safe-area-inset-top) + 117px));
+    width: auto;
+    max-width: calc(100% - 98px);
+    padding: 9px 12px;
+  }
+
+  .paris-status > div strong {
+    font-size: 1.38rem;
+  }
+
+  .paris-status > div span,
+  .paris-status p {
+    font-size: 0.67rem;
+  }
+
+  .paris-status small {
+    font-size: 0.44rem;
+  }
+
+  .paris-map-tools {
+    top: max(136px, calc(env(safe-area-inset-top) + 117px));
+    right: var(--paris-gutter);
+    grid-template-columns: 37px;
+    transform: none;
+  }
+
+  .paris-map-tools button {
+    min-height: 37px;
+  }
+
+  .paris-map-tools button:nth-child(2),
+  .paris-map-tools button:nth-child(4) {
+    display: none;
+  }
+
+  .paris-routes {
+    right: 12px;
+    bottom: calc(110px + env(safe-area-inset-bottom));
+    left: 12px;
+    width: auto;
+    transform: none;
+  }
+
+  .paris-routes button {
+    min-width: 0;
+    min-height: 46px;
+    flex: 1;
+    padding: 8px;
+    font-size: 0.55rem;
+  }
+
+  .paris-routes button small {
+    display: none;
+  }
+
+  .paris-routes button i {
+    grid-row: auto;
+  }
+
+  .paris-transport {
+    right: 12px;
+    bottom: calc(10px + env(safe-area-inset-bottom));
+    left: 12px;
+    padding: 9px;
+  }
+
+  .paris-transport button,
+  .paris-transport select {
+    min-width: 40px;
+    min-height: 38px;
+    padding: 0 7px;
+  }
+
+  .paris-footer {
+    display: none;
+  }
+
+  .correspondances-experience.is-limited-chrome .paris-transport {
+    display: grid;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .correspondances-experience .scanlines {
+    opacity: 0.06;
+  }
+}

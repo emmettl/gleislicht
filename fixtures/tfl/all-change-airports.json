@@ -1,0 +1,35 @@
+[
+  {
+    "id": "heathrow",
+    "name": "Heathrow Airport",
+    "city": "London",
+    "iata": "LHR",
+    "icao": "EGLL",
+    "longitude": -0.4543,
+    "latitude": 51.47,
+    "approachRadiusKilometres": 4,
+    "maximumApproachAltitudeFeet": 6000
+  },
+  {
+    "id": "london-city",
+    "name": "London City Airport",
+    "city": "London",
+    "iata": "LCY",
+    "icao": "EGLC",
+    "longitude": 0.0553,
+    "latitude": 51.5053,
+    "approachRadiusKilometres": 4,
+    "maximumApproachAltitudeFeet": 6000
+  },
+  {
+    "id": "gatwick",
+    "name": "Gatwick Airport",
+    "city": "London",
+    "iata": "LGW",
+    "icao": "EGKK",
+    "longitude": -0.1821,
+    "latitude": 51.1537,
+    "approachRadiusKilometres": 8,
+    "maximumApproachAltitudeFeet": 6000
+  }
+]

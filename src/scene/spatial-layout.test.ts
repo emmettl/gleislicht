@@ -51,6 +51,7 @@ const layout = {
   bounds: { minX: 0, minY: 0, maxX: 1, maxY: 1 },
   stops: [['b', 1, 1], ['a', 0, 0]],
   paths: [[[0, 0], [0, 1], [1, 1]]],
+  context: { waterPaths: [[[0, 0.5], [1, 0.5]]] },
 } satisfies SpatialLayoutSnapshot
 
 describe('projected spatial layouts', () => {
@@ -65,6 +66,10 @@ describe('projected spatial layouts', () => {
     expect(projected.stops[0]).toEqual([-10, 0, 10])
     expect(projected.stops[1]).toEqual([10, 0, -10])
     expect(projected.paths).toHaveLength(1)
+    expect(projected.context?.waterPaths[0].points).toHaveLength(2)
+    expect(projected.context?.waterPaths[0].points[0][0]).toBeCloseTo(-10)
+    expect(projected.context?.waterPaths[0].points[1][0]).toBeCloseTo(10)
+    expect(projected.context?.waterPaths[0].points[0][2]).toBeCloseTo(0)
   })
 
   it('blends timetable geometry without changing array identity at the ends', () => {
@@ -91,6 +96,7 @@ describe('projected spatial layouts', () => {
     )
     expect(middle.stops[0]).toEqual([-10, 0, 5])
     expect(middle.paths[0].points).toHaveLength(3)
+    expect(middle.context).toBe(alternate.context)
     expect(
       blendProjectedSpatialLayout(
         geographicStops,

@@ -1,10 +1,14 @@
 import { describe, expect, it, vi } from 'vitest'
 import { SWITZERLAND_EDITION } from './switzerland.ts'
 import { LONDON_EDITION } from './london.ts'
+import { NEW_YORK_EDITION } from './new-york.ts'
+import { PARIS_EDITION } from './paris.ts'
 import { resolveEdition } from './index.ts'
 import {
   ALL_CHANGE_STUDY,
+  CORRESPONDANCES_STUDY,
   GLEISLICHT_STUDY,
+  LOCAL_EXPRESS_STUDY,
   MOTION_STUDIES_CATALOGUE,
   motionStudyMark,
 } from './catalogue.ts'
@@ -29,6 +33,8 @@ describe('Motion Studies editions', () => {
     expect(resolveEdition()).toBe(SWITZERLAND_EDITION)
     expect(resolveEdition('switzerland')).toBe(SWITZERLAND_EDITION)
     expect(resolveEdition('london')).toBe(LONDON_EDITION)
+    expect(resolveEdition('new-york')).toBe(NEW_YORK_EDITION)
+    expect(resolveEdition('paris')).toBe(PARIS_EDITION)
     expect(() => resolveEdition('unknown')).toThrow('Unknown Motion Studies edition')
   })
 
@@ -43,6 +49,18 @@ describe('Motion Studies editions', () => {
       catalogueNumber: '006',
       title: 'All Change',
       descriptor: 'A London motion study',
+      status: 'foundation',
+    })
+    expect(LOCAL_EXPRESS_STUDY).toMatchObject({
+      catalogueNumber: '007',
+      title: 'Local / Express',
+      placeName: 'New York',
+      status: 'foundation',
+    })
+    expect(CORRESPONDANCES_STUDY).toMatchObject({
+      catalogueNumber: '008',
+      title: 'Correspondances',
+      placeName: 'Paris',
       status: 'foundation',
     })
     expect(
@@ -70,6 +88,17 @@ describe('Motion Studies editions', () => {
     ])
     expect(LONDON_EDITION.data.opening.layouts[1].artifact).toBe(
       'all-change-diagram.json',
+    )
+    expect(NEW_YORK_EDITION.data.opening.layouts[1]).toMatchObject({
+      id: 'diagram',
+      kind: 'topological',
+      artifact: 'local-express-diagram.json',
+    })
+    expect(NEW_YORK_EDITION.data.opening.dayManifest).toBe(
+      'local-express-day-manifest.json',
+    )
+    expect(PARIS_EDITION.data.opening.network).toBe(
+      'correspondances-morning.json',
     )
   })
 
