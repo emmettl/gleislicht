@@ -9,5 +9,11 @@ export default defineConfig({
   build: {
     manifest: true,
     target: 'es2022',
+    rolldownOptions: {
+      input: {
+        gleislicht: 'index.html',
+        london: 'london.html',
+      },
+    },
   },
 })

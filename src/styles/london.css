@@ -1,0 +1,462 @@
+[data-edition='london'] body {
+  background: #04040d;
+}
+
+.london-experience {
+  --london-gutter: clamp(20px, 3.4vw, 52px);
+}
+
+.london-experience .atmosphere {
+  background:
+    radial-gradient(circle at 48% 50%, transparent 0 30%, rgba(4, 4, 13, 0.22) 68%, #04040d 118%),
+    linear-gradient(180deg, rgba(5, 5, 16, 0.86), transparent 22%, transparent 73%, rgba(4, 4, 13, 0.92));
+}
+
+.london-masthead {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 4;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: var(--london-gutter);
+  pointer-events: none;
+}
+
+.london-masthead p,
+.london-status-card p,
+.london-status-card small {
+  margin: 0;
+}
+
+.london-masthead .eyebrow {
+  margin-bottom: 5px;
+  color: var(--cyan);
+  font: 500 0.67rem/1 'DM Mono', ui-monospace, monospace;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+}
+
+.london-masthead h1 {
+  max-width: none;
+  margin: 0;
+  font: 500 clamp(2.35rem, 4.8vw, 5.2rem)/0.86 Inter, Helvetica, Arial, sans-serif;
+  letter-spacing: -0.072em;
+  text-transform: uppercase;
+}
+
+.london-tagline {
+  margin-top: 10px !important;
+  color: rgba(251, 248, 255, 0.72);
+  font: 400 clamp(0.72rem, 1vw, 0.88rem)/1.2 'DM Mono', ui-monospace, monospace;
+  letter-spacing: 0.02em;
+}
+
+.london-study-mark {
+  display: grid;
+  gap: 5px;
+  justify-items: end;
+  color: rgba(251, 248, 255, 0.72);
+  font: 400 0.65rem/1.2 'DM Mono', ui-monospace, monospace;
+  letter-spacing: 0.1em;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.london-study-mark small {
+  color: var(--muted);
+  font-size: 0.58rem;
+}
+
+.london-layout-switch {
+  position: absolute;
+  top: calc(var(--london-gutter) + 48px);
+  right: var(--london-gutter);
+  z-index: 7;
+  display: flex;
+  padding: 4px;
+  border: 1px solid rgba(210, 200, 232, 0.24);
+  background: rgba(7, 6, 19, 0.78);
+  backdrop-filter: blur(18px);
+}
+
+.london-layout-switch button {
+  min-height: 38px;
+  gap: 8px;
+  padding: 0 13px;
+  border-color: transparent;
+  background: transparent;
+  color: var(--muted);
+  font: 500 0.64rem/1 'DM Mono', ui-monospace, monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.london-layout-switch button[aria-pressed='true'] {
+  border-color: rgba(137, 247, 255, 0.46);
+  background: rgba(37, 38, 72, 0.76);
+  color: #fff;
+  box-shadow: inset 0 -2px 0 var(--cyan), 0 0 18px rgba(137, 247, 255, 0.1);
+}
+
+.london-layout-switch button:disabled {
+  opacity: 0.42;
+}
+
+.london-layout-switch button small {
+  color: var(--pink);
+  font-size: 0.48rem;
+}
+
+.london-search.train-search {
+  top: clamp(124px, 17vh, 158px);
+  width: min(570px, calc(100vw - 48px));
+}
+
+.london-search .search-results > button {
+  grid-template-columns: 14px minmax(0, 1fr) auto;
+  align-items: center;
+  color: var(--ink);
+  font-family: 'DM Mono', ui-monospace, monospace;
+}
+
+.london-search .search-results > button > span {
+  color: var(--pink);
+  text-shadow: 0 0 10px var(--pink);
+}
+
+.london-search .search-results strong {
+  overflow: hidden;
+  font-size: 0.74rem;
+  font-weight: 400;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.london-search .search-results small {
+  color: var(--muted);
+  font-size: 0.62rem;
+  white-space: nowrap;
+}
+
+.london-status-card {
+  position: absolute;
+  top: clamp(202px, 28vh, 260px);
+  left: var(--london-gutter);
+  z-index: 3;
+  width: min(280px, calc(100vw - 40px));
+  padding: 15px 17px 16px;
+  border: 1px solid rgba(210, 200, 232, 0.24);
+  border-left-color: var(--cyan);
+  background: linear-gradient(135deg, rgba(13, 13, 35, 0.84), rgba(5, 5, 16, 0.54));
+  backdrop-filter: blur(16px);
+}
+
+.london-status-card > div {
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+}
+
+.london-status-card strong {
+  color: var(--cyan);
+  font: 300 2rem/1 'DM Mono', ui-monospace, monospace;
+  text-shadow: 0 0 18px rgba(137, 247, 255, 0.34);
+}
+
+.london-status-card span {
+  font-size: 0.78rem;
+}
+
+.london-status-card p {
+  margin-top: 10px;
+  color: var(--ink);
+  font: 500 0.7rem/1.2 'DM Mono', ui-monospace, monospace;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.london-status-card small {
+  display: block;
+  margin-top: 5px;
+  overflow: hidden;
+  color: var(--muted);
+  font: 400 0.62rem/1.35 'DM Mono', ui-monospace, monospace;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.london-service-legend.service-legend {
+  bottom: 154px;
+  font-size: 0.65rem;
+}
+
+.london-map-tools {
+  position: absolute;
+  top: 50%;
+  right: var(--london-gutter);
+  z-index: 5;
+  display: grid;
+  gap: 5px;
+  transform: translateY(-50%);
+}
+
+.london-map-tools button,
+.london-playback-actions button,
+.london-playback-actions select {
+  min-width: 42px;
+  min-height: 42px;
+  justify-content: center;
+  border: 1px solid rgba(210, 200, 232, 0.25);
+  background: rgba(7, 6, 19, 0.78);
+  color: var(--cyan);
+  font: 500 0.68rem/1 'DM Mono', ui-monospace, monospace;
+  backdrop-filter: blur(14px);
+}
+
+.london-map-tools button:hover,
+.london-playback-actions button:hover {
+  border-color: var(--cyan);
+  background: rgba(31, 31, 65, 0.9);
+  transform: none;
+}
+
+.london-transport {
+  position: absolute;
+  right: var(--london-gutter);
+  bottom: 44px;
+  left: var(--london-gutter);
+  z-index: 5;
+  width: min(720px, calc(100vw - 40px));
+  margin: auto;
+  padding: 12px 14px;
+  border: 1px solid rgba(210, 200, 232, 0.24);
+  background: rgba(6, 5, 17, 0.82);
+  backdrop-filter: blur(18px);
+}
+
+.london-time-copy {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  color: var(--muted);
+  font: 400 0.62rem/1 'DM Mono', ui-monospace, monospace;
+  letter-spacing: 0.12em;
+}
+
+.london-time-copy strong {
+  color: var(--cyan);
+  font-weight: 500;
+}
+
+.london-transport > label {
+  display: block;
+}
+
+.london-transport input[type='range'] {
+  width: 100%;
+  height: 20px;
+  margin: 0;
+  accent-color: var(--pink);
+}
+
+.london-playback-actions {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 7px;
+}
+
+.london-playback-actions select {
+  min-width: 66px;
+  padding: 0 9px;
+  appearance: auto;
+}
+
+.london-playback-actions button:last-child {
+  padding: 0 14px;
+}
+
+.london-footer {
+  position: absolute;
+  right: var(--london-gutter);
+  bottom: 14px;
+  left: var(--london-gutter);
+  z-index: 4;
+  display: flex;
+  justify-content: space-between;
+  color: rgba(235, 228, 246, 0.36);
+  font: 400 0.5rem/1 'DM Mono', ui-monospace, monospace;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+@media (max-width: 700px) {
+  .london-experience {
+    --london-gutter: calc(12px + env(safe-area-inset-left));
+  }
+
+  .london-masthead {
+    padding: calc(10px + env(safe-area-inset-top))
+      calc(12px + env(safe-area-inset-right)) 0
+      calc(12px + env(safe-area-inset-left));
+  }
+
+  .london-masthead .eyebrow {
+    font-size: 0.52rem;
+  }
+
+  .london-masthead h1 {
+    font-size: clamp(1.7rem, 9vw, 2.2rem);
+    white-space: nowrap;
+  }
+
+  .london-tagline {
+    max-width: 190px;
+    margin-top: 6px !important;
+    font-size: 0.58rem;
+    line-height: 1.25;
+  }
+
+  .london-study-mark {
+    display: none;
+  }
+
+  .london-layout-switch {
+    top: calc(10px + env(safe-area-inset-top));
+    right: calc(12px + env(safe-area-inset-right));
+  }
+
+  .london-layout-switch button {
+    min-width: 42px;
+    min-height: 40px;
+    padding: 0 7px;
+    font-size: 0.54rem;
+  }
+
+  .london-layout-switch button small {
+    display: none;
+  }
+
+  .london-search.train-search {
+    top: calc(84px + env(safe-area-inset-top));
+    right: calc(12px + env(safe-area-inset-right));
+    left: calc(12px + env(safe-area-inset-left));
+    width: auto;
+    transform: none;
+  }
+
+  .london-search.train-search input[type='search'] {
+    font-size: 0.88rem;
+  }
+
+  .london-search .search-results {
+    max-height: min(300px, 48dvh);
+  }
+
+  .london-search .search-results > button {
+    grid-template-columns: 14px minmax(0, 1fr);
+    min-height: 46px;
+  }
+
+  .london-search .search-results small {
+    display: none;
+  }
+
+  .london-status-card {
+    top: calc(138px + env(safe-area-inset-top));
+    left: calc(12px + env(safe-area-inset-left));
+    width: max-content;
+    max-width: calc(100vw - 84px);
+    padding: 6px 9px 7px;
+    background: rgba(6, 5, 17, 0.76);
+  }
+
+  .london-status-card strong {
+    font-size: 1.08rem;
+  }
+
+  .london-status-card span {
+    font-size: 0.6rem;
+  }
+
+  .london-status-card p,
+  .london-status-card small {
+    display: none;
+  }
+
+  .london-map-tools {
+    top: calc(138px + env(safe-area-inset-top));
+    right: calc(12px + env(safe-area-inset-right));
+    grid-template-columns: repeat(4, 38px);
+    gap: 3px;
+    transform: none;
+  }
+
+  .london-map-tools button {
+    min-width: 38px;
+    min-height: 38px;
+    background: rgba(6, 5, 17, 0.76);
+  }
+
+  .london-service-legend.service-legend {
+    right: 12px;
+    bottom: calc(142px + env(safe-area-inset-bottom));
+    left: 12px;
+    display: flex;
+    justify-content: flex-start;
+    gap: 4px;
+    overflow-x: auto;
+    font-size: 0.56rem;
+    scrollbar-width: none;
+  }
+
+  .london-service-legend.service-legend button {
+    min-height: 36px;
+    flex: 0 0 auto;
+    padding: 0 7px;
+    background: rgba(6, 5, 17, 0.72);
+  }
+
+  .london-transport {
+    right: calc(12px + env(safe-area-inset-right));
+    bottom: calc(12px + env(safe-area-inset-bottom));
+    left: calc(12px + env(safe-area-inset-left));
+    width: auto;
+    padding: 8px 9px;
+  }
+
+  .london-time-copy {
+    margin-bottom: 3px;
+    font-size: 0.55rem;
+  }
+
+  .london-transport input[type='range'] {
+    height: 18px;
+  }
+
+  .london-playback-actions {
+    justify-content: flex-end;
+    margin-top: 3px;
+  }
+
+  .london-playback-actions button,
+  .london-playback-actions select {
+    min-height: 38px;
+  }
+
+  .london-footer {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .london-layout-switch button,
+  .london-experience * {
+    scroll-behavior: auto;
+  }
+}

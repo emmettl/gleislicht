@@ -29,6 +29,7 @@ describe('map camera zoom', () => {
 
   it('uses a closer home framing for the Zürich study', () => {
     expect(homeMapDistanceScale('switzerland')).toBe(1)
+    expect(homeMapDistanceScale('london')).toBe(1)
     expect(homeMapDistanceScale('zvv')).toBeCloseTo(0.24)
     expect(homeMapDistanceScale('geneva')).toBeCloseTo(0.13)
     expect(homeMapDistanceScale('zurich')).toBeCloseTo(0.06)
@@ -37,6 +38,7 @@ describe('map camera zoom', () => {
 
   it('allows a substantially tighter close zoom in portrait city studies', () => {
     expect(minimumMapDistanceScale('switzerland', 390 / 844)).toBe(0.02)
+    expect(minimumMapDistanceScale('london', 390 / 844)).toBe(0.02)
     expect(minimumMapDistanceScale('zvv', 390 / 844)).toBe(0.012)
     expect(minimumMapDistanceScale('geneva', 390 / 844)).toBe(0.008)
     expect(minimumMapDistanceScale('zurich', 390 / 844)).toBe(0.008)

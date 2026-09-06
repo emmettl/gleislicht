@@ -9,7 +9,10 @@ const INITIAL_DATA_FILES = [
   'data/swiss-lakes.json',
 ]
 const BUDGETS = {
-  javaScript: 320 * 1024,
+  // The national scene is requested immediately after the opening data resolves,
+  // so its renderer and Three.js dependency count even though Vite emits them as
+  // a dynamic chunk.
+  javaScript: 360 * 1024,
   css: 10 * 1024,
   // The official timetable is regenerated twice weekly and its compressed
   // first-view payload naturally moves with the number and shape of services.
@@ -25,7 +28,9 @@ async function gzipSize(filePath) {
 }
 
 function collectInitialFiles(manifest) {
-  const entry = Object.entries(manifest).find(([, chunk]) => chunk.isEntry)
+  const entry = Object.entries(manifest).find(
+    ([key, chunk]) => chunk.isEntry && key === 'index.html',
+  )
   if (!entry) throw new Error('Vite manifest has no application entry')
 
   const scripts = new Set()
@@ -41,6 +46,11 @@ function collectInitialFiles(manifest) {
     for (const importedKey of chunk.imports ?? []) visit(importedKey)
   }
   visit(entry[0])
+  const openingScene = Object.entries(manifest).find(
+    ([, chunk]) => chunk.src === 'src/scene/NationalNetworkScene.tsx',
+  )
+  if (!openingScene) throw new Error('Vite manifest has no national network scene')
+  visit(openingScene[0])
   return { scripts: [...scripts], styles: [...styles] }
 }
 

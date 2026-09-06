@@ -5,7 +5,9 @@
   "type": "module",
   "description": "Switzerland in motion — a cinematic railway visualisation built from Swiss open transport data.",
   "scripts": {
+    "predev": "node scripts/stage-edition-data.mjs",
     "dev": "vite",
+    "prebuild": "node scripts/stage-edition-data.mjs",
     "build": "tsc -b && vite build",
     "check:bundle": "node scripts/check-bundle-budget.mjs",
     "check:london": "node scripts/check-london-fixture-budget.mjs",
@@ -58,6 +60,7 @@
     "data:london:geography": "node scripts/ingest-london-geography.mjs",
     "data:london:assemble": "node scripts/merge-network-snapshots.mjs --retrieved-at 2026-09-06T12:00:00.000Z --note 'All advertised Tube, DLR and Tramlink lines in both directions, all six named London Overground lines in both directions, and a complete Elizabeth/Overground branch audit. Seven topology branches without direct morning timetable columns remain explicitly inactive in the PDF lattice metadata.' --output fixtures/tfl/all-change-rail-led-morning.json fixtures/tfl/all-change-unified-morning.json fixtures/tfl/all-change-pdf-morning.json && npm run data:london:rank",
     "data:london:catalogue": "node scripts/ingest-tfl-rail-catalogue.mjs",
+    "data:stage": "node scripts/stage-edition-data.mjs",
     "preview": "vite preview"
   },
   "engines": {

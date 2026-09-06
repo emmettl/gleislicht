@@ -1,5 +1,6 @@
 import { describe, expect, it, vi } from 'vitest'
 import { SWITZERLAND_EDITION } from './switzerland.ts'
+import { LONDON_EDITION } from './london.ts'
 import { resolveEdition } from './index.ts'
 import {
   ALL_CHANGE_STUDY,
@@ -27,9 +28,8 @@ describe('Motion Studies editions', () => {
   it('resolves editions at the entry point and rejects configuration mistakes', () => {
     expect(resolveEdition()).toBe(SWITZERLAND_EDITION)
     expect(resolveEdition('switzerland')).toBe(SWITZERLAND_EDITION)
-    expect(() => resolveEdition('london')).toThrow(
-      'Unknown Motion Studies edition',
-    )
+    expect(resolveEdition('london')).toBe(LONDON_EDITION)
+    expect(() => resolveEdition('unknown')).toThrow('Unknown Motion Studies edition')
   })
 
   it('gives every work its own identity inside the shared catalogue', () => {
@@ -43,13 +43,24 @@ describe('Motion Studies editions', () => {
       catalogueNumber: '006',
       title: 'All Change',
       descriptor: 'A London motion study',
-      status: 'planned',
+      status: 'foundation',
     })
     expect(
       new Set(MOTION_STUDIES_CATALOGUE.map(({ catalogueNumber }) => catalogueNumber))
         .size,
     ).toBe(MOTION_STUDIES_CATALOGUE.length)
     expect(motionStudyMark(GLEISLICHT_STUDY)).toBe('MOTION STUDIES · 005')
+  })
+
+  it('keeps alternate spatial layouts edition-owned and lazy', () => {
+    expect(LONDON_EDITION.data.opening.network).toBe(
+      'all-change-rail-led-morning.json',
+    )
+    expect(LONDON_EDITION.data.opening.layouts).toEqual([
+      { id: 'geographic', label: 'Geography', kind: 'geographic' },
+      { id: 'diagram', label: 'Diagram', kind: 'topological' },
+    ])
+    expect(LONDON_EDITION.data.opening.layouts[1].artifact).toBeUndefined()
   })
 
   it('exposes the complete shared transport visual language', () => {

@@ -1,6 +1,6 @@
 import type { MotionStudyIdentity } from './edition.ts'
 
-export type MotionStudyStatus = 'released' | 'planned'
+export type MotionStudyStatus = 'released' | 'foundation' | 'planned'
 
 export interface MotionStudyCatalogueEntry extends MotionStudyIdentity {
   readonly status: MotionStudyStatus
@@ -21,7 +21,7 @@ export const ALL_CHANGE_STUDY = {
   title: 'All Change',
   placeName: 'London',
   descriptor: 'A London motion study',
-  status: 'planned',
+  status: 'foundation',
 } as const satisfies MotionStudyCatalogueEntry
 
 export const MOTION_STUDIES_CATALOGUE = [

@@ -26,6 +26,19 @@ export const GLEISLICHT_THEME: VisualTheme = {
   roadHeavy: '#ff9d52',
 }
 
+export const ALL_CHANGE_THEME: VisualTheme = {
+  background: '#04040d',
+  ink: '#fbf8ff',
+  muted: 'rgba(235, 228, 246, 0.58)',
+  line: 'rgba(210, 200, 232, 0.2)',
+  primary: '#89f7ff',
+  secondary: '#ff63cf',
+  panel: 'rgba(8, 7, 18, 0.68)',
+  air: '#ff63cf',
+  roadLight: '#fff1cf',
+  roadHeavy: '#ff9d52',
+}
+
 export const SERVICE_CATEGORIES: ReadonlyArray<{
   readonly id: ServiceCategory
   readonly label: string

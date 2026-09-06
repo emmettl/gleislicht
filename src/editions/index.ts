@@ -1,7 +1,9 @@
 import { SWITZERLAND_EDITION } from './switzerland.ts'
+import { LONDON_EDITION } from './london.ts'
 
 export const EDITIONS = {
   switzerland: SWITZERLAND_EDITION,
+  london: LONDON_EDITION,
 } as const
 
 export type EditionId = keyof typeof EDITIONS
@@ -12,7 +14,3 @@ export function resolveEdition(id?: string): RegisteredEdition {
   if (id in EDITIONS) return EDITIONS[id as EditionId]
   throw new Error(`Unknown Motion Studies edition: ${id}`)
 }
-
-export const ACTIVE_EDITION = resolveEdition(
-  import.meta.env.VITE_GLEISLICHT_EDITION?.trim(),
-)

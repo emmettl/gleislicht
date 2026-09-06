@@ -8,10 +8,30 @@ export interface MotionStudyIdentity {
   readonly descriptor: string
 }
 
-export interface EditionDataCatalog<
+export type SpatialLayoutId = 'geographic' | 'diagram'
+
+export interface EditionSpatialLayout {
+  readonly id: SpatialLayoutId
+  readonly label: string
+  readonly kind: 'geographic' | 'topological'
+  readonly artifact?: string
+}
+
+export interface EditionOpeningDataCatalog {
+  readonly network: string
+  readonly geography?: string
+  readonly dayManifest?: string
+  readonly layouts?: readonly EditionSpatialLayout[]
+}
+
+export interface EditionDataCatalog {
+  readonly opening: EditionOpeningDataCatalog
+}
+
+export interface SwitzerlandDataCatalog<
   RegionalStudyId extends string = string,
   CorridorId extends string = string,
-> {
+> extends EditionDataCatalog {
   readonly nationalMorning: string
   readonly nationalDayManifest: string
   readonly boundary: string
@@ -36,8 +56,7 @@ export interface EditionDataCatalog<
 }
 
 export interface MotionStudyEdition<
-  RegionalStudyId extends string = string,
-  CorridorId extends string = string,
+  DataCatalog extends EditionDataCatalog = EditionDataCatalog,
 > {
   readonly id: string
   readonly identity: MotionStudyIdentity
@@ -46,7 +65,7 @@ export interface MotionStudyEdition<
   readonly defaultNetworkTime: number
   readonly defaultHubTime: number
   readonly theme: VisualTheme
-  readonly data: EditionDataCatalog<RegionalStudyId, CorridorId>
+  readonly data: DataCatalog
 }
 
 export function editionDataUrl(fileName: string): string {

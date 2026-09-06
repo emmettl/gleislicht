@@ -1,4 +1,7 @@
-import type { MotionStudyEdition } from './edition.ts'
+import type {
+  MotionStudyEdition,
+  SwitzerlandDataCatalog,
+} from './edition.ts'
 import { GLEISLICHT_STUDY } from './catalogue.ts'
 import { GLEISLICHT_THEME } from '../theme/visual-language.ts'
 
@@ -17,8 +20,10 @@ export type SwitzerlandTerrainCorridorId =
   | 'kiental-griesalp'
 
 export type SwitzerlandEdition = MotionStudyEdition<
-  SwitzerlandRegionalStudyId,
-  SwitzerlandTerrainCorridorId
+  SwitzerlandDataCatalog<
+    SwitzerlandRegionalStudyId,
+    SwitzerlandTerrainCorridorId
+  >
 >
 
 export const SWITZERLAND_EDITION: SwitzerlandEdition = {
@@ -30,6 +35,17 @@ export const SWITZERLAND_EDITION: SwitzerlandEdition = {
   defaultHubTime: 7 * 3600 + 45 * 60,
   theme: GLEISLICHT_THEME,
   data: {
+    opening: {
+      network: 'swiss-rail-morning.json',
+      dayManifest: 'swiss-rail-day-manifest.json',
+      layouts: [
+        {
+          id: 'geographic',
+          label: 'Geography',
+          kind: 'geographic',
+        },
+      ],
+    },
     nationalMorning: 'swiss-rail-morning.json',
     nationalDayManifest: 'swiss-rail-day-manifest.json',
     boundary: 'swiss-boundary.json',

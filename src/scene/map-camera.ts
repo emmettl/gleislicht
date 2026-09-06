@@ -1,6 +1,11 @@
 export const MIN_MAP_DISTANCE_SCALE = 0.02
 export const MAX_MAP_DISTANCE_SCALE = 1.18
-export type MapCameraFraming = 'switzerland' | 'zvv' | 'geneva' | 'zurich'
+export type MapCameraFraming =
+  | 'switzerland'
+  | 'london'
+  | 'zvv'
+  | 'geneva'
+  | 'zurich'
 
 const MIN_REGIONAL_MAP_DISTANCE_SCALE = 0.012
 const MIN_CITY_MAP_DISTANCE_SCALE = 0.01
@@ -38,7 +43,9 @@ export function minimumMapDistanceScale(
   framing: MapCameraFraming,
   viewportAspect: number,
 ): number {
-  if (framing === 'switzerland') return MIN_MAP_DISTANCE_SCALE
+  if (framing === 'switzerland' || framing === 'london') {
+    return MIN_MAP_DISTANCE_SCALE
+  }
   if (framing === 'zvv') return MIN_REGIONAL_MAP_DISTANCE_SCALE
   if (viewportAspect < 0.8) return MIN_PORTRAIT_CITY_MAP_DISTANCE_SCALE
   return MIN_CITY_MAP_DISTANCE_SCALE

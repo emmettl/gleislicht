@@ -63,7 +63,7 @@ The first prototype should cover the complete rail-led morning lattice rather th
 
 ## Adapter proofs
 
-The first compiled fixtures are deliberately smaller than the first visible edition. They exercise the shared network contract without entering Gleislicht's public payload or edition selector:
+The first compiled fixtures are deliberately smaller than the complete opening lattice. They exercise the shared network contract without entering Gleislicht's Swiss payload or edition selector:
 
 - Bakerloo: 39 weekday journeys from Elephant & Castle across 25 NaPTAN stations;
 - Northern: 84 journeys from Morden across short turns and the Bank/Charing Cross branch structures;
@@ -82,7 +82,7 @@ TfL documents that its Journey Planner timetable feed covers Underground, bus, D
 
 `npm run data:london:lattice:unified` fans out through every distinct branch origin advertised for Tube, DLR and Tramlink in both directions. It compiles 1,422 movements, 356 source-identified stops and 1,019 real path segments across 13 lines and 26 directions. Limited-stop trains use the complete branch geometry between calls; TfL's overlapping DLR terminal responses are retained only where their stop pattern matches the selected route. Two Metropolitan origins advertised in topology have no suitable Friday schedule and remain explicitly listed as inactive instead of disappearing.
 
-`npm run data:london:lattice:pdf` derives 43 branch-audit tasks from the catalogue. It compiles 36 active morning branch patterns: every named Overground line in both directions and 16 of the 19 Elizabeth families. Three Elizabeth and four Windrush topology branches have no matching direct morning column and are preserved in `metadata.coverage.inactiveBranches`. `npm run data:london:assemble` combines this with the Unified lattice into a 1,743-movement, 503-stop, five-mode contract. It then assigns 460 stable station-name ranks using mode interchange, distinct lines, calls, graph connectivity and the advertised topology. The renderer consumes this optional rank before window-specific traffic, preventing dense central labels from changing priority between study slices. Stops and paths are deduplicated by source identity and exact geometry. All London fixtures remain outside Gleislicht's public payload.
+`npm run data:london:lattice:pdf` derives 43 branch-audit tasks from the catalogue. It compiles 36 active morning branch patterns: every named Overground line in both directions and 16 of the 19 Elizabeth families. Three Elizabeth and four Windrush topology branches have no matching direct morning column and are preserved in `metadata.coverage.inactiveBranches`. `npm run data:london:assemble` combines this with the Unified lattice into a 1,743-movement, 503-stop, five-mode contract. It then assigns 460 stable station-name ranks using mode interchange, distinct lines, calls and graph connectivity. The renderer consumes this optional rank before window-specific traffic, preventing dense central labels from changing priority between study slices. Stops and paths are deduplicated by source identity and exact geometry. Build-time staging copies only the complete opening lattice and geography into ignored public artifacts for `/london.html`; the Swiss entry never requests them and Git retains one canonical copy.
 
 ## Data strategy
 
@@ -122,6 +122,9 @@ Sources:
 - [x] Audit all six Overground lines and the full Elizabeth branch family against the current public PDFs, compiling active patterns and recording unmatched topology branches.
 - [x] Compile a stable station-label hierarchy for Zone 1 density and interchange complexes without changing the Swiss fallback ranking.
 - [x] Hold the complete opening movement and geography fixtures below a 260 KiB compressed transfer ceiling.
+- [x] Ship a dedicated `/london.html` preview with its own catalogue, theme, metadata and request graph over the shared renderer, camera, search and playback engine.
+- [x] Hold the complete first view, including the immediately requested 3D renderer and opening data, below a 650 KiB compressed transfer ceiling.
+- [x] Cover the London bootstrap, data isolation, layout capability and keyboard station selection in the desktop and iPhone browser matrix.
 - Add a London-specific frame-time gate when the first visible edition scene exists.
 
 ### LDN 2 — Day, pulse and dual geometry

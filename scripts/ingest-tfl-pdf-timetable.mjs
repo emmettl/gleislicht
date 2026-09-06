@@ -276,7 +276,7 @@ export function compileTflPdfProof({
       route: routeSequence.lineName,
       headsign: cleanStationName(sourceStops.at(-1).name),
       shortName: routeSequence.lineName,
-      category: 'rail',
+      category: 'regional',
       mode: routeSequence.mode,
       start: journey.calls[0].departure,
       end: journey.calls.at(-1).arrival,

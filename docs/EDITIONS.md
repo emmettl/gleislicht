@@ -5,7 +5,7 @@ Motion Studies is a catalogue of authored transport works made with one visual i
 | No. | Work | Place | Status |
 | --- | --- | --- | --- |
 | 005 | **Gleislicht** | Switzerland | Released |
-| 006 | **All Change** | London | Data foundation |
+| 006 | **All Change** | London | Interactive foundation |
 
 Each work receives a locally meaningful title and descriptor. The shared series identity appears as a quiet catalogue mark; the work title remains dominant.
 
@@ -18,7 +18,7 @@ The codebase is divided into four layers:
 3. **Edition** — series number, local title, place identity, timezone, initial clock and the complete catalogue of lazy data assets.
 4. **Adapters** — offline source-specific ingestion that compiles large public datasets into the compact browser contracts consumed by the engine.
 
-`src/editions/edition.ts` is the boundary between reusable runtime code and an authored place. `src/editions/switzerland.ts` is the first concrete catalogue. `src/theme/visual-language.ts` and `src/styles/tokens.css` hold the visual grammar independently of Swiss transport data.
+`src/editions/edition.ts` is the boundary between reusable runtime code and an authored place. `src/editions/switzerland.ts` and `src/editions/london.ts` are concrete catalogues. `src/entries/mount-motion-study.tsx` provides the shared browser bootstrap, while `src/main.tsx` and `src/london-main.tsx` keep each public page and request graph explicit. `src/theme/visual-language.ts` and `src/styles/tokens.css` hold the visual grammar independently of Swiss transport data.
 
 An edition must provide:
 
@@ -39,7 +39,7 @@ Alternate layouts are edition data, not alternate networks. Playback owns one ca
 
 1. Add a typed catalogue in `src/editions/`.
 2. Compile one coherent two-hour opening study and the matching geographic context.
-3. Render it through `App` from a dedicated entry point.
+3. Give it a dedicated HTML and TypeScript entry; reuse the engine and renderer while keeping edition-specific chrome in its own study shell.
 4. Add progressive 24-hour chunks only after the opening payload remains within budget.
 5. Add local modes and authored studies where they reveal something distinctive about the place.
 
