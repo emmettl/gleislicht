@@ -511,6 +511,8 @@ export function ParisStudyApp({ edition }: { readonly edition: ParisEdition }) {
               routeColors={CORRESPONDANCES_ROUTE_COLORS}
               routeColorMix={1}
               trafficOverviewEmphasis={scaleView === 'region' ? 1 : 0}
+              stationLabelTierLimit={scaleView === 'region' ? 2 : 3}
+              stationLabelSettleSeconds={0.42}
             />
           ) : null}
         </Suspense>

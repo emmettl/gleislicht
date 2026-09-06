@@ -8,11 +8,13 @@ import {
   stationLabelBudget,
   stationLabelRankLimit,
   stationLabelScreenHeight,
+  stationLabelOpacity,
   stationLabelScreenWidth,
   stationLabelText,
   stationLabelWorldHeight,
   stationLabelsCanRepopulate,
   stationTapRadius,
+  stationLabelWithinTier,
   stableStationLabelBudget,
 } from './station-labels.ts'
 
@@ -63,6 +65,18 @@ describe('station labels', () => {
     expect(stationLabelScreenHeight(false, true)).toBe(46)
     expect(stationLabelScreenHeight(true, true)).toBe(56)
     expect(stationLabelScreenWidth('Bern', 40)).toBe(72)
+    expect(stationLabelScreenHeight(false, false, 1)).toBe(44)
+    expect(stationLabelScreenHeight(false, false, 2)).toBe(39)
+    expect(stationLabelScreenHeight(false, false, 3)).toBe(36)
+    expect(stationLabelOpacity(false, false, 1)).toBe(0.9)
+    expect(stationLabelOpacity(false, false, 3)).toBe(0.66)
+  })
+
+  it('supports edition-authored semantic tiers without hiding selections', () => {
+    expect(stationLabelWithinTier(1, 2)).toBe(true)
+    expect(stationLabelWithinTier(2, 2)).toBe(true)
+    expect(stationLabelWithinTier(3, 2)).toBe(false)
+    expect(stationLabelWithinTier(3, undefined)).toBe(true)
   })
 
   it('converts target pixels into perspective world height', () => {
@@ -166,5 +180,7 @@ describe('station labels', () => {
     expect(stationLabelsCanRepopulate(0.16)).toBe(true)
     expect(stableStationLabelBudget(20, 48, false)).toBe(48)
     expect(stableStationLabelBudget(20, 48, true)).toBe(20)
+    expect(stationLabelsCanRepopulate(0.2, 0.42)).toBe(false)
+    expect(stationLabelsCanRepopulate(0.42, 0.42)).toBe(true)
   })
 })

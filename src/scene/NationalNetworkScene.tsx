@@ -42,10 +42,12 @@ import {
   stationLabelBudget,
   stationLabelRankLimit,
   stationLabelScreenHeight,
+  stationLabelOpacity,
   stationLabelScreenWidth,
   stationLabelText,
   stationLabelWorldHeight,
   stationLabelsCanRepopulate,
+  stationLabelWithinTier,
   stationTapRadius,
   stableStationLabelBudget,
 } from './station-labels.ts'
@@ -161,6 +163,10 @@ interface NationalNetworkSceneProps {
   readonly routeColorMix?: number
   /** Strengthens aggregate edge flow when an edition deliberately pulls back. */
   readonly trafficOverviewEmphasis?: number
+  /** Optional edition-authored semantic tier ceiling; selected routes always win. */
+  readonly stationLabelTierLimit?: number
+  /** Allows slower camera studies to hold a label set until movement truly settles. */
+  readonly stationLabelSettleSeconds?: number
 }
 
 type ProjectedStop = readonly [x: number, y: number, z: number]
@@ -1641,6 +1647,8 @@ function StationLabels({
   selectedTrain,
   cameraFraming,
   layoutTransitioning = false,
+  tierLimit,
+  settleSeconds,
   hidden = false,
 }: {
   readonly stations: readonly StationIndexEntry[]
@@ -1651,6 +1659,8 @@ function StationLabels({
   readonly selectedTrain?: NetworkTrain
   readonly cameraFraming: MapCameraFraming
   readonly layoutTransitioning?: boolean
+  readonly tierLimit?: number
+  readonly settleSeconds?: number
   readonly hidden?: boolean
 }) {
   const { camera, size } = useThree()
@@ -1709,7 +1719,7 @@ function StationLabels({
 
   useEffect(() => {
     retainedStationNames.current.clear()
-  }, [cameraFraming, selectedRoute, selectedStation, selectedTrain])
+  }, [cameraFraming, selectedRoute, selectedStation, selectedTrain, tierLimit])
 
   useFrame((_, delta) => {
     const semanticHeight = stationLabelCameraHeight(
@@ -1726,7 +1736,10 @@ function StationLabels({
     cameraStableSeconds.current = cameraMoved
       ? 0
       : cameraStableSeconds.current + delta
-    const canRepopulate = stationLabelsCanRepopulate(cameraStableSeconds.current)
+    const canRepopulate = stationLabelsCanRepopulate(
+      cameraStableSeconds.current,
+      settleSeconds,
+    )
     const budget = stableStationLabelBudget(
       stationLabelBudget(semanticHeight),
       retainedStationNames.current.size,
@@ -1757,6 +1770,10 @@ function StationLabels({
     labels.forEach((label, index) => {
       const retained = retainedStationNames.current.has(label.station.name)
       if ((selectedTrain || selectedRoute) && !label.emphasised) return
+      if (
+        !label.emphasised &&
+        !stationLabelWithinTier(label.station.labelRank, tierLimit)
+      ) return
       if (layoutTransitioning && !label.emphasised && !retained) return
       if (!label.emphasised && !retained && !canRepopulate) return
       if (
@@ -1819,7 +1836,11 @@ function StationLabels({
       if (visible >= budget || visible >= MAX_STATION_LABELS) break
       const label = labels[candidate.index]
       const selected = label.station.name === selectedStation?.name
-      const screenHeight = stationLabelScreenHeight(selected, label.emphasised)
+      const screenHeight = stationLabelScreenHeight(
+        selected,
+        label.emphasised,
+        label.station.labelRank,
+      )
       const width = stationLabelScreenWidth(label.displayName, screenHeight)
       const box = {
         left: candidate.x - screenHeight * 0.34,
@@ -1863,7 +1884,11 @@ function StationLabels({
         material.map = textureEntry.texture
         material.needsUpdate = true
       }
-      material.opacity = label.emphasised ? 1 : 0.78
+      material.opacity = stationLabelOpacity(
+        selected,
+        label.emphasised,
+        label.station.labelRank,
+      )
       occupied.push(box)
       visible += 1
     }
@@ -3859,6 +3884,8 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
         selectedTrain={props.selectedTrain}
         cameraFraming={props.cameraFraming}
         layoutTransitioning={props.layoutTransitioning}
+        tierLimit={props.stationLabelTierLimit}
+        settleSeconds={props.stationLabelSettleSeconds}
         hidden={props.airCategorySelected}
       />
       <StationTapTarget

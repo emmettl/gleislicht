@@ -66,7 +66,7 @@ Sources:
 - [x] Compile Métro 1 and RER A on a shared deterministic 07:00–09:00 clock.
 - [x] Add the Seine, an official Paris boundary and the published Boulevard Périphérique axis as a minimal geographic frame.
 - [x] Prove that close individual motion can become aggregated pulse/corridor intensity as the same running scene moves between centre and region.
-- [x] Establish phone and desktop density budgets before adding more lines (400.3 KiB gzip first view; 67.9 KiB timetable and 6.4 KiB geography).
+- [x] Establish phone and desktop density budgets before adding more lines (400.5 KiB gzip first view; 67.9 KiB timetable and 6.4 KiB geography).
 - [x] Add an independent `paris.html` shell with route/station/mission search, touch station selection, route isolation, playback and limited chrome.
 
 ### PAR 2 — Correspondances
@@ -80,7 +80,7 @@ Sources:
 
 - [x] Add the complete two-line Friday as twelve progressive two-hour chunks behind an explicit 24-hour control.
 - Expand the Métro and RER day through progressive, independently selectable data layers.
-- Add stable label tiers for core stations, interchange complexes and outer branches.
+- [x] Add stable label tiers for interchange complexes, outer termini and close-scale stations. The regional view admits tiers 1–2, the centre admits tier 3, and labels wait 420 ms after camera motion before repopulating.
 - Tune the zoom transition so neither central density nor the banlieue disappears into visual noise.
 - Consider Transilien and tram only when they strengthen the centre–periphery argument.
 

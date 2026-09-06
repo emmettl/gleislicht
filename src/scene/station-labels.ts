@@ -7,8 +7,11 @@ import {
 export const MAX_STATION_LABELS = 96
 export const STATION_LABEL_SETTLE_SECONDS = 0.16
 
-export function stationLabelsCanRepopulate(stableSeconds: number): boolean {
-  return stableSeconds >= STATION_LABEL_SETTLE_SECONDS
+export function stationLabelsCanRepopulate(
+  stableSeconds: number,
+  settleSeconds = STATION_LABEL_SETTLE_SECONDS,
+): boolean {
+  return stableSeconds >= settleSeconds
 }
 
 export function stableStationLabelBudget(
@@ -73,10 +76,33 @@ export function stationIndexAtScreenPoint(
 export function stationLabelScreenHeight(
   selected: boolean,
   emphasised: boolean,
+  labelRank?: number,
 ): number {
   if (selected) return 56
   if (emphasised) return 46
+  if (labelRank === 1) return 44
+  if (labelRank === 2) return 39
+  if (labelRank !== undefined && labelRank >= 3) return 36
   return 40
+}
+
+export function stationLabelOpacity(
+  selected: boolean,
+  emphasised: boolean,
+  labelRank?: number,
+): number {
+  if (selected || emphasised) return 1
+  if (labelRank === 1) return 0.9
+  if (labelRank === 2) return 0.78
+  if (labelRank !== undefined && labelRank >= 3) return 0.66
+  return 0.78
+}
+
+export function stationLabelWithinTier(
+  labelRank: number | undefined,
+  tierLimit: number | undefined,
+): boolean {
+  return tierLimit === undefined || (labelRank ?? Number.POSITIVE_INFINITY) <= tierLimit
 }
 
 export function stationLabelScreenWidth(
