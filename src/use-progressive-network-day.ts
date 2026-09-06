@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import {
   adjacentDayChunks,
   dayChunkForTime,
@@ -46,6 +46,7 @@ export function useProgressiveNetworkDay(
 ): ProgressiveNetworkDay {
   const [manifest, setManifest] = useState<NetworkDayManifest>()
   const [chunks, setChunks] = useState<Readonly<Record<string, NetworkDayChunk>>>({})
+  const pendingChunkIds = useRef(new Set<string>())
   const [error, setError] = useState(false)
   const descriptor = useMemo(
     () => (manifest ? dayChunkForTime(manifest, time) : undefined),
@@ -92,14 +93,18 @@ export function useProgressiveNetworkDay(
       : adjacentDayChunks(manifest, descriptor).filter(
           (candidate) => !chunks[candidate.id],
         )
-    if (!targets.length) return
+    const unrequestedTargets = targets.filter(
+      (candidate) => !pendingChunkIds.current.has(candidate.id),
+    )
+    if (!unrequestedTargets.length) return
 
-    const controller = new AbortController()
+    unrequestedTargets.forEach((candidate) =>
+      pendingChunkIds.current.add(candidate.id),
+    )
     Promise.all(
-      targets.map(async (candidate) => {
+      unrequestedTargets.map(async (candidate) => {
         const response = await fetch(
           `${import.meta.env.BASE_URL}data/${candidate.path}`,
-          { signal: controller.signal },
         )
         if (!response.ok) {
           throw new Error(`Network day chunk returned ${response.status}`)
@@ -116,11 +121,14 @@ export function useProgressiveNetworkDay(
           ...Object.fromEntries(entries),
         }))
       })
-      .catch((loadError: unknown) => {
-        if (loadError instanceof DOMException && loadError.name === 'AbortError') return
+      .catch(() => {
         if (currentMissing) setError(true)
       })
-    return () => controller.abort()
+      .finally(() => {
+        unrequestedTargets.forEach((candidate) =>
+          pendingChunkIds.current.delete(candidate.id),
+        )
+      })
   }, [active, chunks, descriptor, manifest])
 
   return { manifest, network, chunkReady, loading, error }
