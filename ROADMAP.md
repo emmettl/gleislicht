@@ -179,15 +179,17 @@ See [docs/EDITIONS.md](./docs/EDITIONS.md) for the reusable boundary and [docs/L
 - [x] Complete the 007 publication review and keep its page/data out of Pages until MTA clarifies transformation and application licensing.
 - [x] Compile the bounded 007 service day into twelve lazy two-hour chunks while preserving the fast opening study.
 - [x] Enforce a 390 KiB compressed first-view budget and desktop/iPhone browser gates for the New York foundation.
-- [ ] Use that third adapter proof—not calendar ambition—as the extraction trigger for `@motionstudies/core`, `@motionstudies/three` and the edition repositories.
-- [ ] Build 007 Local / Express through a rail-first opening study, then its geographic/topological transformation and overtaking composition.
+- [ ] Use the third fully viable city edition—not calendar ambition or a predetermined place—as the extraction trigger for `@motionstudies/core`, `@motionstudies/three` and the edition repositories.
+- [ ] Hold further 007 Local / Express expansion and public release at the MTA licensing gate; retain its bounded proof as technical evidence.
 - [x] Build 008 Correspondances through a Métro/RER opening study, a continuous centre–periphery scale study and three source-backed interchange compositions.
 - [x] Give Correspondances an independent source-pinned shell, exact transfer evidence, official Seine/city context and a lazy 24-hour two-line study within a phone-first payload gate.
+- [x] Begin the source and feasibility audit for **NORIKAE — A Tokyo motion study**: separate the durable Toei proof, conditional Tokyo Metro path and Challenge 2026-only Yamanote/private-railway coverage.
+- [ ] Resolve the ODPT browser-artifact and historical-refresh terms, then compile a rights-clean Toei 07:00–09:00 loop-and-crossings proof before attempting the complete operator lattice.
 - [ ] Keep Tokyo, Hong Kong, Berlin, San Francisco and Venice unnumbered until each has passed the catalogue admission test.
 
 **Exit:** every announced edition has a local argument, a defensible source model, an authored signature image and an independent payload budget; shared packages exist because three real works proved the seam.
 
-See [docs/CATALOGUE.md](./docs/CATALOGUE.md), [docs/NEW-YORK.md](./docs/NEW-YORK.md) and [docs/PARIS.md](./docs/PARIS.md).
+See [docs/CATALOGUE.md](./docs/CATALOGUE.md), [docs/NEW-YORK.md](./docs/NEW-YORK.md), [docs/PARIS.md](./docs/PARIS.md) and [docs/TOKYO.md](./docs/TOKYO.md).
 
 ## Data sources to validate in implementation
 

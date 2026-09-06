@@ -30,12 +30,12 @@ A candidate enters the numbered catalogue only when it has all of the following:
 The programme is deliberately gated rather than calendar-driven:
 
 1. Finish the authored shape of **All Change**: diagram overrides, London pulse studies and its mobile performance gate.
-2. Audit both 007 and 008 at source level, then turn their bounded proofs into independent interactive foundations.
-3. Use that third real edition to test the repository/package boundary. Extract only the contracts used by Switzerland, London and New York, when the deliberate package move begins.
-4. Deliver **Local / Express** rail-first, then add its second spatial language and overtaking study.
-5. Apply the proven extraction to **Correspondances**; its independent shell and IDFM-backed correspondence director now pressure-test interchange modelling, while the continuous centre–periphery scale transition remains the next signature layer.
+2. Keep the bounded **Local / Express** proof as technical evidence, but leave New York in a licensing-question-shaped siding: no public release or larger authored expansion until the MTA publication gate has a defensible answer.
+3. Complete **Correspondances** as the next city work, using its independent shell, IDFM-backed correspondence director and continuous centre–periphery scale transition to pressure-test interchange modelling.
+4. Investigate **NORIKAE — A Tokyo motion study** as the preferred third city. It must still establish an authoritative source path and bounded opening composition before receiving a catalogue number.
+5. Use the third fully viable city edition—not a predetermined place or calendar date—to test the repository/package boundary. Extract only contracts demonstrated by the implemented works when the deliberate package move begins.
 
-This ordering leaves room for discovery. It does not require New York to be “finished forever” before Paris work begins; it requires the relevant source, interaction and package gates to be honest.
+This ordering leaves room for discovery while keeping the gates honest. New York retains its thesis and number, but technical readiness does not outrank unresolved publication terms; Tokyo can advance on its own merits without being treated as a substitute skin or a way around that question.
 
 ## Shared infrastructure prompted by 007 and 008
 
@@ -52,10 +52,12 @@ This ordering leaves room for discovery. It does not require New York to be “f
 
 These are strong candidates, not promises or an implementation queue:
 
-- **Tokyo** — private railway empires, colossal frequency and the Yamanote loop as a luminous clock.
+- **NORIKAE — A Tokyo motion study** — the preferred next-city investigation. Neon would not be cosmetically imposed here: the railway already reads as circuitry. Overlapping operator empires, stacked lines, colossal stations, rapid and suburban services, and the Yamanote loop pulsing around the centre could let the physical city almost disappear beneath the transport system at night.
 - **Hong Kong** — rail, ferries, harbour and mountains in genuine three-dimensional tension; unusually rich emotional geography.
 - **Berlin** — Ringbahn pulse with U-Bahn, S-Bahn and tram strata.
 - **San Francisco** — cable cars, street-running Muni, BART, ferries and extreme terrain at a cinematic scale.
 - **Venice** — the conceptual outlier: scheduled boats become the network and water becomes the infrastructure.
 
 They remain deliberately unnumbered until each produces a title, a source path and a visual claim as specific as the first four works.
+
+Tokyo's initial source and feasibility audit is recorded in [TOKYO.md](./TOKYO.md). It separates a durable Toei proof from the unresolved Tokyo Metro publication terms and the Challenge 2026-only Yamanote/private-railway coverage.
