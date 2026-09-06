@@ -24,7 +24,8 @@ test('boots as a separate edition without loading Swiss network data', async ({
   expect(resources.some((url) => url.includes('swiss-rail-morning.json'))).toBe(false)
 
   await expect(page.locator('.london-status-card')).toContainText('trains in motion')
-  await expect(page.locator('.london-transport')).toContainText('07:45')
+  await expect(page.locator('.london-transport')).toContainText('06:45')
+  await expect(page.locator('.london-transport')).toContainText('08:45')
   await expect(page.getByRole('button', { name: /Diagram/ })).toBeDisabled()
 })
 
