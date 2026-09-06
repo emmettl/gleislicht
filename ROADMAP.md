@@ -186,11 +186,13 @@ See [docs/EDITIONS.md](./docs/EDITIONS.md) for the reusable boundary and [docs/L
 - [x] Give Correspondances an independent source-pinned shell, exact transfer evidence, official Seine/city context and a lazy 24-hour two-line study within a phone-first payload gate.
 - [x] Begin the source and feasibility audit for **NORIKAE — A Tokyo motion study**: separate the durable Toei proof, conditional Tokyo Metro path and Challenge 2026-only Yamanote/private-railway coverage.
 - [ ] Resolve the ODPT browser-artifact and historical-refresh terms, then compile a rights-clean Toei 07:00–09:00 loop-and-crossings proof before attempting the complete operator lattice.
-- [ ] Keep Tokyo, Hong Kong, Berlin, San Francisco and Venice unnumbered until each has passed the catalogue admission test.
+- [x] Audit **MANIFEST — World trade in motion**: distinguish observed AIS movement from self-reported vessel data, inferred port-to-port voyages and aggregate commodity evidence; gate global individual tracks on written derived-publication rights.
+- [ ] Prototype MANIFEST's global cargo/tanker field with non-commercial hourly vessel presence, compare identical commercial AIS evaluation slices at China/Gulf/choke-point coverage, and compile one rights-clean regional track proof before procurement.
+- [ ] Keep Tokyo, Hong Kong, Berlin, San Francisco, Venice and MANIFEST unnumbered until each has passed the catalogue admission test.
 
 **Exit:** every announced edition has a local argument, a defensible source model, an authored signature image and an independent payload budget; shared packages exist because three real works proved the seam.
 
-See [docs/CATALOGUE.md](./docs/CATALOGUE.md), [docs/NEW-YORK.md](./docs/NEW-YORK.md), [docs/PARIS.md](./docs/PARIS.md) and [docs/TOKYO.md](./docs/TOKYO.md).
+See [docs/CATALOGUE.md](./docs/CATALOGUE.md), [docs/NEW-YORK.md](./docs/NEW-YORK.md), [docs/PARIS.md](./docs/PARIS.md), [docs/TOKYO.md](./docs/TOKYO.md) and [docs/MANIFEST.md](./docs/MANIFEST.md).
 
 ## Data sources to validate in implementation
 

@@ -33,7 +33,8 @@ The programme is deliberately gated rather than calendar-driven:
 2. Keep the bounded **Local / Express** proof as technical evidence, but leave New York in a licensing-question-shaped siding: no public release or larger authored expansion until the MTA publication gate has a defensible answer.
 3. Complete **Correspondances** as the next city work, using its independent shell, IDFM-backed correspondence director and continuous centre–periphery scale transition to pressure-test interchange modelling.
 4. Investigate **NORIKAE — A Tokyo motion study** as the preferred third city. It must still establish an authoritative source path and bounded opening composition before receiving a catalogue number.
-5. Use the third fully viable city edition—not a predetermined place or calendar date—to test the repository/package boundary. Extract only contracts demonstrated by the implemented works when the deliberate package move begins.
+5. Audit **MANIFEST — World trade in motion** as a separate global-motion branch. It must secure publication rights for a derived global AIS artifact and prove that vessel motion, inferred voyages and trade statistics remain legibly different claims.
+6. Use the third fully viable city edition—not a predetermined place or calendar date—to test the repository/package boundary. Extract only contracts demonstrated by the implemented works when the deliberate package move begins.
 
 This ordering leaves room for discovery while keeping the gates honest. New York retains its thesis and number, but technical readiness does not outrank unresolved publication terms; Tokyo can advance on its own merits without being treated as a substitute skin or a way around that question.
 
@@ -57,7 +58,10 @@ These are strong candidates, not promises or an implementation queue:
 - **Berlin** — Ringbahn pulse with U-Bahn, S-Bahn and tram strata.
 - **San Francisco** — cable cars, street-running Muni, BART, ferries and extreme terrain at a cinematic scale.
 - **Venice** — the conceptual outlier: scheduled boats become the network and water becomes the infrastructure.
+- **MANIFEST — World trade in motion** — a planetary field of observed cargo vessels and tankers in which the lanes from China and the Gulf emerge through repetition and geographic choke points. AIS can reveal motion and broad vessel class, but commodity, origin and quantity require separately labelled inference or aggregate trade evidence.
 
 They remain deliberately unnumbered until each produces a title, a source path and a visual claim as specific as the first four works.
 
 Tokyo's initial source and feasibility audit is recorded in [TOKYO.md](./TOKYO.md). It separates a durable Toei proof from the unresolved Tokyo Metro publication terms and the Challenge 2026-only Yamanote/private-railway coverage.
+
+MANIFEST's initial [AIS and trade-source audit](./MANIFEST.md) finds the visual study feasible, but gates individual global tracks on written derived-publication rights. It recommends a pinned historical composition rather than a live ship finder and defines the evidence boundary between observed motion, reported vessel fields, inferred port-to-port voyages and aggregate commodity statistics.
