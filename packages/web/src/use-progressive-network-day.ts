@@ -3,13 +3,13 @@ import {
   adjacentDayChunks,
   dayChunkForTime,
   networkSnapshotForDayChunk,
-} from './domain/network-day.ts'
+} from '@motionstudies/core/domain/network-day.ts'
 import type {
   NetworkDayChunk,
   NetworkDayChunkDescriptor,
   NetworkDayManifest,
   NetworkSnapshot,
-} from './domain/network.ts'
+} from '@motionstudies/core/domain/network.ts'
 
 export async function verifiedNetworkDayChunk(
   response: Response,

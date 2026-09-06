@@ -1,8 +1,13 @@
-import { readdir, readFile } from 'node:fs/promises'
+import { access, readdir, readFile } from 'node:fs/promises'
 import { extname, join, relative, resolve } from 'node:path'
 
 const SOURCE_ROOT = resolve('src')
-const CORE_DIRECTORIES = ['domain', 'scene', 'theme', 'components', 'entries']
+const SHARED_DIRECTORIES = [
+  resolve('packages/core/src'),
+  resolve('packages/three/src'),
+  resolve('packages/web/src'),
+]
+const LEGACY_SHARED_DIRECTORIES = ['domain', 'scene', 'theme', 'components', 'entries']
 const failures = []
 
 async function sourceFiles(directory) {
@@ -17,8 +22,8 @@ async function sourceFiles(directory) {
   return nested.flat()
 }
 
-for (const directory of CORE_DIRECTORIES) {
-  for (const file of await sourceFiles(join(SOURCE_ROOT, directory))) {
+for (const directory of SHARED_DIRECTORIES) {
+  for (const file of await sourceFiles(directory)) {
     const source = await readFile(file, 'utf8')
     if (
       /editions\/(?:london|new-york|paris|switzerland)(?:-geography)?\.ts/.test(
@@ -47,6 +52,15 @@ for (const directory of CORE_DIRECTORIES) {
   }
 }
 
+for (const directory of LEGACY_SHARED_DIRECTORIES) {
+  try {
+    await access(join(SOURCE_ROOT, directory))
+    failures.push(`src/${directory} remains outside the @motionstudies workspaces`)
+  } catch {
+    // Expected: reusable code lives under packages/.
+  }
+}
+
 const swissEntry = await readFile(join(SOURCE_ROOT, 'main.tsx'), 'utf8')
 if (/london|all-change/i.test(swissEntry)) {
   failures.push('src/main.tsx references the London edition')
@@ -69,5 +83,5 @@ if (failures.length) {
 }
 
 console.log(
-  `Edition boundaries hold across ${CORE_DIRECTORIES.map((directory) => `src/${directory}`).join(', ')}.`,
+  `Edition boundaries hold across ${SHARED_DIRECTORIES.map((directory) => relative('.', directory)).join(', ')}.`,
 )

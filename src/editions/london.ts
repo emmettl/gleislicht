@@ -1,10 +1,10 @@
 import type {
   EditionDataCatalog,
   MotionStudyEdition,
-} from './edition.ts'
+} from '@motionstudies/core/edition.ts'
 import { ALL_CHANGE_STUDY } from './catalogue.ts'
-import type { VisualTheme } from '../theme/visual-language.ts'
-import type { MapCameraFraming } from '../scene/map-camera.ts'
+import type { VisualTheme } from '@motionstudies/core/theme.ts'
+import type { MapCameraFraming } from '@motionstudies/three/map-camera.ts'
 
 const ALL_CHANGE_THEME = {
   background: '#04040d',

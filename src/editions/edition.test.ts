@@ -12,7 +12,8 @@ import {
   MOTION_STUDIES_CATALOGUE,
   motionStudyMark,
 } from './catalogue.ts'
-import { applyVisualTheme, SERVICE_CATEGORIES } from '../theme/visual-language.ts'
+import { SERVICE_CATEGORIES } from '@motionstudies/core/theme.ts'
+import { applyVisualTheme } from '@motionstudies/web/visual-theme.ts'
 
 describe('Motion Studies editions', () => {
   it('keeps the Swiss dataset catalogue outside the application shell', () => {

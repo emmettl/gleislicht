@@ -75,7 +75,8 @@ The public static deployment is GitHub Pages. Authenticated realtime polling and
 - Vite + React + strict TypeScript
 - Three.js through React Three Fiber
 - Driftbox's Web Audio engine for a fully synthesised, adaptive soundtrack
-- oxlint, Vitest, and a small domain layer kept separate from rendering
+- private `@motionstudies/core`, `@motionstudies/three` and `@motionstudies/web` npm workspaces, consumed through the same package imports future edition repositories will use
+- oxlint and Vitest, with domain, rendering and browser concerns kept in one-way dependency order
 - static deployment for the visual client; preprocessing jobs turn large GTFS/topography sources into compact, versioned web assets
 
-See [ROADMAP.md](./ROADMAP.md) for delivery stages, [docs/VISION.md](./docs/VISION.md) for the product and art direction, [docs/CATALOGUE.md](./docs/CATALOGUE.md) for the exhibition programme, and [docs/EXTRACTION.md](./docs/EXTRACTION.md) for the eventual `@motionstudies` package/repository seam.
+See [ROADMAP.md](./ROADMAP.md) for delivery stages, [docs/VISION.md](./docs/VISION.md) for the product and art direction, [docs/CATALOGUE.md](./docs/CATALOGUE.md) for the exhibition programme, and [docs/EXTRACTION.md](./docs/EXTRACTION.md) for the active `@motionstudies` workspace seam and eventual repository split.

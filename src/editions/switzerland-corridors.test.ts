@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
-import type { CorridorSnapshot } from '../domain/corridor.ts'
-import type { NetworkSnapshot, NetworkTrain } from '../domain/network.ts'
+import type { CorridorSnapshot } from '@motionstudies/core/domain/corridor.ts'
+import type { NetworkSnapshot, NetworkTrain } from '@motionstudies/core/domain/network.ts'
 import {
   isZurichChurTrain,
   journeyForSwissCorridor,

@@ -15,13 +15,13 @@ import type {
 import {
   airTrackSearchValue,
   searchAirTracks,
-} from './air-search.ts'
-import { MobilePicker } from './components/MobilePicker.tsx'
+} from '@motionstudies/core/air-search.ts'
+import { MobilePicker } from '@motionstudies/web/components/MobilePicker.tsx'
 import {
   activeAirTracks,
   positionForAirTrack,
   type AirSnapshot,
-} from './domain/air.ts'
+} from '@motionstudies/core/domain/air.ts'
 import {
   callsAtHub,
   callsNearTime,
@@ -29,9 +29,9 @@ import {
   platformCodeForCall,
   platformsForCalls,
   type HubDaySnapshot,
-} from './domain/hub.ts'
-import type { CorridorSnapshot } from './domain/corridor.ts'
-import { positionOnJourney } from './domain/journey.ts'
+} from '@motionstudies/core/domain/hub.ts'
+import type { CorridorSnapshot } from '@motionstudies/core/domain/corridor.ts'
+import { positionOnJourney } from '@motionstudies/core/domain/journey.ts'
 import {
   isKientalGriesalpTrain,
   isZurichChurTrain,
@@ -43,7 +43,7 @@ import {
   adjacentDayChunks,
   dayChunkForTime,
   networkSnapshotForDayChunk,
-} from './domain/network-day.ts'
+} from '@motionstudies/core/domain/network-day.ts'
 import {
   buildRouteIndex,
   buildStationIndex,
@@ -56,8 +56,8 @@ import {
   type NetworkTrain,
   type ServiceCategory,
   type StationIndexEntry,
-} from './domain/network.ts'
-import { editionDataUrl } from './editions/edition.ts'
+} from '@motionstudies/core/domain/network.ts'
+import { editionDataUrl } from '@motionstudies/web/data-url.ts'
 import { motionStudyMark } from './editions/catalogue.ts'
 import type {
   SwitzerlandEdition,
@@ -72,25 +72,25 @@ import {
 import {
   SERVICE_CATEGORIES,
   SERVICE_COLORS,
-} from './theme/visual-language.ts'
+} from '@motionstudies/core/theme.ts'
 import {
   applyRealtimeSnapshot,
   type RealtimeApplication,
   type RealtimeSnapshot,
-} from './domain/realtime.ts'
-import type { MapBoundary } from './domain/boundary.ts'
-import type { MapWaterBodies } from './domain/lakes.ts'
+} from '@motionstudies/core/domain/realtime.ts'
+import type { MapBoundary } from '@motionstudies/core/domain/boundary.ts'
+import type { MapWaterBodies } from '@motionstudies/core/domain/lakes.ts'
 import {
   reconstructedVehicleCount,
   type RoadTopologyRoad,
   type RoadTopologySnapshot,
   type RoadTrafficSnapshot,
-} from './domain/road.ts'
-import { reconstructedNationalVehicleCount } from './domain/road-day.ts'
+} from '@motionstudies/core/domain/road.ts'
+import { reconstructedNationalVehicleCount } from '@motionstudies/core/domain/road-day.ts'
 import {
   roadCorridorSearchValue,
   searchRoadCorridors,
-} from './road-search.ts'
+} from '@motionstudies/core/road-search.ts'
 import {
   LANGUAGE_LOCALES,
   resolveUiLanguage,
@@ -102,18 +102,18 @@ import {
 import type {
   MapCameraAction,
   MapCameraCommand,
-} from './scene/NationalNetworkScene.tsx'
-import type { TrainLabelMode } from './scene/train-labels.ts'
+} from '@motionstudies/three/NationalNetworkScene.tsx'
+import type { TrainLabelMode } from '@motionstudies/three/train-labels.ts'
 import type { JourneyEnvironment } from './studies/GleislichtJourneyScene.tsx'
 import {
   nextSearchResultIndex,
   type SearchNavigationKey,
-} from './search-navigation.ts'
-import { foldSearchText } from './search-text.ts'
-import { useProgressiveNetworkDay } from './use-progressive-network-day.ts'
-import { useProgressiveAirDay } from './use-progressive-air-day.ts'
-import { useProgressiveRoadStudy } from './use-progressive-road-study.ts'
-import { useLocalPerformance } from './use-local-performance.ts'
+} from '@motionstudies/core/search-navigation.ts'
+import { foldSearchText } from '@motionstudies/core/search-text.ts'
+import { useProgressiveNetworkDay } from '@motionstudies/web/use-progressive-network-day.ts'
+import { useProgressiveAirDay } from '@motionstudies/web/use-progressive-air-day.ts'
+import { useProgressiveRoadStudy } from '@motionstudies/web/use-progressive-road-study.ts'
+import { useLocalPerformance } from '@motionstudies/web/use-local-performance.ts'
 
 const GleislichtScene = lazy(() =>
   import('./studies/GleislichtJourneyScene.tsx').then(({ GleislichtScene: Scene }) => ({
@@ -121,17 +121,17 @@ const GleislichtScene = lazy(() =>
   })),
 )
 const NationalNetworkScene = lazy(() =>
-  import('./scene/NationalNetworkScene.tsx').then(
+  import('@motionstudies/three/NationalNetworkScene.tsx').then(
     ({ NationalNetworkScene: Scene }) => ({ default: Scene }),
   ),
 )
 const HubPulseScene = lazy(() =>
-  import('./scene/HubPulseScene.tsx').then(({ HubPulseScene: Scene }) => ({
+  import('@motionstudies/three/HubPulseScene.tsx').then(({ HubPulseScene: Scene }) => ({
     default: Scene,
   })),
 )
 const StationFlowScene = lazy(() =>
-  import('./scene/StationFlowScene.tsx').then(({ StationFlowScene: Scene }) => ({
+  import('@motionstudies/three/StationFlowScene.tsx').then(({ StationFlowScene: Scene }) => ({
     default: Scene,
   })),
 )
@@ -1062,10 +1062,11 @@ export function App({ edition }: AppProps) {
     const canvas = document.querySelector<HTMLCanvasElement>('.scene canvas')
     if (!canvas) return
     try {
-      const { recordCanvas } = await import('./recording.ts')
+      const { recordCanvas } = await import('@motionstudies/web/recording.ts')
       setRecordingState('recording')
       recordingRef.current = recordCanvas(canvas, {
         duration: 12_000,
+        fileNamePrefix: edition.id,
         onSaving: () => setRecordingState('saving'),
         onComplete: () => {
           recordingRef.current = null
@@ -1077,7 +1078,7 @@ export function App({ edition }: AppProps) {
       recordingRef.current = null
       setRecordingState('error')
     }
-  }, [recordingState])
+  }, [edition.id, recordingState])
 
   useEffect(() => {
     document.documentElement.lang = language

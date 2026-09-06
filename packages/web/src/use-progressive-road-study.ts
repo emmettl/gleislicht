@@ -5,7 +5,7 @@ import {
   roadSnapshotForChunk,
   type NationalRoadMinuteChunk,
   type NationalRoadStudyManifest,
-} from './domain/road-day.ts'
+} from '@motionstudies/core/domain/road-day.ts'
 
 export function useProgressiveRoadStudy(
   manifestFile: string,

@@ -1,5 +1,5 @@
 import motorwayCatalogue from '../../fixtures/tfl/all-change-motorways.json'
-import type { RoadSearchCorridor } from '../road-search.ts'
+import type { RoadSearchCorridor } from '@motionstudies/core/road-search.ts'
 
 export interface LondonMotorway extends RoadSearchCorridor {
   readonly bounds: {

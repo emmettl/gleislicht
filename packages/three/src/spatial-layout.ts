@@ -1,8 +1,8 @@
-import type { NetworkSnapshot } from '../domain/network.ts'
+import type { NetworkSnapshot } from '@motionstudies/core/domain/network.ts'
 import type {
   SpatialLayoutCoordinate,
   SpatialLayoutSnapshot,
-} from '../domain/spatial-layout.ts'
+} from '@motionstudies/core/domain/spatial-layout.ts'
 import {
   pointAlongProjectedPath,
   prepareProjectedPath,

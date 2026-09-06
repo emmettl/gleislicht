@@ -4,21 +4,21 @@ import * as THREE from 'three'
 import type {
   BoundaryCoordinate,
   MapBoundary,
-} from '../domain/boundary.ts'
-import type { StudyAirport } from '../domain/airport.ts'
-import type { MapWaterBodies } from '../domain/lakes.ts'
-import type { MapReferencePaths } from '../domain/map-reference.ts'
-import type { SpatialLayoutSnapshot } from '../domain/spatial-layout.ts'
+} from '@motionstudies/core/domain/boundary.ts'
+import type { StudyAirport } from '@motionstudies/core/domain/airport.ts'
+import type { MapWaterBodies } from '@motionstudies/core/domain/lakes.ts'
+import type { MapReferencePaths } from '@motionstudies/core/domain/map-reference.ts'
+import type { SpatialLayoutSnapshot } from '@motionstudies/core/domain/spatial-layout.ts'
 import type {
   RoadTopologySnapshot,
   RoadTrafficSnapshot,
-} from '../domain/road.ts'
-import type { NationalRoadStudySnapshot } from '../domain/road-day.ts'
+} from '@motionstudies/core/domain/road.ts'
+import type { NationalRoadStudySnapshot } from '@motionstudies/core/domain/road-day.ts'
 import {
   positionForAirTrack,
   type AirSnapshot,
   type AirTrack,
-} from '../domain/air.ts'
+} from '@motionstudies/core/domain/air.ts'
 import {
   positionForTrain,
   type NetworkSnapshot,
@@ -26,13 +26,13 @@ import {
   type NetworkTrain,
   type ServiceCategory,
   type StationIndexEntry,
-} from '../domain/network.ts'
-import { SERVICE_COLORS } from '../theme/visual-language.ts'
+} from '@motionstudies/core/domain/network.ts'
+import { SERVICE_COLORS } from '@motionstudies/core/theme.ts'
 import {
   buildTrainTimeIndex,
   trainsNearTime,
   type TrainTimeIndex,
-} from '../domain/train-time-index.ts'
+} from '@motionstudies/core/domain/train-time-index.ts'
 import {
   compareStationLabelCandidates,
   MAX_STATION_LABELS,

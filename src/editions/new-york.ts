@@ -1,10 +1,10 @@
-import type { MapCameraFraming } from '../scene/map-camera.ts'
-import type { VisualTheme } from '../theme/visual-language.ts'
+import type { MapCameraFraming } from '@motionstudies/three/map-camera.ts'
+import type { VisualTheme } from '@motionstudies/core/theme.ts'
 import { LOCAL_EXPRESS_STUDY } from './catalogue.ts'
 import type {
   EditionDataCatalog,
   MotionStudyEdition,
-} from './edition.ts'
+} from '@motionstudies/core/edition.ts'
 
 const LOCAL_EXPRESS_THEME = {
   background: '#03070a',

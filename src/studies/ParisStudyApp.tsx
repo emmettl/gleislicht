@@ -16,10 +16,10 @@ import {
   type NetworkSnapshot,
   type NetworkTrain,
   type StationIndexEntry,
-} from '../domain/network.ts'
-import { mergeNetworkLayers } from '../domain/network-layers.ts'
+} from '@motionstudies/core/domain/network.ts'
+import { mergeNetworkLayers } from '@motionstudies/core/domain/network-layers.ts'
 import { motionStudyMark } from '../editions/catalogue.ts'
-import { editionDataUrl } from '../editions/edition.ts'
+import { editionDataUrl } from '@motionstudies/web/data-url.ts'
 import {
   parisBoundary,
   parisReferences,
@@ -33,13 +33,13 @@ import {
 import type {
   MapCameraAction,
   MapCameraCommand,
-} from '../scene/NationalNetworkScene.tsx'
-import type { TrainLabelMode } from '../scene/train-labels.ts'
-import { foldSearchText } from '../search-text.ts'
-import { useProgressiveNetworkDay } from '../use-progressive-network-day.ts'
+} from '@motionstudies/three/NationalNetworkScene.tsx'
+import type { TrainLabelMode } from '@motionstudies/three/train-labels.ts'
+import { foldSearchText } from '@motionstudies/core/search-text.ts'
+import { useProgressiveNetworkDay } from '@motionstudies/web/use-progressive-network-day.ts'
 
 const NationalNetworkScene = lazy(() =>
-  import('../scene/NationalNetworkScene.tsx').then(
+  import('@motionstudies/three/NationalNetworkScene.tsx').then(
     ({ NationalNetworkScene: Scene }) => ({ default: Scene }),
   ),
 )

@@ -1,5 +1,5 @@
 import * as THREE from 'three'
-import type { AirPosition } from '../domain/air.ts'
+import type { AirPosition } from '@motionstudies/core/domain/air.ts'
 
 export interface AirProjection {
   readonly centreLongitude: number

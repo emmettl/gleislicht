@@ -8,13 +8,13 @@ import {
   UNASSIGNED_PLATFORM,
   type HubCall,
   type HubDefinition,
-} from '../domain/hub.ts'
+} from '@motionstudies/core/domain/hub.ts'
 import {
   type NetworkSnapshot,
   type NetworkStop,
   type ServiceCategory,
-} from '../domain/network.ts'
-import { SERVICE_COLORS } from '../theme/visual-language.ts'
+} from '@motionstudies/core/domain/network.ts'
+import { SERVICE_COLORS } from '@motionstudies/core/theme.ts'
 import { createGlowPointTexture } from './glow-point-texture.ts'
 
 interface StationFlowSceneProps {

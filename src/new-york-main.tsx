@@ -1,4 +1,4 @@
-import { mountMotionStudy } from './entries/mount-motion-study.tsx'
+import { mountMotionStudy } from '@motionstudies/web/mount-motion-study.tsx'
 import { NEW_YORK_EDITION } from './editions/new-york.ts'
 import { NewYorkStudyApp } from './studies/NewYorkStudyApp.tsx'
 import './styles.css'

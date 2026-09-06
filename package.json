@@ -2,6 +2,9 @@
   "name": "gleislicht",
   "version": "0.0.1",
   "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "type": "module",
   "description": "Switzerland in motion — a cinematic railway visualisation built from Swiss open transport data.",
   "scripts": {
@@ -99,6 +102,9 @@
   },
   "dependencies": {
     "@driftbox/engine": "^0.6.0",
+    "@motionstudies/core": "0.0.0",
+    "@motionstudies/three": "0.0.0",
+    "@motionstudies/web": "0.0.0",
     "@react-three/fiber": "^9.7.0",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",

@@ -1,7 +1,7 @@
 import { StrictMode, type ReactNode } from 'react'
 import { createRoot } from 'react-dom/client'
-import type { MotionStudyEdition } from '../editions/edition.ts'
-import { applyVisualTheme } from '../theme/visual-language.ts'
+import type { MotionStudyEdition } from '@motionstudies/core/edition.ts'
+import { applyVisualTheme } from './visual-theme.ts'
 
 export function mountMotionStudy(
   edition: MotionStudyEdition,

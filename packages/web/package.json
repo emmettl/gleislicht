@@ -1,0 +1,17 @@
+{
+  "name": "@motionstudies/web",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./tokens.css": "./src/tokens.css",
+    "./*": "./src/*"
+  },
+  "dependencies": {
+    "@motionstudies/core": "0.0.0"
+  },
+  "peerDependencies": {
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  }
+}

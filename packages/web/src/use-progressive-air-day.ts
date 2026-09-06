@@ -3,9 +3,9 @@ import {
   adjacentAirDayChunks,
   airDayChunkForTime,
   airSnapshotForDayChunk,
-} from './domain/air-day.ts'
-import type { AirDayChunk, AirDayManifest } from './domain/air-day.ts'
-import type { AirSnapshot } from './domain/air.ts'
+} from '@motionstudies/core/domain/air-day.ts'
+import type { AirDayChunk, AirDayManifest } from '@motionstudies/core/domain/air-day.ts'
+import type { AirSnapshot } from '@motionstudies/core/domain/air.ts'
 
 interface ProgressiveAirDay {
   readonly manifest?: AirDayManifest

@@ -17,9 +17,10 @@ import {
   type NetworkTrain,
   type ServicePatternPassEvent,
   type StationIndexEntry,
-} from '../domain/network.ts'
-import type { SpatialLayoutSnapshot } from '../domain/spatial-layout.ts'
-import { editionDataUrl, type SpatialLayoutId } from '../editions/edition.ts'
+} from '@motionstudies/core/domain/network.ts'
+import type { SpatialLayoutSnapshot } from '@motionstudies/core/domain/spatial-layout.ts'
+import { editionDataUrl } from '@motionstudies/web/data-url.ts'
+import type { SpatialLayoutId } from '@motionstudies/core/edition.ts'
 import {
   newYorkBoundary,
   newYorkWater,
@@ -30,16 +31,16 @@ import {
   type NewYorkEdition,
 } from '../editions/new-york.ts'
 import { motionStudyMark } from '../editions/catalogue.ts'
-import { foldSearchText } from '../search-text.ts'
-import { useProgressiveNetworkDay } from '../use-progressive-network-day.ts'
+import { foldSearchText } from '@motionstudies/core/search-text.ts'
+import { useProgressiveNetworkDay } from '@motionstudies/web/use-progressive-network-day.ts'
 import type {
   MapCameraAction,
   MapCameraCommand,
-} from '../scene/NationalNetworkScene.tsx'
-import type { TrainLabelMode } from '../scene/train-labels.ts'
+} from '@motionstudies/three/NationalNetworkScene.tsx'
+import type { TrainLabelMode } from '@motionstudies/three/train-labels.ts'
 
 const NationalNetworkScene = lazy(() =>
-  import('../scene/NationalNetworkScene.tsx').then(
+  import('@motionstudies/three/NationalNetworkScene.tsx').then(
     ({ NationalNetworkScene: Scene }) => ({ default: Scene }),
   ),
 )

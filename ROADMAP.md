@@ -180,7 +180,8 @@ See [docs/EDITIONS.md](./docs/EDITIONS.md) for the reusable boundary and [docs/L
 - [x] Complete the 007 publication review and keep its page/data out of Pages until MTA clarifies transformation and application licensing.
 - [x] Compile the bounded 007 service day into twelve lazy two-hour chunks while preserving the fast opening study.
 - [x] Enforce a 390 KiB compressed first-view budget and desktop/iPhone browser gates for the New York foundation.
-- [ ] Use the third fully viable city edition—not calendar ambition or a predetermined place—as the extraction trigger for `@motionstudies/core`, `@motionstudies/three` and the edition repositories.
+- [x] Use the third viable edition as the extraction trigger for private `@motionstudies/core`, `@motionstudies/three` and `@motionstudies/web` workspaces with real package imports.
+- [ ] Split the shared workspaces and edition shells into repositories, and publish packages only after the source-level API has stabilised.
 - [ ] Hold further 007 Local / Express expansion and public release at the MTA licensing gate; retain its bounded proof as technical evidence.
 - [x] Build 008 Correspondances through a Métro/RER opening study, a continuous centre–periphery scale study and three source-backed interchange compositions.
 - [x] Give Correspondances an independent source-pinned shell, exact transfer evidence, official Seine/city context and a lazy 24-hour two-line study within a phone-first payload gate.

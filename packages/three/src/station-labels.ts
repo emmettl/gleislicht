@@ -1,4 +1,4 @@
-import type { StationIndexEntry } from '../domain/network.ts'
+import type { StationIndexEntry } from '@motionstudies/core/domain/network.ts'
 import {
   homeMapDistanceScale,
   type MapCameraFraming,

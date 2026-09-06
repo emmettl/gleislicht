@@ -1,5 +1,6 @@
 interface RecordingOptions {
   readonly duration: number
+  readonly fileNamePrefix?: string
   readonly onSaving: () => void
   readonly onComplete: () => void
 }
@@ -55,7 +56,7 @@ export function recordCanvas(
     const url = URL.createObjectURL(blob)
     const link = document.createElement('a')
     link.href = url
-    link.download = `gleislicht-${fileStamp()}.${type.extension}`
+    link.download = `${options.fileNamePrefix ?? 'motion-study'}-${fileStamp()}.${type.extension}`
     link.click()
     window.setTimeout(() => URL.revokeObjectURL(url), 1_000)
     options.onComplete()

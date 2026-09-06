@@ -1,4 +1,4 @@
-import type { HubDefinition } from '../domain/hub.ts'
+import type { HubDefinition } from '@motionstudies/core/domain/hub.ts'
 
 export type LondonHubId = 'kings-cross' | 'bank' | 'waterloo' | 'stratford'
 

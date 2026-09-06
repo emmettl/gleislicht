@@ -47,7 +47,8 @@ function collectInitialFiles(manifest) {
   }
   visit(entry[0])
   const openingScene = Object.entries(manifest).find(
-    ([, chunk]) => chunk.src === 'src/scene/NationalNetworkScene.tsx',
+    ([, chunk]) =>
+      chunk.src === 'packages/three/src/NationalNetworkScene.tsx',
   )
   if (!openingScene) throw new Error('Vite manifest has no national network scene')
   visit(openingScene[0])

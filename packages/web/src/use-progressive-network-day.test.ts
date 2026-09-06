@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import type { NetworkDayChunkDescriptor } from './domain/network.ts'
+import type { NetworkDayChunkDescriptor } from '@motionstudies/core/domain/network.ts'
 import { verifiedNetworkDayChunk } from './use-progressive-network-day.ts'
 
 const body = JSON.stringify({ trains: [] })

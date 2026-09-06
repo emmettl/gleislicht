@@ -1,9 +1,9 @@
 import type {
   BoundaryCoordinate,
   MapBoundary,
-} from '../domain/boundary.ts'
-import type { MapWaterBodies } from '../domain/lakes.ts'
-import type { MapReferencePaths } from '../domain/map-reference.ts'
+} from '@motionstudies/core/domain/boundary.ts'
+import type { MapWaterBodies } from '@motionstudies/core/domain/lakes.ts'
+import type { MapReferencePaths } from '@motionstudies/core/domain/map-reference.ts'
 
 interface ParisGeographyLayer {
   readonly publisher: string
