@@ -231,8 +231,8 @@ const artifact = {
     overridesSource: overridesInput.split('/').at(-1),
     overridesSha256: createHash('sha256').update(overridesRaw).digest('hex'),
     feedVersion: network.metadata.feedVersion,
-    model: 'central-London lens / shared interchange cells / 0.012 grid / octilinear path routing',
-    note: 'An independently generated London diagram study. It preserves source stop and path identity, expands the central interchange field and compresses outer branches without reproducing TfL map artwork.',
+    model: 'Beck-derived central interchange field / shared station cells / 0.012 grid / octilinear path routing',
+    note: 'An independently generated London diagram study using the visual grammar of Beck-space: authored interchange spacing, 45-degree routing, a simplified Thames and parallel TfL line identities. It preserves source stop and path identity without tracing TfL map artwork.',
   },
   bounds: {
     minX: Math.min(...allX),

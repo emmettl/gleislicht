@@ -44,6 +44,7 @@ const expectedNetworkHash = createHash('sha256').update(networkBytes).digest('he
 const overridesBytes = await readFile(
   resolve('fixtures/tfl/all-change-diagram-overrides.json'),
 )
+const overrides = JSON.parse(overridesBytes.toString('utf8'))
 const expectedOverridesHash = createHash('sha256')
   .update(overridesBytes)
   .digest('hex')
@@ -52,6 +53,9 @@ if (layout.metadata?.sourceSha256 !== expectedNetworkHash) {
 }
 if (layout.metadata?.overridesSha256 !== expectedOverridesHash) {
   throw new Error('London diagram was not compiled with the current authored overrides')
+}
+if (Object.keys(overrides.stops ?? {}).length < 30) {
+  throw new Error('London diagram no longer has its authored central interchange field')
 }
 if (layout.stops?.length !== network.stops.length) {
   throw new Error('London diagram does not cover every opening-network stop')

@@ -305,6 +305,48 @@ function appendLineSegments(
   }
 }
 
+function routeSegmentKey(train: NetworkTrain, segmentIndex: number): string {
+  const fromIndex = train.stops[segmentIndex]?.[0]
+  const toIndex = train.stops[segmentIndex + 1]?.[0]
+  const pathIndex = train.pathSegments?.[segmentIndex]
+  if (pathIndex !== undefined && pathIndex !== null) return `path:${pathIndex}`
+  if (fromIndex === undefined || toIndex === undefined) {
+    return `missing:${train.id}:${segmentIndex}`
+  }
+  return fromIndex < toIndex
+    ? `${fromIndex}:${toIndex}`
+    : `${toIndex}:${fromIndex}`
+}
+
+function offsetProjectedPath(
+  points: readonly ProjectedStop[],
+  offset: number,
+): readonly ProjectedStop[] {
+  if (!offset || points.length < 2) return points
+  return points.map((point, index) => {
+    const previous = points[Math.max(0, index - 1)]
+    const next = points[Math.min(points.length - 1, index + 1)]
+    const tangentX = next[0] - previous[0]
+    const tangentZ = next[2] - previous[2]
+    const length = Math.hypot(tangentX, tangentZ)
+    if (!length) return point
+    return [
+      point[0] - (tangentZ / length) * offset,
+      point[1],
+      point[2] + (tangentX / length) * offset,
+    ]
+  })
+}
+
+function canonicalInterchangeName(name: string): string {
+  return name
+    .replace(/^London\s+/i, '')
+    .replace(/\s+\(London\)$/i, '')
+    .replace(/\s+\((?:Bakerloo|Circle Line|H&C Line|Dist&Picc Line)\)$/i, '')
+    .replace(/\s+/g, ' ')
+    .trim()
+}
+
 function projectedTrainPosition(
   train: NetworkTrain,
   time: number,
@@ -700,8 +742,10 @@ function RailGraph({
 }) {
   const { camera } = useThree()
   const stationMaterial = useRef<THREE.PointsMaterial>(null)
+  const interchangeMaterial = useRef<THREE.PointsMaterial>(null)
   const localNetworkMaterial = useRef<THREE.LineBasicMaterial>(null)
   const stationTexture = useMemo(() => trainLightTexture('orb'), [])
+  const interchangeTexture = useMemo(() => tflInterchangeTexture(), [])
   const railGeometry = useMemo(() => {
     const structuralPositions: number[] = []
     const localPositions: number[] = []
@@ -754,21 +798,74 @@ function RailGraph({
     return geometry
   }, [projectedStops])
 
+  const interchangeGeometry = useMemo(() => {
+    const stationRoutes = new Map<
+      string,
+      { routes: Set<string>; stopIndex: number; rank: number }
+    >()
+    for (const train of snapshot.trains) {
+      for (const [stopIndex] of train.stops) {
+        const stop = snapshot.stops[stopIndex]
+        if (!stop) continue
+        const name = canonicalInterchangeName(stop[2])
+        const rank = stop[5] ?? Number.MAX_SAFE_INTEGER
+        const record = stationRoutes.get(name) ?? {
+          routes: new Set<string>(),
+          stopIndex,
+          rank,
+        }
+        record.routes.add(train.route)
+        if (rank < record.rank) {
+          record.stopIndex = stopIndex
+          record.rank = rank
+        }
+        stationRoutes.set(name, record)
+      }
+    }
+    const positions: number[] = []
+    for (const { routes, stopIndex } of stationRoutes.values()) {
+      if (routes.size < 2) continue
+      const stop = projectedStops[stopIndex]
+      if (stop) positions.push(stop[0], stop[1], stop[2])
+    }
+    const geometry = new THREE.BufferGeometry()
+    geometry.setAttribute(
+      'position',
+      new THREE.Float32BufferAttribute(positions, 3),
+    )
+    return geometry
+  }, [projectedStops, snapshot.stops, snapshot.trains])
+
   useEffect(
     () => () => {
       stationTexture.dispose()
+      interchangeTexture.dispose()
+    },
+    [interchangeTexture, stationTexture],
+  )
+
+  useEffect(
+    () => () => {
       railGeometry.structural.dispose()
       railGeometry.local.dispose()
+      interchangeGeometry.dispose()
     },
-    [railGeometry, stationTexture],
+    [interchangeGeometry, railGeometry],
   )
 
   useFrame(() => {
     if (!stationMaterial.current || !localNetworkMaterial.current) return
     const cameraScale = THREE.MathUtils.clamp(camera.position.y / 37, 0.02, 1)
     stationMaterial.current.size = 0.065 * cameraScale
+    stationMaterial.current.opacity =
+      (subdued ? 0.055 : 0.4) * (1 - routeColorMix * 0.9)
+    if (interchangeMaterial.current) {
+      interchangeMaterial.current.size = 0.32 * cameraScale
+      interchangeMaterial.current.opacity =
+        routeColorMix * (subdued ? 0.38 : 0.94)
+    }
     const detail = localNetworkDetailAtZoom(camera.position.y, cameraFraming)
-    const identityAttenuation = 1 - routeColorMix * 0.72
+    const identityAttenuation = 1 - routeColorMix * 0.88
     localNetworkMaterial.current.opacity =
       (subdued ? 0.008 + detail * 0.025 : 0.025 + detail * 0.115) *
       identityAttenuation
@@ -780,7 +877,7 @@ function RailGraph({
         <lineBasicMaterial
           color="#7296bb"
           transparent
-          opacity={(subdued ? 0.035 : 0.14) * (1 - routeColorMix * 0.72)}
+          opacity={(subdued ? 0.035 : 0.14) * (1 - routeColorMix * 0.88)}
           blending={THREE.AdditiveBlending}
         />
       </lineSegments>
@@ -805,15 +902,37 @@ function RailGraph({
         />
       )}
       {routeColors && routeColorMix > 0.001 && (
-        <RouteIdentityLayer
-          snapshot={snapshot}
-          projectedStops={projectedStops}
-          projectedPaths={projectedPaths}
-          lakeAvoidingPaths={lakeAvoidingPaths}
-          routeColors={routeColors}
-          opacity={routeColorMix}
-          subdued={subdued}
-        />
+        <>
+          <RouteIdentityLayer
+            snapshot={snapshot}
+            projectedStops={projectedStops}
+            projectedPaths={projectedPaths}
+            lakeAvoidingPaths={lakeAvoidingPaths}
+            routeColors={routeColors}
+            opacity={routeColorMix}
+            subdued={subdued}
+          />
+          <points
+            geometry={interchangeGeometry}
+            position={[0, STATION_SURFACE_Y + 0.08, 0]}
+            renderOrder={4}
+          >
+            <pointsMaterial
+              ref={interchangeMaterial}
+              color="#fffdf4"
+              map={interchangeTexture}
+              size={0.32}
+              transparent
+              opacity={routeColorMix * (subdued ? 0.38 : 0.94)}
+              alphaTest={0.08}
+              depthTest={false}
+              depthWrite={false}
+              sizeAttenuation
+              toneMapped={false}
+              fog={false}
+            />
+          </points>
+        </>
       )}
       <points geometry={stationGeometry} position={[0, STATION_SURFACE_Y, 0]}>
         <pointsMaterial
@@ -852,6 +971,16 @@ function RouteIdentityLayer({
   readonly subdued: boolean
 }) {
   const routes = useMemo(() => {
+    const segmentRoutes = new Map<string, Set<string>>()
+    for (const train of snapshot.trains) {
+      if (!routeColors[train.route]) continue
+      for (let index = 1; index < train.stops.length; index += 1) {
+        const key = routeSegmentKey(train, index - 1)
+        const names = segmentRoutes.get(key) ?? new Set<string>()
+        names.add(train.route)
+        segmentRoutes.set(key, names)
+      }
+    }
     const records = new Map<
       string,
       { color: string; positions: number[]; segments: Set<string> }
@@ -866,15 +995,7 @@ function RouteIdentityLayer({
         segments: new Set<string>(),
       }
       for (let index = 1; index < train.stops.length; index += 1) {
-        const fromIndex = train.stops[index - 1][0]
-        const toIndex = train.stops[index][0]
-        const pathIndex = train.pathSegments?.[index - 1]
-        const key =
-          pathIndex === undefined || pathIndex === null
-            ? fromIndex < toIndex
-              ? `${fromIndex}:${toIndex}`
-              : `${toIndex}:${fromIndex}`
-            : `path:${pathIndex}`
+        const key = routeSegmentKey(train, index - 1)
         if (record.segments.has(key)) continue
         const points = segmentPoints(
           train,
@@ -885,7 +1006,17 @@ function RouteIdentityLayer({
         )
         if (points.length < 2) continue
         record.segments.add(key)
-        appendLineSegments(record.positions, points, 0.075)
+        const sharedRoutes = [...(segmentRoutes.get(key) ?? [])].sort()
+        const laneIndex = sharedRoutes.indexOf(train.route)
+        const laneOffset =
+          sharedRoutes.length < 2 || laneIndex < 0
+            ? 0
+            : (laneIndex - (sharedRoutes.length - 1) / 2) * 0.11
+        appendLineSegments(
+          record.positions,
+          offsetProjectedPath(points, laneOffset),
+          0.075,
+        )
       }
       records.set(train.route, record)
     }
@@ -912,7 +1043,7 @@ function RouteIdentityLayer({
           <lineBasicMaterial
             color={color}
             transparent
-            opacity={opacity * (subdued ? 0.12 : 0.52)}
+            opacity={opacity * (subdued ? 0.12 : 0.74)}
             blending={THREE.AdditiveBlending}
             depthTest={false}
             depthWrite={false}
@@ -1101,6 +1232,28 @@ function realtimeRingTexture(): THREE.CanvasTexture {
     context.beginPath()
     context.arc(48, 48, 30, 0, Math.PI * 2)
     context.stroke()
+  }
+  const texture = new THREE.CanvasTexture(canvas)
+  texture.colorSpace = THREE.SRGBColorSpace
+  texture.minFilter = THREE.LinearFilter
+  texture.generateMipmaps = false
+  return texture
+}
+
+function tflInterchangeTexture(): THREE.CanvasTexture {
+  const canvas = document.createElement('canvas')
+  canvas.width = 96
+  canvas.height = 96
+  const context = canvas.getContext('2d')
+  if (context) {
+    context.fillStyle = 'rgba(255, 253, 244, 0.98)'
+    context.beginPath()
+    context.arc(48, 48, 31, 0, Math.PI * 2)
+    context.fill()
+    context.fillStyle = 'rgba(5, 6, 18, 0.98)'
+    context.beginPath()
+    context.arc(48, 48, 18, 0, Math.PI * 2)
+    context.fill()
   }
   const texture = new THREE.CanvasTexture(canvas)
   texture.colorSpace = THREE.SRGBColorSpace
