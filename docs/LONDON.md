@@ -84,6 +84,12 @@ The compiler now collapses TfL's repeated arrival/dwell interval records into on
 
 Run `npm run data:london:proofs` to refresh the bounded adapter proofs, or use the individual proof scripts for one request. `TFL_API_KEY` is supported for route-sequence access and should be used for repeated requests, in line with TfL's developer guidance. The generated metadata records retrieval time, source hashes, source endpoints, TfL's data-service terms, the selected weekday schedule and the fact that these are not realtime or complete London service-day claims.
 
+### Observed operations collector
+
+`motionstudies-london-operations` is the bounded first operational study. Once per minute it requests the complete arrival-prediction sets for the Victoria, Jubilee and Elizabeth lines plus their current status, groups predictions by TfL vehicle identity and writes both a compact latest snapshot and an immutable gzip observation to the existing private R2 bucket. The observation model retains predicted stop calls rather than inventing GPS coordinates. A future compiler can join consecutive observations to static route geometry and publish an explicitly prediction-derived replay.
+
+The three-line collector uses four TfL requests per minute. It works within the anonymous allowance for initial verification, while `TFL_API_KEY` should be installed as the Worker secret for sustained recording. See [CLOUDFLARE.md](./CLOUDFLARE.md).
+
 `npm run data:london:catalogue` separately discovers every currently advertised line in the five rail-led modes. Its compact committed catalogue preserves 20 line identities and 125 directional branch definitions, each with ordered NaPTAN stops and a geometry hash. Three NaPTAN hierarchy samples retain interchange, entrance and platform children without inventing absent platform names.
 
 TfL documents that its Journey Planner timetable feed covers Underground, bus, DLR, tram, cable car and river—not Elizabeth line or London Overground. Both rail modes do have current official public timetable PDFs. A separate grid extractor records each PDF hash and validity period, then accepts only columns with both requested endpoints, monotonic times and calls in official route order. Limited-stop columns are explicit: their path geometry spans the omitted non-calling stations rather than fabricating calls. It also understands repeated grids, side-by-side tables and TfL's weekday heading variants. Regenerating the lattice requires Poppler's `pdftotext`; the compiled JSON remains dependency-free.

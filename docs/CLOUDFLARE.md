@@ -1,11 +1,12 @@
 # Cloudflare operations
 
-GitHub Pages remains the public static host. Cloudflare runs two narrowly scoped services against one private R2 bucket:
+GitHub Pages remains the public static host. Cloudflare runs three narrowly scoped services against one private R2 bucket:
 
 - `gleislicht-realtime` polls Swiss GTFS-RT once per minute, normalizes it and serves the central `gtfs-rt/latest.json` object at `/realtime.json`.
 - `gleislicht-astra-recorder` waits until 24 seconds after each minute publication and writes append-only gzip snapshots below `astra/<scope>/<UTC date>/`.
+- `motionstudies-london-operations` samples TfL predictions for the Victoria, Jubilee and Elizabeth lines once per minute. It serves a compact latest snapshot and archives immutable observations below `london/tfl-operations/<UTC date>/` for a future deterministic observed-day compiler.
 
-Neither API token enters the browser, GitHub Pages artifact or repository. The two upstream products issue separate tokens even when they belong to the same API Manager application.
+No API token enters the browser, GitHub Pages artifact or repository. Each upstream product has its own Worker secret.
 
 ## One-time account setup
 
@@ -28,16 +29,18 @@ Neither API token enters the browser, GitHub Pages artifact or repository. The t
    ```sh
    npx wrangler secret put OPENTRANSPORTDATA_API_KEY --config wrangler.realtime.jsonc
    npx wrangler secret put ASTRA_API_KEY --config wrangler.astra.jsonc
+   npx wrangler secret put TFL_API_KEY --config wrangler.london.jsonc
    ```
 
-6. Leave `COLLECTING_ENABLED` set to `false` for the first ASTRA deployment, then deploy both Workers:
+6. Leave `COLLECTING_ENABLED` set to `false` for the first ASTRA deployment, then deploy the Workers:
 
    ```sh
    npm run worker:deploy:realtime
    npm run worker:deploy:astra
+   npm run worker:deploy:london
    ```
 
-The ASTRA Worker has no public HTTP route. The realtime deployment prints its `workers.dev` URL; the browser endpoint is that URL followed by `/realtime.json`.
+The ASTRA Worker has no public HTTP route. The Swiss realtime deployment prints its `workers.dev` URL; the browser endpoint is that URL followed by `/realtime.json`. The London Worker exposes `/operations.json` and `/health`. It can make the bounded four-request sample anonymously for initial verification, but the registered TfL key provides the correct quota and operational identity for sustained collection.
 
 After an ASTRA credential has passed a one-shot local request, set `COLLECTING_ENABLED` to `true` in `wrangler.astra.jsonc` and redeploy. This explicit switch prevents a rejected or expired credential from generating a failed request every minute.
 
@@ -48,6 +51,7 @@ Cron changes can take several minutes to propagate. Tail each Worker until one s
 ```sh
 npx wrangler tail gleislicht-realtime
 npx wrangler tail gleislicht-astra-recorder
+npx wrangler tail motionstudies-london-operations
 ```
 
 Then open the realtime `/realtime.json` endpoint. A healthy response has `metadata.kind: "live"`, a current `generatedAt`, the configured `staticFeedVersion`, and a non-empty `updates` array. A `503` immediately after deployment means the first Cron invocation has not populated R2 yet.

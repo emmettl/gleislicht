@@ -1,0 +1,22 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "motionstudies-london-operations",
+  "main": "london-worker/index.ts",
+  "compatibility_date": "2026-09-05",
+  "workers_dev": true,
+  "preview_urls": false,
+  "triggers": {
+    "crons": ["* * * * *"]
+  },
+  "r2_buckets": [
+    {
+      "binding": "OBSERVATIONS",
+      "bucket_name": "gleislicht-observations"
+    }
+  ],
+  "vars": {
+    "COLLECTING_ENABLED": "true",
+    "LINES": "victoria,jubilee,elizabeth",
+    "ALLOWED_ORIGINS": "https://emmettl.github.io,http://127.0.0.1:5173,http://localhost:5173"
+  }
+}
