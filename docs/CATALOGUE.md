@@ -64,4 +64,6 @@ They remain deliberately unnumbered until each produces a title, a source path a
 
 Tokyo's initial source and feasibility audit is recorded in [TOKYO.md](./TOKYO.md). It separates a durable Toei proof from the unresolved Tokyo Metro publication terms and the Challenge 2026-only Yamanote/private-railway coverage.
 
+San Francisco's initial [source and feasibility audit](./SAN-FRANCISCO.md) finds an unusually strong technical path through 511's current and historical regional feeds, stop-level observation archive and DataSF terrain. Public release remains gated on the relationship between 511's sublicensing/update terms and SFMTA's separate revocable transit-data licence; the title and signature action also remain open.
+
 MANIFEST's initial [AIS and trade-source audit](./MANIFEST.md) finds the visual study feasible, but gates individual global tracks on written derived-publication rights. It recommends a pinned historical composition rather than a live ship finder and defines the evidence boundary between observed motion, reported vessel fields, inferred port-to-port voyages and aggregate commodity statistics.
