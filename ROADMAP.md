@@ -153,6 +153,7 @@ See [docs/AUTO.md](./docs/AUTO.md) for the data contract, reconstruction and rec
 - [x] Animate continuously between London's geographic and diagram spaces without resetting journeys or selection.
 - [x] Enforce the future package/repository boundary in CI so shared runtime code remains place-neutral.
 - [x] Add a separately loaded, integrity-checked 24-hour London timetable in progressive two-hour chunks.
+- [x] Add an optional observed-aircraft layer for London with matching two-hour and progressively loaded 24-hour studies, searchable flight codes and category emphasis.
 - [ ] Add London-specific pulse studies.
 - [ ] Evaluate surface buses as separate borough or corridor studies.
 

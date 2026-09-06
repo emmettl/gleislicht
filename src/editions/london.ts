@@ -38,6 +38,10 @@ export interface LondonDataCatalog extends EditionDataCatalog {
       },
     ]
   }
+  readonly air: {
+    readonly morning: string
+    readonly dayManifest: string
+  }
 }
 
 export type LondonEdition = MotionStudyEdition<LondonDataCatalog> & {
@@ -73,6 +77,10 @@ export const LONDON_EDITION: LondonEdition = {
           artifact: 'all-change-diagram.json',
         },
       ],
+    },
+    air: {
+      morning: 'all-change-air-morning.json',
+      dayManifest: 'all-change-air-day-manifest.json',
     },
   },
 }

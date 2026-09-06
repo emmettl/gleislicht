@@ -22,6 +22,7 @@ test('boots as a separate edition without loading Swiss network data', async ({
   expect(resources.some((url) => url.includes('all-change-rail-led-morning.json'))).toBe(true)
   expect(resources.some((url) => url.includes('all-change-geography.json'))).toBe(true)
   expect(resources.some((url) => url.includes('all-change-diagram.json'))).toBe(false)
+  expect(resources.some((url) => url.includes('all-change-air-'))).toBe(false)
   expect(resources.some((url) => url.includes('swiss-rail-morning.json'))).toBe(false)
 
   await expect(page.locator('.london-status-card')).toContainText('trains in motion')
@@ -32,7 +33,7 @@ test('boots as a separate edition without loading Swiss network data', async ({
 
 test('station search selects and reveals a London interchange', async ({ page }) => {
   const search = page.getByRole('searchbox', {
-    name: 'Find a London station, line or service',
+    name: 'Find a London station, line, service or flight',
   })
   await search.fill('Whitechapel')
   const result = page.getByRole('option', { name: /Whitechapel/ }).first()
@@ -96,7 +97,7 @@ test('diagram geometry loads lazily and preserves the current station', async ({
   page,
 }) => {
   const search = page.getByRole('searchbox', {
-    name: 'Find a London station, line or service',
+    name: 'Find a London station, line, service or flight',
   })
   await search.fill('Whitechapel')
   await expect(page.getByRole('option', { name: /Whitechapel/ }).first()).toBeVisible()
@@ -143,4 +144,48 @@ test('reduced motion changes spatial layout without a sweep', async ({ page }) =
     '1.000',
     { timeout: 1_000 },
   )
+})
+
+test('observed aircraft load lazily, join category emphasis and are searchable by code', async ({
+  page,
+}) => {
+  const airResponse = page.waitForResponse((response) =>
+    response.url().includes('all-change-air-morning.json'),
+  )
+  await page.getByRole('button', { name: 'Show observed aircraft' }).click()
+  expect((await airResponse).ok()).toBe(true)
+
+  const experience = page.locator('.london-experience')
+  await expect(experience).toHaveClass(/has-air-layer/)
+  const category = page.getByRole('button', { name: 'AIR', exact: true })
+  await expect(category).toBeVisible()
+  await category.click()
+  await expect(experience).toHaveClass(/has-air-category/)
+  await expect(page.locator('.london-status-card')).toContainText('aircraft observed')
+
+  const search = page.getByRole('searchbox', {
+    name: 'Find a London station, line, service or flight',
+  })
+  await search.fill('BAW925')
+  await expect(page.getByRole('option', { name: /BAW925/ })).toBeVisible()
+  await search.press('Enter')
+  await expect(search).toHaveValue('BAW925 · 405A49')
+  await expect(page.locator('.london-status-card')).toContainText('BAW925')
+  await expect(page.locator('.london-status-card')).toContainText(/ft · \d+ kt/)
+})
+
+test('the London air day follows the 24-hour clock in progressive hourly chunks', async ({
+  page,
+}) => {
+  await page.getByRole('button', { name: '24-hour study' }).click()
+  const manifestResponse = page.waitForResponse((response) =>
+    response.url().includes('all-change-air-day-manifest.json'),
+  )
+  const hourResponse = page.waitForResponse((response) =>
+    response.url().includes('all-change-air-day-07.json'),
+  )
+  await page.getByRole('button', { name: 'Show observed aircraft' }).click()
+  expect((await manifestResponse).ok()).toBe(true)
+  expect((await hourResponse).ok()).toBe(true)
+  await expect(page.locator('.london-experience')).toHaveClass(/has-air-layer/)
 })

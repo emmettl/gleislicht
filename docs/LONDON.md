@@ -88,6 +88,18 @@ The PDF day compiler derives 43 branch-audit tasks from the catalogue and accept
 
 The topology manifest is 30.9 KiB compressed and the largest movement chunk is 169.7 KiB compressed. Chunk byte length and SHA-256 are checked before adoption, adjacent chunks are prefetched only after the current one is usable, and the complete 1.38 MiB day never enters the opening request graph. Build-time staging copies the opening lattice, geography, diagram and progressive day artifacts into ignored public files for `/london.html`; the Swiss entry never requests them and Git retains one canonical copy.
 
+## AIR — observed London
+
+The optional **AIR** study replays observed ADS-B/MLAT positions over Greater London on the same Friday and clock as the railway. It is deliberately atmospheric rather than infrastructural: small magenta needles occupy compressed real altitude, leave only a three-minute afterimage and never create a permanent air-route network. Rail stays brighter and denser.
+
+The opening 06:45–08:45 BST artifact contains 374 filtered flight tracks and 15,741 position samples. Its 582 KiB JSON is 199 KiB compressed and is fetched only after AIR is enabled, leaving the rail-led opening payload unchanged. Selecting AIR again in the transport legend applies the normal category emphasis: rail infrastructure, trains and their labels recede while observed flights remain legible.
+
+The 24-hour study indexes 3,182 flight segments and 137,886 samples. A 64 KiB compressed manifest supports callsign and six-character ICAO-address search across the whole day; 24 overlapping one-hour motion files are loaded progressively around the shared railway clock. The busiest file is 132 KiB compressed and the complete air day is about 1.92 MiB compressed, but is never parsed as one browser payload.
+
+Selecting a search result or aircraft needle moves the clock into its observed interval, enters the shared damped follow camera and exposes callsign, ICAO address, altitude, groundspeed and derived heading. Aircraft and trains share the same context-sensitive label control. Callsigns are observational identifiers, not reliable origin/destination metadata.
+
+The source is the ADSB.lol historical heatmap release for 4 September 2026, cropped to `-0.75,51.2,0.4,51.75` and interpreted at BST (`UTC+1`). The same ground, stale-position and slow/light-aircraft filters as LUFTRAUM are applied offline. Published artifacts preserve ADSB.lol provenance and the ODbL 1.0 licence; raw receiver slices never ship to the browser.
+
 ## Data strategy
 
 Transport for London's Unified API is the primary adapter target. TfL describes it as a common multimodal model and exposes timetables, arrivals, routes, lines, topology and geographic data. API access should remain in offline tooling or a small credential-holding edge adapter; compact studies stay static and deterministic in the browser.
@@ -106,6 +118,7 @@ Sources:
 - [GLA web-map context service](https://gis.london.gov.uk/arcgis/rest/services/apps/webmap_context_layer/MapServer)
 - [Greater London boundary layer](https://gis.london.gov.uk/arcgis/rest/services/apps/webmap_context_layer/MapServer/0)
 - [River Thames layer](https://gis.london.gov.uk/arcgis/rest/services/apps/webmap_context_layer/MapServer/1)
+- [ADSB.lol historical data](https://www.adsb.lol/docs/open-data/historical/)
 
 ## Roadmap
 
@@ -155,7 +168,9 @@ Sources:
 
 - Add realtime predictions only after static timetable identity and line geometry are stable.
 - Record bounded historical studies for deterministic playback rather than presenting current API predictions as vehicle telemetry.
-- Evaluate aviation and road layers independently; London does not need to reproduce Switzerland's triad by default.
+- [x] Add an optional, same-clock aviation study with a lazy two-hour opening slice and a progressively loaded 24-hour replay.
+- [x] Reuse the restrained needle/trail grammar, category isolation, callsign/ICAO search, label policy, metrics and altitude-aware follow camera without making aviation part of the default payload.
+- Evaluate a London road layer independently; All Change does not need to reproduce Switzerland's complete triad by default.
 
 ## Exit criterion
 

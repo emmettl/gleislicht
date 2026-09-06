@@ -18,6 +18,10 @@ const BUDGETS = {
   dayManifestGzip: 40 * 1024,
   dayChunkGzip: 190 * 1024,
   dayTotalGzip: 1_600 * 1024,
+  airMorningGzip: 220 * 1024,
+  airManifestGzip: 75 * 1024,
+  airChunkGzip: 145 * 1024,
+  airDayTotalGzip: 2_100 * 1024,
 }
 
 const networkBytes = await readFile(
@@ -192,6 +196,77 @@ if (
   dayTotalGzip > BUDGETS.dayTotalGzip
 ) {
   throw new Error('London progressive day budget exceeded')
+}
+
+const airMorningBytes = await readFile(
+  resolve('public/data/all-change-air-morning.json'),
+)
+const airMorning = JSON.parse(airMorningBytes.toString('utf8'))
+const airManifestBytes = await readFile(
+  resolve('public/data/all-change-air-day-manifest.json'),
+)
+const airManifest = JSON.parse(airManifestBytes.toString('utf8'))
+if (
+  airMorning.metadata?.serviceDate !== network.metadata?.serviceDate ||
+  airMorning.metadata?.windowStart !== network.metadata?.windowStart ||
+  airMorning.metadata?.windowEnd !== network.metadata?.windowEnd ||
+  airMorning.metadata?.license !== 'ODbL 1.0'
+) {
+  throw new Error('London opening air study does not match the rail clock or licence contract')
+}
+if (
+  airManifest.metadata?.windowStart !== 0 ||
+  airManifest.metadata?.windowEnd !== 86_400 ||
+  airManifest.chunks?.length !== 24 ||
+  airManifest.trackCount !== airManifest.aircraft?.length
+) {
+  throw new Error('London air manifest must index a complete 24-hour study')
+}
+const airMorningGzip = gzipSync(airMorningBytes, { level: 9 }).byteLength
+const airManifestGzip = gzipSync(airManifestBytes, { level: 9 }).byteLength
+let airDayTotalGzip = airManifestGzip
+let largestAirChunkGzip = 0
+for (const [index, descriptor] of airManifest.chunks.entries()) {
+  if (
+    descriptor.windowStart !== index * 3600 ||
+    descriptor.windowEnd !== (index + 1) * 3600 ||
+    descriptor.path !== `all-change-air-day-${String(index).padStart(2, '0')}.json`
+  ) {
+    throw new Error(`London air chunk ${descriptor.id} breaks the hourly sequence`)
+  }
+  const bytes = await readFile(resolve('public/data', descriptor.path))
+  const chunk = JSON.parse(bytes.toString('utf8'))
+  if (
+    chunk.windowStart !== descriptor.windowStart ||
+    chunk.windowEnd !== descriptor.windowEnd ||
+    chunk.tracks.length !== descriptor.trackCount
+  ) {
+    throw new Error(`London air chunk ${descriptor.id} disagrees with its manifest`)
+  }
+  const compressed = gzipSync(bytes, { level: 9 }).byteLength
+  airDayTotalGzip += compressed
+  largestAirChunkGzip = Math.max(largestAirChunkGzip, compressed)
+}
+console.log('All Change optional air-study budget:')
+console.log(
+  `  morning    ${kibibytes(airMorningGzip)} / ${kibibytes(BUDGETS.airMorningGzip)}`,
+)
+console.log(
+  `  manifest   ${kibibytes(airManifestGzip)} / ${kibibytes(BUDGETS.airManifestGzip)}`,
+)
+console.log(
+  `  max chunk  ${kibibytes(largestAirChunkGzip)} / ${kibibytes(BUDGETS.airChunkGzip)}`,
+)
+console.log(
+  `  full day   ${kibibytes(airDayTotalGzip)} / ${kibibytes(BUDGETS.airDayTotalGzip)}`,
+)
+if (
+  airMorningGzip > BUDGETS.airMorningGzip ||
+  airManifestGzip > BUDGETS.airManifestGzip ||
+  largestAirChunkGzip > BUDGETS.airChunkGzip ||
+  airDayTotalGzip > BUDGETS.airDayTotalGzip
+) {
+  throw new Error('London optional air-study budget exceeded')
 }
 
 const manifest = JSON.parse(
