@@ -4,6 +4,12 @@ import { dirname, resolve } from 'node:path'
 const londonDayManifest = JSON.parse(
   await readFile(resolve('fixtures/tfl/all-change-day-manifest.json'), 'utf8'),
 )
+const londonBusDayManifest = JSON.parse(
+  await readFile(
+    resolve('fixtures/tfl/all-change-bus-day-manifest.json'),
+    'utf8',
+  ),
+)
 const newYorkDayManifest = JSON.parse(
   await readFile(resolve('fixtures/mta/local-express-day-manifest.json'), 'utf8'),
 )
@@ -104,6 +110,14 @@ const artifacts = [
     source: 'fixtures/tfl/all-change-surface-day.json',
     destination: 'public/data/all-change-surface-day.json',
   },
+  {
+    source: 'fixtures/tfl/all-change-bus-day-manifest.json',
+    destination: 'public/data/all-change-bus-day-manifest.json',
+  },
+  ...londonBusDayManifest.chunks.map(({ path }) => ({
+    source: `fixtures/tfl/${path}`,
+    destination: `public/data/${path}`,
+  })),
   ...londonDayManifest.chunks.map(({ path }) => ({
     source: `fixtures/tfl/${path}`,
     destination: `public/data/${path}`,

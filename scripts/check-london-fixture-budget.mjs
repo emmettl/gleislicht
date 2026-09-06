@@ -27,6 +27,9 @@ const BUDGETS = {
   roadChunkGzip: 50 * 1024,
   roadDayTotalGzip: 250 * 1024,
   surfaceGzip: 32 * 1024,
+  busManifestGzip: 16 * 1024,
+  busChunkGzip: 10 * 1024,
+  busDayTotalGzip: 100 * 1024,
 }
 
 const networkBytes = await readFile(
@@ -230,6 +233,73 @@ console.log(
 )
 if (surfaceGzip > BUDGETS.surfaceGzip) {
   throw new Error('London optional surface-study budget exceeded')
+}
+
+const busManifestBytes = await readFile(
+  resolve('fixtures/tfl/all-change-bus-day-manifest.json'),
+)
+const busManifest = JSON.parse(busManifestBytes.toString('utf8'))
+if (
+  busManifest.metadata?.windowStart !== 0 ||
+  busManifest.metadata?.windowEnd !== 86_400 ||
+  busManifest.metadata?.serviceDate !== dayManifest.metadata?.serviceDate ||
+  busManifest.chunks?.length !== 12 ||
+  busManifest.metadata?.modes?.length !== 1 ||
+  busManifest.metadata.modes[0] !== 'bus'
+) {
+  throw new Error('London bus study violates its 24-hour mode contract')
+}
+let busDayTotalGzip = gzipSync(busManifestBytes, { level: 9 }).byteLength
+let largestBusChunkGzip = 0
+const busTrainIds = new Set()
+const busRoutes = new Set()
+for (const descriptor of busManifest.chunks) {
+  const bytes = await readFile(resolve('fixtures/tfl', descriptor.path))
+  if (descriptor.bytes !== bytes.byteLength) {
+    throw new Error(`London bus chunk ${descriptor.id} has stale size metadata`)
+  }
+  if (descriptor.sha256 !== createHash('sha256').update(bytes).digest('hex')) {
+    throw new Error(`London bus chunk ${descriptor.id} has stale integrity metadata`)
+  }
+  const chunk = JSON.parse(bytes.toString('utf8'))
+  for (const train of chunk.trains) {
+    if (train.category !== 'bus') {
+      throw new Error(`London bus chunk ${descriptor.id} contains a non-bus journey`)
+    }
+    if (train.pathSegments?.some((segment) => segment.pathIndex >= busManifest.paths.length)) {
+      throw new Error(`London bus chunk ${descriptor.id} contains an invalid path reference`)
+    }
+    busTrainIds.add(train.id)
+    busRoutes.add(train.route)
+  }
+  const compressed = gzipSync(bytes, { level: 9 }).byteLength
+  busDayTotalGzip += compressed
+  largestBusChunkGzip = Math.max(largestBusChunkGzip, compressed)
+}
+if (
+  busTrainIds.size !== busManifest.tripCount ||
+  !busRoutes.has('26') ||
+  !busRoutes.has('N26')
+) {
+  throw new Error('London bus chunks do not contain the complete 26/N26 study')
+}
+const busManifestGzip = gzipSync(busManifestBytes, { level: 9 }).byteLength
+console.log('All Change progressive bus-study budget:')
+console.log(
+  `  manifest   ${kibibytes(busManifestGzip)} / ${kibibytes(BUDGETS.busManifestGzip)}`,
+)
+console.log(
+  `  max chunk  ${kibibytes(largestBusChunkGzip)} / ${kibibytes(BUDGETS.busChunkGzip)}`,
+)
+console.log(
+  `  full day   ${kibibytes(busDayTotalGzip)} / ${kibibytes(BUDGETS.busDayTotalGzip)}`,
+)
+if (
+  busManifestGzip > BUDGETS.busManifestGzip ||
+  largestBusChunkGzip > BUDGETS.busChunkGzip ||
+  busDayTotalGzip > BUDGETS.busDayTotalGzip
+) {
+  throw new Error('London progressive bus-study budget exceeded')
 }
 
 const airMorningBytes = await readFile(

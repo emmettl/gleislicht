@@ -201,6 +201,7 @@ export function compileTflLineProof({
   retrievedAt,
   routeUrl,
   timetableUrl,
+  timeOffsetSeconds = 0,
 }) {
   if (routeSequence.lineId !== timetable.lineId) {
     throw new Error('TfL route and timetable line IDs disagree')
@@ -259,7 +260,7 @@ export function compileTflLineProof({
       ]),
     )
     for (const [journeyIndex, journey] of schedule.knownJourneys.entries()) {
-      const departure = secondsForJourney(journey)
+      const departure = secondsForJourney(journey) + timeOffsetSeconds
       const intervals = intervalById.get(String(journey.intervalId))
       if (!intervals?.length) continue
       const groupedIntervals = collapseDwellIntervals(intervals)
@@ -438,6 +439,7 @@ function matchBranch(routeSequence, journeyStopIds) {
 }
 
 function categoryForMode(mode) {
+  if (mode === 'bus') return 'bus'
   if (mode === 'tram') return 'tram'
   if (mode === 'river-bus') return 'ferry'
   if (mode === 'cable-car') return 'cableway'

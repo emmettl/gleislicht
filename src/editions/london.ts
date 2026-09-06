@@ -78,6 +78,11 @@ export interface LondonDataCatalog extends EditionDataCatalog {
   readonly surface: {
     readonly day: string
   }
+  readonly bus: {
+    readonly dayManifest: string
+    readonly focus: readonly [longitude: number, latitude: number]
+    readonly cameraScale: number
+  }
 }
 
 export type LondonEdition = MotionStudyEdition<LondonDataCatalog> & {
@@ -124,6 +129,11 @@ export const LONDON_EDITION: LondonEdition = {
     },
     surface: {
       day: 'all-change-surface-day.json',
+    },
+    bus: {
+      dayManifest: 'all-change-bus-day-manifest.json',
+      focus: [-0.066, 51.54],
+      cameraScale: 0.28,
     },
   },
 }

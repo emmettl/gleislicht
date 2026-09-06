@@ -13,7 +13,10 @@ public/data/all-change-rail-led-morning.json
 public/data/all-change-diagram.json
 public/data/all-change-day-manifest.json
 public/data/all-change-day-chunks/
+public/data/all-change-bus-day-manifest.json
+public/data/all-change-bus-day-chunks/
 fixtures/tfl/all-change-unified-day.json
 fixtures/tfl/all-change-pdf-day.json
 fixtures/tfl/all-change-rail-led-day.json
+fixtures/tfl/all-change-bus-day.json
 fixtures/mta/local-express-lexington-day.json

@@ -74,6 +74,7 @@
     "data:london:airports": "node scripts/enrich-airport-associations.mjs",
     "data:london:roads": "node scripts/compile-webtris-london-study.mjs",
     "data:london:surface": "node scripts/compile-tfl-surface-study.mjs",
+    "data:london:bus": "node scripts/compile-tfl-bus-study.mjs && node scripts/chunk-network-snapshot.mjs --input fixtures/tfl/all-change-bus-day.json --manifest fixtures/tfl/all-change-bus-day-manifest.json --opening /tmp/all-change-bus-opening-check.json --chunk-hours 2 --opening-start 06:45 --opening-end 08:45 --focus 07:45",
     "data:new-york:proof": "node scripts/ingest-mta-lexington-proof.mjs",
     "data:new-york:geography": "node scripts/compile-new-york-geography.mjs",
     "data:new-york:diagram": "node scripts/compile-new-york-diagram.mjs",

@@ -122,6 +122,14 @@ The optional **SURFACE** study adds the three currently advertised scheduled Riv
 
 The 492-journey artifact contains 26 source-identified stops and 77 route-path segments, and is about 21 KiB compressed. It stays outside the opening request graph. River and cable movements retain separate `ferry` and `cableway` categories, remain searchable by route or stop, and can be isolated through the same legend policy as rail. `npm run data:london:surface` rebuilds the file from TfL route sequences and Journey Planner timetables; the compiler records source hashes and states that positions are scheduled interpolation rather than observed craft or cabin telemetry.
 
+## BUS — street current 001
+
+The first bus study is deliberately a corridor rather than London's entire bus network. Route 26 crosses central London from Victoria to Hackney Wick through Fleet Street, St Paul's, Bank and Liverpool Street; N26 extends the same visual argument north-east to Walthamstow and Chingford. It is a useful street-level counterpoint to the railway because its path repeatedly touches major interchanges while remaining visibly shaped by roads.
+
+The study contains 230 scheduled journeys, 169 source-identified stops and 170 TfL route-path segments across a complete civil Friday. Early-Friday N26 departures are compiled from TfL's `Mo-Th Nights/Tu-Fr Morning` schedule and shifted from its post-24:00 notation onto the shared 00:00–24:00 clock. Positions are timetable interpolation, not observed bus telemetry.
+
+BUS is a separately enabled physical-map layer. It enters the 24-hour study, frames the corridor, exposes route 26/N26 and their stops to the shared search and selection system, and uses the shared bus marker rather than pretending to track individual vehicles. The manifest and twelve two-hour motion chunks total about 84 KiB compressed; the opening request graph remains unchanged and adjacent chunks load only after the current one is ready. `npm run data:london:bus` rebuilds the source-audited study from TfL's Unified API.
+
 ## Data strategy
 
 Transport for London's Unified API is the primary adapter target. TfL describes it as a common multimodal model and exposes timetables, arrivals, routes, lines, topology and geographic data. API access should remain in offline tooling or a small credential-holding edge adapter; compact studies stay static and deterministic in the browser.
@@ -187,9 +195,10 @@ Sources:
 
 ### LDN 3 — Surface city
 
-- Add buses as separately loaded borough or corridor studies; never ship the complete bus network in the opening scene.
+- [x] Add the first separately loaded bus corridor study—route 26/N26—without shipping the complete bus network in the opening scene.
 - [x] Add a separately loaded 24-hour River Bus and cable-car study where the Thames and east-London crossing add geographic meaning.
-- Consider a deliberate central-London contrast between subterranean rail and street-level flow.
+- [x] Establish a deliberate central-London contrast between subterranean rail and street-level bus flow.
+- Add further borough or corridor studies only where each has a distinct spatial or operational argument.
 
 ### LDN 4 — Observed London
 

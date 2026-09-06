@@ -29,6 +29,7 @@ test('boots as a separate edition without loading Swiss network data', async ({
   expect(resources.some((url) => url.includes('all-change-air-'))).toBe(false)
   expect(resources.some((url) => url.includes('all-change-road-'))).toBe(false)
   expect(resources.some((url) => url.includes('all-change-surface-'))).toBe(false)
+  expect(resources.some((url) => url.includes('all-change-bus-'))).toBe(false)
   expect(resources.some((url) => url.includes('swiss-rail-morning.json'))).toBe(false)
 
   await expect(page.locator('.london-status-card')).toContainText('trains in motion')
@@ -63,6 +64,47 @@ test('River Bus and cable car load as a separate 24-hour surface study', async (
   await page.getByRole('button', { name: 'Morning study' }).click()
   await expect(experience).toHaveAttribute('data-study-window', 'morning')
   await expect(experience).toHaveAttribute('data-surface-enabled', 'false')
+  await expect(page.getByRole('button', { name: 'Diagram layout' })).toBeEnabled()
+})
+
+test('route 26 buses load progressively as a separate street study', async ({
+  page,
+}) => {
+  const manifestResponse = page.waitForResponse((response) =>
+    response.url().includes('all-change-bus-day-manifest.json'),
+  )
+  const chunkResponse = page.waitForResponse((response) =>
+    response.url().includes('all-change-bus-day-chunks/06-08.json'),
+  )
+  await page.getByRole('button', { name: 'Show route 26 buses' }).click()
+  expect((await manifestResponse).ok()).toBe(true)
+  expect((await chunkResponse).ok()).toBe(true)
+
+  const experience = page.locator('.london-experience')
+  await expect(experience).toHaveAttribute('data-study-window', 'day')
+  await expect(experience).toHaveAttribute('data-bus-enabled', 'true')
+  await expect(experience).toHaveAttribute('data-bus-loading', 'false')
+  await expect(page.getByRole('button', { name: 'Diagram layout' })).toBeDisabled()
+  await expect(page.getByRole('button', { name: 'Bus 26', exact: true })).toBeVisible()
+  await expect(page.locator('.london-status-card')).toContainText('vehicles in motion')
+  await expect(page.locator('.london-status-card')).toContainText(
+    '10,685 scheduled journeys',
+  )
+  await page.getByRole('button', { name: 'Pause motion' }).click()
+  await page.getByRole('button', { name: 'Bus 26', exact: true }).click()
+  await expect(experience).toHaveClass(/has-selection/)
+
+  const search = page.getByRole('searchbox', {
+    name: 'Find a London station, line, service, airport, flight or motorway',
+  })
+  await search.fill('route 26')
+  await expect(page.getByRole('option', { name: /26/ }).first()).toBeVisible()
+  await search.press('Enter')
+  await expect(page.locator('.london-status-card')).toContainText('26')
+
+  await page.getByRole('button', { name: 'Morning study' }).click()
+  await expect(experience).toHaveAttribute('data-study-window', 'morning')
+  await expect(experience).toHaveAttribute('data-bus-enabled', 'false')
   await expect(page.getByRole('button', { name: 'Diagram layout' })).toBeEnabled()
 })
 

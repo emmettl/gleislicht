@@ -98,6 +98,41 @@ describe('TfL line adapter', () => {
     ).toThrow('line IDs disagree')
   })
 
+  it('keeps bus movements distinct from rail-led metro services', () => {
+    const snapshot = compileTflLineProof({
+      routeSequence: { ...routeSequence, mode: 'bus' },
+      timetable,
+      serviceDate: '2026-09-04',
+      retrievedAt: '2026-09-06T00:00:00.000Z',
+      routeUrl: 'route',
+      timetableUrl: 'timetable',
+    })
+
+    expect(snapshot.metadata.modes).toEqual(['bus'])
+    expect(snapshot.trains.every((train) => train.category === 'bus')).toBe(true)
+  })
+
+  it('can place a source-defined after-midnight schedule on its civil day', () => {
+    const overnightTimetable = structuredClone(timetable)
+    overnightTimetable.timetable.routes[0].schedules[0].knownJourneys = [
+      { hour: '24', minute: '20', intervalId: 0 },
+    ]
+    const snapshot = compileTflLineProof({
+      routeSequence: { ...routeSequence, mode: 'bus' },
+      timetable: overnightTimetable,
+      serviceDate: '2026-09-04',
+      windowStart: 0,
+      windowEnd: 3_600,
+      timeOffsetSeconds: -86_400,
+      retrievedAt: '2026-09-06T00:00:00.000Z',
+      routeUrl: 'route',
+      timetableUrl: 'timetable',
+    })
+
+    expect(snapshot.trains).toHaveLength(1)
+    expect(snapshot.trains[0].start).toBe(20 * 60)
+  })
+
   it('keeps the committed Bakerloo proof source-audited and renderable', async () => {
     const snapshot = JSON.parse(
       await readFile('fixtures/tfl/all-change-bakerloo-morning.json', 'utf8'),
