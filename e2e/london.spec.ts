@@ -338,40 +338,43 @@ test('the London air day follows the 24-hour clock in progressive hourly chunks'
   await expect(page.locator('.london-experience')).toHaveClass(/has-air-layer/)
 })
 
-test('the iPhone diagram maintains an interactive frame cadence', async ({
-  page,
-}, testInfo) => {
-  test.skip(testInfo.project.name !== 'iphone-webkit')
-  await page.getByRole('button', { name: /Diagram/ }).click()
-  await expect(page.locator('.london-experience')).toHaveAttribute(
-    'data-layout-mix',
-    '1.000',
-    { timeout: 5_000 },
-  )
-  await page.keyboard.press('f')
+test(
+  'the iPhone diagram maintains an interactive frame cadence',
+  { tag: '@frame-cadence' },
+  async ({ page }, testInfo) => {
+    test.skip(testInfo.project.name !== 'iphone-webkit')
+    await page.getByRole('button', { name: /Diagram/ }).click()
+    await expect(page.locator('.london-experience')).toHaveAttribute(
+      'data-layout-mix',
+      '1.000',
+      { timeout: 5_000 },
+    )
+    await page.keyboard.press('f')
 
-  const intervals = await page.evaluate(
-    () =>
-      new Promise<number[]>((resolve) => {
-        const browser = globalThis as unknown as {
-          readonly performance: { now(): number }
-          requestAnimationFrame(callback: (time: number) => void): number
-        }
-        const samples: number[] = []
-        let previous = browser.performance.now()
-        const started = previous
-        const sample = (now: number) => {
-          samples.push(now - previous)
-          previous = now
-          if (now - started >= 1_800) resolve(samples.slice(2))
-          else browser.requestAnimationFrame(sample)
-        }
-        browser.requestAnimationFrame(sample)
-      }),
-  )
-  const sorted = [...intervals].sort((first, second) => first - second)
-  const p95 = sorted[Math.floor(sorted.length * 0.95)] ?? Number.POSITIVE_INFINITY
+    const intervals = await page.evaluate(
+      () =>
+        new Promise<number[]>((resolve) => {
+          const browser = globalThis as unknown as {
+            readonly performance: { now(): number }
+            requestAnimationFrame(callback: (time: number) => void): number
+          }
+          const samples: number[] = []
+          let previous = browser.performance.now()
+          const started = previous
+          const sample = (now: number) => {
+            samples.push(now - previous)
+            previous = now
+            if (now - started >= 1_800) resolve(samples.slice(2))
+            else browser.requestAnimationFrame(sample)
+          }
+          browser.requestAnimationFrame(sample)
+        }),
+    )
+    const sorted = [...intervals].sort((first, second) => first - second)
+    const p95 =
+      sorted[Math.floor(sorted.length * 0.95)] ?? Number.POSITIVE_INFINITY
 
-  expect(intervals.length).toBeGreaterThanOrEqual(18)
-  expect(p95).toBeLessThan(125)
-})
+    expect(intervals.length).toBeGreaterThanOrEqual(18)
+    expect(p95).toBeLessThan(125)
+  },
+)
