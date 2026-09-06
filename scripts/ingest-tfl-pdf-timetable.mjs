@@ -85,12 +85,19 @@ function stopCatalogue(routeSequence) {
 
 function routeBranch(routeSequence, originId, destinationId) {
   const match = (routeSequence.orderedLineRoutes ?? [])
-    .map((branch, branchIndex) => ({ branch, branchIndex }))
-    .filter(({ branch }) => branch.naptanIds?.[0] === originId && branch.naptanIds.includes(destinationId))
-    .sort((first, second) => first.branch.naptanIds.length - second.branch.naptanIds.length)[0]
+    .map((branch, branchIndex) => {
+      const originIndex = branch.naptanIds?.indexOf(originId) ?? -1
+      const destinationIndex = branch.naptanIds?.indexOf(destinationId) ?? -1
+      return { branch, branchIndex, originIndex, destinationIndex }
+    })
+    .filter(({ originIndex, destinationIndex }) => originIndex >= 0 && destinationIndex > originIndex)
+    .sort((first, second) =>
+      (first.destinationIndex - first.originIndex) - (second.destinationIndex - second.originIndex))[0]
   if (!match) throw new Error(`TfL route sequence has no ${originId} → ${destinationId} branch`)
-  const destinationIndex = match.branch.naptanIds.indexOf(destinationId)
-  return { branchIndex: match.branchIndex, stopIds: match.branch.naptanIds.slice(0, destinationIndex + 1) }
+  return {
+    branchIndex: match.branchIndex,
+    stopIds: match.branch.naptanIds.slice(match.originIndex, match.destinationIndex + 1),
+  }
 }
 
 function timeFromPdf(value, previous) {
@@ -106,6 +113,7 @@ function stationRows(page, stops) {
       return [
         label,
         label.replace(/ \(London\)$/, ''),
+        label.replace(/ \([^)]*\)$/, ''),
         label.replaceAll(/\bStreet\b/g, 'St').replaceAll(/\bRoad\b/g, 'Rd'),
       ].map((candidate) => ({ stop, label: candidate }))
     })

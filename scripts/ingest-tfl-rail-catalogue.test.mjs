@@ -56,7 +56,11 @@ describe('TfL rail-led catalogue', () => {
     expect(branchCount).toBe(125)
     expect(catalogue.stopHierarchySamples).toHaveLength(3)
     expect(catalogue.stopHierarchySamples[0].childTypeCounts.NaptanMetroPlatform).toBe(6)
-    expect(catalogue.movementProofs.find(({ mode }) => mode === 'elizabeth-line').status).toBe('compiled-from-pdf')
-    expect(catalogue.movementProofs.find(({ mode }) => mode === 'overground').status).toBe('compiled-from-pdf')
+    expect(catalogue.movementProofs.find(({ mode }) => mode === 'tube')).toMatchObject({
+      status: 'compiled-all-lines-bidirectional',
+      fixtures: ['all-change-unified-morning.json'],
+    })
+    expect(catalogue.movementProofs.find(({ mode }) => mode === 'elizabeth-line').status).toBe('compiled-bidirectional-bounded')
+    expect(catalogue.movementProofs.find(({ mode }) => mode === 'overground').status).toBe('compiled-bidirectional-bounded')
   })
 })

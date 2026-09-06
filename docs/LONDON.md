@@ -31,19 +31,21 @@ The first compiled fixtures are deliberately smaller than the first visible edit
 
 The compiler now collapses TfL's repeated arrival/dwell interval records into one stop call with distinct arrival and departure times. Each interval pattern is matched to the ordered NaPTAN IDs for its own route branch before the official line string is split. Shared segments are reused, while genuinely different branches retain different geometry.
 
-Run `npm run data:london:proofs` to refresh all six movement proofs, or use the individual proof scripts for a bounded request. `TFL_API_KEY` is supported for route-sequence access and should be used for repeated requests, in line with TfL's developer guidance. The generated metadata records retrieval time, source hashes, source endpoints, TfL's data-service terms, the selected weekday schedule and the fact that these are not realtime or complete London service-day claims.
+Run `npm run data:london:proofs` to refresh the bounded adapter proofs, or use the individual proof scripts for one request. `TFL_API_KEY` is supported for route-sequence access and should be used for repeated requests, in line with TfL's developer guidance. The generated metadata records retrieval time, source hashes, source endpoints, TfL's data-service terms, the selected weekday schedule and the fact that these are not realtime or complete London service-day claims.
 
 `npm run data:london:catalogue` separately discovers every currently advertised line in the five rail-led modes. Its compact committed catalogue preserves 20 line identities and 125 directional branch definitions, each with ordered NaPTAN stops and a geometry hash. Three NaPTAN hierarchy samples retain interchange, entrance and platform children without inventing absent platform names.
 
-TfL documents that its Journey Planner timetable feed covers Underground, bus, DLR, tram, cable car and river—not Elizabeth line or London Overground. Both rail modes do have current official public timetable PDFs. A separate grid extractor now accepts only columns with a complete, monotonic time at every station on a selected branch, records the PDF hash and validity dates, and combines the resulting movements with Unified API route geometry. This supplies honest Elizabeth line and Lioness proofs without pretending their unavailable Unified API timetable endpoints work. Regenerating those proofs requires Poppler's `pdftotext`; the compiled JSON remains dependency-free.
+TfL documents that its Journey Planner timetable feed covers Underground, bus, DLR, tram, cable car and river—not Elizabeth line or London Overground. Both rail modes do have current official public timetable PDFs. A separate grid extractor now accepts only columns with a complete, monotonic time at every station on a selected branch, records the PDF hash and validity dates, and combines the resulting movements with Unified API route geometry. This supplies honest bidirectional Elizabeth line and Lioness studies without pretending their unavailable Unified API timetable endpoints work. Regenerating those proofs requires Poppler's `pdftotext`; the compiled JSON remains dependency-free.
 
-`npm run data:london:assemble` merges the six fixtures into a 230-journey, 151-stop, five-mode morning-lattice contract. Stops and paths are deduplicated by source identity and exact geometry. It remains under `fixtures/tfl/`: this is a cross-mode composition proof, not yet the public or bidirectional opening study.
+`npm run data:london:lattice:unified` fans out through every distinct branch origin advertised for Tube, DLR and Tramlink in both directions. It compiles 1,422 movements, 356 source-identified stops and 1,019 real path segments across 13 lines and 26 directions. Limited-stop trains use the complete branch geometry between calls; TfL's overlapping DLR terminal responses are retained only where their stop pattern matches the selected route. Two Metropolitan origins advertised in topology have no suitable Friday schedule and remain explicitly listed as inactive instead of disappearing.
+
+`npm run data:london:assemble` adds the bounded bidirectional Elizabeth and Lioness studies to produce a 1,475-movement, 385-stop, five-mode morning contract. Stops and paths are deduplicated by source identity and exact geometry. It remains under `fixtures/tfl/`, so neither the 1.1 MB Unified artifact nor the assembled study enters Gleislicht's public payload.
 
 ## Data strategy
 
 Transport for London's Unified API is the primary adapter target. TfL describes it as a common multimodal model and exposes timetables, arrivals, routes, lines, topology and geographic data. API access should remain in offline tooling or a small credential-holding edge adapter; compact studies stay static and deterministic in the browser.
 
-The initial geographic shell can use the Greater London boundary published by the London Datastore from Ordnance Survey Boundary-Line under the Open Government Licence. The Thames needs a separate simplified water polygon appropriate to the viewport.
+The initial geographic shell is now compiled directly from the Greater London Authority's official web-map context service. Its dedicated London GLA boundary and River Thames polygon layers are transformed to WGS84, rounded and simplified at a 35-metre tolerance. `npm run data:london:geography` reduces 10,921 boundary and 6,191 Thames source vertices to 803 and 256 respectively, producing a 24 KiB source-hashed artifact without relying on a runtime basemap.
 
 TfL attribution and branding rules are part of the edition contract: the project must not imply that All Change is an official TfL application, and each artifact must retain its source and licence metadata.
 
@@ -54,7 +56,9 @@ Sources:
 - [TfL available datasets and attribution guidance](https://tfl.gov.uk/info-for/open-data-users/our-open-data)
 - [TfL Elizabeth line timetables](https://tfl.gov.uk/modes/elizabeth-line/elizabeth-line-timetables)
 - [TfL London Overground timetables](https://tfl.gov.uk/modes/london-overground/london-overground-timetables)
-- [Greater London boundary](https://data.london.gov.uk/dataset/london-boroughs-e55pw)
+- [GLA web-map context service](https://gis.london.gov.uk/arcgis/rest/services/apps/webmap_context_layer/MapServer)
+- [Greater London boundary layer](https://gis.london.gov.uk/arcgis/rest/services/apps/webmap_context_layer/MapServer/0)
+- [River Thames layer](https://gis.london.gov.uk/arcgis/rest/services/apps/webmap_context_layer/MapServer/1)
 
 ## Roadmap
 
@@ -70,8 +74,9 @@ Sources:
 ### LDN 1 — Morning lattice
 
 - [x] Merge representative services from all five rail-led modes into one shared morning contract.
-- [ ] Expand the lattice to every line and both directions without losing short-turn or branch identity.
-- Add Greater London and Thames geometry.
+- [x] Expand every Unified API timetable mode to all advertised lines and both directions without losing short-turn, limited-stop or branch identity.
+- [x] Add source-audited Greater London and Thames geometry.
+- [ ] Extend PDF movement extraction across the remaining five Overground lines and the full Elizabeth branch family.
 - Tune station-label hierarchy for the density of Zone 1 and interchange complexes.
 - Preserve the existing phone transfer and frame-time budgets.
 

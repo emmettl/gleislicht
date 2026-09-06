@@ -75,7 +75,7 @@ async function fetchJson(url) {
 
 async function loadSources(options) {
   const routePath = `/Line/${encodeURIComponent(options.line)}/Route/Sequence/${encodeURIComponent(options.direction)}`
-  const timetablePath = `/Line/${encodeURIComponent(options.line)}/Timetable/${encodeURIComponent(options.origin)}`
+  const timetablePath = `/Line/${encodeURIComponent(options.line)}/Timetable/${encodeURIComponent(options.origin)}?direction=${encodeURIComponent(options.direction)}`
   const routeUrl = apiUrl(routePath, process.env.TFL_API_KEY)
   const timetableUrl = apiUrl(timetablePath, process.env.TFL_API_KEY)
 
@@ -206,9 +206,14 @@ export function compileTflLineProof({
     throw new Error('TfL route and timetable directions disagree')
   }
 
-  const route = timetable.timetable?.routes?.[0]
-  const schedule = selectSchedule(route?.schedules ?? [], serviceDate, scheduleName)
-  if (!route || !schedule) {
+  const selectedRoutes = (timetable.timetable?.routes ?? [])
+    .map((route, routeIndex) => ({
+      route,
+      routeIndex,
+      schedule: selectSchedule(route.schedules ?? [], serviceDate, scheduleName),
+    }))
+    .filter(({ schedule }) => schedule)
+  if (!selectedRoutes.length) {
     throw new Error(`TfL timetable has no suitable ${scheduleName ?? 'weekday'} schedule`)
   }
   const routeStops = [
@@ -217,7 +222,8 @@ export function compileTflLineProof({
   ]
   const referencedStopIds = new Set([
     timetable.timetable.departureStopId,
-    ...route.stationIntervals.flatMap(({ intervals }) => intervals.map(({ stopId }) => stopId)),
+    ...selectedRoutes.flatMap(({ route }) =>
+      route.stationIntervals.flatMap(({ intervals }) => intervals.map(({ stopId }) => stopId))),
   ])
   const stopCatalogue = [...(timetable.stops ?? []), ...routeStops]
     .filter((stop, index, stops) => stop?.id && stops.findIndex(({ id }) => id === stop.id) === index)
@@ -235,80 +241,90 @@ export function compileTflLineProof({
     '',
     stop.id,
   ])
-  const intervalById = new Map(
-    route.stationIntervals.map((stationInterval) => [
-      String(stationInterval.id),
-      stationInterval.intervals,
-    ]),
-  )
-
   const paths = []
   const edges = []
   const edgePaths = []
   const pathIndexByBranchSegment = new Map()
   const pathSegmentsByIntervalId = new Map()
+  const unmatchedBranchPatterns = new Set()
   const trains = []
-  for (const [journeyIndex, journey] of schedule.knownJourneys.entries()) {
-    const departure = secondsForJourney(journey)
-    const intervals = intervalById.get(String(journey.intervalId))
-    if (!intervals?.length) continue
-    const groupedIntervals = collapseDwellIntervals(intervals)
-    const destination = groupedIntervals.at(-1)
-    const end = departure + Math.round(destination.arrivalMinutes * 60)
-    if (end < windowStart || departure > windowEnd) continue
+  for (const { route, routeIndex, schedule } of selectedRoutes) {
+    const intervalById = new Map(
+      route.stationIntervals.map((stationInterval) => [
+        String(stationInterval.id),
+        stationInterval.intervals,
+      ]),
+    )
+    for (const [journeyIndex, journey] of schedule.knownJourneys.entries()) {
+      const departure = secondsForJourney(journey)
+      const intervals = intervalById.get(String(journey.intervalId))
+      if (!intervals?.length) continue
+      const groupedIntervals = collapseDwellIntervals(intervals)
+      const destination = groupedIntervals.at(-1)
+      const end = departure + Math.round(destination.arrivalMinutes * 60)
+      if (end < windowStart || departure > windowEnd) continue
 
-    const journeyStopIds = [timetable.timetable.departureStopId, ...groupedIntervals.map(({ stopId }) => stopId)]
-    const branch = matchBranch(routeSequence, journeyStopIds)
-    let pathSegments = pathSegmentsByIntervalId.get(String(journey.intervalId))
-    if (!pathSegments) {
-      const branchStops = journeyStopIds.map((stopId) => {
-        const stop = stopById.get(stopId)
-        if (!stop) throw new Error(`TfL branch references unknown stop ${stopId}`)
-        return stop
-      })
-      const branchPaths = pathsBetweenStops(linePoints(routeSequence, branch.lineStringIndex), branchStops)
-      pathSegments = branchPaths.map((path, index) => {
-        const from = stopIndexById.get(journeyStopIds[index])
-        const to = stopIndexById.get(journeyStopIds[index + 1])
-        if (from === undefined || to === undefined) throw new Error('TfL branch stop is missing from the stop catalogue')
-        const segmentKey = `${branch.lineStringIndex}:${from}:${to}`
-        const existingPathIndex = pathIndexByBranchSegment.get(segmentKey)
-        if (existingPathIndex !== undefined) return existingPathIndex
-        const pathIndex = paths.length
-        paths.push(path)
-        edges.push([from, to])
-        edgePaths.push(pathIndex)
-        pathIndexByBranchSegment.set(segmentKey, pathIndex)
-        return pathIndex
-      })
-      pathSegmentsByIntervalId.set(String(journey.intervalId), pathSegments)
-    }
-
-    const departureStopIndex = stopIndexById.get(timetable.timetable.departureStopId)
-    if (departureStopIndex === undefined) throw new Error('TfL departure stop is missing from the stop catalogue')
-    const trainStops = [[departureStopIndex, departure, departure]]
-    for (const interval of groupedIntervals) {
-      const stopIndex = stopIndexById.get(interval.stopId)
-      if (stopIndex === undefined) {
-        throw new Error(`TfL interval references unknown stop ${interval.stopId}`)
+      const journeyStopIds = [timetable.timetable.departureStopId, ...groupedIntervals.map(({ stopId }) => stopId)]
+      const intervalKey = `${routeIndex}:${journey.intervalId}`
+      let branch
+      try {
+        branch = matchBranch(routeSequence, journeyStopIds)
+      } catch (error) {
+        if (!error.message.includes('has no matching route sequence')) throw error
+        unmatchedBranchPatterns.add(intervalKey)
+        continue
       }
-      const arrival = departure + Math.round(interval.arrivalMinutes * 60)
-      const stopDeparture = departure + Math.round(interval.departureMinutes * 60)
-      trainStops.push([stopIndex, arrival, stopDeparture])
+      let pathSegments = pathSegmentsByIntervalId.get(intervalKey)
+      if (!pathSegments) {
+        const branchStops = journeyStopIds.map((stopId) => {
+          const stop = stopById.get(stopId)
+          if (!stop) throw new Error(`TfL branch references unknown stop ${stopId}`)
+          return stop
+        })
+        const branchPaths = pathsBetweenStops(linePoints(routeSequence, branch.lineStringIndex), branchStops)
+        pathSegments = branchPaths.map((path, index) => {
+          const from = stopIndexById.get(journeyStopIds[index])
+          const to = stopIndexById.get(journeyStopIds[index + 1])
+          if (from === undefined || to === undefined) throw new Error('TfL branch stop is missing from the stop catalogue')
+          const segmentKey = `${branch.lineStringIndex}:${from}:${to}`
+          const existingPathIndex = pathIndexByBranchSegment.get(segmentKey)
+          if (existingPathIndex !== undefined) return existingPathIndex
+          const pathIndex = paths.length
+          paths.push(path)
+          edges.push([from, to])
+          edgePaths.push(pathIndex)
+          pathIndexByBranchSegment.set(segmentKey, pathIndex)
+          return pathIndex
+        })
+        pathSegmentsByIntervalId.set(intervalKey, pathSegments)
+      }
+
+      const departureStopIndex = stopIndexById.get(timetable.timetable.departureStopId)
+      if (departureStopIndex === undefined) throw new Error('TfL departure stop is missing from the stop catalogue')
+      const trainStops = [[departureStopIndex, departure, departure]]
+      for (const interval of groupedIntervals) {
+        const stopIndex = stopIndexById.get(interval.stopId)
+        if (stopIndex === undefined) {
+          throw new Error(`TfL interval references unknown stop ${interval.stopId}`)
+        }
+        const arrival = departure + Math.round(interval.arrivalMinutes * 60)
+        const stopDeparture = departure + Math.round(interval.departureMinutes * 60)
+        trainStops.push([stopIndex, arrival, stopDeparture])
+      }
+      const destinationStop = sourceStops[trainStops.at(-1)[0]]
+      trains.push({
+        id: `${routeSequence.lineId}:${routeSequence.direction}:${timetable.timetable.departureStopId}:${departure}:${routeIndex}:${journeyIndex}`,
+        route: routeSequence.lineName,
+        headsign: cleanStationName(destinationStop.name),
+        shortName: routeSequence.lineName,
+        category: categoryForMode(routeSequence.mode),
+        mode: routeSequence.mode ?? 'tube',
+        start: departure,
+        end,
+        stops: trainStops,
+        pathSegments,
+      })
     }
-    const destinationStop = sourceStops[trainStops.at(-1)[0]]
-    trains.push({
-      id: `${routeSequence.lineId}:${routeSequence.direction}:${departure}:${journeyIndex}`,
-      route: routeSequence.lineName,
-      headsign: cleanStationName(destinationStop.name),
-      shortName: routeSequence.lineName,
-      category: categoryForMode(routeSequence.mode),
-      mode: routeSequence.mode ?? 'tube',
-      start: departure,
-      end,
-      stops: trainStops,
-      pathSegments,
-    })
   }
   if (!trains.length) throw new Error('TfL timetable produced no journeys in the study window')
 
@@ -326,7 +342,7 @@ export function compileTflLineProof({
       license: 'Transport for London Data Service terms and conditions',
       licenseUrl: 'https://tfl.gov.uk/corporate/terms-and-conditions/transport-data-service',
       model: 'TfL recurring weekday timetable interpolation / not realtime',
-      note: `${schedule.name} departures from ${cleanStationName(stopById.get(timetable.timetable.departureStopId).name)} across ${pathSegmentsByIntervalId.size} branch pattern${pathSegmentsByIntervalId.size === 1 ? '' : 's'}; a bounded adapter proof for Motion Studies 006, not a complete London service-day claim.`,
+      note: `${[...new Set(selectedRoutes.map(({ schedule }) => schedule.name))].join(' / ')} departures from ${cleanStationName(stopById.get(timetable.timetable.departureStopId).name)} across ${pathSegmentsByIntervalId.size} branch pattern${pathSegmentsByIntervalId.size === 1 ? '' : 's'}; a bounded adapter proof for Motion Studies 006, not a complete London service-day claim.`,
       modes: [routeSequence.mode ?? 'tube'],
       geometry: {
         publisher: 'Transport for London',
@@ -336,6 +352,7 @@ export function compileTflLineProof({
         model: 'TfL route-sequence line string split at nearest monotonic NaPTAN stops',
         matchedSegments: paths.length,
         totalSegments: paths.length,
+        unmatchedBranchPatterns: unmatchedBranchPatterns.size,
       },
     },
     bounds: boundsFor(sourceStops),
@@ -399,6 +416,20 @@ function matchBranch(routeSequence, journeyStopIds) {
       journeyStopIds.every((stopId, index) => stopId === branch.naptanIds[index]))
     .sort((first, second) => first.branch.naptanIds.length - second.branch.naptanIds.length)[0]
   if (prefixMatch) return { lineStringIndex: prefixMatch.lineStringIndex, name: prefixMatch.branch.name }
+  const subsequenceMatch = branches
+    .map((branch, lineStringIndex) => ({ branch, lineStringIndex }))
+    .filter(({ branch }) => {
+      let journeyIndex = 0
+      for (const stopId of branch.naptanIds ?? []) {
+        if (stopId === journeyStopIds[journeyIndex]) journeyIndex += 1
+        if (journeyIndex === journeyStopIds.length) return true
+      }
+      return false
+    })
+    .sort((first, second) => first.branch.naptanIds.length - second.branch.naptanIds.length)[0]
+  if (subsequenceMatch) {
+    return { lineStringIndex: subsequenceMatch.lineStringIndex, name: subsequenceMatch.branch.name }
+  }
   if (routeSequence.lineStrings?.length === 1) return { lineStringIndex: 0, name: routeSequence.lineName }
   throw new Error(`TfL timetable branch ${journeyStopIds[0]} → ${journeyStopIds.at(-1)} has no matching route sequence`)
 }

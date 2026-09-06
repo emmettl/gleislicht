@@ -5,7 +5,7 @@ Motion Studies is a catalogue of authored transport works made with one visual i
 | No. | Work | Place | Status |
 | --- | --- | --- | --- |
 | 005 | **Gleislicht** | Switzerland | Released |
-| 006 | **All Change** | London | Planned |
+| 006 | **All Change** | London | Data foundation |
 
 Each work receives a locally meaningful title and descriptor. The shared series identity appears as a quiet catalogue mark; the work title remains dominant.
 

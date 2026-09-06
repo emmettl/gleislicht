@@ -148,4 +148,32 @@ describe('TfL line adapter', () => {
     )
     expect(snapshot.trains.some((train) => train.stops.some(([, arrival, departure]) => departure > arrival))).toBe(true)
   })
+
+  it('matches limited-stop journeys as ordered branch subsequences', () => {
+    const limitedStopTimetable = structuredClone(timetable)
+    limitedStopTimetable.stops.push({ id: 'D', name: 'Delta Underground Station', lon: -0.135, lat: 51.515 })
+    limitedStopTimetable.timetable.routes[0].stationIntervals[0].intervals = [
+      { stopId: 'D', timeToArrival: 3 },
+      { stopId: 'C', timeToArrival: 5 },
+    ]
+    const branchedRoute = {
+      ...routeSequence,
+      stations: limitedStopTimetable.stops,
+      orderedLineRoutes: [{ naptanIds: ['A', 'B', 'D', 'C'], name: 'Alpha to Charlie' }],
+      lineStrings: ['[[[-0.12,51.5],[-0.13,51.51],[-0.135,51.515],[-0.14,51.52]]]'],
+    }
+
+    const snapshot = compileTflLineProof({
+      routeSequence: branchedRoute,
+      timetable: limitedStopTimetable,
+      serviceDate: '2026-09-04',
+      retrievedAt: '2026-09-06T00:00:00.000Z',
+      routeUrl: 'route',
+      timetableUrl: 'timetable',
+    })
+
+    expect(snapshot.trains).toHaveLength(2)
+    expect(snapshot.trains[0].stops).toHaveLength(3)
+    expect(snapshot.paths).toHaveLength(2)
+  })
 })

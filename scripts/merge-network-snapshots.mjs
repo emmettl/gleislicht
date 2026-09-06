@@ -23,7 +23,10 @@ function sha256(value) {
   return createHash('sha256').update(JSON.stringify(value)).digest('hex')
 }
 
-export function mergeNetworkSnapshots(snapshots, { retrievedAt = new Date().toISOString() } = {}) {
+export function mergeNetworkSnapshots(snapshots, {
+  retrievedAt = new Date().toISOString(),
+  note,
+} = {}) {
   if (!snapshots.length) throw new Error('At least one network snapshot is required')
   const first = snapshots[0]
   for (const snapshot of snapshots.slice(1)) {
@@ -96,7 +99,7 @@ export function mergeNetworkSnapshots(snapshots, { retrievedAt = new Date().toIS
       license: 'Transport for London Data Service terms and conditions',
       licenseUrl: 'https://tfl.gov.uk/corporate/terms-and-conditions/transport-data-service',
       model: 'Composite TfL recurring timetable and public timetable-PDF interpolation / not realtime',
-      note: `${snapshots.length} representative rail-led studies merged into one contract. This proves cross-mode composition; it is not yet a complete or bidirectional London service claim.`,
+      note: note ?? `${snapshots.length} representative rail-led studies merged into one contract. This proves cross-mode composition; it is not yet a complete or bidirectional London service claim.`,
       modes,
       sources,
       geometry: {
@@ -127,16 +130,22 @@ async function main() {
   const output = argv[outputIndex + 1]
   const retrievedAtIndex = argv.indexOf('--retrieved-at')
   const retrievedAt = retrievedAtIndex < 0 ? new Date().toISOString() : argv[retrievedAtIndex + 1]
+  const noteIndex = argv.indexOf('--note')
+  const note = noteIndex < 0 ? undefined : argv[noteIndex + 1]
   const optionIndexes = new Set([outputIndex, outputIndex + 1])
   if (retrievedAtIndex >= 0) {
     optionIndexes.add(retrievedAtIndex)
     optionIndexes.add(retrievedAtIndex + 1)
   }
+  if (noteIndex >= 0) {
+    optionIndexes.add(noteIndex)
+    optionIndexes.add(noteIndex + 1)
+  }
   const inputs = argv.filter((_, index) => !optionIndexes.has(index))
   if (!inputs.length) throw new Error('At least one input snapshot is required')
   const snapshots = await Promise.all(inputs.map(async (input) =>
     JSON.parse(await readFile(resolve(input), 'utf8'))))
-  const merged = mergeNetworkSnapshots(snapshots, { retrievedAt })
+  const merged = mergeNetworkSnapshots(snapshots, { retrievedAt, note })
   await mkdir(dirname(resolve(output)), { recursive: true })
   await writeFile(resolve(output), `${JSON.stringify(merged)}\n`)
   console.log(`Wrote ${output}: ${merged.trains.length} journeys / ${merged.stops.length} stops / ${merged.paths.length} paths / ${merged.metadata.modes.length} modes`)

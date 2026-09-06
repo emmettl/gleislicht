@@ -35,7 +35,9 @@ describe('TfL public timetable PDF adapter', () => {
 
   it.each([
     ['Elizabeth line', 'fixtures/tfl/all-change-elizabeth-morning.json', 'elizabeth-line', 27, 10],
+    ['Elizabeth line eastbound', 'fixtures/tfl/all-change-elizabeth-eastbound-morning.json', 'elizabeth-line', 2, 10],
     ['Lioness', 'fixtures/tfl/all-change-lioness-morning.json', 'overground', 12, 19],
+    ['Lioness northbound', 'fixtures/tfl/all-change-lioness-northbound-morning.json', 'overground', 12, 19],
   ])('keeps the committed %s PDF proof complete and source-audited', async (_label, path, mode, trainCount, stopCount) => {
     const snapshot = JSON.parse(await readFile(path, 'utf8'))
 
@@ -50,13 +52,15 @@ describe('TfL public timetable PDF adapter', () => {
     )).toBe(true)
   })
 
-  it('assembles one representative contract across all five rail-led modes', async () => {
+  it('assembles the expanded morning lattice across all five rail-led modes', async () => {
     const snapshot = JSON.parse(
       await readFile('fixtures/tfl/all-change-rail-led-morning.json', 'utf8'),
     )
     expect(snapshot.metadata.modes).toEqual(['tube', 'dlr', 'tram', 'overground', 'elizabeth-line'])
-    expect(snapshot.trains).toHaveLength(230)
-    expect(snapshot.stops).toHaveLength(151)
-    expect(snapshot.metadata.note).toContain('not yet a complete or bidirectional London service claim')
+    expect(snapshot.trains).toHaveLength(1_475)
+    expect(snapshot.stops).toHaveLength(385)
+    expect(snapshot.paths).toHaveLength(1_073)
+    expect(snapshot.metadata.note).toContain('All advertised Tube, DLR and Tramlink lines in both directions')
+    expect(snapshot.metadata.note).toContain('remaining five London Overground lines')
   })
 })

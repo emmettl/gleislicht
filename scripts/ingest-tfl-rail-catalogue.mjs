@@ -31,11 +31,21 @@ function apiUrl(path) {
 
 async function fetchJson(path) {
   const url = apiUrl(path)
-  const response = await fetch(url, {
-    headers: { 'user-agent': 'Motion Studies data compiler (offline research)' },
-  })
-  if (!response.ok) throw new Error(`TfL request failed (${response.status}) for ${url.origin}${url.pathname}`)
-  return response.json()
+  for (let attempt = 1; attempt <= 6; attempt += 1) {
+    const response = await fetch(url, {
+      headers: { 'user-agent': 'Motion Studies data compiler (offline research)' },
+    })
+    if (response.ok) return response.json()
+    if (response.status !== 429 || attempt === 6) {
+      throw new Error(`TfL request failed (${response.status}) for ${url.origin}${url.pathname}`)
+    }
+    const retryAfter = Number(response.headers.get('retry-after'))
+    await new Promise((resolveDelay) => setTimeout(
+      resolveDelay,
+      Number.isFinite(retryAfter) ? retryAfter * 1000 : attempt * 1500,
+    ))
+  }
+  throw new Error(`TfL request exhausted retries for ${url.origin}${url.pathname}`)
 }
 
 export function summariseRouteSequence(routeSequence) {
@@ -82,6 +92,9 @@ async function inBatches(items, size, task) {
   const results = []
   for (let index = 0; index < items.length; index += size) {
     results.push(...await Promise.all(items.slice(index, index + size).map(task)))
+    if (index + size < items.length) {
+      await new Promise((resolveDelay) => setTimeout(resolveDelay, 400))
+    }
   }
   return results
 }
@@ -89,7 +102,7 @@ async function inBatches(items, size, task) {
 export async function buildRailLedCatalogue({ retrievedAt = new Date().toISOString() } = {}) {
   const linesPath = `/Line/Mode/${RAIL_LED_MODES.join(',')}`
   const lines = await fetchJson(linesPath)
-  const topology = await inBatches(lines, 4, async (line) => {
+  const topology = await inBatches(lines, 2, async (line) => {
     const directions = await Promise.all(['outbound', 'inbound'].map(async (direction) => {
       const routeSequence = await fetchJson(`/Line/${encodeURIComponent(line.id)}/Route/Sequence/${direction}`)
       return summariseRouteSequence(routeSequence)
@@ -119,11 +132,11 @@ export async function buildRailLedCatalogue({ retrievedAt = new Date().toISOStri
     lines: topology,
     stopHierarchySamples: hierarchies,
     movementProofs: [
-      { mode: 'tube', status: 'compiled', lines: ['bakerloo', 'northern'], fixtures: ['all-change-bakerloo-morning.json', 'all-change-northern-morden-morning.json'] },
-      { mode: 'dlr', status: 'compiled', lines: ['dlr'], fixtures: ['all-change-dlr-bank-morning.json'] },
-      { mode: 'tram', status: 'compiled', lines: ['tram'], fixtures: ['all-change-tram-beckenham-morning.json'] },
-      { mode: 'elizabeth-line', status: 'compiled-from-pdf', lines: ['elizabeth'], fixtures: ['all-change-elizabeth-morning.json'], note: 'The Unified API timetable probe from Abbey Wood returned no timetable endpoint; the official current public timetable PDF supplies the bounded movement proof.' },
-      { mode: 'overground', status: 'compiled-from-pdf', lines: ['lioness'], fixtures: ['all-change-lioness-morning.json'], note: 'The Unified API timetable probe from Stratford on Mildmay returned no timetable endpoint; the official current Lioness public timetable PDF supplies the bounded movement proof. The remaining five Overground lines are catalogued topology only.' },
+      { mode: 'tube', status: 'compiled-all-lines-bidirectional', lines: topology.filter(({ mode }) => mode === 'tube').map(({ id }) => id), fixtures: ['all-change-unified-morning.json'] },
+      { mode: 'dlr', status: 'compiled-all-lines-bidirectional', lines: ['dlr'], fixtures: ['all-change-unified-morning.json'] },
+      { mode: 'tram', status: 'compiled-all-lines-bidirectional', lines: ['tram'], fixtures: ['all-change-unified-morning.json'] },
+      { mode: 'elizabeth-line', status: 'compiled-bidirectional-bounded', lines: ['elizabeth'], fixtures: ['all-change-elizabeth-morning.json', 'all-change-elizabeth-eastbound-morning.json'], note: 'The Unified API has no timetable endpoint for this mode; the official current public timetable PDF supplies bounded movement studies in both directions.' },
+      { mode: 'overground', status: 'compiled-bidirectional-bounded', lines: ['lioness'], fixtures: ['all-change-lioness-morning.json', 'all-change-lioness-northbound-morning.json'], note: 'The Unified API has no timetable endpoint for this mode; the official current Lioness PDF supplies bounded movement studies in both directions. The remaining five Overground lines are catalogued topology only.' },
     ],
   }
 }
