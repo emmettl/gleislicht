@@ -37,7 +37,7 @@ function apiUrl(path) {
   return url
 }
 
-async function fetchBytes(url) {
+export async function fetchBytes(url) {
   const response = await fetch(url, {
     headers: { 'user-agent': 'Motion Studies data compiler (offline research)' },
   })
@@ -49,7 +49,7 @@ async function fetchJson(url) {
   return JSON.parse((await fetchBytes(url)).toString('utf8'))
 }
 
-async function extractPdfText(pdfBytes, firstPage, lastPage) {
+export async function extractPdfText(pdfBytes, firstPage, lastPage) {
   const directory = await mkdtemp(join(tmpdir(), 'all-change-pdf-'))
   const pdfPath = join(directory, 'timetable.pdf')
   await writeFile(pdfPath, pdfBytes)
@@ -112,6 +112,7 @@ function stationRows(page, stops) {
       const label = cleanStationName(stop.name)
       return [
         label,
+        label.replace(/^London /, ''),
         label.replace(/ \(London\)$/, ''),
         label.replace(/ \([^)]*\)$/, ''),
         label.replaceAll(/\bStreet\b/g, 'St').replaceAll(/\bRoad\b/g, 'Rd'),
@@ -119,25 +120,47 @@ function stationRows(page, stops) {
     })
     .sort((first, second) => second.label.length - first.label.length)
   const rows = new Map()
-  for (const line of page.split('\n')) {
+  for (const [lineIndex, line] of page.split('\n').entries()) {
     const trimmed = line.trimStart()
     const normalisedLine = normaliseName(trimmed)
-    const alias = aliases.find(({ label }) => normalisedLine.startsWith(normaliseName(label)))
-    if (!alias) continue
-    const times = [...line.matchAll(/\b(?:[01]\d|2[0-4])[0-5]\d\b/g)]
-      .map((match) => ({ value: match[0], column: match.index }))
-    if (!times.length) continue
-    const existing = rows.get(alias.stop.id) ?? []
-    existing.push(times)
-    rows.set(alias.stop.id, existing)
+    const plainLine = line.toLowerCase().replaceAll('’', "'")
+    const matches = []
+    const leadingAlias = aliases.find(({ label }) => normalisedLine.startsWith(normaliseName(label)))
+    if (leadingAlias) matches.push({ alias: leadingAlias, start: line.length - trimmed.length })
+    for (const alias of aliases) {
+      const start = plainLine.indexOf(alias.label.toLowerCase().replaceAll('’', "'"), 1)
+      if (start >= 0 && !matches.some((match) => match.alias.stop.id === alias.stop.id && match.start === start)) {
+        matches.push({ alias, start })
+      }
+    }
+    matches.sort((first, second) => first.start - second.start || second.alias.label.length - first.alias.label.length)
+    const distinctMatches = matches.filter((match, index) =>
+      !matches.slice(0, index).some((candidate) => candidate.start === match.start))
+    for (const [matchIndex, match] of distinctMatches.entries()) {
+      const end = distinctMatches[matchIndex + 1]?.start ?? line.length
+      const segment = line.slice(match.start, end)
+      const times = [...segment.matchAll(/\b(?:[01]\d|2[0-4])[0-5]\d\b/g)]
+        .map((time) => ({ value: time[0], column: match.start + time.index }))
+      if (!times.length) continue
+      const existing = rows.get(match.alias.stop.id) ?? []
+      existing.push({ lineIndex, times })
+      rows.set(match.alias.stop.id, existing)
+    }
   }
   return rows
 }
 
-function timeAtColumn(rowGroups, column) {
-  const candidates = rowGroups
-    .flatMap((row) => row)
-    .filter((time) => Math.abs(time.column - column) <= 1)
+function timeAtColumn(rowGroups, column, originLineIndex) {
+  const nearestRows = rowGroups
+    .filter(({ lineIndex }) => lineIndex >= originLineIndex)
+    .map(({ lineIndex, times }) => ({
+      lineIndex,
+      times: times.filter((time) => Math.abs(time.column - column) <= 1),
+    }))
+    .filter(({ times }) => times.length)
+    .sort((first, second) =>
+      Math.abs(first.lineIndex - originLineIndex) - Math.abs(second.lineIndex - originLineIndex))
+  const candidates = nearestRows[0]?.times ?? []
   if (!candidates.length) return undefined
   return candidates.map(({ value }) => value)
 }
@@ -148,7 +171,8 @@ export function parsePdfGridJourneys({
   originId,
   destinationId,
   sectionTitle,
-  dayPattern = /Monday(?:s)? to Fridays(?: \(continued\))?/i,
+  dayPattern = /Monday(?:s)? to (?:Friday|Fridays|Saturday|Saturdays)(?: \(continued\))?/i,
+  allowSkippedStops = false,
 }) {
   const journeys = []
   const pages = text.split('\f')
@@ -157,12 +181,13 @@ export function parsePdfGridJourneys({
     const rows = stationRows(page, stops)
     const originRows = rows.get(originId)
     if (!originRows) continue
-    const originTimes = originRows.flatMap((row) => row)
+    const originTimes = originRows.flatMap(({ lineIndex, times }) =>
+      times.map((time) => ({ ...time, lineIndex })))
     for (const originTime of originTimes) {
       const calls = []
       let previous
       for (const stop of stops) {
-        const values = timeAtColumn(rows.get(stop.id) ?? [], originTime.column)
+        const values = timeAtColumn(rows.get(stop.id) ?? [], originTime.column, originTime.lineIndex)
         if (!values?.length) continue
         const times = values.map((value) => timeFromPdf(value, previous))
         const arrival = Math.min(...times)
@@ -171,7 +196,10 @@ export function parsePdfGridJourneys({
         calls.push({ stopId: stop.id, arrival, departure })
         previous = departure
       }
-      if (calls.length !== stops.length || calls[0]?.stopId !== originId || calls.at(-1)?.stopId !== destinationId) continue
+      const hasCompleteCallingPattern = calls.length === stops.length
+      const hasBoundedCallingPattern = calls.length >= 2 &&
+        calls[0]?.stopId === originId && calls.at(-1)?.stopId === destinationId
+      if ((!allowSkippedStops && !hasCompleteCallingPattern) || !hasBoundedCallingPattern) continue
       journeys.push({ column: originTime.column, calls })
     }
   }
@@ -195,6 +223,7 @@ export function compileTflPdfProof({
   validUntil,
   windowStart = DEFAULT_WINDOW_START,
   windowEnd = DEFAULT_WINDOW_END,
+  allowSkippedStops = false,
 }) {
   const { branchIndex, stopIds } = routeBranch(routeSequence, originId, destinationId)
   const allStops = stopCatalogue(routeSequence)
@@ -210,10 +239,11 @@ export function compileTflPdfProof({
     originId,
     destinationId,
     sectionTitle,
+    allowSkippedStops,
   }).filter(({ calls }) => calls.at(-1).arrival >= windowStart && calls[0].departure <= windowEnd)
-  if (!journeys.length) throw new Error('TfL PDF timetable produced no complete journeys in the study window')
+  if (!journeys.length) throw new Error('TfL PDF timetable produced no auditable journeys in the study window')
 
-  const paths = pathsBetweenStops(linePoints(routeSequence, branchIndex), sourceStops)
+  const points = linePoints(routeSequence, branchIndex)
   const compactStops = sourceStops.map((stop) => [
     Number(stop.lon),
     Number(stop.lat),
@@ -222,18 +252,38 @@ export function compileTflPdfProof({
     stop.id,
   ])
   const stopIndexById = new Map(sourceStops.map((stop, index) => [stop.id, index]))
-  const trains = journeys.map((journey, index) => ({
-    id: `${routeSequence.lineId}:pdf:${journey.calls[0].departure}:${index}`,
-    route: routeSequence.lineName,
-    headsign: cleanStationName(sourceStops.at(-1).name),
-    shortName: routeSequence.lineName,
-    category: 'rail',
-    mode: routeSequence.mode,
-    start: journey.calls[0].departure,
-    end: journey.calls.at(-1).arrival,
-    stops: journey.calls.map(({ stopId, arrival, departure }) => [stopIndexById.get(stopId), arrival, departure]),
-    pathSegments: paths.map((_, pathIndex) => pathIndex),
-  }))
+  const paths = []
+  const edges = []
+  const pathIndexByPair = new Map()
+  const trains = journeys.map((journey, index) => {
+    const calledStops = journey.calls.map(({ stopId }) => stopById.get(stopId))
+    const journeyPaths = pathsBetweenStops(points, calledStops)
+    const pathSegments = journeyPaths.map((path, callIndex) => {
+      const from = journey.calls[callIndex].stopId
+      const to = journey.calls[callIndex + 1].stopId
+      const key = `${from}:${to}`
+      let pathIndex = pathIndexByPair.get(key)
+      if (pathIndex === undefined) {
+        pathIndex = paths.length
+        pathIndexByPair.set(key, pathIndex)
+        paths.push(path)
+        edges.push([stopIndexById.get(from), stopIndexById.get(to)])
+      }
+      return pathIndex
+    })
+    return {
+      id: `${routeSequence.lineId}:pdf:${originId}:${destinationId}:${journey.calls[0].departure}:${index}`,
+      route: routeSequence.lineName,
+      headsign: cleanStationName(sourceStops.at(-1).name),
+      shortName: routeSequence.lineName,
+      category: 'rail',
+      mode: routeSequence.mode,
+      start: journey.calls[0].departure,
+      end: journey.calls.at(-1).arrival,
+      stops: journey.calls.map(({ stopId, arrival, departure }) => [stopIndexById.get(stopId), arrival, departure]),
+      pathSegments,
+    }
+  })
 
   return {
     metadata: {
@@ -251,7 +301,7 @@ export function compileTflPdfProof({
       license: 'Transport for London Data Service terms and conditions',
       licenseUrl: 'https://tfl.gov.uk/corporate/terms-and-conditions/transport-data-service',
       model: 'TfL public timetable PDF grid extraction / not realtime',
-      note: `${sectionTitle}, Mondays to Fridays; ${journeys.length} complete ${cleanStationName(sourceStops[0].name)} to ${cleanStationName(sourceStops.at(-1).name)} journeys. PDF columns are accepted only when every branch stop has a monotonic time.`,
+      note: `${sectionTitle}, weekday service; ${journeys.length} ${cleanStationName(sourceStops[0].name)} to ${cleanStationName(sourceStops.at(-1).name)} journeys. PDF columns require both endpoints, official route order and monotonic times${allowSkippedStops ? '; documented non-calling stops may be omitted' : '; every branch stop is required'}.`,
       modes: [routeSequence.mode],
       geometry: {
         publisher: 'Transport for London',
@@ -265,7 +315,7 @@ export function compileTflPdfProof({
     },
     bounds: boundsFor(sourceStops),
     stops: compactStops,
-    edges: sourceStops.slice(0, -1).map((_, index) => [index, index + 1]),
+    edges,
     paths,
     edgePaths: paths.map((_, index) => index),
     trains,
@@ -308,6 +358,7 @@ async function main() {
     validUntil: argument(argv, 'valid-until'),
     windowStart: parseClock(argument(argv, 'window-start', '06:45')),
     windowEnd: parseClock(argument(argv, 'window-end', '08:45')),
+    allowSkippedStops: argv.includes('--allow-skip-stops'),
   })
   await mkdir(dirname(resolve(output)), { recursive: true })
   await writeFile(resolve(output), `${JSON.stringify(snapshot)}\n`)

@@ -1,6 +1,7 @@
 import { readFile } from 'node:fs/promises'
 import { describe, expect, it } from 'vitest'
 import { parsePdfGridJourneys } from './ingest-tfl-pdf-timetable.mjs'
+import { planPdfCoverage } from './compile-tfl-pdf-lattice.mjs'
 
 const stops = [
   { id: 'A', name: 'Alpha Rail Station' },
@@ -33,6 +34,76 @@ describe('TfL public timetable PDF adapter', () => {
     ])
   })
 
+  it('accepts an explicitly enabled ordered limited-stop column', () => {
+    const text = [
+      'Example line westbound',
+      'Mondays to Saturdays',
+      'Alpha       0645',
+      'Bravo           ',
+      'Charlie     0655',
+    ].join('\n')
+
+    expect(parsePdfGridJourneys({
+      text,
+      stops,
+      originId: 'A',
+      destinationId: 'C',
+      sectionTitle: 'Example line westbound',
+    })).toHaveLength(0)
+    expect(parsePdfGridJourneys({
+      text,
+      stops,
+      originId: 'A',
+      destinationId: 'C',
+      sectionTitle: 'Example line westbound',
+      allowSkippedStops: true,
+    })[0].calls.map(({ stopId }) => stopId)).toEqual(['A', 'C'])
+  })
+
+  it('still rejects a partial column without the requested destination', () => {
+    const text = [
+      'Example line westbound',
+      'Monday to Friday',
+      'Alpha       0645',
+      'Bravo       0650',
+    ].join('\n')
+    expect(parsePdfGridJourneys({
+      text,
+      stops,
+      originId: 'A',
+      destinationId: 'C',
+      sectionTitle: 'Example line westbound',
+      allowSkippedStops: true,
+    })).toHaveLength(0)
+  })
+
+  it('keeps side-by-side timetable grids in their own column bands', () => {
+    const text = [
+      'Example line westbound                 Example line eastbound',
+      'Mondays to Saturdays                   Mondays to Saturdays',
+      'Alpha       0645                       Charlie      0647',
+      'Bravo       0650                       Bravo        0652',
+      'Charlie     0655                       Alpha        0657',
+    ].join('\n')
+    const westbound = parsePdfGridJourneys({
+      text,
+      stops,
+      originId: 'A',
+      destinationId: 'C',
+      sectionTitle: 'Example line westbound',
+    })
+    const eastbound = parsePdfGridJourneys({
+      text,
+      stops: [...stops].reverse(),
+      originId: 'C',
+      destinationId: 'A',
+      sectionTitle: 'Example line eastbound',
+    })
+
+    expect(westbound[0].calls.map(({ arrival }) => arrival)).toEqual([24_300, 24_600, 24_900])
+    expect(eastbound[0].calls.map(({ arrival }) => arrival)).toEqual([24_420, 24_720, 25_020])
+  })
+
   it.each([
     ['Elizabeth line', 'fixtures/tfl/all-change-elizabeth-morning.json', 'elizabeth-line', 27, 10],
     ['Elizabeth line eastbound', 'fixtures/tfl/all-change-elizabeth-eastbound-morning.json', 'elizabeth-line', 2, 10],
@@ -56,11 +127,27 @@ describe('TfL public timetable PDF adapter', () => {
     const snapshot = JSON.parse(
       await readFile('fixtures/tfl/all-change-rail-led-morning.json', 'utf8'),
     )
-    expect(snapshot.metadata.modes).toEqual(['tube', 'dlr', 'tram', 'overground', 'elizabeth-line'])
-    expect(snapshot.trains).toHaveLength(1_475)
-    expect(snapshot.stops).toHaveLength(385)
-    expect(snapshot.paths).toHaveLength(1_073)
+    expect(new Set(snapshot.metadata.modes)).toEqual(new Set(['tube', 'dlr', 'tram', 'overground', 'elizabeth-line']))
+    expect(snapshot.trains).toHaveLength(1_743)
+    expect(snapshot.stops).toHaveLength(503)
+    expect(snapshot.paths).toHaveLength(1_395)
     expect(snapshot.metadata.note).toContain('All advertised Tube, DLR and Tramlink lines in both directions')
-    expect(snapshot.metadata.note).toContain('remaining five London Overground lines')
+    expect(snapshot.metadata.note).toContain('all six named London Overground lines in both directions')
+  })
+
+  it('audits every advertised Overground and Elizabeth branch', async () => {
+    const catalogue = JSON.parse(await readFile('fixtures/tfl/all-change-rail-led-catalogue.json', 'utf8'))
+    const plan = planPdfCoverage(catalogue)
+    const snapshot = JSON.parse(await readFile('fixtures/tfl/all-change-pdf-morning.json', 'utf8'))
+
+    expect(plan).toHaveLength(43)
+    expect(snapshot.metadata.coverage.advertisedBranchCount).toBe(43)
+    expect(snapshot.metadata.coverage.compiledBranchCount).toBe(36)
+    expect(snapshot.metadata.coverage.inactiveBranches).toHaveLength(7)
+    expect(new Set(snapshot.trains.map(({ route }) => route))).toEqual(new Set([
+      'Elizabeth line', 'Liberty', 'Lioness', 'Mildmay', 'Suffragette', 'Weaver', 'Windrush',
+    ]))
+    expect(snapshot.trains.every(({ stops: calls, pathSegments }) =>
+      calls.length >= 2 && pathSegments.length === calls.length - 1)).toBe(true)
   })
 })

@@ -26,8 +26,8 @@ The first compiled fixtures are deliberately smaller than the first visible edit
 - Northern: 84 journeys from Morden across short turns and the Bank/Charing Cross branch structures;
 - DLR: 51 journeys from Bank split correctly toward Lewisham and Woolwich Arsenal;
 - Tramlink: 17 journeys from Beckenham Junction, using TfL's alternate `Monday to Friday` schedule spelling;
-- Lioness: 12 complete southbound journeys from Watford Junction to Euston; and
-- Elizabeth line: 27 complete westbound journeys from Abbey Wood to Paddington.
+- Lioness: bounded complete studies in both directions; and
+- the PDF lattice: 321 morning journeys across every named Overground line and 16 active Elizabeth branch families.
 
 The compiler now collapses TfL's repeated arrival/dwell interval records into one stop call with distinct arrival and departure times. Each interval pattern is matched to the ordered NaPTAN IDs for its own route branch before the official line string is split. Shared segments are reused, while genuinely different branches retain different geometry.
 
@@ -35,11 +35,11 @@ Run `npm run data:london:proofs` to refresh the bounded adapter proofs, or use t
 
 `npm run data:london:catalogue` separately discovers every currently advertised line in the five rail-led modes. Its compact committed catalogue preserves 20 line identities and 125 directional branch definitions, each with ordered NaPTAN stops and a geometry hash. Three NaPTAN hierarchy samples retain interchange, entrance and platform children without inventing absent platform names.
 
-TfL documents that its Journey Planner timetable feed covers Underground, bus, DLR, tram, cable car and river—not Elizabeth line or London Overground. Both rail modes do have current official public timetable PDFs. A separate grid extractor now accepts only columns with a complete, monotonic time at every station on a selected branch, records the PDF hash and validity dates, and combines the resulting movements with Unified API route geometry. This supplies honest bidirectional Elizabeth line and Lioness studies without pretending their unavailable Unified API timetable endpoints work. Regenerating those proofs requires Poppler's `pdftotext`; the compiled JSON remains dependency-free.
+TfL documents that its Journey Planner timetable feed covers Underground, bus, DLR, tram, cable car and river—not Elizabeth line or London Overground. Both rail modes do have current official public timetable PDFs. A separate grid extractor records each PDF hash and validity period, then accepts only columns with both requested endpoints, monotonic times and calls in official route order. Limited-stop columns are explicit: their path geometry spans the omitted non-calling stations rather than fabricating calls. It also understands repeated grids, side-by-side tables and TfL's weekday heading variants. Regenerating the lattice requires Poppler's `pdftotext`; the compiled JSON remains dependency-free.
 
 `npm run data:london:lattice:unified` fans out through every distinct branch origin advertised for Tube, DLR and Tramlink in both directions. It compiles 1,422 movements, 356 source-identified stops and 1,019 real path segments across 13 lines and 26 directions. Limited-stop trains use the complete branch geometry between calls; TfL's overlapping DLR terminal responses are retained only where their stop pattern matches the selected route. Two Metropolitan origins advertised in topology have no suitable Friday schedule and remain explicitly listed as inactive instead of disappearing.
 
-`npm run data:london:assemble` adds the bounded bidirectional Elizabeth and Lioness studies to produce a 1,475-movement, 385-stop, five-mode morning contract. Stops and paths are deduplicated by source identity and exact geometry. It remains under `fixtures/tfl/`, so neither the 1.1 MB Unified artifact nor the assembled study enters Gleislicht's public payload.
+`npm run data:london:lattice:pdf` derives 43 branch-audit tasks from the catalogue. It compiles 36 active morning branch patterns: every named Overground line in both directions and 16 of the 19 Elizabeth families. Three Elizabeth and four Windrush topology branches have no matching direct morning column and are preserved in `metadata.coverage.inactiveBranches`. `npm run data:london:assemble` combines this with the Unified lattice into a 1,743-movement, 503-stop, five-mode contract. Stops and paths are deduplicated by source identity and exact geometry. All London fixtures remain outside Gleislicht's public payload.
 
 ## Data strategy
 
@@ -76,7 +76,7 @@ Sources:
 - [x] Merge representative services from all five rail-led modes into one shared morning contract.
 - [x] Expand every Unified API timetable mode to all advertised lines and both directions without losing short-turn, limited-stop or branch identity.
 - [x] Add source-audited Greater London and Thames geometry.
-- [ ] Extend PDF movement extraction across the remaining five Overground lines and the full Elizabeth branch family.
+- [x] Audit all six Overground lines and the full Elizabeth branch family against the current public PDFs, compiling active patterns and recording unmatched topology branches.
 - Tune station-label hierarchy for the density of Zone 1 and interchange complexes.
 - Preserve the existing phone transfer and frame-time budgets.
 

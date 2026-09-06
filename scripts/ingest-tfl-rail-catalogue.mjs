@@ -135,8 +135,8 @@ export async function buildRailLedCatalogue({ retrievedAt = new Date().toISOStri
       { mode: 'tube', status: 'compiled-all-lines-bidirectional', lines: topology.filter(({ mode }) => mode === 'tube').map(({ id }) => id), fixtures: ['all-change-unified-morning.json'] },
       { mode: 'dlr', status: 'compiled-all-lines-bidirectional', lines: ['dlr'], fixtures: ['all-change-unified-morning.json'] },
       { mode: 'tram', status: 'compiled-all-lines-bidirectional', lines: ['tram'], fixtures: ['all-change-unified-morning.json'] },
-      { mode: 'elizabeth-line', status: 'compiled-bidirectional-bounded', lines: ['elizabeth'], fixtures: ['all-change-elizabeth-morning.json', 'all-change-elizabeth-eastbound-morning.json'], note: 'The Unified API has no timetable endpoint for this mode; the official current public timetable PDF supplies bounded movement studies in both directions.' },
-      { mode: 'overground', status: 'compiled-bidirectional-bounded', lines: ['lioness'], fixtures: ['all-change-lioness-morning.json', 'all-change-lioness-northbound-morning.json'], note: 'The Unified API has no timetable endpoint for this mode; the official current Lioness PDF supplies bounded movement studies in both directions. The remaining five Overground lines are catalogued topology only.' },
+      { mode: 'elizabeth-line', status: 'audited-full-branch-family', lines: ['elizabeth'], fixtures: ['all-change-pdf-morning.json'], note: 'The official current public timetable PDF supplies 16 active weekday branch studies; three advertised topology branches have no matching direct morning column and remain explicitly inactive.' },
+      { mode: 'overground', status: 'compiled-all-lines-bidirectional', lines: ['liberty', 'lioness', 'mildmay', 'suffragette', 'weaver', 'windrush'], fixtures: ['all-change-pdf-morning.json'], note: 'All six named London Overground lines have active PDF-derived movements in both directions. Four Windrush endpoint combinations without a matching direct morning column remain explicitly inactive.' },
     ],
   }
 }

@@ -60,7 +60,14 @@ describe('TfL rail-led catalogue', () => {
       status: 'compiled-all-lines-bidirectional',
       fixtures: ['all-change-unified-morning.json'],
     })
-    expect(catalogue.movementProofs.find(({ mode }) => mode === 'elizabeth-line').status).toBe('compiled-bidirectional-bounded')
-    expect(catalogue.movementProofs.find(({ mode }) => mode === 'overground').status).toBe('compiled-bidirectional-bounded')
+    expect(catalogue.movementProofs.find(({ mode }) => mode === 'elizabeth-line')).toMatchObject({
+      status: 'audited-full-branch-family',
+      fixtures: ['all-change-pdf-morning.json'],
+    })
+    expect(catalogue.movementProofs.find(({ mode }) => mode === 'overground')).toMatchObject({
+      status: 'compiled-all-lines-bidirectional',
+      lines: ['liberty', 'lioness', 'mildmay', 'suffragette', 'weaver', 'windrush'],
+      fixtures: ['all-change-pdf-morning.json'],
+    })
   })
 })
