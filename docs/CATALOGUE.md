@@ -66,7 +66,7 @@ These are strong candidates, not promises or an implementation queue. Each sente
 - **[Johannesburg](./JOHANNESBURG.md)** — mobility still bearing the spatial violence of apartheid. The full work is blocked pending a locally governed data partnership: official machine-readable service evidence is incomplete and omitting minibus taxis would reproduce a consequential source bias.
 - **[Sydney](./SYDNEY.md)** — a rail city repeatedly interrupted by water, then reconnected by bridges and ferries. TfNSW's static, realtime and historical products give it the cleanest full observed-motion path in the survey; physical crossing states still need explicit sourcing.
 - **[Lisbon](./LISBON.md)** — trams, funiculars and ferries negotiating a city apparently designed to defeat wheels. A current Carris GTFS makes a tram/funicular terrain proof viable, but its all-bus mode coding requires an override and current open ferry motion was not established.
-- **Berlin** — Ringbahn pulse with U-Bahn, S-Bahn and tram strata.
+- **[Berlin](./BERLIN.md)** — the Ringbahn as a moving definition of inside, pierced by S-Bahn and U-Bahn axes and met by an eastern tram field. VBB's current and archived CC BY 4.0 GTFS, trip-level realtime corrections and Berlin's permissive 3D geodata make a scheduled proof unusually clean; exact rail height and tunnel state still require compilation.
 - **MANIFEST — World trade in motion** — a planetary field of observed cargo vessels and tankers in which the lanes from China and the Gulf emerge through repetition and geographic choke points. AIS can reveal motion and broad vessel class, but commodity, origin and quantity require separately labelled inference or aggregate trade evidence.
 
 They remain deliberately unnumbered until each produces a title, a source path and a visual claim as specific as the first four works.
@@ -77,6 +77,7 @@ They remain deliberately unnumbered until each produces a title, a source path a
 | --- | --- | --- |
 | Venice | **Green** | Compile a source-pinned 06:00–08:00 ACTV lagoon proof. |
 | Sydney | **Green** | Select one complete historic 07:00–09:00 GTFS/GTFS-R harbour window. |
+| Berlin | **Green** | Compile a source-pinned 07:00–09:00 Ring and Crossings proof, with replacement buses and rail kept distinct. |
 | Singapore | **Green / amber** | Inspect the registered DataMall train feed, then separate operating and future states. |
 | Lisbon | **Green bounded / amber full thesis** | Compile a Carris slope proof; keep ferries structural. |
 | Amsterdam | **Green as reconstruction / amber coverage** | Map NDW bicycle counters before choosing the opening cell. |
@@ -86,7 +87,7 @@ They remain deliberately unnumbered until each produces a title, a source path a
 | Mumbai | **Red** | Request official suburban schedules and time-banded passenger evidence; do not prototype. |
 | Johannesburg | **Red** | Form a compensated local review/data partnership before visual development. |
 
-Green describes the source path, not catalogue admission. Venice and Sydney still need titles, authored signature proofs, phone budgets and final rights retention; no city receives a number from this survey alone.
+Green describes the source path, not catalogue admission. Venice, Sydney and Berlin still need titles, authored signature proofs and phone budgets; no city receives a number from this survey alone.
 
 Tokyo's initial source and feasibility audit is recorded in [TOKYO.md](./TOKYO.md). It separates a durable Toei proof from the unresolved Tokyo Metro publication terms and the Challenge 2026-only Yamanote/private-railway coverage.
 

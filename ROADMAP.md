@@ -192,7 +192,8 @@ See [docs/EDITIONS.md](./docs/EDITIONS.md) for the reusable boundary and [docs/L
 - [ ] Compile a bounded 18:00–20:00 Victoria Harbour proof with exact Star Ferry departures, labelled headway-generated trams and structural-only MTR; keep the rail-led edition gated on an authoritative timetable or trajectory source.
 - [x] Capture the wider city-thesis pipeline—without implying feasibility—for Istanbul, Mumbai, Venice, Amsterdam, Chicago, Singapore, Mexico City, Johannesburg, Sydney and Lisbon alongside the existing Tokyo, Hong Kong, Berlin and San Francisco candidates.
 - [x] Complete source, rights, motion-semantics, geography and bounded-proof feasibility studies for all ten wider city candidates.
-- [ ] Advance Venice and Sydney to source-pinned proof acquisition; retain Singapore, Lisbon, Amsterdam and Chicago behind their stated access, coverage or publication gates.
+- [x] Complete Berlin's feasibility audit: verify VBB's current/archived schedule and realtime paths, distinguish replacement buses from same-named Ringbahn rail records, and isolate the remaining vertical-structure work.
+- [ ] Advance Venice, Sydney and Berlin to source-pinned proof acquisition; retain Singapore, Lisbon, Amsterdam and Chicago behind their stated access, coverage or publication gates.
 - [ ] Do not prototype Mumbai or Johannesburg until the missing authoritative movement evidence and, for Johannesburg, locally governed representation process exist.
 - [x] Audit **MANIFEST — World trade in motion**: distinguish observed AIS movement from self-reported vessel data, inferred port-to-port voyages and aggregate commodity evidence; gate global individual tracks on written derived-publication rights.
 - [ ] Prototype MANIFEST's global cargo/tanker field with non-commercial hourly vessel presence, compare identical commercial AIS evaluation slices at China/Gulf/choke-point coverage, and compile one rights-clean regional track proof before procurement.
@@ -200,7 +201,7 @@ See [docs/EDITIONS.md](./docs/EDITIONS.md) for the reusable boundary and [docs/L
 
 **Exit:** every announced edition has a local argument, a defensible source model, an authored signature image and an independent payload budget; shared packages exist because three real works proved the seam.
 
-See [docs/CATALOGUE.md](./docs/CATALOGUE.md), [docs/NEW-YORK.md](./docs/NEW-YORK.md), [docs/PARIS.md](./docs/PARIS.md), [docs/TOKYO.md](./docs/TOKYO.md), [docs/SAN-FRANCISCO.md](./docs/SAN-FRANCISCO.md), [docs/HONG-KONG.md](./docs/HONG-KONG.md), [docs/ISTANBUL.md](./docs/ISTANBUL.md), [docs/MUMBAI.md](./docs/MUMBAI.md), [docs/VENICE.md](./docs/VENICE.md), [docs/AMSTERDAM.md](./docs/AMSTERDAM.md), [docs/CHICAGO.md](./docs/CHICAGO.md), [docs/SINGAPORE.md](./docs/SINGAPORE.md), [docs/MEXICO-CITY.md](./docs/MEXICO-CITY.md), [docs/JOHANNESBURG.md](./docs/JOHANNESBURG.md), [docs/SYDNEY.md](./docs/SYDNEY.md), [docs/LISBON.md](./docs/LISBON.md) and [docs/MANIFEST.md](./docs/MANIFEST.md).
+See [docs/CATALOGUE.md](./docs/CATALOGUE.md), [docs/NEW-YORK.md](./docs/NEW-YORK.md), [docs/PARIS.md](./docs/PARIS.md), [docs/TOKYO.md](./docs/TOKYO.md), [docs/SAN-FRANCISCO.md](./docs/SAN-FRANCISCO.md), [docs/HONG-KONG.md](./docs/HONG-KONG.md), [docs/ISTANBUL.md](./docs/ISTANBUL.md), [docs/MUMBAI.md](./docs/MUMBAI.md), [docs/VENICE.md](./docs/VENICE.md), [docs/AMSTERDAM.md](./docs/AMSTERDAM.md), [docs/CHICAGO.md](./docs/CHICAGO.md), [docs/SINGAPORE.md](./docs/SINGAPORE.md), [docs/MEXICO-CITY.md](./docs/MEXICO-CITY.md), [docs/JOHANNESBURG.md](./docs/JOHANNESBURG.md), [docs/SYDNEY.md](./docs/SYDNEY.md), [docs/LISBON.md](./docs/LISBON.md), [docs/BERLIN.md](./docs/BERLIN.md) and [docs/MANIFEST.md](./docs/MANIFEST.md).
 
 ## Data sources to validate in implementation
 
