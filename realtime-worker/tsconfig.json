@@ -10,5 +10,5 @@
     "noEmit": true,
     "types": ["@cloudflare/workers-types"]
   },
-  "include": ["index.ts", "../src/domain/realtime.ts", "../src/domain/network.ts"]
+  "include": ["index.ts"]
 }

@@ -4,7 +4,7 @@ import type {
   RealtimeStopUpdate,
   RealtimeTripRelationship,
   RealtimeTripUpdate,
-} from '../src/domain/realtime.ts'
+} from '@motionstudies/core/domain/realtime.ts'
 
 const SOURCE_URL = 'https://api.opentransportdata.swiss/la/gtfs-rt'
 const USER_AGENT = 'gleislicht/0.0.1 (+https://emmettl.github.io/gleislicht/)'
