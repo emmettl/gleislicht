@@ -1,0 +1,20 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "gleislicht-astra-recorder",
+  "main": "astra-worker/index.ts",
+  "compatibility_date": "2026-09-05",
+  "workers_dev": false,
+  "triggers": {
+    "crons": ["* * * * *"]
+  },
+  "r2_buckets": [
+    {
+      "binding": "OBSERVATIONS",
+      "bucket_name": "gleislicht-observations"
+    }
+  ],
+  "vars": {
+    "COLLECTING_ENABLED": "true",
+    "RECORDING_SCOPE": "a1-zurich"
+  }
+}

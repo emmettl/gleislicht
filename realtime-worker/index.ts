@@ -13,7 +13,10 @@ interface Env {
   readonly OPENTRANSPORTDATA_API_KEY: string
   readonly STATIC_FEED_VERSION: string
   readonly ALLOWED_ORIGINS?: string
+  readonly OBSERVATIONS: R2Bucket
 }
+
+const LATEST_OBJECT_KEY = 'gtfs-rt/latest.json'
 
 function relationship(
   value: number | null | undefined,
@@ -78,7 +81,7 @@ function json(
   })
 }
 
-function normalizeFeed(
+export function normalizeFeed(
   bytes: ArrayBuffer,
   receivedAt: string,
   staticFeedVersion: string,
@@ -125,7 +128,48 @@ function normalizeFeed(
   }
 }
 
+async function refreshRealtime(env: Env): Promise<void> {
+  if (!env.OPENTRANSPORTDATA_API_KEY || !env.STATIC_FEED_VERSION) {
+    throw new Error('Realtime feed is not configured')
+  }
+
+  const upstream = await fetch(SOURCE_URL, {
+    headers: {
+      Authorization: `Bearer ${env.OPENTRANSPORTDATA_API_KEY}`,
+      'User-Agent': USER_AGENT,
+      Accept: 'application/x-protobuf',
+      'Accept-Encoding': 'gzip, br',
+    },
+    redirect: 'follow',
+  })
+  if (!upstream.ok) {
+    throw new Error(`Realtime upstream returned ${upstream.status}`)
+  }
+
+  const receivedAt = new Date().toISOString()
+  const snapshot = normalizeFeed(
+    await upstream.arrayBuffer(),
+    receivedAt,
+    env.STATIC_FEED_VERSION,
+  )
+  await env.OBSERVATIONS.put(LATEST_OBJECT_KEY, JSON.stringify(snapshot), {
+    httpMetadata: {
+      contentType: 'application/json; charset=utf-8',
+      cacheControl: 'public, max-age=30',
+    },
+    customMetadata: {
+      generatedAt: snapshot.metadata.generatedAt,
+      receivedAt,
+      staticFeedVersion: env.STATIC_FEED_VERSION,
+    },
+  })
+}
+
 export default {
+  async scheduled(_controller, env, context): Promise<void> {
+    context.waitUntil(refreshRealtime(env))
+  },
+
   async fetch(request: Request, env: Env, context: ExecutionContext) {
     if (request.method === 'OPTIONS') {
       return new Response(null, { status: 204, headers: corsHeaders(request, env) })
@@ -134,38 +178,22 @@ export default {
     if (request.method !== 'GET' || url.pathname !== '/realtime.json') {
       return json({ error: 'Not found' }, 404, request, env)
     }
-    if (!env.OPENTRANSPORTDATA_API_KEY || !env.STATIC_FEED_VERSION) {
-      return json({ error: 'Realtime feed is not configured' }, 503, request, env)
-    }
-
     const cache = (caches as CacheStorage & { readonly default: Cache }).default
     const cached = await cache.match(request)
     if (cached) return cached
 
-    const upstream = await fetch(SOURCE_URL, {
-      headers: {
-        Authorization: `Bearer ${env.OPENTRANSPORTDATA_API_KEY}`,
-        'User-Agent': USER_AGENT,
-        Accept: 'application/x-protobuf',
-        'Accept-Encoding': 'gzip, br',
-      },
-      redirect: 'follow',
-    })
-    if (!upstream.ok) {
-      return json(
-        { error: `Realtime upstream returned ${upstream.status}` },
-        502,
-        request,
-        env,
-      )
+    const latest = await env.OBSERVATIONS.get(LATEST_OBJECT_KEY)
+    if (!latest) {
+      return json({ error: 'Realtime snapshot is not available yet' }, 503, request, env)
     }
-    const receivedAt = new Date().toISOString()
-    const snapshot = normalizeFeed(
-      await upstream.arrayBuffer(),
-      receivedAt,
-      env.STATIC_FEED_VERSION,
-    )
-    const response = json(snapshot, 200, request, env)
+    const headers = new Headers()
+    latest.writeHttpMetadata(headers)
+    headers.set('ETag', latest.httpEtag)
+    headers.set('Cache-Control', 'public, max-age=30, s-maxage=30')
+    for (const [name, value] of Object.entries(corsHeaders(request, env))) {
+      headers.set(name, value)
+    }
+    const response = new Response(latest.body, { headers })
     context.waitUntil(cache.put(request, response.clone()))
     return response
   },

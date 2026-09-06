@@ -59,6 +59,8 @@ Coordinates in the counter table are coarse, so a match is considered directly h
 
 The repository includes an authenticated recorder for ASTRA's DATEX II 2.3 SOAP feed. It asks only for the eleven A1 counter groups used by this study, makes one pull after each minute publication, and writes append-only snapshots with receipt time, source publication time and detector-table version. The API key is read only from the process environment and the ignored recording directory is created with owner-only files.
 
+For unattended collection, `astra-worker/index.ts` provides the equivalent Cloudflare Cron Worker. It waits until 24 seconds after each nominal minute, writes gzip-compressed append-only snapshots to the private `gleislicht-observations` R2 bucket and leaves the local recorder unchanged. Its default scope is `a1-zurich`; change `RECORDING_SCOPE` in `wrangler.astra.jsonc` to `national` only after the A1 deployment has been observed successfully. See [CLOUDFLARE.md](./CLOUDFLARE.md).
+
 ```sh
 # One snapshot; add -- --raw to retain the source XML beside it.
 ASTRA_API_KEY=... npm run data:road:record

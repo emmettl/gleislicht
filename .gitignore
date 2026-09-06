@@ -8,6 +8,7 @@ test-results
 .dev.vars
 *.local
 recordings/astra/
+recordings/astra-national/
 public/data/all-change-geography.json
 public/data/all-change-rail-led-morning.json
 public/data/all-change-diagram.json

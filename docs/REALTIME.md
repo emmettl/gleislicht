@@ -20,7 +20,7 @@ The cyan outer ring identifies a realtime-adjusted vehicle while its normal colo
 
 ## Edge adapter
 
-`realtime-worker/index.ts` fetches `https://api.opentransportdata.swiss/la/gtfs-rt`, follows redirects, sends the required Bearer credential and identifying user-agent, decodes the protobuf and emits the small JSON contract used by the browser. Cloudflare's cache coalesces viewers onto a 30-second response, respecting the upstream query ceiling.
+`realtime-worker/index.ts` uses a one-minute Cloudflare Cron Trigger to fetch `https://api.opentransportdata.swiss/la/gtfs-rt`, follow redirects, send the required Bearer credential and identifying user-agent, and decode the protobuf. The normalized browser contract is written to `gtfs-rt/latest.json` in the private `gleislicht-observations` R2 bucket. Public requests only read that central object, so viewers in different edge regions cannot multiply calls against the upstream token.
 
 The API key is never a Vite variable and never enters the static build. To validate locally:
 
@@ -29,15 +29,15 @@ npm run worker:check
 npm run worker:build
 ```
 
-To activate production after creating the Worker account and feed key:
+To activate production after creating the Worker account, R2 bucket and feed key:
 
 1. Update `STATIC_FEED_VERSION` in `wrangler.realtime.jsonc` to the exact static artifact version being published.
 2. Set the secret with `npx wrangler secret put OPENTRANSPORTDATA_API_KEY --config wrangler.realtime.jsonc`.
-3. Deploy with `npx wrangler deploy --config wrangler.realtime.jsonc`.
+3. Deploy with `npm run worker:deploy:realtime`.
 4. Build the static client with `VITE_GLEISLICHT_REALTIME_URL=https://<worker>/realtime.json`.
 5. Verify the returned service date matches the current published GTFS service day before promoting the Pages build.
 
-The endpoint URL is public configuration; the Bearer key stays at the edge. The browser polls at 30 seconds, marks a response stale after 90 seconds, and keeps the last published schedule usable throughout.
+The endpoint URL is public configuration; the Bearer key and R2 bucket stay at the edge. The browser polls at 30 seconds, marks a response stale after 90 seconds, and keeps the last published schedule usable throughout. See [CLOUDFLARE.md](./CLOUDFLARE.md) for account setup and operational checks.
 
 ## Next increment
 
