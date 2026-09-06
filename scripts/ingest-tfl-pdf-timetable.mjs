@@ -10,7 +10,7 @@ import { pathToFileURL } from 'node:url'
 import {
   boundsFor,
   cleanStationName,
-  linePoints,
+  linePointsForStops,
   parseClock,
   pathsBetweenStops,
   sourceSha256,
@@ -243,7 +243,7 @@ export function compileTflPdfProof({
   }).filter(({ calls }) => calls.at(-1).arrival >= windowStart && calls[0].departure <= windowEnd)
   if (!journeys.length) throw new Error('TfL PDF timetable produced no auditable journeys in the study window')
 
-  const points = linePoints(routeSequence, branchIndex)
+  const points = linePointsForStops(routeSequence, sourceStops, branchIndex).points
   const compactStops = sourceStops.map((stop) => [
     Number(stop.lon),
     Number(stop.lat),
@@ -308,7 +308,7 @@ export function compileTflPdfProof({
         feedVersion: `tfl-unified-api:${retrievedAt.slice(0, 10)}`,
         sourceUrl: routeUrl,
         sourceSha256: sourceSha256(routeSequence),
-        model: 'TfL route-sequence line string split at nearest monotonic NaPTAN stops',
+        model: 'TfL route-sequence line string matched and oriented by NaPTAN sequence, then split at nearest monotonic stops',
         matchedSegments: paths.length,
         totalSegments: paths.length,
       },

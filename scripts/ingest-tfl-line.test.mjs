@@ -1,6 +1,10 @@
 import { readFile } from 'node:fs/promises'
 import { describe, expect, it } from 'vitest'
-import { compileTflLineProof, parseClock } from './ingest-tfl-line.mjs'
+import {
+  compileTflLineProof,
+  linePointsForStops,
+  parseClock,
+} from './ingest-tfl-line.mjs'
 
 const routeSequence = {
   lineId: 'test-line',
@@ -238,5 +242,35 @@ describe('TfL line adapter', () => {
     expect(snapshot.trains).toHaveLength(2)
     expect(snapshot.trains[0].stops).toHaveLength(3)
     expect(snapshot.paths).toHaveLength(2)
+  })
+
+  it('matches branch geometry by its stops when TfL line strings use a different order', () => {
+    const route = {
+      ...routeSequence,
+      orderedLineRoutes: [
+        { naptanIds: ['A', 'B', 'C'], name: 'Alpha to Charlie' },
+        { naptanIds: ['A', 'B'], name: 'Alpha to Bravo' },
+      ],
+      lineStrings: [
+        '[[[-0.12,51.5],[-0.125,51.505],[-0.13,51.51]]]',
+        '[[[-0.12,51.5],[-0.13,51.51],[-0.14,51.52]]]',
+      ],
+    }
+
+    const geometry = linePointsForStops(route, stops, 0)
+
+    expect(geometry.lineStringIndex).toBe(1)
+    expect(geometry.reversed).toBe(false)
+    expect(geometry.points.at(-1)).toEqual([-0.14, 51.52])
+  })
+
+  it('orients a matching line string to the timetable direction', () => {
+    const geometry = linePointsForStops(
+      { ...routeSequence, lineStrings: ['[[[-0.14,51.52],[-0.13,51.51],[-0.12,51.5]]]'] },
+      stops,
+    )
+
+    expect(geometry.reversed).toBe(true)
+    expect(geometry.points[0]).toEqual([-0.12, 51.5])
   })
 })

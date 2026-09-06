@@ -146,6 +146,40 @@ function nearestMonotonicIndexes(points, stops) {
   return indexes
 }
 
+function monotonicFit(points, stops) {
+  const indexes = nearestMonotonicIndexes(points, stops)
+  const distances = indexes.map((pointIndex, stopIndex) =>
+    distanceSquared(points[pointIndex], [stops[stopIndex].lon, stops[stopIndex].lat]))
+  return {
+    indexes,
+    score: distances.reduce((total, distance) => total + distance, 0) /
+      Math.max(distances.length, 1),
+  }
+}
+
+/**
+ * TfL does not guarantee that orderedLineRoutes and lineStrings use the same
+ * ordering. Pick the encoded shape which actually passes the branch's stops,
+ * and orient it to the timetable, instead of treating the branch array index
+ * as a line-string index.
+ */
+export function linePointsForStops(routeSequence, stops, preferredIndex = 0) {
+  if (stops.length < 2) throw new Error('TfL branch has too few stops for geometry')
+  const candidates = (routeSequence.lineStrings ?? []).flatMap((_, lineStringIndex) => {
+    const points = linePoints(routeSequence, lineStringIndex)
+    return [
+      { lineStringIndex, reversed: false, points, ...monotonicFit(points, stops) },
+      { lineStringIndex, reversed: true, points: [...points].reverse(), ...monotonicFit([...points].reverse(), stops) },
+    ]
+  })
+  if (!candidates.length) throw new Error('TfL route sequence has no line string')
+  candidates.sort((first, second) =>
+    first.score - second.score ||
+    Number(first.lineStringIndex !== preferredIndex) - Number(second.lineStringIndex !== preferredIndex) ||
+    Number(first.reversed) - Number(second.reversed))
+  return candidates[0]
+}
+
 export function pathsBetweenStops(points, stops) {
   const indexes = nearestMonotonicIndexes(points, stops)
   return stops.slice(0, -1).map((stop, index) => {
@@ -285,12 +319,17 @@ export function compileTflLineProof({
           if (!stop) throw new Error(`TfL branch references unknown stop ${stopId}`)
           return stop
         })
-        const branchPaths = pathsBetweenStops(linePoints(routeSequence, branch.lineStringIndex), branchStops)
+        const branchGeometry = linePointsForStops(
+          routeSequence,
+          branchStops,
+          branch.lineStringIndex,
+        )
+        const branchPaths = pathsBetweenStops(branchGeometry.points, branchStops)
         pathSegments = branchPaths.map((path, index) => {
           const from = stopIndexById.get(journeyStopIds[index])
           const to = stopIndexById.get(journeyStopIds[index + 1])
           if (from === undefined || to === undefined) throw new Error('TfL branch stop is missing from the stop catalogue')
-          const segmentKey = `${branch.lineStringIndex}:${from}:${to}`
+          const segmentKey = `${branchGeometry.lineStringIndex}:${Number(branchGeometry.reversed)}:${from}:${to}`
           const existingPathIndex = pathIndexByBranchSegment.get(segmentKey)
           if (existingPathIndex !== undefined) return existingPathIndex
           const pathIndex = paths.length
@@ -353,7 +392,7 @@ export function compileTflLineProof({
         feedVersion: `tfl-unified-api:${retrievedAt.slice(0, 10)}`,
         sourceUrl: routeUrl,
         sourceSha256: sourceSha256(routeSequence),
-        model: 'TfL route-sequence line string split at nearest monotonic NaPTAN stops',
+        model: 'TfL route-sequence line string matched and oriented by NaPTAN sequence, then split at nearest monotonic stops',
         matchedSegments: paths.length,
         totalSegments: paths.length,
         unmatchedBranchPatterns: unmatchedBranchPatterns.size,

@@ -62,6 +62,35 @@ if (new Set(layout.stops.map(([sourceId]) => sourceId)).size !== network.stops.l
 if (layout.paths?.length !== network.paths.length) {
   throw new Error('London diagram path indexes do not match the opening network')
 }
+
+function approximateKilometres(first, second) {
+  const longitudeScale = Math.cos(((first[1] + second[1]) * Math.PI) / 360)
+  return Math.hypot(
+    (first[0] - second[0]) * longitudeScale,
+    first[1] - second[1],
+  ) * 111
+}
+
+for (const [edgeIndex, [fromIndex, toIndex]] of network.edges.entries()) {
+  const pathIndex = network.edgePaths?.[edgeIndex]
+  const path = pathIndex === undefined || pathIndex === null
+    ? undefined
+    : network.paths[pathIndex]
+  if (!path || path.length < 2) continue
+  const chord = approximateKilometres(
+    network.stops[fromIndex],
+    network.stops[toIndex],
+  )
+  let pathLength = 0
+  for (let index = 1; index < path.length; index += 1) {
+    pathLength += approximateKilometres(path[index - 1], path[index])
+  }
+  if (pathLength > Math.max(8, chord * 5)) {
+    throw new Error(
+      `London path ${pathIndex} takes an implausible ${pathLength.toFixed(1)} km detour between ${network.stops[fromIndex][2]} and ${network.stops[toIndex][2]}`,
+    )
+  }
+}
 if (!layout.context?.waterPaths?.some((path) => path.length >= 2)) {
   throw new Error('London diagram is missing its authored Thames context path')
 }

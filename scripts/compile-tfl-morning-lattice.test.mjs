@@ -121,17 +121,17 @@ describe('TfL morning lattice compiler', () => {
   it('keeps the committed bidirectional Unified API lattice complete and renderable', async () => {
     const lattice = JSON.parse(await readFile('fixtures/tfl/all-change-unified-morning.json', 'utf8'))
     expect(lattice.metadata.coverage).toMatchObject({
-      status: 'complete-for-unified-api-modes',
+      status: 'audited-with-inactive-origins',
       modes: ['tube', 'dlr', 'tram'],
       lineCount: 13,
       directionCount: 26,
       originCount: 48,
-      activeOriginCount: 46,
+      activeOriginCount: 47,
       advertisedBranchCount: 82,
-      compiledSnapshotCount: 46,
+      compiledSnapshotCount: 47,
     })
-    expect(lattice.metadata.coverage.inactiveOrigins).toHaveLength(2)
-    expect(lattice.trains).toHaveLength(1_422)
+    expect(lattice.metadata.coverage.inactiveOrigins).toHaveLength(1)
+    expect(lattice.trains).toHaveLength(1_413)
     expect(lattice.stops).toHaveLength(356)
     expect(new Set(lattice.trains.map(({ id }) => id)).size).toBe(lattice.trains.length)
     expect(lattice.trains.every((train) =>
