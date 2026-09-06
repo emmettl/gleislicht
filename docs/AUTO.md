@@ -61,6 +61,8 @@ The repository includes an authenticated recorder for ASTRA's DATEX II 2.3 SOAP 
 
 For unattended collection, `astra-worker/index.ts` provides the equivalent Cloudflare Cron Worker. It waits until 24 seconds after each nominal minute, writes gzip-compressed append-only snapshots to the private `gleislicht-observations` R2 bucket and leaves the local recorder unchanged. Its default scope is `a1-zurich`; change `RECORDING_SCOPE` in `wrangler.astra.jsonc` to `national` only after the A1 deployment has been observed successfully. See [CLOUDFLARE.md](./CLOUDFLARE.md).
 
+Completed R2 days can be pulled into the same ignored local recording format with `npm run data:road:export -- --date=YYYY-MM-DD`. The exporter uses read-only S3-compatible R2 credentials and deliberately fetches adjacent UTC partitions so a Europe/Zurich civil day is not clipped at midnight.
+
 ```sh
 # One snapshot; add -- --raw to retain the source XML beside it.
 ASTRA_API_KEY=... npm run data:road:record

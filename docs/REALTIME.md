@@ -34,10 +34,10 @@ To activate production after creating the Worker account, R2 bucket and feed key
 1. Update `STATIC_FEED_VERSION` in `wrangler.realtime.jsonc` to the exact static artifact version being published.
 2. Set the secret with `npx wrangler secret put OPENTRANSPORTDATA_API_KEY --config wrangler.realtime.jsonc`.
 3. Deploy with `npm run worker:deploy:realtime`.
-4. Build the static client with `VITE_GLEISLICHT_REALTIME_URL=https://<worker>/realtime.json`.
-5. Verify the returned service date matches the current published GTFS service day before promoting the Pages build.
+4. Let the Pages workflow regenerate the current Swiss service day and query the Worker's `/health` endpoint.
+5. The workflow sets `VITE_GLEISLICHT_REALTIME_URL=https://<worker>/realtime.json` only when the service date, static-feed version and freshness all pass. A mismatch publishes the normal demo-capable site without LIVE mode.
 
-The endpoint URL is public configuration; the Bearer key and R2 bucket stay at the edge. The browser polls at 30 seconds, marks a response stale after 90 seconds, and keeps the last published schedule usable throughout. See [CLOUDFLARE.md](./CLOUDFLARE.md) for account setup and operational checks.
+The endpoint URL is public configuration; the Bearer key and R2 bucket stay at the edge. The browser polls once per minute, marks a response stale after 150 seconds, and keeps the last published schedule usable throughout. The Worker excludes updates explicitly dated for another Swiss service day. See [CLOUDFLARE.md](./CLOUDFLARE.md) for account setup and operational checks.
 
 ## Next increment
 

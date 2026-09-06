@@ -52,11 +52,26 @@ npx wrangler tail gleislicht-astra-recorder
 
 Then open the realtime `/realtime.json` endpoint. A healthy response has `metadata.kind: "live"`, a current `generatedAt`, the configured `staticFeedVersion`, and a non-empty `updates` array. A `503` immediately after deployment means the first Cron invocation has not populated R2 yet.
 
+The public `/health` response contains only the current timestamps, service date and static-feed version. The Pages workflow uses it as a deployment gate: it regenerates the current Swiss service day and enables `VITE_GLEISLICHT_REALTIME_URL` only when that artifact exactly matches a fresh Worker snapshot. A scheduled Pages run performs the same check every morning. GitHub and Cloudflare credentials remain separate; the Worker URL is public configuration.
+
 Use the Cloudflare dashboard's R2 object browser to confirm that a current gzip object exists under `astra/a1-zurich/<UTC date>/`. Do not make the bucket public.
 
 ## Scope and retention
 
 The first deployment deliberately records only the eleven A1 Zürich groups. After it has produced a complete day, `RECORDING_SCOPE` can be changed to `national` in `wrangler.astra.jsonc` and the Worker redeployed. National mode derives 379 accepted station filters from the committed topology at build time.
+
+To export a complete Swiss civil day for compilation, create an R2 object read token scoped to `gleislicht-observations`, then expose its S3-compatible values only to the command process:
+
+```sh
+CLOUDFLARE_ACCOUNT_ID=... \
+R2_ACCESS_KEY_ID=... \
+R2_SECRET_ACCESS_KEY=... \
+npm run data:road:export -- --date=2026-09-06
+
+npm run data:road:compile -- --date=2026-09-06
+```
+
+The exporter reads the adjacent UTC partitions needed to cover the requested Europe/Zurich day, decompresses the objects locally and writes owner-only files below the ignored `recordings/astra/` directory. Use `--scope=national` after national collection begins. The access key needs object-read permission only; it must not be committed or added to a Vite variable.
 
 Do not add an automatic deletion rule until R2 download and daily compilation have been exercised. Once that path is proven, retain compiled, audited day chunks and expire raw national minute objects on an explicit rolling window. The GTFS latest object is overwritten and needs no lifecycle rule.
 

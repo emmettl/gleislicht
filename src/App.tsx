@@ -147,7 +147,8 @@ type AirLoadState = 'idle' | 'loading' | 'ready' | 'error'
 type RoadLoadState = 'idle' | 'loading' | 'ready' | 'error'
 
 const REALTIME_ENDPOINT = import.meta.env.VITE_GLEISLICHT_REALTIME_URL?.trim()
-const REALTIME_STALE_AFTER_MS = 90_000
+const REALTIME_POLL_INTERVAL_MS = 60_000
+const REALTIME_STALE_AFTER_MS = 150_000
 
 const SOUNDTRACK_TITLES: Record<SoundtrackMode, string> = {
   network: 'Night Grid',
@@ -1254,7 +1255,7 @@ export function App({ edition }: AppProps) {
     }
     void load()
     if (operationsMode === 'live') {
-      interval = window.setInterval(() => void load(), 30_000)
+      interval = window.setInterval(() => void load(), REALTIME_POLL_INTERVAL_MS)
     }
     return () => {
       controller.abort()

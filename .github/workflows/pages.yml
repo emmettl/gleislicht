@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+  schedule:
+    - cron: '37 3 * * *'
   workflow_dispatch:
 
 permissions:
@@ -31,6 +33,46 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Resolve current Swiss service date
+        id: edition
+        shell: bash
+        run: |
+          service_date="$(TZ=Europe/Zurich date +%F)"
+          calendar_year="${service_date%%-*}"
+          month_day="${service_date:5:2}${service_date:8:2}"
+          timetable_year="$calendar_year"
+          if [[ "$month_day" > "1212" ]]; then
+            timetable_year="$((calendar_year + 1))"
+          fi
+          echo "service_date=$service_date" >> "$GITHUB_OUTPUT"
+          echo "timetable_year=$timetable_year" >> "$GITHUB_OUTPUT"
+
+      - name: Download current Swiss timetable sources
+        run: |
+          curl --fail --location --retry 3 \
+            "https://data.opentransportdata.swiss/en/dataset/timetable-${{ steps.edition.outputs.timetable_year }}-gtfs2020/permalink" \
+            --output "$RUNNER_TEMP/swiss-gtfs.zip"
+          curl --fail --location --retry 3 \
+            "https://data.geo.admin.ch/ch.bav.schienennetz/schienennetz/schienennetz_2056_de.xtf" \
+            --output "$RUNNER_TEMP/schienennetz_2056_de.xtf"
+          unzip -t "$RUNNER_TEMP/swiss-gtfs.zip" >/dev/null
+
+      - name: Build today's Swiss timetable
+        run: |
+          npm run data:gtfs -- \
+            --archive "$RUNNER_TEMP/swiss-gtfs.zip" \
+            --date "${{ steps.edition.outputs.service_date }}"
+          npm run data:day -- \
+            --archive "$RUNNER_TEMP/swiss-gtfs.zip" \
+            --date "${{ steps.edition.outputs.service_date }}"
+          npm run data:rail:shapes -- \
+            --source "$RUNNER_TEMP/schienennetz_2056_de.xtf" \
+            --tolerance 160
+          npm run data:rail:shapes -- \
+            --source "$RUNNER_TEMP/schienennetz_2056_de.xtf" \
+            --snapshot public/data/swiss-rail-day-manifest.json \
+            --tolerance 160
+
       - name: Test
         run: npm test
 
@@ -51,6 +93,13 @@ jobs:
 
       - name: Browser regression tests
         run: npm run test:e2e:ci
+
+      - name: Enable compatible realtime service
+        run: |
+          node scripts/configure-live-pages.mjs \
+            --endpoint https://gleislicht-realtime.louis-emmett.workers.dev \
+            --snapshot public/data/swiss-rail-morning.json \
+            --github-env "$GITHUB_ENV"
 
       - name: Build
         run: npm run build

@@ -35,19 +35,13 @@ function stopRelationship(
   return value === 0 ? 'scheduled' : undefined
 }
 
-function serviceDate(value: string | null | undefined): string | undefined {
-  return value && /^\d{8}$/.test(value)
-    ? `${value.slice(0, 4)}-${value.slice(4, 6)}-${value.slice(6, 8)}`
-    : undefined
-}
-
-function zurichDate(): string {
+function zurichDate(date = new Date()): string {
   const parts = new Intl.DateTimeFormat('en-CA', {
     timeZone: 'Europe/Zurich',
     year: 'numeric',
     month: '2-digit',
     day: '2-digit',
-  }).formatToParts(new Date())
+  }).formatToParts(date)
   const part = (type: Intl.DateTimeFormatPartTypes) =>
     parts.find((entry) => entry.type === type)?.value ?? ''
   return `${part('year')}-${part('month')}-${part('day')}`
@@ -90,11 +84,17 @@ export function normalizeFeed(
     new Uint8Array(bytes),
   )
   const updates: RealtimeTripUpdate[] = []
-  let datedService: string | undefined
+  const currentServiceDate = zurichDate(new Date(receivedAt))
+  const compactServiceDate = currentServiceDate.replaceAll('-', '')
   for (const entity of feed.entity) {
     const tripUpdate = entity.tripUpdate
     if (!tripUpdate?.trip.tripId) continue
-    datedService ??= serviceDate(tripUpdate.trip.startDate)
+    if (
+      tripUpdate.trip.startDate &&
+      tripUpdate.trip.startDate !== compactServiceDate
+    ) {
+      continue
+    }
     updates.push({
       tripId: tripUpdate.trip.tripId,
       startDate: tripUpdate.trip.startDate || undefined,
@@ -120,7 +120,7 @@ export function normalizeFeed(
         : receivedAt,
       receivedAt,
       staticFeedVersion,
-      serviceDate: datedService ?? zurichDate(),
+      serviceDate: currentServiceDate,
       sourceUrl: SOURCE_URL,
       model: 'GTFS-RT Trip Updates normalized at the edge; no vehicle positions',
     },
@@ -161,8 +161,28 @@ async function refreshRealtime(env: Env): Promise<void> {
       generatedAt: snapshot.metadata.generatedAt,
       receivedAt,
       staticFeedVersion: env.STATIC_FEED_VERSION,
+      serviceDate: snapshot.metadata.serviceDate,
     },
   })
+}
+
+async function health(request: Request, env: Env): Promise<Response> {
+  const latest = await env.OBSERVATIONS.head(LATEST_OBJECT_KEY)
+  if (!latest) {
+    return json({ status: 'waiting' }, 503, request, env)
+  }
+  return json(
+    {
+      status: 'ok',
+      generatedAt: latest.customMetadata?.generatedAt,
+      receivedAt: latest.customMetadata?.receivedAt,
+      staticFeedVersion: latest.customMetadata?.staticFeedVersion,
+      serviceDate: latest.customMetadata?.serviceDate,
+    },
+    200,
+    request,
+    env,
+  )
 }
 
 export default {
@@ -175,6 +195,9 @@ export default {
       return new Response(null, { status: 204, headers: corsHeaders(request, env) })
     }
     const url = new URL(request.url)
+    if (request.method === 'GET' && url.pathname === '/health') {
+      return health(request, env)
+    }
     if (request.method !== 'GET' || url.pathname !== '/realtime.json') {
       return json({ error: 'Not found' }, 404, request, env)
     }

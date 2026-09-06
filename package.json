@@ -55,6 +55,7 @@
     "data:road:topology": "node scripts/ingest-national-road-topology.mjs",
     "data:road:record": "node scripts/record-astra-traffic.mjs",
     "data:road:record:watch": "node scripts/record-astra-traffic.mjs --watch",
+    "data:road:export": "node scripts/export-astra-r2.mjs",
     "data:road:compile": "node scripts/compile-astra-road-study.mjs",
     "data:road:compile:national": "node scripts/compile-astra-national-study.mjs",
     "data:london:proof": "node scripts/ingest-tfl-line.mjs --line bakerloo --direction outbound --origin 940GZZLUEAC --service-date 2026-09-04 --output fixtures/tfl/all-change-bakerloo-morning.json",
@@ -111,6 +112,7 @@
     "three": "^0.185.1"
   },
   "devDependencies": {
+    "@aws-sdk/client-s3": "^3.1127.0",
     "@cloudflare/workers-types": "^5.20260905.1",
     "@playwright/test": "^1.62.1",
     "@types/react": "^19.2.18",

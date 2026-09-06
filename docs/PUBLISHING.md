@@ -14,4 +14,4 @@ The public repository is `emmettl/gleislicht`, and its canonical site is:
 
 <https://emmettl.github.io/gleislicht/>
 
-The Pages workflow installs with `npm ci`, runs tests, typechecking and linting, builds the static client, and uploads only `dist/`. It deploys on every push to `main` and can also be started manually. GitHub's `github-pages` environment records the public URL and prevents a partially validated build from replacing the current site.
+The Pages workflow installs with `npm ci`, regenerates the national rail artifacts for the current Europe/Zurich service day, runs tests, typechecking and linting, builds the static client, and uploads only `dist/`. It deploys on every push to `main`, runs once each morning and can also be started manually. LIVE is compiled into a deployment only when the Cloudflare health metadata exactly matches the regenerated timetable; otherwise the deterministic operations demo remains available. GitHub's `github-pages` environment records the public URL and prevents a partially validated build from replacing the current site.
