@@ -340,9 +340,7 @@ function offsetProjectedPath(
 
 function canonicalInterchangeName(name: string): string {
   return name
-    .replace(/^London\s+/i, '')
-    .replace(/\s+\(London\)$/i, '')
-    .replace(/\s+\((?:Bakerloo|Circle Line|H&C Line|Dist&Picc Line)\)$/i, '')
+    .replace(/\s+\([^)]*\)$/i, '')
     .replace(/\s+/g, ' ')
     .trim()
 }
@@ -745,7 +743,7 @@ function RailGraph({
   const interchangeMaterial = useRef<THREE.PointsMaterial>(null)
   const localNetworkMaterial = useRef<THREE.LineBasicMaterial>(null)
   const stationTexture = useMemo(() => trainLightTexture('orb'), [])
-  const interchangeTexture = useMemo(() => tflInterchangeTexture(), [])
+  const interchangeTexture = useMemo(() => diagramInterchangeTexture(), [])
   const railGeometry = useMemo(() => {
     const structuralPositions: number[] = []
     const localPositions: number[] = []
@@ -1240,7 +1238,7 @@ function realtimeRingTexture(): THREE.CanvasTexture {
   return texture
 }
 
-function tflInterchangeTexture(): THREE.CanvasTexture {
+function diagramInterchangeTexture(): THREE.CanvasTexture {
   const canvas = document.createElement('canvas')
   canvas.width = 96
   canvas.height = 96
