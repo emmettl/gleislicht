@@ -14,6 +14,9 @@ const geographyGzipBytes = gzipSync(geographyBytes, { level: 9 }).byteLength
 const dayManifestBytes = await readFile('fixtures/idfm/correspondances-day-manifest.json')
 const dayManifest = JSON.parse(dayManifestBytes.toString('utf8'))
 const dayManifestGzipBytes = gzipSync(dayManifestBytes, { level: 9 }).byteLength
+const scopeAudit = JSON.parse(
+  await readFile('fixtures/idfm/correspondances-scope-audit.json', 'utf8'),
+)
 
 if (snapshot.metadata?.publisher !== 'Île-de-France Mobilités') {
   throw new Error('Paris proof has no authoritative publisher')
@@ -94,6 +97,18 @@ if (
 ) {
   throw new Error('Paris progressive day manifest lost its pinned 24-hour contract')
 }
+if (
+  scopeAudit.metadata?.publisher !== 'Île-de-France Mobilités' ||
+  scopeAudit.metadata?.sourceSha256 !== snapshot.metadata?.sourceSha256 ||
+  scopeAudit.metadata?.serviceDate !== snapshot.metadata?.serviceDate ||
+  scopeAudit.totals?.routeCount !== 21 ||
+  scopeAudit.totals?.tripCount !== 2_503 ||
+  scopeAudit.candidateLayers?.opening?.tripCount !== snapshot.trains.length ||
+  scopeAudit.candidateLayers?.centralCross?.routeCount !== 3 ||
+  scopeAudit.candidateLayers?.centralCross?.tripCount !== 372
+) {
+  throw new Error('Paris scope audit lost its source or candidate-layer contract')
+}
 for (const descriptor of dayManifest.chunks) {
   const chunkBytes = await readFile(resolve('fixtures/idfm', descriptor.path))
   const chunk = JSON.parse(chunkBytes.toString('utf8'))
@@ -159,6 +174,11 @@ console.log(
 console.log(
   `Correspondances day: ${dayManifest.tripCount} trips in ${dayManifest.chunks.length} progressive chunks; ` +
     `${(geographyGzipBytes / 1024).toFixed(1)} KiB supporting geography.`,
+)
+console.log(
+  `Correspondances scope: ${scopeAudit.totals.tripCount} morning trips across ` +
+    `${scopeAudit.totals.routeCount} Métro/RER lines; central-cross candidate ` +
+    `${scopeAudit.candidateLayers.centralCross.tripCount} trips across 3 lines.`,
 )
 console.log(
   `Correspondances mobile first view: ${(javaScriptGzip / 1024).toFixed(1)} KiB JS / ` +

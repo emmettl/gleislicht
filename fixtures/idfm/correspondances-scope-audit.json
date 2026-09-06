@@ -1,0 +1,265 @@
+{
+  "metadata": {
+    "publisher": "Île-de-France Mobilités",
+    "datasetUrl": "https://prim.iledefrance-mobilites.fr/fr/jeux-de-donnees/offre-horaires-tc-gtfs-idfm",
+    "sourceUrl": "https://eu.ftp.opendatasoft.com/stif/GTFS/IDFM-gtfs.zip",
+    "sourceSha256": "c29fa61247444191407dae7c1bcf33315e56785369112642e836cba9d100fe18",
+    "retrievedAt": "2026-09-06T11:41:37.000Z",
+    "serviceDate": "2026-09-04",
+    "windowStart": 25200,
+    "windowEnd": 32400,
+    "method": "Active GTFS journeys intersecting the study window; counts only, no published runtime artifact."
+  },
+  "totals": {
+    "routeCount": 21,
+    "tripCount": 2503,
+    "callCount": 62944,
+    "uniqueStopCount": 1044
+  },
+  "routes": [
+    {
+      "id": "IDFM:C01371",
+      "name": "Métro 1",
+      "mode": "metro",
+      "sourceColor": "FFBE00",
+      "tripCount": 141,
+      "callCount": 3483,
+      "uniqueStopCount": 50
+    },
+    {
+      "id": "IDFM:C01372",
+      "name": "Métro 2",
+      "mode": "metro",
+      "sourceColor": "0055C8",
+      "tripCount": 121,
+      "callCount": 3022,
+      "uniqueStopCount": 50
+    },
+    {
+      "id": "IDFM:C01373",
+      "name": "Métro 3",
+      "mode": "metro",
+      "sourceColor": "6E6E00",
+      "tripCount": 133,
+      "callCount": 3296,
+      "uniqueStopCount": 50
+    },
+    {
+      "id": "IDFM:C01386",
+      "name": "Métro 3B",
+      "mode": "metro",
+      "sourceColor": "82C8E6",
+      "tripCount": 43,
+      "callCount": 172,
+      "uniqueStopCount": 8
+    },
+    {
+      "id": "IDFM:C01374",
+      "name": "Métro 4",
+      "mode": "metro",
+      "sourceColor": "A0006E",
+      "tripCount": 126,
+      "callCount": 3639,
+      "uniqueStopCount": 58
+    },
+    {
+      "id": "IDFM:C01375",
+      "name": "Métro 5",
+      "mode": "metro",
+      "sourceColor": "FF5A00",
+      "tripCount": 136,
+      "callCount": 2975,
+      "uniqueStopCount": 44
+    },
+    {
+      "id": "IDFM:C01376",
+      "name": "Métro 6",
+      "mode": "metro",
+      "sourceColor": "82DC73",
+      "tripCount": 127,
+      "callCount": 3471,
+      "uniqueStopCount": 56
+    },
+    {
+      "id": "IDFM:C01377",
+      "name": "Métro 7",
+      "mode": "metro",
+      "sourceColor": "FF82B4",
+      "tripCount": 155,
+      "callCount": 4965,
+      "uniqueStopCount": 76
+    },
+    {
+      "id": "IDFM:C01387",
+      "name": "Métro 7B",
+      "mode": "metro",
+      "sourceColor": "82DC73",
+      "tripCount": 50,
+      "callCount": 350,
+      "uniqueStopCount": 13
+    },
+    {
+      "id": "IDFM:C01378",
+      "name": "Métro 8",
+      "mode": "metro",
+      "sourceColor": "D282BE",
+      "tripCount": 119,
+      "callCount": 4522,
+      "uniqueStopCount": 76
+    },
+    {
+      "id": "IDFM:C01379",
+      "name": "Métro 9",
+      "mode": "metro",
+      "sourceColor": "D2D200",
+      "tripCount": 151,
+      "callCount": 5524,
+      "uniqueStopCount": 74
+    },
+    {
+      "id": "IDFM:C01380",
+      "name": "Métro 10",
+      "mode": "metro",
+      "sourceColor": "DC9600",
+      "tripCount": 74,
+      "callCount": 1474,
+      "uniqueStopCount": 41
+    },
+    {
+      "id": "IDFM:C01381",
+      "name": "Métro 11",
+      "mode": "metro",
+      "sourceColor": "6E491E",
+      "tripCount": 128,
+      "callCount": 2432,
+      "uniqueStopCount": 38
+    },
+    {
+      "id": "IDFM:C01382",
+      "name": "Métro 12",
+      "mode": "metro",
+      "sourceColor": "00643C",
+      "tripCount": 117,
+      "callCount": 3623,
+      "uniqueStopCount": 62
+    },
+    {
+      "id": "IDFM:C01383",
+      "name": "Métro 13",
+      "mode": "metro",
+      "sourceColor": "82C8E6",
+      "tripCount": 172,
+      "callCount": 4302,
+      "uniqueStopCount": 65
+    },
+    {
+      "id": "IDFM:C01384",
+      "name": "Métro 14",
+      "mode": "metro",
+      "sourceColor": "640082",
+      "tripCount": 154,
+      "callCount": 3234,
+      "uniqueStopCount": 42
+    },
+    {
+      "id": "IDFM:C01742",
+      "name": "RER A",
+      "mode": "rer",
+      "sourceColor": "EB2132",
+      "tripCount": 142,
+      "callCount": 3267,
+      "uniqueStopCount": 46
+    },
+    {
+      "id": "IDFM:C01743",
+      "name": "RER B",
+      "mode": "rer",
+      "sourceColor": "5091CB",
+      "tripCount": 92,
+      "callCount": 2689,
+      "uniqueStopCount": 47
+    },
+    {
+      "id": "IDFM:C01727",
+      "name": "RER C",
+      "mode": "rer",
+      "sourceColor": "FFCC30",
+      "tripCount": 121,
+      "callCount": 3271,
+      "uniqueStopCount": 75
+    },
+    {
+      "id": "IDFM:C01728",
+      "name": "RER D",
+      "mode": "rer",
+      "sourceColor": "008B5B",
+      "tripCount": 124,
+      "callCount": 2244,
+      "uniqueStopCount": 59
+    },
+    {
+      "id": "IDFM:C01729",
+      "name": "RER E",
+      "mode": "rer",
+      "sourceColor": "B94E9A",
+      "tripCount": 77,
+      "callCount": 989,
+      "uniqueStopCount": 25
+    }
+  ],
+  "candidateLayers": {
+    "opening": {
+      "routeIds": [
+        "IDFM:C01371",
+        "IDFM:C01742"
+      ],
+      "routeCount": 2,
+      "tripCount": 283,
+      "callCount": 6750,
+      "uniqueStopCount": 96
+    },
+    "centralCross": {
+      "routeIds": [
+        "IDFM:C01374",
+        "IDFM:C01384",
+        "IDFM:C01743"
+      ],
+      "routeCount": 3,
+      "tripCount": 372,
+      "callCount": 9562,
+      "uniqueStopCount": 147
+    },
+    "metroRemainder": {
+      "routeIds": [
+        "IDFM:C01372",
+        "IDFM:C01373",
+        "IDFM:C01386",
+        "IDFM:C01375",
+        "IDFM:C01376",
+        "IDFM:C01377",
+        "IDFM:C01387",
+        "IDFM:C01378",
+        "IDFM:C01379",
+        "IDFM:C01380",
+        "IDFM:C01381",
+        "IDFM:C01382",
+        "IDFM:C01383"
+      ],
+      "routeCount": 13,
+      "tripCount": 1526,
+      "callCount": 40128,
+      "uniqueStopCount": 653
+    },
+    "regionalRemainder": {
+      "routeIds": [
+        "IDFM:C01727",
+        "IDFM:C01728",
+        "IDFM:C01729"
+      ],
+      "routeCount": 3,
+      "tripCount": 322,
+      "callCount": 6504,
+      "uniqueStopCount": 157
+    }
+  }
+}
