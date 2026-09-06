@@ -22,6 +22,16 @@ const centralCrossBytes = await readFile(
 )
 const centralCross = JSON.parse(centralCrossBytes.toString('utf8'))
 const centralCrossGzipBytes = gzipSync(centralCrossBytes, { level: 9 }).byteLength
+const centralCrossDayManifestBytes = await readFile(
+  'fixtures/idfm/correspondances-central-cross-day-manifest.json',
+)
+const centralCrossDayManifest = JSON.parse(
+  centralCrossDayManifestBytes.toString('utf8'),
+)
+const centralCrossDayManifestGzipBytes = gzipSync(
+  centralCrossDayManifestBytes,
+  { level: 9 },
+).byteLength
 
 if (snapshot.metadata?.publisher !== 'Île-de-France Mobilités') {
   throw new Error('Paris proof has no authoritative publisher')
@@ -127,6 +137,16 @@ if (
 ) {
   throw new Error('Paris central-cross layer lost its source, contents or payload contract')
 }
+if (
+  centralCrossDayManifest.metadata?.sourceSha256 !== snapshot.metadata?.sourceSha256 ||
+  centralCrossDayManifest.metadata?.windowStart !== 0 ||
+  centralCrossDayManifest.metadata?.windowEnd !== 86_400 ||
+  centralCrossDayManifest.tripCount !== 2_100 ||
+  centralCrossDayManifest.chunks?.length !== 12 ||
+  centralCrossDayManifestGzipBytes > 32 * 1024
+) {
+  throw new Error('Paris central-cross day manifest lost its source or chunk contract')
+}
 for (const descriptor of dayManifest.chunks) {
   const chunkBytes = await readFile(resolve('fixtures/idfm', descriptor.path))
   const chunk = JSON.parse(chunkBytes.toString('utf8'))
@@ -138,6 +158,21 @@ for (const descriptor of dayManifest.chunks) {
     gzipSync(chunkBytes, { level: 9 }).byteLength > 58 * 1024
   ) {
     throw new Error(`Paris day chunk ${descriptor.id} violates its manifest or budget`)
+  }
+}
+for (const descriptor of centralCrossDayManifest.chunks) {
+  const chunkBytes = await readFile(resolve('fixtures/idfm', descriptor.path))
+  const chunk = JSON.parse(chunkBytes.toString('utf8'))
+  if (
+    chunk.windowStart !== descriptor.windowStart ||
+    chunk.windowEnd !== descriptor.windowEnd ||
+    chunk.trains.length !== descriptor.tripCount ||
+    chunkBytes.byteLength !== descriptor.bytes ||
+    gzipSync(chunkBytes, { level: 9 }).byteLength > 82 * 1024
+  ) {
+    throw new Error(
+      `Paris central-cross day chunk ${descriptor.id} violates its manifest or budget`,
+    )
   }
 }
 
@@ -201,6 +236,10 @@ console.log(
 console.log(
   `Correspondances central cross: ${centralCross.trains.length} trips, ` +
     `${centralCross.stops.length} stops, ${(centralCrossGzipBytes / 1024).toFixed(1)} KiB gzip.`,
+)
+console.log(
+  `Correspondances central-cross day: ${centralCrossDayManifest.tripCount} trips in ` +
+    `${centralCrossDayManifest.chunks.length} progressive chunks; largest chunk stays below 82 KiB gzip.`,
 )
 console.log(
   `Correspondances mobile first view: ${(javaScriptGzip / 1024).toFixed(1)} KiB JS / ` +

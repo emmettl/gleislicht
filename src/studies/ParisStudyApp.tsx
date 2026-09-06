@@ -254,15 +254,33 @@ export function ParisStudyApp({ edition }: { readonly edition: ParisEdition }) {
     studyWindow === 'day',
     time,
   )
+  const centralCrossDayStudy = useProgressiveNetworkDay(
+    edition.data.layers.centralCrossDayManifest,
+    studyWindow === 'day' && centralCrossEnabled,
+    time,
+  )
   const baseNetwork = studyWindow === 'day'
     ? (dayStudy.network ?? openingNetwork)
     : openingNetwork
+  const centralCrossLayer = studyWindow === 'day'
+    ? centralCrossDayStudy.network
+    : centralCrossNetwork
   const network = useMemo(() => {
-    if (!baseNetwork || !centralCrossEnabled || !centralCrossNetwork) {
+    if (
+      !baseNetwork ||
+      !centralCrossEnabled ||
+      !centralCrossLayer ||
+      centralCrossLayer.metadata.windowStart !== baseNetwork.metadata.windowStart ||
+      centralCrossLayer.metadata.windowEnd !== baseNetwork.metadata.windowEnd
+    ) {
       return baseNetwork
     }
-    return mergeNetworkLayers([baseNetwork, centralCrossNetwork])
-  }, [baseNetwork, centralCrossEnabled, centralCrossNetwork])
+    return mergeNetworkLayers([baseNetwork, centralCrossLayer])
+  }, [baseNetwork, centralCrossEnabled, centralCrossLayer])
+  const centralCrossLayerLoading = studyWindow === 'day'
+    ? centralCrossDayStudy.loading
+    : centralCrossLoading
+  const centralCrossLayerError = centralCrossError || centralCrossDayStudy.error
 
   useEffect(() => {
     let cancelled = false
@@ -289,7 +307,7 @@ export function ParisStudyApp({ edition }: { readonly edition: ParisEdition }) {
   }, [edition])
 
   useEffect(() => {
-    if (!centralCrossEnabled || centralCrossNetwork) return
+    if (studyWindow !== 'morning' || !centralCrossEnabled || centralCrossNetwork) return
     let cancelled = false
     fetch(editionDataUrl(edition.data.layers.centralCrossMorning))
       .then((response) => {
@@ -310,7 +328,7 @@ export function ParisStudyApp({ edition }: { readonly edition: ParisEdition }) {
     return () => {
       cancelled = true
     }
-  }, [centralCrossEnabled, centralCrossNetwork, edition.data.layers.centralCrossMorning])
+  }, [centralCrossEnabled, centralCrossNetwork, edition.data.layers.centralCrossMorning, studyWindow])
 
   const stations = useMemo(
     () => (network ? buildStationIndex(network) : []),
@@ -358,7 +376,6 @@ export function ParisStudyApp({ edition }: { readonly edition: ParisEdition }) {
   const activateStudyWindow = useCallback((next: 'morning' | 'day') => {
     if (next === studyWindow) return
     clearSelection()
-    if (next === 'day') setCentralCrossEnabled(false)
     setStudyWindow(next)
     setTime(
       next === 'day'
@@ -374,14 +391,12 @@ export function ParisStudyApp({ edition }: { readonly edition: ParisEdition }) {
       moveCamera('reset')
       return
     }
-    setStudyWindow('morning')
-    setTime(openingNetwork?.metadata.focusTime ?? edition.defaultNetworkTime)
     setCentralCrossError(false)
-    setCentralCrossLoading(!centralCrossNetwork)
+    setCentralCrossLoading(studyWindow === 'morning' && !centralCrossNetwork)
     setCentralCrossEnabled(true)
     setScaleView('region')
     moveCamera('reset')
-  }, [centralCrossEnabled, centralCrossNetwork, clearSelection, edition.defaultNetworkTime, moveCamera, openingNetwork])
+  }, [centralCrossEnabled, centralCrossNetwork, clearSelection, moveCamera, studyWindow])
 
   const toggleScaleView = useCallback(() => {
     if (!network) return
@@ -661,9 +676,9 @@ export function ParisStudyApp({ edition }: { readonly edition: ParisEdition }) {
                 ? `${selectedRoute.trainIds.length} missions · ${selectedRoute.stopIndexes.length} stations`
                 : selectedTrain
                   ? `${selectedTrain.route} · ${formatServiceTime(selectedTrain.start)}–${formatServiceTime(selectedTrain.end)}`
-                  : centralCrossLoading
+                  : centralCrossLayerLoading
                     ? 'La croisée nord–sud se charge séparément…'
-                    : centralCrossError
+                    : centralCrossLayerError
                       ? 'Couche nord–sud indisponible · le socle reste actif'
                       : `${studyWindow === 'day' ? (dayStudy.manifest?.tripCount ?? network.trains.length) : network.trains.length} missions planifiées · ${centralCrossEnabled ? 'Paris croisé · ' : ''}pas de temps réel`}</small>
           </>
@@ -673,7 +688,7 @@ export function ParisStudyApp({ edition }: { readonly edition: ParisEdition }) {
       <nav className="paris-routes" aria-label="Lignes de l’étude">
         <button type="button" aria-label="Isoler Métro 1" aria-pressed={selectedRoute?.name === 'Métro 1'} onClick={() => selectRoute('Métro 1')}><i /> Métro 1 <small>le centre</small></button>
         <button type="button" aria-label="Isoler RER A" aria-pressed={selectedRoute?.name === 'RER A'} onClick={() => selectRoute('RER A')}><i /> RER A <small>la région</small></button>
-        <button className="paris-layer-button" type="button" aria-label="Couche nord–sud Métro 4, Métro 14 et RER B" aria-pressed={centralCrossEnabled} aria-busy={centralCrossLoading} onClick={toggleCentralCross}><i /> {centralCrossLoading ? '…' : 'N–S'} <small>M4 · M14 · RER B</small></button>
+        <button className="paris-layer-button" type="button" aria-label="Couche nord–sud Métro 4, Métro 14 et RER B" aria-pressed={centralCrossEnabled} aria-busy={centralCrossLayerLoading} onClick={toggleCentralCross}><i /> {centralCrossLayerLoading ? '…' : 'N–S'} <small>M4 · M14 · RER B</small></button>
         <button className="paris-connection-button" type="button" aria-label="Prochaine correspondance" onClick={showNextConnection}><i /> {activeHubStudy?.title ?? 'Correspondance'} <small>{activeHubStudy ? selectedConnection?.complex.name : '3 hubs · données IDFM'}</small></button>
       </nav>
 

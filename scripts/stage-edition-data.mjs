@@ -10,6 +10,12 @@ const newYorkDayManifest = JSON.parse(
 const parisDayManifest = JSON.parse(
   await readFile(resolve('fixtures/idfm/correspondances-day-manifest.json'), 'utf8'),
 )
+const parisCentralCrossDayManifest = JSON.parse(
+  await readFile(
+    resolve('fixtures/idfm/correspondances-central-cross-day-manifest.json'),
+    'utf8',
+  ),
+)
 
 const artifacts = [
   {
@@ -20,6 +26,14 @@ const artifacts = [
     source: 'fixtures/idfm/correspondances-central-cross-morning.json',
     destination: 'public/data/correspondances-central-cross-morning.json',
   },
+  {
+    source: 'fixtures/idfm/correspondances-central-cross-day-manifest.json',
+    destination: 'public/data/correspondances-central-cross-day-manifest.json',
+  },
+  ...parisCentralCrossDayManifest.chunks.map(({ path }) => ({
+    source: `fixtures/idfm/${path}`,
+    destination: `public/data/${path}`,
+  })),
   {
     source: 'fixtures/idfm/correspondances-geography.json',
     destination: 'public/data/correspondances-geography.json',

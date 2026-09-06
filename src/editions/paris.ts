@@ -36,6 +36,7 @@ export interface ParisDataCatalog extends EditionDataCatalog {
   }
   readonly layers: {
     readonly centralCrossMorning: string
+    readonly centralCrossDayManifest: string
   }
 }
 
@@ -62,6 +63,7 @@ export const PARIS_EDITION: ParisEdition = {
     },
     layers: {
       centralCrossMorning: 'correspondances-central-cross-morning.json',
+      centralCrossDayManifest: 'correspondances-central-cross-day-manifest.json',
     },
   },
 }

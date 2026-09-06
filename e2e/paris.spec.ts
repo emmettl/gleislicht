@@ -70,6 +70,29 @@ test('loads the 24-hour study progressively', async ({ page }) => {
   ]))
 })
 
+test('keeps the optional north–south layer across the progressive 24-hour clock', async ({ page }) => {
+  const layer = page.getByRole('button', {
+    name: 'Couche nord–sud Métro 4, Métro 14 et RER B',
+  })
+  await layer.click()
+  await expect(page.locator('.paris-status')).toContainText('Paris croisé')
+  await page.getByRole('button', { name: 'Étude de vingt-quatre heures' }).click()
+  await expect(layer).toHaveAttribute('aria-pressed', 'true')
+  await expect(page.locator('.paris-transport')).toContainText('24:00')
+  await expect.poll(async () => page.evaluate(() => {
+    const resources = (globalThis as unknown as {
+      performance: {
+        getEntriesByType(type: string): readonly { readonly name: string }[]
+      }
+    }).performance.getEntriesByType('resource')
+    return resources.map((entry) => entry.name)
+  })).toEqual(expect.arrayContaining([
+    expect.stringContaining('correspondances-central-cross-day-manifest.json'),
+    expect.stringMatching(/correspondances-central-cross-day-chunks\/\d{2}-\d{2}\.json/),
+  ]))
+  await expect(page.locator('.paris-status')).toContainText('Paris croisé')
+})
+
 test('changes scale without replacing the network or stopping its clock', async ({ page }) => {
   const morningRequestCount = async () =>
     page.evaluate(() =>
