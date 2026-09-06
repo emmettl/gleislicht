@@ -6,9 +6,30 @@ import {
 } from './domain/network-day.ts'
 import type {
   NetworkDayChunk,
+  NetworkDayChunkDescriptor,
   NetworkDayManifest,
   NetworkSnapshot,
 } from './domain/network.ts'
+
+export async function verifiedNetworkDayChunk(
+  response: Response,
+  descriptor: NetworkDayChunkDescriptor,
+): Promise<NetworkDayChunk> {
+  const bytes = await response.arrayBuffer()
+  if (descriptor.bytes !== undefined && bytes.byteLength !== descriptor.bytes) {
+    throw new Error(`Network day chunk ${descriptor.id} has an unexpected size`)
+  }
+  if (descriptor.sha256) {
+    const digest = await crypto.subtle.digest('SHA-256', bytes)
+    const actual = [...new Uint8Array(digest)]
+      .map((value) => value.toString(16).padStart(2, '0'))
+      .join('')
+    if (actual !== descriptor.sha256) {
+      throw new Error(`Network day chunk ${descriptor.id} failed its integrity check`)
+    }
+  }
+  return JSON.parse(new TextDecoder().decode(bytes)) as NetworkDayChunk
+}
 
 interface ProgressiveNetworkDay {
   readonly manifest?: NetworkDayManifest
@@ -83,7 +104,10 @@ export function useProgressiveNetworkDay(
         if (!response.ok) {
           throw new Error(`Network day chunk returned ${response.status}`)
         }
-        return [candidate.id, await response.json()] as const
+        return [
+          candidate.id,
+          await verifiedNetworkDayChunk(response, candidate),
+        ] as const
       }),
     )
       .then((entries) => {

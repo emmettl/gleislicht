@@ -101,6 +101,14 @@ test('route 26 buses load progressively as a separate street study', async ({
   await expect(page.getByRole('option', { name: /26/ }).first()).toBeVisible()
   await search.press('Enter')
   await expect(page.locator('.london-status-card')).toContainText('26')
+  await expect(page.locator('.london-status-card')).toContainText('30 journeys')
+
+  const eveningChunkResponse = page.waitForResponse((response) =>
+    response.url().includes('all-change-bus-day-chunks/18-20.json'),
+  )
+  await page.locator('.london-transport input[type="range"]').fill('66600')
+  expect((await eveningChunkResponse).ok()).toBe(true)
+  await expect(page.locator('.london-status-card')).toContainText('36 journeys')
 
   await page.getByRole('button', { name: 'Morning study' }).click()
   await expect(experience).toHaveAttribute('data-study-window', 'morning')

@@ -33,7 +33,7 @@ npm run data:day -- \
   --focus 07:45
 ```
 
-This writes a compact `public/data/swiss-rail-day-manifest.json` containing the shared topology and eight three-hour movement files under `public/data/swiss-rail-day-chunks/`. The browser requests none of them during the initial morning view. Selecting **24H** loads the manifest and the current three-hour block first, then prefetches the neighbouring blocks for seamless playback. Trips crossing a boundary are present in both adjoining blocks. The renderer also uses a coarse time index so each animation frame considers only services near the current time.
+This writes a compact `public/data/swiss-rail-day-manifest.json` containing the shared topology and eight three-hour movement files under `public/data/swiss-rail-day-chunks/`. The browser requests none of them during the initial morning view. Selecting **24H** loads the manifest and the current three-hour block first, verifies its declared byte length and SHA-256 before adoption, then prefetches the neighbouring blocks for seamless playback. The same verified progressive loader is shared by edition day studies and optional timetable layers such as London's first bus corridor. Trips crossing a boundary are present in both adjoining blocks. The renderer also uses a coarse time index so each animation frame considers only services near the current time.
 
 The national GTFS does not include `shapes.txt`, so join both timetable artifacts to the Federal Office of Transport rail network after generation:
 

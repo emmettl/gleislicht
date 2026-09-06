@@ -32,7 +32,6 @@ import {
   positionForTrain,
   type NetworkRouteIndexEntry,
   type NetworkDayChunk,
-  type NetworkDayChunkDescriptor,
   type NetworkDayManifest,
   type NetworkSnapshot,
   type NetworkTrain,
@@ -93,7 +92,10 @@ import type {
 import type { TrainLabelMode } from '../scene/train-labels.ts'
 import { SERVICE_COLORS } from '../theme/visual-language.ts'
 import { useProgressiveAirDay } from '../use-progressive-air-day.ts'
-import { useProgressiveNetworkDay } from '../use-progressive-network-day.ts'
+import {
+  useProgressiveNetworkDay,
+  verifiedNetworkDayChunk,
+} from '../use-progressive-network-day.ts'
 import { useProgressiveRoadStudy } from '../use-progressive-road-study.ts'
 
 const NationalNetworkScene = lazy(() =>
@@ -193,26 +195,6 @@ function formatStudyDate(serviceDate?: string): string {
     year: 'numeric',
     timeZone: 'UTC',
   }).format(new Date(`${serviceDate}T12:00:00Z`))
-}
-
-async function verifiedDayChunk(
-  response: Response,
-  descriptor: NetworkDayChunkDescriptor,
-): Promise<NetworkDayChunk> {
-  const bytes = await response.arrayBuffer()
-  if (descriptor.bytes !== undefined && bytes.byteLength !== descriptor.bytes) {
-    throw new Error(`Day chunk ${descriptor.id} has an unexpected size`)
-  }
-  if (descriptor.sha256) {
-    const digest = await crypto.subtle.digest('SHA-256', bytes)
-    const actual = [...new Uint8Array(digest)]
-      .map((value) => value.toString(16).padStart(2, '0'))
-      .join('')
-    if (actual !== descriptor.sha256) {
-      throw new Error(`Day chunk ${descriptor.id} failed its integrity check`)
-    }
-  }
-  return JSON.parse(new TextDecoder().decode(bytes)) as NetworkDayChunk
 }
 
 function searchChoices(
@@ -471,7 +453,10 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
           signal: controller.signal,
         })
         if (!response.ok) throw new Error(`Day chunk returned ${response.status}`)
-        return [descriptor.id, await verifiedDayChunk(response, descriptor)] as const
+        return [
+          descriptor.id,
+          await verifiedNetworkDayChunk(response, descriptor),
+        ] as const
       }),
     )
       .then((entries) => {
@@ -608,6 +593,17 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
   const routes = useMemo(
     () => (network ? buildRouteIndex(network) : []),
     [network],
+  )
+  const displayedSelectedRoute = useMemo(
+    () =>
+      selectedRoute
+        ? (routes.find(
+            (route) =>
+              route.name === selectedRoute.name &&
+              route.category === selectedRoute.category,
+          ) ?? selectedRoute)
+        : undefined,
+    [routes, selectedRoute],
   )
   const activeTrainCount = useMemo(
     () =>
@@ -1105,8 +1101,8 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
 
   const selectedDescription = selectedStation
     ? `${selectedStation.routes.length} lines · ${selectedStation.trainIds.length} calls`
-    : selectedRoute
-      ? `${selectedRoute.trainIds.length} journeys · ${selectedRoute.stopIndexes.length} stops`
+    : displayedSelectedRoute
+      ? `${displayedSelectedRoute.trainIds.length} journeys · ${displayedSelectedRoute.stopIndexes.length} stops`
       : selectedTrain
         ? `${formatServiceTime(selectedTrain.start)}–${formatServiceTime(selectedTrain.end)} · ${selectedTrain.headsign}`
         : selectedAirIndexEntry
@@ -1176,7 +1172,7 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
               cameraCommand={cameraCommand}
               playbackRate={playbackRate}
               selectedCategory={selectedCategory}
-              selectedRoute={selectedRoute}
+              selectedRoute={displayedSelectedRoute}
               selectedStation={selectedStation}
               onSelectStation={selectStation}
               airSnapshot={airEnabled ? activeAirSnapshot : undefined}
@@ -1531,7 +1527,7 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
                 ? selectedAirport.name
                 : selectedAirTelemetry
                 ? `Heading ${Math.round(selectedAirTelemetry.headingDegrees).toString().padStart(3, '0')}°`
-                : selectedStation?.name ?? selectedRoute?.name ?? (selectedTrain ? `${selectedTrain.route} ${selectedTrain.shortName}` : airCategorySelected ? 'Observed London airspace' : studyWindow === 'day' ? '24-hour lattice' : 'Morning lattice')}
+                : selectedStation?.name ?? displayedSelectedRoute?.name ?? (selectedTrain ? `${selectedTrain.route} ${selectedTrain.shortName}` : airCategorySelected ? 'Observed London airspace' : studyWindow === 'day' ? '24-hour lattice' : 'Morning lattice')}
             </p>
             <small>
               {pulseHub
