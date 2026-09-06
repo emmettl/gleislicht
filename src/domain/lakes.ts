@@ -21,9 +21,3 @@ export interface MapWaterBodies {
   }
   readonly lakes: readonly MapWaterBody[]
 }
-
-/** @deprecated Use MapWaterBody for edition-neutral rendering. */
-export type SwissLake = MapWaterBody
-
-/** @deprecated Use MapWaterBodies for edition-neutral rendering. */
-export type SwissLakes = MapWaterBodies

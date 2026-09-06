@@ -14,6 +14,19 @@ import {
   stationSelectionPulseFrame,
 } from './map-camera.ts'
 
+const atlas = { homeDistanceScale: 1, minimumDistanceScale: 0.02 }
+const wideRegion = { homeDistanceScale: 0.24, minimumDistanceScale: 0.012 }
+const compactRegion = {
+  homeDistanceScale: 0.13,
+  minimumDistanceScale: 0.01,
+  portraitMinimumDistanceScale: 0.008,
+}
+const city = {
+  homeDistanceScale: 0.06,
+  minimumDistanceScale: 0.01,
+  portraitMinimumDistanceScale: 0.008,
+}
+
 describe('map camera zoom', () => {
   it('widens portrait framing without changing landscape framing', () => {
     expect(mapCameraFieldOfView(16 / 9)).toBe(44)
@@ -28,21 +41,19 @@ describe('map camera zoom', () => {
   })
 
   it('uses a closer home framing for the Zürich study', () => {
-    expect(homeMapDistanceScale('switzerland')).toBe(1)
-    expect(homeMapDistanceScale('london')).toBe(1)
-    expect(homeMapDistanceScale('zvv')).toBeCloseTo(0.24)
-    expect(homeMapDistanceScale('geneva')).toBeCloseTo(0.13)
-    expect(homeMapDistanceScale('zurich')).toBeCloseTo(0.06)
-    expect(homeMapDistanceScale('zurich')).toBeGreaterThan(MIN_MAP_DISTANCE_SCALE)
+    expect(homeMapDistanceScale(atlas)).toBe(1)
+    expect(homeMapDistanceScale(wideRegion)).toBeCloseTo(0.24)
+    expect(homeMapDistanceScale(compactRegion)).toBeCloseTo(0.13)
+    expect(homeMapDistanceScale(city)).toBeCloseTo(0.06)
+    expect(homeMapDistanceScale(city)).toBeGreaterThan(MIN_MAP_DISTANCE_SCALE)
   })
 
   it('allows a substantially tighter close zoom in portrait city studies', () => {
-    expect(minimumMapDistanceScale('switzerland', 390 / 844)).toBe(0.02)
-    expect(minimumMapDistanceScale('london', 390 / 844)).toBe(0.02)
-    expect(minimumMapDistanceScale('zvv', 390 / 844)).toBe(0.012)
-    expect(minimumMapDistanceScale('geneva', 390 / 844)).toBe(0.008)
-    expect(minimumMapDistanceScale('zurich', 390 / 844)).toBe(0.008)
-    expect(minimumMapDistanceScale('zurich', 16 / 9)).toBe(0.01)
+    expect(minimumMapDistanceScale(atlas, 390 / 844)).toBe(0.02)
+    expect(minimumMapDistanceScale(wideRegion, 390 / 844)).toBe(0.012)
+    expect(minimumMapDistanceScale(compactRegion, 390 / 844)).toBe(0.008)
+    expect(minimumMapDistanceScale(city, 390 / 844)).toBe(0.008)
+    expect(minimumMapDistanceScale(city, 16 / 9)).toBe(0.01)
 
     const closeCityZoom = applyMapZoom(0.011, 0.5, 0.008)
     expect(closeCityZoom).toBeGreaterThan(0.008)

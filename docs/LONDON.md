@@ -52,6 +52,8 @@ The transition should be theatrical but intelligible. Terrain flattens, the Tham
 
 The diagram layout should be generated offline and committed as a small deterministic artifact. An octilinear constraint solver may provide the first arrangement, but the finished result is an authored composition with explicit overrides for central interchanges, branches and the Thames. The compiler must verify that station order, branch membership, termini and interchange identity are identical in both layouts, while permitting only declared visual crossings.
 
+The first complete diagram artifact now provides that mechanical baseline. `npm run data:london:diagram` applies a deterministic topology relaxation, assigns all 503 source-identified stops to unique grid positions and emits 1,395 path-index-compatible horizontal, vertical or 45-degree routes. The resulting artifact is 61 KiB raw and 9.5 KiB compressed. Its source-network and authored-override hashes, stop coverage, identity uniqueness, path coverage and octilinear geometry are enforced by the London build gate. `fixtures/tfl/all-change-diagram-overrides.json` is the intentionally separate, initially empty visual-editing seam: future station grid positions and path bends can be curated there without modifying the solver, timetable artifact or runtime.
+
 The first prototype should cover the complete rail-led morning lattice rather than a single showcase line; the value of the transformation is seeing the entire city's physical irregularity resolve into logical structure. Acceptance criteria are:
 
 - no vehicle jump, route reassignment or clock discontinuity during the morph;
@@ -130,9 +132,13 @@ Sources:
 ### LDN 2 — Day, pulse and dual geometry
 
 - Add progressively loaded 24-hour chunks.
-- Compile an independent Beck-inspired diagram layout with stable interchange identities and route topology.
-- Animate continuously between **GEOGRAPHY** and **DIAGRAM** without resetting time, selection or camera context.
-- Freeze label acceptance during the morph and validate reduced-motion, touch and keyboard behaviour.
+- [x] Compile an independent Beck-inspired diagram baseline with stable stop identities, route-path indexes and octilinear geometry.
+- [x] Animate continuously between **GEOGRAPHY** and **DIAGRAM** without resetting time, selection or follow context; recede physical geography and move toward a top-down camera as the diagram resolves.
+- [x] Preserve the accepted station/train label set during the morph and provide an immediate reduced-motion path.
+- [x] Keep the diagram lazy, hash-bound to its network and below a 16 KiB compressed transfer ceiling.
+- Add an authored override layer for interchanges, branch spacing, crossings, label placement and a simplified Thames.
+- [x] Add `D` / `G` keyboard shortcuts for the layout switch without allowing them to escape from the search field.
+- [x] Include reduced-motion layout switching in the desktop and iPhone browser matrix.
 - Create hub studies for a small set of contrasting interchanges rather than simply ranking the largest stations.
 - Explore radial versus orbital pulse views and night-service transitions.
 

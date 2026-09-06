@@ -1,11 +1,11 @@
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { useEffect, useMemo, useRef } from 'react'
 import * as THREE from 'three'
+import type { CorridorSnapshot } from '../domain/corridor.ts'
 import {
-  vehicleKindForCorridor,
-  type CorridorSnapshot,
-  type CorridorVehicleKind,
-} from '../domain/corridor.ts'
+  vehicleKindForSwissCorridor,
+  type SwitzerlandCorridorVehicleKind,
+} from '../editions/switzerland-corridors.ts'
 
 interface GleislichtSceneProps {
   readonly corridor?: CorridorSnapshot
@@ -678,7 +678,7 @@ function PostBusVehicle() {
   )
 }
 
-function JourneyVehicle({ kind }: { readonly kind: CorridorVehicleKind }) {
+function JourneyVehicle({ kind }: { readonly kind: SwitzerlandCorridorVehicleKind }) {
   return kind === 'bus' ? <PostBusVehicle /> : <RailVehicle />
 }
 
@@ -695,7 +695,7 @@ function MovingWorld({
   const lastReport = useRef(0)
   const { camera } = useThree()
   const alpine = corridor?.id === 'kiental-griesalp'
-  const vehicleKind = vehicleKindForCorridor(corridor)
+  const vehicleKind = vehicleKindForSwissCorridor(corridor)
   const routeCurve = useMemo(() => routeCurveFor(corridor), [corridor])
   const rail = useMemo(
     () => makeRouteLine(routeCurve, alpine ? '#fff2b3' : '#b9ffff', 0.92),

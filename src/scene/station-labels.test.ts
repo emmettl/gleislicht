@@ -16,6 +16,15 @@ import {
   stableStationLabelBudget,
 } from './station-labels.ts'
 
+const atlas = { homeDistanceScale: 1, minimumDistanceScale: 0.02 }
+const zurichCity = {
+  homeDistanceScale: 0.06,
+  minimumDistanceScale: 0.01,
+  stationLabelHeightScale: 0.78,
+  stationLabelPrefix: 'Zürich',
+  stationLabelPrimaryName: 'Zürich HB',
+}
+
 const station = (
   name: string,
   calls: number,
@@ -74,8 +83,8 @@ describe('station labels', () => {
   })
 
   it('starts Zürich with a denser but still progressive label hierarchy', () => {
-    const homeHeight = stationLabelCameraHeight(37 * 0.06, 'zurich')
-    const closeHeight = stationLabelCameraHeight(37 * 0.022, 'zurich')
+    const homeHeight = stationLabelCameraHeight(37 * 0.06, zurichCity)
+    const closeHeight = stationLabelCameraHeight(37 * 0.022, zurichCity)
 
     expect(stationLabelBudget(homeHeight)).toBe(20)
     expect(stationLabelBudget(closeHeight)).toBe(96)
@@ -83,12 +92,12 @@ describe('station labels', () => {
   })
 
   it('removes redundant Zürich prefixes from local labels', () => {
-    expect(stationLabelText('Zürich, Bellevue', 'zurich')).toBe('Bellevue')
-    expect(stationLabelText('Zürich Altstetten, Bahnhof', 'zurich')).toBe(
+    expect(stationLabelText('Zürich, Bellevue', zurichCity)).toBe('Bellevue')
+    expect(stationLabelText('Zürich Altstetten, Bahnhof', zurichCity)).toBe(
       'Altstetten, Bahnhof',
     )
-    expect(stationLabelText('Zürich HB', 'zurich')).toBe('Zürich HB')
-    expect(stationLabelText('Zürich, Bellevue', 'switzerland')).toBe(
+    expect(stationLabelText('Zürich HB', zurichCity)).toBe('Zürich HB')
+    expect(stationLabelText('Zürich, Bellevue', atlas)).toBe(
       'Zürich, Bellevue',
     )
   })

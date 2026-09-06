@@ -147,8 +147,11 @@ See [docs/AUTO.md](./docs/AUTO.md) for the data contract, reconstruction and rec
 - [x] Define the first London study, source strategy and staged delivery plan.
 - [x] Establish Motion Studies as the catalogue identity: 005 Gleislicht / Switzerland and 006 All Change / London.
 - [x] Build the TfL adapter proof from a bounded weekday Bakerloo fixture with NaPTAN stops, route geometry and station intervals.
-- [ ] Compile the London morning lattice with Greater London and Thames geometry.
-- [ ] Add a dedicated London entry point once the fixture passes source and payload validation.
+- [x] Compile the London morning lattice with Greater London and Thames geometry.
+- [x] Add a dedicated London entry point once the fixture passes source and payload validation.
+- [x] Add an edition-neutral alternate-layout contract and a lazy, deterministic Beck-inspired diagram artifact.
+- [x] Animate continuously between London's geographic and diagram spaces without resetting journeys or selection.
+- [x] Enforce the future package/repository boundary in CI so shared runtime code remains place-neutral.
 - [ ] Add progressive 24-hour chunks and London-specific pulse studies.
 - [ ] Evaluate surface buses as separate borough or corridor studies.
 

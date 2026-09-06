@@ -1,4 +1,5 @@
 import { readFile } from 'node:fs/promises'
+import { createHash } from 'node:crypto'
 import { resolve } from 'node:path'
 import { gzipSync } from 'node:zlib'
 
@@ -12,6 +13,50 @@ const BUDGETS = {
   javaScript: 340 * 1024,
   css: 14 * 1024,
   total: 650 * 1024,
+  layoutRaw: 90 * 1024,
+  layoutGzip: 16 * 1024,
+}
+
+const networkBytes = await readFile(
+  resolve('fixtures/tfl/all-change-rail-led-morning.json'),
+)
+const network = JSON.parse(networkBytes.toString('utf8'))
+const layoutBytes = await readFile(resolve('fixtures/tfl/all-change-diagram.json'))
+const layout = JSON.parse(layoutBytes.toString('utf8'))
+const layoutRaw = layoutBytes.byteLength
+const layoutGzip = gzipSync(layoutBytes, { level: 9 }).byteLength
+const expectedNetworkHash = createHash('sha256').update(networkBytes).digest('hex')
+const overridesBytes = await readFile(
+  resolve('fixtures/tfl/all-change-diagram-overrides.json'),
+)
+const expectedOverridesHash = createHash('sha256')
+  .update(overridesBytes)
+  .digest('hex')
+if (layout.metadata?.sourceSha256 !== expectedNetworkHash) {
+  throw new Error('London diagram was not compiled from the current opening network')
+}
+if (layout.metadata?.overridesSha256 !== expectedOverridesHash) {
+  throw new Error('London diagram was not compiled with the current authored overrides')
+}
+if (layout.stops?.length !== network.stops.length) {
+  throw new Error('London diagram does not cover every opening-network stop')
+}
+if (new Set(layout.stops.map(([sourceId]) => sourceId)).size !== network.stops.length) {
+  throw new Error('London diagram stop identities are missing or duplicated')
+}
+if (layout.paths?.length !== network.paths.length) {
+  throw new Error('London diagram path indexes do not match the opening network')
+}
+for (const path of layout.paths) {
+  if (path.length < 2) throw new Error('London diagram contains an empty path')
+  for (let index = 1; index < path.length; index += 1) {
+    const deltaX = path[index][0] - path[index - 1][0]
+    const deltaY = path[index][1] - path[index - 1][1]
+    const diagonal = Math.abs(Math.abs(deltaX) - Math.abs(deltaY)) < 0.000001
+    if (deltaX !== 0 && deltaY !== 0 && !diagonal) {
+      throw new Error('London diagram contains a non-octilinear segment')
+    }
+  }
 }
 const SERVICE_CATEGORIES = new Set([
   'international',
@@ -61,6 +106,15 @@ if (fixtureFailures.length) {
     `London fixture budget exceeded: ${fixtureFailures
       .map(([name, size]) => `${name} ${kibibytes(size)}`)
       .join(', ')}`,
+  )
+}
+
+console.log('All Change lazy diagram budget:')
+console.log(`  raw        ${kibibytes(layoutRaw)} / ${kibibytes(BUDGETS.layoutRaw)}`)
+console.log(`  gzip       ${kibibytes(layoutGzip)} / ${kibibytes(BUDGETS.layoutGzip)}`)
+if (layoutRaw > BUDGETS.layoutRaw || layoutGzip > BUDGETS.layoutGzip) {
+  throw new Error(
+    `London diagram budget exceeded: raw ${kibibytes(layoutRaw)}, gzip ${kibibytes(layoutGzip)}`,
   )
 }
 

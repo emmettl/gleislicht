@@ -19,22 +19,6 @@ export interface JourneyPosition {
   readonly legProgress: number
 }
 
-export const prototypeJourney: Journey = {
-  id: 'IR-35-2367',
-  service: 'IR 35',
-  destination: 'Chur',
-  operator: 'SBB CFF FFS',
-  speedKmh: 112,
-  stops: [
-    { name: 'Zürich HB', progress: 0, departure: '21:42' },
-    { name: 'Thalwil', progress: 0.17, departure: '21:54' },
-    { name: 'Pfäffikon SZ', progress: 0.39, departure: '22:12' },
-    { name: 'Ziegelbrücke', progress: 0.64, departure: '22:34' },
-    { name: 'Sargans', progress: 0.82, departure: '22:51' },
-    { name: 'Chur', progress: 1, departure: '23:05' },
-  ],
-}
-
 export function positionOnJourney(
   journey: Journey,
   progress: number,
@@ -65,4 +49,3 @@ export function positionOnJourney(
     legProgress: legLength === 0 ? 1 : (clamped - previous.progress) / legLength,
   }
 }
-

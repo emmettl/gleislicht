@@ -10,6 +10,10 @@ const artifacts = [
     source: 'fixtures/tfl/all-change-geography.json',
     destination: 'public/data/all-change-geography.json',
   },
+  {
+    source: 'fixtures/tfl/all-change-diagram.json',
+    destination: 'public/data/all-change-diagram.json',
+  },
 ]
 
 for (const artifact of artifacts) {

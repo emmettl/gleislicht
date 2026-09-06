@@ -2,7 +2,6 @@ import { describe, expect, it } from 'vitest'
 import {
   callsAtHub,
   callsNearTime,
-  HUBS,
   nextHubCall,
   platformCodeForCall,
   platformTrackForCall,
@@ -10,6 +9,13 @@ import {
   stationMotionForCall,
 } from './hub.ts'
 import type { NetworkSnapshot } from './network.ts'
+
+const TEST_HUB = {
+  id: 'central',
+  name: 'Zürich HB',
+  displayName: 'Central',
+  character: 'test interchange',
+} as const
 
 const snapshot: NetworkSnapshot = {
   metadata: {
@@ -69,7 +75,7 @@ const snapshot: NetworkSnapshot = {
 
 describe('hub calls', () => {
   it('combines platform stop ids under one named station', () => {
-    const calls = callsAtHub(snapshot, HUBS[0])
+    const calls = callsAtHub(snapshot, TEST_HUB)
     expect(calls).toHaveLength(2)
     expect(calls[0]).toMatchObject({
       previousStop: [8, 47, 'Winterthur'],
@@ -78,7 +84,7 @@ describe('hub calls', () => {
   })
 
   it('selects the calls participating in the current pulse window', () => {
-    const calls = callsAtHub(snapshot, HUBS[0])
+    const calls = callsAtHub(snapshot, TEST_HUB)
     expect(callsNearTime(calls, 900, 5 * 60).map((call) => call.id)).toEqual([
       'one:1',
       'two:2',
@@ -88,21 +94,21 @@ describe('hub calls', () => {
   })
 
   it('orders real platform assignments naturally', () => {
-    const calls = callsAtHub(snapshot, HUBS[0])
+    const calls = callsAtHub(snapshot, TEST_HUB)
     expect(platformCodeForCall(calls[0])).toBe('7')
     expect(platformsForCalls(calls)).toEqual(['7', '31'])
   })
 
   it('groups platform sectors onto their physical track', () => {
     const call = {
-      ...callsAtHub(snapshot, HUBS[0])[0],
+      ...callsAtHub(snapshot, TEST_HUB)[0],
       hubStop: [8.5, 47.3, 'Zürich HB', '7A-D'],
     } as const
     expect(platformTrackForCall(call)).toBe('7')
   })
 
   it('moves a call through approach, dwell and departure phases', () => {
-    const call = callsAtHub(snapshot, HUBS[0])[0]
+    const call = callsAtHub(snapshot, TEST_HUB)[0]
     expect(stationMotionForCall(call, 300, 300)).toEqual({
       phase: 'approaching',
       progress: 0,

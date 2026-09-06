@@ -13,6 +13,3 @@ export interface MapBoundary {
   }
   readonly rings: readonly (readonly BoundaryCoordinate[])[]
 }
-
-/** @deprecated Use MapBoundary for edition-neutral rendering. */
-export type SwissBoundary = MapBoundary

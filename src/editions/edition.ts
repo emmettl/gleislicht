@@ -63,7 +63,7 @@ export interface MotionStudyEdition<
   readonly timezone: string
   readonly languageStorageKey: string
   readonly defaultNetworkTime: number
-  readonly defaultHubTime: number
+  readonly defaultHubTime?: number
   readonly theme: VisualTheme
   readonly data: DataCatalog
 }

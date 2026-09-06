@@ -4,41 +4,12 @@ import type {
   ServiceCategory,
 } from './network.ts'
 
-export type HubId = 'zurich' | 'bern' | 'basel' | 'geneva'
-
-export interface HubDefinition {
+export interface HubDefinition<HubId extends string = string> {
   readonly id: HubId
   readonly name: string
   readonly displayName: string
   readonly character: string
 }
-
-export const HUBS: readonly HubDefinition[] = [
-  {
-    id: 'zurich',
-    name: 'Zürich HB',
-    displayName: 'Zürich HB',
-    character: "Switzerland's busiest station",
-  },
-  {
-    id: 'bern',
-    name: 'Bern',
-    displayName: 'Bern',
-    character: 'the national interchange',
-  },
-  {
-    id: 'basel',
-    name: 'Basel SBB',
-    displayName: 'Basel SBB',
-    character: 'the tri-national gateway',
-  },
-  {
-    id: 'geneva',
-    name: 'Genève',
-    displayName: 'Genève',
-    character: 'the western gateway',
-  },
-]
 
 export interface HubCall {
   readonly id: string
@@ -56,7 +27,7 @@ export interface HubCall {
   readonly nextStop?: NetworkStop
 }
 
-export interface HubDaySnapshot {
+export interface HubDaySnapshot<HubId extends string = string> {
   readonly metadata: NetworkSnapshot['metadata']
   readonly hubs: Readonly<Record<HubId, readonly HubCall[]>>
 }

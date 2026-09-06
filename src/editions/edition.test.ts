@@ -58,9 +58,16 @@ describe('Motion Studies editions', () => {
     )
     expect(LONDON_EDITION.data.opening.layouts).toEqual([
       { id: 'geographic', label: 'Geography', kind: 'geographic' },
-      { id: 'diagram', label: 'Diagram', kind: 'topological' },
+      {
+        id: 'diagram',
+        label: 'Diagram',
+        kind: 'topological',
+        artifact: 'all-change-diagram.json',
+      },
     ])
-    expect(LONDON_EDITION.data.opening.layouts[1].artifact).toBeUndefined()
+    expect(LONDON_EDITION.data.opening.layouts[1].artifact).toBe(
+      'all-change-diagram.json',
+    )
   })
 
   it('exposes the complete shared transport visual language', () => {

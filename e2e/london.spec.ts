@@ -21,12 +21,13 @@ test('boots as a separate edition without loading Swiss network data', async ({
   })
   expect(resources.some((url) => url.includes('all-change-rail-led-morning.json'))).toBe(true)
   expect(resources.some((url) => url.includes('all-change-geography.json'))).toBe(true)
+  expect(resources.some((url) => url.includes('all-change-diagram.json'))).toBe(false)
   expect(resources.some((url) => url.includes('swiss-rail-morning.json'))).toBe(false)
 
   await expect(page.locator('.london-status-card')).toContainText('trains in motion')
   await expect(page.locator('.london-transport')).toContainText('06:45')
   await expect(page.locator('.london-transport')).toContainText('08:45')
-  await expect(page.getByRole('button', { name: /Diagram/ })).toBeDisabled()
+  await expect(page.getByRole('button', { name: /Diagram/ })).toBeEnabled()
 })
 
 test('station search selects and reveals a London interchange', async ({ page }) => {
@@ -40,4 +41,57 @@ test('station search selects and reveals a London interchange', async ({ page })
 
   await expect(page.locator('.london-status-card')).toContainText('Whitechapel')
   await expect(search).toHaveValue('Whitechapel')
+})
+
+test('diagram geometry loads lazily and preserves the current station', async ({
+  page,
+}) => {
+  const search = page.getByRole('searchbox', {
+    name: 'Find a London station, line or service',
+  })
+  await search.fill('Whitechapel')
+  await expect(page.getByRole('option', { name: /Whitechapel/ }).first()).toBeVisible()
+  await search.press('Enter')
+
+  const diagramResponse = page.waitForResponse((response) =>
+    response.url().includes('all-change-diagram.json'),
+  )
+  await page.getByRole('button', { name: /Diagram/ }).click()
+  expect((await diagramResponse).ok()).toBe(true)
+
+  const experience = page.locator('.london-experience')
+  await expect(experience).toHaveAttribute('data-spatial-layout', 'diagram')
+  await expect(experience).toHaveAttribute('data-layout-mix', '1.000', {
+    timeout: 5_000,
+  })
+  await expect(page.locator('.london-status-card')).toContainText('Whitechapel')
+
+  await page.getByRole('button', { name: /Geography/ }).click()
+  await expect(experience).toHaveAttribute('data-layout-mix', '0.000', {
+    timeout: 5_000,
+  })
+  await expect(page.locator('.london-status-card')).toContainText('Whitechapel')
+
+  await page.keyboard.press('d')
+  await expect(experience).toHaveAttribute('data-layout-mix', '1.000', {
+    timeout: 5_000,
+  })
+  await page.keyboard.press('g')
+  await expect(experience).toHaveAttribute('data-layout-mix', '0.000', {
+    timeout: 5_000,
+  })
+})
+
+test('reduced motion changes spatial layout without a sweep', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' })
+  const diagramResponse = page.waitForResponse((response) =>
+    response.url().includes('all-change-diagram.json'),
+  )
+  await page.getByRole('button', { name: /Diagram/ }).click()
+  expect((await diagramResponse).ok()).toBe(true)
+  await expect(page.locator('.london-experience')).toHaveAttribute(
+    'data-layout-mix',
+    '1.000',
+    { timeout: 1_000 },
+  )
 })

@@ -6,6 +6,7 @@ import type {
   MapBoundary,
 } from '../domain/boundary.ts'
 import type { MapWaterBodies } from '../domain/lakes.ts'
+import type { SpatialLayoutSnapshot } from '../domain/spatial-layout.ts'
 import type {
   RoadTopologySnapshot,
   RoadTrafficSnapshot,
@@ -65,6 +66,7 @@ import {
 } from './vehicle-trails.ts'
 import {
   applyMapZoom,
+  ATLAS_MAP_FRAMING,
   homeMapDistanceScale,
   mapCameraDampingRate,
   mapCameraFieldOfView,
@@ -96,6 +98,10 @@ import {
 import { AirTrafficLayer } from './AirTrafficLayer.tsx'
 import { projectAirPosition } from './air-projection.ts'
 import { RoadTrafficLayer } from './RoadTrafficLayer.tsx'
+import {
+  blendProjectedSpatialLayout,
+  projectSpatialLayout,
+} from './spatial-layout.ts'
 
 export type MapCameraAction =
   | 'zoom-in'
@@ -139,6 +145,9 @@ interface NationalNetworkSceneProps {
   readonly selectedRoadId?: string
   readonly selectedAirTrack?: AirTrack
   readonly onSelectAirTrack?: (trackId: string) => void
+  readonly spatialLayout?: SpatialLayoutSnapshot
+  readonly spatialLayoutMix?: number
+  readonly layoutTransitioning?: boolean
 }
 
 type ProjectedStop = readonly [x: number, y: number, z: number]
@@ -325,10 +334,12 @@ function LakeLayer({
   lakes,
   projection,
   subdued,
+  opacityScale = 1,
 }: {
   readonly lakes: MapWaterBodies
   readonly projection: NetworkProjection
   readonly subdued: boolean
+  readonly opacityScale?: number
 }) {
   const geometry = useMemo(() => {
     const shapes: THREE.Shape[] = []
@@ -393,7 +404,7 @@ function LakeLayer({
         <meshBasicMaterial
           color="#08233b"
           transparent
-          opacity={subdued ? 0.42 : 0.9}
+          opacity={(subdued ? 0.42 : 0.9) * opacityScale}
           depthWrite={false}
           side={THREE.DoubleSide}
           fog={false}
@@ -403,7 +414,7 @@ function LakeLayer({
         <meshBasicMaterial
           color="#20a9cb"
           transparent
-          opacity={subdued ? 0.035 : 0.13}
+          opacity={(subdued ? 0.035 : 0.13) * opacityScale}
           blending={THREE.AdditiveBlending}
           depthWrite={false}
           side={THREE.DoubleSide}
@@ -419,7 +430,7 @@ function LakeLayer({
         <lineBasicMaterial
           color="#54dff7"
           transparent
-          opacity={subdued ? 0.06 : 0.31}
+          opacity={(subdued ? 0.06 : 0.31) * opacityScale}
           blending={THREE.AdditiveBlending}
           depthWrite={false}
           toneMapped={false}
@@ -434,10 +445,12 @@ function CountryBorder({
   boundary,
   projection,
   subdued,
+  opacityScale = 1,
 }: {
   readonly boundary: MapBoundary
   readonly projection: NetworkProjection
   readonly subdued: boolean
+  readonly opacityScale?: number
 }) {
   const tubes = useMemo(() => {
     return boundary.rings.flatMap((ring, index) => {
@@ -480,7 +493,7 @@ function CountryBorder({
             <meshBasicMaterial
               color="#56e9ff"
               transparent
-              opacity={subdued ? 0.018 : 0.12}
+              opacity={(subdued ? 0.018 : 0.12) * opacityScale}
               blending={THREE.AdditiveBlending}
               depthWrite={false}
               toneMapped={false}
@@ -491,7 +504,7 @@ function CountryBorder({
             <meshBasicMaterial
               color="#b9fbff"
               transparent
-              opacity={subdued ? 0.13 : 0.84}
+              opacity={(subdued ? 0.13 : 0.84) * opacityScale}
               blending={THREE.AdditiveBlending}
               depthWrite={false}
               toneMapped={false}
@@ -1289,6 +1302,7 @@ function StationLabels({
   selectedStation,
   selectedTrain,
   cameraFraming,
+  layoutTransitioning = false,
 }: {
   readonly stations: readonly StationIndexEntry[]
   readonly snapshot: NetworkSnapshot
@@ -1297,6 +1311,7 @@ function StationLabels({
   readonly selectedStation?: StationIndexEntry
   readonly selectedTrain?: NetworkTrain
   readonly cameraFraming: MapCameraFraming
+  readonly layoutTransitioning?: boolean
 }) {
   const { camera, size } = useThree()
   const sprites = useRef<Array<THREE.Sprite | null>>([])
@@ -1398,6 +1413,7 @@ function StationLabels({
     labels.forEach((label, index) => {
       const retained = retainedStationNames.current.has(label.station.name)
       if ((selectedTrain || selectedRoute) && !label.emphasised) return
+      if (layoutTransitioning && !label.emphasised && !retained) return
       if (!label.emphasised && !retained && !canRepopulate) return
       if (
         !label.emphasised &&
@@ -1508,7 +1524,9 @@ function StationLabels({
       visible += 1
     }
 
-    retainedStationNames.current = nextRetainedStationNames
+    if (!layoutTransitioning) {
+      retainedStationNames.current = nextRetainedStationNames
+    }
 
     if (textures.current.size > 192) {
       for (const [name, entry] of textures.current) {
@@ -1620,6 +1638,7 @@ function TrainLabels({
   playbackRate,
   trainTimeIndex,
   cameraFraming,
+  layoutTransitioning = false,
 }: NationalNetworkSceneProps & {
   readonly projectedStops: readonly ProjectedStop[]
   readonly projectedPaths: readonly ProjectedNetworkPath[]
@@ -1697,7 +1716,9 @@ function TrainLabels({
 
     for (const train of trainsNearTime(trainTimeIndex, localTime.current)) {
       const selected = train.id === selectedTrain?.id
+      const retained = retainedTrainIds.current.has(train.id)
       if (selectedTrain && !selected) continue
+      if (layoutTransitioning && !selected && !retained) continue
       if (selectedRoute && !selectedRouteTrainIds.has(train.id)) continue
       if (!selected && selectedStation && !selectedStationTrainIds.has(train.id)) continue
       if (!selected && selectedCategory && train.category !== selectedCategory) continue
@@ -1758,7 +1779,7 @@ function TrainLabels({
         y: (-projected.y * 0.5 + 0.5) * size.height,
         depth: Math.max(0.01, -viewPosition.z),
         selected,
-        retained: retainedTrainIds.current.has(train.id),
+        retained,
         arrivalOpacity,
       })
     }
@@ -1847,7 +1868,9 @@ function TrainLabels({
       visible += 1
     }
 
-    retainedTrainIds.current = nextRetainedTrainIds
+    if (!layoutTransitioning) {
+      retainedTrainIds.current = nextRetainedTrainIds
+    }
 
     if (textures.current.size > 180) {
       for (const [key, entry] of textures.current) {
@@ -2776,6 +2799,7 @@ function NetworkCamera({
   mapFocus,
   selectedAirTrack,
   airProjection,
+  spatialLayoutMix = 0,
 }: {
   readonly selectedTrain?: NetworkTrain
   readonly time: number
@@ -2789,6 +2813,7 @@ function NetworkCamera({
   readonly mapFocus: THREE.Vector3
   readonly selectedAirTrack?: AirTrack
   readonly airProjection: NetworkProjection
+  readonly spatialLayoutMix?: number
 }) {
   const { camera, gl, size } = useThree()
   const lakeAvoidingPaths = useContext(LakeAvoidingPathsContext)
@@ -2974,9 +2999,14 @@ function NetworkCamera({
     const airPosition = airState
       ? projectAirPosition(airState, airProjection)
       : undefined
+    const diagramMix = THREE.MathUtils.clamp(spatialLayoutMix, 0, 1)
     if (trainPosition) {
       desiredTarget.set(trainPosition[0], 0, trainPosition[2])
-      desiredPosition.set(trainPosition[0] + 4.2, 4.8, trainPosition[2] + 6.5)
+      desiredPosition.set(
+        trainPosition[0] + THREE.MathUtils.lerp(4.2, 0.6, diagramMix),
+        THREE.MathUtils.lerp(4.8, 12, diagramMix),
+        trainPosition[2] + THREE.MathUtils.lerp(6.5, 0.8, diagramMix),
+      )
     } else if (airPosition && airState) {
       const heading = THREE.MathUtils.degToRad(airState.headingDegrees)
       const forwardX = Math.sin(heading)
@@ -2991,8 +3021,9 @@ function NetworkCamera({
       desiredTarget.copy(mapTarget.current)
       desiredPosition.set(
         mapTarget.current.x,
-        37 * distanceScale.current,
-        mapTarget.current.z + 26 * distanceScale.current,
+        THREE.MathUtils.lerp(37, 43, diagramMix) * distanceScale.current,
+        mapTarget.current.z +
+          THREE.MathUtils.lerp(26, 1.2, diagramMix) * distanceScale.current,
       )
     }
 
@@ -3019,14 +3050,43 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
     () => createNetworkProjection(props.referenceSnapshot),
     [props.referenceSnapshot],
   )
-  const projectedStops = useMemo(
+  const geographicStops = useMemo(
     () => projectStops(props.snapshot, projection),
     [projection, props.snapshot],
   )
-  const projectedPaths = useMemo(
+  const geographicPaths = useMemo(
     () => projectPaths(props.snapshot, projection),
     [projection, props.snapshot],
   )
+  const alternateLayout = useMemo(
+    () =>
+      props.spatialLayout
+        ? projectSpatialLayout(
+            props.snapshot,
+            props.spatialLayout,
+            geographicStops,
+            geographicPaths,
+          )
+        : undefined,
+    [geographicPaths, geographicStops, props.snapshot, props.spatialLayout],
+  )
+  const projectedLayout = useMemo(
+    () =>
+      blendProjectedSpatialLayout(
+        geographicStops,
+        geographicPaths,
+        alternateLayout,
+        props.spatialLayoutMix ?? 0,
+      ),
+    [
+      alternateLayout,
+      geographicPaths,
+      geographicStops,
+      props.spatialLayoutMix,
+    ],
+  )
+  const projectedStops = projectedLayout.stops
+  const projectedPaths = projectedLayout.paths
   const contextProjectedStops = useMemo(
     () =>
       props.contextSnapshot
@@ -3058,18 +3118,21 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
     [projection, props.lakes],
   )
   const lakeAvoidingPaths = useMemo(
-    () =>
-      createLakeAvoidingPathMap(
+    () => {
+      if ((props.spatialLayoutMix ?? 0) > 0) return EMPTY_LAKE_AVOIDING_PATHS
+      return createLakeAvoidingPathMap(
         props.snapshot.edges,
         props.snapshot.edgePaths,
         projectedStops,
         projectedLakeRings,
-      ),
+      )
+    },
     [
       projectedLakeRings,
       projectedStops,
       props.snapshot.edgePaths,
       props.snapshot.edges,
+      props.spatialLayoutMix,
     ],
   )
   const mapFocus = useMemo(() => {
@@ -3102,6 +3165,7 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
         <LakeLayer
           lakes={props.lakes}
           projection={projection}
+          opacityScale={1 - (props.spatialLayoutMix ?? 0)}
           subdued={Boolean(
             props.selectedTrain ||
               props.selectedRoute ||
@@ -3117,6 +3181,7 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
         <CountryBorder
           boundary={props.boundary}
           projection={projection}
+          opacityScale={1 - (props.spatialLayoutMix ?? 0)}
           subdued={Boolean(
             props.selectedTrain ||
               props.selectedRoute ||
@@ -3134,7 +3199,7 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
           snapshot={props.contextSnapshot}
           projectedStops={contextProjectedStops}
           projectedPaths={contextProjectedPaths}
-          cameraFraming="switzerland"
+          cameraFraming={ATLAS_MAP_FRAMING}
           subdued
           lakeAvoidingPaths={EMPTY_LAKE_AVOIDING_PATHS}
           showTraffic={false}
@@ -3252,6 +3317,7 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
         selectedStation={props.selectedStation}
         selectedTrain={props.selectedTrain}
         cameraFraming={props.cameraFraming}
+        layoutTransitioning={props.layoutTransitioning}
       />
       <StationTapTarget
         stations={props.stations}
@@ -3272,6 +3338,7 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
         mapFocus={mapFocus}
         selectedAirTrack={props.selectedAirTrack}
         airProjection={projection}
+        spatialLayoutMix={props.spatialLayoutMix}
       />
     </LakeAvoidingPathsContext.Provider>
   )

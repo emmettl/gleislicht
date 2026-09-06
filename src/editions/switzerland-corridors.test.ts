@@ -1,12 +1,12 @@
 import { describe, expect, it } from 'vitest'
+import type { CorridorSnapshot } from '../domain/corridor.ts'
+import type { NetworkSnapshot, NetworkTrain } from '../domain/network.ts'
 import {
-  corridorProgressForTime,
   isZurichChurTrain,
-  journeyForCorridor,
-  vehicleKindForCorridor,
-  type CorridorSnapshot,
-} from './corridor.ts'
-import type { NetworkSnapshot, NetworkTrain } from './network.ts'
+  journeyForSwissCorridor,
+  swissCorridorProgressForTime,
+  vehicleKindForSwissCorridor,
+} from './switzerland-corridors.ts'
 
 const train: NetworkTrain = {
   id: 'ic3',
@@ -40,10 +40,10 @@ const corridor = {
   },
 } as unknown as CorridorSnapshot
 
-describe('terrain corridor journey', () => {
+describe('Swiss terrain corridor journey', () => {
   it('assigns distinct vehicles to rail and PostBus corridors', () => {
-    expect(vehicleKindForCorridor(corridor)).toBe('train')
-    expect(vehicleKindForCorridor({ id: 'kiental-griesalp' })).toBe('bus')
+    expect(vehicleKindForSwissCorridor(corridor)).toBe('train')
+    expect(vehicleKindForSwissCorridor({ id: 'kiental-griesalp' })).toBe('bus')
   })
 
   it('recognises only Zürich-to-Chur services in travel order', () => {
@@ -54,14 +54,14 @@ describe('terrain corridor journey', () => {
   })
 
   it('adapts the corridor card to the selected service', () => {
-    const journey = journeyForCorridor(corridor, train, network)
+    const journey = journeyForSwissCorridor(corridor, train, network)
     expect(journey.service).toBe('IC3')
     expect(journey.stops[1]).toMatchObject({ name: 'Sargans', progress: 0.78 })
     expect(journey.speedKmh).toBe(116)
   })
 
   it('starts the descent near the selected timetable moment', () => {
-    expect(corridorProgressForTime(train, network, 1900)).toBeCloseTo(0.5)
-    expect(corridorProgressForTime(train, network, 0)).toBe(0.015)
+    expect(swissCorridorProgressForTime(train, network, 1900)).toBeCloseTo(0.5)
+    expect(swissCorridorProgressForTime(train, network, 0)).toBe(0.015)
   })
 })

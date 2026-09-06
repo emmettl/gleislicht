@@ -33,7 +33,7 @@ An edition must provide:
 
 The engine deliberately does not fetch GTFS, proprietary APIs or GIS services at runtime. Each adapter resolves licensing, identifiers, geometry and service-day semantics offline, then emits the existing edition-neutral snapshot contracts.
 
-Alternate layouts are edition data, not alternate networks. Playback owns one canonical service progress and samples each layout independently before blending positions. This lets an authored work move between geographic and topological space without duplicating journeys or losing time, search, selection and follow-camera state. Layout artifacts stay lazy and optional so editions without a meaningful second spatial language pay no transfer or runtime cost.
+Alternate layouts are edition data, not alternate networks. `src/domain/spatial-layout.ts` defines their stable identity contract and `src/scene/spatial-layout.ts` projects and blends them through the shared renderer. Playback owns one canonical service progress and samples each layout independently before blending positions. This lets an authored work move between geographic and topological space without duplicating journeys or losing time, search, selection and follow-camera state. Layout artifacts stay lazy and optional so editions without a meaningful second spatial language pay no transfer or runtime cost.
 
 ## Creating an edition
 
@@ -44,3 +44,5 @@ Alternate layouts are edition data, not alternate networks. Playback owns one ca
 5. Add local modes and authored studies where they reveal something distinctive about the place.
 
 This is configuration-driven reuse, not a generic map skin. Every work should have a reason to exist, a name rooted in its place, and at least one visual study that could only belong there.
+
+The concrete repository/package split is recorded in [the extraction seam](./EXTRACTION.md). Its import direction is enforced in CI before any npm organisation or additional repository is created.

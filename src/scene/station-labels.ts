@@ -117,17 +117,18 @@ export function stationLabelCameraHeight(
   framing: MapCameraFraming,
 ): number {
   const relativeHeight = cameraHeight / homeMapDistanceScale(framing)
-  return framing === 'zurich' ? relativeHeight * 0.78 : relativeHeight
+  return relativeHeight * (framing.stationLabelHeightScale ?? 1)
 }
 
 export function stationLabelText(
   name: string,
   framing: MapCameraFraming,
 ): string {
-  if (framing !== 'zurich' || name === 'Zürich HB') return name
-  if (name.startsWith('Zürich, ')) return name.slice('Zürich, '.length)
-  if (name.startsWith('Zürich ') && name.includes(',')) {
-    return name.slice('Zürich '.length)
+  const prefix = framing.stationLabelPrefix
+  if (!prefix || name === framing.stationLabelPrimaryName) return name
+  if (name.startsWith(`${prefix}, `)) return name.slice(`${prefix}, `.length)
+  if (name.startsWith(`${prefix} `) && name.includes(',')) {
+    return name.slice(`${prefix} `.length)
   }
   return name
 }

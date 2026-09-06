@@ -25,21 +25,20 @@ import {
 import {
   callsAtHub,
   callsNearTime,
-  HUBS,
   nextHubCall,
   platformCodeForCall,
   platformsForCalls,
   type HubDaySnapshot,
-  type HubId,
 } from './domain/hub.ts'
+import type { CorridorSnapshot } from './domain/corridor.ts'
+import { positionOnJourney } from './domain/journey.ts'
 import {
-  corridorProgressForTime,
   isKientalGriesalpTrain,
   isZurichChurTrain,
-  journeyForCorridor,
-  type CorridorSnapshot,
-} from './domain/corridor.ts'
-import { positionOnJourney, prototypeJourney } from './domain/journey.ts'
+  journeyForSwissCorridor,
+  SWITZERLAND_PROTOTYPE_JOURNEY,
+  swissCorridorProgressForTime,
+} from './editions/switzerland-corridors.ts'
 import {
   adjacentDayChunks,
   dayChunkForTime,
@@ -62,8 +61,13 @@ import { editionDataUrl } from './editions/edition.ts'
 import { motionStudyMark } from './editions/catalogue.ts'
 import type {
   SwitzerlandEdition,
+  SwitzerlandHubId as HubId,
   SwitzerlandNetworkStudy as NetworkStudy,
   SwitzerlandTerrainCorridorId as TerrainCorridorId,
+} from './editions/switzerland.ts'
+import {
+  SWITZERLAND_HUBS as HUBS,
+  SWITZERLAND_MAP_FRAMINGS as MAP_FRAMINGS,
 } from './editions/switzerland.ts'
 import {
   SERVICE_CATEGORIES,
@@ -100,7 +104,7 @@ import type {
   MapCameraCommand,
 } from './scene/NationalNetworkScene.tsx'
 import type { TrainLabelMode } from './scene/train-labels.ts'
-import type { JourneyEnvironment } from './scene/GleislichtScene.tsx'
+import type { JourneyEnvironment } from './studies/GleislichtJourneyScene.tsx'
 import {
   nextSearchResultIndex,
   type SearchNavigationKey,
@@ -112,7 +116,7 @@ import { useProgressiveRoadStudy } from './use-progressive-road-study.ts'
 import { useLocalPerformance } from './use-local-performance.ts'
 
 const GleislichtScene = lazy(() =>
-  import('./scene/GleislichtScene.tsx').then(({ GleislichtScene: Scene }) => ({
+  import('./studies/GleislichtJourneyScene.tsx').then(({ GleislichtScene: Scene }) => ({
     default: Scene,
   })),
 )
@@ -519,8 +523,8 @@ export function App({ edition }: AppProps) {
   const activeJourney = useMemo(
     () =>
       corridor
-        ? journeyForCorridor(corridor, selectedTrain, network)
-        : prototypeJourney,
+        ? journeyForSwissCorridor(corridor, selectedTrain, network)
+        : SWITZERLAND_PROTOTYPE_JOURNEY,
     [corridor, network, selectedTrain],
   )
   const journeyPosition = useMemo(
@@ -931,7 +935,7 @@ export function App({ edition }: AppProps) {
       ? 'kiental-griesalp'
       : 'zurich-chur'
     openTerrainCorridor(nextCorridorId, nextCorridorId === 'zurich-chur'
-      ? corridorProgressForTime(selectedTrain, network, networkTime)
+      ? swissCorridorProgressForTime(selectedTrain, network, networkTime)
       : 0.015)
   }, [corridorTrainSelected, network, networkTime, openTerrainCorridor, selectedTrain])
 
@@ -1624,7 +1628,7 @@ export function App({ edition }: AppProps) {
                   cameraCommand={mapCameraCommand}
                   playbackRate={playbackRate}
                   selectedCategory={selectedCategory}
-                  cameraFraming="switzerland"
+                  cameraFraming={MAP_FRAMINGS.national}
                 />
               ) : (
                 <div className="contrast-loader" />
@@ -1652,7 +1656,7 @@ export function App({ edition }: AppProps) {
                   cameraCommand={mapCameraCommand}
                   playbackRate={playbackRate}
                   selectedCategory={selectedCategory}
-                  cameraFraming="switzerland"
+                  cameraFraming={MAP_FRAMINGS.national}
                 />
               ) : (
                 <div className="contrast-loader" />
@@ -1725,12 +1729,12 @@ export function App({ edition }: AppProps) {
             onSelectAirTrack={selectAirTrack}
             cameraFraming={
               networkStudy === 'zurich-city' && zurichCityNetwork
-                ? 'zurich'
+                ? MAP_FRAMINGS.zurich
                 : networkStudy === 'zvv-region' && zvvRegionNetwork
-                  ? 'zvv'
+                  ? MAP_FRAMINGS.zvv
                   : networkStudy === 'geneva-tpg' && genevaTpgNetwork
-                    ? 'geneva'
-                    : 'switzerland'
+                    ? MAP_FRAMINGS.geneva
+                    : MAP_FRAMINGS.national
             }
           />
         ) : isHub && network && hubStudy === 'station' ? (

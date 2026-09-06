@@ -110,6 +110,21 @@
   font-size: 0.48rem;
 }
 
+.london-layout-switch button[aria-busy='true'] {
+  color: var(--cyan);
+}
+
+.london-layout-status {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  width: max-content;
+  color: var(--pink);
+  font: 500 0.55rem/1.2 'DM Mono', ui-monospace, monospace;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
 .london-search.train-search {
   top: clamp(124px, 17vh, 158px);
   width: min(570px, calc(100vw - 48px));

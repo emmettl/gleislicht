@@ -20,6 +20,10 @@ import {
   type ServiceCategory,
   type StationIndexEntry,
 } from '../domain/network.ts'
+import {
+  spatialLayoutCoverage,
+  type SpatialLayoutSnapshot,
+} from '../domain/spatial-layout.ts'
 import { editionDataUrl, type SpatialLayoutId } from '../editions/edition.ts'
 import {
   londonBoundary,
@@ -54,6 +58,9 @@ const LABEL_MODES: Readonly<Record<TrainLabelMode, TrainLabelMode>> = {
   on: 'off',
   off: 'auto',
 }
+
+const LAYOUT_TRANSITION_DURATION_MS = 1_300
+const LAYOUT_TRANSITION_STEPS = 24
 
 const LONDON_CATEGORIES: readonly {
   id: ServiceCategory
@@ -151,8 +158,16 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
   const [searchOpen, setSearchOpen] = useState(false)
   const [activeSearchIndex, setActiveSearchIndex] = useState(0)
   const [layout, setLayout] = useState<SpatialLayoutId>('geographic')
+  const [spatialLayout, setSpatialLayout] = useState<SpatialLayoutSnapshot>()
+  const [layoutLoading, setLayoutLoading] = useState(false)
+  const [layoutError, setLayoutError] = useState(false)
+  const [layoutMix, setLayoutMix] = useState(0)
+  const [layoutTransitioning, setLayoutTransitioning] = useState(false)
   const [cameraCommand, setCameraCommand] = useState<MapCameraCommand>()
   const cameraCommandId = useRef(0)
+  const layoutMixRef = useRef(0)
+  const layoutFrameRef = useRef(0)
+  const desiredLayoutRef = useRef<SpatialLayoutId>('geographic')
   const webglAvailable = useMemo(() => supportsWebGL(), [])
 
   useEffect(() => {
@@ -183,6 +198,62 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
       })
     return () => controller.abort()
   }, [edition.data.opening.geography, edition.data.opening.network])
+
+  const animateLayout = useCallback((target: number) => {
+    cancelAnimationFrame(layoutFrameRef.current)
+    const startMix = layoutMixRef.current
+    if (target === startMix) {
+      setLayoutTransitioning(false)
+      return
+    }
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      layoutMixRef.current = target
+      setLayoutMix(target)
+      setLayoutTransitioning(false)
+      if (selectedStation) {
+        cameraCommandId.current += 1
+        setCameraCommand({
+          id: cameraCommandId.current,
+          action: 'reveal-station',
+        })
+      }
+      return
+    }
+
+    const startedAt = performance.now()
+    setLayoutTransitioning(true)
+    const animate = (now: number) => {
+      const linear = Math.min(1, (now - startedAt) / LAYOUT_TRANSITION_DURATION_MS)
+      const eased = linear * linear * (3 - 2 * linear)
+      const stepped =
+        Math.round(eased * LAYOUT_TRANSITION_STEPS) / LAYOUT_TRANSITION_STEPS
+      const next = startMix + (target - startMix) * stepped
+      if (next !== layoutMixRef.current) {
+        layoutMixRef.current = next
+        setLayoutMix(next)
+      }
+      if (linear < 1) {
+        layoutFrameRef.current = requestAnimationFrame(animate)
+      } else {
+        layoutMixRef.current = target
+        setLayoutMix(target)
+        setLayoutTransitioning(false)
+        if (selectedStation) {
+          cameraCommandId.current += 1
+          setCameraCommand({
+            id: cameraCommandId.current,
+            action: 'reveal-station',
+          })
+        }
+      }
+    }
+    layoutFrameRef.current = requestAnimationFrame(animate)
+  }, [selectedStation])
+
+  useEffect(
+    () => () => cancelAnimationFrame(layoutFrameRef.current),
+    [],
+  )
 
   const stations = useMemo(
     () => (network ? buildStationIndex(network) : []),
@@ -232,6 +303,51 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
     },
     [],
   )
+
+  const loadLayout = useCallback(async (artifact: string) => {
+    setLayoutLoading(true)
+    setLayoutError(false)
+    try {
+      const response = await fetch(editionDataUrl(artifact))
+      if (!response.ok) throw new Error(`Layout returned ${response.status}`)
+      const nextLayout = (await response.json()) as SpatialLayoutSnapshot
+      if (!network) throw new Error('Opening network is not ready')
+      const coverage = spatialLayoutCoverage(network, nextLayout)
+      if (
+        coverage.matchedStops !== coverage.totalStops ||
+        coverage.matchedPaths !== coverage.totalPaths
+      ) {
+        throw new Error(
+          `Diagram coverage ${coverage.matchedStops}/${coverage.totalStops} stops, ${coverage.matchedPaths}/${coverage.totalPaths} paths`,
+        )
+      }
+      setSpatialLayout(nextLayout)
+      if (desiredLayoutRef.current === 'diagram') animateLayout(1)
+    } catch (error: unknown) {
+      console.error('Unable to load the All Change diagram', error)
+      setLayoutError(true)
+      desiredLayoutRef.current = 'geographic'
+      setLayout('geographic')
+      animateLayout(0)
+    } finally {
+      setLayoutLoading(false)
+    }
+  }, [animateLayout, network])
+
+  const activateLayout = useCallback((
+    nextLayout: SpatialLayoutId,
+    artifact?: string,
+  ) => {
+    desiredLayoutRef.current = nextLayout
+    setLayout(nextLayout)
+    if (nextLayout === 'geographic') {
+      animateLayout(0)
+    } else if (spatialLayout) {
+      animateLayout(1)
+    } else if (artifact && !layoutLoading) {
+      void loadLayout(artifact)
+    }
+  }, [animateLayout, layoutLoading, loadLayout, spatialLayout])
 
   const clearSelection = useCallback(() => {
     setSelectedCategory(undefined)
@@ -307,13 +423,23 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
         setIsPlaying((value) => !value)
       } else if (event.key.toLowerCase() === 'l') {
         setTrainLabelMode((value) => LABEL_MODES[value])
+      } else if (event.key.toLowerCase() === 'd') {
+        const diagram = edition.data.opening.layouts.find(
+          (option) => option.id === 'diagram',
+        )
+        activateLayout(
+          'diagram',
+          diagram && 'artifact' in diagram ? diagram.artifact : undefined,
+        )
+      } else if (event.key.toLowerCase() === 'g') {
+        activateLayout('geographic')
       } else if (event.key === 'Escape') {
         clearSelection()
       }
     }
     window.addEventListener('keydown', onKeyDown)
     return () => window.removeEventListener('keydown', onKeyDown)
-  }, [clearSelection])
+  }, [activateLayout, clearSelection, edition.data.opening.layouts])
 
   const selectedDescription = selectedStation
     ? `${selectedStation.routes.length} lines · ${selectedStation.trainIds.length} calls`
@@ -326,6 +452,9 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
   return (
     <main
       className={`experience view-network london-experience${selectedStation || selectedRoute || selectedTrain || selectedCategory ? ' has-selection' : ''}`}
+      data-spatial-layout={layout}
+      data-layout-mix={layoutMix.toFixed(3)}
+      data-layout-transitioning={layoutTransitioning}
     >
       <div className="scene" aria-hidden={webglAvailable ? true : undefined}>
         <Suspense fallback={null}>
@@ -353,7 +482,10 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
               selectedRoute={selectedRoute}
               selectedStation={selectedStation}
               onSelectStation={selectStation}
-              cameraFraming="london"
+              cameraFraming={edition.mapFraming}
+              spatialLayout={spatialLayout}
+              spatialLayoutMix={layoutMix}
+              layoutTransitioning={layoutTransitioning}
             />
           ) : null}
         </Suspense>
@@ -375,21 +507,30 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
 
       <section className="london-layout-switch" aria-label="Spatial layout">
         {edition.data.opening.layouts.map((option) => {
-          const available = option.id === 'geographic' || Boolean(option.artifact)
+          const artifact = 'artifact' in option ? option.artifact : undefined
+          const available = option.id === 'geographic' || Boolean(artifact)
+          const loading = option.id === 'diagram' && layoutLoading
           return (
             <button
               key={option.id}
               type="button"
               aria-pressed={layout === option.id}
-              disabled={!available}
-              title={available ? option.label : `${option.label} layout is the next study`}
-              onClick={() => available && setLayout(option.id)}
+              aria-keyshortcuts={option.id === 'diagram' ? 'D' : 'G'}
+              aria-busy={loading}
+              disabled={!available || loading || !network}
+              title={available ? option.label : `${option.label} layout is unavailable`}
+              onClick={() => available && activateLayout(option.id, artifact)}
             >
               {option.label}
-              {!available && <small>Next</small>}
+              {loading && <small>Loading</small>}
             </button>
           )
         })}
+        {layoutError && (
+          <span className="london-layout-status" role="status">
+            Diagram unavailable
+          </span>
+        )}
       </section>
 
       <section className="london-search train-search">
