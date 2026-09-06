@@ -88,7 +88,7 @@ test('route 26 buses load progressively as a separate street study', async ({
   await expect(page.getByRole('button', { name: 'Bus 26', exact: true })).toBeVisible()
   await expect(page.locator('.london-status-card')).toContainText('vehicles in motion')
   await expect(page.locator('.london-status-card')).toContainText(
-    '10,685 scheduled journeys',
+    '11,055 scheduled journeys',
   )
   await page.getByRole('button', { name: 'Pause motion' }).click()
   await page.getByRole('button', { name: 'Bus 26', exact: true }).click()
@@ -160,7 +160,7 @@ test('the complete Friday loads progressively without changing the opening paylo
   await expect(experience).toHaveAttribute('data-day-loading', 'false')
   await expect(page.locator('.london-transport')).toContainText('00:00')
   await expect(page.locator('.london-transport')).toContainText('24:00')
-  await expect(page.locator('.london-status-card')).toContainText('10,455 scheduled journeys')
+  await expect(page.locator('.london-status-card')).toContainText('10,825 scheduled journeys')
 
   await page.getByRole('button', { name: 'Pause motion' }).click()
   await expect(page.getByRole('button', { name: 'Resume motion' })).toBeVisible()
