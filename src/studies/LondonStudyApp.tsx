@@ -1178,6 +1178,7 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
               onSelectStation={selectStation}
               airSnapshot={airEnabled ? activeAirSnapshot : undefined}
               airCategorySelected={airCategorySelected}
+              airports={LONDON_AIRPORTS}
               selectedAirTrack={selectedAirTrack}
               selectedAirport={selectedAirport}
               onSelectAirTrack={selectAirTrack}

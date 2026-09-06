@@ -22,12 +22,18 @@ import {
 } from './air-labels.ts'
 import { stationLabelWorldHeight } from './station-labels.ts'
 import type { TrainLabelMode } from './train-labels.ts'
+import {
+  airportLabelsAreVisible,
+  airportsForMap,
+} from './airport-markers.ts'
 
 const AIR_COLOR = new THREE.Color('#ff5edb')
 const SELECTED_AIR_COLOR = new THREE.Color('#fff5ff')
 const SUBDUED_AIR_COLOR = new THREE.Color('#160a1d')
 const TRAIL_SECONDS = 180
 const MAX_SAMPLE_GAP_SECONDS = 45
+const AIRPORT_LABEL_HEIGHT_PX = 31
+const AIRPORT_MARKER_DIAMETER_PX = 34
 
 interface CurrentAircraft {
   readonly track: AirSnapshot['tracks'][number]
@@ -36,6 +42,11 @@ interface CurrentAircraft {
 }
 
 interface AirLabelTexture {
+  readonly texture: THREE.CanvasTexture
+  readonly aspect: number
+}
+
+interface AirportLabelTexture {
   readonly texture: THREE.CanvasTexture
   readonly aspect: number
 }
@@ -293,14 +304,75 @@ function AirTrafficLabels({
   ))
 }
 
-function AirportFocusMarker({
+function createAirportLabelTexture(airport: StudyAirport): AirportLabelTexture {
+  const canvas = document.createElement('canvas')
+  const context = canvas.getContext('2d')
+  const codeFont = '700 25px "DM Mono", ui-monospace, monospace'
+  const nameFont = '600 20px Helvetica, Arial, sans-serif'
+  const height = 58
+  const code = airport.iata.toUpperCase()
+  const name = (airport.mapLabel ?? airport.city).toUpperCase()
+  const gap = 17
+  const horizontalPadding = 20
+  if (!context) {
+    canvas.width = 230
+    canvas.height = height
+  } else {
+    context.font = codeFont
+    const codeWidth = context.measureText(code).width
+    context.font = nameFont
+    const nameWidth = context.measureText(name).width
+    canvas.width = Math.ceil(
+      horizontalPadding * 2 + codeWidth + gap + nameWidth,
+    )
+    canvas.height = height
+    context.clearRect(0, 0, canvas.width, canvas.height)
+
+    context.fillStyle = 'rgba(8, 5, 22, 0.88)'
+    context.strokeStyle = 'rgba(255, 94, 219, 0.72)'
+    context.lineWidth = 2
+    context.beginPath()
+    context.roundRect(1, 1, canvas.width - 2, canvas.height - 2, 7)
+    context.fill()
+    context.stroke()
+
+    context.textBaseline = 'middle'
+    context.shadowColor = 'rgba(255, 94, 219, 0.8)'
+    context.shadowBlur = 7
+    context.font = codeFont
+    context.fillStyle = '#fff5ff'
+    context.fillText(code, horizontalPadding, height / 2)
+    context.shadowBlur = 0
+    context.font = nameFont
+    context.fillStyle = '#ffb9ed'
+    context.fillText(
+      name,
+      horizontalPadding + codeWidth + gap,
+      height / 2,
+    )
+  }
+
+  const texture = new THREE.CanvasTexture(canvas)
+  texture.colorSpace = THREE.SRGBColorSpace
+  texture.minFilter = THREE.LinearFilter
+  texture.generateMipmaps = false
+  return { texture, aspect: canvas.width / canvas.height }
+}
+
+function AirportMarker({
   airport,
   projection,
+  showLabel,
+  selected,
 }: {
   readonly airport: StudyAirport
   readonly projection: AirProjection
+  readonly showLabel: boolean
+  readonly selected: boolean
 }) {
-  const group = useRef<THREE.Group>(null)
+  const { camera, size } = useThree()
+  const marker = useRef<THREE.Group>(null)
+  const label = useRef<THREE.Sprite>(null)
   const position = useMemo(
     () =>
       projectAirPosition(
@@ -313,37 +385,104 @@ function AirportFocusMarker({
       ),
     [airport, projection],
   )
+  const labelTexture = useMemo(
+    () => createAirportLabelTexture(airport),
+    [airport],
+  )
+
+  useEffect(
+    () => () => labelTexture.texture.dispose(),
+    [labelTexture.texture],
+  )
 
   useFrame(({ clock }) => {
-    if (!group.current) return
-    const pulse = 1 + (Math.sin(clock.elapsedTime * 2.4) + 1) * 0.18
-    group.current.scale.setScalar(pulse)
+    const projected = new THREE.Vector3(...position).applyMatrix4(
+      camera.matrixWorldInverse,
+    )
+    const depth = Math.max(0.01, -projected.z)
+    const verticalFieldOfView =
+      camera instanceof THREE.PerspectiveCamera ? camera.fov : 44
+    const markerDiameter = stationLabelWorldHeight(
+      depth,
+      verticalFieldOfView,
+      size.height,
+      AIRPORT_MARKER_DIAMETER_PX,
+    )
+    if (marker.current) {
+      const pulse = 1 + (Math.sin(clock.elapsedTime * 2.15) + 1) * 0.12
+      marker.current.scale.setScalar((markerDiameter / 1.3) * pulse)
+    }
+    if (label.current) {
+      const worldHeight = stationLabelWorldHeight(
+        depth,
+        verticalFieldOfView,
+        size.height,
+        AIRPORT_LABEL_HEIGHT_PX,
+      )
+      label.current.position.set(
+        position[0],
+        position[1] + worldHeight * 1.15,
+        position[2],
+      )
+      label.current.scale.set(labelTexture.aspect * worldHeight, worldHeight, 1)
+    }
   })
 
   return (
-    <group ref={group} position={position} renderOrder={19}>
-      <mesh rotation={[-Math.PI / 2, 0, 0]}>
-        <ringGeometry args={[0.32, 0.38, 48]} />
-        <meshBasicMaterial
-          color={AIR_COLOR}
-          transparent
-          opacity={0.88}
-          blending={THREE.AdditiveBlending}
-          depthWrite={false}
+    <>
+      <group ref={marker} position={position} renderOrder={19}>
+        <mesh rotation={[-Math.PI / 2, 0, 0]}>
+          <circleGeometry args={[0.2, 32]} />
+          <meshBasicMaterial
+            color={selected ? SELECTED_AIR_COLOR : AIR_COLOR}
+            transparent
+            opacity={selected ? 1 : 0.9}
+            blending={THREE.AdditiveBlending}
+            depthTest={false}
+            depthWrite={false}
+          />
+        </mesh>
+        <mesh rotation={[-Math.PI / 2, 0, 0]}>
+          <ringGeometry args={[0.32, 0.39, 48]} />
+          <meshBasicMaterial
+            color={selected ? SELECTED_AIR_COLOR : AIR_COLOR}
+            transparent
+            opacity={0.94}
+            blending={THREE.AdditiveBlending}
+            depthTest={false}
+            depthWrite={false}
+          />
+        </mesh>
+        <mesh rotation={[-Math.PI / 2, 0, 0]}>
+          <ringGeometry args={[0.58, 0.64, 64]} />
+          <meshBasicMaterial
+            color={AIR_COLOR}
+            transparent
+            opacity={selected ? 0.68 : 0.44}
+            blending={THREE.AdditiveBlending}
+            depthTest={false}
+            depthWrite={false}
+          />
+        </mesh>
+        <pointLight
+          color={selected ? SELECTED_AIR_COLOR : AIR_COLOR}
+          intensity={selected ? 3.4 : 2.2}
+          distance={3.2}
         />
-      </mesh>
-      <mesh rotation={[-Math.PI / 2, 0, 0]}>
-        <ringGeometry args={[0.62, 0.65, 64]} />
-        <meshBasicMaterial
-          color={AIR_COLOR}
-          transparent
-          opacity={0.32}
-          blending={THREE.AdditiveBlending}
-          depthWrite={false}
-        />
-      </mesh>
-      <pointLight color={AIR_COLOR} intensity={2.4} distance={3.2} />
-    </group>
+      </group>
+      {showLabel && (
+        <sprite ref={label} renderOrder={20}>
+          <spriteMaterial
+            map={labelTexture.texture}
+            transparent
+            opacity={selected ? 1 : 0.92}
+            depthTest={false}
+            depthWrite={false}
+            toneMapped={false}
+          />
+        </sprite>
+      )}
+    </>
   )
 }
 
@@ -353,6 +492,8 @@ export function AirTrafficLayer({
   isPlaying,
   playbackRate,
   projection,
+  airports = [],
+  emphasizeAirports = false,
   selectedTrackId,
   selectedAirport,
   onSelectTrack,
@@ -364,6 +505,8 @@ export function AirTrafficLayer({
   readonly isPlaying: boolean
   readonly playbackRate: number
   readonly projection: AirProjection
+  readonly airports?: readonly StudyAirport[]
+  readonly emphasizeAirports?: boolean
   readonly selectedTrackId?: string
   readonly selectedAirport?: StudyAirport
   readonly onSelectTrack?: (trackId: string) => void
@@ -385,6 +528,9 @@ export function AirTrafficLayer({
         : undefined,
     [selectedAirport, snapshot.tracks],
   )
+  const visibleAirports = useMemo(() => {
+    return airportsForMap(airports, emphasizeAirports, selectedAirport)
+  }, [airports, emphasizeAirports, selectedAirport])
   const trailHeadGeometry = useMemo(() => {
     const geometry = new THREE.BufferGeometry()
     geometry.setAttribute(
@@ -630,9 +776,15 @@ export function AirTrafficLayer({
         selectedTrackId={selectedTrackId}
         airportTrackIds={airportTrackIds}
       />
-      {selectedAirport && (
-        <AirportFocusMarker airport={selectedAirport} projection={projection} />
-      )}
+      {visibleAirports.map((airport) => (
+        <AirportMarker
+          key={airport.id}
+          airport={airport}
+          projection={projection}
+          showLabel={airportLabelsAreVisible(labelMode)}
+          selected={airport.id === selectedAirport?.id}
+        />
+      ))}
     </>
   )
 }

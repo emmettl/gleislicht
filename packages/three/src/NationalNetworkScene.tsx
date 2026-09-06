@@ -148,6 +148,7 @@ interface NationalNetworkSceneProps {
   readonly cameraFraming: MapCameraFraming
   readonly airSnapshot?: AirSnapshot
   readonly airCategorySelected?: boolean
+  readonly airports?: readonly StudyAirport[]
   readonly roadSnapshot?: RoadTrafficSnapshot
   readonly nationalRoadSnapshot?: NationalRoadStudySnapshot
   readonly roadTopology?: RoadTopologySnapshot
@@ -3941,6 +3942,8 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
           isPlaying={props.isPlaying}
           playbackRate={props.playbackRate}
           projection={projection}
+          airports={props.airports}
+          emphasizeAirports={props.airCategorySelected}
           selectedTrackId={props.selectedAirTrack?.id}
           selectedAirport={props.selectedAirport}
           onSelectTrack={props.onSelectAirTrack}

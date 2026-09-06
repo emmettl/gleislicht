@@ -69,6 +69,7 @@ import {
   SWITZERLAND_HUBS as HUBS,
   SWITZERLAND_MAP_FRAMINGS as MAP_FRAMINGS,
 } from './editions/switzerland.ts'
+import { SWITZERLAND_AIRPORTS } from './editions/switzerland-airports.ts'
 import {
   SERVICE_CATEGORIES,
   SERVICE_COLORS,
@@ -1708,6 +1709,7 @@ export function App({ edition }: AppProps) {
                 : undefined
             }
             airCategorySelected={airCategorySelected}
+            airports={SWITZERLAND_AIRPORTS}
             roadSnapshot={
               networkStudy === 'national' && roadEnabled && !isNationalDay
                 ? roadSnapshot

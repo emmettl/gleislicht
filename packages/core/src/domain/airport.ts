@@ -5,6 +5,7 @@ export interface StudyAirport {
   readonly id: string
   readonly name: string
   readonly city: string
+  readonly mapLabel?: string
   readonly iata: string
   readonly icao: string
   readonly longitude: number
@@ -15,7 +16,7 @@ export interface StudyAirport {
 
 export function airportSearchText(airport: StudyAirport): string {
   return foldSearchText(
-    `${airport.name} ${airport.city} ${airport.iata} ${airport.icao}`,
+    `${airport.name} ${airport.city} ${airport.mapLabel ?? ''} ${airport.iata} ${airport.icao}`,
   )
 }
 
