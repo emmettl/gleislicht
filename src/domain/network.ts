@@ -4,6 +4,7 @@ export type NetworkStop = readonly [
   name: string,
   platformCode?: string,
   sourceId?: string,
+  labelRank?: number,
 ]
 
 export type NetworkEdge = readonly [from: number, to: number]
@@ -63,6 +64,10 @@ export interface NetworkSnapshot {
     readonly model: string
     readonly note: string
     readonly modes?: readonly string[]
+    readonly labelHierarchy?: {
+      readonly model: string
+      readonly stationCount: number
+    }
     readonly localAgencyIds?: readonly string[]
     readonly localRouteIds?: readonly string[]
     readonly geometry?: {
@@ -124,6 +129,7 @@ export interface StationRoute {
 
 export interface StationIndexEntry {
   readonly name: string
+  readonly labelRank?: number
   readonly stopIndexes: readonly number[]
   readonly trainIds: readonly string[]
   readonly routes: readonly StationRoute[]
@@ -194,6 +200,7 @@ export function buildStationIndex(
       stopIndexes: number[]
       trainIds: Set<string>
       routes: Map<string, StationRoute>
+      labelRank?: number
     }
   >()
 
@@ -202,8 +209,12 @@ export function buildStationIndex(
       stopIndexes: [],
       trainIds: new Set<string>(),
       routes: new Map<string, StationRoute>(),
+      labelRank: stop[5],
     }
     record.stopIndexes.push(index)
+    if (stop[5] !== undefined) {
+      record.labelRank = Math.min(record.labelRank ?? Number.POSITIVE_INFINITY, stop[5])
+    }
     records.set(stop[2], record)
   })
 
@@ -227,6 +238,7 @@ export function buildStationIndex(
     .filter(([, record]) => record.trainIds.size > 0)
     .map(([name, record]) => ({
       name,
+      labelRank: record.labelRank,
       stopIndexes: record.stopIndexes,
       trainIds: [...record.trainIds],
       routes: [...record.routes.values()].sort((first, second) =>

@@ -152,6 +152,8 @@ export function rankStationsForLabels(
 ): readonly StationIndexEntry[] {
   return [...stations].sort(
     (first, second) =>
+      (first.labelRank ?? Number.POSITIVE_INFINITY) -
+        (second.labelRank ?? Number.POSITIVE_INFINITY) ||
       second.trainIds.length - first.trainIds.length ||
       second.routes.length - first.routes.length ||
       first.name.localeCompare(second.name, 'de-CH'),

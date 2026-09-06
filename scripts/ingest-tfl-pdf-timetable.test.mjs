@@ -133,6 +133,12 @@ describe('TfL public timetable PDF adapter', () => {
     expect(snapshot.paths).toHaveLength(1_395)
     expect(snapshot.metadata.note).toContain('All advertised Tube, DLR and Tramlink lines in both directions')
     expect(snapshot.metadata.note).toContain('all six named London Overground lines in both directions')
+    expect(snapshot.metadata.labelHierarchy).toEqual({
+      model: 'Stable station-name rank by mode interchange, distinct routes, morning calls and graph degree, enriched by advertised topology',
+      stationCount: 460,
+    })
+    expect(snapshot.stops.every((stop) => Number.isInteger(stop[5]))).toBe(true)
+    expect(snapshot.stops.find((stop) => stop[2] === 'Whitechapel')?.[5]).toBe(0)
   })
 
   it('audits every advertised Overground and Elizabeth branch', async () => {

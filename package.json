@@ -8,6 +8,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "check:bundle": "node scripts/check-bundle-budget.mjs",
+    "check:london": "node scripts/check-london-fixture-budget.mjs",
     "lint": "oxlint",
     "typecheck": "tsc -b",
     "test": "vitest run",
@@ -53,8 +54,9 @@
     "data:london:proofs": "npm run data:london:proof && npm run data:london:proof:dlr && npm run data:london:proof:tram && npm run data:london:proof:northern && npm run data:london:proof:lioness && npm run data:london:proof:lioness:northbound && npm run data:london:proof:elizabeth && npm run data:london:proof:elizabeth:eastbound",
     "data:london:lattice:unified": "node scripts/compile-tfl-morning-lattice.mjs",
     "data:london:lattice:pdf": "node scripts/compile-tfl-pdf-lattice.mjs",
+    "data:london:rank": "node scripts/rank-network-stations.mjs fixtures/tfl/all-change-rail-led-morning.json --catalogue fixtures/tfl/all-change-rail-led-catalogue.json",
     "data:london:geography": "node scripts/ingest-london-geography.mjs",
-    "data:london:assemble": "node scripts/merge-network-snapshots.mjs --retrieved-at 2026-09-06T12:00:00.000Z --note 'All advertised Tube, DLR and Tramlink lines in both directions, all six named London Overground lines in both directions, and a complete Elizabeth/Overground branch audit. Seven topology branches without direct morning timetable columns remain explicitly inactive in the PDF lattice metadata.' --output fixtures/tfl/all-change-rail-led-morning.json fixtures/tfl/all-change-unified-morning.json fixtures/tfl/all-change-pdf-morning.json",
+    "data:london:assemble": "node scripts/merge-network-snapshots.mjs --retrieved-at 2026-09-06T12:00:00.000Z --note 'All advertised Tube, DLR and Tramlink lines in both directions, all six named London Overground lines in both directions, and a complete Elizabeth/Overground branch audit. Seven topology branches without direct morning timetable columns remain explicitly inactive in the PDF lattice metadata.' --output fixtures/tfl/all-change-rail-led-morning.json fixtures/tfl/all-change-unified-morning.json fixtures/tfl/all-change-pdf-morning.json && npm run data:london:rank",
     "data:london:catalogue": "node scripts/ingest-tfl-rail-catalogue.mjs",
     "preview": "vite preview"
   },

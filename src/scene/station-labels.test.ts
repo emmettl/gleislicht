@@ -20,8 +20,10 @@ const station = (
   name: string,
   calls: number,
   routes: number,
+  labelRank?: number,
 ): StationIndexEntry => ({
   name,
+  labelRank,
   stopIndexes: [0],
   trainIds: Array.from({ length: calls }, (_, index) => `train-${index}`),
   routes: Array.from({ length: routes }, (_, index) => ({
@@ -108,6 +110,14 @@ describe('station labels', () => {
       'Interchange',
       'Small',
     ])
+  })
+
+  it('uses a compiled edition rank before study-window traffic', () => {
+    const ranked = rankStationsForLabels([
+      station('Busy slice', 30, 8, 5),
+      station('Authored interchange', 3, 2, 0),
+    ])
+    expect(ranked.map(({ name }) => name)).toEqual(['Authored interchange', 'Busy slice'])
   })
 
   it('retains visible labels before replacing them during camera motion', () => {

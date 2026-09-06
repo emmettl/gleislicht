@@ -74,8 +74,8 @@ describe('buildStationIndex', () => {
         maxLatitude: 48,
       },
       stops: [
-        [8.54, 47.38, 'Zürich HB'],
-        [8.541, 47.379, 'Zürich HB'],
+        [8.54, 47.38, 'Zürich HB', '', 'zurich-a', 4],
+        [8.541, 47.379, 'Zürich HB', '', 'zurich-b', 2],
         [8.72, 47.5, 'Winterthur'],
       ],
       edges: [],
@@ -100,6 +100,7 @@ describe('buildStationIndex', () => {
     expect(station?.stopIndexes).toEqual([0, 1])
     expect(station?.trainIds).toEqual(['test', 's11'])
     expect(station?.routes.map((route) => route.name)).toEqual(['IC 1', 'S 11'])
+    expect(station?.labelRank).toBe(2)
   })
 })
 

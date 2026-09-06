@@ -39,7 +39,7 @@ TfL documents that its Journey Planner timetable feed covers Underground, bus, D
 
 `npm run data:london:lattice:unified` fans out through every distinct branch origin advertised for Tube, DLR and Tramlink in both directions. It compiles 1,422 movements, 356 source-identified stops and 1,019 real path segments across 13 lines and 26 directions. Limited-stop trains use the complete branch geometry between calls; TfL's overlapping DLR terminal responses are retained only where their stop pattern matches the selected route. Two Metropolitan origins advertised in topology have no suitable Friday schedule and remain explicitly listed as inactive instead of disappearing.
 
-`npm run data:london:lattice:pdf` derives 43 branch-audit tasks from the catalogue. It compiles 36 active morning branch patterns: every named Overground line in both directions and 16 of the 19 Elizabeth families. Three Elizabeth and four Windrush topology branches have no matching direct morning column and are preserved in `metadata.coverage.inactiveBranches`. `npm run data:london:assemble` combines this with the Unified lattice into a 1,743-movement, 503-stop, five-mode contract. Stops and paths are deduplicated by source identity and exact geometry. All London fixtures remain outside Gleislicht's public payload.
+`npm run data:london:lattice:pdf` derives 43 branch-audit tasks from the catalogue. It compiles 36 active morning branch patterns: every named Overground line in both directions and 16 of the 19 Elizabeth families. Three Elizabeth and four Windrush topology branches have no matching direct morning column and are preserved in `metadata.coverage.inactiveBranches`. `npm run data:london:assemble` combines this with the Unified lattice into a 1,743-movement, 503-stop, five-mode contract. It then assigns 460 stable station-name ranks using mode interchange, distinct lines, calls, graph connectivity and the advertised topology. The renderer consumes this optional rank before window-specific traffic, preventing dense central labels from changing priority between study slices. Stops and paths are deduplicated by source identity and exact geometry. All London fixtures remain outside Gleislicht's public payload.
 
 ## Data strategy
 
@@ -77,8 +77,9 @@ Sources:
 - [x] Expand every Unified API timetable mode to all advertised lines and both directions without losing short-turn, limited-stop or branch identity.
 - [x] Add source-audited Greater London and Thames geometry.
 - [x] Audit all six Overground lines and the full Elizabeth branch family against the current public PDFs, compiling active patterns and recording unmatched topology branches.
-- Tune station-label hierarchy for the density of Zone 1 and interchange complexes.
-- Preserve the existing phone transfer and frame-time budgets.
+- [x] Compile a stable station-label hierarchy for Zone 1 density and interchange complexes without changing the Swiss fallback ranking.
+- [x] Hold the complete opening movement and geography fixtures below a 260 KiB compressed transfer ceiling.
+- Add a London-specific frame-time gate when the first visible edition scene exists.
 
 ### LDN 2 — Day and pulse
 
