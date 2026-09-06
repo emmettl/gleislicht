@@ -17,6 +17,10 @@ const artifacts = [
     destination: 'public/data/correspondances-morning.json',
   },
   {
+    source: 'fixtures/idfm/correspondances-central-cross-morning.json',
+    destination: 'public/data/correspondances-central-cross-morning.json',
+  },
+  {
     source: 'fixtures/idfm/correspondances-geography.json',
     destination: 'public/data/correspondances-geography.json',
   },

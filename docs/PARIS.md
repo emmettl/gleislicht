@@ -42,7 +42,7 @@ The opening scene now carries a separately sourced geographic context: the offic
 
 The same two-line source proof is available across the complete Friday service day: 1,461 journeys split into twelve lazy two-hour chunks. The manifest is 19.5 KiB gzip and the largest rush-hour chunk is 52.3 KiB gzip, so the default 07:00–09:00 view remains fast and the 24-hour clock incurs only the current and adjacent chunks.
 
-A source-pinned scope audit now measures the complete Métro/RER morning before any larger artifact is shipped. The same Friday feed contains 2,503 active journeys across 21 lines and 1,044 directional stop records during 07:00–09:00. Loading that whole nervous system into the opening view would swamp the existing 283-journey composition. The next independently loaded layer is therefore **Métro 4 + Métro 14 + RER B**: 372 journeys and 147 stops, chosen because its north–south crossing complements the opening east–west pair. The remaining 1,848 journeys stay outside the runtime until that layer passes its own frame-time and density gates.
+A source-pinned scope audit now measures the complete Métro/RER morning before any larger artifact is shipped. The same Friday feed contains 2,503 active journeys across 21 lines and 1,044 directional stop records during 07:00–09:00. Loading that whole nervous system into the opening view would swamp the existing 283-journey composition. The first independently loaded layer is therefore **Métro 4 + Métro 14 + RER B**: 372 journeys and 147 stops, chosen because its north–south crossing complements the opening east–west pair. Its 91.5 KiB-gzip artifact is absent from the first request graph and composes with the running opening network in the browser. The remaining 1,848 journeys stay outside the runtime until this layer passes its real-phone density gate.
 
 An authored **Cœur / Région** scale control now moves the same running scene between a close Châtelet-centred reading and the complete RER branch structure. It does not replace the network or reset the clock. The region view strengthens aggregate edge frequency; the close view lets individual vehicles and labels take over, retains the Seine and périphérique, and removes the enlarged administrative outline before it becomes visual architecture.
 
@@ -68,7 +68,7 @@ Sources:
 - [x] Compile Métro 1 and RER A on a shared deterministic 07:00–09:00 clock.
 - [x] Add the Seine, an official Paris boundary and the published Boulevard Périphérique axis as a minimal geographic frame.
 - [x] Prove that close individual motion can become aggregated pulse/corridor intensity as the same running scene moves between centre and region.
-- [x] Establish phone and desktop density budgets before adding more lines (400.6 KiB gzip first view; 67.9 KiB timetable and 6.4 KiB geography).
+- [x] Establish phone and desktop density budgets before adding more lines (401.8 KiB gzip first view; 67.9 KiB timetable and 6.4 KiB geography).
 - [x] Add an independent `paris.html` shell with route/station/mission search, touch station selection, route isolation, playback and limited chrome.
 
 ### PAR 2 — Correspondances
@@ -82,7 +82,8 @@ Sources:
 
 - [x] Add the complete two-line Friday as twelve progressive two-hour chunks behind an explicit 24-hour control.
 - [x] Audit the complete 21-line morning from the pinned archive and define the next independently loaded layer as Métro 4 + Métro 14 + RER B rather than adding 2,503 journeys to the opening scene at once.
-- Compile and ship that central-cross layer only after it passes an independent payload and frame-time gate.
+- [x] Compile and ship the 372-journey central-cross layer behind an explicit lazy control and an independent 110 KiB compressed payload gate.
+- Judge the five-line composition on real phones before admitting the remaining Métro or RER layers.
 - [x] Add stable label tiers for interchange complexes, outer termini and close-scale stations. The regional view admits tiers 1–2, the centre admits tier 3, and labels wait 420 ms after camera motion before repopulating.
 - Tune the zoom transition so neither central density nor the banlieue disappears into visual noise.
 - Consider Transilien and tram only when they strengthen the centre–periphery argument.

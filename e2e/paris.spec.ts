@@ -18,11 +18,38 @@ test('boots from the bounded IDFM artifact only', async ({ page }) => {
   expect(resources.some((url) => url.includes('correspondances-morning.json'))).toBe(true)
   expect(resources.some((url) => url.includes('correspondances-geography.json'))).toBe(true)
   expect(resources.some((url) => url.includes('correspondances-day-manifest'))).toBe(false)
+  expect(resources.some((url) => url.includes('correspondances-central-cross'))).toBe(false)
   expect(resources.some((url) => url.includes('swiss-rail-morning.json'))).toBe(false)
   expect(resources.some((url) => url.includes('all-change-rail-led'))).toBe(false)
   expect(resources.some((url) => url.includes('local-express-lexington'))).toBe(false)
   await expect(page.locator('.paris-transport')).toContainText('07:00')
   await expect(page.locator('.paris-transport')).toContainText('09:00')
+})
+
+test('loads the north–south layer only when requested', async ({ page }) => {
+  const layer = page.getByRole('button', {
+    name: 'Couche nord–sud Métro 4, Métro 14 et RER B',
+  })
+  await layer.click()
+  await expect(layer).toHaveAttribute('aria-pressed', 'true')
+  await expect(page.locator('.paris-status')).toContainText('Paris croisé')
+  await expect.poll(async () => page.evaluate(() =>
+    (globalThis as unknown as {
+      performance: {
+        getEntriesByType(type: string): readonly { readonly name: string }[]
+      }
+    }).performance
+      .getEntriesByType('resource')
+      .some((entry) => entry.name.includes('correspondances-central-cross-morning.json')),
+  )).toBe(true)
+
+  const search = page.getByRole('searchbox', {
+    name: 'Rechercher une station, ligne ou mission',
+  })
+  await search.fill('Métro 14')
+  await expect(page.getByRole('option', { name: /Métro 14/ })).toBeVisible()
+  await search.press('Enter')
+  await expect(page.locator('.paris-status')).toContainText('Métro 14')
 })
 
 test('loads the 24-hour study progressively', async ({ page }) => {
@@ -76,8 +103,8 @@ test('changes scale without replacing the network or stopping its clock', async 
 })
 
 test('Métro and RER can be isolated independently', async ({ page }) => {
-  const metro = page.getByRole('button', { name: /Métro 1/ })
-  const rer = page.getByRole('button', { name: /RER A/ })
+  const metro = page.getByRole('button', { name: 'Isoler Métro 1' })
+  const rer = page.getByRole('button', { name: 'Isoler RER A' })
   await metro.click()
   await expect(metro).toHaveAttribute('aria-pressed', 'true')
   await expect(page.locator('.paris-status')).toContainText('Métro 1')

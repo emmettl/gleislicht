@@ -17,6 +17,11 @@ const dayManifestGzipBytes = gzipSync(dayManifestBytes, { level: 9 }).byteLength
 const scopeAudit = JSON.parse(
   await readFile('fixtures/idfm/correspondances-scope-audit.json', 'utf8'),
 )
+const centralCrossBytes = await readFile(
+  'fixtures/idfm/correspondances-central-cross-morning.json',
+)
+const centralCross = JSON.parse(centralCrossBytes.toString('utf8'))
+const centralCrossGzipBytes = gzipSync(centralCrossBytes, { level: 9 }).byteLength
 
 if (snapshot.metadata?.publisher !== 'Île-de-France Mobilités') {
   throw new Error('Paris proof has no authoritative publisher')
@@ -109,6 +114,19 @@ if (
 ) {
   throw new Error('Paris scope audit lost its source or candidate-layer contract')
 }
+if (
+  centralCross.metadata?.sourceSha256 !== snapshot.metadata?.sourceSha256 ||
+  centralCross.metadata?.serviceDate !== snapshot.metadata?.serviceDate ||
+  centralCross.metadata?.windowStart !== snapshot.metadata?.windowStart ||
+  centralCross.metadata?.windowEnd !== snapshot.metadata?.windowEnd ||
+  centralCross.trains?.length !== 372 ||
+  centralCross.stops?.length !== 147 ||
+  JSON.stringify([...new Set(centralCross.trains.map((train) => train.route))].sort()) !==
+    JSON.stringify(['Métro 14', 'Métro 4', 'RER B']) ||
+  centralCrossGzipBytes > 110 * 1024
+) {
+  throw new Error('Paris central-cross layer lost its source, contents or payload contract')
+}
 for (const descriptor of dayManifest.chunks) {
   const chunkBytes = await readFile(resolve('fixtures/idfm', descriptor.path))
   const chunk = JSON.parse(chunkBytes.toString('utf8'))
@@ -179,6 +197,10 @@ console.log(
   `Correspondances scope: ${scopeAudit.totals.tripCount} morning trips across ` +
     `${scopeAudit.totals.routeCount} Métro/RER lines; central-cross candidate ` +
     `${scopeAudit.candidateLayers.centralCross.tripCount} trips across 3 lines.`,
+)
+console.log(
+  `Correspondances central cross: ${centralCross.trains.length} trips, ` +
+    `${centralCross.stops.length} stops, ${(centralCrossGzipBytes / 1024).toFixed(1)} KiB gzip.`,
 )
 console.log(
   `Correspondances mobile first view: ${(javaScriptGzip / 1024).toFixed(1)} KiB JS / ` +

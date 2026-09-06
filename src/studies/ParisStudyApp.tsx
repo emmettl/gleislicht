@@ -17,6 +17,7 @@ import {
   type NetworkTrain,
   type StationIndexEntry,
 } from '../domain/network.ts'
+import { mergeNetworkLayers } from '../domain/network-layers.ts'
 import { motionStudyMark } from '../editions/catalogue.ts'
 import { editionDataUrl } from '../editions/edition.ts'
 import {
@@ -225,6 +226,10 @@ function nextConnection(
 
 export function ParisStudyApp({ edition }: { readonly edition: ParisEdition }) {
   const [openingNetwork, setOpeningNetwork] = useState<NetworkSnapshot>()
+  const [centralCrossNetwork, setCentralCrossNetwork] = useState<NetworkSnapshot>()
+  const [centralCrossEnabled, setCentralCrossEnabled] = useState(false)
+  const [centralCrossLoading, setCentralCrossLoading] = useState(false)
+  const [centralCrossError, setCentralCrossError] = useState(false)
   const [geography, setGeography] = useState<ParisGeographySnapshot>()
   const [loadError, setLoadError] = useState(false)
   const [time, setTime] = useState(edition.defaultNetworkTime)
@@ -249,9 +254,15 @@ export function ParisStudyApp({ edition }: { readonly edition: ParisEdition }) {
     studyWindow === 'day',
     time,
   )
-  const network = studyWindow === 'day'
+  const baseNetwork = studyWindow === 'day'
     ? (dayStudy.network ?? openingNetwork)
     : openingNetwork
+  const network = useMemo(() => {
+    if (!baseNetwork || !centralCrossEnabled || !centralCrossNetwork) {
+      return baseNetwork
+    }
+    return mergeNetworkLayers([baseNetwork, centralCrossNetwork])
+  }, [baseNetwork, centralCrossEnabled, centralCrossNetwork])
 
   useEffect(() => {
     let cancelled = false
@@ -276,6 +287,30 @@ export function ParisStudyApp({ edition }: { readonly edition: ParisEdition }) {
       cancelled = true
     }
   }, [edition])
+
+  useEffect(() => {
+    if (!centralCrossEnabled || centralCrossNetwork) return
+    let cancelled = false
+    fetch(editionDataUrl(edition.data.layers.centralCrossMorning))
+      .then((response) => {
+        if (!response.ok) throw new Error('Central-cross layer unavailable')
+        return response.json() as Promise<NetworkSnapshot>
+      })
+      .then((snapshot) => {
+        if (!cancelled) setCentralCrossNetwork(snapshot)
+      })
+      .catch(() => {
+        if (cancelled) return
+        setCentralCrossError(true)
+        setCentralCrossEnabled(false)
+      })
+      .finally(() => {
+        if (!cancelled) setCentralCrossLoading(false)
+      })
+    return () => {
+      cancelled = true
+    }
+  }, [centralCrossEnabled, centralCrossNetwork, edition.data.layers.centralCrossMorning])
 
   const stations = useMemo(
     () => (network ? buildStationIndex(network) : []),
@@ -323,6 +358,7 @@ export function ParisStudyApp({ edition }: { readonly edition: ParisEdition }) {
   const activateStudyWindow = useCallback((next: 'morning' | 'day') => {
     if (next === studyWindow) return
     clearSelection()
+    if (next === 'day') setCentralCrossEnabled(false)
     setStudyWindow(next)
     setTime(
       next === 'day'
@@ -330,6 +366,22 @@ export function ParisStudyApp({ edition }: { readonly edition: ParisEdition }) {
         : (openingNetwork?.metadata.focusTime ?? edition.defaultNetworkTime),
     )
   }, [clearSelection, edition.defaultNetworkTime, openingNetwork, studyWindow, time])
+
+  const toggleCentralCross = useCallback(() => {
+    clearSelection()
+    if (centralCrossEnabled) {
+      setCentralCrossEnabled(false)
+      moveCamera('reset')
+      return
+    }
+    setStudyWindow('morning')
+    setTime(openingNetwork?.metadata.focusTime ?? edition.defaultNetworkTime)
+    setCentralCrossError(false)
+    setCentralCrossLoading(!centralCrossNetwork)
+    setCentralCrossEnabled(true)
+    setScaleView('region')
+    moveCamera('reset')
+  }, [centralCrossEnabled, centralCrossNetwork, clearSelection, edition.defaultNetworkTime, moveCamera, openingNetwork])
 
   const toggleScaleView = useCallback(() => {
     if (!network) return
@@ -526,7 +578,7 @@ export function ParisStudyApp({ edition }: { readonly edition: ParisEdition }) {
           <h1>Correspondances</h1>
           <small>Le centre respire; la région répond.</small>
         </div>
-        <aside><span>A Paris motion study</span><small>Métro 1 · RER A · {studyWindow === 'day' ? '24 heures' : '07:00–09:00'}</small></aside>
+        <aside><span>A Paris motion study</span><small>{centralCrossEnabled ? 'Métro 1 · 4 · 14 · RER A · B' : 'Métro 1 · RER A'} · {studyWindow === 'day' ? '24 heures' : '07:00–09:00'}</small></aside>
       </header>
 
       <section className="paris-search" aria-label="Rechercher un mouvement">
@@ -609,14 +661,19 @@ export function ParisStudyApp({ edition }: { readonly edition: ParisEdition }) {
                 ? `${selectedRoute.trainIds.length} missions · ${selectedRoute.stopIndexes.length} stations`
                 : selectedTrain
                   ? `${selectedTrain.route} · ${formatServiceTime(selectedTrain.start)}–${formatServiceTime(selectedTrain.end)}`
-                  : `${studyWindow === 'day' ? (dayStudy.manifest?.tripCount ?? network.trains.length) : network.trains.length} missions planifiées · pas de temps réel`}</small>
+                  : centralCrossLoading
+                    ? 'La croisée nord–sud se charge séparément…'
+                    : centralCrossError
+                      ? 'Couche nord–sud indisponible · le socle reste actif'
+                      : `${studyWindow === 'day' ? (dayStudy.manifest?.tripCount ?? network.trains.length) : network.trains.length} missions planifiées · ${centralCrossEnabled ? 'Paris croisé · ' : ''}pas de temps réel`}</small>
           </>
         ) : <p>Paris se dessine…</p>}
       </section>
 
       <nav className="paris-routes" aria-label="Lignes de l’étude">
-        <button type="button" aria-pressed={selectedRoute?.name === 'Métro 1'} onClick={() => selectRoute('Métro 1')}><i /> Métro 1 <small>le centre</small></button>
-        <button type="button" aria-pressed={selectedRoute?.name === 'RER A'} onClick={() => selectRoute('RER A')}><i /> RER A <small>la région</small></button>
+        <button type="button" aria-label="Isoler Métro 1" aria-pressed={selectedRoute?.name === 'Métro 1'} onClick={() => selectRoute('Métro 1')}><i /> Métro 1 <small>le centre</small></button>
+        <button type="button" aria-label="Isoler RER A" aria-pressed={selectedRoute?.name === 'RER A'} onClick={() => selectRoute('RER A')}><i /> RER A <small>la région</small></button>
+        <button className="paris-layer-button" type="button" aria-label="Couche nord–sud Métro 4, Métro 14 et RER B" aria-pressed={centralCrossEnabled} aria-busy={centralCrossLoading} onClick={toggleCentralCross}><i /> {centralCrossLoading ? '…' : 'N–S'} <small>M4 · M14 · RER B</small></button>
         <button className="paris-connection-button" type="button" aria-label="Prochaine correspondance" onClick={showNextConnection}><i /> {activeHubStudy?.title ?? 'Correspondance'} <small>{activeHubStudy ? selectedConnection?.complex.name : '3 hubs · données IDFM'}</small></button>
       </nav>
 

@@ -321,6 +321,11 @@
   box-shadow: 0 0 13px #ff4e70;
 }
 
+.paris-routes .paris-layer-button i {
+  background: linear-gradient(135deg, #d86bc7 0 32%, #9b79ff 33% 65%, #65b5ff 66%);
+  box-shadow: 0 0 13px rgba(155, 121, 255, 0.85);
+}
+
 .paris-routes .paris-connection-button i {
   border: 1px solid var(--cyan);
   background: transparent;

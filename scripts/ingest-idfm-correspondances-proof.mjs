@@ -12,10 +12,25 @@ const DATASET_URL =
   'https://prim.iledefrance-mobilites.fr/fr/jeux-de-donnees/offre-horaires-tc-gtfs-idfm'
 const LICENSE_URL =
   'https://www.iledefrance-mobilites.fr/medias/portail-idfm/4dc136f7-df23-449b-9670-24bc5254a706_RAA138.pdf'
-const ROUTES = new Map([
-  ['IDFM:C01371', { name: 'Métro 1', category: 'metro', mode: 'subway' }],
-  ['IDFM:C01742', { name: 'RER A', category: 'regional-express', mode: 'rail' }],
-])
+const STUDIES = {
+  opening: {
+    output: 'fixtures/idfm/correspondances-morning.json',
+    label: 'Métro 1 / RER A scale proof',
+    routes: [
+      ['IDFM:C01371', { name: 'Métro 1', category: 'metro', mode: 'subway' }],
+      ['IDFM:C01742', { name: 'RER A', category: 'regional-express', mode: 'rail' }],
+    ],
+  },
+  'central-cross': {
+    output: 'fixtures/idfm/correspondances-central-cross-morning.json',
+    label: 'Métro 4 / Métro 14 / RER B central-cross layer',
+    routes: [
+      ['IDFM:C01374', { name: 'Métro 4', category: 'metro', mode: 'subway' }],
+      ['IDFM:C01384', { name: 'Métro 14', category: 'metro', mode: 'subway' }],
+      ['IDFM:C01743', { name: 'RER B', category: 'regional-express', mode: 'rail' }],
+    ],
+  },
+}
 
 function argument(name, fallback) {
   const index = process.argv.indexOf(`--${name}`)
@@ -61,18 +76,24 @@ function nearestPointIndex(points, stop) {
 }
 
 function labelRank(name) {
-  if (/Châtelet|La Défense|Nation|Gare de Lyon|Charles de Gaulle/i.test(name)) {
+  if (/Châtelet|La Défense|Nation|Gare de Lyon|Charles de Gaulle|Gare du Nord|Saint-Lazare|Montparnasse/i.test(name)) {
     return 1
   }
-  if (/Vincennes|Saint-Germain|Marne-la-Vallée|Boissy|Cergy|Poissy/i.test(name)) {
+  if (/Vincennes|Saint-Germain|Marne-la-Vallée|Boissy|Cergy|Poissy|Bagneux|Clignancourt|Aéroport|Saint-Rémy|Robinson|Orly|Saint-Denis Pleyel/i.test(name)) {
     return 2
   }
   return 3
 }
 
 const archive = resolve(requiredArgument('archive'))
+const studyId = argument('study', 'opening')
+const study = STUDIES[studyId]
+if (!study) {
+  throw new Error(`Unknown --study ${studyId}; expected ${Object.keys(STUDIES).join(' or ')}`)
+}
+const ROUTES = new Map(study.routes)
 const output = resolve(
-  argument('output', 'fixtures/idfm/correspondances-morning.json'),
+  argument('output', study.output),
 )
 const serviceDate = argument('service-date', '2026-09-04')
 const retrievedAt = requiredArgument('retrieved-at')
@@ -234,7 +255,7 @@ const compiledTrips = selectedTrips.map((trip) => {
     route: route.name,
     headsign: destination || trip.headsign,
     shortName:
-      trip.routeId === 'IDFM:C01742'
+      route.category === 'regional-express'
         ? trip.shortName || trip.headsign || route.shortName
         : route.shortName,
     category: route.category,
@@ -340,12 +361,12 @@ const result = {
     retrievedAt,
     license: 'Licence Mobilité (February 2021)',
     licenseUrl: LICENSE_URL,
-    model: 'Scheduled GTFS shape interpolation / Métro 1 and RER A scale proof / not realtime',
-    note: `A bounded two-line proof using the full published Métro 1 and RER A patterns active in the study window. Route colours in the source feed are ${[...routeRecords.values()].map((route) => `${route.name} #${route.sourceColor}`).join(' and ')}; the visual treatment remains locally authored. Dataset record: ${DATASET_URL}`,
+    model: `Scheduled GTFS shape interpolation / ${study.label} / not realtime`,
+    note: `A bounded ${ROUTES.size}-line layer using the full published patterns active in the study window. Route colours in the source feed are ${[...routeRecords.values()].map((route) => `${route.name} #${route.sourceColor}`).join(', ')}; the visual treatment remains locally authored. Dataset record: ${DATASET_URL}`,
     modes: ['subway', 'rail'],
     localRouteIds: [...ROUTES.keys()],
     interchangeStudy: {
-      model: 'Published GTFS transfer links between Métro 1 and RER A stops. Minimum transfer time describes scheduled opportunity, not observed passenger movement.',
+      model: `Published GTFS transfer links within the ${study.label}. Minimum transfer time describes scheduled opportunity, not observed passenger movement.`,
       complexes: interchangeComplexes,
     },
     geometry: {
@@ -385,6 +406,6 @@ const result = {
 await mkdir(dirname(output), { recursive: true })
 await writeFile(output, JSON.stringify(result))
 console.log(
-  `Wrote ${basename(output)}: ${routeCounts['Métro 1']} Métro 1 + ${routeCounts['RER A']} RER A trips, ` +
+  `Wrote ${basename(output)}: ${Object.entries(routeCounts).map(([name, count]) => `${count} ${name}`).join(' + ')} trips, ` +
     `${orderedStops.length} stops and ${paths.length} shaped segments.`,
 )
