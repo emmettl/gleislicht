@@ -58,6 +58,7 @@ import {
   nonRailCategorySuppressesTrainLabels,
   trainLabelArrivalOpacity,
   trainLabelBudget,
+  trainLabelIdentity,
   trainLabelScreenHeight,
   trainLabelScreenWidth,
   type TrainLabelMode,
@@ -1982,9 +1983,7 @@ function trainLabelText(
   selected: boolean,
   compared = false,
 ): string {
-  const identity = train.shortName
-    ? `${train.route} · ${train.shortName}`
-    : train.route
+  const identity = trainLabelIdentity(train.route, train.shortName)
   const delay = train.realtime?.delaySeconds
   const realtimeSuffix =
     train.realtime?.status === 'adjusted' && delay

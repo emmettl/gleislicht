@@ -5,6 +5,21 @@ export type TrainLabelMode = 'auto' | 'on' | 'off'
 export const MAX_TRAIN_LABELS = 56
 export const TRAIN_LABEL_ARRIVAL_FADE_SECONDS = 1.6
 
+export function trainLabelIdentity(route: string, shortName: string): string {
+  const routeLabel = route.trim()
+  const serviceLabel = shortName.trim()
+  if (!routeLabel) return serviceLabel
+  if (!serviceLabel) return routeLabel
+  if (
+    routeLabel.localeCompare(serviceLabel, undefined, {
+      sensitivity: 'accent',
+    }) === 0
+  ) {
+    return routeLabel
+  }
+  return `${routeLabel} · ${serviceLabel}`
+}
+
 export function nonRailCategorySuppressesTrainLabels(
   airCategorySelected = false,
   roadCategorySelected = false,

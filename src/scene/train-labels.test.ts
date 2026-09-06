@@ -5,12 +5,25 @@ import {
   nonRailCategorySuppressesTrainLabels,
   trainLabelArrivalOpacity,
   trainLabelBudget,
+  trainLabelIdentity,
   trainLabelPriority,
   trainLabelScreenHeight,
   trainLabelScreenWidth,
 } from './train-labels.ts'
 
 describe('train labels', () => {
+  it('does not repeat a line name supplied as both route and service identity', () => {
+    expect(trainLabelIdentity('Jubilee', 'Jubilee')).toBe('Jubilee')
+    expect(trainLabelIdentity('Elizabeth line', ' elizabeth line ')).toBe(
+      'Elizabeth line',
+    )
+  })
+
+  it('keeps genuinely distinct route and service identities', () => {
+    expect(trainLabelIdentity('IC', '1')).toBe('IC · 1')
+    expect(trainLabelIdentity('S', '')).toBe('S')
+  })
+
   it('suppresses rail labels while a non-rail category is isolated', () => {
     expect(nonRailCategorySuppressesTrainLabels()).toBe(false)
     expect(nonRailCategorySuppressesTrainLabels(true, false)).toBe(true)
