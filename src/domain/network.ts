@@ -103,6 +103,8 @@ export interface NetworkDayChunkDescriptor {
   readonly windowEnd: number
   readonly path: string
   readonly tripCount: number
+  readonly bytes?: number
+  readonly sha256?: string
 }
 
 export interface NetworkDayManifest {

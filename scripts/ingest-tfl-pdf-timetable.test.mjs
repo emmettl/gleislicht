@@ -128,14 +128,14 @@ describe('TfL public timetable PDF adapter', () => {
       await readFile('fixtures/tfl/all-change-rail-led-morning.json', 'utf8'),
     )
     expect(new Set(snapshot.metadata.modes)).toEqual(new Set(['tube', 'dlr', 'tram', 'overground', 'elizabeth-line']))
-    expect(snapshot.trains).toHaveLength(1_743)
-    expect(snapshot.stops).toHaveLength(503)
-    expect(snapshot.paths).toHaveLength(1_395)
-    expect(snapshot.metadata.note).toContain('All advertised Tube, DLR and Tramlink lines in both directions')
-    expect(snapshot.metadata.note).toContain('all six named London Overground lines in both directions')
+    expect(snapshot.trains).toHaveLength(1_708)
+    expect(snapshot.stops).toHaveLength(505)
+    expect(snapshot.paths).toHaveLength(1_414)
+    expect(snapshot.metadata.note).toContain('all advertised Tube, DLR and Tramlink lines')
+    expect(snapshot.metadata.note).toContain('all six named London Overground lines')
     expect(snapshot.metadata.labelHierarchy).toEqual({
-      model: 'Stable station-name rank by mode interchange, distinct routes, morning calls and graph degree, enriched by advertised topology',
-      stationCount: 460,
+      model: 'Stable station-name rank by mode interchange, distinct routes, scheduled calls and graph degree, enriched by advertised topology',
+      stationCount: 462,
     })
     expect(snapshot.stops.every((stop) => Number.isInteger(stop[5]))).toBe(true)
     expect(snapshot.stops.find((stop) => stop[2] === 'Whitechapel')?.[5]).toBe(0)

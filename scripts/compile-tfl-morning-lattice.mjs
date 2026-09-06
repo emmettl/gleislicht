@@ -127,7 +127,9 @@ export async function compileUnifiedApiLattice({
     trainIds.add(train.id)
   }
   merged.metadata.coverage = {
-    status: 'complete-for-unified-api-modes',
+    status: inactiveOrigins.length
+      ? 'audited-with-inactive-origins'
+      : 'complete-for-unified-api-modes',
     modes,
     lineCount: new Set(coveragePlan.map(({ lineId }) => lineId)).size,
     directionCount: new Set(coveragePlan.map(({ lineId, direction }) => `${lineId}:${direction}`)).size,

@@ -94,7 +94,7 @@ export function applyStationLabelRanks(snapshot, options) {
     metadata: {
       ...snapshot.metadata,
       labelHierarchy: {
-        model: `Stable station-name rank by mode interchange, distinct routes, morning calls and graph degree${options?.catalogue ? ', enriched by advertised topology' : ''}`,
+        model: `Stable station-name rank by mode interchange, distinct routes, scheduled calls and graph degree${options?.catalogue ? ', enriched by advertised topology' : ''}`,
         stationCount: ranking.length,
       },
     },

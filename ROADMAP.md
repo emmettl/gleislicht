@@ -152,7 +152,8 @@ See [docs/AUTO.md](./docs/AUTO.md) for the data contract, reconstruction and rec
 - [x] Add an edition-neutral alternate-layout contract and a lazy, deterministic Beck-inspired diagram artifact.
 - [x] Animate continuously between London's geographic and diagram spaces without resetting journeys or selection.
 - [x] Enforce the future package/repository boundary in CI so shared runtime code remains place-neutral.
-- [ ] Add progressive 24-hour chunks and London-specific pulse studies.
+- [x] Add a separately loaded, integrity-checked 24-hour London timetable in progressive two-hour chunks.
+- [ ] Add London-specific pulse studies.
 - [ ] Evaluate surface buses as separate borough or corridor studies.
 
 **Exit:** Gleislicht and All Change are independently authored Motion Studies, sharing runtime behaviour and visual grammar without sharing titles or place-specific assumptions.

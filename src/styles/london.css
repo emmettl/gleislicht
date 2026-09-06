@@ -114,6 +114,27 @@
   color: var(--cyan);
 }
 
+.london-switch-divider {
+  width: 1px;
+  margin: 5px 3px;
+  background: rgba(210, 200, 232, 0.22);
+}
+
+.london-mobile-label {
+  display: none;
+}
+
+.london-day-status {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  width: max-content;
+  color: var(--pink);
+  font: 500 0.55rem/1.2 'DM Mono', ui-monospace, monospace;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
 .london-layout-status {
   position: absolute;
   top: calc(100% + 6px);
@@ -347,10 +368,18 @@
   }
 
   .london-layout-switch button {
-    min-width: 42px;
+    min-width: 36px;
     min-height: 40px;
-    padding: 0 7px;
+    padding: 0 6px;
     font-size: 0.54rem;
+  }
+
+  .london-wide-label {
+    display: none;
+  }
+
+  .london-mobile-label {
+    display: inline;
   }
 
   .london-layout-switch button small {

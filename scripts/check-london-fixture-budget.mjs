@@ -15,6 +15,9 @@ const BUDGETS = {
   total: 650 * 1024,
   layoutRaw: 90 * 1024,
   layoutGzip: 16 * 1024,
+  dayManifestGzip: 40 * 1024,
+  dayChunkGzip: 190 * 1024,
+  dayTotalGzip: 1_600 * 1024,
 }
 
 const networkBytes = await readFile(
@@ -46,6 +49,60 @@ if (new Set(layout.stops.map(([sourceId]) => sourceId)).size !== network.stops.l
 }
 if (layout.paths?.length !== network.paths.length) {
   throw new Error('London diagram path indexes do not match the opening network')
+}
+
+const dayManifestBytes = await readFile(
+  resolve('fixtures/tfl/all-change-day-manifest.json'),
+)
+const dayManifest = JSON.parse(dayManifestBytes.toString('utf8'))
+if (
+  dayManifest.metadata?.windowStart !== 0 ||
+  dayManifest.metadata?.windowEnd !== 86_400 ||
+  dayManifest.chunks?.length !== 12
+) {
+  throw new Error('London day manifest must cover 24 hours in 12 chunks')
+}
+if (
+  dayManifest.stops?.length !== network.stops.length ||
+  dayManifest.paths?.length !== network.paths.length
+) {
+  throw new Error('London morning and day studies do not share one topology')
+}
+if (
+  dayManifest.stops.some(
+    (stop, index) => stop[4] !== network.stops[index]?.[4],
+  )
+) {
+  throw new Error('London morning and day stop identities are not index-aligned')
+}
+let dayTotalGzip = gzipSync(dayManifestBytes, { level: 9 }).byteLength
+let largestDayChunkGzip = 0
+const dayTrainIds = new Set()
+for (const [index, descriptor] of dayManifest.chunks.entries()) {
+  const expectedStart = index * 2 * 3600
+  if (
+    descriptor.windowStart !== expectedStart ||
+    descriptor.windowEnd !== expectedStart + 2 * 3600
+  ) {
+    throw new Error(`London day chunk ${descriptor.id} breaks the time sequence`)
+  }
+  const bytes = await readFile(resolve('fixtures/tfl', descriptor.path))
+  if (descriptor.bytes !== bytes.byteLength) {
+    throw new Error(`London day chunk ${descriptor.id} has stale size metadata`)
+  }
+  if (descriptor.sha256 !== createHash('sha256').update(bytes).digest('hex')) {
+    throw new Error(`London day chunk ${descriptor.id} has stale integrity metadata`)
+  }
+  const chunk = JSON.parse(bytes.toString('utf8'))
+  for (const train of chunk.trains) dayTrainIds.add(train.id)
+  const compressed = gzipSync(bytes, { level: 9 }).byteLength
+  dayTotalGzip += compressed
+  largestDayChunkGzip = Math.max(largestDayChunkGzip, compressed)
+}
+if (dayTrainIds.size !== dayManifest.tripCount) {
+  throw new Error(
+    `London day chunks contain ${dayTrainIds.size} unique journeys, expected ${dayManifest.tripCount}`,
+  )
 }
 for (const path of layout.paths) {
   if (path.length < 2) throw new Error('London diagram contains an empty path')
@@ -116,6 +173,25 @@ if (layoutRaw > BUDGETS.layoutRaw || layoutGzip > BUDGETS.layoutGzip) {
   throw new Error(
     `London diagram budget exceeded: raw ${kibibytes(layoutRaw)}, gzip ${kibibytes(layoutGzip)}`,
   )
+}
+
+const dayManifestGzip = gzipSync(dayManifestBytes, { level: 9 }).byteLength
+console.log('All Change progressive 24-hour budget:')
+console.log(
+  `  manifest   ${kibibytes(dayManifestGzip)} / ${kibibytes(BUDGETS.dayManifestGzip)}`,
+)
+console.log(
+  `  max chunk  ${kibibytes(largestDayChunkGzip)} / ${kibibytes(BUDGETS.dayChunkGzip)}`,
+)
+console.log(
+  `  full day   ${kibibytes(dayTotalGzip)} / ${kibibytes(BUDGETS.dayTotalGzip)}`,
+)
+if (
+  dayManifestGzip > BUDGETS.dayManifestGzip ||
+  largestDayChunkGzip > BUDGETS.dayChunkGzip ||
+  dayTotalGzip > BUDGETS.dayTotalGzip
+) {
+  throw new Error('London progressive day budget exceeded')
 }
 
 const manifest = JSON.parse(

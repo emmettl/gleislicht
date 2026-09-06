@@ -43,6 +43,55 @@ test('station search selects and reveals a London interchange', async ({ page })
   await expect(search).toHaveValue('Whitechapel')
 })
 
+test('the complete Friday loads progressively without changing the opening payload', async ({
+  page,
+}) => {
+  const initialResources = await page.evaluate(() => {
+    const browser = globalThis as unknown as {
+      performance: {
+        getEntriesByType(type: string): readonly { readonly name: string }[]
+      }
+    }
+    return browser.performance
+      .getEntriesByType('resource')
+      .map((entry) => entry.name)
+  })
+  expect(initialResources.some((url: string) => url.includes('all-change-day-'))).toBe(false)
+
+  const manifestResponse = page.waitForResponse((response) =>
+    response.url().includes('all-change-day-manifest.json'),
+  )
+  const morningChunkResponse = page.waitForResponse((response) =>
+    response.url().includes('all-change-day-chunks/06-08.json'),
+  )
+  await page.getByRole('button', { name: '24-hour study' }).click()
+  expect((await manifestResponse).ok()).toBe(true)
+  expect((await morningChunkResponse).ok()).toBe(true)
+
+  const experience = page.locator('.london-experience')
+  await expect(experience).toHaveAttribute('data-study-window', 'day')
+  await expect(experience).toHaveAttribute('data-day-loading', 'false')
+  await expect(page.locator('.london-transport')).toContainText('00:00')
+  await expect(page.locator('.london-transport')).toContainText('24:00')
+  await expect(page.locator('.london-status-card')).toContainText('10,455 scheduled journeys')
+
+  const eveningChunkResponse = page.waitForResponse((response) =>
+    response.url().includes('all-change-day-chunks/18-20.json'),
+  )
+  await page.locator('.london-transport input[type="range"]').fill('66600')
+  expect((await eveningChunkResponse).ok()).toBe(true)
+  await expect(page.locator('.london-time-copy')).toContainText('18:30')
+
+  const diagramResponse = page.waitForResponse((response) =>
+    response.url().includes('all-change-diagram.json'),
+  )
+  await page.getByRole('button', { name: 'Diagram layout' }).click()
+  expect((await diagramResponse).ok()).toBe(true)
+  await expect(experience).toHaveAttribute('data-layout-mix', '1.000', {
+    timeout: 5_000,
+  })
+})
+
 test('diagram geometry loads lazily and preserves the current station', async ({
   page,
 }) => {

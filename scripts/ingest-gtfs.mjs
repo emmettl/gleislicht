@@ -3,6 +3,9 @@ import { createWriteStream } from 'node:fs'
 import { mkdir } from 'node:fs/promises'
 import { basename, dirname, extname, join, resolve } from 'node:path'
 import { createInterface } from 'node:readline'
+import { chunkNetworkSnapshot } from './chunk-network-snapshot.mjs'
+
+export { chunkNetworkSnapshot } from './chunk-network-snapshot.mjs'
 
 const DEFAULT_OUTPUT = 'public/data/swiss-rail-morning.json'
 const DEFAULT_HUB_OUTPUT = 'public/data/swiss-hub-day.json'
@@ -498,51 +501,6 @@ async function writeJson(filePath, value) {
     output.once('finish', resolvePromise)
     output.end(JSON.stringify(value))
   })
-}
-
-export function chunkNetworkSnapshot(snapshot, chunkSeconds, chunkDirectoryName) {
-  if (!Number.isFinite(chunkSeconds) || chunkSeconds <= 0) {
-    throw new Error('Chunk duration must be a positive number of seconds')
-  }
-  const chunks = []
-  for (
-    let windowStart = snapshot.metadata.windowStart;
-    windowStart < snapshot.metadata.windowEnd;
-    windowStart += chunkSeconds
-  ) {
-    const windowEnd = Math.min(
-      snapshot.metadata.windowEnd,
-      windowStart + chunkSeconds,
-    )
-    const startHour = String(Math.floor(windowStart / 3600)).padStart(2, '0')
-    const endHour = String(Math.ceil(windowEnd / 3600)).padStart(2, '0')
-    const id = `${startHour}-${endHour}`
-    const trains = snapshot.trains.filter(
-      (train) => train.start <= windowEnd && train.end >= windowStart,
-    )
-    chunks.push({
-      descriptor: {
-        id,
-        windowStart,
-        windowEnd,
-        path: `${chunkDirectoryName}/${id}.json`,
-        tripCount: trains.length,
-      },
-      payload: { windowStart, windowEnd, trains },
-    })
-  }
-
-  return {
-    manifest: {
-      metadata: snapshot.metadata,
-      bounds: snapshot.bounds,
-      stops: snapshot.stops,
-      edges: snapshot.edges,
-      tripCount: snapshot.trains.length,
-      chunks: chunks.map(({ descriptor }) => descriptor),
-    },
-    chunks,
-  }
 }
 
 async function writeChunkedNetworkSnapshot(output, snapshot, chunkHours) {

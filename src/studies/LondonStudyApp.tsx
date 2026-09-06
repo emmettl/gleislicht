@@ -15,11 +15,19 @@ import {
   formatServiceTime,
   positionForTrain,
   type NetworkRouteIndexEntry,
+  type NetworkDayChunk,
+  type NetworkDayChunkDescriptor,
+  type NetworkDayManifest,
   type NetworkSnapshot,
   type NetworkTrain,
   type ServiceCategory,
   type StationIndexEntry,
 } from '../domain/network.ts'
+import {
+  adjacentDayChunks,
+  dayChunkForTime,
+  networkSnapshotForDayChunk,
+} from '../domain/network-day.ts'
 import {
   spatialLayoutCoverage,
   type SpatialLayoutSnapshot,
@@ -61,6 +69,8 @@ const LABEL_MODES: Readonly<Record<TrainLabelMode, TrainLabelMode>> = {
 
 const LAYOUT_TRANSITION_DURATION_MS = 1_300
 const LAYOUT_TRANSITION_STEPS = 24
+
+type StudyWindow = 'morning' | 'day'
 
 const LONDON_CATEGORIES: readonly {
   id: ServiceCategory
@@ -115,6 +125,26 @@ function stationCentre(
   ]
 }
 
+async function verifiedDayChunk(
+  response: Response,
+  descriptor: NetworkDayChunkDescriptor,
+): Promise<NetworkDayChunk> {
+  const bytes = await response.arrayBuffer()
+  if (descriptor.bytes !== undefined && bytes.byteLength !== descriptor.bytes) {
+    throw new Error(`Day chunk ${descriptor.id} has an unexpected size`)
+  }
+  if (descriptor.sha256) {
+    const digest = await crypto.subtle.digest('SHA-256', bytes)
+    const actual = [...new Uint8Array(digest)]
+      .map((value) => value.toString(16).padStart(2, '0'))
+      .join('')
+    if (actual !== descriptor.sha256) {
+      throw new Error(`Day chunk ${descriptor.id} failed its integrity check`)
+    }
+  }
+  return JSON.parse(new TextDecoder().decode(bytes)) as NetworkDayChunk
+}
+
 function searchChoices(
   query: string,
   snapshot: NetworkSnapshot,
@@ -143,7 +173,13 @@ function searchChoices(
 }
 
 export function LondonStudyApp({ edition }: { readonly edition: LondonEdition }) {
-  const [network, setNetwork] = useState<NetworkSnapshot>()
+  const [morningNetwork, setMorningNetwork] = useState<NetworkSnapshot>()
+  const [studyWindow, setStudyWindow] = useState<StudyWindow>('morning')
+  const [dayManifest, setDayManifest] = useState<NetworkDayManifest>()
+  const [dayChunks, setDayChunks] = useState<
+    Readonly<Record<string, NetworkDayChunk>>
+  >({})
+  const [dayError, setDayError] = useState(false)
   const [geography, setGeography] = useState<LondonGeographySnapshot>()
   const [loadError, setLoadError] = useState(false)
   const [time, setTime] = useState(edition.defaultNetworkTime)
@@ -187,7 +223,7 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
       }),
     ])
       .then(([nextNetwork, nextGeography]) => {
-        setNetwork(nextNetwork)
+        setMorningNetwork(nextNetwork)
         setGeography(nextGeography)
         setTime(nextNetwork.metadata.focusTime)
       })
@@ -198,6 +234,80 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
       })
     return () => controller.abort()
   }, [edition.data.opening.geography, edition.data.opening.network])
+
+  const dayChunkDescriptor = useMemo(
+    () => (dayManifest ? dayChunkForTime(dayManifest, time) : undefined),
+    [dayManifest, time],
+  )
+  const activeDayChunk = dayChunkDescriptor
+    ? dayChunks[dayChunkDescriptor.id]
+    : undefined
+  const dayLoading = studyWindow === 'day' && !dayError && !activeDayChunk
+  const network = useMemo(
+    () =>
+      studyWindow === 'day' && dayManifest
+        ? networkSnapshotForDayChunk(dayManifest, activeDayChunk)
+        : morningNetwork,
+    [activeDayChunk, dayManifest, morningNetwork, studyWindow],
+  )
+
+  useEffect(() => {
+    if (studyWindow !== 'day' || dayManifest) return
+    const controller = new AbortController()
+    fetch(editionDataUrl(edition.data.opening.dayManifest), {
+      signal: controller.signal,
+    })
+      .then((response) => {
+        if (!response.ok) throw new Error(`Day manifest returned ${response.status}`)
+        return response.json() as Promise<NetworkDayManifest>
+      })
+      .then(setDayManifest)
+      .catch((error: unknown) => {
+        if (error instanceof DOMException && error.name === 'AbortError') return
+        console.error('Unable to load the All Change day manifest', error)
+        setDayError(true)
+      })
+    return () => controller.abort()
+  }, [dayManifest, edition.data.opening.dayManifest, studyWindow])
+
+  useEffect(() => {
+    if (
+      studyWindow !== 'day' ||
+      !dayManifest ||
+      !dayChunkDescriptor
+    ) {
+      return
+    }
+    const currentMissing = !dayChunks[dayChunkDescriptor.id]
+    const targets = currentMissing
+      ? [dayChunkDescriptor]
+      : adjacentDayChunks(dayManifest, dayChunkDescriptor).filter(
+          (descriptor) => !dayChunks[descriptor.id],
+        )
+    if (!targets.length) return
+    const controller = new AbortController()
+    Promise.all(
+      targets.map(async (descriptor) => {
+        const response = await fetch(editionDataUrl(descriptor.path), {
+          signal: controller.signal,
+        })
+        if (!response.ok) throw new Error(`Day chunk returned ${response.status}`)
+        return [descriptor.id, await verifiedDayChunk(response, descriptor)] as const
+      }),
+    )
+      .then((entries) => {
+        setDayChunks((current) => ({
+          ...current,
+          ...Object.fromEntries(entries),
+        }))
+      })
+      .catch((error: unknown) => {
+        if (error instanceof DOMException && error.name === 'AbortError') return
+        console.error('Unable to load an All Change day chunk', error)
+        if (currentMissing) setDayError(true)
+      })
+    return () => controller.abort()
+  }, [dayChunkDescriptor, dayChunks, dayManifest, studyWindow])
 
   const animateLayout = useCallback((target: number) => {
     cancelAnimationFrame(layoutFrameRef.current)
@@ -358,6 +468,19 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
     setSearchOpen(false)
   }, [])
 
+  const activateStudyWindow = useCallback(
+    (nextWindow: StudyWindow) => {
+      if (nextWindow === studyWindow) return
+      clearSelection()
+      setDayError(false)
+      setStudyWindow(nextWindow)
+      if (nextWindow === 'morning') {
+        setTime(edition.defaultNetworkTime)
+      }
+    },
+    [clearSelection, edition.defaultNetworkTime, studyWindow],
+  )
+
   const selectStation = useCallback(
     (station: StationIndexEntry) => {
       setSelectedStation(station)
@@ -448,11 +571,17 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
       : selectedTrain
         ? `${formatServiceTime(selectedTrain.start)}–${formatServiceTime(selectedTrain.end)} · ${selectedTrain.headsign}`
         : undefined
+  const scheduledJourneyCount =
+    studyWindow === 'day' && dayManifest
+      ? dayManifest.tripCount
+      : network?.trains.length
 
   return (
     <main
       className={`experience view-network london-experience${selectedStation || selectedRoute || selectedTrain || selectedCategory ? ' has-selection' : ''}`}
       data-spatial-layout={layout}
+      data-study-window={studyWindow}
+      data-day-loading={dayLoading}
       data-layout-mix={layoutMix.toFixed(3)}
       data-layout-transitioning={layoutTransitioning}
     >
@@ -501,7 +630,9 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
         </div>
         <div className="london-study-mark">
           <span>{edition.identity.descriptor}</span>
-          <small>Rail study · 06:45–08:45</small>
+          <small>
+            Rail study · {studyWindow === 'day' ? '24-hour Friday' : '06:45–08:45'}
+          </small>
         </div>
       </header>
 
@@ -514,6 +645,7 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
             <button
               key={option.id}
               type="button"
+              aria-label={`${option.label} layout`}
               aria-pressed={layout === option.id}
               aria-keyshortcuts={option.id === 'diagram' ? 'D' : 'G'}
               aria-busy={loading}
@@ -521,14 +653,43 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
               title={available ? option.label : `${option.label} layout is unavailable`}
               onClick={() => available && activateLayout(option.id, artifact)}
             >
-              {option.label}
+              <span className="london-wide-label">{option.label}</span>
+              <span className="london-mobile-label">
+                {option.id === 'geographic' ? 'Geo' : 'Map'}
+              </span>
               {loading && <small>Loading</small>}
             </button>
           )
         })}
+        <span className="london-switch-divider" aria-hidden="true" />
+        <button
+          type="button"
+          aria-label="Morning study"
+          aria-pressed={studyWindow === 'morning'}
+          onClick={() => activateStudyWindow('morning')}
+        >
+          <span className="london-wide-label">Morning</span>
+          <span className="london-mobile-label">2H</span>
+        </button>
+        <button
+          type="button"
+          aria-label="24-hour study"
+          aria-pressed={studyWindow === 'day'}
+          aria-busy={studyWindow === 'day' && dayLoading}
+          onClick={() => activateStudyWindow('day')}
+        >
+          <span className="london-wide-label">24 hours</span>
+          <span className="london-mobile-label">24H</span>
+          {studyWindow === 'day' && dayLoading && <small>Loading</small>}
+        </button>
         {layoutError && (
           <span className="london-layout-status" role="status">
             Diagram unavailable
+          </span>
+        )}
+        {dayError && (
+          <span className="london-day-status" role="status">
+            Full day unavailable
           </span>
         )}
       </section>
@@ -625,8 +786,8 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
               <strong>{activeTrainCount.toLocaleString('en-GB')}</strong>
               <span>trains in motion</span>
             </div>
-            <p>{selectedStation?.name ?? selectedRoute?.name ?? (selectedTrain ? `${selectedTrain.route} ${selectedTrain.shortName}` : 'Morning lattice')}</p>
-            <small>{selectedDescription ?? `${network.trains.length.toLocaleString('en-GB')} scheduled journeys`}</small>
+            <p>{selectedStation?.name ?? selectedRoute?.name ?? (selectedTrain ? `${selectedTrain.route} ${selectedTrain.shortName}` : studyWindow === 'day' ? '24-hour lattice' : 'Morning lattice')}</p>
+            <small>{selectedDescription ?? `${scheduledJourneyCount?.toLocaleString('en-GB')} scheduled journeys`}</small>
           </>
         ) : (
           <p>Drawing London…</p>
@@ -683,7 +844,11 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
           <div className="london-time-copy">
             <span>{formatServiceTime(network.metadata.windowStart)}</span>
             <strong>{formatServiceTime(time)}</strong>
-            <span>{formatServiceTime(network.metadata.windowEnd)}</span>
+            <span>
+              {network.metadata.windowEnd === 86_400
+                ? '24:00'
+                : formatServiceTime(network.metadata.windowEnd)}
+            </span>
           </div>
           <label>
             <span className="sr-only">Time of day</span>

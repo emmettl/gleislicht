@@ -2,7 +2,7 @@
 
 A cinematic browser visualisation of Switzerland's railway network, built from open timetable data and real topography. The long-term idea is to move between a national network view and intimate, camera-led journeys through a luminous low-poly landscape.
 
-**Motion Studies** is the series. **Gleislicht** is work 005: the Swiss study, not the name every future city must inherit. The shared runtime owns motion, playback, search, selection, cameras and rendering; a typed edition supplies its own title, place identity, time defaults, theme and compact data catalogue. Work 006 is **All Change — A London motion study**, beginning with a rail-led weekday morning rather than a fork or reskin of the Swiss work. See [the Motion Studies architecture](./docs/EDITIONS.md) and [All Change plan](./docs/LONDON.md).
+**Motion Studies** is the series. **Gleislicht** is work 005: the Swiss study, not the name every future city must inherit. The shared runtime owns motion, playback, search, selection, cameras and rendering; a typed edition supplies its own title, place identity, time defaults, theme and compact data catalogue. Work 006 is **All Change — A London motion study**, with a fast rail-led weekday morning and a separately loaded progressive 24-hour Friday rather than a fork or reskin of the Swiss work. See [the Motion Studies architecture](./docs/EDITIONS.md) and [All Change plan](./docs/LONDON.md).
 
 Public studies: [Gleislicht](https://emmettl.github.io/gleislicht/) · [All Change preview](https://emmettl.github.io/gleislicht/london.html)
 

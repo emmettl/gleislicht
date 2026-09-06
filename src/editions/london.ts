@@ -23,6 +23,7 @@ export interface LondonDataCatalog extends EditionDataCatalog {
   readonly opening: {
     readonly network: string
     readonly geography: string
+    readonly dayManifest: string
     readonly layouts: readonly [
       {
         readonly id: 'geographic'
@@ -58,6 +59,7 @@ export const LONDON_EDITION: LondonEdition = {
     opening: {
       network: 'all-change-rail-led-morning.json',
       geography: 'all-change-geography.json',
+      dayManifest: 'all-change-day-manifest.json',
       layouts: [
         {
           id: 'geographic',

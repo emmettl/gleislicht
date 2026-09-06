@@ -56,6 +56,9 @@ describe('Motion Studies editions', () => {
     expect(LONDON_EDITION.data.opening.network).toBe(
       'all-change-rail-led-morning.json',
     )
+    expect(LONDON_EDITION.data.opening.dayManifest).toBe(
+      'all-change-day-manifest.json',
+    )
     expect(LONDON_EDITION.data.opening.layouts).toEqual([
       { id: 'geographic', label: 'Geography', kind: 'geographic' },
       {
