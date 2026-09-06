@@ -83,6 +83,9 @@ export interface LondonDataCatalog extends EditionDataCatalog {
     readonly focus: readonly [longitude: number, latitude: number]
     readonly cameraScale: number
   }
+  readonly operations: {
+    readonly latest: string
+  }
 }
 
 export type LondonEdition = MotionStudyEdition<LondonDataCatalog> & {
@@ -134,6 +137,10 @@ export const LONDON_EDITION: LondonEdition = {
       dayManifest: 'all-change-bus-day-manifest.json',
       focus: [-0.066, 51.54],
       cameraScale: 0.28,
+    },
+    operations: {
+      latest:
+        'https://motionstudies-london-operations.louis-emmett.workers.dev/operations.json',
     },
   },
 }

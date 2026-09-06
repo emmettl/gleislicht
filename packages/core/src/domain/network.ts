@@ -40,6 +40,13 @@ export interface NetworkTrain {
   readonly stops: readonly TrainStop[]
   readonly pathSegments?: readonly (number | null)[]
   readonly realtime?: RealtimeTrainState
+  readonly operations?: ObservedTrainState
+}
+
+export interface ObservedTrainState {
+  readonly kind: 'prediction-derived'
+  readonly observedAt: string
+  readonly vehicleId: string
 }
 
 export interface RealtimeTrainState {

@@ -3026,7 +3026,7 @@ function TrainSwarm({
       mutableColors[offset + 1] = color.g * intensity
       mutableColors[offset + 2] = color.b * intensity
       activeCounts[markerKind] += 1
-      if (train.realtime?.status === 'adjusted') {
+      if (train.realtime?.status === 'adjusted' || train.operations) {
         const realtimePositions = realtimeGeometry.getAttribute('position')
           .array as Float32Array
         realtimePositions.set(position, activeRealtimeCount * 3)

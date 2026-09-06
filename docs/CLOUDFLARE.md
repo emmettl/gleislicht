@@ -77,6 +77,19 @@ npm run data:road:compile -- --date=2026-09-06
 
 The exporter reads the adjacent UTC partitions needed to cover the requested Europe/Zurich day, decompresses the objects locally and writes owner-only files below the ignored `recordings/astra/` directory. Use `--scope=national` after national collection begins. The access key needs object-read permission only; it must not be committed or added to a Vite variable.
 
+The same read-only R2 credentials export a London civil day without exposing the TfL key or making the bucket public:
+
+```sh
+CLOUDFLARE_ACCOUNT_ID=... \
+R2_ACCESS_KEY_ID=... \
+R2_SECRET_ACCESS_KEY=... \
+npm run data:london:operations:export -- --date=2026-09-07
+
+npm run data:london:operations:compile -- --date=2026-09-07
+```
+
+The London compiler accepts the adjacent UTC partitions needed by `Europe/London`, requires 1,200 unique minutes by default and writes integrity-hashed two-hour chunks. Missing minutes remain missing; the browser must not interpolate across an unrecorded gap as though it were an observation.
+
 Do not add an automatic deletion rule until R2 download and daily compilation have been exercised. Once that path is proven, retain compiled, audited day chunks and expire raw national minute objects on an explicit rolling window. The GTFS latest object is overwritten and needs no lifecycle rule.
 
 ## Local checks

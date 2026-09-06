@@ -90,6 +90,10 @@ Run `npm run data:london:proofs` to refresh the bounded adapter proofs, or use t
 
 The three-line collector uses four TfL requests per minute. It works within the anonymous allowance for initial verification, while `TFL_API_KEY` should be installed as the Worker secret for sustained recording. See [CLOUDFLARE.md](./CLOUDFLARE.md).
 
+The first browser slice exposes a compact **PLAN / OBSERVED** control. OBSERVED adopts the current London clock, loads the matching static day topology and projects each TfL vehicle only when its ordered predicted stops match a known route pattern. Ringed lights distinguish operational observations from the planned lattice; unmatched vehicles remain counted in the status card instead of being forced onto a plausible-looking line. The timeline and tempo controls rest while the latest snapshot refreshes every 30 seconds.
+
+After a civil day has accumulated, `npm run data:london:operations:export -- --date=YYYY-MM-DD` downloads the adjacent UTC R2 partitions into the ignored owner-only recording directory. `npm run data:london:operations:compile -- --date=YYYY-MM-DD` then requires at least 1,200 unique minutes by default and emits integrity-hashed two-hour chunks plus a small day manifest. Gaps remain explicit; the compiler never manufactures missing observations.
+
 `npm run data:london:catalogue` separately discovers every currently advertised line in the five rail-led modes. Its compact committed catalogue preserves 20 line identities and 125 directional branch definitions, each with ordered NaPTAN stops and a geometry hash. Three NaPTAN hierarchy samples retain interchange, entrance and platform children without inventing absent platform names.
 
 TfL documents that its Journey Planner timetable feed covers Underground, bus, DLR, tram, cable car and river—not Elizabeth line or London Overground. Both rail modes do have current official public timetable PDFs. A separate grid extractor records each PDF hash and validity period, then accepts only columns with both requested endpoints, monotonic times and calls in official route order. Limited-stop columns are explicit: their path geometry spans the omitted non-calling stations rather than fabricating calls. It also understands repeated grids, side-by-side tables and TfL's weekday heading variants. Regenerating the lattice requires Poppler's `pdftotext`; the compiled JSON remains dependency-free.
@@ -208,8 +212,10 @@ Sources:
 
 ### LDN 4 — Observed London
 
-- Add realtime predictions only after static timetable identity and line geometry are stable.
-- Record bounded historical studies for deterministic playback rather than presenting current API predictions as vehicle telemetry.
+- [x] Add a bounded, credential-holding TfL prediction collector after stabilising static timetable identity and line geometry.
+- [x] Add a first PLAN / OBSERVED browser slice with explicit prediction-derived positioning, staleness fallback and unmatched-identity accounting.
+- [x] Add an R2 export and integrity-hashed two-hour compiler path for a deterministic observed day.
+- Record and publish the first complete weekday study after at least 1,200 unique minutes have accumulated.
 - [x] Add an optional, same-clock aviation study with a lazy two-hour opening slice and a progressively loaded 24-hour replay.
 - [x] Reuse the restrained needle/trail grammar, category isolation, callsign/ICAO search, label policy, metrics and altitude-aware follow camera without making aviation part of the default payload.
 - [x] Add an independently lazy 24-hour motorway study from WebTRIS detector flow and speed, with ROAD isolation, corridor search and explicit non-tracking semantics.

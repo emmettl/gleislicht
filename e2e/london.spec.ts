@@ -132,6 +132,76 @@ test('station search selects and reveals a London interchange', async ({ page })
   await expect(search).toHaveValue('Whitechapel')
 })
 
+test('observed operations stay distinct from the planned timetable', async ({
+  page,
+}) => {
+  await page.route('**/motionstudies-london-operations.*/operations.json',
+    async (route) => {
+      await route.fulfill({
+        contentType: 'application/json',
+        body: JSON.stringify({
+          metadata: {
+            kind: 'observed-operations',
+            publisher: 'Transport for London',
+            sourceUrl: 'https://api.tfl.gov.uk/Line/{line}/Arrivals',
+            collectedAt: '2026-09-07T07:45:02.000Z',
+            scheduledAt: '2026-09-07T07:45:00.000Z',
+            lineIds: ['victoria', 'jubilee', 'elizabeth'],
+            model: 'TfL arrival predictions grouped by vehicle',
+          },
+          vehicles: [
+            {
+              id: 'victoria:test-vehicle',
+              lineId: 'victoria',
+              lineName: 'Victoria',
+              modeName: 'tube',
+              destinationName: 'Walthamstow Central Underground Station',
+              observedAt: '2026-09-07T07:45:00.000Z',
+              predictions: [
+                {
+                  stopId: '940GZZLUGPK',
+                  stopName: 'Green Park Underground Station',
+                  expectedArrival: '2026-09-07T07:46:00.000Z',
+                  secondsToStop: 60,
+                },
+                {
+                  stopId: '940GZZLUOXC',
+                  stopName: 'Oxford Circus Underground Station',
+                  expectedArrival: '2026-09-07T07:49:00.000Z',
+                  secondsToStop: 240,
+                },
+              ],
+            },
+          ],
+          lineStatuses: [
+            {
+              lineId: 'victoria',
+              lineName: 'Victoria',
+              severity: 10,
+              severityDescription: 'Good Service',
+            },
+          ],
+        }),
+      })
+    },
+  )
+
+  await page.getByRole('button', { name: 'Show observed TfL operations' }).click()
+  const experience = page.locator('.london-experience')
+  await expect(experience).toHaveAttribute('data-operations-mode', 'observed')
+  await expect(experience).toHaveAttribute('data-operations-ready', 'true')
+  await expect(page.locator('.london-status-card')).toContainText(
+    'vehicles observed',
+  )
+  await expect(page.locator('.london-status-card')).toContainText('1 matched')
+  await expect(page.locator('.london-footer')).toContainText('not GPS')
+  await expect(page.locator('.london-transport input[type="range"]')).toBeDisabled()
+
+  await page.getByRole('button', { name: 'Return to planned timetable' }).click()
+  await expect(experience).toHaveAttribute('data-operations-mode', 'plan')
+  await expect(page.locator('.london-transport input[type="range"]')).toBeEnabled()
+})
+
 test('the complete Friday loads progressively without changing the opening payload', async ({
   page,
 }) => {
