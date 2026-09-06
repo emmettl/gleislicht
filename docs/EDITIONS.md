@@ -26,11 +26,14 @@ An edition must provide:
 - a timezone and initial clock;
 - a national or city-scale opening network plus optional progressive day manifest;
 - boundary and water geometry appropriate to its scale;
+- optional alternate coordinate layouts that preserve stable stop, route and selection identity while changing the work's spatial logic;
 - zero or more regional, contrast, hub, air, road and terrain-corridor studies;
 - explicit source metadata inside every compiled artifact; and
 - a visual theme that preserves the Motion Studies family resemblance without erasing local character.
 
 The engine deliberately does not fetch GTFS, proprietary APIs or GIS services at runtime. Each adapter resolves licensing, identifiers, geometry and service-day semantics offline, then emits the existing edition-neutral snapshot contracts.
+
+Alternate layouts are edition data, not alternate networks. Playback owns one canonical service progress and samples each layout independently before blending positions. This lets an authored work move between geographic and topological space without duplicating journeys or losing time, search, selection and follow-camera state. Layout artifacts stay lazy and optional so editions without a meaningful second spatial language pay no transfer or runtime cost.
 
 ## Creating an edition
 

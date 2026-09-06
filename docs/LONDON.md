@@ -18,6 +18,34 @@ Start with one ordinary weekday from 06:45–08:45 and keep the first payload ra
 
 The first authored moment should show trains converging across central London while orbital and outer branches remain legible. A Thames-crossing follow view would provide the edition's first unmistakably London-specific composition.
 
+## Geography ↔ diagram
+
+London should be legible in two coordinate systems. **GEOGRAPHY** shows the physical city: real track geometry, distances, the Greater London boundary and the Thames. **DIAGRAM** is an independently authored, Beck-inspired topological composition: station order, interchange and line relationships take precedence over distance and bearing. It must evoke London's diagrammatic tradition without reproducing TfL's current map artwork.
+
+The switch is a continuous transformation, not a scene change. The clock, active vehicles, search result, selected service or station, label policy and playback state must survive it. Water and boundary geography recede as the diagram becomes dominant; interchange structure and restrained line identity become clearer. The Thames may remain as a simplified orienting stroke because it is meaningful in both Londons.
+
+### Runtime model
+
+- Physical longitude/latitude remains the canonical source coordinate and is never overwritten.
+- A separately loaded layout artifact maps stable stop or interchange IDs to authored diagram coordinates and supplies diagram paths for route branches. Platform children collapse onto their interchange node unless an authored study explicitly needs them.
+- Every moving service retains one canonical timetable/path progress. At a transition value `t`, the renderer samples the physical and diagram paths independently at that progress, then interpolates the two resulting positions. It must not interpolate raw path vertices: geographic and diagram paths have different vertex counts and meanings.
+- Static edges may be compiled into corresponding station-to-station spans with a shared normalized sample count, allowing the whole network to bend continuously without changing topology.
+- Selected stations and followed vehicles remain anchored near their pre-transition screen position. The camera interpolates between physical and diagram framing rather than resetting to a second home view.
+- Label anchors move with their nodes, but the accepted label set is frozen during the transformation and collision placement is recomputed once it settles. This prevents the map from sparkling as labels cross.
+
+### Authoring and validation
+
+The diagram layout should be generated offline and committed as a small deterministic artifact. An octilinear constraint solver may provide the first arrangement, but the finished result is an authored composition with explicit overrides for central interchanges, branches and the Thames. The compiler must verify that station order, branch membership, termini and interchange identity are identical in both layouts, while permitting only declared visual crossings.
+
+The first prototype should cover the complete rail-led morning lattice rather than a single showcase line; the value of the transformation is seeing the entire city's physical irregularity resolve into logical structure. Acceptance criteria are:
+
+- no vehicle jump, route reassignment or clock discontinuity during the morph;
+- the current selection remains visible and understandable throughout;
+- deterministic geometry and label results for recording and scrubbing;
+- a reversible keyboard- and touch-accessible **GEOGRAPHY / DIAGRAM** control;
+- a reduced-motion path that changes layout without a sweeping animation; and
+- mobile frame time and artifact size included in the London-specific performance gates.
+
 ## Adapter proofs
 
 The first compiled fixtures are deliberately smaller than the first visible edition. They exercise the shared network contract without entering Gleislicht's public payload or edition selector:
@@ -81,9 +109,12 @@ Sources:
 - [x] Hold the complete opening movement and geography fixtures below a 260 KiB compressed transfer ceiling.
 - Add a London-specific frame-time gate when the first visible edition scene exists.
 
-### LDN 2 — Day and pulse
+### LDN 2 — Day, pulse and dual geometry
 
 - Add progressively loaded 24-hour chunks.
+- Compile an independent Beck-inspired diagram layout with stable interchange identities and route topology.
+- Animate continuously between **GEOGRAPHY** and **DIAGRAM** without resetting time, selection or camera context.
+- Freeze label acceptance during the morph and validate reduced-motion, touch and keyboard behaviour.
 - Create hub studies for a small set of contrasting interchanges rather than simply ranking the largest stations.
 - Explore radial versus orbital pulse views and night-service transitions.
 
