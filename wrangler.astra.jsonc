@@ -15,6 +15,6 @@
   ],
   "vars": {
     "COLLECTING_ENABLED": "true",
-    "RECORDING_SCOPE": "a1-zurich"
+    "RECORDING_SCOPE": "national"
   }
 }

@@ -17,6 +17,7 @@ export interface AstraSnapshot {
     sourceUrl: string
     recordingScope?: string
     requestedStationCount?: number
+    invalidMeasurementValues?: number
   }
   measurements: AstraMeasurement[]
 }

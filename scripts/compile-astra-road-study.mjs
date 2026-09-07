@@ -25,22 +25,29 @@ function aggregateVehicleClass(measurements, flowKey, speedKey) {
     (measurement) =>
       Number.isFinite(measurement[flowKey]) &&
       measurement[flowKey] >= 0 &&
-      Number.isFinite(measurement[speedKey]) &&
-      measurement[speedKey] >= 0,
+      ((Number.isFinite(measurement[speedKey]) && measurement[speedKey] >= 0) ||
+        (measurement[flowKey] === 0 && measurement[speedKey] === undefined)),
   )
   if (!usable.length) return undefined
   const flow = usable.reduce((sum, measurement) => sum + measurement[flowKey], 0)
   const weightedSpeed = usable.reduce(
-    (sum, measurement) => sum + measurement[speedKey] * measurement[flowKey],
+    (sum, measurement) =>
+      sum + (measurement[flowKey] === 0 ? 0 : measurement[speedKey] * measurement[flowKey]),
     0,
+  )
+  const reportedSpeeds = usable.flatMap((measurement) =>
+    Number.isFinite(measurement[speedKey]) ? [measurement[speedKey]] : [],
   )
   return {
     flow,
     speed:
       flow > 0
         ? weightedSpeed / flow
-        : usable.reduce((sum, measurement) => sum + measurement[speedKey], 0) /
-          usable.length,
+        : reportedSpeeds.length
+          ? reportedSpeeds.reduce((sum, speed) => sum + speed, 0) / reportedSpeeds.length
+          // No vehicles means no measured mean speed. Zero is the numeric
+          // playback placeholder for this empty class, not an observation.
+          : 0,
   }
 }
 

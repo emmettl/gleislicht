@@ -56,11 +56,13 @@ Then open the realtime `/realtime.json` endpoint. A healthy response has `metada
 
 The public `/health` response contains only the current timestamps, service date and static-feed version. The Pages workflow uses it as a deployment gate: it regenerates the current Swiss service day and enables `VITE_GLEISLICHT_REALTIME_URL` only when that artifact exactly matches a fresh Worker snapshot. A scheduled Pages run performs the same check every morning. GitHub and Cloudflare credentials remain separate; the Worker URL is public configuration.
 
-Use the Cloudflare dashboard's R2 object browser to confirm that a current gzip object exists under `astra/a1-zurich/<UTC date>/`. Do not make the bucket public.
+Use the Cloudflare dashboard's R2 object browser to confirm that a current gzip object exists under `astra/national/<UTC date>/`. Do not make the bucket public.
 
 ## Scope and retention
 
-The first deployment deliberately records only the eleven A1 Zürich groups. After it has produced a complete day, `RECORDING_SCOPE` can be changed to `national` in `wrangler.astra.jsonc` and the Worker redeployed. National mode derives 379 accepted station filters from the committed topology at build time.
+The recorder was expanded to `national` on 7 September 2026 after verifying 991 A1 Zürich minute snapshots spanning 16½ hours, with two missing minutes. National mode derives 379 accepted station filters from the committed topology at build time and keeps the same single request per minute. The original A1 archive remains under `astra/a1-zurich/`; new recordings go under `astra/national/`. Earlier national conditions cannot be recovered from the latest-minute feed.
+
+National coverage means the accepted federal counters on the national-road topology, not every Swiss road. The topology has 718 accepted directional sites and 609 counter-to-counter sections; unmatched federal sites remain excluded.
 
 To export a complete Swiss civil day for compilation, create an R2 object read token scoped to `gleislicht-observations`, then expose its S3-compatible values only to the command process:
 
@@ -68,12 +70,12 @@ To export a complete Swiss civil day for compilation, create an R2 object read t
 CLOUDFLARE_ACCOUNT_ID=... \
 R2_ACCESS_KEY_ID=... \
 R2_SECRET_ACCESS_KEY=... \
-npm run data:road:export -- --date=2026-09-06
+npm run data:road:export -- --scope=national --date=2026-09-07
 
-npm run data:road:compile -- --date=2026-09-06
+npm run data:road:compile:national -- --date=2026-09-07
 ```
 
-The exporter reads the adjacent UTC partitions needed to cover the requested Europe/Zurich day, decompresses the objects locally and writes owner-only files below the ignored `recordings/astra/` directory. Use `--scope=national` after national collection begins. The access key needs object-read permission only; it must not be committed or added to a Vite variable.
+The exporter reads the adjacent UTC partitions needed to cover the requested Europe/Zurich day, decompresses the objects locally and writes owner-only files below the ignored `recordings/astra-national/` directory. Use `--scope=a1-zurich` and `data:road:compile` to export and compile the earlier corridor archive in `recordings/astra/`. The access key needs object-read permission only; it must not be committed or added to a Vite variable.
 
 Do not add an automatic deletion rule until R2 download and daily compilation have been exercised. Once that path is proven, retain compiled, audited day chunks and expire raw national minute objects on an explicit rolling window. The GTFS latest object is overwritten and needs no lifecycle rule.
 

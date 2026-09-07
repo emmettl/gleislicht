@@ -60,6 +60,21 @@ describe('ASTRA measured-data recorder', () => {
     )
   })
 
+  it('omits and counts invalid upstream values without dropping the national minute', () => {
+    const invalidSpeed = responseXml.replace('<dx223:speed>67</dx223:speed>', '<dx223:speed>-1</dx223:speed>')
+    const snapshot = parseMeasuredData(invalidSpeed, '2026-09-05T06:46:21Z')
+    expect(snapshot.metadata.invalidMeasurementValues).toBe(1)
+    expect(snapshot.measurements[0].heavySpeedKmh).toBeUndefined()
+    expect(snapshot.measurements[0].heavyFlowPerHour).toBe(60)
+    expect(snapshot.measurements[0].lightSpeedKmh).toBe(76.5)
+    expect(() => validateMeasuredData(snapshot)).not.toThrow()
+  })
+
+  it('does not turn an empty upstream field into a measured zero', () => {
+    const emptyFlow = responseXml.replace('<dx223:vehicleFlowRate>60</dx223:vehicleFlowRate>', '<dx223:vehicleFlowRate> </dx223:vehicleFlowRate>')
+    expect(parseMeasuredData(emptyFlow).measurements[0].heavyFlowPerHour).toBeUndefined()
+  })
+
   it('rejects SOAP faults and empty publications', () => {
     expect(() =>
       parseMeasuredData('<Envelope><faultstring>PRV_OFFLINE</faultstring></Envelope>'),

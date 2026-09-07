@@ -17,8 +17,10 @@ function textValue(xml, localName) {
 }
 
 function numericValue(xml, localName) {
-  const value = Number(textValue(xml, localName))
-  return Number.isFinite(value) ? value : undefined
+  const text = textValue(xml, localName)
+  if (!text) return undefined
+  const value = Number(text)
+  return Number.isFinite(value) && value >= 0 ? value : undefined
 }
 
 export function buildMeasuredDataRequest(siteReferences, requestedAt) {
@@ -45,6 +47,7 @@ export function parseMeasuredData(xml, receivedAt = new Date().toISOString()) {
     ),
   ]
 
+  let invalidMeasurementValues = 0
   const measurements = siteBlocks.flatMap(([, block]) => {
     const siteId = block.match(
       /<(?:[\w-]+:)?measurementSiteReference\b[^>]*\bid="([^"]+)"[^>]*>/,
@@ -56,12 +59,17 @@ export function parseMeasuredData(xml, receivedAt = new Date().toISOString()) {
       /<(?:[\w-]+:)?measuredValue\b[^>]*\bindex="(\d+)"[^>]*>([\s\S]*?)<\/(?:[\w-]+:)?measuredValue>/g,
     )) {
       const index = Number(match[1])
-      const value =
+      const field =
         index === 11 || index === 21
-          ? numericValue(match[2], 'vehicleFlowRate')
+          ? 'vehicleFlowRate'
           : index === 12 || index === 22
-            ? numericValue(match[2], 'speed')
+            ? 'speed'
             : undefined
+      if (!field) continue
+      const value = numericValue(match[2], field)
+      if (textValue(match[2], field) && value === undefined) {
+        invalidMeasurementValues += 1
+      }
       if (value !== undefined) values[index] = value
     }
     return [
@@ -90,6 +98,7 @@ export function parseMeasuredData(xml, receivedAt = new Date().toISOString()) {
         : undefined,
       measurementKind: 'recorded',
       sourceUrl: SOAP_ENDPOINT,
+      ...(invalidMeasurementValues ? { invalidMeasurementValues } : {}),
     },
     measurements,
   }

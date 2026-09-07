@@ -12,7 +12,7 @@ AUTO is Gleislicht's third transport grammar. It does not pretend to track cars.
 
 The first study follows the A1 through the Zürich region, from the Aargau side through Zürich to Winterthur. Its path is anchored by georeferenced sites in the current ASTRA / Federal Roads Office Measurement Site Table. It shares the national 06:45–08:45 clock and is a separately loaded static JSON artifact, so the railway-first opening payload is unchanged.
 
-The committed traffic values are **representative calibration**, not historical observations. ASTRA's realtime feed retains only the latest complete minute. Gleislicht has not yet accumulated an authenticated archive, so the prototype uses deterministic morning curves to test the visual and interaction model over authentic detector geography.
+The committed traffic values are **representative calibration**, not historical observations. ASTRA's realtime feed retains only the latest complete minute. The prototype uses deterministic morning curves to test the visual and interaction model over authentic detector geography. Authenticated A1 collection began on 6 September 2026 and was expanded to national collection on 7 September; those archives do not retroactively turn the committed calibration into observations.
 
 The artifact says this in machine-readable metadata:
 
@@ -59,7 +59,7 @@ Coordinates in the counter table are coarse, so a match is considered directly h
 
 The repository includes an authenticated recorder for ASTRA's DATEX II 2.3 SOAP feed. It asks only for the eleven A1 counter groups used by this study, makes one pull after each minute publication, and writes append-only snapshots with receipt time, source publication time and detector-table version. The API key is read only from the process environment and the ignored recording directory is created with owner-only files.
 
-For unattended collection, `astra-worker/index.ts` provides the equivalent Cloudflare Cron Worker. It waits until 24 seconds after each nominal minute, writes gzip-compressed append-only snapshots to the private `gleislicht-observations` R2 bucket and leaves the local recorder unchanged. Its default scope is `a1-zurich`; change `RECORDING_SCOPE` in `wrangler.astra.jsonc` to `national` only after the A1 deployment has been observed successfully. See [CLOUDFLARE.md](./CLOUDFLARE.md).
+For unattended collection, `astra-worker/index.ts` provides the equivalent Cloudflare Cron Worker. It waits until 24 seconds after each nominal minute, writes gzip-compressed append-only snapshots to the private `gleislicht-observations` R2 bucket and leaves the local recorder unchanged. The deployed configuration uses `national`, following verification of the initial A1 archive. It records all 379 accepted station groups in one filtered request per minute. See [CLOUDFLARE.md](./CLOUDFLARE.md).
 
 Completed R2 days can be pulled into the same ignored local recording format with `npm run data:road:export -- --date=YYYY-MM-DD`. The exporter uses read-only S3-compatible R2 credentials and deliberately fetches adjacent UTC partitions so a Europe/Zurich civil day is not clipped at midnight.
 
@@ -74,7 +74,7 @@ ASTRA_API_KEY=... npm run data:road:record:watch
 ASTRA_API_KEY=... npm run data:road:record:watch -- --scope=national
 ```
 
-National recording derives its explicit station filters from the committed topology and records the scope and requested-station count in every snapshot. It still makes one filtered request per minute; it does not multiply the polling cadence by the number of roads. The national archive is kept separate from the A1 study by default.
+National recording derives its explicit station filters from the committed topology and records the scope and requested-station count in every snapshot. It still makes one filtered request per minute; it does not multiply the polling cadence by the number of roads. The national archive is kept separate from the A1 study by default. Negative or nonnumeric flow/speed values are omitted and counted in `metadata.invalidMeasurementValues` so one bad detector field does not discard a national minute. Missing fields remain missing; stale publications and repeated detector records still fail validation.
 
 Once at least 60 complete national minutes exist, the national compiler validates continuity and coverage, aggregates parallel lanes at each accepted directional site and emits a small manifest plus time chunks. The browser loads only the current chunk and then its neighbours; it joins compact site samples to the 609 committed sections locally:
 
@@ -84,9 +84,11 @@ npm run data:road:compile:national -- \
   --date=2026-09-05
 ```
 
+The national renderer uses at most 1,500 light and 520 heavy vehicle marks across the network. Combined with hourly data chunks loaded on demand, this bounds the client workload while preserving one-minute source measurements. Road selection increases the visual sampling density of the selected corridor. These limits are implementation bounds, not a substitute for checking frame times on real devices.
+
 The output is deliberately separate from the public calibration until its date can be paired with matching rail and air studies and reviewed on real devices. Once the manifest is present, AUTO detects it automatically and replaces the calibration particles with observed minute conditions while retaining the disclosure that individual vehicles are synthetic.
 
-Each directional cross-section can contain several lanes. The compiler sums those parallel lane flows and uses a flow-weighted lane speed. It then takes the median across successive counter sites, because summing those sites would count essentially the same motorway stream repeatedly. A minute is usable only when at least 60% of the configured sites in both directions report all four light/heavy flow and speed values.
+Each directional cross-section can contain several lanes. The compiler sums those parallel lane flows and uses a flow-weighted lane speed. The A1 compiler then takes the median across successive counter sites, because summing those sites would count essentially the same motorway stream repeatedly. A minute is usable only when at least 60% of the configured sites in both A1 directions, or 60% of accepted national directional sites, report usable light and heavy conditions. An explicitly zero vehicle flow remains usable when mean speed is absent: the compiled numeric speed is zero as an empty-class playback placeholder. Missing flows and positive flows without speed remain incomplete. The first national samples had approximately 88% usable directional-site coverage.
 
 ```sh
 npm run data:road:compile -- \

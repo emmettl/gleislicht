@@ -102,4 +102,17 @@ describe('national ASTRA study compilation', () => {
     ])
     expect(split.chunks[0].body.minutes).toHaveLength(2)
   })
+
+  it('retains national sites reporting no heavy vehicles without inventing missing flows', () => {
+    const recorded = snapshot('45')
+    for (const lane of recorded.measurements) {
+      lane.heavyFlowPerHour = 0
+      delete lane.heavySpeedKmh
+    }
+    delete recorded.measurements[0].lightFlowPerHour
+    const study = compileNationalRoadStudy([recorded], topology, { minimumSamples: 1 })
+    expect(study.minutes[0][1]).toHaveLength(2)
+    expect(study.metadata.minimumSiteCoverage).toBe(0.667)
+    expect(study.minutes[0][1][0]).toEqual([1, 1100, 75, 0, 0])
+  })
 })

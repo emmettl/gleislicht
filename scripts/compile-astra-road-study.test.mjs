@@ -63,6 +63,40 @@ describe('ASTRA recorded road-study compiler', () => {
     expect(result.corridors[0].directions[0].samples).toHaveLength(2)
   })
 
+  it('accepts explicit zero flow without speed and preserves moving-lane speeds', () => {
+    const moving = measurement('moving', '2026-09-07T14:14:00Z')
+    const empty = {
+      siteId: 'empty',
+      measurementTime: moving.measurementTime,
+      lightFlowPerHour: 0,
+      heavyFlowPerHour: 0,
+    }
+    expect(aggregateDirection([empty], [['empty']])).toMatchObject({
+      coverage: 1,
+      lightFlowPerHour: 0,
+      lightSpeedKmh: 0,
+      heavyFlowPerHour: 0,
+      heavySpeedKmh: 0,
+    })
+    expect(aggregateDirection([empty, moving], [['empty', 'moving']])).toMatchObject({
+      lightFlowPerHour: moving.lightFlowPerHour,
+      lightSpeedKmh: moving.lightSpeedKmh,
+      heavyFlowPerHour: moving.heavyFlowPerHour,
+      heavySpeedKmh: moving.heavySpeedKmh,
+    })
+  })
+
+  it('keeps missing flow and positive flow without speed incomplete', () => {
+    for (const invalid of [
+      { lightSpeedKmh: undefined },
+      { heavyFlowPerHour: undefined },
+      { heavyFlowPerHour: 0, heavySpeedKmh: -1 },
+    ]) {
+      const lane = { ...measurement('lane', '2026-09-07T14:14:00Z'), ...invalid }
+      expect(aggregateDirection([lane], [['lane']])).toEqual({ coverage: 0 })
+    }
+  })
+
   it('rejects a gap and an incomplete recording', () => {
     expect(() =>
       compileRoadStudy(

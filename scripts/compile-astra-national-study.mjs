@@ -143,12 +143,12 @@ export function compileNationalRoadStudy(
       measurementSiteTableVersion: tableVersion,
       measurementKind: 'recorded',
       model: 'Section traffic-flow reconstruction / no vehicle tracking',
+      note: 'Zero-flow classes may omit mean speed; these use zero as an empty-class playback placeholder. Missing flows and positive flows without speed remain excluded.',
       sampleIntervalSeconds: 60,
       acceptedSites: acceptedSites.length,
       sections: sections.length,
-      minimumSiteCoverage: rounded(
-        Math.min(...records.map(({ coverage }) => coverage)),
-      ),
+      minimumSiteCoverage:
+        Math.round(Math.min(...records.map(({ coverage }) => coverage)) * 1_000) / 1_000,
       firstMeasurementTime: records[0].measurementTime,
       lastMeasurementTime: records.at(-1).measurementTime,
       completeMinutes: records.length,
