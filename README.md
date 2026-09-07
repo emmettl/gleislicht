@@ -26,6 +26,8 @@ The national atlas also offers **LUFT**, a deliberately optional historical ADS-
 
 ## Run it
 
+Use Node 24 LTS (`nvm use`) and npm 11.19.0.
+
 Pages builds normally refresh the national timetable from the official source. If that download is unavailable, the build retains the last successfully published morning, hub and full-day artifacts. Recovery verifies matching service dates and feed versions, complete day coverage, and every chunk's length and SHA-256 before writing any files. Legacy geometry hashes are repaired only when removing the added geometry references reproduces the original timetable checksum exactly. Dates and provenance remain unchanged, and LIVE still requires an exactly compatible worker. Failed recovery or compilation stops publication.
 
 ```bash
