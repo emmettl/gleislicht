@@ -137,7 +137,6 @@ test('observed operations stay distinct from the planned timetable', async ({
 }) => {
   await page.route('**/motionstudies-london-operations.*/operations.json',
     async (route) => {
-      await page.waitForTimeout(100)
       await route.fulfill({
         contentType: 'application/json',
         body: JSON.stringify({
