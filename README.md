@@ -88,3 +88,7 @@ The public static deployment is GitHub Pages. Authenticated realtime polling and
 - static deployment for the visual client; preprocessing jobs turn large GTFS/topography sources into compact, versioned web assets
 
 See [the central roadmap](https://github.com/emmettl/motionstudies/blob/main/ROADMAP.md) for Swiss delivery stages and the wider programme and [docs/EXTRACTION.md](./docs/EXTRACTION.md) for repository ownership. The widget lab and package release gates run in Motion Studies; edition browser, payload and worker checks run here.
+
+## Standard selection labels
+
+The shared `@motionstudies/three` alpha.4 renderer gives the selected station first label priority, then the selected route’s terminals (including branch endpoints), then intermediate stops. Selecting a service uses its own endpoints. Clearing selection restores normal station ranking. The rule applies to map clicks and search/picker selection in both geographic and diagram layouts. See the [Motion Studies edition contract](https://github.com/emmettl/motionstudies/blob/main/docs/EDITIONS.md#selection-and-station-labels).
