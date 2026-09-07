@@ -299,12 +299,32 @@ export function projectOperationsOntoNetwork(
     if (stop[4]) stopIndexes.set(stop[4].toLocaleUpperCase('en-GB'), index)
   })
 
+  const trainsByLine = new Map<
+    string,
+    import('./network.ts').NetworkTrain[]
+  >()
+  for (const train of reference.trains) {
+    const line = canonicalLineName(train.route)
+    const candidates = trainsByLine.get(line)
+    if (candidates) candidates.push(train)
+    else trainsByLine.set(line, [train])
+  }
+
   const trains: import('./network.ts').NetworkTrain[] = []
   for (const vehicle of operations.vehicles) {
-    const match = reference.trains
-      .map((train) => templateMatch(train, vehicle, stopIndexes))
-      .filter((candidate): candidate is TemplateMatch => Boolean(candidate))
-      .sort((left, right) => right.score - left.score)[0]
+    const lineKeys = new Set([
+      canonicalLineName(vehicle.lineId),
+      canonicalLineName(vehicle.lineName),
+    ])
+    let match: TemplateMatch | undefined
+    for (const line of lineKeys) {
+      for (const train of trainsByLine.get(line) ?? []) {
+        const candidate = templateMatch(train, vehicle, stopIndexes)
+        if (candidate && (!match || candidate.score > match.score)) {
+          match = candidate
+        }
+      }
+    }
     if (!match) continue
     const train = observedTrain(match, vehicle, serviceTime)
     if (train) trains.push(train)

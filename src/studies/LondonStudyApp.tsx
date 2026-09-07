@@ -1,5 +1,6 @@
 import {
   lazy,
+  startTransition,
   Suspense,
   useCallback,
   useEffect,
@@ -269,6 +270,9 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
   const [isPlaying, setIsPlaying] = useState(true)
   const [playbackRate, setPlaybackRate] = useState(120)
   const [operationsMode, setOperationsMode] = useState<OperationsMode>('plan')
+  const [operationsRequested, setOperationsRequested] = useState(false)
+  const [operationsTransitionNetwork, setOperationsTransitionNetwork] =
+    useState<NetworkSnapshot>()
   const [selectedCategory, setSelectedCategory] = useState<ServiceCategory>()
   const [selectedStation, setSelectedStation] = useState<StationIndexEntry>()
   const [selectedRoute, setSelectedRoute] = useState<NetworkRouteIndexEntry>()
@@ -324,7 +328,7 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
   )
   const observedOperations = useObservedOperations(
     edition.data.operations.latest,
-    operationsMode === 'observed',
+    operationsMode === 'observed' || operationsRequested,
   )
   const observedServiceTime = observedOperations.snapshot
     ? operationsServiceTime(observedOperations.snapshot, edition.timezone)
@@ -378,7 +382,7 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
         : morningNetwork,
     [activeDayChunk, dayManifest, morningNetwork, studyWindow],
   )
-  const network = useMemo(() => {
+  const assembledNetwork = useMemo(() => {
     if (!baseNetwork) return undefined
     const layers = [baseNetwork]
     if (
@@ -407,19 +411,32 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
     surfaceEnabled,
     surfaceNetwork,
   ])
+  const network =
+    operationsRequested && operationsTransitionNetwork
+      ? operationsTransitionNetwork
+      : assembledNetwork
   const operationsAge = observedOperations.snapshot
     ? operationsAgeSeconds(observedOperations.snapshot)
     : Number.POSITIVE_INFINITY
   const operationsProjection = useMemo(
     () =>
-      network && observedOperations.snapshot && operationsAge <= 180
+      operationsMode === 'observed' &&
+      network &&
+      observedOperations.snapshot &&
+      operationsAge <= 180
         ? projectOperationsOntoNetwork(
             network,
             observedOperations.snapshot,
             sceneTime,
           )
         : undefined,
-    [network, observedOperations.snapshot, operationsAge, sceneTime],
+    [
+      network,
+      observedOperations.snapshot,
+      operationsAge,
+      operationsMode,
+      sceneTime,
+    ],
   )
   const sceneNetwork =
     operationsMode === 'observed'
@@ -828,11 +845,29 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
     }
   }, [animateLayout, network])
 
+  const hideGeographicOnlyLayers = useCallback(() => {
+    const hadGeographicSelection = Boolean(
+      selectedAirTrackId || selectedAirport || selectedRoad,
+    )
+    setAirEnabled(false)
+    setAirCategorySelected(false)
+    setSelectedAirTrackId(undefined)
+    setSelectedAirport(undefined)
+    setRoadEnabled(false)
+    setRoadCategorySelected(false)
+    setSelectedRoad(undefined)
+    if (hadGeographicSelection) {
+      setQuery('')
+      setSearchOpen(false)
+    }
+  }, [selectedAirTrackId, selectedAirport, selectedRoad])
+
   const activateLayout = useCallback((
     nextLayout: SpatialLayoutId,
     artifact?: string,
   ) => {
     setPulseHubId(undefined)
+    if (nextLayout === 'diagram') hideGeographicOnlyLayers()
     desiredLayoutRef.current = nextLayout
     setLayout(nextLayout)
     if (nextLayout === 'geographic') {
@@ -842,7 +877,13 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
     } else if (artifact && !layoutLoading) {
       void loadLayout(artifact)
     }
-  }, [animateLayout, layoutLoading, loadLayout, spatialLayout])
+  }, [
+    animateLayout,
+    hideGeographicOnlyLayers,
+    layoutLoading,
+    loadLayout,
+    spatialLayout,
+  ])
 
   const clearSelection = useCallback(() => {
     setSelectedCategory(undefined)
@@ -861,8 +902,16 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
 
   const activateStudyWindow = useCallback(
     (nextWindow: StudyWindow) => {
-      if (nextWindow === studyWindow && operationsMode === 'plan') return
+      if (
+        nextWindow === studyWindow &&
+        operationsMode === 'plan' &&
+        !operationsRequested
+      ) {
+        return
+      }
       clearSelection()
+      setOperationsRequested(false)
+      setOperationsTransitionNetwork(undefined)
       setOperationsMode('plan')
       setIsPlaying(true)
       if (nextWindow === studyWindow) return
@@ -874,38 +923,91 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
         setTime(edition.defaultNetworkTime)
       }
     },
-    [clearSelection, edition.defaultNetworkTime, operationsMode, studyWindow],
+    [
+      clearSelection,
+      edition.defaultNetworkTime,
+      operationsMode,
+      operationsRequested,
+      studyWindow,
+    ],
   )
 
   const activateOperationsMode = useCallback(
     (nextMode: OperationsMode) => {
-      if (nextMode === operationsMode) return
+      if (
+        nextMode === operationsMode &&
+        !(nextMode === 'plan' && operationsRequested)
+      ) {
+        return
+      }
       clearSelection()
-      setOperationsMode(nextMode)
       if (nextMode === 'observed') {
+        setOperationsTransitionNetwork(baseNetwork)
+        setOperationsRequested(true)
         setDayError(false)
-        setStudyWindow('day')
         setAirEnabled(false)
         setRoadEnabled(false)
         setSurfaceEnabled(false)
         setBusEnabled(false)
         setIsPlaying(false)
-        if (observedOperations.snapshot) {
-          setTime(
-            operationsServiceTime(observedOperations.snapshot, edition.timezone),
-          )
-        }
       } else {
+        setOperationsRequested(false)
+        setOperationsTransitionNetwork(undefined)
+        setOperationsMode('plan')
         setIsPlaying(true)
       }
     },
     [
+      baseNetwork,
       clearSelection,
-      edition.timezone,
-      observedOperations.snapshot,
       operationsMode,
+      operationsRequested,
     ],
   )
+
+  useEffect(() => {
+    if (
+      !operationsRequested ||
+      !observedOperations.snapshot ||
+      operationsAge > 180
+    ) {
+      return
+    }
+
+    const observedTime = operationsServiceTime(
+      observedOperations.snapshot,
+      edition.timezone,
+    )
+    if (studyWindow !== 'day' || time !== observedTime) {
+      const frame = requestAnimationFrame(() => {
+        startTransition(() => {
+          setDayError(false)
+          setStudyWindow('day')
+          setTime(observedTime)
+        })
+      })
+      return () => cancelAnimationFrame(frame)
+    }
+    if (!dayManifest || !activeDayChunk) return
+
+    const frame = requestAnimationFrame(() => {
+      startTransition(() => {
+        setOperationsMode('observed')
+        setOperationsRequested(false)
+        setOperationsTransitionNetwork(undefined)
+      })
+    })
+    return () => cancelAnimationFrame(frame)
+  }, [
+    activeDayChunk,
+    dayManifest,
+    edition.timezone,
+    observedOperations.snapshot,
+    operationsAge,
+    operationsRequested,
+    studyWindow,
+    time,
+  ])
 
   const selectStation = useCallback(
     (station: StationIndexEntry) => {
@@ -1027,6 +1129,8 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
       return
     }
     clearSelection()
+    setOperationsRequested(false)
+    setOperationsTransitionNetwork(undefined)
     setOperationsMode('plan')
     setAirLoadError(false)
     setAirEnabled(true)
@@ -1068,6 +1172,8 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
       return
     }
     clearSelection()
+    setOperationsRequested(false)
+    setOperationsTransitionNetwork(undefined)
     setOperationsMode('plan')
     setRoadLoadError(false)
     setRoadEnabled(true)
@@ -1076,6 +1182,8 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
 
   const toggleSurfaceLayer = useCallback(() => {
     clearSelection()
+    setOperationsRequested(false)
+    setOperationsTransitionNetwork(undefined)
     setOperationsMode('plan')
     if (surfaceEnabled) {
       setSurfaceEnabled(false)
@@ -1090,6 +1198,8 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
 
   const toggleBusLayer = useCallback(() => {
     clearSelection()
+    setOperationsRequested(false)
+    setOperationsTransitionNetwork(undefined)
     setOperationsMode('plan')
     if (busEnabled) {
       setBusEnabled(false)
@@ -1198,6 +1308,8 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
     : observedOperations.loading
       ? 'Synchronising with TfL predictions'
       : 'Planned timetable fallback'
+  const operationsEngaged =
+    operationsMode === 'observed' || operationsRequested
   const scheduledJourneyCount =
     studyWindow === 'day' && dayManifest
       ? dayManifest.tripCount +
@@ -1219,7 +1331,7 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
       data-surface-enabled={surfaceEnabled}
       data-bus-enabled={busEnabled}
       data-bus-loading={busLoading}
-      data-operations-mode={operationsMode}
+      data-operations-mode={operationsRequested ? 'preparing' : operationsMode}
       data-operations-ready={Boolean(operationsProjection)}
       data-pulse-lens={pulseHub ? pulseLens : undefined}
       data-pulse-night={pulseHub ? pulseNightMix.toFixed(2) : undefined}
@@ -1297,7 +1409,7 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
         <div className="london-study-mark">
           <span>{edition.identity.descriptor}</span>
           <small>
-            {operationsMode === 'observed'
+            {operationsEngaged
               ? 'Observed rail · prediction-derived'
               : `${surfaceEnabled || busEnabled ? 'Rail + surface' : 'Rail'} study · ${studyWindow === 'day' ? '24-hour Friday' : '06:45–08:45'}`}
           </small>
@@ -1342,6 +1454,8 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
             if (pulseHub) setPulseHubId(undefined)
             else {
               clearSelection()
+              setOperationsRequested(false)
+              setOperationsTransitionNetwork(undefined)
               setOperationsMode('plan')
               setPulseHubId('kings-cross')
             }
@@ -1374,22 +1488,26 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
         <button
           className="london-operations-toggle"
           type="button"
-          aria-label={operationsMode === 'observed' ? 'Return to planned timetable' : 'Show observed TfL operations'}
-          aria-pressed={operationsMode === 'observed'}
-          aria-busy={operationsMode === 'observed' && observedOperations.loading}
+          aria-label={operationsEngaged ? 'Return to planned timetable' : 'Show observed TfL operations'}
+          aria-pressed={operationsEngaged}
+          aria-busy={operationsRequested}
           onClick={() =>
             activateOperationsMode(
-              operationsMode === 'observed' ? 'plan' : 'observed',
+              operationsEngaged ? 'plan' : 'observed',
             )
           }
         >
           <span className="london-wide-label">
-            {operationsMode === 'observed' ? 'Observed' : 'Plan'}
+            {operationsEngaged ? 'Observed' : 'Plan'}
           </span>
           <span className="london-mobile-label">
-            {operationsMode === 'observed' ? 'OBS' : 'PLAN'}
+            {operationsRequested
+              ? 'SYNC'
+              : operationsMode === 'observed'
+                ? 'OBS'
+                : 'PLAN'}
           </span>
-          {operationsMode === 'observed' && observedOperations.loading && (
+          {operationsRequested && (
             <small>Sync</small>
           )}
         </button>
@@ -1472,7 +1590,7 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
             Bus study unavailable
           </span>
         )}
-        {operationsMode === 'observed' &&
+        {operationsEngaged &&
           (observedOperations.error || operationsAge > 180) && (
             <span className="london-operations-status" role="status">
               Observed operations unavailable · plan held
@@ -1794,7 +1912,7 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
               max={sceneNetwork.metadata.windowEnd}
               step="10"
               value={sceneTime}
-              disabled={operationsMode === 'observed'}
+              disabled={operationsEngaged}
               onChange={(event) => setTime(Number(event.target.value))}
             />
           </label>
@@ -1802,14 +1920,14 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
             <button
               type="button"
               aria-label={isPlaying ? 'Pause motion' : 'Resume motion'}
-              disabled={operationsMode === 'observed'}
+              disabled={operationsEngaged}
               onClick={() => setIsPlaying((value) => !value)}
             >
               {isPlaying ? 'Ⅱ' : '▶'}
             </button>
             <select
               aria-label="Playback speed"
-              disabled={operationsMode === 'observed'}
+              disabled={operationsEngaged}
               value={playbackRate}
               onChange={(event) => setPlaybackRate(Number(event.target.value))}
             >

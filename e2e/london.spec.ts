@@ -137,6 +137,7 @@ test('observed operations stay distinct from the planned timetable', async ({
 }) => {
   await page.route('**/motionstudies-london-operations.*/operations.json',
     async (route) => {
+      await page.waitForTimeout(100)
       await route.fulfill({
         contentType: 'application/json',
         body: JSON.stringify({
@@ -188,6 +189,7 @@ test('observed operations stay distinct from the planned timetable', async ({
 
   await page.getByRole('button', { name: 'Show observed TfL operations' }).click()
   const experience = page.locator('.london-experience')
+  await expect(experience).toHaveAttribute('data-operations-mode', 'preparing')
   await expect(experience).toHaveAttribute('data-operations-mode', 'observed')
   await expect(experience).toHaveAttribute('data-operations-ready', 'true')
   await expect(page.locator('.london-status-card')).toContainText(
@@ -404,6 +406,12 @@ test('observed aircraft load lazily, join category emphasis and are searchable b
   await expect(search).toHaveValue('BAW925 · 405A49')
   await expect(page.locator('.london-status-card')).toContainText('BAW925')
   await expect(page.locator('.london-status-card')).toContainText(/ft · \d+ kt/)
+
+  await page.getByRole('button', { name: 'Diagram layout' }).click()
+  await expect(experience).not.toHaveClass(/has-air-layer/)
+  await expect(
+    page.getByRole('button', { name: 'Show observed aircraft' }),
+  ).toHaveAttribute('aria-pressed', 'false')
 })
 
 test('airport search enters air-only mode and isolates its observed flights', async ({
@@ -489,6 +497,14 @@ test('motorway search loads observed flow lazily and enters ROAD isolation', asy
       return browser.document.documentElement.scrollWidth - browser.innerWidth
     }),
   ).toBeLessThanOrEqual(1)
+
+  await page.getByRole('button', { name: 'Diagram layout' }).click()
+  await expect(experience).not.toHaveClass(/has-road-layer/)
+  await expect(
+    page.getByRole('button', {
+      name: 'Show reconstructed motorway traffic',
+    }),
+  ).toHaveAttribute('aria-pressed', 'false')
 })
 
 test('the London air day follows the 24-hour clock in progressive hourly chunks', async ({
