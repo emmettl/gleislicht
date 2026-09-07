@@ -15,40 +15,6 @@ export const GLEISLICHT_STUDY = {
   status: 'released',
 } as const satisfies MotionStudyCatalogueEntry
 
-export const ALL_CHANGE_STUDY = {
-  series: 'Motion Studies',
-  catalogueNumber: '006',
-  title: 'All Change',
-  placeName: 'London',
-  descriptor: 'A London motion study',
-  status: 'foundation',
-} as const satisfies MotionStudyCatalogueEntry
-
-export const LOCAL_EXPRESS_STUDY = {
-  series: 'Motion Studies',
-  catalogueNumber: '007',
-  title: 'Local / Express',
-  placeName: 'New York',
-  descriptor: 'A New York motion study',
-  status: 'foundation',
-} as const satisfies MotionStudyCatalogueEntry
-
-export const CORRESPONDANCES_STUDY = {
-  series: 'Motion Studies',
-  catalogueNumber: '008',
-  title: 'Correspondances',
-  placeName: 'Paris',
-  descriptor: 'A Paris motion study',
-  status: 'foundation',
-} as const satisfies MotionStudyCatalogueEntry
-
-export const MOTION_STUDIES_CATALOGUE = [
-  GLEISLICHT_STUDY,
-  ALL_CHANGE_STUDY,
-  LOCAL_EXPRESS_STUDY,
-  CORRESPONDANCES_STUDY,
-] as const satisfies ReadonlyArray<MotionStudyCatalogueEntry>
-
 export function motionStudyMark(identity: MotionStudyIdentity): string {
   return `${identity.series.toUpperCase()} · ${identity.catalogueNumber}`
 }

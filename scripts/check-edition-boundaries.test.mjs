@@ -1,78 +1,66 @@
 import { afterEach, describe, expect, it } from 'vitest'
-import { mkdtemp, mkdir, rm, writeFile } from 'node:fs/promises'
+import { mkdtemp, mkdir, rm, symlink, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
-import { join } from 'node:path'
-import { checkEditionBoundaries, moduleReferences } from './check-edition-boundaries.mjs'
+import { dirname, join, resolve } from 'node:path'
+import { spawnSync } from 'node:child_process'
+import { moduleReferences } from './module-references.mjs'
 
-const directories = []
-afterEach(async () => {
-  await Promise.all(directories.splice(0).map((directory) => rm(directory, { recursive: true, force: true })))
-})
+const roots = []
+const checker = resolve('scripts/check-edition-boundaries.mjs')
+afterEach(async () => { await Promise.all(roots.splice(0).map((root) => rm(root, { recursive: true, force: true }))) })
+
 async function fixture() {
-  const root = await mkdtemp(join(tmpdir(), 'motion-boundaries-'))
-  directories.push(root)
-  async function file(path, contents) {
-    await mkdir(join(root, path, '..'), { recursive: true })
-    await writeFile(join(root, path), contents)
+  const root = await mkdtemp(join(tmpdir(), 'edition-boundary-'))
+  roots.push(root)
+  const put = async (name, value) => {
+    const file = join(root, name)
+    await mkdir(dirname(file), { recursive: true })
+    await writeFile(file, typeof value === 'string' ? value : JSON.stringify(value))
   }
-  for (const name of ['core', 'web', 'three', 'data']) {
-    await file(`packages/${name}/package.json`, JSON.stringify({
-      name: `@motionstudies/${name}`,
-      exports: { './index': './src/index.ts' },
-      dependencies: name === 'core' ? {} : { '@motionstudies/core': '0.0.0' },
-    }))
-    await file(`packages/${name}/src/index.ts`, 'export const value = 1')
+  const manifest = { dependencies: {} }
+  const lock = { packages: {} }
+  for (const name of ['core', 'data', 'three', 'web']) {
+    const full = `@motionstudies/${name}`
+    manifest.dependencies[full] = '0.1.0-alpha.1'
+    lock.packages[`node_modules/${full}`] = { version: '0.1.0-alpha.1', resolved: `https://registry.npmjs.org/${full}/-/package.tgz`, integrity: 'sha512-fixture' }
+    await put(`node_modules/${full}/package.json`, { version: '0.1.0-alpha.1', private: false, exports: { './public': './public.js' } })
   }
-  for (const name of ['main', 'london-main', 'new-york-main', 'paris-main']) {
-    await file(`src/${name}.tsx`, 'export {}')
-  }
-  return { root, file }
+  await put('package.json', manifest)
+  await put('package-lock.json', lock)
+  for (const name of ['src', 'scripts', 'realtime-worker', 'astra-worker']) await mkdir(join(root, name), { recursive: true })
+  const run = () => spawnSync(process.execPath, [checker], { cwd: root, encoding: 'utf8' })
+  return { root, put, manifest, lock, run }
 }
 
-describe('package and edition boundaries', () => {
-  it('reads side effects, multiline re-exports, dynamic and type imports without mistaking comments for imports', () => {
-    expect(moduleReferences(`
-      // import bad from './not-an-import.ts'
-      import './control.css'
-      export { something\n } from './helper.ts'
-      type Model = import('@motionstudies/core/domain/network').NetworkSnapshot
-      const scene = import('./Scene.tsx')
-    `, 'example.ts')).toEqual(['./control.css', './helper.ts', '@motionstudies/core/domain/network', './Scene.tsx'])
+describe('installed edition boundary', () => {
+  it('accepts public registry imports but rejects a private subpath', async () => {
+    const { put, run } = await fixture()
+    await put('src/main.ts', "import '@motionstudies/web/public'")
+    expect(run().status).toBe(0)
+    await put('src/main.ts', "import '@motionstudies/web/internal'")
+    expect(run().stderr).toContain('Private package import')
   })
-  it('accepts the one-way dependency graph', async () => {
-    const { root, file } = await fixture()
-    await file('packages/web/src/index.ts', "export { value } from '@motionstudies/core/index'")
-    expect(await checkEditionBoundaries(root)).toEqual([])
+
+  it('rejects vendored replacements disguised as pinned registry dependencies', async () => {
+    const { put, lock, run } = await fixture()
+    lock.packages['node_modules/@motionstudies/core'].resolved = 'file:../shared/core.tgz'
+    await put('package-lock.json', lock)
+    expect(run().stderr).toContain('Registry lock mismatch')
   })
-  it('rejects arbitrary relative escapes and undeclared dependencies', async () => {
-    const { root, file } = await fixture()
-    await file('packages/core/src/index.ts', "export * from '../../../src/helper.ts'\nimport 'react'")
-    expect(await checkEditionBoundaries(root)).toEqual(expect.arrayContaining([
-      expect.stringContaining('reaches outside its package'), expect.stringContaining('undeclared dependency react'),
-    ]))
+
+  it('rejects workspace source links and relative repository escapes', async () => {
+    const { root, put, run } = await fixture()
+    await put('src/main.ts', "export * from '../../another-edition/app.ts'")
+    expect(run().stderr).toContain('imports outside this repository')
+    await put('src/main.ts', '')
+    await mkdir(join(root, 'shared'))
+    await rm(join(root, 'node_modules/@motionstudies/core'), { recursive: true })
+    await symlink(join(root, 'shared'), join(root, 'node_modules/@motionstudies/core'))
+    expect(run().stderr).toContain('Shared source link')
   })
-  it('rejects reverse dependencies even when declared', async () => {
-    const { root, file } = await fixture()
-    await file('packages/core/package.json', JSON.stringify({ dependencies: { '@motionstudies/web': '0.0.0' } }))
-    await file('packages/core/src/index.ts', "export * from '@motionstudies/web/index'")
-    expect(await checkEditionBoundaries(root)).toEqual(expect.arrayContaining([
-      expect.stringContaining('declares forbidden shared dependency'), expect.stringContaining('violates the shared dependency direction'),
-    ]))
-  })
-  it('rejects app build globals and unverifiable dynamic imports', async () => {
-    const { root, file } = await fixture()
-    await file('packages/web/src/index.ts', "const url = import.meta.env.BASE_URL; import(url)")
-    expect(await checkEditionBoundaries(root)).toEqual(expect.arrayContaining([
-      expect.stringContaining("consumer's build environment"), expect.stringContaining('non-literal module import'),
-    ]))
-  })
-  it('follows edition imports through intermediate helpers', async () => {
-    const { root, file } = await fixture()
-    await file('src/paris-main.tsx', "import './bridge.ts'")
-    await file('src/bridge.ts', "export * from './editions/london.ts'")
-    await file('src/editions/london.ts', 'export const edition = {}')
-    expect(await checkEditionBoundaries(root)).toEqual([
-      expect.stringContaining('paris-main.tsx transitively imports the london edition'),
-    ])
+
+  it('parses ambient Node declarations and detects hidden dynamic imports', () => {
+    expect(moduleReferences("export const config: import('@motionstudies/core/public').Config", 'config.d.mts')).toEqual(['@motionstudies/core/public'])
+    expect(moduleReferences('const load = () => import(target)', 'app.ts')).toEqual([undefined])
   })
 })

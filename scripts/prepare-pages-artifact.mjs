@@ -1,22 +1,14 @@
-import { rm } from 'node:fs/promises'
-import { resolve } from 'node:path'
+import { readdir, readFile } from 'node:fs/promises'
 
-// Local / Express remains a fully tested local proof while the MTA feed's
-// transformation and application-licensing clauses await written clarification.
-// Keep this list explicit so enabling publication is a reviewable decision.
-const excludedUntilCleared = [
-  'dist/new-york.html',
-  'dist/data/local-express-lexington-morning.json',
-  'dist/data/local-express-geography.json',
-  'dist/data/local-express-diagram.json',
-  'dist/data/local-express-day-manifest.json',
-  'dist/data/local-express-day-chunks',
-]
-
-for (const path of excludedUntilCleared) {
-  await rm(resolve(path), { force: true, recursive: true })
+const names = await readdir('dist/data')
+const foreign = names.filter((name) => /^(all-change|correspondances|local-express)/.test(name))
+if (foreign.length) throw new Error(`Foreign edition data in Swiss deployment: ${foreign.join(', ')}`)
+const manifest = JSON.parse(await readFile('dist/.vite/manifest.json', 'utf8'))
+const entries = Object.entries(manifest).filter(([, chunk]) => chunk.isEntry).map(([key]) => key)
+if (entries.length !== 1 || entries[0] !== 'index.html') throw new Error('Swiss deployment must have exactly one application entry')
+for (const [file, target] of [['london.html', 'allchange'], ['paris.html', 'correspondances']]) {
+  const html = await readFile(`dist/${file}`, 'utf8')
+  if (!html.includes(`https://emmettl.github.io/${target}/`)) throw new Error(`Missing compatibility redirect: ${file}`)
 }
-
-console.log(
-  `Prepared Pages artifact; withheld ${excludedUntilCleared.length} Local / Express files pending publication clearance.`,
-)
+if ((await readdir('dist')).includes('new-york.html')) throw new Error('New York publication remains withheld')
+console.log('Swiss-only Pages artifact verified, with London and Paris compatibility redirects.')

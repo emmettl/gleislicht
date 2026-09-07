@@ -2,9 +2,11 @@
 
 A cinematic browser visualisation of Switzerland's railway network, built from open timetable data and real topography. The long-term idea is to move between a national network view and intimate, camera-led journeys through a luminous low-poly landscape.
 
-**Motion Studies** is the series. **Gleislicht** is work 005: the Swiss study, not the name every future city must inherit. The shared runtime owns motion, playback, search, selection, cameras and rendering; a typed edition supplies its own title, place identity, time defaults, theme and compact data catalogue. Work 006 is **All Change — A London motion study**, with a fast rail-led weekday morning and a separately loaded progressive 24-hour Friday rather than a fork or reskin of the Swiss work. Work 007, **Local / Express — New York**, has a bounded Lexington Avenue foundation; work 008, **Correspondances — Paris**, now has a source-pinned Métro 1 / RER A study with a published-transfer director, official Seine context and a progressive 24-hour Friday. See [the Motion Studies architecture](./docs/EDITIONS.md), [catalogue programme](./docs/CATALOGUE.md) and the edition briefs for [London](./docs/LONDON.md), [New York](./docs/NEW-YORK.md) and [Paris](./docs/PARIS.md).
+**Gleislicht** is Motion Studies 005: the Swiss edition. Shared runtime and Node tooling come from exact `@motionstudies/*` npm releases at `0.1.0-alpha.1`; their source, tests and widget lab live in [Motion Studies](https://github.com/emmettl/motionstudies).
 
-Public studies: [Gleislicht](https://emmettl.github.io/gleislicht/) · [All Change preview](https://emmettl.github.io/gleislicht/london.html). The Local / Express proof runs locally at `/new-york.html` but is [withheld from Pages pending MTA publication clarification](./docs/NEW-YORK-PUBLICATION.md).
+Other editions have independent repositories: [All Change](https://github.com/emmettl/allchange), [Correspondances](https://github.com/emmettl/correspondances), and a private Local / Express proof whose publication hold remains in place. This repository builds only Switzerland. The former `/london.html` and `/paris.html` URLs redirect to the independent sites.
+
+Public studies: [Gleislicht](https://emmettl.github.io/gleislicht/) · [All Change](https://emmettl.github.io/allchange/) · [Correspondances](https://emmettl.github.io/correspondances/).
 
 The current motion study opens on a national morning view derived from the official Swiss GTFS timetable, with 764 scheduled rail services moving inside Switzerland at 07:45. A separate **24H** study expands the national clock to a complete service day; it loads the current three-hour block on demand and prefetches adjacent blocks, keeping both the opening view and full-day transition light. A lazily loaded Zürich city study reveals the same morning at street scale across trains, trams, buses and funiculars. A hub-scale Takt pulse makes scheduled calls at Zürich HB, Bern, Basel SBB and Genève contract toward the station and radiate out again. Follow-camera journeys cover Zürich–Chur in measured swissALTIRegio terrain and PostBus 220 through a higher-resolution swissALTI3D Kiental crop with road-following geometry. All interpolation models are labelled clearly.
 
@@ -31,14 +33,11 @@ Quality checks:
 npm run lint
 npm run typecheck
 npm run check:architecture
-npm run check:packages
 npm test
 npm run build
 npm run worker:check
 npm run worker:build
 npm run check:bundle
-npm run check:london
-npm run check:new-york
 ```
 
 Keyboard controls: `Space` pauses or resumes; `C` returns to or switches from the national view.
@@ -69,7 +68,6 @@ Sound is optional and off by default. Turning on the adaptive score lazily loads
 
 The committed GTFS and geography snapshots are regenerated with `npm run data:gtfs`, `npm run data:day`, `npm run data:rail:shapes`, `npm run data:zvv`, `npm run data:zvv:shapes`, `npm run data:geneva`, `npm run data:geneva:shapes`, `npm run data:postbus:kiental`, `npm run data:corridor:kiental`, `npm run data:zurich`, `npm run data:zurich:shapes`, `npm run data:zurich:day`, `npm run data:zurich:day:shapes`, `npm run data:boundary`, `npm run data:lakes`, `npm run data:corridor`, `npm run data:air` and `npm run data:road`. The national AUTO topology accepts 379 federal sites into 609 directed sections, with the final interchange ambiguity resolved from official FEDRO TMC road references; a separate compiler emits progressively loaded observed-minute chunks once recording begins. `npm run data:validate` checks the shared national artifact set, the Alpine corridor, historical air snapshots and the disclosed road calibration, and a twice-weekly workflow publishes validated national refreshes to a dedicated review branch; see [docs/DATA-PIPELINE.md](./docs/DATA-PIPELINE.md).
 
-Motion Studies 006 now has a dedicated **All Change** preview at `/london.html`. It shares Gleislicht's renderer, map camera, playback, timetable interpolation, station interaction and selection semantics, but owns its title, theme, geography adapter, data catalogue and page metadata. Its complete initial view—including the immediately loaded 3D renderer and rail study—stays below a 650 KiB compressed transfer ceiling. Build-time staging keeps canonical London rail artifacts in fixtures and leaves every London file outside the Swiss page's request graph and selector. **GEOGRAPHY / DIAGRAM** transforms the moving network continuously between real coordinates and a deterministic octilinear study without resetting the clock or selection. Optional **AIR** and **ROAD** layers remain outside the opening request graph: AIR provides searchable observed aircraft and airport approach/departure selections, while ROAD reconstructs a complete historical day on M1, M3, M4, M11, M23, M25 and M40 from National Highways detector flow and speed. A separate **PLAN / OBSERVED** switch now projects current TfL predictions for the Victoria, Jubilee and Elizabeth lines onto matched static geometry, marking them as prediction-derived rather than GPS and retaining unmatched identities as an explicit count. Both the browser and an R2-to-progressive-day compiler reuse the shared operations contract. See [docs/LONDON.md](./docs/LONDON.md).
 The public static deployment is GitHub Pages. Authenticated realtime polling and unattended ASTRA recording run as separate Cloudflare Workers backed by a private R2 bucket; see [docs/PUBLISHING.md](./docs/PUBLISHING.md) and [docs/CLOUDFLARE.md](./docs/CLOUDFLARE.md).
 
 ## Technical shape
@@ -77,8 +75,8 @@ The public static deployment is GitHub Pages. Authenticated realtime polling and
 - Vite + React + strict TypeScript
 - Three.js through React Three Fiber
 - Driftbox's Web Audio engine for a fully synthesised, adaptive soundtrack
-- private `@motionstudies/core`, `@motionstudies/three` and `@motionstudies/web` runtime packages plus Node-only `@motionstudies/data` tooling, with explicit public imports and compiled distribution checks
+- published `@motionstudies/core`, `@motionstudies/three` and `@motionstudies/web` runtime packages plus Node-only `@motionstudies/data` tooling, with exact version pins and installed-package boundary checks
 - oxlint and Vitest, with domain, rendering and browser concerns kept in one-way dependency order
 - static deployment for the visual client; preprocessing jobs turn large GTFS/topography sources into compact, versioned web assets
 
-See [ROADMAP.md](./ROADMAP.md) for delivery stages, [docs/VISION.md](./docs/VISION.md) for the product and art direction, [docs/CATALOGUE.md](./docs/CATALOGUE.md) for the exhibition programme, and [docs/EXTRACTION.md](./docs/EXTRACTION.md) for the active `@motionstudies` workspace seam and eventual repository split. The [package readiness review](./docs/PACKAGE-READINESS.md) records verified boundaries, the shared widget lab and the repository split sequence. Run `npm run lab` to exercise the packages with synthetic fixtures, or `npm run check:packed` to validate the compiled tarballs in an isolated consumer.
+See [ROADMAP.md](./ROADMAP.md) for Swiss delivery stages and [docs/EXTRACTION.md](./docs/EXTRACTION.md) for repository ownership. The widget lab and package release gates run in Motion Studies; edition browser, payload and worker checks run here.

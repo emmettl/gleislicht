@@ -1,5 +1,7 @@
 # Shared package readiness — 7 September 2026
 
+> Historical pre-split review. Packages are now published and repositories are separated; see [current ownership](./EXTRACTION.md).
+
 ## Decision
 
 The ownership and distribution blockers from the initial review are addressed. The shared code is ready for a controlled first edition migration, with the lab serving as a consumer and release gate. The repositories have not been split and no packages have been published. Candidate manifests remain private at `0.0.0` until release versions, registry and licensing are deliberately configured.

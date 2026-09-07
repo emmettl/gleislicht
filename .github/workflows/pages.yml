@@ -43,16 +43,13 @@ jobs:
         run: npm run lint
 
       - name: Check edition boundaries
-        run: npm run check:architecture && npm run check:packages
+        run: npm run check:architecture
 
       - name: Check realtime edge adapter
         run: npm run worker:check && npm run worker:build
 
       - name: Install browser test engines
         run: npx playwright install --with-deps chromium webkit
-
-      - name: Validate packed packages and widget lab
-        run: npm run check:packed
 
       - name: Browser regression tests
         run: npm run test:e2e:ci
@@ -112,15 +109,6 @@ jobs:
 
       - name: Check mobile bundle budget
         run: npm run check:bundle
-
-      - name: Check All Change fixture budget
-        run: npm run check:london
-
-      - name: Check Local / Express corridor proof
-        run: npm run check:new-york
-
-      - name: Check Correspondances proof
-        run: npm run check:paris
 
       - name: Apply publication gates
         run: npm run pages:prepare
