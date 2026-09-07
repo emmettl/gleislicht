@@ -18,7 +18,14 @@ export default defineConfig({
   // animation loop on the shared CI runner. Keep local feedback parallel, but
   // make the publication gate deterministic.
   workers: runningInCi ? 1 : 2,
-  reporter: 'list',
+  reporter: runningInCi
+    ? [
+        ['list'],
+        ['github'],
+        ['html', { outputFolder: 'playwright-report', open: 'never' }],
+        ['./scripts/playwright-summary-reporter.mjs'],
+      ]
+    : 'list',
   use: {
     baseURL: 'http://127.0.0.1:4180',
     colorScheme: 'dark',

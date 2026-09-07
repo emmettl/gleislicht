@@ -55,7 +55,27 @@ jobs:
         run: npx playwright install --with-deps chromium webkit
 
       - name: Browser regression tests
+        id: e2e
+        env:
+          E2E_SUITE: Gleislicht
         run: npm run test:e2e:ci
+      - name: Upload E2E report, screenshots and traces
+        id: e2e-report
+        if: ${{ !cancelled() && (steps.e2e.outcome == 'success' || steps.e2e.outcome == 'failure') }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: e2e-report
+          path: |
+            playwright-report/
+            test-results/
+          retention-days: 14
+          if-no-files-found: warn
+      - name: Link E2E report in run summary
+        if: ${{ !cancelled() && steps.e2e-report.outputs.artifact-url != '' }}
+        env:
+          REPORT_URL: ${{ steps.e2e-report.outputs.artifact-url }}
+        run: |
+          printf '\n[Download E2E reports, screenshots and traces](%s)\n' "$REPORT_URL" >> "$GITHUB_STEP_SUMMARY"
 
       # Keep the browser suite on the committed demo fixtures. The live
       # timetable deliberately has a different feed version until the
