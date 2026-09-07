@@ -1,5 +1,9 @@
 # Motion Studies 005 — Gleislicht
 
+**[Open Gleislicht](https://emmettl.github.io/gleislicht/)** · [Motion Studies catalogue](https://emmettl.github.io/motionstudies/)
+
+[Study brief](https://github.com/emmettl/motionstudies/blob/main/docs/GLEISLICHT.md) · [Project goals](https://github.com/emmettl/motionstudies/blob/main/docs/VISION.md) · [Roadmap](https://github.com/emmettl/motionstudies/blob/main/ROADMAP.md)
+
 A cinematic browser visualisation of Switzerland's railway network, built from open timetable data and real topography. The long-term idea is to move between a national network view and intimate, camera-led journeys through a luminous low-poly landscape.
 
 **Gleislicht** is Motion Studies 005: the Swiss edition. Shared runtime and Node tooling come from exact `@motionstudies/*` npm releases at `0.1.0-alpha.1`; their source, tests and widget lab live in [Motion Studies](https://github.com/emmettl/motionstudies).
@@ -79,4 +83,4 @@ The public static deployment is GitHub Pages. Authenticated realtime polling and
 - oxlint and Vitest, with domain, rendering and browser concerns kept in one-way dependency order
 - static deployment for the visual client; preprocessing jobs turn large GTFS/topography sources into compact, versioned web assets
 
-See [ROADMAP.md](./ROADMAP.md) for Swiss delivery stages and [docs/EXTRACTION.md](./docs/EXTRACTION.md) for repository ownership. The widget lab and package release gates run in Motion Studies; edition browser, payload and worker checks run here.
+See [the central roadmap](https://github.com/emmettl/motionstudies/blob/main/ROADMAP.md) for Swiss delivery stages and the wider programme and [docs/EXTRACTION.md](./docs/EXTRACTION.md) for repository ownership. The widget lab and package release gates run in Motion Studies; edition browser, payload and worker checks run here.

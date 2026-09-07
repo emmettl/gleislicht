@@ -1,10 +1,11 @@
 # Cloudflare operations
 
-GitHub Pages remains the public static host. Cloudflare runs three narrowly scoped services against one private R2 bucket:
+GitHub Pages remains the public static host. This repository owns two Cloudflare services against the private `gleislicht-observations` R2 bucket:
 
 - `gleislicht-realtime` polls Swiss GTFS-RT once per minute, normalizes it and serves the central `gtfs-rt/latest.json` object at `/realtime.json`.
 - `gleislicht-astra-recorder` waits until 24 seconds after each minute publication and writes append-only gzip snapshots below `astra/<scope>/<UTC date>/`.
-- `motionstudies-london-operations` samples TfL predictions for the Victoria, Jubilee and Elizabeth lines once per minute. It serves a compact latest snapshot and archives immutable observations below `london/tfl-operations/<UTC date>/` for a future deterministic observed-day compiler.
+
+The London observation Worker shares this bucket; its [operating guide](https://github.com/emmettl/allchange/blob/main/docs/CLOUDFLARE.md) and deployment commands now live in All Change.
 
 No API token enters the browser, GitHub Pages artifact or repository. Each upstream product has its own Worker secret.
 
@@ -29,7 +30,6 @@ No API token enters the browser, GitHub Pages artifact or repository. Each upstr
    ```sh
    npx wrangler secret put OPENTRANSPORTDATA_API_KEY --config wrangler.realtime.jsonc
    npx wrangler secret put ASTRA_API_KEY --config wrangler.astra.jsonc
-   npx wrangler secret put TFL_API_KEY --config wrangler.london.jsonc
    ```
 
 6. Leave `COLLECTING_ENABLED` set to `false` for the first ASTRA deployment, then deploy the Workers:
@@ -37,10 +37,9 @@ No API token enters the browser, GitHub Pages artifact or repository. Each upstr
    ```sh
    npm run worker:deploy:realtime
    npm run worker:deploy:astra
-   npm run worker:deploy:london
    ```
 
-The ASTRA Worker has no public HTTP route. The Swiss realtime deployment prints its `workers.dev` URL; the browser endpoint is that URL followed by `/realtime.json`. The London Worker exposes `/operations.json` and `/health`. It can make the bounded four-request sample anonymously for initial verification, but the registered TfL key provides the correct quota and operational identity for sustained collection.
+The ASTRA Worker has no public HTTP route. The Swiss realtime deployment prints its `workers.dev` URL; the browser endpoint is that URL followed by `/realtime.json`.
 
 After an ASTRA credential has passed a one-shot local request, set `COLLECTING_ENABLED` to `true` in `wrangler.astra.jsonc` and redeploy. This explicit switch prevents a rejected or expired credential from generating a failed request every minute.
 
@@ -51,7 +50,6 @@ Cron changes can take several minutes to propagate. Tail each Worker until one s
 ```sh
 npx wrangler tail gleislicht-realtime
 npx wrangler tail gleislicht-astra-recorder
-npx wrangler tail motionstudies-london-operations
 ```
 
 Then open the realtime `/realtime.json` endpoint. A healthy response has `metadata.kind: "live"`, a current `generatedAt`, the configured `staticFeedVersion`, and a non-empty `updates` array. A `503` immediately after deployment means the first Cron invocation has not populated R2 yet.
@@ -76,19 +74,6 @@ npm run data:road:compile -- --date=2026-09-06
 ```
 
 The exporter reads the adjacent UTC partitions needed to cover the requested Europe/Zurich day, decompresses the objects locally and writes owner-only files below the ignored `recordings/astra/` directory. Use `--scope=national` after national collection begins. The access key needs object-read permission only; it must not be committed or added to a Vite variable.
-
-The same read-only R2 credentials export a London civil day without exposing the TfL key or making the bucket public:
-
-```sh
-CLOUDFLARE_ACCOUNT_ID=... \
-R2_ACCESS_KEY_ID=... \
-R2_SECRET_ACCESS_KEY=... \
-npm run data:london:operations:export -- --date=2026-09-07
-
-npm run data:london:operations:compile -- --date=2026-09-07
-```
-
-The London compiler accepts the adjacent UTC partitions needed by `Europe/London`, requires 1,200 unique minutes by default and writes integrity-hashed two-hour chunks. Missing minutes remain missing; the browser must not interpolate across an unrecorded gap as though it were an observation.
 
 Do not add an automatic deletion rule until R2 download and daily compilation have been exercised. Once that path is proven, retain compiled, audited day chunks and expire raw national minute objects on an explicit rolling window. The GTFS latest object is overwritten and needs no lifecycle rule.
 
