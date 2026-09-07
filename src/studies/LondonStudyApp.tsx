@@ -1,6 +1,5 @@
 import {
   lazy,
-  startTransition,
   Suspense,
   useCallback,
   useEffect,
@@ -979,20 +978,21 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
       edition.timezone,
     )
     if (studyWindow !== 'day' || time !== observedTime) {
-      startTransition(() => {
+      const timer = window.setTimeout(() => {
         setDayError(false)
         setStudyWindow('day')
         setTime(observedTime)
-      })
-      return
+      }, 0)
+      return () => window.clearTimeout(timer)
     }
     if (!dayManifest || !activeDayChunk) return
 
-    startTransition(() => {
+    const timer = window.setTimeout(() => {
       setOperationsMode('observed')
       setOperationsRequested(false)
       setOperationsTransitionNetwork(undefined)
-    })
+    }, 0)
+    return () => window.clearTimeout(timer)
   }, [
     activeDayChunk,
     dayManifest,
