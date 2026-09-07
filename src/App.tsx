@@ -438,40 +438,31 @@ export function App({ edition }: AppProps) {
   const soundtrackMode: SoundtrackMode =
     view === 'hub' ? 'hub' : view === 'journey' || selectedTrainId ? 'journey' : 'network'
 
-  const activeTrainCount = useMemo(
-    () =>
-      network?.trains.reduce(
-        (count, train) =>
-          train.realtime?.status !== 'cancelled' &&
-          train.start <= networkTime &&
-          train.end >= networkTime
-            ? count + 1
-            : count,
-        0,
-      ) ?? 0,
-    [network, networkTime],
-  )
   const zurichContrastActiveCount = useMemo(
     () =>
       zurichContrast.network?.trains.reduce(
         (count, train) =>
+          (!selectedCategory || train.category === selectedCategory) &&
+          train.realtime?.status !== 'cancelled' &&
           train.start <= networkTime && train.end >= networkTime
             ? count + 1
             : count,
         0,
       ) ?? 0,
-    [networkTime, zurichContrast.network],
+    [networkTime, selectedCategory, zurichContrast.network],
   )
   const kientalContrastActiveCount = useMemo(
     () =>
       kientalContrast.network?.trains.reduce(
         (count, train) =>
+          (!selectedCategory || train.category === selectedCategory) &&
+          train.realtime?.status !== 'cancelled' &&
           train.start <= networkTime && train.end >= networkTime
             ? count + 1
             : count,
         0,
       ) ?? 0,
-    [kientalContrast.network, networkTime],
+    [kientalContrast.network, networkTime, selectedCategory],
   )
   const zurichContrastStations = useMemo(
     () =>
@@ -562,6 +553,29 @@ export function App({ edition }: AppProps) {
   const selectedRoute = useMemo(
     () => routeIndex.find((route) => route.id === selectedRouteId),
     [routeIndex, selectedRouteId],
+  )
+  const countableTrains = useMemo(() => {
+    const stationTrainIds = selectedStationName
+      ? new Set(selectedStation?.trainIds ?? [])
+      : undefined
+    return network?.trains.filter((train) =>
+      (!selectedCategory || train.category === selectedCategory) &&
+      (!stationTrainIds || stationTrainIds.has(train.id)) &&
+      (!selectedRoute || (train.route === selectedRoute.name && train.category === selectedRoute.category)),
+    ) ?? []
+  }, [network, selectedCategory, selectedRoute, selectedStation, selectedStationName])
+  const activeTrainCount = useMemo(
+    () =>
+      countableTrains.reduce(
+        (count, train) =>
+          train.realtime?.status !== 'cancelled' &&
+          train.start <= networkTime &&
+          train.end >= networkTime
+            ? count + 1
+            : count,
+        0,
+      ),
+    [countableTrains, networkTime],
   )
   const selectedRoad = useMemo(
     () => roadTopology?.roads.find((road) => road.id === selectedRoadId),
@@ -2773,6 +2787,10 @@ export function App({ edition }: AppProps) {
             {text.allScheduledPaths} <span>/</span>{' '}
             {isNationalDay ? text.fullDayStudy : text.morningStudy}
           </p>
+          <div className="network-count-row">
+            <strong>{numberFormat.format(activeTrainCount)}</strong>
+            <span>{networkStudy === 'national' ? text.trainsInMotion : text.vehiclesInMotion}</span>
+          </div>
           <div className="metric-grid">
             <div>
               <span>{text.routes}</span>
