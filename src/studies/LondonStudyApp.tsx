@@ -979,25 +979,20 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
       edition.timezone,
     )
     if (studyWindow !== 'day' || time !== observedTime) {
-      const frame = requestAnimationFrame(() => {
-        startTransition(() => {
-          setDayError(false)
-          setStudyWindow('day')
-          setTime(observedTime)
-        })
+      startTransition(() => {
+        setDayError(false)
+        setStudyWindow('day')
+        setTime(observedTime)
       })
-      return () => cancelAnimationFrame(frame)
+      return
     }
     if (!dayManifest || !activeDayChunk) return
 
-    const frame = requestAnimationFrame(() => {
-      startTransition(() => {
-        setOperationsMode('observed')
-        setOperationsRequested(false)
-        setOperationsTransitionNetwork(undefined)
-      })
+    startTransition(() => {
+      setOperationsMode('observed')
+      setOperationsRequested(false)
+      setOperationsTransitionNetwork(undefined)
     })
-    return () => cancelAnimationFrame(frame)
   }, [
     activeDayChunk,
     dayManifest,
