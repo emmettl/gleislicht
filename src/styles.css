@@ -597,6 +597,7 @@
 .network-count-row {
   display: flex;
   align-items: baseline;
+  align-items: last baseline;
   gap: 10px;
 }
 
@@ -610,7 +611,6 @@
 }
 
 .network-count-row span {
-  max-width: 80px;
   color: var(--ink);
   font-size: 0.8rem;
   line-height: 1.05;
