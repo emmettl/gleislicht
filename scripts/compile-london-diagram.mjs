@@ -84,7 +84,7 @@ const rankedIndexes = Array.from({ length: count }, (_, index) => index).sort(
 
 function nearbyCells(originX, originY) {
   const cells = [[originX, originY]]
-  for (let radius = 1; radius <= 3; radius += 1) {
+  for (let radius = 1; radius <= 10; radius += 1) {
     for (let dx = -radius; dx <= radius; dx += 1) {
       cells.push([originX + dx, originY - radius], [originX + dx, originY + radius])
     }
@@ -93,6 +93,28 @@ function nearbyCells(originX, originY) {
     }
   }
   return cells
+}
+
+function cellKey([cellX, cellY]) {
+  return `${cellX}:${cellY}`
+}
+
+function cellAlignmentCost(index, [cellX, cellY], desiredX, desiredY) {
+  const displacement = Math.hypot(cellX - desiredX, cellY - desiredY)
+  let cost = displacement * 3
+  for (const neighbour of neighbours[index]) {
+    const neighbourCell = gridPositions[neighbour]
+    if (!neighbourCell) continue
+    const deltaX = Math.abs(cellX - neighbourCell[0])
+    const deltaY = Math.abs(cellY - neighbourCell[1])
+    const aligned = deltaX === 0 || deltaY === 0 || deltaX === deltaY
+    // A direct horizontal, vertical or 45-degree run is the essential Beck
+    // grammar. Prefer it when it does not substantially distort the station's
+    // geographic order, while keeping a weak leash on very long jumps.
+    cost += aligned ? -5 : 2
+    cost += Math.max(0, Math.max(deltaX, deltaY) - 8) * 0.18
+  }
+  return cost
 }
 
 for (const index of rankedIndexes) {
@@ -115,11 +137,20 @@ for (const index of rankedIndexes) {
       .filter(Boolean)
       .map(([cellX, cellY]) => `${cellX}:${cellY}`),
   )
-  const selected = nearbyCells(desiredX, desiredY).find(
-    ([cellX, cellY]) => !blockedNeighbourCells.has(`${cellX}:${cellY}`),
+  const candidates = nearbyCells(desiredX, desiredY).filter(
+    (cell) =>
+      !occupied.has(cellKey(cell)) &&
+      !blockedNeighbourCells.has(cellKey(cell)),
   )
+  const selected = candidates.sort(
+    (first, second) =>
+      cellAlignmentCost(index, first, desiredX, desiredY) -
+        cellAlignmentCost(index, second, desiredX, desiredY) ||
+      cellKey(first).localeCompare(cellKey(second), 'en'),
+  )[0]
   if (!selected) throw new Error(`Unable to separate ${stops[index][2]} from its neighbours`)
   gridPositions[index] = selected
+  occupied.add(cellKey(selected))
   sharedStationCells.set(stationName, selected)
 }
 
@@ -231,8 +262,8 @@ const artifact = {
     overridesSource: overridesInput.split('/').at(-1),
     overridesSha256: createHash('sha256').update(overridesRaw).digest('hex'),
     feedVersion: network.metadata.feedVersion,
-    model: 'Beck-derived central interchange field / shared station cells / 0.012 grid / octilinear path routing',
-    note: 'An independently generated London diagram study using the visual grammar of Beck-space: authored interchange spacing, 45-degree routing, a simplified Thames and parallel TfL line identities. It preserves source stop and path identity without tracing TfL map artwork.',
+    model: 'Beck-derived central interchange field / collision-free route-aligned station cells / 0.012 grid / octilinear path routing',
+    note: 'An independently generated London diagram study using the visual grammar of Beck-space: authored interchange spacing, collision-free station cells, route-aware 45-degree alignment, a simplified Thames and parallel TfL line identities. It preserves source stop and path identity without tracing TfL map artwork.',
   },
   bounds: {
     minX: Math.min(...allX),

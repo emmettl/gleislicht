@@ -163,6 +163,8 @@ interface NationalNetworkSceneProps {
   readonly routeColors?: Readonly<Record<string, string>>
   /** Route identity may emerge independently of a spatial-layout morph. */
   readonly routeColorMix?: number
+  /** Optional flat, cased network-map treatment for a resolved topological layout. */
+  readonly topologicalStyle?: 'luminous' | 'line-map'
   /** Strengthens aggregate edge flow when an edition deliberately pulls back. */
   readonly trafficOverviewEmphasis?: number
   /** Optional edition-authored semantic tier ceiling; selected routes always win. */
@@ -727,6 +729,7 @@ function RailGraph({
   routeColors,
   routeColorMix = 0,
   trafficOverviewEmphasis = 0,
+  lineMapStyle = false,
 }: {
   readonly snapshot: NetworkSnapshot
   readonly projectedStops: readonly ProjectedStop[]
@@ -738,12 +741,14 @@ function RailGraph({
   readonly routeColors?: Readonly<Record<string, string>>
   readonly routeColorMix?: number
   readonly trafficOverviewEmphasis?: number
+  readonly lineMapStyle?: boolean
 }) {
   const { camera } = useThree()
   const stationMaterial = useRef<THREE.PointsMaterial>(null)
   const interchangeMaterial = useRef<THREE.PointsMaterial>(null)
   const localNetworkMaterial = useRef<THREE.LineBasicMaterial>(null)
   const stationTexture = useMemo(() => trainLightTexture('orb'), [])
+  const diagramStationTexture = useMemo(() => diagramStopTexture(), [])
   const interchangeTexture = useMemo(() => diagramInterchangeTexture(), [])
   const railGeometry = useMemo(() => {
     const structuralPositions: number[] = []
@@ -797,7 +802,7 @@ function RailGraph({
     return geometry
   }, [projectedStops])
 
-  const interchangeGeometry = useMemo(() => {
+  const diagramStationGeometries = useMemo(() => {
     const stationRoutes = new Map<
       string,
       { routes: Set<string>; stopIndex: number; rank: number }
@@ -821,35 +826,44 @@ function RailGraph({
         stationRoutes.set(name, record)
       }
     }
-    const positions: number[] = []
+    const stopPositions: number[] = []
+    const interchangePositions: number[] = []
     for (const { routes, stopIndex } of stationRoutes.values()) {
-      if (routes.size < 2) continue
       const stop = projectedStops[stopIndex]
-      if (stop) positions.push(stop[0], stop[1], stop[2])
+      if (!stop) continue
+      const positions = routes.size < 2 ? stopPositions : interchangePositions
+      positions.push(stop[0], stop[1], stop[2])
     }
-    const geometry = new THREE.BufferGeometry()
-    geometry.setAttribute(
+    const stops = new THREE.BufferGeometry()
+    stops.setAttribute(
       'position',
-      new THREE.Float32BufferAttribute(positions, 3),
+      new THREE.Float32BufferAttribute(stopPositions, 3),
     )
-    return geometry
+    const interchanges = new THREE.BufferGeometry()
+    interchanges.setAttribute(
+      'position',
+      new THREE.Float32BufferAttribute(interchangePositions, 3),
+    )
+    return { stops, interchanges }
   }, [projectedStops, snapshot.stops, snapshot.trains])
 
   useEffect(
     () => () => {
       stationTexture.dispose()
+      diagramStationTexture.dispose()
       interchangeTexture.dispose()
     },
-    [interchangeTexture, stationTexture],
+    [diagramStationTexture, interchangeTexture, stationTexture],
   )
 
   useEffect(
     () => () => {
       railGeometry.structural.dispose()
       railGeometry.local.dispose()
-      interchangeGeometry.dispose()
+      diagramStationGeometries.stops.dispose()
+      diagramStationGeometries.interchanges.dispose()
     },
-    [interchangeGeometry, railGeometry],
+    [diagramStationGeometries, railGeometry],
   )
 
   useFrame(() => {
@@ -857,14 +871,16 @@ function RailGraph({
     const cameraScale = THREE.MathUtils.clamp(camera.position.y / 37, 0.02, 1)
     stationMaterial.current.size = 0.065 * cameraScale
     stationMaterial.current.opacity =
-      (subdued ? 0.055 : 0.4) * (1 - routeColorMix * 0.9)
+      (subdued ? 0.055 : 0.4) *
+      (lineMapStyle ? 1 - routeColorMix : 1 - routeColorMix * 0.9)
     if (interchangeMaterial.current) {
-      interchangeMaterial.current.size = 0.32 * cameraScale
       interchangeMaterial.current.opacity =
         routeColorMix * (subdued ? 0.38 : 0.94)
     }
     const detail = localNetworkDetailAtZoom(camera.position.y, cameraFraming)
-    const identityAttenuation = 1 - routeColorMix * 0.88
+    const identityAttenuation = lineMapStyle
+      ? 1 - routeColorMix
+      : 1 - routeColorMix * 0.88
     localNetworkMaterial.current.opacity =
       (subdued ? 0.008 + detail * 0.025 : 0.025 + detail * 0.115) *
       identityAttenuation
@@ -876,7 +892,10 @@ function RailGraph({
         <lineBasicMaterial
           color="#7296bb"
           transparent
-          opacity={(subdued ? 0.035 : 0.14) * (1 - routeColorMix * 0.88)}
+          opacity={
+            (subdued ? 0.035 : 0.14) *
+            (lineMapStyle ? 1 - routeColorMix : 1 - routeColorMix * 0.88)
+          }
           blending={THREE.AdditiveBlending}
         />
       </lineSegments>
@@ -898,6 +917,7 @@ function RailGraph({
           subdued={subdued}
           identityMix={routeColorMix}
           overviewEmphasis={trafficOverviewEmphasis}
+          suppressAtIdentity={lineMapStyle}
         />
       )}
       {routeColors && routeColorMix > 0.001 && (
@@ -910,27 +930,73 @@ function RailGraph({
             routeColors={routeColors}
             opacity={routeColorMix}
             subdued={subdued}
+            lineMapStyle={lineMapStyle}
           />
-          <points
-            geometry={interchangeGeometry}
-            position={[0, STATION_SURFACE_Y + 0.08, 0]}
-            renderOrder={4}
-          >
-            <pointsMaterial
-              ref={interchangeMaterial}
-              color="#fffdf4"
-              map={interchangeTexture}
-              size={0.32}
-              transparent
-              opacity={routeColorMix * (subdued ? 0.38 : 0.94)}
-              alphaTest={0.08}
-              depthTest={false}
-              depthWrite={false}
-              sizeAttenuation
-              toneMapped={false}
-              fog={false}
-            />
-          </points>
+          {lineMapStyle && (
+            <>
+              <points
+                geometry={diagramStationGeometries.stops}
+                position={[0, STATION_SURFACE_Y + 0.09, 0]}
+                renderOrder={5}
+              >
+                <pointsMaterial
+                  color="#fffdf4"
+                  map={diagramStationTexture}
+                  size={4.2}
+                  transparent
+                  opacity={routeColorMix * (subdued ? 0.42 : 0.96)}
+                  alphaTest={0.08}
+                  depthTest={false}
+                  depthWrite={false}
+                  sizeAttenuation={false}
+                  toneMapped={false}
+                  fog={false}
+                />
+              </points>
+              <points
+                geometry={diagramStationGeometries.interchanges}
+                position={[0, STATION_SURFACE_Y + 0.1, 0]}
+                renderOrder={6}
+              >
+                <pointsMaterial
+                  ref={interchangeMaterial}
+                  color="#fffdf4"
+                  map={interchangeTexture}
+                  size={11}
+                  transparent
+                  opacity={routeColorMix * (subdued ? 0.5 : 0.98)}
+                  alphaTest={0.08}
+                  depthTest={false}
+                  depthWrite={false}
+                  sizeAttenuation={false}
+                  toneMapped={false}
+                  fog={false}
+                />
+              </points>
+            </>
+          )}
+          {!lineMapStyle && (
+            <points
+              geometry={diagramStationGeometries.interchanges}
+              position={[0, STATION_SURFACE_Y + 0.08, 0]}
+              renderOrder={4}
+            >
+              <pointsMaterial
+                ref={interchangeMaterial}
+                color="#fffdf4"
+                map={interchangeTexture}
+                size={0.32}
+                transparent
+                opacity={routeColorMix * (subdued ? 0.38 : 0.94)}
+                alphaTest={0.08}
+                depthTest={false}
+                depthWrite={false}
+                sizeAttenuation
+                toneMapped={false}
+                fog={false}
+              />
+            </points>
+          )}
         </>
       )}
       <points geometry={stationGeometry} position={[0, STATION_SURFACE_Y, 0]}>
@@ -952,6 +1018,50 @@ function RailGraph({
   )
 }
 
+function diagramRibbonGeometry(
+  segments: readonly number[],
+  halfWidth: number,
+  height: number,
+): THREE.BufferGeometry {
+  const positions: number[] = []
+  for (let index = 0; index < segments.length; index += 6) {
+    const fromX = segments[index]
+    const fromZ = segments[index + 2]
+    const toX = segments[index + 3]
+    const toZ = segments[index + 5]
+    const deltaX = toX - fromX
+    const deltaZ = toZ - fromZ
+    const length = Math.hypot(deltaX, deltaZ)
+    if (length < 0.0001) continue
+    const normalX = (-deltaZ / length) * halfWidth
+    const normalZ = (deltaX / length) * halfWidth
+    const capX = (deltaX / length) * halfWidth * 0.45
+    const capZ = (deltaZ / length) * halfWidth * 0.45
+    const ax = fromX - capX + normalX
+    const az = fromZ - capZ + normalZ
+    const bx = fromX - capX - normalX
+    const bz = fromZ - capZ - normalZ
+    const cx = toX + capX - normalX
+    const cz = toZ + capZ - normalZ
+    const dx = toX + capX + normalX
+    const dz = toZ + capZ + normalZ
+    positions.push(
+      ax, height, az,
+      bx, height, bz,
+      cx, height, cz,
+      ax, height, az,
+      cx, height, cz,
+      dx, height, dz,
+    )
+  }
+  const geometry = new THREE.BufferGeometry()
+  geometry.setAttribute(
+    'position',
+    new THREE.Float32BufferAttribute(positions, 3),
+  )
+  return geometry
+}
+
 function RouteIdentityLayer({
   snapshot,
   projectedStops,
@@ -960,6 +1070,7 @@ function RouteIdentityLayer({
   routeColors,
   opacity,
   subdued,
+  lineMapStyle = false,
 }: {
   readonly snapshot: NetworkSnapshot
   readonly projectedStops: readonly ProjectedStop[]
@@ -968,6 +1079,7 @@ function RouteIdentityLayer({
   readonly routeColors: Readonly<Record<string, string>>
   readonly opacity: number
   readonly subdued: boolean
+  readonly lineMapStyle?: boolean
 }) {
   const routes = useMemo(() => {
     const segmentRoutes = new Map<string, Set<string>>()
@@ -1010,7 +1122,8 @@ function RouteIdentityLayer({
         const laneOffset =
           sharedRoutes.length < 2 || laneIndex < 0
             ? 0
-            : (laneIndex - (sharedRoutes.length - 1) / 2) * 0.11
+            : (laneIndex - (sharedRoutes.length - 1) / 2) *
+              (lineMapStyle ? 0.24 : 0.11)
         appendLineSegments(
           record.positions,
           offsetProjectedPath(points, laneOffset),
@@ -1026,14 +1139,72 @@ function RouteIdentityLayer({
         'position',
         new THREE.Float32BufferAttribute(record.positions, 3),
       )
-      return { name, color: record.color, geometry }
-    })
-  }, [lakeAvoidingPaths, projectedPaths, projectedStops, routeColors, snapshot])
+      return {
+        name,
+        color: record.color,
+        geometry,
+        casing: lineMapStyle
+          ? diagramRibbonGeometry(record.positions, 0.16, 0.072)
+          : undefined,
+        core: lineMapStyle
+          ? diagramRibbonGeometry(record.positions, 0.1, 0.078)
+          : undefined,
+      }
+    }).sort((first, second) => first.name.localeCompare(second.name, 'en'))
+  }, [
+    lakeAvoidingPaths,
+    lineMapStyle,
+    projectedPaths,
+    projectedStops,
+    routeColors,
+    snapshot,
+  ])
 
   useEffect(
-    () => () => routes.forEach(({ geometry }) => geometry.dispose()),
+    () => () => routes.forEach(({ geometry, casing, core }) => {
+      geometry.dispose()
+      casing?.dispose()
+      core?.dispose()
+    }),
     [routes],
   )
+
+  if (lineMapStyle) {
+    return (
+      <group>
+        {routes.map(({ name, casing }) =>
+          casing ? (
+            <mesh key={`casing:${name}`} geometry={casing} renderOrder={3}>
+              <meshBasicMaterial
+                color="#050510"
+                transparent
+                opacity={opacity * (subdued ? 0.52 : 0.96)}
+                depthTest={false}
+                depthWrite={false}
+                toneMapped={false}
+                fog={false}
+              />
+            </mesh>
+          ) : null,
+        )}
+        {routes.map(({ name, color, core }) =>
+          core ? (
+            <mesh key={name} geometry={core} renderOrder={4}>
+              <meshBasicMaterial
+                color={color}
+                transparent
+                opacity={opacity * (subdued ? 0.28 : 0.94)}
+                depthTest={false}
+                depthWrite={false}
+                toneMapped={false}
+                fog={false}
+              />
+            </mesh>
+          ) : null,
+        )}
+      </group>
+    )
+  }
 
   return (
     <group>
@@ -1063,6 +1234,7 @@ function TrafficFlowLayer({
   subdued,
   identityMix = 0,
   overviewEmphasis = 0,
+  suppressAtIdentity = false,
 }: {
   readonly snapshot: NetworkSnapshot
   readonly projectedStops: readonly ProjectedStop[]
@@ -1071,6 +1243,7 @@ function TrafficFlowLayer({
   readonly subdued: boolean
   readonly identityMix?: number
   readonly overviewEmphasis?: number
+  readonly suppressAtIdentity?: boolean
 }) {
   const pulseMaterial = useRef<THREE.LineBasicMaterial>(null)
   const geometries = useMemo(() => {
@@ -1146,11 +1319,18 @@ function TrafficFlowLayer({
   useFrame(({ clock }) => {
     if (!pulseMaterial.current) return
     const wave = 0.5 + Math.sin(clock.elapsedTime * 1.35) * 0.5
+    const identityAttenuation = suppressAtIdentity
+      ? 1 - identityMix
+      : 1 - identityMix * 0.72
     pulseMaterial.current.opacity =
       (subdued ? 0.012 + wave * 0.012 : 0.1 + wave * 0.12) *
-      (1 - identityMix * 0.72) *
+      identityAttenuation *
       (1 + overviewEmphasis * 1.15)
   })
+
+  const identityAttenuation = suppressAtIdentity
+    ? 1 - identityMix
+    : 1 - identityMix * 0.78
 
   return (
     <group position={[0, 0.055, 0]}>
@@ -1160,7 +1340,7 @@ function TrafficFlowLayer({
           transparent
           opacity={
             (subdued ? 0.045 : 0.62) *
-            (1 - identityMix * 0.78) *
+            identityAttenuation *
             (1 + overviewEmphasis * 1.2)
           }
           blending={THREE.AdditiveBlending}
@@ -1231,6 +1411,24 @@ function realtimeRingTexture(): THREE.CanvasTexture {
     context.beginPath()
     context.arc(48, 48, 30, 0, Math.PI * 2)
     context.stroke()
+  }
+  const texture = new THREE.CanvasTexture(canvas)
+  texture.colorSpace = THREE.SRGBColorSpace
+  texture.minFilter = THREE.LinearFilter
+  texture.generateMipmaps = false
+  return texture
+}
+
+function diagramStopTexture(): THREE.CanvasTexture {
+  const canvas = document.createElement('canvas')
+  canvas.width = 48
+  canvas.height = 48
+  const context = canvas.getContext('2d')
+  if (context) {
+    context.fillStyle = 'rgba(255, 253, 244, 1)'
+    context.beginPath()
+    context.arc(24, 24, 18, 0, Math.PI * 2)
+    context.fill()
   }
   const texture = new THREE.CanvasTexture(canvas)
   texture.colorSpace = THREE.SRGBColorSpace
@@ -1642,34 +1840,47 @@ interface StationLabelTexture {
   readonly anchorX: number
 }
 
-function stationLabelTexture(name: string): StationLabelTexture {
+function stationLabelTexture(
+  name: string,
+  style: 'atlas' | 'line-map' = 'atlas',
+): StationLabelTexture {
   const canvas = document.createElement('canvas')
   const measuringContext = canvas.getContext('2d')
-  const font = '500 30px "Helvetica Neue", Helvetica, Arial, sans-serif'
+  const font = `${style === 'line-map' ? '600 27px' : '500 30px'} "Helvetica Neue", Helvetica, Arial, sans-serif`
   measuringContext?.save()
   if (measuringContext) measuringContext.font = font
   const measuredWidth = measuringContext?.measureText(name).width ?? name.length * 19
   measuringContext?.restore()
-  canvas.width = Math.ceil(THREE.MathUtils.clamp(measuredWidth + 86, 150, 760))
-  canvas.height = 92
+  canvas.width = Math.ceil(
+    THREE.MathUtils.clamp(
+      measuredWidth + (style === 'line-map' ? 28 : 86),
+      style === 'line-map' ? 100 : 150,
+      760,
+    ),
+  )
+  canvas.height = style === 'line-map' ? 68 : 92
 
   const context = canvas.getContext('2d')
   if (context) {
     context.font = font
     context.textBaseline = 'middle'
-    context.shadowColor = 'rgba(5, 4, 16, 0.95)'
-    context.shadowBlur = 10
-    context.lineWidth = 7
-    context.strokeStyle = 'rgba(5, 4, 16, 0.9)'
-    context.strokeText(name, 62, 46)
+    const textX = style === 'line-map' ? 13 : 62
+    const textY = canvas.height / 2
+    context.shadowColor = 'rgba(5, 4, 16, 0.96)'
+    context.shadowBlur = style === 'line-map' ? 3 : 10
+    context.lineWidth = style === 'line-map' ? 5 : 7
+    context.strokeStyle = 'rgba(5, 4, 16, 0.96)'
+    context.strokeText(name, textX, textY)
     context.fillStyle = '#f8f7ff'
-    context.fillText(name, 62, 46)
-    context.beginPath()
-    context.arc(31, 46, 6, 0, Math.PI * 2)
-    context.fillStyle = '#8dfaff'
-    context.shadowColor = '#8dfaff'
-    context.shadowBlur = 18
-    context.fill()
+    context.fillText(name, textX, textY)
+    if (style === 'atlas') {
+      context.beginPath()
+      context.arc(31, 46, 6, 0, Math.PI * 2)
+      context.fillStyle = '#8dfaff'
+      context.shadowColor = '#8dfaff'
+      context.shadowBlur = 18
+      context.fill()
+    }
   }
 
   const texture = new THREE.CanvasTexture(canvas)
@@ -1679,7 +1890,7 @@ function stationLabelTexture(name: string): StationLabelTexture {
   return {
     texture,
     aspect: canvas.width / canvas.height,
-    anchorX: 31 / canvas.width,
+    anchorX: style === 'line-map' ? 0 : 31 / canvas.width,
   }
 }
 
@@ -1803,6 +2014,7 @@ function StationLabels({
   tierLimit,
   settleSeconds,
   hidden = false,
+  lineMapMix = 0,
 }: {
   readonly stations: readonly StationIndexEntry[]
   readonly snapshot: NetworkSnapshot
@@ -1815,6 +2027,7 @@ function StationLabels({
   readonly tierLimit?: number
   readonly settleSeconds?: number
   readonly hidden?: boolean
+  readonly lineMapMix?: number
 }) {
   const { camera, size } = useThree()
   const sprites = useRef<Array<THREE.Sprite | null>>([])
@@ -1824,6 +2037,7 @@ function StationLabels({
   const previousCameraQuaternion = useRef(new THREE.Quaternion())
   const cameraWasSampled = useRef(false)
   const cameraStableSeconds = useRef(Number.POSITIVE_INFINITY)
+  const lineMapLabels = lineMapMix >= 0.72
   const routeStationNames = useMemo(() => {
     const stopIndexes = selectedTrain
       ? selectedTrain.stops.map(([stopIndex]) => stopIndex)
@@ -1872,7 +2086,14 @@ function StationLabels({
 
   useEffect(() => {
     retainedStationNames.current.clear()
-  }, [cameraFraming, selectedRoute, selectedStation, selectedTrain, tierLimit])
+  }, [
+    cameraFraming,
+    lineMapLabels,
+    selectedRoute,
+    selectedStation,
+    selectedTrain,
+    tierLimit,
+  ])
 
   useFrame((_, delta) => {
     const semanticHeight = stationLabelCameraHeight(
@@ -1995,9 +2216,12 @@ function StationLabels({
         label.station.labelRank,
       )
       const width = stationLabelScreenWidth(label.displayName, screenHeight)
+      const labelLeft = lineMapLabels
+        ? candidate.x + 3
+        : candidate.x - screenHeight * 0.34
       const box = {
-        left: candidate.x - screenHeight * 0.34,
-        right: candidate.x + width - screenHeight * 0.34,
+        left: labelLeft,
+        right: labelLeft + width,
         top: candidate.y - screenHeight * 0.5,
         bottom: candidate.y + screenHeight * 0.5,
       }
@@ -2012,15 +2236,19 @@ function StationLabels({
 
       const sprite = sprites.current[visible]
       if (!sprite) continue
-      let textureEntry = textures.current.get(label.station.name)
+      const textureKey = `${lineMapLabels ? 'line-map' : 'atlas'}:${label.station.name}`
+      let textureEntry = textures.current.get(textureKey)
       if (!textureEntry) {
-        textureEntry = stationLabelTexture(label.displayName)
-        textures.current.set(label.station.name, textureEntry)
+        textureEntry = stationLabelTexture(
+          label.displayName,
+          lineMapLabels ? 'line-map' : 'atlas',
+        )
+        textures.current.set(textureKey, textureEntry)
       } else {
-        textures.current.delete(label.station.name)
-        textures.current.set(label.station.name, textureEntry)
+        textures.current.delete(textureKey)
+        textures.current.set(textureKey, textureEntry)
       }
-      visibleTextureNames.add(label.station.name)
+      visibleTextureNames.add(textureKey)
       nextRetainedStationNames.add(label.station.name)
       sprite.visible = true
       sprite.position.copy(label.position)
@@ -3914,6 +4142,7 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
         routeColors={props.routeColors}
         routeColorMix={routeColorMix}
         trafficOverviewEmphasis={props.trafficOverviewEmphasis}
+        lineMapStyle={props.topologicalStyle === 'line-map'}
       />
       {(props.roadSnapshot || props.roadTopology) && (
         <RoadTrafficLayer
@@ -4040,6 +4269,11 @@ function NetworkWorld(props: NationalNetworkSceneProps) {
         tierLimit={props.stationLabelTierLimit}
         settleSeconds={props.stationLabelSettleSeconds}
         hidden={props.airCategorySelected}
+        lineMapMix={
+          props.topologicalStyle === 'line-map'
+            ? props.spatialLayoutMix
+            : 0
+        }
       />
       <StationTapTarget
         stations={props.stations}

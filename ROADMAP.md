@@ -154,6 +154,7 @@ See [docs/AUTO.md](./docs/AUTO.md) for the data contract, reconstruction and rec
 - [x] Animate continuously between London's geographic and diagram spaces without resetting journeys or selection.
 - [x] Reshape the logical layout around central-London expansion, compressed outer branches, shared interchange cells and stable two-way bends.
 - [x] Add authored interchange/path overrides, a simplified Thames and an optional TfL-echoing line palette to complete the iconic-map composition.
+- [x] Make the resolved London diagram read as a line map: collision-free station cells, predominantly direct octilinear runs, cased route ribbons, stop dots and interchange rings, with the aggregate traffic field fully receded.
 - [x] Enforce the future package/repository boundary in CI so shared runtime code remains place-neutral.
 - [x] Add a separately loaded, integrity-checked 24-hour London timetable in progressive two-hour chunks.
 - [x] Add an optional observed-aircraft layer for London with matching two-hour and progressively loaded 24-hour studies, searchable flight codes, airport approach/departure selection and category emphasis.

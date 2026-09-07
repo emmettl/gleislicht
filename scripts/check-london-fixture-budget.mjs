@@ -67,6 +67,27 @@ if (layout.paths?.length !== network.paths.length) {
   throw new Error('London diagram path indexes do not match the opening network')
 }
 
+function canonicalDiagramStationName(name) {
+  return String(name)
+    .replace(/^London\s+/i, '')
+    .replace(/\s+\(London\)$/i, '')
+    .replace(/\s+\(H&C Line\)-Underground$/i, '')
+    .replace(/-Underground$/i, '')
+    .replace(/\s+/g, ' ')
+    .trim()
+}
+
+const diagramCellStations = new Map()
+for (const [index, [, x, y]] of layout.stops.entries()) {
+  const key = `${x}:${y}`
+  const names = diagramCellStations.get(key) ?? new Set()
+  names.add(canonicalDiagramStationName(network.stops[index]?.[2]))
+  diagramCellStations.set(key, names)
+}
+if ([...diagramCellStations.values()].some((names) => names.size > 1)) {
+  throw new Error('Unrelated London stations share a diagram cell')
+}
+
 function approximateKilometres(first, second) {
   const longitudeScale = Math.cos(((first[1] + second[1]) * Math.PI) / 360)
   return Math.hypot(
@@ -152,8 +173,10 @@ if (dayTrainIds.size !== dayManifest.tripCount) {
     `London day chunks contain ${dayTrainIds.size} unique journeys, expected ${dayManifest.tripCount}`,
   )
 }
+let directDiagramPaths = 0
 for (const path of layout.paths) {
   if (path.length < 2) throw new Error('London diagram contains an empty path')
+  if (path.length === 2) directDiagramPaths += 1
   for (let index = 1; index < path.length; index += 1) {
     const deltaX = path[index][0] - path[index - 1][0]
     const deltaY = path[index][1] - path[index - 1][1]
@@ -162,6 +185,9 @@ for (const path of layout.paths) {
       throw new Error('London diagram contains a non-octilinear segment')
     }
   }
+}
+if (directDiagramPaths / layout.paths.length < 0.9) {
+  throw new Error('London diagram no longer maintains a predominantly direct octilinear network')
 }
 const SERVICE_CATEGORIES = new Set([
   'international',

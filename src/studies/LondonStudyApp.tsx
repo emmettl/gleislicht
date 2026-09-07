@@ -1280,6 +1280,7 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
               spatialLayoutMix={layoutMix}
               layoutTransitioning={layoutTransitioning}
               routeColors={ALL_CHANGE_ROUTE_COLORS}
+              topologicalStyle="line-map"
             />
           ) : null}
         </Suspense>
