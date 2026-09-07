@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
-import type { NetworkSnapshot } from '@motionstudies/core/domain/network.ts'
-import type { SpatialLayoutSnapshot } from '@motionstudies/core/domain/spatial-layout.ts'
+import type { NetworkSnapshot } from '@motionstudies/core/domain/network'
+import type { SpatialLayoutSnapshot } from '@motionstudies/core/domain/spatial-layout'
 import { prepareProjectedPath } from './network-paths.ts'
 import {
   blendProjectedSpatialLayout,

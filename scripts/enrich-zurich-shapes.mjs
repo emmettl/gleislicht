@@ -2,7 +2,7 @@ import { spawn } from 'node:child_process'
 import { readFile, rename, writeFile } from 'node:fs/promises'
 import { basename, dirname, resolve } from 'node:path'
 import { createInterface } from 'node:readline'
-import { parseCsvLine, transportModeForRouteType } from './ingest-gtfs.mjs'
+import { parseCsvLine, transportModeForRouteType } from '@motionstudies/data/gtfs'
 
 const DEFAULT_SNAPSHOT = 'public/data/zurich-city-morning.json'
 const SOURCE_URL = 'https://data.stadt-zuerich.ch/dataset/vbz_fahrplandaten_gtfs'

@@ -5,7 +5,7 @@ import {
   activeServices,
   parseGtfsTime,
   rowsFromArchive,
-} from './ingest-gtfs.mjs'
+} from '@motionstudies/data/gtfs'
 
 const SOURCE_URL = 'https://rrgtfsfeeds.s3.amazonaws.com/gtfs_subway.zip'
 const TERMS_URL = 'https://www.mta.info/developers/terms-and-conditions'

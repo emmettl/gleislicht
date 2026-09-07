@@ -1,4 +1,4 @@
-import type { EditionDataCatalog } from '@motionstudies/core/edition.ts'
+import type { EditionDataCatalog } from '@motionstudies/core/edition'
 
 export interface SwitzerlandDataCatalog<
   RegionalStudyId extends string = string,

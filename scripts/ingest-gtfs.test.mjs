@@ -1,14 +1,7 @@
 import { describe, expect, it } from 'vitest'
-import {
-  chunkNetworkSnapshot,
-  parseGtfsTime,
-  parseAgencyIds,
-  parseBounds,
-  parseModes,
-  parseRouteIds,
-  transportModeForRouteType,
-  weekdayField,
-} from './ingest-gtfs.mjs'
+import { parseGtfsTime, transportModeForRouteType, weekdayField } from '@motionstudies/data/gtfs'
+import { chunkNetworkSnapshot } from '@motionstudies/data/network-chunks'
+import { parseAgencyIds, parseBounds, parseModes, parseRouteIds } from './ingest-gtfs.mjs'
 
 const compactSnapshot = {
   metadata: { windowStart: 0, windowEnd: 21_600 },

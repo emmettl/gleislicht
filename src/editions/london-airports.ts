@@ -1,4 +1,4 @@
-import type { StudyAirport } from '@motionstudies/core/domain/airport.ts'
+import type { StudyAirport } from '@motionstudies/core/domain/airport'
 import airportCatalogue from '../../fixtures/tfl/all-change-airports.json'
 
 // The airports whose approach envelopes intersect the present London air study.

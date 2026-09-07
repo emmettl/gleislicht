@@ -1,8 +1,8 @@
 import type {
   BoundaryCoordinate,
   MapBoundary,
-} from '@motionstudies/core/domain/boundary.ts'
-import type { MapWaterBodies } from '@motionstudies/core/domain/lakes.ts'
+} from '@motionstudies/core/domain/boundary'
+import type { MapWaterBodies } from '@motionstudies/core/domain/lakes'
 
 interface LondonGeographyMetadata {
   readonly publisher: string

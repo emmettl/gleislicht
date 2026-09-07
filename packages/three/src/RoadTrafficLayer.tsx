@@ -7,11 +7,11 @@ import {
   visualVehicleCount,
   type RoadTopologySnapshot,
   type RoadTrafficSnapshot,
-} from '@motionstudies/core/domain/road.ts'
+} from '@motionstudies/core/domain/road'
 import {
   nationalRoadConditionsAtTime,
   type NationalRoadStudySnapshot,
-} from '@motionstudies/core/domain/road-day.ts'
+} from '@motionstudies/core/domain/road-day'
 import type { NetworkProjection } from './NationalNetworkScene.tsx'
 import { createGlowPointTexture } from './glow-point-texture.ts'
 

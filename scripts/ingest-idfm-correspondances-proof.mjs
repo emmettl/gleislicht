@@ -5,7 +5,7 @@ import {
   activeServices,
   parseGtfsTime,
   rowsFromArchive,
-} from './ingest-gtfs.mjs'
+} from '@motionstudies/data/gtfs'
 
 const SOURCE_URL = 'https://eu.ftp.opendatasoft.com/stif/GTFS/IDFM-gtfs.zip'
 const DATASET_URL =

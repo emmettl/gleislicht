@@ -43,13 +43,16 @@ jobs:
         run: npm run lint
 
       - name: Check edition boundaries
-        run: npm run check:architecture
+        run: npm run check:architecture && npm run check:packages
 
       - name: Check realtime edge adapter
         run: npm run worker:check && npm run worker:build
 
       - name: Install browser test engines
         run: npx playwright install --with-deps chromium webkit
+
+      - name: Validate packed packages and widget lab
+        run: npm run check:packed
 
       - name: Browser regression tests
         run: npm run test:e2e:ci

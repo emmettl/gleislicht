@@ -1,6 +1,5 @@
-#!/usr/bin/env node
+import { chunkNetworkSnapshot, extractNetworkWindow } from '@motionstudies/data/network-chunks'
 
-import { createHash } from 'node:crypto'
 import { createWriteStream } from 'node:fs'
 import { mkdir, readFile } from 'node:fs/promises'
 import { basename, dirname, extname, join, resolve } from 'node:path'
@@ -27,70 +26,6 @@ async function writeJson(filePath, value) {
     output.once('finish', resolvePromise)
     output.end(JSON.stringify(value))
   })
-}
-
-export function extractNetworkWindow(snapshot, windowStart, windowEnd, focusTime) {
-  if (windowStart >= windowEnd) throw new Error('Network window must have positive duration')
-  return {
-    ...snapshot,
-    metadata: {
-      ...snapshot.metadata,
-      windowStart,
-      windowEnd,
-      focusTime,
-    },
-    trains: snapshot.trains.filter(
-      (train) => train.start <= windowEnd && train.end >= windowStart,
-    ),
-  }
-}
-
-export function chunkNetworkSnapshot(snapshot, chunkSeconds, chunkDirectoryName) {
-  if (!Number.isFinite(chunkSeconds) || chunkSeconds <= 0) {
-    throw new Error('Chunk duration must be a positive number of seconds')
-  }
-  const chunks = []
-  for (
-    let windowStart = snapshot.metadata.windowStart;
-    windowStart < snapshot.metadata.windowEnd;
-    windowStart += chunkSeconds
-  ) {
-    const windowEnd = Math.min(snapshot.metadata.windowEnd, windowStart + chunkSeconds)
-    const startHour = String(Math.floor(windowStart / 3600)).padStart(2, '0')
-    const endHour = String(Math.ceil(windowEnd / 3600)).padStart(2, '0')
-    const id = `${startHour}-${endHour}`
-    const trains = snapshot.trains.filter(
-      (train) => train.start <= windowEnd && train.end >= windowStart,
-    )
-    const payload = { windowStart, windowEnd, trains }
-    const encoded = JSON.stringify(payload)
-    chunks.push({
-      descriptor: {
-        id,
-        windowStart,
-        windowEnd,
-        path: `${chunkDirectoryName}/${id}.json`,
-        tripCount: trains.length,
-        bytes: Buffer.byteLength(encoded),
-        sha256: createHash('sha256').update(encoded).digest('hex'),
-      },
-      payload,
-    })
-  }
-
-  return {
-    manifest: {
-      metadata: snapshot.metadata,
-      bounds: snapshot.bounds,
-      stops: snapshot.stops,
-      edges: snapshot.edges,
-      ...(snapshot.paths ? { paths: snapshot.paths } : {}),
-      ...(snapshot.edgePaths ? { edgePaths: snapshot.edgePaths } : {}),
-      tripCount: snapshot.trains.length,
-      chunks: chunks.map(({ descriptor }) => descriptor),
-    },
-    chunks,
-  }
 }
 
 async function main() {

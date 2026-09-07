@@ -16,10 +16,10 @@ import {
   type NetworkSnapshot,
   type NetworkTrain,
   type StationIndexEntry,
-} from '@motionstudies/core/domain/network.ts'
-import { mergeNetworkLayers } from '@motionstudies/core/domain/network-layers.ts'
+} from '@motionstudies/core/domain/network'
+import { mergeNetworkLayers } from '@motionstudies/core/domain/network-layers'
 import { motionStudyMark } from '../editions/catalogue.ts'
-import { editionDataUrl } from '@motionstudies/web/data-url.ts'
+import { editionDataUrl } from '../editions/data-url.ts'
 import {
   parisBoundary,
   parisReferences,
@@ -33,13 +33,13 @@ import {
 import type {
   MapCameraAction,
   MapCameraCommand,
-} from '@motionstudies/three/NationalNetworkScene.tsx'
-import type { TrainLabelMode } from '@motionstudies/three/train-labels.ts'
-import { foldSearchText } from '@motionstudies/core/search-text.ts'
-import { useProgressiveNetworkDay } from '@motionstudies/web/use-progressive-network-day.ts'
+} from '@motionstudies/three/NationalNetworkScene'
+import type { TrainLabelMode } from '@motionstudies/three/train-labels'
+import { foldSearchText } from '@motionstudies/core/search-text'
+import { useProgressiveNetworkDay } from '@motionstudies/web/use-progressive-network-day'
 
 const NationalNetworkScene = lazy(() =>
-  import('@motionstudies/three/NationalNetworkScene.tsx').then(
+  import('@motionstudies/three/NationalNetworkScene').then(
     ({ NationalNetworkScene: Scene }) => ({ default: Scene }),
   ),
 )
@@ -258,16 +258,19 @@ export function ParisStudyApp({ edition }: { readonly edition: ParisEdition }) {
     edition.data.opening.dayManifest,
     studyWindow === 'day',
     time,
+    editionDataUrl,
   )
   const centralCrossDayStudy = useProgressiveNetworkDay(
     edition.data.layers.centralCrossDayManifest,
     studyWindow === 'day' && centralCrossEnabled,
     time,
+    editionDataUrl,
   )
   const regionalRerDayStudy = useProgressiveNetworkDay(
     edition.data.layers.regionalRerDayManifest,
     studyWindow === 'day' && regionalRerEnabled,
     time,
+    editionDataUrl,
   )
   const baseNetwork = studyWindow === 'day'
     ? (dayStudy.network ?? openingNetwork)

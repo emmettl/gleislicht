@@ -1,5 +1,9 @@
 import { describe, expect, it } from 'vitest'
-import { applyStationLabelRanks, rankNetworkStations } from './rank-network-stations.mjs'
+import { mkdtemp, writeFile, readFile, rm } from 'node:fs/promises'
+import { tmpdir } from 'node:os'
+import { join, resolve } from 'node:path'
+import { spawnSync } from 'node:child_process'
+import { applyStationLabelRanks, rankNetworkStations } from '@motionstudies/data/station-ranking'
 
 const snapshot = {
   metadata: {},
@@ -48,4 +52,17 @@ describe('compiled station-label hierarchy', () => {
     expect(ranking[0]).toMatchObject({ name: 'Junction', modeCount: 2 })
     expect(ranking[0].routeCount).toBeGreaterThanOrEqual(2)
   })
+})
+
+
+it('runs the ranking command without requiring a topology catalogue', async () => {
+  const directory = await mkdtemp(join(tmpdir(), 'motion-ranking-'))
+  try {
+    const input = join(directory, 'network.json')
+    await writeFile(input, JSON.stringify(snapshot))
+    const result = spawnSync(process.execPath, [resolve('scripts/rank-network-stations.mjs'), input], { encoding: 'utf8' })
+    expect(result.status, result.stderr).toBe(0)
+    const ranked = JSON.parse(await readFile(input, 'utf8'))
+    expect(ranked.metadata.labelHierarchy.stationCount).toBe(3)
+  } finally { await rm(directory, { recursive: true, force: true }) }
 })

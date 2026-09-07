@@ -1,4 +1,4 @@
-import type { MotionStudyIdentity } from '@motionstudies/core/edition.ts'
+import type { MotionStudyIdentity } from '@motionstudies/core/edition'
 
 export type MotionStudyStatus = 'released' | 'foundation' | 'planned'
 

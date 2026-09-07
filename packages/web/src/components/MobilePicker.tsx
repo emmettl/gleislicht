@@ -13,7 +13,7 @@ export interface MobilePickerOption {
   detail?: ReactNode
 }
 
-interface MobilePickerProps {
+export interface MobilePickerProps {
   ariaLabel: string
   className?: string
   menuPlacement?: 'down' | 'up'
@@ -125,6 +125,7 @@ export function MobilePicker({
         className="mobile-picker__trigger"
         type="button"
         aria-label={ariaLabel}
+        disabled={options.length === 0}
         aria-haspopup="listbox"
         aria-controls={menuId}
         aria-expanded={open}

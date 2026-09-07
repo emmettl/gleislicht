@@ -1,7 +1,7 @@
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { useEffect, useMemo, useRef } from 'react'
 import * as THREE from 'three'
-import type { CorridorSnapshot } from '@motionstudies/core/domain/corridor.ts'
+import type { CorridorSnapshot } from '@motionstudies/core/domain/corridor'
 import {
   vehicleKindForSwissCorridor,
   type SwitzerlandCorridorVehicleKind,

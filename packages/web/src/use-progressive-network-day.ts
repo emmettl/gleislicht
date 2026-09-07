@@ -1,15 +1,16 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useMemo } from 'react'
 import {
   adjacentDayChunks,
   dayChunkForTime,
   networkSnapshotForDayChunk,
-} from '@motionstudies/core/domain/network-day.ts'
+} from '@motionstudies/core/domain/network-day'
 import type {
   NetworkDayChunk,
   NetworkDayChunkDescriptor,
   NetworkDayManifest,
-  NetworkSnapshot,
-} from '@motionstudies/core/domain/network.ts'
+} from '@motionstudies/core/domain/network'
+import type { DataUrlResolver } from './data-url.ts'
+import { useProgressiveChunks, type ProgressiveChunkAdapter } from './use-progressive-chunks.ts'
 
 export async function verifiedNetworkDayChunk(
   response: Response,
@@ -31,105 +32,22 @@ export async function verifiedNetworkDayChunk(
   return JSON.parse(new TextDecoder().decode(bytes)) as NetworkDayChunk
 }
 
-interface ProgressiveNetworkDay {
-  readonly manifest?: NetworkDayManifest
-  readonly network?: NetworkSnapshot
-  readonly chunkReady: boolean
-  readonly loading: boolean
-  readonly error: boolean
+const adapter: ProgressiveChunkAdapter<NetworkDayManifest, NetworkDayChunkDescriptor, NetworkDayChunk> = {
+  chunkForTime: dayChunkForTime,
+  adjacentChunks: adjacentDayChunks,
+  readChunk: verifiedNetworkDayChunk,
 }
 
 export function useProgressiveNetworkDay(
   manifestFile: string,
   active: boolean,
   time: number,
-): ProgressiveNetworkDay {
-  const [manifest, setManifest] = useState<NetworkDayManifest>()
-  const [chunks, setChunks] = useState<Readonly<Record<string, NetworkDayChunk>>>({})
-  const pendingChunkIds = useRef(new Set<string>())
-  const [error, setError] = useState(false)
-  const descriptor = useMemo(
-    () => (manifest ? dayChunkForTime(manifest, time) : undefined),
-    [manifest, time],
-  )
-  const chunkReady = Boolean(descriptor && chunks[descriptor.id])
-  const loading = active && !error && (!manifest || !chunkReady)
+  resolveAssetUrl: DataUrlResolver,
+) {
+  const { chunk, ...state } = useProgressiveChunks(manifestFile, active, time, resolveAssetUrl, adapter)
   const network = useMemo(
-    () =>
-      manifest
-        ? networkSnapshotForDayChunk(
-            manifest,
-            descriptor ? chunks[descriptor.id] : undefined,
-          )
-        : undefined,
-    [chunks, descriptor, manifest],
+    () => state.manifest ? networkSnapshotForDayChunk(state.manifest, chunk) : undefined,
+    [state.manifest, chunk],
   )
-
-  useEffect(() => {
-    if (!active || manifest) return
-    const controller = new AbortController()
-    fetch(`${import.meta.env.BASE_URL}data/${manifestFile}`, {
-      signal: controller.signal,
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`Network day manifest returned ${response.status}`)
-        }
-        return response.json() as Promise<NetworkDayManifest>
-      })
-      .then(setManifest)
-      .catch((loadError: unknown) => {
-        if (loadError instanceof DOMException && loadError.name === 'AbortError') return
-        setError(true)
-      })
-    return () => controller.abort()
-  }, [active, manifest, manifestFile])
-
-  useEffect(() => {
-    if (!active || !manifest || !descriptor) return
-    const currentMissing = !chunks[descriptor.id]
-    const targets = currentMissing
-      ? [descriptor]
-      : adjacentDayChunks(manifest, descriptor).filter(
-          (candidate) => !chunks[candidate.id],
-        )
-    const unrequestedTargets = targets.filter(
-      (candidate) => !pendingChunkIds.current.has(candidate.id),
-    )
-    if (!unrequestedTargets.length) return
-
-    unrequestedTargets.forEach((candidate) =>
-      pendingChunkIds.current.add(candidate.id),
-    )
-    Promise.all(
-      unrequestedTargets.map(async (candidate) => {
-        const response = await fetch(
-          `${import.meta.env.BASE_URL}data/${candidate.path}`,
-        )
-        if (!response.ok) {
-          throw new Error(`Network day chunk returned ${response.status}`)
-        }
-        return [
-          candidate.id,
-          await verifiedNetworkDayChunk(response, candidate),
-        ] as const
-      }),
-    )
-      .then((entries) => {
-        setChunks((current) => ({
-          ...current,
-          ...Object.fromEntries(entries),
-        }))
-      })
-      .catch(() => {
-        if (currentMissing) setError(true)
-      })
-      .finally(() => {
-        unrequestedTargets.forEach((candidate) =>
-          pendingChunkIds.current.delete(candidate.id),
-        )
-      })
-  }, [active, chunks, descriptor, manifest])
-
-  return { manifest, network, chunkReady, loading, error }
+  return { ...state, network }
 }

@@ -4,7 +4,7 @@ import {
   parseGtfsTime,
   rowsFromArchive,
   stopsById,
-} from './ingest-gtfs.mjs'
+} from '@motionstudies/data/gtfs'
 
 const POSTBUS_AGENCY_ID = '801'
 

@@ -30,6 +30,8 @@ Quality checks:
 ```bash
 npm run lint
 npm run typecheck
+npm run check:architecture
+npm run check:packages
 npm test
 npm run build
 npm run worker:check
@@ -75,8 +77,8 @@ The public static deployment is GitHub Pages. Authenticated realtime polling and
 - Vite + React + strict TypeScript
 - Three.js through React Three Fiber
 - Driftbox's Web Audio engine for a fully synthesised, adaptive soundtrack
-- private `@motionstudies/core`, `@motionstudies/three` and `@motionstudies/web` npm workspaces, consumed through the same package imports future edition repositories will use
+- private `@motionstudies/core`, `@motionstudies/three` and `@motionstudies/web` runtime packages plus Node-only `@motionstudies/data` tooling, with explicit public imports and compiled distribution checks
 - oxlint and Vitest, with domain, rendering and browser concerns kept in one-way dependency order
 - static deployment for the visual client; preprocessing jobs turn large GTFS/topography sources into compact, versioned web assets
 
-See [ROADMAP.md](./ROADMAP.md) for delivery stages, [docs/VISION.md](./docs/VISION.md) for the product and art direction, [docs/CATALOGUE.md](./docs/CATALOGUE.md) for the exhibition programme, and [docs/EXTRACTION.md](./docs/EXTRACTION.md) for the active `@motionstudies` workspace seam and eventual repository split.
+See [ROADMAP.md](./ROADMAP.md) for delivery stages, [docs/VISION.md](./docs/VISION.md) for the product and art direction, [docs/CATALOGUE.md](./docs/CATALOGUE.md) for the exhibition programme, and [docs/EXTRACTION.md](./docs/EXTRACTION.md) for the active `@motionstudies` workspace seam and eventual repository split. The [package readiness review](./docs/PACKAGE-READINESS.md) records verified boundaries, the shared widget lab and the repository split sequence. Run `npm run lab` to exercise the packages with synthetic fixtures, or `npm run check:packed` to validate the compiled tarballs in an isolated consumer.

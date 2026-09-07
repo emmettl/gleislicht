@@ -1,0 +1,147 @@
+/* Import tokens.css once in the consumer. Layout and visibility remain local. */
+.mobile-picker,
+.mobile-picker * {
+  box-sizing: border-box;
+}
+
+:where(.mobile-picker) button {
+  font: inherit;
+  -webkit-tap-highlight-color: transparent;
+  border: 1px solid var(--line);
+  cursor: pointer;
+  transition: border-color 160ms ease, background 160ms ease, transform 160ms ease;
+}
+
+.mobile-picker {
+  position: relative;
+  font-family: 'DM Mono', ui-monospace, monospace;
+}
+
+.mobile-picker__trigger {
+  position: relative;
+  display: flex;
+  min-height: 42px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 0 9px;
+  border: 1px solid rgba(193, 204, 255, 0.24);
+  outline: 0;
+  background: rgba(7, 7, 22, 0.82);
+  color: var(--ink);
+  font-size: 0.66rem;
+  letter-spacing: 0.04em;
+  backdrop-filter: blur(14px);
+}
+
+.mobile-picker__trigger i {
+  width: 6px;
+  height: 6px;
+  border-right: 1px solid var(--cyan);
+  border-bottom: 1px solid var(--cyan);
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform 140ms ease;
+}
+
+.mobile-picker__trigger[aria-expanded='true'] {
+  border-color: rgba(141, 250, 255, 0.68);
+  background: rgba(26, 23, 64, 0.94);
+  box-shadow: inset 0 -1px 0 var(--cyan), 0 0 18px rgba(141, 250, 255, 0.11);
+}
+
+.mobile-picker__trigger[aria-expanded='true'] i {
+  transform: translateY(2px) rotate(225deg);
+}
+
+.mobile-picker__menu {
+  position: absolute;
+  top: calc(100% + 5px);
+  right: 0;
+  z-index: 30;
+  display: grid;
+  width: max-content;
+  min-width: 180px;
+  max-width: min(260px, calc(100vw - 24px));
+  padding: 5px;
+  border: 1px solid rgba(141, 250, 255, 0.38);
+  background:
+    linear-gradient(145deg, rgba(20, 18, 50, 0.98), rgba(5, 5, 18, 0.98));
+  box-shadow: 0 15px 42px rgba(0, 0, 0, 0.56), 0 0 28px rgba(69, 89, 156, 0.12);
+  backdrop-filter: blur(22px);
+}
+
+.mobile-picker--up .mobile-picker__menu {
+  top: auto;
+  bottom: calc(100% + 5px);
+}
+
+.mobile-picker__menu::before {
+  position: absolute;
+  inset: 0;
+  border-top: 1px solid rgba(141, 250, 255, 0.22);
+  pointer-events: none;
+  content: '';
+}
+
+.mobile-picker__menu > button {
+  position: relative;
+  display: grid;
+  width: 100%;
+  min-height: 44px;
+  grid-template-columns: 42px minmax(0, 1fr);
+  align-items: center;
+  gap: 9px;
+  padding: 6px 9px;
+  border-color: transparent;
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.67rem;
+  text-align: left;
+}
+
+.mobile-picker__menu > button + button {
+  border-top-color: rgba(193, 204, 255, 0.08);
+}
+
+.mobile-picker__menu > button > span {
+  color: var(--ink);
+  letter-spacing: 0.08em;
+}
+
+.mobile-picker__menu > button > small {
+  overflow: hidden;
+  color: rgba(229, 231, 255, 0.52);
+  font-size: 0.54rem;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  text-overflow: ellipsis;
+}
+
+.mobile-picker__menu > button[aria-selected='true'] {
+  border-color: rgba(255, 94, 219, 0.28);
+  background: linear-gradient(90deg, rgba(65, 46, 126, 0.84), rgba(25, 22, 61, 0.58));
+  color: var(--cyan);
+  box-shadow: inset 2px 0 0 var(--pink), 0 0 16px rgba(255, 94, 219, 0.08);
+}
+
+.mobile-picker__menu > button:focus-visible {
+  outline: 1px solid var(--cyan);
+  outline-offset: -2px;
+}
+
+.mobile-picker__trigger:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 3px;
+}
+
+.mobile-picker__trigger:disabled {
+  cursor: default;
+  opacity: 0.5;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-picker button,
+  .mobile-picker__trigger i {
+    transition: none;
+  }
+}

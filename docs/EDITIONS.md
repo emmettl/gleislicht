@@ -20,7 +20,7 @@ The codebase is divided into four layers:
 3. **Edition** — series number, local title, place identity, timezone, initial clock and the complete catalogue of lazy data assets.
 4. **Adapters** — offline source-specific ingestion that compiles large public datasets into the compact browser contracts consumed by the engine.
 
-`src/editions/edition.ts` is the boundary between reusable runtime code and an authored place. `src/editions/switzerland.ts` and `src/editions/london.ts` are concrete catalogues. `src/entries/mount-motion-study.tsx` provides the shared browser bootstrap, while `src/main.tsx` and `src/london-main.tsx` keep each public page and request graph explicit. `src/theme/visual-language.ts` and `src/styles/tokens.css` hold the visual grammar independently of Swiss transport data.
+`packages/core/src/edition.ts` is the boundary between reusable runtime code and an authored place. `src/editions/switzerland.ts` and `src/editions/london.ts` are concrete catalogues. `packages/web/src/mount-motion-study.tsx` provides the shared browser bootstrap, while `src/main.tsx` and `src/london-main.tsx` keep each public page and request graph explicit. `packages/core/src/theme.ts` and `packages/web/src/tokens.css` hold the visual grammar independently of Swiss transport data.
 
 An edition must provide:
 
@@ -35,7 +35,7 @@ An edition must provide:
 
 The engine deliberately does not fetch GTFS, proprietary APIs or GIS services at runtime. Each adapter resolves licensing, identifiers, geometry and service-day semantics offline, then emits the existing edition-neutral snapshot contracts.
 
-Alternate layouts are edition data, not alternate networks. `src/domain/spatial-layout.ts` defines their stable identity contract and `src/scene/spatial-layout.ts` projects and blends them through the shared renderer. Playback owns one canonical service progress and samples each layout independently before blending positions. This lets an authored work move between geographic and topological space without duplicating journeys or losing time, search, selection and follow-camera state. Layout artifacts stay lazy and optional so editions without a meaningful second spatial language pay no transfer or runtime cost.
+Alternate layouts are edition data, not alternate networks. `packages/core/src/domain/spatial-layout.ts` defines their stable identity contract and `packages/three/src/spatial-layout.ts` projects and blends them through the shared renderer. Playback owns one canonical service progress and samples each layout independently before blending positions. This lets an authored work move between geographic and topological space without duplicating journeys or losing time, search, selection and follow-camera state. Layout artifacts stay lazy and optional so editions without a meaningful second spatial language pay no transfer or runtime cost.
 
 ## Creating an edition
 

@@ -1,4 +1,4 @@
-import type { StudyAirport } from '@motionstudies/core/domain/airport.ts'
+import type { StudyAirport } from '@motionstudies/core/domain/airport'
 
 // Primary gateways in the national Luftraum composition. The deliberately
 // compact catalogue keeps pinned labels legible at the national map scale.

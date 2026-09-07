@@ -1,10 +1,10 @@
-import type { CorridorSnapshot } from '@motionstudies/core/domain/corridor.ts'
-import type { Journey } from '@motionstudies/core/domain/journey.ts'
+import type { CorridorSnapshot } from '@motionstudies/core/domain/corridor'
+import type { Journey } from '@motionstudies/core/domain/journey'
 import {
   formatServiceTime,
   type NetworkSnapshot,
   type NetworkTrain,
-} from '@motionstudies/core/domain/network.ts'
+} from '@motionstudies/core/domain/network'
 
 export type SwitzerlandCorridorVehicleKind = 'train' | 'bus'
 

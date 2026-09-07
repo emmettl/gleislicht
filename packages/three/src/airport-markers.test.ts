@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import type { StudyAirport } from '@motionstudies/core/domain/airport.ts'
+import type { StudyAirport } from '@motionstudies/core/domain/airport'
 import {
   airportLabelsAreVisible,
   airportsForMap,

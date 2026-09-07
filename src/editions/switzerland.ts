@@ -1,8 +1,8 @@
-import type { MotionStudyEdition } from '@motionstudies/core/edition.ts'
+import type { MotionStudyEdition } from '@motionstudies/core/edition'
 import { GLEISLICHT_STUDY } from './catalogue.ts'
-import type { VisualTheme } from '@motionstudies/core/theme.ts'
-import type { HubDefinition } from '@motionstudies/core/domain/hub.ts'
-import type { MapCameraFraming } from '@motionstudies/three/map-camera.ts'
+import type { VisualTheme } from '@motionstudies/core/theme'
+import type { HubDefinition } from '@motionstudies/core/domain/hub'
+import type { MapCameraFraming } from '@motionstudies/three/map-camera'
 import type { SwitzerlandDataCatalog } from './switzerland-data.ts'
 
 export type SwitzerlandHubId = 'zurich' | 'bern' | 'basel' | 'geneva'

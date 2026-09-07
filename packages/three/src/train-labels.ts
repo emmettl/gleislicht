@@ -1,4 +1,4 @@
-import type { ServiceCategory } from '@motionstudies/core/domain/network.ts'
+import type { ServiceCategory } from '@motionstudies/core/domain/network'
 
 export type TrainLabelMode = 'auto' | 'on' | 'off'
 

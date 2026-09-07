@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import type { NetworkSnapshot, NetworkTrain } from '@motionstudies/core/domain/network.ts'
+import type { NetworkSnapshot, NetworkTrain } from '@motionstudies/core/domain/network'
 import { edgeTrafficWeights } from './traffic-weights.ts'
 
 const train = (id: string, stopIndexes: readonly number[]): NetworkTrain => ({

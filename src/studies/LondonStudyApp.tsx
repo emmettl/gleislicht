@@ -13,18 +13,18 @@ import {
   airTrackSearchValue,
   searchAirTracks,
   type AirSearchTrack,
-} from '@motionstudies/core/air-search.ts'
+} from '@motionstudies/core/air-search'
 import {
   activeAirTracks,
   positionForAirTrack,
   type AirSnapshot,
   type AirTrack,
-} from '@motionstudies/core/domain/air.ts'
+} from '@motionstudies/core/domain/air'
 import {
   airportAirTrackIds,
   searchAirports,
   type StudyAirport,
-} from '@motionstudies/core/domain/airport.ts'
+} from '@motionstudies/core/domain/airport'
 import {
   buildRouteIndex,
   buildStationIndex,
@@ -37,7 +37,7 @@ import {
   type NetworkTrain,
   type ServiceCategory,
   type StationIndexEntry,
-} from '@motionstudies/core/domain/network.ts'
+} from '@motionstudies/core/domain/network'
 import {
   callsForHubFlowLens,
   callsAtHub,
@@ -46,26 +46,26 @@ import {
   hubNightSignalMix,
   nextHubCall,
   type HubFlowLens,
-} from '@motionstudies/core/domain/hub.ts'
+} from '@motionstudies/core/domain/hub'
 import {
   adjacentDayChunks,
   dayChunkForTime,
   networkSnapshotForDayChunk,
-} from '@motionstudies/core/domain/network-day.ts'
-import { mergeNetworkLayers } from '@motionstudies/core/domain/network-layers.ts'
+} from '@motionstudies/core/domain/network-day'
+import { mergeNetworkLayers } from '@motionstudies/core/domain/network-layers'
 import {
   operationsAgeSeconds,
   operationsServiceTime,
   projectOperationsOntoNetwork,
-} from '@motionstudies/core/domain/operations.ts'
-import { reconstructedNationalVehicleCount } from '@motionstudies/core/domain/road-day.ts'
-import type { RoadTopologySnapshot } from '@motionstudies/core/domain/road.ts'
+} from '@motionstudies/core/domain/operations'
+import { reconstructedNationalVehicleCount } from '@motionstudies/core/domain/road-day'
+import type { RoadTopologySnapshot } from '@motionstudies/core/domain/road'
 import {
   spatialLayoutCoverage,
   type SpatialLayoutSnapshot,
-} from '@motionstudies/core/domain/spatial-layout.ts'
-import { editionDataUrl } from '@motionstudies/web/data-url.ts'
-import type { SpatialLayoutId } from '@motionstudies/core/edition.ts'
+} from '@motionstudies/core/domain/spatial-layout'
+import { editionDataUrl } from '../editions/data-url.ts'
+import type { SpatialLayoutId } from '@motionstudies/core/edition'
 import {
   londonBoundary,
   londonWater,
@@ -86,33 +86,33 @@ import {
   type LondonMotorway,
 } from '../editions/london-motorways.ts'
 import { motionStudyMark } from '../editions/catalogue.ts'
-import { foldSearchText } from '@motionstudies/core/search-text.ts'
+import { foldSearchText } from '@motionstudies/core/search-text'
 import {
   roadCorridorSearchValue,
   searchRoadCorridors,
-} from '@motionstudies/core/road-search.ts'
+} from '@motionstudies/core/road-search'
 import type {
   MapCameraAction,
   MapCameraCommand,
-} from '@motionstudies/three/NationalNetworkScene.tsx'
-import type { TrainLabelMode } from '@motionstudies/three/train-labels.ts'
-import { SERVICE_COLORS } from '@motionstudies/core/theme.ts'
-import { useProgressiveAirDay } from '@motionstudies/web/use-progressive-air-day.ts'
+} from '@motionstudies/three/NationalNetworkScene'
+import type { TrainLabelMode } from '@motionstudies/three/train-labels'
+import { SERVICE_COLORS } from '@motionstudies/core/theme'
+import { useProgressiveAirDay } from '@motionstudies/web/use-progressive-air-day'
 import {
   useProgressiveNetworkDay,
   verifiedNetworkDayChunk,
-} from '@motionstudies/web/use-progressive-network-day.ts'
-import { useProgressiveRoadStudy } from '@motionstudies/web/use-progressive-road-study.ts'
-import { useObservedOperations } from '@motionstudies/web/use-observed-operations.ts'
+} from '@motionstudies/web/use-progressive-network-day'
+import { useProgressiveRoadStudy } from '@motionstudies/web/use-progressive-road-study'
+import { useObservedOperations } from '@motionstudies/web/use-observed-operations'
 
 const NationalNetworkScene = lazy(() =>
-  import('@motionstudies/three/NationalNetworkScene.tsx').then(
+  import('@motionstudies/three/NationalNetworkScene').then(
     ({ NationalNetworkScene: Scene }) => ({ default: Scene }),
   ),
 )
 
 const HubPulseScene = lazy(() =>
-  import('@motionstudies/three/HubPulseScene.tsx').then(({ HubPulseScene: Scene }) => ({
+  import('@motionstudies/three/HubPulseScene').then(({ HubPulseScene: Scene }) => ({
     default: Scene,
   })),
 )
@@ -314,16 +314,19 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
     edition.data.air.dayManifest,
     airEnabled && studyWindow === 'day',
     time,
+    editionDataUrl,
   )
   const roadDay = useProgressiveRoadStudy(
     edition.data.road.dayManifest,
     roadEnabled,
     time,
+    editionDataUrl,
   )
   const busDay = useProgressiveNetworkDay(
     edition.data.bus.dayManifest,
     busEnabled,
     time,
+    editionDataUrl,
   )
   const observedOperations = useObservedOperations(
     edition.data.operations.latest,

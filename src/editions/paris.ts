@@ -1,7 +1,7 @@
-import type { MapCameraFraming } from '@motionstudies/three/map-camera.ts'
-import type { VisualTheme } from '@motionstudies/core/theme.ts'
+import type { MapCameraFraming } from '@motionstudies/three/map-camera'
+import type { VisualTheme } from '@motionstudies/core/theme'
 import { CORRESPONDANCES_STUDY } from './catalogue.ts'
-import type { EditionDataCatalog, MotionStudyEdition } from '@motionstudies/core/edition.ts'
+import type { EditionDataCatalog, MotionStudyEdition } from '@motionstudies/core/edition'
 
 const CORRESPONDANCES_THEME = {
   background: '#07040d',

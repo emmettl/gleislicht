@@ -1,4 +1,4 @@
-import type { NetworkSnapshot } from '@motionstudies/core/domain/network.ts'
+import type { NetworkSnapshot } from '@motionstudies/core/domain/network'
 
 export interface EdgeTrafficWeights {
   readonly counts: readonly number[]

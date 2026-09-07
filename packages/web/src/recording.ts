@@ -1,4 +1,4 @@
-interface RecordingOptions {
+export interface RecordingOptions {
   readonly duration: number
   readonly fileNamePrefix?: string
   readonly onSaving: () => void

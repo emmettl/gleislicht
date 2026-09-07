@@ -8,13 +8,13 @@ import {
   UNASSIGNED_PLATFORM,
   type HubCall,
   type HubDefinition,
-} from '@motionstudies/core/domain/hub.ts'
+} from '@motionstudies/core/domain/hub'
 import {
   type NetworkSnapshot,
   type NetworkStop,
   type ServiceCategory,
-} from '@motionstudies/core/domain/network.ts'
-import { SERVICE_COLORS } from '@motionstudies/core/theme.ts'
+} from '@motionstudies/core/domain/network'
+import { SERVICE_COLORS } from '@motionstudies/core/theme'
 import { createGlowPointTexture } from './glow-point-texture.ts'
 
 interface StationFlowSceneProps {
@@ -23,6 +23,7 @@ interface StationFlowSceneProps {
   readonly calls: readonly HubCall[]
   readonly isPlaying: boolean
   readonly time: number
+  /** Reports the scene clock while playing; paused scenes follow `time` without emitting. */
   readonly onTime: (time: number) => void
   readonly playbackRate: number
   readonly selectedCategory?: ServiceCategory
@@ -278,7 +279,8 @@ function StationTraffic({
     if (points.current) points.current.frustumCulled = false
     if (glow.current) glow.current.frustumCulled = false
 
-    if (state.clock.elapsedTime - lastReport.current > 0.1) {
+    // A paused scene follows the consumer's clock.
+    if (isPlaying && state.clock.elapsedTime - lastReport.current > 0.1) {
       lastReport.current = state.clock.elapsedTime
       onTime(localTime.current)
     }

@@ -1,0 +1,24 @@
+{
+  "name": "motion-studies-lab",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": { "dev": "vite", "build": "tsc -p tsconfig.json && vite build" },
+  "dependencies": {
+    "@motionstudies/core": "0.0.0",
+    "@motionstudies/three": "0.0.0",
+    "@motionstudies/web": "0.0.0",
+    "@react-three/fiber": "^9.7.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "three": "^0.185.1"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.7",
+    "@types/three": "^0.185.4",
+    "@vitejs/plugin-react": "^6.1.1",
+    "typescript": "~7.0.2",
+    "vite": "^8.2.2"
+  }
+}

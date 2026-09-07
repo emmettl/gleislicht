@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "private": true,
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "lab"
   ],
   "type": "module",
   "description": "Switzerland in motion — a cinematic railway visualisation built from Swiss open transport data.",
@@ -100,7 +101,13 @@
     "data:paris:geography": "node scripts/compile-paris-geography.mjs --boundary /tmp/paris-boundary.geojson --water /tmp/paris-water.json --peripherique /tmp/paris-peripherique.json --retrieved-at 2026-09-06T13:16:00.000Z",
     "data:paris:day": "node scripts/ingest-idfm-correspondances-proof.mjs --archive /tmp/IDFM-gtfs.zip --service-date 2026-09-04 --retrieved-at 2026-09-06T11:41:37.000Z --window-start 00:00:00 --window-end 24:00:00 --focus 12:00:00 --output /tmp/correspondances-day.json && node scripts/chunk-network-snapshot.mjs --input /tmp/correspondances-day.json --manifest fixtures/idfm/correspondances-day-manifest.json --opening /tmp/correspondances-opening-check.json --chunk-hours 2 --opening-start 07:00 --opening-end 09:00 --focus 08:00",
     "data:stage": "node scripts/stage-edition-data.mjs",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "check:packages": "tsc -p packages/core && tsc -p packages/three && tsc -p packages/web",
+    "build:packages": "node scripts/build-packages.mjs",
+    "lab": "vite --config lab/vite.config.mjs --host 127.0.0.1 --port 4174",
+    "build:lab": "tsc -p lab && vite build --config lab/vite.config.mjs",
+    "test:lab": "playwright test --config playwright.lab.config.ts",
+    "check:packed": "node scripts/check-packed-packages.mjs"
   },
   "engines": {
     "node": ">=20"
@@ -117,6 +124,7 @@
   },
   "devDependencies": {
     "@aws-sdk/client-s3": "^3.1127.0",
+    "@babel/parser": "7.29.8",
     "@cloudflare/workers-types": "^5.20260905.1",
     "@playwright/test": "^1.62.1",
     "@types/react": "^19.2.18",
@@ -129,6 +137,7 @@
     "typescript": "~7.0.2",
     "vite": "^8.2.2",
     "vitest": "^5.0.0",
-    "wrangler": "^4.129.0"
+    "wrangler": "^4.129.0",
+    "@motionstudies/data": "0.0.0"
   }
 }

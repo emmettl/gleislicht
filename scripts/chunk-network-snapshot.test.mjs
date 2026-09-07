@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest'
 import {
   chunkNetworkSnapshot,
   extractNetworkWindow,
-} from './chunk-network-snapshot.mjs'
+} from '@motionstudies/data/network-chunks'
 
 const snapshot = {
   metadata: { windowStart: 0, windowEnd: 21_600, focusTime: 10_800 },

@@ -4,8 +4,19 @@
   "private": true,
   "type": "module",
   "exports": {
+    "./components/MobilePicker": "./src/components/MobilePicker.tsx",
+    "./data-url": "./src/data-url.ts",
+    "./mount-motion-study": "./src/mount-motion-study.tsx",
+    "./recording": "./src/recording.ts",
+    "./visual-theme": "./src/visual-theme.ts",
+    "./use-local-performance": "./src/use-local-performance.ts",
+    "./use-observed-operations": "./src/use-observed-operations.ts",
+    "./use-progressive-air-day": "./src/use-progressive-air-day.ts",
+    "./use-progressive-network-day": "./src/use-progressive-network-day.ts",
+    "./use-progressive-road-study": "./src/use-progressive-road-study.ts",
     "./tokens.css": "./src/tokens.css",
-    "./*": "./src/*"
+    "./shell.css": "./src/shell.css",
+    "./mobile-picker.css": "./src/components/mobile-picker.css"
   },
   "dependencies": {
     "@motionstudies/core": "0.0.0"
@@ -13,5 +24,9 @@
   "peerDependencies": {
     "react": "^19.2.8",
     "react-dom": "^19.2.8"
-  }
+  },
+  "description": "Browser controls and loaders for Motion Studies.",
+  "sideEffects": [
+    "**/*.css"
+  ]
 }

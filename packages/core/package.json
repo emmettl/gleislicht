@@ -4,6 +4,31 @@
   "private": true,
   "type": "module",
   "exports": {
-    "./*": "./src/*"
-  }
+    "./air-search": "./src/air-search.ts",
+    "./road-search": "./src/road-search.ts",
+    "./search-navigation": "./src/search-navigation.ts",
+    "./search-text": "./src/search-text.ts",
+    "./edition": "./src/edition.ts",
+    "./theme": "./src/theme.ts",
+    "./domain/air-day": "./src/domain/air-day.ts",
+    "./domain/air": "./src/domain/air.ts",
+    "./domain/airport": "./src/domain/airport.ts",
+    "./domain/boundary": "./src/domain/boundary.ts",
+    "./domain/corridor": "./src/domain/corridor.ts",
+    "./domain/hub": "./src/domain/hub.ts",
+    "./domain/journey": "./src/domain/journey.ts",
+    "./domain/lakes": "./src/domain/lakes.ts",
+    "./domain/map-reference": "./src/domain/map-reference.ts",
+    "./domain/network-day": "./src/domain/network-day.ts",
+    "./domain/network-layers": "./src/domain/network-layers.ts",
+    "./domain/network": "./src/domain/network.ts",
+    "./domain/operations": "./src/domain/operations.ts",
+    "./domain/realtime": "./src/domain/realtime.ts",
+    "./domain/road-day": "./src/domain/road-day.ts",
+    "./domain/road": "./src/domain/road.ts",
+    "./domain/spatial-layout": "./src/domain/spatial-layout.ts",
+    "./domain/train-time-index": "./src/domain/train-time-index.ts"
+  },
+  "description": "Transport contracts and motion primitives for Motion Studies.",
+  "sideEffects": false
 }

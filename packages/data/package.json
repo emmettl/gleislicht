@@ -1,0 +1,31 @@
+{
+  "name": "@motionstudies/data",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Offline data preparation primitives for Motion Studies.",
+  "engines": {
+    "node": ">=20"
+  },
+  "exports": {
+    "./gtfs": {
+      "types": "./src/gtfs.d.mts",
+      "import": "./src/gtfs.mjs"
+    },
+    "./network-chunks": {
+      "types": "./src/network-chunks.d.mts",
+      "import": "./src/network-chunks.mjs"
+    },
+    "./station-ranking": {
+      "types": "./src/station-ranking.d.mts",
+      "import": "./src/station-ranking.mjs"
+    },
+    "./merge-network": {
+      "types": "./src/merge-network.d.mts",
+      "import": "./src/merge-network.mjs"
+    }
+  },
+  "dependencies": {
+    "@motionstudies/core": "0.0.0"
+  }
+}

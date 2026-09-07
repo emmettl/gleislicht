@@ -1,4 +1,4 @@
-import type { VisualTheme } from '@motionstudies/core/theme.ts'
+import type { VisualTheme } from '@motionstudies/core/theme'
 
 export function applyVisualTheme(
   theme: VisualTheme,

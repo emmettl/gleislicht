@@ -4,21 +4,21 @@ import * as THREE from 'three'
 import type {
   BoundaryCoordinate,
   MapBoundary,
-} from '@motionstudies/core/domain/boundary.ts'
-import type { StudyAirport } from '@motionstudies/core/domain/airport.ts'
-import type { MapWaterBodies } from '@motionstudies/core/domain/lakes.ts'
-import type { MapReferencePaths } from '@motionstudies/core/domain/map-reference.ts'
-import type { SpatialLayoutSnapshot } from '@motionstudies/core/domain/spatial-layout.ts'
+} from '@motionstudies/core/domain/boundary'
+import type { StudyAirport } from '@motionstudies/core/domain/airport'
+import type { MapWaterBodies } from '@motionstudies/core/domain/lakes'
+import type { MapReferencePaths } from '@motionstudies/core/domain/map-reference'
+import type { SpatialLayoutSnapshot } from '@motionstudies/core/domain/spatial-layout'
 import type {
   RoadTopologySnapshot,
   RoadTrafficSnapshot,
-} from '@motionstudies/core/domain/road.ts'
-import type { NationalRoadStudySnapshot } from '@motionstudies/core/domain/road-day.ts'
+} from '@motionstudies/core/domain/road'
+import type { NationalRoadStudySnapshot } from '@motionstudies/core/domain/road-day'
 import {
   positionForAirTrack,
   type AirSnapshot,
   type AirTrack,
-} from '@motionstudies/core/domain/air.ts'
+} from '@motionstudies/core/domain/air'
 import {
   positionForTrain,
   type NetworkSnapshot,
@@ -26,13 +26,13 @@ import {
   type NetworkTrain,
   type ServiceCategory,
   type StationIndexEntry,
-} from '@motionstudies/core/domain/network.ts'
-import { SERVICE_COLORS } from '@motionstudies/core/theme.ts'
+} from '@motionstudies/core/domain/network'
+import { SERVICE_COLORS } from '@motionstudies/core/theme'
 import {
   buildTrainTimeIndex,
   trainsNearTime,
   type TrainTimeIndex,
-} from '@motionstudies/core/domain/train-time-index.ts'
+} from '@motionstudies/core/domain/train-time-index'
 import {
   compareStationLabelCandidates,
   MAX_STATION_LABELS,
@@ -123,7 +123,7 @@ export interface MapCameraCommand {
   readonly distanceScale?: number
 }
 
-interface NationalNetworkSceneProps {
+export interface NationalNetworkSceneProps {
   readonly boundary?: MapBoundary
   readonly lakes?: MapWaterBodies
   readonly referencePaths?: MapReferencePaths
@@ -136,6 +136,7 @@ interface NationalNetworkSceneProps {
   /** A small set of simultaneous journeys to compare without choosing a single train. */
   readonly comparisonTrains?: readonly NetworkTrain[]
   readonly comparisonColors?: readonly string[]
+  /** Reports the scene clock while playing; paused scenes follow `time` without emitting. */
   readonly onTime: (time: number) => void
   readonly cameraCommand?: MapCameraCommand
   readonly playbackRate: number
@@ -3273,7 +3274,8 @@ function TrainSwarm({
     if (points.current) points.current.frustumCulled = false
     if (glow.current) glow.current.frustumCulled = false
 
-    if (state.clock.elapsedTime - lastReport.current > 0.1) {
+    // A paused scene follows the consumer's clock, including in linked views.
+    if (isPlaying && state.clock.elapsedTime - lastReport.current > 0.1) {
       lastReport.current = state.clock.elapsedTime
       onTime(localTime.current)
     }

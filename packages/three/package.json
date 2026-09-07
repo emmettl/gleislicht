@@ -4,7 +4,11 @@
   "private": true,
   "type": "module",
   "exports": {
-    "./*": "./src/*"
+    "./NationalNetworkScene": "./src/NationalNetworkScene.tsx",
+    "./HubPulseScene": "./src/HubPulseScene.tsx",
+    "./StationFlowScene": "./src/StationFlowScene.tsx",
+    "./map-camera": "./src/map-camera.ts",
+    "./train-labels": "./src/train-labels.ts"
   },
   "dependencies": {
     "@motionstudies/core": "0.0.0"
@@ -13,5 +17,7 @@
     "@react-three/fiber": "^9.7.0",
     "react": "^19.2.8",
     "three": "^0.185.1"
-  }
+  },
+  "description": "React Three Fiber scenes for Motion Studies.",
+  "sideEffects": false
 }

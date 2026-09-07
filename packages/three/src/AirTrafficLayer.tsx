@@ -4,11 +4,11 @@ import * as THREE from 'three'
 import {
   positionForAirTrack,
   type AirSnapshot,
-} from '@motionstudies/core/domain/air.ts'
+} from '@motionstudies/core/domain/air'
 import {
   airportAirTrackIds,
   type StudyAirport,
-} from '@motionstudies/core/domain/airport.ts'
+} from '@motionstudies/core/domain/airport'
 import {
   projectAirPosition,
   type AirProjection,

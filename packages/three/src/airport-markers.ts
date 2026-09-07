@@ -1,4 +1,4 @@
-import type { StudyAirport } from '@motionstudies/core/domain/airport.ts'
+import type { StudyAirport } from '@motionstudies/core/domain/airport'
 import type { TrainLabelMode } from './train-labels.ts'
 
 export function airportsForMap(

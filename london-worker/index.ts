@@ -2,7 +2,7 @@ import type {
   ObservedLineStatus,
   ObservedTransitVehicle,
   TransitOperationsSnapshot,
-} from '@motionstudies/core/domain/operations.ts'
+} from '@motionstudies/core/domain/operations'
 
 const TFL_API_ORIGIN = 'https://api.tfl.gov.uk'
 const DEFAULT_LINES = ['victoria', 'jubilee', 'elizabeth'] as const
