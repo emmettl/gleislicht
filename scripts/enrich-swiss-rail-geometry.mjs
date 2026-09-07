@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto'
 import { readFile, rename, writeFile } from 'node:fs/promises'
 import { dirname, resolve } from 'node:path'
 
@@ -491,6 +492,12 @@ async function main() {
       trains: payload.trains.map((train) => trains.get(train.id) ?? train),
     },
   }))
+  if (isDayManifest) {
+    enriched.chunks = document.chunks.map((descriptor, index) => {
+      const serialized = JSON.stringify(pending[index].value)
+      return { ...descriptor, bytes: Buffer.byteLength(serialized), sha256: createHash('sha256').update(serialized).digest('hex') }
+    })
+  }
   pending.push({
     path: snapshotPath,
     temporaryPath: `${snapshotPath}.tmp`,

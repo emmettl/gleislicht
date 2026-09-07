@@ -72,6 +72,8 @@ jobs:
           echo "timetable_year=$timetable_year" >> "$GITHUB_OUTPUT"
 
       - name: Download current Swiss timetable sources
+        id: sources
+        continue-on-error: true
         run: |
           curl --fail --location --retry 3 \
             "https://data.opentransportdata.swiss/en/dataset/timetable-${{ steps.edition.outputs.timetable_year }}-gtfs2020/permalink" \
@@ -82,6 +84,7 @@ jobs:
           unzip -t "$RUNNER_TEMP/swiss-gtfs.zip" >/dev/null
 
       - name: Build today's Swiss timetable
+        if: steps.sources.outcome == 'success'
         run: |
           npm run data:gtfs -- \
             --archive "$RUNNER_TEMP/swiss-gtfs.zip" \
@@ -96,6 +99,12 @@ jobs:
             --source "$RUNNER_TEMP/schienennetz_2056_de.xtf" \
             --snapshot public/data/swiss-rail-day-manifest.json \
             --tolerance 160
+
+      - name: Retain published timetable when the source download is unavailable
+        if: steps.sources.outcome == 'failure'
+        run: |
+          echo '::warning::Official timetable download unavailable; retaining the last verified published national timetable with its original service date.'
+          node scripts/restore-published-national-data.mjs
 
       - name: Enable compatible realtime service
         run: |
