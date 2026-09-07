@@ -2202,21 +2202,21 @@ export function App({ edition }: AppProps) {
               </button>
               <button
                 type="button"
-                data-tooltip={text.showGenevaNetwork}
-                aria-label={text.showGenevaNetwork}
-                aria-pressed={networkStudy === 'geneva-tpg'}
-                onClick={() => selectNetworkStudy('geneva-tpg')}
-              >
-                GE
-              </button>
-              <button
-                type="button"
                 data-tooltip={text.showZurichNetwork}
                 aria-label={text.showZurichNetwork}
                 aria-pressed={networkStudy === 'zurich-city'}
                 onClick={() => selectNetworkStudy('zurich-city')}
               >
                 ZH
+              </button>
+              <button
+                type="button"
+                data-tooltip={text.showGenevaNetwork}
+                aria-label={text.showGenevaNetwork}
+                aria-pressed={networkStudy === 'geneva-tpg'}
+                onClick={() => selectNetworkStudy('geneva-tpg')}
+              >
+                GE
               </button>
               <button
                 className="air-toggle"
@@ -2268,8 +2268,8 @@ export function App({ edition }: AppProps) {
                   detail: text.contrastNetwork,
                 },
                 { value: 'zvv-region', label: 'ZVV', detail: text.zvvNetwork },
-                { value: 'geneva-tpg', label: 'GE', detail: text.genevaNetwork },
                 { value: 'zurich-city', label: 'ZH', detail: text.zurichNetwork },
+                { value: 'geneva-tpg', label: 'GE', detail: text.genevaNetwork },
               ]}
               triggerLabel={
                 isContrast
