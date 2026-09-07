@@ -1,6 +1,6 @@
 import type { Plugin } from 'vite'
 
-/** Bind picking to the pinned renderer's populated buffers and visible sprites. */
+/** Adapt selection picking and marker sizing in the pinned renderer. */
 export function gleislichtSelectionRenderer(): Plugin {
   return {
     name: 'gleislicht-selection', enforce: 'pre',
@@ -31,7 +31,20 @@ export function gleislichtSelectionRenderer(): Plugin {
       replace('_jsx(RailGraph, { snapshot: props.contextSnapshot,', '_jsx(RailGraph, { snapshot: props.contextSnapshot, pickable: false,')
       replace("geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));\n        return geometry;\n    }, [projectedStops]);",
         "geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));\n        geometry.userData.pickStops = pickable ? projectedStops.map((_, index) => index) : undefined;\n        return geometry;\n    }, [projectedStops, pickable]);")
-      return { code: 'import { GleislichtMapSelection } from "/src/studies/GleislichtMapSelection.tsx";\n' + code, map: null }
+      // Fixed world-size meshes overwhelm GE/ZH. Preserve overview sizes, but
+      // cap the station ring at 10px and the pulsing train core at ~4px radius.
+      replace('function SelectedStationRoutes({ station, snapshot, projectedStops, projectedPaths, selectedCategory, }) {',
+        `function SelectedStationRoutes({ station, snapshot, projectedStops, projectedPaths, selectedCategory, }) {
+    const selectionMarker = useRef(null);
+    useFrame(({ camera, size }) => {
+        if (selectionMarker.current)
+            selectionMarker.current.scale.setScalar(selectionMarkerScale(camera, selectionMarker.current.position, size.height, 0.535, 10));
+    });`)
+      replace('_jsxs("group", { position: [centre.x, 0.28, centre.z], children:',
+        '_jsxs("group", { ref: selectionMarker, position: [centre.x, 0.28, centre.z], children:')
+      replace('marker.current.scale.setScalar(pulse);',
+        'marker.current.scale.setScalar(pulse * selectionMarkerScale(state.camera, marker.current.position, state.size.height, 0.24, 3.5));')
+      return { code: 'import { GleislichtMapSelection } from "/src/studies/GleislichtMapSelection.tsx";\nimport { selectionMarkerScale } from "/src/studies/selection-marker-scale.ts";\n' + code, map: null }
     },
   }
 }
