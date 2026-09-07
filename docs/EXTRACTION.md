@@ -1,6 +1,6 @@
 # Independent edition boundary
 
-Gleislicht owns the Swiss application, translations, soundtrack, regional and corridor studies, data compilers, committed Swiss artifacts, and Swiss realtime/ASTRA workers. It consumes exact `0.1.0-alpha.1` releases of `@motionstudies/core`, `three`, `web` and Node-only `data` from npm. No shared workspaces or widget lab remain here.
+Gleislicht owns the Swiss application, translations, soundtrack, regional and corridor studies, data compilers, committed Swiss artifacts, and Swiss realtime/ASTRA workers. It consumes exact `0.1.0-alpha.2` releases of `@motionstudies/core`, `three`, `web` and Node-only `data` from npm. No shared workspaces or widget lab remain here.
 
 [Motion Studies](https://github.com/emmettl/motionstudies) owns package source, public exports, the widget lab, shared regression tests and coordinated releases. [All Change](https://github.com/emmettl/allchange) owns London, including its observation worker. [Correspondances](https://github.com/emmettl/correspondances) owns Paris. Local / Express has a private extraction and retains its publication hold.
 

@@ -6,7 +6,7 @@
 
 A cinematic browser visualisation of Switzerland's railway network, built from open timetable data and real topography. The long-term idea is to move between a national network view and intimate, camera-led journeys through a luminous low-poly landscape.
 
-**Gleislicht** is Motion Studies 005: the Swiss edition. Shared runtime and Node tooling come from exact `@motionstudies/*` npm releases at `0.1.0-alpha.1`; their source, tests and widget lab live in [Motion Studies](https://github.com/emmettl/motionstudies).
+**Gleislicht** is Motion Studies 005: the Swiss edition. Shared runtime and Node tooling come from exact `@motionstudies/*` npm releases at `0.1.0-alpha.2`; their source, tests and widget lab live in [Motion Studies](https://github.com/emmettl/motionstudies).
 
 Other editions have independent repositories: [All Change](https://github.com/emmettl/allchange), [Correspondances](https://github.com/emmettl/correspondances), and a private Local / Express proof whose publication hold remains in place. This repository builds only Switzerland. The former `/london.html` and `/paris.html` URLs redirect to the independent sites.
 

@@ -1,3 +1,4 @@
+import { CONTROL_HELP } from './control-help.ts'
 import {
   lazy,
   Suspense,
@@ -324,6 +325,7 @@ export function App({ edition }: AppProps) {
   const searchInteractionRef = useRef(false)
   const timelineTimeRef = useRef(networkTime)
   const text = UI_TEXT[language]
+  const help = CONTROL_HELP[language]
   const performanceSample = useLocalPerformance(performanceEnabled)
   const isContrast = networkStudy === 'contrast'
   const isNationalDay =
@@ -1849,7 +1851,7 @@ export function App({ edition }: AppProps) {
                 <button
                   key={option.id}
                   type="button"
-                  title={option.name}
+                  data-tooltip={option.name}
                   lang={option.id}
                   aria-pressed={language === option.id}
                   onClick={() => setLanguage(option.id)}
@@ -1878,6 +1880,7 @@ export function App({ edition }: AppProps) {
           >
             <button
               type="button"
+              data-tooltip={soundtrackState === 'starting' ? help.soundStarting : soundtrackState === 'on' ? help.soundOff : help.soundOn}
               aria-pressed={soundtrackState === 'on'}
               disabled={soundtrackState === 'starting'}
               onClick={() => void toggleSoundtrack()}
@@ -1922,6 +1925,7 @@ export function App({ edition }: AppProps) {
         <nav className="journey-picker" aria-label={text.journeyPicker}>
           <button
             type="button"
+            data-tooltip={`${help.corridor} · Zürich–Chur`}
             aria-pressed={journeyCorridorId === 'zurich-chur'}
             onClick={() => openTerrainCorridor('zurich-chur')}
           >
@@ -1930,6 +1934,7 @@ export function App({ edition }: AppProps) {
           </button>
           <button
             type="button"
+            data-tooltip={`${help.corridor} · Kiental–Griesalp`}
             aria-pressed={journeyCorridorId === 'kiental-griesalp'}
             onClick={() => openTerrainCorridor('kiental-griesalp')}
           >
@@ -2135,7 +2140,7 @@ export function App({ edition }: AppProps) {
               <span className="sr-only">{text.scale}</span>
               <button
                 type="button"
-                title={text.swissMorningNetwork}
+                data-tooltip={text.showSwissMorningNetwork}
                 aria-label={text.showSwissMorningNetwork}
                 aria-pressed={
                   networkStudy === 'national' && nationalTimeRange === 'morning'
@@ -2146,7 +2151,7 @@ export function App({ edition }: AppProps) {
               </button>
               <button
                 type="button"
-                title={text.swissDayNetwork}
+                data-tooltip={text.showSwissDayNetwork}
                 aria-label={text.showSwissDayNetwork}
                 aria-pressed={
                   networkStudy === 'national' && nationalTimeRange === 'day'
@@ -2157,7 +2162,7 @@ export function App({ edition }: AppProps) {
               </button>
               <button
                 type="button"
-                title={text.contrastNetwork}
+                data-tooltip={text.showContrastNetwork}
                 aria-label={text.showContrastNetwork}
                 aria-pressed={isContrast}
                 onClick={() => selectNetworkStudy('contrast')}
@@ -2166,7 +2171,7 @@ export function App({ edition }: AppProps) {
               </button>
               <button
                 type="button"
-                title={text.zvvNetwork}
+                data-tooltip={text.showZvvNetwork}
                 aria-label={text.showZvvNetwork}
                 aria-pressed={networkStudy === 'zvv-region'}
                 onClick={() => selectNetworkStudy('zvv-region')}
@@ -2175,7 +2180,7 @@ export function App({ edition }: AppProps) {
               </button>
               <button
                 type="button"
-                title={text.genevaNetwork}
+                data-tooltip={text.showGenevaNetwork}
                 aria-label={text.showGenevaNetwork}
                 aria-pressed={networkStudy === 'geneva-tpg'}
                 onClick={() => selectNetworkStudy('geneva-tpg')}
@@ -2184,7 +2189,7 @@ export function App({ edition }: AppProps) {
               </button>
               <button
                 type="button"
-                title={text.zurichNetwork}
+                data-tooltip={text.showZurichNetwork}
                 aria-label={text.showZurichNetwork}
                 aria-pressed={networkStudy === 'zurich-city'}
                 onClick={() => selectNetworkStudy('zurich-city')}
@@ -2194,7 +2199,7 @@ export function App({ edition }: AppProps) {
               <button
                 className="air-toggle"
                 type="button"
-                title={airEnabled ? text.hideAirLayer : text.showAirLayer}
+                data-tooltip={networkStudy !== 'national' ? help.airUnavailable : airEnabled ? text.hideAirLayer : text.showAirLayer}
                 aria-label={airEnabled ? text.hideAirLayer : text.showAirLayer}
                 aria-pressed={airEnabled}
                 disabled={networkStudy !== 'national'}
@@ -2205,7 +2210,7 @@ export function App({ edition }: AppProps) {
               <button
                 className="road-toggle"
                 type="button"
-                title={roadEnabled ? text.hideRoadLayer : text.showRoadLayer}
+                data-tooltip={networkStudy !== 'national' || isNationalDay ? help.roadUnavailable : roadEnabled ? text.hideRoadLayer : text.showRoadLayer}
                 aria-label={roadEnabled ? text.hideRoadLayer : text.showRoadLayer}
                 aria-pressed={roadEnabled}
                 disabled={networkStudy !== 'national' || isNationalDay}
@@ -2272,7 +2277,7 @@ export function App({ edition }: AppProps) {
             <button
               className="mobile-air-toggle"
               type="button"
-              title={airEnabled ? text.hideAirLayer : text.showAirLayer}
+              data-tooltip={networkStudy !== 'national' ? help.airUnavailable : airEnabled ? text.hideAirLayer : text.showAirLayer}
               aria-label={airEnabled ? text.hideAirLayer : text.showAirLayer}
               aria-pressed={airEnabled}
               disabled={networkStudy !== 'national'}
@@ -2283,7 +2288,7 @@ export function App({ edition }: AppProps) {
             <button
               className="mobile-road-toggle"
               type="button"
-              title={roadEnabled ? text.hideRoadLayer : text.showRoadLayer}
+              data-tooltip={networkStudy !== 'national' || isNationalDay ? help.roadUnavailable : roadEnabled ? text.hideRoadLayer : text.showRoadLayer}
               aria-label={roadEnabled ? text.hideRoadLayer : text.showRoadLayer}
               aria-pressed={roadEnabled}
               disabled={networkStudy !== 'national' || isNationalDay}
@@ -2469,6 +2474,7 @@ export function App({ edition }: AppProps) {
               <button
                 key={hub.id}
                 type="button"
+                data-tooltip={`${help.hubs} · ${hub.displayName}`}
                 aria-pressed={hub.id === selectedHub.id}
                 onClick={() => setSelectedHubId(hub.id)}
               >
@@ -2501,6 +2507,7 @@ export function App({ edition }: AppProps) {
             <div className="hub-study-picker" aria-label={text.taktVisualisation}>
               <button
                 type="button"
+                data-tooltip={help.pulse}
                 aria-pressed={hubStudy === 'pulse'}
                 onClick={() => setHubStudy('pulse')}
               >
@@ -2508,6 +2515,7 @@ export function App({ edition }: AppProps) {
               </button>
               <button
                 type="button"
+                data-tooltip={help.tracks}
                 aria-pressed={hubStudy === 'station'}
                 onClick={() => setHubStudy('station')}
               >
@@ -2516,6 +2524,7 @@ export function App({ edition }: AppProps) {
               {hubStudy === 'pulse' && (
                 <button
                   type="button"
+                  data-tooltip={showTaktOverlay ? help.gridOff : help.gridOn}
                   aria-pressed={showTaktOverlay}
                   onClick={() => setShowTaktOverlay((value) => !value)}
                 >
@@ -2594,7 +2603,7 @@ export function App({ edition }: AppProps) {
           <button
             className="corridor-entry contrast-corridor-entry"
             type="button"
-            onClick={enterKientalCorridor}
+            data-tooltip={help.corridor} onClick={enterKientalCorridor}
           >
             <span aria-hidden="true">↘</span>
             {text.enterTerrain} · Kiental–Griesalp
@@ -2687,7 +2696,7 @@ export function App({ edition }: AppProps) {
             <button
               className="corridor-entry"
               type="button"
-              onClick={enterTerrainCorridor}
+              data-tooltip={help.corridor} onClick={enterTerrainCorridor}
             >
               <span aria-hidden="true">↘</span>
               {text.enterTerrain}
@@ -2834,7 +2843,7 @@ export function App({ edition }: AppProps) {
                 className={`operations-badge ${realtimeActive ? 'is-active' : ''}`}
                 onClick={toggleOperationsMode}
                 aria-label={text.toggleOperations}
-                title={operationsDescription}
+                data-tooltip={`${text.toggleOperations} · ${operationsDescription}`}
               >
                 {operationsBadge}
               </button>
@@ -3094,7 +3103,7 @@ export function App({ edition }: AppProps) {
                   <button
                     key={road.id}
                     type="button"
-                    title={road.description}
+                    data-tooltip={road.description}
                     aria-label={`${text.selectRoadCorridor} ${road.label}`}
                     aria-pressed={selectedRoadId === road.id}
                     onClick={() =>
@@ -3231,6 +3240,7 @@ export function App({ edition }: AppProps) {
               <button
                 key={category.id}
                 type="button"
+                data-tooltip={`${selectedCategory === category.id ? help.restore : help.isolate} · ${serviceCategoryLabel(language, category.id)}`}
                 aria-pressed={selectedCategory === category.id}
                 style={
                   {
@@ -3253,6 +3263,7 @@ export function App({ edition }: AppProps) {
           {isNetwork && networkStudy === 'national' && airEnabled && (
             <button
               type="button"
+              data-tooltip={`${airCategorySelected ? help.restore : help.isolate} · ${text.luftraum}`}
               aria-pressed={airCategorySelected}
               style={{ '--service-accent': '#ff5edb' } as CSSProperties}
               onClick={() => {
@@ -3269,6 +3280,7 @@ export function App({ edition }: AppProps) {
           {isNetwork && networkStudy === 'national' && roadEnabled && (
             <button
               type="button"
+              data-tooltip={`${roadCategorySelected ? help.restore : help.isolate} · ${text.auto}`}
               aria-pressed={roadCategorySelected}
               style={{ '--service-accent': '#ffb36b' } as CSSProperties}
               onClick={() => {
@@ -3331,7 +3343,7 @@ export function App({ edition }: AppProps) {
                 <button
                   key={preset.id}
                   type="button"
-                  title={text.dayPresetNames[preset.id]}
+                  data-tooltip={`${help.jump} · ${text.dayPresetNames[preset.id]} · ${formatServiceTime(preset.time)}`}
                   aria-label={`${text.dayPresetNames[preset.id]} · ${formatServiceTime(preset.time)}`}
                   aria-pressed={Math.abs(timelineTime - preset.time) < 5 * 60}
                   onClick={() => jumpToTime(preset.time)}
@@ -3342,7 +3354,7 @@ export function App({ edition }: AppProps) {
               <button
                 className="director-toggle"
                 type="button"
-                aria-pressed={directorMode}
+                data-tooltip={directorMode ? help.directorOff : help.directorOn} aria-pressed={directorMode}
                 onClick={() => setDirectorMode((value) => !value)}
               >
                 {directorMode ? text.stopDirector : text.directorMode}
@@ -3358,7 +3370,7 @@ export function App({ edition }: AppProps) {
                 <button
                   key={rate.label}
                   type="button"
-                  aria-pressed={playbackRate === rate.value}
+                  data-tooltip={`${help.speed} · ${rate.label}`} aria-pressed={playbackRate === rate.value}
                   onClick={() => setPlaybackRate(rate.value)}
                 >
                   {rate.label}
@@ -3392,7 +3404,7 @@ export function App({ edition }: AppProps) {
           <details className="mobile-more-controls">
             <summary aria-label={text.moreControls}>•••</summary>
             <div>
-              <button type="button" onClick={handleContextAction}>
+              <button type="button" data-tooltip={selectedAirTrack || selectedTrain || selectedRoute || selectedStation ? help.release : isNetwork ? help.corridor : help.network} onClick={handleContextAction}>
                 {selectedAirTrack ||
                 selectedTrain ||
                 selectedRoute ||
@@ -3423,7 +3435,7 @@ export function App({ edition }: AppProps) {
                 !selectedRoute && (
                 <button
                   type="button"
-                  aria-pressed={isHub}
+                  data-tooltip={isHub ? help.network : help.hubs} aria-pressed={isHub}
                   onClick={() => {
                     setSelectedCategory(undefined)
                     setAirCategorySelected(false)
@@ -3449,7 +3461,7 @@ export function App({ edition }: AppProps) {
                   ))}
                   <button
                     type="button"
-                    aria-pressed={directorMode}
+                    data-tooltip={directorMode ? help.directorOff : help.directorOn} aria-pressed={directorMode}
                     onClick={() => setDirectorMode((value) => !value)}
                   >
                     {directorMode ? text.stopDirector : text.directorMode}
@@ -3460,7 +3472,7 @@ export function App({ edition }: AppProps) {
                 {text.readMethodology}
               </a>
               {recordingSupported && (
-                <button type="button" onClick={() => void toggleRecording()}>
+                <button type="button" data-tooltip={recordingState === 'saving' ? help.recordSaving : recordingState === 'recording' ? help.recordStop : help.record} onClick={() => void toggleRecording()}>
                   {recordingState === 'recording'
                     ? text.stopRecording
                     : recordingState === 'saving'
@@ -3479,7 +3491,7 @@ export function App({ edition }: AppProps) {
             {isPlaying ? text.pauseMotion : text.resumeMotion}
             <kbd>{text.spaceKey}</kbd>
           </button>
-          <button type="button" onClick={handleContextAction}>
+          <button type="button" data-tooltip={selectedAirTrack || selectedTrain || selectedRoute || selectedStation ? help.release : isNetwork ? help.corridor : help.network} onClick={handleContextAction}>
             <span className="button-icon camera-icon" aria-hidden="true" />
             {selectedAirTrack ||
             selectedTrain ||
@@ -3512,7 +3524,7 @@ export function App({ edition }: AppProps) {
             !selectedRoute && (
             <button
               type="button"
-              aria-pressed={isHub}
+              data-tooltip={isHub ? help.network : help.hubs} aria-pressed={isHub}
               onClick={() => {
                 setSelectedCategory(undefined)
                 setAirCategorySelected(false)
@@ -3532,7 +3544,7 @@ export function App({ edition }: AppProps) {
             </button>
           )}
           {recordingSupported && (
-            <button type="button" onClick={() => void toggleRecording()}>
+            <button type="button" data-tooltip={recordingState === 'saving' ? help.recordSaving : recordingState === 'recording' ? help.recordStop : help.record} onClick={() => void toggleRecording()}>
               <span className="button-icon record-icon" aria-hidden="true">●</span>
               {recordingState === 'recording'
                 ? text.stopRecording

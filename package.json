@@ -57,9 +57,9 @@
   },
   "dependencies": {
     "@driftbox/engine": "^0.6.0",
-    "@motionstudies/core": "0.1.0-alpha.1",
-    "@motionstudies/three": "0.1.0-alpha.1",
-    "@motionstudies/web": "0.1.0-alpha.1",
+    "@motionstudies/core": "0.1.0-alpha.2",
+    "@motionstudies/three": "0.1.0-alpha.2",
+    "@motionstudies/web": "0.1.0-alpha.2",
     "@react-three/fiber": "^9.7.0",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
@@ -81,6 +81,6 @@
     "vite": "^8.2.2",
     "vitest": "^5.0.0",
     "wrangler": "^4.129.0",
-    "@motionstudies/data": "0.1.0-alpha.1"
+    "@motionstudies/data": "0.1.0-alpha.2"
   }
 }
