@@ -2158,6 +2158,16 @@ export function App({ edition }: AppProps) {
                 }}
               />
             </label>
+            {searchQuery && (
+              <button
+                className="clear-search"
+                type="button"
+                aria-label={text.clearSearch}
+                onClick={releaseSelection}
+              >
+                ×
+              </button>
+            )}
             <nav className="network-study-picker" aria-label={text.networkStudy}>
               <span className="sr-only">{text.scale}</span>
               <button
@@ -2318,16 +2328,6 @@ export function App({ edition }: AppProps) {
             >
               {text.auto}
             </button>
-            {searchQuery && (
-              <button
-                className="clear-search"
-                type="button"
-                aria-label={text.clearSearch}
-                onClick={releaseSelection}
-              >
-                ×
-              </button>
-            )}
           </form>
           {searchOpen && searchQuery.trim() && (
             <div
