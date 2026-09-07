@@ -956,6 +956,14 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
         setOperationsRequested(false)
         setOperationsTransitionNetwork(undefined)
         setOperationsMode('plan')
+        if (baseNetwork) {
+          setTime((current) =>
+            Math.max(
+              baseNetwork.metadata.windowStart,
+              Math.min(baseNetwork.metadata.windowEnd, current),
+            ),
+          )
+        }
         setIsPlaying(true)
       }
     },
@@ -980,31 +988,18 @@ export function LondonStudyApp({ edition }: { readonly edition: LondonEdition })
       observedOperations.snapshot,
       edition.timezone,
     )
-    if (studyWindow !== 'day' || time !== observedTime) {
-      const timer = window.setTimeout(() => {
-        setDayError(false)
-        setStudyWindow('day')
-        setTime(observedTime)
-      }, 0)
-      return () => window.clearTimeout(timer)
-    }
-    if (!dayManifest || !activeDayChunk) return
-
     const timer = window.setTimeout(() => {
+      setTime(observedTime)
       setOperationsMode('observed')
       setOperationsRequested(false)
       setOperationsTransitionNetwork(undefined)
     }, 0)
     return () => window.clearTimeout(timer)
   }, [
-    activeDayChunk,
-    dayManifest,
     edition.timezone,
     observedOperations.snapshot,
     operationsAge,
     operationsRequested,
-    studyWindow,
-    time,
   ])
 
   const selectStation = useCallback(

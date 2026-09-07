@@ -191,6 +191,19 @@ test('observed operations stay distinct from the planned timetable', async ({
   await expect(experience).toHaveAttribute('data-operations-mode', 'preparing')
   await expect(experience).toHaveAttribute('data-operations-mode', 'observed')
   await expect(experience).toHaveAttribute('data-operations-ready', 'true')
+  await expect(experience).toHaveAttribute('data-study-window', 'morning')
+  expect(
+    await page.evaluate(() => {
+      const browser = globalThis as unknown as {
+        readonly performance: {
+          getEntriesByType(type: string): readonly { readonly name: string }[]
+        }
+      }
+      return browser.performance
+        .getEntriesByType('resource')
+        .some((entry) => entry.name.includes('all-change-day-chunks'))
+    }),
+  ).toBe(false)
   await expect(page.locator('.london-status-card')).toContainText(
     'vehicles observed',
   )
