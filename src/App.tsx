@@ -1733,7 +1733,11 @@ export function App({ edition }: AppProps) {
                 : undefined
             }
             airCategorySelected={airCategorySelected}
-            airports={SWITZERLAND_AIRPORTS}
+            airports={
+              networkStudy === 'national' && airEnabled
+                ? SWITZERLAND_AIRPORTS
+                : undefined
+            }
             roadSnapshot={
               networkStudy === 'national' && roadEnabled && !isNationalDay
                 ? roadSnapshot
