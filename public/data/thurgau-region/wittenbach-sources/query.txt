@@ -1,0 +1,2 @@
+[out:json][timeout:45][date:"2026-09-02T00:00:00Z"];
+(way[highway](47.453,9.38,47.465,9.396);node[highway](47.453,9.38,47.465,9.396);node[public_transport](47.453,9.38,47.465,9.396);relation[route=bus](47.453,9.38,47.465,9.396););out meta;>;out meta;

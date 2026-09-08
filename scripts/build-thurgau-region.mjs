@@ -14,6 +14,7 @@ import { THURGAU_REGIONAL_BUS_AGENCIES } from './thurgau-regional-roads.mjs'
 import { loadThurgauRail, isThurgauRailSource } from './thurgau-rail-geometry.mjs'
 import { distanceMetres } from './enrich-postbus-roads.mjs'
 import { loadThurgauBoats } from './thurgau-boat-geometry.mjs'
+import { loadThurgauWittenbach } from './thurgau-wittenbach.mjs'
 
 async function hashFile(path) {
   const hash = createHash('sha256')
@@ -81,6 +82,10 @@ export async function buildThurgauRegion({ archive, sourceDirectory = 'data/thur
     timetable.sourceHashes = { archive: hashes.archive, source: hashes.source }
   }
   const rail = await loadThurgauRail(timetable), boats = await loadThurgauBoats(timetable)
+  const wittenbach = await loadThurgauWittenbach(timetable, regionalRoads)
+  hashes.wittenbachPolicy = wittenbach.policySha256; hashes.wittenbachSource = wittenbach.policy.sourceSha256
+  provenance.wittenbach = { ...wittenbach.source, limits: wittenbach.policy.limits, scope: wittenbach.policy.scope }
+  await writeJson(join(auditDirectory, 'wittenbach-turnaround.json'), { ...wittenbach.turn, policySha256: wittenbach.policySha256, patterns: wittenbach.policy.patterns }, true)
   hashes.boatPolicy = boats.policySha256; hashes.boatSource = boats.policy.sourceSha256
   provenance.boats = { ...boats.source, limits: boats.policy.limits, dockZoneMetres: boats.policy.dockZoneMetres, scope: boats.policy.scope, shorelineRule: boats.policy.shorelineRule }
   await writeJson(join(auditDirectory, 'boat-source-segments.json'), boats.inventory, true)
@@ -107,7 +112,7 @@ export async function buildThurgauRegion({ archive, sourceDirectory = 'data/thur
   let routeCrosswalk
   for (const raw of timetable.snapshots) {
     console.log(`Matching every directed Thurgau pattern for ${raw.metadata.serviceDate}…`)
-    const result = applyThurgauGeometry(raw, routes, source, crosswalk, cityRoads, regionalRoads, rail, boats)
+    const result = applyThurgauGeometry(raw, routes, source, crosswalk, cityRoads, regionalRoads, rail, boats, wittenbach)
     for (const p of result.patterns.filter(p => p.geometrySource === 'fot-osm-border-rail-inference')) p.railSupplement.segments.forEach((s, i) => {
       if (s.geometrySource === 'fot-osm-border-rail-inference') borderPaths.set(JSON.stringify([p.stopIds[i], p.stopIds[i + 1]]), { stopIds: [p.stopIds[i], p.stopIds[i + 1]], path: result.paths[p.pathSegments[i]], evidence: s })
     })
@@ -126,6 +131,7 @@ export async function buildThurgauRegion({ archive, sourceDirectory = 'data/thur
     snapshot.metadata = { ...snapshot.metadata, publisher: 'Gleislicht', timetablePublisher: 'SBB', attribution: 'opentransportdata.swiss',
       label: 'Thurgau canton — bus, rail and selected boat patterns', sourceHashes: hashes, timetable: provenance.timetable,
       model: 'Scheduled interpolation along cantonal centrelines, OSM-inferred bus roads, FOT/SBB and OSM border rail infrastructure, and generalized official shipping lines, with bounded stop/dock connectors; not observed vehicles.',
+      wittenbach: { ...provenance.wittenbach, localPathDatabase: '../wittenbach-paths.json' },
       boats: { ...provenance.boats, localSourceMetadata: '../boat-sources/sources.json' },
       cityRoads: { ...cityRoads.metadata, localPathDatabase: '../city-road-paths.json' },
       regionalRoads: { ...regionalRoads.metadata, localPathDatabase: '../regional-road-paths.json' },
@@ -160,6 +166,8 @@ export async function buildThurgauRegion({ archive, sourceDirectory = 'data/thur
         directedPairs: result.pairs.filter(p => p.geometrySources?.includes('osm-regional-road')).length,
         rejectedPatterns: result.patterns.filter(p => p.roadSupplement?.status === 'rejected-incomplete-pattern').length,
         scheduledSegmentOccurrences: snapshot.trains.filter(t => t.geometrySource === 'osm-regional-road').reduce((n, t) => n + t.pathSegments.length, 0) },
+      wittenbachCoverage: { trips: snapshot.trains.filter(t => t.geometrySource === 'osm-wittenbach-turnaround-inference').length,
+        patterns: result.patterns.filter(p => p.geometrySource === 'osm-wittenbach-turnaround-inference').length },
       boatCoverage: { trips: snapshot.trains.filter(t => t.geometrySource === 'swisstopo-boat-inference').length,
         patterns: result.patterns.filter(p => p.geometrySource === 'swisstopo-boat-inference').length,
         rejectedPatterns: result.patterns.filter(p => p.boatSupplement?.status === 'rejected-incomplete-pattern').length },
@@ -199,6 +207,7 @@ export async function buildThurgauRegion({ archive, sourceDirectory = 'data/thur
     return { ...route, sourceLines: routeCrosswalk.find(c => c.routeId === route.id).sourceLines,
       roadSupplement: ['727', '797'].includes(route.agencyId) && route.name !== 'NT' ? 'osm-city-road; full ordered pattern and coordinates required'
         : THURGAU_REGIONAL_BUS_AGENCIES.includes(route.agencyId) && route.mode === 'bus' && route.type !== 715 ? 'osm-regional-road; complete official patterns take priority; complete road patterns only' : null,
+      wittenbachSupplement: wittenbach.policy.patterns.some(p => p.routeId === route.id) ? 'exact scoped OSM roundabout inference for four patterns; original subsequent road slices retained' : null,
       boatSupplement: route.mode === 'ferry' ? 'swisstopo-boat-inference; full original dock chain, bounded dock connectors and every shoreline intersection audited' : null,
       railSupplement: rail.policy.routes.some(r => r.routeId === route.id) ? 'fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required' : null,
       crosswalk: crosswalk.routes.find(c => c.routeId === route.id), days,
@@ -243,6 +252,9 @@ export async function buildThurgauRegion({ archive, sourceDirectory = 'data/thur
   await writeJson(join(auditDirectory, 'source-stops.json'), sourceStops, true)
   await writeJson(join(auditDirectory, 'stops.json'), timetable.sourceStopInventory, false)
   await writeJson(join(output, 'sources.json'), provenance, true)
+  await writeJson(join(output, 'wittenbach-paths.json'), { metadata: provenance.wittenbach, policy: wittenbach.policy, turn: wittenbach.turn }, true)
+  await mkdir(join(output, 'wittenbach-sources'), { recursive: true })
+  for (const file of ['sources.json', ...wittenbach.source.files.map(f => f.file)]) await writeFile(join(output, 'wittenbach-sources', file), await readFile(join('data/thurgau-wittenbach-sources', file)))
   await mkdir(join(output, 'boat-sources'), { recursive: true })
   for (const file of ['sources.json', ...boats.source.files.map(f => f.file)]) await writeFile(join(output, 'boat-sources', file), await readFile(join('data/thurgau-boat-sources', file)))
   await writeFile(join(output, 'boat-sources/policy.json'), await readFile('data/thurgau-boat-policy.json'))

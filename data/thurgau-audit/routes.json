@@ -66,6 +66,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
@@ -176,6 +177,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
@@ -310,6 +312,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
@@ -452,6 +455,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
@@ -555,6 +559,7 @@
       "bahnlinie_takt.6"
     ],
     "roadSupplement": null,
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -694,6 +699,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
@@ -805,6 +811,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
@@ -910,6 +917,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
@@ -1020,6 +1028,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
@@ -1133,6 +1142,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
@@ -1242,6 +1252,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
@@ -1361,6 +1372,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
@@ -1465,6 +1477,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
@@ -1586,6 +1599,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
@@ -1692,6 +1706,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
@@ -1825,6 +1840,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
@@ -1935,6 +1951,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
@@ -2042,6 +2059,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
@@ -2156,6 +2174,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
@@ -2264,6 +2283,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
@@ -2383,6 +2403,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
@@ -2507,6 +2528,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
@@ -2618,6 +2640,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
@@ -2723,6 +2746,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
@@ -2841,6 +2865,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
@@ -2955,6 +2980,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
@@ -3077,6 +3103,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
@@ -3188,6 +3215,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
@@ -3294,6 +3322,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
@@ -3409,6 +3438,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
@@ -3527,6 +3557,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
@@ -3635,6 +3666,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
@@ -3759,6 +3791,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
@@ -3853,6 +3886,7 @@
       "buslinie.2200"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -3951,6 +3985,7 @@
       "buslinie.2201"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -4077,6 +4112,7 @@
       "buslinie.1893"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -4176,6 +4212,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -4262,6 +4299,7 @@
       "buslinie.1864"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -4358,6 +4396,7 @@
       "buslinie.1864"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -4457,6 +4496,7 @@
       "buslinie.1984"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -4574,6 +4614,7 @@
       "buslinie.2227"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -4723,6 +4764,7 @@
       "buslinie.2030"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -4886,6 +4928,7 @@
       "buslinie.2059"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -5030,6 +5073,7 @@
       "buslinie.2058"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -5173,6 +5217,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-city-road; full ordered pattern and coordinates required",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -5282,6 +5327,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-city-road; full ordered pattern and coordinates required",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -5384,6 +5430,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-city-road; full ordered pattern and coordinates required",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -5478,6 +5525,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-city-road; full ordered pattern and coordinates required",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -5580,6 +5628,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-city-road; full ordered pattern and coordinates required",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -5663,6 +5712,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-city-road; full ordered pattern and coordinates required",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -5757,6 +5807,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-city-road; full ordered pattern and coordinates required",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -5847,6 +5898,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-city-road; full ordered pattern and coordinates required",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -5939,6 +5991,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-city-road; full ordered pattern and coordinates required",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -6034,6 +6087,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-city-road; full ordered pattern and coordinates required",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -6112,6 +6166,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -6194,6 +6249,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -6270,6 +6326,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -6368,6 +6425,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-city-road; full ordered pattern and coordinates required",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -6464,6 +6522,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-city-road; full ordered pattern and coordinates required",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -6553,6 +6612,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-city-road; full ordered pattern and coordinates required",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -6653,6 +6713,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-city-road; full ordered pattern and coordinates required",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -6744,6 +6805,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-city-road; full ordered pattern and coordinates required",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -6847,6 +6909,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-city-road; full ordered pattern and coordinates required",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -7008,6 +7071,7 @@
       "buslinie.2270"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -7217,6 +7281,7 @@
       "buslinie.2220"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -7371,6 +7436,7 @@
       "buslinie.1888"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -7510,6 +7576,7 @@
       "buslinie.1737"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -7648,6 +7715,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -7728,6 +7796,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -7807,6 +7876,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -7901,6 +7971,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -8064,6 +8135,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -8146,6 +8218,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -8220,6 +8293,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -8292,6 +8366,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -8364,6 +8439,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -8456,6 +8532,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -8532,6 +8609,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -8605,6 +8683,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -8695,6 +8774,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -8767,6 +8847,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -8848,6 +8929,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -8936,6 +9018,7 @@
       "buslinie.2142"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -9031,6 +9114,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -9176,6 +9260,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -9259,6 +9344,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "wittenbachSupplement": null,
     "boatSupplement": "swisstopo-boat-inference; full original dock chain, bounded dock connectors and every shoreline intersection audited",
     "railSupplement": null,
     "crosswalk": {
@@ -9338,6 +9424,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "wittenbachSupplement": null,
     "boatSupplement": "swisstopo-boat-inference; full original dock chain, bounded dock connectors and every shoreline intersection audited",
     "railSupplement": null,
     "crosswalk": {
@@ -9413,6 +9500,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "wittenbachSupplement": null,
     "boatSupplement": "swisstopo-boat-inference; full original dock chain, bounded dock connectors and every shoreline intersection audited",
     "railSupplement": null,
     "crosswalk": {
@@ -9488,6 +9576,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "wittenbachSupplement": null,
     "boatSupplement": "swisstopo-boat-inference; full original dock chain, bounded dock connectors and every shoreline intersection audited",
     "railSupplement": null,
     "crosswalk": {
@@ -9572,6 +9661,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "wittenbachSupplement": null,
     "boatSupplement": "swisstopo-boat-inference; full original dock chain, bounded dock connectors and every shoreline intersection audited",
     "railSupplement": null,
     "crosswalk": {
@@ -9647,6 +9737,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "wittenbachSupplement": null,
     "boatSupplement": "swisstopo-boat-inference; full original dock chain, bounded dock connectors and every shoreline intersection audited",
     "railSupplement": null,
     "crosswalk": {
@@ -9718,6 +9809,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": null,
+    "wittenbachSupplement": null,
     "boatSupplement": "swisstopo-boat-inference; full original dock chain, bounded dock connectors and every shoreline intersection audited",
     "railSupplement": null,
     "crosswalk": {
@@ -9802,6 +9894,7 @@
       "buslinie.2189"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -9891,6 +9984,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -9967,6 +10061,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -10054,6 +10149,7 @@
       "buslinie.2236"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -10201,6 +10297,7 @@
       "buslinie.2108"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -10391,6 +10488,7 @@
       "buslinie.2236"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -10604,6 +10702,7 @@
       "buslinie.2223"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -10834,6 +10933,7 @@
       "buslinie.2231"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -11026,6 +11126,7 @@
       "buslinie.1964"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -11226,6 +11327,7 @@
       "buslinie.2126"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -11404,6 +11506,7 @@
       "buslinie.2209"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -11595,6 +11698,7 @@
       "buslinie.2109"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -11761,6 +11865,7 @@
       "buslinie.2210"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -11906,6 +12011,7 @@
       "buslinie.2125"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -12067,6 +12173,7 @@
       "buslinie.2125"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -12258,6 +12365,7 @@
       "buslinie.1893"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -12444,6 +12552,7 @@
       "buslinie.1853"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -12645,6 +12754,7 @@
       "buslinie.2248"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -12779,6 +12889,7 @@
       "buslinie.2099"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -12908,6 +13019,7 @@
       "buslinie.1960"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -13110,6 +13222,7 @@
       "buslinie.2217"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -13329,6 +13442,7 @@
       "buslinie.2016"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -13530,6 +13644,7 @@
       "buslinie.2249"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -13756,6 +13871,7 @@
       "buslinie.2257"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -13983,6 +14099,7 @@
       "buslinie.2219"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -14136,6 +14253,7 @@
       "buslinie.2039"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -14286,6 +14404,7 @@
       "buslinie.2263"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -14421,6 +14540,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -14517,6 +14637,7 @@
       "buslinie.2111"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -14663,6 +14784,7 @@
       "buslinie.2220"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "wittenbachSupplement": "exact scoped OSM roundabout inference for four patterns; original subsequent road slices retained",
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -14718,24 +14840,22 @@
       {
         "date": "2026-09-04",
         "trips": 79,
-        "admittedTrips": 48,
+        "admittedTrips": 79,
         "scheduledTrips": 79,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 48,
+        "admittedScheduledTrips": 79,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 1403,
-        "matchedScheduledSegmentOccurrences": 1310,
+        "matchedScheduledSegmentOccurrences": 1403,
         "segmentOccurrences": 1403,
-        "matchedSegmentOccurrences": 1310,
-        "admittedSegmentOccurrences": 876,
+        "matchedSegmentOccurrences": 1403,
+        "admittedSegmentOccurrences": 1403,
         "directedPairs": 78,
-        "matchedDirectedPairs": 75,
+        "matchedDirectedPairs": 78,
         "patterns": 9,
-        "completePatterns": 6,
-        "admittedPatterns": 6,
-        "excludedTrips": {
-          "incomplete-directed-pattern": 31
-        }
+        "completePatterns": 9,
+        "admittedPatterns": 9,
+        "excludedTrips": {}
       },
       {
         "date": "2026-09-06",
@@ -14758,7 +14878,7 @@
         "excludedTrips": {}
       }
     ],
-    "status": "partially-admitted"
+    "status": "admitted-all-dated-trips"
   },
   {
     "id": "96-220-6-j26-1",
@@ -14803,6 +14923,7 @@
       "buslinie.2115"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "wittenbachSupplement": "exact scoped OSM roundabout inference for four patterns; original subsequent road slices retained",
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -14851,24 +14972,22 @@
       {
         "date": "2026-09-04",
         "trips": 12,
-        "admittedTrips": 6,
+        "admittedTrips": 12,
         "scheduledTrips": 12,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 6,
+        "admittedScheduledTrips": 12,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 186,
-        "matchedScheduledSegmentOccurrences": 138,
+        "matchedScheduledSegmentOccurrences": 186,
         "segmentOccurrences": 186,
-        "matchedSegmentOccurrences": 138,
-        "admittedSegmentOccurrences": 90,
+        "matchedSegmentOccurrences": 186,
+        "admittedSegmentOccurrences": 186,
         "directedPairs": 31,
-        "matchedDirectedPairs": 23,
+        "matchedDirectedPairs": 31,
         "patterns": 2,
-        "completePatterns": 1,
-        "admittedPatterns": 1,
-        "excludedTrips": {
-          "incomplete-directed-pattern": 6
-        }
+        "completePatterns": 2,
+        "admittedPatterns": 2,
+        "excludedTrips": {}
       },
       {
         "date": "2026-09-06",
@@ -14891,7 +15010,7 @@
         "excludedTrips": {}
       }
     ],
-    "status": "partially-admitted"
+    "status": "admitted-all-dated-trips"
   },
   {
     "id": "96-220-8-j26-1",
@@ -14938,6 +15057,7 @@
       "buslinie.2266"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -15057,6 +15177,7 @@
       "buslinie.2220"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -15183,6 +15304,7 @@
       "buslinie.2266"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -15280,6 +15402,7 @@
     ],
     "sourceLines": [],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -15366,6 +15489,7 @@
       "buslinie.2141"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -15476,6 +15600,7 @@
       "buslinie.1849"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -15587,6 +15712,7 @@
       "buslinie.2141"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -15685,6 +15811,7 @@
       "buslinie.2266"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {
@@ -15798,6 +15925,7 @@
       "buslinie.2114"
     ],
     "roadSupplement": "osm-regional-road; complete official patterns take priority; complete road patterns only",
+    "wittenbachSupplement": null,
     "boatSupplement": null,
     "railSupplement": null,
     "crosswalk": {

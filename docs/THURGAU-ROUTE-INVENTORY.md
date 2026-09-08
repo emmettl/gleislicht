@@ -80,11 +80,11 @@ Generated from the pinned 2026 GTFS canton census. See [study and method](THURGA
 | 797 Stadtbus Frauenfeld | 814 | bus | 92-814-B-j26-1 | Frauenfeld | 4 / 4 | 28 / 28 | All dated journeys admitted: Complete OSM-inferred city patterns; official line geometry absent |
 | 797 Stadtbus Frauenfeld | 815 | bus | 92-815-B-j26-1 | Frauenfeld | 4 / 4 | 28 / 28 | All dated journeys admitted: Complete OSM-inferred city patterns; official line geometry absent |
 | 797 Stadtbus Frauenfeld | NT | bus | 92-NT-A-j26-1 | Frauenfeld | 0 / 15 | 0 / 30 | Excluded: Demand-responsive night taxi; fixed drop-off paths not inferred |
-| 801 PostAuto AG | 200 | bus | 96-220-5-j26-1 | Arbon | 48 / 79 | 76 / 76 | Some complete patterns admitted: Complete official patterns retained; whole OSM regional patterns supplement gaps; exclusions: incomplete-directed-pattern |
+| 801 PostAuto AG | 200 | bus | 96-220-5-j26-1 | Arbon | 79 / 79 | 76 / 76 | All dated journeys admitted: Complete original road patterns plus exact scoped Wittenbach turnaround; both calls and subsequent pattern slices retained |
 | 801 PostAuto AG | 200 | bus | 96-220-A-j26-1 | Arbon | 0 / 0 | 7 / 7 | All dated journeys admitted: Complete official patterns retained; whole OSM regional patterns supplement gaps |
 | 801 PostAuto AG | 201 | bus | 96-250-A-j26-1 | Arbon | 72 / 72 | 0 / 0 | All dated journeys admitted: Complete official patterns retained; whole OSM regional patterns supplement gaps |
 | 801 PostAuto AG | 205 | bus | 96-221-4-j26-1 | Arbon | 20 / 20 | 0 / 0 | All dated journeys admitted: Complete official patterns retained; whole OSM regional patterns supplement gaps |
-| 801 PostAuto AG | 207 | bus | 96-220-6-j26-1 | Arbon | 6 / 12 | 0 / 0 | Some complete patterns admitted: Complete official patterns retained; whole OSM regional patterns supplement gaps; exclusions: incomplete-directed-pattern |
+| 801 PostAuto AG | 207 | bus | 96-220-6-j26-1 | Arbon | 12 / 12 | 0 / 0 | All dated journeys admitted: Complete original road patterns plus exact scoped Wittenbach turnaround; both calls and subsequent pattern slices retained |
 | 801 PostAuto AG | 210 | bus | 96-250-8-j26-1 | Arbon | 66 / 66 | 35 / 35 | All dated journeys admitted: Complete official patterns retained; whole OSM regional patterns supplement gaps |
 | 801 PostAuto AG | 211 | bus | 96-220-8-j26-1 | Arbon | 68 / 68 | 37 / 37 | All dated journeys admitted: Complete official patterns retained; whole OSM regional patterns supplement gaps |
 | 801 PostAuto AG | 211 | bus | 96-220-B-j26-1 | Arbon | 0 / 0 | 5 / 5 | All dated journeys admitted: Complete official patterns retained; whole OSM regional patterns supplement gaps |

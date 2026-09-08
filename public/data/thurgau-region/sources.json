@@ -387,6 +387,43 @@
     "archivalStudy": true,
     "refreshPolicy": "Pinned September 2026 research fixtures; not a live or current-service feed. A new timetable or geometry release requires a complete rebuild and admission audit."
   },
+  "wittenbach": {
+    "publisher": "OpenStreetMap contributors",
+    "attribution": "© OpenStreetMap contributors",
+    "license": "ODbL-1.0",
+    "termsUrl": "https://www.openstreetmap.org/copyright",
+    "endpoint": "https://overpass-api.de/api/interpreter",
+    "snapshot": "2026-09-02T00:00:00Z",
+    "acquired": "2026-09-08",
+    "files": [
+      {
+        "file": "osm.json.gz",
+        "sha256": "07ddf7994ef6512170fa7a50197c453ea34c1ffdc402ca6557e5c054fd185532"
+      },
+      {
+        "file": "query.txt",
+        "sha256": "6d34ec49c062beac435976b0659c8539d1111799145199e169576a708dfd89df"
+      },
+      {
+        "file": "restrictions.json.gz",
+        "sha256": "0d3f65c7726de8fc418cdf4749bf63756c37e5ae72fb957223a0330f8141192b"
+      },
+      {
+        "file": "restrictions-query.txt",
+        "sha256": "408e1c2e6ccd47ecc85b3615a5ea4a6e97ff30583c3b5392fa70c2598c1d288d"
+      }
+    ],
+    "elementCount": 7856,
+    "method": "Explicit original-road turnaround inference between two original Wittenbach Zentrum platforms, using the full mapped roundabout in source traffic direction. No new street, loop or platform coordinate is drawn. Route relations support the approach and terminus, not the complete two-call turnaround. No operator, lane, diversion or operational certification.",
+    "restrictionReview": "All restriction relations referencing either selected way were queried at the same historical timestamp. Relation 14866387 only_right_turn starts on residential way 697567549 at node 7826558259; the scoped turnaround never enters from that way or reaches that node.",
+    "routeRelationLimit": "OSM 200/207 arrivals include the approach and roundabout; departures start at the other source stop position and omit the turnaround. The two-call GTFS sequence is retained, and the intervening movement remains explicitly inferred.",
+    "limits": {
+      "attachmentMetres": 15,
+      "maximumRoadMetres": 400,
+      "minimumRoadMetres": 150
+    },
+    "scope": "Only segment zero of the four preserved full 200/207 patterns, after the original matcher records missing-shape and equal zero shape distances. Every subsequent segment must exist in that exact original pattern cache; no cross-pattern borrowing or reverse-pair override. Original GTFS platforms, calls, permissions and times are unchanged."
+  },
   "boats": {
     "acquired": "2026-09-08",
     "publisher": "swisstopo; FOEN",
