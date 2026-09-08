@@ -34,7 +34,7 @@ Attribution: **PostAuto AG / OSTWIND** for the supporting map; **© Kanton St.Ga
 python3 scripts/prepare-st-gallen-sources.py --shared-evidence-only
 node scripts/build-st-gallen-region.mjs
 node scripts/check-st-gallen-region.mjs
-node --test scripts/st-gallen-region.test.mjs scripts/st-gallen-shared-corridors.test.mjs
+npx vitest run scripts/st-gallen-region.test.mjs scripts/st-gallen-shared-corridors.test.mjs
 ```
 
 The evidence command reuses matching cached bytes or downloads the pinned map and verifies its hash. A changed publisher file fails validation. Add `--inspect-cache` to disable acquisition. Source acquisition for the full canton also includes this check.

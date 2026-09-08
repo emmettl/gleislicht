@@ -2376,6 +2376,10 @@
     "path": "data/st-gallen-endpoint-review.json",
     "sha256": "e4ce03cfbb7ff3c67dc2ca8ff72ab09a9059bc49add701d8431e546af76be969"
   },
+  "vmobilReview": {
+    "path": "data/st-gallen-vmobil-review.json",
+    "sha256": "8b83290667718d732d5513ab88947c6d506e91fbf574abe96636bd781128c736"
+  },
   "sharedCorridorReview": {
     "path": "data/st-gallen-shared-corridor-review.json",
     "sha256": "90786bad5a03b9e1d8af27f35c4e8b1b55ff0667ff472b60f6f457b935b67574"

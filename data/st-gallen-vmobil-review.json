@@ -1,0 +1,2908 @@
+{
+  "schemaVersion": 1,
+  "sourceHashes": {
+    "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+    "boundary": "9fcbdc0a501919e7d8722827e0868784010be046dccffc02df0833f9de21f86a",
+    "timetable": "fdbe77f9d44d9f7cf59a1da8cf09b87970a6afc0a78355421265b73f9981d49c",
+    "policy": "813ea14d6ce2e3c62baa5e88418485a915dc2207129dd111f169d148cafc86aa",
+    "catalogue": "a3ca9355f89503c16380dec23a518a1c3ad2b91308428da0d8ade6a3da782c8f"
+  },
+  "sourceEvidence": [
+    {
+      "id": "vmobil-catalogue",
+      "file": "vmobil.html",
+      "publisher": "Mobilitätsdaten Österreich / AustriaTech",
+      "url": "https://mobilitaetsdaten.gv.at/daten/soll-fahrplandaten-gtfs",
+      "required": [
+        "20260703-0010_gtfs_flex_vmobil_2026.zip"
+      ],
+      "sha256": "084dc4f5f5027f298a7b8edaa73f3d59b8bec76fd486443929d6e08d0fd0eeeb",
+      "bytes": 34190,
+      "retrievedAt": "2026-09-08T19:14:09.584Z",
+      "sourceEditionDate": null
+    },
+    {
+      "id": "vmobil-license",
+      "file": "vmobil-license.pdf",
+      "publisher": "Mobilitätsverbünde Österreich OG",
+      "url": "https://mobilitaetsdaten.gv.at/sites/default/files/metadataset/contract_examples/Lizenzvereinbarung_DBP_v1.1_0.pdf",
+      "sha256": "0ebe5104d6f730655394deb695065baaa17fa16c2d6bbf94373e274835c5e298",
+      "bytes": 338879,
+      "retrievedAt": "2026-09-08T19:14:09.544Z",
+      "sourceEditionDate": null
+    },
+    {
+      "id": "vmobil",
+      "file": "vmobil-20260703.zip",
+      "publisher": "Mobilitätsverbünde Österreich OG / Verkehrsverbund Vorarlberg",
+      "url": "https://mobilitaetsdaten.gv.at/sites/default/files/metadataset/sample_data/20260703-0010_gtfs_flex_vmobil_2026.zip",
+      "expectedSha256": "c19094742f994a7c7b346d67a2021d35b71bce610a994e5825b0f8d1900438ed",
+      "sourceEditionDate": "2026-07-03",
+      "sha256": "c19094742f994a7c7b346d67a2021d35b71bce610a994e5825b0f8d1900438ed",
+      "bytes": 22364729,
+      "retrievedAt": "2026-09-08T19:14:12.507Z"
+    }
+  ],
+  "externalRoute": {
+    "route_id": "at:vvv:164:",
+    "agency_id": "33",
+    "route_short_name": "164",
+    "route_long_name": "Lustenau-Lauterach-Wolfurt",
+    "route_type": "3"
+  },
+  "externalAgency": {
+    "agency_id": "33",
+    "agency_name": "Landbus Unterland",
+    "agency_url": "https://www.vmobil.at/",
+    "agency_timezone": "Europe/Vienna",
+    "agency_lang": "DE",
+    "agency_phone": "05522/83951"
+  },
+  "externalFeed": {
+    "feed_publisher_name": "Mobilitätsverbünde Österreich OG",
+    "feed_publisher_url": "https://data.mobilitaetsverbuende.at/",
+    "feed_lang": "DE",
+    "feed_start_date": "20251214",
+    "feed_end_date": "20261212",
+    "feed_version": "20260703",
+    "feed_contact_email": "services@mobilitaetsverbuende.at",
+    "feed_contact_url": "https://data.mobilitaetsverbuende.at/"
+  },
+  "sourceShapeInventory": [
+    {
+      "shapeId": "14-164-E-j26-1.1.R",
+      "points": 481,
+      "sha256": "9e97ac2879ce0e8c556bac51c8bc8df351507243aa951739bc10076d69cbba30",
+      "activeDates": [
+        "2026-09-04"
+      ]
+    },
+    {
+      "shapeId": "14-164-E-j26-1.2.R",
+      "points": 487,
+      "sha256": "995a2c08f9ee20563ce4caac0a09767e1462132947aa33888f106f2c0f7f52d1",
+      "activeDates": [
+        "2026-09-04",
+        "2026-09-06"
+      ]
+    },
+    {
+      "shapeId": "14-164-E-j26-1.3.R",
+      "points": 393,
+      "sha256": "8ef099c352be2b19637e456e5f3a83701e1551aba5a0d2182bc83d09182c994a",
+      "activeDates": []
+    },
+    {
+      "shapeId": "14-164-E-j26-1.4.R",
+      "points": 399,
+      "sha256": "db2ea706553a1beae8a3e19e908082b5ba97ca69c1c5a06bed9849e7a698834b",
+      "activeDates": []
+    },
+    {
+      "shapeId": "14-164-E-j26-1.5.H",
+      "points": 496,
+      "sha256": "4424948e6f3cfba9fa7925e5777299215797e6f0fca1bcf45d520486036cbb1d",
+      "activeDates": [
+        "2026-09-04",
+        "2026-09-06"
+      ]
+    },
+    {
+      "shapeId": "14-164-E-j26-1.7.H",
+      "points": 445,
+      "sha256": "a90a9adc07d2fbfff8d1c1aecbbf84191b20fbd98474693dfc2bddc6505498df",
+      "activeDates": []
+    },
+    {
+      "shapeId": "14-164-E-j26-1.8.H",
+      "points": 407,
+      "sha256": "4bb99c92be511214e9315b30bb955e30a0f91f8b113148c5693069c2221480b9",
+      "activeDates": []
+    }
+  ],
+  "method": "Calendar plus exceptions, complete ordered name/direction comparison with explicit spelling normalization, then forward shape-distance slices for every call pair. Original Swiss stop coordinates remain unchanged. Names establish a candidate correspondence, not authorization to replace a stop coordinate.",
+  "days": [
+    {
+      "date": "2026-09-04",
+      "dayAuditSha256": "a1ff220a0fbe25a942d80208e3fc656c4c946e5141cf5caa4837d274624053b3",
+      "swissTrips": 58,
+      "externalTrips": 58,
+      "externalActiveShapes": 3,
+      "patterns": [
+        {
+          "patternId": "949a5e22a7e638a259df",
+          "routeId": "92-164-C-j26-1",
+          "directionId": "1",
+          "swissTrips": 29,
+          "externalTrips": 29,
+          "orderedStopNamesMatch": true,
+          "allCallTimesMatch": true,
+          "variants": [
+            {
+              "shapeId": "14-164-E-j26-1.1.R",
+              "activeTrips": 28,
+              "sourceTripIdsSha256": "5bfcff19d6e30e72c9c8bdb4b68316b710d258afca3cba01f28315a5afbd3a31",
+              "shapeSha256": "9e97ac2879ce0e8c556bac51c8bc8df351507243aa951739bc10076d69cbba30",
+              "stops": [
+                {
+                  "swissStopId": "ch:1:sloid:11091",
+                  "swissName": "Widnau, Viscose-Park",
+                  "externalStopId": "ch:23016:67314:0:1",
+                  "externalName": "Widnau Viscose-Park",
+                  "coordinateSeparationMetres": 13.140456652819307
+                },
+                {
+                  "swissStopId": "ch:1:sloid:91850",
+                  "swissName": "Widnau, Wiesenrain Zoll",
+                  "externalStopId": "ch:23016:31933:0:1",
+                  "externalName": "Widnau Wiesenrain Zoll",
+                  "coordinateSeparationMetres": 12.929640749301104
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1201500",
+                  "swissName": "Lustenau, Philipp-Krapf-Str.",
+                  "externalStopId": "at:48:1520:0:1",
+                  "externalName": "Lustenau Philipp-Krapf-Straße",
+                  "coordinateSeparationMetres": 7.474774090248462
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1201548",
+                  "swissName": "Lustenau, Wiesenrain",
+                  "externalStopId": "at:48:1537:0:2",
+                  "externalName": "Lustenau Wiesenrain",
+                  "coordinateSeparationMetres": 2.1401100299840774
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1201448",
+                  "swissName": "Lustenau, Flurstrasse",
+                  "externalStopId": "at:48:1941:0:1",
+                  "externalName": "Lustenau Flurstraße",
+                  "coordinateSeparationMetres": 6.052767860353387
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1201498",
+                  "swissName": "Lustenau, Pestalozziweg",
+                  "externalStopId": "at:48:1536:0:2",
+                  "externalName": "Lustenau Pestalozziweg",
+                  "coordinateSeparationMetres": 3.026330771756584
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1201478",
+                  "swissName": "Lustenau, Holzstrasse",
+                  "externalStopId": "at:48:1505:0:1",
+                  "externalName": "Lustenau Holzstraße",
+                  "coordinateSeparationMetres": 4.278476926488364
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1201436",
+                  "swissName": "Lustenau, Binsenfeld",
+                  "externalStopId": "at:48:1315:0:2",
+                  "externalName": "Lustenau Binsenfeld",
+                  "coordinateSeparationMetres": 58.301748841286724
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1201520",
+                  "swissName": "Lustenau, Sägerstrasse",
+                  "externalStopId": "at:48:1626:0:1",
+                  "externalName": "Lustenau Sägerstraße",
+                  "coordinateSeparationMetres": 31.59346131775767
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1201442",
+                  "swissName": "Lustenau, Feldrast",
+                  "externalStopId": "at:48:1316:0:2",
+                  "externalName": "Lustenau Feldrast",
+                  "coordinateSeparationMetres": 13.34571039718136
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1200512",
+                  "swissName": "Dornbirn, Köblern",
+                  "externalStopId": "at:48:656:0:1",
+                  "externalName": "Dornbirn Köblern",
+                  "coordinateSeparationMetres": 13.015584207843867
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1200528",
+                  "swissName": "Dornbirn, Messekreuzung",
+                  "externalStopId": "at:48:1504:0:1",
+                  "externalName": "Dornbirn Messekreuzung",
+                  "coordinateSeparationMetres": 143.2091572454843
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1200462",
+                  "swissName": "Dornbirn, Heinzenbeer",
+                  "externalStopId": "at:48:633:0:1",
+                  "externalName": "Dornbirn Heinzenbeer",
+                  "coordinateSeparationMetres": 4.783731834275159
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1200632",
+                  "swissName": "Dornbirn, Volkergasse",
+                  "externalStopId": "at:48:757:0:2",
+                  "externalName": "Dornbirn Volkergasse",
+                  "coordinateSeparationMetres": 6.419951254142736
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1200552",
+                  "swissName": "Dornbirn, Neugrüt",
+                  "externalStopId": "at:48:676:0:1",
+                  "externalName": "Dornbirn Neugrüt",
+                  "coordinateSeparationMetres": 17.60678510536064
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1200598",
+                  "swissName": "Dornbirn, Schoren Bahnhof/ORF",
+                  "externalStopId": "at:48:661:0:1",
+                  "externalName": "Dornbirn Schoren Bahnhof/ORF",
+                  "coordinateSeparationMetres": 22.126337030550904
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1200511",
+                  "swissName": "Dornbirn, Treffpunkt a.d.Ach",
+                  "externalStopId": "at:48:570:0:1",
+                  "externalName": "Dornbirn Treffpunkt A.d.Ach",
+                  "coordinateSeparationMetres": 673.4817780966682
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1200616",
+                  "swissName": "Dornbirn, Steggasse",
+                  "externalStopId": "at:48:743:0:2",
+                  "externalName": "Dornbirn Steggasse",
+                  "coordinateSeparationMetres": 5.781794468404638
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1200650",
+                  "swissName": "Dornbirn, Webergasse",
+                  "externalStopId": "at:48:765:0:3",
+                  "externalName": "Dornbirn Webergasse",
+                  "coordinateSeparationMetres": 13.295302462145994
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1200368",
+                  "swissName": "Dornbirn, Bahnhof",
+                  "externalStopId": "at:48:585:0:1",
+                  "externalName": "Dornbirn Bahnhof",
+                  "coordinateSeparationMetres": 20.2763603615528
+                }
+              ],
+              "pairs": [
+                {
+                  "fromId": "ch:1:sloid:11091",
+                  "toId": "ch:1:sloid:91850",
+                  "from": "Widnau, Viscose-Park",
+                  "to": "Widnau, Wiesenrain Zoll",
+                  "externalFromId": "ch:23016:67314:0:1",
+                  "externalToId": "ch:23016:31933:0:1",
+                  "sourceStartDistance": 0,
+                  "sourceEndDistance": 946.09,
+                  "geometrySha256": "8e9edfbb05a169cfb489749e71e331c1203d5e103ed8a4f6a95e5d9b4834b94d",
+                  "pathMetres": 947.1504920394012,
+                  "directMetres": 495.29189018099487,
+                  "swissEndpointGapMetres": 12.998355928195734,
+                  "externalEndpointGapMetres": 3.621728869026038,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 12.998355928195734
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:91850",
+                  "toId": "ch:1:sloid:1201500",
+                  "from": "Widnau, Wiesenrain Zoll",
+                  "to": "Lustenau, Philipp-Krapf-Str.",
+                  "externalFromId": "ch:23016:31933:0:1",
+                  "externalToId": "at:48:1520:0:1",
+                  "sourceStartDistance": 946.09,
+                  "sourceEndDistance": 1470.51,
+                  "geometrySha256": "8492628c214d4c87c99eed7c9d5feacd52faccebe60e7bb52b5ba9090f05b0d1",
+                  "pathMetres": 525.0181942981586,
+                  "directMetres": 497.01249680764386,
+                  "swissEndpointGapMetres": 12.69583458620365,
+                  "externalEndpointGapMetres": 1.522812831156694,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 1.4613668563188784
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1201500",
+                  "toId": "ch:1:sloid:1201548",
+                  "from": "Lustenau, Philipp-Krapf-Str.",
+                  "to": "Lustenau, Wiesenrain",
+                  "externalFromId": "at:48:1520:0:1",
+                  "externalToId": "at:48:1537:0:2",
+                  "sourceStartDistance": 1470.51,
+                  "sourceEndDistance": 1904.37,
+                  "geometrySha256": "b4cbccc402e571a618233482b06e9b78cde145fae04d8bc8c97a4d4380d4660b",
+                  "pathMetres": 434.34622914847466,
+                  "directMetres": 397.2934511222991,
+                  "swissEndpointGapMetres": 6.667193863555781,
+                  "externalEndpointGapMetres": 1.522812831156694,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 0.7528598036261924
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1201548",
+                  "toId": "ch:1:sloid:1201448",
+                  "from": "Lustenau, Wiesenrain",
+                  "to": "Lustenau, Flurstrasse",
+                  "externalFromId": "at:48:1537:0:2",
+                  "externalToId": "at:48:1941:0:1",
+                  "sourceStartDistance": 1904.37,
+                  "sourceEndDistance": 2138.77,
+                  "geometrySha256": "fa81a73b80f3e9ae4b06b7d057fc27dd23c912057b521acbb00011b6f5175793",
+                  "pathMetres": 234.66483460647737,
+                  "directMetres": 228.00960179556918,
+                  "swissEndpointGapMetres": 6.032611099490043,
+                  "externalEndpointGapMetres": 2.0652892324376033,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 0.7528598036261924
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1201448",
+                  "toId": "ch:1:sloid:1201498",
+                  "from": "Lustenau, Flurstrasse",
+                  "to": "Lustenau, Pestalozziweg",
+                  "externalFromId": "at:48:1941:0:1",
+                  "externalToId": "at:48:1536:0:2",
+                  "sourceStartDistance": 2138.77,
+                  "sourceEndDistance": 2449.54,
+                  "geometrySha256": "ba2e91263a7956bac49b252907da29432524b2f5aa238def4f7187e21d06930b",
+                  "pathMetres": 311.11143752407605,
+                  "directMetres": 318.73512353884774,
+                  "swissEndpointGapMetres": 6.032611099490043,
+                  "externalEndpointGapMetres": 2.0652892324376033,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 0.7259070255878735
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1201498",
+                  "toId": "ch:1:sloid:1201478",
+                  "from": "Lustenau, Pestalozziweg",
+                  "to": "Lustenau, Holzstrasse",
+                  "externalFromId": "at:48:1536:0:2",
+                  "externalToId": "at:48:1505:0:1",
+                  "sourceStartDistance": 2449.54,
+                  "sourceEndDistance": 3062.96,
+                  "geometrySha256": "595ef0e7bb3b8322fc167b0d90e4a004cd055f41294c75b1b89e85bc0560045d",
+                  "pathMetres": 614.1139302438853,
+                  "directMetres": 402.24703873740447,
+                  "swissEndpointGapMetres": 2.6753465381768815,
+                  "externalEndpointGapMetres": 3.096614504650184,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 0.6311427513560963
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1201478",
+                  "toId": "ch:1:sloid:1201436",
+                  "from": "Lustenau, Holzstrasse",
+                  "to": "Lustenau, Binsenfeld",
+                  "externalFromId": "at:48:1505:0:1",
+                  "externalToId": "at:48:1315:0:2",
+                  "sourceStartDistance": 3062.96,
+                  "sourceEndDistance": 3393.42,
+                  "geometrySha256": "e945fd8b61c867cb11dac06f5776628d3fc601571b0d60110213288ba6e84070",
+                  "pathMetres": 330.8311909712757,
+                  "directMetres": 263.03105420571444,
+                  "swissEndpointGapMetres": 57.68768010526018,
+                  "externalEndpointGapMetres": 3.5669224046928036,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 3.2937235805690075
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1201436",
+                  "toId": "ch:1:sloid:1201520",
+                  "from": "Lustenau, Binsenfeld",
+                  "to": "Lustenau, Sägerstrasse",
+                  "externalFromId": "at:48:1315:0:2",
+                  "externalToId": "at:48:1626:0:1",
+                  "sourceStartDistance": 3393.42,
+                  "sourceEndDistance": 3904.28,
+                  "geometrySha256": "510b49a27a1da525a188e865a149df7ca0eda03abd6792215c75f7c97504a408",
+                  "pathMetres": 511.4330289751749,
+                  "directMetres": 516.0697468872044,
+                  "swissEndpointGapMetres": 57.68768010526018,
+                  "externalEndpointGapMetres": 3.5669224046928036,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 3.2937235805690075
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1201520",
+                  "toId": "ch:1:sloid:1201442",
+                  "from": "Lustenau, Sägerstrasse",
+                  "to": "Lustenau, Feldrast",
+                  "externalFromId": "at:48:1626:0:1",
+                  "externalToId": "at:48:1316:0:2",
+                  "sourceStartDistance": 3904.28,
+                  "sourceEndDistance": 4722.25,
+                  "geometrySha256": "0550b341818602d1aa2c9a23ae53bf91113d148ea61cd1267936a6732e06677c",
+                  "pathMetres": 818.888504191224,
+                  "directMetres": 841.7775899684453,
+                  "swissEndpointGapMetres": 32.735098924195704,
+                  "externalEndpointGapMetres": 4.523380215693036,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 5.46246891156912
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1201442",
+                  "toId": "ch:1:sloid:1200512",
+                  "from": "Lustenau, Feldrast",
+                  "to": "Dornbirn, Köblern",
+                  "externalFromId": "at:48:1316:0:2",
+                  "externalToId": "at:48:656:0:1",
+                  "sourceStartDistance": 4722.25,
+                  "sourceEndDistance": 6294.64,
+                  "geometrySha256": "1444668ba76b7e95970c4cb8f22426e6443346c3819df9d638a310492f10f7e1",
+                  "pathMetres": 1574.160512935019,
+                  "directMetres": 1575.2740703856218,
+                  "swissEndpointGapMetres": 10.416087408360825,
+                  "externalEndpointGapMetres": 4.523380215693036,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 7.3709062556368625
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1200512",
+                  "toId": "ch:1:sloid:1200528",
+                  "from": "Dornbirn, Köblern",
+                  "to": "Dornbirn, Messekreuzung",
+                  "externalFromId": "at:48:656:0:1",
+                  "externalToId": "at:48:1504:0:1",
+                  "sourceStartDistance": 6294.64,
+                  "sourceEndDistance": 6850.02,
+                  "geometrySha256": "5a81737cfe083e76e32b58ee9e4c73c878f8699d4a5f0c6ba9f7cccd26e71f5a",
+                  "pathMetres": 556.0004458721735,
+                  "directMetres": 667.7368383880553,
+                  "swissEndpointGapMetres": 143.4986335843468,
+                  "externalEndpointGapMetres": 6.655389605491815,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 7.3709062556368625
+                  },
+                  "reason": "endpoint-gap"
+                },
+                {
+                  "fromId": "ch:1:sloid:1200528",
+                  "toId": "ch:1:sloid:1200462",
+                  "from": "Dornbirn, Messekreuzung",
+                  "to": "Dornbirn, Heinzenbeer",
+                  "externalFromId": "at:48:1504:0:1",
+                  "externalToId": "at:48:633:0:1",
+                  "sourceStartDistance": 6850.02,
+                  "sourceEndDistance": 7123.67,
+                  "geometrySha256": "c3e27b8e8e29f1bd5b35fee951257fac401161db6f45e2d42da0864a0862bf04",
+                  "pathMetres": 273.96127893335495,
+                  "directMetres": 97.58221362380179,
+                  "swissEndpointGapMetres": 143.4986335843468,
+                  "externalEndpointGapMetres": 6.655389605491815,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 0.951958782916749
+                  },
+                  "reason": "endpoint-gap"
+                },
+                {
+                  "fromId": "ch:1:sloid:1200462",
+                  "toId": "ch:1:sloid:1200632",
+                  "from": "Dornbirn, Heinzenbeer",
+                  "to": "Dornbirn, Volkergasse",
+                  "externalFromId": "at:48:633:0:1",
+                  "externalToId": "at:48:757:0:2",
+                  "sourceStartDistance": 7123.67,
+                  "sourceEndDistance": 7505.7,
+                  "geometrySha256": "8285c4ba9fac7735f07480c2773d2f91e84a7219cc99c2116e62ac353e72f73e",
+                  "pathMetres": 382.4614607150573,
+                  "directMetres": 294.97556833006104,
+                  "swissEndpointGapMetres": 5.196881191879529,
+                  "externalEndpointGapMetres": 2.90352971444873,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 0.632809339070213
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1200632",
+                  "toId": "ch:1:sloid:1200552",
+                  "from": "Dornbirn, Volkergasse",
+                  "to": "Dornbirn, Neugrüt",
+                  "externalFromId": "at:48:757:0:2",
+                  "externalToId": "at:48:676:0:1",
+                  "sourceStartDistance": 7505.7,
+                  "sourceEndDistance": 7744.61,
+                  "geometrySha256": "83e0e0fb2465d282ddbc7af4e77fc6733085189170192e10298af3b6e52080c5",
+                  "pathMetres": 239.17541721422666,
+                  "directMetres": 228.2956385273296,
+                  "swissEndpointGapMetres": 16.057758036143028,
+                  "externalEndpointGapMetres": 3.7764580026638894,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 1.6794150685972236
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1200552",
+                  "toId": "ch:1:sloid:1200598",
+                  "from": "Dornbirn, Neugrüt",
+                  "to": "Dornbirn, Schoren Bahnhof/ORF",
+                  "externalFromId": "at:48:676:0:1",
+                  "externalToId": "at:48:661:0:1",
+                  "sourceStartDistance": 7744.61,
+                  "sourceEndDistance": 8486.25,
+                  "geometrySha256": "ea08b5d28f78238f0d150c7739f50fef59adae5871073de2ebd761faa0b419f0",
+                  "pathMetres": 742.4803229243579,
+                  "directMetres": 632.0194909742063,
+                  "swissEndpointGapMetres": 20.679569387313038,
+                  "externalEndpointGapMetres": 3.7764580026638894,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 6.739766936714345
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1200598",
+                  "toId": "ch:1:sloid:1200511",
+                  "from": "Dornbirn, Schoren Bahnhof/ORF",
+                  "to": "Dornbirn, Treffpunkt a.d.Ach",
+                  "externalFromId": "at:48:661:0:1",
+                  "externalToId": "at:48:570:0:1",
+                  "sourceStartDistance": 8486.25,
+                  "sourceEndDistance": 8756.07,
+                  "geometrySha256": "ba5adb2babcec0033b8921def5a5af3350db3ce4d296e52e108148977daab0a3",
+                  "pathMetres": 270.1168838262857,
+                  "directMetres": 744.7663669646116,
+                  "swissEndpointGapMetres": 676.021842533026,
+                  "externalEndpointGapMetres": 3.634196394999485,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "endpoint-gap",
+                    "maximumSnapMetres": 675.9371206448491
+                  },
+                  "reason": "endpoint-gap"
+                },
+                {
+                  "fromId": "ch:1:sloid:1200511",
+                  "toId": "ch:1:sloid:1200616",
+                  "from": "Dornbirn, Treffpunkt a.d.Ach",
+                  "to": "Dornbirn, Steggasse",
+                  "externalFromId": "at:48:570:0:1",
+                  "externalToId": "at:48:743:0:2",
+                  "sourceStartDistance": 8756.07,
+                  "sourceEndDistance": 9174.62,
+                  "geometrySha256": "df8734376be0ed7c9d3c415c664c38ceb132fd7b885f6c575f51333b40eb924b",
+                  "pathMetres": 419.02095491084833,
+                  "directMetres": 993.6476511793061,
+                  "swissEndpointGapMetres": 676.021842533026,
+                  "externalEndpointGapMetres": 2.5519305110023276,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "endpoint-gap",
+                    "maximumSnapMetres": 675.9371206448491
+                  },
+                  "reason": "endpoint-gap"
+                },
+                {
+                  "fromId": "ch:1:sloid:1200616",
+                  "toId": "ch:1:sloid:1200650",
+                  "from": "Dornbirn, Steggasse",
+                  "to": "Dornbirn, Webergasse",
+                  "externalFromId": "at:48:743:0:2",
+                  "externalToId": "at:48:765:0:3",
+                  "sourceStartDistance": 9174.62,
+                  "sourceEndDistance": 9404.82,
+                  "geometrySha256": "f66ecebb57c429ee19a6610fbff811088bb073de18d8d239c735d3003b6f7d35",
+                  "pathMetres": 230.45975312894234,
+                  "directMetres": 246.61870285556427,
+                  "swissEndpointGapMetres": 12.395312547195005,
+                  "externalEndpointGapMetres": 4.174091103017744,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 0.19430136489253585
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1200650",
+                  "toId": "ch:1:sloid:1200368",
+                  "from": "Dornbirn, Webergasse",
+                  "to": "Dornbirn, Bahnhof",
+                  "externalFromId": "at:48:765:0:3",
+                  "externalToId": "at:48:585:0:1",
+                  "sourceStartDistance": 9404.82,
+                  "sourceEndDistance": 10269.6,
+                  "geometrySha256": "5154f12870a826bebc69236836748bf42a3c4199ec91e6fb20230c4e72eb4879",
+                  "pathMetres": 865.7577566089128,
+                  "directMetres": 537.6364176232818,
+                  "swissEndpointGapMetres": 24.426779228035233,
+                  "externalEndpointGapMetres": 4.174091103017744,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 24.422493076587863
+                  },
+                  "reason": "candidate-path"
+                }
+              ],
+              "completePatternPasses": false
+            },
+            {
+              "shapeId": "14-164-E-j26-1.2.R",
+              "activeTrips": 1,
+              "sourceTripIdsSha256": "d8ec9b398b17b75585d318f4c18ea83cc13b82f1fe286407c040a52af2bdc1f5",
+              "shapeSha256": "995a2c08f9ee20563ce4caac0a09767e1462132947aa33888f106f2c0f7f52d1",
+              "stops": [
+                {
+                  "swissStopId": "ch:1:sloid:11091",
+                  "swissName": "Widnau, Viscose-Park",
+                  "externalStopId": "ch:23016:67314:0:1",
+                  "externalName": "Widnau Viscose-Park",
+                  "coordinateSeparationMetres": 13.140456652819307
+                },
+                {
+                  "swissStopId": "ch:1:sloid:91850",
+                  "swissName": "Widnau, Wiesenrain Zoll",
+                  "externalStopId": "ch:23016:31933:0:1",
+                  "externalName": "Widnau Wiesenrain Zoll",
+                  "coordinateSeparationMetres": 12.929640749301104
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1201500",
+                  "swissName": "Lustenau, Philipp-Krapf-Str.",
+                  "externalStopId": "at:48:1520:0:1",
+                  "externalName": "Lustenau Philipp-Krapf-Straße",
+                  "coordinateSeparationMetres": 7.474774090248462
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1201548",
+                  "swissName": "Lustenau, Wiesenrain",
+                  "externalStopId": "at:48:1537:0:2",
+                  "externalName": "Lustenau Wiesenrain",
+                  "coordinateSeparationMetres": 2.1401100299840774
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1201448",
+                  "swissName": "Lustenau, Flurstrasse",
+                  "externalStopId": "at:48:1941:0:1",
+                  "externalName": "Lustenau Flurstraße",
+                  "coordinateSeparationMetres": 6.052767860353387
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1201498",
+                  "swissName": "Lustenau, Pestalozziweg",
+                  "externalStopId": "at:48:1536:0:2",
+                  "externalName": "Lustenau Pestalozziweg",
+                  "coordinateSeparationMetres": 3.026330771756584
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1201478",
+                  "swissName": "Lustenau, Holzstrasse",
+                  "externalStopId": "at:48:1505:0:1",
+                  "externalName": "Lustenau Holzstraße",
+                  "coordinateSeparationMetres": 4.278476926488364
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1201436",
+                  "swissName": "Lustenau, Binsenfeld",
+                  "externalStopId": "at:48:1315:0:2",
+                  "externalName": "Lustenau Binsenfeld",
+                  "coordinateSeparationMetres": 58.301748841286724
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1201520",
+                  "swissName": "Lustenau, Sägerstrasse",
+                  "externalStopId": "at:48:1626:0:1",
+                  "externalName": "Lustenau Sägerstraße",
+                  "coordinateSeparationMetres": 31.59346131775767
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1201442",
+                  "swissName": "Lustenau, Feldrast",
+                  "externalStopId": "at:48:1316:0:2",
+                  "externalName": "Lustenau Feldrast",
+                  "coordinateSeparationMetres": 13.34571039718136
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1200512",
+                  "swissName": "Dornbirn, Köblern",
+                  "externalStopId": "at:48:656:0:1",
+                  "externalName": "Dornbirn Köblern",
+                  "coordinateSeparationMetres": 13.015584207843867
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1200528",
+                  "swissName": "Dornbirn, Messekreuzung",
+                  "externalStopId": "at:48:1504:0:1",
+                  "externalName": "Dornbirn Messekreuzung",
+                  "coordinateSeparationMetres": 143.2091572454843
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1200462",
+                  "swissName": "Dornbirn, Heinzenbeer",
+                  "externalStopId": "at:48:633:0:1",
+                  "externalName": "Dornbirn Heinzenbeer",
+                  "coordinateSeparationMetres": 4.783731834275159
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1200632",
+                  "swissName": "Dornbirn, Volkergasse",
+                  "externalStopId": "at:48:757:0:2",
+                  "externalName": "Dornbirn Volkergasse",
+                  "coordinateSeparationMetres": 6.419951254142736
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1200552",
+                  "swissName": "Dornbirn, Neugrüt",
+                  "externalStopId": "at:48:676:0:1",
+                  "externalName": "Dornbirn Neugrüt",
+                  "coordinateSeparationMetres": 17.60678510536064
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1200598",
+                  "swissName": "Dornbirn, Schoren Bahnhof/ORF",
+                  "externalStopId": "at:48:661:0:1",
+                  "externalName": "Dornbirn Schoren Bahnhof/ORF",
+                  "coordinateSeparationMetres": 22.126337030550904
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1200511",
+                  "swissName": "Dornbirn, Treffpunkt a.d.Ach",
+                  "externalStopId": "at:48:570:0:1",
+                  "externalName": "Dornbirn Treffpunkt A.d.Ach",
+                  "coordinateSeparationMetres": 673.4817780966682
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1200616",
+                  "swissName": "Dornbirn, Steggasse",
+                  "externalStopId": "at:48:743:0:2",
+                  "externalName": "Dornbirn Steggasse",
+                  "coordinateSeparationMetres": 5.781794468404638
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1200650",
+                  "swissName": "Dornbirn, Webergasse",
+                  "externalStopId": "at:48:765:0:3",
+                  "externalName": "Dornbirn Webergasse",
+                  "coordinateSeparationMetres": 13.295302462145994
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1200368",
+                  "swissName": "Dornbirn, Bahnhof",
+                  "externalStopId": "at:48:585:0:6",
+                  "externalName": "Dornbirn Bahnhof",
+                  "coordinateSeparationMetres": 16.970637597490036
+                }
+              ],
+              "pairs": [
+                {
+                  "fromId": "ch:1:sloid:11091",
+                  "toId": "ch:1:sloid:91850",
+                  "from": "Widnau, Viscose-Park",
+                  "to": "Widnau, Wiesenrain Zoll",
+                  "externalFromId": "ch:23016:67314:0:1",
+                  "externalToId": "ch:23016:31933:0:1",
+                  "sourceStartDistance": 0,
+                  "sourceEndDistance": 946.09,
+                  "geometrySha256": "8e9edfbb05a169cfb489749e71e331c1203d5e103ed8a4f6a95e5d9b4834b94d",
+                  "pathMetres": 947.1504920394012,
+                  "directMetres": 495.29189018099487,
+                  "swissEndpointGapMetres": 12.998355928195734,
+                  "externalEndpointGapMetres": 3.621728869026038,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 12.998355928195734
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:91850",
+                  "toId": "ch:1:sloid:1201500",
+                  "from": "Widnau, Wiesenrain Zoll",
+                  "to": "Lustenau, Philipp-Krapf-Str.",
+                  "externalFromId": "ch:23016:31933:0:1",
+                  "externalToId": "at:48:1520:0:1",
+                  "sourceStartDistance": 946.09,
+                  "sourceEndDistance": 1470.51,
+                  "geometrySha256": "8492628c214d4c87c99eed7c9d5feacd52faccebe60e7bb52b5ba9090f05b0d1",
+                  "pathMetres": 525.0181942981586,
+                  "directMetres": 497.01249680764386,
+                  "swissEndpointGapMetres": 12.69583458620365,
+                  "externalEndpointGapMetres": 1.522812831156694,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 1.4613668563188784
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1201500",
+                  "toId": "ch:1:sloid:1201548",
+                  "from": "Lustenau, Philipp-Krapf-Str.",
+                  "to": "Lustenau, Wiesenrain",
+                  "externalFromId": "at:48:1520:0:1",
+                  "externalToId": "at:48:1537:0:2",
+                  "sourceStartDistance": 1470.51,
+                  "sourceEndDistance": 1904.37,
+                  "geometrySha256": "b4cbccc402e571a618233482b06e9b78cde145fae04d8bc8c97a4d4380d4660b",
+                  "pathMetres": 434.34622914847466,
+                  "directMetres": 397.2934511222991,
+                  "swissEndpointGapMetres": 6.667193863555781,
+                  "externalEndpointGapMetres": 1.522812831156694,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 0.7528598036261924
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1201548",
+                  "toId": "ch:1:sloid:1201448",
+                  "from": "Lustenau, Wiesenrain",
+                  "to": "Lustenau, Flurstrasse",
+                  "externalFromId": "at:48:1537:0:2",
+                  "externalToId": "at:48:1941:0:1",
+                  "sourceStartDistance": 1904.37,
+                  "sourceEndDistance": 2138.77,
+                  "geometrySha256": "fa81a73b80f3e9ae4b06b7d057fc27dd23c912057b521acbb00011b6f5175793",
+                  "pathMetres": 234.66483460647737,
+                  "directMetres": 228.00960179556918,
+                  "swissEndpointGapMetres": 6.032611099490043,
+                  "externalEndpointGapMetres": 2.0652892324376033,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 0.7528598036261924
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1201448",
+                  "toId": "ch:1:sloid:1201498",
+                  "from": "Lustenau, Flurstrasse",
+                  "to": "Lustenau, Pestalozziweg",
+                  "externalFromId": "at:48:1941:0:1",
+                  "externalToId": "at:48:1536:0:2",
+                  "sourceStartDistance": 2138.77,
+                  "sourceEndDistance": 2449.54,
+                  "geometrySha256": "ba2e91263a7956bac49b252907da29432524b2f5aa238def4f7187e21d06930b",
+                  "pathMetres": 311.11143752407605,
+                  "directMetres": 318.73512353884774,
+                  "swissEndpointGapMetres": 6.032611099490043,
+                  "externalEndpointGapMetres": 2.0652892324376033,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 0.7259070255878735
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1201498",
+                  "toId": "ch:1:sloid:1201478",
+                  "from": "Lustenau, Pestalozziweg",
+                  "to": "Lustenau, Holzstrasse",
+                  "externalFromId": "at:48:1536:0:2",
+                  "externalToId": "at:48:1505:0:1",
+                  "sourceStartDistance": 2449.54,
+                  "sourceEndDistance": 3062.96,
+                  "geometrySha256": "595ef0e7bb3b8322fc167b0d90e4a004cd055f41294c75b1b89e85bc0560045d",
+                  "pathMetres": 614.1139302438853,
+                  "directMetres": 402.24703873740447,
+                  "swissEndpointGapMetres": 2.6753465381768815,
+                  "externalEndpointGapMetres": 3.096614504650184,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 0.6311427513560963
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1201478",
+                  "toId": "ch:1:sloid:1201436",
+                  "from": "Lustenau, Holzstrasse",
+                  "to": "Lustenau, Binsenfeld",
+                  "externalFromId": "at:48:1505:0:1",
+                  "externalToId": "at:48:1315:0:2",
+                  "sourceStartDistance": 3062.96,
+                  "sourceEndDistance": 3393.42,
+                  "geometrySha256": "e945fd8b61c867cb11dac06f5776628d3fc601571b0d60110213288ba6e84070",
+                  "pathMetres": 330.8311909712757,
+                  "directMetres": 263.03105420571444,
+                  "swissEndpointGapMetres": 57.68768010526018,
+                  "externalEndpointGapMetres": 3.5669224046928036,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 3.2937235805690075
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1201436",
+                  "toId": "ch:1:sloid:1201520",
+                  "from": "Lustenau, Binsenfeld",
+                  "to": "Lustenau, Sägerstrasse",
+                  "externalFromId": "at:48:1315:0:2",
+                  "externalToId": "at:48:1626:0:1",
+                  "sourceStartDistance": 3393.42,
+                  "sourceEndDistance": 3904.28,
+                  "geometrySha256": "510b49a27a1da525a188e865a149df7ca0eda03abd6792215c75f7c97504a408",
+                  "pathMetres": 511.4330289751749,
+                  "directMetres": 516.0697468872044,
+                  "swissEndpointGapMetres": 57.68768010526018,
+                  "externalEndpointGapMetres": 3.5669224046928036,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 3.2937235805690075
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1201520",
+                  "toId": "ch:1:sloid:1201442",
+                  "from": "Lustenau, Sägerstrasse",
+                  "to": "Lustenau, Feldrast",
+                  "externalFromId": "at:48:1626:0:1",
+                  "externalToId": "at:48:1316:0:2",
+                  "sourceStartDistance": 3904.28,
+                  "sourceEndDistance": 4722.25,
+                  "geometrySha256": "0550b341818602d1aa2c9a23ae53bf91113d148ea61cd1267936a6732e06677c",
+                  "pathMetres": 818.888504191224,
+                  "directMetres": 841.7775899684453,
+                  "swissEndpointGapMetres": 32.735098924195704,
+                  "externalEndpointGapMetres": 4.523380215693036,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 5.46246891156912
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1201442",
+                  "toId": "ch:1:sloid:1200512",
+                  "from": "Lustenau, Feldrast",
+                  "to": "Dornbirn, Köblern",
+                  "externalFromId": "at:48:1316:0:2",
+                  "externalToId": "at:48:656:0:1",
+                  "sourceStartDistance": 4722.25,
+                  "sourceEndDistance": 6294.64,
+                  "geometrySha256": "1444668ba76b7e95970c4cb8f22426e6443346c3819df9d638a310492f10f7e1",
+                  "pathMetres": 1574.160512935019,
+                  "directMetres": 1575.2740703856218,
+                  "swissEndpointGapMetres": 10.416087408360825,
+                  "externalEndpointGapMetres": 4.523380215693036,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 7.3709062556368625
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1200512",
+                  "toId": "ch:1:sloid:1200528",
+                  "from": "Dornbirn, Köblern",
+                  "to": "Dornbirn, Messekreuzung",
+                  "externalFromId": "at:48:656:0:1",
+                  "externalToId": "at:48:1504:0:1",
+                  "sourceStartDistance": 6294.64,
+                  "sourceEndDistance": 6850.02,
+                  "geometrySha256": "5a81737cfe083e76e32b58ee9e4c73c878f8699d4a5f0c6ba9f7cccd26e71f5a",
+                  "pathMetres": 556.0004458721735,
+                  "directMetres": 667.7368383880553,
+                  "swissEndpointGapMetres": 143.4986335843468,
+                  "externalEndpointGapMetres": 6.655389605491815,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 7.3709062556368625
+                  },
+                  "reason": "endpoint-gap"
+                },
+                {
+                  "fromId": "ch:1:sloid:1200528",
+                  "toId": "ch:1:sloid:1200462",
+                  "from": "Dornbirn, Messekreuzung",
+                  "to": "Dornbirn, Heinzenbeer",
+                  "externalFromId": "at:48:1504:0:1",
+                  "externalToId": "at:48:633:0:1",
+                  "sourceStartDistance": 6850.02,
+                  "sourceEndDistance": 7123.67,
+                  "geometrySha256": "c3e27b8e8e29f1bd5b35fee951257fac401161db6f45e2d42da0864a0862bf04",
+                  "pathMetres": 273.96127893335495,
+                  "directMetres": 97.58221362380179,
+                  "swissEndpointGapMetres": 143.4986335843468,
+                  "externalEndpointGapMetres": 6.655389605491815,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 0.951958782916749
+                  },
+                  "reason": "endpoint-gap"
+                },
+                {
+                  "fromId": "ch:1:sloid:1200462",
+                  "toId": "ch:1:sloid:1200632",
+                  "from": "Dornbirn, Heinzenbeer",
+                  "to": "Dornbirn, Volkergasse",
+                  "externalFromId": "at:48:633:0:1",
+                  "externalToId": "at:48:757:0:2",
+                  "sourceStartDistance": 7123.67,
+                  "sourceEndDistance": 7505.7,
+                  "geometrySha256": "8285c4ba9fac7735f07480c2773d2f91e84a7219cc99c2116e62ac353e72f73e",
+                  "pathMetres": 382.4614607150573,
+                  "directMetres": 294.97556833006104,
+                  "swissEndpointGapMetres": 5.196881191879529,
+                  "externalEndpointGapMetres": 2.90352971444873,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 0.632809339070213
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1200632",
+                  "toId": "ch:1:sloid:1200552",
+                  "from": "Dornbirn, Volkergasse",
+                  "to": "Dornbirn, Neugrüt",
+                  "externalFromId": "at:48:757:0:2",
+                  "externalToId": "at:48:676:0:1",
+                  "sourceStartDistance": 7505.7,
+                  "sourceEndDistance": 7744.61,
+                  "geometrySha256": "83e0e0fb2465d282ddbc7af4e77fc6733085189170192e10298af3b6e52080c5",
+                  "pathMetres": 239.17541721422666,
+                  "directMetres": 228.2956385273296,
+                  "swissEndpointGapMetres": 16.057758036143028,
+                  "externalEndpointGapMetres": 3.7764580026638894,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 1.6794150685972236
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1200552",
+                  "toId": "ch:1:sloid:1200598",
+                  "from": "Dornbirn, Neugrüt",
+                  "to": "Dornbirn, Schoren Bahnhof/ORF",
+                  "externalFromId": "at:48:676:0:1",
+                  "externalToId": "at:48:661:0:1",
+                  "sourceStartDistance": 7744.61,
+                  "sourceEndDistance": 8486.25,
+                  "geometrySha256": "ea08b5d28f78238f0d150c7739f50fef59adae5871073de2ebd761faa0b419f0",
+                  "pathMetres": 742.4803229243579,
+                  "directMetres": 632.0194909742063,
+                  "swissEndpointGapMetres": 20.679569387313038,
+                  "externalEndpointGapMetres": 3.7764580026638894,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 6.739766936714345
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1200598",
+                  "toId": "ch:1:sloid:1200511",
+                  "from": "Dornbirn, Schoren Bahnhof/ORF",
+                  "to": "Dornbirn, Treffpunkt a.d.Ach",
+                  "externalFromId": "at:48:661:0:1",
+                  "externalToId": "at:48:570:0:1",
+                  "sourceStartDistance": 8486.25,
+                  "sourceEndDistance": 8756.07,
+                  "geometrySha256": "ba5adb2babcec0033b8921def5a5af3350db3ce4d296e52e108148977daab0a3",
+                  "pathMetres": 270.1168838262857,
+                  "directMetres": 744.7663669646116,
+                  "swissEndpointGapMetres": 676.021842533026,
+                  "externalEndpointGapMetres": 3.634196394999485,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "endpoint-gap",
+                    "maximumSnapMetres": 675.9371206448491
+                  },
+                  "reason": "endpoint-gap"
+                },
+                {
+                  "fromId": "ch:1:sloid:1200511",
+                  "toId": "ch:1:sloid:1200616",
+                  "from": "Dornbirn, Treffpunkt a.d.Ach",
+                  "to": "Dornbirn, Steggasse",
+                  "externalFromId": "at:48:570:0:1",
+                  "externalToId": "at:48:743:0:2",
+                  "sourceStartDistance": 8756.07,
+                  "sourceEndDistance": 9174.62,
+                  "geometrySha256": "df8734376be0ed7c9d3c415c664c38ceb132fd7b885f6c575f51333b40eb924b",
+                  "pathMetres": 419.02095491084833,
+                  "directMetres": 993.6476511793061,
+                  "swissEndpointGapMetres": 676.021842533026,
+                  "externalEndpointGapMetres": 2.5519305110023276,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "endpoint-gap",
+                    "maximumSnapMetres": 675.9371206448491
+                  },
+                  "reason": "endpoint-gap"
+                },
+                {
+                  "fromId": "ch:1:sloid:1200616",
+                  "toId": "ch:1:sloid:1200650",
+                  "from": "Dornbirn, Steggasse",
+                  "to": "Dornbirn, Webergasse",
+                  "externalFromId": "at:48:743:0:2",
+                  "externalToId": "at:48:765:0:3",
+                  "sourceStartDistance": 9174.62,
+                  "sourceEndDistance": 9404.82,
+                  "geometrySha256": "f66ecebb57c429ee19a6610fbff811088bb073de18d8d239c735d3003b6f7d35",
+                  "pathMetres": 230.45975312894234,
+                  "directMetres": 246.61870285556427,
+                  "swissEndpointGapMetres": 12.395312547195005,
+                  "externalEndpointGapMetres": 4.174091103017744,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 0.19430136489253585
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1200650",
+                  "toId": "ch:1:sloid:1200368",
+                  "from": "Dornbirn, Webergasse",
+                  "to": "Dornbirn, Bahnhof",
+                  "externalFromId": "at:48:765:0:3",
+                  "externalToId": "at:48:585:0:6",
+                  "sourceStartDistance": 9404.82,
+                  "sourceEndDistance": 10362.1,
+                  "geometrySha256": "87f300072aac11d98ef5ddbe859c77fce12be800a834b4e3669ea3235169608e",
+                  "pathMetres": 958.3557063870754,
+                  "directMetres": 537.6364176232818,
+                  "swissEndpointGapMetres": 20.202269694281615,
+                  "externalEndpointGapMetres": 4.174091103017744,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 19.843710927449322
+                  },
+                  "reason": "candidate-path"
+                }
+              ],
+              "completePatternPasses": false
+            }
+          ],
+          "decision": "Retain exclusion: external shapes do not resolve Swiss endpoint coordinates."
+        },
+        {
+          "patternId": "2b9266a66c55c95956fe",
+          "routeId": "92-164-C-j26-1",
+          "directionId": "0",
+          "swissTrips": 29,
+          "externalTrips": 29,
+          "orderedStopNamesMatch": true,
+          "allCallTimesMatch": true,
+          "variants": [
+            {
+              "shapeId": "14-164-E-j26-1.5.H",
+              "activeTrips": 29,
+              "sourceTripIdsSha256": "c1d95477801b3d19f6a0d37674a0f1dcccca18e47765318773672d56825bba13",
+              "shapeSha256": "4424948e6f3cfba9fa7925e5777299215797e6f0fca1bcf45d520486036cbb1d",
+              "stops": [
+                {
+                  "swissStopId": "ch:1:sloid:1200368",
+                  "swissName": "Dornbirn, Bahnhof",
+                  "externalStopId": "at:48:585:0:6",
+                  "externalName": "Dornbirn Bahnhof",
+                  "coordinateSeparationMetres": 16.970637597490036
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1200650",
+                  "swissName": "Dornbirn, Webergasse",
+                  "externalStopId": "at:48:765:0:2",
+                  "externalName": "Dornbirn Webergasse",
+                  "coordinateSeparationMetres": 30.68417247740929
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1200616",
+                  "swissName": "Dornbirn, Steggasse",
+                  "externalStopId": "at:48:743:0:1",
+                  "externalName": "Dornbirn Steggasse",
+                  "coordinateSeparationMetres": 6.800942409507644
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1200511",
+                  "swissName": "Dornbirn, Treffpunkt a.d.Ach",
+                  "externalStopId": "at:48:570:0:2",
+                  "externalName": "Dornbirn Treffpunkt A.d.Ach",
+                  "coordinateSeparationMetres": 679.1848653378722
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1200598",
+                  "swissName": "Dornbirn, Schoren Bahnhof/ORF",
+                  "externalStopId": "at:48:661:0:2",
+                  "externalName": "Dornbirn Schoren Bahnhof/ORF",
+                  "coordinateSeparationMetres": 54.685557020639045
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1200552",
+                  "swissName": "Dornbirn, Neugrüt",
+                  "externalStopId": "at:48:676:0:2",
+                  "externalName": "Dornbirn Neugrüt",
+                  "coordinateSeparationMetres": 17.98023156221816
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1200632",
+                  "swissName": "Dornbirn, Volkergasse",
+                  "externalStopId": "at:48:757:0:1",
+                  "externalName": "Dornbirn Volkergasse",
+                  "coordinateSeparationMetres": 6.127890998719499
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1200462",
+                  "swissName": "Dornbirn, Heinzenbeer",
+                  "externalStopId": "at:48:633:0:2",
+                  "externalName": "Dornbirn Heinzenbeer",
+                  "coordinateSeparationMetres": 4.785149712524701
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1200528",
+                  "swissName": "Dornbirn, Messekreuzung",
+                  "externalStopId": "at:48:1504:0:2",
+                  "externalName": "Dornbirn Messekreuzung",
+                  "coordinateSeparationMetres": 4.540261664704147
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1200512",
+                  "swissName": "Dornbirn, Köblern",
+                  "externalStopId": "at:48:656:0:2",
+                  "externalName": "Dornbirn Köblern",
+                  "coordinateSeparationMetres": 19.72950718813919
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1201442",
+                  "swissName": "Lustenau, Feldrast",
+                  "externalStopId": "at:48:1316:0:1",
+                  "externalName": "Lustenau Feldrast",
+                  "coordinateSeparationMetres": 16.366945914025028
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1201520",
+                  "swissName": "Lustenau, Sägerstrasse",
+                  "externalStopId": "at:48:1626:0:2",
+                  "externalName": "Lustenau Sägerstraße",
+                  "coordinateSeparationMetres": 92.15609401166408
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1201436",
+                  "swissName": "Lustenau, Binsenfeld",
+                  "externalStopId": "at:48:1315:0:1",
+                  "externalName": "Lustenau Binsenfeld",
+                  "coordinateSeparationMetres": 67.49125445977404
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1201478",
+                  "swissName": "Lustenau, Holzstrasse",
+                  "externalStopId": "at:48:1505:0:2",
+                  "externalName": "Lustenau Holzstraße",
+                  "coordinateSeparationMetres": 4.333671230190034
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1201498",
+                  "swissName": "Lustenau, Pestalozziweg",
+                  "externalStopId": "at:48:1536:0:1",
+                  "externalName": "Lustenau Pestalozziweg",
+                  "coordinateSeparationMetres": 2.7895926633405184
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1201448",
+                  "swissName": "Lustenau, Flurstrasse",
+                  "externalStopId": "at:48:1941:0:2",
+                  "externalName": "Lustenau Flurstraße",
+                  "coordinateSeparationMetres": 4.116397694189547
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1201548",
+                  "swissName": "Lustenau, Wiesenrain",
+                  "externalStopId": "at:48:1537:0:3",
+                  "externalName": "Lustenau Wiesenrain",
+                  "coordinateSeparationMetres": 13.950933767163626
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1201500",
+                  "swissName": "Lustenau, Philipp-Krapf-Str.",
+                  "externalStopId": "at:48:1520:0:2",
+                  "externalName": "Lustenau Philipp-Krapf-Straße",
+                  "coordinateSeparationMetres": 4.280432613795414
+                },
+                {
+                  "swissStopId": "ch:1:sloid:91850",
+                  "swissName": "Widnau, Wiesenrain Zoll",
+                  "externalStopId": "ch:23016:31933:0:1",
+                  "externalName": "Widnau Wiesenrain Zoll",
+                  "coordinateSeparationMetres": 12.929640749301104
+                },
+                {
+                  "swissStopId": "ch:1:sloid:91854",
+                  "swissName": "Widnau, Rheinstrasse",
+                  "externalStopId": "ch:23016:31937:0:1",
+                  "externalName": "Widnau Rheinstraße",
+                  "coordinateSeparationMetres": 71.0094320884871
+                },
+                {
+                  "swissStopId": "ch:1:sloid:11091",
+                  "swissName": "Widnau, Viscose-Park",
+                  "externalStopId": "ch:23016:67314:0:1",
+                  "externalName": "Widnau Viscose-Park",
+                  "coordinateSeparationMetres": 13.140456652819307
+                }
+              ],
+              "pairs": [
+                {
+                  "fromId": "ch:1:sloid:1200368",
+                  "toId": "ch:1:sloid:1200650",
+                  "from": "Dornbirn, Bahnhof",
+                  "to": "Dornbirn, Webergasse",
+                  "externalFromId": "at:48:585:0:6",
+                  "externalToId": "at:48:765:0:2",
+                  "sourceStartDistance": 0,
+                  "sourceEndDistance": 922.28,
+                  "geometrySha256": "430af42fb6cb7fb534db83131f86e29bfe2e705e0e02f907c1d1d804d0805728",
+                  "pathMetres": 923.3153535069767,
+                  "directMetres": 537.6364176232818,
+                  "swissEndpointGapMetres": 30.721618006808434,
+                  "externalEndpointGapMetres": 4.418854369415242,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 20.202269694281615
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1200650",
+                  "toId": "ch:1:sloid:1200616",
+                  "from": "Dornbirn, Webergasse",
+                  "to": "Dornbirn, Steggasse",
+                  "externalFromId": "at:48:765:0:2",
+                  "externalToId": "at:48:743:0:1",
+                  "sourceStartDistance": 922.28,
+                  "sourceEndDistance": 1145.32,
+                  "geometrySha256": "a6d95ace84054c5a01040c42558a941a162537dfeef3759a389e59f5506c0204",
+                  "pathMetres": 223.29730275599286,
+                  "directMetres": 246.61870285556427,
+                  "swissEndpointGapMetres": 30.721618006808434,
+                  "externalEndpointGapMetres": 4.418854369415242,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 0.20352158047802255
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1200616",
+                  "toId": "ch:1:sloid:1200511",
+                  "from": "Dornbirn, Steggasse",
+                  "to": "Dornbirn, Treffpunkt a.d.Ach",
+                  "externalFromId": "at:48:743:0:1",
+                  "externalToId": "at:48:570:0:2",
+                  "sourceStartDistance": 1145.32,
+                  "sourceEndDistance": 1545.55,
+                  "geometrySha256": "52dac33cd8dd0687c0102ea919e66eb717f51a07c324e876941ca08125ee0d77",
+                  "pathMetres": 400.6803795546974,
+                  "directMetres": 993.6476511793061,
+                  "swissEndpointGapMetres": 676.1828222471289,
+                  "externalEndpointGapMetres": 4.389370314343497,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "endpoint-gap",
+                    "maximumSnapMetres": 675.9422593695364
+                  },
+                  "reason": "endpoint-gap"
+                },
+                {
+                  "fromId": "ch:1:sloid:1200511",
+                  "toId": "ch:1:sloid:1200598",
+                  "from": "Dornbirn, Treffpunkt a.d.Ach",
+                  "to": "Dornbirn, Schoren Bahnhof/ORF",
+                  "externalFromId": "at:48:570:0:2",
+                  "externalToId": "at:48:661:0:2",
+                  "sourceStartDistance": 1545.55,
+                  "sourceEndDistance": 1857.04,
+                  "geometrySha256": "6eca908746da8499c4f3255f05f4c9a11af9284901d1ab9658fd631fa91d3ee6",
+                  "pathMetres": 311.8404837378952,
+                  "directMetres": 744.7663669646116,
+                  "swissEndpointGapMetres": 676.1828222471289,
+                  "externalEndpointGapMetres": 5.269871464533002,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "endpoint-gap",
+                    "maximumSnapMetres": 675.9422593695364
+                  },
+                  "reason": "endpoint-gap"
+                },
+                {
+                  "fromId": "ch:1:sloid:1200598",
+                  "toId": "ch:1:sloid:1200552",
+                  "from": "Dornbirn, Schoren Bahnhof/ORF",
+                  "to": "Dornbirn, Neugrüt",
+                  "externalFromId": "at:48:661:0:2",
+                  "externalToId": "at:48:676:0:2",
+                  "sourceStartDistance": 1857.04,
+                  "sourceEndDistance": 2528.58,
+                  "geometrySha256": "ef8732bb219ebb2453e25e71bd2a7a5f2fa1ca176c26fdadb14dbba4c209ebfa",
+                  "pathMetres": 672.2871108819882,
+                  "directMetres": 632.0194909742063,
+                  "swissEndpointGapMetres": 54.689342974746964,
+                  "externalEndpointGapMetres": 5.269871464533002,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 6.739766936714345
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1200552",
+                  "toId": "ch:1:sloid:1200632",
+                  "from": "Dornbirn, Neugrüt",
+                  "to": "Dornbirn, Volkergasse",
+                  "externalFromId": "at:48:676:0:2",
+                  "externalToId": "at:48:757:0:1",
+                  "sourceStartDistance": 2528.58,
+                  "sourceEndDistance": 2812.4,
+                  "geometrySha256": "5eefc0285e70491770aca9c1feb393fcf2923bef0cbd5a03c91e26f53a6f6cf1",
+                  "pathMetres": 284.14642918443593,
+                  "directMetres": 228.2956385273296,
+                  "swissEndpointGapMetres": 18.473423809365272,
+                  "externalEndpointGapMetres": 4.5345265660350655,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 1.6794150685972236
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1200632",
+                  "toId": "ch:1:sloid:1200462",
+                  "from": "Dornbirn, Volkergasse",
+                  "to": "Dornbirn, Heinzenbeer",
+                  "externalFromId": "at:48:757:0:1",
+                  "externalToId": "at:48:633:0:2",
+                  "sourceStartDistance": 2812.4,
+                  "sourceEndDistance": 3178.11,
+                  "geometrySha256": "4061d152b73579d07d3e2f092f380224139a1e9aa3b4a85a6559fdaf2898e266",
+                  "pathMetres": 366.11419600691414,
+                  "directMetres": 294.97556833006104,
+                  "swissEndpointGapMetres": 4.207088131113142,
+                  "externalEndpointGapMetres": 3.7908076593344555,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 0.6372501064885072
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1200462",
+                  "toId": "ch:1:sloid:1200528",
+                  "from": "Dornbirn, Heinzenbeer",
+                  "to": "Dornbirn, Messekreuzung",
+                  "externalFromId": "at:48:633:0:2",
+                  "externalToId": "at:48:1504:0:2",
+                  "sourceStartDistance": 3178.11,
+                  "sourceEndDistance": 3311.93,
+                  "geometrySha256": "f33d509720df588a27ec4175f7e106e56a7216d35d22f17bb3483003f82e6ecc",
+                  "pathMetres": 133.97052057988023,
+                  "directMetres": 97.58221362380179,
+                  "swissEndpointGapMetres": 3.579211466203761,
+                  "externalEndpointGapMetres": 4.042517723754187,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 1.022800931564869
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1200528",
+                  "toId": "ch:1:sloid:1200512",
+                  "from": "Dornbirn, Messekreuzung",
+                  "to": "Dornbirn, Köblern",
+                  "externalFromId": "at:48:1504:0:2",
+                  "externalToId": "at:48:656:0:2",
+                  "sourceStartDistance": 3311.93,
+                  "sourceEndDistance": 4050.56,
+                  "geometrySha256": "a2b98ef1c24904b4c858c3b369d86878a1f26c0a5248aa35c31abeaaf26e8848",
+                  "pathMetres": 739.4637405303233,
+                  "directMetres": 667.7368383880553,
+                  "swissEndpointGapMetres": 18.58042834583532,
+                  "externalEndpointGapMetres": 4.042517723754187,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 3.007139097959728
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1200512",
+                  "toId": "ch:1:sloid:1201442",
+                  "from": "Dornbirn, Köblern",
+                  "to": "Lustenau, Feldrast",
+                  "externalFromId": "at:48:656:0:2",
+                  "externalToId": "at:48:1316:0:1",
+                  "sourceStartDistance": 4050.56,
+                  "sourceEndDistance": 5593.9,
+                  "geometrySha256": "736d79f03c17d08f21fed6752c2858a4c652e814b401cb31fbca12aa95eb538e",
+                  "pathMetres": 1545.0845369686194,
+                  "directMetres": 1575.2740703856218,
+                  "swissEndpointGapMetres": 18.58042834583532,
+                  "externalEndpointGapMetres": 5.752536047333833,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 5.079063197589113
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1201442",
+                  "toId": "ch:1:sloid:1201520",
+                  "from": "Lustenau, Feldrast",
+                  "to": "Lustenau, Sägerstrasse",
+                  "externalFromId": "at:48:1316:0:1",
+                  "externalToId": "at:48:1626:0:2",
+                  "sourceStartDistance": 5593.9,
+                  "sourceEndDistance": 6563.1,
+                  "geometrySha256": "4dec57ed9e6fe22b5e074b18c396d9797db15ebb999f836243f1862b9b595170",
+                  "pathMetres": 970.2880599734655,
+                  "directMetres": 841.7775899684453,
+                  "swissEndpointGapMetres": 91.44102076958931,
+                  "externalEndpointGapMetres": 5.752536047333833,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 5.079063197589113
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1201520",
+                  "toId": "ch:1:sloid:1201436",
+                  "from": "Lustenau, Sägerstrasse",
+                  "to": "Lustenau, Binsenfeld",
+                  "externalFromId": "at:48:1626:0:2",
+                  "externalToId": "at:48:1315:0:1",
+                  "sourceStartDistance": 6563.1,
+                  "sourceEndDistance": 7067.9,
+                  "geometrySha256": "9bdf4ecab8a4a68ba7aa140816186d09a766bb6144eafb38819273200f5820da",
+                  "pathMetres": 505.36846170555725,
+                  "directMetres": 516.0697468872044,
+                  "swissEndpointGapMetres": 91.44102076958931,
+                  "externalEndpointGapMetres": 4.116159470006383,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 3.666195804141331
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1201436",
+                  "toId": "ch:1:sloid:1201478",
+                  "from": "Lustenau, Binsenfeld",
+                  "to": "Lustenau, Holzstrasse",
+                  "externalFromId": "at:48:1315:0:1",
+                  "externalToId": "at:48:1505:0:2",
+                  "sourceStartDistance": 7067.9,
+                  "sourceEndDistance": 7262.94,
+                  "geometrySha256": "f70c19005a63a22634ef743b80b2d86d4ff9ae2133cf6ac00992152146dd9322",
+                  "pathMetres": 195.2519785807197,
+                  "directMetres": 263.03105420571444,
+                  "swissEndpointGapMetres": 67.05246095895679,
+                  "externalEndpointGapMetres": 4.442915188318731,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 3.666195804141331
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1201478",
+                  "toId": "ch:1:sloid:1201498",
+                  "from": "Lustenau, Holzstrasse",
+                  "to": "Lustenau, Pestalozziweg",
+                  "externalFromId": "at:48:1505:0:2",
+                  "externalToId": "at:48:1536:0:1",
+                  "sourceStartDistance": 7262.94,
+                  "sourceEndDistance": 7924.49,
+                  "geometrySha256": "4f067db2c83b36e9bda49af2834f114248ec3fddc73753ed1727ebd777f8d664",
+                  "pathMetres": 662.3011226957091,
+                  "directMetres": 402.24703873740447,
+                  "swissEndpointGapMetres": 1.6794713762524582,
+                  "externalEndpointGapMetres": 4.442915188318731,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 0.6311428075779212
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1201498",
+                  "toId": "ch:1:sloid:1201448",
+                  "from": "Lustenau, Pestalozziweg",
+                  "to": "Lustenau, Flurstrasse",
+                  "externalFromId": "at:48:1536:0:1",
+                  "externalToId": "at:48:1941:0:2",
+                  "sourceStartDistance": 7924.49,
+                  "sourceEndDistance": 8241.3,
+                  "geometrySha256": "7fa8e6c2c8fdd21469b6c16155e9ebf1836b572d11bf4adb51de63efd29144d1",
+                  "pathMetres": 317.16501015894045,
+                  "directMetres": 318.73512353884774,
+                  "swissEndpointGapMetres": 1.1670569808527715,
+                  "externalEndpointGapMetres": 4.758483982319189,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 0.7516538823427449
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1201448",
+                  "toId": "ch:1:sloid:1201548",
+                  "from": "Lustenau, Flurstrasse",
+                  "to": "Lustenau, Wiesenrain",
+                  "externalFromId": "at:48:1941:0:2",
+                  "externalToId": "at:48:1537:0:3",
+                  "sourceStartDistance": 8241.3,
+                  "sourceEndDistance": 8483.99,
+                  "geometrySha256": "2fb37a4c7a3a4209a1bcd9935dc0cb2b7995bb59811d722d45eb76b2ce22a653",
+                  "pathMetres": 242.96690908475227,
+                  "directMetres": 228.00960179556918,
+                  "swissEndpointGapMetres": 13.125345681417182,
+                  "externalEndpointGapMetres": 4.758483982319189,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 0.7517234680291446
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1201548",
+                  "toId": "ch:1:sloid:1201500",
+                  "from": "Lustenau, Wiesenrain",
+                  "to": "Lustenau, Philipp-Krapf-Str.",
+                  "externalFromId": "at:48:1537:0:3",
+                  "externalToId": "at:48:1520:0:2",
+                  "sourceStartDistance": 8483.99,
+                  "sourceEndDistance": 8910.59,
+                  "geometrySha256": "1c34c03ebdd5b3a2b557be5d8811c162d3f99be5f6d4a12e58677d3347f7f169",
+                  "pathMetres": 427.08011905748054,
+                  "directMetres": 397.2934511222991,
+                  "swissEndpointGapMetres": 13.125345681417182,
+                  "externalEndpointGapMetres": 3.7550057236741208,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 0.7517234680291446
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1201500",
+                  "toId": "ch:1:sloid:91850",
+                  "from": "Lustenau, Philipp-Krapf-Str.",
+                  "to": "Widnau, Wiesenrain Zoll",
+                  "externalFromId": "at:48:1520:0:2",
+                  "externalToId": "ch:23016:31933:0:1",
+                  "sourceStartDistance": 8910.59,
+                  "sourceEndDistance": 9428.64,
+                  "geometrySha256": "d23d8e97c416d9556f8476534064c95cbf01d4de800a40c1684d2fc5be71990b",
+                  "pathMetres": 518.6258134785394,
+                  "directMetres": 497.01249680764386,
+                  "swissEndpointGapMetres": 12.69583458620365,
+                  "externalEndpointGapMetres": 3.7550057236741208,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 1.4613668563188784
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:91850",
+                  "toId": "ch:1:sloid:91854",
+                  "from": "Widnau, Wiesenrain Zoll",
+                  "to": "Widnau, Rheinstrasse",
+                  "externalFromId": "ch:23016:31933:0:1",
+                  "externalToId": "ch:23016:31937:0:1",
+                  "sourceStartDistance": 9428.64,
+                  "sourceEndDistance": 9822.89,
+                  "geometrySha256": "eed5def8403ae6fda3b8078f436837f211aa26fa1f00fe4a00472de20ce1bb23",
+                  "pathMetres": 394.6901774099267,
+                  "directMetres": 440.01634551401065,
+                  "swissEndpointGapMetres": 67.66018258126647,
+                  "externalEndpointGapMetres": 5.513787108218448,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 51.13179766668744
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:91854",
+                  "toId": "ch:1:sloid:11091",
+                  "from": "Widnau, Rheinstrasse",
+                  "to": "Widnau, Viscose-Park",
+                  "externalFromId": "ch:23016:31937:0:1",
+                  "externalToId": "ch:23016:67314:0:1",
+                  "sourceStartDistance": 9822.89,
+                  "sourceEndDistance": 10490.03,
+                  "geometrySha256": "b9f325b993678466d5f00c8d892bf1a24c372030953ecca613f683f219be4ff4",
+                  "pathMetres": 667.8911533296346,
+                  "directMetres": 390.1499392548849,
+                  "swissEndpointGapMetres": 67.66018258126647,
+                  "externalEndpointGapMetres": 5.513787108218448,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 51.13179766668744
+                  },
+                  "reason": "candidate-path"
+                }
+              ],
+              "completePatternPasses": false
+            }
+          ],
+          "decision": "Retain exclusion: external shapes do not resolve Swiss endpoint coordinates."
+        }
+      ]
+    },
+    {
+      "date": "2026-09-06",
+      "dayAuditSha256": "cee7e59ad96551eb804489e31db272e43b3827c9f3fb357bafe7ec6bd782cbb4",
+      "swissTrips": 26,
+      "externalTrips": 26,
+      "externalActiveShapes": 2,
+      "patterns": [
+        {
+          "patternId": "949a5e22a7e638a259df",
+          "routeId": "92-164-C-j26-1",
+          "directionId": "1",
+          "swissTrips": 13,
+          "externalTrips": 13,
+          "orderedStopNamesMatch": true,
+          "allCallTimesMatch": true,
+          "variants": [
+            {
+              "shapeId": "14-164-E-j26-1.2.R",
+              "activeTrips": 13,
+              "sourceTripIdsSha256": "8c6e267d7235dd9ce08657c5030a7961060d3e8d9bb916bd88bfc9f1dc8aeb5c",
+              "shapeSha256": "995a2c08f9ee20563ce4caac0a09767e1462132947aa33888f106f2c0f7f52d1",
+              "stops": [
+                {
+                  "swissStopId": "ch:1:sloid:11091",
+                  "swissName": "Widnau, Viscose-Park",
+                  "externalStopId": "ch:23016:67314:0:1",
+                  "externalName": "Widnau Viscose-Park",
+                  "coordinateSeparationMetres": 13.140456652819307
+                },
+                {
+                  "swissStopId": "ch:1:sloid:91850",
+                  "swissName": "Widnau, Wiesenrain Zoll",
+                  "externalStopId": "ch:23016:31933:0:1",
+                  "externalName": "Widnau Wiesenrain Zoll",
+                  "coordinateSeparationMetres": 12.929640749301104
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1201500",
+                  "swissName": "Lustenau, Philipp-Krapf-Str.",
+                  "externalStopId": "at:48:1520:0:1",
+                  "externalName": "Lustenau Philipp-Krapf-Straße",
+                  "coordinateSeparationMetres": 7.474774090248462
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1201548",
+                  "swissName": "Lustenau, Wiesenrain",
+                  "externalStopId": "at:48:1537:0:2",
+                  "externalName": "Lustenau Wiesenrain",
+                  "coordinateSeparationMetres": 2.1401100299840774
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1201448",
+                  "swissName": "Lustenau, Flurstrasse",
+                  "externalStopId": "at:48:1941:0:1",
+                  "externalName": "Lustenau Flurstraße",
+                  "coordinateSeparationMetres": 6.052767860353387
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1201498",
+                  "swissName": "Lustenau, Pestalozziweg",
+                  "externalStopId": "at:48:1536:0:2",
+                  "externalName": "Lustenau Pestalozziweg",
+                  "coordinateSeparationMetres": 3.026330771756584
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1201478",
+                  "swissName": "Lustenau, Holzstrasse",
+                  "externalStopId": "at:48:1505:0:1",
+                  "externalName": "Lustenau Holzstraße",
+                  "coordinateSeparationMetres": 4.278476926488364
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1201436",
+                  "swissName": "Lustenau, Binsenfeld",
+                  "externalStopId": "at:48:1315:0:2",
+                  "externalName": "Lustenau Binsenfeld",
+                  "coordinateSeparationMetres": 58.301748841286724
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1201520",
+                  "swissName": "Lustenau, Sägerstrasse",
+                  "externalStopId": "at:48:1626:0:1",
+                  "externalName": "Lustenau Sägerstraße",
+                  "coordinateSeparationMetres": 31.59346131775767
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1201442",
+                  "swissName": "Lustenau, Feldrast",
+                  "externalStopId": "at:48:1316:0:2",
+                  "externalName": "Lustenau Feldrast",
+                  "coordinateSeparationMetres": 13.34571039718136
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1200512",
+                  "swissName": "Dornbirn, Köblern",
+                  "externalStopId": "at:48:656:0:1",
+                  "externalName": "Dornbirn Köblern",
+                  "coordinateSeparationMetres": 13.015584207843867
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1200528",
+                  "swissName": "Dornbirn, Messekreuzung",
+                  "externalStopId": "at:48:1504:0:1",
+                  "externalName": "Dornbirn Messekreuzung",
+                  "coordinateSeparationMetres": 143.2091572454843
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1200462",
+                  "swissName": "Dornbirn, Heinzenbeer",
+                  "externalStopId": "at:48:633:0:1",
+                  "externalName": "Dornbirn Heinzenbeer",
+                  "coordinateSeparationMetres": 4.783731834275159
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1200632",
+                  "swissName": "Dornbirn, Volkergasse",
+                  "externalStopId": "at:48:757:0:2",
+                  "externalName": "Dornbirn Volkergasse",
+                  "coordinateSeparationMetres": 6.419951254142736
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1200552",
+                  "swissName": "Dornbirn, Neugrüt",
+                  "externalStopId": "at:48:676:0:1",
+                  "externalName": "Dornbirn Neugrüt",
+                  "coordinateSeparationMetres": 17.60678510536064
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1200598",
+                  "swissName": "Dornbirn, Schoren Bahnhof/ORF",
+                  "externalStopId": "at:48:661:0:1",
+                  "externalName": "Dornbirn Schoren Bahnhof/ORF",
+                  "coordinateSeparationMetres": 22.126337030550904
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1200511",
+                  "swissName": "Dornbirn, Treffpunkt a.d.Ach",
+                  "externalStopId": "at:48:570:0:1",
+                  "externalName": "Dornbirn Treffpunkt A.d.Ach",
+                  "coordinateSeparationMetres": 673.4817780966682
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1200616",
+                  "swissName": "Dornbirn, Steggasse",
+                  "externalStopId": "at:48:743:0:2",
+                  "externalName": "Dornbirn Steggasse",
+                  "coordinateSeparationMetres": 5.781794468404638
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1200650",
+                  "swissName": "Dornbirn, Webergasse",
+                  "externalStopId": "at:48:765:0:3",
+                  "externalName": "Dornbirn Webergasse",
+                  "coordinateSeparationMetres": 13.295302462145994
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1200368",
+                  "swissName": "Dornbirn, Bahnhof",
+                  "externalStopId": "at:48:585:0:6",
+                  "externalName": "Dornbirn Bahnhof",
+                  "coordinateSeparationMetres": 16.970637597490036
+                }
+              ],
+              "pairs": [
+                {
+                  "fromId": "ch:1:sloid:11091",
+                  "toId": "ch:1:sloid:91850",
+                  "from": "Widnau, Viscose-Park",
+                  "to": "Widnau, Wiesenrain Zoll",
+                  "externalFromId": "ch:23016:67314:0:1",
+                  "externalToId": "ch:23016:31933:0:1",
+                  "sourceStartDistance": 0,
+                  "sourceEndDistance": 946.09,
+                  "geometrySha256": "8e9edfbb05a169cfb489749e71e331c1203d5e103ed8a4f6a95e5d9b4834b94d",
+                  "pathMetres": 947.1504920394012,
+                  "directMetres": 495.29189018099487,
+                  "swissEndpointGapMetres": 12.998355928195734,
+                  "externalEndpointGapMetres": 3.621728869026038,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 12.998355928195734
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:91850",
+                  "toId": "ch:1:sloid:1201500",
+                  "from": "Widnau, Wiesenrain Zoll",
+                  "to": "Lustenau, Philipp-Krapf-Str.",
+                  "externalFromId": "ch:23016:31933:0:1",
+                  "externalToId": "at:48:1520:0:1",
+                  "sourceStartDistance": 946.09,
+                  "sourceEndDistance": 1470.51,
+                  "geometrySha256": "8492628c214d4c87c99eed7c9d5feacd52faccebe60e7bb52b5ba9090f05b0d1",
+                  "pathMetres": 525.0181942981586,
+                  "directMetres": 497.01249680764386,
+                  "swissEndpointGapMetres": 12.69583458620365,
+                  "externalEndpointGapMetres": 1.522812831156694,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 1.4613668563188784
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1201500",
+                  "toId": "ch:1:sloid:1201548",
+                  "from": "Lustenau, Philipp-Krapf-Str.",
+                  "to": "Lustenau, Wiesenrain",
+                  "externalFromId": "at:48:1520:0:1",
+                  "externalToId": "at:48:1537:0:2",
+                  "sourceStartDistance": 1470.51,
+                  "sourceEndDistance": 1904.37,
+                  "geometrySha256": "b4cbccc402e571a618233482b06e9b78cde145fae04d8bc8c97a4d4380d4660b",
+                  "pathMetres": 434.34622914847466,
+                  "directMetres": 397.2934511222991,
+                  "swissEndpointGapMetres": 6.667193863555781,
+                  "externalEndpointGapMetres": 1.522812831156694,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 0.7528598036261924
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1201548",
+                  "toId": "ch:1:sloid:1201448",
+                  "from": "Lustenau, Wiesenrain",
+                  "to": "Lustenau, Flurstrasse",
+                  "externalFromId": "at:48:1537:0:2",
+                  "externalToId": "at:48:1941:0:1",
+                  "sourceStartDistance": 1904.37,
+                  "sourceEndDistance": 2138.77,
+                  "geometrySha256": "fa81a73b80f3e9ae4b06b7d057fc27dd23c912057b521acbb00011b6f5175793",
+                  "pathMetres": 234.66483460647737,
+                  "directMetres": 228.00960179556918,
+                  "swissEndpointGapMetres": 6.032611099490043,
+                  "externalEndpointGapMetres": 2.0652892324376033,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 0.7528598036261924
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1201448",
+                  "toId": "ch:1:sloid:1201498",
+                  "from": "Lustenau, Flurstrasse",
+                  "to": "Lustenau, Pestalozziweg",
+                  "externalFromId": "at:48:1941:0:1",
+                  "externalToId": "at:48:1536:0:2",
+                  "sourceStartDistance": 2138.77,
+                  "sourceEndDistance": 2449.54,
+                  "geometrySha256": "ba2e91263a7956bac49b252907da29432524b2f5aa238def4f7187e21d06930b",
+                  "pathMetres": 311.11143752407605,
+                  "directMetres": 318.73512353884774,
+                  "swissEndpointGapMetres": 6.032611099490043,
+                  "externalEndpointGapMetres": 2.0652892324376033,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 0.7259070255878735
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1201498",
+                  "toId": "ch:1:sloid:1201478",
+                  "from": "Lustenau, Pestalozziweg",
+                  "to": "Lustenau, Holzstrasse",
+                  "externalFromId": "at:48:1536:0:2",
+                  "externalToId": "at:48:1505:0:1",
+                  "sourceStartDistance": 2449.54,
+                  "sourceEndDistance": 3062.96,
+                  "geometrySha256": "595ef0e7bb3b8322fc167b0d90e4a004cd055f41294c75b1b89e85bc0560045d",
+                  "pathMetres": 614.1139302438853,
+                  "directMetres": 402.24703873740447,
+                  "swissEndpointGapMetres": 2.6753465381768815,
+                  "externalEndpointGapMetres": 3.096614504650184,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 0.6311427513560963
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1201478",
+                  "toId": "ch:1:sloid:1201436",
+                  "from": "Lustenau, Holzstrasse",
+                  "to": "Lustenau, Binsenfeld",
+                  "externalFromId": "at:48:1505:0:1",
+                  "externalToId": "at:48:1315:0:2",
+                  "sourceStartDistance": 3062.96,
+                  "sourceEndDistance": 3393.42,
+                  "geometrySha256": "e945fd8b61c867cb11dac06f5776628d3fc601571b0d60110213288ba6e84070",
+                  "pathMetres": 330.8311909712757,
+                  "directMetres": 263.03105420571444,
+                  "swissEndpointGapMetres": 57.68768010526018,
+                  "externalEndpointGapMetres": 3.5669224046928036,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 3.2937235805690075
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1201436",
+                  "toId": "ch:1:sloid:1201520",
+                  "from": "Lustenau, Binsenfeld",
+                  "to": "Lustenau, Sägerstrasse",
+                  "externalFromId": "at:48:1315:0:2",
+                  "externalToId": "at:48:1626:0:1",
+                  "sourceStartDistance": 3393.42,
+                  "sourceEndDistance": 3904.28,
+                  "geometrySha256": "510b49a27a1da525a188e865a149df7ca0eda03abd6792215c75f7c97504a408",
+                  "pathMetres": 511.4330289751749,
+                  "directMetres": 516.0697468872044,
+                  "swissEndpointGapMetres": 57.68768010526018,
+                  "externalEndpointGapMetres": 3.5669224046928036,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 3.2937235805690075
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1201520",
+                  "toId": "ch:1:sloid:1201442",
+                  "from": "Lustenau, Sägerstrasse",
+                  "to": "Lustenau, Feldrast",
+                  "externalFromId": "at:48:1626:0:1",
+                  "externalToId": "at:48:1316:0:2",
+                  "sourceStartDistance": 3904.28,
+                  "sourceEndDistance": 4722.25,
+                  "geometrySha256": "0550b341818602d1aa2c9a23ae53bf91113d148ea61cd1267936a6732e06677c",
+                  "pathMetres": 818.888504191224,
+                  "directMetres": 841.7775899684453,
+                  "swissEndpointGapMetres": 32.735098924195704,
+                  "externalEndpointGapMetres": 4.523380215693036,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 5.46246891156912
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1201442",
+                  "toId": "ch:1:sloid:1200512",
+                  "from": "Lustenau, Feldrast",
+                  "to": "Dornbirn, Köblern",
+                  "externalFromId": "at:48:1316:0:2",
+                  "externalToId": "at:48:656:0:1",
+                  "sourceStartDistance": 4722.25,
+                  "sourceEndDistance": 6294.64,
+                  "geometrySha256": "1444668ba76b7e95970c4cb8f22426e6443346c3819df9d638a310492f10f7e1",
+                  "pathMetres": 1574.160512935019,
+                  "directMetres": 1575.2740703856218,
+                  "swissEndpointGapMetres": 10.416087408360825,
+                  "externalEndpointGapMetres": 4.523380215693036,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 7.3709062556368625
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1200512",
+                  "toId": "ch:1:sloid:1200528",
+                  "from": "Dornbirn, Köblern",
+                  "to": "Dornbirn, Messekreuzung",
+                  "externalFromId": "at:48:656:0:1",
+                  "externalToId": "at:48:1504:0:1",
+                  "sourceStartDistance": 6294.64,
+                  "sourceEndDistance": 6850.02,
+                  "geometrySha256": "5a81737cfe083e76e32b58ee9e4c73c878f8699d4a5f0c6ba9f7cccd26e71f5a",
+                  "pathMetres": 556.0004458721735,
+                  "directMetres": 667.7368383880553,
+                  "swissEndpointGapMetres": 143.4986335843468,
+                  "externalEndpointGapMetres": 6.655389605491815,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 7.3709062556368625
+                  },
+                  "reason": "endpoint-gap"
+                },
+                {
+                  "fromId": "ch:1:sloid:1200528",
+                  "toId": "ch:1:sloid:1200462",
+                  "from": "Dornbirn, Messekreuzung",
+                  "to": "Dornbirn, Heinzenbeer",
+                  "externalFromId": "at:48:1504:0:1",
+                  "externalToId": "at:48:633:0:1",
+                  "sourceStartDistance": 6850.02,
+                  "sourceEndDistance": 7123.67,
+                  "geometrySha256": "c3e27b8e8e29f1bd5b35fee951257fac401161db6f45e2d42da0864a0862bf04",
+                  "pathMetres": 273.96127893335495,
+                  "directMetres": 97.58221362380179,
+                  "swissEndpointGapMetres": 143.4986335843468,
+                  "externalEndpointGapMetres": 6.655389605491815,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 0.951958782916749
+                  },
+                  "reason": "endpoint-gap"
+                },
+                {
+                  "fromId": "ch:1:sloid:1200462",
+                  "toId": "ch:1:sloid:1200632",
+                  "from": "Dornbirn, Heinzenbeer",
+                  "to": "Dornbirn, Volkergasse",
+                  "externalFromId": "at:48:633:0:1",
+                  "externalToId": "at:48:757:0:2",
+                  "sourceStartDistance": 7123.67,
+                  "sourceEndDistance": 7505.7,
+                  "geometrySha256": "8285c4ba9fac7735f07480c2773d2f91e84a7219cc99c2116e62ac353e72f73e",
+                  "pathMetres": 382.4614607150573,
+                  "directMetres": 294.97556833006104,
+                  "swissEndpointGapMetres": 5.196881191879529,
+                  "externalEndpointGapMetres": 2.90352971444873,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 0.632809339070213
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1200632",
+                  "toId": "ch:1:sloid:1200552",
+                  "from": "Dornbirn, Volkergasse",
+                  "to": "Dornbirn, Neugrüt",
+                  "externalFromId": "at:48:757:0:2",
+                  "externalToId": "at:48:676:0:1",
+                  "sourceStartDistance": 7505.7,
+                  "sourceEndDistance": 7744.61,
+                  "geometrySha256": "83e0e0fb2465d282ddbc7af4e77fc6733085189170192e10298af3b6e52080c5",
+                  "pathMetres": 239.17541721422666,
+                  "directMetres": 228.2956385273296,
+                  "swissEndpointGapMetres": 16.057758036143028,
+                  "externalEndpointGapMetres": 3.7764580026638894,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 1.6794150685972236
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1200552",
+                  "toId": "ch:1:sloid:1200598",
+                  "from": "Dornbirn, Neugrüt",
+                  "to": "Dornbirn, Schoren Bahnhof/ORF",
+                  "externalFromId": "at:48:676:0:1",
+                  "externalToId": "at:48:661:0:1",
+                  "sourceStartDistance": 7744.61,
+                  "sourceEndDistance": 8486.25,
+                  "geometrySha256": "ea08b5d28f78238f0d150c7739f50fef59adae5871073de2ebd761faa0b419f0",
+                  "pathMetres": 742.4803229243579,
+                  "directMetres": 632.0194909742063,
+                  "swissEndpointGapMetres": 20.679569387313038,
+                  "externalEndpointGapMetres": 3.7764580026638894,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 6.739766936714345
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1200598",
+                  "toId": "ch:1:sloid:1200511",
+                  "from": "Dornbirn, Schoren Bahnhof/ORF",
+                  "to": "Dornbirn, Treffpunkt a.d.Ach",
+                  "externalFromId": "at:48:661:0:1",
+                  "externalToId": "at:48:570:0:1",
+                  "sourceStartDistance": 8486.25,
+                  "sourceEndDistance": 8756.07,
+                  "geometrySha256": "ba5adb2babcec0033b8921def5a5af3350db3ce4d296e52e108148977daab0a3",
+                  "pathMetres": 270.1168838262857,
+                  "directMetres": 744.7663669646116,
+                  "swissEndpointGapMetres": 676.021842533026,
+                  "externalEndpointGapMetres": 3.634196394999485,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "endpoint-gap",
+                    "maximumSnapMetres": 675.9371206448491
+                  },
+                  "reason": "endpoint-gap"
+                },
+                {
+                  "fromId": "ch:1:sloid:1200511",
+                  "toId": "ch:1:sloid:1200616",
+                  "from": "Dornbirn, Treffpunkt a.d.Ach",
+                  "to": "Dornbirn, Steggasse",
+                  "externalFromId": "at:48:570:0:1",
+                  "externalToId": "at:48:743:0:2",
+                  "sourceStartDistance": 8756.07,
+                  "sourceEndDistance": 9174.62,
+                  "geometrySha256": "df8734376be0ed7c9d3c415c664c38ceb132fd7b885f6c575f51333b40eb924b",
+                  "pathMetres": 419.02095491084833,
+                  "directMetres": 993.6476511793061,
+                  "swissEndpointGapMetres": 676.021842533026,
+                  "externalEndpointGapMetres": 2.5519305110023276,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "endpoint-gap",
+                    "maximumSnapMetres": 675.9371206448491
+                  },
+                  "reason": "endpoint-gap"
+                },
+                {
+                  "fromId": "ch:1:sloid:1200616",
+                  "toId": "ch:1:sloid:1200650",
+                  "from": "Dornbirn, Steggasse",
+                  "to": "Dornbirn, Webergasse",
+                  "externalFromId": "at:48:743:0:2",
+                  "externalToId": "at:48:765:0:3",
+                  "sourceStartDistance": 9174.62,
+                  "sourceEndDistance": 9404.82,
+                  "geometrySha256": "f66ecebb57c429ee19a6610fbff811088bb073de18d8d239c735d3003b6f7d35",
+                  "pathMetres": 230.45975312894234,
+                  "directMetres": 246.61870285556427,
+                  "swissEndpointGapMetres": 12.395312547195005,
+                  "externalEndpointGapMetres": 4.174091103017744,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 0.19430136489253585
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1200650",
+                  "toId": "ch:1:sloid:1200368",
+                  "from": "Dornbirn, Webergasse",
+                  "to": "Dornbirn, Bahnhof",
+                  "externalFromId": "at:48:765:0:3",
+                  "externalToId": "at:48:585:0:6",
+                  "sourceStartDistance": 9404.82,
+                  "sourceEndDistance": 10362.1,
+                  "geometrySha256": "87f300072aac11d98ef5ddbe859c77fce12be800a834b4e3669ea3235169608e",
+                  "pathMetres": 958.3557063870754,
+                  "directMetres": 537.6364176232818,
+                  "swissEndpointGapMetres": 20.202269694281615,
+                  "externalEndpointGapMetres": 4.174091103017744,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 19.843710927449322
+                  },
+                  "reason": "candidate-path"
+                }
+              ],
+              "completePatternPasses": false
+            }
+          ],
+          "decision": "Retain exclusion: external shapes do not resolve Swiss endpoint coordinates."
+        },
+        {
+          "patternId": "2b9266a66c55c95956fe",
+          "routeId": "92-164-C-j26-1",
+          "directionId": "0",
+          "swissTrips": 13,
+          "externalTrips": 13,
+          "orderedStopNamesMatch": true,
+          "allCallTimesMatch": true,
+          "variants": [
+            {
+              "shapeId": "14-164-E-j26-1.5.H",
+              "activeTrips": 13,
+              "sourceTripIdsSha256": "f40dfe99a45917adaadcf8e4471cad19667261dc17b1081f2dd33253f7771890",
+              "shapeSha256": "4424948e6f3cfba9fa7925e5777299215797e6f0fca1bcf45d520486036cbb1d",
+              "stops": [
+                {
+                  "swissStopId": "ch:1:sloid:1200368",
+                  "swissName": "Dornbirn, Bahnhof",
+                  "externalStopId": "at:48:585:0:6",
+                  "externalName": "Dornbirn Bahnhof",
+                  "coordinateSeparationMetres": 16.970637597490036
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1200650",
+                  "swissName": "Dornbirn, Webergasse",
+                  "externalStopId": "at:48:765:0:2",
+                  "externalName": "Dornbirn Webergasse",
+                  "coordinateSeparationMetres": 30.68417247740929
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1200616",
+                  "swissName": "Dornbirn, Steggasse",
+                  "externalStopId": "at:48:743:0:1",
+                  "externalName": "Dornbirn Steggasse",
+                  "coordinateSeparationMetres": 6.800942409507644
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1200511",
+                  "swissName": "Dornbirn, Treffpunkt a.d.Ach",
+                  "externalStopId": "at:48:570:0:2",
+                  "externalName": "Dornbirn Treffpunkt A.d.Ach",
+                  "coordinateSeparationMetres": 679.1848653378722
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1200598",
+                  "swissName": "Dornbirn, Schoren Bahnhof/ORF",
+                  "externalStopId": "at:48:661:0:2",
+                  "externalName": "Dornbirn Schoren Bahnhof/ORF",
+                  "coordinateSeparationMetres": 54.685557020639045
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1200552",
+                  "swissName": "Dornbirn, Neugrüt",
+                  "externalStopId": "at:48:676:0:2",
+                  "externalName": "Dornbirn Neugrüt",
+                  "coordinateSeparationMetres": 17.98023156221816
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1200632",
+                  "swissName": "Dornbirn, Volkergasse",
+                  "externalStopId": "at:48:757:0:1",
+                  "externalName": "Dornbirn Volkergasse",
+                  "coordinateSeparationMetres": 6.127890998719499
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1200462",
+                  "swissName": "Dornbirn, Heinzenbeer",
+                  "externalStopId": "at:48:633:0:2",
+                  "externalName": "Dornbirn Heinzenbeer",
+                  "coordinateSeparationMetres": 4.785149712524701
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1200528",
+                  "swissName": "Dornbirn, Messekreuzung",
+                  "externalStopId": "at:48:1504:0:2",
+                  "externalName": "Dornbirn Messekreuzung",
+                  "coordinateSeparationMetres": 4.540261664704147
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1200512",
+                  "swissName": "Dornbirn, Köblern",
+                  "externalStopId": "at:48:656:0:2",
+                  "externalName": "Dornbirn Köblern",
+                  "coordinateSeparationMetres": 19.72950718813919
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1201442",
+                  "swissName": "Lustenau, Feldrast",
+                  "externalStopId": "at:48:1316:0:1",
+                  "externalName": "Lustenau Feldrast",
+                  "coordinateSeparationMetres": 16.366945914025028
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1201520",
+                  "swissName": "Lustenau, Sägerstrasse",
+                  "externalStopId": "at:48:1626:0:2",
+                  "externalName": "Lustenau Sägerstraße",
+                  "coordinateSeparationMetres": 92.15609401166408
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1201436",
+                  "swissName": "Lustenau, Binsenfeld",
+                  "externalStopId": "at:48:1315:0:1",
+                  "externalName": "Lustenau Binsenfeld",
+                  "coordinateSeparationMetres": 67.49125445977404
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1201478",
+                  "swissName": "Lustenau, Holzstrasse",
+                  "externalStopId": "at:48:1505:0:2",
+                  "externalName": "Lustenau Holzstraße",
+                  "coordinateSeparationMetres": 4.333671230190034
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1201498",
+                  "swissName": "Lustenau, Pestalozziweg",
+                  "externalStopId": "at:48:1536:0:1",
+                  "externalName": "Lustenau Pestalozziweg",
+                  "coordinateSeparationMetres": 2.7895926633405184
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1201448",
+                  "swissName": "Lustenau, Flurstrasse",
+                  "externalStopId": "at:48:1941:0:2",
+                  "externalName": "Lustenau Flurstraße",
+                  "coordinateSeparationMetres": 4.116397694189547
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1201548",
+                  "swissName": "Lustenau, Wiesenrain",
+                  "externalStopId": "at:48:1537:0:3",
+                  "externalName": "Lustenau Wiesenrain",
+                  "coordinateSeparationMetres": 13.950933767163626
+                },
+                {
+                  "swissStopId": "ch:1:sloid:1201500",
+                  "swissName": "Lustenau, Philipp-Krapf-Str.",
+                  "externalStopId": "at:48:1520:0:2",
+                  "externalName": "Lustenau Philipp-Krapf-Straße",
+                  "coordinateSeparationMetres": 4.280432613795414
+                },
+                {
+                  "swissStopId": "ch:1:sloid:91850",
+                  "swissName": "Widnau, Wiesenrain Zoll",
+                  "externalStopId": "ch:23016:31933:0:1",
+                  "externalName": "Widnau Wiesenrain Zoll",
+                  "coordinateSeparationMetres": 12.929640749301104
+                },
+                {
+                  "swissStopId": "ch:1:sloid:91854",
+                  "swissName": "Widnau, Rheinstrasse",
+                  "externalStopId": "ch:23016:31937:0:1",
+                  "externalName": "Widnau Rheinstraße",
+                  "coordinateSeparationMetres": 71.0094320884871
+                },
+                {
+                  "swissStopId": "ch:1:sloid:11091",
+                  "swissName": "Widnau, Viscose-Park",
+                  "externalStopId": "ch:23016:67314:0:1",
+                  "externalName": "Widnau Viscose-Park",
+                  "coordinateSeparationMetres": 13.140456652819307
+                }
+              ],
+              "pairs": [
+                {
+                  "fromId": "ch:1:sloid:1200368",
+                  "toId": "ch:1:sloid:1200650",
+                  "from": "Dornbirn, Bahnhof",
+                  "to": "Dornbirn, Webergasse",
+                  "externalFromId": "at:48:585:0:6",
+                  "externalToId": "at:48:765:0:2",
+                  "sourceStartDistance": 0,
+                  "sourceEndDistance": 922.28,
+                  "geometrySha256": "430af42fb6cb7fb534db83131f86e29bfe2e705e0e02f907c1d1d804d0805728",
+                  "pathMetres": 923.3153535069767,
+                  "directMetres": 537.6364176232818,
+                  "swissEndpointGapMetres": 30.721618006808434,
+                  "externalEndpointGapMetres": 4.418854369415242,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 20.202269694281615
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1200650",
+                  "toId": "ch:1:sloid:1200616",
+                  "from": "Dornbirn, Webergasse",
+                  "to": "Dornbirn, Steggasse",
+                  "externalFromId": "at:48:765:0:2",
+                  "externalToId": "at:48:743:0:1",
+                  "sourceStartDistance": 922.28,
+                  "sourceEndDistance": 1145.32,
+                  "geometrySha256": "a6d95ace84054c5a01040c42558a941a162537dfeef3759a389e59f5506c0204",
+                  "pathMetres": 223.29730275599286,
+                  "directMetres": 246.61870285556427,
+                  "swissEndpointGapMetres": 30.721618006808434,
+                  "externalEndpointGapMetres": 4.418854369415242,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 0.20352158047802255
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1200616",
+                  "toId": "ch:1:sloid:1200511",
+                  "from": "Dornbirn, Steggasse",
+                  "to": "Dornbirn, Treffpunkt a.d.Ach",
+                  "externalFromId": "at:48:743:0:1",
+                  "externalToId": "at:48:570:0:2",
+                  "sourceStartDistance": 1145.32,
+                  "sourceEndDistance": 1545.55,
+                  "geometrySha256": "52dac33cd8dd0687c0102ea919e66eb717f51a07c324e876941ca08125ee0d77",
+                  "pathMetres": 400.6803795546974,
+                  "directMetres": 993.6476511793061,
+                  "swissEndpointGapMetres": 676.1828222471289,
+                  "externalEndpointGapMetres": 4.389370314343497,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "endpoint-gap",
+                    "maximumSnapMetres": 675.9422593695364
+                  },
+                  "reason": "endpoint-gap"
+                },
+                {
+                  "fromId": "ch:1:sloid:1200511",
+                  "toId": "ch:1:sloid:1200598",
+                  "from": "Dornbirn, Treffpunkt a.d.Ach",
+                  "to": "Dornbirn, Schoren Bahnhof/ORF",
+                  "externalFromId": "at:48:570:0:2",
+                  "externalToId": "at:48:661:0:2",
+                  "sourceStartDistance": 1545.55,
+                  "sourceEndDistance": 1857.04,
+                  "geometrySha256": "6eca908746da8499c4f3255f05f4c9a11af9284901d1ab9658fd631fa91d3ee6",
+                  "pathMetres": 311.8404837378952,
+                  "directMetres": 744.7663669646116,
+                  "swissEndpointGapMetres": 676.1828222471289,
+                  "externalEndpointGapMetres": 5.269871464533002,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "endpoint-gap",
+                    "maximumSnapMetres": 675.9422593695364
+                  },
+                  "reason": "endpoint-gap"
+                },
+                {
+                  "fromId": "ch:1:sloid:1200598",
+                  "toId": "ch:1:sloid:1200552",
+                  "from": "Dornbirn, Schoren Bahnhof/ORF",
+                  "to": "Dornbirn, Neugrüt",
+                  "externalFromId": "at:48:661:0:2",
+                  "externalToId": "at:48:676:0:2",
+                  "sourceStartDistance": 1857.04,
+                  "sourceEndDistance": 2528.58,
+                  "geometrySha256": "ef8732bb219ebb2453e25e71bd2a7a5f2fa1ca176c26fdadb14dbba4c209ebfa",
+                  "pathMetres": 672.2871108819882,
+                  "directMetres": 632.0194909742063,
+                  "swissEndpointGapMetres": 54.689342974746964,
+                  "externalEndpointGapMetres": 5.269871464533002,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 6.739766936714345
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1200552",
+                  "toId": "ch:1:sloid:1200632",
+                  "from": "Dornbirn, Neugrüt",
+                  "to": "Dornbirn, Volkergasse",
+                  "externalFromId": "at:48:676:0:2",
+                  "externalToId": "at:48:757:0:1",
+                  "sourceStartDistance": 2528.58,
+                  "sourceEndDistance": 2812.4,
+                  "geometrySha256": "5eefc0285e70491770aca9c1feb393fcf2923bef0cbd5a03c91e26f53a6f6cf1",
+                  "pathMetres": 284.14642918443593,
+                  "directMetres": 228.2956385273296,
+                  "swissEndpointGapMetres": 18.473423809365272,
+                  "externalEndpointGapMetres": 4.5345265660350655,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 1.6794150685972236
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1200632",
+                  "toId": "ch:1:sloid:1200462",
+                  "from": "Dornbirn, Volkergasse",
+                  "to": "Dornbirn, Heinzenbeer",
+                  "externalFromId": "at:48:757:0:1",
+                  "externalToId": "at:48:633:0:2",
+                  "sourceStartDistance": 2812.4,
+                  "sourceEndDistance": 3178.11,
+                  "geometrySha256": "4061d152b73579d07d3e2f092f380224139a1e9aa3b4a85a6559fdaf2898e266",
+                  "pathMetres": 366.11419600691414,
+                  "directMetres": 294.97556833006104,
+                  "swissEndpointGapMetres": 4.207088131113142,
+                  "externalEndpointGapMetres": 3.7908076593344555,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 0.6372501064885072
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1200462",
+                  "toId": "ch:1:sloid:1200528",
+                  "from": "Dornbirn, Heinzenbeer",
+                  "to": "Dornbirn, Messekreuzung",
+                  "externalFromId": "at:48:633:0:2",
+                  "externalToId": "at:48:1504:0:2",
+                  "sourceStartDistance": 3178.11,
+                  "sourceEndDistance": 3311.93,
+                  "geometrySha256": "f33d509720df588a27ec4175f7e106e56a7216d35d22f17bb3483003f82e6ecc",
+                  "pathMetres": 133.97052057988023,
+                  "directMetres": 97.58221362380179,
+                  "swissEndpointGapMetres": 3.579211466203761,
+                  "externalEndpointGapMetres": 4.042517723754187,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 1.022800931564869
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1200528",
+                  "toId": "ch:1:sloid:1200512",
+                  "from": "Dornbirn, Messekreuzung",
+                  "to": "Dornbirn, Köblern",
+                  "externalFromId": "at:48:1504:0:2",
+                  "externalToId": "at:48:656:0:2",
+                  "sourceStartDistance": 3311.93,
+                  "sourceEndDistance": 4050.56,
+                  "geometrySha256": "a2b98ef1c24904b4c858c3b369d86878a1f26c0a5248aa35c31abeaaf26e8848",
+                  "pathMetres": 739.4637405303233,
+                  "directMetres": 667.7368383880553,
+                  "swissEndpointGapMetres": 18.58042834583532,
+                  "externalEndpointGapMetres": 4.042517723754187,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 3.007139097959728
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1200512",
+                  "toId": "ch:1:sloid:1201442",
+                  "from": "Dornbirn, Köblern",
+                  "to": "Lustenau, Feldrast",
+                  "externalFromId": "at:48:656:0:2",
+                  "externalToId": "at:48:1316:0:1",
+                  "sourceStartDistance": 4050.56,
+                  "sourceEndDistance": 5593.9,
+                  "geometrySha256": "736d79f03c17d08f21fed6752c2858a4c652e814b401cb31fbca12aa95eb538e",
+                  "pathMetres": 1545.0845369686194,
+                  "directMetres": 1575.2740703856218,
+                  "swissEndpointGapMetres": 18.58042834583532,
+                  "externalEndpointGapMetres": 5.752536047333833,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 5.079063197589113
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1201442",
+                  "toId": "ch:1:sloid:1201520",
+                  "from": "Lustenau, Feldrast",
+                  "to": "Lustenau, Sägerstrasse",
+                  "externalFromId": "at:48:1316:0:1",
+                  "externalToId": "at:48:1626:0:2",
+                  "sourceStartDistance": 5593.9,
+                  "sourceEndDistance": 6563.1,
+                  "geometrySha256": "4dec57ed9e6fe22b5e074b18c396d9797db15ebb999f836243f1862b9b595170",
+                  "pathMetres": 970.2880599734655,
+                  "directMetres": 841.7775899684453,
+                  "swissEndpointGapMetres": 91.44102076958931,
+                  "externalEndpointGapMetres": 5.752536047333833,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 5.079063197589113
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1201520",
+                  "toId": "ch:1:sloid:1201436",
+                  "from": "Lustenau, Sägerstrasse",
+                  "to": "Lustenau, Binsenfeld",
+                  "externalFromId": "at:48:1626:0:2",
+                  "externalToId": "at:48:1315:0:1",
+                  "sourceStartDistance": 6563.1,
+                  "sourceEndDistance": 7067.9,
+                  "geometrySha256": "9bdf4ecab8a4a68ba7aa140816186d09a766bb6144eafb38819273200f5820da",
+                  "pathMetres": 505.36846170555725,
+                  "directMetres": 516.0697468872044,
+                  "swissEndpointGapMetres": 91.44102076958931,
+                  "externalEndpointGapMetres": 4.116159470006383,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 3.666195804141331
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1201436",
+                  "toId": "ch:1:sloid:1201478",
+                  "from": "Lustenau, Binsenfeld",
+                  "to": "Lustenau, Holzstrasse",
+                  "externalFromId": "at:48:1315:0:1",
+                  "externalToId": "at:48:1505:0:2",
+                  "sourceStartDistance": 7067.9,
+                  "sourceEndDistance": 7262.94,
+                  "geometrySha256": "f70c19005a63a22634ef743b80b2d86d4ff9ae2133cf6ac00992152146dd9322",
+                  "pathMetres": 195.2519785807197,
+                  "directMetres": 263.03105420571444,
+                  "swissEndpointGapMetres": 67.05246095895679,
+                  "externalEndpointGapMetres": 4.442915188318731,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 3.666195804141331
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1201478",
+                  "toId": "ch:1:sloid:1201498",
+                  "from": "Lustenau, Holzstrasse",
+                  "to": "Lustenau, Pestalozziweg",
+                  "externalFromId": "at:48:1505:0:2",
+                  "externalToId": "at:48:1536:0:1",
+                  "sourceStartDistance": 7262.94,
+                  "sourceEndDistance": 7924.49,
+                  "geometrySha256": "4f067db2c83b36e9bda49af2834f114248ec3fddc73753ed1727ebd777f8d664",
+                  "pathMetres": 662.3011226957091,
+                  "directMetres": 402.24703873740447,
+                  "swissEndpointGapMetres": 1.6794713762524582,
+                  "externalEndpointGapMetres": 4.442915188318731,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 0.6311428075779212
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1201498",
+                  "toId": "ch:1:sloid:1201448",
+                  "from": "Lustenau, Pestalozziweg",
+                  "to": "Lustenau, Flurstrasse",
+                  "externalFromId": "at:48:1536:0:1",
+                  "externalToId": "at:48:1941:0:2",
+                  "sourceStartDistance": 7924.49,
+                  "sourceEndDistance": 8241.3,
+                  "geometrySha256": "7fa8e6c2c8fdd21469b6c16155e9ebf1836b572d11bf4adb51de63efd29144d1",
+                  "pathMetres": 317.16501015894045,
+                  "directMetres": 318.73512353884774,
+                  "swissEndpointGapMetres": 1.1670569808527715,
+                  "externalEndpointGapMetres": 4.758483982319189,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 0.7516538823427449
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1201448",
+                  "toId": "ch:1:sloid:1201548",
+                  "from": "Lustenau, Flurstrasse",
+                  "to": "Lustenau, Wiesenrain",
+                  "externalFromId": "at:48:1941:0:2",
+                  "externalToId": "at:48:1537:0:3",
+                  "sourceStartDistance": 8241.3,
+                  "sourceEndDistance": 8483.99,
+                  "geometrySha256": "2fb37a4c7a3a4209a1bcd9935dc0cb2b7995bb59811d722d45eb76b2ce22a653",
+                  "pathMetres": 242.96690908475227,
+                  "directMetres": 228.00960179556918,
+                  "swissEndpointGapMetres": 13.125345681417182,
+                  "externalEndpointGapMetres": 4.758483982319189,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 0.7517234680291446
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1201548",
+                  "toId": "ch:1:sloid:1201500",
+                  "from": "Lustenau, Wiesenrain",
+                  "to": "Lustenau, Philipp-Krapf-Str.",
+                  "externalFromId": "at:48:1537:0:3",
+                  "externalToId": "at:48:1520:0:2",
+                  "sourceStartDistance": 8483.99,
+                  "sourceEndDistance": 8910.59,
+                  "geometrySha256": "1c34c03ebdd5b3a2b557be5d8811c162d3f99be5f6d4a12e58677d3347f7f169",
+                  "pathMetres": 427.08011905748054,
+                  "directMetres": 397.2934511222991,
+                  "swissEndpointGapMetres": 13.125345681417182,
+                  "externalEndpointGapMetres": 3.7550057236741208,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 0.7517234680291446
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:1201500",
+                  "toId": "ch:1:sloid:91850",
+                  "from": "Lustenau, Philipp-Krapf-Str.",
+                  "to": "Widnau, Wiesenrain Zoll",
+                  "externalFromId": "at:48:1520:0:2",
+                  "externalToId": "ch:23016:31933:0:1",
+                  "sourceStartDistance": 8910.59,
+                  "sourceEndDistance": 9428.64,
+                  "geometrySha256": "d23d8e97c416d9556f8476534064c95cbf01d4de800a40c1684d2fc5be71990b",
+                  "pathMetres": 518.6258134785394,
+                  "directMetres": 497.01249680764386,
+                  "swissEndpointGapMetres": 12.69583458620365,
+                  "externalEndpointGapMetres": 3.7550057236741208,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 1.4613668563188784
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:91850",
+                  "toId": "ch:1:sloid:91854",
+                  "from": "Widnau, Wiesenrain Zoll",
+                  "to": "Widnau, Rheinstrasse",
+                  "externalFromId": "ch:23016:31933:0:1",
+                  "externalToId": "ch:23016:31937:0:1",
+                  "sourceStartDistance": 9428.64,
+                  "sourceEndDistance": 9822.89,
+                  "geometrySha256": "eed5def8403ae6fda3b8078f436837f211aa26fa1f00fe4a00472de20ce1bb23",
+                  "pathMetres": 394.6901774099267,
+                  "directMetres": 440.01634551401065,
+                  "swissEndpointGapMetres": 67.66018258126647,
+                  "externalEndpointGapMetres": 5.513787108218448,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 51.13179766668744
+                  },
+                  "reason": "candidate-path"
+                },
+                {
+                  "fromId": "ch:1:sloid:91854",
+                  "toId": "ch:1:sloid:11091",
+                  "from": "Widnau, Rheinstrasse",
+                  "to": "Widnau, Viscose-Park",
+                  "externalFromId": "ch:23016:31937:0:1",
+                  "externalToId": "ch:23016:67314:0:1",
+                  "sourceStartDistance": 9822.89,
+                  "sourceEndDistance": 10490.03,
+                  "geometrySha256": "b9f325b993678466d5f00c8d892bf1a24c372030953ecca613f683f219be4ff4",
+                  "pathMetres": 667.8911533296346,
+                  "directMetres": 390.1499392548849,
+                  "swissEndpointGapMetres": 67.66018258126647,
+                  "externalEndpointGapMetres": 5.513787108218448,
+                  "nearestFullShapeDiagnostic": {
+                    "reason": "candidate-path",
+                    "maximumSnapMetres": 51.13179766668744
+                  },
+                  "reason": "candidate-path"
+                }
+              ],
+              "completePatternPasses": false
+            }
+          ],
+          "decision": "Retain exclusion: external shapes do not resolve Swiss endpoint coordinates."
+        }
+      ]
+    }
+  ],
+  "validation": {
+    "passed": true,
+    "feedChanged": false,
+    "stopCoordinatesChanged": false,
+    "externalShapesAdmitted": false,
+    "directionCertified": false
+  }
+}

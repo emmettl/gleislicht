@@ -6,6 +6,7 @@ import { gunzipSync } from 'node:zlib'
 import { validatedStGallenRepairs, stGallenGraphs, matchStGallenPair } from './st-gallen-line-geometry.mjs'
 import { sha256 } from './download-luzern-sources.mjs'
 import { validateStGallenSnapshot } from './build-st-gallen-region.mjs'
+import { validateVmobilDay } from './review-st-gallen-vmobil.mjs'
 
 const json = async path => JSON.parse(await readFile(path, 'utf8'))
 const sum = (items, key) => items.reduce((n, item) => n + item[key], 0)
@@ -202,6 +203,13 @@ export async function checkStGallenAudit(directory = 'data/st-gallen-audit') {
   assert.deepEqual(endpoints.sourceHashes, summary.sourceHashes)
   assert.equal(new Set(endpoints.pairs.map(p => p.key)).size, endpoints.pairs.length)
   assert.deepEqual(endpoints.validation, { passed: true, feedChanged: false, admissionLimitsChanged: false, directionCertified: false })
+  assert(summary.vmobilReview, 'Missing Vorarlberg shape review')
+  assert.equal(sha256(await readFile(summary.vmobilReview.path)), summary.vmobilReview.sha256)
+  const vmobil = await json(summary.vmobilReview.path)
+  assert.deepEqual(vmobil.sourceHashes, summary.sourceHashes)
+  assert.deepEqual(vmobil.validation, { passed: true, feedChanged: false, stopCoordinatesChanged: false, externalShapesAdmitted: false, directionCertified: false })
+  assert.equal(vmobil.sourceEvidence.find(s => s.id === 'vmobil').sha256, 'c19094742f994a7c7b346d67a2021d35b71bce610a994e5825b0f8d1900438ed')
+  assert.deepEqual(vmobil.days.map(d => d.date), summary.days.map(d => d.date))
   for (const [name, record] of Object.entries(summary.files)) assert.equal(sha256(await readFile(join(directory, name))), record.sha256, `Audit file ${name}`)
   assert.equal(sha256(await readFile('data/st-gallen-policy.json')), summary.sourceHashes.policy)
   assert.equal(sha256(await readFile('data/st-gallen-sources/sources.json')), summary.sourceHashes.catalogue)
@@ -229,6 +237,7 @@ export async function checkStGallenAudit(directory = 'data/st-gallen-audit') {
   const results = []
   for (const expected of summary.days) {
     const day = await json(join(directory, `${expected.date}.json`))
+    validateVmobilDay(vmobil, day, summary.policy.limits)
     const reviewed = detours.days.find(d => d.date === day.date); assert(reviewed)
     assert.equal(reviewed.dayAuditSha256, sha256(JSON.stringify(day)), 'Stale detour day audit')
     assert.equal(reviewed.admittedTrips, day.admittedTrips)

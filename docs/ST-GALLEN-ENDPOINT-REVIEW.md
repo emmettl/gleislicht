@@ -60,7 +60,7 @@ The official Mobilitätsdaten Österreich catalogue links the public sample `202
 
 `c19094742f994a7c7b346d67a2021d35b71bce610a994e5825b0f8d1900438ed`
 
-The sample includes `at:vvv:164:` (Landbus Unterland, Lustenau–Lauterach–Wolfurt), **142 source trip records**, **seven referenced shapes** and **3,108 shape points**. These are inventory counts, not active Friday/Sunday trips. No external shapes have been admitted or substituted for the pinned Swiss timetable. Comparing their directed stop sequences, platform identities, calendars and coverage against the Swiss line-164 fixture is the next concrete geometry investigation. Current line-164 endpoint failures affect 58 Friday / 26 Sunday trips.
+The sample includes `at:vvv:164:` (Landbus Unterland, Lustenau–Lauterach–Wolfurt), **142 source trip records**, **seven referenced shapes** and **3,108 shape points**. These are inventory counts, not active Friday/Sunday trips. No external shapes have been admitted or substituted for the pinned Swiss timetable. The subsequent [directed line-164 review](ST-GALLEN-VMOBIL-REVIEW.md) confirms identical fixture calls and times but finds a 673–679 m discrepancy between the feeds at Treffpunkt a.d.Ach. The external shapes still fail at the original Swiss endpoints; no fallback was admitted. Current line-164 endpoint failures affect 58 Friday / 26 Sunday trips.
 
 ## Source dates, attribution and reuse
 

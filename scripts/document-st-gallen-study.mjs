@@ -32,6 +32,10 @@ const endpointPath='data/st-gallen-endpoint-review.json', endpoints=await read(e
 assert.deepEqual(endpoints.sourceHashes,audit.sourceHashes,'Stale endpoint review sources')
 for (const day of days) assert.equal(endpoints.days.find(d=>d.date===day.date)?.dayAuditSha256,sha256(JSON.stringify(day)),'Stale endpoint review day')
 summary.endpointReview={path:endpointPath,sha256:sha256(await readFile(endpointPath))}
+const vmobilPath='data/st-gallen-vmobil-review.json', vmobil=await read(vmobilPath)
+assert.deepEqual(vmobil.sourceHashes,audit.sourceHashes,'Stale Vorarlberg review sources')
+for (const day of days) assert.equal(vmobil.days.find(d=>d.date===day.date)?.dayAuditSha256,sha256(JSON.stringify(day)),'Stale Vorarlberg review day')
+summary.vmobilReview={path:vmobilPath,sha256:sha256(await readFile(vmobilPath))}
 const sharedPath='data/st-gallen-shared-corridor-review.json', sharedReview=await read(sharedPath)
 assert.deepEqual(sharedReview.sourceHashes,audit.sourceHashes,'Stale shared-corridor regression')
 summary.sharedCorridorReview={path:sharedPath,sha256:sha256(await readFile(sharedPath))}
@@ -184,12 +188,14 @@ node --max-old-space-size=8192 scripts/build-st-gallen-region.mjs
 node scripts/check-st-gallen-region.mjs
 node scripts/document-st-gallen-study.mjs
 node scripts/check-st-gallen-region.mjs --audit-only
-node --test scripts/st-gallen-region.test.mjs scripts/st-gallen-shared-corridors.test.mjs
+npx vitest run scripts/st-gallen-region.test.mjs scripts/st-gallen-shared-corridors.test.mjs scripts/st-gallen-vmobil.test.mjs
 \`\`\`
 
 The saved detour review is bound to the exact source hashes and day audits. To replay its geometry diagnostics with the original cached operator pages, run \`node scripts/review-st-gallen-detours.mjs --check\`. On a fresh cache, \`node scripts/review-st-gallen-detours.mjs --fetch-evidence\` acquires the current public pages and regenerates the review; it cannot recreate historical webpage bytes. Inspect changed notices, dates and hashes before regenerating the study. These pages support stop order and operating context, not replacement route geometry.
 
 The endpoint review has the same source/day binding. Run \`node scripts/review-st-gallen-endpoints.mjs --check\` with the original evidence cache, or \`--fetch-evidence\` to acquire and inspect current snapshots. Its audit-only validation rejects missing pairs, foreign-agency candidates, incorrect affected totals and stale day bindings, even if the report's outer file hash is updated.
+
+The [Vorarlberg line-164 review](ST-GALLEN-VMOBIL-REVIEW.md) additionally compares active calendars, every ordered call and time, and directed shape-distance slices against the Swiss fixtures. Both sources have 58 Friday / 26 Sunday trips with identical call times, but Treffpunkt a.d.Ach differs by 673–679 m and Messekreuzung toward Dornbirn by 143 m. External geometry does not resolve these source-coordinate discrepancies. All line-164 trips remain excluded. Run \`node scripts/review-st-gallen-vmobil.mjs --check\` to replay the pinned July ZIP; shape clipping, calendar exceptions and name normalization have dedicated tests in \`scripts/st-gallen-vmobil.test.mjs\`.
 
 The full checker verifies source hashes, annual-route reconciliation, every admitted and excluded source pattern, unchanged source calls/times/sequences, frequency and carry-in metadata, directed path endpoints, per-pair path hashes, shared-corridor source replay and provenance, chunk overlap consistency, morning-window membership and operator/mode/route/pair-occurrence totals. The audit-only check works from tracked files without the large source cache. The geometry regression compares against the feed and policy from commit 2351822: every previously admitted movement, call and path and every previously matched pair must be unchanged, and only the reviewed line-321 and line-210 patterns may be added. Run \`node scripts/check-st-gallen-topology-regression.mjs BASELINE_FEED_DIRECTORY BASELINE_AUDIT_JSON\` after building both versions with the exported \`buildStGallenRegion\` function and their respective policies. For the incremental line-210 regression, add \`--shared\` and supply the baseline from commit 7926448; only 66 Friday / 35 Sunday line-210 trips may be added. The saved reports record the pinned baselines and result hashes. The supporting map is acquired by the source-preparation command; use \`python3 scripts/prepare-st-gallen-sources.py --shared-evidence-only\` to acquire it without refreshing the original source catalogue.
 
