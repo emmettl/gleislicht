@@ -6,7 +6,7 @@ import { EXPLORE_EN, type ExploreUiCopy } from './studies/explore-ui-en.ts'
 import { networkWithRailVisibility } from './studies/network-layers.ts'
 import { COGWHEEL_ROUTE_COLORS, cogwheelNetwork } from './studies/cogwheel.ts'
 import { useCogwheelCatalogue } from './studies/use-cogwheel-catalogue.ts'
-import type { JungfrauTerrainBinding } from './studies/jungfrau-terrain.ts'
+import type { MeasuredTerrainBinding } from './studies/measured-terrain.ts'
 import type { RigiTerrainBinding } from './studies/rigi-timetable-terrain.ts'
 import { rigiOperator } from './studies/rigi.ts'
 import { isHeadwayTrain, serviceFrequency, withFrequencyFerryPaths } from './studies/frequency.ts'
@@ -150,7 +150,7 @@ const AlpineQuiet = lazy(() =>
 const RigiTimetableTerrain = lazy(() => import('./studies/RigiTimetableTerrain.tsx'))
 const JungfrauPlaces = lazy(() => import('./studies/JungfrauPlaces.tsx'))
 const JungfrauGuide = lazy(() => import('./studies/JungfrauGuide.tsx'))
-const JungfrauTerrainScene = lazy(() => import('./studies/JungfrauTerrainScene.tsx'))
+const MeasuredTerrainScene = lazy(() => import('./studies/MeasuredTerrainScene.tsx'))
 const GornergratAscent = lazy(() => import('./studies/GornergratAscent.tsx'))
 const JungfrauAscent = lazy(() => import('./studies/JungfrauAscent.tsx'))
 const RigiGuide = lazy(() => import('./studies/RigiGuide.tsx'))
@@ -346,7 +346,8 @@ export function App({ edition }: AppProps) {
   const [rigiSequenceActive, setRigiSequenceActive] = useState(false)
   const [rigiRhythmActive, setRigiRhythmActive] = useState(false)
   const [rigiGuideActive, setRigiGuideActive] = useState(false)
-  const [jungfrauTerrainBinding, setJungfrauTerrainBinding] = useState<JungfrauTerrainBinding>()
+  const [gornergratTerrainBinding, setGornergratTerrainBinding] = useState<MeasuredTerrainBinding>()
+  const [jungfrauTerrainBinding, setJungfrauTerrainBinding] = useState<MeasuredTerrainBinding>()
   const [rigiTerrainBinding, setRigiTerrainBinding] = useState<RigiTerrainBinding>()
   const [zvvRegionNetwork, setZvvRegionNetwork] = useState<NetworkSnapshot>()
   const [bernRegionNetwork, setBernRegionNetwork] = useState<NetworkSnapshot>()
@@ -459,6 +460,7 @@ export function App({ edition }: AppProps) {
   useEffect(() => { if (isJungfrau) void import('./studies/jungfrau-copy.ts').then(setJungfrauLocale) }, [isJungfrau])
   const jungfrauCopy = jungfrauLocale?.JUNGFRAU_COPY[language]
   const jungfrauSelect = jungfrauCopy?.select ?? { en: 'Explore the Jungfrau railways', de: 'Jungfraubahnen entdecken', fr: 'Explorer les chemins de fer de la Jungfrau', it: 'Esplora le ferrovie della Jungfrau' }[language]
+  const gornergratTerrainWindow = view === 'network' && isGornergrat && gornergratAscentActive ? gornergratTerrainBinding?.windows.find(w => networkTime >= w.start && networkTime < w.end) : undefined
   const jungfrauTerrainWindow = view === 'network' && isJungfrau && jungfrauAscentActive ? jungfrauTerrainBinding?.windows.find(w => networkTime >= w.start && networkTime < w.end) : undefined
   const timedRigiTerrain = view === 'network' && isRigi && rigiSequenceActive && rigiTerrainBinding && networkTime >= rigiTerrainBinding.sequence.departure && networkTime <= rigiTerrainBinding.sequence.end ? rigiTerrainBinding : undefined
   const [rigiLocale, setRigiLocale] = useState<typeof import('./studies/rigi-copy.ts')>()
@@ -945,7 +947,7 @@ export function App({ edition }: AppProps) {
   const ignoreNetworkTime = useCallback(() => {}, [])
 
   const releaseSelection = useCallback(() => {
-    setJungfrauTerrainBinding(undefined)
+    setGornergratTerrainBinding(undefined); setJungfrauTerrainBinding(undefined)
     setJungfrauGuideActive(false)
     setRigiRhythmActive(false)
     setRigiSequenceActive(false)
@@ -2046,7 +2048,7 @@ export function App({ edition }: AppProps) {
       data-cogwheel-enabled={isCogwheel}
       data-quiet-map={quietMap}
       data-quiet-playing={quietMap ? isPlaying : undefined}
-      className={`experience view-${view}${isJungfrau ? ' jungfrau-study' : ''}${isGornergrat ? ' gornergrat-study' : ''}${timedRigiTerrain || jungfrauTerrainWindow ? ' has-timed-rigi-terrain' : ''}${isContrast ? ' is-contrast' : ''}${airEnabled ? ' has-air-layer' : ''}${airCategorySelected ? ' has-air-category' : ''}${roadEnabled ? ' has-road-layer' : ''}${roadCategorySelected ? ' has-road-category' : ''}${selectedTrain || selectedStation || selectedRoute || selectedAirTrack || selectedAirport || selectedRoad ? ' has-selection' : ''}${!isTimetable ? ` corridor-${journeyCorridorId}` : ''}`}
+      className={`experience view-${view}${isJungfrau ? ' jungfrau-study' : ''}${isGornergrat ? ' gornergrat-study' : ''}${timedRigiTerrain || jungfrauTerrainWindow || gornergratTerrainWindow ? ' has-timed-rigi-terrain' : ''}${isContrast ? ' is-contrast' : ''}${airEnabled ? ' has-air-layer' : ''}${airCategorySelected ? ' has-air-category' : ''}${roadEnabled ? ' has-road-layer' : ''}${roadCategorySelected ? ' has-road-category' : ''}${selectedTrain || selectedStation || selectedRoute || selectedAirTrack || selectedAirport || selectedRoad ? ' has-selection' : ''}${!isTimetable ? ` corridor-${journeyCorridorId}` : ''}`}
     >
       <div className="scene" aria-hidden={webglAvailable ? true : undefined}>
         <Suspense fallback={null}>
@@ -2057,8 +2059,10 @@ export function App({ edition }: AppProps) {
             <p>{text.webglUnavailableDescription}</p>
             <a href="./methodology.html">{text.readMethodology}</a>
           </section>
+        ) : gornergratTerrainWindow && gornergratTerrainBinding ? (
+          <MeasuredTerrainScene binding={gornergratTerrainBinding} window={gornergratTerrainWindow} time={networkTime} isPlaying={isPlaying} rate={playbackRate} onTime={handleNetworkTime} />
         ) : jungfrauTerrainWindow && jungfrauTerrainBinding ? (
-          <JungfrauTerrainScene binding={jungfrauTerrainBinding} window={jungfrauTerrainWindow} time={networkTime} isPlaying={isPlaying} rate={playbackRate} onTime={handleNetworkTime} />
+          <MeasuredTerrainScene binding={jungfrauTerrainBinding} window={jungfrauTerrainWindow} time={networkTime} isPlaying={isPlaying} rate={playbackRate} onTime={handleNetworkTime} />
         ) : timedRigiTerrain ? (
           <RigiTimetableTerrain binding={timedRigiTerrain} time={networkTime} isPlaying={isPlaying} rate={playbackRate} onTime={handleNetworkTime} onEnd={finishRigiTerrain} />
         ) : isNetwork && isContrast ? (
@@ -2953,7 +2957,7 @@ export function App({ edition }: AppProps) {
       }} /></Suspense>}
 
       {isNetwork && isGornergrat && gornergratAscentActive && gornergratNetwork ? (
-        <Suspense fallback={null}><GornergratAscent network={gornergratNetwork} language={language} time={networkTime} onSeek={seekMountainSequence} onFollow={followMountainSequence} onFinish={finishRigiTerrain} onExit={releaseSelection}/></Suspense>
+        <Suspense fallback={null}><GornergratAscent onTerrain={setGornergratTerrainBinding} network={gornergratNetwork} language={language} time={networkTime} onSeek={seekMountainSequence} onFollow={followMountainSequence} onFinish={finishRigiTerrain} onExit={releaseSelection}/></Suspense>
       ) : isNetwork && isJungfrau && jungfrauAscentActive && jungfrauNetwork ? (
         <Suspense fallback={null}><JungfrauAscent onTerrain={setJungfrauTerrainBinding} network={jungfrauNetwork} language={language} time={networkTime} onSeek={seekMountainSequence} onFollow={followMountainSequence} onFinish={finishRigiTerrain} onExit={releaseSelection} /></Suspense>
       ) : isNetwork && isRigi && rigiRhythmActive && rigiNetwork && !selectedTrain && !selectedStation && !selectedRoute ? (
@@ -4325,7 +4329,7 @@ export function App({ edition }: AppProps) {
           {isHub
             ? text.arrivalsDirection
             : isNetwork
-              ? isBern ? text.bernModel : isNyon ? text.nyonModel : isBasel ? text.baselModel : isLausanne ? text.lausanneModel : timedRigiTerrain || jungfrauTerrainWindow ? text.interpolation : isGornergrat ? gornergratCopy?.model : isJungfrau ? jungfrauCopy?.model : isRigi ? rigiCopy.water : hasHeadwayMotion ? frequencyCopy.interpolation : text.interpolation
+              ? isBern ? text.bernModel : isNyon ? text.nyonModel : isBasel ? text.baselModel : isLausanne ? text.lausanneModel : timedRigiTerrain || jungfrauTerrainWindow || gornergratTerrainWindow ? text.interpolation : isGornergrat ? gornergratCopy?.model : isJungfrau ? jungfrauCopy?.model : isRigi ? rigiCopy.water : hasHeadwayMotion ? frequencyCopy.interpolation : text.interpolation
               : text.simulation}
         </span>
       </footer>

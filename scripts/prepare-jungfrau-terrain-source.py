@@ -25,7 +25,9 @@ from pathlib import Path
 argsParser=argparse.ArgumentParser()
 argsParser.add_argument('--cache',default='/private/tmp/jungfrau-tlm')
 argsParser.add_argument('--output',default='data/jungfrau-terrain-source.json')
+argsParser.add_argument('--bounds',type=float,nargs=4,default=[2630000,1153000,2647000,1174000],metavar=('MIN_E','MIN_N','MAX_E','MAX_N'))
 args=argsParser.parse_args()
+if args.bounds[0]>=args.bounds[2] or args.bounds[1]>=args.bounds[3]:raise ValueError('Invalid extraction bounds')
 p=Path(args.cache);p.mkdir(parents=True,exist_ok=True)
 if not all((p/('swissTLM3D_TLM_EISENBAHN'+ext)).exists() for ext in ['.shp','.dbf','.prj','.shx']):
  z=zipfile.ZipFile(Remote())
@@ -47,7 +49,7 @@ while pos<len(shp):
  if typ==0:continue
  if typ!=13:raise ValueError(typ)
  box=struct.unpack_from('<4d',b,4)
- if box[0]>2647000 or box[2]<2630000 or box[1]>1174000 or box[3]<1153000:continue
+ if box[0]>args.bounds[2] or box[2]<args.bounds[0] or box[1]>args.bounds[3] or box[3]<args.bounds[1]:continue
  props={};off=1
  for name,t,l in fields:
   value=r[off:off+l].decode('utf-8').strip();off+=l
@@ -55,6 +57,6 @@ while pos<len(shp):
  np,ns=struct.unpack_from('<II',b,36);parts=list(struct.unpack_from('<'+'I'*np,b,44))+[ns];xy=struct.unpack_from('<'+'d'*(2*ns),b,44+4*np);z=struct.unpack_from('<'+'d'*ns,b,44+4*np+ns*16+16)
  points=[[round(xy[j*2],3),round(xy[j*2+1],3),round(z[j],3)] for j in range(ns)]
  features.append({'id':props['UUID'],'properties':props,'paths':[points[parts[j]:parts[j+1]] for j in range(np)]})
-result={'source':'swissTLM3D 2026-02','sourceCrs':'EPSG:2056 / LN02','sourceUrl':URL,'productUrl':'https://www.swisstopo.admin.ch/en/landscape-model-swisstlm3d','catalogueUrl':'https://www.swisstopo.admin.ch/dam/de/sd-web/A3kQ2dAgenqG/2025-03','archiveSha256':'75086b5aa7e721f5ad2ea080e14e9e3f42d5e0afdee31c2e3c162f412fab4114','bounds':[2630000,1153000,2647000,1174000],'sha256':{k.name:hashlib.sha256(k.read_bytes()).hexdigest() for k in p.glob('*')},'features':features}
+result={'source':'swissTLM3D 2026-02','sourceCrs':'EPSG:2056 / LN02','sourceUrl':URL,'productUrl':'https://www.swisstopo.admin.ch/en/landscape-model-swisstlm3d','catalogueUrl':'https://www.swisstopo.admin.ch/dam/de/sd-web/A3kQ2dAgenqG/2025-03','archiveSha256':'75086b5aa7e721f5ad2ea080e14e9e3f42d5e0afdee31c2e3c162f412fab4114','bounds':args.bounds,'sha256':{k.name:hashlib.sha256(k.read_bytes()).hexdigest() for k in p.glob('*')},'features':features}
 Path(args.output).write_text(json.dumps(result,separators=(',',':'))+'\n')
-print(f'Wrote {len(features)} railway features in the Jungfrau audit bounds.')
+print(f'Wrote {len(features)} railway features in the requested audit bounds.')

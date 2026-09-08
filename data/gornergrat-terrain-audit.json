@@ -1,0 +1,491 @@
+{
+  "metadata": {
+    "serviceDate": "2026-09-04",
+    "feedVersion": "20260902",
+    "timetableSha256": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+    "networkSha256": "d2f9ab8d4bd4b1af409818502f597fc95cccb14cb950eda4a4b9fe2b5bf24abf",
+    "source": "swissALTIRegio + swissTLM3D",
+    "sourceCrs": "EPSG:2056 / LN02",
+    "terrainRelease": "2026-05-28",
+    "terrainUrl": "https://data.geo.admin.ch/ch.swisstopo.swissaltiregio/swissaltiregio/swissaltiregio_2056_5728.tif",
+    "terrainChecksum": "1220E1CADE929D3007D74BE67E5D107E517E40B13E0597A114097744B032FC6527E5",
+    "terrainProductUrl": "https://www.swisstopo.admin.ch/en/height-model-swissaltiregio",
+    "railSourceUrl": "https://data.geo.admin.ch/ch.swisstopo.swisstlm3d/swisstlm3d_2026-02/swisstlm3d_2026-02_2056_5728.shp.zip",
+    "railSourceSha256": "59d9adcfec395bd9206d386e5641935b63564131a4011292dc6e68f3972e2876",
+    "railProductUrl": "https://www.swisstopo.admin.ch/en/landscape-model-swisstlm3d",
+    "model": "Mapped FOT plan alignment with heights interpolated from nearby swissTLM3D rail axes; equal horizontal/vertical scale. Only unmasked outdoor sections use 3D; tunnels, covered structures and offsets above 25 m remain in 2D. Timetable motion, not live or surveyed train positions.",
+    "attribution": "Federal Office of Transport; swisstopo. Terrain: swissALTIRegio (swisstopo and contributing national elevation datasets).",
+    "bounds": {
+      "minEasting": 2620800,
+      "maxEasting": 2629300,
+      "minNorthing": 1089800,
+      "maxNorthing": 1099600
+    },
+    "gridSpacingMetres": [
+      44.270833333333336,
+      44.34389140271493
+    ],
+    "nativeResolutionMetres": 10
+  },
+  "rasterSha256": "53f015ca097ddebc6b70920541140337d37f4f00413794bc1c38eafd1288a269",
+  "gzipBytes": 79875,
+  "routes": [
+    {
+      "routeId": "93-48-j26-1",
+      "tripId": ".ojp-93-48.1.TA.39.j26",
+      "ascentAudit": {
+        "count": 26,
+        "patterns": [
+          6,
+          7
+        ],
+        "trips": [
+          {
+            "id": ".ojp-93-48.1.TA.39.j26",
+            "calls": 7,
+            "paths": [
+              5,
+              6,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "id": ".ojp-93-48.1.TA.35.j26",
+            "calls": 7,
+            "paths": [
+              5,
+              6,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "id": ".ojp-93-48.1.TA.31.j26",
+            "calls": 7,
+            "paths": [
+              5,
+              6,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "id": ".ojp-93-48.1.TA.32.j26",
+            "calls": 7,
+            "paths": [
+              5,
+              6,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "id": ".ojp-93-48.1.TA.38.j26",
+            "calls": 7,
+            "paths": [
+              5,
+              6,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "id": ".ojp-93-48.1.TA.40.j26",
+            "calls": 7,
+            "paths": [
+              5,
+              6,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "id": ".ojp-93-48.1.TA.34.j26",
+            "calls": 7,
+            "paths": [
+              5,
+              6,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "id": ".ojp-93-48.1.TA.30.j26",
+            "calls": 7,
+            "paths": [
+              5,
+              6,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "id": ".ojp-93-48.1.TA.47.j26",
+            "calls": 7,
+            "paths": [
+              5,
+              6,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "id": ".ojp-93-48.1.TA.41.j26",
+            "calls": 7,
+            "paths": [
+              5,
+              6,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "id": ".ojp-93-48.1.TA.33.j26",
+            "calls": 7,
+            "paths": [
+              5,
+              6,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "id": ".ojp-93-48.1.TA.45.j26",
+            "calls": 7,
+            "paths": [
+              5,
+              6,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "id": ".ojp-93-48.1.TA.11.j26",
+            "calls": 6,
+            "paths": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "id": ".ojp-93-48.1.TA.7.j26",
+            "calls": 6,
+            "paths": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "id": ".ojp-93-48.1.TA.15.j26",
+            "calls": 6,
+            "paths": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "id": ".ojp-93-48.1.TA.17.j26",
+            "calls": 6,
+            "paths": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "id": ".ojp-93-48.1.TA.25.j26",
+            "calls": 6,
+            "paths": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "id": ".ojp-93-48.1.TA.16.j26",
+            "calls": 6,
+            "paths": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "id": ".ojp-93-48.1.TA.18.j26",
+            "calls": 6,
+            "paths": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "id": ".ojp-93-48.1.TA.12.j26",
+            "calls": 6,
+            "paths": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "id": ".ojp-93-48.1.TA.23.j26",
+            "calls": 6,
+            "paths": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "id": ".ojp-93-48.1.TA.24.j26",
+            "calls": 6,
+            "paths": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "id": ".ojp-93-48.1.TA.10.j26",
+            "calls": 6,
+            "paths": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "id": ".ojp-93-48.1.TA.22.j26",
+            "calls": 6,
+            "paths": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "id": ".ojp-93-48.1.TA.19.j26",
+            "calls": 6,
+            "paths": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "id": ".ojp-93-48.1.TA.21.j26",
+            "calls": 6,
+            "paths": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          }
+        ]
+      },
+      "points": 654,
+      "length3dMetres": 9341.818892912792,
+      "maxOffsetMetres": 14.425709118372462,
+      "maskedFraction": 0.18870173406129442,
+      "sourceFeatureIds": [
+        "{6506EAFB-93F6-4BB6-AFC8-9849C6EAC5F2}",
+        "{B4EC4319-D8C4-46CD-BAF7-60C7494CD779}",
+        "{322855EE-C6D3-4CFD-B7DB-66351A80B9AB}",
+        "{E2C137FD-AB0F-461A-8703-6A48B78E3CE2}",
+        "{2B0C59B1-A706-4FDE-810F-90520CE8A0AD}",
+        "{FCCA1726-ACF9-48F5-B7BC-5564C6A1F547}",
+        "{D41F30B4-C12A-4C99-A63F-C5226A227607}",
+        "{3A938004-F860-488D-9E0B-CEA548B86181}",
+        "{2BD25729-2735-4557-8BDA-105518147E93}",
+        "{A74DA3A2-F141-4849-B65E-7EA2610E75D2}",
+        "{1FF7BACC-72F7-4A1E-8EB3-6AB17FE62C35}",
+        "{896F256D-76C2-4DC1-9A70-C66F4D862F89}",
+        "{115E1B97-DD65-4615-B24F-2EEA521EE327}",
+        "{C27D0D00-62C8-4D9C-942C-CC104351F78F}",
+        "{26B79310-6AE8-4772-B8C0-65BBC29C4D8E}",
+        "{3063AB27-17A9-47FC-A012-FC9A33A568EC}",
+        "{B9E9D70D-41E4-4727-BFD3-570BAF68793D}",
+        "{1E45260E-E7ED-4B1D-9FBA-DDC243859CE3}",
+        "{C99891C6-BF6D-42D8-8914-0E6D4C7103D3}",
+        "{9CE451D2-C29D-4AAF-8A7D-336738398B16}",
+        "{CC8A8830-7BEF-4FAF-BA73-A313FB363C60}",
+        "{8C8FCFEB-0A25-478C-8436-B763535655E9}",
+        "{9BDD3CD6-1FD7-4476-96D4-966B61B3F993}",
+        "{611CD40F-2182-4127-AD98-38DA0EA6FCE1}",
+        "{B4A31362-E19B-4A83-B968-DD613934E629}",
+        "{6E9BB9BE-C1F0-4E45-8174-FC00B8562078}",
+        "{2445C7FF-4310-4372-8156-8A102031179B}",
+        "{51A79446-1D84-4AA0-98FF-9BD217EBCFE7}",
+        "{AEBF6FFB-3121-41DC-BC61-FACC819B9010}",
+        "{627B6CE0-C836-4CB8-A1CB-4FCB3A4165C7}",
+        "{A5FA03AB-B2E9-48B9-834A-95F9B2289840}",
+        "{E53B29CC-92D7-4CC3-91AA-DBAAB512325C}",
+        "{1264FE2C-DD04-4491-8BAE-02EAA3F10E0F}",
+        "{C7CCE639-21F3-4E56-A2BB-6CA883AAEB6D}",
+        "{82DB6161-DE33-4BCD-9245-BD06A18D0AEB}",
+        "{3E4FC169-B032-4043-A98A-D8AF25A5B4D6}",
+        "{19129A91-7A25-4DF0-801D-6392CE39C05A}",
+        "{B9FB226E-0C31-40C2-881A-E2C8B3DDCAB5}",
+        "{2BB3E670-2F1F-4585-88F2-AFCE6CA1D4F2}",
+        "{17580B48-B57E-4149-AE08-3CC0D5824545}",
+        "{28659614-EB7E-4DB2-8F4E-C5E29B43DA2B}",
+        "{CA0F9E6A-A764-49A0-BEE0-D8C4DE2086B9}",
+        "{66F09244-B286-4AE2-BF9C-3E1E39DA3703}",
+        "{458CE511-6AEC-44EC-8DB5-EA79EC13E012}",
+        "{2BC3835B-2A67-4752-BFA8-B639883A53A1}",
+        "{D6B6C5D7-9EBF-477C-B227-69D5504A852D}",
+        "{2BA2CFC0-C20F-4927-B0E7-AF15DA4CD244}",
+        "{CD440683-1A37-4F12-9E95-757B5358764E}",
+        "{39697068-4FEC-4AB8-9498-9E10960474ED}",
+        "{F8E7217F-82B9-49A6-8565-489C245896A9}"
+      ],
+      "sourceYears": [
+        2023,
+        2009
+      ],
+      "stops": [
+        {
+          "id": "ch:1:sloid:1690",
+          "name": "Zermatt GGB",
+          "progress": 0,
+          "railHeight": 1604.2745627597187,
+          "groundHeight": 1604.2182490587638
+        },
+        {
+          "id": "ch:1:sloid:30858",
+          "name": "Zermatt Ferienhaus legendär",
+          "progress": 0.09511555535024005,
+          "railHeight": 1676.4862045315697,
+          "groundHeight": 1676.1168072596765
+        },
+        {
+          "id": "ch:1:sloid:1679",
+          "name": "Findelbach",
+          "progress": 0.18059164075887615,
+          "railHeight": 1770.1630083677355,
+          "groundHeight": 1769.9756159616145
+        },
+        {
+          "id": "ch:1:sloid:1691",
+          "name": "Riffelalp",
+          "progress": 0.42751365584814305,
+          "railHeight": 2210.12023131709,
+          "groundHeight": 2210.286742439594
+        },
+        {
+          "id": "ch:1:sloid:1692",
+          "name": "Riffelberg",
+          "progress": 0.6917502044206684,
+          "railHeight": 2582.164842307953,
+          "groundHeight": 2582.1944198215506
+        },
+        {
+          "id": "ch:1:sloid:1693",
+          "name": "Rotenboden",
+          "progress": 0.8447352283692334,
+          "railHeight": 2815.7968999406394,
+          "groundHeight": 2815.928408674609
+        },
+        {
+          "id": "ch:1:sloid:1694",
+          "name": "Gornergrat",
+          "progress": 1,
+          "railHeight": 3087.4959692506886,
+          "groundHeight": 3087.6276207551687
+        }
+      ],
+      "maskedRanges": [
+        {
+          "start": 0.1866415479314059,
+          "end": 0.22956146634316563,
+          "names": [],
+          "kinds": [
+            "Galerie",
+            "Tunnel"
+          ]
+        },
+        {
+          "start": 0.2522516350783186,
+          "end": 0.27719007439063575,
+          "names": [],
+          "kinds": [
+            "Tunnel"
+          ]
+        },
+        {
+          "start": 0.3044754982100385,
+          "end": 0.33290369126821323,
+          "names": [],
+          "kinds": [
+            "Tunnel"
+          ]
+        },
+        {
+          "start": 0.582390999873601,
+          "end": 0.6748061831526437,
+          "names": [],
+          "kinds": [
+            "Galerie"
+          ]
+        }
+      ]
+    }
+  ]
+}
