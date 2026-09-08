@@ -8,7 +8,7 @@ Generated from the [Bern audit](BERN-STUDY.md). Counts are admitted / candidate 
 | --- | --- | --- | --- | --- |
 | 11 | Schweizerische Bundesbahnen SBB | 62 | 436 / 846 | 429 / 771 |
 | 32 | Lauterbrunnen-Mürren | 2 | 181 / 181 | 181 / 181 |
-| 33 | BLS AG (bls) | 53 | 1,149 / 1,405 | 1,013 / 1,255 |
+| 33 | BLS AG (bls) | 53 | 1,189 / 1,405 | 1,051 / 1,255 |
 | 35 | Berner Oberland-Bahnen | 2 | 130 / 130 | 144 / 144 |
 | 38 | Aare Seeland mobil (bti) | 1 | 116 / 116 | 77 / 77 |
 | 43 | Chemins de fer du Jura | 2 | 69 / 110 | 42 / 77 |
@@ -195,7 +195,7 @@ Generated from the [Bern audit](BERN-STUDY.md). Counts are admitted / candidate 
 | 91-35-D-j26-1 | 33: IR35 | rail | excluded | 0 / 1 | 0 / 1 | — | — | no-verified-operator-line-crosswalk |
 | 91-56-j26-1 | 33: IR56 | rail | excluded | 0 / 35 | 0 / 0 | — | — | no-verified-operator-line-crosswalk |
 | 91-65-j26-1 | 33: IR65 | rail | admitted-all-dated-trips | 68 / 68 | 70 / 70 | 303_S_a | — | — |
-| 91-66-A-j26-1 | 33: IR66 | rail | excluded | 0 / 40 | 0 / 38 | 223_IR | — | incomplete-directed-pattern |
+| 91-66-A-j26-1 | 33: IR66 | rail | admitted-all-dated-trips | 40 / 40 | 38 / 38 | 223_IR | bern-ir66-reviewed-fot-rail-20210706 | — |
 | 91-2D-Y-j26-1 | 33: R | rail | inactive-on-validation-dates | 0 / 0 | 0 / 0 | — | — | Not active on these dates |
 | 91-11-N-j26-1 | 33: R11 | rail | admitted-all-dated-trips | 38 / 38 | 38 / 38 | 320_R | — | — |
 | 91-12-M-j26-1 | 33: R12 | rail | admitted-all-dated-trips | 14 / 14 | 12 / 12 | 330_R | — | — |
