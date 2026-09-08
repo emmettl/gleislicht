@@ -130,3 +130,5 @@ The sixth recording admits the 3588–1623 counter pair: **4.822 km and 104 unin
 ## Oberland destination follow-up
 
 A [complete Pfäffikon, Wetzikon and Gossau review](OBERLAND-ROAD-CANDIDATES.md) covers six settlement alternatives, 21 stations and 14 counter pairs with at least one complete hour. All 14 still need direction or geometry evidence even under an optimistic Zürich-qualified-name diagnostic. Hittnau 3091 needs an independent directional reference; Seegräben 2988 needs a verified road binding. No new pilot or topology is published by this audit.
+
+The [Hittnau source investigation](HITTNAU-ROAD-REVIEW.md) subsequently verifies the public station point and collector labels. The checked metadata and generic VDE handbook do not provide the missing detector-to-path reference. Its audit retains the short-distance failure and identifies the exact station-plan evidence needed to resume; Seegräben's road binding is the next independent investigation.

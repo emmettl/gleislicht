@@ -1,0 +1,168 @@
+{
+  "schemaVersion": 1,
+  "status": "review-only-no-publication",
+  "inputHashes": {
+    "geometry": "3647bbd230f40391ba3a1ddcba2364ec439183cd0d0cab80c84afcdcf1812e08",
+    "catalog": "ffce5a7cc2681d4a87f89a7a579e1eab3dd077e15e61574a0d5506da92479a09",
+    "oberland": "de0aca95c24fc719ea48f0624dcfd0e5a4e41a572b087dc4b8dd45e2795d46b7",
+    "sources": "4e34b6ce7822186a2ee4e8e6a02f94e421ae4ace771287493fa542308c2284c1"
+  },
+  "stationId": "ZH.CH:3091",
+  "name": "Hittnau: Tösstalstrasse",
+  "pathId": "ZH:337:81114d194f6ee002",
+  "road": "ZH:337",
+  "sourceChecks": {
+    "collectorLabelsMatch": true,
+    "preciseStationPointMatches": true,
+    "stationPointLv95": [
+      2705704.3900000006,
+      1248957.7300000004
+    ],
+    "publicStationFields": [
+      "dlv",
+      "dsv",
+      "dtv",
+      "dtv_bezugsjahr",
+      "messst_nr",
+      "messst_typ",
+      "nn",
+      "nt",
+      "v85"
+    ],
+    "stationPlanStatus": "not-obtained",
+    "handbookExampleStationNumber": "0124"
+  },
+  "qualifiedZhDiagnostic": {
+    "status": "unresolved-direction-pair",
+    "detectors": [
+      {
+        "id": "ZH.CH:3091.01",
+        "description": "Normalspur Richtung Pfäffikon",
+        "alertCDirection": "negative",
+        "status": "validated",
+        "direction": "negative",
+        "destination": {
+          "name": "Pfäffikon ZH",
+          "coordinate": [
+            2701683.4,
+            1246980.9
+          ],
+          "bounds": [
+            2700182.8,
+            1245725.7,
+            2703184,
+            1248236.1
+          ],
+          "sourceFeatureId": 387589
+        },
+        "destinationDistanceMetres": 4480.65,
+        "destinationRoadDistanceMetres": 142.03,
+        "offsetSeparationMetres": -5162.8,
+        "bearingAgreement": -0.98,
+        "offsetMetres": 5162.8
+      },
+      {
+        "id": "ZH.CH:3091.02",
+        "description": "Normalspur Richtung Saland",
+        "alertCDirection": "positive",
+        "status": "destination-too-close",
+        "destination": {
+          "name": "Saland",
+          "coordinate": [
+            2706936.2,
+            1249627.1
+          ],
+          "bounds": [
+            2706017.4,
+            1248346.7,
+            2707855,
+            1250907.5
+          ],
+          "sourceFeatureId": 134407
+        },
+        "destinationDistanceMetres": 1401.93,
+        "destinationRoadDistanceMetres": 263.29,
+        "offsetSeparationMetres": 1374.96,
+        "bearingAgreement": 0.97,
+        "offsetMetres": 5162.8
+      }
+    ]
+  },
+  "destinationAlternatives": [
+    {
+      "detectorId": "ZH.CH:3091.01",
+      "originalStatus": "unresolved-destination",
+      "regionalResult": {
+        "status": "ambiguous-destination"
+      },
+      "alternatives": [
+        {
+          "status": "destination-off-axis",
+          "destination": {
+            "name": "Pfäffikon SZ",
+            "coordinate": [
+              2701617.6500000004,
+              1228478.7999999998
+            ],
+            "bounds": [
+              2699770.1,
+              1227534.2,
+              2703465.2,
+              1229423.4
+            ],
+            "sourceFeatureId": 226722
+          },
+          "destinationDistanceMetres": 20882.72,
+          "destinationRoadDistanceMetres": 18382.29,
+          "offsetSeparationMetres": -4746.69,
+          "bearingAgreement": -0.44,
+          "offsetMetres": 5162.8
+        },
+        {
+          "status": "validated",
+          "direction": "negative",
+          "destination": {
+            "name": "Pfäffikon ZH",
+            "coordinate": [
+              2701683.4,
+              1246980.9
+            ],
+            "bounds": [
+              2700182.8,
+              1245725.7,
+              2703184,
+              1248236.1
+            ],
+            "sourceFeatureId": 387589
+          },
+          "destinationDistanceMetres": 4480.65,
+          "destinationRoadDistanceMetres": 142.03,
+          "offsetSeparationMetres": -5162.8,
+          "bearingAgreement": -0.98,
+          "offsetMetres": 5162.8
+        }
+      ]
+    }
+  ],
+  "opposingLaneReview": {
+    "status": "rejected",
+    "reason": "Review requires a validated anchor and two opposing normal lanes"
+  },
+  "observations": {
+    "from": "ZH.CH:2992",
+    "to": "ZH.CH:3091",
+    "distanceMetres": 2479.21,
+    "completeMinutes": 227,
+    "longestRunMinutes": 104,
+    "hourWindows": [
+      {
+        "start": 51240,
+        "end": 57420,
+        "minutes": 104
+      }
+    ]
+  },
+  "requiredEvidence": "Obtain the station 3091 situation plan or an independently verified directional reference that binds detector 3091.02 to travel on ZH 337. A plan must identify the station, sensor/channel labels, direction arrows and geographic orientation; its date and detector crosswalk must be reviewed.",
+  "subsequentWork": "Complete an explicit Pfäffikon ZH/SZ destination review at both endpoints, then a pinned direction review and section/junction audit before compiling playback.",
+  "limitation": "The public point, destination labels, generic lane-numbering convention, AlertC signs and complete observations do not establish an independent surveyed direction. No station-specific plan was obtained; this is not evidence that none exists. No topology or playback is emitted."
+}

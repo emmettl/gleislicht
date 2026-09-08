@@ -39,7 +39,7 @@ The short-destination status can mean either less than **1,500 m** direct distan
 
 ## Next implementation work
 
-Hittnau is a focused next investigation: seek a detector-specific directional reference tied to counter 3091 and the official ZH 337 path, then complete the homonym review and section/junction audit. Its neighbouring 2992 counter already passes the optimistic geometric diagnostic. Do not infer 3091's direction from complete observations or from 2992 alone.
+The [Hittnau source follow-up](HITTNAU-ROAD-REVIEW.md) confirms 3091's public collector labels and precise station point, but obtains no station-specific direction plan. The canton handbook identifies the needed plan contents; its example belongs to another station. Hittnau remains excluded pending that independent directional reference, followed by the homonym review and section/junction audit. Do not infer 3091's direction from complete observations or from 2992 alone.
 
 A separate geometry investigation can establish which road counter 2988 actually measures before considering the 245-minute Uster–Seegräben section. The present unmatched status and 97.14 m nearest-axis distance are evidence of a missing binding, not evidence that the counter should be moved or that the candidate axis is correct.
 
