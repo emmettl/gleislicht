@@ -94,6 +94,7 @@ export type SwitzerlandTerrainCorridorId =
   | 'zurich-chur'
   | 'kiental-griesalp'
   | 'vitznau-rigi'
+  | 'arth-goldau-rigi'
 
 export type SwitzerlandEdition = MotionStudyEdition<
   SwitzerlandDataCatalog<
@@ -152,6 +153,7 @@ export const SWITZERLAND_EDITION: SwitzerlandEdition = {
     },
     corridors: {
       'vitznau-rigi': 'vitznau-rigi-corridor.json',
+      'arth-goldau-rigi': 'arth-goldau-rigi-corridor.json',
       'zurich-chur': 'zurich-chur-corridor.json',
       'kiental-griesalp': 'kiental-griesalp-corridor.json',
     },

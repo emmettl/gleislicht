@@ -6,7 +6,7 @@ import { networkWithRailVisibility } from './studies/network-layers.ts'
 import { COGWHEEL_ROUTE_COLORS, cogwheelNetwork } from './studies/cogwheel.ts'
 import { useCogwheelCatalogue } from './studies/use-cogwheel-catalogue.ts'
 import { rigiOperator } from './studies/rigi.ts'
-import { RIGI_TERRAIN_COPY } from './studies/rigi-terrain.ts'
+import { rigiTerrainCopy as terrainCopyForRigi } from './studies/rigi-terrain.ts'
 import { isHeadwayTrain, serviceFrequency, withFrequencyFerryPaths } from './studies/frequency.ts'
 import { airTrafficSummary } from './studies/air-traffic-summary.ts'
 import { postbusRouteIndex, postbusRouteSnapshot, postbusTickFollowsSeek, POSTBUS_YELLOW, POSTBUS_ROUTE_COLORS } from './studies/postbus.ts'
@@ -43,8 +43,11 @@ import type { CorridorSnapshot } from '@motionstudies/core/domain/corridor'
 import { positionOnJourney } from '@motionstudies/core/domain/journey'
 import {
   isKientalGriesalpTrain,
-  isVitznauRigiTrain,
-  RIGI_PENDING_JOURNEY,
+  rigiCorridorForTrain,
+  rigiPendingJourney,
+  isRigiCorridorId,
+  RIGI_ASCENTS,
+  type RigiCorridorId,
   isZurichChurTrain,
   journeyForSwissCorridor,
   SWITZERLAND_PROTOTYPE_JOURNEY,
@@ -399,8 +402,9 @@ export function App({ edition }: AppProps) {
   useEffect(() => { if (isRigi) void import('./studies/rigi-copy.ts').then(setRigiLocale) }, [isRigi])
   const rigiSelect = { en: 'Explore Lake Lucerne and Rigi', de: 'Vierwaldstättersee und Rigi entdecken', fr: 'Explorer le lac des Quatre-Cantons et le Rigi', it: 'Esplora il Lago dei Quattro Cantoni e il Rigi' }[language]
   const rigiCopy = rigiLocale?.RIGI_COPY[language] ?? { select: rigiSelect, title: 'Rigi', placeholder: rigiSelect, modes: '', loading: text.loading, unavailable: text.loading, water: '', cable: '' }
-  const rigiTerrainCopy = RIGI_TERRAIN_COPY[language]
-  const isRigiTerrain = journeyCorridorId === 'vitznau-rigi'
+  const isRigiTerrain = isRigiCorridorId(journeyCorridorId)
+  const rigiOrigin = isRigiTerrain ? RIGI_ASCENTS[journeyCorridorId].name : 'Vitznau'
+  const rigiTerrainCopy = terrainCopyForRigi(language, rigiOrigin)
   const isPostbus = networkStudy === 'postbus'
   const isContrast = networkStudy === 'contrast'
   const serviceColors = useMemo(() => isPostbus || isContrast ? { ...SERVICE_COLORS, bus: POSTBUS_YELLOW } : (isRigi || cogwheelEnabled && networkStudy === 'national' && view === 'network') ? { ...SERVICE_COLORS, other: '#fff3a6' } : SERVICE_COLORS, [isPostbus, isContrast, isRigi, cogwheelEnabled, networkStudy, view])
@@ -628,16 +632,17 @@ export function App({ edition }: AppProps) {
       selectedRoadId,
     ],
   )
+  const selectedRigiCorridor = rigiCorridorForTrain(selectedTrain, network)
   const corridorTrainSelected =
     isZurichChurTrain(selectedTrain, network) ||
     isKientalGriesalpTrain(selectedTrain, network) ||
-    isVitznauRigiTrain(selectedTrain, network)
+    Boolean(selectedRigiCorridor)
   const activeJourney = useMemo(
     () =>
       corridor
         ? journeyForSwissCorridor(corridor, selectedTrain, network)
-        : isRigiTerrain ? RIGI_PENDING_JOURNEY : SWITZERLAND_PROTOTYPE_JOURNEY,
-    [corridor, isRigiTerrain, network, selectedTrain],
+        : isRigiTerrain ? rigiPendingJourney(journeyCorridorId) : SWITZERLAND_PROTOTYPE_JOURNEY,
+    [corridor, isRigiTerrain, journeyCorridorId, network, selectedTrain],
   )
   const journeyPosition = useMemo(
     () => positionOnJourney(activeJourney, journeyProgress),
@@ -1130,7 +1135,7 @@ export function App({ edition }: AppProps) {
         progress: nextProgress,
         tunnel: 0,
         tunnelName: undefined,
-        region: nextCorridorId === 'kiental-griesalp' ? 'alpine' : nextCorridorId === 'vitznau-rigi' ? 'lake' : 'plateau',
+        region: nextCorridorId === 'kiental-griesalp' || nextCorridorId === 'arth-goldau-rigi' ? 'alpine' : nextCorridorId === 'vitznau-rigi' ? 'lake' : 'plateau',
       }))
       setCorridorError(false)
       setSearchOpen(false)
@@ -1146,11 +1151,11 @@ export function App({ edition }: AppProps) {
     }
     const nextCorridorId = isKientalGriesalpTrain(selectedTrain, network)
       ? 'kiental-griesalp'
-      : isVitznauRigiTrain(selectedTrain, network) ? 'vitznau-rigi' : 'zurich-chur'
+      : selectedRigiCorridor ?? 'zurich-chur'
     openTerrainCorridor(nextCorridorId, nextCorridorId === 'zurich-chur'
       ? swissCorridorProgressForTime(selectedTrain, network, networkTime)
       : 0.015)
-  }, [corridorTrainSelected, network, networkTime, openTerrainCorridor, selectedTrain])
+  }, [corridorTrainSelected, network, networkTime, openTerrainCorridor, selectedTrain, selectedRigiCorridor])
 
   const enterKientalCorridor = useCallback(() => {
     openTerrainCorridor('kiental-griesalp')
@@ -2149,7 +2154,7 @@ export function App({ edition }: AppProps) {
                 ? text.taktHubs
                 : journeyCorridorId === 'kiental-griesalp'
                   ? 'Kiental → Griesalp'
-                  : isRigiTerrain ? 'Vitznau → Rigi Kulm' : text.corridorSubtitle}
+                  : isRigiTerrain ? `${rigiOrigin} → Rigi Kulm` : text.corridorSubtitle}
           </h1>
         </div>
         <div className="masthead-meta">
@@ -2162,7 +2167,7 @@ export function App({ edition }: AppProps) {
                   ? studyDateLabel
                   : journeyCorridorId === 'kiental-griesalp'
                     ? '46.582° N · 7.730° E'
-                    : isRigiTerrain ? 'Vitznau · Rigi Kulm' : '47.194° N · 9.312° E'}
+                    : isRigiTerrain ? `${rigiOrigin} · Rigi Kulm` : '47.194° N · 9.312° E'}
               </span>
             </div>
             <nav className="language-picker" aria-label={text.languagePicker}>
@@ -2260,9 +2265,9 @@ export function App({ edition }: AppProps) {
             <span>220</span>
             <span className="journey-name">Kiental → Griesalp</span>
           </button>
-          <button type="button" aria-label={rigiTerrainCopy.enter} aria-pressed={isRigiTerrain} onClick={() => openTerrainCorridor('vitznau-rigi')}>
-            <span>RIGI</span><span className="journey-name">Vitznau → Rigi Kulm</span>
-          </button>
+          {Object.entries(RIGI_ASCENTS).map(([id, approach]) => <button key={id} type="button" aria-label={terrainCopyForRigi(language, approach.name).enter} aria-pressed={journeyCorridorId === id} onClick={() => openTerrainCorridor(id as RigiCorridorId)}>
+            <span>{approach.service}</span><span className="journey-name">{approach.name} → Rigi</span>
+          </button>)}
         </nav>
       )}
 
@@ -3005,8 +3010,8 @@ export function App({ edition }: AppProps) {
               type="button"
               data-tooltip={help.corridor} onClick={enterTerrainCorridor}
             >
-              <span aria-hidden="true">{isVitznauRigiTrain(selectedTrain, network) ? '↗' : '↘'}</span>
-              {isVitznauRigiTrain(selectedTrain, network) ? rigiTerrainCopy.enter : text.enterTerrain}
+              <span aria-hidden="true">{selectedRigiCorridor ? '↗' : '↘'}</span>
+              {selectedRigiCorridor ? terrainCopyForRigi(language, RIGI_ASCENTS[selectedRigiCorridor].name).enter : text.enterTerrain}
             </button>
           )}
         </section>
@@ -3295,7 +3300,7 @@ export function App({ edition }: AppProps) {
                   : text.scheduledRail}
               {hasHeadwayMotion && <> {frequencyCopy.mixed}</>}
           </p>
-          {isRigi && network && !regionalNetworkError && <button type="button" className="corridor-entry" onClick={() => openTerrainCorridor('vitznau-rigi')}>{rigiTerrainCopy.enter} ↗</button>}
+          {isRigi && network && !regionalNetworkError && Object.entries(RIGI_ASCENTS).map(([id, approach]) => <button key={id} type="button" className="corridor-entry" onClick={() => openTerrainCorridor(id as RigiCorridorId)}>{terrainCopyForRigi(language, approach.name).enter} ↗</button>)}
           <div className="metric-grid">
             <div>
               <span>{text.trips}</span>
@@ -3319,7 +3324,7 @@ export function App({ edition }: AppProps) {
         </section>
       ) : isRigiTerrain && !corridor ? (
         <section className="journey-card" aria-label={text.currentJourney} role="status">
-          <div className="service-row"><span className="service">RIGI</span><span>Vitznau → Rigi Kulm</span></div>
+          <div className="service-row"><span className="service">RIGI</span><span>{rigiOrigin} → Rigi Kulm</span></div>
           <p className="between">{corridorError ? rigiTerrainCopy.unavailable : text.loadingTerrain}</p>
         </section>
       ) : (
@@ -3419,7 +3424,7 @@ export function App({ edition }: AppProps) {
           </>
         ) : (
           <>
-            <span>{isRigiTerrain ? 'Vitznau → Rigi Kulm' : text.realTerrainRoute}</span>
+            <span>{isRigiTerrain ? `${rigiOrigin} → Rigi Kulm` : text.realTerrainRoute}</span>
             <span>
               {corridor
                 ? `${corridor.metadata.source} · ${corridor.metadata.releaseDate}`

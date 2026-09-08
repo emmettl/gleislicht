@@ -8,10 +8,21 @@ import {
 
 export type SwitzerlandCorridorVehicleKind = 'train' | 'bus' | 'cogwheel'
 
-export const RIGI_PENDING_JOURNEY: Journey = {
-  id: 'Vitznau–Rigi Kulm', service: 'RIGI', destination: 'Rigi Kulm',
-  operator: 'Rigi Bahnen AG', speedKmh: 0,
-  stops: [{ name: 'Vitznau', progress: 0, departure: '—' }, { name: 'Rigi Kulm', progress: 1, departure: '—' }],
+export const RIGI_ASCENTS = {
+  'vitznau-rigi': { origin: 'Vitznau', name: 'Vitznau', service: '82' },
+  'arth-goldau-rigi': { origin: 'Arth-Goldau RB', name: 'Arth-Goldau', service: '81' },
+} as const
+export type RigiCorridorId = keyof typeof RIGI_ASCENTS
+export function isRigiCorridorId(id: string | undefined): id is RigiCorridorId {
+  return id === 'vitznau-rigi' || id === 'arth-goldau-rigi'
+}
+export function rigiPendingJourney(id: RigiCorridorId): Journey {
+  const approach = RIGI_ASCENTS[id]
+  return {
+    id: `${approach.name}–Rigi Kulm`, service: approach.service, destination: 'Rigi Kulm',
+    operator: 'Rigi Bahnen AG', speedKmh: 0,
+    stops: [{ name: approach.origin, progress: 0, departure: '—' }, { name: 'Rigi Kulm', progress: 1, departure: '—' }],
+  }
 }
 
 export const SWITZERLAND_PROTOTYPE_JOURNEY: Journey = {
@@ -32,15 +43,22 @@ export const SWITZERLAND_PROTOTYPE_JOURNEY: Journey = {
 export function vehicleKindForSwissCorridor(
   corridor?: Pick<CorridorSnapshot, 'id'>,
 ): SwitzerlandCorridorVehicleKind {
-  return corridor?.id === 'kiental-griesalp' ? 'bus' : corridor?.id === 'vitznau-rigi' ? 'cogwheel' : 'train'
+  return corridor?.id === 'kiental-griesalp' ? 'bus' : isRigiCorridorId(corridor?.id) ? 'cogwheel' : 'train'
+}
+
+export function rigiCorridorForTrain(train: NetworkTrain | undefined, network: NetworkSnapshot | undefined): RigiCorridorId | undefined {
+  if (!train || !network) return undefined
+  const type = (train as NetworkTrain & { routeType?: number }).routeType
+  if (type !== undefined && type !== 116 || type === undefined && train.category !== 'other') return undefined
+  if (network.stops[train.stops.at(-1)?.[0] ?? -1]?.[2] !== 'Rigi Kulm') return undefined
+  const origin = network.stops[train.stops[0]?.[0] ?? -1]?.[2]
+  if (origin === RIGI_ASCENTS['vitznau-rigi'].origin) return 'vitznau-rigi'
+  if (origin === RIGI_ASCENTS['arth-goldau-rigi'].origin) return 'arth-goldau-rigi'
+  return undefined
 }
 
 export function isVitznauRigiTrain(train: NetworkTrain | undefined, network: NetworkSnapshot | undefined): boolean {
-  if (!train || !network) return false
-  const type = (train as NetworkTrain & { routeType?: number }).routeType
-  return (type === undefined || type === 116) &&
-    network.stops[train.stops[0]?.[0]]?.[2] === 'Vitznau' &&
-    network.stops[train.stops.at(-1)?.[0] ?? -1]?.[2] === 'Rigi Kulm'
+  return rigiCorridorForTrain(train, network) === 'vitznau-rigi'
 }
 
 export function isZurichChurTrain(
@@ -70,8 +88,8 @@ export function journeyForSwissCorridor(
   train?: NetworkTrain,
   network?: NetworkSnapshot,
 ): Journey {
-  const rigi = corridor.id === 'vitznau-rigi'
-  const matches = rigi ? isVitznauRigiTrain(train, network) : corridor.id === 'zurich-chur' && isZurichChurTrain(train, network)
+  const rigi = isRigiCorridorId(corridor.id)
+  const matches = rigi ? rigiCorridorForTrain(train, network) === corridor.id : corridor.id === 'zurich-chur' && isZurichChurTrain(train, network)
   if (!train || !network || !matches) {
     const first = corridor.route.stops[0]
     const last = corridor.route.stops.at(-1)!
@@ -91,7 +109,7 @@ export function journeyForSwissCorridor(
   }
 
   const names = train.stops.map(([stopIndex]) => network.stops[stopIndex]?.[2])
-  const fromIndex = names.indexOf(rigi ? 'Vitznau' : 'Zürich HB')
+  const fromIndex = names.indexOf(corridor.route.stops[0].name)
   const toIndex = names.indexOf(rigi ? 'Rigi Kulm' : 'Chur')
   const corridorProgress = new Map(
     corridor.route.stops.map((stop) => [stop.name, stop.progress]),

@@ -10,10 +10,17 @@ const hash = value => createHash('sha256').update(value).digest('hex')
 const distance = (a, b) => Math.hypot(a[0] - b[0], a[1] - b[1])
 const coordinate = p => wgs84ToLv95(p[0], p[1])
 
-export function rigiAscent(network) {
-  const train = network.trains.filter(t => t.routeType === 116 && network.stops[t.stops[0][0]][2] === 'Vitznau' && network.stops[t.stops.at(-1)[0]][2] === 'Rigi Kulm')
+const APPROACHES = {
+  'vitznau-rigi': { start: 'Vitznau', lakeIds: ['93'], margin: 1400, columns: 193 },
+  'arth-goldau-rigi': { start: 'Arth-Goldau RB', lakeIds: ['91'], margin: 1800, columns: 257 },
+}
+
+export function rigiAscent(network, id = 'vitznau-rigi') {
+  const approach = APPROACHES[id]
+  if (!approach) throw new Error(`Unsupported Rigi approach: ${id}`)
+  const train = network.trains.filter(t => t.routeType === 116 && network.stops[t.stops[0][0]][2] === approach.start && network.stops[t.stops.at(-1)[0]][2] === 'Rigi Kulm')
     .sort((a, b) => b.stops.length - a.stops.length || Math.abs(a.start - 43200) - Math.abs(b.start - 43200) || a.id.localeCompare(b.id))[0]
-  if (!train) throw new Error('No complete source-classified Vitznau–Rigi Kulm ascent')
+  if (!train) throw new Error(`No complete source-classified ${approach.start}–Rigi Kulm ascent`)
   const points = [], stopDistances = [0]
   let length = 0
   for (let i = 0; i < train.stops.length - 1; i++) {
@@ -82,8 +89,9 @@ function contains(point, ring) {
 
 async function main() {
   const networkBytes = await readFile(argument('network', 'public/data/rigi-day.json'))
-  const network = JSON.parse(networkBytes), route = rigiAscent(network)
-  const margin = 1400, xs = route.points.map(p => p[0]), ys = route.points.map(p => p[1])
+  const id = argument('approach', 'vitznau-rigi')
+  const network = JSON.parse(networkBytes), route = rigiAscent(network, id)
+  const margin = APPROACHES[id].margin, xs = route.points.map(p => p[0]), ys = route.points.map(p => p[1])
   const bounds = { minEasting: Math.floor((Math.min(...xs) - margin) / 100) * 100, maxEasting: Math.ceil((Math.max(...xs) + margin) / 100) * 100, minNorthing: Math.floor((Math.min(...ys) - margin) / 100) * 100, maxNorthing: Math.ceil((Math.max(...ys) + margin) / 100) * 100 }
   const stacFile = argument('stac'), cacheFile = argument('source-cache')
   const item = stacFile ? JSON.parse(await readFile(stacFile, 'utf8')) : await fetch(STAC).then(r => { if (!r.ok) throw new Error(`STAC returned ${r.status}`); return r.json() })
@@ -102,19 +110,24 @@ async function main() {
     raster = { bounds, origin, resolution, window, width: values.width, height: values.height, assetChecksum: asset['file:checksum'], values: [...values] }
     if (cacheFile) await writeFile(cacheFile, JSON.stringify(raster))
   }
-  const columns = 193, width = bounds.maxEasting - bounds.minEasting, depth = bounds.maxNorthing - bounds.minNorthing, rows = Math.round((columns - 1) * depth / width) + 1
+  const columns = APPROACHES[id].columns, width = bounds.maxEasting - bounds.minEasting, depth = bounds.maxNorthing - bounds.minNorthing, rows = Math.round((columns - 1) * depth / width) + 1
   const origin = { easting: (bounds.minEasting + bounds.maxEasting) / 2, northing: (bounds.minNorthing + bounds.maxNorthing) / 2 }
   const local = p => [Number((p[0] - origin.easting).toFixed(2)), Number((origin.northing - p[1]).toFixed(2))]
   const gridPoints = Array.from({ length: columns * rows }, (_, i) => [bounds.minEasting + (i % columns) * width / (columns - 1), bounds.maxNorthing - Math.floor(i / columns) * depth / (rows - 1)])
   const elevations = gridPoints.map(p => Math.round(sampleElevation(raster, ...p)))
   const lakeBytes = await readFile(argument('lakes', 'public/data/swiss-lakes.json'))
-  const water = JSON.parse(lakeBytes).lakes.find(l => l.id === '93')
-  const lakeRing = clipRingToBounds(water.polygons[0][0].map(coordinate), bounds)
-  const lakeHeights = gridPoints.flatMap((p, i) => contains(p, lakeRing) ? [elevations[i]] : []).sort((a, b) => a - b)
-  if (!lakeHeights.length) throw new Error('Expected lake context beside Vitznau')
+  const lakes = JSON.parse(lakeBytes).lakes.filter(l => APPROACHES[id].lakeIds.includes(l.id)).flatMap(water => water.polygons.flatMap(polygon => {
+    const rings = polygon.map(ring => clipRingToBounds(ring.map(coordinate), bounds))
+    if (rings[0].length < 3) return []
+    const holes = rings.slice(1).filter(ring => ring.length >= 3)
+    const lakeHeights = gridPoints.flatMap((p, i) => contains(p, rings[0]) && !holes.some(hole => contains(p, hole)) ? [elevations[i]] : []).sort((a, b) => a - b)
+    if (!lakeHeights.length) return []
+    return [{ id: water.id, name: water.name, elevation: lakeHeights[Math.floor(lakeHeights.length / 2)], rings: [rings[0], ...holes].map(ring => ring.map(local)) }]
+  }))
+  if (!lakes.length) throw new Error(`Expected lake context beside ${APPROACHES[id].start}`)
   const points = route.points.map(p => [...local(p), Number(sampleElevation(raster, ...p).toFixed(1))])
   const artifact = {
-    id: 'vitznau-rigi',
+    id,
     metadata: { source: 'swissALTIRegio', releaseDate: item.properties.datetime.slice(0, 10), sourceUrl: asset.href, productUrl: PRODUCT,
       attribution: 'Bundesamt für Landestopografie swisstopo; Tarquini S., I. Isola, M. Favalli, A. Battistini, G. Dotta (2023), TINITALY 1.1; DGM Österreich, geoland.at; DGM1, Bayerische Vermessungsverwaltung; DGM1, Baden-Württemberg: LGL, dl-de/by-2-0; RGEAlti, IGN France, July 2023',
       sourceCrs: 'EPSG:2056 / LN02', model: '10 m ground elevations sampled beneath FOT railway geometry; reduced terrain mesh; no surveyed track height, tunnels or cable profile', railSource: network.metadata,
@@ -122,9 +135,9 @@ async function main() {
       sourceEvidence: { assetChecksum: asset['file:checksum'], rasterSha256: hash(JSON.stringify(raster)), networkSha256: hash(networkBytes), lakeSha256: hash(lakeBytes), bounds, nativeResolutionMetres: 10, gridSpacingMetres: [width / (columns - 1), depth / (rows - 1)], routeMaximumSampleSpacingMetres: 20, routeSourceTripId: route.train.id, elevationMeaning: 'ground beneath alignment, not track survey', lakeSurfaceModel: 'median terrain sample within clipped cartographic lake' } },
     origin, terrain: { columns, rows, widthMetres: width, depthMetres: depth, minElevation: Math.min(...elevations), maxElevation: Math.max(...elevations), elevations },
     route: { service: route.train.route, destination: route.train.headsign, operator: route.train.operator, representativeTrain: route.train.shortName, distanceMetres: Math.round(route.length), points, stops: route.stops },
-    lakes: [{ id: '93', name: water.name, elevation: lakeHeights[Math.floor(lakeHeights.length / 2)], rings: [lakeRing.map(local)] }],
+    lakes,
   }
-  await writeFile(argument('output', 'public/data/vitznau-rigi-corridor.json'), JSON.stringify(artifact) + '\n')
+  await writeFile(argument('output', `public/data/${id}-corridor.json`), JSON.stringify(artifact) + '\n')
   console.log(`Wrote ${columns}×${rows} terrain, ${points.length} profile points, ${Math.round(route.length)} m route, ${points[0][2]}→${points.at(-1)[2]} m ground elevations`)
 }
 

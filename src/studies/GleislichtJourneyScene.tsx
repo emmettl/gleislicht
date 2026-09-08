@@ -4,6 +4,7 @@ import * as THREE from 'three'
 import type { CorridorSnapshot } from '@motionstudies/core/domain/corridor'
 import {
   vehicleKindForSwissCorridor,
+  isRigiCorridorId,
   type SwitzerlandCorridorVehicleKind,
 } from '../editions/switzerland-corridors.ts'
 
@@ -29,11 +30,11 @@ const HORIZONTAL_METRES_PER_UNIT = 1800
 const VERTICAL_METRES_PER_UNIT = 390
 
 function horizontalScale(corridor?: CorridorSnapshot) {
-  return corridor?.id === 'kiental-griesalp' || corridor?.id === 'vitznau-rigi' ? 650 : HORIZONTAL_METRES_PER_UNIT
+  return corridor?.id === 'kiental-griesalp' || isRigiCorridorId(corridor?.id) ? 650 : HORIZONTAL_METRES_PER_UNIT
 }
 
 function verticalScale(corridor: CorridorSnapshot) {
-  return corridor.id === 'vitznau-rigi' ? 650 : corridor.id === 'kiental-griesalp' ? 300 : VERTICAL_METRES_PER_UNIT
+  return isRigiCorridorId(corridor.id) ? 650 : corridor.id === 'kiental-griesalp' ? 300 : VERTICAL_METRES_PER_UNIT
 }
 
 const fallbackRouteCurve = new THREE.CatmullRomCurve3(
@@ -198,7 +199,7 @@ function MeasuredTerrain({ corridor }: { readonly corridor: CorridorSnapshot }) 
     next.computeVertexNormals()
     return next
   }, [corridor])
-  return <TerrainMeshes geometry={geometry} alpine={corridor.id === 'kiental-griesalp' || corridor.id === 'vitznau-rigi'} />
+  return <TerrainMeshes geometry={geometry} alpine={corridor.id === 'kiental-griesalp' || isRigiCorridorId(corridor.id)} />
 }
 
 function CorridorLakes({ corridor }: { readonly corridor: CorridorSnapshot }) {
@@ -406,7 +407,7 @@ function terrainOpennessProfile(
   curve: THREE.CatmullRomCurve3,
 ) {
   if (!corridor) return [0.7]
-  const radius = corridor.id === 'kiental-griesalp' || corridor.id === 'vitznau-rigi' ? 420 : 900
+  const radius = corridor.id === 'kiental-griesalp' || isRigiCorridorId(corridor.id) ? 420 : 900
   const scale = horizontalScale(corridor)
   return Array.from({ length: 129 }, (_, index) => {
     const point = curve.getPointAt(index / 128)
@@ -427,6 +428,7 @@ function terrainOpennessProfile(
 }
 
 function routeRegion(corridor: CorridorSnapshot | undefined, progress: number) {
+  if (corridor?.id === 'arth-goldau-rigi') return 'alpine'
   if (corridor?.id === 'vitznau-rigi') return progress < 0.2 ? 'lake' : 'alpine'
   if (corridor?.id === 'kiental-griesalp' || progress > 0.72) return 'alpine'
   if (progress >= 0.28) return 'lake'
@@ -705,7 +707,7 @@ function MovingWorld({
   const localProgress = useRef(progress)
   const lastReport = useRef(0)
   const { camera } = useThree()
-  const alpine = corridor?.id === 'kiental-griesalp' || corridor?.id === 'vitznau-rigi'
+  const alpine = corridor?.id === 'kiental-griesalp' || isRigiCorridorId(corridor?.id)
   const vehicleKind = vehicleKindForSwissCorridor(corridor)
   const routeCurve = useMemo(() => routeCurveFor(corridor), [corridor])
   const rail = useMemo(
@@ -818,7 +820,7 @@ function MovingWorld({
     side.crossVectors(smoothedDirection, up).normalize()
     const cameraStyle = !corridor
       ? { behind: 2.15, height: 2.8, ahead: 5, sweep: 0.22 }
-      : corridor.id === 'vitznau-rigi'
+      : isRigiCorridorId(corridor.id)
       ? { behind: 2, height: 1.4, ahead: 0.5, sweep: 0.28 }
       : alpine
       ? { behind: 1.35, height: 1.15, ahead: 1.15, sweep: 0.24 }

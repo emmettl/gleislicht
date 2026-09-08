@@ -2,10 +2,16 @@ import { useMemo } from 'react'
 import './rigi-terrain-profile.css'
 import type { CorridorSnapshot } from '@motionstudies/core/domain/corridor'
 import type { UiLanguage } from '../i18n.ts'
-import { RIGI_TERRAIN_COPY } from './rigi-terrain.ts'
+const PROFILE_COPY: Record<UiLanguage, { ground: string; rise: string; profile: string; model: string }> = {
+  en: { ground: 'Ground elevation', rise: 'Rise from {origin}', profile: 'Ground profile beneath the railway', model: 'Scenic playback · ground beneath mapped rail · stylised train · no track-height or tunnel survey' },
+  de: { ground: 'Geländehöhe', rise: 'Anstieg ab {origin}', profile: 'Geländeprofil unter der Bahntrasse', model: 'Szenische Wiedergabe · Gelände unter kartierter Trasse · stilisierter Zug · keine Gleishöhen- oder Tunnelvermessung' },
+  fr: { ground: 'Altitude du terrain', rise: 'Montée depuis {origin}', profile: 'Profil du terrain sous la voie', model: 'Animation panoramique · terrain sous le tracé cartographié · train stylisé · sans relevé des voies ni des tunnels' },
+  it: { ground: 'Quota del terreno', rise: 'Salita da {origin}', profile: 'Profilo del terreno sotto la ferrovia', model: 'Animazione panoramica · terreno sotto il tracciato cartografato · treno stilizzato · nessun rilievo di binari o gallerie' },
+}
 
 export default function RigiTerrainProfile({ corridor, progress, language }: { corridor: CorridorSnapshot; progress: number; language: UiLanguage }) {
-  const copy = RIGI_TERRAIN_COPY[language]
+  const copy = PROFILE_COPY[language]
+  const origin = corridor.route.stops[0].name.replace(/ RB$/, '')
   const profile = useMemo(() => {
     const points = corridor.route.points
     const samples = points.reduce<{ distance: number; elevation: number }[]>((result, p, i) => {
@@ -27,7 +33,7 @@ export default function RigiTerrainProfile({ corridor, progress, language }: { c
   return <div className="rigi-terrain-profile">
     <div className="metric-grid">
       <div><span>{copy.ground}</span><strong>{Math.round(elevation)}</strong><small>m · LN02</small></div>
-      <div><span>{copy.rise}</span><strong>{Math.round(elevation - profile.samples[0].elevation)}</strong><small>m</small></div>
+      <div><span>{copy.rise.replace('{origin}', origin)}</span><strong>{Math.round(elevation - profile.samples[0].elevation)}</strong><small>m</small></div>
     </div>
     <svg viewBox="0 0 260 60" role="img" aria-label={copy.profile} style={{ display: 'block', width: '100%', height: 52, marginTop: 12 }}>
       <polyline points={profile.samples.map(s => `${4 + 252 * s.distance / profile.length},${y(s.elevation)}`).join(' ')} fill="none" stroke="#fff3a6" strokeWidth="1.5" />
