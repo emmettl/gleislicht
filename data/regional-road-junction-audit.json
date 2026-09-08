@@ -1,0 +1,4289 @@
+{
+  "metadata": {
+    "schemaVersion": 1,
+    "directionAuditSha256": "fc3172bc4bff9ad99a4573dd11d7fb242f079063cda0cb4a350f4ef3ba940670",
+    "reviewSha256": "b20542148467793a4b76b9e268a847f98c89213612b89afb8806c00604ec0609",
+    "sourceManifestSha256": "ba19df1d1c243acf451ac58a49137eb7cd0a00d5f93671f7fd8ad26e6eea9292",
+    "sourceManifest": "data/regional-road-junction-sources/2026-09-08/manifest.json",
+    "publisher": "Federal Office of Topography swisstopo",
+    "scope": "Bounded intervening-junction review; no speed or turning-flow inference."
+  },
+  "reviewed": [
+    {
+      "pathId": "thurgau:1626:1",
+      "fromStationId": "thurgau:61103",
+      "toStationId": "thurgau:61101",
+      "sourceId": "thurgau-seestrasse-dorfstrasse",
+      "cycleFeatureIds": [
+        47060270,
+        47060271,
+        47060272
+      ],
+      "branchFeatureId": 46950761,
+      "branchName": "Dorfstrasse",
+      "status": "intervening-roundabout",
+      "note": "The three curved source features form a closed loop between the counters; Dorfstrasse joins at its southern node. Turning flows are unmeasured. Geometric review does not infer legal movements.",
+      "junctionCoordinateLv95": [
+        2733891.2,
+        1277517
+      ],
+      "junctionOffsetMetres": 4808.11,
+      "playbackEligible": false
+    }
+  ],
+  "corridors": [
+    {
+      "pathId": "basel:2764:0",
+      "fromStationId": "basel:516",
+      "toStationId": "basel:415",
+      "distanceMetres": 165.18,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "basel:516:nach%20St.%20Jakobstrasse:name%3ASpur%201"
+      ],
+      "toDetectorIds": [
+        "basel:00000415:1%20von%20Bahnhof%20SBB%20%20%281%2B2%20FS%29:code%3A1",
+        "basel:00000415:1%20von%20Bahnhof%20SBB%20%20%281%2B2%20FS%29:code%3A2",
+        "basel:00000415:2%20nach%20Bahnhof%20SBB:code%3A3"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "basel:4421:0",
+      "fromStationId": "basel:504",
+      "toStationId": "basel:505",
+      "distanceMetres": 0.12,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "basel:504:nach%20SBB:name%3ASpur%201"
+      ],
+      "toDetectorIds": [
+        "basel:505:von%20SBB:name%3ASpur%201"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "basel:7463:0",
+      "fromStationId": "basel:504",
+      "toStationId": "basel:505",
+      "distanceMetres": 8.03,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "basel:504:nach%20SBB:name%3ASpur%201"
+      ],
+      "toDetectorIds": [
+        "basel:505:von%20SBB:name%3ASpur%201"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1487:3",
+      "fromStationId": "thurgau:2903",
+      "toStationId": "thurgau:2901",
+      "distanceMetres": 0.87,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:2903:vom%20Marktplatz:1",
+        "thurgau:2903:zum%20Marktplatz:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:2901:nach%20Weinfelden:1",
+        "thurgau:2901:von%20Weinfelden:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1487:3",
+      "fromStationId": "thurgau:2901",
+      "toStationId": "thurgau:2904",
+      "distanceMetres": 33.02,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:2901:nach%20Weinfelden:1",
+        "thurgau:2901:von%20Weinfelden:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:2904:nach%20Hagenwil:1",
+        "thurgau:2904:von%20Hagenwil:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1489:0",
+      "fromStationId": "thurgau:9202",
+      "toStationId": "thurgau:9203",
+      "distanceMetres": 20.57,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:9202:von%20Zoll:1",
+        "thurgau:9202:zum%20Zoll:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:9203:nach%20Kreuzlingen:1",
+        "thurgau:9203:von%20Kreuzlingen:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1489:0",
+      "fromStationId": "thurgau:9203",
+      "toStationId": "thurgau:40901",
+      "distanceMetres": 3927.44,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:9203:nach%20Kreuzlingen:1",
+        "thurgau:9203:von%20Kreuzlingen:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:40901:vom%20Sonnenplatz:1",
+        "thurgau:40901:zum%20Sonnenplatz:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1489:0",
+      "fromStationId": "thurgau:40901",
+      "toStationId": "thurgau:40902",
+      "distanceMetres": 40.2,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:40901:vom%20Sonnenplatz:1",
+        "thurgau:40901:zum%20Sonnenplatz:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:40902:vom%20B%C3%A4renplatz:1",
+        "thurgau:40902:zum%20B%C3%A4renplatz:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1489:0",
+      "fromStationId": "thurgau:40902",
+      "toStationId": "thurgau:40903",
+      "distanceMetres": 29.89,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:40902:vom%20B%C3%A4renplatz:1",
+        "thurgau:40902:zum%20B%C3%A4renplatz:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:40903:nach%20Romanshorn:1",
+        "thurgau:40903:von%20Romanshorn:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1489:0",
+      "fromStationId": "thurgau:40903",
+      "toStationId": "thurgau:72203",
+      "distanceMetres": 662.51,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:40903:nach%20Romanshorn:1",
+        "thurgau:40903:von%20Romanshorn:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:72203:vom%20Sonnenplatz:1",
+        "thurgau:72203:zum%20Sonnenplatz:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1489:0",
+      "fromStationId": "thurgau:72203",
+      "toStationId": "thurgau:72204",
+      "distanceMetres": 31.18,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:72203:vom%20Sonnenplatz:1",
+        "thurgau:72203:zum%20Sonnenplatz:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:72204:vom%20L%C3%B6wenplatz:1",
+        "thurgau:72204:zum%20L%C3%B6wenplatz:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1489:0",
+      "fromStationId": "thurgau:72204",
+      "toStationId": "thurgau:72202",
+      "distanceMetres": 40.22,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:72204:vom%20L%C3%B6wenplatz:1",
+        "thurgau:72204:zum%20L%C3%B6wenplatz:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:72202:nach%20Kurzrickenbach:1",
+        "thurgau:72202:von%20Kurzrickenbach:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1489:0",
+      "fromStationId": "thurgau:72202",
+      "toStationId": "thurgau:72804",
+      "distanceMetres": 1355.03,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:72202:nach%20Kurzrickenbach:1",
+        "thurgau:72202:von%20Kurzrickenbach:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:72804:nach%20Kurzrickenbach:1",
+        "thurgau:72804:von%20Kurzrickenbach:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1489:0",
+      "fromStationId": "thurgau:72804",
+      "toStationId": "thurgau:72803",
+      "distanceMetres": 31.63,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:72804:nach%20Kurzrickenbach:1",
+        "thurgau:72804:von%20Kurzrickenbach:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:72803:von%20Leubernstrasse:1",
+        "thurgau:72803:zur%20Leubernstrasse:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1495:0",
+      "fromStationId": "thurgau:41004",
+      "toStationId": "thurgau:41002",
+      "distanceMetres": 43.08,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:41004:Altnau:1",
+        "thurgau:41004:Kreisel:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:41002:Bahnhof:1",
+        "thurgau:41002:Kreisel:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1498:0",
+      "fromStationId": "thurgau:41204",
+      "toStationId": "thurgau:41201",
+      "distanceMetres": 24.17,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:41204:nach%20Kreuzlingen:1",
+        "thurgau:41204:von%20Kreuzlingen:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:41201:nach%20Oberhofen:1",
+        "thurgau:41201:von%20Oberhofen:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1498:0",
+      "fromStationId": "thurgau:41201",
+      "toStationId": "thurgau:41203",
+      "distanceMetres": 0.55,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:41201:nach%20Oberhofen:1",
+        "thurgau:41201:von%20Oberhofen:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:41203:nach%20Alterswilen:1",
+        "thurgau:41203:von%20Alterswilen:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1498:0",
+      "fromStationId": "thurgau:41203",
+      "toStationId": "thurgau:41202",
+      "distanceMetres": 21.63,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:41203:nach%20Alterswilen:1",
+        "thurgau:41203:von%20Alterswilen:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:41202:nach%20Berg:1",
+        "thurgau:41202:von%20Berg:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1498:0",
+      "fromStationId": "thurgau:41202",
+      "toStationId": "thurgau:50",
+      "distanceMetres": 2909.38,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:41202:nach%20Berg:1",
+        "thurgau:41202:von%20Berg:1"
+      ],
+      "toDetectorIds": [
+        "thurgau-classes:50:nach%20Berg:1",
+        "thurgau-classes:50:nach%20Kreuzlingen:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "different-measurement-bases",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1498:0",
+      "fromStationId": "thurgau:50",
+      "toStationId": "thurgau:32204",
+      "distanceMetres": 4926.56,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau-classes:50:nach%20Berg:1",
+        "thurgau-classes:50:nach%20Kreuzlingen:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:32204:nach%20Berg:1",
+        "thurgau:32204:von%20Berg:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "different-measurement-bases",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1498:0",
+      "fromStationId": "thurgau:32204",
+      "toStationId": "thurgau:32203",
+      "distanceMetres": 23.82,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:32204:nach%20Berg:1",
+        "thurgau:32204:von%20Berg:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:32203:nach%20Buerglen:1",
+        "thurgau:32203:von%20Buerglen:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1498:0",
+      "fromStationId": "thurgau:32203",
+      "toStationId": "thurgau:32201",
+      "distanceMetres": 28.09,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:32203:nach%20Buerglen:1",
+        "thurgau:32203:von%20Buerglen:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:32201:nach%20Amriswil:1",
+        "thurgau:32201:von%20Amriswil:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1498:0",
+      "fromStationId": "thurgau:32201",
+      "toStationId": "thurgau:32202",
+      "distanceMetres": 29.75,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:32201:nach%20Amriswil:1",
+        "thurgau:32201:von%20Amriswil:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:32202:nach%20Sulgen%20Zentrum:1",
+        "thurgau:32202:von%20Sulgen%20Zentrum:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1498:0",
+      "fromStationId": "thurgau:32202",
+      "toStationId": "thurgau:30",
+      "distanceMetres": 6412.6,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:32202:nach%20Sulgen%20Zentrum:1",
+        "thurgau:32202:von%20Sulgen%20Zentrum:1"
+      ],
+      "toDetectorIds": [
+        "thurgau-classes:30:nach%20Bischofszell:1",
+        "thurgau-classes:30:nach%20Kradolf:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "different-measurement-bases",
+        "counter-gap",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1498:0",
+      "fromStationId": "thurgau:30",
+      "toStationId": "thurgau:40402",
+      "distanceMetres": 1451.47,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau-classes:30:nach%20Bischofszell:1",
+        "thurgau-classes:30:nach%20Kradolf:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:40402:Kreisel:1",
+        "thurgau:40402:Sulgen:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "different-measurement-bases",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1498:0",
+      "fromStationId": "thurgau:40402",
+      "toStationId": "thurgau:40401",
+      "distanceMetres": 60.09,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:40402:Kreisel:1",
+        "thurgau:40402:Sulgen:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:40401:Kreisel:1",
+        "thurgau:40401:Stadt:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1498:0",
+      "fromStationId": "thurgau:40401",
+      "toStationId": "thurgau:12303",
+      "distanceMetres": 676.88,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:40401:Kreisel:1",
+        "thurgau:40401:Stadt:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:12303:nach%20Sulgen:1",
+        "thurgau:12303:von%20Sulgen:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1498:0",
+      "fromStationId": "thurgau:12303",
+      "toStationId": "thurgau:12302",
+      "distanceMetres": 21.2,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:12303:nach%20Sulgen:1",
+        "thurgau:12303:von%20Sulgen:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:12302:nach%20Niederbueren:1",
+        "thurgau:12302:von%20Niederbueren:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1498:0",
+      "fromStationId": "thurgau:12302",
+      "toStationId": "thurgau:12301",
+      "distanceMetres": 27.22,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:12302:nach%20Niederbueren:1",
+        "thurgau:12302:von%20Niederbueren:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:12301:nach%20Hauptwil:1",
+        "thurgau:12301:von%20Hauptwil:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1499:0",
+      "fromStationId": "thurgau:734",
+      "toStationId": "thurgau:73502",
+      "distanceMetres": 0,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:734:Bypass:1",
+        "thurgau:734:Kreisel:1"
+      ],
+      "toDetectorIds": [
+        "thurgau-classes:73502:von%20Umfahrung:1",
+        "thurgau-classes:73502:zur%20Umfahrung:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "different-measurement-bases",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1499:0",
+      "fromStationId": "thurgau:73502",
+      "toStationId": "thurgau:73503",
+      "distanceMetres": 0,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau-classes:73502:von%20Umfahrung:1",
+        "thurgau-classes:73502:zur%20Umfahrung:1"
+      ],
+      "toDetectorIds": [
+        "thurgau-classes:73503:nach%20Maerstetten:1",
+        "thurgau-classes:73503:von%20Maerstetten:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1499:0",
+      "fromStationId": "thurgau:73503",
+      "toStationId": "thurgau:73504",
+      "distanceMetres": 32.37,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau-classes:73503:nach%20Maerstetten:1",
+        "thurgau-classes:73503:von%20Maerstetten:1"
+      ],
+      "toDetectorIds": [
+        "thurgau-classes:73504:von%20Egelseestrasse:1",
+        "thurgau-classes:73504:zur%20Egelseestrasse:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1499:0",
+      "fromStationId": "thurgau:73504",
+      "toStationId": "thurgau:73501",
+      "distanceMetres": 22.02,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau-classes:73504:von%20Egelseestrasse:1",
+        "thurgau-classes:73504:zur%20Egelseestrasse:1"
+      ],
+      "toDetectorIds": [
+        "thurgau-classes:73501:nach%20Weinfelden:1",
+        "thurgau-classes:73501:von%20Weinfelden:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1499:0",
+      "fromStationId": "thurgau:73501",
+      "toStationId": "thurgau:73701",
+      "distanceMetres": 1022.63,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau-classes:73501:nach%20Weinfelden:1",
+        "thurgau-classes:73501:von%20Weinfelden:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:73701:von%20Bahnhofstrasse:1",
+        "thurgau:73701:zur%20Bahnhofstrasse:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "incomplete-measured-days",
+        "different-measurement-bases",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1499:0",
+      "fromStationId": "thurgau:73701",
+      "toStationId": "thurgau:73702",
+      "distanceMetres": 46.27,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:73701:von%20Bahnhofstrasse:1",
+        "thurgau:73701:zur%20Bahnhofstrasse:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:73702:von%20Wilerstrasse:1",
+        "thurgau:73702:zur%20Wilerstrasse:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "incomplete-measured-days",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1499:0",
+      "fromStationId": "thurgau:73702",
+      "toStationId": "thurgau:73703",
+      "distanceMetres": 28.38,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:73702:von%20Wilerstrasse:1",
+        "thurgau:73702:zur%20Wilerstrasse:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:73703:von%20Freiestrasse:1",
+        "thurgau:73703:zur%20Freiestrasse:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "incomplete-measured-days",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1502:0",
+      "fromStationId": "thurgau:51102",
+      "toStationId": "thurgau:41603",
+      "distanceMetres": 959.44,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau-classes:51102:von%20Marktstrasse:1",
+        "thurgau-classes:51102:zur%20Marktstrasse:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:41603:vom%20Zentrum:1",
+        "thurgau:41603:zum%20Zentrum:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "different-measurement-bases",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1502:0",
+      "fromStationId": "thurgau:41603",
+      "toStationId": "thurgau:41604",
+      "distanceMetres": 31.66,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:41603:vom%20Zentrum:1",
+        "thurgau:41603:zum%20Zentrum:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:41604:vom%20Spital:1",
+        "thurgau:41604:zum%20Spital:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1502:0",
+      "fromStationId": "thurgau:41604",
+      "toStationId": "thurgau:41602",
+      "distanceMetres": 11.48,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:41604:vom%20Spital:1",
+        "thurgau:41604:zum%20Spital:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:41602:nach%20Talstrasse:1",
+        "thurgau:41602:von%20Talstrasse:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1502:0",
+      "fromStationId": "thurgau:41602",
+      "toStationId": "thurgau:41601",
+      "distanceMetres": 25.4,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:41602:nach%20Talstrasse:1",
+        "thurgau:41602:von%20Talstrasse:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:41601:nach%20Huben:1",
+        "thurgau:41601:von%20Huben:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1505:0",
+      "fromStationId": "thurgau:41203",
+      "toStationId": "thurgau:41202",
+      "distanceMetres": 21.57,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:41203:nach%20Alterswilen:1",
+        "thurgau:41203:von%20Alterswilen:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:41202:nach%20Berg:1",
+        "thurgau:41202:von%20Berg:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1505:0",
+      "fromStationId": "thurgau:41202",
+      "toStationId": "thurgau:41204",
+      "distanceMetres": 13.4,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:41202:nach%20Berg:1",
+        "thurgau:41202:von%20Berg:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:41204:nach%20Kreuzlingen:1",
+        "thurgau:41204:von%20Kreuzlingen:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1505:0",
+      "fromStationId": "thurgau:41204",
+      "toStationId": "thurgau:41201",
+      "distanceMetres": 15.85,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:41204:nach%20Kreuzlingen:1",
+        "thurgau:41204:von%20Kreuzlingen:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:41201:nach%20Oberhofen:1",
+        "thurgau:41201:von%20Oberhofen:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1514:0",
+      "fromStationId": "thurgau:73702",
+      "toStationId": "thurgau:73703",
+      "distanceMetres": 10.26,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:73702:von%20Wilerstrasse:1",
+        "thurgau:73702:zur%20Wilerstrasse:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:73703:von%20Freiestrasse:1",
+        "thurgau:73703:zur%20Freiestrasse:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "incomplete-measured-days",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1514:0",
+      "fromStationId": "thurgau:73703",
+      "toStationId": "thurgau:42401",
+      "distanceMetres": 406.29,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:73703:von%20Freiestrasse:1",
+        "thurgau:73703:zur%20Freiestrasse:1"
+      ],
+      "toDetectorIds": [
+        "thurgau-classes:42401:vom%20Zentrum:1",
+        "thurgau-classes:42401:zum%20Zentrum:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "incomplete-measured-days",
+        "different-measurement-bases",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1514:0",
+      "fromStationId": "thurgau:42401",
+      "toStationId": "thurgau:42404",
+      "distanceMetres": 21.15,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau-classes:42401:vom%20Zentrum:1",
+        "thurgau-classes:42401:zum%20Zentrum:1"
+      ],
+      "toDetectorIds": [
+        "thurgau-classes:42404:nach%20Frauenfeld:1",
+        "thurgau-classes:42404:von%20Frauenfeld:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1514:0",
+      "fromStationId": "thurgau:42404",
+      "toStationId": "thurgau:42402",
+      "distanceMetres": 13.63,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau-classes:42404:nach%20Frauenfeld:1",
+        "thurgau-classes:42404:von%20Frauenfeld:1"
+      ],
+      "toDetectorIds": [
+        "thurgau-classes:42402:nach%20Buerglen:1",
+        "thurgau-classes:42402:von%20Buerglen:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1514:0",
+      "fromStationId": "thurgau:42402",
+      "toStationId": "thurgau:42403",
+      "distanceMetres": 23.06,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau-classes:42402:nach%20Buerglen:1",
+        "thurgau-classes:42402:von%20Buerglen:1"
+      ],
+      "toDetectorIds": [
+        "thurgau-classes:42403:nach%20Rothenhausen:1",
+        "thurgau-classes:42403:von%20Rothenhausen:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1527:0",
+      "fromStationId": "thurgau:8601",
+      "toStationId": "thurgau:8602",
+      "distanceMetres": 41.93,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:8601:nach%20Islikon:1",
+        "thurgau:8601:von%20Islikon:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:8602:von%20Weststrasse%20A7:1",
+        "thurgau:8602:zur%20Weststrasse%20A7:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1527:0",
+      "fromStationId": "thurgau:8602",
+      "toStationId": "thurgau:8603",
+      "distanceMetres": 41.48,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:8602:von%20Weststrasse%20A7:1",
+        "thurgau:8602:zur%20Weststrasse%20A7:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:8603:nach%20Frauenfeld:1",
+        "thurgau:8603:von%20Frauenfeld:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1527:0",
+      "fromStationId": "thurgau:8603",
+      "toStationId": "thurgau:33003",
+      "distanceMetres": 2021.7,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:8603:nach%20Frauenfeld:1",
+        "thurgau:8603:von%20Frauenfeld:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:33003:von%20Zuercherstrasse:1",
+        "thurgau:33003:zur%20Zuercherstrasse:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1527:0",
+      "fromStationId": "thurgau:33003",
+      "toStationId": "thurgau:33001",
+      "distanceMetres": 25.04,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:33003:von%20Zuercherstrasse:1",
+        "thurgau:33003:zur%20Zuercherstrasse:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:33001:von%20Rheinstrasse:1",
+        "thurgau:33001:zur%20Rheinstrasse:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1527:0",
+      "fromStationId": "thurgau:33001",
+      "toStationId": "thurgau:33002",
+      "distanceMetres": 34.95,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:33001:von%20Rheinstrasse:1",
+        "thurgau:33001:zur%20Rheinstrasse:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:33002:von%20St.%20Gallerstrasse:1",
+        "thurgau:33002:zur%20St.%20Gallerstrasse:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1527:1",
+      "fromStationId": "thurgau:53403",
+      "toStationId": "thurgau:53401",
+      "distanceMetres": 144.57,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau-classes:53403:von%20A7:1",
+        "thurgau-classes:53403:zur%20A7:1"
+      ],
+      "toDetectorIds": [
+        "thurgau-classes:53401:von%20Bernrainstrasse:1",
+        "thurgau-classes:53401:zur%20Bernrainstrasse:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1527:1",
+      "fromStationId": "thurgau:53401",
+      "toStationId": "thurgau:902",
+      "distanceMetres": 2869.2,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau-classes:53401:von%20Bernrainstrasse:1",
+        "thurgau-classes:53401:zur%20Bernrainstrasse:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:902:Deutschland:1",
+        "thurgau:902:Schweiz:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "different-measurement-bases",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1527:2",
+      "fromStationId": "thurgau:8901",
+      "toStationId": "thurgau:2101",
+      "distanceMetres": 7887.83,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:8901:nach%20Muellheim:1",
+        "thurgau:8901:von%20Muellheim:1"
+      ],
+      "toDetectorIds": [
+        "thurgau-classes:2101:nach%20Muellheim:1",
+        "thurgau-classes:2101:von%20Muellheim:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "different-measurement-bases",
+        "counter-gap",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1527:2",
+      "fromStationId": "thurgau:2101",
+      "toStationId": "thurgau:2102",
+      "distanceMetres": 26.4,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau-classes:2101:nach%20Muellheim:1",
+        "thurgau-classes:2101:von%20Muellheim:1"
+      ],
+      "toDetectorIds": [
+        "thurgau-classes:2102:nach%20Taegerwilen:1",
+        "thurgau-classes:2102:von%20Taegerwilen:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1527:2",
+      "fromStationId": "thurgau:2102",
+      "toStationId": "thurgau:2103",
+      "distanceMetres": 31.5,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau-classes:2102:nach%20Taegerwilen:1",
+        "thurgau-classes:2102:von%20Taegerwilen:1"
+      ],
+      "toDetectorIds": [
+        "thurgau-classes:2103:nach%20Kreuzlingen:1",
+        "thurgau-classes:2103:von%20Kreuzlingen:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1527:3",
+      "fromStationId": "thurgau:42501",
+      "toStationId": "thurgau:2001",
+      "distanceMetres": 4812.89,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:42501:nach%20Felben:1",
+        "thurgau:42501:von%20Felben:1",
+        "thurgau:42501:von%20Felben:2"
+      ],
+      "toDetectorIds": [
+        "thurgau-classes:2001:nach%20Felben:1",
+        "thurgau-classes:2001:nach%20M%C3%BCllheim:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "different-measurement-bases",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1527:3",
+      "fromStationId": "thurgau:2001",
+      "toStationId": "thurgau:8903",
+      "distanceMetres": 3411.14,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau-classes:2001:nach%20Felben:1",
+        "thurgau-classes:2001:nach%20M%C3%BCllheim:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:8903:nach%20Pfyn:1",
+        "thurgau:8903:von%20Pfyn:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "different-measurement-bases",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1527:3",
+      "fromStationId": "thurgau:8903",
+      "toStationId": "thurgau:8901",
+      "distanceMetres": 1.1,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:8903:nach%20Pfyn:1",
+        "thurgau:8903:von%20Pfyn:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:8901:nach%20Muellheim:1",
+        "thurgau:8901:von%20Muellheim:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1527:3",
+      "fromStationId": "thurgau:8901",
+      "toStationId": "thurgau:8902",
+      "distanceMetres": 0,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:8901:nach%20Muellheim:1",
+        "thurgau:8901:von%20Muellheim:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:8902:von%20A7:1",
+        "thurgau:8902:zur%20A7:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1527:3",
+      "fromStationId": "thurgau:8902",
+      "toStationId": "thurgau:8904",
+      "distanceMetres": 0,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:8902:von%20A7:1",
+        "thurgau:8902:zur%20A7:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:8904:von%20Gashausstrasse:1",
+        "thurgau:8904:zur%20Gashausstrasse:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1531:0",
+      "fromStationId": "thurgau:72204",
+      "toStationId": "thurgau:72201",
+      "distanceMetres": 24.53,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:72204:vom%20L%C3%B6wenplatz:1",
+        "thurgau:72204:zum%20L%C3%B6wenplatz:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:72201:von%20Paulistrasse:1",
+        "thurgau:72201:zur%20Paulistrasse:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1542:0",
+      "fromStationId": "thurgau:31",
+      "toStationId": "thurgau:62503",
+      "distanceMetres": 4927.76,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau-classes:31:nach%20Buerglen:1",
+        "thurgau-classes:31:nach%20Wil:1"
+      ],
+      "toDetectorIds": [
+        "thurgau-classes:62503:nach%20Wil:1",
+        "thurgau-classes:62503:von%20Wil:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1542:0",
+      "fromStationId": "thurgau:62503",
+      "toStationId": "thurgau:62502",
+      "distanceMetres": 71.61,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau-classes:62503:nach%20Wil:1",
+        "thurgau-classes:62503:von%20Wil:1"
+      ],
+      "toDetectorIds": [
+        "thurgau-classes:62502:nach%20B%C3%BCrglen:1",
+        "thurgau-classes:62502:von%20B%C3%BCrglen:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1542:0",
+      "fromStationId": "thurgau:62502",
+      "toStationId": "thurgau:2504",
+      "distanceMetres": 3594.46,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau-classes:62502:nach%20B%C3%BCrglen:1",
+        "thurgau-classes:62502:von%20B%C3%BCrglen:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:2504:nach%20Istighoferstrasse:1",
+        "thurgau:2504:von%20Istighoferstrasse:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "different-measurement-bases",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1542:0",
+      "fromStationId": "thurgau:2504",
+      "toStationId": "thurgau:2503",
+      "distanceMetres": 22.55,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:2504:nach%20Istighoferstrasse:1",
+        "thurgau:2504:von%20Istighoferstrasse:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:2503:nach%20Sulgerstrasse:1",
+        "thurgau:2503:von%20Sulgerstrasse:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1542:0",
+      "fromStationId": "thurgau:2503",
+      "toStationId": "thurgau:2501",
+      "distanceMetres": 18.16,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:2503:nach%20Sulgerstrasse:1",
+        "thurgau:2503:von%20Sulgerstrasse:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:2501:nach%20Weinfelderstrasse:1",
+        "thurgau:2501:von%20Weinfelderstrasse:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1542:0",
+      "fromStationId": "thurgau:2501",
+      "toStationId": "thurgau:2502",
+      "distanceMetres": 28.79,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:2501:nach%20Weinfelderstrasse:1",
+        "thurgau:2501:von%20Weinfelderstrasse:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:2502:nach%20Maurenstrasse:1",
+        "thurgau:2502:von%20Maurenstrasse:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1550:0",
+      "fromStationId": "thurgau:40801",
+      "toStationId": "thurgau:40802",
+      "distanceMetres": 45.25,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:40801:vom%20Zentrum:1",
+        "thurgau:40801:zum%20Zentrum:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:40802:nach%20Kreuzlingen:1",
+        "thurgau:40802:von%20Kreuzlingen:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1550:0",
+      "fromStationId": "thurgau:40802",
+      "toStationId": "thurgau:40803",
+      "distanceMetres": 4.72,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:40802:nach%20Kreuzlingen:1",
+        "thurgau:40802:von%20Kreuzlingen:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:40803:vom%20See:1",
+        "thurgau:40803:zum%20See:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1551:0",
+      "fromStationId": "thurgau:12302",
+      "toStationId": "thurgau:12301",
+      "distanceMetres": 38.08,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:12302:nach%20Niederbueren:1",
+        "thurgau:12302:von%20Niederbueren:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:12301:nach%20Hauptwil:1",
+        "thurgau:12301:von%20Hauptwil:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1556:0",
+      "fromStationId": "thurgau:41102",
+      "toStationId": "thurgau:41101",
+      "distanceMetres": 27.51,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:41102:Kreisel:1",
+        "thurgau:41102:Matzingen:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:41101:Kreisel:1",
+        "thurgau:41101:Winterthur:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1556:0",
+      "fromStationId": "thurgau:41101",
+      "toStationId": "thurgau:41103",
+      "distanceMetres": 30.58,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:41101:Kreisel:1",
+        "thurgau:41101:Winterthur:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:41103:Kreisel:1",
+        "thurgau:41103:W%C3%A4ngi:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1556:0",
+      "fromStationId": "thurgau:41103",
+      "toStationId": "thurgau:35",
+      "distanceMetres": 6572.53,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:41103:Kreisel:1",
+        "thurgau:41103:W%C3%A4ngi:1"
+      ],
+      "toDetectorIds": [
+        "thurgau-classes:35:nach%20M%C3%BCnchwilen:1",
+        "thurgau-classes:35:nach%20W%C3%A4ngi:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "different-measurement-bases",
+        "counter-gap",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1556:0",
+      "fromStationId": "thurgau:35",
+      "toStationId": "thurgau:4501",
+      "distanceMetres": 1723.08,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau-classes:35:nach%20M%C3%BCnchwilen:1",
+        "thurgau-classes:35:nach%20W%C3%A4ngi:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:4501:nach%20Waengi:1",
+        "thurgau:4501:von%20Waengi:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "different-measurement-bases",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1556:0",
+      "fromStationId": "thurgau:4501",
+      "toStationId": "thurgau:4503",
+      "distanceMetres": 57.01,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:4501:nach%20Waengi:1",
+        "thurgau:4501:von%20Waengi:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:4503:nach%20Wil:1",
+        "thurgau:4503:von%20Wil:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1556:0",
+      "fromStationId": "thurgau:4503",
+      "toStationId": "thurgau:40204",
+      "distanceMetres": 2201.12,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:4503:nach%20Wil:1",
+        "thurgau:4503:von%20Wil:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:40204:Kreisel:1",
+        "thurgau:40204:M%C3%BCnchwilen:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1556:0",
+      "fromStationId": "thurgau:40204",
+      "toStationId": "thurgau:40201",
+      "distanceMetres": 49.83,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:40204:Kreisel:1",
+        "thurgau:40204:M%C3%BCnchwilen:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:40201:Dreibrunnen:1",
+        "thurgau:40201:Kreisel:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1556:0",
+      "fromStationId": "thurgau:40201",
+      "toStationId": "thurgau:40202",
+      "distanceMetres": 43.2,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:40201:Dreibrunnen:1",
+        "thurgau:40201:Kreisel:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:40202:Kreisel:1",
+        "thurgau:40202:Wil:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1564:0",
+      "fromStationId": "thurgau:2001",
+      "toStationId": "thurgau:2002",
+      "distanceMetres": 45.71,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau-classes:2001:nach%20Felben:1",
+        "thurgau-classes:2001:nach%20M%C3%BCllheim:1"
+      ],
+      "toDetectorIds": [
+        "thurgau-classes:2002:nach%20Pfyn:1",
+        "thurgau-classes:2002:nach%20Steckborn:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1569:0",
+      "fromStationId": "thurgau:5102",
+      "toStationId": "thurgau:5101",
+      "distanceMetres": 24.17,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau-classes:5102:nach%20Oberaach:1",
+        "thurgau-classes:5102:von%20Oberaach:1"
+      ],
+      "toDetectorIds": [
+        "thurgau-classes:5101:nach%20Sulgen:1",
+        "thurgau-classes:5101:von%20Sulgen:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1569:0",
+      "fromStationId": "thurgau:5101",
+      "toStationId": "thurgau:5103",
+      "distanceMetres": 3.61,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau-classes:5101:nach%20Sulgen:1",
+        "thurgau-classes:5101:von%20Sulgen:1"
+      ],
+      "toDetectorIds": [
+        "thurgau-classes:5103:nach%20Arbon:1",
+        "thurgau-classes:5103:von%20Arbon:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1569:0",
+      "fromStationId": "thurgau:5103",
+      "toStationId": "thurgau:5104",
+      "distanceMetres": 39.82,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau-classes:5103:nach%20Arbon:1",
+        "thurgau-classes:5103:von%20Arbon:1"
+      ],
+      "toDetectorIds": [
+        "thurgau-classes:5104:nach%20Bischofszell:1",
+        "thurgau-classes:5104:von%20Bischofszell:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1569:0",
+      "fromStationId": "thurgau:5104",
+      "toStationId": "thurgau:40403",
+      "distanceMetres": 6089.32,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau-classes:5104:nach%20Bischofszell:1",
+        "thurgau-classes:5104:von%20Bischofszell:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:40403:Kreisel:1",
+        "thurgau:40403:Sitterdorf:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "different-measurement-bases",
+        "counter-gap",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1569:0",
+      "fromStationId": "thurgau:40403",
+      "toStationId": "thurgau:40402",
+      "distanceMetres": 24.84,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:40403:Kreisel:1",
+        "thurgau:40403:Sitterdorf:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:40402:Kreisel:1",
+        "thurgau:40402:Sulgen:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1584:0",
+      "fromStationId": "thurgau:540",
+      "toStationId": "thurgau:91",
+      "distanceMetres": 3307.13,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau-classes:540:nach%20Arbon:1",
+        "thurgau-classes:540:nach%20Roggwil:1"
+      ],
+      "toDetectorIds": [
+        "thurgau-classes:91:nach%20Roggwil:1",
+        "thurgau-classes:91:nach%20St.%20Gallen:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1590:0",
+      "fromStationId": "thurgau:423",
+      "toStationId": "thurgau:42002",
+      "distanceMetres": 233.44,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:423:vom%20Einkaufszentrum:1",
+        "thurgau:423:zum%20Einkaufszentrum:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:42002:vom%20Portal%20Ost:1",
+        "thurgau:42002:zum%20Portal%20Ost:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1590:0",
+      "fromStationId": "thurgau:42002",
+      "toStationId": "thurgau:42001",
+      "distanceMetres": 74.43,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:42002:vom%20Portal%20Ost:1",
+        "thurgau:42002:zum%20Portal%20Ost:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:42001:vom%20Kreisel%20Schweizerhof:1",
+        "thurgau:42001:zum%20Kreisel%20Schweizerhof:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1590:0",
+      "fromStationId": "thurgau:42001",
+      "toStationId": "thurgau:37201",
+      "distanceMetres": 55.18,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:42001:vom%20Kreisel%20Schweizerhof:1",
+        "thurgau:42001:zum%20Kreisel%20Schweizerhof:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:37201:vom%20Bahnhof:1",
+        "thurgau:37201:zum%20Bahnhof:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1590:0",
+      "fromStationId": "thurgau:37201",
+      "toStationId": "thurgau:37202",
+      "distanceMetres": 38.91,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:37201:vom%20Bahnhof:1",
+        "thurgau:37201:zum%20Bahnhof:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:37202:von%20Eisenwerkstrasse:1",
+        "thurgau:37202:zur%20Eisenwerkstrasse:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1590:0",
+      "fromStationId": "thurgau:37202",
+      "toStationId": "thurgau:37204",
+      "distanceMetres": 1.61,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:37202:von%20Eisenwerkstrasse:1",
+        "thurgau:37202:zur%20Eisenwerkstrasse:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:37204:von%20Zeughausstrasse:1",
+        "thurgau:37204:zur%20Zeughausstrasse:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1590:0",
+      "fromStationId": "thurgau:37204",
+      "toStationId": "thurgau:37203",
+      "distanceMetres": 25.97,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:37204:von%20Zeughausstrasse:1",
+        "thurgau:37204:zur%20Zeughausstrasse:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:37203:vom%20Kreisel%20Tower:1",
+        "thurgau:37203:zum%20Kreisel%20Tower:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1596:0",
+      "fromStationId": "thurgau:523",
+      "toStationId": "thurgau:40301",
+      "distanceMetres": 7358.2,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau-classes:523:nach%20Amlikon:1",
+        "thurgau-classes:523:nach%20M%C3%A4rstetten:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:40301:Konstanz:1",
+        "thurgau:40301:Kreisel:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "different-measurement-bases",
+        "counter-gap",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1596:0",
+      "fromStationId": "thurgau:40301",
+      "toStationId": "thurgau:40303",
+      "distanceMetres": 79.53,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:40301:Konstanz:1",
+        "thurgau:40301:Kreisel:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:40303:Kreisel:1",
+        "thurgau:40303:Wil:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1596:0",
+      "fromStationId": "thurgau:40303",
+      "toStationId": "thurgau:33",
+      "distanceMetres": 3264.3,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:40303:Kreisel:1",
+        "thurgau:40303:Wil:1"
+      ],
+      "toDetectorIds": [
+        "thurgau-classes:33:nach%20Bettwiesen:1",
+        "thurgau-classes:33:nach%20Taegerschen:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "different-measurement-bases",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1596:3",
+      "fromStationId": "thurgau:9201",
+      "toStationId": "thurgau:9204",
+      "distanceMetres": 17.41,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:9201:nach%20Ermatingen:1",
+        "thurgau:9201:von%20Ermatingen:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:9204:nach%20Engwilen:1",
+        "thurgau:9204:von%20Engwilen:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1596:3",
+      "fromStationId": "thurgau:9204",
+      "toStationId": "thurgau:2102",
+      "distanceMetres": 5811.76,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:9204:nach%20Engwilen:1",
+        "thurgau:9204:von%20Engwilen:1"
+      ],
+      "toDetectorIds": [
+        "thurgau-classes:2102:nach%20Taegerwilen:1",
+        "thurgau-classes:2102:von%20Taegerwilen:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "different-measurement-bases",
+        "counter-gap",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1596:3",
+      "fromStationId": "thurgau:2102",
+      "toStationId": "thurgau:2103",
+      "distanceMetres": 25.17,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau-classes:2102:nach%20Taegerwilen:1",
+        "thurgau-classes:2102:von%20Taegerwilen:1"
+      ],
+      "toDetectorIds": [
+        "thurgau-classes:2103:nach%20Kreuzlingen:1",
+        "thurgau-classes:2103:von%20Kreuzlingen:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1596:3",
+      "fromStationId": "thurgau:2103",
+      "toStationId": "thurgau:2101",
+      "distanceMetres": 6.25,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau-classes:2103:nach%20Kreuzlingen:1",
+        "thurgau-classes:2103:von%20Kreuzlingen:1"
+      ],
+      "toDetectorIds": [
+        "thurgau-classes:2101:nach%20Muellheim:1",
+        "thurgau-classes:2101:von%20Muellheim:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1596:3",
+      "fromStationId": "thurgau:2101",
+      "toStationId": "thurgau:2104",
+      "distanceMetres": 20.03,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau-classes:2101:nach%20Muellheim:1",
+        "thurgau-classes:2101:von%20Muellheim:1"
+      ],
+      "toDetectorIds": [
+        "thurgau-classes:2104:nach%20Maerstetten:1",
+        "thurgau-classes:2104:von%20Maerstetten:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1597:0",
+      "fromStationId": "thurgau:42003",
+      "toStationId": "thurgau:42002",
+      "distanceMetres": 41.06,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:42003:vom%20Bahnhofplatz:1",
+        "thurgau:42003:zum%20Bahnhofplatz:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:42002:vom%20Portal%20Ost:1",
+        "thurgau:42002:zum%20Portal%20Ost:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1605:1",
+      "fromStationId": "thurgau:17",
+      "toStationId": "thurgau:42103",
+      "distanceMetres": 11092.28,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau-classes:17:nach%20Niederneunforn:1",
+        "thurgau-classes:17:nach%20Oberneunforn:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:42103:von%20Rheinstrasse%20Nord:1",
+        "thurgau:42103:zur%20Rheinstrasse%20Nord:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "different-measurement-bases",
+        "counter-gap",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1605:1",
+      "fromStationId": "thurgau:42103",
+      "toStationId": "thurgau:42101",
+      "distanceMetres": 81.11,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:42103:von%20Rheinstrasse%20Nord:1",
+        "thurgau:42103:zur%20Rheinstrasse%20Nord:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:42101:vom%20Portal%20Nord:1",
+        "thurgau:42101:zum%20Portal%20Nord:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1605:1",
+      "fromStationId": "thurgau:42101",
+      "toStationId": "thurgau:423",
+      "distanceMetres": 103.96,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:42101:vom%20Portal%20Nord:1",
+        "thurgau:42101:zum%20Portal%20Nord:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:423:vom%20Einkaufszentrum:1",
+        "thurgau:423:zum%20Einkaufszentrum:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1605:2",
+      "fromStationId": "thurgau:102",
+      "toStationId": "thurgau:303",
+      "distanceMetres": 4374.86,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:102:nach%20Unterschlatt:1",
+        "thurgau:102:von%20Unterschlatt:1"
+      ],
+      "toDetectorIds": [
+        "thurgau-classes:303:nach%20Schlatt:1",
+        "thurgau-classes:303:von%20Schlatt:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "different-measurement-bases",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1605:2",
+      "fromStationId": "thurgau:303",
+      "toStationId": "thurgau:302",
+      "distanceMetres": 27.76,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau-classes:303:nach%20Schlatt:1",
+        "thurgau-classes:303:von%20Schlatt:1"
+      ],
+      "toDetectorIds": [
+        "thurgau-classes:302:nach%20Truellikon:1",
+        "thurgau-classes:302:von%20Truellikon:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1605:2",
+      "fromStationId": "thurgau:302",
+      "toStationId": "thurgau:304",
+      "distanceMetres": 6.84,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau-classes:302:nach%20Truellikon:1",
+        "thurgau-classes:302:von%20Truellikon:1"
+      ],
+      "toDetectorIds": [
+        "thurgau-classes:304:nach%20Basadingen:1",
+        "thurgau-classes:304:von%20Basadingen:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1605:2",
+      "fromStationId": "thurgau:304",
+      "toStationId": "thurgau:301",
+      "distanceMetres": 27.52,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau-classes:304:nach%20Basadingen:1",
+        "thurgau-classes:304:von%20Basadingen:1"
+      ],
+      "toDetectorIds": [
+        "thurgau-classes:301:nach%20Frauenfeld:1",
+        "thurgau-classes:301:von%20Frauenfeld:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1605:3",
+      "fromStationId": "thurgau:529",
+      "toStationId": "thurgau:40703",
+      "distanceMetres": 585.38,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau-classes:529:nach%20Amriswil:1",
+        "thurgau-classes:529:nach%20Arbon:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:40703:nach%20Frauenfeld:1",
+        "thurgau:40703:von%20Frauenfeld:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "different-measurement-bases",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1605:3",
+      "fromStationId": "thurgau:40703",
+      "toStationId": "thurgau:40704",
+      "distanceMetres": 23.8,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:40703:nach%20Frauenfeld:1",
+        "thurgau:40703:von%20Frauenfeld:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:40704:vom%20Bahnhof:1",
+        "thurgau:40704:zum%20Bahnhof:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1605:3",
+      "fromStationId": "thurgau:40704",
+      "toStationId": "thurgau:40701",
+      "distanceMetres": 56.05,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:40704:vom%20Bahnhof:1",
+        "thurgau:40704:zum%20Bahnhof:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:40701:nach%20Romanshorn:1",
+        "thurgau:40701:von%20Romanshorn:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1612:0",
+      "fromStationId": "thurgau:51101",
+      "toStationId": "thurgau:842",
+      "distanceMetres": 4488.62,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau-classes:51101:nach%20Matzingen:1",
+        "thurgau-classes:51101:von%20Matzingen:1"
+      ],
+      "toDetectorIds": [
+        "thurgau-classes:842:nach%20Frauenfeld:1",
+        "thurgau-classes:842:nach%20Wil:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1612:0",
+      "fromStationId": "thurgau:842",
+      "toStationId": "thurgau:40304",
+      "distanceMetres": 11001.86,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau-classes:842:nach%20Frauenfeld:1",
+        "thurgau-classes:842:nach%20Wil:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:40304:Kreisel:1",
+        "thurgau:40304:Lommis:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "different-measurement-bases",
+        "counter-gap",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1612:0",
+      "fromStationId": "thurgau:40304",
+      "toStationId": "thurgau:40302",
+      "distanceMetres": 78.61,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:40304:Kreisel:1",
+        "thurgau:40304:Lommis:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:40302:Kreisel:1",
+        "thurgau:40302:M%C3%A4rwil:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1612:0",
+      "fromStationId": "thurgau:40302",
+      "toStationId": "thurgau:62501",
+      "distanceMetres": 7658.84,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:40302:Kreisel:1",
+        "thurgau:40302:M%C3%A4rwil:1"
+      ],
+      "toDetectorIds": [
+        "thurgau-classes:62501:nach%20M%C3%A4rwil:1",
+        "thurgau-classes:62501:von%20M%C3%A4rwil:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "different-measurement-bases",
+        "counter-gap",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1612:0",
+      "fromStationId": "thurgau:62501",
+      "toStationId": "thurgau:62502",
+      "distanceMetres": 36.06,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau-classes:62501:nach%20M%C3%A4rwil:1",
+        "thurgau-classes:62501:von%20M%C3%A4rwil:1"
+      ],
+      "toDetectorIds": [
+        "thurgau-classes:62502:nach%20B%C3%BCrglen:1",
+        "thurgau-classes:62502:von%20B%C3%BCrglen:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1614:1",
+      "fromStationId": "thurgau:4504",
+      "toStationId": "thurgau:4501",
+      "distanceMetres": 29.82,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:4504:nach%20Sirnach%20Q20:1",
+        "thurgau:4504:von%20Sirnach%20Q20:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:4501:nach%20Waengi:1",
+        "thurgau:4501:von%20Waengi:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1618:0",
+      "fromStationId": "thurgau:2603",
+      "toStationId": "thurgau:2601",
+      "distanceMetres": 17.63,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:2603:vom%20Kreisel%20Spange%20Ost:1",
+        "thurgau:2603:zum%20Kreisel%20Spange%20Ost:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:2601:nach%20Weinfelden:1",
+        "thurgau:2601:von%20Weinfelden:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1618:0",
+      "fromStationId": "thurgau:2601",
+      "toStationId": "thurgau:2602",
+      "distanceMetres": 64.92,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:2601:nach%20Weinfelden:1",
+        "thurgau:2601:von%20Weinfelden:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:2602:nach%20Mauren:1",
+        "thurgau:2602:von%20Mauren:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1626:1",
+      "fromStationId": "thurgau:415",
+      "toStationId": "thurgau:535",
+      "distanceMetres": 1461.56,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau-classes:415:nach%20Romanshorn:1",
+        "thurgau-classes:415:nach%20Schaffhausen:1"
+      ],
+      "toDetectorIds": [
+        "thurgau-classes:535:nach%20Bottighofen:1",
+        "thurgau-classes:535:nach%20T%C3%A4gerwilen:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1626:1",
+      "fromStationId": "thurgau:535",
+      "toStationId": "thurgau:72801",
+      "distanceMetres": 1228.83,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau-classes:535:nach%20Bottighofen:1",
+        "thurgau-classes:535:nach%20T%C3%A4gerwilen:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:72801:von%20Seetalstrasse:1",
+        "thurgau:72801:zur%20Seetalstrasse:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "different-measurement-bases",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1626:1",
+      "fromStationId": "thurgau:72801",
+      "toStationId": "thurgau:72804",
+      "distanceMetres": 33.12,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:72801:von%20Seetalstrasse:1",
+        "thurgau:72801:zur%20Seetalstrasse:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:72804:nach%20Kurzrickenbach:1",
+        "thurgau:72804:von%20Kurzrickenbach:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1626:1",
+      "fromStationId": "thurgau:72804",
+      "toStationId": "thurgau:72803",
+      "distanceMetres": 6.32,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:72804:nach%20Kurzrickenbach:1",
+        "thurgau:72804:von%20Kurzrickenbach:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:72803:von%20Leubernstrasse:1",
+        "thurgau:72803:zur%20Leubernstrasse:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1626:1",
+      "fromStationId": "thurgau:72803",
+      "toStationId": "thurgau:72802",
+      "distanceMetres": 46.6,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:72803:von%20Leubernstrasse:1",
+        "thurgau:72803:zur%20Leubernstrasse:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:72802:nach%20Bottighofen:1",
+        "thurgau:72802:von%20Bottighofen:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1626:1",
+      "fromStationId": "thurgau:72802",
+      "toStationId": "thurgau:40501",
+      "distanceMetres": 714.82,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:72802:nach%20Bottighofen:1",
+        "thurgau:72802:von%20Bottighofen:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:40501:Kreisel:1",
+        "thurgau:40501:Kreuzlingen:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1626:1",
+      "fromStationId": "thurgau:40501",
+      "toStationId": "thurgau:40504",
+      "distanceMetres": 34.85,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:40501:Kreisel:1",
+        "thurgau:40501:Kreuzlingen:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:40504:Kreisel:1",
+        "thurgau:40504:Moosfeld:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1626:1",
+      "fromStationId": "thurgau:40504",
+      "toStationId": "thurgau:40502",
+      "distanceMetres": 5.63,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:40504:Kreisel:1",
+        "thurgau:40504:Moosfeld:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:40502:Bahnhof:1",
+        "thurgau:40502:Kreisel:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1626:1",
+      "fromStationId": "thurgau:40502",
+      "toStationId": "thurgau:40503",
+      "distanceMetres": 29.82,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:40502:Bahnhof:1",
+        "thurgau:40502:Kreisel:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:40503:Kreisel:1",
+        "thurgau:40503:Romanshorn:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1626:1",
+      "fromStationId": "thurgau:40503",
+      "toStationId": "thurgau:61103",
+      "distanceMetres": 743.28,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:40503:Kreisel:1",
+        "thurgau:40503:Romanshorn:1"
+      ],
+      "toDetectorIds": [
+        "thurgau-classes:61103:nach%20Kreuzlingen:1",
+        "thurgau-classes:61103:von%20Kreuzlingen:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "different-measurement-bases",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1626:1",
+      "fromStationId": "thurgau:61103",
+      "toStationId": "thurgau:61101",
+      "distanceMetres": 147.35,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau-classes:61103:nach%20Kreuzlingen:1",
+        "thurgau-classes:61103:von%20Kreuzlingen:1"
+      ],
+      "toDetectorIds": [
+        "thurgau-classes:61101:nach%20Romanshorn:1",
+        "thurgau-classes:61101:von%20Romanshorn:1"
+      ],
+      "holdReasons": [
+        "intervening-roundabout"
+      ],
+      "playbackEligible": false,
+      "junctionReview": "thurgau-seestrasse-dorfstrasse"
+    },
+    {
+      "pathId": "thurgau:1626:1",
+      "fromStationId": "thurgau:61101",
+      "toStationId": "thurgau:40802",
+      "distanceMetres": 3777.28,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau-classes:61101:nach%20Romanshorn:1",
+        "thurgau-classes:61101:von%20Romanshorn:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:40802:nach%20Kreuzlingen:1",
+        "thurgau:40802:von%20Kreuzlingen:1"
+      ],
+      "holdReasons": [
+        "different-measurement-bases",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1626:1",
+      "fromStationId": "thurgau:40802",
+      "toStationId": "thurgau:40803",
+      "distanceMetres": 25.76,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:40802:nach%20Kreuzlingen:1",
+        "thurgau:40802:von%20Kreuzlingen:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:40803:vom%20See:1",
+        "thurgau:40803:zum%20See:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1626:1",
+      "fromStationId": "thurgau:40803",
+      "toStationId": "thurgau:40801",
+      "distanceMetres": 14.29,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:40803:vom%20See:1",
+        "thurgau:40803:zum%20See:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:40801:vom%20Zentrum:1",
+        "thurgau:40801:zum%20Zentrum:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1626:1",
+      "fromStationId": "thurgau:40801",
+      "toStationId": "thurgau:40804",
+      "distanceMetres": 38.8,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:40801:vom%20Zentrum:1",
+        "thurgau:40801:zum%20Zentrum:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:40804:nach%20Romanshorn:1",
+        "thurgau:40804:von%20Romanshorn:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1626:1",
+      "fromStationId": "thurgau:40804",
+      "toStationId": "thurgau:41001",
+      "distanceMetres": 2339.96,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:40804:nach%20Romanshorn:1",
+        "thurgau:40804:von%20Romanshorn:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:41001:Kreisel:1",
+        "thurgau:41001:Kreuzlingen:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1626:1",
+      "fromStationId": "thurgau:41001",
+      "toStationId": "thurgau:41002",
+      "distanceMetres": 43.6,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:41001:Kreisel:1",
+        "thurgau:41001:Kreuzlingen:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:41002:Bahnhof:1",
+        "thurgau:41002:Kreisel:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1626:1",
+      "fromStationId": "thurgau:41002",
+      "toStationId": "thurgau:41003",
+      "distanceMetres": 41.68,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:41002:Bahnhof:1",
+        "thurgau:41002:Kreisel:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:41003:Kreisel:1",
+        "thurgau:41003:Romanshorn:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1626:2",
+      "fromStationId": "thurgau:16120101",
+      "toStationId": "thurgau:9201",
+      "distanceMetres": 11426.33,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau-classes:16120101:nach%20Kreuzlingen:1",
+        "thurgau-classes:16120101:nach%20Schaffhausen:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:9201:nach%20Ermatingen:1",
+        "thurgau:9201:von%20Ermatingen:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "different-measurement-bases",
+        "counter-gap",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1626:2",
+      "fromStationId": "thurgau:9201",
+      "toStationId": "thurgau:9204",
+      "distanceMetres": 20.4,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:9201:nach%20Ermatingen:1",
+        "thurgau:9201:von%20Ermatingen:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:9204:nach%20Engwilen:1",
+        "thurgau:9204:von%20Engwilen:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1626:2",
+      "fromStationId": "thurgau:9204",
+      "toStationId": "thurgau:9203",
+      "distanceMetres": 28.4,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:9204:nach%20Engwilen:1",
+        "thurgau:9204:von%20Engwilen:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:9203:nach%20Kreuzlingen:1",
+        "thurgau:9203:von%20Kreuzlingen:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1626:2",
+      "fromStationId": "thurgau:9203",
+      "toStationId": "thurgau:9202",
+      "distanceMetres": 22.45,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:9203:nach%20Kreuzlingen:1",
+        "thurgau:9203:von%20Kreuzlingen:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:9202:von%20Zoll:1",
+        "thurgau:9202:zum%20Zoll:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1626:3",
+      "fromStationId": "thurgau:101",
+      "toStationId": "thurgau:102",
+      "distanceMetres": 35.83,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:101:nach%20Schaffhausen:1",
+        "thurgau:101:von%20Schaffhausen:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:102:nach%20Unterschlatt:1",
+        "thurgau:102:von%20Unterschlatt:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1626:3",
+      "fromStationId": "thurgau:102",
+      "toStationId": "thurgau:49",
+      "distanceMetres": 12555.35,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:102:nach%20Unterschlatt:1",
+        "thurgau:102:von%20Unterschlatt:1"
+      ],
+      "toDetectorIds": [
+        "thurgau-classes:49:Diessenhofen:1",
+        "thurgau-classes:49:Wagenhausen:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "different-measurement-bases",
+        "counter-gap",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1627:0",
+      "fromStationId": "thurgau:42103",
+      "toStationId": "thurgau:42102",
+      "distanceMetres": 45.29,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:42103:von%20Rheinstrasse%20Nord:1",
+        "thurgau:42103:zur%20Rheinstrasse%20Nord:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:42102:von%20Rheinstrasse%20Sued:1",
+        "thurgau:42102:zur%20Rheinstrasse%20Sued:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1627:0",
+      "fromStationId": "thurgau:42102",
+      "toStationId": "thurgau:33001",
+      "distanceMetres": 244.6,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:42102:von%20Rheinstrasse%20Sued:1",
+        "thurgau:42102:zur%20Rheinstrasse%20Sued:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:33001:von%20Rheinstrasse:1",
+        "thurgau:33001:zur%20Rheinstrasse:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1627:0",
+      "fromStationId": "thurgau:33001",
+      "toStationId": "thurgau:33003",
+      "distanceMetres": 42.98,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:33001:von%20Rheinstrasse:1",
+        "thurgau:33001:zur%20Rheinstrasse:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:33003:von%20Zuercherstrasse:1",
+        "thurgau:33003:zur%20Zuercherstrasse:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1629:0",
+      "fromStationId": "thurgau:302",
+      "toStationId": "thurgau:303",
+      "distanceMetres": 27.76,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau-classes:302:nach%20Truellikon:1",
+        "thurgau-classes:302:von%20Truellikon:1"
+      ],
+      "toDetectorIds": [
+        "thurgau-classes:303:nach%20Schlatt:1",
+        "thurgau-classes:303:von%20Schlatt:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1629:0",
+      "fromStationId": "thurgau:303",
+      "toStationId": "thurgau:301",
+      "distanceMetres": 4.87,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau-classes:303:nach%20Schlatt:1",
+        "thurgau-classes:303:von%20Schlatt:1"
+      ],
+      "toDetectorIds": [
+        "thurgau-classes:301:nach%20Frauenfeld:1",
+        "thurgau-classes:301:von%20Frauenfeld:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1629:0",
+      "fromStationId": "thurgau:301",
+      "toStationId": "thurgau:304",
+      "distanceMetres": 31.28,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau-classes:301:nach%20Frauenfeld:1",
+        "thurgau-classes:301:von%20Frauenfeld:1"
+      ],
+      "toDetectorIds": [
+        "thurgau-classes:304:nach%20Basadingen:1",
+        "thurgau-classes:304:von%20Basadingen:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1629:0",
+      "fromStationId": "thurgau:304",
+      "toStationId": "thurgau:9501",
+      "distanceMetres": 4901.19,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau-classes:304:nach%20Basadingen:1",
+        "thurgau-classes:304:von%20Basadingen:1"
+      ],
+      "toDetectorIds": [
+        "thurgau-classes:9501:nach%20Basadingen:1",
+        "thurgau-classes:9501:von%20Basadingen:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1629:0",
+      "fromStationId": "thurgau:9501",
+      "toStationId": "thurgau:9502",
+      "distanceMetres": 138.08,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau-classes:9501:nach%20Basadingen:1",
+        "thurgau-classes:9501:von%20Basadingen:1"
+      ],
+      "toDetectorIds": [
+        "thurgau-classes:9502:nach%20Diessenhofen:1",
+        "thurgau-classes:9502:von%20Diessenhofen:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1641:1",
+      "fromStationId": "thurgau:413",
+      "toStationId": "thurgau:40203",
+      "distanceMetres": 964.56,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau-classes:413:Gloten:1",
+        "thurgau-classes:413:Wilen%2FBusswil:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:40203:Gloten:1",
+        "thurgau:40203:Kreisel:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "different-measurement-bases",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1641:1",
+      "fromStationId": "thurgau:40203",
+      "toStationId": "thurgau:40204",
+      "distanceMetres": 35.48,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:40203:Gloten:1",
+        "thurgau:40203:Kreisel:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:40204:Kreisel:1",
+        "thurgau:40204:M%C3%BCnchwilen:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1641:1",
+      "fromStationId": "thurgau:40204",
+      "toStationId": "thurgau:40202",
+      "distanceMetres": 5.4,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:40204:Kreisel:1",
+        "thurgau:40204:M%C3%BCnchwilen:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:40202:Kreisel:1",
+        "thurgau:40202:Wil:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "thurgau:1641:1",
+      "fromStationId": "thurgau:40202",
+      "toStationId": "thurgau:40201",
+      "distanceMetres": 11.73,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "thurgau:40202:Kreisel:1",
+        "thurgau:40202:Wil:1"
+      ],
+      "toDetectorIds": [
+        "thurgau:40201:Dreibrunnen:1",
+        "thurgau:40201:Kreisel:1"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "zurich-city:1264_230:0",
+      "fromStationId": "zurich-city:Z030",
+      "toStationId": "zurich-city:Z042",
+      "distanceMetres": 0,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "zurich-city:Z030M001"
+      ],
+      "toDetectorIds": [
+        "zurich-city:Z042M002"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "zurich-city:1264_240:0",
+      "fromStationId": "zurich-city:Z030",
+      "toStationId": "zurich-city:Z042",
+      "distanceMetres": 24.11,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "zurich-city:Z030M001"
+      ],
+      "toDetectorIds": [
+        "zurich-city:Z042M002"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "zurich-city:1322_10:0",
+      "fromStationId": "zurich-city:Z067",
+      "toStationId": "zurich-city:Z068",
+      "distanceMetres": 103.02,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "zurich-city:Z067M001"
+      ],
+      "toDetectorIds": [
+        "zurich-city:Z068M001"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "zurich-city:1322_10:0",
+      "fromStationId": "zurich-city:Z068",
+      "toStationId": "zurich-city:Z109",
+      "distanceMetres": 0,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "zurich-city:Z068M001"
+      ],
+      "toDetectorIds": [
+        "zurich-city:Z109M002",
+        "zurich-city:Z109M003"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "zurich-city:1322_20:0",
+      "fromStationId": "zurich-city:Z068",
+      "toStationId": "zurich-city:Z109",
+      "distanceMetres": 6.68,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "zurich-city:Z068M001"
+      ],
+      "toDetectorIds": [
+        "zurich-city:Z109M002",
+        "zurich-city:Z109M003"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "zurich-city:1322_20:0",
+      "fromStationId": "zurich-city:Z109",
+      "toStationId": "zurich-city:Z072",
+      "distanceMetres": 84.44,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "zurich-city:Z109M002",
+        "zurich-city:Z109M003"
+      ],
+      "toDetectorIds": [
+        "zurich-city:Z072M001",
+        "zurich-city:Z072M002"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "zurich-city:1680_10:0",
+      "fromStationId": "zurich-city:Z042",
+      "toStationId": "zurich-city:Z030",
+      "distanceMetres": 48.66,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "zurich-city:Z042M002"
+      ],
+      "toDetectorIds": [
+        "zurich-city:Z030M001",
+        "zurich-city:Z030M002"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "zurich-city:1750_10:0",
+      "fromStationId": "zurich-city:Z109",
+      "toStationId": "zurich-city:Z068",
+      "distanceMetres": 11.46,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "zurich-city:Z109M002",
+        "zurich-city:Z109M003"
+      ],
+      "toDetectorIds": [
+        "zurich-city:Z068M001"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "zurich-city:1822_140:0",
+      "fromStationId": "zurich-city:Z051",
+      "toStationId": "zurich-city:Z086",
+      "distanceMetres": 12.51,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "zurich-city:Z051M001",
+        "zurich-city:Z051M002"
+      ],
+      "toDetectorIds": [
+        "zurich-city:Z086M003"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "zurich-city:1855_10:0",
+      "fromStationId": "zurich-city:Z077",
+      "toStationId": "zurich-city:Z067",
+      "distanceMetres": 66.32,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "zurich-city:Z077M001"
+      ],
+      "toDetectorIds": [
+        "zurich-city:Z067M001"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "zurich-city:1933_10:0",
+      "fromStationId": "zurich-city:Z073",
+      "toStationId": "zurich-city:Z075",
+      "distanceMetres": 15.47,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "zurich-city:Z073M001",
+        "zurich-city:Z073M002"
+      ],
+      "toDetectorIds": [
+        "zurich-city:Z075M001"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "zurich-city:1933_20:0",
+      "fromStationId": "zurich-city:Z073",
+      "toStationId": "zurich-city:Z075",
+      "distanceMetres": 0,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "zurich-city:Z073M001"
+      ],
+      "toDetectorIds": [
+        "zurich-city:Z075M001"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "zurich-city:1934_10:0",
+      "fromStationId": "zurich-city:Z075",
+      "toStationId": "zurich-city:Z073",
+      "distanceMetres": 0.01,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "zurich-city:Z075M001"
+      ],
+      "toDetectorIds": [
+        "zurich-city:Z073M001"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "zurich-city:1934_40:0",
+      "fromStationId": "zurich-city:Z073",
+      "toStationId": "zurich-city:Z074",
+      "distanceMetres": 9.07,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "zurich-city:Z073M001"
+      ],
+      "toDetectorIds": [
+        "zurich-city:Z074M002"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "zurich-city:1934_40:0",
+      "fromStationId": "zurich-city:Z074",
+      "toStationId": "zurich-city:Z075",
+      "distanceMetres": 9.52,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "zurich-city:Z074M002"
+      ],
+      "toDetectorIds": [
+        "zurich-city:Z075M001",
+        "zurich-city:Z075M003"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "zurich-city:1935_25:0",
+      "fromStationId": "zurich-city:Z074",
+      "toStationId": "zurich-city:Z073",
+      "distanceMetres": 21.96,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "zurich-city:Z074M002"
+      ],
+      "toDetectorIds": [
+        "zurich-city:Z073M001"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "zurich-city:1935_25:0",
+      "fromStationId": "zurich-city:Z073",
+      "toStationId": "zurich-city:Z075",
+      "distanceMetres": 0,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "zurich-city:Z073M001"
+      ],
+      "toDetectorIds": [
+        "zurich-city:Z075M001"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "zurich-city:2024_20:0",
+      "fromStationId": "zurich-city:Z018",
+      "toStationId": "zurich-city:Z108",
+      "distanceMetres": 0,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "zurich-city:Z018M001"
+      ],
+      "toDetectorIds": [
+        "zurich-city:Z108M005"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "zurich-city:2051_10:0",
+      "fromStationId": "zurich-city:Z084",
+      "toStationId": "zurich-city:Z085",
+      "distanceMetres": 5.54,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "zurich-city:Z084M001"
+      ],
+      "toDetectorIds": [
+        "zurich-city:Z085M003"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "zurich-city:2051_110:0",
+      "fromStationId": "zurich-city:Z085",
+      "toStationId": "zurich-city:Z084",
+      "distanceMetres": 0.72,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "zurich-city:Z085M004"
+      ],
+      "toDetectorIds": [
+        "zurich-city:Z084M002"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "zurich-city:207_60:0",
+      "fromStationId": "zurich-city:Z060",
+      "toStationId": "zurich-city:Z007",
+      "distanceMetres": 7.4,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "zurich-city:Z060M005",
+        "zurich-city:Z060M006"
+      ],
+      "toDetectorIds": [
+        "zurich-city:Z007M001"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "incomplete-measured-days",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "zurich-city:2206_10:0",
+      "fromStationId": "zurich-city:Z027",
+      "toStationId": "zurich-city:Z026",
+      "distanceMetres": 29.3,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "zurich-city:Z027M003"
+      ],
+      "toDetectorIds": [
+        "zurich-city:Z026M001",
+        "zurich-city:Z026M002"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "zurich-city:2263_70:0",
+      "fromStationId": "zurich-city:Z055",
+      "toStationId": "zurich-city:Z056",
+      "distanceMetres": 37.26,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "zurich-city:Z055M001",
+        "zurich-city:Z055M002"
+      ],
+      "toDetectorIds": [
+        "zurich-city:Z056M003",
+        "zurich-city:Z056M004"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "zurich-city:2349_30:0",
+      "fromStationId": "zurich-city:Z026",
+      "toStationId": "zurich-city:Z027",
+      "distanceMetres": 10.91,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "zurich-city:Z026M001"
+      ],
+      "toDetectorIds": [
+        "zurich-city:Z027M003"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "zurich-city:2512_110:0",
+      "fromStationId": "zurich-city:Z085",
+      "toStationId": "zurich-city:Z084",
+      "distanceMetres": 5.05,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "zurich-city:Z085M003",
+        "zurich-city:Z085M004"
+      ],
+      "toDetectorIds": [
+        "zurich-city:Z084M002"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "zurich-city:2520_210:0",
+      "fromStationId": "zurich-city:Z080",
+      "toStationId": "zurich-city:Z079",
+      "distanceMetres": 0.45,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "zurich-city:Z080M005"
+      ],
+      "toDetectorIds": [
+        "zurich-city:Z079M003"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "zurich-city:29_30:0",
+      "fromStationId": "zurich-city:Z063",
+      "toStationId": "zurich-city:Z098",
+      "distanceMetres": 66.9,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "zurich-city:Z063M001",
+        "zurich-city:Z063M002"
+      ],
+      "toDetectorIds": [
+        "zurich-city:Z098M001",
+        "zurich-city:Z098M002"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "zurich-city:409_30:0",
+      "fromStationId": "zurich-city:Z107",
+      "toStationId": "zurich-city:Z018",
+      "distanceMetres": 8.12,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "zurich-city:Z107M003",
+        "zurich-city:Z107M004"
+      ],
+      "toDetectorIds": [
+        "zurich-city:Z018M001"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "zurich-city:409_30:0",
+      "fromStationId": "zurich-city:Z018",
+      "toStationId": "zurich-city:Z108",
+      "distanceMetres": 0,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "zurich-city:Z018M001"
+      ],
+      "toDetectorIds": [
+        "zurich-city:Z108M005"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "zurich-city:41_25:0",
+      "fromStationId": "zurich-city:Z079",
+      "toStationId": "zurich-city:Z022",
+      "distanceMetres": 0.45,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "zurich-city:Z079M003"
+      ],
+      "toDetectorIds": [
+        "zurich-city:Z022M001"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "zurich-city:5046_10:0",
+      "fromStationId": "zurich-city:Z016",
+      "toStationId": "zurich-city:Z015",
+      "distanceMetres": 76.23,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "zurich-city:Z016M003",
+        "zurich-city:Z016M004"
+      ],
+      "toDetectorIds": [
+        "zurich-city:Z015M001",
+        "zurich-city:Z015M002"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "zurich-city:769_40:0",
+      "fromStationId": "zurich-city:Z068",
+      "toStationId": "zurich-city:Z109",
+      "distanceMetres": 0,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "zurich-city:Z068M001"
+      ],
+      "toDetectorIds": [
+        "zurich-city:Z109M002",
+        "zurich-city:Z109M003"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "zurich-city:781_10:0",
+      "fromStationId": "zurich-city:Z082",
+      "toStationId": "zurich-city:Z039",
+      "distanceMetres": 0.09,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "zurich-city:Z082M001",
+        "zurich-city:Z082M002"
+      ],
+      "toDetectorIds": [
+        "zurich-city:Z039M004"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "zurich-city:781_100:0",
+      "fromStationId": "zurich-city:Z026",
+      "toStationId": "zurich-city:Z027",
+      "distanceMetres": 3.89,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "zurich-city:Z026M002"
+      ],
+      "toDetectorIds": [
+        "zurich-city:Z027M001",
+        "zurich-city:Z027M003"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "zurich-city:781_20:0",
+      "fromStationId": "zurich-city:Z039",
+      "toStationId": "zurich-city:Z082",
+      "distanceMetres": 0.56,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "zurich-city:Z039M004"
+      ],
+      "toDetectorIds": [
+        "zurich-city:Z082M001",
+        "zurich-city:Z082M002"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "zurich-city:781_30:0",
+      "fromStationId": "zurich-city:Z039",
+      "toStationId": "zurich-city:Z082",
+      "distanceMetres": 0,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "zurich-city:Z039M004"
+      ],
+      "toDetectorIds": [
+        "zurich-city:Z082M001",
+        "zurich-city:Z082M002"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "zurich-city:781_30:0",
+      "fromStationId": "zurich-city:Z082",
+      "toStationId": "zurich-city:Z083",
+      "distanceMetres": 37.74,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "zurich-city:Z082M001",
+        "zurich-city:Z082M002"
+      ],
+      "toDetectorIds": [
+        "zurich-city:Z083M003"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "zurich-city:843_20:0",
+      "fromStationId": "zurich-city:Z006",
+      "toStationId": "zurich-city:Z060",
+      "distanceMetres": 450.02,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "zurich-city:Z006M001",
+        "zurich-city:Z006M002"
+      ],
+      "toDetectorIds": [
+        "zurich-city:Z060M005",
+        "zurich-city:Z060M006"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "incomplete-measured-days",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    },
+    {
+      "pathId": "zurich-city:898_167:0",
+      "fromStationId": "zurich-city:Z082",
+      "toStationId": "zurich-city:Z039",
+      "distanceMetres": 1.89,
+      "geometryContinuity": "same-source-path",
+      "fromDetectorIds": [
+        "zurich-city:Z082M001",
+        "zurich-city:Z082M002"
+      ],
+      "toDetectorIds": [
+        "zurich-city:Z039M004"
+      ],
+      "holdReasons": [
+        "unresolved-endpoint-or-axis",
+        "incomplete-opposing-directions",
+        "colocated-counters",
+        "junction-and-turn-movements-unreviewed"
+      ],
+      "playbackEligible": false
+    }
+  ]
+}

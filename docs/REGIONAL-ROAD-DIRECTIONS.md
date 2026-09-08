@@ -66,3 +66,5 @@ python3 -B scripts/download-regional-road-direction-sources.py \
 ```
 
 The 12 direction/corridor regression cases cover exact artifact reproduction, `von` reversal, homonyms, short-distance rejection, approach labels, changed loop mappings, wrong bearings, disconnected named-road geometry, changed labels/axis gates, incomplete hours, corrupted source bytes, unresolved intervening counters, mixed measurement bases and junction holds. Refreshing sources requires reviewing the changed evidence and pins; fresh bytes are never silently substituted under the existing reviews.
+
+The [following junction and volume increment](REGIONAL-ROAD-VOLUMES.md) confirms an intervening roundabout for the 61103–61101 pair and compiles all 620 series into six hourly data files suitable for counter volume displays. The original direction audit above remains unchanged.

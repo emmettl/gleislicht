@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "inputs": {
+    "data/regional-road-counts.json.gz": "68fbe927ed61d0bf2e3758bc24c293269fb6ae54082c254fe779374a542af1ef",
+    "data/regional-road-geometry.json.gz": "553cebad734e85cddfbc817abd64294f4a36eb72e55343aeb504be4849445efb",
+    "data/regional-road-geometry-audit.json": "8ff562f94eab297cdac19e8c4b2197b47893fde6ecedac64d644e3bec034b2f6",
+    "data/regional-road-direction-audit.json": "fc3172bc4bff9ad99a4573dd11d7fb242f079063cda0cb4a350f4ef3ba940670",
+    "data/regional-road-junction-audit.json": "e17dc7e3ce6533ae1432794b7be76eb310cb05198105f7ca6ccc6c69ac36f761"
+  }
+}

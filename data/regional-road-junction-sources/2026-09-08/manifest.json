@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "complete": true,
+  "acquiredAt": "2026-09-08T18:34:41.663087+00:00",
+  "publisher": "Federal Office of Topography swisstopo",
+  "sourceDescription": "swissTLM3D roads and tracks, local identify response; geometry does not measure turning flows or establish legal movements.",
+  "metadataUrl": "https://api3.geo.admin.ch/rest/services/api/MapServer/ch.swisstopo.swisstlm3d-strassen/legend",
+  "files": [
+    {
+      "id": "thurgau-seestrasse-dorfstrasse",
+      "path": "thurgau-seestrasse-dorfstrasse.json.gz",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/identify?geometryType=esriGeometryEnvelope&geometry=2733750,1277350,2734100,1277700&geometryFormat=geojson&layers=all:ch.swisstopo.swisstlm3d-strassen&mapExtent=2733750,1277350,2734100,1277700&imageDisplay=1000,1000,96&returnGeometry=true&sr=2056&tolerance=0&limit=200",
+      "sha256": "0453b40f553786ec43b130c8d325e2a232567be67243625ce2aec81ba9cabf3d",
+      "bytes": 36154,
+      "features": 61,
+      "boundsLv95": [
+        2733750,
+        1277350,
+        2734100,
+        1277700
+      ]
+    }
+  ]
+}

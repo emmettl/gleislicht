@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "directionAuditSha256": "fc3172bc4bff9ad99a4573dd11d7fb242f079063cda0cb4a350f4ef3ba940670",
+  "sourceManifestSha256": "ba19df1d1c243acf451ac58a49137eb7cd0a00d5f93671f7fd8ad26e6eea9292",
+  "entries": [
+    {
+      "pathId": "thurgau:1626:1",
+      "fromStationId": "thurgau:61103",
+      "toStationId": "thurgau:61101",
+      "sourceId": "thurgau-seestrasse-dorfstrasse",
+      "cycleFeatureIds": [
+        47060270,
+        47060271,
+        47060272
+      ],
+      "branchFeatureId": 46950761,
+      "branchName": "Dorfstrasse",
+      "status": "intervening-roundabout",
+      "note": "The three curved source features form a closed loop between the counters; Dorfstrasse joins at its southern node. Turning flows are unmeasured. Geometric review does not infer legal movements."
+    }
+  ]
+}
