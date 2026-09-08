@@ -8,7 +8,10 @@ import { BERN_ROAD_LIMITS } from './bern-urban-geometry.mjs'
 const BASELINE = 'd8644411b83396e9430e3148638951a2ac2d4ca3'
 const sha = b => createHash('sha256').update(b).digest('hex')
 const old = path => execFileSync('git', ['show', `${BASELINE}:${path}`], { maxBuffer: 64 * 1024 * 1024 })
-const json = async path => JSON.parse(await readFile(path))
+// Keep this historical bus-only proof stable as later Bern releases add routes.
+const RELEASE = 'e9d207d35ba5ae502d6a78fc85730763c8d8fccd'
+const released = path => execFileSync('git', ['show', `${RELEASE}:${path}`], { maxBuffer: 64 * 1024 * 1024 })
+const json = async path => JSON.parse(released(path))
 assert(process.argv[2], 'Provide the verified Bern timetable cache as the first argument')
 const raw = JSON.parse(gunzipSync(await readFile(process.argv[2])))
 const summary = await json('data/bern-audit/summary.json')
@@ -25,7 +28,7 @@ async function day(read, date) {
 const canonical = (t, s) => { const { stops, pathSegments, ...rest } = t; return sha(JSON.stringify({ ...rest, stops: stops.map(([i, ...times]) => [s.stops[i], ...times]), paths: pathSegments.map(i => s.paths[i]) })) }
 const dates = []
 for (const date of road.policy.dates) {
-  const before = await day(old, date), after = await day(readFile, date)
+  const before = await day(old, date), after = await day(released, date)
   for (const [id, t] of before.trains) {
     assert(after.trains.has(id), `Lost previous journey ${id}`)
     assert.equal(canonical(t, before.manifest), canonical(after.trains.get(id), after.manifest), `Changed previous movement ${id}`)

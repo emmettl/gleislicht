@@ -7045,7 +7045,9 @@
     "libero": 0,
     "linienlaen": 4370,
     "routeIds": [
-      "93-246-0-j26-1"
+      "93-246-0-j26-1",
+      "93-246-B-j26-1",
+      "93-246-C-j26-1"
     ],
     "status": "crosswalk-candidate"
   },

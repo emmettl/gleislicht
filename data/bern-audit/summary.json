@@ -3,7 +3,7 @@
   "sourceHashes": {
     "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
     "source": "36146aab8e303a8bc9b6864f0974f2f726aed809cf340958f5233e5e08936956",
-    "crosswalk": "1f8b973c671575202eceecb9f89b1443e9a7f162630cb3beb208e5e5727180f8",
+    "crosswalk": "58f5ab42df0c14b4d5428f1993ab93f0aacd266d3d1dc3a240793c969a08e761",
     "geometryArchive": "4e2a4fcca08cc219c871d42c957753c09318ace2172fb3614c4fe71b20a4fe19",
     "regionalRoadCache": "ec9b92b124cf12ca52f99f30727c2ac11523f01988f6bfa7ac69c7cff4326261",
     "regionalRoadPolicy": "37a6f35b586acdcbc40cc6f9b9b58452f88779a94473efb5af421ff213e7a0a8",
@@ -408,8 +408,8 @@
     "key": "GTFS route identity + direction_id + full ordered original platform IDs, including repeats and out-of-canton calls"
   },
   "routesByStatus": {
-    "admitted-all-dated-trips": 304,
-    "excluded": 130,
+    "admitted-all-dated-trips": 306,
+    "excluded": 128,
     "partially-admitted": 88,
     "inactive-on-validation-dates": 183
   },
@@ -1454,7 +1454,7 @@
       "sourceHashes": {
         "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
         "source": "36146aab8e303a8bc9b6864f0974f2f726aed809cf340958f5233e5e08936956",
-        "crosswalk": "1f8b973c671575202eceecb9f89b1443e9a7f162630cb3beb208e5e5727180f8",
+        "crosswalk": "58f5ab42df0c14b4d5428f1993ab93f0aacd266d3d1dc3a240793c969a08e761",
         "geometryArchive": "4e2a4fcca08cc219c871d42c957753c09318ace2172fb3614c4fe71b20a4fe19",
         "regionalRoadCache": "ec9b92b124cf12ca52f99f30727c2ac11523f01988f6bfa7ac69c7cff4326261",
         "regionalRoadPolicy": "37a6f35b586acdcbc40cc6f9b9b58452f88779a94473efb5af421ff213e7a0a8",
@@ -1464,24 +1464,24 @@
       },
       "coverage": {
         "trips": 43653,
-        "admittedTrips": 36278,
+        "admittedTrips": 36356,
         "scheduledTrips": 28696,
         "representativeHeadwayTrips": 14957,
-        "admittedScheduledTrips": 21321,
+        "admittedScheduledTrips": 21399,
         "admittedRepresentativeHeadwayTrips": 14957,
         "scheduledSegmentOccurrences": 295359,
-        "matchedScheduledSegmentOccurrences": 274318,
+        "matchedScheduledSegmentOccurrences": 274396,
         "segmentOccurrences": 314668,
-        "matchedSegmentOccurrences": 293627,
-        "admittedSegmentOccurrences": 271729,
+        "matchedSegmentOccurrences": 293705,
+        "admittedSegmentOccurrences": 271807,
         "directedPairs": 12321,
-        "matchedDirectedPairs": 10614,
+        "matchedDirectedPairs": 10618,
         "patterns": 2582,
-        "completePatterns": 1835,
-        "admittedPatterns": 1835,
+        "completePatterns": 1839,
+        "admittedPatterns": 1839,
         "excludedTrips": {
           "incomplete-directed-pattern": 4266,
-          "no-verified-operator-line-crosswalk": 3109
+          "no-verified-operator-line-crosswalk": 3031
         }
       },
       "groups": [
@@ -2174,24 +2174,22 @@
           "id": "268:cableway",
           "agency": "Luftseilbahn Mürren-Schilthorn",
           "trips": 78,
-          "admittedTrips": 0,
+          "admittedTrips": 78,
           "scheduledTrips": 78,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 0,
+          "admittedScheduledTrips": 78,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 78,
-          "matchedScheduledSegmentOccurrences": 0,
+          "matchedScheduledSegmentOccurrences": 78,
           "segmentOccurrences": 78,
-          "matchedSegmentOccurrences": 0,
-          "admittedSegmentOccurrences": 0,
+          "matchedSegmentOccurrences": 78,
+          "admittedSegmentOccurrences": 78,
           "directedPairs": 4,
-          "matchedDirectedPairs": 0,
+          "matchedDirectedPairs": 4,
           "patterns": 4,
-          "completePatterns": 0,
-          "admittedPatterns": 0,
-          "excludedTrips": {
-            "no-verified-operator-line-crosswalk": 78
-          }
+          "completePatterns": 4,
+          "admittedPatterns": 4,
+          "excludedTrips": {}
         },
         {
           "id": "272:cableway",
@@ -3423,12 +3421,12 @@
       },
       "payload": {
         "manifest": {
-          "bytes": 7975920,
-          "gzipBytes": 1661806
+          "bytes": 7976457,
+          "gzipBytes": 1661943
         },
         "morning": {
-          "trips": 3368,
-          "gzipBytes": 1977692
+          "trips": 3374,
+          "gzipBytes": 1978010
         },
         "chunks": [
           {
@@ -3438,8 +3436,8 @@
             "path": "day-chunks/00-02.json",
             "tripCount": 241,
             "bytes": 195036,
-            "sha256": "b685451c2f66ae90dd051fe7a3f70ca24621ca3f7f818da9a97b0d60d3327fda",
-            "gzipBytes": 33113
+            "sha256": "15ae9d74bc0476afb30b26678f8a3e1b63483362eb8c1c34d6542c222804e547",
+            "gzipBytes": 33122
           },
           {
             "id": "02-04",
@@ -3458,78 +3456,78 @@
             "path": "day-chunks/04-06.json",
             "tripCount": 566,
             "bytes": 485742,
-            "sha256": "0a6483c2e989bec37bf1a02b6f94bd1e49ce0fb1707c78d721a513ede47a7534",
-            "gzipBytes": 75851
+            "sha256": "a3c7a2420916fec0453c6d229e830cc11019a8d8e8801dcf29670ef5c624e1ea",
+            "gzipBytes": 75853
           },
           {
             "id": "06-08",
             "windowStart": 21600,
             "windowEnd": 28800,
             "path": "day-chunks/06-08.json",
-            "tripCount": 3037,
-            "bytes": 2564225,
-            "sha256": "318143f37e26e0147c6c0adf9e55a1d1843dd64238143cf94052065519634053",
-            "gzipBytes": 300251
+            "tripCount": 3039,
+            "bytes": 2565216,
+            "sha256": "f1b4acbae6926fe905b877c22bd8f4376e8f620009e801317b68dc5e8f6f2b12",
+            "gzipBytes": 300363
           },
           {
             "id": "08-10",
             "windowStart": 28800,
             "windowEnd": 36000,
             "path": "day-chunks/08-10.json",
-            "tripCount": 5006,
-            "bytes": 3768663,
-            "sha256": "dbeeaf9fdcbbb1b05eba169e60305caacdf3d5ffcd8811d13f3b75a3b362936f",
-            "gzipBytes": 336861
+            "tripCount": 5021,
+            "bytes": 3776152,
+            "sha256": "23a44420fd0788ef115a59f6d7fab21f84ab3ef37ba9d817018b9286cc740462",
+            "gzipBytes": 337381
           },
           {
             "id": "10-12",
             "windowStart": 36000,
             "windowEnd": 43200,
             "path": "day-chunks/10-12.json",
-            "tripCount": 7118,
-            "bytes": 5069585,
-            "sha256": "5fba9bba9d9fab7d698f9051b8fc59ef66eb76362ddbfb136b955988792f5173",
-            "gzipBytes": 380473
+            "tripCount": 7136,
+            "bytes": 5078584,
+            "sha256": "46600f58126c50c48db62bcc0af4c0f45d97b6039e34407644fe23e96f253778",
+            "gzipBytes": 380989
           },
           {
             "id": "12-14",
             "windowStart": 43200,
             "windowEnd": 50400,
             "path": "day-chunks/12-14.json",
-            "tripCount": 7292,
-            "bytes": 5209895,
-            "sha256": "2db998aa921f8b7885435e3c72e267be748e99fe7c8d398e724a7945375d3311",
-            "gzipBytes": 395367
+            "tripCount": 7310,
+            "bytes": 5218888,
+            "sha256": "4f16a7d5b934afec3402a7fbbdaccea20b0030c6580f462a074d1cb3493156e6",
+            "gzipBytes": 395864
           },
           {
             "id": "14-16",
             "windowStart": 50400,
             "windowEnd": 57600,
             "path": "day-chunks/14-16.json",
-            "tripCount": 7209,
-            "bytes": 5137037,
-            "sha256": "426db43a9703256218c5dda442d4ce26883e6f80772310ce29b010e47836080a",
-            "gzipBytes": 387231
+            "tripCount": 7227,
+            "bytes": 5146036,
+            "sha256": "8ccd22f582ba3662b283360ee8e812b00381045ae75255cb32719bed52a152fe",
+            "gzipBytes": 387810
           },
           {
             "id": "16-18",
             "windowStart": 57600,
             "windowEnd": 64800,
             "path": "day-chunks/16-18.json",
-            "tripCount": 5415,
-            "bytes": 4116991,
-            "sha256": "f635ae687c89bd698df3d182ba54afc4c70906c91cb0ec021a70b8a2009b57d0",
-            "gzipBytes": 370576
+            "tripCount": 5430,
+            "bytes": 4124501,
+            "sha256": "9dd107dd0c935f23dc5b58eb6cbf5723cb131b48444efb6a591392c07c306957",
+            "gzipBytes": 371028
           },
           {
             "id": "18-20",
             "windowStart": 64800,
             "windowEnd": 72000,
             "path": "day-chunks/18-20.json",
-            "tripCount": 2936,
-            "bytes": 2463391,
-            "sha256": "d5475cccae8f34506ab7506e92dc330f6ad8c969de90775c9f90d677b060f4c2",
-            "gzipBytes": 284191
+            "tripCount": 2937,
+            "bytes": 2463896,
+            "sha256": "9315f7488b0298e7c7d50b0b14037acbd2b2682f09e37a6df7c7bf96bdc6911d",
+            "gzipBytes": 284254
           },
           {
             "id": "20-22",
@@ -3538,8 +3536,8 @@
             "path": "day-chunks/20-22.json",
             "tripCount": 1701,
             "bytes": 1450277,
-            "sha256": "158d685eced89ee65791549d8c4fff37e77712ba1b1cbf87bac796f155a95199",
-            "gzipBytes": 177179
+            "sha256": "b5911f0a7943cbadf19aea437bbe77aa1729025d760be38421b089abe76577fa",
+            "gzipBytes": 177126
           },
           {
             "id": "22-24",
@@ -3548,8 +3546,8 @@
             "path": "day-chunks/22-24.json",
             "tripCount": 1045,
             "bytes": 911196,
-            "sha256": "eb7875bfd61abe54d1993adf84b5e0e05ed7d1b1908f88fcb50556647d59685a",
-            "gzipBytes": 120649
+            "sha256": "f05a45b088fd697a31edb75a38d446c73667c3be38f162d31b298a9dc756436f",
+            "gzipBytes": 120632
           }
         ]
       },
@@ -3570,7 +3568,7 @@
       "sourceHashes": {
         "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
         "source": "36146aab8e303a8bc9b6864f0974f2f726aed809cf340958f5233e5e08936956",
-        "crosswalk": "1f8b973c671575202eceecb9f89b1443e9a7f162630cb3beb208e5e5727180f8",
+        "crosswalk": "58f5ab42df0c14b4d5428f1993ab93f0aacd266d3d1dc3a240793c969a08e761",
         "geometryArchive": "4e2a4fcca08cc219c871d42c957753c09318ace2172fb3614c4fe71b20a4fe19",
         "regionalRoadCache": "ec9b92b124cf12ca52f99f30727c2ac11523f01988f6bfa7ac69c7cff4326261",
         "regionalRoadPolicy": "37a6f35b586acdcbc40cc6f9b9b58452f88779a94473efb5af421ff213e7a0a8",
@@ -3580,24 +3578,24 @@
       },
       "coverage": {
         "trips": 38587,
-        "admittedTrips": 31423,
+        "admittedTrips": 31501,
         "scheduledTrips": 22462,
         "representativeHeadwayTrips": 16125,
-        "admittedScheduledTrips": 15298,
+        "admittedScheduledTrips": 15376,
         "admittedRepresentativeHeadwayTrips": 16125,
         "scheduledSegmentOccurrences": 209388,
-        "matchedScheduledSegmentOccurrences": 190180,
+        "matchedScheduledSegmentOccurrences": 190258,
         "segmentOccurrences": 229859,
-        "matchedSegmentOccurrences": 210651,
-        "admittedSegmentOccurrences": 190311,
+        "matchedSegmentOccurrences": 210729,
+        "admittedSegmentOccurrences": 190389,
         "directedPairs": 13244,
-        "matchedDirectedPairs": 11323,
+        "matchedDirectedPairs": 11327,
         "patterns": 2108,
-        "completePatterns": 1416,
-        "admittedPatterns": 1416,
+        "completePatterns": 1420,
+        "admittedPatterns": 1420,
         "excludedTrips": {
           "incomplete-directed-pattern": 4029,
-          "no-verified-operator-line-crosswalk": 3135
+          "no-verified-operator-line-crosswalk": 3057
         }
       },
       "groups": [
@@ -4290,24 +4288,22 @@
           "id": "268:cableway",
           "agency": "Luftseilbahn Mürren-Schilthorn",
           "trips": 78,
-          "admittedTrips": 0,
+          "admittedTrips": 78,
           "scheduledTrips": 78,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 0,
+          "admittedScheduledTrips": 78,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 78,
-          "matchedScheduledSegmentOccurrences": 0,
+          "matchedScheduledSegmentOccurrences": 78,
           "segmentOccurrences": 78,
-          "matchedSegmentOccurrences": 0,
-          "admittedSegmentOccurrences": 0,
+          "matchedSegmentOccurrences": 78,
+          "admittedSegmentOccurrences": 78,
           "directedPairs": 4,
-          "matchedDirectedPairs": 0,
+          "matchedDirectedPairs": 4,
           "patterns": 4,
-          "completePatterns": 0,
-          "admittedPatterns": 0,
-          "excludedTrips": {
-            "no-verified-operator-line-crosswalk": 78
-          }
+          "completePatterns": 4,
+          "admittedPatterns": 4,
+          "excludedTrips": {}
         },
         {
           "id": "272:cableway",
@@ -5605,12 +5601,12 @@
       },
       "payload": {
         "manifest": {
-          "bytes": 8010472,
-          "gzipBytes": 1745563
+          "bytes": 8011009,
+          "gzipBytes": 1745657
         },
         "morning": {
-          "trips": 2048,
-          "gzipBytes": 1920704
+          "trips": 2054,
+          "gzipBytes": 1921090
         },
         "chunks": [
           {
@@ -5620,8 +5616,8 @@
             "path": "day-chunks/00-02.json",
             "tripCount": 435,
             "bytes": 364616,
-            "sha256": "74b3003a76ec3371e7a1645f2a9e41aaaaaa5df05389478739ccba645d745e0c",
-            "gzipBytes": 58557
+            "sha256": "cb37a842bc58476cb633be568b2a7147cfb743eb298aadf170a14e4de7041670",
+            "gzipBytes": 58554
           },
           {
             "id": "02-04",
@@ -5630,8 +5626,8 @@
             "path": "day-chunks/02-04.json",
             "tripCount": 125,
             "bytes": 121932,
-            "sha256": "f2108a077b0060e525393054607d349da5d091f579d57e604567a97cd538765a",
-            "gzipBytes": 20046
+            "sha256": "560fb1eac16e3f513064bae9efb7cca4f99e428ffe2a87139ef4d824464b6bd0",
+            "gzipBytes": 20034
           },
           {
             "id": "04-06",
@@ -5640,78 +5636,78 @@
             "path": "day-chunks/04-06.json",
             "tripCount": 238,
             "bytes": 204235,
-            "sha256": "00e41091f00b422023e86bed36171e7eb2daa8ecc4b5e39004554c827ca84e89",
-            "gzipBytes": 35120
+            "sha256": "90e26d5e09eb9c1492163bb7a7f403dee264228fe5e259c837e35b484737b8bb",
+            "gzipBytes": 35123
           },
           {
             "id": "06-08",
             "windowStart": 21600,
             "windowEnd": 28800,
             "path": "day-chunks/06-08.json",
-            "tripCount": 1385,
-            "bytes": 1119673,
-            "sha256": "235b4778eb4e7ac90991faea30bb64f7bfa44d94feb391cc823a5e420809c8d6",
-            "gzipBytes": 138466
+            "tripCount": 1387,
+            "bytes": 1120664,
+            "sha256": "7e506e39c95d667a608c34a7b05e67bd54be57797d0e42577d89a6b7cd13fca8",
+            "gzipBytes": 138634
           },
           {
             "id": "08-10",
             "windowStart": 28800,
             "windowEnd": 36000,
             "path": "day-chunks/08-10.json",
-            "tripCount": 4469,
-            "bytes": 3165150,
-            "sha256": "24405d891a20327cde64f7e03b76b2e9aa454b75867bf802719884a5691c9538",
-            "gzipBytes": 251436
+            "tripCount": 4484,
+            "bytes": 3172639,
+            "sha256": "48cded12de8d200cb637fa037dc68200a3ef34d207c08d8a77db315fe517c541",
+            "gzipBytes": 251981
           },
           {
             "id": "10-12",
             "windowStart": 36000,
             "windowEnd": 43200,
             "path": "day-chunks/10-12.json",
-            "tripCount": 6702,
-            "bytes": 4607307,
-            "sha256": "465215b03b7e1f3ae4ae022f32d590e1a01241a3804c0f78127504d5764dd128",
-            "gzipBytes": 316367
+            "tripCount": 6720,
+            "bytes": 4616306,
+            "sha256": "1657fd474244d93cdbfadee251ed56b2007e5cb99b053b37bbb335bb37e01fd7",
+            "gzipBytes": 317048
           },
           {
             "id": "12-14",
             "windowStart": 43200,
             "windowEnd": 50400,
             "path": "day-chunks/12-14.json",
-            "tripCount": 6751,
-            "bytes": 4665489,
-            "sha256": "4fb8582b01239dd9ba6f27aa4bfb036712b38a9dbacddb8f58e8d288cff212ad",
-            "gzipBytes": 320975
+            "tripCount": 6769,
+            "bytes": 4674482,
+            "sha256": "73d42272eed6e92e11801dc22422d4644cd38449081c79d7015c109e5d504ea3",
+            "gzipBytes": 321631
           },
           {
             "id": "14-16",
             "windowStart": 50400,
             "windowEnd": 57600,
             "path": "day-chunks/14-16.json",
-            "tripCount": 6803,
-            "bytes": 4710621,
-            "sha256": "4fdcc38d07447d3b559b7f87231de8e1132a60ea7066f2e0bba76fbe312fbb7c",
-            "gzipBytes": 325883
+            "tripCount": 6821,
+            "bytes": 4719620,
+            "sha256": "cdc0e27d39789e2b3c88cefb2d34e74234d856d198be52ea96aa251a24643983",
+            "gzipBytes": 326520
           },
           {
             "id": "16-18",
             "windowStart": 57600,
             "windowEnd": 64800,
             "path": "day-chunks/16-18.json",
-            "tripCount": 4511,
-            "bytes": 3297418,
-            "sha256": "c8156db4411eebca5f50e96e112410f8b4f443f96f4a6df63df96063ba5599b9",
-            "gzipBytes": 276108
+            "tripCount": 4526,
+            "bytes": 3304928,
+            "sha256": "5c976628b5879474bb46e2802797cab00f28f1b52217aa0ef122b31356756be5",
+            "gzipBytes": 276474
           },
           {
             "id": "18-20",
             "windowStart": 64800,
             "windowEnd": 72000,
             "path": "day-chunks/18-20.json",
-            "tripCount": 1996,
-            "bytes": 1649866,
-            "sha256": "e2f4e9430f5d0ad467e45c42e6be29fe510b0e58ff79f988be975e8a0fcb2237",
-            "gzipBytes": 194098
+            "tripCount": 1997,
+            "bytes": 1650371,
+            "sha256": "9113e6c55acb7d3cb1816c0871928686fa1de39896596adaac6fdb31f98951c7",
+            "gzipBytes": 194160
           },
           {
             "id": "20-22",
@@ -5720,8 +5716,8 @@
             "path": "day-chunks/20-22.json",
             "tripCount": 1380,
             "bytes": 1167611,
-            "sha256": "536453fee38602afa16cd1d1716b074922bfd1acdcf968f767ac1265992c4c33",
-            "gzipBytes": 144208
+            "sha256": "56767df4a40120628a3620cdb2c8b8c2841032f89b76167782fda873ace60c17",
+            "gzipBytes": 144251
           },
           {
             "id": "22-24",
@@ -5730,8 +5726,8 @@
             "path": "day-chunks/22-24.json",
             "tripCount": 932,
             "bytes": 806876,
-            "sha256": "947f91524d6e472edb9261eac0331f162185afceca9874b7aab39f5dd4549c00",
-            "gzipBytes": 107593
+            "sha256": "36a517cc84e7d6deb08c52c8ddcc503df772560c86a8112091a306894edb8395",
+            "gzipBytes": 107612
           }
         ]
       },

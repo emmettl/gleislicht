@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest'
 import { readFileSync } from 'node:fs'
 import { gunzipSync } from 'node:zlib'
 import { bernArea, bernLv95, bernWgs84 } from './bern-spatial.mjs'
-import { bernFeatureMatch, bernGraph, bernLineNumbers, bernPatternId, bernAdmission, applyBernGeometry } from './bern-line-geometry.mjs'
+import { bernFeatureMatch, bernGraph, bernLineNumbers, bernPatternId, bernAdmission, applyBernGeometry, bernSectionFeature } from './bern-line-geometry.mjs'
 import { bernInstances } from './bern-timetable.mjs'
 import { compactBernFeed, validateBernSnapshot } from './build-bern-region.mjs'
 import { matchBaselSegment } from './basel-line-geometry.mjs'
@@ -137,4 +137,27 @@ it('scopes reviewed IR65, R71 and Gimmelwald–Mürren aliases without widening 
     for (const name of rejected) expect(bernFeatureMatch({ ...route, agencyId, mode, name }, f, policy)).toBe(false)
     expect(policy.supportingDocuments.some(d => d.file === policy.featureOverrides[code].supportingDocument)).toBe(true)
   }
+})
+
+it('isolates the two Schilthorn cable sections without joining their distinct Birg endpoints', () => {
+  const policy = JSON.parse(readFileSync('data/bern-operator-crosswalk.json'))
+  const source = JSON.parse(gunzipSync(readFileSync('data/bern-sources/decoded.json.gz')))
+  const f = source.lines.find(f => f.properties.liniencode === '2460_2')
+  const routes = policy.featureOverrides['2460_2'].routeSections.map(s => ({ id: s.routeId, agencyId: s.agencyId, name: s.line, mode: s.mode }))
+  const stops = [[7.89127759, 46.55772515, 'Mürren', '', 'ch:1:sloid:7455'], [7.8577974, 46.5618265, 'Birg', '', 'ch:1:sloid:7456'], [7.8352496, 46.5572619, 'Schilthorn', '', 'ch:1:sloid:7457']]
+  const trains = routes.flatMap((r, i) => [[i, i + 1], [i + 1, i]].map((ids, direction) => ({ routeId: r.id, route: r.name, directionId: String(direction), stops: ids.map(j => [j]), sourceServiceDate: '2026-09-04' })))
+  const matched = applyBernGeometry({ metadata: { serviceDate: '2026-09-04' }, stops, trains }, new Map(routes.map(r => [r.id, r])), source, policy)
+  expect(matched.trains.every(t => t.admission === 'admitted')).toBe(true)
+  expect(matched.paths).toHaveLength(4)
+  for (let i = 0; i < routes.length; i++) {
+    const r = routes[i]
+    expect(bernFeatureMatch(r, f, policy)).toBe(true)
+    for (const changed of [{ id: 'different-route' }, { agencyId: '256' }, { name: '24602' }, { mode: 'bus' }]) expect(bernFeatureMatch({ ...r, ...changed }, f, policy)).toBe(false)
+    expect(bernSectionFeature(r, f, policy).geometry.coordinates).toEqual(f.geometry.coordinates[i])
+    expect(matched.paths[2 * i + 1]).toEqual([...matched.paths[2 * i]].reverse())
+  }
+  const changed = structuredClone(f); changed.geometry.coordinates[1][0][0] += 0.001
+  expect(() => bernSectionFeature(routes[1], changed, policy)).toThrow('missing or ambiguous')
+  const missingEvidence = structuredClone(policy); missingEvidence.supportingDocuments = []
+  expect(() => bernSectionFeature(routes[0], f, missingEvidence)).toThrow('Missing section identity evidence')
 })

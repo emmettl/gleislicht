@@ -52,7 +52,7 @@ Generated from the [Bern audit](BERN-STUDY.md). Counts are admitted / candidate 
 | 239 | Niederhornbahn AG | 1 | 150 / 150 | 112 / 112 |
 | 256 | Stechelberg-Mürren-Schilthorn (lsms) | 3 | 173 / 173 | 177 / 177 |
 | 264 | Stockhornbahn AG | 1 | 73 / 73 | 73 / 73 |
-| 268 | Luftseilbahn Mürren-Schilthorn | 2 | 0 / 78 | 0 / 78 |
+| 268 | Luftseilbahn Mürren-Schilthorn | 2 | 78 / 78 | 78 / 78 |
 | 272 | Grindelwald-Pfingstegg | 1 | 52 / 52 | 52 / 52 |
 | 282 | Bergbahnen Engstligenalp AG | 1 | 102 / 102 | 102 / 102 |
 | 298 | Lenk Bergbahnen | 2 | 1,860 / 1,860 | 1,860 / 1,860 |
@@ -387,8 +387,8 @@ Generated from the [Bern audit](BERN-STUDY.md). Counts are admitted / candidate 
 | 93-246-D-j26-1 | 256: 24602 | cableway | admitted-all-dated-trips | 66 / 66 | 68 / 68 | 2460_1 | — | — |
 | 92-A08-C-j26-1 | 256: EV | bus | inactive-on-validation-dates | 0 / 0 | 0 / 0 | — | — | Not active on these dates |
 | 93-237-0-j26-1 | 264: 2370 | cableway | admitted-all-dated-trips | 73 / 73 | 73 / 73 | 2370_1 | — | — |
-| 93-246-B-j26-1 | 268: 24603 | cableway | excluded | 0 / 39 | 0 / 39 | — | — | no-verified-operator-line-crosswalk |
-| 93-246-C-j26-1 | 268: 24604 | cableway | excluded | 0 / 39 | 0 / 39 | — | — | no-verified-operator-line-crosswalk |
+| 93-246-B-j26-1 | 268: 24603 | cableway | admitted-all-dated-trips | 39 / 39 | 39 / 39 | 2460_2 | — | — |
+| 93-246-C-j26-1 | 268: 24604 | cableway | admitted-all-dated-trips | 39 / 39 | 39 / 39 | 2460_2 | — | — |
 | 93-244-2-j26-1 | 272: 2442 | cableway | admitted-all-dated-trips | 52 / 52 | 52 / 52 | 2442_1 | — | — |
 | 93-242-7-j26-1 | 282: 2427 | cableway | admitted-all-dated-trips | 102 / 102 | 102 / 102 | 2427_1 | — | — |
 | 93-238-0-j26-1 | 298: 2380 | cableway | admitted-all-dated-trips | 960 / 960 | 960 / 960 | 2380_1 | — | — |

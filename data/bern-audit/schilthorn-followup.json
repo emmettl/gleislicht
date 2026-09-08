@@ -1,0 +1,484 @@
+{
+  "schemaVersion": 1,
+  "baselineCommit": "e9d207d35ba5ae502d6a78fc85730763c8d8fccd",
+  "sourceHashes": {
+    "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+    "source": "36146aab8e303a8bc9b6864f0974f2f726aed809cf340958f5233e5e08936956",
+    "crosswalk": "58f5ab42df0c14b4d5428f1993ab93f0aacd266d3d1dc3a240793c969a08e761",
+    "geometryArchive": "4e2a4fcca08cc219c871d42c957753c09318ace2172fb3614c4fe71b20a4fe19",
+    "regionalRoadCache": "ec9b92b124cf12ca52f99f30727c2ac11523f01988f6bfa7ac69c7cff4326261",
+    "regionalRoadPolicy": "37a6f35b586acdcbc40cc6f9b9b58452f88779a94473efb5af421ff213e7a0a8",
+    "mountainPolicy": "2255393078b1728f8150edc0c0333b75394ca76bee70505a21314a71acdefc89",
+    "urbanCache": "5ef487abdf873508305508e5096c26ca0fbebd9abc9b0846195abc840af07d0f",
+    "urbanPolicy": "1ca5bdf7f752349c915180c881292cfd31465398efb956e58afc5934b875f8fb"
+  },
+  "supportingDocument": {
+    "file": "corridor-2460-2026.pdf",
+    "sourceUrl": "https://widgets.oev-info.ch/publikation/jahresfpl/2460.pdf",
+    "title": "Fahrplanjahr 2026, field 2460: Stechelberg–Mürren–Schilthorn; Gimmelwald–Mürren section",
+    "sourceDate": "2025-08-28",
+    "validTimetableYear": 2026,
+    "acquiredAt": "2026-09-08T18:24:02.415206+00:00",
+    "sha256": "256c81591b94b77439561b96d0e4079189a2603beacc7b2c8bb257fc225df961",
+    "attribution": "öv-info.ch / Schilthornbahn",
+    "role": "Evidence for the exact dated operator/line corridor; times and complete platform calls remain from pinned national GTFS."
+  },
+  "bindings": [
+    {
+      "routeId": "93-246-B-j26-1",
+      "agencyId": "268",
+      "line": "24603",
+      "mode": "cableway",
+      "partSha256": "2dbbbe294d058c296febdb337e0f45de39f1931ecb7d38e7d60efa8d5a83943a",
+      "supportingDocument": "corridor-2460-2026.pdf",
+      "section": "Mürren (Schilthornbahn)–Birg (Schilthornbahn)",
+      "sourceLine": "2460_2",
+      "originalLv95Coordinates": [
+        [
+          2634711.938,
+          1156374.02
+        ],
+        [
+          2632141.014,
+          1156818.968
+        ]
+      ]
+    },
+    {
+      "routeId": "93-246-C-j26-1",
+      "agencyId": "268",
+      "line": "24604",
+      "mode": "cableway",
+      "partSha256": "c8f625287a0a62ec321724e957589edddc84687e1e7a0b5d8601d2b8373557c2",
+      "supportingDocument": "corridor-2460-2026.pdf",
+      "section": "Birg (Schilthornbahn)–Schilthorn",
+      "sourceLine": "2460_2",
+      "originalLv95Coordinates": [
+        [
+          2632103.068,
+          1156807.07
+        ],
+        [
+          2630413.285,
+          1156303.58
+        ]
+      ]
+    }
+  ],
+  "limits": {
+    "snapMetres": 80,
+    "detourRatio": 4.5,
+    "detourFloorMetres": 1200,
+    "alternativeSnapMetres": 5
+  },
+  "birgEndpointsLv95": [
+    [
+      2632141.014,
+      1156818.968
+    ],
+    [
+      2632103.068,
+      1156807.07
+    ]
+  ],
+  "birgSourceEndpointSeparationMetres": 39.767591327622306,
+  "interpretation": "Exact route, agency, mode and section identity selects one original cable axis. Birg has distinct source endpoints; no topology bridge is added. Original GTFS stop coordinates attach within the unchanged 80 m limit. This remains inferred source geometry, not an observed cabin trajectory.",
+  "dates": [
+    {
+      "date": "2026-09-04",
+      "previousJourneysPreserved": 36278,
+      "addedScheduledJourneys": 78,
+      "totalAdmittedJourneys": 36356,
+      "routes": [
+        {
+          "routeId": "93-246-B-j26-1",
+          "line": "24603",
+          "scheduledJourneys": 39,
+          "directionIds": [
+            "0",
+            "1"
+          ],
+          "patterns": 2,
+          "pairs": [
+            {
+              "routeId": "93-246-B-j26-1",
+              "agencyId": "268",
+              "mode": "cableway",
+              "fromId": "ch:1:sloid:7455",
+              "toId": "ch:1:sloid:7456",
+              "from": "Mürren (Schilthornbahn)",
+              "to": "Birg (Schilthornbahn)",
+              "maximumSnapMetres": 5.707349637924578,
+              "pathMetres": 2603.0368545685255,
+              "occurrences": 20,
+              "admittedOccurrences": 20,
+              "matched": true
+            },
+            {
+              "routeId": "93-246-B-j26-1",
+              "agencyId": "268",
+              "mode": "cableway",
+              "fromId": "ch:1:sloid:7456",
+              "toId": "ch:1:sloid:7455",
+              "from": "Birg (Schilthornbahn)",
+              "to": "Mürren (Schilthornbahn)",
+              "maximumSnapMetres": 5.707349637924578,
+              "pathMetres": 2603.0368545685255,
+              "occurrences": 19,
+              "admittedOccurrences": 19,
+              "matched": true
+            }
+          ],
+          "maximumSnapMetres": 5.707349637924578
+        },
+        {
+          "routeId": "93-246-C-j26-1",
+          "line": "24604",
+          "scheduledJourneys": 39,
+          "directionIds": [
+            "0",
+            "1"
+          ],
+          "patterns": 2,
+          "pairs": [
+            {
+              "routeId": "93-246-C-j26-1",
+              "agencyId": "268",
+              "mode": "cableway",
+              "fromId": "ch:1:sloid:7456",
+              "toId": "ch:1:sloid:7457",
+              "from": "Birg (Schilthornbahn)",
+              "to": "Schilthorn",
+              "maximumSnapMetres": 37.47662843751734,
+              "pathMetres": 1760.4842777148606,
+              "occurrences": 20,
+              "admittedOccurrences": 20,
+              "matched": true
+            },
+            {
+              "routeId": "93-246-C-j26-1",
+              "agencyId": "268",
+              "mode": "cableway",
+              "fromId": "ch:1:sloid:7457",
+              "toId": "ch:1:sloid:7456",
+              "from": "Schilthorn",
+              "to": "Birg (Schilthornbahn)",
+              "maximumSnapMetres": 37.47662843751734,
+              "pathMetres": 1760.4842777148606,
+              "occurrences": 19,
+              "admittedOccurrences": 19,
+              "matched": true
+            }
+          ],
+          "maximumSnapMetres": 37.47662843751734
+        }
+      ],
+      "deferredRail": [
+        {
+          "routeId": "91-36-D-j26-1",
+          "line": "S36",
+          "gaps": [
+            {
+              "routeId": "91-36-D-j26-1",
+              "agencyId": "33",
+              "mode": "rail",
+              "fromId": "ch:1:sloid:220:0:1",
+              "toId": "ch:1:sloid:4415:1:1",
+              "from": "Dotzigen",
+              "to": "Busswil BE",
+              "reason": "disconnected-line",
+              "maximumSnapMetres": 9.387431561753218,
+              "occurrences": 25,
+              "admittedOccurrences": 0,
+              "matched": false
+            },
+            {
+              "routeId": "91-36-D-j26-1",
+              "agencyId": "33",
+              "mode": "rail",
+              "fromId": "ch:1:sloid:4415:1:1",
+              "toId": "ch:1:sloid:220:0:1",
+              "from": "Busswil BE",
+              "to": "Dotzigen",
+              "reason": "disconnected-line",
+              "maximumSnapMetres": 9.387431561753218,
+              "occurrences": 25,
+              "admittedOccurrences": 0,
+              "matched": false
+            }
+          ],
+          "decision": "Retain exclusion: nearby source parts do not share an exact topology vertex; no new connecting geometry reviewed."
+        },
+        {
+          "routeId": "91-4-C-j26-1",
+          "line": "S4",
+          "gaps": [
+            {
+              "routeId": "91-4-C-j26-1",
+              "agencyId": "33",
+              "mode": "rail",
+              "fromId": "ch:1:sloid:4410:1:1",
+              "toId": "ch:1:sloid:8001:1:3",
+              "from": "Zollikofen",
+              "to": "Schönbühl SBB",
+              "reason": "disconnected-line",
+              "maximumSnapMetres": 6.67976460047477,
+              "occurrences": 22,
+              "admittedOccurrences": 0,
+              "matched": false
+            },
+            {
+              "routeId": "91-4-C-j26-1",
+              "agencyId": "33",
+              "mode": "rail",
+              "fromId": "ch:1:sloid:8001:1:4",
+              "toId": "ch:1:sloid:4410:2:3",
+              "from": "Schönbühl SBB",
+              "to": "Zollikofen",
+              "reason": "disconnected-line",
+              "maximumSnapMetres": 8.012522793054663,
+              "occurrences": 21,
+              "admittedOccurrences": 0,
+              "matched": false
+            }
+          ],
+          "decision": "Retain exclusion: nearby source parts do not share an exact topology vertex; no new connecting geometry reviewed."
+        }
+      ],
+      "checks": {
+        "allPreviousMovementsAndPathsUnchanged": true,
+        "allAddedSourceCallsAndFieldsUnchanged": true,
+        "allNewPathsReproducedFromExactSourceParts": true,
+        "unrelatedPairDecisionsUnchanged": true,
+        "sourceAndLimitsUnchangedExceptExplicitCrosswalk": true
+      }
+    },
+    {
+      "date": "2026-09-06",
+      "previousJourneysPreserved": 31423,
+      "addedScheduledJourneys": 78,
+      "totalAdmittedJourneys": 31501,
+      "routes": [
+        {
+          "routeId": "93-246-B-j26-1",
+          "line": "24603",
+          "scheduledJourneys": 39,
+          "directionIds": [
+            "0",
+            "1"
+          ],
+          "patterns": 2,
+          "pairs": [
+            {
+              "routeId": "93-246-B-j26-1",
+              "agencyId": "268",
+              "mode": "cableway",
+              "fromId": "ch:1:sloid:7455",
+              "toId": "ch:1:sloid:7456",
+              "from": "Mürren (Schilthornbahn)",
+              "to": "Birg (Schilthornbahn)",
+              "maximumSnapMetres": 5.707349637924578,
+              "pathMetres": 2603.0368545685255,
+              "occurrences": 20,
+              "admittedOccurrences": 20,
+              "matched": true
+            },
+            {
+              "routeId": "93-246-B-j26-1",
+              "agencyId": "268",
+              "mode": "cableway",
+              "fromId": "ch:1:sloid:7456",
+              "toId": "ch:1:sloid:7455",
+              "from": "Birg (Schilthornbahn)",
+              "to": "Mürren (Schilthornbahn)",
+              "maximumSnapMetres": 5.707349637924578,
+              "pathMetres": 2603.0368545685255,
+              "occurrences": 19,
+              "admittedOccurrences": 19,
+              "matched": true
+            }
+          ],
+          "maximumSnapMetres": 5.707349637924578
+        },
+        {
+          "routeId": "93-246-C-j26-1",
+          "line": "24604",
+          "scheduledJourneys": 39,
+          "directionIds": [
+            "0",
+            "1"
+          ],
+          "patterns": 2,
+          "pairs": [
+            {
+              "routeId": "93-246-C-j26-1",
+              "agencyId": "268",
+              "mode": "cableway",
+              "fromId": "ch:1:sloid:7456",
+              "toId": "ch:1:sloid:7457",
+              "from": "Birg (Schilthornbahn)",
+              "to": "Schilthorn",
+              "maximumSnapMetres": 37.47662843751734,
+              "pathMetres": 1760.4842777148606,
+              "occurrences": 20,
+              "admittedOccurrences": 20,
+              "matched": true
+            },
+            {
+              "routeId": "93-246-C-j26-1",
+              "agencyId": "268",
+              "mode": "cableway",
+              "fromId": "ch:1:sloid:7457",
+              "toId": "ch:1:sloid:7456",
+              "from": "Schilthorn",
+              "to": "Birg (Schilthornbahn)",
+              "maximumSnapMetres": 37.47662843751734,
+              "pathMetres": 1760.4842777148606,
+              "occurrences": 19,
+              "admittedOccurrences": 19,
+              "matched": true
+            }
+          ],
+          "maximumSnapMetres": 37.47662843751734
+        }
+      ],
+      "deferredRail": [
+        {
+          "routeId": "91-36-D-j26-1",
+          "line": "S36",
+          "gaps": [
+            {
+              "routeId": "91-36-D-j26-1",
+              "agencyId": "33",
+              "mode": "rail",
+              "fromId": "ch:1:sloid:220:0:1",
+              "toId": "ch:1:sloid:4415:1:1",
+              "from": "Dotzigen",
+              "to": "Busswil BE",
+              "reason": "disconnected-line",
+              "maximumSnapMetres": 9.387431561753218,
+              "occurrences": 19,
+              "admittedOccurrences": 0,
+              "matched": false
+            },
+            {
+              "routeId": "91-36-D-j26-1",
+              "agencyId": "33",
+              "mode": "rail",
+              "fromId": "ch:1:sloid:4415:1:1",
+              "toId": "ch:1:sloid:220:0:1",
+              "from": "Busswil BE",
+              "to": "Dotzigen",
+              "reason": "disconnected-line",
+              "maximumSnapMetres": 9.387431561753218,
+              "occurrences": 19,
+              "admittedOccurrences": 0,
+              "matched": false
+            }
+          ],
+          "decision": "Retain exclusion: nearby source parts do not share an exact topology vertex; no new connecting geometry reviewed."
+        },
+        {
+          "routeId": "91-4-C-j26-1",
+          "line": "S4",
+          "gaps": [
+            {
+              "routeId": "91-4-C-j26-1",
+              "agencyId": "33",
+              "mode": "rail",
+              "fromId": "ch:1:sloid:4410:1:1",
+              "toId": "ch:1:sloid:8001:1:3",
+              "from": "Zollikofen",
+              "to": "Schönbühl SBB",
+              "reason": "disconnected-line",
+              "maximumSnapMetres": 6.67976460047477,
+              "occurrences": 20,
+              "admittedOccurrences": 0,
+              "matched": false
+            },
+            {
+              "routeId": "91-4-C-j26-1",
+              "agencyId": "33",
+              "mode": "rail",
+              "fromId": "ch:1:sloid:8001:1:4",
+              "toId": "ch:1:sloid:4410:2:3",
+              "from": "Schönbühl SBB",
+              "to": "Zollikofen",
+              "reason": "disconnected-line",
+              "maximumSnapMetres": 8.012522793054663,
+              "occurrences": 20,
+              "admittedOccurrences": 0,
+              "matched": false
+            },
+            {
+              "routeId": "91-4-C-j26-1",
+              "agencyId": "33",
+              "mode": "rail",
+              "fromId": "ch:1:sloid:8001:1:4",
+              "toId": "ch:1:sloid:4410:2:2",
+              "from": "Schönbühl SBB",
+              "to": "Zollikofen",
+              "reason": "disconnected-line",
+              "maximumSnapMetres": 2.736323034995316,
+              "occurrences": 1,
+              "admittedOccurrences": 0,
+              "matched": false
+            }
+          ],
+          "decision": "Retain exclusion: nearby source parts do not share an exact topology vertex; no new connecting geometry reviewed."
+        }
+      ],
+      "checks": {
+        "allPreviousMovementsAndPathsUnchanged": true,
+        "allAddedSourceCallsAndFieldsUnchanged": true,
+        "allNewPathsReproducedFromExactSourceParts": true,
+        "unrelatedPairDecisionsUnchanged": true,
+        "sourceAndLimitsUnchangedExceptExplicitCrosswalk": true
+      }
+    }
+  ],
+  "seasonalChecks": [
+    {
+      "date": "2026-01-16",
+      "addedScheduledJourneys": 72,
+      "unrelatedPatternsUnchanged": true,
+      "allSectionPatternsComplete": true
+    },
+    {
+      "date": "2026-01-18",
+      "addedScheduledJourneys": 72,
+      "unrelatedPatternsUnchanged": true,
+      "allSectionPatternsComplete": true
+    },
+    {
+      "date": "2026-04-03",
+      "addedScheduledJourneys": 72,
+      "unrelatedPatternsUnchanged": true,
+      "allSectionPatternsComplete": true
+    },
+    {
+      "date": "2026-04-05",
+      "addedScheduledJourneys": 72,
+      "unrelatedPatternsUnchanged": true,
+      "allSectionPatternsComplete": true
+    },
+    {
+      "date": "2026-08-01",
+      "addedScheduledJourneys": 78,
+      "unrelatedPatternsUnchanged": true,
+      "allSectionPatternsComplete": true
+    },
+    {
+      "date": "2026-12-04",
+      "addedScheduledJourneys": 72,
+      "unrelatedPatternsUnchanged": true,
+      "allSectionPatternsComplete": true
+    },
+    {
+      "date": "2026-12-06",
+      "addedScheduledJourneys": 72,
+      "unrelatedPatternsUnchanged": true,
+      "allSectionPatternsComplete": true
+    }
+  ]
+}
