@@ -255,3 +255,40 @@ or presentation delay. The study-switch handler updates the active network and
 resets selection/time state; the screenshots cannot establish which part of
 that work, versus the ongoing animation workload, caused the worst interaction.
 No additional switch-handler change was made from this evidence alone.
+
+## Follow-up: leave a frame between trail rebuilds under load
+
+The initial adaptive changes were committed and pushed as `cd2c4f4` (Pages
+build 176). Further testing addresses the case where a frame already takes
+longer than the 15 Hz trail interval: while the budget is reduced, a trail
+rebuild must now be followed by one frame without a rebuild. The wall-clock
+cap still applies. On recovery, only the normal 30 Hz time cap remains. Clock
+reporting keeps the policy in `cd2c4f4`; this additional change only gates trails.
+
+Local comparisons using the same isolated source and benchmark settings:
+
+| 24× CPU stress | Adaptive clock and trails | Plus intervening trail-free frame |
+| --- | ---: | ---: |
+| PostBus FPS | 15.0 | 17.7 |
+| PostBus scripting per frame | 60.21 ms | 50.73 ms |
+| PostBus p95 frame interval | 83.4 ms | 83.4 ms |
+| SBB FPS | 35.1 | 35.6 |
+| SBB scripting per frame | 24.00 ms | 23.41 ms |
+
+At 8× CPU, PostBus measured 58.7 FPS / 13.42 ms scripting and SBB 59.7 FPS /
+7.32 ms. All benchmark runs reported no page errors. These single local
+comparisons indicate about 16% less scripting and 18% higher average FPS for
+the severely stressed PostBus case. They do not show shorter worst frames or
+establish performance on Windows. Trails refresh less often on overloaded
+devices, while markers still update every frame.
+
+A separate experiment replacing typed-array position `.set()` calls with
+direct coordinate writes did not show a consistent benefit (PostBus 16.9 FPS,
+SBB 36.7 FPS) and was discarded. Unit tests cover mandatory intervening frames
+below 15 FPS, the time cap, and restoration of normal cadence after recovery.
+
+Validation: production build, focused lint, seven focused unit tests, and four
+Chromium/WebKit production-build checks passed for schedule switching and
+PostBus playback, scrubbing and route selection. An earlier development-server
+run was invalidated by an experiment-triggered reload during the last WebKit
+test; all four checks were therefore rerun against the fixed production build.

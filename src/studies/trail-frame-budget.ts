@@ -3,6 +3,19 @@ export class TrailFrameBudget {
   private averageFrame = 1 / 60
   private recoverySeconds = 0
   private reduced = false
+  private updatedPreviousFrame = false
+
+  shouldUpdateTrail(delta: number, elapsedSinceUpdate: number): boolean {
+    const interval = this.interval(delta)
+    // A wall-clock cap alone does nothing when one frame already exceeds it.
+    // Leave a frame between rebuilds under load, even below 15 FPS.
+    if (this.reduced && this.updatedPreviousFrame) {
+      this.updatedPreviousFrame = false
+      return false
+    }
+    this.updatedPreviousFrame = elapsedSinceUpdate >= interval
+    return this.updatedPreviousFrame
+  }
 
   interval(delta: number): number {
     // A background-tab resume is not a sustained rendering problem.

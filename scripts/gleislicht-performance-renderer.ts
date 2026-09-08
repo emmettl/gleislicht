@@ -43,7 +43,7 @@ export function gleislichtPerformanceRenderer(): Plugin {
           'state.clock.elapsedTime - lastReport.current > (selectedTrain || comparisonTrains?.length ? 0.1 : uiFrameBudget.interval(delta) * 3)')
         replace('const lastUpdate = useRef(-1);', 'const lastUpdate = useRef(-1);\n    const trailFrameBudget = useMemo(() => new TrailFrameBudget(), []);')
         replace('if (clock.elapsedTime - lastUpdate.current < 1 / 30)',
-          'if (clock.elapsedTime - lastUpdate.current < trailFrameBudget.interval(delta))')
+          'if (!trailFrameBudget.shouldUpdateTrail(delta, clock.elapsedTime - lastUpdate.current))')
         code = 'import { TrailFrameBudget } from "/src/studies/trail-frame-budget.ts";\n' + code
         replace("import { positionForTrain, } from '@motionstudies/core/domain/network';",
           'import { positionForTrain } from "/src/studies/train-position.ts";')
