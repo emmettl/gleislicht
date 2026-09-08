@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest'
+import { beforeAll, describe, it, expect } from 'vitest'
 import { readFile, mkdtemp, rm, readdir } from 'node:fs/promises'
 import { join } from 'node:path'
 import { tmpdir } from 'node:os'
@@ -60,47 +60,51 @@ describe('Bern display release', () => {
       }
     } finally { await rm(output, { recursive: true, force: true }) }
   }, 30000)
-  it('rejects mixed geometry, missing credit, false counts, unsafe deviation and unreviewed dates', async () => {
-    const release = await readRegionalDirectory('public/data', ['bern-region'])
-    for (const mutate of [
-      d => { d.metadata.bernRelease.simplification.maximumDeviationMetres = 6 },
-      d => { d.metadata.geometry.attribution = '' },
-      d => { d.metadata.geometry.ir66Supplement.policySha256 = '0'.repeat(64) },
-      d => { d.metadata.geometry.ir66Supplement.source.attribution = '' },
-      d => { d.metadata.geometry.ir66Supplement.fullEvidence.path = 'missing.json' },
-      d => { d.metadata.geometry.ir16Supplement.policySha256 = '0'.repeat(64) },
-      d => { d.metadata.geometry.ir16Supplement.source.attribution = '' },
-      d => { d.metadata.geometry.ir16Supplement.fullEvidence.path = 'missing.json' },
-      d => { d.metadata.geometry.tpfTerminalSupplement.policySha256 = '0'.repeat(64) },
-      d => { d.metadata.geometry.tpfTerminalSupplement.source.attribution = '' },
-      d => { d.metadata.geometry.tpfTerminalSupplement.documents = [] },
-      d => { d.metadata.geometry.tpfTerminalSupplement.fullEvidence.path = 'missing.json' },
-      d => { d.metadata.geometry.morgesSupplement.policySha256 = '0'.repeat(64) },
-      d => { d.metadata.geometry.morgesSupplement.documents = [] },
-      d => { d.metadata.geometry.morgesSupplement.sbbPlatformDataset.rights = '' },
-      d => { d.metadata.geometry.morgesSupplement.sbbPlatformDataset.dataProcessed = '' },
-      d => { d.metadata.geometry.morgesSupplement.fullEvidence.path = 'missing.json' },
-      d => { d.metadata.geometry.interlakenSupplement.policySha256 = '0'.repeat(64) },
-      d => { d.metadata.geometry.interlakenSupplement.source.attribution = '' },
-      d => { d.metadata.geometry.interlakenSupplement.fullEvidence.path = 'missing.json' },
-      d => { d.metadata.geometry.ic61Supplement.policySha256 = '0'.repeat(64) },
-      d => { d.metadata.geometry.ic61Supplement.documents = [] },
-      d => { d.metadata.geometry.ic61Supplement.source.attribution = '' },
-      d => { d.metadata.geometry.urbanSupplement.source.attribution = '' },
-      d => { d.metadata.geometry.urbanSupplement.policy = {}; d.metadata.geometry.urbanSupplement.source.attribution = '' },
-      d => { d.metadata.geometry.regionalRoadSupplement.fullEvidence.path = 'missing.json' },
-      d => { d.metadata.geometry.mountainSupplement.source.termsUrl = '' },
-      d => { d.metadata.bernRelease.movements.scheduled++ },
-      d => { d.metadata.serviceDate = '2026-09-08' },
-    ]) {
+  describe('invalid display releases', () => {
+    let release
+    beforeAll(async () => { release = await readRegionalDirectory('public/data', ['bern-region']) }, 30_000)
+    // Give each independent corruption its own bounded validation run.
+    it.each([
+      ['bernRelease.simplification.maximumDeviationMetres', d => { d.metadata.bernRelease.simplification.maximumDeviationMetres = 6 }],
+      ['geometry.attribution', d => { d.metadata.geometry.attribution = '' }],
+      ['geometry.ir66Supplement.policySha256', d => { d.metadata.geometry.ir66Supplement.policySha256 = '0'.repeat(64) }],
+      ['geometry.ir66Supplement.source.attribution', d => { d.metadata.geometry.ir66Supplement.source.attribution = '' }],
+      ['geometry.ir66Supplement.fullEvidence.path', d => { d.metadata.geometry.ir66Supplement.fullEvidence.path = 'missing.json' }],
+      ['geometry.ir16Supplement.policySha256', d => { d.metadata.geometry.ir16Supplement.policySha256 = '0'.repeat(64) }],
+      ['geometry.ir16Supplement.source.attribution', d => { d.metadata.geometry.ir16Supplement.source.attribution = '' }],
+      ['geometry.ir16Supplement.fullEvidence.path', d => { d.metadata.geometry.ir16Supplement.fullEvidence.path = 'missing.json' }],
+      ['geometry.tpfTerminalSupplement.policySha256', d => { d.metadata.geometry.tpfTerminalSupplement.policySha256 = '0'.repeat(64) }],
+      ['geometry.tpfTerminalSupplement.source.attribution', d => { d.metadata.geometry.tpfTerminalSupplement.source.attribution = '' }],
+      ['geometry.tpfTerminalSupplement.documents', d => { d.metadata.geometry.tpfTerminalSupplement.documents = [] }],
+      ['geometry.tpfTerminalSupplement.fullEvidence.path', d => { d.metadata.geometry.tpfTerminalSupplement.fullEvidence.path = 'missing.json' }],
+      ['geometry.morgesSupplement.policySha256', d => { d.metadata.geometry.morgesSupplement.policySha256 = '0'.repeat(64) }],
+      ['geometry.morgesSupplement.documents', d => { d.metadata.geometry.morgesSupplement.documents = [] }],
+      ['geometry.morgesSupplement.sbbPlatformDataset.rights', d => { d.metadata.geometry.morgesSupplement.sbbPlatformDataset.rights = '' }],
+      ['geometry.morgesSupplement.sbbPlatformDataset.dataProcessed', d => { d.metadata.geometry.morgesSupplement.sbbPlatformDataset.dataProcessed = '' }],
+      ['geometry.morgesSupplement.fullEvidence.path', d => { d.metadata.geometry.morgesSupplement.fullEvidence.path = 'missing.json' }],
+      ['geometry.interlakenSupplement.policySha256', d => { d.metadata.geometry.interlakenSupplement.policySha256 = '0'.repeat(64) }],
+      ['geometry.interlakenSupplement.source.attribution', d => { d.metadata.geometry.interlakenSupplement.source.attribution = '' }],
+      ['geometry.interlakenSupplement.fullEvidence.path', d => { d.metadata.geometry.interlakenSupplement.fullEvidence.path = 'missing.json' }],
+      ['geometry.ic61Supplement.policySha256', d => { d.metadata.geometry.ic61Supplement.policySha256 = '0'.repeat(64) }],
+      ['geometry.ic61Supplement.documents', d => { d.metadata.geometry.ic61Supplement.documents = [] }],
+      ['geometry.ic61Supplement.source.attribution', d => { d.metadata.geometry.ic61Supplement.source.attribution = '' }],
+      ['geometry.urbanSupplement.source.attribution', d => { d.metadata.geometry.urbanSupplement.source.attribution = '' }],
+      ['geometry.urbanSupplement.policy', d => { d.metadata.geometry.urbanSupplement.policy = {}; d.metadata.geometry.urbanSupplement.source.attribution = '' }],
+      ['geometry.regionalRoadSupplement.fullEvidence.path', d => { d.metadata.geometry.regionalRoadSupplement.fullEvidence.path = 'missing.json' }],
+      ['geometry.mountainSupplement.source.termsUrl', d => { d.metadata.geometry.mountainSupplement.source.termsUrl = '' }],
+      ['bernRelease.movements.scheduled', d => { d.metadata.bernRelease.movements.scheduled++ }],
+      ['serviceDate', d => { d.metadata.serviceDate = '2026-09-08' }],
+    ])('rejects changed %s', async (_field, mutate) => {
       const files = new Map(release.files)
       for (const path of ['bern-region-day-manifest.json', 'bern-region-morning.json']) edit(files, path, mutate)
       await expect(readRegionalArtifacts(path => files.get(path), ['bern-region'])).rejects.toThrow()
-    }
-    const files = new Map(release.files)
-    edit(files, 'bern-region-morning.json', d => { d.paths[0][0][0] += .0001 })
-    await expect(readRegionalArtifacts(path => files.get(path), ['bern-region'])).rejects.toThrow('mixed paths')
-  }, 30000)
+    }, 30_000)
+    it('rejects mixed paths', async () => {
+      const files = new Map(release.files)
+      edit(files, 'bern-region-morning.json', d => { d.paths[0][0][0] += .0001 })
+      await expect(readRegionalArtifacts(path => files.get(path), ['bern-region'])).rejects.toThrow('mixed paths')
+    }, 30_000)
+  })
   it('retains the reviewed date on unreviewed dates and on build failures', async () => {
     let calls = 0
     const restore = async (_output, _fetch, _bootstrap, ids) => { expect(ids).toEqual(['bern-region']); return { dates: { 'bern-region': '2026-09-04' } } }

@@ -1,5 +1,6 @@
 import {expect,test} from '@playwright/test'
 test('Gornergrat terrain preserves calls, tunnels, gallery, arrival and map return',async({page,isMobile},info)=>{
+ test.setTimeout(180_000) // Full ascent, return, replay and departure switch on CI software rendering.
  const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message))
  let requests=0;page.on('request',r=>{if(r.url().includes('gornergrat-ascent-terrain.json'))requests++})
  await page.goto('/?study=gornergrat')

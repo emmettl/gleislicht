@@ -33,8 +33,11 @@ test('Jungfrau loads on entry with both valley branches, cogwheel services and d
   await expect(page.locator('.jungfrau-model')).toBeVisible()
   await page.screenshot({ path: info.outputPath('jungfrau-eiger-express.png') })
   for (const operator of ['Jungfraubahn', 'Wengernalpbahn', 'Berner Oberland-Bahnen']) {
+    const results = page.getByRole('option').filter({ has: page.locator('.result-service b') })
+    const previous = await results.allTextContents()
     await page.locator('.train-search input').fill(operator)
-    await page.getByRole('option').filter({ has: page.locator('.result-service b') }).first().click()
+    await expect.poll(() => results.allTextContents()).not.toEqual(previous)
+    await results.first().click()
     await expect(page.locator('.selected-card')).toContainText(operator)
   }
   await openJungfrau(page, isMobile)
