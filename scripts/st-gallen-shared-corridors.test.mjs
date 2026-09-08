@@ -38,3 +38,29 @@ test('shared corridor rejects changed source identity, operator, sequence and du
     const f=fixture();mutate(f.policy.sharedCorridors[0]);assert.throws(()=>validatedStGallenSharedCorridors(f.sources,f.policy))
   }
 })
+
+test('joint operation requires pinned evidence, exact overridden identity, route and reviewed dates',()=>{
+  const make=()=>{
+    const f=fixture(),c=f.policy.sharedCorridors[0]
+    f.sources.bus.features[0].properties.BETREIBER='BOS'
+    f.policy.dates=['2026-09-04','2026-09-06']
+    f.policy.featureOverrides['bus:1']={expectedName:'210 A - B',mode:'bus',agencyIds:['801'],lines:['210']}
+    c.evidence[0].purpose='joint-operation'
+    c.jointOperation={targetOperator:'BOS',routeId:'route',reviewedDates:[...f.policy.dates],evidenceSha256:c.evidence[0].sha256}
+    return f
+  }
+  const f=make(),candidate=stGallenGraphs(f.sources,f.policy).graphs.get(JSON.stringify(['801','bus','210']))
+  assert.deepEqual(matchStGallenPair(candidate,f.from,f.to,limits,f.context).path,f.path)
+  for(const mutate of [
+    f=>delete f.policy.sharedCorridors[0].jointOperation,
+    f=>f.policy.sharedCorridors[0].jointOperation.targetOperator='OTHER',
+    f=>f.policy.sharedCorridors[0].jointOperation.routeId='another-route',
+    f=>f.policy.sharedCorridors[0].jointOperation.evidenceSha256='b'.repeat(64),
+    f=>delete f.policy.sharedCorridors[0].evidence[0].purpose,
+    f=>f.policy.sharedCorridors[0].jointOperation.reviewedDates.push('2026-09-07'),
+    f=>delete f.policy.featureOverrides['bus:1'],
+    f=>f.policy.featureOverrides['bus:1'].agencyIds.push('138'),
+    f=>f.policy.featureOverrides['bus:1'].lines=['211'],
+    f=>f.sources.bus.features[1].properties.BETREIBER='BOS',
+  ]) { const bad=make();mutate(bad);assert.throws(()=>validatedStGallenSharedCorridors(bad.sources,bad.policy)) }
+})

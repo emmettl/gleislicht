@@ -1,6 +1,6 @@
 # St. Gallen bus endpoint review
 
-All **105 distinct directed bus endpoint-gap pairs** across the pinned Friday **4 September** and Sunday **6 September 2026** fixtures have been replayed. Friday has 96 failed pairs affecting **331 complete trips across 38 patterns**; Sunday has 70 affecting **100 trips across 24 patterns**. These are distinct trips per day, not sums of failed-pair occurrences. The review covers **18 GTFS route records**. All remain excluded, and the local regional feed remains **10,624 Friday / 7,325 Sunday movements**.
+All **103 distinct directed bus endpoint-gap pairs** across the pinned Friday **4 September** and Sunday **6 September 2026** fixtures have been replayed. Friday has 94 failed pairs affecting **303 complete trips across 36 patterns**; Sunday has 70 affecting **100 trips across 24 patterns**. These are distinct trips per day, not sums of failed-pair occurrences. The review covers **17 GTFS route records**. All remain excluded, and the local regional feed remains **10,652 Friday / 7,325 Sunday movements**.
 
 The [machine-readable report](../data/st-gallen-endpoint-review.json) records every directed route/platform pair, source feature, original snap distance, same-agency candidate path hash, evidence retrieval time and affected-pattern binding. The [canton study](ST-GALLEN-STUDY.md) remains the complete annual inventory; this review covers only bus endpoint failures.
 
@@ -8,7 +8,7 @@ The [machine-readable report](../data/st-gallen-endpoint-review.json) records ev
 
 The production graph is replayed with original-precision Swiss GTFS platform coordinates, all existing reviewed repairs/corridors and the unchanged **120 m** snap limit. Each other individual AL_OEV regional or city bus feature mapped to the same GTFS agency is then tested independently with the existing detour limits. This examines every eligible record, including city features; it does not merge different routes into an admission graph.
 
-**41 of 105 pairs** have at least one passing candidate on another source record. The other **64** have none in this search. A passing candidate establishes geometric proximity and connectivity only. It does not establish that the affected route uses the donor's alignment, especially on a construction date. No candidate was added to production policy.
+**39 of 103 pairs** have at least one passing candidate on another source record. The other **64** have none in this search. A passing candidate establishes geometric proximity and connectivity only. It does not establish that the affected route uses the donor's alignment, especially on a construction date. No remaining candidate is admitted by this diagnostic review.
 
 | GTFS route record | Line | Directed failed pairs | Pairs with a candidate | Maximum original snap (m) | Friday / Sunday affected trips |
 | --- | --- | --- | --- | --- | --- |
@@ -17,7 +17,6 @@ The production graph is replayed with original-precision Swiss GTFS platform coo
 | 92-323-j26-1 | 323 | 4 | 0 | 160.6 | 65 / 0 |
 | 92-150-A-j26-1 | 150 | 2 | 0 | 512.7 | 56 / 0 |
 | 96-224-1-j26-1 | 120 | 6 | 0 | 616.2 | 20 / 10 |
-| 92-24-C-j26-1 | 24 | 2 | 2 | 310.1 | 28 / 0 |
 | 92-253-C-j26-1 | 253 | 4 | 0 | 775.5 | 19 / 0 |
 | 92-331-B-j26-1 | 331 | 40 | 16 | 4537.8 | 6 / 10 |
 | 96-249-1-j26-1 | 451 | 4 | 4 | 285.1 | 7 / 7 |
@@ -32,6 +31,8 @@ The production graph is replayed with original-precision Swiss GTFS platform coo
 | 92-706-C-j26-1 | 706 | 2 | 2 | 416.5 | 1 / 0 |
 
 Route records with the same passenger line remain separate. A pattern can have other exclusion reasons as well; this table does not promise that resolving its endpoint failure would admit the whole trip. Line 331's 40 pairs, for example, include distant source-call sequences and additional failures. No source calls are removed, reordered or relocated by this review.
+
+The separately documented [Vaduz extension](ST-GALLEN-VADUZ-REVIEW.md) admits 28 Friday line-24 trips after corroborating the common corridor and joint operation; its two recovered pairs are removed from this remaining-failure inventory. The [Gommiswald follow-up](ST-GALLEN-GOMMISWALD-REVIEW.md) retains line-628 failures: the operator map shows a Schulhaus branch and does not corroborate the missing Dorf alignment.
 
 ## Line 323: Dornbirn Messeplatz
 

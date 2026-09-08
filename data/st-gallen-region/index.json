@@ -8,7 +8,7 @@
     "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
     "boundary": "9fcbdc0a501919e7d8722827e0868784010be046dccffc02df0833f9de21f86a",
     "timetable": "fdbe77f9d44d9f7cf59a1da8cf09b87970a6afc0a78355421265b73f9981d49c",
-    "policy": "8242d0912fa587fc4d7e8230e1e0281050ae23be31d4d67fc66b2809124981e5",
+    "policy": "1c8edc606dda82f2dd4e7507511ba73805b850839141edb2a9dd6f81ff728565",
     "catalogue": "a3ca9355f89503c16380dec23a518a1c3ad2b91308428da0d8ade6a3da782c8f"
   },
   "attribution": [
@@ -18,7 +18,8 @@
     "Canton boundary: © swisstopo",
     "Stop rendering anchor evidence: Mobilitätsverbünde Österreich OG",
     "Stop rendering anchor evidence: Mobilitätsverbünde Österreich OG / Verkehrsverbund Vorarlberg",
-    "Supporting corridor map: PostAuto AG / OSTWIND"
+    "Supporting corridor evidence: PostAuto AG / OSTWIND",
+    "Supporting corridor evidence: Verkehrsbetrieb LIECHTENSTEINmobil"
   ],
   "timetable": {
     "version": "20260902",
@@ -73,17 +74,17 @@
       "date": "2026-09-04",
       "manifest": "local/2026-09-04/st-gallen-region-day-manifest.json",
       "morning": "local/2026-09-04/st-gallen-region-morning.json",
-      "manifestSha256": "d5e64ea50976dcd355dd2d058baacbdb212aba42b64aa7d52bc468b47a3078ea",
-      "morningSha256": "8fe1ebeb7ac6bbe1614a561243b00862e3bc731c8c98002c1c306a93105b5eb0",
-      "trips": 10624,
-      "patterns": 1002
+      "manifestSha256": "739a50667a93e7a46e944b50293e06f7a57f22fd50f22f540bb50a6897cff515",
+      "morningSha256": "2afb094b8de55e75198bbe7d4651e4c3e12f9e25099f97c2d3d805fcfe63e6b6",
+      "trips": 10652,
+      "patterns": 1004
     },
     {
       "date": "2026-09-06",
       "manifest": "local/2026-09-06/st-gallen-region-day-manifest.json",
       "morning": "local/2026-09-06/st-gallen-region-morning.json",
-      "manifestSha256": "81b44cb9065e93a6587e119712b41359fe9a91a70afe4e9d79fed123aeecd8a9",
-      "morningSha256": "90c77031d49fa705199963f3c6057c93c5f22c530b0e9d3ce5332d2f7cb2b267",
+      "manifestSha256": "be19a05d5f703bc1601afd5661e169010eb07307e9a2a4c719035f35d63afd61",
+      "morningSha256": "03c5a9bdd3735bceb117509da3af6f86f9dca0aaae6a7c1605e21ac3e4455fac",
       "trips": 7325,
       "patterns": 773
     }

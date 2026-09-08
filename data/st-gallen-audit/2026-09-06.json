@@ -348429,8 +348429,8 @@
   ],
   "artifacts": {
     "directory": "data/st-gallen-region/local/2026-09-06",
-    "manifestGzipBytes": 2079742,
-    "morningGzipBytes": 2192943,
+    "manifestGzipBytes": 2080332,
+    "morningGzipBytes": 2193272,
     "chunks": [
       {
         "id": "00-02",

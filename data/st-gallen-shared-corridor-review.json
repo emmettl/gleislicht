@@ -12,7 +12,7 @@
     "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
     "boundary": "9fcbdc0a501919e7d8722827e0868784010be046dccffc02df0833f9de21f86a",
     "timetable": "fdbe77f9d44d9f7cf59a1da8cf09b87970a6afc0a78355421265b73f9981d49c",
-    "policy": "8242d0912fa587fc4d7e8230e1e0281050ae23be31d4d67fc66b2809124981e5",
+    "policy": "1c8edc606dda82f2dd4e7507511ba73805b850839141edb2a9dd6f81ff728565",
     "catalogue": "a3ca9355f89503c16380dec23a518a1c3ad2b91308428da0d8ade6a3da782c8f"
   },
   "repair": {
@@ -69,19 +69,20 @@
     {
       "date": "2026-09-04",
       "beforeTrips": 10500,
-      "afterTrips": 10624,
-      "addedTrips": 124,
+      "afterTrips": 10652,
+      "addedTrips": 152,
       "unchangedExistingTrips": 10500,
-      "addedTripIdsSha256": "820ad9a19c677bb1629419b1954c968bb45de3973c1159e1adffbea0eb51bd80",
-      "addedPatterns": 8,
+      "addedTripIdsSha256": "6ad5552495ca14838d1e76a19f6983de845f128dbe72b9da11ee0d7644e153f5",
+      "addedPatterns": 10,
       "addedTripsByRoute": {
+        "92-24-C-j26-1": 28,
         "92-164-C-j26-1": 58,
         "96-250-8-j26-1": 66
       },
-      "sharedCorridorPairs": 48,
+      "sharedCorridorPairs": 50,
       "recoveredPairs": [],
       "beforePatterns": 994,
-      "afterPatterns": 1002
+      "afterPatterns": 1004
     },
     {
       "date": "2026-09-06",
@@ -92,6 +93,7 @@
       "addedTripIdsSha256": "1f1f71df3eeda8dec32332ef03fd785bbe8f521e4244bcf9a00744424988fdd3",
       "addedPatterns": 9,
       "addedTripsByRoute": {
+        "92-24-C-j26-1": 0,
         "92-164-C-j26-1": 26,
         "96-250-8-j26-1": 35
       },
@@ -147,6 +149,58 @@
       ],
       "reason": "Official PostAuto map corroborates the shared 210/211 corridor. Apply the exact line-211 graph only to these individually pinned line-210 endpoint-gap pairs, with original 120 m / 4.5x limits. Preserve every passing primary path. No generic operator-wide routing, Horn branch substitution, source-call changes or direction certification.",
       "approvedDirectedPairs": 64
+    },
+    {
+      "id": "liemobil-24-vaduz-post",
+      "agencyId": "805",
+      "operator": "LIEmobil",
+      "line": "24",
+      "donorLine": "11",
+      "targetFeature": "bus:3",
+      "expectedTargetName": "24 Buchs SG - Sevelen (-Vaduz)",
+      "donorFeature": "bus:33",
+      "expectedDonorName": "11 Sargans - Trübbach/Balzers - Schaan - Bendern/Eschen - Feldkirch",
+      "jointOperation": {
+        "targetOperator": "BOS",
+        "routeId": "92-24-C-j26-1",
+        "reviewedDates": [
+          "2026-09-04",
+          "2026-09-06"
+        ],
+        "evidenceSha256": "5f78150f39b7a1c678e3f458123bcfcea2b917813ee7336f25dc5ba931c7618a"
+      },
+      "stopSequence": [
+        "Vaduz, Lettstrasse",
+        "Vaduz, Post"
+      ],
+      "evidence": [
+        {
+          "file": "liemobil-network-202607.pdf",
+          "url": "https://liemobil.li/static/Liniennetz---Hoch---2026-07-9a6aa7e01e96eefc0f43acdc71a4c703.pdf",
+          "sha256": "d79959e62a2174a99cff39f86bb3e20afd31606f08a094d3c35dc9e1c7e51c86",
+          "bytes": 715589,
+          "retrievedAt": "2026-09-08T19:47:24.083830+00:00",
+          "title": "LIEmobil Liniennetz, July 2026",
+          "publisher": "Verkehrsbetrieb LIECHTENSTEINmobil",
+          "review": "Page 1 visually shows line 24 via Rheinparkstadion and Lettstrasse to Vaduz Post, sharing the central Vaduz corridor with line 11. Schematic identity evidence only; AL_OEV supplies geometry.",
+          "edition": "2026-07 (publisher filename)",
+          "pdfModifiedDate": "2026-07-13"
+        },
+        {
+          "file": "liemobil-annual-report-2024.pdf",
+          "url": "https://liemobil.li/static/Geschftsbericht---LIEmobil---2024---Web-bfa49b23b23343ad8318e2932e3ba27d.pdf",
+          "sha256": "5f78150f39b7a1c678e3f458123bcfcea2b917813ee7336f25dc5ba931c7618a",
+          "bytes": 4034277,
+          "retrievedAt": "2026-09-08T19:51:50.413355+00:00",
+          "title": "LIEmobil Geschäftsbericht 2024",
+          "publisher": "Verkehrsbetrieb LIECHTENSTEINmobil",
+          "review": "Page 15 confirms line 24 jointly operated by LIEmobil and Bus Ostschweiz, extended from Lettstrasse to Vaduz Post at the December 2024 timetable change.",
+          "purpose": "joint-operation",
+          "reportYear": 2024,
+          "pdfModifiedDate": "2025-04-15"
+        }
+      ],
+      "approvedDirectedPairs": 2
     }
   ],
   "retainedExclusions": [

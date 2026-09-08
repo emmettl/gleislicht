@@ -86,13 +86,15 @@
     },
     "geometryRepairIds": [],
     "repairDonorFor": [],
-    "sharedCorridorIds": [],
+    "sharedCorridorIds": [
+      "liemobil-24-vaduz-post"
+    ],
     "sharedCorridorDonorFor": [],
     "gtfsRoutes": [
       "92-24-C-j26-1"
     ],
-    "candidateRouteAdmittedTrips": 0,
-    "status": "no-admitted-fixture-pattern"
+    "candidateRouteAdmittedTrips": 28,
+    "status": "candidate-graph-for-admitted-patterns"
   },
   {
     "key": "bus:4",
@@ -1028,7 +1030,9 @@
     "geometryRepairIds": [],
     "repairDonorFor": [],
     "sharedCorridorIds": [],
-    "sharedCorridorDonorFor": [],
+    "sharedCorridorDonorFor": [
+      "liemobil-24-vaduz-post"
+    ],
     "gtfsRoutes": [
       "92-11-F-j26-1"
     ],
@@ -4302,8 +4306,8 @@
     "gtfsRoutes": [
       "92-24-C-j26-1"
     ],
-    "candidateRouteAdmittedTrips": 0,
-    "status": "no-admitted-fixture-pattern"
+    "candidateRouteAdmittedTrips": 28,
+    "status": "candidate-graph-for-admitted-patterns"
   },
   {
     "key": "bus:138",

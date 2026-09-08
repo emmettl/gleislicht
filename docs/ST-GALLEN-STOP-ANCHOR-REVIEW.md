@@ -1,6 +1,6 @@
 # St. Gallen: restoring line 164 with a reviewed stop anchor
 
-Line 164 now contributes **58 Friday / 26 Sunday trips**, in both directions, using the existing St. Gallen AL_OEV line geometry. The regional feed contains **10,624 / 7,325 movements** across **1,002 / 773 complete directed patterns**. All previously admitted journeys, calls and paths are unchanged. The annual inventory remains **343 routes / 38 agencies**, with **195 route records** contributing to the two fixtures.
+Line 164 now contributes **58 Friday / 26 Sunday trips**, in both directions, using the existing St. Gallen AL_OEV line geometry. The regional feed contains **10,652 / 7,325 movements** across **1,004 / 773 complete directed patterns**. All previously admitted journeys, calls and paths are unchanged. The annual inventory remains **343 routes / 38 agencies**, with **196 route records** contributing to the two fixtures.
 
 The change is one explicit **stop-level rendering anchor** at Dornbirn Treffpunkt a.d.Ach. It uses a published Vorarlberg platform coordinate to represent the Swiss stop. It does not assign direction-specific platforms, alter the original Swiss timetable file, import external route shapes or enlarge the 120 m geometry tolerance.
 
@@ -60,4 +60,6 @@ For the incremental regression, build a baseline using the policy at commit `2e0
 node scripts/check-st-gallen-topology-regression.mjs --anchor BASELINE_FEED_DIRECTORY BASELINE_AUDIT_JSON
 ```
 
-Refresh the cumulative regressions and endpoint/detour/Vorarlberg reviews against the new day hashes before regenerating the study and running its audit-only checker. The remaining bus endpoint review now covers **105 pairs**, affecting **331 Friday / 100 Sunday trips**. Those exclusions remain in place.
+Refresh the cumulative regressions and endpoint/detour/Vorarlberg reviews against the new day hashes before regenerating the study and running its audit-only checker. The remaining bus endpoint review now covers **103 pairs**, affecting **303 Friday / 100 Sunday trips**. Those exclusions remain in place.
+
+The subsequent [Vaduz extension](ST-GALLEN-VADUZ-REVIEW.md) adds 28 Friday / 0 Sunday trips. The table above records the original anchor step; its refreshed regression against `2e0c599` now includes both reviewed additions. The separate Vaduz regression compares against `baaf1da` and isolates line 24.

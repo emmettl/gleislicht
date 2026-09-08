@@ -113,7 +113,7 @@ export async function buildStGallenRegion({ timetablePath, sourceDirectory, poli
       note: policy.admission, scope: raw.scope.description, exclusions: policy.scopeLimits,
       attribution: ['Timetable: SBB / opentransportdata.swiss', '© Kanton St.Gallen, Amt für öffentlichen Verkehr / AREG; underlying swissTNE Base © swisstopo', 'Canton boundary: © swisstopo',
         ...new Set((policy.stopAnchors??[]).flatMap(c=>c.evidence.map(e=>`Stop rendering anchor evidence: ${e.publisher}`))),
-        ...new Set((policy.sharedCorridors??[]).flatMap(c=>c.evidence.map(e=>`Supporting corridor map: ${e.publisher}`)))],
+        ...new Set((policy.sharedCorridors??[]).flatMap(c=>c.evidence.map(e=>`Supporting corridor evidence: ${e.publisher}`)))],
       sourceUrl: 'https://data.opentransportdata.swiss/en/dataset/timetable-2026-gtfs2020', termsUrl: 'https://opentransportdata.swiss/en/terms-of-use/',
       reuse: catalogue.reuse,
       stopAnchors: anchors, stopAnchorSources: (policy.stopAnchors ?? []).flatMap(a => a.evidence),

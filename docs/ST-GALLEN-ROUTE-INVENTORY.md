@@ -121,7 +121,7 @@ Generated from the pinned census and validated audit. See [the study](ST-GALLEN-
 | 885 | 92-2-B-j26-1 | bus | 2 | 822 | 192/192; admitted | 148/148; admitted | — |
 | 138 | 92-2-Y-j26-1 | bus | RUB | 72 | 0/30; excluded | 0/29; excluded | missing-line |
 | 896 | 92-23-D-j26-1 | bus | 23 | 24 | 0/0; inactive-on-civil-day | 6/6; admitted | — |
-| 805 | 92-24-C-j26-1 | bus | 24 | 170 | 0/28; excluded | 0/0; inactive-on-civil-day | endpoint-gap |
+| 805 | 92-24-C-j26-1 | bus | 24 | 170 | 28/28; admitted | 0/0; inactive-on-civil-day | — |
 | 138 | 92-251-B-j26-1 | bus | 251 | 712 | 66/66; admitted | 34/34; admitted | — |
 | 138 | 92-252-C-j26-1 | bus | 252 | 716 | 59/59; admitted | 22/22; admitted | — |
 | 138 | 92-253-C-j26-1 | bus | 253 | 400 | 19/38; partially-admitted | 42/42; admitted | endpoint-gap |
@@ -358,7 +358,7 @@ Keys combine the pinned archive layer and record index; they are not guaranteed 
 | --- | --- | --- | --- | --- | --- | --- |
 | bus:1 | BOS | Tag | Nein | 12 Gams - Buchs (-Schaan) | 92-12-C-j26-1 | candidate-graph-for-admitted-patterns |
 | bus:2 | LIEmobil | Tag | Nein | 13 Schaan - Nendeln - Eschen Trübbach - Vaduz - Nendeln/Eschen - Schaanwald - Feldkirch | 92-13-B-j26-1 | candidate-graph-for-admitted-patterns |
-| bus:3 | BOS | Tag | Nein | 24 Buchs SG - Sevelen (-Vaduz) | 92-24-C-j26-1 | no-admitted-fixture-pattern |
+| bus:3 | BOS | Tag | Nein | 24 Buchs SG - Sevelen (-Vaduz) | 92-24-C-j26-1 | candidate-graph-for-admitted-patterns |
 | bus:4 | LIEmobil | Tag | Nein | 37 Sennwald - Bendern - Nendeln | 92-37-A-j26-1 | no-admitted-fixture-pattern |
 | bus:5 | LIEmobil | Tag | Nein | 12 Sargans - Trübbach/Balzers - Vaduz - Eilkurs | 92-12E-j26-1 | candidate-graph-for-admitted-patterns |
 | bus:6 | PAG | Tag | Nein | 190 Teufen - Speicher - Speicherschwendi - St. Gallen | 96-221-7-j26-1 | no-admitted-fixture-pattern |
@@ -492,7 +492,7 @@ Keys combine the pinned archive layer and record index; they are not guaranteed 
 | bus:134 | BOS | Tag | Ja | 323 Au SG - Heerbrugg - Diepoldsau - Dornbirn | 92-323-j26-1 | candidate-graph-for-admitted-patterns |
 | bus:135 | BOS | Tag | Ja | 411 Sennwald - Gams - Haag - Bendern | 92-411-A-j26-1 | candidate-graph-for-admitted-patterns |
 | bus:136 | BOS | Nacht | Ja | N31/N32 Sennwald - Oberriet SG - Altstätten SG - Heerbrugg - Diepoldsau - Hohenems | 92-N31-A-j26-1, 92-N32-B-j26-1 | candidate-graph-for-admitted-patterns |
-| bus:137 | BOS | Tag | Ja | 24 Buchs SG - Sevelen (-Vaduz) | 92-24-C-j26-1 | no-admitted-fixture-pattern |
+| bus:137 | BOS | Tag | Ja | 24 Buchs SG - Sevelen (-Vaduz) | 92-24-C-j26-1 | candidate-graph-for-admitted-patterns |
 | bus:138 | ZVV | Tag | Ja | 885 Rapperswil SG - Rüti ZH - Wald ZH - Goldingen - Atzmännig | 92-885-j26-1 | candidate-graph-for-admitted-patterns |
 | bus:139 | PAG | Tag | Ja | 513 Ziegelbrücke - Bilten - Reichenburg | 96-245-5-j26-1 | candidate-graph-for-admitted-patterns |
 | bus:140 | PAG | Tag | Ja | 521 Pfäffikon SZ - Siebnen-Wangen - Uznach | 96-240-3-j26-1 | candidate-graph-for-admitted-patterns |

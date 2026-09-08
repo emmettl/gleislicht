@@ -1,6 +1,6 @@
 # St. Gallen: restoring PostAuto line 210
 
-Line 210 now contributes **66 Friday and 35 Sunday trips**, preserving every source call and both travel directions. The regional feed admits **10,624 Friday / 7,325 Sunday movements**, across **1,002 / 773 complete directed patterns**. The annual canton inventory remains 343 route records and 38 agencies; 195 route records now contribute to at least one fixture.
+Line 210 now contributes **66 Friday and 35 Sunday trips**, preserving every source call and both travel directions. The regional feed admits **10,652 Friday / 7,325 Sunday movements**, across **1,004 / 773 complete directed patterns**. The annual canton inventory remains 343 route records and 38 agencies; 196 route records now contribute to at least one fixture.
 
 ## Evidence and scope
 
@@ -22,7 +22,7 @@ The Friday fixture uses 48 approved pairs across six newly admitted complete pat
 
 ## Regression and remaining work
 
-The [incremental regression](../data/st-gallen-shared-corridor-review.json), against commit `7926448`, verifies that all **10,500 / 7,264 previously admitted journeys** retain identical calls, timing and paths. Every previously matched pair is unchanged. The line-210 step adds 66 / 35 trips; the refreshed cumulative comparison additionally includes 58 / 26 line-164 trips from the separately reviewed stop anchor. The earlier line-321 repair is preserved. The [cumulative regression](../data/st-gallen-topology-review.json) also compares against the original canton feed in commit `2351822`.
+The [incremental regression](../data/st-gallen-shared-corridor-review.json), against commit `7926448`, verifies that all **10,500 / 7,264 previously admitted journeys** retain identical calls, timing and paths. Every previously matched pair is unchanged. The line-210 step adds 66 / 35 trips; the refreshed cumulative comparison additionally includes 58 / 26 line-164 trips from the separately reviewed stop anchor and 28 / 0 line-24 trips from the Vaduz extension. The earlier line-321 repair is preserved. The [cumulative regression](../data/st-gallen-topology-review.json) also compares against the original canton feed in commit `2351822`.
 
 At the line-210 step, endpoint-gap exclusions across all modes fell from **945 to 879 Friday trips** and **573 to 538 Sunday trips**; buses then accounted for **389 / 126** affected trips. Other failure reasons can overlap these counts. The largest remaining bus cases include line 323 at Dornbirn Messeplatz, Wil line 705 at Psychiatrie, Gossau line 150 at Sommerau and line 631 at Rüti Bandwies. These require their own source evidence. The separately reviewed 352/353, 400 and 432 detours remain excluded.
 
@@ -41,4 +41,4 @@ The evidence command reuses matching cached bytes or downloads the pinned map an
 
 To regenerate regression reports, first rebuild the respective baseline feed and audit using the policy from the stated commit and the exported `buildStGallenRegion` function. Run `node scripts/check-st-gallen-topology-regression.mjs --shared BASELINE_FEED_DIRECTORY BASELINE_AUDIT_JSON` for commit `7926448`; omit `--shared` for commit `2351822`. Then refresh the unchanged detour diagnostics with their cached operator evidence, regenerate the study and run the audit-only checker as documented in the canton study.
 
-The subsequent [line-164 stop anchor](ST-GALLEN-STOP-ANCHOR-REVIEW.md) adds 58 Friday / 26 Sunday trips. Current bus endpoint failures affect 331 / 100 trips. The refreshed shared-corridor regression is cumulative from commit 7926448 and now permits both the reviewed line-210 and line-164 additions; the separate anchor regression isolates the latter against commit 2e0c599.
+The subsequent [line-164 stop anchor](ST-GALLEN-STOP-ANCHOR-REVIEW.md) adds 58 Friday / 26 Sunday trips. Current bus endpoint failures affect 303 / 100 trips. The refreshed shared-corridor regression is cumulative from commit 7926448 and now permits the reviewed line-210, line-164 and line-24 additions. The anchor regression compares against 2e0c599 and includes the subsequent line-24 addition; the [Vaduz regression](ST-GALLEN-VADUZ-REVIEW.md) isolates that addition against baaf1da.

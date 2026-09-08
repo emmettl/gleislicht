@@ -12,7 +12,7 @@
     "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
     "boundary": "9fcbdc0a501919e7d8722827e0868784010be046dccffc02df0833f9de21f86a",
     "timetable": "fdbe77f9d44d9f7cf59a1da8cf09b87970a6afc0a78355421265b73f9981d49c",
-    "policy": "8242d0912fa587fc4d7e8230e1e0281050ae23be31d4d67fc66b2809124981e5",
+    "policy": "1c8edc606dda82f2dd4e7507511ba73805b850839141edb2a9dd6f81ff728565",
     "catalogue": "a3ca9355f89503c16380dec23a518a1c3ad2b91308428da0d8ade6a3da782c8f"
   },
   "scope": {
@@ -946,6 +946,75 @@
           }
         ],
         "reason": "Official PostAuto map corroborates the shared 210/211 corridor. Apply the exact line-211 graph only to these individually pinned line-210 endpoint-gap pairs, with original 120 m / 4.5x limits. Preserve every passing primary path. No generic operator-wide routing, Horn branch substitution, source-call changes or direction certification."
+      },
+      {
+        "id": "liemobil-24-vaduz-post",
+        "agencyId": "805",
+        "operator": "LIEmobil",
+        "line": "24",
+        "donorLine": "11",
+        "targetFeature": "bus:3",
+        "expectedTargetName": "24 Buchs SG - Sevelen (-Vaduz)",
+        "donorFeature": "bus:33",
+        "expectedDonorName": "11 Sargans - Trübbach/Balzers - Schaan - Bendern/Eschen - Feldkirch",
+        "jointOperation": {
+          "targetOperator": "BOS",
+          "routeId": "92-24-C-j26-1",
+          "reviewedDates": [
+            "2026-09-04",
+            "2026-09-06"
+          ],
+          "evidenceSha256": "5f78150f39b7a1c678e3f458123bcfcea2b917813ee7336f25dc5ba931c7618a"
+        },
+        "stopSequence": [
+          "Vaduz, Lettstrasse",
+          "Vaduz, Post"
+        ],
+        "evidence": [
+          {
+            "file": "liemobil-network-202607.pdf",
+            "url": "https://liemobil.li/static/Liniennetz---Hoch---2026-07-9a6aa7e01e96eefc0f43acdc71a4c703.pdf",
+            "sha256": "d79959e62a2174a99cff39f86bb3e20afd31606f08a094d3c35dc9e1c7e51c86",
+            "bytes": 715589,
+            "retrievedAt": "2026-09-08T19:47:24.083830+00:00",
+            "title": "LIEmobil Liniennetz, July 2026",
+            "publisher": "Verkehrsbetrieb LIECHTENSTEINmobil",
+            "review": "Page 1 visually shows line 24 via Rheinparkstadion and Lettstrasse to Vaduz Post, sharing the central Vaduz corridor with line 11. Schematic identity evidence only; AL_OEV supplies geometry.",
+            "edition": "2026-07 (publisher filename)",
+            "pdfModifiedDate": "2026-07-13"
+          },
+          {
+            "file": "liemobil-annual-report-2024.pdf",
+            "url": "https://liemobil.li/static/Geschftsbericht---LIEmobil---2024---Web-bfa49b23b23343ad8318e2932e3ba27d.pdf",
+            "sha256": "5f78150f39b7a1c678e3f458123bcfcea2b917813ee7336f25dc5ba931c7618a",
+            "bytes": 4034277,
+            "retrievedAt": "2026-09-08T19:51:50.413355+00:00",
+            "title": "LIEmobil Geschäftsbericht 2024",
+            "publisher": "Verkehrsbetrieb LIECHTENSTEINmobil",
+            "review": "Page 15 confirms line 24 jointly operated by LIEmobil and Bus Ostschweiz, extended from Lettstrasse to Vaduz Post at the December 2024 timetable change.",
+            "purpose": "joint-operation",
+            "reportYear": 2024,
+            "pdfModifiedDate": "2025-04-15"
+          }
+        ],
+        "approvedPairs": [
+          {
+            "routeId": "92-24-C-j26-1",
+            "fromId": "ch:1:sloid:81819",
+            "toId": "ch:1:sloid:9985:0:02",
+            "from": "Vaduz, Lettstrasse",
+            "to": "Vaduz, Post",
+            "geometrySha256": "48f15806dd7ae74fe99297e512269ac2e1979988f592fc8471b792db61142d90"
+          },
+          {
+            "routeId": "92-24-C-j26-1",
+            "fromId": "ch:1:sloid:9985:0:01",
+            "toId": "ch:1:sloid:81819",
+            "from": "Vaduz, Post",
+            "to": "Vaduz, Lettstrasse",
+            "geometrySha256": "d99ad765af795b355f1d4538e5b365c8942be94fd90a7e9fdd26dc61655ada3c"
+          }
+        ]
       }
     ],
     "stopAnchors": [
@@ -1205,27 +1274,27 @@
     {
       "date": "2026-09-04",
       "trips": 24782,
-      "admittedTrips": 10624,
-      "excludedTrips": 14158,
+      "admittedTrips": 10652,
+      "excludedTrips": 14130,
       "carryInTrips": 221,
       "admittedCarryInTrips": 162,
       "representativeHeadwayTrips": 11417,
       "admittedHeadwayTrips": 1239,
       "patterns": 1441,
-      "admittedPatterns": 1002,
+      "admittedPatterns": 1004,
       "directedPairs": 8427,
-      "matchedDirectedPairs": 7182,
+      "matchedDirectedPairs": 7184,
       "segmentOccurrences": 202330,
-      "matchedSegmentOccurrences": 177688,
+      "matchedSegmentOccurrences": 177716,
       "scheduledSegmentOccurrences": 189688,
-      "matchedScheduledSegmentOccurrences": 175224,
+      "matchedScheduledSegmentOccurrences": 175252,
       "representativeHeadwaySegmentOccurrences": 12642,
       "repairedDirectedPairs": 2,
       "admittedTripsUsingRepair": 74,
       "anchoredDirectedPairs": 4,
       "admittedTripsUsingStopAnchor": 58,
-      "sharedCorridorDirectedPairs": 48,
-      "admittedTripsUsingSharedCorridor": 66,
+      "sharedCorridorDirectedPairs": 50,
+      "admittedTripsUsingSharedCorridor": 94,
       "groups": [
         {
           "id": "65:rail",
@@ -1323,14 +1392,14 @@
           "mode": "bus",
           "routes": 7,
           "trips": 312,
-          "admittedTrips": 257,
+          "admittedTrips": 285,
           "patterns": 27,
-          "admittedPatterns": 20,
+          "admittedPatterns": 22,
           "directedPairs": 379,
-          "matchedDirectedPairs": 368,
+          "matchedDirectedPairs": 370,
           "segmentOccurrences": 7658,
-          "matchedSegmentOccurrences": 7597,
-          "geometryCoverage": 0.9920344737529381
+          "matchedSegmentOccurrences": 7625,
+          "geometryCoverage": 0.995690780882737
         },
         {
           "id": "896:bus",
@@ -1724,74 +1793,74 @@
         }
       ],
       "exclusionReasons": {
-        "endpoint-gap": 821,
+        "endpoint-gap": 793,
         "missing-line": 13169,
         "implausible-detour": 128,
         "disconnected-line": 40
       },
       "artifacts": {
         "directory": "data/st-gallen-region/local/2026-09-04",
-        "manifestGzipBytes": 1989532,
-        "morningGzipBytes": 2188996,
+        "manifestGzipBytes": 1997766,
+        "morningGzipBytes": 2197984,
         "chunks": [
           {
             "id": "00-02",
-            "gzipBytes": 30333,
+            "gzipBytes": 30301,
             "trips": 176
           },
           {
             "id": "02-04",
-            "gzipBytes": 589,
+            "gzipBytes": 592,
             "trips": 1
           },
           {
             "id": "04-06",
-            "gzipBytes": 73641,
+            "gzipBytes": 73590,
             "trips": 474
           },
           {
             "id": "06-08",
-            "gzipBytes": 194929,
-            "trips": 1528
+            "gzipBytes": 195818,
+            "trips": 1536
           },
           {
             "id": "08-10",
-            "gzipBytes": 183662,
-            "trips": 1560
+            "gzipBytes": 184053,
+            "trips": 1562
           },
           {
             "id": "10-12",
-            "gzipBytes": 179247,
-            "trips": 1525
+            "gzipBytes": 179621,
+            "trips": 1526
           },
           {
             "id": "12-14",
-            "gzipBytes": 183943,
-            "trips": 1587
+            "gzipBytes": 184968,
+            "trips": 1594
           },
           {
             "id": "14-16",
-            "gzipBytes": 177444,
+            "gzipBytes": 177644,
             "trips": 1527
           },
           {
             "id": "16-18",
-            "gzipBytes": 197879,
-            "trips": 1705
+            "gzipBytes": 198932,
+            "trips": 1712
           },
           {
             "id": "18-20",
-            "gzipBytes": 180466,
-            "trips": 1360
+            "gzipBytes": 181143,
+            "trips": 1364
           },
           {
             "id": "20-22",
-            "gzipBytes": 116994,
+            "gzipBytes": 116961,
             "trips": 791
           },
           {
             "id": "22-24",
-            "gzipBytes": 90365,
+            "gzipBytes": 90325,
             "trips": 601
           }
         ]
@@ -2371,8 +2440,8 @@
       },
       "artifacts": {
         "directory": "data/st-gallen-region/local/2026-09-06",
-        "manifestGzipBytes": 2079742,
-        "morningGzipBytes": 2192943,
+        "manifestGzipBytes": 2080332,
+        "morningGzipBytes": 2193272,
         "chunks": [
           {
             "id": "00-02",
@@ -2440,40 +2509,44 @@
   ],
   "files": {
     "routes.json": {
-      "sha256": "12e1495b0843d8c41e1caa3f44b270318b12f6fd83e61f5741af2a6f022b4f93"
+      "sha256": "ea422569b2d9a84930b0fcaa89de18d03bf8a1f607feacc5c9589ec9bff80bac"
     },
     "source-lines.json": {
-      "sha256": "c21998d19ef366a6a5694bbffd9f661cac6eaf93b19a7e32238d91dbecbda8c2"
+      "sha256": "9f62e7ef167aeacf8ac3bf325b5e607f14465fb59593d21710e072e2ee634b4e"
     },
     "2026-09-04.json": {
-      "sha256": "a8f456b499a0bb432becad715e8284d541aa827d78b9cbe6c5577a8a469fa40a"
+      "sha256": "eebaff3d98ca642555d749ae252ca24b819da40ca6a2de567286b2f8f8dbacc7"
     },
     "2026-09-06.json": {
-      "sha256": "dc5d77c95dcffb1271d54af5c712ddea3c1a5763d82f012a2594a48caa63dff5"
+      "sha256": "a040e25fe160c3380196552deb4bb4559e75ee6b5bda8a95c2bd7973d957615c"
     }
   },
   "topologyReview": {
     "path": "data/st-gallen-topology-review.json",
-    "sha256": "3bae37a6c48c574a99799fe22da225834890ff19e7803f4887af2355c8fbc12f"
+    "sha256": "c7190ec9652aea14746c6732697c8137cab071f154b5be2e19ccc4ec87de0fd5"
   },
   "detourReview": {
     "path": "data/st-gallen-detour-review.json",
-    "sha256": "df65eb6582596aa67bbf78a93623774aff75d420b2f80cff059c3ae6326c2c69"
+    "sha256": "454856c5c187c2699fc06b7f0d6a7ab016541a71d490a872c8779467e6ca801f"
   },
   "endpointReview": {
     "path": "data/st-gallen-endpoint-review.json",
-    "sha256": "7d31ad418b2e8cc99b51795b53151444ecdef87e98bdfdf3341ec34d5e40c9e7"
+    "sha256": "68e40d63f9ea3aa87a44bb16421046df34f24d72c4b599ce428c1c7815c13d90"
   },
   "vmobilReview": {
     "path": "data/st-gallen-vmobil-review.json",
-    "sha256": "cb58734600750045b9e251577a51875e439987a75a6e4c666eae0ce6e7a572a2"
+    "sha256": "585a6220fbe6d20bb814409191ad2d3a723f131c320aa38ef28c8783b28dbe37"
   },
   "stopAnchorReview": {
     "path": "data/st-gallen-stop-anchor-review.json",
-    "sha256": "60e88fcc1e1961141224b141df37a53b69fc2367386a4ce5bb9b2c38be114e52"
+    "sha256": "0e2d23d8a1a1a37c5405233369b6c7983105f1f2b1eb4f14ffde885dfe5abe3d"
   },
   "sharedCorridorReview": {
     "path": "data/st-gallen-shared-corridor-review.json",
-    "sha256": "33080df88717df7f87939399182025894a5c2ebcb0217d925a91b18d07eab2fc"
+    "sha256": "eaf37b06cc3f3a379f03098a32da535da5f19522062a8f18b4633b41d8a89d37"
+  },
+  "vaduzReview": {
+    "path": "data/st-gallen-vaduz-review.json",
+    "sha256": "2f5462b821a8531352acfe5a0a058d529bb62589f8d6ff174f96513948a90391"
   }
 }

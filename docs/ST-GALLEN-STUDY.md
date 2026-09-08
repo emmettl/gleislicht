@@ -21,7 +21,7 @@ The obsolete share/download endpoint was replaced by the current [public AL_OEV 
 | Source layer | Features | Mapped to annual SG routes | Candidate graph for admitted trips |
 | --- | --- | --- | --- |
 | rail | 45 | 45 | 41 |
-| bus | 145 | 143 | 135 |
+| bus | 145 | 143 | 137 |
 | city | 34 | 34 | 33 |
 | mountain | 1 | 1 | 1 |
 | boat | 1 | 1 | 1 |
@@ -48,26 +48,28 @@ Graphs connect **only exact shared vertices** on the same reviewed operator/line
 
 Pattern identity includes route, direction_id, every ordered stop ID and pickup/drop-off rules. Every pair is evaluated in its actual direction, including loops and return paths; if any pair fails, the **entire trip pattern** is excluded. Source direction_id alone is never treated as proof of legal direction. AL_OEV expressly does not encode travel direction: successful patterns are inferred alignments, with no one-way street, lane, track, temporary-diversion or water-navigability certification. Sparse boat/cableway linework is retained at its source resolution. Every excluded route, pattern and pair keeps a specific failure reason; nothing is silently cropped to improve coverage.
 
-One [documented shared corridor](ST-GALLEN-SHARED-CORRIDOR-REVIEW.md) restores PostAuto line 210 between St. Gallen Bahnhof and Tübach Schulstrasse using the official line-211 record. PostAuto's network map, valid from 14 December 2025 and retrieved 8 September 2026, confirms the common corridor through Mörschwil. This is restricted to 64 individually reviewed directed route/platform pairs, adjacent names in the approved stop sequence, pinned output geometry hashes and the unchanged numerical limits. It applies only after a primary endpoint-gap failure; every passing primary path is preserved. The donor's Horn branch is outside the approved pairs. Shared-corridor source, operator, name, coordinate or path changes fail validation. No general operator-wide fallback is enabled. The [incremental regression](../data/st-gallen-shared-corridor-review.json) confirms all 10,500 Friday and 7,264 Sunday previously admitted journeys remain identical, including the line-321 repair.
+The first [documented shared corridor](ST-GALLEN-SHARED-CORRIDOR-REVIEW.md) restores PostAuto line 210 between St. Gallen Bahnhof and Tübach Schulstrasse using the official line-211 record. PostAuto's network map, valid from 14 December 2025 and retrieved 8 September 2026, confirms the common corridor through Mörschwil. This is restricted to 64 individually reviewed directed route/platform pairs, adjacent names in the approved stop sequence, pinned output geometry hashes and the unchanged numerical limits. It applies only after a primary endpoint-gap failure; every passing primary path is preserved. The donor's Horn branch is outside the approved pairs. Shared-corridor source, operator, name, coordinate or path changes fail validation. No general operator-wide fallback is enabled. The [incremental regression](../data/st-gallen-shared-corridor-review.json) confirms all 10,500 Friday and 7,264 Sunday previously admitted journeys remain identical, including the line-321 repair.
 
 ## Measured results
 
 
-One [reviewed stop rendering anchor](ST-GALLEN-STOP-ANCHOR-REVIEW.md) resolves the coordinate discrepancy at Dornbirn Treffpunkt a.d.Ach for line 164. It uses the exact published Vorarlberg platform coordinate as a representative stop-level anchor, with the opposite platform within 9 m. The original Swiss coordinate remains in the policy/audit and the source timetable file is untouched. The adapter pins both source bytes and schedule evidence, restricts use to line 164 on the two reviewed dates, and rejects new route usage or changed source coordinates. Every original call, ID, time and existing admitted path is preserved. The [incremental anchor regression](../data/st-gallen-stop-anchor-review.json), against commit 2e0c599, adds exactly 58 Friday / 26 Sunday trips and two directed patterns per date. AL_OEV linework, the 120 m snap limit and detour limits remain unchanged. This is a representative rendering anchor, not a direction-specific platform assignment or an authoritative correction to the Swiss feed.
+A second [documented shared corridor](ST-GALLEN-VADUZ-REVIEW.md) restores the two line-24 pairs between Vaduz Lettstrasse and Post. LIEmobil's July 2026 network map corroborates the corridor and its 2024 annual report confirms joint operation with Bus Ostschweiz and the December 2024 extension. Only the exact reviewed target feature override, agency 805, route 92-24-C-j26-1, two fixture dates and two platform-pair geometry hashes qualify. The line-11 AL_OEV record supplies the missing alignment. The separate [Vaduz regression](../data/st-gallen-vaduz-review.json), against baaf1da, adds 28 Friday trips in two directed patterns and no Sunday trips; every previous journey and matched pair is unchanged.
+
+One [reviewed stop rendering anchor](ST-GALLEN-STOP-ANCHOR-REVIEW.md) resolves the coordinate discrepancy at Dornbirn Treffpunkt a.d.Ach for line 164. It uses the exact published Vorarlberg platform coordinate as a representative stop-level anchor, with the opposite platform within 9 m. The original Swiss coordinate remains in the policy/audit and the source timetable file is untouched. The adapter pins both source bytes and schedule evidence, restricts use to line 164 on the two reviewed dates, and rejects new route usage or changed source coordinates. Every original call, ID, time and existing admitted path is preserved. The [incremental anchor regression](../data/st-gallen-stop-anchor-review.json), against commit 2e0c599, records the 58 Friday / 26 Sunday line-164 additions and the subsequent 28 / 0 line-24 additions; the original anchor step added two directed patterns per date. AL_OEV linework, the 120 m snap limit and detour limits remain unchanged. This is a representative rendering anchor, not a direction-specific platform assignment or an authoritative correction to the Swiss feed.
 
 | Metric | 2026-09-04 | 2026-09-06 |
 | --- | --- | --- |
 | Civil-day movement instances | 24'782 | 22'859 |
-| Admitted movement instances | 10'624 (42.9%) | 7'325 (32.0%) |
-| Excluded movement instances | 14'158 | 15'534 |
-| Complete directed patterns admitted / evaluated | 1'002 / 1'441 | 773 / 1'182 |
-| Directed route-stop pairs matched / evaluated | 7'182 / 8'427 (85.2%) | 7'176 / 8'589 (83.5%) |
-| All segment occurrences matched / evaluated | 177'688 / 202'330 (87.8%) | 116'433 / 142'563 (81.7%) |
-| Scheduled segment occurrences matched / evaluated | 175'224 / 189'688 (92.4%) | 113'969 / 128'365 (88.8%) |
+| Admitted movement instances | 10'652 (43.0%) | 7'325 (32.0%) |
+| Excluded movement instances | 14'130 | 15'534 |
+| Complete directed patterns admitted / evaluated | 1'004 / 1'441 | 773 / 1'182 |
+| Directed route-stop pairs matched / evaluated | 7'184 / 8'427 (85.2%) | 7'176 / 8'589 (83.5%) |
+| All segment occurrences matched / evaluated | 177'716 / 202'330 (87.8%) | 116'433 / 142'563 (81.7%) |
+| Scheduled segment occurrences matched / evaluated | 175'252 / 189'688 (92.4%) | 113'969 / 128'365 (88.8%) |
 | Representative headway movements admitted / evaluated | 1'239 / 11'417 | 1'239 / 12'973 |
 | Admitted movements using reviewed source repair | 74 | 67 |
-| Admitted movements using reviewed shared corridor | 66 | 35 |
-| Directed pairs using reviewed shared corridor | 48 | 64 |
+| Admitted movements using reviewed shared corridor | 94 | 35 |
+| Directed pairs using reviewed shared corridor | 50 | 64 |
 | Admitted movements using reviewed stop anchor | 58 | 26 |
 | Directed pairs using reviewed stop anchor | 4 | 4 |
 | Preceding-day carry-ins admitted / evaluated | 162 / 221 | 371 / 663 |
@@ -77,7 +79,7 @@ Pair and occurrence coverage includes matches inside excluded patterns, so it is
 | Mode | Annual route records | 2026-09-04 admitted/all movements; pair-occurrence coverage | 2026-09-06 admitted/all movements; pair-occurrence coverage |
 | --- | --- | --- | --- |
 | boat | 5 | 22/69; 26.6% | 22/81; 24.2% |
-| bus | 222 | 8'216/9'020; 97.3% | 5'071/5'663; 95.2% |
+| bus | 222 | 8'244/9'020; 97.3% | 5'071/5'663; 95.2% |
 | mountain | 19 | 1'239/13'697; 16.5% | 1'239/15'401; 14.8% |
 | rail | 97 | 1'147/1'996; 71.5% | 993/1'714; 71.0% |
 
@@ -107,7 +109,7 @@ Pair and occurrence coverage includes matches inside excluded patterns, so it is
 | 766 | Bus und Service AG (Chur) | bus | 1 | 0 / 0 | 1 / 1 |
 | 772 | Busbetrieb Rapperswil-Eschenbach-Rüti ZH | bus | 5 | 257 / 304 | 108 / 146 |
 | 801 | PostAuto AG | bus | 78 | 2'612 / 2'732 | 1'708 / 1'797 |
-| 805 | Verkehrsbetrieb LIECHTENSTEINmobil | bus | 9 | 257 / 312 | 154 / 156 |
+| 805 | Verkehrsbetrieb LIECHTENSTEINmobil | bus | 9 | 285 / 312 | 154 / 156 |
 | 810 | Busbetrieb Lichtensteig-Wattwil-Ebnat-Kappel | bus | 2 | 107 / 107 | 81 / 81 |
 | 832 | Autobetrieb Weesen-Amden | bus | 1 | 70 / 70 | 65 / 65 |
 | 838 | Verkehrsbetriebe Zürichsee und Oberland | bus | 7 | 416 / 418 | 267 / 270 |
@@ -129,7 +131,7 @@ Pair and occurrence coverage includes matches inside excluded patterns, so it is
 | Failure reason | 2026-09-04 affected trips | 2026-09-06 affected trips |
 | --- | --- | --- |
 | disconnected-line | 40 | 3 |
-| endpoint-gap | 821 | 512 |
+| endpoint-gap | 793 | 512 |
 | implausible-detour | 128 | 59 |
 | missing-line | 13169 | 14960 |
 
@@ -137,7 +139,7 @@ Reasons overlap when a pattern has multiple failures. Missing-line includes outs
 
 The [bus detour review](ST-GALLEN-DETOUR-REVIEW.md) replays all seven remaining bus pairs rejected for implausible detours, affecting 128 Friday and 59 Sunday trips. It compares every nearby edge projection and the operator's combined regional bus linework. The 352/353 and 432 failures persist. Line 400 has a shorter candidate using a 33.30 m edge from line 429/430, but it lacks the evidence required for admission. Operator notices retrieved on 8 September document construction overlapping both fixture dates. All these patterns remain excluded; the [machine-readable review](../data/st-gallen-detour-review.json) pins the evidence snapshots, diagnostic results and affected patterns without redistributing geometry.
 
-The [bus endpoint review](ST-GALLEN-ENDPOINT-REVIEW.md) replays every remaining bus endpoint-gap pair and checks other individual regional/city records mapped to the same agency. It covers 105 distinct directed pairs, affecting 331 Friday / 100 Sunday complete trips. Operator evidence for lines 323 and 705 does not establish an admissible replacement alignment. The official Vorarlberg July sample contains line-164 shapes but no line 323; those external shapes are inventoried only. Candidate paths do not authorize a route fallback. All reviewed endpoint failures remain excluded with the unchanged 120 m limit. The [machine-readable review](../data/st-gallen-endpoint-review.json) pins every pair, candidate hash, evidence date and affected-pattern total.
+The [bus endpoint review](ST-GALLEN-ENDPOINT-REVIEW.md) replays every remaining bus endpoint-gap pair and checks other individual regional/city records mapped to the same agency. It covers 103 distinct directed pairs, affecting 303 Friday / 100 Sunday complete trips. Operator evidence for lines 323 and 705 does not establish an admissible replacement alignment. The official Vorarlberg July sample contains line-164 shapes but no line 323; those external shapes are inventoried only. Candidate paths do not authorize a route fallback. All reviewed endpoint failures remain excluded with the unchanged 120 m limit. The [machine-readable review](../data/st-gallen-endpoint-review.json) pins every pair, candidate hash, evidence date and affected-pattern total.
 
 ### Admitted route records
 
@@ -195,6 +197,7 @@ Each value is admitted/all civil-day movement instances. Partial routes still ex
 | 81_VVV | 92-164-C-j26-1 | 164 | 58/58 | 26/26 |
 | 885 | 92-2-B-j26-1 | 2 | 192/192 | 148/148 |
 | 896 | 92-23-D-j26-1 | 23 | 0/0 | 6/6 |
+| 805 | 92-24-C-j26-1 | 24 | 28/28 | 0/0 |
 | 138 | 92-251-B-j26-1 | 251 | 66/66 | 34/34 |
 | 138 | 92-252-C-j26-1 | 252 | 59/59 | 22/22 |
 | 138 | 92-253-C-j26-1 | 253 | 19/38 | 42/42 |
@@ -372,10 +375,10 @@ The endpoint review has the same source/day binding. Run `node scripts/review-st
 
 The [Vorarlberg line-164 review](ST-GALLEN-VMOBIL-REVIEW.md) additionally compares active calendars, every ordered call and time, and directed shape-distance slices against the Swiss fixtures. Both sources have 58 Friday / 26 Sunday trips with identical call times, but Treffpunkt a.d.Ach differs by 673–679 m and Messekreuzung toward Dornbirn by 143 m. External geometry does not resolve these source-coordinate discrepancies. The separately reviewed [Treffpunkt rendering anchor](ST-GALLEN-STOP-ANCHOR-REVIEW.md) now admits all 58 / 26 trips on unchanged AL_OEV geometry, preserving the original Swiss coordinate in the audit. No external shapes are admitted. Run `node scripts/review-st-gallen-vmobil.mjs --check` to replay the pinned July ZIP; shape clipping, calendar exceptions and name normalization have dedicated tests in `scripts/st-gallen-vmobil.test.mjs`.
 
-The full checker verifies source hashes, annual-route reconciliation, every admitted and excluded source pattern, unchanged source calls/times/sequences, frequency and carry-in metadata, directed path endpoints, per-pair path hashes, shared-corridor source replay and provenance, chunk overlap consistency, morning-window membership and operator/mode/route/pair-occurrence totals. The audit-only check works from tracked files without the large source cache. The geometry regression compares against the feed and policy from commit 2351822: every previously admitted movement, call and path and every previously matched pair must be unchanged, and only the reviewed line-321, line-210 and line-164 patterns may be added. Run `node scripts/check-st-gallen-topology-regression.mjs BASELINE_FEED_DIRECTORY BASELINE_AUDIT_JSON` after building both versions with the exported `buildStGallenRegion` function and their respective policies. For the incremental line-210 regression, add `--shared` and supply the baseline from commit 7926448; only line-210 (66 Friday / 35 Sunday) and subsequently reviewed line-164 (58 / 26) trips may be added. The saved reports record the pinned baselines and result hashes. The supporting map is acquired by the source-preparation command; use `python3 scripts/prepare-st-gallen-sources.py --shared-evidence-only` to acquire it without refreshing the original source catalogue.
+The full checker verifies source hashes, annual-route reconciliation, every admitted and excluded source pattern, unchanged source calls/times/sequences, frequency and carry-in metadata, directed path endpoints, per-pair path hashes, shared-corridor source replay and provenance, chunk overlap consistency, morning-window membership and operator/mode/route/pair-occurrence totals. The audit-only check works from tracked files without the large source cache. The geometry regression compares against the feed and policy from commit 2351822: every previously admitted movement, call and path and every previously matched pair must be unchanged, and only the reviewed line-321, line-210, line-164 and line-24 patterns may be added. Run `node scripts/check-st-gallen-topology-regression.mjs BASELINE_FEED_DIRECTORY BASELINE_AUDIT_JSON` after building both versions with the exported `buildStGallenRegion` function and their respective policies. For the incremental line-210 regression, add `--shared` and supply the baseline from commit 7926448; only line-210 (66 Friday / 35 Sunday) and subsequently reviewed line-164 (58 / 26) and line-24 (28 / 0) trips may be added. The saved reports record the pinned baselines and result hashes. The supporting map is acquired by the source-preparation command; use `python3 scripts/prepare-st-gallen-sources.py --shared-evidence-only` to acquire it without refreshing the original source catalogue.
 
 Regression tests cover operator isolation, misleading timetable-book numbers, prefix handling, changed overrides, polygon holes/components, preceding-day service, conditional calls, disconnected source geometry reversed artifact paths, and rejection of changed donor geometry, already-connected targets, unreviewed lengths and cross-operator repairs.
 
-Shared-corridor tests additionally reject unapproved routes, platforms, directions and stop names, changed geometry hashes, duplicate approvals and source-operator/name changes; they verify that passing primary geometry is never replaced.
+Shared-corridor tests additionally reject unapproved routes, platforms, directions and stop names, changed geometry hashes, duplicate approvals and source-operator/name changes; they verify that passing primary geometry is never replaced. Joint-operation tests require evidence, an exact reviewed target identity, route and fixture dates; unrelated operator changes still fail.
 
 Pending scope is explicit: unresolved geometry exclusions; seasonal and holiday validation; road/track/boat direction and plausibility review; publication rights; future refresh/realtime/UI work. Passing numerical checks establishes the stated admitted feed, not complete or observed cantonal transport movement.

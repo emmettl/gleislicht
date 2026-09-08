@@ -5,7 +5,7 @@
     "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
     "boundary": "9fcbdc0a501919e7d8722827e0868784010be046dccffc02df0833f9de21f86a",
     "timetable": "fdbe77f9d44d9f7cf59a1da8cf09b87970a6afc0a78355421265b73f9981d49c",
-    "policy": "8242d0912fa587fc4d7e8230e1e0281050ae23be31d4d67fc66b2809124981e5",
+    "policy": "1c8edc606dda82f2dd4e7507511ba73805b850839141edb2a9dd6f81ff728565",
     "catalogue": "a3ca9355f89503c16380dec23a518a1c3ad2b91308428da0d8ade6a3da782c8f"
   },
   "evidence": [
@@ -754,130 +754,6 @@
           "affectedPatterns": 1,
           "affectedTrips": 1,
           "patternIdsSha256": "98c1dc2a4f8261829e71621da5f3b7502f7bd8268998c1b5fea6b159d8e14419"
-        },
-        {
-          "date": "2026-09-06",
-          "occurrences": 0,
-          "affectedPatterns": 0,
-          "affectedTrips": 0,
-          "patternIdsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
-        }
-      ],
-      "decision": "Retain complete-pattern exclusion."
-    },
-    {
-      "key": "[\"92-24-C-j26-1\",\"ch:1:sloid:81819\",\"ch:1:sloid:9985:0:02\"]",
-      "routeId": "92-24-C-j26-1",
-      "agencyId": "805",
-      "line": "24",
-      "fromId": "ch:1:sloid:81819",
-      "toId": "ch:1:sloid:9985:0:02",
-      "from": "Vaduz, Lettstrasse",
-      "to": "Vaduz, Post",
-      "sourceFeatures": [
-        "bus:3",
-        "bus:137"
-      ],
-      "production": {
-        "reason": "endpoint-gap",
-        "maximumSnapMetres": 310.1114307301674,
-        "pathMetres": null
-      },
-      "sameAgencyCandidates": [
-        {
-          "feature": "bus:2",
-          "name": "13 Schaan - Nendeln - Eschen Trübbach - Vaduz - Nendeln/Eschen - Schaanwald - Feldkirch",
-          "reason": "candidate-path",
-          "maximumSnapMetres": 38.47139508913079,
-          "pathMetres": 334.6506275655695,
-          "geometrySha256": "a6188395007938a72612f68691b3693f4e2d0ab6432f590d940f47f1f3bd63e2"
-        },
-        {
-          "feature": "bus:5",
-          "name": "12 Sargans - Trübbach/Balzers - Vaduz - Eilkurs",
-          "reason": "candidate-path",
-          "maximumSnapMetres": 38.47139508913079,
-          "pathMetres": 334.6506271638099,
-          "geometrySha256": "48f15806dd7ae74fe99297e512269ac2e1979988f592fc8471b792db61142d90"
-        },
-        {
-          "feature": "bus:33",
-          "name": "11 Sargans - Trübbach/Balzers - Schaan - Bendern/Eschen - Feldkirch",
-          "reason": "candidate-path",
-          "maximumSnapMetres": 38.47139508913079,
-          "pathMetres": 334.6506271638099,
-          "geometrySha256": "48f15806dd7ae74fe99297e512269ac2e1979988f592fc8471b792db61142d90"
-        }
-      ],
-      "days": [
-        {
-          "date": "2026-09-04",
-          "occurrences": 14,
-          "affectedPatterns": 1,
-          "affectedTrips": 14,
-          "patternIdsSha256": "306d91f2ca2f966816479b5211f86dfc1537c3bdf0f31b9c6c2d7be4e91cd185"
-        },
-        {
-          "date": "2026-09-06",
-          "occurrences": 0,
-          "affectedPatterns": 0,
-          "affectedTrips": 0,
-          "patternIdsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
-        }
-      ],
-      "decision": "Retain complete-pattern exclusion."
-    },
-    {
-      "key": "[\"92-24-C-j26-1\",\"ch:1:sloid:9985:0:01\",\"ch:1:sloid:81819\"]",
-      "routeId": "92-24-C-j26-1",
-      "agencyId": "805",
-      "line": "24",
-      "fromId": "ch:1:sloid:9985:0:01",
-      "toId": "ch:1:sloid:81819",
-      "from": "Vaduz, Post",
-      "to": "Vaduz, Lettstrasse",
-      "sourceFeatures": [
-        "bus:3",
-        "bus:137"
-      ],
-      "production": {
-        "reason": "endpoint-gap",
-        "maximumSnapMetres": 248.86906193881197,
-        "pathMetres": null
-      },
-      "sameAgencyCandidates": [
-        {
-          "feature": "bus:2",
-          "name": "13 Schaan - Nendeln - Eschen Trübbach - Vaduz - Nendeln/Eschen - Schaanwald - Feldkirch",
-          "reason": "candidate-path",
-          "maximumSnapMetres": 38.47139508913079,
-          "pathMetres": 260.3263057517003,
-          "geometrySha256": "f6a5d29bdabcc3d1beda806283fcb3bac7009f8d23ef6e1d7b45a3272f111fbf"
-        },
-        {
-          "feature": "bus:5",
-          "name": "12 Sargans - Trübbach/Balzers - Vaduz - Eilkurs",
-          "reason": "candidate-path",
-          "maximumSnapMetres": 38.47139508913079,
-          "pathMetres": 260.3263053499406,
-          "geometrySha256": "d99ad765af795b355f1d4538e5b365c8942be94fd90a7e9fdd26dc61655ada3c"
-        },
-        {
-          "feature": "bus:33",
-          "name": "11 Sargans - Trübbach/Balzers - Schaan - Bendern/Eschen - Feldkirch",
-          "reason": "candidate-path",
-          "maximumSnapMetres": 38.47139508913079,
-          "pathMetres": 260.3263053499406,
-          "geometrySha256": "d99ad765af795b355f1d4538e5b365c8942be94fd90a7e9fdd26dc61655ada3c"
-        }
-      ],
-      "days": [
-        {
-          "date": "2026-09-04",
-          "occurrences": 14,
-          "affectedPatterns": 1,
-          "affectedTrips": 14,
-          "patternIdsSha256": "f442fd330322539b45232016b4c067be21c73d3e7290385c0676f2e2ab195c50"
         },
         {
           "date": "2026-09-06",
@@ -4583,26 +4459,6 @@
       ]
     },
     {
-      "routeId": "92-24-C-j26-1",
-      "agencyId": "805",
-      "line": "24",
-      "reviewedPairs": 2,
-      "pairsWithCandidate": 2,
-      "maximumSnapMetres": 310.1114307301674,
-      "days": [
-        {
-          "date": "2026-09-04",
-          "affectedPatterns": 2,
-          "affectedTrips": 28
-        },
-        {
-          "date": "2026-09-06",
-          "affectedPatterns": 0,
-          "affectedTrips": 0
-        }
-      ]
-    },
-    {
       "routeId": "92-253-C-j26-1",
       "agencyId": "138",
       "line": "253",
@@ -4846,11 +4702,11 @@
   "days": [
     {
       "date": "2026-09-04",
-      "reviewedPairs": 96,
-      "affectedPatterns": 38,
-      "affectedTrips": 331,
-      "admittedTrips": 10624,
-      "dayAuditSha256": "62caed3d7d77c2399c20cf30d75f21c698b762f12f04f5cfacbdf1b3aea3cd38"
+      "reviewedPairs": 94,
+      "affectedPatterns": 36,
+      "affectedTrips": 303,
+      "admittedTrips": 10652,
+      "dayAuditSha256": "25491834d3a75366de1dc0b6065aa56d772fa8c6074b9747e439183aeb9cacd6"
     },
     {
       "date": "2026-09-06",
@@ -4858,7 +4714,7 @@
       "affectedPatterns": 24,
       "affectedTrips": 100,
       "admittedTrips": 7325,
-      "dayAuditSha256": "34fa39b4c48b38ba3ba9f974b9157e71164516216649b5847450de8ad56649d7"
+      "dayAuditSha256": "cabbfa82c025d0bcef53d413321688fc6cf635c6a52f5014bc8a08530fb67a49"
     }
   ],
   "validation": {

@@ -202,6 +202,21 @@ export async function checkStGallenAudit(directory = 'data/st-gallen-audit') {
   assert.deepEqual(sharedReview.sourceHashes,summary.sourceHashes)
   assert.equal(sharedReview.baselineCommit,'7926448')
   assert(sharedReview.validation.allPreviouslyAdmittedCallsAndPathsUnchanged)
+  assert(summary.vaduzReview, 'Missing Vaduz extension regression')
+  assert.equal(sha256(await readFile(summary.vaduzReview.path)), summary.vaduzReview.sha256)
+  const vaduzReview=await json(summary.vaduzReview.path)
+  assert.deepEqual(vaduzReview.sourceHashes, summary.sourceHashes)
+  assert.equal(vaduzReview.baselineCommit, 'baaf1da')
+  assert(vaduzReview.validation.allPreviouslyAdmittedCallsAndPathsUnchanged && vaduzReview.validation.allPreviouslyMatchedPairsUnchanged)
+  assert.deepEqual(vaduzReview.days.map(d=>d.date),summary.days.map(d=>d.date))
+  for (const day of vaduzReview.days) {
+    const current=summary.days.find(d=>d.date===day.date), added=day.date==='2026-09-04'?28:0
+    assert.deepEqual(day.addedTripsByRoute, {'92-24-C-j26-1':added})
+    assert.equal(day.addedTrips,added); assert.equal(day.addedPatterns,added?2:0)
+    assert.equal(day.afterTrips,current.admittedTrips); assert.equal(day.afterPatterns,current.admittedPatterns)
+    assert.equal(day.beforeTrips+added,day.afterTrips)
+    assert.equal(day.unchangedExistingTrips,day.beforeTrips)
+  }
   assert(summary.detourReview, 'Missing bus detour review')
   assert.equal(sha256(await readFile(summary.detourReview.path)), summary.detourReview.sha256)
   const detours = await json(summary.detourReview.path)

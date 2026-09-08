@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "baselineCommit": "2351822",
+  "baselineCommit": "baaf1da",
   "baselineSourceHashes": {
     "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
     "boundary": "9fcbdc0a501919e7d8722827e0868784010be046dccffc02df0833f9de21f86a",
     "timetable": "fdbe77f9d44d9f7cf59a1da8cf09b87970a6afc0a78355421265b73f9981d49c",
-    "policy": "4b05773d1b0845b58954d712bc207c1d59de332fdba6ee8a6976a66af7fa4e23",
+    "policy": "8242d0912fa587fc4d7e8230e1e0281050ae23be31d4d67fc66b2809124981e5",
     "catalogue": "a3ca9355f89503c16380dec23a518a1c3ad2b91308428da0d8ade6a3da782c8f"
   },
   "sourceHashes": {
@@ -68,78 +68,34 @@
   "days": [
     {
       "date": "2026-09-04",
-      "beforeTrips": 10426,
+      "beforeTrips": 10624,
       "afterTrips": 10652,
-      "addedTrips": 226,
-      "unchangedExistingTrips": 10426,
-      "addedTripIdsSha256": "9822ae34206b3a3f1003281476cb63bc702c5be400286d50dad0b982dffc1803",
-      "addedPatterns": 13,
+      "addedTrips": 28,
+      "unchangedExistingTrips": 10624,
+      "addedTripIdsSha256": "332ddc13ca09341af7326412137829497d0f5c86a34e454cf2f012672a9382bd",
+      "addedPatterns": 2,
       "addedTripsByRoute": {
-        "92-24-C-j26-1": 28,
-        "92-164-C-j26-1": 58,
-        "96-250-8-j26-1": 66,
-        "92-321-j26-1": 74
+        "92-24-C-j26-1": 28
       },
       "sharedCorridorPairs": 50,
-      "recoveredPairs": [
-        {
-          "key": "[\"92-321-j26-1\",\"ch:1:sloid:78453:0:02\",\"ch:1:sloid:78454:0:02\"]",
-          "from": "Heerbrugg, Schloss",
-          "to": "Balgach, Optik",
-          "occurrences": 37,
-          "geometryRepairIds": [
-            "balgach-321-source-gap"
-          ]
-        },
-        {
-          "key": "[\"92-321-j26-1\",\"ch:1:sloid:78454:0:01\",\"ch:1:sloid:78453:0:01\"]",
-          "from": "Balgach, Optik",
-          "to": "Heerbrugg, Schloss",
-          "occurrences": 37,
-          "geometryRepairIds": [
-            "balgach-321-source-gap"
-          ]
-        }
-      ],
-      "beforePatterns": 991,
+      "recoveredPairs": [],
+      "beforePatterns": 1002,
       "afterPatterns": 1004
     },
     {
       "date": "2026-09-06",
-      "beforeTrips": 7197,
+      "beforeTrips": 7325,
       "afterTrips": 7325,
-      "addedTrips": 128,
-      "unchangedExistingTrips": 7197,
-      "addedTripIdsSha256": "f6940cc6b4345f57acc4948c0fade8751cc83f177bcbe4390fa7b4b373105081",
-      "addedPatterns": 13,
+      "addedTrips": 0,
+      "unchangedExistingTrips": 7325,
+      "addedTripIdsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "addedPatterns": 0,
       "addedTripsByRoute": {
-        "92-24-C-j26-1": 0,
-        "92-164-C-j26-1": 26,
-        "96-250-8-j26-1": 35,
-        "92-321-j26-1": 67
+        "92-24-C-j26-1": 0
       },
       "sharedCorridorPairs": 64,
-      "recoveredPairs": [
-        {
-          "key": "[\"92-321-j26-1\",\"ch:1:sloid:78454:0:01\",\"ch:1:sloid:78453:0:01\"]",
-          "from": "Balgach, Optik",
-          "to": "Heerbrugg, Schloss",
-          "occurrences": 34,
-          "geometryRepairIds": [
-            "balgach-321-source-gap"
-          ]
-        },
-        {
-          "key": "[\"92-321-j26-1\",\"ch:1:sloid:78453:0:02\",\"ch:1:sloid:78454:0:02\"]",
-          "from": "Heerbrugg, Schloss",
-          "to": "Balgach, Optik",
-          "occurrences": 33,
-          "geometryRepairIds": [
-            "balgach-321-source-gap"
-          ]
-        }
-      ],
-      "beforePatterns": 760,
+      "recoveredPairs": [],
+      "beforePatterns": 773,
       "afterPatterns": 773
     }
   ],
