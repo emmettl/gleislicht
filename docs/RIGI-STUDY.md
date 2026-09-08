@@ -36,4 +36,21 @@ Outputs:
 
 Tests cover source selection, cableway identity and reverse direction, rejected endpoints, full-day trip identities and path references, headlands, narrow islands and the actual emitted boat paths. Desktop Chromium and emulated iPhone WebKit checks cover lazy loading, study selection, full-day controls, operator search, mode labels and failure recovery. Physical-device review and publication remain separate steps.
 
-The **2D map** now links to both [measured Rigi terrain ascents from Vitznau and Arth-Goldau](RIGI-TERRAIN.md). Ground elevations beneath the railway are available; surveyed track heights, tunnels, cable behaviour, an authored lake-to-summit sequence, pedestrian connections and source-backed interchange intervals remain open. Vitznau pier/railway and Weggis pier/cableway retain distinct source stops; no walking link or guaranteed connection is invented. Seasonal and weekend selection, validated shipping routes and the other Rigi-area cableways are later increments.
+The **2D map** now links to both [measured Rigi terrain ascents from Vitznau and Arth-Goldau](RIGI-TERRAIN.md). Ground elevations beneath the railway are available. The first authored boat–interchange–railway sequence is described below; surveyed track heights, tunnels, cable behaviour, a sequence through the cableway, and pedestrian geometry remain open. Vitznau boat and railway share source stop `ch:1:sloid:8464`; Weggis pier and cableway retain distinct locations. A shared timetable stop does not mean there is no walk. Seasonal and weekend selection, validated shipping routes and the other Rigi-area cableways are later increments.
+
+
+## First lake-to-summit sequence
+
+Select **Follow lake to summit** in the RIGI overview. Ten daytime boat departures from Luzern Bahnhofquai pair with the first eligible full Vitznau–Rigi Kulm cogwheel ascent. The default is boat **17**, Luzern **12:12** → Vitznau **13:09**, followed by train **1133**, **13:15** → Rigi Kulm **13:47**. All ten pairs have a **six-minute scheduled interchange**. The composition excludes gaps above 30 minutes: an editorial limit, not a source transfer rule. This excludes the evening boat's 116-minute wait.
+
+The sequence starts paused. The shared map clock, normal playback controls, full-day scrubber and clickable stages determine the phase. The camera follows the selected boat only until its Vitznau arrival, holds the Vitznau station during the interchange, then follows the uphill railway to Rigi Kulm. Scrubbing backward reverses the handoff deterministically. The boat continues toward Flüelen in the timetable, but the visitor's sequence has alighted. Choosing another service or leaving the sequence restores ordinary exploration. Measured Vitznau terrain remains a separate scenic playback, accessible in the sequence's details.
+
+Evidence retained in `data/rigi-interchange-source.json`:
+
+- The fixture's exact source archive hash, feed version and service date.
+- The sole applicable `transfers.txt` row for Vitznau and its parent: source stop `ch:1:sloid:8464` to itself, `transfer_type=2`, `min_transfer_time=60`, with no route, trip or service restriction.
+- The operator's [Vitznau arrival guide](https://www.rigi.ch/en/inform/arrival/arrival-parking-vitznau), retrieved 8 September 2026, describes a **50 m walk** from the dock to the valley station. No pedestrian polyline, accessibility assessment or observed walking time is supplied.
+
+Reproduce the transfer audit with `node scripts/audit-rigi-interchange.mjs /path/GTFS_FP2026_20260902.zip`. It hashes the archive against the study and rejects changed or more specific transfer rules for review. The optional sequence module derives pairs directly from the loaded fixture; mismatched dates, feed hashes, modes, operators, partial ascents, headway services and missing path geometry do not become sequences. It uses the boat's intermediate arrival, the railway's first departure and its terminal arrival, retaining both source trip IDs. The minimum is a timetable rule, **not a guaranteed connection** or a claim about suitable boarding margins.
+
+Focused tests cover pairing, exact transfer eligibility, source mismatches, stage boundaries and reverse scrubbing. Browser checks exercise automatic boat/rail handoffs, replay, departure choice, dismissal and manual selection on desktop Chromium and emulated iPhone WebKit. Sequence code, copy, styling and evidence load only on entry; the initial bundle budgets remain unchanged.

@@ -146,6 +146,7 @@ const AlpineQuiet = lazy(() =>
   import('./studies/AlpineQuiet.tsx').then(({ AlpineQuiet: Scene }) => ({ default: Scene })),
 )
 
+const RigiSequence = lazy(() => import('./studies/RigiSequence.tsx'))
 const RigiTerrainProfile = lazy(() => import('./studies/RigiTerrainProfile.tsx'))
 const GleislichtScene = lazy(() =>
   import('./studies/GleislichtJourneyScene.tsx').then(({ GleislichtScene: Scene }) => ({
@@ -319,6 +320,7 @@ export function App({ edition }: AppProps) {
   const [nationalDayError, setNationalDayError] = useState(false)
   const [zurichCityNetwork, setZurichCityNetwork] = useState<NetworkSnapshot>()
   const [rigiNetwork, setRigiNetwork] = useState<NetworkSnapshot>()
+  const [rigiSequenceActive, setRigiSequenceActive] = useState(false)
   const [zvvRegionNetwork, setZvvRegionNetwork] = useState<NetworkSnapshot>()
   const [genevaTpgNetwork, setGenevaTpgNetwork] = useState<NetworkSnapshot>()
   const [regionalNetworkLoading, setRegionalNetworkLoading] = useState(initialLink.study !== 'national' && initialLink.study !== 'postbus' && initialLink.study !== 'contrast')
@@ -411,7 +413,7 @@ export function App({ edition }: AppProps) {
   const [rigiLocale, setRigiLocale] = useState<typeof import('./studies/rigi-copy.ts')>()
   useEffect(() => { if (isRigi) void import('./studies/rigi-copy.ts').then(setRigiLocale) }, [isRigi])
   const rigiSelect = { en: 'Explore Lake Lucerne and Rigi', de: 'Vierwaldstättersee und Rigi entdecken', fr: 'Explorer le lac des Quatre-Cantons et le Rigi', it: 'Esplora il Lago dei Quattro Cantoni e il Rigi' }[language]
-  const rigiCopy = rigiLocale?.RIGI_COPY[language] ?? { select: rigiSelect, title: 'Rigi', placeholder: rigiSelect, modes: '', loading: text.loading, unavailable: text.loading, water: '', cable: '' }
+  const rigiCopy = rigiLocale?.RIGI_COPY[language] ?? { sequence: '', select: rigiSelect, title: 'Rigi', placeholder: rigiSelect, modes: '', loading: text.loading, unavailable: text.loading, water: '', cable: '' }
   const isRigiTerrain = isRigiCorridorId(journeyCorridorId)
   const rigiOrigin = isRigiTerrain ? RIGI_ASCENTS[journeyCorridorId].name : 'Vitznau'
   const rigiTerrainCopy = terrainCopyForRigi(language, rigiOrigin)
@@ -928,6 +930,7 @@ export function App({ edition }: AppProps) {
   const ignoreNetworkTime = useCallback(() => {}, [])
 
   const releaseSelection = useCallback(() => {
+    setRigiSequenceActive(false)
     setSelectedTrainId(undefined)
     setSelectedStationName(undefined)
     setSelectedRouteId(undefined)
@@ -936,7 +939,25 @@ export function App({ edition }: AppProps) {
     setSelectedRoadId(undefined)
     setSearchQuery('')
     setActiveSearchIndex(-1)
+  }, [setRigiSequenceActive])
+
+  const seekRigiSequence = useCallback((time: number) => {
+    setNetworkTime(time)
+    setIsPlaying(false)
   }, [])
+  const followRigiSequence = useCallback((trainId: string | undefined, station: string | undefined) => {
+    setSelectedTrainId(trainId)
+    setSelectedStationName(station)
+    if (station) setMapCameraCommand(current => ({ id: current.id + 1, action: 'reveal-station' }))
+  }, [])
+  const startRigiSequence = () => {
+    releaseSelection()
+    setSelectedCategory(undefined)
+    setDirectorMode(false)
+    setSearchOpen(false)
+    setIsPlaying(false)
+    setRigiSequenceActive(true)
+  }
 
   const toggleOperationsMode = useCallback(() => {
     setOperationsMode((current) =>
@@ -958,6 +979,7 @@ export function App({ edition }: AppProps) {
   }, [releaseSelection])
 
   const selectStation = useCallback((station: StationIndexEntry) => {
+    setRigiSequenceActive(false)
     setSbbEnabled(true)
     setAirCategorySelected(false)
     setRoadCategorySelected(false)
@@ -975,10 +997,11 @@ export function App({ edition }: AppProps) {
       id: current.id + 1,
       action: 'reveal-station',
     }))
-  }, [])
+  }, [setRigiSequenceActive])
 
   const selectRoute = useCallback(
     (route: NetworkRouteIndexEntry) => {
+      setRigiSequenceActive(false)
       setSbbEnabled(true)
       setAirCategorySelected(false)
       setRoadCategorySelected(false)
@@ -997,12 +1020,13 @@ export function App({ edition }: AppProps) {
       setView('network')
       setIsPlaying(true)
     },
-    [categoryLabel],
+    [categoryLabel, setRigiSequenceActive],
   )
 
   const selectTrain = useCallback(
     (train: NetworkTrain) => {
       if (!network) return
+      setRigiSequenceActive(false)
       setSbbEnabled(true)
       setAirCategorySelected(false)
       setRoadCategorySelected(false)
@@ -1027,7 +1051,7 @@ export function App({ edition }: AppProps) {
       setView('network')
       setIsPlaying(true)
     },
-    [network, networkTime],
+    [network, networkTime, setRigiSequenceActive],
   )
 
   const selectAirTrack = useCallback(
@@ -1156,10 +1180,11 @@ export function App({ edition }: AppProps) {
       }))
       setCorridorError(false)
       setSearchOpen(false)
+      setRigiSequenceActive(false)
       setView('journey')
       setIsPlaying(true)
     },
-    [],
+    [setRigiSequenceActive],
   )
 
   const enterTerrainCorridor = useCallback(() => {
@@ -2814,7 +2839,9 @@ export function App({ edition }: AppProps) {
         </nav>
       )}
 
-      {isHub ? (
+      {isNetwork && isRigi && rigiSequenceActive && rigiNetwork ? (
+        <Suspense fallback={null}><RigiSequence network={rigiNetwork} time={networkTime} language={language} onSeek={seekRigiSequence} onFollow={followRigiSequence} onExit={releaseSelection} onTerrain={() => openTerrainCorridor('vitznau-rigi')} /></Suspense>
+      ) : isHub ? (
         <section
           className="journey-card hub-card"
           aria-label={`${selectedHub.name} ${hubStudy === 'pulse' ? text.pulse : text.stationFlow}`}
@@ -3343,6 +3370,7 @@ export function App({ edition }: AppProps) {
                   : text.scheduledRail}
               {hasHeadwayMotion && <> {frequencyCopy.mixed}</>}
           </p>
+          {isRigi && network && !regionalNetworkError && <button type="button" className="corridor-entry" onClick={startRigiSequence}>{rigiCopy.sequence} →</button>}
           {isRigi && network && !regionalNetworkError && Object.entries(RIGI_ASCENTS).map(([id, approach]) => <button key={id} type="button" className="corridor-entry" onClick={() => openTerrainCorridor(id as RigiCorridorId)}>{terrainCopyForRigi(language, approach.name).enter} ↗</button>)}
           <div className="metric-grid">
             <div>
@@ -3909,6 +3937,7 @@ export function App({ edition }: AppProps) {
                   onClick={() => {
                     setSelectedCategory(undefined)
                     setAirCategorySelected(false)
+                    setRigiSequenceActive(false)
                     setView(isHub ? 'network' : 'hub')
                   }}
                 >
@@ -3998,6 +4027,7 @@ export function App({ edition }: AppProps) {
               onClick={() => {
                 setSelectedCategory(undefined)
                 setAirCategorySelected(false)
+                setRigiSequenceActive(false)
                 setView(isHub ? 'network' : 'hub')
               }}
             >

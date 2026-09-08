@@ -1,0 +1,28 @@
+.journey-card.rigi-sequence { top: 22%; max-height: calc(75vh - 150px); overflow: auto; clip-path: none; border-left-color: #ffe7a0; background: #0c0b21f2; }
+.sequence-exit { margin-left: auto; border: 0; background: transparent; color: inherit; font-size: 1.5rem; min-width: 36px; min-height: 36px; cursor: pointer; }
+.sequence-departure { display: grid; gap: 5px; font-size: .65rem; color: var(--muted); }
+.sequence-departure select { width: 100%; min-height: 36px; padding: 5px; border: 1px solid var(--line); background: #100e29; color: #f0eefc; font: inherit; font-size: .72rem; }
+.sequence-date, .sequence-context, .sequence-evidence { font-size: .65rem; line-height: 1.5; color: #c6c4d6; }
+.sequence-context a { color: #d8c7ff; }
+.sequence-stages { display: grid; gap: 4px; }
+.sequence-stages button { display: grid; gap: 3px; padding: 8px 10px; text-align: left; border: 1px solid var(--line); background: #0e0d2366; color: #b6b2ce; cursor: pointer; font: inherit; font-size: .65rem; }
+.sequence-stages button strong { font-size: .85rem; color: #eee9ff; font-weight: 500; }
+.sequence-stages button[aria-current] { background: #84733822; border-color: #e5ce86; color: #fff0b9; }
+.sequence-phase { font-size: .72rem; color: #fff0b9; }
+.sequence-evidence summary { cursor: pointer; min-height: 28px; }
+@media (max-width: 700px) {
+  .view-network .journey-card.rigi-sequence { top: calc(184px + env(safe-area-inset-top)); left: 16px; right: 16px; width: auto; max-height: calc(100dvh - 390px); padding: 10px 12px; }
+  .sequence-stages { grid-template-columns: 1fr 1fr 1fr; }
+  .sequence-stages button { padding: 7px 6px; font-size: .6rem; }
+  .sequence-stages button strong { font-size: .68rem; }
+  .sequence-stages small { font-size: .55rem; }
+  .sequence-date, .sequence-phase { margin: 6px 0; }
+}
+
+@media (min-width: 701px) and (max-width: 1500px) {
+  .journey-card.rigi-sequence { left: 24px; width: 240px; max-height: calc(78vh - 105px); padding: 12px; }
+}
+
+.rigi-sequence[data-phase="boat"] .sequence-phase,
+.rigi-sequence[data-phase="interchange"] .sequence-phase,
+.rigi-sequence[data-phase="rail"] .sequence-phase { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
