@@ -2,7 +2,7 @@
 
 Fixture audit updated: **9 September 2026**. Starting point: [Swiss transit source inventory](SWISS-TRANSIT-SOURCE-INVENTORY.md#fr).
 
-The entire canton is inventoried against the pinned annual national GTFS: **207 route records, 17 agency identities and all seven districts**, including detached territories and complete out-of-canton journeys. The regional feed admits **5,540 Friday journeys and 3,789 Sunday journeys** with complete directed stop patterns from cantonal lines and explicitly tagged inferred OSM road and FOT/SBB rail fallback. This is partial geometry admission, not full service coverage. One route is a provisional geographic member because its sole in-canton platform is within a metre of the boundary; see below.
+The entire canton is inventoried against the pinned annual national GTFS: **207 route records, 17 agency identities and all seven districts**, including detached territories and complete out-of-canton journeys. The regional feed admits **5,552 Friday journeys and 3,789 Sunday journeys** with complete directed stop patterns from cantonal lines and explicitly tagged inferred OSM road and FOT/SBB rail fallback. This is partial geometry admission, not full service coverage. One route is a provisional geographic member because its sole in-canton platform is within a metre of the boundary; see below.
 
 The [regional feed index](../data/fribourg-region/index.json) points to both civil-day manifests, twelve two-hour chunks per date, and 06:45–08:45 extracts. It uses the existing network snapshot format, **not a new GTFS ZIP**. It is saved under `data/` as a **local archival research artifact**. The exact matching cantonal OGD service explicitly permits attributed vector redistribution. Geometry vintage and physical direction remain unverified; this archival study is not added to public hosting or the application's study selector.
 
@@ -41,17 +41,17 @@ Civil days are **Friday 4 September and Sunday 6 September 2026**, with calendar
 | Scheduled instances | 5,812 | 4,062 |
 | Representative headway instances | 2,744 | 2,264 |
 | Admitted instances before OSM fallback | 2,595 | 1,692 |
-| Additional admitted instances from OSM fallback | 2,302 | 1,391 |
+| Additional admitted instances from OSM fallback | 2,314 | 1,391 |
 | Additional admitted instances from rail fallback including reviewed mappings | 643 | 706 |
-| Admitted scheduled instances | 5,540 | 3,789 |
+| Admitted scheduled instances | 5,552 | 3,789 |
 | Admitted headway instances | 0 | 0 |
 | Directed patterns tested | 849 | 588 |
-| Complete/admitted directed patterns | 731 | 511 |
-| Matched unique directed route/platform pairs | 4,211 / 4,509 (93.4%) | 4,360 / 4,607 (94.6%) |
-| Matched scheduled segment occurrences (before whole-pattern exclusion) | 87,494 / 89,328 (97.9%) | 60,748 / 62,231 (97.6%) |
-| Matched occurrences including representative headways | 87,494 / 92,072 (95.0%) | 60,748 / 64,495 (94.2%) |
-| Segment occurrences retained in admitted complete journeys | 85,195 | 59,370 |
-| Inferred road occurrences retained in admitted journeys | 6,124 | 3,637 |
+| Complete/admitted directed patterns | 740 | 511 |
+| Matched unique directed route/platform pairs | 4,213 / 4,509 (93.4%) | 4,360 / 4,607 (94.6%) |
+| Matched scheduled segment occurrences (before whole-pattern exclusion) | 87,506 / 89,328 (98.0%) | 60,748 / 62,231 (97.6%) |
+| Matched occurrences including representative headways | 87,506 / 92,072 (95.0%) | 60,748 / 64,495 (94.2%) |
+| Segment occurrences retained in admitted complete journeys | 85,451 | 59,370 |
+| Inferred road occurrences retained in admitted journeys | 6,136 | 3,637 |
 | Inferred rail occurrences retained in admitted journeys | 3,863 | 3,664 |
 | Official-only matched directed pairs before OSM fallback | 3,350 / 4,509 | 3,424 / 4,607 |
 | Carry-in instances / admitted | 97 / 93 | 179 / 159 |
@@ -78,7 +78,7 @@ Graph vertices join at identical LV95 coordinates, with one disclosed precision 
 
 Road one-way legality, rail running-track choice, bridge/tunnel topology and temporary diversions are **not certified** by these undirected source records. Exact source topology prevents invented connections at visual crossings, but does not prove physical direction. Original repeated calls remain in each pattern. Reservation/on-demand pickup or drop-off excludes an entire journey; none is silently converted to an ordinary fixed departure.
 
-GTFS times remain unchanged. Among admitted journeys there are **6,005 Friday and 4,631 Sunday zero-duration segments**, of which 6,001 / 4,631 exceed 100 m of source centreline. Minute-rounded equal timestamps are not instantaneous-speed measurements; a renderer may jump at those transitions. Maximum positive-duration implied speeds are 144.6 / 160.1 km/h across all admitted modes. These are source-time plausibility flags, not validated vehicle speeds. The rail follow-up rejects the approximately 41 km FOT alternative between Olten and Aarau; its 306.7 km/h implied maximum exposed a detour that the initial 4.5× guard would have accepted. Geometry admission does not certify travel-time precision. No travel-time smoothing or invented call times are applied.
+GTFS times remain unchanged. Among admitted journeys there are **6,016 Friday and 4,631 Sunday zero-duration segments**, of which 6,012 / 4,631 exceed 100 m of source centreline. Minute-rounded equal timestamps are not instantaneous-speed measurements; a renderer may jump at those transitions. Maximum positive-duration implied speeds are 144.6 / 160.1 km/h across all admitted modes. These are source-time plausibility flags, not validated vehicle speeds. The rail follow-up rejects the approximately 41 km FOT alternative between Olten and Aarau; its 306.7 km/h implied maximum exposed a detour that the initial 4.5× guard would have accepted. Geometry admission does not certify travel-time precision. No travel-time smoothing or invented call times are applied.
 
 ## Admission and exclusions
 
@@ -91,7 +91,7 @@ GTFS times remain unchanged. Among admitted journeys there are **6,005 Friday an
 | 182 | Bielersee-Schifffahrts-Gesellschaft AG | 1 | 0 / 2 | 0 / 2 |
 | 189 | Lacs de Neuchâtel et Morat | 5 | 0 / 16 | 0 / 16 |
 | 801 | PostAuto AG | 22 | 566 / 602 | 264 / 272 |
-| 834 | Service d'automobiles TPF | 92 | 3,853 / 3,918 | 2,396 / 2,435 |
+| 834 | Service d'automobiles TPF | 92 | 3,865 / 3,918 | 2,396 / 2,435 |
 | 876 | Transports publics Vevey-Montreux-Chillon-Villeneuve | 3 | 148 / 148 | 115 / 115 |
 | 3004 | Transports publics fribourgeois | 1 | 0 / 0 | 0 / 0 |
 | 3005 | Kaisereggbahnen Schwarzsee AG | 1 | 0 / 1,020 | 0 / 1,080 |
@@ -104,14 +104,13 @@ GTFS times remain unchanged. Among admitted journeys there are **6,005 Friday an
 
 | Route status across both dates | Records |
 | --- | --- |
-| All dated trips admitted | 120 |
+| All dated trips admitted | 121 |
 | Inactive on both dates | 48 |
 | Excluded | 19 |
-| Partially admitted | 20 |
+| Partially admitted | 19 |
 
 | Failed segment reason | Friday directed pairs / occurrences | Sunday directed pairs / occurrences |
 | --- | --- | --- |
-| collapsed-path | 2 / 12 | 0 / 0 |
 | endpoint-gap | 22 / 133 | 9 / 61 |
 | missing-line | 274 / 4,433 | 238 / 3,686 |
 
@@ -134,13 +133,13 @@ A failed cantonal pair receives a road path only when **every complete pattern c
 | Measure | Friday | Sunday |
 | --- | --- | --- |
 | All bus instances | 4,702 | 2,996 |
-| Admitted bus instances | 4,593 | 2,828 |
-| Additional admitted journeys | 2,302 | 1,391 |
-| Road-backed directed pairs | 543 | 518 |
+| Admitted bus instances | 4,605 | 2,828 |
+| Additional admitted journeys | 2,314 | 1,391 |
+| Road-backed directed pairs | 545 | 518 |
 | Lost previously admitted journeys | 0 | 0 |
 | road-excessive-detour — remaining directed pairs | 5 | 5 |
 | road-matcher-rejected — remaining directed pairs | 0 | 2 |
-| road-pattern-dependent-path — remaining directed pairs | 18 | 12 |
+| road-pattern-dependent-path — remaining directed pairs | 16 | 12 |
 
 The original cantonal failure is preserved as officialFailure and the road assessment records all contributing full pattern IDs. Journeys record their inferred segment count and geometry source. Reservation/on-demand calls, GTFS demand-responsive type 715 and provisional boundary route 661 remain excluded. The OSM profile uses bus/PSV access and direction tags with penalties; **it does not enforce an absolute one-way prohibition**. Physical legality, temporary restrictions and actual operator routing remain unverified. Complete directed stop matching is not a claim of certified road direction.
 
@@ -237,9 +236,31 @@ An independent decoder extracts exactly **one of 518 line records** from the ret
 
 The scoped limits require **20 m maximum original-call attachment**, **900–1,200 m path length**, and **20 m maximum compared vertex gap in each direction**. Changed route, dates, full contexts, direction, access, missing nodes, post-fixture object edits or independent corridor disagreement fail review. An out-of-order called stop within 50 m of the inferred path also fails. Touching returned turn restrictions are rejected; the bbox returns none, which does not establish their real-world absence. The [complete audit](../data/fribourg-audit/boltigen.json) retains the original rejected road assessments, independent Bern paths, source fractions, source-node order, hashes and attribution. No generic matcher limit changes or lane-accuracy claim is made.
 
-This admits **12/12 Friday and 10/10 Sunday** route-259 journeys, bringing the regional feed to **5,540 / 3,789**. The [current regression checkpoint](../data/fribourg-audit/boltigen-regression.json), against **0f197fb**, preserves all **9,307 previously admitted journeys and 144,323 segment occurrences**, including original calls, times, permissions, directions and geometry. Every addition carries a `boltigen-corroborated-hairpins` marker and retains the original direction-specific timetable interval. The geometry diagram was rendered and visually inspected.
+The Boltigen checkpoint admitted **12/12 Friday and 10/10 Sunday** route-259 journeys, bringing the regional feed at that checkpoint to **5,540 / 3,789**. At commit ac4d685, the [Boltigen regression checkpoint](../data/fribourg-audit/boltigen-regression.json), against **0f197fb**, preserves all **9,307 previously admitted journeys and 144,323 segment occurrences**, including original calls, times, permissions, directions and geometry. Every addition carries a `boltigen-corroborated-hairpins` marker and retains the original direction-specific timetable interval. The geometry diagram was rendered and visually inspected.
 
 ![Boltigen directed hairpins and independent Bern comparison](assets/fribourg-boltigen.svg)
+
+### Portalban: school/village street geometry in every context
+
+TPF 544 originally excluded **12 Friday journeys** because its two school/village pairs had different inferred paths in different full-trip contexts. The cantonal source also fails: both calls project towards the same road section, producing collapsed-path assessments. The retained matcher alternatives include a two-point 84.7 m connection and paths of 93.3–105.3 m. These differences are not silently accepted under a generic tolerance.
+
+The [scoped policy](../data/fribourg-portalban-policy.json) retains all **22 full route-544 patterns** and reconstructs the original directed pairs **school 1 → village 15626** and **village 15627 → school 1** from three detailed OSM streets: **43121098 Chemin du Four**, **464228790 Chemin du Ruisseau**, and **1433895409 La Râpe**. Source-node joins at **540239211** and **5141566792** are exact, every intervening vertex is retained, and the distinct original village coordinates remain unchanged. School and village coordinates project only onto their specifically reviewed streets. This is centreline inference with bounded original-call connectors; it does not establish a surveyed school platform, running lane or physical turnaround.
+
+| Original directed pair | Reconstructed geometry | Original-call attachments | Full contributing contexts |
+| --- | --- | --- | --- |
+| 1 → 15626 | 112.4 m / 16 vertices | 4.5 m / 3.1 m | 5 |
+| 15627 → 1 | 103.6 m / 16 vertices | 2.5 m / 4.5 m | 4 |
+
+All **nine contributing contexts** pass the same independently reconstructed directed street paths. The [complete source/context audit](../data/fribourg-audit/portalban.json) preserves every original matcher path, including terminal and through-school cases. The scope allows at most **10 m per original-call attachment** and **90–130 m total geometry**. A changed complete context, route, fixture date, one-way rule, street identity, missing node, restricted access, barrier or touching returned turn restriction fails review. Other calls within 50 m of the path also fail. General road-consensus limits remain unchanged. The retained bbox returns no restriction relations, which does not prove their physical absence.
+
+The [TPF annual timetable](../data/fribourg-portalban-sources/tpf-544-2026.pdf), created **16 October 2025** and declaring validity **14 December 2025–12 December 2026**, supports both call orders and the **one-minute interval**. Pages 1 and 6 were rendered and visually inspected. It is the PDF linked from the [retained current regional page](../data/fribourg-portalban-sources/tpf-regional-page.html.gz), not proof that no later timetable revisions exist. The indexed PDF claiming validity from 17 August returned [TPF re404 HTML](../data/fribourg-portalban-sources/tpf-timetable-redirect.html); that failed acquisition is retained and excluded from timetable evidence. Actual fixture calls and calendars continue to come from the pinned national GTFS.
+
+Selected OSM street edits range from **15 June 2025 to 17 January 2026**, and all selected node edits predate the fixtures; survey vintage remains unknown. Two village platform nodes are retained as context only. One explicitly says `physically_present=no`; neither is substituted for an original GTFS platform, and no source school platform or turning facility is inferred from their presence.
+
+Route 544 now admits **52/52 Friday and 34/34 Sunday journeys**. Sunday contains no school-call pattern; its geometry and admissions remain unchanged. The [current regression checkpoint](../data/fribourg-audit/portalban-regression.json), against **ac4d685**, preserves all **9,329 previously admitted journeys and 144,565 segment occurrences**, including original calls, times, permissions, directions and geometry. Each addition carries a `portalban-school-streets` marker and retains the original 60-second interval. Both directed geometry panels were rendered and visually inspected.
+
+![Portalban original matcher paths and reconstructed street geometry](assets/fribourg-portalban.svg)
+
 
 
 
@@ -327,6 +348,8 @@ At commit abd1fd8, the [Avry regression checkpoint](../data/fribourg-audit/rail-
 | Mont-Carmel road topology | OSM API acquired 2026-09-08; three ways edited 2026-01-28; survey vintage unknown | © OpenStreetMap contributors; ODbL 1.0 |
 | Mont-Carmel operator / works evidence | TPF timetable from 2025-12-14; municipal notice 2026-05-26 | TPF / Commune de Givisiez; supporting identity and works evidence |
 | Jongny road / route relations | OSM API acquired 2026-09-08; individual way edits 2021–2026; survey vintage unknown | © OpenStreetMap contributors; ODbL 1.0 |
+| Portalban OSM streets | Selected way edits 2025-06-15–2026-01-17; acquired September 2026; survey vintage unknown | © OpenStreetMap contributors; ODbL 1.0 |
+| Portalban TPF timetable / page | Annual PDF created 2025-10-16, valid 2025-12-14–2026-12-12; indexed revised PDF unavailable | TPF TRAFIC; supporting call-order evidence, not certification of later revisions |
 | Boltigen OSM hairpin road | Way 584938515 edited 2025-12-30; acquired September 2026; survey vintage unknown | © OpenStreetMap contributors; ODbL 1.0 |
 | Boltigen independent Bern line | Data updated 2026-01-01; package published 2026-07-09; acquired 2026-09-08; survey vintage unknown | Öffentlicher Verkehr © Amt für öffentlichen Verkehr und Verkehrskoordination des Kantons Bern; Bern terms 2026-01-20, free use with attribution |
 | Boltigen TPF timetable | Valid 2025-12-14–2026-12-12 | TPF TRAFIC; call-order and timing evidence only |
@@ -375,7 +398,7 @@ node --max-old-space-size=8192 scripts/build-fribourg-region.mjs \
   --archive /private/tmp/GTFS_FP2026_20260902.zip \
   --timetable-cache /private/tmp/fribourg-timetable.json.gz
 node scripts/check-fribourg-region.mjs
-node scripts/check-fribourg-boltigen-regression.mjs
+node scripts/check-fribourg-portalban-regression.mjs
 node scripts/audit-fribourg-topology.mjs
 node scripts/review-fribourg-roads.mjs
 node scripts/review-fribourg-rail.mjs
@@ -386,10 +409,11 @@ node scripts/review-fribourg-jongny.mjs
 node scripts/review-fribourg-laupen.mjs
 node scripts/review-fribourg-broc.mjs
 node scripts/review-fribourg-boltigen.mjs
+node scripts/review-fribourg-portalban.mjs
 node scripts/write-fribourg-audit.mjs
 python3 scripts/test_fribourg_sources.py
 python3 scripts/test_fribourg_laupen.py
-npx vitest run scripts/fribourg-region.test.mjs scripts/fribourg-road-geometry.test.mjs scripts/fribourg-rail-geometry.test.mjs scripts/fribourg-rail-review.test.mjs scripts/fribourg-bern-platforms.test.mjs scripts/fribourg-avry.test.mjs scripts/fribourg-mont-carmel.test.mjs scripts/fribourg-jongny.test.mjs scripts/fribourg-laupen.test.mjs scripts/fribourg-broc.test.mjs scripts/fribourg-boltigen.test.mjs scripts/luzern-rail-geometry.test.mjs scripts/bern-region.test.mjs
+npx vitest run --dir scripts scripts/fribourg-region.test.mjs scripts/fribourg-road-geometry.test.mjs scripts/fribourg-rail-geometry.test.mjs scripts/fribourg-rail-review.test.mjs scripts/fribourg-bern-platforms.test.mjs scripts/fribourg-avry.test.mjs scripts/fribourg-mont-carmel.test.mjs scripts/fribourg-jongny.test.mjs scripts/fribourg-laupen.test.mjs scripts/fribourg-broc.test.mjs scripts/fribourg-boltigen.test.mjs scripts/fribourg-portalban.test.mjs scripts/luzern-rail-geometry.test.mjs scripts/bern-region.test.mjs
 
 # Optional rail-input regeneration from the complete timetable cache and retained source bytes.
 node scripts/fribourg-rail-geometry.mjs /private/tmp/fribourg-timetable.json.gz
@@ -401,6 +425,7 @@ node scripts/prepare-fribourg-jongny.mjs
 node scripts/prepare-fribourg-laupen.mjs
 node scripts/prepare-fribourg-broc.mjs
 node scripts/prepare-fribourg-boltigen.mjs
+node scripts/prepare-fribourg-portalban.mjs
 
 # Optional offline road rebuild: prepare all patterns, match each agency directory
 # with scripts/match-postbus-roads.mjs --no-trie/-W wrapper and the pinned extract,

@@ -203,6 +203,10 @@
     "boltigen": {
       "file": "data/fribourg-boltigen-policy.json",
       "sha256": "f4faa42d9ed6bb44f74600ea6334fb3189b1b91f8b918da667779c5b99a0f01f"
+    },
+    "portalban": {
+      "file": "data/fribourg-portalban-policy.json",
+      "sha256": "40c1ed42c0a592931eebbce280b9b32b14b45afa110896b9bddafdb3f714d786"
     }
   },
   "rail": {

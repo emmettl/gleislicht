@@ -11,6 +11,7 @@ import { loadJongny } from './fribourg-jongny.mjs'
 import { loadLaupen } from './fribourg-laupen.mjs'
 import { loadBroc } from './fribourg-broc.mjs'
 import { loadBoltigen } from './fribourg-boltigen.mjs'
+import { loadPortalban } from './fribourg-portalban.mjs'
 
 const json = async path => JSON.parse(await readFile(path, 'utf8'))
 export const FRIBOURG_ROAD_LIMITS = { detourRatio: 3, detourFloorMetres: 600 }
@@ -77,7 +78,8 @@ export async function loadFribourgRoads(timetable, policy, { verifyEvidence = fa
   const laupen = policy.laupen ? await loadLaupen(cache, jongny?.candidates ?? review?.candidates ?? baseline, policy.laupen) : undefined
   const broc = policy.broc ? await loadBroc(cache, laupen?.candidates ?? jongny?.candidates ?? review?.candidates ?? baseline, policy.broc) : undefined
   const boltigen = policy.boltigen ? await loadBoltigen(cache, broc?.candidates ?? laupen?.candidates ?? jongny?.candidates ?? review?.candidates ?? baseline, policy.boltigen) : undefined
-  return { ...(boltigen ? { boltigen: boltigen.audit } : {}), ...(broc ? { broc: broc.audit } : {}), ...(laupen ? { laupen: laupen.audit } : {}), candidates: boltigen?.candidates ?? broc?.candidates ?? laupen?.candidates ?? jongny?.candidates ?? review?.candidates ?? baseline, ...(review ? { montCarmel: review.audit } : {}), ...(jongny ? { jongny: jongny.audit } : {}), metadata: cache.metadata, policy,
+  const portalban = policy.portalban ? await loadPortalban(cache, boltigen?.candidates ?? broc?.candidates ?? laupen?.candidates ?? jongny?.candidates ?? review?.candidates ?? baseline, policy.portalban) : undefined
+  return { ...(portalban ? { portalban: portalban.audit } : {}), ...(boltigen ? { boltigen: boltigen.audit } : {}), ...(broc ? { broc: broc.audit } : {}), ...(laupen ? { laupen: laupen.audit } : {}), candidates: portalban?.candidates ?? boltigen?.candidates ?? broc?.candidates ?? laupen?.candidates ?? jongny?.candidates ?? review?.candidates ?? baseline, ...(review ? { montCarmel: review.audit } : {}), ...(jongny ? { jongny: jongny.audit } : {}), metadata: cache.metadata, policy,
     inventory: Object.entries(cache.agencies).flatMap(([agencyId, agency]) => Object.entries(agency.identities).map(([id, identity]) => ({ id, agencyId, ...identity }))),
     patterns: Object.values(cache.agencies).reduce((n, a) => n + Object.keys(a.identities).length, 0) }
 }

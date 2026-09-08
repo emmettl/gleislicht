@@ -3,7 +3,7 @@
   "sourceHashes": {
     "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
     "source": "e8523af34fcedca7f8b0cbe495446ff93a75d8563c62b243da942c39c5243f47",
-    "crosswalk": "8e49a9db9282db899da1dc1545ef4c25ecba6bec8ca1f6738e1b3802890cca94",
+    "crosswalk": "01c9c1e429e565517c554b8fb1a86e53814625daa3072dcc878f5078d8ec993f",
     "provenance": "7d23e09a35768de1cfd598a7ca824ac7c93d03242ff8955e70ca778213549086",
     "roads": "87f4d4be2662ff0982cea837e95f73863096d4bc37bd19ecc09ea88e064c465e",
     "montCarmel": "a9b44b222fdf7b2c9dc26899c350520a8de3945d06a13bff75a357b6133a3b27",
@@ -11,6 +11,7 @@
     "laupen": "bbf2165db04d73f6d50ac84d795ec411ddf934bb46115e30f34a2ec8023b04f4",
     "broc": "a707ab9a3464d448a427c7cf80ce554e3d9644ae40006043488a20117dad7a0f",
     "boltigen": "f4faa42d9ed6bb44f74600ea6334fb3189b1b91f8b918da667779c5b99a0f01f",
+    "portalban": "40c1ed42c0a592931eebbce280b9b32b14b45afa110896b9bddafdb3f714d786",
     "rail": "7ea92c8c1120a49e9497ec3ae6d7a0d2fc2d761e8b19d790191ed7a6c0212c79",
     "railInputs": "434a02eb6906bb141a00ba6b7c77622767b78262617326d6aed56fa683cd8046",
     "avry": "8d20a93732eea409915103c410816075ac428693b7dc8fcb6dc37c1f97849e19",
@@ -316,6 +317,4157 @@
       "license": "ODbL-1.0",
       "licenseUrl": "https://www.openstreetmap.org/copyright",
       "model": "Inferred bus road paths; complete-pattern consensus fallback only; not operator-verified",
+      "portalban": {
+        "schemaVersion": 1,
+        "id": "portalban-school-streets",
+        "sourceDirectory": "data/fribourg-portalban-sources",
+        "sources": [
+          {
+            "file": "map.osm.gz",
+            "url": "https://www.openstreetmap.org/api/0.6/map?bbox=6.953,46.916,6.958,46.920",
+            "attribution": "© OpenStreetMap contributors",
+            "license": "ODbL-1.0",
+            "role": "Complete retained raw bbox response, deterministic gzip. Three named residential/tertiary streets provide detailed geometry. Two village platform records are context only; no source school platform or physical turnaround is established. Object edits predate fixtures; survey dates unknown.",
+            "sha256": "83a9eb52cbd3d53e390e32603b1afb5b826b8a15b8b98db3fea53ec1186d5353",
+            "retrievedAt": "2026-09-08T22:08:39.509Z"
+          },
+          {
+            "file": "tpf-544-2026.pdf",
+            "url": "https://www.tpf.ch/Portals/0/Images/Fichiers/Horaires%20et%20plans/Horaires/Bus%20r%C3%A9gionaux/2026/544%20Fribourg%20-%20Avenches%20-%20Domdidier%20-%20Gletterens.pdf",
+            "attribution": "TPF TRAFIC",
+            "validFrom": "2025-12-14",
+            "validUntil": "2026-12-12",
+            "role": "Annual PDF currently linked by TPF, created 2025-10-16; supports school/village call order and one-minute intervals. Published validity covers both fixtures but is not a certification of all later timetable changes. No map geometry extracted.",
+            "sha256": "37793a34a320d1aa2bd648f3557428652baaa42d8fbeb51249cb311137b500e0",
+            "retrievedAt": "2026-09-08T22:12:18.675Z"
+          },
+          {
+            "file": "tpf-timetable-redirect.html",
+            "url": "https://www.tpf.ch/Portals/0/Images/Fichiers/Horaires%20et%20plans/Horaires/Bus%20r%C3%A9gionaux/2026/544%20Fribourg%20-%20Avenches%20-%20Domdidier%20-%20Gletterens_valable%20d%C3%A8s-g%C3%BCltig%20ab%2017.08.26.pdf",
+            "attribution": "TPF",
+            "role": "Failed indexed timetable URL redirected to TPF re404 HTML. Retained as failed acquisition evidence; not used as a PDF or timetable.",
+            "sha256": "6a8411b7a057357151e9463ff5585a89fe0f01a1ac0fd2857767409d725da159",
+            "retrievedAt": "2026-09-08T22:08:39.411Z"
+          },
+          {
+            "file": "tpf-regional-page.html.gz",
+            "url": "https://www.tpf.ch/fr/horaires-et-reseaux/horaire-par-reseaux/bus-regionaux",
+            "attribution": "TPF",
+            "role": "Retained official page linking the annual line-544 PDF.",
+            "sha256": "573f678dec3e459832a8aa83478f9df0d4ec7976dbf655b099d243cccb562223",
+            "retrievedAt": "2026-09-08T22:12:56.791Z"
+          }
+        ],
+        "agencyId": "834",
+        "routeId": "92-544-j26-1",
+        "roadCacheSha256": "87f4d4be2662ff0982cea837e95f73863096d4bc37bd19ecc09ea88e064c465e",
+        "dates": [
+          "2026-09-04",
+          "2026-09-06"
+        ],
+        "patterns": [
+          {
+            "id": "0aabaf4f1b4a9d1249f1f90a",
+            "routeId": "92-544-j26-1",
+            "stops": [
+              [
+                7.15082322,
+                46.80385022,
+                "Fribourg/Freiburg, gare rout.",
+                "V",
+                "ch:1:sloid:4881:0:15248"
+              ],
+              [
+                7.15119153,
+                46.8062667,
+                "Fribourg, Gambach",
+                "",
+                "ch:1:sloid:88351:0:15065"
+              ],
+              [
+                7.14676284,
+                46.80939014,
+                "Fribourg, Vuille",
+                "A",
+                "ch:1:sloid:77820:0:15173"
+              ],
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              [
+                7.1312669,
+                46.81375527,
+                "Givisiez, Escale",
+                "",
+                "ch:1:sloid:77821:0:15509"
+              ],
+              [
+                7.12953315,
+                46.81601147,
+                "Givisiez, gare",
+                "",
+                "ch:1:sloid:6640:0:18256"
+              ],
+              [
+                7.12690109,
+                46.81523072,
+                "Givisiez, rte Stephan",
+                "",
+                "ch:1:sloid:94781:0:17136"
+              ],
+              [
+                7.12174476,
+                46.81421635,
+                "Givisiez, rte du Bleuet",
+                "",
+                "ch:1:sloid:94782:0:17138"
+              ],
+              [
+                7.10026604,
+                46.82328354,
+                "Belfaux, Arsenal",
+                "",
+                "ch:1:sloid:7595:0:19378"
+              ],
+              [
+                7.09301664,
+                46.82662111,
+                "Belfaux, Château-du-Bois",
+                "",
+                "ch:1:sloid:4604:0:15449"
+              ],
+              [
+                7.08312618,
+                46.83276711,
+                "Grolley, Rosière",
+                "",
+                "ch:1:sloid:94496:0:17201"
+              ],
+              [
+                7.07968564,
+                46.83766497,
+                "Belfaux, Cutterwil",
+                "",
+                "ch:1:sloid:4610:0:15499"
+              ],
+              [
+                7.0668038,
+                46.85155721,
+                "Misery, village",
+                "",
+                "ch:1:sloid:4864:0:15567"
+              ],
+              [
+                7.06268951,
+                46.85601106,
+                "Courtion, bif.",
+                "",
+                "ch:1:sloid:4900:0:15492"
+              ],
+              [
+                7.05851234,
+                46.85929746,
+                "Courtion, Oleyres bif.",
+                "",
+                "ch:1:sloid:77822:0:15607"
+              ],
+              [
+                7.05905133,
+                46.86197557,
+                "Courtion, Moulin-Neuf",
+                "",
+                "ch:1:sloid:77823:0:15586"
+              ],
+              [
+                7.05798234,
+                46.87572642,
+                "Donatyre, village",
+                "",
+                "ch:1:sloid:4886:0:15505"
+              ],
+              [
+                7.04221691,
+                46.87829933,
+                "Avenches, Faubourg",
+                "",
+                "ch:1:sloid:77825:0:15519"
+              ],
+              [
+                7.04114791,
+                46.88457449,
+                "Avenches, gare",
+                "",
+                "ch:1:sloid:70514:0:414145"
+              ],
+              [
+                7.03296426,
+                46.87645717,
+                "Avenches, Le Paon",
+                "",
+                "ch:1:sloid:83723:0:625923"
+              ],
+              [
+                7.01713594,
+                46.86619516,
+                "Domdidier, CO",
+                "",
+                "ch:1:sloid:88723:0:15693"
+              ],
+              [
+                7.01162029,
+                46.86851058,
+                "Domdidier, gare",
+                "",
+                "ch:1:sloid:77828:0:15503"
+              ],
+              [
+                6.98229029,
+                46.88754603,
+                "St-Aubin FR, bif.",
+                "",
+                "ch:1:sloid:77829:0:15650"
+              ],
+              [
+                6.97986484,
+                46.89000786,
+                "St-Aubin FR, église",
+                "",
+                "ch:1:sloid:4887:0:15648"
+              ],
+              [
+                6.97600209,
+                46.89216878,
+                "St-Aubin FR, Le-Haut",
+                "",
+                "ch:1:sloid:77830:0:15653"
+              ],
+              [
+                6.97294781,
+                46.91191382,
+                "Delley, En Roche",
+                "",
+                "ch:1:sloid:77831:0:15507"
+              ],
+              [
+                6.96848319,
+                46.91438681,
+                "Delley, école",
+                "",
+                "ch:1:sloid:77832:0:15501"
+              ],
+              [
+                6.95509829,
+                46.91816051,
+                "Portalban, école",
+                "",
+                "ch:1:sloid:10187:0:1"
+              ],
+              [
+                6.95614932,
+                46.91776167,
+                "Portalban, village",
+                "",
+                "ch:1:sloid:4547:0:15626"
+              ],
+              [
+                6.95332861,
+                46.91023851,
+                "Portalban, Dessus",
+                "",
+                "ch:1:sloid:77833:0:15628"
+              ],
+              [
+                6.94598039,
+                46.90259154,
+                "Gletterens, Fin de Gros Bois",
+                "",
+                "ch:1:sloid:4001:0:17390"
+              ],
+              [
+                6.93847047,
+                46.89523812,
+                "Gletterens, village",
+                "",
+                "ch:1:sloid:77834:0:15540"
+              ]
+            ]
+          },
+          {
+            "id": "150504be2862eb28362e54b1",
+            "routeId": "92-544-j26-1",
+            "stops": [
+              [
+                6.93847047,
+                46.89523812,
+                "Gletterens, village",
+                "",
+                "ch:1:sloid:77834:0:15540"
+              ],
+              [
+                6.94605225,
+                46.90276339,
+                "Gletterens, Fin de Gros Bois",
+                "",
+                "ch:1:sloid:4001:0:17389"
+              ],
+              [
+                6.95345437,
+                46.91033056,
+                "Portalban, Dessus",
+                "",
+                "ch:1:sloid:77833:0:15629"
+              ],
+              [
+                6.95611339,
+                46.91784758,
+                "Portalban, village",
+                "",
+                "ch:1:sloid:4547:0:15627"
+              ],
+              [
+                6.95509829,
+                46.91816051,
+                "Portalban, école",
+                "",
+                "ch:1:sloid:10187:0:1"
+              ]
+            ]
+          },
+          {
+            "id": "15c7991db8a96f6fe6c847e7",
+            "routeId": "92-544-j26-1",
+            "stops": [
+              [
+                7.15082322,
+                46.80385022,
+                "Fribourg/Freiburg, gare rout.",
+                "V",
+                "ch:1:sloid:4881:0:15248"
+              ],
+              [
+                7.15119153,
+                46.8062667,
+                "Fribourg, Gambach",
+                "",
+                "ch:1:sloid:88351:0:15065"
+              ],
+              [
+                7.14676284,
+                46.80939014,
+                "Fribourg, Vuille",
+                "A",
+                "ch:1:sloid:77820:0:15173"
+              ],
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              [
+                7.1312669,
+                46.81375527,
+                "Givisiez, Escale",
+                "",
+                "ch:1:sloid:77821:0:15509"
+              ],
+              [
+                7.12690109,
+                46.81523072,
+                "Givisiez, rte Stephan",
+                "",
+                "ch:1:sloid:94781:0:17136"
+              ],
+              [
+                7.12174476,
+                46.81421635,
+                "Givisiez, rte du Bleuet",
+                "",
+                "ch:1:sloid:94782:0:17138"
+              ],
+              [
+                7.10026604,
+                46.82328354,
+                "Belfaux, Arsenal",
+                "",
+                "ch:1:sloid:7595:0:19378"
+              ],
+              [
+                7.09301664,
+                46.82662111,
+                "Belfaux, Château-du-Bois",
+                "",
+                "ch:1:sloid:4604:0:15449"
+              ],
+              [
+                7.08312618,
+                46.83276711,
+                "Grolley, Rosière",
+                "",
+                "ch:1:sloid:94496:0:17201"
+              ],
+              [
+                7.07968564,
+                46.83766497,
+                "Belfaux, Cutterwil",
+                "",
+                "ch:1:sloid:4610:0:15499"
+              ],
+              [
+                7.0668038,
+                46.85155721,
+                "Misery, village",
+                "",
+                "ch:1:sloid:4864:0:15567"
+              ],
+              [
+                7.06268951,
+                46.85601106,
+                "Courtion, bif.",
+                "",
+                "ch:1:sloid:4900:0:15492"
+              ],
+              [
+                7.05851234,
+                46.85929746,
+                "Courtion, Oleyres bif.",
+                "",
+                "ch:1:sloid:77822:0:15607"
+              ],
+              [
+                7.05905133,
+                46.86197557,
+                "Courtion, Moulin-Neuf",
+                "",
+                "ch:1:sloid:77823:0:15586"
+              ],
+              [
+                7.05798234,
+                46.87572642,
+                "Donatyre, village",
+                "",
+                "ch:1:sloid:4886:0:15505"
+              ],
+              [
+                7.04221691,
+                46.87829933,
+                "Avenches, Faubourg",
+                "",
+                "ch:1:sloid:77825:0:15519"
+              ],
+              [
+                7.03296426,
+                46.87645717,
+                "Avenches, Le Paon",
+                "",
+                "ch:1:sloid:83723:0:625923"
+              ],
+              [
+                7.01162029,
+                46.86851058,
+                "Domdidier, gare",
+                "",
+                "ch:1:sloid:77828:0:15503"
+              ],
+              [
+                6.98229029,
+                46.88754603,
+                "St-Aubin FR, bif.",
+                "",
+                "ch:1:sloid:77829:0:15650"
+              ],
+              [
+                6.97986484,
+                46.89000786,
+                "St-Aubin FR, église",
+                "",
+                "ch:1:sloid:4887:0:15648"
+              ],
+              [
+                6.97600209,
+                46.89216878,
+                "St-Aubin FR, Le-Haut",
+                "",
+                "ch:1:sloid:77830:0:15653"
+              ],
+              [
+                6.97294781,
+                46.91191382,
+                "Delley, En Roche",
+                "",
+                "ch:1:sloid:77831:0:15507"
+              ],
+              [
+                6.96848319,
+                46.91438681,
+                "Delley, école",
+                "",
+                "ch:1:sloid:77832:0:15501"
+              ],
+              [
+                6.95509829,
+                46.91816051,
+                "Portalban, école",
+                "",
+                "ch:1:sloid:10187:0:1"
+              ],
+              [
+                6.95614932,
+                46.91776167,
+                "Portalban, village",
+                "",
+                "ch:1:sloid:4547:0:15626"
+              ],
+              [
+                6.95332861,
+                46.91023851,
+                "Portalban, Dessus",
+                "",
+                "ch:1:sloid:77833:0:15628"
+              ],
+              [
+                6.94598039,
+                46.90259154,
+                "Gletterens, Fin de Gros Bois",
+                "",
+                "ch:1:sloid:4001:0:17390"
+              ],
+              [
+                6.93847047,
+                46.89523812,
+                "Gletterens, village",
+                "",
+                "ch:1:sloid:77834:0:15540"
+              ]
+            ]
+          },
+          {
+            "id": "2bbb2974e28f3dcf51bb15ee",
+            "routeId": "92-544-j26-1",
+            "stops": [
+              [
+                6.93847047,
+                46.89523812,
+                "Gletterens, village",
+                "",
+                "ch:1:sloid:77834:0:15540"
+              ],
+              [
+                6.94605225,
+                46.90276339,
+                "Gletterens, Fin de Gros Bois",
+                "",
+                "ch:1:sloid:4001:0:17389"
+              ],
+              [
+                6.95345437,
+                46.91033056,
+                "Portalban, Dessus",
+                "",
+                "ch:1:sloid:77833:0:15629"
+              ],
+              [
+                6.95611339,
+                46.91784758,
+                "Portalban, village",
+                "",
+                "ch:1:sloid:4547:0:15627"
+              ],
+              [
+                6.96825861,
+                46.9142334,
+                "Delley, école",
+                "",
+                "ch:1:sloid:77832:0:15502"
+              ],
+              [
+                6.97292985,
+                46.91176041,
+                "Delley, En Roche",
+                "",
+                "ch:1:sloid:77831:0:15508"
+              ],
+              [
+                6.97594819,
+                46.89202145,
+                "St-Aubin FR, Le-Haut",
+                "",
+                "ch:1:sloid:77830:0:15654"
+              ],
+              [
+                6.97986484,
+                46.89000786,
+                "St-Aubin FR, église",
+                "",
+                "ch:1:sloid:4887:0:15648"
+              ],
+              [
+                6.98229029,
+                46.88754603,
+                "St-Aubin FR, bif.",
+                "",
+                "ch:1:sloid:77829:0:15650"
+              ],
+              [
+                7.01162029,
+                46.86851058,
+                "Domdidier, gare",
+                "",
+                "ch:1:sloid:77828:0:15503"
+              ],
+              [
+                7.03405122,
+                46.87680104,
+                "Avenches, Le Paon",
+                "",
+                "ch:1:sloid:83723:0:550237"
+              ],
+              [
+                7.04114791,
+                46.88457449,
+                "Avenches, gare",
+                "",
+                "ch:1:sloid:70514:0:414145"
+              ],
+              [
+                7.04235165,
+                46.87806599,
+                "Avenches, Faubourg",
+                "",
+                "ch:1:sloid:77825:0:15520"
+              ],
+              [
+                7.05828777,
+                46.87530271,
+                "Donatyre, village",
+                "",
+                "ch:1:sloid:4886:0:15506"
+              ],
+              [
+                7.05895252,
+                46.86192643,
+                "Courtion, Moulin-Neuf",
+                "",
+                "ch:1:sloid:77823:0:15587"
+              ],
+              [
+                7.0584315,
+                46.85934045,
+                "Courtion, Oleyres bif.",
+                "",
+                "ch:1:sloid:77822:0:15608"
+              ],
+              [
+                7.06308477,
+                46.85523089,
+                "Courtion, bif.",
+                "",
+                "ch:1:sloid:4900:0:15493"
+              ],
+              [
+                7.06628277,
+                46.8517968,
+                "Misery, village",
+                "",
+                "ch:1:sloid:4864:0:15568"
+              ],
+              [
+                7.07928139,
+                46.83774485,
+                "Belfaux, Cutterwil",
+                "",
+                "ch:1:sloid:4610:0:15500"
+              ],
+              [
+                7.08318907,
+                46.83257659,
+                "Grolley, Rosière",
+                "",
+                "ch:1:sloid:94496:0:17200"
+              ],
+              [
+                7.0938341,
+                46.82606794,
+                "Belfaux, Château-du-Bois",
+                "",
+                "ch:1:sloid:4604:0:15450"
+              ],
+              [
+                7.10335624,
+                46.82246602,
+                "Belfaux, Laiterie",
+                "",
+                "ch:1:sloid:4531:0:15421"
+              ],
+              [
+                7.12324494,
+                46.81439464,
+                "Givisiez, rte du Bleuet",
+                "",
+                "ch:1:sloid:94782:0:17139"
+              ],
+              [
+                7.12735923,
+                46.81526761,
+                "Givisiez, rte Stephan",
+                "",
+                "ch:1:sloid:94781:0:17137"
+              ],
+              [
+                7.12953315,
+                46.81601147,
+                "Givisiez, gare",
+                "",
+                "ch:1:sloid:6640:0:18256"
+              ],
+              [
+                7.13029672,
+                46.81452989,
+                "Givisiez, Escale",
+                "",
+                "ch:1:sloid:77821:0:15510"
+              ],
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              [
+                7.14531655,
+                46.80964837,
+                "Fribourg, Vuille",
+                "C",
+                "ch:1:sloid:77820:0:15175"
+              ],
+              [
+                7.15094899,
+                46.80654954,
+                "Fribourg, Gambach",
+                "",
+                "ch:1:sloid:88351:0:15064"
+              ],
+              [
+                7.15173951,
+                46.80414537,
+                "Fribourg/Freiburg, gare/Tivoli",
+                "",
+                "ch:1:sloid:88352:0:15070"
+              ],
+              [
+                7.1509939,
+                46.80390556,
+                "Fribourg/Freiburg, gare rout.",
+                "Y",
+                "ch:1:sloid:4881:0:15267"
+              ]
+            ]
+          },
+          {
+            "id": "3177fedba9418277f86cf520",
+            "routeId": "92-544-j26-1",
+            "stops": [
+              [
+                6.93077191,
+                46.90445121,
+                "Gletterens, lac",
+                "",
+                "ch:1:sloid:95536:0:16548"
+              ],
+              [
+                6.93847047,
+                46.89523812,
+                "Gletterens, village",
+                "",
+                "ch:1:sloid:77834:0:15540"
+              ],
+              [
+                6.94605225,
+                46.90276339,
+                "Gletterens, Fin de Gros Bois",
+                "",
+                "ch:1:sloid:4001:0:17389"
+              ],
+              [
+                6.95345437,
+                46.91033056,
+                "Portalban, Dessus",
+                "",
+                "ch:1:sloid:77833:0:15629"
+              ],
+              [
+                6.95611339,
+                46.91784758,
+                "Portalban, village",
+                "",
+                "ch:1:sloid:4547:0:15627"
+              ],
+              [
+                6.95509829,
+                46.91816051,
+                "Portalban, école",
+                "",
+                "ch:1:sloid:10187:0:1"
+              ],
+              [
+                6.96825861,
+                46.9142334,
+                "Delley, école",
+                "",
+                "ch:1:sloid:77832:0:15502"
+              ],
+              [
+                6.97292985,
+                46.91176041,
+                "Delley, En Roche",
+                "",
+                "ch:1:sloid:77831:0:15508"
+              ],
+              [
+                6.97594819,
+                46.89202145,
+                "St-Aubin FR, Le-Haut",
+                "",
+                "ch:1:sloid:77830:0:15654"
+              ],
+              [
+                6.97986484,
+                46.89000786,
+                "St-Aubin FR, église",
+                "",
+                "ch:1:sloid:4887:0:15648"
+              ],
+              [
+                6.98229029,
+                46.88754603,
+                "St-Aubin FR, bif.",
+                "",
+                "ch:1:sloid:77829:0:15650"
+              ],
+              [
+                7.01162029,
+                46.86851058,
+                "Domdidier, gare",
+                "",
+                "ch:1:sloid:77828:0:15503"
+              ],
+              [
+                7.03405122,
+                46.87680104,
+                "Avenches, Le Paon",
+                "",
+                "ch:1:sloid:83723:0:550237"
+              ],
+              [
+                7.04114791,
+                46.88457449,
+                "Avenches, gare",
+                "",
+                "ch:1:sloid:70514:0:414145"
+              ],
+              [
+                7.04235165,
+                46.87806599,
+                "Avenches, Faubourg",
+                "",
+                "ch:1:sloid:77825:0:15520"
+              ],
+              [
+                7.05828777,
+                46.87530271,
+                "Donatyre, village",
+                "",
+                "ch:1:sloid:4886:0:15506"
+              ],
+              [
+                7.05895252,
+                46.86192643,
+                "Courtion, Moulin-Neuf",
+                "",
+                "ch:1:sloid:77823:0:15587"
+              ],
+              [
+                7.0584315,
+                46.85934045,
+                "Courtion, Oleyres bif.",
+                "",
+                "ch:1:sloid:77822:0:15608"
+              ],
+              [
+                7.06308477,
+                46.85523089,
+                "Courtion, bif.",
+                "",
+                "ch:1:sloid:4900:0:15493"
+              ],
+              [
+                7.06628277,
+                46.8517968,
+                "Misery, village",
+                "",
+                "ch:1:sloid:4864:0:15568"
+              ]
+            ]
+          },
+          {
+            "id": "36ad607901cce16ee27b6b39",
+            "routeId": "92-544-j26-1",
+            "stops": [
+              [
+                6.93847047,
+                46.89523812,
+                "Gletterens, village",
+                "",
+                "ch:1:sloid:77834:0:15540"
+              ],
+              [
+                6.94605225,
+                46.90276339,
+                "Gletterens, Fin de Gros Bois",
+                "",
+                "ch:1:sloid:4001:0:17389"
+              ],
+              [
+                6.95345437,
+                46.91033056,
+                "Portalban, Dessus",
+                "",
+                "ch:1:sloid:77833:0:15629"
+              ],
+              [
+                6.95611339,
+                46.91784758,
+                "Portalban, village",
+                "",
+                "ch:1:sloid:4547:0:15627"
+              ],
+              [
+                6.96825861,
+                46.9142334,
+                "Delley, école",
+                "",
+                "ch:1:sloid:77832:0:15502"
+              ],
+              [
+                6.97292985,
+                46.91176041,
+                "Delley, En Roche",
+                "",
+                "ch:1:sloid:77831:0:15508"
+              ],
+              [
+                6.97594819,
+                46.89202145,
+                "St-Aubin FR, Le-Haut",
+                "",
+                "ch:1:sloid:77830:0:15654"
+              ],
+              [
+                6.97986484,
+                46.89000786,
+                "St-Aubin FR, église",
+                "",
+                "ch:1:sloid:4887:0:15648"
+              ],
+              [
+                6.98229029,
+                46.88754603,
+                "St-Aubin FR, bif.",
+                "",
+                "ch:1:sloid:77829:0:15650"
+              ],
+              [
+                7.01162029,
+                46.86851058,
+                "Domdidier, gare",
+                "",
+                "ch:1:sloid:77828:0:15503"
+              ],
+              [
+                7.03405122,
+                46.87680104,
+                "Avenches, Le Paon",
+                "",
+                "ch:1:sloid:83723:0:550237"
+              ],
+              [
+                7.04235165,
+                46.87806599,
+                "Avenches, Faubourg",
+                "",
+                "ch:1:sloid:77825:0:15520"
+              ],
+              [
+                7.05828777,
+                46.87530271,
+                "Donatyre, village",
+                "",
+                "ch:1:sloid:4886:0:15506"
+              ],
+              [
+                7.05895252,
+                46.86192643,
+                "Courtion, Moulin-Neuf",
+                "",
+                "ch:1:sloid:77823:0:15587"
+              ],
+              [
+                7.0584315,
+                46.85934045,
+                "Courtion, Oleyres bif.",
+                "",
+                "ch:1:sloid:77822:0:15608"
+              ],
+              [
+                7.06308477,
+                46.85523089,
+                "Courtion, bif.",
+                "",
+                "ch:1:sloid:4900:0:15493"
+              ],
+              [
+                7.06628277,
+                46.8517968,
+                "Misery, village",
+                "",
+                "ch:1:sloid:4864:0:15568"
+              ],
+              [
+                7.07928139,
+                46.83774485,
+                "Belfaux, Cutterwil",
+                "",
+                "ch:1:sloid:4610:0:15500"
+              ],
+              [
+                7.08318907,
+                46.83257659,
+                "Grolley, Rosière",
+                "",
+                "ch:1:sloid:94496:0:17200"
+              ],
+              [
+                7.0938341,
+                46.82606794,
+                "Belfaux, Château-du-Bois",
+                "",
+                "ch:1:sloid:4604:0:15450"
+              ],
+              [
+                7.10335624,
+                46.82246602,
+                "Belfaux, Laiterie",
+                "",
+                "ch:1:sloid:4531:0:15421"
+              ],
+              [
+                7.12324494,
+                46.81439464,
+                "Givisiez, rte du Bleuet",
+                "",
+                "ch:1:sloid:94782:0:17139"
+              ],
+              [
+                7.12735923,
+                46.81526761,
+                "Givisiez, rte Stephan",
+                "",
+                "ch:1:sloid:94781:0:17137"
+              ],
+              [
+                7.13029672,
+                46.81452989,
+                "Givisiez, Escale",
+                "",
+                "ch:1:sloid:77821:0:15510"
+              ],
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              [
+                7.14531655,
+                46.80964837,
+                "Fribourg, Vuille",
+                "C",
+                "ch:1:sloid:77820:0:15175"
+              ],
+              [
+                7.15094899,
+                46.80654954,
+                "Fribourg, Gambach",
+                "",
+                "ch:1:sloid:88351:0:15064"
+              ],
+              [
+                7.15173951,
+                46.80414537,
+                "Fribourg/Freiburg, gare/Tivoli",
+                "",
+                "ch:1:sloid:88352:0:15070"
+              ],
+              [
+                7.1509939,
+                46.80390556,
+                "Fribourg/Freiburg, gare rout.",
+                "Y",
+                "ch:1:sloid:4881:0:15267"
+              ]
+            ]
+          },
+          {
+            "id": "3bdc7c99de2e7f5e95e25e36",
+            "routeId": "92-544-j26-1",
+            "stops": [
+              [
+                7.15082322,
+                46.80385022,
+                "Fribourg/Freiburg, gare rout.",
+                "V",
+                "ch:1:sloid:4881:0:15248"
+              ],
+              [
+                7.15119153,
+                46.8062667,
+                "Fribourg, Gambach",
+                "",
+                "ch:1:sloid:88351:0:15065"
+              ],
+              [
+                7.14676284,
+                46.80939014,
+                "Fribourg, Vuille",
+                "A",
+                "ch:1:sloid:77820:0:15173"
+              ],
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              [
+                7.1312669,
+                46.81375527,
+                "Givisiez, Escale",
+                "",
+                "ch:1:sloid:77821:0:15509"
+              ],
+              [
+                7.12953315,
+                46.81601147,
+                "Givisiez, gare",
+                "",
+                "ch:1:sloid:6640:0:18256"
+              ],
+              [
+                7.12690109,
+                46.81523072,
+                "Givisiez, rte Stephan",
+                "",
+                "ch:1:sloid:94781:0:17136"
+              ],
+              [
+                7.12174476,
+                46.81421635,
+                "Givisiez, rte du Bleuet",
+                "",
+                "ch:1:sloid:94782:0:17138"
+              ],
+              [
+                7.10026604,
+                46.82328354,
+                "Belfaux, Arsenal",
+                "",
+                "ch:1:sloid:7595:0:19378"
+              ],
+              [
+                7.09301664,
+                46.82662111,
+                "Belfaux, Château-du-Bois",
+                "",
+                "ch:1:sloid:4604:0:15449"
+              ],
+              [
+                7.08312618,
+                46.83276711,
+                "Grolley, Rosière",
+                "",
+                "ch:1:sloid:94496:0:17201"
+              ],
+              [
+                7.07968564,
+                46.83766497,
+                "Belfaux, Cutterwil",
+                "",
+                "ch:1:sloid:4610:0:15499"
+              ],
+              [
+                7.0668038,
+                46.85155721,
+                "Misery, village",
+                "",
+                "ch:1:sloid:4864:0:15567"
+              ],
+              [
+                7.06268951,
+                46.85601106,
+                "Courtion, bif.",
+                "",
+                "ch:1:sloid:4900:0:15492"
+              ],
+              [
+                7.05851234,
+                46.85929746,
+                "Courtion, Oleyres bif.",
+                "",
+                "ch:1:sloid:77822:0:15607"
+              ],
+              [
+                7.05905133,
+                46.86197557,
+                "Courtion, Moulin-Neuf",
+                "",
+                "ch:1:sloid:77823:0:15586"
+              ],
+              [
+                7.05798234,
+                46.87572642,
+                "Donatyre, village",
+                "",
+                "ch:1:sloid:4886:0:15505"
+              ],
+              [
+                7.04221691,
+                46.87829933,
+                "Avenches, Faubourg",
+                "",
+                "ch:1:sloid:77825:0:15519"
+              ],
+              [
+                7.04114791,
+                46.88457449,
+                "Avenches, gare",
+                "",
+                "ch:1:sloid:70514:0:414145"
+              ],
+              [
+                7.03296426,
+                46.87645717,
+                "Avenches, Le Paon",
+                "",
+                "ch:1:sloid:83723:0:625923"
+              ],
+              [
+                7.01713594,
+                46.86619516,
+                "Domdidier, CO",
+                "",
+                "ch:1:sloid:88723:0:15693"
+              ],
+              [
+                7.01162029,
+                46.86851058,
+                "Domdidier, gare",
+                "",
+                "ch:1:sloid:77828:0:15503"
+              ],
+              [
+                6.98229029,
+                46.88754603,
+                "St-Aubin FR, bif.",
+                "",
+                "ch:1:sloid:77829:0:15650"
+              ],
+              [
+                6.97986484,
+                46.89000786,
+                "St-Aubin FR, église",
+                "",
+                "ch:1:sloid:4887:0:15648"
+              ],
+              [
+                6.97600209,
+                46.89216878,
+                "St-Aubin FR, Le-Haut",
+                "",
+                "ch:1:sloid:77830:0:15653"
+              ],
+              [
+                6.97294781,
+                46.91191382,
+                "Delley, En Roche",
+                "",
+                "ch:1:sloid:77831:0:15507"
+              ],
+              [
+                6.96848319,
+                46.91438681,
+                "Delley, école",
+                "",
+                "ch:1:sloid:77832:0:15501"
+              ],
+              [
+                6.95614932,
+                46.91776167,
+                "Portalban, village",
+                "",
+                "ch:1:sloid:4547:0:15626"
+              ],
+              [
+                6.95332861,
+                46.91023851,
+                "Portalban, Dessus",
+                "",
+                "ch:1:sloid:77833:0:15628"
+              ],
+              [
+                6.94598039,
+                46.90259154,
+                "Gletterens, Fin de Gros Bois",
+                "",
+                "ch:1:sloid:4001:0:17390"
+              ],
+              [
+                6.93847047,
+                46.89523812,
+                "Gletterens, village",
+                "",
+                "ch:1:sloid:77834:0:15540"
+              ],
+              [
+                6.93077191,
+                46.90445121,
+                "Gletterens, lac",
+                "",
+                "ch:1:sloid:95536:0:16548"
+              ]
+            ]
+          },
+          {
+            "id": "41be4780d048a30dc635f64e",
+            "routeId": "92-544-j26-1",
+            "stops": [
+              [
+                6.96848319,
+                46.91438681,
+                "Delley, école",
+                "",
+                "ch:1:sloid:77832:0:15501"
+              ],
+              [
+                6.95509829,
+                46.91816051,
+                "Portalban, école",
+                "",
+                "ch:1:sloid:10187:0:1"
+              ],
+              [
+                6.95614932,
+                46.91776167,
+                "Portalban, village",
+                "",
+                "ch:1:sloid:4547:0:15626"
+              ],
+              [
+                6.95332861,
+                46.91023851,
+                "Portalban, Dessus",
+                "",
+                "ch:1:sloid:77833:0:15628"
+              ],
+              [
+                6.94598039,
+                46.90259154,
+                "Gletterens, Fin de Gros Bois",
+                "",
+                "ch:1:sloid:4001:0:17390"
+              ],
+              [
+                6.93847047,
+                46.89523812,
+                "Gletterens, village",
+                "",
+                "ch:1:sloid:77834:0:15540"
+              ]
+            ]
+          },
+          {
+            "id": "57a3523b54717f84128182ce",
+            "routeId": "92-544-j26-1",
+            "stops": [
+              [
+                6.93077191,
+                46.90445121,
+                "Gletterens, lac",
+                "",
+                "ch:1:sloid:95536:0:16548"
+              ],
+              [
+                6.93847047,
+                46.89523812,
+                "Gletterens, village",
+                "",
+                "ch:1:sloid:77834:0:15540"
+              ],
+              [
+                6.94605225,
+                46.90276339,
+                "Gletterens, Fin de Gros Bois",
+                "",
+                "ch:1:sloid:4001:0:17389"
+              ],
+              [
+                6.95345437,
+                46.91033056,
+                "Portalban, Dessus",
+                "",
+                "ch:1:sloid:77833:0:15629"
+              ],
+              [
+                6.95611339,
+                46.91784758,
+                "Portalban, village",
+                "",
+                "ch:1:sloid:4547:0:15627"
+              ],
+              [
+                6.96825861,
+                46.9142334,
+                "Delley, école",
+                "",
+                "ch:1:sloid:77832:0:15502"
+              ],
+              [
+                6.97292985,
+                46.91176041,
+                "Delley, En Roche",
+                "",
+                "ch:1:sloid:77831:0:15508"
+              ],
+              [
+                6.97594819,
+                46.89202145,
+                "St-Aubin FR, Le-Haut",
+                "",
+                "ch:1:sloid:77830:0:15654"
+              ],
+              [
+                6.97986484,
+                46.89000786,
+                "St-Aubin FR, église",
+                "",
+                "ch:1:sloid:4887:0:15648"
+              ],
+              [
+                6.98229029,
+                46.88754603,
+                "St-Aubin FR, bif.",
+                "",
+                "ch:1:sloid:77829:0:15650"
+              ],
+              [
+                7.01162029,
+                46.86851058,
+                "Domdidier, gare",
+                "",
+                "ch:1:sloid:77828:0:15503"
+              ],
+              [
+                7.03405122,
+                46.87680104,
+                "Avenches, Le Paon",
+                "",
+                "ch:1:sloid:83723:0:550237"
+              ],
+              [
+                7.04235165,
+                46.87806599,
+                "Avenches, Faubourg",
+                "",
+                "ch:1:sloid:77825:0:15520"
+              ],
+              [
+                7.05828777,
+                46.87530271,
+                "Donatyre, village",
+                "",
+                "ch:1:sloid:4886:0:15506"
+              ],
+              [
+                7.05895252,
+                46.86192643,
+                "Courtion, Moulin-Neuf",
+                "",
+                "ch:1:sloid:77823:0:15587"
+              ],
+              [
+                7.0584315,
+                46.85934045,
+                "Courtion, Oleyres bif.",
+                "",
+                "ch:1:sloid:77822:0:15608"
+              ],
+              [
+                7.06308477,
+                46.85523089,
+                "Courtion, bif.",
+                "",
+                "ch:1:sloid:4900:0:15493"
+              ],
+              [
+                7.06628277,
+                46.8517968,
+                "Misery, village",
+                "",
+                "ch:1:sloid:4864:0:15568"
+              ],
+              [
+                7.07928139,
+                46.83774485,
+                "Belfaux, Cutterwil",
+                "",
+                "ch:1:sloid:4610:0:15500"
+              ],
+              [
+                7.08318907,
+                46.83257659,
+                "Grolley, Rosière",
+                "",
+                "ch:1:sloid:94496:0:17200"
+              ],
+              [
+                7.0938341,
+                46.82606794,
+                "Belfaux, Château-du-Bois",
+                "",
+                "ch:1:sloid:4604:0:15450"
+              ],
+              [
+                7.10335624,
+                46.82246602,
+                "Belfaux, Laiterie",
+                "",
+                "ch:1:sloid:4531:0:15421"
+              ],
+              [
+                7.12324494,
+                46.81439464,
+                "Givisiez, rte du Bleuet",
+                "",
+                "ch:1:sloid:94782:0:17139"
+              ],
+              [
+                7.12735923,
+                46.81526761,
+                "Givisiez, rte Stephan",
+                "",
+                "ch:1:sloid:94781:0:17137"
+              ],
+              [
+                7.13029672,
+                46.81452989,
+                "Givisiez, Escale",
+                "",
+                "ch:1:sloid:77821:0:15510"
+              ],
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              [
+                7.14531655,
+                46.80964837,
+                "Fribourg, Vuille",
+                "C",
+                "ch:1:sloid:77820:0:15175"
+              ],
+              [
+                7.15094899,
+                46.80654954,
+                "Fribourg, Gambach",
+                "",
+                "ch:1:sloid:88351:0:15064"
+              ],
+              [
+                7.15173951,
+                46.80414537,
+                "Fribourg/Freiburg, gare/Tivoli",
+                "",
+                "ch:1:sloid:88352:0:15070"
+              ],
+              [
+                7.1509939,
+                46.80390556,
+                "Fribourg/Freiburg, gare rout.",
+                "Y",
+                "ch:1:sloid:4881:0:15267"
+              ]
+            ]
+          },
+          {
+            "id": "608420f17e589c7646fd2ff7",
+            "routeId": "92-544-j26-1",
+            "stops": [
+              [
+                7.15082322,
+                46.80385022,
+                "Fribourg/Freiburg, gare rout.",
+                "V",
+                "ch:1:sloid:4881:0:15248"
+              ],
+              [
+                7.15119153,
+                46.8062667,
+                "Fribourg, Gambach",
+                "",
+                "ch:1:sloid:88351:0:15065"
+              ],
+              [
+                7.14676284,
+                46.80939014,
+                "Fribourg, Vuille",
+                "A",
+                "ch:1:sloid:77820:0:15173"
+              ],
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              [
+                7.1312669,
+                46.81375527,
+                "Givisiez, Escale",
+                "",
+                "ch:1:sloid:77821:0:15509"
+              ],
+              [
+                7.12953315,
+                46.81601147,
+                "Givisiez, gare",
+                "",
+                "ch:1:sloid:6640:0:18256"
+              ],
+              [
+                7.12690109,
+                46.81523072,
+                "Givisiez, rte Stephan",
+                "",
+                "ch:1:sloid:94781:0:17136"
+              ],
+              [
+                7.12174476,
+                46.81421635,
+                "Givisiez, rte du Bleuet",
+                "",
+                "ch:1:sloid:94782:0:17138"
+              ],
+              [
+                7.10026604,
+                46.82328354,
+                "Belfaux, Arsenal",
+                "",
+                "ch:1:sloid:7595:0:19378"
+              ],
+              [
+                7.09301664,
+                46.82662111,
+                "Belfaux, Château-du-Bois",
+                "",
+                "ch:1:sloid:4604:0:15449"
+              ],
+              [
+                7.08312618,
+                46.83276711,
+                "Grolley, Rosière",
+                "",
+                "ch:1:sloid:94496:0:17201"
+              ],
+              [
+                7.07968564,
+                46.83766497,
+                "Belfaux, Cutterwil",
+                "",
+                "ch:1:sloid:4610:0:15499"
+              ],
+              [
+                7.0668038,
+                46.85155721,
+                "Misery, village",
+                "",
+                "ch:1:sloid:4864:0:15567"
+              ],
+              [
+                7.06921128,
+                46.8574485,
+                "Courtion, école",
+                "",
+                "ch:1:sloid:77835:0:15490"
+              ],
+              [
+                7.08439281,
+                46.86198785,
+                "Cormérod, Paccoty",
+                "",
+                "ch:1:sloid:88605:0:15611"
+              ],
+              [
+                7.08603673,
+                46.86454913,
+                "Cormérod, village",
+                "",
+                "ch:1:sloid:4648:0:15475"
+              ],
+              [
+                7.09123797,
+                46.86489922,
+                "Cormérod, Partiers",
+                "",
+                "ch:1:sloid:88604:0:15616"
+              ],
+              [
+                7.09801127,
+                46.85977658,
+                "Cournillens, Es Mottes",
+                "",
+                "ch:1:sloid:77836:0:15511"
+              ],
+              [
+                7.06268951,
+                46.85601106,
+                "Courtion, bif.",
+                "",
+                "ch:1:sloid:4900:0:15492"
+              ],
+              [
+                7.05851234,
+                46.85929746,
+                "Courtion, Oleyres bif.",
+                "",
+                "ch:1:sloid:77822:0:15607"
+              ],
+              [
+                7.05905133,
+                46.86197557,
+                "Courtion, Moulin-Neuf",
+                "",
+                "ch:1:sloid:77823:0:15586"
+              ],
+              [
+                7.05798234,
+                46.87572642,
+                "Donatyre, village",
+                "",
+                "ch:1:sloid:4886:0:15505"
+              ],
+              [
+                7.04221691,
+                46.87829933,
+                "Avenches, Faubourg",
+                "",
+                "ch:1:sloid:77825:0:15519"
+              ],
+              [
+                7.04114791,
+                46.88457449,
+                "Avenches, gare",
+                "",
+                "ch:1:sloid:70514:0:414145"
+              ],
+              [
+                7.03296426,
+                46.87645717,
+                "Avenches, Le Paon",
+                "",
+                "ch:1:sloid:83723:0:625923"
+              ],
+              [
+                7.01713594,
+                46.86619516,
+                "Domdidier, CO",
+                "",
+                "ch:1:sloid:88723:0:15693"
+              ],
+              [
+                7.01162029,
+                46.86851058,
+                "Domdidier, gare",
+                "",
+                "ch:1:sloid:77828:0:15503"
+              ],
+              [
+                6.98229029,
+                46.88754603,
+                "St-Aubin FR, bif.",
+                "",
+                "ch:1:sloid:77829:0:15650"
+              ],
+              [
+                6.97986484,
+                46.89000786,
+                "St-Aubin FR, église",
+                "",
+                "ch:1:sloid:4887:0:15648"
+              ],
+              [
+                6.97600209,
+                46.89216878,
+                "St-Aubin FR, Le-Haut",
+                "",
+                "ch:1:sloid:77830:0:15653"
+              ],
+              [
+                6.97294781,
+                46.91191382,
+                "Delley, En Roche",
+                "",
+                "ch:1:sloid:77831:0:15507"
+              ],
+              [
+                6.96848319,
+                46.91438681,
+                "Delley, école",
+                "",
+                "ch:1:sloid:77832:0:15501"
+              ],
+              [
+                6.95614932,
+                46.91776167,
+                "Portalban, village",
+                "",
+                "ch:1:sloid:4547:0:15626"
+              ],
+              [
+                6.95332861,
+                46.91023851,
+                "Portalban, Dessus",
+                "",
+                "ch:1:sloid:77833:0:15628"
+              ],
+              [
+                6.94598039,
+                46.90259154,
+                "Gletterens, Fin de Gros Bois",
+                "",
+                "ch:1:sloid:4001:0:17390"
+              ],
+              [
+                6.93847047,
+                46.89523812,
+                "Gletterens, village",
+                "",
+                "ch:1:sloid:77834:0:15540"
+              ]
+            ]
+          },
+          {
+            "id": "69264d987ce3e4af177979ec",
+            "routeId": "92-544-j26-1",
+            "stops": [
+              [
+                7.15082322,
+                46.80385022,
+                "Fribourg/Freiburg, gare rout.",
+                "V",
+                "ch:1:sloid:4881:0:15248"
+              ],
+              [
+                7.15119153,
+                46.8062667,
+                "Fribourg, Gambach",
+                "",
+                "ch:1:sloid:88351:0:15065"
+              ],
+              [
+                7.14676284,
+                46.80939014,
+                "Fribourg, Vuille",
+                "A",
+                "ch:1:sloid:77820:0:15173"
+              ],
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              [
+                7.1312669,
+                46.81375527,
+                "Givisiez, Escale",
+                "",
+                "ch:1:sloid:77821:0:15509"
+              ],
+              [
+                7.12690109,
+                46.81523072,
+                "Givisiez, rte Stephan",
+                "",
+                "ch:1:sloid:94781:0:17136"
+              ],
+              [
+                7.12174476,
+                46.81421635,
+                "Givisiez, rte du Bleuet",
+                "",
+                "ch:1:sloid:94782:0:17138"
+              ],
+              [
+                7.10026604,
+                46.82328354,
+                "Belfaux, Arsenal",
+                "",
+                "ch:1:sloid:7595:0:19378"
+              ],
+              [
+                7.09301664,
+                46.82662111,
+                "Belfaux, Château-du-Bois",
+                "",
+                "ch:1:sloid:4604:0:15449"
+              ],
+              [
+                7.08312618,
+                46.83276711,
+                "Grolley, Rosière",
+                "",
+                "ch:1:sloid:94496:0:17201"
+              ],
+              [
+                7.07968564,
+                46.83766497,
+                "Belfaux, Cutterwil",
+                "",
+                "ch:1:sloid:4610:0:15499"
+              ],
+              [
+                7.0668038,
+                46.85155721,
+                "Misery, village",
+                "",
+                "ch:1:sloid:4864:0:15567"
+              ],
+              [
+                7.06268951,
+                46.85601106,
+                "Courtion, bif.",
+                "",
+                "ch:1:sloid:4900:0:15492"
+              ],
+              [
+                7.05851234,
+                46.85929746,
+                "Courtion, Oleyres bif.",
+                "",
+                "ch:1:sloid:77822:0:15607"
+              ],
+              [
+                7.05905133,
+                46.86197557,
+                "Courtion, Moulin-Neuf",
+                "",
+                "ch:1:sloid:77823:0:15586"
+              ],
+              [
+                7.05798234,
+                46.87572642,
+                "Donatyre, village",
+                "",
+                "ch:1:sloid:4886:0:15505"
+              ],
+              [
+                7.04221691,
+                46.87829933,
+                "Avenches, Faubourg",
+                "",
+                "ch:1:sloid:77825:0:15519"
+              ],
+              [
+                7.03296426,
+                46.87645717,
+                "Avenches, Le Paon",
+                "",
+                "ch:1:sloid:83723:0:625923"
+              ],
+              [
+                7.01162029,
+                46.86851058,
+                "Domdidier, gare",
+                "",
+                "ch:1:sloid:77828:0:15503"
+              ],
+              [
+                6.98229029,
+                46.88754603,
+                "St-Aubin FR, bif.",
+                "",
+                "ch:1:sloid:77829:0:15650"
+              ],
+              [
+                6.97986484,
+                46.89000786,
+                "St-Aubin FR, église",
+                "",
+                "ch:1:sloid:4887:0:15648"
+              ],
+              [
+                6.97600209,
+                46.89216878,
+                "St-Aubin FR, Le-Haut",
+                "",
+                "ch:1:sloid:77830:0:15653"
+              ],
+              [
+                6.97294781,
+                46.91191382,
+                "Delley, En Roche",
+                "",
+                "ch:1:sloid:77831:0:15507"
+              ],
+              [
+                6.96848319,
+                46.91438681,
+                "Delley, école",
+                "",
+                "ch:1:sloid:77832:0:15501"
+              ],
+              [
+                6.95614932,
+                46.91776167,
+                "Portalban, village",
+                "",
+                "ch:1:sloid:4547:0:15626"
+              ],
+              [
+                6.95332861,
+                46.91023851,
+                "Portalban, Dessus",
+                "",
+                "ch:1:sloid:77833:0:15628"
+              ],
+              [
+                6.94598039,
+                46.90259154,
+                "Gletterens, Fin de Gros Bois",
+                "",
+                "ch:1:sloid:4001:0:17390"
+              ],
+              [
+                6.93847047,
+                46.89523812,
+                "Gletterens, village",
+                "",
+                "ch:1:sloid:77834:0:15540"
+              ],
+              [
+                6.93077191,
+                46.90445121,
+                "Gletterens, lac",
+                "",
+                "ch:1:sloid:95536:0:16548"
+              ]
+            ]
+          },
+          {
+            "id": "794bff6be11388391e1ddc52",
+            "routeId": "92-544-j26-1",
+            "stops": [
+              [
+                6.93077191,
+                46.90445121,
+                "Gletterens, lac",
+                "",
+                "ch:1:sloid:95536:0:16548"
+              ],
+              [
+                6.93847047,
+                46.89523812,
+                "Gletterens, village",
+                "",
+                "ch:1:sloid:77834:0:15540"
+              ],
+              [
+                6.94605225,
+                46.90276339,
+                "Gletterens, Fin de Gros Bois",
+                "",
+                "ch:1:sloid:4001:0:17389"
+              ],
+              [
+                6.95345437,
+                46.91033056,
+                "Portalban, Dessus",
+                "",
+                "ch:1:sloid:77833:0:15629"
+              ],
+              [
+                6.95611339,
+                46.91784758,
+                "Portalban, village",
+                "",
+                "ch:1:sloid:4547:0:15627"
+              ],
+              [
+                6.95509829,
+                46.91816051,
+                "Portalban, école",
+                "",
+                "ch:1:sloid:10187:0:1"
+              ],
+              [
+                6.96825861,
+                46.9142334,
+                "Delley, école",
+                "",
+                "ch:1:sloid:77832:0:15502"
+              ],
+              [
+                6.97292985,
+                46.91176041,
+                "Delley, En Roche",
+                "",
+                "ch:1:sloid:77831:0:15508"
+              ],
+              [
+                6.97594819,
+                46.89202145,
+                "St-Aubin FR, Le-Haut",
+                "",
+                "ch:1:sloid:77830:0:15654"
+              ],
+              [
+                6.97986484,
+                46.89000786,
+                "St-Aubin FR, église",
+                "",
+                "ch:1:sloid:4887:0:15648"
+              ],
+              [
+                6.98229029,
+                46.88754603,
+                "St-Aubin FR, bif.",
+                "",
+                "ch:1:sloid:77829:0:15650"
+              ],
+              [
+                7.01162029,
+                46.86851058,
+                "Domdidier, gare",
+                "",
+                "ch:1:sloid:77828:0:15503"
+              ],
+              [
+                7.03405122,
+                46.87680104,
+                "Avenches, Le Paon",
+                "",
+                "ch:1:sloid:83723:0:550237"
+              ],
+              [
+                7.04114791,
+                46.88457449,
+                "Avenches, gare",
+                "",
+                "ch:1:sloid:70514:0:414145"
+              ],
+              [
+                7.04235165,
+                46.87806599,
+                "Avenches, Faubourg",
+                "",
+                "ch:1:sloid:77825:0:15520"
+              ],
+              [
+                7.05828777,
+                46.87530271,
+                "Donatyre, village",
+                "",
+                "ch:1:sloid:4886:0:15506"
+              ],
+              [
+                7.05895252,
+                46.86192643,
+                "Courtion, Moulin-Neuf",
+                "",
+                "ch:1:sloid:77823:0:15587"
+              ],
+              [
+                7.0584315,
+                46.85934045,
+                "Courtion, Oleyres bif.",
+                "",
+                "ch:1:sloid:77822:0:15608"
+              ],
+              [
+                7.06308477,
+                46.85523089,
+                "Courtion, bif.",
+                "",
+                "ch:1:sloid:4900:0:15493"
+              ],
+              [
+                7.06628277,
+                46.8517968,
+                "Misery, village",
+                "",
+                "ch:1:sloid:4864:0:15568"
+              ],
+              [
+                7.07928139,
+                46.83774485,
+                "Belfaux, Cutterwil",
+                "",
+                "ch:1:sloid:4610:0:15500"
+              ],
+              [
+                7.08318907,
+                46.83257659,
+                "Grolley, Rosière",
+                "",
+                "ch:1:sloid:94496:0:17200"
+              ],
+              [
+                7.0938341,
+                46.82606794,
+                "Belfaux, Château-du-Bois",
+                "",
+                "ch:1:sloid:4604:0:15450"
+              ],
+              [
+                7.10335624,
+                46.82246602,
+                "Belfaux, Laiterie",
+                "",
+                "ch:1:sloid:4531:0:15421"
+              ],
+              [
+                7.12324494,
+                46.81439464,
+                "Givisiez, rte du Bleuet",
+                "",
+                "ch:1:sloid:94782:0:17139"
+              ],
+              [
+                7.12735923,
+                46.81526761,
+                "Givisiez, rte Stephan",
+                "",
+                "ch:1:sloid:94781:0:17137"
+              ],
+              [
+                7.12953315,
+                46.81601147,
+                "Givisiez, gare",
+                "",
+                "ch:1:sloid:6640:0:18256"
+              ],
+              [
+                7.13029672,
+                46.81452989,
+                "Givisiez, Escale",
+                "",
+                "ch:1:sloid:77821:0:15510"
+              ],
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              [
+                7.14531655,
+                46.80964837,
+                "Fribourg, Vuille",
+                "C",
+                "ch:1:sloid:77820:0:15175"
+              ],
+              [
+                7.15094899,
+                46.80654954,
+                "Fribourg, Gambach",
+                "",
+                "ch:1:sloid:88351:0:15064"
+              ],
+              [
+                7.15173951,
+                46.80414537,
+                "Fribourg/Freiburg, gare/Tivoli",
+                "",
+                "ch:1:sloid:88352:0:15070"
+              ],
+              [
+                7.1509939,
+                46.80390556,
+                "Fribourg/Freiburg, gare rout.",
+                "Y",
+                "ch:1:sloid:4881:0:15267"
+              ]
+            ]
+          },
+          {
+            "id": "81d1a6f39903fbbc5516a4bf",
+            "routeId": "92-544-j26-1",
+            "stops": [
+              [
+                6.93077191,
+                46.90445121,
+                "Gletterens, lac",
+                "",
+                "ch:1:sloid:95536:0:16548"
+              ],
+              [
+                6.93847047,
+                46.89523812,
+                "Gletterens, village",
+                "",
+                "ch:1:sloid:77834:0:15540"
+              ],
+              [
+                6.94605225,
+                46.90276339,
+                "Gletterens, Fin de Gros Bois",
+                "",
+                "ch:1:sloid:4001:0:17389"
+              ],
+              [
+                6.95345437,
+                46.91033056,
+                "Portalban, Dessus",
+                "",
+                "ch:1:sloid:77833:0:15629"
+              ],
+              [
+                6.95611339,
+                46.91784758,
+                "Portalban, village",
+                "",
+                "ch:1:sloid:4547:0:15627"
+              ],
+              [
+                6.96825861,
+                46.9142334,
+                "Delley, école",
+                "",
+                "ch:1:sloid:77832:0:15502"
+              ],
+              [
+                6.97292985,
+                46.91176041,
+                "Delley, En Roche",
+                "",
+                "ch:1:sloid:77831:0:15508"
+              ],
+              [
+                6.97594819,
+                46.89202145,
+                "St-Aubin FR, Le-Haut",
+                "",
+                "ch:1:sloid:77830:0:15654"
+              ],
+              [
+                6.97986484,
+                46.89000786,
+                "St-Aubin FR, église",
+                "",
+                "ch:1:sloid:4887:0:15648"
+              ],
+              [
+                6.98229029,
+                46.88754603,
+                "St-Aubin FR, bif.",
+                "",
+                "ch:1:sloid:77829:0:15650"
+              ],
+              [
+                7.01162029,
+                46.86851058,
+                "Domdidier, gare",
+                "",
+                "ch:1:sloid:77828:0:15503"
+              ],
+              [
+                7.03405122,
+                46.87680104,
+                "Avenches, Le Paon",
+                "",
+                "ch:1:sloid:83723:0:550237"
+              ],
+              [
+                7.04114791,
+                46.88457449,
+                "Avenches, gare",
+                "",
+                "ch:1:sloid:70514:0:414145"
+              ],
+              [
+                7.04235165,
+                46.87806599,
+                "Avenches, Faubourg",
+                "",
+                "ch:1:sloid:77825:0:15520"
+              ],
+              [
+                7.05828777,
+                46.87530271,
+                "Donatyre, village",
+                "",
+                "ch:1:sloid:4886:0:15506"
+              ],
+              [
+                7.05895252,
+                46.86192643,
+                "Courtion, Moulin-Neuf",
+                "",
+                "ch:1:sloid:77823:0:15587"
+              ],
+              [
+                7.0584315,
+                46.85934045,
+                "Courtion, Oleyres bif.",
+                "",
+                "ch:1:sloid:77822:0:15608"
+              ],
+              [
+                7.06308477,
+                46.85523089,
+                "Courtion, bif.",
+                "",
+                "ch:1:sloid:4900:0:15493"
+              ],
+              [
+                7.06628277,
+                46.8517968,
+                "Misery, village",
+                "",
+                "ch:1:sloid:4864:0:15568"
+              ],
+              [
+                7.07928139,
+                46.83774485,
+                "Belfaux, Cutterwil",
+                "",
+                "ch:1:sloid:4610:0:15500"
+              ],
+              [
+                7.08318907,
+                46.83257659,
+                "Grolley, Rosière",
+                "",
+                "ch:1:sloid:94496:0:17200"
+              ],
+              [
+                7.0938341,
+                46.82606794,
+                "Belfaux, Château-du-Bois",
+                "",
+                "ch:1:sloid:4604:0:15450"
+              ],
+              [
+                7.10335624,
+                46.82246602,
+                "Belfaux, Laiterie",
+                "",
+                "ch:1:sloid:4531:0:15421"
+              ],
+              [
+                7.12324494,
+                46.81439464,
+                "Givisiez, rte du Bleuet",
+                "",
+                "ch:1:sloid:94782:0:17139"
+              ],
+              [
+                7.12735923,
+                46.81526761,
+                "Givisiez, rte Stephan",
+                "",
+                "ch:1:sloid:94781:0:17137"
+              ],
+              [
+                7.12953315,
+                46.81601147,
+                "Givisiez, gare",
+                "",
+                "ch:1:sloid:6640:0:18256"
+              ],
+              [
+                7.13029672,
+                46.81452989,
+                "Givisiez, Escale",
+                "",
+                "ch:1:sloid:77821:0:15510"
+              ],
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              [
+                7.14531655,
+                46.80964837,
+                "Fribourg, Vuille",
+                "C",
+                "ch:1:sloid:77820:0:15175"
+              ],
+              [
+                7.15094899,
+                46.80654954,
+                "Fribourg, Gambach",
+                "",
+                "ch:1:sloid:88351:0:15064"
+              ],
+              [
+                7.15173951,
+                46.80414537,
+                "Fribourg/Freiburg, gare/Tivoli",
+                "",
+                "ch:1:sloid:88352:0:15070"
+              ],
+              [
+                7.1509939,
+                46.80390556,
+                "Fribourg/Freiburg, gare rout.",
+                "Y",
+                "ch:1:sloid:4881:0:15267"
+              ]
+            ]
+          },
+          {
+            "id": "898809c9e7079b55d763d722",
+            "routeId": "92-544-j26-1",
+            "stops": [
+              [
+                7.15082322,
+                46.80385022,
+                "Fribourg/Freiburg, gare rout.",
+                "V",
+                "ch:1:sloid:4881:0:15248"
+              ],
+              [
+                7.15119153,
+                46.8062667,
+                "Fribourg, Gambach",
+                "",
+                "ch:1:sloid:88351:0:15065"
+              ],
+              [
+                7.14676284,
+                46.80939014,
+                "Fribourg, Vuille",
+                "A",
+                "ch:1:sloid:77820:0:15173"
+              ],
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              [
+                7.1312669,
+                46.81375527,
+                "Givisiez, Escale",
+                "",
+                "ch:1:sloid:77821:0:15509"
+              ],
+              [
+                7.12690109,
+                46.81523072,
+                "Givisiez, rte Stephan",
+                "",
+                "ch:1:sloid:94781:0:17136"
+              ],
+              [
+                7.12174476,
+                46.81421635,
+                "Givisiez, rte du Bleuet",
+                "",
+                "ch:1:sloid:94782:0:17138"
+              ],
+              [
+                7.10026604,
+                46.82328354,
+                "Belfaux, Arsenal",
+                "",
+                "ch:1:sloid:7595:0:19378"
+              ],
+              [
+                7.09301664,
+                46.82662111,
+                "Belfaux, Château-du-Bois",
+                "",
+                "ch:1:sloid:4604:0:15449"
+              ],
+              [
+                7.08312618,
+                46.83276711,
+                "Grolley, Rosière",
+                "",
+                "ch:1:sloid:94496:0:17201"
+              ],
+              [
+                7.07968564,
+                46.83766497,
+                "Belfaux, Cutterwil",
+                "",
+                "ch:1:sloid:4610:0:15499"
+              ],
+              [
+                7.0668038,
+                46.85155721,
+                "Misery, village",
+                "",
+                "ch:1:sloid:4864:0:15567"
+              ],
+              [
+                7.06268951,
+                46.85601106,
+                "Courtion, bif.",
+                "",
+                "ch:1:sloid:4900:0:15492"
+              ],
+              [
+                7.05851234,
+                46.85929746,
+                "Courtion, Oleyres bif.",
+                "",
+                "ch:1:sloid:77822:0:15607"
+              ],
+              [
+                7.05905133,
+                46.86197557,
+                "Courtion, Moulin-Neuf",
+                "",
+                "ch:1:sloid:77823:0:15586"
+              ],
+              [
+                7.05798234,
+                46.87572642,
+                "Donatyre, village",
+                "",
+                "ch:1:sloid:4886:0:15505"
+              ],
+              [
+                7.04221691,
+                46.87829933,
+                "Avenches, Faubourg",
+                "",
+                "ch:1:sloid:77825:0:15519"
+              ],
+              [
+                7.03296426,
+                46.87645717,
+                "Avenches, Le Paon",
+                "",
+                "ch:1:sloid:83723:0:625923"
+              ],
+              [
+                7.01162029,
+                46.86851058,
+                "Domdidier, gare",
+                "",
+                "ch:1:sloid:77828:0:15503"
+              ],
+              [
+                6.98229029,
+                46.88754603,
+                "St-Aubin FR, bif.",
+                "",
+                "ch:1:sloid:77829:0:15650"
+              ],
+              [
+                6.97986484,
+                46.89000786,
+                "St-Aubin FR, église",
+                "",
+                "ch:1:sloid:4887:0:15648"
+              ],
+              [
+                6.97600209,
+                46.89216878,
+                "St-Aubin FR, Le-Haut",
+                "",
+                "ch:1:sloid:77830:0:15653"
+              ],
+              [
+                6.97294781,
+                46.91191382,
+                "Delley, En Roche",
+                "",
+                "ch:1:sloid:77831:0:15507"
+              ],
+              [
+                6.96848319,
+                46.91438681,
+                "Delley, école",
+                "",
+                "ch:1:sloid:77832:0:15501"
+              ],
+              [
+                6.95614932,
+                46.91776167,
+                "Portalban, village",
+                "",
+                "ch:1:sloid:4547:0:15626"
+              ],
+              [
+                6.95332861,
+                46.91023851,
+                "Portalban, Dessus",
+                "",
+                "ch:1:sloid:77833:0:15628"
+              ],
+              [
+                6.94598039,
+                46.90259154,
+                "Gletterens, Fin de Gros Bois",
+                "",
+                "ch:1:sloid:4001:0:17390"
+              ],
+              [
+                6.93847047,
+                46.89523812,
+                "Gletterens, village",
+                "",
+                "ch:1:sloid:77834:0:15540"
+              ]
+            ]
+          },
+          {
+            "id": "916b3438f18a710635d602d4",
+            "routeId": "92-544-j26-1",
+            "stops": [
+              [
+                6.93077191,
+                46.90445121,
+                "Gletterens, lac",
+                "",
+                "ch:1:sloid:95536:0:16548"
+              ],
+              [
+                6.93847047,
+                46.89523812,
+                "Gletterens, village",
+                "",
+                "ch:1:sloid:77834:0:15540"
+              ],
+              [
+                6.94605225,
+                46.90276339,
+                "Gletterens, Fin de Gros Bois",
+                "",
+                "ch:1:sloid:4001:0:17389"
+              ],
+              [
+                6.95345437,
+                46.91033056,
+                "Portalban, Dessus",
+                "",
+                "ch:1:sloid:77833:0:15629"
+              ],
+              [
+                6.95611339,
+                46.91784758,
+                "Portalban, village",
+                "",
+                "ch:1:sloid:4547:0:15627"
+              ],
+              [
+                6.95509829,
+                46.91816051,
+                "Portalban, école",
+                "",
+                "ch:1:sloid:10187:0:1"
+              ],
+              [
+                6.96825861,
+                46.9142334,
+                "Delley, école",
+                "",
+                "ch:1:sloid:77832:0:15502"
+              ],
+              [
+                6.97292985,
+                46.91176041,
+                "Delley, En Roche",
+                "",
+                "ch:1:sloid:77831:0:15508"
+              ],
+              [
+                6.97594819,
+                46.89202145,
+                "St-Aubin FR, Le-Haut",
+                "",
+                "ch:1:sloid:77830:0:15654"
+              ],
+              [
+                6.97986484,
+                46.89000786,
+                "St-Aubin FR, église",
+                "",
+                "ch:1:sloid:4887:0:15648"
+              ],
+              [
+                6.98229029,
+                46.88754603,
+                "St-Aubin FR, bif.",
+                "",
+                "ch:1:sloid:77829:0:15650"
+              ],
+              [
+                7.01162029,
+                46.86851058,
+                "Domdidier, gare",
+                "",
+                "ch:1:sloid:77828:0:15503"
+              ],
+              [
+                7.01713594,
+                46.86619516,
+                "Domdidier, CO",
+                "",
+                "ch:1:sloid:88723:0:15693"
+              ],
+              [
+                7.03405122,
+                46.87680104,
+                "Avenches, Le Paon",
+                "",
+                "ch:1:sloid:83723:0:550237"
+              ],
+              [
+                7.04235165,
+                46.87806599,
+                "Avenches, Faubourg",
+                "",
+                "ch:1:sloid:77825:0:15520"
+              ],
+              [
+                7.05828777,
+                46.87530271,
+                "Donatyre, village",
+                "",
+                "ch:1:sloid:4886:0:15506"
+              ],
+              [
+                7.05895252,
+                46.86192643,
+                "Courtion, Moulin-Neuf",
+                "",
+                "ch:1:sloid:77823:0:15587"
+              ],
+              [
+                7.0584315,
+                46.85934045,
+                "Courtion, Oleyres bif.",
+                "",
+                "ch:1:sloid:77822:0:15608"
+              ],
+              [
+                7.06308477,
+                46.85523089,
+                "Courtion, bif.",
+                "",
+                "ch:1:sloid:4900:0:15493"
+              ],
+              [
+                7.06628277,
+                46.8517968,
+                "Misery, village",
+                "",
+                "ch:1:sloid:4864:0:15568"
+              ],
+              [
+                7.07928139,
+                46.83774485,
+                "Belfaux, Cutterwil",
+                "",
+                "ch:1:sloid:4610:0:15500"
+              ],
+              [
+                7.08318907,
+                46.83257659,
+                "Grolley, Rosière",
+                "",
+                "ch:1:sloid:94496:0:17200"
+              ],
+              [
+                7.0938341,
+                46.82606794,
+                "Belfaux, Château-du-Bois",
+                "",
+                "ch:1:sloid:4604:0:15450"
+              ],
+              [
+                7.10335624,
+                46.82246602,
+                "Belfaux, Laiterie",
+                "",
+                "ch:1:sloid:4531:0:15421"
+              ],
+              [
+                7.12324494,
+                46.81439464,
+                "Givisiez, rte du Bleuet",
+                "",
+                "ch:1:sloid:94782:0:17139"
+              ],
+              [
+                7.12735923,
+                46.81526761,
+                "Givisiez, rte Stephan",
+                "",
+                "ch:1:sloid:94781:0:17137"
+              ],
+              [
+                7.13029672,
+                46.81452989,
+                "Givisiez, Escale",
+                "",
+                "ch:1:sloid:77821:0:15510"
+              ],
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              [
+                7.14531655,
+                46.80964837,
+                "Fribourg, Vuille",
+                "C",
+                "ch:1:sloid:77820:0:15175"
+              ],
+              [
+                7.15094899,
+                46.80654954,
+                "Fribourg, Gambach",
+                "",
+                "ch:1:sloid:88351:0:15064"
+              ],
+              [
+                7.15173951,
+                46.80414537,
+                "Fribourg/Freiburg, gare/Tivoli",
+                "",
+                "ch:1:sloid:88352:0:15070"
+              ],
+              [
+                7.1509939,
+                46.80390556,
+                "Fribourg/Freiburg, gare rout.",
+                "Y",
+                "ch:1:sloid:4881:0:15267"
+              ]
+            ]
+          },
+          {
+            "id": "9288da7b4c168a186c629258",
+            "routeId": "92-544-j26-1",
+            "stops": [
+              [
+                7.01162029,
+                46.86851058,
+                "Domdidier, gare",
+                "",
+                "ch:1:sloid:77828:0:15503"
+              ],
+              [
+                7.03405122,
+                46.87680104,
+                "Avenches, Le Paon",
+                "",
+                "ch:1:sloid:83723:0:550237"
+              ],
+              [
+                7.04235165,
+                46.87806599,
+                "Avenches, Faubourg",
+                "",
+                "ch:1:sloid:77825:0:15520"
+              ],
+              [
+                7.05828777,
+                46.87530271,
+                "Donatyre, village",
+                "",
+                "ch:1:sloid:4886:0:15506"
+              ],
+              [
+                7.05895252,
+                46.86192643,
+                "Courtion, Moulin-Neuf",
+                "",
+                "ch:1:sloid:77823:0:15587"
+              ],
+              [
+                7.0584315,
+                46.85934045,
+                "Courtion, Oleyres bif.",
+                "",
+                "ch:1:sloid:77822:0:15608"
+              ],
+              [
+                7.06308477,
+                46.85523089,
+                "Courtion, bif.",
+                "",
+                "ch:1:sloid:4900:0:15493"
+              ],
+              [
+                7.06628277,
+                46.8517968,
+                "Misery, village",
+                "",
+                "ch:1:sloid:4864:0:15568"
+              ],
+              [
+                7.07928139,
+                46.83774485,
+                "Belfaux, Cutterwil",
+                "",
+                "ch:1:sloid:4610:0:15500"
+              ],
+              [
+                7.08318907,
+                46.83257659,
+                "Grolley, Rosière",
+                "",
+                "ch:1:sloid:94496:0:17200"
+              ],
+              [
+                7.0938341,
+                46.82606794,
+                "Belfaux, Château-du-Bois",
+                "",
+                "ch:1:sloid:4604:0:15450"
+              ],
+              [
+                7.10335624,
+                46.82246602,
+                "Belfaux, Laiterie",
+                "",
+                "ch:1:sloid:4531:0:15421"
+              ],
+              [
+                7.12324494,
+                46.81439464,
+                "Givisiez, rte du Bleuet",
+                "",
+                "ch:1:sloid:94782:0:17139"
+              ],
+              [
+                7.12735923,
+                46.81526761,
+                "Givisiez, rte Stephan",
+                "",
+                "ch:1:sloid:94781:0:17137"
+              ],
+              [
+                7.12953315,
+                46.81601147,
+                "Givisiez, gare",
+                "",
+                "ch:1:sloid:6640:0:18256"
+              ],
+              [
+                7.13029672,
+                46.81452989,
+                "Givisiez, Escale",
+                "",
+                "ch:1:sloid:77821:0:15510"
+              ],
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              [
+                7.14531655,
+                46.80964837,
+                "Fribourg, Vuille",
+                "C",
+                "ch:1:sloid:77820:0:15175"
+              ],
+              [
+                7.15094899,
+                46.80654954,
+                "Fribourg, Gambach",
+                "",
+                "ch:1:sloid:88351:0:15064"
+              ],
+              [
+                7.15173951,
+                46.80414537,
+                "Fribourg/Freiburg, gare/Tivoli",
+                "",
+                "ch:1:sloid:88352:0:15070"
+              ],
+              [
+                7.1509939,
+                46.80390556,
+                "Fribourg/Freiburg, gare rout.",
+                "Y",
+                "ch:1:sloid:4881:0:15267"
+              ]
+            ]
+          },
+          {
+            "id": "b863553304be697f9b1ed5fd",
+            "routeId": "92-544-j26-1",
+            "stops": [
+              [
+                7.04114791,
+                46.88457449,
+                "Avenches, gare",
+                "",
+                "ch:1:sloid:70514:0:414145"
+              ],
+              [
+                7.04235165,
+                46.87806599,
+                "Avenches, Faubourg",
+                "",
+                "ch:1:sloid:77825:0:15520"
+              ],
+              [
+                7.05828777,
+                46.87530271,
+                "Donatyre, village",
+                "",
+                "ch:1:sloid:4886:0:15506"
+              ],
+              [
+                7.05895252,
+                46.86192643,
+                "Courtion, Moulin-Neuf",
+                "",
+                "ch:1:sloid:77823:0:15587"
+              ],
+              [
+                7.0584315,
+                46.85934045,
+                "Courtion, Oleyres bif.",
+                "",
+                "ch:1:sloid:77822:0:15608"
+              ],
+              [
+                7.06308477,
+                46.85523089,
+                "Courtion, bif.",
+                "",
+                "ch:1:sloid:4900:0:15493"
+              ],
+              [
+                7.06628277,
+                46.8517968,
+                "Misery, village",
+                "",
+                "ch:1:sloid:4864:0:15568"
+              ],
+              [
+                7.07928139,
+                46.83774485,
+                "Belfaux, Cutterwil",
+                "",
+                "ch:1:sloid:4610:0:15500"
+              ],
+              [
+                7.08318907,
+                46.83257659,
+                "Grolley, Rosière",
+                "",
+                "ch:1:sloid:94496:0:17200"
+              ],
+              [
+                7.0938341,
+                46.82606794,
+                "Belfaux, Château-du-Bois",
+                "",
+                "ch:1:sloid:4604:0:15450"
+              ],
+              [
+                7.10335624,
+                46.82246602,
+                "Belfaux, Laiterie",
+                "",
+                "ch:1:sloid:4531:0:15421"
+              ],
+              [
+                7.12324494,
+                46.81439464,
+                "Givisiez, rte du Bleuet",
+                "",
+                "ch:1:sloid:94782:0:17139"
+              ],
+              [
+                7.12735923,
+                46.81526761,
+                "Givisiez, rte Stephan",
+                "",
+                "ch:1:sloid:94781:0:17137"
+              ],
+              [
+                7.12953315,
+                46.81601147,
+                "Givisiez, gare",
+                "",
+                "ch:1:sloid:6640:0:18256"
+              ],
+              [
+                7.13029672,
+                46.81452989,
+                "Givisiez, Escale",
+                "",
+                "ch:1:sloid:77821:0:15510"
+              ],
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              [
+                7.14531655,
+                46.80964837,
+                "Fribourg, Vuille",
+                "C",
+                "ch:1:sloid:77820:0:15175"
+              ],
+              [
+                7.15094899,
+                46.80654954,
+                "Fribourg, Gambach",
+                "",
+                "ch:1:sloid:88351:0:15064"
+              ],
+              [
+                7.15173951,
+                46.80414537,
+                "Fribourg/Freiburg, gare/Tivoli",
+                "",
+                "ch:1:sloid:88352:0:15070"
+              ],
+              [
+                7.1509939,
+                46.80390556,
+                "Fribourg/Freiburg, gare rout.",
+                "Y",
+                "ch:1:sloid:4881:0:15267"
+              ]
+            ]
+          },
+          {
+            "id": "cc5c142c4aa99f991dc749d3",
+            "routeId": "92-544-j26-1",
+            "stops": [
+              [
+                6.95509829,
+                46.91816051,
+                "Portalban, école",
+                "",
+                "ch:1:sloid:10187:0:1"
+              ],
+              [
+                6.95614932,
+                46.91776167,
+                "Portalban, village",
+                "",
+                "ch:1:sloid:4547:0:15626"
+              ],
+              [
+                6.95332861,
+                46.91023851,
+                "Portalban, Dessus",
+                "",
+                "ch:1:sloid:77833:0:15628"
+              ],
+              [
+                6.94598039,
+                46.90259154,
+                "Gletterens, Fin de Gros Bois",
+                "",
+                "ch:1:sloid:4001:0:17390"
+              ],
+              [
+                6.93847047,
+                46.89523812,
+                "Gletterens, village",
+                "",
+                "ch:1:sloid:77834:0:15540"
+              ],
+              [
+                6.93077191,
+                46.90445121,
+                "Gletterens, lac",
+                "",
+                "ch:1:sloid:95536:0:16548"
+              ]
+            ]
+          },
+          {
+            "id": "dcb98776aa46bdbad7de297d",
+            "routeId": "92-544-j26-1",
+            "stops": [
+              [
+                7.01713594,
+                46.86619516,
+                "Domdidier, CO",
+                "",
+                "ch:1:sloid:88723:0:15693"
+              ],
+              [
+                7.01162029,
+                46.86851058,
+                "Domdidier, gare",
+                "",
+                "ch:1:sloid:77828:0:15503"
+              ],
+              [
+                6.98229029,
+                46.88754603,
+                "St-Aubin FR, bif.",
+                "",
+                "ch:1:sloid:77829:0:15650"
+              ],
+              [
+                6.97986484,
+                46.89000786,
+                "St-Aubin FR, église",
+                "",
+                "ch:1:sloid:4887:0:15648"
+              ],
+              [
+                6.97600209,
+                46.89216878,
+                "St-Aubin FR, Le-Haut",
+                "",
+                "ch:1:sloid:77830:0:15653"
+              ],
+              [
+                6.97294781,
+                46.91191382,
+                "Delley, En Roche",
+                "",
+                "ch:1:sloid:77831:0:15507"
+              ],
+              [
+                6.96848319,
+                46.91438681,
+                "Delley, école",
+                "",
+                "ch:1:sloid:77832:0:15501"
+              ],
+              [
+                6.95614932,
+                46.91776167,
+                "Portalban, village",
+                "",
+                "ch:1:sloid:4547:0:15626"
+              ],
+              [
+                6.95332861,
+                46.91023851,
+                "Portalban, Dessus",
+                "",
+                "ch:1:sloid:77833:0:15628"
+              ],
+              [
+                6.94598039,
+                46.90259154,
+                "Gletterens, Fin de Gros Bois",
+                "",
+                "ch:1:sloid:4001:0:17390"
+              ],
+              [
+                6.93847047,
+                46.89523812,
+                "Gletterens, village",
+                "",
+                "ch:1:sloid:77834:0:15540"
+              ],
+              [
+                6.93077191,
+                46.90445121,
+                "Gletterens, lac",
+                "",
+                "ch:1:sloid:95536:0:16548"
+              ]
+            ]
+          },
+          {
+            "id": "ddca7a478056ccf4007cc038",
+            "routeId": "92-544-j26-1",
+            "stops": [
+              [
+                7.15082322,
+                46.80385022,
+                "Fribourg/Freiburg, gare rout.",
+                "V",
+                "ch:1:sloid:4881:0:15248"
+              ],
+              [
+                7.15119153,
+                46.8062667,
+                "Fribourg, Gambach",
+                "",
+                "ch:1:sloid:88351:0:15065"
+              ],
+              [
+                7.14676284,
+                46.80939014,
+                "Fribourg, Vuille",
+                "A",
+                "ch:1:sloid:77820:0:15173"
+              ],
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              [
+                7.1312669,
+                46.81375527,
+                "Givisiez, Escale",
+                "",
+                "ch:1:sloid:77821:0:15509"
+              ],
+              [
+                7.12953315,
+                46.81601147,
+                "Givisiez, gare",
+                "",
+                "ch:1:sloid:6640:0:18256"
+              ],
+              [
+                7.12690109,
+                46.81523072,
+                "Givisiez, rte Stephan",
+                "",
+                "ch:1:sloid:94781:0:17136"
+              ],
+              [
+                7.12174476,
+                46.81421635,
+                "Givisiez, rte du Bleuet",
+                "",
+                "ch:1:sloid:94782:0:17138"
+              ],
+              [
+                7.10026604,
+                46.82328354,
+                "Belfaux, Arsenal",
+                "",
+                "ch:1:sloid:7595:0:19378"
+              ],
+              [
+                7.09301664,
+                46.82662111,
+                "Belfaux, Château-du-Bois",
+                "",
+                "ch:1:sloid:4604:0:15449"
+              ],
+              [
+                7.08312618,
+                46.83276711,
+                "Grolley, Rosière",
+                "",
+                "ch:1:sloid:94496:0:17201"
+              ],
+              [
+                7.07968564,
+                46.83766497,
+                "Belfaux, Cutterwil",
+                "",
+                "ch:1:sloid:4610:0:15499"
+              ],
+              [
+                7.0668038,
+                46.85155721,
+                "Misery, village",
+                "",
+                "ch:1:sloid:4864:0:15567"
+              ],
+              [
+                7.06268951,
+                46.85601106,
+                "Courtion, bif.",
+                "",
+                "ch:1:sloid:4900:0:15492"
+              ],
+              [
+                7.05851234,
+                46.85929746,
+                "Courtion, Oleyres bif.",
+                "",
+                "ch:1:sloid:77822:0:15607"
+              ],
+              [
+                7.05905133,
+                46.86197557,
+                "Courtion, Moulin-Neuf",
+                "",
+                "ch:1:sloid:77823:0:15586"
+              ],
+              [
+                7.05798234,
+                46.87572642,
+                "Donatyre, village",
+                "",
+                "ch:1:sloid:4886:0:15505"
+              ],
+              [
+                7.04221691,
+                46.87829933,
+                "Avenches, Faubourg",
+                "",
+                "ch:1:sloid:77825:0:15519"
+              ],
+              [
+                7.04114791,
+                46.88457449,
+                "Avenches, gare",
+                "",
+                "ch:1:sloid:70514:0:414145"
+              ],
+              [
+                7.03296426,
+                46.87645717,
+                "Avenches, Le Paon",
+                "",
+                "ch:1:sloid:83723:0:625923"
+              ],
+              [
+                7.01713594,
+                46.86619516,
+                "Domdidier, CO",
+                "",
+                "ch:1:sloid:88723:0:15693"
+              ],
+              [
+                7.01162029,
+                46.86851058,
+                "Domdidier, gare",
+                "",
+                "ch:1:sloid:77828:0:15503"
+              ],
+              [
+                6.98229029,
+                46.88754603,
+                "St-Aubin FR, bif.",
+                "",
+                "ch:1:sloid:77829:0:15650"
+              ],
+              [
+                6.97986484,
+                46.89000786,
+                "St-Aubin FR, église",
+                "",
+                "ch:1:sloid:4887:0:15648"
+              ],
+              [
+                6.97600209,
+                46.89216878,
+                "St-Aubin FR, Le-Haut",
+                "",
+                "ch:1:sloid:77830:0:15653"
+              ],
+              [
+                6.97294781,
+                46.91191382,
+                "Delley, En Roche",
+                "",
+                "ch:1:sloid:77831:0:15507"
+              ],
+              [
+                6.96848319,
+                46.91438681,
+                "Delley, école",
+                "",
+                "ch:1:sloid:77832:0:15501"
+              ],
+              [
+                6.95509829,
+                46.91816051,
+                "Portalban, école",
+                "",
+                "ch:1:sloid:10187:0:1"
+              ],
+              [
+                6.95614932,
+                46.91776167,
+                "Portalban, village",
+                "",
+                "ch:1:sloid:4547:0:15626"
+              ],
+              [
+                6.95332861,
+                46.91023851,
+                "Portalban, Dessus",
+                "",
+                "ch:1:sloid:77833:0:15628"
+              ],
+              [
+                6.94598039,
+                46.90259154,
+                "Gletterens, Fin de Gros Bois",
+                "",
+                "ch:1:sloid:4001:0:17390"
+              ],
+              [
+                6.93847047,
+                46.89523812,
+                "Gletterens, village",
+                "",
+                "ch:1:sloid:77834:0:15540"
+              ],
+              [
+                6.93077191,
+                46.90445121,
+                "Gletterens, lac",
+                "",
+                "ch:1:sloid:95536:0:16548"
+              ]
+            ]
+          },
+          {
+            "id": "e392993b17c4c1d6e83bbfc4",
+            "routeId": "92-544-j26-1",
+            "stops": [
+              [
+                7.15082322,
+                46.80385022,
+                "Fribourg/Freiburg, gare rout.",
+                "V",
+                "ch:1:sloid:4881:0:15248"
+              ],
+              [
+                7.15119153,
+                46.8062667,
+                "Fribourg, Gambach",
+                "",
+                "ch:1:sloid:88351:0:15065"
+              ],
+              [
+                7.14676284,
+                46.80939014,
+                "Fribourg, Vuille",
+                "A",
+                "ch:1:sloid:77820:0:15173"
+              ],
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              [
+                7.1312669,
+                46.81375527,
+                "Givisiez, Escale",
+                "",
+                "ch:1:sloid:77821:0:15509"
+              ],
+              [
+                7.12953315,
+                46.81601147,
+                "Givisiez, gare",
+                "",
+                "ch:1:sloid:6640:0:18256"
+              ],
+              [
+                7.12690109,
+                46.81523072,
+                "Givisiez, rte Stephan",
+                "",
+                "ch:1:sloid:94781:0:17136"
+              ],
+              [
+                7.12174476,
+                46.81421635,
+                "Givisiez, rte du Bleuet",
+                "",
+                "ch:1:sloid:94782:0:17138"
+              ],
+              [
+                7.10026604,
+                46.82328354,
+                "Belfaux, Arsenal",
+                "",
+                "ch:1:sloid:7595:0:19378"
+              ],
+              [
+                7.09301664,
+                46.82662111,
+                "Belfaux, Château-du-Bois",
+                "",
+                "ch:1:sloid:4604:0:15449"
+              ],
+              [
+                7.08312618,
+                46.83276711,
+                "Grolley, Rosière",
+                "",
+                "ch:1:sloid:94496:0:17201"
+              ],
+              [
+                7.07968564,
+                46.83766497,
+                "Belfaux, Cutterwil",
+                "",
+                "ch:1:sloid:4610:0:15499"
+              ],
+              [
+                7.0668038,
+                46.85155721,
+                "Misery, village",
+                "",
+                "ch:1:sloid:4864:0:15567"
+              ],
+              [
+                7.06268951,
+                46.85601106,
+                "Courtion, bif.",
+                "",
+                "ch:1:sloid:4900:0:15492"
+              ],
+              [
+                7.05851234,
+                46.85929746,
+                "Courtion, Oleyres bif.",
+                "",
+                "ch:1:sloid:77822:0:15607"
+              ],
+              [
+                7.05905133,
+                46.86197557,
+                "Courtion, Moulin-Neuf",
+                "",
+                "ch:1:sloid:77823:0:15586"
+              ],
+              [
+                7.05798234,
+                46.87572642,
+                "Donatyre, village",
+                "",
+                "ch:1:sloid:4886:0:15505"
+              ],
+              [
+                7.04221691,
+                46.87829933,
+                "Avenches, Faubourg",
+                "",
+                "ch:1:sloid:77825:0:15519"
+              ],
+              [
+                7.04114791,
+                46.88457449,
+                "Avenches, gare",
+                "",
+                "ch:1:sloid:70514:0:414145"
+              ],
+              [
+                7.03296426,
+                46.87645717,
+                "Avenches, Le Paon",
+                "",
+                "ch:1:sloid:83723:0:625923"
+              ],
+              [
+                7.01713594,
+                46.86619516,
+                "Domdidier, CO",
+                "",
+                "ch:1:sloid:88723:0:15693"
+              ],
+              [
+                7.01162029,
+                46.86851058,
+                "Domdidier, gare",
+                "",
+                "ch:1:sloid:77828:0:15503"
+              ],
+              [
+                6.98229029,
+                46.88754603,
+                "St-Aubin FR, bif.",
+                "",
+                "ch:1:sloid:77829:0:15650"
+              ],
+              [
+                6.97986484,
+                46.89000786,
+                "St-Aubin FR, église",
+                "",
+                "ch:1:sloid:4887:0:15648"
+              ],
+              [
+                6.97600209,
+                46.89216878,
+                "St-Aubin FR, Le-Haut",
+                "",
+                "ch:1:sloid:77830:0:15653"
+              ],
+              [
+                6.97294781,
+                46.91191382,
+                "Delley, En Roche",
+                "",
+                "ch:1:sloid:77831:0:15507"
+              ],
+              [
+                6.96848319,
+                46.91438681,
+                "Delley, école",
+                "",
+                "ch:1:sloid:77832:0:15501"
+              ],
+              [
+                6.95614932,
+                46.91776167,
+                "Portalban, village",
+                "",
+                "ch:1:sloid:4547:0:15626"
+              ],
+              [
+                6.95332861,
+                46.91023851,
+                "Portalban, Dessus",
+                "",
+                "ch:1:sloid:77833:0:15628"
+              ],
+              [
+                6.94598039,
+                46.90259154,
+                "Gletterens, Fin de Gros Bois",
+                "",
+                "ch:1:sloid:4001:0:17390"
+              ],
+              [
+                6.93847047,
+                46.89523812,
+                "Gletterens, village",
+                "",
+                "ch:1:sloid:77834:0:15540"
+              ]
+            ]
+          },
+          {
+            "id": "f78cdc83bba5c7613eab77cd",
+            "routeId": "92-544-j26-1",
+            "stops": [
+              [
+                6.93077191,
+                46.90445121,
+                "Gletterens, lac",
+                "",
+                "ch:1:sloid:95536:0:16548"
+              ],
+              [
+                6.93847047,
+                46.89523812,
+                "Gletterens, village",
+                "",
+                "ch:1:sloid:77834:0:15540"
+              ],
+              [
+                6.94605225,
+                46.90276339,
+                "Gletterens, Fin de Gros Bois",
+                "",
+                "ch:1:sloid:4001:0:17389"
+              ],
+              [
+                6.95345437,
+                46.91033056,
+                "Portalban, Dessus",
+                "",
+                "ch:1:sloid:77833:0:15629"
+              ],
+              [
+                6.95611339,
+                46.91784758,
+                "Portalban, village",
+                "",
+                "ch:1:sloid:4547:0:15627"
+              ],
+              [
+                6.96825861,
+                46.9142334,
+                "Delley, école",
+                "",
+                "ch:1:sloid:77832:0:15502"
+              ],
+              [
+                6.97292985,
+                46.91176041,
+                "Delley, En Roche",
+                "",
+                "ch:1:sloid:77831:0:15508"
+              ],
+              [
+                6.97594819,
+                46.89202145,
+                "St-Aubin FR, Le-Haut",
+                "",
+                "ch:1:sloid:77830:0:15654"
+              ],
+              [
+                6.97986484,
+                46.89000786,
+                "St-Aubin FR, église",
+                "",
+                "ch:1:sloid:4887:0:15648"
+              ],
+              [
+                6.98229029,
+                46.88754603,
+                "St-Aubin FR, bif.",
+                "",
+                "ch:1:sloid:77829:0:15650"
+              ],
+              [
+                7.01162029,
+                46.86851058,
+                "Domdidier, gare",
+                "",
+                "ch:1:sloid:77828:0:15503"
+              ],
+              [
+                7.01713594,
+                46.86619516,
+                "Domdidier, CO",
+                "",
+                "ch:1:sloid:88723:0:15693"
+              ],
+              [
+                7.03405122,
+                46.87680104,
+                "Avenches, Le Paon",
+                "",
+                "ch:1:sloid:83723:0:550237"
+              ],
+              [
+                7.04114791,
+                46.88457449,
+                "Avenches, gare",
+                "",
+                "ch:1:sloid:70514:0:414145"
+              ],
+              [
+                7.04235165,
+                46.87806599,
+                "Avenches, Faubourg",
+                "",
+                "ch:1:sloid:77825:0:15520"
+              ],
+              [
+                7.05828777,
+                46.87530271,
+                "Donatyre, village",
+                "",
+                "ch:1:sloid:4886:0:15506"
+              ],
+              [
+                7.05895252,
+                46.86192643,
+                "Courtion, Moulin-Neuf",
+                "",
+                "ch:1:sloid:77823:0:15587"
+              ],
+              [
+                7.0584315,
+                46.85934045,
+                "Courtion, Oleyres bif.",
+                "",
+                "ch:1:sloid:77822:0:15608"
+              ],
+              [
+                7.06308477,
+                46.85523089,
+                "Courtion, bif.",
+                "",
+                "ch:1:sloid:4900:0:15493"
+              ],
+              [
+                7.06628277,
+                46.8517968,
+                "Misery, village",
+                "",
+                "ch:1:sloid:4864:0:15568"
+              ],
+              [
+                7.07928139,
+                46.83774485,
+                "Belfaux, Cutterwil",
+                "",
+                "ch:1:sloid:4610:0:15500"
+              ],
+              [
+                7.08318907,
+                46.83257659,
+                "Grolley, Rosière",
+                "",
+                "ch:1:sloid:94496:0:17200"
+              ],
+              [
+                7.0938341,
+                46.82606794,
+                "Belfaux, Château-du-Bois",
+                "",
+                "ch:1:sloid:4604:0:15450"
+              ],
+              [
+                7.10335624,
+                46.82246602,
+                "Belfaux, Laiterie",
+                "",
+                "ch:1:sloid:4531:0:15421"
+              ],
+              [
+                7.12324494,
+                46.81439464,
+                "Givisiez, rte du Bleuet",
+                "",
+                "ch:1:sloid:94782:0:17139"
+              ],
+              [
+                7.12735923,
+                46.81526761,
+                "Givisiez, rte Stephan",
+                "",
+                "ch:1:sloid:94781:0:17137"
+              ],
+              [
+                7.12953315,
+                46.81601147,
+                "Givisiez, gare",
+                "",
+                "ch:1:sloid:6640:0:18256"
+              ],
+              [
+                7.13029672,
+                46.81452989,
+                "Givisiez, Escale",
+                "",
+                "ch:1:sloid:77821:0:15510"
+              ],
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              [
+                7.14531655,
+                46.80964837,
+                "Fribourg, Vuille",
+                "C",
+                "ch:1:sloid:77820:0:15175"
+              ],
+              [
+                7.15094899,
+                46.80654954,
+                "Fribourg, Gambach",
+                "",
+                "ch:1:sloid:88351:0:15064"
+              ],
+              [
+                7.15173951,
+                46.80414537,
+                "Fribourg/Freiburg, gare/Tivoli",
+                "",
+                "ch:1:sloid:88352:0:15070"
+              ],
+              [
+                7.1509939,
+                46.80390556,
+                "Fribourg/Freiburg, gare rout.",
+                "Y",
+                "ch:1:sloid:4881:0:15267"
+              ]
+            ]
+          }
+        ],
+        "pairs": [
+          {
+            "stops": [
+              [
+                6.95509829,
+                46.91816051,
+                "Portalban, école",
+                "",
+                "ch:1:sloid:10187:0:1"
+              ],
+              [
+                6.95614932,
+                46.91776167,
+                "Portalban, village",
+                "",
+                "ch:1:sloid:4547:0:15626"
+              ]
+            ]
+          },
+          {
+            "stops": [
+              [
+                6.95611339,
+                46.91784758,
+                "Portalban, village",
+                "",
+                "ch:1:sloid:4547:0:15627"
+              ],
+              [
+                6.95509829,
+                46.91816051,
+                "Portalban, école",
+                "",
+                "ch:1:sloid:10187:0:1"
+              ]
+            ]
+          }
+        ],
+        "maximumAttachmentMetres": 10,
+        "maximumLengthMetres": 130,
+        "admission": "Only the two original school/village directed pairs in all complete TPF 544 contexts. Reconstruct Chemin du Four, Chemin du Ruisseau and La Râpe from three complete named OSM street ways, with exact source-node joins and every intervening vertex. Project unchanged school/village coordinates onto their specific streets with at most 10 m connectors and 90–130 m total geometry. Preserve all differing primary matcher paths. This is road-centreline inference, not surveyed platform access or a physical turnaround.",
+        "exclusions": [
+          "Other routes, changed full contexts or validation dates",
+          "Generic tolerance for differing matcher paths",
+          "Merging original platform identities or coordinates",
+          "Invented school turnaround, driveway access or bus-lane claims",
+          "Certifying absence of restrictions outside the retained response"
+        ]
+      },
       "boltigen": {
         "schemaVersion": 1,
         "id": "boltigen-corroborated-hairpins",
@@ -5081,6 +9233,10 @@
         "boltigen": {
           "file": "data/fribourg-boltigen-policy.json",
           "sha256": "f4faa42d9ed6bb44f74600ea6334fb3189b1b91f8b918da667779c5b99a0f01f"
+        },
+        "portalban": {
+          "file": "data/fribourg-portalban-policy.json",
+          "sha256": "40c1ed42c0a592931eebbce280b9b32b14b45afa110896b9bddafdb3f714d786"
         }
       },
       "completePatternsTested": 614
@@ -6123,10 +10279,10 @@
     "key": "GTFS route identity + direction_id + full ordered original platform IDs, including repeats and out-of-canton calls"
   },
   "routesByStatus": {
-    "admitted-all-dated-trips": 120,
+    "admitted-all-dated-trips": 121,
     "inactive-on-validation-dates": 48,
     "excluded": 19,
-    "partially-admitted": 20
+    "partially-admitted": 19
   },
   "districts": [
     {
@@ -6489,7 +10645,7 @@
       "sourceHashes": {
         "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
         "source": "e8523af34fcedca7f8b0cbe495446ff93a75d8563c62b243da942c39c5243f47",
-        "crosswalk": "8e49a9db9282db899da1dc1545ef4c25ecba6bec8ca1f6738e1b3802890cca94",
+        "crosswalk": "01c9c1e429e565517c554b8fb1a86e53814625daa3072dcc878f5078d8ec993f",
         "provenance": "7d23e09a35768de1cfd598a7ca824ac7c93d03242ff8955e70ca778213549086",
         "roads": "87f4d4be2662ff0982cea837e95f73863096d4bc37bd19ecc09ea88e064c465e",
         "montCarmel": "a9b44b222fdf7b2c9dc26899c350520a8de3945d06a13bff75a357b6133a3b27",
@@ -6497,6 +10653,7 @@
         "laupen": "bbf2165db04d73f6d50ac84d795ec411ddf934bb46115e30f34a2ec8023b04f4",
         "broc": "a707ab9a3464d448a427c7cf80ce554e3d9644ae40006043488a20117dad7a0f",
         "boltigen": "f4faa42d9ed6bb44f74600ea6334fb3189b1b91f8b918da667779c5b99a0f01f",
+        "portalban": "40c1ed42c0a592931eebbce280b9b32b14b45afa110896b9bddafdb3f714d786",
         "rail": "7ea92c8c1120a49e9497ec3ae6d7a0d2fc2d761e8b19d790191ed7a6c0212c79",
         "railInputs": "434a02eb6906bb141a00ba6b7c77622767b78262617326d6aed56fa683cd8046",
         "avry": "8d20a93732eea409915103c410816075ac428693b7dc8fcb6dc37c1f97849e19",
@@ -6505,23 +10662,23 @@
       },
       "coverage": {
         "trips": 8556,
-        "admittedTrips": 5540,
+        "admittedTrips": 5552,
         "scheduledTrips": 5812,
         "representativeHeadwayTrips": 2744,
-        "admittedScheduledTrips": 5540,
+        "admittedScheduledTrips": 5552,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 89328,
-        "matchedScheduledSegmentOccurrences": 87494,
+        "matchedScheduledSegmentOccurrences": 87506,
         "segmentOccurrences": 92072,
-        "matchedSegmentOccurrences": 87494,
-        "admittedSegmentOccurrences": 85195,
+        "matchedSegmentOccurrences": 87506,
+        "admittedSegmentOccurrences": 85451,
         "directedPairs": 4509,
-        "matchedDirectedPairs": 4211,
+        "matchedDirectedPairs": 4213,
         "patterns": 849,
-        "completePatterns": 731,
-        "admittedPatterns": 731,
+        "completePatterns": 740,
+        "admittedPatterns": 740,
         "excludedTrips": {
-          "incomplete-directed-pattern": 151,
+          "incomplete-directed-pattern": 139,
           "no-verified-operator-line-crosswalk": 2856,
           "provisional-boundary-membership": 9
         }
@@ -6827,23 +10984,23 @@
           "id": "834:bus",
           "agency": "Service d'automobiles TPF",
           "trips": 3918,
-          "admittedTrips": 3853,
+          "admittedTrips": 3865,
           "scheduledTrips": 3918,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 3853,
+          "admittedScheduledTrips": 3865,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 65387,
-          "matchedScheduledSegmentOccurrences": 65319,
+          "matchedScheduledSegmentOccurrences": 65331,
           "segmentOccurrences": 65387,
-          "matchedSegmentOccurrences": 65319,
-          "admittedSegmentOccurrences": 64069,
+          "matchedSegmentOccurrences": 65331,
+          "admittedSegmentOccurrences": 64325,
           "directedPairs": 2555,
-          "matchedDirectedPairs": 2543,
+          "matchedDirectedPairs": 2545,
           "patterns": 396,
-          "completePatterns": 365,
-          "admittedPatterns": 365,
+          "completePatterns": 374,
+          "admittedPatterns": 374,
           "excludedTrips": {
-            "incomplete-directed-pattern": 65
+            "incomplete-directed-pattern": 53
           }
         },
         {
@@ -6869,8 +11026,8 @@
         }
       ],
       "timing": {
-        "zeroDurationSegmentOccurrences": 6005,
-        "zeroDurationOver100m": 6001,
+        "zeroDurationSegmentOccurrences": 6016,
+        "zeroDurationOver100m": 6012,
         "maximumPositiveDurationSpeedKmh": 144.56527036688541,
         "note": "Original GTFS times retained, including minute-rounded equal timestamps. Zero-duration segments are not speed observations and no artificial travel time is invented."
       },
@@ -6987,11 +11144,11 @@
           }
         },
         "patternsTestedAcrossBothDates": 614,
-        "newlyAdmittedTrips": 2302,
+        "newlyAdmittedTrips": 2314,
         "lostAdmittedTrips": 0,
-        "matchedDirectedPairs": 543,
-        "matchedSegmentOccurrences": 6528,
-        "admittedSegmentOccurrences": 6124
+        "matchedDirectedPairs": 545,
+        "matchedSegmentOccurrences": 6540,
+        "admittedSegmentOccurrences": 6136
       },
       "railEffect": {
         "patternsTestedAcrossBothDates": 412,
@@ -7004,10 +11161,6 @@
         "reviewedJourneys": 46
       },
       "pairFailures": {
-        "collapsed-path": {
-          "directedPairs": 2,
-          "segmentOccurrences": 12
-        },
         "endpoint-gap": {
           "directedPairs": 22,
           "segmentOccurrences": 133
@@ -7032,12 +11185,12 @@
       },
       "payload": {
         "manifest": {
-          "bytes": 6345564,
-          "gzipBytes": 1518168
+          "bytes": 6398763,
+          "gzipBytes": 1523560
         },
         "morning": {
-          "trips": 926,
-          "gzipBytes": 1629536
+          "trips": 929,
+          "gzipBytes": 1635250
         },
         "chunks": [
           {
@@ -7047,8 +11200,8 @@
             "path": "day-chunks/00-02.json",
             "tripCount": 97,
             "bytes": 84457,
-            "sha256": "b568bce65df531aba9cda7dd8c4c4c8e05472b919e7f8d25f1fd591f319a6bc7",
-            "gzipBytes": 14993
+            "sha256": "4f3e64573782f7b8b2e9cbe2bc22f887d8f5e3206de5a4c115733052a579a692",
+            "gzipBytes": 14994
           },
           {
             "id": "02-04",
@@ -7067,68 +11220,68 @@
             "path": "day-chunks/04-06.json",
             "tripCount": 235,
             "bytes": 227331,
-            "sha256": "a71f4639659b7392b407280dfffe2d3edd6f9d99693b64a930abef3df8662df5",
-            "gzipBytes": 36092
+            "sha256": "054146eea30a69a6f9861e4bc23a3eaba039ab27e9bcf5f608b3f0952fd21939",
+            "gzipBytes": 36099
           },
           {
             "id": "06-08",
             "windowStart": 21600,
             "windowEnd": 28800,
             "path": "day-chunks/06-08.json",
-            "tripCount": 925,
-            "bytes": 873287,
-            "sha256": "96df9de98cddb01f1e4bbbc4ee7d93ac573d1b7e3a7f95bf6780d21813515535",
-            "gzipBytes": 111871
+            "tripCount": 928,
+            "bytes": 877781,
+            "sha256": "f4a7f2d9e32037ecc6eb4d96e76b64fab4acbaaed9238ca30a44a5aed4c15bf3",
+            "gzipBytes": 112501
           },
           {
             "id": "08-10",
             "windowStart": 28800,
             "windowEnd": 36000,
             "path": "day-chunks/08-10.json",
-            "tripCount": 732,
-            "bytes": 722693,
-            "sha256": "c4f07d7d731be37d597d1964b07b7240526da70f6e866efb74632fa262fa96f3",
-            "gzipBytes": 94966
+            "tripCount": 734,
+            "bytes": 725762,
+            "sha256": "2030bf474fdb4eec9c4f619961f950659c121fb83f760015d9bc2f0d4a5d6b4a",
+            "gzipBytes": 95331
           },
           {
             "id": "10-12",
             "windowStart": 36000,
             "windowEnd": 43200,
             "path": "day-chunks/10-12.json",
-            "tripCount": 702,
-            "bytes": 697066,
-            "sha256": "89408e79df774ddfb7aa57897538560dcf97b28bd24d38c1baf947b56a320bf3",
-            "gzipBytes": 91809
+            "tripCount": 707,
+            "bytes": 703578,
+            "sha256": "0ea7d28a7c77e6e764c0afc2c2b329a58893a3c2ef47da4646706ccc3dc78cd6",
+            "gzipBytes": 92492
           },
           {
             "id": "12-14",
             "windowStart": 43200,
             "windowEnd": 50400,
             "path": "day-chunks/12-14.json",
-            "tripCount": 833,
-            "bytes": 798595,
-            "sha256": "7a9c568b7f69869fbb5943c701bd9b45bf0dfdfe402d62a5a2e36f7b1b74d0e9",
-            "gzipBytes": 104428
+            "tripCount": 837,
+            "bytes": 802743,
+            "sha256": "357c8841093abca76acdfb2df6c45787c38e3a388baed774b15425d163a28813",
+            "gzipBytes": 105018
           },
           {
             "id": "14-16",
             "windowStart": 50400,
             "windowEnd": 57600,
             "path": "day-chunks/14-16.json",
-            "tripCount": 722,
-            "bytes": 709990,
-            "sha256": "f0a65847bd5e871248191aba7b956a94851e473d0da6558f564b4c024aeff012",
-            "gzipBytes": 93389
+            "tripCount": 724,
+            "bytes": 712275,
+            "sha256": "337d00482b201fa3552c34ec44e4373c8a78afc921aaf8fd158046b021990e57",
+            "gzipBytes": 93690
           },
           {
             "id": "16-18",
             "windowStart": 57600,
             "windowEnd": 64800,
             "path": "day-chunks/16-18.json",
-            "tripCount": 931,
-            "bytes": 895935,
-            "sha256": "bb781f5a83c7a85cb47aae3497fa0adec730bac67bb4d29c3e15022661df6740",
-            "gzipBytes": 113961
+            "tripCount": 932,
+            "bytes": 897491,
+            "sha256": "a3fd66650e4e1dae9f51036f5b234309ca8bb77da91ca68d4cc7c3e137b8c82f",
+            "gzipBytes": 114179
           },
           {
             "id": "18-20",
@@ -7137,8 +11290,8 @@
             "path": "day-chunks/18-20.json",
             "tripCount": 848,
             "bytes": 821885,
-            "sha256": "2115c4541cd5c60223b843602e1950a32f3951ef8a92409be980f343342b8bde",
-            "gzipBytes": 105139
+            "sha256": "031c60ac692850027fc135228f773b51cd6cfbc4586d9136f3c54d9f41561850",
+            "gzipBytes": 105112
           },
           {
             "id": "20-22",
@@ -7147,8 +11300,8 @@
             "path": "day-chunks/20-22.json",
             "tripCount": 509,
             "bytes": 505107,
-            "sha256": "2557b930c13f93d6492ab672cdaff1e3cdb76a3449ce26a95bd6175da3ef4bc9",
-            "gzipBytes": 67798
+            "sha256": "23972a3cb533bd63a99273b623bec3ac5cce0c980f69582eee21740f1661d50b",
+            "gzipBytes": 67765
           },
           {
             "id": "22-24",
@@ -7157,8 +11310,8 @@
             "path": "day-chunks/22-24.json",
             "tripCount": 389,
             "bytes": 377491,
-            "sha256": "9d213e58aa7e9492f70faa79df197f06a2c9d69ce36bb093eb01e5e4ca807104",
-            "gzipBytes": 51654
+            "sha256": "26175c56b22b1acee8d352265bd1d25ebd5e28c15137c2f88aca12f2077b37a4",
+            "gzipBytes": 51595
           }
         ]
       },
@@ -7180,7 +11333,7 @@
       "sourceHashes": {
         "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
         "source": "e8523af34fcedca7f8b0cbe495446ff93a75d8563c62b243da942c39c5243f47",
-        "crosswalk": "8e49a9db9282db899da1dc1545ef4c25ecba6bec8ca1f6738e1b3802890cca94",
+        "crosswalk": "01c9c1e429e565517c554b8fb1a86e53814625daa3072dcc878f5078d8ec993f",
         "provenance": "7d23e09a35768de1cfd598a7ca824ac7c93d03242ff8955e70ca778213549086",
         "roads": "87f4d4be2662ff0982cea837e95f73863096d4bc37bd19ecc09ea88e064c465e",
         "montCarmel": "a9b44b222fdf7b2c9dc26899c350520a8de3945d06a13bff75a357b6133a3b27",
@@ -7188,6 +11341,7 @@
         "laupen": "bbf2165db04d73f6d50ac84d795ec411ddf934bb46115e30f34a2ec8023b04f4",
         "broc": "a707ab9a3464d448a427c7cf80ce554e3d9644ae40006043488a20117dad7a0f",
         "boltigen": "f4faa42d9ed6bb44f74600ea6334fb3189b1b91f8b918da667779c5b99a0f01f",
+        "portalban": "40c1ed42c0a592931eebbce280b9b32b14b45afa110896b9bddafdb3f714d786",
         "rail": "7ea92c8c1120a49e9497ec3ae6d7a0d2fc2d761e8b19d790191ed7a6c0212c79",
         "railInputs": "434a02eb6906bb141a00ba6b7c77622767b78262617326d6aed56fa683cd8046",
         "avry": "8d20a93732eea409915103c410816075ac428693b7dc8fcb6dc37c1f97849e19",
@@ -7711,12 +11865,12 @@
       },
       "payload": {
         "manifest": {
-          "bytes": 6138176,
-          "gzipBytes": 1510291
+          "bytes": 6186220,
+          "gzipBytes": 1514291
         },
         "morning": {
           "trips": 489,
-          "gzipBytes": 1575240
+          "gzipBytes": 1578980
         },
         "chunks": [
           {

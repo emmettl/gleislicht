@@ -115,7 +115,7 @@ Generated from the [Fribourg audit](FRIBOURG-STUDY.md). Every one of the 207 ann
 | 834 | 520 | 92-520-j26-1 | bus | See | 87 | 12/12; 4/4 | 0/0; 0/0 | All dated trips admitted |
 | 834 | 530 | 92-530-j26-1 | bus | See | 88 | 27/27; 4/4 | 24/24; 2/2 | All dated trips admitted |
 | 834 | 542 | 92-542-A-j26-1 | bus | La Sarine | 94 | 16/16; 2/2 | 0/0; 0/0 | All dated trips admitted |
-| 834 | 544 | 92-544-j26-1 | bus | La Broye, La Sarine, See | 96 | 40/52; 12/21 | 34/34; 4/4 | Partially admitted |
+| 834 | 544 | 92-544-j26-1 | bus | La Broye, La Sarine, See | 96 | 52/52; 21/21 | 34/34; 4/4 | All dated trips admitted |
 | 834 | 545 | 92-545-j26-1 | bus | La Sarine, See | 97 | 34/34; 3/3 | 24/24; 2/2 | All dated trips admitted |
 | 834 | 546 | 92-546-j26-1 | bus | See | 98 | 14/14; 2/2 | 0/0; 0/0 | All dated trips admitted |
 | 834 | 548 | 92-548-j26-1 | bus | See | 100 | 14/14; 5/5 | 0/0; 0/0 | All dated trips admitted |

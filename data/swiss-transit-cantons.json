@@ -366,7 +366,7 @@
           "2026-09-06"
         ],
         "admittedTrips": [
-          5540,
+          5552,
           3789
         ],
         "publicRedistributionCleared": true,
@@ -382,7 +382,8 @@
         "jongnyReview": "data/fribourg-jongny-policy.json",
         "laupenReview": "data/fribourg-laupen-policy.json",
         "brocReview": "data/fribourg-broc-policy.json",
-        "boltigenReview": "data/fribourg-boltigen-policy.json"
+        "boltigenReview": "data/fribourg-boltigen-policy.json",
+        "portalbanReview": "data/fribourg-portalban-policy.json"
       }
     },
     {

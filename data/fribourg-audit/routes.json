@@ -10178,27 +10178,25 @@
       {
         "date": "2026-09-04",
         "trips": 52,
-        "admittedTrips": 40,
+        "admittedTrips": 52,
         "scheduledTrips": 52,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 40,
+        "admittedScheduledTrips": 52,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 1439,
-        "matchedScheduledSegmentOccurrences": 1427,
+        "matchedScheduledSegmentOccurrences": 1439,
         "segmentOccurrences": 1439,
-        "matchedSegmentOccurrences": 1427,
-        "admittedSegmentOccurrences": 1183,
+        "matchedSegmentOccurrences": 1439,
+        "admittedSegmentOccurrences": 1439,
         "directedPairs": 79,
-        "matchedDirectedPairs": 77,
+        "matchedDirectedPairs": 79,
         "patterns": 21,
-        "completePatterns": 12,
-        "admittedPatterns": 12,
-        "excludedTrips": {
-          "incomplete-directed-pattern": 12
-        },
-        "admittedRoadSegmentOccurrences": 6,
+        "completePatterns": 21,
+        "admittedPatterns": 21,
+        "excludedTrips": {},
+        "admittedRoadSegmentOccurrences": 18,
         "admittedRailSegmentOccurrences": 0,
-        "admittedOfficialSegmentOccurrences": 1177
+        "admittedOfficialSegmentOccurrences": 1421
       },
       {
         "date": "2026-09-06",
@@ -10224,7 +10222,7 @@
         "admittedOfficialSegmentOccurrences": 1041
       }
     ],
-    "status": "partially-admitted"
+    "status": "admitted-all-dated-trips"
   },
   {
     "id": "92-545-j26-1",
