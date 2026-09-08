@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "checks": [
+    {
+      "serviceDate": "2026-09-08",
+      "trips": 8808,
+      "platforms": 1297,
+      "beforeManifestSha256": "b68667ca67619c16c2cf965e948b3e2ce9527acf94c965dd105e9af9f8bd9db6",
+      "afterManifestSha256": "51c35313267d283b3cd07dfc28c24fc11055e4417b1a296fb246a0e4e19bc82c",
+      "preservedAcceptedMovements": 148577,
+      "addedMovements": 682,
+      "unmatchedMovements": 901,
+      "improvements": {
+        "6": 293,
+        "33": 95,
+        "34": 32,
+        "S3": 82,
+        "EV": 177,
+        "S31": 3
+      },
+      "sourceCallsTimesAndBoundariesUnchanged": true,
+      "passed": true
+    },
+    {
+      "serviceDate": "2026-09-13",
+      "trips": 6163,
+      "platforms": 1197,
+      "beforeManifestSha256": "c245510b9110bfee111b8ac74d53584dd61e8ed1690269502a7796119e78b79d",
+      "afterManifestSha256": "1f940447576452468a47a3fb6d8e232724901a7953adfec72e01cd9f0d8208c0",
+      "preservedAcceptedMovements": 100850,
+      "addedMovements": 456,
+      "unmatchedMovements": 454,
+      "improvements": {
+        "6": 208,
+        "33": 72,
+        "S3": 72,
+        "EV": 104
+      },
+      "sourceCallsTimesAndBoundariesUnchanged": true,
+      "passed": true
+    }
+  ]
+}

@@ -15,6 +15,7 @@ import { coreInfrastructure, coreGeometryMatcher, coreEdgePaths, BASEL_CORE_RAIL
 import { validateBaselDownload } from './download-basel-sources.mjs'
 import { baselGate } from './audit-basel-study.mjs'
 import { roadPatternId } from './prepare-postbus-road-feed.mjs'
+import { applyReviewedBaselGeometry } from './basel-reviewed-geometry.mjs'
 
 const sha = bytes => createHash('sha256').update(bytes).digest('hex')
 const gzipBytes = value => gzipSync(JSON.stringify(value)).length
@@ -96,7 +97,7 @@ export function enrichBaselCore(raw, routes, { collections, graphs, infrastructu
   return { snapshot, decisions: [...decisions.values()], roads, initialRoads, official }
 }
 
-export async function buildBaselCore({ archive, sourceDirectory, railPath, busCachePath, supplementalBusCachePath, diversionPolicyPath, policyPath, dates, output }) {
+export async function buildBaselCore({ archive, sourceDirectory, railPath, busCachePath, supplementalBusCachePath, diversionPolicyPath, policyPath, dates, output, reviewedGeometryPath = 'data/basel-reviewed-geometry.json' }) {
   output = resolve(output)
   assert(output !== resolve('public') && !output.startsWith(`${resolve('public')}/`), 'Basel core candidates must remain outside public/')
   const policy = await json(policyPath), catalogue = await json(join(sourceDirectory, 'sources.json'))
@@ -113,18 +114,22 @@ export async function buildBaselCore({ archive, sourceDirectory, railPath, busCa
   graphs.set('37:tram:19', baselTram19Graph(network).graph)
   const busCache = await json(busCachePath), diversionPolicy = await json(diversionPolicyPath)
   const supplementalBusCache = supplementalBusCachePath ? await json(supplementalBusCachePath) : undefined
+  const reviewedGeometry = reviewedGeometryPath ? await json(reviewedGeometryPath) : undefined
   const sourceHashes = Object.fromEntries(await Promise.all(Object.entries({ archive, rail: railPath, busCache: busCachePath,
     ...(supplementalBusCachePath ? { supplementalBusCache: supplementalBusCachePath } : {}),
+    ...(reviewedGeometryPath ? { reviewedGeometry: reviewedGeometryPath } : {}),
     diversionPolicy: diversionPolicyPath, policy: policyPath, catalogue: join(sourceDirectory, 'sources.json') }).map(async ([key, path]) => [key, sha(await readFile(path))])))
   const { routes, snapshots } = await readBaselCoreTimetables(archive, dates, policy)
   const reports = []
   for (const raw of snapshots) {
-    const { snapshot, decisions, roads, initialRoads } = enrichBaselCore(raw, routes, { collections, graphs, infrastructure, busCache, supplementalBusCache, diversionPolicy, policy })
+    const { snapshot: original, decisions, roads, initialRoads } = enrichBaselCore(raw, routes, { collections, graphs, infrastructure, busCache, supplementalBusCache, diversionPolicy, policy })
+    const { snapshot, review } = reviewedGeometry ? applyReviewedBaselGeometry(original, routes, reviewedGeometry) : { snapshot: original }
     snapshot.metadata = { ...snapshot.metadata, label: policy.label, sourceHashes, model: 'scheduled interpolation along inferred physical centrelines',
       note: 'Basel core integration candidate. Complete BVB/BLT local journeys and explicitly bounded Swiss-side regional rail. Includes preceding service-day carry-in. Rail sourceCallRange identifies contiguous retained calls. Paths represent physical corridors, not specific running tracks. Missing paths retain stop interpolation.',
       geometry: { sources: catalogue, rail: { publisher: 'Federal Office of Transport', sourceUrl: 'https://data.geo.admin.ch/ch.bav.schienennetz/schienennetz/schienennetz_2056_de.xtf', sha256: sourceHashes.rail, validOn: null, simplificationMetres: 2 },
         roadSources: [...initialRoads.roadFallback.sources, ...(supplementalBusCache ? roads.roadFallback.sources : [])], tramDiversions: { policy: diversionPolicy, reviewedSourceServiceDates: policy.geometryServiceDates },
-        railLimits: BASEL_CORE_RAIL_LIMITS, tramInfrastructureLimits: BASEL_DIVERSION_LIMITS },
+        railLimits: BASEL_CORE_RAIL_LIMITS, tramInfrastructureLimits: BASEL_DIVERSION_LIMITS,
+        ...(review ? { reviewedRepairs: { reviewedOn: review.reviewedOn, sources: review.sources, addedMovements: review.addedMovements, maximumSnapMetres: Math.max(...review.decisions.map(item => item.maximumSnapMetres)) } } : {}) },
       scope: policy,
     }
     const coverage = coreCoverage(snapshot, routes)
@@ -145,10 +150,11 @@ export async function buildBaselCore({ archive, sourceDirectory, railPath, busCa
       scope: { policy, trips: snapshot.trains.length, platforms: snapshot.stops.length, carryInTrips: snapshot.trains.filter(train => train.sourceServiceDate !== raw.metadata.serviceDate).length,
         clippedRailTrips: snapshot.trains.filter(train => train.clippedToCore).length, sourceCallSemantics: 'Every local source call retained; rail keeps contiguous in-scope source calls only, with zero-based half-open sourceCallRange and full sourceCallCount. No calendar or coordinate clipping hides intermediate calls.' },
       ...coverage, infrastructure: { ...infrastructure.provenance, decisions },
+      ...(review ? { reviewedGeometry: review } : {}),
       remainingGeometry: [...missing.values()].sort((a, b) => b.occurrences - a.occurrences), roadFallback: { initial: initialRoads.roadFallback, ...(supplementalBusCache ? { supplemental: roads.roadFallback } : {}) }, payload,
       gate: { passed: !failures.length, failures, integrationCandidateReady: !failures.length, publicationReady: false,
         reviewBoundary: 'Dated service corridors and topology reviewed for a schematic centreline display. No certification of one-way streets or individual running tracks; remaining unmatched movements are explicit.',
-        pending: ['Integrate study selection, labels/translations, sharing and civil-day refresh/recovery', 'Run desktop and phone UI checks', 'Resolve provisional bus platforms and remaining tram paths; acquire foreign rail geometry before extending the boundary'] },
+        pending: ['Validate the application release separately from this data candidate', 'Resolve remaining replacement-bus and tram paths; acquire foreign rail geometry before extending the boundary'] },
     }
     const destination = join(output, raw.metadata.serviceDate)
     await mkdir(destination, { recursive: true })

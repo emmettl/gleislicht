@@ -11,6 +11,7 @@ test('Basel loads on selection, searches rail and foreign stops, seeks and share
   await expect(page.locator('.network-card .between')).toContainText('Full day')
   await expect(page.locator('.scrubber input')).toHaveAttribute('max', '86400')
   await expect(page.getByRole('link', { name: '© OpenStreetMap contributors · ODbL', exact: true })).toHaveAttribute('href', /openstreetmap.org/)
+  await expect(page.getByRole('link', { name: '© swisstopo', exact: true })).toHaveAttribute('href', /swisstopo.admin.ch/)
   const search = page.locator('.train-search input[type=search]')
   expect((await search.boundingBox())!.width).toBeGreaterThan(150)
   await search.fill('S3')

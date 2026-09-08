@@ -7,6 +7,7 @@
     "rail": "2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
     "busCache": "89b0b21422331830e9ffbc4f7ddbab19ac03e1e4b1d1a204c878dfbde75877cc",
     "supplementalBusCache": "1641bd0af101b79b56242977ed9bdb8a8d79f9f5454f4d69011c25026b9a61e2",
+    "reviewedGeometry": "1475d927aad9b4047bba34da167aa7be55d57f5adc972ca3fced1667acb4b280",
     "diversionPolicy": "fe02486e50d315e196d88a56d973f15ed5466ceb340386fc4a732d07aa04d6bd",
     "policy": "b1c420dce9612e929db14b571a914e2c3a260df757fbb6bbf4f29c5c80cb1b72",
     "catalogue": "7661fac248774a03687396deb463d7a2dd80b9434b82cbdf92c79f52ecb1d6b5"
@@ -172,10 +173,10 @@
       "id": "BLT-bus",
       "mode": "bus",
       "trips": 2142,
-      "matched": 29666,
+      "matched": 29843,
       "total": 30020,
       "carryInTrips": 36,
-      "coverage": 0.9882078614257161
+      "coverage": 0.9941039307128581
     },
     {
       "id": "BLT-tram",
@@ -190,28 +191,28 @@
       "id": "BVB-bus",
       "mode": "bus",
       "trips": 2979,
-      "matched": 48528,
+      "matched": 48655,
       "total": 48655,
       "carryInTrips": 64,
-      "coverage": 0.9973897852224849
+      "coverage": 1
     },
     {
       "id": "BVB-tram",
       "mode": "tram",
       "trips": 2389,
-      "matched": 49469,
+      "matched": 49762,
       "total": 50486,
       "carryInTrips": 73,
-      "coverage": 0.9798558016083667
+      "coverage": 0.9856593907221805
     },
     {
       "id": "regional-rail",
       "mode": "rail",
       "trips": 438,
-      "matched": 2279,
+      "matched": 2364,
       "total": 2364,
       "carryInTrips": 15,
-      "coverage": 0.9640439932318104
+      "coverage": 1
     }
   ],
   "routes": [
@@ -353,10 +354,10 @@
       "mode": "rail",
       "line": "S3",
       "trips": 86,
-      "matched": 1178,
+      "matched": 1260,
       "total": 1260,
       "carryInTrips": 7,
-      "coverage": 0.9349206349206349
+      "coverage": 1
     },
     {
       "id": "91-3-j26-1",
@@ -375,10 +376,10 @@
       "mode": "rail",
       "line": "S31",
       "trips": 6,
-      "matched": 39,
+      "matched": 42,
       "total": 42,
       "carryInTrips": 0,
-      "coverage": 0.9285714285714286
+      "coverage": 1
     },
     {
       "id": "91-32-A-j26-1",
@@ -419,10 +420,10 @@
       "mode": "tram",
       "line": "6",
       "trips": 316,
-      "matched": 9608,
+      "matched": 9901,
       "total": 9975,
       "carryInTrips": 12,
-      "coverage": 0.9632080200501253
+      "coverage": 0.9925814536340852
     },
     {
       "id": "91-6-M-j26-1",
@@ -562,10 +563,10 @@
       "mode": "bus",
       "line": "33",
       "trips": 189,
-      "matched": 3643,
+      "matched": 3738,
       "total": 3738,
       "carryInTrips": 4,
-      "coverage": 0.9745853397538791
+      "coverage": 1
     },
     {
       "id": "92-34-j26-1",
@@ -573,10 +574,10 @@
       "mode": "bus",
       "line": "34",
       "trips": 280,
-      "matched": 8034,
+      "matched": 8066,
       "total": 8066,
       "carryInTrips": 7,
-      "coverage": 0.9960327299776841
+      "coverage": 1
     },
     {
       "id": "92-35-A-j26-1",
@@ -837,10 +838,10 @@
       "mode": "bus",
       "line": "EV",
       "trips": 356,
-      "matched": 5342,
+      "matched": 5519,
       "total": 5696,
       "carryInTrips": 7,
-      "coverage": 0.9378511235955056
+      "coverage": 0.9689255617977528
     },
     {
       "id": "92-A01-M-j26-1",
@@ -4114,6 +4115,282 @@
       }
     ]
   },
+  "reviewedGeometry": {
+    "reviewedOn": "2026-09-08",
+    "sources": {
+      "bsRail": {
+        "publisher": "Geodaten Kanton Basel-Stadt",
+        "url": "https://wfs.geo.bs.ch/?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=ms%3ALN_SBahnLinie&COUNT=10000&OUTPUTFORMAT=geojson&SRSNAME=EPSG%3A4326",
+        "sha256": "ae62f10275d9827460aca91d0354ebcd4fd4db5e4fab18be0a0972dc2fe5b93c",
+        "features": 15,
+        "retrievedOn": "2026-09-08",
+        "validOn": null
+      },
+      "tlm": {
+        "publisher": "swisstopo",
+        "url": "https://data.geo.admin.ch/ch.swisstopo.swisstlm3d/swisstlm3d_2026-02/swisstlm3d_2026-02_2056_5728.shp.zip",
+        "edition": "2026-02",
+        "assetHashes": {
+          "swissTLM3D_TLM_EISENBAHN.prj": "f160fd6f149ff8288abd2a59f56556d034e87a0fda3dbf463761faf4210c30f5",
+          "swissTLM3D_TLM_EISENBAHN.shx": "7aa46361d75ba26bb97615d06ee8b164328f8b6a9d97c54dee36d7e817ece78e",
+          "swissTLM3D_TLM_EISENBAHN.shp": "512a3d3300337e34f28be40e06ce0f049e32d31709c8de56e458dd48eb0eec07",
+          "swissTLM3D_TLM_EISENBAHN.dbf": "8961ca8542ff99bafa57024ab265ae00c68c16bf7fe8d6fc674c7a1e5c04bf17"
+        },
+        "attribution": "© swisstopo",
+        "sourceCrs": "EPSG:2056 / LN02",
+        "coordinateTransform": "lv95ToWgs84 from ingest-national-road-topology.mjs; source LV95 coordinates retained"
+      },
+      "osm": {
+        "publisher": "OpenStreetMap contributors",
+        "url": "https://download.geofabrik.de/europe/switzerland-260902.osm.pbf",
+        "extractDate": "2026-09-02",
+        "derivedRoadXmlSha256": "ad19d050a1068f1cb76e1192c792841456c098c66c1878aec8f95d9a1f1c514b",
+        "license": "ODbL-1.0",
+        "attributionUrl": "https://www.openstreetmap.org/copyright"
+      }
+    },
+    "evidence": {
+      "tram6": {
+        "url": "https://www.bvb.ch/wp-content/bvb/dokumente/baustelleninformationen/2025/BVB_Umleitung_L6_Baustelle_Auberg_251107.pdf",
+        "sha256": "a52bc8e0f55f5d578868000c6be9b9c1215c84cfb0ee0626d31c5ec3bfe3c4d8",
+        "note": "Heuwaage via Markthalle to Zoo Bachletten. Outbound Markthalle is passed without a call. Closed Holbeinstrasse corridor excluded."
+      },
+      "bus33": {
+        "url": "https://www.bvb.ch/wp-content/bvb/dokumente/baustelleninformationen/2026/Wanderstrasse_September_2026.pdf",
+        "sha256": "dda05fee135e45191d03832607d046c9c4becb3ffb7035b5c196090804b45480",
+        "note": "Continue south from the provisional General Guisan-Strasse stop, then Neubadstrasse and St. Galler-Ring. No return along the approach or earlier side-street shortcut."
+      },
+      "bus34": {
+        "url": "https://www.bvb.ch/wp-content/bvb/dokumente/diverse_unterlagen/Situationsplaene/Neu/BVB_Sit_OttoWenk-Platz.pdf",
+        "sha256": "85190546d0aea3cfcebbfb76a616032037035979e6ce68c6729feb79f5249759",
+        "note": "October 2025 BVB plan: replacement edge A on Hörnliallee to edge B on Kohlistieg via the connecting bus carriageway."
+      },
+      "ev11": {
+        "url": "https://www.blt.ch/projekte/linie-11/bauprojekt",
+        "mapItem": "de162754897942a09031e12f90c69f45",
+        "serviceItem": "f0ba0997bc0d4fbfa95949f7e4b7f2ea",
+        "layer": 5,
+        "objectId": 2,
+        "direction": "Aesch BL, Dorf",
+        "startTime": 1783893600000,
+        "endTime": 1797030000000,
+        "responseSha256": "bd9facf367e19bc27711843a16615605d29d05c8601de6c01f92c18b36a551a5",
+        "note": "BLT construction map used as corridor evidence only. Published geometry is independently sourced from OSM. Schaulager–MFP follows the southern carriageway and the GTFS platform access; Freilager–Schaulager rejected because the available OSM path disagrees with the dated official detour."
+      }
+    },
+    "addedMovements": 682,
+    "decisions": [
+      {
+        "ruleId": "sbb-approach-4",
+        "routeId": "91-31-D-j26-1",
+        "mode": "rail",
+        "line": "S31",
+        "fromId": "ch:1:sloid:136:1:1",
+        "toId": "ch:1:sloid:10:0:20",
+        "pathIndex": 1795,
+        "sourceFeatureIds": [
+          "bsRail:2"
+        ],
+        "pathMetres": 1990.2575374565458,
+        "maximumSnapMetres": 31.239501341554828,
+        "occurrences": 2
+      },
+      {
+        "ruleId": "sbb-approach-5",
+        "routeId": "91-31-D-j26-1",
+        "mode": "rail",
+        "line": "S31",
+        "fromId": "ch:1:sloid:136:1:1",
+        "toId": "ch:1:sloid:10:0:19",
+        "pathIndex": 1796,
+        "sourceFeatureIds": [
+          "bsRail:2"
+        ],
+        "pathMetres": 1989.2491079223983,
+        "maximumSnapMetres": 21.916893463845312,
+        "occurrences": 1
+      },
+      {
+        "ruleId": "sbb-approach-2",
+        "routeId": "91-3-B-j26-1",
+        "mode": "rail",
+        "line": "S3",
+        "fromId": "ch:1:sloid:136:1:1",
+        "toId": "ch:1:sloid:10:0:20",
+        "pathIndex": 1795,
+        "sourceFeatureIds": [
+          "bsRail:7"
+        ],
+        "pathMetres": 1990.2575374565458,
+        "maximumSnapMetres": 31.239501341554828,
+        "occurrences": 4
+      },
+      {
+        "ruleId": "sbb-approach-3",
+        "routeId": "91-3-B-j26-1",
+        "mode": "rail",
+        "line": "S3",
+        "fromId": "ch:1:sloid:10:0:20",
+        "toId": "ch:1:sloid:20:3:4",
+        "pathIndex": 1797,
+        "sourceFeatureIds": [
+          "bsRail:1"
+        ],
+        "pathMetres": 4957.105604938887,
+        "maximumSnapMetres": 30.16637491773376,
+        "occurrences": 4
+      },
+      {
+        "ruleId": "sbb-approach-1",
+        "routeId": "91-3-B-j26-1",
+        "mode": "rail",
+        "line": "S3",
+        "fromId": "ch:1:sloid:136:1:1",
+        "toId": "ch:1:sloid:10:0:19",
+        "pathIndex": 1796,
+        "sourceFeatureIds": [
+          "bsRail:7"
+        ],
+        "pathMetres": 1989.2491079223983,
+        "maximumSnapMetres": 21.916893463845312,
+        "occurrences": 36
+      },
+      {
+        "ruleId": "sbb-approach-0",
+        "routeId": "91-3-B-j26-1",
+        "mode": "rail",
+        "line": "S3",
+        "fromId": "ch:1:sloid:10:0:19",
+        "toId": "ch:1:sloid:20:3:4",
+        "pathIndex": 1798,
+        "sourceFeatureIds": [
+          "bsRail:1"
+        ],
+        "pathMetres": 4956.097172324404,
+        "maximumSnapMetres": 20.84376748092489,
+        "occurrences": 37
+      },
+      {
+        "ruleId": "sbb-approach-6",
+        "routeId": "91-3-B-j26-1",
+        "mode": "rail",
+        "line": "S3",
+        "fromId": "ch:1:sloid:136:2:2",
+        "toId": "ch:1:sloid:10:0:19",
+        "pathIndex": 1799,
+        "sourceFeatureIds": [
+          "bsRail:7"
+        ],
+        "pathMetres": 1988.8140671643632,
+        "maximumSnapMetres": 21.916893463845312,
+        "occurrences": 1
+      },
+      {
+        "ruleId": "tram6-heuwaage-zoo-via-markthalle",
+        "routeId": "91-6-j26-1",
+        "mode": "tram",
+        "line": "6",
+        "fromId": "ch:1:sloid:79:1:2",
+        "toId": "ch:1:sloid:89381:1:2",
+        "pathIndex": 1800,
+        "sourceFeatureIds": [
+          "tlm:{5729E6C9-0E3F-4A12-8806-D3BB873F3813}",
+          "tlm:{783B3C7E-6ED2-4C72-B358-839A73BCA96F}",
+          "tlm:{EF653C7C-A8B6-4880-9ED7-AA7F983FCD71}",
+          "tlm:{68EB4A55-59AB-4F18-99EA-08E9C8C5E695}",
+          "tlm:{06F3E9F3-41F8-4FE0-BDE9-CDC8FF6613A6}"
+        ],
+        "pathMetres": 766.4351469422429,
+        "maximumSnapMetres": 5.337672923806608,
+        "occurrences": 149
+      },
+      {
+        "ruleId": "tram6-markthalle-heuwaage",
+        "routeId": "91-6-j26-1",
+        "mode": "tram",
+        "line": "6",
+        "fromId": "ch:1:sloid:193:1:1",
+        "toId": "ch:1:sloid:79:1:1",
+        "pathIndex": 1801,
+        "sourceFeatureIds": [
+          "tlm:{EF653C7C-A8B6-4880-9ED7-AA7F983FCD71}",
+          "tlm:{783B3C7E-6ED2-4C72-B358-839A73BCA96F}",
+          "tlm:{5729E6C9-0E3F-4A12-8806-D3BB873F3813}",
+          "tlm:{37D291A3-571E-49D9-8E9E-B2ACD6B8E096}"
+        ],
+        "pathMetres": 384.52824142361663,
+        "maximumSnapMetres": 1.7646178360969496,
+        "occurrences": 144
+      },
+      {
+        "ruleId": "bus-33-southern-loop",
+        "routeId": "92-33-j26-1",
+        "mode": "bus",
+        "line": "33",
+        "fromId": "ch:1:sloid:89315:1:4",
+        "toId": "ch:1:sloid:89365:1:1",
+        "pathIndex": 1802,
+        "sourceFeatureIds": [
+          "osm:603131197",
+          "osm:603130521",
+          "osm:1352872646",
+          "osm:1217496509",
+          "osm:1388955627",
+          "osm:24404100",
+          "osm:1217496520",
+          "osm:147699878"
+        ],
+        "pathMetres": 859.2478568377259,
+        "maximumSnapMetres": 2.428703680653155,
+        "occurrences": 95
+      },
+      {
+        "ruleId": "bus-34-otto-wenk",
+        "routeId": "92-34-j26-1",
+        "mode": "bus",
+        "line": "34",
+        "fromId": "ch:1:sloid:89474:1:2",
+        "toId": "ch:1:sloid:89474:1:3",
+        "pathIndex": 1803,
+        "sourceFeatureIds": [
+          "osm:345838298",
+          "osm:683933725",
+          "osm:344426590",
+          "osm:1493064214"
+        ],
+        "pathMetres": 52.84552814144596,
+        "maximumSnapMetres": 4.262035241341231,
+        "occurrences": 32
+      },
+      {
+        "ruleId": "bus-EV-schaulager-mfp",
+        "routeId": "92-A01-I-j26-1",
+        "mode": "bus",
+        "line": "EV",
+        "fromId": "ch:1:sloid:88073:1:9",
+        "toId": "ch:1:sloid:78180:1:2",
+        "pathIndex": 1804,
+        "sourceFeatureIds": [
+          "osm:1218941738",
+          "osm:148799394",
+          "osm:193003752",
+          "osm:148908798",
+          "osm:340153160",
+          "osm:1395793851",
+          "osm:249987184",
+          "osm:179593604",
+          "osm:179593600",
+          "osm:4832195",
+          "osm:149005572",
+          "osm:4832194",
+          "osm:173408226"
+        ],
+        "pathMetres": 783.8118785567923,
+        "maximumSnapMetres": 5.804990439935404,
+        "occurrences": 177
+      }
+    ]
+  },
   "remainingGeometry": [
     {
       "routeId": "92-A01-I-j26-1",
@@ -4124,76 +4401,6 @@
       "from": "Münchenstein, Freilager",
       "to": "Münchenstein, Schaulager",
       "occurrences": 177
-    },
-    {
-      "routeId": "92-A01-I-j26-1",
-      "line": "EV",
-      "mode": "bus",
-      "fromId": "ch:1:sloid:88073:1:9",
-      "toId": "ch:1:sloid:78180:1:2",
-      "from": "Münchenstein, Schaulager",
-      "to": "Münchenstein, MFP",
-      "occurrences": 177
-    },
-    {
-      "routeId": "91-6-j26-1",
-      "line": "6",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:79:1:2",
-      "toId": "ch:1:sloid:89381:1:2",
-      "from": "Basel, Heuwaage",
-      "to": "Basel, Zoo Bachletten",
-      "occurrences": 149
-    },
-    {
-      "routeId": "91-6-j26-1",
-      "line": "6",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:193:1:1",
-      "toId": "ch:1:sloid:79:1:1",
-      "from": "Basel, Markthalle",
-      "to": "Basel, Heuwaage",
-      "occurrences": 144
-    },
-    {
-      "routeId": "92-33-j26-1",
-      "line": "33",
-      "mode": "bus",
-      "fromId": "ch:1:sloid:89315:1:4",
-      "toId": "ch:1:sloid:89365:1:1",
-      "from": "Basel, General Guisan-Strasse",
-      "to": "Basel, St. Galler-Ring",
-      "occurrences": 95
-    },
-    {
-      "routeId": "91-3-B-j26-1",
-      "line": "S3",
-      "mode": "rail",
-      "fromId": "ch:1:sloid:10:0:19",
-      "toId": "ch:1:sloid:20:3:4",
-      "from": "Basel SBB",
-      "to": "Muttenz",
-      "occurrences": 37
-    },
-    {
-      "routeId": "91-3-B-j26-1",
-      "line": "S3",
-      "mode": "rail",
-      "fromId": "ch:1:sloid:136:1:1",
-      "toId": "ch:1:sloid:10:0:19",
-      "from": "Basel Dreispitz",
-      "to": "Basel SBB",
-      "occurrences": 36
-    },
-    {
-      "routeId": "92-34-j26-1",
-      "line": "34",
-      "mode": "bus",
-      "fromId": "ch:1:sloid:89474:1:2",
-      "toId": "ch:1:sloid:89474:1:3",
-      "from": "Riehen, Otto Wenk-Platz",
-      "to": "Riehen, Otto Wenk-Platz",
-      "occurrences": 32
     },
     {
       "routeId": "91-2-j26-1",
@@ -4956,26 +5163,6 @@
       "occurrences": 4
     },
     {
-      "routeId": "91-3-B-j26-1",
-      "line": "S3",
-      "mode": "rail",
-      "fromId": "ch:1:sloid:136:1:1",
-      "toId": "ch:1:sloid:10:0:20",
-      "from": "Basel Dreispitz",
-      "to": "Basel SBB",
-      "occurrences": 4
-    },
-    {
-      "routeId": "91-3-B-j26-1",
-      "line": "S3",
-      "mode": "rail",
-      "fromId": "ch:1:sloid:10:0:20",
-      "toId": "ch:1:sloid:20:3:4",
-      "from": "Basel SBB",
-      "to": "Muttenz",
-      "occurrences": 4
-    },
-    {
       "routeId": "91-3-j26-1",
       "line": "3",
       "mode": "tram",
@@ -5473,16 +5660,6 @@
       "toId": "ch:1:sloid:88768:1:3",
       "from": "Basel, Ciba",
       "to": "Basel, Dreirosenbrücke",
-      "occurrences": 2
-    },
-    {
-      "routeId": "91-31-D-j26-1",
-      "line": "S31",
-      "mode": "rail",
-      "fromId": "ch:1:sloid:136:1:1",
-      "toId": "ch:1:sloid:10:0:20",
-      "from": "Basel Dreispitz",
-      "to": "Basel SBB",
       "occurrences": 2
     },
     {
@@ -6053,26 +6230,6 @@
       "toId": "ch:1:sloid:88768:1:2",
       "from": "Basel, Ciba",
       "to": "Basel, Dreirosenbrücke",
-      "occurrences": 1
-    },
-    {
-      "routeId": "91-31-D-j26-1",
-      "line": "S31",
-      "mode": "rail",
-      "fromId": "ch:1:sloid:136:1:1",
-      "toId": "ch:1:sloid:10:0:19",
-      "from": "Basel Dreispitz",
-      "to": "Basel SBB",
-      "occurrences": 1
-    },
-    {
-      "routeId": "91-3-B-j26-1",
-      "line": "S3",
-      "mode": "rail",
-      "fromId": "ch:1:sloid:136:2:2",
-      "toId": "ch:1:sloid:10:0:19",
-      "from": "Basel Dreispitz",
-      "to": "Basel SBB",
       "occurrences": 1
     },
     {
@@ -7068,13 +7225,13 @@
     }
   },
   "payload": {
-    "manifestGzipBytes": 285596,
-    "morningGzipBytes": 424772,
+    "manifestGzipBytes": 291363,
+    "morningGzipBytes": 430119,
     "chunks": [
       {
         "id": "00-02",
         "trips": 219,
-        "gzipBytes": 25081
+        "gzipBytes": 25093
       },
       {
         "id": "02-04",
@@ -7084,27 +7241,27 @@
       {
         "id": "04-06",
         "trips": 391,
-        "gzipBytes": 41808
+        "gzipBytes": 41816
       },
       {
         "id": "06-08",
         "trips": 1293,
-        "gzipBytes": 131106
+        "gzipBytes": 131118
       },
       {
         "id": "08-10",
         "trips": 1259,
-        "gzipBytes": 129841
+        "gzipBytes": 129845
       },
       {
         "id": "10-12",
         "trips": 1103,
-        "gzipBytes": 117419
+        "gzipBytes": 117415
       },
       {
         "id": "12-14",
         "trips": 1127,
-        "gzipBytes": 119210
+        "gzipBytes": 119208
       },
       {
         "id": "14-16",
@@ -7114,22 +7271,22 @@
       {
         "id": "16-18",
         "trips": 1382,
-        "gzipBytes": 145341
+        "gzipBytes": 145348
       },
       {
         "id": "18-20",
         "trips": 1271,
-        "gzipBytes": 134221
+        "gzipBytes": 134237
       },
       {
         "id": "20-22",
         "trips": 858,
-        "gzipBytes": 91133
+        "gzipBytes": 91139
       },
       {
         "id": "22-24",
         "trips": 616,
-        "gzipBytes": 66905
+        "gzipBytes": 66916
       }
     ]
   },
@@ -7140,9 +7297,8 @@
     "publicationReady": false,
     "reviewBoundary": "Dated service corridors and topology reviewed for a schematic centreline display. No certification of one-way streets or individual running tracks; remaining unmatched movements are explicit.",
     "pending": [
-      "Integrate study selection, labels/translations, sharing and civil-day refresh/recovery",
-      "Run desktop and phone UI checks",
-      "Resolve provisional bus platforms and remaining tram paths; acquire foreign rail geometry before extending the boundary"
+      "Validate the application release separately from this data candidate",
+      "Resolve remaining replacement-bus and tram paths; acquire foreign rail geometry before extending the boundary"
     ]
   }
 }

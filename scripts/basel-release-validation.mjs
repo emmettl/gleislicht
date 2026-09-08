@@ -19,6 +19,11 @@ export function validateBaselRelease(day, morning, trains) {
   assert.deepEqual(metadata.baselGeometry?.map(group => group.id), BASEL_RELEASE_GROUPS, 'Basel: missing operator/mode group')
   assert.equal(metadata.geometry.license, 'ODbL-1.0', 'Basel: missing OSM attribution')
   assert(metadata.railGeometry.maximumSnapMetres <= 120, 'Basel: rail snap exceeds guard')
+  if (metadata.geometry.reviewedRepairs) {
+    assert(/^[a-f0-9]{64}$/.test(metadata.sourceHashes.reviewedGeometry), 'Basel: missing reviewed geometry hash')
+    assert(metadata.geometry.reviewedRepairs.maximumSnapMetres <= 120, 'Basel: reviewed geometry snap exceeds guard')
+    assert.equal(metadata.geometry.reviewedRepairs.sources.tlm.attribution, '© swisstopo', 'Basel: missing swisstopo attribution')
+  }
   const counts = new Map(BASEL_RELEASE_GROUPS.map(id => [id, { trips: 0, matched: 0, total: 0 }]))
   for (const train of trains) {
     const agency = metadata.baselRouteAgencies[train.routeId]

@@ -2,6 +2,8 @@
 
 Reviewed **8 September 2026**. The study combines complete BVB/BLT bus and tram journeys with a bounded regional rail network, using a **civil day including preceding service-day services**. Both Tuesday and Sunday pass the existing payload budgets and a 95% movement-geometry gate in each of five groups. The Tuesday fixture is integrated into the application as a **schematic centreline study**, with selection, full-day loading, sharing and translated labels. The scope remains smaller than the complete TNW/trireno network; paths represent inferred centrelines rather than individual running tracks.
 
+The [geometry repair review](BASEL-GEOMETRY-REPAIRS.md) adds **682 Tuesday / 456 Sunday movements** from explicit Basel-Stadt, swisstopo and OSM source chains. Regional rail and BVB bus geometry now reach 100% on both fixtures, with all prior accepted paths preserved.
+
 The earlier [local audit](BASEL-STUDY.md) remains a reproducible service-day baseline. Its counts should not be compared directly with the larger civil-day candidate without separating calendar and geometry changes.
 
 ## Settled scope
@@ -37,19 +39,19 @@ For offline bus matching only, negative carry-in times are shifted back by one d
 
 | Group | Tuesday trips | Tuesday accepted movements | Sunday trips | Sunday accepted movements |
 | --- | ---: | ---: | ---: | ---: |
-| BVB tram | 2,389 | 49,469 / 50,486 — **97.99%** | 1,713 | 34,572 / 35,130 — **98.41%** |
-| BVB bus | 2,979 | 48,528 / 48,655 — **99.74%** | 2,030 | 30,955 / 31,027 — **99.77%** |
+| BVB tram | 2,389 | 49,762 / 50,486 — **98.57%** | 1,713 | 34,780 / 35,130 — **99.00%** |
+| BVB bus | 2,979 | 48,655 / 48,655 — **100%** | 2,030 | 31,027 / 31,027 — **100%** |
 | BLT tram | 860 | 18,635 / 18,635 — **100%** | 581 | 12,872 / 12,872 — **100%** |
-| BLT bus | 2,142 | 29,666 / 30,020 — **98.82%** | 1,518 | 20,355 / 20,563 — **98.99%** |
-| Regional rail | 438 | 2,279 / 2,364 — **96.40%** | 321 | 2,096 / 2,168 — **96.68%** |
+| BLT bus | 2,142 | 29,843 / 30,020 — **99.41%** | 1,518 | 20,459 / 20,563 — **99.49%** |
+| Regional rail | 438 | 2,364 / 2,364 — **100%** | 321 | 2,168 / 2,168 — **100%** |
 | **Total** | **8,808** | | **6,163** | |
 
 Tuesday has **1,297 platforms**, **219 preceding-day instances**, and **296 clipped rail instances**. Sunday has **1,197 platforms**, **491 preceding-day instances**, and **234 clipped rail instances**. These are source trip/run records, not a count of distinct physical vehicles.
 
 | Gzip payload | Tuesday | Sunday | Budget |
 | --- | ---: | ---: | ---: |
-| Manifest | 278.9 KiB | 248.2 KiB | 650 KiB |
-| Morning | 414.8 KiB | 306.6 KiB | 1,600 KiB |
+| Manifest | 284.5 KiB | 253.7 KiB | 650 KiB |
+| Morning | 420.0 KiB | 312.2 KiB | 1,600 KiB |
 | Largest two-hour chunk | 141.9 KiB | 88.6 KiB | 450 KiB |
 
 Both days have twelve chunks. Sunday's 02:00–04:00 chunk now contains 135 trip records; the earlier service-day artifact omitted previous-day services. Empty Tuesday 02:00–04:00 is retained as the timetable result, rather than filled with invented service.
@@ -77,18 +79,13 @@ The inspected PDF hashes are:
 
 ## Remaining geometry and release boundary
 
-There are **220 Tuesday / 146 Sunday directed route/platform pairs** with an unmatched occurrence. They remain in the timetable and use the app's ordinary stop interpolation. The model label explicitly discloses straight stop connections and the rail boundary.
+The [reviewed geometry repairs](BASEL-GEOMETRY-REPAIRS.md) resolve the SBB 19/20 approaches, both principal tram 6 diversion gaps, bus 33's southern loop, bus 34's Otto Wenk-Platz movement and EV11 Schaulager–MFP. All original matcher snap and detour bounds remain in force. The raw road-cache exclusion still rejects line 33's incorrect shortcut; a separate reviewed source chain supplies its replacement.
 
-- Basel SBB platforms **19/20** lie **123.86 / 133.21 m** from the nearest selected FOT centreline, outside the 120 m snap guard. Their approaches account for all **85 / 72 unmatched rail movements**. S3 and weekday S31 remain below 95% individually; the rail group passes overall. A suitable station approach source is needed before asserting full rail geometry.
-- BLT replacement service EV11 retains the Schaulager provisional-platform gap: **354 / 208 movements**, 123.75 m from its inferred match. The [BLT replacement-service notice](https://www.blt.ch/mobilitaet/betriebsinfos) confirms the Aesch–Dreispitz bus operation through 12 December, but does not resolve this geometric offset. The platform is not moved to force a match.
-- BVB line 33 retains **95 / 72 rejected return movements**. Tuesday also has **32** zero-interval shape movements between distinct Otto Wenk-Platz platforms on line 34.
-- Tram 6 around Heuwaage/Markthalle and infrequent depot/special patterns remain incomplete. Broader source acquisition or path review is required; the matcher does not invent joins or relax the guards.
-
-The geometry follow-up tested nearby alternative FOT projections around Heuwaage/Markthalle without relaxing the snap or detour guards. It accepted no additional movements on either fixture, so no geometry change was retained. Street direction and exact track certification remain outside this schematic model.
+There are now **208 Tuesday / 138 Sunday directed route/platform pairs** with an unmatched occurrence, accounting for **901 / 454 movements**. The remaining EV11 Freilager–Schaulager leg contributes **177 / 104**; its OSM candidate disagrees with BLT's dated diversion map and remains rejected. Other tram patterns contribute **724 / 350**. They remain in the timetable and use ordinary stop interpolation, disclosed by the model label. The repair review records accepted source chains, rejected alternatives, exact measurements and evidence. Street direction and individual track certification remain outside the general schematic model.
 
 ## Application and release status
 
-The study ID is `basel-core`, exposed as **BS** and through the study browser. Selection defaults to the civil full day; an explicit `range=morning` link remains supported. The app fetches the morning topology and two-hour day chunks on demand, supports route/station search (including retained foreign local stops), seeking, Now, station/time sharing and load retry. English, German, French and Italian labels describe the scope. Basel-Stadt, BAV and OSM attribution accompanies the map.
+The study ID is `basel-core`, exposed as **BS** and through the study browser. Selection defaults to the civil full day; an explicit `range=morning` link remains supported. The app fetches the morning topology and two-hour day chunks on demand, supports route/station search (including retained foreign local stops), seeking, Now, station/time sharing and load retry. English, German, French and Italian labels describe the scope. Basel-Stadt, BAV, OSM and swisstopo attribution accompanies the map.
 
 [`build-basel-day.mjs`](../scripts/build-basel-day.mjs) promotes a reviewed candidate into the fourteen application artifacts. It requires a passing candidate gate and an unchanged policy hash, adds source credits and `baselReleaseVersion: 1`, then validates the complete staged set before replacing output files. The original candidate reports retain `publicationReady: false` as their historical data-only status; release readiness is established separately by this wrapper and the application checks.
 
@@ -96,7 +93,7 @@ The study ID is `basel-core`, exposed as **BS** and through the study browser. S
 
 The existing regional refresh and Pages assembly now include Basel. [`refresh-basel-day.mjs`](../scripts/refresh-basel-day.mjs) rebuilds only dates explicitly admitted by the reviewed policy. For an unreviewed date or a failed source/build check, it retains a complete validated published Basel set with its **original timetable date**, while other regions can refresh. On first deployment only, a missing Basel manifest may select the complete checked-in fixture. Missing or corrupt chunks in an existing published set fail recovery; they cannot be mixed with fixture bytes. Extending the reviewed dates still requires a fresh diversion review.
 
-Local verification on 8 September passed all **386 unit tests**, TypeScript, the production build, edition boundaries, Pages artifact checks and the mobile first-view budget (**358.7 KiB JavaScript / 360 KiB**). Focused lint reports existing React warnings, with no errors. All **six Basel browser cases** passed across desktop Chromium and iPhone WebKit: selection/lazy loading/search/sharing, midnight chunk retry and preceding-day movement, and morning retry/translations/overflow. Desktop and phone screenshots were inspected. Both Tuesday and Sunday also passed the application release wrapper. These are local checks; a hosted deployment is verified separately.
+The initial integration verification on 8 September passed all **386 unit tests**, TypeScript, the production build, edition boundaries, Pages artifact checks and the mobile first-view budget (**358.7 KiB JavaScript / 360 KiB**). Focused lint reports existing React warnings, with no errors. All **six Basel browser cases** passed across desktop Chromium and iPhone WebKit: selection/lazy loading/search/sharing, midnight chunk retry and preceding-day movement, and morning retry/translations/overflow. Desktop and phone screenshots were inspected. Both Tuesday and Sunday also passed the application release wrapper. These are local checks; a hosted deployment is verified separately. The subsequent geometry validation, including the current shared-workspace test limitations, is recorded in the [repair review](BASEL-GEOMETRY-REPAIRS.md).
 
 ## Reproduce
 

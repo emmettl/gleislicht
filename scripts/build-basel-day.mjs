@@ -20,6 +20,10 @@ export async function buildBaselDay({ candidateDirectory, archive, sourceDirecto
     if (date) assert.equal(report.serviceDate, date, 'Basel: candidate date differs from request')
     const policyBytes = await readFile(policyPath)
     assert.equal(createHash('sha256').update(policyBytes).digest('hex'), report.sourceHashes.policy, 'Basel: candidate policy was changed after review')
+    if (report.sourceHashes.reviewedGeometry) {
+      const reviewedBytes = await readFile('data/basel-reviewed-geometry.json')
+      assert.equal(createHash('sha256').update(reviewedBytes).digest('hex'), report.sourceHashes.reviewedGeometry, 'Basel: reviewed geometry changed after candidate build')
+    }
     const staged = join(work, 'release'); await mkdir(staged)
     const manifest = JSON.parse(await readFile(join(candidateDirectory, 'basel-core-day-manifest.json')))
     const morning = JSON.parse(await readFile(join(candidateDirectory, 'basel-core-morning.json')))
@@ -32,7 +36,8 @@ export async function buildBaselDay({ candidateDirectory, archive, sourceDirecto
       geometry: { ...manifest.metadata.geometry, publisher: 'Basel-Stadt / BAV / OSM', sourceUrl: 'https://wfs.geo.bs.ch/', productUrl: 'https://www.openstreetmap.org/copyright', license: 'ODbL-1.0',
         matchedSegments: local.reduce((sum, group) => sum + group.matched, 0), totalSegments: local.reduce((sum, group) => sum + group.total, 0) },
       railGeometry: { ...manifest.metadata.geometry.rail, matchedSegments: rail.matched, totalSegments: rail.total,
-        maximumSnapMetres: Math.max(...report.infrastructure.decisions.filter(decision => decision.mode === 'rail' && decision.accepted).map(decision => decision.maximumSnapMetres)) },
+        maximumSnapMetres: Math.max(...report.infrastructure.decisions.filter(decision => decision.mode === 'rail' && decision.accepted).map(decision => decision.maximumSnapMetres),
+          ...(report.reviewedGeometry?.decisions ?? []).filter(decision => decision.mode === 'rail').map(decision => decision.maximumSnapMetres)) },
     }
     for (const [name, snapshot] of [['basel-core-day-manifest.json', manifest], ['basel-core-morning.json', morning]]) {
       snapshot.metadata = { ...snapshot.metadata, ...metadata }
