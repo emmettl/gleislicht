@@ -411,7 +411,7 @@
       "evidence": "ch.so.avt.oev GeoPackage downloaded: 3,951 MultiLineString network segments and 775 stops in EPSG:2056. Network fields only identify mode and tunnel status; there are no line/operator identifiers. Stops include DiDok. The empty linestructure helper table is not missing network coverage.",
       "vintage": "Published 17 December 2025. Metadata explicitly excludes night services.",
       "reuse": "Linked dataset terms permit commercial/noncommercial use; source attribution is recommended.",
-      "nextAction": "Review remaining Arlesheim tram platform gaps, foreign rail connections, S26 stop order and matcher-rejected bus patterns. The exact Bern 49/50 terminal review adds 34 journeys on each published date; 133 Friday / 141 Sunday remain excluded. Twelve seasonal dates audited. Physical direction and year-round coverage remain uncertified.",
+      "nextAction": "Review remaining Arlesheim tram platform gaps, foreign rail connections and matcher-rejected bus patterns. The exact S26 source-conflict review resolves the last Friday S26 journey; 132 Friday / 141 Sunday journeys remain excluded. Twelve seasonal dates audited. Physical direction and year-round coverage remain uncertified.",
       "sourceIds": [
         "so-publications",
         "so-lines",
@@ -430,7 +430,7 @@
           "2026-09-06"
         ],
         "admittedMovements": [
-          7023,
+          7024,
           5678
         ],
         "physicalDirectionCertified": false,
@@ -445,7 +445,8 @@
         "busJunctionAudit": "data/solothurn-audit/bus-junction-review.json",
         "localGapAudit": "data/solothurn-audit/local-gap-review.json",
         "accessRoadAudit": "data/solothurn-audit/access-road-review.json",
-        "bernTerminalAudit": "data/solothurn-audit/bern-terminal-review.json"
+        "bernTerminalAudit": "data/solothurn-audit/bern-terminal-review.json",
+        "s26Audit": "data/solothurn-audit/s26-review.json"
       }
     },
     {
