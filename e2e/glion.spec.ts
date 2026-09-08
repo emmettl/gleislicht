@@ -3,8 +3,12 @@ import railway from '../public/data/rochers-day.json' with { type: 'json' }
 
 test('combined Glion journey keeps two vehicles and the interchange on one clock', async ({page, isMobile}, info) => {
  const errors: string[] = [], requests: string[] = []
+ const downloads: string[] = []
  page.on('pageerror', e => errors.push(e.message))
  page.on('request', r => requests.push(r.url()))
+ // Strict Mode cancels its first effect's fetch. Count completed downloads,
+ // while keeping request-start checks below to enforce lazy loading.
+ page.on('requestfinished', r => downloads.push(r.url()))
  await page.goto('/?study=territet&date=2026-09-04')
  await expect(page.getByRole('button', {name: /Continue to Rochers-de-Naye/})).toBeVisible()
  expect(requests.some(r => r.includes('rochers-day.json'))).toBe(false)
@@ -54,7 +58,7 @@ test('combined Glion journey keeps two vehicles and the interchange on one clock
  await expect(card).toHaveCount(0)
  await page.getByRole('button', {name: /Follow the Territet–Glion funicular/}).click()
  await expect(page.locator('.territet-journey nav button')).toHaveCount(3)
- expect(requests.filter(r => r.includes('rochers-day.json'))).toHaveLength(1)
+ expect(downloads.filter(r => r.includes('rochers-day.json'))).toHaveLength(1)
  expect(requests.some(r => r.includes('rochers-terrain.json'))).toBe(false)
  if (isMobile) expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
  expect(errors).toEqual([])

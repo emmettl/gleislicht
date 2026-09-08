@@ -7,9 +7,12 @@ import { gleislichtAirportRenderer } from './scripts/gleislicht-airport-renderer
 import { gleislichtSurfaceRenderer } from './scripts/gleislicht-surface-renderer.ts'
 import { gleislichtPostbusRenderer } from './scripts/gleislicht-postbus-renderer.ts'
 import { gleislichtPerformanceRenderer } from './scripts/gleislicht-performance-renderer.ts'
+import { gleislichtRoadCatalogue } from './scripts/gleislicht-road-catalogue.ts'
 export default defineConfig({
-  plugins: [gleislichtSelectionRenderer(), gleislichtRoadRenderer(), gleislichtAirportRenderer(), gleislichtSurfaceRenderer(), gleislichtPostbusRenderer(), gleislichtPerformanceRenderer(), gleislichtOrbitalRenderer(), react()],
+  plugins: [gleislichtRoadCatalogue(), gleislichtSelectionRenderer(), gleislichtRoadRenderer(), gleislichtAirportRenderer(), gleislichtSurfaceRenderer(), gleislichtPostbusRenderer(), gleislichtPerformanceRenderer(), gleislichtOrbitalRenderer(), react()],
   optimizeDeps: {
+    // Archived source HTML under data/ is evidence, not an application entry.
+    entries: ['index.html'],
     exclude: ['@motionstudies/three'],
     include: ['@react-three/fiber', 'three'],
   },
