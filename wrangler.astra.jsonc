@@ -15,6 +15,7 @@
   ],
   "vars": {
     "COLLECTING_ENABLED": "true",
-    "RECORDING_SCOPE": "national"
+    "RECORDING_SCOPE": "national",
+    "ADDITIONAL_RECORDING_SCOPE": "zurich-cantonal"
   }
 }

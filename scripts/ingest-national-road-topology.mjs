@@ -187,23 +187,28 @@ export function parseNationalRoadAxes(xml, toleranceMetres = 70) {
   return { axes, segments }
 }
 
-export function parseAstraMeasurementSites(xml) {
+export function parseAstraMeasurementSites(xml, { suppliers = ['CH'] } = {}) {
+  // DATEX publications use both default and explicit namespace prefixes.
+  xml = xml.replace(/(<\/?)[\w-]+:/g, '$1')
   const tableVersion = Number(
     xml.match(/<measurementSiteTable\b[^>]*\bversion="(\d+)"/)?.[1],
   )
   const publicationTime = text(xml, 'publicationTime')
   const records = []
   const recordPattern =
-    /<measurementSiteRecord\b[^>]*\bid="(CH:[^"]+)"[^>]*>([\s\S]*?)<\/measurementSiteRecord>/g
+    /<measurementSiteRecord\b[^>]*\bid="([^"]+)"[^>]*>([\s\S]*?)<\/measurementSiteRecord>/g
   for (const match of xml.matchAll(recordPattern)) {
     const id = match[1]
+    const supplier = id.split(':')[0]
+    if (!suppliers.includes(supplier)) continue
     const direction = text(match[2], 'alertCDirectionCoded')
     const lane = text(match[2], 'lane')
     const latitude = Number(text(match[2], 'latitude'))
     const longitude = Number(text(match[2], 'longitude'))
     records.push({
       id,
-      stationId: id.replace(/\.\d+$/, ''),
+      supplier,
+      stationId: id.replace(/[./]\d+$/, ''),
       direction,
       lane,
       carriageway: text(match[2], 'carriageway'),
@@ -215,7 +220,9 @@ export function parseAstraMeasurementSites(xml) {
         (direction === 'positive' || direction === 'negative') &&
         lane !== 'emergencyLane' &&
         Number.isFinite(longitude) &&
-        Number.isFinite(latitude),
+        Number.isFinite(latitude) &&
+        longitude >= 5 && longitude <= 11 &&
+        latitude >= 45 && latitude <= 49,
     })
   }
 

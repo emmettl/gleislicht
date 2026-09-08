@@ -68,6 +68,7 @@ export function GleislichtRoadLabels({ topology, projection, selectedRoadId, sub
       const sprites = anchors.map(anchor => {
         const sprite = new THREE.Sprite(material)
         sprite.name = anchor.id
+        sprite.userData.pickTarget = { kind: 'road', value: road }
         sprite.position.copy(anchor.position)
         sprite.visible = false
         sprite.renderOrder = 19

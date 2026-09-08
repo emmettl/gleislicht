@@ -2,6 +2,7 @@ import * as THREE from 'three'
 import type { NetworkTrain, StationIndexEntry } from '@motionstudies/core/domain/network'
 
 export type MapSelection =
+  | { kind: 'road'; value: string }
   | { kind: 'station'; value: StationIndexEntry }
   | { kind: 'train'; value: NetworkTrain }
 
@@ -9,23 +10,44 @@ export type MapSelection =
 export function pickMapTarget(scene: THREE.Scene, camera: THREE.Camera,
   rect: { left: number; top: number; width: number; height: number },
   clientX: number, clientY: number, touch: boolean,
-  stations: ReadonlyMap<number, StationIndexEntry>): MapSelection | undefined {
+  stations: ReadonlyMap<number, StationIndexEntry>, roadsOnly = false): MapSelection | undefined {
   const x = clientX - rect.left, y = clientY - rect.top
   if (rect.width <= 0 || rect.height <= 0 || x < 0 || y < 0 || x > rect.width || y > rect.height) return
   const ray = new THREE.Raycaster()
   ray.setFromCamera(new THREE.Vector2(x / rect.width * 2 - 1, 1 - y / rect.height * 2), camera)
   const point = new THREE.Vector3()
   let marker: { target: MapSelection; distance: number; order: number } | undefined
+  let road: { target: MapSelection; distance: number } | undefined
+  const endpoint = new THREE.Vector3()
   let label: { target: MapSelection; order: number } | undefined
   scene.traverseVisible(object => {
     if (object instanceof THREE.Sprite) {
       const target = object.userData.pickTarget as MapSelection | undefined
-      if (!target || !object.material.visible || object.material.opacity < 0.1) return
+      if (!target || (roadsOnly && target.kind !== 'road') || !object.material.visible || object.material.opacity < 0.1) return
       if (ray.intersectObject(object, false).length && (!label || object.renderOrder > label.order)) {
         label = { target, order: object.renderOrder }
       }
       return
     }
+    if (object instanceof THREE.LineSegments && object.geometry.userData.pickRoads) {
+      if (Array.isArray(object.material) || !object.material.visible || object.material.opacity < 0.1) return
+      const positions = object.geometry.getAttribute('position')
+      const end = Math.min(positions.count, object.geometry.drawRange.start + object.geometry.drawRange.count)
+      for (let i = object.geometry.drawRange.start; i + 1 < end; i += 2) {
+        point.fromBufferAttribute(positions, i).applyMatrix4(object.matrixWorld).project(camera)
+        endpoint.fromBufferAttribute(positions, i + 1).applyMatrix4(object.matrixWorld).project(camera)
+        if (![point, endpoint].every(p => Number.isFinite(p.x + p.y + p.z) && p.z >= -1 && p.z <= 1)) continue
+        const ax = (point.x * 0.5 + 0.5) * rect.width, ay = (0.5 - point.y * 0.5) * rect.height
+        const dx = (endpoint.x - point.x) * rect.width * 0.5, dy = (point.y - endpoint.y) * rect.height * 0.5
+        const t = THREE.MathUtils.clamp(((x - ax) * dx + (y - ay) * dy) / (dx * dx + dy * dy || 1), 0, 1)
+        const distance = Math.hypot(x - ax - t * dx, y - ay - t * dy)
+        if (distance <= (touch ? 12 : 6) && (!road || distance < road.distance)) {
+          road = { target: { kind: 'road', value: object.geometry.userData.pickRoads[i] }, distance }
+        }
+      }
+      return
+    }
+    if (roadsOnly) return
     if (!(object instanceof THREE.Points || object instanceof THREE.Mesh)) return
     const geometry = object.geometry
     const { pickTrains, pickStops } = geometry.userData
@@ -60,7 +82,7 @@ export function pickMapTarget(scene: THREE.Scene, camera: THREE.Camera,
   })
   // Labels render above markers. A station dot underneath a label must not
   // steal its click, even when that dot is exactly under the pointer.
-  return label?.target ?? marker?.target
+  return label?.target ?? marker?.target ?? road?.target
 }
 
 /** Remember maximum travel, so a drag out and back can never become a click. */

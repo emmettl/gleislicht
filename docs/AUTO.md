@@ -57,9 +57,11 @@ Coordinates in the counter table are coarse, so a match is considered directly h
 
 ## Recorded data pipeline
 
-The repository includes an authenticated recorder for ASTRA's DATEX II 2.3 SOAP feed. It asks only for the eleven A1 counter groups used by this study, makes one pull after each minute publication, and writes append-only snapshots with receipt time, source publication time and detector-table version. The API key is read only from the process environment and the ignored recording directory is created with owner-only files.
+Zürich cantonal-road collection is now implemented as a separate `zurich-cantonal` scope, using 331 stations from the shared Measurement Site Table. An initial live request reported 323 stations. The supplementary Worker scope shares the national request cadence and archives observations separately; cantonal road matching and public playback remain pending. See [Cantonal roads — Zürich collection pilot](./CANTONAL-ROADS.md) for the source inventory, limitations and implementation sequence.
 
-For unattended collection, `astra-worker/index.ts` provides the equivalent Cloudflare Cron Worker. It waits until 24 seconds after each nominal minute, writes gzip-compressed append-only snapshots to the private `gleislicht-observations` R2 bucket and leaves the local recorder unchanged. The deployed configuration uses `national`, following verification of the initial A1 archive. It records all 379 accepted station groups in one filtered request per minute. See [CLOUDFLARE.md](./CLOUDFLARE.md).
+The repository includes an authenticated recorder for ASTRA's DATEX II 2.3 SOAP feed. Its default scope asks for the eleven A1 counter groups used by this study; `national` and `zurich-cantonal` use explicit station filters from their respective topology/catalog. It makes one pull after each minute publication and writes append-only snapshots with receipt time, source publication time and detector-table version. The API key is read only from the process environment and the ignored recording directory is created with owner-only files.
+
+For unattended collection, `astra-worker/index.ts` provides the equivalent Cloudflare Cron Worker. It waits until 24 seconds after each nominal minute and writes gzip-compressed append-only snapshots to the private `gleislicht-observations` R2 bucket. The configuration uses `national` with the supplementary `zurich-cantonal` scope: 379 accepted federal station filters plus 331 Zürich station filters in one request per minute, archived separately. See [CLOUDFLARE.md](./CLOUDFLARE.md).
 
 Completed R2 days can be pulled into the same ignored local recording format with `npm run data:road:export -- --date=YYYY-MM-DD`. The exporter uses read-only S3-compatible R2 credentials and deliberately fetches adjacent UTC partitions so a Europe/Zurich civil day is not clipped at midnight.
 
@@ -100,3 +102,24 @@ npm run data:road:compile -- \
 Compilation requires at least 60 complete, consecutive minutes by default and rejects gaps over 75 seconds, mixed Swiss service dates and sparse directions. Its output uses the existing browser contract but declares `measurementKind: recorded` plus the precise UTC range, complete-minute count and minimum coverage. Publishing the manifest does not overwrite the calibration artifact, which remains a resilient fallback.
 
 Possible later studies include the A2 Gotthard approach and a full recorded day. `Fahrstrom` remains an appealing artwork title, but AUTO is the unambiguous interface name while the project also depicts railway traction infrastructure.
+
+## Selecting roads and comparing traffic
+
+Click a visible motorway line or A-road shield to select it (touch uses a larger
+screen-space tolerance). The road card plots estimated vehicles per kilometre per
+direction for the complete available recording, on a zero-based scale that stays
+fixed during playback. Its slider pauses and seeks the shared map clock. The
+quieter-to-busier indicator compares the current density with that road's peak
+within this recording; it does not classify congestion or road capacity. Missing
+minutes remain gaps, measured zero remains zero, and the calibration fallback is
+labelled as an illustrative profile. The card includes the road recording's own
+date and the limits of its measured coverage.
+
+Moving road marks now follow arc-length interpolation on connected published axis
+polylines. The renderer uses the directional counter's matched axis segment to
+recover paths through a small graph of official vertices, joining only vertices
+within two metres to allow for coordinate rounding. It no longer draws spline
+shortcuts or substitutes a counter-to-counter chord when a path is missing.
+Disconnected, distant or implausibly circuitous routes omit moving marks while
+retaining the road baseline and the counter observations in the summary/history.
+This deliberately reduces the animated coverage of the present incomplete topology.

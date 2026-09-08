@@ -16,7 +16,7 @@ export function gleislichtSelectionRenderer(): Plugin {
       if (start < 0 || end < 0) throw new Error('Gleislicht selection component hook needs review')
       code = code.slice(0, start) + code.slice(end)
       replace('_jsx(StationTapTarget, { stations: props.stations, projectedStops: projectedStops, cameraFraming: props.cameraFraming, onSelectStation: props.airCategorySelected ? undefined : props.onSelectStation })',
-        '_jsx(GleislichtMapSelection, { stations: props.stations, onSelectStation: props.onSelectStation, onSelectTrain: props.onSelectTrain, disabled: props.airCategorySelected || props.roadCategorySelected })')
+        '_jsx(GleislichtMapSelection, { stations: props.stations, onSelectStation: props.onSelectStation, onSelectTrain: props.onSelectTrain, onSelectRoad: props.onSelectRoad, roadsOnly: props.roadCategorySelected, disabled: props.airCategorySelected })')
       replace('sprite.position.copy(label.position);',
         "sprite.position.copy(label.position);\n            sprite.userData.pickTarget = { kind: 'station', value: label.station };")
       replace('sprite.position.set(candidate.position[0], 0.76 + comparisonOffset, candidate.position[2]);',

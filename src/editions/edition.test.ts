@@ -18,7 +18,7 @@ describe('Gleislicht edition', () => {
       'zvv-region',
       'geneva-tpg',
     ])
-    expect(Object.values(SWITZERLAND_EDITION.data.corridors)).toHaveLength(2)
+    expect(Object.values(SWITZERLAND_EDITION.data.corridors)).toHaveLength(3)
   })
 
   it('resolves only the Swiss edition', () => {

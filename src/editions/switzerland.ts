@@ -93,6 +93,7 @@ export type SwitzerlandNetworkStudy =
 export type SwitzerlandTerrainCorridorId =
   | 'zurich-chur'
   | 'kiental-griesalp'
+  | 'vitznau-rigi'
 
 export type SwitzerlandEdition = MotionStudyEdition<
   SwitzerlandDataCatalog<
@@ -150,6 +151,7 @@ export const SWITZERLAND_EDITION: SwitzerlandEdition = {
       nationalManifest: 'swiss-road-national-manifest.json',
     },
     corridors: {
+      'vitznau-rigi': 'vitznau-rigi-corridor.json',
       'zurich-chur': 'zurich-chur-corridor.json',
       'kiental-griesalp': 'kiental-griesalp-corridor.json',
     },

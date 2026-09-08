@@ -150,3 +150,23 @@ describe('map tap gestures', () => {
     expect(gesture.up(4, 0, 0)).toBe(true)
   })
 })
+
+describe('motorway picking', () => {
+  it('picks rendered line interiors with a CSS-pixel tolerance, including in road-only mode', () => {
+    const { scene, camera, screen } = setup()
+    const geometry = new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(-4, 0, 0), new THREE.Vector3(4, 0, 0)])
+    geometry.userData.pickRoads = ['N1', 'N1']
+    const line = new THREE.LineSegments(geometry, new THREE.LineBasicMaterial())
+    scene.add(line); scene.updateMatrixWorld()
+    for (const height of [30, 5]) {
+      camera.position.set(0, height, 0); camera.lookAt(0, 0, 0); camera.updateMatrixWorld()
+      const [x, y] = screen(0, 0, 0)
+      const pick = (offset: number, touch = false) => pickMapTarget(scene, camera, rect, x, y + offset, touch, stations, true)
+      expect(pick(0)).toEqual({ kind: 'road', value: 'N1' })
+      expect(pick(7)).toBeUndefined()
+      expect(pick(10, true)?.kind).toBe('road')
+    }
+    line.visible = false
+    expect(pickMapTarget(scene, camera, rect, ...screen(0, 0, 0), false, stations, true)).toBeUndefined()
+  })
+})

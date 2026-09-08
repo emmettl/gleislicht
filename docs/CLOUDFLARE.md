@@ -64,6 +64,8 @@ The recorder was expanded to `national` on 7 September 2026 after verifying 991 
 
 National coverage means the accepted federal counters on the national-road topology, not every Swiss road. The topology has 718 accepted directional sites and 609 counter-to-counter sections; unmatched federal sites remain excluded.
 
+On 8 September 2026, the recorder configuration adds `ADDITIONAL_RECORDING_SCOPE=zurich-cantonal`. This unions 331 Zürich station filters with the existing 379 federal filters in one upstream request and writes the cantonal subset below `astra/zurich-cantonal/`. The first local verification reported 323 stations and 690 detectors. Each scope has independent freshness validation and coverage metadata; missing cantonal data does not prevent a valid federal minute from being stored. See [the cantonal pilot](./CANTONAL-ROADS.md) for source hashes, limitations and the remaining road-matching work. Remove the additional variable and redeploy to disable supplementary collection.
+
 The first published national morning is 8 September 2026 from 06:45 through 08:45 CEST. All 121 expected minute snapshots passed the compiler's continuity gate, and accepted-site coverage ranged from 84.1% upward. The generated manifest and progressive chunks are public static artifacts; the raw R2 archive remains private.
 
 To export a complete Swiss civil day for compilation, create an R2 object read token scoped to `gleislicht-observations`, then expose its S3-compatible values only to the command process:
@@ -78,6 +80,8 @@ npm run data:road:compile:national -- --date=2026-09-07
 ```
 
 The exporter reads the adjacent UTC partitions needed to cover the requested Europe/Zurich day, decompresses the objects locally and writes owner-only files below the ignored `recordings/astra-national/` directory. Use `--scope=a1-zurich` and `data:road:compile` to export and compile the earlier corridor archive in `recordings/astra/`. The access key needs object-read permission only; it must not be committed or added to a Vite variable.
+
+Use `--scope=zurich-cantonal` to export the new archive into `recordings/astra-zurich-cantonal/`. A cantonal playback compiler is still pending; these snapshots must not be passed off as national-road observations.
 
 Do not add an automatic deletion rule until R2 download and daily compilation have been exercised. Once that path is proven, retain compiled, audited day chunks and expire raw national minute objects on an explicit rolling window. The GTFS latest object is overwritten and needs no lifecycle rule.
 

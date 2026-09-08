@@ -6,7 +6,13 @@ import {
   type NetworkTrain,
 } from '@motionstudies/core/domain/network'
 
-export type SwitzerlandCorridorVehicleKind = 'train' | 'bus'
+export type SwitzerlandCorridorVehicleKind = 'train' | 'bus' | 'cogwheel'
+
+export const RIGI_PENDING_JOURNEY: Journey = {
+  id: 'Vitznau–Rigi Kulm', service: 'RIGI', destination: 'Rigi Kulm',
+  operator: 'Rigi Bahnen AG', speedKmh: 0,
+  stops: [{ name: 'Vitznau', progress: 0, departure: '—' }, { name: 'Rigi Kulm', progress: 1, departure: '—' }],
+}
 
 export const SWITZERLAND_PROTOTYPE_JOURNEY: Journey = {
   id: 'IR-35-2367',
@@ -26,7 +32,15 @@ export const SWITZERLAND_PROTOTYPE_JOURNEY: Journey = {
 export function vehicleKindForSwissCorridor(
   corridor?: Pick<CorridorSnapshot, 'id'>,
 ): SwitzerlandCorridorVehicleKind {
-  return corridor?.id === 'kiental-griesalp' ? 'bus' : 'train'
+  return corridor?.id === 'kiental-griesalp' ? 'bus' : corridor?.id === 'vitznau-rigi' ? 'cogwheel' : 'train'
+}
+
+export function isVitznauRigiTrain(train: NetworkTrain | undefined, network: NetworkSnapshot | undefined): boolean {
+  if (!train || !network) return false
+  const type = (train as NetworkTrain & { routeType?: number }).routeType
+  return (type === undefined || type === 116) &&
+    network.stops[train.stops[0]?.[0]]?.[2] === 'Vitznau' &&
+    network.stops[train.stops.at(-1)?.[0] ?? -1]?.[2] === 'Rigi Kulm'
 }
 
 export function isZurichChurTrain(
@@ -56,7 +70,9 @@ export function journeyForSwissCorridor(
   train?: NetworkTrain,
   network?: NetworkSnapshot,
 ): Journey {
-  if (!train || !network || !isZurichChurTrain(train, network)) {
+  const rigi = corridor.id === 'vitznau-rigi'
+  const matches = rigi ? isVitznauRigiTrain(train, network) : corridor.id === 'zurich-chur' && isZurichChurTrain(train, network)
+  if (!train || !network || !matches) {
     const first = corridor.route.stops[0]
     const last = corridor.route.stops.at(-1)!
     const duration = Math.max(1, last.departure - first.departure)
@@ -75,8 +91,8 @@ export function journeyForSwissCorridor(
   }
 
   const names = train.stops.map(([stopIndex]) => network.stops[stopIndex]?.[2])
-  const fromIndex = names.indexOf('Zürich HB')
-  const toIndex = names.indexOf('Chur')
+  const fromIndex = names.indexOf(rigi ? 'Vitznau' : 'Zürich HB')
+  const toIndex = names.indexOf(rigi ? 'Rigi Kulm' : 'Chur')
   const corridorProgress = new Map(
     corridor.route.stops.map((stop) => [stop.name, stop.progress]),
   )
@@ -86,7 +102,7 @@ export function journeyForSwissCorridor(
   return {
     id: `${train.route}-${train.shortName}`,
     service: train.route,
-    destination: 'Chur',
+    destination: corridor.route.destination,
     operator: corridor.route.operator,
     speedKmh: Math.round(
       (corridor.route.distanceMetres / Math.max(1, end - start)) * 3.6,

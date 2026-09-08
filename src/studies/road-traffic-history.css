@@ -1,0 +1,31 @@
+.road-history { margin-top: 14px; padding-top: 12px; border-top: 1px solid #ffcc8d30; color: #c2b7b1; font-size: 0.7rem; line-height: 1.45; }
+.road-history-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
+.road-history h3 { margin: 0; color: #ffe0b3; font-size: 0.8rem; font-weight: 500; }
+.road-history time { font-variant-numeric: tabular-nums; color: #ffe0b3; }
+.road-history p { margin: 6px 0 0; }
+.road-history-current { display: flex; align-items: baseline; flex-wrap: wrap; gap: 7px; margin-top: 7px; }
+.road-history-current strong { color: #fff1cf; font-size: 1.45rem; font-weight: 500; font-variant-numeric: tabular-nums; }
+.road-history svg { display: block; width: 100%; overflow: visible; margin-top: 4px; }
+.road-history svg text { fill: #c2b7b1; font: 10px system-ui, sans-serif; }
+.road-chart-grid { stroke: #ffcc8d22; }
+.road-chart-line { fill: none; stroke: #ffbe78; stroke-width: 2; stroke-linejoin: round; }
+.road-chart-sample { fill: #ffbe78; }
+.road-chart-cursor { stroke: #fff1cf99; stroke-dasharray: 3 3; }
+.road-chart-current { fill: #fff1cf; stroke: #432b20; stroke-width: 2; }
+.road-history input[type='range'] { display: block; width: 100%; height: 24px; margin: 0; accent-color: #ffbe78; cursor: ew-resize; }
+.road-history-intensity { display: flex; align-items: center; gap: 9px; margin-top: 7px; }
+.road-history-intensity > div { flex: 1; position: relative; height: 4px; border-radius: 2px; background: linear-gradient(90deg, #725f48, #ffc57d); }
+.road-history-intensity i { position: absolute; top: -3px; width: 3px; height: 10px; transform: translateX(-50%); background: #fff5dd; }
+.road-history-comparison { color: #ffe0b3; }
+.road-corridor-card { background: linear-gradient(135deg, rgba(44, 28, 20, 0.97), rgba(10, 10, 22, 0.97)); width: 350px; max-height: calc(69dvh - 30px); overflow-y: auto; pointer-events: auto; }
+@media (max-width: 700px) {
+  .view-network.has-selection .road-corridor-card { width: min(280px, calc(100vw - 68px)); max-height: calc(100dvh - 310px); }
+  .road-history { margin-top: 9px; padding-top: 8px; font-size: 0.64rem; }
+}
+@media (min-width: 1000px) {
+  .experience:has(.road-corridor-card) .transport { left: calc(clamp(24px, 4vw, 58px) + 380px); }
+  .experience:has(.road-corridor-card) .service-legend { left: calc(clamp(24px, 4vw, 58px) + 380px); right: clamp(24px, 4vw, 58px); width: auto; transform: none; }
+}
+@media (min-width: 701px) and (max-width: 999px) {
+  .road-corridor-card { max-height: calc(69dvh - 240px); }
+}

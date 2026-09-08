@@ -4,12 +4,11 @@ import { chmod, mkdir, writeFile } from 'node:fs/promises'
 import { basename, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
+import { RECORDING_OUTPUTS, validateRecordingScope } from './astra-recording-scopes.mjs'
+
 const DEFAULT_BUCKET = 'gleislicht-observations'
 const DEFAULT_SCOPE = 'a1-zurich'
-const DEFAULT_OUTPUTS = {
-  'a1-zurich': 'recordings/astra',
-  national: 'recordings/astra-national',
-}
+
 
 function argument(name) {
   const prefix = `--${name}=`
@@ -104,17 +103,14 @@ async function inBatches(values, size, task) {
 async function main() {
   if (process.argv.includes('--help')) {
     console.log(
-      'Usage: npm run data:road:export -- [--date=YYYY-MM-DD] [--scope=a1-zurich|national] [--bucket=gleislicht-observations] [--output=recordings/astra]',
+      'Usage: npm run data:road:export -- [--date=YYYY-MM-DD] [--scope=a1-zurich|national|zurich-cantonal] [--bucket=gleislicht-observations] [--output=recordings/astra]',
     )
     return
   }
-  const scope = argument('scope') ?? DEFAULT_SCOPE
-  if (scope !== 'a1-zurich' && scope !== 'national') {
-    throw new Error('--scope must be a1-zurich or national')
-  }
+  const scope = validateRecordingScope(argument('scope') ?? DEFAULT_SCOPE)
   const serviceDate = argument('date') ?? previousZurichDate()
   const bucket = argument('bucket') ?? DEFAULT_BUCKET
-  const outputDirectory = resolve(argument('output') ?? DEFAULT_OUTPUTS[scope])
+  const outputDirectory = resolve(argument('output') ?? RECORDING_OUTPUTS[scope])
   const s3 = client()
   const partitions = adjacentUtcPartitions(serviceDate)
   const keys = (
@@ -135,9 +131,9 @@ async function main() {
   console.log(
     `Exported ${keys.length} R2 snapshots around ${serviceDate} to ${outputDirectory}`,
   )
-  console.log(
-    `Compile the Swiss service day with: npm run data:road:compile -- --date=${serviceDate}`,
-  )
+  console.log(scope === 'zurich-cantonal'
+    ? 'Cantonal archive exported. Road matching and a cantonal playback compiler are still required.'
+    : `Compile the Swiss service day with: npm run ${scope === 'national' ? 'data:road:compile:national' : 'data:road:compile'} -- --date=${serviceDate}`)
 }
 
 if (

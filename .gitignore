@@ -6,10 +6,12 @@ coverage
 playwright-report
 test-results
 .worker-dist
+.wrangler/
 .dev.vars
 *.local
 recordings/astra/
 recordings/astra-national/
+recordings/astra-zurich-cantonal/
 recordings/london-operations/
 public/data/all-change-geography.json
 public/data/all-change-rail-led-morning.json

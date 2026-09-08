@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "type": "module",
-  "description": "Switzerland in motion — a cinematic railway visualisation built from Swiss open transport data.",
+  "description": "Switzerland in motion \u2014 a cinematic railway visualisation built from Swiss open transport data.",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
@@ -57,7 +57,8 @@
     "data:postbus:national": "node scripts/ingest-gtfs.mjs --window-start 00:00 --window-end 24:00 --focus 07:45 --modes bus --bounds -180,-90,180,90 --local-agencies 801 --output public/data/postbus-national-day-manifest.json --hub-output none --chunk-hours 3",
     "data:postbus:roads:prepare": "node scripts/prepare-postbus-road-feed.mjs",
     "data:postbus:roads:match": "node scripts/match-postbus-roads.mjs",
-    "data:postbus:roads": "node scripts/enrich-postbus-roads.mjs --apply"
+    "data:postbus:roads": "node scripts/enrich-postbus-roads.mjs --apply",
+    "data:road:catalog:cantonal": "node scripts/ingest-cantonal-road-counters.mjs"
   },
   "engines": {
     "node": ">=24.0.0"

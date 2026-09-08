@@ -10,12 +10,37 @@ export function gleislichtRoadRenderer(): Plugin {
     transform(source, id) {
       if (!id.split('?')[0].replaceAll('\\', '/').endsWith('/@motionstudies/three/RoadTrafficLayer.js')) return
       let code = source
-      const replace = (before: string, after: string) => {
-        if (code.split(before).length !== 2) throw new Error(`Gleislicht road hook needs review: ${before}`)
-        code = code.replace(before, after)
+      const replace = (before: string, after: string, count = 1) => {
+        if (code.split(before).length !== count + 1) throw new Error(`Gleislicht road hook needs review: ${before}`)
+        code = code.replaceAll(before, after)
       }
       replace("import { nationalRoadConditionsAtTime, } from '@motionstudies/core/domain/road-day';",
         'import { nationalRoadConditionsAtTime } from "/src/studies/road-conditions.ts";')
+      replace(`const coordinates = topologySection.path ?? [
+                topologySection.fromCoordinate,
+                topologySection.toCoordinate,
+            ];`, `const from = topology.sites.find(site => site.id === topologySection.fromSiteId)?.match;
+            const to = topology.sites.find(site => site.id === topologySection.toSiteId)?.match;
+            const coordinates = roadPathOnTopology(topology, section.road,
+                from?.projectedCoordinate ?? topologySection.fromCoordinate,
+                to?.projectedCoordinate ?? topologySection.toCoordinate,
+                from?.segmentId, to?.segmentId);
+            if (!coordinates || coordinates.length < 2) return [];`)
+      replace("new THREE.CatmullRomCurve3(points, false, 'centripetal', 0.5)", 'new RoadPolyline(points)', 2)
+      replace('const points = corridor.path.map((coordinate) => projectRoadCoordinate(coordinate, projection));',
+        `const coordinates = topology ? roadPathOnTopology(topology, corridor.road.replace(/^A/, 'N'), corridor.path[0], corridor.path.at(-1)) : undefined;
+        if (!coordinates || coordinates.length < 2) return [];
+        const points = coordinates.map((coordinate) => projectRoadCoordinate(coordinate, projection));`)
+      replace('(snapshot?.corridors ?? []).map((corridor) => {', '(snapshot?.corridors ?? []).flatMap((corridor) => {')
+      replace('[projection, snapshot?.corridors]', '[projection, snapshot?.corridors, topology]')
+      replace('transform.position.x += direction.reverse ? -0.045 : 0.045;', '')
+      replace("const aheadProgress = (progress + (direction.reverse ? -0.001 : 0.001) + 1) % 1;",
+        'const aheadProgress = Math.max(0, Math.min(1, progress + (direction.reverse ? -0.001 : 0.001)));')
+      // Per-segment IDs share the visible baseline, so no duplicate picking mesh is needed.
+      replace('const mainlinePoints = [];', 'const mainlinePoints = [];\n        const pickRoads = [];')
+      replace('target.push(first, second);', 'target.push(first, second);\n                if (path.mainline) pickRoads.push(path.road, path.road);')
+      replace('mainline: new THREE.BufferGeometry().setFromPoints(mainlinePoints),',
+        'mainline: Object.assign(new THREE.BufferGeometry().setFromPoints(mainlinePoints), { userData: { pickRoads } }),')
       // Geometry stays visible with no observations, including during selection.
       replace('color: "#ffb36b", transparent: true, opacity: selectedRoadId ? 0.008 : subdued ? 0.018 : 0.062, blending: THREE.AdditiveBlending, depthWrite: false',
         'color: "#a0a6b2", transparent: true, opacity: selectedRoadId ? 0.25 : subdued ? 0.2 : 0.45, blending: THREE.AdditiveBlending, depthTest: false, depthWrite: false, toneMapped: false')
@@ -25,7 +50,7 @@ export function gleislichtRoadRenderer(): Plugin {
         'color: "#a0a6b2", transparent: true, opacity: 0.65, blending: THREE.AdditiveBlending')
       const topology = 'topology && (_jsx(RoadTopology, { snapshot: topology, projection: projection, subdued: subdued, selectedRoadId: selectedRoadId }))'
       replace(topology, `${topology}, topology && _jsx(GleislichtRoadLabels, { topology, projection, subdued, selectedRoadId })`)
-      return { code: 'import { GleislichtRoadLabels } from "/src/studies/GleislichtRoadLabels.tsx";\n' + code, map: null }
+      return { code: 'import { RoadPolyline, roadPathOnTopology } from "/src/studies/road-geometry.ts";\nimport { GleislichtRoadLabels } from "/src/studies/GleislichtRoadLabels.tsx";\n' + code, map: null }
     },
   }
 }

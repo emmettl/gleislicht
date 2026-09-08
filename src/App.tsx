@@ -4,6 +4,8 @@ import { networkWithRailVisibility } from './studies/network-layers.ts'
 import { COGWHEEL_COPY, COGWHEEL_ROUTE_COLORS, cogwheelNetwork } from './studies/cogwheel.ts'
 import { useCogwheelCatalogue } from './studies/use-cogwheel-catalogue.ts'
 import { RIGI_COPY, rigiOperator } from './studies/rigi.ts'
+import { RIGI_TERRAIN_COPY } from './studies/rigi-terrain.ts'
+const RigiTerrainProfile = lazy(() => import('./studies/RigiTerrainProfile.tsx'))
 import { FREQUENCY_COPY, isHeadwayTrain, serviceFrequency, withFrequencyFerryPaths } from './studies/frequency.ts'
 import { roadTrafficSummary } from './studies/road-traffic-summary.ts'
 import { airTrafficSummary } from './studies/air-traffic-summary.ts'
@@ -48,6 +50,8 @@ import type { CorridorSnapshot } from '@motionstudies/core/domain/corridor'
 import { positionOnJourney } from '@motionstudies/core/domain/journey'
 import {
   isKientalGriesalpTrain,
+  isVitznauRigiTrain,
+  RIGI_PENDING_JOURNEY,
   isZurichChurTrain,
   journeyForSwissCorridor,
   SWITZERLAND_PROTOTYPE_JOURNEY,
@@ -132,6 +136,8 @@ import { useProgressiveNetworkDay } from '@motionstudies/web/use-progressive-net
 import { useProgressiveAirDay } from '@motionstudies/web/use-progressive-air-day'
 import { useProgressiveRoadStudy } from '@motionstudies/web/use-progressive-road-study'
 import { useLocalPerformance } from '@motionstudies/web/use-local-performance'
+
+const RoadTrafficHistory = lazy(() => import('./studies/RoadTrafficHistory.tsx').then(module => ({ default: module.RoadTrafficHistory })))
 
 const AirportHeroCard = lazy(() => import('./studies/AirportCard.tsx'))
 
@@ -351,12 +357,15 @@ export function App({ edition }: AppProps) {
   const mobileMapToolsRef = useRef<HTMLDetailsElement>(null)
   const searchInteractionRef = useRef(false)
   const timelineTimeRef = useRef(networkTime)
+  const roadHistorySeekRef = useRef<{ time: number; at: number } | undefined>(undefined)
   const postbusSeekRef = useRef<{ time: number; at: number } | undefined>(undefined)
   const text = UI_TEXT[language]
   const help = CONTROL_HELP[language]
   const performanceSample = useLocalPerformance(performanceEnabled)
   const isRigi = networkStudy === 'rigi-lake'
   const rigiCopy = RIGI_COPY[language]
+  const rigiTerrainCopy = RIGI_TERRAIN_COPY[language]
+  const isRigiTerrain = journeyCorridorId === 'vitznau-rigi'
   const isPostbus = networkStudy === 'postbus'
   const isContrast = networkStudy === 'contrast'
   const serviceColors = useMemo(() => isPostbus || isContrast ? { ...SERVICE_COLORS, bus: POSTBUS_YELLOW } : (isRigi || cogwheelEnabled && networkStudy === 'national' && view === 'network') ? { ...SERVICE_COLORS, other: '#fff3a6' } : SERVICE_COLORS, [isPostbus, isContrast, isRigi, cogwheelEnabled, networkStudy, view])
@@ -569,13 +578,14 @@ export function App({ edition }: AppProps) {
   )
   const corridorTrainSelected =
     isZurichChurTrain(selectedTrain, network) ||
-    isKientalGriesalpTrain(selectedTrain, network)
+    isKientalGriesalpTrain(selectedTrain, network) ||
+    isVitznauRigiTrain(selectedTrain, network)
   const activeJourney = useMemo(
     () =>
       corridor
         ? journeyForSwissCorridor(corridor, selectedTrain, network)
-        : SWITZERLAND_PROTOTYPE_JOURNEY,
-    [corridor, network, selectedTrain],
+        : isRigiTerrain ? RIGI_PENDING_JOURNEY : SWITZERLAND_PROTOTYPE_JOURNEY,
+    [corridor, isRigiTerrain, network, selectedTrain],
   )
   const journeyPosition = useMemo(
     () => positionOnJourney(activeJourney, journeyProgress),
@@ -796,6 +806,7 @@ export function App({ edition }: AppProps) {
   }, [])
   const handleNetworkTime = useCallback(
     (nextTime: number) => {
+      roadHistorySeekRef.current = undefined
       if (isPostbus) postbusSeekRef.current = { time: nextTime, at: performance.now() }
       if (
         networkStudy === 'national' &&
@@ -819,12 +830,20 @@ export function App({ edition }: AppProps) {
     ],
   )
   const handleSceneNetworkTime = useCallback((nextTime: number) => {
+    const roadSeek = roadHistorySeekRef.current
+    if (roadSeek && !postbusTickFollowsSeek(nextTime, roadSeek.time, (performance.now() - roadSeek.at) / 1000, playbackRate)) return
+    roadHistorySeekRef.current = undefined
     if (!isPostbus) { handleNetworkTime(nextTime); return }
     const seek = postbusSeekRef.current
     if (seek && !postbusTickFollowsSeek(nextTime, seek.time, (performance.now() - seek.at) / 1000, playbackRate)) return
     postbusSeekRef.current = undefined
     setNetworkTime(nextTime)
   }, [handleNetworkTime, isPostbus, playbackRate])
+  useEffect(() => {
+    // Resuming may wrap the two-hour study. The paused seek has already been
+    // applied, so subsequent scene ticks can own the playback clock again.
+    if (isPlaying || !selectedRoadId) roadHistorySeekRef.current = undefined
+  }, [isPlaying, selectedRoadId])
   const moveMapCamera = useCallback((action: MapCameraAction) => {
     setMapCameraCommand((current) => ({ id: current.id + 1, action }))
   }, [])
@@ -1055,7 +1074,7 @@ export function App({ edition }: AppProps) {
         progress: nextProgress,
         tunnel: 0,
         tunnelName: undefined,
-        region: nextCorridorId === 'kiental-griesalp' ? 'alpine' : 'plateau',
+        region: nextCorridorId === 'kiental-griesalp' ? 'alpine' : nextCorridorId === 'vitznau-rigi' ? 'lake' : 'plateau',
       }))
       setCorridorError(false)
       setSearchOpen(false)
@@ -1071,7 +1090,7 @@ export function App({ edition }: AppProps) {
     }
     const nextCorridorId = isKientalGriesalpTrain(selectedTrain, network)
       ? 'kiental-griesalp'
-      : 'zurich-chur'
+      : isVitznauRigiTrain(selectedTrain, network) ? 'vitznau-rigi' : 'zurich-chur'
     openTerrainCorridor(nextCorridorId, nextCorridorId === 'zurich-chur'
       ? swissCorridorProgressForTime(selectedTrain, network, networkTime)
       : 0.015)
@@ -1466,7 +1485,11 @@ export function App({ edition }: AppProps) {
         }
         return response.json() as Promise<CorridorSnapshot>
       })
-      .then(setCorridor)
+      .then((snapshot) => {
+        if (controller.signal.aborted) return
+        if (snapshot.id !== journeyCorridorId || !snapshot.route?.points?.length || !snapshot.terrain?.elevations?.length) throw new Error('Incomplete or mismatched terrain corridor')
+        setCorridor(snapshot)
+      })
       .catch((error: unknown) => {
         if (error instanceof DOMException && error.name === 'AbortError') return
         console.warn(`Unable to load the ${journeyCorridorId} terrain corridor`, error)
@@ -1880,6 +1903,10 @@ export function App({ edition }: AppProps) {
             selectedStation={selectedStation}
             onSelectStation={selectStation}
             onSelectTrain={selectTrain}
+            onSelectRoad={id => {
+              const road = roadTopology?.roads.find(road => road.id === id)
+              if (road) selectRoad(road)
+            }}
             airSnapshot={
               networkStudy === 'national' && airEnabled
                 ? activeAirSnapshot
@@ -1955,14 +1982,14 @@ export function App({ edition }: AppProps) {
           </Suspense>
         ) : (
           <Suspense fallback={null}>
-            <GleislichtScene
+            {(!isRigiTerrain || corridor) && <GleislichtScene
               corridor={corridor}
               isPlaying={isPlaying && !isNetwork}
               progress={journeyProgress}
               speedKmh={activeJourney.speedKmh}
               onProgress={handleJourneyProgress}
               onEnvironment={handleJourneyEnvironment}
-            />
+            />}
           </Suspense>
           )}
         </Suspense>
@@ -2008,7 +2035,7 @@ export function App({ edition }: AppProps) {
                 ? text.taktHubs
                 : journeyCorridorId === 'kiental-griesalp'
                   ? 'Kiental → Griesalp'
-                  : text.corridorSubtitle}
+                  : isRigiTerrain ? 'Vitznau → Rigi Kulm' : text.corridorSubtitle}
           </h1>
         </div>
         <div className="masthead-meta">
@@ -2021,7 +2048,7 @@ export function App({ edition }: AppProps) {
                   ? studyDateLabel
                   : journeyCorridorId === 'kiental-griesalp'
                     ? '46.582° N · 7.730° E'
-                    : '47.194° N · 9.312° E'}
+                    : isRigiTerrain ? 'Vitznau · Rigi Kulm' : '47.194° N · 9.312° E'}
               </span>
             </div>
             <nav className="language-picker" aria-label={text.languagePicker}>
@@ -2118,6 +2145,9 @@ export function App({ edition }: AppProps) {
           >
             <span>220</span>
             <span className="journey-name">Kiental → Griesalp</span>
+          </button>
+          <button type="button" aria-label={rigiTerrainCopy.enter} aria-pressed={isRigiTerrain} onClick={() => openTerrainCorridor('vitznau-rigi')}>
+            <span>RIGI</span><span className="journey-name">Vitznau → Rigi Kulm</span>
           </button>
         </nav>
       )}
@@ -2968,6 +2998,14 @@ export function App({ edition }: AppProps) {
           <p className="between">
             {selectedRoad.description ?? text.nationalMotorway}
           </p>
+          <Suspense fallback={<p className="road-traffic-summary">{text.loadingRoad}</p>}>
+            <RoadTrafficHistory road={selectedRoad.id} manifest={nationalRoad.manifest} fallback={roadSnapshot}
+              time={networkTime} language={language} onTime={time => {
+                setIsPlaying(false)
+                handleNetworkTime(time)
+                roadHistorySeekRef.current = { time, at: performance.now() }
+              }} />
+          </Suspense>
           <div className="metric-grid">
             <div>
               <span>{text.mappedRoadLength}</span>
@@ -3142,6 +3180,7 @@ export function App({ edition }: AppProps) {
                   : text.scheduledRail}
               {hasHeadwayMotion && <> {frequencyCopy.mixed}</>}
           </p>
+          {isRigi && network && !regionalNetworkError && <button type="button" className="journey-link" onClick={() => openTerrainCorridor('vitznau-rigi')}>{rigiTerrainCopy.enter} ↗</button>}
           <div className="metric-grid">
             <div>
               <span>{text.trips}</span>
@@ -3163,6 +3202,11 @@ export function App({ edition }: AppProps) {
             </div>
           </div>
         </section>
+      ) : isRigiTerrain && !corridor ? (
+        <section className="journey-card" aria-label={text.currentJourney} role="status">
+          <div className="service-row"><span className="service">RIGI</span><span>Vitznau → Rigi Kulm</span></div>
+          <p className="between">{corridorError ? text.terrainUnavailable : text.loadingTerrain}</p>
+        </section>
       ) : (
         <section className="journey-card" aria-label={text.currentJourney}>
           <div className="service-row">
@@ -3182,7 +3226,7 @@ export function App({ edition }: AppProps) {
               </>
             )}
           </p>
-          <div className="metric-grid">
+          {isRigiTerrain && corridor ? <Suspense fallback={null}><RigiTerrainProfile corridor={corridor} progress={journeyProgress} language={language} /></Suspense> : <div className="metric-grid">
             <div>
               <span>{text.velocity}</span>
               <strong>{activeJourney.speedKmh}</strong>
@@ -3195,7 +3239,7 @@ export function App({ edition }: AppProps) {
               </strong>
               <small>min</small>
             </div>
-          </div>
+          </div>}
         </section>
       )}
 

@@ -1,8 +1,9 @@
-import { mkdir, readFile, writeFile } from 'node:fs/promises'
+import { chmod, mkdir, readFile, writeFile } from 'node:fs/promises'
 import { resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { A1_ZURICH_SITE_FILTERS } from './astra-road-study-config.mjs'
 import { pullMeasuredData } from './astra-measured-data.mjs'
+import { RECORDING_OUTPUTS, cantonalSiteReferences, scopedRecordedSnapshot, validateRecordingScope } from './astra-recording-scopes.mjs'
 
 const argumentsList = process.argv.slice(2)
 const watch = argumentsList.includes('--watch')
@@ -10,10 +11,8 @@ const keepRaw = argumentsList.includes('--raw')
 const scopeArgument = argumentsList.find((argument) =>
   argument.startsWith('--scope='),
 )
-const scope = scopeArgument?.slice('--scope='.length) ?? 'a1-zurich'
-if (scope !== 'a1-zurich' && scope !== 'national') {
-  throw new Error(`Unknown recording scope: ${scope}`)
-}
+const scope = validateRecordingScope(scopeArgument?.slice('--scope='.length) ?? 'a1-zurich')
+const catalogPath = resolve(argumentsList.find((argument) => argument.startsWith('--catalog='))?.slice('--catalog='.length) ?? 'data/zurich-cantonal-road-counters.json')
 const topologyArgument = argumentsList.find((argument) =>
   argument.startsWith('--topology='),
 )
@@ -26,7 +25,7 @@ const outputArgument = argumentsList.find((argument) =>
 )
 const outputDirectory = resolve(
   outputArgument?.slice('--output='.length) ??
-    (scope === 'national' ? 'recordings/astra-national' : 'recordings/astra'),
+    RECORDING_OUTPUTS[scope],
 )
 const apiKey = process.env.ASTRA_API_KEY?.trim()
 const help = argumentsList.includes('--help')
@@ -36,10 +35,11 @@ function safeTimestamp(value) {
 }
 
 async function writeSnapshot() {
+  const catalog = scope === 'zurich-cantonal' ? JSON.parse(await readFile(catalogPath, 'utf8')) : undefined
   const siteReferences =
     scope === 'national'
       ? await nationalSiteReferences(topologyPath)
-      : A1_ZURICH_SITE_FILTERS
+      : scope === 'zurich-cantonal' ? cantonalSiteReferences(catalog) : A1_ZURICH_SITE_FILTERS
   const controller = new AbortController()
   const timeout = setTimeout(() => controller.abort(), 20_000)
   try {
@@ -48,20 +48,14 @@ async function writeSnapshot() {
       siteReferences,
       signal: controller.signal,
     })
-    const measurementTimes = snapshot.measurements.map(
+    const recordedSnapshot = scopedRecordedSnapshot(snapshot, scope, siteReferences, catalog)
+    const measurementTimes = recordedSnapshot.measurements.map(
       ({ measurementTime }) => measurementTime,
     )
     const newestMeasurementTime = measurementTimes.sort().at(-1)
     const fileStem = safeTimestamp(newestMeasurementTime)
-    const recordedSnapshot = {
-      ...snapshot,
-      metadata: {
-        ...snapshot.metadata,
-        recordingScope: scope,
-        requestedStationCount: siteReferences.length,
-      },
-    }
-    await mkdir(outputDirectory, { recursive: true })
+    await mkdir(outputDirectory, { recursive: true, mode: 0o700 })
+    await chmod(outputDirectory, 0o700)
     try {
       await writeFile(
         resolve(outputDirectory, `${fileStem}.json`),
@@ -113,7 +107,7 @@ function millisecondsUntilNextPublication() {
 async function main() {
   if (help) {
     console.log(
-      'Usage: ASTRA_API_KEY=... npm run data:road:record -- [--scope=a1-zurich|national] [--watch] [--raw] [--topology=public/data/swiss-road-topology.json] [--output=recordings/astra]',
+      'Usage: ASTRA_API_KEY=... npm run data:road:record -- [--scope=a1-zurich|national|zurich-cantonal] [--catalog=data/zurich-cantonal-road-counters.json] [--watch] [--raw] [--topology=public/data/swiss-road-topology.json] [--output=recordings/astra]',
     )
     return
   }

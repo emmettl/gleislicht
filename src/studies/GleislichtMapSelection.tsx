@@ -4,12 +4,14 @@ import type { NetworkTrain, StationIndexEntry } from '@motionstudies/core/domain
 import { MapTapGesture, pickMapTarget, type MapSelection } from './map-selection.ts'
 
 export interface MapSelectionSceneExtension {
+  onSelectRoad?: (road: string) => void
   onSelectTrain?: (train: NetworkTrain) => void
 }
 
-export function GleislichtMapSelection({ stations, onSelectStation, onSelectTrain, disabled }: MapSelectionSceneExtension & {
+export function GleislichtMapSelection({ stations, onSelectStation, onSelectTrain, onSelectRoad, roadsOnly, disabled }: MapSelectionSceneExtension & {
   stations: readonly StationIndexEntry[]
   onSelectStation?: (station: StationIndexEntry) => void
+  roadsOnly?: boolean
   disabled?: boolean
 }) {
   const { scene, camera, gl } = useThree()
@@ -17,10 +19,11 @@ export function GleislichtMapSelection({ stations, onSelectStation, onSelectTrai
   // The app's train handler follows the playback clock. Keep listeners and
   // in-progress gestures intact when that callback changes between frames.
   const select = useEffectEvent((target: MapSelection | undefined) => {
-    if (target?.kind === 'station') onSelectStation?.(target.value)
+    if (target?.kind === 'road') onSelectRoad?.(target.value)
+    else if (target?.kind === 'station') onSelectStation?.(target.value)
     else if (target?.kind === 'train') onSelectTrain?.(target.value)
   })
-  const enabled = !disabled && Boolean(onSelectStation || onSelectTrain)
+  const enabled = !disabled && Boolean(onSelectStation || onSelectTrain || onSelectRoad)
   useEffect(() => {
     if (!enabled) return
     const canvas = gl.domElement
@@ -33,7 +36,7 @@ export function GleislichtMapSelection({ stations, onSelectStation, onSelectTrai
     const move = (event: PointerEvent) => gesture.move(event.pointerId, event.clientX, event.clientY)
     const up = (event: PointerEvent) => {
       if (!gesture.up(event.pointerId, event.clientX, event.clientY)) return
-      const target = pickMapTarget(scene, camera, canvas.getBoundingClientRect(), event.clientX, event.clientY, event.pointerType === 'touch', byStop)
+      const target = pickMapTarget(scene, camera, canvas.getBoundingClientRect(), event.clientX, event.clientY, event.pointerType === 'touch', byStop, roadsOnly)
       select(target)
     }
     const cancel = (event: PointerEvent) => { gesture.up(event.pointerId, event.clientX, event.clientY, true) }
@@ -49,6 +52,6 @@ export function GleislichtMapSelection({ stations, onSelectStation, onSelectTrai
       canvas.removeEventListener('pointercancel', cancel)
       canvas.removeEventListener('lostpointercapture', cancel)
     }
-  }, [byStop, camera, enabled, gl, scene])
+  }, [byStop, camera, enabled, gl, scene, roadsOnly])
   return null
 }

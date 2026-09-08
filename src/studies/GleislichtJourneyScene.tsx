@@ -29,11 +29,11 @@ const HORIZONTAL_METRES_PER_UNIT = 1800
 const VERTICAL_METRES_PER_UNIT = 390
 
 function horizontalScale(corridor?: CorridorSnapshot) {
-  return corridor?.id === 'kiental-griesalp' ? 650 : HORIZONTAL_METRES_PER_UNIT
+  return corridor?.id === 'kiental-griesalp' || corridor?.id === 'vitznau-rigi' ? 650 : HORIZONTAL_METRES_PER_UNIT
 }
 
 function verticalScale(corridor: CorridorSnapshot) {
-  return corridor.id === 'kiental-griesalp' ? 300 : VERTICAL_METRES_PER_UNIT
+  return corridor.id === 'vitznau-rigi' ? 650 : corridor.id === 'kiental-griesalp' ? 300 : VERTICAL_METRES_PER_UNIT
 }
 
 const fallbackRouteCurve = new THREE.CatmullRomCurve3(
@@ -198,7 +198,7 @@ function MeasuredTerrain({ corridor }: { readonly corridor: CorridorSnapshot }) 
     next.computeVertexNormals()
     return next
   }, [corridor])
-  return <TerrainMeshes geometry={geometry} alpine={corridor.id === 'kiental-griesalp'} />
+  return <TerrainMeshes geometry={geometry} alpine={corridor.id === 'kiental-griesalp' || corridor.id === 'vitznau-rigi'} />
 }
 
 function CorridorLakes({ corridor }: { readonly corridor: CorridorSnapshot }) {
@@ -406,7 +406,7 @@ function terrainOpennessProfile(
   curve: THREE.CatmullRomCurve3,
 ) {
   if (!corridor) return [0.7]
-  const radius = corridor.id === 'kiental-griesalp' ? 420 : 900
+  const radius = corridor.id === 'kiental-griesalp' || corridor.id === 'vitznau-rigi' ? 420 : 900
   const scale = horizontalScale(corridor)
   return Array.from({ length: 129 }, (_, index) => {
     const point = curve.getPointAt(index / 128)
@@ -427,6 +427,7 @@ function terrainOpennessProfile(
 }
 
 function routeRegion(corridor: CorridorSnapshot | undefined, progress: number) {
+  if (corridor?.id === 'vitznau-rigi') return progress < 0.2 ? 'lake' : 'alpine'
   if (corridor?.id === 'kiental-griesalp' || progress > 0.72) return 'alpine'
   if (progress >= 0.28) return 'lake'
   return 'plateau'
@@ -678,8 +679,18 @@ function PostBusVehicle() {
   )
 }
 
+function CogwheelVehicle() {
+  return <group scale={0.28}>
+    {[-0.62, 0.62].map(z => <group key={z} position={[0, 0, z]}>
+      <mesh position={[0, 0.32, 0]}><boxGeometry args={[0.48, 0.42, 1.15]} /><meshStandardMaterial color="#ff6b61" emissive="#ff5848" emissiveIntensity={1.5} wireframe /></mesh>
+      <mesh position={[0, 0.55, 0]}><boxGeometry args={[0.5, 0.04, 1.18]} /><meshBasicMaterial color="#fff3a6" /></mesh>
+      {[-1, 1].flatMap(side => [-0.35, 0, 0.35].map(offset => <mesh key={`${side}-${offset}`} position={[side * 0.245, 0.39, offset]}><boxGeometry args={[0.012, 0.18, 0.22]} /><meshBasicMaterial color="#fff3c6" transparent opacity={0.75} /></mesh>))}
+    </group>)}
+  </group>
+}
+
 function JourneyVehicle({ kind }: { readonly kind: SwitzerlandCorridorVehicleKind }) {
-  return kind === 'bus' ? <PostBusVehicle /> : <RailVehicle />
+  return kind === 'bus' ? <PostBusVehicle /> : kind === 'cogwheel' ? <CogwheelVehicle /> : <RailVehicle />
 }
 
 function MovingWorld({
@@ -694,7 +705,7 @@ function MovingWorld({
   const localProgress = useRef(progress)
   const lastReport = useRef(0)
   const { camera } = useThree()
-  const alpine = corridor?.id === 'kiental-griesalp'
+  const alpine = corridor?.id === 'kiental-griesalp' || corridor?.id === 'vitznau-rigi'
   const vehicleKind = vehicleKindForSwissCorridor(corridor)
   const routeCurve = useMemo(() => routeCurveFor(corridor), [corridor])
   const rail = useMemo(
