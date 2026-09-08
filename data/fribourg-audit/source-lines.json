@@ -651,7 +651,9 @@
     "routeIds": [
       "92-9-E-j26-1"
     ],
-    "admittedRouteIds": [],
+    "admittedRouteIds": [
+      "92-9-E-j26-1"
+    ],
     "status": "crosswalk-candidate",
     "exclusionReason": null
   },

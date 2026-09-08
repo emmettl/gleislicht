@@ -18,6 +18,27 @@ spec.loader.exec_module(decoder)
 features, rows, sha = decoder.features, decoder.rows, decoder.sha
 
 LAYER = 'https://map.geo.fr.ch/arcgis/rest/services/PortailCarto/Theme_mobilite/MapServer/2'
+OGD_SERVICE = 'https://maps.fr.ch/ags/rest/services/OpenData/Lignes_de_transport_public/FeatureServer'
+OGD_ITEM = '518a09fdd5874b76b6eacfb0fe2bb8ec'
+OGD_ITEM_URL = f'https://maps.fr.ch/portal/sharing/rest/content/items/{OGD_ITEM}?f=pjson'
+OGD_LICENSE = 'Les géodonnées sont mises à disposition sous forme d’Open Government Data (OGD). Elles peuvent être utilisées, partagées et réutilisées gratuitement. Lors de l’utilisation, il faut en indiquer la source : « Source : Etat de Fribourg » ou « © Etat de Fribourg ».'
+
+
+def validate_reuse(item, service, page, lines):
+    """Bind explicit terms to every original geometry and adapter identity field."""
+    assert item['id'] == service['serviceItemId'] == OGD_ITEM
+    assert item['url'] == OGD_SERVICE and item['access'] == 'public'
+    assert item['licenseInfo'] == OGD_LICENSE, 'Changed OGD terms require review'
+    assert any(l['id'] == 1 and l['geometryType'] == 'esriGeometryPolyline' for l in service['layers'])
+    validate_page(page, [f['properties']['OBJECTID'] for f in lines])
+    ogd = {f['attributes']['OBJECTID']: f for f in page['features']}
+    for line in lines:
+        match = ogd[line['properties']['OBJECTID']]
+        assert match['geometry']['paths'] == line['geometry']['coordinates'], 'Different licensed geometry'
+        assert all(match['attributes'].get(k) == v for k, v in line['properties'].items()), 'Different licensed identity'
+        assert set(match['attributes']) - set(line['properties']) == {'TYPE_LIGNE'}
+    return {'matchedFeatures': len(lines), 'exactOriginalCoordinates': True,
+            'exactOriginalAttributes': True, 'additionalOgdFields': ['TYPE_LIGNE']}
 
 
 def validate_page(page, ids):
@@ -72,6 +93,12 @@ def main():
         validate_page(page, selected)
         lines.extend({'type': 'Feature', 'properties': f['attributes'], 'geometry': {'type': 'MultiLineString', 'coordinates': f['geometry']['paths']}} for f in page['features'])
     assert sorted(json.loads(save('ids-after.json', ids_url))['objectIds']) == ids, 'Source IDs changed during acquisition'
+    item = json.loads(save('ogd-catalogue-item.json', OGD_ITEM_URL))
+    service = json.loads(save('ogd-service.json', OGD_SERVICE + '?f=pjson'))
+    save('ogd-layer.json', OGD_SERVICE + '/1?f=pjson')
+    ogd_page = json.loads(save('ogd-lines.json', OGD_SERVICE + '/1/query?where=1%3D1&outFields=*&outSR=2056&f=json'))
+    save('ogd-metadata.xml', OGD_SERVICE + '/1/metadata')
+    equivalence = validate_reuse(item, service, ogd_page, lines)
     boundary_path = output / 'boundary.json.gz'
     if args.offline:
         assert sha(boundary_path.read_bytes()) == previous['derivedHashes']['boundary.json.gz'], 'Changed boundary snapshot'
@@ -96,18 +123,26 @@ def main():
         'schemaVersion': 1, 'publisher': 'Etat de Fribourg / Service de la mobilité / SIT',
         'sourceUrl': LAYER, 'metadataUrl': LAYER + '/metadata', 'attribution': 'Source: Etat de Fribourg',
         'sourceCrs': 'EPSG:2056', 'dataUpdated': None, 'metadataCreated': '2022-07-14',
-        'vintageNote': 'The embedded Esri CreaDate dates metadata only. No geometry update date is declared. PDF timetable dates do not date line geometry.',
+        'vintageNote': 'The embedded Esri CreaDate and catalogue created/modified timestamps date metadata only. No geometry update date is declared. PDF timetable dates do not date line geometry.',
         'acquiredAt': next(r['retrievedAt'] for r in records if r['file'] == 'layer.json'),
         'sourceSnapshotSha256': acquisition['derivedHashes']['decoded.json.gz'],
         'acquisition': acquisition,
-        'termsFiles': ['portal-terms.html', 'geoinformation-ordinance.pdf', 'metadata.xml'],
-        'license': 'Dataset-specific vector redistribution terms unresolved; no Creative Commons licence assigned',
-        'publicRedistributionCleared': False,
+        'termsFiles': ['portal-terms.html', 'geoinformation-ordinance.pdf', 'metadata.xml', 'ogd-catalogue-item.json', 'ogd-service.json', 'ogd-layer.json', 'ogd-metadata.xml'],
+        'license': 'Fribourg OGD: free use, sharing and reuse with Source: Etat de Fribourg attribution; no Creative Commons licence assigned',
+        'publicRedistributionCleared': True,
         'reuseEvidence': {
+            'catalogueItemUrl': OGD_ITEM_URL,
+            'featureServiceUrl': OGD_SERVICE + '/1',
+            'catalogueCreated': datetime.fromtimestamp(item['created'] / 1000, timezone.utc).isoformat(),
+            'catalogueModified': datetime.fromtimestamp(item['modified'] / 1000, timezone.utc).isoformat(),
+            'licenseInfo': OGD_LICENSE,
+            'equivalence': equivalence,
+            'geocatUrl': 'https://www.geocat.ch/geonetwork/srv/fre/catalog.search#/metadata/d578f90c-348f-41de-80be-4385a57605b9',
+            'geocatAccessNote': 'XML requests on 2026-09-08 returned HTTP 403/500 or a login page; no geometry vintage established from that linked record.',
             'portalTerms': 'https://map.geo.fr.ch/help/fr/conditions_utilisation.htm',
             'ordinanceUrl': 'https://bdlf.fr.ch/api/fr/versions/8468/pdf_file_with_annexes',
             'ordinanceEffective': '2024-03-01',
-            'assessment': 'OCGéo art. 12 requires attribution for reproduction; annex 2 classifies the cantonal public transport plan 56-FR as level A. The service metadata does not establish that this line layer is that exact dataset or supply vector terms. Preserve this supporting evidence without claiming a dataset-specific licence. Local archival research feed only until clarified.',
+            'assessment': 'Explicit dataset OGD terms permit attributed vector sharing/reuse. The catalogue title incorrectly says stops, but its URL and serviceItemId identify the service containing polyline layer 1. All 128 original line geometries and all original attributes match exactly; OGD adds TYPE_LIGNE. Reuse is resolved independently of the ordinance product mapping. Geometry vintage and physical direction remain unverified; retain an archival study release.',
         },
         'boundary': {**acquisition['boundary'], 'snapshotSha256': acquisition['derivedHashes']['boundary.json.gz'],
                      'attribution': '© swisstopo',

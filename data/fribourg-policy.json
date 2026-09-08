@@ -104,8 +104,8 @@
     }
   },
   "identityPolicy": "Exact source enterprise, transport mode and reviewed display-label interpretation. Autre is not an operator. Generic IC/IR/RE/Regio labels are not automatically matched to every railway service. Source OBJECTID is only an identity within the hashed snapshot.",
-  "admissionPolicy": "Complete directed platform sequence only; every segment must pass source projection/topology/detour checks. All original calls and repeat visits retained. Reservation/on-demand calls excluded. No unsourced gap interpolation.",
-  "releasePolicy": "Local archival research feed. Geometry vintage and dataset-specific vector redistribution terms remain unresolved; public deployment is not enabled by this study.",
+  "admissionPolicy": "Complete directed platform sequence only; every segment must pass source projection/topology/detour checks. All original calls and repeat visits retained. Reservation/on-demand calls excluded. No unsourced gap interpolation. One hashed 11.22 mm line 9 endpoint adjustment is explicitly inferred and disclosed per affected route graph.",
+  "releasePolicy": "Archival research feed with attributed vector reuse permitted by the exact matching cantonal OGD service. Geometry vintage and physical direction remain unverified; public deployment is not enabled by this study.",
   "supportingDocuments": [
     {
       "file": "timetable-10.213.pdf",
@@ -142,6 +142,28 @@
       "bytes": 515647,
       "timetableYear": 2026,
       "dataUpdated": "2025-09-25"
+    }
+  ],
+  "topologyRepairs": [
+    {
+      "id": "tpf-9-charmettes-11mm",
+      "sourceId": 22,
+      "geometrySha256": "48f028beb42f7c5d6b22125f9e051b103aed08c9b4e3128045669e3a7acc3dbd",
+      "fromPart": 0,
+      "fromVertex": 0,
+      "from": [
+        2578524.523400001,
+        1182636.4510000013
+      ],
+      "toPart": 2,
+      "toVertex": 243,
+      "to": [
+        2578524.5166999996,
+        1182636.460000001
+      ],
+      "gapMetres": 0.011220071979723738,
+      "classification": "inferred-source-endpoint-adjustment",
+      "evidence": "The two disconnected components of the same official TPF line 9 feature end 11.22 mm apart near Charmettes. Collapse only this pinned endpoint onto the other original endpoint; keep both source snapshots unchanged. This is an inferred precision repair, not surveyed topology or road-direction evidence."
     }
   ]
 }

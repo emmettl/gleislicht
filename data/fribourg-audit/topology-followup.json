@@ -1,0 +1,147 @@
+{
+  "sourceSha256": "e8523af34fcedca7f8b0cbe495446ff93a75d8563c62b243da942c39c5243f47",
+  "sourceCrs": "EPSG:2056",
+  "method": "Original exact-vertex components; minimum source-part endpoint to segment distance for each component pair. This diagnoses gaps, not physical connectivity or road direction.",
+  "features": [
+    {
+      "sourceId": 128,
+      "name": "Marly- Pérolles-Fribourg gare-Portes-de-Fribourg",
+      "parts": 46,
+      "components": 2,
+      "nearestEndpointToOtherComponent": [
+        {
+          "components": [
+            0,
+            1
+          ],
+          "metres": 9.023679293760242,
+          "point": [
+            2578452.515999999,
+            1184899.6160000004
+          ],
+          "projection": [
+            2578446.6279999986,
+            1184906.454
+          ],
+          "targetPart": 32,
+          "targetEdge": 0,
+          "fraction": 0
+        }
+      ]
+    },
+    {
+      "sourceId": 22,
+      "name": "Petit-Moncor - Pérolles - Fribourg - Granges-Paccot - Givisiez ",
+      "parts": 16,
+      "components": 2,
+      "nearestEndpointToOtherComponent": [
+        {
+          "components": [
+            0,
+            1
+          ],
+          "metres": 0.011220071979723738,
+          "point": [
+            2578524.523400001,
+            1182636.4510000013
+          ],
+          "projection": [
+            2578524.5166999996,
+            1182636.460000001
+          ],
+          "targetPart": 2,
+          "targetEdge": 242,
+          "fraction": 1
+        }
+      ]
+    },
+    {
+      "sourceId": 16,
+      "name": "Dailles-Moncor-Fribourg gare-St-Pierre-Schoenberg",
+      "parts": 41,
+      "components": 2,
+      "nearestEndpointToOtherComponent": [
+        {
+          "components": [
+            0,
+            1
+          ],
+          "metres": 561.1608540438382,
+          "point": [
+            2579357.772999998,
+            1184066.5590000004
+          ],
+          "projection": [
+            2579900.1950000003,
+            1183922.7540000007
+          ],
+          "targetPart": 40,
+          "targetEdge": 6,
+          "fraction": 1
+        }
+      ]
+    },
+    {
+      "sourceId": 10,
+      "name": "S20/S21 Fribourg/Freiburg - Morat - Ins - Neuchâtel",
+      "parts": 5,
+      "components": 3,
+      "nearestEndpointToOtherComponent": [
+        {
+          "components": [
+            1,
+            2
+          ],
+          "metres": 0.025946316018777574,
+          "point": [
+            2577139.6149999984,
+            1198968.6339999996
+          ],
+          "projection": [
+            2577139.6319574616,
+            1198968.6143618796
+          ],
+          "targetPart": 2,
+          "targetEdge": 0,
+          "fraction": 0.001697331024330059
+        },
+        {
+          "components": [
+            0,
+            2
+          ],
+          "metres": 0.03970000147819519,
+          "point": [
+            2577113.9459999986,
+            1198947.6030000001
+          ],
+          "projection": [
+            2577113.9857,
+            1198947.6030000001
+          ],
+          "targetPart": 2,
+          "targetEdge": 1,
+          "fraction": 1
+        },
+        {
+          "components": [
+            0,
+            1
+          ],
+          "metres": 33.18434151774674,
+          "point": [
+            2577113.9459999986,
+            1198947.6030000001
+          ],
+          "projection": [
+            2577139.6149999984,
+            1198968.6339999996
+          ],
+          "targetPart": 1,
+          "targetEdge": 0,
+          "fraction": 0
+        }
+      ]
+    }
+  ]
+}

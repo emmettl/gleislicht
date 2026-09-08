@@ -1,0 +1,176 @@
+{
+ "currentVersion": 11.5,
+ "cimVersion": "3.5.0",
+ "serviceDescription": "Lignes de bus et de train.<br /> \t\t<a href='https://www.geocat.ch/geonetwork/srv/fre/catalog.search#/metadata/d578f90c-348f-41de-80be-4385a57605b9' target='_blank'>Lien vers geocat.ch<\/a><div><b><br /><\/b><\/div><div><b>Accès aux données<\/b> : <\/div><ul><li>Géoservices ArcGIS REST : <a href='https://maps.fr.ch/ags/rest/services/OpenData/Lignes_de_transport_public/MapServer' target='_blank'>Mapservice<\/a>, <a href='https://maps.fr.ch/ags/rest/services/OpenData/Lignes_de_transport_public/FeatureServer' target='_blank'>Featureservice<\/a><\/li><li>Géoservices OGC : <a href='&amp;service=WMS' target='_blank'>WMS<\/a>, <a href='&amp;service=WFS' target='_blank'>WFS<\/a><\/li><li>Téléchargement des données : <a href='https://maps.fr.ch/OpenData/FGDB/Lignes de transport public.zip' target='_blank'>FGDB<\/a>, <a href='https://maps.fr.ch/OpenData/SHP/Lignes de transport public.shz' target='_blank'>SHP<\/a><\/li><li><a href='&amp;theme=noTheme' target='_blank'>Visualisation des données sur maps.fr.ch<\/a><\/li><\/ul><div><b><br /><\/b><\/div><div><b>Autres informations<\/b> : <\/div><div>Classe : SMO6000L_LIGNE_TP<\/div><div>Propriétaire de la donnée : Service de la mobilité (SMo)<\/div>",
+ "hasVersionedData": false,
+ "hasArchivedData": false,
+ "hasBranchVersionedData": false,
+ "supportsDisconnectedEditing": false,
+ "supportsDatumTransformation": true,
+ "supportsReturnServiceEditsOption": true,
+ "returnServiceEditsHaveSR": true,
+ "supportsQueryDataElements": true,
+ "datesInUnknownTimezone": false,
+ "supportsRelationshipsResource": true,
+ "syncEnabled": false,
+ "syncCapabilities": {
+  "supportsRegisterReplicaForServer": true,
+  "supportsSyncDirectionControl": true,
+  "supportsPerLayerSync": true,
+  "supportsPerReplicaSync": true,
+  "supportsAttachmentsSyncDirection": true,
+  "supportsSyncModelNone": true,
+  "supportsDurableUrlForSyncModelNone": false
+ },
+ "supportedExportFormats": "sqlite,filegdb,shapefile,csv,geojson",
+ "extractChangesCapabilities": {
+  "supportsReturnIdsOnly": false,
+  "supportsReturnExtentOnly": false,
+  "supportsReturnAttachments": false,
+  "supportsLayerQueries": false,
+  "supportsGeometry": false,
+  "supportsFeatureReturn": false,
+  "supportsReturnHasGeometryUpdates": false,
+  "supportsFieldsToCompare": false,
+  "supportsServerGens": false
+ },
+ "supportedQueryFormats": "JSON",
+ "maxRecordCount": 2000,
+ "maxRecordCountFactor": 1,
+ "capabilities": "Query",
+ "description": "Lignes de bus et de train. \t\tLien vers geocat.chAccès aux données : Géoservices ArcGIS REST : Mapservice, FeatureserviceGéoservices OGC : WMS, WFSTéléchargement des données : FGDB, SHPVisualisation des données sur maps.fr.chAutres informations : Classe : SMO6000L_LIGNE_TPPropriétaire de la donnée : Service de la mobilité (SMo)",
+ "copyrightText": "DESCRIPTION_SMO6000L_LIGNE_TP",
+ "advancedEditingCapabilities": {
+  "supportsSplit": false,
+  "supportsReturnServiceEditsInSourceSR": true,
+  "supportsAsyncApplyEdits": true,
+  "supportsApplyEditsbyUploadID": true,
+  "supportedApplyEditsUploadIDFormats": "JSON,PBF",
+  "supportsMultipatchOptionForServiceEdits": true,
+  "supportedApplyEditsOptions": {"supportedEditingOptions": 0}
+ },
+ "spatialReference": {
+  "wkid": 2056,
+  "latestWkid": 2056,
+  "xyTolerance": 0.001,
+  "zTolerance": 0.001,
+  "mTolerance": 0.001,
+  "falseX": -27386400,
+  "falseY": -32067900,
+  "xyUnits": 10000,
+  "falseZ": -100000,
+  "zUnits": 10000,
+  "falseM": -100000,
+  "mUnits": 10000
+ },
+ "initialExtent": {
+  "xmin": 2534963.1341048,
+  "ymin": 1150429.6088608773,
+  "xmax": 2593441.5091287787,
+  "ymax": 1197964.662242942,
+  "spatialReference": {
+   "wkid": 2056,
+   "latestWkid": 2056,
+   "xyTolerance": 0.001,
+   "zTolerance": 0.001,
+   "mTolerance": 0.001,
+   "falseX": -27386400,
+   "falseY": -32067900,
+   "xyUnits": 10000,
+   "falseZ": -100000,
+   "zUnits": 10000,
+   "falseM": -100000,
+   "mUnits": 10000
+  }
+ },
+ "fullExtent": {
+  "xmin": 2520168.8649999984,
+  "ymin": 1142363.297600001,
+  "xmax": 2605785.800999999,
+  "ymax": 1208217.3649999984,
+  "spatialReference": {
+   "wkid": 2056,
+   "latestWkid": 2056,
+   "xyTolerance": 0.001,
+   "zTolerance": 0.001,
+   "mTolerance": 0.001,
+   "falseX": -27386400,
+   "falseY": -32067900,
+   "xyUnits": 10000,
+   "falseZ": -100000,
+   "zUnits": 10000,
+   "falseM": -100000,
+   "mUnits": 10000
+  }
+ },
+ "allowGeometryUpdates": true,
+ "allowTrueCurvesUpdates": true,
+ "onlyAllowTrueCurveUpdatesByTrueCurveClients": true,
+ "supportsApplyEditsWithGlobalIds": false,
+ "supportsTrueCurve": true,
+ "supportedCurveTypes": [
+  "esriGeometryCircularArc",
+  "esriGeometryEllipticArc",
+  "esriGeometryBezier3Curve"
+ ],
+ "units": "esriMeters",
+ "documentInfo": {
+  "Title": "Thème mobilité_LKa",
+  "Author": "",
+  "Comments": "",
+  "Subject": "",
+  "Category": "",
+  "Keywords": "mobilite,OGD"
+ },
+ "supportsQueryDomains": true,
+ "supportsQueryContingentValues": true,
+ "layers": [
+  {
+   "id": 0,
+   "name": "Arrêts de transport public",
+   "parentLayerId": -1,
+   "defaultVisibility": true,
+   "subLayerIds": null,
+   "minScale": 1000000,
+   "maxScale": 0,
+   "type": "Feature Layer",
+   "geometryType": "esriGeometryPoint"
+  },
+  {
+   "id": 1,
+   "name": "Lignes de transport public",
+   "parentLayerId": -1,
+   "defaultVisibility": true,
+   "subLayerIds": null,
+   "minScale": 1000000,
+   "maxScale": 0,
+   "type": "Feature Layer",
+   "geometryType": "esriGeometryPolyline"
+  }
+ ],
+ "tables": [
+  {
+   "id": 2,
+   "name": "Relation lignes arrêts de transport public"
+  }
+ ],
+ "relationships": [
+  {
+   "id": 0,
+   "name": "SMO6002R_LIGNE_ARRET"
+  }
+ ],
+ "enableZDefaults": false,
+ "allowUpdateWithoutMValues": false,
+ "supportsVCSProjection": true,
+ "referenceScale": 0,
+ "hasSharedTemplates": true,
+ "supportsSharedTemplates": true,
+ "infoInEstimates": [
+  "extent",
+  "count"
+ ],
+ "supportsAppend": true,
+ "supportedAppendFormats": "FILEGDB,PBF",
+ "serviceItemId": "518a09fdd5874b76b6eacfb0fe2bb8ec"
+}

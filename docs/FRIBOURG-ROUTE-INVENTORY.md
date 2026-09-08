@@ -131,7 +131,7 @@ Generated from the [Fribourg audit](FRIBOURG-STUDY.md). Every one of the 207 ann
 | 834 | 5 | 92-5-A-j26-1 | bus | La Sarine | 19 | 263/269; 2/5 | 155/155; 2/2 | Partially admitted |
 | 834 | 6 | 92-6-B-j26-1 | bus | La Sarine | 20 | 151/153; 3/4 | 151/153; 3/4 | Partially admitted |
 | 834 | 8 | 92-8-D-j26-1 | bus | La Sarine | 21 | 152/152; 4/4 | 152/152; 4/4 | All dated trips admitted |
-| 834 | 9 | 92-9-E-j26-1 | bus | La Sarine | 22 | 0/151; 0/10 | 0/151; 0/4 | Excluded |
+| 834 | 9 | 92-9-E-j26-1 | bus | La Sarine | 22 | 143/151; 8/10 | 151/151; 4/4 | Partially admitted |
 | 7231 | EV | 92-A00-O-j26-1 | bus | La Broye, La Sarine | — | 0/0; 0/0 | 0/0; 0/0 | Inactive on both dates |
 | 7231 | EV1 | 92-A02-9-j26-1 | bus | La Glâne, La Sarine, Sense | — | 0/0; 0/0 | 0/0; 0/0 | Inactive on both dates |
 | 7231 | EV2 | 92-A02-F-j26-1 | bus | La Broye, See | — | 0/0; 0/0 | 0/0; 0/0 | Inactive on both dates |
@@ -237,7 +237,7 @@ Generated from the [Fribourg audit](FRIBOURG-STUDY.md). Every one of the 207 ann
 | 19 | 20.005 | TPF / Bus urbain | Villars-sur-Glâne gare-Fribourg gare-Torry | 92-5-A-j26-1 | 92-5-A-j26-1 | — |
 | 20 | 20.006 | TPF / Bus urbain | Guintzet-Fribourg gare-Musy | 92-6-B-j26-1 | 92-6-B-j26-1 | — |
 | 21 | 20.008 | TPF / Bus urbain | Marly-Fribourg - Givisiez - Corminboeuf  | 92-8-D-j26-1 | 92-8-D-j26-1 | — |
-| 22 | 20.009 | TPF / Bus urbain | Petit-Moncor - Pérolles - Fribourg - Granges-Paccot - Givisiez  | 92-9-E-j26-1 | — | — |
+| 22 | 20.009 | TPF / Bus urbain | Petit-Moncor - Pérolles - Fribourg - Granges-Paccot - Givisiez  | 92-9-E-j26-1 | 92-9-E-j26-1 | — |
 | 23 | 20.010 | TPF / Bus urbain | Fribourg - Granges-Paccot - Givisiez | — | — | no-matching-canton-serving-gtfs-route |
 | 24 | 20.011 | TPF / Bus urbain | Fribourg-Matran-Rosé | 92-11-E-j26-1 | 92-11-E-j26-1 | — |
 | 25 | 20.012 | TPF / Bus urbain | Düdingen, Warpel - Düdingen, Gantrischweg | 92-12-E-j26-1 | 92-12-E-j26-1 | — |

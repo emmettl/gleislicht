@@ -55,6 +55,15 @@ export async function buildFribourgRegion({ archive, sourceDirectory = 'data/fri
   for (const raw of timetable.snapshots) {
     console.log(`Matching every directed Fribourg pattern for ${raw.metadata.serviceDate}…`)
     const result = applyFribourgGeometry(raw, routes, source, crosswalk)
+    const affected = result.trains.filter(t => t.geometryInference), affectedIds = new Set(affected.map(t => t.id))
+    const baseline = applyFribourgGeometry({ ...raw, trains: raw.trains.filter(t => affectedIds.has(t.id)) }, routes, source, { ...crosswalk, topologyRepairs: [] })
+    const previouslyAdmitted = new Set(baseline.trains.filter(t => t.admission === 'admitted').map(t => t.id))
+    const topologyRepairEffect = { repairs: crosswalk.topologyRepairs ?? [], routeIds: [...new Set(affected.map(t => t.routeId))],
+      baselineAdmittedTrips: previouslyAdmitted.size, repairedAdmittedTrips: affected.filter(t => t.admission === 'admitted').length,
+      newlyAdmittedTrips: affected.filter(t => t.admission === 'admitted' && !previouslyAdmitted.has(t.id)).length,
+      baselineFailedPairs: baseline.pairs.filter(p => p.pathIndex === null),
+      lostAdmittedTrips: affected.filter(t => t.admission !== 'admitted' && previouslyAdmitted.has(t.id)).length }
+    assert.equal(topologyRepairEffect.lostAdmittedTrips, 0, 'Topology repair lost a previously admitted journey')
     routeCrosswalk = result.routeCrosswalk
     const groups = []
     for (const key of [...new Set(result.trains.map(t => `${t.agencyId}:${routes.get(t.routeId).mode}`))].sort()) {
@@ -68,11 +77,12 @@ export async function buildFribourgRegion({ archive, sourceDirectory = 'data/fri
     }
     const snapshot = compactBernFeed(raw, result)
     snapshot.metadata = { ...snapshot.metadata, publisher: 'Gleislicht', timetablePublisher: 'SBB', attribution: 'opentransportdata.swiss',
-      label: 'Fribourg canton — archival source-line study', releaseStatus: 'local-research-only', publicRedistributionCleared: false, sourceHashes: hashes, timetable: provenance.timetable,
+      label: 'Fribourg canton — archival source-line study', releaseStatus: 'archival-study', publicRedistributionCleared: source.metadata.publicRedistributionCleared, sourceHashes: hashes, timetable: provenance.timetable,
       model: 'Scheduled interpolation along cantonal source centrelines; exactTimes=0 instances are representative headway motion, not exact departures or observed vehicles.',
       scope: timetable.census.boundaryRule, admission: 'Only complete directed patterns with every segment passing geometry limits and no reservation/on-demand call. Exclusions retained in the canton audit.',
       geometry: { ...source.metadata, transformation: 'swisstopo approximate CH1903+/WGS84 formula; original LV95 vertices, no simplification, seven-decimal output coordinates',
         crosswalkSupportingDocuments: crosswalk.supportingDocuments ?? [],
+        topologyRepairs: crosswalk.topologyRepairs ?? [],
         limits: FRIBOURG_LIMITS, direction: 'Bidirectional centreline inference from ordered calls. No road one-way or rail running-track certification; no realtime/diversion verification.',
         localMetadata: '../sources.json', localTerms: source.metadata.termsFiles.map(name => '../' + name) },
     }
@@ -97,7 +107,7 @@ export async function buildFribourgRegion({ archive, sourceDirectory = 'data/fri
       else timing.maximumPositiveDurationSpeedKmh = Math.max(timing.maximumPositiveDurationSpeedKmh, pair.pathMetres / seconds * 3.6)
     }
     patternSets.push(new Set(result.patterns.map(p => p.id)))
-    const report = { schemaVersion: 1, serviceDate: raw.metadata.serviceDate, sourceHashes: hashes, coverage, groups, timing,
+    const report = { schemaVersion: 1, serviceDate: raw.metadata.serviceDate, sourceHashes: hashes, coverage, groups, timing, topologyRepairEffect,
       pairFailures: Object.fromEntries([...new Set(result.pairs.filter(p => p.pathIndex === null).map(p => p.reason))].sort().map(reason => {
         const pairs = result.pairs.filter(p => p.reason === reason)
         return [reason, { directedPairs: pairs.length, segmentOccurrences: pairs.reduce((n, p) => n + p.occurrences, 0) }]
@@ -116,7 +126,8 @@ export async function buildFribourgRegion({ archive, sourceDirectory = 'data/fri
         morning: { trips: morning.trains.length, gzipBytes: gzipSync(JSON.stringify(morning)).length },
         chunks: chunks.map(({ descriptor, payload }) => ({ ...descriptor, gzipBytes: gzipSync(JSON.stringify(payload)).length })) },
       validation: { completeSourceCalls: true, directedEndpoints: true, finiteOrderedTimes: true, chunkHashesAndTripIdentity: true,
-        admittedGeometryCoverage: 1, unsourcedInterpolationInFeed: false, physicalDirectionCertified: false, yearRoundCoverageEstablished: false },
+        admittedGeometryCoverage: 1, unsourcedInterpolationInFeed: false, inferredTopologyRepairs: (crosswalk.topologyRepairs ?? []).length,
+        physicalDirectionCertified: false, yearRoundCoverageEstablished: false },
     }
     await writeJson(join(auditDirectory, `${raw.metadata.serviceDate}.json`), report)
     reports.push({ ...report, patterns: undefined, directedPairs: undefined })
@@ -166,7 +177,7 @@ export async function buildFribourgRegion({ archive, sourceDirectory = 'data/fri
   await writeJson(join(output, 'sources.json'), provenance, true)
   for (const name of source.metadata.termsFiles) await copyFile(join(sourceDirectory, name), join(output, name))
   for (const document of crosswalk.supportingDocuments ?? []) await copyFile(join(sourceDirectory, document.file), join(output, document.file))
-  await writeJson(join(output, 'index.json'), { label: 'Fribourg canton local archival regional feed', publicRedistributionCleared: false, sourceHashes: hashes, dates: dates.map(date => ({ date,
+  await writeJson(join(output, 'index.json'), { label: 'Fribourg canton local archival regional feed', publicRedistributionCleared: source.metadata.publicRedistributionCleared, sourceHashes: hashes, dates: dates.map(date => ({ date,
     manifest: `${date}/fribourg-region-day-manifest.json`, morning: `${date}/fribourg-region-morning.json` })), admission: 'Complete geometry patterns only; see docs/FRIBOURG-STUDY.md and data/fribourg-audit for exclusions.' }, true)
   return summary
 }

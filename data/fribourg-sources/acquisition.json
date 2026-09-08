@@ -98,6 +98,41 @@
       "retrievedAt": "2026-09-08T18:02:48.519572+00:00",
       "sha256": "00a1a1985cb71689cd6eb18ada00d64a4bbeb28b6e3c2c52ac891041f69dce14",
       "bytes": 450
+    },
+    {
+      "file": "ogd-catalogue-item.json",
+      "url": "https://maps.fr.ch/portal/sharing/rest/content/items/518a09fdd5874b76b6eacfb0fe2bb8ec?f=pjson",
+      "retrievedAt": "2026-09-08T18:28:48.411614+00:00",
+      "sha256": "40a2b8839093999fe8f4ba57efad4eb2a1c755f132eb229b67cfa85cadee6745",
+      "bytes": 3721
+    },
+    {
+      "file": "ogd-service.json",
+      "url": "https://maps.fr.ch/ags/rest/services/OpenData/Lignes_de_transport_public/FeatureServer?f=pjson",
+      "retrievedAt": "2026-09-08T18:28:47.399853+00:00",
+      "sha256": "79af8ebc9f937529083598c8815d46ea0776a13db354b56d10f62753c457a2e8",
+      "bytes": 6013
+    },
+    {
+      "file": "ogd-layer.json",
+      "url": "https://maps.fr.ch/ags/rest/services/OpenData/Lignes_de_transport_public/FeatureServer/1?f=pjson",
+      "retrievedAt": "2026-09-08T18:29:07.759102+00:00",
+      "sha256": "75e9af632467c7b339270c467fb77115fbddd19fbe48f28901bab4ccbdb05f07",
+      "bytes": 9416
+    },
+    {
+      "file": "ogd-lines.json",
+      "url": "https://maps.fr.ch/ags/rest/services/OpenData/Lignes_de_transport_public/FeatureServer/1/query?where=1%3D1&outFields=*&outSR=2056&f=json",
+      "retrievedAt": "2026-09-08T18:29:10.739330+00:00",
+      "sha256": "3343f16d66a1aa62ebeae2c4356b85ed11fadb55c7356eaf3b8aa860dd557c7c",
+      "bytes": 7915588
+    },
+    {
+      "file": "ogd-metadata.xml",
+      "url": "https://maps.fr.ch/ags/rest/services/OpenData/Lignes_de_transport_public/FeatureServer/1/metadata",
+      "retrievedAt": "2026-09-08T18:29:38.532354+00:00",
+      "sha256": "5c20496fa152276dafaf2b31e5d9ceeaa032a44d29d85e69c2b259472ef0711a",
+      "bytes": 648
     }
   ],
   "lineCount": 128,

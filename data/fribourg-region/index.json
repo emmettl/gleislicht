@@ -1,11 +1,11 @@
 {
   "label": "Fribourg canton local archival regional feed",
-  "publicRedistributionCleared": false,
+  "publicRedistributionCleared": true,
   "sourceHashes": {
     "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
     "source": "e8523af34fcedca7f8b0cbe495446ff93a75d8563c62b243da942c39c5243f47",
-    "crosswalk": "c3c28f0f3952c03f4695ee6331cf80a6224ff1df87ee10a4efcb69fadb99063d",
-    "provenance": "4a4bb2dae3fc541b91018097cd82dbcc91c259b327cf52d19b8d5b17919077c9"
+    "crosswalk": "5cab135daffaa81424aef503c6afa5e70b38f3919a04998b569a3da02b1ff1a9",
+    "provenance": "7d23e09a35768de1cfd598a7ca824ac7c93d03242ff8955e70ca778213549086"
   },
   "dates": [
     {

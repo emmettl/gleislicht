@@ -7,7 +7,7 @@
   "sourceCrs": "EPSG:2056",
   "dataUpdated": null,
   "metadataCreated": "2022-07-14",
-  "vintageNote": "The embedded Esri CreaDate dates metadata only. No geometry update date is declared. PDF timetable dates do not date line geometry.",
+  "vintageNote": "The embedded Esri CreaDate and catalogue created/modified timestamps date metadata only. No geometry update date is declared. PDF timetable dates do not date line geometry.",
   "acquiredAt": "2026-09-08T18:02:36.135027+00:00",
   "sourceSnapshotSha256": "e8523af34fcedca7f8b0cbe495446ff93a75d8563c62b243da942c39c5243f47",
   "acquisition": {
@@ -110,6 +110,41 @@
         "retrievedAt": "2026-09-08T18:02:48.519572+00:00",
         "sha256": "00a1a1985cb71689cd6eb18ada00d64a4bbeb28b6e3c2c52ac891041f69dce14",
         "bytes": 450
+      },
+      {
+        "file": "ogd-catalogue-item.json",
+        "url": "https://maps.fr.ch/portal/sharing/rest/content/items/518a09fdd5874b76b6eacfb0fe2bb8ec?f=pjson",
+        "retrievedAt": "2026-09-08T18:28:48.411614+00:00",
+        "sha256": "40a2b8839093999fe8f4ba57efad4eb2a1c755f132eb229b67cfa85cadee6745",
+        "bytes": 3721
+      },
+      {
+        "file": "ogd-service.json",
+        "url": "https://maps.fr.ch/ags/rest/services/OpenData/Lignes_de_transport_public/FeatureServer?f=pjson",
+        "retrievedAt": "2026-09-08T18:28:47.399853+00:00",
+        "sha256": "79af8ebc9f937529083598c8815d46ea0776a13db354b56d10f62753c457a2e8",
+        "bytes": 6013
+      },
+      {
+        "file": "ogd-layer.json",
+        "url": "https://maps.fr.ch/ags/rest/services/OpenData/Lignes_de_transport_public/FeatureServer/1?f=pjson",
+        "retrievedAt": "2026-09-08T18:29:07.759102+00:00",
+        "sha256": "75e9af632467c7b339270c467fb77115fbddd19fbe48f28901bab4ccbdb05f07",
+        "bytes": 9416
+      },
+      {
+        "file": "ogd-lines.json",
+        "url": "https://maps.fr.ch/ags/rest/services/OpenData/Lignes_de_transport_public/FeatureServer/1/query?where=1%3D1&outFields=*&outSR=2056&f=json",
+        "retrievedAt": "2026-09-08T18:29:10.739330+00:00",
+        "sha256": "3343f16d66a1aa62ebeae2c4356b85ed11fadb55c7356eaf3b8aa860dd557c7c",
+        "bytes": 7915588
+      },
+      {
+        "file": "ogd-metadata.xml",
+        "url": "https://maps.fr.ch/ags/rest/services/OpenData/Lignes_de_transport_public/FeatureServer/1/metadata",
+        "retrievedAt": "2026-09-08T18:29:38.532354+00:00",
+        "sha256": "5c20496fa152276dafaf2b31e5d9ceeaa032a44d29d85e69c2b259472ef0711a",
+        "bytes": 648
       }
     ],
     "lineCount": 128,
@@ -126,15 +161,34 @@
   "termsFiles": [
     "portal-terms.html",
     "geoinformation-ordinance.pdf",
-    "metadata.xml"
+    "metadata.xml",
+    "ogd-catalogue-item.json",
+    "ogd-service.json",
+    "ogd-layer.json",
+    "ogd-metadata.xml"
   ],
-  "license": "Dataset-specific vector redistribution terms unresolved; no Creative Commons licence assigned",
-  "publicRedistributionCleared": false,
+  "license": "Fribourg OGD: free use, sharing and reuse with Source: Etat de Fribourg attribution; no Creative Commons licence assigned",
+  "publicRedistributionCleared": true,
   "reuseEvidence": {
+    "catalogueItemUrl": "https://maps.fr.ch/portal/sharing/rest/content/items/518a09fdd5874b76b6eacfb0fe2bb8ec?f=pjson",
+    "featureServiceUrl": "https://maps.fr.ch/ags/rest/services/OpenData/Lignes_de_transport_public/FeatureServer/1",
+    "catalogueCreated": "2024-09-20T13:26:30.775000+00:00",
+    "catalogueModified": "2026-07-08T14:41:59.462000+00:00",
+    "licenseInfo": "Les géodonnées sont mises à disposition sous forme d’Open Government Data (OGD). Elles peuvent être utilisées, partagées et réutilisées gratuitement. Lors de l’utilisation, il faut en indiquer la source : « Source : Etat de Fribourg » ou « © Etat de Fribourg ».",
+    "equivalence": {
+      "matchedFeatures": 128,
+      "exactOriginalCoordinates": true,
+      "exactOriginalAttributes": true,
+      "additionalOgdFields": [
+        "TYPE_LIGNE"
+      ]
+    },
+    "geocatUrl": "https://www.geocat.ch/geonetwork/srv/fre/catalog.search#/metadata/d578f90c-348f-41de-80be-4385a57605b9",
+    "geocatAccessNote": "XML requests on 2026-09-08 returned HTTP 403/500 or a login page; no geometry vintage established from that linked record.",
     "portalTerms": "https://map.geo.fr.ch/help/fr/conditions_utilisation.htm",
     "ordinanceUrl": "https://bdlf.fr.ch/api/fr/versions/8468/pdf_file_with_annexes",
     "ordinanceEffective": "2024-03-01",
-    "assessment": "OCGéo art. 12 requires attribution for reproduction; annex 2 classifies the cantonal public transport plan 56-FR as level A. The service metadata does not establish that this line layer is that exact dataset or supply vector terms. Preserve this supporting evidence without claiming a dataset-specific licence. Local archival research feed only until clarified."
+    "assessment": "Explicit dataset OGD terms permit attributed vector sharing/reuse. The catalogue title incorrectly says stops, but its URL and serviceItemId identify the service containing polyline layer 1. All 128 original line geometries and all original attributes match exactly; OGD adds TYPE_LIGNE. Reuse is resolved independently of the ordinance product mapping. Geometry vintage and physical direction remain unverified; retain an archival study release."
   },
   "boundary": {
     "edition": "2026-01",

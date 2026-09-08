@@ -1,8 +1,9 @@
 import assert from 'node:assert/strict'
+import { createHash } from 'node:crypto'
 import { applyBernGeometry, BERN_LIMITS } from './bern-line-geometry.mjs'
 
-// Same conservative source-line tolerances as Bern; never connect separate
-// parts unless their original LV95 vertices agree exactly.
+// Same projection limits as Bern. Only the explicit, hashed millimetre repair
+// below can join otherwise separate source components.
 export const FRIBOURG_LIMITS = BERN_LIMITS
 export function fribourgFeatureIdentity(feature, policy) {
   const p = feature.properties
@@ -36,6 +37,32 @@ export function fribourgFeatureMatch(route, feature, policy) {
 }
 
 export function applyFribourgGeometry(raw, routes, source, policy) {
-  return applyBernGeometry(raw, routes, source, policy, { featureMatch: fribourgFeatureMatch,
+  const prepared = { ...source, lines: applyFribourgTopology(source.lines, policy) }
+  const result = applyBernGeometry(raw, routes, prepared, policy, { featureMatch: fribourgFeatureMatch,
     limits: FRIBOURG_LIMITS, lineId: f => String(f.properties.OBJECTID) })
+  const repairedRoutes = new Map(result.routeCrosswalk.map(r => [r.routeId,
+    (policy.topologyRepairs ?? []).filter(repair => r.sourceLines.includes(String(repair.sourceId))).map(repair => repair.id)]))
+  result.trains = result.trains.map(t => repairedRoutes.get(t.routeId).length
+    ? { ...t, geometryInference: { sourceTopologyRepairs: repairedRoutes.get(t.routeId), scope: 'Route graph includes this inferred endpoint adjustment; not every segment traverses it.' } } : t)
+  return result
+}
+
+export function applyFribourgTopology(lines, policy) {
+  return lines.map(feature => {
+    const repairs = (policy.topologyRepairs ?? []).filter(r => r.sourceId === feature.properties.OBJECTID)
+    if (!repairs.length) return feature
+    const changed = structuredClone(feature)
+    for (const repair of repairs) {
+      assert.equal(createHash('sha256').update(JSON.stringify(feature.geometry)).digest('hex'), repair.geometrySha256, 'Changed Fribourg repair source')
+      const paths = changed.geometry.coordinates
+      assert.deepEqual(paths[repair.fromPart][repair.fromVertex], repair.from)
+      assert.deepEqual(paths[repair.toPart][repair.toVertex], repair.to)
+      assert([0, paths[repair.fromPart].length - 1].includes(repair.fromVertex))
+      assert([0, paths[repair.toPart].length - 1].includes(repair.toVertex))
+      const gap = Math.hypot(repair.from[0] - repair.to[0], repair.from[1] - repair.to[1])
+      assert(gap > 0 && gap <= 0.02, 'Only reviewed sub-2cm endpoint adjustments permitted')
+      paths[repair.fromPart][repair.fromVertex] = [...repair.to]
+    }
+    return changed
+  })
 }

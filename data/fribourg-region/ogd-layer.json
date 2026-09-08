@@ -1,0 +1,405 @@
+{
+ "currentVersion": 11.5,
+ "cimVersion": "3.5.0",
+ "id": 1,
+ "name": "Lignes de transport public",
+ "type": "Feature Layer",
+ "parentLayer": null,
+ "defaultVisibility": true,
+ "minScale": 1000000,
+ "maxScale": 0,
+ "canScaleSymbols": false,
+ "geometryType": "esriGeometryPolyline",
+ "description": "DESCRIPTION_SMO6000L_LIGNE_TP",
+ "copyrightText": "",
+ "editFieldsInfo": null,
+ "ownershipBasedAccessControlForFeatures": null,
+ "syncCanReturnChanges": false,
+ "relationships": [
+  {
+   "id": 0,
+   "name": "SDQDIS.SDEUSER.SMO6001P_ARRET_TP",
+   "relatedTableId": 0,
+   "cardinality": "esriRelCardinalityManyToMany",
+   "role": "esriRelRoleOrigin",
+   "keyField": "LIGNE_ID",
+   "composite": false,
+   "catalogID": "{297F09C3-49CE-49F7-875D-8516091ED813}",
+   "relationshipTableId": 2,
+   "keyFieldInRelationshipTable": "LIGNE_ID"
+  }
+ ],
+ "isDataVersioned": false,
+ "isDataArchived": false,
+ "infoInEstimates": [
+  "extent",
+  "count"
+ ],
+ "isDataBranchVersioned": false,
+ "isDataReplicaTracked": false,
+ "isCoGoEnabled": false,
+ "supportsRollbackOnFailureParameter": true,
+ "archivingInfo": {
+  "supportsQueryWithHistoricMoment": false,
+  "startArchivingMoment": -1
+ },
+ "supportsStatistics": true,
+ "supportsExceedsLimitStatistics": true,
+ "supportsAdvancedQueries": true,
+ "supportsValidateSQL": true,
+ "supportsCoordinatesQuantization": true,
+ "supportsQuantizationEditMode": true,
+ "supportsCalculate": true,
+ "supportsASyncCalculate": true,
+ "supportsDatumTransformation": true,
+ "advancedQueryCapabilities": {
+  "supportsPagination": true,
+  "supportsQueryWithDistance": true,
+  "supportsReturningQueryExtent": true,
+  "supportsStatistics": true,
+  "supportsPercentileStatistics": true,
+  "supportsHavingClause": true,
+  "supportsOrderBy": true,
+  "supportsDistinct": true,
+  "supportsCountDistinct": true,
+  "supportsAdvancedQueryRelated": true,
+  "supportsQueryRelatedPagination": true,
+  "supportsCurrentUserQueries": true,
+  "supportsFullTextSearch": true,
+  "fullTextSearchCapabilities": {
+   "supportsSearchOperator": true,
+   "supportsOperator": false,
+   "supportsSqlExpressionInFullText": true
+  },
+  "fullTextSearchableFields": [],
+  "supportsQueryWithResultType": true,
+  "supportsReturningGeometryCentroid": false,
+  "supportsReturningGeometryEnvelope": true,
+  "supportsSqlExpression": true,
+  "supportsQueryWithDatumTransformation": true,
+  "supportsLod": false,
+  "supportsQueryWithLodSR": false,
+  "supportsQueryAnalytic": true,
+  "supportsTrueCurve": true,
+  "supportedCurveTypes": [
+   "esriGeometryCircularArc",
+   "esriGeometryEllipticArc",
+   "esriGeometryBezier3Curve"
+  ],
+  "supportsQueryWithCacheHint": false
+ },
+ "advancedQueryAnalyticCapabilities": {
+  "supportsLinearRegression": true,
+  "supportsAsync": true,
+  "supportsPercentileAnalytic": true
+ },
+ "advancedEditingCapabilities": {
+  "supportedSqlFormatsInCalculate": [
+   "standard"
+  ],
+  "supportsAsyncApplyEdits": true,
+  "supportsApplyEditsbyUploadID": true,
+  "supportedApplyEditsUploadIDFormats": "JSON,PBF"
+ },
+ "hasGeometryProperties": true,
+ "geometryProperties": {
+  "shapeLengthFieldName": "Shape__Length",
+  "units": "esriMeters"
+ },
+ "hasMetadata": true,
+ "extent": {
+  "xmin": 2520168.8649999984,
+  "ymin": 1142676.0960000008,
+  "xmax": 2605785.800999999,
+  "ymax": 1208217.3649999984,
+  "spatialReference": {
+   "wkid": 2056,
+   "latestWkid": 2056,
+   "xyTolerance": 0.001,
+   "zTolerance": 0.001,
+   "mTolerance": 0.001,
+   "falseX": -27386400,
+   "falseY": -32067900,
+   "xyUnits": 10000,
+   "falseZ": -100000,
+   "zUnits": 10000,
+   "falseM": -100000,
+   "mUnits": 10000
+  }
+ },
+ "spatialReference": {
+  "wkid": 2056,
+  "latestWkid": 2056,
+  "xyTolerance": 0.001,
+  "zTolerance": 0.001,
+  "mTolerance": 0.001,
+  "falseX": -27386400,
+  "falseY": -32067900,
+  "xyUnits": 10000,
+  "falseZ": -100000,
+  "zUnits": 10000,
+  "falseM": -100000,
+  "mUnits": 10000
+ },
+ "sourceSpatialReference": {
+  "wkid": 2056,
+  "latestWkid": 2056,
+  "xyTolerance": 0.001,
+  "zTolerance": 0.001,
+  "mTolerance": 0.001,
+  "falseX": -27386400,
+  "falseY": -32067900,
+  "xyUnits": 10000,
+  "falseZ": 0,
+  "zUnits": 1,
+  "falseM": 0,
+  "mUnits": 1
+ },
+ "drawingInfo": {
+  "renderer": {
+   "type": "classBreaks",
+   "authoringInfo": {
+    "type": "classedColor",
+    "colorRamp": {
+     "type": "multipart",
+     "colorRamps": [
+      {
+       "type": "algorithmic",
+       "algorithm": "esriCIELabAlgorithm",
+       "fromColor": [
+        56,
+        161,
+        207,
+        255
+       ],
+       "toColor": [
+        242,
+        250,
+        125,
+        255
+       ]
+      },
+      {
+       "type": "algorithmic",
+       "algorithm": "esriCIELabAlgorithm",
+       "fromColor": [
+        242,
+        250,
+        125,
+        255
+       ],
+       "toColor": [
+        237,
+        40,
+        33,
+        255
+       ]
+      }
+     ]
+    },
+    "classificationMethod": "esriClassifyManual"
+   },
+   "field": "TYPE_LIGNE",
+   "classificationMethod": "esriClassifyManual",
+   "minValue": 1,
+   "classBreakInfos": [
+    {
+     "symbol": {
+      "type": "esriSLS",
+      "style": "esriSLSDash",
+      "color": [
+       255,
+       170,
+       0,
+       255
+      ],
+      "width": 3
+     },
+     "classMaxValue": 3,
+     "label": "Bus"
+    },
+    {
+     "symbol": {
+      "type": "esriSLS",
+      "style": "esriSLSDash",
+      "color": [
+       0,
+       92,
+       230,
+       255
+      ],
+      "width": 3
+     },
+     "classMaxValue": 99,
+     "label": "Train"
+    }
+   ],
+   "legendOptions": {"order": "descendingValues"}
+  },
+  "scaleSymbols": true,
+  "transparency": 0,
+  "labelingInfo": null
+ },
+ "hasM": false,
+ "hasZ": false,
+ "allowGeometryUpdates": true,
+ "allowTrueCurvesUpdates": true,
+ "onlyAllowTrueCurveUpdatesByTrueCurveClients": true,
+ "hasAttachments": false,
+ "supportsApplyEditsWithGlobalIds": false,
+ "htmlPopupType": "esriServerHTMLPopupTypeAsHTMLText",
+ "objectIdField": "OBJECTID",
+ "globalIdField": "",
+ "displayField": "NOM_LIGNE",
+ "typeIdField": "",
+ "subtypeField": "",
+ "fields": [
+  {
+   "name": "NUMERO_LIGNE",
+   "type": "esriFieldTypeString",
+   "alias": "N° de la ligne",
+   "domain": null,
+   "editable": true,
+   "nullable": true,
+   "length": 32,
+   "defaultValue": null,
+   "modelName": "NUMERO_LIGNE"
+  },
+  {
+   "name": "NOM_LIGNE",
+   "type": "esriFieldTypeString",
+   "alias": "Nom de la ligne",
+   "domain": null,
+   "editable": true,
+   "nullable": true,
+   "length": 64,
+   "defaultValue": null,
+   "modelName": "NOM_LIGNE"
+  },
+  {
+   "name": "HORAIRE",
+   "type": "esriFieldTypeString",
+   "alias": "Horaire",
+   "domain": null,
+   "editable": true,
+   "nullable": true,
+   "length": 128,
+   "defaultValue": null,
+   "modelName": "HORAIRE"
+  },
+  {
+   "name": "TYPE_LIGNE_VALEUR",
+   "type": "esriFieldTypeString",
+   "alias": "Type de transport (code)",
+   "domain": null,
+   "editable": true,
+   "nullable": true,
+   "length": 254,
+   "defaultValue": null,
+   "modelName": "TYPE_LIGNE_VALEUR"
+  },
+  {
+   "name": "TYPE_LIGNE",
+   "type": "esriFieldTypeSmallInteger",
+   "alias": "Type de transport",
+   "domain": null,
+   "editable": true,
+   "nullable": true,
+   "defaultValue": null,
+   "modelName": "TYPE_LIGNE"
+  },
+  {
+   "name": "ENTREPRISE_VALEUR",
+   "type": "esriFieldTypeString",
+   "alias": "Entreprise",
+   "domain": null,
+   "editable": true,
+   "nullable": true,
+   "length": 254,
+   "defaultValue": null,
+   "modelName": "ENTREPRISE_VALEUR"
+  },
+  {
+   "name": "OBJECTID",
+   "type": "esriFieldTypeOID",
+   "alias": "OBJECTID",
+   "domain": null,
+   "editable": false,
+   "nullable": false,
+   "defaultValue": null,
+   "modelName": "OBJECTID"
+  }
+ ],
+ "geometryField": {
+  "name": "SHAPE",
+  "type": "esriFieldTypeGeometry",
+  "alias": "SHAPE",
+  "domain": null,
+  "editable": true,
+  "nullable": true,
+  "defaultValue": null,
+  "modelName": "SHAPE"
+ },
+ "indexes": [
+  {
+   "name": "S720_idx",
+   "isAscending": true,
+   "isUnique": true,
+   "description": "",
+   "fields": "SHAPE"
+  }
+ ],
+ "datesInUnknownTimezone": false,
+ "dateFieldsTimeReference": {
+  "timeZone": "W. Europe Standard Time",
+  "timeZoneIANA": "Europe/Berlin",
+  "respectsDaylightSaving": true
+ },
+ "preferredTimeReference": {
+  "timeZone": "W. Europe Standard Time",
+  "timeZoneIANA": "Europe/Berlin",
+  "respectsDaylightSaving": true
+ },
+ "types": [],
+ "templates": [
+  {
+   "name": "Lignes de transport public",
+   "description": "",
+   "prototype": {
+    "attributes": {
+     "ENTREPRISE_VALEUR": null,
+     "NUMERO_LIGNE": null,
+     "NOM_LIGNE": null,
+     "HORAIRE": null,
+     "TYPE_LIGNE_VALEUR": null,
+     "TYPE_LIGNE": null
+    }
+   },
+   "drawingTool": "esriFeatureEditToolLine"
+  }
+ ],
+ "maxRecordCount": 2000,
+ "supportedQueryFormats": "JSON, geoJSON, PBF",
+ "supportedExportFormats": "sqlite,filegdb,shapefile,csv,geojson",
+ "capabilities": "Query",
+ "useStandardizedQueries": true,
+ "bigIntegerRestrictedTo53Bits": true,
+ "supportedSpatialRelationships": [
+  "esriSpatialRelIntersects",
+  "esriSpatialRelContains",
+  "esriSpatialRelCrosses",
+  "esriSpatialRelEnvelopeIntersects",
+  "esriSpatialRelIndexIntersects",
+  "esriSpatialRelOverlaps",
+  "esriSpatialRelTouches",
+  "esriSpatialRelWithin",
+  "esriSpatialRelRelation"
+ ],
+ "supportsAppend": true,
+ "supportedAppendFormats": "FILEGDB,PBF",
+ "standardMaxRecordCount": 8000,
+ "tileMaxRecordCount": 4000,
+ "standardMaxRecordCountNoGeometry": 32000,
+ "maxRecordCountFactor": 1,
+ "serviceItemId": "518a09fdd5874b76b6eacfb0fe2bb8ec"
+}

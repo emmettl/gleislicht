@@ -34,7 +34,7 @@ Fixture audit: **8 September 2026**. Starting point: [Swiss transit source inven
 
 The entire canton is inventoried against the pinned annual national GTFS: **${summary.routeCount} route records, ${summary.agencyCount} agency identities and all seven districts**, including detached territories and complete out-of-canton journeys. The regional feed admits **${n(days[0].admittedTrips)} Friday journeys and ${n(days[1].admittedTrips)} Sunday journeys** with complete source-backed directed stop patterns. This is partial geometry admission, not full service coverage. One route is a provisional geographic member because its sole in-canton platform is within a metre of the boundary; see below.
 
-The [regional feed index](../data/fribourg-region/index.json) points to both civil-day manifests, twelve two-hour chunks per date, and 06:45–08:45 extracts. It uses the existing network snapshot format, **not a new GTFS ZIP**. It is saved under \`data/\` as a **local archival research artifact**. Dataset-specific vector redistribution clearance and geometry vintage remain unresolved, so this study does not add it to public hosting or the application's study selector.
+The [regional feed index](../data/fribourg-region/index.json) points to both civil-day manifests, twelve two-hour chunks per date, and 06:45–08:45 extracts. It uses the existing network snapshot format, **not a new GTFS ZIP**. It is saved under \`data/\` as a **local archival research artifact**. The exact matching cantonal OGD service explicitly permits attributed vector redistribution. Geometry vintage and physical direction remain unverified; this archival study is not added to public hosting or the application's study selector.
 
 ## Deliverables and scope
 
@@ -86,7 +86,7 @@ ${sourceStatus}
 - Features 43–45 say \`Autre\`. The preserved official 2026 timetable PDFs identify **VMCV 213, 216, 217 (agency 876)**. Feature 3's field 254 PDF identifies **TPF RE2/RE3**. Exceptions require the exact source number, name, enterprise and mode. PDF identity evidence does not extend the source geometry to missing termini such as Broc-Chocolaterie.
 - Explicit rail labels such as S20/S21 and R8 are matched exactly. Generic IC/IR, RE or Regio fields and unlabelled MOB services do not become universal rail graphs. No global nearest-line match or cross-operator geometry borrowing is used.
 
-Graph vertices join only at identical original LV95 coordinates. Separate line parts remain separate; no nearest-endpoint bridge or crossing-node inference is added. Ordered calls orient each inferred path along the undirected source centreline. Bus projection limit: **80 m**; rail: **120 m**. Paths exceeding the greater of **4.5× straight-line distance** or **1,200 m bus / 3,000 m rail** are rejected. An alternative source-part projection is considered only within **5 m** of the nearest gap after a topology/detour failure. Collapsed paths are rejected. Endpoint connectors are bounded projections, not observed vehicle tracks. Output uses the shared approximate LV95/WGS84 transform and seven-decimal coordinates without line simplification.
+Graph vertices join at identical LV95 coordinates, with one disclosed precision repair: source feature 22 (TPF line 9) has two components ending **11.22 mm apart** near Charmettes. The adapter moves only the pinned first vertex of part 0 onto the original last vertex of part 2. The original geometry hash, both coordinates and vertex indices are asserted before applying it; original source bytes remain unchanged. This is **inferred topology**, not a surveyed connection. Every affected route journey carries a geometryInference marker. No general nearest-endpoint bridge or crossing-node inference is added. Ordered calls orient each inferred path along the undirected source centreline. Bus projection limit: **80 m**; rail: **120 m**. Paths exceeding the greater of **4.5× straight-line distance** or **1,200 m bus / 3,000 m rail** are rejected. An alternative source-part projection is considered only within **5 m** of the nearest gap after a topology/detour failure. Collapsed paths are rejected. Endpoint connectors are bounded projections, not observed vehicle tracks. Output uses the shared approximate LV95/WGS84 transform and seven-decimal coordinates without line simplification.
 
 Road one-way legality, rail running-track choice, bridge/tunnel topology and temporary diversions are **not certified** by these undirected source records. Exact source topology prevents invented connections at visual crossings, but does not prove physical direction. Original repeated calls remain in each pattern. Reservation/on-demand pickup or drop-off excludes an entire journey; none is silently converted to an ordinary fixed departure.
 
@@ -102,19 +102,28 @@ ${table(['Failed segment reason', 'Friday directed pairs / occurrences', 'Sunday
 
 Failures remain route-scoped and directed. The machine audit names both original platforms and records projection gaps, detour lengths and fallback projection choices when available. \`missing-line\` means no verified source identity; it does not claim that a road or railway is absent. \`endpoint-gap\`, \`disconnected-line\`, \`implausible-detour\` and \`collapsed-path\` cause whole-pattern exclusion. Night, replacement, mountain and boat services are not silently dropped from the denominator. This adapter supplies no boat or mountain-mode geometry, and no rail geometry is repurposed for replacement buses.
 
+### Geometry follow-up
+
+The line 9 precision repair is evaluated against an unmodified-source baseline on each date. It adds **${reports[0].topologyRepairEffect.newlyAdmittedTrips} Friday / ${reports[1].topologyRepairEffect.newlyAdmittedTrips} Sunday complete journeys**, losing none. Source feature 22's affected route graphs admit ${reports[0].topologyRepairEffect.repairedAdmittedTrips} / ${reports[1].topologyRepairEffect.repairedAdmittedTrips} journeys after the repair; remaining extensions still fail the normal projection limits. The daily audit preserves baseline failed pairs and before/after counts.
+
+The [reproducible topology diagnostic](../data/fribourg-audit/topology-followup.json) found a **9.024 m** break in line 1 (feature 128), a **561.161 m** component separation in line 2 (feature 16), and three components in S20/S21 (feature 10), with nearest separations of 0.026 m and 0.040 m. These remain unchanged: the bus breaks exceed the precision-repair limit, and the rail junction needs a separate topology review. Rail station/terminal projection failures also remain. This follow-up does not fill larger gaps with straight segments or expand source extents.
+
 ## Dates, reuse and attribution
 
 ${table(['Source', 'Pinned date / vintage', 'Attribution / reuse'], [
   ['National GTFS', 'Feed 20260902; valid 2025-12-14–2026-12-12', 'opentransportdata.swiss; processed by Gleislicht; platform terms, not an assigned CC licence'],
-  ['Fribourg line layer', `${summary.sources.acquiredAt}; actual geometry vintage unknown`, 'Source: Etat de Fribourg; dataset-specific vector redistribution unresolved'],
+  ['Fribourg line layer', `${summary.sources.acquiredAt}; actual geometry vintage unknown`, 'Source: Etat de Fribourg; free use, sharing and reuse under dataset OGD terms'],
   ['Embedded Esri metadata', 'Created 2022-07-14', 'Metadata creation, not geometry vintage'],
+  ['OGD catalogue item', `Created ${summary.sources.reuseEvidence.catalogueCreated}; modified ${summary.sources.reuseEvidence.catalogueModified}`, 'Catalogue timestamps, not geometry vintage'],
   ['swissBOUNDARIES3D', '2026-01; original canton and seven district polygons', '© swisstopo; free geodata terms'],
   ...summary.sources.crosswalkSupportingDocuments.map(d => [d.file, `Timetable 2026; state ${d.dataUpdated}`, 'Official tp-info / oev-info timetable; identity evidence only']),
 ])}
 
 GTFS SHA-256: \`${summary.sourceHashes.archive}\`. Decoded source snapshot: \`${summary.sourceHashes.source}\`. The acquisition and feed metadata retain every raw-response hash, URL and UTC retrieval timestamp. Mutable PDF URLs and live ArcGIS responses are not claimed to be permanent release URLs. Refreshing either source requires a new census, mapping review and both full directed-pattern validations.
 
-The [portal terms](https://map.geo.fr.ch/help/fr/conditions_utilisation.htm) explicitly permit attributed map images and defer to data suppliers. The [current geoinformation ordinance](https://bdlf.fr.ch/api/fr/versions/8468/pdf_file_with_annexes), effective 1 March 2024, requires attribution for reproduction and lists the cantonal transport plan (56-FR) as level A. The layer metadata does not identify itself conclusively as that product or supply vector terms. This is supporting evidence, not a claimed dataset-specific licence; both documents are preserved with the feed. **The feed remains local research-only until that mapping/reuse question and a suitable geometry vintage are resolved.**
+The [dataset catalogue item](https://maps.fr.ch/portal/sharing/rest/content/items/518a09fdd5874b76b6eacfb0fe2bb8ec?f=pjson) explicitly permits free use, sharing and reuse with **Source: Etat de Fribourg** attribution. Its title incorrectly says stops, but its service URL and serviceItemId identify the service containing [polyline layer 1](https://maps.fr.ch/ags/rest/services/OpenData/Lignes_de_transport_public/FeatureServer/1). An independent complete query matches **all 128 geometries, vertex-for-vertex, and every original attribute** to the original MapServer snapshot; the OGD response adds the numeric TYPE_LIGNE field. The reproduction checks reject changed terms, missing/duplicate features, altered identities and even millimetre coordinate changes. Both raw snapshots and the catalogue/service metadata are preserved. **The vector reuse question is resolved**, without assigning a Creative Commons licence or relying on an uncertain ordinance product mapping.
+
+The earlier [portal terms](https://map.geo.fr.ch/help/fr/conditions_utilisation.htm) and [geoinformation ordinance](https://bdlf.fr.ch/api/fr/versions/8468/pdf_file_with_annexes) remain supporting evidence. The linked [geocat record](https://www.geocat.ch/geonetwork/srv/fre/catalog.search#/metadata/d578f90c-348f-41de-80be-4385a57605b9) did not yield XML during the follow-up (HTTP 403/500 or a login page). Neither service declares a geometry update date; the OGD catalogue's July 2026 modification timestamp must not be presented as line vintage.
 
 Timetable reuse follows the [national platform terms](https://opentransportdata.swiss/en/terms-of-use/); boundary reuse follows [swisstopo's terms](https://www.swisstopo.admin.ch/en/terms-of-use-free-geodata-and-geoservices). These credits are distinct and are embedded in both manifests and the feed's source record. No live-service accuracy or real-time position claim is made.
 
@@ -135,6 +144,7 @@ node --max-old-space-size=8192 scripts/build-fribourg-region.mjs \\
   --archive /private/tmp/GTFS_FP2026_20260902.zip \\
   --timetable-cache /private/tmp/fribourg-timetable.json.gz
 node scripts/check-fribourg-region.mjs
+node scripts/audit-fribourg-topology.mjs
 node scripts/write-fribourg-audit.mjs
 python3 scripts/test_fribourg_sources.py
 npx vitest run scripts/fribourg-region.test.mjs scripts/bern-region.test.mjs

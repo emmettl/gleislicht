@@ -1,0 +1,70 @@
+{
+  "id": "518a09fdd5874b76b6eacfb0fe2bb8ec",
+  "owner": "ccsit.fr",
+  "orgId": "0123456789ABCDEF",
+  "created": 1726838790775,
+  "modified": 1783521719462,
+  "guid": null,
+  "name": null,
+  "title": "Arrêts de transport public",
+  "type": "Feature Service",
+  "typeKeywords": [
+    "ArcGIS",
+    "ArcGIS Server",
+    "Data",
+    "Feature Access",
+    "Feature Service",
+    "Map Service",
+    "Metadata",
+    "Service"
+  ],
+  "description": "Lignes de bus et de train.<br /> \t\t<a href='https://www.geocat.ch/geonetwork/srv/fre/catalog.search#/metadata/d578f90c-348f-41de-80be-4385a57605b9' target='_blank' rel='nofollow ugc noopener noreferrer'>Lien vers geocat.ch<\/a><div><b><br /><\/b><\/div><div><b>Accès aux données<\/b> : <\/div><ul><li>Géoservices ArcGIS REST : <a href='https://maps.fr.ch/ags/rest/services/OpenData/Lignes_de_transport_public/MapServer' target='_blank' rel='nofollow ugc noopener noreferrer'>Mapservice<\/a>, <a href='https://maps.fr.ch/ags/rest/services/OpenData/Lignes_de_transport_public/FeatureServer' target='_blank' rel='nofollow ugc noopener noreferrer'>Featureservice<\/a><\/li><li>Géoservices OGC : <a href='https://maps.fr.ch/ags/services/OpenData/Lignes_de_transport_public/MapServer/WMSServer?request=GetCapabilities&service=WMS' target='_blank' rel='nofollow ugc noopener noreferrer'>WMS<\/a>, <a href='https://maps.fr.ch/ags/services/OpenData/Lignes_de_transport_public/MapServer/WFSServer?request=GetCapabilities&service=WFS' target='_blank' rel='nofollow ugc noopener noreferrer'>WFS<\/a><\/li><li>Téléchargement des données : <a href='https://maps.fr.ch/OpenData/FGDB/Arrêts de transport public.zip' target='_blank' rel='nofollow ugc noopener noreferrer'>FGDB<\/a>, <a href='https://maps.fr.ch/OpenData/SHP/Arrêts de transport public.shz' target='_blank' rel='nofollow ugc noopener noreferrer'>SHP<\/a><\/li><li><a href='https://maps.fr.ch/?portalitems=518a09fdd5874b76b6eacfb0fe2bb8ec&theme=noTheme' target='_blank' rel='nofollow ugc noopener noreferrer'>Visualisation des données sur maps.fr.ch<\/a><\/li><\/ul><div><b><br /><\/b><\/div><div><b>Autres informations<\/b> : <\/div><div>Classe : SMO6000L_LIGNE_TP<\/div><div>Propriétaire de la donnée : Service de la mobilité (SMo)<\/div>",
+  "tags": [
+    "mobilite",
+    "OGD"
+  ],
+  "snippet": "\u200b",
+  "thumbnail": "thumbnail/thumbnail.png",
+  "documentation": null,
+  "extent": [
+    [
+      6.678,
+      46.408
+    ],
+    [
+      7.419,
+      47.024
+    ]
+  ],
+  "categories": [],
+  "spatialReference": "CH1903+_LV95",
+  "accessInformation": "DESCRIPTION_SMO6000L_LIGNE_TP, SDPDIS.SDEUSER.SMO6000L_LIGNE_TP",
+  "classification": null,
+  "licenseInfo": "Les géodonnées sont mises à disposition sous forme d\u2019Open Government Data (OGD). Elles peuvent être utilisées, partagées et réutilisées gratuitement. Lors de l\u2019utilisation, il faut en indiquer la source : « Source : Etat de Fribourg » ou « © Etat de Fribourg ».",
+  "culture": "fr-ch",
+  "properties": null,
+  "advancedSettings": null,
+  "url": "https://maps.fr.ch/ags/rest/services/OpenData/Lignes_de_transport_public/FeatureServer",
+  "proxyFilter": null,
+  "access": "public",
+  "size": 86,
+  "subInfo": 0,
+  "appCategories": [],
+  "industries": [],
+  "languages": [],
+  "largeThumbnail": null,
+  "banner": null,
+  "screenshots": [],
+  "listed": false,
+  "commentsEnabled": false,
+  "numComments": 0,
+  "numRatings": 0,
+  "avgRating": 0,
+  "numViews": 1058,
+  "privateUrl": "https://spsitags51.dmzfr.ch:6443/arcgis/rest/services/OpenData/Lignes_de_transport_public/FeatureServer",
+  "scoreCompleteness": 76,
+  "groupDesignations": null,
+  "apiToken1ExpirationDate": -1,
+  "apiToken2ExpirationDate": -1,
+  "lastViewed": -1
+}

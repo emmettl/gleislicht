@@ -1,7 +1,9 @@
 import { describe, it, expect } from 'vitest'
 import { readFileSync } from 'node:fs'
 import { gunzipSync } from 'node:zlib'
-import { fribourgFeatureIdentity, fribourgFeatureMatch, applyFribourgGeometry } from './fribourg-line-geometry.mjs'
+import { fribourgFeatureIdentity, fribourgFeatureMatch, applyFribourgGeometry, applyFribourgTopology } from './fribourg-line-geometry.mjs'
+import { bernGraph } from './bern-line-geometry.mjs'
+import { matchBaselSegment } from './basel-line-geometry.mjs'
 import { bernArea, bernLv95, bernWgs84 } from './bern-spatial.mjs'
 import { compactBernFeed, validateBernSnapshot } from './build-bern-region.mjs'
 
@@ -11,6 +13,22 @@ const f = id => source.lines.find(f => f.properties.OBJECTID === id)
 const route = (name, agencyId = '834', mode = 'bus') => ({ id: 'test-route', name, agencyId, mode, type: mode === 'bus' ? 700 : 109 })
 
 describe('Fribourg source adapter', () => {
+  it('repairs only the pinned line 9 endpoint and preserves original geometry', () => {
+    const original = structuredClone(f(22)), repair = policy.topologyRepairs[0]
+    const changed = applyFribourgTopology([f(22)], policy)[0]
+    expect(f(22)).toEqual(original)
+    expect(changed.geometry.coordinates[0][0]).toEqual(repair.to)
+    const expected = structuredClone(original); expected.geometry.coordinates[0][0] = repair.to
+    expect(changed).toEqual(expected)
+    const stops = [original.geometry.coordinates[0][30], original.geometry.coordinates[2][200]].map(p => bernWgs84(p))
+    expect(matchBaselSegment(bernGraph([original]), ...stops, { snapMetres: 80, detourRatio: 4.5, detourFloorMetres: 1200 }).reason).toBe('disconnected-line')
+    for (const ordered of [stops, [...stops].reverse()]) {
+      expect(matchBaselSegment(bernGraph([changed]), ...ordered, { snapMetres: 80, detourRatio: 4.5, detourFloorMetres: 1200 }).path).toBeTruthy()
+    }
+    const drifted = structuredClone(original); drifted.geometry.coordinates[0][0][0] += 0.001
+    expect(() => applyFribourgTopology([drifted], policy)).toThrow('Changed Fribourg repair source')
+    expect(applyFribourgTopology([f(128), f(10)], policy)).toEqual([f(128), f(10)])
+  })
   it('includes every district and detached canton component, not a bounding rectangle', () => {
     const contains = bernArea(source.canton[0].geometry)
     expect(source.districts).toHaveLength(7)
