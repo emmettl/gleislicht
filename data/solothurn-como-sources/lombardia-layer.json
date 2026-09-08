@@ -1,0 +1,183 @@
+{
+ "currentVersion": 10.81,
+ "id": 3,
+ "name": "Rete Ferroviaria",
+ "type": "Feature Layer",
+ "description": "",
+ "geometryType": "esriGeometryPolyline",
+ "sourceSpatialReference": {
+  "wkid": 32632,
+  "latestWkid": 32632
+ },
+ "copyrightText": "",
+ "parentLayer": {
+  "id": 0,
+  "name": "Infrastrutture e Mobilita'"
+ },
+ "subLayers": [],
+ "minScale": 0,
+ "maxScale": 0,
+ "drawingInfo": {
+  "renderer": {
+   "type": "simple",
+   "symbol": {
+    "type": "esriSLS",
+    "style": "esriSLSSolid",
+    "color": [
+     0,
+     0,
+     0,
+     255
+    ],
+    "width": 0.8
+   },
+   "label": "",
+   "description": ""
+  },
+  "transparency": 0,
+  "labelingInfo": null
+ },
+ "defaultVisibility": true,
+ "extent": {
+  "xmin": 462691.7290000003,
+  "ymin": 4977492.9901,
+  "xmax": 686473.9046,
+  "ymax": 5129630.146400001,
+  "spatialReference": {
+   "wkid": 32632,
+   "latestWkid": 32632
+  }
+ },
+ "hasAttachments": false,
+ "htmlPopupType": "esriServerHTMLPopupTypeAsHTMLText",
+ "displayField": "STRATO_CTR",
+ "typeIdField": null,
+ "subtypeFieldName": null,
+ "subtypeField": null,
+ "defaultSubtypeCode": null,
+ "fields": [
+  {
+   "name": "OBJECTID_1",
+   "type": "esriFieldTypeOID",
+   "alias": "FID",
+   "domain": null
+  },
+  {
+   "name": "DSTRATO",
+   "type": "esriFieldTypeString",
+   "alias": "STRATO CTR",
+   "length": 100,
+   "domain": null
+  },
+  {
+   "name": "DN_BIN",
+   "type": "esriFieldTypeString",
+   "alias": "NUMERO BINARI",
+   "length": 100,
+   "domain": null
+  },
+  {
+   "name": "DALIM",
+   "type": "esriFieldTypeString",
+   "alias": "ALIMENTAZIONE",
+   "length": 100,
+   "domain": null
+  },
+  {
+   "name": "DTRACC",
+   "type": "esriFieldTypeString",
+   "alias": "TRACCIATO",
+   "length": 100,
+   "domain": null
+  },
+  {
+   "name": "DSCART",
+   "type": "esriFieldTypeString",
+   "alias": "SCARTAMENTO",
+   "length": 100,
+   "domain": null
+  },
+  {
+   "name": "GESTORE_RETE",
+   "type": "esriFieldTypeString",
+   "alias": "GESTORE RETE",
+   "length": 3,
+   "domain": null
+  },
+  {
+   "name": "TIPO_RETE",
+   "type": "esriFieldTypeString",
+   "alias": "TIPO RETE RFI",
+   "length": 3,
+   "domain": null
+  },
+  {
+   "name": "TY_RETE_FN",
+   "type": "esriFieldTypeString",
+   "alias": "TIPO RETE FN",
+   "length": 15,
+   "domain": null
+  },
+  {
+   "name": "Shape",
+   "type": "esriFieldTypeGeometry",
+   "alias": "SHAPE",
+   "domain": null
+  },
+  {
+   "name": "Shape_Length",
+   "type": "esriFieldTypeDouble",
+   "alias": "SHAPE_Length",
+   "domain": null
+  }
+ ],
+ "geometryField": {
+  "name": "Shape",
+  "type": "esriFieldTypeGeometry",
+  "alias": "SHAPE"
+ },
+ "indexes": [
+  {
+   "name": "FDO_OBJECTID_1",
+   "fields": "OBJECTID_1",
+   "isAscending": true,
+   "isUnique": true,
+   "description": ""
+  },
+  {
+   "name": "FDO_Shape",
+   "fields": "Shape",
+   "isAscending": true,
+   "isUnique": false,
+   "description": ""
+  }
+ ],
+ "subtypes": [],
+ "relationships": [],
+ "canModifyLayer": true,
+ "canScaleSymbols": false,
+ "hasLabels": false,
+ "capabilities": "Map,Query,Data",
+ "maxRecordCount": 1000,
+ "supportsStatistics": true,
+ "supportsAdvancedQueries": true,
+ "hasM": true,
+ "supportedQueryFormats": "JSON, geoJSON",
+ "isDataVersioned": false,
+ "ownershipBasedAccessControlForFeatures": {"allowOthersToQuery": true},
+ "advancedQueryCapabilities": {
+  "useStandardizedQueries": false,
+  "supportsStatistics": true,
+  "supportsHavingClause": true,
+  "supportsCountDistinct": true,
+  "supportsOrderBy": true,
+  "supportsDistinct": true,
+  "supportsPagination": true,
+  "supportsTrueCurve": true,
+  "supportsReturningQueryExtent": true,
+  "supportsQueryWithDistance": true,
+  "supportsSqlExpression": true
+ },
+ "supportsDatumTransformation": true,
+ "supportsCoordinatesQuantization": true
+}

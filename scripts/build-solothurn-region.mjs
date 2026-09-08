@@ -53,6 +53,9 @@ export async function buildSolothurnRegion() {
   const s26Baseline = JSON.parse(await readFile('data/solothurn-s26-baseline.json'))
   assert.deepEqual(s26Baseline.sourceHashes, sourceHashes)
   const s26Review = { baselineCommit: s26Baseline.commit, sourceHashes, source: supplements.metadata.s26, days: [] }
+  const comoBaseline = JSON.parse(await readFile('data/solothurn-como-baseline.json'))
+  assert.deepEqual(comoBaseline.sourceHashes, sourceHashes)
+  const comoReview = { baselineCommit: comoBaseline.commit, sourceHashes, source: supplements.metadata.como, days: [] }
   const provenance = { supplements: supplements.metadata, ...source.metadata, timetable: {
     publisher: 'SBB / Open data platform mobility Switzerland', attribution: 'opentransportdata.swiss',
     sha256: SO_GTFS_SHA, feed: census.feed, sourceUrl: census.sourceUrl,
@@ -93,6 +96,13 @@ export async function buildSolothurnRegion() {
     s26Review.days.push({ date: raw.metadata.serviceDate, before: s26Before.coverage, after: coverage, lostAdmittedPatterns: s26Lost,
       newlyAdmittedPatterns: result.patterns.filter(p => p.admittedTrips && !s26Previous.has(p.id)).map(({ pathSegments, ...p }) => p),
       sourcePairs: result.pairs.filter(p => p.geometrySource === 'fot-sbb-reviewed-s26').map(({ pathIndex, ...p }) => p) })
+    const comoBefore = comoBaseline.days.find(d => d.date === raw.metadata.serviceDate)
+    const comoPrevious = new Set(comoBefore.admittedPatternIds)
+    const comoLost = [...comoPrevious].filter(id => !result.patterns.some(p => p.id === id && p.admittedTrips))
+    assert.equal(comoLost.length, 0, 'Como review regressed an admitted pattern')
+    comoReview.days.push({ date: raw.metadata.serviceDate, before: comoBefore.coverage, after: coverage, lostAdmittedPatterns: comoLost,
+      newlyAdmittedPatterns: result.patterns.filter(p => p.admittedTrips && !comoPrevious.has(p.id)).map(({ pathSegments, ...p }) => p),
+      sourcePairs: result.pairs.filter(p => p.geometrySource === 'osm-solothurn-como-rail-inference').map(({ pathIndex, ...p }) => p) })
     const busBefore = busBaseline.days.find(d => d.date === raw.metadata.serviceDate)
     const busPrevious = new Set(busBefore.admittedPatternIds)
     const busLost = [...busPrevious].filter(id => !result.patterns.some(p => p.id === id && p.admittedTrips))
@@ -250,6 +260,7 @@ export async function buildSolothurnRegion() {
   await writeJson(join(auditDir, 'access-road-review.json'), accessReview, true)
   await writeJson(join(auditDir, 'bern-terminal-review.json'), terminalReview, true)
   await writeJson(join(auditDir, 's26-review.json'), s26Review, true)
+  await writeJson(join(auditDir, 'como-review.json'), comoReview, true)
   await writeJson(join(auditDir, 'summary.json'), summary, true)
   await writeJson(join(auditDir, 'routes.json'), inventory, true)
   await writeJson(join(auditDir, 'stops.json'), timetable.sourceStopInventory)

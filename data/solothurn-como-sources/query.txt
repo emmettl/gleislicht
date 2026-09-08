@@ -1,0 +1,2 @@
+[out:json][timeout:60][date:"2026-09-02T00:00:00Z"];
+(way[railway](45.79,9.01,45.85,9.09);node[railway=station](45.79,9.01,45.85,9.09););(._;>;);out meta;

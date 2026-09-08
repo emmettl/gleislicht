@@ -6,6 +6,929 @@
   },
   "sources": {
     "supplements": {
+      "como": {
+        "policy": {
+          "schemaVersion": 1,
+          "sourceDirectory": "data/solothurn-como-sources",
+          "sourceSha256": "7fac1511b68dbbd30f2339410a2d72ebc76c12b927b04cb1741ec001d203c2ca",
+          "snapshot": "2026-09-02T00:00:00Z",
+          "stations": [
+            {
+              "nodeId": 3092179807,
+              "number": "8505307",
+              "name": "Chiasso"
+            },
+            {
+              "nodeId": 4126950607,
+              "number": "8301307",
+              "name": "Como San Giovanni"
+            }
+          ],
+          "limits": {
+            "stationIdentityMetres": 350,
+            "trackAttachmentMetres": 60,
+            "projectionAlternativeMetres": 5,
+            "maximumTurnDegrees": 45,
+            "maximumPathMetres": 8000
+          },
+          "route": {
+            "id": "91-3R-Y-j26-1",
+            "agencyId": "11",
+            "name": "EC",
+            "mode": "rail",
+            "type": 102
+          },
+          "contextSha256": "6a3fb3b6d119bf3118969bce3f42bd9592fb484a4f088a0ee8b456ff769c146d",
+          "timetableSourceHashes": {
+            "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+            "source": "5f11586ad156f763d7b1b9a6ac05f14dd29865ca03bf5a1d42195a7da8c331e8"
+          },
+          "patternIds": [
+            "39a264d89d000ce3baf7cfde",
+            "66a43605738d17d6ffd8daf7",
+            "a9253bcaf8bf56d58d6ef0ee",
+            "afaa08a19ec84b9b6f8a8531",
+            "b5c9cfdfd08476bce907b140",
+            "cbb2d4c30e190dfec9356ecb",
+            "cda3c818b87a8e53903fbac3",
+            "e7b072725a1deff774b63578"
+          ],
+          "pairs": [
+            {
+              "pathSha256": "3f11d8ec38d39cc84b2232572001a8fd7193b44039648f625c4445cc5d5c1c45",
+              "sourceWayIds": [
+                173953229,
+                173953278,
+                1497202734,
+                173953247,
+                173953257,
+                173953232,
+                173953274,
+                173953297,
+                25148357,
+                19748962,
+                19748961,
+                1541021585,
+                192093207
+              ],
+              "tunnelWayId": 25148357,
+              "from": [
+                9.03196729,
+                45.83187573,
+                "Chiasso",
+                "1",
+                "ch:1:sloid:5307:1:1"
+              ],
+              "to": [
+                9.07271488,
+                45.80896877,
+                "Como S. Giovanni",
+                "",
+                "8301307"
+              ]
+            },
+            {
+              "pathSha256": "0404e323771fcb06f0b9870aaaaaacd18ed80e0fa8b83a6beb3e666b480a9905",
+              "sourceWayIds": [
+                192093207,
+                1541021585,
+                19748961,
+                19748962,
+                25148357,
+                173953297,
+                173953274,
+                173953232,
+                173953257,
+                173953247,
+                1497202734,
+                173953278,
+                173953229,
+                900954054
+              ],
+              "tunnelWayId": 25148357,
+              "from": [
+                9.07271488,
+                45.80896877,
+                "Como S. Giovanni",
+                "",
+                "8301307"
+              ],
+              "to": [
+                9.0307905,
+                45.83204473,
+                "Chiasso",
+                "6",
+                "ch:1:sloid:5307:0:6"
+              ]
+            }
+          ],
+          "comparisonMaximumVertexGapMetres": 50,
+          "method": "Exact Solothurn-serving SBB EC route 91-3R-Y-j26-1 and two original Chiasso–Como platform pairs only. All eight complete retained twelve-date route patterns are checked; Como must be a single terminal call. Route original calls and coordinates on the pinned OSM passenger main-line graph through Monte Olimpino I, with exact shared-node topology, no siding exception, unchanged bounded attachments and turn limit. Five of eight independently inventoried Lombardia rail records corroborate the corridor but supply no feed geometry. Preserve all prior successful paths; no running-track, physical direction or seasonal effective alignment certification. The copied source scope.json is parent Zug provenance, not Solothurn admission scope."
+        },
+        "policySha256": "11a311313f3cf25c409beb4f7fd0256150a9e5676d3bbd141d848c22a7f12d2d",
+        "source": {
+          "retrieved": "2026-09-08",
+          "snapshot": "2026-09-02T00:00:00Z",
+          "responseDatabaseTimestamp": "2026-09-08T20:49:16Z",
+          "attribution": "© OpenStreetMap contributors",
+          "license": "ODbL-1.0",
+          "licenseUrl": "https://www.openstreetmap.org/copyright",
+          "description": "Historical OSM rail extract; full source way node IDs, versions, timestamps and tags retained. Original shared nodes alone establish connectivity; no coordinate-based junctions or siding additions. The exact Monte Olimpino I path is an inferred corridor, not running-track or direction certification.",
+          "lombardia": {
+            "attribution": "Regione Lombardia",
+            "metadataRevised": "2024-06-27",
+            "scale": 10000,
+            "license": "Dataset licence not specified in the retrieved metadata; generic legal page lists several alternatives. No licence inferred.",
+            "use": "Independent corridor review only; no Lombardia geometry enters the feed. Native JSON and independent object-ID query retain all eight regional rail records. GeoJSON query failed; native JSON succeeded.",
+            "corridorIds": [
+              6015,
+              5634,
+              5637,
+              5639,
+              5693
+            ],
+            "otherIds": [
+              5695,
+              5697,
+              5735
+            ]
+          },
+          "files": [
+            {
+              "file": "osm.json.gz",
+              "url": "https://overpass-api.de/api/interpreter",
+              "sha256": "bf5c7ca419084051a352b782af72427fcf39c71936125aac0a2c5356c272c501"
+            },
+            {
+              "file": "query.txt",
+              "url": null,
+              "sha256": "324c94f813791ccf6be11630f2945ddcfcb6fb96f381ae1820fd102bd2f97048"
+            },
+            {
+              "file": "lombardia-service.json",
+              "url": "https://www.cartografia.servizirl.it/expo/rest/services/gpt/infrastrutture_mobilita/MapServer?f=pjson",
+              "sha256": "ed925cf5eb558bf3cbf1f014acba572b30884b8766c520d7893c34d9d8fba172"
+            },
+            {
+              "file": "lombardia-layer.json",
+              "url": "https://www.cartografia.servizirl.it/expo/rest/services/gpt/infrastrutture_mobilita/MapServer/3?f=pjson",
+              "sha256": "61660c87e014915661c287798e0b07716508a4a31ecc9e6e8071a9fc4fba3a01"
+            },
+            {
+              "file": "lombardia-rail.json",
+              "url": "https://www.cartografia.servizirl.it/expo/rest/services/gpt/infrastrutture_mobilita/MapServer/3/query?where=1%3D1&geometry=9.01%2C45.79%2C9.09%2C45.85&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=*&outSR=4326&f=json",
+              "sha256": "24e26946eb7b53fd98d5700e51274463a475ca557bf2af9e78fcbb5633e862fc"
+            },
+            {
+              "file": "lombardia-ids.json",
+              "url": "https://www.cartografia.servizirl.it/expo/rest/services/gpt/infrastrutture_mobilita/MapServer/3/query?where=1%3D1&geometry=9.01%2C45.79%2C9.09%2C45.85&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&returnIdsOnly=true&f=json",
+              "sha256": "e9cf6ae2aee74bd133eb3669fc5e59fd17b4861dc37bfea61511075579c9a038"
+            },
+            {
+              "file": "lombardia-stations.json",
+              "url": "https://www.cartografia.servizirl.it/expo/rest/services/gpt/infrastrutture_mobilita/MapServer/2/query?where=1%3D1&geometry=9.01%2C45.79%2C9.09%2C45.85&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=*&outSR=4326&f=geojson",
+              "sha256": "fb38dc4f62b00dbf8887b946b7fe668e91dddfd87028e6b80175010440b6a3e0"
+            },
+            {
+              "file": "lombardia-metadata.html.gz",
+              "url": "https://www.geoportale.regione.lombardia.it/web/geoportale/metadati?_detailSheetMetadata_WAR_gptmetadataportlet_identifier=r_lombar%3A3417cfea-5192-467e-a388-947bdd7a85f2&_jsfBridgeRedirect=true&p_p_id=detailSheetMetadata_WAR_gptmetadataportlet&p_p_lifecycle=0&p_p_mode=view&p_p_state=normal",
+              "sha256": "9000a6c9007e8d58a7d758e47e6d0ac6b9ee34a6afd326826fd9f25f4a495149"
+            },
+            {
+              "file": "lombardia-terms.html.gz",
+              "url": "https://www.geoportale.regione.lombardia.it/note-legali",
+              "sha256": "a425c9860861e6fd33c59f5c60b7153dd8528eb84d1d727be23bf58de8e458f5"
+            },
+            {
+              "file": "osm-terms.html.gz",
+              "url": "https://www.openstreetmap.org/copyright",
+              "sha256": "cde07b86d6a4b8128a950a006efb04238431ca9ef40682ac479bf5187103d515"
+            },
+            {
+              "file": "scope.json",
+              "url": null,
+              "sha256": "1310935eecab413af73669b17e3d11330b631b6fa5ddfe239f7cb9664c3cdb44"
+            }
+          ]
+        },
+        "comparisonInventory": [
+          {
+            "id": 5634,
+            "attributes": {
+              "OBJECTID_1": 5634,
+              "DSTRATO": "Tratta ferroviaria",
+              "DN_BIN": "Quattro binari",
+              "DALIM": "Linea elettrificata",
+              "DTRACC": "Altro",
+              "DSCART": "Standard",
+              "GESTORE_RETE": "RFI",
+              "TIPO_RETE": "F",
+              "TY_RETE_FN": null,
+              "Shape_Length": 291.9724318231813
+            },
+            "vertices": 7,
+            "maximumVertexGapMetres": 5.147996000935627,
+            "use": "independent-corridor-review-only"
+          },
+          {
+            "id": 5637,
+            "attributes": {
+              "OBJECTID_1": 5637,
+              "DSTRATO": "Tratta ferroviaria",
+              "DN_BIN": "Quattro binari",
+              "DALIM": "Linea elettrificata",
+              "DTRACC": "Galleria",
+              "DSCART": "Standard",
+              "GESTORE_RETE": "RFI",
+              "TIPO_RETE": "F",
+              "TY_RETE_FN": null,
+              "Shape_Length": 78.89209119414843
+            },
+            "vertices": 4,
+            "maximumVertexGapMetres": 5.97682688703911,
+            "use": "independent-corridor-review-only"
+          },
+          {
+            "id": 5639,
+            "attributes": {
+              "OBJECTID_1": 5639,
+              "DSTRATO": "Tratta ferroviaria",
+              "DN_BIN": "Due binari",
+              "DALIM": "Linea elettrificata",
+              "DTRACC": "Galleria",
+              "DSCART": "Standard",
+              "GESTORE_RETE": "RFI",
+              "TIPO_RETE": "F",
+              "TY_RETE_FN": null,
+              "Shape_Length": 3079.785064779143
+            },
+            "vertices": 25,
+            "maximumVertexGapMetres": 37.744552767846415,
+            "use": "independent-corridor-review-only"
+          },
+          {
+            "id": 5693,
+            "attributes": {
+              "OBJECTID_1": 5693,
+              "DSTRATO": "Tratta ferroviaria",
+              "DN_BIN": "Due binari",
+              "DALIM": "Linea elettrificata",
+              "DTRACC": "Altro",
+              "DSCART": "Standard",
+              "GESTORE_RETE": "RFI",
+              "TIPO_RETE": "F",
+              "TY_RETE_FN": null,
+              "Shape_Length": 420.08701662777776
+            },
+            "vertices": 22,
+            "maximumVertexGapMetres": 10.175664591724361,
+            "use": "independent-corridor-review-only"
+          },
+          {
+            "id": 5695,
+            "attributes": {
+              "OBJECTID_1": 5695,
+              "DSTRATO": "Tratta ferroviaria",
+              "DN_BIN": "Un solo binario",
+              "DALIM": "Linea elettrificata",
+              "DTRACC": "Altro",
+              "DSCART": "Standard",
+              "GESTORE_RETE": "FN",
+              "TIPO_RETE": null,
+              "TY_RETE_FN": "SACL",
+              "Shape_Length": 1159.6844948380935
+            },
+            "vertices": 73,
+            "maximumVertexGapMetres": 1485.3378898106657,
+            "use": "outside-reviewed-corridor"
+          },
+          {
+            "id": 5697,
+            "attributes": {
+              "OBJECTID_1": 5697,
+              "DSTRATO": "Tratta ferroviaria",
+              "DN_BIN": "Due binari",
+              "DALIM": "Linea elettrificata",
+              "DTRACC": "Altro",
+              "DSCART": "Standard",
+              "GESTORE_RETE": "RFI",
+              "TIPO_RETE": "F",
+              "TY_RETE_FN": null,
+              "Shape_Length": 3981.6147285582856
+            },
+            "vertices": 286,
+            "maximumVertexGapMetres": 2859.77279478786,
+            "use": "outside-reviewed-corridor"
+          },
+          {
+            "id": 5735,
+            "attributes": {
+              "OBJECTID_1": 5735,
+              "DSTRATO": "Tratta ferroviaria",
+              "DN_BIN": "Due binari",
+              "DALIM": "Linea elettrificata",
+              "DTRACC": "Galleria",
+              "DSCART": "Standard",
+              "GESTORE_RETE": "RFI",
+              "TIPO_RETE": "F",
+              "TY_RETE_FN": null,
+              "Shape_Length": 7877.138730913796
+            },
+            "vertices": 22,
+            "maximumVertexGapMetres": 4740.190781031589,
+            "use": "outside-reviewed-corridor"
+          },
+          {
+            "id": 6015,
+            "attributes": {
+              "OBJECTID_1": 6015,
+              "DSTRATO": "Tratta ferroviaria",
+              "DN_BIN": "Un solo binario",
+              "DALIM": "Linea elettrificata",
+              "DTRACC": "Altro",
+              "DSCART": "Standard",
+              "GESTORE_RETE": "RFI",
+              "TIPO_RETE": "F",
+              "TY_RETE_FN": null,
+              "Shape_Length": 7.181280520775959
+            },
+            "vertices": 2,
+            "maximumVertexGapMetres": 0.29375214968733476,
+            "use": "independent-corridor-review-only"
+          }
+        ],
+        "patterns": [
+          {
+            "id": "afaa08a19ec84b9b6f8a8531",
+            "directionId": "0",
+            "stops": [
+              [
+                7.59026109,
+                47.54692146,
+                "Basel SBB",
+                "5",
+                "ch:1:sloid:10:3:5"
+              ],
+              [
+                7.90845335,
+                47.35263359,
+                "Olten",
+                "12",
+                "ch:1:sloid:218:7:12"
+              ],
+              [
+                8.31044046,
+                47.04824229,
+                "Luzern",
+                "7",
+                "ch:1:sloid:5000:3:7"
+              ],
+              [
+                8.55029962,
+                47.04893395,
+                "Arth-Goldau",
+                "5",
+                "ch:1:sloid:5004:3:5"
+              ],
+              [
+                9.03028744,
+                46.19586207,
+                "Bellinzona",
+                "2",
+                "ch:1:sloid:5213:2:2"
+              ],
+              [
+                8.94640276,
+                46.0056395,
+                "Lugano",
+                "3",
+                "ch:1:sloid:5300:2:3"
+              ]
+            ],
+            "foreignTerminal": false
+          },
+          {
+            "id": "b5c9cfdfd08476bce907b140",
+            "directionId": "1",
+            "stops": [
+              [
+                8.94640276,
+                46.0056395,
+                "Lugano",
+                "3",
+                "ch:1:sloid:5300:2:3"
+              ],
+              [
+                9.02955981,
+                46.19536462,
+                "Bellinzona",
+                "1",
+                "ch:1:sloid:5213:1:1"
+              ],
+              [
+                8.55029962,
+                47.04893395,
+                "Arth-Goldau",
+                "5",
+                "ch:1:sloid:5004:3:5"
+              ],
+              [
+                8.31044046,
+                47.04824229,
+                "Luzern",
+                "7",
+                "ch:1:sloid:5000:3:7"
+              ],
+              [
+                7.90821081,
+                47.35253621,
+                "Olten",
+                "10",
+                "ch:1:sloid:218:6:10"
+              ],
+              [
+                7.59026109,
+                47.54692146,
+                "Basel SBB",
+                "5",
+                "ch:1:sloid:10:3:5"
+              ]
+            ],
+            "foreignTerminal": false
+          },
+          {
+            "id": "cbb2d4c30e190dfec9356ecb",
+            "directionId": "0",
+            "stops": [
+              [
+                7.5898299,
+                47.54697604,
+                "Basel SBB",
+                "6",
+                "ch:1:sloid:10:3:6"
+              ],
+              [
+                7.90845335,
+                47.35263359,
+                "Olten",
+                "12",
+                "ch:1:sloid:218:7:12"
+              ],
+              [
+                8.31044046,
+                47.04824229,
+                "Luzern",
+                "7",
+                "ch:1:sloid:5000:3:7"
+              ],
+              [
+                8.55029962,
+                47.04893395,
+                "Arth-Goldau",
+                "5",
+                "ch:1:sloid:5004:3:5"
+              ],
+              [
+                9.03035931,
+                46.19581854,
+                "Bellinzona",
+                "3",
+                "ch:1:sloid:5213:2:3"
+              ],
+              [
+                8.94652853,
+                46.00565822,
+                "Lugano",
+                "2",
+                "ch:1:sloid:5300:2:2"
+              ],
+              [
+                9.03196729,
+                45.83187573,
+                "Chiasso",
+                "1",
+                "ch:1:sloid:5307:1:1"
+              ],
+              [
+                9.07271488,
+                45.80896877,
+                "Como S. Giovanni",
+                "",
+                "8301307"
+              ]
+            ],
+            "foreignTerminal": true
+          },
+          {
+            "id": "e7b072725a1deff774b63578",
+            "directionId": "1",
+            "stops": [
+              [
+                9.07271488,
+                45.80896877,
+                "Como S. Giovanni",
+                "",
+                "8301307"
+              ],
+              [
+                9.0307905,
+                45.83204473,
+                "Chiasso",
+                "6",
+                "ch:1:sloid:5307:0:6"
+              ],
+              [
+                8.94640276,
+                46.0056395,
+                "Lugano",
+                "3",
+                "ch:1:sloid:5300:2:3"
+              ],
+              [
+                9.02955981,
+                46.19536462,
+                "Bellinzona",
+                "1",
+                "ch:1:sloid:5213:1:1"
+              ],
+              [
+                8.55029962,
+                47.04893395,
+                "Arth-Goldau",
+                "5",
+                "ch:1:sloid:5004:3:5"
+              ],
+              [
+                8.31044046,
+                47.04824229,
+                "Luzern",
+                "7",
+                "ch:1:sloid:5000:3:7"
+              ],
+              [
+                7.90821081,
+                47.35253621,
+                "Olten",
+                "10",
+                "ch:1:sloid:218:6:10"
+              ],
+              [
+                7.5898299,
+                47.54697604,
+                "Basel SBB",
+                "6",
+                "ch:1:sloid:10:3:6"
+              ]
+            ],
+            "foreignTerminal": true
+          },
+          {
+            "id": "a9253bcaf8bf56d58d6ef0ee",
+            "directionId": "0",
+            "stops": [
+              [
+                7.59026109,
+                47.54692146,
+                "Basel SBB",
+                "5",
+                "ch:1:sloid:10:3:5"
+              ],
+              [
+                7.90845335,
+                47.35263359,
+                "Olten",
+                "12",
+                "ch:1:sloid:218:7:12"
+              ],
+              [
+                8.31044046,
+                47.04824229,
+                "Luzern",
+                "7",
+                "ch:1:sloid:5000:3:7"
+              ],
+              [
+                8.55029962,
+                47.04893395,
+                "Arth-Goldau",
+                "5",
+                "ch:1:sloid:5004:3:5"
+              ],
+              [
+                9.03035931,
+                46.19581854,
+                "Bellinzona",
+                "3",
+                "ch:1:sloid:5213:2:3"
+              ],
+              [
+                8.94652853,
+                46.00565822,
+                "Lugano",
+                "2",
+                "ch:1:sloid:5300:2:2"
+              ],
+              [
+                9.03196729,
+                45.83187573,
+                "Chiasso",
+                "1",
+                "ch:1:sloid:5307:1:1"
+              ],
+              [
+                9.07271488,
+                45.80896877,
+                "Como S. Giovanni",
+                "",
+                "8301307"
+              ]
+            ],
+            "foreignTerminal": true
+          },
+          {
+            "id": "39a264d89d000ce3baf7cfde",
+            "directionId": "1",
+            "stops": [
+              [
+                9.07271488,
+                45.80896877,
+                "Como S. Giovanni",
+                "",
+                "8301307"
+              ],
+              [
+                9.0307905,
+                45.83204473,
+                "Chiasso",
+                "6",
+                "ch:1:sloid:5307:0:6"
+              ],
+              [
+                8.94640276,
+                46.0056395,
+                "Lugano",
+                "3",
+                "ch:1:sloid:5300:2:3"
+              ],
+              [
+                9.02955981,
+                46.19536462,
+                "Bellinzona",
+                "1",
+                "ch:1:sloid:5213:1:1"
+              ],
+              [
+                8.55029962,
+                47.04893395,
+                "Arth-Goldau",
+                "5",
+                "ch:1:sloid:5004:3:5"
+              ],
+              [
+                8.31044046,
+                47.04824229,
+                "Luzern",
+                "7",
+                "ch:1:sloid:5000:3:7"
+              ],
+              [
+                7.90821081,
+                47.35253621,
+                "Olten",
+                "10",
+                "ch:1:sloid:218:6:10"
+              ],
+              [
+                7.59026109,
+                47.54692146,
+                "Basel SBB",
+                "5",
+                "ch:1:sloid:10:3:5"
+              ]
+            ],
+            "foreignTerminal": true
+          },
+          {
+            "id": "66a43605738d17d6ffd8daf7",
+            "directionId": "0",
+            "stops": [
+              [
+                7.90832759,
+                47.35252404,
+                "Olten",
+                "11",
+                "ch:1:sloid:218:6:11"
+              ],
+              [
+                8.31044046,
+                47.04824229,
+                "Luzern",
+                "7",
+                "ch:1:sloid:5000:3:7"
+              ],
+              [
+                8.55029962,
+                47.04893395,
+                "Arth-Goldau",
+                "5",
+                "ch:1:sloid:5004:3:5"
+              ],
+              [
+                9.03035931,
+                46.19581854,
+                "Bellinzona",
+                "3",
+                "ch:1:sloid:5213:2:3"
+              ],
+              [
+                8.94652853,
+                46.00565822,
+                "Lugano",
+                "2",
+                "ch:1:sloid:5300:2:2"
+              ],
+              [
+                9.03196729,
+                45.83187573,
+                "Chiasso",
+                "1",
+                "ch:1:sloid:5307:1:1"
+              ],
+              [
+                9.07271488,
+                45.80896877,
+                "Como S. Giovanni",
+                "",
+                "8301307"
+              ]
+            ],
+            "foreignTerminal": true
+          },
+          {
+            "id": "cda3c818b87a8e53903fbac3",
+            "directionId": "1",
+            "stops": [
+              [
+                9.07271488,
+                45.80896877,
+                "Como S. Giovanni",
+                "",
+                "8301307"
+              ],
+              [
+                9.0307905,
+                45.83204473,
+                "Chiasso",
+                "6",
+                "ch:1:sloid:5307:0:6"
+              ],
+              [
+                8.94640276,
+                46.0056395,
+                "Lugano",
+                "3",
+                "ch:1:sloid:5300:2:3"
+              ],
+              [
+                9.02955981,
+                46.19536462,
+                "Bellinzona",
+                "1",
+                "ch:1:sloid:5213:1:1"
+              ],
+              [
+                8.55029962,
+                47.04893395,
+                "Arth-Goldau",
+                "5",
+                "ch:1:sloid:5004:3:5"
+              ],
+              [
+                8.31044046,
+                47.04824229,
+                "Luzern",
+                "7",
+                "ch:1:sloid:5000:3:7"
+              ],
+              [
+                7.90821081,
+                47.35253621,
+                "Olten",
+                "10",
+                "ch:1:sloid:218:6:10"
+              ]
+            ],
+            "foreignTerminal": true
+          }
+        ],
+        "pairEvidence": [
+          {
+            "pathMetres": 4123.8458087735735,
+            "geometrySource": "osm-solothurn-como-rail-inference",
+            "gauge": "mm1435",
+            "fromOperatingPoint": "8505307",
+            "toOperatingPoint": "8301307",
+            "stationAttachmentsMetres": [
+              58.20223534845538,
+              12.739004823531857
+            ],
+            "trackAttachmentsMetres": [
+              6.71153530172194,
+              9.43104095458405
+            ],
+            "sourceWayIds": [
+              173953229,
+              173953278,
+              1497202734,
+              173953247,
+              173953257,
+              173953232,
+              173953274,
+              173953297,
+              25148357,
+              19748962,
+              19748961,
+              1541021585,
+              192093207
+            ],
+            "tunnelWayId": 25148357,
+            "from": [
+              9.03196729,
+              45.83187573,
+              "Chiasso",
+              "1",
+              "ch:1:sloid:5307:1:1"
+            ],
+            "to": [
+              9.07271488,
+              45.80896877,
+              "Como S. Giovanni",
+              "",
+              "8301307"
+            ],
+            "geometrySha256": "3f11d8ec38d39cc84b2232572001a8fd7193b44039648f625c4445cc5d5c1c45",
+            "contextPatternIds": [
+              "66a43605738d17d6ffd8daf7",
+              "a9253bcaf8bf56d58d6ef0ee",
+              "cbb2d4c30e190dfec9356ecb"
+            ],
+            "directedSourceSegmentsSha256": "89d141574a1c0ecc505989a25fe1888b4483d2d2d1bab57d0480baa9c8e80e5c"
+          },
+          {
+            "pathMetres": 4228.837165212957,
+            "geometrySource": "osm-solothurn-como-rail-inference",
+            "gauge": "mm1435",
+            "fromOperatingPoint": "8301307",
+            "toOperatingPoint": "8505307",
+            "stationAttachmentsMetres": [
+              12.739004823531857,
+              52.66349312035297
+            ],
+            "trackAttachmentsMetres": [
+              9.43104095458405,
+              23.539663176530073
+            ],
+            "sourceWayIds": [
+              192093207,
+              1541021585,
+              19748961,
+              19748962,
+              25148357,
+              173953297,
+              173953274,
+              173953232,
+              173953257,
+              173953247,
+              1497202734,
+              173953278,
+              173953229,
+              900954054
+            ],
+            "tunnelWayId": 25148357,
+            "from": [
+              9.07271488,
+              45.80896877,
+              "Como S. Giovanni",
+              "",
+              "8301307"
+            ],
+            "to": [
+              9.0307905,
+              45.83204473,
+              "Chiasso",
+              "6",
+              "ch:1:sloid:5307:0:6"
+            ],
+            "geometrySha256": "0404e323771fcb06f0b9870aaaaaacd18ed80e0fa8b83a6beb3e666b480a9905",
+            "contextPatternIds": [
+              "39a264d89d000ce3baf7cfde",
+              "cda3c818b87a8e53903fbac3",
+              "e7b072725a1deff774b63578"
+            ],
+            "directedSourceSegmentsSha256": "2034096653df33592f542c0675e3c59afede17c3c3bcc2b5bb434a65151a1efb"
+          }
+        ]
+      },
       "s26": {
         "policy": {
           "schemaVersion": 1,
@@ -2418,8 +3341,8 @@
     "key": "GTFS route identity + direction_id + full ordered original platform IDs, including repeats and out-of-canton calls"
   },
   "routesByStatus": {
-    "admitted-all-dated-trips": 143,
-    "excluded": 3,
+    "admitted-all-dated-trips": 144,
+    "excluded": 2,
     "inactive-on-validation-dates": 42,
     "partially-admitted": 5
   },
@@ -2984,6 +3907,7 @@
         "91-35-D-j26-1",
         "91-3-B-j26-1",
         "91-3M-Y-j26-1",
+        "91-3R-Y-j26-1",
         "91-3U-Y-j26-1",
         "91-3W-Y-j26-1",
         "91-3-Y-j26-1",
@@ -3064,23 +3988,23 @@
       },
       "coverage": {
         "trips": 7156,
-        "admittedTrips": 7024,
+        "admittedTrips": 7026,
         "scheduledTrips": 6078,
         "representativeHeadwayTrips": 1078,
-        "admittedScheduledTrips": 5946,
+        "admittedScheduledTrips": 5948,
         "admittedRepresentativeHeadwayTrips": 1078,
         "scheduledSegmentOccurrences": 97358,
-        "matchedScheduledSegmentOccurrences": 97132,
+        "matchedScheduledSegmentOccurrences": 97134,
         "segmentOccurrences": 98436,
-        "matchedSegmentOccurrences": 98210,
-        "admittedSegmentOccurrences": 93713,
+        "matchedSegmentOccurrences": 98212,
+        "admittedSegmentOccurrences": 93727,
         "directedPairs": 4259,
-        "matchedDirectedPairs": 4248,
+        "matchedDirectedPairs": 4250,
         "patterns": 921,
-        "completePatterns": 905,
-        "admittedPatterns": 905,
+        "completePatterns": 907,
+        "admittedPatterns": 907,
         "excludedTrips": {
-          "incomplete-directed-pattern": 132
+          "incomplete-directed-pattern": 130
         }
       },
       "groups": [
@@ -3088,23 +4012,23 @@
           "id": "11:rail",
           "agency": "Schweizerische Bundesbahnen SBB",
           "trips": 950,
-          "admittedTrips": 941,
+          "admittedTrips": 943,
           "scheduledTrips": 950,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 941,
+          "admittedScheduledTrips": 943,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 9782,
-          "matchedScheduledSegmentOccurrences": 9773,
+          "matchedScheduledSegmentOccurrences": 9775,
           "segmentOccurrences": 9782,
-          "matchedSegmentOccurrences": 9773,
-          "admittedSegmentOccurrences": 9710,
+          "matchedSegmentOccurrences": 9775,
+          "admittedSegmentOccurrences": 9724,
           "directedPairs": 994,
-          "matchedDirectedPairs": 986,
+          "matchedDirectedPairs": 988,
           "patterns": 327,
-          "completePatterns": 318,
-          "admittedPatterns": 318,
+          "completePatterns": 320,
+          "admittedPatterns": 320,
           "excludedTrips": {
-            "incomplete-directed-pattern": 9
+            "incomplete-directed-pattern": 7
           }
         },
         {
@@ -3408,7 +4332,7 @@
       ],
       "carryInTrips": 149,
       "admittedCarryInTrips": 145,
-      "admittedOutsideCantonPlatforms": 893,
+      "admittedOutsideCantonPlatforms": 895,
       "directedPatternChecks": {
         "directionIds": [
           "0",
@@ -4897,7 +5821,7 @@
         }
       },
       "pairFailureReasons": {
-        "endpoint-gap": 8,
+        "endpoint-gap": 6,
         "implausible-detour": 1,
         "no-compatible-source-mode": 2
       },
@@ -4921,23 +5845,23 @@
       },
       "coverage": {
         "trips": 5819,
-        "admittedTrips": 5678,
+        "admittedTrips": 5680,
         "scheduledTrips": 4711,
         "representativeHeadwayTrips": 1108,
-        "admittedScheduledTrips": 4570,
+        "admittedScheduledTrips": 4572,
         "admittedRepresentativeHeadwayTrips": 1108,
         "scheduledSegmentOccurrences": 68102,
-        "matchedScheduledSegmentOccurrences": 67861,
+        "matchedScheduledSegmentOccurrences": 67863,
         "segmentOccurrences": 69210,
-        "matchedSegmentOccurrences": 68969,
-        "admittedSegmentOccurrences": 65033,
+        "matchedSegmentOccurrences": 68971,
+        "admittedSegmentOccurrences": 65047,
         "directedPairs": 4467,
-        "matchedDirectedPairs": 4457,
+        "matchedDirectedPairs": 4459,
         "patterns": 777,
-        "completePatterns": 759,
-        "admittedPatterns": 759,
+        "completePatterns": 761,
+        "admittedPatterns": 761,
         "excludedTrips": {
-          "incomplete-directed-pattern": 139,
+          "incomplete-directed-pattern": 137,
           "night-network-excluded-by-source": 2
         }
       },
@@ -4946,23 +5870,23 @@
           "id": "11:rail",
           "agency": "Schweizerische Bundesbahnen SBB",
           "trips": 903,
-          "admittedTrips": 893,
+          "admittedTrips": 895,
           "scheduledTrips": 903,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 893,
+          "admittedScheduledTrips": 895,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 7943,
-          "matchedScheduledSegmentOccurrences": 7933,
+          "matchedScheduledSegmentOccurrences": 7935,
           "segmentOccurrences": 7943,
-          "matchedSegmentOccurrences": 7933,
-          "admittedSegmentOccurrences": 7872,
+          "matchedSegmentOccurrences": 7935,
+          "admittedSegmentOccurrences": 7886,
           "directedPairs": 999,
-          "matchedDirectedPairs": 994,
+          "matchedDirectedPairs": 996,
           "patterns": 336,
-          "completePatterns": 327,
-          "admittedPatterns": 327,
+          "completePatterns": 329,
+          "admittedPatterns": 329,
           "excludedTrips": {
-            "incomplete-directed-pattern": 10
+            "incomplete-directed-pattern": 8
           }
         },
         {
@@ -5312,7 +6236,7 @@
       ],
       "carryInTrips": 359,
       "admittedCarryInTrips": 341,
-      "admittedOutsideCantonPlatforms": 997,
+      "admittedOutsideCantonPlatforms": 999,
       "directedPatternChecks": {
         "directionIds": [
           "0",
@@ -7169,7 +8093,7 @@
         }
       },
       "pairFailureReasons": {
-        "endpoint-gap": 7,
+        "endpoint-gap": 5,
         "night-network-excluded-by-source": 1,
         "no-compatible-source-mode": 2
       },

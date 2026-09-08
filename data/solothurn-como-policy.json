@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "sourceDirectory": "data/solothurn-como-sources",
+  "sourceSha256": "7fac1511b68dbbd30f2339410a2d72ebc76c12b927b04cb1741ec001d203c2ca",
+  "snapshot": "2026-09-02T00:00:00Z",
+  "stations": [
+    {
+      "nodeId": 3092179807,
+      "number": "8505307",
+      "name": "Chiasso"
+    },
+    {
+      "nodeId": 4126950607,
+      "number": "8301307",
+      "name": "Como San Giovanni"
+    }
+  ],
+  "limits": {
+    "stationIdentityMetres": 350,
+    "trackAttachmentMetres": 60,
+    "projectionAlternativeMetres": 5,
+    "maximumTurnDegrees": 45,
+    "maximumPathMetres": 8000
+  },
+  "route": {
+    "id": "91-3R-Y-j26-1",
+    "agencyId": "11",
+    "name": "EC",
+    "mode": "rail",
+    "type": 102
+  },
+  "contextSha256": "6a3fb3b6d119bf3118969bce3f42bd9592fb484a4f088a0ee8b456ff769c146d",
+  "timetableSourceHashes": {
+    "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+    "source": "5f11586ad156f763d7b1b9a6ac05f14dd29865ca03bf5a1d42195a7da8c331e8"
+  },
+  "patternIds": [
+    "39a264d89d000ce3baf7cfde",
+    "66a43605738d17d6ffd8daf7",
+    "a9253bcaf8bf56d58d6ef0ee",
+    "afaa08a19ec84b9b6f8a8531",
+    "b5c9cfdfd08476bce907b140",
+    "cbb2d4c30e190dfec9356ecb",
+    "cda3c818b87a8e53903fbac3",
+    "e7b072725a1deff774b63578"
+  ],
+  "pairs": [
+    {
+      "pathSha256": "3f11d8ec38d39cc84b2232572001a8fd7193b44039648f625c4445cc5d5c1c45",
+      "sourceWayIds": [
+        173953229,
+        173953278,
+        1497202734,
+        173953247,
+        173953257,
+        173953232,
+        173953274,
+        173953297,
+        25148357,
+        19748962,
+        19748961,
+        1541021585,
+        192093207
+      ],
+      "tunnelWayId": 25148357,
+      "from": [
+        9.03196729,
+        45.83187573,
+        "Chiasso",
+        "1",
+        "ch:1:sloid:5307:1:1"
+      ],
+      "to": [
+        9.07271488,
+        45.80896877,
+        "Como S. Giovanni",
+        "",
+        "8301307"
+      ]
+    },
+    {
+      "pathSha256": "0404e323771fcb06f0b9870aaaaaacd18ed80e0fa8b83a6beb3e666b480a9905",
+      "sourceWayIds": [
+        192093207,
+        1541021585,
+        19748961,
+        19748962,
+        25148357,
+        173953297,
+        173953274,
+        173953232,
+        173953257,
+        173953247,
+        1497202734,
+        173953278,
+        173953229,
+        900954054
+      ],
+      "tunnelWayId": 25148357,
+      "from": [
+        9.07271488,
+        45.80896877,
+        "Como S. Giovanni",
+        "",
+        "8301307"
+      ],
+      "to": [
+        9.0307905,
+        45.83204473,
+        "Chiasso",
+        "6",
+        "ch:1:sloid:5307:0:6"
+      ]
+    }
+  ],
+  "comparisonMaximumVertexGapMetres": 50,
+  "method": "Exact Solothurn-serving SBB EC route 91-3R-Y-j26-1 and two original Chiasso–Como platform pairs only. All eight complete retained twelve-date route patterns are checked; Como must be a single terminal call. Route original calls and coordinates on the pinned OSM passenger main-line graph through Monte Olimpino I, with exact shared-node topology, no siding exception, unchanged bounded attachments and turn limit. Five of eight independently inventoried Lombardia rail records corroborate the corridor but supply no feed geometry. Preserve all prior successful paths; no running-track, physical direction or seasonal effective alignment certification. The copied source scope.json is parent Zug provenance, not Solothurn admission scope."
+}

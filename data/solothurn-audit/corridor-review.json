@@ -231,23 +231,23 @@
       },
       "after": {
         "trips": 7156,
-        "admittedTrips": 7024,
+        "admittedTrips": 7026,
         "scheduledTrips": 6078,
         "representativeHeadwayTrips": 1078,
-        "admittedScheduledTrips": 5946,
+        "admittedScheduledTrips": 5948,
         "admittedRepresentativeHeadwayTrips": 1078,
         "scheduledSegmentOccurrences": 97358,
-        "matchedScheduledSegmentOccurrences": 97132,
+        "matchedScheduledSegmentOccurrences": 97134,
         "segmentOccurrences": 98436,
-        "matchedSegmentOccurrences": 98210,
-        "admittedSegmentOccurrences": 93713,
+        "matchedSegmentOccurrences": 98212,
+        "admittedSegmentOccurrences": 93727,
         "directedPairs": 4259,
-        "matchedDirectedPairs": 4248,
+        "matchedDirectedPairs": 4250,
         "patterns": 921,
-        "completePatterns": 905,
-        "admittedPatterns": 905,
+        "completePatterns": 907,
+        "admittedPatterns": 907,
         "excludedTrips": {
-          "incomplete-directed-pattern": 132
+          "incomplete-directed-pattern": 130
         }
       },
       "lostAdmittedPatterns": [],
@@ -2601,6 +2601,70 @@
           }
         },
         {
+          "id": "a9253bcaf8bf56d58d6ef0ee",
+          "routeId": "91-3R-Y-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "line": "EC",
+          "directionId": "0",
+          "stopIds": [
+            "ch:1:sloid:10:3:5",
+            "ch:1:sloid:218:7:12",
+            "ch:1:sloid:5000:3:7",
+            "ch:1:sloid:5004:3:5",
+            "ch:1:sloid:5213:2:3",
+            "ch:1:sloid:5300:2:2",
+            "ch:1:sloid:5307:1:1",
+            "8301307"
+          ],
+          "segmentCount": 7,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "fot",
+            "osm-solothurn-como-rail-inference"
+          ],
+          "matchedSegments": 7,
+          "trips": 1,
+          "admittedTrips": 1,
+          "carryInTrips": 0,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 1
+          }
+        },
+        {
+          "id": "39a264d89d000ce3baf7cfde",
+          "routeId": "91-3R-Y-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "line": "EC",
+          "directionId": "1",
+          "stopIds": [
+            "8301307",
+            "ch:1:sloid:5307:0:6",
+            "ch:1:sloid:5300:2:3",
+            "ch:1:sloid:5213:1:1",
+            "ch:1:sloid:5004:3:5",
+            "ch:1:sloid:5000:3:7",
+            "ch:1:sloid:218:6:10",
+            "ch:1:sloid:10:3:5"
+          ],
+          "segmentCount": 7,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "fot",
+            "osm-solothurn-como-rail-inference"
+          ],
+          "matchedSegments": 7,
+          "trips": 1,
+          "admittedTrips": 1,
+          "carryInTrips": 0,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 1
+          }
+        },
+        {
           "id": "f97050b05d732372418019a8",
           "routeId": "91-3-Y-j26-1",
           "agencyId": "11",
@@ -4174,23 +4238,23 @@
       },
       "after": {
         "trips": 5819,
-        "admittedTrips": 5678,
+        "admittedTrips": 5680,
         "scheduledTrips": 4711,
         "representativeHeadwayTrips": 1108,
-        "admittedScheduledTrips": 4570,
+        "admittedScheduledTrips": 4572,
         "admittedRepresentativeHeadwayTrips": 1108,
         "scheduledSegmentOccurrences": 68102,
-        "matchedScheduledSegmentOccurrences": 67861,
+        "matchedScheduledSegmentOccurrences": 67863,
         "segmentOccurrences": 69210,
-        "matchedSegmentOccurrences": 68969,
-        "admittedSegmentOccurrences": 65033,
+        "matchedSegmentOccurrences": 68971,
+        "admittedSegmentOccurrences": 65047,
         "directedPairs": 4467,
-        "matchedDirectedPairs": 4457,
+        "matchedDirectedPairs": 4459,
         "patterns": 777,
-        "completePatterns": 759,
-        "admittedPatterns": 759,
+        "completePatterns": 761,
+        "admittedPatterns": 761,
         "excludedTrips": {
-          "incomplete-directed-pattern": 139,
+          "incomplete-directed-pattern": 137,
           "night-network-excluded-by-source": 2
         }
       },
@@ -6650,6 +6714,70 @@
             "solothurn-network"
           ],
           "matchedSegments": 4,
+          "trips": 1,
+          "admittedTrips": 1,
+          "carryInTrips": 0,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 1
+          }
+        },
+        {
+          "id": "a9253bcaf8bf56d58d6ef0ee",
+          "routeId": "91-3R-Y-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "line": "EC",
+          "directionId": "0",
+          "stopIds": [
+            "ch:1:sloid:10:3:5",
+            "ch:1:sloid:218:7:12",
+            "ch:1:sloid:5000:3:7",
+            "ch:1:sloid:5004:3:5",
+            "ch:1:sloid:5213:2:3",
+            "ch:1:sloid:5300:2:2",
+            "ch:1:sloid:5307:1:1",
+            "8301307"
+          ],
+          "segmentCount": 7,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "fot",
+            "osm-solothurn-como-rail-inference"
+          ],
+          "matchedSegments": 7,
+          "trips": 1,
+          "admittedTrips": 1,
+          "carryInTrips": 0,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 1
+          }
+        },
+        {
+          "id": "39a264d89d000ce3baf7cfde",
+          "routeId": "91-3R-Y-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "line": "EC",
+          "directionId": "1",
+          "stopIds": [
+            "8301307",
+            "ch:1:sloid:5307:0:6",
+            "ch:1:sloid:5300:2:3",
+            "ch:1:sloid:5213:1:1",
+            "ch:1:sloid:5004:3:5",
+            "ch:1:sloid:5000:3:7",
+            "ch:1:sloid:218:6:10",
+            "ch:1:sloid:10:3:5"
+          ],
+          "segmentCount": 7,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "fot",
+            "osm-solothurn-como-rail-inference"
+          ],
+          "matchedSegments": 7,
           "trips": 1,
           "admittedTrips": 1,
           "carryInTrips": 0,
