@@ -1,6 +1,6 @@
 # Cantonal coverage and junction review — 8 September 2026
 
-**Horgen has recurring source gaps; Wallisellen–Bassersdorf is the next viable recorded corridor.** The latter now has a compiled, direction-reviewed 104-minute draft. It is not yet enabled in AUTO. The existing public Horgen pilot remains unchanged.
+**Horgen has recurring source gaps; Wallisellen–Bassersdorf is the next viable recorded corridor.** The review produced a compiled, direction-reviewed 104-minute draft. A subsequent [playback integration](CANTONAL-ROADS.md#wallisellenbassersdorf-playback) makes that recording available in AUTO; the findings below describe the review evidence.
 
 ## Archive findings
 
@@ -86,4 +86,4 @@ The review exposed a compiler edge case: aggregation could accept a direction wh
 
 Validation: **244 tests across 63 files passed**, including changed evidence, invalid anchors/carriageways, incomplete multi-lane observations, missing archive minutes, source failures, duplicate conflicts and partial WFS responses. Lint passes for the changed scripts. The existing Horgen public artifact rebuilds byte-for-byte identically.
 
-The next product step is to generalize the optional cantonal playback control to select the reviewed **ZH 1 corridor and its 104-minute window**, with its own recording identity and junction disclosure. No additional roads are animated by this review alone.
+The subsequent playback integration now offers the reviewed **ZH 1 corridor and its 104-minute window** in AUTO, with its own recording identity and junction disclosure. The original review artifacts remain as provenance for that publication.

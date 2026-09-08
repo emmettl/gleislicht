@@ -1,0 +1,30 @@
+[
+  {
+    "id": "horgen-2026-09-08",
+    "road": "ZH:3",
+    "label": "Horgen",
+    "name": "Horgen · Seestrasse",
+    "file": "zurich-cantonal-road-pilot.json",
+    "serviceDate": "2026-09-08",
+    "windowStart": 48180,
+    "windowEnd": 51660,
+    "initialTime": 49440,
+    "completeMinutes": 40,
+    "stationIds": ["ZH.CH:4590", "ZH.CH:4290"],
+    "junctionAreas": 3
+  },
+  {
+    "id": "wallisellen-bassersdorf-2026-09-08",
+    "road": "ZH:1",
+    "label": "Wallisellen–Bassersdorf",
+    "name": "Wallisellen–Bassersdorf · Neue Winterthurerstrasse",
+    "file": "wallisellen-bassersdorf-road-pilot.json",
+    "serviceDate": "2026-09-08",
+    "windowStart": 51240,
+    "windowEnd": 57420,
+    "initialTime": 51240,
+    "completeMinutes": 104,
+    "stationIds": ["ZH.CH:0088", "ZH.CH:2092"],
+    "junctionAreas": 5
+  }
+]

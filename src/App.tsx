@@ -105,10 +105,9 @@ import {
   type RoadTrafficSnapshot,
 } from '@motionstudies/core/domain/road'
 import { reconstructedNationalVehicleCount } from './studies/road-conditions.ts'
-import { cantonalPilotWindow, topologyWithPilot, type CantonalPilot } from './studies/cantonal-road-pilot.ts'
+import { cantonalPilotForRoad, cantonalPilotWindow, searchRoadsWithPilots, topologyWithPilot, type CantonalPilot } from './studies/cantonal-road-pilot.ts'
 import {
   roadCorridorSearchValue,
-  searchRoadCorridors,
 } from '@motionstudies/core/road-search'
 import {
   LANGUAGE_LOCALES,
@@ -374,7 +373,8 @@ export function App({ edition }: AppProps) {
   const [selectedRoadId, setSelectedRoadId] = useState<string>()
   const pilotClockBounds = useRef<{ windowStart: number; windowEnd: number } | undefined>(undefined)
   const [cantonalPilot, setCantonalPilot] = useState<CantonalPilot>()
-  const activePilot = cantonalPilot && roadEnabled && selectedRoadId === 'ZH:3' && !sbbEnabled && !airEnabled && view === 'network' && networkStudy === 'national' ? cantonalPilot : undefined
+  const selectedPilotDefinition = cantonalPilotForRoad(selectedRoadId)
+  const activePilot = cantonalPilot && roadEnabled && selectedPilotDefinition?.id === cantonalPilot.metadata.recordingId && !sbbEnabled && !airEnabled && view === 'network' && networkStudy === 'national' ? cantonalPilot : undefined
   const playbackTopology = useMemo(() => roadTopology && activePilot ? topologyWithPilot(roadTopology, activePilot) : roadTopology, [roadTopology, activePilot])
   useEffect(() => {
     if (cantonalPilot && !activePilot) { pilotClockBounds.current = undefined; setCantonalPilot(undefined); setNetworkTime(edition.defaultNetworkTime); setIsPlaying(false) }
@@ -823,7 +823,7 @@ export function App({ edition }: AppProps) {
       .slice(0, 5)
   }, [categoryLabel, isPostbus, isCogwheel, cogwheelCatalogue, language, routeIndex, searchQuery])
   const roadSearchResults = useMemo(
-    () => searchRoadCorridors(roadTopology?.roads ?? SWITZERLAND_ROADS, searchQuery),
+    () => searchRoadsWithPilots(roadTopology?.roads ?? SWITZERLAND_ROADS, searchQuery),
     [roadTopology?.roads, searchQuery],
   )
   const airportSearchResults = useMemo(
@@ -3181,10 +3181,10 @@ export function App({ edition }: AppProps) {
           <p className="between">
             {activePilot ? null : selectedRoad.description ?? text.nationalMotorway}
           </p>
-          {selectedRoad.id === 'ZH:3' && <Suspense fallback={null}><CantonalPilotControls pilot={activePilot} time={networkTime} language={language}
+          {selectedPilotDefinition && <Suspense fallback={null}><CantonalPilotControls key={selectedPilotDefinition.id} definition={selectedPilotDefinition} pilot={activePilot} time={networkTime} language={language}
             onStart={pilot => {
               pilotClockBounds.current = pilot.metadata
-              const initialTime = pilot.windows[1]?.metadata.windowStart ?? pilot.metadata.windowStart
+              const initialTime = selectedPilotDefinition.initialTime
               roadHistorySeekRef.current = { time: initialTime, at: performance.now() }
               stopNow()
               setSbbEnabled(false)

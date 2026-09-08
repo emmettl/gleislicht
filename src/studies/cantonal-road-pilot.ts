@@ -1,18 +1,30 @@
 import type { NationalRoadStudySnapshot } from '@motionstudies/core/domain/road-day'
 import type { RoadTopologySnapshot } from '@motionstudies/core/domain/road'
+import pilotCatalog from '../../data/cantonal-road-pilots.json'
+import { searchRoadCorridors, type RoadSearchCorridor } from '@motionstudies/core/road-search'
+export const cantonalPilotForRoad = (road?: string) => pilotCatalog.find(p => p.road === road)
+export type CantonalPilotDefinition = typeof pilotCatalog[number]
+export function searchRoadsWithPilots<Road extends RoadSearchCorridor>(roads: readonly Road[], query: string): readonly Road[] {
+  const originals = new Map(roads.map(road => [road.id, road]))
+  const searchable = roads.map(road => {
+    const pilot = cantonalPilotForRoad(road.id)
+    return pilot ? { ...road, description: `${road.description ?? ''} ${pilot.name}` } : road
+  })
+  return searchRoadCorridors(searchable, query).map(road => originals.get(road.id)!)
+}
 export interface CantonalPilot {
-  metadata: { schemaVersion: number; recordingScope: string; serviceDate: string; windowStart: number; windowEnd: number; road: string; name: string; completeMinutes: number }
+  metadata: { schemaVersion: number; recordingId: string; recordingScope: string; serviceDate: string; windowStart: number; windowEnd: number; road: string; name: string; completeMinutes: number }
   topology: Pick<RoadTopologySnapshot, 'sites' | 'sections'>
   windows: NationalRoadStudySnapshot[]
   gaps: { start: number; end: number }[]
 }
-export function validateCantonalPilot(value: CantonalPilot): CantonalPilot {
-  if (value?.metadata?.schemaVersion !== 1 || value.metadata.recordingScope !== 'zurich-cantonal' || value.metadata.road !== 'ZH:3' || !Array.isArray(value.windows) || !value.windows.length || !Array.isArray(value.gaps) || !value.topology?.sections?.length) throw new Error('Invalid cantonal pilot')
+export function validateCantonalPilot(value: CantonalPilot, expected = cantonalPilotForRoad(value?.metadata?.road)): CantonalPilot {
+  if (value?.metadata?.schemaVersion !== 1 || value.metadata.recordingScope !== 'zurich-cantonal' || !expected || value.metadata.road !== expected.road || value.metadata.recordingId !== expected.id || value.metadata.serviceDate !== expected.serviceDate || value.metadata.windowStart !== expected.windowStart || value.metadata.windowEnd !== expected.windowEnd || value.metadata.completeMinutes !== expected.completeMinutes || !Array.isArray(value.windows) || !value.windows.length || !Array.isArray(value.gaps) || !value.topology?.sections?.length) throw new Error('Invalid cantonal pilot identity or coverage')
   const { windowStart, windowEnd, serviceDate } = value.metadata
   const minuteAligned = (time: number) => Number.isInteger(time) && time >= 0 && time < 86400 && time % 60 === 0
   if (!/^\d{4}-\d{2}-\d{2}$/.test(serviceDate) || !minuteAligned(windowStart) || !minuteAligned(windowEnd) || windowEnd <= windowStart) throw new Error('Invalid pilot bounds')
   const sites = new Set(value.topology.sites.map(s => s.id))
-  if (sites.size !== value.topology.sites.length || [...sites].some(id => !id.startsWith('ZH.CH:')) || value.topology.sections.some(s => s.road !== value.metadata.road || !sites.has(s.fromSiteId) || !sites.has(s.toSiteId))) throw new Error('Invalid pilot sites')
+  if (sites.size !== 4 || sites.size !== value.topology.sites.length || value.topology.sites.some(s => !expected.stationIds.includes(s.stationId) || !s.id.startsWith(`${s.stationId}:`)) || value.topology.sections.length !== 2 || new Set(value.topology.sections.map(s => s.direction)).size !== 2 || value.topology.sections.some(s => s.road !== value.metadata.road || !sites.has(s.fromSiteId) || !sites.has(s.toSiteId))) throw new Error('Invalid pilot sites')
   let end = -Infinity
   const recorded = new Set<number>()
   for (const window of value.windows) {

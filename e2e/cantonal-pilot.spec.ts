@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test'
+import horgenPilot from '../public/data/zurich-cantonal-road-pilot.json' with { type: 'json' }
 async function roadMeshes(page: import('@playwright/test').Page) {
   return page.evaluate(async () => {
     const url = performance.getEntriesByType('resource').find(e=>e.name.includes('/@react-three_fiber.js'))?.name
@@ -68,4 +69,62 @@ test('a failed pilot download keeps the morning view and can be retried', async 
   await page.unroute('**/zurich-cantonal-road-pilot.json')
   await button.click()
   await expect(page.locator('.cantonal-pilot')).toContainText('8 September 2026')
+})
+
+test('Wallisellen–Bassersdorf plays its complete afternoon and switches cleanly to Horgen', async ({ page, isMobile }, info) => {
+  const errors: string[] = []
+  page.on('pageerror', e => errors.push(e.message))
+  const requested: string[] = []
+  page.on('request', r => { if (r.url().includes('road-pilot.json')) requested.push(r.url()) })
+  await page.goto('/')
+  await page.locator(isMobile ? '.mobile-road-toggle' : '.network-study-picker .road-toggle').click()
+  await page.locator('.train-search input').fill('Bassersdorf')
+  await page.locator('.road-result').filter({ hasText: 'ZH 1' }).first().click()
+  expect(requested).toEqual([])
+  const card = page.locator('.road-corridor-card')
+  await card.getByRole('button', { name: 'Play Wallisellen–Bassersdorf afternoon pilot' }).click()
+  await expect(card).toContainText('104 complete recorded minutes · no gaps')
+  await expect(card).toContainText('Mapped junction areas: 5')
+  await expect(card).toContainText('Junction turn flows are not measured')
+  await expect(card.locator('.metric-grid strong').first()).toHaveText('≈3.5')
+  await expect(card.locator('.pilot-gaps')).toHaveCount(0)
+  const timeline = page.getByRole('slider', { name: /^Time of day/ })
+  await expect(timeline).toHaveAttribute('min', '51240')
+  await expect(timeline).toHaveAttribute('max', '57420')
+  await expect(card).toContainText('8 September 2026')
+  await expect.poll(async () => (await roadMeshes(page)).length).toBeGreaterThan(0)
+  const before = await roadMeshes(page)
+  await page.getByRole('button', { name: /Resume motion/i }).click()
+  await expect.poll(async () => await roadMeshes(page)).not.toEqual(before)
+  await page.getByRole('button', { name: /Pause motion/i }).click()
+  await timeline.fill('57420')
+  await expect(card.locator('.metric-grid strong').nth(1)).toHaveText(/≈[1-9]/)
+  await expect(card.getByRole('status')).toHaveCount(0)
+  await card.getByRole('button', { name: '14:14–15:57', exact: true }).click()
+  await page.screenshot({ path: info.outputPath('wallisellen-pilot.png') })
+  expect(requested).toHaveLength(1)
+  expect(requested[0]).toContain('wallisellen-bassersdorf-road-pilot.json')
+  await page.locator('.train-search input').fill('Horgen')
+  await page.locator('.road-result').filter({ hasText: 'ZH 3' }).first().click()
+  await expect(timeline).toHaveAttribute('min', '24300')
+  await card.getByRole('button', { name: 'Play Horgen afternoon pilot' }).click()
+  await expect(timeline).toHaveAttribute('min', '48180')
+  await expect(card).toContainText('13:37–13:43')
+  expect(requested).toHaveLength(2)
+  expect(errors).toEqual([])
+})
+
+test('a recording for the wrong corridor is rejected and can be retried', async ({ page, isMobile }) => {
+  await page.route('**/wallisellen-bassersdorf-road-pilot.json', r => r.fulfill({ json: horgenPilot }))
+  await page.goto('/')
+  await page.locator(isMobile ? '.mobile-road-toggle' : '.network-study-picker .road-toggle').click()
+  await page.locator('.train-search input').fill('Bassersdorf')
+  await page.locator('.road-result').filter({ hasText: 'ZH 1' }).first().click()
+  const button = page.getByRole('button', { name: 'Play Wallisellen–Bassersdorf afternoon pilot' })
+  await button.click()
+  await expect(page.locator('.cantonal-pilot')).toContainText('Try again')
+  await expect(page.getByRole('slider', { name: /^Time of day/ })).toHaveAttribute('min', '24300')
+  await page.unroute('**/wallisellen-bassersdorf-road-pilot.json')
+  await button.click()
+  await expect(page.locator('.cantonal-pilot')).toContainText('104 complete recorded minutes')
 })

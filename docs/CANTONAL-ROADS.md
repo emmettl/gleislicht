@@ -1,6 +1,6 @@
 # Cantonal roads — Zürich pilot
 
-AUTO now records Zürich cantonal counters and includes **246 cantonal road axes** in its map and search. The geometry builder matches 298 counter stations to these roads. Horgen’s Seestrasse now has an optional **1.3 km recorded afternoon pilot**, with both travel directions and explicit coverage gaps. Other cantonal cards remain geometry-only; national-road observations retain their existing topology and coverage.
+AUTO now records Zürich cantonal counters and includes **246 cantonal road axes** in its map and search. The geometry builder matches 298 counter stations to these roads. Horgen’s Seestrasse has an optional **1.3 km recorded afternoon pilot**, with both travel directions and explicit coverage gaps. Wallisellen–Bassersdorf adds a **3.46 km pilot with 104 continuous complete minute samples** on ZH 1. Other cantonal cards remain geometry-only; national-road observations retain their existing topology and coverage.
 
 ## Verified sources
 
@@ -162,15 +162,39 @@ node scripts/build-cantonal-road-pilot.mjs
 # Optional paths: --input=recordings/astra-zurich-cantonal --output=/tmp/horgen-pilot.json
 ```
 
-The builder is deliberately pinned to this date, interval and counter pair. It passes each minute through the strict cantonal compiler, divides accepted samples into contiguous runs, and requires at least two complete samples per run. This explicitly segmented pilot does not lower the ordinary compiler’s default 60-sample requirement or its per-minute lane-completeness gate. Catalog drift and conflicting duplicates still fail the build. Source snapshots stay private; the public artifact contains aggregate playback values and the direction-topology SHA-256. Browser validation checks site/section mappings, complete minute arrays and exact accounting of recorded and missing minutes before changing the timeline. Failed downloads leave the morning view intact and allow retry.
+The pilot catalog in `data/cantonal-road-pilots.json` pins each recording identity, date, interval and counter pair. The builder defaults to Horgen. It passes each minute through the strict cantonal compiler, divides accepted samples into contiguous runs, and requires at least two complete samples per run. This explicitly segmented pilot does not lower the ordinary compiler’s default 60-sample requirement or its per-minute lane-completeness gate. Catalog drift and conflicting duplicates still fail the build. Source snapshots stay private; the public artifact contains aggregate playback values and the direction-topology SHA-256. Browser validation checks site/section mappings, complete minute arrays and exact accounting of recorded and missing minutes before changing the timeline. Failed downloads leave the morning view intact and allow retry.
 
 This is a **counter-based reconstruction**, not vehicle tracking. Turning flows at intermediate junctions are unmeasured, and the whole 32 km ZH 3 axis does not have playback coverage.
 
 Playback validation: **205 unit tests across 55 files**, **12 desktop Chromium / iPhone WebKit road checks**, production build, architecture checks and lint (warnings only). The initial transfer is **758.4 KiB gzip**, within the 790 KiB budget; the pilot data is downloaded only on request. Rebuilding the public pilot from the archived observations produces an identical artifact.
 
+## Wallisellen–Bassersdorf playback
+
+In AUTO, search **Wallisellen** or **Bassersdorf**, select **ZH 1**, then choose **Play Wallisellen–Bassersdorf afternoon pilot**. Playback opens paused at **14:14 CEST on 8 September 2026** and ends at **15:57**. The 3.457 km section contains four directional sites and 104 complete samples in one window, with no observation gaps. The card discloses five mapped junction areas and that turning flows are unmeasured. Only the reviewed counter section has traffic animation; the whole ZH 1 axis does not.
+
+The public `wallisellen-bassersdorf-road-pilot.json` artifact is approximately **12.9 kB / 3.6 kB gzip** and is fetched only on choosing the pilot. The Horgen data remains a separate download. Each response must match the selected recording ID, road, date, bounds, counter pair and expected sample count before replacing the morning view. Selecting another road aborts an unfinished download and clears the active pilot. Wrong-corridor responses and failed downloads leave the morning timeline intact and allow retry.
+
+The shared controls derive dates, lengths and window labels from the selected recording, support all four UI languages, and disclose gaps only where they exist. The pilot place names supplement search without changing the official road description. Horgen retains its existing 40 samples and two gaps; its artifact now additionally carries the explicit recording ID `horgen-2026-09-08`. The new recording ID is `wallisellen-bassersdorf-2026-09-08`. Pilot sharing remains unavailable until the share format supports these recording identities.
+
+Rebuild the second public pilot from the archived observations and pinned review:
+
+```sh
+node scripts/validate-cantonal-road-directions.mjs \
+  --places=data/zurich-cantonal-road-directions.json \
+  --reviews=data/zurich-cantonal-road-direction-reviews.json \
+  --output=/tmp/zurich-directions-reviewed.json
+node scripts/build-cantonal-road-pilot.mjs \
+  --pilot=wallisellen-bassersdorf-2026-09-08 \
+  --topology=/tmp/zurich-directions-reviewed.json
+```
+
+The reviewed topology is an explicit build input; the original automatic topology cannot silently enable this corridor. The publisher rejects a changed expected sample count and uses the strict per-lane compiler before publishing each contiguous window. Source archive snapshots remain private.
+
+Second-pilot validation: **257 tests across 65 files**, **16 desktop Chromium / iPhone WebKit road checks**, production build, artifact validation, architecture checks and lint for changed modules pass. First-view transfer is **759.7 KiB gzip / 790 KiB budget**. Both pilot assets rebuild identically; Horgen’s observations differ from the previous artifact only by the added recording identity.
+
 ## Further coverage work
 
-The [coverage and junction review](CANTONAL-COVERAGE-REVIEW.md) audits the first 245 scheduled minutes: Horgen's longest complete run is 28 minutes, while a pinned direction review yields a **104-minute Wallisellen–Bassersdorf draft**. It also identifies the three Horgen junction areas and documents the strengthened per-lane compiler gate. The second corridor is not yet enabled in AUTO.
+The [coverage and junction review](CANTONAL-COVERAGE-REVIEW.md) audits the first 245 scheduled minutes: Horgen's longest complete run is 28 minutes, while a pinned direction review yields a **104-minute Wallisellen–Bassersdorf draft**. It also identifies the three Horgen junction areas and documents the strengthened per-lane compiler gate. The second corridor is now available in AUTO as described above.
 
 1. Expand accepted direction coverage using more precise destination references and reviewed junction geometry. Nearby destinations and settlement extents crossing a station account for many exclusions; weakening checks alone is not a solution.
 2. Review section assumptions at intersections and find longer complete observation windows before broadening the pilot. Recording, geometry and usable playback coverage remain separate measures.
