@@ -83,7 +83,7 @@ npm run data:road:compile:national -- --date=2026-09-07
 
 The exporter reads the adjacent UTC partitions needed to cover the requested Europe/Zurich day, decompresses the objects locally and writes owner-only files below the ignored `recordings/astra-national/` directory. Use `--scope=a1-zurich` and `data:road:compile` to export and compile the earlier corridor archive in `recordings/astra/`. The access key needs object-read permission only; it must not be committed or added to a Vite variable.
 
-Use `--scope=zurich-cantonal` to export the new archive into `recordings/astra-zurich-cantonal/`. A cantonal playback compiler is still pending; these snapshots must not be passed off as national-road observations.
+Use `--scope=zurich-cantonal` to export the archive into `recordings/astra-zurich-cantonal/`. Audit availability with `scripts/audit-cantonal-road-coverage.mjs`, then use the separate cantonal compiler and pinned pilot builder described in [Cantonal roads](CANTONAL-ROADS.md). Seven recordings across six reviewed corridors are published; exporting later observations does not automatically extend their catalog windows or authorize additional road geometry.
 
 Do not add an automatic deletion rule until R2 download and daily compilation have been exercised. Once that path is proven, retain compiled, audited day chunks and expire raw national minute objects on an explicit rolling window. The GTFS latest object is overwritten and needs no lifecycle rule.
 

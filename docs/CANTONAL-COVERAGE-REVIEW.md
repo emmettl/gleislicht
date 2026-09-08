@@ -1,6 +1,6 @@
 # Cantonal coverage and junction review — 8 September 2026
 
-**Horgen has recurring source gaps; Wallisellen–Bassersdorf is the next viable recorded corridor.** The review produced a compiled, direction-reviewed 104-minute draft. A subsequent [playback integration](CANTONAL-ROADS.md#wallisellenbassersdorf-playback) makes that recording available in AUTO; the findings below describe the review evidence.
+**The original afternoon review found recurring Horgen source gaps and admitted Wallisellen–Bassersdorf.** A later [evening export](#evening-archive-follow-up--9-september-2026) now supports a separate uninterrupted Horgen hour. The review produced a compiled, direction-reviewed 104-minute draft. A subsequent [playback integration](CANTONAL-ROADS.md#wallisellenbassersdorf-playback) makes that recording available in AUTO; the findings below describe the review evidence.
 
 ## Archive findings
 
@@ -150,3 +150,19 @@ The [Lindau 2491 review](LINDAU-2491-ROAD-REVIEW.md) records both A1 crossing co
 The [Stallikon review](STALLIKON-ROAD-REVIEW.md) completes the six-case priority queue. It retains the A3 road-level ambiguity and identifies a ZH 642 roundabout within the 208.39 m candidate. The conditional Stallikon direction passes at 3387, but Zürich fails projected separation, off-axis and bearing checks; neighbour 3287 also fails its Zürich checks. The 149-minute paired window therefore remains unapproved. Further progress on these six cases requires the independent evidence listed in their reviews.
 
 The subsequent [Hittnau document search](HITTNAU-ROAD-REVIEW.md#public-document-follow-up--9-september-2026) finds the actual public 3091 annual-report link through the interactive GIS, correcting the earlier failed guessed URL. Its seven pages corroborate the station, road and R1/R2 destination labels, but contain no surveyed channel mapping. The document hash and findings are saved, and a precise station-plan request is drafted. No direction approval follows from the annual statistics; access to the two linked authenticated portals remains unestablished.
+
+
+## Evening archive follow-up — 9 September 2026
+
+The [completed evening audit](../data/zurich-cantonal-evening-coverage-audit.json) covers **637/637 scheduled minutes, 13:23–23:59 CEST on 8 September**. There are no missing archive minutes. It preserves the original afternoon audit and pins the exact expanded input manifest. Horgen has 489 complete paired minutes; the source still has recurring incomplete observations, but its **61-minute run at 21:10–22:10** is now published as [a separate evening recording](CANTONAL-ROADS.md#horgen-evening-playback).
+
+| Previously reviewed corridor | Complete paired minutes / 637 | Longest complete run (CEST) |
+| --- | ---: | --- |
+| Horgen | 489 | **61 minutes, 21:10–22:10 — published separately** |
+| Wallisellen–Bassersdorf | 620 | 279 minutes, 19:21–23:59 |
+| Kilchberg–Thalwil | 612 | 279 minutes, 19:21–23:59 |
+| Meilen–Stäfa | 637 | 637 minutes, 13:23–23:59 |
+| Meilen Seestrasse | 622 | 279 minutes, 19:21–23:59 |
+| Bauma–Wila | 608 | 146 minutes, 19:21–21:46 |
+
+The remaining longer runs are candidates for separate recordings using each corridor's existing pinned direction and junction evidence. They have not replaced any published recording. This establishes useful expansion work without depending on the unresolved station-plan access: Meilen–Stäfa offers the largest next increase. Raw observations remain in the private archive and ignored local recording directory.

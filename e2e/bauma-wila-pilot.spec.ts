@@ -37,7 +37,7 @@ test('a failed Bauma–Wila download retries at the shared final minute', async 
   await page.goto('/?recording=bauma-wila-2026-09-08&time=57420')
   await expect(page.locator('.cantonal-pilot')).toContainText('Try again')
   await page.unroute('**/bauma-wila-road-pilot.json')
-  await page.getByRole('button', { name: 'Play Bauma–Wila afternoon pilot' }).click()
+  await page.getByRole('button', { name: 'Play Bauma–Wila recording' }).click()
   await expect(page.locator('.cantonal-pilot')).toContainText('104 complete recorded minutes')
   await expect(page.locator('.scrubber input')).toHaveValue('57420')
 })

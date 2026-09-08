@@ -100,5 +100,22 @@
       "ZH.CH:1623"
     ],
     "junctionAreas": 2
+  },
+  {
+    "id": "horgen-evening-2026-09-08",
+    "road": "ZH:3",
+    "label": "Horgen",
+    "name": "Horgen · Seestrasse · 21:10–22:10",
+    "file": "horgen-evening-road-pilot.json",
+    "serviceDate": "2026-09-08",
+    "windowStart": 76200,
+    "windowEnd": 79800,
+    "initialTime": 76200,
+    "completeMinutes": 61,
+    "stationIds": [
+      "ZH.CH:4590",
+      "ZH.CH:4290"
+    ],
+    "junctionAreas": 3
   }
 ]
