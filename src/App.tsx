@@ -2585,98 +2585,100 @@ export function App({ edition }: AppProps) {
                 {text.auto}
               </button>
             </nav>
-            <MobilePicker
-              className="mobile-study-picker"
-              ariaLabel={text.networkStudy}
-              value={
-                isContrast
-                  ? 'contrast'
-                  : networkStudy === 'national'
-                    ? `national-${nationalTimeRange}`
-                    : networkStudy
-              }
-              options={[
-                {
-                  value: 'national-morning',
-                  label: 'CH',
-                  detail: text.swissMorningNetwork,
-                },
-                {
-                  value: 'national-day',
-                  label: '24H',
-                  detail: text.swissDayNetwork,
-                },
-                {
-                  value: 'contrast',
-                  label: '↔',
-                  detail: text.contrastNetwork,
-                },
-                { value: 'postbus', label: 'PA', detail: text.postbusNetwork },
-                { value: 'lausanne-region', label: 'LS', detail: text.lausanneNetwork },
-                { value: 'jungfrau', label: 'JUNG', detail: jungfrauSelect },
-                { value: 'rigi-lake', label: 'RIGI', detail: rigiCopy.select },
-                { value: 'zvv-region', label: 'ZVV', detail: text.zvvNetwork },
-                { value: 'zurich-city', label: 'ZH', detail: text.zurichNetwork },
-                { value: 'geneva-tpg', label: 'GE', detail: text.genevaNetwork },
-              ]}
-              triggerLabel={
-                isLausanne ? 'LS' : isJungfrau ? 'JUNG' : isRigi ? 'RIGI' : isPostbus ? 'PA' : isContrast
-                  ? '↔'
-                  : networkStudy === 'national' && nationalTimeRange === 'day'
-                    ? '24H'
+            <div className="mobile-search-controls">
+              <MobilePicker
+                className="mobile-study-picker"
+                ariaLabel={text.networkStudy}
+                value={
+                  isContrast
+                    ? 'contrast'
                     : networkStudy === 'national'
-                      ? 'CH'
-                      : networkStudy === 'zvv-region'
-                        ? 'ZVV'
-                        : networkStudy === 'geneva-tpg'
-                          ? 'GE'
-                          : 'ZH'
-              }
-              onChange={(study) => {
-                if (study === 'national-morning') {
-                  selectNetworkStudy('national', 'morning')
-                } else if (study === 'national-day') {
-                  selectNetworkStudy('national', 'day')
-                } else if (study === 'contrast') {
-                  selectNetworkStudy('contrast')
-                } else {
-                  selectNetworkStudy(study as NetworkStudy)
+                      ? `national-${nationalTimeRange}`
+                      : networkStudy
                 }
-              }}
-            />
-            <button
-              className="mobile-sbb-toggle"
-              type="button"
-              data-tooltip={networkStudy !== 'national' ? text.sbbUnavailable : sbbEnabled ? text.hideSbbLayer : text.showSbbLayer}
-              aria-label={sbbEnabled ? text.hideSbbLayer : text.showSbbLayer}
-              aria-pressed={sbbEnabled}
-              disabled={networkStudy !== 'national'}
-              onClick={toggleSbbLayer}
-            >
-              SBB
-            </button>
-            <button
-              className="mobile-air-toggle"
-              type="button"
-              data-tooltip={networkStudy !== 'national' ? help.airUnavailable : airEnabled ? text.hideAirLayer : text.showAirLayer}
-              aria-label={airEnabled ? text.hideAirLayer : text.showAirLayer}
-              aria-pressed={airEnabled}
-              disabled={networkStudy !== 'national'}
-              onClick={toggleAirLayer}
-            >
-              {text.luftraum}
-            </button>
-            <button
-              className="mobile-road-toggle"
-              type="button"
-              data-tooltip={networkStudy !== 'national' || isNationalDay ? help.roadUnavailable : roadEnabled ? text.hideRoadLayer : text.showRoadLayer}
-              aria-label={roadEnabled ? text.hideRoadLayer : text.showRoadLayer}
-              aria-pressed={roadEnabled}
-              disabled={networkStudy !== 'national' || isNationalDay}
-              onClick={toggleRoadLayer}
-            >
-              {text.auto}
-            </button>
+                options={[
+                  {
+                    value: 'national-morning',
+                    label: 'CH',
+                    detail: text.swissMorningNetwork,
+                  },
+                  {
+                    value: 'national-day',
+                    label: '24H',
+                    detail: text.swissDayNetwork,
+                  },
+                  {
+                    value: 'contrast',
+                    label: '↔',
+                    detail: text.contrastNetwork,
+                  },
+                  { value: 'postbus', label: 'PA', detail: text.postbusNetwork },
+                  { value: 'lausanne-region', label: 'LS', detail: text.lausanneNetwork },
+                  { value: 'jungfrau', label: 'JUNG', detail: jungfrauSelect },
+                  { value: 'rigi-lake', label: 'RIGI', detail: rigiCopy.select },
+                  { value: 'zvv-region', label: 'ZVV', detail: text.zvvNetwork },
+                  { value: 'zurich-city', label: 'ZH', detail: text.zurichNetwork },
+                  { value: 'geneva-tpg', label: 'GE', detail: text.genevaNetwork },
+                ]}
+                triggerLabel={
+                  isLausanne ? 'LS' : isJungfrau ? 'JUNG' : isRigi ? 'RIGI' : isPostbus ? 'PA' : isContrast
+                    ? '↔'
+                    : networkStudy === 'national' && nationalTimeRange === 'day'
+                      ? '24H'
+                      : networkStudy === 'national'
+                        ? 'CH'
+                        : networkStudy === 'zvv-region'
+                          ? 'ZVV'
+                          : networkStudy === 'geneva-tpg'
+                            ? 'GE'
+                            : 'ZH'
+                }
+                onChange={(study) => {
+                  if (study === 'national-morning') {
+                    selectNetworkStudy('national', 'morning')
+                  } else if (study === 'national-day') {
+                    selectNetworkStudy('national', 'day')
+                  } else if (study === 'contrast') {
+                    selectNetworkStudy('contrast')
+                  } else {
+                    selectNetworkStudy(study as NetworkStudy)
+                  }
+                }}
+              />
+              <button
+                className="mobile-sbb-toggle"
+                type="button"
+                data-tooltip={networkStudy !== 'national' ? text.sbbUnavailable : sbbEnabled ? text.hideSbbLayer : text.showSbbLayer}
+                aria-label={sbbEnabled ? text.hideSbbLayer : text.showSbbLayer}
+                aria-pressed={sbbEnabled}
+                disabled={networkStudy !== 'national'}
+                onClick={toggleSbbLayer}
+              >
+                SBB
+              </button>
+              <button
+                className="mobile-air-toggle"
+                type="button"
+                data-tooltip={networkStudy !== 'national' ? help.airUnavailable : airEnabled ? text.hideAirLayer : text.showAirLayer}
+                aria-label={airEnabled ? text.hideAirLayer : text.showAirLayer}
+                aria-pressed={airEnabled}
+                disabled={networkStudy !== 'national'}
+                onClick={toggleAirLayer}
+              >
+                {text.luftraum}
+              </button>
+              <button
+                className="mobile-road-toggle"
+                type="button"
+                data-tooltip={networkStudy !== 'national' || isNationalDay ? help.roadUnavailable : roadEnabled ? text.hideRoadLayer : text.showRoadLayer}
+                aria-label={roadEnabled ? text.hideRoadLayer : text.showRoadLayer}
+                aria-pressed={roadEnabled}
+                disabled={networkStudy !== 'national' || isNationalDay}
+                onClick={toggleRoadLayer}
+              >
+                {text.auto}
+              </button>
+            </div>
           </form>
           {searchOpen && searchQuery.trim() && (
             <div
