@@ -1,0 +1,35 @@
+{
+  "checked": "2026-09-08",
+  "operator": {
+    "name": "Montreux-Vevey-Riviera (MVR)",
+    "route": "Territet–Glion funicular",
+    "url": "https://www.mob.ch/en/stories/territet-glion-funicular"
+  },
+  "timetable": {
+    "serviceDate": "2026-09-04",
+    "routeId": "93-TG-j26-1",
+    "agencyId": "131",
+    "routeType": 1400,
+    "archiveSha256": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+    "annualTable": "2054",
+    "annualPdf": "https://assets.contenthub.dev/h24dbpy2mqzk/75a4c44f69d16cd96d6a20a43e5c5c00/WEB_Horaire_2026.pdf",
+    "authority": "Exact imported calls establish this service date; annual operator material is context."
+  },
+  "geometry": {
+    "publisher": "Federal Office of Transport",
+    "layer": "ch.bav.seilbahnen-bundeskonzession",
+    "installation": "61.046",
+    "featureId": 670,
+    "type": "Standseilbahn",
+    "sourceUrl": "https://api3.geo.admin.ch/rest/services/ech/MapServer/identify?geometryType=esriGeometryEnvelope&geometry=6.920,46.425,6.927,46.434&geometryFormat=geojson&imageDisplay=1600,900,96&mapExtent=6.920,46.425,6.927,46.434&tolerance=0&layers=all:ch.bav.seilbahnen-bundeskonzession&returnGeometry=true&limit=200&sr=4326",
+    "file": "data/territet-funicular-source.json",
+    "sha256": "735f652a5bb2ac3cf0cfa0eb781706526276b185b828ce928217b17548a5a114",
+    "individualVintage": "No individual feature date supplied by this response. Retrieval date is not an alignment-validity claim."
+  },
+  "notEstablished": [
+    "Passing-loop track assignment and exact cable mechanics",
+    "Measured terrain or railway XYZ",
+    "Guaranteed connection or walking route to the separate Glion railway stop",
+    "Other operating dates or physical-device review"
+  ]
+}

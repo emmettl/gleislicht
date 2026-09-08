@@ -22,6 +22,7 @@ export const STUDY_SOURCES = [
   ['valais-region', 'valais-region-day-manifest.json'],
   ['graubuenden-region', 'graubuenden-region/2026-09-04/graubuenden-region-day-manifest.json'],
   ['pilatus', 'pilatus-day.json'],
+  ['territet', 'territet-day.json'],
   ['rochers', 'rochers-day.json'],
 ]
 export async function buildStudySummaries(directory = 'public/data') {

@@ -1,0 +1,41 @@
+.journey-card.territet-journey { top: 22%; max-height: calc(78vh - 52px); overflow: auto; clip-path: none; background: #0c0b21f2; border-left-color: #efd490; }
+.territet-journey header { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.territet-journey h2 { color: #fff0b9; font-size: .9rem; font-weight: 500; }
+.territet-journey header button { color: inherit; background: transparent; border: 0; min-width: 44px; min-height: 44px; font-size: 24px; cursor: pointer; }
+.territet-journey p, .territet-journey details, .territet-journey label { color: #c6c4d6; font-size: .65rem; line-height: 1.5; }
+.territet-journey label { display: grid; gap: 5px; }
+.territet-journey select { width: 100%; min-height: 36px; color: #eeeaff; background: #100e29; border: 1px solid #c1ccff33; font: inherit; font-size: .75rem; }
+.territet-journey nav { display: grid; gap: 4px; }
+.territet-journey nav button { display: flex; justify-content: space-between; gap: 8px; min-height: 44px; padding: 8px; align-items: center; background: #0c0b21; border: 1px solid #c1ccff33; color: #ccc8e4; font: inherit; font-size: .7rem; cursor: pointer; text-align: left; }
+.territet-journey nav strong { font-weight: 500; }
+.territet-journey nav button[aria-current] { color: #fff0b9; border-color: #e5ce86; background: #84733822; }
+.territet-journey summary { cursor: pointer; padding: 8px 0; }
+.territet-journey a { color: #b5dce9; }
+@media(min-width:701px) and (max-width:1500px) { .journey-card.territet-journey { left: 24px; width: 240px; padding: 12px; } }
+@media(max-width:700px) {
+ .view-network .journey-card.territet-journey { top: calc(184px + env(safe-area-inset-top)); left: 16px; right: 16px; width: auto; padding: 10px 12px; max-height: calc(100dvh - 390px); }
+ .territet-journey nav { grid-auto-flow: column; grid-auto-columns: 120px; overflow: auto; }
+ .territet-journey nav button { flex-direction: column; align-items: start; min-height: 60px; }
+ .territet-journey header { position: sticky; top: -10px; background: #0c0b21; }
+}
+.territet-study:has(.territet-journey) .mobile-map-tools { display: none; }
+@media(max-width:700px) {
+ .territet-study .network-card .between { display: block; }
+ .territet-study .network-card { max-width: 180px; }
+}
+
+.territet-journey nav { max-height: 220px; overflow: auto; }
+.territet-journey header { position: sticky; top: -12px; background: #0c0b21; z-index: 1; }
+.territet-details-toggle { display: none; }
+@media(min-width:701px) {
+ .territet-study .masthead h1 { font-size: clamp(28px, 3.3vw, 46px); max-width: 650px; }
+}
+@media(max-width:700px) {
+ .territet-details-toggle { display: block; }
+ .territet-journey h2 { flex: 1; }
+ .territet-journey nav { max-height: none; }
+ .territet-journey[data-expanded='false'] > label,
+ .territet-journey[data-expanded='false'] > p:not([role='status']),
+ .territet-journey[data-expanded='false'] > details,
+ .territet-journey[data-expanded='false'][data-phase='rail'] > p[role='status'] { display: none; }
+}

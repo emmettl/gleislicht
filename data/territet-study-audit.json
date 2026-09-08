@@ -1,0 +1,120 @@
+{
+  "metadata": {
+    "publisher": "SBB",
+    "feedVersion": "20260902",
+    "serviceDate": "2026-09-04",
+    "windowStart": 0,
+    "windowEnd": 86400,
+    "focusTime": 43440,
+    "sourceUrl": "https://opentransportdata.swiss/en/cookbook/timetable-cookbook/gtfs/",
+    "model": "Scheduled interpolation on mapped 2D FOT funicular alignment; no live positions or measured terrain.",
+    "note": "Exact Territet–Glion funicular route only; GTFS type 1400. Original service day; no preceding-day spillover or seasonal comparison.",
+    "sources": {
+      "timetable": {
+        "sha256": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e"
+      },
+      "rail": {
+        "publisher": "Federal Office of Transport",
+        "sha256": "735f652a5bb2ac3cf0cfa0eb781706526276b185b828ce928217b17548a5a114",
+        "simplificationToleranceMetres": 0
+      }
+    }
+  },
+  "counts": {
+    "trips": 140,
+    "stops": 3,
+    "paths": 2,
+    "gzipBytes": 4838
+  },
+  "alignmentReview": {
+    "installation": "61.046",
+    "featureId": 670,
+    "sourceSha256": "ff1bc767718eb91c59645473e429f8f345042344cba42e45feb09d8a9cd78e1a",
+    "sourcePoints": 4,
+    "stopAnchors": [
+      {
+        "id": "ch:1:sloid:30673",
+        "name": "Territet (funi)",
+        "sourceCoordinate": [
+          6.92344166,
+          46.42683088
+        ],
+        "railCoordinate": [
+          6.923468827924509,
+          46.42683008415063
+        ],
+        "offsetMetres": 2.0864952897431643,
+        "maximumOffsetMetres": 15
+      },
+      {
+        "id": "ch:1:sloid:92618",
+        "name": "Collonge (funi)",
+        "sourceCoordinate": [
+          6.92351352,
+          46.42827977
+        ],
+        "railCoordinate": [
+          6.923558130682511,
+          46.42827846325697
+        ],
+        "offsetMetres": 3.426007047198395,
+        "maximumOffsetMetres": 15
+      },
+      {
+        "id": "ch:1:sloid:30031",
+        "name": "Glion (funi)",
+        "sourceCoordinate": [
+          6.92376505,
+          46.43187086
+        ],
+        "railCoordinate": [
+          6.923768,
+          46.43187
+        ],
+        "offsetMetres": 0.24574902009025162,
+        "maximumOffsetMetres": 15
+      }
+    ],
+    "model": "Official 2D installation centreline; intermediate call projected onto it. No passing-loop track assignment, cable simulation or railway XYZ."
+  },
+  "geometry": {
+    "occurrences": 280,
+    "matched": 280,
+    "maxOffsetMetres": 3.426007047198395,
+    "pairs": [
+      {
+        "from": "Territet (funi)",
+        "to": "Collonge (funi)",
+        "fromId": "ch:1:sloid:30673",
+        "toId": "ch:1:sloid:92618",
+        "path": 0,
+        "offsetMetres": 3.426007047198395
+      },
+      {
+        "from": "Collonge (funi)",
+        "to": "Glion (funi)",
+        "fromId": "ch:1:sloid:92618",
+        "toId": "ch:1:sloid:30031",
+        "path": 1,
+        "offsetMetres": 3.426007047198395
+      },
+      {
+        "from": "Glion (funi)",
+        "to": "Collonge (funi)",
+        "fromId": "ch:1:sloid:30031",
+        "toId": "ch:1:sloid:92618",
+        "path": 1,
+        "offsetMetres": 3.426007047198395
+      },
+      {
+        "from": "Collonge (funi)",
+        "to": "Territet (funi)",
+        "fromId": "ch:1:sloid:92618",
+        "toId": "ch:1:sloid:30673",
+        "path": 0,
+        "offsetMetres": 3.426007047198395
+      }
+    ],
+    "passed": true
+  }
+}
