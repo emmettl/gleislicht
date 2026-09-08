@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict'
+import { createHash } from 'node:crypto'
 import { distanceMetres, sliceShape } from './enrich-postbus-roads.mjs'
 import { projectRailStop } from './lausanne-rail-geometry.mjs'
 import { BASEL_CORE_RAIL_LIMITS, coreEdgePaths } from './basel-core-geometry.mjs'
@@ -13,6 +14,11 @@ const measure = points => {
   })
 }
 const key = (route, from, to) => JSON.stringify([route, from, to])
+
+export function baselPlatformPatternHash(train, stops) {
+  const platforms = train.stops.map(([index]) => [stops[index][4], ...stops[index].slice(0, 2)])
+  return createHash('sha256').update(JSON.stringify(platforms)).digest('hex')
+}
 
 // Reviewed source parts are an ordered physical corridor, not a general
 // shortest-path graph. This prevents a closed street or an earlier side road
@@ -71,14 +77,22 @@ export function applyReviewedBaselGeometry(snapshot, routes, bundle) {
     const id = key(rule.routeId, rule.fromId, rule.toId)
     assert(!rules.has(id), 'Duplicate reviewed Basel pair')
     assert(bundle.evidence[rule.evidence] || bundle.provenance[rule.evidence], 'Missing Basel corridor evidence')
+    if (rule.patternSha256) assert(rule.patternSha256.length > 0 && rule.patternSha256.every(hash => /^[a-f0-9]{64}$/.test(hash)), 'Invalid reviewed Basel pattern hashes')
     rules.set(id, rule)
   }
   const paths = [...snapshot.paths], pathIndices = new Map(paths.map((path, i) => [JSON.stringify(path), i])), decisions = new Map()
+  const patternHashes = new Map()
   const trains = snapshot.trains.map(train => ({ ...train, pathSegments: train.pathSegments.map((existing, i) => {
     if (existing !== null) return existing
     const from = snapshot.stops[train.stops[i][0]], to = snapshot.stops[train.stops[i + 1][0]]
     const rule = rules.get(key(train.routeId, from[4], to[4]))
     if (!rule) return null
+    // Depot turns are reviewed in their complete ordered platform context.
+    // The same adjacent pair in a new pattern does not inherit that review.
+    if (rule.patternSha256) {
+      if (!patternHashes.has(train)) patternHashes.set(train, baselPlatformPatternHash(train, snapshot.stops))
+      if (!rule.patternSha256.includes(patternHashes.get(train))) return null
+    }
     const route = routes.get(train.routeId)
     assert(route.agencyId === rule.agencyId && route.mode === rule.mode && train.route === rule.line, 'Reviewed Basel operator/line/mode changed')
     let decision = decisions.get(rule.id)

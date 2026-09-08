@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "reviewedOn": "2026-09-08",
+  "pair": [
+    "ch:1:sloid:235",
+    "ch:1:sloid:88073:1:9"
+  ],
+  "source": "https://overpass-api.de/api/interpreter",
+  "query": "[out:json][timeout:60];way[highway](47.526,7.606,47.534,7.613);out geom;",
+  "osmBaseTimestamp": "2026-09-08T18:39:21Z",
+  "responseSha256": "1588962209ad4e2ce0058a8fb8204291ab08f7f88b01435dc53503f50387068d",
+  "responseFile": "basel-geometry-sources/freilager-roads-2026-09-08.json.gz",
+  "wayCount": 181,
+  "license": "ODbL-1.0",
+  "attributionUrl": "https://www.openstreetmap.org/copyright",
+  "result": "rejected-disconnected-diversion-entry",
+  "corridorEvidence": "BLT dated Aesch-direction route, layer 5 object 2; see basel-reviewed-geometry.json evidence.ev11",
+  "findings": [
+    "The previous pfaedle road extract omitted service roads along the Neapel-Strasse corridor.",
+    "Current full OSM road geometry includes Neapel-Strasse way 27387049, but its northeast end is not connected to the Freilager platform approach in the public road graph.",
+    "BLT map confirms a physical connection through this area; its coordinates are review evidence, not a licensed geometry source for republication.",
+    "No synthetic connector, increased snap allowance, moved platform or alternate Emil Frey-Strasse shortcut was admitted."
+  ],
+  "unmatchedMovements": {
+    "2026-09-08": 177,
+    "2026-09-13": 104
+  }
+}

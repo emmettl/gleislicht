@@ -1,6 +1,6 @@
 # Basel geometry repairs, 8 September 2026
 
-Twelve reviewed directed platform pairs add **682 Tuesday / 456 Sunday movements**. Regional rail and BVB buses now have accepted geometry for every movement in both fixtures. This is centreline coverage, not certification of individual running tracks.
+The follow-up resolves **all remaining tram gaps**, adding **724 Tuesday / 350 Sunday movements** across 224 directed route/platform pairs in the two-date union. Together with the initial twelve repairs, this adds **1,406 / 806 movements**. All trams, BVB buses and regional rail now have accepted geometry for every movement in both fixtures. EV11 Freilager–Schaulager is the only remaining pair. This is centreline coverage, not certification of individual running tracks.
 
 | Repair | Tuesday added | Sunday added | Maximum endpoint snap |
 | --- | ---: | ---: | ---: |
@@ -10,6 +10,7 @@ Twelve reviewed directed platform pairs add **682 Tuesday / 456 Sunday movements
 | Bus 33: General Guisan-Strasse–St. Galler-Ring | 95 | 72 | 2.43 m |
 | Bus 34: Otto Wenk-Platz A–B | 32 | 0 | 4.26 m |
 | EV11: Schaulager–MFP | 177 | 104 | 5.81 m |
+| Depot/special tram patterns, follow-up | 724 | 350 | 15.93 m |
 
 ## Sources and route review
 
@@ -23,6 +24,12 @@ Twelve reviewed directed platform pairs add **682 Tuesday / 456 Sunday movements
 
 **EV11.** BLT's [construction page](https://www.blt.ch/projekte/linie-11/bauprojekt) embeds an ArcGIS application with dated, direction-specific replacement routes. The public service item is `f0ba0997bc0d4fbfa95949f7e4b7f2ea`; layer 5, object 2 is the Aesch direction, applicable to both reviewed dates. Its route corroborates the southern carriageway from Schaulager toward MFP. The delivered **784 m** geometry is independently derived from the pinned OSM road extract and retains the GTFS platform access. BLT's map is review evidence; its geometry is not redistributed or assigned an assumed open licence.
 
+**Depot and special tram patterns.** The [7 September–23 October network plan](https://www.bvb.ch/wp-content/bvb/dokumente/liniennetzplan/2026/Liniennetzplan_2026_Baustellen_September_Oktober.pdf) was rendered and reviewed together with the full dated GTFS platform sequences. The 224 additional rules cover 207 Tuesday / 137 Sunday pairs: 172 union pairs use a clipped, forward interval of one continuous Basel-Stadt tram feature; the other 52 use reviewed swissTLM3D junction chains or the existing Markthalle repair. They cover the Wiesenplatz depot approaches, Messeplatz/Riehenring, Voltaplatz/St. Johann, Morgartenring/Allschwilerplatz, the SBB/Markthalle corridors, Münchensteinerstrasse/MParc, Riehen and the central junctions. Full source identities and original vertices remain in the bundle. No new general shortest-path fallback runs during a build.
+
+Two naive junction candidates were rejected after plotting. Dreirosenbrücke–Brombacherstrasse initially turned west and reversed at a switch; the reviewed **375 m** path turns directly east. Denkmal–Aeschenplatz H initially arrived facing west after an unnecessary loop; the reviewed **464 m** path reaches H facing east toward Hardstrasse. The rendered [temporary Dreirosenbrücke plan](https://www.bvb.ch/wp-content/bvb/dokumente/diverse_unterlagen/Situationsplaene/BVB_Dreirosenbruecke_UntereRebgasse_2026.pdf) and [March 2026 Aeschenplatz plan](https://www.bvb.ch/wp-content/bvb/dokumente/diverse_unterlagen/Situationsplaene/Neu/BVB_Sit_Aeschenplatz.pdf) establish these platform approaches. Source hashes are retained with the review. Closed Holbeinstrasse and Claraplatz corridors remain excluded.
+
+Each new rule additionally pins the **entire ordered platform sequence and coordinates**, hashed with SHA-256; 71 distinct full patterns are reviewed. A new pattern containing the same adjacent pair stays unmatched. The [pattern review](../data/basel-tram-pattern-review.json) records each admitted dated trip instance, segment index, pattern hash, source reference and path measurement.
+
 The OSM chains retain source way IDs, node IDs and direction tags from the Geofabrik Switzerland **2026-09-02** extract used by the existing bus pipeline. One-way direction is checked for every selected part. This is a review of these specific chains, not a new general-purpose router or a claim to certify every OSM turn restriction. Basel-Stadt, BAV, OSM/ODbL and swisstopo credits remain visible in the application; mobile attribution includes swisstopo.
 
 ## Reproduction and safeguards
@@ -31,7 +38,7 @@ The OSM chains retain source way IDs, node IDs and direction tags from the Geofa
 
 [`basel-reviewed-geometry.mjs`](../scripts/basel-reviewed-geometry.mjs) applies the rules only to missing paths in feed **20260905**, civil dates **8/13 September**, and their explicitly reviewed preceding service dates. It checks unchanged platform coordinates, exact continuity between source parts, forward source ranges, OSM one-way direction, endpoint snaps and complete path lengths. Limits remain **120 m** for snapping, **2× / 600 m** for trams, **4.5× / 1,200 m** for buses, and **4.5× / 3,000 m** for rail. Successful prior paths retain priority. The release wrapper verifies the repair-bundle hash again before publication.
 
-Rebuild with the commands in [Basel core](BASEL-CORE.md). The builder now includes this bundle automatically. Its report separates original matcher decisions from `reviewedGeometry`, so earlier rejected attempts remain auditable. Candidates used for this review are retained at `/tmp/basel-geometry-improved/`.
+Rebuild with the commands in [Basel core](BASEL-CORE.md). The builder now includes this bundle automatically. Its report separates original matcher decisions from `reviewedGeometry`, so earlier rejected attempts remain auditable. Initial candidates are retained at `/tmp/basel-geometry-improved/`; the completed tram follow-up is at `/tmp/basel-geometry-complete/`.
 
 ```sh
 node scripts/check-basel-geometry-regression.mjs \
@@ -43,11 +50,24 @@ npx vitest run scripts/basel-reviewed-geometry.test.mjs \
 npx playwright test basel.spec.ts
 ```
 
-The [regression result](../data/basel-geometry-regression.json) verifies every source instance: all **148,577 / 100,850** previously accepted movement paths are unchanged, as are all calls, times, platform coordinates, journey identities and rail clipping ranges. Both complete release sets pass validation. Six Basel desktop/iPhone cases pass; focused geometry tests, TypeScript, production build, edition boundaries, lint and the mobile bundle budget also pass. A broader shared-workspace run found an unrelated Bern release count mismatch and an empty in-progress St. Gallen test file; it is not recorded as a passing full-suite run.
+The initial [regression result](../data/basel-geometry-regression.json) verifies every source instance: all **148,577 / 100,850** previously accepted movement paths are unchanged, as are all calls, times, platform coordinates, journey identities and rail clipping ranges. Both complete release sets pass validation. Six Basel desktop/iPhone cases pass; focused geometry tests, TypeScript, production build, edition boundaries, lint and the mobile bundle budget also pass. A broader shared-workspace run found an unrelated Bern release count mismatch and an empty in-progress St. Gallen test file; it is not recorded as a passing full-suite run.
+
+## Follow-up validation
+
+The [incremental regression](../data/basel-geometry-followup-regression.json) preserves **149,259 Tuesday / 101,306 Sunday previously accepted movements**, including every initial repair, byte for byte. Calls, times, platforms, source trip identities and clipping boundaries remain unchanged. Only the repair-bundle hash may change through an explicit regression option; every original timetable/source hash is still checked. Both complete application release sets pass validation.
+
+```sh
+node scripts/check-basel-geometry-regression.mjs \
+  --before /tmp/basel-geometry-improved \
+  --after /tmp/basel-geometry-complete \
+  --allow-reviewed-geometry-update \
+  --output data/basel-geometry-followup-regression.json
+```
+
+The follow-up passes **60 focused tests across nine files**, including refresh recovery, complete-pattern admission, junction direction and regression rejection cases. Focused lint, TypeScript and the production build pass. The shared application JavaScript is **361.4 KiB against a 360 KiB budget** at this check; this follow-up changes no browser code, and the overall release remains blocked by that budget as well as the shared test failures. The shared full-suite run at 20:52 passed 565 tests but failed in ongoing Bern, Zug, St. Gallen and edition-catalogue work; it is not a passing full-suite result. All **six Basel browser cases pass** on desktop Chromium and iPhone WebKit with the promoted Tuesday fixture: lazy selection, rail/foreign-stop search, seek/share, midnight retry with preceding-day trips, morning recovery, translations and overflow.
 
 ## Still unresolved
 
-- **Freilager–Schaulager, EV11:** 177 Tuesday / 104 Sunday movements. The OSM candidate takes a different route from BLT's dated Aesch-direction diversion. It remains rejected; the platform and tolerance were not moved. A matching open road source or a separately permitted geometry export is needed.
-- **Other tram patterns:** 724 Tuesday / 350 Sunday movements, spread across less frequent depot/special patterns and changed corridors. These have not been admitted merely because a nearby physical track exists. Each needs a source chain and dated route review like the ones above.
+**Freilager–Schaulager, EV11:** **177 Tuesday / 104 Sunday movements**, one directed route/platform pair on each date. A fresh [public OSM road probe](../data/basel-ev11-source-probe.json), with the complete compressed response retained, narrows the issue: the earlier pfaedle extract omitted service roads along Neapel-Strasse. Current OSM includes that corridor, but its northeast end is not connected to the Freilager approach. BLT's dated map shows the missing connection. The existing road candidate's alternate Emil Frey-Strasse route remains rejected. A matching open source for that connection, or a permitted official geometry export, is still needed. No synthetic connector, moved platform or relaxed tolerance was admitted.
 
-The remaining totals are **208 / 138 directed route/platform pairs** and **901 / 454 movements**. They retain explicit stop interpolation. The twelve repairs do not expand the operator set, geographic boundary or approved dates.
+The remaining pair retains explicit stop interpolation. No other tram, rail or BVB bus movement remains unmatched in either fixture. The repairs do not expand the operator set, geographic boundary or approved dates.

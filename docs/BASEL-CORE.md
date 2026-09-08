@@ -39,7 +39,7 @@ For offline bus matching only, negative carry-in times are shifted back by one d
 
 | Group | Tuesday trips | Tuesday accepted movements | Sunday trips | Sunday accepted movements |
 | --- | ---: | ---: | ---: | ---: |
-| BVB tram | 2,389 | 49,762 / 50,486 — **98.57%** | 1,713 | 34,780 / 35,130 — **99.00%** |
+| BVB tram | 2,389 | 50,486 / 50,486 — **100%** | 1,713 | 35,130 / 35,130 — **100%** |
 | BVB bus | 2,979 | 48,655 / 48,655 — **100%** | 2,030 | 31,027 / 31,027 — **100%** |
 | BLT tram | 860 | 18,635 / 18,635 — **100%** | 581 | 12,872 / 12,872 — **100%** |
 | BLT bus | 2,142 | 29,843 / 30,020 — **99.41%** | 1,518 | 20,459 / 20,563 — **99.49%** |
@@ -50,8 +50,8 @@ Tuesday has **1,297 platforms**, **219 preceding-day instances**, and **296 clip
 
 | Gzip payload | Tuesday | Sunday | Budget |
 | --- | ---: | ---: | ---: |
-| Manifest | 284.5 KiB | 253.7 KiB | 650 KiB |
-| Morning | 420.0 KiB | 312.2 KiB | 1,600 KiB |
+| Manifest | 295.9 KiB | 266.9 KiB | 650 KiB |
+| Morning | 431.9 KiB | 325.3 KiB | 1,600 KiB |
 | Largest two-hour chunk | 141.9 KiB | 88.6 KiB | 450 KiB |
 
 Both days have twelve chunks. Sunday's 02:00–04:00 chunk now contains 135 trip records; the earlier service-day artifact omitted previous-day services. Empty Tuesday 02:00–04:00 is retained as the timetable result, rather than filled with invented service.
@@ -81,7 +81,9 @@ The inspected PDF hashes are:
 
 The [reviewed geometry repairs](BASEL-GEOMETRY-REPAIRS.md) resolve the SBB 19/20 approaches, both principal tram 6 diversion gaps, bus 33's southern loop, bus 34's Otto Wenk-Platz movement and EV11 Schaulager–MFP. All original matcher snap and detour bounds remain in force. The raw road-cache exclusion still rejects line 33's incorrect shortcut; a separate reviewed source chain supplies its replacement.
 
-There are now **208 Tuesday / 138 Sunday directed route/platform pairs** with an unmatched occurrence, accounting for **901 / 454 movements**. The remaining EV11 Freilager–Schaulager leg contributes **177 / 104**; its OSM candidate disagrees with BLT's dated diversion map and remains rejected. Other tram patterns contribute **724 / 350**. They remain in the timetable and use ordinary stop interpolation, disclosed by the model label. The repair review records accepted source chains, rejected alternatives, exact measurements and evidence. Street direction and individual track certification remain outside the general schematic model.
+The follow-up adds **724 Tuesday / 350 Sunday** depot and special tram movements, bringing every tram group to **100% geometry**. Each new rule pins its full ordered platform pattern, exact source parts and dated corridor evidence. All previously accepted paths and timetable calls remain unchanged.
+
+Only **one directed route/platform pair** remains unmatched on each date: EV11 **Freilager–Schaulager**, accounting for **177 / 104 movements**. A fresh public OSM probe finds the Neapel-Strasse service-road corridor but lacks its connection to the Freilager approach shown in BLT's dated diversion map. It remains interpolated. The [repair review](BASEL-GEOMETRY-REPAIRS.md) records the source gap, rejected alternatives and validation. Individual running-track certification remains outside the general schematic model.
 
 ## Application and release status
 
@@ -107,13 +109,13 @@ node scripts/build-basel-core.mjs \
   --output-directory /tmp/basel-core --check
 ```
 
-The default dates are 8 and 13 September 2026. Each date directory contains `basel-core-audit.json`, `basel-core-day-manifest.json`, `basel-core-morning.json` and `basel-core-day-chunks/`. The run used for the committed reports is retained under `/tmp/basel-core-reviewed/`.
+The default dates are 8 and 13 September 2026. Each date directory contains `basel-core-audit.json`, `basel-core-day-manifest.json`, `basel-core-morning.json` and `basel-core-day-chunks/`. The latest run used for the committed reports is retained under `/tmp/basel-geometry-complete/`.
 
 Promote a reviewed candidate, or substitute another output directory to validate the Sunday release without replacing the delivered Tuesday fixture:
 
 ```sh
 node scripts/build-basel-day.mjs \
-  --candidate /tmp/basel-core-reviewed/2026-09-08 \
+  --candidate /tmp/basel-core/2026-09-08 \
   --output-directory public/data
 npx vitest run scripts/basel-release.test.mjs scripts/regional-refresh.test.mjs
 npx playwright test basel.spec.ts

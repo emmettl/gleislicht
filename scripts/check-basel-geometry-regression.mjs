@@ -18,12 +18,13 @@ async function readCandidate(directory) {
   return { manifest, trains, manifestSha256: createHash('sha256').update(bytes).digest('hex') }
 }
 
-export async function checkBaselGeometryRegression(beforeDirectory, afterDirectory) {
+export async function checkBaselGeometryRegression(beforeDirectory, afterDirectory, { allowReviewedGeometryUpdate = false } = {}) {
   const before = await readCandidate(beforeDirectory), after = await readCandidate(afterDirectory)
   assert.deepEqual(after.manifest.stops, before.manifest.stops, 'Platform identity or coordinates changed')
   assert.deepEqual(after.manifest.edges, before.manifest.edges, 'Timetable edges changed')
   assert.deepEqual([...after.trains.keys()].sort(), [...before.trains.keys()].sort(), 'Source journey set changed')
   for (const [name, hash] of Object.entries(before.manifest.metadata.sourceHashes)) {
+    if (name === 'reviewedGeometry' && allowReviewedGeometryUpdate) continue
     assert.equal(after.manifest.metadata.sourceHashes[name], hash, `Original source changed: ${name}`)
   }
   let retained = 0, added = 0, unmatched = 0
@@ -45,6 +46,10 @@ export async function checkBaselGeometryRegression(beforeDirectory, afterDirecto
   }
   return { serviceDate: after.manifest.metadata.serviceDate, trips: after.trains.size, platforms: after.manifest.stops.length,
     beforeManifestSha256: before.manifestSha256, afterManifestSha256: after.manifestSha256,
+    ...(allowReviewedGeometryUpdate ? { reviewedGeometryUpdate: {
+      beforeSha256: before.manifest.metadata.sourceHashes.reviewedGeometry,
+      afterSha256: after.manifest.metadata.sourceHashes.reviewedGeometry,
+    } } : {}),
     preservedAcceptedMovements: retained, addedMovements: added, unmatchedMovements: unmatched, improvements,
     sourceCallsTimesAndBoundariesUnchanged: true, passed: true }
 }
@@ -53,7 +58,9 @@ if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1]
   const arg = name => process.argv[process.argv.indexOf(`--${name}`) + 1]
   assert(['before', 'after', 'output'].every(name => process.argv.includes(`--${name}`)), 'Supply --before --after --output')
   const checks = []
-  for (const date of ['2026-09-08', '2026-09-13']) checks.push(await checkBaselGeometryRegression(join(arg('before'), date), join(arg('after'), date)))
+  for (const date of ['2026-09-08', '2026-09-13']) checks.push(await checkBaselGeometryRegression(join(arg('before'), date), join(arg('after'), date), {
+    allowReviewedGeometryUpdate: process.argv.includes('--allow-reviewed-geometry-update'),
+  }))
   await writeFile(arg('output'), `${JSON.stringify({ schemaVersion: 1, checks }, null, 2)}\n`)
   console.log(checks)
 }

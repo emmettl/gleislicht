@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "checks": [
+    {
+      "serviceDate": "2026-09-08",
+      "trips": 8808,
+      "platforms": 1297,
+      "beforeManifestSha256": "51c35313267d283b3cd07dfc28c24fc11055e4417b1a296fb246a0e4e19bc82c",
+      "afterManifestSha256": "009b5a41f78c2f20a65a4e170fdee0cfe03eecfcf854939771c22a332e0654ec",
+      "reviewedGeometryUpdate": {
+        "beforeSha256": "1475d927aad9b4047bba34da167aa7be55d57f5adc972ca3fced1667acb4b280",
+        "afterSha256": "86a78a68f0c88171c7a2ff4937bcff81b5998be73e0ef81ce9e993ecbbea1f3c"
+      },
+      "preservedAcceptedMovements": 149259,
+      "addedMovements": 724,
+      "unmatchedMovements": 177,
+      "improvements": {
+        "1": 85,
+        "2": 162,
+        "3": 84,
+        "6": 74,
+        "8": 18,
+        "14": 85,
+        "15": 96,
+        "16": 108,
+        "21": 12
+      },
+      "sourceCallsTimesAndBoundariesUnchanged": true,
+      "passed": true
+    },
+    {
+      "serviceDate": "2026-09-13",
+      "trips": 6163,
+      "platforms": 1197,
+      "beforeManifestSha256": "1f940447576452468a47a3fb6d8e232724901a7953adfec72e01cd9f0d8208c0",
+      "afterManifestSha256": "ba2b7846a186142a79be0e4fcc529d945784467b6015e1b904f12701f51ce566",
+      "reviewedGeometryUpdate": {
+        "beforeSha256": "1475d927aad9b4047bba34da167aa7be55d57f5adc972ca3fced1667acb4b280",
+        "afterSha256": "86a78a68f0c88171c7a2ff4937bcff81b5998be73e0ef81ce9e993ecbbea1f3c"
+      },
+      "preservedAcceptedMovements": 101306,
+      "addedMovements": 350,
+      "unmatchedMovements": 104,
+      "improvements": {
+        "1": 36,
+        "2": 72,
+        "3": 32,
+        "6": 50,
+        "8": 30,
+        "14": 55,
+        "15": 46,
+        "16": 29
+      },
+      "sourceCallsTimesAndBoundariesUnchanged": true,
+      "passed": true
+    }
+  ]
+}

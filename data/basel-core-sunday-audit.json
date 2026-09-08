@@ -7,7 +7,7 @@
     "rail": "2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
     "busCache": "89b0b21422331830e9ffbc4f7ddbab19ac03e1e4b1d1a204c878dfbde75877cc",
     "supplementalBusCache": "1641bd0af101b79b56242977ed9bdb8a8d79f9f5454f4d69011c25026b9a61e2",
-    "reviewedGeometry": "1475d927aad9b4047bba34da167aa7be55d57f5adc972ca3fced1667acb4b280",
+    "reviewedGeometry": "86a78a68f0c88171c7a2ff4937bcff81b5998be73e0ef81ce9e993ecbbea1f3c",
     "diversionPolicy": "fe02486e50d315e196d88a56d973f15ed5466ceb340386fc4a732d07aa04d6bd",
     "policy": "b1c420dce9612e929db14b571a914e2c3a260df757fbb6bbf4f29c5c80cb1b72",
     "catalogue": "7661fac248774a03687396deb463d7a2dd80b9434b82cbdf92c79f52ecb1d6b5"
@@ -200,10 +200,10 @@
       "id": "BVB-tram",
       "mode": "tram",
       "trips": 1713,
-      "matched": 34780,
+      "matched": 35130,
       "total": 35130,
       "carryInTrips": 177,
-      "coverage": 0.9900370054084828
+      "coverage": 1
     },
     {
       "id": "regional-rail",
@@ -233,10 +233,10 @@
       "mode": "tram",
       "line": "1",
       "trips": 209,
-      "matched": 2455,
+      "matched": 2491,
       "total": 2491,
       "carryInTrips": 20,
-      "coverage": 0.9855479727017262
+      "coverage": 1
     },
     {
       "id": "91-10-j26-1",
@@ -266,10 +266,10 @@
       "mode": "tram",
       "line": "14",
       "trips": 214,
-      "matched": 5930,
+      "matched": 5985,
       "total": 5985,
       "carryInTrips": 21,
-      "coverage": 0.9908103592314118
+      "coverage": 1
     },
     {
       "id": "91-15-j26-1",
@@ -277,10 +277,10 @@
       "mode": "tram",
       "line": "15",
       "trips": 208,
-      "matched": 3131,
+      "matched": 3177,
       "total": 3177,
       "carryInTrips": 20,
-      "coverage": 0.9855209316965691
+      "coverage": 1
     },
     {
       "id": "91-16-j26-1",
@@ -288,10 +288,10 @@
       "mode": "tram",
       "line": "16",
       "trips": 206,
-      "matched": 3204,
+      "matched": 3233,
       "total": 3233,
       "carryInTrips": 18,
-      "coverage": 0.9910300030931024
+      "coverage": 1
     },
     {
       "id": "91-19-B-j26-1",
@@ -310,10 +310,10 @@
       "mode": "tram",
       "line": "2",
       "trips": 205,
-      "matched": 2636,
+      "matched": 2708,
       "total": 2708,
       "carryInTrips": 15,
-      "coverage": 0.9734121122599705
+      "coverage": 1
     },
     {
       "id": "91-3-B-j26-1",
@@ -332,10 +332,10 @@
       "mode": "tram",
       "line": "3",
       "trips": 215,
-      "matched": 4536,
+      "matched": 4568,
       "total": 4568,
       "carryInTrips": 20,
-      "coverage": 0.9929947460595446
+      "coverage": 1
     },
     {
       "id": "91-33-A-j26-1",
@@ -365,10 +365,10 @@
       "mode": "tram",
       "line": "6",
       "trips": 230,
-      "matched": 7202,
+      "matched": 7252,
       "total": 7252,
       "carryInTrips": 33,
-      "coverage": 0.9931053502482073
+      "coverage": 1
     },
     {
       "id": "91-6-M-j26-1",
@@ -387,10 +387,10 @@
       "mode": "tram",
       "line": "8",
       "trips": 226,
-      "matched": 5686,
+      "matched": 5716,
       "total": 5716,
       "carryInTrips": 30,
-      "coverage": 0.9947515745276417
+      "coverage": 1
     },
     {
       "id": "91-ED-Y-j26-1",
@@ -3400,6 +3400,14 @@
         "derivedRoadXmlSha256": "ad19d050a1068f1cb76e1192c792841456c098c66c1878aec8f95d9a1f1c514b",
         "license": "ODbL-1.0",
         "attributionUrl": "https://www.openstreetmap.org/copyright"
+      },
+      "bsTram": {
+        "publisher": "Geodaten Kanton Basel-Stadt",
+        "url": "https://wfs.geo.bs.ch/?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=ms%3ALN_Tramlinie&COUNT=47&OUTPUTFORMAT=geojson&SRSNAME=EPSG%3A4326",
+        "sha256": "687be2ce2fed8ffc48a00ef5a7fd694be71d446b937f5f269cb432beeae83df1",
+        "retrievedOn": "2026-09-08",
+        "validOn": null,
+        "features": 46
       }
     },
     "evidence": {
@@ -3429,10 +3437,1593 @@
         "endTime": 1797030000000,
         "responseSha256": "bd9facf367e19bc27711843a16615605d29d05c8601de6c01f92c18b36a551a5",
         "note": "BLT construction map used as corridor evidence only. Published geometry is independently sourced from OSM. Schaulager–MFP follows the southern carriageway and the GTFS platform access; Freilager–Schaulager rejected because the available OSM path disagrees with the dated official detour."
+      },
+      "depotCorridors": {
+        "url": "https://www.bvb.ch/wp-content/bvb/dokumente/liniennetzplan/2026/Liniennetzplan_2026_Baustellen_September_Oktober.pdf",
+        "sha256": "a567f9942e8e7497d290c554e1350ed6d066f84c4b32031ec2a9a59b2c7f2552",
+        "validFrom": "2026-09-07",
+        "validThrough": "2026-10-23",
+        "note": "Dated network plan establishes open tram corridors; exact full ordered platform patterns from GTFS 20260905 establish these depot/special journeys on the two reviewed civil dates. Continuous official line features and explicitly reviewed TLM junction chains only. Closed Claraplatz–Dreirosenbrücke and Holbeinstrasse corridors excluded.",
+        "stopPlans": [
+          {
+            "url": "https://www.bvb.ch/wp-content/bvb/dokumente/diverse_unterlagen/Situationsplaene/Neu/BVB_Sit_Aeschenplatz.pdf",
+            "sha256": "c853616d44ff8dd3bbfdadbf0306c76d035bf4791b184f99108e291b47812033",
+            "note": "March 2026: platform H faces east toward Hardstrasse. Rejected an undirected candidate that arrived facing west after an unnecessary loop."
+          },
+          {
+            "url": "https://www.bvb.ch/wp-content/bvb/dokumente/diverse_unterlagen/Situationsplaene/BVB_Dreirosenbruecke_UntereRebgasse_2026.pdf",
+            "sha256": "bdaa9afa5124900e1a402d51b230b1c058eaa8248d365b0569ab493e72d16f48",
+            "note": "7 September–23 October 2026: northern platform C connects east toward Brombacherstrasse. Rejected an undirected candidate turning west and reversing at a switch."
+          }
+        ]
       }
     },
-    "addedMovements": 456,
+    "addedMovements": 806,
     "decisions": [
+      {
+        "ruleId": "tram-depot-79",
+        "routeId": "91-14-j26-1",
+        "mode": "tram",
+        "line": "14",
+        "fromId": "ch:1:sloid:254:1:2",
+        "toId": "ch:1:sloid:88767:1:2",
+        "pathIndex": 1595,
+        "sourceFeatureIds": [
+          "bsTram:36:0"
+        ],
+        "pathMetres": 363.7019989202606,
+        "maximumSnapMetres": 1.5752921269052258,
+        "occurrences": 3
+      },
+      {
+        "ruleId": "tram-depot-80",
+        "routeId": "91-14-j26-1",
+        "mode": "tram",
+        "line": "14",
+        "fromId": "ch:1:sloid:88767:1:2",
+        "toId": "ch:1:sloid:88768:1:2",
+        "pathIndex": 473,
+        "sourceFeatureIds": [
+          "bsTram:25:0"
+        ],
+        "pathMetres": 252.74041282052366,
+        "maximumSnapMetres": 0.3998083341763011,
+        "occurrences": 3
+      },
+      {
+        "ruleId": "tram-depot-18",
+        "routeId": "91-14-j26-1",
+        "mode": "tram",
+        "line": "14",
+        "fromId": "ch:1:sloid:994:1:2",
+        "toId": "ch:1:sloid:79:1:2",
+        "pathIndex": 421,
+        "sourceFeatureIds": [
+          "bsTram:37:0"
+        ],
+        "pathMetres": 281.5766488421691,
+        "maximumSnapMetres": 0.9562051090931059,
+        "occurrences": 3
+      },
+      {
+        "ruleId": "tram-depot-19",
+        "routeId": "91-14-j26-1",
+        "mode": "tram",
+        "line": "14",
+        "fromId": "ch:1:sloid:79:1:2",
+        "toId": "ch:1:sloid:89381:1:2",
+        "pathIndex": 1596,
+        "sourceFeatureIds": [
+          "tlm:{5729E6C9-0E3F-4A12-8806-D3BB873F3813}",
+          "tlm:{783B3C7E-6ED2-4C72-B358-839A73BCA96F}",
+          "tlm:{EF653C7C-A8B6-4880-9ED7-AA7F983FCD71}",
+          "tlm:{68EB4A55-59AB-4F18-99EA-08E9C8C5E695}",
+          "tlm:{06F3E9F3-41F8-4FE0-BDE9-CDC8FF6613A6}"
+        ],
+        "pathMetres": 766.4351469422429,
+        "maximumSnapMetres": 5.337672923806608,
+        "occurrences": 3
+      },
+      {
+        "ruleId": "tram-depot-20",
+        "routeId": "91-14-j26-1",
+        "mode": "tram",
+        "line": "14",
+        "fromId": "ch:1:sloid:89381:1:2",
+        "toId": "ch:1:sloid:89360:1:2",
+        "pathIndex": 386,
+        "sourceFeatureIds": [
+          "bsTram:21:0"
+        ],
+        "pathMetres": 399.6279663693048,
+        "maximumSnapMetres": 1.0125988855259538,
+        "occurrences": 3
+      },
+      {
+        "ruleId": "tram-depot-21",
+        "routeId": "91-14-j26-1",
+        "mode": "tram",
+        "line": "14",
+        "fromId": "ch:1:sloid:89360:1:2",
+        "toId": "ch:1:sloid:81062:1:2",
+        "pathIndex": 1597,
+        "sourceFeatureIds": [
+          "bsTram:1:0"
+        ],
+        "pathMetres": 217.8466993208389,
+        "maximumSnapMetres": 0.8197706285643613,
+        "occurrences": 3
+      },
+      {
+        "ruleId": "tram-depot-22",
+        "routeId": "91-14-j26-1",
+        "mode": "tram",
+        "line": "14",
+        "fromId": "ch:1:sloid:81062:1:2",
+        "toId": "ch:1:sloid:89293:1:2",
+        "pathIndex": 422,
+        "sourceFeatureIds": [
+          "bsTram:37:0"
+        ],
+        "pathMetres": 451.19512990025737,
+        "maximumSnapMetres": 15.922492915919255,
+        "occurrences": 3
+      },
+      {
+        "ruleId": "tram-depot-23",
+        "routeId": "91-14-j26-1",
+        "mode": "tram",
+        "line": "14",
+        "fromId": "ch:1:sloid:89293:1:2",
+        "toId": "ch:1:sloid:92442:1:4",
+        "pathIndex": 465,
+        "sourceFeatureIds": [
+          "bsTram:37:0"
+        ],
+        "pathMetres": 379.9947856899924,
+        "maximumSnapMetres": 0.6745423272108859,
+        "occurrences": 3
+      },
+      {
+        "ruleId": "tram-depot-15",
+        "routeId": "91-14-j26-1",
+        "mode": "tram",
+        "line": "14",
+        "fromId": "ch:1:sloid:88768:1:83",
+        "toId": "ch:1:sloid:88767:1:1",
+        "pathIndex": 1598,
+        "sourceFeatureIds": [
+          "tlm:{D5FF577A-C5F8-49B7-9233-634835D01771}:0",
+          "tlm:{58AA6AFC-BB46-4C5E-A822-B344822DD23F}:0",
+          "tlm:{CB154C70-2120-4745-9F0C-97B0B8B87560}:0",
+          "tlm:{6C3E0157-6C1A-4DC1-A231-A468DCFA20F0}:0"
+        ],
+        "pathMetres": 375.1001249649654,
+        "maximumSnapMetres": 0.2800585895942812,
+        "occurrences": 5
+      },
+      {
+        "ruleId": "tram-depot-16",
+        "routeId": "91-14-j26-1",
+        "mode": "tram",
+        "line": "14",
+        "fromId": "ch:1:sloid:88767:1:1",
+        "toId": "ch:1:sloid:254:1:1",
+        "pathIndex": 494,
+        "sourceFeatureIds": [
+          "bsTram:10:0"
+        ],
+        "pathMetres": 363.96118024911493,
+        "maximumSnapMetres": 0.5684003378629662,
+        "occurrences": 5
+      },
+      {
+        "ruleId": "tram-depot-99",
+        "routeId": "91-14-j26-1",
+        "mode": "tram",
+        "line": "14",
+        "fromId": "ch:1:sloid:88776:1:3",
+        "toId": "ch:1:sloid:88778:1:1",
+        "pathIndex": 1599,
+        "sourceFeatureIds": [
+          "bsTram:34:0"
+        ],
+        "pathMetres": 675.8560295867613,
+        "maximumSnapMetres": 3.1546240008215736,
+        "occurrences": 1
+      },
+      {
+        "ruleId": "tram-depot-100",
+        "routeId": "91-14-j26-1",
+        "mode": "tram",
+        "line": "14",
+        "fromId": "ch:1:sloid:88778:1:1",
+        "toId": "ch:1:sloid:88770:1:1",
+        "pathIndex": 1600,
+        "sourceFeatureIds": [
+          "tlm:{40864E3D-91B3-412D-A35B-010E1F367D63}:0",
+          "tlm:{4B5F7845-223A-4091-A7FB-FC93A08D7D6E}:0",
+          "tlm:{2DBBB232-AD2E-4878-9DF0-3D5A4DE51BF0}:0",
+          "tlm:{3A744F5B-A323-470D-B5C8-F361B8CDAEAB}:0",
+          "tlm:{AEBE9A7F-4BEE-43A2-9615-FEADCA2D13FF}:0",
+          "tlm:{4ABBE98D-7DCA-4B0C-9811-6596434D298E}:0"
+        ],
+        "pathMetres": 322.8030793016882,
+        "maximumSnapMetres": 0.9343069458771823,
+        "occurrences": 1
+      },
+      {
+        "ruleId": "tram-depot-101",
+        "routeId": "91-14-j26-1",
+        "mode": "tram",
+        "line": "14",
+        "fromId": "ch:1:sloid:88770:1:1",
+        "toId": "ch:1:sloid:236:1:1",
+        "pathIndex": 187,
+        "sourceFeatureIds": [
+          "bsTram:44:0"
+        ],
+        "pathMetres": 286.77104813186475,
+        "maximumSnapMetres": 0.6535113072775963,
+        "occurrences": 1
+      },
+      {
+        "ruleId": "tram-depot-102",
+        "routeId": "91-14-j26-1",
+        "mode": "tram",
+        "line": "14",
+        "fromId": "ch:1:sloid:236:1:1",
+        "toId": "ch:1:sloid:73:3:34",
+        "pathIndex": 1601,
+        "sourceFeatureIds": [
+          "tlm:{3C2861CA-83CA-431C-9BEA-6D5779798D2C}:0",
+          "tlm:{24DC7414-8B6F-4E0A-AA7D-7A94AE29DA02}:0",
+          "tlm:{97CD4F40-21D4-4A2B-8209-AC465438A865}:0"
+        ],
+        "pathMetres": 464.03112376648,
+        "maximumSnapMetres": 5.108696131164869,
+        "occurrences": 1
+      },
+      {
+        "ruleId": "tram-depot-103",
+        "routeId": "91-14-j26-1",
+        "mode": "tram",
+        "line": "14",
+        "fromId": "ch:1:sloid:92442:1:3",
+        "toId": "ch:1:sloid:89293:1:1",
+        "pathIndex": 438,
+        "sourceFeatureIds": [
+          "bsTram:7:0"
+        ],
+        "pathMetres": 373.2543148880123,
+        "maximumSnapMetres": 3.735997965992931,
+        "occurrences": 2
+      },
+      {
+        "ruleId": "tram-depot-104",
+        "routeId": "91-14-j26-1",
+        "mode": "tram",
+        "line": "14",
+        "fromId": "ch:1:sloid:89293:1:1",
+        "toId": "ch:1:sloid:81062:1:1",
+        "pathIndex": 1602,
+        "sourceFeatureIds": [
+          "tlm:{D4748ADC-123D-4987-AE8E-56C7D64A7637}:0",
+          "tlm:{AB15C657-19CE-4CBB-944D-FC1EC8927711}:0",
+          "tlm:{4A4969F5-1DC2-4A09-A46D-FDB11BBB04CC}:0",
+          "tlm:{960F4A8B-522A-4E4A-8211-A5930018E1BB}:0"
+        ],
+        "pathMetres": 463.4830289608823,
+        "maximumSnapMetres": 1.6706955355546453,
+        "occurrences": 2
+      },
+      {
+        "ruleId": "tram-depot-105",
+        "routeId": "91-14-j26-1",
+        "mode": "tram",
+        "line": "14",
+        "fromId": "ch:1:sloid:81062:1:1",
+        "toId": "ch:1:sloid:89360:1:1",
+        "pathIndex": 1603,
+        "sourceFeatureIds": [
+          "bsTram:45:0"
+        ],
+        "pathMetres": 223.43515308184237,
+        "maximumSnapMetres": 0.39545351235906195,
+        "occurrences": 2
+      },
+      {
+        "ruleId": "tram-depot-106",
+        "routeId": "91-14-j26-1",
+        "mode": "tram",
+        "line": "14",
+        "fromId": "ch:1:sloid:89360:1:1",
+        "toId": "ch:1:sloid:89381:1:1",
+        "pathIndex": 1604,
+        "sourceFeatureIds": [
+          "bsTram:45:0"
+        ],
+        "pathMetres": 390.24666517822783,
+        "maximumSnapMetres": 0.7922801670547959,
+        "occurrences": 2
+      },
+      {
+        "ruleId": "tram-depot-107",
+        "routeId": "91-14-j26-1",
+        "mode": "tram",
+        "line": "14",
+        "fromId": "ch:1:sloid:89381:1:1",
+        "toId": "ch:1:sloid:193:1:1",
+        "pathIndex": 1605,
+        "sourceFeatureIds": [
+          "bsTram:45:0"
+        ],
+        "pathMetres": 431.5847087555437,
+        "maximumSnapMetres": 0.7922801670547959,
+        "occurrences": 2
+      },
+      {
+        "ruleId": "tram-depot-108",
+        "routeId": "91-14-j26-1",
+        "mode": "tram",
+        "line": "14",
+        "fromId": "ch:1:sloid:193:1:1",
+        "toId": "ch:1:sloid:79:1:1",
+        "pathIndex": 1606,
+        "sourceFeatureIds": [
+          "tlm:{EF653C7C-A8B6-4880-9ED7-AA7F983FCD71}",
+          "tlm:{783B3C7E-6ED2-4C72-B358-839A73BCA96F}",
+          "tlm:{5729E6C9-0E3F-4A12-8806-D3BB873F3813}",
+          "tlm:{37D291A3-571E-49D9-8E9E-B2ACD6B8E096}"
+        ],
+        "pathMetres": 384.52824142361663,
+        "maximumSnapMetres": 1.7646178360969496,
+        "occurrences": 2
+      },
+      {
+        "ruleId": "tram-depot-109",
+        "routeId": "91-14-j26-1",
+        "mode": "tram",
+        "line": "14",
+        "fromId": "ch:1:sloid:79:1:1",
+        "toId": "ch:1:sloid:994:1:1",
+        "pathIndex": 227,
+        "sourceFeatureIds": [
+          "bsTram:30:0"
+        ],
+        "pathMetres": 240.34104780417186,
+        "maximumSnapMetres": 3.0876625110810743,
+        "occurrences": 2
+      },
+      {
+        "ruleId": "tram-depot-215",
+        "routeId": "91-14-j26-1",
+        "mode": "tram",
+        "line": "14",
+        "fromId": "ch:1:sloid:899:1:4",
+        "toId": "ch:1:sloid:89376:1:2",
+        "pathIndex": 1607,
+        "sourceFeatureIds": [
+          "bsTram:21:0"
+        ],
+        "pathMetres": 485.63628320519217,
+        "maximumSnapMetres": 1.5760630326549194,
+        "occurrences": 1
+      },
+      {
+        "ruleId": "tram-depot-216",
+        "routeId": "91-14-j26-1",
+        "mode": "tram",
+        "line": "14",
+        "fromId": "ch:1:sloid:89376:1:2",
+        "toId": "ch:1:sloid:89336:1:2",
+        "pathIndex": 1608,
+        "sourceFeatureIds": [
+          "bsTram:21:0"
+        ],
+        "pathMetres": 608.4728698704326,
+        "maximumSnapMetres": 1.5760630326549194,
+        "occurrences": 1
+      },
+      {
+        "ruleId": "tram-depot-217",
+        "routeId": "91-14-j26-1",
+        "mode": "tram",
+        "line": "14",
+        "fromId": "ch:1:sloid:89336:1:2",
+        "toId": "ch:1:sloid:237:2:4",
+        "pathIndex": 1609,
+        "sourceFeatureIds": [
+          "tlm:{668FCB93-B3BA-497F-8E43-55490139F5D2}:0",
+          "tlm:{25C135FF-0EC0-4013-97CC-E78DF2C255F2}:0",
+          "tlm:{E0621861-F3D7-4E4A-9900-20767F7548CA}:0",
+          "tlm:{195A9185-26A9-469A-8361-EE7508FD1629}:0"
+        ],
+        "pathMetres": 271.8634523608677,
+        "maximumSnapMetres": 3.9166315834739724,
+        "occurrences": 1
+      },
+      {
+        "ruleId": "tram-depot-53",
+        "routeId": "91-15-j26-1",
+        "mode": "tram",
+        "line": "15",
+        "fromId": "ch:1:sloid:899:1:1",
+        "toId": "ch:1:sloid:89352:1:1",
+        "pathIndex": 1610,
+        "sourceFeatureIds": [
+          "bsTram:3:0"
+        ],
+        "pathMetres": 310.69301844158633,
+        "maximumSnapMetres": 1.1355113161385901,
+        "occurrences": 3
+      },
+      {
+        "ruleId": "tram-depot-54",
+        "routeId": "91-15-j26-1",
+        "mode": "tram",
+        "line": "15",
+        "fromId": "ch:1:sloid:89352:1:1",
+        "toId": "ch:1:sloid:89344:1:1",
+        "pathIndex": 513,
+        "sourceFeatureIds": [
+          "bsTram:3:0"
+        ],
+        "pathMetres": 274.71101146529816,
+        "maximumSnapMetres": 1.1355113161385901,
+        "occurrences": 3
+      },
+      {
+        "ruleId": "tram-depot-55",
+        "routeId": "91-15-j26-1",
+        "mode": "tram",
+        "line": "15",
+        "fromId": "ch:1:sloid:89344:1:1",
+        "toId": "ch:1:sloid:89298:1:1",
+        "pathIndex": 1611,
+        "sourceFeatureIds": [
+          "bsTram:3:0"
+        ],
+        "pathMetres": 329.49743941683556,
+        "maximumSnapMetres": 1.110655014267931,
+        "occurrences": 3
+      },
+      {
+        "ruleId": "tram-depot-56",
+        "routeId": "91-15-j26-1",
+        "mode": "tram",
+        "line": "15",
+        "fromId": "ch:1:sloid:89298:1:1",
+        "toId": "ch:1:sloid:88768:1:83",
+        "pathIndex": 1612,
+        "sourceFeatureIds": [
+          "bsTram:3:0"
+        ],
+        "pathMetres": 276.78874201504425,
+        "maximumSnapMetres": 0.23188546664097875,
+        "occurrences": 3
+      },
+      {
+        "ruleId": "tram-depot-57",
+        "routeId": "91-15-j26-1",
+        "mode": "tram",
+        "line": "15",
+        "fromId": "ch:1:sloid:88768:1:83",
+        "toId": "ch:1:sloid:88767:1:1",
+        "pathIndex": 1598,
+        "sourceFeatureIds": [
+          "tlm:{D5FF577A-C5F8-49B7-9233-634835D01771}:0",
+          "tlm:{58AA6AFC-BB46-4C5E-A822-B344822DD23F}:0",
+          "tlm:{CB154C70-2120-4745-9F0C-97B0B8B87560}:0",
+          "tlm:{6C3E0157-6C1A-4DC1-A231-A468DCFA20F0}:0"
+        ],
+        "pathMetres": 375.1001249649654,
+        "maximumSnapMetres": 0.2800585895942812,
+        "occurrences": 3
+      },
+      {
+        "ruleId": "tram-depot-58",
+        "routeId": "91-15-j26-1",
+        "mode": "tram",
+        "line": "15",
+        "fromId": "ch:1:sloid:88767:1:1",
+        "toId": "ch:1:sloid:254:1:1",
+        "pathIndex": 494,
+        "sourceFeatureIds": [
+          "bsTram:10:0"
+        ],
+        "pathMetres": 363.96118024911493,
+        "maximumSnapMetres": 0.5684003378629662,
+        "occurrences": 3
+      },
+      {
+        "ruleId": "tram-depot-81",
+        "routeId": "91-15-j26-1",
+        "mode": "tram",
+        "line": "15",
+        "fromId": "ch:1:sloid:88778:1:2",
+        "toId": "ch:1:sloid:88776:1:2",
+        "pathIndex": 94,
+        "sourceFeatureIds": [
+          "bsTram:16:0"
+        ],
+        "pathMetres": 682.1814105155725,
+        "maximumSnapMetres": 1.1347836070782185,
+        "occurrences": 1
+      },
+      {
+        "ruleId": "tram-depot-82",
+        "routeId": "91-15-j26-1",
+        "mode": "tram",
+        "line": "15",
+        "fromId": "ch:1:sloid:88776:1:3",
+        "toId": "ch:1:sloid:88778:1:1",
+        "pathIndex": 1599,
+        "sourceFeatureIds": [
+          "bsTram:34:0"
+        ],
+        "pathMetres": 675.8560295867613,
+        "maximumSnapMetres": 3.1546240008215736,
+        "occurrences": 3
+      },
+      {
+        "ruleId": "tram-depot-24",
+        "routeId": "91-15-j26-1",
+        "mode": "tram",
+        "line": "15",
+        "fromId": "ch:1:sloid:254:1:2",
+        "toId": "ch:1:sloid:88767:1:2",
+        "pathIndex": 1595,
+        "sourceFeatureIds": [
+          "bsTram:36:0"
+        ],
+        "pathMetres": 363.7019989202606,
+        "maximumSnapMetres": 1.5752921269052258,
+        "occurrences": 2
+      },
+      {
+        "ruleId": "tram-depot-25",
+        "routeId": "91-15-j26-1",
+        "mode": "tram",
+        "line": "15",
+        "fromId": "ch:1:sloid:88767:1:2",
+        "toId": "ch:1:sloid:88768:1:3",
+        "pathIndex": 1613,
+        "sourceFeatureIds": [
+          "tlm:{C1CD821B-9822-461E-9604-16C19E5CFA50}:0",
+          "tlm:{9C4AAD57-B215-43DE-BF6F-57C9A3A5C604}:0",
+          "tlm:{DFFB8BE7-2159-4A09-8C9C-0711A6BA4C49}:0"
+        ],
+        "pathMetres": 347.3359706464612,
+        "maximumSnapMetres": 1.2143585796113758,
+        "occurrences": 2
+      },
+      {
+        "ruleId": "tram-depot-26",
+        "routeId": "91-15-j26-1",
+        "mode": "tram",
+        "line": "15",
+        "fromId": "ch:1:sloid:88768:1:3",
+        "toId": "ch:1:sloid:89348:1:1",
+        "pathIndex": 1614,
+        "sourceFeatureIds": [
+          "bsTram:3:0"
+        ],
+        "pathMetres": 605.2515665715368,
+        "maximumSnapMetres": 1.4702693600410714,
+        "occurrences": 2
+      },
+      {
+        "ruleId": "tram-depot-27",
+        "routeId": "91-15-j26-1",
+        "mode": "tram",
+        "line": "15",
+        "fromId": "ch:1:sloid:89348:1:1",
+        "toId": "ch:1:sloid:88782:1:2",
+        "pathIndex": 1615,
+        "sourceFeatureIds": [
+          "tlm:{837EDAED-D582-4B03-9766-F0AF75B71B8B}:0",
+          "tlm:{CAAD71AB-D284-42FD-8BC2-7609E878F81C}:0",
+          "tlm:{580C4DCB-5B0F-4C60-8165-0156DC9D038F}:0"
+        ],
+        "pathMetres": 298.6897284358626,
+        "maximumSnapMetres": 1.2258666332079908,
+        "occurrences": 2
+      },
+      {
+        "ruleId": "tram-depot-28",
+        "routeId": "91-15-j26-1",
+        "mode": "tram",
+        "line": "15",
+        "fromId": "ch:1:sloid:88782:1:2",
+        "toId": "ch:1:sloid:88777:1:2",
+        "pathIndex": 82,
+        "sourceFeatureIds": [
+          "bsTram:16:0"
+        ],
+        "pathMetres": 193.2996632624769,
+        "maximumSnapMetres": 2.578184288040755,
+        "occurrences": 2
+      },
+      {
+        "ruleId": "tram-depot-29",
+        "routeId": "91-15-j26-1",
+        "mode": "tram",
+        "line": "15",
+        "fromId": "ch:1:sloid:88777:1:2",
+        "toId": "ch:1:sloid:88781:1:2",
+        "pathIndex": 1616,
+        "sourceFeatureIds": [
+          "bsTram:16:0"
+        ],
+        "pathMetres": 248.17505814696185,
+        "maximumSnapMetres": 3.674031702482002,
+        "occurrences": 2
+      },
+      {
+        "ruleId": "tram-depot-30",
+        "routeId": "91-15-j26-1",
+        "mode": "tram",
+        "line": "15",
+        "fromId": "ch:1:sloid:88781:1:2",
+        "toId": "ch:1:sloid:88772:1:2",
+        "pathIndex": 1617,
+        "sourceFeatureIds": [
+          "bsTram:16:0"
+        ],
+        "pathMetres": 303.83022928679935,
+        "maximumSnapMetres": 3.674031702482002,
+        "occurrences": 2
+      },
+      {
+        "ruleId": "tram-depot-31",
+        "routeId": "91-15-j26-1",
+        "mode": "tram",
+        "line": "15",
+        "fromId": "ch:1:sloid:88772:1:2",
+        "toId": "ch:1:sloid:88773:1:2",
+        "pathIndex": 85,
+        "sourceFeatureIds": [
+          "bsTram:16:0"
+        ],
+        "pathMetres": 341.90640323743935,
+        "maximumSnapMetres": 1.0698051927563474,
+        "occurrences": 2
+      },
+      {
+        "ruleId": "tram-depot-32",
+        "routeId": "91-15-j26-1",
+        "mode": "tram",
+        "line": "15",
+        "fromId": "ch:1:sloid:88773:1:2",
+        "toId": "ch:1:sloid:88780:2:4",
+        "pathIndex": 86,
+        "sourceFeatureIds": [
+          "bsTram:16:0"
+        ],
+        "pathMetres": 318.74680177187616,
+        "maximumSnapMetres": 1.2734645268801332,
+        "occurrences": 2
+      },
+      {
+        "ruleId": "tram-depot-59",
+        "routeId": "91-15-j26-1",
+        "mode": "tram",
+        "line": "15",
+        "fromId": "ch:1:sloid:73:4:2",
+        "toId": "ch:1:sloid:78143:1:34",
+        "pathIndex": 1618,
+        "sourceFeatureIds": [
+          "bsTram:32:0"
+        ],
+        "pathMetres": 402.4693382883741,
+        "maximumSnapMetres": 0.6229225999880249,
+        "occurrences": 2
+      },
+      {
+        "ruleId": "tram-depot-60",
+        "routeId": "91-15-j26-1",
+        "mode": "tram",
+        "line": "15",
+        "fromId": "ch:1:sloid:78143:1:34",
+        "toId": "ch:1:sloid:88071:1:2",
+        "pathIndex": 92,
+        "sourceFeatureIds": [
+          "bsTram:16:0"
+        ],
+        "pathMetres": 598.2828886869667,
+        "maximumSnapMetres": 1.2546538479872051,
+        "occurrences": 2
+      },
+      {
+        "ruleId": "tram-depot-61",
+        "routeId": "91-15-j26-1",
+        "mode": "tram",
+        "line": "15",
+        "fromId": "ch:1:sloid:88071:1:2",
+        "toId": "ch:1:sloid:147:1:2",
+        "pathIndex": 1619,
+        "sourceFeatureIds": [
+          "tlm:{C50EF6E3-AF08-415F-B1F1-1E6015274715}:0",
+          "tlm:{E5D4AF47-CECA-43EB-B750-A414197077AA}:0",
+          "tlm:{45D946AD-78EE-4C5C-890F-D1E7F4B5F4FF}:0",
+          "tlm:{E877C558-46DE-45C6-A565-057637486096}:0",
+          "tlm:{8596056C-5790-4A26-8954-D270B2D35884}:0",
+          "tlm:{EB900903-080A-473E-8C3D-DA3AA1A0F779}:0",
+          "tlm:{6F405AA4-5B46-4879-95C9-0E8500A8B62D}:0"
+        ],
+        "pathMetres": 509.67844826158273,
+        "maximumSnapMetres": 1.3368118411621055,
+        "occurrences": 2
+      },
+      {
+        "ruleId": "tram-depot-112",
+        "routeId": "91-16-j26-1",
+        "mode": "tram",
+        "line": "16",
+        "fromId": "ch:1:sloid:147:1:1",
+        "toId": "ch:1:sloid:88778:1:2",
+        "pathIndex": 1620,
+        "sourceFeatureIds": [
+          "tlm:{75599052-0C78-4258-BADF-E00B9942B385}:0",
+          "tlm:{4E54B742-5F45-43BE-A4C2-51933D6D76D8}:0",
+          "tlm:{40C54977-A1D5-430A-A65B-441BF7DC338E}:0"
+        ],
+        "pathMetres": 237.3561929911068,
+        "maximumSnapMetres": 1.3866815857886772,
+        "occurrences": 5
+      },
+      {
+        "ruleId": "tram-depot-113",
+        "routeId": "91-16-j26-1",
+        "mode": "tram",
+        "line": "16",
+        "fromId": "ch:1:sloid:88778:1:2",
+        "toId": "ch:1:sloid:88776:1:2",
+        "pathIndex": 94,
+        "sourceFeatureIds": [
+          "bsTram:16:0"
+        ],
+        "pathMetres": 682.1814105155725,
+        "maximumSnapMetres": 1.1347836070782185,
+        "occurrences": 5
+      },
+      {
+        "ruleId": "tram-depot-33",
+        "routeId": "91-16-j26-1",
+        "mode": "tram",
+        "line": "16",
+        "fromId": "ch:1:sloid:88780:1:1",
+        "toId": "ch:1:sloid:88773:1:1",
+        "pathIndex": 97,
+        "sourceFeatureIds": [
+          "bsTram:34:0"
+        ],
+        "pathMetres": 299.64079545139333,
+        "maximumSnapMetres": 1.3853505428379185,
+        "occurrences": 1
+      },
+      {
+        "ruleId": "tram-depot-34",
+        "routeId": "91-16-j26-1",
+        "mode": "tram",
+        "line": "16",
+        "fromId": "ch:1:sloid:88773:1:1",
+        "toId": "ch:1:sloid:88772:1:1",
+        "pathIndex": 98,
+        "sourceFeatureIds": [
+          "bsTram:34:0"
+        ],
+        "pathMetres": 280.73352779360476,
+        "maximumSnapMetres": 0.266196073339795,
+        "occurrences": 1
+      },
+      {
+        "ruleId": "tram-depot-35",
+        "routeId": "91-16-j26-1",
+        "mode": "tram",
+        "line": "16",
+        "fromId": "ch:1:sloid:88772:1:1",
+        "toId": "ch:1:sloid:88781:1:1",
+        "pathIndex": 99,
+        "sourceFeatureIds": [
+          "bsTram:34:0"
+        ],
+        "pathMetres": 365.7774958446062,
+        "maximumSnapMetres": 0.4606972017428559,
+        "occurrences": 1
+      },
+      {
+        "ruleId": "tram-depot-36",
+        "routeId": "91-16-j26-1",
+        "mode": "tram",
+        "line": "16",
+        "fromId": "ch:1:sloid:88781:1:1",
+        "toId": "ch:1:sloid:88777:1:1",
+        "pathIndex": 100,
+        "sourceFeatureIds": [
+          "bsTram:34:0"
+        ],
+        "pathMetres": 185.13846250014032,
+        "maximumSnapMetres": 3.3751696739004884,
+        "occurrences": 1
+      },
+      {
+        "ruleId": "tram-depot-37",
+        "routeId": "91-16-j26-1",
+        "mode": "tram",
+        "line": "16",
+        "fromId": "ch:1:sloid:88777:1:1",
+        "toId": "ch:1:sloid:88782:1:1",
+        "pathIndex": 101,
+        "sourceFeatureIds": [
+          "bsTram:34:0"
+        ],
+        "pathMetres": 263.8239335212062,
+        "maximumSnapMetres": 3.3751696739004884,
+        "occurrences": 1
+      },
+      {
+        "ruleId": "tram-depot-38",
+        "routeId": "91-16-j26-1",
+        "mode": "tram",
+        "line": "16",
+        "fromId": "ch:1:sloid:88782:1:1",
+        "toId": "ch:1:sloid:89348:1:2",
+        "pathIndex": 1621,
+        "sourceFeatureIds": [
+          "tlm:{B73E56EB-0B5E-4FD6-8113-177CBBF5EA05}:0",
+          "tlm:{FA91297E-CC64-4DCD-8D16-086B42EC9210}:0"
+        ],
+        "pathMetres": 285.66063496049424,
+        "maximumSnapMetres": 2.8630195949442516,
+        "occurrences": 1
+      },
+      {
+        "ruleId": "tram-depot-39",
+        "routeId": "91-16-j26-1",
+        "mode": "tram",
+        "line": "16",
+        "fromId": "ch:1:sloid:89348:1:2",
+        "toId": "ch:1:sloid:88768:1:4",
+        "pathIndex": 1622,
+        "sourceFeatureIds": [
+          "bsTram:9:0"
+        ],
+        "pathMetres": 607.3155630659575,
+        "maximumSnapMetres": 0.7463491658199718,
+        "occurrences": 1
+      },
+      {
+        "ruleId": "tram-depot-40",
+        "routeId": "91-16-j26-1",
+        "mode": "tram",
+        "line": "16",
+        "fromId": "ch:1:sloid:88768:1:4",
+        "toId": "ch:1:sloid:88767:1:1",
+        "pathIndex": 1623,
+        "sourceFeatureIds": [
+          "tlm:{BEC435B4-B751-4EDE-9C25-98D441998B7F}:0",
+          "tlm:{209624DD-8245-4147-965F-88E8CCE3D789}:0",
+          "tlm:{6A086192-B682-46FA-886E-7D3356C3241D}:0",
+          "tlm:{33971812-36F8-4DA0-9077-E83193A769E3}:0",
+          "tlm:{CB154C70-2120-4745-9F0C-97B0B8B87560}:0",
+          "tlm:{6C3E0157-6C1A-4DC1-A231-A468DCFA20F0}:0"
+        ],
+        "pathMetres": 377.1011250447445,
+        "maximumSnapMetres": 0.5554868000845659,
+        "occurrences": 1
+      },
+      {
+        "ruleId": "tram-depot-41",
+        "routeId": "91-16-j26-1",
+        "mode": "tram",
+        "line": "16",
+        "fromId": "ch:1:sloid:88767:1:1",
+        "toId": "ch:1:sloid:254:1:1",
+        "pathIndex": 494,
+        "sourceFeatureIds": [
+          "bsTram:10:0"
+        ],
+        "pathMetres": 363.96118024911493,
+        "maximumSnapMetres": 0.5684003378629662,
+        "occurrences": 1
+      },
+      {
+        "ruleId": "tram-depot-110",
+        "routeId": "91-16-j26-1",
+        "mode": "tram",
+        "line": "16",
+        "fromId": "ch:1:sloid:88776:1:3",
+        "toId": "ch:1:sloid:88778:1:1",
+        "pathIndex": 1599,
+        "sourceFeatureIds": [
+          "bsTram:34:0"
+        ],
+        "pathMetres": 675.8560295867613,
+        "maximumSnapMetres": 3.1546240008215736,
+        "occurrences": 5
+      },
+      {
+        "ruleId": "tram-depot-111",
+        "routeId": "91-16-j26-1",
+        "mode": "tram",
+        "line": "16",
+        "fromId": "ch:1:sloid:88778:1:1",
+        "toId": "ch:1:sloid:147:1:2",
+        "pathIndex": 1624,
+        "sourceFeatureIds": [
+          "bsTram:38:0"
+        ],
+        "pathMetres": 227.3257823875666,
+        "maximumSnapMetres": 1.9874293231652358,
+        "occurrences": 5
+      },
+      {
+        "ruleId": "tram-depot-176",
+        "routeId": "91-1-j26-1",
+        "mode": "tram",
+        "line": "1",
+        "fromId": "ch:1:sloid:89296:1:1",
+        "toId": "ch:1:sloid:89293:1:2",
+        "pathIndex": 1625,
+        "sourceFeatureIds": [
+          "tlm:{3E49A9F7-3FF3-47C4-88DE-FDAC85BF839D}:0",
+          "tlm:{BFEC6536-7212-4ED2-BF7C-62B46D4EFF16}:0",
+          "tlm:{CF4DA0DE-EFAB-4EC0-B003-FCC35B1D2337}:0",
+          "tlm:{08E432E2-3FFB-4975-B31A-DF6A5360FAFA}:0",
+          "tlm:{F70F6574-4087-4DF3-B09A-08808A5A5439}:0"
+        ],
+        "pathMetres": 606.275349512788,
+        "maximumSnapMetres": 0.93187037549682,
+        "occurrences": 1
+      },
+      {
+        "ruleId": "tram-depot-45",
+        "routeId": "91-1-j26-1",
+        "mode": "tram",
+        "line": "1",
+        "fromId": "ch:1:sloid:89293:1:2",
+        "toId": "ch:1:sloid:92442:1:4",
+        "pathIndex": 465,
+        "sourceFeatureIds": [
+          "bsTram:37:0"
+        ],
+        "pathMetres": 379.9947856899924,
+        "maximumSnapMetres": 0.6745423272108859,
+        "occurrences": 3
+      },
+      {
+        "ruleId": "tram-depot-177",
+        "routeId": "91-1-j26-1",
+        "mode": "tram",
+        "line": "1",
+        "fromId": "ch:1:sloid:78143:2:36",
+        "toId": "ch:1:sloid:73:4:4",
+        "pathIndex": 1626,
+        "sourceFeatureIds": [
+          "bsTram:34:0"
+        ],
+        "pathMetres": 444.5721092057166,
+        "maximumSnapMetres": 15.58028221165973,
+        "occurrences": 1
+      },
+      {
+        "ruleId": "tram-depot-178",
+        "routeId": "91-1-j26-1",
+        "mode": "tram",
+        "line": "1",
+        "fromId": "ch:1:sloid:73:4:4",
+        "toId": "ch:1:sloid:236:1:2",
+        "pathIndex": 1627,
+        "sourceFeatureIds": [
+          "bsTram:43:0"
+        ],
+        "pathMetres": 428.55448643699475,
+        "maximumSnapMetres": 6.762326852814771,
+        "occurrences": 1
+      },
+      {
+        "ruleId": "tram-depot-179",
+        "routeId": "91-1-j26-1",
+        "mode": "tram",
+        "line": "1",
+        "fromId": "ch:1:sloid:236:1:2",
+        "toId": "ch:1:sloid:88770:1:2",
+        "pathIndex": 196,
+        "sourceFeatureIds": [
+          "bsTram:43:0"
+        ],
+        "pathMetres": 291.8576482311511,
+        "maximumSnapMetres": 1.591116863781796,
+        "occurrences": 1
+      },
+      {
+        "ruleId": "tram-depot-180",
+        "routeId": "91-1-j26-1",
+        "mode": "tram",
+        "line": "1",
+        "fromId": "ch:1:sloid:88770:1:2",
+        "toId": "ch:1:sloid:88778:1:2",
+        "pathIndex": 1628,
+        "sourceFeatureIds": [
+          "tlm:{B2B5DC5E-C187-4D1F-A424-1DFC14E2088D}:0",
+          "tlm:{641F7AB7-BFC3-4697-A3EA-FABC4BB4A8A0}:0",
+          "tlm:{7FE14581-2130-455D-B986-6CED96C48E4B}:0",
+          "tlm:{45D946AD-78EE-4C5C-890F-D1E7F4B5F4FF}:0",
+          "tlm:{F07F8DB4-E117-4394-9212-4A017CD4E26C}:0",
+          "tlm:{8F637168-B98D-4577-A8E3-0E3299891244}:0",
+          "tlm:{40C54977-A1D5-430A-A65B-441BF7DC338E}:0"
+        ],
+        "pathMetres": 328.76937352059304,
+        "maximumSnapMetres": 1.3866815857886772,
+        "occurrences": 1
+      },
+      {
+        "ruleId": "tram-depot-181",
+        "routeId": "91-1-j26-1",
+        "mode": "tram",
+        "line": "1",
+        "fromId": "ch:1:sloid:88778:1:2",
+        "toId": "ch:1:sloid:88776:1:2",
+        "pathIndex": 94,
+        "sourceFeatureIds": [
+          "bsTram:16:0"
+        ],
+        "pathMetres": 682.1814105155725,
+        "maximumSnapMetres": 1.1347836070782185,
+        "occurrences": 1
+      },
+      {
+        "ruleId": "tram-depot-12",
+        "routeId": "91-1-j26-1",
+        "mode": "tram",
+        "line": "1",
+        "fromId": "ch:1:sloid:254:1:2",
+        "toId": "ch:1:sloid:88767:1:2",
+        "pathIndex": 1595,
+        "sourceFeatureIds": [
+          "bsTram:36:0"
+        ],
+        "pathMetres": 363.7019989202606,
+        "maximumSnapMetres": 1.5752921269052258,
+        "occurrences": 4
+      },
+      {
+        "ruleId": "tram-depot-17",
+        "routeId": "91-1-j26-1",
+        "mode": "tram",
+        "line": "1",
+        "fromId": "ch:1:sloid:88767:1:2",
+        "toId": "ch:1:sloid:88768:1:3",
+        "pathIndex": 1613,
+        "sourceFeatureIds": [
+          "tlm:{C1CD821B-9822-461E-9604-16C19E5CFA50}:0",
+          "tlm:{9C4AAD57-B215-43DE-BF6F-57C9A3A5C604}:0",
+          "tlm:{DFFB8BE7-2159-4A09-8C9C-0711A6BA4C49}:0"
+        ],
+        "pathMetres": 347.3359706464612,
+        "maximumSnapMetres": 1.2143585796113758,
+        "occurrences": 4
+      },
+      {
+        "ruleId": "tram-depot-14",
+        "routeId": "91-1-j26-1",
+        "mode": "tram",
+        "line": "1",
+        "fromId": "ch:1:sloid:92442:1:3",
+        "toId": "ch:1:sloid:89293:1:1",
+        "pathIndex": 438,
+        "sourceFeatureIds": [
+          "bsTram:7:0"
+        ],
+        "pathMetres": 373.2543148880123,
+        "maximumSnapMetres": 3.735997965992931,
+        "occurrences": 2
+      },
+      {
+        "ruleId": "tram-depot-46",
+        "routeId": "91-1-j26-1",
+        "mode": "tram",
+        "line": "1",
+        "fromId": "ch:1:sloid:89293:1:1",
+        "toId": "ch:1:sloid:81062:1:1",
+        "pathIndex": 1602,
+        "sourceFeatureIds": [
+          "tlm:{D4748ADC-123D-4987-AE8E-56C7D64A7637}:0",
+          "tlm:{AB15C657-19CE-4CBB-944D-FC1EC8927711}:0",
+          "tlm:{4A4969F5-1DC2-4A09-A46D-FDB11BBB04CC}:0",
+          "tlm:{960F4A8B-522A-4E4A-8211-A5930018E1BB}:0"
+        ],
+        "pathMetres": 463.4830289608823,
+        "maximumSnapMetres": 1.6706955355546453,
+        "occurrences": 1
+      },
+      {
+        "ruleId": "tram-depot-71",
+        "routeId": "91-1-j26-1",
+        "mode": "tram",
+        "line": "1",
+        "fromId": "ch:1:sloid:899:1:1",
+        "toId": "ch:1:sloid:89352:1:1",
+        "pathIndex": 1610,
+        "sourceFeatureIds": [
+          "bsTram:3:0"
+        ],
+        "pathMetres": 310.69301844158633,
+        "maximumSnapMetres": 1.1355113161385901,
+        "occurrences": 1
+      },
+      {
+        "ruleId": "tram-depot-72",
+        "routeId": "91-1-j26-1",
+        "mode": "tram",
+        "line": "1",
+        "fromId": "ch:1:sloid:89352:1:1",
+        "toId": "ch:1:sloid:89344:1:1",
+        "pathIndex": 513,
+        "sourceFeatureIds": [
+          "bsTram:3:0"
+        ],
+        "pathMetres": 274.71101146529816,
+        "maximumSnapMetres": 1.1355113161385901,
+        "occurrences": 1
+      },
+      {
+        "ruleId": "tram-depot-73",
+        "routeId": "91-1-j26-1",
+        "mode": "tram",
+        "line": "1",
+        "fromId": "ch:1:sloid:89344:1:1",
+        "toId": "ch:1:sloid:89298:1:1",
+        "pathIndex": 1611,
+        "sourceFeatureIds": [
+          "bsTram:3:0"
+        ],
+        "pathMetres": 329.49743941683556,
+        "maximumSnapMetres": 1.110655014267931,
+        "occurrences": 1
+      },
+      {
+        "ruleId": "tram-depot-74",
+        "routeId": "91-1-j26-1",
+        "mode": "tram",
+        "line": "1",
+        "fromId": "ch:1:sloid:89298:1:1",
+        "toId": "ch:1:sloid:88768:1:83",
+        "pathIndex": 1612,
+        "sourceFeatureIds": [
+          "bsTram:3:0"
+        ],
+        "pathMetres": 276.78874201504425,
+        "maximumSnapMetres": 0.23188546664097875,
+        "occurrences": 1
+      },
+      {
+        "ruleId": "tram-depot-75",
+        "routeId": "91-1-j26-1",
+        "mode": "tram",
+        "line": "1",
+        "fromId": "ch:1:sloid:88768:1:83",
+        "toId": "ch:1:sloid:88767:1:1",
+        "pathIndex": 1598,
+        "sourceFeatureIds": [
+          "tlm:{D5FF577A-C5F8-49B7-9233-634835D01771}:0",
+          "tlm:{58AA6AFC-BB46-4C5E-A822-B344822DD23F}:0",
+          "tlm:{CB154C70-2120-4745-9F0C-97B0B8B87560}:0",
+          "tlm:{6C3E0157-6C1A-4DC1-A231-A468DCFA20F0}:0"
+        ],
+        "pathMetres": 375.1001249649654,
+        "maximumSnapMetres": 0.2800585895942812,
+        "occurrences": 1
+      },
+      {
+        "ruleId": "tram-depot-42",
+        "routeId": "91-1-j26-1",
+        "mode": "tram",
+        "line": "1",
+        "fromId": "ch:1:sloid:88767:1:1",
+        "toId": "ch:1:sloid:254:1:1",
+        "pathIndex": 494,
+        "sourceFeatureIds": [
+          "bsTram:10:0"
+        ],
+        "pathMetres": 363.96118024911493,
+        "maximumSnapMetres": 0.5684003378629662,
+        "occurrences": 3
+      },
+      {
+        "ruleId": "tram-depot-76",
+        "routeId": "91-1-j26-1",
+        "mode": "tram",
+        "line": "1",
+        "fromId": "ch:1:sloid:81062:1:2",
+        "toId": "ch:1:sloid:89293:1:2",
+        "pathIndex": 422,
+        "sourceFeatureIds": [
+          "bsTram:37:0"
+        ],
+        "pathMetres": 451.19512990025737,
+        "maximumSnapMetres": 15.922492915919255,
+        "occurrences": 2
+      },
+      {
+        "ruleId": "tram-depot-83",
+        "routeId": "91-1-j26-1",
+        "mode": "tram",
+        "line": "1",
+        "fromId": "ch:1:sloid:89293:1:1",
+        "toId": "ch:1:sloid:89296:1:2",
+        "pathIndex": 1629,
+        "sourceFeatureIds": [
+          "tlm:{D4748ADC-123D-4987-AE8E-56C7D64A7637}:0",
+          "tlm:{0E2F0AAF-51EF-45D9-9EC5-1FB396402CA3}:0",
+          "tlm:{CF4DA0DE-EFAB-4EC0-B003-FCC35B1D2337}:0",
+          "tlm:{BFEC6536-7212-4ED2-BF7C-62B46D4EFF16}:0",
+          "tlm:{3E49A9F7-3FF3-47C4-88DE-FDAC85BF839D}:0"
+        ],
+        "pathMetres": 616.3315282808447,
+        "maximumSnapMetres": 1.6706955355546453,
+        "occurrences": 1
+      },
+      {
+        "ruleId": "tram-depot-119",
+        "routeId": "91-1-j26-1",
+        "mode": "tram",
+        "line": "1",
+        "fromId": "ch:1:sloid:88768:1:4",
+        "toId": "ch:1:sloid:88767:1:1",
+        "pathIndex": 1623,
+        "sourceFeatureIds": [
+          "tlm:{BEC435B4-B751-4EDE-9C25-98D441998B7F}:0",
+          "tlm:{209624DD-8245-4147-965F-88E8CCE3D789}:0",
+          "tlm:{6A086192-B682-46FA-886E-7D3356C3241D}:0",
+          "tlm:{33971812-36F8-4DA0-9077-E83193A769E3}:0",
+          "tlm:{CB154C70-2120-4745-9F0C-97B0B8B87560}:0",
+          "tlm:{6C3E0157-6C1A-4DC1-A231-A468DCFA20F0}:0"
+        ],
+        "pathMetres": 377.1011250447445,
+        "maximumSnapMetres": 0.5554868000845659,
+        "occurrences": 2
+      },
+      {
+        "ruleId": "tram-depot-218",
+        "routeId": "91-1-j26-1",
+        "mode": "tram",
+        "line": "1",
+        "fromId": "ch:1:sloid:88776:1:3",
+        "toId": "ch:1:sloid:88778:1:1",
+        "pathIndex": 1599,
+        "sourceFeatureIds": [
+          "bsTram:34:0"
+        ],
+        "pathMetres": 675.8560295867613,
+        "maximumSnapMetres": 3.1546240008215736,
+        "occurrences": 1
+      },
+      {
+        "ruleId": "tram-depot-219",
+        "routeId": "91-1-j26-1",
+        "mode": "tram",
+        "line": "1",
+        "fromId": "ch:1:sloid:88778:1:1",
+        "toId": "ch:1:sloid:88071:1:1",
+        "pathIndex": 109,
+        "sourceFeatureIds": [
+          "bsTram:34:0"
+        ],
+        "pathMetres": 425.62468409734134,
+        "maximumSnapMetres": 1.9734670825099774,
+        "occurrences": 1
+      },
+      {
+        "ruleId": "tram-depot-220",
+        "routeId": "91-1-j26-1",
+        "mode": "tram",
+        "line": "1",
+        "fromId": "ch:1:sloid:88071:1:1",
+        "toId": "ch:1:sloid:78143:2:36",
+        "pathIndex": 1630,
+        "sourceFeatureIds": [
+          "bsTram:34:0"
+        ],
+        "pathMetres": 585.5887306382738,
+        "maximumSnapMetres": 6.6243778883429965,
+        "occurrences": 1
+      },
+      {
+        "ruleId": "tram-depot-1",
+        "routeId": "91-2-j26-1",
+        "mode": "tram",
+        "line": "2",
+        "fromId": "ch:1:sloid:899:1:1",
+        "toId": "ch:1:sloid:89352:1:1",
+        "pathIndex": 1610,
+        "sourceFeatureIds": [
+          "bsTram:3:0"
+        ],
+        "pathMetres": 310.69301844158633,
+        "maximumSnapMetres": 1.1355113161385901,
+        "occurrences": 5
+      },
+      {
+        "ruleId": "tram-depot-2",
+        "routeId": "91-2-j26-1",
+        "mode": "tram",
+        "line": "2",
+        "fromId": "ch:1:sloid:89352:1:1",
+        "toId": "ch:1:sloid:89344:1:1",
+        "pathIndex": 513,
+        "sourceFeatureIds": [
+          "bsTram:3:0"
+        ],
+        "pathMetres": 274.71101146529816,
+        "maximumSnapMetres": 1.1355113161385901,
+        "occurrences": 5
+      },
+      {
+        "ruleId": "tram-depot-3",
+        "routeId": "91-2-j26-1",
+        "mode": "tram",
+        "line": "2",
+        "fromId": "ch:1:sloid:89344:1:1",
+        "toId": "ch:1:sloid:89298:1:1",
+        "pathIndex": 1611,
+        "sourceFeatureIds": [
+          "bsTram:3:0"
+        ],
+        "pathMetres": 329.49743941683556,
+        "maximumSnapMetres": 1.110655014267931,
+        "occurrences": 5
+      },
+      {
+        "ruleId": "tram-depot-4",
+        "routeId": "91-2-j26-1",
+        "mode": "tram",
+        "line": "2",
+        "fromId": "ch:1:sloid:89298:1:1",
+        "toId": "ch:1:sloid:88768:1:83",
+        "pathIndex": 1612,
+        "sourceFeatureIds": [
+          "bsTram:3:0"
+        ],
+        "pathMetres": 276.78874201504425,
+        "maximumSnapMetres": 0.23188546664097875,
+        "occurrences": 5
+      },
+      {
+        "ruleId": "tram-depot-5",
+        "routeId": "91-2-j26-1",
+        "mode": "tram",
+        "line": "2",
+        "fromId": "ch:1:sloid:88768:1:83",
+        "toId": "ch:1:sloid:88767:1:1",
+        "pathIndex": 1598,
+        "sourceFeatureIds": [
+          "tlm:{D5FF577A-C5F8-49B7-9233-634835D01771}:0",
+          "tlm:{58AA6AFC-BB46-4C5E-A822-B344822DD23F}:0",
+          "tlm:{CB154C70-2120-4745-9F0C-97B0B8B87560}:0",
+          "tlm:{6C3E0157-6C1A-4DC1-A231-A468DCFA20F0}:0"
+        ],
+        "pathMetres": 375.1001249649654,
+        "maximumSnapMetres": 0.2800585895942812,
+        "occurrences": 5
+      },
+      {
+        "ruleId": "tram-depot-6",
+        "routeId": "91-2-j26-1",
+        "mode": "tram",
+        "line": "2",
+        "fromId": "ch:1:sloid:88767:1:1",
+        "toId": "ch:1:sloid:254:1:1",
+        "pathIndex": 494,
+        "sourceFeatureIds": [
+          "bsTram:10:0"
+        ],
+        "pathMetres": 363.96118024911493,
+        "maximumSnapMetres": 0.5684003378629662,
+        "occurrences": 5
+      },
+      {
+        "ruleId": "tram-depot-7",
+        "routeId": "91-2-j26-1",
+        "mode": "tram",
+        "line": "2",
+        "fromId": "ch:1:sloid:254:1:2",
+        "toId": "ch:1:sloid:88767:1:2",
+        "pathIndex": 1595,
+        "sourceFeatureIds": [
+          "bsTram:36:0"
+        ],
+        "pathMetres": 363.7019989202606,
+        "maximumSnapMetres": 1.5752921269052258,
+        "occurrences": 5
+      },
+      {
+        "ruleId": "tram-depot-8",
+        "routeId": "91-2-j26-1",
+        "mode": "tram",
+        "line": "2",
+        "fromId": "ch:1:sloid:88767:1:2",
+        "toId": "ch:1:sloid:88768:1:2",
+        "pathIndex": 473,
+        "sourceFeatureIds": [
+          "bsTram:25:0"
+        ],
+        "pathMetres": 252.74041282052366,
+        "maximumSnapMetres": 0.3998083341763011,
+        "occurrences": 5
+      },
+      {
+        "ruleId": "tram-depot-9",
+        "routeId": "91-2-j26-1",
+        "mode": "tram",
+        "line": "2",
+        "fromId": "ch:1:sloid:88768:1:2",
+        "toId": "ch:1:sloid:89298:1:2",
+        "pathIndex": 1631,
+        "sourceFeatureIds": [
+          "tlm:{58AA6AFC-BB46-4C5E-A822-B344822DD23F}:0",
+          "tlm:{D5FF577A-C5F8-49B7-9233-634835D01771}:0"
+        ],
+        "pathMetres": 375.0728165664123,
+        "maximumSnapMetres": 3.9613359183520864,
+        "occurrences": 5
+      },
+      {
+        "ruleId": "tram-depot-10",
+        "routeId": "91-2-j26-1",
+        "mode": "tram",
+        "line": "2",
+        "fromId": "ch:1:sloid:89298:1:2",
+        "toId": "ch:1:sloid:89344:1:2",
+        "pathIndex": 1632,
+        "sourceFeatureIds": [
+          "bsTram:9:0"
+        ],
+        "pathMetres": 326.5885675837452,
+        "maximumSnapMetres": 2.264698952168057,
+        "occurrences": 5
+      },
+      {
+        "ruleId": "tram-depot-11",
+        "routeId": "91-2-j26-1",
+        "mode": "tram",
+        "line": "2",
+        "fromId": "ch:1:sloid:89344:1:2",
+        "toId": "ch:1:sloid:89352:1:2",
+        "pathIndex": 1633,
+        "sourceFeatureIds": [
+          "bsTram:9:0"
+        ],
+        "pathMetres": 280.1103961758794,
+        "maximumSnapMetres": 2.15062540113736,
+        "occurrences": 5
+      },
+      {
+        "ruleId": "tram-depot-13",
+        "routeId": "91-2-j26-1",
+        "mode": "tram",
+        "line": "2",
+        "fromId": "ch:1:sloid:89352:1:2",
+        "toId": "ch:1:sloid:899:1:5",
+        "pathIndex": 1634,
+        "sourceFeatureIds": [
+          "bsTram:9:0"
+        ],
+        "pathMetres": 447.0206219739245,
+        "maximumSnapMetres": 2.15062540113736,
+        "occurrences": 2
+      },
+      {
+        "ruleId": "tram-depot-86",
+        "routeId": "91-2-j26-1",
+        "mode": "tram",
+        "line": "2",
+        "fromId": "ch:1:sloid:89451:1:1",
+        "toId": "ch:1:sloid:89485:1:1",
+        "pathIndex": 459,
+        "sourceFeatureIds": [
+          "bsTram:7:0"
+        ],
+        "pathMetres": 263.5729580980426,
+        "maximumSnapMetres": 0.12485490225948351,
+        "occurrences": 2
+      },
+      {
+        "ruleId": "tram-depot-87",
+        "routeId": "91-2-j26-1",
+        "mode": "tram",
+        "line": "2",
+        "fromId": "ch:1:sloid:89485:1:1",
+        "toId": "ch:1:sloid:89467:1:1",
+        "pathIndex": 460,
+        "sourceFeatureIds": [
+          "bsTram:7:0"
+        ],
+        "pathMetres": 357.4934392739634,
+        "maximumSnapMetres": 0.12485490225948351,
+        "occurrences": 2
+      },
+      {
+        "ruleId": "tram-depot-88",
+        "routeId": "91-2-j26-1",
+        "mode": "tram",
+        "line": "2",
+        "fromId": "ch:1:sloid:89467:1:1",
+        "toId": "ch:1:sloid:89455:1:4",
+        "pathIndex": 1635,
+        "sourceFeatureIds": [
+          "bsTram:7:0"
+        ],
+        "pathMetres": 407.36900893914475,
+        "maximumSnapMetres": 5.125573442067111,
+        "occurrences": 2
+      },
+      {
+        "ruleId": "tram-depot-89",
+        "routeId": "91-2-j26-1",
+        "mode": "tram",
+        "line": "2",
+        "fromId": "ch:1:sloid:89352:1:2",
+        "toId": "ch:1:sloid:899:1:4",
+        "pathIndex": 1636,
+        "sourceFeatureIds": [
+          "tlm:{DE9CE0C6-4A5B-4CED-84A2-FA590EF35ED0}:0",
+          "tlm:{1E26948E-B274-4757-8303-A63FAFAB5B4A}:0",
+          "tlm:{2C13FFC5-56BA-40EA-91AC-CBE370BEF4E8}:0",
+          "tlm:{3E5DD8ED-1859-456C-831A-AF240EECD67B}:0",
+          "tlm:{03C385F9-DF63-4249-B46C-9FF5CCD6DD07}:0"
+        ],
+        "pathMetres": 449.9279740524133,
+        "maximumSnapMetres": 3.4389251280959425,
+        "occurrences": 3
+      },
+      {
+        "ruleId": "tram-depot-90",
+        "routeId": "91-2-j26-1",
+        "mode": "tram",
+        "line": "2",
+        "fromId": "ch:1:sloid:89455:1:4",
+        "toId": "ch:1:sloid:89467:1:2",
+        "pathIndex": 1637,
+        "sourceFeatureIds": [
+          "bsTram:37:0"
+        ],
+        "pathMetres": 307.9372148785702,
+        "maximumSnapMetres": 6.143131471230751,
+        "occurrences": 2
+      },
+      {
+        "ruleId": "tram-depot-91",
+        "routeId": "91-2-j26-1",
+        "mode": "tram",
+        "line": "2",
+        "fromId": "ch:1:sloid:89467:1:2",
+        "toId": "ch:1:sloid:89485:1:2",
+        "pathIndex": 402,
+        "sourceFeatureIds": [
+          "bsTram:37:0"
+        ],
+        "pathMetres": 370.7177149484398,
+        "maximumSnapMetres": 1.7033290373194063,
+        "occurrences": 2
+      },
+      {
+        "ruleId": "tram-depot-92",
+        "routeId": "91-2-j26-1",
+        "mode": "tram",
+        "line": "2",
+        "fromId": "ch:1:sloid:89485:1:2",
+        "toId": "ch:1:sloid:89451:1:2",
+        "pathIndex": 1638,
+        "sourceFeatureIds": [
+          "bsTram:37:0"
+        ],
+        "pathMetres": 256.370113975272,
+        "maximumSnapMetres": 2.427452939196733,
+        "occurrences": 2
+      },
       {
         "ruleId": "sbb-approach-2",
         "routeId": "91-3-B-j26-1",
@@ -3440,7 +5031,7 @@
         "line": "S3",
         "fromId": "ch:1:sloid:136:1:1",
         "toId": "ch:1:sloid:10:0:20",
-        "pathIndex": 1595,
+        "pathIndex": 1639,
         "sourceFeatureIds": [
           "bsRail:7"
         ],
@@ -3455,7 +5046,7 @@
         "line": "S3",
         "fromId": "ch:1:sloid:10:0:20",
         "toId": "ch:1:sloid:20:3:4",
-        "pathIndex": 1596,
+        "pathIndex": 1640,
         "sourceFeatureIds": [
           "bsRail:1"
         ],
@@ -3470,7 +5061,7 @@
         "line": "S3",
         "fromId": "ch:1:sloid:136:1:1",
         "toId": "ch:1:sloid:10:0:19",
-        "pathIndex": 1597,
+        "pathIndex": 1641,
         "sourceFeatureIds": [
           "bsRail:7"
         ],
@@ -3485,7 +5076,7 @@
         "line": "S3",
         "fromId": "ch:1:sloid:10:0:19",
         "toId": "ch:1:sloid:20:3:4",
-        "pathIndex": 1598,
+        "pathIndex": 1642,
         "sourceFeatureIds": [
           "bsRail:1"
         ],
@@ -3494,13 +5085,114 @@
         "occurrences": 35
       },
       {
+        "ruleId": "tram-depot-77",
+        "routeId": "91-3-j26-1",
+        "mode": "tram",
+        "line": "3",
+        "fromId": "ch:1:sloid:81062:1:2",
+        "toId": "ch:1:sloid:89293:1:2",
+        "pathIndex": 422,
+        "sourceFeatureIds": [
+          "bsTram:37:0"
+        ],
+        "pathMetres": 451.19512990025737,
+        "maximumSnapMetres": 15.922492915919255,
+        "occurrences": 4
+      },
+      {
+        "ruleId": "tram-depot-43",
+        "routeId": "91-3-j26-1",
+        "mode": "tram",
+        "line": "3",
+        "fromId": "ch:1:sloid:89293:1:2",
+        "toId": "ch:1:sloid:92442:1:4",
+        "pathIndex": 465,
+        "sourceFeatureIds": [
+          "bsTram:37:0"
+        ],
+        "pathMetres": 379.9947856899924,
+        "maximumSnapMetres": 0.6745423272108859,
+        "occurrences": 8
+      },
+      {
+        "ruleId": "tram-depot-44",
+        "routeId": "91-3-j26-1",
+        "mode": "tram",
+        "line": "3",
+        "fromId": "ch:1:sloid:92442:1:3",
+        "toId": "ch:1:sloid:89293:1:1",
+        "pathIndex": 438,
+        "sourceFeatureIds": [
+          "bsTram:7:0"
+        ],
+        "pathMetres": 373.2543148880123,
+        "maximumSnapMetres": 3.735997965992931,
+        "occurrences": 8
+      },
+      {
+        "ruleId": "tram-depot-78",
+        "routeId": "91-3-j26-1",
+        "mode": "tram",
+        "line": "3",
+        "fromId": "ch:1:sloid:89293:1:1",
+        "toId": "ch:1:sloid:89296:1:2",
+        "pathIndex": 1629,
+        "sourceFeatureIds": [
+          "tlm:{D4748ADC-123D-4987-AE8E-56C7D64A7637}:0",
+          "tlm:{0E2F0AAF-51EF-45D9-9EC5-1FB396402CA3}:0",
+          "tlm:{CF4DA0DE-EFAB-4EC0-B003-FCC35B1D2337}:0",
+          "tlm:{BFEC6536-7212-4ED2-BF7C-62B46D4EFF16}:0",
+          "tlm:{3E49A9F7-3FF3-47C4-88DE-FDAC85BF839D}:0"
+        ],
+        "pathMetres": 616.3315282808447,
+        "maximumSnapMetres": 1.6706955355546453,
+        "occurrences": 4
+      },
+      {
+        "ruleId": "tram-depot-137",
+        "routeId": "91-3-j26-1",
+        "mode": "tram",
+        "line": "3",
+        "fromId": "ch:1:sloid:89296:1:1",
+        "toId": "ch:1:sloid:89293:1:2",
+        "pathIndex": 1625,
+        "sourceFeatureIds": [
+          "tlm:{3E49A9F7-3FF3-47C4-88DE-FDAC85BF839D}:0",
+          "tlm:{BFEC6536-7212-4ED2-BF7C-62B46D4EFF16}:0",
+          "tlm:{CF4DA0DE-EFAB-4EC0-B003-FCC35B1D2337}:0",
+          "tlm:{08E432E2-3FFB-4975-B31A-DF6A5360FAFA}:0",
+          "tlm:{F70F6574-4087-4DF3-B09A-08808A5A5439}:0"
+        ],
+        "pathMetres": 606.275349512788,
+        "maximumSnapMetres": 0.93187037549682,
+        "occurrences": 4
+      },
+      {
+        "ruleId": "tram-depot-140",
+        "routeId": "91-3-j26-1",
+        "mode": "tram",
+        "line": "3",
+        "fromId": "ch:1:sloid:89293:1:1",
+        "toId": "ch:1:sloid:81062:1:1",
+        "pathIndex": 1602,
+        "sourceFeatureIds": [
+          "tlm:{D4748ADC-123D-4987-AE8E-56C7D64A7637}:0",
+          "tlm:{AB15C657-19CE-4CBB-944D-FC1EC8927711}:0",
+          "tlm:{4A4969F5-1DC2-4A09-A46D-FDB11BBB04CC}:0",
+          "tlm:{960F4A8B-522A-4E4A-8211-A5930018E1BB}:0"
+        ],
+        "pathMetres": 463.4830289608823,
+        "maximumSnapMetres": 1.6706955355546453,
+        "occurrences": 4
+      },
+      {
         "ruleId": "tram6-heuwaage-zoo-via-markthalle",
         "routeId": "91-6-j26-1",
         "mode": "tram",
         "line": "6",
         "fromId": "ch:1:sloid:79:1:2",
         "toId": "ch:1:sloid:89381:1:2",
-        "pathIndex": 1599,
+        "pathIndex": 1596,
         "sourceFeatureIds": [
           "tlm:{5729E6C9-0E3F-4A12-8806-D3BB873F3813}",
           "tlm:{783B3C7E-6ED2-4C72-B358-839A73BCA96F}",
@@ -3519,7 +5211,7 @@
         "line": "6",
         "fromId": "ch:1:sloid:193:1:1",
         "toId": "ch:1:sloid:79:1:1",
-        "pathIndex": 1600,
+        "pathIndex": 1606,
         "sourceFeatureIds": [
           "tlm:{EF653C7C-A8B6-4880-9ED7-AA7F983FCD71}",
           "tlm:{783B3C7E-6ED2-4C72-B358-839A73BCA96F}",
@@ -3531,13 +5223,498 @@
         "occurrences": 102
       },
       {
+        "ruleId": "tram-depot-47",
+        "routeId": "91-6-j26-1",
+        "mode": "tram",
+        "line": "6",
+        "fromId": "ch:1:sloid:193:1:9",
+        "toId": "ch:1:sloid:78143:1:33",
+        "pathIndex": 503,
+        "sourceFeatureIds": [
+          "bsTram:10:0"
+        ],
+        "pathMetres": 295.94473019769947,
+        "maximumSnapMetres": 0.8899337772387435,
+        "occurrences": 5
+      },
+      {
+        "ruleId": "tram-depot-48",
+        "routeId": "91-6-j26-1",
+        "mode": "tram",
+        "line": "6",
+        "fromId": "ch:1:sloid:78143:1:33",
+        "toId": "ch:1:sloid:89333:1:1",
+        "pathIndex": 1643,
+        "sourceFeatureIds": [
+          "bsTram:40:0"
+        ],
+        "pathMetres": 407.6864246775289,
+        "maximumSnapMetres": 0.9601973207818155,
+        "occurrences": 5
+      },
+      {
+        "ruleId": "tram-depot-49",
+        "routeId": "91-6-j26-1",
+        "mode": "tram",
+        "line": "6",
+        "fromId": "ch:1:sloid:89333:1:1",
+        "toId": "ch:1:sloid:237:1:1",
+        "pathIndex": 1644,
+        "sourceFeatureIds": [
+          "bsTram:17:0"
+        ],
+        "pathMetres": 231.87065891534147,
+        "maximumSnapMetres": 3.753026577591406,
+        "occurrences": 5
+      },
+      {
+        "ruleId": "tram-depot-50",
+        "routeId": "91-6-j26-1",
+        "mode": "tram",
+        "line": "6",
+        "fromId": "ch:1:sloid:237:1:1",
+        "toId": "ch:1:sloid:89336:1:1",
+        "pathIndex": 316,
+        "sourceFeatureIds": [
+          "bsTram:17:0"
+        ],
+        "pathMetres": 217.86842150134495,
+        "maximumSnapMetres": 3.753026577591406,
+        "occurrences": 5
+      },
+      {
+        "ruleId": "tram-depot-51",
+        "routeId": "91-6-j26-1",
+        "mode": "tram",
+        "line": "6",
+        "fromId": "ch:1:sloid:89336:1:1",
+        "toId": "ch:1:sloid:89376:1:1",
+        "pathIndex": 191,
+        "sourceFeatureIds": [
+          "bsTram:44:0"
+        ],
+        "pathMetres": 607.867921157884,
+        "maximumSnapMetres": 1.024831147773405,
+        "occurrences": 5
+      },
+      {
+        "ruleId": "tram-depot-52",
+        "routeId": "91-6-j26-1",
+        "mode": "tram",
+        "line": "6",
+        "fromId": "ch:1:sloid:89376:1:1",
+        "toId": "ch:1:sloid:899:1:5",
+        "pathIndex": 1645,
+        "sourceFeatureIds": [
+          "bsTram:45:0"
+        ],
+        "pathMetres": 619.8739882433755,
+        "maximumSnapMetres": 1.8582635406838832,
+        "occurrences": 5
+      },
+      {
+        "ruleId": "tram-depot-98",
+        "routeId": "91-6-j26-1",
+        "mode": "tram",
+        "line": "6",
+        "fromId": "ch:1:sloid:254:1:2",
+        "toId": "ch:1:sloid:88767:1:2",
+        "pathIndex": 1595,
+        "sourceFeatureIds": [
+          "bsTram:36:0"
+        ],
+        "pathMetres": 363.7019989202606,
+        "maximumSnapMetres": 1.5752921269052258,
+        "occurrences": 1
+      },
+      {
+        "ruleId": "tram-depot-155",
+        "routeId": "91-6-j26-1",
+        "mode": "tram",
+        "line": "6",
+        "fromId": "ch:1:sloid:88767:1:2",
+        "toId": "ch:1:sloid:88768:1:2",
+        "pathIndex": 473,
+        "sourceFeatureIds": [
+          "bsTram:25:0"
+        ],
+        "pathMetres": 252.74041282052366,
+        "maximumSnapMetres": 0.3998083341763011,
+        "occurrences": 1
+      },
+      {
+        "ruleId": "tram-depot-156",
+        "routeId": "91-6-j26-1",
+        "mode": "tram",
+        "line": "6",
+        "fromId": "ch:1:sloid:88768:1:2",
+        "toId": "ch:1:sloid:89298:1:2",
+        "pathIndex": 1631,
+        "sourceFeatureIds": [
+          "tlm:{58AA6AFC-BB46-4C5E-A822-B344822DD23F}:0",
+          "tlm:{D5FF577A-C5F8-49B7-9233-634835D01771}:0"
+        ],
+        "pathMetres": 375.0728165664123,
+        "maximumSnapMetres": 3.9613359183520864,
+        "occurrences": 1
+      },
+      {
+        "ruleId": "tram-depot-157",
+        "routeId": "91-6-j26-1",
+        "mode": "tram",
+        "line": "6",
+        "fromId": "ch:1:sloid:89298:1:2",
+        "toId": "ch:1:sloid:89344:1:2",
+        "pathIndex": 1632,
+        "sourceFeatureIds": [
+          "bsTram:9:0"
+        ],
+        "pathMetres": 326.5885675837452,
+        "maximumSnapMetres": 2.264698952168057,
+        "occurrences": 1
+      },
+      {
+        "ruleId": "tram-depot-158",
+        "routeId": "91-6-j26-1",
+        "mode": "tram",
+        "line": "6",
+        "fromId": "ch:1:sloid:89344:1:2",
+        "toId": "ch:1:sloid:89352:1:2",
+        "pathIndex": 1633,
+        "sourceFeatureIds": [
+          "bsTram:9:0"
+        ],
+        "pathMetres": 280.1103961758794,
+        "maximumSnapMetres": 2.15062540113736,
+        "occurrences": 1
+      },
+      {
+        "ruleId": "tram-depot-159",
+        "routeId": "91-6-j26-1",
+        "mode": "tram",
+        "line": "6",
+        "fromId": "ch:1:sloid:89352:1:2",
+        "toId": "ch:1:sloid:899:1:2",
+        "pathIndex": 1646,
+        "sourceFeatureIds": [
+          "bsTram:9:0"
+        ],
+        "pathMetres": 310.4791405739882,
+        "maximumSnapMetres": 2.15062540113736,
+        "occurrences": 1
+      },
+      {
+        "ruleId": "tram-depot-208",
+        "routeId": "91-6-j26-1",
+        "mode": "tram",
+        "line": "6",
+        "fromId": "ch:1:sloid:899:1:6",
+        "toId": "ch:1:sloid:89376:1:2",
+        "pathIndex": 1647,
+        "sourceFeatureIds": [
+          "bsTram:21:0"
+        ],
+        "pathMetres": 612.9025482231489,
+        "maximumSnapMetres": 1.5760630326549194,
+        "occurrences": 2
+      },
+      {
+        "ruleId": "tram-depot-209",
+        "routeId": "91-6-j26-1",
+        "mode": "tram",
+        "line": "6",
+        "fromId": "ch:1:sloid:89376:1:2",
+        "toId": "ch:1:sloid:89336:1:2",
+        "pathIndex": 1608,
+        "sourceFeatureIds": [
+          "bsTram:21:0"
+        ],
+        "pathMetres": 608.4728698704326,
+        "maximumSnapMetres": 1.5760630326549194,
+        "occurrences": 2
+      },
+      {
+        "ruleId": "tram-depot-210",
+        "routeId": "91-6-j26-1",
+        "mode": "tram",
+        "line": "6",
+        "fromId": "ch:1:sloid:89336:1:2",
+        "toId": "ch:1:sloid:237:1:2",
+        "pathIndex": 1648,
+        "sourceFeatureIds": [
+          "bsTram:31:0"
+        ],
+        "pathMetres": 122.02472752222302,
+        "maximumSnapMetres": 1.8073444054874863,
+        "occurrences": 2
+      },
+      {
+        "ruleId": "tram-depot-211",
+        "routeId": "91-6-j26-1",
+        "mode": "tram",
+        "line": "6",
+        "fromId": "ch:1:sloid:237:1:2",
+        "toId": "ch:1:sloid:89333:1:2",
+        "pathIndex": 1649,
+        "sourceFeatureIds": [
+          "bsTram:31:0"
+        ],
+        "pathMetres": 342.1540425702665,
+        "maximumSnapMetres": 1.8073444054874863,
+        "occurrences": 2
+      },
+      {
+        "ruleId": "tram-depot-212",
+        "routeId": "91-6-j26-1",
+        "mode": "tram",
+        "line": "6",
+        "fromId": "ch:1:sloid:89333:1:2",
+        "toId": "ch:1:sloid:78143:1:32",
+        "pathIndex": 1650,
+        "sourceFeatureIds": [
+          "bsTram:31:0"
+        ],
+        "pathMetres": 400.1017535436151,
+        "maximumSnapMetres": 0.3609079241631568,
+        "occurrences": 2
+      },
+      {
+        "ruleId": "tram-depot-213",
+        "routeId": "91-6-j26-1",
+        "mode": "tram",
+        "line": "6",
+        "fromId": "ch:1:sloid:78143:1:32",
+        "toId": "ch:1:sloid:193:1:2",
+        "pathIndex": 1651,
+        "sourceFeatureIds": [
+          "bsTram:31:0"
+        ],
+        "pathMetres": 302.431378979206,
+        "maximumSnapMetres": 0.8582721135229311,
+        "occurrences": 2
+      },
+      {
+        "ruleId": "tram-depot-214",
+        "routeId": "91-6-j26-1",
+        "mode": "tram",
+        "line": "6",
+        "fromId": "ch:1:sloid:193:1:2",
+        "toId": "ch:1:sloid:89381:1:2",
+        "pathIndex": 1652,
+        "sourceFeatureIds": [
+          "bsTram:21:0"
+        ],
+        "pathMetres": 523.3686655266558,
+        "maximumSnapMetres": 1.0125988855259538,
+        "occurrences": 2
+      },
+      {
+        "ruleId": "tram-depot-160",
+        "routeId": "91-8-A-j26-1",
+        "mode": "tram",
+        "line": "8",
+        "fromId": "ch:1:sloid:89360:1:2",
+        "toId": "ch:1:sloid:81062:1:2",
+        "pathIndex": 1597,
+        "sourceFeatureIds": [
+          "bsTram:1:0"
+        ],
+        "pathMetres": 217.8466993208389,
+        "maximumSnapMetres": 0.8197706285643613,
+        "occurrences": 3
+      },
+      {
+        "ruleId": "tram-depot-161",
+        "routeId": "91-8-A-j26-1",
+        "mode": "tram",
+        "line": "8",
+        "fromId": "ch:1:sloid:81062:1:2",
+        "toId": "ch:1:sloid:89296:1:2",
+        "pathIndex": 307,
+        "sourceFeatureIds": [
+          "bsTram:21:0"
+        ],
+        "pathMetres": 249.94047719924856,
+        "maximumSnapMetres": 0.5409073331144754,
+        "occurrences": 2
+      },
+      {
+        "ruleId": "tram-depot-162",
+        "routeId": "91-8-A-j26-1",
+        "mode": "tram",
+        "line": "8",
+        "fromId": "ch:1:sloid:89296:1:2",
+        "toId": "ch:1:sloid:89323:1:2",
+        "pathIndex": 300,
+        "sourceFeatureIds": [
+          "bsTram:1:0"
+        ],
+        "pathMetres": 313.68746599010615,
+        "maximumSnapMetres": 0.5409073331144754,
+        "occurrences": 3
+      },
+      {
+        "ruleId": "tram-depot-163",
+        "routeId": "91-8-A-j26-1",
+        "mode": "tram",
+        "line": "8",
+        "fromId": "ch:1:sloid:89323:1:2",
+        "toId": "ch:1:sloid:89303:2:4",
+        "pathIndex": 301,
+        "sourceFeatureIds": [
+          "bsTram:21:0"
+        ],
+        "pathMetres": 233.71065951100303,
+        "maximumSnapMetres": 1.7332361356061337,
+        "occurrences": 3
+      },
+      {
+        "ruleId": "tram-depot-164",
+        "routeId": "91-8-A-j26-1",
+        "mode": "tram",
+        "line": "8",
+        "fromId": "ch:1:sloid:89303:2:4",
+        "toId": "ch:1:sloid:78144:1:2",
+        "pathIndex": 1653,
+        "sourceFeatureIds": [
+          "bsTram:21:0"
+        ],
+        "pathMetres": 369.70290131733833,
+        "maximumSnapMetres": 1.7332361356061337,
+        "occurrences": 3
+      },
+      {
+        "ruleId": "tram-depot-165",
+        "routeId": "91-8-A-j26-1",
+        "mode": "tram",
+        "line": "8",
+        "fromId": "ch:1:sloid:78144:1:2",
+        "toId": "ch:1:sloid:92322:1:2",
+        "pathIndex": 303,
+        "sourceFeatureIds": [
+          "bsTram:21:0"
+        ],
+        "pathMetres": 555.893605995519,
+        "maximumSnapMetres": 1.4400490955635517,
+        "occurrences": 3
+      },
+      {
+        "ruleId": "tram-depot-166",
+        "routeId": "91-8-A-j26-1",
+        "mode": "tram",
+        "line": "8",
+        "fromId": "ch:1:sloid:92322:1:2",
+        "toId": "ch:1:sloid:88782:1:4",
+        "pathIndex": 1654,
+        "sourceFeatureIds": [
+          "bsTram:21:0"
+        ],
+        "pathMetres": 345.24334420331263,
+        "maximumSnapMetres": 0.5979003474744408,
+        "occurrences": 3
+      },
+      {
+        "ruleId": "tram-depot-167",
+        "routeId": "91-8-A-j26-1",
+        "mode": "tram",
+        "line": "8",
+        "fromId": "ch:1:sloid:88782:1:4",
+        "toId": "ch:1:sloid:89348:1:2",
+        "pathIndex": 1655,
+        "sourceFeatureIds": [
+          "bsTram:9:0"
+        ],
+        "pathMetres": 345.85334193938354,
+        "maximumSnapMetres": 0.5935566240073018,
+        "occurrences": 3
+      },
+      {
+        "ruleId": "tram-depot-168",
+        "routeId": "91-8-A-j26-1",
+        "mode": "tram",
+        "line": "8",
+        "fromId": "ch:1:sloid:89348:1:2",
+        "toId": "ch:1:sloid:88768:1:4",
+        "pathIndex": 1622,
+        "sourceFeatureIds": [
+          "bsTram:9:0"
+        ],
+        "pathMetres": 607.3155630659575,
+        "maximumSnapMetres": 0.7463491658199718,
+        "occurrences": 3
+      },
+      {
+        "ruleId": "tram-depot-221",
+        "routeId": "91-8-A-j26-1",
+        "mode": "tram",
+        "line": "8",
+        "fromId": "ch:1:sloid:92442:1:3",
+        "toId": "ch:1:sloid:89293:1:1",
+        "pathIndex": 438,
+        "sourceFeatureIds": [
+          "bsTram:7:0"
+        ],
+        "pathMetres": 373.2543148880123,
+        "maximumSnapMetres": 3.735997965992931,
+        "occurrences": 1
+      },
+      {
+        "ruleId": "tram-depot-222",
+        "routeId": "91-8-A-j26-1",
+        "mode": "tram",
+        "line": "8",
+        "fromId": "ch:1:sloid:89293:1:1",
+        "toId": "ch:1:sloid:89296:1:2",
+        "pathIndex": 1629,
+        "sourceFeatureIds": [
+          "tlm:{D4748ADC-123D-4987-AE8E-56C7D64A7637}:0",
+          "tlm:{0E2F0AAF-51EF-45D9-9EC5-1FB396402CA3}:0",
+          "tlm:{CF4DA0DE-EFAB-4EC0-B003-FCC35B1D2337}:0",
+          "tlm:{BFEC6536-7212-4ED2-BF7C-62B46D4EFF16}:0",
+          "tlm:{3E49A9F7-3FF3-47C4-88DE-FDAC85BF839D}:0"
+        ],
+        "pathMetres": 616.3315282808447,
+        "maximumSnapMetres": 1.6706955355546453,
+        "occurrences": 1
+      },
+      {
+        "ruleId": "tram-depot-223",
+        "routeId": "91-8-A-j26-1",
+        "mode": "tram",
+        "line": "8",
+        "fromId": "ch:1:sloid:81062:1:2",
+        "toId": "ch:1:sloid:89293:1:2",
+        "pathIndex": 422,
+        "sourceFeatureIds": [
+          "bsTram:37:0"
+        ],
+        "pathMetres": 451.19512990025737,
+        "maximumSnapMetres": 15.922492915919255,
+        "occurrences": 1
+      },
+      {
+        "ruleId": "tram-depot-224",
+        "routeId": "91-8-A-j26-1",
+        "mode": "tram",
+        "line": "8",
+        "fromId": "ch:1:sloid:89293:1:2",
+        "toId": "ch:1:sloid:92442:1:4",
+        "pathIndex": 465,
+        "sourceFeatureIds": [
+          "bsTram:37:0"
+        ],
+        "pathMetres": 379.9947856899924,
+        "maximumSnapMetres": 0.6745423272108859,
+        "occurrences": 1
+      },
+      {
         "ruleId": "bus-33-southern-loop",
         "routeId": "92-33-j26-1",
         "mode": "bus",
         "line": "33",
         "fromId": "ch:1:sloid:89315:1:4",
         "toId": "ch:1:sloid:89365:1:1",
-        "pathIndex": 1601,
+        "pathIndex": 1656,
         "sourceFeatureIds": [
           "osm:603131197",
           "osm:603130521",
@@ -3559,7 +5736,7 @@
         "line": "EV",
         "fromId": "ch:1:sloid:88073:1:9",
         "toId": "ch:1:sloid:78180:1:2",
-        "pathIndex": 1602,
+        "pathIndex": 1657,
         "sourceFeatureIds": [
           "osm:1218941738",
           "osm:148799394",
@@ -3591,1376 +5768,6 @@
       "from": "Münchenstein, Freilager",
       "to": "Münchenstein, Schaulager",
       "occurrences": 104
-    },
-    {
-      "routeId": "91-3-j26-1",
-      "line": "3",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:89293:1:2",
-      "toId": "ch:1:sloid:92442:1:4",
-      "from": "Basel, Allschwilerplatz",
-      "to": "Basel, Morgartenring",
-      "occurrences": 8
-    },
-    {
-      "routeId": "91-3-j26-1",
-      "line": "3",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:92442:1:3",
-      "toId": "ch:1:sloid:89293:1:1",
-      "from": "Basel, Morgartenring",
-      "to": "Basel, Allschwilerplatz",
-      "occurrences": 8
-    },
-    {
-      "routeId": "91-14-j26-1",
-      "line": "14",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:88768:1:83",
-      "toId": "ch:1:sloid:88767:1:1",
-      "from": "Basel, Dreirosenbrücke",
-      "to": "Basel, Ciba",
-      "occurrences": 5
-    },
-    {
-      "routeId": "91-14-j26-1",
-      "line": "14",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:88767:1:1",
-      "toId": "ch:1:sloid:254:1:1",
-      "from": "Basel, Ciba",
-      "to": "Basel, Wiesenplatz",
-      "occurrences": 5
-    },
-    {
-      "routeId": "91-16-j26-1",
-      "line": "16",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:147:1:1",
-      "toId": "ch:1:sloid:88778:1:2",
-      "from": "Basel, Heiliggeistkirche",
-      "to": "Basel, Münchensteinerstrasse",
-      "occurrences": 5
-    },
-    {
-      "routeId": "91-16-j26-1",
-      "line": "16",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:88778:1:2",
-      "toId": "ch:1:sloid:88776:1:2",
-      "from": "Basel, Münchensteinerstrasse",
-      "to": "Basel, MParc",
-      "occurrences": 5
-    },
-    {
-      "routeId": "91-16-j26-1",
-      "line": "16",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:88776:1:3",
-      "toId": "ch:1:sloid:88778:1:1",
-      "from": "Basel, MParc",
-      "to": "Basel, Münchensteinerstrasse",
-      "occurrences": 5
-    },
-    {
-      "routeId": "91-16-j26-1",
-      "line": "16",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:88778:1:1",
-      "toId": "ch:1:sloid:147:1:2",
-      "from": "Basel, Münchensteinerstrasse",
-      "to": "Basel, Heiliggeistkirche",
-      "occurrences": 5
-    },
-    {
-      "routeId": "91-2-j26-1",
-      "line": "2",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:899:1:1",
-      "toId": "ch:1:sloid:89352:1:1",
-      "from": "Basel, Messeplatz",
-      "to": "Basel, Riehenring",
-      "occurrences": 5
-    },
-    {
-      "routeId": "91-2-j26-1",
-      "line": "2",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:89352:1:1",
-      "toId": "ch:1:sloid:89344:1:1",
-      "from": "Basel, Riehenring",
-      "to": "Basel, Musical Theater",
-      "occurrences": 5
-    },
-    {
-      "routeId": "91-2-j26-1",
-      "line": "2",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:89344:1:1",
-      "toId": "ch:1:sloid:89298:1:1",
-      "from": "Basel, Musical Theater",
-      "to": "Basel, Brombacherstrasse",
-      "occurrences": 5
-    },
-    {
-      "routeId": "91-2-j26-1",
-      "line": "2",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:89298:1:1",
-      "toId": "ch:1:sloid:88768:1:83",
-      "from": "Basel, Brombacherstrasse",
-      "to": "Basel, Dreirosenbrücke",
-      "occurrences": 5
-    },
-    {
-      "routeId": "91-2-j26-1",
-      "line": "2",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:88768:1:83",
-      "toId": "ch:1:sloid:88767:1:1",
-      "from": "Basel, Dreirosenbrücke",
-      "to": "Basel, Ciba",
-      "occurrences": 5
-    },
-    {
-      "routeId": "91-2-j26-1",
-      "line": "2",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:88767:1:1",
-      "toId": "ch:1:sloid:254:1:1",
-      "from": "Basel, Ciba",
-      "to": "Basel, Wiesenplatz",
-      "occurrences": 5
-    },
-    {
-      "routeId": "91-2-j26-1",
-      "line": "2",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:254:1:2",
-      "toId": "ch:1:sloid:88767:1:2",
-      "from": "Basel, Wiesenplatz",
-      "to": "Basel, Ciba",
-      "occurrences": 5
-    },
-    {
-      "routeId": "91-2-j26-1",
-      "line": "2",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:88767:1:2",
-      "toId": "ch:1:sloid:88768:1:2",
-      "from": "Basel, Ciba",
-      "to": "Basel, Dreirosenbrücke",
-      "occurrences": 5
-    },
-    {
-      "routeId": "91-2-j26-1",
-      "line": "2",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:88768:1:2",
-      "toId": "ch:1:sloid:89298:1:2",
-      "from": "Basel, Dreirosenbrücke",
-      "to": "Basel, Brombacherstrasse",
-      "occurrences": 5
-    },
-    {
-      "routeId": "91-2-j26-1",
-      "line": "2",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:89298:1:2",
-      "toId": "ch:1:sloid:89344:1:2",
-      "from": "Basel, Brombacherstrasse",
-      "to": "Basel, Musical Theater",
-      "occurrences": 5
-    },
-    {
-      "routeId": "91-2-j26-1",
-      "line": "2",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:89344:1:2",
-      "toId": "ch:1:sloid:89352:1:2",
-      "from": "Basel, Musical Theater",
-      "to": "Basel, Riehenring",
-      "occurrences": 5
-    },
-    {
-      "routeId": "91-6-j26-1",
-      "line": "6",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:193:1:9",
-      "toId": "ch:1:sloid:78143:1:33",
-      "from": "Basel, Markthalle",
-      "to": "Basel, Bahnhof SBB",
-      "occurrences": 5
-    },
-    {
-      "routeId": "91-6-j26-1",
-      "line": "6",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:78143:1:33",
-      "toId": "ch:1:sloid:89333:1:1",
-      "from": "Basel, Bahnhof SBB",
-      "to": "Basel, Kirschgarten",
-      "occurrences": 5
-    },
-    {
-      "routeId": "91-6-j26-1",
-      "line": "6",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:89333:1:1",
-      "toId": "ch:1:sloid:237:1:1",
-      "from": "Basel, Kirschgarten",
-      "to": "Basel, Bankverein",
-      "occurrences": 5
-    },
-    {
-      "routeId": "91-6-j26-1",
-      "line": "6",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:237:1:1",
-      "toId": "ch:1:sloid:89336:1:1",
-      "from": "Basel, Bankverein",
-      "to": "Basel, Kunstmuseum",
-      "occurrences": 5
-    },
-    {
-      "routeId": "91-6-j26-1",
-      "line": "6",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:89336:1:1",
-      "toId": "ch:1:sloid:89376:1:1",
-      "from": "Basel, Kunstmuseum",
-      "to": "Basel, Wettsteinplatz",
-      "occurrences": 5
-    },
-    {
-      "routeId": "91-6-j26-1",
-      "line": "6",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:89376:1:1",
-      "toId": "ch:1:sloid:899:1:5",
-      "from": "Basel, Wettsteinplatz",
-      "to": "Basel, Messeplatz",
-      "occurrences": 5
-    },
-    {
-      "routeId": "91-1-j26-1",
-      "line": "1",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:254:1:2",
-      "toId": "ch:1:sloid:88767:1:2",
-      "from": "Basel, Wiesenplatz",
-      "to": "Basel, Ciba",
-      "occurrences": 4
-    },
-    {
-      "routeId": "91-1-j26-1",
-      "line": "1",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:88767:1:2",
-      "toId": "ch:1:sloid:88768:1:3",
-      "from": "Basel, Ciba",
-      "to": "Basel, Dreirosenbrücke",
-      "occurrences": 4
-    },
-    {
-      "routeId": "91-3-j26-1",
-      "line": "3",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:81062:1:2",
-      "toId": "ch:1:sloid:89293:1:2",
-      "from": "Basel, Brausebad",
-      "to": "Basel, Allschwilerplatz",
-      "occurrences": 4
-    },
-    {
-      "routeId": "91-3-j26-1",
-      "line": "3",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:89293:1:1",
-      "toId": "ch:1:sloid:89296:1:2",
-      "from": "Basel, Allschwilerplatz",
-      "to": "Basel, Birmannsgasse",
-      "occurrences": 4
-    },
-    {
-      "routeId": "91-3-j26-1",
-      "line": "3",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:89296:1:1",
-      "toId": "ch:1:sloid:89293:1:2",
-      "from": "Basel, Birmannsgasse",
-      "to": "Basel, Allschwilerplatz",
-      "occurrences": 4
-    },
-    {
-      "routeId": "91-3-j26-1",
-      "line": "3",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:89293:1:1",
-      "toId": "ch:1:sloid:81062:1:1",
-      "from": "Basel, Allschwilerplatz",
-      "to": "Basel, Brausebad",
-      "occurrences": 4
-    },
-    {
-      "routeId": "91-14-j26-1",
-      "line": "14",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:254:1:2",
-      "toId": "ch:1:sloid:88767:1:2",
-      "from": "Basel, Wiesenplatz",
-      "to": "Basel, Ciba",
-      "occurrences": 3
-    },
-    {
-      "routeId": "91-14-j26-1",
-      "line": "14",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:88767:1:2",
-      "toId": "ch:1:sloid:88768:1:2",
-      "from": "Basel, Ciba",
-      "to": "Basel, Dreirosenbrücke",
-      "occurrences": 3
-    },
-    {
-      "routeId": "91-14-j26-1",
-      "line": "14",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:994:1:2",
-      "toId": "ch:1:sloid:79:1:2",
-      "from": "Basel, Theater",
-      "to": "Basel, Heuwaage",
-      "occurrences": 3
-    },
-    {
-      "routeId": "91-14-j26-1",
-      "line": "14",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:79:1:2",
-      "toId": "ch:1:sloid:89381:1:2",
-      "from": "Basel, Heuwaage",
-      "to": "Basel, Zoo Bachletten",
-      "occurrences": 3
-    },
-    {
-      "routeId": "91-14-j26-1",
-      "line": "14",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:89381:1:2",
-      "toId": "ch:1:sloid:89360:1:2",
-      "from": "Basel, Zoo Bachletten",
-      "to": "Basel, Schützenhaus",
-      "occurrences": 3
-    },
-    {
-      "routeId": "91-14-j26-1",
-      "line": "14",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:89360:1:2",
-      "toId": "ch:1:sloid:81062:1:2",
-      "from": "Basel, Schützenhaus",
-      "to": "Basel, Brausebad",
-      "occurrences": 3
-    },
-    {
-      "routeId": "91-14-j26-1",
-      "line": "14",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:81062:1:2",
-      "toId": "ch:1:sloid:89293:1:2",
-      "from": "Basel, Brausebad",
-      "to": "Basel, Allschwilerplatz",
-      "occurrences": 3
-    },
-    {
-      "routeId": "91-14-j26-1",
-      "line": "14",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:89293:1:2",
-      "toId": "ch:1:sloid:92442:1:4",
-      "from": "Basel, Allschwilerplatz",
-      "to": "Basel, Morgartenring",
-      "occurrences": 3
-    },
-    {
-      "routeId": "91-15-j26-1",
-      "line": "15",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:899:1:1",
-      "toId": "ch:1:sloid:89352:1:1",
-      "from": "Basel, Messeplatz",
-      "to": "Basel, Riehenring",
-      "occurrences": 3
-    },
-    {
-      "routeId": "91-15-j26-1",
-      "line": "15",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:89352:1:1",
-      "toId": "ch:1:sloid:89344:1:1",
-      "from": "Basel, Riehenring",
-      "to": "Basel, Musical Theater",
-      "occurrences": 3
-    },
-    {
-      "routeId": "91-15-j26-1",
-      "line": "15",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:89344:1:1",
-      "toId": "ch:1:sloid:89298:1:1",
-      "from": "Basel, Musical Theater",
-      "to": "Basel, Brombacherstrasse",
-      "occurrences": 3
-    },
-    {
-      "routeId": "91-15-j26-1",
-      "line": "15",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:89298:1:1",
-      "toId": "ch:1:sloid:88768:1:83",
-      "from": "Basel, Brombacherstrasse",
-      "to": "Basel, Dreirosenbrücke",
-      "occurrences": 3
-    },
-    {
-      "routeId": "91-15-j26-1",
-      "line": "15",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:88768:1:83",
-      "toId": "ch:1:sloid:88767:1:1",
-      "from": "Basel, Dreirosenbrücke",
-      "to": "Basel, Ciba",
-      "occurrences": 3
-    },
-    {
-      "routeId": "91-15-j26-1",
-      "line": "15",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:88767:1:1",
-      "toId": "ch:1:sloid:254:1:1",
-      "from": "Basel, Ciba",
-      "to": "Basel, Wiesenplatz",
-      "occurrences": 3
-    },
-    {
-      "routeId": "91-15-j26-1",
-      "line": "15",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:88776:1:3",
-      "toId": "ch:1:sloid:88778:1:1",
-      "from": "Basel, MParc",
-      "to": "Basel, Münchensteinerstrasse",
-      "occurrences": 3
-    },
-    {
-      "routeId": "91-1-j26-1",
-      "line": "1",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:89293:1:2",
-      "toId": "ch:1:sloid:92442:1:4",
-      "from": "Basel, Allschwilerplatz",
-      "to": "Basel, Morgartenring",
-      "occurrences": 3
-    },
-    {
-      "routeId": "91-1-j26-1",
-      "line": "1",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:88767:1:1",
-      "toId": "ch:1:sloid:254:1:1",
-      "from": "Basel, Ciba",
-      "to": "Basel, Wiesenplatz",
-      "occurrences": 3
-    },
-    {
-      "routeId": "91-2-j26-1",
-      "line": "2",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:89352:1:2",
-      "toId": "ch:1:sloid:899:1:4",
-      "from": "Basel, Riehenring",
-      "to": "Basel, Messeplatz",
-      "occurrences": 3
-    },
-    {
-      "routeId": "91-8-A-j26-1",
-      "line": "8",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:89360:1:2",
-      "toId": "ch:1:sloid:81062:1:2",
-      "from": "Basel, Schützenhaus",
-      "to": "Basel, Brausebad",
-      "occurrences": 3
-    },
-    {
-      "routeId": "91-8-A-j26-1",
-      "line": "8",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:89296:1:2",
-      "toId": "ch:1:sloid:89323:1:2",
-      "from": "Basel, Birmannsgasse",
-      "to": "Basel, Hegenheimerstrasse",
-      "occurrences": 3
-    },
-    {
-      "routeId": "91-8-A-j26-1",
-      "line": "8",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:89323:1:2",
-      "toId": "ch:1:sloid:89303:2:4",
-      "from": "Basel, Hegenheimerstrasse",
-      "to": "Basel, Burgfelderplatz",
-      "occurrences": 3
-    },
-    {
-      "routeId": "91-8-A-j26-1",
-      "line": "8",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:89303:2:4",
-      "toId": "ch:1:sloid:78144:1:2",
-      "from": "Basel, Burgfelderplatz",
-      "to": "Basel, Kannenfeldplatz",
-      "occurrences": 3
-    },
-    {
-      "routeId": "91-8-A-j26-1",
-      "line": "8",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:78144:1:2",
-      "toId": "ch:1:sloid:92322:1:2",
-      "from": "Basel, Kannenfeldplatz",
-      "to": "Basel, Bahnhof St. Johann",
-      "occurrences": 3
-    },
-    {
-      "routeId": "91-8-A-j26-1",
-      "line": "8",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:92322:1:2",
-      "toId": "ch:1:sloid:88782:1:4",
-      "from": "Basel, Bahnhof St. Johann",
-      "to": "Basel, Voltaplatz",
-      "occurrences": 3
-    },
-    {
-      "routeId": "91-8-A-j26-1",
-      "line": "8",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:88782:1:4",
-      "toId": "ch:1:sloid:89348:1:2",
-      "from": "Basel, Voltaplatz",
-      "to": "Basel, Novartis Campus",
-      "occurrences": 3
-    },
-    {
-      "routeId": "91-8-A-j26-1",
-      "line": "8",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:89348:1:2",
-      "toId": "ch:1:sloid:88768:1:4",
-      "from": "Basel, Novartis Campus",
-      "to": "Basel, Dreirosenbrücke",
-      "occurrences": 3
-    },
-    {
-      "routeId": "91-14-j26-1",
-      "line": "14",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:92442:1:3",
-      "toId": "ch:1:sloid:89293:1:1",
-      "from": "Basel, Morgartenring",
-      "to": "Basel, Allschwilerplatz",
-      "occurrences": 2
-    },
-    {
-      "routeId": "91-14-j26-1",
-      "line": "14",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:89293:1:1",
-      "toId": "ch:1:sloid:81062:1:1",
-      "from": "Basel, Allschwilerplatz",
-      "to": "Basel, Brausebad",
-      "occurrences": 2
-    },
-    {
-      "routeId": "91-14-j26-1",
-      "line": "14",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:81062:1:1",
-      "toId": "ch:1:sloid:89360:1:1",
-      "from": "Basel, Brausebad",
-      "to": "Basel, Schützenhaus",
-      "occurrences": 2
-    },
-    {
-      "routeId": "91-14-j26-1",
-      "line": "14",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:89360:1:1",
-      "toId": "ch:1:sloid:89381:1:1",
-      "from": "Basel, Schützenhaus",
-      "to": "Basel, Zoo Bachletten",
-      "occurrences": 2
-    },
-    {
-      "routeId": "91-14-j26-1",
-      "line": "14",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:89381:1:1",
-      "toId": "ch:1:sloid:193:1:1",
-      "from": "Basel, Zoo Bachletten",
-      "to": "Basel, Markthalle",
-      "occurrences": 2
-    },
-    {
-      "routeId": "91-14-j26-1",
-      "line": "14",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:193:1:1",
-      "toId": "ch:1:sloid:79:1:1",
-      "from": "Basel, Markthalle",
-      "to": "Basel, Heuwaage",
-      "occurrences": 2
-    },
-    {
-      "routeId": "91-14-j26-1",
-      "line": "14",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:79:1:1",
-      "toId": "ch:1:sloid:994:1:1",
-      "from": "Basel, Heuwaage",
-      "to": "Basel, Theater",
-      "occurrences": 2
-    },
-    {
-      "routeId": "91-15-j26-1",
-      "line": "15",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:254:1:2",
-      "toId": "ch:1:sloid:88767:1:2",
-      "from": "Basel, Wiesenplatz",
-      "to": "Basel, Ciba",
-      "occurrences": 2
-    },
-    {
-      "routeId": "91-15-j26-1",
-      "line": "15",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:88767:1:2",
-      "toId": "ch:1:sloid:88768:1:3",
-      "from": "Basel, Ciba",
-      "to": "Basel, Dreirosenbrücke",
-      "occurrences": 2
-    },
-    {
-      "routeId": "91-15-j26-1",
-      "line": "15",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:88768:1:3",
-      "toId": "ch:1:sloid:89348:1:1",
-      "from": "Basel, Dreirosenbrücke",
-      "to": "Basel, Novartis Campus",
-      "occurrences": 2
-    },
-    {
-      "routeId": "91-15-j26-1",
-      "line": "15",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:89348:1:1",
-      "toId": "ch:1:sloid:88782:1:2",
-      "from": "Basel, Novartis Campus",
-      "to": "Basel, Voltaplatz",
-      "occurrences": 2
-    },
-    {
-      "routeId": "91-15-j26-1",
-      "line": "15",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:88782:1:2",
-      "toId": "ch:1:sloid:88777:1:2",
-      "from": "Basel, Voltaplatz",
-      "to": "Basel, Mülhauserstrasse",
-      "occurrences": 2
-    },
-    {
-      "routeId": "91-15-j26-1",
-      "line": "15",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:88777:1:2",
-      "toId": "ch:1:sloid:88781:1:2",
-      "from": "Basel, Mülhauserstrasse",
-      "to": "Basel, St. Johanns-Tor",
-      "occurrences": 2
-    },
-    {
-      "routeId": "91-15-j26-1",
-      "line": "15",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:88781:1:2",
-      "toId": "ch:1:sloid:88772:1:2",
-      "from": "Basel, St. Johanns-Tor",
-      "to": "Basel, Johanniterbrücke",
-      "occurrences": 2
-    },
-    {
-      "routeId": "91-15-j26-1",
-      "line": "15",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:88772:1:2",
-      "toId": "ch:1:sloid:88773:1:2",
-      "from": "Basel, Johanniterbrücke",
-      "to": "Basel, Universitätsspital",
-      "occurrences": 2
-    },
-    {
-      "routeId": "91-15-j26-1",
-      "line": "15",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:88773:1:2",
-      "toId": "ch:1:sloid:88780:2:4",
-      "from": "Basel, Universitätsspital",
-      "to": "Basel, Schifflände",
-      "occurrences": 2
-    },
-    {
-      "routeId": "91-15-j26-1",
-      "line": "15",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:73:4:2",
-      "toId": "ch:1:sloid:78143:1:34",
-      "from": "Basel, Aeschenplatz",
-      "to": "Basel, Bahnhof SBB",
-      "occurrences": 2
-    },
-    {
-      "routeId": "91-15-j26-1",
-      "line": "15",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:78143:1:34",
-      "toId": "ch:1:sloid:88071:1:2",
-      "from": "Basel, Bahnhof SBB",
-      "to": "Basel, Peter-Merian",
-      "occurrences": 2
-    },
-    {
-      "routeId": "91-15-j26-1",
-      "line": "15",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:88071:1:2",
-      "toId": "ch:1:sloid:147:1:2",
-      "from": "Basel, Peter-Merian",
-      "to": "Basel, Heiliggeistkirche",
-      "occurrences": 2
-    },
-    {
-      "routeId": "91-1-j26-1",
-      "line": "1",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:92442:1:3",
-      "toId": "ch:1:sloid:89293:1:1",
-      "from": "Basel, Morgartenring",
-      "to": "Basel, Allschwilerplatz",
-      "occurrences": 2
-    },
-    {
-      "routeId": "91-1-j26-1",
-      "line": "1",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:81062:1:2",
-      "toId": "ch:1:sloid:89293:1:2",
-      "from": "Basel, Brausebad",
-      "to": "Basel, Allschwilerplatz",
-      "occurrences": 2
-    },
-    {
-      "routeId": "91-1-j26-1",
-      "line": "1",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:88768:1:4",
-      "toId": "ch:1:sloid:88767:1:1",
-      "from": "Basel, Dreirosenbrücke",
-      "to": "Basel, Ciba",
-      "occurrences": 2
-    },
-    {
-      "routeId": "91-2-j26-1",
-      "line": "2",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:89352:1:2",
-      "toId": "ch:1:sloid:899:1:5",
-      "from": "Basel, Riehenring",
-      "to": "Basel, Messeplatz",
-      "occurrences": 2
-    },
-    {
-      "routeId": "91-2-j26-1",
-      "line": "2",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:89451:1:1",
-      "toId": "ch:1:sloid:89485:1:1",
-      "from": "Riehen, Fondation Beyeler",
-      "to": "Riehen, Weilstrasse",
-      "occurrences": 2
-    },
-    {
-      "routeId": "91-2-j26-1",
-      "line": "2",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:89485:1:1",
-      "toId": "ch:1:sloid:89467:1:1",
-      "from": "Riehen, Weilstrasse",
-      "to": "Riehen, Lörracherstrasse",
-      "occurrences": 2
-    },
-    {
-      "routeId": "91-2-j26-1",
-      "line": "2",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:89467:1:1",
-      "toId": "ch:1:sloid:89455:1:4",
-      "from": "Riehen, Lörracherstrasse",
-      "to": "Riehen, Grenze",
-      "occurrences": 2
-    },
-    {
-      "routeId": "91-2-j26-1",
-      "line": "2",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:89455:1:4",
-      "toId": "ch:1:sloid:89467:1:2",
-      "from": "Riehen, Grenze",
-      "to": "Riehen, Lörracherstrasse",
-      "occurrences": 2
-    },
-    {
-      "routeId": "91-2-j26-1",
-      "line": "2",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:89467:1:2",
-      "toId": "ch:1:sloid:89485:1:2",
-      "from": "Riehen, Lörracherstrasse",
-      "to": "Riehen, Weilstrasse",
-      "occurrences": 2
-    },
-    {
-      "routeId": "91-2-j26-1",
-      "line": "2",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:89485:1:2",
-      "toId": "ch:1:sloid:89451:1:2",
-      "from": "Riehen, Weilstrasse",
-      "to": "Riehen, Fondation Beyeler",
-      "occurrences": 2
-    },
-    {
-      "routeId": "91-6-j26-1",
-      "line": "6",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:899:1:6",
-      "toId": "ch:1:sloid:89376:1:2",
-      "from": "Basel, Messeplatz",
-      "to": "Basel, Wettsteinplatz",
-      "occurrences": 2
-    },
-    {
-      "routeId": "91-6-j26-1",
-      "line": "6",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:89376:1:2",
-      "toId": "ch:1:sloid:89336:1:2",
-      "from": "Basel, Wettsteinplatz",
-      "to": "Basel, Kunstmuseum",
-      "occurrences": 2
-    },
-    {
-      "routeId": "91-6-j26-1",
-      "line": "6",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:89336:1:2",
-      "toId": "ch:1:sloid:237:1:2",
-      "from": "Basel, Kunstmuseum",
-      "to": "Basel, Bankverein",
-      "occurrences": 2
-    },
-    {
-      "routeId": "91-6-j26-1",
-      "line": "6",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:237:1:2",
-      "toId": "ch:1:sloid:89333:1:2",
-      "from": "Basel, Bankverein",
-      "to": "Basel, Kirschgarten",
-      "occurrences": 2
-    },
-    {
-      "routeId": "91-6-j26-1",
-      "line": "6",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:89333:1:2",
-      "toId": "ch:1:sloid:78143:1:32",
-      "from": "Basel, Kirschgarten",
-      "to": "Basel, Bahnhof SBB",
-      "occurrences": 2
-    },
-    {
-      "routeId": "91-6-j26-1",
-      "line": "6",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:78143:1:32",
-      "toId": "ch:1:sloid:193:1:2",
-      "from": "Basel, Bahnhof SBB",
-      "to": "Basel, Markthalle",
-      "occurrences": 2
-    },
-    {
-      "routeId": "91-6-j26-1",
-      "line": "6",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:193:1:2",
-      "toId": "ch:1:sloid:89381:1:2",
-      "from": "Basel, Markthalle",
-      "to": "Basel, Zoo Bachletten",
-      "occurrences": 2
-    },
-    {
-      "routeId": "91-8-A-j26-1",
-      "line": "8",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:81062:1:2",
-      "toId": "ch:1:sloid:89296:1:2",
-      "from": "Basel, Brausebad",
-      "to": "Basel, Birmannsgasse",
-      "occurrences": 2
-    },
-    {
-      "routeId": "91-14-j26-1",
-      "line": "14",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:88776:1:3",
-      "toId": "ch:1:sloid:88778:1:1",
-      "from": "Basel, MParc",
-      "to": "Basel, Münchensteinerstrasse",
-      "occurrences": 1
-    },
-    {
-      "routeId": "91-14-j26-1",
-      "line": "14",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:88778:1:1",
-      "toId": "ch:1:sloid:88770:1:1",
-      "from": "Basel, Münchensteinerstrasse",
-      "to": "Basel, Grosspeterstrasse",
-      "occurrences": 1
-    },
-    {
-      "routeId": "91-14-j26-1",
-      "line": "14",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:88770:1:1",
-      "toId": "ch:1:sloid:236:1:1",
-      "from": "Basel, Grosspeterstrasse",
-      "to": "Basel, Denkmal",
-      "occurrences": 1
-    },
-    {
-      "routeId": "91-14-j26-1",
-      "line": "14",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:236:1:1",
-      "toId": "ch:1:sloid:73:3:34",
-      "from": "Basel, Denkmal",
-      "to": "Basel, Aeschenplatz",
-      "occurrences": 1
-    },
-    {
-      "routeId": "91-14-j26-1",
-      "line": "14",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:899:1:4",
-      "toId": "ch:1:sloid:89376:1:2",
-      "from": "Basel, Messeplatz",
-      "to": "Basel, Wettsteinplatz",
-      "occurrences": 1
-    },
-    {
-      "routeId": "91-14-j26-1",
-      "line": "14",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:89376:1:2",
-      "toId": "ch:1:sloid:89336:1:2",
-      "from": "Basel, Wettsteinplatz",
-      "to": "Basel, Kunstmuseum",
-      "occurrences": 1
-    },
-    {
-      "routeId": "91-14-j26-1",
-      "line": "14",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:89336:1:2",
-      "toId": "ch:1:sloid:237:2:4",
-      "from": "Basel, Kunstmuseum",
-      "to": "Basel, Bankverein",
-      "occurrences": 1
-    },
-    {
-      "routeId": "91-15-j26-1",
-      "line": "15",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:88778:1:2",
-      "toId": "ch:1:sloid:88776:1:2",
-      "from": "Basel, Münchensteinerstrasse",
-      "to": "Basel, MParc",
-      "occurrences": 1
-    },
-    {
-      "routeId": "91-16-j26-1",
-      "line": "16",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:88780:1:1",
-      "toId": "ch:1:sloid:88773:1:1",
-      "from": "Basel, Schifflände",
-      "to": "Basel, Universitätsspital",
-      "occurrences": 1
-    },
-    {
-      "routeId": "91-16-j26-1",
-      "line": "16",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:88773:1:1",
-      "toId": "ch:1:sloid:88772:1:1",
-      "from": "Basel, Universitätsspital",
-      "to": "Basel, Johanniterbrücke",
-      "occurrences": 1
-    },
-    {
-      "routeId": "91-16-j26-1",
-      "line": "16",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:88772:1:1",
-      "toId": "ch:1:sloid:88781:1:1",
-      "from": "Basel, Johanniterbrücke",
-      "to": "Basel, St. Johanns-Tor",
-      "occurrences": 1
-    },
-    {
-      "routeId": "91-16-j26-1",
-      "line": "16",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:88781:1:1",
-      "toId": "ch:1:sloid:88777:1:1",
-      "from": "Basel, St. Johanns-Tor",
-      "to": "Basel, Mülhauserstrasse",
-      "occurrences": 1
-    },
-    {
-      "routeId": "91-16-j26-1",
-      "line": "16",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:88777:1:1",
-      "toId": "ch:1:sloid:88782:1:1",
-      "from": "Basel, Mülhauserstrasse",
-      "to": "Basel, Voltaplatz",
-      "occurrences": 1
-    },
-    {
-      "routeId": "91-16-j26-1",
-      "line": "16",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:88782:1:1",
-      "toId": "ch:1:sloid:89348:1:2",
-      "from": "Basel, Voltaplatz",
-      "to": "Basel, Novartis Campus",
-      "occurrences": 1
-    },
-    {
-      "routeId": "91-16-j26-1",
-      "line": "16",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:89348:1:2",
-      "toId": "ch:1:sloid:88768:1:4",
-      "from": "Basel, Novartis Campus",
-      "to": "Basel, Dreirosenbrücke",
-      "occurrences": 1
-    },
-    {
-      "routeId": "91-16-j26-1",
-      "line": "16",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:88768:1:4",
-      "toId": "ch:1:sloid:88767:1:1",
-      "from": "Basel, Dreirosenbrücke",
-      "to": "Basel, Ciba",
-      "occurrences": 1
-    },
-    {
-      "routeId": "91-16-j26-1",
-      "line": "16",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:88767:1:1",
-      "toId": "ch:1:sloid:254:1:1",
-      "from": "Basel, Ciba",
-      "to": "Basel, Wiesenplatz",
-      "occurrences": 1
-    },
-    {
-      "routeId": "91-1-j26-1",
-      "line": "1",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:89296:1:1",
-      "toId": "ch:1:sloid:89293:1:2",
-      "from": "Basel, Birmannsgasse",
-      "to": "Basel, Allschwilerplatz",
-      "occurrences": 1
-    },
-    {
-      "routeId": "91-1-j26-1",
-      "line": "1",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:78143:2:36",
-      "toId": "ch:1:sloid:73:4:4",
-      "from": "Basel, Bahnhof SBB",
-      "to": "Basel, Aeschenplatz",
-      "occurrences": 1
-    },
-    {
-      "routeId": "91-1-j26-1",
-      "line": "1",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:73:4:4",
-      "toId": "ch:1:sloid:236:1:2",
-      "from": "Basel, Aeschenplatz",
-      "to": "Basel, Denkmal",
-      "occurrences": 1
-    },
-    {
-      "routeId": "91-1-j26-1",
-      "line": "1",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:236:1:2",
-      "toId": "ch:1:sloid:88770:1:2",
-      "from": "Basel, Denkmal",
-      "to": "Basel, Grosspeterstrasse",
-      "occurrences": 1
-    },
-    {
-      "routeId": "91-1-j26-1",
-      "line": "1",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:88770:1:2",
-      "toId": "ch:1:sloid:88778:1:2",
-      "from": "Basel, Grosspeterstrasse",
-      "to": "Basel, Münchensteinerstrasse",
-      "occurrences": 1
-    },
-    {
-      "routeId": "91-1-j26-1",
-      "line": "1",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:88778:1:2",
-      "toId": "ch:1:sloid:88776:1:2",
-      "from": "Basel, Münchensteinerstrasse",
-      "to": "Basel, MParc",
-      "occurrences": 1
-    },
-    {
-      "routeId": "91-1-j26-1",
-      "line": "1",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:89293:1:1",
-      "toId": "ch:1:sloid:81062:1:1",
-      "from": "Basel, Allschwilerplatz",
-      "to": "Basel, Brausebad",
-      "occurrences": 1
-    },
-    {
-      "routeId": "91-1-j26-1",
-      "line": "1",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:899:1:1",
-      "toId": "ch:1:sloid:89352:1:1",
-      "from": "Basel, Messeplatz",
-      "to": "Basel, Riehenring",
-      "occurrences": 1
-    },
-    {
-      "routeId": "91-1-j26-1",
-      "line": "1",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:89352:1:1",
-      "toId": "ch:1:sloid:89344:1:1",
-      "from": "Basel, Riehenring",
-      "to": "Basel, Musical Theater",
-      "occurrences": 1
-    },
-    {
-      "routeId": "91-1-j26-1",
-      "line": "1",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:89344:1:1",
-      "toId": "ch:1:sloid:89298:1:1",
-      "from": "Basel, Musical Theater",
-      "to": "Basel, Brombacherstrasse",
-      "occurrences": 1
-    },
-    {
-      "routeId": "91-1-j26-1",
-      "line": "1",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:89298:1:1",
-      "toId": "ch:1:sloid:88768:1:83",
-      "from": "Basel, Brombacherstrasse",
-      "to": "Basel, Dreirosenbrücke",
-      "occurrences": 1
-    },
-    {
-      "routeId": "91-1-j26-1",
-      "line": "1",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:88768:1:83",
-      "toId": "ch:1:sloid:88767:1:1",
-      "from": "Basel, Dreirosenbrücke",
-      "to": "Basel, Ciba",
-      "occurrences": 1
-    },
-    {
-      "routeId": "91-1-j26-1",
-      "line": "1",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:89293:1:1",
-      "toId": "ch:1:sloid:89296:1:2",
-      "from": "Basel, Allschwilerplatz",
-      "to": "Basel, Birmannsgasse",
-      "occurrences": 1
-    },
-    {
-      "routeId": "91-1-j26-1",
-      "line": "1",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:88776:1:3",
-      "toId": "ch:1:sloid:88778:1:1",
-      "from": "Basel, MParc",
-      "to": "Basel, Münchensteinerstrasse",
-      "occurrences": 1
-    },
-    {
-      "routeId": "91-1-j26-1",
-      "line": "1",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:88778:1:1",
-      "toId": "ch:1:sloid:88071:1:1",
-      "from": "Basel, Münchensteinerstrasse",
-      "to": "Basel, Peter-Merian",
-      "occurrences": 1
-    },
-    {
-      "routeId": "91-1-j26-1",
-      "line": "1",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:88071:1:1",
-      "toId": "ch:1:sloid:78143:2:36",
-      "from": "Basel, Peter-Merian",
-      "to": "Basel, Bahnhof SBB",
-      "occurrences": 1
-    },
-    {
-      "routeId": "91-6-j26-1",
-      "line": "6",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:254:1:2",
-      "toId": "ch:1:sloid:88767:1:2",
-      "from": "Basel, Wiesenplatz",
-      "to": "Basel, Ciba",
-      "occurrences": 1
-    },
-    {
-      "routeId": "91-6-j26-1",
-      "line": "6",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:88767:1:2",
-      "toId": "ch:1:sloid:88768:1:2",
-      "from": "Basel, Ciba",
-      "to": "Basel, Dreirosenbrücke",
-      "occurrences": 1
-    },
-    {
-      "routeId": "91-6-j26-1",
-      "line": "6",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:88768:1:2",
-      "toId": "ch:1:sloid:89298:1:2",
-      "from": "Basel, Dreirosenbrücke",
-      "to": "Basel, Brombacherstrasse",
-      "occurrences": 1
-    },
-    {
-      "routeId": "91-6-j26-1",
-      "line": "6",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:89298:1:2",
-      "toId": "ch:1:sloid:89344:1:2",
-      "from": "Basel, Brombacherstrasse",
-      "to": "Basel, Musical Theater",
-      "occurrences": 1
-    },
-    {
-      "routeId": "91-6-j26-1",
-      "line": "6",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:89344:1:2",
-      "toId": "ch:1:sloid:89352:1:2",
-      "from": "Basel, Musical Theater",
-      "to": "Basel, Riehenring",
-      "occurrences": 1
-    },
-    {
-      "routeId": "91-6-j26-1",
-      "line": "6",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:89352:1:2",
-      "toId": "ch:1:sloid:899:1:2",
-      "from": "Basel, Riehenring",
-      "to": "Basel, Messeplatz",
-      "occurrences": 1
-    },
-    {
-      "routeId": "91-8-A-j26-1",
-      "line": "8",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:92442:1:3",
-      "toId": "ch:1:sloid:89293:1:1",
-      "from": "Basel, Morgartenring",
-      "to": "Basel, Allschwilerplatz",
-      "occurrences": 1
-    },
-    {
-      "routeId": "91-8-A-j26-1",
-      "line": "8",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:89293:1:1",
-      "toId": "ch:1:sloid:89296:1:2",
-      "from": "Basel, Allschwilerplatz",
-      "to": "Basel, Birmannsgasse",
-      "occurrences": 1
-    },
-    {
-      "routeId": "91-8-A-j26-1",
-      "line": "8",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:81062:1:2",
-      "toId": "ch:1:sloid:89293:1:2",
-      "from": "Basel, Brausebad",
-      "to": "Basel, Allschwilerplatz",
-      "occurrences": 1
-    },
-    {
-      "routeId": "91-8-A-j26-1",
-      "line": "8",
-      "mode": "tram",
-      "fromId": "ch:1:sloid:89293:1:2",
-      "toId": "ch:1:sloid:92442:1:4",
-      "from": "Basel, Allschwilerplatz",
-      "to": "Basel, Morgartenring",
-      "occurrences": 1
     }
   ],
   "roadFallback": {
@@ -7390,38 +8197,38 @@
     }
   },
   "payload": {
-    "manifestGzipBytes": 259837,
-    "morningGzipBytes": 319645,
+    "manifestGzipBytes": 273262,
+    "morningGzipBytes": 333113,
     "chunks": [
       {
         "id": "00-02",
         "trips": 376,
-        "gzipBytes": 41369
+        "gzipBytes": 41428
       },
       {
         "id": "02-04",
         "trips": 135,
-        "gzipBytes": 17942
+        "gzipBytes": 17937
       },
       {
         "id": "04-06",
         "trips": 256,
-        "gzipBytes": 30749
+        "gzipBytes": 30849
       },
       {
         "id": "06-08",
         "trips": 520,
-        "gzipBytes": 56170
+        "gzipBytes": 56193
       },
       {
         "id": "08-10",
         "trips": 624,
-        "gzipBytes": 65503
+        "gzipBytes": 65506
       },
       {
         "id": "10-12",
         "trips": 778,
-        "gzipBytes": 80572
+        "gzipBytes": 80607
       },
       {
         "id": "12-14",
@@ -7431,7 +8238,7 @@
       {
         "id": "14-16",
         "trips": 875,
-        "gzipBytes": 90375
+        "gzipBytes": 90374
       },
       {
         "id": "16-18",
@@ -7441,17 +8248,17 @@
       {
         "id": "18-20",
         "trips": 816,
-        "gzipBytes": 84315
+        "gzipBytes": 84358
       },
       {
         "id": "20-22",
         "trips": 669,
-        "gzipBytes": 68277
+        "gzipBytes": 68305
       },
       {
         "id": "22-24",
         "trips": 571,
-        "gzipBytes": 60159
+        "gzipBytes": 60192
       }
     ]
   },
