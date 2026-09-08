@@ -2533,6 +2533,10 @@
     "path": "data/st-gallen-endpoint-review.json",
     "sha256": "68e40d63f9ea3aa87a44bb16421046df34f24d72c4b599ce428c1c7815c13d90"
   },
+  "endpointFollowupReview": {
+    "path": "data/st-gallen-endpoint-followup.json",
+    "sha256": "9812200d25111a256bfd4c67d98ea66f02f10a2453b69d07f03e5bdf1eb6c6f7"
+  },
   "vmobilReview": {
     "path": "data/st-gallen-vmobil-review.json",
     "sha256": "585a6220fbe6d20bb814409191ad2d3a723f131c320aa38ef28c8783b28dbe37"

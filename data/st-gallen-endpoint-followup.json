@@ -1,0 +1,487 @@
+{
+  "schemaVersion": 1,
+  "reviewedOn": "2026-09-09",
+  "sourceHashes": {
+    "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+    "boundary": "9fcbdc0a501919e7d8722827e0868784010be046dccffc02df0833f9de21f86a",
+    "timetable": "fdbe77f9d44d9f7cf59a1da8cf09b87970a6afc0a78355421265b73f9981d49c",
+    "policy": "1c8edc606dda82f2dd4e7507511ba73805b850839141edb2a9dd6f81ff728565",
+    "catalogue": "a3ca9355f89503c16380dec23a518a1c3ad2b91308428da0d8ade6a3da782c8f"
+  },
+  "policySha256": "a3c7de5b19a0b132a181d975b101d4ed893067a0a926da31bdba2a6b8cc9959c",
+  "endpointReviewSha256": "68e40d63f9ea3aa87a44bb16421046df34f24d72c4b599ce428c1c7815c13d90",
+  "evidence": [
+    {
+      "id": "bad-ragaz",
+      "file": "postauto-bad-ragaz-taminatal.pdf",
+      "url": "https://www1.postauto.ch/-/media/postauto/fahrplan-und-netz/liniennetz/dokumente/ostschweiz/liniennetzplan-bad-ragaz-taminatal.pdf?vs=10",
+      "title": "Bad Ragaz/Taminatal",
+      "publisher": "PostAuto AG / OSTWIND",
+      "sha256": "60f55cf3689d2fccea7094103c7f407f9743c3848550daaa103bdc8d4ea11e66",
+      "bytes": 3152990,
+      "retrievedAt": "2026-09-08T22:04:06.754018+00:00",
+      "validFrom": "2025-12-14",
+      "pdfModifiedDate": "2026-01-20",
+      "reviewedPage": 1
+    },
+    {
+      "id": "buchs-sargans",
+      "file": "bsw-buchs-sargans.pdf",
+      "url": "https://www.bsw-bus.ch/fileadmin/bsw/reisen/liniennetzplaene/Liniennetzplan_Buchs_Sargans.pdf",
+      "title": "Buchs/Sargans",
+      "publisher": "BUS Sarganserland Werdenberg / BOS Gruppe / OSTWIND",
+      "sha256": "40cd88047ca0186cd35c6daa72579a510b2a885a662d5d32f58c6ec3466a02a6",
+      "bytes": 2033207,
+      "retrievedAt": "2026-09-08T22:05:10.383561+00:00",
+      "validFrom": "2025-12-14",
+      "pdfModifiedDate": "2025-11-14",
+      "reviewedPage": 1
+    },
+    {
+      "id": "uzwil",
+      "file": "postauto-ortsbus-uzwil.pdf",
+      "url": "https://www.postauto.ch/-/media/postauto/fahrplan-und-netz/liniennetz/dokumente/ostschweiz/liniennetz-ortsbus-uzwil.pdf",
+      "title": "Ortsbus Uzwil",
+      "publisher": "PostAuto AG / OSTWIND",
+      "sha256": "43cd8aca304f4c903bb696b8a3de3d4a7c032b167a8195290439f3f1677705c0",
+      "bytes": 1604716,
+      "retrievedAt": "2026-09-08T22:05:42.737736+00:00",
+      "validFrom": "2025-12-14",
+      "pdfModifiedDate": "2026-01-12",
+      "reviewedPage": 1
+    }
+  ],
+  "cases": [
+    {
+      "routeId": "96-249-1-j26-1",
+      "route": {
+        "routeId": "96-249-1-j26-1",
+        "agencyId": "801",
+        "line": "451",
+        "reviewedPairs": 4,
+        "pairsWithCandidate": 4,
+        "maximumSnapMetres": 285.0969347377125,
+        "days": [
+          {
+            "date": "2026-09-04",
+            "affectedPatterns": 4,
+            "affectedTrips": 7
+          },
+          {
+            "date": "2026-09-06",
+            "affectedPatterns": 4,
+            "affectedTrips": 7
+          }
+        ]
+      },
+      "evidenceId": "bad-ragaz",
+      "pairs": [
+        {
+          "key": "[\"96-249-1-j26-1\",\"ch:1:sloid:74557:0:824135\",\"ch:1:sloid:82595:0:659989\"]",
+          "from": "Bad Ragaz, Dorfbad",
+          "to": "Bad Ragaz, Tamina Therme",
+          "candidate": {
+            "feature": "bus:89",
+            "name": "456 Bidems - Bad Ragaz Bahnhof - Pizolbahn",
+            "reason": "candidate-path",
+            "maximumSnapMetres": 71.94829124923848,
+            "pathMetres": 589.107499242285,
+            "geometrySha256": "12ee1e130e58f5137f4ba647b63b2f2c966307a9f04693a7adb4ed6de68c3e14"
+          },
+          "days": [
+            {
+              "date": "2026-09-04",
+              "occurrences": 4,
+              "affectedPatterns": 2,
+              "affectedTrips": 4,
+              "patternIdsSha256": "362d85b08a3e2ab55333fb96da1a56ea0b8910c7ec16a3fad7fce7bb2ddf0be9"
+            },
+            {
+              "date": "2026-09-06",
+              "occurrences": 4,
+              "affectedPatterns": 2,
+              "affectedTrips": 4,
+              "patternIdsSha256": "362d85b08a3e2ab55333fb96da1a56ea0b8910c7ec16a3fad7fce7bb2ddf0be9"
+            }
+          ]
+        },
+        {
+          "key": "[\"96-249-1-j26-1\",\"ch:1:sloid:82595:0:659989\",\"ch:1:sloid:82467:0:759876\"]",
+          "from": "Bad Ragaz, Tamina Therme",
+          "to": "Bad Ragaz, Bahnhofstrasse",
+          "candidate": {
+            "feature": "bus:89",
+            "name": "456 Bidems - Bad Ragaz Bahnhof - Pizolbahn",
+            "reason": "candidate-path",
+            "maximumSnapMetres": 2.4014370763004065,
+            "pathMetres": 1009.957870151935,
+            "geometrySha256": "14ecc8fa3df44bc7f32dfc4448390ed57556a5f8c20d55c2205b1334422850cf"
+          },
+          "days": [
+            {
+              "date": "2026-09-04",
+              "occurrences": 4,
+              "affectedPatterns": 2,
+              "affectedTrips": 4,
+              "patternIdsSha256": "362d85b08a3e2ab55333fb96da1a56ea0b8910c7ec16a3fad7fce7bb2ddf0be9"
+            },
+            {
+              "date": "2026-09-06",
+              "occurrences": 4,
+              "affectedPatterns": 2,
+              "affectedTrips": 4,
+              "patternIdsSha256": "362d85b08a3e2ab55333fb96da1a56ea0b8910c7ec16a3fad7fce7bb2ddf0be9"
+            }
+          ]
+        },
+        {
+          "key": "[\"96-249-1-j26-1\",\"ch:1:sloid:82467:0:870341\",\"ch:1:sloid:82595:0:659989\"]",
+          "from": "Bad Ragaz, Bahnhofstrasse",
+          "to": "Bad Ragaz, Tamina Therme",
+          "candidate": {
+            "feature": "bus:89",
+            "name": "456 Bidems - Bad Ragaz Bahnhof - Pizolbahn",
+            "reason": "candidate-path",
+            "maximumSnapMetres": 3.6276916185286368,
+            "pathMetres": 996.025076125774,
+            "geometrySha256": "947a89e3bf275ca57e5065ca8f68df6cd0c121b90c2b6c235024863eb1c166a1"
+          },
+          "days": [
+            {
+              "date": "2026-09-04",
+              "occurrences": 3,
+              "affectedPatterns": 2,
+              "affectedTrips": 3,
+              "patternIdsSha256": "57b07e6e89b23c1d150e395a62fcdca608bddc7c045a146b502d078cf84d6577"
+            },
+            {
+              "date": "2026-09-06",
+              "occurrences": 3,
+              "affectedPatterns": 2,
+              "affectedTrips": 3,
+              "patternIdsSha256": "57b07e6e89b23c1d150e395a62fcdca608bddc7c045a146b502d078cf84d6577"
+            }
+          ]
+        },
+        {
+          "key": "[\"96-249-1-j26-1\",\"ch:1:sloid:82595:0:659989\",\"ch:1:sloid:9697:0:111131\"]",
+          "from": "Bad Ragaz, Tamina Therme",
+          "to": "Bad Ragaz, Post",
+          "candidate": {
+            "feature": "bus:89",
+            "name": "456 Bidems - Bad Ragaz Bahnhof - Pizolbahn",
+            "reason": "candidate-path",
+            "maximumSnapMetres": 81.71950110103148,
+            "pathMetres": 609.2198052045907,
+            "geometrySha256": "d28d99e137689522ead5438a313cb8ff4f12f0a0a594ad2adce22b17b1630fb6"
+          },
+          "days": [
+            {
+              "date": "2026-09-04",
+              "occurrences": 3,
+              "affectedPatterns": 2,
+              "affectedTrips": 3,
+              "patternIdsSha256": "57b07e6e89b23c1d150e395a62fcdca608bddc7c045a146b502d078cf84d6577"
+            },
+            {
+              "date": "2026-09-06",
+              "occurrences": 3,
+              "affectedPatterns": 2,
+              "affectedTrips": 3,
+              "patternIdsSha256": "57b07e6e89b23c1d150e395a62fcdca608bddc7c045a146b502d078cf84d6577"
+            }
+          ]
+        }
+      ],
+      "checkpoints": [],
+      "decision": "Retain exclusion. The map assigns the Tamina Therme spur to line 456 and does not depict the line-451 branch present in the pinned timetable. It cannot corroborate use of the donor alignment by those trips."
+    },
+    {
+      "routeId": "92-420-j26-1",
+      "route": {
+        "routeId": "92-420-j26-1",
+        "agencyId": "138",
+        "line": "420",
+        "reviewedPairs": 2,
+        "pairsWithCandidate": 2,
+        "maximumSnapMetres": 820.6709445571144,
+        "days": [
+          {
+            "date": "2026-09-04",
+            "affectedPatterns": 2,
+            "affectedTrips": 7
+          },
+          {
+            "date": "2026-09-06",
+            "affectedPatterns": 0,
+            "affectedTrips": 0
+          }
+        ]
+      },
+      "evidenceId": "buchs-sargans",
+      "pairs": [
+        {
+          "key": "[\"92-420-j26-1\",\"ch:1:sloid:82096\",\"ch:1:sloid:74410\"]",
+          "from": "Trübbach, Seidenbaum",
+          "to": "Trübbach, Dorf",
+          "candidate": {
+            "feature": "bus:18",
+            "name": "400 Buchs SG - Sargans - Mels",
+            "reason": "candidate-path",
+            "maximumSnapMetres": 36.81946557566509,
+            "pathMetres": 1091.0825220533366,
+            "geometrySha256": "de64c58ce88572e4915686a4bb86360e5fec961b516121020ca514a43a1e938c"
+          },
+          "days": [
+            {
+              "date": "2026-09-04",
+              "occurrences": 4,
+              "affectedPatterns": 1,
+              "affectedTrips": 4,
+              "patternIdsSha256": "819861c6cd35c977855478e1aa05d56d0d4b7ed85c84522fe72553f4501bbb22"
+            },
+            {
+              "date": "2026-09-06",
+              "occurrences": 0,
+              "affectedPatterns": 0,
+              "affectedTrips": 0,
+              "patternIdsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+            }
+          ]
+        },
+        {
+          "key": "[\"92-420-j26-1\",\"ch:1:sloid:74410\",\"ch:1:sloid:82096\"]",
+          "from": "Trübbach, Dorf",
+          "to": "Trübbach, Seidenbaum",
+          "candidate": {
+            "feature": "bus:18",
+            "name": "400 Buchs SG - Sargans - Mels",
+            "reason": "candidate-path",
+            "maximumSnapMetres": 36.81946557566509,
+            "pathMetres": 1091.0825220533372,
+            "geometrySha256": "3ce98343ec90f7c7317842854300befa90f00ebc7014989eb6b6d2b041141f0d"
+          },
+          "days": [
+            {
+              "date": "2026-09-04",
+              "occurrences": 3,
+              "affectedPatterns": 1,
+              "affectedTrips": 3,
+              "patternIdsSha256": "dec548f97386c3d72390ab683acd46c81ae5bd8a2770eb8292d91e7b300f7918"
+            },
+            {
+              "date": "2026-09-06",
+              "occurrences": 0,
+              "affectedPatterns": 0,
+              "affectedTrips": 0,
+              "patternIdsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+            }
+          ]
+        }
+      ],
+      "checkpoints": [],
+      "decision": "Retain exclusion. The operator map depicts line 420 at Trübbach Dorf but omits Seidenbaum. It does not establish the missing Seidenbaum extension or its street alignment."
+    },
+    {
+      "routeId": "92-729-j26-1",
+      "route": {
+        "routeId": "92-729-j26-1",
+        "agencyId": "896",
+        "line": "729",
+        "reviewedPairs": 4,
+        "pairsWithCandidate": 4,
+        "maximumSnapMetres": 878.2127918877339,
+        "days": [
+          {
+            "date": "2026-09-04",
+            "affectedPatterns": 1,
+            "affectedTrips": 4
+          },
+          {
+            "date": "2026-09-06",
+            "affectedPatterns": 1,
+            "affectedTrips": 5
+          }
+        ]
+      },
+      "evidenceId": "uzwil",
+      "pairs": [
+        {
+          "key": "[\"92-729-j26-1\",\"ch:1:sloid:73929:0:720273\",\"ch:1:sloid:73931\"]",
+          "from": "Uzwil, Bahnhof",
+          "to": "Niederuzwil, Marienfried",
+          "candidate": {
+            "feature": "bus:7",
+            "name": "N72 Wil - Jonschwil - Uzwil - Henau - Wil (Nachtangebot)",
+            "reason": "candidate-path",
+            "maximumSnapMetres": 53.67430631918888,
+            "pathMetres": 2218.6599576165813,
+            "geometrySha256": "e9c336bd990edb823c72eb2dff55153db557ac4ae9de5c6c0ddb209d6fdc2218"
+          },
+          "days": [
+            {
+              "date": "2026-09-04",
+              "occurrences": 4,
+              "affectedPatterns": 1,
+              "affectedTrips": 4,
+              "patternIdsSha256": "b6c9b2de5172fc5b51e811f679c713f8a556edd59752bd6fd0a2b720e03ce3a8"
+            },
+            {
+              "date": "2026-09-06",
+              "occurrences": 5,
+              "affectedPatterns": 1,
+              "affectedTrips": 5,
+              "patternIdsSha256": "b6c9b2de5172fc5b51e811f679c713f8a556edd59752bd6fd0a2b720e03ce3a8"
+            }
+          ]
+        },
+        {
+          "key": "[\"92-729-j26-1\",\"ch:1:sloid:73931\",\"ch:1:sloid:6728\"]",
+          "from": "Niederuzwil, Marienfried",
+          "to": "Niederuzwil, Wespiwiese",
+          "candidate": {
+            "feature": "bus:7",
+            "name": "N72 Wil - Jonschwil - Uzwil - Henau - Wil (Nachtangebot)",
+            "reason": "candidate-path",
+            "maximumSnapMetres": 53.67430631918888,
+            "pathMetres": 411.30369998116,
+            "geometrySha256": "cf87fc37d74d2c0ae27b611285001051bc15a63df46d6b4bc476d6474ba3afd5"
+          },
+          "days": [
+            {
+              "date": "2026-09-04",
+              "occurrences": 4,
+              "affectedPatterns": 1,
+              "affectedTrips": 4,
+              "patternIdsSha256": "b6c9b2de5172fc5b51e811f679c713f8a556edd59752bd6fd0a2b720e03ce3a8"
+            },
+            {
+              "date": "2026-09-06",
+              "occurrences": 5,
+              "affectedPatterns": 1,
+              "affectedTrips": 5,
+              "patternIdsSha256": "b6c9b2de5172fc5b51e811f679c713f8a556edd59752bd6fd0a2b720e03ce3a8"
+            }
+          ]
+        },
+        {
+          "key": "[\"92-729-j26-1\",\"ch:1:sloid:6728\",\"ch:1:sloid:6578\"]",
+          "from": "Niederuzwil, Wespiwiese",
+          "to": "Niederuzwil, Luxenburg",
+          "candidate": {
+            "feature": "bus:7",
+            "name": "N72 Wil - Jonschwil - Uzwil - Henau - Wil (Nachtangebot)",
+            "reason": "candidate-path",
+            "maximumSnapMetres": 1.8341557691283683,
+            "pathMetres": 528.6950902741672,
+            "geometrySha256": "13dba9142790c047453be44e3908c501c9d4728b0247c891b91e86861dffa510"
+          },
+          "days": [
+            {
+              "date": "2026-09-04",
+              "occurrences": 4,
+              "affectedPatterns": 1,
+              "affectedTrips": 4,
+              "patternIdsSha256": "b6c9b2de5172fc5b51e811f679c713f8a556edd59752bd6fd0a2b720e03ce3a8"
+            },
+            {
+              "date": "2026-09-06",
+              "occurrences": 5,
+              "affectedPatterns": 1,
+              "affectedTrips": 5,
+              "patternIdsSha256": "b6c9b2de5172fc5b51e811f679c713f8a556edd59752bd6fd0a2b720e03ce3a8"
+            }
+          ]
+        },
+        {
+          "key": "[\"92-729-j26-1\",\"ch:1:sloid:6578\",\"ch:1:sloid:73944\"]",
+          "from": "Niederuzwil, Luxenburg",
+          "to": "Henau, Kirchplatz",
+          "candidate": {
+            "feature": "bus:7",
+            "name": "N72 Wil - Jonschwil - Uzwil - Henau - Wil (Nachtangebot)",
+            "reason": "candidate-path",
+            "maximumSnapMetres": 1.8341557691283683,
+            "pathMetres": 1012.5842621875416,
+            "geometrySha256": "35ab5dc2d1403e33a40c3cdc3b08c260fda5a3f30f30d5623d35ba8ae3e9a2b0"
+          },
+          "days": [
+            {
+              "date": "2026-09-04",
+              "occurrences": 4,
+              "affectedPatterns": 1,
+              "affectedTrips": 4,
+              "patternIdsSha256": "b6c9b2de5172fc5b51e811f679c713f8a556edd59752bd6fd0a2b720e03ce3a8"
+            },
+            {
+              "date": "2026-09-06",
+              "occurrences": 5,
+              "affectedPatterns": 1,
+              "affectedTrips": 5,
+              "patternIdsSha256": "b6c9b2de5172fc5b51e811f679c713f8a556edd59752bd6fd0a2b720e03ce3a8"
+            }
+          ]
+        }
+      ],
+      "checkpoints": [
+        {
+          "id": "ch:1:sloid:57093",
+          "name": "Uzwil, Gemeindehaus",
+          "coordinate": [
+            9.1351927,
+            47.43608493
+          ],
+          "pairKey": "[\"92-729-j26-1\",\"ch:1:sloid:73929:0:720273\",\"ch:1:sloid:73931\"]",
+          "distanceMetres": 8.922198190660103,
+          "pathVertex": 46
+        },
+        {
+          "id": "ch:1:sloid:81593",
+          "name": "Uzwil, Coop",
+          "coordinate": [
+            9.13845359,
+            47.43615177
+          ],
+          "pairKey": "[\"92-729-j26-1\",\"ch:1:sloid:73929:0:720273\",\"ch:1:sloid:73931\"]",
+          "distanceMetres": 1.9313879769525755,
+          "pathVertex": 150
+        },
+        {
+          "id": "ch:1:sloid:83058",
+          "name": "Niederuzwil, Sonnmatt",
+          "coordinate": [
+            9.14389738,
+            47.44061766
+          ],
+          "pairKey": "[\"92-729-j26-1\",\"ch:1:sloid:73929:0:720273\",\"ch:1:sloid:73931\"]",
+          "distanceMetres": 2.005660606213105,
+          "pathVertex": 317
+        }
+      ],
+      "decision": "Retain exclusion. The map depicts the non-daily line-729 branch from Uzwil Bahnhof toward Marienfried, Wespiwiese, Luxenburg and Henau. The N72 candidate for Bahnhof to Marienfried instead loops via Gemeindehaus, Coop and Sonnmatt; passing numerical limits does not establish the mapped route."
+    }
+  ],
+  "feedDays": [
+    {
+      "date": "2026-09-04",
+      "trips": 10652,
+      "patterns": 1004,
+      "manifestSha256": "739a50667a93e7a46e944b50293e06f7a57f22fd50f22f540bb50a6897cff515",
+      "morningSha256": "2afb094b8de55e75198bbe7d4651e4c3e12f9e25099f97c2d3d805fcfe63e6b6"
+    },
+    {
+      "date": "2026-09-06",
+      "trips": 7325,
+      "patterns": 773,
+      "manifestSha256": "be19a05d5f703bc1601afd5661e169010eb07307e9a2a4c719035f35d63afd61",
+      "morningSha256": "03c5a9bdd3735bceb117509da3af6f86f9dca0aaae6a7c1605e21ac3e4455fac"
+    }
+  ],
+  "validation": {
+    "passed": true,
+    "feedChanged": false,
+    "admissionPolicyChanged": false,
+    "candidateGeometryAdmitted": false,
+    "directionCertified": false
+  }
+}

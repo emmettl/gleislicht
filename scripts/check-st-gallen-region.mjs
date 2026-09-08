@@ -8,6 +8,7 @@ import { sha256 } from './download-luzern-sources.mjs'
 import { validateStGallenSnapshot } from './build-st-gallen-region.mjs'
 import { validateVmobilDay } from './review-st-gallen-vmobil.mjs'
 import { applyStGallenStopAnchors, loadStGallenStopAnchors } from './st-gallen-stop-anchors.mjs'
+import { validateStGallenEndpointFollowup } from './review-st-gallen-endpoint-followup.mjs'
 
 const json = async path => JSON.parse(await readFile(path, 'utf8'))
 const sum = (items, key) => items.reduce((n, item) => n + item[key], 0)
@@ -230,6 +231,12 @@ export async function checkStGallenAudit(directory = 'data/st-gallen-audit') {
   assert.deepEqual(endpoints.sourceHashes, summary.sourceHashes)
   assert.equal(new Set(endpoints.pairs.map(p => p.key)).size, endpoints.pairs.length)
   assert.deepEqual(endpoints.validation, { passed: true, feedChanged: false, admissionLimitsChanged: false, directionCertified: false })
+  assert(summary.endpointFollowupReview, 'Missing operator-map endpoint follow-up')
+  assert.equal(sha256(await readFile(summary.endpointFollowupReview.path)),summary.endpointFollowupReview.sha256)
+  const followup=await json(summary.endpointFollowupReview.path),followupPolicyPath='data/st-gallen-endpoint-followup-policy.json'
+  assert.equal(followup.policySha256,sha256(await readFile(followupPolicyPath)))
+  assert.equal(followup.endpointReviewSha256,summary.endpointReview.sha256)
+  validateStGallenEndpointFollowup(followup,endpoints,await json('data/st-gallen-region/index.json'),await json(followupPolicyPath))
   assert(summary.vmobilReview, 'Missing Vorarlberg shape review')
   assert.equal(sha256(await readFile(summary.vmobilReview.path)), summary.vmobilReview.sha256)
   const vmobil = await json(summary.vmobilReview.path)

@@ -32,6 +32,10 @@ const endpointPath='data/st-gallen-endpoint-review.json', endpoints=await read(e
 assert.deepEqual(endpoints.sourceHashes,audit.sourceHashes,'Stale endpoint review sources')
 for (const day of days) assert.equal(endpoints.days.find(d=>d.date===day.date)?.dayAuditSha256,sha256(JSON.stringify(day)),'Stale endpoint review day')
 summary.endpointReview={path:endpointPath,sha256:sha256(await readFile(endpointPath))}
+const followupPath='data/st-gallen-endpoint-followup.json', followup=await read(followupPath)
+assert.deepEqual(followup.sourceHashes,audit.sourceHashes,'Stale endpoint follow-up sources')
+assert.equal(followup.endpointReviewSha256,sha256(await readFile(endpointPath)),'Stale endpoint follow-up inventory')
+summary.endpointFollowupReview={path:followupPath,sha256:sha256(await readFile(followupPath))}
 const vmobilPath='data/st-gallen-vmobil-review.json', vmobil=await read(vmobilPath)
 assert.deepEqual(vmobil.sourceHashes,audit.sourceHashes,'Stale Vorarlberg review sources')
 for (const day of days) assert.equal(vmobil.days.find(d=>d.date===day.date)?.dayAuditSha256,sha256(JSON.stringify(day)),'Stale Vorarlberg review day')
@@ -174,6 +178,8 @@ Reasons overlap when a pattern has multiple failures. Missing-line includes outs
 The [bus detour review](ST-GALLEN-DETOUR-REVIEW.md) replays all seven remaining bus pairs rejected for implausible detours, affecting 128 Friday and 59 Sunday trips. It compares every nearby edge projection and the operator's combined regional bus linework. The 352/353 and 432 failures persist. Line 400 has a shorter candidate using a 33.30 m edge from line 429/430, but it lacks the evidence required for admission. Operator notices retrieved on 8 September document construction overlapping both fixture dates. All these patterns remain excluded; the [machine-readable review](../data/st-gallen-detour-review.json) pins the evidence snapshots, diagnostic results and affected patterns without redistributing geometry.
 
 The [bus endpoint review](ST-GALLEN-ENDPOINT-REVIEW.md) replays every remaining bus endpoint-gap pair and checks other individual regional/city records mapped to the same agency. It covers ${endpoints.pairs.length} distinct directed pairs, affecting ${endpoints.days.map(d=>d.affectedTrips).join(' Friday / ')} Sunday complete trips. Operator evidence for lines 323 and 705 does not establish an admissible replacement alignment. The official Vorarlberg July sample contains line-164 shapes but no line 323; those external shapes are inventoried only. Candidate paths do not authorize a route fallback. All reviewed endpoint failures remain excluded with the unchanged 120 m limit. The [machine-readable review](../data/st-gallen-endpoint-review.json) pins every pair, candidate hash, evidence date and affected-pattern total.
+
+The [operator-map follow-up](ST-GALLEN-ENDPOINT-FOLLOWUP.md) examines ten candidate pairs on lines 451, 420 and 729, affecting 18 Friday / 12 Sunday trips. The Bad Ragaz and Buchs/Sargans maps do not corroborate the missing branches. Uzwil's map identifies a direct line-729 branch, while the numerically passing N72 candidate loops via Gemeindehaus, Coop and Sonnmatt. All ten remain excluded. The pinned evidence and candidate/checkpoint replay are recorded in [the follow-up audit](../data/st-gallen-endpoint-followup.json); run \`node scripts/review-st-gallen-endpoint-followup.mjs --check\` to verify it, or add \`--fetch-evidence\` to acquire missing pinned PDFs. Every local feed artifact remains unchanged.
 
 ### Admitted route records
 

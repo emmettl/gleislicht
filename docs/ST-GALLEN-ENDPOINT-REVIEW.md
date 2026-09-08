@@ -34,6 +34,8 @@ Route records with the same passenger line remain separate. A pattern can have o
 
 The separately documented [Vaduz extension](ST-GALLEN-VADUZ-REVIEW.md) admits 28 Friday line-24 trips after corroborating the common corridor and joint operation; its two recovered pairs are removed from this remaining-failure inventory. The [Gommiswald follow-up](ST-GALLEN-GOMMISWALD-REVIEW.md) retains line-628 failures: the operator map shows a Schulhaus branch and does not corroborate the missing Dorf alignment.
 
+The [operator-map follow-up](ST-GALLEN-ENDPOINT-FOLLOWUP.md) retains ten candidate pairs on lines 451, 420 and 729. It pins three additional maps and identifies the line-729 N72 candidate loop via Gemeindehaus, Coop and Sonnmatt, which differs from the mapped direct branch.
+
 ## Line 323: Dornbirn Messeplatz
 
 Four failed directed platform pairs surround Messeplatz: Heinzenbeer → Messeplatz → Lustenau Schmitter and the reverse direction. The two Messeplatz platform projections are approximately **160.6 m / 159.9 m** from line 323's AL_OEV record `bus:134`. These affect **65 Friday trips across four patterns**, with no Sunday occurrences of these failures. No other individual BOS regional/city source feature supplies a passing candidate for these pairs.
