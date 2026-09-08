@@ -8,15 +8,15 @@
       "date": "2026-09-04",
       "journeys": 11193,
       "preservedGeometryOccurrences": 168648,
-      "addedGeometryOccurrences": 4421,
-      "manifestSha256": "617f09e23e1f53447cd6c6f35d728ae3a2871348bf50f86d93ad0ce0d6ddf251"
+      "addedGeometryOccurrences": 4458,
+      "manifestSha256": "54f90c5ba7a1a0b6e7df150e2e5f7ea286928ce629d9cdf88aa43e252001b26d"
     },
     {
       "date": "2026-09-06",
       "journeys": 7767,
       "preservedGeometryOccurrences": 117681,
-      "addedGeometryOccurrences": 3791,
-      "manifestSha256": "457c5767bbcde81d52dfe7f26279da9f4e3f4051c61dd0a26af1b9a862b00ce6"
+      "addedGeometryOccurrences": 3792,
+      "manifestSha256": "3bca46d35037ed6a2b6732e2005606f7126f1c518dc9e3b52bb32e4c562b2187"
     }
   ]
 }

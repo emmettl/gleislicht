@@ -4,9 +4,10 @@ import { execFileSync } from 'node:child_process'
 import { readFile, writeFile } from 'node:fs/promises'
 import { join } from 'node:path'
 import { hashFile } from './inventory-aargau.mjs'
+const platforms=process.argv.includes('--platforms')
 const gaps=process.argv.includes('--gaps')
 const rail=process.argv.includes('--rail')
-const baseline=gaps?'460b942':rail?'3b7a9ba':'9b26f15'
+const baseline=platforms?'f51df22':gaps?'460b942':rail?'3b7a9ba':'9b26f15'
 const before=path=>JSON.parse(execFileSync('git',['show',`${baseline}:${path}`],{encoding:'utf8',maxBuffer:64*1024*1024}))
 const after=async path=>JSON.parse(await readFile(path,'utf8'))
 const days=[]
@@ -30,5 +31,5 @@ for(const date of ['2026-09-04','2026-09-06']) {
  days.push({date,journeys:oldTrips.size,preservedGeometryOccurrences:preserved,addedGeometryOccurrences:added,manifestSha256:await hashFile(name)})
 }
 const report={schemaVersion:1,baselineCommit:execFileSync('git',['rev-parse',baseline],{encoding:'utf8'}).trim(),passed:true,method:'Every baseline journey identity, full calls, boarding rules and previously admitted geometry path compared with current feed. Newly admitted geometry can only fill prior gaps.',days}
-await writeFile(`data/aargau/${gaps?'gap':rail?'rail':'road'}-regression.json`,JSON.stringify(report,null,2)+'\n')
+await writeFile(`data/aargau/${platforms?'platform':gaps?'gap':rail?'rail':'road'}-regression.json`,JSON.stringify(report,null,2)+'\n')
 console.log(report)

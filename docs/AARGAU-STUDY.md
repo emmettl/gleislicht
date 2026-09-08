@@ -4,7 +4,7 @@ Completed **8 September 2026** from the [national source inventory](SWISS-TRANSI
 
 **All 5,142 national route records and 34,499,152 stop-time rows were inspected.** The archived timetable contains **289 Aargau-calling route records across 23 agency identities**. Of these, **232 operate in at least one selected civil-day fixture** and **57 are inactive on both**. The other **4,853 national route records** have no Aargau call in the archive. These are GTFS records, not counts of unique public line numbers or legal companies.
 
-The final feed retains **11,193 Friday journeys and 7,767 Sunday journeys**, with complete source stop chains. Accepted geometry covers **99.979% / 99.999%** of all retained segment occurrences, and **99.975% / 100%** of occurrences with at least one stop inside Aargau. **Geometry remains incomplete:** 37 Friday occurrences (36 beside Brugg Aare AG and one at Bern) and one Sunday occurrence at Bern. Hallwilersee, S36 and Rheinfelden bus 7312 now have complete geometry in these fixtures. Bus fallback is an explicitly labelled OSM inference, including replacement services; it does not certify the actual diversion used.
+The final feed retains **11,193 Friday journeys and 7,767 Sunday journeys**, with complete source stop chains. Accepted geometry covers **every retained segment occurrence on both dates**, including all occurrences touching an Aargau stop. **Every retained directed pattern and stop-pair occurrence now has geometry.** The final platform fixes resolve Brugg Aare AG and Bern platform 49 with explicit source evidence and unchanged distance guards. This is complete automatic coverage of these two timetable fixtures, not year-round or actual-running-track certification. Bus fallback is an explicitly labelled OSM inference, including replacement services; it does not certify the actual diversion used.
 
 ## Deliverables
 
@@ -20,7 +20,8 @@ The final feed retains **11,193 Friday journeys and 7,767 Sunday journeys**, wit
 | [Rail regression](../data/aargau/rail-regression.json) | Every prior AGIS/OSM path and complete journey preserved against commit `3b7a9ba`; current manifest hashes |
 | [Explicit crosswalk](../data/aargau-line-crosswalk.json) | Ten narrowly scoped operator/line mappings plus date-limited reuse for the two directed S36 border-platform pairs |
 | [Rheinfelden supplemental cache](../data/aargau-rheinfelden-road-cache.json) | Six complete bus patterns matched on the expanded cross-border OSM extract; fills only previous road failures |
-| [Gap regression](../data/aargau/gap-regression.json) | All earlier AGIS/OSM/FOT paths preserved against `460b942`; 592 Friday / 319 Sunday new occurrences |
+| [Gap regression](../data/aargau/gap-regression.json) | All earlier AGIS/OSM/FOT paths preserved against `460b942`; 629 Friday / 320 Sunday new occurrences including final platform fixes |
+| [Platform policy](../data/aargau-platform-policy.json) / [regression](../data/aargau/platform-regression.json) | Exact reviewed Brugg/Bern patterns, source hashes, source dates and attribution; all prior paths preserved against `f51df22` |
 | [Independent source verification](../data/aargau/source-verification.json) | Separate Python CSV/zip scan: exact expected journey sets, source coordinates, calls, rules and shifted times |
 | [Friday extracted timetable](../data/aargau/2026-09-04-timetable.json.gz) / [Sunday extracted timetable](../data/aargau/2026-09-06-timetable.json.gz) | Hash-bound compressed source fixtures for rebuilding geometry without rereading the large national archive |
 
@@ -67,15 +68,15 @@ A directed pattern is **route ID + GTFS direction ID + complete ordered platform
 | Active agency identities | 21 | 20 |
 | Platforms | 3,881 | 3,885 |
 | Directed complete stop patterns | 1,477 | 1,080 |
-| Patterns with every segment matched | 1,475 | 1,079 |
+| Patterns with every segment matched | 1,477 | 1,080 |
 | Distinct directed route/platform pairs | 6,932 | 7,456 |
-| Pairs matched on every occurrence | 6,929 | 7,455 |
+| Pairs matched on every occurrence | 6,932 | 7,456 |
 | Scheduled segment occurrences | 173,106 | 121,473 |
-| Accepted geometry occurrences | 173,069 | 121,472 |
-| Full-journey occurrence coverage | 99.979% | 99.999% |
-| Occurrence coverage touching an Aargau stop | 99.975% | 100.000% |
+| Accepted geometry occurrences | 173,106 | 121,473 |
+| Full-journey occurrence coverage | 100% | 100% |
+| Occurrence coverage touching an Aargau stop | 100% | 100% |
 
-AGIS contributes **160,104 / 107,915** accepted occurrences, the road fallback adds **9,136 / 10,085**, and FOT rail adds **3,829 / 3,472**, Friday/Sunday. Each admitted segment identifies `geometrySource: agis`, `osm` or `fot`; the per-operator and per-route counters reconcile those sources separately. A fully matched pattern may combine AGIS portions with the relevant road or rail fallback.
+AGIS contributes **160,104 / 107,915** accepted occurrences, the road fallback adds **9,172 / 10,085**, and FOT rail adds **3,830 / 3,473**, Friday/Sunday. Each admitted segment identifies `geometrySource: agis`, `osm` or `fot`; the per-operator and per-route counters reconcile those sources separately. A fully matched pattern may combine AGIS portions with the relevant road or rail fallback.
 
 The operator table inventories all 23 agency identities that call in Aargau somewhere in the archive. Coverage is measured over complete retained journeys, including outside-canton portions. A dash means no eligible journey on that date, not that the operator lacks geometry year-round.
 
@@ -83,7 +84,7 @@ The operator table inventories all 23 agency identities that call in Aargau some
 | --- | --- | ---: | ---: | ---: | ---: | ---: |
 | Aargau Verkehr AG (`723`) | bus | 14 | 718 | 556 | 100.00% | 100.00% |
 | Busbetrieb Olten-Gösgen-Gäu (`793`) | bus | 1 | 147 | 143 | 100.00% | 100.00% |
-| PostAuto AG (`801`) | bus | 105 | 4,793 | 2,555 | 99.95% | 100.00% |
+| PostAuto AG (`801`) | bus | 105 | 4,793 | 2,555 | 100.00% | 100.00% |
 | Autobus AG Liestal (`811`) | bus | 2 | 174 | 146 | 100.00% | 100.00% |
 | Auto AG Rothenburg (`812`) | bus | 2 | 39 | 41 | 100.00% | 100.00% |
 | Zugerland Verkehrsbetriebe (`839`) | bus | 4 | 96 | 55 | 100.00% | 100.00% |
@@ -97,7 +98,7 @@ The operator table inventories all 23 agency identities that call in Aargau some
 | Südbadenbus (`sbg034`) | bus | 1 | 52 | 20 | 100.00% | 100.00% |
 | Hallwilersee (`181`) | ferry | 3 | 10 | 17 | 100.00% | 100.00% |
 | Basler Personenschifffahrt AG (`191`) | ferry | 1 | 0 | 0 | — | — |
-| Schweizerische Bundesbahnen SBB (`11`) | rail | 69 | 1,281 | 1,270 | 99.99% | 99.99% |
+| Schweizerische Bundesbahnen SBB (`11`) | rail | 69 | 1,281 | 1,270 | 100.00% | 100.00% |
 | Aargau Verkehr AG (`31`) | rail | 1 | 163 | 121 | 100.00% | 100.00% |
 | THURBO (`65`) | rail | 2 | 37 | 36 | 100.00% | 100.00% |
 | Oensingen-Balsthal-Bahn (`68`) | rail | 2 | 0 | 0 | — | — |
@@ -105,7 +106,7 @@ The operator table inventories all 23 agency identities that call in Aargau some
 | Aargau Verkehr AG (`96`) | rail | 1 | 313 | 229 | 100.00% | 100.00% |
 | Aargau Verkehr AG (`41`) | tram | 1 | 160 | 160 | 100.00% | 100.00% |
 
-AVA **S14 (96), S17 (31)** and **tram 20 (41)** have all retained segment occurrences matched on both dates. This is automated ordered-path coverage, not certification of particular running tracks. SBB now has one unresolved IR16 occurrence on each date. THURBO S36 reaches **100%** on both dates, including the evidence-scoped Koblenz–Waldshut crossing described below. SOB IR35 on Friday and IR26 on Sunday reach **100%**. Each fallback requires its own exact timetable route/agency identity and operating-point IDs; AGIS SBB labels are not relabelled for another operator.
+AVA **S14 (96), S17 (31)** and **tram 20 (41)** have all retained segment occurrences matched on both dates. This is automated ordered-path coverage, not certification of particular running tracks. SBB now has complete geometry, including the reviewed IR16 arrival at Bern platform 49. THURBO S36 reaches **100%** on both dates, including the evidence-scoped Koblenz–Waldshut crossing described below. SOB IR35 on Friday and IR26 on Sunday reach **100%**. Each fallback requires its own exact timetable route/agency identity and operating-point IDs; AGIS SBB labels are not relabelled for another operator.
 
 ## Adapter and admission rules
 
@@ -138,7 +139,7 @@ All **366 GIS records** are accounted for: **313 bus, 46 rail, 2 tram and 5 boat
 
 The road fallback closes the bus geometry gaps for **PostAuto 510/515**, Sunday night buses and agencies **7231/7244**. The new Rheinfelden supplement closes all **537 Friday / 219 Sunday** formerly missing bus-7312 occurrences. It preserves the original accepted road and AGIS paths.
 
-Only two platform issues remain: **36 Friday occurrences** on PostAuto 368 immediately before/after **Brugg AG, Aare AG**, where the matched road is about **131 m** from the platform (limit 120 m), and **one IR16 Olten–Bern occurrence per date**, whose Bern platform `ch:1:sloid:7000:55:49` is **446 m** from FOT operating point 8507000 (limit 350 m). These are retained as explicit failures; neither timetable coordinates nor attachment limits are changed. The existing rejected line-320 road interval remains covered by AGIS and adds no delivered gap. All scheduled journeys stay in the denominator.
+The final two platform issues are now resolved: **36 Friday occurrences** on PostAuto 368 beside **Brugg AG, Aare AG**, and **one IR16 Olten–Bern occurrence per date** terminating at platform 49. Their earlier rejection reasons remain in the audit alongside the scoped fixes below. Timetable coordinates and all general attachment limits are unchanged. The existing rejected line-320 road interval remains covered by AGIS and adds no delivered gap. All scheduled journeys stay in the denominator.
 
 ## Hallwilersee and Waldshut source reuse
 
@@ -170,7 +171,19 @@ The adapter derives operating-point numbers from exact SLOID or seven-digit fore
 
 Paths follow declared source-node topology in the required direction. Coordinate order is checked against source endpoints, and topology attachments are limited to **120 m**. No nearest-coordinate merge connects separate networks. A path, including platform connectors, must fit **max(3,000 m, 4.5 × direct distance)**. Source interiors are simplified by 5 m in LV95 before transformation; exact GTFS platform endpoints are retained. Every admitted segment records `geometrySource: fot`, its original AGIS rejection, both station attachment distances, length, maximum topology attachment and ordered source-segment/node identities. Failed rail attempts retain a separate `railFailure` beside the original AGIS failure.
 
-This is a shortest feasible **infrastructure inference** constrained by scheduled calls. It does not establish which alternative alignment, platform track or temporary diversion a train actually uses between calls. Small station/topology connectors are inferred too. FOT catalogue age and those limitations remain visible in the feed metadata. No FOT path replaces an admitted AGIS or OSM path: the [rail regression](../data/aargau/rail-regression.json) checks every prior occurrence against `3b7a9ba`, preserving **168,648 Friday / 117,681 Sunday** paths. FOT itself contributes **3,829 / 3,472**; the later [gap regression](../data/aargau/gap-regression.json) checks the whole `460b942` feed and admits only **592 / 319** additional occurrences from Hallwilersee, Waldshut and Rheinfelden.
+This is a shortest feasible **infrastructure inference** constrained by scheduled calls. It does not establish which alternative alignment, platform track or temporary diversion a train actually uses between calls. Small station/topology connectors are inferred too. FOT catalogue age and those limitations remain visible in the feed metadata. No FOT path replaces an admitted AGIS or OSM path: the [rail regression](../data/aargau/rail-regression.json) checks every prior occurrence against `3b7a9ba`, preserving **168,648 Friday / 117,681 Sunday** paths. FOT now contributes **3,830 / 3,473**, including one Bern platform fix per date; the later [gap regression](../data/aargau/gap-regression.json) checks the whole `460b942` feed. The boat/border extension added **592 / 319** occurrences; final platform fixes add **37 / one**, making the current regression totals **629 / 320**.
+
+## Scoped platform fixes
+
+The [platform adapter](../scripts/aargau-platform-geometry.mjs) runs only after all earlier sources fail. Its [policy](../data/aargau-platform-policy.json) pins **three complete date/agency/route/direction/platform-coordinate patterns**: Brugg outbound on Friday, and the two IR16 arrivals at Bern. Changed dates, direction, route or coordinates do not inherit these fixes. The [platform regression](../data/aargau/platform-regression.json) compares against `f51df22` and verifies **173,069 Friday / 121,472 Sunday** accepted occurrences remain byte-for-byte identical while filling exactly **37 / one** gaps.
+
+**Brugg Aare AG:** OSM stop-position node **311095760**, UIC **8500575**, agrees with the GTFS platform. The pfaedle profile skipped the service-road loop and retained a 131 m snap even on a fresh extract. The complete outbound [OSM bus relation 10832272](https://www.openstreetmap.org/relation/10832272) explicitly includes that loop and the same ordered calls as GTFS route `96-160-2-j26-1`. The adapter preserves relation-member order, joins ways only at identical OSM nodes, checks tagged one-way orientation, and traverses roundabouts from the member entry to its declared exit. Disconnected or ambiguous chains are rejected. Every stop in the full pattern must pass the unchanged ordered-line, 120 m and detour guards before either missing segment is admitted.
+
+The resulting Wildischachen → Aare AG segment is **569.62 m**, with maximum snap **2.80 m**. Aare AG → Aquarena is **3,239.53 m**, with maximum snap **0.33 m**; the source relation’s return via Wildischachen is retained. Earlier portions remain unchanged. OSM relation GTFS tags reference **18 December 2025**; the source extract has database timestamp **2026-09-08T18:32:16Z**. The complete relation, ways, nodes, source hash and ODbL attribution are preserved in [brugg-relation.json](../data/aargau-platform-sources/brugg-relation.json), with its [query](../data/aargau-platform-sources/brugg.overpass). The separate OSM platform node carries a location `fixme`; the exact stop-position node and source timetable coordinate are used, with no claimed survey correction. Each admitted occurrence has `platformFixId: brugg-service-loop`, relation ID, full monotone projection evidence and the prior rejection.
+
+**Bern platform 49:** [SBB’s official station description](https://www.sbb.ch/en/travel-information/stations/find-station/bern-station/bern-station-description.html) identifies tracks 49/50 as western extensions of tracks 9/10 towards Fribourg. This explains the **446.03 m** distance from the general Bern operating point. The reviewed terminal projection uses the existing FOT **Bern–Bern JKLM** segment `ch14uvag00087328`, with a **33.89 m** perpendicular snap. The train first approaches its exact Bern operating point, then follows that western source segment to the projected platform position. It does not substitute a long straight attachment or another station identity. The final endpoint remains the exact GTFS platform coordinate, and the entire Olten–Bern path still passes the original detour guard.
+
+The audit records `platformFixId: bern-platform-49`, the original station distance, directed approach edges, source-segment ID, partial-segment distances, projected point, terminal snap and topology attachment. SBB’s undated description was read through web retrieval on **8 September 2026**; direct HTTP download returned 403, so the policy preserves a short attributed excerpt and access status, without claiming an archived HTML file. FOT geometry retains its **July 2021 catalogue date**, January 2025 asset update and inferred-current-validity limitation. This is station-infrastructure geometry, not certification of the centreline of track 49.
 
 ## Source dates, hashes and attribution
 
@@ -188,17 +201,17 @@ Required line credit: **Daten des Kantons Aargau**. Supplied terms are dated **A
 
 ## Verification and reproduction
 
-**35 tests pass** across the Aargau source, geometry, road and rail tests plus the shared road importer tests. They cover calendar/civil-day semantics, complete border chains, source identity, loop/order constraints, exact endpoints and fallback isolation. Four additional cases cover the exact gap scope/date guard, full-pattern rejection, real Hallwilersee loops and preservation of earlier road paths. Seven rail cases add both directed orientations, foreign/SLOID identifiers, route/agency/mode isolation, later-stop shortcut rejection, disconnected/coincident nodes, missing/ambiguous/distant identities, excessive detours and malformed topology attachments.
+**40 tests pass** across the Aargau source, geometry, road and rail tests plus the shared road importer tests. They cover calendar/civil-day semantics, complete border chains, source identity, loop/order constraints, exact endpoints and fallback isolation. Four additional cases cover the exact gap scope/date guard, full-pattern rejection, real Hallwilersee loops and preservation of earlier road paths. Five platform cases cover the real Brugg loop, Bern terminal extension, wrong route/direction/coordinates/date, disconnected/one-way OSM chains and distant/unrelated terminal projections. Seven rail cases add both directed orientations, foreign/SLOID identifiers, route/agency/mode isolation, later-stop shortcut rejection, disconnected/coincident nodes, missing/ambiguous/distant identities, excessive detours and malformed topology attachments.
 
-Offline checks reconcile every delivered pattern/pair/route count, source identity, geometry-source counter, chunk hash, trip set and path endpoint. Every admitted FOT path and its complete directed source evidence are replayed from the preserved XTF; all three regression reports bind all original journey data and accepted paths to current manifest hashes. The independent Python archive scan remains valid because the extracted timetable bytes have not changed.
+Offline checks reconcile every delivered pattern/pair/route count, source identity, geometry-source counter, chunk hash, trip set and path endpoint. Every admitted FOT path and its complete directed source evidence are replayed from the preserved XTF; all four regression reports bind all original journey data and accepted paths to current manifest hashes. The independent Python archive scan remains valid because the extracted timetable bytes have not changed.
 
 Both dates fit the existing regional payload budgets after 5 m interior simplification:
 
 | Gzip payload | Friday | Sunday | Existing budget |
 | --- | ---: | ---: | ---: |
-| Manifest | 454.9 KiB | 488.6 KiB | 650 KiB |
-| Morning extract | 654.0 KiB | 601.7 KiB | 1,600 KiB |
-| Largest two-hour chunk | 198.0 KiB | 126.6 KiB | 450 KiB |
+| Manifest | 460.2 KiB | 493.4 KiB | 650 KiB |
+| Morning extract | 658.7 KiB | 606.9 KiB | 1,600 KiB |
+| Largest two-hour chunk | 197.9 KiB | 126.6 KiB | 450 KiB |
 
 Run from the repository root with Node 24+ (measured here on **26.8.1**), Python 3 and `unzip`; the synthetic integration test also uses `zip`. There are no new runtime dependencies or live-service credentials.
 
@@ -208,7 +221,8 @@ node scripts/check-aargau-study.mjs
 node scripts/check-aargau-regression.mjs
 node scripts/check-aargau-regression.mjs --rail
 node scripts/check-aargau-regression.mjs --gaps
-npx vitest run scripts/aargau-line-geometry.test.mjs scripts/inventory-aargau.test.mjs scripts/aargau-road-geometry.test.mjs scripts/aargau-rail-geometry.test.mjs scripts/aargau-gap-geometry.test.mjs scripts/enrich-postbus-roads.test.mjs
+node scripts/check-aargau-regression.mjs --platforms
+npx vitest run scripts/aargau-line-geometry.test.mjs scripts/inventory-aargau.test.mjs scripts/aargau-road-geometry.test.mjs scripts/aargau-rail-geometry.test.mjs scripts/aargau-gap-geometry.test.mjs scripts/aargau-platform-geometry.test.mjs scripts/enrich-postbus-roads.test.mjs
 
 # Rebuild either date from the preserved extracted timetable and AGIS bytes.
 node scripts/build-aargau-study.mjs \
@@ -216,7 +230,7 @@ node scripts/build-aargau-study.mjs \
   --crosswalk data/aargau-line-crosswalk.json --road-cache data/aargau-road-cache.json \
   --road-supplement data/aargau-rheinfelden-road-cache.json \
   --rail-sources data/aargau-rail-sources --rail-policy data/aargau-rail-policy.json \
-  --date 2026-09-04 --output /tmp/aargau-friday
+  --platform-fixes --date 2026-09-04 --output /tmp/aargau-friday
 # Repeat with --date 2026-09-06 and --output /tmp/aargau-sunday.
 
 # Rebuild the inferred road cache with the pinned inputs described above.
@@ -240,7 +254,11 @@ node scripts/match-postbus-roads.mjs \
 node scripts/import-aargau-rheinfelden-roads.mjs \
   --matched /tmp/aargau-rheinfelden-matched --output /tmp/aargau-rheinfelden-road-cache.json
 # A later mutable Overpass response requires source-date/hash review before import.
-# Omit --road-cache, --road-supplement, --rail-sources and --rail-policy for AGIS only.
+# Re-extract the Brugg relation from pinned/reviewed Overpass bytes.
+python3 scripts/prepare-aargau-platform-sources.py \
+  --osm /path/aargau-brugg.osm --output /tmp/brugg-relation.json
+# A changed source requires review of the platform-policy hashes and patterns.
+# Omit --road-cache, --road-supplement, --rail-sources, --rail-policy and --platform-fixes for AGIS only.
 
 # Repackage FOT using the pinned original and preserved catalogue bytes.
 gunzip -c data/aargau-rail-sources/network.xtf.gz > /tmp/aargau-network.xtf
@@ -264,4 +282,4 @@ python3 scripts/prepare-aargau-sources.py \
   --output data/aargau-sources
 ```
 
-The source preparer deliberately rejects an AGIS archive differing from the survey's pinned hash. A refresh requires a newly reviewed catalogue/vintage and regeneration of dependent inventory/audit hashes; a mutable download URL must not silently replace this evidence. `publicationReady` remains false because the audit documents unresolved geometry and directional/seasonal review, despite complete timetable preservation and passing consistency/payload checks.
+The source preparer deliberately rejects an AGIS archive differing from the survey's pinned hash. A refresh requires a newly reviewed catalogue/vintage and regeneration of dependent inventory/audit hashes; a mutable download URL must not silently replace this evidence. `publicationReady` remains false because directional/seasonal review and application release work remain, despite complete timetable preservation and passing consistency/payload checks.

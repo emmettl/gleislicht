@@ -8,6 +8,7 @@ import { gunzipSync, gzipSync } from 'node:zlib'
 import { hashFile } from './inventory-aargau.mjs'
 import { validateAargauFeed } from './build-aargau-study.mjs'
 import { identityKey, lineIndex } from './aargau-line-geometry.mjs'
+import { loadAargauPlatforms } from './aargau-platform-geometry.mjs'
 import { aargauGapMatcher } from './aargau-gap-geometry.mjs'
 import { loadAargauRail } from './aargau-rail-geometry.mjs'
 import { aargauRoadMatcher } from './aargau-road-geometry.mjs'
@@ -43,6 +44,11 @@ for (const date of inventory.metadata.dates) {
     for(const cache of Object.values(roadBundle.supplement.agencyCaches))assert.equal(cache.metadata.query.sha256,await hashFile(cache.metadata.query.file))
   }
   const roads=aargauRoadMatcher(roadBundle)
+  const platforms=await loadAargauPlatforms(date)
+  assert.equal(manifest.metadata.geometry.platformFixes.policySha256,await hashFile('data/aargau-platform-policy.json'))
+  const platformRegression=await read(join(input,'platform-regression.json'))
+  assert(platformRegression.passed)
+  assert.equal(platformRegression.days.find(day=>day.date===date)?.manifestSha256,await hashFile(join(directory,'aargau-region-day-manifest.json')))
   const gaps=aargauGapMatcher(collection,crosswalk.gapMappings,date)
   const gapRegression=await read(join(input,'gap-regression.json'))
   assert(gapRegression.passed)
@@ -83,7 +89,7 @@ for (const date of inventory.metadata.dates) {
     assert.deepEqual(pattern.stopIds,train.stops.map(([i])=>snapshot.stops[i][4]))
     assert.deepEqual(pattern.segments.map(s=>s.pathIndex),train.pathSegments)
     const cached=roads?.matchPattern(train,snapshot.stops)
-    for(const [i,segment] of pattern.segments.entries()) if(segment.geometrySource==='osm') {
+    for(const [i,segment] of pattern.segments.entries()) if(segment.geometrySource==='osm'&&!segment.platformFixId) {
       assert(cached?.[i]?.path,'OSM segment lacks an exact complete cached pattern')
       assert.deepEqual(snapshot.paths[segment.pathIndex],cached[i].path)
       assert(segment.agisRejection,'OSM replaced an admitted AGIS segment')
@@ -111,7 +117,14 @@ for (const date of inventory.metadata.dates) {
       assert(s.agisRejection)
       if(s.railRejection)assert.equal(s.railRejection,replay[i].railFailure)
     }
-    for(const [i,s] of pattern.segments.entries()) if(s.geometrySource==='fot') {
+    const platformReplay=platforms.matchPattern({agencyId:pattern.agencyId,category:pattern.mode,route:pattern.line,routeId:pattern.routeId,directionId:pattern.gtfsDirectionId},pattern.stopIds.map(id=>snapshot.stops[stopIndex.get(id)]))
+    for(const [i,s]of pattern.segments.entries())if(s.platformFixId){
+      assert(s.priorPlatformRejection)
+      assert.deepEqual(snapshot.paths[s.pathIndex],platformReplay?.[i]?.path)
+      const {path:_path,...evidence}=platformReplay[i]
+      for(const [key,value]of Object.entries(evidence))assert.deepEqual(s[key],value)
+    }
+    for(const [i,s] of pattern.segments.entries()) if(s.geometrySource==='fot'&&!s.platformFixId) {
       assert(s.agisRejection)
       assert.deepEqual(snapshot.paths[s.pathIndex],replay?.[i]?.path)
       const {path:_path,...evidence}=replay[i]

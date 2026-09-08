@@ -1,0 +1,217 @@
+{
+  "schemaVersion": 1,
+  "patterns": [
+    {
+      "date": "2026-09-04",
+      "agencyId": "11",
+      "mode": "rail",
+      "routeId": "91-16-B-j26-1",
+      "line": "IR16",
+      "directionId": "1",
+      "stops": [
+        [
+          8.53672608,
+          47.37920422,
+          "Zürich HB",
+          "15",
+          "ch:1:sloid:3000:8:15"
+        ],
+        [
+          8.30726042,
+          47.47599724,
+          "Baden",
+          "3",
+          "ch:1:sloid:3504:2:3"
+        ],
+        [
+          8.2094249,
+          47.48104259,
+          "Brugg AG",
+          "4",
+          "ch:1:sloid:309:3:4"
+        ],
+        [
+          8.05159989,
+          47.39104625,
+          "Aarau",
+          "5",
+          "ch:1:sloid:2113:3:5"
+        ],
+        [
+          7.90794131,
+          47.35220757,
+          "Olten",
+          "8",
+          "ch:1:sloid:218:5:8"
+        ],
+        [
+          7.4333344,
+          46.94822398,
+          "Bern",
+          "49",
+          "ch:1:sloid:7000:55:49"
+        ]
+      ],
+      "fix": "bern-platform-49"
+    },
+    {
+      "date": "2026-09-04",
+      "agencyId": "801",
+      "mode": "bus",
+      "routeId": "96-160-2-j26-1",
+      "line": "368",
+      "directionId": "0",
+      "stops": [
+        [
+          8.20934406,
+          47.48147363,
+          "Brugg AG, Bahnhof/Zentrum",
+          "A",
+          "ch:1:sloid:72464:0:60777"
+        ],
+        [
+          8.20614605,
+          47.4842359,
+          "Brugg AG, Eisi",
+          "A",
+          "ch:1:sloid:72479:0:419840"
+        ],
+        [
+          8.20274144,
+          47.48291853,
+          "Brugg AG, Gesundheitszentrum",
+          "",
+          "ch:1:sloid:80324:0:402181"
+        ],
+        [
+          8.1995614,
+          47.47930014,
+          "Brugg AG, Unterführung SBB",
+          "",
+          "ch:1:sloid:80321:0:845669"
+        ],
+        [
+          8.19715392,
+          47.47729657,
+          "Brugg AG, Obergrüt/Badi",
+          "",
+          "ch:1:sloid:80322:0:766315"
+        ],
+        [
+          8.19514169,
+          47.47489825,
+          "Brugg AG, Bodenackerstrasse",
+          "",
+          "ch:1:sloid:80323:0:632187"
+        ],
+        [
+          8.18424513,
+          47.46756904,
+          "Brugg AG, Wildischachen",
+          "",
+          "ch:1:sloid:72525:0:606384"
+        ],
+        [
+          8.18021169,
+          47.4679334,
+          "Brugg AG, Aare AG",
+          "",
+          "ch:1:sloid:575:0:978919"
+        ],
+        [
+          8.16615306,
+          47.45917593,
+          "Schinznach Bad, Aquarena",
+          "",
+          "ch:1:sloid:72526:0:128401"
+        ],
+        [
+          8.16503016,
+          47.4585139,
+          "Schinznach Bad, Kurzentrum",
+          "",
+          "ch:1:sloid:2680:0:298626"
+        ]
+      ],
+      "fix": "brugg-service-loop"
+    },
+    {
+      "date": "2026-09-06",
+      "agencyId": "11",
+      "mode": "rail",
+      "routeId": "91-16-B-j26-1",
+      "line": "IR16",
+      "directionId": "1",
+      "stops": [
+        [
+          8.53686981,
+          47.37933804,
+          "Zürich HB",
+          "17",
+          "ch:1:sloid:3000:9:17"
+        ],
+        [
+          8.30726042,
+          47.47599724,
+          "Baden",
+          "3",
+          "ch:1:sloid:3504:2:3"
+        ],
+        [
+          8.2094249,
+          47.48104259,
+          "Brugg AG",
+          "4",
+          "ch:1:sloid:309:3:4"
+        ],
+        [
+          8.05159989,
+          47.39104625,
+          "Aarau",
+          "5",
+          "ch:1:sloid:2113:3:5"
+        ],
+        [
+          7.90794131,
+          47.35220757,
+          "Olten",
+          "8",
+          "ch:1:sloid:218:5:8"
+        ],
+        [
+          7.4333344,
+          46.94822398,
+          "Bern",
+          "49",
+          "ch:1:sloid:7000:55:49"
+        ]
+      ],
+      "fix": "bern-platform-49"
+    }
+  ],
+  "files": {
+    "data/aargau-platform-sources/brugg-relation.json": "7266fca60cb5b5e82d484f8e564e526bc6ba873dd504613f02be208d550b298a",
+    "data/aargau-platform-sources/brugg.overpass": "08ae6b28053388aa81895f27dbe166fedddd28f83d589bfac5c5ed5fcaf8c48b",
+    "data/aargau-rail-sources/network.xtf.gz": "f83afc9c922ab368070faa151fcf8be02fbb66bc1f4ae9b1011c68c86be21af3"
+  },
+  "inputTimetableHashes": {
+    "2026-09-04": "5b19b53e396d6b21686cd6e3c4dc438eefbfc503e69fa2c71b1454982ca2a952",
+    "2026-09-06": "abd919e4a9c3917ca8f5c3f23b013202f2092aebe8dcc60b5c8f47efde15c4c9"
+  },
+  "evidence": {
+    "bern": {
+      "publisher": "SBB",
+      "url": "https://www.sbb.ch/en/travel-information/stations/find-station/bern-station/bern-station-description.html",
+      "checkedOn": "2026-09-08",
+      "sourceDate": null,
+      "quote": "tracks 49 and 50, which are the western extension of tracks 9 and 10 towards Fribourg/Freiburg",
+      "access": "Read through web retrieval; direct curl returned HTTP 403. No raw HTML archive claimed.",
+      "interpretation": "Project exact platform 49 onto FOT Bern–Bern JKLM segment within 120 m; approach via exact Bern operating point. Infrastructure inference, not a certified track centreline."
+    },
+    "brugg": {
+      "source": "OSM relation 10832272",
+      "interpretation": "Use the connected directed relation only after the entire source stop pattern passes unchanged guards; admit only its two missing segments beside Aare AG. The stop-position node has exact UIC identity 8500575. Separate platform node carries fixme exact location; no platform coordinates are altered."
+    }
+  },
+  "method": "Exact date/agency/route/direction/full platform coordinate pattern. Fill only existing gaps, with 120 m projection guard. All earlier geometry stays unchanged."
+}

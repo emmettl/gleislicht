@@ -1,0 +1,2 @@
+[out:xml][timeout:90];
+(way[highway](47.44,8.14,47.50,8.23);relation[route=bus](47.44,8.14,47.50,8.23);relation[type~"^restriction"](47.44,8.14,47.50,8.23);node[highway=bus_stop](47.44,8.14,47.50,8.23);node[public_transport=stop_position](47.44,8.14,47.50,8.23););(._;>>;);out meta;
