@@ -1,3 +1,4 @@
+import { auditPostbus } from './audit-postbus.mjs'
 import { readFile } from 'node:fs/promises'
 import { resolve } from 'node:path'
 
@@ -10,6 +11,8 @@ async function readJson(path) {
 function assert(condition, message) {
   if (!condition) throw new Error(message)
 }
+
+await auditPostbus()
 
 const morning = await readJson('swiss-rail-morning.json')
 const hubs = await readJson('swiss-hub-day.json')

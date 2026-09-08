@@ -115,6 +115,10 @@ jobs:
           npm run data:day -- \
             --archive "$RUNNER_TEMP/swiss-gtfs.zip" \
             --date "${{ steps.edition.outputs.service_date }}"
+          npm run data:postbus:national -- \
+            --archive "$RUNNER_TEMP/swiss-gtfs.zip" \
+            --date "${{ steps.edition.outputs.service_date }}"
+          node scripts/audit-postbus.mjs
           npm run data:rail:shapes -- \
             --source "$RUNNER_TEMP/schienennetz_2056_de.xtf" \
             --tolerance 160

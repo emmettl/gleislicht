@@ -80,6 +80,7 @@ export type SwitzerlandRegionalStudyId =
 
 export type SwitzerlandNetworkStudy =
   | 'national'
+  | 'postbus'
   | SwitzerlandRegionalStudyId
   | 'contrast'
 
@@ -118,6 +119,7 @@ export const SWITZERLAND_EDITION: SwitzerlandEdition = {
     },
     nationalMorning: 'swiss-rail-morning.json',
     nationalDayManifest: 'swiss-rail-day-manifest.json',
+    postbusDayManifest: 'postbus-national-day-manifest.json',
     boundary: 'swiss-boundary.json',
     water: 'swiss-lakes.json',
     hubDay: 'swiss-hub-day.json',

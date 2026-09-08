@@ -6,6 +6,7 @@ export interface SwitzerlandDataCatalog<
 > extends EditionDataCatalog {
   readonly nationalMorning: string
   readonly nationalDayManifest: string
+  readonly postbusDayManifest: string
   readonly boundary: string
   readonly water: string
   readonly hubDay: string

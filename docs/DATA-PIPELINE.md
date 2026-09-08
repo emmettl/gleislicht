@@ -128,6 +128,10 @@ npm run data:geneva:shapes -- \
 
 The line layer is a route-labelled street graph rather than GTFS `shapes.txt`. The enrichment snaps timetable stops to their matching TPG line and finds the shortest valid path between each pair; it rejects implausible detours and refuses to write below 70% coverage. The current artifact contains 1,804 trips and 2,080 stops, including cross-border services, and matches 37,182 of 38,486 local segment occurrences (96.6%). Its 1.8 MB JSON compresses to about 408 KB and is fetched only when **GE** is selected.
 
+## Nationwide PostBus
+
+`npm run data:postbus:national -- --archive /path/feed.zip --date YYYY-MM-DD` exports all active agency-801 buses without a geographic crop or route shortlist. It writes `postbus-national-day-manifest.json` and eight three-hour chunks. Bus records retain source route IDs because display numbers repeat across regions. Run `node scripts/audit-postbus.mjs` to validate coverage, continuity, hashes and compressed payload budgets. The **PA** view loads this study on demand. See [POSTBUS-NATIONAL.md](./POSTBUS-NATIONAL.md) for measured coverage and performance.
+
 ## Rural PostBus selection and artifact
 
 Rank active PostBus corridors by scheduled trip count, service span, stop-chain length and stop footprint:

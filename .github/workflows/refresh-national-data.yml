@@ -75,6 +75,10 @@ jobs:
           npm run data:day -- \
             --archive "$RUNNER_TEMP/swiss-gtfs.zip" \
             --date "${{ steps.edition.outputs.service_date }}"
+          npm run data:postbus:national -- \
+            --archive "$RUNNER_TEMP/swiss-gtfs.zip" \
+            --date "${{ steps.edition.outputs.service_date }}"
+          node scripts/audit-postbus.mjs
           npm run data:rail:shapes -- \
             --source "$RUNNER_TEMP/schienennetz_2056_de.xtf" \
             --tolerance 160
@@ -99,7 +103,9 @@ jobs:
           git add public/data/swiss-rail-morning.json \
             public/data/swiss-hub-day.json \
             public/data/swiss-rail-day-manifest.json \
-            public/data/swiss-rail-day-chunks
+            public/data/swiss-rail-day-chunks \
+            public/data/postbus-national-day-manifest.json \
+            public/data/postbus-national-day-chunks
           if git diff --cached --quiet; then
             echo "The current validated artifact already matches the official feed."
             exit 0

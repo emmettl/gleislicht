@@ -101,7 +101,7 @@ async function localStopIds(archive) {
   return stopIds
 }
 
-function createSnapshotBuilder({
+export function createSnapshotBuilder({
   trips,
   sourceStops,
   windowStart,
@@ -212,6 +212,7 @@ function createSnapshotBuilder({
     trains.push({
       id: tripId,
       route: metadata.route,
+      ...(metadata.mode === 'bus' ? { routeId: metadata.routeId } : {}),
       headsign: metadata.headsign,
       shortName: metadata.shortName,
       category: metadata.category,

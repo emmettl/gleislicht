@@ -2,6 +2,7 @@ import { airportBoardMovements } from '@motionstudies/core/domain/airport'
 import { AIRPORT_LABELS, AIRPORT_NOTES } from './studies/airport-copy.ts'
 import { networkWithRailVisibility } from './studies/network-layers.ts'
 import { roadTrafficSummary } from './studies/road-traffic-summary.ts'
+import { postbusRouteIndex, postbusRouteSnapshot, postbusTickFollowsSeek } from './studies/postbus.ts'
 import { CONTROL_HELP } from './control-help.ts'
 import {
   lazy,
@@ -342,10 +343,13 @@ export function App({ edition }: AppProps) {
   const mobileMapToolsRef = useRef<HTMLDetailsElement>(null)
   const searchInteractionRef = useRef(false)
   const timelineTimeRef = useRef(networkTime)
+  const postbusSeekRef = useRef<{ time: number; at: number } | undefined>(undefined)
   const text = UI_TEXT[language]
   const help = CONTROL_HELP[language]
   const performanceSample = useLocalPerformance(performanceEnabled)
+  const isPostbus = networkStudy === 'postbus'
   const isContrast = networkStudy === 'contrast'
+  const postbusDay = useProgressiveNetworkDay(edition.data.postbusDayManifest, isPostbus, networkTime, editionDataUrl)
   const isNationalDay =
     networkStudy === 'national' && nationalTimeRange === 'day'
   const airDay = useProgressiveAirDay(
@@ -400,7 +404,7 @@ export function App({ edition }: AppProps) {
       nationalDayChunks[nationalDayChunkDescriptor.id],
   )
   const baseNetwork =
-    isContrast
+    isPostbus ? postbusDay.network : isContrast
       ? (zurichContrast.network ?? nationalNetwork)
       : networkStudy === 'zurich-city'
       ? (zurichCityNetwork ?? nationalNetwork)
@@ -414,10 +418,10 @@ export function App({ edition }: AppProps) {
 
   const realtimeApplication = useMemo<RealtimeApplication | undefined>(
     () =>
-      baseNetwork && realtimeSnapshot && operationsMode !== 'scheduled'
+      baseNetwork && networkStudy === 'national' && realtimeSnapshot && operationsMode !== 'scheduled'
         ? applyRealtimeSnapshot(baseNetwork, realtimeSnapshot)
         : undefined,
-    [baseNetwork, operationsMode, realtimeSnapshot],
+    [baseNetwork, networkStudy, operationsMode, realtimeSnapshot],
   )
   const realtimeAgeMs = realtimeSnapshot
     ? Math.max(
@@ -436,10 +440,6 @@ export function App({ edition }: AppProps) {
     realtimeApplication?.compatible && !realtimeStale,
   )
   const network = realtimeActive ? realtimeApplication?.network : baseNetwork
-  const sceneNetwork = useMemo(
-    () => network && networkWithRailVisibility(network, railVisible),
-    [network, railVisible],
-  )
   const quietMap = view === 'network' && networkStudy === 'national' &&
     !sbbEnabled && !airEnabled && !roadEnabled && Boolean(network) && !dataError && webglAvailable
   const activeAirSnapshot = isNationalDay ? airDay.snapshot : airSnapshot
@@ -560,8 +560,8 @@ export function App({ edition }: AppProps) {
     [network],
   )
   const routeIndex = useMemo(
-    () => (network ? buildRouteIndex(network) : []),
-    [network],
+    () => (network ? isPostbus ? postbusRouteIndex(network) : buildRouteIndex(network) : []),
+    [network, isPostbus],
   )
   const trainSearchDocuments = useMemo(
     () =>
@@ -615,6 +615,10 @@ export function App({ edition }: AppProps) {
     [selectedRoadId, roadEnabled, networkTime, nationalRoadInWindow, nationalRoad.snapshot, roadSnapshot],
   )
   const roadMetricFormat = useMemo(() => new Intl.NumberFormat(LANGUAGE_LOCALES[language], { maximumFractionDigits: 1 }), [language])
+  const sceneNetwork = useMemo(
+    () => network && (isPostbus ? postbusRouteSnapshot(network, selectedRoute) : networkWithRailVisibility(network, railVisible)),
+    [network, railVisible, isPostbus, selectedRoute],
+  )
   const selectedPosition = useMemo(
     () => (selectedTrain ? positionForTrain(selectedTrain, networkTime) : undefined),
     [networkTime, selectedTrain],
@@ -678,7 +682,7 @@ export function App({ edition }: AppProps) {
     return routeIndex
       .filter((route) =>
         foldSearchText(
-          `${serviceCategoryLabel(language, route.category)} ${route.category.replaceAll('-', ' ')} ${route.name}`,
+          `${serviceCategoryLabel(language, route.category)} ${route.category.replaceAll('-', ' ')} ${route.name} ${isPostbus ? route.headsigns.join(' ') : ''}`,
         ).includes(query),
       )
       .sort(
@@ -689,7 +693,7 @@ export function App({ edition }: AppProps) {
           }),
       )
       .slice(0, 5)
-  }, [language, routeIndex, searchQuery])
+  }, [isPostbus, language, routeIndex, searchQuery])
   const roadSearchResults = useMemo(
     () => searchRoadCorridors(roadTopology?.roads ?? SWITZERLAND_ROADS, searchQuery),
     [roadTopology?.roads, searchQuery],
@@ -759,6 +763,7 @@ export function App({ edition }: AppProps) {
   }, [])
   const handleNetworkTime = useCallback(
     (nextTime: number) => {
+      if (isPostbus) postbusSeekRef.current = { time: nextTime, at: performance.now() }
       if (
         networkStudy === 'national' &&
         nationalTimeRange === 'day' &&
@@ -773,12 +778,20 @@ export function App({ edition }: AppProps) {
       setNetworkTime(nextTime)
     },
     [
+      isPostbus,
       nationalDayChunks,
       nationalDayManifest,
       nationalTimeRange,
       networkStudy,
     ],
   )
+  const handleSceneNetworkTime = useCallback((nextTime: number) => {
+    if (!isPostbus) { handleNetworkTime(nextTime); return }
+    const seek = postbusSeekRef.current
+    if (seek && !postbusTickFollowsSeek(nextTime, seek.time, (performance.now() - seek.at) / 1000, playbackRate)) return
+    postbusSeekRef.current = undefined
+    setNetworkTime(nextTime)
+  }, [handleNetworkTime, isPostbus, playbackRate])
   const moveMapCamera = useCallback((action: MapCameraAction) => {
     setMapCameraCommand((current) => ({ id: current.id + 1, action }))
   }, [])
@@ -1029,6 +1042,7 @@ export function App({ edition }: AppProps) {
   const selectNetworkStudy = useCallback(
     (study: NetworkStudy, timeRange: NationalTimeRange = nationalTimeRange) => {
       setDirectorMode(false)
+      postbusSeekRef.current = undefined
       setNetworkStudy(study)
       setView('network')
       setSelectedCategory(undefined)
@@ -1053,12 +1067,13 @@ export function App({ edition }: AppProps) {
               ? genevaTpgNetwork
               : undefined
       setRegionalNetworkLoading(
-        study !== 'national' && study !== 'contrast' && !regionalSnapshot,
+        study !== 'national' && study !== 'contrast' && study !== 'postbus' && !regionalSnapshot,
       )
-      if (study !== 'national' && study !== 'contrast') {
+      if (study !== 'national' && study !== 'contrast' && study !== 'postbus') {
         setRegionalNetworkError(false)
       }
       if (study === 'contrast') setNetworkTime(12 * 3600)
+      if (study === 'postbus') setNetworkTime(edition.defaultNetworkTime)
       if (study === 'national' && timeRange === 'day') {
         setNationalDayError(false)
         if (!nationalDayManifest) setNationalDayLoading(true)
@@ -1073,6 +1088,7 @@ export function App({ edition }: AppProps) {
       if (snapshot) setNetworkTime(snapshot.metadata.focusTime)
     },
     [
+      edition.defaultNetworkTime,
       nationalDayNetwork,
       genevaTpgNetwork,
       nationalDayManifest,
@@ -1508,7 +1524,7 @@ export function App({ edition }: AppProps) {
   ])
 
   useEffect(() => {
-    if (networkStudy === 'national' || networkStudy === 'contrast') return
+    if (networkStudy === 'national' || networkStudy === 'contrast' || networkStudy === 'postbus') return
     const existingNetwork =
       networkStudy === 'zurich-city'
         ? zurichCityNetwork
@@ -1730,7 +1746,7 @@ export function App({ edition }: AppProps) {
                   trainLabelMode={trainLabelMode}
                   isPlaying={isPlaying}
                   time={networkTime}
-                  onTime={handleNetworkTime}
+                  onTime={handleSceneNetworkTime}
                   cameraCommand={mapCameraCommand}
                   playbackRate={playbackRate}
                   selectedCategory={selectedCategory}
@@ -1784,9 +1800,10 @@ export function App({ edition }: AppProps) {
             lakes={lakes}
             groundStyle={quietMap ? 'quiet' : 'grid'}
             snapshot={sceneNetwork}
+            trafficOverviewEmphasis={isPostbus ? 0.65 : undefined}
             referenceSnapshot={nationalNetwork ?? sceneNetwork}
             contextSnapshot={
-              networkStudy !== 'national' &&
+              networkStudy !== 'national' && !isPostbus &&
               (networkStudy === 'zurich-city'
                 ? zurichCityNetwork
                 : networkStudy === 'zvv-region'
@@ -1797,10 +1814,10 @@ export function App({ edition }: AppProps) {
             }
             stations={railVisible ? stationIndex : []}
             trainLabelMode={trainLabelMode}
-            isPlaying={isPlaying}
+            isPlaying={isPlaying && (!isPostbus || postbusDay.chunkReady)}
             time={networkTime}
             selectedTrain={selectedTrain}
-            onTime={handleNetworkTime}
+            onTime={handleSceneNetworkTime}
             cameraCommand={mapCameraCommand}
             playbackRate={playbackRate}
             selectedCategory={selectedCategory}
@@ -1851,6 +1868,8 @@ export function App({ edition }: AppProps) {
                     : MAP_FRAMINGS.national
             }
           />
+        ) : isNetwork ? (
+          <div className="contrast-loader" role="status" aria-label={isPostbus ? postbusDay.error ? text.postbusUnavailable : text.loadingPostbus : text.loading} />
         ) : isHub && network && hubStudy === 'station' ? (
           <Suspense fallback={null}>
             <StationFlowScene
@@ -1917,7 +1936,7 @@ export function App({ edition }: AppProps) {
             }
           >
             {isNetwork
-              ? isContrast
+              ? isPostbus ? text.postbusSubtitle : isContrast
                 ? text.contrastSubtitle
                 : networkStudy === 'zurich-city'
                 ? text.zurichSubtitle
@@ -2100,7 +2119,7 @@ export function App({ edition }: AppProps) {
                 placeholder={
                   isContrast
                     ? text.contrastPlaceholder
-                    : airEnabled
+                    : isPostbus ? text.postbusPlaceholder : airEnabled
                       ? text.airSearchPlaceholder
                     : networkStudy === 'national'
                     ? text.nationalPlaceholder
@@ -2186,6 +2205,7 @@ export function App({ edition }: AppProps) {
               </button>
             )}
             <nav className="network-study-picker" aria-label={text.networkStudy}>
+              <button type="button" className="postbus-study-toggle" aria-label={text.postbusNetwork} data-tooltip={text.postbusNetwork} aria-pressed={isPostbus} onClick={() => selectNetworkStudy('postbus')}>PA</button>
               <span className="sr-only">{text.scale}</span>
               <button
                 type="button"
@@ -2305,12 +2325,13 @@ export function App({ edition }: AppProps) {
                   label: '↔',
                   detail: text.contrastNetwork,
                 },
+                { value: 'postbus', label: 'PA', detail: text.postbusNetwork },
                 { value: 'zvv-region', label: 'ZVV', detail: text.zvvNetwork },
                 { value: 'zurich-city', label: 'ZH', detail: text.zurichNetwork },
                 { value: 'geneva-tpg', label: 'GE', detail: text.genevaNetwork },
               ]}
               triggerLabel={
-                isContrast
+                isPostbus ? 'PA' : isContrast
                   ? '↔'
                   : networkStudy === 'national' && nationalTimeRange === 'day'
                     ? '24H'
@@ -2422,6 +2443,7 @@ export function App({ edition }: AppProps) {
                       {serviceCategoryLabel(language, route.category)} {route.name}
                     </span>
                     <span className="result-route">
+                      {isPostbus && <>{route.headsigns.slice(0, 2).join(' / ')} · </>}
                       {numberFormat.format(route.trainIds.length)} {text.trips.toLocaleLowerCase(LANGUAGE_LOCALES[language])}
                       {' · '}
                       {numberFormat.format(route.stopIndexes.length)} {text.stops.toLocaleLowerCase(LANGUAGE_LOCALES[language])}
@@ -2922,7 +2944,7 @@ export function App({ edition }: AppProps) {
         <section
           className="journey-card network-card"
           aria-label={
-            networkStudy === 'national'
+            isPostbus ? text.postbusNetwork : networkStudy === 'national'
               ? text.swissNetworkStatus
               : networkStudy === 'zvv-region'
                 ? text.zvvNetworkStatus
@@ -2933,7 +2955,7 @@ export function App({ edition }: AppProps) {
         >
           <div className="network-count-row">
             <strong>
-              {network && (!isNationalDay || nationalDayChunkReady)
+              {network && (!isNationalDay || nationalDayChunkReady) && (!isPostbus || postbusDay.chunkReady)
                 ? numberFormat.format(activeTrainCount)
                 : '—'}
             </strong>
@@ -2989,7 +3011,9 @@ export function App({ edition }: AppProps) {
             )}
           </div>
           <p className="between">
-              {networkStudy === 'national' && operationsMode !== 'scheduled'
+              {isPostbus
+                ? postbusDay.error ? text.postbusUnavailable : postbusDay.loading ? text.loadingPostbus : text.postbusModes
+                : networkStudy === 'national' && operationsMode !== 'scheduled'
                 ? operationsDescription
                 : networkStudy !== 'national'
               ? regionalNetworkError
@@ -3023,7 +3047,7 @@ export function App({ edition }: AppProps) {
             <div>
               <span>{text.trips}</span>
               <strong>
-                {isNationalDay
+                {isPostbus ? postbusDay.manifest ? numberFormat.format(postbusDay.manifest.tripCount) : '—' : isNationalDay
                   ? nationalDayManifest
                     ? numberFormat.format(nationalDayManifest.tripCount)
                     : '—'
@@ -3031,7 +3055,7 @@ export function App({ edition }: AppProps) {
                     ? numberFormat.format(network.trains.length)
                     : '—'}
               </strong>
-              <small>{isNationalDay ? '24h' : '2h'}</small>
+              <small>{isNationalDay || isPostbus ? '24h' : '2h'}</small>
             </div>
             <div>
               <span>{text.feed}</span>
@@ -3527,7 +3551,7 @@ export function App({ edition }: AppProps) {
                     ? text.corridorStudy
                     : networkStudy === 'national'
                       ? text.nationalView
-                      : networkStudy === 'zvv-region'
+                      : isPostbus ? text.postbusNetwork : networkStudy === 'zvv-region'
                         ? text.zvvView
                         : networkStudy === 'geneva-tpg'
                           ? text.genevaView
@@ -3615,7 +3639,7 @@ export function App({ edition }: AppProps) {
                 ? text.corridorStudy
                 : networkStudy === 'national'
                   ? text.nationalView
-                  : networkStudy === 'zvv-region'
+                  : isPostbus ? text.postbusNetwork : networkStudy === 'zvv-region'
                     ? text.zvvView
                     : networkStudy === 'geneva-tpg'
                       ? text.genevaView
@@ -3640,7 +3664,7 @@ export function App({ edition }: AppProps) {
               {isHub
                 ? networkStudy === 'national'
                   ? text.nationalView
-                  : networkStudy === 'zvv-region'
+                  : isPostbus ? text.postbusNetwork : networkStudy === 'zvv-region'
                     ? text.zvvView
                     : networkStudy === 'geneva-tpg'
                       ? text.genevaView
