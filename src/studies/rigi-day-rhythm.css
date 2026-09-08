@@ -27,3 +27,6 @@
 @media (min-width: 701px) and (max-width: 1500px) { .journey-card.rigi-day-rhythm { left: 24px; width: 240px; padding: 12px; max-height: calc(78vh - 52px); } }
 .rhythm-heading { position: sticky; top: -12px; z-index: 1; padding: 4px 0; background: #0c0b21; }
 .rhythm-next, .rhythm-first { justify-content: start; justify-items: start; }
+
+/* The authored journey panel owns this mobile control area. */
+.experience:has(.rigi-day-rhythm) .mobile-map-tools { display: none; }
