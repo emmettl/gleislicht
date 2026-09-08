@@ -1,5 +1,5 @@
 {
-  "baselineCommit": "ed820347068a09f1f672415aed7f90989bd9b8d0",
+  "baselineCommit": "23cafe02173ad4d3db10e7e8ea17a40bcf158123",
   "sourceHashes": {
     "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
     "source": "5f11586ad156f763d7b1b9a6ac05f14dd29865ca03bf5a1d42195a7da8c331e8"
@@ -7,148 +7,307 @@
   "source": {
     "policy": {
       "schemaVersion": 1,
-      "sourceFile": "data/solothurn-sources/decoded.json.gz",
-      "sourceSha256": "5f11586ad156f763d7b1b9a6ac05f14dd29865ca03bf5a1d42195a7da8c331e8",
-      "routeId": "96-145-2-j26-1",
-      "agencyId": "801",
-      "line": "126",
-      "mode": "bus",
-      "from": [
-        7.77154112,
-        47.30536116,
-        "Oberbuchsiten, Bahnhof",
-        "",
-        "ch:1:sloid:89885:0:01"
-      ],
-      "to": [
-        7.76638479,
-        47.30955796,
-        "Oberbuchsiten, Löwen",
-        "",
-        "ch:1:sloid:81284:0:390682"
-      ],
-      "features": [
+      "sourceDirectory": "data/solothurn-bern-terminal-sources",
+      "sources": [
         {
-          "id": "4562863f-1da7-42ea-9cf8-f580fb14b86c",
-          "sha256": "69ba89d5390472aa1d9a6a0057a13640651d18b4d258499cfd878f92b122a84f",
-          "part": 0,
-          "endpoint": 0,
-          "coordinate": [
-            2624747.1,
-            1239883.09
-          ]
-        },
-        {
-          "id": "64c5c5c2-6512-4ef1-a06e-4bac13d29b5d",
-          "sha256": "2bf1a6666c52334bfb5918f9d01cf0ef0c504066be5d764e3985ebc4b2599511",
-          "part": 0,
-          "endpoint": 0,
-          "coordinate": [
-            2624747.099,
-            1239883.092
-          ]
+          "file": "sbb-bern-plan-2026-08.pdf",
+          "sha256": "fc8996f20bd75a4293448ccf96a11b443f5df2419282ab75cea80efd252486eb",
+          "url": "https://company.sbb.ch/content/dam/infrastruktur/trafimage/bahnhofplaene/plan-bern-a4.pdf",
+          "retrievedAt": "2026-09-08T20:18:29.309Z",
+          "documentDate": "2026-08",
+          "role": "SBB station exterior plan, page 3: tracks 49/50 at western end of Bern. Station extent and platform identity evidence; not a surveyed track/switch alignment."
         }
       ],
-      "maximumJoinMetres": 0.003,
-      "method": "Explicitly reviewed 2.236 mm LV95 gap between two non-tunnel Bus source-feature endpoints at Oberbuchsiten. Preserve original vertices and add one separately identified inferred connector, only in a supplementary graph for exact PostAuto 126 route and directed platform pair. No global near-endpoint stitching, coordinate replacement, road direction or present-day operator itinerary certification."
-    },
-    "policySha256": "d8afeee5da1a39ed52112981f8b8b6ba88c222574857929f27bcd9966728ca14",
-    "source": {
-      "schemaVersion": 1,
-      "sourceCrs": "EPSG:2056",
-      "records": [
-        {
-          "file": "ch.so.avt.oev.gpkg.zip",
-          "url": "https://files.geo.so.ch/ch.so.avt.oev/aktuell/ch.so.avt.oev.gpkg.zip",
-          "sha256": "e1114b1dfcbd75f57a85da70da00185d64123d72c745c0379c6a8470f48c5045",
-          "bytes": 671829,
-          "acquiredAt": "2026-09-08T17:03:54.515155+00:00"
-        },
-        {
-          "file": "metadata.html",
-          "url": "https://files.geo.so.ch/ch.so.avt.oev/aktuell/meta/datenbeschreibung.html",
-          "sha256": "72a20b0a2757c30d72ee5d04f07f82b354220f434eba4b2ffac1328c847c9c97",
-          "bytes": 125613,
-          "acquiredAt": "2026-09-08T17:03:54.454634+00:00"
-        },
-        {
-          "file": "terms.html",
-          "url": "https://files.geo.so.ch/nutzungsbedingungen.html",
-          "sha256": "0154479bfb178f7c5011cb4da7b861110fabd0803709ecc7b8f04bc6d6b82f15",
-          "bytes": 120820,
-          "acquiredAt": "2026-09-08T17:10:59.082656+00:00"
-        },
-        {
-          "file": "publications.json",
-          "url": "https://data.geo.so.ch/themepublications?query=ch.so.avt.oev",
-          "sha256": "37645f96c2d70ca4e65fcef91477df2b21edb0b0fcbb8e5dd4861d2bb5b6481b",
-          "bytes": 3647,
-          "acquiredAt": "2026-09-08T17:02:37.178652+00:00"
-        }
-      ],
-      "packagePublished": "2025-12-17",
-      "geometrySurveyDate": null,
-      "vintageNote": "Publication date is not a survey date; no per-edge survey date supplied.",
-      "archiveSha256": "e1114b1dfcbd75f57a85da70da00185d64123d72c745c0379c6a8470f48c5045",
-      "geopackageSha256": "3e7a43cfa528866880d2bba61d9b309f5bbc660f7252914c9373f66096f2a263",
-      "attribution": "Öffentlicher Verkehr — Amt für Verkehr und Tiefbau / Amt für Geoinformation, Kanton Solothurn",
-      "metadataUrl": "https://files.geo.so.ch/ch.so.avt.oev/aktuell/meta/datenbeschreibung.html",
-      "termsUrl": "https://files.geo.so.ch/nutzungsbedingungen.html",
-      "license": "Free commercial and noncommercial use; attribution recommended. No Creative Commons licence assigned.",
-      "sourceExclusion": "Night services explicitly excluded by publisher.",
-      "boundary": {
-        "edition": "2026-01",
-        "sourceSha256": "1f122cb7a06f2d312a84b7c0a91116348ba907054d487f0a70b9d2302984e6fc",
-        "snapshotSha256": "68ad054cb9830453e9a90345d57a7bbde9b458dcc0160dce5903ce88a4811d28",
-        "attribution": "© swisstopo",
-        "sourceUrl": "https://data.geo.admin.ch/ch.swisstopo.swissboundaries3d/swissboundaries3d_2026-01/swissboundaries3d_2026-01_2056_5728.gpkg.zip",
-        "termsUrl": "https://www.swisstopo.admin.ch/en/terms-of-use-free-geodata-and-geoservices"
-      }
-    },
-    "evidence": {
-      "endpointsLv95": [
+      "sourceSha256": "2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+      "contextSha256": "6a3fb3b6d119bf3118969bce3f42bd9592fb484a4f088a0ee8b456ff769c146d",
+      "node": {
+        "id": "ch14uvag00088813",
+        "number": "8507000",
+        "name": "Bern",
+        "coordinate": [
+          7.439136,
+          46.948831
+        ]
+      },
+      "stationCurve": {
+        "id": "ch14uvag00087328",
+        "start": "ch14uvag00089324",
+        "end": "ch14uvag00088813",
+        "length": 781.1577614377883,
+        "points": [
+          [
+            7.428931,
+            46.948284
+          ],
+          [
+            7.429906,
+            46.948018
+          ],
+          [
+            7.430804,
+            46.947885
+          ],
+          [
+            7.432114,
+            46.947828
+          ],
+          [
+            7.433162,
+            46.947876
+          ],
+          [
+            7.437213,
+            46.948635
+          ],
+          [
+            7.43793,
+            46.948857
+          ],
+          [
+            7.438694,
+            46.949225
+          ]
+        ],
+        "gauge": "mm1435",
+        "dataStand": "2021-07-06",
+        "validFrom": "2005-02-11",
+        "validUntil": null,
+        "infrastructureOperator": "SBB CFF FFS"
+      },
+      "easternApproach": {
+        "id": "ch14uvag00139673",
+        "start": "ch14uvag00139694",
+        "end": "ch14uvag00088813",
+        "length": 2787.4735732175945,
+        "points": [
+          [
+            7.46029,
+            46.966596
+          ],
+          [
+            7.451745,
+            46.964523
+          ],
+          [
+            7.448704,
+            46.963673
+          ],
+          [
+            7.447217,
+            46.963104
+          ],
+          [
+            7.44607,
+            46.962366
+          ],
+          [
+            7.443934,
+            46.960208
+          ],
+          [
+            7.44333,
+            46.95941
+          ],
+          [
+            7.442972,
+            46.958454
+          ],
+          [
+            7.442844,
+            46.956118
+          ],
+          [
+            7.442585,
+            46.955238
+          ],
+          [
+            7.439723,
+            46.950113
+          ],
+          [
+            7.439325,
+            46.949649
+          ],
+          [
+            7.438694,
+            46.949225
+          ]
+        ],
+        "gauge": "mm1435",
+        "dataStand": "2021-07-06",
+        "validFrom": "2015-10-21",
+        "validUntil": null,
+        "infrastructureOperator": "SBB CFF FFS"
+      },
+      "stops": [
         [
-          2624747.1,
-          1239883.09
+          7.4333344,
+          46.94822398,
+          "Bern",
+          "49",
+          "ch:1:sloid:7000:55:49"
         ],
         [
-          2624747.099,
-          1239883.092
+          7.43355898,
+          46.94830984,
+          "Bern",
+          "50",
+          "ch:1:sloid:7000:55:50"
         ]
       ],
-      "joinMetres": 0.0022360679275197854,
-      "sourceFeatureIds": [
-        "4562863f-1da7-42ea-9cf8-f580fb14b86c",
-        "64c5c5c2-6512-4ef1-a06e-4bac13d29b5d"
+      "maximumProjectionMetres": 75,
+      "minimumSpurMetres": 200,
+      "maximumSpurMetres": 600,
+      "routes": [
+        {
+          "routeId": "91-16-B-j26-1",
+          "agencyId": "11",
+          "line": "IR16"
+        },
+        {
+          "routeId": "91-35-A-j26-1",
+          "agencyId": "82",
+          "line": "IR35"
+        },
+        {
+          "routeId": "91-35-B-j26-1",
+          "agencyId": "11",
+          "line": "IR35"
+        },
+        {
+          "routeId": "91-35-D-j26-1",
+          "agencyId": "33",
+          "line": "IR35"
+        },
+        {
+          "routeId": "91-4U-Y-j26-1",
+          "agencyId": "11",
+          "line": "IR"
+        }
       ],
-      "originalVertices": 56,
-      "originalEdges": 54,
-      "addedVertices": 0,
-      "addedEdges": 1
-    }
+      "adjacentOperatingPoints": {
+        "91-16-B-j26-1": [
+          "8500218"
+        ],
+        "91-35-A-j26-1": [
+          "8508005"
+        ],
+        "91-35-B-j26-1": [
+          "8508005"
+        ],
+        "91-35-D-j26-1": [
+          "8508005"
+        ],
+        "91-4U-Y-j26-1": [
+          "8508005"
+        ]
+      },
+      "method": "Only exact reviewed route/operator identities with one terminal Bern call on original platforms 49/50 and the explicit adjacent operating point. Project platform onto the pinned SBB station curve and retain its station-centre side as an inferred terminal spur. Original Bern node stays in place; only Bern Wyler eastern approach remains connected at that node in the pattern-local graph. Full-context consensus and existing source validity, station/topology attachment, detour and stop-order guards remain. Preserve all previous successful paths. No running-track, switch or present-day itinerary certification."
+    },
+    "policySha256": "3b67c0919902b95d2a08fbc26f653677a907ce95b286fb02d14bc1d511611d5d",
+    "evidence": [
+      {
+        "stopId": "ch:1:sloid:7000:55:49",
+        "originalOperatingPoint": {
+          "id": "ch14uvag00088813",
+          "number": "8507000",
+          "name": "Bern",
+          "coordinate": [
+            7.439136,
+            46.948831
+          ]
+        },
+        "terminal": {
+          "id": "solothurn:bern-terminal:49",
+          "number": "SO-BERN-49",
+          "name": "Bern reviewed platform 49",
+          "coordinate": [
+            7.4334524,
+            46.9479304
+          ]
+        },
+        "projection": {
+          "segmentIndex": 4,
+          "fraction": 0.07169237022045111,
+          "point": [
+            7.4334524,
+            46.9479304
+          ],
+          "attachmentMetres": 33.88924546124847
+        },
+        "retainedMetres": 427.2349973477947,
+        "sourceCurveId": "ch14uvag00087328",
+        "easternApproachId": "ch14uvag00139673",
+        "spurId": "solothurn:bern-terminal:49:inferred-station-spur",
+        "removedConnections": [
+          "ch14uvag00087195",
+          "ch14uvag00087196",
+          "ch14uvag00087328"
+        ]
+      },
+      {
+        "stopId": "ch:1:sloid:7000:55:50",
+        "originalOperatingPoint": {
+          "id": "ch14uvag00088813",
+          "number": "8507000",
+          "name": "Bern",
+          "coordinate": [
+            7.439136,
+            46.948831
+          ]
+        },
+        "terminal": {
+          "id": "solothurn:bern-terminal:50",
+          "number": "SO-BERN-50",
+          "name": "Bern reviewed platform 50",
+          "coordinate": [
+            7.4336934,
+            46.9479756
+          ]
+        },
+        "projection": {
+          "segmentIndex": 4,
+          "fraction": 0.1311714476650292,
+          "point": [
+            7.4336934,
+            46.9479756
+          ],
+          "attachmentMetres": 38.584362303324
+        },
+        "retainedMetres": 408.2418313977731,
+        "sourceCurveId": "ch14uvag00087328",
+        "easternApproachId": "ch14uvag00139673",
+        "spurId": "solothurn:bern-terminal:50:inferred-station-spur",
+        "removedConnections": [
+          "ch14uvag00087195",
+          "ch14uvag00087196",
+          "ch14uvag00087328"
+        ]
+      }
+    ]
   },
   "days": [
     {
       "date": "2026-09-04",
       "before": {
         "trips": 7156,
-        "admittedTrips": 6918,
+        "admittedTrips": 6989,
         "scheduledTrips": 6078,
         "representativeHeadwayTrips": 1078,
-        "admittedScheduledTrips": 5840,
+        "admittedScheduledTrips": 5911,
         "admittedRepresentativeHeadwayTrips": 1078,
         "scheduledSegmentOccurrences": 97358,
-        "matchedScheduledSegmentOccurrences": 97026,
+        "matchedScheduledSegmentOccurrences": 97097,
         "segmentOccurrences": 98436,
-        "matchedSegmentOccurrences": 98104,
-        "admittedSegmentOccurrences": 91365,
+        "matchedSegmentOccurrences": 98175,
+        "admittedSegmentOccurrences": 93159,
         "directedPairs": 4259,
-        "matchedDirectedPairs": 4238,
+        "matchedDirectedPairs": 4240,
         "patterns": 921,
-        "completePatterns": 870,
-        "admittedPatterns": 870,
+        "completePatterns": 877,
+        "admittedPatterns": 877,
         "excludedTrips": {
-          "incomplete-directed-pattern": 238
+          "incomplete-directed-pattern": 167
         }
       },
       "after": {
@@ -1287,335 +1446,943 @@
           "decisions": {
             "admitted": 1
           }
-        },
-        {
-          "id": "407d32a0437bbf519f81b2d7",
-          "routeId": "96-131-1-j26-1",
-          "agencyId": "801",
-          "mode": "bus",
-          "line": "111",
-          "directionId": "0",
-          "stopIds": [
-            "ch:1:sloid:775:0:815608",
-            "ch:1:sloid:72210:0:992563",
-            "ch:1:sloid:72211:0:439842",
-            "ch:1:sloid:972:0:971618",
-            "ch:1:sloid:72220:0:649198",
-            "ch:1:sloid:80933:0:594726",
-            "ch:1:sloid:72224:0:299008",
-            "ch:1:sloid:72223:0:160522",
-            "ch:1:sloid:72222:0:399982",
-            "ch:1:sloid:72221:0:603972",
-            "ch:1:sloid:3662:0:869147",
-            "ch:1:sloid:72212:1:4"
-          ],
-          "segmentCount": 11,
-          "supplementAvailable": true,
-          "geometrySources": [
-            "osm-solothurn-access-road-inference",
-            "solothurn-network"
-          ],
-          "matchedSegments": 11,
-          "trips": 1,
-          "admittedTrips": 1,
-          "carryInTrips": 0,
-          "representativeHeadwayTrips": 0,
-          "decisions": {
-            "admitted": 1
-          }
-        },
-        {
-          "id": "705a8cee4c7ddec2bb54d69a",
-          "routeId": "96-131-1-j26-1",
-          "agencyId": "801",
-          "mode": "bus",
-          "line": "111",
-          "directionId": "0",
-          "stopIds": [
-            "ch:1:sloid:765:0:809629",
-            "ch:1:sloid:72133:0:653646",
-            "ch:1:sloid:82119:0:644725",
-            "ch:1:sloid:72135:0:455515",
-            "ch:1:sloid:753:0:356622",
-            "ch:1:sloid:72136:0:803562",
-            "ch:1:sloid:72137:0:322660",
-            "ch:1:sloid:72138:0:964507",
-            "ch:1:sloid:72140:0:607563",
-            "ch:1:sloid:775:0:815608",
-            "ch:1:sloid:72210:0:992563",
-            "ch:1:sloid:72211:0:439842",
-            "ch:1:sloid:972:0:971618",
-            "ch:1:sloid:72220:0:649198",
-            "ch:1:sloid:80933:0:594726",
-            "ch:1:sloid:72224:0:299008",
-            "ch:1:sloid:72223:0:160522",
-            "ch:1:sloid:72222:0:399982",
-            "ch:1:sloid:72221:0:603972",
-            "ch:1:sloid:3662:0:869147",
-            "ch:1:sloid:72212:1:4"
-          ],
-          "segmentCount": 20,
-          "supplementAvailable": true,
-          "geometrySources": [
-            "osm-solothurn-access-road-inference",
-            "solothurn-network"
-          ],
-          "matchedSegments": 20,
-          "trips": 1,
-          "admittedTrips": 1,
-          "carryInTrips": 0,
-          "representativeHeadwayTrips": 0,
-          "decisions": {
-            "admitted": 1
-          }
-        },
-        {
-          "id": "b4496d83e363694ef522f88a",
-          "routeId": "96-131-1-j26-1",
-          "agencyId": "801",
-          "mode": "bus",
-          "line": "111",
-          "directionId": "0",
-          "stopIds": [
-            "ch:1:sloid:72113:0:489065",
-            "ch:1:sloid:72168:0:180359",
-            "ch:1:sloid:80734:0:509064",
-            "ch:1:sloid:72169:0:962819",
-            "ch:1:sloid:72170:0:110785",
-            "ch:1:sloid:958:0:893032",
-            "ch:1:sloid:72115:0:708906",
-            "ch:1:sloid:752:0:58095",
-            "ch:1:sloid:72116:0:380685",
-            "ch:1:sloid:82411:0:670907",
-            "ch:1:sloid:72117:0:5243",
-            "ch:1:sloid:967:0:600753",
-            "ch:1:sloid:72118:0:306446",
-            "ch:1:sloid:72119:0:407741",
-            "ch:1:sloid:72120:0:668973",
-            "ch:1:sloid:72119:0:978527",
-            "ch:1:sloid:72121:0:64956",
-            "ch:1:sloid:969:0:74709",
-            "ch:1:sloid:72122:0:366552",
-            "ch:1:sloid:765:0:809629",
-            "ch:1:sloid:72133:0:653646",
-            "ch:1:sloid:82119:0:644725",
-            "ch:1:sloid:72135:0:455515",
-            "ch:1:sloid:753:0:356622",
-            "ch:1:sloid:72136:0:803562",
-            "ch:1:sloid:72137:0:322660",
-            "ch:1:sloid:72138:0:964507",
-            "ch:1:sloid:72140:0:607563",
-            "ch:1:sloid:775:0:815608",
-            "ch:1:sloid:72210:0:992563",
-            "ch:1:sloid:72211:0:439842",
-            "ch:1:sloid:972:0:971618",
-            "ch:1:sloid:72220:0:649198",
-            "ch:1:sloid:80933:0:594726",
-            "ch:1:sloid:72224:0:299008",
-            "ch:1:sloid:72223:0:160522",
-            "ch:1:sloid:72222:0:399982",
-            "ch:1:sloid:72221:0:603972",
-            "ch:1:sloid:3662:0:869147",
-            "ch:1:sloid:72212:1:4"
-          ],
-          "segmentCount": 39,
-          "supplementAvailable": true,
-          "geometrySources": [
-            "osm-road-inference",
-            "osm-solothurn-access-road-inference",
-            "solothurn-network"
-          ],
-          "matchedSegments": 39,
-          "trips": 32,
-          "admittedTrips": 32,
-          "carryInTrips": 0,
-          "representativeHeadwayTrips": 0,
-          "decisions": {
-            "admitted": 32
-          }
-        },
-        {
-          "id": "efab9d6b5ae74fc1f69d01f7",
-          "routeId": "96-145-2-j26-1",
-          "agencyId": "801",
-          "mode": "bus",
-          "line": "126",
-          "directionId": "0",
-          "stopIds": [
-            "ch:1:sloid:89885:0:01",
-            "ch:1:sloid:81284:0:390682",
-            "ch:1:sloid:81285:0:911079",
-            "ch:1:sloid:81286:0:01",
-            "ch:1:sloid:81287:0:01",
-            "ch:1:sloid:78916:0:01",
-            "ch:1:sloid:385:0:01",
-            "ch:1:sloid:81290:0:933260"
-          ],
-          "segmentCount": 7,
-          "supplementAvailable": true,
-          "geometrySources": [
-            "osm-road-inference",
-            "solothurn-network",
-            "solothurn-reviewed-bus-junction"
-          ],
-          "matchedSegments": 7,
-          "trips": 2,
-          "admittedTrips": 2,
-          "carryInTrips": 0,
-          "representativeHeadwayTrips": 0,
-          "decisions": {
-            "admitted": 2
-          }
-        },
-        {
-          "id": "7c7bbc97ad48abc08c647b94",
-          "routeId": "96-145-2-j26-1",
-          "agencyId": "801",
-          "mode": "bus",
-          "line": "126",
-          "directionId": "0",
-          "stopIds": [
-            "ch:1:sloid:89885:0:01",
-            "ch:1:sloid:81284:0:390682",
-            "ch:1:sloid:81285:0:911079",
-            "ch:1:sloid:81286:0:01",
-            "ch:1:sloid:81287:0:01",
-            "ch:1:sloid:78916:0:01",
-            "ch:1:sloid:7326:0:440180",
-            "ch:1:sloid:81288:0:805818",
-            "ch:1:sloid:89884:0:38836",
-            "ch:1:sloid:83812:0:584985",
-            "ch:1:sloid:385:0:01",
-            "ch:1:sloid:81290:0:933260",
-            "ch:1:sloid:5100:0:58318",
-            "ch:1:sloid:72367",
-            "ch:1:sloid:986",
-            "ch:1:sloid:72368"
-          ],
-          "segmentCount": 15,
-          "supplementAvailable": true,
-          "geometrySources": [
-            "osm-road-inference",
-            "solothurn-network",
-            "solothurn-reviewed-bus-junction"
-          ],
-          "matchedSegments": 15,
-          "trips": 1,
-          "admittedTrips": 1,
-          "carryInTrips": 0,
-          "representativeHeadwayTrips": 0,
-          "decisions": {
-            "admitted": 1
-          }
-        },
-        {
-          "id": "8389689cfc6819b2fe013695",
-          "routeId": "96-145-2-j26-1",
-          "agencyId": "801",
-          "mode": "bus",
-          "line": "126",
-          "directionId": "0",
-          "stopIds": [
-            "ch:1:sloid:89885:0:01",
-            "ch:1:sloid:81284:0:390682",
-            "ch:1:sloid:81285:0:911079",
-            "ch:1:sloid:81286:0:01",
-            "ch:1:sloid:81287:0:01",
-            "ch:1:sloid:78916:0:01",
-            "ch:1:sloid:7326:0:440180",
-            "ch:1:sloid:81288:0:805818",
-            "ch:1:sloid:89884:0:38836",
-            "ch:1:sloid:83812:0:584985",
-            "ch:1:sloid:385:0:01",
-            "ch:1:sloid:81290:0:933260",
-            "ch:1:sloid:5100:0:58318",
-            "ch:1:sloid:72367:0:389242",
-            "ch:1:sloid:986:0:87035",
-            "ch:1:sloid:72368:0:754999"
-          ],
-          "segmentCount": 15,
-          "supplementAvailable": true,
-          "geometrySources": [
-            "osm-road-inference",
-            "solothurn-network",
-            "solothurn-reviewed-bus-junction"
-          ],
-          "matchedSegments": 15,
-          "trips": 32,
-          "admittedTrips": 32,
-          "carryInTrips": 0,
-          "representativeHeadwayTrips": 0,
-          "decisions": {
-            "admitted": 32
-          }
-        },
-        {
-          "id": "4198dfa4be6e8093d41c414d",
-          "routeId": "96-145-2-j26-1",
-          "agencyId": "801",
-          "mode": "bus",
-          "line": "126",
-          "directionId": "1",
-          "stopIds": [
-            "ch:1:sloid:81290:0:647104",
-            "ch:1:sloid:78020:0:02",
-            "ch:1:sloid:89885:0:01",
-            "ch:1:sloid:81284:0:390682"
-          ],
-          "segmentCount": 3,
-          "supplementAvailable": true,
-          "geometrySources": [
-            "osm-road-inference",
-            "solothurn-reviewed-bus-junction"
-          ],
-          "matchedSegments": 3,
-          "trips": 2,
-          "admittedTrips": 2,
-          "carryInTrips": 0,
-          "representativeHeadwayTrips": 0,
-          "decisions": {
-            "admitted": 2
-          }
         }
       ],
       "sourcePairs": [
         {
-          "routeId": "96-145-2-j26-1",
-          "agencyId": "801",
-          "mode": "bus",
-          "fromId": "ch:1:sloid:89885:0:01",
-          "toId": "ch:1:sloid:81284:0:390682",
-          "from": "Oberbuchsiten, Bahnhof",
-          "to": "Oberbuchsiten, Löwen",
-          "directMetres": 608.0701046612704,
-          "maximumSnapMetres": 5.952102579605288,
-          "pathMetres": 792.9325397010779,
-          "geometrySource": "solothurn-reviewed-bus-junction",
-          "sourceJunction": {
-            "endpointsLv95": [
-              [
-                2624747.1,
-                1239883.09
-              ],
-              [
-                2624747.099,
-                1239883.092
+          "routeId": "91-16-B-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "fromId": "ch:1:sloid:218:5:8",
+          "toId": "ch:1:sloid:7000:55:49",
+          "from": "Olten",
+          "to": "Bern",
+          "directMetres": 57562.58182678354,
+          "geometrySource": "fot-reviewed-bern-eastern-terminal",
+          "fromOperatingPoint": "8500218",
+          "toOperatingPoint": "SO-BERN-49",
+          "stationAttachmentsMetres": [
+            35.47777312388973,
+            33.88924546124847
+          ],
+          "pathMetres": 62980.64718411785,
+          "maximumTopologyAttachmentMetres": 55.24405007731446,
+          "directedSourceSegments": [
+            {
+              "id": "ch14uvag00087767",
+              "from": "ch14uvag00089662",
+              "to": "ch14uvag00089666"
+            },
+            {
+              "id": "ch14uvag00087637",
+              "from": "ch14uvag00089666",
+              "to": "ch14uvag00089798"
+            },
+            {
+              "id": "ch14uvag00087638",
+              "from": "ch14uvag00089798",
+              "to": "ch14uvag00089799"
+            },
+            {
+              "id": "ch14uvag00087524",
+              "from": "ch14uvag00089799",
+              "to": "ch14uvag00090093"
+            },
+            {
+              "id": "ch14uvag00087523",
+              "from": "ch14uvag00090093",
+              "to": "ch14uvag00088706"
+            },
+            {
+              "id": "ch14uvag00087522",
+              "from": "ch14uvag00088706",
+              "to": "ch14uvag00089426"
+            },
+            {
+              "id": "ch14uvag00087660",
+              "from": "ch14uvag00089426",
+              "to": "ch14uvag00089425"
+            },
+            {
+              "id": "ch14uvag00087661",
+              "from": "ch14uvag00089425",
+              "to": "ch14uvag00088825"
+            },
+            {
+              "id": "ch14uvag00087662",
+              "from": "ch14uvag00088825",
+              "to": "ch14uvag00088827"
+            },
+            {
+              "id": "ch14uvag00139692",
+              "from": "ch14uvag00088827",
+              "to": "ch14uvag00139694"
+            },
+            {
+              "id": "ch14uvag00139673",
+              "from": "ch14uvag00139694",
+              "to": "ch14uvag00088813"
+            },
+            {
+              "id": "solothurn:bern-terminal:49:inferred-station-spur",
+              "from": "ch14uvag00088813",
+              "to": "solothurn:bern-terminal:49"
+            }
+          ],
+          "bernTerminalReview": {
+            "stopId": "ch:1:sloid:7000:55:49",
+            "originalOperatingPoint": {
+              "id": "ch14uvag00088813",
+              "number": "8507000",
+              "name": "Bern",
+              "coordinate": [
+                7.439136,
+                46.948831
               ]
-            ],
-            "joinMetres": 0.0022360679275197854,
-            "sourceFeatureIds": [
-              "4562863f-1da7-42ea-9cf8-f580fb14b86c",
-              "64c5c5c2-6512-4ef1-a06e-4bac13d29b5d"
-            ],
-            "originalVertices": 56,
-            "originalEdges": 54,
-            "addedVertices": 0,
-            "addedEdges": 1
+            },
+            "terminal": {
+              "id": "solothurn:bern-terminal:49",
+              "number": "SO-BERN-49",
+              "name": "Bern reviewed platform 49",
+              "coordinate": [
+                7.4334524,
+                46.9479304
+              ]
+            },
+            "projection": {
+              "segmentIndex": 4,
+              "fraction": 0.07169237022045111,
+              "point": [
+                7.4334524,
+                46.9479304
+              ],
+              "attachmentMetres": 33.88924546124847
+            },
+            "retainedMetres": 427.2349973477947,
+            "sourceCurveId": "ch14uvag00087328",
+            "easternApproachId": "ch14uvag00139673",
+            "spurId": "solothurn:bern-terminal:49:inferred-station-spur",
+            "removedConnections": [
+              "ch14uvag00087195",
+              "ch14uvag00087196",
+              "ch14uvag00087328"
+            ]
           },
-          "previousSupplementFailure": "road-pattern-dependent-path",
-          "primaryReason": "disconnected-line",
-          "occurrences": 37,
-          "admittedOccurrences": 37
+          "previousSupplementFailure": "rail-station-attachment-too-far",
+          "contextCount": 3,
+          "primaryReason": "endpoint-gap",
+          "occurrences": 1,
+          "admittedOccurrences": 1
+        },
+        {
+          "routeId": "91-35-A-j26-1",
+          "agencyId": "82",
+          "mode": "rail",
+          "fromId": "ch:1:sloid:7000:55:50",
+          "toId": "ch:1:sloid:8005:2:3",
+          "from": "Bern",
+          "to": "Burgdorf",
+          "directMetres": 19003.94866557002,
+          "geometrySource": "fot-reviewed-bern-eastern-terminal",
+          "fromOperatingPoint": "SO-BERN-50",
+          "toOperatingPoint": "8508005",
+          "stationAttachmentsMetres": [
+            38.584362303324,
+            19.77496980224792
+          ],
+          "pathMetres": 22322.962092412356,
+          "maximumTopologyAttachmentMetres": 55.24405007731446,
+          "directedSourceSegments": [
+            {
+              "id": "solothurn:bern-terminal:50:inferred-station-spur",
+              "from": "solothurn:bern-terminal:50",
+              "to": "ch14uvag00088813"
+            },
+            {
+              "id": "ch14uvag00139673",
+              "from": "ch14uvag00088813",
+              "to": "ch14uvag00139694"
+            },
+            {
+              "id": "ch14uvag00139692",
+              "from": "ch14uvag00139694",
+              "to": "ch14uvag00088827"
+            },
+            {
+              "id": "ch14uvag00087662",
+              "from": "ch14uvag00088827",
+              "to": "ch14uvag00088825"
+            },
+            {
+              "id": "ch14uvag00087661",
+              "from": "ch14uvag00088825",
+              "to": "ch14uvag00089425"
+            },
+            {
+              "id": "ch14uvag00087660",
+              "from": "ch14uvag00089425",
+              "to": "ch14uvag00089426"
+            },
+            {
+              "id": "ch14uvag00087522",
+              "from": "ch14uvag00089426",
+              "to": "ch14uvag00088706"
+            },
+            {
+              "id": "ch14uvag00087670",
+              "from": "ch14uvag00088706",
+              "to": "ch14uvag00089659"
+            },
+            {
+              "id": "ch14uvag00087671",
+              "from": "ch14uvag00089659",
+              "to": "ch14uvag00089292"
+            },
+            {
+              "id": "ch14uvag00087652",
+              "from": "ch14uvag00089292",
+              "to": "ch14uvag00089257"
+            },
+            {
+              "id": "ch14uvag00087651",
+              "from": "ch14uvag00089257",
+              "to": "ch14uvag00089823"
+            },
+            {
+              "id": "ch14uvag00087650",
+              "from": "ch14uvag00089823",
+              "to": "ch14uvag00089503"
+            },
+            {
+              "id": "ch14uvag00087649",
+              "from": "ch14uvag00089503",
+              "to": "ch14uvag00088763"
+            },
+            {
+              "id": "ch14uvag00087648",
+              "from": "ch14uvag00088763",
+              "to": "ch14uvag00088760"
+            }
+          ],
+          "bernTerminalReview": {
+            "stopId": "ch:1:sloid:7000:55:50",
+            "originalOperatingPoint": {
+              "id": "ch14uvag00088813",
+              "number": "8507000",
+              "name": "Bern",
+              "coordinate": [
+                7.439136,
+                46.948831
+              ]
+            },
+            "terminal": {
+              "id": "solothurn:bern-terminal:50",
+              "number": "SO-BERN-50",
+              "name": "Bern reviewed platform 50",
+              "coordinate": [
+                7.4336934,
+                46.9479756
+              ]
+            },
+            "projection": {
+              "segmentIndex": 4,
+              "fraction": 0.1311714476650292,
+              "point": [
+                7.4336934,
+                46.9479756
+              ],
+              "attachmentMetres": 38.584362303324
+            },
+            "retainedMetres": 408.2418313977731,
+            "sourceCurveId": "ch14uvag00087328",
+            "easternApproachId": "ch14uvag00139673",
+            "spurId": "solothurn:bern-terminal:50:inferred-station-spur",
+            "removedConnections": [
+              "ch14uvag00087195",
+              "ch14uvag00087196",
+              "ch14uvag00087328"
+            ]
+          },
+          "previousSupplementFailure": "rail-station-attachment-too-far",
+          "contextCount": 20,
+          "primaryReason": "endpoint-gap",
+          "occurrences": 9,
+          "admittedOccurrences": 9
+        },
+        {
+          "routeId": "91-35-A-j26-1",
+          "agencyId": "82",
+          "mode": "rail",
+          "fromId": "ch:1:sloid:8005:2:2",
+          "toId": "ch:1:sloid:7000:55:50",
+          "from": "Burgdorf",
+          "to": "Bern",
+          "directMetres": 18999.91203372086,
+          "geometrySource": "fot-reviewed-bern-eastern-terminal",
+          "fromOperatingPoint": "8508005",
+          "toOperatingPoint": "SO-BERN-50",
+          "stationAttachmentsMetres": [
+            14.003947826673501,
+            38.584362303324
+          ],
+          "pathMetres": 22317.191070436784,
+          "maximumTopologyAttachmentMetres": 55.24405007731446,
+          "directedSourceSegments": [
+            {
+              "id": "ch14uvag00087648",
+              "from": "ch14uvag00088760",
+              "to": "ch14uvag00088763"
+            },
+            {
+              "id": "ch14uvag00087649",
+              "from": "ch14uvag00088763",
+              "to": "ch14uvag00089503"
+            },
+            {
+              "id": "ch14uvag00087650",
+              "from": "ch14uvag00089503",
+              "to": "ch14uvag00089823"
+            },
+            {
+              "id": "ch14uvag00087651",
+              "from": "ch14uvag00089823",
+              "to": "ch14uvag00089257"
+            },
+            {
+              "id": "ch14uvag00087652",
+              "from": "ch14uvag00089257",
+              "to": "ch14uvag00089292"
+            },
+            {
+              "id": "ch14uvag00087671",
+              "from": "ch14uvag00089292",
+              "to": "ch14uvag00089659"
+            },
+            {
+              "id": "ch14uvag00087670",
+              "from": "ch14uvag00089659",
+              "to": "ch14uvag00088706"
+            },
+            {
+              "id": "ch14uvag00087522",
+              "from": "ch14uvag00088706",
+              "to": "ch14uvag00089426"
+            },
+            {
+              "id": "ch14uvag00087660",
+              "from": "ch14uvag00089426",
+              "to": "ch14uvag00089425"
+            },
+            {
+              "id": "ch14uvag00087661",
+              "from": "ch14uvag00089425",
+              "to": "ch14uvag00088825"
+            },
+            {
+              "id": "ch14uvag00087662",
+              "from": "ch14uvag00088825",
+              "to": "ch14uvag00088827"
+            },
+            {
+              "id": "ch14uvag00139692",
+              "from": "ch14uvag00088827",
+              "to": "ch14uvag00139694"
+            },
+            {
+              "id": "ch14uvag00139673",
+              "from": "ch14uvag00139694",
+              "to": "ch14uvag00088813"
+            },
+            {
+              "id": "solothurn:bern-terminal:50:inferred-station-spur",
+              "from": "ch14uvag00088813",
+              "to": "solothurn:bern-terminal:50"
+            }
+          ],
+          "bernTerminalReview": {
+            "stopId": "ch:1:sloid:7000:55:50",
+            "originalOperatingPoint": {
+              "id": "ch14uvag00088813",
+              "number": "8507000",
+              "name": "Bern",
+              "coordinate": [
+                7.439136,
+                46.948831
+              ]
+            },
+            "terminal": {
+              "id": "solothurn:bern-terminal:50",
+              "number": "SO-BERN-50",
+              "name": "Bern reviewed platform 50",
+              "coordinate": [
+                7.4336934,
+                46.9479756
+              ]
+            },
+            "projection": {
+              "segmentIndex": 4,
+              "fraction": 0.1311714476650292,
+              "point": [
+                7.4336934,
+                46.9479756
+              ],
+              "attachmentMetres": 38.584362303324
+            },
+            "retainedMetres": 408.2418313977731,
+            "sourceCurveId": "ch14uvag00087328",
+            "easternApproachId": "ch14uvag00139673",
+            "spurId": "solothurn:bern-terminal:50:inferred-station-spur",
+            "removedConnections": [
+              "ch14uvag00087195",
+              "ch14uvag00087196",
+              "ch14uvag00087328"
+            ]
+          },
+          "previousSupplementFailure": "rail-station-attachment-too-far",
+          "contextCount": 12,
+          "primaryReason": "endpoint-gap",
+          "occurrences": 9,
+          "admittedOccurrences": 9
+        },
+        {
+          "routeId": "91-35-B-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "fromId": "ch:1:sloid:8005:2:2",
+          "toId": "ch:1:sloid:7000:55:50",
+          "from": "Burgdorf",
+          "to": "Bern",
+          "directMetres": 18999.91203372086,
+          "geometrySource": "fot-reviewed-bern-eastern-terminal",
+          "fromOperatingPoint": "8508005",
+          "toOperatingPoint": "SO-BERN-50",
+          "stationAttachmentsMetres": [
+            14.003947826673501,
+            38.584362303324
+          ],
+          "pathMetres": 22317.191070436784,
+          "maximumTopologyAttachmentMetres": 55.24405007731446,
+          "directedSourceSegments": [
+            {
+              "id": "ch14uvag00087648",
+              "from": "ch14uvag00088760",
+              "to": "ch14uvag00088763"
+            },
+            {
+              "id": "ch14uvag00087649",
+              "from": "ch14uvag00088763",
+              "to": "ch14uvag00089503"
+            },
+            {
+              "id": "ch14uvag00087650",
+              "from": "ch14uvag00089503",
+              "to": "ch14uvag00089823"
+            },
+            {
+              "id": "ch14uvag00087651",
+              "from": "ch14uvag00089823",
+              "to": "ch14uvag00089257"
+            },
+            {
+              "id": "ch14uvag00087652",
+              "from": "ch14uvag00089257",
+              "to": "ch14uvag00089292"
+            },
+            {
+              "id": "ch14uvag00087671",
+              "from": "ch14uvag00089292",
+              "to": "ch14uvag00089659"
+            },
+            {
+              "id": "ch14uvag00087670",
+              "from": "ch14uvag00089659",
+              "to": "ch14uvag00088706"
+            },
+            {
+              "id": "ch14uvag00087522",
+              "from": "ch14uvag00088706",
+              "to": "ch14uvag00089426"
+            },
+            {
+              "id": "ch14uvag00087660",
+              "from": "ch14uvag00089426",
+              "to": "ch14uvag00089425"
+            },
+            {
+              "id": "ch14uvag00087661",
+              "from": "ch14uvag00089425",
+              "to": "ch14uvag00088825"
+            },
+            {
+              "id": "ch14uvag00087662",
+              "from": "ch14uvag00088825",
+              "to": "ch14uvag00088827"
+            },
+            {
+              "id": "ch14uvag00139692",
+              "from": "ch14uvag00088827",
+              "to": "ch14uvag00139694"
+            },
+            {
+              "id": "ch14uvag00139673",
+              "from": "ch14uvag00139694",
+              "to": "ch14uvag00088813"
+            },
+            {
+              "id": "solothurn:bern-terminal:50:inferred-station-spur",
+              "from": "ch14uvag00088813",
+              "to": "solothurn:bern-terminal:50"
+            }
+          ],
+          "bernTerminalReview": {
+            "stopId": "ch:1:sloid:7000:55:50",
+            "originalOperatingPoint": {
+              "id": "ch14uvag00088813",
+              "number": "8507000",
+              "name": "Bern",
+              "coordinate": [
+                7.439136,
+                46.948831
+              ]
+            },
+            "terminal": {
+              "id": "solothurn:bern-terminal:50",
+              "number": "SO-BERN-50",
+              "name": "Bern reviewed platform 50",
+              "coordinate": [
+                7.4336934,
+                46.9479756
+              ]
+            },
+            "projection": {
+              "segmentIndex": 4,
+              "fraction": 0.1311714476650292,
+              "point": [
+                7.4336934,
+                46.9479756
+              ],
+              "attachmentMetres": 38.584362303324
+            },
+            "retainedMetres": 408.2418313977731,
+            "sourceCurveId": "ch14uvag00087328",
+            "easternApproachId": "ch14uvag00139673",
+            "spurId": "solothurn:bern-terminal:50:inferred-station-spur",
+            "removedConnections": [
+              "ch14uvag00087195",
+              "ch14uvag00087196",
+              "ch14uvag00087328"
+            ]
+          },
+          "previousSupplementFailure": "rail-station-attachment-too-far",
+          "contextCount": 13,
+          "primaryReason": "endpoint-gap",
+          "occurrences": 6,
+          "admittedOccurrences": 6
+        },
+        {
+          "routeId": "91-35-B-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "fromId": "ch:1:sloid:7000:55:50",
+          "toId": "ch:1:sloid:8005:2:3",
+          "from": "Bern",
+          "to": "Burgdorf",
+          "directMetres": 19003.94866557002,
+          "geometrySource": "fot-reviewed-bern-eastern-terminal",
+          "fromOperatingPoint": "SO-BERN-50",
+          "toOperatingPoint": "8508005",
+          "stationAttachmentsMetres": [
+            38.584362303324,
+            19.77496980224792
+          ],
+          "pathMetres": 22322.962092412356,
+          "maximumTopologyAttachmentMetres": 55.24405007731446,
+          "directedSourceSegments": [
+            {
+              "id": "solothurn:bern-terminal:50:inferred-station-spur",
+              "from": "solothurn:bern-terminal:50",
+              "to": "ch14uvag00088813"
+            },
+            {
+              "id": "ch14uvag00139673",
+              "from": "ch14uvag00088813",
+              "to": "ch14uvag00139694"
+            },
+            {
+              "id": "ch14uvag00139692",
+              "from": "ch14uvag00139694",
+              "to": "ch14uvag00088827"
+            },
+            {
+              "id": "ch14uvag00087662",
+              "from": "ch14uvag00088827",
+              "to": "ch14uvag00088825"
+            },
+            {
+              "id": "ch14uvag00087661",
+              "from": "ch14uvag00088825",
+              "to": "ch14uvag00089425"
+            },
+            {
+              "id": "ch14uvag00087660",
+              "from": "ch14uvag00089425",
+              "to": "ch14uvag00089426"
+            },
+            {
+              "id": "ch14uvag00087522",
+              "from": "ch14uvag00089426",
+              "to": "ch14uvag00088706"
+            },
+            {
+              "id": "ch14uvag00087670",
+              "from": "ch14uvag00088706",
+              "to": "ch14uvag00089659"
+            },
+            {
+              "id": "ch14uvag00087671",
+              "from": "ch14uvag00089659",
+              "to": "ch14uvag00089292"
+            },
+            {
+              "id": "ch14uvag00087652",
+              "from": "ch14uvag00089292",
+              "to": "ch14uvag00089257"
+            },
+            {
+              "id": "ch14uvag00087651",
+              "from": "ch14uvag00089257",
+              "to": "ch14uvag00089823"
+            },
+            {
+              "id": "ch14uvag00087650",
+              "from": "ch14uvag00089823",
+              "to": "ch14uvag00089503"
+            },
+            {
+              "id": "ch14uvag00087649",
+              "from": "ch14uvag00089503",
+              "to": "ch14uvag00088763"
+            },
+            {
+              "id": "ch14uvag00087648",
+              "from": "ch14uvag00088763",
+              "to": "ch14uvag00088760"
+            }
+          ],
+          "bernTerminalReview": {
+            "stopId": "ch:1:sloid:7000:55:50",
+            "originalOperatingPoint": {
+              "id": "ch14uvag00088813",
+              "number": "8507000",
+              "name": "Bern",
+              "coordinate": [
+                7.439136,
+                46.948831
+              ]
+            },
+            "terminal": {
+              "id": "solothurn:bern-terminal:50",
+              "number": "SO-BERN-50",
+              "name": "Bern reviewed platform 50",
+              "coordinate": [
+                7.4336934,
+                46.9479756
+              ]
+            },
+            "projection": {
+              "segmentIndex": 4,
+              "fraction": 0.1311714476650292,
+              "point": [
+                7.4336934,
+                46.9479756
+              ],
+              "attachmentMetres": 38.584362303324
+            },
+            "retainedMetres": 408.2418313977731,
+            "sourceCurveId": "ch14uvag00087328",
+            "easternApproachId": "ch14uvag00139673",
+            "spurId": "solothurn:bern-terminal:50:inferred-station-spur",
+            "removedConnections": [
+              "ch14uvag00087195",
+              "ch14uvag00087196",
+              "ch14uvag00087328"
+            ]
+          },
+          "previousSupplementFailure": "rail-station-attachment-too-far",
+          "contextCount": 17,
+          "primaryReason": "endpoint-gap",
+          "occurrences": 7,
+          "admittedOccurrences": 7
+        },
+        {
+          "routeId": "91-35-D-j26-1",
+          "agencyId": "33",
+          "mode": "rail",
+          "fromId": "ch:1:sloid:8005:2:2",
+          "toId": "ch:1:sloid:7000:55:50",
+          "from": "Burgdorf",
+          "to": "Bern",
+          "directMetres": 18999.91203372086,
+          "geometrySource": "fot-reviewed-bern-eastern-terminal",
+          "fromOperatingPoint": "8508005",
+          "toOperatingPoint": "SO-BERN-50",
+          "stationAttachmentsMetres": [
+            14.003947826673501,
+            38.584362303324
+          ],
+          "pathMetres": 22317.191070436784,
+          "maximumTopologyAttachmentMetres": 55.24405007731446,
+          "directedSourceSegments": [
+            {
+              "id": "ch14uvag00087648",
+              "from": "ch14uvag00088760",
+              "to": "ch14uvag00088763"
+            },
+            {
+              "id": "ch14uvag00087649",
+              "from": "ch14uvag00088763",
+              "to": "ch14uvag00089503"
+            },
+            {
+              "id": "ch14uvag00087650",
+              "from": "ch14uvag00089503",
+              "to": "ch14uvag00089823"
+            },
+            {
+              "id": "ch14uvag00087651",
+              "from": "ch14uvag00089823",
+              "to": "ch14uvag00089257"
+            },
+            {
+              "id": "ch14uvag00087652",
+              "from": "ch14uvag00089257",
+              "to": "ch14uvag00089292"
+            },
+            {
+              "id": "ch14uvag00087671",
+              "from": "ch14uvag00089292",
+              "to": "ch14uvag00089659"
+            },
+            {
+              "id": "ch14uvag00087670",
+              "from": "ch14uvag00089659",
+              "to": "ch14uvag00088706"
+            },
+            {
+              "id": "ch14uvag00087522",
+              "from": "ch14uvag00088706",
+              "to": "ch14uvag00089426"
+            },
+            {
+              "id": "ch14uvag00087660",
+              "from": "ch14uvag00089426",
+              "to": "ch14uvag00089425"
+            },
+            {
+              "id": "ch14uvag00087661",
+              "from": "ch14uvag00089425",
+              "to": "ch14uvag00088825"
+            },
+            {
+              "id": "ch14uvag00087662",
+              "from": "ch14uvag00088825",
+              "to": "ch14uvag00088827"
+            },
+            {
+              "id": "ch14uvag00139692",
+              "from": "ch14uvag00088827",
+              "to": "ch14uvag00139694"
+            },
+            {
+              "id": "ch14uvag00139673",
+              "from": "ch14uvag00139694",
+              "to": "ch14uvag00088813"
+            },
+            {
+              "id": "solothurn:bern-terminal:50:inferred-station-spur",
+              "from": "ch14uvag00088813",
+              "to": "solothurn:bern-terminal:50"
+            }
+          ],
+          "bernTerminalReview": {
+            "stopId": "ch:1:sloid:7000:55:50",
+            "originalOperatingPoint": {
+              "id": "ch14uvag00088813",
+              "number": "8507000",
+              "name": "Bern",
+              "coordinate": [
+                7.439136,
+                46.948831
+              ]
+            },
+            "terminal": {
+              "id": "solothurn:bern-terminal:50",
+              "number": "SO-BERN-50",
+              "name": "Bern reviewed platform 50",
+              "coordinate": [
+                7.4336934,
+                46.9479756
+              ]
+            },
+            "projection": {
+              "segmentIndex": 4,
+              "fraction": 0.1311714476650292,
+              "point": [
+                7.4336934,
+                46.9479756
+              ],
+              "attachmentMetres": 38.584362303324
+            },
+            "retainedMetres": 408.2418313977731,
+            "sourceCurveId": "ch14uvag00087328",
+            "easternApproachId": "ch14uvag00139673",
+            "spurId": "solothurn:bern-terminal:50:inferred-station-spur",
+            "removedConnections": [
+              "ch14uvag00087195",
+              "ch14uvag00087196",
+              "ch14uvag00087328"
+            ]
+          },
+          "previousSupplementFailure": "rail-station-attachment-too-far",
+          "contextCount": 1,
+          "primaryReason": "endpoint-gap",
+          "occurrences": 1,
+          "admittedOccurrences": 1
+        },
+        {
+          "routeId": "91-4U-Y-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "fromId": "ch:1:sloid:8005:2:2",
+          "toId": "ch:1:sloid:7000:55:50",
+          "from": "Burgdorf",
+          "to": "Bern",
+          "directMetres": 18999.91203372086,
+          "geometrySource": "fot-reviewed-bern-eastern-terminal",
+          "fromOperatingPoint": "8508005",
+          "toOperatingPoint": "SO-BERN-50",
+          "stationAttachmentsMetres": [
+            14.003947826673501,
+            38.584362303324
+          ],
+          "pathMetres": 22317.191070436784,
+          "maximumTopologyAttachmentMetres": 55.24405007731446,
+          "directedSourceSegments": [
+            {
+              "id": "ch14uvag00087648",
+              "from": "ch14uvag00088760",
+              "to": "ch14uvag00088763"
+            },
+            {
+              "id": "ch14uvag00087649",
+              "from": "ch14uvag00088763",
+              "to": "ch14uvag00089503"
+            },
+            {
+              "id": "ch14uvag00087650",
+              "from": "ch14uvag00089503",
+              "to": "ch14uvag00089823"
+            },
+            {
+              "id": "ch14uvag00087651",
+              "from": "ch14uvag00089823",
+              "to": "ch14uvag00089257"
+            },
+            {
+              "id": "ch14uvag00087652",
+              "from": "ch14uvag00089257",
+              "to": "ch14uvag00089292"
+            },
+            {
+              "id": "ch14uvag00087671",
+              "from": "ch14uvag00089292",
+              "to": "ch14uvag00089659"
+            },
+            {
+              "id": "ch14uvag00087670",
+              "from": "ch14uvag00089659",
+              "to": "ch14uvag00088706"
+            },
+            {
+              "id": "ch14uvag00087522",
+              "from": "ch14uvag00088706",
+              "to": "ch14uvag00089426"
+            },
+            {
+              "id": "ch14uvag00087660",
+              "from": "ch14uvag00089426",
+              "to": "ch14uvag00089425"
+            },
+            {
+              "id": "ch14uvag00087661",
+              "from": "ch14uvag00089425",
+              "to": "ch14uvag00088825"
+            },
+            {
+              "id": "ch14uvag00087662",
+              "from": "ch14uvag00088825",
+              "to": "ch14uvag00088827"
+            },
+            {
+              "id": "ch14uvag00139692",
+              "from": "ch14uvag00088827",
+              "to": "ch14uvag00139694"
+            },
+            {
+              "id": "ch14uvag00139673",
+              "from": "ch14uvag00139694",
+              "to": "ch14uvag00088813"
+            },
+            {
+              "id": "solothurn:bern-terminal:50:inferred-station-spur",
+              "from": "ch14uvag00088813",
+              "to": "solothurn:bern-terminal:50"
+            }
+          ],
+          "bernTerminalReview": {
+            "stopId": "ch:1:sloid:7000:55:50",
+            "originalOperatingPoint": {
+              "id": "ch14uvag00088813",
+              "number": "8507000",
+              "name": "Bern",
+              "coordinate": [
+                7.439136,
+                46.948831
+              ]
+            },
+            "terminal": {
+              "id": "solothurn:bern-terminal:50",
+              "number": "SO-BERN-50",
+              "name": "Bern reviewed platform 50",
+              "coordinate": [
+                7.4336934,
+                46.9479756
+              ]
+            },
+            "projection": {
+              "segmentIndex": 4,
+              "fraction": 0.1311714476650292,
+              "point": [
+                7.4336934,
+                46.9479756
+              ],
+              "attachmentMetres": 38.584362303324
+            },
+            "retainedMetres": 408.2418313977731,
+            "sourceCurveId": "ch14uvag00087328",
+            "easternApproachId": "ch14uvag00139673",
+            "spurId": "solothurn:bern-terminal:50:inferred-station-spur",
+            "removedConnections": [
+              "ch14uvag00087195",
+              "ch14uvag00087196",
+              "ch14uvag00087328"
+            ]
+          },
+          "previousSupplementFailure": "rail-station-attachment-too-far",
+          "contextCount": 3,
+          "primaryReason": "endpoint-gap",
+          "occurrences": 1,
+          "admittedOccurrences": 1
         }
       ]
     },
@@ -1623,24 +2390,24 @@
       "date": "2026-09-06",
       "before": {
         "trips": 5819,
-        "admittedTrips": 5507,
+        "admittedTrips": 5644,
         "scheduledTrips": 4711,
         "representativeHeadwayTrips": 1108,
-        "admittedScheduledTrips": 4399,
+        "admittedScheduledTrips": 4536,
         "admittedRepresentativeHeadwayTrips": 1108,
         "scheduledSegmentOccurrences": 68102,
-        "matchedScheduledSegmentOccurrences": 67690,
+        "matchedScheduledSegmentOccurrences": 67827,
         "segmentOccurrences": 69210,
-        "matchedSegmentOccurrences": 68798,
-        "admittedSegmentOccurrences": 62727,
+        "matchedSegmentOccurrences": 68935,
+        "admittedSegmentOccurrences": 64475,
         "directedPairs": 4467,
-        "matchedDirectedPairs": 4443,
+        "matchedDirectedPairs": 4450,
         "patterns": 777,
-        "completePatterns": 722,
-        "admittedPatterns": 722,
+        "completePatterns": 733,
+        "admittedPatterns": 733,
         "excludedTrips": {
-          "incomplete-directed-pattern": 303,
-          "night-network-excluded-by-source": 9
+          "incomplete-directed-pattern": 173,
+          "night-network-excluded-by-source": 2
         }
       },
       "after": {
@@ -2747,511 +3514,943 @@
           "decisions": {
             "admitted": 1
           }
-        },
-        {
-          "id": "790fa60169fceb188f320456",
-          "routeId": "92-EV6-R-j26-1",
-          "agencyId": "7231",
-          "mode": "bus",
-          "line": "EV6",
-          "directionId": "0",
-          "stopIds": [
-            "ch:1:sloid:77914:0:3",
-            "ch:1:sloid:77943",
-            "ch:1:sloid:10672"
-          ],
-          "segmentCount": 2,
-          "supplementAvailable": true,
-          "geometrySources": [
-            "osm-solothurn-access-road-inference",
-            "solothurn-network"
-          ],
-          "matchedSegments": 2,
-          "trips": 38,
-          "admittedTrips": 38,
-          "carryInTrips": 1,
-          "representativeHeadwayTrips": 0,
-          "decisions": {
-            "admitted": 38
-          }
-        },
-        {
-          "id": "edc3c849deacb0f3bae9e524",
-          "routeId": "92-EV6-R-j26-1",
-          "agencyId": "7231",
-          "mode": "bus",
-          "line": "EV6",
-          "directionId": "1",
-          "stopIds": [
-            "ch:1:sloid:10672",
-            "ch:1:sloid:77943",
-            "ch:1:sloid:77914:0:1517"
-          ],
-          "segmentCount": 2,
-          "supplementAvailable": true,
-          "geometrySources": [
-            "osm-solothurn-access-road-inference",
-            "solothurn-network"
-          ],
-          "matchedSegments": 2,
-          "trips": 41,
-          "admittedTrips": 41,
-          "carryInTrips": 2,
-          "representativeHeadwayTrips": 0,
-          "decisions": {
-            "admitted": 41
-          }
-        },
-        {
-          "id": "fe0f239f107ed73685157637",
-          "routeId": "92-M11-j26-1",
-          "agencyId": "883",
-          "mode": "bus",
-          "line": "M11",
-          "directionId": "0",
-          "stopIds": [
-            "ch:1:sloid:494:0:1",
-            "ch:1:sloid:72386",
-            "ch:1:sloid:72373:0:1",
-            "ch:1:sloid:78092",
-            "ch:1:sloid:78093",
-            "ch:1:sloid:89216",
-            "ch:1:sloid:78094",
-            "ch:1:sloid:78095",
-            "ch:1:sloid:78096",
-            "ch:1:sloid:78097",
-            "ch:1:sloid:71480",
-            "ch:1:sloid:78142",
-            "ch:1:sloid:78140",
-            "ch:1:sloid:81761",
-            "ch:1:sloid:78138",
-            "ch:1:sloid:89040",
-            "ch:1:sloid:89025",
-            "ch:1:sloid:87810",
-            "ch:1:sloid:89028",
-            "ch:1:sloid:81330",
-            "ch:1:sloid:89045",
-            "ch:1:sloid:89042",
-            "ch:1:sloid:89052",
-            "ch:1:sloid:71392:0:714037",
-            "ch:1:sloid:76646:0:15"
-          ],
-          "segmentCount": 24,
-          "supplementAvailable": true,
-          "geometrySources": [
-            "osm-road-inference",
-            "osm-solothurn-access-road-inference"
-          ],
-          "matchedSegments": 24,
-          "trips": 2,
-          "admittedTrips": 2,
-          "carryInTrips": 2,
-          "representativeHeadwayTrips": 0,
-          "decisions": {
-            "admitted": 2
-          }
-        },
-        {
-          "id": "b12c1fd04762f3e215f6fd03",
-          "routeId": "92-M11-j26-1",
-          "agencyId": "883",
-          "mode": "bus",
-          "line": "M11",
-          "directionId": "0",
-          "stopIds": [
-            "ch:1:sloid:72373:0:1",
-            "ch:1:sloid:78092",
-            "ch:1:sloid:78093",
-            "ch:1:sloid:89216",
-            "ch:1:sloid:78094",
-            "ch:1:sloid:78095",
-            "ch:1:sloid:78096",
-            "ch:1:sloid:78097",
-            "ch:1:sloid:71480",
-            "ch:1:sloid:78142",
-            "ch:1:sloid:78140",
-            "ch:1:sloid:81761",
-            "ch:1:sloid:78138",
-            "ch:1:sloid:89040",
-            "ch:1:sloid:89025",
-            "ch:1:sloid:87810",
-            "ch:1:sloid:89028",
-            "ch:1:sloid:81330",
-            "ch:1:sloid:89045",
-            "ch:1:sloid:89042",
-            "ch:1:sloid:89052",
-            "ch:1:sloid:71392:0:714037",
-            "ch:1:sloid:89049:0:1",
-            "ch:1:sloid:76980",
-            "ch:1:sloid:76981",
-            "ch:1:sloid:76982",
-            "ch:1:sloid:89542:0:8",
-            "ch:1:sloid:7636",
-            "ch:1:sloid:7638",
-            "ch:1:sloid:76646:0:15"
-          ],
-          "segmentCount": 29,
-          "supplementAvailable": true,
-          "geometrySources": [
-            "osm-road-inference",
-            "osm-solothurn-access-road-inference"
-          ],
-          "matchedSegments": 29,
-          "trips": 1,
-          "admittedTrips": 1,
-          "carryInTrips": 1,
-          "representativeHeadwayTrips": 0,
-          "decisions": {
-            "admitted": 1
-          }
-        },
-        {
-          "id": "d28fdb70a7894edb82963cb4",
-          "routeId": "92-N22-j26-1",
-          "agencyId": "840",
-          "mode": "bus",
-          "line": "N22",
-          "directionId": "1",
-          "stopIds": [
-            "ch:1:sloid:78652",
-            "ch:1:sloid:78651",
-            "ch:1:sloid:78650",
-            "ch:1:sloid:78649",
-            "ch:1:sloid:78007",
-            "ch:1:sloid:78647",
-            "ch:1:sloid:78646",
-            "ch:1:sloid:78645",
-            "ch:1:sloid:72388",
-            "ch:1:sloid:94930::2",
-            "ch:1:sloid:2996::2"
-          ],
-          "segmentCount": 10,
-          "supplementAvailable": true,
-          "geometrySources": [
-            "osm-road-inference",
-            "osm-solothurn-access-road-inference"
-          ],
-          "matchedSegments": 10,
-          "trips": 2,
-          "admittedTrips": 2,
-          "carryInTrips": 2,
-          "representativeHeadwayTrips": 0,
-          "decisions": {
-            "admitted": 2
-          }
-        },
-        {
-          "id": "c3036191a03e57efbc9ad2cd",
-          "routeId": "92-N22-j26-1",
-          "agencyId": "840",
-          "mode": "bus",
-          "line": "N22",
-          "directionId": "1",
-          "stopIds": [
-            "ch:1:sloid:78652",
-            "ch:1:sloid:78651",
-            "ch:1:sloid:78650",
-            "ch:1:sloid:78649",
-            "ch:1:sloid:78007",
-            "ch:1:sloid:78647",
-            "ch:1:sloid:78646",
-            "ch:1:sloid:78645",
-            "ch:1:sloid:72388",
-            "ch:1:sloid:94930::2",
-            "ch:1:sloid:94929::2",
-            "ch:1:sloid:2996:0:604264",
-            "ch:1:sloid:90134",
-            "ch:1:sloid:90156",
-            "ch:1:sloid:90138",
-            "ch:1:sloid:90151",
-            "ch:1:sloid:90260",
-            "ch:1:sloid:90258",
-            "ch:1:sloid:90259",
-            "ch:1:sloid:90257",
-            "ch:1:sloid:90261"
-          ],
-          "segmentCount": 20,
-          "supplementAvailable": true,
-          "geometrySources": [
-            "osm-road-inference",
-            "osm-solothurn-access-road-inference"
-          ],
-          "matchedSegments": 20,
-          "trips": 2,
-          "admittedTrips": 2,
-          "carryInTrips": 2,
-          "representativeHeadwayTrips": 0,
-          "decisions": {
-            "admitted": 2
-          }
-        },
-        {
-          "id": "407d32a0437bbf519f81b2d7",
-          "routeId": "96-131-1-j26-1",
-          "agencyId": "801",
-          "mode": "bus",
-          "line": "111",
-          "directionId": "0",
-          "stopIds": [
-            "ch:1:sloid:775:0:815608",
-            "ch:1:sloid:72210:0:992563",
-            "ch:1:sloid:72211:0:439842",
-            "ch:1:sloid:972:0:971618",
-            "ch:1:sloid:72220:0:649198",
-            "ch:1:sloid:80933:0:594726",
-            "ch:1:sloid:72224:0:299008",
-            "ch:1:sloid:72223:0:160522",
-            "ch:1:sloid:72222:0:399982",
-            "ch:1:sloid:72221:0:603972",
-            "ch:1:sloid:3662:0:869147",
-            "ch:1:sloid:72212:1:4"
-          ],
-          "segmentCount": 11,
-          "supplementAvailable": true,
-          "geometrySources": [
-            "osm-solothurn-access-road-inference",
-            "solothurn-network"
-          ],
-          "matchedSegments": 11,
-          "trips": 1,
-          "admittedTrips": 1,
-          "carryInTrips": 0,
-          "representativeHeadwayTrips": 0,
-          "decisions": {
-            "admitted": 1
-          }
-        },
-        {
-          "id": "103e81ab170c57885eb91194",
-          "routeId": "96-131-1-j26-1",
-          "agencyId": "801",
-          "mode": "bus",
-          "line": "111",
-          "directionId": "0",
-          "stopIds": [
-            "ch:1:sloid:765",
-            "ch:1:sloid:72133",
-            "ch:1:sloid:82119",
-            "ch:1:sloid:72135",
-            "ch:1:sloid:753",
-            "ch:1:sloid:72136",
-            "ch:1:sloid:72137",
-            "ch:1:sloid:72138",
-            "ch:1:sloid:72140",
-            "ch:1:sloid:775",
-            "ch:1:sloid:72210",
-            "ch:1:sloid:72211",
-            "ch:1:sloid:972",
-            "ch:1:sloid:72220",
-            "ch:1:sloid:80933",
-            "ch:1:sloid:72224",
-            "ch:1:sloid:72223",
-            "ch:1:sloid:72222",
-            "ch:1:sloid:72221",
-            "ch:1:sloid:3662",
-            "ch:1:sloid:72212"
-          ],
-          "segmentCount": 20,
-          "supplementAvailable": true,
-          "geometrySources": [
-            "osm-solothurn-access-road-inference",
-            "solothurn-network"
-          ],
-          "matchedSegments": 20,
-          "trips": 4,
-          "admittedTrips": 4,
-          "carryInTrips": 4,
-          "representativeHeadwayTrips": 0,
-          "decisions": {
-            "admitted": 4
-          }
-        },
-        {
-          "id": "b4496d83e363694ef522f88a",
-          "routeId": "96-131-1-j26-1",
-          "agencyId": "801",
-          "mode": "bus",
-          "line": "111",
-          "directionId": "0",
-          "stopIds": [
-            "ch:1:sloid:72113:0:489065",
-            "ch:1:sloid:72168:0:180359",
-            "ch:1:sloid:80734:0:509064",
-            "ch:1:sloid:72169:0:962819",
-            "ch:1:sloid:72170:0:110785",
-            "ch:1:sloid:958:0:893032",
-            "ch:1:sloid:72115:0:708906",
-            "ch:1:sloid:752:0:58095",
-            "ch:1:sloid:72116:0:380685",
-            "ch:1:sloid:82411:0:670907",
-            "ch:1:sloid:72117:0:5243",
-            "ch:1:sloid:967:0:600753",
-            "ch:1:sloid:72118:0:306446",
-            "ch:1:sloid:72119:0:407741",
-            "ch:1:sloid:72120:0:668973",
-            "ch:1:sloid:72119:0:978527",
-            "ch:1:sloid:72121:0:64956",
-            "ch:1:sloid:969:0:74709",
-            "ch:1:sloid:72122:0:366552",
-            "ch:1:sloid:765:0:809629",
-            "ch:1:sloid:72133:0:653646",
-            "ch:1:sloid:82119:0:644725",
-            "ch:1:sloid:72135:0:455515",
-            "ch:1:sloid:753:0:356622",
-            "ch:1:sloid:72136:0:803562",
-            "ch:1:sloid:72137:0:322660",
-            "ch:1:sloid:72138:0:964507",
-            "ch:1:sloid:72140:0:607563",
-            "ch:1:sloid:775:0:815608",
-            "ch:1:sloid:72210:0:992563",
-            "ch:1:sloid:72211:0:439842",
-            "ch:1:sloid:972:0:971618",
-            "ch:1:sloid:72220:0:649198",
-            "ch:1:sloid:80933:0:594726",
-            "ch:1:sloid:72224:0:299008",
-            "ch:1:sloid:72223:0:160522",
-            "ch:1:sloid:72222:0:399982",
-            "ch:1:sloid:72221:0:603972",
-            "ch:1:sloid:3662:0:869147",
-            "ch:1:sloid:72212:1:4"
-          ],
-          "segmentCount": 39,
-          "supplementAvailable": true,
-          "geometrySources": [
-            "osm-road-inference",
-            "osm-solothurn-access-road-inference",
-            "solothurn-network"
-          ],
-          "matchedSegments": 39,
-          "trips": 28,
-          "admittedTrips": 28,
-          "carryInTrips": 0,
-          "representativeHeadwayTrips": 0,
-          "decisions": {
-            "admitted": 28
-          }
-        },
-        {
-          "id": "7c7bbc97ad48abc08c647b94",
-          "routeId": "96-145-2-j26-1",
-          "agencyId": "801",
-          "mode": "bus",
-          "line": "126",
-          "directionId": "0",
-          "stopIds": [
-            "ch:1:sloid:89885:0:01",
-            "ch:1:sloid:81284:0:390682",
-            "ch:1:sloid:81285:0:911079",
-            "ch:1:sloid:81286:0:01",
-            "ch:1:sloid:81287:0:01",
-            "ch:1:sloid:78916:0:01",
-            "ch:1:sloid:7326:0:440180",
-            "ch:1:sloid:81288:0:805818",
-            "ch:1:sloid:89884:0:38836",
-            "ch:1:sloid:83812:0:584985",
-            "ch:1:sloid:385:0:01",
-            "ch:1:sloid:81290:0:933260",
-            "ch:1:sloid:5100:0:58318",
-            "ch:1:sloid:72367",
-            "ch:1:sloid:986",
-            "ch:1:sloid:72368"
-          ],
-          "segmentCount": 15,
-          "supplementAvailable": true,
-          "geometrySources": [
-            "osm-road-inference",
-            "solothurn-network",
-            "solothurn-reviewed-bus-junction"
-          ],
-          "matchedSegments": 15,
-          "trips": 1,
-          "admittedTrips": 1,
-          "carryInTrips": 1,
-          "representativeHeadwayTrips": 0,
-          "decisions": {
-            "admitted": 1
-          }
-        },
-        {
-          "id": "8389689cfc6819b2fe013695",
-          "routeId": "96-145-2-j26-1",
-          "agencyId": "801",
-          "mode": "bus",
-          "line": "126",
-          "directionId": "0",
-          "stopIds": [
-            "ch:1:sloid:89885:0:01",
-            "ch:1:sloid:81284:0:390682",
-            "ch:1:sloid:81285:0:911079",
-            "ch:1:sloid:81286:0:01",
-            "ch:1:sloid:81287:0:01",
-            "ch:1:sloid:78916:0:01",
-            "ch:1:sloid:7326:0:440180",
-            "ch:1:sloid:81288:0:805818",
-            "ch:1:sloid:89884:0:38836",
-            "ch:1:sloid:83812:0:584985",
-            "ch:1:sloid:385:0:01",
-            "ch:1:sloid:81290:0:933260",
-            "ch:1:sloid:5100:0:58318",
-            "ch:1:sloid:72367:0:389242",
-            "ch:1:sloid:986:0:87035",
-            "ch:1:sloid:72368:0:754999"
-          ],
-          "segmentCount": 15,
-          "supplementAvailable": true,
-          "geometrySources": [
-            "osm-road-inference",
-            "solothurn-network",
-            "solothurn-reviewed-bus-junction"
-          ],
-          "matchedSegments": 15,
-          "trips": 17,
-          "admittedTrips": 17,
-          "carryInTrips": 0,
-          "representativeHeadwayTrips": 0,
-          "decisions": {
-            "admitted": 17
-          }
         }
       ],
       "sourcePairs": [
         {
-          "routeId": "96-145-2-j26-1",
-          "agencyId": "801",
-          "mode": "bus",
-          "fromId": "ch:1:sloid:89885:0:01",
-          "toId": "ch:1:sloid:81284:0:390682",
-          "from": "Oberbuchsiten, Bahnhof",
-          "to": "Oberbuchsiten, Löwen",
-          "directMetres": 608.0701046612704,
-          "maximumSnapMetres": 5.952102579605288,
-          "pathMetres": 792.9325397010779,
-          "geometrySource": "solothurn-reviewed-bus-junction",
-          "sourceJunction": {
-            "endpointsLv95": [
-              [
-                2624747.1,
-                1239883.09
-              ],
-              [
-                2624747.099,
-                1239883.092
+          "routeId": "91-16-B-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "fromId": "ch:1:sloid:218:5:8",
+          "toId": "ch:1:sloid:7000:55:49",
+          "from": "Olten",
+          "to": "Bern",
+          "directMetres": 57562.58182678354,
+          "geometrySource": "fot-reviewed-bern-eastern-terminal",
+          "fromOperatingPoint": "8500218",
+          "toOperatingPoint": "SO-BERN-49",
+          "stationAttachmentsMetres": [
+            35.47777312388973,
+            33.88924546124847
+          ],
+          "pathMetres": 62980.64718411785,
+          "maximumTopologyAttachmentMetres": 55.24405007731446,
+          "directedSourceSegments": [
+            {
+              "id": "ch14uvag00087767",
+              "from": "ch14uvag00089662",
+              "to": "ch14uvag00089666"
+            },
+            {
+              "id": "ch14uvag00087637",
+              "from": "ch14uvag00089666",
+              "to": "ch14uvag00089798"
+            },
+            {
+              "id": "ch14uvag00087638",
+              "from": "ch14uvag00089798",
+              "to": "ch14uvag00089799"
+            },
+            {
+              "id": "ch14uvag00087524",
+              "from": "ch14uvag00089799",
+              "to": "ch14uvag00090093"
+            },
+            {
+              "id": "ch14uvag00087523",
+              "from": "ch14uvag00090093",
+              "to": "ch14uvag00088706"
+            },
+            {
+              "id": "ch14uvag00087522",
+              "from": "ch14uvag00088706",
+              "to": "ch14uvag00089426"
+            },
+            {
+              "id": "ch14uvag00087660",
+              "from": "ch14uvag00089426",
+              "to": "ch14uvag00089425"
+            },
+            {
+              "id": "ch14uvag00087661",
+              "from": "ch14uvag00089425",
+              "to": "ch14uvag00088825"
+            },
+            {
+              "id": "ch14uvag00087662",
+              "from": "ch14uvag00088825",
+              "to": "ch14uvag00088827"
+            },
+            {
+              "id": "ch14uvag00139692",
+              "from": "ch14uvag00088827",
+              "to": "ch14uvag00139694"
+            },
+            {
+              "id": "ch14uvag00139673",
+              "from": "ch14uvag00139694",
+              "to": "ch14uvag00088813"
+            },
+            {
+              "id": "solothurn:bern-terminal:49:inferred-station-spur",
+              "from": "ch14uvag00088813",
+              "to": "solothurn:bern-terminal:49"
+            }
+          ],
+          "bernTerminalReview": {
+            "stopId": "ch:1:sloid:7000:55:49",
+            "originalOperatingPoint": {
+              "id": "ch14uvag00088813",
+              "number": "8507000",
+              "name": "Bern",
+              "coordinate": [
+                7.439136,
+                46.948831
               ]
-            ],
-            "joinMetres": 0.0022360679275197854,
-            "sourceFeatureIds": [
-              "4562863f-1da7-42ea-9cf8-f580fb14b86c",
-              "64c5c5c2-6512-4ef1-a06e-4bac13d29b5d"
-            ],
-            "originalVertices": 56,
-            "originalEdges": 54,
-            "addedVertices": 0,
-            "addedEdges": 1
+            },
+            "terminal": {
+              "id": "solothurn:bern-terminal:49",
+              "number": "SO-BERN-49",
+              "name": "Bern reviewed platform 49",
+              "coordinate": [
+                7.4334524,
+                46.9479304
+              ]
+            },
+            "projection": {
+              "segmentIndex": 4,
+              "fraction": 0.07169237022045111,
+              "point": [
+                7.4334524,
+                46.9479304
+              ],
+              "attachmentMetres": 33.88924546124847
+            },
+            "retainedMetres": 427.2349973477947,
+            "sourceCurveId": "ch14uvag00087328",
+            "easternApproachId": "ch14uvag00139673",
+            "spurId": "solothurn:bern-terminal:49:inferred-station-spur",
+            "removedConnections": [
+              "ch14uvag00087195",
+              "ch14uvag00087196",
+              "ch14uvag00087328"
+            ]
           },
-          "previousSupplementFailure": "road-pattern-dependent-path",
-          "primaryReason": "disconnected-line",
-          "occurrences": 18,
-          "admittedOccurrences": 18
+          "previousSupplementFailure": "rail-station-attachment-too-far",
+          "contextCount": 3,
+          "primaryReason": "endpoint-gap",
+          "occurrences": 1,
+          "admittedOccurrences": 1
+        },
+        {
+          "routeId": "91-35-A-j26-1",
+          "agencyId": "82",
+          "mode": "rail",
+          "fromId": "ch:1:sloid:7000:55:50",
+          "toId": "ch:1:sloid:8005:2:3",
+          "from": "Bern",
+          "to": "Burgdorf",
+          "directMetres": 19003.94866557002,
+          "geometrySource": "fot-reviewed-bern-eastern-terminal",
+          "fromOperatingPoint": "SO-BERN-50",
+          "toOperatingPoint": "8508005",
+          "stationAttachmentsMetres": [
+            38.584362303324,
+            19.77496980224792
+          ],
+          "pathMetres": 22322.962092412356,
+          "maximumTopologyAttachmentMetres": 55.24405007731446,
+          "directedSourceSegments": [
+            {
+              "id": "solothurn:bern-terminal:50:inferred-station-spur",
+              "from": "solothurn:bern-terminal:50",
+              "to": "ch14uvag00088813"
+            },
+            {
+              "id": "ch14uvag00139673",
+              "from": "ch14uvag00088813",
+              "to": "ch14uvag00139694"
+            },
+            {
+              "id": "ch14uvag00139692",
+              "from": "ch14uvag00139694",
+              "to": "ch14uvag00088827"
+            },
+            {
+              "id": "ch14uvag00087662",
+              "from": "ch14uvag00088827",
+              "to": "ch14uvag00088825"
+            },
+            {
+              "id": "ch14uvag00087661",
+              "from": "ch14uvag00088825",
+              "to": "ch14uvag00089425"
+            },
+            {
+              "id": "ch14uvag00087660",
+              "from": "ch14uvag00089425",
+              "to": "ch14uvag00089426"
+            },
+            {
+              "id": "ch14uvag00087522",
+              "from": "ch14uvag00089426",
+              "to": "ch14uvag00088706"
+            },
+            {
+              "id": "ch14uvag00087670",
+              "from": "ch14uvag00088706",
+              "to": "ch14uvag00089659"
+            },
+            {
+              "id": "ch14uvag00087671",
+              "from": "ch14uvag00089659",
+              "to": "ch14uvag00089292"
+            },
+            {
+              "id": "ch14uvag00087652",
+              "from": "ch14uvag00089292",
+              "to": "ch14uvag00089257"
+            },
+            {
+              "id": "ch14uvag00087651",
+              "from": "ch14uvag00089257",
+              "to": "ch14uvag00089823"
+            },
+            {
+              "id": "ch14uvag00087650",
+              "from": "ch14uvag00089823",
+              "to": "ch14uvag00089503"
+            },
+            {
+              "id": "ch14uvag00087649",
+              "from": "ch14uvag00089503",
+              "to": "ch14uvag00088763"
+            },
+            {
+              "id": "ch14uvag00087648",
+              "from": "ch14uvag00088763",
+              "to": "ch14uvag00088760"
+            }
+          ],
+          "bernTerminalReview": {
+            "stopId": "ch:1:sloid:7000:55:50",
+            "originalOperatingPoint": {
+              "id": "ch14uvag00088813",
+              "number": "8507000",
+              "name": "Bern",
+              "coordinate": [
+                7.439136,
+                46.948831
+              ]
+            },
+            "terminal": {
+              "id": "solothurn:bern-terminal:50",
+              "number": "SO-BERN-50",
+              "name": "Bern reviewed platform 50",
+              "coordinate": [
+                7.4336934,
+                46.9479756
+              ]
+            },
+            "projection": {
+              "segmentIndex": 4,
+              "fraction": 0.1311714476650292,
+              "point": [
+                7.4336934,
+                46.9479756
+              ],
+              "attachmentMetres": 38.584362303324
+            },
+            "retainedMetres": 408.2418313977731,
+            "sourceCurveId": "ch14uvag00087328",
+            "easternApproachId": "ch14uvag00139673",
+            "spurId": "solothurn:bern-terminal:50:inferred-station-spur",
+            "removedConnections": [
+              "ch14uvag00087195",
+              "ch14uvag00087196",
+              "ch14uvag00087328"
+            ]
+          },
+          "previousSupplementFailure": "rail-station-attachment-too-far",
+          "contextCount": 20,
+          "primaryReason": "endpoint-gap",
+          "occurrences": 9,
+          "admittedOccurrences": 9
+        },
+        {
+          "routeId": "91-35-A-j26-1",
+          "agencyId": "82",
+          "mode": "rail",
+          "fromId": "ch:1:sloid:8005:2:2",
+          "toId": "ch:1:sloid:7000:55:50",
+          "from": "Burgdorf",
+          "to": "Bern",
+          "directMetres": 18999.91203372086,
+          "geometrySource": "fot-reviewed-bern-eastern-terminal",
+          "fromOperatingPoint": "8508005",
+          "toOperatingPoint": "SO-BERN-50",
+          "stationAttachmentsMetres": [
+            14.003947826673501,
+            38.584362303324
+          ],
+          "pathMetres": 22317.191070436784,
+          "maximumTopologyAttachmentMetres": 55.24405007731446,
+          "directedSourceSegments": [
+            {
+              "id": "ch14uvag00087648",
+              "from": "ch14uvag00088760",
+              "to": "ch14uvag00088763"
+            },
+            {
+              "id": "ch14uvag00087649",
+              "from": "ch14uvag00088763",
+              "to": "ch14uvag00089503"
+            },
+            {
+              "id": "ch14uvag00087650",
+              "from": "ch14uvag00089503",
+              "to": "ch14uvag00089823"
+            },
+            {
+              "id": "ch14uvag00087651",
+              "from": "ch14uvag00089823",
+              "to": "ch14uvag00089257"
+            },
+            {
+              "id": "ch14uvag00087652",
+              "from": "ch14uvag00089257",
+              "to": "ch14uvag00089292"
+            },
+            {
+              "id": "ch14uvag00087671",
+              "from": "ch14uvag00089292",
+              "to": "ch14uvag00089659"
+            },
+            {
+              "id": "ch14uvag00087670",
+              "from": "ch14uvag00089659",
+              "to": "ch14uvag00088706"
+            },
+            {
+              "id": "ch14uvag00087522",
+              "from": "ch14uvag00088706",
+              "to": "ch14uvag00089426"
+            },
+            {
+              "id": "ch14uvag00087660",
+              "from": "ch14uvag00089426",
+              "to": "ch14uvag00089425"
+            },
+            {
+              "id": "ch14uvag00087661",
+              "from": "ch14uvag00089425",
+              "to": "ch14uvag00088825"
+            },
+            {
+              "id": "ch14uvag00087662",
+              "from": "ch14uvag00088825",
+              "to": "ch14uvag00088827"
+            },
+            {
+              "id": "ch14uvag00139692",
+              "from": "ch14uvag00088827",
+              "to": "ch14uvag00139694"
+            },
+            {
+              "id": "ch14uvag00139673",
+              "from": "ch14uvag00139694",
+              "to": "ch14uvag00088813"
+            },
+            {
+              "id": "solothurn:bern-terminal:50:inferred-station-spur",
+              "from": "ch14uvag00088813",
+              "to": "solothurn:bern-terminal:50"
+            }
+          ],
+          "bernTerminalReview": {
+            "stopId": "ch:1:sloid:7000:55:50",
+            "originalOperatingPoint": {
+              "id": "ch14uvag00088813",
+              "number": "8507000",
+              "name": "Bern",
+              "coordinate": [
+                7.439136,
+                46.948831
+              ]
+            },
+            "terminal": {
+              "id": "solothurn:bern-terminal:50",
+              "number": "SO-BERN-50",
+              "name": "Bern reviewed platform 50",
+              "coordinate": [
+                7.4336934,
+                46.9479756
+              ]
+            },
+            "projection": {
+              "segmentIndex": 4,
+              "fraction": 0.1311714476650292,
+              "point": [
+                7.4336934,
+                46.9479756
+              ],
+              "attachmentMetres": 38.584362303324
+            },
+            "retainedMetres": 408.2418313977731,
+            "sourceCurveId": "ch14uvag00087328",
+            "easternApproachId": "ch14uvag00139673",
+            "spurId": "solothurn:bern-terminal:50:inferred-station-spur",
+            "removedConnections": [
+              "ch14uvag00087195",
+              "ch14uvag00087196",
+              "ch14uvag00087328"
+            ]
+          },
+          "previousSupplementFailure": "rail-station-attachment-too-far",
+          "contextCount": 12,
+          "primaryReason": "endpoint-gap",
+          "occurrences": 9,
+          "admittedOccurrences": 9
+        },
+        {
+          "routeId": "91-35-B-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "fromId": "ch:1:sloid:8005:2:2",
+          "toId": "ch:1:sloid:7000:55:50",
+          "from": "Burgdorf",
+          "to": "Bern",
+          "directMetres": 18999.91203372086,
+          "geometrySource": "fot-reviewed-bern-eastern-terminal",
+          "fromOperatingPoint": "8508005",
+          "toOperatingPoint": "SO-BERN-50",
+          "stationAttachmentsMetres": [
+            14.003947826673501,
+            38.584362303324
+          ],
+          "pathMetres": 22317.191070436784,
+          "maximumTopologyAttachmentMetres": 55.24405007731446,
+          "directedSourceSegments": [
+            {
+              "id": "ch14uvag00087648",
+              "from": "ch14uvag00088760",
+              "to": "ch14uvag00088763"
+            },
+            {
+              "id": "ch14uvag00087649",
+              "from": "ch14uvag00088763",
+              "to": "ch14uvag00089503"
+            },
+            {
+              "id": "ch14uvag00087650",
+              "from": "ch14uvag00089503",
+              "to": "ch14uvag00089823"
+            },
+            {
+              "id": "ch14uvag00087651",
+              "from": "ch14uvag00089823",
+              "to": "ch14uvag00089257"
+            },
+            {
+              "id": "ch14uvag00087652",
+              "from": "ch14uvag00089257",
+              "to": "ch14uvag00089292"
+            },
+            {
+              "id": "ch14uvag00087671",
+              "from": "ch14uvag00089292",
+              "to": "ch14uvag00089659"
+            },
+            {
+              "id": "ch14uvag00087670",
+              "from": "ch14uvag00089659",
+              "to": "ch14uvag00088706"
+            },
+            {
+              "id": "ch14uvag00087522",
+              "from": "ch14uvag00088706",
+              "to": "ch14uvag00089426"
+            },
+            {
+              "id": "ch14uvag00087660",
+              "from": "ch14uvag00089426",
+              "to": "ch14uvag00089425"
+            },
+            {
+              "id": "ch14uvag00087661",
+              "from": "ch14uvag00089425",
+              "to": "ch14uvag00088825"
+            },
+            {
+              "id": "ch14uvag00087662",
+              "from": "ch14uvag00088825",
+              "to": "ch14uvag00088827"
+            },
+            {
+              "id": "ch14uvag00139692",
+              "from": "ch14uvag00088827",
+              "to": "ch14uvag00139694"
+            },
+            {
+              "id": "ch14uvag00139673",
+              "from": "ch14uvag00139694",
+              "to": "ch14uvag00088813"
+            },
+            {
+              "id": "solothurn:bern-terminal:50:inferred-station-spur",
+              "from": "ch14uvag00088813",
+              "to": "solothurn:bern-terminal:50"
+            }
+          ],
+          "bernTerminalReview": {
+            "stopId": "ch:1:sloid:7000:55:50",
+            "originalOperatingPoint": {
+              "id": "ch14uvag00088813",
+              "number": "8507000",
+              "name": "Bern",
+              "coordinate": [
+                7.439136,
+                46.948831
+              ]
+            },
+            "terminal": {
+              "id": "solothurn:bern-terminal:50",
+              "number": "SO-BERN-50",
+              "name": "Bern reviewed platform 50",
+              "coordinate": [
+                7.4336934,
+                46.9479756
+              ]
+            },
+            "projection": {
+              "segmentIndex": 4,
+              "fraction": 0.1311714476650292,
+              "point": [
+                7.4336934,
+                46.9479756
+              ],
+              "attachmentMetres": 38.584362303324
+            },
+            "retainedMetres": 408.2418313977731,
+            "sourceCurveId": "ch14uvag00087328",
+            "easternApproachId": "ch14uvag00139673",
+            "spurId": "solothurn:bern-terminal:50:inferred-station-spur",
+            "removedConnections": [
+              "ch14uvag00087195",
+              "ch14uvag00087196",
+              "ch14uvag00087328"
+            ]
+          },
+          "previousSupplementFailure": "rail-station-attachment-too-far",
+          "contextCount": 13,
+          "primaryReason": "endpoint-gap",
+          "occurrences": 6,
+          "admittedOccurrences": 6
+        },
+        {
+          "routeId": "91-35-B-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "fromId": "ch:1:sloid:7000:55:50",
+          "toId": "ch:1:sloid:8005:2:3",
+          "from": "Bern",
+          "to": "Burgdorf",
+          "directMetres": 19003.94866557002,
+          "geometrySource": "fot-reviewed-bern-eastern-terminal",
+          "fromOperatingPoint": "SO-BERN-50",
+          "toOperatingPoint": "8508005",
+          "stationAttachmentsMetres": [
+            38.584362303324,
+            19.77496980224792
+          ],
+          "pathMetres": 22322.962092412356,
+          "maximumTopologyAttachmentMetres": 55.24405007731446,
+          "directedSourceSegments": [
+            {
+              "id": "solothurn:bern-terminal:50:inferred-station-spur",
+              "from": "solothurn:bern-terminal:50",
+              "to": "ch14uvag00088813"
+            },
+            {
+              "id": "ch14uvag00139673",
+              "from": "ch14uvag00088813",
+              "to": "ch14uvag00139694"
+            },
+            {
+              "id": "ch14uvag00139692",
+              "from": "ch14uvag00139694",
+              "to": "ch14uvag00088827"
+            },
+            {
+              "id": "ch14uvag00087662",
+              "from": "ch14uvag00088827",
+              "to": "ch14uvag00088825"
+            },
+            {
+              "id": "ch14uvag00087661",
+              "from": "ch14uvag00088825",
+              "to": "ch14uvag00089425"
+            },
+            {
+              "id": "ch14uvag00087660",
+              "from": "ch14uvag00089425",
+              "to": "ch14uvag00089426"
+            },
+            {
+              "id": "ch14uvag00087522",
+              "from": "ch14uvag00089426",
+              "to": "ch14uvag00088706"
+            },
+            {
+              "id": "ch14uvag00087670",
+              "from": "ch14uvag00088706",
+              "to": "ch14uvag00089659"
+            },
+            {
+              "id": "ch14uvag00087671",
+              "from": "ch14uvag00089659",
+              "to": "ch14uvag00089292"
+            },
+            {
+              "id": "ch14uvag00087652",
+              "from": "ch14uvag00089292",
+              "to": "ch14uvag00089257"
+            },
+            {
+              "id": "ch14uvag00087651",
+              "from": "ch14uvag00089257",
+              "to": "ch14uvag00089823"
+            },
+            {
+              "id": "ch14uvag00087650",
+              "from": "ch14uvag00089823",
+              "to": "ch14uvag00089503"
+            },
+            {
+              "id": "ch14uvag00087649",
+              "from": "ch14uvag00089503",
+              "to": "ch14uvag00088763"
+            },
+            {
+              "id": "ch14uvag00087648",
+              "from": "ch14uvag00088763",
+              "to": "ch14uvag00088760"
+            }
+          ],
+          "bernTerminalReview": {
+            "stopId": "ch:1:sloid:7000:55:50",
+            "originalOperatingPoint": {
+              "id": "ch14uvag00088813",
+              "number": "8507000",
+              "name": "Bern",
+              "coordinate": [
+                7.439136,
+                46.948831
+              ]
+            },
+            "terminal": {
+              "id": "solothurn:bern-terminal:50",
+              "number": "SO-BERN-50",
+              "name": "Bern reviewed platform 50",
+              "coordinate": [
+                7.4336934,
+                46.9479756
+              ]
+            },
+            "projection": {
+              "segmentIndex": 4,
+              "fraction": 0.1311714476650292,
+              "point": [
+                7.4336934,
+                46.9479756
+              ],
+              "attachmentMetres": 38.584362303324
+            },
+            "retainedMetres": 408.2418313977731,
+            "sourceCurveId": "ch14uvag00087328",
+            "easternApproachId": "ch14uvag00139673",
+            "spurId": "solothurn:bern-terminal:50:inferred-station-spur",
+            "removedConnections": [
+              "ch14uvag00087195",
+              "ch14uvag00087196",
+              "ch14uvag00087328"
+            ]
+          },
+          "previousSupplementFailure": "rail-station-attachment-too-far",
+          "contextCount": 17,
+          "primaryReason": "endpoint-gap",
+          "occurrences": 7,
+          "admittedOccurrences": 7
+        },
+        {
+          "routeId": "91-35-D-j26-1",
+          "agencyId": "33",
+          "mode": "rail",
+          "fromId": "ch:1:sloid:8005:2:2",
+          "toId": "ch:1:sloid:7000:55:50",
+          "from": "Burgdorf",
+          "to": "Bern",
+          "directMetres": 18999.91203372086,
+          "geometrySource": "fot-reviewed-bern-eastern-terminal",
+          "fromOperatingPoint": "8508005",
+          "toOperatingPoint": "SO-BERN-50",
+          "stationAttachmentsMetres": [
+            14.003947826673501,
+            38.584362303324
+          ],
+          "pathMetres": 22317.191070436784,
+          "maximumTopologyAttachmentMetres": 55.24405007731446,
+          "directedSourceSegments": [
+            {
+              "id": "ch14uvag00087648",
+              "from": "ch14uvag00088760",
+              "to": "ch14uvag00088763"
+            },
+            {
+              "id": "ch14uvag00087649",
+              "from": "ch14uvag00088763",
+              "to": "ch14uvag00089503"
+            },
+            {
+              "id": "ch14uvag00087650",
+              "from": "ch14uvag00089503",
+              "to": "ch14uvag00089823"
+            },
+            {
+              "id": "ch14uvag00087651",
+              "from": "ch14uvag00089823",
+              "to": "ch14uvag00089257"
+            },
+            {
+              "id": "ch14uvag00087652",
+              "from": "ch14uvag00089257",
+              "to": "ch14uvag00089292"
+            },
+            {
+              "id": "ch14uvag00087671",
+              "from": "ch14uvag00089292",
+              "to": "ch14uvag00089659"
+            },
+            {
+              "id": "ch14uvag00087670",
+              "from": "ch14uvag00089659",
+              "to": "ch14uvag00088706"
+            },
+            {
+              "id": "ch14uvag00087522",
+              "from": "ch14uvag00088706",
+              "to": "ch14uvag00089426"
+            },
+            {
+              "id": "ch14uvag00087660",
+              "from": "ch14uvag00089426",
+              "to": "ch14uvag00089425"
+            },
+            {
+              "id": "ch14uvag00087661",
+              "from": "ch14uvag00089425",
+              "to": "ch14uvag00088825"
+            },
+            {
+              "id": "ch14uvag00087662",
+              "from": "ch14uvag00088825",
+              "to": "ch14uvag00088827"
+            },
+            {
+              "id": "ch14uvag00139692",
+              "from": "ch14uvag00088827",
+              "to": "ch14uvag00139694"
+            },
+            {
+              "id": "ch14uvag00139673",
+              "from": "ch14uvag00139694",
+              "to": "ch14uvag00088813"
+            },
+            {
+              "id": "solothurn:bern-terminal:50:inferred-station-spur",
+              "from": "ch14uvag00088813",
+              "to": "solothurn:bern-terminal:50"
+            }
+          ],
+          "bernTerminalReview": {
+            "stopId": "ch:1:sloid:7000:55:50",
+            "originalOperatingPoint": {
+              "id": "ch14uvag00088813",
+              "number": "8507000",
+              "name": "Bern",
+              "coordinate": [
+                7.439136,
+                46.948831
+              ]
+            },
+            "terminal": {
+              "id": "solothurn:bern-terminal:50",
+              "number": "SO-BERN-50",
+              "name": "Bern reviewed platform 50",
+              "coordinate": [
+                7.4336934,
+                46.9479756
+              ]
+            },
+            "projection": {
+              "segmentIndex": 4,
+              "fraction": 0.1311714476650292,
+              "point": [
+                7.4336934,
+                46.9479756
+              ],
+              "attachmentMetres": 38.584362303324
+            },
+            "retainedMetres": 408.2418313977731,
+            "sourceCurveId": "ch14uvag00087328",
+            "easternApproachId": "ch14uvag00139673",
+            "spurId": "solothurn:bern-terminal:50:inferred-station-spur",
+            "removedConnections": [
+              "ch14uvag00087195",
+              "ch14uvag00087196",
+              "ch14uvag00087328"
+            ]
+          },
+          "previousSupplementFailure": "rail-station-attachment-too-far",
+          "contextCount": 1,
+          "primaryReason": "endpoint-gap",
+          "occurrences": 1,
+          "admittedOccurrences": 1
+        },
+        {
+          "routeId": "91-4U-Y-j26-1",
+          "agencyId": "11",
+          "mode": "rail",
+          "fromId": "ch:1:sloid:8005:2:2",
+          "toId": "ch:1:sloid:7000:55:50",
+          "from": "Burgdorf",
+          "to": "Bern",
+          "directMetres": 18999.91203372086,
+          "geometrySource": "fot-reviewed-bern-eastern-terminal",
+          "fromOperatingPoint": "8508005",
+          "toOperatingPoint": "SO-BERN-50",
+          "stationAttachmentsMetres": [
+            14.003947826673501,
+            38.584362303324
+          ],
+          "pathMetres": 22317.191070436784,
+          "maximumTopologyAttachmentMetres": 55.24405007731446,
+          "directedSourceSegments": [
+            {
+              "id": "ch14uvag00087648",
+              "from": "ch14uvag00088760",
+              "to": "ch14uvag00088763"
+            },
+            {
+              "id": "ch14uvag00087649",
+              "from": "ch14uvag00088763",
+              "to": "ch14uvag00089503"
+            },
+            {
+              "id": "ch14uvag00087650",
+              "from": "ch14uvag00089503",
+              "to": "ch14uvag00089823"
+            },
+            {
+              "id": "ch14uvag00087651",
+              "from": "ch14uvag00089823",
+              "to": "ch14uvag00089257"
+            },
+            {
+              "id": "ch14uvag00087652",
+              "from": "ch14uvag00089257",
+              "to": "ch14uvag00089292"
+            },
+            {
+              "id": "ch14uvag00087671",
+              "from": "ch14uvag00089292",
+              "to": "ch14uvag00089659"
+            },
+            {
+              "id": "ch14uvag00087670",
+              "from": "ch14uvag00089659",
+              "to": "ch14uvag00088706"
+            },
+            {
+              "id": "ch14uvag00087522",
+              "from": "ch14uvag00088706",
+              "to": "ch14uvag00089426"
+            },
+            {
+              "id": "ch14uvag00087660",
+              "from": "ch14uvag00089426",
+              "to": "ch14uvag00089425"
+            },
+            {
+              "id": "ch14uvag00087661",
+              "from": "ch14uvag00089425",
+              "to": "ch14uvag00088825"
+            },
+            {
+              "id": "ch14uvag00087662",
+              "from": "ch14uvag00088825",
+              "to": "ch14uvag00088827"
+            },
+            {
+              "id": "ch14uvag00139692",
+              "from": "ch14uvag00088827",
+              "to": "ch14uvag00139694"
+            },
+            {
+              "id": "ch14uvag00139673",
+              "from": "ch14uvag00139694",
+              "to": "ch14uvag00088813"
+            },
+            {
+              "id": "solothurn:bern-terminal:50:inferred-station-spur",
+              "from": "ch14uvag00088813",
+              "to": "solothurn:bern-terminal:50"
+            }
+          ],
+          "bernTerminalReview": {
+            "stopId": "ch:1:sloid:7000:55:50",
+            "originalOperatingPoint": {
+              "id": "ch14uvag00088813",
+              "number": "8507000",
+              "name": "Bern",
+              "coordinate": [
+                7.439136,
+                46.948831
+              ]
+            },
+            "terminal": {
+              "id": "solothurn:bern-terminal:50",
+              "number": "SO-BERN-50",
+              "name": "Bern reviewed platform 50",
+              "coordinate": [
+                7.4336934,
+                46.9479756
+              ]
+            },
+            "projection": {
+              "segmentIndex": 4,
+              "fraction": 0.1311714476650292,
+              "point": [
+                7.4336934,
+                46.9479756
+              ],
+              "attachmentMetres": 38.584362303324
+            },
+            "retainedMetres": 408.2418313977731,
+            "sourceCurveId": "ch14uvag00087328",
+            "easternApproachId": "ch14uvag00139673",
+            "spurId": "solothurn:bern-terminal:50:inferred-station-spur",
+            "removedConnections": [
+              "ch14uvag00087195",
+              "ch14uvag00087196",
+              "ch14uvag00087328"
+            ]
+          },
+          "previousSupplementFailure": "rail-station-attachment-too-far",
+          "contextCount": 3,
+          "primaryReason": "endpoint-gap",
+          "occurrences": 1,
+          "admittedOccurrences": 1
         }
       ]
     }

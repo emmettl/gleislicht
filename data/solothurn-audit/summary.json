@@ -6,6 +6,288 @@
   },
   "sources": {
     "supplements": {
+      "bernTerminal": {
+        "policy": {
+          "schemaVersion": 1,
+          "sourceDirectory": "data/solothurn-bern-terminal-sources",
+          "sources": [
+            {
+              "file": "sbb-bern-plan-2026-08.pdf",
+              "sha256": "fc8996f20bd75a4293448ccf96a11b443f5df2419282ab75cea80efd252486eb",
+              "url": "https://company.sbb.ch/content/dam/infrastruktur/trafimage/bahnhofplaene/plan-bern-a4.pdf",
+              "retrievedAt": "2026-09-08T20:18:29.309Z",
+              "documentDate": "2026-08",
+              "role": "SBB station exterior plan, page 3: tracks 49/50 at western end of Bern. Station extent and platform identity evidence; not a surveyed track/switch alignment."
+            }
+          ],
+          "sourceSha256": "2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+          "contextSha256": "6a3fb3b6d119bf3118969bce3f42bd9592fb484a4f088a0ee8b456ff769c146d",
+          "node": {
+            "id": "ch14uvag00088813",
+            "number": "8507000",
+            "name": "Bern",
+            "coordinate": [
+              7.439136,
+              46.948831
+            ]
+          },
+          "stationCurve": {
+            "id": "ch14uvag00087328",
+            "start": "ch14uvag00089324",
+            "end": "ch14uvag00088813",
+            "length": 781.1577614377883,
+            "points": [
+              [
+                7.428931,
+                46.948284
+              ],
+              [
+                7.429906,
+                46.948018
+              ],
+              [
+                7.430804,
+                46.947885
+              ],
+              [
+                7.432114,
+                46.947828
+              ],
+              [
+                7.433162,
+                46.947876
+              ],
+              [
+                7.437213,
+                46.948635
+              ],
+              [
+                7.43793,
+                46.948857
+              ],
+              [
+                7.438694,
+                46.949225
+              ]
+            ],
+            "gauge": "mm1435",
+            "dataStand": "2021-07-06",
+            "validFrom": "2005-02-11",
+            "validUntil": null,
+            "infrastructureOperator": "SBB CFF FFS"
+          },
+          "easternApproach": {
+            "id": "ch14uvag00139673",
+            "start": "ch14uvag00139694",
+            "end": "ch14uvag00088813",
+            "length": 2787.4735732175945,
+            "points": [
+              [
+                7.46029,
+                46.966596
+              ],
+              [
+                7.451745,
+                46.964523
+              ],
+              [
+                7.448704,
+                46.963673
+              ],
+              [
+                7.447217,
+                46.963104
+              ],
+              [
+                7.44607,
+                46.962366
+              ],
+              [
+                7.443934,
+                46.960208
+              ],
+              [
+                7.44333,
+                46.95941
+              ],
+              [
+                7.442972,
+                46.958454
+              ],
+              [
+                7.442844,
+                46.956118
+              ],
+              [
+                7.442585,
+                46.955238
+              ],
+              [
+                7.439723,
+                46.950113
+              ],
+              [
+                7.439325,
+                46.949649
+              ],
+              [
+                7.438694,
+                46.949225
+              ]
+            ],
+            "gauge": "mm1435",
+            "dataStand": "2021-07-06",
+            "validFrom": "2015-10-21",
+            "validUntil": null,
+            "infrastructureOperator": "SBB CFF FFS"
+          },
+          "stops": [
+            [
+              7.4333344,
+              46.94822398,
+              "Bern",
+              "49",
+              "ch:1:sloid:7000:55:49"
+            ],
+            [
+              7.43355898,
+              46.94830984,
+              "Bern",
+              "50",
+              "ch:1:sloid:7000:55:50"
+            ]
+          ],
+          "maximumProjectionMetres": 75,
+          "minimumSpurMetres": 200,
+          "maximumSpurMetres": 600,
+          "routes": [
+            {
+              "routeId": "91-16-B-j26-1",
+              "agencyId": "11",
+              "line": "IR16"
+            },
+            {
+              "routeId": "91-35-A-j26-1",
+              "agencyId": "82",
+              "line": "IR35"
+            },
+            {
+              "routeId": "91-35-B-j26-1",
+              "agencyId": "11",
+              "line": "IR35"
+            },
+            {
+              "routeId": "91-35-D-j26-1",
+              "agencyId": "33",
+              "line": "IR35"
+            },
+            {
+              "routeId": "91-4U-Y-j26-1",
+              "agencyId": "11",
+              "line": "IR"
+            }
+          ],
+          "adjacentOperatingPoints": {
+            "91-16-B-j26-1": [
+              "8500218"
+            ],
+            "91-35-A-j26-1": [
+              "8508005"
+            ],
+            "91-35-B-j26-1": [
+              "8508005"
+            ],
+            "91-35-D-j26-1": [
+              "8508005"
+            ],
+            "91-4U-Y-j26-1": [
+              "8508005"
+            ]
+          },
+          "method": "Only exact reviewed route/operator identities with one terminal Bern call on original platforms 49/50 and the explicit adjacent operating point. Project platform onto the pinned SBB station curve and retain its station-centre side as an inferred terminal spur. Original Bern node stays in place; only Bern Wyler eastern approach remains connected at that node in the pattern-local graph. Full-context consensus and existing source validity, station/topology attachment, detour and stop-order guards remain. Preserve all previous successful paths. No running-track, switch or present-day itinerary certification."
+        },
+        "policySha256": "3b67c0919902b95d2a08fbc26f653677a907ce95b286fb02d14bc1d511611d5d",
+        "evidence": [
+          {
+            "stopId": "ch:1:sloid:7000:55:49",
+            "originalOperatingPoint": {
+              "id": "ch14uvag00088813",
+              "number": "8507000",
+              "name": "Bern",
+              "coordinate": [
+                7.439136,
+                46.948831
+              ]
+            },
+            "terminal": {
+              "id": "solothurn:bern-terminal:49",
+              "number": "SO-BERN-49",
+              "name": "Bern reviewed platform 49",
+              "coordinate": [
+                7.4334524,
+                46.9479304
+              ]
+            },
+            "projection": {
+              "segmentIndex": 4,
+              "fraction": 0.07169237022045111,
+              "point": [
+                7.4334524,
+                46.9479304
+              ],
+              "attachmentMetres": 33.88924546124847
+            },
+            "retainedMetres": 427.2349973477947,
+            "sourceCurveId": "ch14uvag00087328",
+            "easternApproachId": "ch14uvag00139673",
+            "spurId": "solothurn:bern-terminal:49:inferred-station-spur",
+            "removedConnections": [
+              "ch14uvag00087195",
+              "ch14uvag00087196",
+              "ch14uvag00087328"
+            ]
+          },
+          {
+            "stopId": "ch:1:sloid:7000:55:50",
+            "originalOperatingPoint": {
+              "id": "ch14uvag00088813",
+              "number": "8507000",
+              "name": "Bern",
+              "coordinate": [
+                7.439136,
+                46.948831
+              ]
+            },
+            "terminal": {
+              "id": "solothurn:bern-terminal:50",
+              "number": "SO-BERN-50",
+              "name": "Bern reviewed platform 50",
+              "coordinate": [
+                7.4336934,
+                46.9479756
+              ]
+            },
+            "projection": {
+              "segmentIndex": 4,
+              "fraction": 0.1311714476650292,
+              "point": [
+                7.4336934,
+                46.9479756
+              ],
+              "attachmentMetres": 38.584362303324
+            },
+            "retainedMetres": 408.2418313977731,
+            "sourceCurveId": "ch14uvag00087328",
+            "easternApproachId": "ch14uvag00139673",
+            "spurId": "solothurn:bern-terminal:50:inferred-station-spur",
+            "removedConnections": [
+              "ch14uvag00087195",
+              "ch14uvag00087196",
+              "ch14uvag00087328"
+            ]
+          }
+        ]
+      },
       "accessRoads": {
         "policy": {
           "schemaVersion": 1,
@@ -1785,10 +2067,10 @@
     "key": "GTFS route identity + direction_id + full ordered original platform IDs, including repeats and out-of-canton calls"
   },
   "routesByStatus": {
-    "admitted-all-dated-trips": 137,
-    "excluded": 4,
+    "admitted-all-dated-trips": 142,
+    "excluded": 3,
     "inactive-on-validation-dates": 42,
-    "partially-admitted": 10
+    "partially-admitted": 6
   },
   "districts": [
     {
@@ -2348,6 +2630,7 @@
         "91-29-Y-j26-1",
         "91-35-A-j26-1",
         "91-35-B-j26-1",
+        "91-35-D-j26-1",
         "91-3-B-j26-1",
         "91-3M-Y-j26-1",
         "91-3U-Y-j26-1",
@@ -2430,23 +2713,23 @@
       },
       "coverage": {
         "trips": 7156,
-        "admittedTrips": 6989,
+        "admittedTrips": 7023,
         "scheduledTrips": 6078,
         "representativeHeadwayTrips": 1078,
-        "admittedScheduledTrips": 5911,
+        "admittedScheduledTrips": 5945,
         "admittedRepresentativeHeadwayTrips": 1078,
         "scheduledSegmentOccurrences": 97358,
-        "matchedScheduledSegmentOccurrences": 97097,
+        "matchedScheduledSegmentOccurrences": 97131,
         "segmentOccurrences": 98436,
-        "matchedSegmentOccurrences": 98175,
-        "admittedSegmentOccurrences": 93159,
+        "matchedSegmentOccurrences": 98209,
+        "admittedSegmentOccurrences": 93705,
         "directedPairs": 4259,
-        "matchedDirectedPairs": 4240,
+        "matchedDirectedPairs": 4247,
         "patterns": 921,
-        "completePatterns": 877,
-        "admittedPatterns": 877,
+        "completePatterns": 904,
+        "admittedPatterns": 904,
         "excludedTrips": {
-          "incomplete-directed-pattern": 167
+          "incomplete-directed-pattern": 133
         }
       },
       "groups": [
@@ -2454,23 +2737,23 @@
           "id": "11:rail",
           "agency": "Schweizerische Bundesbahnen SBB",
           "trips": 950,
-          "admittedTrips": 925,
+          "admittedTrips": 940,
           "scheduledTrips": 950,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 925,
+          "admittedScheduledTrips": 940,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 9782,
-          "matchedScheduledSegmentOccurrences": 9757,
+          "matchedScheduledSegmentOccurrences": 9772,
           "segmentOccurrences": 9782,
-          "matchedSegmentOccurrences": 9757,
-          "admittedSegmentOccurrences": 9473,
+          "matchedSegmentOccurrences": 9772,
+          "admittedSegmentOccurrences": 9702,
           "directedPairs": 994,
-          "matchedDirectedPairs": 981,
+          "matchedDirectedPairs": 985,
           "patterns": 327,
-          "completePatterns": 303,
-          "admittedPatterns": 303,
+          "completePatterns": 317,
+          "admittedPatterns": 317,
           "excludedTrips": {
-            "incomplete-directed-pattern": 25
+            "incomplete-directed-pattern": 10
           }
         },
         {
@@ -2519,24 +2802,22 @@
           "id": "33:rail",
           "agency": "BLS AG (bls)",
           "trips": 158,
-          "admittedTrips": 157,
+          "admittedTrips": 158,
           "scheduledTrips": 158,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 157,
+          "admittedScheduledTrips": 158,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 1572,
-          "matchedScheduledSegmentOccurrences": 1571,
+          "matchedScheduledSegmentOccurrences": 1572,
           "segmentOccurrences": 1572,
-          "matchedSegmentOccurrences": 1571,
-          "admittedSegmentOccurrences": 1568,
+          "matchedSegmentOccurrences": 1572,
+          "admittedSegmentOccurrences": 1572,
           "directedPairs": 137,
-          "matchedDirectedPairs": 136,
+          "matchedDirectedPairs": 137,
           "patterns": 38,
-          "completePatterns": 37,
-          "admittedPatterns": 37,
-          "excludedTrips": {
-            "incomplete-directed-pattern": 1
-          }
+          "completePatterns": 38,
+          "admittedPatterns": 38,
+          "excludedTrips": {}
         },
         {
           "id": "37:bus",
@@ -2651,24 +2932,22 @@
           "id": "82:rail",
           "agency": "Schweizerische Südostbahn (sob)",
           "trips": 43,
-          "admittedTrips": 25,
+          "admittedTrips": 43,
           "scheduledTrips": 43,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 25,
+          "admittedScheduledTrips": 43,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 706,
-          "matchedScheduledSegmentOccurrences": 688,
+          "matchedScheduledSegmentOccurrences": 706,
           "segmentOccurrences": 706,
-          "matchedSegmentOccurrences": 688,
-          "admittedSegmentOccurrences": 393,
+          "matchedSegmentOccurrences": 706,
+          "admittedSegmentOccurrences": 706,
           "directedPairs": 138,
-          "matchedDirectedPairs": 136,
+          "matchedDirectedPairs": 138,
           "patterns": 36,
-          "completePatterns": 24,
-          "admittedPatterns": 24,
-          "excludedTrips": {
-            "incomplete-directed-pattern": 18
-          }
+          "completePatterns": 36,
+          "admittedPatterns": 36,
+          "excludedTrips": {}
         },
         {
           "id": "840:bus",
@@ -2778,7 +3057,7 @@
       ],
       "carryInTrips": 149,
       "admittedCarryInTrips": 145,
-      "admittedOutsideCantonPlatforms": 875,
+      "admittedOutsideCantonPlatforms": 893,
       "directedPatternChecks": {
         "directionIds": [
           "0",
@@ -4268,7 +4547,7 @@
       },
       "pairFailureReasons": {
         "disconnected-line": 1,
-        "endpoint-gap": 15,
+        "endpoint-gap": 8,
         "implausible-detour": 1,
         "no-compatible-source-mode": 2
       },
@@ -4292,23 +4571,23 @@
       },
       "coverage": {
         "trips": 5819,
-        "admittedTrips": 5644,
+        "admittedTrips": 5678,
         "scheduledTrips": 4711,
         "representativeHeadwayTrips": 1108,
-        "admittedScheduledTrips": 4536,
+        "admittedScheduledTrips": 4570,
         "admittedRepresentativeHeadwayTrips": 1108,
         "scheduledSegmentOccurrences": 68102,
-        "matchedScheduledSegmentOccurrences": 67827,
+        "matchedScheduledSegmentOccurrences": 67861,
         "segmentOccurrences": 69210,
-        "matchedSegmentOccurrences": 68935,
-        "admittedSegmentOccurrences": 64475,
+        "matchedSegmentOccurrences": 68969,
+        "admittedSegmentOccurrences": 65033,
         "directedPairs": 4467,
-        "matchedDirectedPairs": 4450,
+        "matchedDirectedPairs": 4457,
         "patterns": 777,
-        "completePatterns": 733,
-        "admittedPatterns": 733,
+        "completePatterns": 759,
+        "admittedPatterns": 759,
         "excludedTrips": {
-          "incomplete-directed-pattern": 173,
+          "incomplete-directed-pattern": 139,
           "night-network-excluded-by-source": 2
         }
       },
@@ -4317,23 +4596,23 @@
           "id": "11:rail",
           "agency": "Schweizerische Bundesbahnen SBB",
           "trips": 903,
-          "admittedTrips": 878,
+          "admittedTrips": 893,
           "scheduledTrips": 903,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 878,
+          "admittedScheduledTrips": 893,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 7943,
-          "matchedScheduledSegmentOccurrences": 7918,
+          "matchedScheduledSegmentOccurrences": 7933,
           "segmentOccurrences": 7943,
-          "matchedSegmentOccurrences": 7918,
-          "admittedSegmentOccurrences": 7644,
+          "matchedSegmentOccurrences": 7933,
+          "admittedSegmentOccurrences": 7872,
           "directedPairs": 999,
-          "matchedDirectedPairs": 990,
+          "matchedDirectedPairs": 994,
           "patterns": 336,
-          "completePatterns": 315,
-          "admittedPatterns": 315,
+          "completePatterns": 327,
+          "admittedPatterns": 327,
           "excludedTrips": {
-            "incomplete-directed-pattern": 25
+            "incomplete-directed-pattern": 10
           }
         },
         {
@@ -4382,24 +4661,22 @@
           "id": "33:rail",
           "agency": "BLS AG (bls)",
           "trips": 161,
-          "admittedTrips": 160,
+          "admittedTrips": 161,
           "scheduledTrips": 161,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 160,
+          "admittedScheduledTrips": 161,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 1513,
-          "matchedScheduledSegmentOccurrences": 1512,
+          "matchedScheduledSegmentOccurrences": 1513,
           "segmentOccurrences": 1513,
-          "matchedSegmentOccurrences": 1512,
-          "admittedSegmentOccurrences": 1509,
+          "matchedSegmentOccurrences": 1513,
+          "admittedSegmentOccurrences": 1513,
           "directedPairs": 116,
-          "matchedDirectedPairs": 115,
+          "matchedDirectedPairs": 116,
           "patterns": 35,
-          "completePatterns": 34,
-          "admittedPatterns": 34,
-          "excludedTrips": {
-            "incomplete-directed-pattern": 1
-          }
+          "completePatterns": 35,
+          "admittedPatterns": 35,
+          "excludedTrips": {}
         },
         {
           "id": "37:bus",
@@ -4558,24 +4835,22 @@
           "id": "82:rail",
           "agency": "Schweizerische Südostbahn (sob)",
           "trips": 41,
-          "admittedTrips": 23,
+          "admittedTrips": 41,
           "scheduledTrips": 41,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 23,
+          "admittedScheduledTrips": 41,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 689,
-          "matchedScheduledSegmentOccurrences": 671,
+          "matchedScheduledSegmentOccurrences": 689,
           "segmentOccurrences": 689,
-          "matchedSegmentOccurrences": 671,
-          "admittedSegmentOccurrences": 363,
+          "matchedSegmentOccurrences": 689,
+          "admittedSegmentOccurrences": 689,
           "directedPairs": 144,
-          "matchedDirectedPairs": 142,
+          "matchedDirectedPairs": 144,
           "patterns": 33,
-          "completePatterns": 20,
-          "admittedPatterns": 20,
-          "excludedTrips": {
-            "incomplete-directed-pattern": 18
-          }
+          "completePatterns": 33,
+          "admittedPatterns": 33,
+          "excludedTrips": {}
         },
         {
           "id": "840:bus",
@@ -4687,7 +4962,7 @@
       ],
       "carryInTrips": 359,
       "admittedCarryInTrips": 341,
-      "admittedOutsideCantonPlatforms": 992,
+      "admittedOutsideCantonPlatforms": 997,
       "directedPatternChecks": {
         "directionIds": [
           "0",
@@ -6544,7 +6819,7 @@
         }
       },
       "pairFailureReasons": {
-        "endpoint-gap": 14,
+        "endpoint-gap": 7,
         "night-network-excluded-by-source": 1,
         "no-compatible-source-mode": 2
       },

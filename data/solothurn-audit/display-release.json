@@ -5,156 +5,156 @@
     {
       "date": "2026-09-04",
       "version": 1,
-      "archiveManifestSha256": "a812572cb6e2104dd7bc1c3b98b3bf0f22fc9d476d9b5ce5c0807159cc3949bc",
-      "auditSha256": "75792e976d330bd3a924721e533e66047ec07ff3f203be4e1fe2628b19f37150",
+      "archiveManifestSha256": "5832046904bc58f8c6d5c8e9c8917516933d1c168af55444f00970a9a76c7cb2",
+      "auditSha256": "72afd615b46d2ea65246dbe859123f994347fc2b494135f508a30d3c1ab16cdc",
       "movements": {
-        "total": 6989,
-        "scheduled": 5911,
+        "total": 7023,
+        "scheduled": 5945,
         "representativeHeadway": 1078
       },
-      "admittedSegments": 93159,
+      "admittedSegments": 93705,
       "simplification": {
         "algorithm": "Douglas–Peucker; distance to retained chord in approximate LV95 metres",
         "toleranceMetres": 5,
         "maximumDeviationMetres": 4.9964051669253955,
-        "originalVertices": 137855,
-        "displayVertices": 69653,
+        "originalVertices": 140527,
+        "displayVertices": 71968,
         "endpointsUnchanged": true
       },
       "payload": {
         "solothurn-region-day-chunks/00-02.json": {
-          "bytes": 121825,
-          "gzipBytes": 22655
+          "bytes": 121886,
+          "gzipBytes": 22664
         },
         "solothurn-region-day-chunks/02-04.json": {
           "bytes": 50,
           "gzipBytes": 62
         },
         "solothurn-region-day-chunks/04-06.json": {
-          "bytes": 267028,
-          "gzipBytes": 43865
+          "bytes": 269278,
+          "gzipBytes": 44207
         },
         "solothurn-region-day-chunks/06-08.json": {
-          "bytes": 887998,
-          "gzipBytes": 116824
+          "bytes": 894433,
+          "gzipBytes": 117914
         },
         "solothurn-region-day-chunks/08-10.json": {
-          "bytes": 888527,
-          "gzipBytes": 108856
+          "bytes": 897728,
+          "gzipBytes": 110400
         },
         "solothurn-region-day-chunks/10-12.json": {
-          "bytes": 892389,
-          "gzipBytes": 103831
+          "bytes": 902568,
+          "gzipBytes": 105442
         },
         "solothurn-region-day-chunks/12-14.json": {
-          "bytes": 929306,
-          "gzipBytes": 107430
+          "bytes": 939479,
+          "gzipBytes": 109074
         },
         "solothurn-region-day-chunks/14-16.json": {
-          "bytes": 928137,
-          "gzipBytes": 108369
+          "bytes": 938311,
+          "gzipBytes": 109991
         },
         "solothurn-region-day-chunks/16-18.json": {
-          "bytes": 1026334,
-          "gzipBytes": 121224
+          "bytes": 1036513,
+          "gzipBytes": 122870
         },
         "solothurn-region-day-chunks/18-20.json": {
-          "bytes": 797867,
-          "gzipBytes": 106389
+          "bytes": 806678,
+          "gzipBytes": 107846
         },
         "solothurn-region-day-chunks/20-22.json": {
-          "bytes": 538239,
-          "gzipBytes": 76314
+          "bytes": 544723,
+          "gzipBytes": 77437
         },
         "solothurn-region-day-chunks/22-24.json": {
-          "bytes": 427589,
-          "gzipBytes": 62898
+          "bytes": 430497,
+          "gzipBytes": 63390
         },
         "solothurn-region-day-manifest.json": {
-          "bytes": 1766787,
-          "gzipBytes": 342476
+          "bytes": 1826037,
+          "gzipBytes": 357519
         },
         "solothurn-region-morning.json": {
-          "bytes": 2668629,
-          "gzipBytes": 459415
+          "bytes": 2735735,
+          "gzipBytes": 474428
         }
       }
     },
     {
       "date": "2026-09-06",
       "version": 1,
-      "archiveManifestSha256": "42c9018878f0bc473bdfa59384c2c85e2ece66b623c29dfdc74dfa4b2f683aad",
-      "auditSha256": "048ff51a372fbff4b51fde6c2a0211a1cea758ff9b4b7f0d1bee573e62cd3fce",
+      "archiveManifestSha256": "e3786880f127888be543ae29d5b718d47563efcb930591711cd227d147654856",
+      "auditSha256": "f2d2f661507202f99859999af7f159b3b9146eb911d372ebbd9af58514f3eba7",
       "movements": {
-        "total": 5644,
-        "scheduled": 4536,
+        "total": 5678,
+        "scheduled": 4570,
         "representativeHeadway": 1108
       },
-      "admittedSegments": 64475,
+      "admittedSegments": 65033,
       "simplification": {
         "algorithm": "Douglas–Peucker; distance to retained chord in approximate LV95 metres",
         "toleranceMetres": 5,
         "maximumDeviationMetres": 4.9964051669253955,
-        "originalVertices": 148165,
-        "displayVertices": 78768,
+        "originalVertices": 150557,
+        "displayVertices": 80817,
         "endpointsUnchanged": true
       },
       "payload": {
         "solothurn-region-day-chunks/00-02.json": {
-          "bytes": 214379,
-          "gzipBytes": 37505
+          "bytes": 214411,
+          "gzipBytes": 37549
         },
         "solothurn-region-day-chunks/02-04.json": {
-          "bytes": 117575,
-          "gzipBytes": 19891
+          "bytes": 117584,
+          "gzipBytes": 19943
         },
         "solothurn-region-day-chunks/04-06.json": {
-          "bytes": 118280,
-          "gzipBytes": 21837
+          "bytes": 120792,
+          "gzipBytes": 22301
         },
         "solothurn-region-day-chunks/06-08.json": {
-          "bytes": 416307,
-          "gzipBytes": 60407
+          "bytes": 422787,
+          "gzipBytes": 61677
         },
         "solothurn-region-day-chunks/08-10.json": {
-          "bytes": 627375,
-          "gzipBytes": 75998
+          "bytes": 636282,
+          "gzipBytes": 77649
         },
         "solothurn-region-day-chunks/10-12.json": {
-          "bytes": 711825,
-          "gzipBytes": 80443
+          "bytes": 721714,
+          "gzipBytes": 82301
         },
         "solothurn-region-day-chunks/12-14.json": {
-          "bytes": 710016,
-          "gzipBytes": 79822
+          "bytes": 719899,
+          "gzipBytes": 81610
         },
         "solothurn-region-day-chunks/14-16.json": {
-          "bytes": 714050,
-          "gzipBytes": 80488
+          "bytes": 723941,
+          "gzipBytes": 82191
         },
         "solothurn-region-day-chunks/16-18.json": {
-          "bytes": 692019,
-          "gzipBytes": 80159
+          "bytes": 700923,
+          "gzipBytes": 81740
         },
         "solothurn-region-day-chunks/18-20.json": {
-          "bytes": 525919,
-          "gzipBytes": 72717
+          "bytes": 534452,
+          "gzipBytes": 74218
         },
         "solothurn-region-day-chunks/20-22.json": {
-          "bytes": 476221,
-          "gzipBytes": 66445
+          "bytes": 482535,
+          "gzipBytes": 67520
         },
         "solothurn-region-day-chunks/22-24.json": {
-          "bytes": 419632,
-          "gzipBytes": 61032
+          "bytes": 422400,
+          "gzipBytes": 61474
         },
         "solothurn-region-day-manifest.json": {
-          "bytes": 1969477,
-          "gzipBytes": 381925
+          "bytes": 2022134,
+          "gzipBytes": 393975
         },
         "solothurn-region-morning.json": {
-          "bytes": 2473053,
-          "gzipBytes": 450004
+          "bytes": 2533605,
+          "gzipBytes": 463356
         }
       }
     }
