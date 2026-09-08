@@ -37,14 +37,14 @@ export async function buildBernDay({ date = '2026-09-04', sourceDirectory = 'pub
   const bernRelease = { version: 1, archiveManifestSha256: digest(manifestBytes), auditSha256: digest(auditBytes),
     movements: { total: trains.length, scheduled: trains.length - headway, representativeHeadway: headway },
     admittedSegments: trains.reduce((n, t) => n + t.pathSegments.length, 0),
-    simplification: { algorithm: 'Douglas–Peucker; distance to retained chord in approximate LV95 metres', toleranceMetres: 5, maximumDeviationMetres,
+    simplification: { algorithm: 'Douglas–Peucker with original-span-checked redundant vertex removal; distance to retained chord in approximate LV95 metres', toleranceMetres: 5, maximumDeviationMetres,
       originalVertices: original.reduce((n, p) => n + p.length, 0), displayVertices: paths.reduce((n, p) => n + p.length, 0), endpointsUnchanged: true } }
   const geometry = { ...day.metadata.geometry, publisher: 'Kanton Bern',
     transformation: 'Source WGS84 vertices retained in order; display-only simplification bounded to 5 metres in approximate LV95. All segment endpoints unchanged; archive unsimplified.',
     localMetadata: 'bern-region/sources.json', localTerms: ['bern-region/terms_of_use_de.pdf', 'bern-region/terms_of_use_fr.pdf'] }
   // Full reviewed topology and projection evidence stays in the archive and
   // sources.json; the display payload carries its hash, dates and attribution.
-  for (const field of ['railSupplement', 'regionalRailSupplement', 'crosscantonRailSupplement', 'ir66Supplement', 'ir16Supplement', 'tpfTerminalSupplement', 'morgesSupplement', 'interlakenSupplement', 'ic61Supplement']) {
+  for (const field of ['railSupplement', 'regionalRailSupplement', 'crosscantonRailSupplement', 'ir66Supplement', 'ir16Supplement', 'tpfTerminalSupplement', 'morgesSupplement', 'interlakenSupplement', 'ic61Supplement', 'ic61PlatformsSupplement']) {
     const r = geometry[field]
     if (!r) continue
     const { files: _files, ...source } = r.source

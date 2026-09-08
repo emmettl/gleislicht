@@ -20,16 +20,25 @@ describe('Bern display release', () => {
     expect(() => bernDisplayDeviation(points, [points[0], points[2], points[1], points.at(-1)])).toThrow()
     expect(bernDisplayDeviation(points, [points[0], points.at(-1)])).toBeGreaterThan(5)
   })
+  it('removes a redundant DP split only when its entire original span stays inside the bound', () => {
+    const points = [[0, 2], [4, 7], [8, 10], [12, 12], [16, 10], [20, 12], [24, 0], [28, 8]].map(([x, y]) => bernWgs84([2600000 + x, 1200000 + y]))
+    const simplified = simplifyBernPath(points, 5)
+    expect(simplified).toHaveLength(4)
+    expect(bernDisplayDeviation(points, simplified)).toBeLessThanOrEqual(5)
+    // The sharp low point cannot be removed merely because adjacent retained
+    // vertices appear close; the original subchain must also pass.
+    expect(simplified).toContainEqual(points[6])
+  })
   it('reproduces both audited dates within budgets without changing any movement or call', async () => {
     const output = await mkdtemp(join(tmpdir(), 'bern-display-test-'))
     try {
       for (const date of ['2026-09-04', '2026-09-06']) {
         const report = await buildBernDay({ date, output })
-        expect(report.movements.total).toBe(date.endsWith('04') ? 36804 : 32012)
+        expect(report.movements.total).toBe(date.endsWith('04') ? 36831 : 32067)
         const { files } = await readRegionalDirectory(output, ['bern-region'], date)
         const archive = JSON.parse(await readFile(`public/data/bern-region/${date}/bern-region-day-manifest.json`))
         const display = JSON.parse(files.get('bern-region-day-manifest.json'))
-        for (const field of ['railSupplement', 'regionalRailSupplement', 'crosscantonRailSupplement', 'ir66Supplement', 'ir16Supplement', 'tpfTerminalSupplement', 'morgesSupplement', 'interlakenSupplement', 'ic61Supplement']) {
+        for (const field of ['railSupplement', 'regionalRailSupplement', 'crosscantonRailSupplement', 'ir66Supplement', 'ir16Supplement', 'tpfTerminalSupplement', 'morgesSupplement', 'interlakenSupplement', 'ic61Supplement', 'ic61PlatformsSupplement']) {
           const compact = display.metadata.geometry[field], full = archive.metadata.geometry[field]
           expect(compact.policySha256).toBe(full.policySha256)
           const { files: _files, ...source } = full.source
@@ -86,6 +95,9 @@ describe('Bern display release', () => {
       d => { d.metadata.geometry.ic61Supplement.policySha256 = '0'.repeat(64) },
       d => { d.metadata.geometry.ic61Supplement.documents = [] },
       d => { d.metadata.geometry.ic61Supplement.source.attribution = '' },
+      d => { d.metadata.geometry.ic61PlatformsSupplement.source.attribution = '' },
+      d => { d.metadata.geometry.ic61PlatformsSupplement.documents = [] },
+      d => { d.metadata.geometry.ic61PlatformsSupplement.policySha256 = '0'.repeat(64) },
       d => { d.metadata.geometry.urbanSupplement.source.attribution = '' },
       d => { d.metadata.geometry.urbanSupplement.policy = {}; d.metadata.geometry.urbanSupplement.source.attribution = '' },
       d => { d.metadata.geometry.regionalRoadSupplement.fullEvidence.path = 'missing.json' },

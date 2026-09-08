@@ -1,0 +1,4987 @@
+{
+  "schemaVersion": 1,
+  "sourceId": "bern-ic61-platforms-reviewed-fot-rail-20210706",
+  "sourceDirectory": "data/bern-sources/fot-rail",
+  "sourceMetadataSha256": "46ab3ed91471fde35bcb1b678410efe7ecab6bf1cf02027729f547545b94aaad",
+  "sourceSha256": "2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+  "dates": [
+    "2026-09-04",
+    "2026-09-06"
+  ],
+  "limits": {
+    "stationAttachmentMetres": 120,
+    "topologyAttachmentMetres": 120,
+    "detourRatio": 4.5,
+    "detourFloorMetres": 3000,
+    "simplificationMetres": 0
+  },
+  "gauges": [
+    "mm1435"
+  ],
+  "infrastructureOperators": [
+    "SBB CFF FFS",
+    "BLSN",
+    "BLS"
+  ],
+  "routes": [
+    {
+      "routeId": "91-61-A-j26-1",
+      "agencyId": "11",
+      "line": "IC61",
+      "mode": "rail",
+      "pairs": [
+        {
+          "fromId": "ch:1:sloid:10:0:19",
+          "toId": "ch:1:sloid:23:1:1",
+          "operatingPointPair": [
+            "8500010",
+            "8500023"
+          ],
+          "sourceSegments": []
+        },
+        {
+          "fromId": "ch:1:sloid:23:1:1",
+          "toId": "ch:1:sloid:26:1:1",
+          "operatingPointPair": [
+            "8500023",
+            "8500026"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087757",
+            "ch14uvag00087758",
+            "ch14uvag00087759"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:26:1:1",
+          "toId": "ch:1:sloid:218:7:12",
+          "operatingPointPair": [
+            "8500026",
+            "8500218"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087760",
+            "ch14uvag00087761",
+            "ch14uvag00087762",
+            "ch14uvag00087763",
+            "ch14uvag00087764",
+            "ch14uvag00087765",
+            "ch14uvag00240327"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:218:7:12",
+          "toId": "ch:1:sloid:7000:4:7",
+          "operatingPointPair": [
+            "8500218",
+            "8507000"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087767",
+            "ch14uvag00087637",
+            "ch14uvag00087638",
+            "ch14uvag00087524",
+            "ch14uvag00087523",
+            "ch14uvag00087522",
+            "ch14uvag00087660",
+            "ch14uvag00087661",
+            "ch14uvag00087662",
+            "ch14uvag00139692",
+            "ch14uvag00139673",
+            "bern:ic61-platform:7:station-section"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:7000:4:7",
+          "toId": "ch:1:sloid:7100:1:1",
+          "operatingPointPair": [
+            "8507000",
+            "8507100"
+          ],
+          "sourceSegments": [
+            "bern:ic61-platform:7:station-section",
+            "ch14uvag00139673",
+            "ch14uvag00139692",
+            "ch14uvag00087397",
+            "ch14uvag00087398",
+            "ch14uvag00087399",
+            "ch14uvag00087400",
+            "ch14uvag00087401",
+            "ch14uvag00087402",
+            "ch14uvag00087403",
+            "ch14uvag00087404",
+            "ch14uvag00087405",
+            "ch14uvag00087406",
+            "ch14uvag00087407",
+            "ch14uvag00087408"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:7100:1:1",
+          "toId": "ch:1:sloid:7483:0:90840",
+          "operatingPointPair": [
+            "8507100",
+            "8507483"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087443",
+            "ch14uvag00087478",
+            "ch14uvag00087479",
+            "ch14uvag00087480",
+            "ch14uvag00087481"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:7483:0:90840",
+          "toId": "ch:1:sloid:7493:0:470772",
+          "operatingPointPair": [
+            "8507483",
+            "8507493"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087482",
+            "ch14uvag00087483",
+            "ch14uvag00087484",
+            "ch14uvag00087485",
+            "ch14uvag00087486",
+            "ch14uvag00087487",
+            "ch14uvag00087488"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:7493:0:470772",
+          "toId": "ch:1:sloid:7492:0:581416",
+          "operatingPointPair": [
+            "8507493",
+            "8507492"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087489"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:7492:0:460848",
+          "toId": "ch:1:sloid:7493:0:470772",
+          "operatingPointPair": [
+            "8507492",
+            "8507493"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087489"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:7493:0:470772",
+          "toId": "ch:1:sloid:7483:0:341164",
+          "operatingPointPair": [
+            "8507493",
+            "8507483"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087488",
+            "ch14uvag00087487",
+            "ch14uvag00087486",
+            "ch14uvag00087485",
+            "ch14uvag00087484",
+            "ch14uvag00087483",
+            "ch14uvag00087482"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:7483:0:341164",
+          "toId": "ch:1:sloid:7100:2:3",
+          "operatingPointPair": [
+            "8507483",
+            "8507100"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087481",
+            "ch14uvag00087480",
+            "ch14uvag00087479",
+            "ch14uvag00087478",
+            "ch14uvag00087443"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:7100:2:3",
+          "toId": "ch:1:sloid:7000:3:6",
+          "operatingPointPair": [
+            "8507100",
+            "8507000"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087408",
+            "ch14uvag00087407",
+            "ch14uvag00087406",
+            "ch14uvag00087405",
+            "ch14uvag00087404",
+            "ch14uvag00087403",
+            "ch14uvag00087402",
+            "ch14uvag00087401",
+            "ch14uvag00087400",
+            "ch14uvag00087399",
+            "ch14uvag00087398",
+            "ch14uvag00087397",
+            "ch14uvag00139692",
+            "ch14uvag00139673",
+            "bern:ic61-platform:6:station-section"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:7483:0:341164",
+          "toId": "ch:1:sloid:7100:2:2",
+          "operatingPointPair": [
+            "8507483",
+            "8507100"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087481",
+            "ch14uvag00087480",
+            "ch14uvag00087479",
+            "ch14uvag00087478",
+            "ch14uvag00087443"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:7100:2:2",
+          "toId": "ch:1:sloid:7000:3:5",
+          "operatingPointPair": [
+            "8507100",
+            "8507000"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087408",
+            "ch14uvag00087407",
+            "ch14uvag00087406",
+            "ch14uvag00087405",
+            "ch14uvag00087404",
+            "ch14uvag00087403",
+            "ch14uvag00087402",
+            "ch14uvag00087401",
+            "ch14uvag00087400",
+            "ch14uvag00087399",
+            "ch14uvag00087398",
+            "ch14uvag00087397",
+            "ch14uvag00139692",
+            "ch14uvag00139673",
+            "bern:ic61-platform:5:station-section"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:7100:2:2",
+          "toId": "ch:1:sloid:7000:4:7",
+          "operatingPointPair": [
+            "8507100",
+            "8507000"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087408",
+            "ch14uvag00087407",
+            "ch14uvag00087406",
+            "ch14uvag00087405",
+            "ch14uvag00087404",
+            "ch14uvag00087403",
+            "ch14uvag00087402",
+            "ch14uvag00087401",
+            "ch14uvag00087400",
+            "ch14uvag00087399",
+            "ch14uvag00087398",
+            "ch14uvag00087397",
+            "ch14uvag00139692",
+            "ch14uvag00139673",
+            "bern:ic61-platform:7:station-section"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:7492:0:581416",
+          "toId": "ch:1:sloid:7493:0:470772",
+          "operatingPointPair": [
+            "8507492",
+            "8507493"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087489"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:7100:2:3",
+          "toId": "ch:1:sloid:7000:3:5",
+          "operatingPointPair": [
+            "8507100",
+            "8507000"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087408",
+            "ch14uvag00087407",
+            "ch14uvag00087406",
+            "ch14uvag00087405",
+            "ch14uvag00087404",
+            "ch14uvag00087403",
+            "ch14uvag00087402",
+            "ch14uvag00087401",
+            "ch14uvag00087400",
+            "ch14uvag00087399",
+            "ch14uvag00087398",
+            "ch14uvag00087397",
+            "ch14uvag00139692",
+            "ch14uvag00139673",
+            "bern:ic61-platform:5:station-section"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:7000:3:5",
+          "toId": "ch:1:sloid:218:3:4",
+          "operatingPointPair": [
+            "8507000",
+            "8500218"
+          ],
+          "sourceSegments": [
+            "bern:ic61-platform:5:station-section",
+            "ch14uvag00139673",
+            "ch14uvag00139692",
+            "ch14uvag00087662",
+            "ch14uvag00087661",
+            "ch14uvag00087660",
+            "ch14uvag00087522",
+            "ch14uvag00087523",
+            "ch14uvag00087524",
+            "ch14uvag00087638",
+            "ch14uvag00087637",
+            "ch14uvag00087767"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:218:3:4",
+          "toId": "ch:1:sloid:10:4:8",
+          "operatingPointPair": [
+            "8500218",
+            "8500010"
+          ],
+          "sourceSegments": [
+            "ch14uvag00240327",
+            "ch14uvag00087765",
+            "ch14uvag00087764",
+            "ch14uvag00087763",
+            "ch14uvag00087762",
+            "ch14uvag00087761",
+            "ch14uvag00087760",
+            "ch14uvag00087759",
+            "ch14uvag00087758",
+            "ch14uvag00087757",
+            "ch14uvag00087756",
+            "ch14uvag00240325",
+            "ch14uvag00087749",
+            "ch14uvag00087825",
+            "ch14uvag00240365",
+            "ch14uvag00240382",
+            "ch14uvag00087813",
+            "ch14uvag00087812",
+            "ch14uvag00087811",
+            "ch14uvag00087745"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:218:3:4",
+          "toId": "ch:1:sloid:10:3:6",
+          "operatingPointPair": [
+            "8500218",
+            "8500010"
+          ],
+          "sourceSegments": [
+            "ch14uvag00240327",
+            "ch14uvag00087765",
+            "ch14uvag00087764",
+            "ch14uvag00087763",
+            "ch14uvag00087762",
+            "ch14uvag00087761",
+            "ch14uvag00087760",
+            "ch14uvag00087759",
+            "ch14uvag00087758",
+            "ch14uvag00087757",
+            "ch14uvag00087756",
+            "ch14uvag00240325",
+            "ch14uvag00087749",
+            "ch14uvag00087825",
+            "ch14uvag00240365",
+            "ch14uvag00240382",
+            "ch14uvag00087813",
+            "ch14uvag00087812",
+            "ch14uvag00087811",
+            "ch14uvag00087745"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:218:3:4",
+          "toId": "ch:1:sloid:10:4:7",
+          "operatingPointPair": [
+            "8500218",
+            "8500010"
+          ],
+          "sourceSegments": [
+            "ch14uvag00240327",
+            "ch14uvag00087765",
+            "ch14uvag00087764",
+            "ch14uvag00087763",
+            "ch14uvag00087762",
+            "ch14uvag00087761",
+            "ch14uvag00087760",
+            "ch14uvag00087759",
+            "ch14uvag00087758",
+            "ch14uvag00087757",
+            "ch14uvag00087756",
+            "ch14uvag00240325",
+            "ch14uvag00087749",
+            "ch14uvag00087825",
+            "ch14uvag00240365",
+            "ch14uvag00240382",
+            "ch14uvag00087813",
+            "ch14uvag00087812",
+            "ch14uvag00087811",
+            "ch14uvag00087745"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:7000:3:5",
+          "toId": "ch:1:sloid:218:4:7",
+          "operatingPointPair": [
+            "8507000",
+            "8500218"
+          ],
+          "sourceSegments": [
+            "bern:ic61-platform:5:station-section",
+            "ch14uvag00139673",
+            "ch14uvag00139692",
+            "ch14uvag00087662",
+            "ch14uvag00087661",
+            "ch14uvag00087660",
+            "ch14uvag00087522",
+            "ch14uvag00087523",
+            "ch14uvag00087524",
+            "ch14uvag00087638",
+            "ch14uvag00087637",
+            "ch14uvag00087767"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:218:4:7",
+          "toId": "ch:1:sloid:23:2:4",
+          "operatingPointPair": [
+            "8500218",
+            "8500023"
+          ],
+          "sourceSegments": [
+            "ch14uvag00240327",
+            "ch14uvag00087765",
+            "ch14uvag00087764",
+            "ch14uvag00087763",
+            "ch14uvag00087762",
+            "ch14uvag00087761",
+            "ch14uvag00087760",
+            "ch14uvag00087759",
+            "ch14uvag00087758",
+            "ch14uvag00087757"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:23:2:4",
+          "toId": "ch:1:sloid:10:4:7",
+          "operatingPointPair": [
+            "8500023",
+            "8500010"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087756",
+            "ch14uvag00240325",
+            "ch14uvag00087749",
+            "ch14uvag00087825",
+            "ch14uvag00240365",
+            "ch14uvag00240382",
+            "ch14uvag00087813",
+            "ch14uvag00087812",
+            "ch14uvag00087811",
+            "ch14uvag00087745"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:23:2:4",
+          "toId": "ch:1:sloid:10:4:8",
+          "operatingPointPair": [
+            "8500023",
+            "8500010"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087756",
+            "ch14uvag00240325",
+            "ch14uvag00087749",
+            "ch14uvag00087825",
+            "ch14uvag00240365",
+            "ch14uvag00240382",
+            "ch14uvag00087813",
+            "ch14uvag00087812",
+            "ch14uvag00087811",
+            "ch14uvag00087745"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:23:2:4",
+          "toId": "ch:1:sloid:10:3:6",
+          "operatingPointPair": [
+            "8500023",
+            "8500010"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087756",
+            "ch14uvag00240325",
+            "ch14uvag00087749",
+            "ch14uvag00087825",
+            "ch14uvag00240365",
+            "ch14uvag00240382",
+            "ch14uvag00087813",
+            "ch14uvag00087812",
+            "ch14uvag00087811",
+            "ch14uvag00087745"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:23:2:4",
+          "toId": "ch:1:sloid:10:7:14",
+          "operatingPointPair": [
+            "8500023",
+            "8500010"
+          ],
+          "sourceSegments": []
+        },
+        {
+          "fromId": "ch:1:sloid:7000:3:6",
+          "toId": "ch:1:sloid:7006:1:1",
+          "operatingPointPair": [
+            "8507000",
+            "8507006"
+          ],
+          "sourceSegments": []
+        },
+        {
+          "fromId": "ch:1:sloid:7006:1:1",
+          "toId": "ch:1:sloid:7100:1:1",
+          "operatingPointPair": [
+            "8507006",
+            "8507100"
+          ],
+          "sourceSegments": []
+        },
+        {
+          "fromId": "ch:1:sloid:7493:0:470772",
+          "toId": "ch:1:sloid:7492:0:460848",
+          "operatingPointPair": [
+            "8507493",
+            "8507492"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087489"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:7100:2:2",
+          "toId": "ch:1:sloid:7006:2:2",
+          "operatingPointPair": [
+            "8507100",
+            "8507006"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087408",
+            "ch14uvag00087407",
+            "ch14uvag00087406",
+            "ch14uvag00087405",
+            "ch14uvag00087404"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:7006:2:2",
+          "toId": "ch:1:sloid:7000:3:5",
+          "operatingPointPair": [
+            "8507006",
+            "8507000"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087403",
+            "ch14uvag00087402",
+            "ch14uvag00087401",
+            "ch14uvag00087400",
+            "ch14uvag00087399",
+            "ch14uvag00087398",
+            "ch14uvag00087397",
+            "ch14uvag00139692",
+            "ch14uvag00139673",
+            "bern:ic61-platform:5:station-section"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:218:3:4",
+          "toId": "ch:1:sloid:23:2:4",
+          "operatingPointPair": [
+            "8500218",
+            "8500023"
+          ],
+          "sourceSegments": [
+            "ch14uvag00240327",
+            "ch14uvag00087765",
+            "ch14uvag00087764",
+            "ch14uvag00087763",
+            "ch14uvag00087762",
+            "ch14uvag00087761",
+            "ch14uvag00087760",
+            "ch14uvag00087759",
+            "ch14uvag00087758",
+            "ch14uvag00087757"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:23:2:4",
+          "toId": "ch:1:sloid:10:8:16",
+          "operatingPointPair": [
+            "8500023",
+            "8500010"
+          ],
+          "sourceSegments": []
+        },
+        {
+          "fromId": "ch:1:sloid:10:4:7",
+          "toId": "ch:1:sloid:218:7:12",
+          "operatingPointPair": [
+            "8500010",
+            "8500218"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087745",
+            "ch14uvag00087811",
+            "ch14uvag00087812",
+            "ch14uvag00087813",
+            "ch14uvag00240382",
+            "ch14uvag00240365",
+            "ch14uvag00087825",
+            "ch14uvag00087749",
+            "ch14uvag00240325",
+            "ch14uvag00087756",
+            "ch14uvag00087757",
+            "ch14uvag00087758",
+            "ch14uvag00087759",
+            "ch14uvag00087760",
+            "ch14uvag00087761",
+            "ch14uvag00087762",
+            "ch14uvag00087763",
+            "ch14uvag00087764",
+            "ch14uvag00087765",
+            "ch14uvag00240327"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:10:4:8",
+          "toId": "ch:1:sloid:218:7:12",
+          "operatingPointPair": [
+            "8500010",
+            "8500218"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087745",
+            "ch14uvag00087811",
+            "ch14uvag00087812",
+            "ch14uvag00087813",
+            "ch14uvag00240382",
+            "ch14uvag00240365",
+            "ch14uvag00087825",
+            "ch14uvag00087749",
+            "ch14uvag00240325",
+            "ch14uvag00087756",
+            "ch14uvag00087757",
+            "ch14uvag00087758",
+            "ch14uvag00087759",
+            "ch14uvag00087760",
+            "ch14uvag00087761",
+            "ch14uvag00087762",
+            "ch14uvag00087763",
+            "ch14uvag00087764",
+            "ch14uvag00087765",
+            "ch14uvag00240327"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:218:7:12",
+          "toId": "ch:1:sloid:7000:3:6",
+          "operatingPointPair": [
+            "8500218",
+            "8507000"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087767",
+            "ch14uvag00087637",
+            "ch14uvag00087638",
+            "ch14uvag00087524",
+            "ch14uvag00087523",
+            "ch14uvag00087522",
+            "ch14uvag00087660",
+            "ch14uvag00087661",
+            "ch14uvag00087662",
+            "ch14uvag00139692",
+            "ch14uvag00139673",
+            "bern:ic61-platform:6:station-section"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:7000:3:6",
+          "toId": "ch:1:sloid:7100:1:1",
+          "operatingPointPair": [
+            "8507000",
+            "8507100"
+          ],
+          "sourceSegments": [
+            "bern:ic61-platform:6:station-section",
+            "ch14uvag00139673",
+            "ch14uvag00139692",
+            "ch14uvag00087397",
+            "ch14uvag00087398",
+            "ch14uvag00087399",
+            "ch14uvag00087400",
+            "ch14uvag00087401",
+            "ch14uvag00087402",
+            "ch14uvag00087403",
+            "ch14uvag00087404",
+            "ch14uvag00087405",
+            "ch14uvag00087406",
+            "ch14uvag00087407",
+            "ch14uvag00087408"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:10:5:10",
+          "toId": "ch:1:sloid:218:7:12",
+          "operatingPointPair": [
+            "8500010",
+            "8500218"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087745:ic61-basel:10",
+            "ch14uvag00087811",
+            "ch14uvag00087812",
+            "ch14uvag00087813",
+            "ch14uvag00240382",
+            "ch14uvag00240365",
+            "ch14uvag00087825",
+            "ch14uvag00087749",
+            "ch14uvag00240325",
+            "ch14uvag00087756",
+            "ch14uvag00087757",
+            "ch14uvag00087758",
+            "ch14uvag00087759",
+            "ch14uvag00087760",
+            "ch14uvag00087761",
+            "ch14uvag00087762",
+            "ch14uvag00087763",
+            "ch14uvag00087764",
+            "ch14uvag00087765",
+            "ch14uvag00240327"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:10:4:7",
+          "toId": "ch:1:sloid:23:1:1",
+          "operatingPointPair": [
+            "8500010",
+            "8500023"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087745",
+            "ch14uvag00087811",
+            "ch14uvag00087812",
+            "ch14uvag00087813",
+            "ch14uvag00240382",
+            "ch14uvag00240365",
+            "ch14uvag00087825",
+            "ch14uvag00087749",
+            "ch14uvag00240325",
+            "ch14uvag00087756"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:23:1:1",
+          "toId": "ch:1:sloid:218:6:11",
+          "operatingPointPair": [
+            "8500023",
+            "8500218"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087757",
+            "ch14uvag00087758",
+            "ch14uvag00087759",
+            "ch14uvag00087760",
+            "ch14uvag00087761",
+            "ch14uvag00087762",
+            "ch14uvag00087763",
+            "ch14uvag00087764",
+            "ch14uvag00087765",
+            "ch14uvag00240327"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:218:6:11",
+          "toId": "ch:1:sloid:7000:3:6",
+          "operatingPointPair": [
+            "8500218",
+            "8507000"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087767",
+            "ch14uvag00087637",
+            "ch14uvag00087638",
+            "ch14uvag00087524",
+            "ch14uvag00087523",
+            "ch14uvag00087522",
+            "ch14uvag00087660",
+            "ch14uvag00087661",
+            "ch14uvag00087662",
+            "ch14uvag00139692",
+            "ch14uvag00139673",
+            "bern:ic61-platform:6:station-section"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:23:1:1",
+          "toId": "ch:1:sloid:218:6:10",
+          "operatingPointPair": [
+            "8500023",
+            "8500218"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087757",
+            "ch14uvag00087758",
+            "ch14uvag00087759",
+            "ch14uvag00087760",
+            "ch14uvag00087761",
+            "ch14uvag00087762",
+            "ch14uvag00087763",
+            "ch14uvag00087764",
+            "ch14uvag00087765",
+            "ch14uvag00240327"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:218:6:10",
+          "toId": "ch:1:sloid:7000:5:9",
+          "operatingPointPair": [
+            "8500218",
+            "8507000"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087767",
+            "ch14uvag00087637",
+            "ch14uvag00087638",
+            "ch14uvag00087524",
+            "ch14uvag00087523",
+            "ch14uvag00087522",
+            "ch14uvag00087660",
+            "ch14uvag00087661",
+            "ch14uvag00087662",
+            "ch14uvag00139692",
+            "ch14uvag00139673"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:7000:5:9",
+          "toId": "ch:1:sloid:7100:1:1",
+          "operatingPointPair": [
+            "8507000",
+            "8507100"
+          ],
+          "sourceSegments": [
+            "ch14uvag00139673",
+            "ch14uvag00139692",
+            "ch14uvag00087397",
+            "ch14uvag00087398",
+            "ch14uvag00087399",
+            "ch14uvag00087400",
+            "ch14uvag00087401",
+            "ch14uvag00087402",
+            "ch14uvag00087403",
+            "ch14uvag00087404",
+            "ch14uvag00087405",
+            "ch14uvag00087406",
+            "ch14uvag00087407",
+            "ch14uvag00087408"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:10:2:3",
+          "toId": "ch:1:sloid:23:1:1",
+          "operatingPointPair": [
+            "8500010",
+            "8500023"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087745:ic61-basel:3",
+            "ch14uvag00087811",
+            "ch14uvag00087812",
+            "ch14uvag00087813",
+            "ch14uvag00240382",
+            "ch14uvag00240365",
+            "ch14uvag00087825",
+            "ch14uvag00087749",
+            "ch14uvag00240325",
+            "ch14uvag00087756"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:218:6:11",
+          "toId": "ch:1:sloid:7000:4:8",
+          "operatingPointPair": [
+            "8500218",
+            "8507000"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087767",
+            "ch14uvag00087637",
+            "ch14uvag00087638",
+            "ch14uvag00087524",
+            "ch14uvag00087523",
+            "ch14uvag00087522",
+            "ch14uvag00087660",
+            "ch14uvag00087661",
+            "ch14uvag00087662",
+            "ch14uvag00139692",
+            "ch14uvag00139673",
+            "bern:ic61-platform:8:station-section"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:7000:4:8",
+          "toId": "ch:1:sloid:7100:1:1",
+          "operatingPointPair": [
+            "8507000",
+            "8507100"
+          ],
+          "sourceSegments": [
+            "bern:ic61-platform:8:station-section",
+            "ch14uvag00139673",
+            "ch14uvag00139692",
+            "ch14uvag00087397",
+            "ch14uvag00087398",
+            "ch14uvag00087399",
+            "ch14uvag00087400",
+            "ch14uvag00087401",
+            "ch14uvag00087402",
+            "ch14uvag00087403",
+            "ch14uvag00087404",
+            "ch14uvag00087405",
+            "ch14uvag00087406",
+            "ch14uvag00087407",
+            "ch14uvag00087408"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:10:3:6",
+          "toId": "ch:1:sloid:23:1:1",
+          "operatingPointPair": [
+            "8500010",
+            "8500023"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087745",
+            "ch14uvag00087811",
+            "ch14uvag00087812",
+            "ch14uvag00087813",
+            "ch14uvag00240382",
+            "ch14uvag00240365",
+            "ch14uvag00087825",
+            "ch14uvag00087749",
+            "ch14uvag00240325",
+            "ch14uvag00087756"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:218:7:12",
+          "toId": "ch:1:sloid:7000:5:9",
+          "operatingPointPair": [
+            "8500218",
+            "8507000"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087767",
+            "ch14uvag00087637",
+            "ch14uvag00087638",
+            "ch14uvag00087524",
+            "ch14uvag00087523",
+            "ch14uvag00087522",
+            "ch14uvag00087660",
+            "ch14uvag00087661",
+            "ch14uvag00087662",
+            "ch14uvag00139692",
+            "ch14uvag00139673"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:7000:3:5",
+          "toId": "ch:1:sloid:7100:1:1",
+          "operatingPointPair": [
+            "8507000",
+            "8507100"
+          ],
+          "sourceSegments": [
+            "bern:ic61-platform:5:station-section",
+            "ch14uvag00139673",
+            "ch14uvag00139692",
+            "ch14uvag00087397",
+            "ch14uvag00087398",
+            "ch14uvag00087399",
+            "ch14uvag00087400",
+            "ch14uvag00087401",
+            "ch14uvag00087402",
+            "ch14uvag00087403",
+            "ch14uvag00087404",
+            "ch14uvag00087405",
+            "ch14uvag00087406",
+            "ch14uvag00087407",
+            "ch14uvag00087408"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:7000:4:8",
+          "toId": "ch:1:sloid:218:4:7",
+          "operatingPointPair": [
+            "8507000",
+            "8500218"
+          ],
+          "sourceSegments": [
+            "bern:ic61-platform:8:station-section",
+            "ch14uvag00139673",
+            "ch14uvag00139692",
+            "ch14uvag00087662",
+            "ch14uvag00087661",
+            "ch14uvag00087660",
+            "ch14uvag00087522",
+            "ch14uvag00087523",
+            "ch14uvag00087524",
+            "ch14uvag00087638",
+            "ch14uvag00087637",
+            "ch14uvag00087767"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:7100:2:2",
+          "toId": "ch:1:sloid:7000:3:6",
+          "operatingPointPair": [
+            "8507100",
+            "8507000"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087408",
+            "ch14uvag00087407",
+            "ch14uvag00087406",
+            "ch14uvag00087405",
+            "ch14uvag00087404",
+            "ch14uvag00087403",
+            "ch14uvag00087402",
+            "ch14uvag00087401",
+            "ch14uvag00087400",
+            "ch14uvag00087399",
+            "ch14uvag00087398",
+            "ch14uvag00087397",
+            "ch14uvag00139692",
+            "ch14uvag00139673",
+            "bern:ic61-platform:6:station-section"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:7100:2:2",
+          "toId": "ch:1:sloid:7000:1:2",
+          "operatingPointPair": [
+            "8507100",
+            "8507000"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087408",
+            "ch14uvag00087407",
+            "ch14uvag00087406",
+            "ch14uvag00087405",
+            "ch14uvag00087404",
+            "ch14uvag00087403",
+            "ch14uvag00087402",
+            "ch14uvag00087401",
+            "ch14uvag00087400",
+            "ch14uvag00087399",
+            "ch14uvag00087398",
+            "ch14uvag00087397",
+            "ch14uvag00139692",
+            "ch14uvag00139673"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:7000:3:6",
+          "toId": "ch:1:sloid:218:4:7",
+          "operatingPointPair": [
+            "8507000",
+            "8500218"
+          ],
+          "sourceSegments": [
+            "bern:ic61-platform:6:station-section",
+            "ch14uvag00139673",
+            "ch14uvag00139692",
+            "ch14uvag00087662",
+            "ch14uvag00087661",
+            "ch14uvag00087660",
+            "ch14uvag00087522",
+            "ch14uvag00087523",
+            "ch14uvag00087524",
+            "ch14uvag00087638",
+            "ch14uvag00087637",
+            "ch14uvag00087767"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:218:4:7",
+          "toId": "ch:1:sloid:10:4:7",
+          "operatingPointPair": [
+            "8500218",
+            "8500010"
+          ],
+          "sourceSegments": [
+            "ch14uvag00240327",
+            "ch14uvag00087765",
+            "ch14uvag00087764",
+            "ch14uvag00087763",
+            "ch14uvag00087762",
+            "ch14uvag00087761",
+            "ch14uvag00087760",
+            "ch14uvag00087759",
+            "ch14uvag00087758",
+            "ch14uvag00087757",
+            "ch14uvag00087756",
+            "ch14uvag00240325",
+            "ch14uvag00087749",
+            "ch14uvag00087825",
+            "ch14uvag00240365",
+            "ch14uvag00240382",
+            "ch14uvag00087813",
+            "ch14uvag00087812",
+            "ch14uvag00087811",
+            "ch14uvag00087745"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:218:4:7",
+          "toId": "ch:1:sloid:10:4:8",
+          "operatingPointPair": [
+            "8500218",
+            "8500010"
+          ],
+          "sourceSegments": [
+            "ch14uvag00240327",
+            "ch14uvag00087765",
+            "ch14uvag00087764",
+            "ch14uvag00087763",
+            "ch14uvag00087762",
+            "ch14uvag00087761",
+            "ch14uvag00087760",
+            "ch14uvag00087759",
+            "ch14uvag00087758",
+            "ch14uvag00087757",
+            "ch14uvag00087756",
+            "ch14uvag00240325",
+            "ch14uvag00087749",
+            "ch14uvag00087825",
+            "ch14uvag00240365",
+            "ch14uvag00240382",
+            "ch14uvag00087813",
+            "ch14uvag00087812",
+            "ch14uvag00087811",
+            "ch14uvag00087745"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:218:4:7",
+          "toId": "ch:1:sloid:10:3:5",
+          "operatingPointPair": [
+            "8500218",
+            "8500010"
+          ],
+          "sourceSegments": [
+            "ch14uvag00240327",
+            "ch14uvag00087765",
+            "ch14uvag00087764",
+            "ch14uvag00087763",
+            "ch14uvag00087762",
+            "ch14uvag00087761",
+            "ch14uvag00087760",
+            "ch14uvag00087759",
+            "ch14uvag00087758",
+            "ch14uvag00087757",
+            "ch14uvag00087756",
+            "ch14uvag00240325",
+            "ch14uvag00087749",
+            "ch14uvag00087825",
+            "ch14uvag00240365",
+            "ch14uvag00240382",
+            "ch14uvag00087813",
+            "ch14uvag00087812",
+            "ch14uvag00087811",
+            "ch14uvag00087745"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:218:4:7",
+          "toId": "ch:1:sloid:10_gen:ch:1:sloid:10:4:8_pf:8AB",
+          "operatingPointPair": [
+            "8500218",
+            "8500010"
+          ],
+          "sourceSegments": [
+            "ch14uvag00240327",
+            "ch14uvag00087765",
+            "ch14uvag00087764",
+            "ch14uvag00087763",
+            "ch14uvag00087762",
+            "ch14uvag00087761",
+            "ch14uvag00087760",
+            "ch14uvag00087759",
+            "ch14uvag00087758",
+            "ch14uvag00087757",
+            "ch14uvag00087756",
+            "ch14uvag00240325",
+            "ch14uvag00087749",
+            "ch14uvag00087825",
+            "ch14uvag00240365",
+            "ch14uvag00240382",
+            "ch14uvag00087813",
+            "ch14uvag00087812",
+            "ch14uvag00087811",
+            "ch14uvag00087745"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:7006:2:2",
+          "toId": "ch:1:sloid:7000:4:7",
+          "operatingPointPair": [
+            "8507006",
+            "8507000"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087403",
+            "ch14uvag00087402",
+            "ch14uvag00087401",
+            "ch14uvag00087400",
+            "ch14uvag00087399",
+            "ch14uvag00087398",
+            "ch14uvag00087397",
+            "ch14uvag00139692",
+            "ch14uvag00139673",
+            "bern:ic61-platform:7:station-section"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:7000:4:7",
+          "toId": "ch:1:sloid:218:3:4",
+          "operatingPointPair": [
+            "8507000",
+            "8500218"
+          ],
+          "sourceSegments": [
+            "bern:ic61-platform:7:station-section",
+            "ch14uvag00139673",
+            "ch14uvag00139692",
+            "ch14uvag00087662",
+            "ch14uvag00087661",
+            "ch14uvag00087660",
+            "ch14uvag00087522",
+            "ch14uvag00087523",
+            "ch14uvag00087524",
+            "ch14uvag00087638",
+            "ch14uvag00087637",
+            "ch14uvag00087767"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:10:5:9",
+          "toId": "ch:1:sloid:218:7:12",
+          "operatingPointPair": [
+            "8500010",
+            "8500218"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087745:ic61-basel:9",
+            "ch14uvag00087811",
+            "ch14uvag00087812",
+            "ch14uvag00087813",
+            "ch14uvag00240382",
+            "ch14uvag00240365",
+            "ch14uvag00087825",
+            "ch14uvag00087749",
+            "ch14uvag00240325",
+            "ch14uvag00087756",
+            "ch14uvag00087757",
+            "ch14uvag00087758",
+            "ch14uvag00087759",
+            "ch14uvag00087760",
+            "ch14uvag00087761",
+            "ch14uvag00087762",
+            "ch14uvag00087763",
+            "ch14uvag00087764",
+            "ch14uvag00087765",
+            "ch14uvag00240327"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:218:6:11",
+          "toId": "ch:1:sloid:7000:4:7",
+          "operatingPointPair": [
+            "8500218",
+            "8507000"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087767",
+            "ch14uvag00087637",
+            "ch14uvag00087638",
+            "ch14uvag00087524",
+            "ch14uvag00087523",
+            "ch14uvag00087522",
+            "ch14uvag00087660",
+            "ch14uvag00087661",
+            "ch14uvag00087662",
+            "ch14uvag00139692",
+            "ch14uvag00139673",
+            "bern:ic61-platform:7:station-section"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:10:3:6",
+          "toId": "ch:1:sloid:218:7:12",
+          "operatingPointPair": [
+            "8500010",
+            "8500218"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087745",
+            "ch14uvag00087811",
+            "ch14uvag00087812",
+            "ch14uvag00087813",
+            "ch14uvag00240382",
+            "ch14uvag00240365",
+            "ch14uvag00087825",
+            "ch14uvag00087749",
+            "ch14uvag00240325",
+            "ch14uvag00087756",
+            "ch14uvag00087757",
+            "ch14uvag00087758",
+            "ch14uvag00087759",
+            "ch14uvag00087760",
+            "ch14uvag00087761",
+            "ch14uvag00087762",
+            "ch14uvag00087763",
+            "ch14uvag00087764",
+            "ch14uvag00087765",
+            "ch14uvag00240327"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:7000:1:2",
+          "toId": "ch:1:sloid:7002:2:2",
+          "operatingPointPair": [
+            "8507000",
+            "8507002"
+          ],
+          "sourceSegments": [
+            "ch14uvag00139673",
+            "ch14uvag00139692",
+            "ch14uvag00087397",
+            "ch14uvag00087398",
+            "ch14uvag00087399"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:7002:2:2",
+          "toId": "ch:1:sloid:7003:2:2",
+          "operatingPointPair": [
+            "8507002",
+            "8507003"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087400"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:7003:2:2",
+          "toId": "ch:1:sloid:7006:1:1",
+          "operatingPointPair": [
+            "8507003",
+            "8507006"
+          ],
+          "sourceSegments": []
+        },
+        {
+          "fromId": "ch:1:sloid:10:7:14",
+          "toId": "ch:1:sloid:23:1:1",
+          "operatingPointPair": [
+            "8500010",
+            "8500023"
+          ],
+          "sourceSegments": []
+        },
+        {
+          "fromId": "ch:1:sloid:10:3:5",
+          "toId": "ch:1:sloid:23:1:1",
+          "operatingPointPair": [
+            "8500010",
+            "8500023"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087745",
+            "ch14uvag00087811",
+            "ch14uvag00087812",
+            "ch14uvag00087813",
+            "ch14uvag00240382",
+            "ch14uvag00240365",
+            "ch14uvag00087825",
+            "ch14uvag00087749",
+            "ch14uvag00240325",
+            "ch14uvag00087756"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:23:1:1",
+          "toId": "ch:1:sloid:218:7:12",
+          "operatingPointPair": [
+            "8500023",
+            "8500218"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087757",
+            "ch14uvag00087758",
+            "ch14uvag00087759",
+            "ch14uvag00087760",
+            "ch14uvag00087761",
+            "ch14uvag00087762",
+            "ch14uvag00087763",
+            "ch14uvag00087764",
+            "ch14uvag00087765",
+            "ch14uvag00240327"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:218:7:12",
+          "toId": "ch:1:sloid:7000:3:5",
+          "operatingPointPair": [
+            "8500218",
+            "8507000"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087767",
+            "ch14uvag00087637",
+            "ch14uvag00087638",
+            "ch14uvag00087524",
+            "ch14uvag00087523",
+            "ch14uvag00087522",
+            "ch14uvag00087660",
+            "ch14uvag00087661",
+            "ch14uvag00087662",
+            "ch14uvag00139692",
+            "ch14uvag00139673",
+            "bern:ic61-platform:5:station-section"
+          ]
+        }
+      ]
+    }
+  ],
+  "admission": "Fill only previously missing directed pairs on the existing dated IC61 source association; all original full contexts and coordinates required. No tolerance change or transfer to another route/date.",
+  "model": "Exact IC61 full contexts only. Bern platforms 5–8 use a bounded original station section with only the eastern approach retained, supporting the source-indicated reversal. Basel platforms 3/9/10 use a clipped eastern terminal approach. Original stops and operating points retained; no running-track certification. Remaining Basel 14/16/19 failures stay excluded.",
+  "operatingPointOverrides": [
+    {
+      "sourceNumber": "8507492",
+      "targetNumber": "8519309",
+      "expectedName": "Interlaken Ost [Gleis 5-8]",
+      "routeIds": [
+        "91-61-A-j26-1"
+      ]
+    }
+  ],
+  "interlaken": {
+    "genericNode": {
+      "id": "ch14uvag00139699",
+      "number": "8507492",
+      "name": "Interlaken Ost",
+      "coordinate": [
+        7.869016,
+        46.690505
+      ]
+    },
+    "targetNode": {
+      "id": "ch14uvag00165678",
+      "number": "8519309",
+      "name": "Interlaken Ost [Gleis 5-8]",
+      "coordinate": [
+        7.868937,
+        46.690837
+      ]
+    },
+    "curve": {
+      "id": "ch14uvag00087489",
+      "start": "ch14uvag00089321",
+      "end": "ch14uvag00165678",
+      "length": 1948.023915934484,
+      "points": [
+        [
+          7.851334,
+          46.682636
+        ],
+        [
+          7.851353,
+          46.682725
+        ],
+        [
+          7.851373,
+          46.682813
+        ],
+        [
+          7.851393,
+          46.682902
+        ],
+        [
+          7.851413,
+          46.682991
+        ],
+        [
+          7.851433,
+          46.68308
+        ],
+        [
+          7.851453,
+          46.683169
+        ],
+        [
+          7.851472,
+          46.683258
+        ],
+        [
+          7.851492,
+          46.683347
+        ],
+        [
+          7.851512,
+          46.683436
+        ],
+        [
+          7.851532,
+          46.683525
+        ],
+        [
+          7.851552,
+          46.683614
+        ],
+        [
+          7.851572,
+          46.683703
+        ],
+        [
+          7.851592,
+          46.683792
+        ],
+        [
+          7.851611,
+          46.68388
+        ],
+        [
+          7.851631,
+          46.683969
+        ],
+        [
+          7.851651,
+          46.684058
+        ],
+        [
+          7.851672,
+          46.684147
+        ],
+        [
+          7.851693,
+          46.684236
+        ],
+        [
+          7.851715,
+          46.684324
+        ],
+        [
+          7.851739,
+          46.684413
+        ],
+        [
+          7.851765,
+          46.684501
+        ],
+        [
+          7.851793,
+          46.684589
+        ],
+        [
+          7.851823,
+          46.684677
+        ],
+        [
+          7.851856,
+          46.684764
+        ],
+        [
+          7.851892,
+          46.68485
+        ],
+        [
+          7.851932,
+          46.684936
+        ],
+        [
+          7.851975,
+          46.685021
+        ],
+        [
+          7.852023,
+          46.685104
+        ],
+        [
+          7.852074,
+          46.685187
+        ],
+        [
+          7.852129,
+          46.685269
+        ],
+        [
+          7.852189,
+          46.685349
+        ],
+        [
+          7.852252,
+          46.685428
+        ],
+        [
+          7.852319,
+          46.685505
+        ],
+        [
+          7.852389,
+          46.68558
+        ],
+        [
+          7.852464,
+          46.685654
+        ],
+        [
+          7.852541,
+          46.685727
+        ],
+        [
+          7.852623,
+          46.685797
+        ],
+        [
+          7.852707,
+          46.685866
+        ],
+        [
+          7.852793,
+          46.685934
+        ],
+        [
+          7.85288,
+          46.686001
+        ],
+        [
+          7.852968,
+          46.686067
+        ],
+        [
+          7.853056,
+          46.686134
+        ],
+        [
+          7.853144,
+          46.6862
+        ],
+        [
+          7.853584,
+          46.686533
+        ],
+        [
+          7.853672,
+          46.6866
+        ],
+        [
+          7.853759,
+          46.686667
+        ],
+        [
+          7.853844,
+          46.686735
+        ],
+        [
+          7.853928,
+          46.686804
+        ],
+        [
+          7.85401,
+          46.686874
+        ],
+        [
+          7.854088,
+          46.686946
+        ],
+        [
+          7.854162,
+          46.68702
+        ],
+        [
+          7.854233,
+          46.687096
+        ],
+        [
+          7.8543,
+          46.687173
+        ],
+        [
+          7.854363,
+          46.687252
+        ],
+        [
+          7.854422,
+          46.687332
+        ],
+        [
+          7.854477,
+          46.687414
+        ],
+        [
+          7.854529,
+          46.687496
+        ],
+        [
+          7.854578,
+          46.68758
+        ],
+        [
+          7.854625,
+          46.687664
+        ],
+        [
+          7.854671,
+          46.687748
+        ],
+        [
+          7.854716,
+          46.687832
+        ],
+        [
+          7.854761,
+          46.687917
+        ],
+        [
+          7.854851,
+          46.688086
+        ],
+        [
+          7.854896,
+          46.68817
+        ],
+        [
+          7.854941,
+          46.688254
+        ],
+        [
+          7.854986,
+          46.688339
+        ],
+        [
+          7.855032,
+          46.688423
+        ],
+        [
+          7.855078,
+          46.688507
+        ],
+        [
+          7.855126,
+          46.688591
+        ],
+        [
+          7.855175,
+          46.688675
+        ],
+        [
+          7.855225,
+          46.688758
+        ],
+        [
+          7.855276,
+          46.68884
+        ],
+        [
+          7.855327,
+          46.688923
+        ],
+        [
+          7.855378,
+          46.689006
+        ],
+        [
+          7.855633,
+          46.68942
+        ],
+        [
+          7.855684,
+          46.689503
+        ],
+        [
+          7.855737,
+          46.689585
+        ],
+        [
+          7.855792,
+          46.689667
+        ],
+        [
+          7.855851,
+          46.689747
+        ],
+        [
+          7.855914,
+          46.689826
+        ],
+        [
+          7.855982,
+          46.689903
+        ],
+        [
+          7.856055,
+          46.689978
+        ],
+        [
+          7.856132,
+          46.69005
+        ],
+        [
+          7.856213,
+          46.69012
+        ],
+        [
+          7.856299,
+          46.690188
+        ],
+        [
+          7.856389,
+          46.690254
+        ],
+        [
+          7.856483,
+          46.690316
+        ],
+        [
+          7.85658,
+          46.690376
+        ],
+        [
+          7.856681,
+          46.690433
+        ],
+        [
+          7.856786,
+          46.690487
+        ],
+        [
+          7.856894,
+          46.690538
+        ],
+        [
+          7.857004,
+          46.690586
+        ],
+        [
+          7.857118,
+          46.69063
+        ],
+        [
+          7.857234,
+          46.690672
+        ],
+        [
+          7.857353,
+          46.690709
+        ],
+        [
+          7.857474,
+          46.690744
+        ],
+        [
+          7.857596,
+          46.690775
+        ],
+        [
+          7.85772,
+          46.690803
+        ],
+        [
+          7.857846,
+          46.690828
+        ],
+        [
+          7.857973,
+          46.690849
+        ],
+        [
+          7.858101,
+          46.690867
+        ],
+        [
+          7.85823,
+          46.690882
+        ],
+        [
+          7.85836,
+          46.690894
+        ],
+        [
+          7.85849,
+          46.690902
+        ],
+        [
+          7.85862,
+          46.690906
+        ],
+        [
+          7.858751,
+          46.690907
+        ],
+        [
+          7.858882,
+          46.690904
+        ],
+        [
+          7.859012,
+          46.690897
+        ],
+        [
+          7.859142,
+          46.690886
+        ],
+        [
+          7.859271,
+          46.690871
+        ],
+        [
+          7.859399,
+          46.690853
+        ],
+        [
+          7.859525,
+          46.69083
+        ],
+        [
+          7.85965,
+          46.690804
+        ],
+        [
+          7.859774,
+          46.690776
+        ],
+        [
+          7.859897,
+          46.690745
+        ],
+        [
+          7.860019,
+          46.690713
+        ],
+        [
+          7.860141,
+          46.690681
+        ],
+        [
+          7.860263,
+          46.690648
+        ],
+        [
+          7.860385,
+          46.690616
+        ],
+        [
+          7.860507,
+          46.690583
+        ],
+        [
+          7.860629,
+          46.690552
+        ],
+        [
+          7.860752,
+          46.690521
+        ],
+        [
+          7.860876,
+          46.690492
+        ],
+        [
+          7.861,
+          46.690464
+        ],
+        [
+          7.861126,
+          46.690439
+        ],
+        [
+          7.861252,
+          46.690416
+        ],
+        [
+          7.86138,
+          46.690397
+        ],
+        [
+          7.861508,
+          46.690379
+        ],
+        [
+          7.861637,
+          46.690365
+        ],
+        [
+          7.861767,
+          46.690353
+        ],
+        [
+          7.861897,
+          46.690344
+        ],
+        [
+          7.862027,
+          46.690337
+        ],
+        [
+          7.862158,
+          46.690334
+        ],
+        [
+          7.862289,
+          46.690333
+        ],
+        [
+          7.862419,
+          46.690334
+        ],
+        [
+          7.86255,
+          46.690339
+        ],
+        [
+          7.86268,
+          46.690346
+        ],
+        [
+          7.86281,
+          46.690355
+        ],
+        [
+          7.86294,
+          46.690365
+        ],
+        [
+          7.86307,
+          46.690376
+        ],
+        [
+          7.863199,
+          46.690388
+        ],
+        [
+          7.863329,
+          46.690399
+        ],
+        [
+          7.863459,
+          46.690411
+        ],
+        [
+          7.863588,
+          46.690423
+        ],
+        [
+          7.863717,
+          46.690437
+        ],
+        [
+          7.863846,
+          46.690453
+        ],
+        [
+          7.863973,
+          46.690473
+        ],
+        [
+          7.864099,
+          46.690497
+        ],
+        [
+          7.864224,
+          46.690525
+        ],
+        [
+          7.864347,
+          46.690556
+        ],
+        [
+          7.864468,
+          46.690589
+        ],
+        [
+          7.864589,
+          46.690622
+        ],
+        [
+          7.86471,
+          46.690656
+        ],
+        [
+          7.864832,
+          46.69069
+        ],
+        [
+          7.864954,
+          46.690722
+        ],
+        [
+          7.865077,
+          46.690752
+        ],
+        [
+          7.865202,
+          46.690779
+        ],
+        [
+          7.865328,
+          46.690803
+        ],
+        [
+          7.865455,
+          46.690824
+        ],
+        [
+          7.865583,
+          46.690841
+        ],
+        [
+          7.865713,
+          46.690854
+        ],
+        [
+          7.865843,
+          46.690863
+        ],
+        [
+          7.865973,
+          46.690868
+        ],
+        [
+          7.866104,
+          46.690869
+        ],
+        [
+          7.866235,
+          46.690865
+        ],
+        [
+          7.866365,
+          46.690858
+        ],
+        [
+          7.866495,
+          46.690849
+        ],
+        [
+          7.866625,
+          46.690838
+        ],
+        [
+          7.866754,
+          46.690826
+        ],
+        [
+          7.867273,
+          46.69078
+        ],
+        [
+          7.867403,
+          46.690769
+        ],
+        [
+          7.867533,
+          46.690759
+        ],
+        [
+          7.867663,
+          46.690753
+        ],
+        [
+          7.867794,
+          46.690751
+        ],
+        [
+          7.867924,
+          46.690752
+        ],
+        [
+          7.868055,
+          46.690756
+        ],
+        [
+          7.868185,
+          46.690765
+        ],
+        [
+          7.868315,
+          46.690776
+        ],
+        [
+          7.868574,
+          46.6908
+        ],
+        [
+          7.868703,
+          46.690812
+        ],
+        [
+          7.868833,
+          46.690825
+        ],
+        [
+          7.868937,
+          46.690837
+        ]
+      ],
+      "gauge": "mm1435",
+      "dataStand": "2021-07-06",
+      "validFrom": "2014-09-03",
+      "validUntil": null,
+      "infrastructureOperator": "BLS"
+    },
+    "excludedPlatformGroups": [
+      {
+        "id": "ch14uvag00165679",
+        "number": "8515183",
+        "name": "Interlaken Ost [Gleis 3-4]",
+        "coordinate": [
+          7.868969,
+          46.690703
+        ]
+      },
+      {
+        "id": "ch14uvag00066282",
+        "number": "8519310",
+        "name": "Interlaken Ost [Gleis 1-2]",
+        "coordinate": [
+          7.869015,
+          46.690595
+        ]
+      }
+    ],
+    "excludedDepotCurve": "ch14uvag00087490"
+  },
+  "originalStops": [
+    [
+      7.58749428,
+      47.54667892,
+      "Basel SBB",
+      "19",
+      "ch:1:sloid:10:0:19"
+    ],
+    [
+      7.73110795,
+      47.48455765,
+      "Liestal",
+      "1",
+      "ch:1:sloid:23:1:1"
+    ],
+    [
+      7.81181259,
+      47.46274711,
+      "Sissach",
+      "1",
+      "ch:1:sloid:26:1:1"
+    ],
+    [
+      7.90845335,
+      47.35263359,
+      "Olten",
+      "12",
+      "ch:1:sloid:218:7:12"
+    ],
+    [
+      7.43682884,
+      46.9485674,
+      "Bern",
+      "7",
+      "ch:1:sloid:7000:4:7"
+    ],
+    [
+      7.63045172,
+      46.7541376,
+      "Thun",
+      "1",
+      "ch:1:sloid:7100:1:1"
+    ],
+    [
+      7.67977821,
+      46.68659749,
+      "Spiez",
+      "1",
+      "ch:1:sloid:7483:0:90840"
+    ],
+    [
+      7.85146423,
+      46.68262879,
+      "Interlaken West",
+      "1",
+      "ch:1:sloid:7493:0:470772"
+    ],
+    [
+      7.86973596,
+      46.69089863,
+      "Interlaken Ost",
+      "5",
+      "ch:1:sloid:7492:0:581416"
+    ],
+    [
+      7.86979884,
+      46.69105267,
+      "Interlaken Ost",
+      "7",
+      "ch:1:sloid:7492:0:460848"
+    ],
+    [
+      7.6796794,
+      46.68654202,
+      "Spiez",
+      "2",
+      "ch:1:sloid:7483:0:341164"
+    ],
+    [
+      7.63017324,
+      46.75411913,
+      "Thun",
+      "3",
+      "ch:1:sloid:7100:2:3"
+    ],
+    [
+      7.43714325,
+      46.94856127,
+      "Bern",
+      "6",
+      "ch:1:sloid:7000:3:6"
+    ],
+    [
+      7.63022714,
+      46.75419299,
+      "Thun",
+      "2",
+      "ch:1:sloid:7100:2:2"
+    ],
+    [
+      7.43720614,
+      46.94850608,
+      "Bern",
+      "5",
+      "ch:1:sloid:7000:3:5"
+    ],
+    [
+      7.90743825,
+      47.35206151,
+      "Olten",
+      "4",
+      "ch:1:sloid:218:3:4"
+    ],
+    [
+      7.59009041,
+      47.54671531,
+      "Basel SBB",
+      "8",
+      "ch:1:sloid:10:4:8"
+    ],
+    [
+      7.5898299,
+      47.54697604,
+      "Basel SBB",
+      "6",
+      "ch:1:sloid:10:3:6"
+    ],
+    [
+      7.59005448,
+      47.54681232,
+      "Basel SBB",
+      "7",
+      "ch:1:sloid:10:4:7"
+    ],
+    [
+      7.90780656,
+      47.35203716,
+      "Olten",
+      "7",
+      "ch:1:sloid:218:4:7"
+    ],
+    [
+      7.7309193,
+      47.48436945,
+      "Liestal",
+      "4",
+      "ch:1:sloid:23:2:4"
+    ],
+    [
+      7.58779971,
+      47.54700029,
+      "Basel SBB",
+      "14",
+      "ch:1:sloid:10:7:14"
+    ],
+    [
+      7.55905362,
+      46.87446756,
+      "Münsingen",
+      "1",
+      "ch:1:sloid:7006:1:1"
+    ],
+    [
+      7.5592782,
+      46.87336833,
+      "Münsingen",
+      "2",
+      "ch:1:sloid:7006:2:2"
+    ],
+    [
+      7.58723377,
+      47.54696997,
+      "Basel SBB",
+      "16",
+      "ch:1:sloid:10:8:16"
+    ],
+    [
+      7.59171637,
+      47.54598768,
+      "Basel SBB",
+      "10",
+      "ch:1:sloid:10:5:10"
+    ],
+    [
+      7.90832759,
+      47.35252404,
+      "Olten",
+      "11",
+      "ch:1:sloid:218:6:11"
+    ],
+    [
+      7.90821081,
+      47.35253621,
+      "Olten",
+      "10",
+      "ch:1:sloid:218:6:10"
+    ],
+    [
+      7.43757445,
+      46.94892921,
+      "Bern",
+      "9",
+      "ch:1:sloid:7000:5:9"
+    ],
+    [
+      7.59226434,
+      47.5464,
+      "Basel SBB",
+      "3",
+      "ch:1:sloid:10:2:3"
+    ],
+    [
+      7.43677494,
+      46.94864099,
+      "Bern",
+      "8",
+      "ch:1:sloid:7000:4:8"
+    ],
+    [
+      7.43783496,
+      46.94845702,
+      "Bern",
+      "2",
+      "ch:1:sloid:7000:1:2"
+    ],
+    [
+      7.59026109,
+      47.54692146,
+      "Basel SBB",
+      "5",
+      "ch:1:sloid:10:3:5"
+    ],
+    [
+      7.59009041,
+      47.54671531,
+      "Basel SBB",
+      "8AB",
+      "ch:1:sloid:10_gen:ch:1:sloid:10:4:8_pf:8AB"
+    ],
+    [
+      7.5923362,
+      47.54584821,
+      "Basel SBB",
+      "9",
+      "ch:1:sloid:10:5:9"
+    ],
+    [
+      7.48171766,
+      46.95672286,
+      "Ostermundigen",
+      "2",
+      "ch:1:sloid:7002:2:2"
+    ],
+    [
+      7.50557691,
+      46.93412367,
+      "Gümligen",
+      "2",
+      "ch:1:sloid:7003:2:2"
+    ]
+  ],
+  "originalPatterns": [
+    {
+      "date": "2026-09-04",
+      "directionId": "0",
+      "stopIds": [
+        "ch:1:sloid:10:0:19",
+        "ch:1:sloid:23:1:1",
+        "ch:1:sloid:26:1:1",
+        "ch:1:sloid:218:7:12",
+        "ch:1:sloid:7000:4:7",
+        "ch:1:sloid:7100:1:1",
+        "ch:1:sloid:7483:0:90840",
+        "ch:1:sloid:7493:0:470772",
+        "ch:1:sloid:7492:0:581416"
+      ],
+      "patternId": "06719d7889f8d52d714f28be"
+    },
+    {
+      "date": "2026-09-04",
+      "directionId": "1",
+      "stopIds": [
+        "ch:1:sloid:7492:0:460848",
+        "ch:1:sloid:7493:0:470772",
+        "ch:1:sloid:7483:0:341164",
+        "ch:1:sloid:7100:2:3",
+        "ch:1:sloid:7000:3:6"
+      ],
+      "patternId": "e9f1da8981bd276a3e15bef8"
+    },
+    {
+      "date": "2026-09-04",
+      "directionId": "1",
+      "stopIds": [
+        "ch:1:sloid:7492:0:460848",
+        "ch:1:sloid:7493:0:470772",
+        "ch:1:sloid:7483:0:341164",
+        "ch:1:sloid:7100:2:2",
+        "ch:1:sloid:7000:3:5"
+      ],
+      "patternId": "932384c5b72460703e705185"
+    },
+    {
+      "date": "2026-09-04",
+      "directionId": "1",
+      "stopIds": [
+        "ch:1:sloid:7492:0:460848",
+        "ch:1:sloid:7493:0:470772",
+        "ch:1:sloid:7483:0:341164",
+        "ch:1:sloid:7100:2:2",
+        "ch:1:sloid:7000:4:7"
+      ],
+      "patternId": "94cf29c7b1a9e9ed8669d4cf"
+    },
+    {
+      "date": "2026-09-04",
+      "directionId": "1",
+      "stopIds": [
+        "ch:1:sloid:7492:0:581416",
+        "ch:1:sloid:7493:0:470772",
+        "ch:1:sloid:7483:0:341164",
+        "ch:1:sloid:7100:2:2",
+        "ch:1:sloid:7000:3:5"
+      ],
+      "patternId": "c0ba483c9b5fda91dec351d0"
+    },
+    {
+      "date": "2026-09-04",
+      "directionId": "1",
+      "stopIds": [
+        "ch:1:sloid:7492:0:460848",
+        "ch:1:sloid:7493:0:470772",
+        "ch:1:sloid:7483:0:341164",
+        "ch:1:sloid:7100:2:3",
+        "ch:1:sloid:7000:3:5",
+        "ch:1:sloid:218:3:4",
+        "ch:1:sloid:10:4:8"
+      ],
+      "patternId": "f4bb72f0b08b2604bde9559e"
+    },
+    {
+      "date": "2026-09-04",
+      "directionId": "1",
+      "stopIds": [
+        "ch:1:sloid:7492:0:460848",
+        "ch:1:sloid:7493:0:470772",
+        "ch:1:sloid:7483:0:341164",
+        "ch:1:sloid:7100:2:3",
+        "ch:1:sloid:7000:3:5",
+        "ch:1:sloid:218:3:4",
+        "ch:1:sloid:10:3:6"
+      ],
+      "patternId": "af5f677df6e70bc53cb0eb85"
+    },
+    {
+      "date": "2026-09-04",
+      "directionId": "1",
+      "stopIds": [
+        "ch:1:sloid:7492:0:581416",
+        "ch:1:sloid:7493:0:470772",
+        "ch:1:sloid:7483:0:341164",
+        "ch:1:sloid:7100:2:3",
+        "ch:1:sloid:7000:3:5",
+        "ch:1:sloid:218:3:4",
+        "ch:1:sloid:10:4:7"
+      ],
+      "patternId": "bc5df788fc4d0b05da66b295"
+    },
+    {
+      "date": "2026-09-04",
+      "directionId": "1",
+      "stopIds": [
+        "ch:1:sloid:7492:0:581416",
+        "ch:1:sloid:7493:0:470772",
+        "ch:1:sloid:7483:0:341164",
+        "ch:1:sloid:7100:2:3",
+        "ch:1:sloid:7000:3:5",
+        "ch:1:sloid:218:3:4",
+        "ch:1:sloid:10:4:8"
+      ],
+      "patternId": "67b18347f41a3d1a926827ec"
+    },
+    {
+      "date": "2026-09-04",
+      "directionId": "1",
+      "stopIds": [
+        "ch:1:sloid:7492:0:460848",
+        "ch:1:sloid:7493:0:470772",
+        "ch:1:sloid:7483:0:341164",
+        "ch:1:sloid:7100:2:2",
+        "ch:1:sloid:7000:3:5",
+        "ch:1:sloid:218:4:7",
+        "ch:1:sloid:23:2:4",
+        "ch:1:sloid:10:4:7"
+      ],
+      "patternId": "2e45582fb56ecef6470d3711"
+    },
+    {
+      "date": "2026-09-04",
+      "directionId": "1",
+      "stopIds": [
+        "ch:1:sloid:7492:0:460848",
+        "ch:1:sloid:7493:0:470772",
+        "ch:1:sloid:7483:0:341164",
+        "ch:1:sloid:7100:2:2",
+        "ch:1:sloid:7000:3:5",
+        "ch:1:sloid:218:4:7",
+        "ch:1:sloid:23:2:4",
+        "ch:1:sloid:10:4:8"
+      ],
+      "patternId": "acfe98d22560f999f8891cb1"
+    },
+    {
+      "date": "2026-09-04",
+      "directionId": "1",
+      "stopIds": [
+        "ch:1:sloid:7492:0:581416",
+        "ch:1:sloid:7493:0:470772",
+        "ch:1:sloid:7483:0:341164",
+        "ch:1:sloid:7100:2:3",
+        "ch:1:sloid:7000:3:5",
+        "ch:1:sloid:218:4:7",
+        "ch:1:sloid:23:2:4",
+        "ch:1:sloid:10:3:6"
+      ],
+      "patternId": "0ccf6f973e3495da90f8dbc1"
+    },
+    {
+      "date": "2026-09-04",
+      "directionId": "1",
+      "stopIds": [
+        "ch:1:sloid:7492:0:581416",
+        "ch:1:sloid:7493:0:470772",
+        "ch:1:sloid:7483:0:341164",
+        "ch:1:sloid:7100:2:2",
+        "ch:1:sloid:7000:3:5",
+        "ch:1:sloid:218:4:7",
+        "ch:1:sloid:23:2:4",
+        "ch:1:sloid:10:7:14"
+      ],
+      "patternId": "38c31436cf59b1f3492cc490"
+    },
+    {
+      "date": "2026-09-04",
+      "directionId": "0",
+      "stopIds": [
+        "ch:1:sloid:7000:3:6",
+        "ch:1:sloid:7006:1:1",
+        "ch:1:sloid:7100:1:1",
+        "ch:1:sloid:7483:0:90840",
+        "ch:1:sloid:7493:0:470772",
+        "ch:1:sloid:7492:0:460848"
+      ],
+      "patternId": "f7408cb1b72ec98ccb041ab4"
+    },
+    {
+      "date": "2026-09-04",
+      "directionId": "1",
+      "stopIds": [
+        "ch:1:sloid:7492:0:581416",
+        "ch:1:sloid:7493:0:470772",
+        "ch:1:sloid:7483:0:341164",
+        "ch:1:sloid:7100:2:2",
+        "ch:1:sloid:7006:2:2",
+        "ch:1:sloid:7000:3:5",
+        "ch:1:sloid:218:3:4",
+        "ch:1:sloid:23:2:4",
+        "ch:1:sloid:10:8:16"
+      ],
+      "patternId": "8a44de9ef0c75395bda16706"
+    },
+    {
+      "date": "2026-09-04",
+      "directionId": "0",
+      "stopIds": [
+        "ch:1:sloid:10:4:7",
+        "ch:1:sloid:218:7:12",
+        "ch:1:sloid:7000:4:7",
+        "ch:1:sloid:7100:1:1",
+        "ch:1:sloid:7483:0:90840",
+        "ch:1:sloid:7493:0:470772",
+        "ch:1:sloid:7492:0:581416"
+      ],
+      "patternId": "194eb9a9ea783f8d116f21b0"
+    },
+    {
+      "date": "2026-09-04",
+      "directionId": "0",
+      "stopIds": [
+        "ch:1:sloid:10:4:8",
+        "ch:1:sloid:218:7:12",
+        "ch:1:sloid:7000:3:6",
+        "ch:1:sloid:7100:1:1",
+        "ch:1:sloid:7483:0:90840",
+        "ch:1:sloid:7493:0:470772",
+        "ch:1:sloid:7492:0:581416"
+      ],
+      "patternId": "fabde9a9006db6c9494b9d72"
+    },
+    {
+      "date": "2026-09-04",
+      "directionId": "0",
+      "stopIds": [
+        "ch:1:sloid:10:4:8",
+        "ch:1:sloid:218:7:12",
+        "ch:1:sloid:7000:4:7",
+        "ch:1:sloid:7100:1:1",
+        "ch:1:sloid:7483:0:90840",
+        "ch:1:sloid:7493:0:470772",
+        "ch:1:sloid:7492:0:581416"
+      ],
+      "patternId": "ebe70df51cf04d6a2ba05c2e"
+    },
+    {
+      "date": "2026-09-04",
+      "directionId": "0",
+      "stopIds": [
+        "ch:1:sloid:10:5:10",
+        "ch:1:sloid:218:7:12",
+        "ch:1:sloid:7000:4:7",
+        "ch:1:sloid:7100:1:1",
+        "ch:1:sloid:7483:0:90840",
+        "ch:1:sloid:7493:0:470772",
+        "ch:1:sloid:7492:0:581416"
+      ],
+      "patternId": "b6223bb8e82951136c3cdd49"
+    },
+    {
+      "date": "2026-09-04",
+      "directionId": "0",
+      "stopIds": [
+        "ch:1:sloid:10:4:7",
+        "ch:1:sloid:23:1:1",
+        "ch:1:sloid:218:6:11",
+        "ch:1:sloid:7000:3:6",
+        "ch:1:sloid:7100:1:1",
+        "ch:1:sloid:7483:0:90840",
+        "ch:1:sloid:7493:0:470772",
+        "ch:1:sloid:7492:0:581416"
+      ],
+      "patternId": "400ef0cf4ff247312b1bf46b"
+    },
+    {
+      "date": "2026-09-04",
+      "directionId": "0",
+      "stopIds": [
+        "ch:1:sloid:10:4:7",
+        "ch:1:sloid:23:1:1",
+        "ch:1:sloid:218:6:10",
+        "ch:1:sloid:7000:5:9",
+        "ch:1:sloid:7100:1:1",
+        "ch:1:sloid:7483:0:90840",
+        "ch:1:sloid:7493:0:470772",
+        "ch:1:sloid:7492:0:581416"
+      ],
+      "patternId": "e799eb596aaf8554db85ff6e"
+    },
+    {
+      "date": "2026-09-04",
+      "directionId": "0",
+      "stopIds": [
+        "ch:1:sloid:10:2:3",
+        "ch:1:sloid:23:1:1",
+        "ch:1:sloid:218:6:11",
+        "ch:1:sloid:7000:4:8",
+        "ch:1:sloid:7100:1:1",
+        "ch:1:sloid:7483:0:90840",
+        "ch:1:sloid:7493:0:470772",
+        "ch:1:sloid:7492:0:581416"
+      ],
+      "patternId": "f1672e18ea7e9fce79096e9d"
+    },
+    {
+      "date": "2026-09-04",
+      "directionId": "0",
+      "stopIds": [
+        "ch:1:sloid:10:2:3",
+        "ch:1:sloid:23:1:1",
+        "ch:1:sloid:218:6:10",
+        "ch:1:sloid:7000:5:9",
+        "ch:1:sloid:7100:1:1",
+        "ch:1:sloid:7483:0:90840",
+        "ch:1:sloid:7493:0:470772",
+        "ch:1:sloid:7492:0:581416"
+      ],
+      "patternId": "5b81a79ef725732271d6f97c"
+    },
+    {
+      "date": "2026-09-04",
+      "directionId": "0",
+      "stopIds": [
+        "ch:1:sloid:10:3:6",
+        "ch:1:sloid:23:1:1",
+        "ch:1:sloid:218:6:11",
+        "ch:1:sloid:7000:4:8",
+        "ch:1:sloid:7100:1:1",
+        "ch:1:sloid:7483:0:90840",
+        "ch:1:sloid:7493:0:470772",
+        "ch:1:sloid:7492:0:460848"
+      ],
+      "patternId": "3607c46f1ab5e4dac2949c3f"
+    },
+    {
+      "date": "2026-09-04",
+      "directionId": "0",
+      "stopIds": [
+        "ch:1:sloid:10:3:6",
+        "ch:1:sloid:23:1:1",
+        "ch:1:sloid:218:6:11",
+        "ch:1:sloid:7000:4:8",
+        "ch:1:sloid:7100:1:1",
+        "ch:1:sloid:7483:0:90840",
+        "ch:1:sloid:7493:0:470772",
+        "ch:1:sloid:7492:0:581416"
+      ],
+      "patternId": "484d76f0dba3f11d5a2738da"
+    },
+    {
+      "date": "2026-09-06",
+      "directionId": "0",
+      "stopIds": [
+        "ch:1:sloid:10:3:6",
+        "ch:1:sloid:23:1:1",
+        "ch:1:sloid:26:1:1",
+        "ch:1:sloid:218:7:12",
+        "ch:1:sloid:7000:5:9",
+        "ch:1:sloid:7100:1:1",
+        "ch:1:sloid:7483:0:90840",
+        "ch:1:sloid:7493:0:470772",
+        "ch:1:sloid:7492:0:581416"
+      ],
+      "patternId": "fb7a2c949442ead472dcffa3"
+    },
+    {
+      "date": "2026-09-06",
+      "directionId": "0",
+      "stopIds": [
+        "ch:1:sloid:7000:3:5",
+        "ch:1:sloid:7100:1:1",
+        "ch:1:sloid:7483:0:90840",
+        "ch:1:sloid:7493:0:470772",
+        "ch:1:sloid:7492:0:460848"
+      ],
+      "patternId": "27b456b8fbc74d243d4f4392"
+    },
+    {
+      "date": "2026-09-06",
+      "directionId": "0",
+      "stopIds": [
+        "ch:1:sloid:7000:3:5",
+        "ch:1:sloid:7100:1:1",
+        "ch:1:sloid:7483:0:90840",
+        "ch:1:sloid:7493:0:470772",
+        "ch:1:sloid:7492:0:581416"
+      ],
+      "patternId": "34b997bb92a86a3615e984ea"
+    },
+    {
+      "date": "2026-09-06",
+      "directionId": "1",
+      "stopIds": [
+        "ch:1:sloid:7000:4:8",
+        "ch:1:sloid:218:4:7",
+        "ch:1:sloid:23:2:4",
+        "ch:1:sloid:10:4:7"
+      ],
+      "patternId": "bdb7db172b1b143965e53a17"
+    },
+    {
+      "date": "2026-09-06",
+      "directionId": "1",
+      "stopIds": [
+        "ch:1:sloid:7000:4:8",
+        "ch:1:sloid:218:4:7",
+        "ch:1:sloid:23:2:4",
+        "ch:1:sloid:10:4:8"
+      ],
+      "patternId": "ff0b267b79194e5927f5cb46"
+    },
+    {
+      "date": "2026-09-06",
+      "directionId": "1",
+      "stopIds": [
+        "ch:1:sloid:7000:4:8",
+        "ch:1:sloid:218:4:7",
+        "ch:1:sloid:23:2:4",
+        "ch:1:sloid:10:3:6"
+      ],
+      "patternId": "56a831da1cb4c0c64484ad9e"
+    },
+    {
+      "date": "2026-09-06",
+      "directionId": "1",
+      "stopIds": [
+        "ch:1:sloid:7492:0:460848",
+        "ch:1:sloid:7493:0:470772",
+        "ch:1:sloid:7483:0:341164",
+        "ch:1:sloid:7100:2:3",
+        "ch:1:sloid:7000:3:5"
+      ],
+      "patternId": "0b20e401334fc9483a50ff99"
+    },
+    {
+      "date": "2026-09-06",
+      "directionId": "1",
+      "stopIds": [
+        "ch:1:sloid:7492:0:460848",
+        "ch:1:sloid:7493:0:470772",
+        "ch:1:sloid:7483:0:341164",
+        "ch:1:sloid:7100:2:2",
+        "ch:1:sloid:7000:3:6"
+      ],
+      "patternId": "93285f1f8b6b26b0831a7d09"
+    },
+    {
+      "date": "2026-09-06",
+      "directionId": "1",
+      "stopIds": [
+        "ch:1:sloid:7492:0:460848",
+        "ch:1:sloid:7493:0:470772",
+        "ch:1:sloid:7483:0:341164",
+        "ch:1:sloid:7100:2:2",
+        "ch:1:sloid:7000:3:5"
+      ],
+      "patternId": "932384c5b72460703e705185"
+    },
+    {
+      "date": "2026-09-06",
+      "directionId": "1",
+      "stopIds": [
+        "ch:1:sloid:7492:0:581416",
+        "ch:1:sloid:7493:0:470772",
+        "ch:1:sloid:7483:0:341164",
+        "ch:1:sloid:7100:2:3",
+        "ch:1:sloid:7000:3:5"
+      ],
+      "patternId": "6f8284732f1974af32cca210"
+    },
+    {
+      "date": "2026-09-06",
+      "directionId": "1",
+      "stopIds": [
+        "ch:1:sloid:7492:0:581416",
+        "ch:1:sloid:7493:0:470772",
+        "ch:1:sloid:7483:0:341164",
+        "ch:1:sloid:7100:2:2",
+        "ch:1:sloid:7000:1:2"
+      ],
+      "patternId": "bb5cb4270d70ca9bb4f501c3"
+    },
+    {
+      "date": "2026-09-06",
+      "directionId": "1",
+      "stopIds": [
+        "ch:1:sloid:7492:0:581416",
+        "ch:1:sloid:7493:0:470772",
+        "ch:1:sloid:7483:0:341164",
+        "ch:1:sloid:7100:2:2",
+        "ch:1:sloid:7000:3:5"
+      ],
+      "patternId": "c0ba483c9b5fda91dec351d0"
+    },
+    {
+      "date": "2026-09-06",
+      "directionId": "1",
+      "stopIds": [
+        "ch:1:sloid:7492:0:460848",
+        "ch:1:sloid:7493:0:470772",
+        "ch:1:sloid:7483:0:341164",
+        "ch:1:sloid:7100:2:3",
+        "ch:1:sloid:7000:3:6",
+        "ch:1:sloid:218:4:7",
+        "ch:1:sloid:10:4:7"
+      ],
+      "patternId": "f576e93b5c4facdbd15e2d12"
+    },
+    {
+      "date": "2026-09-06",
+      "directionId": "1",
+      "stopIds": [
+        "ch:1:sloid:7492:0:460848",
+        "ch:1:sloid:7493:0:470772",
+        "ch:1:sloid:7483:0:341164",
+        "ch:1:sloid:7100:2:3",
+        "ch:1:sloid:7000:3:6",
+        "ch:1:sloid:218:4:7",
+        "ch:1:sloid:10:4:8"
+      ],
+      "patternId": "766d1041d05cb403657d709b"
+    },
+    {
+      "date": "2026-09-06",
+      "directionId": "1",
+      "stopIds": [
+        "ch:1:sloid:7492:0:460848",
+        "ch:1:sloid:7493:0:470772",
+        "ch:1:sloid:7483:0:341164",
+        "ch:1:sloid:7100:2:3",
+        "ch:1:sloid:7000:3:6",
+        "ch:1:sloid:218:4:7",
+        "ch:1:sloid:10:3:5"
+      ],
+      "patternId": "f4b3802caf00b71634266265"
+    },
+    {
+      "date": "2026-09-06",
+      "directionId": "1",
+      "stopIds": [
+        "ch:1:sloid:7492:0:581416",
+        "ch:1:sloid:7493:0:470772",
+        "ch:1:sloid:7483:0:341164",
+        "ch:1:sloid:7100:2:3",
+        "ch:1:sloid:7000:3:6",
+        "ch:1:sloid:218:4:7",
+        "ch:1:sloid:10_gen:ch:1:sloid:10:4:8_pf:8AB"
+      ],
+      "patternId": "cbdfd4899fdc916bcc4154c9"
+    },
+    {
+      "date": "2026-09-06",
+      "directionId": "1",
+      "stopIds": [
+        "ch:1:sloid:7492:0:460848",
+        "ch:1:sloid:7493:0:470772",
+        "ch:1:sloid:7483:0:341164",
+        "ch:1:sloid:7100:2:3",
+        "ch:1:sloid:7000:3:5",
+        "ch:1:sloid:218:4:7",
+        "ch:1:sloid:23:2:4",
+        "ch:1:sloid:10:4:7"
+      ],
+      "patternId": "9a58c940796a26561e55dba9"
+    },
+    {
+      "date": "2026-09-06",
+      "directionId": "0",
+      "stopIds": [
+        "ch:1:sloid:7000:3:6",
+        "ch:1:sloid:7006:1:1",
+        "ch:1:sloid:7100:1:1",
+        "ch:1:sloid:7483:0:90840",
+        "ch:1:sloid:7493:0:470772",
+        "ch:1:sloid:7492:0:460848"
+      ],
+      "patternId": "f7408cb1b72ec98ccb041ab4"
+    },
+    {
+      "date": "2026-09-06",
+      "directionId": "1",
+      "stopIds": [
+        "ch:1:sloid:7492:0:581416",
+        "ch:1:sloid:7493:0:470772",
+        "ch:1:sloid:7483:0:341164",
+        "ch:1:sloid:7100:2:2",
+        "ch:1:sloid:7006:2:2",
+        "ch:1:sloid:7000:4:7",
+        "ch:1:sloid:218:3:4",
+        "ch:1:sloid:23:2:4",
+        "ch:1:sloid:10:4:8"
+      ],
+      "patternId": "0e84343f2870b6cf2db95a7e"
+    },
+    {
+      "date": "2026-09-06",
+      "directionId": "0",
+      "stopIds": [
+        "ch:1:sloid:10:4:7",
+        "ch:1:sloid:218:7:12",
+        "ch:1:sloid:7000:5:9",
+        "ch:1:sloid:7100:1:1",
+        "ch:1:sloid:7483:0:90840",
+        "ch:1:sloid:7493:0:470772",
+        "ch:1:sloid:7492:0:581416"
+      ],
+      "patternId": "7ee1d96a5af79a4a87ea6eee"
+    },
+    {
+      "date": "2026-09-06",
+      "directionId": "0",
+      "stopIds": [
+        "ch:1:sloid:10:4:8",
+        "ch:1:sloid:218:7:12",
+        "ch:1:sloid:7000:5:9",
+        "ch:1:sloid:7100:1:1",
+        "ch:1:sloid:7483:0:90840",
+        "ch:1:sloid:7493:0:470772",
+        "ch:1:sloid:7492:0:460848"
+      ],
+      "patternId": "c68e6e3ef58b96b5faf2912c"
+    },
+    {
+      "date": "2026-09-06",
+      "directionId": "0",
+      "stopIds": [
+        "ch:1:sloid:10:4:8",
+        "ch:1:sloid:218:7:12",
+        "ch:1:sloid:7000:5:9",
+        "ch:1:sloid:7100:1:1",
+        "ch:1:sloid:7483:0:90840",
+        "ch:1:sloid:7493:0:470772",
+        "ch:1:sloid:7492:0:581416"
+      ],
+      "patternId": "de8759923f932d1a57740b4d"
+    },
+    {
+      "date": "2026-09-06",
+      "directionId": "0",
+      "stopIds": [
+        "ch:1:sloid:10:5:9",
+        "ch:1:sloid:218:7:12",
+        "ch:1:sloid:7000:5:9",
+        "ch:1:sloid:7100:1:1",
+        "ch:1:sloid:7483:0:90840",
+        "ch:1:sloid:7493:0:470772",
+        "ch:1:sloid:7492:0:460848"
+      ],
+      "patternId": "5377ac8a2614f1528a2c513d"
+    },
+    {
+      "date": "2026-09-06",
+      "directionId": "0",
+      "stopIds": [
+        "ch:1:sloid:10:5:10",
+        "ch:1:sloid:218:7:12",
+        "ch:1:sloid:7000:5:9",
+        "ch:1:sloid:7100:1:1",
+        "ch:1:sloid:7483:0:90840",
+        "ch:1:sloid:7493:0:470772",
+        "ch:1:sloid:7492:0:581416"
+      ],
+      "patternId": "5bf4627f89bd312645ddbfff"
+    },
+    {
+      "date": "2026-09-06",
+      "directionId": "0",
+      "stopIds": [
+        "ch:1:sloid:10:4:7",
+        "ch:1:sloid:23:1:1",
+        "ch:1:sloid:218:6:11",
+        "ch:1:sloid:7000:4:7"
+      ],
+      "patternId": "e19f9d92631d75e1a9615e81"
+    },
+    {
+      "date": "2026-09-06",
+      "directionId": "0",
+      "stopIds": [
+        "ch:1:sloid:10:4:7",
+        "ch:1:sloid:23:1:1",
+        "ch:1:sloid:218:6:11",
+        "ch:1:sloid:7000:4:8"
+      ],
+      "patternId": "881dcc6c9a4512dc1bc4d836"
+    },
+    {
+      "date": "2026-09-06",
+      "directionId": "0",
+      "stopIds": [
+        "ch:1:sloid:10:3:6",
+        "ch:1:sloid:218:7:12",
+        "ch:1:sloid:7000:5:9",
+        "ch:1:sloid:7100:1:1",
+        "ch:1:sloid:7483:0:90840",
+        "ch:1:sloid:7493:0:470772",
+        "ch:1:sloid:7492:0:460848"
+      ],
+      "patternId": "88b35aa3ef374c114a3913a6"
+    },
+    {
+      "date": "2026-09-06",
+      "directionId": "0",
+      "stopIds": [
+        "ch:1:sloid:7000:1:2",
+        "ch:1:sloid:7002:2:2",
+        "ch:1:sloid:7003:2:2",
+        "ch:1:sloid:7006:1:1",
+        "ch:1:sloid:7100:1:1",
+        "ch:1:sloid:7483:0:90840",
+        "ch:1:sloid:7493:0:470772",
+        "ch:1:sloid:7492:0:460848"
+      ],
+      "patternId": "e845990ea74d8468c1e566c3"
+    },
+    {
+      "date": "2026-09-06",
+      "directionId": "0",
+      "stopIds": [
+        "ch:1:sloid:10:7:14",
+        "ch:1:sloid:23:1:1",
+        "ch:1:sloid:218:6:10",
+        "ch:1:sloid:7000:5:9",
+        "ch:1:sloid:7100:1:1",
+        "ch:1:sloid:7483:0:90840",
+        "ch:1:sloid:7493:0:470772",
+        "ch:1:sloid:7492:0:581416"
+      ],
+      "patternId": "49c169bde403468244217b9d"
+    },
+    {
+      "date": "2026-09-06",
+      "directionId": "0",
+      "stopIds": [
+        "ch:1:sloid:10:2:3",
+        "ch:1:sloid:23:1:1",
+        "ch:1:sloid:218:6:11",
+        "ch:1:sloid:7000:4:8"
+      ],
+      "patternId": "da3b98cf0b516f9cff881c73"
+    },
+    {
+      "date": "2026-09-06",
+      "directionId": "0",
+      "stopIds": [
+        "ch:1:sloid:10:3:6",
+        "ch:1:sloid:23:1:1",
+        "ch:1:sloid:218:6:11",
+        "ch:1:sloid:7000:4:8"
+      ],
+      "patternId": "957f6335776930a782f92cc7"
+    },
+    {
+      "date": "2026-09-06",
+      "directionId": "0",
+      "stopIds": [
+        "ch:1:sloid:10:3:6",
+        "ch:1:sloid:23:1:1",
+        "ch:1:sloid:218:6:10",
+        "ch:1:sloid:7000:5:9"
+      ],
+      "patternId": "dd7b828ee28d1d500758c688"
+    },
+    {
+      "date": "2026-09-06",
+      "directionId": "0",
+      "stopIds": [
+        "ch:1:sloid:10:3:5",
+        "ch:1:sloid:23:1:1",
+        "ch:1:sloid:218:6:11",
+        "ch:1:sloid:7000:4:8"
+      ],
+      "patternId": "91c64ec9a71c19f520c326c6"
+    },
+    {
+      "date": "2026-09-06",
+      "directionId": "0",
+      "stopIds": [
+        "ch:1:sloid:10:3:6",
+        "ch:1:sloid:23:1:1",
+        "ch:1:sloid:218:7:12",
+        "ch:1:sloid:7000:3:5",
+        "ch:1:sloid:7100:1:1",
+        "ch:1:sloid:7483:0:90840",
+        "ch:1:sloid:7493:0:470772",
+        "ch:1:sloid:7492:0:460848"
+      ],
+      "patternId": "48ce15dc535c2a507cdbed6b"
+    }
+  ],
+  "documents": [
+    {
+      "file": "ir66-platforms/sbb-bern-plan-2026-08.pdf",
+      "sha256": "fc8996f20bd75a4293448ccf96a11b443f5df2419282ab75cea80efd252486eb",
+      "url": "https://company.sbb.ch/content/dam/infrastruktur/trafimage/bahnhofplaene/plan-bern-a4.pdf",
+      "retrievedAt": "2026-09-08T20:18:29.309Z",
+      "documentDate": "2026-08",
+      "role": "SBB station plan, August 2026: page 1 labels tracks 4/5/6/7/8/12 with platform sections and western tracks 49/50; exterior page 3 shows station extent. Identity/extent evidence only, not surveyed switches or running tracks. Original source curves remain FOT.",
+      "publisher": "SBB",
+      "attribution": "© SBB / © OpenStreetMap; station identity and extent evidence only"
+    },
+    {
+      "file": "ic61-platforms/sbb-basel-plan-2026-02.pdf",
+      "url": "https://company.sbb.ch/content/dam/infrastruktur/trafimage/bahnhofplaene/plan-basel-sbb-a4.pdf",
+      "documentDate": "2026-02",
+      "retrievedAt": "2026-09-08T22:33:14.964Z",
+      "sha256": "2e2e9bcdf5fa9818bbc668e1c42a4b3d548723bfd4a7b0a6107a4358ad4c61d6",
+      "attribution": "© SBB CFF FFS / © OpenStreetMap contributors",
+      "role": "Station platform identity and eastern approach evidence; not surveyed running tracks."
+    }
+  ],
+  "documentsDirectory": "data/bern-sources",
+  "cantonalAssociation": {
+    "routeId": "91-61-A-j26-1",
+    "agencyId": "11",
+    "line": "IC61",
+    "mode": "rail",
+    "sourceLine": "310_IC",
+    "supportingDocument": "ic61/timetable-310-2026.pdf"
+  },
+  "cantonalFeatureProperties": {
+    "fid": 181,
+    "objectid": 188,
+    "vkmtyp": 1,
+    "verkmitt_bez_vkm_de": "Bahn",
+    "verkmitt_bez_vkm_fr": "Chemins de fer",
+    "liniencode": "310_IC",
+    "linienbez": "Basel - Bern - Thun - Interlaken Ost",
+    "liniennr": "IC",
+    "suchname": "310/450   IC   Basel - Bern - Thun - Interlaken Ost",
+    "tucode": "SBB",
+    "tuname": "Schweizerische Bundesbahnen, 3000 Bern",
+    "tuurl": "https://sbb.ch",
+    "kubunr": "310/450",
+    "kubuurl": "https://widgets.oev-info.ch/publikation/jahresfpl/310.pdf",
+    "standard": 1,
+    "libero": 0,
+    "linienlaen": 129210
+  },
+  "bern": {
+    "node": {
+      "id": "ch14uvag00088813",
+      "number": "8507000",
+      "name": "Bern",
+      "coordinate": [
+        7.439136,
+        46.948831
+      ]
+    },
+    "stationCurve": {
+      "id": "ch14uvag00087328",
+      "start": "ch14uvag00089324",
+      "end": "ch14uvag00088813",
+      "length": 781.1577614377883,
+      "points": [
+        [
+          7.428931,
+          46.948284
+        ],
+        [
+          7.429049,
+          46.948245
+        ],
+        [
+          7.429168,
+          46.948207
+        ],
+        [
+          7.429289,
+          46.948171
+        ],
+        [
+          7.42941,
+          46.948136
+        ],
+        [
+          7.429533,
+          46.948104
+        ],
+        [
+          7.429656,
+          46.948073
+        ],
+        [
+          7.429781,
+          46.948045
+        ],
+        [
+          7.429906,
+          46.948018
+        ],
+        [
+          7.430032,
+          46.947993
+        ],
+        [
+          7.430159,
+          46.94797
+        ],
+        [
+          7.430287,
+          46.947949
+        ],
+        [
+          7.430415,
+          46.947931
+        ],
+        [
+          7.430544,
+          46.947913
+        ],
+        [
+          7.430674,
+          46.947898
+        ],
+        [
+          7.430804,
+          46.947885
+        ],
+        [
+          7.430934,
+          46.947874
+        ],
+        [
+          7.431065,
+          46.947865
+        ],
+        [
+          7.431196,
+          46.947858
+        ],
+        [
+          7.431327,
+          46.947853
+        ],
+        [
+          7.431458,
+          46.947848
+        ],
+        [
+          7.43172,
+          46.947839
+        ],
+        [
+          7.431852,
+          46.947834
+        ],
+        [
+          7.431983,
+          46.94783
+        ],
+        [
+          7.432114,
+          46.947828
+        ],
+        [
+          7.432246,
+          46.947828
+        ],
+        [
+          7.432377,
+          46.947829
+        ],
+        [
+          7.432508,
+          46.947832
+        ],
+        [
+          7.432639,
+          46.947838
+        ],
+        [
+          7.43277,
+          46.947844
+        ],
+        [
+          7.432901,
+          46.947853
+        ],
+        [
+          7.433031,
+          46.947864
+        ],
+        [
+          7.433162,
+          46.947876
+        ],
+        [
+          7.433291,
+          46.94789
+        ],
+        [
+          7.433421,
+          46.947906
+        ],
+        [
+          7.433549,
+          46.947923
+        ],
+        [
+          7.433678,
+          46.947943
+        ],
+        [
+          7.433805,
+          46.947964
+        ],
+        [
+          7.433932,
+          46.947987
+        ],
+        [
+          7.434059,
+          46.948011
+        ],
+        [
+          7.434185,
+          46.948035
+        ],
+        [
+          7.434312,
+          46.94806
+        ],
+        [
+          7.434438,
+          46.948084
+        ],
+        [
+          7.434565,
+          46.948109
+        ],
+        [
+          7.434691,
+          46.948133
+        ],
+        [
+          7.434944,
+          46.948182
+        ],
+        [
+          7.43507,
+          46.948206
+        ],
+        [
+          7.435197,
+          46.948231
+        ],
+        [
+          7.435323,
+          46.948255
+        ],
+        [
+          7.435449,
+          46.94828
+        ],
+        [
+          7.435702,
+          46.948329
+        ],
+        [
+          7.435829,
+          46.948353
+        ],
+        [
+          7.435955,
+          46.948377
+        ],
+        [
+          7.436082,
+          46.948402
+        ],
+        [
+          7.436208,
+          46.948426
+        ],
+        [
+          7.436334,
+          46.948451
+        ],
+        [
+          7.436461,
+          46.948475
+        ],
+        [
+          7.436714,
+          46.948524
+        ],
+        [
+          7.43684,
+          46.948549
+        ],
+        [
+          7.436965,
+          46.948576
+        ],
+        [
+          7.43709,
+          46.948604
+        ],
+        [
+          7.437213,
+          46.948635
+        ],
+        [
+          7.437336,
+          46.948667
+        ],
+        [
+          7.437458,
+          46.9487
+        ],
+        [
+          7.437579,
+          46.948735
+        ],
+        [
+          7.437698,
+          46.948773
+        ],
+        [
+          7.437815,
+          46.948814
+        ],
+        [
+          7.43793,
+          46.948857
+        ],
+        [
+          7.438043,
+          46.948903
+        ],
+        [
+          7.438154,
+          46.948951
+        ],
+        [
+          7.438263,
+          46.949002
+        ],
+        [
+          7.438369,
+          46.949055
+        ],
+        [
+          7.438473,
+          46.94911
+        ],
+        [
+          7.438682,
+          46.949219
+        ],
+        [
+          7.438694,
+          46.949225
+        ]
+      ],
+      "gauge": "mm1435",
+      "dataStand": "2021-07-06",
+      "validFrom": "2005-02-11",
+      "validUntil": null,
+      "infrastructureOperator": "SBB CFF FFS"
+    },
+    "easternApproach": {
+      "id": "ch14uvag00139673",
+      "start": "ch14uvag00139694",
+      "end": "ch14uvag00088813",
+      "length": 2787.4735732175945,
+      "points": [
+        [
+          7.46029,
+          46.966596
+        ],
+        [
+          7.460166,
+          46.966567
+        ],
+        [
+          7.460042,
+          46.966537
+        ],
+        [
+          7.459918,
+          46.966508
+        ],
+        [
+          7.459794,
+          46.966478
+        ],
+        [
+          7.45967,
+          46.966449
+        ],
+        [
+          7.459546,
+          46.966419
+        ],
+        [
+          7.459421,
+          46.96639
+        ],
+        [
+          7.459297,
+          46.96636
+        ],
+        [
+          7.459173,
+          46.966331
+        ],
+        [
+          7.459049,
+          46.966301
+        ],
+        [
+          7.458925,
+          46.966271
+        ],
+        [
+          7.458801,
+          46.966242
+        ],
+        [
+          7.458677,
+          46.966212
+        ],
+        [
+          7.458553,
+          46.966183
+        ],
+        [
+          7.458428,
+          46.966153
+        ],
+        [
+          7.458304,
+          46.966124
+        ],
+        [
+          7.45818,
+          46.966094
+        ],
+        [
+          7.458056,
+          46.966065
+        ],
+        [
+          7.457932,
+          46.966035
+        ],
+        [
+          7.457808,
+          46.966006
+        ],
+        [
+          7.457684,
+          46.965976
+        ],
+        [
+          7.45756,
+          46.965947
+        ],
+        [
+          7.457436,
+          46.965917
+        ],
+        [
+          7.457311,
+          46.965888
+        ],
+        [
+          7.457187,
+          46.965858
+        ],
+        [
+          7.457063,
+          46.965829
+        ],
+        [
+          7.456939,
+          46.965799
+        ],
+        [
+          7.456815,
+          46.96577
+        ],
+        [
+          7.456691,
+          46.96574
+        ],
+        [
+          7.456567,
+          46.965711
+        ],
+        [
+          7.456443,
+          46.965681
+        ],
+        [
+          7.456318,
+          46.965652
+        ],
+        [
+          7.456194,
+          46.965622
+        ],
+        [
+          7.45607,
+          46.965593
+        ],
+        [
+          7.455946,
+          46.965563
+        ],
+        [
+          7.455822,
+          46.965534
+        ],
+        [
+          7.455698,
+          46.965504
+        ],
+        [
+          7.455574,
+          46.965474
+        ],
+        [
+          7.45545,
+          46.965444
+        ],
+        [
+          7.455326,
+          46.965414
+        ],
+        [
+          7.455203,
+          46.965384
+        ],
+        [
+          7.455079,
+          46.965353
+        ],
+        [
+          7.454955,
+          46.965323
+        ],
+        [
+          7.454832,
+          46.965292
+        ],
+        [
+          7.454708,
+          46.965261
+        ],
+        [
+          7.454091,
+          46.965107
+        ],
+        [
+          7.453967,
+          46.965077
+        ],
+        [
+          7.453473,
+          46.964954
+        ],
+        [
+          7.45335,
+          46.964923
+        ],
+        [
+          7.453226,
+          46.964892
+        ],
+        [
+          7.453103,
+          46.964862
+        ],
+        [
+          7.452362,
+          46.964677
+        ],
+        [
+          7.452239,
+          46.964647
+        ],
+        [
+          7.452115,
+          46.964616
+        ],
+        [
+          7.451992,
+          46.964585
+        ],
+        [
+          7.451868,
+          46.964554
+        ],
+        [
+          7.451745,
+          46.964523
+        ],
+        [
+          7.451622,
+          46.964492
+        ],
+        [
+          7.451499,
+          46.96446
+        ],
+        [
+          7.451376,
+          46.964428
+        ],
+        [
+          7.451253,
+          46.964396
+        ],
+        [
+          7.451131,
+          46.964363
+        ],
+        [
+          7.451009,
+          46.96433
+        ],
+        [
+          7.450887,
+          46.964296
+        ],
+        [
+          7.450766,
+          46.964262
+        ],
+        [
+          7.450644,
+          46.964228
+        ],
+        [
+          7.450523,
+          46.964193
+        ],
+        [
+          7.450401,
+          46.964158
+        ],
+        [
+          7.45028,
+          46.964124
+        ],
+        [
+          7.450159,
+          46.964089
+        ],
+        [
+          7.450038,
+          46.964054
+        ],
+        [
+          7.449916,
+          46.96402
+        ],
+        [
+          7.449795,
+          46.963985
+        ],
+        [
+          7.449674,
+          46.963951
+        ],
+        [
+          7.449553,
+          46.963916
+        ],
+        [
+          7.449431,
+          46.963881
+        ],
+        [
+          7.44931,
+          46.963847
+        ],
+        [
+          7.449189,
+          46.963812
+        ],
+        [
+          7.449068,
+          46.963777
+        ],
+        [
+          7.448946,
+          46.963743
+        ],
+        [
+          7.448825,
+          46.963708
+        ],
+        [
+          7.448704,
+          46.963673
+        ],
+        [
+          7.448584,
+          46.963637
+        ],
+        [
+          7.448464,
+          46.9636
+        ],
+        [
+          7.448345,
+          46.963562
+        ],
+        [
+          7.448226,
+          46.963523
+        ],
+        [
+          7.448109,
+          46.963483
+        ],
+        [
+          7.447993,
+          46.963441
+        ],
+        [
+          7.447878,
+          46.963397
+        ],
+        [
+          7.447764,
+          46.963352
+        ],
+        [
+          7.447652,
+          46.963306
+        ],
+        [
+          7.447541,
+          46.963257
+        ],
+        [
+          7.447431,
+          46.963208
+        ],
+        [
+          7.447323,
+          46.963156
+        ],
+        [
+          7.447217,
+          46.963104
+        ],
+        [
+          7.447112,
+          46.963049
+        ],
+        [
+          7.447009,
+          46.962994
+        ],
+        [
+          7.446907,
+          46.962937
+        ],
+        [
+          7.446807,
+          46.962879
+        ],
+        [
+          7.446708,
+          46.962819
+        ],
+        [
+          7.446612,
+          46.962758
+        ],
+        [
+          7.446517,
+          46.962696
+        ],
+        [
+          7.446424,
+          46.962632
+        ],
+        [
+          7.446333,
+          46.962568
+        ],
+        [
+          7.446243,
+          46.962502
+        ],
+        [
+          7.446156,
+          46.962435
+        ],
+        [
+          7.44607,
+          46.962366
+        ],
+        [
+          7.445987,
+          46.962297
+        ],
+        [
+          7.445906,
+          46.962226
+        ],
+        [
+          7.445827,
+          46.962154
+        ],
+        [
+          7.445749,
+          46.962082
+        ],
+        [
+          7.445673,
+          46.962008
+        ],
+        [
+          7.445599,
+          46.961934
+        ],
+        [
+          7.445525,
+          46.96186
+        ],
+        [
+          7.445452,
+          46.961785
+        ],
+        [
+          7.445379,
+          46.96171
+        ],
+        [
+          7.445307,
+          46.961635
+        ],
+        [
+          7.445234,
+          46.96156
+        ],
+        [
+          7.445162,
+          46.961485
+        ],
+        [
+          7.445017,
+          46.961335
+        ],
+        [
+          7.444945,
+          46.96126
+        ],
+        [
+          7.444873,
+          46.961184
+        ],
+        [
+          7.4448,
+          46.961109
+        ],
+        [
+          7.444728,
+          46.961034
+        ],
+        [
+          7.444656,
+          46.960959
+        ],
+        [
+          7.444583,
+          46.960884
+        ],
+        [
+          7.444511,
+          46.960809
+        ],
+        [
+          7.444439,
+          46.960734
+        ],
+        [
+          7.444366,
+          46.960659
+        ],
+        [
+          7.444294,
+          46.960584
+        ],
+        [
+          7.444222,
+          46.960509
+        ],
+        [
+          7.444149,
+          46.960434
+        ],
+        [
+          7.444077,
+          46.960358
+        ],
+        [
+          7.444005,
+          46.960283
+        ],
+        [
+          7.443934,
+          46.960208
+        ],
+        [
+          7.443864,
+          46.960131
+        ],
+        [
+          7.443795,
+          46.960055
+        ],
+        [
+          7.443729,
+          46.959977
+        ],
+        [
+          7.443664,
+          46.959899
+        ],
+        [
+          7.443602,
+          46.95982
+        ],
+        [
+          7.443542,
+          46.959739
+        ],
+        [
+          7.443485,
+          46.959658
+        ],
+        [
+          7.443431,
+          46.959577
+        ],
+        [
+          7.443379,
+          46.959494
+        ],
+        [
+          7.44333,
+          46.95941
+        ],
+        [
+          7.443284,
+          46.959326
+        ],
+        [
+          7.44324,
+          46.959241
+        ],
+        [
+          7.443199,
+          46.959156
+        ],
+        [
+          7.443161,
+          46.95907
+        ],
+        [
+          7.443126,
+          46.958983
+        ],
+        [
+          7.443093,
+          46.958896
+        ],
+        [
+          7.443063,
+          46.958808
+        ],
+        [
+          7.443036,
+          46.95872
+        ],
+        [
+          7.443012,
+          46.958632
+        ],
+        [
+          7.442991,
+          46.958543
+        ],
+        [
+          7.442972,
+          46.958454
+        ],
+        [
+          7.442957,
+          46.958365
+        ],
+        [
+          7.442944,
+          46.958275
+        ],
+        [
+          7.442934,
+          46.958186
+        ],
+        [
+          7.442926,
+          46.958096
+        ],
+        [
+          7.44292,
+          46.958006
+        ],
+        [
+          7.442915,
+          46.957916
+        ],
+        [
+          7.442912,
+          46.957826
+        ],
+        [
+          7.442909,
+          46.957736
+        ],
+        [
+          7.442906,
+          46.957646
+        ],
+        [
+          7.442904,
+          46.957556
+        ],
+        [
+          7.442901,
+          46.957466
+        ],
+        [
+          7.442899,
+          46.957377
+        ],
+        [
+          7.442896,
+          46.957287
+        ],
+        [
+          7.442894,
+          46.957197
+        ],
+        [
+          7.442886,
+          46.956927
+        ],
+        [
+          7.442884,
+          46.956837
+        ],
+        [
+          7.442881,
+          46.956747
+        ],
+        [
+          7.442879,
+          46.956657
+        ],
+        [
+          7.442876,
+          46.956567
+        ],
+        [
+          7.442873,
+          46.956477
+        ],
+        [
+          7.442868,
+          46.956387
+        ],
+        [
+          7.442862,
+          46.956297
+        ],
+        [
+          7.442854,
+          46.956208
+        ],
+        [
+          7.442844,
+          46.956118
+        ],
+        [
+          7.442832,
+          46.956028
+        ],
+        [
+          7.442816,
+          46.955939
+        ],
+        [
+          7.442797,
+          46.95585
+        ],
+        [
+          7.442776,
+          46.955761
+        ],
+        [
+          7.442751,
+          46.955673
+        ],
+        [
+          7.442724,
+          46.955585
+        ],
+        [
+          7.442693,
+          46.955498
+        ],
+        [
+          7.44266,
+          46.955411
+        ],
+        [
+          7.442624,
+          46.955324
+        ],
+        [
+          7.442585,
+          46.955238
+        ],
+        [
+          7.442544,
+          46.955153
+        ],
+        [
+          7.442501,
+          46.955068
+        ],
+        [
+          7.442456,
+          46.954983
+        ],
+        [
+          7.442411,
+          46.954899
+        ],
+        [
+          7.442364,
+          46.954815
+        ],
+        [
+          7.442317,
+          46.954731
+        ],
+        [
+          7.44227,
+          46.954647
+        ],
+        [
+          7.442223,
+          46.954563
+        ],
+        [
+          7.442128,
+          46.954395
+        ],
+        [
+          7.442081,
+          46.954311
+        ],
+        [
+          7.441987,
+          46.954143
+        ],
+        [
+          7.44194,
+          46.954059
+        ],
+        [
+          7.441893,
+          46.953975
+        ],
+        [
+          7.441846,
+          46.953891
+        ],
+        [
+          7.441799,
+          46.953807
+        ],
+        [
+          7.441704,
+          46.953639
+        ],
+        [
+          7.441657,
+          46.953555
+        ],
+        [
+          7.44161,
+          46.953471
+        ],
+        [
+          7.441563,
+          46.953387
+        ],
+        [
+          7.441516,
+          46.953303
+        ],
+        [
+          7.441469,
+          46.953219
+        ],
+        [
+          7.441422,
+          46.953135
+        ],
+        [
+          7.441327,
+          46.952967
+        ],
+        [
+          7.44128,
+          46.952883
+        ],
+        [
+          7.441233,
+          46.952799
+        ],
+        [
+          7.441186,
+          46.952716
+        ],
+        [
+          7.441139,
+          46.952632
+        ],
+        [
+          7.441092,
+          46.952548
+        ],
+        [
+          7.441045,
+          46.952464
+        ],
+        [
+          7.440998,
+          46.95238
+        ],
+        [
+          7.440903,
+          46.952212
+        ],
+        [
+          7.440856,
+          46.952128
+        ],
+        [
+          7.440809,
+          46.952044
+        ],
+        [
+          7.440762,
+          46.95196
+        ],
+        [
+          7.440715,
+          46.951876
+        ],
+        [
+          7.440668,
+          46.951792
+        ],
+        [
+          7.440621,
+          46.951708
+        ],
+        [
+          7.440574,
+          46.951624
+        ],
+        [
+          7.440526,
+          46.95154
+        ],
+        [
+          7.440479,
+          46.951456
+        ],
+        [
+          7.440432,
+          46.951372
+        ],
+        [
+          7.440385,
+          46.951288
+        ],
+        [
+          7.440338,
+          46.951204
+        ],
+        [
+          7.440244,
+          46.951036
+        ],
+        [
+          7.440197,
+          46.950952
+        ],
+        [
+          7.440102,
+          46.950784
+        ],
+        [
+          7.440055,
+          46.9507
+        ],
+        [
+          7.440008,
+          46.950616
+        ],
+        [
+          7.439961,
+          46.950532
+        ],
+        [
+          7.439914,
+          46.950448
+        ],
+        [
+          7.43982,
+          46.95028
+        ],
+        [
+          7.439773,
+          46.950196
+        ],
+        [
+          7.439723,
+          46.950113
+        ],
+        [
+          7.439669,
+          46.950031
+        ],
+        [
+          7.43961,
+          46.949951
+        ],
+        [
+          7.439546,
+          46.949872
+        ],
+        [
+          7.439477,
+          46.949796
+        ],
+        [
+          7.439403,
+          46.949721
+        ],
+        [
+          7.439325,
+          46.949649
+        ],
+        [
+          7.439243,
+          46.949579
+        ],
+        [
+          7.439157,
+          46.949511
+        ],
+        [
+          7.439066,
+          46.949446
+        ],
+        [
+          7.438972,
+          46.949383
+        ],
+        [
+          7.438874,
+          46.949323
+        ],
+        [
+          7.438772,
+          46.949266
+        ],
+        [
+          7.438694,
+          46.949225
+        ]
+      ],
+      "gauge": "mm1435",
+      "dataStand": "2021-07-06",
+      "validFrom": "2015-10-21",
+      "validUntil": null,
+      "infrastructureOperator": "SBB CFF FFS"
+    },
+    "stops": [
+      [
+        7.43682884,
+        46.9485674,
+        "Bern",
+        "7",
+        "ch:1:sloid:7000:4:7"
+      ],
+      [
+        7.43714325,
+        46.94856127,
+        "Bern",
+        "6",
+        "ch:1:sloid:7000:3:6"
+      ],
+      [
+        7.43720614,
+        46.94850608,
+        "Bern",
+        "5",
+        "ch:1:sloid:7000:3:5"
+      ],
+      [
+        7.43677494,
+        46.94864099,
+        "Bern",
+        "8",
+        "ch:1:sloid:7000:4:8"
+      ]
+    ],
+    "maximumProjectionMetres": 75,
+    "minimumSpurMetres": 100,
+    "maximumSpurMetres": 200
+  },
+  "basel": {
+    "node": {
+      "id": "ch14uvag00088877",
+      "number": "8500010",
+      "name": "Basel SBB",
+      "coordinate": [
+        7.589575,
+        47.547411
+      ]
+    },
+    "curve": {
+      "id": "ch14uvag00087745",
+      "start": "ch14uvag00088877",
+      "end": "ch14uvag00088888",
+      "length": 531.0000965488583,
+      "points": [
+        [
+          7.589424,
+          47.547206
+        ],
+        [
+          7.589899,
+          47.547045
+        ],
+        [
+          7.590018,
+          47.547005
+        ],
+        [
+          7.590137,
+          47.546965
+        ],
+        [
+          7.590256,
+          47.546924
+        ],
+        [
+          7.590731,
+          47.546764
+        ],
+        [
+          7.590969,
+          47.546683
+        ],
+        [
+          7.591088,
+          47.546643
+        ],
+        [
+          7.591325,
+          47.546563
+        ],
+        [
+          7.591801,
+          47.546402
+        ],
+        [
+          7.59192,
+          47.546362
+        ],
+        [
+          7.592038,
+          47.546322
+        ],
+        [
+          7.592633,
+          47.546121
+        ],
+        [
+          7.59287,
+          47.54604
+        ],
+        [
+          7.59299,
+          47.546001
+        ],
+        [
+          7.59311,
+          47.545963
+        ],
+        [
+          7.593232,
+          47.545927
+        ],
+        [
+          7.593353,
+          47.54589
+        ],
+        [
+          7.593474,
+          47.545853
+        ],
+        [
+          7.593595,
+          47.545816
+        ],
+        [
+          7.593716,
+          47.545779
+        ],
+        [
+          7.593837,
+          47.545742
+        ],
+        [
+          7.593957,
+          47.545703
+        ],
+        [
+          7.594076,
+          47.545663
+        ],
+        [
+          7.594313,
+          47.545582
+        ],
+        [
+          7.594432,
+          47.545542
+        ],
+        [
+          7.594551,
+          47.545502
+        ],
+        [
+          7.594789,
+          47.545422
+        ],
+        [
+          7.594908,
+          47.545381
+        ],
+        [
+          7.595026,
+          47.545341
+        ],
+        [
+          7.595145,
+          47.545301
+        ],
+        [
+          7.595264,
+          47.545261
+        ],
+        [
+          7.595383,
+          47.545221
+        ],
+        [
+          7.59562,
+          47.54514
+        ],
+        [
+          7.595739,
+          47.5451
+        ],
+        [
+          7.595751,
+          47.545096
+        ]
+      ],
+      "gauge": "mm1435",
+      "dataStand": "2021-07-06",
+      "validFrom": "1993-02-19",
+      "validUntil": null,
+      "infrastructureOperator": "SBB CFF FFS"
+    },
+    "stops": [
+      [
+        7.59171637,
+        47.54598768,
+        "Basel SBB",
+        "10",
+        "ch:1:sloid:10:5:10"
+      ],
+      [
+        7.59226434,
+        47.5464,
+        "Basel SBB",
+        "3",
+        "ch:1:sloid:10:2:3"
+      ],
+      [
+        7.5923362,
+        47.54584821,
+        "Basel SBB",
+        "9",
+        "ch:1:sloid:10:5:9"
+      ]
+    ],
+    "maximumProjectionMetres": 75,
+    "minimumTrimMetres": 200,
+    "maximumTrimMetres": 300
+  }
+}

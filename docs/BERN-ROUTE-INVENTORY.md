@@ -6,7 +6,7 @@ Generated from the [Bern audit](BERN-STUDY.md). Counts are admitted / candidate 
 
 | GTFS agency | Source name | Annual route records | Friday admitted / candidate | Sunday admitted / candidate |
 | --- | --- | --- | --- | --- |
-| 11 | Schweizerische Bundesbahnen SBB | 62 | 484 / 846 | 468 / 771 |
+| 11 | Schweizerische Bundesbahnen SBB | 62 | 511 / 846 | 523 / 771 |
 | 32 | Lauterbrunnen-Mürren | 2 | 181 / 181 | 181 / 181 |
 | 33 | BLS AG (bls) | 53 | 1,191 / 1,405 | 1,053 / 1,255 |
 | 35 | Berner Oberland-Bahnen | 2 | 130 / 130 | 144 / 144 |
@@ -137,7 +137,7 @@ Generated from the [Bern audit](BERN-STUDY.md). Counts are admitted / candidate 
 | 91-8-E-j26-1 | 11: IC8 | rail | excluded | 0 / 26 | 0 / 42 | — | — | no-verified-operator-line-crosswalk |
 | 91-9-P-j26-1 | 11: IC9 | rail | excluded | 0 / 0 | 0 / 1 | — | — | no-verified-operator-line-crosswalk |
 | 91-51-B-j26-1 | 11: IC51 | rail | excluded | 0 / 40 | 0 / 39 | — | — | no-verified-operator-line-crosswalk |
-| 91-61-A-j26-1 | 11: IC61 | rail | partially-admitted | 1 / 32 | 8 / 65 | 310_IC | bern-ic61-reviewed-fot-rail-20210706 | incomplete-directed-pattern |
+| 91-61-A-j26-1 | 11: IC61 | rail | partially-admitted | 28 / 32 | 63 / 65 | 310_IC | bern-ic61-platforms-reviewed-fot-rail-20210706, bern-ic61-reviewed-fot-rail-20210706 | incomplete-directed-pattern |
 | 91-81-A-j26-1 | 11: IC81 | rail | excluded | 0 / 16 | 0 / 1 | — | — | no-verified-operator-line-crosswalk |
 | 91-3-Y-j26-1 | 11: ICE | rail | excluded | 0 / 12 | 0 / 12 | — | — | no-verified-operator-line-crosswalk |
 | 91-3M-Y-j26-1 | 11: IR | rail | inactive-on-validation-dates | 0 / 0 | 0 / 0 | 303_RE | — | Not active on these dates |
