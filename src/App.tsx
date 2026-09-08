@@ -4,6 +4,7 @@ import { networkWithRailVisibility } from './studies/network-layers.ts'
 import { COGWHEEL_COPY, COGWHEEL_ROUTE_COLORS, cogwheelNetwork } from './studies/cogwheel.ts'
 import { useCogwheelCatalogue } from './studies/use-cogwheel-catalogue.ts'
 import { roadTrafficSummary } from './studies/road-traffic-summary.ts'
+import { airTrafficSummary } from './studies/air-traffic-summary.ts'
 import { postbusRouteIndex, postbusRouteSnapshot, postbusTickFollowsSeek, POSTBUS_YELLOW, POSTBUS_ROUTE_COLORS } from './studies/postbus.ts'
 import { CONTROL_HELP } from './control-help.ts'
 import {
@@ -454,6 +455,7 @@ export function App({ edition }: AppProps) {
   const quietMap = view === 'network' && networkStudy === 'national' &&
     !sbbEnabled && !airEnabled && !roadEnabled && Boolean(network) && !dataError && webglAvailable
   const activeAirSnapshot = isNationalDay ? airDay.snapshot : airSnapshot
+  const airOnly = view === 'network' && networkStudy === 'national' && airEnabled && !sbbEnabled && !roadEnabled
   const airportMovements = useMemo(() => selectedAirport ? airportBoardMovements(isNationalDay ? airDay.manifest?.aircraft ?? [] : activeAirSnapshot?.tracks ?? [], selectedAirport) : { departures: [], arrivals: [] }, [selectedAirport, isNationalDay, airDay.manifest, activeAirSnapshot])
   const activeAirLoadState: AirLoadState = !airEnabled
     ? 'idle'
@@ -525,13 +527,14 @@ export function App({ edition }: AppProps) {
         : undefined,
     [networkTime, selectedAirTrack],
   )
-  const activeAircraftCount = useMemo(
+  const airSummary = useMemo(
     () =>
-      airEnabled && activeAirSnapshot
-        ? activeAirTracks(activeAirSnapshot, networkTime).length
-        : 0,
+      airTrafficSummary(airEnabled && activeAirSnapshot
+        ? activeAirTracks(activeAirSnapshot, networkTime)
+        : []),
     [activeAirSnapshot, airEnabled, networkTime],
   )
+  const activeAircraftCount = airSummary.aircraft
   const activeRoadVehicleCount = useMemo(
     () =>
       roadEnabled && nationalRoad.snapshot && nationalRoadInWindow
@@ -1973,6 +1976,10 @@ export function App({ edition }: AppProps) {
                   ? text.zvvSubtitle
                   : networkStudy === 'geneva-tpg'
                     ? text.genevaSubtitle
+                  : airOnly
+                    ? text.airSubtitle
+                  : networkStudy === 'national' && !sbbEnabled && roadEnabled && !airEnabled
+                    ? text.roadSubtitle
                   : text.subtitle
               : isHub
                 ? text.taktHubs
@@ -2967,6 +2974,27 @@ export function App({ edition }: AppProps) {
                 </>
               : roadLoadState === 'loading' ? text.loadingRoad : text.noRoadTraffic}
           </p>
+        </section>
+      ) : airOnly ? (
+        <section className="journey-card network-card air-network-card" aria-label={text.aircraftInMotion}>
+          <div className="network-count-row">
+            <strong>{activeAirLoadState === 'ready' ? numberFormat.format(activeAircraftCount) : '—'}</strong>
+            <span>{text.aircraftInMotion}</span>
+          </div>
+          <p className="between">
+            {activeAirLoadState === 'error' ? text.airUnavailable
+              : activeAirLoadState !== 'ready' ? text.loadingAir : text.airAirportSummary}
+          </p>
+          <div className="metric-grid">
+            <div>
+              <span>{text.airOrigins}</span>
+              <strong>{activeAirLoadState === 'ready' ? numberFormat.format(airSummary.origins) : '—'}</strong>
+            </div>
+            <div>
+              <span>{text.airDestinations}</span>
+              <strong>{activeAirLoadState === 'ready' ? numberFormat.format(airSummary.destinations) : '—'}</strong>
+            </div>
+          </div>
         </section>
       ) : isNetwork ? (
         <section
