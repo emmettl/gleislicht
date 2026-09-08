@@ -4,7 +4,8 @@ import { execFileSync } from 'node:child_process'
 import { readFile, writeFile } from 'node:fs/promises'
 import { join } from 'node:path'
 import { hashFile } from './inventory-aargau.mjs'
-const baseline='9b26f15'
+const rail=process.argv.includes('--rail')
+const baseline=rail?'3b7a9ba':'9b26f15'
 const before=path=>JSON.parse(execFileSync('git',['show',`${baseline}:${path}`],{encoding:'utf8',maxBuffer:64*1024*1024}))
 const after=async path=>JSON.parse(await readFile(path,'utf8'))
 const days=[]
@@ -21,12 +22,12 @@ for(const date of ['2026-09-04','2026-09-06']) {
   for(const key of ['routeId','agencyId','route','category','directionId','sourceTripId','sourceServiceDate','start','end','stops','boardingRules'])assert.deepEqual(n[key],t[key],`${id}: changed ${key}`)
   for(let i=0;i<t.pathSegments.length;i++){
    const old=t.pathSegments[i],next=n.pathSegments[i]
-   if(old!==null){assert(next!==null);assert.deepEqual(b.paths[next],a.paths[old],`${id}: changed admitted AGIS geometry`);preserved++}
+   if(old!==null){assert(next!==null);assert.deepEqual(b.paths[next],a.paths[old],`${id}: changed previously admitted geometry`);preserved++}
    else if(next!==null)added++
   }
  }
- days.push({date,journeys:oldTrips.size,preservedOfficialOccurrences:preserved,addedGeometryOccurrences:added,manifestSha256:await hashFile(name)})
+ days.push({date,journeys:oldTrips.size,preservedGeometryOccurrences:preserved,addedGeometryOccurrences:added,manifestSha256:await hashFile(name)})
 }
-const report={schemaVersion:1,baselineCommit:execFileSync('git',['rev-parse',baseline],{encoding:'utf8'}).trim(),passed:true,method:'Every baseline journey identity, full calls, boarding rules and previously admitted AGIS path compared with current feed. Newly admitted geometry can only fill prior gaps.',days}
-await writeFile('data/aargau/road-regression.json',JSON.stringify(report,null,2)+'\n')
+const report={schemaVersion:1,baselineCommit:execFileSync('git',['rev-parse',baseline],{encoding:'utf8'}).trim(),passed:true,method:'Every baseline journey identity, full calls, boarding rules and previously admitted geometry path compared with current feed. Newly admitted geometry can only fill prior gaps.',days}
+await writeFile(`data/aargau/${rail?'rail':'road'}-regression.json`,JSON.stringify(report,null,2)+'\n')
 console.log(report)

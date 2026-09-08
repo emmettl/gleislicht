@@ -1,0 +1,230 @@
+{
+  "schemaVersion": 1,
+  "scope": "Exact retained SBB (11), THURBO (65) and SOB (82) rail route identities only. Fill absent AGIS geometry. Full ordered operating-point sequence constrains each directed infrastructure search. No nearest-name or nearest-network identity fallback.",
+  "inputTimetableHashes": {
+    "2026-09-04": "5b19b53e396d6b21686cd6e3c4dc438eefbfc503e69fa2c71b1454982ca2a952",
+    "2026-09-06": "abd919e4a9c3917ca8f5c3f23b013202f2092aebe8dcc60b5c8f47efde15c4c9"
+  },
+  "routes": [
+    {
+      "routeId": "91-1-B-j26-1",
+      "agencyId": "11",
+      "line": "S1"
+    },
+    {
+      "routeId": "91-1-D-j26-1",
+      "agencyId": "11",
+      "line": "IC1"
+    },
+    {
+      "routeId": "91-1-H-j26-1",
+      "agencyId": "11",
+      "line": "SN1"
+    },
+    {
+      "routeId": "91-1-I-j26-1",
+      "agencyId": "11",
+      "line": "SN1"
+    },
+    {
+      "routeId": "91-11-A-j26-1",
+      "agencyId": "11",
+      "line": "S11"
+    },
+    {
+      "routeId": "91-11-E-j26-1",
+      "agencyId": "11",
+      "line": "SN11"
+    },
+    {
+      "routeId": "91-11-H-j26-1",
+      "agencyId": "11",
+      "line": "S11"
+    },
+    {
+      "routeId": "91-12-j26-1",
+      "agencyId": "11",
+      "line": "S12"
+    },
+    {
+      "routeId": "91-12-K-j26-1",
+      "agencyId": "11",
+      "line": "RE12"
+    },
+    {
+      "routeId": "91-15-B-j26-1",
+      "agencyId": "11",
+      "line": "IR15"
+    },
+    {
+      "routeId": "91-16-B-j26-1",
+      "agencyId": "11",
+      "line": "IR16"
+    },
+    {
+      "routeId": "91-19-A-j26-1",
+      "agencyId": "11",
+      "line": "S19"
+    },
+    {
+      "routeId": "91-1G-Y-j26-1",
+      "agencyId": "11",
+      "line": "RE"
+    },
+    {
+      "routeId": "91-1W-Y-j26-1",
+      "agencyId": "11",
+      "line": "EXT"
+    },
+    {
+      "routeId": "91-23-j26-1",
+      "agencyId": "11",
+      "line": "S23"
+    },
+    {
+      "routeId": "91-24-F-j26-1",
+      "agencyId": "11",
+      "line": "RE24"
+    },
+    {
+      "routeId": "91-25-B-j26-1",
+      "agencyId": "11",
+      "line": "S25"
+    },
+    {
+      "routeId": "91-26-C-j26-1",
+      "agencyId": "82",
+      "line": "IR26"
+    },
+    {
+      "routeId": "91-26-j26-1",
+      "agencyId": "11",
+      "line": "S26"
+    },
+    {
+      "routeId": "91-27-A-j26-1",
+      "agencyId": "11",
+      "line": "IR27"
+    },
+    {
+      "routeId": "91-27-j26-1",
+      "agencyId": "11",
+      "line": "S27"
+    },
+    {
+      "routeId": "91-28-j26-1",
+      "agencyId": "11",
+      "line": "S28"
+    },
+    {
+      "routeId": "91-29-j26-1",
+      "agencyId": "11",
+      "line": "S29"
+    },
+    {
+      "routeId": "91-29-Y-j26-1",
+      "agencyId": "11",
+      "line": "IC"
+    },
+    {
+      "routeId": "91-2Z-Y-j26-1",
+      "agencyId": "11",
+      "line": "NJ"
+    },
+    {
+      "routeId": "91-35-A-j26-1",
+      "agencyId": "82",
+      "line": "IR35"
+    },
+    {
+      "routeId": "91-35-B-j26-1",
+      "agencyId": "11",
+      "line": "IR35"
+    },
+    {
+      "routeId": "91-36-A-j26-1",
+      "agencyId": "11",
+      "line": "IR36"
+    },
+    {
+      "routeId": "91-36-E-j26-1",
+      "agencyId": "11",
+      "line": "RE36"
+    },
+    {
+      "routeId": "91-36-j26-1",
+      "agencyId": "65",
+      "line": "S36"
+    },
+    {
+      "routeId": "91-37-E-j26-1",
+      "agencyId": "11",
+      "line": "RE37"
+    },
+    {
+      "routeId": "91-37-j26-1",
+      "agencyId": "11",
+      "line": "IR37"
+    },
+    {
+      "routeId": "91-3M-Y-j26-1",
+      "agencyId": "11",
+      "line": "IR"
+    },
+    {
+      "routeId": "91-3U-Y-j26-1",
+      "agencyId": "11",
+      "line": "IR"
+    },
+    {
+      "routeId": "91-42-j26-1",
+      "agencyId": "11",
+      "line": "S42"
+    },
+    {
+      "routeId": "91-5-A-j26-1",
+      "agencyId": "11",
+      "line": "IC5"
+    },
+    {
+      "routeId": "91-6-D-j26-1",
+      "agencyId": "11",
+      "line": "S6"
+    },
+    {
+      "routeId": "91-6-I-j26-1",
+      "agencyId": "11",
+      "line": "SN6"
+    },
+    {
+      "routeId": "91-6-W-j26-1",
+      "agencyId": "11",
+      "line": "RE6"
+    },
+    {
+      "routeId": "91-8-E-j26-1",
+      "agencyId": "11",
+      "line": "IC8"
+    },
+    {
+      "routeId": "91-9-B-j26-1",
+      "agencyId": "11",
+      "line": "S9"
+    },
+    {
+      "routeId": "91-CB-Y-j26-1",
+      "agencyId": "11",
+      "line": "IC"
+    },
+    {
+      "routeId": "91-D8-Y-j26-1",
+      "agencyId": "11",
+      "line": "S"
+    },
+    {
+      "routeId": "91-K-Y-j26-1",
+      "agencyId": "11",
+      "line": "IC"
+    }
+  ]
+}

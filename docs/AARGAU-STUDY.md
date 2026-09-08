@@ -1,10 +1,10 @@
 # Aargau regional transit: canton inventory and geometry audit
 
-Completed **8 September 2026** from the [national source inventory](SWISS-TRANSIT-SOURCE-INVENTORY.md#ag). This delivers a reproducible **canton-wide timetable inventory**, an AGIS line adapter, and Friday/Sunday regional audit feeds. It is an offline data deliverable; application study selection, live refresh and deployment are separate work.
+Completed **8 September 2026** from the [national source inventory](SWISS-TRANSIT-SOURCE-INVENTORY.md#ag). This delivers a reproducible **canton-wide timetable inventory**, an AGIS line adapter with scoped OSM bus and FOT rail fallbacks, and Friday/Sunday regional audit feeds. It is an offline data deliverable; application study selection, live refresh and deployment are separate work.
 
 **All 5,142 national route records and 34,499,152 stop-time rows were inspected.** The archived timetable contains **289 Aargau-calling route records across 23 agency identities**. Of these, **232 operate in at least one selected civil-day fixture** and **57 are inactive on both**. The other **4,853 national route records** have no Aargau call in the archive. These are GTFS records, not counts of unique public line numbers or legal companies.
 
-The final feed retains **11,193 Friday journeys and 7,767 Sunday journeys**, with complete source stop chains. Accepted geometry covers **97.42% / 96.88%** of all retained segment occurrences, and **99.54% / 99.20%** of occurrences with at least one stop inside Aargau. **Geometry remains incomplete**, particularly for night rail, unmatched rail/boat identities and German bus continuations. Bus fallback is an explicitly labelled OSM inference, including replacement services; it does not certify the actual diversion used.
+The final feed retains **11,193 Friday journeys and 7,767 Sunday journeys**, with complete source stop chains. Accepted geometry covers **99.64% / 99.74%** of all retained segment occurrences, and **99.92% / 99.90%** of occurrences with at least one stop inside Aargau. **Geometry remains incomplete**, for the S36 Waldshut crossing, one Bern platform, unmatched boat identities and German bus continuations. Bus fallback is an explicitly labelled OSM inference, including replacement services; it does not certify the actual diversion used.
 
 ## Deliverables
 
@@ -16,6 +16,8 @@ The final feed retains **11,193 Friday journeys and 7,767 Sunday journeys**, wit
 | [Friday morning](../fixtures/aargau/2026-09-04/aargau-region-morning.json) / [Sunday morning](../fixtures/aargau/2026-09-06/aargau-region-morning.json) | Self-contained 06:45–08:45 extracts, focus 07:45 |
 | [Source catalogue](../data/aargau-sources/sources.json) | Raw archive, supplied terms/metadata, decoded geometry, unsimplified canton boundary and hashes |
 | [Road fallback cache](../data/aargau-road-cache.json) | Complete agency-scoped bus patterns, platform identities, ODbL provenance, matcher hashes and rejected hops |
+| [FOT source bundle](../data/aargau-rail-sources/source.json) / [rail policy](../data/aargau-rail-policy.json) | Checksum-verified compressed original XTF, dated catalogue and terms link; 44 exact SBB/THURBO/SOB rail route identities |
+| [Rail regression](../data/aargau/rail-regression.json) | Every prior AGIS/OSM path and complete journey preserved against commit `3b7a9ba`; current manifest hashes |
 | [Explicit crosswalk](../data/aargau-line-crosswalk.json) | Eight narrowly scoped operator/line mappings with source/GTFS evidence |
 | [Independent source verification](../data/aargau/source-verification.json) | Separate Python CSV/zip scan: exact expected journey sets, source coordinates, calls, rules and shifted times |
 | [Friday extracted timetable](../data/aargau/2026-09-04-timetable.json.gz) / [Sunday extracted timetable](../data/aargau/2026-09-06-timetable.json.gz) | Hash-bound compressed source fixtures for rebuilding geometry without rereading the large national archive |
@@ -50,7 +52,7 @@ The selection window is **civil [00:00, 24:00)**. Entire intersecting journeys a
 
 The independent verifier recounted **184,299 Friday calls** and **129,240 Sunday calls**, and checked that no expected journey was omitted and no extra journey was introduced. Source names, full platform precision, arrival/departure times, headsigns, direction and boarding restrictions are preserved. There are **no frequency templates** in these real regional fixtures. The importer nevertheless expands interval-anchored frequencies, retains `exact_times`, and labels headway instances; the synthetic calendar test exercises this behaviour. Invalid/missing fixed stop times are enumerated as exclusions rather than invented; neither fixture contains such exclusions.
 
-Sunday contains **171 night journeys, 40 route records and 101 directed patterns**, brought in from Saturday's calendar. Their **3,508 segment occurrences have zero admitted AGIS geometry** under exact night-line identity. The fallback now supplies **3,147 night-bus occurrences**, covering every retained Sunday night-bus segment. The remaining **361 occurrences are night rail**. All night journeys remain visible in the timetable and coverage denominator; unresolved rail portions remain in the failed-pattern inventory. Daytime line geometry is not automatically relabelled as a night line. There are no N/SN or type-705 night journeys in the Friday civil-day fixture. Two September dates do not establish winter, summer-only, holiday or year-round completeness; the 57 inactive archived route records are retained for further dated validation.
+Sunday contains **171 night journeys, 40 route records and 101 directed patterns**, brought in from Saturday's calendar. Their **3,508 segment occurrences have zero admitted AGIS geometry** under exact night-line identity. The fallback now supplies **3,147 night-bus occurrences**, covering every retained Sunday night-bus segment. The FOT fallback now supplies all **361 night-rail occurrences**, so all **3,508 Sunday night occurrences** have geometry. All night journeys remain visible in the timetable and coverage denominator; FOT and OSM contributions are separately identified. Daytime line geometry is not automatically relabelled as a night line. There are no N/SN or type-705 night journeys in the Friday civil-day fixture. Two September dates do not establish winter, summer-only, holiday or year-round completeness; the 57 inactive archived route records are retained for further dated validation.
 
 ## Measured coverage
 
@@ -63,15 +65,15 @@ A directed pattern is **route ID + GTFS direction ID + complete ordered platform
 | Active agency identities | 21 | 20 |
 | Platforms | 3,881 | 3,885 |
 | Directed complete stop patterns | 1,477 | 1,080 |
-| Patterns with every segment matched | 1,294 | 913 |
+| Patterns with every segment matched | 1,464 | 1,070 |
 | Distinct directed route/platform pairs | 6,932 | 7,456 |
-| Pairs matched on every occurrence | 6,539 | 6,965 |
+| Pairs matched on every occurrence | 6,889 | 7,415 |
 | Scheduled segment occurrences | 173,106 | 121,473 |
-| Accepted geometry occurrences | 168,648 | 117,681 |
-| Full-journey occurrence coverage | 97.42% | 96.88% |
-| Occurrence coverage touching an Aargau stop | 99.54% | 99.20% |
+| Accepted geometry occurrences | 172,477 | 121,153 |
+| Full-journey occurrence coverage | 99.64% | 99.74% |
+| Occurrence coverage touching an Aargau stop | 99.92% | 99.90% |
 
-AGIS contributes **160,049 / 107,815** accepted occurrences, and the road fallback adds **8,599 / 9,866**, Friday/Sunday. Each segment identifies `geometrySource: agis` or `osm`; the per-operator and per-route counters reconcile those sources separately. A fully matched pattern may combine AGIS portions with road fallback.
+AGIS contributes **160,049 / 107,815** accepted occurrences, the road fallback adds **8,599 / 9,866**, and FOT rail adds **3,829 / 3,472**, Friday/Sunday. Each admitted segment identifies `geometrySource: agis`, `osm` or `fot`; the per-operator and per-route counters reconcile those sources separately. A fully matched pattern may combine AGIS portions with the relevant road or rail fallback.
 
 The operator table inventories all 23 agency identities that call in Aargau somewhere in the archive. Coverage is measured over complete retained journeys, including outside-canton portions. A dash means no eligible journey on that date, not that the operator lacks geometry year-round.
 
@@ -93,15 +95,15 @@ The operator table inventories all 23 agency identities that call in Aargau some
 | Südbadenbus (`sbg034`) | bus | 1 | 52 | 20 | 44.41% | 42.97% |
 | Hallwilersee (`181`) | ferry | 3 | 10 | 17 | 66.04% | 38.46% |
 | Basler Personenschifffahrt AG (`191`) | ferry | 1 | 0 | 0 | — | — |
-| Schweizerische Bundesbahnen SBB (`11`) | rail | 69 | 1,281 | 1,270 | 76.77% | 77.63% |
+| Schweizerische Bundesbahnen SBB (`11`) | rail | 69 | 1,281 | 1,270 | 99.99% | 99.99% |
 | Aargau Verkehr AG (`31`) | rail | 1 | 163 | 121 | 100.00% | 100.00% |
-| THURBO (`65`) | rail | 2 | 37 | 36 | 0.00% | 0.00% |
+| THURBO (`65`) | rail | 2 | 37 | 36 | 90.77% | 90.77% |
 | Oensingen-Balsthal-Bahn (`68`) | rail | 2 | 0 | 0 | — | — |
-| Schweizerische Südostbahn (sob) (`82`) | rail | 4 | 2 | 1 | 0.00% | 0.00% |
+| Schweizerische Südostbahn (sob) (`82`) | rail | 4 | 2 | 1 | 100.00% | 100.00% |
 | Aargau Verkehr AG (`96`) | rail | 1 | 313 | 229 | 100.00% | 100.00% |
 | Aargau Verkehr AG (`41`) | tram | 1 | 160 | 160 | 100.00% | 100.00% |
 
-AVA **S14 (96), S17 (31)** and **tram 20 (41)** have all retained segment occurrences matched on both dates. This is automated ordered-path coverage, not certification of particular running tracks. SBB coverage is lower over complete long-distance journeys than near Aargau stops. The separate **THURBO 65** and **SOB 82** identities are retained with unresolved geometry; the source's SBB-labelled line alone is not treated as blanket permission to join another operator.
+AVA **S14 (96), S17 (31)** and **tram 20 (41)** have all retained segment occurrences matched on both dates. This is automated ordered-path coverage, not certification of particular running tracks. SBB now has one unresolved IR16 occurrence on each date. THURBO S36 reaches **90.77%** on both dates, with only the Koblenz–Waldshut crossing unresolved. SOB IR35 on Friday and IR26 on Sunday reach **100%**. Each fallback requires its own exact timetable route/agency identity and operating-point IDs; AGIS SBB labels are not relabelled for another operator.
 
 ## Adapter and admission rules
 
@@ -109,7 +111,7 @@ AVA **S14 (96), S17 (31)** and **tram 20 (41)** have all retained segment occurr
 
 [`aargau-line-geometry.mjs`](../scripts/aargau-line-geometry.mjs) indexes **GO_NR + mode + exact line label**. Direct identity is the default. The explicit crosswalk handles AVA S17's source code 96 versus timetable agency 31; three ZVV-publisher records for PostAuto 205/215/245; Südbadenbus 7312a/b versus agency `sbg034`, line 7312; and PostAuto-operated AVA express lines 444/445. Source itinerary, actual agency and matching ordered stops constrain each mapping. No operator-wide alias is introduced.
 
-Each AGIS match for a complete directed GTFS pattern selects **one feature part and one coordinate orientation**. An optional road fallback fills only its unresolved bus segments after that selection. The adapter never stitches disconnected parts, combines opposite-direction records or routes through an unrestricted road graph. Source `RICHTUNG` is preserved. It denotes direction in timetable fields and is **not assumed to equal GTFS `direction_id` or polyline coordinate order**.
+Each AGIS match for a complete directed GTFS pattern selects **one feature part and one coordinate orientation**. Optional road and rail fallbacks fill only unresolved bus or rail segments after that selection. The adapter never stitches disconnected parts, combines opposite-direction records or routes through an unrestricted road graph. Source `RICHTUNG` is preserved. It denotes direction in timetable fields and is **not assumed to equal GTFS `direction_id` or polyline coordinate order**.
 
 - Project stops to local distance minima along the source part, at most **120 m** away. Full-chain dynamic programming chooses a consistent nondecreasing progress sequence, maximizing valid adjacent movements and then minimizing projection gaps.
 - A missing or incompatible projection stays explicit. Progress is retained across an unmatched stop; the matcher never invents a direct movement across it. Only its genuinely adjacent, individually valid pairs can receive paths. This preserves usable sections of partial source alignments without claiming the whole pattern passes.
@@ -134,7 +136,7 @@ All **366 GIS records** are accounted for: **313 bus, 46 rail, 2 tram and 5 boat
 
 The road fallback closes the bus geometry gaps for **PostAuto 510/515**, Sunday night buses and agencies **7231/7244** in these fixtures. Remaining bus gaps are chiefly **German portions of Südbadenbus 7312** (537 Friday / 219 Sunday occurrences) and two directed Friday segments next to **Brugg AG, Aare AG** (36 occurrences): the closest matched road is about 131 m from that platform, above the unchanged 120 m guard. The road cache also records a rejected line-320 zero/missing shape interval; existing AGIS geometry already covers it, so it creates no extra delivered gap. The full cache preserves every rejected hop rather than accepting the matcher's straight fallback.
 
-Rail and boat identity/extent gaps remain, including THURBO/SOB, night rail and Hallwilersee labels beyond the exact 3651 join. Normal-line failures may reflect dated stop or diversion differences. All scheduled journeys stay in the denominator.
+Remaining rail gaps are **37 Friday / 36 Sunday S36 Koblenz–Waldshut occurrences** (foreign stop `8014474`, no exact FOT operating point), and **one IR16 Olten–Bern occurrence per date** (Bern platform `ch:1:sloid:7000:55:49` is 446 m from operating point 8507000, beyond the 350 m attachment limit). Hallwilersee labels beyond the exact 3651 join still leave **18 Friday / 96 Sunday boat occurrences** unresolved. Normal-line failures may reflect dated stop or diversion differences. All scheduled journeys stay in the denominator.
 
 ## Inferred bus fallback
 
@@ -143,6 +145,16 @@ The routing-only input combines **340 complete patterns across 14 separate agenc
 The existing pfaedle bus profile uses OSM bus relations, access/direction tags and supported turn restrictions. Runs enable `--no-trie -W`, retain every explicit fallback warning, and hash the matcher, configuration, OSM extract, pattern index, log and output tables. Imported shapes must preserve route identity and ordered stop sequence. Segments are sliced by monotone `shape_dist_traveled`, checked by the existing 120 m snap and bounded-detour guards, then simplified by 5 m. Endpoints are restored to the exact source platform coordinates after verifying the cache's rounding difference is below 1 m.
 
 **Every previously accepted AGIS path is preserved**, and all journey IDs and calls agree with the initial `9b26f15` commit. The [regression report](../data/aargau/road-regression.json) binds that comparison to the exact delivered manifest hashes. Official and inferred contributions are counted separately. Routing failures stay null, and road matching does not run in the application. The inference does not independently establish the exact lane, a temporary diversion or a vehicle's observed position. The review/release limitation therefore remains even when an operator reaches 100% automatic coverage.
+
+## Inferred rail fallback
+
+[`aargau-rail-geometry.mjs`](../scripts/aargau-rail-geometry.mjs) fills missing rail segments for **44 exact route records** under SBB 11, THURBO 65 and SOB 82. The [policy](../data/aargau-rail-policy.json) binds those identities to both input timetable hashes. AVA rail and tram retain their existing complete AGIS matches. The source contains **3,210 operating points and 3,424 segments**; six segments whose endpoints are over 120 m from their declared topology nodes are rejected and listed in each audit.
+
+The adapter derives operating-point numbers from exact SLOID or seven-digit foreign identifiers. It requires one unique FOT node with that number, at most **350 m** from the timetable platform; it never substitutes a similar name or nearby unrelated station. This is a station-centre attachment limit, distinct from the bus/AGIS 120 m projection limit. The full ordered platform pattern, direction ID and route/agency identity key every match. Each adjacent-call search forbids traversing another known scheduled operating point out of order. Repeated calls remain in the pattern and coincident consecutive operating points are rejected.
+
+Paths follow declared source-node topology in the required direction. Coordinate order is checked against source endpoints, and topology attachments are limited to **120 m**. No nearest-coordinate merge connects separate networks. A path, including platform connectors, must fit **max(3,000 m, 4.5 × direct distance)**. Source interiors are simplified by 5 m in LV95 before transformation; exact GTFS platform endpoints are retained. Every admitted segment records `geometrySource: fot`, its original AGIS rejection, both station attachment distances, length, maximum topology attachment and ordered source-segment/node identities. Failed rail attempts retain a separate `railFailure` beside the original AGIS failure.
+
+This is a shortest feasible **infrastructure inference** constrained by scheduled calls. It does not establish which alternative alignment, platform track or temporary diversion a train actually uses between calls. Small station/topology connectors are inferred too. FOT catalogue age and those limitations remain visible in the feed metadata. No FOT path replaces an admitted AGIS or OSM path: the [rail regression](../data/aargau/rail-regression.json) checks every prior occurrence against `3b7a9ba`, preserving **168,648 Friday / 117,681 Sunday** paths and adding **3,829 / 3,472**.
 
 ## Source dates, hashes and attribution
 
@@ -156,17 +168,21 @@ Required line credit: **Daten des Kantons Aargau**. Supplied terms are dated **A
 
 **Road fallback:** © OpenStreetMap contributors, **ODbL-1.0**; [copyright and licence](https://www.openstreetmap.org/copyright). Geofabrik Switzerland **2 September 2026** plus a border extract retrieved **8 September 2026**; merged input SHA-256 `d5c675456e935cfbcab88fe894fe9145dc5bd1fbd4318cea30ffd838a9aad02b`. Matcher **pfaedle v0.1.6-208-g99f2cd4**, commit `99f2cd466696ecc6bdb73b2b3bb9008557fcb84a`, with the unmodified bus profile. The road cache is the distributable derived geometry database and includes source/configuration hashes. Raw routing inputs remain outside Git; see [road-source reproduction](POSTBUS-ROAD-GEOMETRY.md). The importer rejects another merged OSM hash until its source dates are reviewed.
 
+**Rail fallback:** **© Federal Office of Transport (FOT)**. The [official catalogue](https://data.geo.admin.ch/api/stac/v1/collections/ch.bav.schienennetz/items/schienennetz) was checked **8 September 2026**: catalogue `datetime` is **6 July 2021**, asset update **18 January 2025**. Neither establishes September 2026 geometry validity (`validOn: null`). The [original XTF](https://data.geo.admin.ch/ch.bav.schienennetz/schienennetz/schienennetz_2056_de.xtf), reused from the local extract and preserved compressed in Git, matches published SHA-256 `2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828`. The [collection](../data/aargau-rail-sources/collection.json) labels its licence `proprietary` and links to [source-attribution terms](https://opendata.swiss/terms-of-use/#terms_by); retain both that label and attribution, without relabelling it CC0. Original catalogue bytes, source checksum, transformation and compressed-file hashes are preserved in the separate rail source bundle.
+
 ## Verification and reproduction
 
-Sixteen focused tests pass, covering operator/mode isolation, exact mappings, both coordinate orientations, repeated stops, arbitrary-start closed loops, one-lap limits, multipart separation, missing-stop progress, detours, exact endpoints, polygon holes/exclaves, full border chains, prior-day carry-in, calendar exceptions and illustrative frequency expansion. Offline checks independently reconcile every delivered pattern/pair/route count, monotone progress, source identity, chunk hash, trip set and path endpoint. A separate Python scan of the original archive validates the extracted timetable, using different CSV and calendar code. Four additional fallback tests exercise complete-pattern/agency isolation, stale coordinates, rejected hops, missing provenance, endpoint corruption, official-path preservation and separate source counters.
+**31 tests pass** across the Aargau source, geometry, road and rail tests plus the shared road importer tests. They cover calendar/civil-day semantics, complete border chains, source identity, loop/order constraints, exact endpoints and fallback isolation. Seven rail cases add both directed orientations, foreign/SLOID identifiers, route/agency/mode isolation, later-stop shortcut rejection, disconnected/coincident nodes, missing/ambiguous/distant identities, excessive detours and malformed topology attachments.
+
+Offline checks reconcile every delivered pattern/pair/route count, source identity, geometry-source counter, chunk hash, trip set and path endpoint. Every admitted FOT path and its complete directed source evidence are replayed from the preserved XTF; both regression reports bind all original journey data and accepted paths to current manifest hashes. The independent Python archive scan remains valid because the extracted timetable bytes have not changed.
 
 Both dates fit the existing regional payload budgets after 5 m interior simplification:
 
 | Gzip payload | Friday | Sunday | Existing budget |
 | --- | ---: | ---: | ---: |
-| Manifest | 381.1 KiB | 406.4 KiB | 650 KiB |
-| Morning extract | 579.4 KiB | 518.9 KiB | 1,600 KiB |
-| Largest two-hour chunk | 197.4 KiB | 126.3 KiB | 450 KiB |
+| Manifest | 452.5 KiB | 486.6 KiB | 650 KiB |
+| Morning extract | 651.9 KiB | 599.5 KiB | 1,600 KiB |
+| Largest two-hour chunk | 197.9 KiB | 126.6 KiB | 450 KiB |
 
 Run from the repository root with Node 24+ (measured here on **26.8.1**), Python 3 and `unzip`; the synthetic integration test also uses `zip`. There are no new runtime dependencies or live-service credentials.
 
@@ -174,12 +190,14 @@ Run from the repository root with Node 24+ (measured here on **26.8.1**), Python
 # Offline checks of the shipped sources, input fixtures, audits and feeds.
 node scripts/check-aargau-study.mjs
 node scripts/check-aargau-regression.mjs
-npx vitest run scripts/aargau-line-geometry.test.mjs scripts/inventory-aargau.test.mjs scripts/aargau-road-geometry.test.mjs
+node scripts/check-aargau-regression.mjs --rail
+npx vitest run scripts/aargau-line-geometry.test.mjs scripts/inventory-aargau.test.mjs scripts/aargau-road-geometry.test.mjs scripts/aargau-rail-geometry.test.mjs scripts/enrich-postbus-roads.test.mjs
 
 # Rebuild either date from the preserved extracted timetable and AGIS bytes.
 node scripts/build-aargau-study.mjs \
   --sources data/aargau-sources --inventory data/aargau \
   --crosswalk data/aargau-line-crosswalk.json --road-cache data/aargau-road-cache.json \
+  --rail-sources data/aargau-rail-sources --rail-policy data/aargau-rail-policy.json \
   --date 2026-09-04 --output /tmp/aargau-friday
 # Repeat with --date 2026-09-06 and --output /tmp/aargau-sunday.
 
@@ -195,7 +213,15 @@ node scripts/aargau-road-geometry.mjs \
   --preparation /tmp/aargau-road-feeds --matched /tmp/aargau-road-matched \
   --source 'Geofabrik Switzerland 2026-09-02 plus OSM border extract 2026-09-08; pfaedle 99f2cd4' \
   --output /tmp/aargau-road-cache.json
-# Omit --road-cache from the study builder to measure the current AGIS-only case.
+# Omit --road-cache, --rail-sources and --rail-policy to measure AGIS-only coverage.
+
+# Repackage FOT using the pinned original and preserved catalogue bytes.
+gunzip -c data/aargau-rail-sources/network.xtf.gz > /tmp/aargau-network.xtf
+node scripts/prepare-aargau-rail.mjs \
+  --source /tmp/aargau-network.xtf \
+  --catalogue data/aargau-rail-sources/catalogue.json \
+  --collection data/aargau-rail-sources/collection.json --checked-on 2026-09-08 \
+  --output /tmp/aargau-rail-sources --policy /tmp/aargau-rail-policy.json
 
 # Recreate the canton membership and source fixtures from the full pinned archive.
 node --max-old-space-size=8192 scripts/inventory-aargau.mjs \

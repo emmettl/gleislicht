@@ -8,6 +8,7 @@ import { gunzipSync, gzipSync } from 'node:zlib'
 import { hashFile } from './inventory-aargau.mjs'
 import { validateAargauFeed } from './build-aargau-study.mjs'
 import { identityKey, lineIndex } from './aargau-line-geometry.mjs'
+import { loadAargauRail } from './aargau-rail-geometry.mjs'
 import { aargauRoadMatcher } from './aargau-road-geometry.mjs'
 
 const read = async path => JSON.parse(await readFile(path, 'utf8'))
@@ -26,6 +27,7 @@ assert.equal(new Set(inventory.routes.map(r=>r.routeId)).size,inventory.routes.l
 const collection = JSON.parse(gunzipSync(await readFile(join(sourceDirectory,'lines.json.gz'))))
 const crosswalk = await read('data/aargau-line-crosswalk.json')
 const index = lineIndex(collection,crosswalk.mappings)
+const rails=await loadAargauRail('data/aargau-rail-sources','data/aargau-rail-policy.json')
 const summaries=[]
 for (const date of inventory.metadata.dates) {
   const directory=join('fixtures/aargau',date)
@@ -39,7 +41,13 @@ for (const date of inventory.metadata.dates) {
     assert(regression.passed)
     assert.equal(regression.days.find(day=>day.date===date)?.manifestSha256,await hashFile(join(directory,'aargau-region-day-manifest.json')))
   }
+  const railRegression=await read(join(input,'rail-regression.json'))
+  assert(railRegression.passed)
+  assert.equal(railRegression.days.find(day=>day.date===date)?.manifestSha256,await hashFile(join(directory,'aargau-region-day-manifest.json')))
+  assert.equal(manifest.metadata.geometry.railFallback.policySha256,await hashFile('data/aargau-rail-policy.json'))
+  assert.deepEqual(manifest.metadata.geometry.railFallback.source,rails.source)
   const fixtureHash=await hashFile(join(input,`${date}-timetable.json.gz`))
+  assert.equal(rails.policy.inputTimetableHashes[date],fixtureHash)
   assert.equal(audit.metadata.timetableFixtureSha256,fixtureHash)
   assert.equal(verification.fixtures[`${date}-timetable.json.gz`],fixtureHash)
   assert.equal(manifest.metadata.geometry.crosswalkSha256,await hashFile('data/aargau-line-crosswalk.json'))
@@ -78,6 +86,15 @@ for (const date of inventory.metadata.dates) {
     routeCounts.set(train.routeId,count)
   }
   for(const pattern of patterns.values()) {
+    const stopIndex=new Map(snapshot.stops.map((s,i)=>[s[4],i]))
+    const replay=rails.matchPattern({agencyId:pattern.agencyId,routeId:pattern.routeId,route:pattern.line,mode:pattern.mode,directionId:pattern.gtfsDirectionId,stops:pattern.stopIds.map(id=>[stopIndex.get(id),0,0])},snapshot.stops)
+    for(const [i,s] of pattern.segments.entries()) if(s.geometrySource==='fot') {
+      assert(s.agisRejection)
+      assert.deepEqual(snapshot.paths[s.pathIndex],replay?.[i]?.path)
+      const {path:_path,...evidence}=replay[i]
+      for(const [key,value] of Object.entries(evidence))assert.deepEqual(s[key],value)
+    }
+    else if(s.railFailure)assert.equal(s.railFailure,replay?.[i]?.railFailure)
     assert.equal(pattern.occurrences,observed.get(pattern.id))
     assert.equal(pattern.completeGeometry,pattern.segments.every(s=>s.pathIndex!==null))
     if(pattern.source.featureId) {
@@ -86,8 +103,8 @@ for (const date of inventory.metadata.dates) {
       const progress=pattern.source.stopProgressMetres.filter(p=>p!==null)
       for(let i=1;i<progress.length;i++)assert(progress[i]>=progress[i-1]-.01)
       if(pattern.source.closedLoop && progress.length)assert(progress.at(-1)-progress[0]<=part.length+.01)
-      for(const s of pattern.segments.filter(s=>s.pathIndex!==null&&s.geometrySource!=='osm'))assert(s.maximumSnapMetres<=120 && s.pathMetres>=1)
-    } else assert(pattern.segments.every(s=>s.pathIndex===null||s.geometrySource==='osm'))
+      for(const s of pattern.segments.filter(s=>s.pathIndex!==null&&s.geometrySource==='agis'))assert(s.maximumSnapMetres<=120 && s.pathMetres>=1)
+    } else assert(pattern.segments.every(s=>s.pathIndex===null||['osm','fot'].includes(s.geometrySource)))
   }
   for(const route of audit.routes)assert.deepEqual(routeCounts.get(route.routeId),{trips:route.trips,matched:route.matched,total:route.total})
   assert.equal(audit.pairs.length,pairCounts.size)
@@ -97,8 +114,10 @@ for (const date of inventory.metadata.dates) {
   if(roads) {
     const roadCount=audit.patterns.reduce((n,p)=>n+p.occurrences*p.segments.filter(s=>s.geometrySource==='osm').length,0)
     assert.equal(roadCount,audit.totals.roadMatched)
-    assert.equal(audit.totals.officialMatched+roadCount,matched)
-    for(const group of audit.groups)assert.equal(group.officialMatched+group.roadMatched,group.matched)
+    const railCount=audit.patterns.reduce((n,p)=>n+p.occurrences*p.segments.filter(s=>s.geometrySource==='fot').length,0)
+    assert.equal(railCount,audit.totals.railMatched)
+    assert.equal(audit.totals.officialMatched+roadCount+railCount,matched)
+    for(const group of audit.groups)assert.equal(group.officialMatched+group.roadMatched+group.railMatched,group.matched)
   }
   assert.equal(audit.sourceRecords.length,collection.features.length)
   assert.equal(new Set(audit.sourceRecords.map(s=>s.featureId)).size,collection.features.length)
