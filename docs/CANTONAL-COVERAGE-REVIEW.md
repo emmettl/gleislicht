@@ -125,3 +125,8 @@ A separate review now admits the adjacent **0491–0591 Meilen counter pair**: 2
 ## Bauma–Wila follow-up
 
 The sixth recording admits the 3588–1623 counter pair: **4.822 km and 104 uninterrupted minutes, 14:14–15:57 CEST**. A complete SwissNames archive inventory verifies all 25 Wald settlements against the API responses. A separate pinned review selects Wald ZH because it alone passes every direction gate opposite the validated Winterthur anchors. At Bauma, a small Wald settlement passing in the Winterthur direction is explicitly excluded using the catalog’s opposing-normal-lane evidence. The automatic regional lookup remains ambiguous. Two geometric junction areas are documented. The neighbouring Stegstrasse counter 2891 remains excluded because its Wald bearing is −0.74. See [Bauma–Wila playback](CANTONAL-ROADS.md#baumawila-playback-and-qualified-wald-destination-review) for the evidence, limits and rebuild commands.
+
+
+## Oberland destination follow-up
+
+A [complete Pfäffikon, Wetzikon and Gossau review](OBERLAND-ROAD-CANDIDATES.md) covers six settlement alternatives, 21 stations and 14 counter pairs with at least one complete hour. All 14 still need direction or geometry evidence even under an optimistic Zürich-qualified-name diagnostic. Hittnau 3091 needs an independent directional reference; Seegräben 2988 needs a verified road binding. No new pilot or topology is published by this audit.

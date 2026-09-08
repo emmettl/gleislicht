@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "hashes": {
+    "geometry": "3647bbd230f40391ba3a1ddcba2364ec439183cd0d0cab80c84afcdcf1812e08",
+    "catalog": "ffce5a7cc2681d4a87f89a7a579e1eab3dd077e15e61574a0d5506da92479a09",
+    "baseline": "dd1c125e6886a7ab61b0323d7174e5cdf15942b16d117a213e8f2276a88b7c55",
+    "coverage": "e82703beb1fe81e1cc355c7e3faafc3505eba77641337312daef5b3db8e0248e",
+    "sources": "f00927348cf89121ea8071ab18fa3e4d04a1c8b5082b47ea67be229bfa7ca82d",
+    "inventory": "7b2ca3c939ff850412cb3fb2500e97951ac109c1ae4dbc6cea802e56b408b015"
+  }
+}

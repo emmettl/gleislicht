@@ -1,0 +1,3459 @@
+{
+  "status": "review-only-no-publication",
+  "inputHashes": {
+    "geometry": "3647bbd230f40391ba3a1ddcba2364ec439183cd0d0cab80c84afcdcf1812e08",
+    "catalog": "ffce5a7cc2681d4a87f89a7a579e1eab3dd077e15e61574a0d5506da92479a09",
+    "baseline": "dd1c125e6886a7ab61b0323d7174e5cdf15942b16d117a213e8f2276a88b7c55",
+    "coverage": "e82703beb1fe81e1cc355c7e3faafc3505eba77641337312daef5b3db8e0248e",
+    "sources": "f00927348cf89121ea8071ab18fa3e4d04a1c8b5082b47ea67be229bfa7ca82d",
+    "inventory": "7b2ca3c939ff850412cb3fb2500e97951ac109c1ae4dbc6cea802e56b408b015"
+  },
+  "summary": {
+    "settlementCandidates": 6,
+    "stations": 21,
+    "candidatePairs": 14,
+    "pairsStillRequiringEvidence": 14
+  },
+  "stationReports": [
+    {
+      "id": "ZH.CH:0188",
+      "name": "Uster: Aathalstrasse",
+      "originalStatus": "unresolved-direction-pair",
+      "qualifiedZhDiagnostic": {
+        "status": "unresolved-direction-pair",
+        "detectors": [
+          {
+            "id": "ZH.CH:0188.01",
+            "description": "Normalspur Richtung Uster",
+            "alertCDirection": "negative",
+            "status": "destination-extent-conflict",
+            "destination": {
+              "name": "Uster",
+              "coordinate": [
+                2696655.35,
+                1245193.6
+              ],
+              "bounds": [
+                2694605.6,
+                1243520.9,
+                2698705.1,
+                1246866.3
+              ],
+              "sourceFeatureId": 302470
+            },
+            "destinationDistanceMetres": 1901.04,
+            "destinationRoadDistanceMetres": 196.17,
+            "offsetSeparationMetres": -2084.39,
+            "bearingAgreement": -0.99,
+            "offsetMetres": 14540.13
+          },
+          {
+            "id": "ZH.CH:0188.02",
+            "description": "Normalspur Richtung Wetzikon",
+            "alertCDirection": "positive",
+            "status": "validated",
+            "direction": "positive",
+            "destination": {
+              "name": "Wetzikon ZH",
+              "coordinate": [
+                2702906.05,
+                1242321.1
+              ],
+              "bounds": [
+                2700343.7,
+                1240605.6,
+                2705468.4,
+                1244036.6
+              ],
+              "sourceFeatureId": 325966
+            },
+            "destinationDistanceMetres": 5011.89,
+            "destinationRoadDistanceMetres": 736.28,
+            "offsetSeparationMetres": 4887.3,
+            "bearingAgreement": 1,
+            "offsetMetres": 14540.13
+          }
+        ]
+      },
+      "aliases": [
+        {
+          "detectorId": "ZH.CH:0188.02",
+          "originalStatus": "unresolved-destination",
+          "regionalResult": {
+            "status": "ambiguous-destination"
+          },
+          "alternatives": [
+            {
+              "status": "destination-off-axis",
+              "destination": {
+                "name": "Wetzikon TG",
+                "coordinate": [
+                  2717678.9,
+                  1266471.5
+                ],
+                "bounds": [
+                  2717345.8,
+                  1266130.1,
+                  2718012,
+                  1266812.9
+                ],
+                "sourceFeatureId": 257814
+              },
+              "destinationDistanceMetres": 29032.51,
+              "destinationRoadDistanceMetres": 28553.17,
+              "offsetSeparationMetres": 2560.87,
+              "bearingAgreement": 0.29,
+              "offsetMetres": 14540.13
+            },
+            {
+              "status": "validated",
+              "direction": "positive",
+              "destination": {
+                "name": "Wetzikon ZH",
+                "coordinate": [
+                  2702906.05,
+                  1242321.1
+                ],
+                "bounds": [
+                  2700343.7,
+                  1240605.6,
+                  2705468.4,
+                  1244036.6
+                ],
+                "sourceFeatureId": 325966
+              },
+              "destinationDistanceMetres": 5011.89,
+              "destinationRoadDistanceMetres": 736.28,
+              "offsetSeparationMetres": 4887.3,
+              "bearingAgreement": 1,
+              "offsetMetres": 14540.13
+            }
+          ]
+        }
+      ],
+      "existingOpposingLaneMethodCouldApply": true,
+      "furtherEvidenceRequired": false
+    },
+    {
+      "id": "ZH.CH:0190",
+      "name": "Wetzikon: Hinwilerstrasse",
+      "originalStatus": "unresolved-direction-pair",
+      "qualifiedZhDiagnostic": {
+        "status": "unresolved-direction-pair",
+        "detectors": [
+          {
+            "id": "ZH.CH:0190.01",
+            "description": "Normalspur Richtung Wetzikon",
+            "alertCDirection": "positive",
+            "status": "bearing-conflict",
+            "destination": {
+              "name": "Wetzikon ZH",
+              "coordinate": [
+                2702906.05,
+                1242321.1
+              ],
+              "bounds": [
+                2700343.7,
+                1240605.6,
+                2705468.4,
+                1244036.6
+              ],
+              "sourceFeatureId": 325966
+            },
+            "destinationDistanceMetres": 1885.4,
+            "destinationRoadDistanceMetres": 1216.78,
+            "offsetSeparationMetres": -1105.33,
+            "bearingAgreement": -0.55,
+            "offsetMetres": 17917.68
+          },
+          {
+            "id": "ZH.CH:0190.02",
+            "description": "Normalspur Richtung Hinwil",
+            "alertCDirection": "negative",
+            "status": "destination-extent-conflict",
+            "destination": {
+              "name": "Hinwil",
+              "coordinate": [
+                2705712.2,
+                1239601.9
+              ],
+              "bounds": [
+                2703656.9,
+                1237750.3,
+                2707767.5,
+                1241453.5
+              ],
+              "sourceFeatureId": 327731
+            },
+            "destinationDistanceMetres": 2729.13,
+            "destinationRoadDistanceMetres": 56.45,
+            "offsetSeparationMetres": 2815.16,
+            "bearingAgreement": 0.99,
+            "offsetMetres": 17917.68
+          }
+        ]
+      },
+      "aliases": [
+        {
+          "detectorId": "ZH.CH:0190.01",
+          "originalStatus": "unresolved-destination",
+          "regionalResult": {
+            "status": "ambiguous-destination"
+          },
+          "alternatives": [
+            {
+              "status": "destination-off-axis",
+              "destination": {
+                "name": "Wetzikon TG",
+                "coordinate": [
+                  2717678.9,
+                  1266471.5
+                ],
+                "bounds": [
+                  2717345.8,
+                  1266130.1,
+                  2718012,
+                  1266812.9
+                ],
+                "sourceFeatureId": 257814
+              },
+              "destinationDistanceMetres": 27511.21,
+              "destinationRoadDistanceMetres": 24503.41,
+              "offsetSeparationMetres": -17917.68,
+              "bearingAgreement": -0.55,
+              "offsetMetres": 17917.68
+            },
+            {
+              "status": "bearing-conflict",
+              "destination": {
+                "name": "Wetzikon ZH",
+                "coordinate": [
+                  2702906.05,
+                  1242321.1
+                ],
+                "bounds": [
+                  2700343.7,
+                  1240605.6,
+                  2705468.4,
+                  1244036.6
+                ],
+                "sourceFeatureId": 325966
+              },
+              "destinationDistanceMetres": 1885.4,
+              "destinationRoadDistanceMetres": 1216.78,
+              "offsetSeparationMetres": -1105.33,
+              "bearingAgreement": -0.55,
+              "offsetMetres": 17917.68
+            }
+          ]
+        }
+      ],
+      "existingOpposingLaneMethodCouldApply": false,
+      "furtherEvidenceRequired": true
+    },
+    {
+      "id": "ZH.CH:0205",
+      "name": "Uster: Pfäffikerstrasse",
+      "originalStatus": "unresolved-direction-pair",
+      "qualifiedZhDiagnostic": {
+        "status": "unresolved-direction-pair",
+        "detectors": [
+          {
+            "id": "ZH.CH:0205.01",
+            "description": "Normalspur Richtung Uster",
+            "alertCDirection": "negative",
+            "status": "destination-too-close",
+            "destination": {
+              "name": "Uster",
+              "coordinate": [
+                2696655.35,
+                1245193.6
+              ],
+              "bounds": [
+                2694605.6,
+                1243520.9,
+                2698705.1,
+                1246866.3
+              ],
+              "sourceFeatureId": 302470
+            },
+            "destinationDistanceMetres": 1206.25,
+            "destinationRoadDistanceMetres": 213.33,
+            "offsetSeparationMetres": -1137.99,
+            "bearingAgreement": -0.98,
+            "offsetMetres": 1863.37
+          },
+          {
+            "id": "ZH.CH:0205.02",
+            "description": "Normalspur Richtung Pfäffikon",
+            "alertCDirection": "positive",
+            "status": "bearing-conflict",
+            "destination": {
+              "name": "Pfäffikon ZH",
+              "coordinate": [
+                2701683.4,
+                1246980.9
+              ],
+              "bounds": [
+                2700182.8,
+                1245725.7,
+                2703184,
+                1248236.1
+              ],
+              "sourceFeatureId": 387589
+            },
+            "destinationDistanceMetres": 4313.06,
+            "destinationRoadDistanceMetres": 19.55,
+            "offsetSeparationMetres": 5003.93,
+            "bearingAgreement": 0.67,
+            "offsetMetres": 1863.37
+          }
+        ]
+      },
+      "aliases": [
+        {
+          "detectorId": "ZH.CH:0205.02",
+          "originalStatus": "unresolved-destination",
+          "regionalResult": {
+            "status": "ambiguous-destination"
+          },
+          "alternatives": [
+            {
+              "status": "destination-off-axis",
+              "destination": {
+                "name": "Pfäffikon SZ",
+                "coordinate": [
+                  2701617.6500000004,
+                  1228478.7999999998
+                ],
+                "bounds": [
+                  2699770.1,
+                  1227534.2,
+                  2703465.2,
+                  1229423.4
+                ],
+                "sourceFeatureId": 226722
+              },
+              "destinationDistanceMetres": 18093.57,
+              "destinationRoadDistanceMetres": 17445.51,
+              "offsetSeparationMetres": -1003.11,
+              "bearingAgreement": -0.73,
+              "offsetMetres": 1863.37
+            },
+            {
+              "status": "bearing-conflict",
+              "destination": {
+                "name": "Pfäffikon ZH",
+                "coordinate": [
+                  2701683.4,
+                  1246980.9
+                ],
+                "bounds": [
+                  2700182.8,
+                  1245725.7,
+                  2703184,
+                  1248236.1
+                ],
+                "sourceFeatureId": 387589
+              },
+              "destinationDistanceMetres": 4313.06,
+              "destinationRoadDistanceMetres": 19.55,
+              "offsetSeparationMetres": 5003.93,
+              "bearingAgreement": 0.67,
+              "offsetMetres": 1863.37
+            }
+          ]
+        }
+      ],
+      "existingOpposingLaneMethodCouldApply": false,
+      "furtherEvidenceRequired": true
+    },
+    {
+      "id": "ZH.CH:0213",
+      "name": "Hinwil: Dürntnerstrasse",
+      "originalStatus": "unresolved-direction-pair",
+      "qualifiedZhDiagnostic": {
+        "status": "unresolved-direction-pair",
+        "detectors": [
+          {
+            "id": "ZH.CH:0213.01",
+            "description": "Normalspur Richtung Hinwil",
+            "alertCDirection": "positive",
+            "status": "destination-too-close",
+            "destination": {
+              "name": "Hinwil",
+              "coordinate": [
+                2705712.2,
+                1239601.9
+              ],
+              "bounds": [
+                2703656.9,
+                1237750.3,
+                2707767.5,
+                1241453.5
+              ],
+              "sourceFeatureId": 327731
+            },
+            "destinationDistanceMetres": 676.33,
+            "destinationRoadDistanceMetres": 56.45,
+            "offsetSeparationMetres": -694.73,
+            "bearingAgreement": -0.96,
+            "offsetMetres": 21427.57
+          },
+          {
+            "id": "ZH.CH:0213.02",
+            "description": "Normalspur Richtung Dürnten",
+            "alertCDirection": "negative",
+            "status": "destination-extent-conflict",
+            "destination": {
+              "name": "Dürnten",
+              "coordinate": [
+                2705780.85,
+                1237487.45
+              ],
+              "bounds": [
+                2704856.2,
+                1236599.5,
+                2706705.5,
+                1238375.4
+              ],
+              "sourceFeatureId": 210292
+            },
+            "destinationDistanceMetres": 1602.1,
+            "destinationRoadDistanceMetres": 477.62,
+            "offsetSeparationMetres": 1839.67,
+            "bearingAgreement": 0.85,
+            "offsetMetres": 21427.57
+          }
+        ]
+      },
+      "aliases": [],
+      "existingOpposingLaneMethodCouldApply": false,
+      "furtherEvidenceRequired": true
+    },
+    {
+      "id": "ZH.CH:0295",
+      "name": "Pfäffikon: Usterstrasse",
+      "originalStatus": "unresolved-direction-pair",
+      "qualifiedZhDiagnostic": {
+        "status": "unresolved-direction-pair",
+        "detectors": [
+          {
+            "id": "ZH.CH:0295.01",
+            "description": "Normalspur Richtung Uster",
+            "alertCDirection": "positive",
+            "status": "validated",
+            "direction": "negative",
+            "destination": {
+              "name": "Uster",
+              "coordinate": [
+                2696655.35,
+                1245193.6
+              ],
+              "bounds": [
+                2694605.6,
+                1243520.9,
+                2698705.1,
+                1246866.3
+              ],
+              "sourceFeatureId": 302470
+            },
+            "destinationDistanceMetres": 4714.98,
+            "destinationRoadDistanceMetres": 213.33,
+            "offsetSeparationMetres": -5337.6,
+            "bearingAgreement": -0.91,
+            "offsetMetres": 6062.98
+          },
+          {
+            "id": "ZH.CH:0295.02",
+            "description": "Normalspur Richtung Pfäffikon",
+            "alertCDirection": "negative",
+            "status": "destination-too-close",
+            "destination": {
+              "name": "Pfäffikon ZH",
+              "coordinate": [
+                2701683.4,
+                1246980.9
+              ],
+              "bounds": [
+                2700182.8,
+                1245725.7,
+                2703184,
+                1248236.1
+              ],
+              "sourceFeatureId": 387589
+            },
+            "destinationDistanceMetres": 647.49,
+            "destinationRoadDistanceMetres": 19.55,
+            "offsetSeparationMetres": 804.31,
+            "bearingAgreement": 0.99,
+            "offsetMetres": 6062.98
+          }
+        ]
+      },
+      "aliases": [
+        {
+          "detectorId": "ZH.CH:0295.02",
+          "originalStatus": "unresolved-destination",
+          "regionalResult": {
+            "status": "ambiguous-destination"
+          },
+          "alternatives": [
+            {
+              "status": "destination-off-axis",
+              "destination": {
+                "name": "Pfäffikon SZ",
+                "coordinate": [
+                  2701617.6500000004,
+                  1228478.7999999998
+                ],
+                "bounds": [
+                  2699770.1,
+                  1227534.2,
+                  2703465.2,
+                  1229423.4
+                ],
+                "sourceFeatureId": 226722
+              },
+              "destinationDistanceMetres": 18463.53,
+              "destinationRoadDistanceMetres": 17445.51,
+              "offsetSeparationMetres": -5202.72,
+              "bearingAgreement": 0.07,
+              "offsetMetres": 6062.98
+            },
+            {
+              "status": "destination-too-close",
+              "destination": {
+                "name": "Pfäffikon ZH",
+                "coordinate": [
+                  2701683.4,
+                  1246980.9
+                ],
+                "bounds": [
+                  2700182.8,
+                  1245725.7,
+                  2703184,
+                  1248236.1
+                ],
+                "sourceFeatureId": 387589
+              },
+              "destinationDistanceMetres": 647.49,
+              "destinationRoadDistanceMetres": 19.55,
+              "offsetSeparationMetres": 804.31,
+              "bearingAgreement": 0.99,
+              "offsetMetres": 6062.98
+            }
+          ]
+        }
+      ],
+      "existingOpposingLaneMethodCouldApply": false,
+      "furtherEvidenceRequired": true
+    },
+    {
+      "id": "ZH.CH:0989",
+      "name": "Hinwil: Winterthurerstrasse",
+      "originalStatus": "unresolved-direction-pair",
+      "qualifiedZhDiagnostic": {
+        "status": "unresolved-direction-pair",
+        "detectors": [
+          {
+            "id": "ZH.CH:0989.01",
+            "description": "Normalspur Richtung Pfäffikon",
+            "alertCDirection": "positive",
+            "status": "validated",
+            "direction": "negative",
+            "destination": {
+              "name": "Pfäffikon ZH",
+              "coordinate": [
+                2701683.4,
+                1246980.9
+              ],
+              "bounds": [
+                2700182.8,
+                1245725.7,
+                2703184,
+                1248236.1
+              ],
+              "sourceFeatureId": 387589
+            },
+            "destinationDistanceMetres": 7691.41,
+            "destinationRoadDistanceMetres": 2.83,
+            "offsetSeparationMetres": -7991.92,
+            "bearingAgreement": -0.95,
+            "offsetMetres": 19958.79
+          },
+          {
+            "id": "ZH.CH:0989.02",
+            "description": "Normalspur Richtung Hinwil",
+            "alertCDirection": "negative",
+            "status": "destination-too-close",
+            "destination": {
+              "name": "Hinwil",
+              "coordinate": [
+                2705712.2,
+                1239601.9
+              ],
+              "bounds": [
+                2703656.9,
+                1237750.3,
+                2707767.5,
+                1241453.5
+              ],
+              "sourceFeatureId": 327731
+            },
+            "destinationDistanceMetres": 720.06,
+            "destinationRoadDistanceMetres": 56.45,
+            "offsetSeparationMetres": 774.05,
+            "bearingAgreement": 0.98,
+            "offsetMetres": 19958.79
+          }
+        ]
+      },
+      "aliases": [
+        {
+          "detectorId": "ZH.CH:0989.01",
+          "originalStatus": "unresolved-destination",
+          "regionalResult": {
+            "status": "ambiguous-destination"
+          },
+          "alternatives": [
+            {
+              "status": "destination-off-axis",
+              "destination": {
+                "name": "Pfäffikon SZ",
+                "coordinate": [
+                  2701617.6500000004,
+                  1228478.7999999998
+                ],
+                "bounds": [
+                  2699770.1,
+                  1227534.2,
+                  2703465.2,
+                  1229423.4
+                ],
+                "sourceFeatureId": 226722
+              },
+              "destinationDistanceMetres": 12390.23,
+              "destinationRoadDistanceMetres": 8653.73,
+              "offsetSeparationMetres": 5665.4,
+              "bearingAgreement": 0.87,
+              "offsetMetres": 19958.79
+            },
+            {
+              "status": "validated",
+              "direction": "negative",
+              "destination": {
+                "name": "Pfäffikon ZH",
+                "coordinate": [
+                  2701683.4,
+                  1246980.9
+                ],
+                "bounds": [
+                  2700182.8,
+                  1245725.7,
+                  2703184,
+                  1248236.1
+                ],
+                "sourceFeatureId": 387589
+              },
+              "destinationDistanceMetres": 7691.41,
+              "destinationRoadDistanceMetres": 2.83,
+              "offsetSeparationMetres": -7991.92,
+              "bearingAgreement": -0.95,
+              "offsetMetres": 19958.79
+            }
+          ]
+        }
+      ],
+      "existingOpposingLaneMethodCouldApply": false,
+      "furtherEvidenceRequired": true
+    },
+    {
+      "id": "ZH.CH:1020",
+      "name": "Wetzikon: Grüningerstrasse",
+      "originalStatus": "unresolved-direction-pair",
+      "qualifiedZhDiagnostic": {
+        "status": "unresolved-direction-pair",
+        "detectors": [
+          {
+            "id": "ZH.CH:1020.01",
+            "description": "Normalspur Richtung Wetzikon",
+            "alertCDirection": "negative",
+            "status": "destination-too-close",
+            "destination": {
+              "name": "Wetzikon ZH",
+              "coordinate": [
+                2702906.05,
+                1242321.1
+              ],
+              "bounds": [
+                2700343.7,
+                1240605.6,
+                2705468.4,
+                1244036.6
+              ],
+              "sourceFeatureId": 325966
+            },
+            "destinationDistanceMetres": 1312.13,
+            "destinationRoadDistanceMetres": 969.93,
+            "offsetSeparationMetres": 371.98,
+            "bearingAgreement": 0.93,
+            "offsetMetres": 2966.92
+          },
+          {
+            "id": "ZH.CH:1020.02",
+            "description": "Normalspur Richtung Gossau",
+            "alertCDirection": "positive",
+            "status": "destination-off-axis",
+            "destination": {
+              "name": "Gossau ZH",
+              "coordinate": [
+                2699784.7,
+                1240219.15
+              ],
+              "bounds": [
+                2698656.2,
+                1239336.9,
+                2700913.2,
+                1241101.4
+              ],
+              "sourceFeatureId": 384655
+            },
+            "destinationDistanceMetres": 2776.46,
+            "destinationRoadDistanceMetres": 1691.24,
+            "offsetSeparationMetres": -1554.21,
+            "bearingAgreement": -0.33,
+            "offsetMetres": 2966.92
+          }
+        ]
+      },
+      "aliases": [
+        {
+          "detectorId": "ZH.CH:1020.01",
+          "originalStatus": "unresolved-destination",
+          "regionalResult": {
+            "status": "ambiguous-destination"
+          },
+          "alternatives": [
+            {
+              "status": "destination-too-close",
+              "destination": {
+                "name": "Wetzikon TG",
+                "coordinate": [
+                  2717678.9,
+                  1266471.5
+                ],
+                "bounds": [
+                  2717345.8,
+                  1266130.1,
+                  2718012,
+                  1266812.9
+                ],
+                "sourceFeatureId": 257814
+              },
+              "destinationDistanceMetres": 29605.17,
+              "destinationRoadDistanceMetres": 29252.98,
+              "offsetSeparationMetres": 371.98,
+              "bearingAgreement": 0.86,
+              "offsetMetres": 2966.92
+            },
+            {
+              "status": "destination-too-close",
+              "destination": {
+                "name": "Wetzikon ZH",
+                "coordinate": [
+                  2702906.05,
+                  1242321.1
+                ],
+                "bounds": [
+                  2700343.7,
+                  1240605.6,
+                  2705468.4,
+                  1244036.6
+                ],
+                "sourceFeatureId": 325966
+              },
+              "destinationDistanceMetres": 1312.13,
+              "destinationRoadDistanceMetres": 969.93,
+              "offsetSeparationMetres": 371.98,
+              "bearingAgreement": 0.93,
+              "offsetMetres": 2966.92
+            }
+          ]
+        },
+        {
+          "detectorId": "ZH.CH:1020.02",
+          "originalStatus": "unresolved-destination",
+          "regionalResult": {
+            "status": "ambiguous-destination"
+          },
+          "alternatives": [
+            {
+              "status": "destination-too-close",
+              "destination": {
+                "name": "Gossau SG",
+                "coordinate": [
+                  2737369.95,
+                  1253479.45
+                ],
+                "bounds": [
+                  2734437.8,
+                  1251603.7,
+                  2740302.1,
+                  1255355.2
+                ],
+                "sourceFeatureId": 15452
+              },
+              "destinationDistanceMetres": 37079.7,
+              "destinationRoadDistanceMetres": 36797.32,
+              "offsetSeparationMetres": 371.98,
+              "bearingAgreement": 0.34,
+              "offsetMetres": 2966.92
+            },
+            {
+              "status": "destination-off-axis",
+              "destination": {
+                "name": "Gossau ZH",
+                "coordinate": [
+                  2699784.7,
+                  1240219.15
+                ],
+                "bounds": [
+                  2698656.2,
+                  1239336.9,
+                  2700913.2,
+                  1241101.4
+                ],
+                "sourceFeatureId": 384655
+              },
+              "destinationDistanceMetres": 2776.46,
+              "destinationRoadDistanceMetres": 1691.24,
+              "offsetSeparationMetres": -1554.21,
+              "bearingAgreement": -0.33,
+              "offsetMetres": 2966.92
+            }
+          ]
+        }
+      ],
+      "existingOpposingLaneMethodCouldApply": false,
+      "furtherEvidenceRequired": true
+    },
+    {
+      "id": "ZH.CH:1388",
+      "name": "Gossau: Leerütistrasse",
+      "originalStatus": "unresolved-direction-pair",
+      "qualifiedZhDiagnostic": {
+        "status": "unresolved-direction-pair",
+        "detectors": [
+          {
+            "id": "ZH.CH:1388.01",
+            "description": "Normalspur Richtung Oetwil am See",
+            "alertCDirection": "negative",
+            "status": "destination-extent-conflict",
+            "destination": {
+              "name": "Oetwil am See",
+              "coordinate": [
+                2697497.15,
+                1236830.3
+              ],
+              "bounds": [
+                2696308.8,
+                1235514.5,
+                2698685.5,
+                1238146.1
+              ],
+              "sourceFeatureId": 163156
+            },
+            "destinationDistanceMetres": 1970.92,
+            "destinationRoadDistanceMetres": 233.49,
+            "offsetSeparationMetres": -1904.78,
+            "bearingAgreement": -0.95,
+            "offsetMetres": 2453.66
+          },
+          {
+            "id": "ZH.CH:1388.02",
+            "description": "Normalspur Richtung Gossau",
+            "alertCDirection": "positive",
+            "status": "validated",
+            "direction": "positive",
+            "destination": {
+              "name": "Gossau ZH",
+              "coordinate": [
+                2699784.7,
+                1240219.15
+              ],
+              "bounds": [
+                2698656.2,
+                1239336.9,
+                2700913.2,
+                1241101.4
+              ],
+              "sourceFeatureId": 384655
+            },
+            "destinationDistanceMetres": 2323.92,
+            "destinationRoadDistanceMetres": 200.97,
+            "offsetSeparationMetres": 2462.83,
+            "bearingAgreement": 0.95,
+            "offsetMetres": 2453.66
+          }
+        ]
+      },
+      "aliases": [
+        {
+          "detectorId": "ZH.CH:1388.02",
+          "originalStatus": "unresolved-destination",
+          "regionalResult": {
+            "status": "ambiguous-destination"
+          },
+          "alternatives": [
+            {
+              "status": "destination-off-axis",
+              "destination": {
+                "name": "Gossau SG",
+                "coordinate": [
+                  2737369.95,
+                  1253479.45
+                ],
+                "bounds": [
+                  2734437.8,
+                  1251603.7,
+                  2740302.1,
+                  1255355.2
+                ],
+                "sourceFeatureId": 15452
+              },
+              "destinationDistanceMetres": 42044.75,
+              "destinationRoadDistanceMetres": 38080.81,
+              "offsetSeparationMetres": 4429.89,
+              "bearingAgreement": 0.8,
+              "offsetMetres": 2453.66
+            },
+            {
+              "status": "validated",
+              "direction": "positive",
+              "destination": {
+                "name": "Gossau ZH",
+                "coordinate": [
+                  2699784.7,
+                  1240219.15
+                ],
+                "bounds": [
+                  2698656.2,
+                  1239336.9,
+                  2700913.2,
+                  1241101.4
+                ],
+                "sourceFeatureId": 384655
+              },
+              "destinationDistanceMetres": 2323.92,
+              "destinationRoadDistanceMetres": 200.97,
+              "offsetSeparationMetres": 2462.83,
+              "bearingAgreement": 0.95,
+              "offsetMetres": 2453.66
+            }
+          ]
+        }
+      ],
+      "existingOpposingLaneMethodCouldApply": true,
+      "furtherEvidenceRequired": false
+    },
+    {
+      "id": "ZH.CH:1493",
+      "name": "Bauma: Bäretswilerstrasse",
+      "originalStatus": "unresolved-direction-pair",
+      "qualifiedZhDiagnostic": {
+        "status": "unresolved-direction-pair",
+        "detectors": [
+          {
+            "id": "ZH.CH:1493.01",
+            "description": "Normalspur Richtung Wetzikon",
+            "alertCDirection": "negative",
+            "status": "validated",
+            "direction": "negative",
+            "destination": {
+              "name": "Wetzikon ZH",
+              "coordinate": [
+                2702906.05,
+                1242321.1
+              ],
+              "bounds": [
+                2700343.7,
+                1240605.6,
+                2705468.4,
+                1244036.6
+              ],
+              "sourceFeatureId": 325966
+            },
+            "destinationDistanceMetres": 7214.75,
+            "destinationRoadDistanceMetres": 1351.18,
+            "offsetSeparationMetres": -8234.03,
+            "bearingAgreement": -0.99,
+            "offsetMetres": 8234.03
+          },
+          {
+            "id": "ZH.CH:1493.02",
+            "description": "Normalspur Richtung Bauma",
+            "alertCDirection": "positive",
+            "status": "destination-too-close",
+            "destination": {
+              "name": "Bauma",
+              "coordinate": [
+                2708685.3,
+                1247165.7
+              ],
+              "bounds": [
+                2707522.5,
+                1246327.5,
+                2709848.1,
+                1248003.9
+              ],
+              "sourceFeatureId": 235551
+            },
+            "destinationDistanceMetres": 326.89,
+            "destinationRoadDistanceMetres": 72.58,
+            "offsetSeparationMetres": 295.88,
+            "bearingAgreement": 0.98,
+            "offsetMetres": 8234.03
+          }
+        ]
+      },
+      "aliases": [
+        {
+          "detectorId": "ZH.CH:1493.01",
+          "originalStatus": "unresolved-destination",
+          "regionalResult": {
+            "status": "ambiguous-destination"
+          },
+          "alternatives": [
+            {
+              "status": "destination-too-close",
+              "destination": {
+                "name": "Wetzikon TG",
+                "coordinate": [
+                  2717678.9,
+                  1266471.5
+                ],
+                "bounds": [
+                  2717345.8,
+                  1266130.1,
+                  2718012,
+                  1266812.9
+                ],
+                "sourceFeatureId": 257814
+              },
+              "destinationDistanceMetres": 21587.3,
+              "destinationRoadDistanceMetres": 21144.31,
+              "offsetSeparationMetres": 488.49,
+              "bearingAgreement": 0.96,
+              "offsetMetres": 8234.03
+            },
+            {
+              "status": "validated",
+              "direction": "negative",
+              "destination": {
+                "name": "Wetzikon ZH",
+                "coordinate": [
+                  2702906.05,
+                  1242321.1
+                ],
+                "bounds": [
+                  2700343.7,
+                  1240605.6,
+                  2705468.4,
+                  1244036.6
+                ],
+                "sourceFeatureId": 325966
+              },
+              "destinationDistanceMetres": 7214.75,
+              "destinationRoadDistanceMetres": 1351.18,
+              "offsetSeparationMetres": -8234.03,
+              "bearingAgreement": -0.99,
+              "offsetMetres": 8234.03
+            }
+          ]
+        }
+      ],
+      "existingOpposingLaneMethodCouldApply": false,
+      "furtherEvidenceRequired": true
+    },
+    {
+      "id": "ZH.CH:1691",
+      "name": "Gossau: Grüningerstrasse",
+      "originalStatus": "unresolved-direction-pair",
+      "qualifiedZhDiagnostic": {
+        "status": "unresolved-direction-pair",
+        "detectors": [
+          {
+            "id": "ZH.CH:1691.01",
+            "description": "Normalspur Richtung Wetzikon",
+            "alertCDirection": "negative",
+            "status": "bearing-conflict",
+            "destination": {
+              "name": "Wetzikon ZH",
+              "coordinate": [
+                2702906.05,
+                1242321.1
+              ],
+              "bounds": [
+                2700343.7,
+                1240605.6,
+                2705468.4,
+                1244036.6
+              ],
+              "sourceFeatureId": 325966
+            },
+            "destinationDistanceMetres": 2600.92,
+            "destinationRoadDistanceMetres": 969.93,
+            "offsetSeparationMetres": 2254.38,
+            "bearingAgreement": 0.62,
+            "offsetMetres": 1084.52
+          },
+          {
+            "id": "ZH.CH:1691.02",
+            "description": "Normalspur Richtung Grüningen",
+            "alertCDirection": "positive",
+            "status": "destination-off-axis",
+            "destination": {
+              "name": "Grüningen",
+              "coordinate": [
+                2700132.7,
+                1237207.0499999998
+              ],
+              "bounds": [
+                2698606.4,
+                1236070.4,
+                2701659,
+                1238343.7
+              ],
+              "sourceFeatureId": 139825
+            },
+            "destinationDistanceMetres": 3225.66,
+            "destinationRoadDistanceMetres": 2405.06,
+            "offsetSeparationMetres": -1084.52,
+            "bearingAgreement": -0.71,
+            "offsetMetres": 1084.52
+          }
+        ]
+      },
+      "aliases": [
+        {
+          "detectorId": "ZH.CH:1691.01",
+          "originalStatus": "unresolved-destination",
+          "regionalResult": {
+            "status": "ambiguous-destination"
+          },
+          "alternatives": [
+            {
+              "status": "destination-off-axis",
+              "destination": {
+                "name": "Wetzikon TG",
+                "coordinate": [
+                  2717678.9,
+                  1266471.5
+                ],
+                "bounds": [
+                  2717345.8,
+                  1266130.1,
+                  2718012,
+                  1266812.9
+                ],
+                "sourceFeatureId": 257814
+              },
+              "destinationDistanceMetres": 30911.21,
+              "destinationRoadDistanceMetres": 29252.98,
+              "offsetSeparationMetres": 2254.38,
+              "bearingAgreement": 0.63,
+              "offsetMetres": 1084.52
+            },
+            {
+              "status": "bearing-conflict",
+              "destination": {
+                "name": "Wetzikon ZH",
+                "coordinate": [
+                  2702906.05,
+                  1242321.1
+                ],
+                "bounds": [
+                  2700343.7,
+                  1240605.6,
+                  2705468.4,
+                  1244036.6
+                ],
+                "sourceFeatureId": 325966
+              },
+              "destinationDistanceMetres": 2600.92,
+              "destinationRoadDistanceMetres": 969.93,
+              "offsetSeparationMetres": 2254.38,
+              "bearingAgreement": 0.62,
+              "offsetMetres": 1084.52
+            }
+          ]
+        }
+      ],
+      "existingOpposingLaneMethodCouldApply": false,
+      "furtherEvidenceRequired": true
+    },
+    {
+      "id": "ZH.CH:2091",
+      "name": "Wetzikon: Tösstalstrasse",
+      "originalStatus": "unresolved-direction-pair",
+      "qualifiedZhDiagnostic": {
+        "status": "unresolved-direction-pair",
+        "detectors": [
+          {
+            "id": "ZH.CH:2091.01",
+            "description": "Normalspur Richtung Wetzikon",
+            "alertCDirection": "negative",
+            "status": "destination-extent-conflict",
+            "destination": {
+              "name": "Wetzikon ZH",
+              "coordinate": [
+                2702906.05,
+                1242321.1
+              ],
+              "bounds": [
+                2700343.7,
+                1240605.6,
+                2705468.4,
+                1244036.6
+              ],
+              "sourceFeatureId": 325966
+            },
+            "destinationDistanceMetres": 2449.39,
+            "destinationRoadDistanceMetres": 1351.18,
+            "offsetSeparationMetres": -1800.58,
+            "bearingAgreement": -0.93,
+            "offsetMetres": 1800.58
+          },
+          {
+            "id": "ZH.CH:2091.02",
+            "description": "Normalspur Richtung Bauma",
+            "alertCDirection": "positive",
+            "status": "bearing-conflict",
+            "destination": {
+              "name": "Bauma",
+              "coordinate": [
+                2708685.3,
+                1247165.7
+              ],
+              "bounds": [
+                2707522.5,
+                1246327.5,
+                2709848.1,
+                1248003.9
+              ],
+              "sourceFeatureId": 235551
+            },
+            "destinationDistanceMetres": 5677.24,
+            "destinationRoadDistanceMetres": 72.58,
+            "offsetSeparationMetres": 6729.32,
+            "bearingAgreement": 0.36,
+            "offsetMetres": 1800.58
+          }
+        ]
+      },
+      "aliases": [
+        {
+          "detectorId": "ZH.CH:2091.01",
+          "originalStatus": "unresolved-destination",
+          "regionalResult": {
+            "status": "ambiguous-destination"
+          },
+          "alternatives": [
+            {
+              "status": "destination-off-axis",
+              "destination": {
+                "name": "Wetzikon TG",
+                "coordinate": [
+                  2717678.9,
+                  1266471.5
+                ],
+                "bounds": [
+                  2717345.8,
+                  1266130.1,
+                  2718012,
+                  1266812.9
+                ],
+                "sourceFeatureId": 257814
+              },
+              "destinationDistanceMetres": 26891.11,
+              "destinationRoadDistanceMetres": 21144.31,
+              "offsetSeparationMetres": 6921.93,
+              "bearingAgreement": 0.21,
+              "offsetMetres": 1800.58
+            },
+            {
+              "status": "destination-extent-conflict",
+              "destination": {
+                "name": "Wetzikon ZH",
+                "coordinate": [
+                  2702906.05,
+                  1242321.1
+                ],
+                "bounds": [
+                  2700343.7,
+                  1240605.6,
+                  2705468.4,
+                  1244036.6
+                ],
+                "sourceFeatureId": 325966
+              },
+              "destinationDistanceMetres": 2449.39,
+              "destinationRoadDistanceMetres": 1351.18,
+              "offsetSeparationMetres": -1800.58,
+              "bearingAgreement": -0.93,
+              "offsetMetres": 1800.58
+            }
+          ]
+        }
+      ],
+      "existingOpposingLaneMethodCouldApply": false,
+      "furtherEvidenceRequired": true
+    },
+    {
+      "id": "ZH.CH:2188",
+      "name": "Uster: Aathalstrasse",
+      "originalStatus": "unresolved-direction-pair",
+      "qualifiedZhDiagnostic": {
+        "status": "unresolved-direction-pair",
+        "detectors": [
+          {
+            "id": "ZH.CH:2188.01",
+            "description": "Normalspur Richtung Uster",
+            "alertCDirection": "negative",
+            "status": "destination-too-close",
+            "destination": {
+              "name": "Uster",
+              "coordinate": [
+                2696655.35,
+                1245193.6
+              ],
+              "bounds": [
+                2694605.6,
+                1243520.9,
+                2698705.1,
+                1246866.3
+              ],
+              "sourceFeatureId": 302470
+            },
+            "destinationDistanceMetres": 1138.25,
+            "destinationRoadDistanceMetres": 196.17,
+            "offsetSeparationMetres": -1208.84,
+            "bearingAgreement": -0.99,
+            "offsetMetres": 13664.59
+          },
+          {
+            "id": "ZH.CH:2188.02",
+            "description": "Normalspur Richtung Wetzikon",
+            "alertCDirection": "positive",
+            "status": "validated",
+            "direction": "positive",
+            "destination": {
+              "name": "Wetzikon ZH",
+              "coordinate": [
+                2702906.05,
+                1242321.1
+              ],
+              "bounds": [
+                2700343.7,
+                1240605.6,
+                2705468.4,
+                1244036.6
+              ],
+              "sourceFeatureId": 325966
+            },
+            "destinationDistanceMetres": 5746.11,
+            "destinationRoadDistanceMetres": 736.28,
+            "offsetSeparationMetres": 5762.84,
+            "bearingAgreement": 1,
+            "offsetMetres": 13664.59
+          }
+        ]
+      },
+      "aliases": [
+        {
+          "detectorId": "ZH.CH:2188.02",
+          "originalStatus": "unresolved-destination",
+          "regionalResult": {
+            "status": "ambiguous-destination"
+          },
+          "alternatives": [
+            {
+              "status": "destination-off-axis",
+              "destination": {
+                "name": "Wetzikon TG",
+                "coordinate": [
+                  2717678.9,
+                  1266471.5
+                ],
+                "bounds": [
+                  2717345.8,
+                  1266130.1,
+                  2718012,
+                  1266812.9
+                ],
+                "sourceFeatureId": 257814
+              },
+              "destinationDistanceMetres": 29638.85,
+              "destinationRoadDistanceMetres": 28553.17,
+              "offsetSeparationMetres": 3436.41,
+              "bearingAgreement": 0.37,
+              "offsetMetres": 13664.59
+            },
+            {
+              "status": "validated",
+              "direction": "positive",
+              "destination": {
+                "name": "Wetzikon ZH",
+                "coordinate": [
+                  2702906.05,
+                  1242321.1
+                ],
+                "bounds": [
+                  2700343.7,
+                  1240605.6,
+                  2705468.4,
+                  1244036.6
+                ],
+                "sourceFeatureId": 325966
+              },
+              "destinationDistanceMetres": 5746.11,
+              "destinationRoadDistanceMetres": 736.28,
+              "offsetSeparationMetres": 5762.84,
+              "bearingAgreement": 1,
+              "offsetMetres": 13664.59
+            }
+          ]
+        }
+      ],
+      "existingOpposingLaneMethodCouldApply": false,
+      "furtherEvidenceRequired": true
+    },
+    {
+      "id": "ZH.CH:2291",
+      "name": "Fehraltorf: Kempttalstrasse",
+      "originalStatus": "unresolved-direction-pair",
+      "qualifiedZhDiagnostic": {
+        "status": "unresolved-direction-pair",
+        "detectors": [
+          {
+            "id": "ZH.CH:2291.01",
+            "description": "Normalspur Richtung Winterthur",
+            "alertCDirection": "positive",
+            "status": "destination-off-axis",
+            "destination": {
+              "name": "Winterthur",
+              "coordinate": [
+                2697066.45,
+                1261571.4
+              ],
+              "bounds": [
+                2692884.4,
+                1258416.4,
+                2701248.5,
+                1264726.4
+              ],
+              "sourceFeatureId": 55851
+            },
+            "destinationDistanceMetres": 13408.4,
+            "destinationRoadDistanceMetres": 5513.15,
+            "offsetSeparationMetres": -9737.84,
+            "bearingAgreement": -0.85,
+            "offsetMetres": 9737.84
+          },
+          {
+            "id": "ZH.CH:2291.02",
+            "description": "Normalspur Richtung Hinwil",
+            "alertCDirection": "negative",
+            "status": "validated",
+            "direction": "positive",
+            "destination": {
+              "name": "Hinwil",
+              "coordinate": [
+                2705712.2,
+                1239601.9
+              ],
+              "bounds": [
+                2703656.9,
+                1237750.3,
+                2707767.5,
+                1241453.5
+              ],
+              "sourceFeatureId": 327731
+            },
+            "destinationDistanceMetres": 10538.85,
+            "destinationRoadDistanceMetres": 56.45,
+            "offsetSeparationMetres": 10995,
+            "bearingAgreement": 0.98,
+            "offsetMetres": 9737.84
+          }
+        ]
+      },
+      "aliases": [],
+      "existingOpposingLaneMethodCouldApply": false,
+      "furtherEvidenceRequired": true
+    },
+    {
+      "id": "ZH.CH:2793",
+      "name": "Bäretswil: Baumastrasse",
+      "originalStatus": "unresolved-direction-pair",
+      "qualifiedZhDiagnostic": {
+        "status": "unresolved-direction-pair",
+        "detectors": [
+          {
+            "id": "ZH.CH:2793.01",
+            "description": "Normalspur Richtung Wetzikon",
+            "alertCDirection": "negative",
+            "status": "bearing-conflict",
+            "destination": {
+              "name": "Wetzikon ZH",
+              "coordinate": [
+                2702906.05,
+                1242321.1
+              ],
+              "bounds": [
+                2700343.7,
+                1240605.6,
+                2705468.4,
+                1244036.6
+              ],
+              "sourceFeatureId": 325966
+            },
+            "destinationDistanceMetres": 4829.99,
+            "destinationRoadDistanceMetres": 1351.18,
+            "offsetSeparationMetres": -5056.34,
+            "bearingAgreement": -0.41,
+            "offsetMetres": 5056.34
+          },
+          {
+            "id": "ZH.CH:2793.02",
+            "description": "Normalspur Richtung Bauma",
+            "alertCDirection": "positive",
+            "status": "validated",
+            "direction": "positive",
+            "destination": {
+              "name": "Bauma",
+              "coordinate": [
+                2708685.3,
+                1247165.7
+              ],
+              "bounds": [
+                2707522.5,
+                1246327.5,
+                2709848.1,
+                1248003.9
+              ],
+              "sourceFeatureId": 235551
+            },
+            "destinationDistanceMetres": 3195.55,
+            "destinationRoadDistanceMetres": 72.58,
+            "offsetSeparationMetres": 3473.57,
+            "bearingAgreement": 0.91,
+            "offsetMetres": 5056.34
+          }
+        ]
+      },
+      "aliases": [
+        {
+          "detectorId": "ZH.CH:2793.01",
+          "originalStatus": "unresolved-destination",
+          "regionalResult": {
+            "status": "ambiguous-destination"
+          },
+          "alternatives": [
+            {
+              "status": "destination-off-axis",
+              "destination": {
+                "name": "Wetzikon TG",
+                "coordinate": [
+                  2717678.9,
+                  1266471.5
+                ],
+                "bounds": [
+                  2717345.8,
+                  1266130.1,
+                  2718012,
+                  1266812.9
+                ],
+                "sourceFeatureId": 257814
+              },
+              "destinationDistanceMetres": 24493.38,
+              "destinationRoadDistanceMetres": 21144.31,
+              "offsetSeparationMetres": 3666.18,
+              "bearingAgreement": 0.91,
+              "offsetMetres": 5056.34
+            },
+            {
+              "status": "bearing-conflict",
+              "destination": {
+                "name": "Wetzikon ZH",
+                "coordinate": [
+                  2702906.05,
+                  1242321.1
+                ],
+                "bounds": [
+                  2700343.7,
+                  1240605.6,
+                  2705468.4,
+                  1244036.6
+                ],
+                "sourceFeatureId": 325966
+              },
+              "destinationDistanceMetres": 4829.99,
+              "destinationRoadDistanceMetres": 1351.18,
+              "offsetSeparationMetres": -5056.34,
+              "bearingAgreement": -0.41,
+              "offsetMetres": 5056.34
+            }
+          ]
+        }
+      ],
+      "existingOpposingLaneMethodCouldApply": false,
+      "furtherEvidenceRequired": true
+    },
+    {
+      "id": "ZH.CH:2888",
+      "name": "Gossau: Grütstrasse",
+      "originalStatus": "unresolved-direction-pair",
+      "qualifiedZhDiagnostic": {
+        "status": "unresolved-direction-pair",
+        "detectors": [
+          {
+            "id": "ZH.CH:2888.01",
+            "description": "Normalspur Richtung Gossau",
+            "alertCDirection": "negative",
+            "status": "destination-too-close",
+            "destination": {
+              "name": "Gossau ZH",
+              "coordinate": [
+                2699784.7,
+                1240219.15
+              ],
+              "bounds": [
+                2698656.2,
+                1239336.9,
+                2700913.2,
+                1241101.4
+              ],
+              "sourceFeatureId": 384655
+            },
+            "destinationDistanceMetres": 1161.86,
+            "destinationRoadDistanceMetres": 200.97,
+            "offsetSeparationMetres": -1320.33,
+            "bearingAgreement": -0.99,
+            "offsetMetres": 6236.82
+          },
+          {
+            "id": "ZH.CH:2888.02",
+            "description": "Normalspur Richtung Wetzikon",
+            "alertCDirection": "positive",
+            "status": "destination-too-close",
+            "destination": {
+              "name": "Wetzikon ZH",
+              "coordinate": [
+                2702906.05,
+                1242321.1
+              ],
+              "bounds": [
+                2700343.7,
+                1240605.6,
+                2705468.4,
+                1244036.6
+              ],
+              "sourceFeatureId": 325966
+            },
+            "destinationDistanceMetres": 2636.87,
+            "destinationRoadDistanceMetres": 2077.67,
+            "offsetSeparationMetres": 646.73,
+            "bearingAgreement": 0.9,
+            "offsetMetres": 6236.82
+          }
+        ]
+      },
+      "aliases": [
+        {
+          "detectorId": "ZH.CH:2888.01",
+          "originalStatus": "unresolved-destination",
+          "regionalResult": {
+            "status": "ambiguous-destination"
+          },
+          "alternatives": [
+            {
+              "status": "destination-too-close",
+              "destination": {
+                "name": "Gossau SG",
+                "coordinate": [
+                  2737369.95,
+                  1253479.45
+                ],
+                "bounds": [
+                  2734437.8,
+                  1251603.7,
+                  2740302.1,
+                  1255355.2
+                ],
+                "sourceFeatureId": 15452
+              },
+              "destinationDistanceMetres": 38695.26,
+              "destinationRoadDistanceMetres": 38080.81,
+              "offsetSeparationMetres": 646.73,
+              "bearingAgreement": 0.99,
+              "offsetMetres": 6236.82
+            },
+            {
+              "status": "destination-too-close",
+              "destination": {
+                "name": "Gossau ZH",
+                "coordinate": [
+                  2699784.7,
+                  1240219.15
+                ],
+                "bounds": [
+                  2698656.2,
+                  1239336.9,
+                  2700913.2,
+                  1241101.4
+                ],
+                "sourceFeatureId": 384655
+              },
+              "destinationDistanceMetres": 1161.86,
+              "destinationRoadDistanceMetres": 200.97,
+              "offsetSeparationMetres": -1320.33,
+              "bearingAgreement": -0.99,
+              "offsetMetres": 6236.82
+            }
+          ]
+        },
+        {
+          "detectorId": "ZH.CH:2888.02",
+          "originalStatus": "unresolved-destination",
+          "regionalResult": {
+            "status": "ambiguous-destination"
+          },
+          "alternatives": [
+            {
+              "status": "destination-too-close",
+              "destination": {
+                "name": "Wetzikon TG",
+                "coordinate": [
+                  2717678.9,
+                  1266471.5
+                ],
+                "bounds": [
+                  2717345.8,
+                  1266130.1,
+                  2718012,
+                  1266812.9
+                ],
+                "sourceFeatureId": 257814
+              },
+              "destinationDistanceMetres": 30810.08,
+              "destinationRoadDistanceMetres": 30337.36,
+              "offsetSeparationMetres": 646.73,
+              "bearingAgreement": 0.73,
+              "offsetMetres": 6236.82
+            },
+            {
+              "status": "destination-too-close",
+              "destination": {
+                "name": "Wetzikon ZH",
+                "coordinate": [
+                  2702906.05,
+                  1242321.1
+                ],
+                "bounds": [
+                  2700343.7,
+                  1240605.6,
+                  2705468.4,
+                  1244036.6
+                ],
+                "sourceFeatureId": 325966
+              },
+              "destinationDistanceMetres": 2636.87,
+              "destinationRoadDistanceMetres": 2077.67,
+              "offsetSeparationMetres": 646.73,
+              "bearingAgreement": 0.9,
+              "offsetMetres": 6236.82
+            }
+          ]
+        }
+      ],
+      "existingOpposingLaneMethodCouldApply": false,
+      "furtherEvidenceRequired": true
+    },
+    {
+      "id": "ZH.CH:2988",
+      "name": "Seegräben: Gstalderstrasse",
+      "originalStatus": "unmatched-geometry",
+      "qualifiedZhDiagnostic": {
+        "status": "unmatched-geometry",
+        "detectors": []
+      },
+      "aliases": [],
+      "existingOpposingLaneMethodCouldApply": false,
+      "furtherEvidenceRequired": true
+    },
+    {
+      "id": "ZH.CH:2992",
+      "name": "Hittnau: Pfäffikerstrasse",
+      "originalStatus": "unresolved-direction-pair",
+      "qualifiedZhDiagnostic": {
+        "status": "validated",
+        "detectors": [
+          {
+            "id": "ZH.CH:2992.01",
+            "description": "Normalspur Richtung Pfäffikon",
+            "alertCDirection": "negative",
+            "status": "validated",
+            "direction": "negative",
+            "destination": {
+              "name": "Pfäffikon ZH",
+              "coordinate": [
+                2701683.4,
+                1246980.9
+              ],
+              "bounds": [
+                2700182.8,
+                1245725.7,
+                2703184,
+                1248236.1
+              ],
+              "sourceFeatureId": 387589
+            },
+            "destinationDistanceMetres": 2490.85,
+            "destinationRoadDistanceMetres": 142.03,
+            "offsetSeparationMetres": -2683.58,
+            "bearingAgreement": -1,
+            "offsetMetres": 2683.58
+          },
+          {
+            "id": "ZH.CH:2992.02",
+            "description": "Normalspur Richtung Saland",
+            "alertCDirection": "positive",
+            "status": "validated",
+            "direction": "positive",
+            "destination": {
+              "name": "Saland",
+              "coordinate": [
+                2706936.2,
+                1249627.1
+              ],
+              "bounds": [
+                2706017.4,
+                1248346.7,
+                2707855,
+                1250907.5
+              ],
+              "sourceFeatureId": 134407
+            },
+            "destinationDistanceMetres": 3643.05,
+            "destinationRoadDistanceMetres": 263.29,
+            "offsetSeparationMetres": 3854.17,
+            "bearingAgreement": 0.81,
+            "offsetMetres": 2683.58
+          }
+        ]
+      },
+      "aliases": [
+        {
+          "detectorId": "ZH.CH:2992.01",
+          "originalStatus": "unresolved-destination",
+          "regionalResult": {
+            "status": "ambiguous-destination"
+          },
+          "alternatives": [
+            {
+              "status": "destination-off-axis",
+              "destination": {
+                "name": "Pfäffikon SZ",
+                "coordinate": [
+                  2701617.6500000004,
+                  1228478.7999999998
+                ],
+                "bounds": [
+                  2699770.1,
+                  1227534.2,
+                  2703465.2,
+                  1229423.4
+                ],
+                "sourceFeatureId": 226722
+              },
+              "destinationDistanceMetres": 18963.44,
+              "destinationRoadDistanceMetres": 18382.29,
+              "offsetSeparationMetres": -2267.48,
+              "bearingAgreement": -0.22,
+              "offsetMetres": 2683.58
+            },
+            {
+              "status": "validated",
+              "direction": "negative",
+              "destination": {
+                "name": "Pfäffikon ZH",
+                "coordinate": [
+                  2701683.4,
+                  1246980.9
+                ],
+                "bounds": [
+                  2700182.8,
+                  1245725.7,
+                  2703184,
+                  1248236.1
+                ],
+                "sourceFeatureId": 387589
+              },
+              "destinationDistanceMetres": 2490.85,
+              "destinationRoadDistanceMetres": 142.03,
+              "offsetSeparationMetres": -2683.58,
+              "bearingAgreement": -1,
+              "offsetMetres": 2683.58
+            }
+          ]
+        }
+      ],
+      "existingOpposingLaneMethodCouldApply": false,
+      "furtherEvidenceRequired": false
+    },
+    {
+      "id": "ZH.CH:3091",
+      "name": "Hittnau: Tösstalstrasse",
+      "originalStatus": "unresolved-direction-pair",
+      "qualifiedZhDiagnostic": {
+        "status": "unresolved-direction-pair",
+        "detectors": [
+          {
+            "id": "ZH.CH:3091.01",
+            "description": "Normalspur Richtung Pfäffikon",
+            "alertCDirection": "negative",
+            "status": "validated",
+            "direction": "negative",
+            "destination": {
+              "name": "Pfäffikon ZH",
+              "coordinate": [
+                2701683.4,
+                1246980.9
+              ],
+              "bounds": [
+                2700182.8,
+                1245725.7,
+                2703184,
+                1248236.1
+              ],
+              "sourceFeatureId": 387589
+            },
+            "destinationDistanceMetres": 4480.65,
+            "destinationRoadDistanceMetres": 142.03,
+            "offsetSeparationMetres": -5162.8,
+            "bearingAgreement": -0.98,
+            "offsetMetres": 5162.8
+          },
+          {
+            "id": "ZH.CH:3091.02",
+            "description": "Normalspur Richtung Saland",
+            "alertCDirection": "positive",
+            "status": "destination-too-close",
+            "destination": {
+              "name": "Saland",
+              "coordinate": [
+                2706936.2,
+                1249627.1
+              ],
+              "bounds": [
+                2706017.4,
+                1248346.7,
+                2707855,
+                1250907.5
+              ],
+              "sourceFeatureId": 134407
+            },
+            "destinationDistanceMetres": 1401.93,
+            "destinationRoadDistanceMetres": 263.29,
+            "offsetSeparationMetres": 1374.96,
+            "bearingAgreement": 0.97,
+            "offsetMetres": 5162.8
+          }
+        ]
+      },
+      "aliases": [
+        {
+          "detectorId": "ZH.CH:3091.01",
+          "originalStatus": "unresolved-destination",
+          "regionalResult": {
+            "status": "ambiguous-destination"
+          },
+          "alternatives": [
+            {
+              "status": "destination-off-axis",
+              "destination": {
+                "name": "Pfäffikon SZ",
+                "coordinate": [
+                  2701617.6500000004,
+                  1228478.7999999998
+                ],
+                "bounds": [
+                  2699770.1,
+                  1227534.2,
+                  2703465.2,
+                  1229423.4
+                ],
+                "sourceFeatureId": 226722
+              },
+              "destinationDistanceMetres": 20882.72,
+              "destinationRoadDistanceMetres": 18382.29,
+              "offsetSeparationMetres": -4746.69,
+              "bearingAgreement": -0.44,
+              "offsetMetres": 5162.8
+            },
+            {
+              "status": "validated",
+              "direction": "negative",
+              "destination": {
+                "name": "Pfäffikon ZH",
+                "coordinate": [
+                  2701683.4,
+                  1246980.9
+                ],
+                "bounds": [
+                  2700182.8,
+                  1245725.7,
+                  2703184,
+                  1248236.1
+                ],
+                "sourceFeatureId": 387589
+              },
+              "destinationDistanceMetres": 4480.65,
+              "destinationRoadDistanceMetres": 142.03,
+              "offsetSeparationMetres": -5162.8,
+              "bearingAgreement": -0.98,
+              "offsetMetres": 5162.8
+            }
+          ]
+        }
+      ],
+      "existingOpposingLaneMethodCouldApply": false,
+      "furtherEvidenceRequired": true
+    },
+    {
+      "id": "ZH.CH:4286",
+      "name": "Uster: Zürichstrasse",
+      "originalStatus": "unresolved-direction-pair",
+      "qualifiedZhDiagnostic": {
+        "status": "unresolved-direction-pair",
+        "detectors": [
+          {
+            "id": "ZH.CH:4286.01",
+            "description": "Normalspur Richtung Zürich",
+            "alertCDirection": "negative",
+            "status": "destination-off-axis",
+            "destination": {
+              "name": "Zürich",
+              "coordinate": [
+                2682880.1500000004,
+                1248023.1
+              ],
+              "bounds": [
+                2677461.6,
+                1241764.4,
+                2688298.7,
+                1254281.8
+              ],
+              "sourceFeatureId": 314086
+            },
+            "destinationDistanceMetres": 11662.14,
+            "destinationRoadDistanceMetres": 5183.73,
+            "offsetSeparationMetres": -8945.45,
+            "bearingAgreement": -0.57,
+            "offsetMetres": 8945.45
+          },
+          {
+            "id": "ZH.CH:4286.02",
+            "description": "Normalspur Richtung Uster",
+            "alertCDirection": "positive",
+            "status": "validated",
+            "direction": "positive",
+            "destination": {
+              "name": "Uster",
+              "coordinate": [
+                2696655.35,
+                1245193.6
+              ],
+              "bounds": [
+                2694605.6,
+                1243520.9,
+                2698705.1,
+                1246866.3
+              ],
+              "sourceFeatureId": 302470
+            },
+            "destinationDistanceMetres": 3348.88,
+            "destinationRoadDistanceMetres": 196.17,
+            "offsetSeparationMetres": 3510.29,
+            "bearingAgreement": 0.99,
+            "offsetMetres": 8945.45
+          }
+        ]
+      },
+      "aliases": [],
+      "existingOpposingLaneMethodCouldApply": false,
+      "furtherEvidenceRequired": true
+    },
+    {
+      "id": "ZH.CH:4586",
+      "name": "Pfäffikon: Usterstrasse",
+      "originalStatus": "unresolved-direction-pair",
+      "qualifiedZhDiagnostic": {
+        "status": "unresolved-direction-pair",
+        "detectors": [
+          {
+            "id": "ZH.CH:4586.01",
+            "description": "Normalspur Richtung Uster",
+            "alertCDirection": "positive",
+            "status": "destination-extent-conflict",
+            "destination": {
+              "name": "Uster",
+              "coordinate": [
+                2696655.35,
+                1245193.6
+              ],
+              "bounds": [
+                2694605.6,
+                1243520.9,
+                2698705.1,
+                1246866.3
+              ],
+              "sourceFeatureId": 302470
+            },
+            "destinationDistanceMetres": 3228.74,
+            "destinationRoadDistanceMetres": 213.33,
+            "offsetSeparationMetres": -3796.06,
+            "bearingAgreement": -0.95,
+            "offsetMetres": 4521.44
+          },
+          {
+            "id": "ZH.CH:4586.02",
+            "description": "Normalspur Richtung Pfäffikon",
+            "alertCDirection": "negative",
+            "status": "destination-extent-conflict",
+            "destination": {
+              "name": "Pfäffikon ZH",
+              "coordinate": [
+                2701683.4,
+                1246980.9
+              ],
+              "bounds": [
+                2700182.8,
+                1245725.7,
+                2703184,
+                1248236.1
+              ],
+              "sourceFeatureId": 387589
+            },
+            "destinationDistanceMetres": 2107.53,
+            "destinationRoadDistanceMetres": 19.55,
+            "offsetSeparationMetres": 2345.85,
+            "bearingAgreement": 0.96,
+            "offsetMetres": 4521.44
+          }
+        ]
+      },
+      "aliases": [
+        {
+          "detectorId": "ZH.CH:4586.02",
+          "originalStatus": "unresolved-destination",
+          "regionalResult": {
+            "status": "ambiguous-destination"
+          },
+          "alternatives": [
+            {
+              "status": "destination-off-axis",
+              "destination": {
+                "name": "Pfäffikon SZ",
+                "coordinate": [
+                  2701617.6500000004,
+                  1228478.7999999998
+                ],
+                "bounds": [
+                  2699770.1,
+                  1227534.2,
+                  2703465.2,
+                  1229423.4
+                ],
+                "sourceFeatureId": 226722
+              },
+              "destinationDistanceMetres": 17904.21,
+              "destinationRoadDistanceMetres": 17445.51,
+              "offsetSeparationMetres": -3661.18,
+              "bearingAgreement": 0.07,
+              "offsetMetres": 4521.44
+            },
+            {
+              "status": "destination-extent-conflict",
+              "destination": {
+                "name": "Pfäffikon ZH",
+                "coordinate": [
+                  2701683.4,
+                  1246980.9
+                ],
+                "bounds": [
+                  2700182.8,
+                  1245725.7,
+                  2703184,
+                  1248236.1
+                ],
+                "sourceFeatureId": 387589
+              },
+              "destinationDistanceMetres": 2107.53,
+              "destinationRoadDistanceMetres": 19.55,
+              "offsetSeparationMetres": 2345.85,
+              "bearingAgreement": 0.96,
+              "offsetMetres": 4521.44
+            }
+          ]
+        }
+      ],
+      "existingOpposingLaneMethodCouldApply": false,
+      "furtherEvidenceRequired": true
+    },
+    {
+      "id": "ZH.CH:5086",
+      "name": "Pfäffikon: Hochstrasse",
+      "originalStatus": "unresolved-direction-pair",
+      "qualifiedZhDiagnostic": {
+        "status": "unresolved-direction-pair",
+        "detectors": [
+          {
+            "id": "ZH.CH:5086.01",
+            "description": "Normalspur Richtung Pfäffikon",
+            "alertCDirection": "positive",
+            "status": "destination-too-close",
+            "destination": {
+              "name": "Pfäffikon ZH",
+              "coordinate": [
+                2701683.4,
+                1246980.9
+              ],
+              "bounds": [
+                2700182.8,
+                1245725.7,
+                2703184,
+                1248236.1
+              ],
+              "sourceFeatureId": 387589
+            },
+            "destinationDistanceMetres": 1333.41,
+            "destinationRoadDistanceMetres": 2.83,
+            "offsetSeparationMetres": -1342.16,
+            "bearingAgreement": -1,
+            "offsetMetres": 13309.02
+          },
+          {
+            "id": "ZH.CH:5086.02",
+            "description": "Normalspur Richtung Hinwil",
+            "alertCDirection": "negative",
+            "status": "validated",
+            "direction": "positive",
+            "destination": {
+              "name": "Hinwil",
+              "coordinate": [
+                2705712.2,
+                1239601.9
+              ],
+              "bounds": [
+                2703656.9,
+                1237750.3,
+                2707767.5,
+                1241453.5
+              ],
+              "sourceFeatureId": 327731
+            },
+            "destinationDistanceMetres": 7139.63,
+            "destinationRoadDistanceMetres": 56.45,
+            "offsetSeparationMetres": 7423.81,
+            "bearingAgreement": 0.96,
+            "offsetMetres": 13309.02
+          }
+        ]
+      },
+      "aliases": [
+        {
+          "detectorId": "ZH.CH:5086.01",
+          "originalStatus": "unresolved-destination",
+          "regionalResult": {
+            "status": "ambiguous-destination"
+          },
+          "alternatives": [
+            {
+              "status": "destination-off-axis",
+              "destination": {
+                "name": "Pfäffikon SZ",
+                "coordinate": [
+                  2701617.6500000004,
+                  1228478.7999999998
+                ],
+                "bounds": [
+                  2699770.1,
+                  1227534.2,
+                  2703465.2,
+                  1229423.4
+                ],
+                "sourceFeatureId": 226722
+              },
+              "destinationDistanceMetres": 17592.48,
+              "destinationRoadDistanceMetres": 8653.73,
+              "offsetSeparationMetres": 12315.17,
+              "bearingAgreement": 0.71,
+              "offsetMetres": 13309.02
+            },
+            {
+              "status": "destination-too-close",
+              "destination": {
+                "name": "Pfäffikon ZH",
+                "coordinate": [
+                  2701683.4,
+                  1246980.9
+                ],
+                "bounds": [
+                  2700182.8,
+                  1245725.7,
+                  2703184,
+                  1248236.1
+                ],
+                "sourceFeatureId": 387589
+              },
+              "destinationDistanceMetres": 1333.41,
+              "destinationRoadDistanceMetres": 2.83,
+              "offsetSeparationMetres": -1342.16,
+              "bearingAgreement": -1,
+              "offsetMetres": 13309.02
+            }
+          ]
+        }
+      ],
+      "existingOpposingLaneMethodCouldApply": false,
+      "furtherEvidenceRequired": true
+    }
+  ],
+  "candidatePairs": [
+    {
+      "pathId": "ZH:340:0176d9b8f03adcfd",
+      "from": "ZH.CH:2188",
+      "to": "ZH.CH:0188",
+      "distanceMetres": 875.54,
+      "status": "unresolved-endpoint",
+      "endpoints": [
+        {
+          "id": "ZH.CH:2188",
+          "name": "Uster: Aathalstrasse",
+          "status": "unresolved-direction-pair",
+          "unresolvedDetectors": [
+            {
+              "id": "ZH.CH:2188.01",
+              "description": "Normalspur Richtung Uster",
+              "status": "destination-too-close"
+            },
+            {
+              "id": "ZH.CH:2188.02",
+              "description": "Normalspur Richtung Wetzikon",
+              "status": "unresolved-destination"
+            }
+          ]
+        },
+        {
+          "id": "ZH.CH:0188",
+          "name": "Uster: Aathalstrasse",
+          "status": "unresolved-direction-pair",
+          "unresolvedDetectors": [
+            {
+              "id": "ZH.CH:0188.01",
+              "description": "Normalspur Richtung Uster",
+              "status": "destination-extent-conflict"
+            },
+            {
+              "id": "ZH.CH:0188.02",
+              "description": "Normalspur Richtung Wetzikon",
+              "status": "unresolved-destination"
+            }
+          ]
+        }
+      ],
+      "completeMinutes": 245,
+      "completePercent": 100,
+      "longestRunMinutes": 245,
+      "hourWindows": [
+        {
+          "start": 48180,
+          "end": 62820,
+          "minutes": 245
+        }
+      ],
+      "publicationStatus": "not-admitted",
+      "furtherEvidenceRequired": true,
+      "diagnosticBlockers": [
+        {
+          "stationId": "ZH.CH:2188",
+          "status": "unresolved-direction-pair",
+          "existingOpposingLaneMethodCouldApply": false,
+          "detectors": [
+            {
+              "id": "ZH.CH:2188.01",
+              "description": "Normalspur Richtung Uster",
+              "status": "destination-too-close"
+            }
+          ]
+        },
+        {
+          "stationId": "ZH.CH:0188",
+          "status": "unresolved-direction-pair",
+          "existingOpposingLaneMethodCouldApply": true,
+          "detectors": [
+            {
+              "id": "ZH.CH:0188.01",
+              "description": "Normalspur Richtung Uster",
+              "status": "destination-extent-conflict"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pathId": "ZH:340:0176d9b8f03adcfd",
+      "from": "ZH.CH:0188",
+      "to": "ZH.CH:2988",
+      "distanceMetres": 2304.12,
+      "status": "unresolved-endpoint",
+      "endpoints": [
+        {
+          "id": "ZH.CH:0188",
+          "name": "Uster: Aathalstrasse",
+          "status": "unresolved-direction-pair",
+          "unresolvedDetectors": [
+            {
+              "id": "ZH.CH:0188.01",
+              "description": "Normalspur Richtung Uster",
+              "status": "destination-extent-conflict"
+            },
+            {
+              "id": "ZH.CH:0188.02",
+              "description": "Normalspur Richtung Wetzikon",
+              "status": "unresolved-destination"
+            }
+          ]
+        },
+        {
+          "id": "ZH.CH:2988",
+          "name": "Seegräben: Gstalderstrasse",
+          "status": "unmatched-geometry",
+          "unresolvedDetectors": []
+        }
+      ],
+      "completeMinutes": 245,
+      "completePercent": 100,
+      "longestRunMinutes": 245,
+      "hourWindows": [
+        {
+          "start": 48180,
+          "end": 62820,
+          "minutes": 245
+        }
+      ],
+      "publicationStatus": "not-admitted",
+      "furtherEvidenceRequired": true,
+      "diagnosticBlockers": [
+        {
+          "stationId": "ZH.CH:0188",
+          "status": "unresolved-direction-pair",
+          "existingOpposingLaneMethodCouldApply": true,
+          "detectors": [
+            {
+              "id": "ZH.CH:0188.01",
+              "description": "Normalspur Richtung Uster",
+              "status": "destination-extent-conflict"
+            }
+          ]
+        },
+        {
+          "stationId": "ZH.CH:2988",
+          "status": "unmatched-geometry",
+          "existingOpposingLaneMethodCouldApply": false,
+          "detectors": []
+        }
+      ]
+    },
+    {
+      "pathId": "ZH:337:44ab9ca1396e8308",
+      "from": "ZH.CH:0205",
+      "to": "ZH.CH:4586",
+      "distanceMetres": 2658.08,
+      "status": "unresolved-endpoint",
+      "endpoints": [
+        {
+          "id": "ZH.CH:0205",
+          "name": "Uster: Pfäffikerstrasse",
+          "status": "unresolved-direction-pair",
+          "unresolvedDetectors": [
+            {
+              "id": "ZH.CH:0205.01",
+              "description": "Normalspur Richtung Uster",
+              "status": "destination-too-close"
+            },
+            {
+              "id": "ZH.CH:0205.02",
+              "description": "Normalspur Richtung Pfäffikon",
+              "status": "unresolved-destination"
+            }
+          ]
+        },
+        {
+          "id": "ZH.CH:4586",
+          "name": "Pfäffikon: Usterstrasse",
+          "status": "unresolved-direction-pair",
+          "unresolvedDetectors": [
+            {
+              "id": "ZH.CH:4586.01",
+              "description": "Normalspur Richtung Uster",
+              "status": "destination-extent-conflict"
+            },
+            {
+              "id": "ZH.CH:4586.02",
+              "description": "Normalspur Richtung Pfäffikon",
+              "status": "unresolved-destination"
+            }
+          ]
+        }
+      ],
+      "completeMinutes": 237,
+      "completePercent": 96.73,
+      "longestRunMinutes": 229,
+      "hourWindows": [
+        {
+          "start": 48180,
+          "end": 61860,
+          "minutes": 229
+        }
+      ],
+      "publicationStatus": "not-admitted",
+      "furtherEvidenceRequired": true,
+      "diagnosticBlockers": [
+        {
+          "stationId": "ZH.CH:0205",
+          "status": "unresolved-direction-pair",
+          "existingOpposingLaneMethodCouldApply": false,
+          "detectors": [
+            {
+              "id": "ZH.CH:0205.01",
+              "description": "Normalspur Richtung Uster",
+              "status": "destination-too-close"
+            },
+            {
+              "id": "ZH.CH:0205.02",
+              "description": "Normalspur Richtung Pfäffikon",
+              "status": "bearing-conflict"
+            }
+          ]
+        },
+        {
+          "stationId": "ZH.CH:4586",
+          "status": "unresolved-direction-pair",
+          "existingOpposingLaneMethodCouldApply": false,
+          "detectors": [
+            {
+              "id": "ZH.CH:4586.01",
+              "description": "Normalspur Richtung Uster",
+              "status": "destination-extent-conflict"
+            },
+            {
+              "id": "ZH.CH:4586.02",
+              "description": "Normalspur Richtung Pfäffikon",
+              "status": "destination-extent-conflict"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pathId": "ZH:337:44ab9ca1396e8308",
+      "from": "ZH.CH:4586",
+      "to": "ZH.CH:0295",
+      "distanceMetres": 1541.54,
+      "status": "unresolved-endpoint",
+      "endpoints": [
+        {
+          "id": "ZH.CH:4586",
+          "name": "Pfäffikon: Usterstrasse",
+          "status": "unresolved-direction-pair",
+          "unresolvedDetectors": [
+            {
+              "id": "ZH.CH:4586.01",
+              "description": "Normalspur Richtung Uster",
+              "status": "destination-extent-conflict"
+            },
+            {
+              "id": "ZH.CH:4586.02",
+              "description": "Normalspur Richtung Pfäffikon",
+              "status": "unresolved-destination"
+            }
+          ]
+        },
+        {
+          "id": "ZH.CH:0295",
+          "name": "Pfäffikon: Usterstrasse",
+          "status": "unresolved-direction-pair",
+          "unresolvedDetectors": [
+            {
+              "id": "ZH.CH:0295.02",
+              "description": "Normalspur Richtung Pfäffikon",
+              "status": "unresolved-destination"
+            }
+          ]
+        }
+      ],
+      "completeMinutes": 244,
+      "completePercent": 99.59,
+      "longestRunMinutes": 192,
+      "hourWindows": [
+        {
+          "start": 51360,
+          "end": 62820,
+          "minutes": 192
+        }
+      ],
+      "publicationStatus": "not-admitted",
+      "furtherEvidenceRequired": true,
+      "diagnosticBlockers": [
+        {
+          "stationId": "ZH.CH:4586",
+          "status": "unresolved-direction-pair",
+          "existingOpposingLaneMethodCouldApply": false,
+          "detectors": [
+            {
+              "id": "ZH.CH:4586.01",
+              "description": "Normalspur Richtung Uster",
+              "status": "destination-extent-conflict"
+            },
+            {
+              "id": "ZH.CH:4586.02",
+              "description": "Normalspur Richtung Pfäffikon",
+              "status": "destination-extent-conflict"
+            }
+          ]
+        },
+        {
+          "stationId": "ZH.CH:0295",
+          "status": "unresolved-direction-pair",
+          "existingOpposingLaneMethodCouldApply": false,
+          "detectors": [
+            {
+              "id": "ZH.CH:0295.02",
+              "description": "Normalspur Richtung Pfäffikon",
+              "status": "destination-too-close"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pathId": "ZH:345:466fc64d16c3202e",
+      "from": "ZH.CH:2291",
+      "to": "ZH.CH:5086",
+      "distanceMetres": 3571.19,
+      "status": "unresolved-endpoint",
+      "endpoints": [
+        {
+          "id": "ZH.CH:2291",
+          "name": "Fehraltorf: Kempttalstrasse",
+          "status": "unresolved-direction-pair",
+          "unresolvedDetectors": [
+            {
+              "id": "ZH.CH:2291.01",
+              "description": "Normalspur Richtung Winterthur",
+              "status": "destination-off-axis"
+            }
+          ]
+        },
+        {
+          "id": "ZH.CH:5086",
+          "name": "Pfäffikon: Hochstrasse",
+          "status": "unresolved-direction-pair",
+          "unresolvedDetectors": [
+            {
+              "id": "ZH.CH:5086.01",
+              "description": "Normalspur Richtung Pfäffikon",
+              "status": "unresolved-destination"
+            }
+          ]
+        }
+      ],
+      "completeMinutes": 229,
+      "completePercent": 93.47,
+      "longestRunMinutes": 148,
+      "hourWindows": [
+        {
+          "start": 51240,
+          "end": 60060,
+          "minutes": 148
+        }
+      ],
+      "publicationStatus": "not-admitted",
+      "furtherEvidenceRequired": true,
+      "diagnosticBlockers": [
+        {
+          "stationId": "ZH.CH:2291",
+          "status": "unresolved-direction-pair",
+          "existingOpposingLaneMethodCouldApply": false,
+          "detectors": [
+            {
+              "id": "ZH.CH:2291.01",
+              "description": "Normalspur Richtung Winterthur",
+              "status": "destination-off-axis"
+            }
+          ]
+        },
+        {
+          "stationId": "ZH.CH:5086",
+          "status": "unresolved-direction-pair",
+          "existingOpposingLaneMethodCouldApply": false,
+          "detectors": [
+            {
+              "id": "ZH.CH:5086.01",
+              "description": "Normalspur Richtung Pfäffikon",
+              "status": "destination-too-close"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pathId": "ZH:724:252c187aec3a37bd",
+      "from": "ZH.CH:2091",
+      "to": "ZH.CH:2793",
+      "distanceMetres": 3255.75,
+      "status": "unresolved-endpoint",
+      "endpoints": [
+        {
+          "id": "ZH.CH:2091",
+          "name": "Wetzikon: Tösstalstrasse",
+          "status": "unresolved-direction-pair",
+          "unresolvedDetectors": [
+            {
+              "id": "ZH.CH:2091.01",
+              "description": "Normalspur Richtung Wetzikon",
+              "status": "unresolved-destination"
+            },
+            {
+              "id": "ZH.CH:2091.02",
+              "description": "Normalspur Richtung Bauma",
+              "status": "bearing-conflict"
+            }
+          ]
+        },
+        {
+          "id": "ZH.CH:2793",
+          "name": "Bäretswil: Baumastrasse",
+          "status": "unresolved-direction-pair",
+          "unresolvedDetectors": [
+            {
+              "id": "ZH.CH:2793.01",
+              "description": "Normalspur Richtung Wetzikon",
+              "status": "unresolved-destination"
+            }
+          ]
+        }
+      ],
+      "completeMinutes": 240,
+      "completePercent": 97.96,
+      "longestRunMinutes": 142,
+      "hourWindows": [
+        {
+          "start": 51240,
+          "end": 59700,
+          "minutes": 142
+        }
+      ],
+      "publicationStatus": "not-admitted",
+      "furtherEvidenceRequired": true,
+      "diagnosticBlockers": [
+        {
+          "stationId": "ZH.CH:2091",
+          "status": "unresolved-direction-pair",
+          "existingOpposingLaneMethodCouldApply": false,
+          "detectors": [
+            {
+              "id": "ZH.CH:2091.01",
+              "description": "Normalspur Richtung Wetzikon",
+              "status": "destination-extent-conflict"
+            },
+            {
+              "id": "ZH.CH:2091.02",
+              "description": "Normalspur Richtung Bauma",
+              "status": "bearing-conflict"
+            }
+          ]
+        },
+        {
+          "stationId": "ZH.CH:2793",
+          "status": "unresolved-direction-pair",
+          "existingOpposingLaneMethodCouldApply": false,
+          "detectors": [
+            {
+              "id": "ZH.CH:2793.01",
+              "description": "Normalspur Richtung Wetzikon",
+              "status": "bearing-conflict"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pathId": "ZH:357:e66b514499857a4f",
+      "from": "ZH.CH:1388",
+      "to": "ZH.CH:2888",
+      "distanceMetres": 3783.16,
+      "status": "unresolved-endpoint",
+      "endpoints": [
+        {
+          "id": "ZH.CH:1388",
+          "name": "Gossau: Leerütistrasse",
+          "status": "unresolved-direction-pair",
+          "unresolvedDetectors": [
+            {
+              "id": "ZH.CH:1388.01",
+              "description": "Normalspur Richtung Oetwil am See",
+              "status": "destination-extent-conflict"
+            },
+            {
+              "id": "ZH.CH:1388.02",
+              "description": "Normalspur Richtung Gossau",
+              "status": "unresolved-destination"
+            }
+          ]
+        },
+        {
+          "id": "ZH.CH:2888",
+          "name": "Gossau: Grütstrasse",
+          "status": "unresolved-direction-pair",
+          "unresolvedDetectors": [
+            {
+              "id": "ZH.CH:2888.01",
+              "description": "Normalspur Richtung Gossau",
+              "status": "unresolved-destination"
+            },
+            {
+              "id": "ZH.CH:2888.02",
+              "description": "Normalspur Richtung Wetzikon",
+              "status": "unresolved-destination"
+            }
+          ]
+        }
+      ],
+      "completeMinutes": 233,
+      "completePercent": 95.1,
+      "longestRunMinutes": 142,
+      "hourWindows": [
+        {
+          "start": 51240,
+          "end": 59700,
+          "minutes": 142
+        }
+      ],
+      "publicationStatus": "not-admitted",
+      "furtherEvidenceRequired": true,
+      "diagnosticBlockers": [
+        {
+          "stationId": "ZH.CH:1388",
+          "status": "unresolved-direction-pair",
+          "existingOpposingLaneMethodCouldApply": true,
+          "detectors": [
+            {
+              "id": "ZH.CH:1388.01",
+              "description": "Normalspur Richtung Oetwil am See",
+              "status": "destination-extent-conflict"
+            }
+          ]
+        },
+        {
+          "stationId": "ZH.CH:2888",
+          "status": "unresolved-direction-pair",
+          "existingOpposingLaneMethodCouldApply": false,
+          "detectors": [
+            {
+              "id": "ZH.CH:2888.01",
+              "description": "Normalspur Richtung Gossau",
+              "status": "destination-too-close"
+            },
+            {
+              "id": "ZH.CH:2888.02",
+              "description": "Normalspur Richtung Wetzikon",
+              "status": "destination-too-close"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pathId": "ZH:340:0176d9b8f03adcfd",
+      "from": "ZH.CH:4286",
+      "to": "ZH.CH:2188",
+      "distanceMetres": 4719.14,
+      "status": "unresolved-endpoint",
+      "endpoints": [
+        {
+          "id": "ZH.CH:4286",
+          "name": "Uster: Zürichstrasse",
+          "status": "unresolved-direction-pair",
+          "unresolvedDetectors": [
+            {
+              "id": "ZH.CH:4286.01",
+              "description": "Normalspur Richtung Zürich",
+              "status": "destination-off-axis"
+            }
+          ]
+        },
+        {
+          "id": "ZH.CH:2188",
+          "name": "Uster: Aathalstrasse",
+          "status": "unresolved-direction-pair",
+          "unresolvedDetectors": [
+            {
+              "id": "ZH.CH:2188.01",
+              "description": "Normalspur Richtung Uster",
+              "status": "destination-too-close"
+            },
+            {
+              "id": "ZH.CH:2188.02",
+              "description": "Normalspur Richtung Wetzikon",
+              "status": "unresolved-destination"
+            }
+          ]
+        }
+      ],
+      "completeMinutes": 239,
+      "completePercent": 97.55,
+      "longestRunMinutes": 141,
+      "hourWindows": [
+        {
+          "start": 51240,
+          "end": 59640,
+          "minutes": 141
+        }
+      ],
+      "publicationStatus": "not-admitted",
+      "furtherEvidenceRequired": true,
+      "diagnosticBlockers": [
+        {
+          "stationId": "ZH.CH:4286",
+          "status": "unresolved-direction-pair",
+          "existingOpposingLaneMethodCouldApply": false,
+          "detectors": [
+            {
+              "id": "ZH.CH:4286.01",
+              "description": "Normalspur Richtung Zürich",
+              "status": "destination-off-axis"
+            }
+          ]
+        },
+        {
+          "stationId": "ZH.CH:2188",
+          "status": "unresolved-direction-pair",
+          "existingOpposingLaneMethodCouldApply": false,
+          "detectors": [
+            {
+              "id": "ZH.CH:2188.01",
+              "description": "Normalspur Richtung Uster",
+              "status": "destination-too-close"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pathId": "ZH:724:252c187aec3a37bd",
+      "from": "ZH.CH:2793",
+      "to": "ZH.CH:1493",
+      "distanceMetres": 3177.69,
+      "status": "unresolved-endpoint",
+      "endpoints": [
+        {
+          "id": "ZH.CH:2793",
+          "name": "Bäretswil: Baumastrasse",
+          "status": "unresolved-direction-pair",
+          "unresolvedDetectors": [
+            {
+              "id": "ZH.CH:2793.01",
+              "description": "Normalspur Richtung Wetzikon",
+              "status": "unresolved-destination"
+            }
+          ]
+        },
+        {
+          "id": "ZH.CH:1493",
+          "name": "Bauma: Bäretswilerstrasse",
+          "status": "unresolved-direction-pair",
+          "unresolvedDetectors": [
+            {
+              "id": "ZH.CH:1493.01",
+              "description": "Normalspur Richtung Wetzikon",
+              "status": "unresolved-destination"
+            },
+            {
+              "id": "ZH.CH:1493.02",
+              "description": "Normalspur Richtung Bauma",
+              "status": "destination-too-close"
+            }
+          ]
+        }
+      ],
+      "completeMinutes": 230,
+      "completePercent": 93.88,
+      "longestRunMinutes": 141,
+      "hourWindows": [
+        {
+          "start": 51300,
+          "end": 59700,
+          "minutes": 141
+        }
+      ],
+      "publicationStatus": "not-admitted",
+      "furtherEvidenceRequired": true,
+      "diagnosticBlockers": [
+        {
+          "stationId": "ZH.CH:2793",
+          "status": "unresolved-direction-pair",
+          "existingOpposingLaneMethodCouldApply": false,
+          "detectors": [
+            {
+              "id": "ZH.CH:2793.01",
+              "description": "Normalspur Richtung Wetzikon",
+              "status": "bearing-conflict"
+            }
+          ]
+        },
+        {
+          "stationId": "ZH.CH:1493",
+          "status": "unresolved-direction-pair",
+          "existingOpposingLaneMethodCouldApply": false,
+          "detectors": [
+            {
+              "id": "ZH.CH:1493.02",
+              "description": "Normalspur Richtung Bauma",
+              "status": "destination-too-close"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pathId": "ZH:724:50ca85214e8f652f",
+      "from": "ZH.CH:1691",
+      "to": "ZH.CH:1020",
+      "distanceMetres": 1882.4,
+      "status": "unresolved-endpoint",
+      "endpoints": [
+        {
+          "id": "ZH.CH:1691",
+          "name": "Gossau: Grüningerstrasse",
+          "status": "unresolved-direction-pair",
+          "unresolvedDetectors": [
+            {
+              "id": "ZH.CH:1691.01",
+              "description": "Normalspur Richtung Wetzikon",
+              "status": "unresolved-destination"
+            },
+            {
+              "id": "ZH.CH:1691.02",
+              "description": "Normalspur Richtung Grüningen",
+              "status": "destination-off-axis"
+            }
+          ]
+        },
+        {
+          "id": "ZH.CH:1020",
+          "name": "Wetzikon: Grüningerstrasse",
+          "status": "unresolved-direction-pair",
+          "unresolvedDetectors": [
+            {
+              "id": "ZH.CH:1020.01",
+              "description": "Normalspur Richtung Wetzikon",
+              "status": "unresolved-destination"
+            },
+            {
+              "id": "ZH.CH:1020.02",
+              "description": "Normalspur Richtung Gossau",
+              "status": "unresolved-destination"
+            }
+          ]
+        }
+      ],
+      "completeMinutes": 222,
+      "completePercent": 90.61,
+      "longestRunMinutes": 141,
+      "hourWindows": [
+        {
+          "start": 51240,
+          "end": 59640,
+          "minutes": 141
+        }
+      ],
+      "publicationStatus": "not-admitted",
+      "furtherEvidenceRequired": true,
+      "diagnosticBlockers": [
+        {
+          "stationId": "ZH.CH:1691",
+          "status": "unresolved-direction-pair",
+          "existingOpposingLaneMethodCouldApply": false,
+          "detectors": [
+            {
+              "id": "ZH.CH:1691.01",
+              "description": "Normalspur Richtung Wetzikon",
+              "status": "bearing-conflict"
+            },
+            {
+              "id": "ZH.CH:1691.02",
+              "description": "Normalspur Richtung Grüningen",
+              "status": "destination-off-axis"
+            }
+          ]
+        },
+        {
+          "stationId": "ZH.CH:1020",
+          "status": "unresolved-direction-pair",
+          "existingOpposingLaneMethodCouldApply": false,
+          "detectors": [
+            {
+              "id": "ZH.CH:1020.01",
+              "description": "Normalspur Richtung Wetzikon",
+              "status": "destination-too-close"
+            },
+            {
+              "id": "ZH.CH:1020.02",
+              "description": "Normalspur Richtung Gossau",
+              "status": "destination-off-axis"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pathId": "ZH:345:466fc64d16c3202e",
+      "from": "ZH.CH:5086",
+      "to": "ZH.CH:0190",
+      "distanceMetres": 4608.65,
+      "status": "unresolved-endpoint",
+      "endpoints": [
+        {
+          "id": "ZH.CH:5086",
+          "name": "Pfäffikon: Hochstrasse",
+          "status": "unresolved-direction-pair",
+          "unresolvedDetectors": [
+            {
+              "id": "ZH.CH:5086.01",
+              "description": "Normalspur Richtung Pfäffikon",
+              "status": "unresolved-destination"
+            }
+          ]
+        },
+        {
+          "id": "ZH.CH:0190",
+          "name": "Wetzikon: Hinwilerstrasse",
+          "status": "unresolved-direction-pair",
+          "unresolvedDetectors": [
+            {
+              "id": "ZH.CH:0190.01",
+              "description": "Normalspur Richtung Wetzikon",
+              "status": "unresolved-destination"
+            },
+            {
+              "id": "ZH.CH:0190.02",
+              "description": "Normalspur Richtung Hinwil",
+              "status": "destination-extent-conflict"
+            }
+          ]
+        }
+      ],
+      "completeMinutes": 228,
+      "completePercent": 93.06,
+      "longestRunMinutes": 104,
+      "hourWindows": [
+        {
+          "start": 51240,
+          "end": 57420,
+          "minutes": 104
+        }
+      ],
+      "publicationStatus": "not-admitted",
+      "furtherEvidenceRequired": true,
+      "diagnosticBlockers": [
+        {
+          "stationId": "ZH.CH:5086",
+          "status": "unresolved-direction-pair",
+          "existingOpposingLaneMethodCouldApply": false,
+          "detectors": [
+            {
+              "id": "ZH.CH:5086.01",
+              "description": "Normalspur Richtung Pfäffikon",
+              "status": "destination-too-close"
+            }
+          ]
+        },
+        {
+          "stationId": "ZH.CH:0190",
+          "status": "unresolved-direction-pair",
+          "existingOpposingLaneMethodCouldApply": false,
+          "detectors": [
+            {
+              "id": "ZH.CH:0190.01",
+              "description": "Normalspur Richtung Wetzikon",
+              "status": "bearing-conflict"
+            },
+            {
+              "id": "ZH.CH:0190.02",
+              "description": "Normalspur Richtung Hinwil",
+              "status": "destination-extent-conflict"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pathId": "ZH:337:81114d194f6ee002",
+      "from": "ZH.CH:2992",
+      "to": "ZH.CH:3091",
+      "distanceMetres": 2479.21,
+      "status": "unresolved-endpoint",
+      "endpoints": [
+        {
+          "id": "ZH.CH:2992",
+          "name": "Hittnau: Pfäffikerstrasse",
+          "status": "unresolved-direction-pair",
+          "unresolvedDetectors": [
+            {
+              "id": "ZH.CH:2992.01",
+              "description": "Normalspur Richtung Pfäffikon",
+              "status": "unresolved-destination"
+            }
+          ]
+        },
+        {
+          "id": "ZH.CH:3091",
+          "name": "Hittnau: Tösstalstrasse",
+          "status": "unresolved-direction-pair",
+          "unresolvedDetectors": [
+            {
+              "id": "ZH.CH:3091.01",
+              "description": "Normalspur Richtung Pfäffikon",
+              "status": "unresolved-destination"
+            },
+            {
+              "id": "ZH.CH:3091.02",
+              "description": "Normalspur Richtung Saland",
+              "status": "destination-too-close"
+            }
+          ]
+        }
+      ],
+      "completeMinutes": 227,
+      "completePercent": 92.65,
+      "longestRunMinutes": 104,
+      "hourWindows": [
+        {
+          "start": 51240,
+          "end": 57420,
+          "minutes": 104
+        }
+      ],
+      "publicationStatus": "not-admitted",
+      "furtherEvidenceRequired": true,
+      "diagnosticBlockers": [
+        {
+          "stationId": "ZH.CH:2992",
+          "status": "validated",
+          "existingOpposingLaneMethodCouldApply": false,
+          "detectors": []
+        },
+        {
+          "stationId": "ZH.CH:3091",
+          "status": "unresolved-direction-pair",
+          "existingOpposingLaneMethodCouldApply": false,
+          "detectors": [
+            {
+              "id": "ZH.CH:3091.02",
+              "description": "Normalspur Richtung Saland",
+              "status": "destination-too-close"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pathId": "ZH:345:466fc64d16c3202e",
+      "from": "ZH.CH:0190",
+      "to": "ZH.CH:0989",
+      "distanceMetres": 2041.11,
+      "status": "unresolved-endpoint",
+      "endpoints": [
+        {
+          "id": "ZH.CH:0190",
+          "name": "Wetzikon: Hinwilerstrasse",
+          "status": "unresolved-direction-pair",
+          "unresolvedDetectors": [
+            {
+              "id": "ZH.CH:0190.01",
+              "description": "Normalspur Richtung Wetzikon",
+              "status": "unresolved-destination"
+            },
+            {
+              "id": "ZH.CH:0190.02",
+              "description": "Normalspur Richtung Hinwil",
+              "status": "destination-extent-conflict"
+            }
+          ]
+        },
+        {
+          "id": "ZH.CH:0989",
+          "name": "Hinwil: Winterthurerstrasse",
+          "status": "unresolved-direction-pair",
+          "unresolvedDetectors": [
+            {
+              "id": "ZH.CH:0989.01",
+              "description": "Normalspur Richtung Pfäffikon",
+              "status": "unresolved-destination"
+            },
+            {
+              "id": "ZH.CH:0989.02",
+              "description": "Normalspur Richtung Hinwil",
+              "status": "destination-too-close"
+            }
+          ]
+        }
+      ],
+      "completeMinutes": 225,
+      "completePercent": 91.84,
+      "longestRunMinutes": 104,
+      "hourWindows": [
+        {
+          "start": 51240,
+          "end": 57420,
+          "minutes": 104
+        }
+      ],
+      "publicationStatus": "not-admitted",
+      "furtherEvidenceRequired": true,
+      "diagnosticBlockers": [
+        {
+          "stationId": "ZH.CH:0190",
+          "status": "unresolved-direction-pair",
+          "existingOpposingLaneMethodCouldApply": false,
+          "detectors": [
+            {
+              "id": "ZH.CH:0190.01",
+              "description": "Normalspur Richtung Wetzikon",
+              "status": "bearing-conflict"
+            },
+            {
+              "id": "ZH.CH:0190.02",
+              "description": "Normalspur Richtung Hinwil",
+              "status": "destination-extent-conflict"
+            }
+          ]
+        },
+        {
+          "stationId": "ZH.CH:0989",
+          "status": "unresolved-direction-pair",
+          "existingOpposingLaneMethodCouldApply": false,
+          "detectors": [
+            {
+              "id": "ZH.CH:0989.02",
+              "description": "Normalspur Richtung Hinwil",
+              "status": "destination-too-close"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pathId": "ZH:345:466fc64d16c3202e",
+      "from": "ZH.CH:0989",
+      "to": "ZH.CH:0213",
+      "distanceMetres": 1468.77,
+      "status": "unresolved-endpoint",
+      "endpoints": [
+        {
+          "id": "ZH.CH:0989",
+          "name": "Hinwil: Winterthurerstrasse",
+          "status": "unresolved-direction-pair",
+          "unresolvedDetectors": [
+            {
+              "id": "ZH.CH:0989.01",
+              "description": "Normalspur Richtung Pfäffikon",
+              "status": "unresolved-destination"
+            },
+            {
+              "id": "ZH.CH:0989.02",
+              "description": "Normalspur Richtung Hinwil",
+              "status": "destination-too-close"
+            }
+          ]
+        },
+        {
+          "id": "ZH.CH:0213",
+          "name": "Hinwil: Dürntnerstrasse",
+          "status": "unresolved-direction-pair",
+          "unresolvedDetectors": [
+            {
+              "id": "ZH.CH:0213.01",
+              "description": "Normalspur Richtung Hinwil",
+              "status": "destination-too-close"
+            },
+            {
+              "id": "ZH.CH:0213.02",
+              "description": "Normalspur Richtung Dürnten",
+              "status": "destination-extent-conflict"
+            }
+          ]
+        }
+      ],
+      "completeMinutes": 225,
+      "completePercent": 91.84,
+      "longestRunMinutes": 104,
+      "hourWindows": [
+        {
+          "start": 51240,
+          "end": 57420,
+          "minutes": 104
+        }
+      ],
+      "publicationStatus": "not-admitted",
+      "furtherEvidenceRequired": true,
+      "diagnosticBlockers": [
+        {
+          "stationId": "ZH.CH:0989",
+          "status": "unresolved-direction-pair",
+          "existingOpposingLaneMethodCouldApply": false,
+          "detectors": [
+            {
+              "id": "ZH.CH:0989.02",
+              "description": "Normalspur Richtung Hinwil",
+              "status": "destination-too-close"
+            }
+          ]
+        },
+        {
+          "stationId": "ZH.CH:0213",
+          "status": "unresolved-direction-pair",
+          "existingOpposingLaneMethodCouldApply": false,
+          "detectors": [
+            {
+              "id": "ZH.CH:0213.01",
+              "description": "Normalspur Richtung Hinwil",
+              "status": "destination-too-close"
+            },
+            {
+              "id": "ZH.CH:0213.02",
+              "description": "Normalspur Richtung Dürnten",
+              "status": "destination-extent-conflict"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "limitation": "Zürich-qualified results are optimistic diagnostics, not approved homonym mappings. Complete observations, name resolution and applicable review methods do not by themselves authorize playback. No topology, recording catalog or playback artifact is emitted."
+}
