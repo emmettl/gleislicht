@@ -1,8 +1,10 @@
 import assert from 'node:assert/strict'
 
-export const MBC_AGENCY_IDS = ['29', '764']
+export const MBC_AGENCY_IDS = ['29', '764', '344']
 export const MBC_BUS_CACHES = ['data/vaud-mbc-road-cache.json', 'data/vaud-mbc-sunday-road-cache.json']
-export const LAUSANNE_WEST_GROUPS = ['tl-bus', 'mbc-bus', 'm1', 'm2', 'leb', 'mbc-rail', 'rail']
+export const LAUSANNE_MBC_GROUPS = ['tl-bus', 'mbc-bus', 'm1', 'm2', 'leb', 'mbc-rail', 'rail']
+
+export const LAUSANNE_WEST_GROUPS = [...LAUSANNE_MBC_GROUPS, 'cossonay-funicular']
 
 // Replace the old clipped MBC rail journeys by complete source journeys. The
 // existing Lausanne crop and all other operators retain their exact stop chains.
@@ -11,7 +13,7 @@ export function mergeLausanneMbc(base, mbc, routes) {
   assert.equal(mbc.metadata.dayModel, 'civil day with preceding service-day spillover')
   assert.deepEqual(mbc.metadata.sourceServiceDates, base.metadata.sourceServiceDates)
   assert.deepEqual(mbc.metadata.agencyIds, MBC_AGENCY_IDS)
-  assert.deepEqual(mbc.metadata.modes, ['rail', 'bus'])
+  assert.deepEqual(mbc.metadata.modes, ['rail', 'bus', 'funicular'])
   const agency = train => {
     const route = routes.get(train.routeId)
     assert(route, `Missing route ${train.routeId}`)
@@ -29,7 +31,7 @@ export function mergeLausanneMbc(base, mbc, routes) {
     for (const { pathSegments: _paths, ...train } of selected) trains.push({ ...train, stops: train.stops.map(([index, ...times]) => [remap[index], ...times]) })
   }
   assert.equal(new Set(trains.map(train => train.id)).size, trains.length, 'Duplicate merged journey')
-  return { ...base, metadata: { ...base.metadata, lausanneScopeVersion: 2, localAgencyIds: ['151', '764'], completeAgencyIds: MBC_AGENCY_IDS }, stops, trains }
+  return { ...base, metadata: { ...base.metadata, lausanneScopeVersion: 3, localAgencyIds: ['151', '764'], completeAgencyIds: MBC_AGENCY_IDS }, stops, trains }
 }
 
 // Keep the original matcher rejections and choose the first available complete

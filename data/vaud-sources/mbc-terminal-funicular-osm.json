@@ -1,0 +1,790 @@
+{
+  "schemaVersion": 1,
+  "publisher": "OpenStreetMap contributors",
+  "license": "ODbL-1.0",
+  "sourceUrl": "https://www.openstreetmap.org/copyright",
+  "retrieved": "2026-09-08",
+  "inputs": [
+    {
+      "query": "[out:json][timeout:45];rel[route=bus][ref=701](46.5068,6.4754,46.5093,6.479);out body;>;out body qt;\n",
+      "sha256": "a382d5580ae92503300666852027437f9b3cceb3fe58e71442f2a524ab57da1b",
+      "baseTimestamp": "2026-09-08T18:05:06Z"
+    },
+    {
+      "query": "[out:json][timeout:45];(way[highway](46.5068,6.4754,46.5093,6.479);way[railway=funicular](46.60,6.505,46.615,6.526););out body;>;out skel qt;\n",
+      "sha256": "fb1bcd19b951bfe479f5ba90a82715e01b938c6ebf2486b03ce1233ab8bfdd4b",
+      "baseTimestamp": "2026-09-08T18:04:04Z"
+    }
+  ],
+  "terminalRelation": {
+    "id": 2461243,
+    "tags": {
+      "colour": "#154b26",
+      "from": "Tolochenaz, La Plantaz",
+      "gtfs:feed": "CH-Alle",
+      "gtfs:release_date": "2025-12-18",
+      "gtfs:route_id": "92-701-j26-1",
+      "gtfs:trip_id:like": "%92-701-j26-1.9.H",
+      "gtfs:trip_id:sample": "270.TA.92-701-j26-1.9.H",
+      "name": "Bus 701: Tolochenaz, La Plantaz \u2192 Lausanne, Bourdonnette",
+      "nat_ref": "10.701",
+      "network": "Mobilis",
+      "network:short": "CTV",
+      "network:wikidata": "Q2394222",
+      "operator": "MBC Auto",
+      "public_transport:version": "2",
+      "ref": "701",
+      "ref_trips": "92-701-j26-1.9.H",
+      "route": "bus",
+      "to": "Lausanne, Bourdonnette",
+      "type": "route"
+    },
+    "orderedWayIds": [
+      1315225674,
+      1553047799,
+      1553047801,
+      110942049,
+      1553047800,
+      110942066,
+      1553047800,
+      110942049,
+      1553047801,
+      1553047799,
+      1315225674
+    ]
+  },
+  "ways": [
+    {
+      "type": "way",
+      "id": 1553047801,
+      "nodes": [
+        3030334060,
+        1265054828,
+        3960684112,
+        3960684113
+      ],
+      "tags": {
+        "cycleway:left": "no",
+        "cycleway:right": "lane",
+        "highway": "residential",
+        "lanes": "2",
+        "maxspeed": "50",
+        "maxspeed:type": "sign",
+        "name": "Chemin des Plant\u00e9es",
+        "sidewalk:left": "no",
+        "sidewalk:right": "yes",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 110942049,
+      "nodes": [
+        3960684113,
+        3960684114,
+        3960684111,
+        9159355191,
+        8607503703,
+        9159355190
+      ],
+      "tags": {
+        "cycleway:both": "no",
+        "highway": "residential",
+        "lanes": "2",
+        "lit": "yes",
+        "maxspeed": "50",
+        "maxspeed:type": "sign",
+        "name": "Chemin des Plant\u00e9es",
+        "sidewalk:left": "no",
+        "sidewalk:right": "yes",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 110942066,
+      "nodes": [
+        1061033530,
+        9338529745,
+        1061033534,
+        9338529746,
+        3960684108,
+        9338529743,
+        9159355203,
+        9338529744,
+        1061033538,
+        1061033541,
+        307519564,
+        1061033546,
+        1061033548,
+        254150866,
+        1061033549,
+        9338529742,
+        307519561,
+        9159355192,
+        1061033551,
+        9338529750,
+        1061033554,
+        9338529749,
+        307519560,
+        1061033523,
+        9338529747,
+        307519567,
+        9338529748,
+        1061033530
+      ],
+      "tags": {
+        "ele": "423",
+        "highway": "secondary",
+        "junction": "roundabout",
+        "lane_markings": "no",
+        "lit": "yes",
+        "sidewalk:left": "no",
+        "surface": "asphalt",
+        "width": "5"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1553047800,
+      "nodes": [
+        9159355190,
+        8607503704,
+        1265054876,
+        11579910039,
+        1061033530
+      ],
+      "tags": {
+        "cycleway:both": "no",
+        "highway": "residential",
+        "lanes": "2",
+        "lit": "yes",
+        "maxspeed": "50",
+        "maxspeed:type": "sign",
+        "name": "Chemin des Plant\u00e9es",
+        "sidewalk:left": "yes",
+        "sidewalk:right": "separate",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1315225674,
+      "nodes": [
+        8607503711,
+        254150452,
+        2178816014
+      ],
+      "tags": {
+        "cycleway:both": "no",
+        "highway": "residential",
+        "lanes": "2",
+        "maxspeed": "50",
+        "name": "Chemin des Plant\u00e9es",
+        "sidewalk:both": "separate",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1553047799,
+      "nodes": [
+        2178816014,
+        8620808559,
+        3030334060
+      ],
+      "tags": {
+        "highway": "residential",
+        "lanes": "2",
+        "maxspeed": "50",
+        "maxspeed:type": "sign",
+        "name": "Chemin des Plant\u00e9es",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 25909750,
+      "nodes": [
+        282637004,
+        282637002
+      ],
+      "tags": {
+        "operator": "MBC",
+        "railway": "funicular"
+      }
+    },
+    {
+      "type": "way",
+      "id": 25909751,
+      "nodes": [
+        7852728597,
+        452232398,
+        282637004
+      ],
+      "tags": {
+        "bridge": "yes",
+        "layer": "1",
+        "operator": "MBC",
+        "railway": "funicular"
+      }
+    },
+    {
+      "type": "way",
+      "id": 37611147,
+      "nodes": [
+        440865055,
+        9493705646,
+        3558124738,
+        8879715380,
+        9493705649,
+        440865059,
+        9493705647,
+        283192390
+      ],
+      "tags": {
+        "bridge": "yes",
+        "layer": "1",
+        "operator": "MBC",
+        "railway": "funicular"
+      }
+    },
+    {
+      "type": "way",
+      "id": 201411981,
+      "nodes": [
+        8879715378,
+        440865055
+      ],
+      "tags": {
+        "operator": "MBC",
+        "railway": "funicular"
+      }
+    },
+    {
+      "type": "way",
+      "id": 201411985,
+      "nodes": [
+        8879715382,
+        5635134480,
+        7852728597
+      ],
+      "tags": {
+        "operator": "MBC",
+        "railway": "funicular",
+        "wikidata": "Q11706198",
+        "wikipedia": "en:Funiculaire de Cossonay"
+      }
+    },
+    {
+      "type": "way",
+      "id": 201411986,
+      "nodes": [
+        283192390,
+        9493705648,
+        2113849159,
+        9493705650,
+        8879715381,
+        3558124737,
+        9493705644,
+        9493705645,
+        440865055
+      ],
+      "tags": {
+        "bridge": "yes",
+        "layer": "1",
+        "operator": "MBC",
+        "railway": "funicular"
+      }
+    },
+    {
+      "type": "way",
+      "id": 959725197,
+      "nodes": [
+        8879715379,
+        8879715378
+      ],
+      "tags": {
+        "bridge": "yes",
+        "layer": "1",
+        "operator": "MBC",
+        "railway": "funicular"
+      }
+    },
+    {
+      "type": "way",
+      "id": 959725198,
+      "nodes": [
+        2113849181,
+        5635030447,
+        8879715379
+      ],
+      "tags": {
+        "operator": "MBC",
+        "railway": "funicular"
+      }
+    },
+    {
+      "type": "way",
+      "id": 959725199,
+      "nodes": [
+        283192390,
+        8879715382
+      ],
+      "tags": {
+        "bridge": "yes",
+        "layer": "1",
+        "operator": "MBC",
+        "railway": "funicular"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1029847942,
+      "nodes": [
+        282637002,
+        2732685240
+      ],
+      "tags": {
+        "covered": "yes",
+        "operator": "MBC",
+        "railway": "funicular"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1029847943,
+      "nodes": [
+        2732685244,
+        2113849181
+      ],
+      "tags": {
+        "covered": "yes",
+        "operator": "MBC",
+        "railway": "funicular"
+      }
+    }
+  ],
+  "nodes": [
+    {
+      "type": "node",
+      "id": 254150866,
+      "lat": 46.5066674,
+      "lon": 6.4759264
+    },
+    {
+      "type": "node",
+      "id": 307519560,
+      "lat": 46.5067701,
+      "lon": 6.4760812
+    },
+    {
+      "type": "node",
+      "id": 307519561,
+      "lat": 46.5066712,
+      "lon": 6.476003
+    },
+    {
+      "type": "node",
+      "id": 307519564,
+      "lat": 46.5067111,
+      "lon": 6.4758437
+    },
+    {
+      "type": "node",
+      "id": 307519567,
+      "lat": 46.5068228,
+      "lon": 6.4760334
+    },
+    {
+      "type": "node",
+      "id": 1061033523,
+      "lat": 46.5067902,
+      "lon": 6.4760717
+    },
+    {
+      "type": "node",
+      "id": 1061033530,
+      "lat": 46.5068395,
+      "lon": 6.4759776
+    },
+    {
+      "type": "node",
+      "id": 1061033534,
+      "lat": 46.5068391,
+      "lon": 6.4759312
+    },
+    {
+      "type": "node",
+      "id": 1061033538,
+      "lat": 46.5067518,
+      "lon": 6.4758283
+    },
+    {
+      "type": "node",
+      "id": 1061033541,
+      "lat": 46.5067341,
+      "lon": 6.4758313
+    },
+    {
+      "type": "node",
+      "id": 1061033546,
+      "lat": 46.5066914,
+      "lon": 6.4758649
+    },
+    {
+      "type": "node",
+      "id": 1061033548,
+      "lat": 46.5066764,
+      "lon": 6.4758931
+    },
+    {
+      "type": "node",
+      "id": 1061033549,
+      "lat": 46.5066651,
+      "lon": 6.4759521
+    },
+    {
+      "type": "node",
+      "id": 1061033551,
+      "lat": 46.5066929,
+      "lon": 6.4760492
+    },
+    {
+      "type": "node",
+      "id": 1061033554,
+      "lat": 46.5067288,
+      "lon": 6.4760788
+    },
+    {
+      "type": "node",
+      "id": 1265054876,
+      "lat": 46.5069087,
+      "lon": 6.4759938
+    },
+    {
+      "type": "node",
+      "id": 3960684108,
+      "lat": 46.5068274,
+      "lon": 6.4758881
+    },
+    {
+      "type": "node",
+      "id": 3960684111,
+      "lat": 46.5073272,
+      "lon": 6.4760014
+    },
+    {
+      "type": "node",
+      "id": 3960684112,
+      "lat": 46.5076096,
+      "lon": 6.4761891
+    },
+    {
+      "type": "node",
+      "id": 3960684113,
+      "lat": 46.5075122,
+      "lon": 6.4760553
+    },
+    {
+      "type": "node",
+      "id": 3960684114,
+      "lat": 46.5074425,
+      "lon": 6.4760188
+    },
+    {
+      "type": "node",
+      "id": 8607503703,
+      "lat": 46.5072002,
+      "lon": 6.4760009
+    },
+    {
+      "type": "node",
+      "id": 8607503704,
+      "lat": 46.5070484,
+      "lon": 6.476004
+    },
+    {
+      "type": "node",
+      "id": 9159355190,
+      "lat": 46.5071004,
+      "lon": 6.4760029
+    },
+    {
+      "type": "node",
+      "id": 9159355191,
+      "lat": 46.5072303,
+      "lon": 6.476001
+    },
+    {
+      "type": "node",
+      "id": 9159355192,
+      "lat": 46.5066795,
+      "lon": 6.4760261
+    },
+    {
+      "type": "node",
+      "id": 9159355203,
+      "lat": 46.506793,
+      "lon": 6.4758423
+    },
+    {
+      "type": "node",
+      "id": 9338529742,
+      "lat": 46.5066664,
+      "lon": 6.475978
+    },
+    {
+      "type": "node",
+      "id": 9338529743,
+      "lat": 46.506809,
+      "lon": 6.4758576
+    },
+    {
+      "type": "node",
+      "id": 9338529744,
+      "lat": 46.5067739,
+      "lon": 6.475832
+    },
+    {
+      "type": "node",
+      "id": 9338529745,
+      "lat": 46.5068408,
+      "lon": 6.4759544
+    },
+    {
+      "type": "node",
+      "id": 9338529746,
+      "lat": 46.5068346,
+      "lon": 6.4759089
+    },
+    {
+      "type": "node",
+      "id": 9338529747,
+      "lat": 46.5068081,
+      "lon": 6.4760554
+    },
+    {
+      "type": "node",
+      "id": 9338529748,
+      "lat": 46.5068335,
+      "lon": 6.476007
+    },
+    {
+      "type": "node",
+      "id": 9338529749,
+      "lat": 46.5067494,
+      "lon": 6.4760836
+    },
+    {
+      "type": "node",
+      "id": 9338529750,
+      "lat": 46.5067096,
+      "lon": 6.4760671
+    },
+    {
+      "type": "node",
+      "id": 11579910039,
+      "lat": 46.5068699,
+      "lon": 6.4759856
+    },
+    {
+      "type": "node",
+      "id": 254150452,
+      "lat": 46.5080915,
+      "lon": 6.4771358
+    },
+    {
+      "type": "node",
+      "id": 1265054828,
+      "lat": 46.5078096,
+      "lon": 6.4765535
+    },
+    {
+      "type": "node",
+      "id": 2178816014,
+      "lat": 46.5080298,
+      "lon": 6.476982
+    },
+    {
+      "type": "node",
+      "id": 3030334060,
+      "lat": 46.5078289,
+      "lon": 6.4765887
+    },
+    {
+      "type": "node",
+      "id": 8607503711,
+      "lat": 46.5081583,
+      "lon": 6.4772977
+    },
+    {
+      "type": "node",
+      "id": 8620808559,
+      "lat": 46.5079575,
+      "lon": 6.4768414
+    },
+    {
+      "type": "node",
+      "id": 2113849181,
+      "lat": 46.6119845,
+      "lon": 6.5100278
+    },
+    {
+      "type": "node",
+      "id": 2732685244,
+      "lat": 46.6120146,
+      "lon": 6.5099576
+    },
+    {
+      "type": "node",
+      "id": 5635030447,
+      "lat": 46.6103633,
+      "lon": 6.5134671
+    },
+    {
+      "type": "node",
+      "id": 282637002,
+      "lat": 46.6058998,
+      "lon": 6.5229254
+    },
+    {
+      "type": "node",
+      "id": 2732685240,
+      "lat": 46.6058392,
+      "lon": 6.5230532
+    },
+    {
+      "type": "node",
+      "id": 283192390,
+      "lat": 46.60876,
+      "lon": 6.5168617
+    },
+    {
+      "type": "node",
+      "id": 440865055,
+      "lat": 46.6091745,
+      "lon": 6.5159826
+    },
+    {
+      "type": "node",
+      "id": 440865059,
+      "lat": 46.6088657,
+      "lon": 6.5166602
+    },
+    {
+      "type": "node",
+      "id": 2113849159,
+      "lat": 46.6088522,
+      "lon": 6.5166405
+    },
+    {
+      "type": "node",
+      "id": 3558124737,
+      "lat": 46.6089994,
+      "lon": 6.5163206
+    },
+    {
+      "type": "node",
+      "id": 3558124738,
+      "lat": 46.6090176,
+      "lon": 6.5163459
+    },
+    {
+      "type": "node",
+      "id": 5635134480,
+      "lat": 46.6074769,
+      "lon": 6.5195909
+    },
+    {
+      "type": "node",
+      "id": 8879715378,
+      "lat": 46.6095379,
+      "lon": 6.5152162
+    },
+    {
+      "type": "node",
+      "id": 8879715379,
+      "lat": 46.6096765,
+      "lon": 6.514918
+    },
+    {
+      "type": "node",
+      "id": 8879715380,
+      "lat": 46.6089576,
+      "lon": 6.5164769
+    },
+    {
+      "type": "node",
+      "id": 8879715381,
+      "lat": 46.6089322,
+      "lon": 6.5164573
+    },
+    {
+      "type": "node",
+      "id": 8879715382,
+      "lat": 46.6085823,
+      "lon": 6.517237
+    },
+    {
+      "type": "node",
+      "id": 9493705644,
+      "lat": 46.6090393,
+      "lon": 6.5162455
+    },
+    {
+      "type": "node",
+      "id": 9493705645,
+      "lat": 46.6090829,
+      "lon": 6.5161674
+    },
+    {
+      "type": "node",
+      "id": 9493705646,
+      "lat": 46.6090905,
+      "lon": 6.5161707
+    },
+    {
+      "type": "node",
+      "id": 9493705647,
+      "lat": 46.6088133,
+      "lon": 6.5167595
+    },
+    {
+      "type": "node",
+      "id": 9493705648,
+      "lat": 46.608808,
+      "lon": 6.5167495
+    },
+    {
+      "type": "node",
+      "id": 9493705649,
+      "lat": 46.6089194,
+      "lon": 6.516557
+    },
+    {
+      "type": "node",
+      "id": 9493705650,
+      "lat": 46.6088927,
+      "lon": 6.5165441
+    },
+    {
+      "type": "node",
+      "id": 282637004,
+      "lat": 46.606298,
+      "lon": 6.5220805
+    },
+    {
+      "type": "node",
+      "id": 452232398,
+      "lat": 46.6063496,
+      "lon": 6.5219728
+    },
+    {
+      "type": "node",
+      "id": 7852728597,
+      "lat": 46.6064449,
+      "lon": 6.5217723
+    }
+  ]
+}

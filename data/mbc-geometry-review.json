@@ -2,7 +2,8 @@
   "serviceDate": "2026-09-08",
   "graphSha256": "2ff129472eb5cb90f205e0afcb2bb4265b240eb2566420bfea7634ae2d744795",
   "railSha256": "2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
-  "cacheSha256": "457a09ae8fa6dbea8d3b55a99864def6f3b69ec4fd7b1ccebffa3529be21e6b5",
+  "supplementalSha256": "ee620ef1bd60797c933c126edbc4d008be7d000cf8b0644a048c0d907696179d",
+  "cacheSha256": "3a7c3479aa3924b3eec3e1f610e205cd62f318611e1dcbbcad543b2ab24839d2",
   "largestSnaps": [
     {
       "id": "ch:1:sloid:11590:0:544",
@@ -285,32 +286,7 @@
       "route": "724"
     }
   ],
-  "rejectedPatternSegments": [
-    {
-      "pattern": "3ec88727eb71af72ed2d349d",
-      "routeId": "92-701-j26-1",
-      "route": "701",
-      "segment": 0,
-      "from": "Tolochenaz, La Plantaz",
-      "to": "Tolochenaz, La Plantaz",
-      "fromId": "ch:1:sloid:70082:0:301404",
-      "toId": "ch:1:sloid:70082:0:464727",
-      "trips": 107,
-      "reason": "missing-shape"
-    },
-    {
-      "pattern": "c419382e960b7b163dc0082d",
-      "routeId": "92-701-j26-1",
-      "route": "701",
-      "segment": 0,
-      "from": "Tolochenaz, La Plantaz",
-      "to": "Tolochenaz, La Plantaz",
-      "fromId": "ch:1:sloid:70082:0:301404",
-      "toId": "ch:1:sloid:70082:0:464727",
-      "trips": 7,
-      "reason": "missing-shape"
-    }
-  ],
+  "rejectedPatternSegments": [],
   "panels": [
     {
       "title": "Sévery, Moulin · 88.1 m",
@@ -388,7 +364,7 @@
       }
     },
     {
-      "title": "La Plantaz · unresolved platform pair",
+      "title": "La Plantaz · source-relation turnaround",
       "centre": [
         6.47731134,
         46.50823079
@@ -440,6 +416,24 @@
       ],
       "radius": 0.013,
       "rail": true
+    },
+    {
+      "title": "Cossonay funicular · complete corridor",
+      "centre": [
+        6.5164,
+        46.609
+      ],
+      "radius": 0.009,
+      "funi": true
+    },
+    {
+      "title": "Cossonay funicular · passing loop",
+      "centre": [
+        6.5164769,
+        46.6089576
+      ],
+      "radius": 0.0015,
+      "funi": true
     }
   ]
 }

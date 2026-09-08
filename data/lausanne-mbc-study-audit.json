@@ -13,20 +13,21 @@
       "rail": "2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
       "snapshot": "3e16a5b15885ffe0307d5adc8039deb134df2a50a424e9fa9f53d86c5837a1c9",
       "busCache": "a67d9ec3bd72665a421c6ebb327618a6b3329dc68dd417f1add9fb6901ae3e37",
-      "mbcSnapshot": "cdfebc5a205217cebfae0a6c10cfa4f6ab16702075c9811e99026823b4b64972",
-      "mbcBusCache0": "457a09ae8fa6dbea8d3b55a99864def6f3b69ec4fd7b1ccebffa3529be21e6b5",
-      "mbcBusCache1": "7bf0adb7d46b52e25244415d76e6c91da7aca90d4bc1dfb1b978644866a613b3"
+      "mbcSnapshot": "01b9386966a1cf898eaba25f7f3a7c9b076913b874da7a5dadf7d92786fbed84",
+      "mbcBusCache0": "3a7c3479aa3924b3eec3e1f610e205cd62f318611e1dcbbcad543b2ab24839d2",
+      "mbcBusCache1": "c23f977a7aecc53ae995c544c2366840f3b25ef5da836001d50acbbe574bf827",
+      "mbcSupplementGeometry": "ee620ef1bd60797c933c126edbc4d008be7d000cf8b0644a048c0d907696179d"
     },
     "nodeVersion": "v24.20.0",
-    "lausanneScopeVersion": 2
+    "lausanneScopeVersion": 3
   },
   "scope": {
-    "description": "Lausanne regional crop plus complete MBC rail and bus journeys through Morges, Bière and Cossonay. Lake services and funiculars excluded; not canton-wide Vaud coverage.",
+    "description": "Lausanne regional crop plus complete MBC rail and bus journeys through Morges, Bière and Cossonay. Includes the Cossonay funicular; lake services excluded; not canton-wide Vaud coverage.",
     "extractedTrips": 10553,
-    "candidateTrips": 10134,
-    "excludedTrips": 419,
-    "platforms": 1455,
-    "namedStops": 709,
+    "candidateTrips": 10546,
+    "excludedTrips": 7,
+    "platforms": 1457,
+    "namedStops": 711,
     "baseBounds": "6.45,46.48,6.85,46.71",
     "candidateBounds": {
       "minLongitude": 6.33631177,
@@ -36,7 +37,8 @@
     },
     "completeAgencyIds": [
       "29",
-      "764"
+      "764",
+      "344"
     ]
   },
   "groups": [
@@ -109,22 +111,10 @@
         "92-760-j26-1"
       ],
       "totalSegments": 21305,
-      "indexedSegments": 21191,
-      "acceptedSegments": 21191,
-      "issues": [
-        {
-          "routeId": "92-701-j26-1",
-          "route": "701",
-          "from": "Tolochenaz, La Plantaz",
-          "to": "Tolochenaz, La Plantaz",
-          "fromId": "ch:1:sloid:70082:0:301404",
-          "toId": "ch:1:sloid:70082:0:464727",
-          "accepted": false,
-          "reason": "missing-path",
-          "occurrences": 114
-        }
-      ],
-      "coverage": 0.9946491433935696
+      "indexedSegments": 21305,
+      "acceptedSegments": 21305,
+      "issues": [],
+      "coverage": 1
     },
     {
       "id": "m1",
@@ -202,6 +192,18 @@
       "totalSegments": 3827,
       "indexedSegments": 3827,
       "acceptedSegments": 3827,
+      "issues": [],
+      "coverage": 1
+    },
+    {
+      "id": "cossonay-funicular",
+      "trips": 412,
+      "routes": [
+        "93-200-3-j26-1"
+      ],
+      "totalSegments": 412,
+      "indexedSegments": 412,
+      "acceptedSegments": 412,
       "issues": [],
       "coverage": 1
     }
@@ -735,6 +737,16 @@
         }
       ],
       "coverage": 0.9383328978311993
+    },
+    {
+      "id": "cossonay-funicular",
+      "trips": 0,
+      "routes": [],
+      "totalSegments": 0,
+      "indexedSegments": 0,
+      "acceptedSegments": 0,
+      "issues": [],
+      "coverage": 0
     }
   ],
   "railProjection": {
@@ -2134,13 +2146,13 @@
     "issues": []
   },
   "payload": {
-    "manifestGzipBytes": 113571,
-    "morningGzipBytes": 248985,
+    "manifestGzipBytes": 114304,
+    "morningGzipBytes": 250982,
     "chunks": [
       {
         "id": "00-02",
-        "trips": 338,
-        "gzipBytes": 32907
+        "trips": 352,
+        "gzipBytes": 33409
       },
       {
         "id": "02-04",
@@ -2149,53 +2161,53 @@
       },
       {
         "id": "04-06",
-        "trips": 403,
-        "gzipBytes": 39221
+        "trips": 419,
+        "gzipBytes": 39713
       },
       {
         "id": "06-08",
-        "trips": 1400,
-        "gzipBytes": 126904
+        "trips": 1448,
+        "gzipBytes": 128340
       },
       {
         "id": "08-10",
-        "trips": 1404,
-        "gzipBytes": 131594
+        "trips": 1454,
+        "gzipBytes": 133060
       },
       {
         "id": "10-12",
-        "trips": 1240,
-        "gzipBytes": 121179
+        "trips": 1290,
+        "gzipBytes": 122446
       },
       {
         "id": "12-14",
-        "trips": 1272,
-        "gzipBytes": 122788
+        "trips": 1322,
+        "gzipBytes": 124128
       },
       {
         "id": "14-16",
-        "trips": 1340,
-        "gzipBytes": 127267
+        "trips": 1390,
+        "gzipBytes": 128588
       },
       {
         "id": "16-18",
-        "trips": 1460,
-        "gzipBytes": 136725
+        "trips": 1510,
+        "gzipBytes": 138127
       },
       {
         "id": "18-20",
-        "trips": 1404,
-        "gzipBytes": 130357
+        "trips": 1454,
+        "gzipBytes": 131835
       },
       {
         "id": "20-22",
-        "trips": 1049,
-        "gzipBytes": 99663
+        "trips": 1075,
+        "gzipBytes": 100434
       },
       {
         "id": "22-24",
-        "trips": 810,
-        "gzipBytes": 78413
+        "trips": 834,
+        "gzipBytes": 79128
       }
     ]
   },
@@ -2212,5 +2224,29 @@
       }
     },
     "publicationStatus": "Technical audit only; visual and hosted verification are recorded separately in docs/LAUSANNE-STUDY.md"
+  },
+  "funicularProjection": {
+    "limits": {
+      "snapMetres": 120,
+      "maxDetourRatio": 4.5,
+      "detourAllowanceMetres": 3000
+    },
+    "snaps": [
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:30003:0:487806",
+        "stop": "Cossonay-Ville",
+        "segmentId": "1029847943",
+        "snapMetres": 5.31
+      },
+      {
+        "group": "rail",
+        "stopId": "ch:1:sloid:93755:0:149140",
+        "stop": "Cossonay-Penthalaz (funi)",
+        "segmentId": "25909750",
+        "snapMetres": 2.32
+      }
+    ],
+    "issues": []
   }
 }

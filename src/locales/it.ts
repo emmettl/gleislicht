@@ -56,7 +56,7 @@ const text = {
   lausanneNetwork: "Rete regionale Losanna / Morges",
   lausanneNetworkStatus: "Stato della rete Losanna / Morges",
   lausanneUnavailable: "Orario di Losanna non disponibile",
-  lausanneModes: "Métro · autobus tl / MBC · LEB · treni regionali",
+  lausanneModes: "Métro · autobus tl / MBC · LEB · treni regionali · funicolare di Cossonay",
   lausanneView: "Regione Losanna / Morges",
   lausanneModel: "Movimenti da orario · percorsi autobus dedotti · nessuna posizione in diretta",
   zurichSubtitle: 'Zurigo in movimento',

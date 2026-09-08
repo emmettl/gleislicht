@@ -217,7 +217,7 @@
     "Annual membership is complete for the pinned national timetable and official canton polygon, not proof of unrepresented real-world services.",
     "Friday/Sunday plus preceding-day carry-in do not establish seasonal, holiday or year-round coverage.",
     "No-stop through traffic is outside this passenger-service inventory.",
-    "Geometry admission covers only the mapped official Buslinien source. Rail, mountain, boat and unmatched bus routes remain in the coverage denominator.",
+    "Geometry admission uses mapped Buslinien and standard-gauge FOT infrastructure. Mountain, boat and unresolved rail/bus patterns remain in the coverage denominator.",
     "The WFS matches the archive within 1 mm but proves no 2026 alignment validity. No realtime."
   ],
   "topologyJoins": {
@@ -284,5 +284,155 @@
         "reason": "Same-line source endpoint meets an existing vertex of a separate component less than one metre away. Explicit topology normalization; street direction is not certified."
       }
     ]
+  },
+  "rail": {
+    "sourceDirectory": "data/zug-rail-sources",
+    "sourceSha256": "2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+    "sourceMetadataSha256": "deeaa5552be1c671511cee21d9ba2787d5787d008dda4d4a36b82d4d4e64462c",
+    "limits": {
+      "stationAttachmentMetres": 350,
+      "topologyAttachmentMetres": 120,
+      "detourRatio": 4.5,
+      "detourFloorMetres": 3000,
+      "simplificationMetres": 5
+    },
+    "routes": [
+      {
+        "routeId": "91-1-A-j26-1",
+        "agencyId": "11",
+        "line": "S1"
+      },
+      {
+        "routeId": "91-2-C-j26-1",
+        "agencyId": "11",
+        "line": "S2"
+      },
+      {
+        "routeId": "91-2-G-j26-1",
+        "agencyId": "11",
+        "line": "IC2"
+      },
+      {
+        "routeId": "91-2-P-j26-1",
+        "agencyId": "11",
+        "line": "RE2"
+      },
+      {
+        "routeId": "91-21-D-j26-1",
+        "agencyId": "11",
+        "line": "IC21"
+      },
+      {
+        "routeId": "91-24-j26-1",
+        "agencyId": "11",
+        "line": "S24"
+      },
+      {
+        "routeId": "91-26-j26-1",
+        "agencyId": "11",
+        "line": "S26"
+      },
+      {
+        "routeId": "91-2A-Y-j26-1",
+        "agencyId": "11",
+        "line": "EC"
+      },
+      {
+        "routeId": "91-2L-Y-j26-1",
+        "agencyId": "11",
+        "line": "RE"
+      },
+      {
+        "routeId": "91-35-Y-j26-1",
+        "agencyId": "11",
+        "line": "IR"
+      },
+      {
+        "routeId": "91-46-C-j26-1",
+        "agencyId": "11",
+        "line": "IR46"
+      },
+      {
+        "routeId": "91-46-j26-1",
+        "agencyId": "82",
+        "line": "IR46"
+      },
+      {
+        "routeId": "91-5-C-j26-1",
+        "agencyId": "11",
+        "line": "S5"
+      },
+      {
+        "routeId": "91-5-G-j26-1",
+        "agencyId": "11",
+        "line": "SN5"
+      },
+      {
+        "routeId": "91-5F-Y-j26-1",
+        "agencyId": "11",
+        "line": "IC"
+      },
+      {
+        "routeId": "91-5G-Y-j26-1",
+        "agencyId": "11",
+        "line": "EXT"
+      },
+      {
+        "routeId": "91-6-W-j26-1",
+        "agencyId": "11",
+        "line": "RE6"
+      },
+      {
+        "routeId": "91-70-A-j26-1",
+        "agencyId": "11",
+        "line": "IR70"
+      },
+      {
+        "routeId": "91-75-j26-1",
+        "agencyId": "11",
+        "line": "IR75"
+      },
+      {
+        "routeId": "91-A6-Y-j26-1",
+        "agencyId": "82",
+        "line": "EXT"
+      },
+      {
+        "routeId": "91-AI-Y-j26-1",
+        "agencyId": "11",
+        "line": "EXT"
+      },
+      {
+        "routeId": "91-AP-Y-j26-1",
+        "agencyId": "11",
+        "line": "EXT"
+      },
+      {
+        "routeId": "91-AS-Y-j26-1",
+        "agencyId": "11",
+        "line": "EXT"
+      },
+      {
+        "routeId": "91-AW-Y-j26-1",
+        "agencyId": "11",
+        "line": "EXT"
+      },
+      {
+        "routeId": "91-D8-Y-j26-1",
+        "agencyId": "11",
+        "line": "S"
+      },
+      {
+        "routeId": "91-N7-j26-1",
+        "agencyId": "11",
+        "line": "N7"
+      },
+      {
+        "routeId": "91-VAE-j26-1",
+        "agencyId": "82",
+        "line": "VAE"
+      }
+    ],
+    "method": "Exact operating-point number, standard gauge (mm1435) only, original declared topology. Every other scheduled operating point is blocked during each pair search. Paths are inferred infrastructure corridors; track assignment and 2026 validity remain unproven."
   }
 }

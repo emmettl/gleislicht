@@ -54,7 +54,7 @@ const text = {
   lausanneNetwork: "Lausanne / Morges regional network",
   lausanneNetworkStatus: "Lausanne / Morges network status",
   lausanneUnavailable: "Lausanne timetable unavailable",
-  lausanneModes: "Métro · tl / MBC buses · LEB · regional rail",
+  lausanneModes: "Métro · tl / MBC buses · LEB · regional rail · Cossonay funicular",
   lausanneView: "Lausanne / Morges region",
   lausanneModel: "Scheduled movements · inferred bus paths · no live positions",
   zurichSubtitle: 'Zürich in motion',

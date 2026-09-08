@@ -1,8 +1,10 @@
 # Lausanne regional study
 
 **MBC expansion, 8 September 2026:** the application builder now adds complete MBC
-rail and bus journeys through Morges, Bière, L’Isle and Cossonay. Local fixtures
-contain 10,134 weekday / 7,833 Sunday journeys and pass seven geometry gates.
+rail and bus journeys through Morges, Bière, L’Isle and Cossonay, plus its
+funicular. Local fixtures contain 10,546 weekday / 8,089 Sunday journeys; all
+eight mode/operator groups have 100% accepted geometry. The La Plantaz terminal
+turnaround is repaired from ordered OSM route members.
 See the [Vaud integration notes](VAUD-EXPANSION.md) for source-chain checks,
 reviewed alignments and recovery compatibility. The five-group results below
 document the original scope; omit `--include-mbc` to reproduce that audit.

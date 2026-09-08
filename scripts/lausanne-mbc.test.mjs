@@ -9,21 +9,22 @@ import { lausanneGroup, selectLausanneSnapshot, summarizeLausanneGeometry } from
 
 const metadata = { serviceDate: '2026-09-08', feedVersion: '20260905', dayModel: 'civil day with preceding service-day spillover', sourceServiceDates: ['2026-09-07', '2026-09-08'], windowStart: 0, windowEnd: 86400 }
 const stops = [[6.49, 46.51, 'Morges', '', 'a'], [6.48, 46.52, 'La Gottaz', '', 'b'], [6.33, 46.54, 'Bière', '', 'c']]
-const routes = new Map([['rail', { agencyId: '29' }], ['bus', { agencyId: '764' }], ['tl', { agencyId: '151' }]])
+const routes = new Map([['rail', { agencyId: '29' }], ['bus', { agencyId: '764' }], ['tl', { agencyId: '151' }], ['funi', { agencyId: '344' }]])
 const train = (id, routeId, category, ids) => ({ id, sourceTripId: id, sourceServiceDate: '2026-09-08', routeId, route: routeId, category, start: 100, end: 300, stops: ids.map((i, n) => [i, 100 + n * 100, 100 + n * 100]) })
 const base = { metadata, stops, trains: [train('rail-trip', 'rail', 'regional', [0, 1]), train('tl-trip', 'tl', 'bus', [0, 1])] }
-const mbc = { metadata: { ...metadata, agencyIds: ['29', '764'], modes: ['rail', 'bus'] }, stops, trains: [train('rail-trip', 'rail', 'regional', [0, 1, 2]), train('bus-trip', 'bus', 'bus', [2, 1, 0])] }
+const mbc = { metadata: { ...metadata, agencyIds: ['29', '764', '344'], modes: ['rail', 'bus', 'funicular'] }, stops, trains: [train('rail-trip', 'rail', 'regional', [0, 1, 2]), train('bus-trip', 'bus', 'bus', [2, 1, 0]), train('funi-trip', 'funi', 'funicular', [0, 1])] }
 
 describe('Lausanne–MBC integration', () => {
   it('replaces clipped rail chains, preserves tl, admits MBC bus and separates its gates', () => {
     const merged = mergeLausanneMbc(base, mbc, routes)
     const selected = selectLausanneSnapshot(merged, routes, true)
-    expect(selected.trains).toHaveLength(3)
+    expect(selected.trains).toHaveLength(4)
     expect(selected.trains.find(t => t.id === 'rail-trip')?.stops).toEqual(mbc.trains[0].stops)
     expect(selected.trains.find(t => t.id === 'tl-trip')).toEqual(base.trains[1])
     expect(lausanneGroup(mbc.trains[1], routes, true)).toBe('mbc-bus')
     expect(lausanneGroup(mbc.trains[0], routes, true)).toBe('mbc-rail')
     expect(lausanneGroup(mbc.trains[1], routes)).toBeUndefined()
+    expect(lausanneGroup(mbc.trains[2], routes, true)).toBe('cossonay-funicular')
     const groups = summarizeLausanneGeometry({ ...selected, paths: [] }, routes, true)
     expect(groups.find(g => g.id === 'mbc-bus')).toMatchObject({ trips: 1, totalSegments: 2, acceptedSegments: 0 })
     expect(groups.find(g => g.id === 'mbc-rail')).toMatchObject({ trips: 1, totalSegments: 2 })

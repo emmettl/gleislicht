@@ -6,6 +6,7 @@ import { sha256 } from './download-luzern-sources.mjs'
 import { validateZugSnapshot } from './build-zug-region.mjs'
 import { reviewedZugJoins, zugGraphs, matchZugPair, directedPatternKey, zugRouteKey } from './zug-line-geometry.mjs'
 import { gunzipSync } from 'node:zlib'
+import { loadZugRail } from './zug-rail-geometry.mjs'
 import { inCanton } from './zug-timetable.mjs'
 
 const json = async path => { const bytes = await readFile(path); return JSON.parse(path.endsWith('.gz') ? gunzipSync(bytes) : bytes.toString()) }
@@ -25,6 +26,10 @@ export async function checkZugRegion({ auditPath = 'data/zug-study-audit.json', 
   const collection = await json(join(sourceDirectory, 'bus.geojson'))
   const repairs = reviewedZugJoins(collection, audit.policy)
   const { graphs } = zugGraphs(collection, audit.policy)
+  const rail = await loadZugRail(audit.policy.rail, audit.policy.dates)
+  assert.equal(audit.sourceHashes.rail, audit.policy.rail.sourceSha256)
+  assert.deepEqual(audit.railSource, rail.source)
+  assert.deepEqual(audit.railSourceInventory, rail.sourceInventory)
   const repairIds = new Set(repairs.map(r => r.id))
   for (const route of audit.inventory) for (const key of route.sourceFeatures) assert(sourceKeys.has(key))
   let raw
@@ -93,6 +98,13 @@ export async function checkZugRegion({ auditPath = 'data/zug-study-audit.json', 
     assert.equal(sum(day.directedStopPairs, 'representativeHeadwayOccurrences'), day.representativeHeadwaySegmentOccurrences)
     assert.equal(day.scheduledSegmentOccurrences + day.representativeHeadwaySegmentOccurrences, day.segmentOccurrences)
     assert.equal(day.directedStopPairs.filter(p => p.matched).length, day.matchedDirectedPairs)
+    const unique = new Map()
+    for (const p of day.directedStopPairs) {
+      const key = JSON.stringify([p.routeId, p.fromId, p.toId]), values = unique.get(key) ?? []
+      values.push(p); unique.set(key, values)
+    }
+    assert.equal(unique.size, day.uniqueDirectedRouteStopPairs)
+    assert.equal([...unique.values()].filter(values => values.every(p => p.matched)).length, day.fullyMatchedUniqueDirectedRouteStopPairs)
     for (const field of ['trips', 'admittedTrips', 'patterns', 'admittedPatterns', 'directedPairs', 'matchedDirectedPairs', 'segmentOccurrences', 'matchedSegmentOccurrences']) assert.equal(sum(day.groups, field), day[field], `Group ${field}`)
     for (const group of day.groups) {
       const failures = day.directedStopPairs.filter(p => `${p.agencyId}:${p.mode}` === group.id && !p.matched)
@@ -133,7 +145,9 @@ export async function checkZugRegion({ auditPath = 'data/zug-study-audit.json', 
     const rawRoutes = new Map(raw.inventory.map(r => [r.routeId, r]))
     for (const p of pairs.values()) {
       const r = rawRoutes.get(p.routeId), a = sourceStops.get(p.fromId), b = sourceStops.get(p.toId)
-      const result = r.mode !== 'bus' ? { reason: `no-reviewed-${r.mode}-geometry` } : matchZugPair(graphs.get(zugRouteKey(r)), [Number(a.stop_lon), Number(a.stop_lat)], [Number(b.stop_lon), Number(b.stop_lat)], audit.policy.limits)
+      const pattern = p.contextPatternId ? patterns.get(p.contextPatternId) : undefined
+      const train = pattern ? { routeId: pattern.routeId, directionId: pattern.directionId, calls: pattern.stopIds.map((id, i) => ({ id, pickupType: pattern.callRules[i][0], dropOffType: pattern.callRules[i][1] })) } : undefined
+      const result = train ? rail.matchPattern(train, sourceStops, r)[p.pairIndex] : r.mode !== 'bus' ? { reason: `no-reviewed-${r.mode}-geometry` } : matchZugPair(graphs.get(zugRouteKey(r)), [Number(a.stop_lon), Number(a.stop_lat)], [Number(b.stop_lon), Number(b.stop_lat)], audit.policy.limits)
       assert.equal(Boolean(result.path), p.matched)
       assert.equal(result.reason, p.reason)
       assert.equal(result.path ? sha256(JSON.stringify(result.path)) : null, p.geometrySha256)

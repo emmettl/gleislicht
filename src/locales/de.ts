@@ -56,7 +56,7 @@ const text = {
   lausanneNetwork: "Regionalnetz Lausanne / Morges",
   lausanneNetworkStatus: "Status des Regionalnetzes Lausanne",
   lausanneUnavailable: "Fahrplan Lausanne nicht verfügbar",
-  lausanneModes: "Métro · tl- / MBC-Busse · LEB · Regionalbahn",
+  lausanneModes: "Métro · tl- / MBC-Busse · LEB · Regionalbahn · Standseilbahn Cossonay",
   lausanneView: "Region Lausanne / Morges",
   lausanneModel: "Fahrplanbewegungen · abgeleitete Buswege · keine Live-Positionen",
   zurichSubtitle: 'Zürich in Bewegung',

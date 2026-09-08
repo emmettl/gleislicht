@@ -56,7 +56,7 @@ const text = {
   lausanneNetwork: "Réseau régional Lausanne / Morges",
   lausanneNetworkStatus: "État du réseau Lausanne / Morges",
   lausanneUnavailable: "Horaires de Lausanne indisponibles",
-  lausanneModes: "Métro · bus tl / MBC · LEB · trains régionaux",
+  lausanneModes: "Métro · bus tl / MBC · LEB · trains régionaux · funiculaire de Cossonay",
   lausanneView: "Région Lausanne / Morges",
   lausanneModel: "Mouvements selon l’horaire · tracés de bus déduits · sans positions en direct",
   zurichSubtitle: 'Zurich en mouvement',

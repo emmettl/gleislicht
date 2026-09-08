@@ -1,20 +1,19 @@
 # Vaud expansion: first implementation
 
 Started **8 September 2026**. The broader Vaud candidate remains an audit. The
-first application increment now extends the existing Lausanne study with complete
-MBC rail and bus journeys through Morges, Bière, L’Isle and Cossonay. This increment
+application now extends the existing Lausanne study with complete
+MBC rail and bus journeys through Morges, Bière, L’Isle and Cossonay, including the Cossonay funicular. This increment
 is implemented locally; it has not been published.
 
 ## Lausanne–MBC application increment
 
-The daily Lausanne builder now imports agencies **29 and 764** independently
+The daily Lausanne builder now imports agencies **29, 764 and 344** independently
 of the original rectangle. The new importer flag `--agencies` filters all selected
 modes; existing `--local-agencies` keeps its bus/tram-only semantics. The supplement
 uses worldwide display bounds and retains complete MBC journeys. Each chain is
 checked against ordered source platforms and times, including the preceding
 service day's offset. The merge replaces clipped MBC rail trips by source identity;
-other Lausanne journeys remain unchanged. Replacement agency 7256, funicular
-agency 344 and lake services remain excluded.
+other Lausanne journeys remain unchanged. Replacement agency 7256 and lake services remain excluded.
 
 The existing `lausanne-region` URL and lazy-loading flow remain in use. All four
 languages identify Lausanne / Morges, with MBC and Bière in discovery/search copy.
@@ -23,39 +22,41 @@ seeking, sharing and Now use the existing study machinery.
 
 | Integrated study | Weekday | Sunday |
 | --- | ---: | ---: |
-| Journeys | 10,134 | 7,833 |
-| Platforms | 1,455 | 1,385 |
-| Named stops | 709 | 678 |
+| Journeys | 10,546 | 8,089 |
+| Platforms | 1,457 | 1,387 |
+| Named stops | 711 | 680 |
 | MBC rail journeys | 106 | 76 |
 | MBC bus journeys | 1,249 | 695 |
 | MBC rail accepted geometry | 100% | 100% |
-| MBC bus accepted geometry | 99.46% | 99.56% |
+| MBC bus accepted geometry | 100% | 100% |
+| Cossonay funicular journeys | 412 | 256 |
+| Cossonay funicular accepted geometry | 100% | 100% |
 
-All seven groups pass the unchanged 95% gate: tl bus, MBC bus, m1, m2, LEB,
-MBC rail and other rail. Every group except MBC bus has 100% accepted geometry
-on both dates. The largest rail-platform projection remains 44.28 m. La Plantaz's
-bus-platform pair remains unshaped.
+All eight groups pass with **100% accepted geometry** on both dates: tl bus,
+MBC bus, m1, m2, LEB, MBC rail, other rail and the Cossonay funicular. The largest
+rail-platform projection remains 44.28 m; funicular projections are 5.31 m and
+2.32 m. Funicular OSM provenance and acceptance are separate from FOT rail.
 
 The [weekday](../data/lausanne-mbc-study-audit.json) and
 [Sunday](../data/lausanne-mbc-study-sunday-audit.json) reports distinguish the
 base rectangle, complete-agency supplement and actual combined bounds. The
 [alignment review](assets/mbc-geometry-review.svg) was rendered and inspected:
 largest bus snaps at Sévery, Aclens and La Sarraz; La Plantaz; Morges station;
-Cossonay; both rail branches and Morges rail platforms. It compares paths with
+Cossonay; both rail branches, Morges rail platforms, the complete funicular and its passing loop. It compares paths with
 the retained OSM/FOT inputs, not independent operator evidence.
 [Review provenance](../data/mbc-geometry-review.json) retains hashes and offsets.
 The largest bus snap is 88.1 m, within the existing 120 m limit.
 
-Artifacts carry `lausanneScopeVersion: 2`, complete-agency IDs and separate MBC
-geometry/provenance. Recovery accepts a complete legacy or complete expanded set,
+Artifacts carry `lausanneScopeVersion: 3`, complete-agency IDs and separate MBC
+geometry/provenance. Recovery accepts complete legacy, MBC-only (v2), or MBC-plus-funicular (v3) sets,
 rejects mixed versions/hashes/geometry reports, and checks MBC rail and buses
-separately. Legacy recovery retains its original date and coverage.
+separately, with a full-coverage funicular requirement and matching source hashes. Legacy recovery retains its original date and coverage.
 
-Fresh weekday and Sunday builds and both fourteen-file integrity checks passed,
-including the weekday's automatic supplemental import. The production build,
-bundle/architecture checks and **349 unit tests** passed in an isolated checkout.
-Isolation avoided concurrent Basel UI edits referencing a not-yet-built manifest.
-No browser/device performance result is claimed for this increment.
+Fresh weekday and Sunday builds and both fourteen-file integrity checks passed.
+The application build, bundle and architecture checks pass. Geometry, integration
+and recovery tests cover the terminal loop, funicular directions, unchanged source
+times and mixed-release rejection. No browser/device performance result is claimed
+for this increment. Hosted verification is still outstanding for the new scope.
 
 Reproduce the application artifacts:
 
@@ -126,14 +127,34 @@ second matching pass for Sunday's patterns resolves that calendar-dependent gap.
 | --- | ---: | ---: |
 | Trips | 1,249 | 695 |
 | Stop-to-stop movement occurrences | 21,305 | 11,999 |
-| Accepted geometry occurrences | 21,191 | 11,946 |
-| Accepted occurrence coverage | 99.46% | 99.56% |
+| Accepted geometry occurrences | 21,305 | 11,999 |
+| Accepted occurrence coverage | 100% | 100% |
 
-The remaining rejection is one directed platform pair at **Tolochenaz, La
-Plantaz**, appearing in two patterns on each date. It accounts for 114 weekday
-and 53 Sunday occurrences. The matcher did not supply a usable shape between
-these two platform records; the audit keeps it unresolved. No snap or detour
-threshold was relaxed.
+The La Plantaz rejection is now repaired. pfaedle assigned the arrival and
+departure poles the same shape distance, dropping the intervening turnaround.
+[OSM relation 2461243](https://www.openstreetmap.org/relation/2461243) explicitly
+orders the approach, complete roundabout and return along Chemin des Plantées.
+The retained source yields a **451.9 m** loop with an **8.14 m** maximum platform
+connector, replacing 114 weekday / 53 Sunday unshaped occurrences. Both source
+platform calls and their one-minute separation remain unchanged. The normal
+snap and detour limits remain in force; no direct shortcut was substituted.
+
+The [retained OSM source](../data/vaud-sources/mbc-terminal-funicular-osm.json)
+contains ordered ways, nodes, query timestamps and hashes. The same source
+separately retains the Cossonay funicular's eleven track ways, including its
+passing loop. Track choice through that loop is inferred; these are scheduled
+movements, not observed vehicle positions.
+
+Reapply the idempotent terminal correction after a fresh matcher import:
+
+```sh
+node scripts/repair-mbc-road-caches.mjs data/vaud-mbc-road-cache.json /path/weekday-matched/patterns.json
+node scripts/repair-mbc-road-caches.mjs data/vaud-mbc-sunday-road-cache.json /path/sunday-matched/patterns.json
+```
+
+The repair checks the original matcher pattern hash, exact route/platform IDs,
+ordered road connectivity, roundabout direction, closed loop, and the original
+rejection. Its provenance is additive; original matcher hashes stay intact.
 
 The retained caches are [weekday](../data/vaud-mbc-road-cache.json) and
 [Sunday](../data/vaud-mbc-sunday-road-cache.json). They use the existing pinned
@@ -242,7 +263,27 @@ the actual source/extract dates, and write it to the weekday cache. Repeat using
 the Sunday feed for the Sunday cache. Re-run both audits after cache changes.
 
 The **Lausanne–Morges–Bière–Cossonay** slice is now implemented above.
-Audit the Cossonay funicular separately, then follow with
+The Cossonay funicular is now included. Continue with
 Nyon/NStCM, the Riviera, and North Vaud, using the per-operator reports to resolve
 geometry before exposing each area. Broader TPC/MOB/TPF corridors and lake
 services need their own boundary and geometry decisions.
+
+## Nyon/NStCM follow-on geometry audit
+
+The next-area [audit](../data/vaud-nyon-geometry-audit.json) now covers NStCM (66),
+TPN (738) and Bus Nyon-Prangins (741) on the same weekday and Sunday samples.
+NStCM is isolated by the FOT La Cure anchor, verified to reach underground Nyon
+while excluding the adjacent mainline station. Platform projection gives 100%
+geometry on its 117 weekday / 57 Sunday trips.
+
+Four dated operator-specific road caches have been retained. The urban agency
+741 reaches 100% on 391 weekday / 109 Sunday trips. TPN agency 738 reaches 87.25%
+weekday / 94.08% Sunday on 447 / 255 trips. Explicit matcher fallbacks around
+Divonne and school-service patterns remain rejected. **Nyon is not released in
+the application:** TPN must pass 95%, and complete source chains, boundaries and
+visual review still need closure. No threshold was lowered.
+
+`prepare-nyon-road-feeds.mjs ARCHIVE VAUD_MANIFEST OUTPUT` creates matching feeds;
+use the standard pinned matcher and `importRoadShapes` to regenerate the caches.
+`audit-nyon-geometry.mjs ARCHIVE RAIL WEEKDAY_MANIFEST SUNDAY_MANIFEST REPORT`
+replays source-specific rail projection and exact road-pattern application.

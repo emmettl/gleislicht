@@ -7,7 +7,7 @@ import { pathToFileURL } from 'node:url'
 import { previousServiceDate } from './civil-day.mjs'
 import { validateBaselRelease } from './basel-release-validation.mjs'
 import { validateBernRelease } from './bern-release-validation.mjs'
-import { LAUSANNE_WEST_GROUPS } from './lausanne-mbc.mjs'
+import { LAUSANNE_WEST_GROUPS, LAUSANNE_MBC_GROUPS } from './lausanne-mbc.mjs'
 
 export const REGIONAL_IDS = ['zurich-city', 'zvv-region', 'geneva-tpg', 'lausanne-region', 'basel-core', 'bern-region']
 const digest = bytes => createHash('sha256').update(bytes).digest('hex')
@@ -43,18 +43,24 @@ export async function readRegionalArtifacts(read, ids = REGIONAL_IDS, expectedDa
       assert.deepEqual(morning.metadata.sourceServiceDates, day.metadata.sourceServiceDates)
       assert.equal(local?.license, 'ODbL-1.0')
       const scope = day.metadata.lausanneScopeVersion
-      assert(scope === undefined || scope === 2, 'Lausanne: unknown scope version')
+      assert(scope === undefined || scope === 2 || scope === 3, 'Lausanne: unknown scope version')
       assert.equal(morning.metadata.lausanneScopeVersion, scope, 'Lausanne: mixed scope versions')
       assert.deepEqual(morning.metadata.sourceHashes, day.metadata.sourceHashes, 'Lausanne: mixed source hashes')
       assert.deepEqual(morning.metadata.lausanneGeometry, day.metadata.lausanneGeometry, 'Lausanne: mixed geometry reports')
-      if (scope === 2) {
-        assert.deepEqual(day.metadata.completeAgencyIds, ['29', '764'])
+      if (scope === 2 || scope === 3) {
+        assert.deepEqual(day.metadata.completeAgencyIds, scope === 3 ? ['29', '764', '344'] : ['29', '764'])
         assert.deepEqual(morning.metadata.completeAgencyIds, day.metadata.completeAgencyIds)
         assert.deepEqual(day.metadata.localAgencyIds, ['151', '764'])
         assert.deepEqual(morning.metadata.localAgencyIds, day.metadata.localAgencyIds)
         assert(day.metadata.sourceHashes.mbcSnapshot && day.metadata.sourceHashes.mbcBusCache0 && day.metadata.sourceHashes.mbcBusCache1, 'Lausanne: missing MBC provenance')
       }
-      assert.deepEqual(day.metadata.lausanneGeometry?.map(group => group.id), scope === 2 ? LAUSANNE_WEST_GROUPS : ['tl-bus', 'm1', 'm2', 'leb', 'rail'])
+      if (scope === 3) {
+        assert.deepEqual(morning.metadata.funicularGeometry, day.metadata.funicularGeometry, 'Lausanne: mixed funicular geometry')
+        const funicular = day.metadata.funicularGeometry
+        assert(funicular?.license === 'ODbL-1.0' && funicular.sha256 === day.metadata.sourceHashes.mbcSupplementGeometry, 'Lausanne: missing funicular provenance')
+        assert(funicular.totalSegments > 0 && funicular.matchedSegments === funicular.totalSegments && funicular.maximumSnapMetres <= 120, 'Lausanne: insufficient funicular geometry')
+      }
+      assert.deepEqual(day.metadata.lausanneGeometry?.map(group => group.id), scope === 3 ? LAUSANNE_WEST_GROUPS : scope === 2 ? LAUSANNE_MBC_GROUPS : ['tl-bus', 'm1', 'm2', 'leb', 'rail'])
       assert(day.metadata.lausanneGeometry.every(group => group.totalSegments > 0 && group.acceptedSegments / group.totalSegments >= .95), 'Lausanne: insufficient per-mode geometry')
       assert(rail?.maximumSnapMetres <= 120, 'Lausanne: rail projection exceeds limit')
     }

@@ -13,7 +13,7 @@ const text = `# Zug canton: source adapter, regional feed and admission audit
 
 Inventory and source review: **8 September 2026**. Start point: [Swiss transit source inventory](SWISS-TRANSIT-SOURCE-INVENTORY.md#zg).
 
-**The annual timetable inventory covers the whole canton. The regional motion feed has partial geometry coverage.** It admits only complete directed stop patterns passing the numerical source checks, on Friday **4 September 2026** and Sunday **6 September 2026**. Admission is not certification of a current 2026 alignment, one-way street, running track or temporary diversion.
+**The annual timetable inventory covers the whole canton. The regional bus and rail feed has partial geometry coverage.** It admits only complete directed stop patterns passing the numerical source checks, on Friday **4 September 2026** and Sunday **6 September 2026**. Admission is not certification of a current 2026 alignment, one-way street, running track or temporary diversion.
 
 ## Scope and evidence
 
@@ -38,6 +38,16 @@ Credit for bus geometry: **Quelle: GIS Kanton Zug**. The [official terms](https:
 
 The [ZVB 2026 line directory](https://www.zvb.ch/fahrplan/fahrplan-zvb-2026/) is retained for identity review. GTFS agency 839 maps to the explicitly listed ZVB source line labels; 801 maps only to PostAuto 73, 110 and 280. There is no prefix/substring matching, agency-wide geometry admission or automatic renumbering. Historic source line **528** has no annual Zug-calling GTFS route and is not silently assigned to 525/526.
 
+## Federal rail expansion
+
+The [preserved federal rail source](../data/zug-rail-sources/source.json) adds **529 Friday** and **431 Sunday** complete SBB/SOB trips to the bus baseline. Source credit: **© Federal Office of Transport (FOT)**. The source collection links [attribution terms](https://opendata.swiss/terms-of-use/#terms_by); its literal STAC licence field is retained as proprietary, without substituting a Creative Commons licence. The [catalogue](../data/zug-rail-sources/catalogue.json), [collection metadata](../data/zug-rail-sources/collection.json) and [original compressed XTF](../data/zug-rail-sources/network.xtf.gz) are preserved. [Official federal dataset](https://data.geo.admin.ch/api/stac/v1/collections/ch.bav.schienennetz/items/schienennetz).
+
+The XML SHA-256 is **${audit.railSource.sha256}**, verified against the published multihash. Catalogue datetime is **${audit.railSource.catalogueDate}**, asset-updated timestamp **${audit.railSource.assetUpdated}**, catalogue checked **${audit.railSource.catalogueCheckedOn}**. All **3,424 source segments** carry an internal Stand of **2021-07-06**. These timestamps do not prove September 2026 validity. The audit records every segment's gauge, infrastructure operator, validity fields, endpoint attachment and admission disposition: **1,814** segments enter the candidate graph, **1,604** fail standard-gauge selection and **6** exceed the source topology attachment limit. Funiculars are not in this dataset.
+
+The adapter admits only explicitly inventoried SBB/SOB route identities and **mm1435** source segments. It uses exact Swiss operating-point numbers, rejecting missing/ambiguous identities; there is no name or nearest-station fallback. Source endpoints connect through declared node references with attachments at most **120 m**; GTFS stations may attach to their exact operating point within **350 m**. Source linework is simplified at **5 m in LV95** and transformed by the existing parser to six-decimal WGS84 coordinates. These operating-point and station connectors are inferred geometry.
+
+Each adjacent-call search blocks all other known scheduled operating points in the full pattern, preventing a shortcut through a later or earlier call. The detour limit is **max(3,000 m, 4.5 × direct distance)**, including station attachments. Each accepted pair retains ordered source segment IDs and node references. Rail contexts with different complete stop sequences remain distinct in the cache and audit. This validates numerical corridor continuity and stop order, not actual running-track choice, freight/passenger access rights, temporary diversions or observed movement. International trip calls are retained in full even when their missing foreign geometry causes exclusion.
+
 ## Geometry and directed stop-pattern method
 
 Decode the original EPSG:2056 GeoPackage with strict geometry/schema checks. Transform XY with the existing swisstopo approximate LV95-to-WGS84 polynomial at full floating precision; no simplification. Graph identity uses seven decimal places. Shared source vertices connect only within the exact mapped line. Geometric crossings do not create junctions. The source has no direction attribute: shortest connected source corridors are oriented by the ordered GTFS calls and remain inferred alignments.
@@ -48,7 +58,7 @@ Three explicitly reviewed source discontinuities are joined by short inferred co
 
 ${table(['Join','Lines','Length','Source vertices'],audit.policy.topologyJoins.joins.map(j=>[j.id,j.lines.join(', '),`${j.metres.toFixed(3)} m`,j.vertices.map(v=>`feature ${v.featureId} / vertex ${v.index}`).join(' → ')]))}
 
-The audit and feed metadata retain the join policy; affected pairs carry geometryRepairIds and inferredJoinMetres. **${days[0].admittedTripsUsingRepair} Friday trips** and **${days[1].admittedTripsUsingRepair} Sunday trips** use these connectors. Their small lengths do not establish lawful street direction. Without them, admission is 1,668 Friday trips and 1,009 Sunday trips.
+The audit and feed metadata retain the join policy; affected pairs carry geometryRepairIds and inferredJoinMetres. **${days[0].admittedTripsUsingRepair} Friday trips** and **${days[1].admittedTripsUsingRepair} Sunday trips** use these connectors. Their small lengths do not establish lawful street direction. The initial bus-only release admitted 1,668 Friday trips and 1,009 Sunday trips without these connectors; the joins raised its bus admission to 2,238 and 1,249. The subsequent rail expansion is counted separately below.
 
 ## Weekday and Sunday results
 
@@ -58,12 +68,13 @@ ${table(['Measure',...days.map(d=>d.date)], [
   ['Civil-day trips',...days.map(d=>count(d.trips))],
   ['Admitted / excluded trips',...days.map(d=>`${count(d.admittedTrips)} / ${count(d.excludedTrips)}`)],
   ['Admitted / all directed patterns',...days.map(d=>`${d.admittedPatterns} / ${d.patterns}`)],
-  ['Matched / all directed route-stop pairs',...days.map(d=>`${d.matchedDirectedPairs} / ${d.directedPairs} (${percent(d.matchedDirectedPairs,d.directedPairs)})`)],
+  ['Matched / all routing-context pairs',...days.map(d=>`${d.matchedDirectedPairs} / ${d.directedPairs} (${percent(d.matchedDirectedPairs,d.directedPairs)})`)],
+  ['Fully matched / all unique directed route-stop pairs',...days.map(d=>`${d.fullyMatchedUniqueDirectedRouteStopPairs} / ${d.uniqueDirectedRouteStopPairs}`)],
   ['Matched / all scheduled segment occurrences',...days.map(d=>`${count(d.matchedSegmentOccurrences)} / ${count(d.segmentOccurrences)} (${percent(d.matchedSegmentOccurrences,d.segmentOccurrences)})`)],
   ['All / admitted carry-in trips',...days.map(d=>`${d.carryInTrips} / ${d.admittedCarryInTrips}`)],
 ])}
 
-Matched occurrences include good pairs on ultimately excluded patterns. They are not a percentage of admitted full trips. All modes and excluded operators stay in the denominator. Every emitted trip has a non-null, correctly oriented path for every adjacent source call.
+Rail pair routing depends on the complete ordered pattern, so days[].directedPairs and group pair counts include pattern context for rail. Bus pairs retain the route/from/to key. The separate uniqueDirectedRouteStopPairs count collapses context; fullyMatchedUniqueDirectedRouteStopPairs requires success in every tested context. These denominators must not be confused when comparing the original bus-only release with this expansion. Matched occurrences include good pairs on ultimately excluded patterns. They are not a percentage of admitted full trips. All modes and excluded operators stay in the denominator. Every emitted trip has a non-null, correctly oriented path for every adjacent source call.
 
 ${table(['Date','Agency / mode','Trips admitted / all','Patterns admitted / all','Pairs matched / all','Occurrences matched / all'],days.flatMap(d=>d.groups.map(g=>[d.date,`${g.id} — ${g.agency}`,`${g.admittedTrips} / ${g.trips}`,`${g.admittedPatterns} / ${g.patterns}`,`${g.matchedDirectedPairs} / ${g.directedPairs}`,`${g.matchedSegmentOccurrences} / ${g.segmentOccurrences}`])))}
 
@@ -75,7 +86,7 @@ Counts overlap: a whole trip or annual route can serve several municipalities. T
 
 ${table(['Municipality','Source stops','Annual route records','Friday admitted / all trips','Sunday admitted / all trips'],audit.municipalityReview.map(m=>[m.name,m.cantonStopIds.length,m.annualRouteIds.length,...m.days.map(d=>`${d.admittedTrips} / ${d.trips}`)]))}
 
-Neuheim has no admitted Sunday trip: current 631 patterns extend beyond the old line source. This is an explicit coverage gap, not absence of service.
+Neuheim has no admitted Sunday trip: current 631 patterns extend beyond the old line source and N2 has no mapped geometry. This is an explicit coverage gap, not absence of service.
 
 ## Complete annual route admission/exclusion inventory
 
@@ -83,7 +94,7 @@ Each row is an exact GTFS route_id, not a unique passenger-facing line. Counts a
 
 ${table(['GTFS route ID','Agency','Line / mode','Annual trips','Friday','Sunday','Failure reasons'],audit.inventory.map(r=>[r.routeId,r.agencyId,`${r.line} / ${r.mode}`,r.annualTripRecords,...r.days.map(d=>d.trips?`${d.admittedTrips}/${d.trips}`:'inactive'),[...new Set(r.days.flatMap(d=>d.reasons))].join(', ')||'—']))}
 
-Principal exclusions: no reviewed rail geometry for SBB/SOB; no reviewed funicular geometry for Zugerbergbahn; no reviewed water routes for Zugersee/Ägerisee; no mapped source lines for 23, 525, 526, 619, 627, 652, replacement buses or night services. Known source identity alone does not admit incomplete linework: 604's Grienbach stop projects about 155 m away; 609's Rothenthurm extension about 2.5 km; Neuheim branches exceed 1 km; 648's Knonau variant exceeds 4 km; PostAuto 73's Luzern end is outside the export, and 110's Hochdorf station gap exceeds 220 m. Walchwil 626 has a collapsed projected pair. Full pair details and stop names are in the machine audit.
+Principal exclusions: complete international EC patterns at Chiasso–Como S. Giovanni and IR75 patterns at Kreuzlingen–Konstanz have no exact foreign operating-point match in the preserved rail source; S26/RE6 patterns using Däniken SO–Schönenwerd SO fail source connectivity/detour/stop-order checks. Their complete trips remain excluded. No reviewed funicular geometry for Zugerbergbahn; no reviewed water routes for Zugersee/Ägerisee; no mapped source lines for 23, 525, 526, 619, 627, 652, replacement buses or night services. Known source identity alone does not admit incomplete linework: 604's Grienbach stop projects about 155 m away; 609's Rothenthurm extension about 2.5 km; Neuheim branches exceed 1 km; 648's Knonau variant exceeds 4 km; PostAuto 73's Luzern end is outside the export, and 110's Hochdorf station gap exceeds 220 m. Walchwil 626 has a collapsed projected pair. Full pair details and stop names are in the machine audit.
 
 ## Every source line label
 
@@ -108,11 +119,11 @@ npm run data:zug
 npm run data:zug:check
 npm run data:zug:report
 python3 -m unittest discover -s scripts -p test_prepare_zug_sources.py
-npx vitest run scripts/zug-region.test.mjs scripts/luzern-region.test.mjs \\
+npx vitest run scripts/zug-region.test.mjs scripts/zug-rail-geometry.test.mjs scripts/luzern-region.test.mjs \\
   scripts/civil-day.test.mjs scripts/gtfs-frequencies.test.mjs
 \`\`\`
 
-The checker verifies source/policy/timetable hashes, annual census totals, all directed patterns including exclusions, all rematched pair hashes, operator and route aggregates, source call/timing replay, carry-in identities, path endpoints, morning membership and every chunk hash/length. Tests reject duplicate/truncated WFS responses, changed labels/coordinates, wrong operator joins, substring matching, arbitrary gaps/crossings, unreviewed topology joins and reversed or missing paths.
+The checker verifies source/policy/timetable hashes, annual census totals, all directed patterns including exclusions, all rematched pair hashes and rail pattern contexts, unique/context pair totals, operator and route aggregates, source call/timing replay, carry-in identities, path endpoints, morning membership and every chunk hash/length. Tests reject duplicate/truncated WFS responses, changed labels/coordinates, wrong operator joins, substring matching, arbitrary gaps/crossings, unreviewed topology joins and reversed or missing paths.
 
 Remaining scope limits: two September dates do not validate winter, holiday, summer boat or all seasonal/engineering patterns. The old line geometry has no proven 2026 validity and has not been certified against street-direction restrictions or diversions. The feed is scheduled interpolation with explicit inferred projection/topology pieces. It is not observed vehicle movement. Full cantonal motion coverage remains incomplete.
 `

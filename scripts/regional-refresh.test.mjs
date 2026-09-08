@@ -10,7 +10,7 @@ import { restorePublishedRegionalData } from './restore-published-regional-data.
 import { buildStudySummaries, STUDY_SOURCES } from './build-study-summaries.mjs'
 import { STUDY_IDS } from '../src/studies/explore.ts'
 import { readFileSync } from 'node:fs'
-import { LAUSANNE_WEST_GROUPS } from './lausanne-mbc.mjs'
+import { LAUSANNE_MBC_GROUPS } from './lausanne-mbc.mjs'
 
 function fixture(id = 'zurich-city') {
   if (['basel-core', 'bern-region'].includes(id)) {
@@ -41,10 +41,21 @@ describe('regional refresh', () => {
     const files = fixture('lausanne-region')
     await expect(readRegionalArtifacts(path => files.get(path), ['lausanne-region'])).resolves.toBeTruthy()
     for (const name of ['lausanne-region-day-manifest.json', 'lausanne-region-morning.json']) modify(files, name, value => {
-      Object.assign(value.metadata, { lausanneScopeVersion: 2, completeAgencyIds: ['29', '764'], localAgencyIds: ['151', '764'], lausanneGeometry: LAUSANNE_WEST_GROUPS.map(id => ({ id, totalSegments: 100, acceptedSegments: 100 })) })
+      Object.assign(value.metadata, { lausanneScopeVersion: 2, completeAgencyIds: ['29', '764'], localAgencyIds: ['151', '764'], lausanneGeometry: LAUSANNE_MBC_GROUPS.map(id => ({ id, totalSegments: 100, acceptedSegments: 100 })) })
       Object.assign(value.metadata.sourceHashes, { mbcSnapshot: 'd'.repeat(64), mbcBusCache0: 'e'.repeat(64), mbcBusCache1: 'f'.repeat(64) })
     })
     await expect(readRegionalArtifacts(path => files.get(path), ['lausanne-region'])).resolves.toBeTruthy()
+    const funicular = new Map(files)
+    for (const name of ['lausanne-region-day-manifest.json', 'lausanne-region-morning.json']) modify(funicular, name, value => {
+      value.metadata.lausanneScopeVersion = 3
+      value.metadata.completeAgencyIds.push('344')
+      value.metadata.lausanneGeometry.push({ id: 'cossonay-funicular', totalSegments: 100, acceptedSegments: 100 })
+      value.metadata.sourceHashes.mbcSupplementGeometry = 'a'.repeat(64)
+      value.metadata.funicularGeometry = { license: 'ODbL-1.0', sha256: 'a'.repeat(64), totalSegments: 100, matchedSegments: 100, maximumSnapMetres: 5 }
+    })
+    await expect(readRegionalArtifacts(path => funicular.get(path), ['lausanne-region'])).resolves.toBeTruthy()
+    modify(funicular, 'lausanne-region-morning.json', value => { value.metadata.funicularGeometry.sha256 = 'b'.repeat(64) })
+    await expect(readRegionalArtifacts(path => funicular.get(path), ['lausanne-region'])).rejects.toThrow('mixed funicular geometry')
     const expanded = new Map(files)
     modify(files, 'lausanne-region-morning.json', value => { delete value.metadata.lausanneScopeVersion })
     await expect(readRegionalArtifacts(path => files.get(path), ['lausanne-region'])).rejects.toThrow('mixed scope versions')

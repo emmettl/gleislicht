@@ -19,7 +19,7 @@ import { previousServiceDate } from './civil-day.mjs'
 
 // Discovery envelope, deliberately not described as a canton or tariff polygon.
 export const VAUD_BOUNDS = '5.95,46.18,7.25,47.0'
-export const VAUD_BUS_CACHES = ['data/vaud-mbc-road-cache.json', 'data/vaud-mbc-sunday-road-cache.json', 'data/lausanne-road-cache.json', 'data/postbus-road-cache.json']
+export const VAUD_BUS_CACHES = ['data/vaud-mbc-road-cache.json', 'data/vaud-mbc-sunday-road-cache.json', 'data/lausanne-road-cache.json', 'data/postbus-road-cache.json', ...['738', '741'].flatMap(id => ['weekday', 'sunday'].map(day => `data/vaud-nyon-${id}-${day}-road-cache.json`))]
 export const VAUD_AGENCIES = {
   '11': 'SBB', '23': 'TPC rail', '29': 'MBC rail', '33': 'BLS',
   '42': 'MVR CEV', '53': 'TPF rail', '55': 'LEB', '64': 'MOB',

@@ -15,6 +15,8 @@ import { prepareRoadFeed } from './prepare-postbus-road-feed.mjs'
 import { serviceDate } from './service-date.mjs'
 import { assertCompleteMbcCalls, combineRoadCaches, LAUSANNE_WEST_GROUPS, MBC_BUS_CACHES, mergeLausanneMbc } from './lausanne-mbc.mjs'
 
+import { readMbcGeometrySource, osmSegments } from './mbc-supplement-geometry.mjs'
+
 export const LAUSANNE_BOUNDS = '6.45,46.48,6.85,46.71'
 export const LAUSANNE_AGENCY = { id: '151', name: 'Transports publics de la région lausannoise', url: 'https://www.t-l.ch', language: 'fr' }
 const RAIL = new Set(['international', 'intercity', 'interregio', 'regional-express', 's-bahn', 'regional', 'other'])
@@ -29,6 +31,7 @@ async function fileHash(path) {
 export function lausanneGroup(train, routes, includeMbc = false) {
   const route = routes.get(train.routeId)
   assert(route, `Unknown source route ${train.routeId}`)
+  if (includeMbc && train.category === 'funicular' && route.agencyId === '344') return 'cossonay-funicular'
   if (train.category === 'bus' && route.agencyId === '151') return 'tl-bus'
   if (includeMbc && train.category === 'bus' && route.agencyId === '764') return 'mbc-bus'
   if (train.category === 'metro' && route.agencyId === '151' && ['m1', 'm2'].includes(train.route)) return train.route
@@ -48,7 +51,7 @@ export function selectLausanneSnapshot(snapshot, routes, includeMbc = false) {
   assert.equal(new Set(trains.map(train => train.id)).size, trains.length, 'Duplicate source trip')
   const pairs = new Set(trains.flatMap(train => train.stops.slice(1).map(([to], index) => [train.stops[index][0], to].sort((a, b) => a - b).join(':'))))
   const edges = [...pairs].sort().map(pair => pair.split(':').map(Number))
-  return { metadata: { ...snapshot.metadata, modes: ['rail', 'metro', 'bus'], studyScope: includeMbc ? 'Lausanne regional crop plus complete MBC rail and bus journeys through Morges, Bière and Cossonay. Lake services and funiculars excluded; not canton-wide Vaud coverage.' : 'Lausanne region: tl buses, m1/m2, LEB and rail inside the study bounds; excludes lake services and funiculars. Not canton-wide Vaud coverage.' }, bounds: {
+  return { metadata: { ...snapshot.metadata, modes: includeMbc ? ['rail', 'metro', 'bus', 'funicular'] : ['rail', 'metro', 'bus'], studyScope: includeMbc ? 'Lausanne regional crop plus complete MBC rail and bus journeys through Morges, Bière and Cossonay. Includes the Cossonay funicular; lake services excluded; not canton-wide Vaud coverage.' : 'Lausanne region: tl buses, m1/m2, LEB and rail inside the study bounds; excludes lake services and funiculars. Not canton-wide Vaud coverage.' }, bounds: {
     minLongitude: Math.min(...stops.map(stop => stop[0])), maxLongitude: Math.max(...stops.map(stop => stop[0])),
     minLatitude: Math.min(...stops.map(stop => stop[1])), maxLatitude: Math.max(...stops.map(stop => stop[1])),
   }, stops, edges, trains }
@@ -126,7 +129,7 @@ export async function auditLausanneStudy({ archive, railPath, date, output, busC
     for await (const row of rowsFromArchive(archive, 'routes.txt')) routes.set(row.route_id, { agencyId: row.agency_id, name: row.route_short_name, type: Number(row.route_type) })
     const mbcPath = mbcSnapshotPath ?? join(workspace, 'mbc.json')
     if (includeMbc && !mbcSnapshotPath) {
-      const run = spawnSync(process.execPath, ['scripts/ingest-gtfs.mjs', '--archive', archive, '--date', date, '--civil-day', '--modes', 'rail,bus', '--agencies', '29,764', '--bounds', '-180,-90,180,90', '--window-start', '00:00', '--window-end', '24:00', '--hub-output', 'none', '--output', mbcPath], { stdio: 'inherit' })
+      const run = spawnSync(process.execPath, ['scripts/ingest-gtfs.mjs', '--archive', archive, '--date', date, '--civil-day', '--modes', 'rail,bus,funicular', '--agencies', '29,764,344', '--bounds', '-180,-90,180,90', '--window-start', '00:00', '--window-end', '24:00', '--hub-output', 'none', '--output', mbcPath], { stdio: 'inherit' })
       assert.equal(run.status, 0, 'MBC timetable extraction failed')
     }
     const mbc = includeMbc ? JSON.parse(await readFile(mbcPath, 'utf8')) : undefined
@@ -153,7 +156,7 @@ export async function auditLausanneStudy({ archive, railPath, date, output, busC
     }
     const snapshot = selectLausanneSnapshot(raw, routes, includeMbc)
     const rail = parseRailNetworkXtf(await readFile(railPath, 'utf8'), 10)
-    const railTrains = snapshot.trains.filter(train => train.category !== 'bus')
+    const railTrains = snapshot.trains.filter(train => train.category !== 'bus' && train.category !== 'funicular')
     const railGeometry = applyLausanneRailGeometry({ ...snapshot, trains: railTrains }, rail, routes)
     const baselineRail = applyRailGeometry({ ...snapshot, trains: railTrains }, rail)
     const baselineRailGroups = summarizeLausanneGeometry({ ...snapshot, ...baselineRail }, routes, includeMbc).filter(group => !group.id.endsWith('-bus'))
@@ -166,16 +169,24 @@ export async function auditLausanneStudy({ archive, railPath, date, output, busC
       if (caches.length === 1) assert.match(cache.metadata.sourceSha256, /^[a-f0-9]{64}$/)
     }
     const busGeometry = cache ? applyRoadCache(snapshot, busTrains, cache) : { paths: [], edgePaths: snapshot.edges.map(() => null), trains: busTrains }
+    const mbcSource = includeMbc ? await readMbcGeometrySource() : undefined
+    const funicularTrains = snapshot.trains.filter(train => train.category === 'funicular')
+    const funicularGeometry = includeMbc ? applyLausanneRailGeometry({ ...snapshot, trains: funicularTrains }, rail, routes, { rail: osmSegments(mbcSource.source).filter(s => s.tags.railway === 'funicular') }) : { paths: [], trains: [], edgePaths: snapshot.edges.map(() => null) }
+    assert(!includeMbc || funicularGeometry.matchedSegments === funicularGeometry.totalSegments, 'Incomplete Cossonay track geometry')
     const offset = railGeometry.paths.length
-    const updated = new Map([...railGeometry.trains, ...busGeometry.trains.map(train => ({ ...train, pathSegments: train.pathSegments?.map(index => index === null ? null : index + offset) }))].map(train => [train.id, train]))
-    snapshot.paths = [...railGeometry.paths, ...busGeometry.paths]
+    const updated = new Map([...railGeometry.trains, ...funicularGeometry.trains.map(train => ({ ...train, pathSegments: train.pathSegments.map(index => index === null ? null : index + offset + busGeometry.paths.length) })), ...busGeometry.trains.map(train => ({ ...train, pathSegments: train.pathSegments?.map(index => index === null ? null : index + offset) }))].map(train => [train.id, train]))
+    snapshot.paths = [...railGeometry.paths, ...busGeometry.paths, ...funicularGeometry.paths]
     snapshot.trains = snapshot.trains.map(train => updated.get(train.id))
     // Only rail-used edges may receive FOT geometry; never map a bus-only edge
     // onto a nearby railway through the generic topology fallback.
     const railPairs = new Set(railTrains.flatMap(train => train.stops.slice(1).map(([to], index) => [train.stops[index][0], to].sort((a, b) => a - b).join(':'))))
-    snapshot.edgePaths = snapshot.edges.map(([a, b], i) => busGeometry.edgePaths[i] !== null ? busGeometry.edgePaths[i] + offset : railPairs.has(`${a}:${b}`) ? railGeometry.edgePaths[i] : null)
+    snapshot.edgePaths = snapshot.edges.map(([a, b], i) => funicularGeometry.edgePaths[i] !== null ? funicularGeometry.edgePaths[i] + offset + busGeometry.paths.length : busGeometry.edgePaths[i] !== null ? busGeometry.edgePaths[i] + offset : railPairs.has(`${a}:${b}`) ? railGeometry.edgePaths[i] : null)
     snapshot.metadata.note = 'AUDIT CANDIDATE. Scheduled motion; frequency-based services are representative. Rail and métro stops project onto their matched FOT corridors with short platform connectors. Bus paths are OSM/pfaedle inferences, not operator-verified routes. Unmatched segments retain stop interpolation. Not approved for publication.'
     const sourceHashes = { archive: await fileHash(archive), rail: await fileHash(railPath), snapshot: await fileHash(rawPath), ...(busCachePath ? { busCache: await fileHash(busCachePath) } : {}), ...(mbc ? { mbcSnapshot: await fileHash(mbcPath), ...Object.fromEntries(await Promise.all(mbcBusCachePaths.map(async (path, i) => [`mbcBusCache${i}`, await fileHash(path)]))) } : {}) }
+    if (mbcSource) {
+      sourceHashes.mbcSupplementGeometry = mbcSource.sha256
+      snapshot.metadata.funicularGeometry = { publisher: mbcSource.source.publisher, sourceUrl: mbcSource.source.sourceUrl, license: mbcSource.source.license, sha256: mbcSource.sha256, model: 'Platform projection onto the isolated OSM Cossonay funicular track, with inferred passing-loop track selection', matchedSegments: funicularGeometry.matchedSegments, totalSegments: funicularGeometry.totalSegments, maximumSnapMetres: Math.max(...funicularGeometry.projectionAudit.snaps.map(s => s.snapMetres ?? 0)), wayIds: osmSegments(mbcSource.source).filter(s => s.tags.railway === 'funicular').map(s => s.id) }
+    }
     snapshot.metadata.sourceHashes = sourceHashes
     snapshot.metadata.railGeometry = { publisher: 'Federal Office of Transport', sourceUrl: 'https://data.geo.admin.ch/api/stac/v1/collections/ch.bav.schienennetz/items/schienennetz', sha256: sourceHashes.rail, simplifyMetres: 10, model: 'platform projection onto identified FOT rail corridors; short platform connectors; inferred track selection', matchedSegments: railGeometry.matchedSegments, totalSegments: railGeometry.totalSegments, maximumSnapMetres: Math.max(0, ...railGeometry.projectionAudit.snaps.map(stop => stop.snapMetres ?? 0)), limits: railGeometry.projectionAudit.limits }
     if (cache) snapshot.metadata.geometry = { ...cache.metadata, matchedSegments: busGeometry.matched, totalSegments: busGeometry.total, missingPatterns: busGeometry.missingPatterns }
@@ -189,8 +200,9 @@ export async function auditLausanneStudy({ archive, railPath, date, output, busC
       report.scope.baseBounds = LAUSANNE_BOUNDS
       delete report.scope.bounds
       report.scope.candidateBounds = snapshot.bounds
-      report.scope.completeAgencyIds = ['29', '764']
-      report.metadata.lausanneScopeVersion = 2
+      report.scope.completeAgencyIds = ['29', '764', '344']
+      report.metadata.lausanneScopeVersion = 3
+      report.funicularProjection = funicularGeometry.projectionAudit
     }
     await mkdir(output, { recursive: true })
     for (const { descriptor, payload: chunk } of chunks) {
