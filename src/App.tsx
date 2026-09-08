@@ -10,7 +10,6 @@ import type { MeasuredTerrainBinding } from './studies/measured-terrain.ts'
 import type { RigiTerrainBinding } from './studies/rigi-timetable-terrain.ts'
 import { rigiOperator } from './studies/rigi.ts'
 import { isHeadwayTrain, serviceFrequency, withFrequencyFerryPaths } from './studies/frequency.ts'
-import { airTrafficSummary } from './studies/air-traffic-summary.ts'
 import { createActiveTrainCounter, orderTrainSearchMatches, trainSearchResults } from './studies/network-ui-index.ts'
 import { postbusRouteIndex, postbusRouteSnapshot, postbusTickFollowsSeek, POSTBUS_YELLOW, POSTBUS_ROUTE_COLORS } from './studies/postbus.ts'
 import { TransportIcon } from './TransportIcon.tsx'
@@ -727,14 +726,14 @@ export function App({ edition, suspended = false }: AppProps) {
         : undefined,
     [networkTime, selectedAirTrack],
   )
-  const airSummary = useMemo(
+  const visibleAirTracks = useMemo(
     () =>
-      airTrafficSummary(airEnabled && activeAirSnapshot
+      airEnabled && activeAirSnapshot
         ? activeAirTracks(activeAirSnapshot, networkTime)
-        : []),
+        : [],
     [activeAirSnapshot, airEnabled, networkTime],
   )
-  const activeAircraftCount = airSummary.aircraft
+  const activeAircraftCount = visibleAirTracks.length
   const activeRoadVehicleCount = useMemo(
     () =>
       roadEnabled && nationalRoad.snapshot && nationalRoadInWindow
@@ -3193,7 +3192,7 @@ export function App({ edition, suspended = false }: AppProps) {
       ) : roadOnly ? (
         <Suspense fallback={null}><DetailCard kind="RoadOverviewCard" roadOverview={roadOverview} roadLoadState={roadLoadState} roadMetricFormat={roadMetricFormat} numberFormat={numberFormat} text={text} /></Suspense>
       ) : airOnly ? (
-        <Suspense fallback={null}><DetailCard kind="AirOverviewCard" activeAirLoadState={activeAirLoadState} activeAircraftCount={activeAircraftCount} airSummary={airSummary} numberFormat={numberFormat} text={text} /></Suspense>
+        <Suspense fallback={null}><DetailCard kind="AirOverviewCard" activeAirLoadState={activeAirLoadState} tracks={visibleAirTracks} numberFormat={numberFormat} text={text} /></Suspense>
       ) : isNetwork ? (
         <section
           className="journey-card network-card"
