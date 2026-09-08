@@ -126,4 +126,4 @@ Disconnected, distant or implausibly circuitous routes omit moving marks while
 retaining the road baseline and the counter observations in the summary/history.
 This deliberately reduces the animated coverage of the present incomplete topology.
 
-The recording picker also includes **Kilchberg–Thalwil**: 4.8 km of ZH 3 / Seestrasse with 142 uninterrupted recorded minutes from 14:14–16:35 CEST on 8 September 2026. ZH 3 now has separate Horgen and Kilchberg–Thalwil recording identities and an in-card selector. Meilen–Stäfa remains under review because its resolved Rapperswil destination is too far from the available road axis.
+The recording picker also includes **Kilchberg–Thalwil**: 4.8 km of ZH 3 / Seestrasse with 142 uninterrupted recorded minutes from 14:14–16:35 CEST on 8 September 2026. ZH 3 now has separate Horgen and Kilchberg–Thalwil recording identities and an in-card selector. The fourth recording, **Meilen–Stäfa**, adds 4.1 km and 245 uninterrupted minutes from 13:23–17:27 CEST. Its direction review uses the official St. Gallen KS17 continuation to resolve Rapperswil; playback stays between the original Zürich counters.

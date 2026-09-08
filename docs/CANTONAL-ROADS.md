@@ -215,7 +215,7 @@ Unknown recordings, conflicting dates and out-of-window or non-finite times prod
 
 **Road recordings** in the main network view opens a catalog of the published pilots, without fetching their recording JSON. Each entry displays its recording date, Swiss time window, complete-minute count and whether it contains observation gaps. Selecting an entry follows its canonical recording link and opens paused. The current recording is marked, and closing the picker returns focus to the opening button without changing playback. Labels and disclosures support all four UI languages.
 
-The picker now lists Horgen, Wallisellen–Bassersdorf and Kilchberg–Thalwil. The [Bassersdorf–Lindau follow-up](CANTONAL-COVERAGE-REVIEW.md#bassersdorflindau-follow-up) confirms 245 complete minutes but leaves both Lindau detector directions unresolved after checking detailed official geometry. It is not listed as a playable recording. A detector-specific directional reference is needed before a third corridor can pass review.
+The picker now lists Horgen, Wallisellen–Bassersdorf, Kilchberg–Thalwil and Meilen–Stäfa. The [Bassersdorf–Lindau follow-up](CANTONAL-COVERAGE-REVIEW.md#bassersdorflindau-follow-up) confirms 245 complete minutes but leaves both Lindau detector directions unresolved after checking detailed official geometry. It is not listed as a playable recording. A detector-specific directional reference is needed before a third corridor can pass review.
 
 ### Kilchberg–Thalwil playback
 
@@ -241,4 +241,25 @@ node scripts/audit-cantonal-road-junctions.mjs \
 node scripts/build-cantonal-road-pilot.mjs \
   --pilot=kilchberg-thalwil-2026-09-08 \
   --topology=/tmp/kilchberg-thalwil-directions.json
+```
+
+### Meilen–Stäfa playback and official road continuation
+
+The fourth recording follows **4.097 km of ZH 17 / Seestrasse**, from `ZH.CH:0591` in Meilen to `ZH.CH:1091` in Stäfa. It contains **245 consecutive complete minutes on 8 September 2026, 13:23–17:27 CEST**, covering both vehicle classes in both directions without gaps. Choose **Road recordings → Meilen–Stäfa**, or open `?recording=meilen-staefa-2026-09-08`. Playback starts paused at 13:23 and shared links preserve times through the final 17:27 observation.
+
+The previous destination failure was caused by the available Zürich road axis ending before Rapperswil. The [official St. Gallen Kantonsstrassenplan](https://metadata.geo.sg.ch/produkte/98), published by TBA/AREG, supplies the continuation as **KS17, feature `Kantonsstrassen.8`**. Reversing that feature's vertex order joins the Zürich endpoint within **0.379 m**, below the explicit 5 m join tolerance. The [pinned source response](../data/meilen-staefa-axis-continuation.json) retains its URL, CRS, feature identity, input hashes and station scope.
+
+With both exact SwissNames alternatives retained, the unchanged regional check selects **Rapperswil SG**. Its distance from the connected axis is **85.38 m**, replacing the previous 2,522.39 m. Local bearing agreements remain **0.95 / 0.96**, and destination-distance, projection, bearing and settlement-extent checks all pass. Positive path order corresponds to Rapperswil; the independently validated Zürich directions remain negative. No thresholds were relaxed.
+
+The continuation is used **only in the two counters' direction checks**. Published road paths and the 4.097 km playback section retain the original Zürich geometry; no St. Gallen traffic is inferred. Other stations, including the neighbouring Meilen counter, keep their automatic status. The [continuation review](../data/meilen-staefa-continuation-review.json) records this scope and the resulting section identities. The prior Zürich-only audit remains available as historical evidence of the original gap.
+
+The existing lakeside junction audit identifies two geometric junction areas, around **1.177 km (axis 718)** and **2.749 km (axis 720)**. These are not measured turning flows or a complete inventory of private access. Vehicles remain reconstructed between the two counters.
+
+Rebuild using the committed source evidence and private observation archive:
+
+```sh
+node scripts/build-meilen-staefa-directions.mjs --output=/tmp/meilen-staefa-directions.json
+node scripts/build-cantonal-road-pilot.mjs \
+  --pilot=meilen-staefa-2026-09-08 \
+  --topology=/tmp/meilen-staefa-directions.json
 ```

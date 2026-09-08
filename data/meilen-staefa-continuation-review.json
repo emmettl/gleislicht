@@ -1,0 +1,190 @@
+{
+  "status": "validated-for-pilot",
+  "sourceHashes": {
+    "public/data/zurich-cantonal-road-topology.json": "e6672433b70989a1fb5228bfe5d61933d58394a60df3e36b8deba83e8c9f65ea",
+    "data/zurich-cantonal-road-counters.json": "39af27ba04503d25f407e59d58712d49c7a7ca4e0f980dafc77609847e3dd9d9",
+    "data/zurich-cantonal-road-directions.json": "9667168eaa3efe7d2809d831efc05b50e5ea7229c109d623b7f2ebf7e72f66ca",
+    "data/lakeside-road-review-sources.json": "760a2fd12644b3ffa3abdc2143856b52d4ebf6bb34fb67e0ef45bd1b032f0750",
+    "data/meilen-staefa-axis-continuation.json": "7340784752f1b3efeffa7005a1c5b3603685dc62b1d86042202570907159ae35"
+  },
+  "continuation": {
+    "pathId": "ZH:17:48a84c6fa4e6ad9c",
+    "stationIds": [
+      "ZH.CH:0591",
+      "ZH.CH:1091"
+    ],
+    "sourceUrl": "https://services.geo.sg.ch/wss/service/SG00098_WFS/guest?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=SG00098:Kantonsstrassen&SRSNAME=EPSG:2056&OUTPUTFORMAT=GEOJSON&BBOX=2701500,1230000,2707000,1235000,EPSG:2056&COUNT=10000",
+    "featureId": "Kantonsstrassen.8",
+    "joinMetres": 0.3786448142845488,
+    "note": "Continuation is used only for direction verification. Playback sections retain original Zürich geometry."
+  },
+  "detectors": [
+    {
+      "id": "ZH.CH:0591",
+      "road": "ZH:17",
+      "pathId": "ZH:17:48a84c6fa4e6ad9c",
+      "status": "validated",
+      "detectors": [
+        {
+          "id": "ZH.CH:0591.01",
+          "description": "Normalspur Richtung Zürich",
+          "alertCDirection": "positive",
+          "status": "validated",
+          "direction": "negative",
+          "destination": {
+            "name": "Zürich",
+            "coordinate": [
+              2682880.1500000004,
+              1248023.1
+            ],
+            "bounds": [
+              2677461.6,
+              1241764.4,
+              2688298.7,
+              1254281.8
+            ],
+            "sourceFeatureId": 314086
+          },
+          "destinationDistanceMetres": 15909.52,
+          "destinationRoadDistanceMetres": 908.92,
+          "offsetSeparationMetres": -17424.17,
+          "bearingAgreement": -0.96,
+          "offsetMetres": 19479.07
+        },
+        {
+          "id": "ZH.CH:0591.02",
+          "description": "Normalspur Richtung Rapperswil",
+          "alertCDirection": "negative",
+          "status": "validated",
+          "direction": "positive",
+          "destination": {
+            "name": "Rapperswil SG",
+            "coordinate": [
+              2704940.45,
+              1231758.2000000002
+            ],
+            "bounds": [
+              2703950,
+              1230841.3,
+              2705930.9,
+              1232675.1
+            ],
+            "sourceFeatureId": 392118
+          },
+          "destinationDistanceMetres": 12854.56,
+          "destinationRoadDistanceMetres": 85.38,
+          "offsetSeparationMetres": 14798.07,
+          "bearingAgreement": 0.95,
+          "offsetMetres": 19479.07,
+          "review": {
+            "method": "qualified-destination-and-official-axis-continuation",
+            "originalStatus": "unresolved-destination",
+            "continuationFeatureId": "Kantonsstrassen.8"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ZH.CH:1091",
+      "road": "ZH:17",
+      "pathId": "ZH:17:48a84c6fa4e6ad9c",
+      "status": "validated",
+      "detectors": [
+        {
+          "id": "ZH.CH:1091.01",
+          "description": "Normalspur Richtung Zürich",
+          "alertCDirection": "positive",
+          "status": "validated",
+          "direction": "negative",
+          "destination": {
+            "name": "Zürich",
+            "coordinate": [
+              2682880.1500000004,
+              1248023.1
+            ],
+            "bounds": [
+              2677461.6,
+              1241764.4,
+              2688298.7,
+              1254281.8
+            ],
+            "sourceFeatureId": 314086
+          },
+          "destinationDistanceMetres": 19604.51,
+          "destinationRoadDistanceMetres": 908.92,
+          "offsetSeparationMetres": -21521.53,
+          "bearingAgreement": -0.94,
+          "offsetMetres": 23576.43
+        },
+        {
+          "id": "ZH.CH:1091.02",
+          "description": "Normalspur Richtung Rapperswil",
+          "alertCDirection": "negative",
+          "status": "validated",
+          "direction": "positive",
+          "destination": {
+            "name": "Rapperswil SG",
+            "coordinate": [
+              2704940.45,
+              1231758.2000000002
+            ],
+            "bounds": [
+              2703950,
+              1230841.3,
+              2705930.9,
+              1232675.1
+            ],
+            "sourceFeatureId": 392118
+          },
+          "destinationDistanceMetres": 8946.53,
+          "destinationRoadDistanceMetres": 85.38,
+          "offsetSeparationMetres": 10700.71,
+          "bearingAgreement": 0.96,
+          "offsetMetres": 23576.43,
+          "review": {
+            "method": "qualified-destination-and-official-axis-continuation",
+            "originalStatus": "unresolved-destination",
+            "continuationFeatureId": "Kantonsstrassen.8"
+          }
+        }
+      ]
+    }
+  ],
+  "sections": [
+    {
+      "id": "ZH:17:48a84c6fa4e6ad9c:positive:ZH.CH:0591:ZH.CH:1091",
+      "road": "ZH:17",
+      "direction": "positive",
+      "fromSiteId": "ZH.CH:0591:axis-positive",
+      "toSiteId": "ZH.CH:1091:axis-positive",
+      "fromCoordinate": [
+        8.66256,
+        47.26344
+      ],
+      "toCoordinate": [
+        8.70926,
+        47.24658
+      ],
+      "distanceKm": 4.09736,
+      "pathPoints": 23
+    },
+    {
+      "id": "ZH:17:48a84c6fa4e6ad9c:negative:ZH.CH:0591:ZH.CH:1091",
+      "road": "ZH:17",
+      "direction": "negative",
+      "fromSiteId": "ZH.CH:1091:axis-negative",
+      "toSiteId": "ZH.CH:0591:axis-negative",
+      "fromCoordinate": [
+        8.70926,
+        47.24658
+      ],
+      "toCoordinate": [
+        8.66256,
+        47.26344
+      ],
+      "distanceKm": 4.09736,
+      "pathPoints": 23
+    }
+  ],
+  "limitation": "Two geometric junction areas were reviewed separately. Individual trajectories and turning flows are not measured."
+}
