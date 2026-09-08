@@ -207,6 +207,10 @@
     "portalban": {
       "file": "data/fribourg-portalban-policy.json",
       "sha256": "40c1ed42c0a592931eebbce280b9b32b14b45afa110896b9bddafdb3f714d786"
+    },
+    "bulle": {
+      "file": "data/fribourg-bulle-policy.json",
+      "sha256": "65ef8dbf77f9449e6c0d94efb50235b5bed43f9f089ff48a80b9ad1da4087403"
     }
   },
   "rail": {

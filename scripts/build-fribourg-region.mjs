@@ -79,7 +79,11 @@ export async function buildFribourgRegion({ archive, sourceDirectory = 'data/fri
       hashes.portalban = crosswalk.roads.portalban.sha256
       await writeJson(join(auditDirectory, 'portalban.json'), roads.portalban, true)
     }
-    provenance.roads = { ...roads.metadata, ...(roads.portalban ? { portalban: roads.portalban.policy } : {}), ...(roads.boltigen ? { boltigen: roads.boltigen.policy } : {}), ...(roads.broc ? { broc: roads.broc.policy } : {}), ...(roads.laupen ? { laupen: roads.laupen.policy } : {}), ...(roads.jongny ? { jongny: roads.jongny.policy } : {}), ...(roads.montCarmel ? { montCarmel: roads.montCarmel.policy } : {}), policy: crosswalk.roads, completePatternsTested: roads.patterns }
+    if (roads.bulle) {
+      hashes.bulle = crosswalk.roads.bulle.sha256
+      await writeJson(join(auditDirectory, 'bulle.json'), roads.bulle, true)
+    }
+    provenance.roads = { ...roads.metadata, ...(roads.bulle ? { bulle: roads.bulle.policy } : {}), ...(roads.portalban ? { portalban: roads.portalban.policy } : {}), ...(roads.boltigen ? { boltigen: roads.boltigen.policy } : {}), ...(roads.broc ? { broc: roads.broc.policy } : {}), ...(roads.laupen ? { laupen: roads.laupen.policy } : {}), ...(roads.jongny ? { jongny: roads.jongny.policy } : {}), ...(roads.montCarmel ? { montCarmel: roads.montCarmel.policy } : {}), policy: crosswalk.roads, completePatternsTested: roads.patterns }
   }
   const rail = crosswalk.rail ? await loadFribourgRail(timetable, crosswalk.rail) : undefined
   if (rail) {
