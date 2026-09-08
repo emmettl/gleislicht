@@ -71,6 +71,14 @@
         <p>The browser never receives the source GTFS archive. Repeatable Node scripts validate and compress each study into small static JSON artifacts. National 24-hour data is split so the initial morning view remains fast.</p>
       </section>
 
+      <section id="gornergrat">
+        <h2>Gornergrat: a dated map and summit ascent</h2>
+        <p>The optional Gornergrat study uses Swiss GTFS 20260902 for 4 September 2026, restricted to Gornergratbahn agency 121, route 93-48-j26-1 and cogwheel type 116. It retains 54 services: 26 each way between Zermatt GGB and Gornergrat, plus one each way between Zermatt GGB and Riffelalp. Seven source stops include Zermatt Ferienhaus legendär on the trains that actually call there. There are no frequency templates in this fixture.</p>
+        <p>The ascent selector offers the 26 public summit journeys and follows their exact calls on the shared clock. Its default is train 237, Zermatt GGB 12:00 to Gornergrat 12:33 via Findelbach, Riffelalp, Riffelberg and Rotenboden. Selecting another departure pauses at its start; arrival pauses playback; replay and manual-selection exit preserve normal exploration. Runtime validation reconciles source date, feed, archive hash, route identity, calls, boarding flags and geometry.</p>
+        <p>All 281 segment occurrences use mapped FOT paths simplified at 10 m. Endpoint matching permits at most 100 m; the largest actual difference is 67.1 m at Zermatt GGB. Source stop coordinates remain unchanged. This is a 2D timetable illustration, without measured terrain, tunnel heights or live tracking. Short workings are never extended to the summit. The 4.2 KiB compressed map loads on request and exposes retry and dated links.</p>
+        <p>The <a href="https://www.gornergrat.ch/en/pages/timetable-gornergrat-bahn">operator's timetable page</a>, checked on 8 September 2026, supplies seasonal context and current travel guidance. This single source day does not establish seasonal comparisons, preceding-day spillover, future availability or guaranteed connections. Source archive, FOT hashes, reconciled calls and per-pair geometry checks are retained in the study audit.</p>
+      </section>
+
       <section id="jungfrau">
         <h2>Jungfrau: valley railways, cogwheel trains and Eiger Express</h2>
         <p>The optional JUNG study uses Swiss GTFS 20260902 for 4 September 2026: 130 Berner Oberland-Bahn services, 123 Wengernalpbahn services, 73 Jungfraubahn services and 1,237 Eiger Express timetable records. Operators and transport types come from exact source identities. The cableway records are published timetable entries, not tracked cabins or a physical cabin roster. This fixture has no frequency templates.</p>

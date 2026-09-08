@@ -1,0 +1,25 @@
+.journey-card.gornergrat-ascent { top: 22%; max-height: calc(78vh - 52px); overflow: auto; clip-path: none; background: #0c0b21f2; border-left-color: #efd490; }
+.gornergrat-ascent header { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.gornergrat-ascent h2 { color: #fff0b9; font-size: .9rem; font-weight: 500; }
+.gornergrat-ascent header button { color: inherit; background: transparent; border: 0; min-width: 44px; min-height: 44px; font-size: 24px; cursor: pointer; }
+.gornergrat-ascent p, .gornergrat-ascent details, .gornergrat-ascent label { color: #c6c4d6; font-size: .65rem; line-height: 1.5; }
+.gornergrat-ascent label { display: grid; gap: 5px; }
+.gornergrat-ascent select { width: 100%; min-height: 36px; color: #eeeaff; background: #100e29; border: 1px solid #c1ccff33; font: inherit; font-size: .75rem; }
+.gornergrat-ascent nav { display: grid; gap: 4px; }
+.gornergrat-ascent nav button { display: flex; justify-content: space-between; gap: 8px; min-height: 44px; padding: 8px; align-items: center; background: #0c0b21; border: 1px solid #c1ccff33; color: #ccc8e4; font: inherit; font-size: .7rem; cursor: pointer; text-align: left; }
+.gornergrat-ascent nav strong { font-weight: 500; }
+.gornergrat-ascent nav button[aria-current] { color: #fff0b9; border-color: #e5ce86; background: #84733822; }
+.gornergrat-ascent summary { cursor: pointer; padding: 8px 0; }
+.gornergrat-ascent a { color: #b5dce9; }
+@media(min-width:701px) and (max-width:1500px) { .journey-card.gornergrat-ascent { left: 24px; width: 240px; padding: 12px; } }
+@media(max-width:700px) {
+ .view-network .journey-card.gornergrat-ascent { top: calc(184px + env(safe-area-inset-top)); left: 16px; right: 16px; width: auto; padding: 10px 12px; max-height: calc(100dvh - 390px); }
+ .gornergrat-ascent nav { grid-auto-flow: column; grid-auto-columns: 120px; overflow: auto; }
+ .gornergrat-ascent nav button { flex-direction: column; align-items: start; min-height: 60px; }
+ .gornergrat-ascent header { position: sticky; top: -10px; background: #0c0b21; }
+}
+.gornergrat-study:has(.gornergrat-ascent) .mobile-map-tools { display: none; }
+@media(max-width:700px) {
+ .gornergrat-study .network-card .between { display: block; }
+ .gornergrat-study .network-card { max-width: 210px; }
+}

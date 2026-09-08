@@ -1,0 +1,149 @@
+{
+  "metadata": {
+    "publisher": "SBB",
+    "feedVersion": "20260902",
+    "serviceDate": "2026-09-04",
+    "windowStart": 0,
+    "windowEnd": 86400,
+    "focusTime": 43200,
+    "sourceUrl": "https://opentransportdata.swiss/en/cookbook/timetable-cookbook/gtfs/",
+    "model": "Scheduled interpolation on mapped 2D FOT railway alignment; no live positions or measured terrain.",
+    "note": "Exact Gornergratbahn route only, including short workings. Original service day; no preceding-day spillover or seasonal comparison.",
+    "sources": {
+      "timetable": {
+        "sha256": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e"
+      },
+      "rail": {
+        "publisher": "Federal Office of Transport",
+        "sha256": "2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+        "simplificationToleranceMetres": 10
+      }
+    }
+  },
+  "counts": {
+    "trips": 54,
+    "stops": 7,
+    "paths": 7,
+    "gzipBytes": 4331
+  },
+  "geometry": {
+    "occurrences": 281,
+    "matched": 281,
+    "maxOffsetMetres": 67.12222552299731,
+    "pairs": [
+      {
+        "from": "Zermatt GGB",
+        "to": "Findelbach",
+        "fromId": "ch:1:sloid:1690",
+        "toId": "ch:1:sloid:1679",
+        "path": 0,
+        "offsetMetres": 67.12222552299731
+      },
+      {
+        "from": "Findelbach",
+        "to": "Riffelalp",
+        "fromId": "ch:1:sloid:1679",
+        "toId": "ch:1:sloid:1691",
+        "path": 1,
+        "offsetMetres": 27.896051682423007
+      },
+      {
+        "from": "Riffelalp",
+        "to": "Riffelberg",
+        "fromId": "ch:1:sloid:1691",
+        "toId": "ch:1:sloid:1692",
+        "path": 2,
+        "offsetMetres": 27.896051682423007
+      },
+      {
+        "from": "Riffelberg",
+        "to": "Rotenboden",
+        "fromId": "ch:1:sloid:1692",
+        "toId": "ch:1:sloid:1693",
+        "path": 3,
+        "offsetMetres": 12.649966573554906
+      },
+      {
+        "from": "Rotenboden",
+        "to": "Gornergrat",
+        "fromId": "ch:1:sloid:1693",
+        "toId": "ch:1:sloid:1694",
+        "path": 4,
+        "offsetMetres": 24.003502587619174
+      },
+      {
+        "from": "Zermatt GGB",
+        "to": "Zermatt Ferienhaus legendär",
+        "fromId": "ch:1:sloid:1690",
+        "toId": "ch:1:sloid:30858",
+        "path": 5,
+        "offsetMetres": 67.12222552299731
+      },
+      {
+        "from": "Zermatt Ferienhaus legendär",
+        "to": "Findelbach",
+        "fromId": "ch:1:sloid:30858",
+        "toId": "ch:1:sloid:1679",
+        "path": 6,
+        "offsetMetres": 10.946649033359877
+      },
+      {
+        "from": "Riffelalp",
+        "to": "Findelbach",
+        "fromId": "ch:1:sloid:1691",
+        "toId": "ch:1:sloid:1679",
+        "path": 1,
+        "offsetMetres": 27.896051682423007
+      },
+      {
+        "from": "Findelbach",
+        "to": "Zermatt GGB",
+        "fromId": "ch:1:sloid:1679",
+        "toId": "ch:1:sloid:1690",
+        "path": 0,
+        "offsetMetres": 67.12222552299731
+      },
+      {
+        "from": "Gornergrat",
+        "to": "Rotenboden",
+        "fromId": "ch:1:sloid:1694",
+        "toId": "ch:1:sloid:1693",
+        "path": 4,
+        "offsetMetres": 24.003502587619174
+      },
+      {
+        "from": "Rotenboden",
+        "to": "Riffelberg",
+        "fromId": "ch:1:sloid:1693",
+        "toId": "ch:1:sloid:1692",
+        "path": 3,
+        "offsetMetres": 12.649966573554906
+      },
+      {
+        "from": "Riffelberg",
+        "to": "Riffelalp",
+        "fromId": "ch:1:sloid:1692",
+        "toId": "ch:1:sloid:1691",
+        "path": 2,
+        "offsetMetres": 27.896051682423007
+      },
+      {
+        "from": "Findelbach",
+        "to": "Zermatt Ferienhaus legendär",
+        "fromId": "ch:1:sloid:1679",
+        "toId": "ch:1:sloid:30858",
+        "path": 6,
+        "offsetMetres": 10.946649033359877
+      },
+      {
+        "from": "Zermatt Ferienhaus legendär",
+        "to": "Zermatt GGB",
+        "fromId": "ch:1:sloid:30858",
+        "toId": "ch:1:sloid:1690",
+        "path": 5,
+        "offsetMetres": 67.12222552299731
+      }
+    ],
+    "passed": true
+  }
+}

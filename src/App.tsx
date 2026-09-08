@@ -154,6 +154,7 @@ const RigiTimetableTerrain = lazy(() => import('./studies/RigiTimetableTerrain.t
 const JungfrauPlaces = lazy(() => import('./studies/JungfrauPlaces.tsx'))
 const JungfrauGuide = lazy(() => import('./studies/JungfrauGuide.tsx'))
 const JungfrauTerrainScene = lazy(() => import('./studies/JungfrauTerrainScene.tsx'))
+const GornergratAscent = lazy(() => import('./studies/GornergratAscent.tsx'))
 const JungfrauAscent = lazy(() => import('./studies/JungfrauAscent.tsx'))
 const RigiGuide = lazy(() => import('./studies/RigiGuide.tsx'))
 const RigiDayRhythm = lazy(() => import('./studies/RigiDayRhythm.tsx'))
@@ -338,6 +339,9 @@ export function App({ edition }: AppProps) {
   const [nationalDayError, setNationalDayError] = useState(false)
   const [zurichCityNetwork, setZurichCityNetwork] = useState<NetworkSnapshot>()
   const [rigiNetwork, setRigiNetwork] = useState<NetworkSnapshot>()
+  const [gornergratNetwork, setGornergratNetwork] = useState<NetworkSnapshot>()
+  const [gornergratAttempt, setGornergratAttempt] = useState(0)
+  const [gornergratAscentActive, setGornergratAscentActive] = useState(false)
   const [jungfrauNetwork, setJungfrauNetwork] = useState<NetworkSnapshot>()
   const [jungfrauAttempt, setJungfrauAttempt] = useState(0)
   const [jungfrauGuideActive, setJungfrauGuideActive] = useState(false)
@@ -445,8 +449,12 @@ export function App({ edition }: AppProps) {
   const isBern = networkStudy === 'bern-region'
   const isBasel = networkStudy === 'basel-core'
   const isLausanne = networkStudy === 'lausanne-region'
+  const isGornergrat = networkStudy === 'gornergrat'
+  const [gornergratLocale, setGornergratLocale] = useState<typeof import('./studies/gornergrat-copy.ts')>()
+  useEffect(() => { if (isGornergrat) void import('./studies/gornergrat-copy.ts').then(setGornergratLocale) }, [isGornergrat])
+  const gornergratCopy = gornergratLocale?.GORNERGRAT_COPY[language]
   const isJungfrau = networkStudy === 'jungfrau'
-  const isMountainStudy = isRigi || isJungfrau
+  const isMountainStudy = isRigi || isJungfrau || isGornergrat
   const [jungfrauLocale, setJungfrauLocale] = useState<typeof import('./studies/jungfrau-copy.ts')>()
   useEffect(() => { if (isJungfrau) void import('./studies/jungfrau-copy.ts').then(setJungfrauLocale) }, [isJungfrau])
   const jungfrauCopy = jungfrauLocale?.JUNGFRAU_COPY[language]
@@ -522,7 +530,7 @@ export function App({ edition }: AppProps) {
       nationalDayChunks[nationalDayChunkDescriptor.id],
   )
   const baseNetwork =
-    isRegionalDay ? regionalDay.network : isBern ? bernRegionNetwork : isBasel ? baselCoreNetwork : isLausanne ? lausanneRegionNetwork : isJungfrau ? jungfrauNetwork : isRigi ? rigiNetwork : isPostbus ? postbusDay.network : isContrast
+    isRegionalDay ? regionalDay.network : isBern ? bernRegionNetwork : isBasel ? baselCoreNetwork : isLausanne ? lausanneRegionNetwork : isGornergrat ? gornergratNetwork : isJungfrau ? jungfrauNetwork : isRigi ? rigiNetwork : isPostbus ? postbusDay.network : isContrast
       ? (zurichContrast.network ?? nationalNetwork)
       : networkStudy === 'zurich-city'
       ? (zurichCityNetwork ?? nationalNetwork)
@@ -941,7 +949,7 @@ export function App({ edition }: AppProps) {
     setJungfrauGuideActive(false)
     setRigiRhythmActive(false)
     setRigiSequenceActive(false)
-    setJungfrauAscentActive(false)
+    setGornergratAscentActive(false); setJungfrauAscentActive(false)
     setRigiTerrainBinding(undefined)
     setSelectedTrainId(undefined)
     setSelectedStationName(undefined)
@@ -972,6 +980,9 @@ export function App({ edition }: AppProps) {
     setRigiSequenceActive(true)
   }
 
+  const startGornergratAscent = () => {
+    releaseSelection(); setSelectedCategory(undefined); setDirectorMode(false); setIsPlaying(false); setGornergratAscentActive(true)
+  }
   const startJungfrauAscent = () => {
     releaseSelection()
     setSelectedCategory(undefined)
@@ -1002,7 +1013,7 @@ export function App({ edition }: AppProps) {
 
   const selectStation = useCallback((station: StationIndexEntry) => {
     setRigiSequenceActive(false)
-    setJungfrauAscentActive(false)
+    setGornergratAscentActive(false); setJungfrauAscentActive(false)
     setSbbEnabled(true)
     setAirCategorySelected(false)
     setRoadCategorySelected(false)
@@ -1025,7 +1036,7 @@ export function App({ edition }: AppProps) {
   const selectRoute = useCallback(
     (route: NetworkRouteIndexEntry) => {
       setRigiSequenceActive(false)
-      setJungfrauAscentActive(false)
+      setGornergratAscentActive(false); setJungfrauAscentActive(false)
       setSbbEnabled(true)
       setAirCategorySelected(false)
       setRoadCategorySelected(false)
@@ -1051,7 +1062,7 @@ export function App({ edition }: AppProps) {
     (train: NetworkTrain) => {
       if (!network) return
       setRigiSequenceActive(false)
-      setJungfrauAscentActive(false)
+      setGornergratAscentActive(false); setJungfrauAscentActive(false)
       setSbbEnabled(true)
       setAirCategorySelected(false)
       setRoadCategorySelected(false)
@@ -1206,7 +1217,7 @@ export function App({ edition }: AppProps) {
       setCorridorError(false)
       setSearchOpen(false)
       setRigiSequenceActive(false)
-      setJungfrauAscentActive(false)
+      setGornergratAscentActive(false); setJungfrauAscentActive(false)
       setView('journey')
       setIsPlaying(true)
     },
@@ -1257,7 +1268,7 @@ export function App({ edition }: AppProps) {
         setSelectedHubId('zurich')
       }
       const regionalSnapshot =
-        study === 'bern-region' ? bernRegionNetwork : study === 'basel-core' ? baselCoreNetwork : study === 'lausanne-region' ? lausanneRegionNetwork : study === 'jungfrau' ? jungfrauNetwork : study === 'rigi-lake' ? rigiNetwork : study === 'zurich-city'
+        study === 'bern-region' ? bernRegionNetwork : study === 'basel-core' ? baselCoreNetwork : study === 'lausanne-region' ? lausanneRegionNetwork : study === 'gornergrat' ? gornergratNetwork : study === 'jungfrau' ? jungfrauNetwork : study === 'rigi-lake' ? rigiNetwork : study === 'zurich-city'
           ? zurichCityNetwork
           : study === 'zvv-region'
             ? zvvRegionNetwork
@@ -1270,7 +1281,7 @@ export function App({ edition }: AppProps) {
       if (study !== 'national' && study !== 'contrast' && study !== 'postbus') {
         setRegionalNetworkError(false)
       }
-      if (study === 'contrast' || study === 'rigi-lake' || study === 'jungfrau') setNetworkTime(12 * 3600)
+      if (study === 'contrast' || study === 'rigi-lake' || study === 'jungfrau' || study === 'gornergrat') setNetworkTime(12 * 3600)
       if (study === 'postbus') setNetworkTime(edition.defaultNetworkTime)
       if (study === 'national' && timeRange === 'day') {
         setNationalDayError(false)
@@ -1295,6 +1306,7 @@ export function App({ edition }: AppProps) {
       genevaTpgNetwork,
       rigiNetwork,
       jungfrauNetwork,
+      gornergratNetwork,
       nationalDayManifest,
       nationalNetwork,
       nationalTimeRange,
@@ -1734,7 +1746,7 @@ export function App({ edition }: AppProps) {
   useEffect(() => {
     if (networkStudy === 'national' || networkStudy === 'contrast' || networkStudy === 'postbus') return
     const existingNetwork =
-      isBern ? bernRegionNetwork : isBasel ? baselCoreNetwork : isLausanne ? lausanneRegionNetwork : isJungfrau ? jungfrauNetwork : isRigi ? rigiNetwork : networkStudy === 'zurich-city'
+      isBern ? bernRegionNetwork : isBasel ? baselCoreNetwork : isLausanne ? lausanneRegionNetwork : isGornergrat ? gornergratNetwork : isJungfrau ? jungfrauNetwork : isRigi ? rigiNetwork : networkStudy === 'zurich-city'
         ? zurichCityNetwork
         : networkStudy === 'zvv-region'
           ? zvvRegionNetwork
@@ -1749,7 +1761,7 @@ export function App({ edition }: AppProps) {
     })
       .then((response) => {
         if (!response.ok) {
-          const studyName = isBern ? 'Bern' : isBasel ? 'Basel' : isLausanne ? 'Lausanne' : isJungfrau ? 'Jungfrau' : isRigi ? 'Lake Lucerne–Rigi' : isCity ? 'Zürich city' : isZvv ? 'ZVV' : 'Genève / TPG'
+          const studyName = isBern ? 'Bern' : isBasel ? 'Basel' : isLausanne ? 'Lausanne' : isGornergrat ? 'Gornergrat' : isJungfrau ? 'Jungfrau' : isRigi ? 'Lake Lucerne–Rigi' : isCity ? 'Zürich city' : isZvv ? 'ZVV' : 'Genève / TPG'
           throw new Error(`${studyName} snapshot returned ${response.status}`)
         }
         return response.json() as Promise<NetworkSnapshot>
@@ -1758,6 +1770,7 @@ export function App({ edition }: AppProps) {
         if (isBern) setBernRegionNetwork(snapshot)
         else if (isBasel) setBaselCoreNetwork(snapshot)
         else if (isLausanne) setLausanneRegionNetwork(snapshot)
+        else if (isGornergrat) setGornergratNetwork(snapshot)
         else if (isJungfrau) setJungfrauNetwork(snapshot)
         else if (isRigi) setRigiNetwork(snapshot)
         else if (isCity) setZurichCityNetwork(snapshot)
@@ -1782,6 +1795,9 @@ export function App({ edition }: AppProps) {
     isLausanne,
     isRigi,
     rigiNetwork,
+    isGornergrat,
+    gornergratNetwork,
+    gornergratAttempt,
     isJungfrau,
     jungfrauNetwork,
     jungfrauAttempt,
@@ -2025,7 +2041,7 @@ export function App({ edition }: AppProps) {
       data-cogwheel-enabled={isCogwheel}
       data-quiet-map={quietMap}
       data-quiet-playing={quietMap ? isPlaying : undefined}
-      className={`experience view-${view}${isJungfrau ? ' jungfrau-study' : ''}${timedRigiTerrain || jungfrauTerrainWindow ? ' has-timed-rigi-terrain' : ''}${isContrast ? ' is-contrast' : ''}${airEnabled ? ' has-air-layer' : ''}${airCategorySelected ? ' has-air-category' : ''}${roadEnabled ? ' has-road-layer' : ''}${roadCategorySelected ? ' has-road-category' : ''}${selectedTrain || selectedStation || selectedRoute || selectedAirTrack || selectedAirport || selectedRoad ? ' has-selection' : ''}${!isTimetable ? ` corridor-${journeyCorridorId}` : ''}`}
+      className={`experience view-${view}${isJungfrau ? ' jungfrau-study' : ''}${isGornergrat ? ' gornergrat-study' : ''}${timedRigiTerrain || jungfrauTerrainWindow ? ' has-timed-rigi-terrain' : ''}${isContrast ? ' is-contrast' : ''}${airEnabled ? ' has-air-layer' : ''}${airCategorySelected ? ' has-air-category' : ''}${roadEnabled ? ' has-road-layer' : ''}${roadCategorySelected ? ' has-road-category' : ''}${selectedTrain || selectedStation || selectedRoute || selectedAirTrack || selectedAirport || selectedRoad ? ' has-selection' : ''}${!isTimetable ? ` corridor-${journeyCorridorId}` : ''}`}
     >
       <div className="scene" aria-hidden={webglAvailable ? true : undefined}>
         <Suspense fallback={null}>
@@ -2171,7 +2187,7 @@ export function App({ edition }: AppProps) {
             selectedAirport={airEnabled ? selectedAirport : undefined}
             onSelectAirTrack={selectAirTrack}
             cameraFraming={
-              isBern ? MAP_FRAMINGS.bern : isBasel ? MAP_FRAMINGS.basel : isLausanne ? MAP_FRAMINGS.lausanne : isJungfrau ? MAP_FRAMINGS.jungfrau : isRigi ? MAP_FRAMINGS.rigi : networkStudy === 'zurich-city' && zurichCityNetwork
+              isBern ? MAP_FRAMINGS.bern : isBasel ? MAP_FRAMINGS.basel : isLausanne ? MAP_FRAMINGS.lausanne : isGornergrat ? MAP_FRAMINGS.gornergrat : isJungfrau ? MAP_FRAMINGS.jungfrau : isRigi ? MAP_FRAMINGS.rigi : networkStudy === 'zurich-city' && zurichCityNetwork
                 ? MAP_FRAMINGS.zurich
                 : networkStudy === 'zvv-region' && zvvRegionNetwork
                   ? MAP_FRAMINGS.zvv
@@ -2248,7 +2264,7 @@ export function App({ edition }: AppProps) {
             }
           >
             {isNetwork
-              ? isBern ? text.bernSubtitle : isBasel ? text.baselSubtitle : isLausanne ? text.lausanneSubtitle : isJungfrau ? jungfrauCopy?.title ?? 'Jungfrau' : isRigi ? rigiCopy.title : isPostbus ? text.postbusSubtitle : isContrast
+              ? isBern ? text.bernSubtitle : isBasel ? text.baselSubtitle : isLausanne ? text.lausanneSubtitle : isGornergrat ? gornergratCopy?.title ?? 'Gornergrat' : isJungfrau ? jungfrauCopy?.title ?? 'Jungfrau' : isRigi ? rigiCopy.title : isPostbus ? text.postbusSubtitle : isContrast
                 ? text.contrastSubtitle
                 : networkStudy === 'zurich-city'
                 ? text.zurichSubtitle
@@ -2431,7 +2447,7 @@ export function App({ edition }: AppProps) {
                 role="combobox"
                 value={searchQuery}
                 placeholder={
-                  isBern ? text.bernPlaceholder : isBasel ? text.baselPlaceholder : isLausanne ? text.lausannePlaceholder : isJungfrau ? jungfrauCopy?.placeholder ?? jungfrauSelect : isRigi ? rigiCopy.placeholder : isCogwheel ? cogwheelCopy.placeholder : isContrast
+                  isBern ? text.bernPlaceholder : isBasel ? text.baselPlaceholder : isLausanne ? text.lausannePlaceholder : isGornergrat ? gornergratCopy?.placeholder ?? 'Gornergrat' : isJungfrau ? jungfrauCopy?.placeholder ?? jungfrauSelect : isRigi ? rigiCopy.placeholder : isCogwheel ? cogwheelCopy.placeholder : isContrast
                     ? text.contrastPlaceholder
                     : isPostbus ? text.postbusPlaceholder : airEnabled
                       ? text.airSearchPlaceholder
@@ -2650,13 +2666,14 @@ export function App({ edition }: AppProps) {
                   { value: 'basel-core', label: 'BS', detail: text.baselNetwork },
                   { value: 'lausanne-region', label: 'LS', detail: text.lausanneNetwork },
                   { value: 'jungfrau', label: 'JUNG', detail: jungfrauSelect },
+                  { value: 'gornergrat', label: 'GGR', detail: gornergratCopy?.select ?? 'Gornergrat' },
                   { value: 'rigi-lake', label: 'RIGI', detail: rigiCopy.select },
                   { value: 'zvv-region', label: 'ZVV', detail: text.zvvNetwork },
                   { value: 'zurich-city', label: 'ZH', detail: text.zurichNetwork },
                   { value: 'geneva-tpg', label: 'GE', detail: text.genevaNetwork },
                 ]}
                 triggerLabel={
-                  isBern ? 'BE' : isBasel ? 'BS' : isLausanne ? 'LS' : isJungfrau ? 'JUNG' : isRigi ? 'RIGI' : isPostbus ? 'PA' : isContrast
+                  isBern ? 'BE' : isBasel ? 'BS' : isLausanne ? 'LS' : isGornergrat ? 'GGR' : isJungfrau ? 'JUNG' : isRigi ? 'RIGI' : isPostbus ? 'PA' : isContrast
                     ? '↔'
                     : networkStudy === 'national' && nationalTimeRange === 'day'
                       ? '24H'
@@ -2928,7 +2945,9 @@ export function App({ edition }: AppProps) {
         if (station) { setRigiGuideActive(false); setSelectedCategory(undefined); setRigiRhythmActive(false); selectStation(station) }
       }} /></Suspense>}
 
-      {isNetwork && isJungfrau && jungfrauAscentActive && jungfrauNetwork ? (
+      {isNetwork && isGornergrat && gornergratAscentActive && gornergratNetwork ? (
+        <Suspense fallback={null}><GornergratAscent network={gornergratNetwork} language={language} time={networkTime} onSeek={seekMountainSequence} onFollow={followMountainSequence} onFinish={finishRigiTerrain} onExit={releaseSelection}/></Suspense>
+      ) : isNetwork && isJungfrau && jungfrauAscentActive && jungfrauNetwork ? (
         <Suspense fallback={null}><JungfrauAscent onTerrain={setJungfrauTerrainBinding} network={jungfrauNetwork} language={language} time={networkTime} onSeek={seekMountainSequence} onFollow={followMountainSequence} onFinish={finishRigiTerrain} onExit={releaseSelection} /></Suspense>
       ) : isNetwork && isRigi && rigiRhythmActive && rigiNetwork && !selectedTrain && !selectedStation && !selectedRoute ? (
         <Suspense fallback={null}><RigiDayRhythm network={rigiNetwork} time={networkTime} language={language} onSeek={time => { setSelectedCategory(undefined); setDirectorMode(false); seekMountainSequence(time) }} onExit={releaseSelection} /></Suspense>
@@ -3363,7 +3382,7 @@ export function App({ edition }: AppProps) {
         <section
           className="journey-card network-card"
           aria-label={
-            isBern ? text.bernNetworkStatus : isBasel ? text.baselNetworkStatus : isLausanne ? text.lausanneNetworkStatus : isJungfrau ? jungfrauSelect : isRigi ? rigiCopy.select : isPostbus ? text.postbusNetwork : networkStudy === 'national'
+            isBern ? text.bernNetworkStatus : isBasel ? text.baselNetworkStatus : isLausanne ? text.lausanneNetworkStatus : isGornergrat ? gornergratCopy?.select ?? 'Gornergrat' : isJungfrau ? jungfrauSelect : isRigi ? rigiCopy.select : isPostbus ? text.postbusNetwork : networkStudy === 'national'
               ? text.swissNetworkStatus
               : networkStudy === 'zvv-region'
                 ? text.zvvNetworkStatus
@@ -3430,7 +3449,7 @@ export function App({ edition }: AppProps) {
             )}
           </div>
           <p className="between">
-              {isRegionalDay ? regionalDay.error ? exploreCopy.error : !regionalDay.chunkReady ? exploreCopy.loading : `${exploreCopy.day} · ${network?.metadata.geometry?.publisher ?? 'SBB'}` : isBern ? regionalNetworkError ? text.bernUnavailable : regionalNetworkLoading ? text.loading : text.bernModes : isBasel ? regionalNetworkError ? text.baselUnavailable : regionalNetworkLoading ? text.loading : text.baselModes : isLausanne ? regionalNetworkError ? text.lausanneUnavailable : regionalNetworkLoading ? text.loading : text.lausanneModes : isJungfrau ? regionalNetworkError ? jungfrauCopy?.unavailable : regionalNetworkLoading ? jungfrauCopy?.loading : jungfrauCopy?.modes : isRigi ? regionalNetworkError ? rigiCopy.unavailable : regionalNetworkLoading ? rigiCopy.loading : rigiCopy.modes : isCogwheel ? cogwheel?.error ? cogwheelCopy.unavailable : !cogwheelCatalogue ? cogwheelCopy.loading : cogwheelCopy.description : isPostbus
+              {isRegionalDay ? regionalDay.error ? exploreCopy.error : !regionalDay.chunkReady ? exploreCopy.loading : `${exploreCopy.day} · ${network?.metadata.geometry?.publisher ?? 'SBB'}` : isBern ? regionalNetworkError ? text.bernUnavailable : regionalNetworkLoading ? text.loading : text.bernModes : isBasel ? regionalNetworkError ? text.baselUnavailable : regionalNetworkLoading ? text.loading : text.baselModes : isLausanne ? regionalNetworkError ? text.lausanneUnavailable : regionalNetworkLoading ? text.loading : text.lausanneModes : isGornergrat ? regionalNetworkError ? gornergratCopy?.unavailable : regionalNetworkLoading ? gornergratCopy?.loading : gornergratCopy?.modes : isJungfrau ? regionalNetworkError ? jungfrauCopy?.unavailable : regionalNetworkLoading ? jungfrauCopy?.loading : jungfrauCopy?.modes : isRigi ? regionalNetworkError ? rigiCopy.unavailable : regionalNetworkLoading ? rigiCopy.loading : rigiCopy.modes : isCogwheel ? cogwheel?.error ? cogwheelCopy.unavailable : !cogwheelCatalogue ? cogwheelCopy.loading : cogwheelCopy.description : isPostbus
                 ? postbusDay.error ? text.postbusUnavailable : postbusDay.loading ? text.loadingPostbus
                   : network?.metadata.geometry
                     ? text.postbusRoadModes.replace('{coverage}', (100 * network.metadata.geometry.matchedSegments / network.metadata.geometry.totalSegments).toFixed(1))
@@ -3466,6 +3485,8 @@ export function App({ edition }: AppProps) {
                   : text.scheduledRail}
               {hasHeadwayMotion && <> {frequencyCopy.mixed}</>}
           </p>
+          {isGornergrat && gornergratNetwork && !regionalNetworkError && <button type="button" className="corridor-entry" onClick={startGornergratAscent}>{gornergratCopy?.start} →</button>}
+          {isGornergrat && regionalNetworkError && <button type="button" className="corridor-entry" onClick={() => { setRegionalNetworkError(false); setRegionalNetworkLoading(true); setGornergratAttempt(n => n+1) }}>{exploreCopy.retry}</button>}
           {isJungfrau && jungfrauNetwork && !regionalNetworkError && <><button type="button" className="corridor-entry" onClick={event => { event.currentTarget.focus(); setJungfrauGuideActive(true) }}>{jungfrauCopy?.guide} →</button><button type="button" className="corridor-entry" onClick={startJungfrauAscent}>{jungfrauCopy?.ascent} →</button></>}
           {isJungfrau && jungfrauNetwork && !regionalNetworkError && <Suspense fallback={null}><JungfrauPlaces language={language} onSelect={name => { const station = stationIndex.find(s => s.name === name); if (station) { setSelectedCategory(undefined); selectStation(station) } }} /></Suspense>}
           {isJungfrau && regionalNetworkError && <button type="button" className="corridor-entry" onClick={() => { setRegionalNetworkError(false); setRegionalNetworkLoading(true); setJungfrauAttempt(n => n + 1) }}>{exploreCopy.retry}</button>}
@@ -4060,7 +4081,7 @@ export function App({ edition }: AppProps) {
                     setSelectedCategory(undefined)
                     setAirCategorySelected(false)
                     setRigiSequenceActive(false)
-                    setJungfrauAscentActive(false)
+                    setGornergratAscentActive(false); setJungfrauAscentActive(false)
                     setView(isHub ? 'network' : 'hub')
                   }}
                 >
@@ -4151,7 +4172,7 @@ export function App({ edition }: AppProps) {
                 setSelectedCategory(undefined)
                 setAirCategorySelected(false)
                 setRigiSequenceActive(false)
-                setJungfrauAscentActive(false)
+                setGornergratAscentActive(false); setJungfrauAscentActive(false)
                 setView(isHub ? 'network' : 'hub')
               }}
             >
@@ -4295,7 +4316,7 @@ export function App({ edition }: AppProps) {
           {isHub
             ? text.arrivalsDirection
             : isNetwork
-              ? isBern ? text.bernModel : isBasel ? text.baselModel : isLausanne ? text.lausanneModel : timedRigiTerrain || jungfrauTerrainWindow ? text.interpolation : isJungfrau ? jungfrauCopy?.model : isRigi ? rigiCopy.water : hasHeadwayMotion ? frequencyCopy.interpolation : text.interpolation
+              ? isBern ? text.bernModel : isBasel ? text.baselModel : isLausanne ? text.lausanneModel : timedRigiTerrain || jungfrauTerrainWindow ? text.interpolation : isGornergrat ? gornergratCopy?.model : isJungfrau ? jungfrauCopy?.model : isRigi ? rigiCopy.water : hasHeadwayMotion ? frequencyCopy.interpolation : text.interpolation
               : text.simulation}
         </span>
       </footer>
