@@ -51,6 +51,7 @@ export async function buildGraubuendenRegion({ output = 'public/data/graubuenden
     roads: { ...roadSource, derivedDatabase: 'road-paths.json' },
     railCompletionReview: geometry.railCompletion ? { policy: geometry.railCompletion.review, terminalExtension: geometry.railCompletion.extension, note: 'Exact existing FOT station-curve extension and single-segment operator review; no running-track certification.' } : null,
     accessRoads: geometry.accessRoads ? { ...geometry.accessRoads.source, review: geometry.accessRoads.review, derivedDatabase: 'access-road-paths.json' } : null,
+    cableways: geometry.cableways ? { ...geometry.cableways.source, review: geometry.cableways.review } : null,
     localGeometry: { admitted: false, evidence: 'See docs/GRAUBUENDEN-STUDY.md and data/graubuenden-sources/probes.json' } }
   const memo = new Map(), paths = [], pathIndexes = new Map(), reports = [], inventory = raw.inventory.map(r => ({ ...r, days: [] }))
   for (const day of raw.snapshots) {
@@ -82,17 +83,17 @@ export async function buildGraubuendenRegion({ output = 'public/data/graubuenden
       const p = patterns.get(key)
       p.trips++; p.carryInTrips += Number(train.sourceServiceDate !== day.date); p.headwayTrips += Number(train.frequency?.exactTimes === 0)
       if (p.admitted) admitted.push({ ...train, route: route.line, agencyId: route.agencyId, routeType: route.routeType,
-        category: luzernCategory(route), transportMode: route.mode, geometrySource: route.mode === 'bus' ? p.pairs[0].geometrySource : (p.pairs.find(pair => pair.geometrySource?.startsWith('fot-reviewed-'))?.geometrySource ?? 'fot'), patternId: p.id, pathSegments: p.pathSegments })
+        category: luzernCategory(route), transportMode: route.mode, geometrySource: ['bus', 'mountain'].includes(route.mode) ? p.pairs[0].geometrySource : (p.pairs.find(pair => pair.geometrySource?.startsWith('fot-reviewed-'))?.geometrySource ?? 'fot'), patternId: p.id, pathSegments: p.pathSegments })
     }
     const pp = [...patterns.values()], counts = coverage(pp)
     const metadata = { publisher: 'Gleislicht', serviceDate: day.date, feedVersion: raw.feed.feed_version, sourceHashes,
       dayModel: 'civil day with preceding service-day spillover', sourceServiceDates: [previousServiceDate(day.date), day.date],
       windowStart: 0, windowEnd: 86400, focusTime: 27900, modes: [...new Set(admitted.map(t => t.transportMode))],
-      label: 'Graubünden · initial rail and bus study', scope: raw.scope.description, exclusions: policy.scopeLimits, note: policy.admission,
-      model: 'Timetable interpolation on reviewed rail infrastructure and inferred OSM bus paths; not observed movement.',
+      label: 'Graubünden · initial rail, bus and cableway study', scope: raw.scope.description, exclusions: policy.scopeLimits, note: policy.admission,
+      model: 'Timetable interpolation on reviewed rail infrastructure and inferred OSM bus paths, with three reviewed federal cableway axes. Frequency services are representative headway movement, not exact departures or observed cabins.',
       attribution: 'SBB / opentransportdata.swiss · © Federal Office of Transport (FOT) · © swisstopo · © OpenStreetMap contributors',
       sourceUrl: sources.timetable.url, termsUrl: sources.timetable.termsUrl,
-      geometry: { publisher: 'FOT / OpenStreetMap contributors', sourceUrl: 'https://www.openstreetmap.org/copyright', license: 'ODbL-1.0 for bus path database; attribution terms for FOT rail',
+      geometry: { publisher: 'FOT / OpenStreetMap contributors', sourceUrl: 'https://www.openstreetmap.org/copyright', license: 'ODbL-1.0 for bus path database; attribution terms for FOT rail and cableways',
         productUrl: '../sources.json', model: 'Inferred full-pattern paths', matchedSegments: admitted.reduce((n, t) => n + t.pathSegments.length, 0), totalSegments: admitted.reduce((n, t) => n + t.pathSegments.length, 0),
         coverageScope: 'Admitted journeys only. Full-candidate coverage in the study audit.', maximumSnapMetres: geometry.roads.report.maxSnapMetres },
       candidateCoverage: counts }

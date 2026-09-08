@@ -157,37 +157,37 @@ All 380 annual canton-calling route records. Date columns count complete admitte
 | 92-N34-A-j26-1 | 740 / Verkehrsbetrieb der Landschaft Davos | bus / N34 | 44 | 45/45 | 45/45 | admitted-all-dated-trips; — | Davos Monstein, Hofweg; Davos Platz, Spital; Davos Platz, Crestannes; Davos Platz, Islen; Davos Frauenkirch, Gadenstatt |
 | 92-WEF-A-j26-1 | 740 / Verkehrsbetrieb der Landschaft Davos | bus / WEF-Rot | 260 | 0/0 | 0/0 | inactive-on-validation-dates; — | Davos Dorf, Bahnhof; Davos Platz, Bahnhof; Davos Dorf, Seehofseeli; Davos Laret, Landhaus; Davos Laret, Unter Laret |
 | 92-WEF-B-j26-1 | 740 / Verkehrsbetrieb der Landschaft Davos | bus / WEF-Gelb | 200 | 0/0 | 0/0 | inactive-on-validation-dates; — | Davos Platz, Spital; Davos Platz, Crestannes; Davos Platz, Islen; Davos Frauenkirch, Gadenstatt; Davos Glaris, ARA |
-| 93-23-Y-j26-1 | 223 / Pendicularas Scuol SA | mountain / GB | 8 | 0/1020 | 0/1020 | excluded; no-reviewed-mountain-geometry | Scuol (pendicularas); Motta Naluns |
-| 93-24-Y-j26-1 | 223 / Pendicularas Scuol SA | mountain / SL | 10 | 0/885 | 0/885 | excluded; no-reviewed-mountain-geometry | Ftan Fionas; Prui |
-| 93-261-5-j26-1 | 3119 / Cantone di Grigioni | mountain / 2615 | 2 | 0/286 | 0/286 | excluded; no-reviewed-mountain-geometry | Arvigo (Funivia); Braggio |
-| 93-261-6-j26-1 | 3120 / Funivia Selma-Landarenca | mountain / 2616 | 2 | 0/286 | 0/286 | excluded; no-reviewed-mountain-geometry | Selma (Funivia); Landarenca |
-| 93-284-8-j26-1 | 3140 / Aelplibahn Malans Genossenschaft | mountain / 2848 | 2 | 0/72 | 0/72 | excluded; no-reviewed-mountain-geometry | Malans (Älplibahn Talstation); Älpli |
-| 93-285-2-j26-1 | 3142 / Gemeinde Grüsch | mountain / 2852 | 8 | 0/1140 | 0/1140 | excluded; no-reviewed-mountain-geometry | Fanas (Luftseilbahn); Eggli (Fanas) (Luftseilbahn) |
+| 93-23-Y-j26-1 | 223 / Pendicularas Scuol SA | mountain / GB | 8 | 0/1020 | 0/1020 | excluded; cableway-unreviewed-route | Scuol (pendicularas); Motta Naluns |
+| 93-24-Y-j26-1 | 223 / Pendicularas Scuol SA | mountain / SL | 10 | 0/885 | 0/885 | excluded; cableway-unreviewed-route | Ftan Fionas; Prui |
+| 93-261-5-j26-1 | 3119 / Cantone di Grigioni | mountain / 2615 | 2 | 0/286 | 0/286 | excluded; cableway-unreviewed-route | Arvigo (Funivia); Braggio |
+| 93-261-6-j26-1 | 3120 / Funivia Selma-Landarenca | mountain / 2616 | 2 | 0/286 | 0/286 | excluded; cableway-unreviewed-route | Selma (Funivia); Landarenca |
+| 93-284-8-j26-1 | 3140 / Aelplibahn Malans Genossenschaft | mountain / 2848 | 2 | 0/72 | 0/72 | excluded; cableway-unreviewed-route | Malans (Älplibahn Talstation); Älpli |
+| 93-285-2-j26-1 | 3142 / Gemeinde Grüsch | mountain / 2852 | 8 | 0/1140 | 0/1140 | excluded; cableway-unreviewed-route | Fanas (Luftseilbahn); Eggli (Fanas) (Luftseilbahn) |
 | 93-287-0-j26-1 | 224 / Sportbahnen Pischa | mountain / 2870 | 2 | 0/0 | 0/0 | inactive-on-validation-dates; — | Dörfji; Pischa |
-| 93-288-0-j26-1 | 236 / Chur-Dreibündenstein | mountain / 2880 | 2404 | 0/962 | 0/1022 | excluded; no-reviewed-mountain-geometry | Känzeli (Chur); Brambrüesch |
-| 93-288-A-j26-1 | 236 / Chur-Dreibündenstein | mountain / 2880 | 87 | 0/52 | 0/54 | excluded; no-reviewed-mountain-geometry | Chur (Brambrüeschbahn); Känzeli (Chur) |
-| 93-288-D-j26-1 | 3201 / Cassons AG | mountain / 2885 | 26722 | 0/13659 | 0/13659 | excluded; no-reviewed-mountain-geometry | Segnes; Nagens Sura; Foppa; Startgels; Flims Dorf (Talstation Foppa) |
-| 93-289-2-j26-1 | 275 / Weisse Arena Bergbahnen AG | mountain / 2892 | 4 | 0/31 | 0/31 | excluded; no-reviewed-mountain-geometry | Crap Sogn Gion; Laax Murschetg (Talstation) |
-| 93-289-3-j26-1 | 275 / Weisse Arena Bergbahnen AG | mountain / 2893 | 4 | 0/930 | 0/930 | excluded; no-reviewed-mountain-geometry | Falera (Talstation Curnius); Curnius |
-| 93-290-0-j26-1 | 3151 / Sesselbahn Vals-Gadenstatt | mountain / 2900 | 6 | 0/720 | 0/720 | excluded; no-reviewed-mountain-geometry | Vals (Talstation); Gadastatt |
+| 93-288-0-j26-1 | 236 / Chur-Dreibündenstein | mountain / 2880 | 2404 | 0/962 | 0/1022 | excluded; cableway-unreviewed-route | Känzeli (Chur); Brambrüesch |
+| 93-288-A-j26-1 | 236 / Chur-Dreibündenstein | mountain / 2880 | 87 | 0/52 | 0/54 | excluded; cableway-unreviewed-route | Chur (Brambrüeschbahn); Känzeli (Chur) |
+| 93-288-D-j26-1 | 3201 / Cassons AG | mountain / 2885 | 26722 | 0/13659 | 0/13659 | excluded; cableway-unreviewed-route | Segnes; Nagens Sura; Foppa; Startgels; Flims Dorf (Talstation Foppa) |
+| 93-289-2-j26-1 | 275 / Weisse Arena Bergbahnen AG | mountain / 2892 | 4 | 0/31 | 0/31 | excluded; cableway-unreviewed-route | Crap Sogn Gion; Laax Murschetg (Talstation) |
+| 93-289-3-j26-1 | 275 / Weisse Arena Bergbahnen AG | mountain / 2893 | 4 | 0/930 | 0/930 | excluded; cableway-unreviewed-route | Falera (Talstation Curnius); Curnius |
+| 93-290-0-j26-1 | 3151 / Sesselbahn Vals-Gadenstatt | mountain / 2900 | 6 | 0/720 | 0/720 | excluded; cableway-unreviewed-route | Vals (Talstation); Gadastatt |
 | 93-290-8-j26-1 | 251 / Andermatt-Sedrun Sport AG | mountain / 2908 | 2 | 0/0 | 0/0 | inactive-on-validation-dates; — | Dieni (pendicularas); Milez |
-| 93-291-0-j26-1 | 219 / Arosa Bergbahnen | mountain / 2910 | 8 | 0/99 | 0/99 | excluded; no-reviewed-mountain-geometry | Arosa (Talstation) Weisshorn; Weisshorn; Arosa (Mittelstation)Weisshorn |
-| 93-291-2-j26-1 | 219 / Arosa Bergbahnen | mountain / 2912 | 4 | 0/915 | 0/915 | excluded; no-reviewed-mountain-geometry | Arosa (Talstation) Hörnli; Hörnligrat |
-| 93-292-2-j26-1 | 252 / Lenzerheide Bergbahnen | mountain / 2922 | 4 | 0/960 | 0/960 | excluded; no-reviewed-mountain-geometry | Churwalden (Talstation); Heidbüel |
-| 93-293-0-j26-1 | 252 / Lenzerheide Bergbahnen | mountain / 2930 | 10 | 0/1020 | 0/1020 | excluded; no-reviewed-mountain-geometry | Lenzerheide/Lai Canols; Scharmoin |
-| 93-293-2-j26-1 | 3026 / Val Sporz-Piz Scalottas | mountain / 2932 | 8 | 0/1980 | 0/1980 | excluded; no-reviewed-mountain-geometry | Lenzerheide/Lai Val Sporz; Tgantieni; Piz Scalottas |
-| 93-293-A-j26-1 | 252 / Lenzerheide Bergbahnen | mountain / 2930 | 8 | 0/48 | 0/48 | excluded; no-reviewed-mountain-geometry | Scharmoin; Parpaner Rothorn |
-| 93-294-0-j26-1 | 232 / Rhäzüns-Feldis/Veulden | mountain / 2940 | 8 | 0/66 | 0/62 | excluded; no-reviewed-mountain-geometry | Rhäzüns (Luftseilbahn Feldis); Feldis/Veulden |
-| 93-294-1-j26-1 | 3158 / Sesselbahn Feldis-Mutta | mountain / 2941 | 6 | 0/780 | 0/960 | excluded; no-reviewed-mountain-geometry | Feldis/Veulden (Sesselbahn); Mutta |
-| 93-295-8-j26-1 | 3160 / EWZ Bergeller Kraftwerke | mountain / 2958 | 4 | 0/960 | 0/960 | excluded; no-reviewed-mountain-geometry | Pranzaira (Albigna); Albigna |
-| 93-296-0-j26-1 | 249 / Surlej-Silvaplana-Corvatsch | mountain / 2960 | 9 | 0/33 | 0/33 | excluded; no-reviewed-mountain-geometry | Sils Maria (Furtschellasbahn); Furtschellas Mittelstation |
-| 93-296-5-j26-1 | 249 / Surlej-Silvaplana-Corvatsch | mountain / 2965 | 20 | 0/100 | 0/100 | excluded; no-reviewed-mountain-geometry | Silvaplana Surlej (Corvatsch); Murtèl; Corvatsch |
-| 93-298-2-j26-1 | 267 / Pontresina-Alp Languard | mountain / 2982 | 2 | 0/1050 | 0/1050 | excluded; no-reviewed-mountain-geometry | Pontresina (Sesselb. Languard); Alp Languard |
-| 93-30-Y-j26-1 | 238 / Engadin St. Moritz Mountains AG | mountain / GB | 6 | 0/1080 | 0/1080 | excluded; no-reviewed-mountain-geometry | Celerina (Talstation Marguns); Marguns (Val Saluver) |
-| 93-31-Y-j26-1 | 3051 / Sesselbahn St. Moritz Suvretta-Randolins | mountain / SL | 6 | 0/1020 | 0/1020 | excluded; no-reviewed-mountain-geometry | St. Moritz Suvretta; Randolins |
-| 93-38-Y-j26-1 | 293 / Glaris-Rinerhorn | mountain / GB | 4 | 0/1005 | 0/1005 | excluded; no-reviewed-mountain-geometry | Davos Glaris (Talst.Jatzmeder); Jatzmeder |
-| 93-3K-Y-j26-1 | 309 / Klosters-Madrisa Bergbahn | mountain / GB | 4 | 0/1035 | 0/1035 | excluded; no-reviewed-mountain-geometry | Klosters Dorf (Talst. Madrisa); Madrisa |
-| 93-55-Y-j26-1 | 336 / Bergün Filisur Tourismus AG | mountain / SL | 4 | 0/16 | 0/16 | excluded; no-reviewed-mountain-geometry | Bergün/Bravuogn Sagliaz; Pros da Darlux |
+| 93-291-0-j26-1 | 219 / Arosa Bergbahnen | mountain / 2910 | 8 | 0/99 | 0/99 | excluded; cableway-unreviewed-route | Arosa (Talstation) Weisshorn; Weisshorn; Arosa (Mittelstation)Weisshorn |
+| 93-291-2-j26-1 | 219 / Arosa Bergbahnen | mountain / 2912 | 4 | 0/915 | 0/915 | excluded; cableway-unreviewed-route | Arosa (Talstation) Hörnli; Hörnligrat |
+| 93-292-2-j26-1 | 252 / Lenzerheide Bergbahnen | mountain / 2922 | 4 | 0/960 | 0/960 | excluded; cableway-unreviewed-route | Churwalden (Talstation); Heidbüel |
+| 93-293-0-j26-1 | 252 / Lenzerheide Bergbahnen | mountain / 2930 | 10 | 0/1020 | 0/1020 | excluded; cableway-unreviewed-route | Lenzerheide/Lai Canols; Scharmoin |
+| 93-293-2-j26-1 | 3026 / Val Sporz-Piz Scalottas | mountain / 2932 | 8 | 0/1980 | 0/1980 | excluded; cableway-unreviewed-route | Lenzerheide/Lai Val Sporz; Tgantieni; Piz Scalottas |
+| 93-293-A-j26-1 | 252 / Lenzerheide Bergbahnen | mountain / 2930 | 8 | 0/48 | 0/48 | excluded; cableway-unreviewed-route | Scharmoin; Parpaner Rothorn |
+| 93-294-0-j26-1 | 232 / Rhäzüns-Feldis/Veulden | mountain / 2940 | 8 | 66/66 | 62/62 | admitted-all-dated-trips; — | Rhäzüns (Luftseilbahn Feldis); Feldis/Veulden |
+| 93-294-1-j26-1 | 3158 / Sesselbahn Feldis-Mutta | mountain / 2941 | 6 | 0/780 | 0/960 | excluded; cableway-unreviewed-route | Feldis/Veulden (Sesselbahn); Mutta |
+| 93-295-8-j26-1 | 3160 / EWZ Bergeller Kraftwerke | mountain / 2958 | 4 | 0/960 | 0/960 | excluded; cableway-unreviewed-route | Pranzaira (Albigna); Albigna |
+| 93-296-0-j26-1 | 249 / Surlej-Silvaplana-Corvatsch | mountain / 2960 | 9 | 33/33 | 33/33 | admitted-all-dated-trips; — | Sils Maria (Furtschellasbahn); Furtschellas Mittelstation |
+| 93-296-5-j26-1 | 249 / Surlej-Silvaplana-Corvatsch | mountain / 2965 | 20 | 0/100 | 0/100 | excluded; cableway-unreviewed-route | Silvaplana Surlej (Corvatsch); Murtèl; Corvatsch |
+| 93-298-2-j26-1 | 267 / Pontresina-Alp Languard | mountain / 2982 | 2 | 0/1050 | 0/1050 | excluded; cableway-unreviewed-route | Pontresina (Sesselb. Languard); Alp Languard |
+| 93-30-Y-j26-1 | 238 / Engadin St. Moritz Mountains AG | mountain / GB | 6 | 0/1080 | 0/1080 | excluded; cableway-unreviewed-route | Celerina (Talstation Marguns); Marguns (Val Saluver) |
+| 93-31-Y-j26-1 | 3051 / Sesselbahn St. Moritz Suvretta-Randolins | mountain / SL | 6 | 0/1020 | 0/1020 | excluded; cableway-unreviewed-route | St. Moritz Suvretta; Randolins |
+| 93-38-Y-j26-1 | 293 / Glaris-Rinerhorn | mountain / GB | 4 | 0/1005 | 0/1005 | excluded; cableway-unreviewed-route | Davos Glaris (Talst.Jatzmeder); Jatzmeder |
+| 93-3K-Y-j26-1 | 309 / Klosters-Madrisa Bergbahn | mountain / GB | 4 | 0/1035 | 0/1035 | excluded; cableway-unreviewed-route | Klosters Dorf (Talst. Madrisa); Madrisa |
+| 93-55-Y-j26-1 | 336 / Bergün Filisur Tourismus AG | mountain / SL | 4 | 0/16 | 0/16 | excluded; cableway-unreviewed-route | Bergün/Bravuogn Sagliaz; Pros da Darlux |
 | 93-56-Y-j26-1 | 3152 / Bergbahnen Piz Mundaun AG | mountain / SL | 2 | 0/0 | 0/0 | inactive-on-validation-dates; — | Vella (pendicularas); Triel |
 | 93-57-Y-j26-1 | 230 / Savognin-Bergbahnen AG | mountain / GB | 2 | 0/0 | 0/0 | inactive-on-validation-dates; — | Savognin (Talstation); Somtgant |
 | 93-58-Y-j26-1 | 3148 / Bergbahnen Piz Mundaun AG | mountain / SL | 2 | 0/0 | 0/0 | inactive-on-validation-dates; — | Obersaxen Valata (Talstation); Cuolm Sura (Valata) |
@@ -195,22 +195,22 @@ All 380 annual canton-calling route records. Date columns count complete admitte
 | 93-5J-Y-j26-1 | 3148 / Bergbahnen Piz Mundaun AG | mountain / SL | 2 | 0/0 | 0/0 | inactive-on-validation-dates; — | Piz Mundaun; Cuolm Sura (Valata) |
 | 93-5K-Y-j26-1 | 336 / Bergün Filisur Tourismus AG | mountain / SL | 2 | 0/0 | 0/0 | inactive-on-validation-dates; — | Pros da Darlux; Alp Darlux |
 | 93-5L-Y-j26-1 | 3152 / Bergbahnen Piz Mundaun AG | mountain / SL | 2 | 0/0 | 0/0 | inactive-on-validation-dates; — | Triel; Hitzeggen |
-| 93-5Y-Y-j26-1 | 111 / Sportbahnen Davos | mountain / FUN | 16 | 0/102 | 0/102 | excluded; no-reviewed-mountain-geometry | Davos Platz Schatzalpbahn; Schatzalp |
-| 93-62-Y-j26-1 | 218 / Bergbahnen Engadin St. Moritz, Bernina-Diavolezza (lbd) | mountain / PB | 10 | 0/52 | 0/52 | excluded; no-reviewed-mountain-geometry | Bernina Diavolezza (Talstat.); Diavolezza |
+| 93-5Y-Y-j26-1 | 111 / Sportbahnen Davos | mountain / FUN | 16 | 0/102 | 0/102 | excluded; cableway-unreviewed-route | Davos Platz Schatzalpbahn; Schatzalp |
+| 93-62-Y-j26-1 | 218 / Bergbahnen Engadin St. Moritz, Bernina-Diavolezza (lbd) | mountain / PB | 10 | 52/52 | 52/52 | admitted-all-dated-trips; — | Bernina Diavolezza (Talstat.); Diavolezza |
 | 93-6F-Y-j26-1 | 247 / Curtinatsch-Piz Lagalb | mountain / PB | 4 | 0/0 | 0/0 | inactive-on-validation-dates; — | Curtinatsch; Piz Lagalb |
-| 93-6L-Y-j26-1 | 133 / Celeriner Bergbahnen - Punt Muragl-Muottas Muragl | mountain / FUN | 10 | 0/62 | 0/62 | excluded; no-reviewed-mountain-geometry | Punt Muragl (Talstation); Muottas Muragl |
-| 93-6S-Y-j26-1 | 147 / Bergbahnen Engadin St. Moritz AG | mountain / PB | 8 | 0/51 | 0/51 | excluded; no-reviewed-mountain-geometry | St. Moritz Bad (Signalbahn); Signal (St. Moritz) |
-| 93-6W-Y-j26-1 | 109 / Davos Klosters Bergbahnen (dpb) | mountain / FUN | 2 | 0/49 | 0/49 | excluded; no-reviewed-mountain-geometry | Davos Dorf (Parsennbahn); Höhenweg |
+| 93-6L-Y-j26-1 | 133 / Celeriner Bergbahnen - Punt Muragl-Muottas Muragl | mountain / FUN | 10 | 0/62 | 0/62 | excluded; cableway-unreviewed-route | Punt Muragl (Talstation); Muottas Muragl |
+| 93-6S-Y-j26-1 | 147 / Bergbahnen Engadin St. Moritz AG | mountain / PB | 8 | 0/51 | 0/51 | excluded; cableway-unreviewed-route | St. Moritz Bad (Signalbahn); Signal (St. Moritz) |
+| 93-6W-Y-j26-1 | 109 / Davos Klosters Bergbahnen (dpb) | mountain / FUN | 2 | 0/49 | 0/49 | excluded; cableway-unreviewed-route | Davos Dorf (Parsennbahn); Höhenweg |
 | 93-6X-Y-j26-1 | 207 / Davos Klosters Bergbahnen (bbbj) | mountain / PB | 2 | 0/0 | 0/0 | inactive-on-validation-dates; — | Davos Platz (Jakobshorn); Ischalp |
 | 93-6Z-Y-j26-1 | 147 / Bergbahnen Engadin St. Moritz AG | mountain / FUN | 4 | 0/0 | 0/0 | inactive-on-validation-dates; — | St. Moritz (Standseilbahn); Chantarella |
-| 93-7-Y-j26-1 | 208 / Davos Klosters Bergbahnen (lkp) | mountain / PB | 6 | 0/33 | 0/33 | excluded; no-reviewed-mountain-geometry | Klosters Platz (Gotschnabahn); Gotschnaboden |
+| 93-7-Y-j26-1 | 208 / Davos Klosters Bergbahnen (lkp) | mountain / PB | 6 | 0/33 | 0/33 | excluded; cableway-unreviewed-route | Klosters Platz (Gotschnabahn); Gotschnaboden |
 | 93-70-Y-j26-1 | 207 / Davos Klosters Bergbahnen (bbbj) | mountain / PB | 2 | 0/0 | 0/0 | inactive-on-validation-dates; — | Ischalp (Talst. Jakobshorn); Jakobshorn |
-| 93-71-Y-j26-1 | 109 / Davos Klosters Bergbahnen (dpb) | mountain / FUN | 2 | 0/48 | 0/48 | excluded; no-reviewed-mountain-geometry | Höhenweg; Weissfluhjoch |
+| 93-71-Y-j26-1 | 109 / Davos Klosters Bergbahnen (dpb) | mountain / FUN | 2 | 0/48 | 0/48 | excluded; cableway-unreviewed-route | Höhenweg; Weissfluhjoch |
 | 93-76-Y-j26-1 | 147 / Bergbahnen Engadin St. Moritz AG | mountain / FUN | 4 | 0/0 | 0/0 | inactive-on-validation-dates; — | Chantarella; Corviglia (Talstat. Piz Nair) |
-| 93-77-Y-j26-1 | 109 / Davos Klosters Bergbahnen (dpb) | mountain / PB | 2 | 0/44 | 0/44 | excluded; no-reviewed-mountain-geometry | Weissfluhjoch; Weissfluhgipfel |
-| 93-7F-Y-j26-1 | 147 / Bergbahnen Engadin St. Moritz AG | mountain / PB | 4 | 0/46 | 0/46 | excluded; no-reviewed-mountain-geometry | Corviglia (Talstat. Piz Nair); Piz Nair |
-| 93-7J-Y-j26-1 | 3161 / Bergbahnen Samnaun AG | mountain / PB | 5 | 0/34 | 0/34 | excluded; no-reviewed-mountain-geometry | Samnaun-Ravaisch (Bergbahn); Alptrider Sattel |
-| 93-8-Y-j26-1 | 208 / Davos Klosters Bergbahnen (lkp) | mountain / PB | 6 | 0/33 | 0/33 | excluded; no-reviewed-mountain-geometry | Gotschnaboden; Gotschnagrat (Klosters) |
+| 93-77-Y-j26-1 | 109 / Davos Klosters Bergbahnen (dpb) | mountain / PB | 2 | 0/44 | 0/44 | excluded; cableway-unreviewed-route | Weissfluhjoch; Weissfluhgipfel |
+| 93-7F-Y-j26-1 | 147 / Bergbahnen Engadin St. Moritz AG | mountain / PB | 4 | 0/46 | 0/46 | excluded; cableway-unreviewed-route | Corviglia (Talstat. Piz Nair); Piz Nair |
+| 93-7J-Y-j26-1 | 3161 / Bergbahnen Samnaun AG | mountain / PB | 5 | 0/34 | 0/34 | excluded; cableway-unreviewed-route | Samnaun-Ravaisch (Bergbahn); Alptrider Sattel |
+| 93-8-Y-j26-1 | 208 / Davos Klosters Bergbahnen (lkp) | mountain / PB | 6 | 0/33 | 0/33 | excluded; cableway-unreviewed-route | Gotschnaboden; Gotschnagrat (Klosters) |
 | 93-8F-Y-j26-1 | 109 / Davos Klosters Bergbahnen (dpb) | mountain / PB | 2 | 0/0 | 0/0 | inactive-on-validation-dates; — | Parsennhütte; Weissfluhjoch |
 | 93-8T-Y-j26-1 | 329 / Bergbahnen Disentis | mountain / PB | 2 | 0/0 | 0/0 | inactive-on-validation-dates; — | Sedrun Salins (pendiculara); Cuolm da Vi |
 | 93-8U-Y-j26-1 | 329 / Bergbahnen Disentis | mountain / PB | 3 | 0/0 | 0/0 | inactive-on-validation-dates; — | Disentis/Mustér (Talstation); Caischavedra (Disentis) |

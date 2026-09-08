@@ -1,0 +1,9 @@
+{
+  "checkedOn": "2026-09-08",
+  "url": "https://www.corvatsch-diavolezza.ch/en/news-1/operating-hours",
+  "publisher": "Corvatsch AG / Diavolezza Lagalb AG",
+  "file": "operator-hours.html.gz",
+  "sha256": "66ab927cd24b47df54ba054ec11ad598a26e29a292c583e9f0c0ad979d6114c7",
+  "htmlSha256": "b2fc02ee37e2440f7dd8f236870389a60f8d785a868a67175bcfc63bfbc03b95",
+  "disposition": "Supporting evidence only, not timetable replacement or geometry. Published summer interval endpoints differ from the pinned GTFS exclusive frequency endpoints; see docs/GRAUBUENDEN-CABLEWAYS.md."
+}

@@ -1,6 +1,6 @@
 # Graubünden: Bern platform 50 and Basel rail completion
 
-This review adds **30 Friday and 31 Sunday complete rail journeys**. Rail admission reaches **854/856** and **840/842**; the application has **6,545** and **5,324** complete journeys across rail and bus. Both dated whole-canton denominators stay unchanged. Every earlier complete journey and every previously successful directed pair remain identical.
+This review adds **30 Friday and 31 Sunday complete rail journeys**. Rail admission reaches **854/856** and **840/842**; rail and bus admission remains **6,545** and **5,324** complete journeys. The subsequent [cableway review](GRAUBUENDEN-CABLEWAYS.md) brings all-mode application totals to **6,696** and **5,471** instances. Both dated whole-canton denominators stay unchanged. Every earlier complete journey and every previously successful directed pair remain identical.
 
 [Before/after audit](../data/graubuenden-audit/rail-completion-review.json) · [Explicit policy](../data/graubuenden-rail-completion/policy.json) · [Official evidence](../data/graubuenden-rail-completion/evidence.json) · [Source probes](../data/graubuenden-rail-completion/probes.json) · [All annual routes and exclusions](GRAUBUENDEN-ROUTE-INVENTORY.md)
 
@@ -11,11 +11,11 @@ This review adds **30 Friday and 31 Sunday complete rail journeys**. Rail admiss
 | Metric | Friday 4 September | Sunday 6 September |
 | --- | ---: | ---: |
 | All-mode candidate journeys | 39'402 | 38'425 |
-| Originally admitted complete journeys | 6'515 | 5'293 |
-| Now admitted complete journeys | 6'545 | 5'324 |
+| Admitted with this rail review disabled | 6'666 | 5'440 |
+| Admitted with this rail review enabled | 6'696 | 5'471 |
 | Newly complete rail journeys | 30 | 31 |
-| Earlier complete journeys preserved | 6'515 | 5'293 |
-| Earlier matched pair occurrences preserved | 86'673 | 72'520 |
+| Earlier complete journeys preserved | 6'666 | 5'440 |
+| Earlier matched pair occurrences preserved | 86'824 | 72'667 |
 | All rail candidates | 856 | 842 |
 | Admitted complete rail journeys | 854 | 840 |
 
@@ -25,7 +25,7 @@ This review adds **30 Friday and 31 Sunday complete rail journeys**. Rail admiss
 | 91-35-B-j26-1 / 11 (IR35) | 11 | 11 | Bern platform 50 terminal extension |
 | 91-N-Y-j26-1 / 11 (ICE) | 3 | 3 | One existing Basel DICH segment |
 
-The 34 newly admitted full directed patterns are explicitly listed in policy, with ordered stop IDs and call rules. Every candidate in every mode is reconciled against the released audit, including the excluded services. The comparison executes the same pipeline with only this review disabled/enabled. It verifies complete-path equality for all earlier admissions and pair equality even within earlier rejected journeys. Calendar, frequency, original full calls and chunk checks are performed by the regional validator.
+The 34 newly admitted full directed patterns are explicitly listed in policy, with ordered stop IDs and call rules. Every candidate in every mode is reconciled against the released audit, including the excluded services. The comparison executes the current pipeline with only this rail review disabled/enabled; later cableway admissions are held fixed on both sides, so these all-mode counterfactual totals are not historical release totals. It verifies complete-path equality for all earlier admissions and pair equality even within earlier rejected journeys. Calendar, frequency, original full calls and chunk checks are performed by the regional validator.
 
 ## Bern platform 50
 

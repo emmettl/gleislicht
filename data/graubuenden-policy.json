@@ -418,5 +418,8 @@
   },
   "railCompletionReview": {
     "policySha256": "fb6219a6c281c7d4b9670778e6418a5bb6389f069e513d3a25a750f437e1aa3c"
+  },
+  "cablewayReview": {
+    "policySha256": "47b640456ea7c70cd71bd3e1e234159164ad20c382887b05fdc3345164ec0040"
   }
 }

@@ -107,9 +107,9 @@
     "data:graubuenden:census": "node --max-old-space-size=8192 scripts/graubuenden-timetable.mjs",
     "data:graubuenden": "node scripts/build-graubuenden-region.mjs",
     "data:graubuenden:check": "node scripts/check-graubuenden-region.mjs",
-    "data:graubuenden:review": "node scripts/review-graubuenden-access-roads.mjs && node scripts/review-graubuenden-rail.mjs && node scripts/review-graubuenden-rail-completion.mjs",
+    "data:graubuenden:review": "node scripts/review-graubuenden-access-roads.mjs && node scripts/review-graubuenden-rail.mjs && node scripts/review-graubuenden-rail-completion.mjs && node scripts/review-graubuenden-cableways.mjs",
     "data:graubuenden:rail-sources": "python3 scripts/prepare-graubuenden-rail-review.py",
-    "data:graubuenden:docs": "node scripts/document-graubuenden-study.mjs && node scripts/document-graubuenden-expansion.mjs && node scripts/document-graubuenden-rail-completion.mjs",
+    "data:graubuenden:docs": "node scripts/document-graubuenden-study.mjs && node scripts/document-graubuenden-expansion.mjs && node scripts/document-graubuenden-rail-completion.mjs && node scripts/document-graubuenden-cableways.mjs",
     "data:valais:sources": "python3 scripts/prepare-valais-sources.py",
     "data:valais:census": "node --max-old-space-size=8192 scripts/valais-timetable.mjs",
     "data:valais": "node --max-old-space-size=8192 scripts/build-valais-region.mjs",
@@ -120,7 +120,8 @@
     "data:ticino:census": "node --max-old-space-size=8192 scripts/inventory-ticino.mjs",
     "data:ticino": "node --max-old-space-size=8192 scripts/build-ticino-region.mjs",
     "data:ticino:check": "node scripts/check-ticino-region.mjs",
-    "data:ticino:docs": "node scripts/document-ticino-study.mjs"
+    "data:ticino:docs": "node scripts/document-ticino-study.mjs",
+    "data:graubuenden:cableway-sources": "node scripts/prepare-graubuenden-cableways.mjs"
   },
   "engines": {
     "node": ">=24.0.0"
