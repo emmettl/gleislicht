@@ -9,6 +9,7 @@ import { gunzipSync } from 'node:zlib'
 import { loadZugBusSupplement, matchZugBusPair } from './zug-bus-supplement.mjs'
 import { loadZugRoads, mergeZugRoadCandidates, matchZugRoadPair, zugOfficialAttempt } from './zug-road-geometry.mjs'
 import { loadZugMountain } from './zug-mountain-geometry.mjs'
+import { loadZugSbbRailSupplement, matchZugRailWithSupplement } from './zug-sbb-rail-supplement.mjs'
 import { loadZugRail } from './zug-rail-geometry.mjs'
 import { inCanton } from './zug-timetable.mjs'
 
@@ -51,6 +52,10 @@ export async function checkZugRegion({ auditPath = 'data/zug-study-audit.json', 
   assert.equal(audit.sourceHashes.rail, audit.policy.rail.sourceSha256)
   assert.deepEqual(audit.railSource, rail.source)
   assert.deepEqual(audit.railSourceInventory, rail.sourceInventory)
+  const railSupplement = await loadZugSbbRailSupplement(audit.policy.railSupplement)
+  assert.equal(audit.sourceHashes.railSupplement, audit.policy.railSupplement.sourceSha256)
+  assert.deepEqual(audit.railSupplementSource, railSupplement.source)
+  assert.deepEqual(audit.railSupplementInventory, railSupplement.inventory)
   const mountain = await loadZugMountain(audit.policy.mountain)
   assert.equal(audit.sourceHashes.mountain, audit.policy.mountain.sourceSha256)
   assert.deepEqual(audit.mountainSource, mountain.source)
@@ -117,6 +122,10 @@ export async function checkZugRegion({ auditPath = 'data/zug-study-audit.json', 
     assert.deepEqual(manifest.metadata.sourceHashes, audit.sourceHashes)
     const morning = await json(join(day.artifacts.directory, 'zug-region-morning.json'))
     assert.deepEqual(morning.trains.map(t => t.id).sort(), [...trains.values()].filter(t => t.start <= 31500 && t.end >= 24300).map(t => t.id).sort())
+    const railSupplementKeys = new Set(day.directedStopPairs.filter(p => p.geometrySource === 'sbb-rail-inference' && p.matched).map(p => p.key))
+    assert.equal(day.admittedTripsUsingRailSupplement, sum(day.directedPatterns.filter(p => p.admitted && p.pairKeys.some(k => railSupplementKeys.has(k))), 'trips'))
+    assert.deepEqual(manifest.metadata.geometry.railSupplement.source, railSupplement.source)
+    assert(manifest.metadata.attribution.includes(railSupplement.source.attribution))
     const roadPairs = day.directedStopPairs.filter(p => p.geometrySource === 'osm-road-inference' && p.matched), roadKeys = new Set(roadPairs.map(p => p.key))
     const expansionRoutes = new Set(audit.policy.roadExpansion.routes.map(r => r.routeId))
     assert.equal(day.admittedTripsUsingRoadExpansion, sum(day.directedPatterns.filter(p => p.admitted && expansionRoutes.has(p.routeId) && p.pairKeys.some(k => roadKeys.has(k))), 'trips'))
@@ -192,7 +201,7 @@ export async function checkZugRegion({ auditPath = 'data/zug-study-audit.json', 
       const r = rawRoutes.get(p.routeId), a = sourceStops.get(p.fromId), b = sourceStops.get(p.toId)
       const pattern = p.contextPatternId ? patterns.get(p.contextPatternId) : undefined
       const train = pattern ? { routeId: pattern.routeId, directionId: pattern.directionId, calls: pattern.stopIds.map((id, i) => ({ id, pickupType: pattern.callRules[i][0], dropOffType: pattern.callRules[i][1] })) } : undefined
-      let result = train ? rail.matchPattern(train, sourceStops, r)[p.pairIndex] : r.mode === 'mountain' ? mountain.matchPair(r, a, b) : r.mode !== 'bus' ? { reason: `no-reviewed-${r.mode}-geometry` } : matchZugBusPair(graphs.get(zugRouteKey(r)), supplement.graphs.get(zugRouteKey(r)), [Number(a.stop_lon), Number(a.stop_lat)], [Number(b.stop_lon), Number(b.stop_lat)], audit.policy.limits)
+      let result = train ? matchZugRailWithSupplement(rail, railSupplement, train, sourceStops, r)[p.pairIndex] : r.mode === 'mountain' ? mountain.matchPair(r, a, b) : r.mode !== 'bus' ? { reason: `no-reviewed-${r.mode}-geometry` } : matchZugBusPair(graphs.get(zugRouteKey(r)), supplement.graphs.get(zugRouteKey(r)), [Number(a.stop_lon), Number(a.stop_lat)], [Number(b.stop_lon), Number(b.stop_lat)], audit.policy.limits)
       if (r.mode === 'bus') result = matchZugRoadPair(result, roads, r.routeId, p.fromId, p.toId)
       assert.deepEqual(result.officialFailure, p.officialFailure)
       assert.deepEqual(result.roadPatternIds, p.roadPatternIds)
@@ -201,6 +210,7 @@ export async function checkZugRegion({ auditPath = 'data/zug-study-audit.json', 
       assert.equal(result.reason, p.reason)
       assert.equal(result.geometrySource, p.geometrySource)
       assert.deepEqual(result.primaryFailure, p.primaryFailure)
+      if (result.geometrySource === 'sbb-rail-inference') for (const field of ['corridor', 'sourceFeatures', 'fromOperatingPoint', 'toOperatingPoint', 'stationAttachmentsMetres']) assert.deepEqual(result[field], p[field])
       if (r.mode === 'mountain') for (const field of ['sourceFeatures', 'installation', 'operatingPointIds', 'attachmentMetres']) assert.deepEqual(result[field], p[field])
       assert.equal(result.path ? sha256(JSON.stringify(result.path)) : null, p.geometrySha256)
     }

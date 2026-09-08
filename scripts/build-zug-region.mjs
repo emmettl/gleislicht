@@ -9,6 +9,7 @@ import { zugMode, inCanton } from './zug-timetable.mjs'
 import { sha256 } from './download-luzern-sources.mjs'
 import { loadZugRoads, mergeZugRoadCandidates, matchZugRoadPair, zugOfficialAttempt } from './zug-road-geometry.mjs'
 import { loadZugMountain } from './zug-mountain-geometry.mjs'
+import { loadZugSbbRailSupplement, matchZugRailWithSupplement } from './zug-sbb-rail-supplement.mjs'
 import { loadZugRail } from './zug-rail-geometry.mjs'
 import { loadZugBusSupplement, matchZugBusPair } from './zug-bus-supplement.mjs'
 
@@ -47,6 +48,8 @@ export async function buildZugRegion({ timetablePath, sourceDirectory, policyPat
     cantonStopIds: raw.cantonStops.filter(s => inCanton([Number(s.stop_lon), Number(s.stop_lat)], f.geometry)).map(s => s.stop_id) }))
   const rail = await loadZugRail(policy.rail, raw.dates)
   sourceHashes.rail = policy.rail.sourceSha256
+  const railSupplement = await loadZugSbbRailSupplement(policy.railSupplement)
+  sourceHashes.railSupplement = policy.railSupplement.sourceSha256
   const supplement = await loadZugBusSupplement(policy.busSupplement)
   sourceHashes.busSupplement = policy.busSupplement.sourceSha256
   const mountain = await loadZugMountain(policy.mountain)
@@ -64,7 +67,7 @@ export async function buildZugRegion({ timetablePath, sourceDirectory, policyPat
     for (const train of day.trains) {
       const route = routes.get(train.routeId), candidate = graphs.get(keyForRoute(route)), patternKey = directedPatternKey(train)
       if (!patterns.has(patternKey)) {
-        const railPairs = route.mode === 'rail' ? rail.matchPattern(train, stops, route) : undefined
+        const railPairs = route.mode === 'rail' ? matchZugRailWithSupplement(rail, railSupplement, train, stops, route) : undefined
         const pairKeys = train.calls.slice(1).map((call, i) => {
           const from = train.calls[i].id, to = call.id, key = JSON.stringify([route.routeId, from, to, ...(railPairs ? [patternKey] : [])])
           if (!pairCache.has(key)) {
@@ -103,12 +106,12 @@ export async function buildZugRegion({ timetablePath, sourceDirectory, policyPat
       windowStart: 0, windowEnd: 86400, focusTime: 27900, sourceHashes, modes: [...new Set(admitted.map(t => routes.get(t.routeId).mode))],
       label: 'Zug canton — admitted complete stop patterns', model: 'scheduled interpolation along official alignments and explicitly attributed inferred OSM road paths',
       note: policy.admission, scope: raw.scope.description, exclusions: policy.scopeLimits,
-      attribution: ['Timetable: SBB / opentransportdata.swiss', 'Quelle: GIS Kanton Zug', 'Canton boundary: © swisstopo', '© Federal Office of Transport (FOT)', supplement.source.attribution, roads.source.attribution],
+      attribution: ['Timetable: SBB / opentransportdata.swiss', 'Quelle: GIS Kanton Zug', 'Canton boundary: © swisstopo', '© Federal Office of Transport (FOT)', supplement.source.attribution, roads.source.attribution, railSupplement.source.attribution],
       sourceUrl: 'https://data.opentransportdata.swiss/en/dataset/timetable-2026-gtfs2020', termsUrl: 'https://opentransportdata.swiss/en/terms-of-use/',
       geometry: { license: catalogue.license, metadataUrl: 'https://zg.ch/de/planen-bauen/geoinformation/geoinformationen-nutzen/geoinformationen-von-a-bis-z',
         termsUrl: 'https://zg.ch/de/planen-bauen/geoinformation/geoinformationen-nutzen/nutzungsbedingungen',
         archiveLastModified: catalogue.archiveLastModified, geopackageLastChange: catalogue.geopackageLastChange, currentAlignmentValidity: 'unproven',
-        road: { source: roads.source, policy: policy.road }, roadExpansion: { source: roadExpansion.source, policy: policy.roadExpansion }, mountain: { source: mountain.source, policy: policy.mountain }, busSupplement: { source: supplement.source, policy: policy.busSupplement }, topologyJoins: policy.topologyJoins, rail: { source: rail.source, policy: policy.rail },
+        railSupplement: { source: railSupplement.source, policy: policy.railSupplement }, road: { source: roads.source, policy: policy.road }, roadExpansion: { source: roadExpansion.source, policy: policy.roadExpansion }, mountain: { source: mountain.source, policy: policy.mountain }, busSupplement: { source: supplement.source, policy: policy.busSupplement }, topologyJoins: policy.topologyJoins, rail: { source: rail.source, policy: policy.rail },
         wfsComparison: catalogue.comparison, limits: policy.limits, sourceCrs: 'EPSG:2056', outputCrs: 'EPSG:4326',
         direction: 'Undirected source segments filtered by exact line membership. Ordered GTFS calls determine orientation; no one-way street certification.' },
       frequency: { headwayTrips: admitted.filter(t => t.frequency?.exactTimes === 0).length, exactFrequencyTrips: admitted.filter(t => t.frequency?.exactTimes === 1).length, model: 'Source-interval-anchored representative grid when exact_times=0; not scheduled departures.' } }
@@ -144,6 +147,7 @@ export async function buildZugRegion({ timetablePath, sourceDirectory, policyPat
       scheduledSegmentOccurrences: pairList.reduce((n, p) => n + p.scheduledOccurrences, 0), matchedScheduledSegmentOccurrences: pairList.filter(p => p.pathIndex !== null).reduce((n, p) => n + p.scheduledOccurrences, 0),
       representativeHeadwaySegmentOccurrences: pairList.reduce((n, p) => n + p.representativeHeadwayOccurrences, 0),
       admittedTripsUsingRoadExpansion: ps.filter(p => p.admitted && expansionRoutes.has(p.routeId) && p.pairKeys.some(k => pairs.get(k).geometrySource === 'osm-road-inference')).reduce((n, p) => n + p.trips, 0),
+      admittedTripsUsingRailSupplement: ps.filter(p => p.admitted && p.pairKeys.some(k => pairs.get(k).geometrySource === 'sbb-rail-inference')).reduce((n, p) => n + p.trips, 0),
       roadMatchedPairs: pairList.filter(p => p.geometrySource === 'osm-road-inference' && p.pathIndex !== null).length,
       admittedTripsUsingRoads: ps.filter(p => p.admitted && p.pairKeys.some(k => pairs.get(k).geometrySource === 'osm-road-inference')).reduce((n, p) => n + p.trips, 0),
       supplementalMatchedPairs: pairList.filter(p => p.geometrySource === 'luzern' && p.pathIndex !== null).length,
@@ -185,7 +189,7 @@ export async function buildZugRegion({ timetablePath, sourceDirectory, policyPat
     }) }
   })
   const report = { schemaVersion: 1, feed: raw.feed, sourceHashes, scope: raw.scope, policy, annualRouteRecords: inventory.length, annualAgencies: new Set(inventory.map(r => r.agencyId)).size,
-    catalogue, sourceInventory, roadSource: roads.source, roadInventory: roads.inventory, roadExpansionSource: roadExpansion.source, roadExpansionInventory: roadExpansion.inventory, mountainSource: mountain.source, mountainInventory: mountain.inventory, supplementSource: supplement.source, supplementInventory, railSource: rail.source, railSourceInventory: rail.sourceInventory, municipalityReview, inventory, days,
+    catalogue, sourceInventory, railSupplementSource: railSupplement.source, railSupplementInventory: railSupplement.inventory, roadSource: roads.source, roadInventory: roads.inventory, roadExpansionSource: roadExpansion.source, roadExpansionInventory: roadExpansion.inventory, mountainSource: mountain.source, mountainInventory: mountain.inventory, supplementSource: supplement.source, supplementInventory, railSource: rail.source, railSourceInventory: rail.sourceInventory, municipalityReview, inventory, days,
     validation: { passed: true, annualPinnedTimetableInventoryComplete: true, admittedGeometryComplete: true, cantonMotionCoverageComplete: false, publicationReady: false,
       meaning: 'All admitted complete directed patterns pass numerical and artifact checks. Coverage denominators include excluded modes/patterns. This does not certify road direction or establish year-round geometry coverage.',
       pending: ['Resolve every excluded route/pattern before claiming complete cantonal motion coverage', 'Review street directions, loops, rail branches and temporary diversions before presenting paths as direction-certified', 'Validate seasonal and holiday dates', 'Integrate UI selection and refresh separately if requested'] } }

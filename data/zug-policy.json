@@ -212,12 +212,12 @@
       "evidence": "Pinned GTFS annual canton census; https://www.zvb.ch/fahrplan/fahrplan-zvb-2026/"
     }
   },
-  "admission": "Admit only complete directed stop patterns on explicitly mapped operator/line geometry. All source calls, branches, call rules and border termini retained. Every pair must pass projection, connectivity and detour checks. Historic official corridor inference, not certified street directions, current diversions or observed movement. Three individually pinned sub-metre topology connectors are inferred and reported per pair and trip; no other gap filling. Failed bus pairs may use complete exact-identity Luzern 2026 paths; successful original pairs are retained and every source switch is recorded at a scheduled stop. Zugerbergbahn uses exact federal installation and operating-point identities, retaining its full curve and reporting GTFS endpoint connectors. Explicitly reviewed bus pairs may use OSM road inference only after the official paths fail, with whole-pattern identity and all-context path consensus.",
+  "admission": "Admit only complete directed stop patterns on explicitly mapped operator/line geometry. All source calls, branches, call rules and border termini retained. Every pair must pass projection, connectivity and detour checks. Historic official corridor inference, not certified street directions, current diversions or observed movement. Three individually pinned sub-metre topology connectors are inferred and reported per pair and trip; no other gap filling. Failed bus pairs may use complete exact-identity Luzern 2026 paths; successful original pairs are retained and every source switch is recorded at a scheduled stop. Zugerbergbahn uses exact federal installation and operating-point identities, retaining its full curve and reporting GTFS endpoint connectors. Explicitly reviewed bus pairs may use OSM road inference only after the official paths fail, with whole-pattern identity and all-context path consensus. Failed S26/RE6 Däniken–Schönenwerd and IR75 Kreuzlingen–Konstanz pairs may use four exact standard-gauge SBB graphical segments, with full source curves and measured endpoint attachments. Federal source failures and the Däniken gauge conflict remain recorded.",
   "scopeLimits": [
     "Annual membership is complete for the pinned national timetable and official canton polygon, not proof of unrepresented real-world services.",
     "Friday/Sunday plus preceding-day carry-in do not establish seasonal, holiday or year-round coverage.",
     "No-stop through traffic is outside this passenger-service inventory.",
-    "Geometry admission uses mapped Zug Buslinien, exact Luzern 2026 bus supplements, standard-gauge FOT infrastructure and the exact federal Zugerbergbahn installation. Boat and unresolved rail/bus patterns remain in the coverage denominator. Failed explicitly inventoried bus pairs may use separately attributed OSM road inference; these paths are not operator-verified.",
+    "Geometry admission uses mapped Zug Buslinien, exact Luzern 2026 bus supplements, standard-gauge FOT infrastructure and the exact federal Zugerbergbahn installation. Boat and unresolved rail/bus patterns remain in the coverage denominator. Failed explicitly inventoried bus pairs may use separately attributed OSM road inference; these paths are not operator-verified. The separately attributed SBB graphical supplement covers two explicit rail corridors; foreign schematic records are excluded.",
     "The WFS matches the archive within 1 mm but proves no 2026 alignment validity. No realtime."
   ],
   "topologyJoins": {
@@ -656,5 +656,88 @@
       "alternativeSnapMetres": 5
     },
     "admission": "Fallback only after both official alternatives fail. Every complete scoped pattern on both civil days must be represented; all occurrences of a route-specific directed stop pair must have valid byte-identical paths. Inferred OSM roads, not operator-verified or diversion-certified."
+  },
+  "railSupplement": {
+    "sourceDirectory": "data/zug-sbb-rail-sources",
+    "sourceSha256": "c67745131e337136b47da452650f57c1c0dcc9a16f54fc659e6a0227f6fad030",
+    "limits": {
+      "stationAttachmentMetres": 100,
+      "detourRatio": 2,
+      "detourFloorMetres": 1500
+    },
+    "corridors": [
+      {
+        "id": "daeniken-schoenenwerd",
+        "agencyId": "11",
+        "routes": [
+          {
+            "routeId": "91-26-j26-1",
+            "line": "S26"
+          },
+          {
+            "routeId": "91-6-W-j26-1",
+            "line": "RE6"
+          }
+        ],
+        "operatingPointIds": [
+          "8502111",
+          "8502112"
+        ],
+        "sourcePointCodes": [
+          "DK",
+          "SCOE"
+        ],
+        "features": [
+          [
+            540,
+            "DK",
+            "DKO",
+            45673.43,
+            46100.0
+          ],
+          [
+            540,
+            "DKO",
+            "SCOE",
+            46100.0,
+            48129.6
+          ]
+        ]
+      },
+      {
+        "id": "kreuzlingen-konstanz",
+        "agencyId": "11",
+        "routes": [
+          {
+            "routeId": "91-75-j26-1",
+            "line": "IR75"
+          }
+        ],
+        "operatingPointIds": [
+          "8506131",
+          "8014586"
+        ],
+        "sourcePointCodes": [
+          "KR",
+          "KODB"
+        ],
+        "features": [
+          [
+            822,
+            "KR",
+            "KRGR",
+            60688.011,
+            61428.973
+          ],
+          [
+            822,
+            "KRGR",
+            "KODB",
+            61428.973,
+            61846.814
+          ]
+        ]
+      }
+    ]
   }
 }
