@@ -1,0 +1,198 @@
+{
+  "results": [
+    {
+      "type": "Feature",
+      "featureId": 14385,
+      "bbox": [
+        8.451759,
+        47.03824,
+        8.451759,
+        47.03824
+      ],
+      "layerBodId": "ch.bav.seilbahnen-bundeskonzession",
+      "layerName": "Seilbahnen mit Bundeskonzession",
+      "id": 14385,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.451759,
+          47.03824
+        ]
+      },
+      "properties": {
+        "anlagenr": "71.105",
+        "anlagename": "Weggis - Rigi Kaltbad",
+        "betreiber_tuabkuerzung": "RB",
+        "bezeichnung": null,
+        "label": "Weggis - Rigi Kaltbad"
+      }
+    },
+    {
+      "type": "Feature",
+      "featureId": 14386,
+      "bbox": [
+        8.461463,
+        47.042049,
+        8.461463,
+        47.042049
+      ],
+      "layerBodId": "ch.bav.seilbahnen-bundeskonzession",
+      "layerName": "Seilbahnen mit Bundeskonzession",
+      "id": 14386,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.461463,
+          47.042049
+        ]
+      },
+      "properties": {
+        "anlagenr": "71.105",
+        "anlagename": "Weggis - Rigi Kaltbad",
+        "betreiber_tuabkuerzung": "RB",
+        "bezeichnung": null,
+        "label": "Weggis - Rigi Kaltbad"
+      }
+    },
+    {
+      "type": "Feature",
+      "featureId": 14387,
+      "bbox": [
+        8.463399,
+        47.042806,
+        8.463399,
+        47.042806
+      ],
+      "layerBodId": "ch.bav.seilbahnen-bundeskonzession",
+      "layerName": "Seilbahnen mit Bundeskonzession",
+      "id": 14387,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.463399,
+          47.042806
+        ]
+      },
+      "properties": {
+        "anlagenr": "71.105",
+        "anlagename": "Weggis - Rigi Kaltbad",
+        "betreiber_tuabkuerzung": "RB",
+        "bezeichnung": null,
+        "label": "Weggis - Rigi Kaltbad"
+      }
+    },
+    {
+      "type": "Feature",
+      "featureId": 741,
+      "bbox": [
+        8.440852,
+        47.034081,
+        8.464884,
+        47.043359
+      ],
+      "layerBodId": "ch.bav.seilbahnen-bundeskonzession",
+      "layerName": "Seilbahnen mit Bundeskonzession",
+      "id": 741,
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            8.440852,
+            47.034081
+          ],
+          [
+            8.451759,
+            47.03824
+          ],
+          [
+            8.461463,
+            47.042049
+          ],
+          [
+            8.463399,
+            47.042806
+          ],
+          [
+            8.464884,
+            47.043359
+          ]
+        ]
+      },
+      "properties": {
+        "anlagenr": "71.105",
+        "anlagename": "Weggis - Rigi Kaltbad",
+        "betreiber_tuabkuerzung": "RB",
+        "bahntyp": "Luftseilbahn",
+        "fahrzeugtyp": "Kabine",
+        "hoehendifferenz": null,
+        "laengeschief": 2320,
+        "label": "Weggis - Rigi Kaltbad"
+      }
+    },
+    {
+      "type": "Feature",
+      "featureId": 3490,
+      "bbox": [
+        8.464884,
+        47.043359,
+        8.464884,
+        47.043359
+      ],
+      "layerBodId": "ch.bav.seilbahnen-bundeskonzession",
+      "layerName": "Seilbahnen mit Bundeskonzession",
+      "id": 3490,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.464884,
+          47.043359
+        ]
+      },
+      "properties": {
+        "anlagenr": "71.105",
+        "anlagename": "Weggis - Rigi Kaltbad",
+        "betreiber_tuabkuerzung": "RB",
+        "bp_nummer": 8530687,
+        "bp_name": "Rigi Kaltbad (Luftseilbahn)",
+        "stationstyp": "Bergstation",
+        "label": "Weggis - Rigi Kaltbad"
+      }
+    },
+    {
+      "type": "Feature",
+      "featureId": 3669,
+      "bbox": [
+        8.440852,
+        47.034081,
+        8.440852,
+        47.034081
+      ],
+      "layerBodId": "ch.bav.seilbahnen-bundeskonzession",
+      "layerName": "Seilbahnen mit Bundeskonzession",
+      "id": 3669,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.440852,
+          47.034081
+        ]
+      },
+      "properties": {
+        "anlagenr": "71.105",
+        "anlagename": "Weggis - Rigi Kaltbad",
+        "betreiber_tuabkuerzung": "RB",
+        "bp_nummer": 8530388,
+        "bp_name": "Weggis (Luftseilbahn)",
+        "stationstyp": "Talstation",
+        "label": "Weggis - Rigi Kaltbad"
+      }
+    }
+  ],
+  "source": {
+    "publisher": "Federal Office of Transport",
+    "layer": "ch.bav.seilbahnen-bundeskonzession",
+    "retrieved": "2026-09-08",
+    "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/identify?geometryType=esriGeometryEnvelope&geometry=8.27,46.98,8.62,47.10&geometryFormat=geojson&imageDisplay=1600,900,96&mapExtent=8.27,46.98,8.62,47.10&tolerance=0&layers=all:ch.bav.seilbahnen-bundeskonzession&returnGeometry=true&limit=200&sr=4326",
+    "selection": "Exact installation 71.105 from bounded query; includes alignment and support point features; no elevation profile supplied"
+  }
+}

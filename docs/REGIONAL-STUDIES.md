@@ -67,6 +67,8 @@ Genève uses the same national timetable baseline and the official TPG line laye
 
 ## Next expansion — 8 September 2026
 
+The first **Lake Lucerne–Rigi** full-day map now combines 190 scheduled boat, cogwheel and cableway movements in a separately loaded 13.1 KiB artifact. See [RIGI-STUDY.md](./RIGI-STUDY.md) for use, source evidence, modelled boat paths and remaining terrain work.
+
 The first implementation increment adds a source-backed **Cogwheel** filter, operator search and a repeatable mountain-and-water source audit. See [MOUNTAIN-TRANSPORT.md](./MOUNTAIN-TRANSPORT.md) for coverage, usage and remaining phase-A work.
 
 The canonical [Gleislicht expansion roadmap](https://github.com/emmettl/motionstudies/blob/main/ROADMAP.md#8a--gleislicht-regional-depth-lakes-and-mountain-railways) continues this completed foundation through mountain-service discovery, a full-day Lake Lucerne–Rigi study, broader regional networks and deeper seasonal exploration.

@@ -3,6 +3,7 @@ import { AIRPORT_LABELS, AIRPORT_NOTES } from './studies/airport-copy.ts'
 import { networkWithRailVisibility } from './studies/network-layers.ts'
 import { COGWHEEL_COPY, COGWHEEL_ROUTE_COLORS, cogwheelNetwork } from './studies/cogwheel.ts'
 import { useCogwheelCatalogue } from './studies/use-cogwheel-catalogue.ts'
+import { RIGI_COPY, rigiOperator } from './studies/rigi.ts'
 import { FREQUENCY_COPY, isHeadwayTrain, serviceFrequency, withFrequencyFerryPaths } from './studies/frequency.ts'
 import { roadTrafficSummary } from './studies/road-traffic-summary.ts'
 import { airTrafficSummary } from './studies/air-traffic-summary.ts'
@@ -285,6 +286,7 @@ export function App({ edition }: AppProps) {
   const [nationalDayLoading, setNationalDayLoading] = useState(false)
   const [nationalDayError, setNationalDayError] = useState(false)
   const [zurichCityNetwork, setZurichCityNetwork] = useState<NetworkSnapshot>()
+  const [rigiNetwork, setRigiNetwork] = useState<NetworkSnapshot>()
   const [zvvRegionNetwork, setZvvRegionNetwork] = useState<NetworkSnapshot>()
   const [genevaTpgNetwork, setGenevaTpgNetwork] = useState<NetworkSnapshot>()
   const [regionalNetworkLoading, setRegionalNetworkLoading] = useState(false)
@@ -353,9 +355,11 @@ export function App({ edition }: AppProps) {
   const text = UI_TEXT[language]
   const help = CONTROL_HELP[language]
   const performanceSample = useLocalPerformance(performanceEnabled)
+  const isRigi = networkStudy === 'rigi-lake'
+  const rigiCopy = RIGI_COPY[language]
   const isPostbus = networkStudy === 'postbus'
   const isContrast = networkStudy === 'contrast'
-  const serviceColors = useMemo(() => isPostbus || isContrast ? { ...SERVICE_COLORS, bus: POSTBUS_YELLOW } : cogwheelEnabled && networkStudy === 'national' && view === 'network' ? { ...SERVICE_COLORS, other: '#fff3a6' } : SERVICE_COLORS, [isPostbus, isContrast, cogwheelEnabled, networkStudy, view])
+  const serviceColors = useMemo(() => isPostbus || isContrast ? { ...SERVICE_COLORS, bus: POSTBUS_YELLOW } : (isRigi || cogwheelEnabled && networkStudy === 'national' && view === 'network') ? { ...SERVICE_COLORS, other: '#fff3a6' } : SERVICE_COLORS, [isPostbus, isContrast, isRigi, cogwheelEnabled, networkStudy, view])
   const postbusDay = useProgressiveNetworkDay(edition.data.postbusDayManifest, isPostbus, networkTime, editionDataUrl)
   const isNationalDay =
     networkStudy === 'national' && nationalTimeRange === 'day'
@@ -411,7 +415,7 @@ export function App({ edition }: AppProps) {
       nationalDayChunks[nationalDayChunkDescriptor.id],
   )
   const baseNetwork =
-    isPostbus ? postbusDay.network : isContrast
+    isRigi ? rigiNetwork : isPostbus ? postbusDay.network : isContrast
       ? (zurichContrast.network ?? nationalNetwork)
       : networkStudy === 'zurich-city'
       ? (zurichCityNetwork ?? nationalNetwork)
@@ -451,6 +455,7 @@ export function App({ edition }: AppProps) {
   const cogwheel = useCogwheelCatalogue(isCogwheel, unfilteredNetwork)
   const cogwheelCatalogue = cogwheel?.catalogue
   const cogwheelCopy = COGWHEEL_COPY[language]
+  const categoryLabel = useCallback((category: ServiceCategory) => isRigi && category === 'other' ? cogwheelCopy.label : serviceCategoryLabel(language, category), [isRigi, cogwheelCopy.label, language])
   const network = useMemo(() => unfilteredNetwork && isCogwheel
     ? cogwheelNetwork(unfilteredNetwork, cogwheelCatalogue)
     : unfilteredNetwork && withFrequencyFerryPaths(unfilteredNetwork), [unfilteredNetwork, isCogwheel, cogwheelCatalogue])
@@ -588,7 +593,7 @@ export function App({ edition }: AppProps) {
     () =>
       network?.trains.map((train) => ({
         train,
-        text: trainSearchText(train, network) + ' ' + foldSearchText(cogwheelCatalogue?.routes[cogwheelCatalogue.trips[train.id]]?.operator ?? ''),
+        text: trainSearchText(train, network) + ' ' + foldSearchText(rigiOperator(train)) + ' ' + foldSearchText(cogwheelCatalogue?.routes[cogwheelCatalogue.trips[train.id]]?.operator ?? ''),
       })) ?? [],
     [network, cogwheelCatalogue],
   )
@@ -710,7 +715,7 @@ export function App({ edition }: AppProps) {
     return routeIndex
       .filter((route) =>
         foldSearchText(
-          `${serviceCategoryLabel(language, route.category)} ${route.category.replaceAll('-', ' ')} ${route.name} ${isPostbus ? route.headsigns.join(' ') : ''} ${isCogwheel ? route.trainIds.map(id => cogwheelCatalogue?.routes[cogwheelCatalogue.trips[id]]?.operator ?? '').join(' ') : ''}`,
+          `${categoryLabel(route.category)} ${route.category.replaceAll('-', ' ')} ${route.name} ${isPostbus ? route.headsigns.join(' ') : ''} ${isCogwheel ? route.trainIds.map(id => cogwheelCatalogue?.routes[cogwheelCatalogue.trips[id]]?.operator ?? '').join(' ') : ''}`,
         ).includes(query),
       )
       .sort(
@@ -721,7 +726,7 @@ export function App({ edition }: AppProps) {
           }),
       )
       .slice(0, 5)
-  }, [isPostbus, isCogwheel, cogwheelCatalogue, language, routeIndex, searchQuery])
+  }, [categoryLabel, isPostbus, isCogwheel, cogwheelCatalogue, language, routeIndex, searchQuery])
   const roadSearchResults = useMemo(
     () => searchRoadCorridors(roadTopology?.roads ?? SWITZERLAND_ROADS, searchQuery),
     [roadTopology?.roads, searchQuery],
@@ -772,9 +777,9 @@ export function App({ edition }: AppProps) {
           : (network?.trains.map((train) => train.category) ?? []),
     )
     return SERVICE_CATEGORIES.filter(
-      (category) => category.id !== 'other' && present.has(category.id),
+      (category) => (category.id !== 'other' || isRigi) && present.has(category.id),
     )
-  }, [hubCalls, isContrast, kientalContrast.network, network, view, zurichContrast.network])
+  }, [hubCalls, isRigi, isContrast, kientalContrast.network, network, view, zurichContrast.network])
 
   const handleJourneyProgress = useCallback((nextProgress: number) => {
     setJourneyProgress(nextProgress)
@@ -888,14 +893,14 @@ export function App({ edition }: AppProps) {
       setSelectedRouteId(route.id)
       setSelectedCategory(undefined)
       setSearchQuery(
-        `${serviceCategoryLabel(language, route.category)} ${route.name}`,
+        `${categoryLabel(route.category)} ${route.name}`,
       )
       setSearchOpen(false)
       setActiveSearchIndex(-1)
       setView('network')
       setIsPlaying(true)
     },
-    [language],
+    [categoryLabel],
   )
 
   const selectTrain = useCallback(
@@ -1097,7 +1102,7 @@ export function App({ edition }: AppProps) {
         setSelectedHubId('zurich')
       }
       const regionalSnapshot =
-        study === 'zurich-city'
+        study === 'rigi-lake' ? rigiNetwork : study === 'zurich-city'
           ? zurichCityNetwork
           : study === 'zvv-region'
             ? zvvRegionNetwork
@@ -1129,6 +1134,7 @@ export function App({ edition }: AppProps) {
       edition.defaultNetworkTime,
       nationalDayNetwork,
       genevaTpgNetwork,
+      rigiNetwork,
       nationalDayManifest,
       nationalNetwork,
       nationalTimeRange,
@@ -1564,7 +1570,7 @@ export function App({ edition }: AppProps) {
   useEffect(() => {
     if (networkStudy === 'national' || networkStudy === 'contrast' || networkStudy === 'postbus') return
     const existingNetwork =
-      networkStudy === 'zurich-city'
+      isRigi ? rigiNetwork : networkStudy === 'zurich-city'
         ? zurichCityNetwork
         : networkStudy === 'zvv-region'
           ? zvvRegionNetwork
@@ -1579,13 +1585,14 @@ export function App({ edition }: AppProps) {
     })
       .then((response) => {
         if (!response.ok) {
-          const studyName = isCity ? 'Zürich city' : isZvv ? 'ZVV' : 'Genève / TPG'
+          const studyName = isRigi ? 'Lake Lucerne–Rigi' : isCity ? 'Zürich city' : isZvv ? 'ZVV' : 'Genève / TPG'
           throw new Error(`${studyName} snapshot returned ${response.status}`)
         }
         return response.json() as Promise<NetworkSnapshot>
       })
       .then((snapshot) => {
-        if (isCity) setZurichCityNetwork(snapshot)
+        if (isRigi) setRigiNetwork(snapshot)
+        else if (isCity) setZurichCityNetwork(snapshot)
         else if (isZvv) setZvvRegionNetwork(snapshot)
         else setGenevaTpgNetwork(snapshot)
         setNetworkTime(snapshot.metadata.focusTime)
@@ -1600,6 +1607,8 @@ export function App({ edition }: AppProps) {
     return () => controller.abort()
   }, [
     edition.data.regional,
+    isRigi,
+    rigiNetwork,
     genevaTpgNetwork,
     networkStudy,
     zurichCityNetwork,
@@ -1844,12 +1853,12 @@ export function App({ edition }: AppProps) {
             boundary={boundary}
             lakes={lakes}
             groundStyle={quietMap ? 'quiet' : 'grid'}
-            routeColors={isPostbus ? POSTBUS_ROUTE_COLORS : isCogwheel ? COGWHEEL_ROUTE_COLORS : undefined}
+            routeColors={isPostbus ? POSTBUS_ROUTE_COLORS : isCogwheel || isRigi ? COGWHEEL_ROUTE_COLORS : undefined}
             snapshot={sceneNetwork}
             trafficOverviewEmphasis={isPostbus ? 0.65 : undefined}
             referenceSnapshot={nationalNetwork ?? sceneNetwork}
             contextSnapshot={
-              networkStudy !== 'national' && !isPostbus &&
+              networkStudy !== 'national' && !isPostbus && !isRigi &&
               (networkStudy === 'zurich-city'
                 ? zurichCityNetwork
                 : networkStudy === 'zvv-region'
@@ -1905,7 +1914,7 @@ export function App({ edition }: AppProps) {
             selectedAirport={airEnabled ? selectedAirport : undefined}
             onSelectAirTrack={selectAirTrack}
             cameraFraming={
-              networkStudy === 'zurich-city' && zurichCityNetwork
+              isRigi ? MAP_FRAMINGS.rigi : networkStudy === 'zurich-city' && zurichCityNetwork
                 ? MAP_FRAMINGS.zurich
                 : networkStudy === 'zvv-region' && zvvRegionNetwork
                   ? MAP_FRAMINGS.zvv
@@ -1982,7 +1991,7 @@ export function App({ edition }: AppProps) {
             }
           >
             {isNetwork
-              ? isPostbus ? text.postbusSubtitle : isContrast
+              ? isRigi ? rigiCopy.title : isPostbus ? text.postbusSubtitle : isContrast
                 ? text.contrastSubtitle
                 : networkStudy === 'zurich-city'
                 ? text.zurichSubtitle
@@ -2162,7 +2171,7 @@ export function App({ edition }: AppProps) {
                 role="combobox"
                 value={searchQuery}
                 placeholder={
-                  isCogwheel ? cogwheelCopy.placeholder : isContrast
+                  isRigi ? rigiCopy.placeholder : isCogwheel ? cogwheelCopy.placeholder : isContrast
                     ? text.contrastPlaceholder
                     : isPostbus ? text.postbusPlaceholder : airEnabled
                       ? text.airSearchPlaceholder
@@ -2194,7 +2203,7 @@ export function App({ edition }: AppProps) {
                     setSelectedStationName(undefined)
                   }
                   const selectedRouteQuery = selectedRoute
-                    ? `${serviceCategoryLabel(language, selectedRoute.category)} ${selectedRoute.name}`
+                    ? `${categoryLabel(selectedRoute.category)} ${selectedRoute.name}`
                     : undefined
                   if (event.target.value !== selectedRouteQuery) {
                     setSelectedRouteId(undefined)
@@ -2250,6 +2259,7 @@ export function App({ edition }: AppProps) {
               </button>
             )}
             <nav className="network-study-picker" aria-label={text.networkStudy}>
+              <button type="button" aria-label={rigiCopy.select} data-tooltip={rigiCopy.select} aria-pressed={isRigi} onClick={() => selectNetworkStudy('rigi-lake')}>RIGI</button>
               <button type="button" className="postbus-study-toggle" aria-label={text.postbusNetwork} data-tooltip={text.postbusNetwork} aria-pressed={isPostbus} onClick={() => selectNetworkStudy('postbus')}>PA</button>
               <span className="sr-only">{text.scale}</span>
               <button
@@ -2371,12 +2381,13 @@ export function App({ edition }: AppProps) {
                   detail: text.contrastNetwork,
                 },
                 { value: 'postbus', label: 'PA', detail: text.postbusNetwork },
+                { value: 'rigi-lake', label: 'RIGI', detail: rigiCopy.select },
                 { value: 'zvv-region', label: 'ZVV', detail: text.zvvNetwork },
                 { value: 'zurich-city', label: 'ZH', detail: text.zurichNetwork },
                 { value: 'geneva-tpg', label: 'GE', detail: text.genevaNetwork },
               ]}
               triggerLabel={
-                isPostbus ? 'PA' : isContrast
+                isRigi ? 'RIGI' : isPostbus ? 'PA' : isContrast
                   ? '↔'
                   : networkStudy === 'national' && nationalTimeRange === 'day'
                     ? '24H'
@@ -2477,9 +2488,9 @@ export function App({ edition }: AppProps) {
                     onMouseEnter={() => setActiveSearchIndex(index)}
                     onClick={() => selectRoute(route)}
                   >
-                    <TransportIcon mode={isCogwheel ? 'cogwheel' : route.category} color={serviceColors[route.category]} />
+                    <TransportIcon mode={isCogwheel || isRigi && route.category === 'other' ? 'cogwheel' : route.category} color={serviceColors[route.category]} />
                     <span className="result-service">
-                      {isCogwheel ? cogwheelCopy.label : serviceCategoryLabel(language, route.category)} {route.name}
+                      {isCogwheel ? cogwheelCopy.label : categoryLabel(route.category)} {route.name}
                     </span>
                     <span className="result-route">
                       {isPostbus && <>{route.headsigns.slice(0, 2).join(' / ')} · </>}
@@ -2585,7 +2596,7 @@ export function App({ edition }: AppProps) {
                       onMouseEnter={() => setActiveSearchIndex(index)}
                       onClick={() => selectTrain(train)}
                     >
-                      <TransportIcon mode={isCogwheel ? 'cogwheel' : train.category} color={serviceColors[train.category]} />
+                      <TransportIcon mode={isCogwheel || isRigi && train.category === 'other' ? 'cogwheel' : train.category} color={serviceColors[train.category]} />
                       <span className="result-service">
                         {train.route} <b>{train.shortName}</b>
                       </span>
@@ -2601,7 +2612,7 @@ export function App({ edition }: AppProps) {
                 !airportSearchResults.length &&
                 !airSearchResults.length &&
                 !searchResults.length && (
-                <p>{isNationalDay ? text.noResultsDay : text.noResults}</p>
+                <p>{isNationalDay || isRigi ? text.noResultsDay : text.noResults}</p>
               )}
             </div>
           )}
@@ -2819,7 +2830,7 @@ export function App({ edition }: AppProps) {
       ) : isNetwork && selectedTrain ? (
         <section className="journey-card selected-card" aria-label={text.selectedTrain}>
           <div className="service-row">
-            <TransportIcon mode={isCogwheel ? 'cogwheel' : selectedTrain.category} color={serviceColors[selectedTrain.category]} />
+            <TransportIcon mode={isCogwheel || isRigi && selectedTrain.category === 'other' ? 'cogwheel' : selectedTrain.category} color={serviceColors[selectedTrain.category]} />
             <span className="service">{selectedTrain.route}</span>
             <span className="arrow">→</span>
             <span>{selectedTrain.headsign}</span>
@@ -2832,7 +2843,7 @@ export function App({ edition }: AppProps) {
             <div>
               <span>{text.train}</span>
               <strong>{selectedTrain.shortName || '—'}</strong>
-              <small>{isCogwheel ? cogwheelCopy.label : serviceCategoryLabel(language, selectedTrain.category)}</small>
+              <small>{isCogwheel ? cogwheelCopy.label : categoryLabel(selectedTrain.category)}</small>
             </div>
             <div>
               <span>{selectedHeadway ? frequencyCopy.arrival : text.arrival}</span>
@@ -2841,6 +2852,7 @@ export function App({ edition }: AppProps) {
             </div>
           </div>
           {selectedHeadway && selectedFrequency && <p className="between frequency-note">{frequencyCopy.note}: <span style={{ whiteSpace: 'nowrap' }}>{numberFormat.format(selectedFrequency.headwaySeconds % 60 === 0 ? selectedFrequency.headwaySeconds / 60 : selectedFrequency.headwaySeconds)} {selectedFrequency.headwaySeconds % 60 === 0 ? 'min' : 's'}</span></p>}
+          {isRigi && <p className="between">{rigiOperator(selectedTrain)}{selectedTrain.category === 'ferry' ? <> · {rigiCopy.water}</> : selectedTrain.category === 'cableway' ? <> · {rigiCopy.cable}</> : null}</p>}
           {isCogwheel && cogwheelCatalogue && (
             <p className="between">{cogwheelCatalogue.routes[cogwheelCatalogue.trips[selectedTrain.id]]?.operator}</p>
           )}
@@ -2858,7 +2870,7 @@ export function App({ edition }: AppProps) {
       ) : isNetwork && selectedRoute ? (
         <section
           className="journey-card route-card"
-          aria-label={`${text.selectedLine}: ${isCogwheel ? cogwheelCopy.label : serviceCategoryLabel(language, selectedRoute.category)} ${selectedRoute.name}`}
+          aria-label={`${text.selectedLine}: ${isCogwheel ? cogwheelCopy.label : categoryLabel(selectedRoute.category)} ${selectedRoute.name}`}
           style={
             {
               '--service-accent': serviceColors[selectedRoute.category],
@@ -2866,15 +2878,15 @@ export function App({ edition }: AppProps) {
           }
         >
           <div className="service-row">
-            <TransportIcon mode={isCogwheel ? 'cogwheel' : selectedRoute.category} color={serviceColors[selectedRoute.category]} />
+            <TransportIcon mode={isCogwheel || isRigi && selectedRoute.category === 'other' ? 'cogwheel' : selectedRoute.category} color={serviceColors[selectedRoute.category]} />
             <span className="service">
-              {isCogwheel ? cogwheelCopy.label : serviceCategoryLabel(language, selectedRoute.category)}{' '}
+              {isCogwheel ? cogwheelCopy.label : categoryLabel(selectedRoute.category)}{' '}
               {selectedRoute.name}
             </span>
           </div>
           <p className="between">
             {selectedRoute.headsigns.slice(0, 2).join(' ↔ ') ||
-              (isNationalDay ? text.fullDayStudy : text.morningStudy)}
+              (isNationalDay || isRigi ? text.fullDayStudy : text.morningStudy)}
           </p>
           {isCogwheel && cogwheelCatalogue && <p className="between">{[...new Set(selectedRoute.trainIds.map(id => cogwheelCatalogue.routes[cogwheelCatalogue.trips[id]]?.operator).filter(Boolean))].join(' · ')}</p>}
           {selectionHasHeadwayMotion && <p className="between frequency-note">{frequencyCopy.mixed}</p>}
@@ -2882,7 +2894,7 @@ export function App({ edition }: AppProps) {
             <div>
               <span>{text.trips}</span>
               <strong>{numberFormat.format(selectedRoute.trainIds.length)}</strong>
-              <small>{isNationalDay ? '3h' : '2h'}</small>
+              <small>{isRigi ? '24h' : isNationalDay ? '3h' : '2h'}</small>
             </div>
             <div>
               <span>{text.stops}</span>
@@ -2922,7 +2934,7 @@ export function App({ edition }: AppProps) {
           </div>
           <p className="between">
             {text.allScheduledPaths} <span>/</span>{' '}
-            {isNationalDay ? text.fullDayStudy : text.morningStudy}
+            {isNationalDay || isRigi ? text.fullDayStudy : text.morningStudy}
             {selectionHasHeadwayMotion && <> {frequencyCopy.mixed}</>}
           </p>
           <div className="network-count-row">
@@ -2938,7 +2950,7 @@ export function App({ edition }: AppProps) {
             <div>
               <span>{text.calls}</span>
               <strong>{selectedStation.trainIds.length}</strong>
-              <small>{isNationalDay ? '3h' : '2h'}</small>
+              <small>{isRigi ? '24h' : isNationalDay ? '3h' : '2h'}</small>
             </div>
           </div>
         </section>
@@ -3027,7 +3039,7 @@ export function App({ edition }: AppProps) {
         <section
           className="journey-card network-card"
           aria-label={
-            isPostbus ? text.postbusNetwork : networkStudy === 'national'
+            isRigi ? rigiCopy.select : isPostbus ? text.postbusNetwork : networkStudy === 'national'
               ? text.swissNetworkStatus
               : networkStudy === 'zvv-region'
                 ? text.zvvNetworkStatus
@@ -3094,7 +3106,7 @@ export function App({ edition }: AppProps) {
             )}
           </div>
           <p className="between">
-              {isCogwheel ? cogwheel?.error ? cogwheelCopy.unavailable : !cogwheelCatalogue ? cogwheelCopy.loading : cogwheelCopy.description : isPostbus
+              {isRigi ? regionalNetworkError ? rigiCopy.unavailable : regionalNetworkLoading ? rigiCopy.loading : rigiCopy.modes : isCogwheel ? cogwheel?.error ? cogwheelCopy.unavailable : !cogwheelCatalogue ? cogwheelCopy.loading : cogwheelCopy.description : isPostbus
                 ? postbusDay.error ? text.postbusUnavailable : postbusDay.loading ? text.loadingPostbus
                   : network?.metadata.geometry
                     ? text.postbusRoadModes.replace('{coverage}', (100 * network.metadata.geometry.matchedSegments / network.metadata.geometry.totalSegments).toFixed(1))
@@ -3142,7 +3154,7 @@ export function App({ edition }: AppProps) {
                     ? numberFormat.format(network.trains.length)
                     : '—'}
               </strong>
-              <small>{isNationalDay || isPostbus ? '24h' : '2h'}</small>
+              <small>{isNationalDay || isPostbus || isRigi ? '24h' : '2h'}</small>
             </div>
             <div>
               <span>{text.feed}</span>
@@ -3212,9 +3224,9 @@ export function App({ edition }: AppProps) {
             </span>
             <span>
               {selectedAirTrack?.callsign ??
-                (selectedTrain ? isCogwheel ? cogwheelCopy.label : selectedTrain.category : undefined) ??
+                (selectedTrain ? isCogwheel ? cogwheelCopy.label : categoryLabel(selectedTrain.category) : undefined) ??
                 (selectedRoute
-                  ? `${isCogwheel ? cogwheelCopy.label : serviceCategoryLabel(language, selectedRoute.category)} ${selectedRoute.name}`
+                  ? `${isCogwheel ? cogwheelCopy.label : categoryLabel(selectedRoute.category)} ${selectedRoute.name}`
                   : undefined) ??
                 selectedStation?.name ??
                 (selectedRoad
@@ -3224,7 +3236,7 @@ export function App({ edition }: AppProps) {
                   : airCategorySelected
                   ? text.observedAirLayer
                   : selectedCategory
-                    ? serviceCategoryLabel(language, selectedCategory)
+                    ? categoryLabel(selectedCategory)
                     : isCogwheel ? cogwheelCopy.label
                     : roadEnabled
                       ? text.trafficReconstruction
@@ -3383,7 +3395,7 @@ export function App({ edition }: AppProps) {
                     ...(isNetwork && networkStudy === 'national' ? [{ value: 'cogwheel', label: <span className="transport-option"><TransportIcon mode="cogwheel" color="#fff3a6" />{cogwheelCopy.label}</span> }] : []),
                     ...(isNetwork && !railVisible ? [] : visibleServiceCategories).map((category) => ({
                       value: category.id,
-                      label: <span className="transport-option"><TransportIcon mode={category.id} color={serviceColors[category.id]} />{serviceCategoryLabel(language, category.id)}</span>,
+                      label: <span className="transport-option"><TransportIcon mode={isRigi && category.id === 'other' ? 'cogwheel' : category.id} color={serviceColors[category.id]} />{categoryLabel(category.id)}</span>,
                     })),
                     ...(networkStudy === 'national' && airEnabled
                       ? [{ value: 'air', label: <span className="transport-option"><TransportIcon mode="air" color="#ff5edb" />{text.luftraum}</span> }]
@@ -3455,6 +3467,7 @@ export function App({ edition }: AppProps) {
         <div
           className={`service-legend${selectedCategory || isCogwheel || airCategorySelected || roadCategorySelected ? ' has-filter' : ''}`}
           aria-label={text.filterServices}
+          style={hasFullDayTimeline ? { bottom: 'clamp(230px, 27vh, 265px)' } : undefined}
         >
           {isNetwork && networkStudy === 'national' && railVisible && (
             <button type="button" aria-pressed={isCogwheel} onClick={toggleCogwheel}
@@ -3467,7 +3480,7 @@ export function App({ edition }: AppProps) {
               <button
                 key={category.id}
                 type="button"
-                data-tooltip={`${selectedCategory === category.id ? help.restore : help.isolate} · ${serviceCategoryLabel(language, category.id)}`}
+                data-tooltip={`${selectedCategory === category.id ? help.restore : help.isolate} · ${categoryLabel(category.id)}`}
                 aria-pressed={selectedCategory === category.id}
                 style={
                   {
@@ -3484,8 +3497,8 @@ export function App({ edition }: AppProps) {
                   )
                 }}
               >
-                <TransportIcon mode={category.id} />
-                {serviceCategoryLabel(language, category.id)}
+                <TransportIcon mode={isRigi && category.id === 'other' ? 'cogwheel' : category.id} />
+                {categoryLabel(category.id)}
               </button>
           ))}
           {isNetwork && networkStudy === 'national' && airEnabled && (
@@ -3853,6 +3866,7 @@ export function App({ edition }: AppProps) {
                 AUTO · ASTRA / FEDRO
               </a>
             )}
+            {isRigi && <a href="https://map.geo.admin.ch/?layers=ch.bav.seilbahnen-bundeskonzession,ch.bav.schienennetz" target="_blank" rel="noreferrer">FOT · Rail / Cableway</a>}
             <a href="./methodology.html">{text.methodology}</a>
           </span>
         ) : (
@@ -3890,7 +3904,7 @@ export function App({ edition }: AppProps) {
           {isHub
             ? text.arrivalsDirection
             : isNetwork
-              ? hasHeadwayMotion ? frequencyCopy.interpolation : text.interpolation
+              ? isRigi ? rigiCopy.water : hasHeadwayMotion ? frequencyCopy.interpolation : text.interpolation
               : text.simulation}
         </span>
       </footer>

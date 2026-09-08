@@ -13,6 +13,7 @@ describe('Gleislicht edition', () => {
       'swiss-rail-morning.json',
     )
     expect(Object.keys(SWITZERLAND_EDITION.data.regional)).toEqual([
+      'rigi-lake',
       'zurich-city',
       'zvv-region',
       'geneva-tpg',

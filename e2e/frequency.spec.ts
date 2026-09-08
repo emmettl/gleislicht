@@ -39,7 +39,7 @@ test('exact repeating departures retain scheduled labels', async ({ page, isMobi
   await expect(page.locator('.scene canvas')).toBeVisible()
   await openZvv(page, isMobile)
   await page.locator('.train-search input').fill('ExactLift')
-  await page.locator('.result-swatch').first().click()
+  await page.getByRole('option').filter({ has: page.locator('.result-service b') }).first().click()
   await expect(page.locator('.selected-card')).toBeVisible()
   await expect(page.locator('.selected-card')).not.toContainText('≈')
   await expect(page.locator('.selected-card .frequency-note')).toHaveCount(0)

@@ -1,0 +1,818 @@
+{
+  "metadata": {
+    "publisher": "SBB",
+    "feedVersion": "20260902",
+    "serviceDate": "2026-09-04",
+    "windowStart": 0,
+    "windowEnd": 86400,
+    "focusTime": 43200,
+    "sourceUrl": "https://opentransportdata.swiss/en/cookbook/timetable-cookbook/gtfs/",
+    "model": "scheduled interpolation; FOT rail and cableway alignments; cartographic water-constrained boat paths",
+    "note": "Lake Lucerne boats, Rigi cogwheel railways and Weggis–Rigi Kaltbad cableway. Boat paths are modelled, not shipping lanes. The map is 2D; vertical cable and terrain profiles remain separate work.",
+    "sources": {
+      "timetable": {
+        "feedVersion": "20260902",
+        "sha256": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e"
+      },
+      "rail": {
+        "sha256": "2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+        "simplificationToleranceMetres": 10,
+        "publisher": "Federal Office of Transport"
+      },
+      "cableway": {
+        "sha256": "68b48d917a7def16d0b5fa3daad124d2edb10b1735e4ce1310c200b113db9d6a",
+        "publisher": "Federal Office of Transport",
+        "installation": "71.105"
+      },
+      "water": {
+        "sha256": "2ed8ae2942bb9fff570c0266bd1d0da11a7b6c99530e05761934b258594e58b7",
+        "source": "FOEN Vector25 lakes",
+        "sourceUrl": "https://api3.geo.admin.ch/rest/services/ech/MapServer/identify?geometryType=esriGeometryEnvelope&geometry=5.7%2C45.7%2C10.7%2C48.0&geometryFormat=geojson&imageDisplay=1600%2C900%2C96&mapExtent=5.7%2C45.7%2C10.7%2C48.0&tolerance=0&layers=all%3Ach.bafu.vec25-seen&returnGeometry=true&limit=200&sr=4326",
+        "productUrl": "https://www.bafu.admin.ch/en/the-swiss-hydrographic-network",
+        "edition": "Vector25 reference network (2007)",
+        "attribution": "© FOEN, swisstopo",
+        "sourceCrs": "EPSG:4326",
+        "outputCrs": "EPSG:4326",
+        "simplificationToleranceMetres": 60,
+        "minimumAreaSquareKilometres": 0.1,
+        "lakeId": "93",
+        "method": "shortest paths constrained to the cartographic lake polygon; not observed routes or shipping lanes",
+        "maximumDockOffsetMetres": 150
+      }
+    }
+  },
+  "counts": {
+    "trips": 190,
+    "stops": 54,
+    "paths": 69,
+    "railSegments": 374
+  },
+  "routes": [
+    {
+      "routeId": "93-256-2-j26-1",
+      "agencyId": "13700",
+      "operator": "Weggis-Rigi Kaltbad",
+      "route": "2562",
+      "routeType": 1300,
+      "mode": "cableway",
+      "category": "cableway",
+      "trips": 51
+    },
+    {
+      "routeId": "93-81-j26-1",
+      "agencyId": "137",
+      "operator": "Rigi Bahnen AG",
+      "route": "81",
+      "routeType": 116,
+      "mode": "rail",
+      "category": "other",
+      "trips": 22
+    },
+    {
+      "routeId": "93-82-j26-1",
+      "agencyId": "137",
+      "operator": "Rigi Bahnen AG",
+      "route": "82",
+      "routeType": 116,
+      "mode": "rail",
+      "category": "other",
+      "trips": 26
+    },
+    {
+      "routeId": "93-88-j26-1",
+      "agencyId": "137",
+      "operator": "Rigi Bahnen AG",
+      "route": "88",
+      "routeType": 116,
+      "mode": "rail",
+      "category": "other",
+      "trips": 2
+    },
+    {
+      "routeId": "94-360-0-j26-1",
+      "agencyId": "185",
+      "operator": "Vierwaldstättersee",
+      "route": "3600",
+      "routeType": 1000,
+      "mode": "ferry",
+      "category": "ferry",
+      "trips": 31
+    },
+    {
+      "routeId": "94-360-1-j26-1",
+      "agencyId": "185",
+      "operator": "Vierwaldstättersee",
+      "route": "3601",
+      "routeType": 1000,
+      "mode": "ferry",
+      "category": "ferry",
+      "trips": 12
+    },
+    {
+      "routeId": "94-360-2-j26-1",
+      "agencyId": "185",
+      "operator": "Vierwaldstättersee",
+      "route": "3602",
+      "routeType": 1000,
+      "mode": "ferry",
+      "category": "ferry",
+      "trips": 32
+    },
+    {
+      "routeId": "94-360-3-j26-1",
+      "agencyId": "185",
+      "operator": "Vierwaldstättersee",
+      "route": "3603",
+      "routeType": 1000,
+      "mode": "ferry",
+      "category": "ferry",
+      "trips": 2
+    },
+    {
+      "routeId": "94-360-4-j26-1",
+      "agencyId": "185",
+      "operator": "Vierwaldstättersee",
+      "route": "3604",
+      "routeType": 1000,
+      "mode": "ferry",
+      "category": "ferry",
+      "trips": 6
+    },
+    {
+      "routeId": "94-360-5-j26-1",
+      "agencyId": "185",
+      "operator": "Vierwaldstättersee",
+      "route": "3605",
+      "routeType": 1000,
+      "mode": "ferry",
+      "category": "ferry",
+      "trips": 6
+    }
+  ],
+  "water": [
+    {
+      "from": "Luzern Bahnhofquai",
+      "to": "Verkehrshaus-Lido",
+      "fromStopId": "ch:1:sloid:8492:0:806139",
+      "toStopId": "ch:1:sloid:8459",
+      "lengthMetres": 1834.9998168136922,
+      "dockOffsetsMetres": [
+        0,
+        47.428403612419146
+      ],
+      "pathIndex": 15
+    },
+    {
+      "from": "Verkehrshaus-Lido",
+      "to": "Hertenstein (See)",
+      "fromStopId": "ch:1:sloid:8459",
+      "toStopId": "ch:1:sloid:8462",
+      "lengthMetres": 6310.929711782254,
+      "dockOffsetsMetres": [
+        47.428403612419146,
+        0
+      ],
+      "pathIndex": 16
+    },
+    {
+      "from": "Hertenstein (See)",
+      "to": "Weggis",
+      "fromStopId": "ch:1:sloid:8462",
+      "toStopId": "ch:1:sloid:8463_gen:missingSLOID_pf:2",
+      "lengthMetres": 2322.7210628903613,
+      "dockOffsetsMetres": [
+        0,
+        0
+      ],
+      "pathIndex": 17
+    },
+    {
+      "from": "Weggis",
+      "to": "Vitznau",
+      "fromStopId": "ch:1:sloid:8463_gen:missingSLOID_pf:2",
+      "toStopId": "ch:1:sloid:8464",
+      "lengthMetres": 4466.7384904160845,
+      "dockOffsetsMetres": [
+        0,
+        0
+      ],
+      "pathIndex": 18
+    },
+    {
+      "from": "Vitznau",
+      "to": "Beckenried (See)",
+      "fromStopId": "ch:1:sloid:8464",
+      "toStopId": "ch:1:sloid:8467",
+      "lengthMetres": 4858.720582058746,
+      "dockOffsetsMetres": [
+        0,
+        0
+      ],
+      "pathIndex": 19
+    },
+    {
+      "from": "Beckenried (See)",
+      "to": "Gersau (See)",
+      "fromStopId": "ch:1:sloid:8467",
+      "toStopId": "ch:1:sloid:8468",
+      "lengthMetres": 4650.969693739952,
+      "dockOffsetsMetres": [
+        0,
+        0
+      ],
+      "pathIndex": 20
+    },
+    {
+      "from": "Gersau (See)",
+      "to": "Treib",
+      "fromStopId": "ch:1:sloid:8468",
+      "toStopId": "ch:1:sloid:8469",
+      "lengthMetres": 4582.704427441575,
+      "dockOffsetsMetres": [
+        0,
+        0
+      ],
+      "pathIndex": 21
+    },
+    {
+      "from": "Treib",
+      "to": "Brunnen (See)",
+      "fromStopId": "ch:1:sloid:8469",
+      "toStopId": "ch:1:sloid:8470:0:801952",
+      "lengthMetres": 1648.2661934219052,
+      "dockOffsetsMetres": [
+        0,
+        0
+      ],
+      "pathIndex": 22
+    },
+    {
+      "from": "Brunnen (See)",
+      "to": "Rütli",
+      "fromStopId": "ch:1:sloid:8470:0:801952",
+      "toStopId": "ch:1:sloid:8471",
+      "lengthMetres": 2713.6163192457475,
+      "dockOffsetsMetres": [
+        0,
+        12.85307446203516
+      ],
+      "pathIndex": 23
+    },
+    {
+      "from": "Rütli",
+      "to": "Bauen (See)",
+      "fromStopId": "ch:1:sloid:8471",
+      "toStopId": "ch:1:sloid:8474",
+      "lengthMetres": 4083.0867600791225,
+      "dockOffsetsMetres": [
+        12.85307446203516,
+        0
+      ],
+      "pathIndex": 24
+    },
+    {
+      "from": "Bauen (See)",
+      "to": "Isleten-Isenthal",
+      "fromStopId": "ch:1:sloid:8474",
+      "toStopId": "ch:1:sloid:8475",
+      "lengthMetres": 2068.06311144346,
+      "dockOffsetsMetres": [
+        0,
+        0
+      ],
+      "pathIndex": 25
+    },
+    {
+      "from": "Isleten-Isenthal",
+      "to": "Flüelen (See)",
+      "fromStopId": "ch:1:sloid:8475",
+      "toStopId": "ch:1:sloid:8476",
+      "lengthMetres": 2868.3270707928755,
+      "dockOffsetsMetres": [
+        0,
+        0
+      ],
+      "pathIndex": 26
+    },
+    {
+      "from": "Rütli",
+      "to": "Sisikon (See)",
+      "fromStopId": "ch:1:sloid:8471",
+      "toStopId": "ch:1:sloid:8472",
+      "lengthMetres": 3146.6920384278837,
+      "dockOffsetsMetres": [
+        12.85307446203516,
+        0
+      ],
+      "pathIndex": 27
+    },
+    {
+      "from": "Sisikon (See)",
+      "to": "Tellsplatte",
+      "fromStopId": "ch:1:sloid:8472",
+      "toStopId": "ch:1:sloid:8473",
+      "lengthMetres": 1655.0289604157565,
+      "dockOffsetsMetres": [
+        0,
+        13.800525704345546
+      ],
+      "pathIndex": 28
+    },
+    {
+      "from": "Tellsplatte",
+      "to": "Bauen (See)",
+      "fromStopId": "ch:1:sloid:8473",
+      "toStopId": "ch:1:sloid:8474",
+      "lengthMetres": 2430.8772404196625,
+      "dockOffsetsMetres": [
+        13.800525704345546,
+        0
+      ],
+      "pathIndex": 29
+    },
+    {
+      "from": "Weggis",
+      "to": "Hertenstein (See)",
+      "fromStopId": "ch:1:sloid:8463_gen:missingSLOID_pf:1",
+      "toStopId": "ch:1:sloid:8462",
+      "lengthMetres": 2322.7210628903613,
+      "dockOffsetsMetres": [
+        0,
+        0
+      ],
+      "pathIndex": 30
+    },
+    {
+      "from": "Hertenstein (See)",
+      "to": "Luzern Bahnhofquai",
+      "fromStopId": "ch:1:sloid:8462",
+      "toStopId": "ch:1:sloid:8492:0:806139",
+      "lengthMetres": 7765.800422522819,
+      "dockOffsetsMetres": [
+        0,
+        0
+      ],
+      "pathIndex": 31
+    },
+    {
+      "from": "Beckenried (See)",
+      "to": "Weggis",
+      "fromStopId": "ch:1:sloid:8467",
+      "toStopId": "ch:1:sloid:8463_gen:missingSLOID_pf:1",
+      "lengthMetres": 7934.364237755382,
+      "dockOffsetsMetres": [
+        0,
+        0
+      ],
+      "pathIndex": 32
+    },
+    {
+      "from": "Weggis",
+      "to": "Kehrsiten-Bürgenstock",
+      "fromStopId": "ch:1:sloid:8463_gen:missingSLOID_pf:1",
+      "toStopId": "ch:1:sloid:8489",
+      "lengthMetres": 4988.071070183351,
+      "dockOffsetsMetres": [
+        0,
+        0
+      ],
+      "pathIndex": 33
+    },
+    {
+      "from": "Kehrsiten-Bürgenstock",
+      "to": "Verkehrshaus-Lido",
+      "fromStopId": "ch:1:sloid:8489",
+      "toStopId": "ch:1:sloid:8459",
+      "lengthMetres": 6472.498757937604,
+      "dockOffsetsMetres": [
+        0,
+        47.428403612419146
+      ],
+      "pathIndex": 34
+    },
+    {
+      "from": "Vitznau",
+      "to": "Weggis",
+      "fromStopId": "ch:1:sloid:8464",
+      "toStopId": "ch:1:sloid:8463_gen:missingSLOID_pf:1",
+      "lengthMetres": 4466.7384904160845,
+      "dockOffsetsMetres": [
+        0,
+        0
+      ],
+      "pathIndex": 35
+    },
+    {
+      "from": "Beckenried (See)",
+      "to": "Buochs (See)",
+      "fromStopId": "ch:1:sloid:8467",
+      "toStopId": "ch:1:sloid:8466",
+      "lengthMetres": 3955.9685891608947,
+      "dockOffsetsMetres": [
+        0,
+        12.364811290403368
+      ],
+      "pathIndex": 36
+    },
+    {
+      "from": "Buochs (See)",
+      "to": "Ennetbürgen (See)",
+      "fromStopId": "ch:1:sloid:8466",
+      "toStopId": "ch:1:sloid:8465",
+      "lengthMetres": 1442.2472893716563,
+      "dockOffsetsMetres": [
+        12.364811290403368,
+        0
+      ],
+      "pathIndex": 37
+    },
+    {
+      "from": "Ennetbürgen (See)",
+      "to": "Vitznau",
+      "fromStopId": "ch:1:sloid:8465",
+      "toStopId": "ch:1:sloid:8464",
+      "lengthMetres": 5357.169857974741,
+      "dockOffsetsMetres": [
+        0,
+        0
+      ],
+      "pathIndex": 38
+    },
+    {
+      "from": "Kehrsiten-Bürgenstock",
+      "to": "Luzern Bahnhofquai",
+      "fromStopId": "ch:1:sloid:8489",
+      "toStopId": "ch:1:sloid:8492:0:806139",
+      "lengthMetres": 7780.549531690733,
+      "dockOffsetsMetres": [
+        0,
+        0
+      ],
+      "pathIndex": 39
+    },
+    {
+      "from": "Flüelen (See)",
+      "to": "Tellsplatte",
+      "fromStopId": "ch:1:sloid:8476",
+      "toStopId": "ch:1:sloid:8473",
+      "lengthMetres": 3676.1201391923055,
+      "dockOffsetsMetres": [
+        0,
+        13.800525704345546
+      ],
+      "pathIndex": 40
+    },
+    {
+      "from": "Beckenried (See)",
+      "to": "Treib",
+      "fromStopId": "ch:1:sloid:8467",
+      "toStopId": "ch:1:sloid:8469",
+      "lengthMetres": 8658.087239633498,
+      "dockOffsetsMetres": [
+        0,
+        0
+      ],
+      "pathIndex": 41
+    },
+    {
+      "from": "Luzern Bahnhofquai",
+      "to": "Weggis",
+      "fromStopId": "ch:1:sloid:8492:0:806139",
+      "toStopId": "ch:1:sloid:8463_gen:missingSLOID_pf:1",
+      "lengthMetres": 10079.758993892696,
+      "dockOffsetsMetres": [
+        0,
+        0
+      ],
+      "pathIndex": 42
+    },
+    {
+      "from": "Luzern Bahnhofquai",
+      "to": "Verkehrshaus-Lido",
+      "fromStopId": "ch:1:sloid:8492:0:886776",
+      "toStopId": "ch:1:sloid:8459",
+      "lengthMetres": 1752.0245061327498,
+      "dockOffsetsMetres": [
+        0,
+        47.428403612419146
+      ],
+      "pathIndex": 43
+    },
+    {
+      "from": "Verkehrshaus-Lido",
+      "to": "Kastanienbaum (See)",
+      "fromStopId": "ch:1:sloid:8459",
+      "toStopId": "ch:1:sloid:8478",
+      "lengthMetres": 4830.944252395668,
+      "dockOffsetsMetres": [
+        47.428403612419146,
+        5.776489750563641
+      ],
+      "pathIndex": 44
+    },
+    {
+      "from": "Kastanienbaum (See)",
+      "to": "Kehrsiten Dorf",
+      "fromStopId": "ch:1:sloid:8478",
+      "toStopId": "ch:1:sloid:8480",
+      "lengthMetres": 2059.354342826739,
+      "dockOffsetsMetres": [
+        5.776489750563641,
+        0
+      ],
+      "pathIndex": 45
+    },
+    {
+      "from": "Kehrsiten Dorf",
+      "to": "Hergiswil (See)",
+      "fromStopId": "ch:1:sloid:8480",
+      "toStopId": "ch:1:sloid:8481",
+      "lengthMetres": 4410.5323856879595,
+      "dockOffsetsMetres": [
+        0,
+        6.036267143974875
+      ],
+      "pathIndex": 46
+    },
+    {
+      "from": "Hergiswil (See)",
+      "to": "Stansstad (See)",
+      "fromStopId": "ch:1:sloid:8481",
+      "toStopId": "ch:1:sloid:8483",
+      "lengthMetres": 1846.1023568405212,
+      "dockOffsetsMetres": [
+        6.036267143974875,
+        0
+      ],
+      "pathIndex": 47
+    },
+    {
+      "from": "Stansstad (See)",
+      "to": "Alpnachstad (See)",
+      "fromStopId": "ch:1:sloid:8483",
+      "toStopId": "ch:1:sloid:8503",
+      "lengthMetres": 5324.093157469099,
+      "dockOffsetsMetres": [
+        0,
+        31.19175651536133
+      ],
+      "pathIndex": 48
+    },
+    {
+      "from": "Kastanienbaum (See)",
+      "to": "Kehrsiten-Bürgenstock",
+      "fromStopId": "ch:1:sloid:8478",
+      "toStopId": "ch:1:sloid:8489",
+      "lengthMetres": 3186.4160229662853,
+      "dockOffsetsMetres": [
+        5.776489750563641,
+        0
+      ],
+      "pathIndex": 49
+    },
+    {
+      "from": "Kehrsiten-Bürgenstock",
+      "to": "Kehrsiten Dorf",
+      "fromStopId": "ch:1:sloid:8489",
+      "toStopId": "ch:1:sloid:8480",
+      "lengthMetres": 1472.106928135792,
+      "dockOffsetsMetres": [
+        0,
+        0
+      ],
+      "pathIndex": 50
+    },
+    {
+      "from": "Kehrsiten Dorf",
+      "to": "Stansstad (See)",
+      "fromStopId": "ch:1:sloid:8480",
+      "toStopId": "ch:1:sloid:8483",
+      "lengthMetres": 3138.2796154154153,
+      "dockOffsetsMetres": [
+        0,
+        0
+      ],
+      "pathIndex": 51
+    },
+    {
+      "from": "Hergiswil (See)",
+      "to": "Luzern Bahnhofquai",
+      "fromStopId": "ch:1:sloid:8481",
+      "toStopId": "ch:1:sloid:8492:0:886776",
+      "lengthMetres": 9329.878035406611,
+      "dockOffsetsMetres": [
+        6.036267143974875,
+        0
+      ],
+      "pathIndex": 52
+    },
+    {
+      "from": "Alpnachstad (See)",
+      "to": "Hergiswil (See)",
+      "fromStopId": "ch:1:sloid:8503",
+      "toStopId": "ch:1:sloid:8481",
+      "lengthMetres": 6539.541126601189,
+      "dockOffsetsMetres": [
+        31.19175651536133,
+        6.036267143974875
+      ],
+      "pathIndex": 53
+    },
+    {
+      "from": "Hergiswil (See)",
+      "to": "Kastanienbaum (See)",
+      "fromStopId": "ch:1:sloid:8481",
+      "toStopId": "ch:1:sloid:8478",
+      "lengthMetres": 3512.975809448515,
+      "dockOffsetsMetres": [
+        6.036267143974875,
+        5.776489750563641
+      ],
+      "pathIndex": 54
+    },
+    {
+      "from": "Kehrsiten Dorf",
+      "to": "Verkehrshaus-Lido",
+      "fromStopId": "ch:1:sloid:8480",
+      "toStopId": "ch:1:sloid:8459",
+      "lengthMetres": 6119.44323564961,
+      "dockOffsetsMetres": [
+        0,
+        47.428403612419146
+      ],
+      "pathIndex": 55
+    },
+    {
+      "from": "Kastanienbaum (See)",
+      "to": "Luzern Bahnhofquai",
+      "fromStopId": "ch:1:sloid:8478",
+      "toStopId": "ch:1:sloid:8492:0:886776",
+      "lengthMetres": 5823.183590878389,
+      "dockOffsetsMetres": [
+        5.776489750563641,
+        0
+      ],
+      "pathIndex": 56
+    },
+    {
+      "from": "Verkehrshaus-Lido",
+      "to": "Stansstad (See)",
+      "fromStopId": "ch:1:sloid:8459",
+      "toStopId": "ch:1:sloid:8483",
+      "lengthMetres": 7914.157433088685,
+      "dockOffsetsMetres": [
+        47.428403612419146,
+        0
+      ],
+      "pathIndex": 57
+    },
+    {
+      "from": "Verkehrshaus-Lido",
+      "to": "Hergiswil (See)",
+      "fromStopId": "ch:1:sloid:8459",
+      "toStopId": "ch:1:sloid:8481",
+      "lengthMetres": 8337.638696923892,
+      "dockOffsetsMetres": [
+        47.428403612419146,
+        6.036267143974875
+      ],
+      "pathIndex": 58
+    },
+    {
+      "from": "Luzern Bahnhofquai",
+      "to": "Kehrsiten-Bürgenstock",
+      "fromStopId": "ch:1:sloid:8492:0:929446",
+      "toStopId": "ch:1:sloid:8489",
+      "lengthMetres": 7619.298284078541,
+      "dockOffsetsMetres": [
+        0,
+        0
+      ],
+      "pathIndex": 59
+    },
+    {
+      "from": "Luzern Bahnhofquai",
+      "to": "Verkehrshaus-Lido",
+      "fromStopId": "ch:1:sloid:8492:0:929446",
+      "toStopId": "ch:1:sloid:8459",
+      "lengthMetres": 1673.3043821555364,
+      "dockOffsetsMetres": [
+        0,
+        47.428403612419146
+      ],
+      "pathIndex": 60
+    },
+    {
+      "from": "Verkehrshaus-Lido",
+      "to": "Küssnacht am Rigi (See)",
+      "fromStopId": "ch:1:sloid:8459",
+      "toStopId": "ch:1:sloid:8488",
+      "lengthMetres": 10877.781207097218,
+      "dockOffsetsMetres": [
+        47.428403612419146,
+        0
+      ],
+      "pathIndex": 61
+    },
+    {
+      "from": "Luzern Bahnhofquai",
+      "to": "Tribschen",
+      "fromStopId": "ch:1:sloid:8492:0:953228",
+      "toStopId": "ch:1:sloid:8479",
+      "lengthMetres": 1765.5326215031675,
+      "dockOffsetsMetres": [
+        0,
+        0
+      ],
+      "pathIndex": 62
+    },
+    {
+      "from": "Tribschen",
+      "to": "Verkehrshaus-Lido",
+      "fromStopId": "ch:1:sloid:8479",
+      "toStopId": "ch:1:sloid:8459",
+      "lengthMetres": 1030.325037504763,
+      "dockOffsetsMetres": [
+        0,
+        47.428403612419146
+      ],
+      "pathIndex": 63
+    },
+    {
+      "from": "Verkehrshaus-Lido",
+      "to": "Seeburg",
+      "fromStopId": "ch:1:sloid:8459",
+      "toStopId": "ch:1:sloid:8461",
+      "lengthMetres": 1004.4117011709701,
+      "dockOffsetsMetres": [
+        47.428403612419146,
+        0
+      ],
+      "pathIndex": 64
+    },
+    {
+      "from": "Seeburg",
+      "to": "Hermitage",
+      "fromStopId": "ch:1:sloid:8461",
+      "toStopId": "ch:1:sloid:8485",
+      "lengthMetres": 502.486030347318,
+      "dockOffsetsMetres": [
+        0,
+        35.82237414280342
+      ],
+      "pathIndex": 65
+    },
+    {
+      "from": "Hermitage",
+      "to": "Meggenhorn",
+      "fromStopId": "ch:1:sloid:8485",
+      "toStopId": "ch:1:sloid:8504",
+      "lengthMetres": 1062.3913424787045,
+      "dockOffsetsMetres": [
+        35.82237414280342,
+        0
+      ],
+      "pathIndex": 66
+    },
+    {
+      "from": "Meggenhorn",
+      "to": "Seeburg",
+      "fromStopId": "ch:1:sloid:8504",
+      "toStopId": "ch:1:sloid:8461",
+      "lengthMetres": 1530.2003626730768,
+      "dockOffsetsMetres": [
+        0,
+        0
+      ],
+      "pathIndex": 67
+    },
+    {
+      "from": "Luzern Bahnhofquai",
+      "to": "Kastanienbaum (See)",
+      "fromStopId": "ch:1:sloid:8492_gen:missingSLOID_pf:7",
+      "toStopId": "ch:1:sloid:8478",
+      "lengthMetres": 5901.847610206836,
+      "dockOffsetsMetres": [
+        3.8223877168745304,
+        5.776489750563641
+      ],
+      "pathIndex": 68
+    }
+  ],
+  "cableway": [
+    {
+      "from": "Weggis (Luftseilbahn)",
+      "to": "Rigi Kaltbad (Luftseilbahn)",
+      "fromStopId": "ch:1:sloid:30388",
+      "toStopId": "ch:1:sloid:30687",
+      "featureId": 741,
+      "installation": "71.105",
+      "endpointOffsetsMetres": [
+        9.137068513150542,
+        5.128886415574955
+      ],
+      "verticalProfile": "not supplied by this 2D source",
+      "pathIndex": 14
+    }
+  ]
+}
