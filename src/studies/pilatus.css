@@ -23,3 +23,18 @@
  .pilatus-study .network-card .between { display: block; }
  .pilatus-study .network-card { max-width: 210px; }
 }
+
+.pilatus-terrain-control { border-top: 1px solid #c1ccff33; padding-top: 8px; }
+.pilatus-terrain-control > button { width: 100%; text-align: center; }
+.pilatus-terrain-button { color: #eeeaff; background: #10172b; border: 1px solid #8e9cc04d; min-height: 44px; padding: 8px; cursor: pointer; font: inherit; font-size: 12px; }
+.pilatus-terrain-control > button[aria-pressed='true'] { color: #a9e2cf; border-color: #a9e2cf88; }
+.pilatus-study.has-timed-rigi-terrain .map-navigation,
+.pilatus-study.has-timed-rigi-terrain .mobile-map-tools,
+.pilatus-study.has-timed-rigi-terrain .prototype-note,
+.pilatus-study.has-timed-rigi-terrain .north-marker { display: none; }
+.pilatus-journey[data-compact='true'] > label,
+.pilatus-journey[data-compact='true'] > nav,
+.pilatus-journey[data-compact='true'] > p,
+.pilatus-journey[data-compact='true'] > details { display: none; }
+.pilatus-journey[data-compact='true'] .pilatus-terrain-control { border-top: 0; padding-top: 2px; }
+.pilatus-journey .terrain-leg-label { color: #fff0b9; }
