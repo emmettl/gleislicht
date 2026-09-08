@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "method": "Exact source GO + mode + line overrides. All other joins require literal GO_NR = GTFS agency_id and identical line/mode. An identity match only supplies candidate geometry; every directed stop pattern still has to pass the matcher. GTFS direction_id is never equated to RICHTUNG.",
+  "mappings": [
+    { "go": "96", "sourceLine": "S17", "mode": "rail", "agencyId": "31", "line": "S17", "evidence": "AGIS record 350 names Aargau Verkehr AG and Wohlen–Bremgarten–Dietikon. The pinned GTFS publishes this AVA S17 corridor under agency 31; agency 96 publishes S14. Scope is S17 only." },
+    { "go": "490", "sourceLine": "205", "mode": "bus", "agencyId": "801", "line": "205", "evidence": "AGIS records 306–307 use tariff publisher Zürcher Verkehrsverbund, not an operating agency. Pinned GTFS route 96-182-1-j26-1 publishes PostAuto 205; ordered stops must match the Bonstetten-Wettswil–Islisberg–Arni corridor." },
+    { "go": "490", "sourceLine": "215", "mode": "bus", "agencyId": "801", "line": "215", "evidence": "AGIS records 308–309 use Zürcher Verkehrsverbund. Pinned GTFS route 96-182-3-j26-1 publishes PostAuto 215; ordered stops must match Zürich Wiedikon–Birmensdorf–Oberlunkhofen–Affoltern." },
+    { "go": "490", "sourceLine": "245", "mode": "bus", "agencyId": "801", "line": "245", "evidence": "AGIS records 310–311 use Zürcher Verkehrsverbund. Pinned GTFS route 96-173-2-j26-1 publishes PostAuto 245; ordered stops must match Muri–Oberlunkhofen–Birmensdorf." },
+    { "go": "354", "sourceLine": "7312a", "mode": "bus", "agencyId": "sbg034", "line": "7312", "evidence": "AGIS records 12–13 name Südbadenbus and the Rheinfelden DE–CH–Regionalspital branch. GTFS route 92-731-2-j26-1 uses Südbadenbus agency sbg034 and unsuffixed 7312. Branch selection remains pattern-specific." },
+    { "go": "354", "sourceLine": "7312b", "mode": "bus", "agencyId": "sbg034", "line": "7312", "evidence": "AGIS records 14–15 name Südbadenbus and the Rheinfelden DE–CH–HPS branch. GTFS route 92-731-2-j26-1 uses Südbadenbus agency sbg034 and unsuffixed 7312. Branch selection remains pattern-specific." }
+  ]
+}

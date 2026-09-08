@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "lines": {
+    "url": "https://api.geo.ag.ch/v1/data/downloads/AGIS.avk_oevlinien/download/Shapefile/kanton_aargau",
+    "retrievedAt": "2026-09-08T17:03:55.430769+00:00",
+    "dataDate": "2026-04-23",
+    "normalTimetableOnly": true,
+    "features": 366,
+    "attribution": "Daten des Kantons Aargau",
+    "terms": "supplied-terms.pdf",
+    "metadata": "supplied-metadata.pdf"
+  },
+  "boundary": {
+    "source": "swissBOUNDARIES3D",
+    "url": "https://data.geo.admin.ch/ch.swisstopo.swissboundaries3d/swissboundaries3d_2026-01/swissboundaries3d_2026-01_2056_5728.gpkg.zip",
+    "edition": "2026-01",
+    "sourceGpkgSha256": "1f122cb7a06f2d312a84b7c0a91116348ba907054d487f0a70b9d2302984e6fc",
+    "recordUuid": "{E11CD2CA-2E2D-415C-8789-C10D7C26E441}",
+    "recordModified": "2025-11-19T00:00:00.000",
+    "cantonNumber": 19,
+    "attribution": "© swisstopo"
+  },
+  "transformation": {
+    "sourceCrs": "EPSG:2056",
+    "outputCrs": "EPSG:4326",
+    "method": "swisstopo approximate LV95 to WGS84 polynomial; metre-level accuracy; seven decimal places; no simplification; polygon holes and multipart boundaries retained"
+  },
+  "files": {
+    "agis-lines-20260423.zip": {
+      "sha256": "152ba4bf1848962257d26ca1567f72d014f7fbd17677994eb9b308221354215d",
+      "bytes": 2763195
+    },
+    "boundary.json": {
+      "sha256": "329401991e95f4ea0958a7c22b8a086453155f01b04a83b3448513ce64195a30",
+      "bytes": 228889
+    },
+    "canton.gpkggeom": {
+      "sha256": "8d86b88cf476c242b950cde5d43eb5910c41eb0fd674be62131c1547ee43e87d",
+      "bytes": 241123
+    },
+    "lines.json.gz": {
+      "sha256": "96413b71f134ecbfb73ea375f077d1b1bc6cb1772d23ec04be0348f89d320a20",
+      "bytes": 1719751
+    },
+    "metadata.pdf": {
+      "sha256": "09a2a3634118459cfafb502de9b35a8f5b788f9a49e766dcc9f75965de1b5e10",
+      "bytes": 285559
+    },
+    "supplied-metadata.pdf": {
+      "sha256": "19a8f579d0ebc392fd73feb6aa0fe7a7b720961b2c87b1f2e6ad40e8e629ab25",
+      "bytes": 285559
+    },
+    "supplied-terms.pdf": {
+      "sha256": "73a20200a1c9b2994a3e2331442aff9b1045926b039ee29e390b84d91d4214af",
+      "bytes": 261952
+    },
+    "terms.pdf": {
+      "sha256": "b58d9fc4c3a634243f7db7ffb8caf70f866dd58ec7f7b2d8f6010398bc4d50dd",
+      "bytes": 256264
+    }
+  }
+}
