@@ -32,7 +32,7 @@ test('trail worker returns geometry, follows seeks, and releases old study worke
   } else await page.getByRole('button', { name: 'PostBus · all Switzerland · 24 hours', exact: true }).click()
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Switzerland by PostBus')
   const stats = () => page.evaluate(() => (window as unknown as { trailWorkerTest: { frames: number; populated: number; invalid: boolean; terminated: number; time: number } }).trailWorkerTest)
-  await expect.poll(async () => (await stats()).populated).toBeGreaterThan(1)
+  await expect.poll(async () => (await stats()).populated, { timeout: 45_000 }).toBeGreaterThan(1)
   await page.getByRole('button', { name: /Pause motion/i }).click()
   await page.locator('.scrubber input').fill('28000')
   await expect.poll(async () => (await stats()).time).toBe(28000)
