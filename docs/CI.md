@@ -55,3 +55,13 @@ References: [Playwright test sharding](https://playwright.dev/docs/test-sharding
 Use the Node version selected by `.nvmrc` for local bundle checks. Node 24.20.0 reproduced the hosted JavaScript measurement of 361.0 KiB for commit `5404341`; Node 26's gzip output understated it by about 1 KiB. The 360 KiB JavaScript limit remains unchanged. German, French and Italian interface dictionaries now load individually when selected, with English available immediately and retained if a translation cannot load. Browser regressions cover lazy requests, all four languages, saved language restoration and a delayed translation arriving after another selection.
 
 On Node 24.20.0 the isolated fix measures 351.8 KiB of opening JavaScript. The language regression also exposed a phone menu beneath the search controls; the open language menu now raises the masthead above them.
+
+## Let publication finish during parallel work
+
+On 8 September, successive pushes repeatedly cancelled otherwise progressing
+Pages runs, leaving the Lausanne integration unpublished despite passing build
+and regional-data checks. The `pages` concurrency group now uses
+`cancel-in-progress: false`: the active run completes and only the newest pending
+push is retained. An intermediate validated revision may publish before that
+newest revision; no validation or browser test is bypassed. This follows
+[GitHub's workflow concurrency semantics](https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/control-workflow-concurrency).

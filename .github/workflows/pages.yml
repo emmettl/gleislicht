@@ -15,7 +15,9 @@ permissions:
 
 concurrency:
   group: pages
-  cancel-in-progress: true
+  # Finish the active validated release; retain only the newest pending push.
+  # Cancelling on every push can prevent publication during parallel work.
+  cancel-in-progress: false
 
 jobs:
   check:
