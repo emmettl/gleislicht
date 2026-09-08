@@ -54,14 +54,14 @@ Compatibility below counts each archived trip template once, across all its comp
 | 91-42-F-j26-1 | Schweizerische Südostbahn (sob) / S42 | 3 | 2026-05-22 / 31157 | 54 / 54 |
 | 91-46-j26-1 | Schweizerische Südostbahn (sob) / IR46 | 2 | 2026-03-01 / 2413 | 40 / 40 |
 | 91-4C-Y-j26-1 | Schweizerische Bundesbahnen SBB / IR | 1 | 2026-08-08 / 30515 | 40 / 40 |
-| 91-4T-Y-j26-1 | Schweizerische Bundesbahnen SBB / EXT | 4 | 2026-06-14 / 31010 | 34 / 36 |
+| 91-4T-Y-j26-1 | Schweizerische Bundesbahnen SBB / EXT | 4 | 2026-06-14 / 31010 | 36 / 36 |
 | 91-4U-Y-j26-1 | Schweizerische Bundesbahnen SBB / IR | 4 | 2026-08-16 / 2382 | 24 / 26 |
 | 91-55-C-j26-1 | Schweizerische Bundesbahnen SBB / IR55 | 5 | 2026-05-22 / 1759 | 150 / 150 |
 | 91-5R-Y-j26-1 | Schweizerische Bundesbahnen SBB / EXT | 1 | 2026-02-23 / 31300 | 11 / 11 |
 | 91-5V-Y-j26-1 | Schweizerische Bundesbahnen SBB / EXT | 2 | 2026-03-27 / 31376 | 5 / 5 |
 | 91-75-Y-j26-1 | Schweizerische Bundesbahnen SBB / S | 10 | 2026-05-22 / 30989 | 485 / 485 |
 | 91-7Q-Y-j26-1 | Schweizerische Bundesbahnen SBB / IC | 2 | 2026-03-08 / 31102 | 14 / 14 |
-| 91-81-A-j26-1 | Schweizerische Bundesbahnen SBB / IC81 | 17 | 2026-05-23 / 806 | 960 / 1,120 |
+| 91-81-A-j26-1 | Schweizerische Bundesbahnen SBB / IC81 | 17 | 2026-05-23 / 806 | 1,120 / 1,120 |
 | 91-8F-Y-j26-1 | Schweizerische Bundesbahnen SBB / EXT | 1 | 2026-08-09 / 31414 | 7 / 7 |
 | 91-8U-Y-j26-1 | Oensingen-Balsthal-Bahn / EXT | 1 | 2026-04-18 / 31710 | 2 / 2 |
 | 91-98-Y-j26-1 | Schweizerische Bundesbahnen SBB / RE | 4 | 2026-06-16 / 31247 | 15 / 15 |
@@ -100,26 +100,37 @@ The following selected witnesses specifically use the preceding service calendar
 
 ## Geometry still requiring evidence
 
-The separately scoped rail-review candidate is compatible with **3,628 of 10,988 template segment occurrences**. **128 of 280 directed patterns** have complete geometry; **7,360 occurrences remain unresolved**. All journeys and their exact platform coordinates stay in the denominator. The [rail-review audit](../data/aargau-witnesses/rail-review-summary.json) enumerates every missing pattern/pair with the original source and fallback rejection reasons. The [reviewed pattern detail](../data/aargau-witnesses/rail-review-patterns.json.gz) retains admitted paths and source evidence.
+The separately scoped rail-review candidate is compatible with **3,790 of 10,988 template segment occurrences**. **187 of 280 directed patterns** have complete geometry; **7,198 occurrences remain unresolved**. All journeys and their exact platform coordinates stay in the denominator. The [Interlaken follow-up audit](../data/aargau-witnesses/interlaken-review-summary.json) enumerates every missing pattern/pair with the original source and fallback rejection reasons. The [reviewed pattern detail](../data/aargau-witnesses/interlaken-review-patterns.json.gz) retains admitted paths and source evidence.
 
 | Mode | Routes | Trip templates | Directed patterns | Compatible occurrences | Unresolved occurrences |
 | --- | --- | --- | --- | --- | --- |
-| rail | 29 | 635 | 194 | 3,628 | 173 |
+| rail | 29 | 635 | 194 | 3,790 | 11 |
 | bus | 16 | 1,384 | 86 | 0 | 7,187 |
 
-The [original witness baseline](../data/aargau-witnesses/geometry-summary.json) remains unchanged at 12 compatible occurrences and no complete patterns. The [new finite rail policy](../data/aargau-witness-rail-policy.json) reviews **29 exact route records, 194 directed patterns and 635 archived rail trip templates**, adding **3,616 occurrences** and preserving all **12** prior paths. It supplies geometry on **28 route records**; **24 rail routes** now have complete template geometry. All bus assessments are unchanged.
+The [original witness baseline](../data/aargau-witnesses/geometry-summary.json) remains unchanged at 12 compatible occurrences and no complete patterns. The [new finite rail policy](../data/aargau-witness-rail-policy.json) reviews **29 exact route records, 194 directed patterns and 635 archived rail trip templates**, adding **3,616 occurrences** and preserving all **12** prior paths. It supplies geometry on **28 route records**; **24 rail routes** had complete template geometry at that stage; the Interlaken follow-up below raises this to **26**. All bus assessments are unchanged.
 
 The policy pins the archive-derived SBB (11), THURBO (65), SOB (82) and Oensingen-Balsthal-Bahn (68) identities, full platform-coordinate chains, source trip/course identities, calls, boarding rules and complete active service-date lists. Every template is checked before the shared pattern cache is used. Each inferred path and its directed FOT segment sequence are hashed and checked on replay. Station attachment remains at **350 m**, source topology attachment at **120 m**, with the existing **4.5× detour bound / 3,000 m allowance** and **5 m source simplification**. Another scheduled operating point cannot be traversed out of order. Accepted geometry is an infrastructure inference, not a certification of the special train's actual corridor, track or diversion.
 
-The **173 unresolved rail occurrences** are explicit exclusions:
+## Interlaken station hierarchy
+
+The [FOT XTF source](https://data.geo.admin.ch/ch.bav.schienennetz/schienennetz/schienennetz_2056_de.xtf) already records **8519309, Interlaken Ost [Gleis 5–8]**, node **ch14uvag00165678**, as a child of **8507492**, node **ch14uvag00139699**, using its explicit **rUebergeordnet** reference. The generic station parent has no track edges; the connected child reaches Interlaken West through source segment **ch14uvag00087489**. The existing simplified parser omitted the hierarchy, which explains the earlier disconnection.
+
+The [finite Interlaken policy](../data/aargau-witness-interlaken-policy.json) binds only the two exact GTFS platforms: **5**, stop **ch:1:sloid:7492:0:581416**, and **7**, stop **ch:1:sloid:7492:0:460848**. Their distances to the child node are **61.39 m / 70.05 m**, within the unchanged 350 m station limit. Source topology attachment still uses 120 m. This uses the source's explicit station/track-group relationship; no nearby-node or name-only alias is created. Only the internal operating-point lookup changes. Exported platform IDs, coordinates, complete calls and calendars are preserved.
+
+This supplies all **162** formerly rejected Interlaken occurrences across **59** exact directed patterns: **160 IC81** occurrences on route **91-81-A-j26-1** and **2 EXT** occurrences on **91-4T-Y-j26-1**. The source GTFS direction IDs count **79 / 83** for **0 / 1**; these are source identifiers, not a geographic-direction convention. The [regression](../data/aargau-witnesses/interlaken-review-summary.json) preserves all **3,628** previously accepted occurrences and every other source assessment. Both directions and both platforms are tested. An absent parent reference, changed platform group, coordinates, template, calendar or geometry cannot inherit the rule.
+
+The child node states validity from **13 December 2015**, edit date **27 May 2021**, and data date **6 July 2021**; the parent was edited **2 July 2021**. The archived raw node records are included in the policy, and the entire source file is hashed. The asset's **18 January 2025** update is distinct from these record dates. These records establish the source hierarchy, not current running-track validity. All paths remain explicitly inferred infrastructure geometry.
+
+## Remaining exclusions
+
+The **11 unresolved rail occurrences** remain explicit exclusions:
 
 - **6 Waldshut–Koblenz occurrences**, SBB route 91-36-B-j26-1: foreign operating-point 8014474 has no exact FOT identity. Existing THURBO border rules do not transfer to this route identity or its dates.
 - **5 Bern platform 49 occurrences**, routes 91-3A-Y-j26-1 and 91-4U-Y-j26-1: the source platform is **427.8 m** from the FOT station point, beyond the unchanged 350 m limit. The earlier date-scoped Bern platform fixes are not inherited.
-- **162 Interlaken occurrences**, IC81 route 91-81-A-j26-1 (160) and EXT route 91-4T-Y-j26-1 (2): the bounded FOT graph remains disconnected toward Interlaken Ost. No coordinate-based topology repair or larger attachment limit is introduced.
 
-The **86 bus patterns on 16 routes** still have **7,187 unresolved template occurrences**. Dated operator and road evidence remains necessary for their replacement and special workings. Together with the rail exclusions, **152 patterns** remain incomplete.
+The **86 bus patterns on 16 routes** still have **7,187 unresolved template occurrences**. Dated operator and road evidence remains necessary for their replacement and special workings. Together with the rail exclusions, **93 patterns** remain incomplete.
 
-This candidate uses the existing AGIS and OSM baseline plus the new exact-template FOT policy. The September border/platform rules, twelve-date seasonal rules, Simplon journeys and bus alignment corrections retain their exact date scopes and are not applied here. In particular, a witness during a planned disruption does not establish that a normal-line shape is the replacement itinerary. New replacement-bus routes need dated operator and road evidence; the three remaining rail failure groups need scoped source evidence before filling their gaps.
+This candidate uses the existing AGIS and OSM baseline plus the exact-template FOT and Interlaken hierarchy policies. The September border/platform rules, twelve-date seasonal rules, Simplon journeys and bus alignment corrections retain their exact date scopes and are not applied here. In particular, a witness during a planned disruption does not establish that a normal-line shape is the replacement itinerary. New replacement-bus routes need dated operator and road evidence; the two remaining rail failure groups need scoped source evidence before filling their gaps.
 
 Source geometry keeps its existing dates and limitations: **AGIS 23 April 2026**, normal timetable only; FOT catalogue **6 July 2021**, asset update **18 January 2025**, current validity unconfirmed; OSM snapshots and routing evidence remain pinned by the referenced cache/source hashes. Required attribution remains **Timetable: opentransportdata.swiss**, **Daten des Kantons Aargau**, **© swisstopo**, **© OpenStreetMap contributors; ODbL-1.0**, and the original FOT attribution recorded in the machine audit.
 
@@ -133,8 +144,10 @@ node scripts/verify-aargau-witnesses.mjs /path/GTFS_FP2026_20260902.zip
 node scripts/audit-aargau-witnesses.mjs
 node scripts/prepare-aargau-witness-rail.mjs
 node scripts/review-aargau-witness-rail.mjs
+node scripts/prepare-aargau-witness-interlaken.mjs
+node scripts/review-aargau-witness-interlaken.mjs
 node scripts/document-aargau-witnesses.mjs
 python3 scripts/aargau-witnesses.test.py
-npx vitest run scripts/aargau-witness-rail.test.mjs scripts/aargau-rail-geometry.test.mjs
+npx vitest run scripts/aargau-witness-interlaken.test.mjs scripts/aargau-witness-rail.test.mjs scripts/aargau-rail-geometry.test.mjs
 # Append --check to each inventory, verification, audit or documentation command to replay without rewriting.
 ```
