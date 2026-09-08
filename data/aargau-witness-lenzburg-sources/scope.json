@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "patternIds": [
+    "8d91b66b95a4278dbf85",
+    "4efe182702335a8996d3",
+    "8edbb01adacf1a049993",
+    "49eb8fad14c0128da285",
+    "bddd8d85b863dff4a6e6",
+    "b077456baeeccb366017",
+    "0af6adbb49ea6a5202c3",
+    "2ab0468d93eff1bae5c7"
+  ],
+  "routeIds": [
+    "92-A01-N-j26-1",
+    "92-EV5-V-j26-1",
+    "92-EV7-R-j26-1",
+    "92-EV9-I-j26-1"
+  ],
+  "serviceDates": [
+    "2026-05-23",
+    "2026-05-24",
+    "2026-05-25"
+  ],
+  "patterns": 8,
+  "templates": 300,
+  "occurrences": 659,
+  "reason": "Only eight full directed May patterns on EV4/EV5/EV7/EV9. Later EV4 Suhr workings and other May EV labels are outside this evidence scope."
+}

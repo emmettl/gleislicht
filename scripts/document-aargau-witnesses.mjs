@@ -3,14 +3,14 @@ import { writeFile } from 'node:fs/promises'
 import { hashFile } from './inventory-aargau.mjs'
 import { readJson } from './aargau-seasonal.mjs'
 const root = 'data/aargau-witnesses'
-const inventory = await readJson(`${root}/inventory.json`), geometry = await readJson(`${root}/schupfart-review-summary.json`), verification = await readJson(`${root}/source-verification.json`)
+const inventory = await readJson(`${root}/inventory.json`), geometry = await readJson(`${root}/lenzburg-review-summary.json`), verification = await readJson(`${root}/source-verification.json`)
 assert.equal(geometry.inventorySha256, await hashFile(`${root}/inventory.json`))
 assert.equal(geometry.sourceVerificationSha256, await hashFile(`${root}/source-verification.json`))
 assert.equal(geometry.geometryPatternsSha256, await hashFile(`${root}/${geometry.geometryPatternsFile}`))
 assert(verification.passed)
-assert.equal(geometry.policySha256, await hashFile('data/aargau-witness-schupfart-policy.json'))
-assert.equal(geometry.previousReviewSha256, await hashFile(`${root}/oberentfelden-review-summary.json`))
-assert.equal(geometry.previousPatternsSha256, await hashFile(`${root}/oberentfelden-review-patterns.json.gz`))
+assert.equal(geometry.policySha256, await hashFile('data/aargau-witness-lenzburg-policy.json'))
+assert.equal(geometry.previousReviewSha256, await hashFile(`${root}/schupfart-review-summary.json`))
+assert.equal(geometry.previousPatternsSha256, await hashFile(`${root}/schupfart-review-patterns.json.gz`))
 const fmt = n => n.toLocaleString('en-US')
 const table = (headers, rows) => `| ${headers.join(' | ')} |\n| ${headers.map(() => '---').join(' | ')} |\n${rows.map(row => `| ${row.join(' | ')} |`).join('\n')}`
 const byRoute = new Map(geometry.routes.map(r => [r.routeId,r]))
@@ -50,7 +50,7 @@ ${table(['Route record', 'Witness civil date', 'Source service date', 'Source co
 
 ## Geometry still requiring evidence
 
-The separately scoped annual geometry candidate is compatible with **${fmt(geometry.compatibleOccurrences)} of ${fmt(geometry.segmentOccurrences)} template segment occurrences**. **${geometry.fullyCompatiblePatterns} of ${geometry.directedPatterns} directed patterns** have complete geometry; **${fmt(geometry.missingOccurrences)} occurrences remain unresolved**. All journeys and their exact platform coordinates stay in the denominator. The [current event-bus audit](../data/aargau-witnesses/schupfart-review-summary.json) enumerates every missing pattern/pair with the original source and fallback rejection reasons. The [reviewed pattern detail](../data/aargau-witnesses/schupfart-review-patterns.json.gz) retains admitted paths and source evidence.
+The separately scoped annual geometry candidate is compatible with **${fmt(geometry.compatibleOccurrences)} of ${fmt(geometry.segmentOccurrences)} template segment occurrences**. **${geometry.fullyCompatiblePatterns} of ${geometry.directedPatterns} directed patterns** have complete geometry; **${fmt(geometry.missingOccurrences)} occurrences remain unresolved**. All journeys and their exact platform coordinates stay in the denominator. The [current replacement-bus audit](../data/aargau-witnesses/lenzburg-review-summary.json) enumerates every missing pattern/pair with the original source and fallback rejection reasons. The [reviewed pattern detail](../data/aargau-witnesses/lenzburg-review-patterns.json.gz) retains admitted paths and source evidence.
 
 ${table(['Mode', 'Routes', 'Trip templates', 'Directed patterns', 'Compatible occurrences', 'Unresolved occurrences'],byMode)}
 
@@ -97,9 +97,9 @@ Every added path, directed source segment, projection, full platform chain and e
 
 ## Remaining exclusions
 
-There are **no unresolved rail occurrences** in this annual-template candidate. The [complete witness bus review](AARGAU-WITNESS-BUS-REVIEW.md) inventories all **86 bus patterns on 16 routes** and tests six AVA replacement patterns. Its finite policy adds **2,466 April occurrences**, preserving all **3,801** earlier paths. The subsequent municipal closure-localization policy adds **1,836 September occurrences**, preserving all **6,267** earlier paths. The independently transcribed 2026 Schupfart Festival timetable verifies **32 event trips / 113 major calls**; its road policy adds **195 occurrences**, preserving all **8,103** earlier paths and holding **twelve zero-second intervals**. Seven bus patterns are complete; **2,690 occurrences across 79 incomplete bus patterns** remain. AVA’s **161** April source-time concerns and **153** September occurrences crossing the closure stay excluded. The municipal notice (7 September), map (11 August) and exact historical OSM junctions (2 September) establish the 181.505 m closure. All paths accepted by that closure-localization review stay more than 20 m clear; the minimum is 73.713 m. Full evidence, source dates and attribution are in the linked bus audit. Both signed-detour directions also exceed the literal 120-second source interval in an optimistic tagged-speed calculation. The other 68 bus patterns on fourteen routes still need dated operator and road evidence.
+There are **no unresolved rail occurrences** in this annual-template candidate. The [complete witness bus review](AARGAU-WITNESS-BUS-REVIEW.md) inventories all **86 bus patterns on 16 routes** and tests six AVA replacement patterns. Its finite policy adds **2,466 April occurrences**, preserving all **3,801** earlier paths. The subsequent municipal closure-localization policy adds **1,836 September occurrences**, preserving all **6,267** earlier paths. The independently transcribed 2026 Schupfart Festival timetable verifies **32 event trips / 113 major calls**; its road policy adds **195 occurrences**, preserving all **8,103** earlier paths and holding **twelve zero-second intervals**. The May Lenzburg follow-up adds **582 occurrences**, preserving all **8,298** earlier paths and holding **77 platform-F stop-distance failures**. Thirteen bus patterns are complete; **2,108 occurrences across 73 incomplete bus patterns** remain. AVA’s **161** April source-time concerns and **153** September occurrences crossing the closure stay excluded. The municipal notice (7 September), map (11 August) and exact historical OSM junctions (2 September) establish the 181.505 m closure. All paths accepted by that closure-localization review stay more than 20 m clear; the minimum is 73.713 m. Full evidence, source dates and attribution are in the linked bus audit. Both signed-detour directions also exceed the literal 120-second source interval in an optimistic tagged-speed calculation. The other 60 bus patterns on eleven route records still need dated operator and road evidence, including the later EV4 patterns excluded from the May policy. SBB’s 22 April notice confirms the May closure corridors; exact bus calls and calendars remain GTFS evidence. The linked audit records the primary-page retrieval limitation and OSM graph dates.
 
-This candidate uses the existing AGIS and OSM baseline plus exact-template FOT, Interlaken hierarchy, Bern projection, Waldshut corridor, scoped AVA April roads, September closure localization and Schupfart event-road policies. The September border/platform rules, twelve-date seasonal rules, Simplon journeys and bus alignment corrections retain their exact date scopes and are not applied here. In particular, a witness during a planned disruption does not establish that a normal-line shape is the replacement itinerary. New replacement-bus routes need dated operator and road evidence.
+This candidate uses the existing AGIS and OSM baseline plus exact-template FOT, Interlaken hierarchy, Bern projection, Waldshut corridor, scoped AVA April roads, September closure localization, Schupfart event-road and May Lenzburg replacement-road policies. The September border/platform rules, twelve-date seasonal rules, Simplon journeys and bus alignment corrections retain their exact date scopes and are not applied here. In particular, a witness during a planned disruption does not establish that a normal-line shape is the replacement itinerary. New replacement-bus routes need dated operator and road evidence.
 
 Source geometry keeps its existing dates and limitations: **AGIS 23 April 2026**, normal timetable only; FOT catalogue **6 July 2021**, asset update **18 January 2025**, current validity unconfirmed; OSM snapshots and routing evidence remain pinned by the referenced cache/source hashes. Required attribution remains **Timetable: opentransportdata.swiss**, **Daten des Kantons Aargau**, **© swisstopo**, **© OpenStreetMap contributors; ODbL-1.0**, and the original FOT attribution recorded in the machine audit.
 
@@ -127,6 +127,9 @@ node scripts/review-aargau-oberentfelden-detour.mjs
 node scripts/package-aargau-witness-schupfart.mjs --check
 node scripts/prepare-aargau-witness-schupfart-policy.mjs
 node scripts/review-aargau-witness-schupfart.mjs
+node scripts/package-aargau-witness-lenzburg.mjs --check
+node scripts/prepare-aargau-witness-lenzburg-policy.mjs --check
+node scripts/review-aargau-witness-lenzburg.mjs
 node scripts/document-aargau-witness-buses.mjs
 node scripts/document-aargau-witnesses.mjs
 python3 scripts/aargau-witnesses.test.py

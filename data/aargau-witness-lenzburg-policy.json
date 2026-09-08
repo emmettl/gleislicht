@@ -1,0 +1,4065 @@
+{
+  "schemaVersion": 1,
+  "checkedOn": "2026-09-09",
+  "scope": "Separate annual-template candidate: eight complete May Lenzburg patterns on four exact SBB replacement routes. The dated operator notice establishes closure corridors; independent GTFS verification establishes all original calls and calendars. Exclude two stop-distance failures without relaxing any guard. Later EV4 and all other unreviewed services remain excluded. No daily feed expands.",
+  "files": {
+    "data/aargau-witnesses/source-patterns.json.gz": "824d629c8dded53dc086de9ee6477810613e6c3c90a17fe1d1b7891cb3c4defc",
+    "data/aargau-witnesses/source-verification.json": "dc35791862fe84add38d6b71bacc6017ee86fc434b0a7817203c9c12e43f12bc",
+    "data/aargau-witnesses/bus-inventory.json": "0e533220da08f88c986d501f2639d2f5c92d92313745287af18844c2ee7aeea7",
+    "data/aargau-witnesses/schupfart-review-patterns.json.gz": "28802d0af228015dd3fbf495a3a3daeb5fdb0132361f123a5382d821de879d1d",
+    "data/aargau-witnesses/schupfart-review-summary.json": "3f111814397124771a972a1a234bc10ac5ed64aed064c3e1194b8650f66d4eb0",
+    "data/aargau-witness-lenzburg-sources/notice.json": "de65444f155fdd762992d07f57448f551c24ba826148050f6ba0e94244bff573",
+    "data/aargau-witness-lenzburg-sources/scope.json": "0c7b6f10345b07719ee1bd022bb1097d35e40ff5141ad31bed613ff7e2a8dd67",
+    "data/aargau-witness-lenzburg-sources/routing.json": "16238c2ffa28dc244577bcc6d9a86b5e7871ce3d3136ac9a0c695b53f0a376c4",
+    "data/aargau-witness-lenzburg-sources/cache.json.gz": "09deb0e74a001082a74cc820a517e5c765b641017121d164c2caa42133e6a323",
+    "data/aargau-witness-lenzburg-sources/matcher-evidence.json.gz": "6eb2f135c9accb99776fa6d08166c759da48b06314f5f15c1a173ab49e82ffe4",
+    "data/aargau-witness-lenzburg-sources/pfaedle.cfg": "31deee35fee9cb6fadc89cc5298e501a95cc4e8d78d7ae7fe6b60932cbf23db4"
+  },
+  "roadLimits": {
+    "snapMetres": 120,
+    "maxDetourRatio": 6,
+    "detourAllowanceMetres": 1500,
+    "simplifyMetres": 5
+  },
+  "meanSpeedReviewKmh": 80,
+  "source": {
+    "notice": {
+      "schemaVersion": 1,
+      "url": "https://news.sbb.ch/de/019daf71-e5e3-7f0c-8713-4d64db53c698/bauarbeiten-in-lenzburg-fuehren-zu-einschraenkungen-im-bahnverkehr",
+      "title": "Bauarbeiten in Lenzburg führen zu Einschränkungen im Bahnverkehr",
+      "publicationDate": "2026-04-22",
+      "retrievedOn": "2026-09-09",
+      "retrievalTimezone": "Europe/Zurich",
+      "attribution": "SBB/CFF/FFS (text)",
+      "access": "Primary SBB article read through web retrieval. Direct host curl returned HTTP 403. This record is a short excerpt plus reviewed facts, not an archived raw HTML response.",
+      "excerpt": "Die S-Bahnen und Regionalzüge ab und nach Lenzburg fallen aus, und es verkehren Bahnersatzbusse.",
+      "facts": {
+        "closureStartDate": "2026-05-23",
+        "closureEndDate": "2026-05-26",
+        "closedRailCorridors": [
+          [
+            "Rupperswil",
+            "Lenzburg",
+            "Othmarsingen"
+          ],
+          [
+            "Hunzenschwil",
+            "Lenzburg"
+          ],
+          [
+            "Beinwil am See",
+            "Lenzburg"
+          ]
+        ],
+        "cause": "Commissioning the new Lenzburg signalling system",
+        "replacementBusesConfirmed": true
+      },
+      "limitations": [
+        "Notice establishes disruption dates and rail corridors, not EV labels, full bus platform chains, exact call times or street itineraries.",
+        "Source trip IDs, complete bus calls and calendars come from the independently verified archived GTFS.",
+        "The current project restrictions page no longer describes the past May closure and is not used to infer historical absence of disruption."
+      ]
+    },
+    "routing": {
+      "schemaVersion": 1,
+      "scope": "All eight full May Lenzburg witness patterns tested; numerical road compatibility alone does not authorize replacement-bus admission without timetable and source-time review.",
+      "attribution": "© OpenStreetMap contributors; ODbL-1.0",
+      "sourceUrl": "https://www.openstreetmap.org/copyright",
+      "sourceDates": {
+        "switzerland": "2026-09-02",
+        "borderRetrieved": "2026-09-08"
+      },
+      "osmSha256": "d5c675456e935cfbcab88fe894fe9145dc5bd1fbd4318cea30ffd838a9aad02b",
+      "binarySha256": "6d193a755bc22c45516f8bce7594bb30e07a2632a5ef049a95915b262406cbd8",
+      "configSha256": "31deee35fee9cb6fadc89cc5298e501a95cc4e8d78d7ae7fe6b60932cbf23db4",
+      "sourceTimetableSha256": "824d629c8dded53dc086de9ee6477810613e6c3c90a17fe1d1b7891cb3c4defc",
+      "files": {
+        "cache.json.gz": "09deb0e74a001082a74cc820a517e5c765b641017121d164c2caa42133e6a323",
+        "matcher-evidence.json.gz": "6eb2f135c9accb99776fa6d08166c759da48b06314f5f15c1a173ab49e82ffe4",
+        "pfaedle.cfg": "31deee35fee9cb6fadc89cc5298e501a95cc4e8d78d7ae7fe6b60932cbf23db4"
+      },
+      "report": {
+        "matchedSegments": 582,
+        "totalSegments": 659,
+        "coverage": 0.8831562974203339,
+        "routes": [
+          {
+            "routeId": "92-EV5-V-j26-1",
+            "route": "EV5",
+            "matched": 391,
+            "total": 391,
+            "patterns": 2
+          },
+          {
+            "routeId": "92-EV7-R-j26-1",
+            "route": "EV7",
+            "matched": 74,
+            "total": 74,
+            "patterns": 2
+          },
+          {
+            "routeId": "92-A01-N-j26-1",
+            "route": "EV4",
+            "matched": 58,
+            "total": 116,
+            "patterns": 2
+          },
+          {
+            "routeId": "92-EV9-I-j26-1",
+            "route": "EV9",
+            "matched": 59,
+            "total": 78,
+            "patterns": 2
+          }
+        ],
+        "maxSnapMetres": 57.2379459765548,
+        "rejectedPatternSegments": 2,
+        "issues": [
+          {
+            "pattern": "3e03d9e4f47b32773e04db83",
+            "routeId": "92-A01-N-j26-1",
+            "route": "EV4",
+            "segment": 0,
+            "from": "Lenzburg, Bahnhof",
+            "to": "Othmarsingen, Bahnhof",
+            "fromId": "ch:1:sloid:78736:0:06",
+            "toId": "ch:1:sloid:87101",
+            "trips": 58,
+            "reason": "stop-too-far",
+            "snap": 132.2367587402675
+          },
+          {
+            "pattern": "d67cce48473afd6fb2e7e80d",
+            "routeId": "92-EV9-I-j26-1",
+            "route": "EV9",
+            "segment": 1,
+            "from": "Lenzburg, Bahnhof",
+            "to": "Othmarsingen, Bahnhof",
+            "fromId": "ch:1:sloid:78736:0:06",
+            "toId": "ch:1:sloid:87101",
+            "trips": 19,
+            "reason": "stop-too-far",
+            "snap": 132.2367587402675
+          }
+        ]
+      }
+    }
+  },
+  "expected": {
+    "patterns": 8,
+    "templates": 300,
+    "addedOccurrences": 582,
+    "occurrences": {
+      "admit-inferred-may-road": 582,
+      "hold-road-geometry": 77
+    }
+  },
+  "patterns": [
+    {
+      "id": "8d91b66b95a4278dbf85",
+      "agencyId": "7231",
+      "routeId": "92-A01-N-j26-1",
+      "line": "EV4",
+      "directionId": "0",
+      "stops": [
+        [
+          8.21516514,
+          47.40687406,
+          "Othmarsingen, Bahnhof",
+          "",
+          "ch:1:sloid:87101"
+        ],
+        [
+          8.17123752,
+          47.39082732,
+          "Lenzburg, Bahnhof",
+          "",
+          "ch:1:sloid:78736"
+        ]
+      ],
+      "templates": [
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.1.j26",
+          "shortName": "28142",
+          "sha256": "2404f5a0585ee58465b9b54a9ca6f3be85d1e9e65c60f649bd9e1d44ef47447f",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.10.j26",
+          "shortName": "28188",
+          "sha256": "e6283508c817b902bf3090d33e878e7cff83019e0f22598b7bfad82d982755a2",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.11.j26",
+          "shortName": "28158",
+          "sha256": "19b64f1ac78102c6b87c4e442ced8adf236e568a8a8f1ae459b50d732f32825e",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.12.j26",
+          "shortName": "28140",
+          "sha256": "182b5b620844a57ebd4992f3f8d9fd3c61ac42160b9a8bd1e8a9d7ce88cc3161",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.13.j26",
+          "shortName": "28154",
+          "sha256": "94ceec4dbfa5dd874fea010d1cf77c1de142cdb6ad2152ee26a48e3359fb5a91",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.14.j26",
+          "shortName": "28164",
+          "sha256": "0d75163ce77a597841defab083993794518e4a4834926b549827f5879f243359",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.15.j26",
+          "shortName": "28166",
+          "sha256": "045c41e8de66d5d67875c07af6628eb01eb7d96d043254cb49ec5f4ea4f58a59",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.16.j26",
+          "shortName": "28168",
+          "sha256": "4723886506648db27c718ac13af374a0f18d39a27f9a6e857ea36d49776224fd",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.17.j26",
+          "shortName": "28138",
+          "sha256": "724c0393f50bce578e0901ccbad381909e5adebab65c4343d0f1163b3c910df4",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.18.j26",
+          "shortName": "28170",
+          "sha256": "8585db1e6bb8574803061e286318155c9dff863939483c4cccb51f13b0baa997",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.19.j26",
+          "shortName": "28174",
+          "sha256": "d5076afa8bb68bfcd7f664c1d4cf33f9e7afe65189ac16088871befcc3e2712f",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.2.j26",
+          "shortName": "28144",
+          "sha256": "751f85175785ef09e29480bed3cc1885833d0ebf4e2f1ec84c18ef20f2e95f5e",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.20.j26",
+          "shortName": "28176",
+          "sha256": "3cd1f541488a383f42f63d22f4c858aa1447f5f8857bf5c6a221e7943435b082",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.21.j26",
+          "shortName": "28178",
+          "sha256": "05d1a82409ff6a6d7d434268404c8e263bb703881e6714f811e196d663b5a23c",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.22.j26",
+          "shortName": "28180",
+          "sha256": "dad9b12e69e18e7d204e1a8a02c98fd527bbc177006d2d292fe4f40e3b9b8fdd",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.23.j26",
+          "shortName": "28184",
+          "sha256": "89b832a78eb8771876fabd6806f4b3053f88664ba7ab96a74f2705dad63a622b",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.24.j26",
+          "shortName": "28152",
+          "sha256": "c31935fed9c14e2a3b7e7d7315fa4981d6f40fe46eadaf4535258db71fb569ee",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.25.j26",
+          "shortName": "28216",
+          "sha256": "6a0a8d7e51cfec531ea2cdc0c90403e8c29f49ef20c17623aef0d771eddf97ca",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.26.j26",
+          "shortName": "28134",
+          "sha256": "b090e51dd3d6ea306edec1b1e2494b4dccb4a1c3c13da47522dc05813ed8b3f1",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.27.j26",
+          "shortName": "28162",
+          "sha256": "d9bac6cb9914f5c2b25039427f5ead976217da6f7fde58ffe217f916639920b8",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.28.j26",
+          "shortName": "28214",
+          "sha256": "9aa998060c278f5626dd30eb62d2b4c4918df3294be762c19023258ac79f9999",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.29.j26",
+          "shortName": "28172",
+          "sha256": "16390ac1710081df7f9980da0db9e84dce473f77f8678bbb4ce5210e8a272459",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.3.j26",
+          "shortName": "28146",
+          "sha256": "5f1dccff25f7d5fc886e0b5d1de33bfc6f6638ad5241a5cb92d35df88d4fab4f",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.30.j26",
+          "shortName": "28210",
+          "sha256": "2170ba1fd50153e6fe8b9d20eda0c7bc2a31b814ca6e4e8484889a3253ed034b",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.31.j26",
+          "shortName": "28132",
+          "sha256": "efb1e790983f87cb3edc83448471ab60cc434ca07394c6646ef4bb80e87eca84",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.32.j26",
+          "shortName": "28120",
+          "sha256": "61060a6c85f8a3e7dd3a3a0020620bfb11920989f83e9ff68e4c48daf5821de7",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.33.j26",
+          "shortName": "28106",
+          "sha256": "1f38929f64d8d931d74ea5e161916a1214e524034a9d13aa828b631bdbdbbc08",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.34.j26",
+          "shortName": "28108",
+          "sha256": "18c88966ce5d137104d77f614190153b37d9f08c80aed4f93ad623a67b6cec7e",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.35.j26",
+          "shortName": "28118",
+          "sha256": "b250247118494789662783dc0b068e6c514fa3a97bc6ec1f3ed198db187baf7b",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.36.j26",
+          "shortName": "28110",
+          "sha256": "2bf94feddfab50d6002977add18e44f72c13dc8fbd8f060f1d7ec98181960cb8",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.37.j26",
+          "shortName": "28128",
+          "sha256": "be13e6fe6abf60dea9177d5619db35e18a9a5bc49bcf83faba54a2007b61cd99",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.38.j26",
+          "shortName": "28126",
+          "sha256": "8173a5ffd4ecaff78f9d12ff1ecda626db39097abc469d25ddfb19ebca7b8616",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.39.j26",
+          "shortName": "28124",
+          "sha256": "d347adc51484f4b6b26f0e4056b4a32bd5b4754fd55fbe9b4a218caa1508a4ed",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.4.j26",
+          "shortName": "28160",
+          "sha256": "961ef56e72890bd0f08a65ecaaf4a40a9c73a9f9ae72eef429aae7ae2a3c8736",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.40.j26",
+          "shortName": "28114",
+          "sha256": "2a23a9e8ba96c768a7c4cf0d4bd85495c94410ab9df8bd47dac12196f9136f3e",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.41.j26",
+          "shortName": "28116",
+          "sha256": "ca28bd0f2be82cb81d6e86ab124cbb79baeaa36ca91193eeb6db2056e7e2216c",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.42.j26",
+          "shortName": "28130",
+          "sha256": "abf2da2f9904be0b995db845a5346b733bcf714c3c1e6ffb94f2c1f48035d1f9",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.43.j26",
+          "shortName": "28212",
+          "sha256": "f71dd4f032d43bc3898dcc146cc6b69c3e7e45c9ecd748eb1e9042be565e3998",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.44.j26",
+          "shortName": "28122",
+          "sha256": "033e0f72aff1876c5f7a1351bb9e7a043c66dff86565ad5a2f8aac84b485c852",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.45.j26",
+          "shortName": "28112",
+          "sha256": "715d181e819d5c9c9dd97abaf6ca8094317bb9c043a494282a2b930b8b0827b0",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.46.j26",
+          "shortName": "28190",
+          "sha256": "435fd17bfd758a1caf65e914b8c2b0b764b5319c214ee96190f41d5e5b5b0afa",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.47.j26",
+          "shortName": "28192",
+          "sha256": "021fc9c34515295cc9dc43bcfcef67721f2c3b372f59dc4f7bbe576f7e18ce89",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.48.j26",
+          "shortName": "28136",
+          "sha256": "5b020cf7b21ecf61fcb7ccfd13c8028bdd079093ac8d0bbecf5d02379300776d",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.49.j26",
+          "shortName": "28194",
+          "sha256": "4b3d652adb4bab95152ec5a57843afaed3e3a8fac2c99ce7d1edfef89ba88f1f",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.5.j26",
+          "shortName": "28148",
+          "sha256": "17ddd5c4e821571423a6aeb8c1a0ae59d90ae59a5e08b375a094ccfa4fcf0172",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.50.j26",
+          "shortName": "28196",
+          "sha256": "828557f941b1cdc681a4a14f93dd69b0e8462396a16e35ae23a488f1522f860c",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.51.j26",
+          "shortName": "28198",
+          "sha256": "98cd247ebd733174d1bc47eb7cdd1c0f596ee933006ef3ee376b9c4aee9f01f0",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.52.j26",
+          "shortName": "28200",
+          "sha256": "39a4a605bf287b868ce38df320a3e367f7da66cc002e4c958bfe8e5f26200517",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.53.j26",
+          "shortName": "28202",
+          "sha256": "0a939ab206df0a15e979ce40f65d45577fd30a90aaf2b984f6a4886d88bc129e",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.54.j26",
+          "shortName": "28204",
+          "sha256": "6a1dffad524e8b720121333042d700678695be819e72f1729dd42b00aeacfbd8",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.55.j26",
+          "shortName": "28206",
+          "sha256": "9ba1765c42f4847af4b60b810996de42d992c247696e318cba88bd831ddd04a1",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.56.j26",
+          "shortName": "28208",
+          "sha256": "f07dcc2013382d0f0970ce37164fa00aa5d52bda5cf52ac9f4f21d46036ce5b4",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.57.j26",
+          "shortName": "28104",
+          "sha256": "ab9f5dfc11cb8dd7da0fd65bb87b076de8f2a97f56b92a55af39bfecd22db2c3",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.58.j26",
+          "shortName": "28218",
+          "sha256": "36c201d6bea7726d1b3c91dade02abe48bf38e2cce794aeb1e1ca594564c0808",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.6.j26",
+          "shortName": "28156",
+          "sha256": "9a16e883fb87fe578cc3a11ee2ede55096c70a6852dbc9ce05502603babf9509",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.7.j26",
+          "shortName": "28150",
+          "sha256": "6254b718b5f1246c6b0080a93411fa34a6d0c3bfa8679ea30693f64ba9b569ef",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.8.j26",
+          "shortName": "28182",
+          "sha256": "2ef9e0850e74b829a8a9cc8c1f6abe62b9b7fdf4e20d97e62015e6e8aead42d2",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.9.j26",
+          "shortName": "28186",
+          "sha256": "e0bf378ab8ae2308fbb2e358597acd0d315c1ae2f513f62e8761fe843e82b2e4",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        }
+      ],
+      "noticeContext": {
+        "noticeCorridor": [
+          "Rupperswil",
+          "Lenzburg",
+          "Othmarsingen"
+        ],
+        "endpoints": [
+          "Othmarsingen, Bahnhof",
+          "Lenzburg, Bahnhof"
+        ],
+        "serviceDates": [
+          "2026-05-23",
+          "2026-05-24",
+          "2026-05-25"
+        ],
+        "templates": 58,
+        "fullCalls": 116,
+        "noticeVerifies": "Dated disruption and replacement-bus corridor only. EV labels, complete platforms, exact calls and calendars are from independently verified GTFS; no printed bus timetable or street itinerary is claimed."
+      },
+      "segments": [
+        {
+          "index": 0,
+          "pathSha256": "65fb023187284038cb989ea52fa02a0abd822324521868edc431f656d7589e6b",
+          "evidence": {
+            "accepted": true,
+            "geometrySource": "osm",
+            "roadPatternId": "c6e0ba7597c9831acbe527c5",
+            "pathMetres": 5121.849362238412,
+            "endpointAdjustmentMetres": 0.0507693735949744
+          },
+          "timing": {
+            "minimumSourceSeconds": 720,
+            "maximumSourceSeconds": 720,
+            "maximumRequiredMeanKmh": 25.60924681119206,
+            "held": false,
+            "interpretation": "Conservative review screen, not a legal speed limit or certification. Original minute-granularity calls are preserved without timing adjustments."
+          },
+          "disposition": "admit-inferred-may-road",
+          "rejection": null,
+          "priorAssessment": {
+            "fromId": "ch:1:sloid:87101",
+            "toId": "ch:1:sloid:78736",
+            "pathIndex": null,
+            "reason": "missing-operator-mode-line"
+          }
+        }
+      ]
+    },
+    {
+      "id": "4efe182702335a8996d3",
+      "agencyId": "7231",
+      "routeId": "92-A01-N-j26-1",
+      "line": "EV4",
+      "directionId": "1",
+      "stops": [
+        [
+          8.17177651,
+          47.39038945,
+          "Lenzburg, Bahnhof",
+          "F",
+          "ch:1:sloid:78736:0:06"
+        ],
+        [
+          8.21516514,
+          47.40687406,
+          "Othmarsingen, Bahnhof",
+          "",
+          "ch:1:sloid:87101"
+        ]
+      ],
+      "templates": [
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.100.j26",
+          "shortName": "28135",
+          "sha256": "24ee1d7ac9631f8aae47821ee7c5cbdcc09e3359666f2cd561f41d08133f878a",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.101.j26",
+          "shortName": "28139",
+          "sha256": "baa08b855a72e0af39c69d68ffc935d26e16c68251e3f7829f181268e0a094f8",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.102.j26",
+          "shortName": "28119",
+          "sha256": "0537bfa39771691c41485ed13f83bedeab531ddd1931607664f50a0198c49981",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.103.j26",
+          "shortName": "28133",
+          "sha256": "28b16500d342253759635e9c930257c0864899b54172d867676670195db33d08",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.104.j26",
+          "shortName": "28175",
+          "sha256": "40bc702ee2906e44c8e411041db5fb217a5ffe5a012778118fd88cdbe44b8f1d",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.105.j26",
+          "shortName": "28191",
+          "sha256": "489c5ba67fd9a1335c5898c05a8cf11d21904478b809ee0652718b3d1a07c49f",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.106.j26",
+          "shortName": "28123",
+          "sha256": "d1994c9e83110c967b049c458bde2edfede704a36407efd108a97981f3a57d04",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.107.j26",
+          "shortName": "28177",
+          "sha256": "0220d104068d843860d30d9afc2eec15553051261a8a654be18bbe6d8c279f5b",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.108.j26",
+          "shortName": "28113",
+          "sha256": "16e27bcf21430f5ed7864c73b269463a0d19e7db20c281005c800d71a5a53e75",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.109.j26",
+          "shortName": "28187",
+          "sha256": "fc1d796399fa1c0b249b72a91d246b2b1f54759ebb374a82a360fa0130a62197",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.110.j26",
+          "shortName": "28181",
+          "sha256": "7eda5c13c7c3203d478e73f9783129cd22088e41c25276e50ba78650d3503c64",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.111.j26",
+          "shortName": "28111",
+          "sha256": "cea647d4adb0af63cae605d1d43a26ebfc7a48b5f354ff3a38740fcab8587b2f",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.112.j26",
+          "shortName": "28211",
+          "sha256": "59258fe2b54041e4eea34579a7337ddd26ec7a3c716854af061898238160ba2b",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.113.j26",
+          "shortName": "28213",
+          "sha256": "108b97ad3d66d9d788972ee3090cdf642b81d4473d21cd742e70e4fae9ccd1ff",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.114.j26",
+          "shortName": "28209",
+          "sha256": "af5416a6a8ebf33e544c0e8324b651566cab3dc0328c951183f1854eebb4ae90",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.115.j26",
+          "shortName": "28215",
+          "sha256": "55ab744abe1d90f7749774a94d3b26c97ac2107fb14e702a30e87cc2ebbd8442",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.116.j26",
+          "shortName": "28185",
+          "sha256": "5e67a39faa6d9cced93738a3b25fc46f10d0a04a32b7d9470a5c6a6445825109",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.117.j26",
+          "shortName": "28217",
+          "sha256": "2a87175eeaa584900ea562f03607015673b16e0596458bc86db2beac2b423fb6",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.118.j26",
+          "shortName": "28183",
+          "sha256": "fad9c4d2b5dc2c5a5e346d9acee0c98707b3faafe9ef51bc1aacfb01ac5143d1",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.119.j26",
+          "shortName": "28117",
+          "sha256": "ea4d1ce3e79fe5be3498cc4986c64ebdf0219592d01a80e08b00a93e5944e196",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.120.j26",
+          "shortName": "28179",
+          "sha256": "cf98c6263a084a2bbc324184f99c26afd1807069756d30716c46cf93ca56afdb",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.63.j26",
+          "shortName": "28153",
+          "sha256": "eb231c6fde1d2a27e9d8f4b497897ad9fc8fd046adaae501a96733819af10b39",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.64.j26",
+          "shortName": "28155",
+          "sha256": "ecfbbe39cdf6c63d75f2547945cf0840e923ae3e483b888dba5c94202e368202",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.65.j26",
+          "shortName": "28157",
+          "sha256": "d78c2043708b734c330224931243002805211a94a136839dcf2978c303383a6b",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.66.j26",
+          "shortName": "28127",
+          "sha256": "0a60daa706b238352799e1bf1ac7985b5a2c55f1f80b22323b77dd9ab5846c49",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.67.j26",
+          "shortName": "28189",
+          "sha256": "ba111a6c1c0d7b7960bde7d8173b27a6f6bf687f5532040a83acfd202826f09a",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.68.j26",
+          "shortName": "28195",
+          "sha256": "076251a63c7393bb5a4f71f24a4cf3d198a4e536de9c58f0fadc293e376cb869",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.69.j26",
+          "shortName": "28173",
+          "sha256": "cd6bfe8e518ffe76f5668f83e19c9e5af4cf8b81584cf41e33447f557743808b",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.70.j26",
+          "shortName": "28193",
+          "sha256": "84791c58953266d6ac6c2565f137e797731e72b411b8222da7c55b4063a87c4e",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.71.j26",
+          "shortName": "28129",
+          "sha256": "e05ef6105986916913482d6cd16ceac7dc32bd17baf21e3bcaeec3c042bec732",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.72.j26",
+          "shortName": "28197",
+          "sha256": "cb4998a44de89f2c1820eecc717d0f234c2e2bfd42ea797a4343b32ee0369716",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.73.j26",
+          "shortName": "28199",
+          "sha256": "6ecbcf1464970be0c3348b56e47fdc1cbe8b02789c8bc5bf1d362acf559539dd",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.74.j26",
+          "shortName": "28171",
+          "sha256": "4fd61077e04d118dcd98bde4ad2671152d08026d9f6fce7f064a23b83413ea12",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.75.j26",
+          "shortName": "28151",
+          "sha256": "eec1894a73da90ee4239d6b331aa03b2d3d6ac464739e9532e0b04485a8bfaf5",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.76.j26",
+          "shortName": "28147",
+          "sha256": "3985aa550717d2d87cb3d959e1017cdd19f7348cb69ef8c4bb42208ac476c240",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.77.j26",
+          "shortName": "28169",
+          "sha256": "13806678ed25b63e436e0ae7ad00b58e36b24c50a1bae149a275736258dd7546",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.78.j26",
+          "shortName": "28201",
+          "sha256": "67fe843d6026bb7361e9fb8f3f12a2beb5c21b9e1ccaaad9494fee2e1a3b36fe",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.79.j26",
+          "shortName": "28103",
+          "sha256": "bb54706d9c2c627c38acad563c16c9fd38b6d283bfd5ac7b9c5c3a7581b2a933",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.80.j26",
+          "shortName": "28125",
+          "sha256": "e67d7f2743c2138869abd8e49652c45ad0a1772702b289a5e00b5c7252db5099",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.81.j26",
+          "shortName": "28109",
+          "sha256": "b51dc595d0007fec1f504948ba03528fde41a94705ae6ab185b15f1163109638",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.82.j26",
+          "shortName": "28145",
+          "sha256": "ef6631ce289645599f44774272a3113d6d50e47890aac64f619d81f92b638486",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.83.j26",
+          "shortName": "28159",
+          "sha256": "cede64d08009cf76898b53f63cbdc19c6c8e01beb7ef8f1d064fef6a4141f541",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.84.j26",
+          "shortName": "28115",
+          "sha256": "8bbb0c75cf6588ed0e0e6b83c7cd9860893d11402f78e8c2e3e0397a70a85cff",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.85.j26",
+          "shortName": "28161",
+          "sha256": "90da2581ca1c1c825ffefcf8b40afa228407bc526542a39f13a3553c99f7e6b7",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.86.j26",
+          "shortName": "28163",
+          "sha256": "75487033fc8f7dcb28c964323b2c0eb3ad01925745b28c61d0bf93ae74f7438e",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.87.j26",
+          "shortName": "28167",
+          "sha256": "c17914a18f566d2933abe2522b8e4cba1d3ef23da012dffa326291fac6ad3e30",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.88.j26",
+          "shortName": "28165",
+          "sha256": "e32267665bd86ab3c41eff30df306e109dfdb81ebd2496ca074b10299700e60e",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.89.j26",
+          "shortName": "28149",
+          "sha256": "d9cd13c9c3865ad88926846860fc1debb4e7b4c915226f47032dcc369991a0a8",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.90.j26",
+          "shortName": "28203",
+          "sha256": "7aa670437950cb0eb09beb3cd9e50c64e5f517ef8aa5b445960eb67cb0613046",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.91.j26",
+          "shortName": "28107",
+          "sha256": "895745c93e511f8bc1d1683709fcfacbd019ec6aafec67cd7d87598a5bfa8c60",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.92.j26",
+          "shortName": "28207",
+          "sha256": "ec0dfd22e3a48cf660550ae6d1be52becc76108f701a82facac503374261de7b",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.93.j26",
+          "shortName": "28205",
+          "sha256": "6c73ac58dfffcb5c18d0b911316d733242cd42636c43b3dbb64822f392decfd2",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.94.j26",
+          "shortName": "28143",
+          "sha256": "ffe901511d978baf318204e87bca93adb00bfbd55355e8bc874d16ab0e1ae6f4",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.95.j26",
+          "shortName": "28141",
+          "sha256": "7e7fa9a8f997b768c95f7c93de9e1ecd7bc3d10284ccf1ec10c273bcf9f7b9de",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.96.j26",
+          "shortName": "28137",
+          "sha256": "94ff9470917b66d36b28eafd3e06ad5892d9b1959d82ab00d1c95dd8bb23e469",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.97.j26",
+          "shortName": "28121",
+          "sha256": "57b9ad218d68f6f1ac2711d8e44ca38113ef3ed138bc46de23a3835bfeb052fd",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.98.j26",
+          "shortName": "28105",
+          "sha256": "0d18c55e30377391048d1b864da965e2b5e6b58e819357241fa11ca889a59e2b",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A01-N.1.TA.99.j26",
+          "shortName": "28131",
+          "sha256": "5e8d22e6e041c2c363a951cd48332df39499040972736d9da8c2c2d741a4e041",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        }
+      ],
+      "noticeContext": {
+        "noticeCorridor": [
+          "Rupperswil",
+          "Lenzburg",
+          "Othmarsingen"
+        ],
+        "endpoints": [
+          "Lenzburg, Bahnhof",
+          "Othmarsingen, Bahnhof"
+        ],
+        "serviceDates": [
+          "2026-05-23",
+          "2026-05-24",
+          "2026-05-25"
+        ],
+        "templates": 58,
+        "fullCalls": 116,
+        "noticeVerifies": "Dated disruption and replacement-bus corridor only. EV labels, complete platforms, exact calls and calendars are from independently verified GTFS; no printed bus timetable or street itinerary is claimed."
+      },
+      "segments": [
+        {
+          "index": 0,
+          "pathSha256": null,
+          "evidence": {
+            "roadFailure": "stop-too-far",
+            "roadPatternId": "3e03d9e4f47b32773e04db83"
+          },
+          "timing": null,
+          "disposition": "hold-road-geometry",
+          "rejection": {
+            "pattern": "3e03d9e4f47b32773e04db83",
+            "routeId": "92-A01-N-j26-1",
+            "route": "EV4",
+            "segment": 0,
+            "from": "Lenzburg, Bahnhof",
+            "to": "Othmarsingen, Bahnhof",
+            "fromId": "ch:1:sloid:78736:0:06",
+            "toId": "ch:1:sloid:87101",
+            "trips": 58,
+            "reason": "stop-too-far",
+            "snap": 132.2367587402675
+          },
+          "priorAssessment": {
+            "fromId": "ch:1:sloid:78736:0:06",
+            "toId": "ch:1:sloid:87101",
+            "pathIndex": null,
+            "reason": "missing-operator-mode-line"
+          }
+        }
+      ]
+    },
+    {
+      "id": "8edbb01adacf1a049993",
+      "agencyId": "7231",
+      "routeId": "92-EV5-V-j26-1",
+      "line": "EV5",
+      "directionId": "0",
+      "stops": [
+        [
+          8.20215753,
+          47.2676176,
+          "Beinwil am See, Bahnhof",
+          "",
+          "ch:1:sloid:80822"
+        ],
+        [
+          8.19921106,
+          47.28799783,
+          "Birrwil, Bahnhof",
+          "",
+          "ch:1:sloid:11158"
+        ],
+        [
+          8.18455055,
+          47.31516739,
+          "Boniswil, Bahnhof",
+          "",
+          "ch:1:sloid:78712"
+        ],
+        [
+          8.17674419,
+          47.32805891,
+          "Hallwil, Seetalstrasse/Bahnhof",
+          "",
+          "ch:1:sloid:11159"
+        ],
+        [
+          8.15895755,
+          47.34657772,
+          "Seon, Post/Bahnhof",
+          "",
+          "ch:1:sloid:78703"
+        ],
+        [
+          8.16026909,
+          47.35291354,
+          "Seon Nord, Bahnhof",
+          "B",
+          "ch:1:sloid:2675:0:02"
+        ],
+        [
+          8.17123752,
+          47.39082732,
+          "Lenzburg, Bahnhof",
+          "",
+          "ch:1:sloid:78736"
+        ]
+      ],
+      "templates": [
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.1.j26",
+          "shortName": "22946",
+          "sha256": "fb1584bf2e5f319a71ede011baf9c83a58232785770aa62f961464bd56b185f0",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.10.j26",
+          "shortName": "22970",
+          "sha256": "0ddc1b8129d101ff1a9354526d4d65ecde2ab8fa3c7e9e3f201ef181dd6d83cc",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.11.j26",
+          "shortName": "22980",
+          "sha256": "d3322ae3edcb4bbf53753d201b796a5b02a7bcfeba689f2fd89f685a266a5223",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.12.j26",
+          "shortName": "22968",
+          "sha256": "7617bf160691dc649c09098083b8a3fc559a60ce358f7f8536de13e8086348a5",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.13.j26",
+          "shortName": "22950",
+          "sha256": "b62c3c66118f5065dbc612e57105a79b8120726c3d2be265817728b4652679f4",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.14.j26",
+          "shortName": "22928",
+          "sha256": "86f204abec35af453eb4ee14ebe5025eee7a66230f0a14ed8f265a5a46d289a5",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.15.j26",
+          "shortName": "22948",
+          "sha256": "d9ae27619172d9816366553fdbba95ca15a3ba3b2a15ecf1751fc00b156c657c",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.16.j26",
+          "shortName": "22934",
+          "sha256": "dba538da53655403365ce9b6815ee280db53315e25e3fb7ebbc91747d010a2f2",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.17.j26",
+          "shortName": "22952",
+          "sha256": "237bbb9893b6c9f55b3e5c2f4d299809f7503470b8b48b4ef009e9c1996e2585",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.18.j26",
+          "shortName": "22988",
+          "sha256": "c80944e1bfb049d6e1613b5f787f8dcaac5c106c32980a5f3e63ded7dc88d3cb",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.19.j26",
+          "shortName": "22930",
+          "sha256": "91d1d365888636dec41ee32867ec0f9ea36f33045eb40cce0cfa0dc30df2e4c2",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.2.j26",
+          "shortName": "22958",
+          "sha256": "3bd5bd9b5621c90054b111c6391fd73130a708cc084cc5584f7c297e7683a051",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.20.j26",
+          "shortName": "22956",
+          "sha256": "6bb563b1a3c09d167bd8a1c0b61f6dc61a76f515a4afea5a92e45d11c7adab15",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.21.j26",
+          "shortName": "22938",
+          "sha256": "0828643e08c2b77bce719eb855dc8c759c165e9b90d35d198a9e882d3ece323f",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.22.j26",
+          "shortName": "22932",
+          "sha256": "00b64aebe1e04101caeab0d7006cd0425a2c4fe2b9fc8197ff4cab518145dbee",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.23.j26",
+          "shortName": "22942",
+          "sha256": "29e1ab8f4655180b77957a563745dab2398a13a875f0d06ea937a1c2793d959c",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.24.j26",
+          "shortName": "22940",
+          "sha256": "ec51e443d8fb464f141297a7256c3e99af0c1ffa5d15be5ed077ec0b2660b556",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.25.j26",
+          "shortName": "22954",
+          "sha256": "f8d71c7cccfb5cd747fc7d100cbe7f398bcc28e3fbec52f58e5a8798a0d03168",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.26.j26",
+          "shortName": "22962",
+          "sha256": "ceebe7a9fb59fd3603dbabff239088cffb48c36a52026d76afcbe329046e1802",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.27.j26",
+          "shortName": "22914",
+          "sha256": "1120a697463ed4339f8f0461542b510d6531397658e0d501ff0759e6bf04d7e9",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.28.j26",
+          "shortName": "22944",
+          "sha256": "64740af09a183c95806fb5e79f87e7fc66693641844c56ebb51affbab37ba403",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.29.j26",
+          "shortName": "22920",
+          "sha256": "7ea23bc211aa797ff597b7c5e3d540fb66537b0c044e337d96bcfd9f31ff91da",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.3.j26",
+          "shortName": "22966",
+          "sha256": "1328f8deebc59936060a439cbc0fa4f9bee153efaa7fc01cc66da36d69d30ad3",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.30.j26",
+          "shortName": "22922",
+          "sha256": "4803e6c1467775d789b0291a91c2f9098835b65a51ff0a1d6f18541877bf607a",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.31.j26",
+          "shortName": "22924",
+          "sha256": "b1b12e800cfa45a6f81660ba7179b55c3e67960cb716002bc09d28a2f22a6302",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.32.j26",
+          "shortName": "22964",
+          "sha256": "21964715c6432118a835fc791797a15fb093cf3287cf9a089ac68f41953637f4",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.33.j26",
+          "shortName": "22984",
+          "sha256": "06a31e64172701ece94355b0696f53f630a9137c42d114da778c9dfcf1b5df7c",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.34.j26",
+          "shortName": "22926",
+          "sha256": "ad0bb45fcd58c0e65345b31bc804ecc8edf990dccb5754e863f35f74ac4f1bff",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.35.j26",
+          "shortName": "22986",
+          "sha256": "7e1acf8c251f15a821d3e7982c480476f6ccdbeecae35e8f307163e0ea06e62e",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.36.j26",
+          "shortName": "22960",
+          "sha256": "1010565b62da2efa9c554bedecff47fabcc36094e5fcdcf14b29e14a055fa22c",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.4.j26",
+          "shortName": "22982",
+          "sha256": "e64243e5031f7a5c48404b96978ba77741e2f22b32d1bfe92b46f567ef03a3ae",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.5.j26",
+          "shortName": "22936",
+          "sha256": "5090ae7d2fecc7a2be2187cb4b985b03dcb28a7bf1f0c8b276a9a20bdd3a1ef8",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.6.j26",
+          "shortName": "22974",
+          "sha256": "0e94329360a2ca4475a90c02be91745be86a4e9c532dfa7a9aa65f4edf80770f",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.7.j26",
+          "shortName": "22976",
+          "sha256": "3f898daadc5551d27e9261d058145e4df557f7dd4457e5438c5258887525e56d",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.8.j26",
+          "shortName": "22978",
+          "sha256": "18212f081e27510e96c16ba8d77eb5f1ff92c325b0c870b305ce524720adbe4c",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.9.j26",
+          "shortName": "22972",
+          "sha256": "bd595b3d4193bbdf6d8d4875f1cc11aa9db72277934cbe348ff9979bfaf6b7a9",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        }
+      ],
+      "noticeContext": {
+        "noticeCorridor": [
+          "Beinwil am See",
+          "Lenzburg"
+        ],
+        "endpoints": [
+          "Beinwil am See, Bahnhof",
+          "Lenzburg, Bahnhof"
+        ],
+        "serviceDates": [
+          "2026-05-23",
+          "2026-05-24",
+          "2026-05-25"
+        ],
+        "templates": 36,
+        "fullCalls": 252,
+        "noticeVerifies": "Dated disruption and replacement-bus corridor only. EV labels, complete platforms, exact calls and calendars are from independently verified GTFS; no printed bus timetable or street itinerary is claimed."
+      },
+      "segments": [
+        {
+          "index": 0,
+          "pathSha256": "e4aef1ecc2cb0cc0c86665906def1c08368b7fea02db93d468feaddb34beaed6",
+          "evidence": {
+            "accepted": true,
+            "geometrySource": "osm",
+            "roadPatternId": "283d1c139ef618fafddfb13d",
+            "pathMetres": 2610.029214352441,
+            "endpointAdjustmentMetres": 0.056949344762883894
+          },
+          "timing": {
+            "minimumSourceSeconds": 240,
+            "maximumSourceSeconds": 240,
+            "maximumRequiredMeanKmh": 39.15043821528662,
+            "held": false,
+            "interpretation": "Conservative review screen, not a legal speed limit or certification. Original minute-granularity calls are preserved without timing adjustments."
+          },
+          "disposition": "admit-inferred-may-road",
+          "rejection": null,
+          "priorAssessment": {
+            "fromId": "ch:1:sloid:80822",
+            "toId": "ch:1:sloid:11158",
+            "pathIndex": null,
+            "reason": "missing-operator-mode-line"
+          }
+        },
+        {
+          "index": 1,
+          "pathSha256": "eb790650874abf473c4690c587dddd8b1f7d2f4d7b9a6367fa865a953c2123be",
+          "evidence": {
+            "accepted": true,
+            "geometrySource": "osm",
+            "roadPatternId": "283d1c139ef618fafddfb13d",
+            "pathMetres": 3611.923475355499,
+            "endpointAdjustmentMetres": 0.055120424254295364
+          },
+          "timing": {
+            "minimumSourceSeconds": 300,
+            "maximumSourceSeconds": 300,
+            "maximumRequiredMeanKmh": 43.343081704265984,
+            "held": false,
+            "interpretation": "Conservative review screen, not a legal speed limit or certification. Original minute-granularity calls are preserved without timing adjustments."
+          },
+          "disposition": "admit-inferred-may-road",
+          "rejection": null,
+          "priorAssessment": {
+            "fromId": "ch:1:sloid:11158",
+            "toId": "ch:1:sloid:78712",
+            "pathIndex": null,
+            "reason": "missing-operator-mode-line"
+          }
+        },
+        {
+          "index": 2,
+          "pathSha256": "b2dcab8301924c486418c5e111ec79fd179e48a3690ad1a4c3831bd4232d8ea6",
+          "evidence": {
+            "accepted": true,
+            "geometrySource": "osm",
+            "roadPatternId": "283d1c139ef618fafddfb13d",
+            "pathMetres": 1656.8970730854253,
+            "endpointAdjustmentMetres": 0.055120424254295364
+          },
+          "timing": {
+            "minimumSourceSeconds": 240,
+            "maximumSourceSeconds": 240,
+            "maximumRequiredMeanKmh": 24.85345609628138,
+            "held": false,
+            "interpretation": "Conservative review screen, not a legal speed limit or certification. Original minute-granularity calls are preserved without timing adjustments."
+          },
+          "disposition": "admit-inferred-may-road",
+          "rejection": null,
+          "priorAssessment": {
+            "fromId": "ch:1:sloid:78712",
+            "toId": "ch:1:sloid:11159",
+            "pathIndex": null,
+            "reason": "missing-operator-mode-line"
+          }
+        },
+        {
+          "index": 3,
+          "pathSha256": "bb353fe4bd57b6c8f6bb26f60631cf7751bfcc460d3386a1db404e1e55b19e01",
+          "evidence": {
+            "accepted": true,
+            "geometrySource": "osm",
+            "roadPatternId": "283d1c139ef618fafddfb13d",
+            "pathMetres": 2502.3538273018466,
+            "endpointAdjustmentMetres": 0.046082417076338665
+          },
+          "timing": {
+            "minimumSourceSeconds": 240,
+            "maximumSourceSeconds": 240,
+            "maximumRequiredMeanKmh": 37.535307409527704,
+            "held": false,
+            "interpretation": "Conservative review screen, not a legal speed limit or certification. Original minute-granularity calls are preserved without timing adjustments."
+          },
+          "disposition": "admit-inferred-may-road",
+          "rejection": null,
+          "priorAssessment": {
+            "fromId": "ch:1:sloid:11159",
+            "toId": "ch:1:sloid:78703",
+            "pathIndex": null,
+            "reason": "missing-operator-mode-line"
+          }
+        },
+        {
+          "index": 4,
+          "pathSha256": "717660c90ac21c233bf3fa92e576d11069400b7c6342552b1c86ea0f5b00accc",
+          "evidence": {
+            "accepted": true,
+            "geometrySource": "osm",
+            "roadPatternId": "283d1c139ef618fafddfb13d",
+            "pathMetres": 717.1098207402197,
+            "endpointAdjustmentMetres": 0.05165508711629978
+          },
+          "timing": {
+            "minimumSourceSeconds": 60,
+            "maximumSourceSeconds": 60,
+            "maximumRequiredMeanKmh": 43.02658924441318,
+            "held": false,
+            "interpretation": "Conservative review screen, not a legal speed limit or certification. Original minute-granularity calls are preserved without timing adjustments."
+          },
+          "disposition": "admit-inferred-may-road",
+          "rejection": null,
+          "priorAssessment": {
+            "fromId": "ch:1:sloid:78703",
+            "toId": "ch:1:sloid:2675:0:02",
+            "pathIndex": null,
+            "reason": "missing-operator-mode-line"
+          }
+        },
+        {
+          "index": 5,
+          "pathSha256": "fdd188056c7025ad00c064aa980706b9c81a0dc915e42f6118520a775e235378",
+          "evidence": {
+            "accepted": true,
+            "geometrySource": "osm",
+            "roadPatternId": "283d1c139ef618fafddfb13d",
+            "pathMetres": 4743.887363047261,
+            "endpointAdjustmentMetres": 0.05165508711629978
+          },
+          "timing": {
+            "minimumSourceSeconds": 360,
+            "maximumSourceSeconds": 360,
+            "maximumRequiredMeanKmh": 47.43887363047261,
+            "held": false,
+            "interpretation": "Conservative review screen, not a legal speed limit or certification. Original minute-granularity calls are preserved without timing adjustments."
+          },
+          "disposition": "admit-inferred-may-road",
+          "rejection": null,
+          "priorAssessment": {
+            "fromId": "ch:1:sloid:2675:0:02",
+            "toId": "ch:1:sloid:78736",
+            "pathIndex": null,
+            "reason": "missing-operator-mode-line"
+          }
+        }
+      ]
+    },
+    {
+      "id": "49eb8fad14c0128da285",
+      "agencyId": "7231",
+      "routeId": "92-EV5-V-j26-1",
+      "line": "EV5",
+      "directionId": "1",
+      "stops": [
+        [
+          8.17177651,
+          47.39038945,
+          "Lenzburg, Bahnhof",
+          "F",
+          "ch:1:sloid:78736:0:06"
+        ],
+        [
+          8.15895755,
+          47.34657772,
+          "Seon, Post/Bahnhof",
+          "",
+          "ch:1:sloid:78703"
+        ],
+        [
+          8.17674419,
+          47.32805891,
+          "Hallwil, Seetalstrasse/Bahnhof",
+          "",
+          "ch:1:sloid:11159"
+        ],
+        [
+          8.18455055,
+          47.31516739,
+          "Boniswil, Bahnhof",
+          "",
+          "ch:1:sloid:78712"
+        ],
+        [
+          8.19921106,
+          47.28799783,
+          "Birrwil, Bahnhof",
+          "",
+          "ch:1:sloid:11158"
+        ],
+        [
+          8.20215753,
+          47.2676176,
+          "Beinwil am See, Bahnhof",
+          "",
+          "ch:1:sloid:80822"
+        ]
+      ],
+      "templates": [
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.37.j26",
+          "shortName": "22987",
+          "sha256": "5b66942fd76decf08e2eaaf22df1877521e6f8fd16b360eefe2caf6dc8c9d901",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.38.j26",
+          "shortName": "22991",
+          "sha256": "25afa20f2a22964555939f9c0486c48589be20bc2d452f826b20a8332091e42a",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.39.j26",
+          "shortName": "22989",
+          "sha256": "3a89a183186e65739f816965fc87a955d278c7b65be8c859a45f8653c578c7e6",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.40.j26",
+          "shortName": "22945",
+          "sha256": "bba713755eb1bd9343e23c8fa8b393310e1d377934d6b1ea1153bbf5747f1f6f",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.41.j26",
+          "shortName": "22979",
+          "sha256": "6c2be0ac191e6c3d95eeccfdc011edbb2bdec7465c48390c0b8fa243b1a32840",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.42.j26",
+          "shortName": "22937",
+          "sha256": "e0cd0edaab580ea68f5e10c273590806d185dd4a061e5684095b2f1aa2c7f63e",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.43.j26",
+          "shortName": "22943",
+          "sha256": "69cdc6f42f6a4a4f06b2268299594055fc3a944b3573374adbf836194c7fd65b",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.44.j26",
+          "shortName": "22983",
+          "sha256": "439ad13f249f5216b58b633e61c4971e2b51f9085ccbed7bf4e4320d484fb552",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.45.j26",
+          "shortName": "22997",
+          "sha256": "271b4e7e2481858f075f94d37dae3c94b7863cb3d43b58c9501c242ce39f25e1",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.46.j26",
+          "shortName": "22963",
+          "sha256": "de6ba7857caa00e64961070ea38f01ba794c1cbc87c46e263d9cdca309df67ff",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.47.j26",
+          "shortName": "22981",
+          "sha256": "9559777f7d9b80d4185ce97c3e9aa6aa505ec937b300ff45ed45014904f3b082",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.48.j26",
+          "shortName": "22953",
+          "sha256": "eff3ae4b0fd658cb64dc19a7cbe92c56632d04a46d7302541f8b3ec6b08aafb3",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.49.j26",
+          "shortName": "22947",
+          "sha256": "d82d3f7d69ef64b73f861138567b260d602a5b16743b605ae25d4c302551dc25",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.50.j26",
+          "shortName": "22985",
+          "sha256": "e85d0bf862679d18312194f1026bb1b936c8f59d032eeb5ddc93fcd598d695eb",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.51.j26",
+          "shortName": "22949",
+          "sha256": "0834b495599801ff7283eb93cf6d08ac8527465bd040d6fcbea462fe0f8e92ec",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.52.j26",
+          "shortName": "22955",
+          "sha256": "faca5f4b85d0a8967b002e2cc2f7140d0c59cc921f8025f45ca61e36f38e266c",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.53.j26",
+          "shortName": "22929",
+          "sha256": "fcd85d2d0b185b6b468dedffd510ff9cadc56344599898be4b71eae198e8ef60",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.54.j26",
+          "shortName": "22935",
+          "sha256": "0e7a82d644f2209dccd1e8fed818782240184ad7db48832f200935f7a6561357",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.55.j26",
+          "shortName": "22961",
+          "sha256": "270db1b4c6a7c4d2d2312fb54b27777fc678a112cb17947a4b3eb44216a8832b",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.56.j26",
+          "shortName": "22977",
+          "sha256": "62870d3fb35dd6d786c2b913767218828aa16c7777828b2c9b62da5326756060",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.57.j26",
+          "shortName": "22951",
+          "sha256": "c5dd1dd4b30416438bd043ce0163dbb102daaa7519c330353713fb8f1883225e",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.58.j26",
+          "shortName": "22975",
+          "sha256": "85d0032ec10a149aacccfcee77c6542bcc5f8828c49dccb800ae90a0d606dc24",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.59.j26",
+          "shortName": "22973",
+          "sha256": "4cf3e5f4aa8895f76a7c2aa33baa95cce3a7e54abea6573303bca379f9c0461c",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.60.j26",
+          "shortName": "22971",
+          "sha256": "486b696ba9202147bec7ad83358d5e0c221914fdfbe8aa29d13bde272312ac21",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.61.j26",
+          "shortName": "22969",
+          "sha256": "ff615b9dfe4ba69567bdad109378cab68663e061551fe4b0877ce28989ca458a",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.62.j26",
+          "shortName": "22957",
+          "sha256": "06f372b1a6d36b9833fa0903851c755d2cec74b88426933bd202983b4631914d",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.63.j26",
+          "shortName": "22939",
+          "sha256": "049f0e79d7bfe140193ffbc9b7f7b777782e6c775b25516ac03226e5a18ba853",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.64.j26",
+          "shortName": "22967",
+          "sha256": "9fb6e7b826d61532c1b9749b66112c6102e4c05c42c44320897b5297d6cc54bc",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.65.j26",
+          "shortName": "22965",
+          "sha256": "74cbdd0a086c3f5a492c65651ced1e4668e49a45a04866fe135a4ef1d53db1c5",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.66.j26",
+          "shortName": "22933",
+          "sha256": "a9ad3fdf07d36e83221969a9ab4cf8fbf114795f7ca82e052b7aa8dcd0f4bdbd",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.67.j26",
+          "shortName": "22931",
+          "sha256": "69b8a25a6a8c346d717ed3d9f84e51bfc2f91c04ba488beb8c0d46cad6c247b5",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.68.j26",
+          "shortName": "22995",
+          "sha256": "ebd8a025372be66f46d7cef6ac75f16e0e5f95f92a0dfc35620ebd61271674f4",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.69.j26",
+          "shortName": "22993",
+          "sha256": "a916e9cf93b197a53d1144ed4faa23b8175c13ba5f10bf729ae70244808bab12",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.70.j26",
+          "shortName": "22941",
+          "sha256": "a46cfee98cc5b9378b2dcb9a8ac23c44932e2346e1021d8f50026773b5586d21",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV5-V.1.TA.71.j26",
+          "shortName": "22959",
+          "sha256": "07edaf034db8b75c2ce88578404d3359f1e9fed584d634afb3bd997520c2e59f",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        }
+      ],
+      "noticeContext": {
+        "noticeCorridor": [
+          "Beinwil am See",
+          "Lenzburg"
+        ],
+        "endpoints": [
+          "Lenzburg, Bahnhof",
+          "Beinwil am See, Bahnhof"
+        ],
+        "serviceDates": [
+          "2026-05-23",
+          "2026-05-24",
+          "2026-05-25"
+        ],
+        "templates": 35,
+        "fullCalls": 210,
+        "noticeVerifies": "Dated disruption and replacement-bus corridor only. EV labels, complete platforms, exact calls and calendars are from independently verified GTFS; no printed bus timetable or street itinerary is claimed."
+      },
+      "segments": [
+        {
+          "index": 0,
+          "pathSha256": "2737ee05ff144a03556bb1be3d56fb0b8324d9d840d03989d7c87cfdf6765440",
+          "evidence": {
+            "accepted": true,
+            "geometrySource": "osm",
+            "roadPatternId": "9442f267d1d0fad4e1b9b87e",
+            "pathMetres": 5486.64459496653,
+            "endpointAdjustmentMetres": 0.06223421335891293
+          },
+          "timing": {
+            "minimumSourceSeconds": 420,
+            "maximumSourceSeconds": 420,
+            "maximumRequiredMeanKmh": 47.02838224257026,
+            "held": false,
+            "interpretation": "Conservative review screen, not a legal speed limit or certification. Original minute-granularity calls are preserved without timing adjustments."
+          },
+          "disposition": "admit-inferred-may-road",
+          "rejection": null,
+          "priorAssessment": {
+            "fromId": "ch:1:sloid:78736:0:06",
+            "toId": "ch:1:sloid:78703",
+            "pathIndex": null,
+            "reason": "missing-operator-mode-line"
+          }
+        },
+        {
+          "index": 1,
+          "pathSha256": "176084bdbc1e3c69f020a9a8ca004806d4b583263224a5ef933f5f7a458ee884",
+          "evidence": {
+            "accepted": true,
+            "geometrySource": "osm",
+            "roadPatternId": "9442f267d1d0fad4e1b9b87e",
+            "pathMetres": 2510.5142900231835,
+            "endpointAdjustmentMetres": 0.046082417076338665
+          },
+          "timing": {
+            "minimumSourceSeconds": 240,
+            "maximumSourceSeconds": 240,
+            "maximumRequiredMeanKmh": 37.65771435034775,
+            "held": false,
+            "interpretation": "Conservative review screen, not a legal speed limit or certification. Original minute-granularity calls are preserved without timing adjustments."
+          },
+          "disposition": "admit-inferred-may-road",
+          "rejection": null,
+          "priorAssessment": {
+            "fromId": "ch:1:sloid:78703",
+            "toId": "ch:1:sloid:11159",
+            "pathIndex": null,
+            "reason": "missing-operator-mode-line"
+          }
+        },
+        {
+          "index": 2,
+          "pathSha256": "a8c40005ad274f819046ce740c453ebf5007f3e5aba21ce550ffb9e6c1c56b7d",
+          "evidence": {
+            "accepted": true,
+            "geometrySource": "osm",
+            "roadPatternId": "9442f267d1d0fad4e1b9b87e",
+            "pathMetres": 1678.58691314189,
+            "endpointAdjustmentMetres": 0.055120424254295364
+          },
+          "timing": {
+            "minimumSourceSeconds": 240,
+            "maximumSourceSeconds": 240,
+            "maximumRequiredMeanKmh": 25.178803697128348,
+            "held": false,
+            "interpretation": "Conservative review screen, not a legal speed limit or certification. Original minute-granularity calls are preserved without timing adjustments."
+          },
+          "disposition": "admit-inferred-may-road",
+          "rejection": null,
+          "priorAssessment": {
+            "fromId": "ch:1:sloid:11159",
+            "toId": "ch:1:sloid:78712",
+            "pathIndex": null,
+            "reason": "missing-operator-mode-line"
+          }
+        },
+        {
+          "index": 3,
+          "pathSha256": "7091dc4b1b7d1c6cc7bd2096a12e9386435b6b5f8caf2b68442d3427cb5d7efb",
+          "evidence": {
+            "accepted": true,
+            "geometrySource": "osm",
+            "roadPatternId": "9442f267d1d0fad4e1b9b87e",
+            "pathMetres": 3543.901682844331,
+            "endpointAdjustmentMetres": 0.055120424254295364
+          },
+          "timing": {
+            "minimumSourceSeconds": 300,
+            "maximumSourceSeconds": 300,
+            "maximumRequiredMeanKmh": 42.52682019413197,
+            "held": false,
+            "interpretation": "Conservative review screen, not a legal speed limit or certification. Original minute-granularity calls are preserved without timing adjustments."
+          },
+          "disposition": "admit-inferred-may-road",
+          "rejection": null,
+          "priorAssessment": {
+            "fromId": "ch:1:sloid:78712",
+            "toId": "ch:1:sloid:11158",
+            "pathIndex": null,
+            "reason": "missing-operator-mode-line"
+          }
+        },
+        {
+          "index": 4,
+          "pathSha256": "d6a7842269cfe91c60fa5e7f682fb445c5d451fdfec09eedb9d5c65ca378d54b",
+          "evidence": {
+            "accepted": true,
+            "geometrySource": "osm",
+            "roadPatternId": "9442f267d1d0fad4e1b9b87e",
+            "pathMetres": 2596.6224336964506,
+            "endpointAdjustmentMetres": 0.056949344762883894
+          },
+          "timing": {
+            "minimumSourceSeconds": 240,
+            "maximumSourceSeconds": 240,
+            "maximumRequiredMeanKmh": 38.94933650544676,
+            "held": false,
+            "interpretation": "Conservative review screen, not a legal speed limit or certification. Original minute-granularity calls are preserved without timing adjustments."
+          },
+          "disposition": "admit-inferred-may-road",
+          "rejection": null,
+          "priorAssessment": {
+            "fromId": "ch:1:sloid:11158",
+            "toId": "ch:1:sloid:80822",
+            "pathIndex": null,
+            "reason": "missing-operator-mode-line"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bddd8d85b863dff4a6e6",
+      "agencyId": "7231",
+      "routeId": "92-EV7-R-j26-1",
+      "line": "EV7",
+      "directionId": "0",
+      "stops": [
+        [
+          8.12538751,
+          47.38812096,
+          "Hunzenschwil, Bahnhof",
+          "",
+          "ch:1:sloid:87753"
+        ],
+        [
+          8.17123752,
+          47.39082732,
+          "Lenzburg, Bahnhof",
+          "",
+          "ch:1:sloid:78736"
+        ]
+      ],
+      "templates": [
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.1.j26",
+          "shortName": "18857",
+          "sha256": "65cb79f21d6d103e7b8729d91d011b8525b5bf671329c120c99e911904a1536b",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.10.j26",
+          "shortName": "18859",
+          "sha256": "30e022eae041f59b647c92eabc64d42dc447277bae0b9bd52e4ee2ec288f55bf",
+          "activeServiceDates": [
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.11.j26",
+          "shortName": "18861",
+          "sha256": "bd8190c220de239927da5ae49a252e2b98d6b126ed877c0f0fc1858255029a81",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.12.j26",
+          "shortName": "18839",
+          "sha256": "842bb526638628276995399435ccf8695b54165601ebf1e12120e9b8f111eb73",
+          "activeServiceDates": [
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.13.j26",
+          "shortName": "18855",
+          "sha256": "c0f259fffce3f830c0fb5bb90bcbce5fe899ac1fa0ea98fd4696f87d260713f9",
+          "activeServiceDates": [
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.14.j26",
+          "shortName": "18853",
+          "sha256": "779baecc089c1e959b70be296423e4650455553fdbc67a43c9f6b54c17b36303",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.15.j26",
+          "shortName": "18885",
+          "sha256": "894fe3640cae71b8c76c3ead4154c3d6bf75e5e2fc9827a56fbb04bc7365c646",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.16.j26",
+          "shortName": "18827",
+          "sha256": "9419ad35852c8e2590bcad105b8d62e7598105baa9a074f877f707fc02033f49",
+          "activeServiceDates": [
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.17.j26",
+          "shortName": "18833",
+          "sha256": "f766050890db09bcf463003388d4902d854d89a94776321ee8189a5cb7cab96b",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.18.j26",
+          "shortName": "18877",
+          "sha256": "ff24d33816061f1e34798e36252cd06c7aa493dfd151f1e59f79530bc8402843",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.19.j26",
+          "shortName": "18891",
+          "sha256": "d7adf6cf366a73661f5b082877c51ba47c698b0932a5b19c3e07604cd5485f6f",
+          "activeServiceDates": [
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.2.j26",
+          "shortName": "18887",
+          "sha256": "4b66612a44b87702137cd4b07e53918db2d70cd4c9eb90c76e0361893afc8622",
+          "activeServiceDates": [
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.20.j26",
+          "shortName": "18865",
+          "sha256": "9f727f173e262eac3d2cb9e69ca8c01b48d07b3f5fd33314a4cc6e4ae2a2f991",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.21.j26",
+          "shortName": "18849",
+          "sha256": "f44d562381c414bf1a0c9769a79b3f4e6ddd549e699d42dd578f2fec6a5aec7d",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.22.j26",
+          "shortName": "18829",
+          "sha256": "87bfc0e8fa048403e2f28500b861a7524bf17d9e3450af79b734193c78f83aea",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.23.j26",
+          "shortName": "18867",
+          "sha256": "7fbb27742f1b6b23edf1018a3061da78305895f69b1477b3d0529cc59309c5ad",
+          "activeServiceDates": [
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.24.j26",
+          "shortName": "18835",
+          "sha256": "db2f0403bd3a38e01a9827e63c35f768c3cbdd1b5955a66b87d9b4e90f53c268",
+          "activeServiceDates": [
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.25.j26",
+          "shortName": "18821",
+          "sha256": "f1be276f3ef33a8058108f32a4810b4c8ff8fd3932c415bc2c2a28fc2722ac05",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.26.j26",
+          "shortName": "18869",
+          "sha256": "da082063700f9f40f31635c3e962a787f99d08e822caa61cdbc6cb7bb583d60e",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.27.j26",
+          "shortName": "18889",
+          "sha256": "d741dca1a42ae17f3d7791070bd29516222b8e1fc7c1ea0a0364615428fa9d6f",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.28.j26",
+          "shortName": "18871",
+          "sha256": "8fda04a001f7de3603f0789f3ac1c5f041bdd80d9d364d8d592837198877b157",
+          "activeServiceDates": [
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.29.j26",
+          "shortName": "18875",
+          "sha256": "085fd94c8f8c02129e83a2ddfade6f5c70bf9c3490629844a89eee1c8ee1e9da",
+          "activeServiceDates": [
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.3.j26",
+          "shortName": "18841",
+          "sha256": "83010c69629cf5e59dec1881b9e7a57f940d415d24b06c3d16eea294c2b8ff0e",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.30.j26",
+          "shortName": "18879",
+          "sha256": "bb49a7503f638f249c491cc7e520aa8e68741703ce5a0ffcb99b9dc7cc088d82",
+          "activeServiceDates": [
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.31.j26",
+          "shortName": "18881",
+          "sha256": "759a7864cd0fe0b45976d25b0ac41468fb98592b8beb4eb45c04c5566c61981b",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.32.j26",
+          "shortName": "18837",
+          "sha256": "2ff0859400d021c145354e9669d4b17bd47a9d3be19f215021fa148873318e65",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.33.j26",
+          "shortName": "18883",
+          "sha256": "7136f9e28ca4f6c50004dcd26362749a34aaf86d2d37c6e438bf1dedc33816ab",
+          "activeServiceDates": [
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.34.j26",
+          "shortName": "18893",
+          "sha256": "c462a78b5426f67d96b3a8a21e3e4484ce5bc8dfa9253ec1b6a6a02c54986f22",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.35.j26",
+          "shortName": "18831",
+          "sha256": "da9c52b00e7a39f4077c866de2ff99c0fbded15ac18374e1a58456715e56fd70",
+          "activeServiceDates": [
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.36.j26",
+          "shortName": "18873",
+          "sha256": "89cff179cf464263adce996d54283877ae9a1c1118bdcbba034ed04f8cbc5774",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.37.j26",
+          "shortName": "18823",
+          "sha256": "5b8e9f89146b4385808666f91cf8cc8768d9af24861a66e28b1d2a74205c2654",
+          "activeServiceDates": [
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.4.j26",
+          "shortName": "18847",
+          "sha256": "e9b57c6172895b2554bd5321bd3f6ed5d7600b119eb7577746de2d189cfd84a2",
+          "activeServiceDates": [
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.5.j26",
+          "shortName": "18843",
+          "sha256": "bfad53a750471090adee79f47ad49a92421d19784f3dd1e3beb578747ebe97fd",
+          "activeServiceDates": [
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.6.j26",
+          "shortName": "18863",
+          "sha256": "ae0afaccb78ce4a71ad25665d8e4437f49a9c0c760fd4766cfd1635617530ace",
+          "activeServiceDates": [
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.7.j26",
+          "shortName": "18825",
+          "sha256": "39a52808b877a803ac3571856cda49391461d9c63e1dacc392be34764cb260e1",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.8.j26",
+          "shortName": "18851",
+          "sha256": "89381596860593f836162a20cc61d29af976824105e0883856a9b75eb7222f9e",
+          "activeServiceDates": [
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.9.j26",
+          "shortName": "18845",
+          "sha256": "ffe135b42e4113d9dc11404b234758530f9206294eea204f748263bf943a164b",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        }
+      ],
+      "noticeContext": {
+        "noticeCorridor": [
+          "Hunzenschwil",
+          "Lenzburg"
+        ],
+        "endpoints": [
+          "Hunzenschwil, Bahnhof",
+          "Lenzburg, Bahnhof"
+        ],
+        "serviceDates": [
+          "2026-05-23",
+          "2026-05-24",
+          "2026-05-25"
+        ],
+        "templates": 37,
+        "fullCalls": 74,
+        "noticeVerifies": "Dated disruption and replacement-bus corridor only. EV labels, complete platforms, exact calls and calendars are from independently verified GTFS; no printed bus timetable or street itinerary is claimed."
+      },
+      "segments": [
+        {
+          "index": 0,
+          "pathSha256": "3aef9358bef509fca649d387c3145ae12e68e35623f6c697c34e4b323fb25375",
+          "evidence": {
+            "accepted": true,
+            "geometrySource": "osm",
+            "roadPatternId": "3d07782d1ff45a1efb77f7d7",
+            "pathMetres": 3931.8177248420375,
+            "endpointAdjustmentMetres": 0.0507693735949744
+          },
+          "timing": {
+            "minimumSourceSeconds": 540,
+            "maximumSourceSeconds": 540,
+            "maximumRequiredMeanKmh": 26.212118165613585,
+            "held": false,
+            "interpretation": "Conservative review screen, not a legal speed limit or certification. Original minute-granularity calls are preserved without timing adjustments."
+          },
+          "disposition": "admit-inferred-may-road",
+          "rejection": null,
+          "priorAssessment": {
+            "fromId": "ch:1:sloid:87753",
+            "toId": "ch:1:sloid:78736",
+            "pathIndex": null,
+            "reason": "missing-operator-mode-line"
+          }
+        }
+      ]
+    },
+    {
+      "id": "b077456baeeccb366017",
+      "agencyId": "7231",
+      "routeId": "92-EV7-R-j26-1",
+      "line": "EV7",
+      "directionId": "1",
+      "stops": [
+        [
+          8.17145312,
+          47.39060838,
+          "Lenzburg, Bahnhof",
+          "D",
+          "ch:1:sloid:78736:0:04"
+        ],
+        [
+          8.12538751,
+          47.38812096,
+          "Hunzenschwil, Bahnhof",
+          "",
+          "ch:1:sloid:87753"
+        ]
+      ],
+      "templates": [
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.38.j26",
+          "shortName": "18846",
+          "sha256": "802ad5cca7035fd5f136114c652740a1e0e088a7797b2842546ec5c5d33f1946",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.39.j26",
+          "shortName": "18854",
+          "sha256": "7525b0322f7e6c7c3b182323e63aa7e939925bab86382795bd541cae3a2ce1ea",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.40.j26",
+          "shortName": "18894",
+          "sha256": "c4685598489464c0b0e585893a156b111c32b66fa270167e53fe5969f4e6cbf4",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.41.j26",
+          "shortName": "18890",
+          "sha256": "1021ae5cf3a1f149571387cd5c92b3af1554679bbba06c79d88ddaf9251c4416",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.42.j26",
+          "shortName": "18888",
+          "sha256": "f925bb2545a2961fe40181a30e8c5c551a53080a17286d4906f397c1460a2fc1",
+          "activeServiceDates": [
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.43.j26",
+          "shortName": "18886",
+          "sha256": "6a6365493360acf78f695a4642c6b2321128877cbb0e3aa5e020c88efd101e92",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.44.j26",
+          "shortName": "18884",
+          "sha256": "a91bb4b6422cd10fca8854e38edc749d2a8694d86bf885b803628f81de8c888c",
+          "activeServiceDates": [
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.45.j26",
+          "shortName": "18880",
+          "sha256": "f08c5b8bbf4f64f771a9cdf590ea8b84d26e5890e378c72b954fe72fb8ae9cea",
+          "activeServiceDates": [
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.46.j26",
+          "shortName": "18878",
+          "sha256": "e19e010736298f1a164b2e6fa1453fa4359f9360c47cd71a5de425fad6c7df4e",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.47.j26",
+          "shortName": "18876",
+          "sha256": "2c25d8d66c345e28e23b058f86a115c8797985a28b032c124f8f6f25722480e6",
+          "activeServiceDates": [
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.48.j26",
+          "shortName": "18874",
+          "sha256": "1d556a40df1a114bfad1d8a8ac8e02399b0945228894b8d56d5c1e6d41b90657",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.49.j26",
+          "shortName": "18872",
+          "sha256": "0f5313a24ae1aa3d88ecd1781852562e59a23cf379996fb14b4c624871ef39b0",
+          "activeServiceDates": [
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.50.j26",
+          "shortName": "18870",
+          "sha256": "3d0d181797f9e0f48010905d7e285f3383e102cc54d262eda0a4aeea9ce51c9d",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.51.j26",
+          "shortName": "18866",
+          "sha256": "96e840f7866aba63a5c35adca60918b49bada602875f09c57ceca105aabe93ab",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.52.j26",
+          "shortName": "18864",
+          "sha256": "471734d1c53effac482f00ce3d8f80b8e1091d9a20b4bab24f6a9a5a558a09e1",
+          "activeServiceDates": [
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.53.j26",
+          "shortName": "18882",
+          "sha256": "5d4596242dd997f6f78e6e657a61d7e82cbe68e3c0044eda2db9ac539e1dd051",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.54.j26",
+          "shortName": "18862",
+          "sha256": "e011fc183eb4e2995d513dc615b8dd0f6264d84ad8aeedb330fe8f8e0d2e2938",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.55.j26",
+          "shortName": "18868",
+          "sha256": "f1719c6fe84ef8aa38873915cd48b7c4dd1792d6b188330359cdfab0d809993b",
+          "activeServiceDates": [
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.56.j26",
+          "shortName": "18852",
+          "sha256": "cafdbac77ba3e5c5901e6808c40c75a10b7280c0751eef77309208a0d00f6549",
+          "activeServiceDates": [
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.57.j26",
+          "shortName": "18822",
+          "sha256": "41c72e9b98b2dad5a0beda253950ab0b8ff38d73a95cd7d99a6e44a53d981eed",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.58.j26",
+          "shortName": "18836",
+          "sha256": "4902d2c3edb035621986333f2f9ae7648d8e5f2e6c825e447171769f835e3466",
+          "activeServiceDates": [
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.59.j26",
+          "shortName": "18850",
+          "sha256": "f9357b5598332eb7dea933b91bb9eb1dd1ead96bbdf896bdb31d22209b9a84da",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.60.j26",
+          "shortName": "18844",
+          "sha256": "93d68f9a16b6871486026aa709e81a6915ec4513f491a8db5411ed8c8a8c0b67",
+          "activeServiceDates": [
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.61.j26",
+          "shortName": "18842",
+          "sha256": "56380866eb884bc378db8c477c17c95077a6e25b8c6ea7f8b0c3c898963004b8",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.62.j26",
+          "shortName": "18840",
+          "sha256": "e2dda49129db3b33c4c7ce8191e2f4dffa50734a2b9bcfa6da385cc10a257788",
+          "activeServiceDates": [
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.63.j26",
+          "shortName": "18838",
+          "sha256": "7d7e515c917496118c9924cd83dd7334bb528960058487c652cede9de6d79216",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.64.j26",
+          "shortName": "18860",
+          "sha256": "6a0d9fda79c03daff6f3272cb49cb3bd7d5d0c4f9f4462e48e34725406516184",
+          "activeServiceDates": [
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.65.j26",
+          "shortName": "18834",
+          "sha256": "ed9bc7361fe719c742093aab6c9faa3bde3022f1ae4d4e9424aaf3b6374ecb34",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.66.j26",
+          "shortName": "18848",
+          "sha256": "4cb71e79cfcc458405f2bb7ca06a6fddc9128cc472ab51aed4eaca92c07ecc0a",
+          "activeServiceDates": [
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.67.j26",
+          "shortName": "18832",
+          "sha256": "cdccdd3dccf28d7852eea2315f6aae4a1f23ab53011d5e2cd050dd8a3add080b",
+          "activeServiceDates": [
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.68.j26",
+          "shortName": "18830",
+          "sha256": "39cd9d179145402b18454ba0034c73f5ba3949bcf0a12258d5316742b4cb6c28",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.69.j26",
+          "shortName": "18828",
+          "sha256": "d415683d6531ae7b26b9ebe9597eaf45211e50ebbe30bae7cd3fb859de1abbee",
+          "activeServiceDates": [
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.70.j26",
+          "shortName": "18826",
+          "sha256": "2a0875e53fdd5c134f04441a24c50d27decd1694727cae33323411ca841c2e02",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.71.j26",
+          "shortName": "18824",
+          "sha256": "1bf7e60b0ede13a5f75ed9771aa837b1b5de51a571c307bed2f89e50b10b745b",
+          "activeServiceDates": [
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.72.j26",
+          "shortName": "18856",
+          "sha256": "3fe4ccc05d3ef2f7fb1bbe29a3b782082c3931e1b50e94409b29c30c67ce7d87",
+          "activeServiceDates": [
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.73.j26",
+          "shortName": "18820",
+          "sha256": "5d8a1b0216c763426c6fe2bdd4d2dd9d9098a9d31791e246293a45cd5c2b9be1",
+          "activeServiceDates": [
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV7-R.1.TA.74.j26",
+          "shortName": "18858",
+          "sha256": "a8afc38221deaf0a02862a35fea57f29bac3a815e168d3ee8af6f3915c00eed4",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        }
+      ],
+      "noticeContext": {
+        "noticeCorridor": [
+          "Hunzenschwil",
+          "Lenzburg"
+        ],
+        "endpoints": [
+          "Lenzburg, Bahnhof",
+          "Hunzenschwil, Bahnhof"
+        ],
+        "serviceDates": [
+          "2026-05-23",
+          "2026-05-24",
+          "2026-05-25"
+        ],
+        "templates": 37,
+        "fullCalls": 74,
+        "noticeVerifies": "Dated disruption and replacement-bus corridor only. EV labels, complete platforms, exact calls and calendars are from independently verified GTFS; no printed bus timetable or street itinerary is claimed."
+      },
+      "segments": [
+        {
+          "index": 0,
+          "pathSha256": "f7dbee84a43e3a43531ab21a5feb39b774348450c5f228ea429804825249c219",
+          "evidence": {
+            "accepted": true,
+            "geometrySource": "osm",
+            "roadPatternId": "e58dd190ffacee8fef7db3cd",
+            "pathMetres": 3929.6697168085147,
+            "endpointAdjustmentMetres": 0.043257507352721485
+          },
+          "timing": {
+            "minimumSourceSeconds": 480,
+            "maximumSourceSeconds": 480,
+            "maximumRequiredMeanKmh": 29.472522876063863,
+            "held": false,
+            "interpretation": "Conservative review screen, not a legal speed limit or certification. Original minute-granularity calls are preserved without timing adjustments."
+          },
+          "disposition": "admit-inferred-may-road",
+          "rejection": null,
+          "priorAssessment": {
+            "fromId": "ch:1:sloid:78736:0:04",
+            "toId": "ch:1:sloid:87753",
+            "pathIndex": null,
+            "reason": "missing-operator-mode-line"
+          }
+        }
+      ]
+    },
+    {
+      "id": "0af6adbb49ea6a5202c3",
+      "agencyId": "7231",
+      "routeId": "92-EV9-I-j26-1",
+      "line": "EV9",
+      "directionId": "0",
+      "stops": [
+        [
+          8.12690566,
+          47.40308019,
+          "Rupperswil, Bahnhof",
+          "",
+          "ch:1:sloid:88575"
+        ],
+        [
+          8.17177651,
+          47.39038945,
+          "Lenzburg, Bahnhof",
+          "F",
+          "ch:1:sloid:78736:0:06"
+        ],
+        [
+          8.21516514,
+          47.40687406,
+          "Othmarsingen, Bahnhof",
+          "",
+          "ch:1:sloid:87101"
+        ]
+      ],
+      "templates": [
+        {
+          "sourceTripId": ".ojp-92-EV9-I.1.TA.1.j26",
+          "shortName": "28377",
+          "sha256": "7f8c2d67a90d37dcfc9bf7027c15877fcac2399cfaeb6ccbfd63a680f80a3a6d",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV9-I.1.TA.10.j26",
+          "shortName": "28333",
+          "sha256": "4975a57e4eea5ba9eba11e626ce035ad78a2b07a33601e3aad6c987125b7a1f1",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV9-I.1.TA.11.j26",
+          "shortName": "28369",
+          "sha256": "5eac5b025475c6cb68e22d325ab5891b31118a3924c566eab2f27bb51e04860c",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV9-I.1.TA.12.j26",
+          "shortName": "28325",
+          "sha256": "745878ea5471e36b981d3f3051ab83d06f0b8a30787559609ee0738911bbce26",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV9-I.1.TA.13.j26",
+          "shortName": "28389",
+          "sha256": "d514362b79ffc7decd5aa06ab6bba6cd45f1992a7755b33524e4accec4ad24a1",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV9-I.1.TA.14.j26",
+          "shortName": "28337",
+          "sha256": "0dbe1576f1034e11a3fdc946475bba876e355be4ec53dca29f3bf5455eaec3b5",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV9-I.1.TA.15.j26",
+          "shortName": "28365",
+          "sha256": "d9647b85ec3c436e049e2f110dc0bfda922779346273e7a84f1819bdcb158b20",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV9-I.1.TA.16.j26",
+          "shortName": "28361",
+          "sha256": "e560baa8d8f2f7aa7d36b26a9a8356c0f06e63de4ff00f8383261081274196d7",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV9-I.1.TA.17.j26",
+          "shortName": "28329",
+          "sha256": "293a00e5fc7df463461ce514716cf09125e449f8941e160ede0b22b3862ad50b",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV9-I.1.TA.18.j26",
+          "shortName": "28357",
+          "sha256": "647354b80a51bd8c4338170e7ee7c2a82571fe55c641d12da75ba958ebd962f3",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV9-I.1.TA.19.j26",
+          "shortName": "28393",
+          "sha256": "f4b5effa230232bace5adac593e32c50a696e607e856603136645bf62198240c",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV9-I.1.TA.2.j26",
+          "shortName": "28345",
+          "sha256": "66be8dfaaf7a697fb92464f4dbff46016909a52ae014616f05aa0c8b41675d41",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV9-I.1.TA.3.j26",
+          "shortName": "28321",
+          "sha256": "be141ced8ac66fd935654a4ff4e9b939164a382e4a2bc829073bd0300d8f2c3c",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV9-I.1.TA.4.j26",
+          "shortName": "28373",
+          "sha256": "e97b34dc46f01ddd71e610eca8194084f70507de5a7a888831e5b87cc01ee904",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV9-I.1.TA.5.j26",
+          "shortName": "28341",
+          "sha256": "587f472908d7c03aca68f8b03c45ca2a5d4e31f166715703157c4197f0e62823",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV9-I.1.TA.6.j26",
+          "shortName": "28385",
+          "sha256": "167f7e84885a3c9fe92aa2199d4915a3ebafc9fdf8e4b4ee94ab4ba7153285aa",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV9-I.1.TA.7.j26",
+          "shortName": "28349",
+          "sha256": "53381108cb8903266d8f9913f1f069cd27036e14530c64998ab9cc2f3ba615ad",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV9-I.1.TA.8.j26",
+          "shortName": "28381",
+          "sha256": "aeb57776414af3132643cbcaeb2ed67468b349dea29c2e3d14258754af0de7e4",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV9-I.1.TA.9.j26",
+          "shortName": "28353",
+          "sha256": "1e49ed92646156a6ae9ebb785f2a3ee6202cae5cd6771e3ff53e6cea5812eeee",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        }
+      ],
+      "noticeContext": {
+        "noticeCorridor": [
+          "Rupperswil",
+          "Lenzburg",
+          "Othmarsingen"
+        ],
+        "endpoints": [
+          "Rupperswil, Bahnhof",
+          "Othmarsingen, Bahnhof"
+        ],
+        "serviceDates": [
+          "2026-05-23",
+          "2026-05-24",
+          "2026-05-25"
+        ],
+        "templates": 19,
+        "fullCalls": 57,
+        "noticeVerifies": "Dated disruption and replacement-bus corridor only. EV labels, complete platforms, exact calls and calendars are from independently verified GTFS; no printed bus timetable or street itinerary is claimed."
+      },
+      "segments": [
+        {
+          "index": 0,
+          "pathSha256": "4f18d677796ffd5d64fd59ce7e8707fd05728635db68b5a14b86b3b23788c1d3",
+          "evidence": {
+            "accepted": true,
+            "geometrySource": "osm",
+            "roadPatternId": "d67cce48473afd6fb2e7e80d",
+            "pathMetres": 5199.9695283275505,
+            "endpointAdjustmentMetres": 0.06223421335891293
+          },
+          "timing": {
+            "minimumSourceSeconds": 720,
+            "maximumSourceSeconds": 720,
+            "maximumRequiredMeanKmh": 25.999847641637754,
+            "held": false,
+            "interpretation": "Conservative review screen, not a legal speed limit or certification. Original minute-granularity calls are preserved without timing adjustments."
+          },
+          "disposition": "admit-inferred-may-road",
+          "rejection": null,
+          "priorAssessment": {
+            "fromId": "ch:1:sloid:88575",
+            "toId": "ch:1:sloid:78736:0:06",
+            "pathIndex": null,
+            "reason": "missing-operator-mode-line"
+          }
+        },
+        {
+          "index": 1,
+          "pathSha256": null,
+          "evidence": {
+            "roadFailure": "stop-too-far",
+            "roadPatternId": "d67cce48473afd6fb2e7e80d"
+          },
+          "timing": null,
+          "disposition": "hold-road-geometry",
+          "rejection": {
+            "pattern": "d67cce48473afd6fb2e7e80d",
+            "routeId": "92-EV9-I-j26-1",
+            "route": "EV9",
+            "segment": 1,
+            "from": "Lenzburg, Bahnhof",
+            "to": "Othmarsingen, Bahnhof",
+            "fromId": "ch:1:sloid:78736:0:06",
+            "toId": "ch:1:sloid:87101",
+            "trips": 19,
+            "reason": "stop-too-far",
+            "snap": 132.2367587402675
+          },
+          "priorAssessment": {
+            "fromId": "ch:1:sloid:78736:0:06",
+            "toId": "ch:1:sloid:87101",
+            "pathIndex": null,
+            "reason": "missing-operator-mode-line"
+          }
+        }
+      ]
+    },
+    {
+      "id": "2ab0468d93eff1bae5c7",
+      "agencyId": "7231",
+      "routeId": "92-EV9-I-j26-1",
+      "line": "EV9",
+      "directionId": "1",
+      "stops": [
+        [
+          8.21516514,
+          47.40687406,
+          "Othmarsingen, Bahnhof",
+          "",
+          "ch:1:sloid:87101"
+        ],
+        [
+          8.17145312,
+          47.39060838,
+          "Lenzburg, Bahnhof",
+          "D",
+          "ch:1:sloid:78736:0:04"
+        ],
+        [
+          8.12690566,
+          47.40308019,
+          "Rupperswil, Bahnhof",
+          "",
+          "ch:1:sloid:88575"
+        ]
+      ],
+      "templates": [
+        {
+          "sourceTripId": ".ojp-92-EV9-I.1.TA.20.j26",
+          "shortName": "28328",
+          "sha256": "0f91f7864b7bd970840179c29c43e73d8c665ba54ccf02230720579cc1c8f78b",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV9-I.1.TA.21.j26",
+          "shortName": "28340",
+          "sha256": "deedffcb2f00428e012aa5d205f8939e2b6a098992e935d5792197bae840eba0",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV9-I.1.TA.22.j26",
+          "shortName": "28348",
+          "sha256": "0ae76ee2138448310c0e5e81c19b8fe4a2451174dd63523dcb916d811d5a75b6",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV9-I.1.TA.23.j26",
+          "shortName": "28372",
+          "sha256": "520487e35ac5ef66e846fdbd38b90774be5d202d87c0b3b7d65b2613ad125544",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV9-I.1.TA.24.j26",
+          "shortName": "28392",
+          "sha256": "651ccf51aa4929db92f98e9a1be815f481fa49cee887177006b8206da1135fcd",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV9-I.1.TA.25.j26",
+          "shortName": "28360",
+          "sha256": "6b274425757101b4215845382601d23cf217b1f6ab117af7ad849ababcee243b",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV9-I.1.TA.26.j26",
+          "shortName": "28324",
+          "sha256": "c0eca6ce941d49208e2d98fd4b52d4122e29630a4ac0c597ccc923c5257e324f",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV9-I.1.TA.27.j26",
+          "shortName": "28364",
+          "sha256": "bef37f072c6c5776264da0d1e8573f8e6d7e6c4c14ec0f204cea3d0939783ef3",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV9-I.1.TA.28.j26",
+          "shortName": "28388",
+          "sha256": "c01744184a369b8bd761897c0661d68bc9bb572b4b63333792a1416fbd6734b1",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV9-I.1.TA.29.j26",
+          "shortName": "28336",
+          "sha256": "f0070aa5edd863826576632f0a92aa10200fb4d73c04d2fa5cf44e800b101642",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV9-I.1.TA.30.j26",
+          "shortName": "28368",
+          "sha256": "0beaeec9077ce220014f9c479068b966c726b2c2663abad33466a8645d65728f",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV9-I.1.TA.31.j26",
+          "shortName": "28380",
+          "sha256": "3e586fd5c9236f09a8bc70063bd14919108218b823058b9d8701112134250a72",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV9-I.1.TA.32.j26",
+          "shortName": "28356",
+          "sha256": "3193bd1104caf3d83bb347b88037a1e7982a2785913172b679206b866176860a",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV9-I.1.TA.33.j26",
+          "shortName": "28352",
+          "sha256": "2c31bb6f638358ef871e6c1c71018cb446c71cec23f2df9e34542fe825ec79db",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV9-I.1.TA.34.j26",
+          "shortName": "28376",
+          "sha256": "807d39c5a6cf60ec63f42c0d54cc46bdf5de6e96ed549d576bb2ef4a582cda20",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV9-I.1.TA.35.j26",
+          "shortName": "28332",
+          "sha256": "e4b0ca5e0ddc813da68b85ca95cfa90ea4bdd848b46673038931c67091c25d9b",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV9-I.1.TA.36.j26",
+          "shortName": "28384",
+          "sha256": "b8bd9409af80248ff3e376d57145bec468c98a818d6044bfdfc6f4b274fbc10f",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV9-I.1.TA.37.j26",
+          "shortName": "28344",
+          "sha256": "757357c3955f21e424b8e6ed2227545871bbad093893ebab57776752963f2743",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV9-I.1.TA.38.j26",
+          "shortName": "28320",
+          "sha256": "39137205f4d70dea236291293cef58911256f29a78243d7fb422949f0a022e17",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-EV9-I.1.TA.39.j26",
+          "shortName": "28316",
+          "sha256": "9bec6ec2435ad14d96e8ac8789cf8e89fd279eb9e1bbe2a4faadadd888344688",
+          "activeServiceDates": [
+            "2026-05-23",
+            "2026-05-24",
+            "2026-05-25"
+          ]
+        }
+      ],
+      "noticeContext": {
+        "noticeCorridor": [
+          "Rupperswil",
+          "Lenzburg",
+          "Othmarsingen"
+        ],
+        "endpoints": [
+          "Othmarsingen, Bahnhof",
+          "Rupperswil, Bahnhof"
+        ],
+        "serviceDates": [
+          "2026-05-23",
+          "2026-05-24",
+          "2026-05-25"
+        ],
+        "templates": 20,
+        "fullCalls": 60,
+        "noticeVerifies": "Dated disruption and replacement-bus corridor only. EV labels, complete platforms, exact calls and calendars are from independently verified GTFS; no printed bus timetable or street itinerary is claimed."
+      },
+      "segments": [
+        {
+          "index": 0,
+          "pathSha256": "32a89251771a60d43d42a9406be1d0b0f8c990b851e2804fd993d3a5da11262e",
+          "evidence": {
+            "accepted": true,
+            "geometrySource": "osm",
+            "roadPatternId": "a59a1c9eb71f1c8c21e241c0",
+            "pathMetres": 5101.422608866129,
+            "endpointAdjustmentMetres": 0.043257507352721485
+          },
+          "timing": {
+            "minimumSourceSeconds": 720,
+            "maximumSourceSeconds": 720,
+            "maximumRequiredMeanKmh": 25.507113044330644,
+            "held": false,
+            "interpretation": "Conservative review screen, not a legal speed limit or certification. Original minute-granularity calls are preserved without timing adjustments."
+          },
+          "disposition": "admit-inferred-may-road",
+          "rejection": null,
+          "priorAssessment": {
+            "fromId": "ch:1:sloid:87101",
+            "toId": "ch:1:sloid:78736:0:04",
+            "pathIndex": null,
+            "reason": "missing-operator-mode-line"
+          }
+        },
+        {
+          "index": 1,
+          "pathSha256": "ed0132f10cbb2c3e0282d45600f6cfaeb60cad3344c6d87a0a72e5215e453123",
+          "evidence": {
+            "accepted": true,
+            "geometrySource": "osm",
+            "roadPatternId": "a59a1c9eb71f1c8c21e241c0",
+            "pathMetres": 5353.8287008852485,
+            "endpointAdjustmentMetres": 0.043257507352721485
+          },
+          "timing": {
+            "minimumSourceSeconds": 720,
+            "maximumSourceSeconds": 720,
+            "maximumRequiredMeanKmh": 26.769143504426243,
+            "held": false,
+            "interpretation": "Conservative review screen, not a legal speed limit or certification. Original minute-granularity calls are preserved without timing adjustments."
+          },
+          "disposition": "admit-inferred-may-road",
+          "rejection": null,
+          "priorAssessment": {
+            "fromId": "ch:1:sloid:78736:0:04",
+            "toId": "ch:1:sloid:88575",
+            "pathIndex": null,
+            "reason": "missing-operator-mode-line"
+          }
+        }
+      ]
+    }
+  ],
+  "publicationReady": false
+}

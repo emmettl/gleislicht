@@ -2,7 +2,7 @@
 
 The [complete bus inventory](../data/aargau-witnesses/bus-inventory.json) accounts for **16 route records, 86 full directed platform patterns, 1,384 archived trip templates and 7,187 adjacent-call occurrences** left after the annual rail review. Fifteen route records are replacement buses; the PostAuto EXT record serves the Schupfart event corridor. Route identities and complete active service-date lists come from the independently verified GTFS archive, not public line labels. All calls outside Aargau remain included. No route is silently omitted.
 
-The first bounded follow-up tests all six patterns of **AVA Ersatzverkehr, agency 7244, route 92-A07-9-j26-1, line EV**. Numerical road matching succeeds on all **4,616** occurrences. The [admission policy](../data/aargau-witness-ava-policy.json) accepts **2,466** April occurrences as inferred road geometry, holds **161** April occurrences for source-time review, and holds all **1,989** September occurrences for diversion review. Every prior **3,801** accepted occurrence is unchanged. A subsequent closure-localization review adds **1,836 September occurrences**, preserving all **6,267** earlier paths and retaining **153** September closure crossings. The Schupfart Festival follow-up adds another **195 occurrences**, preserving all **8,103** earlier paths and holding **12 zero-second intervals**. Current annual compatibility is **8,298 / 10,988** occurrences: all **194 rail patterns** plus **seven bus patterns** are complete. **2,690 bus occurrences across 79 incomplete patterns** remain excluded. This is a separate template candidate; no date-specific regional feed is expanded.
+The first bounded follow-up tests all six patterns of **AVA Ersatzverkehr, agency 7244, route 92-A07-9-j26-1, line EV**. Numerical road matching succeeds on all **4,616** occurrences. The [admission policy](../data/aargau-witness-ava-policy.json) accepts **2,466** April occurrences as inferred road geometry, holds **161** April occurrences for source-time review, and holds all **1,989** September occurrences for diversion review. Every prior **3,801** accepted occurrence is unchanged. A subsequent closure-localization review adds **1,836 September occurrences**, preserving all **6,267** earlier paths and retaining **153** September closure crossings. The Schupfart Festival follow-up adds another **195 occurrences**, preserving all **8,103** earlier paths and holding **12 zero-second intervals**. The May Lenzburg follow-up adds **582 occurrences**, preserving all **8,298** earlier paths and holding **77 stop-distance failures**. Current annual compatibility is **8,880 / 10,988** occurrences: all **194 rail patterns** plus **thirteen bus patterns** are complete. **2,108 bus occurrences across 73 incomplete patterns** remain excluded. This is a separate template candidate; no date-specific regional feed is expanded.
 
 ## Every bus route
 
@@ -12,22 +12,22 @@ Each archived trip template is counted once even if its calendar has multiple da
 | --- | --- | --- | --- | --- | --- |
 | 92-A07-9-j26-1 / EV | 7244 | 6 / 336 | 4: 2026-04-25 – 2026-09-13 | 2026-09-14 | 314 / 4,616 |
 | 92-A04-B-j26-1 / EV1 | 7231 | 14 / 187 | 26: 2025-12-15 – 2026-11-05 | 2026-08-09 | 504 / 504 |
-| 92-EV5-V-j26-1 / EV5 | 7231 | 2 / 71 | 3: 2026-05-23 – 2026-05-25 | 2026-05-23 | 391 / 391 |
+| 92-EV5-V-j26-1 / EV5 | 7231 | 2 / 71 | 3: 2026-05-23 – 2026-05-25 | 2026-05-23 | 0 / 391 |
 | 92-A04-F-j26-1 / EV1 | 7231 | 10 / 165 | 37: 2026-04-13 – 2026-10-16 | 2026-09-14 | 328 / 328 |
 | 92-EV8-F-j26-1 / EV8 | 7231 | 4 / 35 | 1: 2026-05-23 – 2026-05-23 | 2026-05-23 | 238 / 238 |
 | 96-138-1-j26-1 / EXT | 801 | 12 / 32 | 3: 2026-09-25 – 2026-09-27 | 2026-09-25 | 12 / 207 |
 | 92-A04-9-j26-1 / EV2 | 7231 | 8 / 135 | 24: 2026-03-08 – 2026-11-22 | 2026-08-09 | 191 / 191 |
 | 92-EV1-D-j26-1 / EV1 | 7231 | 7 / 146 | 4: 2026-08-15 – 2026-10-11 | 2026-08-16 | 158 / 158 |
-| 92-A01-N-j26-1 / EV4 | 7231 | 4 / 123 | 7: 2026-05-23 – 2026-10-18 | 2026-05-23 | 130 / 130 |
+| 92-A01-N-j26-1 / EV4 | 7231 | 4 / 123 | 7: 2026-05-23 – 2026-10-18 | 2026-05-23 | 72 / 130 |
 | 92-A05-X-j26-1 / EV3 | 7231 | 4 / 8 | 3: 2026-05-20 – 2026-05-22 | 2026-05-22 | 98 / 98 |
 | 92-A08-U-j26-1 / EV1 | 7231 | 2 / 10 | 7: 2026-04-20 – 2026-11-03 | 2026-04-20 | 80 / 80 |
-| 92-EV9-I-j26-1 / EV9 | 7231 | 2 / 39 | 3: 2026-05-23 – 2026-05-25 | 2026-05-23 | 78 / 78 |
-| 92-EV7-R-j26-1 / EV7 | 7231 | 2 / 74 | 3: 2026-05-23 – 2026-05-25 | 2026-05-23 | 74 / 74 |
+| 92-EV9-I-j26-1 / EV9 | 7231 | 2 / 39 | 3: 2026-05-23 – 2026-05-25 | 2026-05-23 | 19 / 78 |
+| 92-EV7-R-j26-1 / EV7 | 7231 | 2 / 74 | 3: 2026-05-23 – 2026-05-25 | 2026-05-23 | 0 / 74 |
 | 92-A01-Q-j26-1 / EV2 | 7231 | 5 / 14 | 4: 2026-09-14 – 2026-09-17 | 2026-09-14 | 59 / 59 |
 | 92-A08-Z-j26-1 / EV2 | 7231 | 3 / 8 | 13: 2026-03-14 – 2026-10-11 | 2026-05-23 | 28 / 28 |
 | 92-A01-U-j26-1 / EV3 | 7231 | 1 / 1 | 4: 2026-09-14 – 2026-09-17 | 2026-09-14 | 7 / 7 |
 
-The machine inventory records every full platform-coordinate chain, direction ID, source course, template digest, active service-date list, civil-date list and original failure assessment. The other **14 routes / 68 patterns / 2,364 occurrences** have not yet received a road review. AVA retains 314 held occurrences and Schupfart retains twelve. They remain a source-evidence backlog, not confirmed operating itineraries. The compact first/last dates above do not imply continuous daily service; consult the exact date arrays.
+The machine inventory records every full platform-coordinate chain, direction ID, source course, template digest, active service-date list, civil-date list and original failure assessment. The other **60 patterns / 1,705 occurrences on eleven route records** have not yet received a road review, including two later EV4 patterns on the partly reviewed route. AVA retains 314 held occurrences, Schupfart retains twelve and May Lenzburg retains 77. They remain a source-evidence backlog, not confirmed operating itineraries. The compact first/last dates above do not imply continuous daily service; consult the exact date arrays.
 
 ## Dated AVA evidence
 
@@ -130,11 +130,34 @@ The other **twelve occurrences in eight segment contexts** have a literal zero-s
 
 The [source bundle](../data/aargau-witness-schupfart-sources/sources.json) retains the original HTML and PDF, raw/compressed hashes and retrieval timestamps on **9 September 2026 (Europe/Zurich)**. Attribution is **Schupfart Festival; PostAuto AG**, as branded on the timetable. The PDF metadata records creation and modification at **5 May 2026, 11:59:24 UTC**; verified publication dates remain null. Printed service dates are not publication dates. Full routing outputs and hashes are retained separately; inferred geometry remains **© OpenStreetMap contributors; ODbL-1.0**, with the original **2/8 September 2026** graph provenance. The advertised timetable confirms service context and major calls, not precise roads or legal directions.
 
+## May Lenzburg replacement buses
+
+SBB’s [22 April 2026 notice](https://news.sbb.ch/de/019daf71-e5e3-7f0c-8713-4d64db53c698/bauarbeiten-in-lenzburg-fuehren-zu-einschraenkungen-im-bahnverkehr) confirms the **23–26 May** commissioning closure and replacement buses on **Rupperswil–Lenzburg–Othmarsingen, Hunzenschwil–Lenzburg and Beinwil am See–Lenzburg**. The [reviewed notice record](../data/aargau-witness-lenzburg-sources/notice.json) records publication on **22 April**, retrieval on **9 September 2026 (Europe/Zurich)** and **SBB/CFF/FFS** text attribution. The primary article was read through web retrieval; direct host retrieval returned HTTP 403. Only reviewed facts and a short excerpt are retained, with **no raw HTML archive claimed**. The current project page no longer describes this past closure and is not used as historical evidence.
+
+The notice establishes dates and corridors; **EV labels, exact platforms, every call and calendar come from independently verified GTFS**. It does not publish a complete bus timetable or street itinerary. The [May policy](../data/aargau-witness-lenzburg-policy.json) binds **eight complete directed patterns on four route records / 300 trip templates / 659 occurrences**, with exact service calendars on **23, 24 and 25 May**. After-midnight calls retain their source service-day meaning. This is not a complete civil-day extraction. The two later EV4 Suhr patterns—seven templates / fourteen occurrences with September–October dates—remain outside this policy despite sharing an EV4 route record.
+
+| Pattern ID / line | Direction | Full endpoint pair | Templates | Admitted / held occurrences |
+| --- | --- | --- | --- | --- |
+| 8d91b66b95a4278dbf85 / EV4 | 0 | Othmarsingen, Bahnhof → Lenzburg, Bahnhof | 58 | 58 / 0 |
+| 4efe182702335a8996d3 / EV4 | 1 | Lenzburg, Bahnhof → Othmarsingen, Bahnhof | 58 | 0 / 58 |
+| 8edbb01adacf1a049993 / EV5 | 0 | Beinwil am See, Bahnhof → Lenzburg, Bahnhof | 36 | 216 / 0 |
+| 49eb8fad14c0128da285 / EV5 | 1 | Lenzburg, Bahnhof → Beinwil am See, Bahnhof | 35 | 175 / 0 |
+| bddd8d85b863dff4a6e6 / EV7 | 0 | Hunzenschwil, Bahnhof → Lenzburg, Bahnhof | 37 | 37 / 0 |
+| b077456baeeccb366017 / EV7 | 1 | Lenzburg, Bahnhof → Hunzenschwil, Bahnhof | 37 | 37 / 0 |
+| 0af6adbb49ea6a5202c3 / EV9 | 0 | Rupperswil, Bahnhof → Othmarsingen, Bahnhof | 19 | 19 / 19 |
+| 2ab0468d93eff1bae5c7 / EV9 | 1 | Othmarsingen, Bahnhof → Rupperswil, Bahnhof | 20 | 40 / 0 |
+
+EV5 direction 0 calls at **Seon Nord, Bahnhof, platform B**; direction 1 does not. Both full source chains are retained without inserting or reversing calls. All accepted segments pass the unchanged positive-interval and **80 km/h required-mean** screen. **582 inferred OSM occurrences** are admitted: **330 direction 0 / 252 direction 1**, completing six additional bus patterns.
+
+The two full-pattern contexts for **Lenzburg, Bahnhof, platform F → Othmarsingen, Bahnhof** fail the unchanged **120 m** stop-distance limit at **132.24 m**. They account for **58 EV4 + 19 EV9 = 77 held occurrences**. No straight-line replacement or relaxed projection is admitted. Maximum accepted projection is **57.24 m**; the **6× detour bound / 1,500 m allowance / 5 m simplification** are unchanged. All eight directed contexts were visually inspected with rejected segments left absent. The [routing bundle](../data/aargau-witness-lenzburg-sources/routing.json) retains the cache, configuration, full raw outputs, original rejected shapes, logs and hashes for **pfaedle v0.1.6-208-g99f2cd4**, with per-pattern warnings enabled and trie aggregation disabled.
+
+The same **2/8 September 2026 OSM graph** postdates these May services. These paths are road inferences, not certified historical operating itineraries or legal-direction certification. Geometry attribution remains **© OpenStreetMap contributors; ODbL-1.0**. Exact trip-template hashes and complete platform-coordinate chains prevent inheritance by a changed calendar or daily-feed instance.
+
 ## Regression and next work
 
-The [candidate audit](../data/aargau-witnesses/schupfart-review-summary.json) replays the previous closure-localization candidate before applying the Schupfart event policy, preserves all original stop coordinates and complete calls, verifies exact path endpoints and compares all other source assessments unchanged. The [candidate paths](../data/aargau-witnesses/schupfart-review-patterns.json.gz) retain the prior rejection information on admitted segments. Held diagnostic paths remain in their separate AVA or Schupfart cache and policy. Exact source-template hashes, calendars, route/agency/mode/direction identities and complete platform chains prevent inheritance by another service or a dated release feed.
+The [candidate audit](../data/aargau-witnesses/lenzburg-review-summary.json) replays the previous Schupfart candidate before applying the May Lenzburg policy, preserves all original stop coordinates and complete calls, verifies exact path endpoints and compares all other source assessments unchanged. The [candidate paths](../data/aargau-witnesses/lenzburg-review-patterns.json.gz) retain the prior rejection information on admitted segments. Held diagnostic paths remain in the separate source bundles; rejected Lenzburg shapes remain only in raw matcher evidence. Exact source-template hashes, calendars, route/agency/mode/direction identities and complete platform chains prevent inheritance by another service or a dated release feed.
 
-Next work is to reconcile the two April timing pairs and the two remaining September closure-crossing directions against the signed road diversion, reconcile Schupfart’s zero-second calls, and acquire dated evidence and route the remaining 68 bus patterns. The separate **222 September bus-alignment reviews**, civil-day extraction of additional witness dates, DST repeated-hour handling and application release checks also remain open. The original Friday/Sunday and twelve-date seasonal feeds are unchanged; publication readiness remains false. This bus follow-up was checked on **9 September 2026**.
+Next work is to reconcile the two April timing pairs and the two remaining September closure-crossing directions against the signed road diversion, reconcile Schupfart’s zero-second calls, resolve the Lenzburg platform-F projection failures, and acquire dated evidence and route the remaining 60 bus patterns. The separate **222 September bus-alignment reviews**, civil-day extraction of additional witness dates, DST repeated-hour handling and application release checks also remain open. The original Friday/Sunday and twelve-date seasonal feeds are unchanged; publication readiness remains false. This bus follow-up was checked on **9 September 2026**.
 
 ## Reproduction
 
@@ -154,6 +177,10 @@ node scripts/prepare-aargau-witness-schupfart.mjs /tmp/aargau-schupfart-preparat
 node scripts/package-aargau-witness-schupfart.mjs --check
 node scripts/prepare-aargau-witness-schupfart-policy.mjs --check
 node scripts/review-aargau-witness-schupfart.mjs --check
+node scripts/prepare-aargau-witness-lenzburg.mjs /tmp/aargau-lenzburg-preparation
+node scripts/package-aargau-witness-lenzburg.mjs --check
+node scripts/prepare-aargau-witness-lenzburg-policy.mjs --check
+node scripts/review-aargau-witness-lenzburg.mjs --check
 node scripts/document-aargau-witness-buses.mjs --check
-npx vitest run scripts/aargau-witness-schupfart.test.mjs scripts/aargau-oberentfelden-detour.test.mjs scripts/aargau-witness-oberentfelden.test.mjs scripts/aargau-witness-ava.test.mjs scripts/aargau-road-geometry.test.mjs scripts/enrich-postbus-roads.test.mjs
+npx vitest run scripts/aargau-witness-lenzburg.test.mjs scripts/aargau-witness-schupfart.test.mjs scripts/aargau-oberentfelden-detour.test.mjs scripts/aargau-witness-oberentfelden.test.mjs scripts/aargau-witness-ava.test.mjs scripts/aargau-road-geometry.test.mjs scripts/enrich-postbus-roads.test.mjs
 ```

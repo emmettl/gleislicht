@@ -1,5 +1,7 @@
 {
   "schemaVersion": 1,
+  "annualWitnessLenzburgReviewSha256": "4dd966892e803cf25da7861851ce8eb30e5af0ab112b0969c71db2459fcb11ac",
+  "annualWitnessLenzburgPolicySha256": "e3ea36bd06e1422ee181265769f607098a11944fcfec6d54fd7d59e9f33da935",
   "annualWitnessSchupfartReviewSha256": "3f111814397124771a972a1a234bc10ac5ed64aed064c3e1194b8650f66d4eb0",
   "annualWitnessSchupfartPolicySha256": "e5658558e1d96193b1e8413a7dc04277469f74bbbfec0ccc8ea05b6ca2199d0c",
   "annualWitnessOberentfeldenDetourSha256": "e66e835f7193f31d5ace76c583fd77436b5234d5549c1a21d865c06392ddd90d",
@@ -38,7 +40,7 @@
     "2026-10-03",
     "2026-10-10"
   ],
-  "unresolvedWitnessTemplateOccurrences": 2690,
+  "unresolvedWitnessTemplateOccurrences": 2108,
   "line344ReviewSha256": "237ef174a6749dc5cf4193b04944575287db0fb001eebc2be2fb2bca6b4dfc4c",
   "addedSimplonOccurrences": 2,
   "simplonPolicySha256": "11ef73dd48c490bf1be4e5bbb3c5b62522b8665077cf6c2d6e117a83d7232699",
@@ -6086,7 +6088,7 @@
   ],
   "remainingWork": [
     "Review AGIS/OSM bus disagreements against dated operator itineraries and legal direction evidence; the 30 m diagnostic alone cannot choose the correct source.",
-    "Resolve the remaining witness geometry: 2,690 bus template occurrences across 79 incomplete patterns, including AVA timing/diversion and Schupfart zero-second holds; then extract and independently validate full civil days before extending the release scope.",
+    "Resolve the remaining witness geometry: 2,108 bus template occurrences across 73 incomplete patterns, including AVA timing/diversion, Schupfart zero-second and Lenzburg stop-distance holds; then extract and independently validate full civil days before extending the release scope.",
     "Disambiguate the repeated local hour before promoting 25 October as an elapsed-time feed.",
     "Integrate reviewed fixtures into application study selection, date loading and attribution, then run browser release checks."
   ]

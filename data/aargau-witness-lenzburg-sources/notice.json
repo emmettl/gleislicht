@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "url": "https://news.sbb.ch/de/019daf71-e5e3-7f0c-8713-4d64db53c698/bauarbeiten-in-lenzburg-fuehren-zu-einschraenkungen-im-bahnverkehr",
+  "title": "Bauarbeiten in Lenzburg führen zu Einschränkungen im Bahnverkehr",
+  "publicationDate": "2026-04-22",
+  "retrievedOn": "2026-09-09",
+  "retrievalTimezone": "Europe/Zurich",
+  "attribution": "SBB/CFF/FFS (text)",
+  "access": "Primary SBB article read through web retrieval. Direct host curl returned HTTP 403. This record is a short excerpt plus reviewed facts, not an archived raw HTML response.",
+  "excerpt": "Die S-Bahnen und Regionalzüge ab und nach Lenzburg fallen aus, und es verkehren Bahnersatzbusse.",
+  "facts": {
+    "closureStartDate": "2026-05-23",
+    "closureEndDate": "2026-05-26",
+    "closedRailCorridors": [
+      [
+        "Rupperswil",
+        "Lenzburg",
+        "Othmarsingen"
+      ],
+      [
+        "Hunzenschwil",
+        "Lenzburg"
+      ],
+      [
+        "Beinwil am See",
+        "Lenzburg"
+      ]
+    ],
+    "cause": "Commissioning the new Lenzburg signalling system",
+    "replacementBusesConfirmed": true
+  },
+  "limitations": [
+    "Notice establishes disruption dates and rail corridors, not EV labels, full bus platform chains, exact call times or street itineraries.",
+    "Source trip IDs, complete bus calls and calendars come from the independently verified archived GTFS.",
+    "The current project restrictions page no longer describes the past May closure and is not used to infer historical absence of disruption."
+  ]
+}
