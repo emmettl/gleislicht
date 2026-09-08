@@ -6,6 +6,7 @@ import { directedPatternKey } from './zug-line-geometry.mjs'
 import { graubuendenCablewayPattern } from './graubuenden-cableways.mjs'
 import { graubuendenCablewayTrials } from './graubuenden-cableway-trials.mjs'
 import { sha256 } from './download-luzern-sources.mjs'
+import { graubuendenSectionTrials } from './graubuenden-section-trials.mjs'
 import { matchLuzernCableway } from './luzern-cableway-geometry.mjs'
 const raw = await readJson('data/graubuenden-audit/timetable.json.gz'), policy = await readJson('data/graubuenden-policy.json')
 const current = await loadGraubuendenGeometry(policy, raw), baseline = await loadGraubuendenGeometry({ ...policy, cablewayReview: null }, raw)
@@ -20,10 +21,13 @@ const ninePaths = new Map(JSON.parse(ninePathsBytes).map(p => [p.id, p]))
 const tenPathsBytes = await readFile('data/graubuenden-cableway-sources/ten-route-paths.json')
 assert.equal(sha256(tenPathsBytes), current.cableways.review.tenRoutePathsSha256)
 const tenPaths = new Map(JSON.parse(tenPathsBytes).map(p => [p.id, p]))
+const elevenBytes = await readFile('data/graubuenden-cableway-sources/eleven-route-paths.json')
+assert.equal(sha256(elevenBytes), current.cableways.review.elevenRoutePathsSha256)
+const elevenPaths = new Map(JSON.parse(elevenBytes).map(p => [p.id, p]))
 const initial = await readJson('data/graubuenden-cableway-sources/initial-policy.json'), stops = new Map(raw.stops.map(s => [s.stop_id, s]))
 const memo = new Map(), days = [], admitted = (t, pairs) => pairs.every(p => p.path) && t.calls.every(c => !['2', '3'].includes(c.pickupType) && !['2', '3'].includes(c.dropOffType))
 for (const day of raw.snapshots) {
-  const result = { date: day.date, candidates: day.trains.length, baselineAdmitted: 0, admitted: 0, added: 0, addedHeadwayInstances: 0, addedScheduledInstances: 0, preservedJourneys: 0, preservedNonMountainPatterns: 0, priorCablewayScopeAdmitted: 0, expansionAdded: 0, expansionHeadways: 0, sixRouteScopeAdmitted: 0, funicularAdded: 0, funicularHeadways: 0, laterAerialAdded: 0, tenRouteScopeAdmitted: 0, upperChurAdded: 0 }
+  const result = { date: day.date, candidates: day.trains.length, baselineAdmitted: 0, admitted: 0, added: 0, addedHeadwayInstances: 0, addedScheduledInstances: 0, preservedJourneys: 0, preservedNonMountainPatterns: 0, priorCablewayScopeAdmitted: 0, expansionAdded: 0, expansionHeadways: 0, sixRouteScopeAdmitted: 0, funicularAdded: 0, funicularHeadways: 0, laterAerialAdded: 0, tenRouteScopeAdmitted: 0, upperChurAdded: 0, elevenRouteScopeAdmitted: 0, arosaAdded: 0 }
   const seen = new Set()
   for (const t of day.trains) {
     const key = directedPatternKey(t), route = routes.get(t.routeId)
@@ -38,6 +42,8 @@ for (const day of raw.snapshots) {
       if (nineSaved) assert.deepEqual(after, nineSaved.pairs, 'Changed nine-route baseline geometry')
       const tenSaved = tenPaths.get(sha256(key).slice(0, 20))
       if (tenSaved) assert.deepEqual(after, tenSaved.pairs, 'Changed ten-route baseline geometry')
+      const elevenSaved = elevenPaths.get(sha256(key).slice(0, 20))
+      if (elevenSaved) assert.deepEqual(after, elevenSaved.pairs, 'Changed eleven-route baseline geometry')
       if (admitted(t, previous)) assert.deepEqual(after, previous, 'Changed prior cableway scope geometry')
       if (route.mode !== 'mountain') assert.deepEqual(after, before, 'Changed existing rail/bus/other geometry')
       if (admitted(t, before)) assert.deepEqual(after, before, 'Changed previously admitted journey')
@@ -50,7 +56,10 @@ for (const day of raw.snapshots) {
     if (now && !priorSix && route.routeType === 1300) result.laterAerialAdded++
     const priorTen = was || tenPaths.has(p.id) && admitted(t, tenPaths.get(p.id).pairs)
     result.tenRouteScopeAdmitted += Number(priorTen)
-    if (now && !priorTen) { assert.equal(t.routeId, '93-288-0-j26-1'); result.upperChurAdded++ }
+    if (now && !priorTen && t.routeId === '93-288-0-j26-1') result.upperChurAdded++
+    const priorEleven = was || elevenPaths.has(p.id) && admitted(t, elevenPaths.get(p.id).pairs)
+    result.elevenRouteScopeAdmitted += Number(priorEleven)
+    if (now && !priorEleven) { assert.equal(t.routeId, '93-291-0-j26-1'); result.arosaAdded++ }
     const prior = admitted(t, p.previous)
     result.priorCablewayScopeAdmitted += Number(prior)
     if (now && !prior) { result.expansionAdded++; result.expansionHeadways += Number(t.frequency?.exactTimes === 0) }
@@ -64,6 +73,8 @@ for (const day of raw.snapshots) {
 const additions = [...memo.values()].filter(p => !admitted(p.train, p.before) && admitted(p.train, p.after))
 assert.deepEqual(additions.map(p => p.id).sort(), current.cableways.review.patternIds, 'Review must admit exactly its complete patterns')
 const network = current.cableways.network
+const arosaMiddleStations = ['8509282', '8530998'].map(number => network.stations.find(s => s.number === number))
+assert.deepEqual(arosaMiddleStations[0].coordinate, arosaMiddleStations[1].coordinate, 'Changed Arosa middle-station co-location')
 const samnaunIdentity = { routeId: '93-7J-Y-j26-1', agencyId: '3161', line: 'PB', sourceOperator: '1146', segments: [{ installation: '71.133', stopNumbers: ['8530609', '8530610'], sourceStationNumbers: ['8531284', '8531285'], aliasReason: 'Diagnostic only: shared Samnaun timetable stops tested against the separate Ravaisch I / Alptrider Sattel I source stations. The operating L2 crosswalk and long connectors remain unapproved.' }] }
 const samnaun = network.installations.find(i => i.number === '71.133')
 const samnaunPatterns = [...memo.values()].filter(p => p.routeId === samnaunIdentity.routeId).map(p => ({ id: p.id, stopIds: p.train.calls.map(c => c.id), pairs: p.train.calls.slice(1).map((c, i) => matchLuzernCableway(network, { routes: [samnaunIdentity], limits: { ...current.cableways.review.limits, stationAttachmentMetres: 130 } }, routes.get(p.routeId), stops.get(p.train.calls[i].id), stops.get(c.id), raw.dates)) }))
@@ -95,6 +106,7 @@ const review = { schemaVersion: 1, timetableSha256: policy.timetableSha256, poli
   scope: 'Every annual canton-calling mountain route. Identity leads are exact station-number overlaps only; they do not approve installations, operators, aliases, routes or journeys. Inactive routes use annual in-canton calls, not an invented dated full journey.',
   annualMountainRoutes: inventory.length, sourceInstallations: network.installations.length, sourceStations: network.stations.length, sourceSegments: network.segments.length,
   funicularReview: { sixRoutePolicySha256: current.cableways.review.sixRoutePolicySha256, preservedPaths: priorPaths.size, inventory: inventory.filter(r => r.routeType === 1400) },
+  additionalSections: { elevenRoutePathsSha256: current.cableways.review.elevenRoutePathsSha256, preservedPaths: elevenPaths.size, arosaMiddleStations, trials: graubuendenSectionTrials(raw, network, current.cableways.review) },
   sectionReview: { nineRoutePathsSha256: current.cableways.review.nineRoutePathsSha256, preservedPaths: ninePaths.size, upperParsenn: current.cableways.review.routes.find(r => r.routeId === '93-71-Y-j26-1'),
     upperChur: { identity: upperChur, tenRoutePathsSha256: current.cableways.review.tenRoutePathsSha256, preservedPaths: tenPaths.size, timetable: upperChurTimetable, interpretation: 'Original individually encoded source trips, every 60 seconds in both directions, with eight-minute journeys and no GTFS frequency marker. Preserve the source IDs, full calls, boundary departures and arrivals after closing. This dense service grid is not independent evidence of distinct cabins or exact observed departures.' },
     samnaunAlternative: { disposition: 'diagnostic-only-not-admitted', note: '71.133 Ravaisch I is an alternative source lead, not an approved L2 identity. The 130 m diagnostic ceiling exposes both full paths; it grants no runtime exception. The measured 45.79/117.08 m shared-stop attachments need independent installation and access review.', identity: samnaunIdentity, installation: samnaun, stations: network.stations.filter(s => s.installation === samnaun.id), segments: network.segments.filter(s => s.installation === samnaun.id), patterns: samnaunPatterns } },
