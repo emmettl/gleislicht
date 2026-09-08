@@ -14,6 +14,8 @@ export function gleislichtRoadRenderer(): Plugin {
         if (code.split(before).length !== 2) throw new Error(`Gleislicht road hook needs review: ${before}`)
         code = code.replace(before, after)
       }
+      replace("import { nationalRoadConditionsAtTime, } from '@motionstudies/core/domain/road-day';",
+        'import { nationalRoadConditionsAtTime } from "/src/studies/road-conditions.ts";')
       // Geometry stays visible with no observations, including during selection.
       replace('color: "#ffb36b", transparent: true, opacity: selectedRoadId ? 0.008 : subdued ? 0.018 : 0.062, blending: THREE.AdditiveBlending, depthWrite: false',
         'color: "#a0a6b2", transparent: true, opacity: selectedRoadId ? 0.25 : subdued ? 0.2 : 0.45, blending: THREE.AdditiveBlending, depthTest: false, depthWrite: false, toneMapped: false')

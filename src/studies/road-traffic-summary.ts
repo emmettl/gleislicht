@@ -1,4 +1,5 @@
-import { nationalRoadConditionsAtTime, type NationalRoadStudySnapshot } from '@motionstudies/core/domain/road-day'
+import type { NationalRoadStudySnapshot } from '@motionstudies/core/domain/road-day'
+import { nationalRoadConditionsAtTime } from './road-conditions.ts'
 import { roadConditionsAtTime, trafficDensity, type RoadTrafficConditions, type RoadTrafficSnapshot } from '@motionstudies/core/domain/road'
 
 export interface RoadTrafficSummary {

@@ -96,7 +96,7 @@ import {
   type RoadTopologySnapshot,
   type RoadTrafficSnapshot,
 } from '@motionstudies/core/domain/road'
-import { reconstructedNationalVehicleCount } from '@motionstudies/core/domain/road-day'
+import { reconstructedNationalVehicleCount } from './studies/road-conditions.ts'
 import {
   roadCorridorSearchValue,
   searchRoadCorridors,
@@ -1675,6 +1675,11 @@ export function App({ edition }: AppProps) {
               ? text.operationsStale
               : `${realtimeSnapshot?.metadata.kind === 'live' ? text.operationsLive : text.operationsDemo} · ${realtimeApplication.summary.adjusted} adjusted · ${realtimeApplication.summary.cancelled} cancelled`
   const timeline = isHub ? (hubDay?.metadata ?? network?.metadata) : network?.metadata
+  const timelineServiceDate = timeline?.serviceDate
+  const studyDateLabel = useMemo(
+    () => timelineServiceDate ? formatStudyDate(timelineServiceDate, LANGUAGE_LOCALES[language]) : text.studyDate,
+    [timelineServiceDate, language, text.studyDate],
+  )
   const timelineTime = isHub ? hubTime : networkTime
   const timelineReady = isTimetable && timeline
   const hasFullDayTimeline = Boolean(
@@ -1962,12 +1967,7 @@ export function App({ edition }: AppProps) {
               <span>{motionStudyMark(edition.identity)}</span>
               <span className="coordinate">
                 {isTimetable
-                  ? timeline?.serviceDate
-                    ? formatStudyDate(
-                        timeline.serviceDate,
-                        LANGUAGE_LOCALES[language],
-                      )
-                    : text.studyDate
+                  ? studyDateLabel
                   : journeyCorridorId === 'kiental-griesalp'
                     ? '46.582° N · 7.730° E'
                     : '47.194° N · 9.312° E'}
