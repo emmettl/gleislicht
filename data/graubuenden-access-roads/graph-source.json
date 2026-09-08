@@ -1,0 +1,21 @@
+{
+  "sourceUrl": "https://download.geofabrik.de/europe/switzerland.html",
+  "parentPbfSha256": "39257b1c92a45da38ca94ddb745bdcf53551d0e66b02d89f3de3e7c064c3a29f",
+  "sourceDate": "2026-09-02",
+  "osmSha256": "06e1be74a400233fa0bfbda8a37e7802b3e5a40b6d6e8a37f941edec275edf5c",
+  "binarySha256": "6d193a755bc22c45516f8bce7594bb30e07a2632a5ef049a95915b262406cbd8",
+  "matcherCommit": "99f2cd466696ecc6bdb73b2b3bb9008557fcb84a",
+  "args": [
+    "-x",
+    "/private/tmp/gleislicht-switzerland-260902.osm.pbf",
+    "-c",
+    "data/graubuenden-access-roads/filter.cfg",
+    "-i",
+    "/private/tmp/graubuenden-access-feed",
+    "-m",
+    "bus",
+    "-X",
+    "/private/tmp/graubuenden-access-network.osm"
+  ],
+  "note": "Filtered from the original Swiss PBF with the complete Graubünden review input. pfaedle applies input-dependent bounding boxes as well as tag filters. Foreign coverage is limited by the original extract; no national extent is claimed."
+}

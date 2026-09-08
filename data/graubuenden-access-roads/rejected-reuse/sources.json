@@ -1,0 +1,19 @@
+{
+  "description": "Preserved Geofabrik Switzerland 2026-09-02 service-road graph; 20 m pfaedle stop candidates; whole Graubünden rejected-route patterns",
+  "attribution": "© OpenStreetMap contributors",
+  "license": "ODbL-1.0",
+  "licenseUrl": "https://www.openstreetmap.org/copyright",
+  "parentSourceDirectory": "data/luzern-access-road-sources",
+  "parentSourceSha256": "4d47d6dbfa4844545d7030b0de512df36da4b95f224b222a8bff19b0e4aa1509",
+  "selectionSha256": "134cc29bec6dba979eace329f7e2062921ada6bf652f925326653d6b4020ee3b",
+  "cacheSha256": "6427aaa7fa6d7812bf4a4ad7bdd69a0537bf1c22266998290b5afdfdfba43831",
+  "files": {
+    "patterns.json": "8dbd79fba90896874a8136802ec19f7a7f2cd7cc48608a9f36fa416b57254a8f",
+    "matching.log": "8afb60be501c5052169af99c56cd549ab374d40f224f2bf2592409d2d3ed10cd",
+    "shapes.txt": "939982730dcb18e3362be9d92e7d85c913750c168bca9e3c5dd1838a5363108b",
+    "trips.txt": "7649b8f373d4cea6d91b0674c65a464c2ea4633f1647707ce37a6de79a7ee9c1",
+    "stop_times.txt": "aa02392d65ae08fd1810814dec8ca0ea7ffaed6011c3ed1a5a3e9f509af00772",
+    "routing-run.json": "d85e5e269713085e69ab1305420651f61a67b5b32b9a190a2cbd05cc7b885de9"
+  },
+  "scope": "Inferred geometry from a Switzerland-only extract with service roads retained. No guarantee of foreign-road completeness, physical direction, seasonal access or operator-certified itinerary. Original access/turn rules remain; the primary whole-pattern feed takes priority."
+}

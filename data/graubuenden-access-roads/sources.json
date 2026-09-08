@@ -1,0 +1,60 @@
+{
+  "description": "Preserved Geofabrik Switzerland 2026-09-02 service-road graph; 20 m pfaedle stop candidates; whole Graubünden rejected-route patterns",
+  "attribution": "© OpenStreetMap contributors",
+  "license": "ODbL-1.0",
+  "licenseUrl": "https://www.openstreetmap.org/copyright",
+  "graphSourceSha256": "f90488c014b32d3152a8c5f326cee129ac216d53e92b02e3f5eeeb3c5ad1dd3a",
+  "graph": {
+    "sourceUrl": "https://download.geofabrik.de/europe/switzerland.html",
+    "parentPbfSha256": "39257b1c92a45da38ca94ddb745bdcf53551d0e66b02d89f3de3e7c064c3a29f",
+    "sourceDate": "2026-09-02",
+    "osmSha256": "06e1be74a400233fa0bfbda8a37e7802b3e5a40b6d6e8a37f941edec275edf5c",
+    "binarySha256": "6d193a755bc22c45516f8bce7594bb30e07a2632a5ef049a95915b262406cbd8",
+    "matcherCommit": "99f2cd466696ecc6bdb73b2b3bb9008557fcb84a",
+    "args": [
+      "-x",
+      "/private/tmp/gleislicht-switzerland-260902.osm.pbf",
+      "-c",
+      "data/graubuenden-access-roads/filter.cfg",
+      "-i",
+      "/private/tmp/graubuenden-access-feed",
+      "-m",
+      "bus",
+      "-X",
+      "/private/tmp/graubuenden-access-network.osm"
+    ],
+    "note": "Filtered from the original Swiss PBF with the complete Graubünden review input. pfaedle applies input-dependent bounding boxes as well as tag filters. Foreign coverage is limited by the original extract; no national extent is claimed."
+  },
+  "selectionSha256": "2a6ad0e11c6b114b46eda2b5e0b6c62c44db4301aebda4fb6e07e4b34ee1a771",
+  "cacheSha256": "2feb6073d303e8ac6015bc406c296c836db35c3ee65526b31e7705d6a818167c",
+  "files": {
+    "patterns.json": "113dd84d13e4af3e2b326247c840af8af721c3a52a56aec0cca0941f4bbc8633",
+    "matching.log": "39bc67babd403d161ac1281ac3f5d00966a8a038c8bc9ee7b26cf10552c29596",
+    "shapes.txt": "885f39858177accb53176b9cadf096f57a51ca835b2d518521769215d711eb2e",
+    "trips.txt": "8d90361be93dc76337062678cd4fbdf268dfebc593bc0edfa1aaf258bc1054e9",
+    "stop_times.txt": "da96d02e8035b679d4563dbc3f8bc3f458c3db96a5384bb37aae16b10d6e21cc",
+    "routing-run.json": "7e81729d9c59dfff88c0a4ff99ca8d6795b93c17744edd6eb313c996185672b8"
+  },
+  "scope": "Inferred geometry from a Switzerland-only extract with service roads retained. No guarantee of foreign-road completeness, physical direction, seasonal access or operator-certified itinerary. Original access/turn rules remain; the primary whole-pattern feed takes priority.",
+  "graphFiles": {
+    "filter.cfg": "2f768e1f73689795430ae71365cbb11dc5ae798a8c5004bb13b56fd42b51ca38",
+    "routing.cfg": "b83f29bb3f3435cdd138a7aaf0609eac69877c67ce2776243f8372979e49b2de",
+    "pfaedle-LICENSE": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+    "filtering.log.gz": "fa0acd7e7b7862b34cc61adfaa6bd8be0c9b7ece835beea573b93dc291ec69af",
+    "filter-patterns.json.gz": "6025b8443b7057b514665005949d9868fc721cbe897bf93a40188c1e72f3fc3f",
+    "parent-source.json": "4d47d6dbfa4844545d7030b0de512df36da4b95f224b222a8bff19b0e4aa1509"
+  },
+  "rejectedReuse": {
+    "directory": "rejected-reuse",
+    "sourceGraphSha256": "941011f1604f03c910adc330b5e3772a66d088a998bc10d52291c27bc54c693f",
+    "nodeCount": 1724783,
+    "bounds": [
+      7.3402929,
+      46.6281758,
+      8.5914958,
+      47.4548652
+    ],
+    "graubuendenBoxNodeCount": 0,
+    "note": "The inherited Luzern graph has no Graubünden overlap. Its national-source wording does not describe its spatial extent. All 187 trial patterns were rejected; only configurations were reused for a fresh GR-specific filtering run."
+  }
+}

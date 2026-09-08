@@ -411,5 +411,9 @@
   "railAnchorReview": {
     "policySha256": "c54553e333aff0c50d49746a997685c4a223aaaba5af4e1b876b3281b782e0bf",
     "description": "Explicit station positions on two existing RhB source curves, confined to R4/RE4/R15/R28 on the pinned fixtures. Both source curves remain intact as two joined slices. The old Sagliains source node stays as a junction, with its station-number lookup redirected to the reviewed derived anchor. Original timetable IDs and coordinates remain unchanged. No running-track or platform access certification."
+  },
+  "roadAccessReview": {
+    "sourceSha256": "775e9412b2f37830ae4a1e17ebd62ce558f1c52270861239e397423cc90bc806",
+    "policySha256": "d4d50d5ed2aceff32acb792b7dcdb478f0ffa29e54b78388d244fb4eeb9c6007"
   }
 }

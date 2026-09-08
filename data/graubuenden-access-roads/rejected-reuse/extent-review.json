@@ -1,0 +1,13 @@
+{
+  "directory": "rejected-reuse",
+  "sourceGraphSha256": "941011f1604f03c910adc330b5e3772a66d088a998bc10d52291c27bc54c693f",
+  "nodeCount": 1724783,
+  "bounds": [
+    7.3402929,
+    46.6281758,
+    8.5914958,
+    47.4548652
+  ],
+  "graubuendenBoxNodeCount": 0,
+  "note": "The inherited Luzern graph has no Graub\u00fcnden overlap. Its national-source wording does not describe its spatial extent. All 187 trial patterns were rejected; only configurations were reused for a fresh GR-specific filtering run."
+}

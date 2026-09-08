@@ -398,7 +398,7 @@ Status refers to the strongest **local line-geometry evidence**, not the availab
 
 **Initial study:** [Full methodology, reuse and exclusions](GRAUBUENDEN-STUDY.md) · [Every annual route](GRAUBUENDEN-ROUTE-INVENTORY.md) · [Coverage audit](../data/graubuenden-audit/summary.json).
 
-The entire pinned national GTFS census finds **380 routes across 67 agency identities** with a call in the complete GR canton polygon. Every fixture journey retains all calls, including external termini. The validated initial application scope admits **6,370 Friday / 5,174 Sunday complete journeys**, using reviewed FOT gauge/operator topology and attributed OSM full-pattern bus matching. Inactive seasonal records and excluded mountain, boat and other services remain in the denominator.
+The entire pinned national GTFS census finds **380 routes across 67 agency identities** with a call in the complete GR canton polygon. Every fixture journey retains all calls, including external termini. The validated initial application scope admits **6,515 Friday / 5,293 Sunday complete journeys**, using reviewed FOT gauge/operator topology and attributed OSM full-pattern bus matching. Inactive seasonal records and excluded mountain, boat and other services remain in the denominator.
 
 **Official local investigation:** current GeoGR pages and official map-search documentation confirm transport layers, including local/night buses, PostAuto, rail and mountain services. The metadata catalogue and its embedded service inventory still return ORA-24415 inside HTTP 200. No current operational local line export with verified identifiers, vintage and dataset-specific reuse was acquired. All request outcomes and compressed evidence are saved in [source probes](../data/graubuenden-sources/probes.json).
 
@@ -407,6 +407,8 @@ The entire pinned national GTFS census finds **380 routes across 67 agency ident
 **Rail follow-up:** explicit reviewed attachments on the existing Sagliains–Lavin and Alvaneu–Filisur curves recover 100 Friday / 86 Sunday complete journeys, including the Viaduktshuttle. Original accepted paths remain identical; no primary distance limit was raised. [Before/after audit](../data/graubuenden-audit/rail-anchor-review.json).
 
 **Next action:** obtain and review official local line exports and terms; resolve Bern platform 50 and Basel border topology, border/valley bus geometry and seasonal or mountain-service coverage. Existing graph limits remain unchanged.
+
+The [complete bus-pattern review](GRAUBUENDEN-BUS-REVIEW.md) evaluates all 187 patterns on all 24 routes with a previously excluded bus journey and admits 35 newly complete road patterns: +145 Friday / +119 Sunday, with every earlier complete path unchanged. A fresh GR-specific service-road graph replaces a rejected reuse experiment whose actual extent had no GR overlap. Both results and every trial disposition are preserved. The [twelve-date seasonal inventory](GRAUBUENDEN-SEASONAL-STUDY.md) checks 374,218 complete source journey instances and finds 58 additional active route records; its extra dates and geometry remain audit-only.
 
 <a id="ag"></a>
 

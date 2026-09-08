@@ -1,0 +1,739 @@
+{
+  "schemaVersion": 1,
+  "routes": [
+    {
+      "routeId": "92-420-C-j26-1",
+      "agencyId": "865",
+      "line": "420"
+    },
+    {
+      "routeId": "92-557-A-j26-1",
+      "agencyId": "7081",
+      "line": "557"
+    },
+    {
+      "routeId": "92-593-A-j26-1",
+      "agencyId": "3257",
+      "line": "593"
+    },
+    {
+      "routeId": "92-701-C-j26-1",
+      "agencyId": "865",
+      "line": "701"
+    },
+    {
+      "routeId": "92-702-B-j26-1",
+      "agencyId": "865",
+      "line": "702"
+    },
+    {
+      "routeId": "92-705-C-j26-1",
+      "agencyId": "712",
+      "line": "705"
+    },
+    {
+      "routeId": "92-707-A-j26-1",
+      "agencyId": "712",
+      "line": "707"
+    },
+    {
+      "routeId": "92-707-j26-1",
+      "agencyId": "712",
+      "line": "707"
+    },
+    {
+      "routeId": "92-815-A-j26-1",
+      "agencyId": "712",
+      "line": "815"
+    },
+    {
+      "routeId": "92-N34-A-j26-1",
+      "agencyId": "740",
+      "line": "N34"
+    },
+    {
+      "routeId": "96-260-2-j26-1",
+      "agencyId": "801",
+      "line": "41"
+    },
+    {
+      "routeId": "96-260-7-j26-1",
+      "agencyId": "801",
+      "line": "25"
+    },
+    {
+      "routeId": "96-262-1-j26-1",
+      "agencyId": "801",
+      "line": "581"
+    },
+    {
+      "routeId": "96-263-3-j26-1",
+      "agencyId": "801",
+      "line": "572"
+    },
+    {
+      "routeId": "96-264-2-j26-1",
+      "agencyId": "801",
+      "line": "111"
+    },
+    {
+      "routeId": "96-266-0-j26-1",
+      "agencyId": "801",
+      "line": "183"
+    },
+    {
+      "routeId": "96-269-7-j26-1",
+      "agencyId": "801",
+      "line": "218"
+    },
+    {
+      "routeId": "96-273-4-j26-1",
+      "agencyId": "801",
+      "line": "14"
+    },
+    {
+      "routeId": "96-276-0-j26-1",
+      "agencyId": "801",
+      "line": "411"
+    },
+    {
+      "routeId": "96-281-1-j26-1",
+      "agencyId": "801",
+      "line": "491"
+    },
+    {
+      "routeId": "96-292-1-j26-1",
+      "agencyId": "801",
+      "line": "702"
+    },
+    {
+      "routeId": "96-292-2-j26-1",
+      "agencyId": "801",
+      "line": "712"
+    },
+    {
+      "routeId": "96-292-D-j26-1",
+      "agencyId": "801",
+      "line": "713"
+    },
+    {
+      "routeId": "96-305-0-j26-1",
+      "agencyId": "801",
+      "line": "900"
+    }
+  ],
+  "admittedPatternIds": [
+    "0002e6a40cf79209b001946c",
+    "0060cc3ac28a79eeffc13c43",
+    "01bf76cfb003b462d7055b95",
+    "125396ba95cf4fe2a00d939f",
+    "167413d8e33c8c35991bb5c1",
+    "17d2bc9e86ba8110b70334b5",
+    "1aeafd5ed3cc1c1da385963a",
+    "2c79205c2b5156d10adc51b4",
+    "2e9e9b332f43fd577e8076a5",
+    "2f38106a99f85b660a489c2d",
+    "3ae319755d2123a3c9045102",
+    "440d04568e697cd10cfa633a",
+    "55c511e9d424178ee5ffe0c1",
+    "56417f7cccdf7ba5936df67c",
+    "5a0bdda48879e26049d149e9",
+    "73f0fb248ef37ccd3152f313",
+    "7401de09751b1fd5e4d63dd8",
+    "8870ae3b12e5fc6a57cebb6c",
+    "8cf6dcbef3e7175eea62c8fa",
+    "99c71026440635a8db8fddf8",
+    "9a1023e302f327b6b985e4d4",
+    "9cf40d9feff11095a63913f6",
+    "ab093054b0403244793a09e3",
+    "adabfe3f82dfa513d528c581",
+    "adcf887f91c63bf080c3753c",
+    "bd2d0467eb4a5fa064385241",
+    "c2b1105ddd380350e92b04e9",
+    "ce8659ae312e8cde8767fc86",
+    "d0c2e3b71aba961ad6777009",
+    "e956ba7f786db69bee6764e7",
+    "f0053ba8a96af42a9ff50013",
+    "f0c5e16242607cc9434774ab",
+    "f30bc7ec00a3493cbd63671b",
+    "f498ff23102d1609f4ef2e15",
+    "fdcb3c5b97d7d1ad2b59f8e2"
+  ],
+  "baselineGains": [
+    {
+      "date": "2026-09-04",
+      "id": "7c0733ae6d8ee125600a",
+      "roadPatternId": "f0c5e16242607cc9434774ab",
+      "routeId": "92-420-C-j26-1",
+      "trips": 13,
+      "originalReasons": [
+        "road-missing-shape"
+      ]
+    },
+    {
+      "date": "2026-09-04",
+      "id": "3b87c801c9410c4edd5b",
+      "roadPatternId": "0002e6a40cf79209b001946c",
+      "routeId": "92-593-A-j26-1",
+      "trips": 4,
+      "originalReasons": [
+        "road-stop-too-far"
+      ]
+    },
+    {
+      "date": "2026-09-04",
+      "id": "da507909947e61dacc41",
+      "roadPatternId": "5a0bdda48879e26049d149e9",
+      "routeId": "92-593-A-j26-1",
+      "trips": 4,
+      "originalReasons": [
+        "road-stop-too-far"
+      ]
+    },
+    {
+      "date": "2026-09-04",
+      "id": "d54e471cf9916b84635b",
+      "roadPatternId": "440d04568e697cd10cfa633a",
+      "routeId": "92-N34-A-j26-1",
+      "trips": 4,
+      "originalReasons": [
+        "road-missing-shape",
+        "road-stop-too-far"
+      ]
+    },
+    {
+      "date": "2026-09-04",
+      "id": "90d2333800e70120e6ae",
+      "roadPatternId": "2e9e9b332f43fd577e8076a5",
+      "routeId": "92-N34-A-j26-1",
+      "trips": 5,
+      "originalReasons": [
+        "road-stop-too-far",
+        "road-missing-shape"
+      ]
+    },
+    {
+      "date": "2026-09-04",
+      "id": "0f9e5a4ccf2e3a0779c5",
+      "roadPatternId": "0060cc3ac28a79eeffc13c43",
+      "routeId": "92-N34-A-j26-1",
+      "trips": 5,
+      "originalReasons": [
+        "road-short-path"
+      ]
+    },
+    {
+      "date": "2026-09-04",
+      "id": "ba85674f4aeaa224b02d",
+      "roadPatternId": "56417f7cccdf7ba5936df67c",
+      "routeId": "96-260-2-j26-1",
+      "trips": 5,
+      "originalReasons": [
+        "road-stop-too-far"
+      ]
+    },
+    {
+      "date": "2026-09-04",
+      "id": "a574d6212f6c286a1503",
+      "roadPatternId": "7401de09751b1fd5e4d63dd8",
+      "routeId": "96-260-2-j26-1",
+      "trips": 3,
+      "originalReasons": [
+        "road-stop-too-far"
+      ]
+    },
+    {
+      "date": "2026-09-04",
+      "id": "8b318205b9df85a5dfb3",
+      "roadPatternId": "c2b1105ddd380350e92b04e9",
+      "routeId": "96-260-2-j26-1",
+      "trips": 4,
+      "originalReasons": [
+        "road-stop-too-far"
+      ]
+    },
+    {
+      "date": "2026-09-04",
+      "id": "b0e2d2fc1c94364168f6",
+      "roadPatternId": "9a1023e302f327b6b985e4d4",
+      "routeId": "96-260-2-j26-1",
+      "trips": 2,
+      "originalReasons": [
+        "road-stop-too-far"
+      ]
+    },
+    {
+      "date": "2026-09-04",
+      "id": "69b24a3c6ecc16a63f53",
+      "roadPatternId": "f498ff23102d1609f4ef2e15",
+      "routeId": "96-260-7-j26-1",
+      "trips": 2,
+      "originalReasons": [
+        "road-missing-shape",
+        "road-stop-too-far"
+      ]
+    },
+    {
+      "date": "2026-09-04",
+      "id": "f1b5f80228bc8d08d144",
+      "roadPatternId": "2f38106a99f85b660a489c2d",
+      "routeId": "96-262-1-j26-1",
+      "trips": 3,
+      "originalReasons": [
+        "road-stop-too-far"
+      ]
+    },
+    {
+      "date": "2026-09-04",
+      "id": "d9f5a85830b2baa9661f",
+      "roadPatternId": "125396ba95cf4fe2a00d939f",
+      "routeId": "96-262-1-j26-1",
+      "trips": 1,
+      "originalReasons": [
+        "road-stop-too-far"
+      ]
+    },
+    {
+      "date": "2026-09-04",
+      "id": "9eb92ac3fae932187222",
+      "roadPatternId": "8cf6dcbef3e7175eea62c8fa",
+      "routeId": "96-262-1-j26-1",
+      "trips": 2,
+      "originalReasons": [
+        "road-stop-too-far"
+      ]
+    },
+    {
+      "date": "2026-09-04",
+      "id": "7d5b01e1b04a03dbcad9",
+      "roadPatternId": "17d2bc9e86ba8110b70334b5",
+      "routeId": "96-262-1-j26-1",
+      "trips": 1,
+      "originalReasons": [
+        "road-stop-too-far"
+      ]
+    },
+    {
+      "date": "2026-09-04",
+      "id": "e48f319c51a4dc3db902",
+      "roadPatternId": "e956ba7f786db69bee6764e7",
+      "routeId": "96-263-3-j26-1",
+      "trips": 4,
+      "originalReasons": [
+        "road-stop-too-far",
+        "road-missing-shape"
+      ]
+    },
+    {
+      "date": "2026-09-04",
+      "id": "6fd0a2fc56322fe90a07",
+      "roadPatternId": "f30bc7ec00a3493cbd63671b",
+      "routeId": "96-263-3-j26-1",
+      "trips": 9,
+      "originalReasons": [
+        "road-stop-too-far",
+        "road-missing-shape"
+      ]
+    },
+    {
+      "date": "2026-09-04",
+      "id": "a8f9030172491870d0c7",
+      "roadPatternId": "9cf40d9feff11095a63913f6",
+      "routeId": "96-263-3-j26-1",
+      "trips": 1,
+      "originalReasons": [
+        "road-stop-too-far",
+        "road-missing-shape"
+      ]
+    },
+    {
+      "date": "2026-09-04",
+      "id": "f68f95b38714aa4629f0",
+      "roadPatternId": "01bf76cfb003b462d7055b95",
+      "routeId": "96-263-3-j26-1",
+      "trips": 3,
+      "originalReasons": [
+        "road-stop-too-far",
+        "road-missing-shape"
+      ]
+    },
+    {
+      "date": "2026-09-04",
+      "id": "797d7d57713bced1144e",
+      "roadPatternId": "ab093054b0403244793a09e3",
+      "routeId": "96-263-3-j26-1",
+      "trips": 1,
+      "originalReasons": [
+        "road-stop-too-far",
+        "road-missing-shape"
+      ]
+    },
+    {
+      "date": "2026-09-04",
+      "id": "13bd2c3eb37999e54679",
+      "roadPatternId": "01bf76cfb003b462d7055b95",
+      "routeId": "96-263-3-j26-1",
+      "trips": 1,
+      "originalReasons": [
+        "road-stop-too-far",
+        "road-missing-shape"
+      ]
+    },
+    {
+      "date": "2026-09-04",
+      "id": "2617f4bb3a0ea78e5f47",
+      "roadPatternId": "f0053ba8a96af42a9ff50013",
+      "routeId": "96-263-3-j26-1",
+      "trips": 10,
+      "originalReasons": [
+        "road-stop-too-far",
+        "road-missing-shape"
+      ]
+    },
+    {
+      "date": "2026-09-04",
+      "id": "58e911db4d844c4501a9",
+      "roadPatternId": "99c71026440635a8db8fddf8",
+      "routeId": "96-263-3-j26-1",
+      "trips": 1,
+      "originalReasons": [
+        "road-stop-too-far",
+        "road-missing-shape"
+      ]
+    },
+    {
+      "date": "2026-09-04",
+      "id": "8791a5044306a333af06",
+      "roadPatternId": "8870ae3b12e5fc6a57cebb6c",
+      "routeId": "96-276-0-j26-1",
+      "trips": 26,
+      "originalReasons": [
+        "road-stop-too-far"
+      ]
+    },
+    {
+      "date": "2026-09-04",
+      "id": "3af3b7a7509a7eb8c437",
+      "roadPatternId": "adabfe3f82dfa513d528c581",
+      "routeId": "96-276-0-j26-1",
+      "trips": 1,
+      "originalReasons": [
+        "road-stop-too-far"
+      ]
+    },
+    {
+      "date": "2026-09-04",
+      "id": "ec31fab32f05b3ab63cc",
+      "roadPatternId": "ce8659ae312e8cde8767fc86",
+      "routeId": "96-276-0-j26-1",
+      "trips": 5,
+      "originalReasons": [
+        "road-stop-too-far"
+      ]
+    },
+    {
+      "date": "2026-09-04",
+      "id": "432c450a3b0c7e72ebe5",
+      "roadPatternId": "adcf887f91c63bf080c3753c",
+      "routeId": "96-281-1-j26-1",
+      "trips": 7,
+      "originalReasons": [
+        "road-missing-shape",
+        "road-stop-too-far"
+      ]
+    },
+    {
+      "date": "2026-09-04",
+      "id": "5b7cb20567399ccdafa8",
+      "roadPatternId": "2c79205c2b5156d10adc51b4",
+      "routeId": "96-292-2-j26-1",
+      "trips": 1,
+      "originalReasons": [
+        "road-stop-too-far"
+      ]
+    },
+    {
+      "date": "2026-09-04",
+      "id": "3583d5d8db897aca34a5",
+      "roadPatternId": "1aeafd5ed3cc1c1da385963a",
+      "routeId": "96-292-2-j26-1",
+      "trips": 1,
+      "originalReasons": [
+        "road-stop-too-far",
+        "road-missing-shape"
+      ]
+    },
+    {
+      "date": "2026-09-04",
+      "id": "cb37b990f3ec717dfed4",
+      "roadPatternId": "55c511e9d424178ee5ffe0c1",
+      "routeId": "96-292-2-j26-1",
+      "trips": 1,
+      "originalReasons": [
+        "road-stop-too-far"
+      ]
+    },
+    {
+      "date": "2026-09-04",
+      "id": "6c486261dfb38806176e",
+      "roadPatternId": "3ae319755d2123a3c9045102",
+      "routeId": "96-292-2-j26-1",
+      "trips": 1,
+      "originalReasons": [
+        "road-stop-too-far"
+      ]
+    },
+    {
+      "date": "2026-09-04",
+      "id": "86fc334e0a4e38b75d8a",
+      "roadPatternId": "d0c2e3b71aba961ad6777009",
+      "routeId": "96-292-2-j26-1",
+      "trips": 1,
+      "originalReasons": [
+        "road-missing-shape",
+        "road-stop-too-far"
+      ]
+    },
+    {
+      "date": "2026-09-04",
+      "id": "9190d9a59d2bedf495ea",
+      "roadPatternId": "167413d8e33c8c35991bb5c1",
+      "routeId": "96-305-0-j26-1",
+      "trips": 9,
+      "originalReasons": [
+        "road-stop-too-far"
+      ]
+    },
+    {
+      "date": "2026-09-04",
+      "id": "0ea5863f2af536601a91",
+      "roadPatternId": "73f0fb248ef37ccd3152f313",
+      "routeId": "96-305-0-j26-1",
+      "trips": 4,
+      "originalReasons": [
+        "road-stop-too-far"
+      ]
+    },
+    {
+      "date": "2026-09-06",
+      "id": "7c0733ae6d8ee125600a",
+      "roadPatternId": "f0c5e16242607cc9434774ab",
+      "routeId": "92-420-C-j26-1",
+      "trips": 13,
+      "originalReasons": [
+        "road-missing-shape"
+      ]
+    },
+    {
+      "date": "2026-09-06",
+      "id": "3b87c801c9410c4edd5b",
+      "roadPatternId": "0002e6a40cf79209b001946c",
+      "routeId": "92-593-A-j26-1",
+      "trips": 4,
+      "originalReasons": [
+        "road-stop-too-far"
+      ]
+    },
+    {
+      "date": "2026-09-06",
+      "id": "da507909947e61dacc41",
+      "roadPatternId": "5a0bdda48879e26049d149e9",
+      "routeId": "92-593-A-j26-1",
+      "trips": 4,
+      "originalReasons": [
+        "road-stop-too-far"
+      ]
+    },
+    {
+      "date": "2026-09-06",
+      "id": "d54e471cf9916b84635b",
+      "roadPatternId": "440d04568e697cd10cfa633a",
+      "routeId": "92-N34-A-j26-1",
+      "trips": 4,
+      "originalReasons": [
+        "road-missing-shape",
+        "road-stop-too-far"
+      ]
+    },
+    {
+      "date": "2026-09-06",
+      "id": "90d2333800e70120e6ae",
+      "roadPatternId": "2e9e9b332f43fd577e8076a5",
+      "routeId": "92-N34-A-j26-1",
+      "trips": 5,
+      "originalReasons": [
+        "road-stop-too-far",
+        "road-missing-shape"
+      ]
+    },
+    {
+      "date": "2026-09-06",
+      "id": "0f9e5a4ccf2e3a0779c5",
+      "roadPatternId": "0060cc3ac28a79eeffc13c43",
+      "routeId": "92-N34-A-j26-1",
+      "trips": 5,
+      "originalReasons": [
+        "road-short-path"
+      ]
+    },
+    {
+      "date": "2026-09-06",
+      "id": "a574d6212f6c286a1503",
+      "roadPatternId": "7401de09751b1fd5e4d63dd8",
+      "routeId": "96-260-2-j26-1",
+      "trips": 3,
+      "originalReasons": [
+        "road-stop-too-far"
+      ]
+    },
+    {
+      "date": "2026-09-06",
+      "id": "68af6b702602b7c4e8fe",
+      "roadPatternId": "fdcb3c5b97d7d1ad2b59f8e2",
+      "routeId": "96-260-2-j26-1",
+      "trips": 1,
+      "originalReasons": [
+        "road-stop-too-far"
+      ]
+    },
+    {
+      "date": "2026-09-06",
+      "id": "b0e2d2fc1c94364168f6",
+      "roadPatternId": "9a1023e302f327b6b985e4d4",
+      "routeId": "96-260-2-j26-1",
+      "trips": 2,
+      "originalReasons": [
+        "road-stop-too-far"
+      ]
+    },
+    {
+      "date": "2026-09-06",
+      "id": "db7da9865f1006253757",
+      "roadPatternId": "bd2d0467eb4a5fa064385241",
+      "routeId": "96-263-3-j26-1",
+      "trips": 1,
+      "originalReasons": [
+        "road-stop-too-far",
+        "road-missing-shape"
+      ]
+    },
+    {
+      "date": "2026-09-06",
+      "id": "e48f319c51a4dc3db902",
+      "roadPatternId": "e956ba7f786db69bee6764e7",
+      "routeId": "96-263-3-j26-1",
+      "trips": 3,
+      "originalReasons": [
+        "road-stop-too-far",
+        "road-missing-shape"
+      ]
+    },
+    {
+      "date": "2026-09-06",
+      "id": "6fd0a2fc56322fe90a07",
+      "roadPatternId": "f30bc7ec00a3493cbd63671b",
+      "routeId": "96-263-3-j26-1",
+      "trips": 10,
+      "originalReasons": [
+        "road-stop-too-far",
+        "road-missing-shape"
+      ]
+    },
+    {
+      "date": "2026-09-06",
+      "id": "f68f95b38714aa4629f0",
+      "roadPatternId": "01bf76cfb003b462d7055b95",
+      "routeId": "96-263-3-j26-1",
+      "trips": 2,
+      "originalReasons": [
+        "road-stop-too-far",
+        "road-missing-shape"
+      ]
+    },
+    {
+      "date": "2026-09-06",
+      "id": "13bd2c3eb37999e54679",
+      "roadPatternId": "01bf76cfb003b462d7055b95",
+      "routeId": "96-263-3-j26-1",
+      "trips": 1,
+      "originalReasons": [
+        "road-stop-too-far",
+        "road-missing-shape"
+      ]
+    },
+    {
+      "date": "2026-09-06",
+      "id": "2617f4bb3a0ea78e5f47",
+      "roadPatternId": "f0053ba8a96af42a9ff50013",
+      "routeId": "96-263-3-j26-1",
+      "trips": 10,
+      "originalReasons": [
+        "road-stop-too-far",
+        "road-missing-shape"
+      ]
+    },
+    {
+      "date": "2026-09-06",
+      "id": "58e911db4d844c4501a9",
+      "roadPatternId": "99c71026440635a8db8fddf8",
+      "routeId": "96-263-3-j26-1",
+      "trips": 1,
+      "originalReasons": [
+        "road-stop-too-far",
+        "road-missing-shape"
+      ]
+    },
+    {
+      "date": "2026-09-06",
+      "id": "8791a5044306a333af06",
+      "roadPatternId": "8870ae3b12e5fc6a57cebb6c",
+      "routeId": "96-276-0-j26-1",
+      "trips": 25,
+      "originalReasons": [
+        "road-stop-too-far"
+      ]
+    },
+    {
+      "date": "2026-09-06",
+      "id": "ec31fab32f05b3ab63cc",
+      "roadPatternId": "ce8659ae312e8cde8767fc86",
+      "routeId": "96-276-0-j26-1",
+      "trips": 5,
+      "originalReasons": [
+        "road-stop-too-far"
+      ]
+    },
+    {
+      "date": "2026-09-06",
+      "id": "432c450a3b0c7e72ebe5",
+      "roadPatternId": "adcf887f91c63bf080c3753c",
+      "routeId": "96-281-1-j26-1",
+      "trips": 7,
+      "originalReasons": [
+        "road-missing-shape",
+        "road-stop-too-far"
+      ]
+    },
+    {
+      "date": "2026-09-06",
+      "id": "9190d9a59d2bedf495ea",
+      "roadPatternId": "167413d8e33c8c35991bb5c1",
+      "routeId": "96-305-0-j26-1",
+      "trips": 9,
+      "originalReasons": [
+        "road-stop-too-far"
+      ]
+    },
+    {
+      "date": "2026-09-06",
+      "id": "0ea5863f2af536601a91",
+      "roadPatternId": "73f0fb248ef37ccd3152f313",
+      "routeId": "96-305-0-j26-1",
+      "trips": 4,
+      "originalReasons": [
+        "road-stop-too-far"
+      ]
+    }
+  ],
+  "admission": "Only these numerically reviewed, complete full-pattern results may recover an excluded fixture journey. The entire source pattern must pass. Previously complete primary journeys and paths take priority. No segment-level splicing or tolerance relaxation."
+}

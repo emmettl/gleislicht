@@ -6,6 +6,7 @@ import { roadPatternId } from './prepare-postbus-road-feed.mjs'
 import { distanceMetres } from './enrich-postbus-roads.mjs'
 import { sha256 } from './download-luzern-sources.mjs'
 import { loadGraubuendenRailAnchors } from './graubuenden-rail-anchors.mjs'
+import { loadGraubuendenAccessRoads } from './graubuenden-access-roads.mjs'
 
 export async function loadGraubuendenGeometry(policy, raw) {
   const rails = new Map(), railInventory = []
@@ -24,7 +25,13 @@ export async function loadGraubuendenGeometry(policy, raw) {
   const failures = new Map(roads.report.issues.map(i => [`${i.pattern}:${i.segment}`, i]))
   const platforms = raw.stops.map(s => [Number(s.stop_lon), Number(s.stop_lat), s.stop_name, s.platform_code, s.stop_id])
   const indexes = new Map(platforms.map((s, i) => [s[4], i])), stops = new Map(raw.stops.map(s => [s.stop_id, s]))
-  return { railInventory, railAnchors, roads, matchPattern(train, route) {
+  const accessRoads = await loadGraubuendenAccessRoads(policy, raw)
+  if (accessRoads) {
+    const ids = new Set(accessRoads.review.routes.map(r => r.routeId))
+    const keys = new Set(raw.snapshots.flatMap(d => d.trains.filter(t => ids.has(t.routeId)).map(t => roadPatternId({ ...t, stops: t.calls.map(c => [indexes.get(c.id), c.arrival, c.departure]) }, platforms))))
+    assert.deepEqual([...keys].sort(), Object.keys(accessRoads.cache.patterns).sort(), 'Access review must contain every complete pattern on its scoped routes')
+  }
+  return { railInventory, railAnchors, roads, accessRoads, matchPattern(train, route) {
     if (route.mode === 'rail') {
       const original = rails.has(route.routeId) ? rails.get(route.routeId).matchPattern(train, stops, route) : train.calls.slice(1).map(() => ({ reason: 'unreviewed-rail-identity' }))
       return railAnchors ? railAnchors.match(original, train, route) : original
@@ -33,7 +40,7 @@ export async function loadGraubuendenGeometry(policy, raw) {
     const key = roadPatternId({ ...train, stops: train.calls.map(c => [indexes.get(c.id), c.arrival, c.departure]) }, platforms)
     const segments = roads.patterns[key]
     assert(segments && segments.length === train.calls.length - 1, 'Missing whole bus pattern; regenerate road matching')
-    return segments.map((index, i) => {
+    const original = segments.map((index, i) => {
       const evidence = { geometrySource: 'osm', roadPatternId: key, roadSegmentIndex: i }
       if (index === null) return { ...evidence, reason: `road-${failures.get(`${key}:${i}`)?.reason ?? 'unmatched'}` }
       const path = structuredClone(roads.paths[index]), a = platforms[indexes.get(train.calls[i].id)].slice(0, 2), b = platforms[indexes.get(train.calls[i + 1].id)].slice(0, 2)
@@ -41,5 +48,6 @@ export async function loadGraubuendenGeometry(policy, raw) {
       path[0] = a; path[path.length - 1] = b
       return { ...evidence, path }
     })
+    return accessRoads ? accessRoads.match(original, key, route, train, stops) : original
   } }
 }

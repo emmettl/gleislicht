@@ -30,6 +30,15 @@ try {
   }
   assert.deepEqual(await importRoadShapes(temp, source.source), geometry.roads, 'OSM evidence does not reproduce')
 } finally { await rm(temp, { recursive: true, force: true }) }
+if (geometry.accessRoads) {
+  const temp = await mkdtemp(join(tmpdir(), 'graubuenden-access-check-'))
+  try {
+    for (const [name, hash] of Object.entries(geometry.accessRoads.source.files)) {
+      const bytes = gunzipSync(await readFile(`data/graubuenden-access-roads/${name}.gz`)); assert.equal(sha256(bytes), hash); await writeFile(join(temp, name), bytes)
+    }
+    assert.deepEqual(await importRoadShapes(temp, geometry.accessRoads.source.description), geometry.accessRoads.cache, 'Access-road evidence does not reproduce')
+  } finally { await rm(temp, { recursive: true, force: true }) }
+}
 const results = []
 for (const day of raw.snapshots) {
   const report = await readJson(join(audit, `${day.date}.json`)), entry = index.dates.find(d => d.date === day.date), manifestBytes = await readFile(join(root, entry.manifest)), morningBytes = await readFile(join(root, entry.morning))
@@ -69,7 +78,7 @@ for (const day of raw.snapshots) {
     assert.deepEqual(t.stops.map(([i, arrival, departure], j) => ({ id: snapshot.stops[i][4], arrival, departure, sequence: t.sourceCallSequences[j], pickupType: t.callRules[j][0], dropOffType: t.callRules[j][1] })), source.calls, 'Changed or cropped calls')
     for (const key of ['sourceTripId', 'sourceServiceDate', 'sourceServiceDayOffset', 'frequency', 'directionId', 'routeId', 'headsign', 'shortName']) assert.deepEqual(t[key], source[key], `Changed ${key}`)
     const pattern = pp.get(t.patternId); assert(pattern?.admitted)
-    assert.equal(t.geometrySource, pattern.mode === 'bus' ? 'osm' : pattern.pairs.some(p => p.geometrySource === 'fot-reviewed-stop-anchor') ? 'fot-reviewed-stop-anchor' : 'fot')
+    assert.equal(t.geometrySource, pattern.mode === 'bus' ? pattern.pairs[0].geometrySource : pattern.pairs.some(p => p.geometrySource === 'fot-reviewed-stop-anchor') ? 'fot-reviewed-stop-anchor' : 'fot')
     t.pathSegments.forEach((i, j) => assert.equal(sha256(JSON.stringify(snapshot.paths[i])), pattern.pairs[j].geometrySha256))
   }
   assert.equal(manifest.chunks.length, 12)

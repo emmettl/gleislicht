@@ -1,0 +1,133 @@
+{
+  "serviceDate": "2026-09-04",
+  "serviceDates": [
+    "2026-09-04",
+    "2026-09-06"
+  ],
+  "feedVersion": "20260902",
+  "timetableSha256": "3761903b9a1f27cefca71785356202637be61dedbbe9b45d9204009d15201864",
+  "routes": [
+    {
+      "routeId": "92-420-C-j26-1",
+      "agencyId": "865",
+      "line": "420"
+    },
+    {
+      "routeId": "92-557-A-j26-1",
+      "agencyId": "7081",
+      "line": "557"
+    },
+    {
+      "routeId": "92-593-A-j26-1",
+      "agencyId": "3257",
+      "line": "593"
+    },
+    {
+      "routeId": "92-701-C-j26-1",
+      "agencyId": "865",
+      "line": "701"
+    },
+    {
+      "routeId": "92-702-B-j26-1",
+      "agencyId": "865",
+      "line": "702"
+    },
+    {
+      "routeId": "92-705-C-j26-1",
+      "agencyId": "712",
+      "line": "705"
+    },
+    {
+      "routeId": "92-707-A-j26-1",
+      "agencyId": "712",
+      "line": "707"
+    },
+    {
+      "routeId": "92-707-j26-1",
+      "agencyId": "712",
+      "line": "707"
+    },
+    {
+      "routeId": "92-815-A-j26-1",
+      "agencyId": "712",
+      "line": "815"
+    },
+    {
+      "routeId": "92-N34-A-j26-1",
+      "agencyId": "740",
+      "line": "N34"
+    },
+    {
+      "routeId": "96-260-2-j26-1",
+      "agencyId": "801",
+      "line": "41"
+    },
+    {
+      "routeId": "96-260-7-j26-1",
+      "agencyId": "801",
+      "line": "25"
+    },
+    {
+      "routeId": "96-262-1-j26-1",
+      "agencyId": "801",
+      "line": "581"
+    },
+    {
+      "routeId": "96-263-3-j26-1",
+      "agencyId": "801",
+      "line": "572"
+    },
+    {
+      "routeId": "96-264-2-j26-1",
+      "agencyId": "801",
+      "line": "111"
+    },
+    {
+      "routeId": "96-266-0-j26-1",
+      "agencyId": "801",
+      "line": "183"
+    },
+    {
+      "routeId": "96-269-7-j26-1",
+      "agencyId": "801",
+      "line": "218"
+    },
+    {
+      "routeId": "96-273-4-j26-1",
+      "agencyId": "801",
+      "line": "14"
+    },
+    {
+      "routeId": "96-276-0-j26-1",
+      "agencyId": "801",
+      "line": "411"
+    },
+    {
+      "routeId": "96-281-1-j26-1",
+      "agencyId": "801",
+      "line": "491"
+    },
+    {
+      "routeId": "96-292-1-j26-1",
+      "agencyId": "801",
+      "line": "702"
+    },
+    {
+      "routeId": "96-292-2-j26-1",
+      "agencyId": "801",
+      "line": "712"
+    },
+    {
+      "routeId": "96-292-D-j26-1",
+      "agencyId": "801",
+      "line": "713"
+    },
+    {
+      "routeId": "96-305-0-j26-1",
+      "agencyId": "801",
+      "line": "900"
+    }
+  ],
+  "sourceUrl": "https://data.opentransportdata.swiss/en/dataset/timetable-2026-gtfs2020",
+  "note": "Every complete fixture pattern on every route with a previously excluded bus journey. A newly filtered graph from the pinned Swiss PBF and stricter 20 m matcher candidates are a geometry experiment; no source access restrictions are removed. All original complete journeys are retained for review."
+}
