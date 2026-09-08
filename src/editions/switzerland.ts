@@ -68,6 +68,12 @@ export const SWITZERLAND_MAP_FRAMINGS = {
     minimumDistanceScale: 0.012,
     localDetailHierarchy: true,
   },
+  solothurn: {
+    homeDistanceScale: 0.28,
+    minimumDistanceScale: 0.008,
+    portraitMinimumDistanceScale: 0.006,
+    localDetailHierarchy: true,
+  },
   bern: {
     homeDistanceScale: 0.42,
     minimumDistanceScale: 0.008,
@@ -109,6 +115,7 @@ export type SwitzerlandRegionalStudyId =
   | 'rigi-lake'
   | 'zvv-region'
   | 'lausanne-region'
+  | 'solothurn-region'
   | 'bern-region'
   | 'nyon-region'
   | 'basel-core'
@@ -169,6 +176,7 @@ export const SWITZERLAND_EDITION: SwitzerlandEdition = {
       'rigi-lake': 'rigi-day.json',
       'zurich-city': 'zurich-city-morning.json',
       'zvv-region': 'zvv-region-morning.json',
+      'solothurn-region': 'solothurn-region-morning.json',
       'bern-region': 'bern-region-morning.json',
       'nyon-region': 'nyon-region-morning.json',
       'basel-core': 'basel-core-morning.json',

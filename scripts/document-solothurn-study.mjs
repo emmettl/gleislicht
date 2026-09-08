@@ -1,7 +1,7 @@
 import { readFile, writeFile } from 'node:fs/promises'
 const read = async name => JSON.parse(await readFile(`data/solothurn-audit/${name}.json`))
 const s = await read('summary'), routes = await read('routes')
-const topology = await read('topology-review')
+const topology = await read('topology-review'), supplements = await read('supplement-review'), seasonal = await read('seasonal-summary'), alignments = await read('alignment-review'), display = await read('display-release')
 const reports = await Promise.all(s.days.map(d => read(d.serviceDate)))
 const n = x => Number(x).toLocaleString('en-CH')
 const percent = (a, b) => `${(100 * a / b).toFixed(1)}%`
@@ -13,7 +13,7 @@ const totals = key => s.days.map(d => d.coverage[key])
 const row = (label, key) => [label, ...totals(key).map(n)]
 const text = `# Solothurn canton transit study
 
-Built from the pinned 2026 timetable and the cantonal public-transport network. **All ${s.routeCount} canton-serving route records across ${s.agencyCount} GTFS agency identities and all ten districts are inventoried. ${admittedRoutes} route records contribute admitted journeys.** This is a whole-canton census with partial geometry admission, not complete service coverage.
+Built from the pinned 2026 timetable, the cantonal public-transport network and separately attributed road, rail, boat and tram supplements. **All ${s.routeCount} canton-serving route records across ${s.agencyCount} GTFS agency identities and all ten districts are inventoried. ${admittedRoutes} route records contribute admitted journeys.** This is a whole-canton census with partial geometry admission, not complete service coverage.
 
 Start with the [complete route admission/exclusion inventory](SOLOTHURN-ROUTE-INVENTORY.md), [machine audit](../data/solothurn-audit/summary.json) and [regional feed index](../public/data/solothurn-region/index.json). The original [national source inventory](SWISS-TRANSIT-SOURCE-INVENTORY.md#so) explains source discovery.
 
@@ -23,7 +23,7 @@ ${s.census.boundaryRule} The boundary is the unsimplified swissBOUNDARIES3D **20
 
 No agency whitelist or tariff boundary defines membership. Libero, A-Welle and TNW interfaces are represented by actual calls. The inventory includes national rail, PostAuto, local bus, replacement bus, BLT tram, Bielersee shipping and Weissenstein cableway identities. Representative agency IDs in the source survey were leads, not this denominator. Routes crossing the canton without any stop inside are outside the stated census. Services absent from fixed-stop GTFS, flexible service areas, and informal/private services are not claimed complete.
 
-The ${s.routesByStatus['inactive-on-validation-dates']} inactive route records remain in the annual inventory. “Annual” means trip records in the pinned annual archive, not proven service on every day or a census of every seasonal operating pattern. Friday **4 September 2026** and Sunday **6 September 2026** use calendar exceptions, frequency expansion and previous-service-day spillover. Two September days do not establish holiday, winter or year-round completeness.
+The ${s.routesByStatus['inactive-on-validation-dates']} inactive route records remain in the annual inventory. “Annual” means trip records in the pinned annual archive, not proven service on every day or a census of every seasonal operating pattern. Friday **4 September 2026** and Sunday **6 September 2026** use calendar exceptions, frequency expansion and previous-service-day spillover. A separate twelve-date winter, Easter, summer, National Day and autumn sample is documented below; it does not establish every-day or year-round completeness.
 
 ## Weekday and Sunday directed patterns
 
@@ -66,13 +66,13 @@ Paths follow shortest bidirectional source centrelines between projected GTFS ca
 
 ${table(['Mode', 'Maximum endpoint snap', 'Maximum detour', 'Absolute detour allowance'], Object.entries(s.sources.limits).map(([mode, l]) => [mode, `${l.snapMetres} m`, `${l.detourRatio} × direct distance`, `${l.detourFloorMetres} m`]))}
 
-The path must be no longer than the greater of the ratio limit and absolute allowance. Collapsed paths and mostly off-network movement are rejected. Short endpoint connectors are explicitly inferred. Output preserves source vertices, applies the swisstopo approximate LV95/WGS84 formula and rounds output to seven decimal places. There is no straight-line stop-to-stop fallback or externally inferred road repair.
+The path must be no longer than the greater of the ratio limit and absolute allowance. Collapsed paths and mostly off-network movement are rejected. Short endpoint connectors are explicitly inferred. Output preserves source vertices, applies the swisstopo approximate LV95/WGS84 formula and rounds output to seven decimal places. There is no straight-line stop-to-stop fallback. Gaps can use separately attributed supplementary geometry under the rules below. Cantonal paths remain the first choice, including where the independent alignment comparison flags disagreement.
 
 ${table(['Journey exclusion', 'Friday', 'Sunday'], [...new Set(s.days.flatMap(d => Object.keys(d.coverage.excludedTrips)))].sort().map(reason => [reason, ...s.days.map(d => n(d.coverage.excludedTrips[reason] ?? 0))]))}
 
 ${table(['Unmatched directed-pair reason', 'Friday', 'Sunday'], [...new Set(s.days.flatMap(d => Object.keys(d.pairFailureReasons)))].sort().map(reason => [reason, ...s.days.map(d => n(d.pairFailureReasons[reason] ?? 0))]))}
 
-Night services are explicitly absent from the publisher's dataset. GTFS type 705, N/M/SN numeric labels and explicit night/Moonliner operator or route labels are excluded even where a daytime graph overlaps. Ordinary service-day carry-in is distinct from an explicitly marketed night route. No supplementary night alignment has been established. Tram and ferry are excluded because no compatible, separately verified graph exists; Bahn is not automatically treated as tram. Reservation/on-demand calls are rejected by policy, with no such exclusion required on these two dates.
+Night services are explicitly absent from the Solothurn publisher's dataset. GTFS type 705, N/M/SN numeric labels and explicit night/Moonliner labels therefore require a separately sourced path on **every** segment; overlapping daytime geometry never supplies a night leg. Ordinary service-day carry-in is distinct from a marketed night route. BLT tram 10 and BSG boat 3216 use their own official line/operator geometry; Bahn is not treated as tram. Reservation/on-demand calls remain excluded, with no such exclusion required on these two dates.
 
 Cross-canton journeys often extend beyond the graph or encounter disconnected parts. Endpoint gaps and disconnected patterns remain unresolved. Neither source topology nor shortest-path plausibility certifies road one-way compliance, a particular railway gauge/running track, bridge/tunnel engineering, the exact operator itinerary or temporary diversions. Further official route evidence is needed for that stronger claim.
 
@@ -86,17 +86,51 @@ ${table(['Date', 'Previously admitted journeys', 'Now admitted journeys', 'Addit
 
 The [topology review](../data/solothurn-audit/topology-review.json) preserves each exact LV95 junction, endpoint/interior feature IDs, before/after denominators and every newly admitted complete stop chain. The [baseline](../data/solothurn-topology-baseline.json) identifies the original committed source hashes and admitted patterns. Rebuild and checking assert that source edge counts are unchanged and every previously admitted pattern remains admitted. This repairs network representation; it does not change the documented limits on route itinerary and physical-direction certainty.
 
+## Supplementary geometry and alignment review
+
+${table(['Date', 'Cantonal-only admission', 'With supplements', 'Additional complete patterns', 'Prior patterns lost'], supplements.days.map(d => [d.date, d.before.admittedTrips, d.after.admittedTrips, d.newlyAdmittedPatterns.length, d.lostAdmittedPatterns.length]))}
+
+${table(['Geometry source', 'Friday directed pairs / admitted occurrences', 'Sunday directed pairs / admitted occurrences'], [...new Set(supplements.days.flatMap(d => Object.keys(d.geometrySources)))].sort().map(source => [source, ...supplements.days.map(d => { const g = d.geometrySources[source]; return g ? `${g.directedPairs} / ${g.admittedOccurrences}` : '0 / 0' })]))}
+
+- **Roads:** 805 complete bus patterns from 96 original route IDs across all twelve dates are matched with pfaedle, retaining real agency and platform identities. The bus profile respects supported OSM access, direction and turn restrictions. Every occurrence of a route-specific directed pair across complete pattern contexts must have a successful, identical path; failed matcher warnings, context disagreement and detours are rejected. Bus detours remain bounded by 3 × direct distance or 600 m. Raw routing inputs/results, logs, binary/config/source hashes and derived cache are retained in [road evidence](../data/solothurn-road-evidence/all.json.gz). This is inferred road geometry, not an operator itinerary certificate.
+- **Standard-gauge rail:** 85 explicit annual SBB, BLS, SOB and OeBB route records may use FOT geometry. Only 1435 mm source segments are eligible. Original operating-point numbers, declared topology, source validity fields and full stop order constrain paths; other scheduled operating points cannot be shortcut between adjacent calls. Platform attachment is capped at 350 m, infrastructure attachment at 120 m and detour at 4.5 × or 3,000 m. FOT paths are simplified by 5 m before WGS84 conversion. asm and RBS records do not enter this standard-gauge supplement. No particular running track is certified.
+- **Boat:** Bern line 3216, operator BSG, supplies Biel–Solothurn geometry for exact GTFS route 94-321-6-j26-1 / agency 182. Endpoint snap is at most 150 m, detour 3 × or 1,200 m.
+- **Tram:** Basel-Stadt line 10 / operator BLT supplies exact GTFS route 91-10-j26-1 / agency 37. Endpoint snap is at most 80 m, detour 3 × or 600 m. The two directed pairs around Arlesheim Dorf platform E remain unresolved; no platform relocation is invented.
+
+The [supplement review](../data/solothurn-audit/supplement-review.json) records every added pattern. The [alignment review](../data/solothurn-audit/alignment-review.json) compares admitted cantonal bus paths with independent road consensus and retains every excluded pattern with its failed pairs. Its 30 m threshold is diagnostic only: symmetric vertex-to-polyline distance cannot prove itinerary or road direction. It does not change admission.
+
+${table(['Cantonal bus comparison', 'Friday directed pairs', 'Sunday directed pairs'], [...new Set(alignments.days.flatMap(d => Object.keys(d.busComparisons)))].sort().map(key => [key, ...alignments.days.map(d => d.busComparisons[key]?.directedPairs ?? 0)]))}
+
+**502 Friday and 509 Sunday journeys remain excluded.** Source gaps, narrow-gauge topology, unverified foreign rail connections, platform gaps and failed full-pattern consensus remain explicit. Disagreement with OSM remains a review flag on already admitted cantonal paths. Current operator itineraries, temporary diversions and physical direction are not certified by these internal checks.
+
+## Seasonal and holiday sample
+
+${table(['Civil date', 'Source journeys', 'Admitted journeys', 'Complete admitted patterns'], seasonal.days.map(d => [d.date, d.trips, d.admittedTrips, d.admittedPatterns]))}
+
+The sample applies the pinned GTFS calendars and exceptions to winter weekdays/Sundays, Good Friday, Easter Sunday, summer, Swiss National Day and autumn. **${seasonal.newlyActiveSeptemberExcludedRoutes.length}** of the September-inactive route records become active; **${seasonal.stillInactiveRoutes.length}** remain inactive on all twelve dates. The [seasonal inventory](../data/solothurn-audit/seasonal-summary.json) lists every annual route on every date, and the [pattern audit](../data/solothurn-audit/seasonal-patterns.json.gz) retains every directed stop chain, decision and matched mask. A durable [context snapshot](../data/solothurn-pattern-contexts.json.gz) retains 2,824 complete representative source patterns for offline revalidation and supplementary consensus.
+
+Geometry from the recorded source vintages is applied to this timetable sample; historical/seasonal alignment validity is unproven. **25 October is the DST fallback day:** source stop order and geometry are tested, but the repeated local hour is not disambiguated into 25 elapsed hours. It is not promoted to an app day feed. Only the reviewed September Friday/Sunday can be promoted; this sample does not assert daily or year-round completeness.
+
 ## Sources, dates and attribution
 
 - **National timetable:** SBB / Open data platform mobility Switzerland, feed **20260902**, valid **2025-12-14–2026-12-12**. [Dataset](https://data.opentransportdata.swiss/en/dataset/timetable-2026-gtfs2020), [pinned ZIP](${s.sources.timetable.downloadUrl}), [terms](${s.sources.timetable.termsUrl}). SHA-256: \`${s.sourceHashes.archive}\`.
 - **Solothurn network:** Öffentlicher Verkehr — Amt für Verkehr und Tiefbau / Amt für Geoinformation, Kanton Solothurn. Published **2025-12-17**, acquired **2026-09-08**. Publication is not a per-edge survey date; no more precise geometry vintage is supplied. [Source ZIP](${s.sources.records[0].url}), [metadata](${s.sources.metadataUrl}), [terms](${s.sources.termsUrl}). ZIP SHA-256: \`${s.sources.archiveSha256}\`.
 - **Boundary:** © swisstopo, swissBOUNDARIES3D **2026-01**, [source](${s.sources.boundary.sourceUrl}), [terms](${s.sources.boundary.termsUrl}). Original GeoPackage SHA-256: \`${s.sources.boundary.sourceSha256}\`. Lossless canton/district row snapshot SHA-256: \`${s.sources.boundary.snapshotSha256}\`.
 
+- **OSM roads:** © OpenStreetMap contributors, ODbL-1.0; Geofabrik Switzerland **2026-09-02** plus border extract acquired **2026-09-08**. [Source](https://download.geofabrik.de/europe/switzerland.html), [terms](https://www.openstreetmap.org/copyright). Extract SHA-256: \`${s.sources.supplements.road.source.osmSha256}\`.
+- **FOT rail:** © Federal Office of Transport. Catalogue date **2021-07-06**, asset update **2025-01-18**, checked **2026-09-08**; no effective 2026 alignment date established. [Source](${s.sources.supplements.rail.sourceUrl}), [attribution terms](${s.sources.supplements.rail.termsUrl}). Source XTF SHA-256: \`${s.sources.supplements.rail.sha256}\`. The catalogue's proprietary licence label is preserved; no open licence is invented.
+- **Bern boat geometry:** Öffentlicher Verkehr © Amt für öffentlichen Verkehr und Verkehrskoordination des Kantons Bern. Data updated **2026-01-01**, package published **2026-07-09**, acquired **2026-09-08**. [Metadata](${s.sources.supplements.boat.source.metadataUrl}), [German terms](../public/data/solothurn-region/supplements/terms_of_use_de.pdf), [French terms](../public/data/solothurn-region/supplements/terms_of_use_fr.pdf). Bern archive SHA-256: \`${s.sources.supplements.boat.source.archiveSha256}\`.
+- **Basel tram geometry:** Geodaten Kanton Basel-Stadt, acquired **2026-09-08**; no geometry effective date supplied. [Catalogue](${s.sources.supplements.tram.source.metadataUrl}), [model](${s.sources.supplements.tram.source.modelUrl}), [reuse context](${s.sources.supplements.tram.source.termsUrl}). The exact line/operator layer and acquisition catalogue are retained. Uncompressed GeoJSON SHA-256: \`${s.sources.supplements.tram.source.sha256}\`.
+
 Solothurn's saved terms allow commercial and noncommercial use and recommend attribution; no Creative Commons licence is substituted. Source credit, links and exact acquisition times/hashes are embedded in every regional manifest and [sources.json](../public/data/solothurn-region/sources.json). Raw Solothurn ZIP, metadata, publication catalogue, terms and publisher validation log are retained in [data/solothurn-sources](../data/solothurn-sources/sources.json). The published feed also carries metadata and terms. National timetable attribution is opentransportdata.swiss; the processed results are authored by **Gleislicht**. This is an archival study, not a currently refreshed live timetable. Updating timetable, geometry or boundaries requires rebuilding both days and the admission audit.
 
 ## Feed and reproduction
 
-The [feed index](../public/data/solothurn-region/index.json) links a full-day manifest and 06:45–08:45 morning snapshot for each date. Each day uses twelve two-hour chunks. The manifest carries stops, paths, edges, provenance and exact chunk hashes. Existing regional snapshot consumers can load these artifacts directly; this task does not add a new app view or enable realtime.
+The [feed index](../public/data/solothurn-region/index.json) links a full-day manifest and 06:45–08:45 morning snapshot for each date. Each day uses twelve two-hour chunks. The manifest carries stops, paths, edges, provenance and exact chunk hashes. Solothurn is available in the app's study picker and opens as a full civil day. Its feeds load on selection. Search covers admitted routes and out-of-canton stops; shares retain study, date, time and focus. English, German, French and Italian copy explicitly labels partial coverage and representative headway motion. Source credits and local terms remain accessible.
+
+The app release uses the Friday fixture in [top-level manifest](../public/data/solothurn-region-day-manifest.json), morning snapshot and twelve verified chunks. [Display release proof](../data/solothurn-audit/display-release.json) records both dates: display simplification is bounded by 5 m with unchanged endpoints, calls and movements. The Friday manifest is ${n(display.dates[0].payload['solothurn-region-day-manifest.json'].gzipBytes)} bytes gzipped. Source archives remain unchanged by display simplification; FOT has its separately declared 5 m source transformation.
+
+Regional refresh integration can promote only the two reviewed dates. For another date or a failed candidate build it retains a complete, validated published study (or the reviewed fixture on first-deployment 404), keeping its actual service date. A damaged published chunk never gets silently combined with another release. This integration is ready for deployment; no live deployment is part of this task.
 
 Run from the repository root:
 
@@ -107,13 +141,26 @@ npm run data:solothurn:sources
 # Re-census every annual stop time; requires the pinned national GTFS archive.
 npm run data:solothurn:census -- /private/tmp/GTFS_FP2026_20260902.zip
 
+# Rebuild the twelve-date census and durable full-pattern contexts.
+npm run data:solothurn:census -- /private/tmp/GTFS_FP2026_20260902.zip --seasonal
+node scripts/prepare-solothurn-contexts.mjs
+# Supplemental source preparation can reuse committed snapshots offline.
+node scripts/prepare-solothurn-supplements.mjs
+
 # Build complete directed patterns, both feeds and all machine audits.
 npm run data:solothurn
 npm run data:solothurn:check
+npm run data:solothurn:seasonal
+npm run data:solothurn:seasonal:check
+npm run data:solothurn:alignments
+npm run data:solothurn:release
 npm run data:solothurn:docs
-npx vitest run scripts/solothurn-region.test.mjs scripts/bern-region.test.mjs
+npx vitest run scripts/solothurn-region.test.mjs scripts/solothurn-release.test.mjs
+npx playwright test --config playwright.solothurn.config.ts
 python3 -m unittest discover -s scripts -p 'test_bern_sources.py'
 \`\`\`
+
+The road cache/evidence can be validated offline. To rematch, prepare with \`node scripts/solothurn-road-geometry.mjs prepare data/solothurn-audit/seasonal-timetable-cache.json.gz /path/prepared\`, run \`scripts/match-postbus-roads.mjs\` on \`/path/prepared/all\` using the exact recorded pfaedle binary/config and OSM extract, then import with \`node scripts/solothurn-road-geometry.mjs import /path/prepared /path/matched\`. The large OSM input and matcher binary are external reproduction prerequisites; their hashes are retained. New bytes require fresh matching and review.
 
 The timetable cache is an ignored regeneration intermediate; all deliverable feeds and audits are retained. Source preparation works offline from the committed archive and boundary snapshot. To reproduce the original boundary extraction, pass \`--boundary /path/to/swissBOUNDARIES3D_1_5_LV95_LN02.gpkg\` to the Python preparation script. A newly downloaded aktuell source is not automatically accepted: the recorded survey hashes must match or a new release must be reviewed explicitly.
 
@@ -123,7 +170,7 @@ await writeFile('docs/SOLOTHURN-STUDY.md', text)
 const reason = route => [...new Set(route.days.flatMap(d => Object.keys(d.excludedTrips)))].sort().join(', ') || (route.status === 'inactive-on-validation-dates' ? 'No civil-day instance on either date' : 'All dated journeys pass')
 await writeFile('docs/SOLOTHURN-ROUTE-INVENTORY.md', `# Solothurn route admission and exclusion inventory
 
-All ${routes.length} original GTFS route identities with at least one annual call in the canton. Labels can repeat across operators and route IDs. Each cell gives admitted / total civil-day instances, including separately labelled representative headway instances. See the [study](SOLOTHURN-STUDY.md) for geometry inference, night exclusions and calendar scope. Inactive records remain in the denominator. “Admitted-all-dated-trips” applies only to the two tested dates.
+All ${routes.length} original GTFS route identities with at least one annual call in the canton. Labels can repeat across operators and route IDs. Each cell gives admitted / total civil-day instances, including separately labelled representative headway instances. See the [study](SOLOTHURN-STUDY.md) for geometry inference, supplementary night admission and calendar scope. Inactive records remain in the denominator. “Admitted-all-dated-trips” applies only to the two tested dates.
 
 ## Agency census
 

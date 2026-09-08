@@ -13,7 +13,7 @@ import { readFileSync } from 'node:fs'
 import { LAUSANNE_MBC_GROUPS } from './lausanne-mbc.mjs'
 
 function fixture(id = 'zurich-city') {
-  if (['basel-core', 'bern-region', 'nyon-region'].includes(id)) {
+  if (['basel-core', 'bern-region', 'solothurn-region', 'nyon-region'].includes(id)) {
     const files = new Map([`${id}-day-manifest.json`, `${id}-morning.json`].map(name => [name, readFileSync(join('public/data', name))]))
     for (const chunk of JSON.parse(files.get(`${id}-day-manifest.json`)).chunks) files.set(chunk.path, readFileSync(join('public/data', chunk.path)))
     return files

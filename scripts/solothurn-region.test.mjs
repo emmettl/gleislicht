@@ -102,3 +102,32 @@ describe('Solothurn complete directed pattern admission', () => {
     expect(expanded).toHaveLength(2); expect(expanded.every(t => t.frequency.exactTimes === 0)).toBe(true)
   })
 })
+
+
+describe('Solothurn supplemental admission', () => {
+  it('requires all full-pattern contexts to succeed with an identical directed path', async () => {
+    const { supplementConsensus } = await import('./solothurn-supplement-geometry.mjs')
+    const path = [bernWgs84(A), bernWgs84(B)]
+    const result = supplementConsensus(new Map([
+      ['agree', [{ path }, { path }]],
+      ['failed', [{ path }, { reason: 'stop-order' }]],
+      ['conflict', [{ path }, { path: [...path].reverse() }]],
+    ]))
+    expect(result.get('agree')).toMatchObject({ path, contextCount: 2 })
+    expect(result.get('failed')).toMatchObject({ reason: 'stop-order' })
+    expect(result.get('failed').path).toBeUndefined()
+    expect(result.get('conflict').reason).toBe('supplement-pattern-dependent-path')
+  })
+  it('requires a supplementary path on every night leg and preserves conditional exclusions', () => {
+    const raw = rawFeed([[0, 1, 2]]), routes = new Map([['r', { ...route, name: 'N12' }]])
+    const graphs = solothurnGraphs([feature('daytime', [A, B, C])])
+    const match = (_route, from, to) => ({ path: [from.slice(0, 2), to.slice(0, 2)], geometrySource: 'osm-road-inference' })
+    const incomplete = applySolothurnGeometry(raw, routes, graphs, new Map(), { match: (r, a, b) => b[4] === 'id2' ? undefined : match(r, a, b) })
+    expect(incomplete.trains[0].admission).toBe('night-network-excluded-by-source')
+    const complete = applySolothurnGeometry(raw, routes, graphs, new Map(), { match })
+    expect(complete.trains[0].admission).toBe('admitted')
+    expect(complete.patterns[0].geometrySources).toEqual(['osm-road-inference'])
+    raw.trains[0].reservationRequired = true
+    expect(applySolothurnGeometry(raw, routes, graphs, new Map(), { match }).trains[0].admission).toBe('reservation-or-demand-responsive')
+  })
+})

@@ -1,0 +1,23 @@
+{
+  "retrievedAt": "2026-09-08T16:05:07.079Z",
+  "validOn": null,
+  "note": "Retrieval time is not a source validity date. Whole-layer counts checked before and after; source GeoJSON omits feature IDs.",
+  "sources": [
+    {
+      "layer": "LN_Tramlinie",
+      "url": "https://wfs.geo.bs.ch/?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=ms%3ALN_Tramlinie&COUNT=47&OUTPUTFORMAT=geojson&SRSNAME=EPSG%3A4326",
+      "countUrl": "https://wfs.geo.bs.ch/?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=ms%3ALN_Tramlinie&RESULTTYPE=hits",
+      "features": 46,
+      "bytes": 963767,
+      "sha256": "687be2ce2fed8ffc48a00ef5a7fd694be71d446b937f5f269cb432beeae83df1"
+    },
+    {
+      "layer": "LN_Buslinie",
+      "url": "https://wfs.geo.bs.ch/?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=ms%3ALN_Buslinie&COUNT=87&OUTPUTFORMAT=geojson&SRSNAME=EPSG%3A4326",
+      "countUrl": "https://wfs.geo.bs.ch/?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=ms%3ALN_Buslinie&RESULTTYPE=hits",
+      "features": 86,
+      "bytes": 1478110,
+      "sha256": "2c45a197f9319b287078824cfc432987cc73da9f78f05c75ca4645de151e5c3c"
+    }
+  ]
+}

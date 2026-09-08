@@ -8,6 +8,7 @@ import { compactBernFeed, bernCoverage, validateBernSnapshot, validateBernChunks
 import { SO_DATES, SO_GTFS_SHA, hashFile } from './solothurn-timetable.mjs'
 import { bernArea, bernWgs84 } from './bern-spatial.mjs'
 import { distanceMetres } from './enrich-postbus-roads.mjs'
+import { loadSolothurnSupplements } from './solothurn-supplement-geometry.mjs'
 import { solothurnGraphs, applySolothurnGeometry, SO_LIMITS, SO_MODES, solothurnNight } from './solothurn-network-geometry.mjs'
 
 const zipped = async path => JSON.parse(gunzipSync(await readFile(path)))
@@ -29,7 +30,9 @@ export async function buildSolothurnRegion() {
   const baseline = JSON.parse(await readFile('data/solothurn-topology-baseline.json'))
   assert.deepEqual(baseline.sourceHashes, sourceHashes)
   const topologyReview = { baselineCommit: baseline.commit, sourceHashes, rule: 'Exact non-tunnel endpoint/interior vertex noding; no added source edges or coordinates', days: [] }
-  const provenance = { ...source.metadata, timetable: {
+  const supplements = await loadSolothurnSupplements(timetable)
+  const supplementReview = { sourceHashes, sources: supplements.metadata, days: [] }
+  const provenance = { supplements: supplements.metadata, ...source.metadata, timetable: {
     publisher: 'SBB / Open data platform mobility Switzerland', attribution: 'opentransportdata.swiss',
     sha256: SO_GTFS_SHA, feed: census.feed, sourceUrl: census.sourceUrl,
     downloadUrl: 'https://data.opentransportdata.swiss/dataset/3d2c18f9-9ef1-463f-a249-5c67604efd74/resource/c09aba2a-41e9-4117-88af-3fdfe589d64a/download/gtfs_fp2026_20260902.zip',
@@ -45,14 +48,25 @@ export async function buildSolothurnRegion() {
   const matchCache = new Map(), days = [], patternSets = [], routeDays = new Map(timetable.routes.map(r => [r.id, []]))
   for (const raw of timetable.snapshots) {
     console.log(`Routing Solothurn ${raw.metadata.serviceDate}: ${raw.trains.length} complete civil-day journeys…`)
-    const result = applySolothurnGeometry(raw, routes, graphs, matchCache)
+    const baseResult = applySolothurnGeometry(raw, routes, graphs, matchCache)
+    const result = applySolothurnGeometry(raw, routes, graphs, matchCache, supplements)
     const coverage = bernCoverage(result.trains, result.pairs, result.patterns)
+    const baseIds = new Set(baseResult.patterns.filter(p => p.admittedTrips).map(p => p.id))
+    const lostBase = [...baseIds].filter(id => !result.patterns.some(p => p.id === id && p.admittedTrips))
+    assert.equal(lostBase.length, 0, 'Supplement regressed an admitted cantonal pattern')
+    supplementReview.days.push({ date: raw.metadata.serviceDate,
+      before: bernCoverage(baseResult.trains, baseResult.pairs, baseResult.patterns), after: coverage,
+      lostAdmittedPatterns: lostBase,
+      newlyAdmittedPatterns: result.patterns.filter(p => p.admittedTrips && !baseIds.has(p.id)).map(p => ({ id: p.id, routeId: p.routeId, line: p.line, mode: p.mode, stopIds: p.stopIds, admittedTrips: p.admittedTrips, geometrySources: p.geometrySources })),
+      geometrySources: Object.fromEntries([...new Set(result.pairs.map(p => p.geometrySource).filter(Boolean))].map(source => [source, {
+        directedPairs: result.pairs.filter(p => p.geometrySource === source).length,
+        admittedOccurrences: result.pairs.filter(p => p.geometrySource === source).reduce((n, p) => n + p.admittedOccurrences, 0) }])) })
     const before = baseline.days.find(d => d.date === raw.metadata.serviceDate)
-    const admittedIds = new Set(result.patterns.filter(p => p.admittedTrips).map(p => p.id))
+    const admittedIds = new Set(baseResult.patterns.filter(p => p.admittedTrips).map(p => p.id))
     const lost = before.admittedPatternIds.filter(id => !admittedIds.has(id))
     assert.equal(lost.length, 0, 'Exact noding regressed a previously admitted pattern')
-    topologyReview.days.push({ date: raw.metadata.serviceDate, before: before.coverage, after: coverage,
-      lostAdmittedPatterns: lost, newlyAdmittedPatterns: result.patterns.filter(p => p.admittedTrips && !before.admittedPatternIds.includes(p.id)).map(p => ({ id: p.id, routeId: p.routeId, line: p.line, mode: p.mode, stopIds: p.stopIds, admittedTrips: p.admittedTrips })) })
+    topologyReview.days.push({ date: raw.metadata.serviceDate, before: before.coverage, after: bernCoverage(baseResult.trains, baseResult.pairs, baseResult.patterns),
+      lostAdmittedPatterns: lost, newlyAdmittedPatterns: baseResult.patterns.filter(p => p.admittedTrips && !before.admittedPatternIds.includes(p.id)).map(p => ({ id: p.id, routeId: p.routeId, line: p.line, mode: p.mode, stopIds: p.stopIds, admittedTrips: p.admittedTrips })) })
     for (const route of routes.values()) routeDays.get(route.id).push({ date: raw.metadata.serviceDate,
       ...bernCoverage(result.trains.filter(t => t.routeId === route.id), result.pairs.filter(p => p.routeId === route.id), result.patterns.filter(p => p.routeId === route.id)) })
     const groups = [...new Set(result.trains.map(t => `${t.agencyId}:${routes.get(t.routeId).mode}`))].sort().map(key => {
@@ -67,10 +81,10 @@ export async function buildSolothurnRegion() {
       admittedRouteStops.set(train.routeId, ids)
     }
     snapshot.metadata = { ...raw.metadata, publisher: 'Gleislicht', label: 'Solothurn canton — inferred network paths',
-      attribution: 'opentransportdata.swiss; Amt für Verkehr und Tiefbau / Amt für Geoinformation Kanton Solothurn; © swisstopo',
+      attribution: 'opentransportdata.swiss; Kanton Solothurn; Geodaten Kanton Basel-Stadt; Kanton Bern; © Federal Office of Transport; © OpenStreetMap contributors (ODbL-1.0); © swisstopo',
       sourceHashes, sources: provenance, scope: timetable.census.boundaryRule,
       model: 'Scheduled interpolation on inferred official-network paths. Headway exactTimes=0 instances are representative, not exact departures. No observed vehicle positions.',
-      admission: 'Complete original directed stop patterns only; night, unsupported modes, reservation/demand service and incomplete geometry excluded. See Solothurn audit.',
+      admission: 'Complete original directed patterns only. Cantonal gaps may use separately attributed, compatible supplements with full-pattern consensus. Night services require supplementary geometry on every segment. Reservation/demand and unresolved patterns excluded.',
     }
     validateBernSnapshot(snapshot)
     const { manifest, chunks } = chunkNetworkSnapshot(snapshot, 7200, 'day-chunks')
@@ -153,12 +167,13 @@ export async function buildSolothurnRegion() {
       'Route membership uses original call coordinates inside the unsimplified canton polygon. Boundary-adjacent calls are disclosed; no buffer silently admits neighbouring-canton services.',
       'Full cross-canton journeys retained. Source extent, gaps and unsupported modes cause whole-pattern exclusion, never cropped calls.',
       'Source has no route/operator/direction identifiers. Geometric checks validate plausibility, not the exact operator itinerary, one-way legality, rail gauge, bridges, running tracks or temporary diversions.',
-      'The source excludes night services. Night-labelled routes are excluded even if daytime road geometry overlaps. No supplemental night paths were established.',
-      'Bahn is routed as rail only. Tram and ferry lack a separately verified compatible graph. No roads borrowed from other cantons or operators.',
+      'Solothurn source excludes night services; admitted night journeys use separate OSM road or FOT infrastructure inference on every segment, never the daytime cantonal graph.',
+      'Bahn remains rail only. BLT tram 10 and BSG boat 3216 use exact official operator/line sources. Standard-gauge rail and bus road supplements retain full-pattern consensus, bounds and separate provenance.',
     ] }
   topologyReview.junctions = Object.fromEntries([...graphs].map(([mode, graph]) => [mode, graph.endpointInteriorJunctions]))
   for (const [mode, graph] of graphs) assert.equal(graph.edges.length, baseline.graph[mode].edges, 'Noding must not invent edges')
   await writeJson(join(auditDir, 'topology-review.json'), topologyReview, true)
+  await writeJson(join(auditDir, 'supplement-review.json'), supplementReview, true)
   await writeJson(join(auditDir, 'summary.json'), summary, true)
   await writeJson(join(auditDir, 'routes.json'), inventory, true)
   await writeJson(join(auditDir, 'stops.json'), timetable.sourceStopInventory)
@@ -167,6 +182,8 @@ export async function buildSolothurnRegion() {
     vertices: f.geometry.coordinates.reduce((n, p) => n + p.length, 0), status: 'included-in-mode-graph', routeIdentity: null })))
   await writeJson(join(auditDir, 'source-stops.json'), sourceStopInventory)
   await writeJson(join(output, 'sources.json'), provenance, true)
+  await mkdir(join(output, 'supplements'), { recursive: true })
+  for (const name of ['terms_of_use_de.pdf', 'terms_of_use_fr.pdf']) await copyFile(join(sourceDir, 'supplements', name), join(output, 'supplements', name))
   for (const name of ['metadata.html', 'terms.html', 'publications.json']) await copyFile(join(sourceDir, name), join(output, name))
   await writeJson(join(output, 'index.json'), { label: 'Solothurn canton regional feed', sourceHashes, dates: SO_DATES.map(date => ({ date,
     manifest: `${date}/solothurn-region-day-manifest.json`, morning: `${date}/solothurn-region-morning.json` })),

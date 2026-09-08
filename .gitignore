@@ -31,3 +31,5 @@ fixtures/mta/local-express-lexington-day.json
 .package-consumer/
 lab/dist/
 data/solothurn-audit/timetable-cache.json.gz
+
+data/solothurn-audit/seasonal-timetable-cache.json.gz

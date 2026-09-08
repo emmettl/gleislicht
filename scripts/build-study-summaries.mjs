@@ -16,6 +16,7 @@ export const STUDY_SOURCES = [
   ['basel-core', 'basel-core-day-manifest.json'],
   ['bern-region', 'bern-region-day-manifest.json'],
   ['gornergrat', 'gornergrat-day.json'],
+  ['solothurn-region', 'solothurn-region-day-manifest.json'],
   ['nyon-region', 'nyon-region-day-manifest.json'],
 ]
 export async function buildStudySummaries(directory = 'public/data') {

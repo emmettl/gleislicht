@@ -98,7 +98,11 @@
     "data:fribourg:census": "node --max-old-space-size=8192 scripts/fribourg-timetable.mjs",
     "data:fribourg": "node --max-old-space-size=8192 scripts/build-fribourg-region.mjs",
     "data:fribourg:check": "node scripts/check-fribourg-region.mjs",
-    "data:fribourg:docs": "node scripts/write-fribourg-audit.mjs"
+    "data:fribourg:docs": "node scripts/write-fribourg-audit.mjs",
+    "data:solothurn:seasonal": "node scripts/audit-solothurn-seasonal.mjs",
+    "data:solothurn:seasonal:check": "node scripts/check-solothurn-seasonal.mjs",
+    "data:solothurn:alignments": "node scripts/review-solothurn-alignments.mjs",
+    "data:solothurn:release": "node scripts/build-solothurn-day.mjs"
   },
   "engines": {
     "node": ">=24.0.0"

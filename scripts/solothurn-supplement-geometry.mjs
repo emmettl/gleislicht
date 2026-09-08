@@ -1,0 +1,75 @@
+import assert from 'node:assert/strict'
+import { readFile } from 'node:fs/promises'
+import { gunzipSync } from 'node:zlib'
+import { createHash } from 'node:crypto'
+import { baselGraphs, matchBaselSegment } from './basel-line-geometry.mjs'
+import { bernGraph, bernPatternId } from './bern-line-geometry.mjs'
+import { loadZugRail } from './zug-rail-geometry.mjs'
+import { loadSolothurnRoads } from './solothurn-road-geometry.mjs'
+import { hashFile } from './solothurn-timetable.mjs'
+const sha = value => createHash('sha256').update(JSON.stringify(value)).digest('hex')
+const keyOf = (route, from, to) => JSON.stringify([route.id, from[4], to[4]])
+
+// A supplement cannot choose whichever full stop context happens to succeed.
+// Agree across all observed complete patterns or leave this pair unresolved.
+export function supplementConsensus(candidates) {
+  return new Map([...candidates].map(([key, results]) => {
+    const signatures = new Map(results.filter(r => r.path).map(r => [sha(r.path), r]))
+    const failures = results.filter(r => !r.path).map(r => r.reason ?? 'supplement-no-path')
+    return [key, !failures.length && signatures.size === 1 ? { ...[...signatures.values()][0], contextCount: results.length }
+      : { reason: failures.length ? [...new Set(failures)].sort().join(';') : 'supplement-pattern-dependent-path', contextCount: results.length }]
+  }))
+}
+
+export async function loadSolothurnSupplements(timetable, { roads = true, verifyEvidence = false } = {}) {
+  const contextPath = 'data/solothurn-pattern-contexts.json.gz'
+  const context = JSON.parse(gunzipSync(await readFile(contextPath)))
+  assert.deepEqual(context.sourceHashes, timetable.sourceHashes)
+  const policyPath = 'data/solothurn-supplement-policy.json', policy = JSON.parse(await readFile(policyPath))
+  for (const config of [policy.boat, policy.tram]) assert.equal(await hashFile(config.file), config.sha256)
+  const boat = JSON.parse(await readFile(policy.boat.file)), tramCollection = JSON.parse(gunzipSync(await readFile(policy.tram.file)))
+  const graphs = { ferry: bernGraph([boat]), tram: baselGraphs([tramCollection]).get('37:tram:10') }
+  assert(graphs.tram)
+  const rail = await loadZugRail(policy.rail, context.snapshots.map(s => s.metadata.serviceDate))
+  const railIds = new Set(policy.rail.routes.map(r => r.routeId)), routes = new Map(timetable.routes.map(r => [r.id, r]))
+  const candidates = new Map(), seen = new Set(), graphCache = new Map()
+  for (const raw of context.snapshots) {
+    const stops = new Map(raw.stops.map(s => [s[4], { stop_id: s[4], stop_lon: s[0], stop_lat: s[1] }]))
+    for (const train of raw.trains) {
+      const route = routes.get(train.routeId), id = bernPatternId(train, raw.stops)
+      if (seen.has(id) || !['rail', 'ferry', 'tram'].includes(route.mode)) continue
+      seen.add(id)
+      let results
+      if (railIds.has(route.id)) results = rail.matchPattern({ ...train, calls: train.stops.map(([i]) => ({ id: raw.stops[i][4] })) }, stops, { ...route, line: route.name })
+      else {
+        const config = route.mode === 'ferry' ? policy.boat : route.mode === 'tram' ? policy.tram : undefined
+        if (!config || config.routeId !== route.id || config.agencyId !== route.agencyId || config.line !== route.name) continue
+        results = train.stops.slice(1).map(([index], i) => {
+          const from = raw.stops[train.stops[i][0]], to = raw.stops[index], key = keyOf(route, from, to)
+          if (!graphCache.has(key)) graphCache.set(key, { ...matchBaselSegment(graphs[route.mode], from, to,
+            config.source.limits ?? { snapMetres: 150, detourRatio: 3, detourFloorMetres: 1200, alternativeSnapMetres: 5 }), geometrySource: route.mode === 'ferry' ? 'bern-official-boat-3216' : 'basel-official-tram-10' })
+          return graphCache.get(key)
+        })
+      }
+      for (const [i, result] of results.entries()) {
+        const from = raw.stops[train.stops[i][0]], to = raw.stops[train.stops[i + 1][0]], key = keyOf(route, from, to)
+        const list = candidates.get(key) ?? []
+        list.push({ ...result, ...(result.path ? { path: result.path.map(p => p.slice(0, 2).map(v => Number(v.toFixed(7)))) } : {}), agencyId: route.agencyId })
+        candidates.set(key, list)
+      }
+    }
+  }
+  const pairs = supplementConsensus(candidates)
+  let road
+  if (roads) {
+    road = await loadSolothurnRoads(context, { verifyEvidence })
+    for (const [key, value] of road.pairs) pairs.set(key, value)
+  }
+  return { pairs, policy, metadata: { contextSha256: await hashFile(contextPath), policySha256: await hashFile(policyPath), boat: policy.boat, tram: policy.tram, rail: { ...rail.source, limits: policy.rail.limits },
+    ...(road ? { road: road.metadata, roadCacheSha256: road.sha256 } : {}) },
+    match(route, from, to) {
+      const value = pairs.get(keyOf(route, from, to))
+      if (value?.path) assert.equal(value.agencyId, route.agencyId, 'Supplement changed operator identity')
+      return value
+    } }
+}

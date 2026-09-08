@@ -7,10 +7,11 @@ import { pathToFileURL } from 'node:url'
 import { previousServiceDate } from './civil-day.mjs'
 import { validateBaselRelease } from './basel-release-validation.mjs'
 import { validateNyonRelease } from './nyon-release-validation.mjs'
+import { validateSolothurnRelease } from './solothurn-release-validation.mjs'
 import { validateBernRelease } from './bern-release-validation.mjs'
 import { LAUSANNE_WEST_GROUPS, LAUSANNE_MBC_GROUPS } from './lausanne-mbc.mjs'
 
-export const REGIONAL_IDS = ['zurich-city', 'zvv-region', 'geneva-tpg', 'lausanne-region', 'basel-core', 'bern-region', 'nyon-region']
+export const REGIONAL_IDS = ['zurich-city', 'zvv-region', 'geneva-tpg', 'lausanne-region', 'basel-core', 'bern-region', 'solothurn-region', 'nyon-region']
 const digest = bytes => createHash('sha256').update(bytes).digest('hex')
 export async function readRegionalArtifacts(read, ids = REGIONAL_IDS, expectedDate) {
   const files = new Map()
@@ -65,7 +66,7 @@ export async function readRegionalArtifacts(read, ids = REGIONAL_IDS, expectedDa
       assert(day.metadata.lausanneGeometry.every(group => group.totalSegments > 0 && group.acceptedSegments / group.totalSegments >= .95), 'Lausanne: insufficient per-mode geometry')
       assert(rail?.maximumSnapMetres <= 120, 'Lausanne: rail projection exceeds limit')
     }
-    if (id !== 'bern-region') {
+    if (!['bern-region', 'solothurn-region'].includes(id)) {
       assert(local?.matchedSegments / local?.totalSegments >= (id === 'geneva-tpg' ? .7 : .8), `${id}: insufficient local geometry`)
       assert(rail?.matchedSegments / rail?.totalSegments >= .65, `${id}: insufficient rail geometry`)
       assert(/^[a-f0-9]{64}$/.test(rail?.sha256 ?? ''), `${id}: missing rail source hash`)
@@ -109,6 +110,7 @@ export async function readRegionalArtifacts(read, ids = REGIONAL_IDS, expectedDa
     }
     assert.equal(unique.size, day.tripCount, `${id}: day trip count mismatch`)
     if (id === 'nyon-region') validateNyonRelease(day, morning, [...unique.values()])
+    if (id === 'solothurn-region') validateSolothurnRelease(day, morning, [...unique.values()])
     if (id === 'bern-region') validateBernRelease(day, morning, [...unique.values()])
     if (id === 'basel-core') validateBaselRelease(day, morning, [...unique.values()])
   }

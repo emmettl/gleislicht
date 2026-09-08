@@ -18,6 +18,7 @@ describe('Gleislicht edition', () => {
       'rigi-lake',
       'zurich-city',
       'zvv-region',
+      'solothurn-region',
       'bern-region',
       'nyon-region',
       'basel-core',

@@ -83,14 +83,14 @@ export function solothurnGraphs(features, { joinEndpointInteriors = true } = {})
 }
 
 export function solothurnAdmission(train, route, pattern) {
-  if (solothurnNight(route)) return 'night-network-excluded-by-source'
+  if (solothurnNight(route) && pattern.matchedSegments !== pattern.segmentCount) return 'night-network-excluded-by-source'
   if (train.reservationRequired) return 'reservation-or-demand-responsive'
-  if (!SO_LIMITS[route.mode]) return 'no-compatible-source-mode'
+  if (!SO_LIMITS[route.mode] && !pattern.supplementAvailable) return 'no-compatible-source-mode'
   if (pattern.matchedSegments !== pattern.segmentCount) return 'incomplete-directed-pattern'
   return 'admitted'
 }
 
-export function applySolothurnGeometry(raw, routes, graphs, matchCache = new Map()) {
+export function applySolothurnGeometry(raw, routes, graphs, matchCache = new Map(), supplements) {
   const paths = [], pathIndexes = new Map(), pairs = new Map(), patterns = new Map()
   const trains = raw.trains.map(train => {
     const route = routes.get(train.routeId), patternId = bernPatternId(train, raw.stops)
@@ -104,7 +104,11 @@ export function applySolothurnGeometry(raw, routes, graphs, matchCache = new Map
           if (!matchCache.has(cacheKey)) matchCache.set(cacheKey, solothurnNight(route) ? { reason: 'night-network-excluded-by-source' }
             : !SO_LIMITS[route.mode] ? { reason: 'no-compatible-source-mode' }
               : matchBaselSegment(graphs.get(route.mode), from, to, SO_LIMITS[route.mode]))
-          const { path, ...assessment } = matchCache.get(cacheKey)
+          const primary = matchCache.get(cacheKey)
+          const fallback = !primary.path ? supplements?.match(route, from, to) : undefined
+          const selected = fallback?.path ? { ...fallback, primaryReason: primary.reason }
+            : { ...primary, ...(primary.path ? { geometrySource: 'solothurn-network' } : {}), ...(fallback ? { supplementFailure: fallback.reason, supplementAvailable: true } : {}) }
+          const { path, ...assessment } = selected
           let pathIndex = null
           if (path) {
             const signature = JSON.stringify(path)
@@ -118,6 +122,8 @@ export function applySolothurnGeometry(raw, routes, graphs, matchCache = new Map
       })
       patterns.set(patternId, { id: patternId, routeId: route.id, agencyId: route.agencyId, mode: route.mode, line: route.name,
         directionId: train.directionId, stopIds: train.stops.map(([i]) => raw.stops[i][4]), segmentCount: pathSegments.length,
+        supplementAvailable: pairKeys.some(key => pairs.get(key).supplementAvailable || (pairs.get(key).geometrySource && pairs.get(key).geometrySource !== 'solothurn-network')),
+        geometrySources: [...new Set(pairKeys.map(key => pairs.get(key).geometrySource).filter(Boolean))].sort(),
         matchedSegments: pathSegments.filter(i => i !== null).length, pathSegments, pairKeys,
         trips: 0, admittedTrips: 0, carryInTrips: 0, representativeHeadwayTrips: 0, decisions: {} })
     }

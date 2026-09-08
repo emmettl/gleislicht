@@ -5,6 +5,7 @@ import { join, resolve } from 'node:path'
 import { pathToFileURL } from 'node:url'
 import { gunzipSync } from 'node:zlib'
 import { bernPatternId } from './bern-line-geometry.mjs'
+import { loadSolothurnSupplements } from './solothurn-supplement-geometry.mjs'
 import { solothurnNight, SO_LIMITS, solothurnGraphs, applySolothurnGeometry } from './solothurn-network-geometry.mjs'
 import { validateBernSnapshot, validateBernChunks } from './build-bern-region.mjs'
 
@@ -32,6 +33,9 @@ export async function checkSolothurnRegion({ output = 'public/data/solothurn-reg
   }
   assert.deepEqual(sourceLines.map(s => s.T_Ili_Tid), decoded.lines.map(f => f.properties.T_Ili_Tid))
   for (const term of ['metadata.html', 'terms.html', 'publications.json']) assert.deepEqual(await readFile(join(sources, term)), await readFile(join(output, term)))
+  const supplements = await loadSolothurnSupplements({ routes, sourceHashes: summary.sourceHashes }, { verifyEvidence: true })
+  assert.deepEqual(supplements.metadata, summary.sources.supplements)
+  const supplementReview = await json(join(audit, 'supplement-review.json'))
   const admittedRouteStops = new Map()
   const topologyReview = await json(join(audit, 'topology-review.json')), baseline = await json('data/solothurn-topology-baseline.json')
   assert.deepEqual(baseline.sourceHashes, summary.sourceHashes)
@@ -52,10 +56,10 @@ export async function checkSolothurnRegion({ output = 'public/data/solothurn-reg
     patternSets.push(new Set(report.patterns.map(p => p.id)))
     const before = baseline.days.find(d => d.date === day.serviceDate)
     const review = topologyReview.days.find(d => d.date === day.serviceDate)
-    assert.deepEqual(review.before, before.coverage); assert.deepEqual(review.after, report.coverage)
+    assert.deepEqual(review.before, before.coverage); assert.deepEqual(review.after, supplementReview.days.find(d => d.date === day.serviceDate).before)
     assert.deepEqual(review.lostAdmittedPatterns, [])
     for (const id of before.admittedPatternIds) assert(report.patterns.some(p => p.id === id && p.admittedTrips))
-    assert.deepEqual(review.newlyAdmittedPatterns.map(p => p.id), report.patterns.filter(p => p.admittedTrips && !before.admittedPatternIds.includes(p.id)).map(p => p.id))
+    for (const p of review.newlyAdmittedPatterns) assert(report.patterns.some(q => q.id === p.id && q.admittedTrips))
     const pairCounts = new Map(), byPattern = new Map(report.patterns.map(p => [p.id, p]))
     for (const p of report.patterns) {
       assert.equal(p.segmentCount, p.stopIds.length - 1)
@@ -65,8 +69,8 @@ export async function checkSolothurnRegion({ output = 'public/data/solothurn-reg
       assert.equal(p.decisions.admitted ?? 0, p.admittedTrips)
       if (p.admittedTrips) {
         assert.equal(p.matchedSegments, p.segmentCount)
-        assert(!solothurnNight(routes.find(r => r.id === p.routeId)))
-        assert(SO_LIMITS[p.mode])
+        if (solothurnNight(routes.find(r => r.id === p.routeId))) assert(p.geometrySources.every(s => s !== 'solothurn-network'))
+        assert(SO_LIMITS[p.mode] || p.supplementAvailable)
       }
       for (let i = 1; i < p.stopIds.length; i++) {
         const key = JSON.stringify([p.routeId, p.stopIds[i - 1], p.stopIds[i]])
@@ -106,7 +110,7 @@ export async function checkSolothurnRegion({ output = 'public/data/solothurn-reg
     const snapshot = { ...manifest, trains }
     validateBernSnapshot(snapshot); validateBernChunks(snapshot, manifest, chunks)
     assert.equal(trains.length, c.admittedTrips)
-    const rerouted = applySolothurnGeometry(snapshot, new Map(routes.map(r => [r.id, r])), graphs, matchCache)
+    const rerouted = applySolothurnGeometry(snapshot, new Map(routes.map(r => [r.id, r])), graphs, matchCache, supplements)
     for (const [i, train] of rerouted.trains.entries()) {
       assert.equal(train.admission, 'admitted', 'Published journey no longer passes source routing')
       assert.deepEqual(train.pathSegments.map(p => rerouted.paths[p]), trains[i].pathSegments.map(p => snapshot.paths[p]), 'Published geometry differs from source graph')

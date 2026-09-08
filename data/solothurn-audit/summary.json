@@ -5,6 +5,239 @@
     "source": "5f11586ad156f763d7b1b9a6ac05f14dd29865ca03bf5a1d42195a7da8c331e8"
   },
   "sources": {
+    "supplements": {
+      "contextSha256": "6a3fb3b6d119bf3118969bce3f42bd9592fb484a4f088a0ee8b456ff769c146d",
+      "policySha256": "de5419174d655425c636e07f45ff9e6c5cf652f90768f136bd3745df5c349b7e",
+      "boat": {
+        "routeId": "94-321-6-j26-1",
+        "agencyId": "182",
+        "line": "3216",
+        "mode": "ferry",
+        "file": "data/solothurn-sources/supplements/boat-3216.json",
+        "sha256": "87b7019c993e468c99ab4ca4939b4ebd77866776ad2fabd9a456436a94437027",
+        "source": {
+          "schemaVersion": 1,
+          "sourceCrs": "EPSG:2056",
+          "coordinateModel": "original LV95 XY, no simplification; Z/M discarded only in derived geometry",
+          "sourceUrl": "https://geofiles.be.ch/geoportal/pub/download/OEVTP/oevtp.gpkg.zip",
+          "metadataUrl": "https://www.agi.dij.be.ch/de/start/geoportal/geodaten/detail.html?code=OEVTP&type=geoproduct",
+          "attribution": "Öffentlicher Verkehr © Amt für öffentlichen Verkehr und Verkehrskoordination des Kantons Bern",
+          "license": "Bern cantonal geodata terms 2026-01-20 (free use with attribution; no Creative Commons licence assigned)",
+          "termsFiles": [
+            "terms_of_use_de.pdf",
+            "terms_of_use_fr.pdf"
+          ],
+          "dataUpdated": "2026-01-01",
+          "packagePublished": "2026-07-09",
+          "acquiredAt": "2026-09-08T17:02:41.454390+00:00",
+          "archiveSha256": "4e2a4fcca08cc219c871d42c957753c09318ace2172fb3614c4fe71b20a4fe19",
+          "geopackageSha256": "de4c89d91f69a572dabe9fda7b14140da45fdfe016d45c6f5f900337b45b1e4d",
+          "boundary": {
+            "edition": "2026-01",
+            "sourceSha256": "1f122cb7a06f2d312a84b7c0a91116348ba907054d487f0a70b9d2302984e6fc",
+            "snapshotSha256": "b0bfb7d0d3d7357aaaec2de0335dfc1beb83274b2143d876260e86b227a41dd0",
+            "attribution": "© swisstopo",
+            "sourceUrl": "https://data.geo.admin.ch/ch.swisstopo.swissboundaries3d/swissboundaries3d_2026-01/swissboundaries3d_2026-01_2056_5728.gpkg.zip",
+            "termsUrl": "https://www.swisstopo.admin.ch/en/terms-of-use-free-geodata-and-geoservices"
+          }
+        }
+      },
+      "tram": {
+        "routeId": "91-10-j26-1",
+        "agencyId": "37",
+        "line": "10",
+        "mode": "tram",
+        "file": "data/solothurn-sources/supplements/basel-tram.geojson.gz",
+        "sha256": "06a10a99b5ccc07257bd01afbf060d9726b3832ddbeeaf0217200afc248001af",
+        "source": {
+          "layer": "LN_Tramlinie",
+          "url": "https://wfs.geo.bs.ch/?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=ms%3ALN_Tramlinie&COUNT=47&OUTPUTFORMAT=geojson&SRSNAME=EPSG%3A4326",
+          "countUrl": "https://wfs.geo.bs.ch/?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=ms%3ALN_Tramlinie&RESULTTYPE=hits",
+          "features": 46,
+          "bytes": 963767,
+          "sha256": "687be2ce2fed8ffc48a00ef5a7fd694be71d446b937f5f269cb432beeae83df1",
+          "retrievedAt": "2026-09-08T16:05:07.079Z",
+          "validOn": null,
+          "attribution": "Geodaten Kanton Basel-Stadt",
+          "metadataUrl": "https://shop.geo.bs.ch/geodaten-katalog/",
+          "modelUrl": "https://models.geo.bs.ch/Modellbeschreibungen/LN_LiniennetzOeV_KGDM_V1_0.pdf",
+          "termsUrl": "https://www.bs.ch/news/2026-anpassung-der-kgeoiv",
+          "limits": {
+            "snapMetres": 80,
+            "detourRatio": 3,
+            "detourFloorMetres": 600,
+            "alternativeSnapMetres": 5
+          },
+          "note": "Line/operator-specific official geometry, not running-track or diversion certification. No geometry effective date supplied."
+        }
+      },
+      "rail": {
+        "schemaVersion": 1,
+        "publisher": "Federal Office of Transport - FOT",
+        "attribution": "© Federal Office of Transport (FOT)",
+        "license": "proprietary",
+        "termsUrl": "https://opendata.swiss/terms-of-use/#terms_by",
+        "catalogueDate": "2021-07-06T00:00:00Z",
+        "assetUpdated": "2025-01-18T04:23:13.735821Z",
+        "catalogueCheckedOn": "2026-09-08",
+        "sourceUrl": "https://data.geo.admin.ch/ch.bav.schienennetz/schienennetz/schienennetz_2056_de.xtf",
+        "sha256": "2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+        "publishedChecksum": "12202895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+        "validOn": null,
+        "validityNote": "Catalogue dates and verified bytes do not establish September 2026 alignment validity. Inferred infrastructure paths, not certified service running tracks.",
+        "nodes": 3210,
+        "segments": 3424,
+        "transformation": "Existing XTF parser; LV95 simplification 5 m and swisstopo approximate LV95-to-WGS84 transformation rounded to 6 decimals.",
+        "files": {
+          "network.xtf.gz": "f83afc9c922ab368070faa151fcf8be02fbb66bc1f4ae9b1011c68c86be21af3",
+          "catalogue.json": "4c54793b444d6d453e4f3e9c5ddd424f72d16b76325366fea6a10f60e749cf60",
+          "collection.json": "a4c61b24a114dcc3c710194deb742c7cd80400584bf9261da534019ed1f22c02"
+        },
+        "limits": {
+          "stationAttachmentMetres": 350,
+          "topologyAttachmentMetres": 120,
+          "detourRatio": 4.5,
+          "detourFloorMetres": 3000,
+          "simplificationMetres": 5
+        }
+      },
+      "road": {
+        "dates": [
+          "2026-01-16",
+          "2026-01-18",
+          "2026-04-03",
+          "2026-04-05",
+          "2026-07-17",
+          "2026-07-19",
+          "2026-08-01",
+          "2026-09-04",
+          "2026-09-06",
+          "2026-10-23",
+          "2026-10-25",
+          "2026-12-11"
+        ],
+        "serviceDate": "2026-01-16",
+        "feedVersion": "20260902",
+        "sourceUrl": "https://data.opentransportdata.swiss/en/dataset/timetable-2026-gtfs2020",
+        "timetableSha256": "a5f559bc76649a6878d6f9f77c1a00f684664cb7553536dd92895f060c140aaf",
+        "sourceHashes": {
+          "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+          "source": "5f11586ad156f763d7b1b9a6ac05f14dd29865ca03bf5a1d42195a7da8c331e8"
+        },
+        "routeAgencies": {
+          "92-10-G-j26-1": "883",
+          "92-15-B-j26-1": "883",
+          "92-16-D-j26-1": "883",
+          "92-1-L-j26-1": "883",
+          "92-20-E-j26-1": "894",
+          "92-21-D-j26-1": "894",
+          "92-22-E-j26-1": "894",
+          "92-23-C-j26-1": "894",
+          "92-24-B-j26-1": "894",
+          "92-25-C-j26-1": "894",
+          "92-26-A-j26-1": "894",
+          "92-27-B-j26-1": "894",
+          "92-2-E-j26-1": "840",
+          "92-2-K-j26-1": "883",
+          "92-362-j26-1": "850",
+          "92-363-j26-1": "850",
+          "92-3-J-j26-1": "840",
+          "92-3-M-j26-1": "883",
+          "92-4-N-j26-1": "883",
+          "92-501-A-j26-1": "793",
+          "92-502-j26-1": "793",
+          "92-503-A-j26-1": "793",
+          "92-505-j26-1": "793",
+          "92-506-j26-1": "793",
+          "92-507-j26-1": "793",
+          "92-508-j26-1": "793",
+          "92-509-j26-1": "793",
+          "92-513-j26-1": "793",
+          "92-517-j26-1": "793",
+          "92-519-j26-1": "793",
+          "92-555-j26-1": "793",
+          "92-56-j26-1": "37",
+          "92-5-J-j26-1": "883",
+          "92-66-D-j26-1": "37",
+          "92-6-M-j26-1": "883",
+          "92-7-J-j26-1": "883",
+          "92-871-j26-1": "850",
+          "92-898-j26-1": "850",
+          "92-8-F-j26-1": "850",
+          "92-9-I-j26-1": "883",
+          "96-131-1-j26-1": "801",
+          "96-131-2-j26-1": "801",
+          "96-131-3-j26-1": "801",
+          "96-131-4-j26-1": "801",
+          "96-131-5-j26-1": "801",
+          "96-131-6-j26-1": "801",
+          "96-131-7-j26-1": "801",
+          "96-131-8-j26-1": "801",
+          "96-136-7-j26-1": "801",
+          "96-136-8-j26-1": "801",
+          "96-136-9-j26-1": "801",
+          "96-137-3-j26-1": "801",
+          "96-137-7-j26-1": "801",
+          "96-140-2-j26-1": "801",
+          "96-144-1-j26-1": "801",
+          "96-144-2-j26-1": "801",
+          "96-144-4-j26-1": "801",
+          "96-144-7-j26-1": "801",
+          "96-144-9-j26-1": "801",
+          "96-145-0-j26-1": "801",
+          "96-145-1-j26-1": "801",
+          "96-145-2-j26-1": "801",
+          "96-145-9-j26-1": "801",
+          "96-148-2-j26-1": "801",
+          "96-148-5-j26-1": "801",
+          "96-148-6-j26-1": "801",
+          "92-28-C-j26-1": "894",
+          "92-A05-M-j26-1": "7231",
+          "92-EV9-D-j26-1": "7231",
+          "92-M11-j26-1": "883",
+          "92-M30-j26-1": "883",
+          "92-M51-j26-1": "883",
+          "92-M52-j26-1": "883",
+          "92-M53-j26-1": "883",
+          "92-M54-j26-1": "883",
+          "92-N22-j26-1": "840",
+          "92-N23-j26-1": "793",
+          "92-N51-j26-1": "793",
+          "92-N55-j26-1": "793",
+          "92-N57-j26-1": "793",
+          "92-N60-A-j26-1": "723",
+          "96-144-6-j26-1": "801",
+          "96-144-B-j26-1": "801",
+          "92-EV7-j26-1": "7231",
+          "96-145-6-j26-1": "801",
+          "92-A02-4-j26-1": "7231",
+          "92-A05-E-j26-1": "7231",
+          "92-EV3-U-j26-1": "7231",
+          "92-EV4-M-j26-1": "7231",
+          "92-EV5-N-j26-1": "7231",
+          "92-EV6-R-j26-1": "7231",
+          "92-A01-T-j26-1": "7231",
+          "92-A0C-9-j26-1": "7136",
+          "96-145-4-j26-1": "801",
+          "92-EV8-M-j26-1": "7231",
+          "92-EV9-L-j26-1": "7231"
+        },
+        "scope": "All full Solothurn bus patterns on twelve seasonal/civil dates, including night and replacement services; exact route, agency, stop IDs and coordinates retained. Routing-only nonnegative times.",
+        "source": {
+          "description": "Geofabrik Switzerland 2026-09-02 plus OSM border extract retrieved 2026-09-08",
+          "swissDate": "2026-09-02",
+          "borderRetrieved": "2026-09-08",
+          "sourceUrl": "https://download.geofabrik.de/europe/switzerland.html",
+          "osmSha256": "d5c675456e935cfbcab88fe894fe9145dc5bd1fbd4318cea30ffd838a9aad02b",
+          "matcherCommit": "99f2cd466696ecc6bdb73b2b3bb9008557fcb84a"
+        },
+        "attribution": "© OpenStreetMap contributors",
+        "license": "ODbL-1.0",
+        "licenseUrl": "https://www.openstreetmap.org/copyright",
+        "model": "Inferred bus road paths; complete-pattern consensus fallback only; not operator-verified"
+      },
+      "roadCacheSha256": "a36d8ea303fe6fcd129ad1d16d817a52728f2d482b5ee6f64467b29d71157241"
+    },
     "schemaVersion": 1,
     "sourceCrs": "EPSG:2056",
     "records": [
@@ -987,10 +1220,10 @@
     "key": "GTFS route identity + direction_id + full ordered original platform IDs, including repeats and out-of-canton calls"
   },
   "routesByStatus": {
-    "admitted-all-dated-trips": 25,
-    "excluded": 96,
+    "admitted-all-dated-trips": 127,
+    "excluded": 7,
     "inactive-on-validation-dates": 42,
-    "partially-admitted": 30
+    "partially-admitted": 17
   },
   "districts": [
     {
@@ -1050,25 +1283,43 @@
         "96-144-B-j26-1",
         "96-145-9-j26-1"
       ],
-      "admittedCalledPlatforms": 152,
+      "admittedCalledPlatforms": 197,
       "admittedRouteIds": [
+        "91-20-A-j26-1",
         "91-21-C-j26-1",
         "91-51-B-j26-1",
         "91-51-E-j26-1",
+        "91-54-Y-j26-1",
+        "91-55-C-j26-1",
+        "91-56-B-j26-1",
         "91-56-C-j26-1",
         "91-56-j26-1",
+        "91-5-A-j26-1",
         "92-1-L-j26-1",
         "92-20-E-j26-1",
         "92-21-D-j26-1",
         "92-22-E-j26-1",
+        "92-23-C-j26-1",
         "92-24-B-j26-1",
         "92-25-C-j26-1",
         "92-26-A-j26-1",
         "92-27-B-j26-1",
         "92-28-C-j26-1",
         "92-2-K-j26-1",
+        "92-3-M-j26-1",
         "92-4-N-j26-1",
+        "92-A02-4-j26-1",
+        "92-A05-E-j26-1",
+        "92-EV3-U-j26-1",
+        "92-EV4-M-j26-1",
+        "92-EV7-j26-1",
+        "92-EV8-M-j26-1",
+        "92-EV9-L-j26-1",
+        "92-M30-j26-1",
+        "92-M51-j26-1",
         "93-202-6-j26-1",
+        "94-321-6-j26-1",
+        "96-144-B-j26-1",
         "96-145-9-j26-1"
       ]
     },
@@ -1086,14 +1337,16 @@
         "96-131-8-j26-1",
         "96-145-0-j26-1"
       ],
-      "admittedCalledPlatforms": 93,
+      "admittedCalledPlatforms": 147,
       "admittedRouteIds": [
         "96-131-1-j26-1",
         "96-131-2-j26-1",
         "96-131-3-j26-1",
+        "96-131-4-j26-1",
         "96-131-5-j26-1",
         "96-131-6-j26-1",
         "96-131-7-j26-1",
+        "96-131-8-j26-1",
         "96-145-0-j26-1"
       ]
     },
@@ -1112,10 +1365,17 @@
         "96-137-3-j26-1",
         "96-137-7-j26-1"
       ],
-      "admittedCalledPlatforms": 24,
+      "admittedCalledPlatforms": 154,
       "admittedRouteIds": [
+        "91-10-j26-1",
+        "92-56-j26-1",
+        "92-66-D-j26-1",
+        "96-131-1-j26-1",
         "96-136-7-j26-1",
-        "96-136-8-j26-1"
+        "96-136-8-j26-1",
+        "96-136-9-j26-1",
+        "96-137-3-j26-1",
+        "96-137-7-j26-1"
       ]
     },
     {
@@ -1152,11 +1412,27 @@
         "96-145-2-j26-1",
         "96-145-4-j26-1"
       ],
-      "admittedCalledPlatforms": 8,
+      "admittedCalledPlatforms": 107,
       "admittedRouteIds": [
+        "91-20-A-j26-1",
         "91-22-j26-1",
+        "91-55-C-j26-1",
+        "91-55-E-j26-1",
+        "91-5-A-j26-1",
+        "92-501-A-j26-1",
+        "92-505-j26-1",
+        "92-507-j26-1",
         "92-513-j26-1",
-        "96-144-9-j26-1"
+        "92-EV8-M-j26-1",
+        "92-M52-j26-1",
+        "92-N51-j26-1",
+        "92-N55-j26-1",
+        "96-144-6-j26-1",
+        "96-144-7-j26-1",
+        "96-144-9-j26-1",
+        "96-145-1-j26-1",
+        "96-145-2-j26-1",
+        "96-145-4-j26-1"
       ]
     },
     {
@@ -1197,10 +1473,17 @@
         "96-148-5-j26-1",
         "96-148-6-j26-1"
       ],
-      "admittedCalledPlatforms": 70,
+      "admittedCalledPlatforms": 94,
       "admittedRouteIds": [
+        "91-20-A-j26-1",
+        "91-41-F-j26-1",
+        "91-44-j26-1",
+        "91-46-D-j26-1",
         "91-5-O-j26-1",
         "91-8-B-j26-1",
+        "92-10-G-j26-1",
+        "92-15-B-j26-1",
+        "92-16-D-j26-1",
         "92-1-L-j26-1",
         "92-2-K-j26-1",
         "92-3-M-j26-1",
@@ -1210,6 +1493,12 @@
         "92-7-J-j26-1",
         "92-8-F-j26-1",
         "92-9-I-j26-1",
+        "92-EV8-M-j26-1",
+        "92-M11-j26-1",
+        "92-M51-j26-1",
+        "92-M52-j26-1",
+        "92-M54-j26-1",
+        "96-148-5-j26-1",
         "96-148-6-j26-1"
       ]
     },
@@ -1231,7 +1520,7 @@
         "92-N57-j26-1",
         "96-140-2-j26-1"
       ],
-      "admittedCalledPlatforms": 91,
+      "admittedCalledPlatforms": 112,
       "admittedRouteIds": [
         "91-9-F-j26-1",
         "92-2-E-j26-1",
@@ -1239,7 +1528,12 @@
         "92-502-j26-1",
         "92-506-j26-1",
         "92-507-j26-1",
-        "92-519-j26-1"
+        "92-517-j26-1",
+        "92-519-j26-1",
+        "92-EV9-D-j26-1",
+        "92-N22-j26-1",
+        "92-N57-j26-1",
+        "96-140-2-j26-1"
       ]
     },
     {
@@ -1254,7 +1548,7 @@
         "96-145-0-j26-1",
         "96-145-6-j26-1"
       ],
-      "admittedCalledPlatforms": 116,
+      "admittedCalledPlatforms": 129,
       "admittedRouteIds": [
         "91-22-j26-1",
         "96-144-4-j26-1",
@@ -1321,11 +1615,20 @@
         "96-144-B-j26-1",
         "96-145-9-j26-1"
       ],
-      "admittedCalledPlatforms": 39,
+      "admittedCalledPlatforms": 61,
       "admittedRouteIds": [
+        "91-20-A-j26-1",
         "91-21-C-j26-1",
+        "91-41-F-j26-1",
+        "91-44-j26-1",
+        "91-46-D-j26-1",
+        "91-55-C-j26-1",
+        "91-55-E-j26-1",
+        "91-5-A-j26-1",
         "91-5-O-j26-1",
         "91-8-B-j26-1",
+        "92-10-G-j26-1",
+        "92-16-D-j26-1",
         "92-1-L-j26-1",
         "92-2-K-j26-1",
         "92-3-M-j26-1",
@@ -1335,6 +1638,21 @@
         "92-7-J-j26-1",
         "92-8-F-j26-1",
         "92-9-I-j26-1",
+        "92-A02-4-j26-1",
+        "92-A05-E-j26-1",
+        "92-EV3-U-j26-1",
+        "92-EV4-M-j26-1",
+        "92-EV5-N-j26-1",
+        "92-EV7-j26-1",
+        "92-EV8-M-j26-1",
+        "92-EV9-L-j26-1",
+        "92-M11-j26-1",
+        "92-M30-j26-1",
+        "92-M51-j26-1",
+        "92-M52-j26-1",
+        "92-M54-j26-1",
+        "94-321-6-j26-1",
+        "96-144-B-j26-1",
         "96-145-9-j26-1"
       ]
     },
@@ -1437,17 +1755,69 @@
         "96-144-6-j26-1",
         "96-144-7-j26-1"
       ],
-      "admittedCalledPlatforms": 66,
+      "admittedCalledPlatforms": 275,
       "admittedRouteIds": [
+        "91-12-K-j26-1",
+        "91-16-B-j26-1",
+        "91-17-B-j26-1",
+        "91-17-C-j26-1",
+        "91-17-F-j26-1",
+        "91-1-D-j26-1",
+        "91-1G-Y-j26-1",
+        "91-1-I-j26-1",
+        "91-1W-Y-j26-1",
+        "91-20-A-j26-1",
+        "91-21-D-j26-1",
+        "91-23-j26-1",
+        "91-24-F-j26-1",
+        "91-26-C-j26-1",
+        "91-26-D-j26-1",
+        "91-26-j26-1",
+        "91-27-A-j26-1",
         "91-29-j26-1",
+        "91-29-Y-j26-1",
+        "91-35-A-j26-1",
+        "91-35-B-j26-1",
+        "91-3-B-j26-1",
+        "91-3M-Y-j26-1",
+        "91-3U-Y-j26-1",
+        "91-3W-Y-j26-1",
+        "91-3-Y-j26-1",
+        "91-4U-Y-j26-1",
+        "91-55-C-j26-1",
+        "91-55-E-j26-1",
+        "91-5-A-j26-1",
+        "91-61-A-j26-1",
+        "91-6-H-j26-1",
+        "91-6-W-j26-1",
+        "91-8-E-j26-1",
+        "91-9-F-j26-1",
+        "91-K-Y-j26-1",
+        "91-N1-A-j26-1",
+        "92-3-J-j26-1",
         "92-501-A-j26-1",
         "92-502-j26-1",
+        "92-503-A-j26-1",
         "92-505-j26-1",
         "92-506-j26-1",
         "92-507-j26-1",
+        "92-508-j26-1",
+        "92-509-j26-1",
         "92-513-j26-1",
+        "92-517-j26-1",
         "92-519-j26-1",
-        "96-144-1-j26-1"
+        "92-555-j26-1",
+        "92-EV8-M-j26-1",
+        "92-EV9-D-j26-1",
+        "92-N23-j26-1",
+        "92-N51-j26-1",
+        "92-N55-j26-1",
+        "92-N57-j26-1",
+        "92-N60-A-j26-1",
+        "96-144-1-j26-1",
+        "96-144-2-j26-1",
+        "96-144-6-j26-1",
+        "96-144-7-j26-1"
       ]
     },
     {
@@ -1465,11 +1835,15 @@
         "96-148-5-j26-1",
         "96-148-6-j26-1"
       ],
-      "admittedCalledPlatforms": 44,
+      "admittedCalledPlatforms": 108,
       "admittedRouteIds": [
         "92-362-j26-1",
         "92-363-j26-1",
+        "92-871-j26-1",
+        "92-898-j26-1",
         "92-8-F-j26-1",
+        "92-M51-j26-1",
+        "92-M54-j26-1",
         "96-148-2-j26-1",
         "96-148-5-j26-1",
         "96-148-6-j26-1"
@@ -1486,24 +1860,23 @@
       },
       "coverage": {
         "trips": 7156,
-        "admittedTrips": 3142,
+        "admittedTrips": 6654,
         "scheduledTrips": 6078,
         "representativeHeadwayTrips": 1078,
-        "admittedScheduledTrips": 2064,
+        "admittedScheduledTrips": 5576,
         "admittedRepresentativeHeadwayTrips": 1078,
         "scheduledSegmentOccurrences": 97358,
-        "matchedScheduledSegmentOccurrences": 78023,
+        "matchedScheduledSegmentOccurrences": 96542,
         "segmentOccurrences": 98436,
-        "matchedSegmentOccurrences": 79101,
-        "admittedSegmentOccurrences": 30649,
+        "matchedSegmentOccurrences": 97620,
+        "admittedSegmentOccurrences": 88214,
         "directedPairs": 4259,
-        "matchedDirectedPairs": 3004,
+        "matchedDirectedPairs": 4211,
         "patterns": 921,
-        "completePatterns": 223,
-        "admittedPatterns": 223,
+        "completePatterns": 811,
+        "admittedPatterns": 811,
         "excludedTrips": {
-          "incomplete-directed-pattern": 3809,
-          "no-compatible-source-mode": 205
+          "incomplete-directed-pattern": 502
         }
       },
       "groups": [
@@ -1511,47 +1884,45 @@
           "id": "11:rail",
           "agency": "Schweizerische Bundesbahnen SBB",
           "trips": 950,
-          "admittedTrips": 100,
+          "admittedTrips": 811,
           "scheduledTrips": 950,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 100,
+          "admittedScheduledTrips": 811,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 9782,
-          "matchedScheduledSegmentOccurrences": 5432,
+          "matchedScheduledSegmentOccurrences": 9643,
           "segmentOccurrences": 9782,
-          "matchedSegmentOccurrences": 5432,
-          "admittedSegmentOccurrences": 613,
+          "matchedSegmentOccurrences": 9643,
+          "admittedSegmentOccurrences": 8244,
           "directedPairs": 994,
-          "matchedDirectedPairs": 315,
+          "matchedDirectedPairs": 964,
           "patterns": 327,
-          "completePatterns": 13,
-          "admittedPatterns": 13,
+          "completePatterns": 256,
+          "admittedPatterns": 256,
           "excludedTrips": {
-            "incomplete-directed-pattern": 850
+            "incomplete-directed-pattern": 139
           }
         },
         {
           "id": "182:ferry",
           "agency": "Bielersee-Schifffahrts-Gesellschaft AG",
           "trips": 4,
-          "admittedTrips": 0,
+          "admittedTrips": 4,
           "scheduledTrips": 4,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 0,
+          "admittedScheduledTrips": 4,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 28,
-          "matchedScheduledSegmentOccurrences": 0,
+          "matchedScheduledSegmentOccurrences": 28,
           "segmentOccurrences": 28,
-          "matchedSegmentOccurrences": 0,
-          "admittedSegmentOccurrences": 0,
+          "matchedSegmentOccurrences": 28,
+          "admittedSegmentOccurrences": 28,
           "directedPairs": 14,
-          "matchedDirectedPairs": 0,
+          "matchedDirectedPairs": 14,
           "patterns": 2,
-          "completePatterns": 0,
-          "admittedPatterns": 0,
-          "excludedTrips": {
-            "no-compatible-source-mode": 4
-          }
+          "completePatterns": 2,
+          "admittedPatterns": 2,
+          "excludedTrips": {}
         },
         {
           "id": "202:cableway",
@@ -1578,115 +1949,113 @@
           "id": "33:rail",
           "agency": "BLS AG (bls)",
           "trips": 158,
-          "admittedTrips": 0,
+          "admittedTrips": 157,
           "scheduledTrips": 158,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 0,
+          "admittedScheduledTrips": 157,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 1572,
-          "matchedScheduledSegmentOccurrences": 718,
+          "matchedScheduledSegmentOccurrences": 1571,
           "segmentOccurrences": 1572,
-          "matchedSegmentOccurrences": 718,
-          "admittedSegmentOccurrences": 0,
+          "matchedSegmentOccurrences": 1571,
+          "admittedSegmentOccurrences": 1568,
           "directedPairs": 137,
-          "matchedDirectedPairs": 61,
+          "matchedDirectedPairs": 136,
           "patterns": 38,
-          "completePatterns": 0,
-          "admittedPatterns": 0,
+          "completePatterns": 37,
+          "admittedPatterns": 37,
           "excludedTrips": {
-            "incomplete-directed-pattern": 158
+            "incomplete-directed-pattern": 1
           }
         },
         {
           "id": "37:bus",
           "agency": "Baselland Transport",
           "trips": 159,
-          "admittedTrips": 0,
+          "admittedTrips": 159,
           "scheduledTrips": 159,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 0,
+          "admittedScheduledTrips": 159,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 1264,
-          "matchedScheduledSegmentOccurrences": 1038,
+          "matchedScheduledSegmentOccurrences": 1264,
           "segmentOccurrences": 1264,
-          "matchedSegmentOccurrences": 1038,
-          "admittedSegmentOccurrences": 0,
+          "matchedSegmentOccurrences": 1264,
+          "admittedSegmentOccurrences": 1264,
           "directedPairs": 36,
-          "matchedDirectedPairs": 28,
+          "matchedDirectedPairs": 36,
           "patterns": 6,
-          "completePatterns": 0,
-          "admittedPatterns": 0,
-          "excludedTrips": {
-            "incomplete-directed-pattern": 159
-          }
+          "completePatterns": 6,
+          "admittedPatterns": 6,
+          "excludedTrips": {}
         },
         {
           "id": "37:tram",
           "agency": "Baselland Transport",
           "trips": 201,
-          "admittedTrips": 0,
+          "admittedTrips": 107,
           "scheduledTrips": 201,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 0,
+          "admittedScheduledTrips": 107,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 7311,
-          "matchedScheduledSegmentOccurrences": 0,
+          "matchedScheduledSegmentOccurrences": 7123,
           "segmentOccurrences": 7311,
-          "matchedSegmentOccurrences": 0,
-          "admittedSegmentOccurrences": 0,
+          "matchedSegmentOccurrences": 7123,
+          "admittedSegmentOccurrences": 3709,
           "directedPairs": 79,
-          "matchedDirectedPairs": 0,
+          "matchedDirectedPairs": 77,
           "patterns": 10,
-          "completePatterns": 0,
-          "admittedPatterns": 0,
+          "completePatterns": 6,
+          "admittedPatterns": 6,
           "excludedTrips": {
-            "no-compatible-source-mode": 201
+            "incomplete-directed-pattern": 94
           }
         },
         {
           "id": "793:bus",
           "agency": "Busbetrieb Olten-Gösgen-Gäu",
           "trips": 955,
-          "admittedTrips": 315,
+          "admittedTrips": 926,
           "scheduledTrips": 955,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 315,
+          "admittedScheduledTrips": 926,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 18099,
-          "matchedScheduledSegmentOccurrences": 16468,
+          "matchedScheduledSegmentOccurrences": 18070,
           "segmentOccurrences": 18099,
-          "matchedSegmentOccurrences": 16468,
-          "admittedSegmentOccurrences": 4628,
+          "matchedSegmentOccurrences": 18070,
+          "admittedSegmentOccurrences": 17050,
           "directedPairs": 497,
-          "matchedDirectedPairs": 443,
+          "matchedDirectedPairs": 496,
           "patterns": 87,
-          "completePatterns": 27,
-          "admittedPatterns": 27,
+          "completePatterns": 84,
+          "admittedPatterns": 84,
           "excludedTrips": {
-            "incomplete-directed-pattern": 640
+            "incomplete-directed-pattern": 29
           }
         },
         {
           "id": "801:bus",
           "agency": "PostAuto AG",
           "trips": 1394,
-          "admittedTrips": 580,
+          "admittedTrips": 1323,
           "scheduledTrips": 1394,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 580,
+          "admittedScheduledTrips": 1323,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 21366,
-          "matchedScheduledSegmentOccurrences": 18771,
+          "matchedScheduledSegmentOccurrences": 21295,
           "segmentOccurrences": 21366,
-          "matchedSegmentOccurrences": 18771,
-          "admittedSegmentOccurrences": 7767,
+          "matchedSegmentOccurrences": 21295,
+          "admittedSegmentOccurrences": 19572,
           "directedPairs": 1145,
-          "matchedDirectedPairs": 1007,
+          "matchedDirectedPairs": 1143,
           "patterns": 206,
-          "completePatterns": 85,
-          "admittedPatterns": 85,
+          "completePatterns": 199,
+          "admittedPatterns": 199,
           "excludedTrips": {
-            "incomplete-directed-pattern": 814
+            "incomplete-directed-pattern": 71
           }
         },
         {
@@ -1716,93 +2085,87 @@
           "id": "82:rail",
           "agency": "Schweizerische Südostbahn (sob)",
           "trips": 43,
-          "admittedTrips": 0,
+          "admittedTrips": 25,
           "scheduledTrips": 43,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 0,
+          "admittedScheduledTrips": 25,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 706,
-          "matchedScheduledSegmentOccurrences": 30,
+          "matchedScheduledSegmentOccurrences": 688,
           "segmentOccurrences": 706,
-          "matchedSegmentOccurrences": 30,
-          "admittedSegmentOccurrences": 0,
+          "matchedSegmentOccurrences": 688,
+          "admittedSegmentOccurrences": 393,
           "directedPairs": 138,
-          "matchedDirectedPairs": 10,
+          "matchedDirectedPairs": 136,
           "patterns": 36,
-          "completePatterns": 0,
-          "admittedPatterns": 0,
+          "completePatterns": 24,
+          "admittedPatterns": 24,
           "excludedTrips": {
-            "incomplete-directed-pattern": 43
+            "incomplete-directed-pattern": 18
           }
         },
         {
           "id": "840:bus",
           "agency": "Busbetrieb Aarau",
           "trips": 388,
-          "admittedTrips": 58,
+          "admittedTrips": 388,
           "scheduledTrips": 388,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 58,
+          "admittedScheduledTrips": 388,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 6239,
-          "matchedScheduledSegmentOccurrences": 5823,
+          "matchedScheduledSegmentOccurrences": 6239,
           "segmentOccurrences": 6239,
-          "matchedSegmentOccurrences": 5823,
-          "admittedSegmentOccurrences": 290,
+          "matchedSegmentOccurrences": 6239,
+          "admittedSegmentOccurrences": 6239,
           "directedPairs": 95,
-          "matchedDirectedPairs": 86,
+          "matchedDirectedPairs": 95,
           "patterns": 16,
-          "completePatterns": 2,
-          "admittedPatterns": 2,
-          "excludedTrips": {
-            "incomplete-directed-pattern": 330
-          }
+          "completePatterns": 16,
+          "admittedPatterns": 16,
+          "excludedTrips": {}
         },
         {
           "id": "850:bus",
           "agency": "Autobusbetrieb RBS",
           "trips": 205,
-          "admittedTrips": 32,
+          "admittedTrips": 205,
           "scheduledTrips": 205,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 32,
+          "admittedScheduledTrips": 205,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 2962,
-          "matchedScheduledSegmentOccurrences": 2632,
+          "matchedScheduledSegmentOccurrences": 2962,
           "segmentOccurrences": 2962,
-          "matchedSegmentOccurrences": 2632,
-          "admittedSegmentOccurrences": 294,
+          "matchedSegmentOccurrences": 2962,
+          "admittedSegmentOccurrences": 2962,
           "directedPairs": 169,
-          "matchedDirectedPairs": 149,
+          "matchedDirectedPairs": 169,
           "patterns": 29,
-          "completePatterns": 4,
-          "admittedPatterns": 4,
-          "excludedTrips": {
-            "incomplete-directed-pattern": 173
-          }
+          "completePatterns": 29,
+          "admittedPatterns": 29,
+          "excludedTrips": {}
         },
         {
           "id": "883:bus",
           "agency": "Busbetrieb Solothurn und Umgebung",
           "trips": 787,
-          "admittedTrips": 368,
+          "admittedTrips": 787,
           "scheduledTrips": 787,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 368,
+          "admittedScheduledTrips": 787,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 15417,
-          "matchedScheduledSegmentOccurrences": 14943,
+          "matchedScheduledSegmentOccurrences": 15417,
           "segmentOccurrences": 15417,
-          "matchedSegmentOccurrences": 14943,
-          "admittedSegmentOccurrences": 6578,
+          "matchedSegmentOccurrences": 15417,
+          "admittedSegmentOccurrences": 15417,
           "directedPairs": 485,
-          "matchedDirectedPairs": 451,
+          "matchedDirectedPairs": 485,
           "patterns": 94,
-          "completePatterns": 42,
-          "admittedPatterns": 42,
-          "excludedTrips": {
-            "incomplete-directed-pattern": 419
-          }
+          "completePatterns": 94,
+          "admittedPatterns": 94,
+          "excludedTrips": {}
         },
         {
           "id": "88:rail",
@@ -1829,42 +2192,96 @@
           "id": "894:bus",
           "agency": "Busbetrieb Grenchen und Umgebung",
           "trips": 554,
-          "admittedTrips": 481,
+          "admittedTrips": 554,
           "scheduledTrips": 554,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 481,
+          "admittedScheduledTrips": 554,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 9913,
-          "matchedScheduledSegmentOccurrences": 9839,
+          "matchedScheduledSegmentOccurrences": 9913,
           "segmentOccurrences": 9913,
-          "matchedSegmentOccurrences": 9839,
-          "admittedSegmentOccurrences": 8624,
+          "matchedSegmentOccurrences": 9913,
+          "admittedSegmentOccurrences": 9913,
           "directedPairs": 358,
-          "matchedDirectedPairs": 352,
+          "matchedDirectedPairs": 358,
           "patterns": 45,
-          "completePatterns": 37,
-          "admittedPatterns": 37,
-          "excludedTrips": {
-            "incomplete-directed-pattern": 73
-          }
+          "completePatterns": 45,
+          "admittedPatterns": 45,
+          "excludedTrips": {}
         }
       ],
       "carryInTrips": 149,
-      "admittedCarryInTrips": 32,
-      "admittedOutsideCantonPlatforms": 162,
+      "admittedCarryInTrips": 137,
+      "admittedOutsideCantonPlatforms": 849,
       "directedPatternChecks": {
         "directionIds": [
           "0",
           "1"
         ],
         "patternsRevisitingPlatforms": 21,
-        "admittedPatternsRevisitingPlatforms": 5,
+        "admittedPatternsRevisitingPlatforms": 21,
         "nightTrips": 0,
         "admittedNightTrips": 0
       },
       "timingResolution": {
-        "zeroDurationSegmentOccurrences": 1901,
+        "zeroDurationSegmentOccurrences": 3951,
         "zeroDurationDirectedPairs": [
+          {
+            "routeId": "91-10-j26-1",
+            "fromId": "ch:1:sloid:692:1:2",
+            "toId": "ch:1:sloid:88765:1:2",
+            "seconds": 0,
+            "mode": "tram",
+            "metres": 400.18203299333334
+          },
+          {
+            "routeId": "91-10-j26-1",
+            "fromId": "ch:1:sloid:61:1:2",
+            "toId": "ch:1:sloid:78176:1:2",
+            "seconds": 0,
+            "mode": "tram",
+            "metres": 488.0679774995888
+          },
+          {
+            "routeId": "91-10-j26-1",
+            "fromId": "ch:1:sloid:994:1:2",
+            "toId": "ch:1:sloid:79",
+            "seconds": 0,
+            "mode": "tram",
+            "metres": 252.89243601654687
+          },
+          {
+            "routeId": "91-10-j26-1",
+            "fromId": "ch:1:sloid:88789:1:2",
+            "toId": "ch:1:sloid:78186:1:2",
+            "seconds": 0,
+            "mode": "tram",
+            "metres": 222.76437740677142
+          },
+          {
+            "routeId": "91-10-j26-1",
+            "fromId": "ch:1:sloid:76:1:2",
+            "toId": "ch:1:sloid:88785:1:2",
+            "seconds": 0,
+            "mode": "tram",
+            "metres": 445.33779295900786
+          },
+          {
+            "routeId": "91-10-j26-1",
+            "fromId": "ch:1:sloid:88785:1:2",
+            "toId": "ch:1:sloid:95:1:2",
+            "seconds": 0,
+            "mode": "tram",
+            "metres": 330.98743860381643
+          },
+          {
+            "routeId": "91-10-j26-1",
+            "fromId": "ch:1:sloid:78186:1:2",
+            "toId": "ch:1:sloid:88072:1:2",
+            "seconds": 0,
+            "mode": "tram",
+            "metres": 471.5902638469014
+          },
           {
             "routeId": "92-1-L-j26-1",
             "fromId": "ch:1:sloid:459",
@@ -1986,6 +2403,22 @@
             "metres": 360.9894937491245
           },
           {
+            "routeId": "92-23-C-j26-1",
+            "fromId": "ch:1:sloid:77914:0:1",
+            "toId": "ch:1:sloid:89214",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 519.6988996303326
+          },
+          {
+            "routeId": "92-23-C-j26-1",
+            "fromId": "ch:1:sloid:88465",
+            "toId": "ch:1:sloid:88464",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 442.5158327367545
+          },
+          {
             "routeId": "92-24-B-j26-1",
             "fromId": "ch:1:sloid:87630",
             "toId": "ch:1:sloid:87628",
@@ -2058,6 +2491,22 @@
             "metres": 301.8068773150984
           },
           {
+            "routeId": "92-2-E-j26-1",
+            "fromId": "ch:1:sloid:90261",
+            "toId": "ch:1:sloid:90257",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 349.78300741038174
+          },
+          {
+            "routeId": "92-2-E-j26-1",
+            "fromId": "ch:1:sloid:78643",
+            "toId": "ch:1:sloid:94929:0:1",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 249.0511809594333
+          },
+          {
             "routeId": "92-2-K-j26-1",
             "fromId": "ch:1:sloid:78076",
             "toId": "ch:1:sloid:78073",
@@ -2080,6 +2529,46 @@
             "seconds": 0,
             "mode": "bus",
             "metres": 285.4134290256206
+          },
+          {
+            "routeId": "92-363-j26-1",
+            "fromId": "ch:1:sloid:4455",
+            "toId": "ch:1:sloid:81354",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 478.40361362737923
+          },
+          {
+            "routeId": "92-363-j26-1",
+            "fromId": "ch:1:sloid:80977",
+            "toId": "ch:1:sloid:81076",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 593.1773943697149
+          },
+          {
+            "routeId": "92-3-J-j26-1",
+            "fromId": "ch:1:sloid:89178",
+            "toId": "ch:1:sloid:89179",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 433.438480345659
+          },
+          {
+            "routeId": "92-3-M-j26-1",
+            "fromId": "ch:1:sloid:91783",
+            "toId": "ch:1:sloid:88589",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 249.53207937889158
+          },
+          {
+            "routeId": "92-3-M-j26-1",
+            "fromId": "ch:1:sloid:88589",
+            "toId": "ch:1:sloid:91783",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 249.53207937889155
           },
           {
             "routeId": "92-501-A-j26-1",
@@ -2136,6 +2625,102 @@
             "seconds": 0,
             "mode": "bus",
             "metres": 282.98318117330956
+          },
+          {
+            "routeId": "92-503-A-j26-1",
+            "fromId": "ch:1:sloid:72352:0:02",
+            "toId": "ch:1:sloid:598:0:01",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 208.2029385702381
+          },
+          {
+            "routeId": "92-503-A-j26-1",
+            "fromId": "ch:1:sloid:90418:0:01",
+            "toId": "ch:1:sloid:2602:0:02",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 200.0906553393621
+          },
+          {
+            "routeId": "92-503-A-j26-1",
+            "fromId": "ch:1:sloid:2604:0:02",
+            "toId": "ch:1:sloid:2605:0:02",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 298.02672777480615
+          },
+          {
+            "routeId": "92-503-A-j26-1",
+            "fromId": "ch:1:sloid:2605:0:01",
+            "toId": "ch:1:sloid:2604:0:01",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 293.57148601643144
+          },
+          {
+            "routeId": "92-505-j26-1",
+            "fromId": "ch:1:sloid:78035:0:01",
+            "toId": "ch:1:sloid:88649:0:01",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 340.6194197913261
+          },
+          {
+            "routeId": "92-505-j26-1",
+            "fromId": "ch:1:sloid:88649:0:01",
+            "toId": "ch:1:sloid:78037:0:01",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 170.24220463137124
+          },
+          {
+            "routeId": "92-505-j26-1",
+            "fromId": "ch:1:sloid:78038:0:01",
+            "toId": "ch:1:sloid:78039:0:01",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 187.33930604206648
+          },
+          {
+            "routeId": "92-505-j26-1",
+            "fromId": "ch:1:sloid:78032:0:01",
+            "toId": "ch:1:sloid:78033:0:01",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 316.29424778493114
+          },
+          {
+            "routeId": "92-505-j26-1",
+            "fromId": "ch:1:sloid:78034:0:01",
+            "toId": "ch:1:sloid:78035:0:01",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 395.222465751301
+          },
+          {
+            "routeId": "92-505-j26-1",
+            "fromId": "ch:1:sloid:385:0:02",
+            "toId": "ch:1:sloid:78021:0:02",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 467.4433383905339
+          },
+          {
+            "routeId": "92-505-j26-1",
+            "fromId": "ch:1:sloid:78039:0:02",
+            "toId": "ch:1:sloid:78038:0:02",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 199.13024599358357
+          },
+          {
+            "routeId": "92-505-j26-1",
+            "fromId": "ch:1:sloid:78037:0:02",
+            "toId": "ch:1:sloid:88649:0:02",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 208.6313430356891
           },
           {
             "routeId": "92-506-j26-1",
@@ -2211,6 +2796,14 @@
           },
           {
             "routeId": "92-507-j26-1",
+            "fromId": "ch:1:sloid:87635:0:02",
+            "toId": "ch:1:sloid:87634:0:02",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 316.12045881811383
+          },
+          {
+            "routeId": "92-507-j26-1",
             "fromId": "ch:1:sloid:77990:0:01",
             "toId": "ch:1:sloid:77989:0:01",
             "seconds": 0,
@@ -2234,12 +2827,204 @@
             "metres": 345.0549528867437
           },
           {
+            "routeId": "92-507-j26-1",
+            "fromId": "ch:1:sloid:78038:0:01",
+            "toId": "ch:1:sloid:78039:0:01",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 187.33930604206648
+          },
+          {
+            "routeId": "92-508-j26-1",
+            "fromId": "ch:1:sloid:72355:0:01",
+            "toId": "ch:1:sloid:90161:0:01",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 241.20375211384965
+          },
+          {
+            "routeId": "92-508-j26-1",
+            "fromId": "ch:1:sloid:2383::1",
+            "toId": "ch:1:sloid:72682::1",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 453.83423440610227
+          },
+          {
+            "routeId": "92-517-j26-1",
+            "fromId": "ch:1:sloid:77993:0:03",
+            "toId": "ch:1:sloid:10613:0:01",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 288.215323880062
+          },
+          {
+            "routeId": "92-519-j26-1",
+            "fromId": "ch:1:sloid:78006:0:01",
+            "toId": "ch:1:sloid:78005:0:01",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 462.3707661474692
+          },
+          {
             "routeId": "92-519-j26-1",
             "fromId": "ch:1:sloid:78005:0:02",
             "toId": "ch:1:sloid:78006:0:02",
             "seconds": 0,
             "mode": "bus",
             "metres": 258.8397690776257
+          },
+          {
+            "routeId": "92-56-j26-1",
+            "fromId": "ch:1:sloid:77:1:3",
+            "toId": "ch:1:sloid:78226:1:2",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 257.31804724486653
+          },
+          {
+            "routeId": "92-56-j26-1",
+            "fromId": "ch:1:sloid:78225:1:2",
+            "toId": "ch:1:sloid:78224:1:1",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 331.19946491278756
+          },
+          {
+            "routeId": "92-56-j26-1",
+            "fromId": "ch:1:sloid:78224:1:1",
+            "toId": "ch:1:sloid:72205:1:1",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 799.0143453434353
+          },
+          {
+            "routeId": "92-898-j26-1",
+            "fromId": "ch:1:sloid:8777",
+            "toId": "ch:1:sloid:10779",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 406.34867745691724
+          },
+          {
+            "routeId": "92-898-j26-1",
+            "fromId": "ch:1:sloid:8786",
+            "toId": "ch:1:sloid:71474",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 328.2968772927652
+          },
+          {
+            "routeId": "92-8-F-j26-1",
+            "fromId": "ch:1:sloid:77928",
+            "toId": "ch:1:sloid:77929",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 930.626840101222
+          },
+          {
+            "routeId": "96-131-1-j26-1",
+            "fromId": "ch:1:sloid:80933:0:867968",
+            "toId": "ch:1:sloid:72220:0:675837",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 292.07674292512866
+          },
+          {
+            "routeId": "96-131-1-j26-1",
+            "fromId": "ch:1:sloid:765:0:227958",
+            "toId": "ch:1:sloid:72122:0:980363",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 366.8484766545155
+          },
+          {
+            "routeId": "96-131-1-j26-1",
+            "fromId": "ch:1:sloid:969:0:162141",
+            "toId": "ch:1:sloid:72121:0:962709",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 321.76499116178496
+          },
+          {
+            "routeId": "96-131-1-j26-1",
+            "fromId": "ch:1:sloid:958:0:54899",
+            "toId": "ch:1:sloid:72170:0:613915",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 186.52527351411126
+          },
+          {
+            "routeId": "96-131-1-j26-1",
+            "fromId": "ch:1:sloid:72170:0:613915",
+            "toId": "ch:1:sloid:72169:0:3076",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 417.5470366646605
+          },
+          {
+            "routeId": "96-131-1-j26-1",
+            "fromId": "ch:1:sloid:72168:0:180359",
+            "toId": "ch:1:sloid:80734:0:509064",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 481.23707141898313
+          },
+          {
+            "routeId": "96-131-1-j26-1",
+            "fromId": "ch:1:sloid:752:0:58095",
+            "toId": "ch:1:sloid:72116:0:380685",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 410.0376213011737
+          },
+          {
+            "routeId": "96-131-1-j26-1",
+            "fromId": "ch:1:sloid:72119:0:978527",
+            "toId": "ch:1:sloid:72121:0:64956",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 411.3761378393767
+          },
+          {
+            "routeId": "96-131-1-j26-1",
+            "fromId": "ch:1:sloid:765:0:809629",
+            "toId": "ch:1:sloid:72133:0:653646",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 405.1387625732056
+          },
+          {
+            "routeId": "96-131-1-j26-1",
+            "fromId": "ch:1:sloid:72168",
+            "toId": "ch:1:sloid:80734",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 484.01092538089074
+          },
+          {
+            "routeId": "96-131-1-j26-1",
+            "fromId": "ch:1:sloid:752",
+            "toId": "ch:1:sloid:72116",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 417.13790265712845
+          },
+          {
+            "routeId": "96-131-1-j26-1",
+            "fromId": "ch:1:sloid:72119",
+            "toId": "ch:1:sloid:72121",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 386.35890594127574
+          },
+          {
+            "routeId": "96-131-1-j26-1",
+            "fromId": "ch:1:sloid:80933",
+            "toId": "ch:1:sloid:72220",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 300.6184969640494
           },
           {
             "routeId": "96-131-2-j26-1",
@@ -2267,6 +3052,14 @@
           },
           {
             "routeId": "96-131-2-j26-1",
+            "fromId": "ch:1:sloid:72145",
+            "toId": "ch:1:sloid:83311",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 343.09321942928085
+          },
+          {
+            "routeId": "96-131-2-j26-1",
             "fromId": "ch:1:sloid:72145:0:444008",
             "toId": "ch:1:sloid:83311:0:435069",
             "seconds": 0,
@@ -2274,12 +3067,28 @@
             "metres": 324.43596390999676
           },
           {
-            "routeId": "96-131-3-j26-1",
-            "fromId": "ch:1:sloid:83311:0:351397",
-            "toId": "ch:1:sloid:72145:0:557296",
+            "routeId": "96-131-2-j26-1",
+            "fromId": "ch:1:sloid:752:0:58095",
+            "toId": "ch:1:sloid:72116:0:380685",
             "seconds": 0,
             "mode": "bus",
-            "metres": 376.7563510258614
+            "metres": 410.0376213011737
+          },
+          {
+            "routeId": "96-131-2-j26-1",
+            "fromId": "ch:1:sloid:72119:0:978527",
+            "toId": "ch:1:sloid:72121:0:64956",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 411.3761378393767
+          },
+          {
+            "routeId": "96-131-2-j26-1",
+            "fromId": "ch:1:sloid:83311",
+            "toId": "ch:1:sloid:72145",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 343.09321942928085
           },
           {
             "routeId": "96-131-3-j26-1",
@@ -2299,11 +3108,83 @@
           },
           {
             "routeId": "96-131-3-j26-1",
+            "fromId": "ch:1:sloid:83311:0:351397",
+            "toId": "ch:1:sloid:72145:0:557296",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 376.7563510258614
+          },
+          {
+            "routeId": "96-131-3-j26-1",
             "fromId": "ch:1:sloid:764:0:963102",
             "toId": "ch:1:sloid:766:0:136848",
             "seconds": 0,
             "mode": "bus",
             "metres": 363.52285719900425
+          },
+          {
+            "routeId": "96-131-3-j26-1",
+            "fromId": "ch:1:sloid:72150:0:466116",
+            "toId": "ch:1:sloid:72149:0:738481",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 483.7750911081346
+          },
+          {
+            "routeId": "96-131-3-j26-1",
+            "fromId": "ch:1:sloid:72145:0:444008",
+            "toId": "ch:1:sloid:83311:0:435069",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 324.43596390999676
+          },
+          {
+            "routeId": "96-131-3-j26-1",
+            "fromId": "ch:1:sloid:72187:0:500085",
+            "toId": "ch:1:sloid:72188:0:480970",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 630.2202727291069
+          },
+          {
+            "routeId": "96-131-4-j26-1",
+            "fromId": "ch:1:sloid:958:0:54899",
+            "toId": "ch:1:sloid:72170:0:613915",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 186.52527351411126
+          },
+          {
+            "routeId": "96-131-4-j26-1",
+            "fromId": "ch:1:sloid:72170:0:613915",
+            "toId": "ch:1:sloid:72169:0:3076",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 417.5470366646605
+          },
+          {
+            "routeId": "96-131-4-j26-1",
+            "fromId": "ch:1:sloid:72199:0:912215",
+            "toId": "ch:1:sloid:686:0:125948",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 628.3201122084635
+          },
+          {
+            "routeId": "96-131-4-j26-1",
+            "fromId": "ch:1:sloid:72168:0:180359",
+            "toId": "ch:1:sloid:80734:0:509064",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 481.23707141898313
+          },
+          {
+            "routeId": "96-131-4-j26-1",
+            "fromId": "ch:1:sloid:958:0:893032",
+            "toId": "ch:1:sloid:72171:0:790178",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 321.1499549420279
           },
           {
             "routeId": "96-131-5-j26-1",
@@ -2410,6 +3291,158 @@
             "metres": 233.89441667376258
           },
           {
+            "routeId": "96-136-8-j26-1",
+            "fromId": "ch:1:sloid:82727",
+            "toId": "ch:1:sloid:12518",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 326.7539792503209
+          },
+          {
+            "routeId": "96-136-8-j26-1",
+            "fromId": "ch:1:sloid:83436",
+            "toId": "ch:1:sloid:72165",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 236.18753120795026
+          },
+          {
+            "routeId": "96-136-8-j26-1",
+            "fromId": "ch:1:sloid:82727:0:687445",
+            "toId": "ch:1:sloid:12518:0:2073",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 340.7455843965826
+          },
+          {
+            "routeId": "96-136-9-j26-1",
+            "fromId": "ch:1:sloid:695:0:455799",
+            "toId": "ch:1:sloid:83300:0:495963",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 175.36995340179368
+          },
+          {
+            "routeId": "96-136-9-j26-1",
+            "fromId": "ch:1:sloid:954:0:249344",
+            "toId": "ch:1:sloid:72158:0:915750",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 208.71809256446033
+          },
+          {
+            "routeId": "96-136-9-j26-1",
+            "fromId": "ch:1:sloid:68",
+            "toId": "ch:1:sloid:72164",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 456.1152762193953
+          },
+          {
+            "routeId": "96-136-9-j26-1",
+            "fromId": "ch:1:sloid:68:1:3",
+            "toId": "ch:1:sloid:72164:0:201776",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 418.13011182963754
+          },
+          {
+            "routeId": "96-136-9-j26-1",
+            "fromId": "ch:1:sloid:72161:0:380650",
+            "toId": "ch:1:sloid:83300:0:495963",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 246.5160460866151
+          },
+          {
+            "routeId": "96-136-9-j26-1",
+            "fromId": "ch:1:sloid:72145:0:444008",
+            "toId": "ch:1:sloid:83311:0:435069",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 324.43596390999676
+          },
+          {
+            "routeId": "96-137-3-j26-1",
+            "fromId": "ch:1:sloid:972:0:971618",
+            "toId": "ch:1:sloid:72220:0:649198",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 191.72553337087507
+          },
+          {
+            "routeId": "96-137-3-j26-1",
+            "fromId": "ch:1:sloid:12078:0:961",
+            "toId": "ch:1:sloid:993:0:959",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 201.6192665353389
+          },
+          {
+            "routeId": "96-137-7-j26-1",
+            "fromId": "ch:1:sloid:12078:0:961",
+            "toId": "ch:1:sloid:993:0:959",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 201.6192665353389
+          },
+          {
+            "routeId": "96-137-7-j26-1",
+            "fromId": "ch:1:sloid:12078",
+            "toId": "ch:1:sloid:993",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 371.48281601399174
+          },
+          {
+            "routeId": "96-140-2-j26-1",
+            "fromId": "ch:1:sloid:72283",
+            "toId": "ch:1:sloid:72284",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 603.2666002609797
+          },
+          {
+            "routeId": "96-140-2-j26-1",
+            "fromId": "ch:1:sloid:72286",
+            "toId": "ch:1:sloid:82142",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 307.98293163906703
+          },
+          {
+            "routeId": "96-140-2-j26-1",
+            "fromId": "ch:1:sloid:72290",
+            "toId": "ch:1:sloid:72291",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 321.5949795804844
+          },
+          {
+            "routeId": "96-140-2-j26-1",
+            "fromId": "ch:1:sloid:72283:0:996433",
+            "toId": "ch:1:sloid:72284:0:595011",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 566.6819697185545
+          },
+          {
+            "routeId": "96-140-2-j26-1",
+            "fromId": "ch:1:sloid:72286:0:782674",
+            "toId": "ch:1:sloid:82142:0:268838",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 305.954565025978
+          },
+          {
+            "routeId": "96-140-2-j26-1",
+            "fromId": "ch:1:sloid:72290:0:664917",
+            "toId": "ch:1:sloid:72291:0:807089",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 414.94726166980183
+          },
+          {
             "routeId": "96-144-1-j26-1",
             "fromId": "ch:1:sloid:82643:0:621953",
             "toId": "ch:1:sloid:82644:0:647823",
@@ -2474,6 +3507,22 @@
             "metres": 258.41290693085256
           },
           {
+            "routeId": "96-144-7-j26-1",
+            "fromId": "ch:1:sloid:72367:0:389242",
+            "toId": "ch:1:sloid:986:0:87035",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 338.60096200472276
+          },
+          {
+            "routeId": "96-144-7-j26-1",
+            "fromId": "ch:1:sloid:72367",
+            "toId": "ch:1:sloid:986",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 338.05520314088193
+          },
+          {
             "routeId": "96-144-9-j26-1",
             "fromId": "ch:1:sloid:773:0:2805",
             "toId": "ch:1:sloid:72335:0:702191",
@@ -2522,6 +3571,46 @@
             "metres": 636.5036856804643
           },
           {
+            "routeId": "96-145-0-j26-1",
+            "fromId": "ch:1:sloid:72187:0:500085",
+            "toId": "ch:1:sloid:72188:0:480970",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 630.2202727291069
+          },
+          {
+            "routeId": "96-145-0-j26-1",
+            "fromId": "ch:1:sloid:764:0:963102",
+            "toId": "ch:1:sloid:766:0:136848",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 363.52285719900425
+          },
+          {
+            "routeId": "96-145-0-j26-1",
+            "fromId": "ch:1:sloid:757:0:7276",
+            "toId": "ch:1:sloid:72189:0:858097",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 406.86928927263085
+          },
+          {
+            "routeId": "96-145-0-j26-1",
+            "fromId": "ch:1:sloid:72188:0:153028",
+            "toId": "ch:1:sloid:72187:0:928407",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 496.94548858569783
+          },
+          {
+            "routeId": "96-145-2-j26-1",
+            "fromId": "ch:1:sloid:7326:0:440180",
+            "toId": "ch:1:sloid:81288:0:805818",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 425.69946661330533
+          },
+          {
             "routeId": "96-145-9-j26-1",
             "fromId": "ch:1:sloid:684:0:676893",
             "toId": "ch:1:sloid:7332:0:992538",
@@ -2538,6 +3627,14 @@
             "metres": 172.48649596275192
           },
           {
+            "routeId": "96-148-2-j26-1",
+            "fromId": "ch:1:sloid:71519:0:397731",
+            "toId": "ch:1:sloid:71518:0:373422",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 426.25858310297446
+          },
+          {
             "routeId": "96-148-5-j26-1",
             "fromId": "ch:1:sloid:71501:0:665846",
             "toId": "ch:1:sloid:11666:0:175",
@@ -2552,6 +3649,22 @@
             "seconds": 0,
             "mode": "bus",
             "metres": 464.14585664213365
+          },
+          {
+            "routeId": "96-148-5-j26-1",
+            "fromId": "ch:1:sloid:71491:0:625342",
+            "toId": "ch:1:sloid:83868:0:21717",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 198.98211732159587
+          },
+          {
+            "routeId": "96-148-5-j26-1",
+            "fromId": "ch:1:sloid:81590:0:461800",
+            "toId": "ch:1:sloid:83868:0:215270",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 223.13504129236915
           },
           {
             "routeId": "96-148-6-j26-1",
@@ -2572,16 +3685,18 @@
         ],
         "note": "Original minute-resolution GTFS times retained, including distinct calls at the same second. No fabricated sub-minute times. These legs cannot imply finite measured speed; animation may jump at the common timestamp.",
         "maximumNominalPositiveDurationKmh": {
-          "rail": 91.02261370440202,
+          "tram": 60.06406869964008,
+          "rail": 306.71873292305855,
           "bus": 136.63100016774823,
-          "cableway": 11.310110233310562
+          "cableway": 11.310110233310562,
+          "ferry": 16.312558735110212
         }
       },
       "pairFailureReasons": {
-        "disconnected-line": 469,
-        "endpoint-gap": 665,
-        "implausible-detour": 28,
-        "no-compatible-source-mode": 93
+        "disconnected-line": 24,
+        "endpoint-gap": 21,
+        "implausible-detour": 1,
+        "no-compatible-source-mode": 2
       },
       "validation": {
         "completeSourceCalls": true,
@@ -2603,25 +3718,24 @@
       },
       "coverage": {
         "trips": 5819,
-        "admittedTrips": 2574,
+        "admittedTrips": 5310,
         "scheduledTrips": 4711,
         "representativeHeadwayTrips": 1108,
-        "admittedScheduledTrips": 1466,
+        "admittedScheduledTrips": 4202,
         "admittedRepresentativeHeadwayTrips": 1108,
         "scheduledSegmentOccurrences": 68102,
-        "matchedScheduledSegmentOccurrences": 49494,
+        "matchedScheduledSegmentOccurrences": 67350,
         "segmentOccurrences": 69210,
-        "matchedSegmentOccurrences": 50602,
-        "admittedSegmentOccurrences": 20132,
+        "matchedSegmentOccurrences": 68458,
+        "admittedSegmentOccurrences": 60349,
         "directedPairs": 4467,
-        "matchedDirectedPairs": 2611,
+        "matchedDirectedPairs": 4413,
         "patterns": 777,
-        "completePatterns": 156,
-        "admittedPatterns": 156,
+        "completePatterns": 668,
+        "admittedPatterns": 668,
         "excludedTrips": {
-          "incomplete-directed-pattern": 2951,
-          "night-network-excluded-by-source": 72,
-          "no-compatible-source-mode": 222
+          "incomplete-directed-pattern": 496,
+          "night-network-excluded-by-source": 13
         }
       },
       "groups": [
@@ -2629,48 +3743,46 @@
           "id": "11:rail",
           "agency": "Schweizerische Bundesbahnen SBB",
           "trips": 903,
-          "admittedTrips": 129,
+          "admittedTrips": 776,
           "scheduledTrips": 903,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 129,
+          "admittedScheduledTrips": 776,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 7943,
-          "matchedScheduledSegmentOccurrences": 4436,
+          "matchedScheduledSegmentOccurrences": 7816,
           "segmentOccurrences": 7943,
-          "matchedSegmentOccurrences": 4436,
-          "admittedSegmentOccurrences": 527,
+          "matchedSegmentOccurrences": 7816,
+          "admittedSegmentOccurrences": 6481,
           "directedPairs": 999,
-          "matchedDirectedPairs": 282,
+          "matchedDirectedPairs": 970,
           "patterns": 336,
-          "completePatterns": 18,
-          "admittedPatterns": 18,
+          "completePatterns": 272,
+          "admittedPatterns": 272,
           "excludedTrips": {
-            "incomplete-directed-pattern": 764,
-            "night-network-excluded-by-source": 10
+            "incomplete-directed-pattern": 123,
+            "night-network-excluded-by-source": 4
           }
         },
         {
           "id": "182:ferry",
           "agency": "Bielersee-Schifffahrts-Gesellschaft AG",
           "trips": 4,
-          "admittedTrips": 0,
+          "admittedTrips": 4,
           "scheduledTrips": 4,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 0,
+          "admittedScheduledTrips": 4,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 28,
-          "matchedScheduledSegmentOccurrences": 0,
+          "matchedScheduledSegmentOccurrences": 28,
           "segmentOccurrences": 28,
-          "matchedSegmentOccurrences": 0,
-          "admittedSegmentOccurrences": 0,
+          "matchedSegmentOccurrences": 28,
+          "admittedSegmentOccurrences": 28,
           "directedPairs": 14,
-          "matchedDirectedPairs": 0,
+          "matchedDirectedPairs": 14,
           "patterns": 2,
-          "completePatterns": 0,
-          "admittedPatterns": 0,
-          "excludedTrips": {
-            "no-compatible-source-mode": 4
-          }
+          "completePatterns": 2,
+          "admittedPatterns": 2,
+          "excludedTrips": {}
         },
         {
           "id": "202:cableway",
@@ -2697,163 +3809,155 @@
           "id": "33:rail",
           "agency": "BLS AG (bls)",
           "trips": 161,
-          "admittedTrips": 42,
+          "admittedTrips": 160,
           "scheduledTrips": 161,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 42,
+          "admittedScheduledTrips": 160,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 1513,
-          "matchedScheduledSegmentOccurrences": 717,
+          "matchedScheduledSegmentOccurrences": 1512,
           "segmentOccurrences": 1513,
-          "matchedSegmentOccurrences": 717,
-          "admittedSegmentOccurrences": 164,
+          "matchedSegmentOccurrences": 1512,
+          "admittedSegmentOccurrences": 1509,
           "directedPairs": 116,
-          "matchedDirectedPairs": 48,
+          "matchedDirectedPairs": 115,
           "patterns": 35,
-          "completePatterns": 6,
-          "admittedPatterns": 6,
+          "completePatterns": 34,
+          "admittedPatterns": 34,
           "excludedTrips": {
-            "incomplete-directed-pattern": 119
+            "incomplete-directed-pattern": 1
           }
         },
         {
           "id": "37:bus",
           "agency": "Baselland Transport",
           "trips": 132,
-          "admittedTrips": 0,
+          "admittedTrips": 132,
           "scheduledTrips": 132,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 0,
+          "admittedScheduledTrips": 132,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 1052,
-          "matchedScheduledSegmentOccurrences": 864,
+          "matchedScheduledSegmentOccurrences": 1052,
           "segmentOccurrences": 1052,
-          "matchedSegmentOccurrences": 864,
-          "admittedSegmentOccurrences": 0,
+          "matchedSegmentOccurrences": 1052,
+          "admittedSegmentOccurrences": 1052,
           "directedPairs": 35,
-          "matchedDirectedPairs": 28,
+          "matchedDirectedPairs": 35,
           "patterns": 5,
-          "completePatterns": 0,
-          "admittedPatterns": 0,
-          "excludedTrips": {
-            "incomplete-directed-pattern": 132
-          }
+          "completePatterns": 5,
+          "admittedPatterns": 5,
+          "excludedTrips": {}
         },
         {
           "id": "37:tram",
           "agency": "Baselland Transport",
           "trips": 218,
-          "admittedTrips": 0,
+          "admittedTrips": 115,
           "scheduledTrips": 218,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 0,
+          "admittedScheduledTrips": 115,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 7818,
-          "matchedScheduledSegmentOccurrences": 0,
+          "matchedScheduledSegmentOccurrences": 7615,
           "segmentOccurrences": 7818,
-          "matchedSegmentOccurrences": 0,
-          "admittedSegmentOccurrences": 0,
+          "matchedSegmentOccurrences": 7615,
+          "admittedSegmentOccurrences": 3927,
           "directedPairs": 79,
-          "matchedDirectedPairs": 0,
+          "matchedDirectedPairs": 77,
           "patterns": 13,
-          "completePatterns": 0,
-          "admittedPatterns": 0,
+          "completePatterns": 7,
+          "admittedPatterns": 7,
           "excludedTrips": {
-            "no-compatible-source-mode": 218
+            "incomplete-directed-pattern": 103
           }
         },
         {
           "id": "7231:bus",
           "agency": "SBB Infrastruktur AG Bahnersatz",
           "trips": 348,
-          "admittedTrips": 0,
+          "admittedTrips": 248,
           "scheduledTrips": 348,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 0,
+          "admittedScheduledTrips": 248,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 1228,
-          "matchedScheduledSegmentOccurrences": 629,
+          "matchedScheduledSegmentOccurrences": 1128,
           "segmentOccurrences": 1228,
-          "matchedSegmentOccurrences": 629,
-          "admittedSegmentOccurrences": 0,
+          "matchedSegmentOccurrences": 1128,
+          "admittedSegmentOccurrences": 986,
           "directedPairs": 93,
-          "matchedDirectedPairs": 38,
+          "matchedDirectedPairs": 90,
           "patterns": 18,
-          "completePatterns": 0,
-          "admittedPatterns": 0,
+          "completePatterns": 15,
+          "admittedPatterns": 15,
           "excludedTrips": {
-            "incomplete-directed-pattern": 348
+            "incomplete-directed-pattern": 100
           }
         },
         {
           "id": "723:bus",
           "agency": "Aargau Verkehr AG",
           "trips": 4,
-          "admittedTrips": 0,
+          "admittedTrips": 4,
           "scheduledTrips": 4,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 0,
+          "admittedScheduledTrips": 4,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 121,
-          "matchedScheduledSegmentOccurrences": 0,
+          "matchedScheduledSegmentOccurrences": 121,
           "segmentOccurrences": 121,
-          "matchedSegmentOccurrences": 0,
-          "admittedSegmentOccurrences": 0,
+          "matchedSegmentOccurrences": 121,
+          "admittedSegmentOccurrences": 121,
           "directedPairs": 44,
-          "matchedDirectedPairs": 0,
+          "matchedDirectedPairs": 44,
           "patterns": 3,
-          "completePatterns": 0,
-          "admittedPatterns": 0,
-          "excludedTrips": {
-            "night-network-excluded-by-source": 4
-          }
+          "completePatterns": 3,
+          "admittedPatterns": 3,
+          "excludedTrips": {}
         },
         {
           "id": "793:bus",
           "agency": "Busbetrieb Olten-Gösgen-Gäu",
           "trips": 620,
-          "admittedTrips": 286,
+          "admittedTrips": 620,
           "scheduledTrips": 620,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 286,
+          "admittedScheduledTrips": 620,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 10678,
-          "matchedScheduledSegmentOccurrences": 9612,
+          "matchedScheduledSegmentOccurrences": 10678,
           "segmentOccurrences": 10678,
-          "matchedSegmentOccurrences": 9612,
-          "admittedSegmentOccurrences": 4329,
+          "matchedSegmentOccurrences": 10678,
+          "admittedSegmentOccurrences": 10678,
           "directedPairs": 515,
-          "matchedDirectedPairs": 338,
+          "matchedDirectedPairs": 515,
           "patterns": 49,
-          "completePatterns": 20,
-          "admittedPatterns": 20,
-          "excludedTrips": {
-            "incomplete-directed-pattern": 310,
-            "night-network-excluded-by-source": 24
-          }
+          "completePatterns": 49,
+          "admittedPatterns": 49,
+          "excludedTrips": {}
         },
         {
           "id": "801:bus",
           "agency": "PostAuto AG",
           "trips": 961,
-          "admittedTrips": 378,
+          "admittedTrips": 905,
           "scheduledTrips": 961,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 378,
+          "admittedScheduledTrips": 905,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 15377,
-          "matchedScheduledSegmentOccurrences": 13430,
+          "matchedScheduledSegmentOccurrences": 15321,
           "segmentOccurrences": 15377,
-          "matchedSegmentOccurrences": 13430,
-          "admittedSegmentOccurrences": 5041,
+          "matchedSegmentOccurrences": 15321,
+          "admittedSegmentOccurrences": 13879,
           "directedPairs": 1274,
-          "matchedDirectedPairs": 1069,
+          "matchedDirectedPairs": 1270,
           "patterns": 167,
-          "completePatterns": 63,
-          "admittedPatterns": 63,
+          "completePatterns": 161,
+          "admittedPatterns": 161,
           "excludedTrips": {
-            "incomplete-directed-pattern": 576,
-            "night-network-excluded-by-source": 7
+            "incomplete-directed-pattern": 56
           }
         },
         {
@@ -2883,94 +3987,90 @@
           "id": "82:rail",
           "agency": "Schweizerische Südostbahn (sob)",
           "trips": 41,
-          "admittedTrips": 0,
+          "admittedTrips": 23,
           "scheduledTrips": 41,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 0,
+          "admittedScheduledTrips": 23,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 689,
-          "matchedScheduledSegmentOccurrences": 27,
+          "matchedScheduledSegmentOccurrences": 671,
           "segmentOccurrences": 689,
-          "matchedSegmentOccurrences": 27,
-          "admittedSegmentOccurrences": 0,
+          "matchedSegmentOccurrences": 671,
+          "admittedSegmentOccurrences": 363,
           "directedPairs": 144,
-          "matchedDirectedPairs": 10,
+          "matchedDirectedPairs": 142,
           "patterns": 33,
-          "completePatterns": 0,
-          "admittedPatterns": 0,
+          "completePatterns": 20,
+          "admittedPatterns": 20,
           "excludedTrips": {
-            "incomplete-directed-pattern": 41
+            "incomplete-directed-pattern": 18
           }
         },
         {
           "id": "840:bus",
           "agency": "Busbetrieb Aarau",
           "trips": 300,
-          "admittedTrips": 56,
+          "admittedTrips": 296,
           "scheduledTrips": 300,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 56,
+          "admittedScheduledTrips": 296,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 4966,
-          "matchedScheduledSegmentOccurrences": 4284,
+          "matchedScheduledSegmentOccurrences": 4962,
           "segmentOccurrences": 4966,
-          "matchedSegmentOccurrences": 4284,
-          "admittedSegmentOccurrences": 280,
+          "matchedSegmentOccurrences": 4962,
+          "admittedSegmentOccurrences": 4906,
           "directedPairs": 131,
-          "matchedDirectedPairs": 80,
+          "matchedDirectedPairs": 130,
           "patterns": 13,
-          "completePatterns": 2,
-          "admittedPatterns": 2,
+          "completePatterns": 11,
+          "admittedPatterns": 11,
           "excludedTrips": {
-            "incomplete-directed-pattern": 236,
-            "night-network-excluded-by-source": 8
+            "night-network-excluded-by-source": 4
           }
         },
         {
           "id": "850:bus",
           "agency": "Autobusbetrieb RBS",
           "trips": 141,
-          "admittedTrips": 26,
+          "admittedTrips": 141,
           "scheduledTrips": 141,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 26,
+          "admittedScheduledTrips": 141,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 1936,
-          "matchedScheduledSegmentOccurrences": 1725,
+          "matchedScheduledSegmentOccurrences": 1936,
           "segmentOccurrences": 1936,
-          "matchedSegmentOccurrences": 1725,
-          "admittedSegmentOccurrences": 247,
+          "matchedSegmentOccurrences": 1936,
+          "admittedSegmentOccurrences": 1936,
           "directedPairs": 112,
-          "matchedDirectedPairs": 99,
+          "matchedDirectedPairs": 112,
           "patterns": 15,
-          "completePatterns": 2,
-          "admittedPatterns": 2,
-          "excludedTrips": {
-            "incomplete-directed-pattern": 115
-          }
+          "completePatterns": 15,
+          "admittedPatterns": 15,
+          "excludedTrips": {}
         },
         {
           "id": "883:bus",
           "agency": "Busbetrieb Solothurn und Umgebung",
           "trips": 424,
-          "admittedTrips": 222,
+          "admittedTrips": 419,
           "scheduledTrips": 424,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 222,
+          "admittedScheduledTrips": 419,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 8862,
-          "matchedScheduledSegmentOccurrences": 8149,
+          "matchedScheduledSegmentOccurrences": 8857,
           "segmentOccurrences": 8862,
-          "matchedSegmentOccurrences": 8149,
-          "admittedSegmentOccurrences": 4317,
+          "matchedSegmentOccurrences": 8857,
+          "admittedSegmentOccurrences": 8699,
           "directedPairs": 620,
-          "matchedDirectedPairs": 340,
+          "matchedDirectedPairs": 618,
           "patterns": 47,
-          "completePatterns": 18,
-          "admittedPatterns": 18,
+          "completePatterns": 44,
+          "admittedPatterns": 44,
           "excludedTrips": {
-            "incomplete-directed-pattern": 183,
-            "night-network-excluded-by-source": 19
+            "night-network-excluded-by-source": 5
           }
         },
         {
@@ -2998,42 +4098,104 @@
           "id": "894:bus",
           "agency": "Busbetrieb Grenchen und Umgebung",
           "trips": 282,
-          "admittedTrips": 250,
+          "admittedTrips": 282,
           "scheduledTrips": 282,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 250,
+          "admittedScheduledTrips": 282,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 4175,
-          "matchedScheduledSegmentOccurrences": 4143,
+          "matchedScheduledSegmentOccurrences": 4175,
           "segmentOccurrences": 4175,
-          "matchedSegmentOccurrences": 4143,
-          "admittedSegmentOccurrences": 3618,
+          "matchedSegmentOccurrences": 4175,
+          "admittedSegmentOccurrences": 4175,
           "directedPairs": 184,
-          "matchedDirectedPairs": 182,
+          "matchedDirectedPairs": 184,
           "patterns": 22,
-          "completePatterns": 19,
-          "admittedPatterns": 19,
-          "excludedTrips": {
-            "incomplete-directed-pattern": 32
-          }
+          "completePatterns": 22,
+          "admittedPatterns": 22,
+          "excludedTrips": {}
         }
       ],
       "carryInTrips": 359,
-      "admittedCarryInTrips": 88,
-      "admittedOutsideCantonPlatforms": 171,
+      "admittedCarryInTrips": 315,
+      "admittedOutsideCantonPlatforms": 931,
       "directedPatternChecks": {
         "directionIds": [
           "0",
           "1"
         ],
         "patternsRevisitingPlatforms": 18,
-        "admittedPatternsRevisitingPlatforms": 7,
+        "admittedPatternsRevisitingPlatforms": 17,
         "nightTrips": 72,
-        "admittedNightTrips": 0
+        "admittedNightTrips": 59
       },
       "timingResolution": {
-        "zeroDurationSegmentOccurrences": 1257,
+        "zeroDurationSegmentOccurrences": 3069,
         "zeroDurationDirectedPairs": [
+          {
+            "routeId": "91-10-j26-1",
+            "fromId": "ch:1:sloid:692:1:2",
+            "toId": "ch:1:sloid:88765:1:2",
+            "seconds": 0,
+            "mode": "tram",
+            "metres": 400.18203299333334
+          },
+          {
+            "routeId": "91-10-j26-1",
+            "fromId": "ch:1:sloid:994:1:2",
+            "toId": "ch:1:sloid:79",
+            "seconds": 0,
+            "mode": "tram",
+            "metres": 252.89243601654687
+          },
+          {
+            "routeId": "91-10-j26-1",
+            "fromId": "ch:1:sloid:61:1:2",
+            "toId": "ch:1:sloid:78176:1:2",
+            "seconds": 0,
+            "mode": "tram",
+            "metres": 488.0679774995888
+          },
+          {
+            "routeId": "91-10-j26-1",
+            "fromId": "ch:1:sloid:76:1:2",
+            "toId": "ch:1:sloid:88785:1:2",
+            "seconds": 0,
+            "mode": "tram",
+            "metres": 445.33779295900786
+          },
+          {
+            "routeId": "91-10-j26-1",
+            "fromId": "ch:1:sloid:88785:1:2",
+            "toId": "ch:1:sloid:95:1:2",
+            "seconds": 0,
+            "mode": "tram",
+            "metres": 330.98743860381643
+          },
+          {
+            "routeId": "91-10-j26-1",
+            "fromId": "ch:1:sloid:95:1:2",
+            "toId": "ch:1:sloid:88789:1:2",
+            "seconds": 0,
+            "mode": "tram",
+            "metres": 468.11312989854633
+          },
+          {
+            "routeId": "91-10-j26-1",
+            "fromId": "ch:1:sloid:88789:1:2",
+            "toId": "ch:1:sloid:78186:1:2",
+            "seconds": 0,
+            "mode": "tram",
+            "metres": 222.76437740677142
+          },
+          {
+            "routeId": "91-10-j26-1",
+            "fromId": "ch:1:sloid:71:1:2",
+            "toId": "ch:1:sloid:88784:1:2",
+            "seconds": 0,
+            "mode": "tram",
+            "metres": 390.7898875075079
+          },
           {
             "routeId": "92-1-L-j26-1",
             "fromId": "ch:1:sloid:459",
@@ -3099,12 +4261,44 @@
             "metres": 360.9894937491245
           },
           {
+            "routeId": "92-23-C-j26-1",
+            "fromId": "ch:1:sloid:77914:0:1",
+            "toId": "ch:1:sloid:89214",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 519.6988996303326
+          },
+          {
+            "routeId": "92-23-C-j26-1",
+            "fromId": "ch:1:sloid:88465",
+            "toId": "ch:1:sloid:88464",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 442.5158327367545
+          },
+          {
             "routeId": "92-24-B-j26-1",
             "fromId": "ch:1:sloid:77945",
             "toId": "ch:1:sloid:94123",
             "seconds": 0,
             "mode": "bus",
             "metres": 240.12354372164467
+          },
+          {
+            "routeId": "92-2-E-j26-1",
+            "fromId": "ch:1:sloid:90261",
+            "toId": "ch:1:sloid:90257",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 349.78300741038174
+          },
+          {
+            "routeId": "92-2-E-j26-1",
+            "fromId": "ch:1:sloid:78643",
+            "toId": "ch:1:sloid:94929:0:1",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 249.0511809594333
           },
           {
             "routeId": "92-2-K-j26-1",
@@ -3129,6 +4323,30 @@
             "seconds": 0,
             "mode": "bus",
             "metres": 285.4134290256206
+          },
+          {
+            "routeId": "92-3-J-j26-1",
+            "fromId": "ch:1:sloid:89178",
+            "toId": "ch:1:sloid:89179",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 433.438480345659
+          },
+          {
+            "routeId": "92-3-M-j26-1",
+            "fromId": "ch:1:sloid:88589",
+            "toId": "ch:1:sloid:91783",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 249.53207937889155
+          },
+          {
+            "routeId": "92-3-M-j26-1",
+            "fromId": "ch:1:sloid:91783",
+            "toId": "ch:1:sloid:88589",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 249.53207937889158
           },
           {
             "routeId": "92-501-A-j26-1",
@@ -3193,6 +4411,102 @@
             "seconds": 0,
             "mode": "bus",
             "metres": 198.53914526536119
+          },
+          {
+            "routeId": "92-503-A-j26-1",
+            "fromId": "ch:1:sloid:90418:0:01",
+            "toId": "ch:1:sloid:2602:0:02",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 200.0906553393621
+          },
+          {
+            "routeId": "92-503-A-j26-1",
+            "fromId": "ch:1:sloid:2604:0:02",
+            "toId": "ch:1:sloid:2605:0:02",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 298.02672777480615
+          },
+          {
+            "routeId": "92-503-A-j26-1",
+            "fromId": "ch:1:sloid:2605:0:01",
+            "toId": "ch:1:sloid:2604:0:01",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 293.57148601643144
+          },
+          {
+            "routeId": "92-505-j26-1",
+            "fromId": "ch:1:sloid:78035:0:01",
+            "toId": "ch:1:sloid:88649:0:01",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 340.6194197913261
+          },
+          {
+            "routeId": "92-505-j26-1",
+            "fromId": "ch:1:sloid:88649:0:01",
+            "toId": "ch:1:sloid:78037:0:01",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 170.24220463137124
+          },
+          {
+            "routeId": "92-505-j26-1",
+            "fromId": "ch:1:sloid:78038:0:01",
+            "toId": "ch:1:sloid:78039:0:01",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 187.33930604206648
+          },
+          {
+            "routeId": "92-505-j26-1",
+            "fromId": "ch:1:sloid:78032:0:01",
+            "toId": "ch:1:sloid:78033:0:01",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 316.29424778493114
+          },
+          {
+            "routeId": "92-505-j26-1",
+            "fromId": "ch:1:sloid:78034:0:01",
+            "toId": "ch:1:sloid:78035:0:01",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 395.222465751301
+          },
+          {
+            "routeId": "92-505-j26-1",
+            "fromId": "ch:1:sloid:385:0:02",
+            "toId": "ch:1:sloid:78021:0:02",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 467.4433383905339
+          },
+          {
+            "routeId": "92-505-j26-1",
+            "fromId": "ch:1:sloid:78039:0:02",
+            "toId": "ch:1:sloid:78038:0:02",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 199.13024599358357
+          },
+          {
+            "routeId": "92-505-j26-1",
+            "fromId": "ch:1:sloid:78037:0:02",
+            "toId": "ch:1:sloid:88649:0:02",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 208.6313430356891
+          },
+          {
+            "routeId": "92-505-j26-1",
+            "fromId": "ch:1:sloid:88649:0:02",
+            "toId": "ch:1:sloid:78035:0:02",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 273.3935800758961
           },
           {
             "routeId": "92-506-j26-1",
@@ -3291,6 +4605,22 @@
             "metres": 345.0549528867437
           },
           {
+            "routeId": "92-508-j26-1",
+            "fromId": "ch:1:sloid:72355:0:01",
+            "toId": "ch:1:sloid:90161:0:01",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 241.20375211384965
+          },
+          {
+            "routeId": "92-508-j26-1",
+            "fromId": "ch:1:sloid:2383::1",
+            "toId": "ch:1:sloid:72682::1",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 453.83423440610227
+          },
+          {
             "routeId": "92-519-j26-1",
             "fromId": "ch:1:sloid:78006:0:01",
             "toId": "ch:1:sloid:78005:0:01",
@@ -3305,6 +4635,518 @@
             "seconds": 0,
             "mode": "bus",
             "metres": 258.8397690776257
+          },
+          {
+            "routeId": "92-56-j26-1",
+            "fromId": "ch:1:sloid:77:1:3",
+            "toId": "ch:1:sloid:78226:1:2",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 257.31804724486653
+          },
+          {
+            "routeId": "92-56-j26-1",
+            "fromId": "ch:1:sloid:78225:1:2",
+            "toId": "ch:1:sloid:78224:1:1",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 331.19946491278756
+          },
+          {
+            "routeId": "92-56-j26-1",
+            "fromId": "ch:1:sloid:78224:1:1",
+            "toId": "ch:1:sloid:72205:1:1",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 799.0143453434353
+          },
+          {
+            "routeId": "92-898-j26-1",
+            "fromId": "ch:1:sloid:8777",
+            "toId": "ch:1:sloid:10779",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 406.34867745691724
+          },
+          {
+            "routeId": "92-898-j26-1",
+            "fromId": "ch:1:sloid:8786",
+            "toId": "ch:1:sloid:71474",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 328.2968772927652
+          },
+          {
+            "routeId": "92-8-F-j26-1",
+            "fromId": "ch:1:sloid:77928",
+            "toId": "ch:1:sloid:77929",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 930.626840101222
+          },
+          {
+            "routeId": "92-M30-j26-1",
+            "fromId": "ch:1:sloid:87619:0:01",
+            "toId": "ch:1:sloid:76392",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 260.756416247478
+          },
+          {
+            "routeId": "92-M30-j26-1",
+            "fromId": "ch:1:sloid:76408",
+            "toId": "ch:1:sloid:76393",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 307.464588934475
+          },
+          {
+            "routeId": "92-M30-j26-1",
+            "fromId": "ch:1:sloid:87620:0:01",
+            "toId": "ch:1:sloid:87614",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 364.6246894216353
+          },
+          {
+            "routeId": "92-M30-j26-1",
+            "fromId": "ch:1:sloid:87615",
+            "toId": "ch:1:sloid:87616",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 305.3541985714898
+          },
+          {
+            "routeId": "92-M30-j26-1",
+            "fromId": "ch:1:sloid:87621:0:01",
+            "toId": "ch:1:sloid:87622",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 443.92577796911877
+          },
+          {
+            "routeId": "92-M30-j26-1",
+            "fromId": "ch:1:sloid:89215",
+            "toId": "ch:1:sloid:77946",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 437.61228794545985
+          },
+          {
+            "routeId": "92-M30-j26-1",
+            "fromId": "ch:1:sloid:94123",
+            "toId": "ch:1:sloid:77944",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 231.31021023426626
+          },
+          {
+            "routeId": "92-M30-j26-1",
+            "fromId": "ch:1:sloid:77964",
+            "toId": "ch:1:sloid:10223",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 524.9780878835948
+          },
+          {
+            "routeId": "92-M30-j26-1",
+            "fromId": "ch:1:sloid:88559",
+            "toId": "ch:1:sloid:78079",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 382.3065339794166
+          },
+          {
+            "routeId": "92-M30-j26-1",
+            "fromId": "ch:1:sloid:88586",
+            "toId": "ch:1:sloid:88587",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 336.7099033610334
+          },
+          {
+            "routeId": "92-M30-j26-1",
+            "fromId": "ch:1:sloid:78073",
+            "toId": "ch:1:sloid:78076",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 522.4476602807006
+          },
+          {
+            "routeId": "92-M30-j26-1",
+            "fromId": "ch:1:sloid:88589",
+            "toId": "ch:1:sloid:91783",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 253.35670681867043
+          },
+          {
+            "routeId": "92-M30-j26-1",
+            "fromId": "ch:1:sloid:77946",
+            "toId": "ch:1:sloid:89215",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 437.61228794545985
+          },
+          {
+            "routeId": "92-M30-j26-1",
+            "fromId": "ch:1:sloid:87276:0:02",
+            "toId": "ch:1:sloid:87622",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 220.56236889741263
+          },
+          {
+            "routeId": "92-M30-j26-1",
+            "fromId": "ch:1:sloid:87615",
+            "toId": "ch:1:sloid:87614",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 430.01989296029706
+          },
+          {
+            "routeId": "92-M30-j26-1",
+            "fromId": "ch:1:sloid:76393",
+            "toId": "ch:1:sloid:76408",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 330.7761470139193
+          },
+          {
+            "routeId": "92-M30-j26-1",
+            "fromId": "ch:1:sloid:76392",
+            "toId": "ch:1:sloid:87619:0:02",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 294.6554354594825
+          },
+          {
+            "routeId": "92-M51-j26-1",
+            "fromId": "ch:1:sloid:72386",
+            "toId": "ch:1:sloid:88590",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 361.1963504697147
+          },
+          {
+            "routeId": "92-M51-j26-1",
+            "fromId": "ch:1:sloid:455",
+            "toId": "ch:1:sloid:490",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 431.8100957227125
+          },
+          {
+            "routeId": "92-M51-j26-1",
+            "fromId": "ch:1:sloid:89879",
+            "toId": "ch:1:sloid:89878",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 290.88909915845045
+          },
+          {
+            "routeId": "92-M51-j26-1",
+            "fromId": "ch:1:sloid:88208",
+            "toId": "ch:1:sloid:88207",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 316.49988449133514
+          },
+          {
+            "routeId": "92-M51-j26-1",
+            "fromId": "ch:1:sloid:93864",
+            "toId": "ch:1:sloid:94096",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 419.9995484301119
+          },
+          {
+            "routeId": "92-M51-j26-1",
+            "fromId": "ch:1:sloid:77914:0:1",
+            "toId": "ch:1:sloid:89214",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 513.0506883406493
+          },
+          {
+            "routeId": "92-M51-j26-1",
+            "fromId": "ch:1:sloid:2472",
+            "toId": "ch:1:sloid:89955",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 390.21599207092993
+          },
+          {
+            "routeId": "92-M54-j26-1",
+            "fromId": "ch:1:sloid:89955",
+            "toId": "ch:1:sloid:2472",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 390.21599207093
+          },
+          {
+            "routeId": "92-M54-j26-1",
+            "fromId": "ch:1:sloid:71480",
+            "toId": "ch:1:sloid:71481",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 1097.7222988736796
+          },
+          {
+            "routeId": "92-M54-j26-1",
+            "fromId": "ch:1:sloid:71482",
+            "toId": "ch:1:sloid:81034",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 2555.599511298548
+          },
+          {
+            "routeId": "92-M54-j26-1",
+            "fromId": "ch:1:sloid:71483",
+            "toId": "ch:1:sloid:81590",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 4588.409839741085
+          },
+          {
+            "routeId": "92-M54-j26-1",
+            "fromId": "ch:1:sloid:8888",
+            "toId": "ch:1:sloid:80361",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 3968.372564428956
+          },
+          {
+            "routeId": "92-M54-j26-1",
+            "fromId": "ch:1:sloid:8714",
+            "toId": "ch:1:sloid:71485",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 7066.143606548695
+          },
+          {
+            "routeId": "92-M54-j26-1",
+            "fromId": "ch:1:sloid:71485",
+            "toId": "ch:1:sloid:71486",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 2070.553514162334
+          },
+          {
+            "routeId": "92-M54-j26-1",
+            "fromId": "ch:1:sloid:71519",
+            "toId": "ch:1:sloid:8716",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 617.3266585681329
+          },
+          {
+            "routeId": "92-M54-j26-1",
+            "fromId": "ch:1:sloid:82984",
+            "toId": "ch:1:sloid:8720",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 1708.7751032713936
+          },
+          {
+            "routeId": "92-M54-j26-1",
+            "fromId": "ch:1:sloid:8715",
+            "toId": "ch:1:sloid:71502",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 4346.181480638946
+          },
+          {
+            "routeId": "92-N22-j26-1",
+            "fromId": "ch:1:sloid:78643",
+            "toId": "ch:1:sloid:94929:0:1",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 249.0511809594333
+          },
+          {
+            "routeId": "92-N22-j26-1",
+            "fromId": "ch:1:sloid:90261",
+            "toId": "ch:1:sloid:90257",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 350.9798982898374
+          },
+          {
+            "routeId": "92-N22-j26-1",
+            "fromId": "ch:1:sloid:90138",
+            "toId": "ch:1:sloid:90156",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 400.4033091035488
+          },
+          {
+            "routeId": "92-N23-j26-1",
+            "fromId": "ch:1:sloid:90420:0:01",
+            "toId": "ch:1:sloid:90424:0:01",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 292.9119329599486
+          },
+          {
+            "routeId": "92-N23-j26-1",
+            "fromId": "ch:1:sloid:90405:0:02",
+            "toId": "ch:1:sloid:90410:0:02",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 430.98422793150064
+          },
+          {
+            "routeId": "92-N23-j26-1",
+            "fromId": "ch:1:sloid:90434:0:02",
+            "toId": "ch:1:sloid:90424:0:02",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 397.88061077047274
+          },
+          {
+            "routeId": "92-N23-j26-1",
+            "fromId": "ch:1:sloid:90420:0:02",
+            "toId": "ch:1:sloid:90423:0:02",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 202.57350955903047
+          },
+          {
+            "routeId": "92-N51-j26-1",
+            "fromId": "ch:1:sloid:78038:0:02",
+            "toId": "ch:1:sloid:78037:0:02",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 284.59965567900036
+          },
+          {
+            "routeId": "92-N51-j26-1",
+            "fromId": "ch:1:sloid:78034:0:02",
+            "toId": "ch:1:sloid:78033:0:02",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 431.23743994767716
+          },
+          {
+            "routeId": "92-N51-j26-1",
+            "fromId": "ch:1:sloid:78032:0:02",
+            "toId": "ch:1:sloid:78031:0:02",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 367.33583806239903
+          },
+          {
+            "routeId": "92-N55-j26-1",
+            "fromId": "ch:1:sloid:87635:0:02",
+            "toId": "ch:1:sloid:87634:0:02",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 316.12045881811383
+          },
+          {
+            "routeId": "92-N57-j26-1",
+            "fromId": "ch:1:sloid:78012:0:01",
+            "toId": "ch:1:sloid:78013:0:01",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 597.310511544701
+          },
+          {
+            "routeId": "92-N57-j26-1",
+            "fromId": "ch:1:sloid:77987:0:01",
+            "toId": "ch:1:sloid:10529:0:01",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 403.2596221004508
+          },
+          {
+            "routeId": "92-N57-j26-1",
+            "fromId": "ch:1:sloid:77984:0:01",
+            "toId": "ch:1:sloid:77983:0:01",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 374.38823534254334
+          },
+          {
+            "routeId": "92-N57-j26-1",
+            "fromId": "ch:1:sloid:90290:0:02",
+            "toId": "ch:1:sloid:95911:0:02",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 356.29300782009875
+          },
+          {
+            "routeId": "92-N57-j26-1",
+            "fromId": "ch:1:sloid:77986:0:02",
+            "toId": "ch:1:sloid:10529:0:02",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 329.1633290612925
+          },
+          {
+            "routeId": "92-N57-j26-1",
+            "fromId": "ch:1:sloid:77988:0:02",
+            "toId": "ch:1:sloid:77989:0:02",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 723.1378728548749
+          },
+          {
+            "routeId": "92-N57-j26-1",
+            "fromId": "ch:1:sloid:78005:0:02",
+            "toId": "ch:1:sloid:78006:0:02",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 284.4439790411997
+          },
+          {
+            "routeId": "92-N60-A-j26-1",
+            "fromId": "ch:1:sloid:95157",
+            "toId": "ch:1:sloid:95158",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 426.0522075074927
+          },
+          {
+            "routeId": "92-N60-A-j26-1",
+            "fromId": "ch:1:sloid:82525",
+            "toId": "ch:1:sloid:598",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 367.03717024054606
+          },
+          {
+            "routeId": "96-131-1-j26-1",
+            "fromId": "ch:1:sloid:72168:0:180359",
+            "toId": "ch:1:sloid:80734:0:509064",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 481.23707141898313
+          },
+          {
+            "routeId": "96-131-1-j26-1",
+            "fromId": "ch:1:sloid:752:0:58095",
+            "toId": "ch:1:sloid:72116:0:380685",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 410.0376213011737
+          },
+          {
+            "routeId": "96-131-1-j26-1",
+            "fromId": "ch:1:sloid:72119:0:978527",
+            "toId": "ch:1:sloid:72121:0:64956",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 411.3761378393767
+          },
+          {
+            "routeId": "96-131-1-j26-1",
+            "fromId": "ch:1:sloid:80933:0:867968",
+            "toId": "ch:1:sloid:72220:0:675837",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 292.07674292512866
           },
           {
             "routeId": "96-131-1-j26-1",
@@ -3339,6 +5181,46 @@
             "metres": 417.5470366646605
           },
           {
+            "routeId": "96-131-1-j26-1",
+            "fromId": "ch:1:sloid:80933",
+            "toId": "ch:1:sloid:72220",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 300.6184969640494
+          },
+          {
+            "routeId": "96-131-1-j26-1",
+            "fromId": "ch:1:sloid:765:0:809629",
+            "toId": "ch:1:sloid:72133:0:653646",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 405.1387625732056
+          },
+          {
+            "routeId": "96-131-1-j26-1",
+            "fromId": "ch:1:sloid:72168",
+            "toId": "ch:1:sloid:80734",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 484.01092538089074
+          },
+          {
+            "routeId": "96-131-1-j26-1",
+            "fromId": "ch:1:sloid:752",
+            "toId": "ch:1:sloid:72116",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 417.13790265712845
+          },
+          {
+            "routeId": "96-131-1-j26-1",
+            "fromId": "ch:1:sloid:72119",
+            "toId": "ch:1:sloid:72121",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 386.35890594127574
+          },
+          {
             "routeId": "96-131-2-j26-1",
             "fromId": "ch:1:sloid:83311:0:351397",
             "toId": "ch:1:sloid:72145:0:557296",
@@ -3356,11 +5238,115 @@
           },
           {
             "routeId": "96-131-2-j26-1",
+            "fromId": "ch:1:sloid:72145",
+            "toId": "ch:1:sloid:83311",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 343.09321942928085
+          },
+          {
+            "routeId": "96-131-2-j26-1",
             "fromId": "ch:1:sloid:72145:0:444008",
             "toId": "ch:1:sloid:83311:0:435069",
             "seconds": 0,
             "mode": "bus",
             "metres": 324.43596390999676
+          },
+          {
+            "routeId": "96-131-2-j26-1",
+            "fromId": "ch:1:sloid:72150",
+            "toId": "ch:1:sloid:72149",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 483.21960111908885
+          },
+          {
+            "routeId": "96-131-2-j26-1",
+            "fromId": "ch:1:sloid:752",
+            "toId": "ch:1:sloid:72116",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 417.13790265712845
+          },
+          {
+            "routeId": "96-131-2-j26-1",
+            "fromId": "ch:1:sloid:72119",
+            "toId": "ch:1:sloid:72121",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 386.35890594127574
+          },
+          {
+            "routeId": "96-131-2-j26-1",
+            "fromId": "ch:1:sloid:83311",
+            "toId": "ch:1:sloid:72145",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 343.09321942928085
+          },
+          {
+            "routeId": "96-131-2-j26-1",
+            "fromId": "ch:1:sloid:969",
+            "toId": "ch:1:sloid:72121",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 329.9132452556188
+          },
+          {
+            "routeId": "96-131-4-j26-1",
+            "fromId": "ch:1:sloid:72168",
+            "toId": "ch:1:sloid:80734",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 484.01092538089074
+          },
+          {
+            "routeId": "96-131-4-j26-1",
+            "fromId": "ch:1:sloid:958",
+            "toId": "ch:1:sloid:72171",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 308.22658803824555
+          },
+          {
+            "routeId": "96-131-4-j26-1",
+            "fromId": "ch:1:sloid:958:0:54899",
+            "toId": "ch:1:sloid:72170:0:613915",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 186.52527351411126
+          },
+          {
+            "routeId": "96-131-4-j26-1",
+            "fromId": "ch:1:sloid:72170:0:613915",
+            "toId": "ch:1:sloid:72169:0:3076",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 417.5470366646605
+          },
+          {
+            "routeId": "96-131-4-j26-1",
+            "fromId": "ch:1:sloid:72199:0:912215",
+            "toId": "ch:1:sloid:686:0:125948",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 628.3201122084635
+          },
+          {
+            "routeId": "96-131-4-j26-1",
+            "fromId": "ch:1:sloid:72168:0:180359",
+            "toId": "ch:1:sloid:80734:0:509064",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 481.23707141898313
+          },
+          {
+            "routeId": "96-131-4-j26-1",
+            "fromId": "ch:1:sloid:958:0:893032",
+            "toId": "ch:1:sloid:72171:0:790178",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 321.1499549420279
           },
           {
             "routeId": "96-131-5-j26-1",
@@ -3459,6 +5445,190 @@
             "metres": 358.35235650974545
           },
           {
+            "routeId": "96-136-8-j26-1",
+            "fromId": "ch:1:sloid:68:1:3",
+            "toId": "ch:1:sloid:72164:0:201776",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 418.13011182963754
+          },
+          {
+            "routeId": "96-136-8-j26-1",
+            "fromId": "ch:1:sloid:72165:0:782595",
+            "toId": "ch:1:sloid:83436:0:889713",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 233.89441667376258
+          },
+          {
+            "routeId": "96-136-8-j26-1",
+            "fromId": "ch:1:sloid:83436",
+            "toId": "ch:1:sloid:72165",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 236.18753120795026
+          },
+          {
+            "routeId": "96-136-8-j26-1",
+            "fromId": "ch:1:sloid:82727",
+            "toId": "ch:1:sloid:12518",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 326.7539792503209
+          },
+          {
+            "routeId": "96-136-8-j26-1",
+            "fromId": "ch:1:sloid:82727:0:687445",
+            "toId": "ch:1:sloid:12518:0:2073",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 340.7455843965826
+          },
+          {
+            "routeId": "96-136-8-j26-1",
+            "fromId": "ch:1:sloid:83436:0:720890",
+            "toId": "ch:1:sloid:72165:0:275732",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 242.91128898750853
+          },
+          {
+            "routeId": "96-136-9-j26-1",
+            "fromId": "ch:1:sloid:954:0:249344",
+            "toId": "ch:1:sloid:72158:0:915750",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 208.71809256446033
+          },
+          {
+            "routeId": "96-136-9-j26-1",
+            "fromId": "ch:1:sloid:68",
+            "toId": "ch:1:sloid:72164",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 456.1152762193953
+          },
+          {
+            "routeId": "96-136-9-j26-1",
+            "fromId": "ch:1:sloid:68:1:3",
+            "toId": "ch:1:sloid:72164:0:201776",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 418.13011182963754
+          },
+          {
+            "routeId": "96-136-9-j26-1",
+            "fromId": "ch:1:sloid:72161",
+            "toId": "ch:1:sloid:83300",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 194.54489188944737
+          },
+          {
+            "routeId": "96-136-9-j26-1",
+            "fromId": "ch:1:sloid:72161:0:380650",
+            "toId": "ch:1:sloid:83300:0:495963",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 246.5160460866151
+          },
+          {
+            "routeId": "96-136-9-j26-1",
+            "fromId": "ch:1:sloid:954:0:684188",
+            "toId": "ch:1:sloid:72145:0:444008",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 399.79578768718096
+          },
+          {
+            "routeId": "96-136-9-j26-1",
+            "fromId": "ch:1:sloid:83311:0:435069",
+            "toId": "ch:1:sloid:72144:0:555679",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 497.5239440116862
+          },
+          {
+            "routeId": "96-136-9-j26-1",
+            "fromId": "ch:1:sloid:72145:0:444008",
+            "toId": "ch:1:sloid:83311:0:435069",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 324.43596390999676
+          },
+          {
+            "routeId": "96-137-7-j26-1",
+            "fromId": "ch:1:sloid:12078:0:961",
+            "toId": "ch:1:sloid:993:0:959",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 201.6192665353389
+          },
+          {
+            "routeId": "96-137-7-j26-1",
+            "fromId": "ch:1:sloid:12078",
+            "toId": "ch:1:sloid:993",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 371.48281601399174
+          },
+          {
+            "routeId": "96-140-2-j26-1",
+            "fromId": "ch:1:sloid:72291:0:379939",
+            "toId": "ch:1:sloid:72290:0:170184",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 237.02906936912464
+          },
+          {
+            "routeId": "96-140-2-j26-1",
+            "fromId": "ch:1:sloid:72283",
+            "toId": "ch:1:sloid:72284",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 603.2666002609797
+          },
+          {
+            "routeId": "96-140-2-j26-1",
+            "fromId": "ch:1:sloid:72286",
+            "toId": "ch:1:sloid:82142",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 307.98293163906703
+          },
+          {
+            "routeId": "96-140-2-j26-1",
+            "fromId": "ch:1:sloid:72290",
+            "toId": "ch:1:sloid:72291",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 321.5949795804844
+          },
+          {
+            "routeId": "96-140-2-j26-1",
+            "fromId": "ch:1:sloid:72283:0:996433",
+            "toId": "ch:1:sloid:72284:0:595011",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 566.6819697185545
+          },
+          {
+            "routeId": "96-140-2-j26-1",
+            "fromId": "ch:1:sloid:72286:0:782674",
+            "toId": "ch:1:sloid:82142:0:268838",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 305.954565025978
+          },
+          {
+            "routeId": "96-140-2-j26-1",
+            "fromId": "ch:1:sloid:72290:0:664917",
+            "toId": "ch:1:sloid:72291:0:807089",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 414.94726166980183
+          },
+          {
             "routeId": "96-144-4-j26-1",
             "fromId": "ch:1:sloid:763",
             "toId": "ch:1:sloid:72347",
@@ -3523,6 +5693,78 @@
             "metres": 258.41290693085256
           },
           {
+            "routeId": "96-144-6-j26-1",
+            "fromId": "ch:1:sloid:72352",
+            "toId": "ch:1:sloid:598",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 373.9082891077233
+          },
+          {
+            "routeId": "96-144-6-j26-1",
+            "fromId": "ch:1:sloid:72362",
+            "toId": "ch:1:sloid:72363",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 394.4957919751057
+          },
+          {
+            "routeId": "96-144-6-j26-1",
+            "fromId": "ch:1:sloid:72367",
+            "toId": "ch:1:sloid:986",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 335.10064052904943
+          },
+          {
+            "routeId": "96-144-6-j26-1",
+            "fromId": "ch:1:sloid:72368",
+            "toId": "ch:1:sloid:986",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 475.2546675575279
+          },
+          {
+            "routeId": "96-144-6-j26-1",
+            "fromId": "ch:1:sloid:72364",
+            "toId": "ch:1:sloid:72363",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 331.122050837178
+          },
+          {
+            "routeId": "96-144-6-j26-1",
+            "fromId": "ch:1:sloid:72353",
+            "toId": "ch:1:sloid:82507",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 467.7721413360917
+          },
+          {
+            "routeId": "96-144-6-j26-1",
+            "fromId": "ch:1:sloid:82525",
+            "toId": "ch:1:sloid:598",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 367.03717024054606
+          },
+          {
+            "routeId": "96-144-7-j26-1",
+            "fromId": "ch:1:sloid:72367",
+            "toId": "ch:1:sloid:986",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 338.05520314088193
+          },
+          {
+            "routeId": "96-144-7-j26-1",
+            "fromId": "ch:1:sloid:72367:0:389242",
+            "toId": "ch:1:sloid:986:0:87035",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 338.60096200472276
+          },
+          {
             "routeId": "96-144-9-j26-1",
             "fromId": "ch:1:sloid:773",
             "toId": "ch:1:sloid:72335",
@@ -3579,12 +5821,28 @@
             "metres": 745.889108226117
           },
           {
+            "routeId": "96-144-B-j26-1",
+            "fromId": "ch:1:sloid:684",
+            "toId": "ch:1:sloid:7332",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 311.07331140395905
+          },
+          {
             "routeId": "96-145-0-j26-1",
             "fromId": "ch:1:sloid:597:0:765461",
             "toId": "ch:1:sloid:72321:0:842291",
             "seconds": 0,
             "mode": "bus",
             "metres": 636.5036856804643
+          },
+          {
+            "routeId": "96-145-0-j26-1",
+            "fromId": "ch:1:sloid:72187:0:500085",
+            "toId": "ch:1:sloid:72188:0:480970",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 630.2202727291069
           },
           {
             "routeId": "96-145-0-j26-1",
@@ -3627,6 +5885,30 @@
             "metres": 267.7756821870229
           },
           {
+            "routeId": "96-148-2-j26-1",
+            "fromId": "ch:1:sloid:71519:0:397731",
+            "toId": "ch:1:sloid:71518:0:373422",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 426.25858310297446
+          },
+          {
+            "routeId": "96-148-5-j26-1",
+            "fromId": "ch:1:sloid:81590:0:461800",
+            "toId": "ch:1:sloid:83868:0:215270",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 223.13504129236915
+          },
+          {
+            "routeId": "96-148-5-j26-1",
+            "fromId": "ch:1:sloid:71491:0:625342",
+            "toId": "ch:1:sloid:83868:0:21717",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 198.98211732159587
+          },
+          {
             "routeId": "96-148-6-j26-1",
             "fromId": "ch:1:sloid:71501:0:665846",
             "toId": "ch:1:sloid:11666:0:175",
@@ -3645,17 +5927,18 @@
         ],
         "note": "Original minute-resolution GTFS times retained, including distinct calls at the same second. No fabricated sub-minute times. These legs cannot imply finite measured speed; animation may jump at the common timestamp.",
         "maximumNominalPositiveDurationKmh": {
-          "rail": 91.48506467548742,
-          "bus": 108.275722738235,
-          "cableway": 11.310110233310562
+          "tram": 60.06406869964008,
+          "rail": 306.71873292305855,
+          "bus": 320.1267368520771,
+          "cableway": 11.310110233310562,
+          "ferry": 16.312558735110212
         }
       },
       "pairFailureReasons": {
-        "disconnected-line": 417,
-        "endpoint-gap": 679,
-        "implausible-detour": 16,
-        "night-network-excluded-by-source": 651,
-        "no-compatible-source-mode": 93
+        "disconnected-line": 25,
+        "endpoint-gap": 22,
+        "night-network-excluded-by-source": 5,
+        "no-compatible-source-mode": 2
       },
       "validation": {
         "completeSourceCalls": true,
@@ -3674,7 +5957,7 @@
     "Route membership uses original call coordinates inside the unsimplified canton polygon. Boundary-adjacent calls are disclosed; no buffer silently admits neighbouring-canton services.",
     "Full cross-canton journeys retained. Source extent, gaps and unsupported modes cause whole-pattern exclusion, never cropped calls.",
     "Source has no route/operator/direction identifiers. Geometric checks validate plausibility, not the exact operator itinerary, one-way legality, rail gauge, bridges, running tracks or temporary diversions.",
-    "The source excludes night services. Night-labelled routes are excluded even if daytime road geometry overlaps. No supplemental night paths were established.",
-    "Bahn is routed as rail only. Tram and ferry lack a separately verified compatible graph. No roads borrowed from other cantons or operators."
+    "Solothurn source excludes night services; admitted night journeys use separate OSM road or FOT infrastructure inference on every segment, never the daytime cantonal graph.",
+    "Bahn remains rail only. BLT tram 10 and BSG boat 3216 use exact official operator/line sources. Standard-gauge rail and bus road supplements retain full-pattern consensus, bounds and separate provenance."
   ]
 }

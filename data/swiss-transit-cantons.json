@@ -403,7 +403,7 @@
       "evidence": "ch.so.avt.oev GeoPackage downloaded: 3,951 MultiLineString network segments and 775 stops in EPSG:2056. Network fields only identify mode and tunnel status; there are no line/operator identifiers. Stops include DiDok. The empty linestructure helper table is not missing network coverage.",
       "vintage": "Published 17 December 2025. Metadata explicitly excludes night services.",
       "reuse": "Linked dataset terms permit commercial/noncommercial use; source attribution is recommended.",
-      "nextAction": "Continue the implemented canton-wide network adapter: resolve disconnected/source-extent patterns, separately source night/tram/ferry service, and validate seasonal dates. See docs/SOLOTHURN-STUDY.md and data/solothurn-audit/topology-review.json.",
+      "nextAction": "Review recorded alignment disagreements and unresolved narrow-gauge/platform/foreign-rail patterns. Twelve seasonal dates audited; physical direction and year-round coverage remain uncertified. Solothurn app integration retains a verified dated release.",
       "sourceIds": [
         "so-publications",
         "so-lines",
@@ -416,17 +416,21 @@
         "audit": "data/solothurn-audit/summary.json",
         "annualRouteRecords": 193,
         "agencyIdentities": 19,
-        "admittedRouteRecords": 55,
+        "admittedRouteRecords": 144,
         "serviceDates": [
           "2026-09-04",
           "2026-09-06"
         ],
         "admittedMovements": [
-          3142,
-          2574
+          6654,
+          5310
         ],
         "physicalDirectionCertified": false,
-        "yearRoundCoverageEstablished": false
+        "yearRoundCoverageEstablished": false,
+        "seasonalDatesAudited": 12,
+        "seasonalAudit": "data/solothurn-audit/seasonal-summary.json",
+        "alignmentAudit": "data/solothurn-audit/alignment-review.json",
+        "appManifest": "public/data/solothurn-region-day-manifest.json"
       }
     },
     {
