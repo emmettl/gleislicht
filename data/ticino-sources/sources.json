@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "boundary": {
+    "source": "swissBOUNDARIES3D",
+    "edition": "2026-01",
+    "url": "https://data.geo.admin.ch/ch.swisstopo.swissboundaries3d/swissboundaries3d_2026-01/swissboundaries3d_2026-01_2056_5728.gpkg.zip",
+    "sourceGpkgSha256": "1f122cb7a06f2d312a84b7c0a91116348ba907054d487f0a70b9d2302984e6fc",
+    "recordUuid": "{95F10F52-8B2F-4D6A-AF7E-D4F915E42F89}",
+    "recordModified": "2025-11-19T00:00:00.000",
+    "cantonNumber": 21,
+    "attribution": "\u00a9 swisstopo",
+    "termsUrl": "https://www.swisstopo.admin.ch/en/terms-of-use-free-geodata-and-geoservices"
+  },
+  "transformation": "Unsimplified multipart polygons and holes; approximate swisstopo LV95 to WGS84 polynomial, seven decimals, metre-level accuracy.",
+  "files": {
+    "canton.gpkggeom": {
+      "sha256": "28caeba5d4492dccb906006288603ae326d805d9d8be8cecb026bb87e8e33813",
+      "bytes": 201946
+    },
+    "boundary.json": {
+      "sha256": "69eead5dfc87f5230c67b19062c7a41f1623097ca784c10bde8f805567050916",
+      "bytes": 191629
+    },
+    "districts.json": {
+      "sha256": "3b1767d888556aa19c369b68bb8308ae3587052cbd8e69aec9aa5732552cf9ba",
+      "bytes": 440640
+    }
+  }
+}

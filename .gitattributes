@@ -11,3 +11,7 @@ data/fribourg-region/*.xml -text -whitespace
 data/valais-sources/research/*.pdf binary
 data/valais-sources/research/*.html -text -whitespace
 data/valais-sources/research/*.json -text -whitespace
+
+# Ticino source receipts are hashed as exact downloaded bytes.
+data/ticino-sources/*.html -text -whitespace
+data/ticino-sources/*.xml -text -whitespace

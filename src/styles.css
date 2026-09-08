@@ -2141,7 +2141,7 @@
 }
 
 .explore-actions { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-bottom: 9px; }
-.explore-actions button { border: 1px solid #8dfaff33; border-radius: 16px; padding: 5px 10px; background: #0b1524; color: var(--ink, #f8f7ff); font: inherit; font-size: 11px; cursor: pointer; }
+.explore-actions :is(button, select) { border: 1px solid #8dfaff33; border-radius: 16px; padding: 5px 10px; background: #0b1524; color: var(--ink, #f8f7ff); font: inherit; font-size: 11px; cursor: pointer; }
 .explore-actions button[aria-pressed=true] { border-color: #8dfaff; color: #8dfaff; }
 .explore-actions button:disabled { opacity: .45; cursor: default; }
 .explore-status { margin: 0 0 7px; color: #b6d8de; font-size: 10px; line-height: 1.4; }
@@ -2149,5 +2149,5 @@
 .explore-share { flex-wrap: nowrap; }
 .explore-share .explore-link { flex: 1; min-width: 0; width: auto; }
 .explore-share button { flex-shrink: 0; min-height: 32px; }
-@media(max-width: 600px) { .explore-actions { gap: 4px; margin-bottom: 6px; } .explore-actions button { font-size: 10px; padding: 5px 8px; } }
+@media(max-width: 600px) { .explore-actions { gap: 4px; margin-bottom: 6px; } .explore-actions :is(button, select) { font-size: 10px; padding: 5px 8px; } }
 .transport .service-legend { position: static; transform: none; width: auto; margin: 0 0 10px; }
