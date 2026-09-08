@@ -14,6 +14,8 @@ These totals describe different things and must not be added together as coverag
 
 **9 September implementation:** the [Aargau statistical importer and explorer](AARGAU-ROAD-STATISTICS.md) retain all 10,093 MIV records, separate annual/period metrics, preserve missing dates, flag three invalid periods and attach the reviewed holiday substitution. The road-recording picker now includes a separate statistical view; hourly playback remains unadmitted.
 
+The [Geneva/Luzern statistical view](GENEVA-LUZERN-ROAD-STATISTICS.md) now adds all 694 Geneva measurement points and the single reviewed Wolhusen weekday profile. It preserves missing reference years, the Luzern catalogue/report discrepancy and separately rounded directional values. Other Luzern reports and dated observation feeds remain outside this release.
+
 ## Geneva
 
 The [SITG counter catalogue](https://sitg.ge.ch/donnees/otc-comptage-trafic) exposes a queryable [ArcGIS layer](https://vector.sitg.ge.ch/arcgis/rest/services/OTC_COMPTAGE_TRAFIC/FeatureServer/0?f=pjson). A full LV95 point query returned 694 features, matching the independent count query without a transfer-limit flag.
