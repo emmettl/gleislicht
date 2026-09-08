@@ -24,6 +24,10 @@ if (audit.policy.geometryRepairs?.repairs.length) {
   assert.deepEqual(review.sourceHashes,audit.sourceHashes,'Stale topology regression report')
   summary.topologyReview={path,sha256:sha256(await readFile(path))}
 }
+const detourPath='data/st-gallen-detour-review.json', detours=await read(detourPath)
+assert.deepEqual(detours.sourceHashes,audit.sourceHashes,'Stale detour review sources')
+for (const day of days) assert.equal(detours.days.find(d=>d.date===day.date)?.dayAuditSha256,sha256(JSON.stringify(day)),'Stale detour review day')
+summary.detourReview={path:detourPath,sha256:sha256(await readFile(detourPath))}
 for(const name of ['routes.json','source-lines.json',...days.map(d=>d.date+'.json')]) summary.files[name]={sha256:sha256(await readFile(join('data/st-gallen-audit',name)))}
 await save('data/st-gallen-audit/summary.json',summary)
 const index={schemaVersion:1,region:'st-gallen',label:'St. Gallen canton — admitted complete stop patterns',localOnly:true,redistributionApproved:false,
@@ -136,6 +140,8 @@ ${table(['Failure reason',...days.map(d=>d.date+' affected trips')],reasons.map(
 
 Reasons overlap when a pattern has multiple failures. Missing-line includes outside-source modes, long-distance/national rail, replacement buses, unbridged operator/designation identities and tourist services beyond the subsidised-line scope; this does not assert that no other geometry exists. Full reason sets and inactive dates are attached to every annual route in routes.json. Every source feature without an annual match or admitted fixture is also retained in source-lines.json.
 
+The [bus detour review](ST-GALLEN-DETOUR-REVIEW.md) replays all seven remaining bus pairs rejected for implausible detours, affecting 128 Friday and 59 Sunday trips. It compares every nearby edge projection and the operator's combined regional bus linework. The 352/353 and 432 failures persist. Line 400 has a shorter candidate using a 33.30 m edge from line 429/430, but it lacks the evidence required for admission. Operator notices retrieved on 8 September document construction overlapping both fixture dates. All these patterns remain excluded; the [machine-readable review](../data/st-gallen-detour-review.json) pins the evidence snapshots, diagnostic results and affected patterns without redistributing geometry.
+
 ### Admitted route records
 
 Each value is admitted/all civil-day movement instances. Partial routes still exclude every failed full pattern. The complete inventory includes excluded and inactive routes as well.
@@ -166,6 +172,8 @@ node scripts/document-st-gallen-study.mjs
 node scripts/check-st-gallen-region.mjs --audit-only
 node --test scripts/st-gallen-region.test.mjs
 \`\`\`
+
+The saved detour review is bound to the exact source hashes and day audits. To replay its geometry diagnostics with the original cached operator pages, run \`node scripts/review-st-gallen-detours.mjs --check\`. On a fresh cache, \`node scripts/review-st-gallen-detours.mjs --fetch-evidence\` acquires the current public pages and regenerates the review; it cannot recreate historical webpage bytes. Inspect changed notices, dates and hashes before regenerating the study. These pages support stop order and operating context, not replacement route geometry.
 
 The full checker verifies source hashes, annual-route reconciliation, every admitted and excluded source pattern, unchanged source calls/times/sequences, frequency and carry-in metadata, directed path endpoints, per-pair path hashes, chunk overlap consistency, morning-window membership and operator/mode/route/pair-occurrence totals. The audit-only check works from tracked files without the large source cache. The source-edge repair regression compares against the feed and policy from commit 2351822: every previously admitted movement, call and path and every previously matched pair must be unchanged, and only the reviewed line-321 patterns may be added. Run \`node scripts/check-st-gallen-topology-regression.mjs BASELINE_FEED_DIRECTORY BASELINE_AUDIT_JSON\` after building both versions with the exported \`buildStGallenRegion\` function and their respective policies. The saved report records the pinned baseline and result hashes.
 

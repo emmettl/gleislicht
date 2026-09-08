@@ -1,0 +1,459 @@
+{
+  "schemaVersion": 1,
+  "scope": "Every bus implausible-detour failure on the two pinned St. Gallen fixtures; not every exclusion reason.",
+  "sourceHashes": {
+    "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+    "boundary": "9fcbdc0a501919e7d8722827e0868784010be046dccffc02df0833f9de21f86a",
+    "timetable": "fdbe77f9d44d9f7cf59a1da8cf09b87970a6afc0a78355421265b73f9981d49c",
+    "policy": "1059f9f41a98aa5d734673d3a0c1586e7ffc091efd74c98cccf53c0ed7f74ea3",
+    "catalogue": "a3ca9355f89503c16380dec23a518a1c3ad2b91308428da0d8ade6a3da782c8f"
+  },
+  "operatorEvidence": [
+    {
+      "id": "352",
+      "publisher": "RTB Rheintal Bus",
+      "url": "https://www.rtb.ch/reisen/info-haltestelle/detail-linie/352",
+      "file": "352.html",
+      "sha256": "417588eea2293708e850fa4f105a73b55874a1dacd0b7a33573ba3e89463b112",
+      "bytes": 39671,
+      "retrievedAt": "2026-09-08T18:36:36.097Z",
+      "sourceEditionDate": null,
+      "use": "Operator stop-order or operating-notice evidence only; not a street geometry source."
+    },
+    {
+      "id": "353",
+      "publisher": "RTB Rheintal Bus",
+      "url": "https://www.rtb.ch/reisen/info-haltestelle/detail-linie/353",
+      "file": "353.html",
+      "sha256": "4e4b285f0c61f932fb5df58a59edad5d669003f55a1e10c84b613bfdb4cef52b",
+      "bytes": 40049,
+      "retrievedAt": "2026-09-08T18:36:36.614Z",
+      "sourceEditionDate": null,
+      "use": "Operator stop-order or operating-notice evidence only; not a street geometry source."
+    },
+    {
+      "id": "432",
+      "publisher": "BUS Sarganserland Werdenberg",
+      "url": "https://www.bsw-bus.ch/reisen/info-haltestelle/detail-linie/432",
+      "file": "432.html",
+      "sha256": "41c230edbb58e35a4f278eee62979e69e6c01866401953609865c7972bf5b98e",
+      "bytes": 55691,
+      "retrievedAt": "2026-09-08T18:36:36.614Z",
+      "sourceEditionDate": null,
+      "use": "Operator stop-order or operating-notice evidence only; not a street geometry source."
+    },
+    {
+      "id": "notices",
+      "publisher": "BUS Sarganserland Werdenberg / BOS Gruppe",
+      "url": "https://www.bsw-bus.ch/reisen/stoerungen/betriebsmeldungen",
+      "file": "notices.html",
+      "sha256": "839ba29f3a731fcafb1f6725140a7453b4d0d70ce845785cf9ea1a27d632fda8",
+      "bytes": 81645,
+      "retrievedAt": "2026-09-08T18:36:36.750Z",
+      "sourceEditionDate": null,
+      "use": "Operator stop-order or operating-notice evidence only; not a street geometry source."
+    }
+  ],
+  "method": "Replay exact route graphs, compare all edge projections within the unchanged 5 m allowance, then diagnose the exact-vertex union of BOS regional bus records. The union is not an admissible route graph. No geometry coordinates are redistributed.",
+  "pairs": [
+    {
+      "key": "[\"92-352-A-j26-1\",\"ch:1:sloid:11093\",\"ch:1:sloid:11094\"]",
+      "routeId": "92-352-A-j26-1",
+      "line": "352",
+      "fromId": "ch:1:sloid:11093",
+      "toId": "ch:1:sloid:11094",
+      "from": "Widnau, Nöllenstrasse",
+      "to": "Heerbrugg, Rosenbergsaustrasse",
+      "sourceFeatures": [
+        "bus:17"
+      ],
+      "sourceComponents": 1,
+      "directMetres": 339.58140500432273,
+      "admissionCeilingMetres": 1528.1163225194523,
+      "production": {
+        "reason": "implausible-detour",
+        "pathMetres": 1608.9685582228235,
+        "maximumSnapMetres": 3.382303097748273
+      },
+      "everyNearbyEdge": {
+        "reason": "implausible-detour",
+        "pathMetres": 1608.9685582228235,
+        "maximumSnapMetres": 3.382303097748273
+      },
+      "operatorUnion": {
+        "reason": "implausible-detour",
+        "pathMetres": 1583.7314354138143,
+        "maximumSnapMetres": 3.382303097748273
+      },
+      "additionalEdges": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 23,
+          "affectedPatterns": 1,
+          "affectedTrips": 23,
+          "patternIdsSha256": "1fd907cfe4ada95b1d81cc523cea01ef4df72e602ba6a579528e6f43ab5601d2"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 21,
+          "affectedPatterns": 1,
+          "affectedTrips": 21,
+          "patternIdsSha256": "1fd907cfe4ada95b1d81cc523cea01ef4df72e602ba6a579528e6f43ab5601d2"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion.",
+      "rationale": "The operator confirms the circular-service stop order. Neither all nearby edge projections nor the operator union yields a passing path; the stop list alone does not validate the long source alignment."
+    },
+    {
+      "key": "[\"92-353-A-j26-1\",\"ch:1:sloid:11094\",\"ch:1:sloid:11093\"]",
+      "routeId": "92-353-A-j26-1",
+      "line": "353",
+      "fromId": "ch:1:sloid:11094",
+      "toId": "ch:1:sloid:11093",
+      "from": "Heerbrugg, Rosenbergsaustrasse",
+      "to": "Widnau, Nöllenstrasse",
+      "sourceFeatures": [
+        "bus:17"
+      ],
+      "sourceComponents": 1,
+      "directMetres": 339.58140500432273,
+      "admissionCeilingMetres": 1528.1163225194523,
+      "production": {
+        "reason": "implausible-detour",
+        "pathMetres": 1608.9685582228233,
+        "maximumSnapMetres": 3.382303097748273
+      },
+      "everyNearbyEdge": {
+        "reason": "implausible-detour",
+        "pathMetres": 1608.9685582228233,
+        "maximumSnapMetres": 3.382303097748273
+      },
+      "operatorUnion": {
+        "reason": "implausible-detour",
+        "pathMetres": 1583.7314354138139,
+        "maximumSnapMetres": 3.382303097748273
+      },
+      "additionalEdges": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 14,
+          "affectedPatterns": 1,
+          "affectedTrips": 14,
+          "patternIdsSha256": "78e2ea99b3dc81b4fc816883ea2c9368e63d7f7e294a2eb46d5d1246e5173773"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 10,
+          "affectedPatterns": 1,
+          "affectedTrips": 10,
+          "patternIdsSha256": "78e2ea99b3dc81b4fc816883ea2c9368e63d7f7e294a2eb46d5d1246e5173773"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion.",
+      "rationale": "The operator confirms the circular-service stop order. Neither all nearby edge projections nor the operator union yields a passing path; the stop list alone does not validate the long source alignment."
+    },
+    {
+      "key": "[\"92-400-j26-1\",\"ch:1:sloid:74413:0:01\",\"ch:1:sloid:74616:0:01\"]",
+      "routeId": "92-400-j26-1",
+      "line": "400",
+      "fromId": "ch:1:sloid:74413:0:01",
+      "toId": "ch:1:sloid:74616:0:01",
+      "from": "Sargans, Post",
+      "to": "Sargans, Castels",
+      "sourceFeatures": [
+        "bus:18"
+      ],
+      "sourceComponents": 1,
+      "directMetres": 394.1665416265231,
+      "admissionCeilingMetres": 1773.749437319354,
+      "production": {
+        "reason": "implausible-detour",
+        "pathMetres": 2244.4399307050803,
+        "maximumSnapMetres": 7.689851911861964
+      },
+      "everyNearbyEdge": {
+        "reason": "implausible-detour",
+        "pathMetres": 2244.4399307050803,
+        "maximumSnapMetres": 7.689851911861964
+      },
+      "operatorUnion": {
+        "reason": "candidate-path",
+        "pathMetres": 484.90537591743134,
+        "maximumSnapMetres": 7.689851911861964,
+        "geometrySha256": "dbf0a99e2ccbf6cd374dd993cfdeeb775aaf8d09a2933d75e88d605b7227f8b3"
+      },
+      "additionalEdges": [
+        {
+          "edgeSha256": "aea99f52af9ebefaec796c42403269ccb28f533975ea38dedce2ebe60ff6700a",
+          "lengthMetres": 33.299013767286716,
+          "bothEndsExistingTargetVertices": true,
+          "sources": [
+            {
+              "feature": "bus:86",
+              "expectedName": "429/430 Sargans - Vilters - Wangs - Sargans",
+              "partIndex": 1,
+              "startVertex": 61,
+              "endVertex": 62
+            }
+          ]
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 24,
+          "affectedPatterns": 1,
+          "affectedTrips": 24,
+          "patternIdsSha256": "9a1a0904c6026b2e39cb9899398af5e3e7cc9f8bca6600fac3f693621e0a6363"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 0,
+          "affectedPatterns": 0,
+          "affectedTrips": 0,
+          "patternIdsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion.",
+      "rationale": "The shorter operator-union candidate borrows an edge from another line within an already connected target graph. It does not qualify as the bounded, independently corroborated disconnected-component repair. Construction notices overlap both fixture dates but supply no diverted street path."
+    },
+    {
+      "key": "[\"92-400-j26-1\",\"ch:1:sloid:74616:0:02\",\"ch:1:sloid:74413:0:02\"]",
+      "routeId": "92-400-j26-1",
+      "line": "400",
+      "fromId": "ch:1:sloid:74616:0:02",
+      "toId": "ch:1:sloid:74413:0:02",
+      "from": "Sargans, Castels",
+      "to": "Sargans, Post",
+      "sourceFeatures": [
+        "bus:18"
+      ],
+      "sourceComponents": 1,
+      "directMetres": 328.6098774981149,
+      "admissionCeilingMetres": 1478.7444487415169,
+      "production": {
+        "reason": "implausible-detour",
+        "pathMetres": 2303.567743639437,
+        "maximumSnapMetres": 3.5965170759846297
+      },
+      "everyNearbyEdge": {
+        "reason": "implausible-detour",
+        "pathMetres": 2303.567743639437,
+        "maximumSnapMetres": 3.5965170759846297
+      },
+      "operatorUnion": {
+        "reason": "candidate-path",
+        "pathMetres": 430.88986997145605,
+        "maximumSnapMetres": 3.5965170759846297,
+        "geometrySha256": "f3e138e405e1934c32b9ee68744d795b68101eb3ecad64a9bee0ea460f05fdc0"
+      },
+      "additionalEdges": [
+        {
+          "edgeSha256": "aea99f52af9ebefaec796c42403269ccb28f533975ea38dedce2ebe60ff6700a",
+          "lengthMetres": 33.299013767286716,
+          "bothEndsExistingTargetVertices": true,
+          "sources": [
+            {
+              "feature": "bus:86",
+              "expectedName": "429/430 Sargans - Vilters - Wangs - Sargans",
+              "partIndex": 1,
+              "startVertex": 61,
+              "endVertex": 62
+            }
+          ]
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 24,
+          "affectedPatterns": 1,
+          "affectedTrips": 24,
+          "patternIdsSha256": "a258d0f0eaf4437588a4a0d1eb7b2f4428b0ab4a300d29a54e283e8b5fcde11f"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 0,
+          "affectedPatterns": 0,
+          "affectedTrips": 0,
+          "patternIdsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion.",
+      "rationale": "The shorter operator-union candidate borrows an edge from another line within an already connected target graph. It does not qualify as the bounded, independently corroborated disconnected-component repair. Construction notices overlap both fixture dates but supply no diverted street path."
+    },
+    {
+      "key": "[\"92-432-j26-1\",\"ch:1:sloid:9978:0:01\",\"ch:1:sloid:81608:0:01\"]",
+      "routeId": "92-432-j26-1",
+      "line": "432",
+      "fromId": "ch:1:sloid:9978:0:01",
+      "toId": "ch:1:sloid:81608:0:01",
+      "from": "Mels, Oberdorf",
+      "to": "Mels, Fabrik",
+      "sourceFeatures": [
+        "bus:55"
+      ],
+      "sourceComponents": 1,
+      "directMetres": 254.27162302742852,
+      "admissionCeilingMetres": 1200,
+      "production": {
+        "reason": "implausible-detour",
+        "pathMetres": 1844.3192484108165,
+        "maximumSnapMetres": 4.00614035480942
+      },
+      "everyNearbyEdge": {
+        "reason": "implausible-detour",
+        "pathMetres": 1844.3192484108165,
+        "maximumSnapMetres": 4.00614035480942
+      },
+      "operatorUnion": {
+        "reason": "implausible-detour",
+        "pathMetres": 1844.319242767703,
+        "maximumSnapMetres": 4.00614035480942
+      },
+      "additionalEdges": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 14,
+          "affectedPatterns": 1,
+          "affectedTrips": 14,
+          "patternIdsSha256": "2c55abdc6bf9d90394a1547ee27447d485e9071d9f45a0305aaec75645ed4903"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 14,
+          "affectedPatterns": 2,
+          "affectedTrips": 14,
+          "patternIdsSha256": "464c549559ceb7e705b180246d35683515622efc1bd2178379be82febf1c2055"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion.",
+      "rationale": "All nearby edge projections and the operator union still fail. The operator confirms the ordered calls and a relocated Oberdorf stop during both fixtures, without validating the long source path."
+    },
+    {
+      "key": "[\"92-432-j26-1\",\"ch:1:sloid:81608:0:1719\",\"ch:1:sloid:9978:0:02\"]",
+      "routeId": "92-432-j26-1",
+      "line": "432",
+      "fromId": "ch:1:sloid:81608:0:1719",
+      "toId": "ch:1:sloid:9978:0:02",
+      "from": "Mels, Fabrik",
+      "to": "Mels, Oberdorf",
+      "sourceFeatures": [
+        "bus:55"
+      ],
+      "sourceComponents": 1,
+      "directMetres": 334.76756355462453,
+      "admissionCeilingMetres": 1506.4540359958105,
+      "production": {
+        "reason": "implausible-detour",
+        "pathMetres": 1698.2491794561363,
+        "maximumSnapMetres": 1.636813725493681
+      },
+      "everyNearbyEdge": {
+        "reason": "implausible-detour",
+        "pathMetres": 1698.2491794561363,
+        "maximumSnapMetres": 1.636813725493681
+      },
+      "operatorUnion": {
+        "reason": "implausible-detour",
+        "pathMetres": 1698.2491738130225,
+        "maximumSnapMetres": 1.636813725493681
+      },
+      "additionalEdges": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 14,
+          "affectedPatterns": 1,
+          "affectedTrips": 14,
+          "patternIdsSha256": "0269dc6bb75ee257de5b5baa6d2cc64f96bd92df734ade92100d385b2eaafec5"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 0,
+          "affectedPatterns": 0,
+          "affectedTrips": 0,
+          "patternIdsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion.",
+      "rationale": "All nearby edge projections and the operator union still fail. The operator confirms the ordered calls and a relocated Oberdorf stop during both fixtures, without validating the long source path."
+    },
+    {
+      "key": "[\"92-432-j26-1\",\"ch:1:sloid:81608:0:02\",\"ch:1:sloid:9978:0:02\"]",
+      "routeId": "92-432-j26-1",
+      "line": "432",
+      "fromId": "ch:1:sloid:81608:0:02",
+      "toId": "ch:1:sloid:9978:0:02",
+      "from": "Mels, Fabrik",
+      "to": "Mels, Oberdorf",
+      "sourceFeatures": [
+        "bus:55"
+      ],
+      "sourceComponents": 1,
+      "directMetres": 252.89212074648077,
+      "admissionCeilingMetres": 1200,
+      "production": {
+        "reason": "implausible-detour",
+        "pathMetres": 1846.3625563832666,
+        "maximumSnapMetres": 1.1807398223084296
+      },
+      "everyNearbyEdge": {
+        "reason": "implausible-detour",
+        "pathMetres": 1846.3625563832666,
+        "maximumSnapMetres": 1.1807398223084296
+      },
+      "operatorUnion": {
+        "reason": "implausible-detour",
+        "pathMetres": 1846.3625507401528,
+        "maximumSnapMetres": 1.1807398223084296
+      },
+      "additionalEdges": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 15,
+          "affectedPatterns": 1,
+          "affectedTrips": 15,
+          "patternIdsSha256": "61206190d8f50d836e4da1c6be4a532bb4126a847f79d746e88ce586fa4402f9"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 14,
+          "affectedPatterns": 2,
+          "affectedTrips": 14,
+          "patternIdsSha256": "0c8ab92e341f665132c1a23bbcb75634ada47d15cdfa61c4df12053f41cc7f7e"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion.",
+      "rationale": "All nearby edge projections and the operator union still fail. The operator confirms the ordered calls and a relocated Oberdorf stop during both fixtures, without validating the long source path."
+    }
+  ],
+  "days": [
+    {
+      "date": "2026-09-04",
+      "reviewedPairs": 7,
+      "affectedPatterns": 7,
+      "affectedTrips": 128,
+      "admittedTrips": 10500,
+      "dayAuditSha256": "80bdea06079b0eba8e6500bad0fa86f5e7570aeb6e6ff2633da7269def4cac75"
+    },
+    {
+      "date": "2026-09-06",
+      "reviewedPairs": 4,
+      "affectedPatterns": 6,
+      "affectedTrips": 59,
+      "admittedTrips": 7264,
+      "dayAuditSha256": "ca66d9a643fbe7990cc0d2d84f5092bb9881c7936a6127d739e598eb0befacd9"
+    }
+  ],
+  "validation": {
+    "passed": true,
+    "feedChanged": false,
+    "admissionLimitsChanged": false,
+    "directionCertified": false
+  }
+}

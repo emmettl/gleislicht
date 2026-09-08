@@ -1802,5 +1802,9 @@
   "topologyReview": {
     "path": "data/st-gallen-topology-review.json",
     "sha256": "7fe800fd1d5c9f9705c14d9097562bd1c6db0b6d7dde80b7a9c0a49d2804067a"
+  },
+  "detourReview": {
+    "path": "data/st-gallen-detour-review.json",
+    "sha256": "4b95784b4a99751b7d5dffc9dc99d105f0931a2ecf057c421a28963b0827eda1"
   }
 }
