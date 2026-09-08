@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "11c5324a213144723ad578ab44a3ab543ac4c9e4b2b2e5005cade0dc80ebf8f8",
+  "timetableSha256": "9403d675c79184b4885e8a0ca0f3d02da55363cefafab2f403cb7e5ae95dcff5",
+  "limits": {
+    "sourceNodeAttachmentMetres": 10
+  },
+  "routes": [
+    {
+      "routeId": "91-1-P-j26-1",
+      "agencyId": "65",
+      "line": "RE1",
+      "gauge": "mm1435"
+    },
+    {
+      "routeId": "91-14-B-j26-1",
+      "agencyId": "65",
+      "line": "S14",
+      "gauge": "mm1435"
+    },
+    {
+      "routeId": "91-14-I-j26-1",
+      "agencyId": "65",
+      "line": "SN14",
+      "gauge": "mm1435"
+    },
+    {
+      "routeId": "91-44-C-j26-1",
+      "agencyId": "65",
+      "line": "S44",
+      "gauge": "mm1435"
+    },
+    {
+      "routeId": "91-75-B-j26-1",
+      "agencyId": "65",
+      "line": "RE75",
+      "gauge": "mm1435"
+    },
+    {
+      "routeId": "91-75-j26-1",
+      "agencyId": "11",
+      "line": "IR75",
+      "gauge": "mm1435"
+    }
+  ],
+  "foreignNode": {
+    "id": "sbb:KODB",
+    "number": "8014586",
+    "name": "Konstanz",
+    "sourceCode": "KODB",
+    "coordinate": [
+      9.177307662740644,
+      47.65805229481395
+    ]
+  },
+  "segments": [
+    {
+      "id": "sbb:822:KRGR:KODB",
+      "feature": [
+        822,
+        "KRGR",
+        "KODB",
+        61428.973,
+        61846.814
+      ],
+      "nodeId": "ch14uvag00089372",
+      "number": "8518047",
+      "name": "Kreuzlingen Grenze",
+      "vertices": 43
+    },
+    {
+      "id": "sbb:824:KHGR:KODB",
+      "feature": [
+        824,
+        "KHGR",
+        "KODB",
+        100880.565,
+        101285.09
+      ],
+      "nodeId": "ch14uvag00089349",
+      "number": "8518048",
+      "name": "Kreuzlingen Hafen Grenze",
+      "vertices": 42
+    }
+  ],
+  "scope": "Exact six Konstanz-calling SBB/THURBO route identities on the pinned dates. Source KODB is explicitly crosswalked to GTFS 8014586; KRGR and KHGR remain separate FOT boundary identities. Konstanz station coordinate uses the line 822 source endpoint; line 824 has a measured bounded connector. All original full calls retained. Previously complete FOT/cantonal/road patterns take priority."
+}

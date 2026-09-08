@@ -1,0 +1,62 @@
+[
+  {
+    "routeId": "91-1-P-j26-1",
+    "line": "RE1",
+    "agencyId": "65",
+    "page": 1,
+    "patterns": 5,
+    "representativePattern": "b72b4f5dbbf9d3de4bb343cf",
+    "first": "Konstanz",
+    "last": "Herisau"
+  },
+  {
+    "routeId": "91-14-B-j26-1",
+    "line": "S14",
+    "agencyId": "65",
+    "page": 1,
+    "patterns": 14,
+    "representativePattern": "06d37c61cf9770a45dae0fef",
+    "first": "Weinfelden",
+    "last": "Konstanz"
+  },
+  {
+    "routeId": "91-14-I-j26-1",
+    "line": "SN14",
+    "agencyId": "65",
+    "page": 1,
+    "patterns": 1,
+    "representativePattern": "4e5b3ad69e99fd8688455594",
+    "first": "Konstanz",
+    "last": "Weinfelden"
+  },
+  {
+    "routeId": "91-44-C-j26-1",
+    "line": "S44",
+    "agencyId": "65",
+    "page": 1,
+    "patterns": 3,
+    "representativePattern": "b7bc0fa7ffc9b57473157422",
+    "first": "Weinfelden",
+    "last": "Konstanz"
+  },
+  {
+    "routeId": "91-75-B-j26-1",
+    "line": "RE75",
+    "agencyId": "65",
+    "page": 1,
+    "patterns": 5,
+    "representativePattern": "db6dc7a7c8d4471dd9fcb088",
+    "first": "Winterthur",
+    "last": "Konstanz"
+  },
+  {
+    "routeId": "91-75-j26-1",
+    "line": "IR75",
+    "agencyId": "11",
+    "page": 1,
+    "patterns": 33,
+    "representativePattern": "3a64d8340c3c37c75ec88926",
+    "first": "Konstanz",
+    "last": "Luzern"
+  }
+]

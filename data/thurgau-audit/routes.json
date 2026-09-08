@@ -66,7 +66,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
-    "railSupplement": "fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
+    "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-10-C-j26-1",
       "agencyId": "65",
@@ -175,7 +175,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
-    "railSupplement": "fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
+    "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-12-j26-1",
       "agencyId": "11",
@@ -308,7 +308,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
-    "railSupplement": "fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
+    "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-14-B-j26-1",
       "agencyId": "65",
@@ -337,49 +337,45 @@
       {
         "date": "2026-09-04",
         "trips": 122,
-        "admittedTrips": 0,
+        "admittedTrips": 122,
         "scheduledTrips": 122,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 122,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 697,
-        "matchedScheduledSegmentOccurrences": 575,
+        "matchedScheduledSegmentOccurrences": 697,
         "segmentOccurrences": 697,
-        "matchedSegmentOccurrences": 575,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 697,
+        "admittedSegmentOccurrences": 697,
         "directedPairs": 27,
-        "matchedDirectedPairs": 19,
+        "matchedDirectedPairs": 27,
         "patterns": 11,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "incomplete-directed-pattern": 122
-        }
+        "completePatterns": 11,
+        "admittedPatterns": 11,
+        "excludedTrips": {}
       },
       {
         "date": "2026-09-06",
         "trips": 117,
-        "admittedTrips": 0,
+        "admittedTrips": 117,
         "scheduledTrips": 117,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 117,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 419,
-        "matchedScheduledSegmentOccurrences": 302,
+        "matchedScheduledSegmentOccurrences": 419,
         "segmentOccurrences": 419,
-        "matchedSegmentOccurrences": 302,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 419,
+        "admittedSegmentOccurrences": 419,
         "directedPairs": 28,
-        "matchedDirectedPairs": 19,
+        "matchedDirectedPairs": 28,
         "patterns": 13,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "incomplete-directed-pattern": 117
-        }
+        "completePatterns": 13,
+        "admittedPatterns": 13,
+        "excludedTrips": {}
       }
     ],
-    "status": "excluded"
+    "status": "admitted-all-dated-trips"
   },
   {
     "id": "91-14-I-j26-1",
@@ -453,7 +449,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
-    "railSupplement": "fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
+    "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-14-I-j26-1",
       "agencyId": "65",
@@ -502,27 +498,25 @@
       {
         "date": "2026-09-06",
         "trips": 6,
-        "admittedTrips": 5,
+        "admittedTrips": 6,
         "scheduledTrips": 6,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 5,
+        "admittedScheduledTrips": 6,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 43,
-        "matchedScheduledSegmentOccurrences": 42,
+        "matchedScheduledSegmentOccurrences": 43,
         "segmentOccurrences": 43,
-        "matchedSegmentOccurrences": 42,
-        "admittedSegmentOccurrences": 35,
+        "matchedSegmentOccurrences": 43,
+        "admittedSegmentOccurrences": 43,
         "directedPairs": 18,
-        "matchedDirectedPairs": 17,
+        "matchedDirectedPairs": 18,
         "patterns": 5,
-        "completePatterns": 4,
-        "admittedPatterns": 4,
-        "excludedTrips": {
-          "incomplete-directed-pattern": 1
-        }
+        "completePatterns": 5,
+        "admittedPatterns": 5,
+        "excludedTrips": {}
       }
     ],
-    "status": "partially-admitted"
+    "status": "admitted-all-dated-trips"
   },
   {
     "id": "91-15-I-j26-1",
@@ -695,7 +689,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
-    "railSupplement": "fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
+    "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-1-C-j26-1",
       "agencyId": "65",
@@ -805,7 +799,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
-    "railSupplement": "fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
+    "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-1-P-j26-1",
       "agencyId": "65",
@@ -834,49 +828,45 @@
       {
         "date": "2026-09-04",
         "trips": 32,
-        "admittedTrips": 0,
+        "admittedTrips": 32,
         "scheduledTrips": 32,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 32,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 128,
-        "matchedScheduledSegmentOccurrences": 64,
+        "matchedScheduledSegmentOccurrences": 128,
         "segmentOccurrences": 128,
-        "matchedSegmentOccurrences": 64,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 128,
+        "admittedSegmentOccurrences": 128,
         "directedPairs": 14,
-        "matchedDirectedPairs": 9,
+        "matchedDirectedPairs": 14,
         "patterns": 5,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "incomplete-directed-pattern": 32
-        }
+        "completePatterns": 5,
+        "admittedPatterns": 5,
+        "excludedTrips": {}
       },
       {
         "date": "2026-09-06",
         "trips": 32,
-        "admittedTrips": 0,
+        "admittedTrips": 32,
         "scheduledTrips": 32,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 32,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 128,
-        "matchedScheduledSegmentOccurrences": 64,
+        "matchedScheduledSegmentOccurrences": 128,
         "segmentOccurrences": 128,
-        "matchedSegmentOccurrences": 64,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 128,
+        "admittedSegmentOccurrences": 128,
         "directedPairs": 12,
-        "matchedDirectedPairs": 8,
+        "matchedDirectedPairs": 12,
         "patterns": 4,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "incomplete-directed-pattern": 32
-        }
+        "completePatterns": 4,
+        "admittedPatterns": 4,
+        "excludedTrips": {}
       }
     ],
-    "status": "excluded"
+    "status": "admitted-all-dated-trips"
   },
   {
     "id": "91-1S-Y-j26-1",
@@ -913,7 +903,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
-    "railSupplement": "fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
+    "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-1S-Y-j26-1",
       "agencyId": "11",
@@ -1022,7 +1012,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
-    "railSupplement": "fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
+    "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-21-F-j26-1",
       "agencyId": "65",
@@ -1134,7 +1124,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
-    "railSupplement": "fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
+    "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-23-B-j26-1",
       "agencyId": "11",
@@ -1242,7 +1232,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
-    "railSupplement": "fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
+    "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-24-E-j26-1",
       "agencyId": "65",
@@ -1360,7 +1350,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
-    "railSupplement": "fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
+    "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-24-j26-1",
       "agencyId": "11",
@@ -1463,7 +1453,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
-    "railSupplement": "fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
+    "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-29-A-j26-1",
       "agencyId": "65",
@@ -1583,7 +1573,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
-    "railSupplement": "fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
+    "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-30-A-j26-1",
       "agencyId": "65",
@@ -1688,7 +1678,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
-    "railSupplement": "fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
+    "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-30-C-j26-1",
       "agencyId": "11",
@@ -1820,7 +1810,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
-    "railSupplement": "fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
+    "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-30-L-j26-1",
       "agencyId": "65",
@@ -1929,7 +1919,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
-    "railSupplement": "fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
+    "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-35-j26-1",
       "agencyId": "65",
@@ -2035,7 +2025,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
-    "railSupplement": "fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
+    "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-3-I-j26-1",
       "agencyId": "65",
@@ -2148,7 +2138,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
-    "railSupplement": "fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
+    "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-3-X-j26-1",
       "agencyId": "65",
@@ -2255,7 +2245,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
-    "railSupplement": "fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
+    "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-44-C-j26-1",
       "agencyId": "65",
@@ -2284,49 +2274,45 @@
       {
         "date": "2026-09-04",
         "trips": 19,
-        "admittedTrips": 0,
+        "admittedTrips": 19,
         "scheduledTrips": 19,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 19,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 38,
-        "matchedScheduledSegmentOccurrences": 19,
+        "matchedScheduledSegmentOccurrences": 38,
         "segmentOccurrences": 38,
-        "matchedSegmentOccurrences": 19,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 38,
+        "admittedSegmentOccurrences": 38,
         "directedPairs": 4,
-        "matchedDirectedPairs": 2,
+        "matchedDirectedPairs": 4,
         "patterns": 2,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "incomplete-directed-pattern": 19
-        }
+        "completePatterns": 2,
+        "admittedPatterns": 2,
+        "excludedTrips": {}
       },
       {
         "date": "2026-09-06",
         "trips": 19,
-        "admittedTrips": 0,
+        "admittedTrips": 19,
         "scheduledTrips": 19,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 19,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 38,
-        "matchedScheduledSegmentOccurrences": 19,
+        "matchedScheduledSegmentOccurrences": 38,
         "segmentOccurrences": 38,
-        "matchedSegmentOccurrences": 19,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 38,
+        "admittedSegmentOccurrences": 38,
         "directedPairs": 6,
-        "matchedDirectedPairs": 3,
+        "matchedDirectedPairs": 6,
         "patterns": 3,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "incomplete-directed-pattern": 19
-        }
+        "completePatterns": 3,
+        "admittedPatterns": 3,
+        "excludedTrips": {}
       }
     ],
-    "status": "excluded"
+    "status": "admitted-all-dated-trips"
   },
   {
     "id": "91-5-B-j26-1",
@@ -2377,7 +2363,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
-    "railSupplement": "fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
+    "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-5-B-j26-1",
       "agencyId": "65",
@@ -2500,7 +2486,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
-    "railSupplement": "fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
+    "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-71-B-j26-1",
       "agencyId": "65",
@@ -2610,7 +2596,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
-    "railSupplement": "fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
+    "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-72-B-j26-1",
       "agencyId": "65",
@@ -2714,7 +2700,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
-    "railSupplement": "fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
+    "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-75-A-j26-1",
       "agencyId": "65",
@@ -2831,7 +2817,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
-    "railSupplement": "fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
+    "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-75-B-j26-1",
       "agencyId": "65",
@@ -2860,49 +2846,45 @@
       {
         "date": "2026-09-04",
         "trips": 4,
-        "admittedTrips": 0,
+        "admittedTrips": 4,
         "scheduledTrips": 4,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 4,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 13,
-        "matchedScheduledSegmentOccurrences": 6,
+        "matchedScheduledSegmentOccurrences": 13,
         "segmentOccurrences": 13,
-        "matchedSegmentOccurrences": 6,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 13,
+        "admittedSegmentOccurrences": 13,
         "directedPairs": 9,
-        "matchedDirectedPairs": 4,
+        "matchedDirectedPairs": 9,
         "patterns": 4,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "incomplete-directed-pattern": 4
-        }
+        "completePatterns": 4,
+        "admittedPatterns": 4,
+        "excludedTrips": {}
       },
       {
         "date": "2026-09-06",
         "trips": 4,
-        "admittedTrips": 0,
+        "admittedTrips": 4,
         "scheduledTrips": 4,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 4,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 13,
-        "matchedScheduledSegmentOccurrences": 6,
+        "matchedScheduledSegmentOccurrences": 13,
         "segmentOccurrences": 13,
-        "matchedSegmentOccurrences": 6,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 13,
+        "admittedSegmentOccurrences": 13,
         "directedPairs": 8,
-        "matchedDirectedPairs": 4,
+        "matchedDirectedPairs": 8,
         "patterns": 3,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "incomplete-directed-pattern": 4
-        }
+        "completePatterns": 3,
+        "admittedPatterns": 3,
+        "excludedTrips": {}
       }
     ],
-    "status": "excluded"
+    "status": "admitted-all-dated-trips"
   },
   {
     "id": "91-75-j26-1",
@@ -2948,7 +2930,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
-    "railSupplement": "fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
+    "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-75-j26-1",
       "agencyId": "11",
@@ -2977,49 +2959,45 @@
       {
         "date": "2026-09-04",
         "trips": 35,
-        "admittedTrips": 0,
+        "admittedTrips": 35,
         "scheduledTrips": 35,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 35,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 309,
-        "matchedScheduledSegmentOccurrences": 70,
+        "matchedScheduledSegmentOccurrences": 309,
         "segmentOccurrences": 309,
-        "matchedSegmentOccurrences": 70,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 309,
+        "admittedSegmentOccurrences": 309,
         "directedPairs": 48,
-        "matchedDirectedPairs": 4,
+        "matchedDirectedPairs": 48,
         "patterns": 29,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "incomplete-directed-pattern": 35
-        }
+        "completePatterns": 29,
+        "admittedPatterns": 29,
+        "excludedTrips": {}
       },
       {
         "date": "2026-09-06",
         "trips": 34,
-        "admittedTrips": 0,
+        "admittedTrips": 34,
         "scheduledTrips": 34,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 34,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 321,
-        "matchedScheduledSegmentOccurrences": 68,
+        "matchedScheduledSegmentOccurrences": 321,
         "segmentOccurrences": 321,
-        "matchedSegmentOccurrences": 68,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 321,
+        "admittedSegmentOccurrences": 321,
         "directedPairs": 39,
-        "matchedDirectedPairs": 4,
+        "matchedDirectedPairs": 39,
         "patterns": 15,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "incomplete-directed-pattern": 34
-        }
+        "completePatterns": 15,
+        "admittedPatterns": 15,
+        "excludedTrips": {}
       }
     ],
-    "status": "excluded"
+    "status": "admitted-all-dated-trips"
   },
   {
     "id": "91-7-B-j26-1",
@@ -3073,7 +3051,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
-    "railSupplement": "fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
+    "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-7-B-j26-1",
       "agencyId": "65",
@@ -3187,7 +3165,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
-    "railSupplement": "fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
+    "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-81-A-j26-1",
       "agencyId": "11",
@@ -3292,7 +3270,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
-    "railSupplement": "fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
+    "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-82-j26-1",
       "agencyId": "65",
@@ -3406,7 +3384,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
-    "railSupplement": "fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
+    "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-8-E-j26-1",
       "agencyId": "11",
@@ -3523,7 +3501,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
-    "railSupplement": "fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
+    "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-8-N-j26-1",
       "agencyId": "65",
@@ -3630,7 +3608,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
-    "railSupplement": "fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
+    "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-9-P-j26-1",
       "agencyId": "11",
@@ -3753,7 +3731,7 @@
       "bahnlinie_takt.9"
     ],
     "roadSupplement": null,
-    "railSupplement": "fot-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
+    "railSupplement": "fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required",
     "crosswalk": {
       "routeId": "91-CH-Y-j26-1",
       "agencyId": "65",

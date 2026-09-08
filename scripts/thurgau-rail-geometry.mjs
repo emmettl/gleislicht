@@ -4,9 +4,11 @@ import { gunzipSync } from 'node:zlib'
 import { createHash } from 'node:crypto'
 import { parseLuzernRail, luzernRailMatcher, luzernOperatingPoint } from './luzern-rail-geometry.mjs'
 import { reconcileThurgauGeometry } from './thurgau-regional-roads.mjs'
+import { loadThurgauSbbRail } from './thurgau-sbb-rail.mjs'
 
 const sha = bytes => createHash('sha256').update(bytes).digest('hex')
-export async function loadThurgauRail(timetable) {
+export const isThurgauRailSource = source => ['fot-rail-inference', 'fot-sbb-rail-inference'].includes(source)
+export async function loadThurgauRail(timetable, { sbb = true } = {}) {
   const directory = 'data/thurgau-rail-sources'
   const policyBytes = await readFile('data/thurgau-rail-policy.json'), policy = JSON.parse(policyBytes)
   const sourceBytes = await readFile(`${directory}/source.json`), source = JSON.parse(sourceBytes)
@@ -36,7 +38,8 @@ export async function loadThurgauRail(timetable) {
     assert(stops.length > 0)
     assert(stops.every(s => s[2] === 'Interlaken Ost' && s[3] === override.platform && luzernOperatingPoint({ stop_id: s[4] }) === override.sourceNumber))
   }
-  return { ...matcher, policy, policySha256: sha(policyBytes), source }
+  const supplement = sbb ? await loadThurgauSbbRail(network, policy, raw, matcher) : undefined
+  return { ...matcher, ...(supplement ? { match: supplement.match } : {}), sbb: supplement, policy, policySha256: sha(policyBytes), source }
 }
 
 export function applyThurgauRail(raw, result, rail) {
@@ -49,7 +52,7 @@ export function applyThurgauRail(raw, result, rail) {
     const route = routes.get(train.routeId), pattern = patterns.get(train.patternId)
     if (!route || pattern.mode !== 'rail' || train.reservationRequired) continue
     assert.equal(train.agencyId, route.agencyId); assert.equal(train.route, route.line)
-    if (pattern.matchedSegments === pattern.segmentCount && pattern.geometrySource !== 'fot-rail-inference') continue
+    if (pattern.matchedSegments === pattern.segmentCount && !isThurgauRailSource(pattern.geometrySource)) continue
     if (!seen.has(pattern.id)) {
       seen.add(pattern.id)
       const overrides = rail.policy.operatingPointOverrides.filter(o => o.routeId === train.routeId && train.stops.some(([i]) => raw.stops[i][4] === o.stopId))
@@ -66,7 +69,7 @@ export function applyThurgauRail(raw, result, rail) {
         segments: segments.map(({ path, ...evidence }) => ({ ...evidence, geometrySha256: path ? sha(JSON.stringify(path)) : null })) }
       if (complete) {
         pattern.officialMatchedSegments = pattern.matchedSegments
-        pattern.geometrySource = 'fot-rail-inference'
+        pattern.geometrySource = segments.some(s => s.geometrySource === 'fot-sbb-rail-inference') ? 'fot-sbb-rail-inference' : 'fot-rail-inference'
         pattern.pathSegments = segments.map(s => {
           const signature = JSON.stringify(s.path)
           if (!indexes.has(signature)) { indexes.set(signature, result.paths.length); result.paths.push(s.path) }
@@ -75,7 +78,7 @@ export function applyThurgauRail(raw, result, rail) {
         pattern.matchedSegments = pattern.segmentCount
       }
     }
-    if (pattern.geometrySource === 'fot-rail-inference') {
+    if (isThurgauRailSource(pattern.geometrySource)) {
       train.pathSegments = pattern.pathSegments; train.admission = 'admitted'; train.geometrySource = pattern.geometrySource
     }
   }

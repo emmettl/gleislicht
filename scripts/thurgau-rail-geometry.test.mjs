@@ -31,7 +31,7 @@ it('admits weekday and Sunday rail categories with directed source topology and 
 })
 it('retains the entire cross-border pattern when a foreign operating point is absent', () => {
   for (const fixture of timetable.snapshots) {
-    const train = fixture.trains.find(t => t.route === 'IR75' && t.stops.some(([i]) => fixture.stops[i][4] === '8014586'))
+    const train = fixture.trains.find(t => t.route === 'S7' && t.stops.some(([i]) => fixture.stops[i][4] === '8102336'))
     const result = match(fixture, [train])
     expect(result.trains[0].admission).not.toBe('admitted')
     expect(result.trains[0].stops).toEqual(train.stops)

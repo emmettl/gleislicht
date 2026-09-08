@@ -9,6 +9,8 @@
     "regionalRoads": "d7319885a74631ae6ac5858b172b8f167c56a3b37f3a68e35567aabc35270192",
     "railPolicy": "a1c3e6b34553aa0345f8d628e626e024994d45a52a692e5ba2e795d3ea6d60be",
     "railSourceMetadata": "c187cb48201066a32774fa524905dc96577721dd1a3087391d2fdabb71180d26",
+    "sbbRailPolicy": "c198ea4c8ea60fd3df8a91df00d99ba8f02499fdb085bb317ae93e99e536b8fe",
+    "sbbRailSource": "11c5324a213144723ad578ab44a3ab543ac4c9e4b2b2e5005cade0dc80ebf8f8",
     "timetableCache": "9403d675c79184b4885e8a0ca0f3d02da55363cefafab2f403cb7e5ae95dcff5"
   },
   "sources": {
@@ -400,6 +402,53 @@
       "archivalStudy": true,
       "refreshPolicy": "Pinned September 2026 research fixtures; not a live or current-service feed. A new timetable or geometry release requires a complete rebuild and admission audit."
     },
+    "sbbRail": {
+      "publisher": "SBB Infrastructure",
+      "attribution": "SBB Infrastructure / data.sbb.ch",
+      "termsUrl": "https://data.sbb.ch/page/licence/",
+      "license": "terms_by",
+      "rights": "NonCommercialAllowed-CommercialAllowed-ReferenceRequired",
+      "retrieved": "2026-09-08",
+      "modified": "2026-07-29T06:16:28+00:00",
+      "dataProcessed": "2026-09-02T03:01:34+00:00",
+      "metadataProcessed": "2026-09-08T03:00:20.208000+00:00",
+      "alignmentValidity": "Publication and processing dates are not an individual feature survey date or proof of September diversions.",
+      "model": "Two explicitly identified detailed SBB border-to-Konstanz curves joined to named FOT border nodes. Full ordered pattern routing, bounded endpoint connectors; no schematic records or nearest-network merges.",
+      "files": [
+        {
+          "file": "metadata.json",
+          "url": "https://data.sbb.ch/api/explore/v2.1/catalog/datasets/linie-mit-polygon",
+          "sha256": "cbd14d2785da7865f4565fbf9aa37ca274ef3aafc44239bc03dd0992e3fd013c"
+        },
+        {
+          "file": "foreign-review.json",
+          "url": "https://data.sbb.ch/api/explore/v2.1/catalog/datasets/linie-mit-polygon/records?where=search%28%22Konstanz%22%29%20OR%20search%28%22Como%22%29&limit=100",
+          "sha256": "1a3358cc2c58e160a6cf032d199d41d1c92763acf0a440c0a86dcb4086c0debf"
+        },
+        {
+          "file": "terms.html",
+          "url": "https://data.sbb.ch/page/licence/",
+          "sha256": "985a900c0c0020edaf1dc6239ad3547d9a09db0dc4b72c3a0482ccfd09289f77"
+        },
+        {
+          "file": "parent-sources.json",
+          "sha256": "c67745131e337136b47da452650f57c1c0dcc9a16f54fc659e6a0227f6fad030",
+          "url": null
+        },
+        {
+          "file": "bregenz-review.json",
+          "sha256": "55d5406c19b1b5c8e318771fe1b0c7729bab114fc1dfc84df3aaa10185667c8f",
+          "retrieved": "2026-09-08",
+          "url": "https://data.sbb.ch/api/explore/v2.1/catalog/datasets/linie-mit-polygon/records?where=search%28%22Bregenz%22%29&limit=100",
+          "role": "Excluded: every returned curve is schematic two-point geometry. Separate query acquisition; no feature survey date established."
+        }
+      ],
+      "reusedOn": "2026-09-08",
+      "scope": "Exact six Konstanz-calling SBB/THURBO route identities on the pinned dates. Source KODB is explicitly crosswalked to GTFS 8014586; KRGR and KHGR remain separate FOT boundary identities. Konstanz station coordinate uses the line 822 source endpoint; line 824 has a measured bounded connector. All original full calls retained. Previously complete FOT/cantonal/road patterns take priority.",
+      "limits": {
+        "sourceNodeAttachmentMetres": 10
+      }
+    },
     "rail": {
       "schemaVersion": 1,
       "publisher": "Federal Office of Transport - FOT",
@@ -453,10 +502,10 @@
     "key": "GTFS route identity + direction_id + full ordered original platform IDs, including repeats and out-of-canton calls"
   },
   "routesByStatus": {
-    "admitted-all-dated-trips": 93,
-    "excluded": 14,
-    "partially-admitted": 4,
-    "inactive-on-validation-dates": 21
+    "admitted-all-dated-trips": 99,
+    "inactive-on-validation-dates": 21,
+    "partially-admitted": 3,
+    "excluded": 9
   },
   "districts": [
     {
@@ -708,29 +757,31 @@
         "regionalRoads": "d7319885a74631ae6ac5858b172b8f167c56a3b37f3a68e35567aabc35270192",
         "railPolicy": "a1c3e6b34553aa0345f8d628e626e024994d45a52a692e5ba2e795d3ea6d60be",
         "railSourceMetadata": "c187cb48201066a32774fa524905dc96577721dd1a3087391d2fdabb71180d26",
+        "sbbRailPolicy": "c198ea4c8ea60fd3df8a91df00d99ba8f02499fdb085bb317ae93e99e536b8fe",
+        "sbbRailSource": "11c5324a213144723ad578ab44a3ab543ac4c9e4b2b2e5005cade0dc80ebf8f8",
         "timetableCache": "9403d675c79184b4885e8a0ca0f3d02da55363cefafab2f403cb7e5ae95dcff5"
       },
       "coverage": {
         "trips": 4417,
-        "admittedTrips": 4021,
+        "admittedTrips": 4233,
         "scheduledTrips": 4417,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 4021,
+        "admittedScheduledTrips": 4233,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 64684,
-        "matchedScheduledSegmentOccurrences": 63208,
+        "matchedScheduledSegmentOccurrences": 63659,
         "segmentOccurrences": 64684,
-        "matchedSegmentOccurrences": 63208,
-        "admittedSegmentOccurrences": 61932,
+        "matchedSegmentOccurrences": 63659,
+        "admittedSegmentOccurrences": 63117,
         "directedPairs": 3529,
-        "matchedDirectedPairs": 3290,
+        "matchedDirectedPairs": 3354,
         "patterns": 563,
-        "completePatterns": 470,
-        "admittedPatterns": 470,
+        "completePatterns": 521,
+        "admittedPatterns": 521,
         "excludedTrips": {
           "demand-responsive-night-taxi": 15,
           "demand-responsive-route-type": 30,
-          "incomplete-directed-pattern": 259,
+          "incomplete-directed-pattern": 47,
           "no-verified-operator-line-crosswalk": 92
         }
       },
@@ -739,24 +790,22 @@
           "id": "11:rail",
           "agency": "Schweizerische Bundesbahnen SBB",
           "trips": 144,
-          "admittedTrips": 109,
+          "admittedTrips": 144,
           "scheduledTrips": 144,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 109,
+          "admittedScheduledTrips": 144,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 2374,
-          "matchedScheduledSegmentOccurrences": 2135,
+          "matchedScheduledSegmentOccurrences": 2374,
           "segmentOccurrences": 2374,
-          "matchedSegmentOccurrences": 2135,
-          "admittedSegmentOccurrences": 2065,
+          "matchedSegmentOccurrences": 2374,
+          "admittedSegmentOccurrences": 2374,
           "directedPairs": 235,
-          "matchedDirectedPairs": 191,
+          "matchedDirectedPairs": 235,
           "patterns": 61,
-          "completePatterns": 32,
-          "admittedPatterns": 32,
-          "excludedTrips": {
-            "incomplete-directed-pattern": 35
-          }
+          "completePatterns": 61,
+          "admittedPatterns": 61,
+          "excludedTrips": {}
         },
         {
           "id": "138:bus",
@@ -898,23 +947,23 @@
           "id": "65:rail",
           "agency": "THURBO",
           "trips": 677,
-          "admittedTrips": 490,
+          "admittedTrips": 667,
           "scheduledTrips": 677,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 490,
+          "admittedScheduledTrips": 667,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 9157,
-          "matchedScheduledSegmentOccurrences": 8915,
+          "matchedScheduledSegmentOccurrences": 9127,
           "segmentOccurrences": 9157,
-          "matchedSegmentOccurrences": 8915,
-          "admittedSegmentOccurrences": 8191,
+          "matchedSegmentOccurrences": 9127,
+          "admittedSegmentOccurrences": 9067,
           "directedPairs": 416,
-          "matchedDirectedPairs": 385,
+          "matchedDirectedPairs": 405,
           "patterns": 150,
-          "completePatterns": 122,
-          "admittedPatterns": 122,
+          "completePatterns": 144,
+          "admittedPatterns": 144,
           "excludedTrips": {
-            "incomplete-directed-pattern": 187
+            "incomplete-directed-pattern": 10
           }
         },
         {
@@ -1041,12 +1090,16 @@
         "rejectedPatterns": 4,
         "scheduledSegmentOccurrences": 36391
       },
+      "sbbRailCoverage": {
+        "trips": 212,
+        "patterns": 51
+      },
       "railCoverage": {
-        "trips": 476,
-        "patterns": 124,
-        "rejectedPatterns": 57,
-        "directedPairs": 473,
-        "scheduledSegmentOccurrences": 8605
+        "trips": 688,
+        "patterns": 175,
+        "rejectedPatterns": 6,
+        "directedPairs": 575,
+        "scheduledSegmentOccurrences": 9790
       },
       "timing": {
         "zeroDurationSegmentOccurrences": 9201,
@@ -1081,8 +1134,8 @@
         "policy": "Original GTFS times retained, including coincident minute-resolution calls. Geometry admission does not certify speed or timing precision; no artificial seconds inserted. Zero-duration segments have no finite implied speed."
       },
       "carryInTrips": 58,
-      "admittedCarryInTrips": 49,
-      "admittedOutsideCantonPlatforms": 510,
+      "admittedCarryInTrips": 55,
+      "admittedOutsideCantonPlatforms": 529,
       "directedPatternChecks": {
         "directionIds": [
           "0",
@@ -1095,12 +1148,12 @@
       },
       "payload": {
         "manifest": {
-          "bytes": 1205316,
-          "gzipBytes": 262739
+          "bytes": 1323911,
+          "gzipBytes": 273343
         },
         "morning": {
-          "trips": 637,
-          "gzipBytes": 337402
+          "trips": 667,
+          "gzipBytes": 349468
         },
         "chunks": [
           {
@@ -1108,10 +1161,10 @@
             "windowStart": 0,
             "windowEnd": 7200,
             "path": "day-chunks/00-02.json",
-            "tripCount": 62,
-            "bytes": 59483,
-            "sha256": "7de9986a6b83e815ef289782161fd8883d7f5e0c017efcf2f2409541b99d8dad",
-            "gzipBytes": 11127
+            "tripCount": 73,
+            "bytes": 66327,
+            "sha256": "65fc06cfe6b34aaa1199047d9f64c1b9b5b6b08d32b475ac5b0cf4299da7246d",
+            "gzipBytes": 12050
           },
           {
             "id": "02-04",
@@ -1128,100 +1181,100 @@
             "windowStart": 14400,
             "windowEnd": 21600,
             "path": "day-chunks/04-06.json",
-            "tripCount": 171,
-            "bytes": 166055,
-            "sha256": "3c37c9df054f0fb235d99b129df6e1b63438b58f61c88a7d0e1b863bf51a0a37",
-            "gzipBytes": 27406
+            "tripCount": 181,
+            "bytes": 172923,
+            "sha256": "9d8e05f17cccd6beeeb6b578c2a28a3959013d136d2d9a29f2f56a98937b66f6",
+            "gzipBytes": 28396
           },
           {
             "id": "06-08",
             "windowStart": 21600,
             "windowEnd": 28800,
             "path": "day-chunks/06-08.json",
-            "tripCount": 632,
-            "bytes": 595424,
-            "sha256": "dd7ee147ae96a5f49de741299bae11a0e52077629ceebb4e3ce30beea8aa1ea8",
-            "gzipBytes": 74976
+            "tripCount": 657,
+            "bytes": 612585,
+            "sha256": "0cf84f060dc8fcd3ac65a4e53b1eb37217f0a30d801cfac1ce3ae4731f1356c1",
+            "gzipBytes": 77098
           },
           {
             "id": "08-10",
             "windowStart": 28800,
             "windowEnd": 36000,
             "path": "day-chunks/08-10.json",
-            "tripCount": 574,
-            "bytes": 550489,
-            "sha256": "ec40fb79fd435f5667f17e25d887ff50f47ff5f3f1968568fd3f795fe3ef111f",
-            "gzipBytes": 70375
+            "tripCount": 602,
+            "bytes": 569361,
+            "sha256": "588890d6714d9052a936ce4d607804b056f7ac37d15f5a81a3c7a53e3f9b0dec",
+            "gzipBytes": 72575
           },
           {
             "id": "10-12",
             "windowStart": 36000,
             "windowEnd": 43200,
             "path": "day-chunks/10-12.json",
-            "tripCount": 562,
-            "bytes": 540963,
-            "sha256": "e0e9b36501792f5463550be059ca94c2cad6951ee774dd3bac1e6c870f1deac2",
-            "gzipBytes": 69062
+            "tripCount": 590,
+            "bytes": 559835,
+            "sha256": "dd4128b8e19d14ed79fa5185b96fa25d64381ebb36b67755fca65559e6486abd",
+            "gzipBytes": 71327
           },
           {
             "id": "12-14",
             "windowStart": 43200,
             "windowEnd": 50400,
             "path": "day-chunks/12-14.json",
-            "tripCount": 578,
-            "bytes": 554400,
-            "sha256": "57d5d5d2cb53508dc5af4389b826c8c006fab5bb87e0b97f50553cbcc178ac01",
-            "gzipBytes": 70421
+            "tripCount": 607,
+            "bytes": 574057,
+            "sha256": "5169d4cc52efcd718eb6871a32995e2fe3d63bbfe36978c0d7037cafc07c355b",
+            "gzipBytes": 72796
           },
           {
             "id": "14-16",
             "windowStart": 50400,
             "windowEnd": 57600,
             "path": "day-chunks/14-16.json",
-            "tripCount": 569,
-            "bytes": 546280,
-            "sha256": "d2219c2ee912d7c4ccf7cb0af904c8a678e00a2afe5fd963cab3490ccda9156a",
-            "gzipBytes": 69545
+            "tripCount": 598,
+            "bytes": 566053,
+            "sha256": "fc0895ff452b8c8c90288343ee414fdf9661e413fb4567ce9c522837585e97d5",
+            "gzipBytes": 71955
           },
           {
             "id": "16-18",
             "windowStart": 57600,
             "windowEnd": 64800,
             "path": "day-chunks/16-18.json",
-            "tripCount": 637,
-            "bytes": 605263,
-            "sha256": "642d21f7a3e603b4525346d4d5b28c09503751b70b752a025d8577d8e2349d13",
-            "gzipBytes": 76089
+            "tripCount": 665,
+            "bytes": 624154,
+            "sha256": "39674e935fcbe2f9e6a1dde229d56547efd5af30163b8a46956ff2f29157cb45",
+            "gzipBytes": 78357
           },
           {
             "id": "18-20",
             "windowStart": 64800,
             "windowEnd": 72000,
             "path": "day-chunks/18-20.json",
-            "tripCount": 586,
-            "bytes": 563192,
-            "sha256": "57f4dcd82ce3281e3fa586c9f466041bf73e231c51b9c7024b043900ebef0c7b",
-            "gzipBytes": 72646
+            "tripCount": 614,
+            "bytes": 582231,
+            "sha256": "51395e9933720f7ab57f0b355e89badbc11cb52ef1a8c6bd3475ad197f02ba8b",
+            "gzipBytes": 74894
           },
           {
             "id": "20-22",
             "windowStart": 72000,
             "windowEnd": 79200,
             "path": "day-chunks/20-22.json",
-            "tripCount": 319,
-            "bytes": 318300,
-            "sha256": "08a0226b353b1ec89c4734d6a8388523f3aba1b9f3212c2a7738e3ac7f88250f",
-            "gzipBytes": 46687
+            "tripCount": 347,
+            "bytes": 337010,
+            "sha256": "eedf54e9c5b890d68dead2b11970cb029cbb343d3f746ee4cfebea229f05b0d9",
+            "gzipBytes": 49039
           },
           {
             "id": "22-24",
             "windowStart": 79200,
             "windowEnd": 86400,
             "path": "day-chunks/22-24.json",
-            "tripCount": 206,
-            "bytes": 207215,
-            "sha256": "940c21585d40a1d597aa4eabb82215fc29d539348c78778d97c80361b6230f46",
-            "gzipBytes": 31006
+            "tripCount": 228,
+            "bytes": 221585,
+            "sha256": "539923733e7b8da68d4ea1f28ddd71588834718fa199a93fc6df51075cfd9c1b",
+            "gzipBytes": 32785
           }
         ]
       },
@@ -1249,29 +1302,31 @@
         "regionalRoads": "d7319885a74631ae6ac5858b172b8f167c56a3b37f3a68e35567aabc35270192",
         "railPolicy": "a1c3e6b34553aa0345f8d628e626e024994d45a52a692e5ba2e795d3ea6d60be",
         "railSourceMetadata": "c187cb48201066a32774fa524905dc96577721dd1a3087391d2fdabb71180d26",
+        "sbbRailPolicy": "c198ea4c8ea60fd3df8a91df00d99ba8f02499fdb085bb317ae93e99e536b8fe",
+        "sbbRailSource": "11c5324a213144723ad578ab44a3ab543ac4c9e4b2b2e5005cade0dc80ebf8f8",
         "timetableCache": "9403d675c79184b4885e8a0ca0f3d02da55363cefafab2f403cb7e5ae95dcff5"
       },
       "coverage": {
         "trips": 2795,
-        "admittedTrips": 2428,
+        "admittedTrips": 2635,
         "scheduledTrips": 2795,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 2428,
+        "admittedScheduledTrips": 2635,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 41271,
-        "matchedScheduledSegmentOccurrences": 39578,
+        "matchedScheduledSegmentOccurrences": 40039,
         "segmentOccurrences": 41271,
-        "matchedSegmentOccurrences": 39578,
-        "admittedSegmentOccurrences": 39028,
+        "matchedSegmentOccurrences": 40039,
+        "admittedSegmentOccurrences": 39955,
         "directedPairs": 3425,
-        "matchedDirectedPairs": 3206,
+        "matchedDirectedPairs": 3262,
         "patterns": 442,
-        "completePatterns": 366,
-        "admittedPatterns": 366,
+        "completePatterns": 405,
+        "admittedPatterns": 405,
         "excludedTrips": {
           "demand-responsive-night-taxi": 30,
           "demand-responsive-route-type": 29,
-          "incomplete-directed-pattern": 221,
+          "incomplete-directed-pattern": 14,
           "no-verified-operator-line-crosswalk": 87
         }
       },
@@ -1280,24 +1335,22 @@
           "id": "11:rail",
           "agency": "Schweizerische Bundesbahnen SBB",
           "trips": 106,
-          "admittedTrips": 72,
+          "admittedTrips": 106,
           "scheduledTrips": 106,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 72,
+          "admittedScheduledTrips": 106,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 1563,
-          "matchedScheduledSegmentOccurrences": 1310,
+          "matchedScheduledSegmentOccurrences": 1563,
           "segmentOccurrences": 1563,
-          "matchedSegmentOccurrences": 1310,
-          "admittedSegmentOccurrences": 1242,
+          "matchedSegmentOccurrences": 1563,
+          "admittedSegmentOccurrences": 1563,
           "directedPairs": 154,
-          "matchedDirectedPairs": 119,
+          "matchedDirectedPairs": 154,
           "patterns": 41,
-          "completePatterns": 26,
-          "admittedPatterns": 26,
-          "excludedTrips": {
-            "incomplete-directed-pattern": 34
-          }
+          "completePatterns": 41,
+          "admittedPatterns": 41,
+          "excludedTrips": {}
         },
         {
           "id": "138:bus",
@@ -1439,23 +1492,23 @@
           "id": "65:rail",
           "agency": "THURBO",
           "trips": 707,
-          "admittedTrips": 520,
+          "admittedTrips": 693,
           "scheduledTrips": 707,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 520,
+          "admittedScheduledTrips": 693,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 8907,
-          "matchedScheduledSegmentOccurrences": 8657,
+          "matchedScheduledSegmentOccurrences": 8865,
           "segmentOccurrences": 8907,
-          "matchedSegmentOccurrences": 8657,
-          "admittedSegmentOccurrences": 8175,
+          "matchedSegmentOccurrences": 8865,
+          "admittedSegmentOccurrences": 8781,
           "directedPairs": 552,
-          "matchedDirectedPairs": 521,
+          "matchedDirectedPairs": 542,
           "patterns": 158,
-          "completePatterns": 128,
-          "admittedPatterns": 128,
+          "completePatterns": 152,
+          "admittedPatterns": 152,
           "excludedTrips": {
-            "incomplete-directed-pattern": 187
+            "incomplete-directed-pattern": 14
           }
         },
         {
@@ -1538,12 +1591,16 @@
         "rejectedPatterns": 0,
         "scheduledSegmentOccurrences": 22700
       },
+      "sbbRailCoverage": {
+        "trips": 207,
+        "patterns": 39
+      },
       "railCoverage": {
-        "trips": 490,
-        "patterns": 122,
-        "rejectedPatterns": 45,
-        "directedPairs": 508,
-        "scheduledSegmentOccurrences": 8347
+        "trips": 697,
+        "patterns": 161,
+        "rejectedPatterns": 6,
+        "directedPairs": 609,
+        "scheduledSegmentOccurrences": 9274
       },
       "timing": {
         "zeroDurationSegmentOccurrences": 5136,
@@ -1578,8 +1635,8 @@
         "policy": "Original GTFS times retained, including coincident minute-resolution calls. Geometry admission does not certify speed or timing precision; no artificial seconds inserted. Zero-duration segments have no finite implied speed."
       },
       "carryInTrips": 167,
-      "admittedCarryInTrips": 123,
-      "admittedOutsideCantonPlatforms": 482,
+      "admittedCarryInTrips": 129,
+      "admittedOutsideCantonPlatforms": 499,
       "directedPatternChecks": {
         "directionIds": [
           "0",
@@ -1588,16 +1645,16 @@
         "patternsRevisitingPlatforms": 13,
         "admittedPatternsRevisitingPlatforms": 11,
         "nightRouteTrips": 105,
-        "admittedNightRouteTrips": 74
+        "admittedNightRouteTrips": 75
       },
       "payload": {
         "manifest": {
-          "bytes": 1151626,
-          "gzipBytes": 251599
+          "bytes": 1252371,
+          "gzipBytes": 261055
         },
         "morning": {
-          "trips": 311,
-          "gzipBytes": 293279
+          "trips": 339,
+          "gzipBytes": 305961
         },
         "chunks": [
           {
@@ -1605,10 +1662,10 @@
             "windowStart": 0,
             "windowEnd": 7200,
             "path": "day-chunks/00-02.json",
-            "tripCount": 130,
-            "bytes": 122482,
-            "sha256": "6b9a7c3ce78db0aa82ecfdc471030c2b35895e3c386b8b89d867654fd2c3b42e",
-            "gzipBytes": 21614
+            "tripCount": 142,
+            "bytes": 130005,
+            "sha256": "7ef4c41d0a3d044b765ee62dcec061974ad8935c6069092d6537ecbffa75e2e4",
+            "gzipBytes": 22690
           },
           {
             "id": "02-04",
@@ -1616,109 +1673,109 @@
             "windowEnd": 14400,
             "path": "day-chunks/02-04.json",
             "tripCount": 59,
-            "bytes": 56535,
-            "sha256": "7456fe42ce40923107493ec802233b352a6231934e71dd908c3d70ad20c02bc2",
-            "gzipBytes": 9577
+            "bytes": 56543,
+            "sha256": "58727ec972479d24dae3e035ad8abe405f934fec83ec3d3f8bfb3aea7260339d",
+            "gzipBytes": 9581
           },
           {
             "id": "04-06",
             "windowStart": 14400,
             "windowEnd": 21600,
             "path": "day-chunks/04-06.json",
-            "tripCount": 60,
-            "bytes": 56769,
-            "sha256": "650d4547c1c441f46782e168b6aabfd3f5feba6eaabf19a30cab0f255974ca54",
-            "gzipBytes": 10770
+            "tripCount": 69,
+            "bytes": 62447,
+            "sha256": "b71c6bc9fc1842aab9430e12f5978861778525c48b4c06397a7209aab339302f",
+            "gzipBytes": 11569
           },
           {
             "id": "06-08",
             "windowStart": 21600,
             "windowEnd": 28800,
             "path": "day-chunks/06-08.json",
-            "tripCount": 244,
-            "bytes": 240657,
-            "sha256": "388ee2aa365a95b82911bd2e4876c3bfe168f8e096569816a76a11147f961663",
-            "gzipBytes": 36792
+            "tripCount": 267,
+            "bytes": 255615,
+            "sha256": "6493d1348b94889ae56113e3bbab09d75c541ed38cc1adbe16d447e66c7d69fa",
+            "gzipBytes": 38909
           },
           {
             "id": "08-10",
             "windowStart": 28800,
             "windowEnd": 36000,
             "path": "day-chunks/08-10.json",
-            "tripCount": 350,
-            "bytes": 342025,
-            "sha256": "28a9e1ec9eca455c7e0e4230f20ba87a6a4396d155c68220f604c3dbb12e13be",
-            "gzipBytes": 47534
+            "tripCount": 378,
+            "bytes": 359900,
+            "sha256": "1bea3e3f1f76313b7841139e8d0cc875f272edf09f5f5f201bbad076b6faab05",
+            "gzipBytes": 49905
           },
           {
             "id": "10-12",
             "windowStart": 36000,
             "windowEnd": 43200,
             "path": "day-chunks/10-12.json",
-            "tripCount": 354,
-            "bytes": 345978,
-            "sha256": "65f3f16b35029bf0c85ca413cc31b08c89e6266c616266a035aede3bd8615e0a",
-            "gzipBytes": 47796
+            "tripCount": 381,
+            "bytes": 363185,
+            "sha256": "9fee6ac0e52e28f194655b405ebf2088da1c41b11566b79fdcc5ea778f4d17e1",
+            "gzipBytes": 49944
           },
           {
             "id": "12-14",
             "windowStart": 43200,
             "windowEnd": 50400,
             "path": "day-chunks/12-14.json",
-            "tripCount": 353,
-            "bytes": 344954,
-            "sha256": "fc6d44a8f2dbb2c21d8a9062ff0043aaa57609fe280b410ec3ba438478f4fb5f",
-            "gzipBytes": 47737
+            "tripCount": 381,
+            "bytes": 363089,
+            "sha256": "4afddaafe6788d76e1786aeb022cf4b44e9c0c6d4b3d962d2e9e0bd0d89f2014",
+            "gzipBytes": 50025
           },
           {
             "id": "14-16",
             "windowStart": 50400,
             "windowEnd": 57600,
             "path": "day-chunks/14-16.json",
-            "tripCount": 357,
-            "bytes": 348661,
-            "sha256": "8cf1d86d37bcc593c54cfdead950cfba3b8ff0180d9ad505e4ad19ba1706b0e8",
-            "gzipBytes": 48191
+            "tripCount": 385,
+            "bytes": 366796,
+            "sha256": "45c6597487d360784b5902a2b4d5b5739e51dbc2b208c22831e2618570326226",
+            "gzipBytes": 50449
           },
           {
             "id": "16-18",
             "windowStart": 57600,
             "windowEnd": 64800,
             "path": "day-chunks/16-18.json",
-            "tripCount": 361,
-            "bytes": 352246,
-            "sha256": "39f90f6568d2419f18151cc0b897b759df29b2e9382cb3dd56789006faea682c",
-            "gzipBytes": 48777
+            "tripCount": 389,
+            "bytes": 370123,
+            "sha256": "f6f4de452d88d19d388a44ea697c2bf352e7d4e620597b7f58aee4b797ecf959",
+            "gzipBytes": 51117
           },
           {
             "id": "18-20",
             "windowStart": 64800,
             "windowEnd": 72000,
             "path": "day-chunks/18-20.json",
-            "tripCount": 340,
-            "bytes": 332778,
-            "sha256": "f42e8f70c9fcaab6e3c85580a79f0bfe8bd17a947160526dfd7548cb3c844db8",
-            "gzipBytes": 46892
+            "tripCount": 367,
+            "bytes": 349981,
+            "sha256": "a9f79c3b07e752190b9c9de4f9625b050bd746550d0162af47acb502807f3551",
+            "gzipBytes": 49122
           },
           {
             "id": "20-22",
             "windowStart": 72000,
             "windowEnd": 79200,
             "path": "day-chunks/20-22.json",
-            "tripCount": 231,
-            "bytes": 233062,
-            "sha256": "30b21e6898311d89e488e1ca8a314327975972272d8dc891cf9ad81b06e26b2e",
-            "gzipBytes": 34589
+            "tripCount": 258,
+            "bytes": 249997,
+            "sha256": "05bddfb9007b036535d3e081647e01098081df0a7b6f6a93a99b64e855887a22",
+            "gzipBytes": 36811
           },
           {
             "id": "22-24",
             "windowStart": 79200,
             "windowEnd": 86400,
             "path": "day-chunks/22-24.json",
-            "tripCount": 182,
-            "bytes": 180870,
-            "sha256": "da15282924c4f6d8559cb9418190aae67d96cb8a48b63e25922cd128da09907b",
-            "gzipBytes": 27370
+            "tripCount": 199,
+            "bytes": 191303,
+            "sha256": "4e623a59d572b532fdb484eae0562ae7bdff5876f90a1b21b919c6dcb65874a6",
+            "gzipBytes": 28717
           }
         ]
       },
@@ -1846,6 +1903,6 @@
     "GTFS fixed-stop archive and all Thurgau WFS transit layers inventoried; services absent from both sources and GTFS-Flex service areas are not a verified census of every real-world service.",
     "Two September civil days do not establish holiday, winter or year-round pattern coverage.",
     "Cross-boundary journeys keep all calls. Entire patterns failing any segment are excluded, including source extents shorter than their timetable journeys.",
-    "Geometry combines official-line centreline inference, OSM bus-road matching and FOT rail infrastructure, not observed movement, legal one-way validation, running-track selection or temporary diversion confirmation."
+    "Geometry combines official-line centreline inference, OSM bus-road matching and FOT/SBB rail infrastructure, not observed movement, legal one-way validation, running-track selection or temporary diversion confirmation."
   ]
 }

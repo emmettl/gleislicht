@@ -387,6 +387,53 @@
     "archivalStudy": true,
     "refreshPolicy": "Pinned September 2026 research fixtures; not a live or current-service feed. A new timetable or geometry release requires a complete rebuild and admission audit."
   },
+  "sbbRail": {
+    "publisher": "SBB Infrastructure",
+    "attribution": "SBB Infrastructure / data.sbb.ch",
+    "termsUrl": "https://data.sbb.ch/page/licence/",
+    "license": "terms_by",
+    "rights": "NonCommercialAllowed-CommercialAllowed-ReferenceRequired",
+    "retrieved": "2026-09-08",
+    "modified": "2026-07-29T06:16:28+00:00",
+    "dataProcessed": "2026-09-02T03:01:34+00:00",
+    "metadataProcessed": "2026-09-08T03:00:20.208000+00:00",
+    "alignmentValidity": "Publication and processing dates are not an individual feature survey date or proof of September diversions.",
+    "model": "Two explicitly identified detailed SBB border-to-Konstanz curves joined to named FOT border nodes. Full ordered pattern routing, bounded endpoint connectors; no schematic records or nearest-network merges.",
+    "files": [
+      {
+        "file": "metadata.json",
+        "url": "https://data.sbb.ch/api/explore/v2.1/catalog/datasets/linie-mit-polygon",
+        "sha256": "cbd14d2785da7865f4565fbf9aa37ca274ef3aafc44239bc03dd0992e3fd013c"
+      },
+      {
+        "file": "foreign-review.json",
+        "url": "https://data.sbb.ch/api/explore/v2.1/catalog/datasets/linie-mit-polygon/records?where=search%28%22Konstanz%22%29%20OR%20search%28%22Como%22%29&limit=100",
+        "sha256": "1a3358cc2c58e160a6cf032d199d41d1c92763acf0a440c0a86dcb4086c0debf"
+      },
+      {
+        "file": "terms.html",
+        "url": "https://data.sbb.ch/page/licence/",
+        "sha256": "985a900c0c0020edaf1dc6239ad3547d9a09db0dc4b72c3a0482ccfd09289f77"
+      },
+      {
+        "file": "parent-sources.json",
+        "sha256": "c67745131e337136b47da452650f57c1c0dcc9a16f54fc659e6a0227f6fad030",
+        "url": null
+      },
+      {
+        "file": "bregenz-review.json",
+        "sha256": "55d5406c19b1b5c8e318771fe1b0c7729bab114fc1dfc84df3aaa10185667c8f",
+        "retrieved": "2026-09-08",
+        "url": "https://data.sbb.ch/api/explore/v2.1/catalog/datasets/linie-mit-polygon/records?where=search%28%22Bregenz%22%29&limit=100",
+        "role": "Excluded: every returned curve is schematic two-point geometry. Separate query acquisition; no feature survey date established."
+      }
+    ],
+    "reusedOn": "2026-09-08",
+    "scope": "Exact six Konstanz-calling SBB/THURBO route identities on the pinned dates. Source KODB is explicitly crosswalked to GTFS 8014586; KRGR and KHGR remain separate FOT boundary identities. Konstanz station coordinate uses the line 822 source endpoint; line 824 has a measured bounded connector. All original full calls retained. Previously complete FOT/cantonal/road patterns take priority.",
+    "limits": {
+      "sourceNodeAttachmentMetres": 10
+    }
+  },
   "rail": {
     "schemaVersion": 1,
     "publisher": "Federal Office of Transport - FOT",

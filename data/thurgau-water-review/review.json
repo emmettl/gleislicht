@@ -1,0 +1,393 @@
+{
+  "reviewed": "2026-09-08",
+  "artifactSha256": "2ed8ae2942bb9fff570c0266bd1d0da11a7b6c99530e05761934b258594e58b7",
+  "source": {
+    "source": "FOEN Vector25 lakes",
+    "sourceUrl": "https://api3.geo.admin.ch/rest/services/ech/MapServer/identify?geometryType=esriGeometryEnvelope&geometry=5.7%2C45.7%2C10.7%2C48.0&geometryFormat=geojson&imageDisplay=1600%2C900%2C96&mapExtent=5.7%2C45.7%2C10.7%2C48.0&tolerance=0&layers=all%3Ach.bafu.vec25-seen&returnGeometry=true&limit=200&sr=4326",
+    "productUrl": "https://www.bafu.admin.ch/en/the-swiss-hydrographic-network",
+    "edition": "Vector25 reference network (2007)",
+    "attribution": "© FOEN, swisstopo",
+    "sourceCrs": "EPSG:4326",
+    "outputCrs": "EPSG:4326",
+    "simplificationToleranceMetres": 60,
+    "minimumAreaSquareKilometres": 0.1
+  },
+  "lakeId": "124",
+  "days": [
+    {
+      "date": "2026-09-04",
+      "journeys": 92,
+      "routes": [
+        "94-380-0-j26-1",
+        "94-380-1-j26-1",
+        "94-381-0-j26-1",
+        "94-381-A-j26-1",
+        "94-382-0-j26-1",
+        "94-382-A-j26-1",
+        "94-T-Y-j26-1"
+      ]
+    },
+    {
+      "date": "2026-09-06",
+      "journeys": 87,
+      "routes": [
+        "94-380-0-j26-1",
+        "94-380-1-j26-1",
+        "94-381-0-j26-1",
+        "94-381-A-j26-1",
+        "94-382-0-j26-1",
+        "94-382-A-j26-1",
+        "94-T-Y-j26-1"
+      ]
+    }
+  ],
+  "decision": "screened-not-admitted",
+  "reasons": [
+    "Existing display artifact uses 60 m shoreline simplification and labels its reference edition 2007; its geometry is not an acquired unsimplified dock/river routing source.",
+    "Lake area geometry alone does not establish boat alignments or connecting Rhine channels. Full river and foreign dock calls must remain intact.",
+    "Distances below screen the existing display polygon only; they are not verified dock-access links or a proposal to relax an admission limit."
+  ],
+  "nextEvidence": "Acquire unsimplified water geometry including islands, connecting Rhine channels and foreign docks; verify attribution, dates, full directed dock chains and inferred access offsets before enabling a separate water adapter.",
+  "stops": [
+    {
+      "id": "8011121",
+      "name": "Friedrichshafen Fähre",
+      "coordinate": [
+        9.48421514,
+        47.65101317
+      ],
+      "inDisplayLake": false,
+      "distanceToDisplayWaterMetres": 40.93050169262954
+    },
+    {
+      "id": "8014575",
+      "name": "Iznang (See)",
+      "coordinate": [
+        8.96160226,
+        47.71718619
+      ],
+      "inDisplayLake": false,
+      "distanceToDisplayWaterMetres": 13351.792543149417
+    },
+    {
+      "id": "8014587",
+      "name": "Konstanz Hafen",
+      "coordinate": [
+        9.17953355,
+        47.65986569
+      ],
+      "inDisplayLake": true,
+      "distanceToDisplayWaterMetres": 0
+    },
+    {
+      "id": "8014611",
+      "name": "Meersburg (Bodensee)",
+      "coordinate": [
+        9.27226663,
+        47.6920259
+      ],
+      "inDisplayLake": true,
+      "distanceToDisplayWaterMetres": 0
+    },
+    {
+      "id": "8014613",
+      "name": "Hagnau (Bodensee)",
+      "coordinate": [
+        9.31411914,
+        47.67351972
+      ],
+      "inDisplayLake": true,
+      "distanceToDisplayWaterMetres": 0
+    },
+    {
+      "id": "8014614",
+      "name": "Immenstaad (Bodensee)",
+      "coordinate": [
+        9.36703889,
+        47.66232816
+      ],
+      "inDisplayLake": true,
+      "distanceToDisplayWaterMetres": 0
+    },
+    {
+      "id": "8014650",
+      "name": "Langenargen Hafen",
+      "coordinate": [
+        9.53991069,
+        47.59515262
+      ],
+      "inDisplayLake": false,
+      "distanceToDisplayWaterMetres": 8.234452484761228
+    },
+    {
+      "id": "8099992",
+      "name": "Mainau (Bodensee)",
+      "coordinate": [
+        9.20071582,
+        47.70584682
+      ],
+      "inDisplayLake": false,
+      "distanceToDisplayWaterMetres": 39.58566620756012
+    },
+    {
+      "id": "ch:1:sloid:1101322",
+      "name": "Büsingen (Schifflände)",
+      "coordinate": [
+        8.6933204,
+        47.69543008
+      ],
+      "inDisplayLake": false,
+      "distanceToDisplayWaterMetres": 33510.40210449529
+    },
+    {
+      "id": "ch:1:sloid:1101424",
+      "name": "Gaienhofen (See)",
+      "coordinate": [
+        8.98231741,
+        47.67945935
+      ],
+      "inDisplayLake": false,
+      "distanceToDisplayWaterMetres": 13689.69152018419
+    },
+    {
+      "id": "ch:1:sloid:1101477",
+      "name": "Hemmenhofen (See)",
+      "coordinate": [
+        8.96894149,
+        47.67198934
+      ],
+      "inDisplayLake": false,
+      "distanceToDisplayWaterMetres": 14986.53709838004
+    },
+    {
+      "id": "ch:1:sloid:1101745",
+      "name": "Öhningen (See)",
+      "coordinate": [
+        8.89456997,
+        47.65209637
+      ],
+      "inDisplayLake": false,
+      "distanceToDisplayWaterMetres": 20877.539643196786
+    },
+    {
+      "id": "ch:1:sloid:1101805",
+      "name": "Radolfzell (Bodensee)",
+      "coordinate": [
+        8.96932777,
+        47.73510292
+      ],
+      "inDisplayLake": false,
+      "distanceToDisplayWaterMetres": 12402.983310519898
+    },
+    {
+      "id": "ch:1:sloid:1101894",
+      "name": "Reichenau (See)",
+      "coordinate": [
+        9.05422755,
+        47.6897402
+      ],
+      "inDisplayLake": false,
+      "distanceToDisplayWaterMetres": 8827.966956064454
+    },
+    {
+      "id": "ch:1:sloid:1103929",
+      "name": "Wangen (Bodensee)",
+      "coordinate": [
+        8.930278,
+        47.65866165
+      ],
+      "inDisplayLake": false,
+      "distanceToDisplayWaterMetres": 18220.149065566337
+    },
+    {
+      "id": "ch:1:sloid:30720",
+      "name": "Bottighofen (See)",
+      "coordinate": [
+        9.21189985,
+        47.64473744
+      ],
+      "inDisplayLake": false,
+      "distanceToDisplayWaterMetres": 5.121046457668637
+    },
+    {
+      "id": "ch:1:sloid:30834",
+      "name": "Altnau (See)",
+      "coordinate": [
+        9.2690866,
+        47.62313274
+      ],
+      "inDisplayLake": false,
+      "distanceToDisplayWaterMetres": 7.276219309322457
+    },
+    {
+      "id": "ch:1:sloid:30835",
+      "name": "Uttwil (See)",
+      "coordinate": [
+        9.34535356,
+        47.58643454
+      ],
+      "inDisplayLake": true,
+      "distanceToDisplayWaterMetres": 0
+    },
+    {
+      "id": "ch:1:sloid:6110",
+      "name": "Arbon (See)",
+      "coordinate": [
+        9.44032346,
+        47.5126454
+      ],
+      "inDisplayLake": true,
+      "distanceToDisplayWaterMetres": 0
+    },
+    {
+      "id": "ch:1:sloid:6111",
+      "name": "Horn (See)",
+      "coordinate": [
+        9.46295202,
+        47.49663698
+      ],
+      "inDisplayLake": true,
+      "distanceToDisplayWaterMetres": 0
+    },
+    {
+      "id": "ch:1:sloid:6112",
+      "name": "Romanshorn (See)",
+      "coordinate": [
+        9.37997463,
+        47.56556342
+      ],
+      "inDisplayLake": true,
+      "distanceToDisplayWaterMetres": 0
+    },
+    {
+      "id": "ch:1:sloid:6113",
+      "name": "Rorschach Hafen (See)",
+      "coordinate": [
+        9.49343186,
+        47.47889944
+      ],
+      "inDisplayLake": false,
+      "distanceToDisplayWaterMetres": 15.208603653997882
+    },
+    {
+      "id": "ch:1:sloid:6150",
+      "name": "Schaffhausen (Schifflände)",
+      "coordinate": [
+        8.6410115,
+        47.69529102
+      ],
+      "inDisplayLake": false,
+      "distanceToDisplayWaterMetres": 37375.846406546465
+    },
+    {
+      "id": "ch:1:sloid:6152",
+      "name": "Diessenhofen (Schifflände)",
+      "coordinate": [
+        8.74886323,
+        47.69041746
+      ],
+      "inDisplayLake": false,
+      "distanceToDisplayWaterMetres": 29542.198847738393
+    },
+    {
+      "id": "ch:1:sloid:6153",
+      "name": "Stein am Rhein (Schifflände)",
+      "coordinate": [
+        8.85665208,
+        47.6599141
+      ],
+      "inDisplayLake": false,
+      "distanceToDisplayWaterMetres": 22975.384714946875
+    },
+    {
+      "id": "ch:1:sloid:6155",
+      "name": "Mammern (See)",
+      "coordinate": [
+        8.91673141,
+        47.64828994
+      ],
+      "inDisplayLake": false,
+      "distanceToDisplayWaterMetres": 19630.64304979874
+    },
+    {
+      "id": "ch:1:sloid:6157",
+      "name": "Steckborn (See)",
+      "coordinate": [
+        8.98143706,
+        47.66864413
+      ],
+      "inDisplayLake": false,
+      "distanceToDisplayWaterMetres": 14450.392791319677
+    },
+    {
+      "id": "ch:1:sloid:6159",
+      "name": "Berlingen (See)",
+      "coordinate": [
+        9.01766611,
+        47.67534039
+      ],
+      "inDisplayLake": false,
+      "distanceToDisplayWaterMetres": 11897.420332698634
+    },
+    {
+      "id": "ch:1:sloid:6160",
+      "name": "Mannenbach (See)",
+      "coordinate": [
+        9.04843341,
+        47.67449358
+      ],
+      "inDisplayLake": false,
+      "distanceToDisplayWaterMetres": 9772.092298331116
+    },
+    {
+      "id": "ch:1:sloid:6162",
+      "name": "Ermatingen (See)",
+      "coordinate": [
+        9.085444,
+        47.67523152
+      ],
+      "inDisplayLake": false,
+      "distanceToDisplayWaterMetres": 7038.614043766785
+    },
+    {
+      "id": "ch:1:sloid:6163",
+      "name": "Gottlieben (Schifflände)",
+      "coordinate": [
+        9.13468066,
+        47.66466346
+      ],
+      "inDisplayLake": false,
+      "distanceToDisplayWaterMetres": 3233.968758797691
+    },
+    {
+      "id": "ch:1:sloid:6165",
+      "name": "Kreuzlingen Hafen (See)",
+      "coordinate": [
+        9.18264172,
+        47.65258652
+      ],
+      "inDisplayLake": true,
+      "distanceToDisplayWaterMetres": 0
+    },
+    {
+      "id": "ch:1:sloid:6346",
+      "name": "Romanshorn Autoquai",
+      "coordinate": [
+        9.38109753,
+        47.56466028
+      ],
+      "inDisplayLake": false,
+      "distanceToDisplayWaterMetres": 3.3084304000630027
+    },
+    {
+      "id": "ch:1:sloid:95982",
+      "name": "Güttingen (See)",
+      "coordinate": [
+        9.29601809,
+        47.61286905
+      ],
+      "inDisplayLake": true,
+      "distanceToDisplayWaterMetres": 0
+    }
+  ]
+}

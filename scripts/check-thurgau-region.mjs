@@ -8,7 +8,7 @@ import { thurgauFeatureMatch, thurgauPatternId } from './thurgau-line-geometry.m
 import { compactBernFeed, validateBernSnapshot, validateBernChunks } from './build-bern-region.mjs'
 import { thurgauTimingDiagnostics } from './build-thurgau-region.mjs'
 import { checkThurgauRegionalRoads } from './check-thurgau-regional-roads.mjs'
-import { loadThurgauRail } from './thurgau-rail-geometry.mjs'
+import { loadThurgauRail, isThurgauRailSource } from './thurgau-rail-geometry.mjs'
 import { checkThurgauCityRoads } from './check-thurgau-city-roads.mjs'
 
 const json = async path => JSON.parse(await readFile(path, 'utf8'))
@@ -56,7 +56,11 @@ export async function checkThurgauRegion({ output = 'public/data/thurgau-region'
   assert.equal(sha(cacheBytes), summary.sourceHashes.timetableCache)
   const cache = JSON.parse(gunzipSync(cacheBytes))
   assert.deepEqual(cache.sourceHashes, { archive: summary.sourceHashes.archive, source: summary.sourceHashes.source })
-  const rail = await loadThurgauRail(cache)
+  const rail = await loadThurgauRail(cache), federalOnly = await loadThurgauRail(cache, { sbb: false })
+  assert.equal(rail.sbb.policySha256, summary.sourceHashes.sbbRailPolicy)
+  assert.equal(rail.sbb.policy.sourceSha256, summary.sourceHashes.sbbRailSource)
+  assert.deepEqual(await json(join(audit, 'sbb-rail-source-segments.json')), { inventory: rail.sbb.inventory, joins: rail.sbb.joins })
+  for (const file of ['sources.json', ...rail.sbb.source.files.map(f => f.file)]) assert.deepEqual(await readFile(join(output, 'sbb-rail-sources', file)), await readFile(join('data/thurgau-sbb-rail-sources', file)))
   assert.equal(rail.policySha256, summary.sourceHashes.railPolicy)
   assert.equal(rail.policy.sourceMetadataSha256, summary.sourceHashes.railSourceMetadata)
   assert.deepEqual(await json(join(audit, 'rail-source-segments.json')), rail.sourceInventory)
@@ -74,15 +78,17 @@ export async function checkThurgauRegion({ output = 'public/data/thurgau-region'
     assert.deepEqual(report.sourceHashes, summary.sourceHashes)
     assert.deepEqual(report.coverage, day.coverage)
     const replay = applyThurgauGeometry(cache.snapshots.find(s => s.metadata.serviceDate === day.serviceDate), new Map(cache.routes.map(r => [r.id, r])), decoded, crosswalk, cityRoads, regionalRoads, rail)
-    const baseline = applyThurgauGeometry(cache.snapshots.find(s => s.metadata.serviceDate === day.serviceDate), new Map(cache.routes.map(r => [r.id, r])), decoded, crosswalk, cityRoads, regionalRoads)
+    const baseline = applyThurgauGeometry(cache.snapshots.find(s => s.metadata.serviceDate === day.serviceDate), new Map(cache.routes.map(r => [r.id, r])), decoded, crosswalk, cityRoads, regionalRoads, federalOnly)
     const replayTrains = new Map(replay.trains.map(t => [t.id, t]))
     for (const train of baseline.trains.filter(t => t.admission === 'admitted')) {
       const after = replayTrains.get(train.id)
       assert.equal(after.admission, 'admitted', 'Rail supplement removed a previously admitted journey')
       assert.deepEqual(after.pathSegments.map(i => replay.paths[i]), train.pathSegments.map(i => baseline.paths[i]), 'Rail supplement changed complete existing paths')
     }
-    assert.equal(report.railCoverage.trips, replay.trains.filter(t => t.geometrySource === 'fot-rail-inference' && t.admission === 'admitted').length)
-    assert.equal(report.railCoverage.patterns, replay.patterns.filter(p => p.geometrySource === 'fot-rail-inference').length)
+    assert.equal(report.sbbRailCoverage.trips, replay.trains.filter(t => t.geometrySource === 'fot-sbb-rail-inference' && t.admission === 'admitted').length)
+    assert.equal(report.sbbRailCoverage.patterns, replay.patterns.filter(p => p.geometrySource === 'fot-sbb-rail-inference').length)
+    assert.equal(report.railCoverage.trips, replay.trains.filter(t => isThurgauRailSource(t.geometrySource) && t.admission === 'admitted').length)
+    assert.equal(report.railCoverage.patterns, replay.patterns.filter(p => isThurgauRailSource(p.geometrySource)).length)
     assert.equal(report.railCoverage.rejectedPatterns, replay.patterns.filter(p => p.railSupplement?.status === 'rejected-incomplete-pattern').length)
     assert.deepEqual(report.patterns, replay.patterns.map(({ pathSegments, ...p }) => ({ ...p, matchedMask: pathSegments.map(i => i !== null) })))
     assert.deepEqual(report.directedPairs, replay.pairs.map(({ pathIndex, ...p }) => ({ ...p, matched: pathIndex !== null })))

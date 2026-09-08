@@ -5,38 +5,38 @@ Generated from the pinned 2026 GTFS canton census. See [study and method](THURGA
 | Agency | Line | Mode | GTFS route ID | Districts | Friday | Sunday | Status / exclusion evidence |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 11 Schweizerische Bundesbahnen SBB | EXT | rail | 91-1S-Y-j26-1 | Frauenfeld | 0 / 0 | 0 / 0 | Inactive on both dates: No service on these dates; annual membership retained |
-| 11 Schweizerische Bundesbahnen SBB | IC8 | rail | 91-8-E-j26-1 | Arbon, Frauenfeld, Weinfelden | 23 / 23 | 38 / 38 | All dated journeys admitted: Complete cantonal patterns retained; full FOT rail patterns supplement gaps |
-| 11 Schweizerische Bundesbahnen SBB | IC9 | rail | 91-9-P-j26-1 | Arbon, Frauenfeld, Weinfelden | 0 / 0 | 1 / 1 | All dated journeys admitted: Complete cantonal patterns retained; full FOT rail patterns supplement gaps |
-| 11 Schweizerische Bundesbahnen SBB | IC81 | rail | 91-81-A-j26-1 | Arbon, Frauenfeld, Weinfelden | 15 / 15 | 0 / 0 | All dated journeys admitted: Complete cantonal patterns retained; full FOT rail patterns supplement gaps |
-| 11 Schweizerische Bundesbahnen SBB | IR75 | rail | 91-75-j26-1 | Arbon, Frauenfeld, Kreuzlingen, Weinfelden | 0 / 35 | 0 / 34 | Excluded: Complete cantonal patterns retained; full FOT rail patterns supplement gaps; exclusions: incomplete-directed-pattern |
-| 11 Schweizerische Bundesbahnen SBB | S12 | rail | 91-12-j26-1 | Münchwilen | 34 / 34 | 0 / 0 | All dated journeys admitted: Complete cantonal patterns retained; full FOT rail patterns supplement gaps |
-| 11 Schweizerische Bundesbahnen SBB | S23 | rail | 91-23-B-j26-1 | Arbon, Frauenfeld, Weinfelden | 4 / 4 | 0 / 0 | All dated journeys admitted: Complete cantonal patterns retained; full FOT rail patterns supplement gaps |
-| 11 Schweizerische Bundesbahnen SBB | S24 | rail | 91-24-j26-1 | Frauenfeld, Weinfelden | 33 / 33 | 33 / 33 | All dated journeys admitted: Complete cantonal patterns retained; full FOT rail patterns supplement gaps |
+| 11 Schweizerische Bundesbahnen SBB | IC8 | rail | 91-8-E-j26-1 | Arbon, Frauenfeld, Weinfelden | 23 / 23 | 38 / 38 | All dated journeys admitted: Complete cantonal patterns retained; full FOT/SBB rail patterns supplement gaps |
+| 11 Schweizerische Bundesbahnen SBB | IC9 | rail | 91-9-P-j26-1 | Arbon, Frauenfeld, Weinfelden | 0 / 0 | 1 / 1 | All dated journeys admitted: Complete cantonal patterns retained; full FOT/SBB rail patterns supplement gaps |
+| 11 Schweizerische Bundesbahnen SBB | IC81 | rail | 91-81-A-j26-1 | Arbon, Frauenfeld, Weinfelden | 15 / 15 | 0 / 0 | All dated journeys admitted: Complete cantonal patterns retained; full FOT/SBB rail patterns supplement gaps |
+| 11 Schweizerische Bundesbahnen SBB | IR75 | rail | 91-75-j26-1 | Arbon, Frauenfeld, Kreuzlingen, Weinfelden | 35 / 35 | 34 / 34 | All dated journeys admitted: Complete cantonal patterns retained; full FOT/SBB rail patterns supplement gaps |
+| 11 Schweizerische Bundesbahnen SBB | S12 | rail | 91-12-j26-1 | Münchwilen | 34 / 34 | 0 / 0 | All dated journeys admitted: Complete cantonal patterns retained; full FOT/SBB rail patterns supplement gaps |
+| 11 Schweizerische Bundesbahnen SBB | S23 | rail | 91-23-B-j26-1 | Arbon, Frauenfeld, Weinfelden | 4 / 4 | 0 / 0 | All dated journeys admitted: Complete cantonal patterns retained; full FOT/SBB rail patterns supplement gaps |
+| 11 Schweizerische Bundesbahnen SBB | S24 | rail | 91-24-j26-1 | Frauenfeld, Weinfelden | 33 / 33 | 33 / 33 | All dated journeys admitted: Complete cantonal patterns retained; full FOT/SBB rail patterns supplement gaps |
 | 11 Schweizerische Bundesbahnen SBB | S30 | rail | 91-30-C-j26-1 | Frauenfeld | 0 / 0 | 0 / 0 | Inactive on both dates: No service on these dates; annual membership retained |
 | 22 Appenzeller Bahnen (ab) | S15 | rail | 91-15-I-j26-1 | Frauenfeld, Münchwilen | 98 / 98 | 82 / 82 | All dated journeys admitted: Every dated pattern complete |
 | 65 THURBO | IR75 | rail | 91-75-A-j26-1 | Kreuzlingen | 0 / 0 | 0 / 0 | Inactive on both dates: No service on these dates; annual membership retained |
-| 65 THURBO | RE1 | rail | 91-1-P-j26-1 | Arbon, Kreuzlingen | 0 / 32 | 0 / 32 | Excluded: Complete cantonal patterns retained; full FOT rail patterns supplement gaps; exclusions: incomplete-directed-pattern |
-| 65 THURBO | RE8 | rail | 91-8-N-j26-1 | Arbon, Frauenfeld, Weinfelden | 1 / 1 | 0 / 0 | All dated journeys admitted: Complete cantonal patterns retained; full FOT rail patterns supplement gaps |
-| 65 THURBO | RE75 | rail | 91-75-B-j26-1 | Arbon, Frauenfeld, Kreuzlingen, Weinfelden | 0 / 4 | 0 / 4 | Excluded: Complete cantonal patterns retained; full FOT rail patterns supplement gaps; exclusions: incomplete-directed-pattern |
+| 65 THURBO | RE1 | rail | 91-1-P-j26-1 | Arbon, Kreuzlingen | 32 / 32 | 32 / 32 | All dated journeys admitted: Complete cantonal patterns retained; full FOT/SBB rail patterns supplement gaps |
+| 65 THURBO | RE8 | rail | 91-8-N-j26-1 | Arbon, Frauenfeld, Weinfelden | 1 / 1 | 0 / 0 | All dated journeys admitted: Complete cantonal patterns retained; full FOT/SBB rail patterns supplement gaps |
+| 65 THURBO | RE75 | rail | 91-75-B-j26-1 | Arbon, Frauenfeld, Kreuzlingen, Weinfelden | 4 / 4 | 4 / 4 | All dated journeys admitted: Complete cantonal patterns retained; full FOT/SBB rail patterns supplement gaps |
 | 65 THURBO | S | rail | 91-CH-Y-j26-1 | Arbon, Frauenfeld, Kreuzlingen | 0 / 0 | 0 / 0 | Inactive on both dates: No service on these dates; annual membership retained |
-| 65 THURBO | S1 | rail | 91-1-C-j26-1 | Arbon, Frauenfeld, Kreuzlingen | 94 / 94 | 94 / 94 | All dated journeys admitted: Complete cantonal patterns retained; full FOT rail patterns supplement gaps |
+| 65 THURBO | S1 | rail | 91-1-C-j26-1 | Arbon, Frauenfeld, Kreuzlingen | 94 / 94 | 94 / 94 | All dated journeys admitted: Complete cantonal patterns retained; full FOT/SBB rail patterns supplement gaps |
 | 65 THURBO | S3 | rail | 91-3-X-j26-1 | Weinfelden | 0 / 0 | 0 / 0 | Inactive on both dates: No service on these dates; annual membership retained |
-| 65 THURBO | S5 | rail | 91-5-B-j26-1 | Weinfelden | 80 / 80 | 79 / 79 | All dated journeys admitted: Complete cantonal patterns retained; full FOT rail patterns supplement gaps |
-| 65 THURBO | S7 | rail | 91-7-B-j26-1 | Arbon, Weinfelden | 72 / 82 | 68 / 82 | Some complete patterns admitted: Complete cantonal patterns retained; full FOT rail patterns supplement gaps; exclusions: incomplete-directed-pattern |
-| 65 THURBO | S10 | rail | 91-10-C-j26-1 | Arbon, Münchwilen, Weinfelden | 75 / 75 | 45 / 45 | All dated journeys admitted: Complete cantonal patterns retained; full FOT rail patterns supplement gaps |
-| 65 THURBO | S14 | rail | 91-14-B-j26-1 | Kreuzlingen, Münchwilen, Weinfelden | 0 / 122 | 0 / 117 | Excluded: Complete cantonal patterns retained; full FOT rail patterns supplement gaps; exclusions: incomplete-directed-pattern |
+| 65 THURBO | S5 | rail | 91-5-B-j26-1 | Weinfelden | 80 / 80 | 79 / 79 | All dated journeys admitted: Complete cantonal patterns retained; full FOT/SBB rail patterns supplement gaps |
+| 65 THURBO | S7 | rail | 91-7-B-j26-1 | Arbon, Weinfelden | 72 / 82 | 68 / 82 | Some complete patterns admitted: Complete cantonal patterns retained; full FOT/SBB rail patterns supplement gaps; exclusions: incomplete-directed-pattern |
+| 65 THURBO | S10 | rail | 91-10-C-j26-1 | Arbon, Münchwilen, Weinfelden | 75 / 75 | 45 / 45 | All dated journeys admitted: Complete cantonal patterns retained; full FOT/SBB rail patterns supplement gaps |
+| 65 THURBO | S14 | rail | 91-14-B-j26-1 | Kreuzlingen, Münchwilen, Weinfelden | 122 / 122 | 117 / 117 | All dated journeys admitted: Complete cantonal patterns retained; full FOT/SBB rail patterns supplement gaps |
 | 65 THURBO | S24 | rail | 91-24-E-j26-1 | Frauenfeld, Weinfelden | 0 / 0 | 0 / 0 | Inactive on both dates: No service on these dates; annual membership retained |
-| 65 THURBO | S29 | rail | 91-29-A-j26-1 | Frauenfeld | 71 / 71 | 72 / 72 | All dated journeys admitted: Complete cantonal patterns retained; full FOT rail patterns supplement gaps |
-| 65 THURBO | S30 | rail | 91-30-A-j26-1 | Frauenfeld, Weinfelden | 48 / 48 | 49 / 49 | All dated journeys admitted: Complete cantonal patterns retained; full FOT rail patterns supplement gaps |
-| 65 THURBO | S35 | rail | 91-35-j26-1 | Münchwilen | 47 / 47 | 81 / 81 | All dated journeys admitted: Complete cantonal patterns retained; full FOT rail patterns supplement gaps |
-| 65 THURBO | S44 | rail | 91-44-C-j26-1 | Kreuzlingen, Weinfelden | 0 / 19 | 0 / 19 | Excluded: Complete cantonal patterns retained; full FOT rail patterns supplement gaps; exclusions: incomplete-directed-pattern |
-| 65 THURBO | S82 | rail | 91-82-j26-1 | Arbon | 2 / 2 | 0 / 0 | All dated journeys admitted: Complete cantonal patterns retained; full FOT rail patterns supplement gaps |
-| 65 THURBO | SN3 | rail | 91-3-I-j26-1 | Frauenfeld | 0 / 0 | 4 / 4 | All dated journeys admitted: Complete cantonal patterns retained; full FOT rail patterns supplement gaps |
-| 65 THURBO | SN14 | rail | 91-14-I-j26-1 | Frauenfeld, Kreuzlingen, Münchwilen, Weinfelden | 0 / 0 | 5 / 6 | Some complete patterns admitted: Complete cantonal patterns retained; full FOT rail patterns supplement gaps; exclusions: incomplete-directed-pattern |
-| 65 THURBO | SN21 | rail | 91-21-F-j26-1 | Münchwilen | 0 / 0 | 7 / 7 | All dated journeys admitted: Complete cantonal patterns retained; full FOT rail patterns supplement gaps |
-| 65 THURBO | SN30 | rail | 91-30-L-j26-1 | Arbon, Frauenfeld, Weinfelden | 0 / 0 | 7 / 7 | All dated journeys admitted: Complete cantonal patterns retained; full FOT rail patterns supplement gaps |
-| 65 THURBO | SN71 | rail | 91-71-B-j26-1 | Arbon, Kreuzlingen | 0 / 0 | 4 / 4 | All dated journeys admitted: Complete cantonal patterns retained; full FOT rail patterns supplement gaps |
-| 65 THURBO | SN72 | rail | 91-72-B-j26-1 | Arbon | 0 / 0 | 5 / 5 | All dated journeys admitted: Complete cantonal patterns retained; full FOT rail patterns supplement gaps |
+| 65 THURBO | S29 | rail | 91-29-A-j26-1 | Frauenfeld | 71 / 71 | 72 / 72 | All dated journeys admitted: Complete cantonal patterns retained; full FOT/SBB rail patterns supplement gaps |
+| 65 THURBO | S30 | rail | 91-30-A-j26-1 | Frauenfeld, Weinfelden | 48 / 48 | 49 / 49 | All dated journeys admitted: Complete cantonal patterns retained; full FOT/SBB rail patterns supplement gaps |
+| 65 THURBO | S35 | rail | 91-35-j26-1 | Münchwilen | 47 / 47 | 81 / 81 | All dated journeys admitted: Complete cantonal patterns retained; full FOT/SBB rail patterns supplement gaps |
+| 65 THURBO | S44 | rail | 91-44-C-j26-1 | Kreuzlingen, Weinfelden | 19 / 19 | 19 / 19 | All dated journeys admitted: Complete cantonal patterns retained; full FOT/SBB rail patterns supplement gaps |
+| 65 THURBO | S82 | rail | 91-82-j26-1 | Arbon | 2 / 2 | 0 / 0 | All dated journeys admitted: Complete cantonal patterns retained; full FOT/SBB rail patterns supplement gaps |
+| 65 THURBO | SN3 | rail | 91-3-I-j26-1 | Frauenfeld | 0 / 0 | 4 / 4 | All dated journeys admitted: Complete cantonal patterns retained; full FOT/SBB rail patterns supplement gaps |
+| 65 THURBO | SN14 | rail | 91-14-I-j26-1 | Frauenfeld, Kreuzlingen, Münchwilen, Weinfelden | 0 / 0 | 6 / 6 | All dated journeys admitted: Complete cantonal patterns retained; full FOT/SBB rail patterns supplement gaps |
+| 65 THURBO | SN21 | rail | 91-21-F-j26-1 | Münchwilen | 0 / 0 | 7 / 7 | All dated journeys admitted: Complete cantonal patterns retained; full FOT/SBB rail patterns supplement gaps |
+| 65 THURBO | SN30 | rail | 91-30-L-j26-1 | Arbon, Frauenfeld, Weinfelden | 0 / 0 | 7 / 7 | All dated journeys admitted: Complete cantonal patterns retained; full FOT/SBB rail patterns supplement gaps |
+| 65 THURBO | SN71 | rail | 91-71-B-j26-1 | Arbon, Kreuzlingen | 0 / 0 | 4 / 4 | All dated journeys admitted: Complete cantonal patterns retained; full FOT/SBB rail patterns supplement gaps |
+| 65 THURBO | SN72 | rail | 91-72-B-j26-1 | Arbon | 0 / 0 | 5 / 5 | All dated journeys admitted: Complete cantonal patterns retained; full FOT/SBB rail patterns supplement gaps |
 | 138 Bus Ostschweiz | 702 | bus | 92-702-D-j26-1 | Münchwilen | 114 / 114 | 24 / 24 | All dated journeys admitted: Complete official patterns retained; whole OSM regional patterns supplement gaps |
 | 138 Bus Ostschweiz | 706 | bus | 92-706-C-j26-1 | Münchwilen | 52 / 52 | 36 / 36 | All dated journeys admitted: Complete official patterns retained; whole OSM regional patterns supplement gaps |
 | 138 Bus Ostschweiz | 722 | bus | 92-722-A-j26-1 | Weinfelden | 27 / 27 | 40 / 40 | All dated journeys admitted: Complete official patterns retained; whole OSM regional patterns supplement gaps |
