@@ -1,0 +1,4943 @@
+{
+  "schemaVersion": 1,
+  "baselineCommit": "9672a2a0143713fae8e2d754edabc1f7b015d423",
+  "source": {
+    "policySha256": "ccd74bff8cca2457eee74f072f913c2773ff545fb68e20e146b0ded8ba5e16c3",
+    "policy": {
+      "schemaVersion": 1,
+      "sourceId": "bern-morges-reviewed-fot-rail-20210706",
+      "sourceDirectory": "data/bern-sources/fot-rail",
+      "sourceMetadataSha256": "46ab3ed91471fde35bcb1b678410efe7ecab6bf1cf02027729f547545b94aaad",
+      "sourceSha256": "2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+      "dates": [
+        "2026-09-04",
+        "2026-09-06"
+      ],
+      "limits": {
+        "stationAttachmentMetres": 120,
+        "topologyAttachmentMetres": 120,
+        "detourRatio": 4.5,
+        "detourFloorMetres": 3000,
+        "simplificationMetres": 0
+      },
+      "gauges": [
+        "mm1435"
+      ],
+      "infrastructureOperators": [
+        "SBB CFF FFS"
+      ],
+      "routes": [
+        {
+          "routeId": "91-15-B-j26-1",
+          "agencyId": "11",
+          "line": "IR15",
+          "mode": "rail",
+          "pairs": [
+            {
+              "fromId": "ch:1:sloid:1037:1:1",
+              "toId": "ch:1:sloid:1030:1:1",
+              "operatingPointPair": [
+                "8501037",
+                "8501030"
+              ],
+              "sourceSegments": [
+                "ch14uvag00087043:morges-platform:1:station",
+                "ch14uvag00087044",
+                "ch14uvag00087045",
+                "ch14uvag00087046",
+                "ch14uvag00087047",
+                "ch14uvag00087048",
+                "ch14uvag00087049",
+                "ch14uvag00087050",
+                "ch14uvag00087051",
+                "ch14uvag00087052",
+                "ch14uvag00087053"
+              ]
+            },
+            {
+              "fromId": "ch:1:sloid:1120:0:42631",
+              "toId": "ch:1:sloid:1037:1:1",
+              "operatingPointPair": [
+                "8501120",
+                "8501037"
+              ],
+              "sourceSegments": [
+                "ch14uvag00087029",
+                "ch14uvag00087030",
+                "ch14uvag00087031",
+                "ch14uvag00087032",
+                "ch14uvag00087033",
+                "ch14uvag00087034",
+                "ch14uvag00087102",
+                "ch14uvag00087103",
+                "ch14uvag00087104",
+                "ch14uvag00087105",
+                "ch14uvag00087110",
+                "ch14uvag00087040",
+                "ch14uvag00087041",
+                "ch14uvag00087042",
+                "ch14uvag00087043:morges-platform:1:north"
+              ]
+            }
+          ]
+        }
+      ],
+      "model": "Inferred through-station mainline split at the original Morges platform-1 projection, preserving both sides of the pinned FOT curve and the original station point. Exact SBB IR15 patterns and two original platform-pair bindings only. Original calls and coordinates retained; not a surveyed running-track or 2026 works itinerary.",
+      "morges": {
+        "node": {
+          "id": "ch14uvag00089571",
+          "number": "8501037",
+          "name": "Morges",
+          "coordinate": [
+            6.493964,
+            46.511111
+          ]
+        },
+        "stationCurve": {
+          "id": "ch14uvag00087043",
+          "start": "ch14uvag00089966",
+          "end": "ch14uvag00089571",
+          "length": 1341.5023013630484,
+          "points": [
+            [
+              6.508137,
+              46.518099
+            ],
+            [
+              6.508027,
+              46.51805
+            ],
+            [
+              6.507918,
+              46.518002
+            ],
+            [
+              6.50759,
+              46.517855
+            ],
+            [
+              6.50748,
+              46.517806
+            ],
+            [
+              6.507371,
+              46.517758
+            ],
+            [
+              6.507261,
+              46.517709
+            ],
+            [
+              6.507152,
+              46.51766
+            ],
+            [
+              6.507042,
+              46.517611
+            ],
+            [
+              6.506823,
+              46.517513
+            ],
+            [
+              6.506714,
+              46.517465
+            ],
+            [
+              6.506604,
+              46.517416
+            ],
+            [
+              6.506495,
+              46.517367
+            ],
+            [
+              6.506276,
+              46.517269
+            ],
+            [
+              6.506167,
+              46.517221
+            ],
+            [
+              6.505948,
+              46.517123
+            ],
+            [
+              6.505838,
+              46.517074
+            ],
+            [
+              6.505729,
+              46.517025
+            ],
+            [
+              6.50551,
+              46.516928
+            ],
+            [
+              6.5054,
+              46.516879
+            ],
+            [
+              6.505291,
+              46.51683
+            ],
+            [
+              6.505181,
+              46.516781
+            ],
+            [
+              6.505072,
+              46.516733
+            ],
+            [
+              6.504962,
+              46.516684
+            ],
+            [
+              6.504853,
+              46.516635
+            ],
+            [
+              6.504744,
+              46.516586
+            ],
+            [
+              6.504634,
+              46.516537
+            ],
+            [
+              6.504525,
+              46.516489
+            ],
+            [
+              6.504415,
+              46.51644
+            ],
+            [
+              6.504306,
+              46.516391
+            ],
+            [
+              6.504196,
+              46.516342
+            ],
+            [
+              6.504087,
+              46.516293
+            ],
+            [
+              6.503758,
+              46.516147
+            ],
+            [
+              6.503649,
+              46.516098
+            ],
+            [
+              6.50343,
+              46.516001
+            ],
+            [
+              6.503321,
+              46.515952
+            ],
+            [
+              6.503211,
+              46.515903
+            ],
+            [
+              6.503102,
+              46.515854
+            ],
+            [
+              6.502992,
+              46.515805
+            ],
+            [
+              6.502882,
+              46.515757
+            ],
+            [
+              6.502773,
+              46.515708
+            ],
+            [
+              6.502663,
+              46.51566
+            ],
+            [
+              6.502552,
+              46.515612
+            ],
+            [
+              6.502442,
+              46.515565
+            ],
+            [
+              6.502331,
+              46.515517
+            ],
+            [
+              6.50222,
+              46.515471
+            ],
+            [
+              6.502108,
+              46.515424
+            ],
+            [
+              6.501996,
+              46.515378
+            ],
+            [
+              6.501884,
+              46.515332
+            ],
+            [
+              6.501772,
+              46.515286
+            ],
+            [
+              6.501659,
+              46.515241
+            ],
+            [
+              6.501546,
+              46.515196
+            ],
+            [
+              6.501433,
+              46.515152
+            ],
+            [
+              6.50132,
+              46.515107
+            ],
+            [
+              6.501206,
+              46.515063
+            ],
+            [
+              6.501093,
+              46.515019
+            ],
+            [
+              6.500979,
+              46.514975
+            ],
+            [
+              6.500866,
+              46.51493
+            ],
+            [
+              6.500753,
+              46.514886
+            ],
+            [
+              6.500639,
+              46.514842
+            ],
+            [
+              6.500526,
+              46.514797
+            ],
+            [
+              6.500413,
+              46.514752
+            ],
+            [
+              6.500301,
+              46.514707
+            ],
+            [
+              6.500188,
+              46.514661
+            ],
+            [
+              6.500076,
+              46.514615
+            ],
+            [
+              6.499965,
+              46.514569
+            ],
+            [
+              6.499854,
+              46.514522
+            ],
+            [
+              6.499743,
+              46.514474
+            ],
+            [
+              6.499633,
+              46.514426
+            ],
+            [
+              6.499523,
+              46.514378
+            ],
+            [
+              6.499413,
+              46.514329
+            ],
+            [
+              6.499304,
+              46.51428
+            ],
+            [
+              6.499195,
+              46.514231
+            ],
+            [
+              6.499087,
+              46.514181
+            ],
+            [
+              6.498979,
+              46.51413
+            ],
+            [
+              6.498872,
+              46.514079
+            ],
+            [
+              6.498765,
+              46.514028
+            ],
+            [
+              6.498658,
+              46.513976
+            ],
+            [
+              6.498552,
+              46.513924
+            ],
+            [
+              6.498447,
+              46.513871
+            ],
+            [
+              6.498341,
+              46.513818
+            ],
+            [
+              6.498237,
+              46.513765
+            ],
+            [
+              6.498132,
+              46.513711
+            ],
+            [
+              6.498029,
+              46.513656
+            ],
+            [
+              6.497925,
+              46.513602
+            ],
+            [
+              6.497822,
+              46.513546
+            ],
+            [
+              6.49772,
+              46.513491
+            ],
+            [
+              6.497618,
+              46.513435
+            ],
+            [
+              6.497516,
+              46.513378
+            ],
+            [
+              6.497415,
+              46.513322
+            ],
+            [
+              6.497314,
+              46.513265
+            ],
+            [
+              6.497213,
+              46.513208
+            ],
+            [
+              6.497113,
+              46.513151
+            ],
+            [
+              6.497013,
+              46.513093
+            ],
+            [
+              6.496912,
+              46.513036
+            ],
+            [
+              6.496812,
+              46.512978
+            ],
+            [
+              6.496712,
+              46.512921
+            ],
+            [
+              6.496612,
+              46.512863
+            ],
+            [
+              6.496312,
+              46.51269
+            ],
+            [
+              6.496211,
+              46.512633
+            ],
+            [
+              6.496111,
+              46.512575
+            ],
+            [
+              6.496011,
+              46.512518
+            ],
+            [
+              6.495911,
+              46.51246
+            ],
+            [
+              6.495812,
+              46.512402
+            ],
+            [
+              6.495712,
+              46.512344
+            ],
+            [
+              6.495613,
+              46.512285
+            ],
+            [
+              6.495514,
+              46.512227
+            ],
+            [
+              6.495416,
+              46.512168
+            ],
+            [
+              6.495318,
+              46.512109
+            ],
+            [
+              6.49522,
+              46.512049
+            ],
+            [
+              6.495123,
+              46.511989
+            ],
+            [
+              6.495025,
+              46.511929
+            ],
+            [
+              6.494928,
+              46.511869
+            ],
+            [
+              6.494832,
+              46.511809
+            ],
+            [
+              6.494735,
+              46.511749
+            ],
+            [
+              6.494638,
+              46.511689
+            ],
+            [
+              6.494348,
+              46.511508
+            ],
+            [
+              6.494252,
+              46.511447
+            ],
+            [
+              6.493962,
+              46.511266
+            ],
+            [
+              6.493865,
+              46.511206
+            ],
+            [
+              6.493851,
+              46.511197
+            ]
+          ],
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1993-06-23",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS"
+        },
+        "stop": [
+          6.49522375,
+          46.51194644,
+          "Morges",
+          "1",
+          "ch:1:sloid:1037:1:1"
+        ],
+        "maximumProjectionMetres": 75,
+        "minimumStationSectionMetres": 50,
+        "maximumStationSectionMetres": 200,
+        "sbbPlatform": {
+          "linie": 150,
+          "km": 12.446,
+          "bps": "MOR",
+          "bps_name": "Morges",
+          "perrontyp": "Aussenperron",
+          "p_nr": "1",
+          "p_lange": 421,
+          "perronflach_brutto_m2": 2054,
+          "perronflach_netto_m2": 1832.87,
+          "z_schienenfrei": "nein",
+          "dst_id": 1037,
+          "dok_pfm": "West",
+          "fid": 35284906,
+          "geopos": {
+            "lon": 6.494507650109263,
+            "lat": 46.51145578535013
+          },
+          "bpuic": "8501037",
+          "lod": "http://lod.opentransportdata.swiss/didok/8501037"
+        }
+      },
+      "originalStops": [
+        [
+          6.14250923,
+          46.21047887,
+          "Genève",
+          "2",
+          "ch:1:sloid:1008:2:2"
+        ],
+        [
+          6.1424194,
+          46.21052238,
+          "Genève",
+          "3",
+          "ch:1:sloid:1008:2:3"
+        ],
+        [
+          6.11203838,
+          46.23272301,
+          "Genève-Aéroport",
+          "1E-H",
+          "ch:1:sloid:1026_gen:ch:1:sloid:1026:1:1_pf:1E-H"
+        ],
+        [
+          6.11203838,
+          46.23272301,
+          "Genève-Aéroport",
+          "1",
+          "ch:1:sloid:1026:1:1"
+        ],
+        [
+          6.11230787,
+          46.23253659,
+          "Genève-Aéroport",
+          "4",
+          "ch:1:sloid:1026:2:4"
+        ],
+        [
+          6.23574538,
+          46.38429444,
+          "Nyon",
+          "1",
+          "ch:1:sloid:1030:1:1"
+        ],
+        [
+          6.49522375,
+          46.51194644,
+          "Morges",
+          "1",
+          "ch:1:sloid:1037:1:1"
+        ],
+        [
+          6.62902781,
+          46.51658292,
+          "Lausanne",
+          "5",
+          "ch:1:sloid:1120:0:42631"
+        ],
+        [
+          7.94300256,
+          47.28779066,
+          "Zofingen",
+          "3",
+          "ch:1:sloid:2001:2:3"
+        ],
+        [
+          8.09827635,
+          47.17006914,
+          "Sursee",
+          "3",
+          "ch:1:sloid:2007:2:3"
+        ],
+        [
+          6.83801188,
+          46.54304655,
+          "Palézieux",
+          "1",
+          "ch:1:sloid:4014:1:1"
+        ],
+        [
+          6.91207797,
+          46.69371452,
+          "Romont FR",
+          "1",
+          "ch:1:sloid:4023:1:1"
+        ],
+        [
+          7.15039203,
+          46.80255892,
+          "Fribourg/Freiburg",
+          "2",
+          "ch:1:sloid:4100:2:2"
+        ],
+        [
+          8.31051232,
+          47.04851161,
+          "Luzern",
+          "8",
+          "ch:1:sloid:5000:4:8"
+        ],
+        [
+          8.31071894,
+          47.04869524,
+          "Luzern",
+          "10",
+          "ch:1:sloid:5000:5:10"
+        ],
+        [
+          7.43682884,
+          46.9485674,
+          "Bern",
+          "7",
+          "ch:1:sloid:7000:4:7"
+        ],
+        [
+          7.4333344,
+          46.94822398,
+          "Bern",
+          "49",
+          "ch:1:sloid:7000:55:49"
+        ]
+      ],
+      "originalPatterns": [
+        {
+          "directionId": "1",
+          "stopIds": [
+            "ch:1:sloid:5000:4:8",
+            "ch:1:sloid:2007:2:3",
+            "ch:1:sloid:2001:2:3",
+            "ch:1:sloid:7000:4:7",
+            "ch:1:sloid:4100:2:2",
+            "ch:1:sloid:4023:1:1",
+            "ch:1:sloid:4014:1:1",
+            "ch:1:sloid:1120:0:42631",
+            "ch:1:sloid:1037:1:1",
+            "ch:1:sloid:1030:1:1",
+            "ch:1:sloid:1008:2:3",
+            "ch:1:sloid:1026_gen:ch:1:sloid:1026:1:1_pf:1E-H"
+          ]
+        },
+        {
+          "directionId": "1",
+          "stopIds": [
+            "ch:1:sloid:5000:4:8",
+            "ch:1:sloid:2007:2:3",
+            "ch:1:sloid:2001:2:3",
+            "ch:1:sloid:7000:4:7",
+            "ch:1:sloid:4100:2:2",
+            "ch:1:sloid:4023:1:1",
+            "ch:1:sloid:4014:1:1",
+            "ch:1:sloid:1120:0:42631",
+            "ch:1:sloid:1037:1:1",
+            "ch:1:sloid:1030:1:1",
+            "ch:1:sloid:1008:2:3",
+            "ch:1:sloid:1026:1:1"
+          ]
+        },
+        {
+          "directionId": "1",
+          "stopIds": [
+            "ch:1:sloid:5000:4:8",
+            "ch:1:sloid:2007:2:3",
+            "ch:1:sloid:2001:2:3",
+            "ch:1:sloid:7000:4:7",
+            "ch:1:sloid:4100:2:2",
+            "ch:1:sloid:4023:1:1",
+            "ch:1:sloid:4014:1:1",
+            "ch:1:sloid:1120:0:42631",
+            "ch:1:sloid:1037:1:1",
+            "ch:1:sloid:1030:1:1",
+            "ch:1:sloid:1008:2:3",
+            "ch:1:sloid:1026:2:4"
+          ]
+        },
+        {
+          "directionId": "1",
+          "stopIds": [
+            "ch:1:sloid:5000:5:10",
+            "ch:1:sloid:2007:2:3",
+            "ch:1:sloid:2001:2:3",
+            "ch:1:sloid:7000:4:7",
+            "ch:1:sloid:4100:2:2",
+            "ch:1:sloid:4023:1:1",
+            "ch:1:sloid:4014:1:1",
+            "ch:1:sloid:1120:0:42631",
+            "ch:1:sloid:1037:1:1",
+            "ch:1:sloid:1030:1:1",
+            "ch:1:sloid:1008:2:2",
+            "ch:1:sloid:1026:1:1"
+          ]
+        },
+        {
+          "directionId": "1",
+          "stopIds": [
+            "ch:1:sloid:7000:55:49",
+            "ch:1:sloid:4100:2:2",
+            "ch:1:sloid:4023:1:1",
+            "ch:1:sloid:4014:1:1",
+            "ch:1:sloid:1120:0:42631",
+            "ch:1:sloid:1037:1:1",
+            "ch:1:sloid:1030:1:1",
+            "ch:1:sloid:1008:2:3",
+            "ch:1:sloid:1026:1:1"
+          ]
+        }
+      ],
+      "documentsDirectory": "data/bern-sources/morges",
+      "documents": [
+        {
+          "file": "perron.json",
+          "url": "https://data.sbb.ch/api/explore/v2.1/catalog/datasets/perron/records?where=search%28%22Morges%22%29&limit=100",
+          "sha256": "1912e7f76f939f5bddcd69510588fb1627b124813a0f345571fa0bb50f1152d6",
+          "retrievedAt": "2026-09-08T21:42:50.958Z",
+          "attribution": "SBB Infrastructure / SBB CFF FFS",
+          "role": "SBB platform identity and structural length; point features are not track geometry."
+        },
+        {
+          "file": "perron-metadata.json",
+          "url": "https://data.sbb.ch/api/explore/v2.1/catalog/datasets/perron",
+          "sha256": "a66f17fa0b383b243e0256f2ddb7f5c3949abbcf02ecfc77cc902f19535b0ee5",
+          "retrievedAt": "2026-09-08T21:43:06.659Z",
+          "attribution": "SBB Infrastructure / SBB CFF FFS",
+          "role": "Dataset processing dates, publisher, attribution and terms; not survey vintage."
+        },
+        {
+          "file": "platform-1-project.html",
+          "url": "https://company.sbb.ch/fr/developpement-ferroviaire/projets/suisse-romande-valais/leman-2030/nos-projets/region-morges.html",
+          "sha256": "fb1ac4a5ec4cda34a52ef607b4c56585015c8eb44a2ecb87ba70919a7292dc69",
+          "retrievedAt": "2026-09-08T21:43:11.300Z",
+          "attribution": "SBB Infrastructure / SBB CFF FFS",
+          "role": "SBB reports platform-1 extension and raising commissioned in December 2023; page publication date unavailable. Supports platform identity/extent, not track-specific 2026 movements."
+        }
+      ],
+      "sbbPlatformDataset": {
+        "publisher": "SBB Infrastructure",
+        "modified": "2026-09-01T22:03:57+00:00",
+        "dataProcessed": "2026-09-01T22:03:57+00:00",
+        "metadataProcessed": "2026-09-07T22:01:33.392000+00:00",
+        "license": "terms_by",
+        "rights": "NonCommercialAllowed-CommercialAllowed-ReferenceRequired",
+        "termsUrl": "https://data.sbb.ch/page/licence",
+        "sourceRecords": 6,
+        "geometryRole": "Supporting platform point and identity only; no replacement of original GTFS coordinates"
+      },
+      "platformCommissioned": "2023-12"
+    },
+    "source": {
+      "schemaVersion": 1,
+      "publisher": "Federal Office of Transport - FOT",
+      "attribution": "© Federal Office of Transport (FOT)",
+      "license": "proprietary",
+      "termsUrl": "https://opendata.swiss/terms-of-use/#terms_by",
+      "catalogueDate": "2021-07-06T00:00:00Z",
+      "assetUpdated": "2025-01-18T04:23:13.735821Z",
+      "catalogueCheckedOn": "2026-09-08",
+      "sourceUrl": "https://data.geo.admin.ch/ch.bav.schienennetz/schienennetz/schienennetz_2056_de.xtf",
+      "sha256": "2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+      "publishedChecksum": "12202895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+      "validOn": null,
+      "validityNote": "Catalogue dates and verified bytes do not establish September 2026 alignment validity. Inferred infrastructure paths, not certified service running tracks.",
+      "nodes": 3210,
+      "segments": 3424,
+      "transformation": "Existing XTF parser with zero-metre Douglas–Peucker tolerance; collinear vertices may be removed. Approximate LV95-to-WGS84 transformation rounded to six decimals. Bern preserves original GTFS coordinates and rounds only final attachment endpoints to seven decimals.",
+      "files": {
+        "network.xtf.gz": "f83afc9c922ab368070faa151fcf8be02fbb66bc1f4ae9b1011c68c86be21af3",
+        "catalogue.json": "4c54793b444d6d453e4f3e9c5ddd424f72d16b76325366fea6a10f60e749cf60",
+        "collection.json": "a4c61b24a114dcc3c710194deb742c7cd80400584bf9261da534019ed1f22c02",
+        "catalogue-check-20260908.json": "4c54793b444d6d453e4f3e9c5ddd424f72d16b76325366fea6a10f60e749cf60"
+      },
+      "retainedForBernAt": "2026-09-08T19:43:28.383642+00:00",
+      "catalogueRecheckedOn": "2026-09-08",
+      "catalogueCheckUrl": "https://data.geo.admin.ch/api/stac/v1/collections/ch.bav.schienennetz/items/schienennetz"
+    },
+    "sourceSegments": [
+      {
+        "id": "ch14uvag00087031",
+        "gauge": "mm1435",
+        "dataStand": "2021-07-06",
+        "validFrom": "2011-11-21",
+        "validUntil": null,
+        "infrastructureOperator": "SBB CFF FFS",
+        "attachmentMetres": 9.2176289639996,
+        "reason": null
+      },
+      {
+        "id": "ch14uvag00087045",
+        "gauge": "mm1435",
+        "dataStand": "2021-07-06",
+        "validFrom": "1993-06-23",
+        "validUntil": null,
+        "infrastructureOperator": "SBB CFF FFS",
+        "attachmentMetres": 7.260305539392373,
+        "reason": null
+      },
+      {
+        "id": "ch14uvag00087052",
+        "gauge": "mm1435",
+        "dataStand": "2021-07-06",
+        "validFrom": "1993-06-23",
+        "validUntil": null,
+        "infrastructureOperator": "SBB CFF FFS",
+        "attachmentMetres": 13.648689837983047,
+        "reason": null
+      },
+      {
+        "id": "ch14uvag00087040",
+        "gauge": "mm1435",
+        "dataStand": "2021-07-06",
+        "validFrom": "2011-01-03",
+        "validUntil": null,
+        "infrastructureOperator": "SBB CFF FFS",
+        "attachmentMetres": 1.8703212552164605,
+        "reason": null
+      },
+      {
+        "id": "ch14uvag00087048",
+        "gauge": "mm1435",
+        "dataStand": "2021-07-06",
+        "validFrom": "1993-06-23",
+        "validUntil": null,
+        "infrastructureOperator": "SBB CFF FFS",
+        "attachmentMetres": 11.399144268317805,
+        "reason": null
+      },
+      {
+        "id": "ch14uvag00087103",
+        "gauge": "mm1435",
+        "dataStand": "2021-07-06",
+        "validFrom": "1993-06-23",
+        "validUntil": null,
+        "infrastructureOperator": "SBB CFF FFS",
+        "attachmentMetres": 0.7727839622009578,
+        "reason": null
+      },
+      {
+        "id": "ch14uvag00087049",
+        "gauge": "mm1435",
+        "dataStand": "2021-07-06",
+        "validFrom": "1993-06-23",
+        "validUntil": null,
+        "infrastructureOperator": "SBB CFF FFS",
+        "attachmentMetres": 11.399144268317805,
+        "reason": null
+      },
+      {
+        "id": "ch14uvag00087032",
+        "gauge": "mm1435",
+        "dataStand": "2021-07-06",
+        "validFrom": "2011-11-21",
+        "validUntil": null,
+        "infrastructureOperator": "SBB CFF FFS",
+        "attachmentMetres": 9.2176289639996,
+        "reason": null
+      },
+      {
+        "id": "ch14uvag00087047",
+        "gauge": "mm1435",
+        "dataStand": "2021-07-06",
+        "validFrom": "1993-06-23",
+        "validUntil": null,
+        "infrastructureOperator": "SBB CFF FFS",
+        "attachmentMetres": 9.840844314445206,
+        "reason": null
+      },
+      {
+        "id": "ch14uvag00087104",
+        "gauge": "mm1435",
+        "dataStand": "2021-07-06",
+        "validFrom": "2011-01-04",
+        "validUntil": null,
+        "infrastructureOperator": "SBB CFF FFS",
+        "attachmentMetres": 0.7727839622009578,
+        "reason": null
+      },
+      {
+        "id": "ch14uvag00087102",
+        "gauge": "mm1435",
+        "dataStand": "2021-07-06",
+        "validFrom": "1993-06-23",
+        "validUntil": null,
+        "infrastructureOperator": "SBB CFF FFS",
+        "attachmentMetres": 0,
+        "reason": null
+      },
+      {
+        "id": "ch14uvag00087046",
+        "gauge": "mm1435",
+        "dataStand": "2021-07-06",
+        "validFrom": "1993-06-23",
+        "validUntil": null,
+        "infrastructureOperator": "SBB CFF FFS",
+        "attachmentMetres": 7.260305539392373,
+        "reason": null
+      },
+      {
+        "id": "ch14uvag00087029",
+        "gauge": "mm1435",
+        "dataStand": "2021-07-06",
+        "validFrom": "1994-10-20",
+        "validUntil": null,
+        "infrastructureOperator": "SBB CFF FFS",
+        "attachmentMetres": 4.027089517243968,
+        "reason": null
+      },
+      {
+        "id": "ch14uvag00087105",
+        "gauge": "mm1435",
+        "dataStand": "2021-07-06",
+        "validFrom": "2011-01-04",
+        "validUntil": null,
+        "infrastructureOperator": "SBB CFF FFS",
+        "attachmentMetres": 2.705124591356166,
+        "reason": null
+      },
+      {
+        "id": "ch14uvag00087030",
+        "gauge": "mm1435",
+        "dataStand": "2021-07-06",
+        "validFrom": "2005-04-21",
+        "validUntil": null,
+        "infrastructureOperator": "SBB CFF FFS",
+        "attachmentMetres": 4.027089517243968,
+        "reason": null
+      },
+      {
+        "id": "ch14uvag00087041",
+        "gauge": "mm1435",
+        "dataStand": "2021-07-06",
+        "validFrom": "2011-01-03",
+        "validUntil": null,
+        "infrastructureOperator": "SBB CFF FFS",
+        "attachmentMetres": 6.1216745357853934,
+        "reason": null
+      },
+      {
+        "id": "ch14uvag00087050",
+        "gauge": "mm1435",
+        "dataStand": "2021-07-06",
+        "validFrom": "1993-06-23",
+        "validUntil": null,
+        "infrastructureOperator": "SBB CFF FFS",
+        "attachmentMetres": 7.392087333965166,
+        "reason": null
+      },
+      {
+        "id": "ch14uvag00087044",
+        "gauge": "mm1435",
+        "dataStand": "2021-07-06",
+        "validFrom": "1993-06-23",
+        "validUntil": null,
+        "infrastructureOperator": "SBB CFF FFS",
+        "attachmentMetres": 12.907302568608063,
+        "reason": null
+      },
+      {
+        "id": "ch14uvag00087053",
+        "gauge": "mm1435",
+        "dataStand": "2021-07-06",
+        "validFrom": "1993-06-23",
+        "validUntil": null,
+        "infrastructureOperator": "SBB CFF FFS",
+        "attachmentMetres": 5.903551181466908,
+        "reason": null
+      },
+      {
+        "id": "ch14uvag00087042",
+        "gauge": "mm1435",
+        "dataStand": "2021-07-06",
+        "validFrom": "1993-06-23",
+        "validUntil": null,
+        "infrastructureOperator": "SBB CFF FFS",
+        "attachmentMetres": 14.026729438682521,
+        "reason": null
+      },
+      {
+        "id": "ch14uvag00087033",
+        "gauge": "mm1435",
+        "dataStand": "2021-07-06",
+        "validFrom": "1993-06-23",
+        "validUntil": null,
+        "infrastructureOperator": "SBB CFF FFS",
+        "attachmentMetres": 13.419814936120366,
+        "reason": null
+      },
+      {
+        "id": "ch14uvag00087034",
+        "gauge": "mm1435",
+        "dataStand": "2021-07-06",
+        "validFrom": "1993-06-23",
+        "validUntil": null,
+        "infrastructureOperator": "SBB CFF FFS",
+        "attachmentMetres": 13.419814936120366,
+        "reason": null
+      },
+      {
+        "id": "ch14uvag00087110",
+        "gauge": "mm1435",
+        "dataStand": "2021-07-06",
+        "validFrom": "2011-01-04",
+        "validUntil": null,
+        "infrastructureOperator": "SBB CFF FFS",
+        "attachmentMetres": 4.542162122258013,
+        "reason": null
+      },
+      {
+        "id": "ch14uvag00087051",
+        "gauge": "mm1435",
+        "dataStand": "2021-07-06",
+        "validFrom": "1993-06-23",
+        "validUntil": null,
+        "infrastructureOperator": "SBB CFF FFS",
+        "attachmentMetres": 13.648689837983047,
+        "reason": null
+      },
+      {
+        "id": "ch14uvag00087043:morges-platform:1:station",
+        "gauge": "mm1435",
+        "dataStand": "2021-07-06",
+        "validFrom": "1993-06-23",
+        "validUntil": null,
+        "infrastructureOperator": "SBB CFF FFS",
+        "attachmentMetres": 12.907302568608063,
+        "reason": null
+      },
+      {
+        "id": "ch14uvag00087043:morges-platform:1:north",
+        "gauge": "mm1435",
+        "dataStand": "2021-07-06",
+        "validFrom": "1993-06-23",
+        "validUntil": null,
+        "infrastructureOperator": "SBB CFF FFS",
+        "attachmentMetres": 14.026729438682521,
+        "reason": null
+      }
+    ],
+    "throughStationEvidence": {
+      "originalOperatingPoint": {
+        "id": "ch14uvag00089571",
+        "number": "8501037",
+        "name": "Morges",
+        "coordinate": [
+          6.493964,
+          46.511111
+        ]
+      },
+      "originalStop": [
+        6.49522375,
+        46.51194644,
+        "Morges",
+        "1",
+        "ch:1:sloid:1037:1:1"
+      ],
+      "sourceCurveId": "ch14uvag00087043",
+      "platform": {
+        "id": "bern:morges-platform:1",
+        "number": "BE-MORGES-1",
+        "name": "Morges reviewed platform 1",
+        "coordinate": [
+          6.495148,
+          46.5120045
+        ]
+      },
+      "projection": {
+        "segmentIndex": 10,
+        "fraction": 0.25756243526758327,
+        "point": [
+          6.495148,
+          46.5120045
+        ],
+        "attachmentMetres": 8.686273059282048,
+        "removedMetres": 133.99290810449503
+      },
+      "stationSectionId": "ch14uvag00087043:morges-platform:1:station",
+      "northernSectionId": "ch14uvag00087043:morges-platform:1:north",
+      "stationSectionMetres": 133.99290810449503,
+      "northernSectionMetres": 1206.486729196036,
+      "sourceLengthMetres": 1340.479634970358,
+      "sourceVertices": 121,
+      "splitVertices": 122,
+      "bothSidesConnected": true
+    }
+  },
+  "dates": [
+    {
+      "date": "2026-09-04",
+      "previousJourneysPreserved": 36786,
+      "addedScheduledJourneys": 15,
+      "totalAdmittedJourneys": 36801,
+      "routes": [
+        {
+          "routeId": "91-15-B-j26-1",
+          "line": "IR15",
+          "addedScheduledJourneys": 15,
+          "totalJourneys": 44,
+          "admittedJourneys": 44,
+          "directionIds": [
+            "0",
+            "1"
+          ],
+          "patterns": 25,
+          "admittedPatterns": 25,
+          "remainingPairs": [],
+          "repairedPairs": [
+            {
+              "routeId": "91-15-B-j26-1",
+              "agencyId": "11",
+              "mode": "rail",
+              "fromId": "ch:1:sloid:4014:1:1",
+              "toId": "ch:1:sloid:1120:0:276884",
+              "from": "Palézieux",
+              "to": "Lausanne",
+              "maximumSnapMetres": 32.830811616857034,
+              "occurrences": 3,
+              "admittedOccurrences": 3,
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8504014",
+              "toOperatingPoint": "8501120",
+              "stationAttachmentsMetres": [
+                32.830811616857034,
+                6.257912945151173
+              ],
+              "pathMetres": 20752.18038753758,
+              "maximumTopologyAttachmentMetres": 17.18033731277226,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087297",
+                  "from": "ch14uvag00089685",
+                  "to": "ch14uvag00089576"
+                },
+                {
+                  "id": "ch14uvag00087296",
+                  "from": "ch14uvag00089576",
+                  "to": "ch14uvag00089718"
+                },
+                {
+                  "id": "ch14uvag00087295",
+                  "from": "ch14uvag00089718",
+                  "to": "ch14uvag00089231"
+                },
+                {
+                  "id": "ch14uvag00087294",
+                  "from": "ch14uvag00089231",
+                  "to": "ch14uvag00088841"
+                },
+                {
+                  "id": "ch14uvag00087293",
+                  "from": "ch14uvag00088841",
+                  "to": "ch14uvag00089001"
+                },
+                {
+                  "id": "ch14uvag00087292",
+                  "from": "ch14uvag00089001",
+                  "to": "ch14uvag00089719"
+                },
+                {
+                  "id": "ch14uvag00087291",
+                  "from": "ch14uvag00089719",
+                  "to": "ch14uvag00089466"
+                },
+                {
+                  "id": "ch14uvag00086958",
+                  "from": "ch14uvag00089466",
+                  "to": "ch14uvag00089461"
+                }
+              ],
+              "railPatternIds": [
+                "5d5e5c9dff4099f51c056a31",
+                "7dffe6e19e706e64f5c2faf5",
+                "c591d773fe82798995c98883"
+              ],
+              "sourceKind": "fot-rail-topology",
+              "sourceId": "bern-regional-fot-rail-20210706",
+              "originalAssessment": {
+                "routeId": "91-15-B-j26-1",
+                "agencyId": "11",
+                "mode": "rail",
+                "fromId": "ch:1:sloid:4014:1:1",
+                "toId": "ch:1:sloid:1120:0:276884",
+                "from": "Palézieux",
+                "to": "Lausanne",
+                "reason": "endpoint-gap",
+                "maximumSnapMetres": 12126.183101312585
+              },
+              "matched": true
+            },
+            {
+              "routeId": "91-15-B-j26-1",
+              "agencyId": "11",
+              "mode": "rail",
+              "fromId": "ch:1:sloid:4014:1:1",
+              "toId": "ch:1:sloid:1120:0:668579",
+              "from": "Palézieux",
+              "to": "Lausanne",
+              "maximumSnapMetres": 32.830811616857034,
+              "occurrences": 2,
+              "admittedOccurrences": 2,
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8504014",
+              "toOperatingPoint": "8501120",
+              "stationAttachmentsMetres": [
+                32.830811616857034,
+                32.73896515489898
+              ],
+              "pathMetres": 20778.661439747328,
+              "maximumTopologyAttachmentMetres": 17.18033731277226,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087297",
+                  "from": "ch14uvag00089685",
+                  "to": "ch14uvag00089576"
+                },
+                {
+                  "id": "ch14uvag00087296",
+                  "from": "ch14uvag00089576",
+                  "to": "ch14uvag00089718"
+                },
+                {
+                  "id": "ch14uvag00087295",
+                  "from": "ch14uvag00089718",
+                  "to": "ch14uvag00089231"
+                },
+                {
+                  "id": "ch14uvag00087294",
+                  "from": "ch14uvag00089231",
+                  "to": "ch14uvag00088841"
+                },
+                {
+                  "id": "ch14uvag00087293",
+                  "from": "ch14uvag00088841",
+                  "to": "ch14uvag00089001"
+                },
+                {
+                  "id": "ch14uvag00087292",
+                  "from": "ch14uvag00089001",
+                  "to": "ch14uvag00089719"
+                },
+                {
+                  "id": "ch14uvag00087291",
+                  "from": "ch14uvag00089719",
+                  "to": "ch14uvag00089466"
+                },
+                {
+                  "id": "ch14uvag00086958",
+                  "from": "ch14uvag00089466",
+                  "to": "ch14uvag00089461"
+                }
+              ],
+              "railPatternIds": [
+                "59dac7f7f583c21a9d392f88",
+                "6beeffe5ed546d5a30d34f97"
+              ],
+              "sourceKind": "fot-rail-topology",
+              "sourceId": "bern-regional-fot-rail-20210706",
+              "originalAssessment": {
+                "routeId": "91-15-B-j26-1",
+                "agencyId": "11",
+                "mode": "rail",
+                "fromId": "ch:1:sloid:4014:1:1",
+                "toId": "ch:1:sloid:1120:0:668579",
+                "from": "Palézieux",
+                "to": "Lausanne",
+                "reason": "endpoint-gap",
+                "maximumSnapMetres": 12092.677005860118
+              },
+              "matched": true
+            },
+            {
+              "routeId": "91-15-B-j26-1",
+              "agencyId": "11",
+              "mode": "rail",
+              "fromId": "ch:1:sloid:4014:1:1",
+              "toId": "ch:1:sloid:1120:0:42631",
+              "from": "Palézieux",
+              "to": "Lausanne",
+              "maximumSnapMetres": 32.830811616857034,
+              "occurrences": 16,
+              "admittedOccurrences": 16,
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8504014",
+              "toOperatingPoint": "8501120",
+              "stationAttachmentsMetres": [
+                32.830811616857034,
+                24.47764469473426
+              ],
+              "pathMetres": 20770.400119287162,
+              "maximumTopologyAttachmentMetres": 17.18033731277226,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087297",
+                  "from": "ch14uvag00089685",
+                  "to": "ch14uvag00089576"
+                },
+                {
+                  "id": "ch14uvag00087296",
+                  "from": "ch14uvag00089576",
+                  "to": "ch14uvag00089718"
+                },
+                {
+                  "id": "ch14uvag00087295",
+                  "from": "ch14uvag00089718",
+                  "to": "ch14uvag00089231"
+                },
+                {
+                  "id": "ch14uvag00087294",
+                  "from": "ch14uvag00089231",
+                  "to": "ch14uvag00088841"
+                },
+                {
+                  "id": "ch14uvag00087293",
+                  "from": "ch14uvag00088841",
+                  "to": "ch14uvag00089001"
+                },
+                {
+                  "id": "ch14uvag00087292",
+                  "from": "ch14uvag00089001",
+                  "to": "ch14uvag00089719"
+                },
+                {
+                  "id": "ch14uvag00087291",
+                  "from": "ch14uvag00089719",
+                  "to": "ch14uvag00089466"
+                },
+                {
+                  "id": "ch14uvag00086958",
+                  "from": "ch14uvag00089466",
+                  "to": "ch14uvag00089461"
+                }
+              ],
+              "railPatternIds": [
+                "090d77af595948c76f911241",
+                "691d3efd9ddabfa97e8769a2",
+                "7c0e1ae1ccb9db0dc181f665",
+                "ae733413b264730a0dd86e82",
+                "bd7be285f2aba5b4c756a374",
+                "dbb908a1e4f9055743d4cec2"
+              ],
+              "sourceKind": "fot-rail-topology",
+              "sourceId": "bern-regional-fot-rail-20210706",
+              "originalAssessment": {
+                "routeId": "91-15-B-j26-1",
+                "agencyId": "11",
+                "mode": "rail",
+                "fromId": "ch:1:sloid:4014:1:1",
+                "toId": "ch:1:sloid:1120:0:42631",
+                "from": "Palézieux",
+                "to": "Lausanne",
+                "reason": "endpoint-gap",
+                "maximumSnapMetres": 12128.744186779324
+              },
+              "matched": true
+            },
+            {
+              "routeId": "91-15-B-j26-1",
+              "agencyId": "11",
+              "mode": "rail",
+              "fromId": "ch:1:sloid:1120:0:42631",
+              "toId": "ch:1:sloid:1037:1:1",
+              "from": "Lausanne",
+              "to": "Morges",
+              "maximumSnapMetres": 24.47764469473426,
+              "occurrences": 15,
+              "admittedOccurrences": 15,
+              "railSupplementRejection": {
+                "reason": "rejected-full-pattern-context",
+                "contexts": [
+                  {
+                    "patternId": "ae733413b264730a0dd86e82",
+                    "assessment": {
+                      "geometrySource": "fot",
+                      "fromOperatingPoint": "8501120",
+                      "toOperatingPoint": "8501037",
+                      "stationAttachmentsMetres": [
+                        24.47764469473426,
+                        134.02846392117394
+                      ],
+                      "reason": "rail-station-attachment-too-far"
+                    }
+                  },
+                  {
+                    "patternId": "691d3efd9ddabfa97e8769a2",
+                    "assessment": {
+                      "geometrySource": "fot",
+                      "fromOperatingPoint": "8501120",
+                      "toOperatingPoint": "8501037",
+                      "stationAttachmentsMetres": [
+                        24.47764469473426,
+                        134.02846392117394
+                      ],
+                      "reason": "rail-station-attachment-too-far"
+                    }
+                  },
+                  {
+                    "patternId": "7c0e1ae1ccb9db0dc181f665",
+                    "assessment": {
+                      "geometrySource": "fot",
+                      "fromOperatingPoint": "8501120",
+                      "toOperatingPoint": "8501037",
+                      "stationAttachmentsMetres": [
+                        24.47764469473426,
+                        134.02846392117394
+                      ],
+                      "reason": "rail-station-attachment-too-far"
+                    }
+                  },
+                  {
+                    "patternId": "dbb908a1e4f9055743d4cec2",
+                    "assessment": {
+                      "geometrySource": "fot",
+                      "fromOperatingPoint": "8501120",
+                      "toOperatingPoint": "8501037",
+                      "stationAttachmentsMetres": [
+                        24.47764469473426,
+                        134.02846392117394
+                      ],
+                      "reason": "rail-station-attachment-too-far"
+                    }
+                  },
+                  {
+                    "patternId": "bd7be285f2aba5b4c756a374",
+                    "assessment": {
+                      "geometrySource": "fot",
+                      "fromOperatingPoint": "8501120",
+                      "toOperatingPoint": "8501037",
+                      "stationAttachmentsMetres": [
+                        24.47764469473426,
+                        134.02846392117394
+                      ],
+                      "reason": "rail-station-attachment-too-far"
+                    }
+                  }
+                ]
+              },
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8501120",
+              "toOperatingPoint": "BE-MORGES-1",
+              "stationAttachmentsMetres": [
+                24.47764469473426,
+                8.686273059282048
+              ],
+              "pathMetres": 12513.971670400006,
+              "maximumTopologyAttachmentMetres": 14.026729438682521,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087029",
+                  "from": "ch14uvag00089461",
+                  "to": "ch14uvag00089464"
+                },
+                {
+                  "id": "ch14uvag00087030",
+                  "from": "ch14uvag00089464",
+                  "to": "ch14uvag00089548"
+                },
+                {
+                  "id": "ch14uvag00087031",
+                  "from": "ch14uvag00089548",
+                  "to": "ch14uvag00089709"
+                },
+                {
+                  "id": "ch14uvag00087032",
+                  "from": "ch14uvag00089709",
+                  "to": "ch14uvag00089752"
+                },
+                {
+                  "id": "ch14uvag00087033",
+                  "from": "ch14uvag00089752",
+                  "to": "ch14uvag00089751"
+                },
+                {
+                  "id": "ch14uvag00087034",
+                  "from": "ch14uvag00089751",
+                  "to": "ch14uvag00089753"
+                },
+                {
+                  "id": "ch14uvag00087102",
+                  "from": "ch14uvag00089753",
+                  "to": "ch14uvag00089479"
+                },
+                {
+                  "id": "ch14uvag00087103",
+                  "from": "ch14uvag00089479",
+                  "to": "ch14uvag00089477"
+                },
+                {
+                  "id": "ch14uvag00087104",
+                  "from": "ch14uvag00089477",
+                  "to": "ch14uvag00089476"
+                },
+                {
+                  "id": "ch14uvag00087105",
+                  "from": "ch14uvag00089476",
+                  "to": "ch14uvag00089487"
+                },
+                {
+                  "id": "ch14uvag00087110",
+                  "from": "ch14uvag00089487",
+                  "to": "ch14uvag00089452"
+                },
+                {
+                  "id": "ch14uvag00087040",
+                  "from": "ch14uvag00089452",
+                  "to": "ch14uvag00089451"
+                },
+                {
+                  "id": "ch14uvag00087041",
+                  "from": "ch14uvag00089451",
+                  "to": "ch14uvag00089450"
+                },
+                {
+                  "id": "ch14uvag00087042",
+                  "from": "ch14uvag00089450",
+                  "to": "ch14uvag00089966"
+                },
+                {
+                  "id": "ch14uvag00087043:morges-platform:1:north",
+                  "from": "ch14uvag00089966",
+                  "to": "bern:morges-platform:1"
+                }
+              ],
+              "morgesReview": {
+                "sourceCurveId": "ch14uvag00087043",
+                "originalStopId": "ch:1:sloid:1037:1:1",
+                "throughStation": true,
+                "bothSidesConnected": true
+              },
+              "railPatternIds": [
+                "691d3efd9ddabfa97e8769a2",
+                "7c0e1ae1ccb9db0dc181f665",
+                "ae733413b264730a0dd86e82",
+                "bd7be285f2aba5b4c756a374",
+                "dbb908a1e4f9055743d4cec2"
+              ],
+              "sourceKind": "fot-rail-topology",
+              "sourceId": "bern-morges-reviewed-fot-rail-20210706",
+              "originalAssessment": {
+                "routeId": "91-15-B-j26-1",
+                "agencyId": "11",
+                "mode": "rail",
+                "fromId": "ch:1:sloid:1120:0:42631",
+                "toId": "ch:1:sloid:1037:1:1",
+                "from": "Lausanne",
+                "to": "Morges",
+                "reason": "endpoint-gap",
+                "maximumSnapMetres": 22365.63994270572,
+                "railSupplementRejection": {
+                  "reason": "rejected-full-pattern-context",
+                  "contexts": [
+                    {
+                      "patternId": "ae733413b264730a0dd86e82",
+                      "assessment": {
+                        "geometrySource": "fot",
+                        "fromOperatingPoint": "8501120",
+                        "toOperatingPoint": "8501037",
+                        "stationAttachmentsMetres": [
+                          24.47764469473426,
+                          134.02846392117394
+                        ],
+                        "reason": "rail-station-attachment-too-far"
+                      }
+                    },
+                    {
+                      "patternId": "691d3efd9ddabfa97e8769a2",
+                      "assessment": {
+                        "geometrySource": "fot",
+                        "fromOperatingPoint": "8501120",
+                        "toOperatingPoint": "8501037",
+                        "stationAttachmentsMetres": [
+                          24.47764469473426,
+                          134.02846392117394
+                        ],
+                        "reason": "rail-station-attachment-too-far"
+                      }
+                    },
+                    {
+                      "patternId": "7c0e1ae1ccb9db0dc181f665",
+                      "assessment": {
+                        "geometrySource": "fot",
+                        "fromOperatingPoint": "8501120",
+                        "toOperatingPoint": "8501037",
+                        "stationAttachmentsMetres": [
+                          24.47764469473426,
+                          134.02846392117394
+                        ],
+                        "reason": "rail-station-attachment-too-far"
+                      }
+                    },
+                    {
+                      "patternId": "dbb908a1e4f9055743d4cec2",
+                      "assessment": {
+                        "geometrySource": "fot",
+                        "fromOperatingPoint": "8501120",
+                        "toOperatingPoint": "8501037",
+                        "stationAttachmentsMetres": [
+                          24.47764469473426,
+                          134.02846392117394
+                        ],
+                        "reason": "rail-station-attachment-too-far"
+                      }
+                    },
+                    {
+                      "patternId": "bd7be285f2aba5b4c756a374",
+                      "assessment": {
+                        "geometrySource": "fot",
+                        "fromOperatingPoint": "8501120",
+                        "toOperatingPoint": "8501037",
+                        "stationAttachmentsMetres": [
+                          24.47764469473426,
+                          134.02846392117394
+                        ],
+                        "reason": "rail-station-attachment-too-far"
+                      }
+                    }
+                  ]
+                }
+              },
+              "matched": true
+            },
+            {
+              "routeId": "91-15-B-j26-1",
+              "agencyId": "11",
+              "mode": "rail",
+              "fromId": "ch:1:sloid:1037:1:1",
+              "toId": "ch:1:sloid:1030:1:1",
+              "from": "Morges",
+              "to": "Nyon",
+              "maximumSnapMetres": 22.29400292161025,
+              "occurrences": 15,
+              "admittedOccurrences": 15,
+              "railSupplementRejection": {
+                "reason": "rejected-full-pattern-context",
+                "contexts": [
+                  {
+                    "patternId": "ae733413b264730a0dd86e82",
+                    "assessment": {
+                      "geometrySource": "fot",
+                      "fromOperatingPoint": "8501037",
+                      "toOperatingPoint": "8501030",
+                      "stationAttachmentsMetres": [
+                        134.02846392117394,
+                        22.29400292161025
+                      ],
+                      "reason": "rail-station-attachment-too-far"
+                    }
+                  },
+                  {
+                    "patternId": "691d3efd9ddabfa97e8769a2",
+                    "assessment": {
+                      "geometrySource": "fot",
+                      "fromOperatingPoint": "8501037",
+                      "toOperatingPoint": "8501030",
+                      "stationAttachmentsMetres": [
+                        134.02846392117394,
+                        22.29400292161025
+                      ],
+                      "reason": "rail-station-attachment-too-far"
+                    }
+                  },
+                  {
+                    "patternId": "7c0e1ae1ccb9db0dc181f665",
+                    "assessment": {
+                      "geometrySource": "fot",
+                      "fromOperatingPoint": "8501037",
+                      "toOperatingPoint": "8501030",
+                      "stationAttachmentsMetres": [
+                        134.02846392117394,
+                        22.29400292161025
+                      ],
+                      "reason": "rail-station-attachment-too-far"
+                    }
+                  },
+                  {
+                    "patternId": "dbb908a1e4f9055743d4cec2",
+                    "assessment": {
+                      "geometrySource": "fot",
+                      "fromOperatingPoint": "8501037",
+                      "toOperatingPoint": "8501030",
+                      "stationAttachmentsMetres": [
+                        134.02846392117394,
+                        22.29400292161025
+                      ],
+                      "reason": "rail-station-attachment-too-far"
+                    }
+                  },
+                  {
+                    "patternId": "bd7be285f2aba5b4c756a374",
+                    "assessment": {
+                      "geometrySource": "fot",
+                      "fromOperatingPoint": "8501037",
+                      "toOperatingPoint": "8501030",
+                      "stationAttachmentsMetres": [
+                        134.02846392117394,
+                        22.29400292161025
+                      ],
+                      "reason": "rail-station-attachment-too-far"
+                    }
+                  }
+                ]
+              },
+              "geometrySource": "fot",
+              "fromOperatingPoint": "BE-MORGES-1",
+              "toOperatingPoint": "8501030",
+              "stationAttachmentsMetres": [
+                8.686273059282048,
+                22.29400292161025
+              ],
+              "pathMetres": 26352.632873379447,
+              "maximumTopologyAttachmentMetres": 13.648689837983047,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087043:morges-platform:1:station",
+                  "from": "bern:morges-platform:1",
+                  "to": "ch14uvag00089571"
+                },
+                {
+                  "id": "ch14uvag00087044",
+                  "from": "ch14uvag00089571",
+                  "to": "ch14uvag00090021"
+                },
+                {
+                  "id": "ch14uvag00087045",
+                  "from": "ch14uvag00090021",
+                  "to": "ch14uvag00089974"
+                },
+                {
+                  "id": "ch14uvag00087046",
+                  "from": "ch14uvag00089974",
+                  "to": "ch14uvag00089096"
+                },
+                {
+                  "id": "ch14uvag00087047",
+                  "from": "ch14uvag00089096",
+                  "to": "ch14uvag00088716"
+                },
+                {
+                  "id": "ch14uvag00087048",
+                  "from": "ch14uvag00088716",
+                  "to": "ch14uvag00089692"
+                },
+                {
+                  "id": "ch14uvag00087049",
+                  "from": "ch14uvag00089692",
+                  "to": "ch14uvag00089784"
+                },
+                {
+                  "id": "ch14uvag00087050",
+                  "from": "ch14uvag00089784",
+                  "to": "ch14uvag00089185"
+                },
+                {
+                  "id": "ch14uvag00087051",
+                  "from": "ch14uvag00089185",
+                  "to": "ch14uvag00089197"
+                },
+                {
+                  "id": "ch14uvag00087052",
+                  "from": "ch14uvag00089197",
+                  "to": "ch14uvag00089710"
+                },
+                {
+                  "id": "ch14uvag00087053",
+                  "from": "ch14uvag00089710",
+                  "to": "ch14uvag00089644"
+                }
+              ],
+              "morgesReview": {
+                "sourceCurveId": "ch14uvag00087043",
+                "originalStopId": "ch:1:sloid:1037:1:1",
+                "throughStation": true,
+                "bothSidesConnected": true
+              },
+              "railPatternIds": [
+                "691d3efd9ddabfa97e8769a2",
+                "7c0e1ae1ccb9db0dc181f665",
+                "ae733413b264730a0dd86e82",
+                "bd7be285f2aba5b4c756a374",
+                "dbb908a1e4f9055743d4cec2"
+              ],
+              "sourceKind": "fot-rail-topology",
+              "sourceId": "bern-morges-reviewed-fot-rail-20210706",
+              "originalAssessment": {
+                "routeId": "91-15-B-j26-1",
+                "agencyId": "11",
+                "mode": "rail",
+                "fromId": "ch:1:sloid:1037:1:1",
+                "toId": "ch:1:sloid:1030:1:1",
+                "from": "Morges",
+                "to": "Nyon",
+                "reason": "endpoint-gap",
+                "maximumSnapMetres": 44591.98573781269,
+                "railSupplementRejection": {
+                  "reason": "rejected-full-pattern-context",
+                  "contexts": [
+                    {
+                      "patternId": "ae733413b264730a0dd86e82",
+                      "assessment": {
+                        "geometrySource": "fot",
+                        "fromOperatingPoint": "8501037",
+                        "toOperatingPoint": "8501030",
+                        "stationAttachmentsMetres": [
+                          134.02846392117394,
+                          22.29400292161025
+                        ],
+                        "reason": "rail-station-attachment-too-far"
+                      }
+                    },
+                    {
+                      "patternId": "691d3efd9ddabfa97e8769a2",
+                      "assessment": {
+                        "geometrySource": "fot",
+                        "fromOperatingPoint": "8501037",
+                        "toOperatingPoint": "8501030",
+                        "stationAttachmentsMetres": [
+                          134.02846392117394,
+                          22.29400292161025
+                        ],
+                        "reason": "rail-station-attachment-too-far"
+                      }
+                    },
+                    {
+                      "patternId": "7c0e1ae1ccb9db0dc181f665",
+                      "assessment": {
+                        "geometrySource": "fot",
+                        "fromOperatingPoint": "8501037",
+                        "toOperatingPoint": "8501030",
+                        "stationAttachmentsMetres": [
+                          134.02846392117394,
+                          22.29400292161025
+                        ],
+                        "reason": "rail-station-attachment-too-far"
+                      }
+                    },
+                    {
+                      "patternId": "dbb908a1e4f9055743d4cec2",
+                      "assessment": {
+                        "geometrySource": "fot",
+                        "fromOperatingPoint": "8501037",
+                        "toOperatingPoint": "8501030",
+                        "stationAttachmentsMetres": [
+                          134.02846392117394,
+                          22.29400292161025
+                        ],
+                        "reason": "rail-station-attachment-too-far"
+                      }
+                    },
+                    {
+                      "patternId": "bd7be285f2aba5b4c756a374",
+                      "assessment": {
+                        "geometrySource": "fot",
+                        "fromOperatingPoint": "8501037",
+                        "toOperatingPoint": "8501030",
+                        "stationAttachmentsMetres": [
+                          134.02846392117394,
+                          22.29400292161025
+                        ],
+                        "reason": "rail-station-attachment-too-far"
+                      }
+                    }
+                  ]
+                }
+              },
+              "matched": true
+            },
+            {
+              "routeId": "91-15-B-j26-1",
+              "agencyId": "11",
+              "mode": "rail",
+              "fromId": "ch:1:sloid:1030:1:1",
+              "toId": "ch:1:sloid:1008:2:3",
+              "from": "Nyon",
+              "to": "Genève",
+              "maximumSnapMetres": 32.67842214303874,
+              "occurrences": 15,
+              "admittedOccurrences": 15,
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8501030",
+              "toOperatingPoint": "8501008",
+              "stationAttachmentsMetres": [
+                22.29400292161025,
+                32.67842214303874
+              ],
+              "pathMetres": 21973.169948057654,
+              "maximumTopologyAttachmentMetres": 50.384114652505176,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087054",
+                  "from": "ch14uvag00089644",
+                  "to": "ch14uvag00089645"
+                },
+                {
+                  "id": "ch14uvag00087055",
+                  "from": "ch14uvag00089645",
+                  "to": "ch14uvag00088989"
+                },
+                {
+                  "id": "ch14uvag00087056",
+                  "from": "ch14uvag00088989",
+                  "to": "ch14uvag00089597"
+                },
+                {
+                  "id": "ch14uvag00087057",
+                  "from": "ch14uvag00089597",
+                  "to": "ch14uvag00088936"
+                },
+                {
+                  "id": "ch14uvag00087058",
+                  "from": "ch14uvag00088936",
+                  "to": "ch14uvag00089127"
+                },
+                {
+                  "id": "ch14uvag00087059",
+                  "from": "ch14uvag00089127",
+                  "to": "ch14uvag00088979"
+                },
+                {
+                  "id": "ch14uvag00087060",
+                  "from": "ch14uvag00088979",
+                  "to": "ch14uvag00089997"
+                },
+                {
+                  "id": "ch14uvag00087061",
+                  "from": "ch14uvag00089997",
+                  "to": "ch14uvag00089559"
+                },
+                {
+                  "id": "ch14uvag00087062",
+                  "from": "ch14uvag00089559",
+                  "to": "ch14uvag00089716"
+                },
+                {
+                  "id": "ch14uvag00087063",
+                  "from": "ch14uvag00089716",
+                  "to": "ch14uvag00090078"
+                },
+                {
+                  "id": "ch14uvag00087064",
+                  "from": "ch14uvag00090078",
+                  "to": "ch14uvag00088992"
+                },
+                {
+                  "id": "ch14uvag00087065",
+                  "from": "ch14uvag00088992",
+                  "to": "ch14uvag00089156"
+                },
+                {
+                  "id": "ch14uvag00087066",
+                  "from": "ch14uvag00089156",
+                  "to": "ch14uvag00090036"
+                },
+                {
+                  "id": "ch14uvag00240313",
+                  "from": "ch14uvag00090036",
+                  "to": "ch14uvag00090035"
+                },
+                {
+                  "id": "ch14uvag00087068",
+                  "from": "ch14uvag00090035",
+                  "to": "ch14uvag00090062"
+                },
+                {
+                  "id": "ch14uvag00087069",
+                  "from": "ch14uvag00090062",
+                  "to": "ch14uvag00088969"
+                },
+                {
+                  "id": "ch14uvag00087070",
+                  "from": "ch14uvag00088969",
+                  "to": "ch14uvag00089174"
+                },
+                {
+                  "id": "ch14uvag00087071",
+                  "from": "ch14uvag00089174",
+                  "to": "ch14uvag00089171"
+                },
+                {
+                  "id": "ch14uvag00087100",
+                  "from": "ch14uvag00089171",
+                  "to": "ch14uvag00089164"
+                },
+                {
+                  "id": "ch14uvag00087101",
+                  "from": "ch14uvag00089164",
+                  "to": "ch14uvag00089160"
+                }
+              ],
+              "railPatternIds": [
+                "090d77af595948c76f911241",
+                "691d3efd9ddabfa97e8769a2",
+                "7c0e1ae1ccb9db0dc181f665",
+                "ae733413b264730a0dd86e82",
+                "dbb908a1e4f9055743d4cec2"
+              ],
+              "sourceKind": "fot-rail-topology",
+              "sourceId": "bern-regional-fot-rail-20210706",
+              "originalAssessment": {
+                "routeId": "91-15-B-j26-1",
+                "agencyId": "11",
+                "mode": "rail",
+                "fromId": "ch:1:sloid:1030:1:1",
+                "toId": "ch:1:sloid:1008:2:3",
+                "from": "Nyon",
+                "to": "Genève",
+                "reason": "endpoint-gap",
+                "maximumSnapMetres": 59781.78112207651
+              },
+              "matched": true
+            },
+            {
+              "routeId": "91-15-B-j26-1",
+              "agencyId": "11",
+              "mode": "rail",
+              "fromId": "ch:1:sloid:1008:2:3",
+              "toId": "ch:1:sloid:1026:1:1",
+              "from": "Genève",
+              "to": "Genève-Aéroport",
+              "maximumSnapMetres": 32.67842214303874,
+              "occurrences": 13,
+              "admittedOccurrences": 13,
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8501008",
+              "toOperatingPoint": "8501026",
+              "stationAttachmentsMetres": [
+                32.67842214303874,
+                19.343946269349118
+              ],
+              "pathMetres": 6006.132772295328,
+              "maximumTopologyAttachmentMetres": 14.59637569213945,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087073",
+                  "from": "ch14uvag00089160",
+                  "to": "ch14uvag00089912"
+                },
+                {
+                  "id": "ch14uvag00087074",
+                  "from": "ch14uvag00089912",
+                  "to": "ch14uvag00088957"
+                },
+                {
+                  "id": "ch14uvag00087075",
+                  "from": "ch14uvag00088957",
+                  "to": "ch14uvag00089162"
+                }
+              ],
+              "railPatternIds": [
+                "090d77af595948c76f911241",
+                "691d3efd9ddabfa97e8769a2",
+                "ae733413b264730a0dd86e82"
+              ],
+              "sourceKind": "fot-rail-topology",
+              "sourceId": "bern-regional-fot-rail-20210706",
+              "originalAssessment": {
+                "routeId": "91-15-B-j26-1",
+                "agencyId": "11",
+                "mode": "rail",
+                "fromId": "ch:1:sloid:1008:2:3",
+                "toId": "ch:1:sloid:1026:1:1",
+                "from": "Genève",
+                "to": "Genève-Aéroport",
+                "reason": "endpoint-gap",
+                "maximumSnapMetres": 60415.86669409881
+              },
+              "matched": true
+            },
+            {
+              "routeId": "91-15-B-j26-1",
+              "agencyId": "11",
+              "mode": "rail",
+              "fromId": "ch:1:sloid:1120:0:42631",
+              "toId": "ch:1:sloid:1037:2:2",
+              "from": "Lausanne",
+              "to": "Morges",
+              "maximumSnapMetres": 26.98856602308203,
+              "occurrences": 1,
+              "admittedOccurrences": 1,
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8501120",
+              "toOperatingPoint": "8501037",
+              "stationAttachmentsMetres": [
+                24.47764469473426,
+                26.98856602308203
+              ],
+              "pathMetres": 12679.174171706734,
+              "maximumTopologyAttachmentMetres": 14.026729438682521,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087029",
+                  "from": "ch14uvag00089461",
+                  "to": "ch14uvag00089464"
+                },
+                {
+                  "id": "ch14uvag00087030",
+                  "from": "ch14uvag00089464",
+                  "to": "ch14uvag00089548"
+                },
+                {
+                  "id": "ch14uvag00087031",
+                  "from": "ch14uvag00089548",
+                  "to": "ch14uvag00089709"
+                },
+                {
+                  "id": "ch14uvag00087032",
+                  "from": "ch14uvag00089709",
+                  "to": "ch14uvag00089752"
+                },
+                {
+                  "id": "ch14uvag00087033",
+                  "from": "ch14uvag00089752",
+                  "to": "ch14uvag00089751"
+                },
+                {
+                  "id": "ch14uvag00087034",
+                  "from": "ch14uvag00089751",
+                  "to": "ch14uvag00089753"
+                },
+                {
+                  "id": "ch14uvag00087102",
+                  "from": "ch14uvag00089753",
+                  "to": "ch14uvag00089479"
+                },
+                {
+                  "id": "ch14uvag00087103",
+                  "from": "ch14uvag00089479",
+                  "to": "ch14uvag00089477"
+                },
+                {
+                  "id": "ch14uvag00087104",
+                  "from": "ch14uvag00089477",
+                  "to": "ch14uvag00089476"
+                },
+                {
+                  "id": "ch14uvag00087105",
+                  "from": "ch14uvag00089476",
+                  "to": "ch14uvag00089487"
+                },
+                {
+                  "id": "ch14uvag00087110",
+                  "from": "ch14uvag00089487",
+                  "to": "ch14uvag00089452"
+                },
+                {
+                  "id": "ch14uvag00087040",
+                  "from": "ch14uvag00089452",
+                  "to": "ch14uvag00089451"
+                },
+                {
+                  "id": "ch14uvag00087041",
+                  "from": "ch14uvag00089451",
+                  "to": "ch14uvag00089450"
+                },
+                {
+                  "id": "ch14uvag00087042",
+                  "from": "ch14uvag00089450",
+                  "to": "ch14uvag00089966"
+                },
+                {
+                  "id": "ch14uvag00087043",
+                  "from": "ch14uvag00089966",
+                  "to": "ch14uvag00089571"
+                }
+              ],
+              "railPatternIds": [
+                "090d77af595948c76f911241"
+              ],
+              "sourceKind": "fot-rail-topology",
+              "sourceId": "bern-regional-fot-rail-20210706",
+              "originalAssessment": {
+                "routeId": "91-15-B-j26-1",
+                "agencyId": "11",
+                "mode": "rail",
+                "fromId": "ch:1:sloid:1120:0:42631",
+                "toId": "ch:1:sloid:1037:2:2",
+                "from": "Lausanne",
+                "to": "Morges",
+                "reason": "endpoint-gap",
+                "maximumSnapMetres": 22451.652698044847
+              },
+              "matched": true
+            },
+            {
+              "routeId": "91-15-B-j26-1",
+              "agencyId": "11",
+              "mode": "rail",
+              "fromId": "ch:1:sloid:1037:2:2",
+              "toId": "ch:1:sloid:1031:2:3",
+              "from": "Morges",
+              "to": "Gland",
+              "maximumSnapMetres": 26.98856602308203,
+              "occurrences": 1,
+              "admittedOccurrences": 1,
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8501037",
+              "toOperatingPoint": "8501031",
+              "stationAttachmentsMetres": [
+                26.98856602308203,
+                18.67494507753105
+              ],
+              "pathMetres": 21449.161869163203,
+              "maximumTopologyAttachmentMetres": 13.648689837983047,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087044",
+                  "from": "ch14uvag00089571",
+                  "to": "ch14uvag00090021"
+                },
+                {
+                  "id": "ch14uvag00087045",
+                  "from": "ch14uvag00090021",
+                  "to": "ch14uvag00089974"
+                },
+                {
+                  "id": "ch14uvag00087046",
+                  "from": "ch14uvag00089974",
+                  "to": "ch14uvag00089096"
+                },
+                {
+                  "id": "ch14uvag00087047",
+                  "from": "ch14uvag00089096",
+                  "to": "ch14uvag00088716"
+                },
+                {
+                  "id": "ch14uvag00087048",
+                  "from": "ch14uvag00088716",
+                  "to": "ch14uvag00089692"
+                },
+                {
+                  "id": "ch14uvag00087049",
+                  "from": "ch14uvag00089692",
+                  "to": "ch14uvag00089784"
+                },
+                {
+                  "id": "ch14uvag00087050",
+                  "from": "ch14uvag00089784",
+                  "to": "ch14uvag00089185"
+                },
+                {
+                  "id": "ch14uvag00087051",
+                  "from": "ch14uvag00089185",
+                  "to": "ch14uvag00089197"
+                }
+              ],
+              "railPatternIds": [
+                "090d77af595948c76f911241"
+              ],
+              "sourceKind": "fot-rail-topology",
+              "sourceId": "bern-regional-fot-rail-20210706",
+              "originalAssessment": {
+                "routeId": "91-15-B-j26-1",
+                "agencyId": "11",
+                "mode": "rail",
+                "fromId": "ch:1:sloid:1037:2:2",
+                "toId": "ch:1:sloid:1031:2:3",
+                "from": "Morges",
+                "to": "Gland",
+                "reason": "endpoint-gap",
+                "maximumSnapMetres": 40985.50866866388
+              },
+              "matched": true
+            },
+            {
+              "routeId": "91-15-B-j26-1",
+              "agencyId": "11",
+              "mode": "rail",
+              "fromId": "ch:1:sloid:1031:2:3",
+              "toId": "ch:1:sloid:1030:1:1",
+              "from": "Gland",
+              "to": "Nyon",
+              "maximumSnapMetres": 22.29400292161025,
+              "occurrences": 1,
+              "admittedOccurrences": 1,
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8501031",
+              "toOperatingPoint": "8501030",
+              "stationAttachmentsMetres": [
+                18.67494507753105,
+                22.29400292161025
+              ],
+              "pathMetres": 4812.22297666203,
+              "maximumTopologyAttachmentMetres": 13.648689837983047,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087052",
+                  "from": "ch14uvag00089197",
+                  "to": "ch14uvag00089710"
+                },
+                {
+                  "id": "ch14uvag00087053",
+                  "from": "ch14uvag00089710",
+                  "to": "ch14uvag00089644"
+                }
+              ],
+              "railPatternIds": [
+                "090d77af595948c76f911241"
+              ],
+              "sourceKind": "fot-rail-topology",
+              "sourceId": "bern-regional-fot-rail-20210706",
+              "originalAssessment": {
+                "routeId": "91-15-B-j26-1",
+                "agencyId": "11",
+                "mode": "rail",
+                "fromId": "ch:1:sloid:1031:2:3",
+                "toId": "ch:1:sloid:1030:1:1",
+                "from": "Gland",
+                "to": "Nyon",
+                "reason": "endpoint-gap",
+                "maximumSnapMetres": 44591.98573781269
+              },
+              "matched": true
+            },
+            {
+              "routeId": "91-15-B-j26-1",
+              "agencyId": "11",
+              "mode": "rail",
+              "fromId": "ch:1:sloid:1008:2:3",
+              "toId": "ch:1:sloid:1026:2:4",
+              "from": "Genève",
+              "to": "Genève-Aéroport",
+              "maximumSnapMetres": 32.67842214303874,
+              "occurrences": 1,
+              "admittedOccurrences": 1,
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8501008",
+              "toOperatingPoint": "8501026",
+              "stationAttachmentsMetres": [
+                32.67842214303874,
+                26.183558427401042
+              ],
+              "pathMetres": 6012.97238445338,
+              "maximumTopologyAttachmentMetres": 14.59637569213945,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087073",
+                  "from": "ch14uvag00089160",
+                  "to": "ch14uvag00089912"
+                },
+                {
+                  "id": "ch14uvag00087074",
+                  "from": "ch14uvag00089912",
+                  "to": "ch14uvag00088957"
+                },
+                {
+                  "id": "ch14uvag00087075",
+                  "from": "ch14uvag00088957",
+                  "to": "ch14uvag00089162"
+                }
+              ],
+              "railPatternIds": [
+                "7c0e1ae1ccb9db0dc181f665"
+              ],
+              "sourceKind": "fot-rail-topology",
+              "sourceId": "bern-regional-fot-rail-20210706",
+              "originalAssessment": {
+                "routeId": "91-15-B-j26-1",
+                "agencyId": "11",
+                "mode": "rail",
+                "fromId": "ch:1:sloid:1008:2:3",
+                "toId": "ch:1:sloid:1026:2:4",
+                "from": "Genève",
+                "to": "Genève-Aéroport",
+                "reason": "endpoint-gap",
+                "maximumSnapMetres": 60408.8327440305
+              },
+              "matched": true
+            },
+            {
+              "routeId": "91-15-B-j26-1",
+              "agencyId": "11",
+              "mode": "rail",
+              "fromId": "ch:1:sloid:1120:0:668579",
+              "toId": "ch:1:sloid:4014:2:2",
+              "from": "Lausanne",
+              "to": "Palézieux",
+              "maximumSnapMetres": 32.73896515489898,
+              "occurrences": 21,
+              "admittedOccurrences": 21,
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8501120",
+              "toOperatingPoint": "8504014",
+              "stationAttachmentsMetres": [
+                32.73896515489898,
+                26.479210954066826
+              ],
+              "pathMetres": 20772.309839084497,
+              "maximumTopologyAttachmentMetres": 17.18033731277226,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00086958",
+                  "from": "ch14uvag00089461",
+                  "to": "ch14uvag00089466"
+                },
+                {
+                  "id": "ch14uvag00087291",
+                  "from": "ch14uvag00089466",
+                  "to": "ch14uvag00089719"
+                },
+                {
+                  "id": "ch14uvag00087292",
+                  "from": "ch14uvag00089719",
+                  "to": "ch14uvag00089001"
+                },
+                {
+                  "id": "ch14uvag00087293",
+                  "from": "ch14uvag00089001",
+                  "to": "ch14uvag00088841"
+                },
+                {
+                  "id": "ch14uvag00087294",
+                  "from": "ch14uvag00088841",
+                  "to": "ch14uvag00089231"
+                },
+                {
+                  "id": "ch14uvag00087295",
+                  "from": "ch14uvag00089231",
+                  "to": "ch14uvag00089718"
+                },
+                {
+                  "id": "ch14uvag00087296",
+                  "from": "ch14uvag00089718",
+                  "to": "ch14uvag00089576"
+                },
+                {
+                  "id": "ch14uvag00087297",
+                  "from": "ch14uvag00089576",
+                  "to": "ch14uvag00089685"
+                }
+              ],
+              "railPatternIds": [
+                "061b40d242431fa98d6070bc",
+                "0cc52d66d4a3448959aca0fd",
+                "0dc11529fc78f6ac5ca43976",
+                "2654023e36c0328e3d2e4738",
+                "3a9097faf750587c851d8ef2",
+                "4e614261399172f72e9dd6a5",
+                "5784b8b68ec86c9ee53c0d96",
+                "6efeb1db2d3f2bc61a40f7df",
+                "8247695bd8019f3d16bef58e",
+                "9d7784c8abb7155608b985bc",
+                "de9117ad09f993f7b5533979",
+                "eccb74727ef7339d689cdd29"
+              ],
+              "sourceKind": "fot-rail-topology",
+              "sourceId": "bern-regional-fot-rail-20210706",
+              "originalAssessment": {
+                "routeId": "91-15-B-j26-1",
+                "agencyId": "11",
+                "mode": "rail",
+                "fromId": "ch:1:sloid:1120:0:668579",
+                "toId": "ch:1:sloid:4014:2:2",
+                "from": "Lausanne",
+                "to": "Palézieux",
+                "reason": "endpoint-gap",
+                "maximumSnapMetres": 12092.677005860118
+              },
+              "matched": true
+            },
+            {
+              "routeId": "91-15-B-j26-1",
+              "agencyId": "11",
+              "mode": "rail",
+              "fromId": "ch:1:sloid:1008:2:3",
+              "toId": "ch:1:sloid:1026_gen:ch:1:sloid:1026:1:1_pf:1E-H",
+              "from": "Genève",
+              "to": "Genève-Aéroport",
+              "maximumSnapMetres": 32.67842214303874,
+              "occurrences": 1,
+              "admittedOccurrences": 1,
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8501008",
+              "toOperatingPoint": "8501026",
+              "stationAttachmentsMetres": [
+                32.67842214303874,
+                19.343946269349118
+              ],
+              "pathMetres": 6006.132772295328,
+              "maximumTopologyAttachmentMetres": 14.59637569213945,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087073",
+                  "from": "ch14uvag00089160",
+                  "to": "ch14uvag00089912"
+                },
+                {
+                  "id": "ch14uvag00087074",
+                  "from": "ch14uvag00089912",
+                  "to": "ch14uvag00088957"
+                },
+                {
+                  "id": "ch14uvag00087075",
+                  "from": "ch14uvag00088957",
+                  "to": "ch14uvag00089162"
+                }
+              ],
+              "railPatternIds": [
+                "dbb908a1e4f9055743d4cec2"
+              ],
+              "sourceKind": "fot-rail-topology",
+              "sourceId": "bern-regional-fot-rail-20210706",
+              "originalAssessment": {
+                "routeId": "91-15-B-j26-1",
+                "agencyId": "11",
+                "mode": "rail",
+                "fromId": "ch:1:sloid:1008:2:3",
+                "toId": "ch:1:sloid:1026_gen:ch:1:sloid:1026:1:1_pf:1E-H",
+                "from": "Genève",
+                "to": "Genève-Aéroport",
+                "reason": "endpoint-gap",
+                "maximumSnapMetres": 60415.86669409881
+              },
+              "matched": true
+            },
+            {
+              "routeId": "91-15-B-j26-1",
+              "agencyId": "11",
+              "mode": "rail",
+              "fromId": "ch:1:sloid:1030:1:1",
+              "toId": "ch:1:sloid:1008:2:2",
+              "from": "Nyon",
+              "to": "Genève",
+              "maximumSnapMetres": 28.412840353734495,
+              "occurrences": 1,
+              "admittedOccurrences": 1,
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8501030",
+              "toOperatingPoint": "8501008",
+              "stationAttachmentsMetres": [
+                22.29400292161025,
+                28.412840353734495
+              ],
+              "pathMetres": 21968.90436626835,
+              "maximumTopologyAttachmentMetres": 50.384114652505176,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087054",
+                  "from": "ch14uvag00089644",
+                  "to": "ch14uvag00089645"
+                },
+                {
+                  "id": "ch14uvag00087055",
+                  "from": "ch14uvag00089645",
+                  "to": "ch14uvag00088989"
+                },
+                {
+                  "id": "ch14uvag00087056",
+                  "from": "ch14uvag00088989",
+                  "to": "ch14uvag00089597"
+                },
+                {
+                  "id": "ch14uvag00087057",
+                  "from": "ch14uvag00089597",
+                  "to": "ch14uvag00088936"
+                },
+                {
+                  "id": "ch14uvag00087058",
+                  "from": "ch14uvag00088936",
+                  "to": "ch14uvag00089127"
+                },
+                {
+                  "id": "ch14uvag00087059",
+                  "from": "ch14uvag00089127",
+                  "to": "ch14uvag00088979"
+                },
+                {
+                  "id": "ch14uvag00087060",
+                  "from": "ch14uvag00088979",
+                  "to": "ch14uvag00089997"
+                },
+                {
+                  "id": "ch14uvag00087061",
+                  "from": "ch14uvag00089997",
+                  "to": "ch14uvag00089559"
+                },
+                {
+                  "id": "ch14uvag00087062",
+                  "from": "ch14uvag00089559",
+                  "to": "ch14uvag00089716"
+                },
+                {
+                  "id": "ch14uvag00087063",
+                  "from": "ch14uvag00089716",
+                  "to": "ch14uvag00090078"
+                },
+                {
+                  "id": "ch14uvag00087064",
+                  "from": "ch14uvag00090078",
+                  "to": "ch14uvag00088992"
+                },
+                {
+                  "id": "ch14uvag00087065",
+                  "from": "ch14uvag00088992",
+                  "to": "ch14uvag00089156"
+                },
+                {
+                  "id": "ch14uvag00087066",
+                  "from": "ch14uvag00089156",
+                  "to": "ch14uvag00090036"
+                },
+                {
+                  "id": "ch14uvag00240313",
+                  "from": "ch14uvag00090036",
+                  "to": "ch14uvag00090035"
+                },
+                {
+                  "id": "ch14uvag00087068",
+                  "from": "ch14uvag00090035",
+                  "to": "ch14uvag00090062"
+                },
+                {
+                  "id": "ch14uvag00087069",
+                  "from": "ch14uvag00090062",
+                  "to": "ch14uvag00088969"
+                },
+                {
+                  "id": "ch14uvag00087070",
+                  "from": "ch14uvag00088969",
+                  "to": "ch14uvag00089174"
+                },
+                {
+                  "id": "ch14uvag00087071",
+                  "from": "ch14uvag00089174",
+                  "to": "ch14uvag00089171"
+                },
+                {
+                  "id": "ch14uvag00087100",
+                  "from": "ch14uvag00089171",
+                  "to": "ch14uvag00089164"
+                },
+                {
+                  "id": "ch14uvag00087101",
+                  "from": "ch14uvag00089164",
+                  "to": "ch14uvag00089160"
+                }
+              ],
+              "railPatternIds": [
+                "bd7be285f2aba5b4c756a374"
+              ],
+              "sourceKind": "fot-rail-topology",
+              "sourceId": "bern-regional-fot-rail-20210706",
+              "originalAssessment": {
+                "routeId": "91-15-B-j26-1",
+                "agencyId": "11",
+                "mode": "rail",
+                "fromId": "ch:1:sloid:1030:1:1",
+                "toId": "ch:1:sloid:1008:2:2",
+                "from": "Nyon",
+                "to": "Genève",
+                "reason": "endpoint-gap",
+                "maximumSnapMetres": 59778.792335922335
+              },
+              "matched": true
+            },
+            {
+              "routeId": "91-15-B-j26-1",
+              "agencyId": "11",
+              "mode": "rail",
+              "fromId": "ch:1:sloid:1008:2:2",
+              "toId": "ch:1:sloid:1026:1:1",
+              "from": "Genève",
+              "to": "Genève-Aéroport",
+              "maximumSnapMetres": 28.412840353734495,
+              "occurrences": 1,
+              "admittedOccurrences": 1,
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8501008",
+              "toOperatingPoint": "8501026",
+              "stationAttachmentsMetres": [
+                28.412840353734495,
+                19.343946269349118
+              ],
+              "pathMetres": 6001.867190506025,
+              "maximumTopologyAttachmentMetres": 14.59637569213945,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087073",
+                  "from": "ch14uvag00089160",
+                  "to": "ch14uvag00089912"
+                },
+                {
+                  "id": "ch14uvag00087074",
+                  "from": "ch14uvag00089912",
+                  "to": "ch14uvag00088957"
+                },
+                {
+                  "id": "ch14uvag00087075",
+                  "from": "ch14uvag00088957",
+                  "to": "ch14uvag00089162"
+                }
+              ],
+              "railPatternIds": [
+                "bd7be285f2aba5b4c756a374"
+              ],
+              "sourceKind": "fot-rail-topology",
+              "sourceId": "bern-regional-fot-rail-20210706",
+              "originalAssessment": {
+                "routeId": "91-15-B-j26-1",
+                "agencyId": "11",
+                "mode": "rail",
+                "fromId": "ch:1:sloid:1008:2:2",
+                "toId": "ch:1:sloid:1026:1:1",
+                "from": "Genève",
+                "to": "Genève-Aéroport",
+                "reason": "endpoint-gap",
+                "maximumSnapMetres": 60415.86669409881
+              },
+              "matched": true
+            },
+            {
+              "routeId": "91-15-B-j26-1",
+              "agencyId": "11",
+              "mode": "rail",
+              "fromId": "ch:1:sloid:1026:1:1",
+              "toId": "ch:1:sloid:1008:3:4",
+              "from": "Genève-Aéroport",
+              "to": "Genève",
+              "maximumSnapMetres": 37.53848457728127,
+              "occurrences": 14,
+              "admittedOccurrences": 14,
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8501026",
+              "toOperatingPoint": "8501008",
+              "stationAttachmentsMetres": [
+                19.343946269349118,
+                37.53848457728127
+              ],
+              "pathMetres": 6010.992834729574,
+              "maximumTopologyAttachmentMetres": 14.59637569213945,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087075",
+                  "from": "ch14uvag00089162",
+                  "to": "ch14uvag00088957"
+                },
+                {
+                  "id": "ch14uvag00087074",
+                  "from": "ch14uvag00088957",
+                  "to": "ch14uvag00089912"
+                },
+                {
+                  "id": "ch14uvag00087073",
+                  "from": "ch14uvag00089912",
+                  "to": "ch14uvag00089160"
+                }
+              ],
+              "railPatternIds": [
+                "061b40d242431fa98d6070bc",
+                "2654023e36c0328e3d2e4738",
+                "6efeb1db2d3f2bc61a40f7df",
+                "de9117ad09f993f7b5533979",
+                "eccb74727ef7339d689cdd29"
+              ],
+              "sourceKind": "fot-rail-topology",
+              "sourceId": "bern-regional-fot-rail-20210706",
+              "originalAssessment": {
+                "routeId": "91-15-B-j26-1",
+                "agencyId": "11",
+                "mode": "rail",
+                "fromId": "ch:1:sloid:1026:1:1",
+                "toId": "ch:1:sloid:1008:3:4",
+                "from": "Genève-Aéroport",
+                "to": "Genève",
+                "reason": "endpoint-gap",
+                "maximumSnapMetres": 60415.86669409881
+              },
+              "matched": true
+            },
+            {
+              "routeId": "91-15-B-j26-1",
+              "agencyId": "11",
+              "mode": "rail",
+              "fromId": "ch:1:sloid:1008:3:4",
+              "toId": "ch:1:sloid:1030:2:2",
+              "from": "Genève",
+              "to": "Nyon",
+              "maximumSnapMetres": 37.53848457728127,
+              "occurrences": 15,
+              "admittedOccurrences": 15,
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8501008",
+              "toOperatingPoint": "8501030",
+              "stationAttachmentsMetres": [
+                37.53848457728127,
+                33.117860537822445
+              ],
+              "pathMetres": 21988.85386810813,
+              "maximumTopologyAttachmentMetres": 50.384114652505176,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087101",
+                  "from": "ch14uvag00089160",
+                  "to": "ch14uvag00089164"
+                },
+                {
+                  "id": "ch14uvag00087100",
+                  "from": "ch14uvag00089164",
+                  "to": "ch14uvag00089171"
+                },
+                {
+                  "id": "ch14uvag00087071",
+                  "from": "ch14uvag00089171",
+                  "to": "ch14uvag00089174"
+                },
+                {
+                  "id": "ch14uvag00087070",
+                  "from": "ch14uvag00089174",
+                  "to": "ch14uvag00088969"
+                },
+                {
+                  "id": "ch14uvag00087069",
+                  "from": "ch14uvag00088969",
+                  "to": "ch14uvag00090062"
+                },
+                {
+                  "id": "ch14uvag00087068",
+                  "from": "ch14uvag00090062",
+                  "to": "ch14uvag00090035"
+                },
+                {
+                  "id": "ch14uvag00240313",
+                  "from": "ch14uvag00090035",
+                  "to": "ch14uvag00090036"
+                },
+                {
+                  "id": "ch14uvag00087066",
+                  "from": "ch14uvag00090036",
+                  "to": "ch14uvag00089156"
+                },
+                {
+                  "id": "ch14uvag00087065",
+                  "from": "ch14uvag00089156",
+                  "to": "ch14uvag00088992"
+                },
+                {
+                  "id": "ch14uvag00087064",
+                  "from": "ch14uvag00088992",
+                  "to": "ch14uvag00090078"
+                },
+                {
+                  "id": "ch14uvag00087063",
+                  "from": "ch14uvag00090078",
+                  "to": "ch14uvag00089716"
+                },
+                {
+                  "id": "ch14uvag00087062",
+                  "from": "ch14uvag00089716",
+                  "to": "ch14uvag00089559"
+                },
+                {
+                  "id": "ch14uvag00087061",
+                  "from": "ch14uvag00089559",
+                  "to": "ch14uvag00089997"
+                },
+                {
+                  "id": "ch14uvag00087060",
+                  "from": "ch14uvag00089997",
+                  "to": "ch14uvag00088979"
+                },
+                {
+                  "id": "ch14uvag00087059",
+                  "from": "ch14uvag00088979",
+                  "to": "ch14uvag00089127"
+                },
+                {
+                  "id": "ch14uvag00087058",
+                  "from": "ch14uvag00089127",
+                  "to": "ch14uvag00088936"
+                },
+                {
+                  "id": "ch14uvag00087057",
+                  "from": "ch14uvag00088936",
+                  "to": "ch14uvag00089597"
+                },
+                {
+                  "id": "ch14uvag00087056",
+                  "from": "ch14uvag00089597",
+                  "to": "ch14uvag00088989"
+                },
+                {
+                  "id": "ch14uvag00087055",
+                  "from": "ch14uvag00088989",
+                  "to": "ch14uvag00089645"
+                },
+                {
+                  "id": "ch14uvag00087054",
+                  "from": "ch14uvag00089645",
+                  "to": "ch14uvag00089644"
+                }
+              ],
+              "railPatternIds": [
+                "0dc11529fc78f6ac5ca43976",
+                "2654023e36c0328e3d2e4738",
+                "6efeb1db2d3f2bc61a40f7df",
+                "8247695bd8019f3d16bef58e",
+                "de9117ad09f993f7b5533979",
+                "eccb74727ef7339d689cdd29"
+              ],
+              "sourceKind": "fot-rail-topology",
+              "sourceId": "bern-regional-fot-rail-20210706",
+              "originalAssessment": {
+                "routeId": "91-15-B-j26-1",
+                "agencyId": "11",
+                "mode": "rail",
+                "fromId": "ch:1:sloid:1008:3:4",
+                "toId": "ch:1:sloid:1030:2:2",
+                "from": "Genève",
+                "to": "Nyon",
+                "reason": "endpoint-gap",
+                "maximumSnapMetres": 59784.58865651368
+              },
+              "matched": true
+            },
+            {
+              "routeId": "91-15-B-j26-1",
+              "agencyId": "11",
+              "mode": "rail",
+              "fromId": "ch:1:sloid:1030:2:2",
+              "toId": "ch:1:sloid:1037:2:3",
+              "from": "Nyon",
+              "to": "Morges",
+              "maximumSnapMetres": 33.117860537822445,
+              "occurrences": 15,
+              "admittedOccurrences": 15,
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8501030",
+              "toOperatingPoint": "8501037",
+              "stationAttachmentsMetres": [
+                33.117860537822445,
+                30.89889244596383
+              ],
+              "pathMetres": 26238.76913970927,
+              "maximumTopologyAttachmentMetres": 13.648689837983047,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087053",
+                  "from": "ch14uvag00089644",
+                  "to": "ch14uvag00089710"
+                },
+                {
+                  "id": "ch14uvag00087052",
+                  "from": "ch14uvag00089710",
+                  "to": "ch14uvag00089197"
+                },
+                {
+                  "id": "ch14uvag00087051",
+                  "from": "ch14uvag00089197",
+                  "to": "ch14uvag00089185"
+                },
+                {
+                  "id": "ch14uvag00087050",
+                  "from": "ch14uvag00089185",
+                  "to": "ch14uvag00089784"
+                },
+                {
+                  "id": "ch14uvag00087049",
+                  "from": "ch14uvag00089784",
+                  "to": "ch14uvag00089692"
+                },
+                {
+                  "id": "ch14uvag00087048",
+                  "from": "ch14uvag00089692",
+                  "to": "ch14uvag00088716"
+                },
+                {
+                  "id": "ch14uvag00087047",
+                  "from": "ch14uvag00088716",
+                  "to": "ch14uvag00089096"
+                },
+                {
+                  "id": "ch14uvag00087046",
+                  "from": "ch14uvag00089096",
+                  "to": "ch14uvag00089974"
+                },
+                {
+                  "id": "ch14uvag00087045",
+                  "from": "ch14uvag00089974",
+                  "to": "ch14uvag00090021"
+                },
+                {
+                  "id": "ch14uvag00087044",
+                  "from": "ch14uvag00090021",
+                  "to": "ch14uvag00089571"
+                }
+              ],
+              "railPatternIds": [
+                "0dc11529fc78f6ac5ca43976",
+                "2654023e36c0328e3d2e4738",
+                "6efeb1db2d3f2bc61a40f7df",
+                "8247695bd8019f3d16bef58e",
+                "de9117ad09f993f7b5533979",
+                "eccb74727ef7339d689cdd29"
+              ],
+              "sourceKind": "fot-rail-topology",
+              "sourceId": "bern-regional-fot-rail-20210706",
+              "originalAssessment": {
+                "routeId": "91-15-B-j26-1",
+                "agencyId": "11",
+                "mode": "rail",
+                "fromId": "ch:1:sloid:1030:2:2",
+                "toId": "ch:1:sloid:1037:2:3",
+                "from": "Nyon",
+                "to": "Morges",
+                "reason": "endpoint-gap",
+                "maximumSnapMetres": 44550.40694689659
+              },
+              "matched": true
+            },
+            {
+              "routeId": "91-15-B-j26-1",
+              "agencyId": "11",
+              "mode": "rail",
+              "fromId": "ch:1:sloid:1037:2:3",
+              "toId": "ch:1:sloid:1120:0:668579",
+              "from": "Morges",
+              "to": "Lausanne",
+              "maximumSnapMetres": 32.73896515489898,
+              "occurrences": 16,
+              "admittedOccurrences": 16,
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8501037",
+              "toOperatingPoint": "8501120",
+              "stationAttachmentsMetres": [
+                30.89889244596383,
+                32.73896515489898
+              ],
+              "pathMetres": 12691.345818589789,
+              "maximumTopologyAttachmentMetres": 14.026729438682521,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087043",
+                  "from": "ch14uvag00089571",
+                  "to": "ch14uvag00089966"
+                },
+                {
+                  "id": "ch14uvag00087042",
+                  "from": "ch14uvag00089966",
+                  "to": "ch14uvag00089450"
+                },
+                {
+                  "id": "ch14uvag00087041",
+                  "from": "ch14uvag00089450",
+                  "to": "ch14uvag00089451"
+                },
+                {
+                  "id": "ch14uvag00087040",
+                  "from": "ch14uvag00089451",
+                  "to": "ch14uvag00089452"
+                },
+                {
+                  "id": "ch14uvag00087110",
+                  "from": "ch14uvag00089452",
+                  "to": "ch14uvag00089487"
+                },
+                {
+                  "id": "ch14uvag00087105",
+                  "from": "ch14uvag00089487",
+                  "to": "ch14uvag00089476"
+                },
+                {
+                  "id": "ch14uvag00087104",
+                  "from": "ch14uvag00089476",
+                  "to": "ch14uvag00089477"
+                },
+                {
+                  "id": "ch14uvag00087103",
+                  "from": "ch14uvag00089477",
+                  "to": "ch14uvag00089479"
+                },
+                {
+                  "id": "ch14uvag00087102",
+                  "from": "ch14uvag00089479",
+                  "to": "ch14uvag00089753"
+                },
+                {
+                  "id": "ch14uvag00087034",
+                  "from": "ch14uvag00089753",
+                  "to": "ch14uvag00089751"
+                },
+                {
+                  "id": "ch14uvag00087033",
+                  "from": "ch14uvag00089751",
+                  "to": "ch14uvag00089752"
+                },
+                {
+                  "id": "ch14uvag00087032",
+                  "from": "ch14uvag00089752",
+                  "to": "ch14uvag00089709"
+                },
+                {
+                  "id": "ch14uvag00087031",
+                  "from": "ch14uvag00089709",
+                  "to": "ch14uvag00089548"
+                },
+                {
+                  "id": "ch14uvag00087030",
+                  "from": "ch14uvag00089548",
+                  "to": "ch14uvag00089464"
+                },
+                {
+                  "id": "ch14uvag00087029",
+                  "from": "ch14uvag00089464",
+                  "to": "ch14uvag00089461"
+                }
+              ],
+              "railPatternIds": [
+                "061b40d242431fa98d6070bc",
+                "0dc11529fc78f6ac5ca43976",
+                "2654023e36c0328e3d2e4738",
+                "6efeb1db2d3f2bc61a40f7df",
+                "8247695bd8019f3d16bef58e",
+                "de9117ad09f993f7b5533979",
+                "eccb74727ef7339d689cdd29"
+              ],
+              "sourceKind": "fot-rail-topology",
+              "sourceId": "bern-regional-fot-rail-20210706",
+              "originalAssessment": {
+                "routeId": "91-15-B-j26-1",
+                "agencyId": "11",
+                "mode": "rail",
+                "fromId": "ch:1:sloid:1037:2:3",
+                "toId": "ch:1:sloid:1120:0:668579",
+                "from": "Morges",
+                "to": "Lausanne",
+                "reason": "endpoint-gap",
+                "maximumSnapMetres": 22456.463453942586
+              },
+              "matched": true
+            },
+            {
+              "routeId": "91-15-B-j26-1",
+              "agencyId": "11",
+              "mode": "rail",
+              "fromId": "ch:1:sloid:1008:3:4",
+              "toId": "ch:1:sloid:1030:2:3",
+              "from": "Genève",
+              "to": "Nyon",
+              "maximumSnapMetres": 37.53848457728127,
+              "occurrences": 1,
+              "admittedOccurrences": 1,
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8501008",
+              "toOperatingPoint": "8501030",
+              "stationAttachmentsMetres": [
+                37.53848457728127,
+                36.24090483240614
+              ],
+              "pathMetres": 21991.97691240271,
+              "maximumTopologyAttachmentMetres": 50.384114652505176,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087101",
+                  "from": "ch14uvag00089160",
+                  "to": "ch14uvag00089164"
+                },
+                {
+                  "id": "ch14uvag00087100",
+                  "from": "ch14uvag00089164",
+                  "to": "ch14uvag00089171"
+                },
+                {
+                  "id": "ch14uvag00087071",
+                  "from": "ch14uvag00089171",
+                  "to": "ch14uvag00089174"
+                },
+                {
+                  "id": "ch14uvag00087070",
+                  "from": "ch14uvag00089174",
+                  "to": "ch14uvag00088969"
+                },
+                {
+                  "id": "ch14uvag00087069",
+                  "from": "ch14uvag00088969",
+                  "to": "ch14uvag00090062"
+                },
+                {
+                  "id": "ch14uvag00087068",
+                  "from": "ch14uvag00090062",
+                  "to": "ch14uvag00090035"
+                },
+                {
+                  "id": "ch14uvag00240313",
+                  "from": "ch14uvag00090035",
+                  "to": "ch14uvag00090036"
+                },
+                {
+                  "id": "ch14uvag00087066",
+                  "from": "ch14uvag00090036",
+                  "to": "ch14uvag00089156"
+                },
+                {
+                  "id": "ch14uvag00087065",
+                  "from": "ch14uvag00089156",
+                  "to": "ch14uvag00088992"
+                },
+                {
+                  "id": "ch14uvag00087064",
+                  "from": "ch14uvag00088992",
+                  "to": "ch14uvag00090078"
+                },
+                {
+                  "id": "ch14uvag00087063",
+                  "from": "ch14uvag00090078",
+                  "to": "ch14uvag00089716"
+                },
+                {
+                  "id": "ch14uvag00087062",
+                  "from": "ch14uvag00089716",
+                  "to": "ch14uvag00089559"
+                },
+                {
+                  "id": "ch14uvag00087061",
+                  "from": "ch14uvag00089559",
+                  "to": "ch14uvag00089997"
+                },
+                {
+                  "id": "ch14uvag00087060",
+                  "from": "ch14uvag00089997",
+                  "to": "ch14uvag00088979"
+                },
+                {
+                  "id": "ch14uvag00087059",
+                  "from": "ch14uvag00088979",
+                  "to": "ch14uvag00089127"
+                },
+                {
+                  "id": "ch14uvag00087058",
+                  "from": "ch14uvag00089127",
+                  "to": "ch14uvag00088936"
+                },
+                {
+                  "id": "ch14uvag00087057",
+                  "from": "ch14uvag00088936",
+                  "to": "ch14uvag00089597"
+                },
+                {
+                  "id": "ch14uvag00087056",
+                  "from": "ch14uvag00089597",
+                  "to": "ch14uvag00088989"
+                },
+                {
+                  "id": "ch14uvag00087055",
+                  "from": "ch14uvag00088989",
+                  "to": "ch14uvag00089645"
+                },
+                {
+                  "id": "ch14uvag00087054",
+                  "from": "ch14uvag00089645",
+                  "to": "ch14uvag00089644"
+                }
+              ],
+              "railPatternIds": [
+                "061b40d242431fa98d6070bc"
+              ],
+              "sourceKind": "fot-rail-topology",
+              "sourceId": "bern-regional-fot-rail-20210706",
+              "originalAssessment": {
+                "routeId": "91-15-B-j26-1",
+                "agencyId": "11",
+                "mode": "rail",
+                "fromId": "ch:1:sloid:1008:3:4",
+                "toId": "ch:1:sloid:1030:2:3",
+                "from": "Genève",
+                "to": "Nyon",
+                "reason": "endpoint-gap",
+                "maximumSnapMetres": 59784.58865651368
+              },
+              "matched": true
+            },
+            {
+              "routeId": "91-15-B-j26-1",
+              "agencyId": "11",
+              "mode": "rail",
+              "fromId": "ch:1:sloid:1030:2:3",
+              "toId": "ch:1:sloid:1037:2:3",
+              "from": "Nyon",
+              "to": "Morges",
+              "maximumSnapMetres": 36.24090483240614,
+              "occurrences": 1,
+              "admittedOccurrences": 1,
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8501030",
+              "toOperatingPoint": "8501037",
+              "stationAttachmentsMetres": [
+                36.24090483240614,
+                30.89889244596383
+              ],
+              "pathMetres": 26241.892184003853,
+              "maximumTopologyAttachmentMetres": 13.648689837983047,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087053",
+                  "from": "ch14uvag00089644",
+                  "to": "ch14uvag00089710"
+                },
+                {
+                  "id": "ch14uvag00087052",
+                  "from": "ch14uvag00089710",
+                  "to": "ch14uvag00089197"
+                },
+                {
+                  "id": "ch14uvag00087051",
+                  "from": "ch14uvag00089197",
+                  "to": "ch14uvag00089185"
+                },
+                {
+                  "id": "ch14uvag00087050",
+                  "from": "ch14uvag00089185",
+                  "to": "ch14uvag00089784"
+                },
+                {
+                  "id": "ch14uvag00087049",
+                  "from": "ch14uvag00089784",
+                  "to": "ch14uvag00089692"
+                },
+                {
+                  "id": "ch14uvag00087048",
+                  "from": "ch14uvag00089692",
+                  "to": "ch14uvag00088716"
+                },
+                {
+                  "id": "ch14uvag00087047",
+                  "from": "ch14uvag00088716",
+                  "to": "ch14uvag00089096"
+                },
+                {
+                  "id": "ch14uvag00087046",
+                  "from": "ch14uvag00089096",
+                  "to": "ch14uvag00089974"
+                },
+                {
+                  "id": "ch14uvag00087045",
+                  "from": "ch14uvag00089974",
+                  "to": "ch14uvag00090021"
+                },
+                {
+                  "id": "ch14uvag00087044",
+                  "from": "ch14uvag00090021",
+                  "to": "ch14uvag00089571"
+                }
+              ],
+              "railPatternIds": [
+                "061b40d242431fa98d6070bc"
+              ],
+              "sourceKind": "fot-rail-topology",
+              "sourceId": "bern-regional-fot-rail-20210706",
+              "originalAssessment": {
+                "routeId": "91-15-B-j26-1",
+                "agencyId": "11",
+                "mode": "rail",
+                "fromId": "ch:1:sloid:1030:2:3",
+                "toId": "ch:1:sloid:1037:2:3",
+                "from": "Nyon",
+                "to": "Morges",
+                "reason": "endpoint-gap",
+                "maximumSnapMetres": 44554.09494735866
+              },
+              "matched": true
+            },
+            {
+              "routeId": "91-15-B-j26-1",
+              "agencyId": "11",
+              "mode": "rail",
+              "fromId": "ch:1:sloid:1026:1:2",
+              "toId": "ch:1:sloid:1008:3:4",
+              "from": "Genève-Aéroport",
+              "to": "Genève",
+              "maximumSnapMetres": 37.53848457728127,
+              "occurrences": 1,
+              "admittedOccurrences": 1,
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8501026",
+              "toOperatingPoint": "8501008",
+              "stationAttachmentsMetres": [
+                15.48280826549651,
+                37.53848457728127
+              ],
+              "pathMetres": 6007.131696725721,
+              "maximumTopologyAttachmentMetres": 14.59637569213945,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087075",
+                  "from": "ch14uvag00089162",
+                  "to": "ch14uvag00088957"
+                },
+                {
+                  "id": "ch14uvag00087074",
+                  "from": "ch14uvag00088957",
+                  "to": "ch14uvag00089912"
+                },
+                {
+                  "id": "ch14uvag00087073",
+                  "from": "ch14uvag00089912",
+                  "to": "ch14uvag00089160"
+                }
+              ],
+              "railPatternIds": [
+                "8247695bd8019f3d16bef58e"
+              ],
+              "sourceKind": "fot-rail-topology",
+              "sourceId": "bern-regional-fot-rail-20210706",
+              "originalAssessment": {
+                "routeId": "91-15-B-j26-1",
+                "agencyId": "11",
+                "mode": "rail",
+                "fromId": "ch:1:sloid:1026:1:2",
+                "toId": "ch:1:sloid:1008:3:4",
+                "from": "Genève-Aéroport",
+                "to": "Genève",
+                "reason": "endpoint-gap",
+                "maximumSnapMetres": 60414.82782592019
+              },
+              "matched": true
+            },
+            {
+              "routeId": "91-15-B-j26-1",
+              "agencyId": "11",
+              "mode": "rail",
+              "fromId": "ch:1:sloid:1026_gen:ch:1:sloid:1026:1:1_pf:1A-D",
+              "toId": "ch:1:sloid:1008:3:4",
+              "from": "Genève-Aéroport",
+              "to": "Genève",
+              "maximumSnapMetres": 37.53848457728127,
+              "occurrences": 1,
+              "admittedOccurrences": 1,
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8501026",
+              "toOperatingPoint": "8501008",
+              "stationAttachmentsMetres": [
+                19.343946269349118,
+                37.53848457728127
+              ],
+              "pathMetres": 6010.992834729574,
+              "maximumTopologyAttachmentMetres": 14.59637569213945,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087075",
+                  "from": "ch14uvag00089162",
+                  "to": "ch14uvag00088957"
+                },
+                {
+                  "id": "ch14uvag00087074",
+                  "from": "ch14uvag00088957",
+                  "to": "ch14uvag00089912"
+                },
+                {
+                  "id": "ch14uvag00087073",
+                  "from": "ch14uvag00089912",
+                  "to": "ch14uvag00089160"
+                }
+              ],
+              "railPatternIds": [
+                "0dc11529fc78f6ac5ca43976"
+              ],
+              "sourceKind": "fot-rail-topology",
+              "sourceId": "bern-regional-fot-rail-20210706",
+              "originalAssessment": {
+                "routeId": "91-15-B-j26-1",
+                "agencyId": "11",
+                "mode": "rail",
+                "fromId": "ch:1:sloid:1026_gen:ch:1:sloid:1026:1:1_pf:1A-D",
+                "toId": "ch:1:sloid:1008:3:4",
+                "from": "Genève-Aéroport",
+                "to": "Genève",
+                "reason": "endpoint-gap",
+                "maximumSnapMetres": 60415.86669409881
+              },
+              "matched": true
+            }
+          ]
+        }
+      ],
+      "candidateContexts": [
+        {
+          "pair": [
+            "91-15-B-j26-1",
+            "ch:1:sloid:1120:0:42631",
+            "ch:1:sloid:1037:1:1"
+          ],
+          "pathSha256": "2afe804159c03a5b0f744ce54e0b8d405a4e206ff9dfc95e2edeea04f05e97da",
+          "contexts": [
+            {
+              "patternId": "ae733413b264730a0dd86e82",
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8501120",
+              "toOperatingPoint": "BE-MORGES-1",
+              "stationAttachmentsMetres": [
+                24.47764469473426,
+                8.686273059282048
+              ],
+              "pathMetres": 12513.971670400006,
+              "maximumTopologyAttachmentMetres": 14.026729438682521,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087029",
+                  "from": "ch14uvag00089461",
+                  "to": "ch14uvag00089464"
+                },
+                {
+                  "id": "ch14uvag00087030",
+                  "from": "ch14uvag00089464",
+                  "to": "ch14uvag00089548"
+                },
+                {
+                  "id": "ch14uvag00087031",
+                  "from": "ch14uvag00089548",
+                  "to": "ch14uvag00089709"
+                },
+                {
+                  "id": "ch14uvag00087032",
+                  "from": "ch14uvag00089709",
+                  "to": "ch14uvag00089752"
+                },
+                {
+                  "id": "ch14uvag00087033",
+                  "from": "ch14uvag00089752",
+                  "to": "ch14uvag00089751"
+                },
+                {
+                  "id": "ch14uvag00087034",
+                  "from": "ch14uvag00089751",
+                  "to": "ch14uvag00089753"
+                },
+                {
+                  "id": "ch14uvag00087102",
+                  "from": "ch14uvag00089753",
+                  "to": "ch14uvag00089479"
+                },
+                {
+                  "id": "ch14uvag00087103",
+                  "from": "ch14uvag00089479",
+                  "to": "ch14uvag00089477"
+                },
+                {
+                  "id": "ch14uvag00087104",
+                  "from": "ch14uvag00089477",
+                  "to": "ch14uvag00089476"
+                },
+                {
+                  "id": "ch14uvag00087105",
+                  "from": "ch14uvag00089476",
+                  "to": "ch14uvag00089487"
+                },
+                {
+                  "id": "ch14uvag00087110",
+                  "from": "ch14uvag00089487",
+                  "to": "ch14uvag00089452"
+                },
+                {
+                  "id": "ch14uvag00087040",
+                  "from": "ch14uvag00089452",
+                  "to": "ch14uvag00089451"
+                },
+                {
+                  "id": "ch14uvag00087041",
+                  "from": "ch14uvag00089451",
+                  "to": "ch14uvag00089450"
+                },
+                {
+                  "id": "ch14uvag00087042",
+                  "from": "ch14uvag00089450",
+                  "to": "ch14uvag00089966"
+                },
+                {
+                  "id": "ch14uvag00087043:morges-platform:1:north",
+                  "from": "ch14uvag00089966",
+                  "to": "bern:morges-platform:1"
+                }
+              ],
+              "morgesReview": {
+                "sourceCurveId": "ch14uvag00087043",
+                "originalStopId": "ch:1:sloid:1037:1:1",
+                "throughStation": true,
+                "bothSidesConnected": true
+              },
+              "maximumSnapMetres": 24.47764469473426,
+              "pathSha256": "2afe804159c03a5b0f744ce54e0b8d405a4e206ff9dfc95e2edeea04f05e97da"
+            },
+            {
+              "patternId": "691d3efd9ddabfa97e8769a2",
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8501120",
+              "toOperatingPoint": "BE-MORGES-1",
+              "stationAttachmentsMetres": [
+                24.47764469473426,
+                8.686273059282048
+              ],
+              "pathMetres": 12513.971670400006,
+              "maximumTopologyAttachmentMetres": 14.026729438682521,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087029",
+                  "from": "ch14uvag00089461",
+                  "to": "ch14uvag00089464"
+                },
+                {
+                  "id": "ch14uvag00087030",
+                  "from": "ch14uvag00089464",
+                  "to": "ch14uvag00089548"
+                },
+                {
+                  "id": "ch14uvag00087031",
+                  "from": "ch14uvag00089548",
+                  "to": "ch14uvag00089709"
+                },
+                {
+                  "id": "ch14uvag00087032",
+                  "from": "ch14uvag00089709",
+                  "to": "ch14uvag00089752"
+                },
+                {
+                  "id": "ch14uvag00087033",
+                  "from": "ch14uvag00089752",
+                  "to": "ch14uvag00089751"
+                },
+                {
+                  "id": "ch14uvag00087034",
+                  "from": "ch14uvag00089751",
+                  "to": "ch14uvag00089753"
+                },
+                {
+                  "id": "ch14uvag00087102",
+                  "from": "ch14uvag00089753",
+                  "to": "ch14uvag00089479"
+                },
+                {
+                  "id": "ch14uvag00087103",
+                  "from": "ch14uvag00089479",
+                  "to": "ch14uvag00089477"
+                },
+                {
+                  "id": "ch14uvag00087104",
+                  "from": "ch14uvag00089477",
+                  "to": "ch14uvag00089476"
+                },
+                {
+                  "id": "ch14uvag00087105",
+                  "from": "ch14uvag00089476",
+                  "to": "ch14uvag00089487"
+                },
+                {
+                  "id": "ch14uvag00087110",
+                  "from": "ch14uvag00089487",
+                  "to": "ch14uvag00089452"
+                },
+                {
+                  "id": "ch14uvag00087040",
+                  "from": "ch14uvag00089452",
+                  "to": "ch14uvag00089451"
+                },
+                {
+                  "id": "ch14uvag00087041",
+                  "from": "ch14uvag00089451",
+                  "to": "ch14uvag00089450"
+                },
+                {
+                  "id": "ch14uvag00087042",
+                  "from": "ch14uvag00089450",
+                  "to": "ch14uvag00089966"
+                },
+                {
+                  "id": "ch14uvag00087043:morges-platform:1:north",
+                  "from": "ch14uvag00089966",
+                  "to": "bern:morges-platform:1"
+                }
+              ],
+              "morgesReview": {
+                "sourceCurveId": "ch14uvag00087043",
+                "originalStopId": "ch:1:sloid:1037:1:1",
+                "throughStation": true,
+                "bothSidesConnected": true
+              },
+              "maximumSnapMetres": 24.47764469473426,
+              "pathSha256": "2afe804159c03a5b0f744ce54e0b8d405a4e206ff9dfc95e2edeea04f05e97da"
+            },
+            {
+              "patternId": "7c0e1ae1ccb9db0dc181f665",
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8501120",
+              "toOperatingPoint": "BE-MORGES-1",
+              "stationAttachmentsMetres": [
+                24.47764469473426,
+                8.686273059282048
+              ],
+              "pathMetres": 12513.971670400006,
+              "maximumTopologyAttachmentMetres": 14.026729438682521,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087029",
+                  "from": "ch14uvag00089461",
+                  "to": "ch14uvag00089464"
+                },
+                {
+                  "id": "ch14uvag00087030",
+                  "from": "ch14uvag00089464",
+                  "to": "ch14uvag00089548"
+                },
+                {
+                  "id": "ch14uvag00087031",
+                  "from": "ch14uvag00089548",
+                  "to": "ch14uvag00089709"
+                },
+                {
+                  "id": "ch14uvag00087032",
+                  "from": "ch14uvag00089709",
+                  "to": "ch14uvag00089752"
+                },
+                {
+                  "id": "ch14uvag00087033",
+                  "from": "ch14uvag00089752",
+                  "to": "ch14uvag00089751"
+                },
+                {
+                  "id": "ch14uvag00087034",
+                  "from": "ch14uvag00089751",
+                  "to": "ch14uvag00089753"
+                },
+                {
+                  "id": "ch14uvag00087102",
+                  "from": "ch14uvag00089753",
+                  "to": "ch14uvag00089479"
+                },
+                {
+                  "id": "ch14uvag00087103",
+                  "from": "ch14uvag00089479",
+                  "to": "ch14uvag00089477"
+                },
+                {
+                  "id": "ch14uvag00087104",
+                  "from": "ch14uvag00089477",
+                  "to": "ch14uvag00089476"
+                },
+                {
+                  "id": "ch14uvag00087105",
+                  "from": "ch14uvag00089476",
+                  "to": "ch14uvag00089487"
+                },
+                {
+                  "id": "ch14uvag00087110",
+                  "from": "ch14uvag00089487",
+                  "to": "ch14uvag00089452"
+                },
+                {
+                  "id": "ch14uvag00087040",
+                  "from": "ch14uvag00089452",
+                  "to": "ch14uvag00089451"
+                },
+                {
+                  "id": "ch14uvag00087041",
+                  "from": "ch14uvag00089451",
+                  "to": "ch14uvag00089450"
+                },
+                {
+                  "id": "ch14uvag00087042",
+                  "from": "ch14uvag00089450",
+                  "to": "ch14uvag00089966"
+                },
+                {
+                  "id": "ch14uvag00087043:morges-platform:1:north",
+                  "from": "ch14uvag00089966",
+                  "to": "bern:morges-platform:1"
+                }
+              ],
+              "morgesReview": {
+                "sourceCurveId": "ch14uvag00087043",
+                "originalStopId": "ch:1:sloid:1037:1:1",
+                "throughStation": true,
+                "bothSidesConnected": true
+              },
+              "maximumSnapMetres": 24.47764469473426,
+              "pathSha256": "2afe804159c03a5b0f744ce54e0b8d405a4e206ff9dfc95e2edeea04f05e97da"
+            },
+            {
+              "patternId": "dbb908a1e4f9055743d4cec2",
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8501120",
+              "toOperatingPoint": "BE-MORGES-1",
+              "stationAttachmentsMetres": [
+                24.47764469473426,
+                8.686273059282048
+              ],
+              "pathMetres": 12513.971670400006,
+              "maximumTopologyAttachmentMetres": 14.026729438682521,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087029",
+                  "from": "ch14uvag00089461",
+                  "to": "ch14uvag00089464"
+                },
+                {
+                  "id": "ch14uvag00087030",
+                  "from": "ch14uvag00089464",
+                  "to": "ch14uvag00089548"
+                },
+                {
+                  "id": "ch14uvag00087031",
+                  "from": "ch14uvag00089548",
+                  "to": "ch14uvag00089709"
+                },
+                {
+                  "id": "ch14uvag00087032",
+                  "from": "ch14uvag00089709",
+                  "to": "ch14uvag00089752"
+                },
+                {
+                  "id": "ch14uvag00087033",
+                  "from": "ch14uvag00089752",
+                  "to": "ch14uvag00089751"
+                },
+                {
+                  "id": "ch14uvag00087034",
+                  "from": "ch14uvag00089751",
+                  "to": "ch14uvag00089753"
+                },
+                {
+                  "id": "ch14uvag00087102",
+                  "from": "ch14uvag00089753",
+                  "to": "ch14uvag00089479"
+                },
+                {
+                  "id": "ch14uvag00087103",
+                  "from": "ch14uvag00089479",
+                  "to": "ch14uvag00089477"
+                },
+                {
+                  "id": "ch14uvag00087104",
+                  "from": "ch14uvag00089477",
+                  "to": "ch14uvag00089476"
+                },
+                {
+                  "id": "ch14uvag00087105",
+                  "from": "ch14uvag00089476",
+                  "to": "ch14uvag00089487"
+                },
+                {
+                  "id": "ch14uvag00087110",
+                  "from": "ch14uvag00089487",
+                  "to": "ch14uvag00089452"
+                },
+                {
+                  "id": "ch14uvag00087040",
+                  "from": "ch14uvag00089452",
+                  "to": "ch14uvag00089451"
+                },
+                {
+                  "id": "ch14uvag00087041",
+                  "from": "ch14uvag00089451",
+                  "to": "ch14uvag00089450"
+                },
+                {
+                  "id": "ch14uvag00087042",
+                  "from": "ch14uvag00089450",
+                  "to": "ch14uvag00089966"
+                },
+                {
+                  "id": "ch14uvag00087043:morges-platform:1:north",
+                  "from": "ch14uvag00089966",
+                  "to": "bern:morges-platform:1"
+                }
+              ],
+              "morgesReview": {
+                "sourceCurveId": "ch14uvag00087043",
+                "originalStopId": "ch:1:sloid:1037:1:1",
+                "throughStation": true,
+                "bothSidesConnected": true
+              },
+              "maximumSnapMetres": 24.47764469473426,
+              "pathSha256": "2afe804159c03a5b0f744ce54e0b8d405a4e206ff9dfc95e2edeea04f05e97da"
+            },
+            {
+              "patternId": "bd7be285f2aba5b4c756a374",
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8501120",
+              "toOperatingPoint": "BE-MORGES-1",
+              "stationAttachmentsMetres": [
+                24.47764469473426,
+                8.686273059282048
+              ],
+              "pathMetres": 12513.971670400006,
+              "maximumTopologyAttachmentMetres": 14.026729438682521,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087029",
+                  "from": "ch14uvag00089461",
+                  "to": "ch14uvag00089464"
+                },
+                {
+                  "id": "ch14uvag00087030",
+                  "from": "ch14uvag00089464",
+                  "to": "ch14uvag00089548"
+                },
+                {
+                  "id": "ch14uvag00087031",
+                  "from": "ch14uvag00089548",
+                  "to": "ch14uvag00089709"
+                },
+                {
+                  "id": "ch14uvag00087032",
+                  "from": "ch14uvag00089709",
+                  "to": "ch14uvag00089752"
+                },
+                {
+                  "id": "ch14uvag00087033",
+                  "from": "ch14uvag00089752",
+                  "to": "ch14uvag00089751"
+                },
+                {
+                  "id": "ch14uvag00087034",
+                  "from": "ch14uvag00089751",
+                  "to": "ch14uvag00089753"
+                },
+                {
+                  "id": "ch14uvag00087102",
+                  "from": "ch14uvag00089753",
+                  "to": "ch14uvag00089479"
+                },
+                {
+                  "id": "ch14uvag00087103",
+                  "from": "ch14uvag00089479",
+                  "to": "ch14uvag00089477"
+                },
+                {
+                  "id": "ch14uvag00087104",
+                  "from": "ch14uvag00089477",
+                  "to": "ch14uvag00089476"
+                },
+                {
+                  "id": "ch14uvag00087105",
+                  "from": "ch14uvag00089476",
+                  "to": "ch14uvag00089487"
+                },
+                {
+                  "id": "ch14uvag00087110",
+                  "from": "ch14uvag00089487",
+                  "to": "ch14uvag00089452"
+                },
+                {
+                  "id": "ch14uvag00087040",
+                  "from": "ch14uvag00089452",
+                  "to": "ch14uvag00089451"
+                },
+                {
+                  "id": "ch14uvag00087041",
+                  "from": "ch14uvag00089451",
+                  "to": "ch14uvag00089450"
+                },
+                {
+                  "id": "ch14uvag00087042",
+                  "from": "ch14uvag00089450",
+                  "to": "ch14uvag00089966"
+                },
+                {
+                  "id": "ch14uvag00087043:morges-platform:1:north",
+                  "from": "ch14uvag00089966",
+                  "to": "bern:morges-platform:1"
+                }
+              ],
+              "morgesReview": {
+                "sourceCurveId": "ch14uvag00087043",
+                "originalStopId": "ch:1:sloid:1037:1:1",
+                "throughStation": true,
+                "bothSidesConnected": true
+              },
+              "maximumSnapMetres": 24.47764469473426,
+              "pathSha256": "2afe804159c03a5b0f744ce54e0b8d405a4e206ff9dfc95e2edeea04f05e97da"
+            }
+          ]
+        },
+        {
+          "pair": [
+            "91-15-B-j26-1",
+            "ch:1:sloid:1037:1:1",
+            "ch:1:sloid:1030:1:1"
+          ],
+          "pathSha256": "6a348edb5a2a2cb614a04d8dc2bd3ac4619b7b17e302d3addb8ae036257ec9bd",
+          "contexts": [
+            {
+              "patternId": "ae733413b264730a0dd86e82",
+              "geometrySource": "fot",
+              "fromOperatingPoint": "BE-MORGES-1",
+              "toOperatingPoint": "8501030",
+              "stationAttachmentsMetres": [
+                8.686273059282048,
+                22.29400292161025
+              ],
+              "pathMetres": 26352.632873379447,
+              "maximumTopologyAttachmentMetres": 13.648689837983047,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087043:morges-platform:1:station",
+                  "from": "bern:morges-platform:1",
+                  "to": "ch14uvag00089571"
+                },
+                {
+                  "id": "ch14uvag00087044",
+                  "from": "ch14uvag00089571",
+                  "to": "ch14uvag00090021"
+                },
+                {
+                  "id": "ch14uvag00087045",
+                  "from": "ch14uvag00090021",
+                  "to": "ch14uvag00089974"
+                },
+                {
+                  "id": "ch14uvag00087046",
+                  "from": "ch14uvag00089974",
+                  "to": "ch14uvag00089096"
+                },
+                {
+                  "id": "ch14uvag00087047",
+                  "from": "ch14uvag00089096",
+                  "to": "ch14uvag00088716"
+                },
+                {
+                  "id": "ch14uvag00087048",
+                  "from": "ch14uvag00088716",
+                  "to": "ch14uvag00089692"
+                },
+                {
+                  "id": "ch14uvag00087049",
+                  "from": "ch14uvag00089692",
+                  "to": "ch14uvag00089784"
+                },
+                {
+                  "id": "ch14uvag00087050",
+                  "from": "ch14uvag00089784",
+                  "to": "ch14uvag00089185"
+                },
+                {
+                  "id": "ch14uvag00087051",
+                  "from": "ch14uvag00089185",
+                  "to": "ch14uvag00089197"
+                },
+                {
+                  "id": "ch14uvag00087052",
+                  "from": "ch14uvag00089197",
+                  "to": "ch14uvag00089710"
+                },
+                {
+                  "id": "ch14uvag00087053",
+                  "from": "ch14uvag00089710",
+                  "to": "ch14uvag00089644"
+                }
+              ],
+              "morgesReview": {
+                "sourceCurveId": "ch14uvag00087043",
+                "originalStopId": "ch:1:sloid:1037:1:1",
+                "throughStation": true,
+                "bothSidesConnected": true
+              },
+              "maximumSnapMetres": 22.29400292161025,
+              "pathSha256": "6a348edb5a2a2cb614a04d8dc2bd3ac4619b7b17e302d3addb8ae036257ec9bd"
+            },
+            {
+              "patternId": "691d3efd9ddabfa97e8769a2",
+              "geometrySource": "fot",
+              "fromOperatingPoint": "BE-MORGES-1",
+              "toOperatingPoint": "8501030",
+              "stationAttachmentsMetres": [
+                8.686273059282048,
+                22.29400292161025
+              ],
+              "pathMetres": 26352.632873379447,
+              "maximumTopologyAttachmentMetres": 13.648689837983047,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087043:morges-platform:1:station",
+                  "from": "bern:morges-platform:1",
+                  "to": "ch14uvag00089571"
+                },
+                {
+                  "id": "ch14uvag00087044",
+                  "from": "ch14uvag00089571",
+                  "to": "ch14uvag00090021"
+                },
+                {
+                  "id": "ch14uvag00087045",
+                  "from": "ch14uvag00090021",
+                  "to": "ch14uvag00089974"
+                },
+                {
+                  "id": "ch14uvag00087046",
+                  "from": "ch14uvag00089974",
+                  "to": "ch14uvag00089096"
+                },
+                {
+                  "id": "ch14uvag00087047",
+                  "from": "ch14uvag00089096",
+                  "to": "ch14uvag00088716"
+                },
+                {
+                  "id": "ch14uvag00087048",
+                  "from": "ch14uvag00088716",
+                  "to": "ch14uvag00089692"
+                },
+                {
+                  "id": "ch14uvag00087049",
+                  "from": "ch14uvag00089692",
+                  "to": "ch14uvag00089784"
+                },
+                {
+                  "id": "ch14uvag00087050",
+                  "from": "ch14uvag00089784",
+                  "to": "ch14uvag00089185"
+                },
+                {
+                  "id": "ch14uvag00087051",
+                  "from": "ch14uvag00089185",
+                  "to": "ch14uvag00089197"
+                },
+                {
+                  "id": "ch14uvag00087052",
+                  "from": "ch14uvag00089197",
+                  "to": "ch14uvag00089710"
+                },
+                {
+                  "id": "ch14uvag00087053",
+                  "from": "ch14uvag00089710",
+                  "to": "ch14uvag00089644"
+                }
+              ],
+              "morgesReview": {
+                "sourceCurveId": "ch14uvag00087043",
+                "originalStopId": "ch:1:sloid:1037:1:1",
+                "throughStation": true,
+                "bothSidesConnected": true
+              },
+              "maximumSnapMetres": 22.29400292161025,
+              "pathSha256": "6a348edb5a2a2cb614a04d8dc2bd3ac4619b7b17e302d3addb8ae036257ec9bd"
+            },
+            {
+              "patternId": "7c0e1ae1ccb9db0dc181f665",
+              "geometrySource": "fot",
+              "fromOperatingPoint": "BE-MORGES-1",
+              "toOperatingPoint": "8501030",
+              "stationAttachmentsMetres": [
+                8.686273059282048,
+                22.29400292161025
+              ],
+              "pathMetres": 26352.632873379447,
+              "maximumTopologyAttachmentMetres": 13.648689837983047,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087043:morges-platform:1:station",
+                  "from": "bern:morges-platform:1",
+                  "to": "ch14uvag00089571"
+                },
+                {
+                  "id": "ch14uvag00087044",
+                  "from": "ch14uvag00089571",
+                  "to": "ch14uvag00090021"
+                },
+                {
+                  "id": "ch14uvag00087045",
+                  "from": "ch14uvag00090021",
+                  "to": "ch14uvag00089974"
+                },
+                {
+                  "id": "ch14uvag00087046",
+                  "from": "ch14uvag00089974",
+                  "to": "ch14uvag00089096"
+                },
+                {
+                  "id": "ch14uvag00087047",
+                  "from": "ch14uvag00089096",
+                  "to": "ch14uvag00088716"
+                },
+                {
+                  "id": "ch14uvag00087048",
+                  "from": "ch14uvag00088716",
+                  "to": "ch14uvag00089692"
+                },
+                {
+                  "id": "ch14uvag00087049",
+                  "from": "ch14uvag00089692",
+                  "to": "ch14uvag00089784"
+                },
+                {
+                  "id": "ch14uvag00087050",
+                  "from": "ch14uvag00089784",
+                  "to": "ch14uvag00089185"
+                },
+                {
+                  "id": "ch14uvag00087051",
+                  "from": "ch14uvag00089185",
+                  "to": "ch14uvag00089197"
+                },
+                {
+                  "id": "ch14uvag00087052",
+                  "from": "ch14uvag00089197",
+                  "to": "ch14uvag00089710"
+                },
+                {
+                  "id": "ch14uvag00087053",
+                  "from": "ch14uvag00089710",
+                  "to": "ch14uvag00089644"
+                }
+              ],
+              "morgesReview": {
+                "sourceCurveId": "ch14uvag00087043",
+                "originalStopId": "ch:1:sloid:1037:1:1",
+                "throughStation": true,
+                "bothSidesConnected": true
+              },
+              "maximumSnapMetres": 22.29400292161025,
+              "pathSha256": "6a348edb5a2a2cb614a04d8dc2bd3ac4619b7b17e302d3addb8ae036257ec9bd"
+            },
+            {
+              "patternId": "dbb908a1e4f9055743d4cec2",
+              "geometrySource": "fot",
+              "fromOperatingPoint": "BE-MORGES-1",
+              "toOperatingPoint": "8501030",
+              "stationAttachmentsMetres": [
+                8.686273059282048,
+                22.29400292161025
+              ],
+              "pathMetres": 26352.632873379447,
+              "maximumTopologyAttachmentMetres": 13.648689837983047,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087043:morges-platform:1:station",
+                  "from": "bern:morges-platform:1",
+                  "to": "ch14uvag00089571"
+                },
+                {
+                  "id": "ch14uvag00087044",
+                  "from": "ch14uvag00089571",
+                  "to": "ch14uvag00090021"
+                },
+                {
+                  "id": "ch14uvag00087045",
+                  "from": "ch14uvag00090021",
+                  "to": "ch14uvag00089974"
+                },
+                {
+                  "id": "ch14uvag00087046",
+                  "from": "ch14uvag00089974",
+                  "to": "ch14uvag00089096"
+                },
+                {
+                  "id": "ch14uvag00087047",
+                  "from": "ch14uvag00089096",
+                  "to": "ch14uvag00088716"
+                },
+                {
+                  "id": "ch14uvag00087048",
+                  "from": "ch14uvag00088716",
+                  "to": "ch14uvag00089692"
+                },
+                {
+                  "id": "ch14uvag00087049",
+                  "from": "ch14uvag00089692",
+                  "to": "ch14uvag00089784"
+                },
+                {
+                  "id": "ch14uvag00087050",
+                  "from": "ch14uvag00089784",
+                  "to": "ch14uvag00089185"
+                },
+                {
+                  "id": "ch14uvag00087051",
+                  "from": "ch14uvag00089185",
+                  "to": "ch14uvag00089197"
+                },
+                {
+                  "id": "ch14uvag00087052",
+                  "from": "ch14uvag00089197",
+                  "to": "ch14uvag00089710"
+                },
+                {
+                  "id": "ch14uvag00087053",
+                  "from": "ch14uvag00089710",
+                  "to": "ch14uvag00089644"
+                }
+              ],
+              "morgesReview": {
+                "sourceCurveId": "ch14uvag00087043",
+                "originalStopId": "ch:1:sloid:1037:1:1",
+                "throughStation": true,
+                "bothSidesConnected": true
+              },
+              "maximumSnapMetres": 22.29400292161025,
+              "pathSha256": "6a348edb5a2a2cb614a04d8dc2bd3ac4619b7b17e302d3addb8ae036257ec9bd"
+            },
+            {
+              "patternId": "bd7be285f2aba5b4c756a374",
+              "geometrySource": "fot",
+              "fromOperatingPoint": "BE-MORGES-1",
+              "toOperatingPoint": "8501030",
+              "stationAttachmentsMetres": [
+                8.686273059282048,
+                22.29400292161025
+              ],
+              "pathMetres": 26352.632873379447,
+              "maximumTopologyAttachmentMetres": 13.648689837983047,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087043:morges-platform:1:station",
+                  "from": "bern:morges-platform:1",
+                  "to": "ch14uvag00089571"
+                },
+                {
+                  "id": "ch14uvag00087044",
+                  "from": "ch14uvag00089571",
+                  "to": "ch14uvag00090021"
+                },
+                {
+                  "id": "ch14uvag00087045",
+                  "from": "ch14uvag00090021",
+                  "to": "ch14uvag00089974"
+                },
+                {
+                  "id": "ch14uvag00087046",
+                  "from": "ch14uvag00089974",
+                  "to": "ch14uvag00089096"
+                },
+                {
+                  "id": "ch14uvag00087047",
+                  "from": "ch14uvag00089096",
+                  "to": "ch14uvag00088716"
+                },
+                {
+                  "id": "ch14uvag00087048",
+                  "from": "ch14uvag00088716",
+                  "to": "ch14uvag00089692"
+                },
+                {
+                  "id": "ch14uvag00087049",
+                  "from": "ch14uvag00089692",
+                  "to": "ch14uvag00089784"
+                },
+                {
+                  "id": "ch14uvag00087050",
+                  "from": "ch14uvag00089784",
+                  "to": "ch14uvag00089185"
+                },
+                {
+                  "id": "ch14uvag00087051",
+                  "from": "ch14uvag00089185",
+                  "to": "ch14uvag00089197"
+                },
+                {
+                  "id": "ch14uvag00087052",
+                  "from": "ch14uvag00089197",
+                  "to": "ch14uvag00089710"
+                },
+                {
+                  "id": "ch14uvag00087053",
+                  "from": "ch14uvag00089710",
+                  "to": "ch14uvag00089644"
+                }
+              ],
+              "morgesReview": {
+                "sourceCurveId": "ch14uvag00087043",
+                "originalStopId": "ch:1:sloid:1037:1:1",
+                "throughStation": true,
+                "bothSidesConnected": true
+              },
+              "maximumSnapMetres": 22.29400292161025,
+              "pathSha256": "6a348edb5a2a2cb614a04d8dc2bd3ac4619b7b17e302d3addb8ae036257ec9bd"
+            }
+          ]
+        }
+      ],
+      "checks": {
+        "allPreviousMovementsAndPathsUnchanged": true,
+        "allAddedSourceCallsAndFieldsUnchanged": true,
+        "allNewJourneysReproducedFromCantonalAndFederalSources": true,
+        "unrelatedPairDecisionsUnchanged": true,
+        "allPreviouslyMatchedPairAssessmentsUnchanged": true,
+        "oldSourceHashesAndLimitsUnchanged": true,
+        "allIr15JourneysComplete": true
+      }
+    },
+    {
+      "date": "2026-09-06",
+      "previousJourneysPreserved": 32002,
+      "addedScheduledJourneys": 0,
+      "totalAdmittedJourneys": 32002,
+      "routes": [
+        {
+          "routeId": "91-15-B-j26-1",
+          "line": "IR15",
+          "addedScheduledJourneys": 0,
+          "totalJourneys": 43,
+          "admittedJourneys": 43,
+          "directionIds": [
+            "0",
+            "1"
+          ],
+          "patterns": 20,
+          "admittedPatterns": 20,
+          "remainingPairs": [],
+          "repairedPairs": [
+            {
+              "routeId": "91-15-B-j26-1",
+              "agencyId": "11",
+              "mode": "rail",
+              "fromId": "ch:1:sloid:4014:1:1",
+              "toId": "ch:1:sloid:1120:0:42631",
+              "from": "Palézieux",
+              "to": "Lausanne",
+              "maximumSnapMetres": 32.830811616857034,
+              "occurrences": 13,
+              "admittedOccurrences": 13,
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8504014",
+              "toOperatingPoint": "8501120",
+              "stationAttachmentsMetres": [
+                32.830811616857034,
+                24.47764469473426
+              ],
+              "pathMetres": 20770.400119287162,
+              "maximumTopologyAttachmentMetres": 17.18033731277226,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087297",
+                  "from": "ch14uvag00089685",
+                  "to": "ch14uvag00089576"
+                },
+                {
+                  "id": "ch14uvag00087296",
+                  "from": "ch14uvag00089576",
+                  "to": "ch14uvag00089718"
+                },
+                {
+                  "id": "ch14uvag00087295",
+                  "from": "ch14uvag00089718",
+                  "to": "ch14uvag00089231"
+                },
+                {
+                  "id": "ch14uvag00087294",
+                  "from": "ch14uvag00089231",
+                  "to": "ch14uvag00088841"
+                },
+                {
+                  "id": "ch14uvag00087293",
+                  "from": "ch14uvag00088841",
+                  "to": "ch14uvag00089001"
+                },
+                {
+                  "id": "ch14uvag00087292",
+                  "from": "ch14uvag00089001",
+                  "to": "ch14uvag00089719"
+                },
+                {
+                  "id": "ch14uvag00087291",
+                  "from": "ch14uvag00089719",
+                  "to": "ch14uvag00089466"
+                },
+                {
+                  "id": "ch14uvag00086958",
+                  "from": "ch14uvag00089466",
+                  "to": "ch14uvag00089461"
+                }
+              ],
+              "railPatternIds": [
+                "5274d41ec82c62cf5bbb42c6",
+                "684837527a4f5662f8a51719",
+                "93267f84ee34c1a533d4bf0b",
+                "9ae4ff26d2def6255e6ba9e9",
+                "a8d7c6ab1b0e59556efcc85a"
+              ],
+              "sourceKind": "fot-rail-topology",
+              "sourceId": "bern-regional-fot-rail-20210706",
+              "originalAssessment": {
+                "routeId": "91-15-B-j26-1",
+                "agencyId": "11",
+                "mode": "rail",
+                "fromId": "ch:1:sloid:4014:1:1",
+                "toId": "ch:1:sloid:1120:0:42631",
+                "from": "Palézieux",
+                "to": "Lausanne",
+                "reason": "endpoint-gap",
+                "maximumSnapMetres": 12128.744186779324
+              },
+              "matched": true
+            },
+            {
+              "routeId": "91-15-B-j26-1",
+              "agencyId": "11",
+              "mode": "rail",
+              "fromId": "ch:1:sloid:4014:1:1",
+              "toId": "ch:1:sloid:1120:0:276884",
+              "from": "Palézieux",
+              "to": "Lausanne",
+              "maximumSnapMetres": 32.830811616857034,
+              "occurrences": 4,
+              "admittedOccurrences": 4,
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8504014",
+              "toOperatingPoint": "8501120",
+              "stationAttachmentsMetres": [
+                32.830811616857034,
+                6.257912945151173
+              ],
+              "pathMetres": 20752.18038753758,
+              "maximumTopologyAttachmentMetres": 17.18033731277226,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087297",
+                  "from": "ch14uvag00089685",
+                  "to": "ch14uvag00089576"
+                },
+                {
+                  "id": "ch14uvag00087296",
+                  "from": "ch14uvag00089576",
+                  "to": "ch14uvag00089718"
+                },
+                {
+                  "id": "ch14uvag00087295",
+                  "from": "ch14uvag00089718",
+                  "to": "ch14uvag00089231"
+                },
+                {
+                  "id": "ch14uvag00087294",
+                  "from": "ch14uvag00089231",
+                  "to": "ch14uvag00088841"
+                },
+                {
+                  "id": "ch14uvag00087293",
+                  "from": "ch14uvag00088841",
+                  "to": "ch14uvag00089001"
+                },
+                {
+                  "id": "ch14uvag00087292",
+                  "from": "ch14uvag00089001",
+                  "to": "ch14uvag00089719"
+                },
+                {
+                  "id": "ch14uvag00087291",
+                  "from": "ch14uvag00089719",
+                  "to": "ch14uvag00089466"
+                },
+                {
+                  "id": "ch14uvag00086958",
+                  "from": "ch14uvag00089466",
+                  "to": "ch14uvag00089461"
+                }
+              ],
+              "railPatternIds": [
+                "46889dd5a8a3eeb31144bc69",
+                "7dffe6e19e706e64f5c2faf5"
+              ],
+              "sourceKind": "fot-rail-topology",
+              "sourceId": "bern-regional-fot-rail-20210706",
+              "originalAssessment": {
+                "routeId": "91-15-B-j26-1",
+                "agencyId": "11",
+                "mode": "rail",
+                "fromId": "ch:1:sloid:4014:1:1",
+                "toId": "ch:1:sloid:1120:0:276884",
+                "from": "Palézieux",
+                "to": "Lausanne",
+                "reason": "endpoint-gap",
+                "maximumSnapMetres": 12126.183101312585
+              },
+              "matched": true
+            },
+            {
+              "routeId": "91-15-B-j26-1",
+              "agencyId": "11",
+              "mode": "rail",
+              "fromId": "ch:1:sloid:4014:1:1",
+              "toId": "ch:1:sloid:1120:0:37997",
+              "from": "Palézieux",
+              "to": "Lausanne",
+              "maximumSnapMetres": 32.830811616857034,
+              "occurrences": 2,
+              "admittedOccurrences": 2,
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8504014",
+              "toOperatingPoint": "8501120",
+              "stationAttachmentsMetres": [
+                32.830811616857034,
+                31.373616845864053
+              ],
+              "pathMetres": 20777.296091438293,
+              "maximumTopologyAttachmentMetres": 17.18033731277226,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087297",
+                  "from": "ch14uvag00089685",
+                  "to": "ch14uvag00089576"
+                },
+                {
+                  "id": "ch14uvag00087296",
+                  "from": "ch14uvag00089576",
+                  "to": "ch14uvag00089718"
+                },
+                {
+                  "id": "ch14uvag00087295",
+                  "from": "ch14uvag00089718",
+                  "to": "ch14uvag00089231"
+                },
+                {
+                  "id": "ch14uvag00087294",
+                  "from": "ch14uvag00089231",
+                  "to": "ch14uvag00088841"
+                },
+                {
+                  "id": "ch14uvag00087293",
+                  "from": "ch14uvag00088841",
+                  "to": "ch14uvag00089001"
+                },
+                {
+                  "id": "ch14uvag00087292",
+                  "from": "ch14uvag00089001",
+                  "to": "ch14uvag00089719"
+                },
+                {
+                  "id": "ch14uvag00087291",
+                  "from": "ch14uvag00089719",
+                  "to": "ch14uvag00089466"
+                },
+                {
+                  "id": "ch14uvag00086958",
+                  "from": "ch14uvag00089466",
+                  "to": "ch14uvag00089461"
+                }
+              ],
+              "railPatternIds": [
+                "5f1bc884c844c0cf08d81515"
+              ],
+              "sourceKind": "fot-rail-topology",
+              "sourceId": "bern-regional-fot-rail-20210706",
+              "originalAssessment": {
+                "routeId": "91-15-B-j26-1",
+                "agencyId": "11",
+                "mode": "rail",
+                "fromId": "ch:1:sloid:4014:1:1",
+                "toId": "ch:1:sloid:1120:0:37997",
+                "from": "Palézieux",
+                "to": "Lausanne",
+                "reason": "endpoint-gap",
+                "maximumSnapMetres": 12129.102563663648
+              },
+              "matched": true
+            },
+            {
+              "routeId": "91-15-B-j26-1",
+              "agencyId": "11",
+              "mode": "rail",
+              "fromId": "ch:1:sloid:4014:1:1",
+              "toId": "ch:1:sloid:1120:0:668579",
+              "from": "Palézieux",
+              "to": "Lausanne",
+              "maximumSnapMetres": 32.830811616857034,
+              "occurrences": 2,
+              "admittedOccurrences": 2,
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8504014",
+              "toOperatingPoint": "8501120",
+              "stationAttachmentsMetres": [
+                32.830811616857034,
+                32.73896515489898
+              ],
+              "pathMetres": 20778.661439747328,
+              "maximumTopologyAttachmentMetres": 17.18033731277226,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00087297",
+                  "from": "ch14uvag00089685",
+                  "to": "ch14uvag00089576"
+                },
+                {
+                  "id": "ch14uvag00087296",
+                  "from": "ch14uvag00089576",
+                  "to": "ch14uvag00089718"
+                },
+                {
+                  "id": "ch14uvag00087295",
+                  "from": "ch14uvag00089718",
+                  "to": "ch14uvag00089231"
+                },
+                {
+                  "id": "ch14uvag00087294",
+                  "from": "ch14uvag00089231",
+                  "to": "ch14uvag00088841"
+                },
+                {
+                  "id": "ch14uvag00087293",
+                  "from": "ch14uvag00088841",
+                  "to": "ch14uvag00089001"
+                },
+                {
+                  "id": "ch14uvag00087292",
+                  "from": "ch14uvag00089001",
+                  "to": "ch14uvag00089719"
+                },
+                {
+                  "id": "ch14uvag00087291",
+                  "from": "ch14uvag00089719",
+                  "to": "ch14uvag00089466"
+                },
+                {
+                  "id": "ch14uvag00086958",
+                  "from": "ch14uvag00089466",
+                  "to": "ch14uvag00089461"
+                }
+              ],
+              "railPatternIds": [
+                "71a436f145884e64363b59e8",
+                "920dadb64d2d8271197c1357"
+              ],
+              "sourceKind": "fot-rail-topology",
+              "sourceId": "bern-regional-fot-rail-20210706",
+              "originalAssessment": {
+                "routeId": "91-15-B-j26-1",
+                "agencyId": "11",
+                "mode": "rail",
+                "fromId": "ch:1:sloid:4014:1:1",
+                "toId": "ch:1:sloid:1120:0:668579",
+                "from": "Palézieux",
+                "to": "Lausanne",
+                "reason": "endpoint-gap",
+                "maximumSnapMetres": 12092.677005860118
+              },
+              "matched": true
+            },
+            {
+              "routeId": "91-15-B-j26-1",
+              "agencyId": "11",
+              "mode": "rail",
+              "fromId": "ch:1:sloid:1120:0:668579",
+              "toId": "ch:1:sloid:4014:2:2",
+              "from": "Lausanne",
+              "to": "Palézieux",
+              "maximumSnapMetres": 32.73896515489898,
+              "occurrences": 21,
+              "admittedOccurrences": 21,
+              "geometrySource": "fot",
+              "fromOperatingPoint": "8501120",
+              "toOperatingPoint": "8504014",
+              "stationAttachmentsMetres": [
+                32.73896515489898,
+                26.479210954066826
+              ],
+              "pathMetres": 20772.309839084497,
+              "maximumTopologyAttachmentMetres": 17.18033731277226,
+              "directedSourceSegments": [
+                {
+                  "id": "ch14uvag00086958",
+                  "from": "ch14uvag00089461",
+                  "to": "ch14uvag00089466"
+                },
+                {
+                  "id": "ch14uvag00087291",
+                  "from": "ch14uvag00089466",
+                  "to": "ch14uvag00089719"
+                },
+                {
+                  "id": "ch14uvag00087292",
+                  "from": "ch14uvag00089719",
+                  "to": "ch14uvag00089001"
+                },
+                {
+                  "id": "ch14uvag00087293",
+                  "from": "ch14uvag00089001",
+                  "to": "ch14uvag00088841"
+                },
+                {
+                  "id": "ch14uvag00087294",
+                  "from": "ch14uvag00088841",
+                  "to": "ch14uvag00089231"
+                },
+                {
+                  "id": "ch14uvag00087295",
+                  "from": "ch14uvag00089231",
+                  "to": "ch14uvag00089718"
+                },
+                {
+                  "id": "ch14uvag00087296",
+                  "from": "ch14uvag00089718",
+                  "to": "ch14uvag00089576"
+                },
+                {
+                  "id": "ch14uvag00087297",
+                  "from": "ch14uvag00089576",
+                  "to": "ch14uvag00089685"
+                }
+              ],
+              "railPatternIds": [
+                "369f7c8f162293f7c9008ee4",
+                "47f571644c7346f100fbaf5c",
+                "5467376efa0f12a588fc0926",
+                "5c3a9204a2321d5706c0881c",
+                "7d702545aed3ebd25d4ccea3",
+                "9d7784c8abb7155608b985bc",
+                "ebaf75243d4ff348c7a9b1dd",
+                "f9795e05c662e8edf0e456a5",
+                "fd302489b6d823b41e846d3b"
+              ],
+              "sourceKind": "fot-rail-topology",
+              "sourceId": "bern-regional-fot-rail-20210706",
+              "originalAssessment": {
+                "routeId": "91-15-B-j26-1",
+                "agencyId": "11",
+                "mode": "rail",
+                "fromId": "ch:1:sloid:1120:0:668579",
+                "toId": "ch:1:sloid:4014:2:2",
+                "from": "Lausanne",
+                "to": "Palézieux",
+                "reason": "endpoint-gap",
+                "maximumSnapMetres": 12092.677005860118
+              },
+              "matched": true
+            }
+          ]
+        }
+      ],
+      "candidateContexts": [],
+      "checks": {
+        "allPreviousMovementsAndPathsUnchanged": true,
+        "allAddedSourceCallsAndFieldsUnchanged": true,
+        "allNewJourneysReproducedFromCantonalAndFederalSources": true,
+        "unrelatedPairDecisionsUnchanged": true,
+        "allPreviouslyMatchedPairAssessmentsUnchanged": true,
+        "oldSourceHashesAndLimitsUnchanged": true,
+        "allIr15JourneysComplete": true
+      }
+    }
+  ],
+  "seasonalResultsUnchanged": true,
+  "scope": "Exact SBB IR15 route identity; two original directed Lausanne–Morges platform 1–Nyon bindings; five full input patterns and 17 original stop records. Both halves of one pinned FOT curve remain connected through a derived platform waypoint; original station point and GTFS coordinates unchanged. Adds only Friday journeys; Sunday IR15 has no Morges calls in this fixture. Existing cantonal/regional-rail paths remain authoritative. All full contexts must agree. SBB platform records and December 2023 commissioning evidence support platform identity, not surveyed 2026 running tracks or source alignment freshness."
+}

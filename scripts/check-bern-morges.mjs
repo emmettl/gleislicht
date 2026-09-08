@@ -4,24 +4,21 @@ import { execFileSync } from 'node:child_process'
 import { createHash } from 'node:crypto'
 import { gunzipSync } from 'node:zlib'
 import { bernRailCandidates, applyBernRail } from './bern-rail-geometry.mjs'
-import { loadBernTpfTerminal, BERN_TPF_TERMINAL_ROUTES as BERN_RAIL_ROUTES } from './bern-tpf-terminal.mjs'
+import { loadBernMorges, BERN_MORGES_ROUTES as BERN_RAIL_ROUTES } from './bern-morges-geometry.mjs'
 import { applyBernGeometry } from './bern-line-geometry.mjs'
-import { loadBernCrosscantonRail } from './bern-crosscanton-rail.mjs'
+import { loadBernRegionalRail } from './bern-regional-rail.mjs'
 
-const BASELINE = '679e7ac5ede7e04a0990d7f747940fc7595bdc15'
+const BASELINE = '9672a2a0143713fae8e2d754edabc1f7b015d423'
 const sha = bytes => createHash('sha256').update(bytes).digest('hex')
 const old = path => execFileSync('git', ['show', `${BASELINE}:${path}`], { maxBuffer: 64 * 1024 * 1024 })
-// Historical TPF terminal release; Morges has a separate preservation proof.
-const RELEASE = '9672a2a0143713fae8e2d754edabc1f7b015d423'
-const released = path => execFileSync('git', ['show', `${RELEASE}:${path}`], { maxBuffer: 64 * 1024 * 1024 })
-const json = async path => JSON.parse(released(path))
+const json = async path => JSON.parse(await readFile(path))
 assert(process.argv[2], 'Provide the verified Bern timetable cache')
 const raw = JSON.parse(gunzipSync(await readFile(process.argv[2])))
 const source = JSON.parse(gunzipSync(await readFile('data/bern-sources/decoded.json.gz')))
 const crosswalk = await json('data/bern-operator-crosswalk.json'), summary = await json('data/bern-audit/summary.json')
 assert.deepEqual(raw.sourceHashes, { archive: summary.sourceHashes.archive, source: summary.sourceHashes.source })
-const rail = await loadBernTpfTerminal(), routes = new Map(raw.routes.map(r => [r.id, r]))
-assert.equal(summary.sourceHashes.tpfTerminalPolicy, rail.metadata.policySha256)
+const rail = await loadBernMorges(), routes = new Map(raw.routes.map(r => [r.id, r]))
+assert.equal(summary.sourceHashes.morgesPolicy, rail.metadata.policySha256)
 async function day(read, date) {
   const directory = `public/data/bern-region/${date}`, manifest = JSON.parse(await read(`${directory}/bern-region-day-manifest.json`)), trains = new Map()
   for (const chunk of manifest.chunks) {
@@ -34,10 +31,10 @@ const canonical = (t, s) => {
   const { stops, pathSegments, ...rest } = t
   return sha(JSON.stringify({ ...rest, stops: stops.map(([i, ...times]) => [s.stops[i], ...times]), paths: pathSegments.map(i => s.paths[i]) }))
 }
-const crosscantonRail = await loadBernCrosscantonRail()
+const regionalRail = await loadBernRegionalRail()
 const dates = []
 for (const snapshot of raw.snapshots) {
-  const date = snapshot.metadata.serviceDate, before = await day(old, date), after = await day(released, date)
+  const date = snapshot.metadata.serviceDate, before = await day(old, date), after = await day(readFile, date)
   for (const [id, t] of before.trains) {
     assert(after.trains.has(id), `Lost previous journey ${id}`)
     assert.equal(canonical(t, before.manifest), canonical(after.trains.get(id), after.manifest), `Changed previous movement ${id}`)
@@ -45,10 +42,10 @@ for (const snapshot of raw.snapshots) {
   for (const [key, value] of Object.entries(before.manifest.metadata.sourceHashes)) assert.equal(after.manifest.metadata.sourceHashes[key], value)
   assert.deepEqual(after.manifest.metadata.geometry.limits, before.manifest.metadata.geometry.limits)
   const added = [...after.trains.values()].filter(t => !before.trains.has(t.id))
-  assert.equal(added.length, date === '2026-09-04' ? 81 : 78)
+  assert.equal(added.length, date === '2026-09-04' ? 15 : 0)
   assert(added.every(t => BERN_RAIL_ROUTES.includes(t.routeId) && t.frequency?.exactTimes !== 0))
   const originalTrains = snapshot.trains.filter(t => BERN_RAIL_ROUTES.includes(t.routeId)), originals = new Map(originalTrains.map(t => [t.id, t]))
-  const reproduction = applyBernRail(snapshot, applyBernRail(snapshot, applyBernGeometry({ ...snapshot, trains: originalTrains }, routes, source, crosswalk), routes, crosscantonRail), routes, rail)
+  const reproduction = applyBernRail(snapshot, applyBernRail(snapshot, applyBernGeometry({ ...snapshot, trains: originalTrains }, routes, source, crosswalk), routes, regionalRail), routes, rail)
   assert(reproduction.trains.every(t => t.admission === 'admitted'))
   const reproduced = new Map(reproduction.trains.map(t => [t.id, t]))
   for (const t of added) {
@@ -66,6 +63,8 @@ for (const snapshot of raw.snapshots) {
     assert.deepEqual(now, was, 'Changed a previously matched directed pair')
   }
   const candidates = bernRailCandidates(snapshot, routes, rail)
+  assert.equal(candidates.size, date === '2026-09-04' ? 2 : 0)
+  assert.equal(originalTrains.filter(t => t.stops.some(([i]) => snapshot.stops[i][2] === 'Morges')).length, date === '2026-09-04' ? 32 : 0)
   for (const pair of report.directedPairs.filter(p => p.sourceId === rail.policy.sourceId)) {
     const candidate = candidates.get(JSON.stringify([pair.routeId, pair.fromId, pair.toId]))
     assert(candidate?.path)
@@ -82,18 +81,18 @@ for (const snapshot of raw.snapshots) {
       totalJourneys: originalTrains.filter(t => t.routeId === routeId).length, admittedJourneys: [...after.trains.values()].filter(t => t.routeId === routeId).length, directionIds, patterns: patterns.length, admittedPatterns: patterns.filter(p => p.admittedTrips).length, remainingPairs: pairs.filter(p => !p.matched),
       repairedPairs: pairs.filter(p => p.sourceKind === 'fot-rail-topology') }
   })
-  assert.deepEqual(reviewed.map(r => r.addedScheduledJourneys), date === '2026-09-04' ? [41, 40] : [40, 38])
+  assert.deepEqual(reviewed.map(r => r.addedScheduledJourneys), date === '2026-09-04' ? [15] : [0])
   dates.push({ date, previousJourneysPreserved: before.trains.size, addedScheduledJourneys: added.length, totalAdmittedJourneys: after.trains.size,
     routes: reviewed, candidateContexts: [...candidates].map(([pair, value]) => ({ pair: JSON.parse(pair),
       pathSha256: value.path ? sha(JSON.stringify(value.path)) : null, reason: value.reason,
       contexts: value.contexts.map(({ patternId, assessment: { path, ...assessment } }) => ({ patternId, ...assessment, pathSha256: path ? sha(JSON.stringify(path)) : null })) })),
     checks: { allPreviousMovementsAndPathsUnchanged: true, allAddedSourceCallsAndFieldsUnchanged: true,
       allNewJourneysReproducedFromCantonalAndFederalSources: true, unrelatedPairDecisionsUnchanged: true,
-      allPreviouslyMatchedPairAssessmentsUnchanged: true, oldSourceHashesAndLimitsUnchanged: true, allTpfS20S21JourneysComplete: true } })
+      allPreviouslyMatchedPairAssessmentsUnchanged: true, oldSourceHashesAndLimitsUnchanged: true, allIr15JourneysComplete: true } })
 }
 // This narrowly dated rail supplement must not silently change seasonal results.
-for (const path of ['data/bern-audit/seasonal-summary.json', 'data/bern-audit/seasonal-patterns.json.gz']) assert.deepEqual(released(path), old(path))
+for (const path of ['data/bern-audit/seasonal-summary.json', 'data/bern-audit/seasonal-patterns.json.gz']) assert.deepEqual(await readFile(path), old(path))
 const report = { schemaVersion: 1, baselineCommit: BASELINE, source: rail.metadata, dates, seasonalResultsUnchanged: true,
-  scope: 'Exact TPF S20/S21 route identities; nine directed Givisiez–Fribourg original platform bindings; 37 complete original terminal contexts and 25 original stop records pinned. Three bounded spurs retain the southern station curve and connect solely to the northern approach through the unchanged federal station point. September fixtures only. Existing cantonal and cross-canton paths remain authoritative. All complete input-pattern contexts must agree. Federal source date and September 2025 station plan do not certify current running tracks or alignment.' }
-await writeFile('data/bern-audit/tpf-terminal-followup.json', JSON.stringify(report, null, 2) + '\n')
-console.log(dates.map(d => `${d.date}: ${d.previousJourneysPreserved} unchanged; +${d.addedScheduledJourneys} scheduled; TPF S20/S21 complete in both directions; all other route exclusions unchanged`).join('\n'))
+  scope: 'Exact SBB IR15 route identity; two original directed Lausanne–Morges platform 1–Nyon bindings; five full input patterns and 17 original stop records. Both halves of one pinned FOT curve remain connected through a derived platform waypoint; original station point and GTFS coordinates unchanged. Adds only Friday journeys; Sunday IR15 has no Morges calls in this fixture. Existing cantonal/regional-rail paths remain authoritative. All full contexts must agree. SBB platform records and December 2023 commissioning evidence support platform identity, not surveyed 2026 running tracks or source alignment freshness.' }
+await writeFile('data/bern-audit/morges-followup.json', JSON.stringify(report, null, 2) + '\n')
+console.log(dates.map(d => `${d.date}: ${d.previousJourneysPreserved} unchanged; +${d.addedScheduledJourneys} scheduled; IR15 complete in both dated directions; all other route exclusions unchanged`).join('\n'))
