@@ -1,0 +1,2176 @@
+{
+  "dates": [
+    "2026-09-04",
+    "2026-09-06"
+  ],
+  "inventory": [
+    {
+      "routeId": "94-360-0-j26-1",
+      "agencyId": "185",
+      "line": "3600",
+      "mode": "boat",
+      "routeType": 1000
+    },
+    {
+      "routeId": "94-360-1-j26-1",
+      "agencyId": "185",
+      "line": "3601",
+      "mode": "boat",
+      "routeType": 1000
+    },
+    {
+      "routeId": "94-360-2-j26-1",
+      "agencyId": "185",
+      "line": "3602",
+      "mode": "boat",
+      "routeType": 1000
+    },
+    {
+      "routeId": "94-360-3-j26-1",
+      "agencyId": "185",
+      "line": "3603",
+      "mode": "boat",
+      "routeType": 1000
+    },
+    {
+      "routeId": "94-360-4-j26-1",
+      "agencyId": "185",
+      "line": "3604",
+      "mode": "boat",
+      "routeType": 1000
+    },
+    {
+      "routeId": "94-360-5-j26-1",
+      "agencyId": "185",
+      "line": "3605",
+      "mode": "boat",
+      "routeType": 1000
+    },
+    {
+      "routeId": "94-365-2-j26-1",
+      "agencyId": "181",
+      "line": "3652",
+      "mode": "boat",
+      "routeType": 1000
+    },
+    {
+      "routeId": "94-365-3-j26-1",
+      "agencyId": "181",
+      "line": "3653",
+      "mode": "boat",
+      "routeType": 1000
+    }
+  ],
+  "stops": [
+    {
+      "stop_id": "ch:1:sloid:8464",
+      "stop_name": "Vitznau",
+      "stop_lat": "47.00936002",
+      "stop_lon": "8.48238699",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:8464",
+      "platform_code": "",
+      "original_stop_id": "ch:1:sloid:8464",
+      "didok": "8508464"
+    },
+    {
+      "stop_id": "ch:1:sloid:8492:0:806139",
+      "stop_name": "Luzern Bahnhofquai",
+      "stop_lat": "47.05148630",
+      "stop_lon": "8.31010808",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:8492",
+      "platform_code": "1",
+      "original_stop_id": "ch:1:sloid:8492:0:806139",
+      "didok": "8508492"
+    },
+    {
+      "stop_id": "ch:1:sloid:8459",
+      "stop_name": "Verkehrshaus-Lido",
+      "stop_lat": "47.05110682",
+      "stop_lon": "8.33487463",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:8459",
+      "platform_code": "",
+      "original_stop_id": "ch:1:sloid:8459",
+      "didok": "8508459"
+    },
+    {
+      "stop_id": "ch:1:sloid:8462",
+      "stop_name": "Hertenstein (See)",
+      "stop_lat": "47.02688810",
+      "stop_lon": "8.40344304",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:8462",
+      "platform_code": "",
+      "original_stop_id": "ch:1:sloid:8462",
+      "didok": "8508462"
+    },
+    {
+      "stop_id": "ch:1:sloid:8463_gen:missingSLOID_pf:2",
+      "stop_name": "Weggis",
+      "stop_lat": "47.03141923",
+      "stop_lon": "8.43322219",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:8463",
+      "platform_code": "2",
+      "original_stop_id": "",
+      "didok": "8508463"
+    },
+    {
+      "stop_id": "ch:1:sloid:8467",
+      "stop_name": "Beckenried (See)",
+      "stop_lat": "46.96697367",
+      "stop_lon": "8.47560471",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:8467",
+      "platform_code": "",
+      "original_stop_id": "ch:1:sloid:8467",
+      "didok": "8508467"
+    },
+    {
+      "stop_id": "ch:1:sloid:8468",
+      "stop_name": "Gersau (See)",
+      "stop_lat": "46.99065583",
+      "stop_lon": "8.52605409",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:8468",
+      "platform_code": "",
+      "original_stop_id": "ch:1:sloid:8468",
+      "didok": "8508468"
+    },
+    {
+      "stop_id": "ch:1:sloid:8469",
+      "stop_name": "Treib",
+      "stop_lat": "46.98722429",
+      "stop_lon": "8.58566629",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:8469",
+      "platform_code": "",
+      "original_stop_id": "ch:1:sloid:8469",
+      "didok": "8508469"
+    },
+    {
+      "stop_id": "ch:1:sloid:8470:0:801952",
+      "stop_name": "Brunnen (See)",
+      "stop_lat": "46.99332126",
+      "stop_lon": "8.60544720",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:8470",
+      "platform_code": "1",
+      "original_stop_id": "ch:1:sloid:8470:0:801952",
+      "didok": "8508470"
+    },
+    {
+      "stop_id": "ch:1:sloid:8471",
+      "stop_name": "Rütli",
+      "stop_lat": "46.97033296",
+      "stop_lon": "8.59329299",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:8471",
+      "platform_code": "",
+      "original_stop_id": "ch:1:sloid:8471",
+      "didok": "8508471"
+    },
+    {
+      "stop_id": "ch:1:sloid:8474",
+      "stop_name": "Bauen (See)",
+      "stop_lat": "46.93519099",
+      "stop_lon": "8.58045607",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:8474",
+      "platform_code": "",
+      "original_stop_id": "ch:1:sloid:8474",
+      "didok": "8508474"
+    },
+    {
+      "stop_id": "ch:1:sloid:8475",
+      "stop_name": "Isleten-Isenthal",
+      "stop_lat": "46.91982944",
+      "stop_lon": "8.59575437",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:8475",
+      "platform_code": "",
+      "original_stop_id": "ch:1:sloid:8475",
+      "didok": "8508475"
+    },
+    {
+      "stop_id": "ch:1:sloid:8476",
+      "stop_name": "Flüelen (See)",
+      "stop_lat": "46.90269588",
+      "stop_lon": "8.62392554",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:8476",
+      "platform_code": "",
+      "original_stop_id": "ch:1:sloid:8476",
+      "didok": "8508476"
+    },
+    {
+      "stop_id": "ch:1:sloid:8472",
+      "stop_name": "Sisikon (See)",
+      "stop_lat": "46.94819946",
+      "stop_lon": "8.61917345",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:8472",
+      "platform_code": "",
+      "original_stop_id": "ch:1:sloid:8472",
+      "didok": "8508472"
+    },
+    {
+      "stop_id": "ch:1:sloid:8473",
+      "stop_name": "Tellsplatte",
+      "stop_lat": "46.93404393",
+      "stop_lon": "8.61257084",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:8473",
+      "platform_code": "",
+      "original_stop_id": "ch:1:sloid:8473",
+      "didok": "8508473"
+    },
+    {
+      "stop_id": "ch:1:sloid:8463_gen:missingSLOID_pf:1",
+      "stop_name": "Weggis",
+      "stop_lat": "47.03141923",
+      "stop_lon": "8.43322219",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:8463",
+      "platform_code": "1",
+      "original_stop_id": "",
+      "didok": "8508463"
+    },
+    {
+      "stop_id": "ch:1:sloid:8489",
+      "stop_name": "Kehrsiten-Bürgenstock",
+      "stop_lat": "47.00298920",
+      "stop_lon": "8.38242246",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:8489",
+      "platform_code": "",
+      "original_stop_id": "ch:1:sloid:8489",
+      "didok": "8508489"
+    },
+    {
+      "stop_id": "ch:1:sloid:8466",
+      "stop_name": "Buochs (See)",
+      "stop_lat": "46.97535924",
+      "stop_lon": "8.42638601",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:8466",
+      "platform_code": "",
+      "original_stop_id": "ch:1:sloid:8466",
+      "didok": "8508466"
+    },
+    {
+      "stop_id": "ch:1:sloid:8465",
+      "stop_name": "Ennetbürgen (See)",
+      "stop_lat": "46.98784933",
+      "stop_lon": "8.42115782",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:8465",
+      "platform_code": "",
+      "original_stop_id": "ch:1:sloid:8465",
+      "didok": "8508465"
+    },
+    {
+      "stop_id": "ch:1:sloid:8492:0:886776",
+      "stop_name": "Luzern Bahnhofquai",
+      "stop_lat": "47.05126596",
+      "stop_lon": "8.31119504",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:8492",
+      "platform_code": "2",
+      "original_stop_id": "ch:1:sloid:8492:0:886776",
+      "didok": "8508492"
+    },
+    {
+      "stop_id": "ch:1:sloid:8503",
+      "stop_name": "Alpnachstad (See)",
+      "stop_lat": "46.95567437",
+      "stop_lon": "8.27876586",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:8503",
+      "platform_code": "",
+      "original_stop_id": "ch:1:sloid:8503",
+      "didok": "8508503"
+    },
+    {
+      "stop_id": "ch:1:sloid:8478",
+      "stop_name": "Kastanienbaum (See)",
+      "stop_lat": "47.00809204",
+      "stop_lon": "8.34104606",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:8478",
+      "platform_code": "",
+      "original_stop_id": "ch:1:sloid:8478",
+      "didok": "8508478"
+    },
+    {
+      "stop_id": "ch:1:sloid:8480",
+      "stop_name": "Kehrsiten Dorf",
+      "stop_lat": "47.00034264",
+      "stop_lon": "8.36574973",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:8480",
+      "platform_code": "",
+      "original_stop_id": "ch:1:sloid:8480",
+      "didok": "8508480"
+    },
+    {
+      "stop_id": "ch:1:sloid:8481",
+      "stop_name": "Hergiswil (See)",
+      "stop_lat": "46.98446663",
+      "stop_lon": "8.31245268",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:8481",
+      "platform_code": "",
+      "original_stop_id": "ch:1:sloid:8481",
+      "didok": "8508481"
+    },
+    {
+      "stop_id": "ch:1:sloid:8483",
+      "stop_name": "Stansstad (See)",
+      "stop_lat": "46.98064245",
+      "stop_lon": "8.33618617",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:8483",
+      "platform_code": "",
+      "original_stop_id": "ch:1:sloid:8483",
+      "didok": "8508483"
+    },
+    {
+      "stop_id": "ch:1:sloid:8492:0:929446",
+      "stop_name": "Luzern Bahnhofquai",
+      "stop_lat": "47.05140061",
+      "stop_lon": "8.31223709",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:8492",
+      "platform_code": "3",
+      "original_stop_id": "ch:1:sloid:8492:0:929446",
+      "didok": "8508492"
+    },
+    {
+      "stop_id": "ch:1:sloid:8488",
+      "stop_name": "Küssnacht am Rigi (See)",
+      "stop_lat": "47.07998227",
+      "stop_lon": "8.43883666",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:8488",
+      "platform_code": "",
+      "original_stop_id": "ch:1:sloid:8488",
+      "didok": "8508488"
+    },
+    {
+      "stop_id": "ch:1:sloid:8487",
+      "stop_name": "Greppen",
+      "stop_lat": "47.05618671",
+      "stop_lon": "8.42683517",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:8487",
+      "platform_code": "",
+      "original_stop_id": "ch:1:sloid:8487",
+      "didok": "8508487"
+    },
+    {
+      "stop_id": "ch:1:sloid:8484",
+      "stop_name": "Meggen (See)",
+      "stop_lat": "47.04465529",
+      "stop_lon": "8.37930531",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:8484",
+      "platform_code": "",
+      "original_stop_id": "ch:1:sloid:8484",
+      "didok": "8508484"
+    },
+    {
+      "stop_id": "ch:1:sloid:8486",
+      "stop_name": "Merlischachen (See)",
+      "stop_lat": "47.06387293",
+      "stop_lon": "8.40740461",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:8486",
+      "platform_code": "",
+      "original_stop_id": "ch:1:sloid:8486",
+      "didok": "8508486"
+    },
+    {
+      "stop_id": "ch:1:sloid:8492:0:953228",
+      "stop_name": "Luzern Bahnhofquai",
+      "stop_lat": "47.05138837",
+      "stop_lon": "8.31235387",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:8492",
+      "platform_code": "4",
+      "original_stop_id": "ch:1:sloid:8492:0:953228",
+      "didok": "8508492"
+    },
+    {
+      "stop_id": "ch:1:sloid:8479",
+      "stop_name": "Tribschen",
+      "stop_lat": "47.04202303",
+      "stop_lon": "8.33074238",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:8479",
+      "platform_code": "",
+      "original_stop_id": "ch:1:sloid:8479",
+      "didok": "8508479"
+    },
+    {
+      "stop_id": "ch:1:sloid:8461",
+      "stop_name": "Seeburg",
+      "stop_lat": "47.04566530",
+      "stop_lon": "8.34472017",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:8461",
+      "platform_code": "",
+      "original_stop_id": "ch:1:sloid:8461",
+      "didok": "8508461"
+    },
+    {
+      "stop_id": "ch:1:sloid:8485",
+      "stop_name": "Hermitage",
+      "stop_lat": "47.04252501",
+      "stop_lon": "8.34970582",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:8485",
+      "platform_code": "",
+      "original_stop_id": "ch:1:sloid:8485",
+      "didok": "8508485"
+    },
+    {
+      "stop_id": "ch:1:sloid:8504",
+      "stop_name": "Meggenhorn",
+      "stop_lat": "47.03370915",
+      "stop_lon": "8.35424231",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:8504",
+      "platform_code": "",
+      "original_stop_id": "ch:1:sloid:8504",
+      "didok": "8508504"
+    },
+    {
+      "stop_id": "ch:1:sloid:8492_gen:missingSLOID_pf:7",
+      "stop_name": "Luzern Bahnhofquai",
+      "stop_lat": "47.05116803",
+      "stop_lon": "8.31016198",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:8492",
+      "platform_code": "7",
+      "original_stop_id": "",
+      "didok": "8508492"
+    },
+    {
+      "stop_id": "ch:1:sloid:30625",
+      "stop_name": "Meisterschwanden Delphin",
+      "stop_lat": "47.29618063",
+      "stop_lon": "8.22034842",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:30625",
+      "platform_code": "",
+      "original_stop_id": "ch:1:sloid:30625",
+      "didok": "8530625"
+    },
+    {
+      "stop_id": "ch:1:sloid:30626",
+      "stop_name": "Meisterschwanden Seerose",
+      "stop_lat": "47.28411010",
+      "stop_lon": "8.22493881",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:30626",
+      "platform_code": "",
+      "original_stop_id": "ch:1:sloid:30626",
+      "didok": "8530626"
+    },
+    {
+      "stop_id": "ch:1:sloid:30630",
+      "stop_name": "Aesch LU (See)",
+      "stop_lat": "47.25841832",
+      "stop_lon": "8.22991548",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:30630",
+      "platform_code": "",
+      "original_stop_id": "ch:1:sloid:30630",
+      "didok": "8530630"
+    },
+    {
+      "stop_id": "ch:1:sloid:30631",
+      "stop_name": "Mosen (See)",
+      "stop_lat": "47.24581473",
+      "stop_lon": "8.22421117",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:30631",
+      "platform_code": "",
+      "original_stop_id": "ch:1:sloid:30631",
+      "didok": "8530631"
+    },
+    {
+      "stop_id": "ch:1:sloid:30629",
+      "stop_name": "Beinwil am See (See)",
+      "stop_lat": "47.26932438",
+      "stop_lon": "8.21146408",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:30629",
+      "platform_code": "",
+      "original_stop_id": "ch:1:sloid:30629",
+      "didok": "8530629"
+    },
+    {
+      "stop_id": "ch:1:sloid:30628",
+      "stop_name": "Birrwil (See)",
+      "stop_lat": "47.29091040",
+      "stop_lon": "8.20287619",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:30628",
+      "platform_code": "",
+      "original_stop_id": "ch:1:sloid:30628",
+      "didok": "8530628"
+    },
+    {
+      "stop_id": "ch:1:sloid:30632",
+      "stop_name": "Boniswil (See)",
+      "stop_lat": "47.30450836",
+      "stop_lon": "8.19851936",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:30632",
+      "platform_code": "",
+      "original_stop_id": "ch:1:sloid:30632",
+      "didok": "8530632"
+    },
+    {
+      "stop_id": "ch:1:sloid:30627",
+      "stop_name": "Seengen (See)",
+      "stop_lat": "47.31919899",
+      "stop_lon": "8.20266957",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:30627",
+      "platform_code": "",
+      "original_stop_id": "ch:1:sloid:30627",
+      "didok": "8530627"
+    }
+  ],
+  "snapshots": [
+    {
+      "trains": [
+        {
+          "routeId": "94-360-0-j26-1",
+          "directionId": "0",
+          "calls": [
+            {
+              "id": "ch:1:sloid:8492:0:806139",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8459",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8462",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8463_gen:missingSLOID_pf:2",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8464",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8467",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8468",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8469",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8470:0:801952",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8471",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8474",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8475",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8476",
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "routeId": "94-360-0-j26-1",
+          "directionId": "0",
+          "calls": [
+            {
+              "id": "ch:1:sloid:8492:0:806139",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8459",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8462",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8463_gen:missingSLOID_pf:2",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8464",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8467",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8468",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8469",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8470:0:801952",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8471",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8472",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8473",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8474",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8475",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8476",
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "routeId": "94-360-0-j26-1",
+          "directionId": "1",
+          "calls": [
+            {
+              "id": "ch:1:sloid:8463_gen:missingSLOID_pf:1",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8462",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8492:0:806139",
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "routeId": "94-360-0-j26-1",
+          "directionId": "1",
+          "calls": [
+            {
+              "id": "ch:1:sloid:8467",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8463_gen:missingSLOID_pf:1",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8489",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8459",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8492:0:806139",
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "routeId": "94-360-0-j26-1",
+          "directionId": "1",
+          "calls": [
+            {
+              "id": "ch:1:sloid:8467",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8464",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8463_gen:missingSLOID_pf:1",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8462",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8459",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8492:0:806139",
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "routeId": "94-360-0-j26-1",
+          "directionId": "1",
+          "calls": [
+            {
+              "id": "ch:1:sloid:8470:0:801952",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8469",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8468",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8467",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8466",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8465",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8464",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8463_gen:missingSLOID_pf:1",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8489",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8492:0:806139",
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "routeId": "94-360-0-j26-1",
+          "directionId": "1",
+          "calls": [
+            {
+              "id": "ch:1:sloid:8476",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8473",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8472",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8471",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8470:0:801952",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8469",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8468",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8467",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8464",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8463_gen:missingSLOID_pf:1",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8462",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8459",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8492:0:806139",
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "routeId": "94-360-0-j26-1",
+          "directionId": "1",
+          "calls": [
+            {
+              "id": "ch:1:sloid:8476",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8475",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8474",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8471",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8470:0:801952",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8469",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8468",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8467",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8464",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8463_gen:missingSLOID_pf:1",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8462",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8459",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8492:0:806139",
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "routeId": "94-360-0-j26-1",
+          "directionId": "1",
+          "calls": [
+            {
+              "id": "ch:1:sloid:8476",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8475",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8474",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8473",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8472",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8471",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8470:0:801952",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8469",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8468",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8467",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8464",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8463_gen:missingSLOID_pf:1",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8462",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8459",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8492:0:806139",
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "routeId": "94-360-0-j26-1",
+          "directionId": "0",
+          "calls": [
+            {
+              "id": "ch:1:sloid:8492:0:806139",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8463_gen:missingSLOID_pf:1",
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "routeId": "94-360-0-j26-1",
+          "directionId": "0",
+          "calls": [
+            {
+              "id": "ch:1:sloid:8492:0:806139",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8459",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8462",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8463_gen:missingSLOID_pf:2",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8464",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8467",
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "routeId": "94-360-0-j26-1",
+          "directionId": "0",
+          "calls": [
+            {
+              "id": "ch:1:sloid:8492:0:806139",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8459",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8462",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8463_gen:missingSLOID_pf:2",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8464",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8465",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8466",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8467",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8468",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8469",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8470:0:801952",
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "routeId": "94-360-0-j26-1",
+          "directionId": "0",
+          "calls": [
+            {
+              "id": "ch:1:sloid:8492:0:806139",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8459",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8462",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8463_gen:missingSLOID_pf:2",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8464",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8467",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8468",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8469",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8470:0:801952",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8471",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8472",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8473",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8476",
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "routeId": "94-360-1-j26-1",
+          "directionId": "0",
+          "calls": [
+            {
+              "id": "ch:1:sloid:8492:0:886776",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8459",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8478",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8480",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8481",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8483",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8503",
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "routeId": "94-360-1-j26-1",
+          "directionId": "0",
+          "calls": [
+            {
+              "id": "ch:1:sloid:8492:0:886776",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8459",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8478",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8489",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8480",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8483",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8503",
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "routeId": "94-360-1-j26-1",
+          "directionId": "1",
+          "calls": [
+            {
+              "id": "ch:1:sloid:8503",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8483",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8481",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8492:0:886776",
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "routeId": "94-360-1-j26-1",
+          "directionId": "1",
+          "calls": [
+            {
+              "id": "ch:1:sloid:8503",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8481",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8478",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8459",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8492:0:886776",
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "routeId": "94-360-1-j26-1",
+          "directionId": "1",
+          "calls": [
+            {
+              "id": "ch:1:sloid:8503",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8483",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8480",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8459",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8492:0:886776",
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "routeId": "94-360-1-j26-1",
+          "directionId": "1",
+          "calls": [
+            {
+              "id": "ch:1:sloid:8503",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8483",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8481",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8478",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8492:0:886776",
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "routeId": "94-360-1-j26-1",
+          "directionId": "0",
+          "calls": [
+            {
+              "id": "ch:1:sloid:8492:0:886776",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8459",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8483",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8503",
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "routeId": "94-360-1-j26-1",
+          "directionId": "1",
+          "calls": [
+            {
+              "id": "ch:1:sloid:8503",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8483",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8481",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8480",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8459",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8492:0:886776",
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "routeId": "94-360-1-j26-1",
+          "directionId": "0",
+          "calls": [
+            {
+              "id": "ch:1:sloid:8492:0:886776",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8459",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8481",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8483",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8503",
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "routeId": "94-360-1-j26-1",
+          "directionId": "0",
+          "calls": [
+            {
+              "id": "ch:1:sloid:8492:0:886776",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8459",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8480",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8481",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8483",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8503",
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "routeId": "94-360-2-j26-1",
+          "directionId": "0",
+          "calls": [
+            {
+              "id": "ch:1:sloid:8492:0:929446",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8489",
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "routeId": "94-360-2-j26-1",
+          "directionId": "1",
+          "calls": [
+            {
+              "id": "ch:1:sloid:8489",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8492:0:929446",
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "routeId": "94-360-3-j26-1",
+          "directionId": "0",
+          "calls": [
+            {
+              "id": "ch:1:sloid:8492:0:929446",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8459",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8488",
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "routeId": "94-360-3-j26-1",
+          "directionId": "1",
+          "calls": [
+            {
+              "id": "ch:1:sloid:8488",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8459",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8492:0:929446",
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "routeId": "94-360-4-j26-1",
+          "directionId": "0",
+          "calls": [
+            {
+              "id": "ch:1:sloid:8492:0:953228",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8479",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8459",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8461",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8485",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8504",
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "routeId": "94-360-4-j26-1",
+          "directionId": "1",
+          "calls": [
+            {
+              "id": "ch:1:sloid:8504",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8461",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8459",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8479",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8492:0:953228",
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "routeId": "94-360-5-j26-1",
+          "directionId": "0",
+          "calls": [
+            {
+              "id": "ch:1:sloid:8492_gen:missingSLOID_pf:7",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8478",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8492_gen:missingSLOID_pf:7",
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "routeId": "94-365-3-j26-1",
+          "directionId": "0",
+          "calls": [
+            {
+              "id": "ch:1:sloid:30625",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:30628",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:30629",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:30631",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:30630",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:30626",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:30625",
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "routeId": "94-360-0-j26-1",
+          "directionId": "1",
+          "calls": [
+            {
+              "id": "ch:1:sloid:8464",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8492:0:806139",
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "routeId": "94-360-0-j26-1",
+          "directionId": "1",
+          "calls": [
+            {
+              "id": "ch:1:sloid:8467",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8492:0:806139",
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "routeId": "94-360-0-j26-1",
+          "directionId": "1",
+          "calls": [
+            {
+              "id": "ch:1:sloid:8464",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8463_gen:missingSLOID_pf:1",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8489",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8492:0:806139",
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "routeId": "94-360-0-j26-1",
+          "directionId": "0",
+          "calls": [
+            {
+              "id": "ch:1:sloid:8492:0:806139",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8464",
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "routeId": "94-360-0-j26-1",
+          "directionId": "0",
+          "calls": [
+            {
+              "id": "ch:1:sloid:8492:0:806139",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8489",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8463_gen:missingSLOID_pf:2",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8464",
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "routeId": "94-360-0-j26-1",
+          "directionId": "0",
+          "calls": [
+            {
+              "id": "ch:1:sloid:8492:0:806139",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8489",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8463_gen:missingSLOID_pf:2",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8464",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8465",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8466",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8467",
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "routeId": "94-360-0-j26-1",
+          "directionId": "0",
+          "calls": [
+            {
+              "id": "ch:1:sloid:8492:0:806139",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8459",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8462",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8463_gen:missingSLOID_pf:2",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8464",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8467",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8469",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8470:0:801952",
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "routeId": "94-360-1-j26-1",
+          "directionId": "0",
+          "calls": [
+            {
+              "id": "ch:1:sloid:8492:0:886776",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8503",
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "routeId": "94-360-1-j26-1",
+          "directionId": "1",
+          "calls": [
+            {
+              "id": "ch:1:sloid:8503",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8492:0:886776",
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "routeId": "94-360-1-j26-1",
+          "directionId": "1",
+          "calls": [
+            {
+              "id": "ch:1:sloid:8503",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8483",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8459",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8492:0:886776",
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "routeId": "94-360-3-j26-1",
+          "directionId": "1",
+          "calls": [
+            {
+              "id": "ch:1:sloid:8488",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8487",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8484",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8459",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8492:0:929446",
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "routeId": "94-360-3-j26-1",
+          "directionId": "0",
+          "calls": [
+            {
+              "id": "ch:1:sloid:8492:0:929446",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8459",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8484",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8486",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8488",
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "routeId": "94-360-3-j26-1",
+          "directionId": "1",
+          "calls": [
+            {
+              "id": "ch:1:sloid:8488",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8487",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8462",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:8492:0:929446",
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "routeId": "94-365-2-j26-1",
+          "directionId": "0",
+          "calls": [
+            {
+              "id": "ch:1:sloid:30625",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:30626",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:30630",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:30631",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:30629",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:30628",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:30632",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:30627",
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:30625",
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

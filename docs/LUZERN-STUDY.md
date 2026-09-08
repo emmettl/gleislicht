@@ -1,6 +1,6 @@
 # Luzern cantonal transit source adapter and audit
 
-Built on 8 September 2026, starting from [the national source inventory](SWISS-TRANSIT-SOURCE-INVENTORY.md#lu). **The entire pinned national timetable was scanned for Luzern membership: 203 route records, 24 feed agencies and 100'275 annual trip records.** The delivered regional feeds contain **12'541 Friday and 10'424 Sunday journeys**, on 131 and 145 routes respectively. 164 distinct route records have an admitted pattern on at least one date.
+Updated on 9 September 2026, starting from [the national source inventory](SWISS-TRANSIT-SOURCE-INVENTORY.md#lu). **The entire pinned national timetable was scanned for Luzern membership: 203 route records, 24 feed agencies and 100'275 annual trip records.** The delivered regional feeds contain **12'585 Friday and 10'477 Sunday journeys**, on 135 and 150 routes respectively. 169 distinct route records have an admitted pattern on at least one date.
 
 Only complete directed stop patterns with usable geometry are admitted. This is a complete **inventory of the scoped archive**, and a measured **partial regional motion feed**. It is not complete cantonal geometry, year-round validation or direction-certified street routing. The underlying official linework is undirected; the validation below establishes ordered source-call compatibility and plausible connected corridors.
 
@@ -38,10 +38,12 @@ Frequency templates are expanded on their source interval, with exact_times=0 ma
 | swisstopo canton polygon | Retrieved 2026-09-08T17:27:01.144Z; API response gives no source vintage | `efe44b38095a9c4b7d025199935e69bdfc027cc1baac32ee34354edfdb68a49e` |
 | Federal rail network, 3,210 nodes / 3,424 segments | Used segment Stand: 6 July 2021; asset updated 18 January 2025; catalogue checked 8 September 2026 | `2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828` |
 | SBB graphical rail, 59 returned records / 2 used | Catalogue modified 29 July 2026; data processed 2 September 2026; retrieved 8 September 2026; no individual survey date | `267b989fdd6af9f8588cf286909702c4b01927c6e0dd276db580f3ba69737495` (catalogue) |
+| swissTLMRegio shipping, 79 regional records / 65 lake candidates | Geometry retrieved 9 September 2026; collection updated 25 June 2026; no feature survey date | `439d53f90b9ad1b9d37a83d70cac0f8f7a06c2eeae22a7da293913f3088c2019` (catalogue) |
+| FOEN Vector25 lake polygons, full parts and rings | Data status 1 January 2007; geometry retrieved 9 September 2026 | `da465f6d2edf373ee34b96747e1922ddd2afeecee8d4737b0ce36ec1b1774d38` (raw response) |
 
 The cantonal source snapshot was acquired on 8 September 2026. Retrieval timestamps do not replace the layer dates. Line sources are EPSG:2056; the ArcGIS query transforms them to EPSG:4326. Matching uses those returned coordinates, metre-distance calculations, exact shared vertices keyed to seven decimal places, and output coordinates rounded to seven decimals. Cantonal paths are not simplified or joined by proximity. Five explicitly reviewed short gaps use exact edges copied from other lines in the same official bus source; their donor identities and coordinates are retained in the policy and feed metadata. Failed bus pairs additionally use the separately attributed OSM fallback described below. Failed rail pairs use the separately dated federal infrastructure fallback below. The boundary is the returned API polygon, with its supplied precision; an exact cadastral boundary survey is not implied.
 
-**Attribution:** Timetable: **SBB / opentransportdata.swiss**. Cantonal data: **© rawi Kanton Luzern; © Verkehrsverbund Luzern**. Canton boundary: **© swisstopo**. Federal rail and cableways: **© Federal Office of Transport (FOT)**. Border curves: **SBB Infrastructure / data.sbb.ch**, under the retained attribution terms. Processed regional feeds and this audit are by **Gleislicht**. Cantonal [product metadata](https://daten.geo.lu.ch/produkt/oevxxxxx_col_v5) and [Open-By terms](https://geoportal.lu.ch/Nutzungsbedingungen) permit use with source attribution; the acquired pages are retained. The [national timetable terms](https://opentransportdata.swiss/en/terms-of-use/) require attribution, raw-data refresh and authorship of processed results. The [swisstopo terms](https://www.swisstopo.admin.ch/en/terms-and-conditions) govern the boundary. No blanket CC0 licence is assigned to the combined feed. Frozen fixtures are dated study artifacts, not a continuously refreshed live service.
+**Attribution:** Timetable: **SBB / opentransportdata.swiss**. Cantonal data: **© rawi Kanton Luzern; © Verkehrsverbund Luzern**. Canton boundary: **© swisstopo**. Federal rail and cableways: **© Federal Office of Transport (FOT)**. Border curves: **SBB Infrastructure / data.sbb.ch**, under the retained attribution terms. Shipping: **© swisstopo**; shorelines: **© FOEN, swisstopo**. Processed regional feeds and this audit are by **Gleislicht**. Cantonal [product metadata](https://daten.geo.lu.ch/produkt/oevxxxxx_col_v5) and [Open-By terms](https://geoportal.lu.ch/Nutzungsbedingungen) permit use with source attribution; the acquired pages are retained. The [national timetable terms](https://opentransportdata.swiss/en/terms-of-use/) require attribution, raw-data refresh and authorship of processed results. The [swisstopo terms](https://www.swisstopo.admin.ch/en/terms-and-conditions) govern the boundary. No blanket CC0 licence is assigned to the combined feed. Frozen fixtures are dated study artifacts, not a continuously refreshed live service.
 
 The large national archive remains an external input, available at the [pinned download](https://data.opentransportdata.swiss/dataset/3d2c18f9-9ef1-463f-a249-5c67604efd74/resource/c09aba2a-41e9-4117-88af-3fdfe589d64a/download/gtfs_fp2026_20260902.zip); its hash is mandatory. Current cantonal APIs are not immutable, so reproduction should use the committed source snapshots, not a fresh download claimed to have the same bytes.
 
@@ -64,8 +66,8 @@ The source has no one-way or direction field. A successful ordered match is an *
 | Annual-census routes active in civil day | 140 | 155 |
 | Civil-day movements, all modes | 13'649 | 11'550 |
 | Representative headway movements (not scheduled) | 1'020 | 1'020 |
-| Admitted scheduled movements | 12'541 | 10'424 |
-| Excluded movements | 1'108 | 1'126 |
+| Admitted scheduled movements | 12'585 | 10'477 |
+| Excluded movements | 1'064 | 1'073 |
 | Admitted journeys using reviewed donor edges | 162 | 144 |
 | Directed pairs traversing reviewed repairs | 12 | 13 |
 | Admitted journeys using reusable OSM road pairs | 457 | 490 |
@@ -80,19 +82,21 @@ The source has no one-way or direction field. A successful ordered match is an *
 | Directed pairs using inferred federal rail corridors | 345 | 337 |
 | Admitted journeys using SBB Konstanz border curves (overlap with federal rail row) | 22 | 26 |
 | Directed pairs using SBB border curves | 2 | 2 |
+| Admitted complete lake journeys | 44 | 53 |
+| Matched directed lake pairs (including excluded full journeys) | 73 | 91 |
 | Admitted movements using federal cableway axes | 3'329 | 3'389 |
 | Directed pairs using federal cableway axes | 12 | 12 |
-| Preceding-service-day carry-in / admitted | 263 / 262 | 424 / 423 |
-| Routes with at least one admitted pattern | 131 | 145 |
-| Directed stop patterns / admitted | 1'061 / 1'026 | 878 / 831 |
-| Directed stop pair/context records / matched | 4'920 / 4'826 | 5'474 / 5'357 |
-| Directed pair/context record geometry coverage | 98.09% | 97.86% |
-| Scheduled segment occurrences / matched | 139'294 / 138'922 | 105'124 / 104'661 |
-| Scheduled segment geometry coverage | 99.73% | 99.56% |
-| All segment occurrences / matched (including headways) | 140'314 / 138'922 | 106'144 / 104'661 |
-| All-movement segment geometry coverage | 99.01% | 98.60% |
+| Preceding-service-day carry-in / admitted | 263 / 263 | 424 / 424 |
+| Routes with at least one admitted pattern | 135 | 150 |
+| Directed stop patterns / admitted | 1'061 / 1'033 | 878 / 841 |
+| Directed stop pair/context records / matched | 4'920 / 4'899 | 5'474 / 5'448 |
+| Directed pair/context record geometry coverage | 99.57% | 99.53% |
+| Scheduled segment occurrences / matched | 139'294 / 139'227 | 105'124 / 105'046 |
+| Scheduled segment geometry coverage | 99.95% | 99.93% |
+| All segment occurrences / matched (including headways) | 140'314 / 139'227 | 106'144 / 105'046 |
+| All-movement segment geometry coverage | 99.23% | 98.97% |
 
-All exported journeys have 100% matched segments **by the admission rule**. The unfiltered scheduled-segment coverage (99.73% / 99.56%) is the useful measure of remaining work. Unique-pair percentages are lower; frequently repeated urban trips cannot conceal missing regional or mountain patterns. The audit keeps scheduled occurrences and representative-headway occurrences separate for each pair.
+All exported journeys have 100% matched segments **by the admission rule**. The unfiltered scheduled-segment coverage (99.95% / 99.93%) is the useful measure of remaining work. Unique-pair percentages are lower; frequently repeated urban trips cannot conceal missing regional or mountain patterns. The audit keeps scheduled occurrences and representative-headway occurrences separate for each pair.
 
 | Agency:mode | Friday admitted/total trips | Friday admitted/total patterns | Friday all-segment geometry | Sunday admitted/total trips | Sunday admitted/total patterns | Sunday all-segment geometry |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -116,8 +120,8 @@ All exported journeys have 100% matched segments **by the admission rule**. The 
 | 13700:mountain · Weggis-Rigi Kaltbad | 51 / 51 | 2 / 2 | 100.00% | 47 / 47 | 2 / 2 | 100.00% |
 | 107:mountain · Bürgenstock Bahn AG | 0 / 1'020 | 0 / 2 | 0.00% | 0 / 1'020 | 0 / 2 | 0.00% |
 | 137:mountain · Rigi Bahnen AG | 28 / 28 | 7 / 7 | 100.00% | 32 / 32 | 8 / 8 | 100.00% |
-| 185:boat · Vierwaldstättersee | 0 / 83 | 0 / 30 | 0.00% | 0 / 95 | 0 / 41 | 0.00% |
-| 181:boat · Hallwilersee | 0 / 3 | 0 / 1 | 0.00% | 0 / 9 | 0 / 2 | 0.00% |
+| 185:boat · Vierwaldstättersee | 41 / 83 | 6 / 30 | 81.53% | 44 / 95 | 8 / 41 | 80.86% |
+| 181:boat · Hallwilersee | 3 / 3 | 1 / 1 | 100.00% | 9 / 9 | 2 / 2 | 100.00% |
 | 801:bus · PostAuto AG | 1'481 / 1'481 | 235 / 235 | 100.00% | 1'095 / 1'095 | 184 / 184 | 100.00% |
 | 7079:bus · PRO REGIO HUTTWIL Verkehrsverein | 0 / 0 | 0 / 0 | — | 4 / 4 | 2 / 2 | 100.00% |
 | 7231:bus · SBB Infrastruktur AG Bahnersatz | 0 / 0 | 0 / 0 | — | 1 / 1 | 1 / 1 | 100.00% |
@@ -172,7 +176,7 @@ All **45 complete IR75/EC fixture patterns** are retained as [offline identity i
 
 SBB catalogue modification is **29 July 2026**, data processing **2 September 2026**, and metadata processing/retrieval **8 September 2026**. No individual feature survey date or temporary-diversion validity is established. The retained SBB licence is **terms_by**, rights **NonCommercialAllowed-CommercialAllowed-ReferenceRequired**; attribution is **SBB Infrastructure / data.sbb.ch**, with the [publisher terms](https://data.sbb.ch/page/licence/) preserved and embedded in feed metadata. The response is reused byte-for-byte from the repository’s Zug source acquisition; Luzern has its own scope, policy, full-pattern consensus and checks.
 
-The **two EC journeys per date serving Como S. Giovanni remain excluded in full**. The retained SBB response includes only two-point schematic records incident to Como, which the adapter explicitly rejects. Boats and Hammetschwand remain excluded as described below.
+The **two EC journeys per date serving Como S. Giovanni remain excluded in full**. The retained SBB response includes only two-point schematic records incident to Como, which the adapter explicitly rejects. Lake geometry and its remaining exclusions are described below; Hammetschwand remains excluded.
 
 ### Federal cableway axes
 
@@ -190,7 +194,20 @@ The JSON audit additionally inventories every federal installation, its stations
 
 ### Other modes and unresolved source geometry
 
-All eight lake route records (SGV and Hallwilersee) remain in the annual inventory. The cantonal boat layer is a single 2015 settlement-service line; it has no complete 2026 route crosswalk. No water geometry is admitted. The existing repository lake router uses FOEN Vector25 shoreline polygons, edition 2007, to infer paths inside water; this is a cartographic alternative, not evidence of current SGV or Hallwilersee service alignments. It is therefore not substituted for the missing route geometry in this feed.
+All eight lake route records (SGV and Hallwilersee) remain in the annual inventory. The cantonal boat layer is a single 2015 settlement-service line with no reviewed 2026 route crosswalk; that source remains excluded. A separate [shipping adapter](../scripts/luzern-boat-geometry.mjs) now uses generalized [swissTLMRegio public-transport linework](https://www.swisstopo.admin.ch/en/landscape-model-swisstlmregio), rather than generating new water paths from the shoreline. The publisher describes this product as regional/national overview geometry, with 20–60 m generalisation accuracy; the feed is cartographic inference, not an operator-certified sailing lane or navigational product.
+
+The [retained source catalogue](../data/luzern-boat-sources/sources.json) contains **14 adjacent shipping queries**, covering every fixture dock: 12 for Lake Lucerne and two for Hallwilersee. Responses contain **12–102 mixed-transport records**, all below the 200-result cap. Repeated shipping features agree exactly. The union inventories **79 regional passenger-shipping records**; **54 Lake Lucerne and 11 Hallwilersee records** have a vertex inside the corresponding full FOEN lake polygon and qualify as graph candidates. The other 14 remain explicitly outside the reviewed lakes. The lake query retains 15 national lake records in the envelope, including all polygon parts and holes; matching uses the exact identities **93 / water number 9179** and **90 / water number 9172**. This is a complete census of the returned regional source envelopes, not the national shipping dataset.
+
+All **45 complete boat patterns** and **44 original GTFS dock records** are retained in [offline inputs](../data/luzern-boat-inputs.json). The [policy](../data/luzern-boat-policy.json) fixes all eight route/operator/type identities, every original dock ID, and the exact source feature set for each lake. Source curves connect only at shared vertices at seven-decimal coordinate precision; no topology bridge or invented water path is added. Each directed pair is matched in every complete pattern context, and reuse requires the same accepted path in all of them. Reverse service is independently matched. The consensus inventory contains **115 route-specific directed pairs: 91 accepted and 24 rejected**. Successful pairs on an excluded whole journey remain measured in the denominator but are not exported as partial trips.
+
+Dock attachment is capped at **150 m**; total path length including attachments must be ≤max(1,200 m, 3 × direct distance). Every path edge is split at every original shoreline or island-ring intersection, so a thin island cannot disappear between sample points. Any outside-water interval rejects the complete pattern unless the entire interval lies within **one actual endpoint dock’s 150 m zone**. Such intervals remain explicitly recorded as discrepancies between generalized shipping geometry, the GTFS dock and the 2007 shoreline. They are not claims that vessels travel on land. The maximum attachment among delivered boat pairs is **97.2 m**. Delivered pairs contain **66 Friday / 100 Sunday dock-zone outside-water intervals** (pair records, not multiplied by journeys), with maximum interval lengths **26.0 / 48.6 m**. [Six review panels](luzern-boat-review.svg) show both Hallwilersee circuits, the Bürgenstock shuttle, the full Meggenhorn journey, the excluded Greppen–Meggen path and a dock discrepancy at Seengen.
+
+The supplement adds **44 Friday / 53 Sunday complete lake journeys**: **41 / 44 SGV**, and **3 / 9 Hallwilersee**. Every Hallwilersee fixture journey is admitted, including its repeated first/last dock and different Sunday circuit. SGV 3602 is complete at **33/33 each day**, 3604 at **6/6 each day**, and 3603 at **2/2 Friday and 5/6 Sunday**. Overall lake coverage is **44/86 Friday and 53/104 Sunday**, across **7 and 10 complete admitted boat patterns**. The feeds use the existing ferry display category, preserve all stops, times and call rules, and identify each segment as **swisstopo-boat-inference**. [Regression digests](../data/luzern-boat-regression.json), anchored to **7c977ea**, preserve every earlier matched path and all **12,541 / 10,424** earlier admitted journeys.
+
+The remaining **42 Friday / 51 Sunday SGV journeys** remain excluded in full. Some Luzern Bahnhofquai dock IDs attach **221.8–227.2 m** away, Hergiswil **190.4 m**, and Alpnachstad **350.9 m**, exceeding the unchanged 150 m limit. Matching preserves the separate Bahnhofquai dock IDs: geometry accepted for the Bürgenstock shuttle’s dock does not authorize replacing a different journey’s source dock. The Sunday **Greppen → Meggen** path also crosses land outside either dock zone and excludes its entire five-call journey. These source gaps affect SGV 3600, 3601, 3605 and one 3603 pattern; no unsupported endpoint, shortened trip or substituted straight line is delivered.
+
+Shipping and shoreline responses were acquired **9 September 2026**. The retained metadata/terms were acquired **8 September 2026** and reused byte-for-byte from the Zug source catalogue. The swissTLMRegio collection was updated **25 June 2026**, with a published collection temporal extent **2020-01-01–2025-12-02**; no individual shipping-feature survey date is supplied. The shoreline data status is **2007-01-01**. These facts do not establish current diversions, seasonal operation or navigability; service eligibility comes from the pinned GTFS fixtures. Attribution is **© swisstopo** for shipping and **© FOEN, swisstopo** for shoreline validation, under the [linked federal terms](https://www.swisstopo.admin.ch/en/terms-of-use-free-geodata-and-geoservices). The catalogue’s generic licence field remains verbatim as “proprietary”; no blanket CC0 licence is applied. All source files, raw-response hashes, query bounds, source dates and attribution are retained and checked offline.
+
 
 A follow-up probe of the **complete swissTLM3D 2026-02 TLM_SCHIFFFAHRT class** retains all 27 national ferry features, with their original DBF attributes and PolylineZ source members. The [shipping probe](../data/luzern-shipping-probe.json) and [source catalogue](../data/luzern-shipping-sources/source.json) record the 24 February 2026 product date, 20 August 2026 asset update and 8 September 2026 retrieval separately. This class contains passenger/car ferry crossings; it does not supply a route-bound SGV or Hallwilersee course network. Beckenried–Gersau is a separate car ferry. Only Rotsee has a source endpoint inside the Luzern polygon. Its geometry modification is **5 November 2014**, with revision year **2024**; the [ferry owner’s notice](https://www.maihof-luzern.ch/rotsee/rotseefaehrewaerter) reports service suspended since **1 April 2025**. It is recorded as a source-only exclusion, with no fabricated timetable or addition to the 203 GTFS-route denominator. The raw notice is retained. Shipping geometry attribution is **© swisstopo**, under the linked swisstopo terms. Member hashes and ZIP CRC checks establish the extracted members; the large parent archive checksum is only publisher metadata and was not independently verified.
 
@@ -391,14 +408,14 @@ Counts below are admitted/total **civil-day movements**; inactive records remain
 | `93-4V-Y-j26-1` | 107 · ASC | mountain | 2 | 0/1020 excluded | 0/1020 excluded | — | missing-line |
 | `93-82-j26-1` | 137 · 82 | mountain | 75 | 26/26 admitted | 29/29 admitted | rail:VRG | — |
 | `93-88-j26-1` | 137 · 88 | mountain | 15 | 2/2 admitted | 3/3 admitted | rail:VRG | — |
-| `94-360-0-j26-1` | 185 · 3600 | boat | 115 | 0/24 excluded | 0/28 excluded | — | stale-or-missing-boat-source |
-| `94-360-1-j26-1` | 185 · 3601 | boat | 22 | 0/12 excluded | 0/16 excluded | — | stale-or-missing-boat-source |
-| `94-360-2-j26-1` | 185 · 3602 | boat | 32 | 0/33 excluded | 0/33 excluded | — | stale-or-missing-boat-source |
-| `94-360-3-j26-1` | 185 · 3603 | boat | 11 | 0/2 excluded | 0/6 excluded | — | stale-or-missing-boat-source |
-| `94-360-4-j26-1` | 185 · 3604 | boat | 12 | 0/6 excluded | 0/6 excluded | — | stale-or-missing-boat-source |
-| `94-360-5-j26-1` | 185 · 3605 | boat | 6 | 0/6 excluded | 0/6 excluded | — | stale-or-missing-boat-source |
-| `94-365-2-j26-1` | 181 · 3652 | boat | 8 | 0/0 inactive | 0/5 excluded | — | stale-or-missing-boat-source |
-| `94-365-3-j26-1` | 181 · 3653 | boat | 7 | 0/3 excluded | 0/4 excluded | — | stale-or-missing-boat-source |
+| `94-360-0-j26-1` | 185 · 3600 | boat | 115 | 0/24 excluded | 0/28 excluded | — | endpoint-gap |
+| `94-360-1-j26-1` | 185 · 3601 | boat | 22 | 0/12 excluded | 0/16 excluded | — | endpoint-gap |
+| `94-360-2-j26-1` | 185 · 3602 | boat | 32 | 33/33 admitted | 33/33 admitted | swissTLMRegio shipping | — |
+| `94-360-3-j26-1` | 185 · 3603 | boat | 11 | 2/2 admitted | 5/6 partially-admitted | swissTLMRegio shipping | boat-land-crossing |
+| `94-360-4-j26-1` | 185 · 3604 | boat | 12 | 6/6 admitted | 6/6 admitted | swissTLMRegio shipping | — |
+| `94-360-5-j26-1` | 185 · 3605 | boat | 6 | 0/6 excluded | 0/6 excluded | — | endpoint-gap |
+| `94-365-2-j26-1` | 181 · 3652 | boat | 8 | 0/0 inactive | 5/5 admitted | swissTLMRegio shipping | — |
+| `94-365-3-j26-1` | 181 · 3653 | boat | 7 | 3/3 admitted | 4/4 admitted | swissTLMRegio shipping | — |
 | `96-350-0-j26-1` | 801 · 282 | bus | 41 | 25/25 admitted | 16/16 admitted | bus:B282 | — |
 | `96-350-1-j26-1` | 801 · 281 | bus | 84 | 60/60 admitted | 24/24 admitted | bus:B281 | — |
 | `96-350-2-j26-1` | 801 · 272 | bus | 142 | 52/52 admitted | 38/38 admitted | bus:B272 | — |
@@ -457,11 +474,13 @@ node scripts/write-luzern-audit.mjs
 node scripts/render-luzern-rail-review.mjs
 node scripts/render-luzern-cableway-review.mjs
 node scripts/render-luzern-border-rail-review.mjs
+node scripts/render-luzern-boat-review.mjs
 
 # Offline source/artifact checks without the large national archive or cache.
 node scripts/check-luzern-region.mjs
 npx vitest run scripts/luzern-region.test.mjs \
   scripts/luzern-road-geometry.test.mjs scripts/enrich-postbus-roads.test.mjs \
+  scripts/luzern-boat-geometry.test.mjs scripts/zug-boat-geometry.test.mjs \
   scripts/luzern-border-rail.test.mjs \
   scripts/luzern-cableway-geometry.test.mjs \
   scripts/luzern-rail-geometry.test.mjs scripts/enrich-swiss-rail-geometry.test.mjs \
@@ -471,7 +490,7 @@ npx vitest run scripts/luzern-region.test.mjs \
 node scripts/download-luzern-sources.mjs /private/tmp/luzern-new-sources
 ```
 
-The committed road cache, federal rail/cableway archives and retained timetable identity inputs are required by the pinned policy, so ordinary reproduction needs no matcher or network access. To regenerate the cache, use the same PBF and pinned matcher inputs from the offline pipeline above:
+The committed road cache, federal rail/cableway archives, SBB border curves, shipping/shoreline responses and retained timetable identity inputs are required by the pinned policy, so ordinary reproduction needs no matcher or network access. To regenerate the cache, use the same PBF and pinned matcher inputs from the offline pipeline above:
 
 ```sh
 node scripts/luzern-road-geometry.mjs prepare \
@@ -496,4 +515,4 @@ The checker also replays the complete shipping-class census and its source-only 
 
 The checker independently verifies every stored source hash; exact ArcGIS object-ID sets; inventory totals; every chunk byte length/hash; duplicate journey consistency across chunks; morning membership; complete directed path endpoints; per-pattern, pair, route and agency totals; and admission/exclusion reconciliation. With the regenerated timetable cache it also replays **every admitted journey against all original GTFS calls, times, sequences, source-service-day identity and frequency metadata**. Unit tests cover exact donor-edge repairs and rejection of invented edges/changed snapshots/already-connected targets, truncated/duplicate pages, wrong CRS, changed operator domains/year, disconnected geometry, crossing-without-junction, reversal, loops, polygon holes, midnight carry-in, frequency semantics and rejection of malformed admitted paths.
 
-The large source-line paths make the initial compressed manifests about 1.55 / 1.66 MiB; compressed morning files are 1.72 / 1.76 MiB. The largest compressed two-hour chunks are 193.2 / 145.1 KiB. These are measured data artifacts, not a claim that existing UI payload budgets or route-direction review gates have passed.
+The large source-line paths make the initial compressed manifests about 1.56 / 1.67 MiB; compressed morning files are 1.73 / 1.77 MiB. The largest compressed two-hour chunks are 193.7 / 146.1 KiB. These are measured data artifacts, not a claim that existing UI payload budgets or route-direction review gates have passed.

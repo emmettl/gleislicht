@@ -219,13 +219,14 @@
       "reason": "SBB night service: source Luzern–Zürich NEX, GTFS N7. Fixture complete ordered calls Zürich HB–Baar–Zug–Cham–Rotkreuz–Gisikon-Root–Ebikon–Luzern verify the corridor; every pair still tested."
     }
   },
-  "admission": "Complete directed stop patterns only; retain every original source call. Cantonal geometry takes precedence. Missing geometry may use full-pattern OSM bus or federal rail consensus, or explicitly bound federal cableway installations and stations. Every source, identity, connectivity and distance check must pass. Paths are inferred, not observed vehicles or certified running tracks.",
-  "boatExclusion": "The only cantonal boat line is dated 2015 and has no 2026 route identity; no current water route geometry validated.",
+  "admission": "Complete directed stop patterns only; retain every original source call. Cantonal geometry takes precedence. Missing geometry may use full-pattern OSM bus, federal rail, reviewed SBB border curves or explicitly bound federal cableway installations. Boat geometry uses generalized swissTLMRegio shipping curves only when every directed pair passes bounded dock attachments and full shoreline-intersection checks. Every source, identity, connectivity and distance check must pass. Paths are inferred, not observed vehicles, certified running tracks or navigational shipping lanes.",
+  "boatExclusion": "The cantonal 2015 boat line has no reviewed 2026 route identity and remains excluded as a source. Separately attributed swissTLMRegio shipping geometry admits only complete patterns; excessive dock gaps and remote shoreline crossings still exclude entire journeys.",
   "scopeLimits": [
     "Annual GTFS membership is a census of the pinned archive, not proof that all real-world or demand-responsive services are represented.",
     "Fixture validation covers Friday and Sunday plus preceding-day carry-in, not all annual seasonal, holiday or diversion patterns.",
     "Services crossing the canton without a stop are outside the passenger-service scope.",
-    "No realtime data, one-way street certification or individual running-track validation."
+    "No realtime data, one-way street certification or individual running-track validation.",
+    "Shipping uses generalized source curves and a 2007 shoreline with explicitly recorded dock-area discrepancies; no current navigability or operator-certified sailing lane is established."
   ],
   "geometryRepairs": {
     "sourceBusSha256": "49a88e0544b8ea9067a930fc5b112c14672bcf68ad3bd99bd51c0c4243478e6f",
@@ -935,5 +936,9 @@
   "borderRailFallback": {
     "policyPath": "data/luzern-border-rail-policy.json",
     "sha256": "ada134a5e1d20c951381ee6f1e7da60b1c1f54aac22792eac3474625fd37fbe4"
+  },
+  "boatFallback": {
+    "policyPath": "data/luzern-boat-policy.json",
+    "sha256": "fa8f5f09d77e53283a16c7940fd7b61b23c055c0f68c4340f6e9815cde8cd97e"
   }
 }
