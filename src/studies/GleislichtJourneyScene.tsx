@@ -1,5 +1,5 @@
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
-import { useEffect, useMemo, useRef } from 'react'
+import { useEffect, useLayoutEffect, useMemo, useRef } from 'react'
 import * as THREE from 'three'
 import type { CorridorSnapshot } from '@motionstudies/core/domain/corridor'
 import {
@@ -680,10 +680,10 @@ function PostBusVehicle() {
 }
 
 function CogwheelVehicle() {
-  return <group scale={0.28}>
+  return <group scale={0.2}>
     {[-0.62, 0.62].map(z => <group key={z} position={[0, 0, z]}>
       <mesh position={[0, 0.32, 0]}><boxGeometry args={[0.48, 0.42, 1.15]} /><meshStandardMaterial color="#ff6b61" emissive="#ff5848" emissiveIntensity={1.5} wireframe /></mesh>
-      <mesh position={[0, 0.55, 0]}><boxGeometry args={[0.5, 0.04, 1.18]} /><meshBasicMaterial color="#fff3a6" /></mesh>
+      <mesh position={[0, 0.55, 0]}><boxGeometry args={[0.5, 0.04, 1.18]} /><meshBasicMaterial color="#fff3a6" transparent opacity={0.45} /></mesh>
       {[-1, 1].flatMap(side => [-0.35, 0, 0.35].map(offset => <mesh key={`${side}-${offset}`} position={[side * 0.245, 0.39, offset]}><boxGeometry args={[0.012, 0.18, 0.22]} /><meshBasicMaterial color="#fff3c6" transparent opacity={0.75} /></mesh>))}
     </group>)}
   </group>
@@ -757,7 +757,7 @@ function MovingWorld({
   const nextBackground = useMemo(() => new THREE.Color(), [])
   const nextFog = useMemo(() => new THREE.Color(), [])
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     localProgress.current = progress
   }, [progress])
   useEffect(() => {
@@ -776,7 +776,7 @@ function MovingWorld({
 
   useFrame((state, delta) => {
     if (isPlaying) localProgress.current = (localProgress.current + delta * 0.012) % 1
-    const current = localProgress.current
+    const current = isPlaying ? localProgress.current : progress
     const tunnel = activeTunnel(corridor, current)
     tunnelAmount.current = THREE.MathUtils.damp(
       tunnelAmount.current,
@@ -818,6 +818,8 @@ function MovingWorld({
     side.crossVectors(smoothedDirection, up).normalize()
     const cameraStyle = !corridor
       ? { behind: 2.15, height: 2.8, ahead: 5, sweep: 0.22 }
+      : corridor.id === 'vitznau-rigi'
+      ? { behind: 2, height: 1.4, ahead: 0.5, sweep: 0.28 }
       : alpine
       ? { behind: 1.35, height: 1.15, ahead: 1.15, sweep: 0.24 }
       : region === 'lake'
@@ -858,7 +860,7 @@ function MovingWorld({
     camera.lookAt(cameraLookTarget)
     if (state.clock.elapsedTime - lastReport.current > 0.1) {
       lastReport.current = state.clock.elapsedTime
-      onProgress(current)
+      if (isPlaying) onProgress(current)
       onEnvironment?.({
         progress: current,
         tunnel: tunnelMix,

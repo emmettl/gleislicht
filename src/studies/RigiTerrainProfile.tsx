@@ -1,4 +1,5 @@
 import { useMemo } from 'react'
+import './rigi-terrain-profile.css'
 import type { CorridorSnapshot } from '@motionstudies/core/domain/corridor'
 import type { UiLanguage } from '../i18n.ts'
 import { RIGI_TERRAIN_COPY } from './rigi-terrain.ts'

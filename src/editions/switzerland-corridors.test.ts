@@ -3,6 +3,7 @@ import type { CorridorSnapshot } from '@motionstudies/core/domain/corridor'
 import type { NetworkSnapshot, NetworkTrain } from '@motionstudies/core/domain/network'
 import {
   isZurichChurTrain,
+  isVitznauRigiTrain,
   journeyForSwissCorridor,
   swissCorridorProgressForTime,
   vehicleKindForSwissCorridor,
@@ -63,5 +64,20 @@ describe('Swiss terrain corridor journey', () => {
   it('starts the descent near the selected timetable moment', () => {
     expect(swissCorridorProgressForTime(train, network, 1900)).toBeCloseTo(0.5)
     expect(swissCorridorProgressForTime(train, network, 0)).toBe(0.015)
+  })
+
+  it('uses only a complete uphill Rigi run and preserves its source stop times', () => {
+    const rigiNetwork = { stops: [[8.48, 47.0, 'Vitznau'], [8.46, 47.04, 'Rigi Staffel'], [8.48, 47.06, 'Rigi Kulm']] } as unknown as NetworkSnapshot
+    const rigi = { ...corridor, id: 'vitznau-rigi', route: { ...corridor.route, destination: 'Rigi Kulm', service: '82', stops: [{ name: 'Vitznau', progress: 0, departure: 100 }, { name: 'Rigi Staffel', progress: 0.88, departure: 300 }, { name: 'Rigi Kulm', progress: 1, departure: 500 }] } }
+    const selected = { ...train, route: '82', stops: [[0, 100, 120], [1, 400, 460], [2, 900, 920]] } as NetworkTrain
+    expect(isVitznauRigiTrain(selected, rigiNetwork)).toBe(true)
+    expect(isVitznauRigiTrain({ ...selected, stops: [...selected.stops].reverse() }, rigiNetwork)).toBe(false)
+    expect(isVitznauRigiTrain({ ...selected, stops: selected.stops.slice(1) }, rigiNetwork)).toBe(false)
+    expect(vehicleKindForSwissCorridor(rigi)).toBe('cogwheel')
+    const journey = journeyForSwissCorridor(rigi, selected, rigiNetwork)
+    expect(journey.destination).toBe('Rigi Kulm')
+    expect(journey.stops[1]).toEqual({ name: 'Rigi Staffel', progress: 0.88, departure: '00:07' })
+    expect(journey.stops.at(-1)?.departure).toBe('00:15') // Arrival, not terminal departure.
+    expect(journeyForSwissCorridor(rigi, train, network).service).toBe('82')
   })
 })

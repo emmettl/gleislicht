@@ -1,0 +1,21 @@
+/* The optional ascent profile keeps the landscape visible on narrow screens. */
+@media (max-width: 520px) {
+  .view-journey .rigi-terrain-profile {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 100px;
+    align-items: center;
+    gap: 4px 10px;
+  }
+  .view-journey .rigi-terrain-profile .metric-grid {
+    grid-column: 1;
+    grid-row: auto;
+  }
+  .view-journey .rigi-terrain-profile .between {
+    grid-column: 1 / -1;
+    white-space: normal;
+  }
+  .view-journey .rigi-terrain-profile svg {
+    margin-top: 0 !important;
+  }
+}

@@ -347,7 +347,7 @@
   left: 50%;
   z-index: 7;
   display: flex;
-  width: min(470px, calc(100vw - 48px));
+  width: min(660px, calc(100vw - 48px));
   padding: 4px;
   border: 1px solid rgba(193, 204, 255, 0.22);
   background: rgba(5, 4, 16, 0.72);

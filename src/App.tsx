@@ -5,7 +5,6 @@ import { COGWHEEL_COPY, COGWHEEL_ROUTE_COLORS, cogwheelNetwork } from './studies
 import { useCogwheelCatalogue } from './studies/use-cogwheel-catalogue.ts'
 import { RIGI_COPY, rigiOperator } from './studies/rigi.ts'
 import { RIGI_TERRAIN_COPY } from './studies/rigi-terrain.ts'
-const RigiTerrainProfile = lazy(() => import('./studies/RigiTerrainProfile.tsx'))
 import { FREQUENCY_COPY, isHeadwayTrain, serviceFrequency, withFrequencyFerryPaths } from './studies/frequency.ts'
 import { roadTrafficSummary } from './studies/road-traffic-summary.ts'
 import { airTrafficSummary } from './studies/air-traffic-summary.ts'
@@ -145,6 +144,7 @@ const AlpineQuiet = lazy(() =>
   import('./studies/AlpineQuiet.tsx').then(({ AlpineQuiet: Scene }) => ({ default: Scene })),
 )
 
+const RigiTerrainProfile = lazy(() => import('./studies/RigiTerrainProfile.tsx'))
 const GleislichtScene = lazy(() =>
   import('./studies/GleislichtJourneyScene.tsx').then(({ GleislichtScene: Scene }) => ({
     default: Scene,
@@ -1474,7 +1474,7 @@ export function App({ edition }: AppProps) {
   }, [edition.data.hubDay, hubDay, view])
 
   useEffect(() => {
-    if (view !== 'journey' || corridor) return
+    if (view !== 'journey' || corridor || corridorError) return
     const controller = new AbortController()
     fetch(editionDataUrl(edition.data.corridors[journeyCorridorId]), {
       signal: controller.signal,
@@ -1496,7 +1496,7 @@ export function App({ edition }: AppProps) {
         setCorridorError(true)
       })
     return () => controller.abort()
-  }, [corridor, edition.data.corridors, journeyCorridorId, view])
+  }, [corridor, corridorError, edition.data.corridors, journeyCorridorId, view])
 
   useEffect(() => {
     if (
@@ -2892,8 +2892,8 @@ export function App({ edition }: AppProps) {
               type="button"
               data-tooltip={help.corridor} onClick={enterTerrainCorridor}
             >
-              <span aria-hidden="true">↘</span>
-              {text.enterTerrain}
+              <span aria-hidden="true">{isVitznauRigiTrain(selectedTrain, network) ? '↗' : '↘'}</span>
+              {isVitznauRigiTrain(selectedTrain, network) ? rigiTerrainCopy.enter : text.enterTerrain}
             </button>
           )}
         </section>
@@ -3180,7 +3180,7 @@ export function App({ edition }: AppProps) {
                   : text.scheduledRail}
               {hasHeadwayMotion && <> {frequencyCopy.mixed}</>}
           </p>
-          {isRigi && network && !regionalNetworkError && <button type="button" className="journey-link" onClick={() => openTerrainCorridor('vitznau-rigi')}>{rigiTerrainCopy.enter} ↗</button>}
+          {isRigi && network && !regionalNetworkError && <button type="button" className="corridor-entry" onClick={() => openTerrainCorridor('vitznau-rigi')}>{rigiTerrainCopy.enter} ↗</button>}
           <div className="metric-grid">
             <div>
               <span>{text.trips}</span>
@@ -3205,7 +3205,7 @@ export function App({ edition }: AppProps) {
       ) : isRigiTerrain && !corridor ? (
         <section className="journey-card" aria-label={text.currentJourney} role="status">
           <div className="service-row"><span className="service">RIGI</span><span>Vitznau → Rigi Kulm</span></div>
-          <p className="between">{corridorError ? text.terrainUnavailable : text.loadingTerrain}</p>
+          <p className="between">{corridorError ? rigiTerrainCopy.unavailable : text.loadingTerrain}</p>
         </section>
       ) : (
         <section className="journey-card" aria-label={text.currentJourney}>
@@ -3304,12 +3304,12 @@ export function App({ edition }: AppProps) {
           </>
         ) : (
           <>
-            <span>{text.realTerrainRoute}</span>
+            <span>{isRigiTerrain ? 'Vitznau → Rigi Kulm' : text.realTerrainRoute}</span>
             <span>
               {corridor
                 ? `${corridor.metadata.source} · ${corridor.metadata.releaseDate}`
                 : corridorError
-                  ? text.terrainUnavailable
+                  ? isRigiTerrain ? rigiTerrainCopy.unavailable : text.terrainUnavailable
                   : text.loadingTerrain}
             </span>
             <span>{text.routeRegions[journeyEnvironment.region]}</span>
@@ -3926,9 +3926,11 @@ export function App({ edition }: AppProps) {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    Route · © OpenStreetMap contributors
+                    Route · {isRigiTerrain ? 'FOT / BAV' : '© OpenStreetMap contributors'}
                   </a>
                 )}
+                {isRigiTerrain && lakes && <a href={lakes.metadata.productUrl} target="_blank" rel="noreferrer">{text.lakes} · {lakes.metadata.attribution}</a>}
+                {isRigiTerrain && <a href="./methodology.html">{text.methodology}</a>}
                 {corridor.metadata.tunnelProductUrl && (
                   <a
                     href={corridor.metadata.tunnelProductUrl}
