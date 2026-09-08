@@ -118,9 +118,12 @@ export async function buildBernRegion({ archive, sourceDirectory = 'data/bern-so
     crosswalk: await hashFile(crosswalkPath), geometryArchive: await hashFile(join(sourceDirectory, 'oevtp.gpkg.zip')) }
   assert.equal(hashes.archive, 'd325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e', 'Unreviewed GTFS fixture')
   assert.equal(hashes.geometryArchive, source.metadata.archiveSha256)
+  for (const document of crosswalk.supportingDocuments ?? []) {
+    assert.equal(await hashFile(join(sourceDirectory, document.file)), document.sha256, `Changed corridor evidence ${document.file}`)
+  }
   const census = await json('data/swiss-transit-agencies.json')
   assert.equal(census.sourceSha256, hashes.archive)
-  const provenance = { ...source.metadata, timetable: { publisher: 'SBB / Open data platform mobility Switzerland',
+  const provenance = { ...source.metadata, crosswalkSupportingDocuments: crosswalk.supportingDocuments ?? [], timetable: { publisher: 'SBB / Open data platform mobility Switzerland',
     attribution: 'opentransportdata.swiss', sourceUrl: census.sourceUrl, feed: census.feed, sha256: hashes.archive,
     downloadUrl: 'https://data.opentransportdata.swiss/dataset/3d2c18f9-9ef1-463f-a249-5c67604efd74/resource/c09aba2a-41e9-4117-88af-3fdfe589d64a/download/gtfs_fp2026_20260902.zip',
     termsUrl: 'https://opentransportdata.swiss/en/terms-of-use/', processedBy: 'Gleislicht',
@@ -160,6 +163,7 @@ export async function buildBernRegion({ archive, sourceDirectory = 'data/bern-so
       model: 'Scheduled interpolation along cantonal source centrelines; exactTimes=0 instances are representative headway motion, not exact departures or observed vehicles.',
       scope: timetable.census.boundaryRule, admission: 'Only complete directed patterns with every segment passing geometry limits and no reservation/on-demand call. Exclusions retained in the canton audit.',
       geometry: { ...source.metadata, transformation: 'swisstopo approximate CH1903+/WGS84 formula; original LV95 vertices, no simplification, seven-decimal output coordinates',
+        crosswalkSupportingDocuments: crosswalk.supportingDocuments ?? [],
         limits: BERN_LIMITS, direction: 'Bidirectional centreline inference from ordered calls. No road one-way or rail running-track certification; no realtime/diversion verification.',
         localMetadata: '../sources.json', localTerms: ['../terms_of_use_de.pdf', '../terms_of_use_fr.pdf'] },
     }
@@ -229,6 +233,7 @@ export async function buildBernRegion({ archive, sourceDirectory = 'data/bern-so
   await writeJson(join(auditDirectory, 'stops.json'), timetable.sourceStopInventory, false)
   await writeJson(join(output, 'sources.json'), provenance, true)
   for (const name of [...source.metadata.termsFiles, 'metadata_oevtp_linie_de.pdf']) await copyFile(join(sourceDirectory, name), join(output, name))
+  for (const document of crosswalk.supportingDocuments ?? []) await copyFile(join(sourceDirectory, document.file), join(output, document.file))
   await writeJson(join(output, 'index.json'), { label: 'Bern canton regional feed', sourceHashes: hashes, dates: dates.map(date => ({ date,
     manifest: `${date}/bern-region-day-manifest.json`, morning: `${date}/bern-region-morning.json` })), admission: 'Complete geometry patterns only; see docs/BERN-STUDY.md and data/bern-audit for exclusions.' }, true)
   return summary

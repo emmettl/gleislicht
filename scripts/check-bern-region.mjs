@@ -19,6 +19,10 @@ export async function checkBernRegion({ output = 'public/data/bern-region', audi
   assert.equal(sha(decodedBytes), summary.sourceHashes.source)
   assert.equal(sha(await readFile(join(sources, 'oevtp.gpkg.zip'))), summary.sourceHashes.geometryArchive)
   assert.equal(sha(await readFile('data/bern-operator-crosswalk.json')), summary.sourceHashes.crosswalk)
+  for (const document of crosswalk.supportingDocuments ?? []) {
+    assert.equal(sha(await readFile(join(sources, document.file))), document.sha256)
+    assert.equal(sha(await readFile(join(output, document.file))), document.sha256)
+  }
   assert.equal(sha(await readFile(join(sources, 'boundary-rows.json.gz'))), decoded.metadata.boundary.snapshotSha256)
   assert.equal(routes.length, summary.routeCount); assert.equal(new Set(routes.map(r => r.id)).size, routes.length)
   assert.equal(new Set(routes.map(r => r.agencyId)).size, summary.agencyCount)

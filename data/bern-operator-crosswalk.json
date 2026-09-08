@@ -421,6 +421,17 @@
         "GGM"
       ],
       "reason": "Gondelbahn Grindelwald–Männlichen: published GTFS name GGM on the same installation; endpoints and ordered intermediate calls must still pass."
+    },
+    "308_RE": {
+      "agencyIds": [
+        "88"
+      ],
+      "lines": [
+        "RE5",
+        "S8"
+      ],
+      "reason": "The OEVTP S8 shape ends at Jegenstorf. Official 2026 timetable field 308 confirms S8 shares the Bern–Solothurn corridor with RE5, including Bätterkinden and early/late Solothurn extensions. Infer S8 centrelines from the preserved 308_RE corridor only after every original directed stop pair passes the unchanged rail limits.",
+      "supportingDocument": "rbs-corridor-308-2026.pdf"
     }
   },
   "expectedAgencyNames": {
@@ -523,5 +534,18 @@
     "889": "Verkehrsbetriebe Biel",
     "894": "Busbetrieb Grenchen und Umgebung",
     "899": "Aargau Verkehr AG"
-  }
+  },
+  "supportingDocuments": [
+    {
+      "file": "rbs-corridor-308-2026.pdf",
+      "sourceUrl": "https://widgets.oev-info.ch/publikation/jahresfpl/308.pdf",
+      "title": "Fahrplanjahr 2026, field 308 Bern–Solothurn (S-Bahn Bern, Linie S8)",
+      "sourceDate": "2025-09-03",
+      "validTimetableYear": 2026,
+      "acquiredAt": "2026-09-08T17:56:28.992672+00:00",
+      "sha256": "01795d7f3dd3d19f31fc60f7c066100b5778db05b8473ba75c6507644d90c0a1",
+      "attribution": "öv-info.ch / Regionalverkehr Bern-Solothurn RBS",
+      "role": "Evidence for the dated shared corridor; timetable times continue to come from the pinned national GTFS."
+    }
+  ]
 }

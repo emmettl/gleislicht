@@ -2,7 +2,7 @@
 
 Study by **Gleislicht**, using the pinned national timetable and the canton’s OEVTP source. Validation dates: **Friday 4 September and Sunday 6 September 2026**, each a Europe/Zurich civil day including the preceding service day’s after-midnight journeys. This is a reproducible historical regional feed, not a live service or a claim of year-round completeness.
 
-The full-source census identifies **705 GTFS route records from 101 agency identities**, covering **all ten districts** of Bern. All **518 OEVTP line records and 5,321 OEVTP stop records** are retained in the source snapshot. The regional feed admits complete directed stop patterns only: **33,010 Friday and 28,940 Sunday journey instances**. Failed patterns remain in the audit; no unsourced straight-line segments are emitted as admitted journeys.
+The full-source census identifies **705 GTFS route records from 101 agency identities**, covering **all ten districts** of Bern. All **518 OEVTP line records and 5,321 OEVTP stop records** are retained in the source snapshot. The regional feed admits complete directed stop patterns only: **33,086 Friday and 29,015 Sunday journey instances**. Failed patterns remain in the audit; no unsourced straight-line segments are emitted as admitted journeys.
 
 ## Deliverables
 
@@ -42,15 +42,15 @@ Admitted journeys retain 677 Friday and 695 Sunday out-of-canton stop records. F
 | Candidate journey instances | 43,653 | 38,587 |
 | Scheduled journey instances | 28,696 | 22,462 |
 | Representative headway instances (exact_times=0) | 14,957 | 16,125 |
-| Admitted scheduled instances | 18,983 | 13,745 |
+| Admitted scheduled instances | 19,059 | 13,820 |
 | Admitted representative headway instances | 14,027 | 15,195 |
-| Admitted total instances | 33,010 | 28,940 |
-| Directed stop patterns: complete / candidate | 1,708 / 2,582 | 1,328 / 2,108 |
-| Route-specific directed stop pairs: matched / candidate | 10,494 / 12,321 | 11,211 / 13,244 |
-| All modeled segment occurrences: matched / candidate | 288,896 / 314,668 | 207,055 / 229,859 |
-| All modeled segment occurrence coverage | 91.81% | 90.08% |
-| Scheduled-only segment occurrence coverage | 91.59% | 89.55% |
-| Carry-in journeys: admitted / candidate | 200 / 334 | 481 / 816 |
+| Admitted total instances | 33,086 | 29,015 |
+| Directed stop patterns: complete / candidate | 1,719 / 2,582 | 1,336 / 2,108 |
+| Route-specific directed stop pairs: matched / candidate | 10,514 / 12,321 | 11,230 / 13,244 |
+| All modeled segment occurrences: matched / candidate | 289,288 / 314,668 | 207,439 / 229,859 |
+| All modeled segment occurrence coverage | 91.93% | 90.25% |
+| Scheduled-only segment occurrence coverage | 91.72% | 89.74% |
+| Carry-in journeys: admitted / candidate | 202 / 334 | 483 / 816 |
 | Night-route journeys: admitted / candidate | 0 / 14 | 158 / 307 |
 | Patterns revisiting a platform: admitted / candidate | 41 / 65 | 38 / 59 |
 
@@ -62,14 +62,14 @@ There are **1,317 shared**, **1,265 Friday-only** and **791 Sunday-only** patter
 | --- | --- | --- |
 | bus | 11,708 / 15,623; 94.12% | 7,324 / 10,453; 92.42% |
 | tram | 1,340 / 1,588; 98.20% | 1,064 / 1,252; 98.14% |
-| rail | 2,779 / 4,150; 81.79% | 2,359 / 3,698; 81.32% |
+| rail | 2,855 / 4,150; 82.84% | 2,434 / 3,698; 82.57% |
 | ferry | 36 / 40; 93.63% | 34 / 38; 93.55% |
 | funicular | 2,753 / 2,753; 100.00% | 2,605 / 2,605; 100.00% |
 | cableway | 14,394 / 19,499; 79.50% | 15,554 / 20,541; 80.75% |
 
 ### Adapter and admission policy
 
-OEVTP’s `tucode` is an operator abbreviation, not a GTFS agency ID. Mapping checks the pinned agency name as well as its ID, compatible mode, and complete passenger line number. Moonliner uses the full `tuname` because it spans multiple operators. Rack railways have explicit R-prefix handling. Cable and boat records with blank display numbers use their timetable field; exceptional identifiers are enumerated in the crosswalk. The Grindelwald bus source maps to STI identities 859/605, BOB/WAB replacement records have explicit line overrides, and BLS boat cruise IDs are tested against their lake-specific source lines. Rail shapes are never reused for a bus merely because its number resembles a rail line.
+OEVTP’s `tucode` is an operator abbreviation, not a GTFS agency ID. Mapping checks the pinned agency name as well as its ID, compatible mode, and complete passenger line number. Moonliner uses the full `tuname` because it spans multiple operators. Rack railways have explicit R-prefix handling. Cable and boat records with blank display numbers use their timetable field; exceptional identifiers are enumerated in the crosswalk. The Grindelwald bus source maps to STI identities 859/605, BOB/WAB replacement records have explicit line overrides, and BLS boat cruise IDs are tested against their lake-specific source lines. Rail shapes are never reused for a bus merely because its number resembles a rail line. The S8 extension has a separate, dated shared-corridor exception supported by official timetable field 308, with a pinned evidence hash.
 
 435 of 518 source line records have a reviewed crosswalk candidate among the canton-serving GTFS routes. The remaining 83 remain individually listed, including unresolved operators, source lines beyond the canton, missing timetable entries and changed identifiers. A crosswalk candidate is not geometry admission.
 
@@ -87,20 +87,20 @@ Alternative source-part projections may be at most 5 m farther from each endpoin
 
 ## Exclusions and review evidence
 
-Across both dates: **280 routes admit all dated journeys**, **102 admit some**, **140 admit none**, and **183 are inactive on both dates**. The complete route appendix distinguishes these states; inactive annual records are not silently erased or described as failed geometry.
+Across both dates: **281 routes admit all dated journeys**, **101 admit some**, **140 admit none**, and **183 are inactive on both dates**. The complete route appendix distinguishes these states; inactive annual records are not silently erased or described as failed geometry.
 
 | Unmatched geometry reason | Friday directed pairs / occurrences | Sunday directed pairs / occurrences |
 | --- | --- | --- |
 | collapsed-path | 2 / 15 | 0 / 0 |
 | disconnected-line | 102 / 2,530 | 111 / 1,600 |
-| endpoint-gap | 728 / 8,029 | 709 / 7,398 |
+| endpoint-gap | 708 / 7,637 | 690 / 7,014 |
 | implausible-detour | 13 / 167 | 13 / 87 |
 | missing-line | 982 / 15,031 | 1,200 / 13,719 |
 
 Concrete cases preserved for follow-up:
 
 - **BERNMOBIL 7A/8A buses:** no reviewed mode-compatible line crosswalk. The source tram 7/8 paths are not treated as bus geometry. Some tram 6 patterns also fail endpoint matching.
-- **RBS S8:** the OEVTP S8 record is Bern–Jegenstorf, while some complete GTFS journeys continue toward Bätterkinden. Those longer patterns fail rather than being cut to an apparently complete short line.
+- **RBS S8 — resolved in the follow-up:** the OEVTP S8 record ends at Jegenstorf, but [official 2026 timetable field 308](../data/bern-sources/rbs-corridor-308-2026.pdf), dated 3 September 2025, establishes the shared S8/RE5 corridor through Bätterkinden to Solothurn. The explicit agency-88 rail-only crosswalk now permits the preserved 308_RE centreline for S8. All 148 Friday and 118 Sunday S8 journeys pass every directed segment with unchanged limits, admitting 76 additional Friday and 75 additional Sunday journeys. This does not grant other RBS lines or buses access to that corridor. The evidence file hash and attribution accompany the feed.
 - **Eiger Express 2444:** its two directed endpoint pairs have a maximum snap of **215.3 m**, exceeding the cable limit. **Grindelwald–Männlichen GGM** has **93.4 m** terminal mismatch. Matching the installation’s identity does not authorize moving its source stops or raising the threshold.
 - **Schilthorn variants 24602/24603/24604:** changed installation identifiers lack reviewed source-line assignments. The matched 2460 patterns do not imply all variants are covered.
 - **Matte lift 2352 and Wiriehorn 2365:** no matching acquired OEVTP line. **SBB/BLS/SOB and MOB long-distance or changed labels**, replacement buses, and complete journeys beyond the source extent remain explicitly excluded or partial. No whole operator is claimed complete from its admitted subset.
@@ -125,7 +125,7 @@ SHA-256 identities:
 - Original boundary GeoPackage: `1f122cb7a06f2d312a84b7c0a91116348ba907054d487f0a70b9d2302984e6fc`.
 - Extracted boundary-row snapshot: `b0bfb7d0d3d7357aaaec2de0335dfc1beb83274b2143d876260e86b227a41dd0`.
 - Decoded source: `36146aab8e303a8bc9b6864f0974f2f726aed809cf340958f5233e5e08936956`.
-- Operator/line crosswalk: `af3ac979612923ad376715cde247552a73f01aefbbd36a4998cbe8ecdc81244a`.
+- Operator/line crosswalk: `e300555440d56a0d4fa58437cdab1b746e40dc354b02c5765ef8d87231550c45`.
 
 ## Reproduction and checks
 

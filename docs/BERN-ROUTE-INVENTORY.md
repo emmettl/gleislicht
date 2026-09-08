@@ -18,7 +18,7 @@ Generated from the [Bern audit](BERN-STUDY.md). Counts are admitted / candidate 
 | 81 | Aare Seeland mobil (snb) | 1 | 154 / 154 | 96 / 96 |
 | 82 | Schweizerische Südostbahn (sob) | 3 | 0 / 22 | 0 / 21 |
 | 86 | Zentralbahn | 9 | 78 / 134 | 74 / 124 |
-| 88 | Regionalverkehr Bern-Solothurn | 4 | 535 / 611 | 354 / 429 |
+| 88 | Regionalverkehr Bern-Solothurn | 4 | 611 / 611 | 429 / 429 |
 | 101 | Verkehrsbetriebe Biel | 2 | 218 / 218 | 146 / 146 |
 | 103 | Verkehrsbetriebe Biel | 1 | 132 / 132 | 132 / 132 |
 | 104 | Brienz Rothorn Bahn AG | 2 | 16 / 16 | 18 / 18 |
@@ -268,7 +268,7 @@ Generated from the [Bern audit](BERN-STUDY.md). Counts are admitted / candidate 
 | 91-71-j26-1 | 86: R71 | rail | excluded | 0 / 56 | 0 / 50 | — | no-verified-operator-line-crosswalk |
 | 91-5-O-j26-1 | 88: RE5 | rail | admitted-all-dated-trips | 127 / 127 | 74 / 74 | 308_RE | — |
 | 91-7-A-j26-1 | 88: S7 | rail | admitted-all-dated-trips | 210 / 210 | 126 / 126 | 307_S | — |
-| 91-8-B-j26-1 | 88: S8 | rail | partially-admitted | 72 / 148 | 43 / 118 | 308_S | incomplete-directed-pattern |
+| 91-8-B-j26-1 | 88: S8 | rail | admitted-all-dated-trips | 148 / 148 | 118 / 118 | 308_RE, 308_S | — |
 | 91-9-A-j26-1 | 88: S9 | rail | admitted-all-dated-trips | 126 / 126 | 111 / 111 | 309_S | — |
 | 92-23-B-j26-1 | 101: 23 | bus | inactive-on-validation-dates | 0 / 0 | 0 / 0 | — | Not active on these dates |
 | 93-23-j26-1 | 101: 23 | funicular | admitted-all-dated-trips | 218 / 218 | 146 / 146 | 2023_1 | — |

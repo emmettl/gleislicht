@@ -53,6 +53,17 @@ describe('Bern source identity and geography', () => {
     expect(bernFeatureMatch({ ...route, mode: 'ferry', name: '3216' }, f, crosswalk)).toBe(true)
     expect(bernFeatureMatch({ ...route, mode: 'bus', name: '3216' }, f, crosswalk)).toBe(false)
   })
+
+  it('scopes the evidenced S8 corridor extension to its operator and rail mode', () => {
+    const policy = JSON.parse(readFileSync('data/bern-operator-crosswalk.json'))
+    const f = feature([A, B], { vkmtyp: 1, tucode: 'RBS', liniencode: '308_RE', liniennr: 'RE5' })
+    expect(bernFeatureMatch({ ...route, agencyId: '88', mode: 'rail', name: 'S8' }, f, policy)).toBe(true)
+    expect(bernFeatureMatch({ ...route, agencyId: '88', mode: 'rail', name: 'RE5' }, f, policy)).toBe(true)
+    expect(bernFeatureMatch({ ...route, agencyId: '88', mode: 'rail', name: 'S7' }, f, policy)).toBe(false)
+    expect(bernFeatureMatch({ ...route, agencyId: '850', mode: 'bus', name: 'S8' }, f, policy)).toBe(false)
+    expect(bernFeatureMatch({ ...route, agencyId: '11', mode: 'rail', name: 'S8' }, f, policy)).toBe(false)
+    expect(policy.featureOverrides['308_RE'].supportingDocument).toBe(policy.supportingDocuments[0].file)
+  })
 })
 
 describe('Bern directed patterns and civil days', () => {
