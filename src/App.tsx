@@ -105,6 +105,7 @@ import {
   type RoadTrafficSnapshot,
 } from '@motionstudies/core/domain/road'
 import { reconstructedNationalVehicleCount } from './studies/road-conditions.ts'
+import { CANTONAL_RECORDING_COPY } from './studies/cantonal-recording-copy.ts'
 import { PILOT_LINK_UNAVAILABLE } from './studies/cantonal-pilot-link-copy.ts'
 import { cantonalPilotForRecording, cantonalPilotForRoad, cantonalPilotWindow, searchRoadsWithPilots, topologyWithPilot, type CantonalPilot } from './studies/cantonal-road-pilot.ts'
 import {
@@ -135,6 +136,7 @@ import { useProgressiveAirDay } from '@motionstudies/web/use-progressive-air-day
 import { useProgressiveRoadStudy } from '@motionstudies/web/use-progressive-road-study'
 import { useLocalPerformance } from '@motionstudies/web/use-local-performance'
 
+const CantonalRecordingPicker = lazy(() => import('./studies/CantonalRecordingPicker.tsx'))
 const StudyBrowser = lazy(() => import('./studies/StudyBrowser.tsx'))
 
 const CantonalPilotControls = lazy(() => import('./studies/CantonalPilotControls.tsx'))
@@ -283,6 +285,8 @@ export function App({ edition }: AppProps) {
   const [pilotLinkUnavailable, setPilotLinkUnavailable] = useState(false)
   const linkPending = useRef(!linkedPilot && Boolean(initialLink.date || initialLink.time !== undefined || initialLink.station || initialLink.train))
   const [exploreOpen, setExploreOpen] = useState(false)
+  const [roadRecordingsOpen, setRoadRecordingsOpen] = useState(false)
+  const roadRecordingsButton = useRef<HTMLButtonElement>(null)
   const [shareUrl, setShareUrl] = useState('')
   const [exploreNotice, setExploreNotice] = useState('')
   const [regionalRange, setRegionalRange] = useState<'morning' | 'day'>(initialLink.range)
@@ -3757,6 +3761,7 @@ export function App({ edition }: AppProps) {
         </div>
       )}
 
+      {roadRecordingsOpen && <Suspense fallback={null}><CantonalRecordingPicker language={language} recording={activePilot?.metadata.recordingId} onClose={() => { setRoadRecordingsOpen(false); roadRecordingsButton.current?.focus() }} /></Suspense>}
       {exploreOpen && <Suspense fallback={null}><StudyBrowser language={language} study={networkStudy} onClose={() => setExploreOpen(false)} onSelect={id => { setRegionalRange('day'); selectNetworkStudy(id, 'day'); setExploreOpen(false) }} /></Suspense>}
       <section className="transport" aria-label={text.playbackControls}>
       {isTimetable && !selectedTrain && !selectedAirTrack && !selectedRoute && (
@@ -3840,6 +3845,7 @@ export function App({ edition }: AppProps) {
         {isNetwork && <>
           <div className="explore-actions">
             <button type="button" onClick={() => setExploreOpen(true)}>{exploreCopy.browse}</button>
+            <button ref={roadRecordingsButton} type="button" onClick={() => setRoadRecordingsOpen(true)}>{CANTONAL_RECORDING_COPY[language].title}</button>
             {!isContrast && !airEnabled && !roadEnabled && <button type="button" aria-pressed={nowActive} disabled={!network || (isRegionalDay && !regionalDay.chunkReady) || (isNationalDay && !nationalDayChunkReady)} onClick={nowActive ? stopNow : startNow}>{exploreCopy.now}</button>}
             {nowActive && <button type="button" onClick={browserLocation.locate} disabled={browserLocation.status === 'locating'}>{exploreCopy.locate}</button>}
             {browserLocation.status !== 'idle' && <button type="button" onClick={clearBrowserLocation}>{exploreCopy.clear}</button>}

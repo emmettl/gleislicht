@@ -1,0 +1,9 @@
+.cantonal-recording-picker { width: min(640px, calc(100vw - 32px)); }
+.recording-note { color: #c9d2dd; font-size: 13px; line-height: 1.5; margin: 0 0 20px; }
+.recording-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.recording-choice { display: flex; flex-direction: column; gap: 8px; padding: 16px; border: 1px solid #8dfaff25; border-radius: 12px; background: #080b17; color: #f8f7ff; text-decoration: none; }
+.recording-choice:hover, .recording-choice[aria-current=page] { border-color: #8dfaff; background: #12202b; }
+.recording-choice:focus-visible { outline: 2px solid #8dfaff; outline-offset: 3px; }
+.recording-choice span { color: #c9d2dd; font-size: 12px; line-height: 1.4; }
+.recording-choice small { color: #8dfaff; margin-top: 8px; }
+@media (max-width: 600px) { .recording-grid { grid-template-columns: 1fr; } }

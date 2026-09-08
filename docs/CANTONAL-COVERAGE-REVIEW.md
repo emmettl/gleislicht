@@ -87,3 +87,21 @@ The review exposed a compiler edge case: aggregation could accept a direction wh
 Validation: **244 tests across 63 files passed**, including changed evidence, invalid anchors/carriageways, incomplete multi-lane observations, missing archive minutes, source failures, duplicate conflicts and partial WFS responses. Lint passes for the changed scripts. The existing Horgen public artifact rebuilds byte-for-byte identically.
 
 The subsequent playback integration now offers the reviewed **ZH 1 corridor and its 104-minute window** in AUTO, with its own recording identity and junction disclosure. The original review artifacts remain as provenance for that publication.
+
+## Bassersdorf–Lindau follow-up
+
+The **2.232 km** section has **245 consecutive complete minutes, 13:23–17:27 CEST**, in the audited archive. It remains excluded from playback after the detailed direction review.
+
+At Lindau `ZH.CH:0908`, both detector destinations fail the local bearing gate: Zürich **−0.64**, Winterthur **+0.24**, against the required absolute agreement of **0.75**. A fresh [official collector configuration](https://vdp.zh.ch/pws/public-service/readCollectorsCfg) confirms the same two normal-lane destination labels. The detailed [official road-axis extract](https://maps.zh.ch/wfs/TBAStrZHWFS?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=ms:strassenachsen&SRSNAME=EPSG:2056&OUTPUTFORMAT=application%2Fjson&BBOX=2690300,1253300,2693000,1255000,EPSG:2056&COUNT=10000) places the precise counter on axis feature 66 and gives almost the same local agreements, **−0.63 / +0.23**. This does not resolve the detector directions. The local feature is too short to replace the full road path for destination projection; its bearing is used only as a diagnostic comparison.
+
+Unlike Wallisellen, Lindau has **no independently validated anchor detector**. The existing opposing-lane review therefore cannot be applied. Alert-C signs and the neighbouring Bassersdorf directions alone do not establish Lindau's detector-to-path mapping. No direction threshold, published topology or recording catalog entry has been changed.
+
+The next required evidence is a detector-specific surveyed direction or independently verified directional reference tied to the station and road path. A successful review would then need the section/junction audit before publication. The absence of that evidence in this review does not establish that it is unavailable from the publisher.
+
+The [pinned source extracts](../data/lindau-road-review-sources.json) and [review report](../data/lindau-road-review.json) record source URLs, retrieval time, hashes, both automatic direction results, detailed-axis comparison and the separate observation coverage. Reproduce with:
+
+```sh
+node scripts/audit-lindau-road.mjs
+```
+
+The audit recomputes the automatic directions and validates the source hashes and detector labels. Tests verify that complete observations do not authorize a direction override and that changed source evidence is rejected.

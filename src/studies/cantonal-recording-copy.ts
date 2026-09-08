@@ -1,0 +1,6 @@
+export const CANTONAL_RECORDING_COPY = {
+  en: { title: 'Road recordings', close: 'Close', note: 'Recorded traffic between two counters. Individual vehicles are reconstructed; junction turns are not measured.', minutes: (n: number) => `${n} recorded minutes`, gaps: 'Includes observation gaps', continuous: 'No observation gaps', open: 'Open paused' },
+  de: { title: 'Strassenaufzeichnungen', close: 'Schliessen', note: 'Gemessener Verkehr zwischen zwei Zählstellen. Einzelne Fahrzeuge sind rekonstruiert; Abbiegeströme sind nicht gemessen.', minutes: (n: number) => `${n} aufgezeichnete Minuten`, gaps: 'Enthält Messlücken', continuous: 'Keine Messlücken', open: 'Pausiert öffnen' },
+  fr: { title: 'Enregistrements routiers', close: 'Fermer', note: 'Trafic mesuré entre deux compteurs. Les véhicules sont reconstitués ; les mouvements aux carrefours ne sont pas mesurés.', minutes: (n: number) => `${n} minutes enregistrées`, gaps: 'Comprend des lacunes de mesure', continuous: 'Aucune lacune de mesure', open: 'Ouvrir en pause' },
+  it: { title: 'Registrazioni stradali', close: 'Chiudi', note: 'Traffico misurato tra due contatori. I singoli veicoli sono ricostruiti; le svolte agli incroci non sono misurate.', minutes: (n: number) => `${n} minuti registrati`, gaps: 'Include lacune nelle misure', continuous: 'Nessuna lacuna nelle misure', open: 'Apri in pausa' },
+}

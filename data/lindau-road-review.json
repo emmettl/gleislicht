@@ -1,0 +1,104 @@
+{
+  "metadata": {
+    "schemaVersion": 1,
+    "sourceHashes": {
+      "public/data/zurich-cantonal-road-topology.json": "e6672433b70989a1fb5228bfe5d61933d58394a60df3e36b8deba83e8c9f65ea",
+      "data/zurich-cantonal-road-counters.json": "39af27ba04503d25f407e59d58712d49c7a7ca4e0f980dafc77609847e3dd9d9",
+      "data/zurich-cantonal-road-directions.json": "9667168eaa3efe7d2809d831efc05b50e5ea7229c109d623b7f2ebf7e72f66ca",
+      "data/zurich-cantonal-road-coverage-audit.json": "30e3ff4cdbb216694bb72fd7ede7720a290b7eb80de69741acc81b10c9698913",
+      "data/lindau-road-review-sources.json": "2590030cb4f5f4edfabfa2163522f207d3dd05e78c58ae48e126e59cb99c89d0"
+    },
+    "sourceFetchedAt": "2026-09-08T16:40:00.293Z"
+  },
+  "stationId": "ZH.CH:0908",
+  "name": "Lindau: Zürcherstrasse",
+  "pathId": "ZH:1:bfc74981f98f10f9",
+  "publicationStatus": "direction-unresolved",
+  "reason": "Neither Lindau detector has an independently validated direction. The opposing-lane review used at Wallisellen requires a validated anchor and cannot resolve this station. Detailed road-axis bearing is diagnostic evidence, not a detector-to-travel-direction survey.",
+  "automaticDetectors": [
+    {
+      "id": "ZH.CH:0908.01",
+      "description": "Normalspur Richtung Zürich",
+      "alertCDirection": "negative",
+      "status": "bearing-conflict",
+      "destination": {
+        "name": "Zürich",
+        "coordinate": [
+          2682880.1500000004,
+          1248023.1
+        ],
+        "bounds": [
+          2677461.6,
+          1241764.4,
+          2688298.7,
+          1254281.8
+        ],
+        "sourceFeatureId": 314086
+      },
+      "destinationDistanceMetres": 11401.38,
+      "destinationRoadDistanceMetres": 1426.72,
+      "offsetSeparationMetres": -13512.28,
+      "bearingAgreement": -0.64,
+      "offsetMetres": 25141.26
+    },
+    {
+      "id": "ZH.CH:0908.02",
+      "description": "Normalspur Richtung Winterthur",
+      "alertCDirection": "positive",
+      "status": "bearing-conflict",
+      "destination": {
+        "name": "Winterthur",
+        "coordinate": [
+          2697066.45,
+          1261571.4
+        ],
+        "bounds": [
+          2692884.4,
+          1258416.4,
+          2701248.5,
+          1264726.4
+        ],
+        "sourceFeatureId": 55851
+      },
+      "destinationDistanceMetres": 8726.85,
+      "destinationRoadDistanceMetres": 16.17,
+      "offsetSeparationMetres": 10733.57,
+      "bearingAgreement": 0.24,
+      "offsetMetres": 25141.26
+    }
+  ],
+  "detailedGeometry": {
+    "sourceFeatureId": 66,
+    "distanceMetres": 0.0004571207899928059,
+    "directions": [
+      {
+        "detectorId": "ZH.CH:0908.01",
+        "status": "destination-too-close",
+        "bearingAgreement": -0.63,
+        "destinationDistanceMetres": 11401.38
+      },
+      {
+        "detectorId": "ZH.CH:0908.02",
+        "status": "destination-off-axis",
+        "bearingAgreement": 0.23,
+        "destinationDistanceMetres": 8726.85
+      }
+    ],
+    "note": "Detailed feature vertex order may differ from the stored classified road path. Compare absolute bearing agreement, not the sign."
+  },
+  "observations": {
+    "from": "ZH.CH:2092",
+    "to": "ZH.CH:0908",
+    "distanceMetres": 2232.15,
+    "completeMinutes": 245,
+    "longestRunMinutes": 245,
+    "hourWindows": [
+      {
+        "start": 48180,
+        "end": 62820,
+        "minutes": 245
+      }
+    ]
+  },
+  "requiredEvidence": "A detector-specific surveyed direction or independently verified directional reference tied to this station and road path; then a new explicit, pinned review and section/junction audit before publication."
+}
