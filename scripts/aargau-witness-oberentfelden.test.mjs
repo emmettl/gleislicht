@@ -77,3 +77,14 @@ test('edited clearance decisions, paths, evidence or relaxed buffer fail closed'
   expect(()=>oberentfeldenMatcher(policy,()=>evidence).matchPattern(t,r.stops)).toThrow('Changed Oberentfelden road evidence')
  }
 })
+
+
+test('road evidence tolerates only sub-micrometre arithmetic drift',()=>{
+ const r=policy.patterns[0],t=train(r),actual=evaluate(t,r.stops)
+ for(const field of ['pathMetres','endpointAdjustmentMetres'])for(const drift of [1e-12,1e-6]){
+  const changed=structuredClone(actual);changed[0][field]+=drift
+  const replay=()=>oberentfeldenMatcher(policy,()=>changed).matchPattern(t,r.stops)
+  if(drift<1e-7)expect(replay).not.toThrow()
+  else expect(replay).toThrow('Changed Oberentfelden road evidence')
+ }
+})

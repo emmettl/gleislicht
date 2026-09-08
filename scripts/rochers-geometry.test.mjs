@@ -1,3 +1,4 @@
+import { assertGeometryMeasurementsEqual } from './compare-geometry-measurements.mjs'
 import {describe,expect,it} from 'vitest'
 import {readFileSync} from 'node:fs'
 import {applyRochersGeometry,rochersRailSource} from './rochers-geometry.mjs'
@@ -13,7 +14,7 @@ describe('Rochers reviewed MVR railway',()=>{
   const original=structuredClone(snapshot.stops),result=applyRochersGeometry(snapshot,network)
   expect(snapshot.stops).toEqual(original);expect(result.paths).toEqual(snapshot.paths)
   expect(auditRochersGeometry({...snapshot,...result})).toEqual(audit.geometry)
-  expect(result.alignmentReview).toEqual(audit.alignmentReview)
+  assertGeometryMeasurementsEqual(result.alignmentReview, audit.alignmentReview)
   expect(rochersRailSource(network,source.sourceSha256)).toEqual(source)
   expect(source.sourceSha256).toBe(snapshot.metadata.sources.rail.sha256)
   expect(audit.initialGeometry.matched).toBe(304)

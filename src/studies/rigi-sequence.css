@@ -73,3 +73,6 @@
   .sequence-timed-profile > .sequence-context:nth-child(2),
   .sequence-timed-profile svg { display: none !important; }
 }
+
+/* The authored journey panel owns this mobile control area. */
+.experience:has(.rigi-sequence) .mobile-map-tools { display: none; }

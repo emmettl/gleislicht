@@ -182,16 +182,6 @@
       "retainedJourneys": 0
     },
     {
-      "id": "rochers",
-      "file": "rochers-day.json",
-      "sha256": "8e70fbec1896cbda34ac811f6f372e43156a4e4b6f9ec85249ca74310910de49",
-      "inputSha256": "8e70fbec1896cbda34ac811f6f372e43156a4e4b6f9ec85249ca74310910de49",
-      "date": "2026-09-04",
-      "feedVersion": "20260902",
-      "journeys": 37,
-      "retainedJourneys": 0
-    },
-    {
       "id": "territet",
       "file": "territet-day.json",
       "sha256": "fd5bfd43481f836b1bfdc74723c1914afb48cf4eafe896c238194160e8b44e9a",
@@ -202,14 +192,14 @@
       "retainedJourneys": 140
     },
     {
-      "id": "riviera-region",
-      "file": "riviera-region-day-manifest.json",
-      "sha256": "c99200ff35676746896194ce9243b30b262bfa6864be210ece05591d59c4bf00",
-      "inputSha256": "22e8a4e0b3f130207e2a5c2910ed9ede68fa14abdb6b25307fe7d12c9fc12ee7",
-      "date": "2026-09-08",
-      "feedVersion": "20260905",
-      "journeys": 1907,
-      "retainedJourneys": 1568
+      "id": "rochers",
+      "file": "rochers-day.json",
+      "sha256": "8e70fbec1896cbda34ac811f6f372e43156a4e4b6f9ec85249ca74310910de49",
+      "inputSha256": "8e70fbec1896cbda34ac811f6f372e43156a4e4b6f9ec85249ca74310910de49",
+      "date": "2026-09-04",
+      "feedVersion": "20260902",
+      "journeys": 37,
+      "retainedJourneys": 0
     },
     {
       "id": "luzern",
@@ -326,8 +316,8 @@
       "selectedFile": "valais-region-day-manifest.json"
     }
   ],
-  "journeys": 173112,
-  "peak": 5222,
+  "journeys": 171544,
+  "peak": 5173,
   "dates": [
     "2026-09-04",
     "2026-09-08"

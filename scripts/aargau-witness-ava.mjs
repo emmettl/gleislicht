@@ -1,3 +1,4 @@
+import { assertGeometryMeasurementsEqual } from './compare-geometry-measurements.mjs'
 import assert from 'node:assert/strict'
 import { hashFile } from './inventory-aargau.mjs'
 import { readJson,readGzipJson } from './aargau-seasonal.mjs'
@@ -34,7 +35,7 @@ export function avaMatcher(policy,evaluate){
   const actual=evaluate(t,stops);assert.equal(actual?.length,r.segments.length)
   return r.segments.map((expected,i)=>{
    const {path,...evidence}=actual[i];assert(path)
-   assert.equal(geometryDigest(path),expected.pathSha256,'Changed AVA diagnostic path');assert.deepEqual(evidence,expected.evidence,'Changed AVA road evidence')
+   assert.equal(geometryDigest(path),expected.pathSha256,'Changed AVA diagnostic path');assert.doesNotThrow(() => assertGeometryMeasurementsEqual(evidence, expected.evidence), 'Changed AVA road evidence')
    if(period==='september'){assert.equal(expected.disposition,'hold-september-road-diversion');return undefined}
    // A good road match cannot overrule the held source-time assessment.
    const timing=avaTiming([t],i,evidence.pathMetres)
