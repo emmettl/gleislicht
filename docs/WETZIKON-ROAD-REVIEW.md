@@ -18,7 +18,7 @@ The [Wetzikon review](../data/wetzikon-road-review.json) now validates the prior
 
 The remaining pair touching 0188 is **2188–0188**, westward along ZH 340. It remains unapproved: 2188's Uster destination is only **1,138.25 m** away, below the unchanged 1,500 m direction gate. It needs independent detector-direction evidence; 0188 also needs its explicit Wetzikon homonym/extent review. Municipal playback would require a separate network and direction review.
 
-For further expansion, review the remaining unmatched counters as a batch against the detailed road network before spending time on destination reviews. These three cases show why nearby classified-road candidates must first be distinguished from counters on municipal branches. Direction-blocked pairs such as Hittnau remain dependent on independent station evidence.
+The subsequent [batch review](CANTONAL-UNMATCHED-ROADS.md) checks all 33 unmatched counters against the complete detailed-road service, distinguishes municipal branches from city roads and competing classified axes, and identifies Dietikon 1921 as the next focused investigation. Direction-blocked pairs such as Hittnau remain dependent on independent station evidence.
 
 ## Implementation and validation
 

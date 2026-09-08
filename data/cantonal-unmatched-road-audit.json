@@ -1,0 +1,2392 @@
+{
+  "schemaVersion": 1,
+  "status": "batch-triage-no-publication",
+  "inputHashes": {
+    "geometry": "3647bbd230f40391ba3a1ddcba2364ec439183cd0d0cab80c84afcdcf1812e08",
+    "catalog": "ffce5a7cc2681d4a87f89a7a579e1eab3dd077e15e61574a0d5506da92479a09",
+    "coverage": "e82703beb1fe81e1cc355c7e3faafc3505eba77641337312daef5b3db8e0248e",
+    "manifest": "b872ce9adc220f11034e98b0d071831909ac9bf827dfb68678ebd5066a3a6431",
+    "sources": "4db01b1d4f923da6556ccfcec3f7cae9414ff916c6376c61b1ffe358277b9419"
+  },
+  "summary": {
+    "unmatchedStations": 33,
+    "completeDetailedAxes": 7427,
+    "completeStationPoints": 428,
+    "completeCollectorRecords": 369,
+    "families": {
+      "city-road": 2,
+      "classified-road-ambiguity": 4,
+      "high-speed-road": 9,
+      "missing-station": 10,
+      "municipal-road": 8
+    }
+  },
+  "stations": [
+    {
+      "id": "ZH.CH:0110",
+      "name": "Winkel: Autobahn",
+      "originalGeometryStatus": "excluded-road-class",
+      "publicationStatus": "not-admitted",
+      "collectorIdentityMatches": true,
+      "originalCandidates": [
+        {
+          "road": "ZH:A51",
+          "pathId": "ZH:A51:4451729f524b8b97",
+          "distanceMetres": 0,
+          "eligible": false
+        },
+        {
+          "road": "ZH:4",
+          "pathId": "ZH:4:5619143618c57169",
+          "distanceMetres": 52.09,
+          "eligible": true
+        }
+      ],
+      "observations": {
+        "completeMinutes": 243,
+        "longestRunMinutes": 185
+      },
+      "archivedCandidatePairs": [
+        {
+          "from": "ZH.CH:1301",
+          "to": "ZH.CH:0110",
+          "pathId": "ZH:4:5619143618c57169",
+          "distanceMetres": 4184.4,
+          "longestRunMinutes": 185,
+          "status": "unresolved-endpoint"
+        },
+        {
+          "from": "ZH.CH:0110",
+          "to": "ZH.CH:0490",
+          "pathId": "ZH:4:5619143618c57169",
+          "distanceMetres": 4963.36,
+          "longestRunMinutes": 142,
+          "status": "unresolved-endpoint"
+        }
+      ],
+      "family": "high-speed-road",
+      "evidenceStatus": "competing-axes-require-review",
+      "pointStatus": "unchanged",
+      "stationPointLv95": [
+        2684655.219999999,
+        1258264.9400000013
+      ],
+      "nearestAxisDistanceMetres": 0,
+      "competingAxisMarginMetres": 9.07,
+      "candidates": [
+        {
+          "featureId": 1696,
+          "roadNumber": "10510",
+          "ownership": "Kanton",
+          "roadClass": "HLS Kanton richtungsgetrennt",
+          "distanceMetres": 0,
+          "projectedLv95": [
+            2684655.2213879717,
+            1258264.941523301
+          ]
+        },
+        {
+          "featureId": 1133,
+          "roadNumber": "15101",
+          "ownership": "Kanton",
+          "roadClass": "HLS Kanton richtungsgetrennt",
+          "distanceMetres": 9.07,
+          "projectedLv95": [
+            2684649.185502086,
+            1258258.1624165983
+          ]
+        },
+        {
+          "featureId": 2841,
+          "roadNumber": "4",
+          "ownership": "Kanton",
+          "roadClass": "Regionale Verbindungsstrassen (RVS) Kanton",
+          "distanceMetres": 52.09,
+          "projectedLv95": [
+            2684699.4005696084,
+            1258292.527507757
+          ]
+        },
+        {
+          "featureId": 2847,
+          "roadNumber": "4",
+          "ownership": "Kanton",
+          "roadClass": "Regionale Verbindungsstrassen (RVS) Kanton",
+          "distanceMetres": 147.31,
+          "projectedLv95": [
+            2684782.979800001,
+            1258191.6000500023
+          ]
+        },
+        {
+          "featureId": 1257,
+          "roadNumber": "16295",
+          "ownership": "Kanton",
+          "roadClass": "HLS Kanton Anschluss",
+          "distanceMetres": 968.13,
+          "projectedLv95": [
+            2685414.0441999994,
+            1257663.7288499996
+          ]
+        }
+      ],
+      "nextEvidence": "Retain the high-speed-road exclusion; this is not a cantonal main-road expansion candidate."
+    },
+    {
+      "id": "ZH.CH:0118",
+      "name": "Kloten: Autobahn",
+      "originalGeometryStatus": "excluded-road-class",
+      "publicationStatus": "not-admitted",
+      "collectorIdentityMatches": true,
+      "originalCandidates": [
+        {
+          "road": "ZH:A51",
+          "pathId": "ZH:A51:4451729f524b8b97",
+          "distanceMetres": 0,
+          "eligible": false
+        }
+      ],
+      "observations": {
+        "completeMinutes": 244,
+        "longestRunMinutes": 236
+      },
+      "archivedCandidatePairs": [],
+      "family": "high-speed-road",
+      "evidenceStatus": "competing-axes-require-review",
+      "pointStatus": "unchanged",
+      "stationPointLv95": [
+        2685709.6275999993,
+        1257363.7996999994
+      ],
+      "nearestAxisDistanceMetres": 0,
+      "competingAxisMarginMetres": 0.31,
+      "candidates": [
+        {
+          "featureId": 1693,
+          "roadNumber": "10510",
+          "ownership": "Kanton",
+          "roadClass": "HLS Kanton richtungsgetrennt",
+          "distanceMetres": 0,
+          "projectedLv95": [
+            2685709.6275572674,
+            1257363.7996818582
+          ]
+        },
+        {
+          "featureId": 1255,
+          "roadNumber": "16297",
+          "ownership": "Kanton",
+          "roadClass": "HLS Kanton Anschluss",
+          "distanceMetres": 0.31,
+          "projectedLv95": [
+            2685709.750402411,
+            1257363.511300061
+          ]
+        },
+        {
+          "featureId": 1256,
+          "roadNumber": "16273",
+          "ownership": "Kanton",
+          "roadClass": "HLS Kanton Anschluss",
+          "distanceMetres": 7.35,
+          "projectedLv95": [
+            2685712.582992654,
+            1257357.0730244867
+          ]
+        },
+        {
+          "featureId": 1694,
+          "roadNumber": "15101",
+          "ownership": "Kanton",
+          "roadClass": "HLS Kanton richtungsgetrennt",
+          "distanceMetres": 8.68,
+          "projectedLv95": [
+            2685701.5890986803,
+            1257360.5340789654
+          ]
+        },
+        {
+          "featureId": 1258,
+          "roadNumber": "16297",
+          "ownership": "Kanton",
+          "roadClass": "HLS Kanton Anschluss",
+          "distanceMetres": 14.28,
+          "projectedLv95": [
+            2685696.39044331,
+            1257358.4453767953
+          ]
+        }
+      ],
+      "nextEvidence": "Retain the high-speed-road exclusion; this is not a cantonal main-road expansion candidate."
+    },
+    {
+      "id": "ZH.CH:0197",
+      "name": "Zürich: Allmendstrasse",
+      "originalGeometryStatus": "excluded-road-class",
+      "publicationStatus": "not-admitted",
+      "collectorIdentityMatches": true,
+      "originalCandidates": [
+        {
+          "road": "ZH:A3W",
+          "pathId": "ZH:A3W:8f184a5dd42b4672",
+          "distanceMetres": 3.6,
+          "eligible": false
+        },
+        {
+          "road": "ZH:4",
+          "pathId": "ZH:4:3a2bce71b3235d64",
+          "distanceMetres": 49.27,
+          "eligible": true
+        },
+        {
+          "road": "ZH:A3",
+          "pathId": "ZH:A3:2bf34b1d35dc500a",
+          "distanceMetres": 83.93,
+          "eligible": false
+        }
+      ],
+      "observations": {
+        "completeMinutes": 245,
+        "longestRunMinutes": 245
+      },
+      "archivedCandidatePairs": [
+        {
+          "from": "ZH.CH:4087",
+          "to": "ZH.CH:0197",
+          "pathId": "ZH:4:3a2bce71b3235d64",
+          "distanceMetres": 3175.91,
+          "longestRunMinutes": 245,
+          "status": "unresolved-endpoint"
+        }
+      ],
+      "family": "city-road",
+      "evidenceStatus": "competing-axes-require-review",
+      "pointStatus": "unchanged",
+      "stationPointLv95": [
+        2681889.0599999987,
+        1244799.1000000015
+      ],
+      "nearestAxisDistanceMetres": 0,
+      "competingAxisMarginMetres": 3.6,
+      "candidates": [
+        {
+          "featureId": 5329,
+          "roadNumber": "4.1",
+          "ownership": "Stadt Zürich",
+          "roadClass": "Hauptverkehrsstrassen (HVS) Kanton",
+          "distanceMetres": 0,
+          "projectedLv95": [
+            2681889.0609536082,
+            1244799.0991265005
+          ]
+        },
+        {
+          "featureId": 7017,
+          "roadNumber": "16161",
+          "ownership": "Nationalstrasse",
+          "roadClass": "HLS Bund Anschluss",
+          "distanceMetres": 3.6,
+          "projectedLv95": [
+            2681891.4912,
+            1244801.7522500008
+          ]
+        },
+        {
+          "featureId": 7020,
+          "roadNumber": "4.1",
+          "ownership": "Stadt Zürich",
+          "roadClass": "Hauptverkehrsstrassen (HVS) Kanton",
+          "distanceMetres": 3.6,
+          "projectedLv95": [
+            2681891.4912,
+            1244801.7522500008
+          ]
+        },
+        {
+          "featureId": 7019,
+          "roadNumber": "16496",
+          "ownership": "Nationalstrasse",
+          "roadClass": "HLS Bund Anschluss",
+          "distanceMetres": 16.53,
+          "projectedLv95": [
+            2681902.9297630265,
+            1244790.1103789103
+          ]
+        },
+        {
+          "featureId": 579,
+          "roadNumber": "16493",
+          "ownership": "Nationalstrasse",
+          "roadClass": "HLS Bund Anschluss",
+          "distanceMetres": 17.28,
+          "projectedLv95": [
+            2681902.3357009273,
+            1244788.0326606708
+          ]
+        }
+      ],
+      "nextEvidence": "Review the city-owned axis against the classified network, ownership/scope and neighbouring sections. The detailed class is not an automatic playback approval."
+    },
+    {
+      "id": "ZH.CH:0218",
+      "name": "Bülach: Autobahn",
+      "originalGeometryStatus": "missing-station",
+      "publicationStatus": "not-admitted",
+      "collectorIdentityMatches": true,
+      "originalCandidates": [],
+      "observations": {
+        "completeMinutes": 239,
+        "longestRunMinutes": 231
+      },
+      "archivedCandidatePairs": [],
+      "family": "missing-station",
+      "evidenceStatus": "station-id-required",
+      "candidates": [],
+      "nextEvidence": "An exact public station-ID join or separately reviewed precise station source. Coarse detector coordinates cannot replace it."
+    },
+    {
+      "id": "ZH.CH:0288",
+      "name": "Uster: Ottenhauserstrasse",
+      "originalGeometryStatus": "excluded-road-class",
+      "publicationStatus": "not-admitted",
+      "collectorIdentityMatches": true,
+      "originalCandidates": [
+        {
+          "road": "ZH:A15",
+          "pathId": "ZH:A15:cdeaf3285cffcc52",
+          "distanceMetres": 14.5,
+          "eligible": false
+        }
+      ],
+      "observations": {
+        "completeMinutes": 245,
+        "longestRunMinutes": 245
+      },
+      "archivedCandidatePairs": [],
+      "family": "municipal-road",
+      "evidenceStatus": "competing-axes-require-review",
+      "pointStatus": "unchanged",
+      "stationPointLv95": [
+        2698587.3099999987,
+        1244754.1900000013
+      ],
+      "nearestAxisDistanceMetres": 0.01,
+      "competingAxisMarginMetres": 14.49,
+      "candidates": [
+        {
+          "featureId": 2471,
+          "roadNumber": "",
+          "ownership": "Gemeinde",
+          "roadClass": "Gemeindestrassen",
+          "distanceMetres": 0.01,
+          "projectedLv95": [
+            2698587.306568421,
+            1244754.1777423332
+          ]
+        },
+        {
+          "featureId": 1348,
+          "roadNumber": "10530",
+          "ownership": "Nationalstrasse",
+          "roadClass": "HLS Bund nicht richtungsgetrennt",
+          "distanceMetres": 14.5,
+          "projectedLv95": [
+            2698601.7737376457,
+            1244755.208344419
+          ]
+        },
+        {
+          "featureId": 1349,
+          "roadNumber": "16359",
+          "ownership": "Nationalstrasse",
+          "roadClass": "HLS Bund Anschluss",
+          "distanceMetres": 42.42,
+          "projectedLv95": [
+            2698603.6816999987,
+            1244715.054899998
+          ]
+        },
+        {
+          "featureId": 1350,
+          "roadNumber": "16338",
+          "ownership": "Nationalstrasse",
+          "roadClass": "HLS Bund Anschluss",
+          "distanceMetres": 42.42,
+          "projectedLv95": [
+            2698603.6816999987,
+            1244715.054899998
+          ]
+        },
+        {
+          "featureId": 2470,
+          "roadNumber": "16335",
+          "ownership": "Nationalstrasse",
+          "roadClass": "HLS Bund Anschluss",
+          "distanceMetres": 42.42,
+          "projectedLv95": [
+            2698603.6816999987,
+            1244715.054899998
+          ]
+        }
+      ],
+      "nextEvidence": "Review the municipal branch and junction before excluding a specific classified-road association; proximity alone cannot approve a road or direction."
+    },
+    {
+      "id": "ZH.CH:0305",
+      "name": "Birmensdorf: Waldeggstrasse",
+      "originalGeometryStatus": "missing-station",
+      "publicationStatus": "not-admitted",
+      "collectorIdentityMatches": true,
+      "originalCandidates": [],
+      "observations": {
+        "completeMinutes": 240,
+        "longestRunMinutes": 232
+      },
+      "archivedCandidatePairs": [],
+      "family": "missing-station",
+      "evidenceStatus": "station-id-required",
+      "candidates": [],
+      "nextEvidence": "An exact public station-ID join or separately reviewed precise station source. Coarse detector coordinates cannot replace it."
+    },
+    {
+      "id": "ZH.CH:0315",
+      "name": "Weiningen: Zürcherstrasse",
+      "originalGeometryStatus": "off-network",
+      "publicationStatus": "not-admitted",
+      "collectorIdentityMatches": true,
+      "originalCandidates": [],
+      "observations": {
+        "completeMinutes": 239,
+        "longestRunMinutes": 182
+      },
+      "archivedCandidatePairs": [],
+      "family": "municipal-road",
+      "evidenceStatus": "clear-local-axis-lead",
+      "pointStatus": "unchanged",
+      "stationPointLv95": [
+        2675629.710000001,
+        1252310.7300000004
+      ],
+      "nearestAxisDistanceMetres": 0.01,
+      "competingAxisMarginMetres": 125.57,
+      "candidates": [
+        {
+          "featureId": 3521,
+          "roadNumber": "",
+          "ownership": "Gemeinde",
+          "roadClass": "Gemeindestrassen",
+          "distanceMetres": 0.01,
+          "projectedLv95": [
+            2675629.7062677327,
+            1252310.7224773802
+          ]
+        },
+        {
+          "featureId": 3523,
+          "roadNumber": "295",
+          "ownership": "Kanton",
+          "roadClass": "Hauptverkehrsstrassen (HVS) Kanton",
+          "distanceMetres": 125.58,
+          "projectedLv95": [
+            2675664.208138185,
+            1252189.9809407105
+          ]
+        },
+        {
+          "featureId": 3522,
+          "roadNumber": "295",
+          "ownership": "Kanton",
+          "roadClass": "Hauptverkehrsstrassen (HVS) Kanton",
+          "distanceMetres": 154.62,
+          "projectedLv95": [
+            2675737.4769,
+            1252199.8598499969
+          ]
+        },
+        {
+          "featureId": 1670,
+          "roadNumber": "10101",
+          "ownership": "Nationalstrasse",
+          "roadClass": "Hochleistungsstrassen (HLS) Bund richtungsgetrennt",
+          "distanceMetres": 181.42,
+          "projectedLv95": [
+            2675735.4605863085,
+            1252163.3221864498
+          ]
+        },
+        {
+          "featureId": 816,
+          "roadNumber": "16020",
+          "ownership": "Nationalstrasse",
+          "roadClass": "HLS Bund Anschluss",
+          "distanceMetres": 181.59,
+          "projectedLv95": [
+            2675723.9331358587,
+            1252155.4943802233
+          ]
+        }
+      ],
+      "nextEvidence": "Review the municipal branch and junction before excluding a specific classified-road association; proximity alone cannot approve a road or direction."
+    },
+    {
+      "id": "ZH.CH:0318",
+      "name": "Bülach: Autobahn",
+      "originalGeometryStatus": "excluded-road-class",
+      "publicationStatus": "not-admitted",
+      "collectorIdentityMatches": true,
+      "originalCandidates": [
+        {
+          "road": "ZH:A51",
+          "pathId": "ZH:A51:4451729f524b8b97",
+          "distanceMetres": 0.01,
+          "eligible": false
+        }
+      ],
+      "observations": {
+        "completeMinutes": 236,
+        "longestRunMinutes": 140
+      },
+      "archivedCandidatePairs": [],
+      "family": "high-speed-road",
+      "evidenceStatus": "competing-axes-require-review",
+      "pointStatus": "unchanged",
+      "stationPointLv95": [
+        2682064.9800000004,
+        1262815.4699999988
+      ],
+      "nearestAxisDistanceMetres": 0.01,
+      "competingAxisMarginMetres": 9.72,
+      "candidates": [
+        {
+          "featureId": 1139,
+          "roadNumber": "10510",
+          "ownership": "Kanton",
+          "roadClass": "HLS Kanton richtungsgetrennt",
+          "distanceMetres": 0.01,
+          "projectedLv95": [
+            2682064.9752965653,
+            1262815.4674567531
+          ]
+        },
+        {
+          "featureId": 1134,
+          "roadNumber": "15101",
+          "ownership": "Kanton",
+          "roadClass": "HLS Kanton richtungsgetrennt",
+          "distanceMetres": 9.73,
+          "projectedLv95": [
+            2682056.385815046,
+            1262810.9110651603
+          ]
+        },
+        {
+          "featureId": 1135,
+          "roadNumber": "15101",
+          "ownership": "Kanton",
+          "roadClass": "HLS Kanton richtungsgetrennt",
+          "distanceMetres": 78.47,
+          "projectedLv95": [
+            2682022.186450001,
+            1262881.2455499992
+          ]
+        },
+        {
+          "featureId": 1273,
+          "roadNumber": "16290",
+          "ownership": "Kanton",
+          "roadClass": "HLS Kanton Anschluss",
+          "distanceMetres": 78.47,
+          "projectedLv95": [
+            2682022.186450001,
+            1262881.2455499992
+          ]
+        },
+        {
+          "featureId": 1274,
+          "roadNumber": "16290",
+          "ownership": "Kanton",
+          "roadClass": "HLS Kanton Anschluss",
+          "distanceMetres": 434.81,
+          "projectedLv95": [
+            2681860.9624500014,
+            1263199.445749998
+          ]
+        }
+      ],
+      "nextEvidence": "Retain the high-speed-road exclusion; this is not a cantonal main-road expansion candidate."
+    },
+    {
+      "id": "ZH.CH:0392",
+      "name": "Seegräben: Aretshaldenstrasse",
+      "originalGeometryStatus": "off-network",
+      "publicationStatus": "not-admitted",
+      "collectorIdentityMatches": true,
+      "originalCandidates": [
+        {
+          "road": "ZH:340",
+          "pathId": "ZH:340:0176d9b8f03adcfd",
+          "distanceMetres": 39.11,
+          "eligible": true
+        }
+      ],
+      "observations": {
+        "completeMinutes": 230,
+        "longestRunMinutes": 145
+      },
+      "archivedCandidatePairs": [
+        {
+          "from": "ZH.CH:2988",
+          "to": "ZH.CH:0392",
+          "pathId": "ZH:340:0176d9b8f03adcfd",
+          "distanceMetres": 179.17,
+          "longestRunMinutes": 145,
+          "status": "unresolved-endpoint"
+        },
+        {
+          "from": "ZH.CH:0392",
+          "to": "ZH.CH:2788",
+          "pathId": "ZH:340:0176d9b8f03adcfd",
+          "distanceMetres": 1038.31,
+          "longestRunMinutes": 73,
+          "status": "unresolved-endpoint"
+        }
+      ],
+      "family": "municipal-road",
+      "evidenceStatus": "clear-local-axis-lead",
+      "pointStatus": "unchanged",
+      "stationPointLv95": [
+        2700638.3500000015,
+        1243600.5100000016
+      ],
+      "nearestAxisDistanceMetres": 0.13,
+      "competingAxisMarginMetres": 38.97,
+      "candidates": [
+        {
+          "featureId": 274,
+          "roadNumber": "",
+          "ownership": "Gemeinde",
+          "roadClass": "Gemeindestrassen",
+          "distanceMetres": 0.13,
+          "projectedLv95": [
+            2700638.380591334,
+            1243600.379588836
+          ]
+        },
+        {
+          "featureId": 2334,
+          "roadNumber": "340",
+          "ownership": "Nationalstrasse",
+          "roadClass": "Hauptverkehrsstrassen (HVS) Kanton",
+          "distanceMetres": 39.11,
+          "projectedLv95": [
+            2700618.769327675,
+            1243566.6587326804
+          ]
+        },
+        {
+          "featureId": 7888,
+          "roadNumber": "340",
+          "ownership": "Nationalstrasse",
+          "roadClass": "Hauptverkehrsstrassen (HVS) Kanton",
+          "distanceMetres": 48.76,
+          "projectedLv95": [
+            2700593.559700001,
+            1243581.2408000007
+          ]
+        },
+        {
+          "featureId": 2335,
+          "roadNumber": "340",
+          "ownership": "Nationalstrasse",
+          "roadClass": "Hauptverkehrsstrassen (HVS) Kanton",
+          "distanceMetres": 146.8,
+          "projectedLv95": [
+            2700496.1611,
+            1243637.0072000027
+          ]
+        },
+        {
+          "featureId": 7862,
+          "roadNumber": "",
+          "ownership": "Gemeinde",
+          "roadClass": "",
+          "distanceMetres": 146.8,
+          "projectedLv95": [
+            2700496.1611,
+            1243637.0072000027
+          ]
+        }
+      ],
+      "nextEvidence": "Review the municipal branch and junction before excluding a specific classified-road association; proximity alone cannot approve a road or direction."
+    },
+    {
+      "id": "ZH.CH:0418",
+      "name": "Bülach: Autobahn",
+      "originalGeometryStatus": "excluded-road-class",
+      "publicationStatus": "not-admitted",
+      "collectorIdentityMatches": true,
+      "originalCandidates": [
+        {
+          "road": "ZH:A51",
+          "pathId": "ZH:A51:44041e9afa4e98ce",
+          "distanceMetres": 0,
+          "eligible": false
+        },
+        {
+          "road": "ZH:355",
+          "pathId": "ZH:355:e582bd400bccf4ce",
+          "distanceMetres": 64.09,
+          "eligible": true
+        }
+      ],
+      "observations": {
+        "completeMinutes": 245,
+        "longestRunMinutes": 245
+      },
+      "archivedCandidatePairs": [
+        {
+          "from": "ZH.CH:4687",
+          "to": "ZH.CH:0418",
+          "pathId": "ZH:355:e582bd400bccf4ce",
+          "distanceMetres": 1697.32,
+          "longestRunMinutes": 245,
+          "status": "unresolved-endpoint"
+        },
+        {
+          "from": "ZH.CH:0418",
+          "to": "ZH.CH:0518",
+          "pathId": "ZH:355:e582bd400bccf4ce",
+          "distanceMetres": 218.9,
+          "longestRunMinutes": 245,
+          "status": "unresolved-endpoint"
+        }
+      ],
+      "family": "high-speed-road",
+      "evidenceStatus": "competing-axes-require-review",
+      "pointStatus": "unchanged",
+      "stationPointLv95": [
+        2681808.379999999,
+        1263223.5700000003
+      ],
+      "nearestAxisDistanceMetres": 0,
+      "competingAxisMarginMetres": 8.07,
+      "candidates": [
+        {
+          "featureId": 1275,
+          "roadNumber": "16271",
+          "ownership": "Kanton",
+          "roadClass": "HLS Kanton Anschluss",
+          "distanceMetres": 0,
+          "projectedLv95": [
+            2681808.379989992,
+            1263223.5702704664
+          ]
+        },
+        {
+          "featureId": 1274,
+          "roadNumber": "16290",
+          "ownership": "Kanton",
+          "roadClass": "HLS Kanton Anschluss",
+          "distanceMetres": 8.07,
+          "projectedLv95": [
+            2681807.205931365,
+            1263215.5856661035
+          ]
+        },
+        {
+          "featureId": 1272,
+          "roadNumber": "16271",
+          "ownership": "Kanton",
+          "roadClass": "HLS Kanton Anschluss",
+          "distanceMetres": 42.21,
+          "projectedLv95": [
+            2681841.20775,
+            1263250.101499997
+          ]
+        },
+        {
+          "featureId": 1135,
+          "roadNumber": "15101",
+          "ownership": "Kanton",
+          "roadClass": "HLS Kanton richtungsgetrennt",
+          "distanceMetres": 48.14,
+          "projectedLv95": [
+            2681854.471267259,
+            1263237.4596250462
+          ]
+        },
+        {
+          "featureId": 1273,
+          "roadNumber": "16290",
+          "ownership": "Kanton",
+          "roadClass": "HLS Kanton Anschluss",
+          "distanceMetres": 57.85,
+          "projectedLv95": [
+            2681860.9624500014,
+            1263199.445749998
+          ]
+        }
+      ],
+      "nextEvidence": "Retain the high-speed-road exclusion; this is not a cantonal main-road expansion candidate."
+    },
+    {
+      "id": "ZH.CH:0508",
+      "name": "Gossau: A52 Forchstrasse",
+      "originalGeometryStatus": "excluded-road-class",
+      "publicationStatus": "not-admitted",
+      "collectorIdentityMatches": true,
+      "originalCandidates": [
+        {
+          "road": "ZH:A52",
+          "pathId": "ZH:A52:64afb9aab23b3179",
+          "distanceMetres": 0,
+          "eligible": false
+        }
+      ],
+      "observations": {
+        "completeMinutes": 245,
+        "longestRunMinutes": 245
+      },
+      "archivedCandidatePairs": [],
+      "family": "high-speed-road",
+      "evidenceStatus": "competing-axes-require-review",
+      "pointStatus": "unchanged",
+      "stationPointLv95": [
+        2703012.6499999985,
+        1238317.6499999985
+      ],
+      "nearestAxisDistanceMetres": 0,
+      "competingAxisMarginMetres": 4.99,
+      "candidates": [
+        {
+          "featureId": 7385,
+          "roadNumber": "10520",
+          "ownership": "Kanton",
+          "roadClass": "HLS Kanton richtungsgetrennt",
+          "distanceMetres": 0,
+          "projectedLv95": [
+            2703012.6478654323,
+            1238317.646884348
+          ]
+        },
+        {
+          "featureId": 7362,
+          "roadNumber": "15201",
+          "ownership": "Kanton",
+          "roadClass": "HLS Kanton richtungsgetrennt",
+          "distanceMetres": 5,
+          "projectedLv95": [
+            2703015.4738213513,
+            1238321.77169039
+          ]
+        },
+        {
+          "featureId": 2309,
+          "roadNumber": "734",
+          "ownership": "Kanton",
+          "roadClass": "Regionale Verbindungsstrassen (RVS) Kanton",
+          "distanceMetres": 251.29,
+          "projectedLv95": [
+            2702876.171599033,
+            1238106.6543117813
+          ]
+        },
+        {
+          "featureId": 2249,
+          "roadNumber": "",
+          "ownership": "Gemeinde",
+          "roadClass": "Gemeindestrassen",
+          "distanceMetres": 342.37,
+          "projectedLv95": [
+            2703333.5736838398,
+            1238436.9296580926
+          ]
+        },
+        {
+          "featureId": 2307,
+          "roadNumber": "730",
+          "ownership": "Kanton",
+          "roadClass": "Regionale Verbindungsstrassen (RVS) Kanton",
+          "distanceMetres": 357.67,
+          "projectedLv95": [
+            2703033.02905,
+            1237960.559799999
+          ]
+        }
+      ],
+      "nextEvidence": "Retain the high-speed-road exclusion; this is not a cantonal main-road expansion candidate."
+    },
+    {
+      "id": "ZH.CH:0518",
+      "name": "Bülach: Autobahn",
+      "originalGeometryStatus": "excluded-road-class",
+      "publicationStatus": "not-admitted",
+      "collectorIdentityMatches": true,
+      "originalCandidates": [
+        {
+          "road": "ZH:A51",
+          "pathId": "ZH:A51:975e1eaf614e0916",
+          "distanceMetres": 0,
+          "eligible": false
+        },
+        {
+          "road": "ZH:355",
+          "pathId": "ZH:355:e582bd400bccf4ce",
+          "distanceMetres": 41.7,
+          "eligible": true
+        }
+      ],
+      "observations": {
+        "completeMinutes": 245,
+        "longestRunMinutes": 245
+      },
+      "archivedCandidatePairs": [
+        {
+          "from": "ZH.CH:0418",
+          "to": "ZH.CH:0518",
+          "pathId": "ZH:355:e582bd400bccf4ce",
+          "distanceMetres": 218.9,
+          "longestRunMinutes": 245,
+          "status": "unresolved-endpoint"
+        }
+      ],
+      "family": "high-speed-road",
+      "evidenceStatus": "competing-axes-require-review",
+      "pointStatus": "unchanged",
+      "stationPointLv95": [
+        2681947.9800000004,
+        1263431.0799999982
+      ],
+      "nearestAxisDistanceMetres": 0,
+      "competingAxisMarginMetres": 6.68,
+      "candidates": [
+        {
+          "featureId": 1356,
+          "roadNumber": "16289",
+          "ownership": "Kanton",
+          "roadClass": "HLS Kanton Anschluss",
+          "distanceMetres": 0,
+          "projectedLv95": [
+            2681947.9803597927,
+            1263431.0805679373
+          ]
+        },
+        {
+          "featureId": 1276,
+          "roadNumber": "16280",
+          "ownership": "Kanton",
+          "roadClass": "HLS Kanton Anschluss",
+          "distanceMetres": 6.68,
+          "projectedLv95": [
+            2681944.539900001,
+            1263425.3497499973
+          ]
+        },
+        {
+          "featureId": 364,
+          "roadNumber": "355",
+          "ownership": "Kanton",
+          "roadClass": "Hauptverkehrsstrassen (HVS) Kanton",
+          "distanceMetres": 41.7,
+          "projectedLv95": [
+            2681972.3492295034,
+            1263397.240861731
+          ]
+        },
+        {
+          "featureId": 501,
+          "roadNumber": "355",
+          "ownership": "Kanton",
+          "roadClass": "Hauptverkehrsstrassen (HVS) Kanton",
+          "distanceMetres": 41.85,
+          "projectedLv95": [
+            2681969.491799999,
+            1263395.183600001
+          ]
+        },
+        {
+          "featureId": 1352,
+          "roadNumber": "355",
+          "ownership": "Kanton",
+          "roadClass": "Hauptverkehrsstrassen (HVS) Kanton",
+          "distanceMetres": 41.89,
+          "projectedLv95": [
+            2681975.602049999,
+            1263399.582800001
+          ]
+        }
+      ],
+      "nextEvidence": "Retain the high-speed-road exclusion; this is not a cantonal main-road expansion candidate."
+    },
+    {
+      "id": "ZH.CH:0618",
+      "name": "Bülach: Autobahn",
+      "originalGeometryStatus": "missing-station",
+      "publicationStatus": "not-admitted",
+      "collectorIdentityMatches": true,
+      "originalCandidates": [],
+      "observations": {
+        "completeMinutes": 0,
+        "longestRunMinutes": 0
+      },
+      "archivedCandidatePairs": [],
+      "family": "missing-station",
+      "evidenceStatus": "station-id-required",
+      "candidates": [],
+      "nextEvidence": "An exact public station-ID join or separately reviewed precise station source. Coarse detector coordinates cannot replace it."
+    },
+    {
+      "id": "ZH.CH:0809",
+      "name": "Egg: A52 Forchstrasse",
+      "originalGeometryStatus": "excluded-road-class",
+      "publicationStatus": "not-admitted",
+      "collectorIdentityMatches": true,
+      "originalCandidates": [
+        {
+          "road": "ZH:A52",
+          "pathId": "ZH:A52:64afb9aab23b3179",
+          "distanceMetres": 0,
+          "eligible": false
+        }
+      ],
+      "observations": {
+        "completeMinutes": 245,
+        "longestRunMinutes": 245
+      },
+      "archivedCandidatePairs": [],
+      "family": "high-speed-road",
+      "evidenceStatus": "competing-axes-require-review",
+      "pointStatus": "unchanged",
+      "stationPointLv95": [
+        2693349.7300000004,
+        1241123.3599999994
+      ],
+      "nearestAxisDistanceMetres": 0,
+      "competingAxisMarginMetres": 6.75,
+      "candidates": [
+        {
+          "featureId": 7371,
+          "roadNumber": "10520",
+          "ownership": "Kanton",
+          "roadClass": "HLS Kanton richtungsgetrennt",
+          "distanceMetres": 0,
+          "projectedLv95": [
+            2693349.7271391912,
+            1241123.356139399
+          ]
+        },
+        {
+          "featureId": 7348,
+          "roadNumber": "15201",
+          "ownership": "Kanton",
+          "roadClass": "HLS Kanton richtungsgetrennt",
+          "distanceMetres": 6.75,
+          "projectedLv95": [
+            2693353.695897319,
+            1241128.8282252
+          ]
+        },
+        {
+          "featureId": 1532,
+          "roadNumber": "16327",
+          "ownership": "Kanton",
+          "roadClass": "HLS Kanton Anschluss",
+          "distanceMetres": 103.25,
+          "projectedLv95": [
+            2693435.87435,
+            1241066.4402500018
+          ]
+        },
+        {
+          "featureId": 7349,
+          "roadNumber": "15201",
+          "ownership": "Kanton",
+          "roadClass": "HLS Kanton richtungsgetrennt",
+          "distanceMetres": 103.25,
+          "projectedLv95": [
+            2693435.87435,
+            1241066.4402500018
+          ]
+        },
+        {
+          "featureId": 1531,
+          "roadNumber": "16315",
+          "ownership": "Kanton",
+          "roadClass": "HLS Kanton Anschluss",
+          "distanceMetres": 127.44,
+          "projectedLv95": [
+            2693448.5310500003,
+            1241042.8709999993
+          ]
+        }
+      ],
+      "nextEvidence": "Retain the high-speed-road exclusion; this is not a cantonal main-road expansion candidate."
+    },
+    {
+      "id": "ZH.CH:0888",
+      "name": "Grüningen: A52 Forchstrasse",
+      "originalGeometryStatus": "excluded-road-class",
+      "publicationStatus": "not-admitted",
+      "collectorIdentityMatches": true,
+      "originalCandidates": [
+        {
+          "road": "ZH:A52",
+          "pathId": "ZH:A52:64afb9aab23b3179",
+          "distanceMetres": 0,
+          "eligible": false
+        },
+        {
+          "road": "ZH:724",
+          "pathId": "ZH:724:b8b6fa88b5a9e14d",
+          "distanceMetres": 94.82,
+          "eligible": true
+        }
+      ],
+      "observations": {
+        "completeMinutes": 245,
+        "longestRunMinutes": 245
+      },
+      "archivedCandidatePairs": [
+        {
+          "from": "ZH.CH:1491",
+          "to": "ZH.CH:0888",
+          "pathId": "ZH:724:b8b6fa88b5a9e14d",
+          "distanceMetres": 3861.78,
+          "longestRunMinutes": 101,
+          "status": "unresolved-endpoint"
+        }
+      ],
+      "family": "high-speed-road",
+      "evidenceStatus": "competing-axes-require-review",
+      "pointStatus": "unchanged",
+      "stationPointLv95": [
+        2700849.620000001,
+        1238423.460000001
+      ],
+      "nearestAxisDistanceMetres": 0,
+      "competingAxisMarginMetres": 4.99,
+      "candidates": [
+        {
+          "featureId": 7383,
+          "roadNumber": "10520",
+          "ownership": "Kanton",
+          "roadClass": "HLS Kanton richtungsgetrennt",
+          "distanceMetres": 0,
+          "projectedLv95": [
+            2700849.620770152,
+            1238423.4558654034
+          ]
+        },
+        {
+          "featureId": 7360,
+          "roadNumber": "15201",
+          "ownership": "Kanton",
+          "roadClass": "HLS Kanton richtungsgetrennt",
+          "distanceMetres": 5,
+          "projectedLv95": [
+            2700848.7051750594,
+            1238428.3712492455
+          ]
+        },
+        {
+          "featureId": 2315,
+          "roadNumber": "724",
+          "ownership": "Kanton",
+          "roadClass": "Regionale Verbindungsstrassen (RVS) Kanton",
+          "distanceMetres": 94.82,
+          "projectedLv95": [
+            2700811.5966480453,
+            1238510.3210396
+          ]
+        },
+        {
+          "featureId": 2302,
+          "roadNumber": "724",
+          "ownership": "Kanton",
+          "roadClass": "Regionale Verbindungsstrassen (RVS) Kanton",
+          "distanceMetres": 97.15,
+          "projectedLv95": [
+            2700792.2240500003,
+            1238501.8407000005
+          ]
+        },
+        {
+          "featureId": 2304,
+          "roadNumber": "730",
+          "ownership": "Kanton",
+          "roadClass": "Regionale Verbindungsstrassen (RVS) Kanton",
+          "distanceMetres": 613.45,
+          "projectedLv95": [
+            2700930.848366821,
+            1237815.4081273975
+          ]
+        }
+      ],
+      "nextEvidence": "Retain the high-speed-road exclusion; this is not a cantonal main-road expansion candidate."
+    },
+    {
+      "id": "ZH.CH:0988",
+      "name": "Egg: A52 Forchstrasse",
+      "originalGeometryStatus": "excluded-road-class",
+      "publicationStatus": "not-admitted",
+      "collectorIdentityMatches": true,
+      "originalCandidates": [
+        {
+          "road": "ZH:A52",
+          "pathId": "ZH:A52:64afb9aab23b3179",
+          "distanceMetres": 0,
+          "eligible": false
+        }
+      ],
+      "observations": {
+        "completeMinutes": 245,
+        "longestRunMinutes": 245
+      },
+      "archivedCandidatePairs": [],
+      "family": "high-speed-road",
+      "evidenceStatus": "competing-axes-require-review",
+      "pointStatus": "unchanged",
+      "stationPointLv95": [
+        2696125.170000002,
+        1239210.1499999985
+      ],
+      "nearestAxisDistanceMetres": 0,
+      "competingAxisMarginMetres": 5,
+      "candidates": [
+        {
+          "featureId": 7376,
+          "roadNumber": "10520",
+          "ownership": "Kanton",
+          "roadClass": "HLS Kanton richtungsgetrennt",
+          "distanceMetres": 0,
+          "projectedLv95": [
+            2696125.1722995373,
+            1239210.1537518958
+          ]
+        },
+        {
+          "featureId": 7353,
+          "roadNumber": "15201",
+          "ownership": "Kanton",
+          "roadClass": "HLS Kanton richtungsgetrennt",
+          "distanceMetres": 5,
+          "projectedLv95": [
+            2696127.785088301,
+            1239214.4167344978
+          ]
+        },
+        {
+          "featureId": 1551,
+          "roadNumber": "16322",
+          "ownership": "Kanton",
+          "roadClass": "HLS Kanton Anschluss",
+          "distanceMetres": 455.94,
+          "projectedLv95": [
+            2696461.7704499997,
+            1238902.6098999977
+          ]
+        },
+        {
+          "featureId": 7354,
+          "roadNumber": "15201",
+          "ownership": "Kanton",
+          "roadClass": "HLS Kanton richtungsgetrennt",
+          "distanceMetres": 455.94,
+          "projectedLv95": [
+            2696461.7704499997,
+            1238902.6098999977
+          ]
+        },
+        {
+          "featureId": 1549,
+          "roadNumber": "16312",
+          "ownership": "Kanton",
+          "roadClass": "HLS Kanton Anschluss",
+          "distanceMetres": 528.26,
+          "projectedLv95": [
+            2696504.3550999984,
+            1238842.3484499976
+          ]
+        }
+      ],
+      "nextEvidence": "Retain the high-speed-road exclusion; this is not a cantonal main-road expansion candidate."
+    },
+    {
+      "id": "ZH.CH:1089",
+      "name": "Maur: Zollikonstrasse",
+      "originalGeometryStatus": "missing-station",
+      "publicationStatus": "not-admitted",
+      "collectorIdentityMatches": true,
+      "originalCandidates": [],
+      "observations": {
+        "completeMinutes": 0,
+        "longestRunMinutes": 0
+      },
+      "archivedCandidatePairs": [],
+      "family": "missing-station",
+      "evidenceStatus": "station-id-required",
+      "candidates": [],
+      "nextEvidence": "An exact public station-ID join or separately reviewed precise station source. Coarse detector coordinates cannot replace it."
+    },
+    {
+      "id": "ZH.CH:1101",
+      "name": "Zürich: Witikonerstrasse",
+      "originalGeometryStatus": "off-network",
+      "publicationStatus": "not-admitted",
+      "collectorIdentityMatches": true,
+      "originalCandidates": [
+        {
+          "road": "ZH:742",
+          "pathId": "ZH:742:c063bc99e4da9933",
+          "distanceMetres": 71.85,
+          "eligible": true
+        }
+      ],
+      "observations": {
+        "completeMinutes": 245,
+        "longestRunMinutes": 245
+      },
+      "archivedCandidatePairs": [],
+      "family": "city-road",
+      "evidenceStatus": "clear-local-axis-lead",
+      "pointStatus": "unchanged",
+      "stationPointLv95": [
+        2688841.8000000007,
+        1246421.5799999982
+      ],
+      "nearestAxisDistanceMetres": 0,
+      "competingAxisMarginMetres": 15.7,
+      "candidates": [
+        {
+          "featureId": 7870,
+          "roadNumber": "30051",
+          "ownership": "Stadt Zürich",
+          "roadClass": "Regionale Verbindungsstrassen (RVS) Kanton",
+          "distanceMetres": 0,
+          "projectedLv95": [
+            2688841.800044824,
+            1246421.579750846
+          ]
+        },
+        {
+          "featureId": 7864,
+          "roadNumber": "",
+          "ownership": "Gemeinde",
+          "roadClass": "",
+          "distanceMetres": 15.7,
+          "projectedLv95": [
+            2688826.377367736,
+            1246418.659269609
+          ]
+        },
+        {
+          "featureId": 4257,
+          "roadNumber": "30051",
+          "ownership": "Stadt Zürich",
+          "roadClass": "Regionale Verbindungsstrassen (RVS) Kanton",
+          "distanceMetres": 15.7,
+          "projectedLv95": [
+            2688826.3506500013,
+            1246418.800350003
+          ]
+        },
+        {
+          "featureId": 2697,
+          "roadNumber": "742",
+          "ownership": "Kanton",
+          "roadClass": "Regionale Verbindungsstrassen (RVS) Kanton",
+          "distanceMetres": 71.85,
+          "projectedLv95": [
+            2688912.5121,
+            1246434.3011000007
+          ]
+        },
+        {
+          "featureId": 6891,
+          "roadNumber": "K-006",
+          "ownership": "Kanton",
+          "roadClass": "Regionale Verbindungsstrassen (RVS) Kanton",
+          "distanceMetres": 270.71,
+          "projectedLv95": [
+            2689112.2994000018,
+            1246432.1409500018
+          ]
+        }
+      ],
+      "nextEvidence": "Review the city-owned axis against the classified network, ownership/scope and neighbouring sections. The detailed class is not an automatic playback approval."
+    },
+    {
+      "id": "ZH.CH:1288",
+      "name": "Zollikon: Forchstrasse",
+      "originalGeometryStatus": "missing-station",
+      "publicationStatus": "not-admitted",
+      "collectorIdentityMatches": true,
+      "originalCandidates": [],
+      "observations": {
+        "completeMinutes": 0,
+        "longestRunMinutes": 0
+      },
+      "archivedCandidatePairs": [],
+      "family": "missing-station",
+      "evidenceStatus": "station-id-required",
+      "candidates": [],
+      "nextEvidence": "An exact public station-ID join or separately reviewed precise station source. Coarse detector coordinates cannot replace it."
+    },
+    {
+      "id": "ZH.CH:1392",
+      "name": "Illnau-Effretikon: Hegnauerstrasse",
+      "originalGeometryStatus": "missing-station",
+      "publicationStatus": "not-admitted",
+      "collectorIdentityMatches": true,
+      "originalCandidates": [],
+      "observations": {
+        "completeMinutes": 0,
+        "longestRunMinutes": 0
+      },
+      "archivedCandidatePairs": [],
+      "family": "missing-station",
+      "evidenceStatus": "station-id-required",
+      "candidates": [],
+      "nextEvidence": "An exact public station-ID join or separately reviewed precise station source. Coarse detector coordinates cannot replace it."
+    },
+    {
+      "id": "ZH.CH:1790",
+      "name": "Bülach: Weiacherstrasse",
+      "originalGeometryStatus": "missing-station",
+      "publicationStatus": "not-admitted",
+      "collectorIdentityMatches": true,
+      "originalCandidates": [],
+      "observations": {
+        "completeMinutes": 245,
+        "longestRunMinutes": 245
+      },
+      "archivedCandidatePairs": [],
+      "family": "missing-station",
+      "evidenceStatus": "station-id-required",
+      "candidates": [],
+      "nextEvidence": "An exact public station-ID join or separately reviewed precise station source. Coarse detector coordinates cannot replace it."
+    },
+    {
+      "id": "ZH.CH:1886",
+      "name": "Greifensee: Schwerzenbacherstrasse",
+      "originalGeometryStatus": "missing-station",
+      "publicationStatus": "not-admitted",
+      "collectorIdentityMatches": true,
+      "originalCandidates": [],
+      "observations": {
+        "completeMinutes": 0,
+        "longestRunMinutes": 0
+      },
+      "archivedCandidatePairs": [],
+      "family": "missing-station",
+      "evidenceStatus": "station-id-required",
+      "candidates": [],
+      "nextEvidence": "An exact public station-ID join or separately reviewed precise station source. Coarse detector coordinates cannot replace it."
+    },
+    {
+      "id": "ZH.CH:1897",
+      "name": "Henggart: Dorfstrasse",
+      "originalGeometryStatus": "off-network",
+      "publicationStatus": "not-admitted",
+      "collectorIdentityMatches": true,
+      "originalCandidates": [],
+      "observations": {
+        "completeMinutes": 229,
+        "longestRunMinutes": 104
+      },
+      "archivedCandidatePairs": [],
+      "family": "municipal-road",
+      "evidenceStatus": "clear-local-axis-lead",
+      "pointStatus": "unchanged",
+      "stationPointLv95": [
+        2693866.4899999984,
+        1267760.6499999985
+      ],
+      "nearestAxisDistanceMetres": 0,
+      "competingAxisMarginMetres": 100.42,
+      "candidates": [
+        {
+          "featureId": 3118,
+          "roadNumber": "",
+          "ownership": "Gemeinde",
+          "roadClass": "Gemeindestrassen",
+          "distanceMetres": 0,
+          "projectedLv95": [
+            2693866.4928826247,
+            1267760.6510983638
+          ]
+        },
+        {
+          "featureId": 3117,
+          "roadNumber": "15",
+          "ownership": "Kanton",
+          "roadClass": "Regionale Verbindungsstrassen (RVS) Kanton",
+          "distanceMetres": 100.42,
+          "projectedLv95": [
+            2693963.4693965535,
+            1267734.5722173299
+          ]
+        },
+        {
+          "featureId": 6529,
+          "roadNumber": "10040",
+          "ownership": "Nationalstrasse",
+          "roadClass": "HLS Bund nicht richtungsgetrennt",
+          "distanceMetres": 115.67,
+          "projectedLv95": [
+            2693978.4142836174,
+            1267731.4521903608
+          ]
+        },
+        {
+          "featureId": 3116,
+          "roadNumber": "15",
+          "ownership": "Kanton",
+          "roadClass": "Regionale Verbindungsstrassen (RVS) Kanton",
+          "distanceMetres": 147.12,
+          "projectedLv95": [
+            2693940.8576500006,
+            1267633.7073
+          ]
+        },
+        {
+          "featureId": 3003,
+          "roadNumber": "15",
+          "ownership": "Kanton",
+          "roadClass": "Regionale Verbindungsstrassen (RVS) Kanton",
+          "distanceMetres": 162.53,
+          "projectedLv95": [
+            2693938.3632999994,
+            1267614.8769999966
+          ]
+        }
+      ],
+      "nextEvidence": "Review the municipal branch and junction before excluding a specific classified-road association; proximity alone cannot approve a road or direction."
+    },
+    {
+      "id": "ZH.CH:1921",
+      "name": "Dietikon: Mutschellenstrasse",
+      "originalGeometryStatus": "ambiguous-road",
+      "publicationStatus": "not-admitted",
+      "collectorIdentityMatches": true,
+      "originalCandidates": [
+        {
+          "road": "ZH:618",
+          "pathId": "ZH:618:17a842061ea7f7f2",
+          "distanceMetres": 3.99,
+          "eligible": true
+        },
+        {
+          "road": "ZH:618.1",
+          "pathId": "ZH:618.1:1ffca5888b01ebc0",
+          "distanceMetres": 4.6,
+          "eligible": true
+        }
+      ],
+      "observations": {
+        "completeMinutes": 245,
+        "longestRunMinutes": 245
+      },
+      "archivedCandidatePairs": [
+        {
+          "from": "ZH.CH:1921",
+          "to": "ZH.CH:0214",
+          "pathId": "ZH:618:17a842061ea7f7f2",
+          "distanceMetres": 1793.79,
+          "longestRunMinutes": 245,
+          "status": "unresolved-endpoint"
+        }
+      ],
+      "family": "classified-road-ambiguity",
+      "evidenceStatus": "competing-axes-require-review",
+      "pointStatus": "unchanged",
+      "stationPointLv95": [
+        2671556.4299999997,
+        1252071.4899999984
+      ],
+      "nearestAxisDistanceMetres": 3.99,
+      "competingAxisMarginMetres": 0.61,
+      "candidates": [
+        {
+          "featureId": 7440,
+          "roadNumber": "618",
+          "ownership": "Kanton",
+          "roadClass": "Hauptverkehrsstrassen (HVS) Kanton",
+          "distanceMetres": 3.99,
+          "projectedLv95": [
+            2671559.5842864728,
+            1252069.0487171253
+          ]
+        },
+        {
+          "featureId": 7436,
+          "roadNumber": "618.1",
+          "ownership": "Kanton",
+          "roadClass": "Hauptverkehrsstrassen (HVS) Kanton",
+          "distanceMetres": 4.6,
+          "projectedLv95": [
+            2671552.771419768,
+            1252074.2725298482
+          ]
+        },
+        {
+          "featureId": 7435,
+          "roadNumber": "618.1",
+          "ownership": "Kanton",
+          "roadClass": "Hauptverkehrsstrassen (HVS) Kanton",
+          "distanceMetres": 90.46,
+          "projectedLv95": [
+            2671606.9690999985,
+            1252146.5133000016
+          ]
+        },
+        {
+          "featureId": 7432,
+          "roadNumber": "618",
+          "ownership": "Kanton",
+          "roadClass": "Hauptverkehrsstrassen (HVS) Kanton",
+          "distanceMetres": 90.51,
+          "projectedLv95": [
+            2671614.7312499993,
+            1252140.7198000029
+          ]
+        },
+        {
+          "featureId": 87,
+          "roadNumber": "618",
+          "ownership": "Kanton",
+          "roadClass": "Hauptverkehrsstrassen (HVS) Kanton",
+          "distanceMetres": 185.14,
+          "projectedLv95": [
+            2671444.617150001,
+            1251923.9333000034
+          ]
+        }
+      ],
+      "nextEvidence": "Resolve the competing roads with independent junction, carriageway or grade-separation evidence. Keep the 15 m ambiguity margin unchanged."
+    },
+    {
+      "id": "ZH.CH:1997",
+      "name": "Henggart: Weinlandstrasse",
+      "originalGeometryStatus": "ambiguous-road",
+      "publicationStatus": "not-admitted",
+      "collectorIdentityMatches": true,
+      "originalCandidates": [
+        {
+          "road": "ZH:15",
+          "pathId": "ZH:15:7ab46270483b3b05",
+          "distanceMetres": 0,
+          "eligible": true
+        },
+        {
+          "road": "ZH:A4",
+          "pathId": "ZH:A4:fd28328a347d079c",
+          "distanceMetres": 14.54,
+          "eligible": false
+        }
+      ],
+      "observations": {
+        "completeMinutes": 245,
+        "longestRunMinutes": 245
+      },
+      "archivedCandidatePairs": [
+        {
+          "from": "ZH.CH:4789",
+          "to": "ZH.CH:1997",
+          "pathId": "ZH:15:7ab46270483b3b05",
+          "distanceMetres": 1677.85,
+          "longestRunMinutes": 104,
+          "status": "unresolved-endpoint"
+        },
+        {
+          "from": "ZH.CH:1997",
+          "to": "ZH.CH:1900",
+          "pathId": "ZH:15:7ab46270483b3b05",
+          "distanceMetres": 2606.72,
+          "longestRunMinutes": 0,
+          "status": "unresolved-endpoint"
+        }
+      ],
+      "family": "classified-road-ambiguity",
+      "evidenceStatus": "competing-axes-require-review",
+      "pointStatus": "unchanged",
+      "stationPointLv95": [
+        2694157.7600000016,
+        1268105.5500000007
+      ],
+      "nearestAxisDistanceMetres": 0,
+      "competingAxisMarginMetres": 14.54,
+      "candidates": [
+        {
+          "featureId": 3117,
+          "roadNumber": "15",
+          "ownership": "Kanton",
+          "roadClass": "Regionale Verbindungsstrassen (RVS) Kanton",
+          "distanceMetres": 0,
+          "projectedLv95": [
+            2694157.7575948136,
+            1268105.5515361454
+          ]
+        },
+        {
+          "featureId": 6531,
+          "roadNumber": "10040",
+          "ownership": "Nationalstrasse",
+          "roadClass": "HLS Bund nicht richtungsgetrennt",
+          "distanceMetres": 14.54,
+          "projectedLv95": [
+            2694170.0163742276,
+            1268097.7190795804
+          ]
+        },
+        {
+          "featureId": 6530,
+          "roadNumber": "10040",
+          "ownership": "Nationalstrasse",
+          "roadClass": "HLS Bund nicht richtungsgetrennt",
+          "distanceMetres": 41.95,
+          "projectedLv95": [
+            2694148.8115000017,
+            1268064.5672499985
+          ]
+        },
+        {
+          "featureId": 6529,
+          "roadNumber": "10040",
+          "ownership": "Nationalstrasse",
+          "roadClass": "HLS Bund nicht richtungsgetrennt",
+          "distanceMetres": 142.29,
+          "projectedLv95": [
+            2694090.547249999,
+            1267980.133249998
+          ]
+        },
+        {
+          "featureId": 3118,
+          "roadNumber": "",
+          "ownership": "Gemeinde",
+          "roadClass": "Gemeindestrassen",
+          "distanceMetres": 395.66,
+          "projectedLv95": [
+            2693788.822819874,
+            1267962.6094951672
+          ]
+        }
+      ],
+      "nextEvidence": "Resolve the competing roads with independent junction, carriageway or grade-separation evidence. Keep the 15 m ambiguity margin unchanged."
+    },
+    {
+      "id": "ZH.CH:2004",
+      "name": "Ottenbach: Affolternstrasse",
+      "originalGeometryStatus": "off-network",
+      "publicationStatus": "not-admitted",
+      "collectorIdentityMatches": true,
+      "originalCandidates": [],
+      "observations": {
+        "completeMinutes": 236,
+        "longestRunMinutes": 228
+      },
+      "archivedCandidatePairs": [],
+      "family": "municipal-road",
+      "evidenceStatus": "clear-local-axis-lead",
+      "pointStatus": "unchanged",
+      "stationPointLv95": [
+        2673692.75,
+        1236336.9400000013
+      ],
+      "nearestAxisDistanceMetres": 0.34,
+      "competingAxisMarginMetres": 111.15,
+      "candidates": [
+        {
+          "featureId": 3695,
+          "roadNumber": "",
+          "ownership": "Gemeinde",
+          "roadClass": "Gemeindestrassen",
+          "distanceMetres": 0.34,
+          "projectedLv95": [
+            2673692.520970262,
+            1236336.6881665925
+          ]
+        },
+        {
+          "featureId": 7086,
+          "roadNumber": "299",
+          "ownership": "Kanton",
+          "roadClass": "Hauptverkehrsstrassen (HVS) Kanton",
+          "distanceMetres": 111.49,
+          "projectedLv95": [
+            2673649.446239143,
+            1236234.2016476565
+          ]
+        },
+        {
+          "featureId": 26953,
+          "roadNumber": "K-001",
+          "ownership": "Kanton",
+          "roadClass": "Hauptverkehrsstrassen (HVS) Kanton",
+          "distanceMetres": 201.27,
+          "projectedLv95": [
+            2673833.9233999997,
+            1236193.4779499993
+          ]
+        },
+        {
+          "featureId": 26950,
+          "roadNumber": "",
+          "ownership": "Kanton",
+          "roadClass": "",
+          "distanceMetres": 203.51,
+          "projectedLv95": [
+            2673840.8134000003,
+            1236197.315849997
+          ]
+        },
+        {
+          "featureId": 26952,
+          "roadNumber": "K-001",
+          "ownership": "Kanton",
+          "roadClass": "Hauptverkehrsstrassen (HVS) Kanton",
+          "distanceMetres": 203.51,
+          "projectedLv95": [
+            2673840.8134000003,
+            1236197.315849997
+          ]
+        }
+      ],
+      "nextEvidence": "Review the municipal branch and junction before excluding a specific classified-road association; proximity alone cannot approve a road or direction."
+    },
+    {
+      "id": "ZH.CH:2491",
+      "name": "Lindau: Lindauerstrasse",
+      "originalGeometryStatus": "ambiguous-road",
+      "publicationStatus": "not-admitted",
+      "collectorIdentityMatches": true,
+      "originalCandidates": [
+        {
+          "road": "ZH:766",
+          "pathId": "ZH:766:b12fd51e7208c37d",
+          "distanceMetres": 0,
+          "eligible": true
+        },
+        {
+          "road": "ZH:A1",
+          "pathId": "ZH:A1:83fb7f50a89a1abf",
+          "distanceMetres": 14.61,
+          "eligible": false
+        }
+      ],
+      "observations": {
+        "completeMinutes": 228,
+        "longestRunMinutes": 104
+      },
+      "archivedCandidatePairs": [
+        {
+          "from": "ZH.CH:2491",
+          "to": "ZH.CH:1320",
+          "pathId": "ZH:766:b12fd51e7208c37d",
+          "distanceMetres": 405.5,
+          "longestRunMinutes": 104,
+          "status": "unresolved-endpoint"
+        },
+        {
+          "from": "ZH.CH:1292",
+          "to": "ZH.CH:2491",
+          "pathId": "ZH:766:b12fd51e7208c37d",
+          "distanceMetres": 3219.79,
+          "longestRunMinutes": 104,
+          "status": "unresolved-endpoint"
+        }
+      ],
+      "family": "classified-road-ambiguity",
+      "evidenceStatus": "competing-axes-require-review",
+      "pointStatus": "unchanged",
+      "stationPointLv95": [
+        2693580.9400000013,
+        1254069.2600000016
+      ],
+      "nearestAxisDistanceMetres": 0,
+      "competingAxisMarginMetres": 14.6,
+      "candidates": [
+        {
+          "featureId": 2634,
+          "roadNumber": "766",
+          "ownership": "Kanton",
+          "roadClass": "Regionale Verbindungsstrassen (RVS) Kanton",
+          "distanceMetres": 0,
+          "projectedLv95": [
+            2693580.9382894267,
+            1254069.2583776058
+          ]
+        },
+        {
+          "featureId": 623,
+          "roadNumber": "10101",
+          "ownership": "Nationalstrasse",
+          "roadClass": "Hochleistungsstrassen (HLS) Bund richtungsgetrennt",
+          "distanceMetres": 14.61,
+          "projectedLv95": [
+            2693595.2931215796,
+            1254066.5571663105
+          ]
+        },
+        {
+          "featureId": 614,
+          "roadNumber": "10010",
+          "ownership": "Nationalstrasse",
+          "roadClass": "Hochleistungsstrassen (HLS) Bund richtungsgetrennt",
+          "distanceMetres": 31.21,
+          "projectedLv95": [
+            2693611.6514504096,
+            1254063.6971750504
+          ]
+        },
+        {
+          "featureId": 5872,
+          "roadNumber": "766",
+          "ownership": "Kanton",
+          "roadClass": "Regionale Verbindungsstrassen (RVS) Kanton",
+          "distanceMetres": 200.5,
+          "projectedLv95": [
+            2693758.80195,
+            1253976.710000001
+          ]
+        },
+        {
+          "featureId": 5869,
+          "roadNumber": "K-001",
+          "ownership": "Kanton",
+          "roadClass": "Regionale Verbindungsstrassen (RVS) Kanton",
+          "distanceMetres": 242,
+          "projectedLv95": [
+            2693808.317850001,
+            1253986.4096999988
+          ]
+        }
+      ],
+      "nextEvidence": "Resolve the competing roads with independent junction, carriageway or grade-separation evidence. Keep the 15 m ambiguity margin unchanged."
+    },
+    {
+      "id": "ZH.CH:2587",
+      "name": "Ottenbach: Muristrasse",
+      "originalGeometryStatus": "off-network",
+      "publicationStatus": "not-admitted",
+      "collectorIdentityMatches": true,
+      "originalCandidates": [],
+      "observations": {
+        "completeMinutes": 245,
+        "longestRunMinutes": 245
+      },
+      "archivedCandidatePairs": [],
+      "family": "municipal-road",
+      "evidenceStatus": "clear-local-axis-lead",
+      "pointStatus": "unchanged",
+      "stationPointLv95": [
+        2672862.7666999996,
+        1237115.4067000002
+      ],
+      "nearestAxisDistanceMetres": 0.03,
+      "competingAxisMarginMetres": 183.25,
+      "candidates": [
+        {
+          "featureId": 3693,
+          "roadNumber": "",
+          "ownership": "Gemeinde",
+          "roadClass": "Gemeindestrassen",
+          "distanceMetres": 0.03,
+          "projectedLv95": [
+            2672862.7519763503,
+            1237115.380570742
+          ]
+        },
+        {
+          "featureId": 3694,
+          "roadNumber": "662",
+          "ownership": "Kanton",
+          "roadClass": "Regionale Verbindungsstrassen (RVS) Kanton",
+          "distanceMetres": 183.28,
+          "projectedLv95": [
+            2673042.911363425,
+            1237149.1833351108
+          ]
+        },
+        {
+          "featureId": 3691,
+          "roadNumber": "653",
+          "ownership": "Kanton",
+          "roadClass": "Regionale Verbindungsstrassen (RVS) Kanton",
+          "distanceMetres": 186.01,
+          "projectedLv95": [
+            2673037.3746999986,
+            1237179.5238500014
+          ]
+        },
+        {
+          "featureId": 3692,
+          "roadNumber": "662",
+          "ownership": "Kanton",
+          "roadClass": "Regionale Verbindungsstrassen (RVS) Kanton",
+          "distanceMetres": 186.01,
+          "projectedLv95": [
+            2673037.3746999986,
+            1237179.5238500014
+          ]
+        },
+        {
+          "featureId": 7838,
+          "roadNumber": "299",
+          "ownership": "Kanton",
+          "roadClass": "Hauptverkehrsstrassen (HVS) Kanton",
+          "distanceMetres": 308.07,
+          "projectedLv95": [
+            2672616.149,
+            1236930.7822000012
+          ]
+        }
+      ],
+      "nextEvidence": "Review the municipal branch and junction before excluding a specific classified-road association; proximity alone cannot approve a road or direction."
+    },
+    {
+      "id": "ZH.CH:2788",
+      "name": "Wetzikon: Usterstrasse",
+      "originalGeometryStatus": "off-network",
+      "publicationStatus": "not-admitted",
+      "collectorIdentityMatches": true,
+      "originalCandidates": [
+        {
+          "road": "ZH:340",
+          "pathId": "ZH:340:0176d9b8f03adcfd",
+          "distanceMetres": 97,
+          "eligible": true
+        }
+      ],
+      "observations": {
+        "completeMinutes": 240,
+        "longestRunMinutes": 122
+      },
+      "archivedCandidatePairs": [
+        {
+          "from": "ZH.CH:0392",
+          "to": "ZH.CH:2788",
+          "pathId": "ZH:340:0176d9b8f03adcfd",
+          "distanceMetres": 1038.31,
+          "longestRunMinutes": 73,
+          "status": "unresolved-endpoint"
+        }
+      ],
+      "family": "municipal-road",
+      "evidenceStatus": "clear-local-axis-lead",
+      "pointStatus": "unchanged",
+      "stationPointLv95": [
+        2701466.1799999997,
+        1242980.539999999
+      ],
+      "nearestAxisDistanceMetres": 0,
+      "competingAxisMarginMetres": 97,
+      "candidates": [
+        {
+          "featureId": 2165,
+          "roadNumber": "",
+          "ownership": "Gemeinde",
+          "roadClass": "Gemeindestrassen",
+          "distanceMetres": 0,
+          "projectedLv95": [
+            2701466.1795529304,
+            1242980.5385716613
+          ]
+        },
+        {
+          "featureId": 317,
+          "roadNumber": "340",
+          "ownership": "Nationalstrasse",
+          "roadClass": "Hauptverkehrsstrassen (HVS) Kanton",
+          "distanceMetres": 97,
+          "projectedLv95": [
+            2701393.7127915923,
+            1242916.0651278105
+          ]
+        },
+        {
+          "featureId": 487,
+          "roadNumber": "340",
+          "ownership": "Nationalstrasse",
+          "roadClass": "Hauptverkehrsstrassen (HVS) Kanton",
+          "distanceMetres": 139.01,
+          "projectedLv95": [
+            2701327.6247499995,
+            1242969.362499997
+          ]
+        },
+        {
+          "featureId": 2168,
+          "roadNumber": "",
+          "ownership": "Gemeinde",
+          "roadClass": "Gemeindestrassen",
+          "distanceMetres": 206.3,
+          "projectedLv95": [
+            2701634.3720999993,
+            1243100.0033000037
+          ]
+        },
+        {
+          "featureId": 2155,
+          "roadNumber": "",
+          "ownership": "Gemeinde",
+          "roadClass": "Gemeindestrassen",
+          "distanceMetres": 216.11,
+          "projectedLv95": [
+            2701670.20885,
+            1243051.7761000022
+          ]
+        }
+      ],
+      "nextEvidence": "Review the municipal branch and junction before excluding a specific classified-road association; proximity alone cannot approve a road or direction."
+    },
+    {
+      "id": "ZH.CH:2988",
+      "name": "Seegräben: Gstalderstrasse",
+      "originalGeometryStatus": "off-network",
+      "publicationStatus": "not-admitted",
+      "collectorIdentityMatches": true,
+      "originalCandidates": [
+        {
+          "road": "ZH:340",
+          "pathId": "ZH:340:0176d9b8f03adcfd",
+          "distanceMetres": 97.14,
+          "eligible": true
+        }
+      ],
+      "observations": {
+        "completeMinutes": 245,
+        "longestRunMinutes": 245
+      },
+      "archivedCandidatePairs": [
+        {
+          "from": "ZH.CH:0188",
+          "to": "ZH.CH:2988",
+          "pathId": "ZH:340:0176d9b8f03adcfd",
+          "distanceMetres": 2304.12,
+          "longestRunMinutes": 245,
+          "status": "unresolved-endpoint"
+        },
+        {
+          "from": "ZH.CH:2988",
+          "to": "ZH.CH:0392",
+          "pathId": "ZH:340:0176d9b8f03adcfd",
+          "distanceMetres": 179.17,
+          "longestRunMinutes": 145,
+          "status": "unresolved-endpoint"
+        }
+      ],
+      "family": "municipal-road",
+      "evidenceStatus": "clear-local-axis-lead",
+      "pointStatus": "unchanged",
+      "stationPointLv95": [
+        2700413.8099999987,
+        1243571.129999999
+      ],
+      "nearestAxisDistanceMetres": 0,
+      "competingAxisMarginMetres": 90.29,
+      "candidates": [
+        {
+          "featureId": 7862,
+          "roadNumber": "",
+          "ownership": "Gemeinde",
+          "roadClass": "",
+          "distanceMetres": 0,
+          "projectedLv95": [
+            2700413.810560818,
+            1243571.128934447
+          ]
+        },
+        {
+          "featureId": 2403,
+          "roadNumber": "10953",
+          "ownership": "geplante Strasse",
+          "roadClass": "Strassen im Bau / geplant",
+          "distanceMetres": 90.29,
+          "projectedLv95": [
+            2700373.961960461,
+            1243490.104874612
+          ]
+        },
+        {
+          "featureId": 2335,
+          "roadNumber": "340",
+          "ownership": "Nationalstrasse",
+          "roadClass": "Hauptverkehrsstrassen (HVS) Kanton",
+          "distanceMetres": 97.14,
+          "projectedLv95": [
+            2700459.364585245,
+            1243656.9270745448
+          ]
+        },
+        {
+          "featureId": 7888,
+          "roadNumber": "340",
+          "ownership": "Nationalstrasse",
+          "roadClass": "Hauptverkehrsstrassen (HVS) Kanton",
+          "distanceMetres": 105.46,
+          "projectedLv95": [
+            2700496.1611,
+            1243637.0072000027
+          ]
+        },
+        {
+          "featureId": 274,
+          "roadNumber": "",
+          "ownership": "Gemeinde",
+          "roadClass": "Gemeindestrassen",
+          "distanceMetres": 180.03,
+          "projectedLv95": [
+            2700593.559700001,
+            1243581.2408000007
+          ]
+        }
+      ],
+      "nextEvidence": "Review the municipal branch and junction before excluding a specific classified-road association; proximity alone cannot approve a road or direction."
+    },
+    {
+      "id": "ZH.CH:3387",
+      "name": "Stallikon: Schwandenstrasse",
+      "originalGeometryStatus": "ambiguous-road",
+      "publicationStatus": "not-admitted",
+      "collectorIdentityMatches": true,
+      "originalCandidates": [
+        {
+          "road": "ZH:650",
+          "pathId": "ZH:650:38b26812fa0d1e60",
+          "distanceMetres": 0,
+          "eligible": true
+        },
+        {
+          "road": "ZH:A3",
+          "pathId": "ZH:A3:f27203f5a6bf6184",
+          "distanceMetres": 6.5,
+          "eligible": false
+        },
+        {
+          "road": "ZH:642",
+          "pathId": "ZH:642:6995eeab49f1acb3",
+          "distanceMetres": 46.94,
+          "eligible": true
+        }
+      ],
+      "observations": {
+        "completeMinutes": 239,
+        "longestRunMinutes": 182
+      },
+      "archivedCandidatePairs": [
+        {
+          "from": "ZH.CH:3287",
+          "to": "ZH.CH:3387",
+          "pathId": "ZH:650:38b26812fa0d1e60",
+          "distanceMetres": 208.39,
+          "longestRunMinutes": 149,
+          "status": "unresolved-endpoint"
+        }
+      ],
+      "family": "classified-road-ambiguity",
+      "evidenceStatus": "competing-axes-require-review",
+      "pointStatus": "unchanged",
+      "stationPointLv95": [
+        2678308.7399999984,
+        1244867.789999999
+      ],
+      "nearestAxisDistanceMetres": 0,
+      "competingAxisMarginMetres": 6.5,
+      "candidates": [
+        {
+          "featureId": 3632,
+          "roadNumber": "650",
+          "ownership": "Kanton",
+          "roadClass": "Regionale Verbindungsstrassen (RVS) Kanton",
+          "distanceMetres": 0,
+          "projectedLv95": [
+            2678308.7389339944,
+            1244867.789118851
+          ]
+        },
+        {
+          "featureId": 6572,
+          "roadNumber": "10301",
+          "ownership": "Nationalstrasse",
+          "roadClass": "Hochleistungsstrassen (HLS) Bund richtungsgetrennt",
+          "distanceMetres": 6.5,
+          "projectedLv95": [
+            2678307.474770368,
+            1244861.4151513246
+          ]
+        },
+        {
+          "featureId": 6570,
+          "roadNumber": "10030",
+          "ownership": "Nationalstrasse",
+          "roadClass": "Hochleistungsstrassen (HLS) Bund richtungsgetrennt",
+          "distanceMetres": 40.83,
+          "projectedLv95": [
+            2678301.8408491816,
+            1244827.5435075476
+          ]
+        },
+        {
+          "featureId": 3631,
+          "roadNumber": "642",
+          "ownership": "Kanton",
+          "roadClass": "Regionale Verbindungsstrassen (RVS) Kanton",
+          "distanceMetres": 46.94,
+          "projectedLv95": [
+            2678284.160828051,
+            1244827.8027631703
+          ]
+        },
+        {
+          "featureId": 6269,
+          "roadNumber": "K-001",
+          "ownership": "Kanton",
+          "roadClass": "Regionale Verbindungsstrassen (RVS) Kanton",
+          "distanceMetres": 91.67,
+          "projectedLv95": [
+            2678361.356350001,
+            1244792.7278499976
+          ]
+        }
+      ],
+      "nextEvidence": "Resolve the competing roads with independent junction, carriageway or grade-separation evidence. Keep the 15 m ambiguity margin unchanged."
+    },
+    {
+      "id": "ZH.CH:5090",
+      "name": "Richterswil: Seestrasse",
+      "originalGeometryStatus": "missing-station",
+      "publicationStatus": "not-admitted",
+      "collectorIdentityMatches": true,
+      "originalCandidates": [],
+      "observations": {
+        "completeMinutes": 0,
+        "longestRunMinutes": 0
+      },
+      "archivedCandidatePairs": [],
+      "family": "missing-station",
+      "evidenceStatus": "station-id-required",
+      "candidates": [],
+      "nextEvidence": "An exact public station-ID join or separately reviewed precise station source. Coarse detector coordinates cannot replace it."
+    },
+    {
+      "id": "ZH.CH:5887",
+      "name": "Seegräben: Zürichstrasse",
+      "originalGeometryStatus": "missing-station",
+      "publicationStatus": "not-admitted",
+      "collectorIdentityMatches": true,
+      "originalCandidates": [],
+      "observations": {
+        "completeMinutes": 245,
+        "longestRunMinutes": 245
+      },
+      "archivedCandidatePairs": [],
+      "family": "missing-station",
+      "evidenceStatus": "station-id-required",
+      "candidates": [],
+      "nextEvidence": "An exact public station-ID join or separately reviewed precise station source. Coarse detector coordinates cannot replace it."
+    }
+  ],
+  "limitation": "Families and nearest-axis leads are diagnostic. No candidates are removed, station points moved, direction gates relaxed, or topology/playback emitted. All source axes compete. Archived coverage does not establish a same-road pair. Previously scoped exclusions remain separate reviewed evidence."
+}
