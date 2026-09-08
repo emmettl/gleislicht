@@ -1783,7 +1783,7 @@
 
   .mobile-map-tools details > div {
     position: fixed;
-    top: calc(183px + env(safe-area-inset-top));
+    top: calc(227px + env(safe-area-inset-top));
     right: calc(12px + env(safe-area-inset-right));
     width: min(220px, calc(100vw - 24px));
     max-height: calc(100dvh - 250px);
@@ -1989,7 +1989,7 @@
   }
 
   .mobile-map-tools details > div {
-    top: calc(179px + env(safe-area-inset-top));
+    top: calc(223px + env(safe-area-inset-top));
   }
 }
 

@@ -57,6 +57,10 @@ test('Air keeps airport labels above other labels through loading, filters and v
   if (isMobile) {
     const tools = page.locator('.mobile-map-tools details')
     await tools.locator('summary').click()
+    await expect(tools.locator(':scope > div')).toBeVisible()
+    const toggleBox = (await tools.locator('summary').boundingBox())!
+    const panelBox = (await tools.locator(':scope > div').boundingBox())!
+    expect(panelBox.y).toBeGreaterThanOrEqual(toggleBox.y + toggleBox.height)
     const services = tools.locator('.mobile-tool-field').first().locator('.mobile-picker')
     await services.locator('.mobile-picker__trigger').click()
     await services.getByRole('option', { name: 'IC', exact: true }).click()
