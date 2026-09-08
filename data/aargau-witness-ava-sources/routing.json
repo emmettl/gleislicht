@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "scope": "All six full AVA witness patterns tested; numerical road compatibility is diagnostic and does not authorize a dated diversion.",
+  "attribution": "© OpenStreetMap contributors; ODbL-1.0",
+  "sourceUrl": "https://www.openstreetmap.org/copyright",
+  "sourceDates": {
+    "switzerland": "2026-09-02",
+    "borderRetrieved": "2026-09-08"
+  },
+  "osmSha256": "d5c675456e935cfbcab88fe894fe9145dc5bd1fbd4318cea30ffd838a9aad02b",
+  "binarySha256": "6d193a755bc22c45516f8bce7594bb30e07a2632a5ef049a95915b262406cbd8",
+  "configSha256": "31deee35fee9cb6fadc89cc5298e501a95cc4e8d78d7ae7fe6b60932cbf23db4",
+  "sourceTimetableSha256": "824d629c8dded53dc086de9ee6477810613e6c3c90a17fe1d1b7891cb3c4defc",
+  "files": {
+    "cache.json.gz": "158359a7c175432ddb71060dd88712449b0727be680247551587021876c0feab",
+    "matcher-evidence.json.gz": "e7bbba12aae1db47023449d2fc509c059af3f569b5cd6044fac2e9e9981db488",
+    "pfaedle.cfg": "31deee35fee9cb6fadc89cc5298e501a95cc4e8d78d7ae7fe6b60932cbf23db4"
+  },
+  "report": {
+    "matchedSegments": 4616,
+    "totalSegments": 4616,
+    "coverage": 1,
+    "routes": [
+      {
+        "routeId": "92-A07-9-j26-1",
+        "route": "EV",
+        "matched": 4616,
+        "total": 4616,
+        "patterns": 6
+      }
+    ],
+    "maxSnapMetres": 49.89276243905188,
+    "rejectedPatternSegments": 0,
+    "issues": []
+  }
+}
