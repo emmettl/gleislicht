@@ -25,11 +25,11 @@ describe('Bern display release', () => {
     try {
       for (const date of ['2026-09-04', '2026-09-06']) {
         const report = await buildBernDay({ date, output })
-        expect(report.movements.total).toBe(date.endsWith('04') ? 36801 : 32002)
+        expect(report.movements.total).toBe(date.endsWith('04') ? 36803 : 32004)
         const { files } = await readRegionalDirectory(output, ['bern-region'], date)
         const archive = JSON.parse(await readFile(`public/data/bern-region/${date}/bern-region-day-manifest.json`))
         const display = JSON.parse(files.get('bern-region-day-manifest.json'))
-        for (const field of ['railSupplement', 'regionalRailSupplement', 'crosscantonRailSupplement', 'ir66Supplement', 'ir16Supplement', 'tpfTerminalSupplement', 'morgesSupplement']) {
+        for (const field of ['railSupplement', 'regionalRailSupplement', 'crosscantonRailSupplement', 'ir66Supplement', 'ir16Supplement', 'tpfTerminalSupplement', 'morgesSupplement', 'interlakenSupplement']) {
           const compact = display.metadata.geometry[field], full = archive.metadata.geometry[field]
           expect(compact.policySha256).toBe(full.policySha256)
           expect(compact.source).toEqual(full.source)
@@ -70,6 +70,9 @@ describe('Bern display release', () => {
       d => { d.metadata.geometry.morgesSupplement.sbbPlatformDataset.rights = '' },
       d => { d.metadata.geometry.morgesSupplement.sbbPlatformDataset.dataProcessed = '' },
       d => { d.metadata.geometry.morgesSupplement.fullEvidence.path = 'missing.json' },
+      d => { d.metadata.geometry.interlakenSupplement.policySha256 = '0'.repeat(64) },
+      d => { d.metadata.geometry.interlakenSupplement.source.attribution = '' },
+      d => { d.metadata.geometry.interlakenSupplement.fullEvidence.path = 'missing.json' },
       d => { d.metadata.bernRelease.movements.scheduled++ },
       d => { d.metadata.serviceDate = '2026-09-08' },
     ]) {

@@ -15,6 +15,7 @@
     "ir16Policy": "e35c73aad820aaadade45b118589c7ee15e7a0411a39ea7e1ba7d9ac9a8ce54a",
     "tpfTerminalPolicy": "3823828434d9b1b4ee97147c77a121f8c43eb6a1489b1d15a7bcf2ffcc9c78d8",
     "morgesPolicy": "ccd74bff8cca2457eee74f072f913c2773ff545fb68e20e146b0ded8ba5e16c3",
+    "interlakenPolicy": "4a1c73b985e1e5f214a7051dcebea540a837a5c0e219b10e5bd62d42fe356e67",
     "urbanCache": "5ef487abdf873508305508e5096c26ca0fbebd9abc9b0846195abc840af07d0f",
     "urbanPolicy": "1ca5bdf7f752349c915180c881292cfd31465398efb956e58afc5934b875f8fb"
   },
@@ -24404,6 +24405,1053 @@
         "bothSidesConnected": true
       }
     },
+    "interlakenSupplement": {
+      "policySha256": "4a1c73b985e1e5f214a7051dcebea540a837a5c0e219b10e5bd62d42fe356e67",
+      "policy": {
+        "schemaVersion": 1,
+        "sourceId": "bern-interlaken-reviewed-fot-rail-20210706",
+        "sourceDirectory": "data/bern-sources/fot-rail",
+        "sourceMetadataSha256": "46ab3ed91471fde35bcb1b678410efe7ecab6bf1cf02027729f547545b94aaad",
+        "sourceSha256": "2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+        "dates": [
+          "2026-09-04",
+          "2026-09-06"
+        ],
+        "limits": {
+          "stationAttachmentMetres": 120,
+          "topologyAttachmentMetres": 120,
+          "detourRatio": 4.5,
+          "detourFloorMetres": 3000,
+          "simplificationMetres": 0
+        },
+        "gauges": [
+          "mm1435"
+        ],
+        "infrastructureOperators": [
+          "BLS"
+        ],
+        "routes": [
+          {
+            "routeId": "91-8-L-j26-1",
+            "agencyId": "33",
+            "line": "RE8",
+            "mode": "rail",
+            "pairs": [
+              {
+                "fromId": "ch:1:sloid:7492:0:244570",
+                "toId": "ch:1:sloid:7493:0:602252",
+                "operatingPointPair": [
+                  "8507492",
+                  "8507493"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087489"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:7493:0:470772",
+                "toId": "ch:1:sloid:7492:0:244570",
+                "operatingPointPair": [
+                  "8507493",
+                  "8507492"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087489"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:7493:0:470772",
+                "toId": "ch:1:sloid:7492:0:581416",
+                "operatingPointPair": [
+                  "8507493",
+                  "8507492"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087489"
+                ]
+              }
+            ]
+          }
+        ],
+        "admission": "Only the three missing directed Interlaken West–Ost pairs on exact BLS RE8 91-8-L-j26-1, agency 33, with existing OEVTP 320_RE association. Four complete dated original patterns and all original coordinates are required. Fill only missing geometry; retain earlier successful paths and conditional-call exclusions.",
+        "model": "Explicit original Interlaken Ost platforms 5 and 8 map to FOT operating point 8519309 named Interlaken Ost [Gleis 5-8]. One original standard-gauge West–Ost curve with infrastructure label BLS; no curve splitting or coordinate changes. Generic station 8507492 has no connected curve; metre-gauge groups 1–2 and 3–4 and the Bönigen workshop continuation are excluded. Original limits unchanged. FOT catalogue 2021-07-06, asset updated 2025-01-18, checksum rechecked 2026-09-08. Inferred geometry; current alignment and individual running tracks unconfirmed.",
+        "operatingPointOverrides": [
+          {
+            "sourceNumber": "8507492",
+            "targetNumber": "8519309",
+            "expectedName": "Interlaken Ost [Gleis 5-8]",
+            "routeIds": [
+              "91-8-L-j26-1"
+            ]
+          }
+        ],
+        "interlaken": {
+          "genericNode": {
+            "id": "ch14uvag00139699",
+            "number": "8507492",
+            "name": "Interlaken Ost",
+            "coordinate": [
+              7.869016,
+              46.690505
+            ]
+          },
+          "targetNode": {
+            "id": "ch14uvag00165678",
+            "number": "8519309",
+            "name": "Interlaken Ost [Gleis 5-8]",
+            "coordinate": [
+              7.868937,
+              46.690837
+            ]
+          },
+          "curve": {
+            "id": "ch14uvag00087489",
+            "start": "ch14uvag00089321",
+            "end": "ch14uvag00165678",
+            "length": 1948.023915934484,
+            "points": [
+              [
+                7.851334,
+                46.682636
+              ],
+              [
+                7.851353,
+                46.682725
+              ],
+              [
+                7.851373,
+                46.682813
+              ],
+              [
+                7.851393,
+                46.682902
+              ],
+              [
+                7.851413,
+                46.682991
+              ],
+              [
+                7.851433,
+                46.68308
+              ],
+              [
+                7.851453,
+                46.683169
+              ],
+              [
+                7.851472,
+                46.683258
+              ],
+              [
+                7.851492,
+                46.683347
+              ],
+              [
+                7.851512,
+                46.683436
+              ],
+              [
+                7.851532,
+                46.683525
+              ],
+              [
+                7.851552,
+                46.683614
+              ],
+              [
+                7.851572,
+                46.683703
+              ],
+              [
+                7.851592,
+                46.683792
+              ],
+              [
+                7.851611,
+                46.68388
+              ],
+              [
+                7.851631,
+                46.683969
+              ],
+              [
+                7.851651,
+                46.684058
+              ],
+              [
+                7.851672,
+                46.684147
+              ],
+              [
+                7.851693,
+                46.684236
+              ],
+              [
+                7.851715,
+                46.684324
+              ],
+              [
+                7.851739,
+                46.684413
+              ],
+              [
+                7.851765,
+                46.684501
+              ],
+              [
+                7.851793,
+                46.684589
+              ],
+              [
+                7.851823,
+                46.684677
+              ],
+              [
+                7.851856,
+                46.684764
+              ],
+              [
+                7.851892,
+                46.68485
+              ],
+              [
+                7.851932,
+                46.684936
+              ],
+              [
+                7.851975,
+                46.685021
+              ],
+              [
+                7.852023,
+                46.685104
+              ],
+              [
+                7.852074,
+                46.685187
+              ],
+              [
+                7.852129,
+                46.685269
+              ],
+              [
+                7.852189,
+                46.685349
+              ],
+              [
+                7.852252,
+                46.685428
+              ],
+              [
+                7.852319,
+                46.685505
+              ],
+              [
+                7.852389,
+                46.68558
+              ],
+              [
+                7.852464,
+                46.685654
+              ],
+              [
+                7.852541,
+                46.685727
+              ],
+              [
+                7.852623,
+                46.685797
+              ],
+              [
+                7.852707,
+                46.685866
+              ],
+              [
+                7.852793,
+                46.685934
+              ],
+              [
+                7.85288,
+                46.686001
+              ],
+              [
+                7.852968,
+                46.686067
+              ],
+              [
+                7.853056,
+                46.686134
+              ],
+              [
+                7.853144,
+                46.6862
+              ],
+              [
+                7.853584,
+                46.686533
+              ],
+              [
+                7.853672,
+                46.6866
+              ],
+              [
+                7.853759,
+                46.686667
+              ],
+              [
+                7.853844,
+                46.686735
+              ],
+              [
+                7.853928,
+                46.686804
+              ],
+              [
+                7.85401,
+                46.686874
+              ],
+              [
+                7.854088,
+                46.686946
+              ],
+              [
+                7.854162,
+                46.68702
+              ],
+              [
+                7.854233,
+                46.687096
+              ],
+              [
+                7.8543,
+                46.687173
+              ],
+              [
+                7.854363,
+                46.687252
+              ],
+              [
+                7.854422,
+                46.687332
+              ],
+              [
+                7.854477,
+                46.687414
+              ],
+              [
+                7.854529,
+                46.687496
+              ],
+              [
+                7.854578,
+                46.68758
+              ],
+              [
+                7.854625,
+                46.687664
+              ],
+              [
+                7.854671,
+                46.687748
+              ],
+              [
+                7.854716,
+                46.687832
+              ],
+              [
+                7.854761,
+                46.687917
+              ],
+              [
+                7.854851,
+                46.688086
+              ],
+              [
+                7.854896,
+                46.68817
+              ],
+              [
+                7.854941,
+                46.688254
+              ],
+              [
+                7.854986,
+                46.688339
+              ],
+              [
+                7.855032,
+                46.688423
+              ],
+              [
+                7.855078,
+                46.688507
+              ],
+              [
+                7.855126,
+                46.688591
+              ],
+              [
+                7.855175,
+                46.688675
+              ],
+              [
+                7.855225,
+                46.688758
+              ],
+              [
+                7.855276,
+                46.68884
+              ],
+              [
+                7.855327,
+                46.688923
+              ],
+              [
+                7.855378,
+                46.689006
+              ],
+              [
+                7.855633,
+                46.68942
+              ],
+              [
+                7.855684,
+                46.689503
+              ],
+              [
+                7.855737,
+                46.689585
+              ],
+              [
+                7.855792,
+                46.689667
+              ],
+              [
+                7.855851,
+                46.689747
+              ],
+              [
+                7.855914,
+                46.689826
+              ],
+              [
+                7.855982,
+                46.689903
+              ],
+              [
+                7.856055,
+                46.689978
+              ],
+              [
+                7.856132,
+                46.69005
+              ],
+              [
+                7.856213,
+                46.69012
+              ],
+              [
+                7.856299,
+                46.690188
+              ],
+              [
+                7.856389,
+                46.690254
+              ],
+              [
+                7.856483,
+                46.690316
+              ],
+              [
+                7.85658,
+                46.690376
+              ],
+              [
+                7.856681,
+                46.690433
+              ],
+              [
+                7.856786,
+                46.690487
+              ],
+              [
+                7.856894,
+                46.690538
+              ],
+              [
+                7.857004,
+                46.690586
+              ],
+              [
+                7.857118,
+                46.69063
+              ],
+              [
+                7.857234,
+                46.690672
+              ],
+              [
+                7.857353,
+                46.690709
+              ],
+              [
+                7.857474,
+                46.690744
+              ],
+              [
+                7.857596,
+                46.690775
+              ],
+              [
+                7.85772,
+                46.690803
+              ],
+              [
+                7.857846,
+                46.690828
+              ],
+              [
+                7.857973,
+                46.690849
+              ],
+              [
+                7.858101,
+                46.690867
+              ],
+              [
+                7.85823,
+                46.690882
+              ],
+              [
+                7.85836,
+                46.690894
+              ],
+              [
+                7.85849,
+                46.690902
+              ],
+              [
+                7.85862,
+                46.690906
+              ],
+              [
+                7.858751,
+                46.690907
+              ],
+              [
+                7.858882,
+                46.690904
+              ],
+              [
+                7.859012,
+                46.690897
+              ],
+              [
+                7.859142,
+                46.690886
+              ],
+              [
+                7.859271,
+                46.690871
+              ],
+              [
+                7.859399,
+                46.690853
+              ],
+              [
+                7.859525,
+                46.69083
+              ],
+              [
+                7.85965,
+                46.690804
+              ],
+              [
+                7.859774,
+                46.690776
+              ],
+              [
+                7.859897,
+                46.690745
+              ],
+              [
+                7.860019,
+                46.690713
+              ],
+              [
+                7.860141,
+                46.690681
+              ],
+              [
+                7.860263,
+                46.690648
+              ],
+              [
+                7.860385,
+                46.690616
+              ],
+              [
+                7.860507,
+                46.690583
+              ],
+              [
+                7.860629,
+                46.690552
+              ],
+              [
+                7.860752,
+                46.690521
+              ],
+              [
+                7.860876,
+                46.690492
+              ],
+              [
+                7.861,
+                46.690464
+              ],
+              [
+                7.861126,
+                46.690439
+              ],
+              [
+                7.861252,
+                46.690416
+              ],
+              [
+                7.86138,
+                46.690397
+              ],
+              [
+                7.861508,
+                46.690379
+              ],
+              [
+                7.861637,
+                46.690365
+              ],
+              [
+                7.861767,
+                46.690353
+              ],
+              [
+                7.861897,
+                46.690344
+              ],
+              [
+                7.862027,
+                46.690337
+              ],
+              [
+                7.862158,
+                46.690334
+              ],
+              [
+                7.862289,
+                46.690333
+              ],
+              [
+                7.862419,
+                46.690334
+              ],
+              [
+                7.86255,
+                46.690339
+              ],
+              [
+                7.86268,
+                46.690346
+              ],
+              [
+                7.86281,
+                46.690355
+              ],
+              [
+                7.86294,
+                46.690365
+              ],
+              [
+                7.86307,
+                46.690376
+              ],
+              [
+                7.863199,
+                46.690388
+              ],
+              [
+                7.863329,
+                46.690399
+              ],
+              [
+                7.863459,
+                46.690411
+              ],
+              [
+                7.863588,
+                46.690423
+              ],
+              [
+                7.863717,
+                46.690437
+              ],
+              [
+                7.863846,
+                46.690453
+              ],
+              [
+                7.863973,
+                46.690473
+              ],
+              [
+                7.864099,
+                46.690497
+              ],
+              [
+                7.864224,
+                46.690525
+              ],
+              [
+                7.864347,
+                46.690556
+              ],
+              [
+                7.864468,
+                46.690589
+              ],
+              [
+                7.864589,
+                46.690622
+              ],
+              [
+                7.86471,
+                46.690656
+              ],
+              [
+                7.864832,
+                46.69069
+              ],
+              [
+                7.864954,
+                46.690722
+              ],
+              [
+                7.865077,
+                46.690752
+              ],
+              [
+                7.865202,
+                46.690779
+              ],
+              [
+                7.865328,
+                46.690803
+              ],
+              [
+                7.865455,
+                46.690824
+              ],
+              [
+                7.865583,
+                46.690841
+              ],
+              [
+                7.865713,
+                46.690854
+              ],
+              [
+                7.865843,
+                46.690863
+              ],
+              [
+                7.865973,
+                46.690868
+              ],
+              [
+                7.866104,
+                46.690869
+              ],
+              [
+                7.866235,
+                46.690865
+              ],
+              [
+                7.866365,
+                46.690858
+              ],
+              [
+                7.866495,
+                46.690849
+              ],
+              [
+                7.866625,
+                46.690838
+              ],
+              [
+                7.866754,
+                46.690826
+              ],
+              [
+                7.867273,
+                46.69078
+              ],
+              [
+                7.867403,
+                46.690769
+              ],
+              [
+                7.867533,
+                46.690759
+              ],
+              [
+                7.867663,
+                46.690753
+              ],
+              [
+                7.867794,
+                46.690751
+              ],
+              [
+                7.867924,
+                46.690752
+              ],
+              [
+                7.868055,
+                46.690756
+              ],
+              [
+                7.868185,
+                46.690765
+              ],
+              [
+                7.868315,
+                46.690776
+              ],
+              [
+                7.868574,
+                46.6908
+              ],
+              [
+                7.868703,
+                46.690812
+              ],
+              [
+                7.868833,
+                46.690825
+              ],
+              [
+                7.868937,
+                46.690837
+              ]
+            ],
+            "gauge": "mm1435",
+            "dataStand": "2021-07-06",
+            "validFrom": "2014-09-03",
+            "validUntil": null,
+            "infrastructureOperator": "BLS"
+          },
+          "excludedPlatformGroups": [
+            {
+              "id": "ch14uvag00165679",
+              "number": "8515183",
+              "name": "Interlaken Ost [Gleis 3-4]",
+              "coordinate": [
+                7.868969,
+                46.690703
+              ]
+            },
+            {
+              "id": "ch14uvag00066282",
+              "number": "8519310",
+              "name": "Interlaken Ost [Gleis 1-2]",
+              "coordinate": [
+                7.869015,
+                46.690595
+              ]
+            }
+          ],
+          "excludedDepotCurve": "ch14uvag00087490"
+        },
+        "originalStops": [
+          [
+            7.3750517,
+            46.55342577,
+            "Zweisimmen",
+            "7",
+            "ch:1:sloid:7290:0:887399"
+          ],
+          [
+            7.39007153,
+            46.62736961,
+            "Boltigen",
+            "2",
+            "ch:1:sloid:7292:0:268718"
+          ],
+          [
+            7.55560409,
+            46.65916195,
+            "Erlenbach im Simmental",
+            "1",
+            "ch:1:sloid:7296:0:450380"
+          ],
+          [
+            7.57942741,
+            46.65987097,
+            "Oey-Diemtigen",
+            "2",
+            "ch:1:sloid:7297:0:622347"
+          ],
+          [
+            7.63555415,
+            46.67568904,
+            "Wimmis",
+            "1",
+            "ch:1:sloid:7298:0:159307"
+          ],
+          [
+            7.67953567,
+            46.68645575,
+            "Spiez",
+            "4",
+            "ch:1:sloid:7483:0:138485"
+          ],
+          [
+            7.67947279,
+            46.68641878,
+            "Spiez",
+            "5",
+            "ch:1:sloid:7483:0:792557"
+          ],
+          [
+            7.6796255,
+            46.68651121,
+            "Spiez",
+            "3",
+            "ch:1:sloid:7483:0:954324"
+          ],
+          [
+            7.86970003,
+            46.69108348,
+            "Interlaken Ost",
+            "8",
+            "ch:1:sloid:7492:0:244570"
+          ],
+          [
+            7.86973596,
+            46.69089863,
+            "Interlaken Ost",
+            "5",
+            "ch:1:sloid:7492:0:581416"
+          ],
+          [
+            7.85146423,
+            46.68262879,
+            "Interlaken West",
+            "1",
+            "ch:1:sloid:7493:0:470772"
+          ],
+          [
+            7.85125762,
+            46.68264112,
+            "Interlaken West",
+            "2",
+            "ch:1:sloid:7493:0:602252"
+          ]
+        ],
+        "originalPatterns": [
+          {
+            "date": "2026-09-04",
+            "directionId": "0",
+            "stopIds": [
+              "ch:1:sloid:7290:0:887399",
+              "ch:1:sloid:7292:0:268718",
+              "ch:1:sloid:7296:0:450380",
+              "ch:1:sloid:7297:0:622347",
+              "ch:1:sloid:7298:0:159307",
+              "ch:1:sloid:7483:0:954324",
+              "ch:1:sloid:7493:0:470772",
+              "ch:1:sloid:7492:0:244570"
+            ]
+          },
+          {
+            "date": "2026-09-04",
+            "directionId": "1",
+            "stopIds": [
+              "ch:1:sloid:7492:0:244570",
+              "ch:1:sloid:7493:0:602252",
+              "ch:1:sloid:7483:0:792557",
+              "ch:1:sloid:7298:0:159307",
+              "ch:1:sloid:7297:0:622347",
+              "ch:1:sloid:7296:0:450380",
+              "ch:1:sloid:7292:0:268718",
+              "ch:1:sloid:7290:0:887399"
+            ]
+          },
+          {
+            "date": "2026-09-06",
+            "directionId": "0",
+            "stopIds": [
+              "ch:1:sloid:7290:0:887399",
+              "ch:1:sloid:7292:0:268718",
+              "ch:1:sloid:7296:0:450380",
+              "ch:1:sloid:7297:0:622347",
+              "ch:1:sloid:7298:0:159307",
+              "ch:1:sloid:7483:0:954324",
+              "ch:1:sloid:7493:0:470772",
+              "ch:1:sloid:7492:0:581416"
+            ]
+          },
+          {
+            "date": "2026-09-06",
+            "directionId": "1",
+            "stopIds": [
+              "ch:1:sloid:7492:0:244570",
+              "ch:1:sloid:7493:0:602252",
+              "ch:1:sloid:7483:0:138485"
+            ]
+          }
+        ],
+        "documents": []
+      },
+      "source": {
+        "schemaVersion": 1,
+        "publisher": "Federal Office of Transport - FOT",
+        "attribution": "© Federal Office of Transport (FOT)",
+        "license": "proprietary",
+        "termsUrl": "https://opendata.swiss/terms-of-use/#terms_by",
+        "catalogueDate": "2021-07-06T00:00:00Z",
+        "assetUpdated": "2025-01-18T04:23:13.735821Z",
+        "catalogueCheckedOn": "2026-09-08",
+        "sourceUrl": "https://data.geo.admin.ch/ch.bav.schienennetz/schienennetz/schienennetz_2056_de.xtf",
+        "sha256": "2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+        "publishedChecksum": "12202895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+        "validOn": null,
+        "validityNote": "Catalogue dates and verified bytes do not establish September 2026 alignment validity. Inferred infrastructure paths, not certified service running tracks.",
+        "nodes": 3210,
+        "segments": 3424,
+        "transformation": "Existing XTF parser with zero-metre Douglas–Peucker tolerance; collinear vertices may be removed. Approximate LV95-to-WGS84 transformation rounded to six decimals. Bern preserves original GTFS coordinates and rounds only final attachment endpoints to seven decimals.",
+        "files": {
+          "network.xtf.gz": "f83afc9c922ab368070faa151fcf8be02fbb66bc1f4ae9b1011c68c86be21af3",
+          "catalogue.json": "4c54793b444d6d453e4f3e9c5ddd424f72d16b76325366fea6a10f60e749cf60",
+          "collection.json": "a4c61b24a114dcc3c710194deb742c7cd80400584bf9261da534019ed1f22c02",
+          "catalogue-check-20260908.json": "4c54793b444d6d453e4f3e9c5ddd424f72d16b76325366fea6a10f60e749cf60"
+        },
+        "retainedForBernAt": "2026-09-08T19:43:28.383642+00:00",
+        "catalogueRecheckedOn": "2026-09-08",
+        "catalogueCheckUrl": "https://data.geo.admin.ch/api/stac/v1/collections/ch.bav.schienennetz/items/schienennetz"
+      },
+      "sourceSegments": [
+        {
+          "id": "ch14uvag00087489",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2014-09-03",
+          "validUntil": null,
+          "infrastructureOperator": "BLS",
+          "attachmentMetres": 9.202513384655338,
+          "reason": null
+        }
+      ]
+    },
     "urbanSupplement": {
       "policy": {
         "schemaVersion": 1,
@@ -24564,10 +25612,10 @@
     "key": "GTFS route identity + direction_id + full ordered original platform IDs, including repeats and out-of-canton calls"
   },
   "routesByStatus": {
-    "admitted-all-dated-trips": 323,
+    "admitted-all-dated-trips": 324,
     "excluded": 120,
     "inactive-on-validation-dates": 183,
-    "partially-admitted": 79
+    "partially-admitted": 78
   },
   "districts": [
     {
@@ -25622,28 +26670,29 @@
         "ir16Policy": "e35c73aad820aaadade45b118589c7ee15e7a0411a39ea7e1ba7d9ac9a8ce54a",
         "tpfTerminalPolicy": "3823828434d9b1b4ee97147c77a121f8c43eb6a1489b1d15a7bcf2ffcc9c78d8",
         "morgesPolicy": "ccd74bff8cca2457eee74f072f913c2773ff545fb68e20e146b0ded8ba5e16c3",
+        "interlakenPolicy": "4a1c73b985e1e5f214a7051dcebea540a837a5c0e219b10e5bd62d42fe356e67",
         "urbanCache": "5ef487abdf873508305508e5096c26ca0fbebd9abc9b0846195abc840af07d0f",
         "urbanPolicy": "1ca5bdf7f752349c915180c881292cfd31465398efb956e58afc5934b875f8fb"
       },
       "coverage": {
         "trips": 43653,
-        "admittedTrips": 36801,
+        "admittedTrips": 36803,
         "scheduledTrips": 28696,
         "representativeHeadwayTrips": 14957,
-        "admittedScheduledTrips": 21844,
+        "admittedScheduledTrips": 21846,
         "admittedRepresentativeHeadwayTrips": 14957,
         "scheduledSegmentOccurrences": 295359,
-        "matchedScheduledSegmentOccurrences": 275941,
+        "matchedScheduledSegmentOccurrences": 275943,
         "segmentOccurrences": 314668,
-        "matchedSegmentOccurrences": 295250,
-        "admittedSegmentOccurrences": 276676,
+        "matchedSegmentOccurrences": 295252,
+        "admittedSegmentOccurrences": 276690,
         "directedPairs": 12321,
-        "matchedDirectedPairs": 10803,
+        "matchedDirectedPairs": 10805,
         "patterns": 2582,
-        "completePatterns": 1986,
-        "admittedPatterns": 1986,
+        "completePatterns": 1988,
+        "admittedPatterns": 1988,
         "excludedTrips": {
-          "incomplete-directed-pattern": 3821,
+          "incomplete-directed-pattern": 3819,
           "no-verified-operator-line-crosswalk": 3031
         }
       },
@@ -26612,23 +27661,23 @@
           "id": "33:rail",
           "agency": "BLS AG (bls)",
           "trips": 1405,
-          "admittedTrips": 1189,
+          "admittedTrips": 1191,
           "scheduledTrips": 1405,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 1189,
+          "admittedScheduledTrips": 1191,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 14195,
-          "matchedScheduledSegmentOccurrences": 13335,
+          "matchedScheduledSegmentOccurrences": 13337,
           "segmentOccurrences": 14195,
-          "matchedSegmentOccurrences": 13335,
-          "admittedSegmentOccurrences": 12840,
+          "matchedSegmentOccurrences": 13337,
+          "admittedSegmentOccurrences": 12854,
           "directedPairs": 1066,
-          "matchedDirectedPairs": 934,
+          "matchedDirectedPairs": 936,
           "patterns": 328,
-          "completePatterns": 269,
-          "admittedPatterns": 269,
+          "completePatterns": 271,
+          "admittedPatterns": 271,
           "excludedTrips": {
-            "incomplete-directed-pattern": 68,
+            "incomplete-directed-pattern": 66,
             "no-verified-operator-line-crosswalk": 148
           }
         },
@@ -27582,12 +28631,12 @@
       },
       "payload": {
         "manifest": {
-          "bytes": 11376792,
-          "gzipBytes": 2501414
+          "bytes": 11489169,
+          "gzipBytes": 2522481
         },
         "morning": {
-          "trips": 3456,
-          "gzipBytes": 2825859
+          "trips": 3457,
+          "gzipBytes": 2849850
         },
         "chunks": [
           {
@@ -27596,9 +28645,9 @@
             "windowEnd": 7200,
             "path": "day-chunks/00-02.json",
             "tripCount": 257,
-            "bytes": 207591,
-            "sha256": "90a19e67af7d0864d276620c71f6035b78b963beb7380724b1807eab9605ae40",
-            "gzipBytes": 35477
+            "bytes": 207593,
+            "sha256": "852d79a56a7e280c20b9dfd52fab04659e93f5b0c8b8162b3f4f6a11d73388d6",
+            "gzipBytes": 35402
           },
           {
             "id": "02-04",
@@ -27616,29 +28665,29 @@
             "windowEnd": 21600,
             "path": "day-chunks/04-06.json",
             "tripCount": 594,
-            "bytes": 508760,
-            "sha256": "cc1ad5884f022e890df7ce10816a71b3fbde0fa85eae18a32a640b360c646faf",
-            "gzipBytes": 80070
+            "bytes": 508770,
+            "sha256": "5a4634b0ca13294db6b0a6d1c02faa2b008c2b14ff1dcecf24fa9585e27d072e",
+            "gzipBytes": 80018
           },
           {
             "id": "06-08",
             "windowStart": 21600,
             "windowEnd": 28800,
             "path": "day-chunks/06-08.json",
-            "tripCount": 3118,
-            "bytes": 2628246,
-            "sha256": "bd834df08e541de28096ad85dbcbcfca1678e10c48832467334862d8b70d3e4f",
-            "gzipBytes": 310230
+            "tripCount": 3119,
+            "bytes": 2628948,
+            "sha256": "caaca7f8b2e66a50210e9ecf80a0729fed2618d59631827ba1672680d2a39d8c",
+            "gzipBytes": 310180
           },
           {
             "id": "08-10",
             "windowStart": 28800,
             "windowEnd": 36000,
             "path": "day-chunks/08-10.json",
-            "tripCount": 5091,
-            "bytes": 3833128,
-            "sha256": "7d151195f17d6de872cf3b3db6577f1949ad6452be9eaabba657b9854cd3649a",
-            "gzipBytes": 346069
+            "tripCount": 5092,
+            "bytes": 3833817,
+            "sha256": "a212336f6738001318d0ac33081f0136b6d90c3e35586531b4db108b2c04129d",
+            "gzipBytes": 346091
           },
           {
             "id": "10-12",
@@ -27646,9 +28695,9 @@
             "windowEnd": 43200,
             "path": "day-chunks/10-12.json",
             "tripCount": 7200,
-            "bytes": 5131869,
-            "sha256": "22879220326134fca501b1df9fae61cd5eb9b5c2f75d066fd06108780634118f",
-            "gzipBytes": 388743
+            "bytes": 5131901,
+            "sha256": "15b40228c0f587ef07a6015157a3cc128f9ba258ce10b1129f53fb4891f1741d",
+            "gzipBytes": 388612
           },
           {
             "id": "12-14",
@@ -27656,9 +28705,9 @@
             "windowEnd": 50400,
             "path": "day-chunks/12-14.json",
             "tripCount": 7375,
-            "bytes": 5272818,
-            "sha256": "2adfebe04fb50a0de065d1dae423553d74f2765cc690b5ffc43dc8039d21d1c5",
-            "gzipBytes": 404432
+            "bytes": 5272850,
+            "sha256": "d9ed9b7e115c9b7764d3225673dfe085b00cf119823a01f7a0a1a7bad820ccec",
+            "gzipBytes": 404189
           },
           {
             "id": "14-16",
@@ -27666,9 +28715,9 @@
             "windowEnd": 57600,
             "path": "day-chunks/14-16.json",
             "tripCount": 7291,
-            "bytes": 5199235,
-            "sha256": "a95326de8e710440ed8a10015fdc5ac9c19994eb34491ad4567e1b3f563a1ef8",
-            "gzipBytes": 395887
+            "bytes": 5199272,
+            "sha256": "4724d6832e2854bb3098e149e40ef838b7c25d9af6653c3147a550815fd22567",
+            "gzipBytes": 395639
           },
           {
             "id": "16-18",
@@ -27676,19 +28725,19 @@
             "windowEnd": 64800,
             "path": "day-chunks/16-18.json",
             "tripCount": 5511,
-            "bytes": 4189844,
-            "sha256": "226dbc2e39badfa5684892c428311a8f553b8cfb39bf976e4e2584bc5b62f024",
-            "gzipBytes": 381794
+            "bytes": 4189897,
+            "sha256": "d925f580474c1481c405c29456a5c6a1e3aec1d666547742fb0eb50827f46c9a",
+            "gzipBytes": 381859
           },
           {
             "id": "18-20",
             "windowStart": 64800,
             "windowEnd": 72000,
             "path": "day-chunks/18-20.json",
-            "tripCount": 3011,
-            "bytes": 2524173,
-            "sha256": "2662d3a602e0ab68f1ed9d9edb2dfe6fde1d5c09f35a78a6311367a9bd944848",
-            "gzipBytes": 293219
+            "tripCount": 3012,
+            "bytes": 2524858,
+            "sha256": "f4414e466a69df97b169530a831be1e73cbaa73fc14f3200ba3c0fa9ce4ddb0a",
+            "gzipBytes": 293288
           },
           {
             "id": "20-22",
@@ -27696,9 +28745,9 @@
             "windowEnd": 79200,
             "path": "day-chunks/20-22.json",
             "tripCount": 1764,
-            "bytes": 1501571,
-            "sha256": "615d2229c1846b8867c28769ff2dbccbaeefeb2541eca84dfe503a14fe5f1eb8",
-            "gzipBytes": 184737
+            "bytes": 1501588,
+            "sha256": "7df1d2657f6f8be211d6413364a0ba0f34740e28d4f042a59e0b37d26bc7db54",
+            "gzipBytes": 184677
           },
           {
             "id": "22-24",
@@ -27706,9 +28755,9 @@
             "windowEnd": 86400,
             "path": "day-chunks/22-24.json",
             "tripCount": 1102,
-            "bytes": 955156,
-            "sha256": "73d01f32dfb9bace8f5b3f18520c705ee6e4cdb060e185191d177ea580f5b4c6",
-            "gzipBytes": 127807
+            "bytes": 955172,
+            "sha256": "b657201f4f330c2d98713aeb7e1dfb97fab57cc794aca1ac81eef748f6a919e9",
+            "gzipBytes": 127912
           }
         ]
       },
@@ -27741,28 +28790,29 @@
         "ir16Policy": "e35c73aad820aaadade45b118589c7ee15e7a0411a39ea7e1ba7d9ac9a8ce54a",
         "tpfTerminalPolicy": "3823828434d9b1b4ee97147c77a121f8c43eb6a1489b1d15a7bcf2ffcc9c78d8",
         "morgesPolicy": "ccd74bff8cca2457eee74f072f913c2773ff545fb68e20e146b0ded8ba5e16c3",
+        "interlakenPolicy": "4a1c73b985e1e5f214a7051dcebea540a837a5c0e219b10e5bd62d42fe356e67",
         "urbanCache": "5ef487abdf873508305508e5096c26ca0fbebd9abc9b0846195abc840af07d0f",
         "urbanPolicy": "1ca5bdf7f752349c915180c881292cfd31465398efb956e58afc5934b875f8fb"
       },
       "coverage": {
         "trips": 38587,
-        "admittedTrips": 32002,
+        "admittedTrips": 32004,
         "scheduledTrips": 22462,
         "representativeHeadwayTrips": 16125,
-        "admittedScheduledTrips": 15877,
+        "admittedScheduledTrips": 15879,
         "admittedRepresentativeHeadwayTrips": 16125,
         "scheduledSegmentOccurrences": 209388,
-        "matchedScheduledSegmentOccurrences": 191448,
+        "matchedScheduledSegmentOccurrences": 191450,
         "segmentOccurrences": 229859,
-        "matchedSegmentOccurrences": 211919,
-        "admittedSegmentOccurrences": 194590,
+        "matchedSegmentOccurrences": 211921,
+        "admittedSegmentOccurrences": 194599,
         "directedPairs": 13244,
-        "matchedDirectedPairs": 11460,
+        "matchedDirectedPairs": 11462,
         "patterns": 2108,
-        "completePatterns": 1549,
-        "admittedPatterns": 1549,
+        "completePatterns": 1551,
+        "admittedPatterns": 1551,
         "excludedTrips": {
-          "incomplete-directed-pattern": 3528,
+          "incomplete-directed-pattern": 3526,
           "no-verified-operator-line-crosswalk": 3057
         }
       },
@@ -28752,23 +29802,23 @@
           "id": "33:rail",
           "agency": "BLS AG (bls)",
           "trips": 1255,
-          "admittedTrips": 1051,
+          "admittedTrips": 1053,
           "scheduledTrips": 1255,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 1051,
+          "admittedScheduledTrips": 1053,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 12673,
-          "matchedScheduledSegmentOccurrences": 11958,
+          "matchedScheduledSegmentOccurrences": 11960,
           "segmentOccurrences": 12673,
-          "matchedSegmentOccurrences": 11958,
-          "admittedSegmentOccurrences": 11424,
+          "matchedSegmentOccurrences": 11960,
+          "admittedSegmentOccurrences": 11433,
           "directedPairs": 971,
-          "matchedDirectedPairs": 828,
+          "matchedDirectedPairs": 830,
           "patterns": 300,
-          "completePatterns": 242,
-          "admittedPatterns": 242,
+          "completePatterns": 244,
+          "admittedPatterns": 244,
           "excludedTrips": {
-            "incomplete-directed-pattern": 93,
+            "incomplete-directed-pattern": 91,
             "no-verified-operator-line-crosswalk": 111
           }
         },
@@ -29767,12 +30817,12 @@
       },
       "payload": {
         "manifest": {
-          "bytes": 11529136,
-          "gzipBytes": 2642517
+          "bytes": 11624049,
+          "gzipBytes": 2664074
         },
         "morning": {
-          "trips": 2128,
-          "gzipBytes": 2824059
+          "trips": 2129,
+          "gzipBytes": 2846660
         },
         "chunks": [
           {
@@ -29782,8 +30832,8 @@
             "path": "day-chunks/00-02.json",
             "tripCount": 457,
             "bytes": 380745,
-            "sha256": "eb4bfa9de8f7c5355c582f67a44ea36544c70670dce767f18928b75068272ed3",
-            "gzipBytes": 61316
+            "sha256": "cc7c4cf20e21901c17fb9c33c5c140ae252be942adbea319a2bf5068bd2bb890",
+            "gzipBytes": 61287
           },
           {
             "id": "02-04",
@@ -29792,8 +30842,8 @@
             "path": "day-chunks/02-04.json",
             "tripCount": 125,
             "bytes": 121932,
-            "sha256": "375356cb68d2b3038719ee172ae4de3ca09ea50425e2932bf8762f1fa868db46",
-            "gzipBytes": 20071
+            "sha256": "8c24007c3ca9e8ae4d892b452128eb5562fec5ac5c1fe569b4aaf5f6f3b3839f",
+            "gzipBytes": 20047
           },
           {
             "id": "04-06",
@@ -29802,28 +30852,28 @@
             "path": "day-chunks/04-06.json",
             "tripCount": 258,
             "bytes": 218328,
-            "sha256": "e3e4dd45f69d09a7b54c321099242162b70a69db4009dca8c0b11a8193e5ce58",
-            "gzipBytes": 37576
+            "sha256": "52b85c925a91f78a6c465602320252a7088bf18929e8af063aa6bdfec12c02c3",
+            "gzipBytes": 37590
           },
           {
             "id": "06-08",
             "windowStart": 21600,
             "windowEnd": 28800,
             "path": "day-chunks/06-08.json",
-            "tripCount": 1456,
-            "bytes": 1169768,
-            "sha256": "0504243fed74d90a63a3d6dd2f56f9fbd5e98498cbed53d2f8096b861e2b9693",
-            "gzipBytes": 146014
+            "tripCount": 1457,
+            "bytes": 1170422,
+            "sha256": "692ff887fff464b1030067b307fd54e487f344728974951e202277bf423d492e",
+            "gzipBytes": 146260
           },
           {
             "id": "08-10",
             "windowStart": 28800,
             "windowEnd": 36000,
             "path": "day-chunks/08-10.json",
-            "tripCount": 4562,
-            "bytes": 3228975,
-            "sha256": "3d6400ce704b168b784e314177e2dbc6933987aeea3acbef14c91bab8dbca97a",
-            "gzipBytes": 260023
+            "tripCount": 4563,
+            "bytes": 3229633,
+            "sha256": "8bf9dae18a7db4f1e5d8f52778ff806b25485198bddf6382bd7209244813778b",
+            "gzipBytes": 260140
           },
           {
             "id": "10-12",
@@ -29831,9 +30881,9 @@
             "windowEnd": 43200,
             "path": "day-chunks/10-12.json",
             "tripCount": 6796,
-            "bytes": 4671196,
-            "sha256": "1e77692b05c854a13208279a92a7bf2f1520c67d870c534c7d6db2436f0073ad",
-            "gzipBytes": 324235
+            "bytes": 4671206,
+            "sha256": "01cfb2e840126f58fd16c61888e52670b281459597024049b2bdd3740fb7c62e",
+            "gzipBytes": 323901
           },
           {
             "id": "12-14",
@@ -29841,9 +30891,9 @@
             "windowEnd": 50400,
             "path": "day-chunks/12-14.json",
             "tripCount": 6845,
-            "bytes": 4729268,
-            "sha256": "32588f5ae1e9dd4a25db55c307fc8eec37b6ac5cd294966a37e249775f98b978",
-            "gzipBytes": 329602
+            "bytes": 4729276,
+            "sha256": "b326010640fa11e3c94b7ea6c0d6c3ef211180d7842e9ea678642afca7f02f62",
+            "gzipBytes": 329365
           },
           {
             "id": "14-16",
@@ -29852,8 +30902,8 @@
             "path": "day-chunks/14-16.json",
             "tripCount": 6897,
             "bytes": 4774492,
-            "sha256": "fc625dd477c41a1dd4f100558216e0782c674a479710c6d4abdbf312a7a64171",
-            "gzipBytes": 334526
+            "sha256": "7dd2c21f17cb855279abdbd3bdb49e313a5be71105571679ee2fe22fe5c22a5b",
+            "gzipBytes": 334193
           },
           {
             "id": "16-18",
@@ -29862,18 +30912,18 @@
             "path": "day-chunks/16-18.json",
             "tripCount": 4602,
             "bytes": 3359883,
-            "sha256": "483a12b91f269f865e3f22c7dbbf41d9df19b3349848c2d9af8932eeb4ec7e77",
-            "gzipBytes": 283894
+            "sha256": "63dcb019a3004deca11e2f410ef124d3af3770dd66535fea6328d41740514b56",
+            "gzipBytes": 283750
           },
           {
             "id": "18-20",
             "windowStart": 64800,
             "windowEnd": 72000,
             "path": "day-chunks/18-20.json",
-            "tripCount": 2073,
-            "bytes": 1705279,
-            "sha256": "63550c2f1f91aca360a3d62ce6aec6cedd8aca4157a97f2f0551a42f4555309b",
-            "gzipBytes": 201640
+            "tripCount": 2074,
+            "bytes": 1705783,
+            "sha256": "dfea84722d778f730ace92ec51dde69c3d127a90ac4358c7aeeeae0209404288",
+            "gzipBytes": 201615
           },
           {
             "id": "20-22",
@@ -29882,8 +30932,8 @@
             "path": "day-chunks/20-22.json",
             "tripCount": 1454,
             "bytes": 1220849,
-            "sha256": "d0b3874ca420fcd11f86bcdefb62922c009c9ef8d0bc766a5c9e547a45fe59b8",
-            "gzipBytes": 151507
+            "sha256": "869f7dbe5690331bb32958df9a66cb6aaa56247503048d64bac08609485df4d6",
+            "gzipBytes": 151590
           },
           {
             "id": "22-24",
@@ -29892,8 +30942,8 @@
             "path": "day-chunks/22-24.json",
             "tripCount": 997,
             "bytes": 852326,
-            "sha256": "6b04c698004fa5183cc1db5ae5b338f85dda74ee4c0a4a0c86c0aa45c55cd729",
-            "gzipBytes": 114330
+            "sha256": "67bd699e477f6147e8aabc2ffce8181c98a44458f76a1d250f9e48fc11bbf7d3",
+            "gzipBytes": 114410
           }
         ]
       },

@@ -2,7 +2,7 @@
 
 Study by **Gleislicht**, using the pinned national timetable and the canton’s OEVTP source. Validation dates: **Friday 4 September and Sunday 6 September 2026**, each a Europe/Zurich civil day including the preceding service day’s after-midnight journeys. This is a reproducible historical regional feed, not a live service or a claim of year-round completeness.
 
-The full-source census identifies **705 GTFS route records from 101 agency identities**, covering **all ten districts** of Bern. All **518 OEVTP line records and 5,321 OEVTP stop records** are retained in the source snapshot. The regional feed admits complete directed stop patterns only: **36,801 Friday and 32,002 Sunday journey instances**. Failed patterns remain in the audit; no unsourced straight-line segments are emitted as admitted journeys.
+The full-source census identifies **705 GTFS route records from 101 agency identities**, covering **all ten districts** of Bern. All **518 OEVTP line records and 5,321 OEVTP stop records** are retained in the source snapshot. The regional feed admits complete directed stop patterns only: **36,803 Friday and 32,004 Sunday journey instances**. Failed patterns remain in the audit; no unsourced straight-line segments are emitted as admitted journeys.
 
 ## Deliverables
 
@@ -42,12 +42,12 @@ Admitted journeys retain 801 Friday and 796 Sunday out-of-canton stop records. F
 | Candidate journey instances | 43,653 | 38,587 |
 | Scheduled journey instances | 28,696 | 22,462 |
 | Representative headway instances (exact_times=0) | 14,957 | 16,125 |
-| Admitted scheduled instances | 21,844 | 15,877 |
+| Admitted scheduled instances | 21,846 | 15,879 |
 | Admitted representative headway instances | 14,957 | 16,125 |
-| Admitted total instances | 36,801 | 32,002 |
-| Directed stop patterns: complete / candidate | 1,986 / 2,582 | 1,549 / 2,108 |
-| Route-specific directed stop pairs: matched / candidate | 10,803 / 12,321 | 11,460 / 13,244 |
-| All modeled segment occurrences: matched / candidate | 295,250 / 314,668 | 211,919 / 229,859 |
+| Admitted total instances | 36,803 | 32,004 |
+| Directed stop patterns: complete / candidate | 1,988 / 2,582 | 1,551 / 2,108 |
+| Route-specific directed stop pairs: matched / candidate | 10,805 / 12,321 | 11,462 / 13,244 |
+| All modeled segment occurrences: matched / candidate | 295,252 / 314,668 | 211,921 / 229,859 |
 | All modeled segment occurrence coverage | 93.83% | 92.20% |
 | Scheduled-only segment occurrence coverage | 93.43% | 91.43% |
 | Carry-in journeys: admitted / candidate | 253 / 334 | 557 / 816 |
@@ -62,7 +62,7 @@ There are **1,317 shared**, **1,265 Friday-only** and **791 Sunday-only** patter
 | --- | --- | --- |
 | bus | 13,570 / 15,623; 95.28% | 8,458 / 10,453; 93.47% |
 | tram | 1,550 / 1,588; 99.30% | 1,220 / 1,252; 99.20% |
-| rail | 3,424 / 4,150; 88.23% | 3,055 / 3,698; 87.79% |
+| rail | 3,426 / 4,150; 88.23% | 3,057 / 3,698; 87.80% |
 | ferry | 36 / 40; 93.63% | 34 / 38; 93.55% |
 | funicular | 2,753 / 2,753; 100.00% | 2,605 / 2,605; 100.00% |
 | cableway | 15,468 / 19,499; 83.81% | 16,630 / 20,541; 84.91% |
@@ -87,13 +87,13 @@ Within cantonal graphs, alternative source-part projections may be at most 5 m f
 
 ## Exclusions and review evidence
 
-Across both dates: **323 routes admit all dated journeys**, **79 admit some**, **120 admit none**, and **183 are inactive on both dates**. The complete route appendix distinguishes these states; inactive annual records are not silently erased or described as failed geometry.
+Across both dates: **324 routes admit all dated journeys**, **78 admit some**, **120 admit none**, and **183 are inactive on both dates**. The complete route appendix distinguishes these states; inactive annual records are not silently erased or described as failed geometry.
 
 | Unmatched geometry reason | Friday directed pairs / occurrences | Sunday directed pairs / occurrences |
 | --- | --- | --- |
 | collapsed-path | 2 / 15 | 0 / 0 |
 | disconnected-line | 53 / 643 | 67 / 367 |
-| endpoint-gap | 501 / 5,166 | 540 / 5,284 |
+| endpoint-gap | 499 / 5,164 | 538 / 5,282 |
 | implausible-detour | 12 / 109 | 12 / 72 |
 | missing-line | 950 / 13,485 | 1,165 / 12,217 |
 
@@ -128,9 +128,9 @@ The [display-release audit](../data/bern-audit/display-release.json) records bot
 
 | Payload (gzip bytes) | Friday | Sunday | Budget |
 | --- | ---: | ---: | ---: |
-| Manifest | 650,023 | 660,592 | 665,600 |
-| Morning | 975,004 | 843,172 | 1,638,400 |
-| Largest two-hour chunk | 404,432 | 334,526 | 460,800 |
+| Manifest | 652,207 | 662,660 | 665,600 |
+| Morning | 977,828 | 845,011 | 1,638,400 |
+| Largest two-hour chunk | 404,189 | 334,193 | 460,800 |
 
 The delivered [application manifest](../public/data/bern-region-day-manifest.json) and [morning snapshot](../public/data/bern-region-morning.json) use the shared regional loading and integrity checks. A refresh only builds explicitly reviewed dates. Other requested dates, failed builds or acquisition failures retain a verified published study; a missing first-deployment manifest may use the complete checked-in release. Missing chunks never trigger a mixture of published and local files. Cantonal geometry remains the primary source; explicitly scoped FOT rail/cableway and OSM road supplements carry separate source identities, dates, attribution and admission evidence.
 
@@ -259,7 +259,7 @@ The [cross-canton rail audit](../data/bern-audit/crosscanton-rail-followup.json)
 
 TPF S20/S21 use their existing OEVTP 255_a/255_b crosswalks; the occasional SBB RE uses 240_RE, the two occasional IC records retain their existing IC source associations, and BLS RE8 retains 320_RE. Passenger labels alone do not authorize federal geometry. The [separate policy](../data/bern-crosscanton-rail-policy.json) pins **45 exact directed platform-pair bindings**, including **12 rejected bindings**, and **81 standard-gauge federal segments** on declared SBB/BLS infrastructure. It tests **36 Friday / 34 Sunday full patterns** on these six identities, including contexts from excluded journeys. Both source directions are tested wherever present; the single Friday RE and single Sunday IC record each have only direction 0 in the fixture, and no reverse service is invented.
 
-Three occasional route records now pass every dated journey. **TPF S20/S21 remained partial at that release**: the original Fribourg/Freiburg platform 4/5 coordinates (including the published 4A–D variant) require **270.82–274.08 m** attachments to the generic federal operating point, exceeding the unchanged **120 m** limit. Their nine original rejected directed bindings remain visible in that historical audit; the later Fribourg terminal review below resolves them. **RE8 remains partial**, with two excluded journeys on each date: its three distinct Interlaken Ost/West platform-pair bindings cannot form an eligible federal path under exact operating-point identity, standard gauge, detour and stop-order rules. A nearby alternative operating point is not substituted. The earlier Friday Morges and Zürich HB failures remain unchanged.
+Three occasional route records now pass every dated journey. **TPF S20/S21 remained partial at that release**: the original Fribourg/Freiburg platform 4/5 coordinates (including the published 4A–D variant) require **270.82–274.08 m** attachments to the generic federal operating point, exceeding the unchanged **120 m** limit. Their nine original rejected directed bindings remain visible in that historical audit; the later Fribourg terminal review below resolves them. **RE8 remained partial at that release**, with two excluded journeys on each date: its three distinct Interlaken Ost/West platform-pair bindings cannot form an eligible federal path under exact operating-point identity, standard gauge, detour and stop-order rules. That review did not substitute another operating point. The later explicit Interlaken tracks 5–8 review below resolves RE8; other Interlaken route identities remain outside its scope. The earlier Friday Morges and Zürich HB failures remain in the historical evidence.
 
 Accepted federal pairs attach original stops within **102.09 m**, and selected source topology attachments are below **51 m**. Full raw-pattern contexts must agree on the same directed source-segment sequence. All original GTFS coordinates, calls, times and permissions remain intact, including out-of-canton endpoints. Complete geometry is required before a whole journey enters the feed.
 
@@ -359,7 +359,21 @@ Supporting [SBB platform records](../data/bern-sources/morges/perron.json) ident
 
 The retained [SBB project page](../data/bern-sources/morges/platform-1-project.html) reports platform-1 extension and raising, with commissioning in **December 2023**, supporting its identity and extent. The page's publication date is unavailable and is not replaced with the acquisition date. Every retained source has an acquisition timestamp, exact URL and SHA-256 in the audit and [regional source file](../public/data/bern-region/sources.json). Credit: **SBB Infrastructure / SBB CFF FFS** for the platform/project evidence, **© Federal Office of Transport (FOT)** for geometry. The federal source retains catalogue date **6 July 2021**, asset update **18 January 2025** and checksum recheck **8 September 2026**. Current alignment validity, individual running tracks and 2026 switch itineraries remain unconfirmed.
 
-Both dates pass the unchanged display budgets with the existing **5 m** simplification tolerance. Compact display provenance includes the new policy hash, source dates/credits, SBB platform dataset dates/terms and references to all three retained source files. IC5 at Zürich, RE8 at Interlaken and the remaining bus/mountain exclusions remain unresolved.
+Both dates pass the unchanged display budgets with the existing **5 m** simplification tolerance. Compact display provenance includes the new policy hash, source dates/credits, SBB platform dataset dates/terms and references to all three retained source files. At that release IC5 at Zürich, RE8 at Interlaken and the remaining bus/mountain exclusions were unresolved; the following review completes RE8.
+
+## Interlaken Ost: explicit RE8 platform-group review
+
+The [Interlaken follow-up audit](../data/bern-audit/interlaken-followup.json), compared with release **8d38469**, adds **two Friday / two Sunday scheduled journeys**. Exact BLS **91-8-L-j26-1**, agency **33**, line **RE8**, now passes **10 / 10 Friday** and **7 / 7 Sunday** journeys in both directions. Its existing OEVTP **320_RE** association remains required. Every one of the previous **36,801 Friday / 32,002 Sunday journeys** retains every source field, original call/time and full-detail path. Previously matched pair assessments, other route exclusions, earlier source hashes/limits and all seven seasonal fixtures remain unchanged.
+
+The [separate policy](../data/bern-interlaken-policy.json) retains **three exact directed platform-pair bindings**, **four complete dated original patterns**, and **12 original stop records**. Friday tests Zweisimmen–Interlaken Ost platform 8 in both directions. Sunday tests Zweisimmen–Interlaken Ost platform 5 and Interlaken Ost platform 8–Spiez. Every full original call sequence is checked before a pair can be admitted; cropped, reordered, repeated or unknown-platform patterns and changed source coordinates are rejected before cached geometry is consulted. Other route identities and unreviewed dates cannot inherit this correction.
+
+The generic FOT station **8507492**, Interlaken Ost, has no connected source curve. The explicit FOT node **8519309**, **Interlaken Ost [Gleis 5-8]**, identifies the original timetable platforms **5** and **8**. Only original standard-gauge **mm1435** curve **ch14uvag00087489**, West → Ost tracks 5–8, is selected. Its infrastructure label is **BLS**, while the preceding line uses **BLSN**; the spelling is retained and no other BLS segment becomes eligible. All **183 decoded curve vertices** remain in order, reversed only for the opposite direction, with original GTFS endpoints. No station coordinate is moved and no source curve is split. Maximum platform attachment is **64.401 m** and maximum source-topology attachment is **9.203 m**, within the unchanged **120 m** limits.
+
+Metre-gauge platform groups **8519310** (tracks 1–2, BOB) and **8515183** (tracks 3–4, zb) remain excluded from this adapter, as does the **ch14uvag00087490** continuation toward Bönigen Werkstätte BLS. IC61, ICE, IC81, GPX and other route records are not authorized by an RE8 identity match; their existing admissions and exclusions remain unchanged. The original generic-node failure is retained alongside every repaired pair. This review establishes an explicit platform-group association and inferred centreline, not an individual track or switch itinerary.
+
+The existing pinned federal acquisition is reused: **© Federal Office of Transport (FOT)**, catalogue **6 July 2021**, asset update **18 January 2025**, checksum recheck/acquisition retained **8 September 2026**. The selected curve records data stand **6 July 2021** and validity start **3 September 2014**, with no declared end date; these do not certify September 2026 alignment. Exact source URL, SHA-256, transformation and attributed reuse terms remain in [sources.json](../public/data/bern-region/sources.json). No newer source date or separate platform-document acquisition is claimed. Timetable provenance remains the **2 September 2026** SBB/opentransportdata.swiss archive.
+
+The rebuilt regional feed contains **36,803 Friday / 32,004 Sunday movements**, including unchanged representative headway motion. Both display dates pass the existing payload budgets and **5 m** display simplification bound. Full platform/topology evidence remains in the regional archive, source file and audit; compact display metadata retains its hash, dates, attribution and evidence reference. Remaining work includes IC5 through Zürich HB and the separately inventoried rail, bus and mountain failures.
 
 ## Winter and holiday fixtures
 
@@ -432,14 +446,15 @@ node scripts/check-bern-crosscanton-rail.mjs data/bern-audit/timetable-cache.jso
 node scripts/check-bern-ir66.mjs data/bern-audit/timetable-cache.json.gz # historical IR66 batch
 node scripts/check-bern-ir16.mjs data/bern-audit/timetable-cache.json.gz # historical IR16 batch
 node scripts/check-bern-tpf-terminal.mjs data/bern-audit/timetable-cache.json.gz # historical TPF terminal batch
-node scripts/check-bern-morges.mjs data/bern-audit/timetable-cache.json.gz
+node scripts/check-bern-morges.mjs data/bern-audit/timetable-cache.json.gz # historical Morges batch
+node scripts/check-bern-interlaken.mjs data/bern-audit/timetable-cache.json.gz
 node scripts/audit-bern-seasonal.mjs --archive /private/tmp/GTFS_FP2026_20260902.zip
 node scripts/check-bern-seasonal.mjs
 # Publish the reviewed Friday display, or build the Sunday release separately.
 npm run data:bern:release
 npm run data:bern:docs
 npm run data:bern:release -- --date 2026-09-06 --output /private/tmp/bern-sunday-display
-npx vitest run scripts/bern-morges-geometry.test.mjs scripts/bern-tpf-terminal.test.mjs scripts/bern-ir16-geometry.test.mjs scripts/bern-ir66-geometry.test.mjs scripts/bern-crosscanton-rail.test.mjs scripts/bern-regional-rail.test.mjs scripts/bern-rail-geometry.test.mjs scripts/bern-release.test.mjs scripts/bern-supplements.test.mjs scripts/bern-regional-roads.test.mjs scripts/regional-refresh.test.mjs
+npx vitest run scripts/bern-interlaken-geometry.test.mjs scripts/bern-morges-geometry.test.mjs scripts/bern-tpf-terminal.test.mjs scripts/bern-ir16-geometry.test.mjs scripts/bern-ir66-geometry.test.mjs scripts/bern-crosscanton-rail.test.mjs scripts/bern-regional-rail.test.mjs scripts/bern-rail-geometry.test.mjs scripts/bern-release.test.mjs scripts/bern-supplements.test.mjs scripts/bern-regional-roads.test.mjs scripts/regional-refresh.test.mjs
 npx playwright test e2e/bern.spec.ts
 npx vitest run scripts/bern-region.test.mjs scripts/basel-line-geometry.test.mjs \
   scripts/civil-day.test.mjs scripts/gtfs-frequencies.test.mjs

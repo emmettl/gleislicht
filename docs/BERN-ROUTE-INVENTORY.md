@@ -8,7 +8,7 @@ Generated from the [Bern audit](BERN-STUDY.md). Counts are admitted / candidate 
 | --- | --- | --- | --- | --- |
 | 11 | Schweizerische Bundesbahnen SBB | 62 | 483 / 846 | 460 / 771 |
 | 32 | Lauterbrunnen-Mürren | 2 | 181 / 181 | 181 / 181 |
-| 33 | BLS AG (bls) | 53 | 1,189 / 1,405 | 1,051 / 1,255 |
+| 33 | BLS AG (bls) | 53 | 1,191 / 1,405 | 1,053 / 1,255 |
 | 35 | Berner Oberland-Bahnen | 2 | 130 / 130 | 144 / 144 |
 | 38 | Aare Seeland mobil (bti) | 1 | 116 / 116 | 77 / 77 |
 | 43 | Chemins de fer du Jura | 2 | 69 / 110 | 42 / 77 |
@@ -201,7 +201,7 @@ Generated from the [Bern audit](BERN-STUDY.md). Counts are admitted / candidate 
 | 91-12-M-j26-1 | 33: R12 | rail | admitted-all-dated-trips | 14 / 14 | 12 / 12 | 330_R | — | — |
 | 91-1-N-j26-1 | 33: RE1 | rail | partially-admitted | 31 / 63 | 7 / 65 | 330_RE | — | incomplete-directed-pattern |
 | 91-7-L-j26-1 | 33: RE7 | rail | partially-admitted | 5 / 38 | 9 / 40 | 460_RE | — | incomplete-directed-pattern |
-| 91-8-L-j26-1 | 33: RE8 | rail | partially-admitted | 8 / 10 | 5 / 7 | 320_RE | bern-crosscanton-fot-rail-20210706 | incomplete-directed-pattern |
+| 91-8-L-j26-1 | 33: RE8 | rail | admitted-all-dated-trips | 10 / 10 | 7 / 7 | 320_RE | bern-crosscanton-fot-rail-20210706, bern-interlaken-reviewed-fot-rail-20210706 | — |
 | 91-9-L-j26-1 | 33: RE9 | rail | admitted-all-dated-trips | 18 / 18 | 18 / 18 | 310_R | — | — |
 | 91-11-O-j26-1 | 33: RE11 | rail | excluded | 0 / 0 | 0 / 2 | — | — | no-verified-operator-line-crosswalk |
 | 91-12-D-j26-1 | 33: RE12 | rail | excluded | 0 / 0 | 0 / 2 | — | — | no-verified-operator-line-crosswalk |

@@ -18,6 +18,7 @@ import { loadBernIr66, applyBernIr66 } from './bern-ir66-geometry.mjs'
 import { loadBernIr16, applyBernIr16 } from './bern-ir16-geometry.mjs'
 import { loadBernTpfTerminal, applyBernTpfTerminal } from './bern-tpf-terminal.mjs'
 import { loadBernMorges, applyBernMorges } from './bern-morges-geometry.mjs'
+import { loadBernInterlaken, applyBernInterlaken } from './bern-interlaken-geometry.mjs'
 
 const sha = bytes => createHash('sha256').update(bytes).digest('hex')
 async function hashFile(path) {
@@ -179,6 +180,9 @@ export async function buildBernRegion({ archive, sourceDirectory = 'data/bern-so
   const morges = await loadBernMorges()
   hashes.morgesPolicy = morges.metadata.policySha256
   provenance.morgesSupplement = morges.metadata
+  const interlaken = await loadBernInterlaken()
+  hashes.interlakenPolicy = interlaken.metadata.policySha256
+  provenance.interlakenSupplement = interlaken.metadata
   hashes.urbanCache = urban.metadata.cacheSha256
   hashes.urbanPolicy = urban.metadata.policySha256
   provenance.urbanSupplement = urban.metadata
@@ -190,7 +194,7 @@ export async function buildBernRegion({ archive, sourceDirectory = 'data/bern-so
     const base = applyBernUrban(raw, applyBernGeometry(raw, routes, source, crosswalk), source, urban)
     const regionalResult = applyBernRegionalRail(raw, applyBernRail(raw, applyBernMountains(raw, applyBernRegionalRoads(raw, base, source, regionalRoads), routes, mountain), routes, rail), routes, regionalRail)
     const ir16Result = applyBernIr16(raw, applyBernIr66(raw, applyBernCrosscantonRail(raw, regionalResult, routes, crosscantonRail), routes, ir66), routes, ir16)
-    const result = applyBernMorges(raw, applyBernTpfTerminal(raw, ir16Result, routes, tpfTerminal), routes, morges)
+    const result = applyBernInterlaken(raw, applyBernMorges(raw, applyBernTpfTerminal(raw, ir16Result, routes, tpfTerminal), routes, morges), routes, interlaken)
     routeCrosswalk = result.routeCrosswalk
     const groups = []
     for (const key of [...new Set(result.trains.map(t => `${t.agencyId}:${routes.get(t.routeId).mode}`))].sort()) {
@@ -219,6 +223,7 @@ export async function buildBernRegion({ archive, sourceDirectory = 'data/bern-so
         ir16Supplement: ir16.metadata,
         tpfTerminalSupplement: tpfTerminal.metadata,
         morgesSupplement: morges.metadata,
+        interlakenSupplement: interlaken.metadata,
         limits: BERN_LIMITS, direction: 'Centreline inference from ordered calls. No road one-way or rail running-track certification. Only the explicitly scoped tram 6 station approach has dated diversion evidence; no realtime verification.',
         localMetadata: '../sources.json', localTerms: ['../terms_of_use_de.pdf', '../terms_of_use_fr.pdf'] },
     }

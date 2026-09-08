@@ -44,7 +44,7 @@ export async function buildBernDay({ date = '2026-09-04', sourceDirectory = 'pub
     localMetadata: 'bern-region/sources.json', localTerms: ['bern-region/terms_of_use_de.pdf', 'bern-region/terms_of_use_fr.pdf'] }
   // Full reviewed topology and projection evidence stays in the archive and
   // sources.json; the display payload carries its hash, dates and attribution.
-  for (const field of ['railSupplement', 'regionalRailSupplement', 'crosscantonRailSupplement', 'ir66Supplement', 'ir16Supplement', 'tpfTerminalSupplement', 'morgesSupplement']) {
+  for (const field of ['railSupplement', 'regionalRailSupplement', 'crosscantonRailSupplement', 'ir66Supplement', 'ir16Supplement', 'tpfTerminalSupplement', 'morgesSupplement', 'interlakenSupplement']) {
     const r = geometry[field]
     if (!r) continue
     geometry[field] = { policySha256: r.policySha256, source: r.source, sourceId: r.policy.sourceId,

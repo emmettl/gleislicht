@@ -23,6 +23,7 @@ export function validateBernRelease(day, morning, trains) {
     ['ir16', 'bern-ir16-reviewed-fot-rail-20210706', 2],
     ['tpfTerminal', 'bern-tpf-fribourg-reviewed-fot-rail-20210706', 1],
     ['morges', 'bern-morges-reviewed-fot-rail-20210706', 3],
+    ['interlaken', 'bern-interlaken-reviewed-fot-rail-20210706', 0],
   ]) {
     if (!m.sourceHashes[`${name}Policy`]) continue
     const r = m.geometry[`${name}Supplement`]
