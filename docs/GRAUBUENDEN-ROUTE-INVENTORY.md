@@ -31,8 +31,8 @@ All 380 annual canton-calling route records. Date columns count complete admitte
 | 91-3-C-j26-1 | 11 / Schweizerische Bundesbahnen SBB | rail / IC3 | 2598 | 58/58 | 47/47 | admitted-all-dated-trips; — | Chur; Landquart; Maienfeld |
 | 91-3-P-j26-1 | 11 / Schweizerische Bundesbahnen SBB | rail / 3 | 4 | 0/0 | 0/0 | inactive-on-validation-dates; — | Chur; Landquart |
 | 91-3-U-j26-1 | 72 / Rhätische Bahn | rail / RE3 | 156 | 30/30 | 26/26 | admitted-all-dated-trips; — | Landquart; Malans GR; Seewis-Pardisla; Grüsch; Schiers |
-| 91-35-A-j26-1 | 82 / Schweizerische Südostbahn (sob) | rail / IR35 | 1535 | 10/26 | 10/27 | partially-admitted; rail-station-attachment-too-far | Chur; Landquart; Maienfeld |
-| 91-35-B-j26-1 | 11 / Schweizerische Bundesbahnen SBB | rail / IR35 | 1067 | 4/15 | 4/15 | partially-admitted; rail-station-attachment-too-far | Chur; Landquart; Maienfeld |
+| 91-35-A-j26-1 | 82 / Schweizerische Südostbahn (sob) | rail / IR35 | 1535 | 26/26 | 27/27 | admitted-all-dated-trips; — | Chur; Landquart; Maienfeld |
+| 91-35-B-j26-1 | 11 / Schweizerische Bundesbahnen SBB | rail / IR35 | 1067 | 15/15 | 15/15 | admitted-all-dated-trips; — | Chur; Landquart; Maienfeld |
 | 91-35-C-j26-1 | 82 / Schweizerische Südostbahn (sob) | rail / RE35 | 1 | 0/0 | 0/0 | inactive-on-validation-dates; — | Chur; Landquart; Maienfeld |
 | 91-38-A-j26-1 | 72 / Rhätische Bahn | rail / R38 | 67 | 10/10 | 10/10 | admitted-all-dated-trips; — | Chur; Chur West; Felsberg; Domat/Ems; Domat/Ems Werk |
 | 91-38-B-j26-1 | 72 / Rhätische Bahn | rail / RE38 | 59 | 5/5 | 4/4 | admitted-all-dated-trips; — | Chur; Felsberg; Domat/Ems; Domat/Ems Werk; Reichenau-Tamins |
@@ -59,7 +59,7 @@ All 380 annual canton-calling route records. Date columns count complete admitte
 | 91-GEX-A-j26-1 | 48 / Matterhorn Gotthard Bahn (fo) | rail / GEX | 13 | 8/8 | 8/8 | admitted-all-dated-trips; — | Disentis/Mustér |
 | 91-GEX-B-j26-1 | 9999 / Diverse INFO | rail / GEX | 3 | 0/2 | 0/2 | excluded; unreviewed-rail-identity | Chur; Thusis; Tiefencastel; Filisur; Bergün/Bravuogn |
 | 91-GEX-j26-1 | 72 / Rhätische Bahn | rail / GEX | 27 | 8/8 | 8/8 | admitted-all-dated-trips; — | Chur; Disentis/Mustér; Tiefencastel; Filisur; Samedan |
-| 91-N-Y-j26-1 | 11 / Schweizerische Bundesbahnen SBB | rail / ICE | 371 | 0/3 | 0/3 | excluded; rail-disconnected-detour-or-stop-order | Chur; Landquart |
+| 91-N-Y-j26-1 | 11 / Schweizerische Bundesbahnen SBB | rail / ICE | 371 | 3/3 | 3/3 | admitted-all-dated-trips; — | Chur; Landquart |
 | 92-10-S-j26-1 | 766 / Bus und Service AG (Chur) | bus / 10 | 361 | 78/78 | 73/73 | admitted-all-dated-trips; — | Domat/Ems, Parc industrial; Tamins, Schlössli; Rhäzüns, Ratiras; Chur, Sommerau; Chur, Geissweid |
 | 92-11-V-j26-1 | 766 / Bus und Service AG (Chur) | bus / 11 | 695 | 144/144 | 143/143 | admitted-all-dated-trips; — | Chur, Sommerau; Chur, Geissweid; Felsberg, Post; Felsberg, Underchrüzli; Felsberg, Kirchenstutz |
 | 92-12-P-j26-1 | 766 / Bus und Service AG (Chur) | bus / 12 | 81 | 54/54 | 0/0 | admitted-all-dated-trips; — | Domat/Ems, La Val; Domat/Ems, Ardisla; Domat/Ems, Calundis; Domat/Ems, Crusch; Domat/Ems, Riel |

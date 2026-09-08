@@ -6,6 +6,7 @@ import { roadPatternId } from './prepare-postbus-road-feed.mjs'
 import { distanceMetres } from './enrich-postbus-roads.mjs'
 import { sha256 } from './download-luzern-sources.mjs'
 import { loadGraubuendenRailAnchors } from './graubuenden-rail-anchors.mjs'
+import { loadGraubuendenRailCompletion } from './graubuenden-rail-completion.mjs'
 import { loadGraubuendenAccessRoads } from './graubuenden-access-roads.mjs'
 
 export async function loadGraubuendenGeometry(policy, raw) {
@@ -17,6 +18,8 @@ export async function loadGraubuendenGeometry(policy, raw) {
   }
   const railAnchors = await loadGraubuendenRailAnchors(policy, raw)
   if (railAnchors) railInventory.push({ id: 'rhb-reviewed-stop-anchors', segments: railAnchors.sourceInventory, reviews: railAnchors.reviews })
+  const railCompletion = await loadGraubuendenRailCompletion(policy, raw)
+  if (railCompletion) railInventory.push({ id: 'gr-reviewed-bern-basel', segments: railCompletion.sourceInventory, terminalExtension: railCompletion.extension })
   const bytes = await readFile('data/graubuenden-roads/cache.json.gz')
   assert.equal(sha256(bytes), policy.roads.cacheSha256, 'Changed road paths: rebuild and review')
   const roads = JSON.parse(gunzipSync(bytes))
@@ -31,10 +34,11 @@ export async function loadGraubuendenGeometry(policy, raw) {
     const keys = new Set(raw.snapshots.flatMap(d => d.trains.filter(t => ids.has(t.routeId)).map(t => roadPatternId({ ...t, stops: t.calls.map(c => [indexes.get(c.id), c.arrival, c.departure]) }, platforms))))
     assert.deepEqual([...keys].sort(), Object.keys(accessRoads.cache.patterns).sort(), 'Access review must contain every complete pattern on its scoped routes')
   }
-  return { railInventory, railAnchors, roads, accessRoads, matchPattern(train, route) {
+  return { railInventory, railAnchors, railCompletion, roads, accessRoads, matchPattern(train, route) {
     if (route.mode === 'rail') {
       const original = rails.has(route.routeId) ? rails.get(route.routeId).matchPattern(train, stops, route) : train.calls.slice(1).map(() => ({ reason: 'unreviewed-rail-identity' }))
-      return railAnchors ? railAnchors.match(original, train, route) : original
+      const anchored = railAnchors ? railAnchors.match(original, train, route) : original
+      return railCompletion ? railCompletion.match(anchored, train, route) : anchored
     }
     if (route.mode !== 'bus') return train.calls.slice(1).map(() => ({ reason: `no-reviewed-${route.mode}-geometry` }))
     const key = roadPatternId({ ...train, stops: train.calls.map(c => [indexes.get(c.id), c.arrival, c.departure]) }, platforms)

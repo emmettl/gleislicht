@@ -78,7 +78,7 @@ for (const day of raw.snapshots) {
     assert.deepEqual(t.stops.map(([i, arrival, departure], j) => ({ id: snapshot.stops[i][4], arrival, departure, sequence: t.sourceCallSequences[j], pickupType: t.callRules[j][0], dropOffType: t.callRules[j][1] })), source.calls, 'Changed or cropped calls')
     for (const key of ['sourceTripId', 'sourceServiceDate', 'sourceServiceDayOffset', 'frequency', 'directionId', 'routeId', 'headsign', 'shortName']) assert.deepEqual(t[key], source[key], `Changed ${key}`)
     const pattern = pp.get(t.patternId); assert(pattern?.admitted)
-    assert.equal(t.geometrySource, pattern.mode === 'bus' ? pattern.pairs[0].geometrySource : pattern.pairs.some(p => p.geometrySource === 'fot-reviewed-stop-anchor') ? 'fot-reviewed-stop-anchor' : 'fot')
+    assert.equal(t.geometrySource, pattern.mode === 'bus' ? pattern.pairs[0].geometrySource : (pattern.pairs.find(p => p.geometrySource?.startsWith('fot-reviewed-'))?.geometrySource ?? 'fot'))
     t.pathSegments.forEach((i, j) => assert.equal(sha256(JSON.stringify(snapshot.paths[i])), pattern.pairs[j].geometrySha256))
   }
   assert.equal(manifest.chunks.length, 12)

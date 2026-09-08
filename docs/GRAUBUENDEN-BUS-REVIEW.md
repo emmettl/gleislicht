@@ -1,6 +1,6 @@
 # Graubünden: complete bus-pattern recovery
 
-This review adds **145 Friday and 119 Sunday complete journeys** to the initial study. Bus admission is now **5,691 / 5,762** and **4,484 / 4,561**. Rail remains 824 / 856 and 809 / 842; the application has **6,515** and **5,293** complete journeys. The whole-canton denominators remain 39,402 and 38,425, including unsupported mountain, boat and tram candidates. These are numerical geometry checks, not operator certification.
+This review adds **145 Friday and 119 Sunday complete journeys** to the initial study. Bus admission is now **5,691 / 5,762** and **4,484 / 4,561**. After the subsequent [Bern/Basel rail review](GRAUBUENDEN-RAIL-COMPLETION.md), rail admits 854 / 856 and 840 / 842; the application has **6,545** and **5,324** complete journeys. The whole-canton denominators remain 39,402 and 38,425, including unsupported mountain, boat and tram candidates. These are numerical geometry checks, not operator certification.
 
 [Machine-readable before/after review](../data/graubuenden-audit/access-road-review.json) · [Explicit admission policy](../data/graubuenden-access-roads/policy.json) · [Source pins](../data/graubuenden-access-roads/sources.json) · [Every annual route](GRAUBUENDEN-ROUTE-INVENTORY.md)
 

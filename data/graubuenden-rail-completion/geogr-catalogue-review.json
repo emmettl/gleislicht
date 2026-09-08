@@ -1,0 +1,20 @@
+{
+  "checkedOn": "2026-09-08",
+  "url": "https://geoshop.geogr.ch/de/welcome",
+  "method": "Public UI inspection; unauthenticated; no order or account was submitted.",
+  "observations": [
+    {
+      "action": "Read the loaded public product list",
+      "finding": "The visible list includes Seilbahnen und Skilifte - ganzer Kanton, Kantonales Strassennetz and Langsamverkehr des Kantons und SchweizMobil - ganzer Kanton; no operational bus-line product was visible."
+    },
+    {
+      "action": "Open Seilbahnen und Skilifte metadata",
+      "finding": "The description inventories commercial chairlifts, gondolas, aerial and funicular systems, small cableways and ski lifts; it includes removable small lifts and works cableways. It says the federal concessioned cableway dataset is added on download, with stations, routes, supports and structures. No dated alignment or dataset-specific reuse terms were shown in this description."
+    },
+    {
+      "action": "Search the product list for Verkehr",
+      "finding": "Only Langsamverkehr des Kantons und SchweizMobil - ganzer Kanton is displayed."
+    }
+  ],
+  "disposition": "Official mountain-transport geometry product identified for future investigation. No local geometry admitted in this review. A public product list is not evidence that other data does not exist, and description alone does not verify operational line identities or reuse rights."
+}

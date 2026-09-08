@@ -1,0 +1,25 @@
+{
+  "checkedOn": "2026-09-08",
+  "bern": {
+    "url": "https://www.sbb.ch/de/reiseinformationen/bahnhoefe/bahnhof-finden/bahnhof-bern/bahnhofsbeschrieb.html",
+    "access": "Official page read through web retrieval; direct download returned HTTP 403, archived as a failed probe.",
+    "finding": "SBB locates platforms 49 and 50 in the western extension of platforms 9 and 10 towards Fribourg. It also notes ongoing station construction.",
+    "inference": "Use the exact Bern operating point and the existing standard-gauge SBB Bern–Bern JKLM source curve to reach the exact GTFS platform-50 coordinate. No platform-specific track centreline or live diversion is certified.",
+    "relatedReview": "data/aargau-platform-policy.json; independently revalidated here for platform 50 and both IR35 operators."
+  },
+  "basel": {
+    "url": "https://www.dbinfrago.com/resource/blob/13174882/51e2dc5224da35667f1d133ecdaae239/Ril-302-5004-INB-2026-data.pdf",
+    "validFrom": "2025-12-14",
+    "pages": [
+      1,
+      2,
+      7
+    ],
+    "finding": "DB InfraGO and SBB describe joint operating interfaces on Basel Bad Bf–Gellert–Basel SBB passenger/freight station infrastructure. This supports the existing FOT DICH segment identity in the cross-infrastructure corridor; no curve is traced from the document."
+  },
+  "reuse": {
+    "geometry": "Only the existing attributed FOT geometry is used; source reuse terms remain unchanged. Official descriptive pages and operating guidance support identity, not a new openly licensed alignment.",
+    "physicalDirectionCertified": false,
+    "diversionsCertified": false
+  }
+}

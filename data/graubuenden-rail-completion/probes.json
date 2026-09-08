@@ -1,0 +1,46 @@
+[
+  {
+    "file": "sbb-bern-description.response.gz",
+    "url": "https://www.sbb.ch/de/reiseinformationen/bahnhoefe/bahnhof-finden/bahnhof-bern/bahnhofsbeschrieb.html",
+    "status": "403",
+    "effectiveUrl": "https://www.sbb.ch/de/reiseinformationen/bahnhoefe/bahnhof-finden/bahnhof-bern/bahnhofsbeschrieb.html",
+    "retrievedAt": "2026-09-08T20:20:18.917776+00:00",
+    "sha256": "803efd091dbdb84f4631f9d1b00428e872c984e98a60789044a25483ed87752b",
+    "compressedSha256": "b2d5eac849c8886e8f24e1e083f51efe8995142d9bbf0d7f0b8b148cf3cb1047",
+    "bytes": 5860,
+    "transportError": null
+  },
+  {
+    "file": "db-switzerland.response.gz",
+    "url": "https://www.dbinfrago.com/web/schienennetz/europa/strecken_in_der_schweiz-11156934",
+    "status": "200",
+    "effectiveUrl": "https://www.dbinfrago.com/web/schienennetz/europa/strecken_in_der_schweiz-11156934",
+    "retrievedAt": "2026-09-08T20:20:19.621396+00:00",
+    "sha256": "3fc31fe329b24cd767ea507ed877bafd9107b74129f33e960729da7b070f9b70",
+    "compressedSha256": "e088c8b7c725ad8ef04b519d9dfce11085b5f7b45c20456bf26e68ce44f1b07c",
+    "bytes": 308060,
+    "transportError": null
+  },
+  {
+    "file": "db-basel-inb-2026.response.gz",
+    "url": "https://www.dbinfrago.com/resource/blob/13174882/51e2dc5224da35667f1d133ecdaae239/Ril-302-5004-INB-2026-data.pdf",
+    "status": "200",
+    "effectiveUrl": "https://www.dbinfrago.com/resource/blob/13174882/51e2dc5224da35667f1d133ecdaae239/Ril-302-5004-INB-2026-data.pdf",
+    "retrievedAt": "2026-09-08T20:20:20.334694+00:00",
+    "sha256": "f18404d56cf88c7d64e23c23d19ddd324cd79cbe3477fc55e5d34df5715115ff",
+    "compressedSha256": "a3898432e11acd70cfb7215185610da358561e1e24fca7ea92aa41d3168e84d3",
+    "bytes": 705538,
+    "transportError": null
+  },
+  {
+    "file": "geogr-shop.response.gz",
+    "url": "https://geoshop.geogr.ch/de/welcome",
+    "status": "200",
+    "effectiveUrl": "https://geoshop.geogr.ch/de/welcome",
+    "retrievedAt": "2026-09-08T20:20:20.489859+00:00",
+    "sha256": "68347950a973475cd766dd6204607466943f5fc89f579df7e0303389cd75ac4b",
+    "compressedSha256": "d6722a8edd98128f3ae6d4acc7ac6ad5e73383d061f3bcb8c2367bab8729793e",
+    "bytes": 40478,
+    "transportError": null
+  }
+]
