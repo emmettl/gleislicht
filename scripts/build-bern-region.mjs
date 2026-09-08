@@ -16,6 +16,7 @@ import { loadBernRegionalRail, applyBernRegionalRail } from './bern-regional-rai
 import { loadBernCrosscantonRail, applyBernCrosscantonRail } from './bern-crosscanton-rail.mjs'
 import { loadBernIr66, applyBernIr66 } from './bern-ir66-geometry.mjs'
 import { loadBernIr16, applyBernIr16 } from './bern-ir16-geometry.mjs'
+import { loadBernTpfTerminal, applyBernTpfTerminal } from './bern-tpf-terminal.mjs'
 
 const sha = bytes => createHash('sha256').update(bytes).digest('hex')
 async function hashFile(path) {
@@ -171,6 +172,9 @@ export async function buildBernRegion({ archive, sourceDirectory = 'data/bern-so
   const ir16 = await loadBernIr16()
   hashes.ir16Policy = ir16.metadata.policySha256
   provenance.ir16Supplement = ir16.metadata
+  const tpfTerminal = await loadBernTpfTerminal()
+  hashes.tpfTerminalPolicy = tpfTerminal.metadata.policySha256
+  provenance.tpfTerminalSupplement = tpfTerminal.metadata
   hashes.urbanCache = urban.metadata.cacheSha256
   hashes.urbanPolicy = urban.metadata.policySha256
   provenance.urbanSupplement = urban.metadata
@@ -181,7 +185,8 @@ export async function buildBernRegion({ archive, sourceDirectory = 'data/bern-so
     console.log(`Matching every directed Bern pattern for ${raw.metadata.serviceDate}…`)
     const base = applyBernUrban(raw, applyBernGeometry(raw, routes, source, crosswalk), source, urban)
     const regionalResult = applyBernRegionalRail(raw, applyBernRail(raw, applyBernMountains(raw, applyBernRegionalRoads(raw, base, source, regionalRoads), routes, mountain), routes, rail), routes, regionalRail)
-    const result = applyBernIr16(raw, applyBernIr66(raw, applyBernCrosscantonRail(raw, regionalResult, routes, crosscantonRail), routes, ir66), routes, ir16)
+    const ir16Result = applyBernIr16(raw, applyBernIr66(raw, applyBernCrosscantonRail(raw, regionalResult, routes, crosscantonRail), routes, ir66), routes, ir16)
+    const result = applyBernTpfTerminal(raw, ir16Result, routes, tpfTerminal)
     routeCrosswalk = result.routeCrosswalk
     const groups = []
     for (const key of [...new Set(result.trains.map(t => `${t.agencyId}:${routes.get(t.routeId).mode}`))].sort()) {
@@ -208,6 +213,7 @@ export async function buildBernRegion({ archive, sourceDirectory = 'data/bern-so
         crosscantonRailSupplement: crosscantonRail.metadata,
         ir66Supplement: ir66.metadata,
         ir16Supplement: ir16.metadata,
+        tpfTerminalSupplement: tpfTerminal.metadata,
         limits: BERN_LIMITS, direction: 'Centreline inference from ordered calls. No road one-way or rail running-track certification. Only the explicitly scoped tram 6 station approach has dated diversion evidence; no realtime verification.',
         localMetadata: '../sources.json', localTerms: ['../terms_of_use_de.pdf', '../terms_of_use_fr.pdf'] },
     }
@@ -287,6 +293,8 @@ export async function buildBernRegion({ archive, sourceDirectory = 'data/bern-so
   for (const doc of ir66.policy.documents) await copyFile(join(ir66.policy.documentsDirectory, doc.file), join(output, 'ir66-platforms', doc.file))
   await mkdir(join(output, 'ir16-platforms'), { recursive: true })
   for (const doc of ir16.policy.documents) await copyFile(join(ir16.policy.documentsDirectory, doc.file), join(output, 'ir16-platforms', doc.file))
+  await mkdir(join(output, 'tpf-platforms'), { recursive: true })
+  for (const doc of tpfTerminal.policy.documents) await copyFile(join(tpfTerminal.policy.documentsDirectory, doc.file), join(output, 'tpf-platforms', doc.file))
   await writeJson(join(output, 'index.json'), { label: 'Bern canton regional feed', sourceHashes: hashes, dates: dates.map(date => ({ date,
     manifest: `${date}/bern-region-day-manifest.json`, morning: `${date}/bern-region-morning.json` })), admission: 'Complete geometry patterns only; see docs/BERN-STUDY.md and data/bern-audit for exclusions.' }, true)
   return summary
