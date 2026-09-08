@@ -8,6 +8,7 @@ const supplement = await json('data/bern-audit/supplement-followup.json')
 const seasonal = await json('data/bern-audit/seasonal-summary.json')
 const regionalRoads = await json('data/bern-audit/regional-road-followup.json')
 const schilthorn = await json('data/bern-audit/schilthorn-followup.json')
+const rail = await json('data/bern-audit/rail-followup.json')
 const days = await Promise.all(summary.days.map(d => json(`data/bern-audit/${d.serviceDate}.json`)))
 const n = value => value.toLocaleString('en-GB')
 const pct = (a, b) => `${(100 * a / b).toFixed(2)}%`
@@ -97,7 +98,7 @@ ${table(['Mode', 'Maximum platform snap', 'Maximum path length'], [
   ['Ferry', '150 m', 'max(1,200 m, 4.5 × straight distance)'],
 ])}
 
-Alternative source-part projections may be at most 5 m farther from each endpoint than its nearest projection, and must still satisfy the snap limit. Collapsed paths fail. Every segment is oriented from its actual preceding call to its next call; the final artifact checker verifies endpoint orientation after all stop/path reindexing. A pattern is admitted only if **every segment** passes. Boats use official water-line geometry and mountain transport its own mode-compatible line. Missing pairs on five explicitly selected Biel/Thun bus routes and seventeen separately reviewed regional routes may use retained OSM road matches. Every complete input-pattern context must agree on the identical valid path; 80 m endpoint and existing detour limits still apply. Tram 6 has two separately identified station-loop pairs from OEVTP line 30_003. Wiriehorn uses the reviewed federal axis 73.213. These supplements keep distinct provenance and never manufacture OEVTP line codes. No unsourced straight-line fallback is inserted.
+Within cantonal graphs, alternative source-part projections may be at most 5 m farther from each endpoint than its nearest projection, and must still satisfy the snap limit. Collapsed paths fail. Every segment is oriented from its actual preceding call to its next call; the final artifact checker verifies endpoint orientation after all stop/path reindexing. A pattern is admitted only if **every segment** passes. Boats use official water-line geometry and mountain transport its own mode-compatible line. Missing pairs on five explicitly selected Biel/Thun bus routes and seventeen separately reviewed regional routes may use retained OSM road matches. Every complete input-pattern context must agree on the identical valid path; 80 m endpoint and existing detour limits still apply. Tram 6 has two separately identified station-loop pairs from OEVTP line 30_003. Wiriehorn uses the reviewed federal axis 73.213. Missing S36 and S4 rail pairs may use only the explicitly bound federal segments described below, with exact operating-point identifiers and full-pattern context agreement. These supplements keep distinct provenance and never manufacture OEVTP line codes. No unsourced straight-line fallback is inserted.
 
 **Physical limits:** these are official centrelines and identified road/cableway supplements with directions inferred from GTFS calls. They do not certify one-way road legality, a particular running track, tunnel level, boat navigation safety or current diversions. They are suitable as dated schematic movement candidates, not operational navigation. No authenticated realtime feed was exercised. The dated BERNMOBIL notice authorizes only the reviewed tram 6 station approach; the replacement-bus conflict below remains excluded. Seven additional winter/holiday fixtures are audited separately and do not establish every calendar day or seasonal alignment.
 
@@ -185,7 +186,21 @@ ${table(['GTFS route / section', 'Friday scheduled', 'Sunday scheduled', 'Direct
 
 Both sections pass in both directions. The two original Birg cable endpoints are **${schilthorn.birgSourceEndpointSeparationMetres.toFixed(2)} m apart**. Selecting the published section prevents the summit service from snapping to the lower installation. The adapter adds no connection between cable axes and retains the original shared GTFS Birg coordinate, attaching it to the selected axis within the existing 80 m limit. This is inferred source geometry, not an observed cabin trajectory.
 
-The same review leaves **BLS S36 Dotzigen–Busswil BE** and **S4 Zollikofen–Schönbühl SBB** excluded where their source graphs are disconnected. Nearby source parts do not establish exact topology; their unchanged directed gaps are retained in the section audit for further source review.
+The Schilthorn release retained **BLS S36 Dotzigen–Busswil BE** and **S4 Zollikofen–Schönbühl SBB** as disconnected cantonal graphs. Their original gaps remain in that historical audit; the separate federal rail review below now resolves both routes.
+
+## S36 and S4 federal rail review
+
+The [rail follow-up audit](../data/bern-audit/rail-followup.json) compares against release 326d8c3. **All ${n(rail.dates[0].previousJourneysPreserved)} Friday / ${n(rail.dates[1].previousJourneysPreserved)} Sunday previously admitted journeys retain their original calls, times, identities and full-detail paths.** It adds **93 Friday / 79 Sunday scheduled journeys**. Both routes now pass every complete dated pattern in both directions; all unrelated pair decisions, original source hashes and existing rail limits are unchanged.
+
+${table(['BLS route', 'Friday added / total', 'Sunday added / total', 'Friday / Sunday full directed patterns'], rail.dates[0].routes.map((r, i) => [r.line + ' / ' + r.routeId, r.addedScheduledJourneys + ' / ' + r.totalJourneys, rail.dates[1].routes[i].addedScheduledJourneys + ' / ' + rail.dates[1].routes[i].totalJourneys, r.patterns + ' / ' + rail.dates[1].routes[i].patterns]))}
+
+The [federal rail source](../data/bern-sources/fot-rail/source.json) supplies **3,210 operating-point nodes and 3,424 segments**. The adapter selects only **three standard-gauge segments on SBB infrastructure**, binding S36 to **8500220 Dotzigen → 8504415 Busswil BE** and S4 to **8504410 Zollikofen → 8508001 Schönbühl SBB**, with the reverse bindings for return journeys. S4 passes through the explicitly declared Zollikofen Nord junction. Segment IDs and directions, each attachment, every complete-pattern context and path checksum are retained in the audit.
+
+The maximum original-stop attachment is **97.36 m** for S36 and **61.43 m** for S4. Both respect the existing **120 m** rail limit and **4.5× / 3,000 m** detour gate. Federal segment endpoints connect to their declared nodes with measured attachments below **16 m**, under a separately stated **120 m topology guard**. These declared connections do not normalize or join the disconnected cantonal vertices. Every original GTFS call stays in place, including Bern platform variants and all cross-canton calls. Successful cantonal paths remain authoritative. A missing pair is accepted only when every complete source-pattern context produces the same federal path; other called stations are blocked as interior nodes, so a shortcut cannot skip or reorder the original calls.
+
+The retained national XTF has catalogue date **6 July 2021** and asset update **18 January 2025**. The [official catalogue](https://data.geo.admin.ch/api/stac/v1/collections/ch.bav.schienennetz/items/schienennetz) was rechecked on **8 September 2026** and its published checksum still matches the retained source. This verifies the bytes, **not current alignment or running-track validity**. The selected segments have explicit validity starts and no declared end dates; their data dates remain visible in the audit. Credit: **© Federal Office of Transport (FOT)**. Original source, catalogue, collection, recheck response and terms link accompany the regional feed under [fot-rail](../public/data/bern-region/fot-rail/source.json); application credit links to the combined rail/cableway provenance.
+
+Federal lines use the existing XTF parser at **zero-metre simplification tolerance** (collinear vertices may be removed), with six-decimal transformed coordinates and seven-decimal final GTFS attachment endpoints. The original XTF remains intact. This supplement is scoped to the two September fixtures; **the seven seasonal audit files and results are unchanged** and do not inherit these rail admissions.
 
 ## Winter and holiday fixtures
 
@@ -201,6 +216,7 @@ ${table(['Source', 'Data vintage / release', 'Preserved evidence and attribution
   ['National GTFS', 'Feed 20260902; valid 2025-12-14 to 2026-12-12', 'opentransportdata.swiss; original platform IDs, calendar and frequency semantics'],
   ['Bern OEVTP lines and stops', 'Updated 2026-01-01; package published 2026-07-09; acquired 2026-09-08', 'Original ZIP, decoded records, metadata PDFs and terms in data/bern-sources'],
   ['OSM road extract', 'Switzerland 2026-09-02; border extract retrieved 2026-09-08', '© OpenStreetMap contributors; ODbL; retained matcher output and run hashes'],
+  ['FOT federal rail', 'Catalogue 2021-07-06; asset updated 2025-01-18; checksum rechecked 2026-09-08; current alignment validity unconfirmed', '© FOT; full XTF, catalogue, collection and exact operating-point/segment bindings'],
   ['FOT federal cableways', 'Installation Stand 2025-01-01; XML 2026-01-05; asset updated 2026-01-29; retrieved 2026-09-08', '© FOT; complete archive, station/installation records, catalogue and checksum'],
   ['BERNMOBIL diversion', 'Notice 2026-08-11; valid 2026-08-29–2026-10-11; platform plan 2026-03-18', 'BERNMOBIL; original notice, detailed stop instructions, diversion image and station PDF'],
   ['swissBOUNDARIES3D', '2026-01 edition', '© swisstopo; complete Bern and ten district rows preserved with original geometry blobs'],
@@ -240,14 +256,15 @@ npm run data:bern:check
 node scripts/check-bern-corridor-followup.mjs # historical alias-only release
 node scripts/check-bern-supplement-followup.mjs data/bern-audit/timetable-cache.json.gz # historical urban/mountain batch
 node scripts/check-bern-regional-roads.mjs data/bern-audit/timetable-cache.json.gz # historical regional bus batch
-node scripts/check-bern-schilthorn.mjs data/bern-audit/timetable-cache.json.gz
+node scripts/check-bern-schilthorn.mjs data/bern-audit/timetable-cache.json.gz # historical Schilthorn batch
+node scripts/check-bern-rail-followup.mjs data/bern-audit/timetable-cache.json.gz
 node scripts/audit-bern-seasonal.mjs --archive /private/tmp/GTFS_FP2026_20260902.zip
 node scripts/check-bern-seasonal.mjs
 # Publish the reviewed Friday display, or build the Sunday release separately.
 npm run data:bern:release
 npm run data:bern:docs
 npm run data:bern:release -- --date 2026-09-06 --output /private/tmp/bern-sunday-display
-npx vitest run scripts/bern-release.test.mjs scripts/bern-supplements.test.mjs scripts/bern-regional-roads.test.mjs scripts/regional-refresh.test.mjs
+npx vitest run scripts/bern-rail-geometry.test.mjs scripts/bern-release.test.mjs scripts/bern-supplements.test.mjs scripts/bern-regional-roads.test.mjs scripts/regional-refresh.test.mjs
 npx playwright test e2e/bern.spec.ts
 npx vitest run scripts/bern-region.test.mjs scripts/basel-line-geometry.test.mjs \\
   scripts/civil-day.test.mjs scripts/gtfs-frequencies.test.mjs
