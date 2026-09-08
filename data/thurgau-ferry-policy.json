@@ -1,0 +1,146 @@
+{
+  "sourceSha256": "6c27b1fccebe76b091ade7d8534875e51c1c9b96491093abd0ff737cdac8fdb1",
+  "timetableSha256": "9403d675c79184b4885e8a0ca0f3d02da55363cefafab2f403cb7e5ae95dcff5",
+  "previousBoatPolicySha256": "8a7a0293a868a975bddca2649174562aeb14981bcb1ba21656686379704aeede",
+  "previousBoatReviewSha256": "3f1cd16a73406c601a43c700070715d673c266c6444cccac0bb05a14f0b6cf02",
+  "shorelineSha256": "769f79af5e0e7d7fde518c9d4d37eb0975b111c2ff674d6eefd7cb186684462f",
+  "shorelineFeatureId": 124,
+  "snapshot": "2026-09-02T00:00:00Z",
+  "wayId": 26255860,
+  "selectedElementsSha256": "ac7ca1d8ef7a0ea564815ad23af8aac5c0f7a22c95d0dcded7bcb80374956aa3",
+  "wayVersion": 25,
+  "wayTimestamp": "2025-11-05T10:35:30Z",
+  "dates": [
+    "2026-09-04",
+    "2026-09-06"
+  ],
+  "routes": [
+    {
+      "routeId": "94-381-0-j26-1",
+      "agencyId": "195",
+      "line": "3810",
+      "type": 1000
+    },
+    {
+      "routeId": "94-381-A-j26-1",
+      "agencyId": "360",
+      "line": "3810",
+      "type": 1000
+    }
+  ],
+  "patterns": [
+    {
+      "routeId": "94-381-0-j26-1",
+      "agencyId": "195",
+      "line": "3810",
+      "directionId": "0",
+      "calls": [
+        [
+          9.38109753,
+          47.56466028,
+          "Romanshorn Autoquai",
+          "",
+          "ch:1:sloid:6346"
+        ],
+        [
+          9.48421514,
+          47.65101317,
+          "Friedrichshafen Fähre",
+          "",
+          "8011121"
+        ]
+      ],
+      "days": {
+        "2026-09-04": 8,
+        "2026-09-06": 7
+      }
+    },
+    {
+      "routeId": "94-381-0-j26-1",
+      "agencyId": "195",
+      "line": "3810",
+      "directionId": "1",
+      "calls": [
+        [
+          9.48421514,
+          47.65101317,
+          "Friedrichshafen Fähre",
+          "",
+          "8011121"
+        ],
+        [
+          9.38109753,
+          47.56466028,
+          "Romanshorn Autoquai",
+          "",
+          "ch:1:sloid:6346"
+        ]
+      ],
+      "days": {
+        "2026-09-04": 8,
+        "2026-09-06": 7
+      }
+    },
+    {
+      "routeId": "94-381-A-j26-1",
+      "agencyId": "360",
+      "line": "3810",
+      "directionId": "0",
+      "calls": [
+        [
+          9.38109753,
+          47.56466028,
+          "Romanshorn Autoquai",
+          "",
+          "ch:1:sloid:6346"
+        ],
+        [
+          9.48421514,
+          47.65101317,
+          "Friedrichshafen Fähre",
+          "",
+          "8011121"
+        ]
+      ],
+      "days": {
+        "2026-09-04": 8,
+        "2026-09-06": 7
+      }
+    },
+    {
+      "routeId": "94-381-A-j26-1",
+      "agencyId": "360",
+      "line": "3810",
+      "directionId": "1",
+      "calls": [
+        [
+          9.48421514,
+          47.65101317,
+          "Friedrichshafen Fähre",
+          "",
+          "8011121"
+        ],
+        [
+          9.38109753,
+          47.56466028,
+          "Romanshorn Autoquai",
+          "",
+          "ch:1:sloid:6346"
+        ]
+      ],
+      "days": {
+        "2026-09-04": 8,
+        "2026-09-06": 7
+      }
+    }
+  ],
+  "limits": {
+    "snapMetres": 10,
+    "alternativeSnapMetres": 0,
+    "detourRatio": 1.3,
+    "detourFloorMetres": 0
+  },
+  "dockZoneMetres": 10,
+  "scope": "Only the four original full two-dock direction/operator patterns of line 3810 after generalized official shipping geometry fails. Both actual GTFS dock coordinates, direction IDs, times and permissions remain unchanged. Existing admitted journeys retain their paths. No other ferry ways from this response are admitted.",
+  "shorelineRule": "Every edge split at every original Bodensee shoreline/island intersection. Outside-water intervals must lie wholly within 10 m of one original endpoint dock and remain disclosed. Every other land interval rejects the full journey."
+}

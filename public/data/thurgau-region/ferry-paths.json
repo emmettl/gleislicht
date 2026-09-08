@@ -1,0 +1,1019 @@
+{
+  "metadata": {
+    "publisher": "OpenStreetMap contributors",
+    "attribution": "© OpenStreetMap contributors",
+    "license": "ODbL-1.0",
+    "termsUrl": "https://www.openstreetmap.org/copyright",
+    "endpoint": "https://overpass-api.de/api/interpreter",
+    "snapshot": "2026-09-02T00:00:00Z",
+    "acquired": "2026-09-08",
+    "files": [
+      {
+        "file": "osm.json.gz",
+        "sha256": "081dc452864f115c389a8ed19e089ebaedf654f5277cca5a565a84ac6969e30e"
+      },
+      {
+        "file": "query.txt",
+        "sha256": "a261c4d7168e8f61f1e9646712e92da54a3fe6e2c8e54cc23f6bffcbc2bcdcc0"
+      }
+    ],
+    "elementCount": 1015,
+    "responseElementCount": 1044,
+    "acquisition": "Historical ferry ways/relations intersecting the eastern lake envelope, with recursively referenced ways and nodes. Inventory of this response only, not a complete Lake Constance or Rhine OSM census.",
+    "model": "One explicitly named OSM ferry way, traversed in original GTFS dock order for two exact SBS/BSB route identities. Source vertices retained between dock projections. Separate ODbL path database. Cartographic inference, not observed vessel movement or certified navigational lanes.",
+    "operatorContext": {
+      "url": "https://www.bsb.de/de/fahrplan/bodensee-faehre",
+      "checked": "2026-09-08",
+      "publisher": "Bodensee-Schiffsbetriebe GmbH",
+      "finding": "The operator page identifies the Friedrichshafen–Romanshorn connection and joint BSB/SBS operation. Used for route identity only; no operator geometry or archived operating-status confirmation is supplied."
+    },
+    "shoreline": {
+      "source": "data/thurgau-boat-sources/lakes.json.gz",
+      "featureId": 124,
+      "publisher": "FOEN, swisstopo",
+      "attribution": "© FOEN, swisstopo",
+      "dataStatus": "2007-01-01",
+      "termsUrl": "https://www.swisstopo.admin.ch/en/terms-of-use-free-geodata-and-geoservices"
+    },
+    "vintage": {
+      "wayVersion": 25,
+      "wayTimestamp": "2025-11-05T10:35:30Z",
+      "selectedNodeTimestamps": [
+        "2009-04-22T09:07:30Z",
+        "2010-04-23T18:10:40Z",
+        "2011-01-26T12:05:49Z",
+        "2011-01-26T12:06:18Z",
+        "2022-05-16T19:38:03Z",
+        "2024-11-10T08:36:15Z",
+        "2024-11-10T08:55:45Z",
+        "2025-01-09T21:00:29Z",
+        "2025-02-01T09:54:00Z",
+        "2025-04-15T07:30:46Z",
+        "2025-04-16T07:53:50Z",
+        "2025-04-17T07:34:09Z"
+      ],
+      "limitation": "OSM edit timestamps and requested historical state do not establish a survey date, 2026 shipping-lane validity or temporary operational changes."
+    },
+    "limits": {
+      "snapMetres": 10,
+      "alternativeSnapMetres": 0,
+      "detourRatio": 1.3,
+      "detourFloorMetres": 0
+    },
+    "dockZoneMetres": 10,
+    "scope": "Only the four original full two-dock direction/operator patterns of line 3810 after generalized official shipping geometry fails. Both actual GTFS dock coordinates, direction IDs, times and permissions remain unchanged. Existing admitted journeys retain their paths. No other ferry ways from this response are admitted.",
+    "shorelineRule": "Every edge split at every original Bodensee shoreline/island intersection. Outside-water intervals must lie wholly within 10 m of one original endpoint dock and remain disclosed. Every other land interval rejects the full journey."
+  },
+  "policy": {
+    "sourceSha256": "6c27b1fccebe76b091ade7d8534875e51c1c9b96491093abd0ff737cdac8fdb1",
+    "timetableSha256": "9403d675c79184b4885e8a0ca0f3d02da55363cefafab2f403cb7e5ae95dcff5",
+    "previousBoatPolicySha256": "8a7a0293a868a975bddca2649174562aeb14981bcb1ba21656686379704aeede",
+    "previousBoatReviewSha256": "3f1cd16a73406c601a43c700070715d673c266c6444cccac0bb05a14f0b6cf02",
+    "shorelineSha256": "769f79af5e0e7d7fde518c9d4d37eb0975b111c2ff674d6eefd7cb186684462f",
+    "shorelineFeatureId": 124,
+    "snapshot": "2026-09-02T00:00:00Z",
+    "wayId": 26255860,
+    "selectedElementsSha256": "ac7ca1d8ef7a0ea564815ad23af8aac5c0f7a22c95d0dcded7bcb80374956aa3",
+    "wayVersion": 25,
+    "wayTimestamp": "2025-11-05T10:35:30Z",
+    "dates": [
+      "2026-09-04",
+      "2026-09-06"
+    ],
+    "routes": [
+      {
+        "routeId": "94-381-0-j26-1",
+        "agencyId": "195",
+        "line": "3810",
+        "type": 1000
+      },
+      {
+        "routeId": "94-381-A-j26-1",
+        "agencyId": "360",
+        "line": "3810",
+        "type": 1000
+      }
+    ],
+    "patterns": [
+      {
+        "routeId": "94-381-0-j26-1",
+        "agencyId": "195",
+        "line": "3810",
+        "directionId": "0",
+        "calls": [
+          [
+            9.38109753,
+            47.56466028,
+            "Romanshorn Autoquai",
+            "",
+            "ch:1:sloid:6346"
+          ],
+          [
+            9.48421514,
+            47.65101317,
+            "Friedrichshafen Fähre",
+            "",
+            "8011121"
+          ]
+        ],
+        "days": {
+          "2026-09-04": 8,
+          "2026-09-06": 7
+        }
+      },
+      {
+        "routeId": "94-381-0-j26-1",
+        "agencyId": "195",
+        "line": "3810",
+        "directionId": "1",
+        "calls": [
+          [
+            9.48421514,
+            47.65101317,
+            "Friedrichshafen Fähre",
+            "",
+            "8011121"
+          ],
+          [
+            9.38109753,
+            47.56466028,
+            "Romanshorn Autoquai",
+            "",
+            "ch:1:sloid:6346"
+          ]
+        ],
+        "days": {
+          "2026-09-04": 8,
+          "2026-09-06": 7
+        }
+      },
+      {
+        "routeId": "94-381-A-j26-1",
+        "agencyId": "360",
+        "line": "3810",
+        "directionId": "0",
+        "calls": [
+          [
+            9.38109753,
+            47.56466028,
+            "Romanshorn Autoquai",
+            "",
+            "ch:1:sloid:6346"
+          ],
+          [
+            9.48421514,
+            47.65101317,
+            "Friedrichshafen Fähre",
+            "",
+            "8011121"
+          ]
+        ],
+        "days": {
+          "2026-09-04": 8,
+          "2026-09-06": 7
+        }
+      },
+      {
+        "routeId": "94-381-A-j26-1",
+        "agencyId": "360",
+        "line": "3810",
+        "directionId": "1",
+        "calls": [
+          [
+            9.48421514,
+            47.65101317,
+            "Friedrichshafen Fähre",
+            "",
+            "8011121"
+          ],
+          [
+            9.38109753,
+            47.56466028,
+            "Romanshorn Autoquai",
+            "",
+            "ch:1:sloid:6346"
+          ]
+        ],
+        "days": {
+          "2026-09-04": 8,
+          "2026-09-06": 7
+        }
+      }
+    ],
+    "limits": {
+      "snapMetres": 10,
+      "alternativeSnapMetres": 0,
+      "detourRatio": 1.3,
+      "detourFloorMetres": 0
+    },
+    "dockZoneMetres": 10,
+    "scope": "Only the four original full two-dock direction/operator patterns of line 3810 after generalized official shipping geometry fails. Both actual GTFS dock coordinates, direction IDs, times and permissions remain unchanged. Existing admitted journeys retain their paths. No other ferry ways from this response are admitted.",
+    "shorelineRule": "Every edge split at every original Bodensee shoreline/island intersection. Outside-water intervals must lie wholly within 10 m of one original endpoint dock and remain disclosed. Every other land interval rejects the full journey."
+  },
+  "paths": [
+    {
+      "key": "[\"94-381-0-j26-1\",\"195\",\"3810\",\"0\",[[9.38109753,47.56466028,\"Romanshorn Autoquai\",\"\",\"ch:1:sloid:6346\"],[9.48421514,47.65101317,\"Friedrichshafen Fähre\",\"\",\"8011121\"]]]",
+      "path": [
+        [
+          9.3810975,
+          47.5646603
+        ],
+        [
+          9.3810776,
+          47.5646968
+        ],
+        [
+          9.3811923,
+          47.5652735
+        ],
+        [
+          9.3814775,
+          47.56579
+        ],
+        [
+          9.3816268,
+          47.56603
+        ],
+        [
+          9.3819085,
+          47.5662273
+        ],
+        [
+          9.3824094,
+          47.5662567
+        ],
+        [
+          9.3829718,
+          47.5661539
+        ],
+        [
+          9.3838917,
+          47.5659913
+        ],
+        [
+          9.3880583,
+          47.5652176
+        ],
+        [
+          9.3900355,
+          47.56489
+        ],
+        [
+          9.391828,
+          47.5648039
+        ],
+        [
+          9.3933201,
+          47.5649161
+        ],
+        [
+          9.3946151,
+          47.5651252
+        ],
+        [
+          9.3955206,
+          47.5653861
+        ],
+        [
+          9.3994208,
+          47.567949
+        ],
+        [
+          9.403772,
+          47.5718677
+        ],
+        [
+          9.4217065,
+          47.5867171
+        ],
+        [
+          9.4504808,
+          47.6113661
+        ],
+        [
+          9.4756062,
+          47.6355245
+        ],
+        [
+          9.478712,
+          47.6388489
+        ],
+        [
+          9.481133,
+          47.6421754
+        ],
+        [
+          9.4820165,
+          47.6435331
+        ],
+        [
+          9.482399,
+          47.6446759
+        ],
+        [
+          9.4825798,
+          47.6460738
+        ],
+        [
+          9.4826027,
+          47.6482968
+        ],
+        [
+          9.482522,
+          47.648766
+        ],
+        [
+          9.4825607,
+          47.6489285
+        ],
+        [
+          9.4826925,
+          47.6490571
+        ],
+        [
+          9.4828669,
+          47.6491667
+        ],
+        [
+          9.4844065,
+          47.650063
+        ],
+        [
+          9.4845325,
+          47.6503129
+        ],
+        [
+          9.4844949,
+          47.6505767
+        ],
+        [
+          9.4842253,
+          47.6509962
+        ],
+        [
+          9.4842151,
+          47.6510132
+        ]
+      ],
+      "maximumSnapMetres": 4.332274739066778,
+      "pathMetres": 13017.681960852246,
+      "water": {
+        "outsideIntervals": [
+          {
+            "segment": 0,
+            "endpoints": [
+              [
+                9.3810975,
+                47.5646603
+              ],
+              [
+                9.38108151639629,
+                47.56468961666007
+              ]
+            ],
+            "lengthMetres": 3.477363151025438,
+            "dock": 0
+          },
+          {
+            "segment": 32,
+            "endpoints": [
+              [
+                9.484256845648513,
+                47.65094711469009
+              ],
+              [
+                9.4842253,
+                47.6509962
+              ]
+            ],
+            "lengthMetres": 5.954272083815546,
+            "dock": 1
+          },
+          {
+            "segment": 33,
+            "endpoints": [
+              [
+                9.4842253,
+                47.6509962
+              ],
+              [
+                9.4842151,
+                47.6510132
+              ]
+            ],
+            "lengthMetres": 2.041176176602235,
+            "dock": 1
+          }
+        ],
+        "dockZoneMetres": 10,
+        "landCrossing": false
+      },
+      "geometrySha256": "007dd630bb00616f5679bc361cf4dad8579610d114a743b06d58f3e53fb83bde",
+      "wayId": 26255860,
+      "direction": "forward"
+    },
+    {
+      "key": "[\"94-381-0-j26-1\",\"195\",\"3810\",\"1\",[[9.48421514,47.65101317,\"Friedrichshafen Fähre\",\"\",\"8011121\"],[9.38109753,47.56466028,\"Romanshorn Autoquai\",\"\",\"ch:1:sloid:6346\"]]]",
+      "path": [
+        [
+          9.4842151,
+          47.6510132
+        ],
+        [
+          9.4842253,
+          47.6509962
+        ],
+        [
+          9.4844949,
+          47.6505767
+        ],
+        [
+          9.4845325,
+          47.6503129
+        ],
+        [
+          9.4844065,
+          47.650063
+        ],
+        [
+          9.4828669,
+          47.6491667
+        ],
+        [
+          9.4826925,
+          47.6490571
+        ],
+        [
+          9.4825607,
+          47.6489285
+        ],
+        [
+          9.482522,
+          47.648766
+        ],
+        [
+          9.4826027,
+          47.6482968
+        ],
+        [
+          9.4825798,
+          47.6460738
+        ],
+        [
+          9.482399,
+          47.6446759
+        ],
+        [
+          9.4820165,
+          47.6435331
+        ],
+        [
+          9.481133,
+          47.6421754
+        ],
+        [
+          9.478712,
+          47.6388489
+        ],
+        [
+          9.4756062,
+          47.6355245
+        ],
+        [
+          9.4504808,
+          47.6113661
+        ],
+        [
+          9.4217065,
+          47.5867171
+        ],
+        [
+          9.403772,
+          47.5718677
+        ],
+        [
+          9.3994208,
+          47.567949
+        ],
+        [
+          9.3955206,
+          47.5653861
+        ],
+        [
+          9.3946151,
+          47.5651252
+        ],
+        [
+          9.3933201,
+          47.5649161
+        ],
+        [
+          9.391828,
+          47.5648039
+        ],
+        [
+          9.3900355,
+          47.56489
+        ],
+        [
+          9.3880583,
+          47.5652176
+        ],
+        [
+          9.3838917,
+          47.5659913
+        ],
+        [
+          9.3829718,
+          47.5661539
+        ],
+        [
+          9.3824094,
+          47.5662567
+        ],
+        [
+          9.3819085,
+          47.5662273
+        ],
+        [
+          9.3816268,
+          47.56603
+        ],
+        [
+          9.3814775,
+          47.56579
+        ],
+        [
+          9.3811923,
+          47.5652735
+        ],
+        [
+          9.3810776,
+          47.5646968
+        ],
+        [
+          9.3810975,
+          47.5646603
+        ]
+      ],
+      "maximumSnapMetres": 4.332274739066778,
+      "pathMetres": 13017.68196085225,
+      "water": {
+        "outsideIntervals": [
+          {
+            "segment": 0,
+            "endpoints": [
+              [
+                9.4842151,
+                47.6510132
+              ],
+              [
+                9.4842253,
+                47.6509962
+              ]
+            ],
+            "lengthMetres": 2.041176176602235,
+            "dock": 0
+          },
+          {
+            "segment": 1,
+            "endpoints": [
+              [
+                9.4842253,
+                47.6509962
+              ],
+              [
+                9.484256845648513,
+                47.65094711469009
+              ]
+            ],
+            "lengthMetres": 5.954272083815546,
+            "dock": 0
+          },
+          {
+            "segment": 33,
+            "endpoints": [
+              [
+                9.38108151639629,
+                47.56468961666007
+              ],
+              [
+                9.3810975,
+                47.5646603
+              ]
+            ],
+            "lengthMetres": 3.477363151025438,
+            "dock": 1
+          }
+        ],
+        "dockZoneMetres": 10,
+        "landCrossing": false
+      },
+      "geometrySha256": "8d54ef7deaabad3413d82efef71fe31e5df980c52729be829a706a67ce1a9bf3",
+      "wayId": 26255860,
+      "direction": "backward"
+    },
+    {
+      "key": "[\"94-381-A-j26-1\",\"360\",\"3810\",\"0\",[[9.38109753,47.56466028,\"Romanshorn Autoquai\",\"\",\"ch:1:sloid:6346\"],[9.48421514,47.65101317,\"Friedrichshafen Fähre\",\"\",\"8011121\"]]]",
+      "path": [
+        [
+          9.3810975,
+          47.5646603
+        ],
+        [
+          9.3810776,
+          47.5646968
+        ],
+        [
+          9.3811923,
+          47.5652735
+        ],
+        [
+          9.3814775,
+          47.56579
+        ],
+        [
+          9.3816268,
+          47.56603
+        ],
+        [
+          9.3819085,
+          47.5662273
+        ],
+        [
+          9.3824094,
+          47.5662567
+        ],
+        [
+          9.3829718,
+          47.5661539
+        ],
+        [
+          9.3838917,
+          47.5659913
+        ],
+        [
+          9.3880583,
+          47.5652176
+        ],
+        [
+          9.3900355,
+          47.56489
+        ],
+        [
+          9.391828,
+          47.5648039
+        ],
+        [
+          9.3933201,
+          47.5649161
+        ],
+        [
+          9.3946151,
+          47.5651252
+        ],
+        [
+          9.3955206,
+          47.5653861
+        ],
+        [
+          9.3994208,
+          47.567949
+        ],
+        [
+          9.403772,
+          47.5718677
+        ],
+        [
+          9.4217065,
+          47.5867171
+        ],
+        [
+          9.4504808,
+          47.6113661
+        ],
+        [
+          9.4756062,
+          47.6355245
+        ],
+        [
+          9.478712,
+          47.6388489
+        ],
+        [
+          9.481133,
+          47.6421754
+        ],
+        [
+          9.4820165,
+          47.6435331
+        ],
+        [
+          9.482399,
+          47.6446759
+        ],
+        [
+          9.4825798,
+          47.6460738
+        ],
+        [
+          9.4826027,
+          47.6482968
+        ],
+        [
+          9.482522,
+          47.648766
+        ],
+        [
+          9.4825607,
+          47.6489285
+        ],
+        [
+          9.4826925,
+          47.6490571
+        ],
+        [
+          9.4828669,
+          47.6491667
+        ],
+        [
+          9.4844065,
+          47.650063
+        ],
+        [
+          9.4845325,
+          47.6503129
+        ],
+        [
+          9.4844949,
+          47.6505767
+        ],
+        [
+          9.4842253,
+          47.6509962
+        ],
+        [
+          9.4842151,
+          47.6510132
+        ]
+      ],
+      "maximumSnapMetres": 4.332274739066778,
+      "pathMetres": 13017.681960852246,
+      "water": {
+        "outsideIntervals": [
+          {
+            "segment": 0,
+            "endpoints": [
+              [
+                9.3810975,
+                47.5646603
+              ],
+              [
+                9.38108151639629,
+                47.56468961666007
+              ]
+            ],
+            "lengthMetres": 3.477363151025438,
+            "dock": 0
+          },
+          {
+            "segment": 32,
+            "endpoints": [
+              [
+                9.484256845648513,
+                47.65094711469009
+              ],
+              [
+                9.4842253,
+                47.6509962
+              ]
+            ],
+            "lengthMetres": 5.954272083815546,
+            "dock": 1
+          },
+          {
+            "segment": 33,
+            "endpoints": [
+              [
+                9.4842253,
+                47.6509962
+              ],
+              [
+                9.4842151,
+                47.6510132
+              ]
+            ],
+            "lengthMetres": 2.041176176602235,
+            "dock": 1
+          }
+        ],
+        "dockZoneMetres": 10,
+        "landCrossing": false
+      },
+      "geometrySha256": "007dd630bb00616f5679bc361cf4dad8579610d114a743b06d58f3e53fb83bde",
+      "wayId": 26255860,
+      "direction": "forward"
+    },
+    {
+      "key": "[\"94-381-A-j26-1\",\"360\",\"3810\",\"1\",[[9.48421514,47.65101317,\"Friedrichshafen Fähre\",\"\",\"8011121\"],[9.38109753,47.56466028,\"Romanshorn Autoquai\",\"\",\"ch:1:sloid:6346\"]]]",
+      "path": [
+        [
+          9.4842151,
+          47.6510132
+        ],
+        [
+          9.4842253,
+          47.6509962
+        ],
+        [
+          9.4844949,
+          47.6505767
+        ],
+        [
+          9.4845325,
+          47.6503129
+        ],
+        [
+          9.4844065,
+          47.650063
+        ],
+        [
+          9.4828669,
+          47.6491667
+        ],
+        [
+          9.4826925,
+          47.6490571
+        ],
+        [
+          9.4825607,
+          47.6489285
+        ],
+        [
+          9.482522,
+          47.648766
+        ],
+        [
+          9.4826027,
+          47.6482968
+        ],
+        [
+          9.4825798,
+          47.6460738
+        ],
+        [
+          9.482399,
+          47.6446759
+        ],
+        [
+          9.4820165,
+          47.6435331
+        ],
+        [
+          9.481133,
+          47.6421754
+        ],
+        [
+          9.478712,
+          47.6388489
+        ],
+        [
+          9.4756062,
+          47.6355245
+        ],
+        [
+          9.4504808,
+          47.6113661
+        ],
+        [
+          9.4217065,
+          47.5867171
+        ],
+        [
+          9.403772,
+          47.5718677
+        ],
+        [
+          9.3994208,
+          47.567949
+        ],
+        [
+          9.3955206,
+          47.5653861
+        ],
+        [
+          9.3946151,
+          47.5651252
+        ],
+        [
+          9.3933201,
+          47.5649161
+        ],
+        [
+          9.391828,
+          47.5648039
+        ],
+        [
+          9.3900355,
+          47.56489
+        ],
+        [
+          9.3880583,
+          47.5652176
+        ],
+        [
+          9.3838917,
+          47.5659913
+        ],
+        [
+          9.3829718,
+          47.5661539
+        ],
+        [
+          9.3824094,
+          47.5662567
+        ],
+        [
+          9.3819085,
+          47.5662273
+        ],
+        [
+          9.3816268,
+          47.56603
+        ],
+        [
+          9.3814775,
+          47.56579
+        ],
+        [
+          9.3811923,
+          47.5652735
+        ],
+        [
+          9.3810776,
+          47.5646968
+        ],
+        [
+          9.3810975,
+          47.5646603
+        ]
+      ],
+      "maximumSnapMetres": 4.332274739066778,
+      "pathMetres": 13017.68196085225,
+      "water": {
+        "outsideIntervals": [
+          {
+            "segment": 0,
+            "endpoints": [
+              [
+                9.4842151,
+                47.6510132
+              ],
+              [
+                9.4842253,
+                47.6509962
+              ]
+            ],
+            "lengthMetres": 2.041176176602235,
+            "dock": 0
+          },
+          {
+            "segment": 1,
+            "endpoints": [
+              [
+                9.4842253,
+                47.6509962
+              ],
+              [
+                9.484256845648513,
+                47.65094711469009
+              ]
+            ],
+            "lengthMetres": 5.954272083815546,
+            "dock": 0
+          },
+          {
+            "segment": 33,
+            "endpoints": [
+              [
+                9.38108151639629,
+                47.56468961666007
+              ],
+              [
+                9.3810975,
+                47.5646603
+              ]
+            ],
+            "lengthMetres": 3.477363151025438,
+            "dock": 1
+          }
+        ],
+        "dockZoneMetres": 10,
+        "landCrossing": false
+      },
+      "geometrySha256": "8d54ef7deaabad3413d82efef71fe31e5df980c52729be829a706a67ce1a9bf3",
+      "wayId": 26255860,
+      "direction": "backward"
+    }
+  ]
+}

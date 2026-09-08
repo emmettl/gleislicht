@@ -7,6 +7,8 @@
     "requests": "9d9c7384a964488579af9101a3b52385a1f06955287cd05024f72c50b2b19fdc",
     "cityRoads": "91eb32f2c2c18617c005d6ccef01d02d085ccc2389e8857fd4989c07d06cd203",
     "regionalRoads": "d7319885a74631ae6ac5858b172b8f167c56a3b37f3a68e35567aabc35270192",
+    "ferryPolicy": "1ca44a69a5c60218576d664a3bad8415f927b41d51d2f731b8aaa61e5eacd7de",
+    "ferrySource": "6c27b1fccebe76b091ade7d8534875e51c1c9b96491093abd0ff737cdac8fdb1",
     "wittenbachPolicy": "6e92df06f0e5c2de065ffce58a9e670e794e91be8f6ecd12b6731b56cc756d6a",
     "wittenbachSource": "595ec1f66bb62e2525659c52731a2d4d3ef60ccaea0bed27a435d2f14836dabd",
     "boatPolicy": "8a7a0293a868a975bddca2649174562aeb14981bcb1ba21656686379704aeede",
@@ -407,6 +409,71 @@
       "processedBy": "Gleislicht",
       "archivalStudy": true,
       "refreshPolicy": "Pinned September 2026 research fixtures; not a live or current-service feed. A new timetable or geometry release requires a complete rebuild and admission audit."
+    },
+    "ferry": {
+      "publisher": "OpenStreetMap contributors",
+      "attribution": "© OpenStreetMap contributors",
+      "license": "ODbL-1.0",
+      "termsUrl": "https://www.openstreetmap.org/copyright",
+      "endpoint": "https://overpass-api.de/api/interpreter",
+      "snapshot": "2026-09-02T00:00:00Z",
+      "acquired": "2026-09-08",
+      "files": [
+        {
+          "file": "osm.json.gz",
+          "sha256": "081dc452864f115c389a8ed19e089ebaedf654f5277cca5a565a84ac6969e30e"
+        },
+        {
+          "file": "query.txt",
+          "sha256": "a261c4d7168e8f61f1e9646712e92da54a3fe6e2c8e54cc23f6bffcbc2bcdcc0"
+        }
+      ],
+      "elementCount": 1015,
+      "responseElementCount": 1044,
+      "acquisition": "Historical ferry ways/relations intersecting the eastern lake envelope, with recursively referenced ways and nodes. Inventory of this response only, not a complete Lake Constance or Rhine OSM census.",
+      "model": "One explicitly named OSM ferry way, traversed in original GTFS dock order for two exact SBS/BSB route identities. Source vertices retained between dock projections. Separate ODbL path database. Cartographic inference, not observed vessel movement or certified navigational lanes.",
+      "operatorContext": {
+        "url": "https://www.bsb.de/de/fahrplan/bodensee-faehre",
+        "checked": "2026-09-08",
+        "publisher": "Bodensee-Schiffsbetriebe GmbH",
+        "finding": "The operator page identifies the Friedrichshafen–Romanshorn connection and joint BSB/SBS operation. Used for route identity only; no operator geometry or archived operating-status confirmation is supplied."
+      },
+      "shoreline": {
+        "source": "data/thurgau-boat-sources/lakes.json.gz",
+        "featureId": 124,
+        "publisher": "FOEN, swisstopo",
+        "attribution": "© FOEN, swisstopo",
+        "dataStatus": "2007-01-01",
+        "termsUrl": "https://www.swisstopo.admin.ch/en/terms-of-use-free-geodata-and-geoservices"
+      },
+      "vintage": {
+        "wayVersion": 25,
+        "wayTimestamp": "2025-11-05T10:35:30Z",
+        "selectedNodeTimestamps": [
+          "2009-04-22T09:07:30Z",
+          "2010-04-23T18:10:40Z",
+          "2011-01-26T12:05:49Z",
+          "2011-01-26T12:06:18Z",
+          "2022-05-16T19:38:03Z",
+          "2024-11-10T08:36:15Z",
+          "2024-11-10T08:55:45Z",
+          "2025-01-09T21:00:29Z",
+          "2025-02-01T09:54:00Z",
+          "2025-04-15T07:30:46Z",
+          "2025-04-16T07:53:50Z",
+          "2025-04-17T07:34:09Z"
+        ],
+        "limitation": "OSM edit timestamps and requested historical state do not establish a survey date, 2026 shipping-lane validity or temporary operational changes."
+      },
+      "limits": {
+        "snapMetres": 10,
+        "alternativeSnapMetres": 0,
+        "detourRatio": 1.3,
+        "detourFloorMetres": 0
+      },
+      "dockZoneMetres": 10,
+      "scope": "Only the four original full two-dock direction/operator patterns of line 3810 after generalized official shipping geometry fails. Both actual GTFS dock coordinates, direction IDs, times and permissions remain unchanged. Existing admitted journeys retain their paths. No other ferry ways from this response are admitted.",
+      "shorelineRule": "Every edge split at every original Bodensee shoreline/island intersection. Outside-water intervals must lie wholly within 10 m of one original endpoint dock and remain disclosed. Every other land interval rejects the full journey."
     },
     "wittenbach": {
       "publisher": "OpenStreetMap contributors",
@@ -860,9 +927,9 @@
     "key": "GTFS route identity + direction_id + full ordered original platform IDs, including repeats and out-of-canton calls"
   },
   "routesByStatus": {
-    "admitted-all-dated-trips": 104,
+    "admitted-all-dated-trips": 106,
     "inactive-on-validation-dates": 21,
-    "excluded": 5,
+    "excluded": 3,
     "partially-admitted": 2
   },
   "districts": [
@@ -1113,6 +1180,8 @@
         "requests": "9d9c7384a964488579af9101a3b52385a1f06955287cd05024f72c50b2b19fdc",
         "cityRoads": "91eb32f2c2c18617c005d6ccef01d02d085ccc2389e8857fd4989c07d06cd203",
         "regionalRoads": "d7319885a74631ae6ac5858b172b8f167c56a3b37f3a68e35567aabc35270192",
+        "ferryPolicy": "1ca44a69a5c60218576d664a3bad8415f927b41d51d2f731b8aaa61e5eacd7de",
+        "ferrySource": "6c27b1fccebe76b091ade7d8534875e51c1c9b96491093abd0ff737cdac8fdb1",
         "wittenbachPolicy": "6e92df06f0e5c2de065ffce58a9e670e794e91be8f6ecd12b6731b56cc756d6a",
         "wittenbachSource": "595ec1f66bb62e2525659c52731a2d4d3ef60ccaea0bed27a435d2f14836dabd",
         "boatPolicy": "8a7a0293a868a975bddca2649174562aeb14981bcb1ba21656686379704aeede",
@@ -1127,25 +1196,25 @@
       },
       "coverage": {
         "trips": 4417,
-        "admittedTrips": 4306,
+        "admittedTrips": 4338,
         "scheduledTrips": 4417,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 4306,
+        "admittedScheduledTrips": 4338,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 64684,
-        "matchedScheduledSegmentOccurrences": 63873,
+        "matchedScheduledSegmentOccurrences": 63905,
         "segmentOccurrences": 64684,
-        "matchedSegmentOccurrences": 63873,
-        "admittedSegmentOccurrences": 63873,
+        "matchedSegmentOccurrences": 63905,
+        "admittedSegmentOccurrences": 63905,
         "directedPairs": 3529,
-        "matchedDirectedPairs": 3388,
+        "matchedDirectedPairs": 3392,
         "patterns": 563,
-        "completePatterns": 537,
-        "admittedPatterns": 537,
+        "completePatterns": 541,
+        "admittedPatterns": 541,
         "excludedTrips": {
           "demand-responsive-night-taxi": 15,
           "demand-responsive-route-type": 30,
-          "incomplete-boat-pattern": 66
+          "incomplete-boat-pattern": 34
         }
       },
       "groups": [
@@ -1220,23 +1289,23 @@
           "id": "195:ferry",
           "agency": "Schweizerische Bodensee-Schifffahrt AG",
           "trips": 37,
-          "admittedTrips": 4,
+          "admittedTrips": 20,
           "scheduledTrips": 37,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 4,
+          "admittedScheduledTrips": 20,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 79,
-          "matchedScheduledSegmentOccurrences": 14,
+          "matchedScheduledSegmentOccurrences": 30,
           "segmentOccurrences": 79,
-          "matchedSegmentOccurrences": 14,
-          "admittedSegmentOccurrences": 14,
+          "matchedSegmentOccurrences": 30,
+          "admittedSegmentOccurrences": 30,
           "directedPairs": 28,
-          "matchedDirectedPairs": 6,
+          "matchedDirectedPairs": 8,
           "patterns": 15,
-          "completePatterns": 2,
-          "admittedPatterns": 2,
+          "completePatterns": 4,
+          "admittedPatterns": 4,
           "excludedTrips": {
-            "incomplete-boat-pattern": 33
+            "incomplete-boat-pattern": 17
           }
         },
         {
@@ -1285,24 +1354,22 @@
           "id": "360:ferry",
           "agency": "Bodensee-Schiffsbetriebe GmbH",
           "trips": 20,
-          "admittedTrips": 4,
+          "admittedTrips": 20,
           "scheduledTrips": 20,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 4,
+          "admittedScheduledTrips": 20,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 27,
-          "matchedScheduledSegmentOccurrences": 11,
+          "matchedScheduledSegmentOccurrences": 27,
           "segmentOccurrences": 27,
-          "matchedSegmentOccurrences": 11,
-          "admittedSegmentOccurrences": 11,
+          "matchedSegmentOccurrences": 27,
+          "admittedSegmentOccurrences": 27,
           "directedPairs": 6,
-          "matchedDirectedPairs": 4,
+          "matchedDirectedPairs": 6,
           "patterns": 4,
-          "completePatterns": 2,
-          "admittedPatterns": 2,
-          "excludedTrips": {
-            "incomplete-boat-pattern": 16
-          }
+          "completePatterns": 4,
+          "admittedPatterns": 4,
+          "excludedTrips": {}
         },
         {
           "id": "65:rail",
@@ -1451,10 +1518,15 @@
         "trips": 37,
         "patterns": 4
       },
+      "ferryCoverage": {
+        "trips": 32,
+        "patterns": 4
+      },
       "boatCoverage": {
         "trips": 26,
         "patterns": 6,
-        "rejectedPatterns": 21
+        "rejectedPatterns": 17,
+        "originalRejectedPatterns": 21
       },
       "borderRailCoverage": {
         "trips": 10,
@@ -1517,7 +1589,7 @@
       },
       "carryInTrips": 58,
       "admittedCarryInTrips": 55,
-      "admittedOutsideCantonPlatforms": 541,
+      "admittedOutsideCantonPlatforms": 542,
       "directedPatternChecks": {
         "directionIds": [
           "0",
@@ -1530,12 +1602,12 @@
       },
       "payload": {
         "manifest": {
-          "bytes": 1401499,
-          "gzipBytes": 286941
+          "bytes": 1406343,
+          "gzipBytes": 288640
         },
         "morning": {
-          "trips": 674,
-          "gzipBytes": 365283
+          "trips": 680,
+          "gzipBytes": 367180
         },
         "chunks": [
           {
@@ -1545,8 +1617,8 @@
             "path": "day-chunks/00-02.json",
             "tripCount": 73,
             "bytes": 66328,
-            "sha256": "9cf644078321c06b31b594beffa7c930bdc465ccff01e11a515de5ff904c92f6",
-            "gzipBytes": 12025
+            "sha256": "93d8c2a5aba667c3a9730c8d8e11d4b0d5c1739a50234048d2feb4278836cb59",
+            "gzipBytes": 12004
           },
           {
             "id": "02-04",
@@ -1563,90 +1635,90 @@
             "windowStart": 14400,
             "windowEnd": 21600,
             "path": "day-chunks/04-06.json",
-            "tripCount": 184,
-            "bytes": 175759,
-            "sha256": "bf7cf5487b2bc0dd2341391ebf3b503f8e570a771aa5584de218d070c571d6b6",
-            "gzipBytes": 28841
+            "tripCount": 186,
+            "bytes": 176851,
+            "sha256": "77301d55d610e46f2c8ce76b7466454448c74a3b73d4d10a72e59649b9ef9c4c",
+            "gzipBytes": 29060
           },
           {
             "id": "06-08",
             "windowStart": 21600,
             "windowEnd": 28800,
             "path": "day-chunks/06-08.json",
-            "tripCount": 665,
-            "bytes": 620549,
-            "sha256": "c6352d6aad90192a6ab6c9debf26ffd662011664e3c93a764d24ff9bea8bc45f",
-            "gzipBytes": 78083
+            "tripCount": 671,
+            "bytes": 623831,
+            "sha256": "e0c16c318ec75e59a701c6f3a189a04042ce6d45ec219c1b7ac98a805e0d7a5f",
+            "gzipBytes": 78492
           },
           {
             "id": "08-10",
             "windowStart": 28800,
             "windowEnd": 36000,
             "path": "day-chunks/08-10.json",
-            "tripCount": 610,
-            "bytes": 576885,
-            "sha256": "27e97df3767e98a1c5365e3ec058a4788126c8068c81f59a4161143d864cbd46",
-            "gzipBytes": 73728
+            "tripCount": 616,
+            "bytes": 580160,
+            "sha256": "27321b70037cbe103c266f29720328b30c372d78eabf48dd6dd215672bd38e43",
+            "gzipBytes": 74142
           },
           {
             "id": "10-12",
             "windowStart": 36000,
             "windowEnd": 43200,
             "path": "day-chunks/10-12.json",
-            "tripCount": 605,
-            "bytes": 570836,
-            "sha256": "8ce8a70671594429a3fca4125191bbf89e17198be57461de8f0a99cb5c527a92",
-            "gzipBytes": 72844
+            "tripCount": 611,
+            "bytes": 574110,
+            "sha256": "a8472724e9c63494d67efa7dbff1e6d73d75b27b36a3dee4a56e70cf16d6dcd5",
+            "gzipBytes": 73205
           },
           {
             "id": "12-14",
             "windowStart": 43200,
             "windowEnd": 50400,
             "path": "day-chunks/12-14.json",
-            "tripCount": 618,
-            "bytes": 582660,
-            "sha256": "e6b31e06dd141871e976d7cfd628954826af6620f829886b2c1e24128046898e",
-            "gzipBytes": 74000
+            "tripCount": 624,
+            "bytes": 585936,
+            "sha256": "992a25a7edea6e4a6e10959eb3d95929d5812ce0800a6835f59fa229a40d25fc",
+            "gzipBytes": 74408
           },
           {
             "id": "14-16",
             "windowStart": 50400,
             "windowEnd": 57600,
             "path": "day-chunks/14-16.json",
-            "tripCount": 614,
-            "bytes": 577513,
-            "sha256": "618b11ae76fb04ac8a9b7a3179f0929d6aa3b4af9a4bac6d1231218998d6a27b",
-            "gzipBytes": 73463
+            "tripCount": 620,
+            "bytes": 580787,
+            "sha256": "ce0968b57d062000bd193988bcd3e9805f86cb77711b3995d0258984c1bbf59b",
+            "gzipBytes": 73851
           },
           {
             "id": "16-18",
             "windowStart": 57600,
             "windowEnd": 64800,
             "path": "day-chunks/16-18.json",
-            "tripCount": 682,
-            "bytes": 637559,
-            "sha256": "ff29b528ddbccbc2f521bb912b3c37367b97d89f271b4bb70f793721a2da8d28",
-            "gzipBytes": 80192
+            "tripCount": 688,
+            "bytes": 640838,
+            "sha256": "e469fea567f23b15347c51141e00cd1ac6e135436125107a947b06d41d5c0f0c",
+            "gzipBytes": 80525
           },
           {
             "id": "18-20",
             "windowStart": 64800,
             "windowEnd": 72000,
             "path": "day-chunks/18-20.json",
-            "tripCount": 627,
-            "bytes": 593707,
-            "sha256": "9a9570efe5750be161d87dbbb57f52d58be05ba1e340981a53e80f2dc91863d3",
-            "gzipBytes": 76499
+            "tripCount": 633,
+            "bytes": 596989,
+            "sha256": "bd8398508c2c809cd0b5335234f726e01d809c0dfa06c5dacc79661c062c451d",
+            "gzipBytes": 76865
           },
           {
             "id": "20-22",
             "windowStart": 72000,
             "windowEnd": 79200,
             "path": "day-chunks/20-22.json",
-            "tripCount": 354,
-            "bytes": 342772,
-            "sha256": "24a99d48986777559976a13b9bdecfc81594770dd7997b32ad336a36cab7429d",
-            "gzipBytes": 49981
+            "tripCount": 358,
+            "bytes": 344959,
+            "sha256": "8379b7f6394974366e8771de9bdfe1d2c946e8faa0bbd02e04d6c74051ff16e9",
+            "gzipBytes": 50325
           },
           {
             "id": "22-24",
@@ -1654,9 +1726,9 @@
             "windowEnd": 86400,
             "path": "day-chunks/22-24.json",
             "tripCount": 230,
-            "bytes": 223143,
-            "sha256": "05d8f6deb0fdb0962a52cd3edc5e9fe35b06754d2ad2d37aaa03c9a78e6e758f",
-            "gzipBytes": 33046
+            "bytes": 223145,
+            "sha256": "2af2039bc005071f743c6bf63a8a235487d8a0ec2daf82a66eaf0adf706de62b",
+            "gzipBytes": 33051
           }
         ]
       },
@@ -1682,6 +1754,8 @@
         "requests": "9d9c7384a964488579af9101a3b52385a1f06955287cd05024f72c50b2b19fdc",
         "cityRoads": "91eb32f2c2c18617c005d6ccef01d02d085ccc2389e8857fd4989c07d06cd203",
         "regionalRoads": "d7319885a74631ae6ac5858b172b8f167c56a3b37f3a68e35567aabc35270192",
+        "ferryPolicy": "1ca44a69a5c60218576d664a3bad8415f927b41d51d2f731b8aaa61e5eacd7de",
+        "ferrySource": "6c27b1fccebe76b091ade7d8534875e51c1c9b96491093abd0ff737cdac8fdb1",
         "wittenbachPolicy": "6e92df06f0e5c2de065ffce58a9e670e794e91be8f6ecd12b6731b56cc756d6a",
         "wittenbachSource": "595ec1f66bb62e2525659c52731a2d4d3ef60ccaea0bed27a435d2f14836dabd",
         "boatPolicy": "8a7a0293a868a975bddca2649174562aeb14981bcb1ba21656686379704aeede",
@@ -1696,25 +1770,25 @@
       },
       "coverage": {
         "trips": 2795,
-        "admittedTrips": 2675,
+        "admittedTrips": 2703,
         "scheduledTrips": 2795,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 2675,
+        "admittedScheduledTrips": 2703,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 41271,
-        "matchedScheduledSegmentOccurrences": 40124,
+        "matchedScheduledSegmentOccurrences": 40152,
         "segmentOccurrences": 41271,
-        "matchedSegmentOccurrences": 40124,
-        "admittedSegmentOccurrences": 40124,
+        "matchedSegmentOccurrences": 40152,
+        "admittedSegmentOccurrences": 40152,
         "directedPairs": 3425,
-        "matchedDirectedPairs": 3284,
+        "matchedDirectedPairs": 3288,
         "patterns": 442,
-        "completePatterns": 417,
-        "admittedPatterns": 417,
+        "completePatterns": 421,
+        "admittedPatterns": 421,
         "excludedTrips": {
           "demand-responsive-night-taxi": 30,
           "demand-responsive-route-type": 29,
-          "incomplete-boat-pattern": 61
+          "incomplete-boat-pattern": 33
         }
       },
       "groups": [
@@ -1789,23 +1863,23 @@
           "id": "195:ferry",
           "agency": "Schweizerische Bodensee-Schifffahrt AG",
           "trips": 34,
-          "admittedTrips": 4,
+          "admittedTrips": 18,
           "scheduledTrips": 34,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 4,
+          "admittedScheduledTrips": 18,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 76,
-          "matchedScheduledSegmentOccurrences": 14,
+          "matchedScheduledSegmentOccurrences": 28,
           "segmentOccurrences": 76,
-          "matchedSegmentOccurrences": 14,
-          "admittedSegmentOccurrences": 14,
+          "matchedSegmentOccurrences": 28,
+          "admittedSegmentOccurrences": 28,
           "directedPairs": 28,
-          "matchedDirectedPairs": 6,
+          "matchedDirectedPairs": 8,
           "patterns": 14,
-          "completePatterns": 2,
-          "admittedPatterns": 2,
+          "completePatterns": 4,
+          "admittedPatterns": 4,
           "excludedTrips": {
-            "incomplete-boat-pattern": 30
+            "incomplete-boat-pattern": 16
           }
         },
         {
@@ -1854,24 +1928,22 @@
           "id": "360:ferry",
           "agency": "Bodensee-Schiffsbetriebe GmbH",
           "trips": 18,
-          "admittedTrips": 4,
+          "admittedTrips": 18,
           "scheduledTrips": 18,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 4,
+          "admittedScheduledTrips": 18,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 25,
-          "matchedScheduledSegmentOccurrences": 11,
+          "matchedScheduledSegmentOccurrences": 25,
           "segmentOccurrences": 25,
-          "matchedSegmentOccurrences": 11,
-          "admittedSegmentOccurrences": 11,
+          "matchedSegmentOccurrences": 25,
+          "admittedSegmentOccurrences": 25,
           "directedPairs": 6,
-          "matchedDirectedPairs": 4,
+          "matchedDirectedPairs": 6,
           "patterns": 4,
-          "completePatterns": 2,
-          "admittedPatterns": 2,
-          "excludedTrips": {
-            "incomplete-boat-pattern": 14
-          }
+          "completePatterns": 4,
+          "admittedPatterns": 4,
+          "excludedTrips": {}
         },
         {
           "id": "65:rail",
@@ -1978,10 +2050,15 @@
         "trips": 0,
         "patterns": 0
       },
+      "ferryCoverage": {
+        "trips": 28,
+        "patterns": 4
+      },
       "boatCoverage": {
         "trips": 26,
         "patterns": 6,
-        "rejectedPatterns": 20
+        "rejectedPatterns": 16,
+        "originalRejectedPatterns": 20
       },
       "borderRailCoverage": {
         "trips": 14,
@@ -2044,7 +2121,7 @@
       },
       "carryInTrips": 167,
       "admittedCarryInTrips": 129,
-      "admittedOutsideCantonPlatforms": 507,
+      "admittedOutsideCantonPlatforms": 508,
       "directedPatternChecks": {
         "directionIds": [
           "0",
@@ -2057,12 +2134,12 @@
       },
       "payload": {
         "manifest": {
-          "bytes": 1326257,
-          "gzipBytes": 274757
+          "bytes": 1331099,
+          "gzipBytes": 276275
         },
         "morning": {
-          "trips": 341,
-          "gzipBytes": 318775
+          "trips": 345,
+          "gzipBytes": 320499
         },
         "chunks": [
           {
@@ -2072,8 +2149,8 @@
             "path": "day-chunks/00-02.json",
             "tripCount": 142,
             "bytes": 130016,
-            "sha256": "2fed657031f21a9e0a739267dd24b21bfa366f404b9394f456711eded23fbb02",
-            "gzipBytes": 22698
+            "sha256": "62cc437a7c4990e171561179b9eda17ee83df0557c97957ca0cd16deab491d1e",
+            "gzipBytes": 22711
           },
           {
             "id": "02-04",
@@ -2082,8 +2159,8 @@
             "path": "day-chunks/02-04.json",
             "tripCount": 59,
             "bytes": 56543,
-            "sha256": "acca55f028d1677f9763b93a27d871cfbbfe8b10c82a3b332422498f94b748e7",
-            "gzipBytes": 9549
+            "sha256": "8e48435935376959245c0273c9c4a6112d81c7c499fac8877d18ddf3e923b8dc",
+            "gzipBytes": 9565
           },
           {
             "id": "04-06",
@@ -2091,89 +2168,89 @@
             "windowEnd": 21600,
             "path": "day-chunks/04-06.json",
             "tripCount": 69,
-            "bytes": 62467,
-            "sha256": "9326167b14c5baa61592ba1df3d0aec31bc14aa55e183b11d862b20ea30f39c0",
-            "gzipBytes": 11576
+            "bytes": 62468,
+            "sha256": "0ce42b35b5fe3dfd0d9bc64057844ae805a0dd7ffb64f7c75f4c37c5b8a5c38c",
+            "gzipBytes": 11590
           },
           {
             "id": "06-08",
             "windowStart": 21600,
             "windowEnd": 28800,
             "path": "day-chunks/06-08.json",
-            "tripCount": 269,
-            "bytes": 257196,
-            "sha256": "851b2ddc2718f829f408ceeda72da540bb17288d3be0bc02b4fd480a8da9ef71",
-            "gzipBytes": 39139
+            "tripCount": 271,
+            "bytes": 258292,
+            "sha256": "6a22169a34500c2dd9e5a1298a5fbc8c300f49df049989034df5c8aec2d3e060",
+            "gzipBytes": 39401
           },
           {
             "id": "08-10",
             "windowStart": 28800,
             "windowEnd": 36000,
             "path": "day-chunks/08-10.json",
-            "tripCount": 383,
-            "bytes": 363592,
-            "sha256": "2f4248fb744d7c0803f542a4e775ee0789d87cff3ac81ef537e69f1b93bb35d3",
-            "gzipBytes": 50499
+            "tripCount": 389,
+            "bytes": 366865,
+            "sha256": "c46c2bafca7e070211b3ee1a34753608b88a5c28fe0f8c6af60f863f985254fe",
+            "gzipBytes": 50904
           },
           {
             "id": "10-12",
             "windowStart": 36000,
             "windowEnd": 43200,
             "path": "day-chunks/10-12.json",
-            "tripCount": 393,
-            "bytes": 370591,
-            "sha256": "7ae05895d4a67f8a1f29f4a0e7da28b011bd4a1fda283c4cffcffdad3e63376e",
-            "gzipBytes": 50909
+            "tripCount": 399,
+            "bytes": 373865,
+            "sha256": "b0c8f37b2416649e9d538a9d38a4be8e4fe55c80f1c1fc1084259a4a01bbdcac",
+            "gzipBytes": 51305
           },
           {
             "id": "12-14",
             "windowStart": 43200,
             "windowEnd": 50400,
             "path": "day-chunks/12-14.json",
-            "tripCount": 392,
-            "bytes": 370106,
-            "sha256": "b320cf7872dcea58aec3a6ef59ffdad9ad2b7c4cf464137ca9a08708a881e037",
-            "gzipBytes": 51067
+            "tripCount": 398,
+            "bytes": 373382,
+            "sha256": "7fa1d7a47cf0ac11170d3564a5da4e10fcafa72a88fb6b29faa09682f8f5c27d",
+            "gzipBytes": 51452
           },
           {
             "id": "14-16",
             "windowStart": 50400,
             "windowEnd": 57600,
             "path": "day-chunks/14-16.json",
-            "tripCount": 400,
-            "bytes": 376050,
-            "sha256": "951e1a05317831e061d802bcd12eec734c40b9034b00fc601a185c105b6c1064",
-            "gzipBytes": 51699
+            "tripCount": 406,
+            "bytes": 379324,
+            "sha256": "9ab211ef71b21a5bc186bbdeef36b5f3a6bc6474c0accee18da5aab5266aa305",
+            "gzipBytes": 52092
           },
           {
             "id": "16-18",
             "windowStart": 57600,
             "windowEnd": 64800,
             "path": "day-chunks/16-18.json",
-            "tripCount": 399,
-            "bytes": 376548,
-            "sha256": "096d3389a2af01e2dc5a5c0358c0ad73f092578318b48d45571bab4b81d1ed20",
-            "gzipBytes": 52095
+            "tripCount": 405,
+            "bytes": 379824,
+            "sha256": "dbb5cb271850ca69a5b8947da2751880e49d0c9a1a3aaf8b411449a9eda13841",
+            "gzipBytes": 52511
           },
           {
             "id": "18-20",
             "windowStart": 64800,
             "windowEnd": 72000,
             "path": "day-chunks/18-20.json",
-            "tripCount": 371,
-            "bytes": 353083,
-            "sha256": "476b4e5dd4fe58bd7f4ef5f674c15668934ac0d48955c358509d1e92e342a154",
-            "gzipBytes": 49551
+            "tripCount": 377,
+            "bytes": 356359,
+            "sha256": "c9147c917582540c35f0b3643bb1fb75a0f4e33351cb4b3de8ea08ac09570b1f",
+            "gzipBytes": 49982
           },
           {
             "id": "20-22",
             "windowStart": 72000,
             "windowEnd": 79200,
             "path": "day-chunks/20-22.json",
-            "tripCount": 260,
-            "bytes": 251578,
-            "sha256": "e74956c3cd23bf108c0540a6b9d7b5448a7222499eabcd33ab973a958eaa1565",
-            "gzipBytes": 37079
+            "tripCount": 264,
+            "bytes": 253765,
+            "sha256": "b0b49840f0f551b15d47c4bf6c205f911e050c3c499edf88934d3dc11f65077e",
+            "gzipBytes": 37436
           },
           {
             "id": "22-24",
@@ -2181,9 +2258,9 @@
             "windowEnd": 86400,
             "path": "day-chunks/22-24.json",
             "tripCount": 199,
-            "bytes": 191360,
-            "sha256": "65d586da7d57b9d66a92e8cbfc6f417af26f3b0ad23b2c0b9b8153b4239da1a7",
-            "gzipBytes": 28762
+            "bytes": 191366,
+            "sha256": "95ff24b41e9f32d6c406b8c1906b6e6a13ebe34f66aef06adc877aa6a2c0298e",
+            "gzipBytes": 28777
           }
         ]
       },
@@ -2311,6 +2388,6 @@
     "GTFS fixed-stop archive and all Thurgau WFS transit layers inventoried; services absent from both sources and GTFS-Flex service areas are not a verified census of every real-world service.",
     "Two September civil days do not establish holiday, winter or year-round pattern coverage.",
     "Cross-boundary journeys keep all calls. Entire patterns failing any segment are excluded, including source extents shorter than their timetable journeys.",
-    "Geometry combines official-line centreline inference, OSM bus-road matching, FOT/SBB and OSM border rail infrastructure and selected generalized official shipping paths. No observed movement, legal one-way validation, running-track selection, navigational lane or temporary diversion confirmation."
+    "Geometry combines official-line centreline inference, OSM bus-road matching, FOT/SBB and OSM border rail infrastructure and selected official shipping paths or scoped OSM ferry geometry. No observed movement, legal one-way validation, running-track selection, navigational lane or temporary diversion confirmation."
   ]
 }

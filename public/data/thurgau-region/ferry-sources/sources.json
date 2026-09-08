@@ -1,0 +1,56 @@
+{
+  "publisher": "OpenStreetMap contributors",
+  "attribution": "© OpenStreetMap contributors",
+  "license": "ODbL-1.0",
+  "termsUrl": "https://www.openstreetmap.org/copyright",
+  "endpoint": "https://overpass-api.de/api/interpreter",
+  "snapshot": "2026-09-02T00:00:00Z",
+  "acquired": "2026-09-08",
+  "files": [
+    {
+      "file": "osm.json.gz",
+      "sha256": "081dc452864f115c389a8ed19e089ebaedf654f5277cca5a565a84ac6969e30e"
+    },
+    {
+      "file": "query.txt",
+      "sha256": "a261c4d7168e8f61f1e9646712e92da54a3fe6e2c8e54cc23f6bffcbc2bcdcc0"
+    }
+  ],
+  "elementCount": 1015,
+  "responseElementCount": 1044,
+  "acquisition": "Historical ferry ways/relations intersecting the eastern lake envelope, with recursively referenced ways and nodes. Inventory of this response only, not a complete Lake Constance or Rhine OSM census.",
+  "model": "One explicitly named OSM ferry way, traversed in original GTFS dock order for two exact SBS/BSB route identities. Source vertices retained between dock projections. Separate ODbL path database. Cartographic inference, not observed vessel movement or certified navigational lanes.",
+  "operatorContext": {
+    "url": "https://www.bsb.de/de/fahrplan/bodensee-faehre",
+    "checked": "2026-09-08",
+    "publisher": "Bodensee-Schiffsbetriebe GmbH",
+    "finding": "The operator page identifies the Friedrichshafen–Romanshorn connection and joint BSB/SBS operation. Used for route identity only; no operator geometry or archived operating-status confirmation is supplied."
+  },
+  "shoreline": {
+    "source": "data/thurgau-boat-sources/lakes.json.gz",
+    "featureId": 124,
+    "publisher": "FOEN, swisstopo",
+    "attribution": "© FOEN, swisstopo",
+    "dataStatus": "2007-01-01",
+    "termsUrl": "https://www.swisstopo.admin.ch/en/terms-of-use-free-geodata-and-geoservices"
+  },
+  "vintage": {
+    "wayVersion": 25,
+    "wayTimestamp": "2025-11-05T10:35:30Z",
+    "selectedNodeTimestamps": [
+      "2009-04-22T09:07:30Z",
+      "2010-04-23T18:10:40Z",
+      "2011-01-26T12:05:49Z",
+      "2011-01-26T12:06:18Z",
+      "2022-05-16T19:38:03Z",
+      "2024-11-10T08:36:15Z",
+      "2024-11-10T08:55:45Z",
+      "2025-01-09T21:00:29Z",
+      "2025-02-01T09:54:00Z",
+      "2025-04-15T07:30:46Z",
+      "2025-04-16T07:53:50Z",
+      "2025-04-17T07:34:09Z"
+    ],
+    "limitation": "OSM edit timestamps and requested historical state do not establish a survey date, 2026 shipping-lane validity or temporary operational changes."
+  }
+}
