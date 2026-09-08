@@ -82,7 +82,7 @@ try {
   const { files } = await readRegionalDirectory(staged, dated, date)
   if (requested.includes('nyon-region')) {
     await refreshNyonDay({ date, output: staged })
-    const nyon = await readRegionalDirectory(staged, ['solothurn-region', 'nyon-region'])
+    const nyon = await readRegionalDirectory(staged, ['nyon-region'])
     for (const [path, bytes] of nyon.files) files.set(path, bytes)
   }
   if (requested.includes('solothurn-region')) {

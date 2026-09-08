@@ -1,3 +1,6 @@
+import { spawnSync } from 'node:child_process'
+import { gunzipSync } from 'node:zlib'
+import { writeFile } from 'node:fs/promises'
 import { describe, it, expect } from 'vitest'
 import { readFile, mkdtemp, rm, readdir } from 'node:fs/promises'
 import { join } from 'node:path'
@@ -72,3 +75,20 @@ describe('Solothurn display release', () => {
     } finally { await rm(output, { recursive: true, force: true }) }
   }, 30000)
 })
+
+
+it('refreshes Solothurn and Nyon independently through the regional CLI', async () => {
+  const work = await mkdtemp(join(tmpdir(), 'solothurn-cli-test-'))
+  try {
+    const rail = join(work, 'network.xtf')
+    await writeFile(rail, gunzipSync(await readFile('data/zug-rail-sources/network.xtf.gz')))
+    for (const [study, date] of [['solothurn-region', '2026-09-04'], ['nyon-region', '2026-09-08']]) {
+      const output = join(work, study)
+      const result = spawnSync(process.execPath, ['scripts/build-regional-days.mjs', '--archive', 'unused', '--zvv', 'unused', '--tpg', 'unused', '--rail', rail, '--date', date, '--study', study, '--output-directory', output], { encoding: 'utf8' })
+      expect(result.status, result.stderr).toBe(0)
+      const release = await readRegionalDirectory(output, [study], date)
+      expect(Object.keys(release.dates)).toEqual([study])
+      expect((await readdir(output)).every(name => name.startsWith(study))).toBe(true)
+    }
+  } finally { await rm(work, { recursive: true, force: true }) }
+}, 30000)
