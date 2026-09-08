@@ -3,6 +3,7 @@ import { mkdir } from 'node:fs/promises'
 import { basename, dirname, extname, join, resolve } from 'node:path'
 import { chunkNetworkSnapshot } from '@motionstudies/data/network-chunks'
 import { activeServices, parseGtfsTime, rowsFromArchive, stopsById, transportModeForRouteType } from '@motionstudies/data/gtfs'
+import { expandFrequencyTrip, readFrequencyIntervals } from './gtfs-frequencies.mjs'
 
 const DEFAULT_OUTPUT = 'public/data/swiss-rail-morning.json'
 const DEFAULT_HUB_OUTPUT = 'public/data/swiss-hub-day.json'
@@ -152,8 +153,8 @@ export function createSnapshotBuilder({
     return index
   }
 
-  function addTrip(tripId, tripStops) {
-    const metadata = trips.get(tripId)
+  function addTrip(tripId, tripStops, instanceMetadata) {
+    const metadata = instanceMetadata ?? trips.get(tripId)
     if (!metadata || tripStops.length < 2) return
 
     if (metadata.mode === 'tram' || metadata.mode === 'bus') {
@@ -216,6 +217,7 @@ export function createSnapshotBuilder({
       headsign: metadata.headsign,
       shortName: metadata.shortName,
       category: metadata.category,
+      ...(metadata.frequency ? { frequency: metadata.frequency } : {}),
       start,
       end,
       stops: indexedStops,
@@ -243,8 +245,8 @@ function createHubDayBuilder({ trips, sourceStops }) {
     return [source.longitude, source.latitude, source.name, source.platformCode]
   }
 
-  function addTrip(tripId, tripStops) {
-    const train = trips.get(tripId)
+  function addTrip(tripId, tripStops, instanceMetadata) {
+    const train = instanceMetadata ?? trips.get(tripId)
     if (!train) return
     tripStops.forEach((stop, index) => {
       const source = sourceStops.get(stop.stopId)
@@ -272,31 +274,43 @@ function createHubDayBuilder({ trips, sourceStops }) {
   return { addTrip, finish }
 }
 
-async function readStopTimes(archive, trips, builders) {
+export async function readStopTimes(archive, trips, builders, frequencies = new Map(), windowStart = 0, windowEnd = 86400) {
   let currentTripId
   let currentStops = []
   let rowsRead = 0
 
+  function flushTrip() {
+    if (!currentTripId || !trips.has(currentTripId)) return
+    currentStops.sort((a, b) => a.sequence - b.sequence)
+    const intervals = frequencies.get(currentTripId)
+    if (!intervals) {
+      for (const builder of builders) builder.addTrip(currentTripId, currentStops)
+      return
+    }
+    for (const instance of expandFrequencyTrip(currentTripId, currentStops, intervals, windowStart, windowEnd)) {
+      if (trips.has(instance.id)) throw new Error(`Frequency instance collides with source trip ${instance.id}`)
+      const metadata = { ...trips.get(currentTripId), shortName: '', frequency: instance.frequency }
+      for (const builder of builders) builder.addTrip(instance.id, instance.stops, metadata)
+    }
+  }
+
   for await (const row of rowsFromArchive(archive, 'stop_times.txt')) {
     rowsRead += 1
     if (row.trip_id !== currentTripId) {
-      if (currentTripId) {
-        for (const builder of builders) builder.addTrip(currentTripId, currentStops)
-      }
+      flushTrip()
       currentTripId = row.trip_id
       currentStops = []
     }
     if (trips.has(row.trip_id)) {
       currentStops.push({
         stopId: row.stop_id,
+        sequence: Number(row.stop_sequence),
         arrival: parseGtfsTime(row.arrival_time),
         departure: parseGtfsTime(row.departure_time),
       })
     }
   }
-  if (currentTripId) {
-    for (const builder of builders) builder.addTrip(currentTripId, currentStops)
-  }
+  flushTrip()
   return rowsRead
 }
 
@@ -434,6 +448,7 @@ async function main() {
   )
 
   const trips = await activeTrips(archive, routes, services)
+  const frequencies = await readFrequencyIntervals(archive, trips)
   console.log(`Selected ${trips.size} active trips. Reading stop times…`)
   const builder = createSnapshotBuilder({
     trips,
@@ -451,9 +466,14 @@ async function main() {
     archive,
     trips,
     hubBuilder ? [builder, hubBuilder] : [builder],
+    frequencies,
+    hubBuilder ? Math.min(0, windowStart) : windowStart,
+    hubBuilder ? Math.max(86400, windowEnd) : windowEnd,
   )
   const snapshot = builder.finish()
   const hubs = hubBuilder?.finish()
+  const headwayTrips = snapshot.trains.filter(train => train.frequency?.exactTimes === 0).length
+  const exactFrequencyTrips = snapshot.trains.filter(train => train.frequency?.exactTimes === 1).length
 
   const result = {
     metadata: {
@@ -464,8 +484,9 @@ async function main() {
       windowEnd,
       focusTime,
       sourceUrl: DATASET_URL,
-      model: 'scheduled station-to-station interpolation',
-      note: 'The Swiss GTFS feed contains no shapes.txt; positions follow straight stop segments.',
+      model: headwayTrips ? 'scheduled and representative headway station-to-station interpolation' : 'scheduled station-to-station interpolation',
+      note: 'The Swiss GTFS feed contains no shapes.txt; positions follow straight stop segments.' + (headwayTrips ? ' Frequency-based motion uses an illustrative grid anchored to each published operating interval, not exact vehicle departures.' : ''),
+      ...(headwayTrips || exactFrequencyTrips ? { frequency: { headwayTrips, exactFrequencyTrips, model: 'source interval anchored grid; exact_times distinguishes headway illustration from scheduled departures' } } : {}),
       modes: [...modes],
       ...(allowedLocalAgencyIds
         ? { localAgencyIds: [...allowedLocalAgencyIds] }

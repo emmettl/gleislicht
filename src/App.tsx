@@ -3,6 +3,7 @@ import { AIRPORT_LABELS, AIRPORT_NOTES } from './studies/airport-copy.ts'
 import { networkWithRailVisibility } from './studies/network-layers.ts'
 import { COGWHEEL_COPY, COGWHEEL_ROUTE_COLORS, cogwheelNetwork } from './studies/cogwheel.ts'
 import { useCogwheelCatalogue } from './studies/use-cogwheel-catalogue.ts'
+import { FREQUENCY_COPY, isHeadwayTrain, serviceFrequency, withFrequencyFerryPaths } from './studies/frequency.ts'
 import { roadTrafficSummary } from './studies/road-traffic-summary.ts'
 import { airTrafficSummary } from './studies/air-traffic-summary.ts'
 import { postbusRouteIndex, postbusRouteSnapshot, postbusTickFollowsSeek, POSTBUS_YELLOW, POSTBUS_ROUTE_COLORS } from './studies/postbus.ts'
@@ -451,7 +452,9 @@ export function App({ edition }: AppProps) {
   const cogwheelCopy = COGWHEEL_COPY[language]
   const network = useMemo(() => unfilteredNetwork && isCogwheel
     ? cogwheelNetwork(unfilteredNetwork, cogwheelCatalogue)
-    : unfilteredNetwork, [unfilteredNetwork, isCogwheel, cogwheelCatalogue])
+    : unfilteredNetwork && withFrequencyFerryPaths(unfilteredNetwork), [unfilteredNetwork, isCogwheel, cogwheelCatalogue])
+  const hasHeadwayMotion = useMemo(() => network?.trains.some(isHeadwayTrain) ?? false, [network])
+  const frequencyCopy = FREQUENCY_COPY[language]
   const quietMap = view === 'network' && networkStudy === 'national' &&
     !sbbEnabled && !airEnabled && !roadEnabled && Boolean(network) && !dataError && webglAvailable
   const activeAirSnapshot = isNationalDay ? airDay.snapshot : airSnapshot
@@ -517,6 +520,8 @@ export function App({ edition }: AppProps) {
     () => network?.trains.find((train) => train.id === selectedTrainId),
     [network, selectedTrainId],
   )
+  const selectedFrequency = serviceFrequency(selectedTrain)
+  const selectedHeadway = selectedFrequency?.exactTimes === 0
   const selectedAirTrack = useMemo(
     () => activeAirSnapshot?.tracks.find((track) => track.id === selectedAirTrackId),
     [activeAirSnapshot, selectedAirTrackId],
@@ -605,6 +610,7 @@ export function App({ edition }: AppProps) {
       (!selectedRoute || (train.route === selectedRoute.name && train.category === selectedRoute.category)),
     ) ?? []
   }, [network, railVisible, selectedCategory, selectedRoute, selectedStation, selectedStationName])
+  const selectionHasHeadwayMotion = useMemo(() => countableTrains.some(isHeadwayTrain), [countableTrains])
   const activeTrainCount = useMemo(
     () =>
       countableTrains.reduce(
@@ -2592,7 +2598,7 @@ export function App({ edition }: AppProps) {
                         {train.route} <b>{train.shortName}</b>
                       </span>
                       <span className="result-route">
-                        {formatServiceTime(train.start)} · {origin} → {train.headsign}
+                        {isHeadwayTrain(train) ? `${frequencyCopy.label} · ≈` : ''}{formatServiceTime(train.start)} · {origin} → {train.headsign}
                       </span>
                     </button>
                   )
@@ -2840,11 +2846,12 @@ export function App({ edition }: AppProps) {
               <small>{isCogwheel ? cogwheelCopy.label : serviceCategoryLabel(language, selectedTrain.category)}</small>
             </div>
             <div>
-              <span>{text.arrival}</span>
-              <strong>{formatServiceTime(selectedTrain.end)}</strong>
-              <small>{text.plan}</small>
+              <span>{selectedHeadway ? frequencyCopy.arrival : text.arrival}</span>
+              <strong>{selectedHeadway ? '≈' : ''}{formatServiceTime(selectedTrain.end)}</strong>
+              <small>{selectedHeadway ? frequencyCopy.label : text.plan}</small>
             </div>
           </div>
+          {selectedHeadway && selectedFrequency && <p className="between frequency-note">{frequencyCopy.note}: <span style={{ whiteSpace: 'nowrap' }}>{numberFormat.format(selectedFrequency.headwaySeconds % 60 === 0 ? selectedFrequency.headwaySeconds / 60 : selectedFrequency.headwaySeconds)} {selectedFrequency.headwaySeconds % 60 === 0 ? 'min' : 's'}</span></p>}
           {isCogwheel && cogwheelCatalogue && (
             <p className="between">{cogwheelCatalogue.routes[cogwheelCatalogue.trips[selectedTrain.id]]?.operator}</p>
           )}
@@ -2884,6 +2891,7 @@ export function App({ edition }: AppProps) {
               (isNationalDay ? text.fullDayStudy : text.morningStudy)}
           </p>
           {isCogwheel && cogwheelCatalogue && <p className="between">{[...new Set(selectedRoute.trainIds.map(id => cogwheelCatalogue.routes[cogwheelCatalogue.trips[id]]?.operator).filter(Boolean))].join(' · ')}</p>}
+          {selectionHasHeadwayMotion && <p className="between frequency-note">{frequencyCopy.mixed}</p>}
           <div className="metric-grid">
             <div>
               <span>{text.trips}</span>
@@ -2929,6 +2937,7 @@ export function App({ edition }: AppProps) {
           <p className="between">
             {text.allScheduledPaths} <span>/</span>{' '}
             {isNationalDay ? text.fullDayStudy : text.morningStudy}
+            {selectionHasHeadwayMotion && <> {frequencyCopy.mixed}</>}
           </p>
           <div className="network-count-row">
             <strong>{numberFormat.format(activeTrainCount)}</strong>
@@ -3133,6 +3142,7 @@ export function App({ edition }: AppProps) {
                 : dataError
                   ? text.scheduleUnavailable
                   : text.scheduledRail}
+              {hasHeadwayMotion && <> {frequencyCopy.mixed}</>}
           </p>
           <div className="metric-grid">
             <div>
@@ -3207,7 +3217,7 @@ export function App({ edition }: AppProps) {
               {selectedAirTrack
                 ? text.observedAircraft
                 : selectedTrain
-                  ? text.scheduledFollow
+                  ? selectedHeadway ? frequencyCopy.label : text.scheduledFollow
                   : selectedRoute
                     ? text.lineRouteFocus
                     : selectedStation
@@ -3894,7 +3904,7 @@ export function App({ edition }: AppProps) {
           {isHub
             ? text.arrivalsDirection
             : isNetwork
-              ? text.interpolation
+              ? hasHeadwayMotion ? frequencyCopy.interpolation : text.interpolation
               : text.simulation}
         </span>
       </footer>

@@ -445,8 +445,8 @@ async function main() {
 
   const metadata = {
     ...snapshot.metadata,
-    model: 'scheduled interpolation with ZVV shape-aware tram and bus paths',
-    note: 'Rail uses straight stop segments; Zürich tram and bus movement follows matched official ZVV shapes.',
+    model: `${snapshot.metadata.frequency?.headwayTrips ? 'scheduled and representative headway' : 'scheduled'} interpolation with ZVV shape-aware tram and bus paths`,
+    note: 'Rail uses straight stop segments; Zürich tram and bus movement follows matched official ZVV shapes.' + (snapshot.metadata.frequency?.headwayTrips ? ' Frequency-based movements are illustrative, not exact departures.' : ''),
     geometry: {
       publisher: 'Zürcher Verkehrsverbund (ZVV)',
       feedVersion,

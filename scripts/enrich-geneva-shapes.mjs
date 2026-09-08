@@ -323,8 +323,8 @@ async function main() {
     ...snapshot,
     metadata: {
       ...snapshot.metadata,
-      model: 'scheduled interpolation with SITG shape-aware TPG tram and bus paths',
-      note: 'Rail uses straight stop segments; TPG tram, trolleybus and bus movement follows matched official SITG geometry, including cross-border branches.',
+      model: `${snapshot.metadata.frequency?.headwayTrips ? 'scheduled and representative headway' : 'scheduled'} interpolation with SITG shape-aware TPG tram and bus paths`,
+      note: 'Rail uses straight stop segments; TPG tram, trolleybus and bus movement follows matched official SITG geometry, including cross-border branches.' + (snapshot.metadata.frequency?.headwayTrips ? ' Frequency-based movements are illustrative, not exact departures.' : ''),
       geometry: {
         publisher: 'Transports publics genevois (TPG) / SITG',
         feedVersion,

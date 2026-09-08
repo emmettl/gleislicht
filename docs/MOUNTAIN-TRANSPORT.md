@@ -42,7 +42,8 @@ The existing FOT geometry join covers all cogwheel segment occurrences except 14
 
 ## Remaining phase-A work
 
-- Implement frequency-based movement semantics before expanding cableway, funicular or boat coverage; account for exact versus approximate headways and after-midnight service.
+Frequency-based movement semantics are now implemented locally, including exact versus illustrative headways, calendar exceptions and after-midnight service. The first regional fixture adds 29 representative Horgen–Meilen ferry runs to ZVV; see [frequency services and their limits](FREQUENCY-SERVICES.md).
+
 - Audit actual geometry and vertical behaviour for mountain systems, including Monte Generoso's unresolved segments.
 - Broaden discovery beyond source-type 116 without inventing classifications from line names.
 - Extend coverage checks to regional artifacts, additional operating dates and seasonal patterns.
