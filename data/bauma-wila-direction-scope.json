@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "geometrySha256": "3647bbd230f40391ba3a1ddcba2364ec439183cd0d0cab80c84afcdcf1812e08",
+  "catalogSha256": "ffce5a7cc2681d4a87f89a7a579e1eab3dd077e15e61574a0d5506da92479a09",
+  "placesSha256": "dc325ef9dafbb62498365f881b45e27d5dfac049ee86254a8bcf35290826c9dd",
+  "sourcesSha256": "864eb90d1e756ef40a9c87c51dde234b56db8e05424e2dc9112149142f9c2c8d",
+  "stations": [
+    {
+      "id": "ZH.CH:3588",
+      "detectorAuditSha256": "14794026b886216c8f17b44abe4757e7e3631a3c7acdec23946a33bdb224586c"
+    },
+    {
+      "id": "ZH.CH:1623",
+      "detectorAuditSha256": "e726c3afeeade4c97eca23703648e526c4a05a9f87be2a48f3c755fe822920f0"
+    }
+  ],
+  "inventorySha256": "fc7613d03839499915701c33ee66175ec0539dc41d01196c4123cb3452fe623c"
+}
