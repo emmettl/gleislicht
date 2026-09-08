@@ -1,11 +1,14 @@
 # CI build time
 
-The Pages workflow checks code and committed fixture budgets before starting the expensive work. Once those checks pass, four runners work independently:
+The Pages workflow checks code and committed fixture budgets before starting the expensive work. Once those checks pass, five runners work independently:
 
 - Chromium shard 1/2.
 - Chromium shard 2/2.
 - iPhone WebKit, the complete suite.
-- Today's national timetable and the live Pages build.
+- Today's national timetable.
+- Today's Zürich city, ZVV and Genève morning/full-day timetables.
+
+A final build job combines the two verified data artifacts, regenerates the study-browser dates from their metadata, checks realtime compatibility, and builds the Pages artifact. Regional work overlaps national generation and browser tests.
 
 Each browser runner installs only its own engine and uses one worker. `fullyParallel` is enabled in CI so Playwright splits individual tests across shards, including tests in the large `gleislicht.spec.ts` file. The worker limit still prevents simultaneous software WebGL scenes on one runner. Local runs retain the existing two-worker, file-level behaviour.
 

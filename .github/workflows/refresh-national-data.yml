@@ -43,16 +43,7 @@ jobs:
         id: edition
         env:
           REQUESTED_DATE: ${{ inputs.service_date }}
-        run: |
-          service_date="${REQUESTED_DATE:-$(date -u +%F)}"
-          calendar_year="${service_date%%-*}"
-          month_day="${service_date:5:2}${service_date:8:2}"
-          timetable_year="$calendar_year"
-          if [[ "$month_day" > "1212" ]]; then
-            timetable_year="$((calendar_year + 1))"
-          fi
-          echo "service_date=$service_date" >> "$GITHUB_OUTPUT"
-          echo "timetable_year=$timetable_year" >> "$GITHUB_OUTPUT"
+        run: node scripts/service-date.mjs "$REQUESTED_DATE" >> "$GITHUB_OUTPUT"
 
       - name: Download current official GTFS archive
         run: |
@@ -102,7 +93,8 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git switch -C "$BRANCH_NAME"
-          git add public/data/swiss-rail-morning.json \
+          git add src/studies/study-summaries.json \
+            public/data/swiss-rail-morning.json \
             public/data/swiss-cogwheel-catalogue.json \
             data/mountain-transport-audit.json \
             public/data/swiss-hub-day.json \

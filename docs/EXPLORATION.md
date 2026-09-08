@@ -35,7 +35,7 @@ npm run data:regional:days -- \
   --date 2026-09-04
 ```
 
-An optional `--study zurich-city`, `zvv-region` or `geneva-tpg` rebuilds one region. The command performs no network requests and records input hashes, source metadata, coverage and the service date. Temporary full-day snapshots remain outside the repository. A new service date needs the matching source calendar and a review of the fixture summaries shown in the browser.
+An optional `--study zurich-city`, `zvv-region` or `geneva-tpg` rebuilds one region. The command performs no network requests and records input hashes, source metadata, coverage and the service date. Temporary full-day snapshots remain outside the repository. A new service date needs the matching source calendar. `npm run build` regenerates the browser summaries directly from the final artifact metadata.
 
 ## Discovery and links
 
@@ -44,3 +44,15 @@ Explore studies is an accessible modal with geographic/movement sketches, transl
 Links contain `study`, `range`, `date` and seconds after midnight in `time`, plus a supported `station` name or `train` identifier. They restore paused playback against the available artifact. Unknown studies fall back to the national morning view; invalid times are ignored and valid out-of-window times are bounded to the available window. A date or selection that cannot be restored is disclosed. A shared link does not create or promise an archive for a missing date.
 
 Unit and data checks cover clock transitions, representative eligibility, URL validation, exclusion of location coordinates, complete chunk coverage, integrity and geometry indices. Browser checks cover lazy loading, Now and location, partial-to-full-day entry, seeks, shared-view restoration, unavailable dates and chunk recovery in Chromium and emulated iPhone WebKit. These do not establish performance on physical phones or Windows hardware.
+
+## Automatic publication
+
+The existing daily Pages run (03:37 UTC), pushes to `main`, and manual runs now refresh Zürich city, ZVV and Genève alongside national rail and PostBus. A single Swiss civil date feeds both parallel data jobs. The annual source year changes on the second Sunday of December. The committed examples remain deterministic; fresh data are assembled in the publication runner.
+
+`node scripts/download-regional-sources.mjs /path/sources YYYY-MM-DD` downloads national GTFS, the matching ZVV archive, FOT rail geometry and all TPG line features. TPG retrieval first enumerates IDs, then checks every bounded batch to reject truncated responses. The builder accepts `--source-catalogue /path/sources/sources.json` to retain the exact source URLs and `--output-directory /path/output` for isolated builds. It generates all three full days and derives their 06:45–08:45 morning windows from the same source and geometry. Morning geometry coverage labels refer to the full-day join. Every requested study validates before any output is replaced; intermediate files are removed afterwards.
+
+Each pair must have matching service dates and feed versions. Checks cover twelve contiguous two-hour chunks, bytes/SHA-256, unique day trip counts, finite coordinates and valid stop/path indices, source hashes, local/rail coverage and transfer ceilings (650 KiB manifest, 450 KiB chunk, 1,600 KiB morning, gzip). Run them with `node scripts/regional-artifacts.mjs /path/output` using the project's Node version.
+
+If a download fails, `node scripts/restore-published-regional-data.mjs /path/output` retrieves and validates the complete published set before writing anything. It retains the original dates, so the existing Now disclosure distinguishes today's timetable from a representative one. Failed generation, invalid fallback data or exceeded budgets stop deployment and leave the current site available. No aircraft, road-recording, Rigi, or contrast fixture is silently advanced to today's date.
+
+The final build regenerates `study-summaries.json` from the actual national, PostBus, regional, Rigi and contrast artifacts. This also updates dates after national recovery or review-branch generation; a summary cannot claim a requested date that its source does not contain.
