@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "sourceUrl": "https://data.geo.admin.ch/ch.swisstopo.swissnames3d/swissnames3d_2026/swissnames3d_2026_2056.csv.zip",
+  "archiveSha256": "e488e19f10a392e75aec35f7dc0a915dde1fe859b16e86eb36756854424f96dd",
+  "members": [
+    {
+      "member": "swissNAMES3D_LIN.csv",
+      "sha256": "59cfc3c673a0094a72a935f079906f842c857d0ecd5a1857a9da77bb317e43b8",
+      "totalRows": 12639,
+      "selectedRows": 0
+    },
+    {
+      "member": "swissNAMES3D_PKT.csv",
+      "sha256": "337b8047929a1cc6586ab8ee6044dfb3babc1b7099fbe4320a84b4cc53b81896",
+      "totalRows": 391582,
+      "selectedRows": 0
+    },
+    {
+      "member": "swissNAMES3D_PLY.csv",
+      "sha256": "229782509d3133408977fda58aa04f098587cb469e2d64864def96b1886703bd",
+      "totalRows": 95501,
+      "selectedRows": 6
+    }
+  ],
+  "predicate": "Every TLM_SIEDLUNGSNAME row named Pfäffikon, Wetzikon or Gossau, including names followed by a space and qualifier, across all three CSV members.",
+  "rows": [
+    {
+      "UUID": "{086A9328-3804-4FF0-8914-92580A5FA59C}",
+      "NAME": "Gossau SG",
+      "STATUS": "offiziell",
+      "SPRACHCODE": "Hochdeutsch inkl. Lokalsprachen",
+      "NAMEN_TYP": "einfacher Name",
+      "NAME_UUID": "{8A7FE530-A9A5-4289-8461-25E29F630A16}",
+      "NAMENGRUPPE_UUID": "",
+      "ISCED_STUFE": "k_W",
+      "OBJEKTART": "Ort",
+      "OBJEKTKLASSE_TLM": "TLM_SIEDLUNGSNAME",
+      "EINWOHNERKATEGORIE": "10'000 bis 49'999",
+      "E": "2737142",
+      "N": "1253479",
+      "Z": "638"
+    },
+    {
+      "UUID": "{7BEEA360-5872-4348-95B5-81CB06CD7A60}",
+      "NAME": "Pfäffikon SZ",
+      "STATUS": "offiziell",
+      "SPRACHCODE": "Hochdeutsch inkl. Lokalsprachen",
+      "NAMEN_TYP": "einfacher Name",
+      "NAME_UUID": "{6F4D57D2-EB59-4009-A55E-F2079A83FFFE}",
+      "NAMENGRUPPE_UUID": "",
+      "ISCED_STUFE": "k_W",
+      "OBJEKTART": "Ort",
+      "OBJEKTKLASSE_TLM": "TLM_SIEDLUNGSNAME",
+      "EINWOHNERKATEGORIE": "2'000 bis 9'999",
+      "E": "2701607",
+      "N": "1228479",
+      "Z": "424"
+    },
+    {
+      "UUID": "{8CD2F862-ADF5-4248-8165-BA023A2A5FCA}",
+      "NAME": "Wetzikon TG",
+      "STATUS": "offiziell",
+      "SPRACHCODE": "Hochdeutsch inkl. Lokalsprachen",
+      "NAMEN_TYP": "einfacher Name",
+      "NAME_UUID": "{A4FBDB0C-79C4-4234-A4D8-D4B0724E08B1}",
+      "NAMENGRUPPE_UUID": "",
+      "ISCED_STUFE": "k_W",
+      "OBJEKTART": "Ort",
+      "OBJEKTKLASSE_TLM": "TLM_SIEDLUNGSNAME",
+      "EINWOHNERKATEGORIE": "100 bis 999",
+      "E": "2717589",
+      "N": "1266472",
+      "Z": "618"
+    },
+    {
+      "UUID": "{B21ABA8D-F0F2-4BAD-A7AB-59CD7A2514C5}",
+      "NAME": "Wetzikon ZH",
+      "STATUS": "offiziell",
+      "SPRACHCODE": "Hochdeutsch inkl. Lokalsprachen",
+      "NAMEN_TYP": "einfacher Name",
+      "NAME_UUID": "{216217FB-D803-40E5-B54C-D50BF450647A}",
+      "NAMENGRUPPE_UUID": "",
+      "ISCED_STUFE": "k_W",
+      "OBJEKTART": "Ort",
+      "OBJEKTKLASSE_TLM": "TLM_SIEDLUNGSNAME",
+      "EINWOHNERKATEGORIE": "10'000 bis 49'999",
+      "E": "2702906",
+      "N": "1242752",
+      "Z": "544"
+    },
+    {
+      "UUID": "{D22DB049-DA39-4C18-816C-986135B3FBAE}",
+      "NAME": "Gossau ZH",
+      "STATUS": "offiziell",
+      "SPRACHCODE": "Hochdeutsch inkl. Lokalsprachen",
+      "NAMEN_TYP": "einfacher Name",
+      "NAME_UUID": "{0784999F-60E0-4DCC-AB23-8F0D1CBB4B2E}",
+      "NAMENGRUPPE_UUID": "",
+      "ISCED_STUFE": "k_W",
+      "OBJEKTART": "Ort",
+      "OBJEKTKLASSE_TLM": "TLM_SIEDLUNGSNAME",
+      "EINWOHNERKATEGORIE": "2'000 bis 9'999",
+      "E": "2699823",
+      "N": "1240219",
+      "Z": "467"
+    },
+    {
+      "UUID": "{D3C48F81-D9CA-48F6-A740-5D848D8C84DE}",
+      "NAME": "Pfäffikon ZH",
+      "STATUS": "offiziell",
+      "SPRACHCODE": "Hochdeutsch inkl. Lokalsprachen",
+      "NAMEN_TYP": "einfacher Name",
+      "NAME_UUID": "{C7E324B4-96C7-4A47-8F19-55CF4154DAF1}",
+      "NAMENGRUPPE_UUID": "",
+      "ISCED_STUFE": "k_W",
+      "OBJEKTART": "Ort",
+      "OBJEKTKLASSE_TLM": "TLM_SIEDLUNGSNAME",
+      "EINWOHNERKATEGORIE": "10'000 bis 49'999",
+      "E": "2701545",
+      "N": "1246981",
+      "Z": "545"
+    }
+  ]
+}

@@ -317,3 +317,7 @@ python3 scripts/prepare-bauma-wald-inventory.py --archive=/tmp/swissnames3d_2026
 ```
 
 Validation: 50 targeted tests across 11 files, ten desktop Chromium / iPhone WebKit browser checks, production build, architecture and lint checks pass. The complete settlement inventory and public recording rebuild identically. The expanded homonym review leaves every playback observation and section unchanged. First-view transfer is 766.4 KiB gzip within the 790 KiB budget; recording JSON is downloaded only when selected.
+
+### Further Oberland candidates
+
+The [Oberland candidate audit](OBERLAND-ROAD-CANDIDATES.md) reviews 14 additional counter pairs using a complete six-settlement inventory for Pfäffikon, Wetzikon and Gossau. Every pair still has a direction or geometry blocker despite complete recording runs of 104–245 minutes. Its Zürich-qualified results are explicitly diagnostic and cannot enable playback. The six published recordings remain unchanged; the document records the specific missing evidence and reproduction commands.
