@@ -1,0 +1,292 @@
+{
+  "schemaVersion": 1,
+  "pdfSha256": "fd2c182285928e6de3ccbf13afd053a258d0a5cb685c82d47f6e98d815b4be77",
+  "nameBindings": {
+    "Eiken, Kirchgasse (Volg)": "Eiken, Kirchgasse"
+  },
+  "clockConvention": "Return times after midnight under Friday/Saturday columns are transcribed as 24:xx/25:xx on that event date. Regular connecting legs and transfer waits are omitted.",
+  "groups": [
+    {
+      "id": "wegenstetten-out",
+      "page": 1,
+      "stops": [
+        "Wegenstetten, Oberdorf",
+        "Schupfart, Abzw. Flugplatz"
+      ],
+      "offsetMinutes": [
+        0,
+        3
+      ],
+      "departures": [
+        {
+          "eventDate": "2026-09-25",
+          "time": "17:58"
+        },
+        {
+          "eventDate": "2026-09-25",
+          "time": "18:40"
+        },
+        {
+          "eventDate": "2026-09-25",
+          "time": "18:58"
+        },
+        {
+          "eventDate": "2026-09-25",
+          "time": "19:40"
+        },
+        {
+          "eventDate": "2026-09-26",
+          "time": "16:40"
+        },
+        {
+          "eventDate": "2026-09-26",
+          "time": "17:40"
+        },
+        {
+          "eventDate": "2026-09-27",
+          "time": "10:10"
+        },
+        {
+          "eventDate": "2026-09-27",
+          "time": "11:10"
+        }
+      ]
+    },
+    {
+      "id": "frick-out",
+      "page": 1,
+      "stops": [
+        "Frick, Bahnhof",
+        "Eiken, Ost",
+        "Eiken, Kirchgasse (Volg)",
+        "Schupfart, Dorf",
+        "Schupfart, Abzw. Flugplatz"
+      ],
+      "offsetMinutes": [
+        0,
+        7,
+        8,
+        13,
+        16
+      ],
+      "departures": [
+        {
+          "eventDate": "2026-09-25",
+          "time": "18:20"
+        },
+        {
+          "eventDate": "2026-09-25",
+          "time": "19:20"
+        },
+        {
+          "eventDate": "2026-09-26",
+          "time": "16:20"
+        },
+        {
+          "eventDate": "2026-09-26",
+          "time": "17:20"
+        },
+        {
+          "eventDate": "2026-09-27",
+          "time": "09:25"
+        },
+        {
+          "eventDate": "2026-09-27",
+          "time": "10:25"
+        }
+      ]
+    },
+    {
+      "id": "gelterkinden-out",
+      "page": 1,
+      "stops": [
+        "Gelterkinden, Bahnhof",
+        "Ormalingen, Unterdorf",
+        "Wegenstetten, Oberdorf",
+        "Schupfart, Abzw. Flugplatz"
+      ],
+      "offsetMinutes": [
+        0,
+        4,
+        15,
+        18
+      ],
+      "departures": [
+        {
+          "eventDate": "2026-09-27",
+          "time": "09:10"
+        },
+        {
+          "eventDate": "2026-09-27",
+          "time": "10:10"
+        }
+      ]
+    },
+    {
+      "id": "moehlin-out",
+      "page": 1,
+      "stops": [
+        "Möhlin, Bahnhof",
+        "Wegenstetten, Abzw. Schupfart",
+        "Schupfart, Abzw. Flugplatz"
+      ],
+      "offsetMinutes": [
+        0,
+        20,
+        23
+      ],
+      "departures": [
+        {
+          "eventDate": "2026-09-25",
+          "time": "17:20"
+        }
+      ]
+    },
+    {
+      "id": "wegenstetten-back",
+      "page": 1,
+      "stops": [
+        "Schupfart, Abzw. Flugplatz",
+        "Wegenstetten, Oberdorf"
+      ],
+      "offsetMinutes": [
+        0,
+        3
+      ],
+      "departures": [
+        {
+          "eventDate": "2026-09-25",
+          "time": "24:10"
+        },
+        {
+          "eventDate": "2026-09-26",
+          "time": "23:10"
+        },
+        {
+          "eventDate": "2026-09-26",
+          "time": "24:10"
+        },
+        {
+          "eventDate": "2026-09-27",
+          "time": "18:12"
+        }
+      ]
+    },
+    {
+      "id": "frick-back",
+      "page": 1,
+      "stops": [
+        "Schupfart, Abzw. Flugplatz",
+        "Schupfart, Dorf",
+        "Eiken, Kirchgasse (Volg)",
+        "Eiken, Ost",
+        "Frick, Bahnhof"
+      ],
+      "offsetMinutes": [
+        0,
+        2,
+        5,
+        6,
+        14
+      ],
+      "departures": [
+        {
+          "eventDate": "2026-09-25",
+          "time": "24:20"
+        },
+        {
+          "eventDate": "2026-09-26",
+          "time": "23:20"
+        },
+        {
+          "eventDate": "2026-09-26",
+          "time": "24:20"
+        },
+        {
+          "eventDate": "2026-09-27",
+          "time": "17:43"
+        },
+        {
+          "eventDate": "2026-09-27",
+          "time": "18:20"
+        }
+      ]
+    },
+    {
+      "id": "gelterkinden-back",
+      "page": 1,
+      "stops": [
+        "Schupfart, Abzw. Flugplatz",
+        "Wegenstetten, Oberdorf",
+        "Ormalingen, Unterdorf",
+        "Gelterkinden, Bahnhof"
+      ],
+      "offsetMinutes": [
+        0,
+        3,
+        14,
+        19
+      ],
+      "departures": [
+        {
+          "eventDate": "2026-09-25",
+          "time": "24:30"
+        },
+        {
+          "eventDate": "2026-09-26",
+          "time": "24:30"
+        },
+        {
+          "eventDate": "2026-09-27",
+          "time": "17:30"
+        },
+        {
+          "eventDate": "2026-09-27",
+          "time": "18:30"
+        }
+      ]
+    },
+    {
+      "id": "moehlin-back-via-oberdorf",
+      "page": 1,
+      "stops": [
+        "Schupfart, Abzw. Flugplatz",
+        "Wegenstetten, Oberdorf",
+        "Wegenstetten, Abzw. Schupfart",
+        "Möhlin, Bahnhof"
+      ],
+      "offsetMinutes": [
+        0,
+        3,
+        4,
+        27
+      ],
+      "departures": [
+        {
+          "eventDate": "2026-09-25",
+          "time": "25:33"
+        }
+      ]
+    },
+    {
+      "id": "moehlin-back-direct",
+      "page": 1,
+      "stops": [
+        "Schupfart, Abzw. Flugplatz",
+        "Wegenstetten, Abzw. Schupfart",
+        "Möhlin, Bahnhof"
+      ],
+      "offsetMinutes": [
+        0,
+        2,
+        25
+      ],
+      "departures": [
+        {
+          "eventDate": "2026-09-27",
+          "time": "18:50"
+        }
+      ]
+    }
+  ]
+}

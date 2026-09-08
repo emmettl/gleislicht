@@ -1,5 +1,8 @@
 {
   "schemaVersion": 1,
+  "annualWitnessSchupfartReviewSha256": "3f111814397124771a972a1a234bc10ac5ed64aed064c3e1194b8650f66d4eb0",
+  "annualWitnessSchupfartPolicySha256": "e5658558e1d96193b1e8413a7dc04277469f74bbbfec0ccc8ea05b6ca2199d0c",
+  "annualWitnessOberentfeldenDetourSha256": "e66e835f7193f31d5ace76c583fd77436b5234d5549c1a21d865c06392ddd90d",
   "annualWitnessOberentfeldenReviewSha256": "f518345c9ef258d297da98235415695f1eecc65b8bb862ce7f30e838f36d4f92",
   "annualWitnessOberentfeldenPolicySha256": "cab656d573d12bbb3b15b8b7cd797a54deec4f5ab72ed992a673bbff398a7af8",
   "annualWitnessBusInventorySha256": "0e533220da08f88c986d501f2639d2f5c92d92313745287af18844c2ee7aeea7",
@@ -35,7 +38,7 @@
     "2026-10-03",
     "2026-10-10"
   ],
-  "unresolvedWitnessTemplateOccurrences": 2885,
+  "unresolvedWitnessTemplateOccurrences": 2690,
   "line344ReviewSha256": "237ef174a6749dc5cf4193b04944575287db0fb001eebc2be2fb2bca6b4dfc4c",
   "addedSimplonOccurrences": 2,
   "simplonPolicySha256": "11ef73dd48c490bf1be4e5bbb3c5b62522b8665077cf6c2d6e117a83d7232699",
@@ -6083,7 +6086,7 @@
   ],
   "remainingWork": [
     "Review AGIS/OSM bus disagreements against dated operator itineraries and legal direction evidence; the 30 m diagnostic alone cannot choose the correct source.",
-    "Resolve the remaining witness geometry: 2,885 bus template occurrences across 85 incomplete patterns, including AVA timing and dated-diversion holds; then extract and independently validate full civil days before extending the release scope.",
+    "Resolve the remaining witness geometry: 2,690 bus template occurrences across 79 incomplete patterns, including AVA timing/diversion and Schupfart zero-second holds; then extract and independently validate full civil days before extending the release scope.",
     "Disambiguate the repeated local hour before promoting 25 October as an elapsed-time feed.",
     "Integrate reviewed fixtures into application study selection, date loading and attribution, then run browser release checks."
   ]

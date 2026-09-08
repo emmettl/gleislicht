@@ -1,0 +1,6263 @@
+{
+  "schemaVersion": 1,
+  "checkedOn": "2026-09-09",
+  "scope": "Diagnostic only: both exact annual-template September closure crossings remain held. The signed detour corridor is screened against unchanged GTFS intervals. No path is admitted, no timetable changed and no feed expanded.",
+  "method": "Minimum tagged-speed time within the dated map corridor using historical OSM topology. Dijkstra minimizes time, not distance. Respect source one-way and roundabout directions; ignore turn restrictions, access restrictions, signals, acceleration, congestion and dwell. Untagged speeds cost zero. Exclude every closed road edge. Omit both stop approaches entirely: the core runs only from the Binzmattweg/Aarauerstrasse junction to the Suhrerstrasse/Aarauerstrasse junction, or its reverse. These optimistic choices cannot establish operating feasibility. No legal/current speed certification or rounding allowance is inferred.",
+  "limitation": "The source has minute-granularity calls. Exceeding the literal source interval requests reconciliation; it does not prove the actual service impossible. Another operator-specific itinerary, revised timetable or speed evidence would require a new scoped review. Restriction relations were not queried because this calculation deliberately relaxes those constraints and never admits geometry.",
+  "files": {
+    "data/aargau-witness-oberentfelden-policy.json": "cab656d573d12bbb3b15b8b7cd797a54deec4f5ab72ed992a673bbff398a7af8",
+    "data/aargau-witness-ava-policy.json": "f96c56495dd7d0900c18ac43b8f439208399ef27fd08ff7ae2dbafd7d8bec567",
+    "data/aargau-witness-ava-sources/cache.json.gz": "158359a7c175432ddb71060dd88712449b0727be680247551587021876c0feab",
+    "data/aargau-witnesses/source-patterns.json.gz": "824d629c8dded53dc086de9ee6477810613e6c3c90a17fe1d1b7891cb3c4defc",
+    "data/aargau-witnesses/source-verification.json": "dc35791862fe84add38d6b71bacc6017ee86fc434b0a7817203c9c12e43f12bc",
+    "data/aargau-witnesses/ava-review-summary.json": "73896b7fb2366e3e9a3fda5c9b4454a162660135084bcdb2d9b50724a41eaff0",
+    "data/aargau-witnesses/ava-review-patterns.json.gz": "5cf74d920f102403b6de63f633bd19745602ce46c257ad84a9262dd8575649f9",
+    "data/aargau-witness-oberentfelden-sources/sources.json": "ef3eca94a0e49e1b4f7172995d30a2b0b29aac72ddb06b86b6ce77aa50bb606a",
+    "data/aargau-witness-oberentfelden-sources/overpass-query.txt": "1133504165f42564155494e69547fc6ddf91d860872217f4473923718f0b54d5",
+    "data/aargau-witness-oberentfelden-sources/municipal-notice.html.gz": "e6ec1187a475cd3ed2864aaff6cf7c1cc5fb7745ec2d370a164d428c28472371",
+    "data/aargau-witness-oberentfelden-sources/diversion-map.pdf.gz": "0d26d6856ad7a9c752688bd15d2c989763b492c55698f40f0a62f1f4127697ab",
+    "data/aargau-witness-oberentfelden-sources/osm.json.gz": "e657c9610417b0f24c7624702b0205799e3a6adc5a2c239ba68430ec44f1948b",
+    "data/aargau-witnesses/oberentfelden-review-patterns.json.gz": "dd5ee3550072c0052b25bf4be5232fa88671600f6a70f39a84765be166b4670b",
+    "data/aargau-witnesses/oberentfelden-review-summary.json": "f518345c9ef258d297da98235415695f1eecc65b8bb862ce7f30e838f36d4f92",
+    "fixtures/aargau/2026-09-04/aargau-region-day-manifest.json": "54f90c5ba7a1a0b6e7df150e2e5f7ea286928ce629d9cdf88aa43e252001b26d",
+    "fixtures/aargau/2026-09-06/aargau-region-day-manifest.json": "3bca46d35037ed6a2b6732e2005606f7126f1c518dc9e3b52bb32e4c562b2187"
+  },
+  "source": {
+    "schemaVersion": 1,
+    "sources": [
+      {
+        "file": "municipal-notice.html.gz",
+        "url": "https://oberentfelden.ch/erhaltungsmassnahmen-k-208-trasse-aargau-verkehr-ava-abschnitt-isengueetlistrasse-suhrerstrasse",
+        "sourceDate": "2026-09-07",
+        "retrievedAt": "2026-09-08T21:55:38.506282+00:00",
+        "sha256": "e6ec1187a475cd3ed2864aaff6cf7c1cc5fb7745ec2d370a164d428c28472371",
+        "uncompressedSha256": "a77646d7fa998031419cd3d5772a375c42c56131fe77a0989cc20be3fc53d67b",
+        "attribution": "Gemeinde Oberentfelden",
+        "role": "Dated road-closure notice: 11 September 22:00 to 15 September 05:00, Isengüetlistrasse–Suhrerstrasse."
+      },
+      {
+        "file": "diversion-map.pdf.gz",
+        "url": "https://oberentfelden.ch/sites/default/files/2026-09/Umfahrung%20Baustelle%20AVA.pdf",
+        "sourceDate": "2026-08-11",
+        "retrievedAt": "2026-09-08T21:56:05.295332+00:00",
+        "sha256": "0d26d6856ad7a9c752688bd15d2c989763b492c55698f40f0a62f1f4127697ab",
+        "uncompressedSha256": "8c0bb4e4093c57e3764eece734ecbfdcdab1b8f127e5220c0b763038049860ae",
+        "attribution": "© geoPro Suisse AG; © swisstopo; Daten des Kantons Aargau",
+        "role": "Page 1 visually inspected. Closure and signed detour context only; no cartographic linework copied into feed geometry. Original restrictive rights statement retained in PDF."
+      },
+      {
+        "file": "osm.json.gz",
+        "url": "https://overpass-api.de/api/interpreter",
+        "sourceDate": "2026-09-02T00:00:00Z",
+        "retrievedAt": "2026-09-08T21:57:27.467504+00:00",
+        "sha256": "e657c9610417b0f24c7624702b0205799e3a6adc5a2c239ba68430ec44f1948b",
+        "uncompressedSha256": "c76a2e2e523b54ec511fa517b395d11d66190e01c8c8c45c41c8f3069a47d70b",
+        "attribution": "© OpenStreetMap contributors; ODbL-1.0",
+        "role": "Historical OSM ways and nodes: exact closure junctions and source corridor, not bus detour certification."
+      }
+    ],
+    "querySha256": "1133504165f42564155494e69547fc6ddf91d860872217f4473923718f0b54d5"
+  },
+  "sourceWays": [
+    {
+      "type": "way",
+      "id": 25940238,
+      "timestamp": "2026-03-28T15:19:54Z",
+      "version": 15,
+      "changeset": 180546609,
+      "user": "mottiger",
+      "uid": 7504544,
+      "nodes": [
+        282957772,
+        266859058
+      ],
+      "tags": {
+        "highway": "secondary",
+        "lane_markings": "yes",
+        "lanes": "2",
+        "lit": "yes",
+        "maxspeed": "50",
+        "name": "Aarauerstrasse",
+        "ref": "286",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 36784524,
+      "timestamp": "2026-03-16T00:18:32Z",
+      "version": 26,
+      "changeset": 179922036,
+      "user": "d_berger",
+      "uid": 1234273,
+      "nodes": [
+        427663310,
+        9070237652,
+        9520423168,
+        641306313,
+        2613502146,
+        427663315,
+        13651038293,
+        3123152746,
+        13651038292
+      ],
+      "tags": {
+        "highway": "primary",
+        "lanes": "2",
+        "lit": "yes",
+        "maxspeed": "50",
+        "name": "Suhrerstrasse",
+        "ref": "1",
+        "sidewalk:both": "yes",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 43165063,
+      "timestamp": "2023-06-11T19:52:07Z",
+      "version": 10,
+      "changeset": 137217995,
+      "user": "mottiger",
+      "uid": 7504544,
+      "nodes": [
+        266859071,
+        266859072,
+        274739571,
+        2998411304,
+        30440631
+      ],
+      "tags": {
+        "highway": "primary",
+        "lanes": "2",
+        "maxspeed": "50",
+        "name": "Dorfstrasse",
+        "ref": "1",
+        "sidewalk:both": "yes",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 47331048,
+      "timestamp": "2023-07-04T20:33:55Z",
+      "version": 10,
+      "changeset": 138122259,
+      "user": "bresomch",
+      "uid": 456781,
+      "nodes": [
+        280563551,
+        10773962318,
+        1193432909,
+        2582157686,
+        1193433025,
+        1193432806,
+        7245892327,
+        3103748087,
+        3103748072,
+        7178926253,
+        11026519281,
+        6757795827,
+        7178926252,
+        602802312
+      ],
+      "tags": {
+        "highway": "service",
+        "maxspeed": "30",
+        "name": "Binzmattweg",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 47331051,
+      "timestamp": "2018-12-29T10:29:13Z",
+      "version": 10,
+      "changeset": 65861810,
+      "user": "dboo",
+      "uid": 291980,
+      "nodes": [
+        280563549,
+        651516886
+      ],
+      "tags": {
+        "cycleway": "lane",
+        "highway": "tertiary",
+        "maxspeed": "50",
+        "name": "Suhrenmattstrasse",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 48874048,
+      "timestamp": "2025-10-10T18:30:11Z",
+      "version": 13,
+      "changeset": 173108400,
+      "user": "SimonPoole",
+      "uid": 92387,
+      "nodes": [
+        280563549,
+        13207330878,
+        1193432788,
+        280563551,
+        1228162300,
+        280563553
+      ],
+      "tags": {
+        "cycleway": "lane",
+        "highway": "tertiary",
+        "lit": "yes",
+        "maxspeed": "50",
+        "name": "Suhrenmattstrasse",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 48878570,
+      "timestamp": "2026-03-28T15:19:54Z",
+      "version": 16,
+      "changeset": 180546609,
+      "user": "mottiger",
+      "uid": 7504544,
+      "nodes": [
+        2287973365,
+        1228162321,
+        266859063,
+        3190977481,
+        266859064,
+        2287973356,
+        266859065,
+        2287973349,
+        3190990388,
+        5140253013,
+        3190990384,
+        266859067,
+        10594900424,
+        266859068,
+        266859069,
+        3190990449
+      ],
+      "tags": {
+        "highway": "secondary",
+        "lanes": "2",
+        "lit": "yes",
+        "maxspeed": "50",
+        "name": "Aarauerstrasse",
+        "ref": "286",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 48878572,
+      "timestamp": "2026-03-28T15:19:54Z",
+      "version": 7,
+      "changeset": 180546609,
+      "user": "mottiger",
+      "uid": 7504544,
+      "nodes": [
+        266859061,
+        11300704620,
+        11300704621,
+        266859062
+      ],
+      "tags": {
+        "bridge": "yes",
+        "highway": "secondary",
+        "lane_markings": "yes",
+        "lanes": "3",
+        "lanes:backward": "1",
+        "lanes:forward": "2",
+        "maxspeed": "50",
+        "name": "Aarauerstrasse",
+        "ref": "286",
+        "surface": "asphalt",
+        "turn:lanes:forward": "left|through"
+      }
+    },
+    {
+      "type": "way",
+      "id": 51075679,
+      "timestamp": "2026-03-22T17:43:18Z",
+      "version": 12,
+      "changeset": 180264349,
+      "user": "d_berger",
+      "uid": 1234273,
+      "nodes": [
+        296942655,
+        13669699327,
+        854446247,
+        651516273,
+        854446248,
+        854446249,
+        854446250,
+        651515835,
+        13669699329,
+        854446251,
+        854446252,
+        651516260,
+        854446253,
+        651516264,
+        13669699330,
+        854446254,
+        651516205,
+        13669699328,
+        854446255,
+        651516263,
+        651516262,
+        13669699326,
+        296942655
+      ],
+      "tags": {
+        "highway": "secondary",
+        "junction": "roundabout",
+        "maxspeed": "60",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 51075757,
+      "timestamp": "2017-05-15T03:07:57Z",
+      "version": 11,
+      "changeset": 48688306,
+      "user": "asidler",
+      "uid": 5913451,
+      "nodes": [
+        280563553,
+        651516404
+      ],
+      "tags": {
+        "bridge": "yes",
+        "cycleway": "lane",
+        "highway": "tertiary",
+        "layer": "1",
+        "maxspeed": "50",
+        "name": "Suhrenmattstrasse",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 51075760,
+      "timestamp": "2023-10-01T20:25:40Z",
+      "version": 16,
+      "changeset": 142003885,
+      "user": "bresomch",
+      "uid": 456781,
+      "nodes": [
+        1228162317,
+        6835533728,
+        11232508368,
+        11232508366,
+        1762458599,
+        7105600425,
+        3103750887,
+        3103750945,
+        1762458598,
+        651515407,
+        4792329546,
+        4792329549,
+        4792329545,
+        1762458597,
+        4792329550,
+        10773962325,
+        651515835
+      ],
+      "tags": {
+        "cycleway": "lane",
+        "highway": "tertiary",
+        "maxspeed": "50",
+        "name": "Suhrenmattstrasse",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 51075789,
+      "timestamp": "2025-11-10T09:51:52Z",
+      "version": 19,
+      "changeset": 174453990,
+      "user": "habi",
+      "uid": 15671,
+      "nodes": [
+        10649800336,
+        602802315,
+        3081445117,
+        1193383303,
+        3078337125,
+        602802317,
+        4243330905,
+        8939727420,
+        651516518,
+        4243330913,
+        651516519,
+        1193382984,
+        13294155611,
+        8939724014,
+        651516520,
+        651516521,
+        8939724013,
+        2343726437,
+        8939724012,
+        4010874853,
+        651516522,
+        8939724011,
+        1193382034,
+        651516523,
+        4010874806,
+        2343726450,
+        651516524,
+        1193381927,
+        4549834962,
+        9070237661,
+        427685427
+      ],
+      "tags": {
+        "cycleway": "lane",
+        "highway": "tertiary",
+        "lit": "yes",
+        "maxspeed": "50",
+        "name": "Suhrenmattstrasse",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 51075790,
+      "timestamp": "2017-05-15T03:08:21Z",
+      "version": 8,
+      "changeset": 48688306,
+      "user": "asidler",
+      "uid": 5913451,
+      "nodes": [
+        651516886,
+        651516862
+      ],
+      "tags": {
+        "bridge": "yes",
+        "cycleway": "lane",
+        "highway": "tertiary",
+        "layer": "1",
+        "maxspeed": "50",
+        "name": "Suhrenmattstrasse",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 164633194,
+      "timestamp": "2017-05-15T03:08:30Z",
+      "version": 3,
+      "changeset": 48688306,
+      "user": "asidler",
+      "uid": 5913451,
+      "nodes": [
+        651516404,
+        1228162317
+      ],
+      "tags": {
+        "cycleway": "lane",
+        "highway": "tertiary",
+        "maxspeed": "50",
+        "name": "Suhrenmattstrasse",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 275421740,
+      "timestamp": "2026-03-28T15:15:02Z",
+      "version": 8,
+      "changeset": 180546365,
+      "user": "mottiger",
+      "uid": 7504544,
+      "nodes": [
+        4792329538,
+        4243406840,
+        4792329540,
+        4792329539,
+        651516204,
+        4792329541
+      ],
+      "tags": {
+        "highway": "secondary",
+        "lane_markings": "yes",
+        "lanes": "2",
+        "maxspeed": "60",
+        "name": "Suhrenmattstrasse",
+        "note": "Verbindung zw. 1 und 24?",
+        "oneway": "yes",
+        "sidewalk:both": "no",
+        "surface": "asphalt",
+        "turn:lanes": "left|right"
+      }
+    },
+    {
+      "type": "way",
+      "id": 486653191,
+      "timestamp": "2026-03-28T15:15:02Z",
+      "version": 6,
+      "changeset": 180546365,
+      "user": "mottiger",
+      "uid": 7504544,
+      "nodes": [
+        4792329541,
+        12803815667,
+        4792329389,
+        4792329388,
+        10773962330,
+        4792329386,
+        4792329387
+      ],
+      "tags": {
+        "highway": "secondary",
+        "lanes": "1",
+        "name": "Suhrerstrasse",
+        "oneway": "yes",
+        "sidewalk:both": "no",
+        "surface": "asphalt",
+        "turn:lanes": "right"
+      }
+    },
+    {
+      "type": "way",
+      "id": 486653195,
+      "timestamp": "2025-03-07T15:01:18Z",
+      "version": 4,
+      "changeset": 163330904,
+      "user": "mottiger",
+      "uid": 7504544,
+      "nodes": [
+        4792329395,
+        4792329394,
+        4792329393,
+        4792329392,
+        4792329391,
+        4792329535
+      ],
+      "tags": {
+        "highway": "secondary",
+        "lanes": "1",
+        "name": "Suhrenmattstrasse",
+        "oneway": "yes",
+        "sidewalk:both": "no",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 486653204,
+      "timestamp": "2025-05-02T09:34:28Z",
+      "version": 5,
+      "changeset": 165710293,
+      "user": "WilliamHarrison",
+      "uid": 16806535,
+      "nodes": [
+        12803815664,
+        4792329396,
+        12803815665
+      ],
+      "tags": {
+        "highway": "primary",
+        "lanes": "2",
+        "maxspeed": "60",
+        "name": "Suhrerstrasse",
+        "oneway": "yes",
+        "ref": "1",
+        "sidewalk:both": "no",
+        "turn:lanes": "left|through"
+      }
+    },
+    {
+      "type": "way",
+      "id": 486653212,
+      "timestamp": "2025-05-02T09:34:28Z",
+      "version": 6,
+      "changeset": 165710293,
+      "user": "WilliamHarrison",
+      "uid": 16806535,
+      "nodes": [
+        454406461,
+        4792329395
+      ],
+      "tags": {
+        "change:lanes": "no|no",
+        "highway": "primary",
+        "lanes": "2",
+        "name": "Suhrerstrasse",
+        "oneway": "yes",
+        "ref": "1",
+        "sidewalk:both": "no",
+        "surface": "asphalt",
+        "turn:lanes": "through|right"
+      }
+    },
+    {
+      "type": "way",
+      "id": 486653216,
+      "timestamp": "2025-05-02T09:34:28Z",
+      "version": 5,
+      "changeset": 165710293,
+      "user": "WilliamHarrison",
+      "uid": 16806535,
+      "nodes": [
+        4792329399,
+        4792329400,
+        12803815669,
+        4792329403
+      ],
+      "tags": {
+        "highway": "secondary",
+        "lanes": "1",
+        "maxspeed": "60",
+        "name": "Suhrenmattstrasse",
+        "oneway": "yes",
+        "sidewalk:both": "no",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 569458865,
+      "timestamp": "2025-03-07T15:01:18Z",
+      "version": 4,
+      "changeset": 163330904,
+      "user": "mottiger",
+      "uid": 7504544,
+      "nodes": [
+        4792329542,
+        10773962327,
+        854446255
+      ],
+      "tags": {
+        "highway": "secondary",
+        "lanes": "1",
+        "maxspeed": "60",
+        "name": "Suhrenmattstrasse",
+        "oneway": "yes",
+        "sidewalk:both": "no",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 569458866,
+      "timestamp": "2026-03-28T15:15:02Z",
+      "version": 4,
+      "changeset": 180546365,
+      "user": "mottiger",
+      "uid": 7504544,
+      "nodes": [
+        4792329535,
+        4792329534,
+        4792329533,
+        4792329532,
+        4792329531,
+        4792329530
+      ],
+      "tags": {
+        "highway": "secondary",
+        "lane_markings": "yes",
+        "lanes": "2",
+        "maxspeed": "60",
+        "name": "Suhrenmattstrasse",
+        "oneway": "yes",
+        "sidewalk:both": "no",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 569458867,
+      "timestamp": "2025-05-02T09:34:28Z",
+      "version": 4,
+      "changeset": 165710293,
+      "user": "WilliamHarrison",
+      "uid": 16806535,
+      "nodes": [
+        4792329395,
+        12803815668,
+        12803815661,
+        4792329403
+      ],
+      "tags": {
+        "highway": "primary",
+        "lanes": "1",
+        "maxspeed": "60",
+        "name": "Suhrerstrasse",
+        "oneway": "yes",
+        "ref": "1",
+        "sidewalk:both": "no"
+      }
+    },
+    {
+      "type": "way",
+      "id": 769045499,
+      "timestamp": "2023-06-11T19:52:07Z",
+      "version": 3,
+      "changeset": 137217995,
+      "user": "mottiger",
+      "uid": 7504544,
+      "nodes": [
+        3190990449,
+        3190990450,
+        266859070,
+        3123152690,
+        3123152688,
+        266859071
+      ],
+      "tags": {
+        "highway": "secondary",
+        "lanes": "2",
+        "lit": "yes",
+        "maxspeed": "50",
+        "name": "Aarauerstrasse",
+        "ref": "286",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1144085094,
+      "timestamp": "2023-02-11T18:44:48Z",
+      "version": 1,
+      "changeset": 132417325,
+      "user": "bresomch",
+      "uid": 456781,
+      "nodes": [
+        651516862,
+        10649800336
+      ],
+      "tags": {
+        "bridge": "yes",
+        "cycleway": "lane",
+        "highway": "tertiary",
+        "layer": "1",
+        "lit": "yes",
+        "maxspeed": "50",
+        "name": "Suhrenmattstrasse",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1181196267,
+      "timestamp": "2025-05-02T09:34:28Z",
+      "version": 3,
+      "changeset": 165710293,
+      "user": "WilliamHarrison",
+      "uid": 16806535,
+      "nodes": [
+        4792329399,
+        4792329401
+      ],
+      "tags": {
+        "highway": "primary",
+        "lanes": "1",
+        "maxspeed": "60",
+        "name": "Suhrerstrasse",
+        "oneway": "yes",
+        "ref": "1",
+        "sidewalk:both": "no"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1181196268,
+      "timestamp": "2026-03-22T17:43:18Z",
+      "version": 4,
+      "changeset": 180264349,
+      "user": "d_berger",
+      "uid": 1234273,
+      "nodes": [
+        4792329416,
+        12803815659,
+        4792329412,
+        4792329411
+      ],
+      "tags": {
+        "highway": "primary",
+        "lanes": "1",
+        "maxspeed": "60",
+        "name": "Suhrerstrasse",
+        "oneway": "yes",
+        "ref": "1",
+        "sidewalk:both": "no"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1181196269,
+      "timestamp": "2025-03-07T15:01:18Z",
+      "version": 2,
+      "changeset": 163330904,
+      "user": "mottiger",
+      "uid": 7504544,
+      "nodes": [
+        427663314,
+        3103765633,
+        10969684859
+      ],
+      "tags": {
+        "highway": "primary",
+        "lanes": "3",
+        "lanes:backward": "2",
+        "lanes:forward": "1",
+        "lit": "yes",
+        "maxspeed": "50",
+        "name": "Suhrerstrasse",
+        "ref": "1",
+        "sidewalk:left": "no",
+        "sidewalk:right": "yes",
+        "surface": "asphalt",
+        "turn:lanes:backward": "left|through"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1181196270,
+      "timestamp": "2025-03-07T15:01:18Z",
+      "version": 2,
+      "changeset": 163330904,
+      "user": "mottiger",
+      "uid": 7504544,
+      "nodes": [
+        12643477559,
+        427663312,
+        427663314
+      ],
+      "tags": {
+        "highway": "primary",
+        "lanes": "2",
+        "lit": "yes",
+        "maxspeed": "50",
+        "name": "Suhrerstrasse",
+        "ref": "1",
+        "sidewalk:left": "no",
+        "sidewalk:right": "yes",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1181196271,
+      "timestamp": "2023-06-11T19:52:07Z",
+      "version": 1,
+      "changeset": 137217995,
+      "user": "mottiger",
+      "uid": 7504544,
+      "nodes": [
+        30440631,
+        10969684860
+      ],
+      "tags": {
+        "highway": "primary",
+        "lanes": "3",
+        "lanes:backward": "2",
+        "lanes:forward": "1",
+        "maxspeed": "50",
+        "name": "Dorfstrasse",
+        "ref": "1",
+        "sidewalk:both": "yes",
+        "surface": "asphalt",
+        "turn:lanes:backward": "left|through"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1181196272,
+      "timestamp": "2023-06-11T19:52:07Z",
+      "version": 1,
+      "changeset": 137217995,
+      "user": "mottiger",
+      "uid": 7504544,
+      "nodes": [
+        10969684860,
+        10658859503,
+        2998411298,
+        30440629
+      ],
+      "tags": {
+        "highway": "primary",
+        "lanes": "2",
+        "maxspeed": "50",
+        "name": "Dorfstrasse",
+        "ref": "1",
+        "sidewalk:both": "yes",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1181196273,
+      "timestamp": "2025-05-02T09:34:28Z",
+      "version": 2,
+      "changeset": 165710293,
+      "user": "WilliamHarrison",
+      "uid": 16806535,
+      "nodes": [
+        12803815657,
+        309558391
+      ],
+      "tags": {
+        "change:lanes:forward": "no|no",
+        "highway": "primary",
+        "lanes": "3",
+        "lanes:backward": "1",
+        "lanes:forward": "2",
+        "maxspeed": "50",
+        "name": "Dorfstrasse",
+        "ref": "1",
+        "sidewalk:both": "yes",
+        "surface": "asphalt",
+        "turn:lanes:forward": "through|right"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1365324055,
+      "timestamp": "2025-03-07T15:01:18Z",
+      "version": 1,
+      "changeset": 163330904,
+      "user": "mottiger",
+      "uid": 7504544,
+      "nodes": [
+        10969684859,
+        3195166883,
+        3103769154,
+        3103769146,
+        3103769153,
+        3103769145,
+        3103769131,
+        2613502152,
+        427663310
+      ],
+      "tags": {
+        "cycleway:both": "lane",
+        "highway": "primary",
+        "lanes": "2",
+        "lit": "yes",
+        "maxspeed": "50",
+        "name": "Suhrerstrasse",
+        "ref": "1",
+        "sidewalk:left": "no",
+        "sidewalk:right": "yes",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1365324056,
+      "timestamp": "2025-03-07T15:01:18Z",
+      "version": 1,
+      "changeset": 163330904,
+      "user": "mottiger",
+      "uid": 7504544,
+      "nodes": [
+        4792329416,
+        12643477559
+      ],
+      "tags": {
+        "highway": "primary",
+        "lanes": "2",
+        "lit": "yes",
+        "maxspeed": "50",
+        "name": "Suhrerstrasse",
+        "ref": "1",
+        "sidewalk:both": "no",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1382945300,
+      "timestamp": "2025-05-02T09:34:28Z",
+      "version": 1,
+      "changeset": 165710293,
+      "user": "WilliamHarrison",
+      "uid": 16806535,
+      "nodes": [
+        30440629,
+        12803815657
+      ],
+      "tags": {
+        "highway": "primary",
+        "lanes": "3",
+        "lanes:backward": "1",
+        "lanes:forward": "2",
+        "maxspeed": "50",
+        "name": "Dorfstrasse",
+        "ref": "1",
+        "sidewalk:both": "yes",
+        "surface": "asphalt",
+        "turn:lanes:forward": "through|right"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1382945301,
+      "timestamp": "2026-03-22T17:43:18Z",
+      "version": 2,
+      "changeset": 180264349,
+      "user": "d_berger",
+      "uid": 1234273,
+      "nodes": [
+        4792329411,
+        12803815664
+      ],
+      "tags": {
+        "highway": "primary",
+        "lanes": "1",
+        "maxspeed": "60",
+        "name": "Suhrerstrasse",
+        "oneway": "yes",
+        "ref": "1",
+        "sidewalk:both": "no"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1382945302,
+      "timestamp": "2025-05-02T09:34:28Z",
+      "version": 1,
+      "changeset": 165710293,
+      "user": "WilliamHarrison",
+      "uid": 16806535,
+      "nodes": [
+        12803815665,
+        12803815670,
+        4792329399
+      ],
+      "tags": {
+        "change:lanes": "no|no",
+        "highway": "primary",
+        "lanes": "2",
+        "maxspeed": "60",
+        "name": "Suhrerstrasse",
+        "oneway": "yes",
+        "ref": "1",
+        "sidewalk:both": "no",
+        "turn:lanes": "left|through"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1382945303,
+      "timestamp": "2026-03-28T15:15:02Z",
+      "version": 2,
+      "changeset": 180546365,
+      "user": "mottiger",
+      "uid": 7504544,
+      "nodes": [
+        4792329541,
+        12803815666,
+        10773962329,
+        12803815662,
+        4792329403
+      ],
+      "tags": {
+        "highway": "secondary",
+        "lanes": "1",
+        "maxspeed": "60",
+        "name": "Suhrenmattstrasse",
+        "note": "Verbindung zw. 1 und 24?",
+        "oneway": "yes",
+        "sidewalk:both": "no",
+        "surface": "asphalt",
+        "turn:lanes": "left"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1382945304,
+      "timestamp": "2025-05-02T09:34:28Z",
+      "version": 1,
+      "changeset": 165710293,
+      "user": "WilliamHarrison",
+      "uid": 16806535,
+      "nodes": [
+        4792329403,
+        12803815663,
+        4792329537,
+        4792329398,
+        4792329536,
+        4792329535
+      ],
+      "tags": {
+        "highway": "secondary",
+        "lanes": "1",
+        "maxspeed": "60",
+        "name": "Suhrenmattstrasse",
+        "oneway": "yes",
+        "sidewalk:both": "no",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1382945305,
+      "timestamp": "2025-05-02T09:34:28Z",
+      "version": 1,
+      "changeset": 165710293,
+      "user": "WilliamHarrison",
+      "uid": 16806535,
+      "nodes": [
+        4792329403,
+        12803815660,
+        4792329387
+      ],
+      "tags": {
+        "highway": "primary",
+        "lanes": "1",
+        "maxspeed": "60",
+        "name": "Suhrerstrasse",
+        "oneway": "yes",
+        "ref": "1",
+        "sidewalk:both": "no"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1382945306,
+      "timestamp": "2026-03-28T15:15:02Z",
+      "version": 2,
+      "changeset": 180546365,
+      "user": "mottiger",
+      "uid": 7504544,
+      "nodes": [
+        4792329403,
+        4792329402,
+        4792329401
+      ],
+      "tags": {
+        "highway": "secondary",
+        "lanes": "1",
+        "maxspeed": "60",
+        "name": "Suhrenmattstrasse",
+        "note": "Verbindung zw. 1 und 24?",
+        "oneway": "yes",
+        "sidewalk:both": "no",
+        "surface": "asphalt",
+        "turn:lanes": "left"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1382945307,
+      "timestamp": "2025-05-02T09:34:28Z",
+      "version": 1,
+      "changeset": 165710293,
+      "user": "WilliamHarrison",
+      "uid": 16806535,
+      "nodes": [
+        4792329401,
+        4792329410
+      ],
+      "tags": {
+        "highway": "primary",
+        "lanes": "1",
+        "maxspeed": "60",
+        "name": "Suhrerstrasse",
+        "oneway": "yes",
+        "ref": "1",
+        "sidewalk:both": "no"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1382945308,
+      "timestamp": "2025-05-02T09:34:28Z",
+      "version": 1,
+      "changeset": 165710293,
+      "user": "WilliamHarrison",
+      "uid": 16806535,
+      "nodes": [
+        4792329387,
+        3103762963,
+        454406462,
+        12803815658,
+        4792329416
+      ],
+      "tags": {
+        "highway": "primary",
+        "lanes": "1",
+        "maxspeed": "60",
+        "name": "Suhrerstrasse",
+        "oneway": "yes",
+        "ref": "1",
+        "sidewalk:both": "no"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1489293250,
+      "timestamp": "2026-03-16T00:18:32Z",
+      "version": 1,
+      "changeset": 179922036,
+      "user": "d_berger",
+      "uid": 1234273,
+      "nodes": [
+        13651038292,
+        4243330702,
+        641306119,
+        427663317,
+        3123152686,
+        641306123,
+        266859071
+      ],
+      "tags": {
+        "highway": "primary",
+        "lanes": "2",
+        "lit": "yes",
+        "maxspeed": "50",
+        "name": "Suhrerstrasse",
+        "ref": "1",
+        "sidewalk:both": "yes",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1493630952,
+      "timestamp": "2026-03-28T15:15:02Z",
+      "version": 1,
+      "changeset": 180546365,
+      "user": "mottiger",
+      "uid": 7504544,
+      "nodes": [
+        4792329530,
+        4792329529,
+        4792329542
+      ],
+      "tags": {
+        "highway": "secondary",
+        "lanes": "2",
+        "maxspeed": "60",
+        "name": "Suhrenmattstrasse",
+        "oneway": "yes",
+        "sidewalk:both": "no",
+        "surface": "asphalt",
+        "turn:lanes": "|right"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1493630953,
+      "timestamp": "2026-03-28T15:15:02Z",
+      "version": 1,
+      "changeset": 180546365,
+      "user": "mottiger",
+      "uid": 7504544,
+      "nodes": [
+        854446254,
+        854446152,
+        651516203,
+        4792329538
+      ],
+      "tags": {
+        "highway": "secondary",
+        "lanes": "1",
+        "maxspeed": "60",
+        "name": "Suhrenmattstrasse",
+        "note": "Verbindung zw. 1 und 24?",
+        "oneway": "yes",
+        "sidewalk:both": "no",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1493632247,
+      "timestamp": "2026-03-28T15:19:54Z",
+      "version": 1,
+      "changeset": 180546609,
+      "user": "mottiger",
+      "uid": 7504544,
+      "nodes": [
+        266859058,
+        10658866206
+      ],
+      "tags": {
+        "highway": "secondary",
+        "lane_markings": "yes",
+        "lanes": "3",
+        "lanes:backward": "2",
+        "lanes:forward": "1",
+        "lit": "yes",
+        "maxspeed": "50",
+        "name": "Aarauerstrasse",
+        "ref": "286",
+        "surface": "asphalt",
+        "turn:lanes:backward": "left|through"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1493632248,
+      "timestamp": "2026-03-28T15:19:54Z",
+      "version": 1,
+      "changeset": 180546609,
+      "user": "mottiger",
+      "uid": 7504544,
+      "nodes": [
+        10658866206,
+        3114387983,
+        13686611993
+      ],
+      "tags": {
+        "highway": "secondary",
+        "lane_markings": "yes",
+        "lanes": "2",
+        "lit": "yes",
+        "maxspeed": "50",
+        "name": "Aarauerstrasse",
+        "ref": "286",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1493632249,
+      "timestamp": "2026-03-28T15:19:54Z",
+      "version": 1,
+      "changeset": 180546609,
+      "user": "mottiger",
+      "uid": 7504544,
+      "nodes": [
+        13686611993,
+        10658859504,
+        602802312
+      ],
+      "tags": {
+        "highway": "secondary",
+        "lane_markings": "yes",
+        "lanes": "3",
+        "lanes:backward": "1",
+        "lanes:forward": "2",
+        "lit": "yes",
+        "maxspeed": "50",
+        "name": "Aarauerstrasse",
+        "ref": "286",
+        "surface": "asphalt",
+        "turn:lanes:forward": "left|"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1493632250,
+      "timestamp": "2026-03-28T15:19:54Z",
+      "version": 1,
+      "changeset": 180546609,
+      "user": "mottiger",
+      "uid": 7504544,
+      "nodes": [
+        602802312,
+        10658866205,
+        266859059,
+        11300704619,
+        10594906719,
+        266859060
+      ],
+      "tags": {
+        "highway": "secondary",
+        "lane_markings": "yes",
+        "lanes": "2",
+        "lit": "yes",
+        "maxspeed": "50",
+        "name": "Aarauerstrasse",
+        "ref": "286",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1493632251,
+      "timestamp": "2026-03-28T15:19:54Z",
+      "version": 1,
+      "changeset": 180546609,
+      "user": "mottiger",
+      "uid": 7504544,
+      "nodes": [
+        266859060,
+        1228162236,
+        266859061
+      ],
+      "tags": {
+        "highway": "secondary",
+        "lane_markings": "yes",
+        "lanes": "3",
+        "lanes:backward": "1",
+        "lanes:forward": "2",
+        "lit": "yes",
+        "maxspeed": "50",
+        "name": "Aarauerstrasse",
+        "ref": "286",
+        "surface": "asphalt",
+        "turn:lanes:forward": "left|through"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1493632252,
+      "timestamp": "2026-03-28T15:19:54Z",
+      "version": 1,
+      "changeset": 180546609,
+      "user": "mottiger",
+      "uid": 7504544,
+      "nodes": [
+        266859062,
+        2287973365
+      ],
+      "tags": {
+        "highway": "secondary",
+        "lane_markings": "yes",
+        "lanes": "3",
+        "lanes:backward": "1",
+        "lanes:forward": "2",
+        "lit": "yes",
+        "maxspeed": "50",
+        "name": "Aarauerstrasse",
+        "ref": "286",
+        "surface": "asphalt",
+        "turn:lanes:forward": "left|through"
+      }
+    }
+  ],
+  "patterns": [
+    {
+      "patternId": "6544c1889d1a77be9af9",
+      "routeId": "92-A07-9-j26-1",
+      "agencyId": "7244",
+      "directionId": "1",
+      "segmentIndex": 7,
+      "fromStop": [
+        8.04668611,
+        47.3561694,
+        "Oberentfelden, Engelplatz",
+        "",
+        "ch:1:sloid:10268"
+      ],
+      "toStop": [
+        8.04511406,
+        47.3615244,
+        "Oberentfelden, Uerkenbrücke",
+        "B",
+        "ch:1:sloid:10267::2"
+      ],
+      "fullStops": [
+        [
+          8.05007276,
+          47.30559872,
+          "Schöftland, Bahnhof",
+          "",
+          "ch:1:sloid:72648"
+        ],
+        [
+          8.05121362,
+          47.31151311,
+          "Schöftland Nordweg, Bahnhof",
+          "",
+          "ch:1:sloid:89888"
+        ],
+        [
+          8.05301025,
+          47.32039867,
+          "Hirschthal, Bahnhof",
+          "",
+          "ch:1:sloid:10271"
+        ],
+        [
+          8.05563333,
+          47.32867996,
+          "Obermuhen, Bahnhof",
+          "",
+          "ch:1:sloid:10274"
+        ],
+        [
+          8.05488773,
+          47.33450653,
+          "Mittelmuhen, Bahnhof",
+          "",
+          "ch:1:sloid:10273"
+        ],
+        [
+          8.05363008,
+          47.33885321,
+          "Muhen, Bahnhof",
+          "",
+          "ch:1:sloid:10270"
+        ],
+        [
+          8.05224668,
+          47.34439257,
+          "Muhen Nord, Bahnhof",
+          "",
+          "ch:1:sloid:10269"
+        ],
+        [
+          8.04668611,
+          47.3561694,
+          "Oberentfelden, Engelplatz",
+          "",
+          "ch:1:sloid:10268"
+        ],
+        [
+          8.04511406,
+          47.3615244,
+          "Oberentfelden, Uerkenbrücke",
+          "B",
+          "ch:1:sloid:10267::2"
+        ],
+        [
+          8.0426886,
+          47.36499269,
+          "Unterentfelden, Oberdorf",
+          "B",
+          "ch:1:sloid:10266::2"
+        ],
+        [
+          8.04468286,
+          47.36903266,
+          "Unterentfelden, Post",
+          "B",
+          "ch:1:sloid:10265::2"
+        ],
+        [
+          8.0471712,
+          47.37232403,
+          "Unterentfelden, Am Distelberg",
+          "B",
+          "ch:1:sloid:10264::2"
+        ],
+        [
+          8.05073751,
+          47.38316402,
+          "Aarau, Binzenhof",
+          "B",
+          "ch:1:sloid:10263::2"
+        ],
+        [
+          8.05248024,
+          47.39104625,
+          "Aarau, Bahnhof Süd",
+          "",
+          "ch:1:sloid:11309"
+        ]
+      ],
+      "templates": [
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.192.j26",
+          "shortName": "9134",
+          "sha256": "44c6e8e270ad5708287255570d5f6e91f325d2ebd76d8aa89569b5c802a9ae6a",
+          "activeServiceDates": [
+            "2026-09-12"
+          ],
+          "sourceSeconds": 120,
+          "departure": 35460,
+          "arrival": 35580
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.193.j26",
+          "shortName": "9184",
+          "sha256": "b6db2e188b7a0ea637b02eeaf089a97ec6edc1c9327b1962815cb85c5bc88e91",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 57960,
+          "arrival": 58080
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.194.j26",
+          "shortName": "9108",
+          "sha256": "7d6022896ad6d22094a1dc55a2f350554ab54a20c354f4d489a0e8cc407df014",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 23760,
+          "arrival": 23880
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.195.j26",
+          "shortName": "9164",
+          "sha256": "b1fedd09e426a47aa36db1ac87327c10a15bf7d8e5651049b64afc11bcdd302b",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 48960,
+          "arrival": 49080
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.196.j26",
+          "shortName": "9212",
+          "sha256": "e273c6aed8fdf185bbecf2be0b154ec30015b90df95bf34e459c17425b2ae886",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 70560,
+          "arrival": 70680
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.197.j26",
+          "shortName": "9162",
+          "sha256": "86b250b9eaa97cb97fcf3f32767f3adae3700b6c06f947e48ebe3faa658bb47f",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 48060,
+          "arrival": 48180
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.198.j26",
+          "shortName": "9236",
+          "sha256": "be766d4eee6856f7e75ed1106e822512f03180e5378ee231c03d351281600b6b",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 81360,
+          "arrival": 81480
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.199.j26",
+          "shortName": "9232",
+          "sha256": "1db9eac78c4a400a41c269ae9be2efb7318bcbb6af16832cc99bab9d3e298e94",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 79560,
+          "arrival": 79680
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.200.j26",
+          "shortName": "9136",
+          "sha256": "4cdd9281bd968d4ff75ef3bb7a2f6c64093a2ff00db2ce068211954d8fcdcd40",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 36360,
+          "arrival": 36480
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.201.j26",
+          "shortName": "9138",
+          "sha256": "aeb536b5e37c4c2180750c0834a4705f67cbd81446db813fc5dc330d70a992a4",
+          "activeServiceDates": [
+            "2026-09-12"
+          ],
+          "sourceSeconds": 120,
+          "departure": 37260,
+          "arrival": 37380
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.202.j26",
+          "shortName": "9186",
+          "sha256": "b1bb4687c2571c931051a58296e9de40201140d3d81b1a9ee5283b8796998089",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 58860,
+          "arrival": 58980
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.203.j26",
+          "shortName": "9182",
+          "sha256": "10703dc99121d057d582daea7e524336b71e70efa0979dc2443904d75342f1c0",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 57060,
+          "arrival": 57180
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.204.j26",
+          "shortName": "9130",
+          "sha256": "c54f17a4352e4f6b75b3a0c67664af058be126b0b78b2da4cb96ea7c81b80333",
+          "activeServiceDates": [
+            "2026-09-12"
+          ],
+          "sourceSeconds": 120,
+          "departure": 33660,
+          "arrival": 33780
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.205.j26",
+          "shortName": "9176",
+          "sha256": "2256e07b128751146b9c793edbd43c89e4fc0d46ea4cd25443ea911559f35a4f",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 54360,
+          "arrival": 54480
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.206.j26",
+          "shortName": "9180",
+          "sha256": "0425f96d65fc9b0d1ca0f43ce805d54a9c371d87d134508689866dd789b0cad0",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 56160,
+          "arrival": 56280
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.207.j26",
+          "shortName": "9244",
+          "sha256": "0b149a1ceda86e0fc8199480b3db7bc7c46002826db21b8c0b18c1213cb6e774",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 84960,
+          "arrival": 85080
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.208.j26",
+          "shortName": "9158",
+          "sha256": "cb98a020a4788fd74c0bc7a039cffb22e5a87269e62ae21161b1924bb5424ed5",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 46260,
+          "arrival": 46380
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.209.j26",
+          "shortName": "9140",
+          "sha256": "034990e467720452701db533748dd884dabc6bb1a0dc75aed1d76b44191a381d",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 38160,
+          "arrival": 38280
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.210.j26",
+          "shortName": "9188",
+          "sha256": "7a5736019549276fb0a2cecc4161b8bf60da4f66260a377d7127adaae8c12290",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 59760,
+          "arrival": 59880
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.211.j26",
+          "shortName": "9112",
+          "sha256": "059e9d54eaa0fc9268dd5f41d0520a341a6a29f8cecf53f578a677e0be95541f",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 25560,
+          "arrival": 25680
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.212.j26",
+          "shortName": "9216",
+          "sha256": "504a6f1e793490a2f055aa278f979acde604d44a2ce2c73e51d96a54b43ff916",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 72360,
+          "arrival": 72480
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.213.j26",
+          "shortName": "9242",
+          "sha256": "a070e1cf13fd0759adfeacc496589b88d61d40bc8a31bcca3412847574f81f30",
+          "activeServiceDates": [
+            "2026-09-12"
+          ],
+          "sourceSeconds": 120,
+          "departure": 84060,
+          "arrival": 84180
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.214.j26",
+          "shortName": "9142",
+          "sha256": "55763c4ae9cc3789efa1dfc282e08001b0812861a097db653a7804029b953fb1",
+          "activeServiceDates": [
+            "2026-09-12"
+          ],
+          "sourceSeconds": 120,
+          "departure": 39060,
+          "arrival": 39180
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.215.j26",
+          "shortName": "9104",
+          "sha256": "3b29ce55c48a8f5050fec0eec7cb8f01b48ee9eb5dadbf0d6ec6bac443a36fde",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 21960,
+          "arrival": 22080
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.216.j26",
+          "shortName": "9128",
+          "sha256": "37495d3ff1cdaca57eb1724c3d53f00b174ea179b27d9096c67b8560ca99ee1d",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 32760,
+          "arrival": 32880
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.217.j26",
+          "shortName": "9106",
+          "sha256": "cd8a3ec874c0462f1ae2e0ebe8c1bf900c8b0a6d707d8814aeab7143557e540d",
+          "activeServiceDates": [
+            "2026-09-12"
+          ],
+          "sourceSeconds": 120,
+          "departure": 22860,
+          "arrival": 22980
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.218.j26",
+          "shortName": "9198",
+          "sha256": "58318e338766a9beaaabf5ce6bb12249a711af0d6243f2c7a7939ed67d27ae00",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 64260,
+          "arrival": 64380
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.219.j26",
+          "shortName": "9178",
+          "sha256": "4ff5915e3761a5dadc7b537663b0f14ca8a168761ab48f515bde06e881cf2779",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 55260,
+          "arrival": 55380
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.220.j26",
+          "shortName": "9238",
+          "sha256": "8359a849b7677f1a975148230e9b88d4a013186eb777e1d91e9cac57b189174a",
+          "activeServiceDates": [
+            "2026-09-12"
+          ],
+          "sourceSeconds": 120,
+          "departure": 82260,
+          "arrival": 82380
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.221.j26",
+          "shortName": "9114",
+          "sha256": "b0d3f5c17ee97b6fd52b5ec0d32575ce366bb407b2cbd896f5bbdf35ee0093be",
+          "activeServiceDates": [
+            "2026-09-12"
+          ],
+          "sourceSeconds": 120,
+          "departure": 26460,
+          "arrival": 26580
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.222.j26",
+          "shortName": "9102",
+          "sha256": "211c7a5454f31471992f37778a3256ab58f4cfe86b1ae85a264209e61606e0f1",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 20160,
+          "arrival": 20280
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.223.j26",
+          "shortName": "102",
+          "sha256": "0adc471579b3881cf8c2034db2bd5858c7b1c3c77ee795b5e0033ca584a97203",
+          "activeServiceDates": [
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 18840,
+          "arrival": 18960
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.224.j26",
+          "shortName": "9210",
+          "sha256": "fa46b5c851c5fa81339cdf224c29d3b9785cf9cd3e506c3319c8170e71adc4f1",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 69660,
+          "arrival": 69780
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.225.j26",
+          "shortName": "9218",
+          "sha256": "5e9f5043d5eee865f08bd30c6b53d445b4e9100ca4e3fa1e806adb3d91a27db2",
+          "activeServiceDates": [
+            "2026-09-12"
+          ],
+          "sourceSeconds": 120,
+          "departure": 73260,
+          "arrival": 73380
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.226.j26",
+          "shortName": "9146",
+          "sha256": "012a13b05db0e81d59f654f30f3869415f9d0cb794d59641190a0c2836b8a375",
+          "activeServiceDates": [
+            "2026-09-12"
+          ],
+          "sourceSeconds": 120,
+          "departure": 40860,
+          "arrival": 40980
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.227.j26",
+          "shortName": "9144",
+          "sha256": "fc6f4b7fdb61e9ab976fc3fab9e0f6995b132277e6425b7e3faa9662c80c1c62",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 39960,
+          "arrival": 40080
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.228.j26",
+          "shortName": "9226",
+          "sha256": "95854bb532f0330c193e5eb90f78dc5b4fab20c6aa50ad541328a47354624e4d",
+          "activeServiceDates": [
+            "2026-09-12"
+          ],
+          "sourceSeconds": 120,
+          "departure": 76860,
+          "arrival": 76980
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.229.j26",
+          "shortName": "9222",
+          "sha256": "6e5cb2d84a4c49a87910b815cdf2ec8ef137076ce3a5d2d1c9c67788ad43e178",
+          "activeServiceDates": [
+            "2026-09-12"
+          ],
+          "sourceSeconds": 120,
+          "departure": 75060,
+          "arrival": 75180
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.230.j26",
+          "shortName": "9190",
+          "sha256": "4eef44314de3cb8a5247b5c7b04b4ccfe66ef03b608bcef484ab364c5b302f35",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 60660,
+          "arrival": 60780
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.231.j26",
+          "shortName": "9196",
+          "sha256": "e49b14ffd72577d6dac20d37f42c423029b70096d89694e06568ea95db1b1dc9",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 63360,
+          "arrival": 63480
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.232.j26",
+          "shortName": "9110",
+          "sha256": "6f079ac2ed663fec36fe3660934150d0e56600e9f9a6c4bb55fd954907585160",
+          "activeServiceDates": [
+            "2026-09-12"
+          ],
+          "sourceSeconds": 120,
+          "departure": 24660,
+          "arrival": 24780
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.233.j26",
+          "shortName": "9228",
+          "sha256": "1bd7662b528c4b079e1fc052bbf156815fa4c04161aa160fda1823aa13dc43ce",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 77760,
+          "arrival": 77880
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.234.j26",
+          "shortName": "9240",
+          "sha256": "c8f89d4bf67e098f2a9ca4afa12b0eb83a0f2be5668fd7171b97dcb91d159ae8",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 83160,
+          "arrival": 83280
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.235.j26",
+          "shortName": "9230",
+          "sha256": "9aa9a22875d0945c55c6268d98f07683f3c6603402ae78574ff5ee9709ccb715",
+          "activeServiceDates": [
+            "2026-09-12"
+          ],
+          "sourceSeconds": 120,
+          "departure": 78660,
+          "arrival": 78780
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.236.j26",
+          "shortName": "9150",
+          "sha256": "fdc43eca540d4b7ac4b075a9e316d6991345bf7a75687f46d65a5e8eed59252c",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 42660,
+          "arrival": 42780
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.237.j26",
+          "shortName": "9206",
+          "sha256": "a0cf18eb1374087486356920037c5e27865300685a14a72a75db7501843b7be9",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 67860,
+          "arrival": 67980
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.238.j26",
+          "shortName": "9120",
+          "sha256": "0ba86166856bf70ce6ab71bcff9754929f3f90f543d97811eae271dbd30df898",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 29160,
+          "arrival": 29280
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.239.j26",
+          "shortName": "9126",
+          "sha256": "9a3b16c2637511c32bec7f3a4aa10123dcb27ad8c05d08ec0c0a5b687cbfeeb0",
+          "activeServiceDates": [
+            "2026-09-12"
+          ],
+          "sourceSeconds": 120,
+          "departure": 31860,
+          "arrival": 31980
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.240.j26",
+          "shortName": "9192",
+          "sha256": "fded6bda464efaa0740c843958500cfd7f247e7be88b8b8eb4e9240fab7e58a0",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 61560,
+          "arrival": 61680
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.241.j26",
+          "shortName": "9124",
+          "sha256": "8147066ce065ef87d39cc569c017ce839c9138c403ef0c4f86403c69ad9cca4c",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 30960,
+          "arrival": 31080
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.242.j26",
+          "shortName": "9116",
+          "sha256": "7ac697ac4baa4a48141f984b793c72f527bf6999e276fafc46fdaeddf328df50",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 27360,
+          "arrival": 27480
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.243.j26",
+          "shortName": "9122",
+          "sha256": "f9de5b0179cc7ecb1105ba795820485c09b0f4572883bf814e8ebeaa66aaefff",
+          "activeServiceDates": [
+            "2026-09-12"
+          ],
+          "sourceSeconds": 120,
+          "departure": 30060,
+          "arrival": 30180
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.244.j26",
+          "shortName": "9152",
+          "sha256": "6431cfb1eadd45e2e8fcc719d511dd9b5cdacd7672b030088e2bf38708f87044",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 43560,
+          "arrival": 43680
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.245.j26",
+          "shortName": "9132",
+          "sha256": "ca28eeb92308e52f3f9c23c707333674967b8763692020db4041ddfd712c653b",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 34560,
+          "arrival": 34680
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.246.j26",
+          "shortName": "9100",
+          "sha256": "baf9b7a8458fd48c2a6667663e6e41edde3bd2257075bdfd0e802bfc096d2b6a",
+          "activeServiceDates": [
+            "2026-09-12"
+          ],
+          "sourceSeconds": 120,
+          "departure": 18840,
+          "arrival": 18960
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.247.j26",
+          "shortName": "9208",
+          "sha256": "545cc8dbbb66317c2d005cda6c2d93512d3eb984f36aca055032586a0b9b7d6e",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 68760,
+          "arrival": 68880
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.248.j26",
+          "shortName": "9118",
+          "sha256": "5d862a4d4db2c08cf630550f6b3567994d83d42265fa0a28c63ec25ce503d0c7",
+          "activeServiceDates": [
+            "2026-09-12"
+          ],
+          "sourceSeconds": 120,
+          "departure": 28260,
+          "arrival": 28380
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.249.j26",
+          "shortName": "9148",
+          "sha256": "1cd43c60fef3c3b2710115a5b74c820365c8c0a6310555910a043473b4ce9ab0",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 41760,
+          "arrival": 41880
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.250.j26",
+          "shortName": "9172",
+          "sha256": "3f0b233be53211f780271fdedee2a258349aaf576b685454d1ce6dafc61f8bf5",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 52560,
+          "arrival": 52680
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.251.j26",
+          "shortName": "9220",
+          "sha256": "f357aaffe65bc9b744ebb04749693d6a782585ee6860acdd7a0a5cfcf5a59f8f",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 74160,
+          "arrival": 74280
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.252.j26",
+          "shortName": "9168",
+          "sha256": "a2bf2cfc5d448c6a32e3a283b5a758727a5d6e2bdb4eb904e144cd23544f26ac",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 50760,
+          "arrival": 50880
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.253.j26",
+          "shortName": "9166",
+          "sha256": "99ba2ebd5b616a4aeba38587404ea54ae4e36b76c44ab8cdcfc0598a0e220dbf",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 49860,
+          "arrival": 49980
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.254.j26",
+          "shortName": "9200",
+          "sha256": "98be967f6c19aba58f7af27d14a928fd558261af55227bb144b9eca461e9cb96",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 65160,
+          "arrival": 65280
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.255.j26",
+          "shortName": "9246",
+          "sha256": "d1668b84607442f9a90829a11dd06a528bc7445307ba815bf3105e6240865f9b",
+          "activeServiceDates": [
+            "2026-09-12"
+          ],
+          "sourceSeconds": 120,
+          "departure": 85860,
+          "arrival": 85980
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.256.j26",
+          "shortName": "9174",
+          "sha256": "7e58b9c9f8a38819b782379f2aacb80daacda393c9fd57517865fd56ae044e7e",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 53460,
+          "arrival": 53580
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.257.j26",
+          "shortName": "9160",
+          "sha256": "9fcddb8189b575659a84935ce792cd6cd2ab9dee3d58fd290dd3534223844ff0",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 47160,
+          "arrival": 47280
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.258.j26",
+          "shortName": "9194",
+          "sha256": "a6b6fdd5aadfe677e9df3977b2defd675dac659d43317f723c2493e8dd5d9284",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 62460,
+          "arrival": 62580
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.259.j26",
+          "shortName": "9156",
+          "sha256": "83816428869fb71f6700b3482cbb50fe6e4a02b246539e30f8a207e01ae491dd",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 45360,
+          "arrival": 45480
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.260.j26",
+          "shortName": "9170",
+          "sha256": "4b5fa01633b66196a00ad69e19e3b0fa1419e7c4d8676fb110288b975ed7a074",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 51660,
+          "arrival": 51780
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.261.j26",
+          "shortName": "9204",
+          "sha256": "d6b2201db7592c507cecc54542258ad716ee3047d1f29afe6d73baebf65fd909",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 66960,
+          "arrival": 67080
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.262.j26",
+          "shortName": "9154",
+          "sha256": "6cbcc46d3a475ddaee73ccf165e617706009ff0baf9ef8a746addbb76ad39f26",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 44460,
+          "arrival": 44580
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.263.j26",
+          "shortName": "9234",
+          "sha256": "138e9ab75c4d58542a73407106a4d65705b72cd86628e2d59924a2e564ca5b37",
+          "activeServiceDates": [
+            "2026-09-12"
+          ],
+          "sourceSeconds": 120,
+          "departure": 80460,
+          "arrival": 80580
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.264.j26",
+          "shortName": "9224",
+          "sha256": "6fa1c5b7b81a16ce4cc2def20853ad865e6d8e62af7a8421c8b7570ebb4a0853",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 75960,
+          "arrival": 76080
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.265.j26",
+          "shortName": "9248",
+          "sha256": "de5cb75373684ea5d167c435afd7cd183120f41e27fc130126131ef667d43adb",
+          "activeServiceDates": [
+            "2026-09-12"
+          ],
+          "sourceSeconds": 120,
+          "departure": 87600,
+          "arrival": 87720
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.266.j26",
+          "shortName": "9214",
+          "sha256": "880d5be81414ff4c574cabea40d2c86827af8503ab760eb2e96f21bf07d80052",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 71460,
+          "arrival": 71580
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.267.j26",
+          "shortName": "9202",
+          "sha256": "e0fc909610f5e0103593a302f76169f9640812cd4b04b6095276620485344a35",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 66060,
+          "arrival": 66180
+        }
+      ],
+      "heldOccurrences": 76,
+      "detour": {
+        "directionId": "1",
+        "from": 266859071,
+        "to": 602802312,
+        "fromPoint": [
+          8.0468597,
+          47.3568218
+        ],
+        "toPoint": [
+          8.045654,
+          47.361211
+        ],
+        "edges": [
+          {
+            "from": 266859071,
+            "to": 641306123,
+            "wayId": 1489293250,
+            "name": "Suhrerstrasse",
+            "metres": 4.551645067306307,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 0.3277184448460541
+          },
+          {
+            "from": 641306123,
+            "to": 3123152686,
+            "wayId": 1489293250,
+            "name": "Suhrerstrasse",
+            "metres": 10.724580219020579,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 0.7721697757694818
+          },
+          {
+            "from": 3123152686,
+            "to": 427663317,
+            "wayId": 1489293250,
+            "name": "Suhrerstrasse",
+            "metres": 3.6184878160901612,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 0.26053112275849166
+          },
+          {
+            "from": 427663317,
+            "to": 641306119,
+            "wayId": 1489293250,
+            "name": "Suhrerstrasse",
+            "metres": 25.97803106483845,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 1.8704182366683686
+          },
+          {
+            "from": 641306119,
+            "to": 4243330702,
+            "wayId": 1489293250,
+            "name": "Suhrerstrasse",
+            "metres": 37.49177123836793,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 2.699407529162491
+          },
+          {
+            "from": 4243330702,
+            "to": 13651038292,
+            "wayId": 1489293250,
+            "name": "Suhrerstrasse",
+            "metres": 31.346750633799058,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 2.2569660456335323
+          },
+          {
+            "from": 13651038292,
+            "to": 3123152746,
+            "wayId": 36784524,
+            "name": "Suhrerstrasse",
+            "metres": 5.046387687776065,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 0.36333991351987666
+          },
+          {
+            "from": 3123152746,
+            "to": 13651038293,
+            "wayId": 36784524,
+            "name": "Suhrerstrasse",
+            "metres": 4.051982766647347,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 0.291742759198609
+          },
+          {
+            "from": 13651038293,
+            "to": 427663315,
+            "wayId": 36784524,
+            "name": "Suhrerstrasse",
+            "metres": 15.983101917931107,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 1.1507833380910397
+          },
+          {
+            "from": 427663315,
+            "to": 2613502146,
+            "wayId": 36784524,
+            "name": "Suhrerstrasse",
+            "metres": 4.864034202157569,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 0.350210462555345
+          },
+          {
+            "from": 2613502146,
+            "to": 641306313,
+            "wayId": 36784524,
+            "name": "Suhrerstrasse",
+            "metres": 33.79698716037117,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 2.433383075546724
+          },
+          {
+            "from": 641306313,
+            "to": 9520423168,
+            "wayId": 36784524,
+            "name": "Suhrerstrasse",
+            "metres": 11.171340773004186,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 0.8043365356563014
+          },
+          {
+            "from": 9520423168,
+            "to": 9070237652,
+            "wayId": 36784524,
+            "name": "Suhrerstrasse",
+            "metres": 22.608822519931042,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 1.6278352214350351
+          },
+          {
+            "from": 9070237652,
+            "to": 427663310,
+            "wayId": 36784524,
+            "name": "Suhrerstrasse",
+            "metres": 16.421086064735142,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 1.1823181966609304
+          },
+          {
+            "from": 427663310,
+            "to": 2613502152,
+            "wayId": 1365324055,
+            "name": "Suhrerstrasse",
+            "metres": 11.966437566474085,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 0.8615835047861341
+          },
+          {
+            "from": 2613502152,
+            "to": 3103769131,
+            "wayId": 1365324055,
+            "name": "Suhrerstrasse",
+            "metres": 24.661941385083473,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 1.7756597797260103
+          },
+          {
+            "from": 3103769131,
+            "to": 3103769145,
+            "wayId": 1365324055,
+            "name": "Suhrerstrasse",
+            "metres": 32.10756263445719,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 2.3117445096809175
+          },
+          {
+            "from": 3103769145,
+            "to": 3103769153,
+            "wayId": 1365324055,
+            "name": "Suhrerstrasse",
+            "metres": 27.6927736960241,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 1.9938797061137354
+          },
+          {
+            "from": 3103769153,
+            "to": 3103769146,
+            "wayId": 1365324055,
+            "name": "Suhrerstrasse",
+            "metres": 19.491214466646802,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 1.4033674415985697
+          },
+          {
+            "from": 3103769146,
+            "to": 3103769154,
+            "wayId": 1365324055,
+            "name": "Suhrerstrasse",
+            "metres": 16.660072148965657,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 1.1995251947255274
+          },
+          {
+            "from": 3103769154,
+            "to": 3195166883,
+            "wayId": 1365324055,
+            "name": "Suhrerstrasse",
+            "metres": 17.985784984855087,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 1.2949765189095663
+          },
+          {
+            "from": 3195166883,
+            "to": 10969684859,
+            "wayId": 1365324055,
+            "name": "Suhrerstrasse",
+            "metres": 11.606142959874827,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 0.8356422931109876
+          },
+          {
+            "from": 10969684859,
+            "to": 3103765633,
+            "wayId": 1181196269,
+            "name": "Suhrerstrasse",
+            "metres": 2.987344074937574,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 0.21508877339550536
+          },
+          {
+            "from": 3103765633,
+            "to": 427663314,
+            "wayId": 1181196269,
+            "name": "Suhrerstrasse",
+            "metres": 30.494476080230985,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 2.195602277776631
+          },
+          {
+            "from": 427663314,
+            "to": 427663312,
+            "wayId": 1181196270,
+            "name": "Suhrerstrasse",
+            "metres": 49.09111297283732,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 3.5345601340442876
+          },
+          {
+            "from": 427663312,
+            "to": 12643477559,
+            "wayId": 1181196270,
+            "name": "Suhrerstrasse",
+            "metres": 54.93464557521083,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 3.9552944814151796
+          },
+          {
+            "from": 12643477559,
+            "to": 4792329416,
+            "wayId": 1365324056,
+            "name": "Suhrerstrasse",
+            "metres": 31.38033711702419,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 2.259384272425742
+          },
+          {
+            "from": 4792329416,
+            "to": 12803815659,
+            "wayId": 1181196268,
+            "name": "Suhrerstrasse",
+            "metres": 32.335393172987274,
+            "maxspeed": "60",
+            "taggedKmh": 60,
+            "seconds": 1.9401235903792367
+          },
+          {
+            "from": 12803815659,
+            "to": 4792329412,
+            "wayId": 1181196268,
+            "name": "Suhrerstrasse",
+            "metres": 10.503377427263965,
+            "maxspeed": "60",
+            "taggedKmh": 60,
+            "seconds": 0.6302026456358379
+          },
+          {
+            "from": 4792329412,
+            "to": 4792329411,
+            "wayId": 1181196268,
+            "name": "Suhrerstrasse",
+            "metres": 43.813766148870336,
+            "maxspeed": "60",
+            "taggedKmh": 60,
+            "seconds": 2.62882596893222
+          },
+          {
+            "from": 4792329411,
+            "to": 12803815664,
+            "wayId": 1382945301,
+            "name": "Suhrerstrasse",
+            "metres": 29.413252759343617,
+            "maxspeed": "60",
+            "taggedKmh": 60,
+            "seconds": 1.764795165560617
+          },
+          {
+            "from": 12803815664,
+            "to": 4792329396,
+            "wayId": 486653204,
+            "name": "Suhrerstrasse",
+            "metres": 18.426439047382,
+            "maxspeed": "60",
+            "taggedKmh": 60,
+            "seconds": 1.10558634284292
+          },
+          {
+            "from": 4792329396,
+            "to": 12803815665,
+            "wayId": 486653204,
+            "name": "Suhrerstrasse",
+            "metres": 16.678916365584726,
+            "maxspeed": "60",
+            "taggedKmh": 60,
+            "seconds": 1.0007349819350835
+          },
+          {
+            "from": 12803815665,
+            "to": 12803815670,
+            "wayId": 1382945302,
+            "name": "Suhrerstrasse",
+            "metres": 26.432164180358686,
+            "maxspeed": "60",
+            "taggedKmh": 60,
+            "seconds": 1.5859298508215212
+          },
+          {
+            "from": 12803815670,
+            "to": 4792329399,
+            "wayId": 1382945302,
+            "name": "Suhrerstrasse",
+            "metres": 5.380877931927101,
+            "maxspeed": "60",
+            "taggedKmh": 60,
+            "seconds": 0.32285267591562605
+          },
+          {
+            "from": 4792329399,
+            "to": 4792329400,
+            "wayId": 486653216,
+            "name": "Suhrenmattstrasse",
+            "metres": 7.426975330651648,
+            "maxspeed": "60",
+            "taggedKmh": 60,
+            "seconds": 0.4456185198390989
+          },
+          {
+            "from": 4792329400,
+            "to": 12803815669,
+            "wayId": 486653216,
+            "name": "Suhrenmattstrasse",
+            "metres": 4.142336412728966,
+            "maxspeed": "60",
+            "taggedKmh": 60,
+            "seconds": 0.24854018476373796
+          },
+          {
+            "from": 12803815669,
+            "to": 4792329403,
+            "wayId": 486653216,
+            "name": "Suhrenmattstrasse",
+            "metres": 3.762623932207608,
+            "maxspeed": "60",
+            "taggedKmh": 60,
+            "seconds": 0.2257574359324565
+          },
+          {
+            "from": 4792329403,
+            "to": 12803815663,
+            "wayId": 1382945304,
+            "name": "Suhrenmattstrasse",
+            "metres": 1.8911280807497417,
+            "maxspeed": "60",
+            "taggedKmh": 60,
+            "seconds": 0.11346768484498451
+          },
+          {
+            "from": 12803815663,
+            "to": 4792329537,
+            "wayId": 1382945304,
+            "name": "Suhrenmattstrasse",
+            "metres": 2.13593776297869,
+            "maxspeed": "60",
+            "taggedKmh": 60,
+            "seconds": 0.1281562657787214
+          },
+          {
+            "from": 4792329537,
+            "to": 4792329398,
+            "wayId": 1382945304,
+            "name": "Suhrenmattstrasse",
+            "metres": 2.2179183122463377,
+            "maxspeed": "60",
+            "taggedKmh": 60,
+            "seconds": 0.13307509873478027
+          },
+          {
+            "from": 4792329398,
+            "to": 4792329536,
+            "wayId": 1382945304,
+            "name": "Suhrenmattstrasse",
+            "metres": 4.971504722500247,
+            "maxspeed": "60",
+            "taggedKmh": 60,
+            "seconds": 0.29829028335001484
+          },
+          {
+            "from": 4792329536,
+            "to": 4792329535,
+            "wayId": 1382945304,
+            "name": "Suhrenmattstrasse",
+            "metres": 18.327088809195086,
+            "maxspeed": "60",
+            "taggedKmh": 60,
+            "seconds": 1.099625328551705
+          },
+          {
+            "from": 4792329535,
+            "to": 4792329534,
+            "wayId": 569458866,
+            "name": "Suhrenmattstrasse",
+            "metres": 15.952210049980188,
+            "maxspeed": "60",
+            "taggedKmh": 60,
+            "seconds": 0.9571326029988113
+          },
+          {
+            "from": 4792329534,
+            "to": 4792329533,
+            "wayId": 569458866,
+            "name": "Suhrenmattstrasse",
+            "metres": 18.630228797217633,
+            "maxspeed": "60",
+            "taggedKmh": 60,
+            "seconds": 1.117813727833058
+          },
+          {
+            "from": 4792329533,
+            "to": 4792329532,
+            "wayId": 569458866,
+            "name": "Suhrenmattstrasse",
+            "metres": 20.720027180932313,
+            "maxspeed": "60",
+            "taggedKmh": 60,
+            "seconds": 1.2432016308559386
+          },
+          {
+            "from": 4792329532,
+            "to": 4792329531,
+            "wayId": 569458866,
+            "name": "Suhrenmattstrasse",
+            "metres": 37.3423789887295,
+            "maxspeed": "60",
+            "taggedKmh": 60,
+            "seconds": 2.2405427393237702
+          },
+          {
+            "from": 4792329531,
+            "to": 4792329530,
+            "wayId": 569458866,
+            "name": "Suhrenmattstrasse",
+            "metres": 23.227633461334708,
+            "maxspeed": "60",
+            "taggedKmh": 60,
+            "seconds": 1.3936580076800824
+          },
+          {
+            "from": 4792329530,
+            "to": 4792329529,
+            "wayId": 1493630952,
+            "name": "Suhrenmattstrasse",
+            "metres": 14.185400856182836,
+            "maxspeed": "60",
+            "taggedKmh": 60,
+            "seconds": 0.8511240513709701
+          },
+          {
+            "from": 4792329529,
+            "to": 4792329542,
+            "wayId": 1493630952,
+            "name": "Suhrenmattstrasse",
+            "metres": 14.238162406514427,
+            "maxspeed": "60",
+            "taggedKmh": 60,
+            "seconds": 0.8542897443908656
+          },
+          {
+            "from": 4792329542,
+            "to": 10773962327,
+            "wayId": 569458865,
+            "name": "Suhrenmattstrasse",
+            "metres": 19.8144875684199,
+            "maxspeed": "60",
+            "taggedKmh": 60,
+            "seconds": 1.1888692541051942
+          },
+          {
+            "from": 10773962327,
+            "to": 854446255,
+            "wayId": 569458865,
+            "name": "Suhrenmattstrasse",
+            "metres": 1.7750496744563375,
+            "maxspeed": "60",
+            "taggedKmh": 60,
+            "seconds": 0.10650298046738024
+          },
+          {
+            "from": 854446255,
+            "to": 651516263,
+            "wayId": 51075679,
+            "name": "roundabout",
+            "metres": 3.718608859401063,
+            "maxspeed": "60",
+            "taggedKmh": 60,
+            "seconds": 0.22311653156406377
+          },
+          {
+            "from": 651516263,
+            "to": 651516262,
+            "wayId": 51075679,
+            "name": "roundabout",
+            "metres": 3.7285411270156517,
+            "maxspeed": "60",
+            "taggedKmh": 60,
+            "seconds": 0.2237124676209391
+          },
+          {
+            "from": 651516262,
+            "to": 13669699326,
+            "wayId": 51075679,
+            "name": "roundabout",
+            "metres": 3.7209433360672786,
+            "maxspeed": "60",
+            "taggedKmh": 60,
+            "seconds": 0.2232566001640367
+          },
+          {
+            "from": 13669699326,
+            "to": 296942655,
+            "wayId": 51075679,
+            "name": "roundabout",
+            "metres": 3.7329193774171823,
+            "maxspeed": "60",
+            "taggedKmh": 60,
+            "seconds": 0.22397516264503095
+          },
+          {
+            "from": 296942655,
+            "to": 13669699327,
+            "wayId": 51075679,
+            "name": "roundabout",
+            "metres": 3.0919505877304547,
+            "maxspeed": "60",
+            "taggedKmh": 60,
+            "seconds": 0.1855170352638273
+          },
+          {
+            "from": 13669699327,
+            "to": 854446247,
+            "wayId": 51075679,
+            "name": "roundabout",
+            "metres": 3.0901214260751195,
+            "maxspeed": "60",
+            "taggedKmh": 60,
+            "seconds": 0.18540728556450717
+          },
+          {
+            "from": 854446247,
+            "to": 651516273,
+            "wayId": 51075679,
+            "name": "roundabout",
+            "metres": 3.095243080800331,
+            "maxspeed": "60",
+            "taggedKmh": 60,
+            "seconds": 0.18571458484801986
+          },
+          {
+            "from": 651516273,
+            "to": 854446248,
+            "wayId": 51075679,
+            "name": "roundabout",
+            "metres": 3.815640216877922,
+            "maxspeed": "60",
+            "taggedKmh": 60,
+            "seconds": 0.22893841301267534
+          },
+          {
+            "from": 854446248,
+            "to": 854446249,
+            "wayId": 51075679,
+            "name": "roundabout",
+            "metres": 3.822815119890865,
+            "maxspeed": "60",
+            "taggedKmh": 60,
+            "seconds": 0.2293689071934519
+          },
+          {
+            "from": 854446249,
+            "to": 854446250,
+            "wayId": 51075679,
+            "name": "roundabout",
+            "metres": 3.8145902280388726,
+            "maxspeed": "60",
+            "taggedKmh": 60,
+            "seconds": 0.22887541368233236
+          },
+          {
+            "from": 854446250,
+            "to": 651515835,
+            "wayId": 51075679,
+            "name": "roundabout",
+            "metres": 3.8169071281046034,
+            "maxspeed": "60",
+            "taggedKmh": 60,
+            "seconds": 0.22901442768627622
+          },
+          {
+            "from": 651515835,
+            "to": 10773962325,
+            "wayId": 51075760,
+            "name": "Suhrenmattstrasse",
+            "metres": 3.033858764554049,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 0.21843783104789152
+          },
+          {
+            "from": 10773962325,
+            "to": 4792329550,
+            "wayId": 51075760,
+            "name": "Suhrenmattstrasse",
+            "metres": 10.403858840637888,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 0.749077836525928
+          },
+          {
+            "from": 4792329550,
+            "to": 1762458597,
+            "wayId": 51075760,
+            "name": "Suhrenmattstrasse",
+            "metres": 13.773249201575524,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 0.9916739425134378
+          },
+          {
+            "from": 1762458597,
+            "to": 4792329545,
+            "wayId": 51075760,
+            "name": "Suhrenmattstrasse",
+            "metres": 11.298223558521611,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 0.813472096213556
+          },
+          {
+            "from": 4792329545,
+            "to": 4792329549,
+            "wayId": 51075760,
+            "name": "Suhrenmattstrasse",
+            "metres": 11.676525396146955,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 0.8407098285225808
+          },
+          {
+            "from": 4792329549,
+            "to": 4792329546,
+            "wayId": 51075760,
+            "name": "Suhrenmattstrasse",
+            "metres": 15.124126938817561,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 1.0889371395948644
+          },
+          {
+            "from": 4792329546,
+            "to": 651515407,
+            "wayId": 51075760,
+            "name": "Suhrenmattstrasse",
+            "metres": 15.572342983961848,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 1.121208694845253
+          },
+          {
+            "from": 651515407,
+            "to": 1762458598,
+            "wayId": 51075760,
+            "name": "Suhrenmattstrasse",
+            "metres": 19.094957022825625,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 1.374836905643445
+          },
+          {
+            "from": 1762458598,
+            "to": 3103750945,
+            "wayId": 51075760,
+            "name": "Suhrenmattstrasse",
+            "metres": 22.230605553477965,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 1.6006035998504133
+          },
+          {
+            "from": 3103750945,
+            "to": 3103750887,
+            "wayId": 51075760,
+            "name": "Suhrenmattstrasse",
+            "metres": 48.2542459464006,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 3.4743057081408435
+          },
+          {
+            "from": 3103750887,
+            "to": 7105600425,
+            "wayId": 51075760,
+            "name": "Suhrenmattstrasse",
+            "metres": 4.603515359136372,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 0.3314531058578188
+          },
+          {
+            "from": 7105600425,
+            "to": 1762458599,
+            "wayId": 51075760,
+            "name": "Suhrenmattstrasse",
+            "metres": 14.232074975679446,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 1.0247093982489202
+          },
+          {
+            "from": 1762458599,
+            "to": 11232508366,
+            "wayId": 51075760,
+            "name": "Suhrenmattstrasse",
+            "metres": 26.169812949503502,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 1.8842265323642522
+          },
+          {
+            "from": 11232508366,
+            "to": 11232508368,
+            "wayId": 51075760,
+            "name": "Suhrenmattstrasse",
+            "metres": 46.197719693409034,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 3.3262358179254505
+          },
+          {
+            "from": 11232508368,
+            "to": 6835533728,
+            "wayId": 51075760,
+            "name": "Suhrenmattstrasse",
+            "metres": 33.768668540816435,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 2.4313441349387834
+          },
+          {
+            "from": 6835533728,
+            "to": 1228162317,
+            "wayId": 51075760,
+            "name": "Suhrenmattstrasse",
+            "metres": 92.97043215038134,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 6.693871114827457
+          },
+          {
+            "from": 1228162317,
+            "to": 651516404,
+            "wayId": 164633194,
+            "name": "Suhrenmattstrasse",
+            "metres": 5.29478379183217,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 0.3812244330119163
+          },
+          {
+            "from": 651516404,
+            "to": 280563553,
+            "wayId": 51075757,
+            "name": "Suhrenmattstrasse",
+            "metres": 24.878573337619873,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 1.7912572803086309
+          },
+          {
+            "from": 280563553,
+            "to": 1228162300,
+            "wayId": 48874048,
+            "name": "Suhrenmattstrasse",
+            "metres": 5.337781218012609,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 0.38432024769690787
+          },
+          {
+            "from": 1228162300,
+            "to": 280563551,
+            "wayId": 48874048,
+            "name": "Suhrenmattstrasse",
+            "metres": 33.51347713984118,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 2.412970354068565
+          },
+          {
+            "from": 280563551,
+            "to": 10773962318,
+            "wayId": 47331048,
+            "name": "Binzmattweg",
+            "metres": 2.8480704617070236,
+            "maxspeed": "30",
+            "taggedKmh": 30,
+            "seconds": 0.34176845540484285
+          },
+          {
+            "from": 10773962318,
+            "to": 1193432909,
+            "wayId": 47331048,
+            "name": "Binzmattweg",
+            "metres": 82.83601662238189,
+            "maxspeed": "30",
+            "taggedKmh": 30,
+            "seconds": 9.940321994685826
+          },
+          {
+            "from": 1193432909,
+            "to": 2582157686,
+            "wayId": 47331048,
+            "name": "Binzmattweg",
+            "metres": 14.647764330004412,
+            "maxspeed": "30",
+            "taggedKmh": 30,
+            "seconds": 1.7577317196005295
+          },
+          {
+            "from": 2582157686,
+            "to": 1193433025,
+            "wayId": 47331048,
+            "name": "Binzmattweg",
+            "metres": 14.340540561269384,
+            "maxspeed": "30",
+            "taggedKmh": 30,
+            "seconds": 1.7208648673523261
+          },
+          {
+            "from": 1193433025,
+            "to": 1193432806,
+            "wayId": 47331048,
+            "name": "Binzmattweg",
+            "metres": 36.636913665732166,
+            "maxspeed": "30",
+            "taggedKmh": 30,
+            "seconds": 4.39642963988786
+          },
+          {
+            "from": 1193432806,
+            "to": 7245892327,
+            "wayId": 47331048,
+            "name": "Binzmattweg",
+            "metres": 35.94212824643152,
+            "maxspeed": "30",
+            "taggedKmh": 30,
+            "seconds": 4.313055389571782
+          },
+          {
+            "from": 7245892327,
+            "to": 3103748087,
+            "wayId": 47331048,
+            "name": "Binzmattweg",
+            "metres": 7.603628698879963,
+            "maxspeed": "30",
+            "taggedKmh": 30,
+            "seconds": 0.9124354438655956
+          },
+          {
+            "from": 3103748087,
+            "to": 3103748072,
+            "wayId": 47331048,
+            "name": "Binzmattweg",
+            "metres": 2.6951709654624367,
+            "maxspeed": "30",
+            "taggedKmh": 30,
+            "seconds": 0.3234205158554924
+          },
+          {
+            "from": 3103748072,
+            "to": 7178926253,
+            "wayId": 47331048,
+            "name": "Binzmattweg",
+            "metres": 57.4854261005888,
+            "maxspeed": "30",
+            "taggedKmh": 30,
+            "seconds": 6.898251132070657
+          },
+          {
+            "from": 7178926253,
+            "to": 11026519281,
+            "wayId": 47331048,
+            "name": "Binzmattweg",
+            "metres": 12.706119240226503,
+            "maxspeed": "30",
+            "taggedKmh": 30,
+            "seconds": 1.5247343088271803
+          },
+          {
+            "from": 11026519281,
+            "to": 6757795827,
+            "wayId": 47331048,
+            "name": "Binzmattweg",
+            "metres": 2.389007281828867,
+            "maxspeed": "30",
+            "taggedKmh": 30,
+            "seconds": 0.28668087381946405
+          },
+          {
+            "from": 6757795827,
+            "to": 7178926252,
+            "wayId": 47331048,
+            "name": "Binzmattweg",
+            "metres": 7.223299433878712,
+            "maxspeed": "30",
+            "taggedKmh": 30,
+            "seconds": 0.8667959320654456
+          },
+          {
+            "from": 7178926252,
+            "to": 602802312,
+            "wayId": 47331048,
+            "name": "Binzmattweg",
+            "metres": 27.977740431582,
+            "maxspeed": "30",
+            "taggedKmh": 30,
+            "seconds": 3.35732885178984
+          }
+        ],
+        "taggedMinimumSeconds": 135.79377826424468,
+        "metres": 1754.6690740658867,
+        "untaggedMetres": 0,
+        "nodePath": [
+          266859071,
+          641306123,
+          3123152686,
+          427663317,
+          641306119,
+          4243330702,
+          13651038292,
+          3123152746,
+          13651038293,
+          427663315,
+          2613502146,
+          641306313,
+          9520423168,
+          9070237652,
+          427663310,
+          2613502152,
+          3103769131,
+          3103769145,
+          3103769153,
+          3103769146,
+          3103769154,
+          3195166883,
+          10969684859,
+          3103765633,
+          427663314,
+          427663312,
+          12643477559,
+          4792329416,
+          12803815659,
+          4792329412,
+          4792329411,
+          12803815664,
+          4792329396,
+          12803815665,
+          12803815670,
+          4792329399,
+          4792329400,
+          12803815669,
+          4792329403,
+          12803815663,
+          4792329537,
+          4792329398,
+          4792329536,
+          4792329535,
+          4792329534,
+          4792329533,
+          4792329532,
+          4792329531,
+          4792329530,
+          4792329529,
+          4792329542,
+          10773962327,
+          854446255,
+          651516263,
+          651516262,
+          13669699326,
+          296942655,
+          13669699327,
+          854446247,
+          651516273,
+          854446248,
+          854446249,
+          854446250,
+          651515835,
+          10773962325,
+          4792329550,
+          1762458597,
+          4792329545,
+          4792329549,
+          4792329546,
+          651515407,
+          1762458598,
+          3103750945,
+          3103750887,
+          7105600425,
+          1762458599,
+          11232508366,
+          11232508368,
+          6835533728,
+          1228162317,
+          651516404,
+          280563553,
+          1228162300,
+          280563551,
+          10773962318,
+          1193432909,
+          2582157686,
+          1193433025,
+          1193432806,
+          7245892327,
+          3103748087,
+          3103748072,
+          7178926253,
+          11026519281,
+          6757795827,
+          7178926252,
+          602802312
+        ],
+        "path": [
+          [
+            8.0468597,
+            47.3568218
+          ],
+          [
+            8.0469021,
+            47.3568509
+          ],
+          [
+            8.0470102,
+            47.3569135
+          ],
+          [
+            8.0470467,
+            47.3569346
+          ],
+          [
+            8.0473279,
+            47.3570694
+          ],
+          [
+            8.0477343,
+            47.3572634
+          ],
+          [
+            8.0480721,
+            47.3574275
+          ],
+          [
+            8.0481265,
+            47.3574539
+          ],
+          [
+            8.0481711,
+            47.3574742
+          ],
+          [
+            8.0483469,
+            47.3575544
+          ],
+          [
+            8.0484033,
+            47.3575756
+          ],
+          [
+            8.0488025,
+            47.3577136
+          ],
+          [
+            8.0489367,
+            47.3577561
+          ],
+          [
+            8.0492102,
+            47.3578393
+          ],
+          [
+            8.0494088,
+            47.3578998
+          ],
+          [
+            8.0495525,
+            47.3579454
+          ],
+          [
+            8.0498496,
+            47.358038
+          ],
+          [
+            8.0502363,
+            47.3581587
+          ],
+          [
+            8.0505699,
+            47.3582627
+          ],
+          [
+            8.0508047,
+            47.3583359
+          ],
+          [
+            8.0510051,
+            47.3583989
+          ],
+          [
+            8.051222,
+            47.3584661
+          ],
+          [
+            8.0513616,
+            47.35851
+          ],
+          [
+            8.0513976,
+            47.3585212
+          ],
+          [
+            8.0517649,
+            47.3586358
+          ],
+          [
+            8.0523528,
+            47.3588252
+          ],
+          [
+            8.0530206,
+            47.3590224
+          ],
+          [
+            8.053399,
+            47.3591397
+          ],
+          [
+            8.0538077,
+            47.3592276
+          ],
+          [
+            8.0539383,
+            47.3592604
+          ],
+          [
+            8.054473,
+            47.3594144
+          ],
+          [
+            8.0548246,
+            47.3595288
+          ],
+          [
+            8.0550442,
+            47.3596014
+          ],
+          [
+            8.0552432,
+            47.3596668
+          ],
+          [
+            8.0555586,
+            47.3597704
+          ],
+          [
+            8.0556228,
+            47.3597915
+          ],
+          [
+            8.0556986,
+            47.3598341
+          ],
+          [
+            8.0557313,
+            47.359864
+          ],
+          [
+            8.055746,
+            47.3598963
+          ],
+          [
+            8.0557506,
+            47.359913
+          ],
+          [
+            8.0557533,
+            47.3599321
+          ],
+          [
+            8.0557466,
+            47.3599515
+          ],
+          [
+            8.0557185,
+            47.3599919
+          ],
+          [
+            8.0556045,
+            47.3601373
+          ],
+          [
+            8.0554807,
+            47.3602535
+          ],
+          [
+            8.0553292,
+            47.3603857
+          ],
+          [
+            8.0551542,
+            47.3605292
+          ],
+          [
+            8.0548188,
+            47.360776
+          ],
+          [
+            8.0545983,
+            47.3609217
+          ],
+          [
+            8.0544614,
+            47.3610091
+          ],
+          [
+            8.0543211,
+            47.3610947
+          ],
+          [
+            8.0541352,
+            47.3612205
+          ],
+          [
+            8.0541183,
+            47.3612316
+          ],
+          [
+            8.0541363,
+            47.3612627
+          ],
+          [
+            8.05414,
+            47.3612961
+          ],
+          [
+            8.0541291,
+            47.3613287
+          ],
+          [
+            8.0541045,
+            47.3613578
+          ],
+          [
+            8.0540753,
+            47.3613773
+          ],
+          [
+            8.05404,
+            47.3613914
+          ],
+          [
+            8.0540006,
+            47.3613992
+          ],
+          [
+            8.05395,
+            47.3613995
+          ],
+          [
+            8.0539015,
+            47.3613895
+          ],
+          [
+            8.0538598,
+            47.3613701
+          ],
+          [
+            8.0538286,
+            47.3613431
+          ],
+          [
+            8.0537934,
+            47.3613563
+          ],
+          [
+            8.0536728,
+            47.3614017
+          ],
+          [
+            8.0535103,
+            47.3614582
+          ],
+          [
+            8.0533775,
+            47.3615052
+          ],
+          [
+            8.053237,
+            47.3615493
+          ],
+          [
+            8.0530517,
+            47.3616013
+          ],
+          [
+            8.0528574,
+            47.3616487
+          ],
+          [
+            8.0526145,
+            47.3616972
+          ],
+          [
+            8.0523305,
+            47.3617508
+          ],
+          [
+            8.0517112,
+            47.36186
+          ],
+          [
+            8.0516526,
+            47.3618716
+          ],
+          [
+            8.0514729,
+            47.3619107
+          ],
+          [
+            8.0511472,
+            47.3619919
+          ],
+          [
+            8.0506063,
+            47.3621868
+          ],
+          [
+            8.0502344,
+            47.3623558
+          ],
+          [
+            8.0492121,
+            47.3628227
+          ],
+          [
+            8.0491533,
+            47.3628487
+          ],
+          [
+            8.048879,
+            47.3629729
+          ],
+          [
+            8.0488206,
+            47.363
+          ],
+          [
+            8.0484503,
+            47.3631665
+          ],
+          [
+            8.0484279,
+            47.3631459
+          ],
+          [
+            8.0477747,
+            47.3625476
+          ],
+          [
+            8.0476323,
+            47.3624581
+          ],
+          [
+            8.0474911,
+            47.3623718
+          ],
+          [
+            8.047069,
+            47.3622088
+          ],
+          [
+            8.0467378,
+            47.3619766
+          ],
+          [
+            8.0466677,
+            47.3619275
+          ],
+          [
+            8.046643,
+            47.36191
+          ],
+          [
+            8.0461121,
+            47.3615394
+          ],
+          [
+            8.0459969,
+            47.3614561
+          ],
+          [
+            8.0459753,
+            47.3614404
+          ],
+          [
+            8.0459091,
+            47.3613935
+          ],
+          [
+            8.045654,
+            47.361211
+          ]
+        ]
+      },
+      "sourceSeconds": 120,
+      "minimumExcessSeconds": 15.79377826424468,
+      "disposition": "hold-detour-source-time-reconciliation"
+    },
+    {
+      "patternId": "3ab4ac07008d40d49bca",
+      "routeId": "92-A07-9-j26-1",
+      "agencyId": "7244",
+      "directionId": "0",
+      "segmentIndex": 5,
+      "fromStop": [
+        8.04544643,
+        47.36130535,
+        "Oberentfelden, Uerkenbrücke",
+        "A",
+        "ch:1:sloid:10267::1"
+      ],
+      "toStop": [
+        8.04668611,
+        47.3561694,
+        "Oberentfelden, Engelplatz",
+        "",
+        "ch:1:sloid:10268"
+      ],
+      "fullStops": [
+        [
+          8.05248024,
+          47.39104625,
+          "Aarau, Bahnhof Süd",
+          "",
+          "ch:1:sloid:11309"
+        ],
+        [
+          8.05066564,
+          47.38315794,
+          "Aarau, Binzenhof",
+          "A",
+          "ch:1:sloid:10263::1"
+        ],
+        [
+          8.04753052,
+          47.37280464,
+          "Unterentfelden, Am Distelberg",
+          "A",
+          "ch:1:sloid:10264::1"
+        ],
+        [
+          8.04458405,
+          47.36894748,
+          "Unterentfelden, Post",
+          "A",
+          "ch:1:sloid:10265::1"
+        ],
+        [
+          8.04214063,
+          47.36472497,
+          "Unterentfelden, Oberdorf",
+          "A",
+          "ch:1:sloid:10266::1"
+        ],
+        [
+          8.04544643,
+          47.36130535,
+          "Oberentfelden, Uerkenbrücke",
+          "A",
+          "ch:1:sloid:10267::1"
+        ],
+        [
+          8.04668611,
+          47.3561694,
+          "Oberentfelden, Engelplatz",
+          "",
+          "ch:1:sloid:10268"
+        ],
+        [
+          8.05224668,
+          47.34439257,
+          "Muhen Nord, Bahnhof",
+          "",
+          "ch:1:sloid:10269"
+        ],
+        [
+          8.05363008,
+          47.33885321,
+          "Muhen, Bahnhof",
+          "",
+          "ch:1:sloid:10270"
+        ],
+        [
+          8.05488773,
+          47.33450653,
+          "Mittelmuhen, Bahnhof",
+          "",
+          "ch:1:sloid:10273"
+        ],
+        [
+          8.05563333,
+          47.32867996,
+          "Obermuhen, Bahnhof",
+          "",
+          "ch:1:sloid:10274"
+        ],
+        [
+          8.05301025,
+          47.32039867,
+          "Hirschthal, Bahnhof",
+          "",
+          "ch:1:sloid:10271"
+        ],
+        [
+          8.05121362,
+          47.31151311,
+          "Schöftland Nordweg, Bahnhof",
+          "",
+          "ch:1:sloid:89888"
+        ],
+        [
+          8.05007276,
+          47.30559872,
+          "Schöftland, Bahnhof",
+          "",
+          "ch:1:sloid:72648"
+        ]
+      ],
+      "templates": [
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.23.j26",
+          "shortName": "9143",
+          "sha256": "ec799f9ca2b3b4611d92bfe77a17d8c5a243e915a1cac435bf9d01052ed3fb4d",
+          "activeServiceDates": [
+            "2026-09-12"
+          ],
+          "sourceSeconds": 120,
+          "departure": 39720,
+          "arrival": 39840
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.24.j26",
+          "shortName": "9249",
+          "sha256": "7ae6e8a6eadb025ed69470073f3e9837b0d279204c3b8932653ad7b2de1d75db",
+          "activeServiceDates": [
+            "2026-09-12"
+          ],
+          "sourceSeconds": 120,
+          "departure": 89340,
+          "arrival": 89460
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.25.j26",
+          "shortName": "9175",
+          "sha256": "08f05ff53da8064f5a91f7109632f9c8f61d5dd3ae6676b14256f53e746303fd",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 54120,
+          "arrival": 54240
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.26.j26",
+          "shortName": "9107",
+          "sha256": "b6db3a263ac1753a4c9f9e60daa6a931c84db6a3c47020537743faf6b01bd200",
+          "activeServiceDates": [
+            "2026-09-12"
+          ],
+          "sourceSeconds": 120,
+          "departure": 23520,
+          "arrival": 23640
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.27.j26",
+          "shortName": "9181",
+          "sha256": "0bbb9b30eeeced8ac6e377dc7a7e6f9ef1698c83641ae977fccc88547ab32b22",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 57000,
+          "arrival": 57120
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.28.j26",
+          "shortName": "9183",
+          "sha256": "f99e656d80589df216e03c53431fe0e957d7c16fe9ba5019024a192f384164da",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 57720,
+          "arrival": 57840
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.29.j26",
+          "shortName": "9219",
+          "sha256": "c7c7eeaaa0b2be47da169703ac65178564aa5e08b0e0dd2917c9367f6f25151a",
+          "activeServiceDates": [
+            "2026-09-12"
+          ],
+          "sourceSeconds": 120,
+          "departure": 73920,
+          "arrival": 74040
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.30.j26",
+          "shortName": "9213",
+          "sha256": "f23a4417269413c12c25b9d00d0bcfc0a3ef05ef0c01e27da8446717cc93c629",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 71400,
+          "arrival": 71520
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.31.j26",
+          "shortName": "9167",
+          "sha256": "2f9729dd6b929a9072cd87d20f02918869552f3ee03a98305f4965b1c0b3db44",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 50520,
+          "arrival": 50640
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.32.j26",
+          "shortName": "9191",
+          "sha256": "21c94cb2c62fcbbda92f3f34c42a710f0831a1ddd3e70ec8981caca1177cacb3",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 61320,
+          "arrival": 61440
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.33.j26",
+          "shortName": "9103",
+          "sha256": "81969b7d21c8f2b826a5f1e38e18ccd95df1684af568b67aaade55822042d39c",
+          "activeServiceDates": [
+            "2026-09-12"
+          ],
+          "sourceSeconds": 120,
+          "departure": 21720,
+          "arrival": 21840
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.34.j26",
+          "shortName": "9111",
+          "sha256": "2aa6e30320aa228b45fd5eae6768d80c799134ae0df5b41f7780e20ed7fff84b",
+          "activeServiceDates": [
+            "2026-09-12"
+          ],
+          "sourceSeconds": 120,
+          "departure": 25320,
+          "arrival": 25440
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.35.j26",
+          "shortName": "9151",
+          "sha256": "bc5b9b75de34ef5423d9c05fa2b00b1355ccb21fcfe6894134e37fc2ea56ca67",
+          "activeServiceDates": [
+            "2026-09-12"
+          ],
+          "sourceSeconds": 120,
+          "departure": 43320,
+          "arrival": 43440
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.36.j26",
+          "shortName": "9101",
+          "sha256": "c52f7050b6cc302214d61835eda0be6a8912c6f2a5990bf71610539d5076fb7d",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 21000,
+          "arrival": 21120
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.37.j26",
+          "shortName": "9177",
+          "sha256": "114aaa5ec2ad83b183709af9813ccabcf30c1750fae93ef840a2a6eddd6a7373",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 55200,
+          "arrival": 55320
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.38.j26",
+          "shortName": "9189",
+          "sha256": "3ebcda5ca432cdb9bd7ba876c1de4633db98db9e7f53900affcbb56371b5510a",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 60600,
+          "arrival": 60720
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.39.j26",
+          "shortName": "9113",
+          "sha256": "319d2cab2f64c3fe89a61ba3a42970b62989dc1c21ddfb3d72271e8095cb24ce",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 26400,
+          "arrival": 26520
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.40.j26",
+          "shortName": "9203",
+          "sha256": "012e2488b8ceed020c2d15408833c08477b147f1c099cff5fd924521d6738788",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 66720,
+          "arrival": 66840
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.41.j26",
+          "shortName": "9217",
+          "sha256": "92365b2239d811876dbf7fa3ef8d699ba09ac50f1844c0e458841662e5cbfa17",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 73200,
+          "arrival": 73320
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.42.j26",
+          "shortName": "9205",
+          "sha256": "71fffd99f458b7f5680e4ec3707d5e9c329bd728a7a4e632f1bd67452ea15613",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 67800,
+          "arrival": 67920
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.43.j26",
+          "shortName": "9105",
+          "sha256": "3141f02210ddd20323850110d4dc625fee015ab0ff88fe70ecc13b6caf5a0c35",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 22800,
+          "arrival": 22920
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.44.j26",
+          "shortName": "9245",
+          "sha256": "cefbe3f8b374c23e7cb10e7d25dabed10b67fe6b31203579513fddd5f238752f",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 85800,
+          "arrival": 85920
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.45.j26",
+          "shortName": "9171",
+          "sha256": "4b9162a43636602721867951e42ff2967c79f1f5ae77542cd05e57f504235f5a",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 52320,
+          "arrival": 52440
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.46.j26",
+          "shortName": "9953",
+          "sha256": "d015d9dbac9c03a97e30be796e4b4cf3b177d84407491ac35cbd620c159b8a3f",
+          "activeServiceDates": [
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 44400,
+          "arrival": 44520
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.47.j26",
+          "shortName": "9209",
+          "sha256": "f4619b735a775eb5460d9f7d69f4a6be9e9eae4c9b81618879a2ce2708c55ac5",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 69600,
+          "arrival": 69720
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.48.j26",
+          "shortName": "9119",
+          "sha256": "4ef42adddcb0e90776bcfb8501cc447e6a45f5931260aef5a071d558a3c39e2d",
+          "activeServiceDates": [
+            "2026-09-12"
+          ],
+          "sourceSeconds": 120,
+          "departure": 28920,
+          "arrival": 29040
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.49.j26",
+          "shortName": "9207",
+          "sha256": "3f913530b05778cb49607f11330a0e54af4c6a2dbd337eec4545d77c962855fe",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 68520,
+          "arrival": 68640
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.50.j26",
+          "shortName": "9193",
+          "sha256": "1802e25b53de1931946d031e089081f8c6db7426bd5b97877da008b148f7e83e",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 62400,
+          "arrival": 62520
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.51.j26",
+          "shortName": "9153",
+          "sha256": "0232d627dbd80d02c1becd20a6ee636a64cd00c5af99a0852b0f69742e3a4856",
+          "activeServiceDates": [
+            "2026-09-12"
+          ],
+          "sourceSeconds": 120,
+          "departure": 44400,
+          "arrival": 44520
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.52.j26",
+          "shortName": "9161",
+          "sha256": "b3505d7afeafbad25b13af51a5d5c0c921cb7bd74f9776b57880b8a48132550a",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 48000,
+          "arrival": 48120
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.53.j26",
+          "shortName": "9109",
+          "sha256": "f9545cf22bb09c7f1d9a4602ed96862009b0269df52bf71cc657c6f64ed5e3e4",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 24600,
+          "arrival": 24720
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.54.j26",
+          "shortName": "9145",
+          "sha256": "9ecfcfe39aa6c59e0f4bd51d8f66063575fa318414730145d737cbf75838f605",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 40800,
+          "arrival": 40920
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.55.j26",
+          "shortName": "9211",
+          "sha256": "e03a0ad81fe9048ffa014d67bf44f9f80ed595e4c0da3d88f7476a02789d20a7",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 70320,
+          "arrival": 70440
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.56.j26",
+          "shortName": "9179",
+          "sha256": "53c2c25fa652711a4319f4fe0fb134757369676628d51ae10dc267c1102e0316",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 55920,
+          "arrival": 56040
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.57.j26",
+          "shortName": "9173",
+          "sha256": "48a895bde8e62583fdb7f9a3b6241d001a8416081e98422292da4ffb4070dceb",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 53400,
+          "arrival": 53520
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.58.j26",
+          "shortName": "9147",
+          "sha256": "58ffb02a6218bc4a21a1eb89db0b725fe8e57783a3067429033c68c623ead46d",
+          "activeServiceDates": [
+            "2026-09-12"
+          ],
+          "sourceSeconds": 120,
+          "departure": 41520,
+          "arrival": 41640
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.59.j26",
+          "shortName": "9121",
+          "sha256": "afbdcd94c79e3e0e49ba007a52f96fb4dbe1788a9bc58ad2057648c2b15e8222",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 30000,
+          "arrival": 30120
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.60.j26",
+          "shortName": "9117",
+          "sha256": "4e2e27e8f148bf01282db3699cd9d6b1eaec78405f1a0898fba522e45ffa5c5e",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 28200,
+          "arrival": 28320
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.61.j26",
+          "shortName": "9135",
+          "sha256": "26c0bc4b38d226951174db1ad8e77e7b8f0cb7c7dcc94051d61a03aa36e3d774",
+          "activeServiceDates": [
+            "2026-09-12"
+          ],
+          "sourceSeconds": 120,
+          "departure": 36120,
+          "arrival": 36240
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.62.j26",
+          "shortName": "9165",
+          "sha256": "a6cdff39f173441522d3fbadd92675310dfa505021305fe9a5eb40c13f4584e9",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 49800,
+          "arrival": 49920
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.63.j26",
+          "shortName": "9137",
+          "sha256": "edd9e809febb8ce4cbfb2d52af1490972764cbfcf3853e49ebfeadcdb2140892",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 37200,
+          "arrival": 37320
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.64.j26",
+          "shortName": "9131",
+          "sha256": "5c40a36abf6d2445e97b2537d6f10cdeb597cb51db1ba09bbc45006957c0b09f",
+          "activeServiceDates": [
+            "2026-09-12"
+          ],
+          "sourceSeconds": 120,
+          "departure": 34320,
+          "arrival": 34440
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.65.j26",
+          "shortName": "9129",
+          "sha256": "5e59fa2354e39a88a8d912189c64aac5cf3f4a53153e51cd20abf76f12a018b0",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 33600,
+          "arrival": 33720
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.66.j26",
+          "shortName": "9225",
+          "sha256": "5e8ebdae75fcb423a15c158cb53fc9b8af6b1ee62248e1980a4189c356fd1239",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 76800,
+          "arrival": 76920
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.67.j26",
+          "shortName": "9127",
+          "sha256": "6d2c355bbd4881e11a9bb1ae64b4c80d4b681db9318a47acacafad97c0be1512",
+          "activeServiceDates": [
+            "2026-09-12"
+          ],
+          "sourceSeconds": 120,
+          "departure": 32520,
+          "arrival": 32640
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.68.j26",
+          "shortName": "9123",
+          "sha256": "d9b306d9709b07083b1e39a903c0f3a632ad7d18961b0274d33fe88675767a68",
+          "activeServiceDates": [
+            "2026-09-12"
+          ],
+          "sourceSeconds": 120,
+          "departure": 30720,
+          "arrival": 30840
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.69.j26",
+          "shortName": "9233",
+          "sha256": "3df4ee73cee2dd32407da170dad78b73ff1a5376143ebf5a7c24037dc895b49d",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 80400,
+          "arrival": 80520
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.70.j26",
+          "shortName": "9231",
+          "sha256": "e8229cdf72f8706d2098fbb7a261f7334f40afcce31cfb397f498d2fe17bf989",
+          "activeServiceDates": [
+            "2026-09-12"
+          ],
+          "sourceSeconds": 120,
+          "departure": 79320,
+          "arrival": 79440
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.71.j26",
+          "shortName": "9195",
+          "sha256": "e25e098214351e4891369b5adc7227726c931a23dd67fd6f59591bf157d9d197",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 63120,
+          "arrival": 63240
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.72.j26",
+          "shortName": "9155",
+          "sha256": "0f6b7239addfd4252133ed0b7c98978e45e92452c49dc4b9da3519ea3975f615",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 45120,
+          "arrival": 45240
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.73.j26",
+          "shortName": "9229",
+          "sha256": "3991e33de01b43739c7f378f561343d85c68f807ebf5e1118349d6c23924b5cb",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 78600,
+          "arrival": 78720
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.74.j26",
+          "shortName": "9243",
+          "sha256": "387cce57687624c6fa62bb4fc8ca9f1a4ea0cefa1bfbbec3bbc05be815e9566c",
+          "activeServiceDates": [
+            "2026-09-12"
+          ],
+          "sourceSeconds": 120,
+          "departure": 84720,
+          "arrival": 84840
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.75.j26",
+          "shortName": "9159",
+          "sha256": "b1ea7c640c45bdb37bf957ce70c1d5393c4c0f0b6af7ceabb8d64b7e608735a8",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 46920,
+          "arrival": 47040
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.76.j26",
+          "shortName": "9237",
+          "sha256": "c88ee4a35849c7106d116c334422dd1073595c95d031122bd3c03dbdee439ba1",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 82200,
+          "arrival": 82320
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.77.j26",
+          "shortName": "9197",
+          "sha256": "c01da86685c07eda4c61910a6278b1ad24886858e2fec188f694926dfac6c4e9",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 64200,
+          "arrival": 64320
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.78.j26",
+          "shortName": "9115",
+          "sha256": "f0e97d632ea3c20bc0bf0c93d88456eca0d2d7d4a28b0c96bb92846f69fb74bb",
+          "activeServiceDates": [
+            "2026-09-12"
+          ],
+          "sourceSeconds": 120,
+          "departure": 27120,
+          "arrival": 27240
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.79.j26",
+          "shortName": "9139",
+          "sha256": "d67db253bccfbd1e79076f9c61b864e1a5ee9b229d81bcdb0ca9a5b9fed8b0f4",
+          "activeServiceDates": [
+            "2026-09-12"
+          ],
+          "sourceSeconds": 120,
+          "departure": 37920,
+          "arrival": 38040
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.80.j26",
+          "shortName": "9157",
+          "sha256": "892d63c5ba22561c099ab7feeee8621fbca285668e3df5333b4f0d81aa23639f",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 46200,
+          "arrival": 46320
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.81.j26",
+          "shortName": "9141",
+          "sha256": "a5d051e2d3fe7de16057885a8c1f3fc4ab215c5fa751d01765645cd9c0d31342",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 39000,
+          "arrival": 39120
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.82.j26",
+          "shortName": "9239",
+          "sha256": "4c9dc3994ccbbb7be1bd17541241c463dccd447b788bea1992982120fba1c2d8",
+          "activeServiceDates": [
+            "2026-09-12"
+          ],
+          "sourceSeconds": 120,
+          "departure": 82920,
+          "arrival": 83040
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.83.j26",
+          "shortName": "9199",
+          "sha256": "13827b10825f20d3e6fa8bfd0bf6918c48affb08532488653467e2b8c676ddc7",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 64920,
+          "arrival": 65040
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.84.j26",
+          "shortName": "9215",
+          "sha256": "fe65f6436fddadc4cfe163fd67aac78a38679cdd150bc647d3a4ca2d0de724bf",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 72120,
+          "arrival": 72240
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.85.j26",
+          "shortName": "9187",
+          "sha256": "36ebe57abd9710ad0144dc9e7335a20ac412246905cfd6c35df18f55a9c9e034",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 59520,
+          "arrival": 59640
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.86.j26",
+          "shortName": "9247",
+          "sha256": "5ded2c1b81370fdfefd10f9170bb1acdce5d04f3703477ee21b48927e4678c4f",
+          "activeServiceDates": [
+            "2026-09-12"
+          ],
+          "sourceSeconds": 120,
+          "departure": 87900,
+          "arrival": 88020
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.87.j26",
+          "shortName": "9163",
+          "sha256": "e014d3c53069413d47bae8a12c10929bdd94eb8a51c1aac3205b5fbe8739eefe",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 48720,
+          "arrival": 48840
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.88.j26",
+          "shortName": "9221",
+          "sha256": "98a98ce17d51bee84b5248966212f1196b7ab5925d4740157b2cb29b56083e8a",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 75000,
+          "arrival": 75120
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.89.j26",
+          "shortName": "9169",
+          "sha256": "6cf149c6285571f46f2931741f0b4f9a65bb0818460814b6925f2c4393d40f89",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 51600,
+          "arrival": 51720
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.90.j26",
+          "shortName": "9149",
+          "sha256": "fa27f946ddba77d436c17675cd034dcb369532e4b3780222ad2c0946470058a8",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 42600,
+          "arrival": 42720
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.91.j26",
+          "shortName": "9185",
+          "sha256": "fe1b3cd2e01408e396fb5ccbe1e4774e18c5f2af5bc18c5bbcdfa93c6961bde5",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 58800,
+          "arrival": 58920
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.92.j26",
+          "shortName": "9235",
+          "sha256": "073bc3f4f336735a0e894ca75176dcebaee694a853696b85180b93760397954b",
+          "activeServiceDates": [
+            "2026-09-12"
+          ],
+          "sourceSeconds": 120,
+          "departure": 81120,
+          "arrival": 81240
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.93.j26",
+          "shortName": "9201",
+          "sha256": "e637e17f359ac1ad9a95d95b6ce6339be8ed53e9dd0ac52715780dd95ba5dd95",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 66000,
+          "arrival": 66120
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.94.j26",
+          "shortName": "9133",
+          "sha256": "a53121e8f51ce47d3fbc092761ed98825a3894739d3ff64a2c70b80e9b61370b",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 35400,
+          "arrival": 35520
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.95.j26",
+          "shortName": "9241",
+          "sha256": "0eeabbb3ff97a3709feacb3deaf34362bc097652b4c5bf7c8098f2dfcda8a31f",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 84000,
+          "arrival": 84120
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.96.j26",
+          "shortName": "9125",
+          "sha256": "663386aeb3f7399fb0b58fd1ab5608592e4aaf6c01dbf4e32d527178f954ccbd",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 31800,
+          "arrival": 31920
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.97.j26",
+          "shortName": "9223",
+          "sha256": "dc1acabe40f177ca70ac032b5793e72220fbe81e9ff9bbc6832dd1a1fc77e53b",
+          "activeServiceDates": [
+            "2026-09-12"
+          ],
+          "sourceSeconds": 120,
+          "departure": 75720,
+          "arrival": 75840
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.98.j26",
+          "shortName": "9227",
+          "sha256": "47492515b3c8c36d5cbf4c3c67b8564f21c7dde56b71f27d2465c67567f15c20",
+          "activeServiceDates": [
+            "2026-09-12"
+          ],
+          "sourceSeconds": 120,
+          "departure": 77520,
+          "arrival": 77640
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.99.j26",
+          "shortName": "9951",
+          "sha256": "155ed5dfd6b10cffa9b39d084ad16a5790fd53bef95d200829e207f7af197f22",
+          "activeServiceDates": [
+            "2026-09-13"
+          ],
+          "sourceSeconds": 120,
+          "departure": 43320,
+          "arrival": 43440
+        }
+      ],
+      "heldOccurrences": 77,
+      "detour": {
+        "directionId": "0",
+        "from": 602802312,
+        "to": 266859071,
+        "fromPoint": [
+          8.045654,
+          47.361211
+        ],
+        "toPoint": [
+          8.0468597,
+          47.3568218
+        ],
+        "edges": [
+          {
+            "from": 602802312,
+            "to": 7178926252,
+            "wayId": 47331048,
+            "name": "Binzmattweg",
+            "metres": 27.977740431582,
+            "maxspeed": "30",
+            "taggedKmh": 30,
+            "seconds": 3.35732885178984
+          },
+          {
+            "from": 7178926252,
+            "to": 6757795827,
+            "wayId": 47331048,
+            "name": "Binzmattweg",
+            "metres": 7.223299433878712,
+            "maxspeed": "30",
+            "taggedKmh": 30,
+            "seconds": 0.8667959320654456
+          },
+          {
+            "from": 6757795827,
+            "to": 11026519281,
+            "wayId": 47331048,
+            "name": "Binzmattweg",
+            "metres": 2.389007281828867,
+            "maxspeed": "30",
+            "taggedKmh": 30,
+            "seconds": 0.28668087381946405
+          },
+          {
+            "from": 11026519281,
+            "to": 7178926253,
+            "wayId": 47331048,
+            "name": "Binzmattweg",
+            "metres": 12.706119240226503,
+            "maxspeed": "30",
+            "taggedKmh": 30,
+            "seconds": 1.5247343088271803
+          },
+          {
+            "from": 7178926253,
+            "to": 3103748072,
+            "wayId": 47331048,
+            "name": "Binzmattweg",
+            "metres": 57.4854261005888,
+            "maxspeed": "30",
+            "taggedKmh": 30,
+            "seconds": 6.898251132070657
+          },
+          {
+            "from": 3103748072,
+            "to": 3103748087,
+            "wayId": 47331048,
+            "name": "Binzmattweg",
+            "metres": 2.6951709654624367,
+            "maxspeed": "30",
+            "taggedKmh": 30,
+            "seconds": 0.3234205158554924
+          },
+          {
+            "from": 3103748087,
+            "to": 7245892327,
+            "wayId": 47331048,
+            "name": "Binzmattweg",
+            "metres": 7.603628698879963,
+            "maxspeed": "30",
+            "taggedKmh": 30,
+            "seconds": 0.9124354438655956
+          },
+          {
+            "from": 7245892327,
+            "to": 1193432806,
+            "wayId": 47331048,
+            "name": "Binzmattweg",
+            "metres": 35.94212824643152,
+            "maxspeed": "30",
+            "taggedKmh": 30,
+            "seconds": 4.313055389571782
+          },
+          {
+            "from": 1193432806,
+            "to": 1193433025,
+            "wayId": 47331048,
+            "name": "Binzmattweg",
+            "metres": 36.636913665732166,
+            "maxspeed": "30",
+            "taggedKmh": 30,
+            "seconds": 4.39642963988786
+          },
+          {
+            "from": 1193433025,
+            "to": 2582157686,
+            "wayId": 47331048,
+            "name": "Binzmattweg",
+            "metres": 14.340540561269384,
+            "maxspeed": "30",
+            "taggedKmh": 30,
+            "seconds": 1.7208648673523261
+          },
+          {
+            "from": 2582157686,
+            "to": 1193432909,
+            "wayId": 47331048,
+            "name": "Binzmattweg",
+            "metres": 14.647764330004412,
+            "maxspeed": "30",
+            "taggedKmh": 30,
+            "seconds": 1.7577317196005295
+          },
+          {
+            "from": 1193432909,
+            "to": 10773962318,
+            "wayId": 47331048,
+            "name": "Binzmattweg",
+            "metres": 82.83601662238189,
+            "maxspeed": "30",
+            "taggedKmh": 30,
+            "seconds": 9.940321994685826
+          },
+          {
+            "from": 10773962318,
+            "to": 280563551,
+            "wayId": 47331048,
+            "name": "Binzmattweg",
+            "metres": 2.8480704617070236,
+            "maxspeed": "30",
+            "taggedKmh": 30,
+            "seconds": 0.34176845540484285
+          },
+          {
+            "from": 280563551,
+            "to": 1228162300,
+            "wayId": 48874048,
+            "name": "Suhrenmattstrasse",
+            "metres": 33.51347713984118,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 2.412970354068565
+          },
+          {
+            "from": 1228162300,
+            "to": 280563553,
+            "wayId": 48874048,
+            "name": "Suhrenmattstrasse",
+            "metres": 5.337781218012609,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 0.38432024769690787
+          },
+          {
+            "from": 280563553,
+            "to": 651516404,
+            "wayId": 51075757,
+            "name": "Suhrenmattstrasse",
+            "metres": 24.878573337619873,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 1.7912572803086309
+          },
+          {
+            "from": 651516404,
+            "to": 1228162317,
+            "wayId": 164633194,
+            "name": "Suhrenmattstrasse",
+            "metres": 5.29478379183217,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 0.3812244330119163
+          },
+          {
+            "from": 1228162317,
+            "to": 6835533728,
+            "wayId": 51075760,
+            "name": "Suhrenmattstrasse",
+            "metres": 92.97043215038134,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 6.693871114827457
+          },
+          {
+            "from": 6835533728,
+            "to": 11232508368,
+            "wayId": 51075760,
+            "name": "Suhrenmattstrasse",
+            "metres": 33.768668540816435,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 2.4313441349387834
+          },
+          {
+            "from": 11232508368,
+            "to": 11232508366,
+            "wayId": 51075760,
+            "name": "Suhrenmattstrasse",
+            "metres": 46.197719693409034,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 3.3262358179254505
+          },
+          {
+            "from": 11232508366,
+            "to": 1762458599,
+            "wayId": 51075760,
+            "name": "Suhrenmattstrasse",
+            "metres": 26.169812949503502,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 1.8842265323642522
+          },
+          {
+            "from": 1762458599,
+            "to": 7105600425,
+            "wayId": 51075760,
+            "name": "Suhrenmattstrasse",
+            "metres": 14.232074975679446,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 1.0247093982489202
+          },
+          {
+            "from": 7105600425,
+            "to": 3103750887,
+            "wayId": 51075760,
+            "name": "Suhrenmattstrasse",
+            "metres": 4.603515359136372,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 0.3314531058578188
+          },
+          {
+            "from": 3103750887,
+            "to": 3103750945,
+            "wayId": 51075760,
+            "name": "Suhrenmattstrasse",
+            "metres": 48.2542459464006,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 3.4743057081408435
+          },
+          {
+            "from": 3103750945,
+            "to": 1762458598,
+            "wayId": 51075760,
+            "name": "Suhrenmattstrasse",
+            "metres": 22.230605553477965,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 1.6006035998504133
+          },
+          {
+            "from": 1762458598,
+            "to": 651515407,
+            "wayId": 51075760,
+            "name": "Suhrenmattstrasse",
+            "metres": 19.094957022825625,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 1.374836905643445
+          },
+          {
+            "from": 651515407,
+            "to": 4792329546,
+            "wayId": 51075760,
+            "name": "Suhrenmattstrasse",
+            "metres": 15.572342983961848,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 1.121208694845253
+          },
+          {
+            "from": 4792329546,
+            "to": 4792329549,
+            "wayId": 51075760,
+            "name": "Suhrenmattstrasse",
+            "metres": 15.124126938817561,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 1.0889371395948644
+          },
+          {
+            "from": 4792329549,
+            "to": 4792329545,
+            "wayId": 51075760,
+            "name": "Suhrenmattstrasse",
+            "metres": 11.676525396146955,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 0.8407098285225808
+          },
+          {
+            "from": 4792329545,
+            "to": 1762458597,
+            "wayId": 51075760,
+            "name": "Suhrenmattstrasse",
+            "metres": 11.298223558521611,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 0.813472096213556
+          },
+          {
+            "from": 1762458597,
+            "to": 4792329550,
+            "wayId": 51075760,
+            "name": "Suhrenmattstrasse",
+            "metres": 13.773249201575524,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 0.9916739425134378
+          },
+          {
+            "from": 4792329550,
+            "to": 10773962325,
+            "wayId": 51075760,
+            "name": "Suhrenmattstrasse",
+            "metres": 10.403858840637888,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 0.749077836525928
+          },
+          {
+            "from": 10773962325,
+            "to": 651515835,
+            "wayId": 51075760,
+            "name": "Suhrenmattstrasse",
+            "metres": 3.033858764554049,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 0.21843783104789152
+          },
+          {
+            "from": 651515835,
+            "to": 13669699329,
+            "wayId": 51075679,
+            "name": "roundabout",
+            "metres": 3.4914174013011734,
+            "maxspeed": "60",
+            "taggedKmh": 60,
+            "seconds": 0.2094850440780704
+          },
+          {
+            "from": 13669699329,
+            "to": 854446251,
+            "wayId": 51075679,
+            "name": "roundabout",
+            "metres": 3.4889951101035552,
+            "maxspeed": "60",
+            "taggedKmh": 60,
+            "seconds": 0.20933970660621332
+          },
+          {
+            "from": 854446251,
+            "to": 854446252,
+            "wayId": 51075679,
+            "name": "roundabout",
+            "metres": 3.500381982902778,
+            "maxspeed": "60",
+            "taggedKmh": 60,
+            "seconds": 0.21002291897416667
+          },
+          {
+            "from": 854446252,
+            "to": 651516260,
+            "wayId": 51075679,
+            "name": "roundabout",
+            "metres": 3.4859450978856765,
+            "maxspeed": "60",
+            "taggedKmh": 60,
+            "seconds": 0.20915670587314059
+          },
+          {
+            "from": 651516260,
+            "to": 854446253,
+            "wayId": 51075679,
+            "name": "roundabout",
+            "metres": 3.8147201949478666,
+            "maxspeed": "60",
+            "taggedKmh": 60,
+            "seconds": 0.228883211696872
+          },
+          {
+            "from": 854446253,
+            "to": 651516264,
+            "wayId": 51075679,
+            "name": "roundabout",
+            "metres": 3.809745503452459,
+            "maxspeed": "60",
+            "taggedKmh": 60,
+            "seconds": 0.22858473020714756
+          },
+          {
+            "from": 651516264,
+            "to": 13669699330,
+            "wayId": 51075679,
+            "name": "roundabout",
+            "metres": 3.80565579161532,
+            "maxspeed": "60",
+            "taggedKmh": 60,
+            "seconds": 0.22833934749691923
+          },
+          {
+            "from": 13669699330,
+            "to": 854446254,
+            "wayId": 51075679,
+            "name": "roundabout",
+            "metres": 3.810636965931287,
+            "maxspeed": "60",
+            "taggedKmh": 60,
+            "seconds": 0.22863821795587724
+          },
+          {
+            "from": 854446254,
+            "to": 854446152,
+            "wayId": 1493630953,
+            "name": "Suhrenmattstrasse",
+            "metres": 35.793078845757464,
+            "maxspeed": "60",
+            "taggedKmh": 60,
+            "seconds": 2.147584730745448
+          },
+          {
+            "from": 854446152,
+            "to": 651516203,
+            "wayId": 1493630953,
+            "name": "Suhrenmattstrasse",
+            "metres": 16.843483809701667,
+            "maxspeed": "60",
+            "taggedKmh": 60,
+            "seconds": 1.0106090285821
+          },
+          {
+            "from": 651516203,
+            "to": 4792329538,
+            "wayId": 1493630953,
+            "name": "Suhrenmattstrasse",
+            "metres": 10.573485553404891,
+            "maxspeed": "60",
+            "taggedKmh": 60,
+            "seconds": 0.6344091332042935
+          },
+          {
+            "from": 4792329538,
+            "to": 4243406840,
+            "wayId": 275421740,
+            "name": "Suhrenmattstrasse",
+            "metres": 10.74754457902175,
+            "maxspeed": "60",
+            "taggedKmh": 60,
+            "seconds": 0.644852674741305
+          },
+          {
+            "from": 4243406840,
+            "to": 4792329540,
+            "wayId": 275421740,
+            "name": "Suhrenmattstrasse",
+            "metres": 38.65560489609504,
+            "maxspeed": "60",
+            "taggedKmh": 60,
+            "seconds": 2.3193362937657023
+          },
+          {
+            "from": 4792329540,
+            "to": 4792329539,
+            "wayId": 275421740,
+            "name": "Suhrenmattstrasse",
+            "metres": 19.159716564525343,
+            "maxspeed": "60",
+            "taggedKmh": 60,
+            "seconds": 1.1495829938715207
+          },
+          {
+            "from": 4792329539,
+            "to": 651516204,
+            "wayId": 275421740,
+            "name": "Suhrenmattstrasse",
+            "metres": 19.34272422515898,
+            "maxspeed": "60",
+            "taggedKmh": 60,
+            "seconds": 1.1605634535095388
+          },
+          {
+            "from": 651516204,
+            "to": 4792329541,
+            "wayId": 275421740,
+            "name": "Suhrenmattstrasse",
+            "metres": 27.19853645386299,
+            "maxspeed": "60",
+            "taggedKmh": 60,
+            "seconds": 1.6319121872317794
+          },
+          {
+            "from": 4792329541,
+            "to": 12803815667,
+            "wayId": 486653191,
+            "name": "Suhrerstrasse",
+            "metres": 5.413240478924755,
+            "maxspeed": null,
+            "taggedKmh": null,
+            "seconds": 0
+          },
+          {
+            "from": 12803815667,
+            "to": 4792329389,
+            "wayId": 486653191,
+            "name": "Suhrerstrasse",
+            "metres": 1.741317025635682,
+            "maxspeed": null,
+            "taggedKmh": null,
+            "seconds": 0
+          },
+          {
+            "from": 4792329389,
+            "to": 4792329388,
+            "wayId": 486653191,
+            "name": "Suhrerstrasse",
+            "metres": 3.5684712716726357,
+            "maxspeed": null,
+            "taggedKmh": null,
+            "seconds": 0
+          },
+          {
+            "from": 4792329388,
+            "to": 10773962330,
+            "wayId": 486653191,
+            "name": "Suhrerstrasse",
+            "metres": 2.458224383862744,
+            "maxspeed": null,
+            "taggedKmh": null,
+            "seconds": 0
+          },
+          {
+            "from": 10773962330,
+            "to": 4792329386,
+            "wayId": 486653191,
+            "name": "Suhrerstrasse",
+            "metres": 2.0450235661030316,
+            "maxspeed": null,
+            "taggedKmh": null,
+            "seconds": 0
+          },
+          {
+            "from": 4792329386,
+            "to": 4792329387,
+            "wayId": 486653191,
+            "name": "Suhrerstrasse",
+            "metres": 5.24716499967477,
+            "maxspeed": null,
+            "taggedKmh": null,
+            "seconds": 0
+          },
+          {
+            "from": 4792329387,
+            "to": 3103762963,
+            "wayId": 1382945308,
+            "name": "Suhrerstrasse",
+            "metres": 7.077254455903633,
+            "maxspeed": "60",
+            "taggedKmh": 60,
+            "seconds": 0.42463526735421797
+          },
+          {
+            "from": 3103762963,
+            "to": 454406462,
+            "wayId": 1382945308,
+            "name": "Suhrerstrasse",
+            "metres": 126.55877499548151,
+            "maxspeed": "60",
+            "taggedKmh": 60,
+            "seconds": 7.593526499728891
+          },
+          {
+            "from": 454406462,
+            "to": 12803815658,
+            "wayId": 1382945308,
+            "name": "Suhrerstrasse",
+            "metres": 9.590420650619864,
+            "maxspeed": "60",
+            "taggedKmh": 60,
+            "seconds": 0.5754252390371918
+          },
+          {
+            "from": 12803815658,
+            "to": 4792329416,
+            "wayId": 1382945308,
+            "name": "Suhrerstrasse",
+            "metres": 33.504275766691094,
+            "maxspeed": "60",
+            "taggedKmh": 60,
+            "seconds": 2.010256546001466
+          },
+          {
+            "from": 4792329416,
+            "to": 12643477559,
+            "wayId": 1365324056,
+            "name": "Suhrerstrasse",
+            "metres": 31.38033711702419,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 2.259384272425742
+          },
+          {
+            "from": 12643477559,
+            "to": 427663312,
+            "wayId": 1181196270,
+            "name": "Suhrerstrasse",
+            "metres": 54.93464557521083,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 3.9552944814151796
+          },
+          {
+            "from": 427663312,
+            "to": 427663314,
+            "wayId": 1181196270,
+            "name": "Suhrerstrasse",
+            "metres": 49.09111297283732,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 3.5345601340442876
+          },
+          {
+            "from": 427663314,
+            "to": 3103765633,
+            "wayId": 1181196269,
+            "name": "Suhrerstrasse",
+            "metres": 30.494476080230985,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 2.195602277776631
+          },
+          {
+            "from": 3103765633,
+            "to": 10969684859,
+            "wayId": 1181196269,
+            "name": "Suhrerstrasse",
+            "metres": 2.987344074937574,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 0.21508877339550536
+          },
+          {
+            "from": 10969684859,
+            "to": 3195166883,
+            "wayId": 1365324055,
+            "name": "Suhrerstrasse",
+            "metres": 11.606142959874827,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 0.8356422931109876
+          },
+          {
+            "from": 3195166883,
+            "to": 3103769154,
+            "wayId": 1365324055,
+            "name": "Suhrerstrasse",
+            "metres": 17.985784984855087,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 1.2949765189095663
+          },
+          {
+            "from": 3103769154,
+            "to": 3103769146,
+            "wayId": 1365324055,
+            "name": "Suhrerstrasse",
+            "metres": 16.660072148965657,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 1.1995251947255274
+          },
+          {
+            "from": 3103769146,
+            "to": 3103769153,
+            "wayId": 1365324055,
+            "name": "Suhrerstrasse",
+            "metres": 19.491214466646802,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 1.4033674415985697
+          },
+          {
+            "from": 3103769153,
+            "to": 3103769145,
+            "wayId": 1365324055,
+            "name": "Suhrerstrasse",
+            "metres": 27.6927736960241,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 1.9938797061137354
+          },
+          {
+            "from": 3103769145,
+            "to": 3103769131,
+            "wayId": 1365324055,
+            "name": "Suhrerstrasse",
+            "metres": 32.10756263445719,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 2.3117445096809175
+          },
+          {
+            "from": 3103769131,
+            "to": 2613502152,
+            "wayId": 1365324055,
+            "name": "Suhrerstrasse",
+            "metres": 24.661941385083473,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 1.7756597797260103
+          },
+          {
+            "from": 2613502152,
+            "to": 427663310,
+            "wayId": 1365324055,
+            "name": "Suhrerstrasse",
+            "metres": 11.966437566474085,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 0.8615835047861341
+          },
+          {
+            "from": 427663310,
+            "to": 9070237652,
+            "wayId": 36784524,
+            "name": "Suhrerstrasse",
+            "metres": 16.421086064735142,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 1.1823181966609304
+          },
+          {
+            "from": 9070237652,
+            "to": 9520423168,
+            "wayId": 36784524,
+            "name": "Suhrerstrasse",
+            "metres": 22.608822519931042,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 1.6278352214350351
+          },
+          {
+            "from": 9520423168,
+            "to": 641306313,
+            "wayId": 36784524,
+            "name": "Suhrerstrasse",
+            "metres": 11.171340773004186,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 0.8043365356563014
+          },
+          {
+            "from": 641306313,
+            "to": 2613502146,
+            "wayId": 36784524,
+            "name": "Suhrerstrasse",
+            "metres": 33.79698716037117,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 2.433383075546724
+          },
+          {
+            "from": 2613502146,
+            "to": 427663315,
+            "wayId": 36784524,
+            "name": "Suhrerstrasse",
+            "metres": 4.864034202157569,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 0.350210462555345
+          },
+          {
+            "from": 427663315,
+            "to": 13651038293,
+            "wayId": 36784524,
+            "name": "Suhrerstrasse",
+            "metres": 15.983101917931107,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 1.1507833380910397
+          },
+          {
+            "from": 13651038293,
+            "to": 3123152746,
+            "wayId": 36784524,
+            "name": "Suhrerstrasse",
+            "metres": 4.051982766647347,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 0.291742759198609
+          },
+          {
+            "from": 3123152746,
+            "to": 13651038292,
+            "wayId": 36784524,
+            "name": "Suhrerstrasse",
+            "metres": 5.046387687776065,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 0.36333991351987666
+          },
+          {
+            "from": 13651038292,
+            "to": 4243330702,
+            "wayId": 1489293250,
+            "name": "Suhrerstrasse",
+            "metres": 31.346750633799058,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 2.2569660456335323
+          },
+          {
+            "from": 4243330702,
+            "to": 641306119,
+            "wayId": 1489293250,
+            "name": "Suhrerstrasse",
+            "metres": 37.49177123836793,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 2.699407529162491
+          },
+          {
+            "from": 641306119,
+            "to": 427663317,
+            "wayId": 1489293250,
+            "name": "Suhrerstrasse",
+            "metres": 25.97803106483845,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 1.8704182366683686
+          },
+          {
+            "from": 427663317,
+            "to": 3123152686,
+            "wayId": 1489293250,
+            "name": "Suhrerstrasse",
+            "metres": 3.6184878160901612,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 0.26053112275849166
+          },
+          {
+            "from": 3123152686,
+            "to": 641306123,
+            "wayId": 1489293250,
+            "name": "Suhrerstrasse",
+            "metres": 10.724580219020579,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 0.7721697757694818
+          },
+          {
+            "from": 641306123,
+            "to": 266859071,
+            "wayId": 1489293250,
+            "name": "Suhrerstrasse",
+            "metres": 4.551645067306307,
+            "maxspeed": "50",
+            "taggedKmh": 50,
+            "seconds": 0.3277184448460541
+          }
+        ],
+        "taggedMinimumSeconds": 132.8573086028167,
+        "metres": 1726.2013547679614,
+        "untaggedMetres": 20.473441725873617,
+        "nodePath": [
+          602802312,
+          7178926252,
+          6757795827,
+          11026519281,
+          7178926253,
+          3103748072,
+          3103748087,
+          7245892327,
+          1193432806,
+          1193433025,
+          2582157686,
+          1193432909,
+          10773962318,
+          280563551,
+          1228162300,
+          280563553,
+          651516404,
+          1228162317,
+          6835533728,
+          11232508368,
+          11232508366,
+          1762458599,
+          7105600425,
+          3103750887,
+          3103750945,
+          1762458598,
+          651515407,
+          4792329546,
+          4792329549,
+          4792329545,
+          1762458597,
+          4792329550,
+          10773962325,
+          651515835,
+          13669699329,
+          854446251,
+          854446252,
+          651516260,
+          854446253,
+          651516264,
+          13669699330,
+          854446254,
+          854446152,
+          651516203,
+          4792329538,
+          4243406840,
+          4792329540,
+          4792329539,
+          651516204,
+          4792329541,
+          12803815667,
+          4792329389,
+          4792329388,
+          10773962330,
+          4792329386,
+          4792329387,
+          3103762963,
+          454406462,
+          12803815658,
+          4792329416,
+          12643477559,
+          427663312,
+          427663314,
+          3103765633,
+          10969684859,
+          3195166883,
+          3103769154,
+          3103769146,
+          3103769153,
+          3103769145,
+          3103769131,
+          2613502152,
+          427663310,
+          9070237652,
+          9520423168,
+          641306313,
+          2613502146,
+          427663315,
+          13651038293,
+          3123152746,
+          13651038292,
+          4243330702,
+          641306119,
+          427663317,
+          3123152686,
+          641306123,
+          266859071
+        ],
+        "path": [
+          [
+            8.045654,
+            47.361211
+          ],
+          [
+            8.0459091,
+            47.3613935
+          ],
+          [
+            8.0459753,
+            47.3614404
+          ],
+          [
+            8.0459969,
+            47.3614561
+          ],
+          [
+            8.0461121,
+            47.3615394
+          ],
+          [
+            8.046643,
+            47.36191
+          ],
+          [
+            8.0466677,
+            47.3619275
+          ],
+          [
+            8.0467378,
+            47.3619766
+          ],
+          [
+            8.047069,
+            47.3622088
+          ],
+          [
+            8.0474911,
+            47.3623718
+          ],
+          [
+            8.0476323,
+            47.3624581
+          ],
+          [
+            8.0477747,
+            47.3625476
+          ],
+          [
+            8.0484279,
+            47.3631459
+          ],
+          [
+            8.0484503,
+            47.3631665
+          ],
+          [
+            8.0488206,
+            47.363
+          ],
+          [
+            8.048879,
+            47.3629729
+          ],
+          [
+            8.0491533,
+            47.3628487
+          ],
+          [
+            8.0492121,
+            47.3628227
+          ],
+          [
+            8.0502344,
+            47.3623558
+          ],
+          [
+            8.0506063,
+            47.3621868
+          ],
+          [
+            8.0511472,
+            47.3619919
+          ],
+          [
+            8.0514729,
+            47.3619107
+          ],
+          [
+            8.0516526,
+            47.3618716
+          ],
+          [
+            8.0517112,
+            47.36186
+          ],
+          [
+            8.0523305,
+            47.3617508
+          ],
+          [
+            8.0526145,
+            47.3616972
+          ],
+          [
+            8.0528574,
+            47.3616487
+          ],
+          [
+            8.0530517,
+            47.3616013
+          ],
+          [
+            8.053237,
+            47.3615493
+          ],
+          [
+            8.0533775,
+            47.3615052
+          ],
+          [
+            8.0535103,
+            47.3614582
+          ],
+          [
+            8.0536728,
+            47.3614017
+          ],
+          [
+            8.0537934,
+            47.3613563
+          ],
+          [
+            8.0538286,
+            47.3613431
+          ],
+          [
+            8.0538117,
+            47.3613139
+          ],
+          [
+            8.0538073,
+            47.3612827
+          ],
+          [
+            8.0538159,
+            47.3612518
+          ],
+          [
+            8.0538366,
+            47.3612238
+          ],
+          [
+            8.0538712,
+            47.3611988
+          ],
+          [
+            8.0539153,
+            47.3611821
+          ],
+          [
+            8.0539647,
+            47.3611751
+          ],
+          [
+            8.054015,
+            47.3611784
+          ],
+          [
+            8.0543771,
+            47.3609705
+          ],
+          [
+            8.054541,
+            47.3608677
+          ],
+          [
+            8.0546389,
+            47.3607997
+          ],
+          [
+            8.054735,
+            47.3607284
+          ],
+          [
+            8.0550758,
+            47.360469
+          ],
+          [
+            8.0552385,
+            47.3603368
+          ],
+          [
+            8.0553959,
+            47.3601996
+          ],
+          [
+            8.0555944,
+            47.3599956
+          ],
+          [
+            8.0555892,
+            47.3599471
+          ],
+          [
+            8.0555875,
+            47.3599315
+          ],
+          [
+            8.0555734,
+            47.3599009
+          ],
+          [
+            8.0555599,
+            47.3598808
+          ],
+          [
+            8.0555486,
+            47.3598641
+          ],
+          [
+            8.055513,
+            47.3598236
+          ],
+          [
+            8.0554281,
+            47.3597965
+          ],
+          [
+            8.0539026,
+            47.3593225
+          ],
+          [
+            8.0537881,
+            47.359285
+          ],
+          [
+            8.053399,
+            47.3591397
+          ],
+          [
+            8.0530206,
+            47.3590224
+          ],
+          [
+            8.0523528,
+            47.3588252
+          ],
+          [
+            8.0517649,
+            47.3586358
+          ],
+          [
+            8.0513976,
+            47.3585212
+          ],
+          [
+            8.0513616,
+            47.35851
+          ],
+          [
+            8.051222,
+            47.3584661
+          ],
+          [
+            8.0510051,
+            47.3583989
+          ],
+          [
+            8.0508047,
+            47.3583359
+          ],
+          [
+            8.0505699,
+            47.3582627
+          ],
+          [
+            8.0502363,
+            47.3581587
+          ],
+          [
+            8.0498496,
+            47.358038
+          ],
+          [
+            8.0495525,
+            47.3579454
+          ],
+          [
+            8.0494088,
+            47.3578998
+          ],
+          [
+            8.0492102,
+            47.3578393
+          ],
+          [
+            8.0489367,
+            47.3577561
+          ],
+          [
+            8.0488025,
+            47.3577136
+          ],
+          [
+            8.0484033,
+            47.3575756
+          ],
+          [
+            8.0483469,
+            47.3575544
+          ],
+          [
+            8.0481711,
+            47.3574742
+          ],
+          [
+            8.0481265,
+            47.3574539
+          ],
+          [
+            8.0480721,
+            47.3574275
+          ],
+          [
+            8.0477343,
+            47.3572634
+          ],
+          [
+            8.0473279,
+            47.3570694
+          ],
+          [
+            8.0470467,
+            47.3569346
+          ],
+          [
+            8.0470102,
+            47.3569135
+          ],
+          [
+            8.0469021,
+            47.3568509
+          ],
+          [
+            8.0468597,
+            47.3568218
+          ]
+        ]
+      },
+      "sourceSeconds": 120,
+      "minimumExcessSeconds": 12.857308602816687,
+      "disposition": "hold-detour-source-time-reconciliation"
+    }
+  ],
+  "heldOccurrences": 153,
+  "addedOccurrences": 0,
+  "priorCompatibleOccurrences": 8103,
+  "remainingBusOccurrences": 2885,
+  "publicationReady": false
+}

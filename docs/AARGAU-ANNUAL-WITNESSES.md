@@ -86,7 +86,7 @@ Compatibility below counts each archived trip template once, across all its comp
 | 92-EV7-R-j26-1 | SBB Infrastruktur AG Bahnersatz / EV7 | 4 | 2026-05-23 / 18857 | 0 / 74 |
 | 92-EV8-F-j26-1 | SBB Infrastruktur AG Bahnersatz / EV8 | 1 | 2026-05-23 / 8783 | 0 / 238 |
 | 92-EV9-I-j26-1 | SBB Infrastruktur AG Bahnersatz / EV9 | 4 | 2026-05-23 / 28377 | 0 / 78 |
-| 96-138-1-j26-1 | PostAuto AG / EXT | 3 | 2026-09-25 / 81007 | 0 / 207 |
+| 96-138-1-j26-1 | PostAuto AG / EXT | 3 | 2026-09-25 / 81007 | 195 / 207 |
 
 The following selected witnesses specifically use the preceding service calendar:
 
@@ -100,12 +100,12 @@ The following selected witnesses specifically use the preceding service calendar
 
 ## Geometry still requiring evidence
 
-The separately scoped annual geometry candidate is compatible with **8,103 of 10,988 template segment occurrences**. **195 of 280 directed patterns** have complete geometry; **2,885 occurrences remain unresolved**. All journeys and their exact platform coordinates stay in the denominator. The [current closure-localization audit](../data/aargau-witnesses/oberentfelden-review-summary.json) enumerates every missing pattern/pair with the original source and fallback rejection reasons. The [reviewed pattern detail](../data/aargau-witnesses/oberentfelden-review-patterns.json.gz) retains admitted paths and source evidence.
+The separately scoped annual geometry candidate is compatible with **8,298 of 10,988 template segment occurrences**. **201 of 280 directed patterns** have complete geometry; **2,690 occurrences remain unresolved**. All journeys and their exact platform coordinates stay in the denominator. The [current event-bus audit](../data/aargau-witnesses/schupfart-review-summary.json) enumerates every missing pattern/pair with the original source and fallback rejection reasons. The [reviewed pattern detail](../data/aargau-witnesses/schupfart-review-patterns.json.gz) retains admitted paths and source evidence.
 
 | Mode | Routes | Trip templates | Directed patterns | Compatible occurrences | Unresolved occurrences |
 | --- | --- | --- | --- | --- | --- |
 | rail | 29 | 635 | 194 | 3,801 | 0 |
-| bus | 16 | 1,384 | 86 | 4,302 | 2,885 |
+| bus | 16 | 1,384 | 86 | 4,497 | 2,690 |
 
 The [original witness baseline](../data/aargau-witnesses/geometry-summary.json) remains unchanged at 12 compatible occurrences and no complete patterns. The [new finite rail policy](../data/aargau-witness-rail-policy.json) reviews **29 exact route records, 194 directed patterns and 635 archived rail trip templates**, adding **3,616 occurrences** and preserving all **12** prior paths. It supplies geometry on **28 route records**; **24 rail routes** had complete template geometry at that stage; the Interlaken follow-up below raises this to **26**. All bus assessments were unchanged at that rail-review stage.
 
@@ -150,13 +150,13 @@ Every added path, directed source segment, projection, full platform chain and e
 
 ## Remaining exclusions
 
-There are **no unresolved rail occurrences** in this annual-template candidate. The [complete witness bus review](AARGAU-WITNESS-BUS-REVIEW.md) inventories all **86 bus patterns on 16 routes** and tests six AVA replacement patterns. Its finite policy adds **2,466 April occurrences**, preserving all **3,801** earlier paths. The subsequent municipal closure-localization policy adds **1,836 September occurrences**, preserving all **6,267** earlier paths. One bus pattern is complete; **2,885 occurrences across 85 incomplete bus patterns** remain. AVA’s **161** April source-time concerns and **153** September occurrences crossing the closure stay excluded. The municipal notice (7 September), map (11 August) and exact historical OSM junctions (2 September) establish the 181.505 m closure. All newly accepted paths stay more than 20 m clear; the minimum is 73.713 m. Full evidence, source dates and attribution are in the linked bus audit. The other 80 bus patterns still need dated operator and road evidence.
+There are **no unresolved rail occurrences** in this annual-template candidate. The [complete witness bus review](AARGAU-WITNESS-BUS-REVIEW.md) inventories all **86 bus patterns on 16 routes** and tests six AVA replacement patterns. Its finite policy adds **2,466 April occurrences**, preserving all **3,801** earlier paths. The subsequent municipal closure-localization policy adds **1,836 September occurrences**, preserving all **6,267** earlier paths. The independently transcribed 2026 Schupfart Festival timetable verifies **32 event trips / 113 major calls**; its road policy adds **195 occurrences**, preserving all **8,103** earlier paths and holding **twelve zero-second intervals**. Seven bus patterns are complete; **2,690 occurrences across 79 incomplete bus patterns** remain. AVA’s **161** April source-time concerns and **153** September occurrences crossing the closure stay excluded. The municipal notice (7 September), map (11 August) and exact historical OSM junctions (2 September) establish the 181.505 m closure. All paths accepted by that closure-localization review stay more than 20 m clear; the minimum is 73.713 m. Full evidence, source dates and attribution are in the linked bus audit. Both signed-detour directions also exceed the literal 120-second source interval in an optimistic tagged-speed calculation. The other 68 bus patterns on fourteen routes still need dated operator and road evidence.
 
-This candidate uses the existing AGIS and OSM baseline plus exact-template FOT, Interlaken hierarchy, Bern projection, Waldshut corridor, scoped AVA April roads and September closure-localization policies. The September border/platform rules, twelve-date seasonal rules, Simplon journeys and bus alignment corrections retain their exact date scopes and are not applied here. In particular, a witness during a planned disruption does not establish that a normal-line shape is the replacement itinerary. New replacement-bus routes need dated operator and road evidence.
+This candidate uses the existing AGIS and OSM baseline plus exact-template FOT, Interlaken hierarchy, Bern projection, Waldshut corridor, scoped AVA April roads, September closure localization and Schupfart event-road policies. The September border/platform rules, twelve-date seasonal rules, Simplon journeys and bus alignment corrections retain their exact date scopes and are not applied here. In particular, a witness during a planned disruption does not establish that a normal-line shape is the replacement itinerary. New replacement-bus routes need dated operator and road evidence.
 
 Source geometry keeps its existing dates and limitations: **AGIS 23 April 2026**, normal timetable only; FOT catalogue **6 July 2021**, asset update **18 January 2025**, current validity unconfirmed; OSM snapshots and routing evidence remain pinned by the referenced cache/source hashes. Required attribution remains **Timetable: opentransportdata.swiss**, **Daten des Kantons Aargau**, **© swisstopo**, **© OpenStreetMap contributors; ODbL-1.0**, and the original FOT attribution recorded in the machine audit.
 
-The original Friday/Sunday feeds and the twelve-date seasonal geometry results are unchanged. The separate Friday correction candidate still resolves four occurrences on lines 136 and 358; **222 directed bus-pair reviews** remain. Publication readiness remains false. Next work is to obtain geometry evidence for these newly witnessed patterns, then validate full civil-day extracts before adding dates to the release scope.
+The original Friday/Sunday feeds and the twelve-date seasonal geometry results are unchanged. The separate Friday correction candidate still resolves four occurrences on lines 136 and 358; **222 directed bus-pair reviews** remain. The bus follow-up was checked on **9 September 2026**; the original inventory date above is retained. Publication readiness remains false. Next work is to obtain geometry evidence for these newly witnessed patterns, then validate full civil-day extracts before adding dates to the release scope.
 
 ## Reproduction
 
@@ -176,6 +176,10 @@ node scripts/prepare-aargau-witness-ava-policy.mjs
 node scripts/review-aargau-witness-ava.mjs
 node scripts/prepare-aargau-witness-oberentfelden.mjs
 node scripts/review-aargau-witness-oberentfelden.mjs
+node scripts/review-aargau-oberentfelden-detour.mjs
+node scripts/package-aargau-witness-schupfart.mjs --check
+node scripts/prepare-aargau-witness-schupfart-policy.mjs
+node scripts/review-aargau-witness-schupfart.mjs
 node scripts/document-aargau-witness-buses.mjs
 node scripts/document-aargau-witnesses.mjs
 python3 scripts/aargau-witnesses.test.py

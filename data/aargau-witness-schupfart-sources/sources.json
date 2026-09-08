@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "sources": [
+    {
+      "file": "festival.html.gz",
+      "url": "https://www.schupfartfestival.ch/de/festival/index.php",
+      "sha256": "fd6735f26f539a021a4a41fc291e7252320556eeec322514f1c83f06274321ab",
+      "uncompressedSha256": "a56a4eb1e51c4b1263310ddcc3b6204e1fbab29ae21b82b39692e6022023028e",
+      "retrievedAt": "2026-09-08T22:17:34.111274+00:00",
+      "publicationDate": null,
+      "serviceDates": [
+        "2026-09-25",
+        "2026-09-26",
+        "2026-09-27"
+      ],
+      "attribution": "Schupfart Festival; PostAuto AG (branded timetable)",
+      "role": "Official festival travel page linking both current 2026 and older 2025 PDFs; only the 2026 timetable is used."
+    },
+    {
+      "file": "timetable-2026.pdf.gz",
+      "url": "https://www.schupfartfestival.ch/docs/de/Fahrplan_Schupfart_2026_V1.pdf?m=1787834203&",
+      "sha256": "fd2c182285928e6de3ccbf13afd053a258d0a5cb685c82d47f6e98d815b4be77",
+      "uncompressedSha256": "93539100ff9e7a3c95b321e985878831d45b880239b199d09419c285bbc11cc9",
+      "retrievedAt": "2026-09-08T22:18:00.456366+00:00",
+      "publicationDate": null,
+      "serviceDates": [
+        "2026-09-25",
+        "2026-09-26",
+        "2026-09-27"
+      ],
+      "attribution": "Schupfart Festival; PostAuto AG (branded timetable)",
+      "role": "Official branded 2026 extra-bus timetable, page 1 visually inspected; major advertised calls and transfer boundaries, not every GTFS intermediate platform or a precise road itinerary.",
+      "pdfCreationDate": "2026-05-05T11:59:24Z",
+      "pdfModificationDate": "2026-05-05T11:59:24Z"
+    }
+  ],
+  "note": "Service dates are printed dates, not publication dates. After-midnight returns remain attached to the advertised festival evening, using GTFS times above 24:00. The PDF URL version token is not treated as a publication date. PDF creation/modification timestamps are metadata, not verified publication dates."
+}
