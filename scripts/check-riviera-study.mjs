@@ -16,13 +16,15 @@ for (const report of audit.days) {
   assert.deepEqual(morning.metadata.sourceHashes, report.sourceHashes)
   assert.equal(manifest.metadata.serviceDate, report.date)
   assert.deepEqual(manifest.metadata.geometryGate, report.gate)
+  assert.equal(report.gate.passed, true)
+  assert.deepEqual(manifest.metadata.funicularGeometry.routes, report.funicularGeometry)
   for (const chunk of chunks) assert.equal(createHash('sha256').update(await readFile(chunk.path)).digest('hex'), chunk.descriptor.sha256)
   for (const group of report.groups) {
     const selected = trains.filter(t => group.routes.includes(t.routeId))
     assert.equal(selected.length, group.trips)
     assert.equal(selected.reduce((n, t) => n + t.pathSegments.filter(i => i !== null).length, 0), group.acceptedSegments)
-    if (group.mode === 'rail' || group.mode === 'bus') assert.equal(group.coverage, 1)
-    if (group.mode === 'funicular') assert.equal(group.acceptedSegments, 0, 'Deferred funicular has accidental rail geometry')
+    assert.equal(group.coverage, 1)
+    assert(selected.every(t => t.pathSegments.every(i => i !== null)))
   }
-  console.log(`${report.date}: ${trains.length} complete journeys; 14 artifacts verified; rail/bus coverage 100%; funiculars deferred`)
+  console.log(`${report.date}: ${trains.length} complete journeys; 14 artifacts verified; all rail/bus/funicular geometry verified`)
 }

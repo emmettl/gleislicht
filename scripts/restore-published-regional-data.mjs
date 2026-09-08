@@ -12,7 +12,7 @@ export async function restorePublishedRegionalData(output, fetchData = fetch, bo
     // On a study's first deployment there is no published fallback yet.
     // Only a missing manifest can select the complete, validated dated fixture;
     // a damaged or partially published study must never be mixed with it.
-    const bootstrapId = ['lausanne-region', 'basel-core', 'bern-region', 'solothurn-region', 'nyon-region'].find(id => path === `${id}-day-manifest.json`)
+    const bootstrapId = ['lausanne-region', 'basel-core', 'bern-region', 'solothurn-region', 'nyon-region', 'riviera-region'].find(id => path === `${id}-day-manifest.json`)
     if (bootstrapId && response.status === 404) {
       bootstrap = (await readRegionalDirectory(bootstrapDirectory, [bootstrapId])).files
       return bootstrap.get(path)

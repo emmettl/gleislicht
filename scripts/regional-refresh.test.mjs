@@ -1,6 +1,6 @@
 import { mkdtemp, mkdir, readFile, readdir, rm, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
-import { dirname, join } from 'node:path'
+import { join, dirname } from 'node:path'
 import { createHash } from 'node:crypto'
 import { describe, expect, it } from 'vitest'
 import { serviceDate } from './service-date.mjs'
@@ -13,7 +13,7 @@ import { readFileSync } from 'node:fs'
 import { LAUSANNE_MBC_GROUPS } from './lausanne-mbc.mjs'
 
 function fixture(id = 'zurich-city') {
-  if (['basel-core', 'bern-region', 'solothurn-region', 'nyon-region'].includes(id)) {
+  if (['basel-core', 'bern-region', 'solothurn-region', 'nyon-region', 'riviera-region'].includes(id)) {
     const files = new Map([`${id}-day-manifest.json`, `${id}-morning.json`].map(name => [name, readFileSync(join('public/data', name))]))
     for (const chunk of JSON.parse(files.get(`${id}-day-manifest.json`)).chunks) files.set(chunk.path, readFileSync(join('public/data', chunk.path)))
     return files
@@ -133,10 +133,7 @@ describe('regional refresh', () => {
   it('derives browser dates from each actual artifact, including an older retained region', async () => {
     const directory = await mkdtemp(join(tmpdir(), 'study-summary-test-'))
     try {
-      for (const [id, file] of STUDY_SOURCES) {
-        await mkdir(dirname(join(directory, file)), { recursive: true })
-        await writeFile(join(directory, file), JSON.stringify({ metadata: { serviceDate: id === 'geneva-tpg' ? '2026-09-04' : '2026-09-08', windowStart: 0, windowEnd: 86400 } }))
-      }
+      for (const [id, file] of STUDY_SOURCES) { await mkdir(dirname(join(directory, file)), { recursive: true }); await writeFile(join(directory, file), JSON.stringify({ metadata: { serviceDate: id === 'geneva-tpg' ? '2026-09-04' : '2026-09-08', windowStart: 0, windowEnd: 86400 } })) }
       const summaries = await buildStudySummaries(directory)
       expect(summaries.map(summary => summary.id)).toEqual([...STUDY_IDS])
       expect(summaries.find(summary => summary.id === 'geneva-tpg').date).toBe('2026-09-04')

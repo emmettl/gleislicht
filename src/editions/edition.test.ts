@@ -26,6 +26,7 @@ describe('Gleislicht edition', () => {
       'valais-region',
       'solothurn-region',
       'bern-region',
+      'riviera-region',
       'nyon-region',
       'basel-core',
       'lausanne-region',

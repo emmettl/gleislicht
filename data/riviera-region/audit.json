@@ -25,41 +25,14 @@
           "headwayTrips": 0,
           "previousDayTrips": 0,
           "totalSegments": 136,
-          "acceptedSegments": 0,
+          "acceptedSegments": 136,
           "routes": [
             "93-LAS-j26-1"
           ],
-          "coverage": 0,
+          "coverage": 1,
           "directedPairs": 2,
-          "acceptedDirectedPairs": 0,
-          "issues": [
-            {
-              "routeId": "93-LAS-j26-1",
-              "route": "LAS",
-              "from": "Les Avants (funi)",
-              "to": "Sonloup",
-              "fromId": "ch:1:sloid:1350",
-              "toId": "ch:1:sloid:1351",
-              "occurrences": 68,
-              "rejectedOccurrences": 68,
-              "reasons": [
-                "missing-path"
-              ]
-            },
-            {
-              "routeId": "93-LAS-j26-1",
-              "route": "LAS",
-              "from": "Sonloup",
-              "to": "Les Avants (funi)",
-              "fromId": "ch:1:sloid:1351",
-              "toId": "ch:1:sloid:1350",
-              "occurrences": 68,
-              "rejectedOccurrences": 68,
-              "reasons": [
-                "missing-path"
-              ]
-            }
-          ]
+          "acceptedDirectedPairs": 2,
+          "issues": []
         },
         {
           "id": "131:funicular",
@@ -70,67 +43,14 @@
           "headwayTrips": 0,
           "previousDayTrips": 6,
           "totalSegments": 292,
-          "acceptedSegments": 0,
+          "acceptedSegments": 292,
           "routes": [
             "93-TG-j26-1"
           ],
-          "coverage": 0,
+          "coverage": 1,
           "directedPairs": 4,
-          "acceptedDirectedPairs": 0,
-          "issues": [
-            {
-              "routeId": "93-TG-j26-1",
-              "route": "TG",
-              "from": "Territet (funi)",
-              "to": "Collonge (funi)",
-              "fromId": "ch:1:sloid:30673",
-              "toId": "ch:1:sloid:92618",
-              "occurrences": 73,
-              "rejectedOccurrences": 73,
-              "reasons": [
-                "missing-path"
-              ]
-            },
-            {
-              "routeId": "93-TG-j26-1",
-              "route": "TG",
-              "from": "Collonge (funi)",
-              "to": "Glion (funi)",
-              "fromId": "ch:1:sloid:92618",
-              "toId": "ch:1:sloid:30031",
-              "occurrences": 73,
-              "rejectedOccurrences": 73,
-              "reasons": [
-                "missing-path"
-              ]
-            },
-            {
-              "routeId": "93-TG-j26-1",
-              "route": "TG",
-              "from": "Glion (funi)",
-              "to": "Collonge (funi)",
-              "fromId": "ch:1:sloid:30031",
-              "toId": "ch:1:sloid:92618",
-              "occurrences": 73,
-              "rejectedOccurrences": 73,
-              "reasons": [
-                "missing-path"
-              ]
-            },
-            {
-              "routeId": "93-TG-j26-1",
-              "route": "TG",
-              "from": "Collonge (funi)",
-              "to": "Territet (funi)",
-              "fromId": "ch:1:sloid:92618",
-              "toId": "ch:1:sloid:30673",
-              "occurrences": 73,
-              "rejectedOccurrences": 73,
-              "reasons": [
-                "missing-path"
-              ]
-            }
-          ]
+          "acceptedDirectedPairs": 4,
+          "issues": []
         },
         {
           "id": "131:rail",
@@ -263,9 +183,9 @@
         }
       ],
       "payload": {
-        "manifest": 49264,
-        "morning": 79829,
-        "largestChunk": 31818
+        "manifest": 50019,
+        "morning": 80708,
+        "largestChunk": 31859
       },
       "railProjection": [
         {
@@ -1056,19 +976,116 @@
           }
         }
       ],
+      "funicularGeometry": [
+        {
+          "routeId": "93-LAS-j26-1",
+          "installation": "61.001",
+          "sourceDate": "2025-01-01",
+          "sourceSegmentId": "ch14uvag00106853",
+          "trips": 136,
+          "matchedSegments": 136,
+          "maximumSnapMetres": 19.474363098578564,
+          "stops": [
+            {
+              "id": "ch:1:sloid:1350",
+              "name": "Les Avants (funi)",
+              "coordinate": [
+                6.94354595,
+                46.45429746
+              ],
+              "segmentId": "ch14uvag00106853",
+              "distance": 20.662139436158625,
+              "point": [
+                6.943474518477126,
+                46.45424396531071
+              ],
+              "snapMetres": 8.091561954483979
+            },
+            {
+              "id": "ch:1:sloid:1351",
+              "name": "Sonloup",
+              "coordinate": [
+                6.93891065,
+                46.4571628
+              ],
+              "segmentId": "ch14uvag00106853",
+              "distance": 478.8790221229034,
+              "point": [
+                6.9390773,
+                46.4570308
+              ],
+              "snapMetres": 19.474363098578564
+            }
+          ]
+        },
+        {
+          "routeId": "93-TG-j26-1",
+          "installation": "61.046",
+          "sourceDate": "2025-01-01",
+          "sourceSegmentId": "ch14uvag00106574",
+          "trips": 146,
+          "matchedSegments": 292,
+          "maximumSnapMetres": 2.89217075031025,
+          "stops": [
+            {
+              "id": "ch:1:sloid:30673",
+              "name": "Territet (funi)",
+              "coordinate": [
+                6.92344166,
+                46.42683088
+              ],
+              "segmentId": "ch14uvag00106574",
+              "distance": 6.60541787210157,
+              "point": [
+                6.923462048240081,
+                46.42683028390131
+              ],
+              "snapMetres": 1.5658104266657402
+            },
+            {
+              "id": "ch:1:sloid:92618",
+              "name": "Collonge (funi)",
+              "coordinate": [
+                6.92351352,
+                46.42827977
+              ],
+              "segmentId": "ch14uvag00106574",
+              "distance": 167.98462095445893,
+              "point": [
+                6.9235511796301346,
+                46.428278668989684
+              ],
+              "snapMetres": 2.89217075031025
+            },
+            {
+              "id": "ch:1:sloid:30031",
+              "name": "Glion (funi)",
+              "coordinate": [
+                6.92376505,
+                46.43187086
+              ],
+              "segmentId": "ch14uvag00106574",
+              "distance": 568.2277837284826,
+              "point": [
+                6.923761125259615,
+                46.43187092722416
+              ],
+              "snapMetres": 0.30121315996405834
+            }
+          ]
+        }
+      ],
       "gate": {
-        "passed": false,
+        "passed": true,
         "minimumCoverage": 0.95,
-        "deferred": [
-          "125:funicular",
-          "131:funicular"
-        ]
+        "deferred": []
       },
       "sourceHashes": {
         "archive": "4fa074044fc3a1ceae3c91597b72cf42b9bbce0477b9d43b7b4f658e3e9acfa5",
         "rail": "2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
         "snapshot": "07d9b4083d2a131c44d93d4235ac76335707ff6ffa1c2adb3625d01cad1d64d3",
-        "busCache": "dbf08ab19c3b28b0604f0d61b6c808c96e6af3eb1de7c3fe3be134c5abe4e90a"
+        "busCache": "dbf08ab19c3b28b0604f0d61b6c808c96e6af3eb1de7c3fe3be134c5abe4e90a",
+        "funiculars": "0497c20094c820306fce9c6a9f47b1b226ff1ca5286e9472b670ee73c093d6f2"
       },
       "feedVersion": "20260905",
       "sourceServiceDates": [
@@ -1091,41 +1108,14 @@
           "headwayTrips": 0,
           "previousDayTrips": 0,
           "totalSegments": 136,
-          "acceptedSegments": 0,
+          "acceptedSegments": 136,
           "routes": [
             "93-LAS-j26-1"
           ],
-          "coverage": 0,
+          "coverage": 1,
           "directedPairs": 2,
-          "acceptedDirectedPairs": 0,
-          "issues": [
-            {
-              "routeId": "93-LAS-j26-1",
-              "route": "LAS",
-              "from": "Les Avants (funi)",
-              "to": "Sonloup",
-              "fromId": "ch:1:sloid:1350",
-              "toId": "ch:1:sloid:1351",
-              "occurrences": 68,
-              "rejectedOccurrences": 68,
-              "reasons": [
-                "missing-path"
-              ]
-            },
-            {
-              "routeId": "93-LAS-j26-1",
-              "route": "LAS",
-              "from": "Sonloup",
-              "to": "Les Avants (funi)",
-              "fromId": "ch:1:sloid:1351",
-              "toId": "ch:1:sloid:1350",
-              "occurrences": 68,
-              "rejectedOccurrences": 68,
-              "reasons": [
-                "missing-path"
-              ]
-            }
-          ]
+          "acceptedDirectedPairs": 2,
+          "issues": []
         },
         {
           "id": "131:funicular",
@@ -1136,67 +1126,14 @@
           "headwayTrips": 0,
           "previousDayTrips": 8,
           "totalSegments": 296,
-          "acceptedSegments": 0,
+          "acceptedSegments": 296,
           "routes": [
             "93-TG-j26-1"
           ],
-          "coverage": 0,
+          "coverage": 1,
           "directedPairs": 4,
-          "acceptedDirectedPairs": 0,
-          "issues": [
-            {
-              "routeId": "93-TG-j26-1",
-              "route": "TG",
-              "from": "Territet (funi)",
-              "to": "Collonge (funi)",
-              "fromId": "ch:1:sloid:30673",
-              "toId": "ch:1:sloid:92618",
-              "occurrences": 74,
-              "rejectedOccurrences": 74,
-              "reasons": [
-                "missing-path"
-              ]
-            },
-            {
-              "routeId": "93-TG-j26-1",
-              "route": "TG",
-              "from": "Collonge (funi)",
-              "to": "Glion (funi)",
-              "fromId": "ch:1:sloid:92618",
-              "toId": "ch:1:sloid:30031",
-              "occurrences": 74,
-              "rejectedOccurrences": 74,
-              "reasons": [
-                "missing-path"
-              ]
-            },
-            {
-              "routeId": "93-TG-j26-1",
-              "route": "TG",
-              "from": "Glion (funi)",
-              "to": "Collonge (funi)",
-              "fromId": "ch:1:sloid:30031",
-              "toId": "ch:1:sloid:92618",
-              "occurrences": 74,
-              "rejectedOccurrences": 74,
-              "reasons": [
-                "missing-path"
-              ]
-            },
-            {
-              "routeId": "93-TG-j26-1",
-              "route": "TG",
-              "from": "Collonge (funi)",
-              "to": "Territet (funi)",
-              "fromId": "ch:1:sloid:92618",
-              "toId": "ch:1:sloid:30673",
-              "occurrences": 74,
-              "rejectedOccurrences": 74,
-              "reasons": [
-                "missing-path"
-              ]
-            }
-          ]
+          "acceptedDirectedPairs": 4,
+          "issues": []
         },
         {
           "id": "131:rail",
@@ -1225,145 +1162,14 @@
           "headwayTrips": 0,
           "previousDayTrips": 8,
           "totalSegments": 660,
-          "acceptedSegments": 0,
+          "acceptedSegments": 660,
           "routes": [
             "93-VCP-j26-1"
           ],
-          "coverage": 0,
+          "coverage": 1,
           "directedPairs": 10,
-          "acceptedDirectedPairs": 0,
-          "issues": [
-            {
-              "routeId": "93-VCP-j26-1",
-              "route": "VCP",
-              "from": "Vevey (funi)",
-              "to": "Corseaux",
-              "fromId": "ch:1:sloid:1250",
-              "toId": "ch:1:sloid:1251",
-              "occurrences": 66,
-              "rejectedOccurrences": 66,
-              "reasons": [
-                "missing-path"
-              ]
-            },
-            {
-              "routeId": "93-VCP-j26-1",
-              "route": "VCP",
-              "from": "Corseaux",
-              "to": "Beau-Site",
-              "fromId": "ch:1:sloid:1251",
-              "toId": "ch:1:sloid:1252",
-              "occurrences": 66,
-              "rejectedOccurrences": 66,
-              "reasons": [
-                "missing-path"
-              ]
-            },
-            {
-              "routeId": "93-VCP-j26-1",
-              "route": "VCP",
-              "from": "Beau-Site",
-              "to": "Chardonne-Jongny",
-              "fromId": "ch:1:sloid:1252",
-              "toId": "ch:1:sloid:1253",
-              "occurrences": 66,
-              "rejectedOccurrences": 66,
-              "reasons": [
-                "missing-path"
-              ]
-            },
-            {
-              "routeId": "93-VCP-j26-1",
-              "route": "VCP",
-              "from": "Chardonne-Jongny",
-              "to": "La Baume",
-              "fromId": "ch:1:sloid:1253",
-              "toId": "ch:1:sloid:1254",
-              "occurrences": 66,
-              "rejectedOccurrences": 66,
-              "reasons": [
-                "missing-path"
-              ]
-            },
-            {
-              "routeId": "93-VCP-j26-1",
-              "route": "VCP",
-              "from": "La Baume",
-              "to": "Mont-Pèlerin",
-              "fromId": "ch:1:sloid:1254",
-              "toId": "ch:1:sloid:1255",
-              "occurrences": 66,
-              "rejectedOccurrences": 66,
-              "reasons": [
-                "missing-path"
-              ]
-            },
-            {
-              "routeId": "93-VCP-j26-1",
-              "route": "VCP",
-              "from": "Mont-Pèlerin",
-              "to": "La Baume",
-              "fromId": "ch:1:sloid:1255",
-              "toId": "ch:1:sloid:1254",
-              "occurrences": 66,
-              "rejectedOccurrences": 66,
-              "reasons": [
-                "missing-path"
-              ]
-            },
-            {
-              "routeId": "93-VCP-j26-1",
-              "route": "VCP",
-              "from": "La Baume",
-              "to": "Chardonne-Jongny",
-              "fromId": "ch:1:sloid:1254",
-              "toId": "ch:1:sloid:1253",
-              "occurrences": 66,
-              "rejectedOccurrences": 66,
-              "reasons": [
-                "missing-path"
-              ]
-            },
-            {
-              "routeId": "93-VCP-j26-1",
-              "route": "VCP",
-              "from": "Chardonne-Jongny",
-              "to": "Beau-Site",
-              "fromId": "ch:1:sloid:1253",
-              "toId": "ch:1:sloid:1252",
-              "occurrences": 66,
-              "rejectedOccurrences": 66,
-              "reasons": [
-                "missing-path"
-              ]
-            },
-            {
-              "routeId": "93-VCP-j26-1",
-              "route": "VCP",
-              "from": "Beau-Site",
-              "to": "Corseaux",
-              "fromId": "ch:1:sloid:1252",
-              "toId": "ch:1:sloid:1251",
-              "occurrences": 66,
-              "rejectedOccurrences": 66,
-              "reasons": [
-                "missing-path"
-              ]
-            },
-            {
-              "routeId": "93-VCP-j26-1",
-              "route": "VCP",
-              "from": "Corseaux",
-              "to": "Vevey (funi)",
-              "fromId": "ch:1:sloid:1251",
-              "toId": "ch:1:sloid:1250",
-              "occurrences": 66,
-              "rejectedOccurrences": 66,
-              "reasons": [
-                "missing-path"
-              ]
-            }
-          ]
+          "acceptedDirectedPairs": 10,
+          "issues": []
         },
         {
           "id": "42:rail",
@@ -1475,9 +1281,9 @@
         }
       ],
       "payload": {
-        "manifest": 46234,
-        "morning": 62058,
-        "largestChunk": 21934
+        "manifest": 47865,
+        "morning": 63924,
+        "largestChunk": 22017
       },
       "railProjection": [
         {
@@ -2261,20 +2067,217 @@
           }
         }
       ],
+      "funicularGeometry": [
+        {
+          "routeId": "93-LAS-j26-1",
+          "installation": "61.001",
+          "sourceDate": "2025-01-01",
+          "sourceSegmentId": "ch14uvag00106853",
+          "trips": 136,
+          "matchedSegments": 136,
+          "maximumSnapMetres": 19.474363098578564,
+          "stops": [
+            {
+              "id": "ch:1:sloid:1350",
+              "name": "Les Avants (funi)",
+              "coordinate": [
+                6.94354595,
+                46.45429746
+              ],
+              "segmentId": "ch14uvag00106853",
+              "distance": 20.662139436158625,
+              "point": [
+                6.943474518477126,
+                46.45424396531071
+              ],
+              "snapMetres": 8.091561954483979
+            },
+            {
+              "id": "ch:1:sloid:1351",
+              "name": "Sonloup",
+              "coordinate": [
+                6.93891065,
+                46.4571628
+              ],
+              "segmentId": "ch14uvag00106853",
+              "distance": 478.8790221229034,
+              "point": [
+                6.9390773,
+                46.4570308
+              ],
+              "snapMetres": 19.474363098578564
+            }
+          ]
+        },
+        {
+          "routeId": "93-TG-j26-1",
+          "installation": "61.046",
+          "sourceDate": "2025-01-01",
+          "sourceSegmentId": "ch14uvag00106574",
+          "trips": 148,
+          "matchedSegments": 296,
+          "maximumSnapMetres": 2.89217075031025,
+          "stops": [
+            {
+              "id": "ch:1:sloid:30673",
+              "name": "Territet (funi)",
+              "coordinate": [
+                6.92344166,
+                46.42683088
+              ],
+              "segmentId": "ch14uvag00106574",
+              "distance": 6.60541787210157,
+              "point": [
+                6.923462048240081,
+                46.42683028390131
+              ],
+              "snapMetres": 1.5658104266657402
+            },
+            {
+              "id": "ch:1:sloid:92618",
+              "name": "Collonge (funi)",
+              "coordinate": [
+                6.92351352,
+                46.42827977
+              ],
+              "segmentId": "ch14uvag00106574",
+              "distance": 167.98462095445893,
+              "point": [
+                6.9235511796301346,
+                46.428278668989684
+              ],
+              "snapMetres": 2.89217075031025
+            },
+            {
+              "id": "ch:1:sloid:30031",
+              "name": "Glion (funi)",
+              "coordinate": [
+                6.92376505,
+                46.43187086
+              ],
+              "segmentId": "ch14uvag00106574",
+              "distance": 568.2277837284826,
+              "point": [
+                6.923761125259615,
+                46.43187092722416
+              ],
+              "snapMetres": 0.30121315996405834
+            }
+          ]
+        },
+        {
+          "routeId": "93-VCP-j26-1",
+          "installation": "61.050",
+          "sourceDate": "2025-01-01",
+          "sourceSegmentId": "ch14uvag00106909",
+          "trips": 132,
+          "matchedSegments": 660,
+          "maximumSnapMetres": 13.464241435575625,
+          "stops": [
+            {
+              "id": "ch:1:sloid:1250",
+              "name": "Vevey (funi)",
+              "coordinate": [
+                6.83600863,
+                46.468635
+              ],
+              "segmentId": "ch14uvag00106909",
+              "distance": 0,
+              "point": [
+                6.8358425,
+                46.4686742
+              ],
+              "snapMetres": 13.464241435575625
+            },
+            {
+              "id": "ch:1:sloid:1251",
+              "name": "Corseaux",
+              "coordinate": [
+                6.83573914,
+                46.47166663
+              ],
+              "segmentId": "ch14uvag00106909",
+              "distance": 333.79836909856533,
+              "point": [
+                6.835726624305856,
+                46.4716652988987
+              ],
+              "snapMetres": 0.9709214610981758
+            },
+            {
+              "id": "ch:1:sloid:1252",
+              "name": "Beau-Site",
+              "coordinate": [
+                6.83512828,
+                46.47385053
+              ],
+              "segmentId": "ch14uvag00106909",
+              "distance": 581.6014133781573,
+              "point": [
+                6.835121103213956,
+                46.47384855830093
+              ],
+              "snapMetres": 0.5923687295552263
+            },
+            {
+              "id": "ch:1:sloid:1253",
+              "name": "Chardonne-Jongny",
+              "coordinate": [
+                6.83306216,
+                46.47701177
+              ],
+              "segmentId": "ch14uvag00106909",
+              "distance": 967.8762923876784,
+              "point": [
+                6.833073671096756,
+                46.477014178421484
+              ],
+              "snapMetres": 0.9222703152009681
+            },
+            {
+              "id": "ch:1:sloid:1254",
+              "name": "La Baume",
+              "coordinate": [
+                6.83244232,
+                46.47901607
+              ],
+              "segmentId": "ch14uvag00106909",
+              "distance": 1196.0846599806305,
+              "point": [
+                6.832419517722399,
+                46.47901277052117
+              ],
+              "snapMetres": 1.7861320674544192
+            },
+            {
+              "id": "ch:1:sloid:1255",
+              "name": "Mont-Pèlerin",
+              "coordinate": [
+                6.83158892,
+                46.48188629
+              ],
+              "segmentId": "ch14uvag00106909",
+              "distance": 1522.38483606946,
+              "point": [
+                6.8315345824534255,
+                46.48187908478412
+              ],
+              "snapMetres": 4.241670672304311
+            }
+          ]
+        }
+      ],
       "gate": {
-        "passed": false,
+        "passed": true,
         "minimumCoverage": 0.95,
-        "deferred": [
-          "125:funicular",
-          "131:funicular",
-          "155:funicular"
-        ]
+        "deferred": []
       },
       "sourceHashes": {
         "archive": "4fa074044fc3a1ceae3c91597b72cf42b9bbce0477b9d43b7b4f658e3e9acfa5",
         "rail": "2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
         "snapshot": "112d523acc00dda2c87ad31d439e38362c2dc6070850b89ac0dbe4e2338d8700",
-        "busCache": "9bc74d4eea0ff09265ea07a9372c23b357e3bc28aa8b614d6e03a0c6e1d19e4d"
+        "busCache": "9bc74d4eea0ff09265ea07a9372c23b357e3bc28aa8b614d6e03a0c6e1d19e4d",
+        "funiculars": "0497c20094c820306fce9c6a9f47b1b226ff1ca5286e9472b670ee73c093d6f2"
       },
       "feedVersion": "20260905",
       "sourceServiceDates": [

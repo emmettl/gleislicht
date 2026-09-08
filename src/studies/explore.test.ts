@@ -7,6 +7,14 @@ import { EXPLORE_COPY } from './explore-copy.ts'
 import type { NetworkSnapshot } from '@motionstudies/core/domain/network'
 const metadata = (date: string, start = 0, end = 86400) => ({ serviceDate: date, windowStart: start, windowEnd: end }) as NetworkSnapshot['metadata']
 describe('Swiss Now and study links', () => {
+  it('opens and shares the dated Riviera study in both playback ranges', () => {
+    expect(readStudyLink('?study=riviera-region')).toMatchObject({ study: 'riviera-region', range: 'day' })
+    for (const range of ['morning', 'day'] as const) {
+      const state = { study: 'riviera-region', range, date: '2026-09-08', station: 'Vevey', time: 27900 } as const
+      expect(readStudyLink(new URL(studyLinkUrl('https://example.org/', state)).search)).toMatchObject(state)
+    }
+    for (const copy of Object.values(EXPLORE_COPY)) expect(copy.names[STUDY_IDS.indexOf('riviera-region')]).toContain('Riviera')
+  })
   it('discovers Nyon in every language and preserves its dated full-day or morning links', () => {
     for (const copy of Object.values(EXPLORE_COPY)) {
       expect(copy.names).toHaveLength(STUDY_IDS.length)

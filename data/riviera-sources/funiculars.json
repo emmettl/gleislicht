@@ -1,0 +1,353 @@
+{
+  "schemaVersion": 1,
+  "metadata": {
+    "publisher": "Federal Office of Transport - FOT",
+    "attribution": "© Federal Office of Transport (FOT)",
+    "catalogueLicense": "proprietary",
+    "termsUrl": "https://opendata.swiss/en/terms-of-use/#terms_by",
+    "sourceUrl": "https://data.geo.admin.ch/ch.bav.seilbahnen-bundeskonzession/seilbahnen-bundeskonzession/seilbahnen-bundeskonzession_2056_de.xtf.zip",
+    "catalogueDate": "2025-11-07T00:00:00Z",
+    "assetUpdated": "2026-01-29T06:46:40.489123Z",
+    "checkedOn": "2026-09-08T18:41:41.256Z",
+    "archiveMember": "Seilbahnen_20260105.xtf",
+    "sha256": "eb2c04bbb481fcac1ae472527a237ce9294f227047f340288e79c18cd0e14ddf",
+    "xmlSha256": "8cf0ecb4a7df444145c1134910c61d4608c52989a4e7b518d7f519f67b8d0ace",
+    "counts": {
+      "installations": 653,
+      "stations": 1349,
+      "segments": 653
+    },
+    "files": {
+      "source.xtf.zip": "eb2c04bbb481fcac1ae472527a237ce9294f227047f340288e79c18cd0e14ddf",
+      "network.xtf.gz": "1290660c9d49691c6d44cc3f1b0abb6542fc289e90ed1fe9b87856b9053f585f",
+      "catalogue.json": "de38eaf969be840f974795f6ebc78344d4823107a6b473c87e8371cdc0d5e9a8",
+      "collection.json": "83bd7103bc5730788052d9b034f1827e77f4121dc2ca0f5f83938d0dd27a4525"
+    },
+    "interpretation": "Official 2D cableway axes; source Stand dates retained per installation. No cable sag, altitude profile, observed cabins or live operational status.",
+    "transformation": "Approximate swisstopo LV95-to-WGS84 polynomial, seven decimals, no geometry simplification."
+  },
+  "routes": [
+    {
+      "routeId": "93-LAS-j26-1",
+      "agencyId": "125",
+      "installation": "61.001",
+      "maximumSnapMetres": 25,
+      "stops": [
+        "ch:1:sloid:1350",
+        "ch:1:sloid:1351"
+      ],
+      "feature": {
+        "id": "ch14uvag00097605",
+        "number": "61.001",
+        "name": "Les Avants - Sonloup",
+        "type": "Standseilbahn",
+        "vehicle": "Kabine",
+        "operator": "212",
+        "operatorAbbreviation": "MVR",
+        "sourceDate": "2025-01-01",
+        "validFrom": "1910-01-01",
+        "validUntil": null
+      },
+      "segment": {
+        "id": "ch14uvag00106853",
+        "installation": "ch14uvag00097605",
+        "lines": [
+          [
+            [
+              6.9436728,
+              46.4541183
+            ],
+            [
+              6.9390773,
+              46.4570308
+            ]
+          ]
+        ],
+        "lengthInclinedMetres": "515",
+        "elevationDifferenceMetres": "180"
+      },
+      "stations": [
+        {
+          "id": "ch14uvag00098350",
+          "number": "8501351",
+          "name": "Sonloup",
+          "type": "Bergstation",
+          "installation": "ch14uvag00097605",
+          "coordinate": [
+            6.9390773,
+            46.4570308
+          ]
+        },
+        {
+          "id": "ch14uvag00098903",
+          "number": "8501350",
+          "name": "Les Avants (funi)",
+          "type": "Talstation",
+          "installation": "ch14uvag00097605",
+          "coordinate": [
+            6.9436728,
+            46.4541183
+          ]
+        }
+      ]
+    },
+    {
+      "routeId": "93-TG-j26-1",
+      "agencyId": "131",
+      "installation": "61.046",
+      "maximumSnapMetres": 15,
+      "stops": [
+        "ch:1:sloid:30673",
+        "ch:1:sloid:92618",
+        "ch:1:sloid:30031"
+      ],
+      "feature": {
+        "id": "ch14uvag00097610",
+        "number": "61.046",
+        "name": "Territet - Glion",
+        "type": "Standseilbahn",
+        "vehicle": "Kabine",
+        "operator": "212",
+        "operatorAbbreviation": "MVR",
+        "sourceDate": "2025-01-01",
+        "validFrom": "1883-01-01",
+        "validUntil": null
+      },
+      "segment": {
+        "id": "ch14uvag00106574",
+        "installation": "ch14uvag00097610",
+        "lines": [
+          [
+            [
+              6.9234584,
+              46.426771
+            ],
+            [
+              6.92365,
+              46.4298845
+            ],
+            [
+              6.92372,
+              46.4307304
+            ],
+            [
+              6.9237612,
+              46.431873
+            ]
+          ]
+        ],
+        "lengthInclinedMetres": "630",
+        "elevationDifferenceMetres": "298"
+      },
+      "stations": [
+        {
+          "id": "ch14uvag00098374",
+          "number": "8530673",
+          "name": "Territet (funi)",
+          "type": "Talstation",
+          "installation": "ch14uvag00097610",
+          "coordinate": [
+            6.9234584,
+            46.426771
+          ]
+        },
+        {
+          "id": "ch14uvag00098351",
+          "number": "8530031",
+          "name": "Glion (funi)",
+          "type": "Bergstation",
+          "installation": "ch14uvag00097610",
+          "coordinate": [
+            6.9237612,
+            46.431873
+          ]
+        }
+      ]
+    },
+    {
+      "routeId": "93-VCP-j26-1",
+      "agencyId": "155",
+      "installation": "61.050",
+      "maximumSnapMetres": 15,
+      "stops": [
+        "ch:1:sloid:1250",
+        "ch:1:sloid:1251",
+        "ch:1:sloid:1252",
+        "ch:1:sloid:1253",
+        "ch:1:sloid:1254",
+        "ch:1:sloid:1255"
+      ],
+      "feature": {
+        "id": "ch14uvag00097600",
+        "number": "61.050",
+        "name": "Vevey - Chardonne - Mont-Pèlerin",
+        "type": "Standseilbahn",
+        "vehicle": "Kabine",
+        "operator": "212",
+        "operatorAbbreviation": "MVR",
+        "sourceDate": "2025-01-01",
+        "validFrom": "1900-01-01",
+        "validUntil": null
+      },
+      "segment": {
+        "id": "ch14uvag00106909",
+        "installation": "ch14uvag00097600",
+        "lines": [
+          [
+            [
+              6.8358425,
+              46.4686742
+            ],
+            [
+              6.8359181,
+              46.4700689
+            ],
+            [
+              6.8358868,
+              46.4705456
+            ],
+            [
+              6.8358287,
+              46.471085
+            ],
+            [
+              6.8357862,
+              46.4713996
+            ],
+            [
+              6.8357177,
+              46.4717051
+            ],
+            [
+              6.8356083,
+              46.4721723
+            ],
+            [
+              6.8354033,
+              46.4730439
+            ],
+            [
+              6.8353352,
+              46.4733134
+            ],
+            [
+              6.8352945,
+              46.4734571
+            ],
+            [
+              6.8352275,
+              46.4736276
+            ],
+            [
+              6.8351607,
+              46.4737802
+            ],
+            [
+              6.8350412,
+              46.4739865
+            ],
+            [
+              6.8348424,
+              46.4743003
+            ],
+            [
+              6.8343532,
+              46.4749724
+            ],
+            [
+              6.8339829,
+              46.4754832
+            ],
+            [
+              6.8335859,
+              46.4760568
+            ],
+            [
+              6.8333733,
+              46.4764335
+            ],
+            [
+              6.8331874,
+              46.4767564
+            ],
+            [
+              6.8330805,
+              46.4769987
+            ],
+            [
+              6.8329736,
+              46.477241
+            ],
+            [
+              6.8329058,
+              46.4774835
+            ],
+            [
+              6.8327848,
+              46.4778247
+            ],
+            [
+              6.8327437,
+              46.4780044
+            ],
+            [
+              6.8325957,
+              46.4784354
+            ],
+            [
+              6.8323929,
+              46.4791
+            ],
+            [
+              6.8322711,
+              46.4795132
+            ],
+            [
+              6.8320953,
+              46.480097
+            ],
+            [
+              6.8318806,
+              46.4806626
+            ],
+            [
+              6.8317316,
+              46.4811746
+            ],
+            [
+              6.8314603,
+              46.4821447
+            ]
+          ]
+        ],
+        "lengthInclinedMetres": "1578",
+        "elevationDifferenceMetres": "417"
+      },
+      "stations": [
+        {
+          "id": "ch14uvag00098941",
+          "number": "8501250",
+          "name": "Vevey (funi)",
+          "type": "Talstation",
+          "installation": "ch14uvag00097600",
+          "coordinate": [
+            6.8358425,
+            46.4686742
+          ]
+        },
+        {
+          "id": "ch14uvag00098880",
+          "number": "8501255",
+          "name": "Mont-Pèlerin",
+          "type": "Bergstation",
+          "installation": "ch14uvag00097600",
+          "coordinate": [
+            6.8314603,
+            46.4821447
+          ]
+        }
+      ]
+    }
+  ],
+  "interpretation": "Federal 2D installation centrelines, unsimplified. Intermediate timetable calls projected onto the installation axis. No passing-loop track assignment, cable simulation or measured elevation."
+}

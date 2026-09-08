@@ -9,8 +9,9 @@ import { applyRailGeometry, parseRailNetworkXtf } from './enrich-swiss-rail-geom
 import { readRegionalDirectory, REGIONAL_IDS } from './regional-artifacts.mjs'
 import { serviceDate } from './service-date.mjs'
 import { buildLausanneDay } from './build-lausanne-day.mjs'
-import { refreshNyonDay } from './refresh-nyon-day.mjs'
 import { refreshSolothurnDay } from './refresh-solothurn-day.mjs'
+import { refreshRivieraDay } from './refresh-riviera-day.mjs'
+import { refreshNyonDay } from './refresh-nyon-day.mjs'
 import { refreshBernDay } from './refresh-bern-day.mjs'
 import { refreshBaselDay } from './refresh-basel-day.mjs'
 
@@ -78,17 +79,22 @@ try {
   }
 
   const requested = arg('study') ? [arg('study')] : REGIONAL_IDS
-  const dated = requested.filter(id => !['basel-core', 'bern-region', 'solothurn-region', 'nyon-region'].includes(id))
+  const dated = requested.filter(id => !['basel-core', 'bern-region', 'solothurn-region', 'nyon-region', 'riviera-region'].includes(id))
   const { files } = await readRegionalDirectory(staged, dated, date)
-  if (requested.includes('nyon-region')) {
-    await refreshNyonDay({ date, output: staged })
-    const nyon = await readRegionalDirectory(staged, ['nyon-region'])
-    for (const [path, bytes] of nyon.files) files.set(path, bytes)
-  }
   if (requested.includes('solothurn-region')) {
     await refreshSolothurnDay({ date, output: staged })
     const solothurn = await readRegionalDirectory(staged, ['solothurn-region'])
     for (const [path, bytes] of solothurn.files) files.set(path, bytes)
+  }
+  if (requested.includes('riviera-region')) {
+    await refreshRivieraDay({ date, output: staged })
+    const riviera = await readRegionalDirectory(staged, ['riviera-region'])
+    for (const [path, bytes] of riviera.files) files.set(path, bytes)
+  }
+  if (requested.includes('nyon-region')) {
+    await refreshNyonDay({ date, output: staged })
+    const nyon = await readRegionalDirectory(staged, ['nyon-region'])
+    for (const [path, bytes] of nyon.files) files.set(path, bytes)
   }
   if (requested.includes('bern-region')) {
     await refreshBernDay({ date, output: staged })

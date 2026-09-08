@@ -370,9 +370,9 @@ GTFS. Inactive operators are not invented on dates without scheduled service.
 | VMCV bus | 1,200 | 661 | 100% |
 | MOB replacement bus | 23 | 10 | 100% |
 | MVR replacement bus | 136 | 14 | 100% |
-| Les Avants–Sonloup funicular | 136 | 136 | Deferred |
-| Territet–Glion funicular | 146 | 148 | Deferred |
-| Vevey–Mont-Pèlerin funicular | 0 | 132 | Deferred |
+| Les Avants–Sonloup funicular | 136 | 136 | 100% |
+| Territet–Glion funicular | 146 | 148 | 100% |
+| Vevey–Mont-Pèlerin funicular | 0 | 132 | 100% |
 
 The rail correction uses explicit FOT operating-point corridors. The MVR/MOB
 connected component also reaches the SBB network, so component membership alone
@@ -396,14 +396,38 @@ The [weekday review](assets/riviera-geometry-review-2026-09-08.svg) and
 [Sunday review](assets/riviera-geometry-review-2026-09-13.svg) were rendered and
 inspected around Vevey, Montreux, Rochers-de-Naye, Fontanivent and Montbovon against
 retained OSM/FOT geometry. This is source-alignment review, not live app testing.
-Ten focused Nyon/Riviera tests pass. Both fourteen-file candidate sets pass checks
-for actual chunk hashes, byte lengths, complete journey counts, path indices,
-source provenance and zero accidental geometry on deferred funiculars.
+Both fourteen-file candidate sets pass checks for actual chunk hashes, byte
+lengths, complete journey counts, path indices and source provenance. Every
+journey now has complete geometry, including all three funiculars.
 
-The [dated audit](../data/riviera-region/audit.json) and candidates remain outside
-`public/`. The overall admission gate deliberately fails until the three funicular
-alignments are independently sourced and checked. Those alignments, operator-level
-review of bus paths and subsequent app integration are next.
+The audit stage was committed as `f8b7813`. The subsequent funicular work uses
+retained FOT installations 61.001 (Les Avants–Sonloup), 61.046 (Territet–Glion)
+and 61.050 (Vevey–Mont-Pèlerin), with installation identity, validity, source hashes,
+exact GTFS platform IDs and ordered calls checked before admission. Both directions
+retain intermediate calls, including Collonge and the four Mont-Pèlerin stops.
+Maximum attachments are 19.5 m, 2.9 m and 13.5 m respectively. The reviewed limits
+are 25 m for Les Avants–Sonloup and 15 m for the other two lines. The source and
+its attribution are retained in [funiculars.json](../data/riviera-sources/funiculars.json).
+The [funicular review](assets/riviera-funicular-geometry-review.svg) was rendered
+and inspected against the official axes. These are 2D source axes, without
+passing loops or an elevation model; Les Avants–Sonloup has a two-point source axis.
+
+The [dated audit](../data/riviera-region/audit.json) now passes its geometry gate.
+Riviera is integrated into desktop/mobile study selection, full-day playback,
+search, sharing, multilingual descriptions and persistent timetable-date labels.
+The default public release is 8 September 2026; Sunday is separately validated.
+The regional refresh and recovery pipeline accepts only reviewed dates or a
+verified published release, preserving its actual date and complete chunk set.
+Changed sources or partial/mixed releases fail validation.
+
+Validation: 39 focused tests cover release integrity/recovery, funicular and rail
+geometry, regional refresh, study links, summaries and edition registration. The
+production build succeeds. The opening JavaScript transfer is currently 361.3 KiB
+against the 360 KiB budget; CSS, data and total transfer remain within budget.
+A regional-copy loading experiment was reverted because it did not resolve that
+limit. Bundle reduction and live browser QA remain before calling the application
+integration release-ready. Operator review of inferred bus paths remains a separate
+quality follow-up; passing these checks is not operator verification.
 
 ```sh
 # Extract each date (2026-09-08 and 2026-09-13) with the official archive:
@@ -415,4 +439,13 @@ node scripts/prepare-riviera-road-feed.mjs ARCHIVE COMPLETE_SNAPSHOT MATCHER_FEE
 # match-postbus-roads.mjs + enrich-postbus-roads.mjs retain each dated road cache.
 node scripts/audit-riviera-study.mjs ARCHIVE RAIL COMPLETE_WEEKDAY COMPLETE_SUNDAY data/riviera-region
 node scripts/check-riviera-study.mjs data/riviera-region
+```
+
+
+```sh
+node scripts/prepare-riviera-funiculars.mjs
+node scripts/review-riviera-funiculars.mjs
+node scripts/build-riviera-day.mjs
+node scripts/build-riviera-day.mjs --date 2026-09-13 --output /tmp/riviera-sunday-release
+npx vitest run scripts/riviera-release.test.mjs scripts/riviera-funicular-geometry.test.mjs scripts/riviera-rail-geometry.test.mjs scripts/regional-refresh.test.mjs src/studies/explore.test.ts src/editions/edition.test.ts --exclude '**/.claude/**'
 ```
