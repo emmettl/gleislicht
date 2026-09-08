@@ -2372,6 +2372,10 @@
     "path": "data/st-gallen-detour-review.json",
     "sha256": "689e13683f0dd70cf9c47c7632db69f570d2103accb03b0047e28fd957ddee56"
   },
+  "endpointReview": {
+    "path": "data/st-gallen-endpoint-review.json",
+    "sha256": "e4ce03cfbb7ff3c67dc2ca8ff72ab09a9059bc49add701d8431e546af76be969"
+  },
   "sharedCorridorReview": {
     "path": "data/st-gallen-shared-corridor-review.json",
     "sha256": "90786bad5a03b9e1d8af27f35c4e8b1b55ff0667ff472b60f6f457b935b67574"

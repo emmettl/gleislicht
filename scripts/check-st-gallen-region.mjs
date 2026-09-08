@@ -196,6 +196,12 @@ export async function checkStGallenAudit(directory = 'data/st-gallen-audit') {
   assert.equal(new Set(detours.pairs.map(p => p.key)).size, detours.pairs.length)
   assert.deepEqual(detours.validation, { passed: true, feedChanged: false, admissionLimitsChanged: false, directionCertified: false })
   const reviewedPairKeys = new Set()
+  assert(summary.endpointReview, 'Missing bus endpoint review')
+  assert.equal(sha256(await readFile(summary.endpointReview.path)), summary.endpointReview.sha256)
+  const endpoints = await json(summary.endpointReview.path), endpointKeys = new Set()
+  assert.deepEqual(endpoints.sourceHashes, summary.sourceHashes)
+  assert.equal(new Set(endpoints.pairs.map(p => p.key)).size, endpoints.pairs.length)
+  assert.deepEqual(endpoints.validation, { passed: true, feedChanged: false, admissionLimitsChanged: false, directionCertified: false })
   for (const [name, record] of Object.entries(summary.files)) assert.equal(sha256(await readFile(join(directory, name))), record.sha256, `Audit file ${name}`)
   assert.equal(sha256(await readFile('data/st-gallen-policy.json')), summary.sourceHashes.policy)
   assert.equal(sha256(await readFile('data/st-gallen-sources/sources.json')), summary.sourceHashes.catalogue)
@@ -238,6 +244,37 @@ export async function checkStGallenAudit(directory = 'data/st-gallen-audit') {
     const affected = day.directedPatterns.filter(p => p.pairKeys.some(k => failed.some(f => f.key === k)))
     assert(affected.every(p => !p.admitted))
     assert.equal(reviewed.affectedPatterns, affected.length); assert.equal(reviewed.affectedTrips, sum(affected, 'trips'))
+    const endpointDay = endpoints.days.find(d => d.date === day.date); assert(endpointDay)
+    assert.equal(endpointDay.dayAuditSha256, sha256(JSON.stringify(day)), 'Stale endpoint day audit')
+    assert.equal(endpointDay.admittedTrips, day.admittedTrips)
+    const endpointFailures = day.directedStopPairs.filter(p => p.mode === 'bus' && p.reason === 'endpoint-gap')
+    assert.equal(endpointDay.reviewedPairs, endpointFailures.length)
+    for (const pair of endpointFailures) {
+      endpointKeys.add(pair.key)
+      const detail = endpoints.pairs.find(p => p.key === pair.key); assert(detail)
+      for (const key of ['routeId', 'agencyId', 'line', 'fromId', 'toId', 'from', 'to', 'sourceFeatures']) assert.deepEqual(detail[key], pair[key])
+      assert.equal(detail.production.reason, pair.reason)
+      assert.equal(detail.production.maximumSnapMetres, pair.maximumSnapMetres)
+      const patterns = day.directedPatterns.filter(p => p.pairKeys.includes(pair.key)), binding = detail.days.find(d => d.date === day.date)
+      assert.equal(binding.occurrences, pair.occurrences)
+      assert.equal(binding.affectedPatterns, patterns.length); assert.equal(binding.affectedTrips, sum(patterns, 'trips'))
+      assert.equal(binding.patternIdsSha256, sha256(JSON.stringify(patterns.map(p => p.id).sort())))
+      for (const candidate of detail.sameAgencyCandidates) {
+        const source = sources.find(s => s.key === candidate.feature)
+        assert(source?.agencyIds.includes(pair.agencyId) && source.mode === 'bus')
+        assert(!pair.sourceFeatures.includes(candidate.feature))
+        assert.equal(source.properties.LINIENNAME, candidate.name)
+        assert(candidate.maximumSnapMetres <= summary.policy.limits.snapMetres)
+        assert(/^[a-f0-9]{64}$/.test(candidate.geometrySha256))
+      }
+    }
+    const endpointPatterns = day.directedPatterns.filter(p => p.pairKeys.some(k => endpointFailures.some(f => f.key === k)))
+    assert(endpointPatterns.every(p => !p.admitted))
+    assert.equal(endpointDay.affectedPatterns, endpointPatterns.length); assert.equal(endpointDay.affectedTrips, sum(endpointPatterns, 'trips'))
+    for (const route of endpoints.routes) {
+      const patterns = endpointPatterns.filter(p => p.routeId === route.routeId), binding = route.days.find(d => d.date === day.date)
+      assert.equal(binding.affectedPatterns, patterns.length); assert.equal(binding.affectedTrips, sum(patterns, 'trips'))
+    }
     const { directedPatterns, directedStopPairs, routes: counts, ...rest } = day
     assert.deepEqual(rest, expected)
     assert.equal(directedPatterns.length, day.patterns)
@@ -318,7 +355,9 @@ export async function checkStGallenAudit(directory = 'data/st-gallen-audit') {
     results.push({date:day.date,admittedTrips:day.admittedTrips,patterns:day.admittedPatterns})
   }
   assert.deepEqual([...reviewedPairKeys].sort(), detours.pairs.map(p => p.key).sort(), 'Incomplete or surplus detour review')
-  return {passed:true,annualRoutes:inventory.length,agencies:summary.annualAgencies,days:results,sourceCallReplay:false,reviewedBusDetourPairs:detours.pairs.length}
+  assert.deepEqual([...endpointKeys].sort(), endpoints.pairs.map(p => p.key).sort(), 'Incomplete or surplus endpoint review')
+  assert.deepEqual(endpoints.routes.map(r => r.routeId).sort(), [...new Set(endpoints.pairs.map(p => p.routeId))].sort())
+  return {passed:true,annualRoutes:inventory.length,agencies:summary.annualAgencies,days:results,sourceCallReplay:false,reviewedBusDetourPairs:detours.pairs.length,reviewedBusEndpointPairs:endpoints.pairs.length}
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) console.log(JSON.stringify(process.argv.includes('--audit-only') ? await checkStGallenAudit() : await checkStGallenRegion({ timetablePath: process.argv[2] ?? 'data/st-gallen-sources/local/timetable.json' }), null, 2))

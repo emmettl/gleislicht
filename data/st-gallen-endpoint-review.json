@@ -1,0 +1,5034 @@
+{
+  "schemaVersion": 1,
+  "scope": "Every remaining bus endpoint-gap pair across the two pinned St. Gallen civil-day fixtures.",
+  "sourceHashes": {
+    "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+    "boundary": "9fcbdc0a501919e7d8722827e0868784010be046dccffc02df0833f9de21f86a",
+    "timetable": "fdbe77f9d44d9f7cf59a1da8cf09b87970a6afc0a78355421265b73f9981d49c",
+    "policy": "813ea14d6ce2e3c62baa5e88418485a915dc2207129dd111f169d148cafc86aa",
+    "catalogue": "a3ca9355f89503c16380dec23a518a1c3ad2b91308428da0d8ade6a3da782c8f"
+  },
+  "evidence": [
+    {
+      "id": "323",
+      "file": "323.html",
+      "publisher": "RTB Rheintal Bus",
+      "url": "https://www.rtb.ch/reisen/info-haltestelle/detail-linie/323",
+      "sha256": "54de8669cff0bee5e2a4498ff018d95eb8d5a40022dc7043f92d6b3534319217",
+      "bytes": 56540,
+      "retrievedAt": "2026-09-08T19:14:09.484Z",
+      "sourceEditionDate": null
+    },
+    {
+      "id": "705",
+      "file": "705.html",
+      "publisher": "WilMobil / BOS Gruppe",
+      "url": "https://www.wilmobil.ch/reisen/info-haltestelle/detail-linie/705",
+      "sha256": "a1c3d22ac17f0729add8db96f4920827bf841e601b22eae31a6850435f565ed6",
+      "bytes": 40920,
+      "retrievedAt": "2026-09-08T19:14:09.613Z",
+      "sourceEditionDate": null
+    },
+    {
+      "id": "734",
+      "file": "734.html",
+      "publisher": "WilMobil / BOS Gruppe",
+      "url": "https://www.wilmobil.ch/reisen/info-haltestelle/detail-linie/734",
+      "sha256": "ed7d1c94ec691caed69af102b40082e6f44fb6dfbb39ad4129fb06af41cbf68b",
+      "bytes": 49422,
+      "retrievedAt": "2026-09-08T19:14:10.529Z",
+      "sourceEditionDate": null
+    },
+    {
+      "id": "notices",
+      "file": "notices.html",
+      "publisher": "WilMobil / BOS Gruppe",
+      "url": "https://www.wilmobil.ch/reisen/stoerungen/betriebsmeldungen",
+      "sha256": "11a7c41b63bff55a6f355d573bb709f1b43788580ceccc1af0982ea920630864",
+      "bytes": 76453,
+      "retrievedAt": "2026-09-08T19:14:10.559Z",
+      "sourceEditionDate": null
+    },
+    {
+      "id": "vmobil-catalogue",
+      "file": "vmobil.html",
+      "publisher": "Mobilitätsdaten Österreich / AustriaTech",
+      "url": "https://mobilitaetsdaten.gv.at/daten/soll-fahrplandaten-gtfs",
+      "sha256": "084dc4f5f5027f298a7b8edaa73f3d59b8bec76fd486443929d6e08d0fd0eeeb",
+      "bytes": 34190,
+      "retrievedAt": "2026-09-08T19:14:09.584Z",
+      "sourceEditionDate": null
+    },
+    {
+      "id": "vmobil-license",
+      "file": "vmobil-license.pdf",
+      "publisher": "Mobilitätsverbünde Österreich OG",
+      "url": "https://mobilitaetsdaten.gv.at/sites/default/files/metadataset/contract_examples/Lizenzvereinbarung_DBP_v1.1_0.pdf",
+      "sha256": "0ebe5104d6f730655394deb695065baaa17fa16c2d6bbf94373e274835c5e298",
+      "bytes": 338879,
+      "retrievedAt": "2026-09-08T19:14:09.544Z",
+      "sourceEditionDate": null
+    },
+    {
+      "id": "vmobil",
+      "file": "vmobil-20260703.zip",
+      "publisher": "Mobilitätsverbünde Österreich OG / Verkehrsverbund Vorarlberg",
+      "url": "https://mobilitaetsdaten.gv.at/sites/default/files/metadataset/sample_data/20260703-0010_gtfs_flex_vmobil_2026.zip",
+      "sourceEditionDate": "2026-07-03",
+      "sha256": "c19094742f994a7c7b346d67a2021d35b71bce610a994e5825b0f8d1900438ed",
+      "bytes": 22364729,
+      "retrievedAt": "2026-09-08T19:14:12.507Z"
+    }
+  ],
+  "externalInventory": {
+    "feed": {
+      "feed_publisher_name": "Mobilitätsverbünde Österreich OG",
+      "feed_publisher_url": "https://data.mobilitaetsverbuende.at/",
+      "feed_lang": "DE",
+      "feed_start_date": "20251214",
+      "feed_end_date": "20261212",
+      "feed_version": "20260703",
+      "feed_contact_email": "services@mobilitaetsverbuende.at",
+      "feed_contact_url": "https://data.mobilitaetsverbuende.at/"
+    },
+    "routeRecords": 295,
+    "selectedRoutes": [
+      {
+        "route_id": "at:vvv:164:",
+        "agency_id": "33",
+        "route_short_name": "164",
+        "route_long_name": "Lustenau-Lauterach-Wolfurt",
+        "route_type": "3",
+        "agency": {
+          "agency_id": "33",
+          "agency_name": "Landbus Unterland",
+          "agency_url": "https://www.vmobil.at/",
+          "agency_timezone": "Europe/Vienna",
+          "agency_lang": "DE",
+          "agency_phone": "05522/83951"
+        }
+      }
+    ],
+    "selectedTripRecords": 142,
+    "selectedShapeRecords": 7,
+    "selectedShapePoints": 3108,
+    "everySelectedShapeHasMultiplePoints": true,
+    "line323Present": false
+  },
+  "method": "Replay each production graph. Diagnose every other individual regional/city bus record mapped to the same GTFS agency with unchanged limits. Candidate geometry hashes establish reproducibility, not route authority. No operator union, external shapes, changed stop locations or relaxed limits are used for admission.",
+  "pairs": [
+    {
+      "key": "[\"92-150-A-j26-1\",\"ch:1:sloid:90327\",\"ch:1:sloid:12618\"]",
+      "routeId": "92-150-A-j26-1",
+      "agencyId": "896",
+      "line": "150",
+      "fromId": "ch:1:sloid:90327",
+      "toId": "ch:1:sloid:12618",
+      "from": "Gossau SG, Eichen",
+      "to": "Gossau SG, Sommerau",
+      "sourceFeatures": [
+        "bus:19"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 512.6844649085323,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 28,
+          "affectedPatterns": 1,
+          "affectedTrips": 28,
+          "patternIdsSha256": "e315d153105ae605cdfc76ba16bfba32916fd9131d6b1584a4f6fb65a0a662e3"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 0,
+          "affectedPatterns": 0,
+          "affectedTrips": 0,
+          "patternIdsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-150-A-j26-1\",\"ch:1:sloid:12618\",\"ch:1:sloid:90327\"]",
+      "routeId": "92-150-A-j26-1",
+      "agencyId": "896",
+      "line": "150",
+      "fromId": "ch:1:sloid:12618",
+      "toId": "ch:1:sloid:90327",
+      "from": "Gossau SG, Sommerau",
+      "to": "Gossau SG, Eichen",
+      "sourceFeatures": [
+        "bus:19"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 512.6844649085323,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 28,
+          "affectedPatterns": 1,
+          "affectedTrips": 28,
+          "patternIdsSha256": "31db82c335133b798b90702a9a8bddea689bd4a3d5430f0159e09ed03e2edc16"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 0,
+          "affectedPatterns": 0,
+          "affectedTrips": 0,
+          "patternIdsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-151-j26-1\",\"ch:1:sloid:74471\",\"ch:1:sloid:74469\"]",
+      "routeId": "92-151-j26-1",
+      "agencyId": "896",
+      "line": "151",
+      "fromId": "ch:1:sloid:74471",
+      "toId": "ch:1:sloid:74469",
+      "from": "St. Gallen, Marktplatz Bohl",
+      "to": "St. Gallen, Theater",
+      "sourceFeatures": [
+        "bus:20"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 176.05929770099456,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 1,
+          "affectedPatterns": 1,
+          "affectedTrips": 1,
+          "patternIdsSha256": "98c1dc2a4f8261829e71621da5f3b7502f7bd8268998c1b5fea6b159d8e14419"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 0,
+          "affectedPatterns": 0,
+          "affectedTrips": 0,
+          "patternIdsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-151-j26-1\",\"ch:1:sloid:74469\",\"ch:1:sloid:89625\"]",
+      "routeId": "92-151-j26-1",
+      "agencyId": "896",
+      "line": "151",
+      "fromId": "ch:1:sloid:74469",
+      "toId": "ch:1:sloid:89625",
+      "from": "St. Gallen, Theater",
+      "to": "St. Gallen, Singenberg",
+      "sourceFeatures": [
+        "bus:20"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 495.739059001957,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 1,
+          "affectedPatterns": 1,
+          "affectedTrips": 1,
+          "patternIdsSha256": "98c1dc2a4f8261829e71621da5f3b7502f7bd8268998c1b5fea6b159d8e14419"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 0,
+          "affectedPatterns": 0,
+          "affectedTrips": 0,
+          "patternIdsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-151-j26-1\",\"ch:1:sloid:89625\",\"ch:1:sloid:74467\"]",
+      "routeId": "92-151-j26-1",
+      "agencyId": "896",
+      "line": "151",
+      "fromId": "ch:1:sloid:89625",
+      "toId": "ch:1:sloid:74467",
+      "from": "St. Gallen, Singenberg",
+      "to": "St. Gallen, Kantonsspital",
+      "sourceFeatures": [
+        "bus:20"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 812.0014298581002,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 1,
+          "affectedPatterns": 1,
+          "affectedTrips": 1,
+          "patternIdsSha256": "98c1dc2a4f8261829e71621da5f3b7502f7bd8268998c1b5fea6b159d8e14419"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 0,
+          "affectedPatterns": 0,
+          "affectedTrips": 0,
+          "patternIdsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-151-j26-1\",\"ch:1:sloid:74467\",\"ch:1:sloid:89629\"]",
+      "routeId": "92-151-j26-1",
+      "agencyId": "896",
+      "line": "151",
+      "fromId": "ch:1:sloid:74467",
+      "toId": "ch:1:sloid:89629",
+      "from": "St. Gallen, Kantonsspital",
+      "to": "St. Gallen, St. Fiden Zentrum",
+      "sourceFeatures": [
+        "bus:20"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 1098.1805032237123,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 1,
+          "affectedPatterns": 1,
+          "affectedTrips": 1,
+          "patternIdsSha256": "98c1dc2a4f8261829e71621da5f3b7502f7bd8268998c1b5fea6b159d8e14419"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 0,
+          "affectedPatterns": 0,
+          "affectedTrips": 0,
+          "patternIdsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-151-j26-1\",\"ch:1:sloid:89629\",\"ch:1:sloid:74465\"]",
+      "routeId": "92-151-j26-1",
+      "agencyId": "896",
+      "line": "151",
+      "fromId": "ch:1:sloid:89629",
+      "toId": "ch:1:sloid:74465",
+      "from": "St. Gallen, St. Fiden Zentrum",
+      "to": "St. Gallen, Grossacker",
+      "sourceFeatures": [
+        "bus:20"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 1417.7616561351047,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 1,
+          "affectedPatterns": 1,
+          "affectedTrips": 1,
+          "patternIdsSha256": "98c1dc2a4f8261829e71621da5f3b7502f7bd8268998c1b5fea6b159d8e14419"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 0,
+          "affectedPatterns": 0,
+          "affectedTrips": 0,
+          "patternIdsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-151-j26-1\",\"ch:1:sloid:74465\",\"ch:1:sloid:89594\"]",
+      "routeId": "92-151-j26-1",
+      "agencyId": "896",
+      "line": "151",
+      "fromId": "ch:1:sloid:74465",
+      "toId": "ch:1:sloid:89594",
+      "from": "St. Gallen, Grossacker",
+      "to": "St. Gallen, Krontal",
+      "sourceFeatures": [
+        "bus:20"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 1771.9938557454814,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 1,
+          "affectedPatterns": 1,
+          "affectedTrips": 1,
+          "patternIdsSha256": "98c1dc2a4f8261829e71621da5f3b7502f7bd8268998c1b5fea6b159d8e14419"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 0,
+          "affectedPatterns": 0,
+          "affectedTrips": 0,
+          "patternIdsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-151-j26-1\",\"ch:1:sloid:89594\",\"ch:1:sloid:89579\"]",
+      "routeId": "92-151-j26-1",
+      "agencyId": "896",
+      "line": "151",
+      "fromId": "ch:1:sloid:89594",
+      "toId": "ch:1:sloid:89579",
+      "from": "St. Gallen, Krontal",
+      "to": "St. Gallen, Grütlistrasse",
+      "sourceFeatures": [
+        "bus:20"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 2107.6106468805906,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 1,
+          "affectedPatterns": 1,
+          "affectedTrips": 1,
+          "patternIdsSha256": "98c1dc2a4f8261829e71621da5f3b7502f7bd8268998c1b5fea6b159d8e14419"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 0,
+          "affectedPatterns": 0,
+          "affectedTrips": 0,
+          "patternIdsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-151-j26-1\",\"ch:1:sloid:89579\",\"ch:1:sloid:80689\"]",
+      "routeId": "92-151-j26-1",
+      "agencyId": "896",
+      "line": "151",
+      "fromId": "ch:1:sloid:89579",
+      "toId": "ch:1:sloid:80689",
+      "from": "St. Gallen, Grütlistrasse",
+      "to": "St. Gallen, Neudorf/R'str.",
+      "sourceFeatures": [
+        "bus:20"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 2408.5960521394295,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 1,
+          "affectedPatterns": 1,
+          "affectedTrips": 1,
+          "patternIdsSha256": "98c1dc2a4f8261829e71621da5f3b7502f7bd8268998c1b5fea6b159d8e14419"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 0,
+          "affectedPatterns": 0,
+          "affectedTrips": 0,
+          "patternIdsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-151-j26-1\",\"ch:1:sloid:80689\",\"ch:1:sloid:89597\"]",
+      "routeId": "92-151-j26-1",
+      "agencyId": "896",
+      "line": "151",
+      "fromId": "ch:1:sloid:80689",
+      "toId": "ch:1:sloid:89597",
+      "from": "St. Gallen, Neudorf/R'str.",
+      "to": "St. Gallen, Lindenstrasse",
+      "sourceFeatures": [
+        "bus:20"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 2408.5960521394295,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 1,
+          "affectedPatterns": 1,
+          "affectedTrips": 1,
+          "patternIdsSha256": "98c1dc2a4f8261829e71621da5f3b7502f7bd8268998c1b5fea6b159d8e14419"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 0,
+          "affectedPatterns": 0,
+          "affectedTrips": 0,
+          "patternIdsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-151-j26-1\",\"ch:1:sloid:89597\",\"ch:1:sloid:6459\"]",
+      "routeId": "92-151-j26-1",
+      "agencyId": "896",
+      "line": "151",
+      "fromId": "ch:1:sloid:89597",
+      "toId": "ch:1:sloid:6459",
+      "from": "St. Gallen, Lindenstrasse",
+      "to": "St. Gallen, Heiligkreuzstrasse",
+      "sourceFeatures": [
+        "bus:20"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 2368.1390442934007,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 1,
+          "affectedPatterns": 1,
+          "affectedTrips": 1,
+          "patternIdsSha256": "98c1dc2a4f8261829e71621da5f3b7502f7bd8268998c1b5fea6b159d8e14419"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 0,
+          "affectedPatterns": 0,
+          "affectedTrips": 0,
+          "patternIdsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-151-j26-1\",\"ch:1:sloid:6459\",\"ch:1:sloid:89633\"]",
+      "routeId": "92-151-j26-1",
+      "agencyId": "896",
+      "line": "151",
+      "fromId": "ch:1:sloid:6459",
+      "toId": "ch:1:sloid:89633",
+      "from": "St. Gallen, Heiligkreuzstrasse",
+      "to": "St. Gallen, Storchenstrasse",
+      "sourceFeatures": [
+        "bus:20"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 1994.2398911759067,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 1,
+          "affectedPatterns": 1,
+          "affectedTrips": 1,
+          "patternIdsSha256": "98c1dc2a4f8261829e71621da5f3b7502f7bd8268998c1b5fea6b159d8e14419"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 0,
+          "affectedPatterns": 0,
+          "affectedTrips": 0,
+          "patternIdsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-151-j26-1\",\"ch:1:sloid:89633\",\"ch:1:sloid:89586\"]",
+      "routeId": "92-151-j26-1",
+      "agencyId": "896",
+      "line": "151",
+      "fromId": "ch:1:sloid:89633",
+      "toId": "ch:1:sloid:89586",
+      "from": "St. Gallen, Storchenstrasse",
+      "to": "St. Gallen, Heimatstrasse",
+      "sourceFeatures": [
+        "bus:20"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 1808.610819458451,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 1,
+          "affectedPatterns": 1,
+          "affectedTrips": 1,
+          "patternIdsSha256": "98c1dc2a4f8261829e71621da5f3b7502f7bd8268998c1b5fea6b159d8e14419"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 0,
+          "affectedPatterns": 0,
+          "affectedTrips": 0,
+          "patternIdsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-151-j26-1\",\"ch:1:sloid:89586\",\"ch:1:sloid:6653\"]",
+      "routeId": "92-151-j26-1",
+      "agencyId": "896",
+      "line": "151",
+      "fromId": "ch:1:sloid:89586",
+      "toId": "ch:1:sloid:6653",
+      "from": "St. Gallen, Heimatstrasse",
+      "to": "St. Gallen, Langgass",
+      "sourceFeatures": [
+        "bus:20"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 1415.0459349746159,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 1,
+          "affectedPatterns": 1,
+          "affectedTrips": 1,
+          "patternIdsSha256": "98c1dc2a4f8261829e71621da5f3b7502f7bd8268998c1b5fea6b159d8e14419"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 0,
+          "affectedPatterns": 0,
+          "affectedTrips": 0,
+          "patternIdsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-151-j26-1\",\"ch:1:sloid:6653\",\"ch:1:sloid:89605\"]",
+      "routeId": "92-151-j26-1",
+      "agencyId": "896",
+      "line": "151",
+      "fromId": "ch:1:sloid:6653",
+      "toId": "ch:1:sloid:89605",
+      "from": "St. Gallen, Langgass",
+      "to": "St. Gallen, Olma Messen",
+      "sourceFeatures": [
+        "bus:20"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 1034.9551977074188,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 1,
+          "affectedPatterns": 1,
+          "affectedTrips": 1,
+          "patternIdsSha256": "98c1dc2a4f8261829e71621da5f3b7502f7bd8268998c1b5fea6b159d8e14419"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 0,
+          "affectedPatterns": 0,
+          "affectedTrips": 0,
+          "patternIdsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-151-j26-1\",\"ch:1:sloid:89605\",\"ch:1:sloid:74239\"]",
+      "routeId": "92-151-j26-1",
+      "agencyId": "896",
+      "line": "151",
+      "fromId": "ch:1:sloid:89605",
+      "toId": "ch:1:sloid:74239",
+      "from": "St. Gallen, Olma Messen",
+      "to": "St. Gallen, Schützengarten",
+      "sourceFeatures": [
+        "bus:20"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 673.4508651859182,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 1,
+          "affectedPatterns": 1,
+          "affectedTrips": 1,
+          "patternIdsSha256": "98c1dc2a4f8261829e71621da5f3b7502f7bd8268998c1b5fea6b159d8e14419"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 0,
+          "affectedPatterns": 0,
+          "affectedTrips": 0,
+          "patternIdsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-151-j26-1\",\"ch:1:sloid:74239\",\"ch:1:sloid:74471\"]",
+      "routeId": "92-151-j26-1",
+      "agencyId": "896",
+      "line": "151",
+      "fromId": "ch:1:sloid:74239",
+      "toId": "ch:1:sloid:74471",
+      "from": "St. Gallen, Schützengarten",
+      "to": "St. Gallen, Marktplatz Bohl",
+      "sourceFeatures": [
+        "bus:20"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 382.3380595373243,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 1,
+          "affectedPatterns": 1,
+          "affectedTrips": 1,
+          "patternIdsSha256": "98c1dc2a4f8261829e71621da5f3b7502f7bd8268998c1b5fea6b159d8e14419"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 0,
+          "affectedPatterns": 0,
+          "affectedTrips": 0,
+          "patternIdsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-164-C-j26-1\",\"ch:1:sloid:1200598\",\"ch:1:sloid:1200511\"]",
+      "routeId": "92-164-C-j26-1",
+      "agencyId": "81_VVV",
+      "line": "164",
+      "fromId": "ch:1:sloid:1200598",
+      "toId": "ch:1:sloid:1200511",
+      "from": "Dornbirn, Schoren Bahnhof/ORF",
+      "to": "Dornbirn, Treffpunkt a.d.Ach",
+      "sourceFeatures": [
+        "bus:32"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 675.451101578808,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 29,
+          "affectedPatterns": 1,
+          "affectedTrips": 29,
+          "patternIdsSha256": "ce57a01ca5eb893688cc8a92dc3b102b6f40799b919eefe3bf564907d150a0c8"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 13,
+          "affectedPatterns": 1,
+          "affectedTrips": 13,
+          "patternIdsSha256": "ce57a01ca5eb893688cc8a92dc3b102b6f40799b919eefe3bf564907d150a0c8"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-164-C-j26-1\",\"ch:1:sloid:1200511\",\"ch:1:sloid:1200616\"]",
+      "routeId": "92-164-C-j26-1",
+      "agencyId": "81_VVV",
+      "line": "164",
+      "fromId": "ch:1:sloid:1200511",
+      "toId": "ch:1:sloid:1200616",
+      "from": "Dornbirn, Treffpunkt a.d.Ach",
+      "to": "Dornbirn, Steggasse",
+      "sourceFeatures": [
+        "bus:32"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 675.451101578808,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 29,
+          "affectedPatterns": 1,
+          "affectedTrips": 29,
+          "patternIdsSha256": "ce57a01ca5eb893688cc8a92dc3b102b6f40799b919eefe3bf564907d150a0c8"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 13,
+          "affectedPatterns": 1,
+          "affectedTrips": 13,
+          "patternIdsSha256": "ce57a01ca5eb893688cc8a92dc3b102b6f40799b919eefe3bf564907d150a0c8"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-164-C-j26-1\",\"ch:1:sloid:1200616\",\"ch:1:sloid:1200511\"]",
+      "routeId": "92-164-C-j26-1",
+      "agencyId": "81_VVV",
+      "line": "164",
+      "fromId": "ch:1:sloid:1200616",
+      "toId": "ch:1:sloid:1200511",
+      "from": "Dornbirn, Steggasse",
+      "to": "Dornbirn, Treffpunkt a.d.Ach",
+      "sourceFeatures": [
+        "bus:32"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 675.451101578808,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 29,
+          "affectedPatterns": 1,
+          "affectedTrips": 29,
+          "patternIdsSha256": "564ecc97d9dd5f0f08e32eae9b01565199eab23796df2759b41714e4744cd997"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 13,
+          "affectedPatterns": 1,
+          "affectedTrips": 13,
+          "patternIdsSha256": "564ecc97d9dd5f0f08e32eae9b01565199eab23796df2759b41714e4744cd997"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-164-C-j26-1\",\"ch:1:sloid:1200511\",\"ch:1:sloid:1200598\"]",
+      "routeId": "92-164-C-j26-1",
+      "agencyId": "81_VVV",
+      "line": "164",
+      "fromId": "ch:1:sloid:1200511",
+      "toId": "ch:1:sloid:1200598",
+      "from": "Dornbirn, Treffpunkt a.d.Ach",
+      "to": "Dornbirn, Schoren Bahnhof/ORF",
+      "sourceFeatures": [
+        "bus:32"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 675.451101578808,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 29,
+          "affectedPatterns": 1,
+          "affectedTrips": 29,
+          "patternIdsSha256": "564ecc97d9dd5f0f08e32eae9b01565199eab23796df2759b41714e4744cd997"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 13,
+          "affectedPatterns": 1,
+          "affectedTrips": 13,
+          "patternIdsSha256": "564ecc97d9dd5f0f08e32eae9b01565199eab23796df2759b41714e4744cd997"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-24-C-j26-1\",\"ch:1:sloid:81819\",\"ch:1:sloid:9985:0:02\"]",
+      "routeId": "92-24-C-j26-1",
+      "agencyId": "805",
+      "line": "24",
+      "fromId": "ch:1:sloid:81819",
+      "toId": "ch:1:sloid:9985:0:02",
+      "from": "Vaduz, Lettstrasse",
+      "to": "Vaduz, Post",
+      "sourceFeatures": [
+        "bus:3",
+        "bus:137"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 310.1114307301674,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [
+        {
+          "feature": "bus:2",
+          "name": "13 Schaan - Nendeln - Eschen Trübbach - Vaduz - Nendeln/Eschen - Schaanwald - Feldkirch",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 38.47139508913079,
+          "pathMetres": 334.6506275655695,
+          "geometrySha256": "a6188395007938a72612f68691b3693f4e2d0ab6432f590d940f47f1f3bd63e2"
+        },
+        {
+          "feature": "bus:5",
+          "name": "12 Sargans - Trübbach/Balzers - Vaduz - Eilkurs",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 38.47139508913079,
+          "pathMetres": 334.6506271638099,
+          "geometrySha256": "48f15806dd7ae74fe99297e512269ac2e1979988f592fc8471b792db61142d90"
+        },
+        {
+          "feature": "bus:33",
+          "name": "11 Sargans - Trübbach/Balzers - Schaan - Bendern/Eschen - Feldkirch",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 38.47139508913079,
+          "pathMetres": 334.6506271638099,
+          "geometrySha256": "48f15806dd7ae74fe99297e512269ac2e1979988f592fc8471b792db61142d90"
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 14,
+          "affectedPatterns": 1,
+          "affectedTrips": 14,
+          "patternIdsSha256": "306d91f2ca2f966816479b5211f86dfc1537c3bdf0f31b9c6c2d7be4e91cd185"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 0,
+          "affectedPatterns": 0,
+          "affectedTrips": 0,
+          "patternIdsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-24-C-j26-1\",\"ch:1:sloid:9985:0:01\",\"ch:1:sloid:81819\"]",
+      "routeId": "92-24-C-j26-1",
+      "agencyId": "805",
+      "line": "24",
+      "fromId": "ch:1:sloid:9985:0:01",
+      "toId": "ch:1:sloid:81819",
+      "from": "Vaduz, Post",
+      "to": "Vaduz, Lettstrasse",
+      "sourceFeatures": [
+        "bus:3",
+        "bus:137"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 248.86906193881197,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [
+        {
+          "feature": "bus:2",
+          "name": "13 Schaan - Nendeln - Eschen Trübbach - Vaduz - Nendeln/Eschen - Schaanwald - Feldkirch",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 38.47139508913079,
+          "pathMetres": 260.3263057517003,
+          "geometrySha256": "f6a5d29bdabcc3d1beda806283fcb3bac7009f8d23ef6e1d7b45a3272f111fbf"
+        },
+        {
+          "feature": "bus:5",
+          "name": "12 Sargans - Trübbach/Balzers - Vaduz - Eilkurs",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 38.47139508913079,
+          "pathMetres": 260.3263053499406,
+          "geometrySha256": "d99ad765af795b355f1d4538e5b365c8942be94fd90a7e9fdd26dc61655ada3c"
+        },
+        {
+          "feature": "bus:33",
+          "name": "11 Sargans - Trübbach/Balzers - Schaan - Bendern/Eschen - Feldkirch",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 38.47139508913079,
+          "pathMetres": 260.3263053499406,
+          "geometrySha256": "d99ad765af795b355f1d4538e5b365c8942be94fd90a7e9fdd26dc61655ada3c"
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 14,
+          "affectedPatterns": 1,
+          "affectedTrips": 14,
+          "patternIdsSha256": "f442fd330322539b45232016b4c067be21c73d3e7290385c0676f2e2ab195c50"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 0,
+          "affectedPatterns": 0,
+          "affectedTrips": 0,
+          "patternIdsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-253-C-j26-1\",\"ch:1:sloid:80718\",\"ch:1:sloid:12309\"]",
+      "routeId": "92-253-C-j26-1",
+      "agencyId": "138",
+      "line": "253",
+      "fromId": "ch:1:sloid:80718",
+      "toId": "ch:1:sloid:12309",
+      "from": "Goldach, Bahnhof",
+      "to": "Goldach, Blumenegg",
+      "sourceFeatures": [
+        "city:33"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 775.5475628410329,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 6,
+          "affectedPatterns": 1,
+          "affectedTrips": 6,
+          "patternIdsSha256": "f886af06dd559ceb0ffe2dc4bda13b8fea779307c26228ad87f5f2f7fc9b2373"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 0,
+          "affectedPatterns": 0,
+          "affectedTrips": 0,
+          "patternIdsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-253-C-j26-1\",\"ch:1:sloid:12309\",\"ch:1:sloid:7327\"]",
+      "routeId": "92-253-C-j26-1",
+      "agencyId": "138",
+      "line": "253",
+      "fromId": "ch:1:sloid:12309",
+      "toId": "ch:1:sloid:7327",
+      "from": "Goldach, Blumenegg",
+      "to": "Goldach, Mühlegut",
+      "sourceFeatures": [
+        "city:33"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 775.5475628410329,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 6,
+          "affectedPatterns": 1,
+          "affectedTrips": 6,
+          "patternIdsSha256": "f886af06dd559ceb0ffe2dc4bda13b8fea779307c26228ad87f5f2f7fc9b2373"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 0,
+          "affectedPatterns": 0,
+          "affectedTrips": 0,
+          "patternIdsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-253-C-j26-1\",\"ch:1:sloid:7327\",\"ch:1:sloid:12309\"]",
+      "routeId": "92-253-C-j26-1",
+      "agencyId": "138",
+      "line": "253",
+      "fromId": "ch:1:sloid:7327",
+      "toId": "ch:1:sloid:12309",
+      "from": "Goldach, Mühlegut",
+      "to": "Goldach, Blumenegg",
+      "sourceFeatures": [
+        "city:33"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 775.5475628410329,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 13,
+          "affectedPatterns": 1,
+          "affectedTrips": 13,
+          "patternIdsSha256": "898bc2ef50a6845f08c88d2125f6616a3c8b4f8308b1ed1a7314583d38b591d2"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 0,
+          "affectedPatterns": 0,
+          "affectedTrips": 0,
+          "patternIdsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-253-C-j26-1\",\"ch:1:sloid:12309\",\"ch:1:sloid:80718\"]",
+      "routeId": "92-253-C-j26-1",
+      "agencyId": "138",
+      "line": "253",
+      "fromId": "ch:1:sloid:12309",
+      "toId": "ch:1:sloid:80718",
+      "from": "Goldach, Blumenegg",
+      "to": "Goldach, Bahnhof",
+      "sourceFeatures": [
+        "city:33"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 775.5475628410329,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 13,
+          "affectedPatterns": 1,
+          "affectedTrips": 13,
+          "patternIdsSha256": "898bc2ef50a6845f08c88d2125f6616a3c8b4f8308b1ed1a7314583d38b591d2"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 0,
+          "affectedPatterns": 0,
+          "affectedTrips": 0,
+          "patternIdsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-323-j26-1\",\"ch:1:sloid:1200462:0:1070\",\"ch:1:sloid:1200532:0:1066\"]",
+      "routeId": "92-323-j26-1",
+      "agencyId": "138",
+      "line": "323",
+      "fromId": "ch:1:sloid:1200462:0:1070",
+      "toId": "ch:1:sloid:1200532:0:1066",
+      "from": "Dornbirn, Heinzenbeer",
+      "to": "Dornbirn, Messeplatz",
+      "sourceFeatures": [
+        "bus:134"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 160.55459689052515,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 33,
+          "affectedPatterns": 2,
+          "affectedTrips": 33,
+          "patternIdsSha256": "510c788d72654c0fa8915054921ec24ecf3f8ad76c174992d527d3cad462ad79"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 0,
+          "affectedPatterns": 0,
+          "affectedTrips": 0,
+          "patternIdsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-323-j26-1\",\"ch:1:sloid:1200532:0:1066\",\"ch:1:sloid:1201528:0:1063\"]",
+      "routeId": "92-323-j26-1",
+      "agencyId": "138",
+      "line": "323",
+      "fromId": "ch:1:sloid:1200532:0:1066",
+      "toId": "ch:1:sloid:1201528:0:1063",
+      "from": "Dornbirn, Messeplatz",
+      "to": "Lustenau, Schmitter",
+      "sourceFeatures": [
+        "bus:134"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 160.55459689052515,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 33,
+          "affectedPatterns": 2,
+          "affectedTrips": 33,
+          "patternIdsSha256": "510c788d72654c0fa8915054921ec24ecf3f8ad76c174992d527d3cad462ad79"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 0,
+          "affectedPatterns": 0,
+          "affectedTrips": 0,
+          "patternIdsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-323-j26-1\",\"ch:1:sloid:1201528:0:1062\",\"ch:1:sloid:1200532:0:1065\"]",
+      "routeId": "92-323-j26-1",
+      "agencyId": "138",
+      "line": "323",
+      "fromId": "ch:1:sloid:1201528:0:1062",
+      "toId": "ch:1:sloid:1200532:0:1065",
+      "from": "Lustenau, Schmitter",
+      "to": "Dornbirn, Messeplatz",
+      "sourceFeatures": [
+        "bus:134"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 159.90795820595548,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 32,
+          "affectedPatterns": 2,
+          "affectedTrips": 32,
+          "patternIdsSha256": "8052e86acdc00fc43974b49a20288a0854a3bc72398651cbbb41f38b953824d2"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 0,
+          "affectedPatterns": 0,
+          "affectedTrips": 0,
+          "patternIdsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-323-j26-1\",\"ch:1:sloid:1200532:0:1065\",\"ch:1:sloid:1200462:0:1069\"]",
+      "routeId": "92-323-j26-1",
+      "agencyId": "138",
+      "line": "323",
+      "fromId": "ch:1:sloid:1200532:0:1065",
+      "toId": "ch:1:sloid:1200462:0:1069",
+      "from": "Dornbirn, Messeplatz",
+      "to": "Dornbirn, Heinzenbeer",
+      "sourceFeatures": [
+        "bus:134"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 159.90795820595548,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 32,
+          "affectedPatterns": 2,
+          "affectedTrips": 32,
+          "patternIdsSha256": "8052e86acdc00fc43974b49a20288a0854a3bc72398651cbbb41f38b953824d2"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 0,
+          "affectedPatterns": 0,
+          "affectedTrips": 0,
+          "patternIdsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-331-B-j26-1\",\"ch:1:sloid:78481\",\"ch:1:sloid:95949\"]",
+      "routeId": "92-331-B-j26-1",
+      "agencyId": "138",
+      "line": "331",
+      "fromId": "ch:1:sloid:78481",
+      "toId": "ch:1:sloid:95949",
+      "from": "Altstätten SG, Unterlitten",
+      "to": "Altstätten SG, Bleichi",
+      "sourceFeatures": [
+        "bus:14"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 506.6061588721727,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [
+        {
+          "feature": "bus:136",
+          "name": "N31/N32 Sennwald - Oberriet SG - Altstätten SG - Heerbrugg - Diepoldsau - Hohenems",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 42.95472449202753,
+          "pathMetres": 2717.421674776244,
+          "geometrySha256": "9b85035856bbee60a2e61681923eb76ba33738353ad2e108f612a0841e6cd9c9"
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 3,
+          "affectedPatterns": 1,
+          "affectedTrips": 3,
+          "patternIdsSha256": "096dc850a2a39845dbae3e9c1061282ad9a042603b9dfeee088bcdf67659510d"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 5,
+          "affectedPatterns": 1,
+          "affectedTrips": 5,
+          "patternIdsSha256": "096dc850a2a39845dbae3e9c1061282ad9a042603b9dfeee088bcdf67659510d"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-331-B-j26-1\",\"ch:1:sloid:95949\",\"ch:1:sloid:78482\"]",
+      "routeId": "92-331-B-j26-1",
+      "agencyId": "138",
+      "line": "331",
+      "fromId": "ch:1:sloid:95949",
+      "toId": "ch:1:sloid:78482",
+      "from": "Altstätten SG, Bleichi",
+      "to": "Altstätten SG, Forst",
+      "sourceFeatures": [
+        "bus:14"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 506.6061588721727,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 3,
+          "affectedPatterns": 1,
+          "affectedTrips": 3,
+          "patternIdsSha256": "096dc850a2a39845dbae3e9c1061282ad9a042603b9dfeee088bcdf67659510d"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 5,
+          "affectedPatterns": 1,
+          "affectedTrips": 5,
+          "patternIdsSha256": "096dc850a2a39845dbae3e9c1061282ad9a042603b9dfeee088bcdf67659510d"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-331-B-j26-1\",\"ch:1:sloid:78483\",\"ch:1:sloid:88223\"]",
+      "routeId": "92-331-B-j26-1",
+      "agencyId": "138",
+      "line": "331",
+      "fromId": "ch:1:sloid:78483",
+      "toId": "ch:1:sloid:88223",
+      "from": "Hinterforst, Widenbach/Bächis",
+      "to": "Kriessern, Gassermadstrasse",
+      "sourceFeatures": [
+        "bus:14"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 3681.063292031734,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 3,
+          "affectedPatterns": 1,
+          "affectedTrips": 3,
+          "patternIdsSha256": "096dc850a2a39845dbae3e9c1061282ad9a042603b9dfeee088bcdf67659510d"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 5,
+          "affectedPatterns": 1,
+          "affectedTrips": 5,
+          "patternIdsSha256": "096dc850a2a39845dbae3e9c1061282ad9a042603b9dfeee088bcdf67659510d"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-331-B-j26-1\",\"ch:1:sloid:88223\",\"ch:1:sloid:74170\"]",
+      "routeId": "92-331-B-j26-1",
+      "agencyId": "138",
+      "line": "331",
+      "fromId": "ch:1:sloid:88223",
+      "toId": "ch:1:sloid:74170",
+      "from": "Kriessern, Gassermadstrasse",
+      "to": "Kriessern, Dorf",
+      "sourceFeatures": [
+        "bus:14"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 3884.546879196251,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [
+        {
+          "feature": "bus:15",
+          "name": "332 Altstätten SG - Kriessern - Montlingen - Oberriet SG - Kobelwald",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 3.18297355708627,
+          "pathMetres": 275.102566587183,
+          "geometrySha256": "ed3ea39943d3aaf8151cb5c6dfaf0c8a9f0735722e3d7d84185bf49349c08950"
+        },
+        {
+          "feature": "bus:136",
+          "name": "N31/N32 Sennwald - Oberriet SG - Altstätten SG - Heerbrugg - Diepoldsau - Hohenems",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 3.18297355708627,
+          "pathMetres": 275.102566587183,
+          "geometrySha256": "ed3ea39943d3aaf8151cb5c6dfaf0c8a9f0735722e3d7d84185bf49349c08950"
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 3,
+          "affectedPatterns": 1,
+          "affectedTrips": 3,
+          "patternIdsSha256": "096dc850a2a39845dbae3e9c1061282ad9a042603b9dfeee088bcdf67659510d"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 5,
+          "affectedPatterns": 1,
+          "affectedTrips": 5,
+          "patternIdsSha256": "096dc850a2a39845dbae3e9c1061282ad9a042603b9dfeee088bcdf67659510d"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-331-B-j26-1\",\"ch:1:sloid:74170\",\"ch:1:sloid:95700\"]",
+      "routeId": "92-331-B-j26-1",
+      "agencyId": "138",
+      "line": "331",
+      "fromId": "ch:1:sloid:74170",
+      "toId": "ch:1:sloid:95700",
+      "from": "Kriessern, Dorf",
+      "to": "Kriessern, Schützenwiese",
+      "sourceFeatures": [
+        "bus:14"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 3938.456468169522,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [
+        {
+          "feature": "bus:15",
+          "name": "332 Altstätten SG - Kriessern - Montlingen - Oberriet SG - Kobelwald",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 0.4949517838072086,
+          "pathMetres": 408.5776991855233,
+          "geometrySha256": "b43ad7fb6ca3ff2b50dd8470634e8748878e697db75f125ae7e417cede51f669"
+        },
+        {
+          "feature": "bus:136",
+          "name": "N31/N32 Sennwald - Oberriet SG - Altstätten SG - Heerbrugg - Diepoldsau - Hohenems",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 0.4949517838072086,
+          "pathMetres": 408.5776991855233,
+          "geometrySha256": "b43ad7fb6ca3ff2b50dd8470634e8748878e697db75f125ae7e417cede51f669"
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 3,
+          "affectedPatterns": 1,
+          "affectedTrips": 3,
+          "patternIdsSha256": "096dc850a2a39845dbae3e9c1061282ad9a042603b9dfeee088bcdf67659510d"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 5,
+          "affectedPatterns": 1,
+          "affectedTrips": 5,
+          "patternIdsSha256": "096dc850a2a39845dbae3e9c1061282ad9a042603b9dfeee088bcdf67659510d"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-331-B-j26-1\",\"ch:1:sloid:95700\",\"ch:1:sloid:6446\"]",
+      "routeId": "92-331-B-j26-1",
+      "agencyId": "138",
+      "line": "331",
+      "fromId": "ch:1:sloid:95700",
+      "toId": "ch:1:sloid:6446",
+      "from": "Kriessern, Schützenwiese",
+      "to": "Hinterforst, Post",
+      "sourceFeatures": [
+        "bus:14"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 3938.456468169522,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 3,
+          "affectedPatterns": 1,
+          "affectedTrips": 3,
+          "patternIdsSha256": "096dc850a2a39845dbae3e9c1061282ad9a042603b9dfeee088bcdf67659510d"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 5,
+          "affectedPatterns": 1,
+          "affectedTrips": 5,
+          "patternIdsSha256": "096dc850a2a39845dbae3e9c1061282ad9a042603b9dfeee088bcdf67659510d"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-331-B-j26-1\",\"ch:1:sloid:88221\",\"ch:1:sloid:74171\"]",
+      "routeId": "92-331-B-j26-1",
+      "agencyId": "138",
+      "line": "331",
+      "fromId": "ch:1:sloid:88221",
+      "toId": "ch:1:sloid:74171",
+      "from": "Hinterforst, Oberrüti",
+      "to": "Kriessern, Baggersee",
+      "sourceFeatures": [
+        "bus:14"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 3765.3642539048765,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 3,
+          "affectedPatterns": 1,
+          "affectedTrips": 3,
+          "patternIdsSha256": "096dc850a2a39845dbae3e9c1061282ad9a042603b9dfeee088bcdf67659510d"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 5,
+          "affectedPatterns": 1,
+          "affectedTrips": 5,
+          "patternIdsSha256": "096dc850a2a39845dbae3e9c1061282ad9a042603b9dfeee088bcdf67659510d"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-331-B-j26-1\",\"ch:1:sloid:74171\",\"ch:1:sloid:88227\"]",
+      "routeId": "92-331-B-j26-1",
+      "agencyId": "138",
+      "line": "331",
+      "fromId": "ch:1:sloid:74171",
+      "toId": "ch:1:sloid:88227",
+      "from": "Kriessern, Baggersee",
+      "to": "Montlingen, Letzau",
+      "sourceFeatures": [
+        "bus:14"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 3817.1752790221644,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [
+        {
+          "feature": "bus:15",
+          "name": "332 Altstätten SG - Kriessern - Montlingen - Oberriet SG - Kobelwald",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 7.643099967735917,
+          "pathMetres": 1165.316521671648,
+          "geometrySha256": "0468899b895e58bf15a95f748f3d695617e55b9d7e1a51d85ec3cb66a506ca24"
+        },
+        {
+          "feature": "bus:136",
+          "name": "N31/N32 Sennwald - Oberriet SG - Altstätten SG - Heerbrugg - Diepoldsau - Hohenems",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 7.643099967735917,
+          "pathMetres": 1165.316521671648,
+          "geometrySha256": "0468899b895e58bf15a95f748f3d695617e55b9d7e1a51d85ec3cb66a506ca24"
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 3,
+          "affectedPatterns": 1,
+          "affectedTrips": 3,
+          "patternIdsSha256": "096dc850a2a39845dbae3e9c1061282ad9a042603b9dfeee088bcdf67659510d"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 5,
+          "affectedPatterns": 1,
+          "affectedTrips": 5,
+          "patternIdsSha256": "096dc850a2a39845dbae3e9c1061282ad9a042603b9dfeee088bcdf67659510d"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-331-B-j26-1\",\"ch:1:sloid:88227\",\"ch:1:sloid:88228\"]",
+      "routeId": "92-331-B-j26-1",
+      "agencyId": "138",
+      "line": "331",
+      "fromId": "ch:1:sloid:88227",
+      "toId": "ch:1:sloid:88228",
+      "from": "Montlingen, Letzau",
+      "to": "Montlingen, Reitzentrum",
+      "sourceFeatures": [
+        "bus:14"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 4371.2208840911235,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [
+        {
+          "feature": "bus:15",
+          "name": "332 Altstätten SG - Kriessern - Montlingen - Oberriet SG - Kobelwald",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 19.922872543947214,
+          "pathMetres": 739.4372036396935,
+          "geometrySha256": "9bf3a4aeb24d36b10b0a57176b20cf3be056410a4a22d33f54abe4e20d72a4d7"
+        },
+        {
+          "feature": "bus:136",
+          "name": "N31/N32 Sennwald - Oberriet SG - Altstätten SG - Heerbrugg - Diepoldsau - Hohenems",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 19.922872543947214,
+          "pathMetres": 739.4372036396935,
+          "geometrySha256": "9bf3a4aeb24d36b10b0a57176b20cf3be056410a4a22d33f54abe4e20d72a4d7"
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 3,
+          "affectedPatterns": 1,
+          "affectedTrips": 3,
+          "patternIdsSha256": "096dc850a2a39845dbae3e9c1061282ad9a042603b9dfeee088bcdf67659510d"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 5,
+          "affectedPatterns": 1,
+          "affectedTrips": 5,
+          "patternIdsSha256": "096dc850a2a39845dbae3e9c1061282ad9a042603b9dfeee088bcdf67659510d"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-331-B-j26-1\",\"ch:1:sloid:88228\",\"ch:1:sloid:78487\"]",
+      "routeId": "92-331-B-j26-1",
+      "agencyId": "138",
+      "line": "331",
+      "fromId": "ch:1:sloid:88228",
+      "toId": "ch:1:sloid:78487",
+      "from": "Montlingen, Reitzentrum",
+      "to": "Eichberg, Dorf",
+      "sourceFeatures": [
+        "bus:14"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 4371.2208840911235,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 3,
+          "affectedPatterns": 1,
+          "affectedTrips": 3,
+          "patternIdsSha256": "096dc850a2a39845dbae3e9c1061282ad9a042603b9dfeee088bcdf67659510d"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 5,
+          "affectedPatterns": 1,
+          "affectedTrips": 5,
+          "patternIdsSha256": "096dc850a2a39845dbae3e9c1061282ad9a042603b9dfeee088bcdf67659510d"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-331-B-j26-1\",\"ch:1:sloid:78487\",\"ch:1:sloid:88229\"]",
+      "routeId": "92-331-B-j26-1",
+      "agencyId": "138",
+      "line": "331",
+      "fromId": "ch:1:sloid:78487",
+      "toId": "ch:1:sloid:88229",
+      "from": "Eichberg, Dorf",
+      "to": "Montlingen, Tänneli",
+      "sourceFeatures": [
+        "bus:14"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 4537.778310623418,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 3,
+          "affectedPatterns": 1,
+          "affectedTrips": 3,
+          "patternIdsSha256": "096dc850a2a39845dbae3e9c1061282ad9a042603b9dfeee088bcdf67659510d"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 5,
+          "affectedPatterns": 1,
+          "affectedTrips": 5,
+          "patternIdsSha256": "096dc850a2a39845dbae3e9c1061282ad9a042603b9dfeee088bcdf67659510d"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-331-B-j26-1\",\"ch:1:sloid:88229\",\"ch:1:sloid:88226\"]",
+      "routeId": "92-331-B-j26-1",
+      "agencyId": "138",
+      "line": "331",
+      "fromId": "ch:1:sloid:88229",
+      "toId": "ch:1:sloid:88226",
+      "from": "Montlingen, Tänneli",
+      "to": "Montlingen, Hirschen",
+      "sourceFeatures": [
+        "bus:14"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 4537.778310623418,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [
+        {
+          "feature": "bus:15",
+          "name": "332 Altstätten SG - Kriessern - Montlingen - Oberriet SG - Kobelwald",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 3.226164685122239,
+          "pathMetres": 461.6454098281436,
+          "geometrySha256": "528feb3933a90b81949f35ae5b7b5a7819b01aa99de24bb974f8c1c3c29c60bb"
+        },
+        {
+          "feature": "bus:136",
+          "name": "N31/N32 Sennwald - Oberriet SG - Altstätten SG - Heerbrugg - Diepoldsau - Hohenems",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 3.226164685122239,
+          "pathMetres": 461.6454098281436,
+          "geometrySha256": "528feb3933a90b81949f35ae5b7b5a7819b01aa99de24bb974f8c1c3c29c60bb"
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 3,
+          "affectedPatterns": 1,
+          "affectedTrips": 3,
+          "patternIdsSha256": "096dc850a2a39845dbae3e9c1061282ad9a042603b9dfeee088bcdf67659510d"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 5,
+          "affectedPatterns": 1,
+          "affectedTrips": 5,
+          "patternIdsSha256": "096dc850a2a39845dbae3e9c1061282ad9a042603b9dfeee088bcdf67659510d"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-331-B-j26-1\",\"ch:1:sloid:88226\",\"ch:1:sloid:6448\"]",
+      "routeId": "92-331-B-j26-1",
+      "agencyId": "138",
+      "line": "331",
+      "fromId": "ch:1:sloid:88226",
+      "toId": "ch:1:sloid:6448",
+      "from": "Montlingen, Hirschen",
+      "to": "Eichberg, Süesswinkel",
+      "sourceFeatures": [
+        "bus:14"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 4372.473798656987,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 3,
+          "affectedPatterns": 1,
+          "affectedTrips": 3,
+          "patternIdsSha256": "096dc850a2a39845dbae3e9c1061282ad9a042603b9dfeee088bcdf67659510d"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 5,
+          "affectedPatterns": 1,
+          "affectedTrips": 5,
+          "patternIdsSha256": "096dc850a2a39845dbae3e9c1061282ad9a042603b9dfeee088bcdf67659510d"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-331-B-j26-1\",\"ch:1:sloid:6448\",\"ch:1:sloid:74176\"]",
+      "routeId": "92-331-B-j26-1",
+      "agencyId": "138",
+      "line": "331",
+      "fromId": "ch:1:sloid:6448",
+      "toId": "ch:1:sloid:74176",
+      "from": "Eichberg, Süesswinkel",
+      "to": "Montlingen, Bitziweg",
+      "sourceFeatures": [
+        "bus:14"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 4095.3123143893104,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 3,
+          "affectedPatterns": 1,
+          "affectedTrips": 3,
+          "patternIdsSha256": "096dc850a2a39845dbae3e9c1061282ad9a042603b9dfeee088bcdf67659510d"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 5,
+          "affectedPatterns": 1,
+          "affectedTrips": 5,
+          "patternIdsSha256": "096dc850a2a39845dbae3e9c1061282ad9a042603b9dfeee088bcdf67659510d"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-331-B-j26-1\",\"ch:1:sloid:74176\",\"ch:1:sloid:88230\"]",
+      "routeId": "92-331-B-j26-1",
+      "agencyId": "138",
+      "line": "331",
+      "fromId": "ch:1:sloid:74176",
+      "toId": "ch:1:sloid:88230",
+      "from": "Montlingen, Bitziweg",
+      "to": "Montlingen, Wiesenweg",
+      "sourceFeatures": [
+        "bus:14"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 4095.3123143893104,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [
+        {
+          "feature": "bus:15",
+          "name": "332 Altstätten SG - Kriessern - Montlingen - Oberriet SG - Kobelwald",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 6.4331161954510545,
+          "pathMetres": 365.5807636844242,
+          "geometrySha256": "24f719cacbaf1c455e0430f1dcca677960625e7b6bacfb251c081581c4a74246"
+        },
+        {
+          "feature": "bus:136",
+          "name": "N31/N32 Sennwald - Oberriet SG - Altstätten SG - Heerbrugg - Diepoldsau - Hohenems",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 6.4331161954510545,
+          "pathMetres": 365.5807636844242,
+          "geometrySha256": "24f719cacbaf1c455e0430f1dcca677960625e7b6bacfb251c081581c4a74246"
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 3,
+          "affectedPatterns": 1,
+          "affectedTrips": 3,
+          "patternIdsSha256": "096dc850a2a39845dbae3e9c1061282ad9a042603b9dfeee088bcdf67659510d"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 5,
+          "affectedPatterns": 1,
+          "affectedTrips": 5,
+          "patternIdsSha256": "096dc850a2a39845dbae3e9c1061282ad9a042603b9dfeee088bcdf67659510d"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-331-B-j26-1\",\"ch:1:sloid:88230\",\"ch:1:sloid:78486\"]",
+      "routeId": "92-331-B-j26-1",
+      "agencyId": "138",
+      "line": "331",
+      "fromId": "ch:1:sloid:88230",
+      "toId": "ch:1:sloid:78486",
+      "from": "Montlingen, Wiesenweg",
+      "to": "Eichberg, Härdli",
+      "sourceFeatures": [
+        "bus:14"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 4037.140219100543,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 3,
+          "affectedPatterns": 1,
+          "affectedTrips": 3,
+          "patternIdsSha256": "096dc850a2a39845dbae3e9c1061282ad9a042603b9dfeee088bcdf67659510d"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 5,
+          "affectedPatterns": 1,
+          "affectedTrips": 5,
+          "patternIdsSha256": "096dc850a2a39845dbae3e9c1061282ad9a042603b9dfeee088bcdf67659510d"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-331-B-j26-1\",\"ch:1:sloid:78486\",\"ch:1:sloid:88231\"]",
+      "routeId": "92-331-B-j26-1",
+      "agencyId": "138",
+      "line": "331",
+      "fromId": "ch:1:sloid:78486",
+      "toId": "ch:1:sloid:88231",
+      "from": "Eichberg, Härdli",
+      "to": "Oberriet SG, Finkenweg",
+      "sourceFeatures": [
+        "bus:14"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 3734.125049229459,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 3,
+          "affectedPatterns": 1,
+          "affectedTrips": 3,
+          "patternIdsSha256": "096dc850a2a39845dbae3e9c1061282ad9a042603b9dfeee088bcdf67659510d"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 5,
+          "affectedPatterns": 1,
+          "affectedTrips": 5,
+          "patternIdsSha256": "096dc850a2a39845dbae3e9c1061282ad9a042603b9dfeee088bcdf67659510d"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-331-B-j26-1\",\"ch:1:sloid:88231\",\"ch:1:sloid:6444\"]",
+      "routeId": "92-331-B-j26-1",
+      "agencyId": "138",
+      "line": "331",
+      "fromId": "ch:1:sloid:88231",
+      "toId": "ch:1:sloid:6444",
+      "from": "Oberriet SG, Finkenweg",
+      "to": "Eichberg, Post",
+      "sourceFeatures": [
+        "bus:14"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 3734.125049229459,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 3,
+          "affectedPatterns": 1,
+          "affectedTrips": 3,
+          "patternIdsSha256": "096dc850a2a39845dbae3e9c1061282ad9a042603b9dfeee088bcdf67659510d"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 5,
+          "affectedPatterns": 1,
+          "affectedTrips": 5,
+          "patternIdsSha256": "096dc850a2a39845dbae3e9c1061282ad9a042603b9dfeee088bcdf67659510d"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-331-B-j26-1\",\"ch:1:sloid:6444\",\"ch:1:sloid:88232\"]",
+      "routeId": "92-331-B-j26-1",
+      "agencyId": "138",
+      "line": "331",
+      "fromId": "ch:1:sloid:6444",
+      "toId": "ch:1:sloid:88232",
+      "from": "Eichberg, Post",
+      "to": "Oberriet SG, Franziskusstrasse",
+      "sourceFeatures": [
+        "bus:14"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 3099.4058051827283,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 3,
+          "affectedPatterns": 1,
+          "affectedTrips": 3,
+          "patternIdsSha256": "096dc850a2a39845dbae3e9c1061282ad9a042603b9dfeee088bcdf67659510d"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 5,
+          "affectedPatterns": 1,
+          "affectedTrips": 5,
+          "patternIdsSha256": "096dc850a2a39845dbae3e9c1061282ad9a042603b9dfeee088bcdf67659510d"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-331-B-j26-1\",\"ch:1:sloid:88232\",\"ch:1:sloid:6444\"]",
+      "routeId": "92-331-B-j26-1",
+      "agencyId": "138",
+      "line": "331",
+      "fromId": "ch:1:sloid:88232",
+      "toId": "ch:1:sloid:6444",
+      "from": "Oberriet SG, Franziskusstrasse",
+      "to": "Eichberg, Post",
+      "sourceFeatures": [
+        "bus:14"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 3099.4058051827283,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 3,
+          "affectedPatterns": 1,
+          "affectedTrips": 3,
+          "patternIdsSha256": "b986ba64599423cba62615bcd06f1f23898308afd1234facaa9ea6f318ac4623"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 5,
+          "affectedPatterns": 1,
+          "affectedTrips": 5,
+          "patternIdsSha256": "b986ba64599423cba62615bcd06f1f23898308afd1234facaa9ea6f318ac4623"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-331-B-j26-1\",\"ch:1:sloid:78486\",\"ch:1:sloid:74178\"]",
+      "routeId": "92-331-B-j26-1",
+      "agencyId": "138",
+      "line": "331",
+      "fromId": "ch:1:sloid:78486",
+      "toId": "ch:1:sloid:74178",
+      "from": "Eichberg, Härdli",
+      "to": "Oberriet SG, Bahnhof",
+      "sourceFeatures": [
+        "bus:14"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 3667.5999304744123,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 3,
+          "affectedPatterns": 1,
+          "affectedTrips": 3,
+          "patternIdsSha256": "b986ba64599423cba62615bcd06f1f23898308afd1234facaa9ea6f318ac4623"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 5,
+          "affectedPatterns": 1,
+          "affectedTrips": 5,
+          "patternIdsSha256": "b986ba64599423cba62615bcd06f1f23898308afd1234facaa9ea6f318ac4623"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-331-B-j26-1\",\"ch:1:sloid:74178\",\"ch:1:sloid:88231\"]",
+      "routeId": "92-331-B-j26-1",
+      "agencyId": "138",
+      "line": "331",
+      "fromId": "ch:1:sloid:74178",
+      "toId": "ch:1:sloid:88231",
+      "from": "Oberriet SG, Bahnhof",
+      "to": "Oberriet SG, Finkenweg",
+      "sourceFeatures": [
+        "bus:14"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 3734.125049229459,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [
+        {
+          "feature": "bus:15",
+          "name": "332 Altstätten SG - Kriessern - Montlingen - Oberriet SG - Kobelwald",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 3.658412403338826,
+          "pathMetres": 447.16724249914813,
+          "geometrySha256": "de4dcb39618b8db97032eeb80af0364fcc77d486cc6360a829dbf6e9bb7ec25a"
+        },
+        {
+          "feature": "bus:16",
+          "name": "335 Altstätten SG Stadt - Bahnhof -  Oberriet SG - Rüthi SG",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 40.17961490127746,
+          "pathMetres": 406.97501056450596,
+          "geometrySha256": "b12e05bb5819e387d3342397bb4397703180f161a4030bb600ad3f9d61444e42"
+        },
+        {
+          "feature": "bus:136",
+          "name": "N31/N32 Sennwald - Oberriet SG - Altstätten SG - Heerbrugg - Diepoldsau - Hohenems",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 109.54845713569189,
+          "pathMetres": 199.20408361827484,
+          "geometrySha256": "4d8d833f66646323e9e058601a0c20415f9ec11fd08ddec707f18b87187421a5"
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 3,
+          "affectedPatterns": 1,
+          "affectedTrips": 3,
+          "patternIdsSha256": "b986ba64599423cba62615bcd06f1f23898308afd1234facaa9ea6f318ac4623"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 5,
+          "affectedPatterns": 1,
+          "affectedTrips": 5,
+          "patternIdsSha256": "b986ba64599423cba62615bcd06f1f23898308afd1234facaa9ea6f318ac4623"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-331-B-j26-1\",\"ch:1:sloid:88231\",\"ch:1:sloid:6448\"]",
+      "routeId": "92-331-B-j26-1",
+      "agencyId": "138",
+      "line": "331",
+      "fromId": "ch:1:sloid:88231",
+      "toId": "ch:1:sloid:6448",
+      "from": "Oberriet SG, Finkenweg",
+      "to": "Eichberg, Süesswinkel",
+      "sourceFeatures": [
+        "bus:14"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 3734.125049229459,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 3,
+          "affectedPatterns": 1,
+          "affectedTrips": 3,
+          "patternIdsSha256": "b986ba64599423cba62615bcd06f1f23898308afd1234facaa9ea6f318ac4623"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 5,
+          "affectedPatterns": 1,
+          "affectedTrips": 5,
+          "patternIdsSha256": "b986ba64599423cba62615bcd06f1f23898308afd1234facaa9ea6f318ac4623"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-331-B-j26-1\",\"ch:1:sloid:78487\",\"ch:1:sloid:88230\"]",
+      "routeId": "92-331-B-j26-1",
+      "agencyId": "138",
+      "line": "331",
+      "fromId": "ch:1:sloid:78487",
+      "toId": "ch:1:sloid:88230",
+      "from": "Eichberg, Dorf",
+      "to": "Montlingen, Wiesenweg",
+      "sourceFeatures": [
+        "bus:14"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 4037.140219100543,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 3,
+          "affectedPatterns": 1,
+          "affectedTrips": 3,
+          "patternIdsSha256": "b986ba64599423cba62615bcd06f1f23898308afd1234facaa9ea6f318ac4623"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 5,
+          "affectedPatterns": 1,
+          "affectedTrips": 5,
+          "patternIdsSha256": "b986ba64599423cba62615bcd06f1f23898308afd1234facaa9ea6f318ac4623"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-331-B-j26-1\",\"ch:1:sloid:88230\",\"ch:1:sloid:74176\"]",
+      "routeId": "92-331-B-j26-1",
+      "agencyId": "138",
+      "line": "331",
+      "fromId": "ch:1:sloid:88230",
+      "toId": "ch:1:sloid:74176",
+      "from": "Montlingen, Wiesenweg",
+      "to": "Montlingen, Bitziweg",
+      "sourceFeatures": [
+        "bus:14"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 4095.3123143893104,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [
+        {
+          "feature": "bus:15",
+          "name": "332 Altstätten SG - Kriessern - Montlingen - Oberriet SG - Kobelwald",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 6.4331161954510545,
+          "pathMetres": 365.58076368442426,
+          "geometrySha256": "530a1d435a044a5573eb7aefa75452105fce11c7b5f8a225748bf5cd4e95508c"
+        },
+        {
+          "feature": "bus:136",
+          "name": "N31/N32 Sennwald - Oberriet SG - Altstätten SG - Heerbrugg - Diepoldsau - Hohenems",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 6.4331161954510545,
+          "pathMetres": 365.58076368442426,
+          "geometrySha256": "530a1d435a044a5573eb7aefa75452105fce11c7b5f8a225748bf5cd4e95508c"
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 3,
+          "affectedPatterns": 1,
+          "affectedTrips": 3,
+          "patternIdsSha256": "b986ba64599423cba62615bcd06f1f23898308afd1234facaa9ea6f318ac4623"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 5,
+          "affectedPatterns": 1,
+          "affectedTrips": 5,
+          "patternIdsSha256": "b986ba64599423cba62615bcd06f1f23898308afd1234facaa9ea6f318ac4623"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-331-B-j26-1\",\"ch:1:sloid:74176\",\"ch:1:sloid:88226\"]",
+      "routeId": "92-331-B-j26-1",
+      "agencyId": "138",
+      "line": "331",
+      "fromId": "ch:1:sloid:74176",
+      "toId": "ch:1:sloid:88226",
+      "from": "Montlingen, Bitziweg",
+      "to": "Montlingen, Hirschen",
+      "sourceFeatures": [
+        "bus:14"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 4372.473798656987,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [
+        {
+          "feature": "bus:15",
+          "name": "332 Altstätten SG - Kriessern - Montlingen - Oberriet SG - Kobelwald",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 3.3524472927365676,
+          "pathMetres": 359.4194051417858,
+          "geometrySha256": "cfcb9947a5fafee38550335fb986819d86a79396debc6d18f1eb00ce82393c00"
+        },
+        {
+          "feature": "bus:136",
+          "name": "N31/N32 Sennwald - Oberriet SG - Altstätten SG - Heerbrugg - Diepoldsau - Hohenems",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 3.3524472927365676,
+          "pathMetres": 359.4194051417858,
+          "geometrySha256": "cfcb9947a5fafee38550335fb986819d86a79396debc6d18f1eb00ce82393c00"
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 3,
+          "affectedPatterns": 1,
+          "affectedTrips": 3,
+          "patternIdsSha256": "b986ba64599423cba62615bcd06f1f23898308afd1234facaa9ea6f318ac4623"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 5,
+          "affectedPatterns": 1,
+          "affectedTrips": 5,
+          "patternIdsSha256": "b986ba64599423cba62615bcd06f1f23898308afd1234facaa9ea6f318ac4623"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-331-B-j26-1\",\"ch:1:sloid:88226\",\"ch:1:sloid:88229\"]",
+      "routeId": "92-331-B-j26-1",
+      "agencyId": "138",
+      "line": "331",
+      "fromId": "ch:1:sloid:88226",
+      "toId": "ch:1:sloid:88229",
+      "from": "Montlingen, Hirschen",
+      "to": "Montlingen, Tänneli",
+      "sourceFeatures": [
+        "bus:14"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 4537.778310623418,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [
+        {
+          "feature": "bus:15",
+          "name": "332 Altstätten SG - Kriessern - Montlingen - Oberriet SG - Kobelwald",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 3.226164685122239,
+          "pathMetres": 461.6454098281437,
+          "geometrySha256": "5fe691d72174ba42d6a418f8380172100eb5cac9b57e697a2b27a9cf147afe4a"
+        },
+        {
+          "feature": "bus:136",
+          "name": "N31/N32 Sennwald - Oberriet SG - Altstätten SG - Heerbrugg - Diepoldsau - Hohenems",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 3.226164685122239,
+          "pathMetres": 461.6454098281437,
+          "geometrySha256": "5fe691d72174ba42d6a418f8380172100eb5cac9b57e697a2b27a9cf147afe4a"
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 3,
+          "affectedPatterns": 1,
+          "affectedTrips": 3,
+          "patternIdsSha256": "b986ba64599423cba62615bcd06f1f23898308afd1234facaa9ea6f318ac4623"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 5,
+          "affectedPatterns": 1,
+          "affectedTrips": 5,
+          "patternIdsSha256": "b986ba64599423cba62615bcd06f1f23898308afd1234facaa9ea6f318ac4623"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-331-B-j26-1\",\"ch:1:sloid:88229\",\"ch:1:sloid:88221\"]",
+      "routeId": "92-331-B-j26-1",
+      "agencyId": "138",
+      "line": "331",
+      "fromId": "ch:1:sloid:88229",
+      "toId": "ch:1:sloid:88221",
+      "from": "Montlingen, Tänneli",
+      "to": "Hinterforst, Oberrüti",
+      "sourceFeatures": [
+        "bus:14"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 4537.778310623418,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 3,
+          "affectedPatterns": 1,
+          "affectedTrips": 3,
+          "patternIdsSha256": "b986ba64599423cba62615bcd06f1f23898308afd1234facaa9ea6f318ac4623"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 5,
+          "affectedPatterns": 1,
+          "affectedTrips": 5,
+          "patternIdsSha256": "b986ba64599423cba62615bcd06f1f23898308afd1234facaa9ea6f318ac4623"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-331-B-j26-1\",\"ch:1:sloid:88221\",\"ch:1:sloid:88228\"]",
+      "routeId": "92-331-B-j26-1",
+      "agencyId": "138",
+      "line": "331",
+      "fromId": "ch:1:sloid:88221",
+      "toId": "ch:1:sloid:88228",
+      "from": "Hinterforst, Oberrüti",
+      "to": "Montlingen, Reitzentrum",
+      "sourceFeatures": [
+        "bus:14"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 4371.2208840911235,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 3,
+          "affectedPatterns": 1,
+          "affectedTrips": 3,
+          "patternIdsSha256": "b986ba64599423cba62615bcd06f1f23898308afd1234facaa9ea6f318ac4623"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 5,
+          "affectedPatterns": 1,
+          "affectedTrips": 5,
+          "patternIdsSha256": "b986ba64599423cba62615bcd06f1f23898308afd1234facaa9ea6f318ac4623"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-331-B-j26-1\",\"ch:1:sloid:88228\",\"ch:1:sloid:88227\"]",
+      "routeId": "92-331-B-j26-1",
+      "agencyId": "138",
+      "line": "331",
+      "fromId": "ch:1:sloid:88228",
+      "toId": "ch:1:sloid:88227",
+      "from": "Montlingen, Reitzentrum",
+      "to": "Montlingen, Letzau",
+      "sourceFeatures": [
+        "bus:14"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 4371.2208840911235,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [
+        {
+          "feature": "bus:15",
+          "name": "332 Altstätten SG - Kriessern - Montlingen - Oberriet SG - Kobelwald",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 19.922872543947214,
+          "pathMetres": 739.4372036396938,
+          "geometrySha256": "cb4d79cf83d3ba74a5f143389b3671dfe757647f103e2997f5c8ec8b3fa2a7d8"
+        },
+        {
+          "feature": "bus:136",
+          "name": "N31/N32 Sennwald - Oberriet SG - Altstätten SG - Heerbrugg - Diepoldsau - Hohenems",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 19.922872543947214,
+          "pathMetres": 739.4372036396938,
+          "geometrySha256": "cb4d79cf83d3ba74a5f143389b3671dfe757647f103e2997f5c8ec8b3fa2a7d8"
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 3,
+          "affectedPatterns": 1,
+          "affectedTrips": 3,
+          "patternIdsSha256": "b986ba64599423cba62615bcd06f1f23898308afd1234facaa9ea6f318ac4623"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 5,
+          "affectedPatterns": 1,
+          "affectedTrips": 5,
+          "patternIdsSha256": "b986ba64599423cba62615bcd06f1f23898308afd1234facaa9ea6f318ac4623"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-331-B-j26-1\",\"ch:1:sloid:88227\",\"ch:1:sloid:6446\"]",
+      "routeId": "92-331-B-j26-1",
+      "agencyId": "138",
+      "line": "331",
+      "fromId": "ch:1:sloid:88227",
+      "toId": "ch:1:sloid:6446",
+      "from": "Montlingen, Letzau",
+      "to": "Hinterforst, Post",
+      "sourceFeatures": [
+        "bus:14"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 3817.1752790221644,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 3,
+          "affectedPatterns": 1,
+          "affectedTrips": 3,
+          "patternIdsSha256": "b986ba64599423cba62615bcd06f1f23898308afd1234facaa9ea6f318ac4623"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 5,
+          "affectedPatterns": 1,
+          "affectedTrips": 5,
+          "patternIdsSha256": "b986ba64599423cba62615bcd06f1f23898308afd1234facaa9ea6f318ac4623"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-331-B-j26-1\",\"ch:1:sloid:6446\",\"ch:1:sloid:74171\"]",
+      "routeId": "92-331-B-j26-1",
+      "agencyId": "138",
+      "line": "331",
+      "fromId": "ch:1:sloid:6446",
+      "toId": "ch:1:sloid:74171",
+      "from": "Hinterforst, Post",
+      "to": "Kriessern, Baggersee",
+      "sourceFeatures": [
+        "bus:14"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 3765.3642539048765,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 3,
+          "affectedPatterns": 1,
+          "affectedTrips": 3,
+          "patternIdsSha256": "b986ba64599423cba62615bcd06f1f23898308afd1234facaa9ea6f318ac4623"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 5,
+          "affectedPatterns": 1,
+          "affectedTrips": 5,
+          "patternIdsSha256": "b986ba64599423cba62615bcd06f1f23898308afd1234facaa9ea6f318ac4623"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-331-B-j26-1\",\"ch:1:sloid:74171\",\"ch:1:sloid:78483\"]",
+      "routeId": "92-331-B-j26-1",
+      "agencyId": "138",
+      "line": "331",
+      "fromId": "ch:1:sloid:74171",
+      "toId": "ch:1:sloid:78483",
+      "from": "Kriessern, Baggersee",
+      "to": "Hinterforst, Widenbach/Bächis",
+      "sourceFeatures": [
+        "bus:14"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 3765.3642539048765,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 3,
+          "affectedPatterns": 1,
+          "affectedTrips": 3,
+          "patternIdsSha256": "b986ba64599423cba62615bcd06f1f23898308afd1234facaa9ea6f318ac4623"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 5,
+          "affectedPatterns": 1,
+          "affectedTrips": 5,
+          "patternIdsSha256": "b986ba64599423cba62615bcd06f1f23898308afd1234facaa9ea6f318ac4623"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-331-B-j26-1\",\"ch:1:sloid:78483\",\"ch:1:sloid:95700\"]",
+      "routeId": "92-331-B-j26-1",
+      "agencyId": "138",
+      "line": "331",
+      "fromId": "ch:1:sloid:78483",
+      "toId": "ch:1:sloid:95700",
+      "from": "Hinterforst, Widenbach/Bächis",
+      "to": "Kriessern, Schützenwiese",
+      "sourceFeatures": [
+        "bus:14"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 3938.456468169522,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 3,
+          "affectedPatterns": 1,
+          "affectedTrips": 3,
+          "patternIdsSha256": "b986ba64599423cba62615bcd06f1f23898308afd1234facaa9ea6f318ac4623"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 5,
+          "affectedPatterns": 1,
+          "affectedTrips": 5,
+          "patternIdsSha256": "b986ba64599423cba62615bcd06f1f23898308afd1234facaa9ea6f318ac4623"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-331-B-j26-1\",\"ch:1:sloid:95700\",\"ch:1:sloid:78482\"]",
+      "routeId": "92-331-B-j26-1",
+      "agencyId": "138",
+      "line": "331",
+      "fromId": "ch:1:sloid:95700",
+      "toId": "ch:1:sloid:78482",
+      "from": "Kriessern, Schützenwiese",
+      "to": "Altstätten SG, Forst",
+      "sourceFeatures": [
+        "bus:14"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 3938.456468169522,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 3,
+          "affectedPatterns": 1,
+          "affectedTrips": 3,
+          "patternIdsSha256": "b986ba64599423cba62615bcd06f1f23898308afd1234facaa9ea6f318ac4623"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 5,
+          "affectedPatterns": 1,
+          "affectedTrips": 5,
+          "patternIdsSha256": "b986ba64599423cba62615bcd06f1f23898308afd1234facaa9ea6f318ac4623"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-331-B-j26-1\",\"ch:1:sloid:78482\",\"ch:1:sloid:74170\"]",
+      "routeId": "92-331-B-j26-1",
+      "agencyId": "138",
+      "line": "331",
+      "fromId": "ch:1:sloid:78482",
+      "toId": "ch:1:sloid:74170",
+      "from": "Altstätten SG, Forst",
+      "to": "Kriessern, Dorf",
+      "sourceFeatures": [
+        "bus:14"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 3884.546879196251,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 3,
+          "affectedPatterns": 1,
+          "affectedTrips": 3,
+          "patternIdsSha256": "b986ba64599423cba62615bcd06f1f23898308afd1234facaa9ea6f318ac4623"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 5,
+          "affectedPatterns": 1,
+          "affectedTrips": 5,
+          "patternIdsSha256": "b986ba64599423cba62615bcd06f1f23898308afd1234facaa9ea6f318ac4623"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-331-B-j26-1\",\"ch:1:sloid:74170\",\"ch:1:sloid:78481\"]",
+      "routeId": "92-331-B-j26-1",
+      "agencyId": "138",
+      "line": "331",
+      "fromId": "ch:1:sloid:74170",
+      "toId": "ch:1:sloid:78481",
+      "from": "Kriessern, Dorf",
+      "to": "Altstätten SG, Unterlitten",
+      "sourceFeatures": [
+        "bus:14"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 3884.546879196251,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [
+        {
+          "feature": "bus:136",
+          "name": "N31/N32 Sennwald - Oberriet SG - Altstätten SG - Heerbrugg - Diepoldsau - Hohenems",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 42.95472449202753,
+          "pathMetres": 6374.620599875948,
+          "geometrySha256": "ccaad58039460a084e81dde6870430b16d09f97ea52b820b933d1b3a3037d98b"
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 3,
+          "affectedPatterns": 1,
+          "affectedTrips": 3,
+          "patternIdsSha256": "b986ba64599423cba62615bcd06f1f23898308afd1234facaa9ea6f318ac4623"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 5,
+          "affectedPatterns": 1,
+          "affectedTrips": 5,
+          "patternIdsSha256": "b986ba64599423cba62615bcd06f1f23898308afd1234facaa9ea6f318ac4623"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-331-B-j26-1\",\"ch:1:sloid:78481\",\"ch:1:sloid:88223\"]",
+      "routeId": "92-331-B-j26-1",
+      "agencyId": "138",
+      "line": "331",
+      "fromId": "ch:1:sloid:78481",
+      "toId": "ch:1:sloid:88223",
+      "from": "Altstätten SG, Unterlitten",
+      "to": "Kriessern, Gassermadstrasse",
+      "sourceFeatures": [
+        "bus:14"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 3681.063292031734,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [
+        {
+          "feature": "bus:136",
+          "name": "N31/N32 Sennwald - Oberriet SG - Altstätten SG - Heerbrugg - Diepoldsau - Hohenems",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 42.95472449202753,
+          "pathMetres": 6099.518033288758,
+          "geometrySha256": "7ccb215f599a5afd5697c18dcd44755b01d53df95e0f8298aa7431e7af693018"
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 3,
+          "affectedPatterns": 1,
+          "affectedTrips": 3,
+          "patternIdsSha256": "b986ba64599423cba62615bcd06f1f23898308afd1234facaa9ea6f318ac4623"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 5,
+          "affectedPatterns": 1,
+          "affectedTrips": 5,
+          "patternIdsSha256": "b986ba64599423cba62615bcd06f1f23898308afd1234facaa9ea6f318ac4623"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-331-B-j26-1\",\"ch:1:sloid:88223\",\"ch:1:sloid:95949\"]",
+      "routeId": "92-331-B-j26-1",
+      "agencyId": "138",
+      "line": "331",
+      "fromId": "ch:1:sloid:88223",
+      "toId": "ch:1:sloid:95949",
+      "from": "Kriessern, Gassermadstrasse",
+      "to": "Altstätten SG, Bleichi",
+      "sourceFeatures": [
+        "bus:14"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 3681.063292031734,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [
+        {
+          "feature": "bus:15",
+          "name": "332 Altstätten SG - Kriessern - Montlingen - Oberriet SG - Kobelwald",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 3.18297355708627,
+          "pathMetres": 3380.4228809631268,
+          "geometrySha256": "760bea580798a4ab01cfd039b617895e6f4f8069201c4c0dbc9389af38542f52"
+        },
+        {
+          "feature": "bus:136",
+          "name": "N31/N32 Sennwald - Oberriet SG - Altstätten SG - Heerbrugg - Diepoldsau - Hohenems",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 3.692383636883387,
+          "pathMetres": 3382.0963585125155,
+          "geometrySha256": "64e531bc73c8650ea8705e588dda26f430dc2218bcc0399192498651ad4b2d4e"
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 3,
+          "affectedPatterns": 1,
+          "affectedTrips": 3,
+          "patternIdsSha256": "b986ba64599423cba62615bcd06f1f23898308afd1234facaa9ea6f318ac4623"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 5,
+          "affectedPatterns": 1,
+          "affectedTrips": 5,
+          "patternIdsSha256": "b986ba64599423cba62615bcd06f1f23898308afd1234facaa9ea6f318ac4623"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-331-B-j26-1\",\"ch:1:sloid:95949\",\"ch:1:sloid:6450:0:1\"]",
+      "routeId": "92-331-B-j26-1",
+      "agencyId": "138",
+      "line": "331",
+      "fromId": "ch:1:sloid:95949",
+      "toId": "ch:1:sloid:6450:0:1",
+      "from": "Altstätten SG, Bleichi",
+      "to": "Altstätten SG, Bahnhof",
+      "sourceFeatures": [
+        "bus:14"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 506.6061588721727,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [
+        {
+          "feature": "bus:15",
+          "name": "332 Altstätten SG - Kriessern - Montlingen - Oberriet SG - Kobelwald",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 1.228424170468543,
+          "pathMetres": 755.1162907915574,
+          "geometrySha256": "f8c5a0be95c2cc58938ab051ca925e273f0ca21c508dd98133b35c4856b35a98"
+        },
+        {
+          "feature": "bus:136",
+          "name": "N31/N32 Sennwald - Oberriet SG - Altstätten SG - Heerbrugg - Diepoldsau - Hohenems",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 3.692383636883387,
+          "pathMetres": 755.0927692066444,
+          "geometrySha256": "1cd783dab7a17144d0445ced160b81ff4066e471b6f7e2de8748fc62d74bd11a"
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 3,
+          "affectedPatterns": 1,
+          "affectedTrips": 3,
+          "patternIdsSha256": "b986ba64599423cba62615bcd06f1f23898308afd1234facaa9ea6f318ac4623"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 5,
+          "affectedPatterns": 1,
+          "affectedTrips": 5,
+          "patternIdsSha256": "b986ba64599423cba62615bcd06f1f23898308afd1234facaa9ea6f318ac4623"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-420-j26-1\",\"ch:1:sloid:82096\",\"ch:1:sloid:74410\"]",
+      "routeId": "92-420-j26-1",
+      "agencyId": "138",
+      "line": "420",
+      "fromId": "ch:1:sloid:82096",
+      "toId": "ch:1:sloid:74410",
+      "from": "Trübbach, Seidenbaum",
+      "to": "Trübbach, Dorf",
+      "sourceFeatures": [
+        "bus:53"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 820.6709445571144,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [
+        {
+          "feature": "bus:18",
+          "name": "400 Buchs SG - Sargans - Mels",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 36.81946557566509,
+          "pathMetres": 1091.0825220533366,
+          "geometrySha256": "de64c58ce88572e4915686a4bb86360e5fec961b516121020ca514a43a1e938c"
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 4,
+          "affectedPatterns": 1,
+          "affectedTrips": 4,
+          "patternIdsSha256": "819861c6cd35c977855478e1aa05d56d0d4b7ed85c84522fe72553f4501bbb22"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 0,
+          "affectedPatterns": 0,
+          "affectedTrips": 0,
+          "patternIdsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-420-j26-1\",\"ch:1:sloid:74410\",\"ch:1:sloid:82096\"]",
+      "routeId": "92-420-j26-1",
+      "agencyId": "138",
+      "line": "420",
+      "fromId": "ch:1:sloid:74410",
+      "toId": "ch:1:sloid:82096",
+      "from": "Trübbach, Dorf",
+      "to": "Trübbach, Seidenbaum",
+      "sourceFeatures": [
+        "bus:53"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 820.6709445571144,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [
+        {
+          "feature": "bus:18",
+          "name": "400 Buchs SG - Sargans - Mels",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 36.81946557566509,
+          "pathMetres": 1091.0825220533372,
+          "geometrySha256": "3ce98343ec90f7c7317842854300befa90f00ebc7014989eb6b6d2b041141f0d"
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 3,
+          "affectedPatterns": 1,
+          "affectedTrips": 3,
+          "patternIdsSha256": "dec548f97386c3d72390ab683acd46c81ae5bd8a2770eb8292d91e7b300f7918"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 0,
+          "affectedPatterns": 0,
+          "affectedTrips": 0,
+          "patternIdsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-623-j26-1\",\"ch:1:sloid:89221:0:526522\",\"ch:1:sloid:6487:0:623904\"]",
+      "routeId": "92-623-j26-1",
+      "agencyId": "772",
+      "line": "623",
+      "fromId": "ch:1:sloid:89221:0:526522",
+      "toId": "ch:1:sloid:6487:0:623904",
+      "from": "St. Gallenkappel, Kronenwiese",
+      "to": "St. Gallenkappel, Post",
+      "sourceFeatures": [
+        "bus:46"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 128.28404511890054,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [
+        {
+          "feature": "bus:45",
+          "name": "622 Rapperswil SG - Jona - Wagen - Eschenbach SG - Neuhaus SG - St. Gallenkappel - Ricken SG - Wattwil",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 4.544949161269128,
+          "pathMetres": 344.03629492470924,
+          "geometrySha256": "738d1e1fcbaecfa6a200ca6a69156417b664a8615e9c31c94f82afd95f45bd5e"
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 1,
+          "affectedPatterns": 1,
+          "affectedTrips": 1,
+          "patternIdsSha256": "b57b673c5a54101e0a555391c0780b21f69cbf03a1e550a00bece342785e9f51"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 1,
+          "affectedPatterns": 1,
+          "affectedTrips": 1,
+          "patternIdsSha256": "b57b673c5a54101e0a555391c0780b21f69cbf03a1e550a00bece342785e9f51"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-631-j26-1\",\"ch:1:sloid:76103::52\",\"ch:1:sloid:88036::50\"]",
+      "routeId": "92-631-j26-1",
+      "agencyId": "772",
+      "line": "631",
+      "fromId": "ch:1:sloid:76103::52",
+      "toId": "ch:1:sloid:88036::50",
+      "from": "Rüti ZH, Bahnhof",
+      "to": "Rüti ZH, Bandwies",
+      "sourceFeatures": [
+        "bus:105"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 182.64503802200468,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 46,
+          "affectedPatterns": 2,
+          "affectedTrips": 46,
+          "patternIdsSha256": "318b6dd854ec50139fa43f28dc832c219d6f09142e07541a27fcf56c56bca216"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 33,
+          "affectedPatterns": 3,
+          "affectedTrips": 33,
+          "patternIdsSha256": "f7d87951af37e2b238406341fae74de346b7f278f9008d8e453904667bc065f6"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-631-j26-1\",\"ch:1:sloid:88036::50\",\"ch:1:sloid:78564:0:404557\"]",
+      "routeId": "92-631-j26-1",
+      "agencyId": "772",
+      "line": "631",
+      "fromId": "ch:1:sloid:88036::50",
+      "toId": "ch:1:sloid:78564:0:404557",
+      "from": "Rüti ZH, Bandwies",
+      "to": "Rüti ZH, Ferrach",
+      "sourceFeatures": [
+        "bus:105"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 182.64503802200468,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 46,
+          "affectedPatterns": 2,
+          "affectedTrips": 46,
+          "patternIdsSha256": "318b6dd854ec50139fa43f28dc832c219d6f09142e07541a27fcf56c56bca216"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 33,
+          "affectedPatterns": 3,
+          "affectedTrips": 33,
+          "patternIdsSha256": "f7d87951af37e2b238406341fae74de346b7f278f9008d8e453904667bc065f6"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-705-D-j26-1\",\"ch:1:sloid:73602:0:01\",\"ch:1:sloid:78597\"]",
+      "routeId": "92-705-D-j26-1",
+      "agencyId": "138",
+      "line": "705",
+      "fromId": "ch:1:sloid:73602:0:01",
+      "toId": "ch:1:sloid:78597",
+      "from": "Wil SG, Bahnhof",
+      "to": "Wil SG, Psychiatrie",
+      "sourceFeatures": [
+        "city:26"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 121.22522437830752,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [
+        {
+          "feature": "bus:110",
+          "name": "733 Wil SG - Littenheid",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 2.8791302408031787,
+          "pathMetres": 493.8718440065202,
+          "geometrySha256": "30cd342c2bc5c7984ba22f866f7f33fe0e30e7125309a30e782176ac1bc51709"
+        },
+        {
+          "feature": "bus:112",
+          "name": "734 Wil SG - Sirnach - Dussnang - Fischingen",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 2.8791302408031787,
+          "pathMetres": 493.8718440070469,
+          "geometrySha256": "5aac2353b60cec076c39737092dba3ef7aada6aa2d4ed85a9e935ad6351275be"
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 29,
+          "affectedPatterns": 1,
+          "affectedTrips": 29,
+          "patternIdsSha256": "81175707410721da4fd75f30705e38030780ec236e4c72c1f0604983f15a0b94"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 12,
+          "affectedPatterns": 1,
+          "affectedTrips": 12,
+          "patternIdsSha256": "81175707410721da4fd75f30705e38030780ec236e4c72c1f0604983f15a0b94"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-705-D-j26-1\",\"ch:1:sloid:78597\",\"ch:1:sloid:89928\"]",
+      "routeId": "92-705-D-j26-1",
+      "agencyId": "138",
+      "line": "705",
+      "fromId": "ch:1:sloid:78597",
+      "toId": "ch:1:sloid:89928",
+      "from": "Wil SG, Psychiatrie",
+      "to": "Wil SG, Zürcherstrasse",
+      "sourceFeatures": [
+        "city:26"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 121.22522437830752,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [
+        {
+          "feature": "bus:110",
+          "name": "733 Wil SG - Littenheid",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 4.61646979869268,
+          "pathMetres": 298.26719980098073,
+          "geometrySha256": "dea33cfb2396c31579b88ac274d6af4d753bc4aacf1c70298cca3bf053bdd5d7"
+        },
+        {
+          "feature": "bus:112",
+          "name": "734 Wil SG - Sirnach - Dussnang - Fischingen",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 4.61646979869268,
+          "pathMetres": 298.26719854099656,
+          "geometrySha256": "e4e90f9c089fd41d8ccac0b9ab1d4db4513d9b78c465381f6d8771ce6b3b348f"
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 29,
+          "affectedPatterns": 1,
+          "affectedTrips": 29,
+          "patternIdsSha256": "81175707410721da4fd75f30705e38030780ec236e4c72c1f0604983f15a0b94"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 12,
+          "affectedPatterns": 1,
+          "affectedTrips": 12,
+          "patternIdsSha256": "81175707410721da4fd75f30705e38030780ec236e4c72c1f0604983f15a0b94"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-705-D-j26-1\",\"ch:1:sloid:89928\",\"ch:1:sloid:78597\"]",
+      "routeId": "92-705-D-j26-1",
+      "agencyId": "138",
+      "line": "705",
+      "fromId": "ch:1:sloid:89928",
+      "toId": "ch:1:sloid:78597",
+      "from": "Wil SG, Zürcherstrasse",
+      "to": "Wil SG, Psychiatrie",
+      "sourceFeatures": [
+        "city:26"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 121.22522437830752,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [
+        {
+          "feature": "bus:110",
+          "name": "733 Wil SG - Littenheid",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 4.61646979869268,
+          "pathMetres": 298.2671998009807,
+          "geometrySha256": "fd0b7b2308ef65db08b6c9e6299616dab36bd15b933bae99d5dfc4dc5dd595d2"
+        },
+        {
+          "feature": "bus:112",
+          "name": "734 Wil SG - Sirnach - Dussnang - Fischingen",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 4.61646979869268,
+          "pathMetres": 298.2671985409965,
+          "geometrySha256": "c62663136535afb4a5032f462b9b04cc857c2421121f7a2eeec777155142b6b7"
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 29,
+          "affectedPatterns": 1,
+          "affectedTrips": 29,
+          "patternIdsSha256": "639967c43ced21184dd58fed4ae3e397855b830084565803ccb87fd877c2363a"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 12,
+          "affectedPatterns": 1,
+          "affectedTrips": 12,
+          "patternIdsSha256": "639967c43ced21184dd58fed4ae3e397855b830084565803ccb87fd877c2363a"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-705-D-j26-1\",\"ch:1:sloid:78597\",\"ch:1:sloid:73602:0:01\"]",
+      "routeId": "92-705-D-j26-1",
+      "agencyId": "138",
+      "line": "705",
+      "fromId": "ch:1:sloid:78597",
+      "toId": "ch:1:sloid:73602:0:01",
+      "from": "Wil SG, Psychiatrie",
+      "to": "Wil SG, Bahnhof",
+      "sourceFeatures": [
+        "city:26"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 121.22522437830752,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [
+        {
+          "feature": "bus:110",
+          "name": "733 Wil SG - Littenheid",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 2.8791302408031787,
+          "pathMetres": 493.8718440065202,
+          "geometrySha256": "dc5c2ebb626b1a657c7207fc8a8ef8a29bfd629f2c7fd2a8534ce069e331e0e2"
+        },
+        {
+          "feature": "bus:112",
+          "name": "734 Wil SG - Sirnach - Dussnang - Fischingen",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 2.8791302408031787,
+          "pathMetres": 493.87184400704683,
+          "geometrySha256": "c1b66dd2775f08590ac0bbdd80257434ce5e056bf9101d2f80f77c39a51bc1f4"
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 29,
+          "affectedPatterns": 1,
+          "affectedTrips": 29,
+          "patternIdsSha256": "639967c43ced21184dd58fed4ae3e397855b830084565803ccb87fd877c2363a"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 12,
+          "affectedPatterns": 1,
+          "affectedTrips": 12,
+          "patternIdsSha256": "639967c43ced21184dd58fed4ae3e397855b830084565803ccb87fd877c2363a"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-706-C-j26-1\",\"ch:1:sloid:6740\",\"ch:1:sloid:87756\"]",
+      "routeId": "92-706-C-j26-1",
+      "agencyId": "138",
+      "line": "706",
+      "fromId": "ch:1:sloid:6740",
+      "toId": "ch:1:sloid:87756",
+      "from": "Bronschhofen, Feuerwehrdepot",
+      "to": "Bronschhofen, Eggwilstrasse",
+      "sourceFeatures": [
+        "city:27"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 416.477388032547,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [
+        {
+          "feature": "city:26",
+          "name": "705 Wil SG Bahnhof - Bildfeld - Bronschofen Gemeindehaus - Himmelrich",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 60.20820700787516,
+          "pathMetres": 801.1071214746102,
+          "geometrySha256": "3f61119a884cc2449b335ade89c1a0499b14dd7baa9d0c21fc2cf817b52a8ced"
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 1,
+          "affectedPatterns": 1,
+          "affectedTrips": 1,
+          "patternIdsSha256": "9e061422cf51c5681777dd0909e6e18b7a63495d0268edf63e1acebc2aab2fac"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 0,
+          "affectedPatterns": 0,
+          "affectedTrips": 0,
+          "patternIdsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-706-C-j26-1\",\"ch:1:sloid:87756\",\"ch:1:sloid:87744\"]",
+      "routeId": "92-706-C-j26-1",
+      "agencyId": "138",
+      "line": "706",
+      "fromId": "ch:1:sloid:87756",
+      "toId": "ch:1:sloid:87744",
+      "from": "Bronschhofen, Eggwilstrasse",
+      "to": "Bronschhofen, Himmelrich",
+      "sourceFeatures": [
+        "city:27"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 416.477388032547,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [
+        {
+          "feature": "city:26",
+          "name": "705 Wil SG Bahnhof - Bildfeld - Bronschofen Gemeindehaus - Himmelrich",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 3.7187337373601737,
+          "pathMetres": 214.77524732579946,
+          "geometrySha256": "0c1119037d2ad88f3e479082461f3ffe62f702cb75742733d1f1ee5292eb2fab"
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 1,
+          "affectedPatterns": 1,
+          "affectedTrips": 1,
+          "patternIdsSha256": "9e061422cf51c5681777dd0909e6e18b7a63495d0268edf63e1acebc2aab2fac"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 0,
+          "affectedPatterns": 0,
+          "affectedTrips": 0,
+          "patternIdsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-729-j26-1\",\"ch:1:sloid:73929:0:720273\",\"ch:1:sloid:73931\"]",
+      "routeId": "92-729-j26-1",
+      "agencyId": "896",
+      "line": "729",
+      "fromId": "ch:1:sloid:73929:0:720273",
+      "toId": "ch:1:sloid:73931",
+      "from": "Uzwil, Bahnhof",
+      "to": "Niederuzwil, Marienfried",
+      "sourceFeatures": [
+        "bus:75"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 878.2127918877339,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [
+        {
+          "feature": "bus:7",
+          "name": "N72 Wil - Jonschwil - Uzwil - Henau - Wil (Nachtangebot)",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 53.67430631918888,
+          "pathMetres": 2218.6599576165813,
+          "geometrySha256": "e9c336bd990edb823c72eb2dff55153db557ac4ae9de5c6c0ddb209d6fdc2218"
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 4,
+          "affectedPatterns": 1,
+          "affectedTrips": 4,
+          "patternIdsSha256": "b6c9b2de5172fc5b51e811f679c713f8a556edd59752bd6fd0a2b720e03ce3a8"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 5,
+          "affectedPatterns": 1,
+          "affectedTrips": 5,
+          "patternIdsSha256": "b6c9b2de5172fc5b51e811f679c713f8a556edd59752bd6fd0a2b720e03ce3a8"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-729-j26-1\",\"ch:1:sloid:73931\",\"ch:1:sloid:6728\"]",
+      "routeId": "92-729-j26-1",
+      "agencyId": "896",
+      "line": "729",
+      "fromId": "ch:1:sloid:73931",
+      "toId": "ch:1:sloid:6728",
+      "from": "Niederuzwil, Marienfried",
+      "to": "Niederuzwil, Wespiwiese",
+      "sourceFeatures": [
+        "bus:75"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 878.2127918877339,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [
+        {
+          "feature": "bus:7",
+          "name": "N72 Wil - Jonschwil - Uzwil - Henau - Wil (Nachtangebot)",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 53.67430631918888,
+          "pathMetres": 411.30369998116,
+          "geometrySha256": "cf87fc37d74d2c0ae27b611285001051bc15a63df46d6b4bc476d6474ba3afd5"
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 4,
+          "affectedPatterns": 1,
+          "affectedTrips": 4,
+          "patternIdsSha256": "b6c9b2de5172fc5b51e811f679c713f8a556edd59752bd6fd0a2b720e03ce3a8"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 5,
+          "affectedPatterns": 1,
+          "affectedTrips": 5,
+          "patternIdsSha256": "b6c9b2de5172fc5b51e811f679c713f8a556edd59752bd6fd0a2b720e03ce3a8"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-729-j26-1\",\"ch:1:sloid:6728\",\"ch:1:sloid:6578\"]",
+      "routeId": "92-729-j26-1",
+      "agencyId": "896",
+      "line": "729",
+      "fromId": "ch:1:sloid:6728",
+      "toId": "ch:1:sloid:6578",
+      "from": "Niederuzwil, Wespiwiese",
+      "to": "Niederuzwil, Luxenburg",
+      "sourceFeatures": [
+        "bus:75"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 648.8512443589449,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [
+        {
+          "feature": "bus:7",
+          "name": "N72 Wil - Jonschwil - Uzwil - Henau - Wil (Nachtangebot)",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 1.8341557691283683,
+          "pathMetres": 528.6950902741672,
+          "geometrySha256": "13dba9142790c047453be44e3908c501c9d4728b0247c891b91e86861dffa510"
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 4,
+          "affectedPatterns": 1,
+          "affectedTrips": 4,
+          "patternIdsSha256": "b6c9b2de5172fc5b51e811f679c713f8a556edd59752bd6fd0a2b720e03ce3a8"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 5,
+          "affectedPatterns": 1,
+          "affectedTrips": 5,
+          "patternIdsSha256": "b6c9b2de5172fc5b51e811f679c713f8a556edd59752bd6fd0a2b720e03ce3a8"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-729-j26-1\",\"ch:1:sloid:6578\",\"ch:1:sloid:73944\"]",
+      "routeId": "92-729-j26-1",
+      "agencyId": "896",
+      "line": "729",
+      "fromId": "ch:1:sloid:6578",
+      "toId": "ch:1:sloid:73944",
+      "from": "Niederuzwil, Luxenburg",
+      "to": "Henau, Kirchplatz",
+      "sourceFeatures": [
+        "bus:75"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 535.3976003576739,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [
+        {
+          "feature": "bus:7",
+          "name": "N72 Wil - Jonschwil - Uzwil - Henau - Wil (Nachtangebot)",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 1.8341557691283683,
+          "pathMetres": 1012.5842621875416,
+          "geometrySha256": "35ab5dc2d1403e33a40c3cdc3b08c260fda5a3f30f30d5623d35ba8ae3e9a2b0"
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 4,
+          "affectedPatterns": 1,
+          "affectedTrips": 4,
+          "patternIdsSha256": "b6c9b2de5172fc5b51e811f679c713f8a556edd59752bd6fd0a2b720e03ce3a8"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 5,
+          "affectedPatterns": 1,
+          "affectedTrips": 5,
+          "patternIdsSha256": "b6c9b2de5172fc5b51e811f679c713f8a556edd59752bd6fd0a2b720e03ce3a8"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"96-224-1-j26-1\",\"ch:1:sloid:80797:0:620856\",\"ch:1:sloid:74237:0:881422\"]",
+      "routeId": "96-224-1-j26-1",
+      "agencyId": "801",
+      "line": "120",
+      "fromId": "ch:1:sloid:80797:0:620856",
+      "toId": "ch:1:sloid:74237:0:881422",
+      "from": "Engelburg, Schulhaus",
+      "to": "Engelburg, Chapf",
+      "sourceFeatures": [
+        "bus:142",
+        "bus:143"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 616.2446837597638,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 4,
+          "affectedPatterns": 2,
+          "affectedTrips": 4,
+          "patternIdsSha256": "9d6890086a107d341bbd736bbef11f25d83d4acd835af703aef0956aab298864"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 1,
+          "affectedPatterns": 1,
+          "affectedTrips": 1,
+          "patternIdsSha256": "a42c13733c802d08b1ea1fdae100fb8a36d5e684d2a35b3d608319a1582a7b42"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"96-224-1-j26-1\",\"ch:1:sloid:74237:0:881422\",\"ch:1:sloid:74229:0:817491\"]",
+      "routeId": "96-224-1-j26-1",
+      "agencyId": "801",
+      "line": "120",
+      "fromId": "ch:1:sloid:74237:0:881422",
+      "toId": "ch:1:sloid:74229:0:817491",
+      "from": "Engelburg, Chapf",
+      "to": "Engelburg, Freihof",
+      "sourceFeatures": [
+        "bus:142",
+        "bus:143"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 616.2446837597638,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 4,
+          "affectedPatterns": 2,
+          "affectedTrips": 4,
+          "patternIdsSha256": "9d6890086a107d341bbd736bbef11f25d83d4acd835af703aef0956aab298864"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 1,
+          "affectedPatterns": 1,
+          "affectedTrips": 1,
+          "patternIdsSha256": "a42c13733c802d08b1ea1fdae100fb8a36d5e684d2a35b3d608319a1582a7b42"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"96-224-1-j26-1\",\"ch:1:sloid:74229\",\"ch:1:sloid:74237\"]",
+      "routeId": "96-224-1-j26-1",
+      "agencyId": "801",
+      "line": "120",
+      "fromId": "ch:1:sloid:74229",
+      "toId": "ch:1:sloid:74237",
+      "from": "Engelburg, Freihof",
+      "to": "Engelburg, Chapf",
+      "sourceFeatures": [
+        "bus:142",
+        "bus:143"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 604.1735974656634,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 3,
+          "affectedPatterns": 2,
+          "affectedTrips": 3,
+          "patternIdsSha256": "23bc875ddd6f6dc7daf3e615632655aa31a2d4d4573e677ba397a6a1f14485cf"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 2,
+          "affectedPatterns": 2,
+          "affectedTrips": 2,
+          "patternIdsSha256": "23bc875ddd6f6dc7daf3e615632655aa31a2d4d4573e677ba397a6a1f14485cf"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"96-224-1-j26-1\",\"ch:1:sloid:74237\",\"ch:1:sloid:80797\"]",
+      "routeId": "96-224-1-j26-1",
+      "agencyId": "801",
+      "line": "120",
+      "fromId": "ch:1:sloid:74237",
+      "toId": "ch:1:sloid:80797",
+      "from": "Engelburg, Chapf",
+      "to": "Engelburg, Schulhaus",
+      "sourceFeatures": [
+        "bus:142",
+        "bus:143"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 604.1735974656634,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 3,
+          "affectedPatterns": 2,
+          "affectedTrips": 3,
+          "patternIdsSha256": "23bc875ddd6f6dc7daf3e615632655aa31a2d4d4573e677ba397a6a1f14485cf"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 2,
+          "affectedPatterns": 2,
+          "affectedTrips": 2,
+          "patternIdsSha256": "23bc875ddd6f6dc7daf3e615632655aa31a2d4d4573e677ba397a6a1f14485cf"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"96-224-1-j26-1\",\"ch:1:sloid:74229:0:830025\",\"ch:1:sloid:74237:0:881422\"]",
+      "routeId": "96-224-1-j26-1",
+      "agencyId": "801",
+      "line": "120",
+      "fromId": "ch:1:sloid:74229:0:830025",
+      "toId": "ch:1:sloid:74237:0:881422",
+      "from": "Engelburg, Freihof",
+      "to": "Engelburg, Chapf",
+      "sourceFeatures": [
+        "bus:142",
+        "bus:143"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 616.2446837597638,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 13,
+          "affectedPatterns": 4,
+          "affectedTrips": 13,
+          "patternIdsSha256": "86ab912c96d74bc0f94a9c68f98fe9dd507b3ea49e1b6581109c32b30e1092af"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 7,
+          "affectedPatterns": 2,
+          "affectedTrips": 7,
+          "patternIdsSha256": "e9f851472302a2b14626cd68fa0dcc0aa20553f946427e9d3f8a34152bdc3739"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"96-224-1-j26-1\",\"ch:1:sloid:74237:0:881422\",\"ch:1:sloid:80797:0:815956\"]",
+      "routeId": "96-224-1-j26-1",
+      "agencyId": "801",
+      "line": "120",
+      "fromId": "ch:1:sloid:74237:0:881422",
+      "toId": "ch:1:sloid:80797:0:815956",
+      "from": "Engelburg, Chapf",
+      "to": "Engelburg, Schulhaus",
+      "sourceFeatures": [
+        "bus:142",
+        "bus:143"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 616.2446837597638,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 13,
+          "affectedPatterns": 4,
+          "affectedTrips": 13,
+          "patternIdsSha256": "86ab912c96d74bc0f94a9c68f98fe9dd507b3ea49e1b6581109c32b30e1092af"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 7,
+          "affectedPatterns": 2,
+          "affectedTrips": 7,
+          "patternIdsSha256": "e9f851472302a2b14626cd68fa0dcc0aa20553f946427e9d3f8a34152bdc3739"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"96-240-8-j26-1\",\"ch:1:sloid:74442:0:521466\",\"ch:1:sloid:3769:0:10811\"]",
+      "routeId": "96-240-8-j26-1",
+      "agencyId": "801",
+      "line": "628",
+      "fromId": "ch:1:sloid:74442:0:521466",
+      "toId": "ch:1:sloid:3769:0:10811",
+      "from": "Gommiswald, Gauenhof",
+      "to": "Gommiswald, Dorf",
+      "sourceFeatures": [
+        "bus:47"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 211.22605420739492,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [
+        {
+          "feature": "bus:91",
+          "name": "632 Uznach - Gommiswald - Ricken SG",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 8.49126849050663,
+          "pathMetres": 401.08588098086125,
+          "geometrySha256": "3a79e77adb04287963663bf00c9b85c2c86e1239d9b90f1387d43332e2d4e181"
+        },
+        {
+          "feature": "bus:128",
+          "name": "633 Uznach - Ernetschwil - Gommiswald - Rieden SG",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 8.49126849050663,
+          "pathMetres": 401.08460580681526,
+          "geometrySha256": "1df2666af479c29bfdaf6c30738a0aa8aa1c5aaa55ba862d065913a2ae09f9cc"
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 4,
+          "affectedPatterns": 1,
+          "affectedTrips": 4,
+          "patternIdsSha256": "5ee4662c6646cdf5d80c5cecc90753b0216678e87911e60adde320226aa04f05"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 0,
+          "affectedPatterns": 0,
+          "affectedTrips": 0,
+          "patternIdsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"96-240-8-j26-1\",\"ch:1:sloid:3769:0:10811\",\"ch:1:sloid:74442:0:181713\"]",
+      "routeId": "96-240-8-j26-1",
+      "agencyId": "801",
+      "line": "628",
+      "fromId": "ch:1:sloid:3769:0:10811",
+      "toId": "ch:1:sloid:74442:0:181713",
+      "from": "Gommiswald, Dorf",
+      "to": "Gommiswald, Gauenhof",
+      "sourceFeatures": [
+        "bus:47"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 211.22605420739492,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [
+        {
+          "feature": "bus:91",
+          "name": "632 Uznach - Gommiswald - Ricken SG",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 8.49126849050663,
+          "pathMetres": 417.9993967357563,
+          "geometrySha256": "e8d664aa88b05eb3bde7142b90429761f9a6bf57389e57383cd61e11c2ca2329"
+        },
+        {
+          "feature": "bus:128",
+          "name": "633 Uznach - Ernetschwil - Gommiswald - Rieden SG",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 8.49126849050663,
+          "pathMetres": 417.99881148397094,
+          "geometrySha256": "e10054cdc12618f519b663df9e435a79eea3b66ee90ace56a9bd7099cf35a248"
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 8,
+          "affectedPatterns": 3,
+          "affectedTrips": 8,
+          "patternIdsSha256": "7a9a034d227081ee787b1dad8f8404a9a52e3cdca4cf37f7409e1dc38ffb987b"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 0,
+          "affectedPatterns": 0,
+          "affectedTrips": 0,
+          "patternIdsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"96-240-8-j26-1\",\"ch:1:sloid:74442:0:521466\",\"ch:1:sloid:3769:0:729707\"]",
+      "routeId": "96-240-8-j26-1",
+      "agencyId": "801",
+      "line": "628",
+      "fromId": "ch:1:sloid:74442:0:521466",
+      "toId": "ch:1:sloid:3769:0:729707",
+      "from": "Gommiswald, Gauenhof",
+      "to": "Gommiswald, Dorf",
+      "sourceFeatures": [
+        "bus:47"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 189.6412300748956,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [
+        {
+          "feature": "bus:91",
+          "name": "632 Uznach - Gommiswald - Ricken SG",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 3.7011769032339914,
+          "pathMetres": 380.55072793740425,
+          "geometrySha256": "ae43d40bc7772b85cef83422ae38d75f4d491c1f04b1880e15282c71362d9416"
+        },
+        {
+          "feature": "bus:128",
+          "name": "633 Uznach - Ernetschwil - Gommiswald - Rieden SG",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 3.7017471743845,
+          "pathMetres": 380.5494575797969,
+          "geometrySha256": "4fa92c2a95924875d7ae42dd44b5bc0eec2d0ae68135975e74edd26fe5f3312d"
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 4,
+          "affectedPatterns": 1,
+          "affectedTrips": 4,
+          "patternIdsSha256": "150fd76693e0b3cc3596c1305277a612550ada843e814bd41ba8a7bd44f04b0e"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 0,
+          "affectedPatterns": 0,
+          "affectedTrips": 0,
+          "patternIdsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"96-249-1-j26-1\",\"ch:1:sloid:74557:0:824135\",\"ch:1:sloid:82595:0:659989\"]",
+      "routeId": "96-249-1-j26-1",
+      "agencyId": "801",
+      "line": "451",
+      "fromId": "ch:1:sloid:74557:0:824135",
+      "toId": "ch:1:sloid:82595:0:659989",
+      "from": "Bad Ragaz, Dorfbad",
+      "to": "Bad Ragaz, Tamina Therme",
+      "sourceFeatures": [
+        "bus:87"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 285.0969347377125,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [
+        {
+          "feature": "bus:89",
+          "name": "456 Bidems - Bad Ragaz Bahnhof - Pizolbahn",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 71.94829124923848,
+          "pathMetres": 589.107499242285,
+          "geometrySha256": "12ee1e130e58f5137f4ba647b63b2f2c966307a9f04693a7adb4ed6de68c3e14"
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 4,
+          "affectedPatterns": 2,
+          "affectedTrips": 4,
+          "patternIdsSha256": "362d85b08a3e2ab55333fb96da1a56ea0b8910c7ec16a3fad7fce7bb2ddf0be9"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 4,
+          "affectedPatterns": 2,
+          "affectedTrips": 4,
+          "patternIdsSha256": "362d85b08a3e2ab55333fb96da1a56ea0b8910c7ec16a3fad7fce7bb2ddf0be9"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"96-249-1-j26-1\",\"ch:1:sloid:82595:0:659989\",\"ch:1:sloid:82467:0:759876\"]",
+      "routeId": "96-249-1-j26-1",
+      "agencyId": "801",
+      "line": "451",
+      "fromId": "ch:1:sloid:82595:0:659989",
+      "toId": "ch:1:sloid:82467:0:759876",
+      "from": "Bad Ragaz, Tamina Therme",
+      "to": "Bad Ragaz, Bahnhofstrasse",
+      "sourceFeatures": [
+        "bus:87"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 285.0969347377125,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [
+        {
+          "feature": "bus:89",
+          "name": "456 Bidems - Bad Ragaz Bahnhof - Pizolbahn",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 2.4014370763004065,
+          "pathMetres": 1009.957870151935,
+          "geometrySha256": "14ecc8fa3df44bc7f32dfc4448390ed57556a5f8c20d55c2205b1334422850cf"
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 4,
+          "affectedPatterns": 2,
+          "affectedTrips": 4,
+          "patternIdsSha256": "362d85b08a3e2ab55333fb96da1a56ea0b8910c7ec16a3fad7fce7bb2ddf0be9"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 4,
+          "affectedPatterns": 2,
+          "affectedTrips": 4,
+          "patternIdsSha256": "362d85b08a3e2ab55333fb96da1a56ea0b8910c7ec16a3fad7fce7bb2ddf0be9"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"96-249-1-j26-1\",\"ch:1:sloid:82467:0:870341\",\"ch:1:sloid:82595:0:659989\"]",
+      "routeId": "96-249-1-j26-1",
+      "agencyId": "801",
+      "line": "451",
+      "fromId": "ch:1:sloid:82467:0:870341",
+      "toId": "ch:1:sloid:82595:0:659989",
+      "from": "Bad Ragaz, Bahnhofstrasse",
+      "to": "Bad Ragaz, Tamina Therme",
+      "sourceFeatures": [
+        "bus:87"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 285.0969347377125,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [
+        {
+          "feature": "bus:89",
+          "name": "456 Bidems - Bad Ragaz Bahnhof - Pizolbahn",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 3.6276916185286368,
+          "pathMetres": 996.025076125774,
+          "geometrySha256": "947a89e3bf275ca57e5065ca8f68df6cd0c121b90c2b6c235024863eb1c166a1"
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 3,
+          "affectedPatterns": 2,
+          "affectedTrips": 3,
+          "patternIdsSha256": "57b07e6e89b23c1d150e395a62fcdca608bddc7c045a146b502d078cf84d6577"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 3,
+          "affectedPatterns": 2,
+          "affectedTrips": 3,
+          "patternIdsSha256": "57b07e6e89b23c1d150e395a62fcdca608bddc7c045a146b502d078cf84d6577"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"96-249-1-j26-1\",\"ch:1:sloid:82595:0:659989\",\"ch:1:sloid:9697:0:111131\"]",
+      "routeId": "96-249-1-j26-1",
+      "agencyId": "801",
+      "line": "451",
+      "fromId": "ch:1:sloid:82595:0:659989",
+      "toId": "ch:1:sloid:9697:0:111131",
+      "from": "Bad Ragaz, Tamina Therme",
+      "to": "Bad Ragaz, Post",
+      "sourceFeatures": [
+        "bus:87"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 285.0969347377125,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [
+        {
+          "feature": "bus:89",
+          "name": "456 Bidems - Bad Ragaz Bahnhof - Pizolbahn",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 81.71950110103148,
+          "pathMetres": 609.2198052045907,
+          "geometrySha256": "d28d99e137689522ead5438a313cb8ff4f12f0a0a594ad2adce22b17b1630fb6"
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 3,
+          "affectedPatterns": 2,
+          "affectedTrips": 3,
+          "patternIdsSha256": "57b07e6e89b23c1d150e395a62fcdca608bddc7c045a146b502d078cf84d6577"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 3,
+          "affectedPatterns": 2,
+          "affectedTrips": 3,
+          "patternIdsSha256": "57b07e6e89b23c1d150e395a62fcdca608bddc7c045a146b502d078cf84d6577"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-623-A-j26-1\",\"ch:1:sloid:6460:0:242239\",\"ch:1:sloid:89221:0:526522\"]",
+      "routeId": "92-623-A-j26-1",
+      "agencyId": "772",
+      "line": "623",
+      "fromId": "ch:1:sloid:6460:0:242239",
+      "toId": "ch:1:sloid:89221:0:526522",
+      "from": "Betzikon SG",
+      "to": "St. Gallenkappel, Kronenwiese",
+      "sourceFeatures": [
+        "bus:46"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 128.28404511890054,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [
+        {
+          "feature": "bus:45",
+          "name": "622 Rapperswil SG - Jona - Wagen - Eschenbach SG - Neuhaus SG - St. Gallenkappel - Ricken SG - Wattwil",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 4.401290772805991,
+          "pathMetres": 579.781057677046,
+          "geometrySha256": "63427bca840bb92ec1a54a45b50ba031469be3e1ddc3da07bf2901248eb1be64"
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 0,
+          "affectedPatterns": 0,
+          "affectedTrips": 0,
+          "patternIdsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 2,
+          "affectedPatterns": 2,
+          "affectedTrips": 2,
+          "patternIdsSha256": "8c66e229b631a74acbfefeb2924181e77409c329dd412619a4a1c042dff4a2c9"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-623-A-j26-1\",\"ch:1:sloid:89221:0:526522\",\"ch:1:sloid:6487:0:623904\"]",
+      "routeId": "92-623-A-j26-1",
+      "agencyId": "772",
+      "line": "623",
+      "fromId": "ch:1:sloid:89221:0:526522",
+      "toId": "ch:1:sloid:6487:0:623904",
+      "from": "St. Gallenkappel, Kronenwiese",
+      "to": "St. Gallenkappel, Post",
+      "sourceFeatures": [
+        "bus:46"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 128.28404511890054,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [
+        {
+          "feature": "bus:45",
+          "name": "622 Rapperswil SG - Jona - Wagen - Eschenbach SG - Neuhaus SG - St. Gallenkappel - Ricken SG - Wattwil",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 4.544949161269128,
+          "pathMetres": 344.03629492470924,
+          "geometrySha256": "738d1e1fcbaecfa6a200ca6a69156417b664a8615e9c31c94f82afd95f45bd5e"
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 0,
+          "affectedPatterns": 0,
+          "affectedTrips": 0,
+          "patternIdsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 3,
+          "affectedPatterns": 3,
+          "affectedTrips": 3,
+          "patternIdsSha256": "44bcf48dc8c85817bdf5a71ee04fccf33102260d95c2523fc998c847747fdd37"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"92-623-j26-1\",\"ch:1:sloid:6487:0:729745\",\"ch:1:sloid:89221:0:526522\"]",
+      "routeId": "92-623-j26-1",
+      "agencyId": "772",
+      "line": "623",
+      "fromId": "ch:1:sloid:6487:0:729745",
+      "toId": "ch:1:sloid:89221:0:526522",
+      "from": "St. Gallenkappel, Post",
+      "to": "St. Gallenkappel, Kronenwiese",
+      "sourceFeatures": [
+        "bus:46"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 128.28404511890054,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [
+        {
+          "feature": "bus:45",
+          "name": "622 Rapperswil SG - Jona - Wagen - Eschenbach SG - Neuhaus SG - St. Gallenkappel - Ricken SG - Wattwil",
+          "reason": "candidate-path",
+          "maximumSnapMetres": 4.2905814943855285,
+          "pathMetres": 299.69221782235246,
+          "geometrySha256": "d440da48f34be6cfd74e67245768da3a11df0d9328a5c316218c0f6e57f0da00"
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 0,
+          "affectedPatterns": 0,
+          "affectedTrips": 0,
+          "patternIdsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 1,
+          "affectedPatterns": 1,
+          "affectedTrips": 1,
+          "patternIdsSha256": "f111c07d7a44c28cc54fb907764f66afb7a94bc32298a973e4ad88817f3f665b"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"96-224-A-j26-1\",\"ch:1:sloid:74229\",\"ch:1:sloid:74237\"]",
+      "routeId": "96-224-A-j26-1",
+      "agencyId": "801",
+      "line": "120",
+      "fromId": "ch:1:sloid:74229",
+      "toId": "ch:1:sloid:74237",
+      "from": "Engelburg, Freihof",
+      "to": "Engelburg, Chapf",
+      "sourceFeatures": [
+        "bus:142",
+        "bus:143"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 604.1735974656634,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 0,
+          "affectedPatterns": 0,
+          "affectedTrips": 0,
+          "patternIdsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 3,
+          "affectedPatterns": 1,
+          "affectedTrips": 3,
+          "patternIdsSha256": "cd9da0298933cf69aac53278c5d5a59a7d2eff153096b6c36a93e8afd9fc230e"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"96-224-A-j26-1\",\"ch:1:sloid:74237\",\"ch:1:sloid:80797\"]",
+      "routeId": "96-224-A-j26-1",
+      "agencyId": "801",
+      "line": "120",
+      "fromId": "ch:1:sloid:74237",
+      "toId": "ch:1:sloid:80797",
+      "from": "Engelburg, Chapf",
+      "to": "Engelburg, Schulhaus",
+      "sourceFeatures": [
+        "bus:142",
+        "bus:143"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 604.1735974656634,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 0,
+          "affectedPatterns": 0,
+          "affectedTrips": 0,
+          "patternIdsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 3,
+          "affectedPatterns": 1,
+          "affectedTrips": 3,
+          "patternIdsSha256": "cd9da0298933cf69aac53278c5d5a59a7d2eff153096b6c36a93e8afd9fc230e"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"96-224-B-j26-1\",\"ch:1:sloid:89629\",\"ch:1:sloid:89571\"]",
+      "routeId": "96-224-B-j26-1",
+      "agencyId": "801",
+      "line": "121",
+      "fromId": "ch:1:sloid:89629",
+      "toId": "ch:1:sloid:89571",
+      "from": "St. Gallen, St. Fiden Zentrum",
+      "to": "St. Gallen, Flurhof",
+      "sourceFeatures": [
+        "bus:144",
+        "bus:145"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 265.29612317174275,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 0,
+          "affectedPatterns": 0,
+          "affectedTrips": 0,
+          "patternIdsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 3,
+          "affectedPatterns": 1,
+          "affectedTrips": 3,
+          "patternIdsSha256": "86ba398a469946bd1ad636a92bc2c2bdd29fd8b9121c72dbb9b69654316e9e8b"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"96-224-B-j26-1\",\"ch:1:sloid:89571\",\"ch:1:sloid:89581\"]",
+      "routeId": "96-224-B-j26-1",
+      "agencyId": "801",
+      "line": "121",
+      "fromId": "ch:1:sloid:89571",
+      "toId": "ch:1:sloid:89581",
+      "from": "St. Gallen, Flurhof",
+      "to": "St. Gallen, Hagenbuch",
+      "sourceFeatures": [
+        "bus:144",
+        "bus:145"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 265.29612317174275,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 0,
+          "affectedPatterns": 0,
+          "affectedTrips": 0,
+          "patternIdsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 3,
+          "affectedPatterns": 1,
+          "affectedTrips": 3,
+          "patternIdsSha256": "86ba398a469946bd1ad636a92bc2c2bdd29fd8b9121c72dbb9b69654316e9e8b"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"96-224-B-j26-1\",\"ch:1:sloid:89581\",\"ch:1:sloid:89567\"]",
+      "routeId": "96-224-B-j26-1",
+      "agencyId": "801",
+      "line": "121",
+      "fromId": "ch:1:sloid:89581",
+      "toId": "ch:1:sloid:89567",
+      "from": "St. Gallen, Hagenbuch",
+      "to": "St. Gallen, Bruggwiesen",
+      "sourceFeatures": [
+        "bus:144",
+        "bus:145"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 228.46839938615202,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 0,
+          "affectedPatterns": 0,
+          "affectedTrips": 0,
+          "patternIdsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 3,
+          "affectedPatterns": 1,
+          "affectedTrips": 3,
+          "patternIdsSha256": "86ba398a469946bd1ad636a92bc2c2bdd29fd8b9121c72dbb9b69654316e9e8b"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    },
+    {
+      "key": "[\"96-224-B-j26-1\",\"ch:1:sloid:89567\",\"ch:1:sloid:74472\"]",
+      "routeId": "96-224-B-j26-1",
+      "agencyId": "801",
+      "line": "121",
+      "fromId": "ch:1:sloid:89567",
+      "toId": "ch:1:sloid:74472",
+      "from": "St. Gallen, Bruggwiesen",
+      "to": "St. Gallen, Grütli",
+      "sourceFeatures": [
+        "bus:144",
+        "bus:145"
+      ],
+      "production": {
+        "reason": "endpoint-gap",
+        "maximumSnapMetres": 228.46839938615202,
+        "pathMetres": null
+      },
+      "sameAgencyCandidates": [],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "occurrences": 0,
+          "affectedPatterns": 0,
+          "affectedTrips": 0,
+          "patternIdsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        {
+          "date": "2026-09-06",
+          "occurrences": 3,
+          "affectedPatterns": 1,
+          "affectedTrips": 3,
+          "patternIdsSha256": "86ba398a469946bd1ad636a92bc2c2bdd29fd8b9121c72dbb9b69654316e9e8b"
+        }
+      ],
+      "decision": "Retain complete-pattern exclusion."
+    }
+  ],
+  "routes": [
+    {
+      "routeId": "92-164-C-j26-1",
+      "agencyId": "81_VVV",
+      "line": "164",
+      "reviewedPairs": 4,
+      "pairsWithCandidate": 0,
+      "maximumSnapMetres": 675.451101578808,
+      "days": [
+        {
+          "date": "2026-09-04",
+          "affectedPatterns": 2,
+          "affectedTrips": 58
+        },
+        {
+          "date": "2026-09-06",
+          "affectedPatterns": 2,
+          "affectedTrips": 26
+        }
+      ]
+    },
+    {
+      "routeId": "92-705-D-j26-1",
+      "agencyId": "138",
+      "line": "705",
+      "reviewedPairs": 4,
+      "pairsWithCandidate": 4,
+      "maximumSnapMetres": 121.22522437830752,
+      "days": [
+        {
+          "date": "2026-09-04",
+          "affectedPatterns": 2,
+          "affectedTrips": 58
+        },
+        {
+          "date": "2026-09-06",
+          "affectedPatterns": 2,
+          "affectedTrips": 24
+        }
+      ]
+    },
+    {
+      "routeId": "92-631-j26-1",
+      "agencyId": "772",
+      "line": "631",
+      "reviewedPairs": 2,
+      "pairsWithCandidate": 0,
+      "maximumSnapMetres": 182.64503802200468,
+      "days": [
+        {
+          "date": "2026-09-04",
+          "affectedPatterns": 2,
+          "affectedTrips": 46
+        },
+        {
+          "date": "2026-09-06",
+          "affectedPatterns": 3,
+          "affectedTrips": 33
+        }
+      ]
+    },
+    {
+      "routeId": "92-323-j26-1",
+      "agencyId": "138",
+      "line": "323",
+      "reviewedPairs": 4,
+      "pairsWithCandidate": 0,
+      "maximumSnapMetres": 160.55459689052515,
+      "days": [
+        {
+          "date": "2026-09-04",
+          "affectedPatterns": 4,
+          "affectedTrips": 65
+        },
+        {
+          "date": "2026-09-06",
+          "affectedPatterns": 0,
+          "affectedTrips": 0
+        }
+      ]
+    },
+    {
+      "routeId": "92-150-A-j26-1",
+      "agencyId": "896",
+      "line": "150",
+      "reviewedPairs": 2,
+      "pairsWithCandidate": 0,
+      "maximumSnapMetres": 512.6844649085323,
+      "days": [
+        {
+          "date": "2026-09-04",
+          "affectedPatterns": 2,
+          "affectedTrips": 56
+        },
+        {
+          "date": "2026-09-06",
+          "affectedPatterns": 0,
+          "affectedTrips": 0
+        }
+      ]
+    },
+    {
+      "routeId": "96-224-1-j26-1",
+      "agencyId": "801",
+      "line": "120",
+      "reviewedPairs": 6,
+      "pairsWithCandidate": 0,
+      "maximumSnapMetres": 616.2446837597638,
+      "days": [
+        {
+          "date": "2026-09-04",
+          "affectedPatterns": 8,
+          "affectedTrips": 20
+        },
+        {
+          "date": "2026-09-06",
+          "affectedPatterns": 5,
+          "affectedTrips": 10
+        }
+      ]
+    },
+    {
+      "routeId": "92-24-C-j26-1",
+      "agencyId": "805",
+      "line": "24",
+      "reviewedPairs": 2,
+      "pairsWithCandidate": 2,
+      "maximumSnapMetres": 310.1114307301674,
+      "days": [
+        {
+          "date": "2026-09-04",
+          "affectedPatterns": 2,
+          "affectedTrips": 28
+        },
+        {
+          "date": "2026-09-06",
+          "affectedPatterns": 0,
+          "affectedTrips": 0
+        }
+      ]
+    },
+    {
+      "routeId": "92-253-C-j26-1",
+      "agencyId": "138",
+      "line": "253",
+      "reviewedPairs": 4,
+      "pairsWithCandidate": 0,
+      "maximumSnapMetres": 775.5475628410329,
+      "days": [
+        {
+          "date": "2026-09-04",
+          "affectedPatterns": 2,
+          "affectedTrips": 19
+        },
+        {
+          "date": "2026-09-06",
+          "affectedPatterns": 0,
+          "affectedTrips": 0
+        }
+      ]
+    },
+    {
+      "routeId": "92-331-B-j26-1",
+      "agencyId": "138",
+      "line": "331",
+      "reviewedPairs": 40,
+      "pairsWithCandidate": 16,
+      "maximumSnapMetres": 4537.778310623418,
+      "days": [
+        {
+          "date": "2026-09-04",
+          "affectedPatterns": 2,
+          "affectedTrips": 6
+        },
+        {
+          "date": "2026-09-06",
+          "affectedPatterns": 2,
+          "affectedTrips": 10
+        }
+      ]
+    },
+    {
+      "routeId": "96-249-1-j26-1",
+      "agencyId": "801",
+      "line": "451",
+      "reviewedPairs": 4,
+      "pairsWithCandidate": 4,
+      "maximumSnapMetres": 285.0969347377125,
+      "days": [
+        {
+          "date": "2026-09-04",
+          "affectedPatterns": 4,
+          "affectedTrips": 7
+        },
+        {
+          "date": "2026-09-06",
+          "affectedPatterns": 4,
+          "affectedTrips": 7
+        }
+      ]
+    },
+    {
+      "routeId": "96-240-8-j26-1",
+      "agencyId": "801",
+      "line": "628",
+      "reviewedPairs": 3,
+      "pairsWithCandidate": 3,
+      "maximumSnapMetres": 211.22605420739492,
+      "days": [
+        {
+          "date": "2026-09-04",
+          "affectedPatterns": 4,
+          "affectedTrips": 12
+        },
+        {
+          "date": "2026-09-06",
+          "affectedPatterns": 0,
+          "affectedTrips": 0
+        }
+      ]
+    },
+    {
+      "routeId": "92-729-j26-1",
+      "agencyId": "896",
+      "line": "729",
+      "reviewedPairs": 4,
+      "pairsWithCandidate": 4,
+      "maximumSnapMetres": 878.2127918877339,
+      "days": [
+        {
+          "date": "2026-09-04",
+          "affectedPatterns": 1,
+          "affectedTrips": 4
+        },
+        {
+          "date": "2026-09-06",
+          "affectedPatterns": 1,
+          "affectedTrips": 5
+        }
+      ]
+    },
+    {
+      "routeId": "92-420-j26-1",
+      "agencyId": "138",
+      "line": "420",
+      "reviewedPairs": 2,
+      "pairsWithCandidate": 2,
+      "maximumSnapMetres": 820.6709445571144,
+      "days": [
+        {
+          "date": "2026-09-04",
+          "affectedPatterns": 2,
+          "affectedTrips": 7
+        },
+        {
+          "date": "2026-09-06",
+          "affectedPatterns": 0,
+          "affectedTrips": 0
+        }
+      ]
+    },
+    {
+      "routeId": "92-623-j26-1",
+      "agencyId": "772",
+      "line": "623",
+      "reviewedPairs": 2,
+      "pairsWithCandidate": 2,
+      "maximumSnapMetres": 128.28404511890054,
+      "days": [
+        {
+          "date": "2026-09-04",
+          "affectedPatterns": 1,
+          "affectedTrips": 1
+        },
+        {
+          "date": "2026-09-06",
+          "affectedPatterns": 2,
+          "affectedTrips": 2
+        }
+      ]
+    },
+    {
+      "routeId": "92-623-A-j26-1",
+      "agencyId": "772",
+      "line": "623",
+      "reviewedPairs": 2,
+      "pairsWithCandidate": 2,
+      "maximumSnapMetres": 128.28404511890054,
+      "days": [
+        {
+          "date": "2026-09-04",
+          "affectedPatterns": 0,
+          "affectedTrips": 0
+        },
+        {
+          "date": "2026-09-06",
+          "affectedPatterns": 3,
+          "affectedTrips": 3
+        }
+      ]
+    },
+    {
+      "routeId": "96-224-A-j26-1",
+      "agencyId": "801",
+      "line": "120",
+      "reviewedPairs": 2,
+      "pairsWithCandidate": 0,
+      "maximumSnapMetres": 604.1735974656634,
+      "days": [
+        {
+          "date": "2026-09-04",
+          "affectedPatterns": 0,
+          "affectedTrips": 0
+        },
+        {
+          "date": "2026-09-06",
+          "affectedPatterns": 1,
+          "affectedTrips": 3
+        }
+      ]
+    },
+    {
+      "routeId": "96-224-B-j26-1",
+      "agencyId": "801",
+      "line": "121",
+      "reviewedPairs": 4,
+      "pairsWithCandidate": 0,
+      "maximumSnapMetres": 265.29612317174275,
+      "days": [
+        {
+          "date": "2026-09-04",
+          "affectedPatterns": 0,
+          "affectedTrips": 0
+        },
+        {
+          "date": "2026-09-06",
+          "affectedPatterns": 1,
+          "affectedTrips": 3
+        }
+      ]
+    },
+    {
+      "routeId": "92-151-j26-1",
+      "agencyId": "896",
+      "line": "151",
+      "reviewedPairs": 16,
+      "pairsWithCandidate": 0,
+      "maximumSnapMetres": 2408.5960521394295,
+      "days": [
+        {
+          "date": "2026-09-04",
+          "affectedPatterns": 1,
+          "affectedTrips": 1
+        },
+        {
+          "date": "2026-09-06",
+          "affectedPatterns": 0,
+          "affectedTrips": 0
+        }
+      ]
+    },
+    {
+      "routeId": "92-706-C-j26-1",
+      "agencyId": "138",
+      "line": "706",
+      "reviewedPairs": 2,
+      "pairsWithCandidate": 2,
+      "maximumSnapMetres": 416.477388032547,
+      "days": [
+        {
+          "date": "2026-09-04",
+          "affectedPatterns": 1,
+          "affectedTrips": 1
+        },
+        {
+          "date": "2026-09-06",
+          "affectedPatterns": 0,
+          "affectedTrips": 0
+        }
+      ]
+    }
+  ],
+  "days": [
+    {
+      "date": "2026-09-04",
+      "reviewedPairs": 100,
+      "affectedPatterns": 40,
+      "affectedTrips": 389,
+      "admittedTrips": 10566,
+      "dayAuditSha256": "a1ff220a0fbe25a942d80208e3fc656c4c946e5141cf5caa4837d274624053b3"
+    },
+    {
+      "date": "2026-09-06",
+      "reviewedPairs": 74,
+      "affectedPatterns": 26,
+      "affectedTrips": 126,
+      "admittedTrips": 7299,
+      "dayAuditSha256": "cee7e59ad96551eb804489e31db272e43b3827c9f3fb357bafe7ec6bd782cbb4"
+    }
+  ],
+  "validation": {
+    "passed": true,
+    "feedChanged": false,
+    "admissionLimitsChanged": false,
+    "directionCertified": false
+  }
+}
