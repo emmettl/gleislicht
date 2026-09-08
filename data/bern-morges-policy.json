@@ -1,0 +1,864 @@
+{
+  "schemaVersion": 1,
+  "sourceId": "bern-morges-reviewed-fot-rail-20210706",
+  "sourceDirectory": "data/bern-sources/fot-rail",
+  "sourceMetadataSha256": "46ab3ed91471fde35bcb1b678410efe7ecab6bf1cf02027729f547545b94aaad",
+  "sourceSha256": "2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+  "dates": [
+    "2026-09-04",
+    "2026-09-06"
+  ],
+  "limits": {
+    "stationAttachmentMetres": 120,
+    "topologyAttachmentMetres": 120,
+    "detourRatio": 4.5,
+    "detourFloorMetres": 3000,
+    "simplificationMetres": 0
+  },
+  "gauges": [
+    "mm1435"
+  ],
+  "infrastructureOperators": [
+    "SBB CFF FFS"
+  ],
+  "routes": [
+    {
+      "routeId": "91-15-B-j26-1",
+      "agencyId": "11",
+      "line": "IR15",
+      "mode": "rail",
+      "pairs": [
+        {
+          "fromId": "ch:1:sloid:1037:1:1",
+          "toId": "ch:1:sloid:1030:1:1",
+          "operatingPointPair": [
+            "8501037",
+            "8501030"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087043:morges-platform:1:station",
+            "ch14uvag00087044",
+            "ch14uvag00087045",
+            "ch14uvag00087046",
+            "ch14uvag00087047",
+            "ch14uvag00087048",
+            "ch14uvag00087049",
+            "ch14uvag00087050",
+            "ch14uvag00087051",
+            "ch14uvag00087052",
+            "ch14uvag00087053"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:1120:0:42631",
+          "toId": "ch:1:sloid:1037:1:1",
+          "operatingPointPair": [
+            "8501120",
+            "8501037"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087029",
+            "ch14uvag00087030",
+            "ch14uvag00087031",
+            "ch14uvag00087032",
+            "ch14uvag00087033",
+            "ch14uvag00087034",
+            "ch14uvag00087102",
+            "ch14uvag00087103",
+            "ch14uvag00087104",
+            "ch14uvag00087105",
+            "ch14uvag00087110",
+            "ch14uvag00087040",
+            "ch14uvag00087041",
+            "ch14uvag00087042",
+            "ch14uvag00087043:morges-platform:1:north"
+          ]
+        }
+      ]
+    }
+  ],
+  "model": "Inferred through-station mainline split at the original Morges platform-1 projection, preserving both sides of the pinned FOT curve and the original station point. Exact SBB IR15 patterns and two original platform-pair bindings only. Original calls and coordinates retained; not a surveyed running-track or 2026 works itinerary.",
+  "morges": {
+    "node": {
+      "id": "ch14uvag00089571",
+      "number": "8501037",
+      "name": "Morges",
+      "coordinate": [
+        6.493964,
+        46.511111
+      ]
+    },
+    "stationCurve": {
+      "id": "ch14uvag00087043",
+      "start": "ch14uvag00089966",
+      "end": "ch14uvag00089571",
+      "length": 1341.5023013630484,
+      "points": [
+        [
+          6.508137,
+          46.518099
+        ],
+        [
+          6.508027,
+          46.51805
+        ],
+        [
+          6.507918,
+          46.518002
+        ],
+        [
+          6.50759,
+          46.517855
+        ],
+        [
+          6.50748,
+          46.517806
+        ],
+        [
+          6.507371,
+          46.517758
+        ],
+        [
+          6.507261,
+          46.517709
+        ],
+        [
+          6.507152,
+          46.51766
+        ],
+        [
+          6.507042,
+          46.517611
+        ],
+        [
+          6.506823,
+          46.517513
+        ],
+        [
+          6.506714,
+          46.517465
+        ],
+        [
+          6.506604,
+          46.517416
+        ],
+        [
+          6.506495,
+          46.517367
+        ],
+        [
+          6.506276,
+          46.517269
+        ],
+        [
+          6.506167,
+          46.517221
+        ],
+        [
+          6.505948,
+          46.517123
+        ],
+        [
+          6.505838,
+          46.517074
+        ],
+        [
+          6.505729,
+          46.517025
+        ],
+        [
+          6.50551,
+          46.516928
+        ],
+        [
+          6.5054,
+          46.516879
+        ],
+        [
+          6.505291,
+          46.51683
+        ],
+        [
+          6.505181,
+          46.516781
+        ],
+        [
+          6.505072,
+          46.516733
+        ],
+        [
+          6.504962,
+          46.516684
+        ],
+        [
+          6.504853,
+          46.516635
+        ],
+        [
+          6.504744,
+          46.516586
+        ],
+        [
+          6.504634,
+          46.516537
+        ],
+        [
+          6.504525,
+          46.516489
+        ],
+        [
+          6.504415,
+          46.51644
+        ],
+        [
+          6.504306,
+          46.516391
+        ],
+        [
+          6.504196,
+          46.516342
+        ],
+        [
+          6.504087,
+          46.516293
+        ],
+        [
+          6.503758,
+          46.516147
+        ],
+        [
+          6.503649,
+          46.516098
+        ],
+        [
+          6.50343,
+          46.516001
+        ],
+        [
+          6.503321,
+          46.515952
+        ],
+        [
+          6.503211,
+          46.515903
+        ],
+        [
+          6.503102,
+          46.515854
+        ],
+        [
+          6.502992,
+          46.515805
+        ],
+        [
+          6.502882,
+          46.515757
+        ],
+        [
+          6.502773,
+          46.515708
+        ],
+        [
+          6.502663,
+          46.51566
+        ],
+        [
+          6.502552,
+          46.515612
+        ],
+        [
+          6.502442,
+          46.515565
+        ],
+        [
+          6.502331,
+          46.515517
+        ],
+        [
+          6.50222,
+          46.515471
+        ],
+        [
+          6.502108,
+          46.515424
+        ],
+        [
+          6.501996,
+          46.515378
+        ],
+        [
+          6.501884,
+          46.515332
+        ],
+        [
+          6.501772,
+          46.515286
+        ],
+        [
+          6.501659,
+          46.515241
+        ],
+        [
+          6.501546,
+          46.515196
+        ],
+        [
+          6.501433,
+          46.515152
+        ],
+        [
+          6.50132,
+          46.515107
+        ],
+        [
+          6.501206,
+          46.515063
+        ],
+        [
+          6.501093,
+          46.515019
+        ],
+        [
+          6.500979,
+          46.514975
+        ],
+        [
+          6.500866,
+          46.51493
+        ],
+        [
+          6.500753,
+          46.514886
+        ],
+        [
+          6.500639,
+          46.514842
+        ],
+        [
+          6.500526,
+          46.514797
+        ],
+        [
+          6.500413,
+          46.514752
+        ],
+        [
+          6.500301,
+          46.514707
+        ],
+        [
+          6.500188,
+          46.514661
+        ],
+        [
+          6.500076,
+          46.514615
+        ],
+        [
+          6.499965,
+          46.514569
+        ],
+        [
+          6.499854,
+          46.514522
+        ],
+        [
+          6.499743,
+          46.514474
+        ],
+        [
+          6.499633,
+          46.514426
+        ],
+        [
+          6.499523,
+          46.514378
+        ],
+        [
+          6.499413,
+          46.514329
+        ],
+        [
+          6.499304,
+          46.51428
+        ],
+        [
+          6.499195,
+          46.514231
+        ],
+        [
+          6.499087,
+          46.514181
+        ],
+        [
+          6.498979,
+          46.51413
+        ],
+        [
+          6.498872,
+          46.514079
+        ],
+        [
+          6.498765,
+          46.514028
+        ],
+        [
+          6.498658,
+          46.513976
+        ],
+        [
+          6.498552,
+          46.513924
+        ],
+        [
+          6.498447,
+          46.513871
+        ],
+        [
+          6.498341,
+          46.513818
+        ],
+        [
+          6.498237,
+          46.513765
+        ],
+        [
+          6.498132,
+          46.513711
+        ],
+        [
+          6.498029,
+          46.513656
+        ],
+        [
+          6.497925,
+          46.513602
+        ],
+        [
+          6.497822,
+          46.513546
+        ],
+        [
+          6.49772,
+          46.513491
+        ],
+        [
+          6.497618,
+          46.513435
+        ],
+        [
+          6.497516,
+          46.513378
+        ],
+        [
+          6.497415,
+          46.513322
+        ],
+        [
+          6.497314,
+          46.513265
+        ],
+        [
+          6.497213,
+          46.513208
+        ],
+        [
+          6.497113,
+          46.513151
+        ],
+        [
+          6.497013,
+          46.513093
+        ],
+        [
+          6.496912,
+          46.513036
+        ],
+        [
+          6.496812,
+          46.512978
+        ],
+        [
+          6.496712,
+          46.512921
+        ],
+        [
+          6.496612,
+          46.512863
+        ],
+        [
+          6.496312,
+          46.51269
+        ],
+        [
+          6.496211,
+          46.512633
+        ],
+        [
+          6.496111,
+          46.512575
+        ],
+        [
+          6.496011,
+          46.512518
+        ],
+        [
+          6.495911,
+          46.51246
+        ],
+        [
+          6.495812,
+          46.512402
+        ],
+        [
+          6.495712,
+          46.512344
+        ],
+        [
+          6.495613,
+          46.512285
+        ],
+        [
+          6.495514,
+          46.512227
+        ],
+        [
+          6.495416,
+          46.512168
+        ],
+        [
+          6.495318,
+          46.512109
+        ],
+        [
+          6.49522,
+          46.512049
+        ],
+        [
+          6.495123,
+          46.511989
+        ],
+        [
+          6.495025,
+          46.511929
+        ],
+        [
+          6.494928,
+          46.511869
+        ],
+        [
+          6.494832,
+          46.511809
+        ],
+        [
+          6.494735,
+          46.511749
+        ],
+        [
+          6.494638,
+          46.511689
+        ],
+        [
+          6.494348,
+          46.511508
+        ],
+        [
+          6.494252,
+          46.511447
+        ],
+        [
+          6.493962,
+          46.511266
+        ],
+        [
+          6.493865,
+          46.511206
+        ],
+        [
+          6.493851,
+          46.511197
+        ]
+      ],
+      "gauge": "mm1435",
+      "dataStand": "2021-07-06",
+      "validFrom": "1993-06-23",
+      "validUntil": null,
+      "infrastructureOperator": "SBB CFF FFS"
+    },
+    "stop": [
+      6.49522375,
+      46.51194644,
+      "Morges",
+      "1",
+      "ch:1:sloid:1037:1:1"
+    ],
+    "maximumProjectionMetres": 75,
+    "minimumStationSectionMetres": 50,
+    "maximumStationSectionMetres": 200,
+    "sbbPlatform": {
+      "linie": 150,
+      "km": 12.446,
+      "bps": "MOR",
+      "bps_name": "Morges",
+      "perrontyp": "Aussenperron",
+      "p_nr": "1",
+      "p_lange": 421,
+      "perronflach_brutto_m2": 2054,
+      "perronflach_netto_m2": 1832.87,
+      "z_schienenfrei": "nein",
+      "dst_id": 1037,
+      "dok_pfm": "West",
+      "fid": 35284906,
+      "geopos": {
+        "lon": 6.494507650109263,
+        "lat": 46.51145578535013
+      },
+      "bpuic": "8501037",
+      "lod": "http://lod.opentransportdata.swiss/didok/8501037"
+    }
+  },
+  "originalStops": [
+    [
+      6.14250923,
+      46.21047887,
+      "Genève",
+      "2",
+      "ch:1:sloid:1008:2:2"
+    ],
+    [
+      6.1424194,
+      46.21052238,
+      "Genève",
+      "3",
+      "ch:1:sloid:1008:2:3"
+    ],
+    [
+      6.11203838,
+      46.23272301,
+      "Genève-Aéroport",
+      "1E-H",
+      "ch:1:sloid:1026_gen:ch:1:sloid:1026:1:1_pf:1E-H"
+    ],
+    [
+      6.11203838,
+      46.23272301,
+      "Genève-Aéroport",
+      "1",
+      "ch:1:sloid:1026:1:1"
+    ],
+    [
+      6.11230787,
+      46.23253659,
+      "Genève-Aéroport",
+      "4",
+      "ch:1:sloid:1026:2:4"
+    ],
+    [
+      6.23574538,
+      46.38429444,
+      "Nyon",
+      "1",
+      "ch:1:sloid:1030:1:1"
+    ],
+    [
+      6.49522375,
+      46.51194644,
+      "Morges",
+      "1",
+      "ch:1:sloid:1037:1:1"
+    ],
+    [
+      6.62902781,
+      46.51658292,
+      "Lausanne",
+      "5",
+      "ch:1:sloid:1120:0:42631"
+    ],
+    [
+      7.94300256,
+      47.28779066,
+      "Zofingen",
+      "3",
+      "ch:1:sloid:2001:2:3"
+    ],
+    [
+      8.09827635,
+      47.17006914,
+      "Sursee",
+      "3",
+      "ch:1:sloid:2007:2:3"
+    ],
+    [
+      6.83801188,
+      46.54304655,
+      "Palézieux",
+      "1",
+      "ch:1:sloid:4014:1:1"
+    ],
+    [
+      6.91207797,
+      46.69371452,
+      "Romont FR",
+      "1",
+      "ch:1:sloid:4023:1:1"
+    ],
+    [
+      7.15039203,
+      46.80255892,
+      "Fribourg/Freiburg",
+      "2",
+      "ch:1:sloid:4100:2:2"
+    ],
+    [
+      8.31051232,
+      47.04851161,
+      "Luzern",
+      "8",
+      "ch:1:sloid:5000:4:8"
+    ],
+    [
+      8.31071894,
+      47.04869524,
+      "Luzern",
+      "10",
+      "ch:1:sloid:5000:5:10"
+    ],
+    [
+      7.43682884,
+      46.9485674,
+      "Bern",
+      "7",
+      "ch:1:sloid:7000:4:7"
+    ],
+    [
+      7.4333344,
+      46.94822398,
+      "Bern",
+      "49",
+      "ch:1:sloid:7000:55:49"
+    ]
+  ],
+  "originalPatterns": [
+    {
+      "directionId": "1",
+      "stopIds": [
+        "ch:1:sloid:5000:4:8",
+        "ch:1:sloid:2007:2:3",
+        "ch:1:sloid:2001:2:3",
+        "ch:1:sloid:7000:4:7",
+        "ch:1:sloid:4100:2:2",
+        "ch:1:sloid:4023:1:1",
+        "ch:1:sloid:4014:1:1",
+        "ch:1:sloid:1120:0:42631",
+        "ch:1:sloid:1037:1:1",
+        "ch:1:sloid:1030:1:1",
+        "ch:1:sloid:1008:2:3",
+        "ch:1:sloid:1026_gen:ch:1:sloid:1026:1:1_pf:1E-H"
+      ]
+    },
+    {
+      "directionId": "1",
+      "stopIds": [
+        "ch:1:sloid:5000:4:8",
+        "ch:1:sloid:2007:2:3",
+        "ch:1:sloid:2001:2:3",
+        "ch:1:sloid:7000:4:7",
+        "ch:1:sloid:4100:2:2",
+        "ch:1:sloid:4023:1:1",
+        "ch:1:sloid:4014:1:1",
+        "ch:1:sloid:1120:0:42631",
+        "ch:1:sloid:1037:1:1",
+        "ch:1:sloid:1030:1:1",
+        "ch:1:sloid:1008:2:3",
+        "ch:1:sloid:1026:1:1"
+      ]
+    },
+    {
+      "directionId": "1",
+      "stopIds": [
+        "ch:1:sloid:5000:4:8",
+        "ch:1:sloid:2007:2:3",
+        "ch:1:sloid:2001:2:3",
+        "ch:1:sloid:7000:4:7",
+        "ch:1:sloid:4100:2:2",
+        "ch:1:sloid:4023:1:1",
+        "ch:1:sloid:4014:1:1",
+        "ch:1:sloid:1120:0:42631",
+        "ch:1:sloid:1037:1:1",
+        "ch:1:sloid:1030:1:1",
+        "ch:1:sloid:1008:2:3",
+        "ch:1:sloid:1026:2:4"
+      ]
+    },
+    {
+      "directionId": "1",
+      "stopIds": [
+        "ch:1:sloid:5000:5:10",
+        "ch:1:sloid:2007:2:3",
+        "ch:1:sloid:2001:2:3",
+        "ch:1:sloid:7000:4:7",
+        "ch:1:sloid:4100:2:2",
+        "ch:1:sloid:4023:1:1",
+        "ch:1:sloid:4014:1:1",
+        "ch:1:sloid:1120:0:42631",
+        "ch:1:sloid:1037:1:1",
+        "ch:1:sloid:1030:1:1",
+        "ch:1:sloid:1008:2:2",
+        "ch:1:sloid:1026:1:1"
+      ]
+    },
+    {
+      "directionId": "1",
+      "stopIds": [
+        "ch:1:sloid:7000:55:49",
+        "ch:1:sloid:4100:2:2",
+        "ch:1:sloid:4023:1:1",
+        "ch:1:sloid:4014:1:1",
+        "ch:1:sloid:1120:0:42631",
+        "ch:1:sloid:1037:1:1",
+        "ch:1:sloid:1030:1:1",
+        "ch:1:sloid:1008:2:3",
+        "ch:1:sloid:1026:1:1"
+      ]
+    }
+  ],
+  "documentsDirectory": "data/bern-sources/morges",
+  "documents": [
+    {
+      "file": "perron.json",
+      "url": "https://data.sbb.ch/api/explore/v2.1/catalog/datasets/perron/records?where=search%28%22Morges%22%29&limit=100",
+      "sha256": "1912e7f76f939f5bddcd69510588fb1627b124813a0f345571fa0bb50f1152d6",
+      "retrievedAt": "2026-09-08T21:42:50.958Z",
+      "attribution": "SBB Infrastructure / SBB CFF FFS",
+      "role": "SBB platform identity and structural length; point features are not track geometry."
+    },
+    {
+      "file": "perron-metadata.json",
+      "url": "https://data.sbb.ch/api/explore/v2.1/catalog/datasets/perron",
+      "sha256": "a66f17fa0b383b243e0256f2ddb7f5c3949abbcf02ecfc77cc902f19535b0ee5",
+      "retrievedAt": "2026-09-08T21:43:06.659Z",
+      "attribution": "SBB Infrastructure / SBB CFF FFS",
+      "role": "Dataset processing dates, publisher, attribution and terms; not survey vintage."
+    },
+    {
+      "file": "platform-1-project.html",
+      "url": "https://company.sbb.ch/fr/developpement-ferroviaire/projets/suisse-romande-valais/leman-2030/nos-projets/region-morges.html",
+      "sha256": "fb1ac4a5ec4cda34a52ef607b4c56585015c8eb44a2ecb87ba70919a7292dc69",
+      "retrievedAt": "2026-09-08T21:43:11.300Z",
+      "attribution": "SBB Infrastructure / SBB CFF FFS",
+      "role": "SBB reports platform-1 extension and raising commissioned in December 2023; page publication date unavailable. Supports platform identity/extent, not track-specific 2026 movements."
+    }
+  ],
+  "sbbPlatformDataset": {
+    "publisher": "SBB Infrastructure",
+    "modified": "2026-09-01T22:03:57+00:00",
+    "dataProcessed": "2026-09-01T22:03:57+00:00",
+    "metadataProcessed": "2026-09-07T22:01:33.392000+00:00",
+    "license": "terms_by",
+    "rights": "NonCommercialAllowed-CommercialAllowed-ReferenceRequired",
+    "termsUrl": "https://data.sbb.ch/page/licence",
+    "sourceRecords": 6,
+    "geometryRole": "Supporting platform point and identity only; no replacement of original GTFS coordinates"
+  },
+  "platformCommissioned": "2023-12"
+}

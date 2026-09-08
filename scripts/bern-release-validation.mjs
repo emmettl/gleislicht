@@ -22,6 +22,7 @@ export function validateBernRelease(day, morning, trains) {
     ['ir66', 'bern-ir66-reviewed-fot-rail-20210706', 2],
     ['ir16', 'bern-ir16-reviewed-fot-rail-20210706', 2],
     ['tpfTerminal', 'bern-tpf-fribourg-reviewed-fot-rail-20210706', 1],
+    ['morges', 'bern-morges-reviewed-fot-rail-20210706', 3],
   ]) {
     if (!m.sourceHashes[`${name}Policy`]) continue
     const r = m.geometry[`${name}Supplement`]
@@ -31,6 +32,12 @@ export function validateBernRelease(day, morning, trains) {
     assert.equal(r.source.sha256, m.geometry.railSupplement.source.sha256)
     assert(r.documents.length === documentCount && r.documents.every(d => d.attribution && d.url && /^[a-f0-9]{64}$/.test(d.sha256)), `Bern: missing ${name} document attribution`)
     assert.deepEqual(r.fullEvidence, { path: 'bern-region/sources.json', field: `${name}Supplement` })
+    if (name === 'morges') {
+      assert.equal(r.sbbPlatformDataset?.publisher, 'SBB Infrastructure')
+      assert.equal(r.sbbPlatformDataset?.rights, 'NonCommercialAllowed-CommercialAllowed-ReferenceRequired')
+      assert.equal(r.sbbPlatformDataset?.dataProcessed, '2026-09-01T22:03:57+00:00')
+      assert.equal(r.sbbPlatformDataset?.termsUrl, 'https://data.sbb.ch/page/licence')
+    }
   }
   const headway = trains.filter(t => t.frequency?.exactTimes === 0).length
   assert.deepEqual(release.movements, { total: trains.length, scheduled: trains.length - headway, representativeHeadway: headway })
