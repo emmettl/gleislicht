@@ -1,0 +1,20 @@
+.cantonal-pilot { margin-top: 12px; color: var(--ink); font-size: .72rem; line-height: 1.35; }
+.cantonal-pilot p { margin: 5px 0; }
+.cantonal-pilot > span { display: block; margin-top: 8px; color: var(--muted); }
+.cantonal-pilot button { min-height: 30px; padding: 5px 7px; font-size: .65rem; text-align: left; }
+.pilot-windows, .pilot-gaps { display: flex; flex-wrap: wrap; gap: 4px; margin: 4px 0 8px; }
+.pilot-windows button[aria-pressed='true'] { border-color: #ffcc8d; color: #ffcc8d; }
+.pilot-gaps button { border-style: dashed; }
+.pilot-gap-status { position: sticky; top: 0; z-index: 1; padding: 6px; background: #171119; color: #ffcc8d; }
+.view-network.has-selection .road-corridor-card.is-pilot { top: 200px; max-height: max(120px, calc(100dvh - 450px)); overflow-y: auto; overscroll-behavior: contain; }
+.road-corridor-card.is-pilot .between { display: none; }
+@media (max-width: 700px) {
+  .view-network.has-selection .road-corridor-card.is-pilot { top: calc(184px + env(safe-area-inset-top)); max-height: max(120px, calc(100dvh - 382px)); }
+  .cantonal-pilot { font-size: .61rem; margin-top: 7px; }
+  .cantonal-pilot button { font-size: .53rem; min-height: 26px; padding: 4px; }
+  .pilot-windows { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+.road-corridor-card.is-pilot { display: flex; flex-direction: column; }
+.road-corridor-card.is-pilot .metric-grid { order: 1; }
+.road-corridor-card.is-pilot .cantonal-pilot { order: 2; }
+.road-corridor-card.is-pilot .road-traffic-summary { order: 3; }

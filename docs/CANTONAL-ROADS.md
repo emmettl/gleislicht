@@ -1,6 +1,6 @@
 # Cantonal roads — Zürich pilot
 
-AUTO now records Zürich cantonal counters and includes **246 cantonal road axes** in its map and search. The geometry builder matches 298 counter stations to these roads. Their cards disclose that traffic playback is unavailable until travel directions and sections have been validated; national-road observations retain their existing topology and coverage.
+AUTO now records Zürich cantonal counters and includes **246 cantonal road axes** in its map and search. The geometry builder matches 298 counter stations to these roads. Horgen’s Seestrasse now has an optional **1.3 km recorded afternoon pilot**, with both travel directions and explicit coverage gaps. Other cantonal cards remain geometry-only; national-road observations retain their existing topology and coverage.
 
 ## Verified sources
 
@@ -77,7 +77,7 @@ Export using the existing R2 object-read credentials described in [Cloudflare op
 npm run data:road:export -- --scope=zurich-cantonal --date=2026-09-08
 ```
 
-The exporter fetches adjacent UTC partitions around the requested Swiss civil day. Cantonal snapshots are intentionally rejected by the national compiler's scope filter; exporting them does not yet produce playback.
+The exporter fetches adjacent UTC partitions around the requested Swiss civil day. Cantonal snapshots are intentionally rejected by the national compiler's scope filter; exporting them alone does not produce playback; use the cantonal compiler or segmented pilot builder below.
 
 ## Geometry build and audit
 
@@ -102,9 +102,9 @@ The station WFS contains 428 points, of which 321 join exactly to the 331-statio
 
 All 331 stations remain in the audit, with original IDs, precise coordinates where available, candidate distances and explicit status. The public API supplies names for 330 stations; a duplicate normalized collector ID is retained as ambiguous metadata. None of these issues removes a station from recording. Road geometry coverage and reporting coverage are separate measures.
 
-The optional artifact is about 669 kB uncompressed / 128 kB gzip. It is fetched only on entering AUTO; missing, invalid or stalled downloads fall back to national geometry. It adds roads and paths, while federal sites, sections and coverage metadata remain unchanged. Cantonal cards show mapped length, a geometry-only notice and source attribution on desktop and mobile. They do not show invented vehicle counts. No cantonal playback sections are published yet.
+The optional artifact is about 669 kB uncompressed / 128 kB gzip. It is fetched only on entering AUTO; missing, invalid or stalled downloads fall back to national geometry. It adds roads and paths, while federal sites, sections and coverage metadata remain unchanged. Cantonal cards show mapped length, a geometry-only notice and source attribution on desktop and mobile. They do not show invented vehicle counts. The separate Horgen playback artifact is fetched only when its pilot button is selected.
 
-Geometry validation: **176 tests across 47 files passed**, plus all **8 desktop Chromium / iPhone WebKit road checks**, the production build, lint, artifact validation, architecture and transfer-budget checks. A second build from the pinned source files produced an identical artifact. The browser checks cover lazy loading, source failure, road selection, attribution and existing motorway traffic history. This stage is implemented and verified locally; only the recording Worker has been deployed so far.
+Geometry validation: **176 tests across 47 files passed**, plus all **8 desktop Chromium / iPhone WebKit road checks**, the production build, lint, artifact validation, architecture and transfer-budget checks. A second build from the pinned source files produced an identical artifact. The browser checks cover lazy loading, source failure, road selection, attribution and existing motorway traffic history. These checks cover the geometry stage; the later playback integration is described below.
 
 ## Direction audit and first compiled draft
 
@@ -141,10 +141,37 @@ The output stays in the ignored `recordings/astra-zurich-cantonal/compiled/` dir
 
 The follow-up passes **187 tests across 49 files**, production build and lint in an isolated copy of the committed road work. The pinned direction artifact rebuilds identically without network access.
 
-## Playback work remaining
+## Horgen afternoon playback
+
+In AUTO, search **Horgen**, select **ZH 3**, then choose **Play Horgen afternoon pilot**. Playback opens paused at 13:44, focuses the 1.3 km section, and switches the timeline to **8 September 2026, 13:23–14:21 CEST**. It displays reconstructed light/heavy vehicles in both directions using the existing road renderer. Rail and air are hidden during this separate observation window. **Return to morning roads** restores the morning timeline; leaving the pilot’s road/study also clears the pilot. Pilot sharing is unavailable because the current share format cannot represent this recording.
+
+The on-demand `public/data/zurich-cantonal-road-pilot.json` contains four directional sites, two sections and **40 complete minute samples**:
+
+| Recorded window (CEST) | Complete minutes |
+| --- | ---: |
+| 13:23–13:36 | 14 |
+| 13:44–14:01 | 18 |
+| 14:14–14:21 | 8 |
+
+**13:37–13:43 and 14:02–14:13 are explicitly missing.** Seeking or playing beyond the final sample in a complete window hides vehicles until the next complete window begins. The count displays a dash and the card explains the missing observations; missing data is never displayed as measured zero traffic. Window and gap buttons provide direct access, including on mobile.
+
+Rebuild the pinned pilot after exporting the raw archive:
+
+```sh
+node scripts/build-cantonal-road-pilot.mjs
+# Optional paths: --input=recordings/astra-zurich-cantonal --output=/tmp/horgen-pilot.json
+```
+
+The builder is deliberately pinned to this date, interval and counter pair. It passes each minute through the strict cantonal compiler, divides accepted samples into contiguous runs, and requires at least two complete samples per run. This explicitly segmented pilot does not lower the ordinary compiler’s default 60-sample requirement or its per-minute lane-completeness gate. Catalog drift and conflicting duplicates still fail the build. Source snapshots stay private; the public artifact contains aggregate playback values and the direction-topology SHA-256. Browser validation checks site/section mappings, complete minute arrays and exact accounting of recorded and missing minutes before changing the timeline. Failed downloads leave the morning view intact and allow retry.
+
+This is a **counter-based reconstruction**, not vehicle tracking. Turning flows at intermediate junctions are unmeasured, and the whole 32 km ZH 3 axis does not have playback coverage.
+
+Playback validation: **205 unit tests across 55 files**, **12 desktop Chromium / iPhone WebKit road checks**, production build, architecture checks and lint (warnings only). The initial transfer is **758.4 KiB gzip**, within the 790 KiB budget; the pilot data is downloaded only on request. Rebuilding the public pilot from the archived observations produces an identical artifact.
+
+## Further coverage work
 
 1. Expand accepted direction coverage using more precise destination references and reviewed junction geometry. Nearby destinations and settlement extents crossing a station account for many exclusions; weakening checks alone is not a solution.
-2. Support an explicit afternoon observation window in AUTO and expose coverage gaps before publishing the cantonal draft. The current public morning layer must not display afternoon observations under morning timestamps.
-3. Review section assumptions at intersections and select a sufficiently complete recording window before enabling public traffic animation. Recording, geometry and usable playback coverage remain separate measures.
+2. Review section assumptions at intersections and find longer complete observation windows before broadening the pilot. Recording, geometry and usable playback coverage remain separate measures.
+3. Add an explicit recording identity to shared study links before enabling pilot sharing.
 
 The existing 130 unmatched federal directional groups are a separate follow-up: some may become usable with broader road geometry, but they are not automatically classified as cantonal roads or included in this Zürich supplier scope.

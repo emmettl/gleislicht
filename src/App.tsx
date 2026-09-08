@@ -104,6 +104,7 @@ import {
   type RoadTrafficSnapshot,
 } from '@motionstudies/core/domain/road'
 import { reconstructedNationalVehicleCount } from './studies/road-conditions.ts'
+import { cantonalPilotWindow, topologyWithPilot, type CantonalPilot } from './studies/cantonal-road-pilot.ts'
 import {
   roadCorridorSearchValue,
   searchRoadCorridors,
@@ -134,6 +135,8 @@ import { useProgressiveRoadStudy } from '@motionstudies/web/use-progressive-road
 import { useLocalPerformance } from '@motionstudies/web/use-local-performance'
 
 const StudyBrowser = lazy(() => import('./studies/StudyBrowser.tsx'))
+
+const CantonalPilotControls = lazy(() => import('./studies/CantonalPilotControls.tsx'))
 
 const RoadTrafficHistory = lazy(() => import('./studies/RoadTrafficHistory.tsx').then(module => ({ default: module.RoadTrafficHistory })))
 
@@ -360,6 +363,13 @@ export function App({ edition }: AppProps) {
   const [roadTopology, setRoadTopology] = useState<RoadTopologySnapshot>()
   const [roadLoadState, setRoadLoadState] = useState<RoadLoadState>('idle')
   const [selectedRoadId, setSelectedRoadId] = useState<string>()
+  const pilotClockBounds = useRef<{ windowStart: number; windowEnd: number } | undefined>(undefined)
+  const [cantonalPilot, setCantonalPilot] = useState<CantonalPilot>()
+  const activePilot = cantonalPilot && roadEnabled && selectedRoadId === 'ZH:3' && !sbbEnabled && !airEnabled && view === 'network' && networkStudy === 'national' ? cantonalPilot : undefined
+  const playbackTopology = useMemo(() => roadTopology && activePilot ? topologyWithPilot(roadTopology, activePilot) : roadTopology, [roadTopology, activePilot])
+  useEffect(() => {
+    if (cantonalPilot && !activePilot) { pilotClockBounds.current = undefined; setCantonalPilot(undefined); setNetworkTime(edition.defaultNetworkTime); setIsPlaying(false) }
+  }, [cantonalPilot, activePilot, edition.defaultNetworkTime])
   const [selectedHubId, setSelectedHubId] = useState<HubId>('zurich')
   const [hubStudy, setHubStudy] = useState<HubStudy>('pulse')
   const [showTaktOverlay, setShowTaktOverlay] = useState(true)
@@ -419,12 +429,14 @@ export function App({ edition }: AppProps) {
     networkTime,
     editionDataUrl,
   )
-  const nationalRoad = useProgressiveRoadStudy(
+  const federalRoad = useProgressiveRoadStudy(
     edition.data.road.nationalManifest,
-    roadEnabled && Boolean(roadTopology),
+    roadEnabled && Boolean(roadTopology) && !activePilot,
     networkTime,
     editionDataUrl,
   )
+  const pilotWindow = activePilot ? cantonalPilotWindow(activePilot, networkTime) : undefined
+  const nationalRoad = activePilot ? { snapshot: pilotWindow, chunkReady: Boolean(pilotWindow), manifest: undefined } : federalRoad
   const zurichContrast = useProgressiveNetworkDay(
     edition.data.contrast.cityDayManifest,
     isContrast,
@@ -620,10 +632,11 @@ export function App({ edition }: AppProps) {
             networkTime,
             selectedRoadId,
           )
-        : roadEnabled && roadSnapshot
+        : roadEnabled && roadSnapshot && !activePilot
           ? reconstructedVehicleCount(roadSnapshot, networkTime)
         : 0,
     [
+      activePilot,
       nationalRoadInWindow,
       nationalRoad.snapshot,
       networkTime,
@@ -704,23 +717,25 @@ export function App({ edition }: AppProps) {
   const selectedRoadLength = selectedRoad && 'lengthKm' in selectedRoad && typeof selectedRoad.lengthKm === 'number'
     ? selectedRoad.lengthKm
     : SWITZERLAND_ROADS.find(road => road.id === selectedRoadId)?.lengthKm
-  const selectedRoadGeometryOnly = selectedRoad?.id.startsWith('ZH:') ?? false
+  const selectedRoadGeometryOnly = (selectedRoad?.id.startsWith('ZH:') ?? false) && !activePilot
   const selectedRoadTraffic = useMemo(
     () => selectedRoadId && roadEnabled
-      ? roadSummary?.roadTrafficSummary(selectedRoadId, networkTime, nationalRoadInWindow ? nationalRoad.snapshot : undefined, roadSnapshot)
+      ? roadSummary?.roadTrafficSummary(selectedRoadId, networkTime, nationalRoadInWindow ? nationalRoad.snapshot : undefined, activePilot ? undefined : roadSnapshot)
       : undefined,
-    [selectedRoadId, roadEnabled, networkTime, nationalRoadInWindow, nationalRoad.snapshot, roadSnapshot, roadSummary],
+    [selectedRoadId, roadEnabled, networkTime, nationalRoadInWindow, nationalRoad.snapshot, roadSnapshot, roadSummary, activePilot],
   )
   const roadMetricFormat = useMemo(() => new Intl.NumberFormat(LANGUAGE_LOCALES[language], { maximumFractionDigits: 1 }), [language])
   const roadOverview = useMemo(
     () => roadOnly
-      ? roadSummary?.roadTrafficSummary(undefined, networkTime, nationalRoadInWindow ? nationalRoad.snapshot : undefined, roadSnapshot)
+      ? roadSummary?.roadTrafficSummary(undefined, networkTime, nationalRoadInWindow ? nationalRoad.snapshot : undefined, activePilot ? undefined : roadSnapshot)
       : undefined,
-    [roadOnly, networkTime, nationalRoadInWindow, nationalRoad.snapshot, roadSnapshot, roadSummary],
+    [roadOnly, networkTime, nationalRoadInWindow, nationalRoad.snapshot, roadSnapshot, roadSummary, activePilot],
   )
   const sceneNetwork = useMemo(
-    () => network && (isPostbus ? postbusRouteSnapshot(network, selectedRoute) : networkWithRailVisibility(network, railVisible)),
-    [network, railVisible, isPostbus, selectedRoute],
+    () => network && (activePilot
+      ? { ...networkWithRailVisibility(network, false), trains: [], metadata: { ...network.metadata, serviceDate: activePilot.metadata.serviceDate, windowStart: activePilot.metadata.windowStart, windowEnd: activePilot.metadata.windowEnd } }
+      : isPostbus ? postbusRouteSnapshot(network, selectedRoute) : networkWithRailVisibility(network, railVisible)),
+    [network, railVisible, isPostbus, selectedRoute, activePilot],
   )
   const selectedPosition = useMemo(
     () => (selectedTrain ? positionForTrain(selectedTrain, networkTime) : undefined),
@@ -891,6 +906,8 @@ export function App({ edition }: AppProps) {
     ],
   )
   const handleSceneNetworkTime = useCallback((nextTime: number) => {
+    const pilotBounds = pilotClockBounds.current
+    if (pilotBounds && (nextTime < pilotBounds.windowStart || nextTime > pilotBounds.windowEnd)) return
     const roadSeek = roadHistorySeekRef.current
     if (roadSeek && !postbusTickFollowsSeek(nextTime, roadSeek.time, (performance.now() - roadSeek.at) / 1000, playbackRate)) return
     roadHistorySeekRef.current = undefined
@@ -1812,7 +1829,7 @@ export function App({ edition }: AppProps) {
             : realtimeStale
               ? text.operationsStale
               : `${realtimeSnapshot?.metadata.kind === 'live' ? text.operationsLive : text.operationsDemo} · ${realtimeApplication.summary.adjusted} adjusted · ${realtimeApplication.summary.cancelled} cancelled`
-  const timeline = isHub ? (hubDay?.metadata ?? network?.metadata) : network?.metadata
+  const timeline = activePilot?.metadata ?? (isHub ? (hubDay?.metadata ?? network?.metadata) : network?.metadata)
   const timelineServiceDate = timeline?.serviceDate
   const studyDateLabel = useMemo(
     () => timelineServiceDate ? formatStudyDate(timelineServiceDate, LANGUAGE_LOCALES[language]) : text.studyDate,
@@ -2038,7 +2055,7 @@ export function App({ edition }: AppProps) {
                 : undefined
             }
             roadSnapshot={
-              networkStudy === 'national' && roadEnabled && !isNationalDay
+              networkStudy === 'national' && roadEnabled && !isNationalDay && !activePilot
                 ? roadSnapshot
                 : undefined
             }
@@ -2051,7 +2068,7 @@ export function App({ edition }: AppProps) {
             }
             roadTopology={
               networkStudy === 'national' && roadEnabled
-                ? roadTopology
+                ? playbackTopology
                 : undefined
             }
             roadCategorySelected={roadCategorySelected}
@@ -3104,7 +3121,7 @@ export function App({ edition }: AppProps) {
         </section>
       ) : isNetwork && selectedRoad ? (
         <section
-          className="journey-card road-corridor-card"
+          className={`journey-card road-corridor-card${activePilot ? ' is-pilot' : ''}`}
           aria-label={`${text.selectedRoadCorridor}: ${selectedRoad.label}`}
         >
           <div className="service-row">
@@ -3114,9 +3131,35 @@ export function App({ edition }: AppProps) {
             <span>{selectedRoad.officialLabel}</span>
           </div>
           <p className="between">
-            {selectedRoad.description ?? text.nationalMotorway}
+            {activePilot ? null : selectedRoad.description ?? text.nationalMotorway}
           </p>
-          {selectedRoadGeometryOnly ? <p className="road-traffic-summary">{text.cantonalGeometryOnly}</p> : <Suspense fallback={<p className="road-traffic-summary">{text.loadingRoad}</p>}>
+          {selectedRoad.id === 'ZH:3' && <Suspense fallback={null}><CantonalPilotControls pilot={activePilot} time={networkTime} language={language}
+            onStart={pilot => {
+              pilotClockBounds.current = pilot.metadata
+              const initialTime = pilot.windows[1]?.metadata.windowStart ?? pilot.metadata.windowStart
+              roadHistorySeekRef.current = { time: initialTime, at: performance.now() }
+              stopNow()
+              setSbbEnabled(false)
+              setAirEnabled(false)
+              setDirectorMode(false)
+              setCantonalPilot(pilot)
+              setIsPlaying(false)
+              setNetworkTime(initialTime)
+              setMapCameraCommand(current => ({ id: current.id + 1, action: 'focus-location', focus: pilot.topology.sections[0].fromCoordinate, distanceScale: 0.025 }))
+            }}
+            onExit={() => {
+              pilotClockBounds.current = undefined
+              setCantonalPilot(undefined)
+              setNetworkTime(edition.defaultNetworkTime)
+              setIsPlaying(false)
+              setSbbEnabled(true)
+            }}
+            onTime={time => {
+              setIsPlaying(false)
+              handleNetworkTime(time)
+              roadHistorySeekRef.current = { time, at: performance.now() }
+            }} /></Suspense>}
+          {activePilot ? null : selectedRoadGeometryOnly ? <p className="road-traffic-summary">{text.cantonalGeometryOnly}</p> : <Suspense fallback={<p className="road-traffic-summary">{text.loadingRoad}</p>}>
             <RoadTrafficHistory road={selectedRoad.id} manifest={nationalRoad.manifest} fallback={roadSnapshot}
               time={networkTime} language={language} onTime={time => {
                 setIsPlaying(false)
@@ -3127,7 +3170,7 @@ export function App({ edition }: AppProps) {
           <div className="metric-grid">
             <div>
               <span>{text.mappedRoadLength}</span>
-              <strong>{selectedRoadLength === undefined ? '—' : `≈${roadMetricFormat.format(selectedRoadLength)}`}</strong>
+              <strong>{activePilot ? `≈${roadMetricFormat.format(activePilot.topology.sections[0].distanceKm)}` : selectedRoadLength === undefined ? '—' : `≈${roadMetricFormat.format(selectedRoadLength)}`}</strong>
               <small>km</small>
             </div>
             {!selectedRoadGeometryOnly && <div>
@@ -3136,7 +3179,7 @@ export function App({ edition }: AppProps) {
             </div>}
           </div>
           <p className="road-traffic-summary">
-            {selectedRoadGeometryOnly
+            {selectedRoadGeometryOnly || activePilot
               ? <a href="https://geolion.zh.ch/geodatensatz/3177" target="_blank" rel="noreferrer">AUTO · Kanton Zürich</a>
               : selectedRoadTraffic
               ? <>
@@ -3250,12 +3293,12 @@ export function App({ edition }: AppProps) {
                 className="road-count"
                 aria-live="polite"
                 aria-label={
-                  roadLoadState === 'ready'
+                  activePilot && !pilotWindow ? text.noRoadTraffic : roadLoadState === 'ready'
                     ? `${numberFormat.format(activeRoadVehicleCount)} ${text.estimatedRoadVehicles}`
                     : undefined
                 }
               >
-                {roadLoadState === 'error'
+                {activePilot && !pilotWindow ? `— ${text.auto}` : roadLoadState === 'error'
                   ? text.roadUnavailable
                   : roadLoadState !== 'ready'
                     ? text.loadingRoad
@@ -3394,7 +3437,7 @@ export function App({ edition }: AppProps) {
                   : undefined) ??
                 selectedStation?.name ??
                 (selectedRoad
-                  ? `${selectedRoad.label} · ${text.roadSections(selectedRoad.sectionCount)}`
+                  ? `${selectedRoad.label} · ${text.roadSections(activePilot?.topology.sections.length ?? selectedRoad.sectionCount)}`
                   : roadCategorySelected
                   ? text.trafficReconstruction
                   : airCategorySelected
@@ -3410,10 +3453,10 @@ export function App({ edition }: AppProps) {
             </span>
             {roadEnabled && (
               <span>
-                {nationalRoad.snapshot && nationalRoadInWindow
+                {activePilot ? `AUTO · Kanton Zürich · ${activePilot.metadata.completeMinutes} min` : nationalRoad.snapshot && nationalRoadInWindow
                   ? text.astraRecorded
                   : text.astraCalibration}
-                {roadTopology
+                {roadTopology && !activePilot
                   ? ` · ${text.astraTopology(
                       roadTopology.metadata.coverage.matchedStations,
                       roadTopology.metadata.coverage.federalStations,
@@ -3714,7 +3757,7 @@ export function App({ edition }: AppProps) {
             {nowActive && <button type="button" onClick={browserLocation.locate} disabled={browserLocation.status === 'locating'}>{exploreCopy.locate}</button>}
             {browserLocation.status !== 'idle' && <button type="button" onClick={clearBrowserLocation}>{exploreCopy.clear}</button>}
             {isRegionalDayStudy(networkStudy) && <button type="button" aria-pressed={isRegionalDay} onClick={() => { stopNow(); setRegionalRange(value => value === 'day' ? 'morning' : 'day'); setNetworkTime(edition.defaultNetworkTime); setRegionalRetry(true) }}>{exploreCopy.day}</button>}
-            <button type="button" disabled={!network} onClick={() => void shareStudy()}>{exploreCopy.share}</button>
+            {!activePilot && <button type="button" disabled={!network} onClick={() => void shareStudy()}>{exploreCopy.share}</button>}
           </div>
           {nowActive && <p className="explore-status">{network?.metadata.serviceDate === nowDate ? exploreCopy.today : exploreCopy.typical}</p>}
           {nowUnavailable && <p className="explore-status" role="status">{exploreCopy.unavailable}</p>}
@@ -4041,7 +4084,7 @@ export function App({ edition }: AppProps) {
                 Luftraum · ADSB.lol / {activeAirSnapshot.metadata.license}
               </a>
             )}
-            {isNetwork && roadEnabled && roadSnapshot && (
+            {isNetwork && roadEnabled && roadSnapshot && !activePilot && (
               <a
                 href={roadTopology?.metadata.sourceUrl ?? roadSnapshot.metadata.sourceUrl}
                 target="_blank"

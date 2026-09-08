@@ -1,0 +1,71 @@
+import { expect, test } from '@playwright/test'
+async function roadMeshes(page: import('@playwright/test').Page) {
+  return page.evaluate(async () => {
+    const url = performance.getEntriesByType('resource').find(e=>e.name.includes('/@react-three_fiber.js'))?.name
+    if (!url) return []
+    const { _roots } = await import(url)
+    const { scene } = [..._roots.values()][0].store.getState()
+    const meshes: number[][] = []
+    scene.traverseVisible((o: { isInstancedMesh?: boolean; geometry?: { type: string }; count: number; instanceMatrix: { array: ArrayLike<number> } }) => {
+      if (o.isInstancedMesh && o.geometry?.type === 'CapsuleGeometry' && o.count > 0) meshes.push(Array.from(o.instanceMatrix.array).slice(0,o.count*16))
+    })
+    return meshes
+  })
+}
+test('Horgen afternoon playback uses its own date, hides traffic in gaps, and returns to morning', async ({ page, isMobile }, info) => {
+  const errors: string[] = []
+  page.on('pageerror',e=>errors.push(e.message))
+  let requests = 0
+  page.on('request',r=>{if(r.url().includes('zurich-cantonal-road-pilot.json')) requests++})
+  await page.goto('/')
+  await page.locator(isMobile ? '.mobile-road-toggle' : '.network-study-picker .road-toggle').click()
+  await page.locator('.train-search input').fill('Horgen')
+  await page.locator('.road-result').filter({hasText:'ZH 3'}).first().click()
+  const card = page.locator('.road-corridor-card')
+  expect(requests).toBe(0)
+  await card.getByRole('button',{name:'Play Horgen afternoon pilot'}).click()
+  await expect(card).toContainText('8 September 2026')
+  await expect(card).toContainText('13:37–13:43')
+  await expect(card).toContainText('14:02–14:13')
+  const timeline = page.getByRole('slider', { name: /^Time of day/ })
+  await expect(timeline).toHaveAttribute('min','48180')
+  await expect(timeline).toHaveAttribute('max','51660')
+  await expect(card.locator('.metric-grid strong').nth(1)).toHaveText(/≈[1-9]/)
+  await expect.poll(async()=> (await roadMeshes(page)).length).toBeGreaterThan(0)
+  const before = await roadMeshes(page)
+  await page.getByRole('button',{name:/Resume motion/i}).click()
+  await expect.poll(async()=>await roadMeshes(page)).not.toEqual(before)
+  await page.getByRole('button',{name:/Pause motion/i}).click()
+  await timeline.fill('48960')
+  await page.getByRole('button',{name:/Resume motion/i}).click()
+  await expect(card.getByRole('status')).toContainText('Traffic is hidden')
+  await expect.poll(async()=> (await roadMeshes(page)).length).toBe(0)
+  await page.getByRole('button',{name:/Pause motion/i}).click()
+  await card.getByRole('button',{name:'13:37–13:43',exact:true}).click()
+  await expect(card.getByRole('status')).toContainText('Traffic is hidden')
+  await expect(card.locator('.metric-grid strong').nth(1)).toHaveText('—')
+  await expect.poll(async()=> (await roadMeshes(page)).length).toBe(0)
+  await page.screenshot({path:info.outputPath('horgen-gap.png')})
+  await card.getByRole('button',{name:'13:44–14:01',exact:true}).click()
+  await expect.poll(async()=> (await roadMeshes(page)).length).toBeGreaterThan(0)
+  await page.screenshot({path:info.outputPath('horgen-pilot.png')})
+  await card.getByRole('button',{name:'Return to morning roads'}).click()
+  await expect(timeline).toHaveAttribute('min','24300')
+  await expect(card).toContainText('Road geometry only')
+  expect(requests).toBe(1)
+  expect(errors).toEqual([])
+})
+test('a failed pilot download keeps the morning view and can be retried', async ({ page, isMobile }) => {
+  await page.route('**/zurich-cantonal-road-pilot.json',r=>r.fulfill({status:503,body:''}))
+  await page.goto('/')
+  await page.locator(isMobile ? '.mobile-road-toggle' : '.network-study-picker .road-toggle').click()
+  await page.locator('.train-search input').fill('Horgen')
+  await page.locator('.road-result').filter({hasText:'ZH 3'}).first().click()
+  const button=page.getByRole('button',{name:'Play Horgen afternoon pilot'})
+  await button.click()
+  await expect(page.locator('.cantonal-pilot')).toContainText('Try again')
+  await expect(page.getByRole('slider',{name:/^Time of day/})).toHaveAttribute('min','24300')
+  await page.unroute('**/zurich-cantonal-road-pilot.json')
+  await button.click()
+  await expect(page.locator('.cantonal-pilot')).toContainText('8 September 2026')
+})
