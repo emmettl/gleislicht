@@ -184,5 +184,235 @@
     "license": "ODbL-1.0",
     "licenseUrl": "https://opendatacommons.org/licenses/odbl/1-0/",
     "directionNote": "Inferred paths using bus/PSV access and direction tags. The pinned pfaedle profile uses penalties, not an absolute one-way prohibition; legal direction and temporary restrictions are not certified."
+  },
+  "rail": {
+    "sourceDirectory": "data/fribourg-rail-sources",
+    "sourceMetadataSha256": "7ea92c8c1120a49e9497ec3ae6d7a0d2fc2d761e8b19d790191ed7a6c0212c79",
+    "limits": {
+      "simplificationMetres": 5,
+      "stationAttachmentMetres": 350,
+      "topologyAttachmentMetres": 120,
+      "detourRatio": 2.5,
+      "detourFloorMetres": 3000
+    },
+    "routes": [
+      {
+        "routeId": "91-1-D-j26-1",
+        "agencyId": "11",
+        "line": "IC1",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-1-E-j26-1",
+        "agencyId": "33",
+        "line": "S1",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-15-B-j26-1",
+        "agencyId": "11",
+        "line": "IR15",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-1D-Y-j26-1",
+        "agencyId": "33",
+        "line": "S",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-2-A-j26-1",
+        "agencyId": "33",
+        "line": "S2",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-2-M-j26-1",
+        "agencyId": "53",
+        "line": "RE2",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-20-B-j26-1",
+        "agencyId": "53",
+        "line": "S20",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-21-A-j26-1",
+        "agencyId": "53",
+        "line": "S21",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-2B-Y-j26-1",
+        "agencyId": "11",
+        "line": "SN",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-2H-Y-j26-1",
+        "agencyId": "11",
+        "line": "IC",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-3-M-j26-1",
+        "agencyId": "53",
+        "line": "RE3",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-30-j26-1",
+        "agencyId": "11",
+        "line": "S30",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-35-F-j26-1",
+        "agencyId": "33",
+        "line": "S35",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-3A-Y-j26-1",
+        "agencyId": "11",
+        "line": "EXT",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-3Y-Y-j26-1",
+        "agencyId": "11",
+        "line": "EXT",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-40-C-j26-1",
+        "agencyId": "11",
+        "line": "S40",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-41-D-j26-1",
+        "agencyId": "11",
+        "line": "S41",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-4C-Y-j26-1",
+        "agencyId": "11",
+        "line": "IR",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-4N-Y-j26-1",
+        "agencyId": "11",
+        "line": "RE",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-4P-Y-j26-1",
+        "agencyId": "11",
+        "line": "SN",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-5-j26-1",
+        "agencyId": "33",
+        "line": "S5",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-52-j26-1",
+        "agencyId": "33",
+        "line": "S52",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-5O-Y-j26-1",
+        "agencyId": "33",
+        "line": "S",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-66-A-j26-1",
+        "agencyId": "33",
+        "line": "IR66",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-7-N-j26-1",
+        "agencyId": "11",
+        "line": "R7",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-7N-Y-j26-1",
+        "agencyId": "11",
+        "line": "EXT",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-8-J-j26-1",
+        "agencyId": "11",
+        "line": "R8",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-8F-Y-j26-1",
+        "agencyId": "11",
+        "line": "EXT",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-9-K-j26-1",
+        "agencyId": "11",
+        "line": "R9",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-9H-Y-j26-1",
+        "agencyId": "11",
+        "line": "EXT",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-AG-Y-j26-1",
+        "agencyId": "11",
+        "line": "S",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-CB-Y-j26-1",
+        "agencyId": "11",
+        "line": "IC",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-N1-j26-1",
+        "agencyId": "11",
+        "line": "N1",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-O-Y-j26-1",
+        "agencyId": "11",
+        "line": "RE",
+        "gauge": "mm1435"
+      },
+      {
+        "routeId": "91-T-Y-j26-1",
+        "agencyId": "11",
+        "line": "EXT",
+        "gauge": "mm1435"
+      }
+    ],
+    "admission": "Fill failed cantonal rail pairs using exact operating-point numbers and standard-gauge infrastructure. All full directed pattern contexts must agree; block other called stations out of order. Keep all original calls and existing accepted paths. No nearest-station, operator-name or platform override. Meter-gauge, gauge-changing and unreviewed TPF special routes remain outside this supplement.",
+    "inputs": "data/fribourg-rail-inputs.json",
+    "timetableSourceHashes": {
+      "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+      "source": "e8523af34fcedca7f8b0cbe495446ff93a75d8563c62b243da942c39c5243f47"
+    },
+    "inputsSha256": "434a02eb6906bb141a00ba6b7c77622767b78262617326d6aed56fa683cd8046"
   }
 }

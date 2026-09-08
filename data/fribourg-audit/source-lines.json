@@ -254,7 +254,9 @@
     "routeIds": [
       "91-30-j26-1"
     ],
-    "admittedRouteIds": [],
+    "admittedRouteIds": [
+      "91-30-j26-1"
+    ],
     "status": "crosswalk-candidate",
     "exclusionReason": null
   },
@@ -285,7 +287,10 @@
       "91-20-B-j26-1",
       "91-21-A-j26-1"
     ],
-    "admittedRouteIds": [],
+    "admittedRouteIds": [
+      "91-20-B-j26-1",
+      "91-21-A-j26-1"
+    ],
     "status": "crosswalk-candidate",
     "exclusionReason": null
   },
@@ -345,7 +350,9 @@
     "routeIds": [
       "91-1-E-j26-1"
     ],
-    "admittedRouteIds": [],
+    "admittedRouteIds": [
+      "91-1-E-j26-1"
+    ],
     "status": "crosswalk-candidate",
     "exclusionReason": null
   },
