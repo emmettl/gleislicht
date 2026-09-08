@@ -7,6 +7,8 @@
     "requests": "9d9c7384a964488579af9101a3b52385a1f06955287cd05024f72c50b2b19fdc",
     "cityRoads": "91eb32f2c2c18617c005d6ccef01d02d085ccc2389e8857fd4989c07d06cd203",
     "regionalRoads": "d7319885a74631ae6ac5858b172b8f167c56a3b37f3a68e35567aabc35270192",
+    "wittenbachPolicy": "6e92df06f0e5c2de065ffce58a9e670e794e91be8f6ecd12b6731b56cc756d6a",
+    "wittenbachSource": "595ec1f66bb62e2525659c52731a2d4d3ef60ccaea0bed27a435d2f14836dabd",
     "boatPolicy": "8a7a0293a868a975bddca2649174562aeb14981bcb1ba21656686379704aeede",
     "boatSource": "85ac4ddb721a12452b562fa91bb875fe60d48f0eeded4a7355a43418dcd8ac1a",
     "railPolicy": "a1c3e6b34553aa0345f8d628e626e024994d45a52a692e5ba2e795d3ea6d60be",
@@ -405,6 +407,43 @@
       "processedBy": "Gleislicht",
       "archivalStudy": true,
       "refreshPolicy": "Pinned September 2026 research fixtures; not a live or current-service feed. A new timetable or geometry release requires a complete rebuild and admission audit."
+    },
+    "wittenbach": {
+      "publisher": "OpenStreetMap contributors",
+      "attribution": "© OpenStreetMap contributors",
+      "license": "ODbL-1.0",
+      "termsUrl": "https://www.openstreetmap.org/copyright",
+      "endpoint": "https://overpass-api.de/api/interpreter",
+      "snapshot": "2026-09-02T00:00:00Z",
+      "acquired": "2026-09-08",
+      "files": [
+        {
+          "file": "osm.json.gz",
+          "sha256": "07ddf7994ef6512170fa7a50197c453ea34c1ffdc402ca6557e5c054fd185532"
+        },
+        {
+          "file": "query.txt",
+          "sha256": "6d34ec49c062beac435976b0659c8539d1111799145199e169576a708dfd89df"
+        },
+        {
+          "file": "restrictions.json.gz",
+          "sha256": "0d3f65c7726de8fc418cdf4749bf63756c37e5ae72fb957223a0330f8141192b"
+        },
+        {
+          "file": "restrictions-query.txt",
+          "sha256": "408e1c2e6ccd47ecc85b3615a5ea4a6e97ff30583c3b5392fa70c2598c1d288d"
+        }
+      ],
+      "elementCount": 7856,
+      "method": "Explicit original-road turnaround inference between two original Wittenbach Zentrum platforms, using the full mapped roundabout in source traffic direction. No new street, loop or platform coordinate is drawn. Route relations support the approach and terminus, not the complete two-call turnaround. No operator, lane, diversion or operational certification.",
+      "restrictionReview": "All restriction relations referencing either selected way were queried at the same historical timestamp. Relation 14866387 only_right_turn starts on residential way 697567549 at node 7826558259; the scoped turnaround never enters from that way or reaches that node.",
+      "routeRelationLimit": "OSM 200/207 arrivals include the approach and roundabout; departures start at the other source stop position and omit the turnaround. The two-call GTFS sequence is retained, and the intervening movement remains explicitly inferred.",
+      "limits": {
+        "attachmentMetres": 15,
+        "maximumRoadMetres": 400,
+        "minimumRoadMetres": 150
+      },
+      "scope": "Only segment zero of the four preserved full 200/207 patterns, after the original matcher records missing-shape and equal zero shape distances. Every subsequent segment must exist in that exact original pattern cache; no cross-pattern borrowing or reverse-pair override. Original GTFS platforms, calls, permissions and times are unchanged."
     },
     "boats": {
       "acquired": "2026-09-08",
@@ -821,10 +860,10 @@
     "key": "GTFS route identity + direction_id + full ordered original platform IDs, including repeats and out-of-canton calls"
   },
   "routesByStatus": {
-    "admitted-all-dated-trips": 102,
+    "admitted-all-dated-trips": 104,
     "inactive-on-validation-dates": 21,
     "excluded": 5,
-    "partially-admitted": 4
+    "partially-admitted": 2
   },
   "districts": [
     {
@@ -1074,6 +1113,8 @@
         "requests": "9d9c7384a964488579af9101a3b52385a1f06955287cd05024f72c50b2b19fdc",
         "cityRoads": "91eb32f2c2c18617c005d6ccef01d02d085ccc2389e8857fd4989c07d06cd203",
         "regionalRoads": "d7319885a74631ae6ac5858b172b8f167c56a3b37f3a68e35567aabc35270192",
+        "wittenbachPolicy": "6e92df06f0e5c2de065ffce58a9e670e794e91be8f6ecd12b6731b56cc756d6a",
+        "wittenbachSource": "595ec1f66bb62e2525659c52731a2d4d3ef60ccaea0bed27a435d2f14836dabd",
         "boatPolicy": "8a7a0293a868a975bddca2649174562aeb14981bcb1ba21656686379704aeede",
         "boatSource": "85ac4ddb721a12452b562fa91bb875fe60d48f0eeded4a7355a43418dcd8ac1a",
         "railPolicy": "a1c3e6b34553aa0345f8d628e626e024994d45a52a692e5ba2e795d3ea6d60be",
@@ -1086,26 +1127,25 @@
       },
       "coverage": {
         "trips": 4417,
-        "admittedTrips": 4269,
+        "admittedTrips": 4306,
         "scheduledTrips": 4417,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 4269,
+        "admittedScheduledTrips": 4306,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 64684,
-        "matchedScheduledSegmentOccurrences": 63732,
+        "matchedScheduledSegmentOccurrences": 63873,
         "segmentOccurrences": 64684,
-        "matchedSegmentOccurrences": 63732,
-        "admittedSegmentOccurrences": 63250,
+        "matchedSegmentOccurrences": 63873,
+        "admittedSegmentOccurrences": 63873,
         "directedPairs": 3529,
-        "matchedDirectedPairs": 3377,
+        "matchedDirectedPairs": 3388,
         "patterns": 563,
-        "completePatterns": 533,
-        "admittedPatterns": 533,
+        "completePatterns": 537,
+        "admittedPatterns": 537,
         "excludedTrips": {
           "demand-responsive-night-taxi": 15,
           "demand-responsive-route-type": 30,
-          "incomplete-boat-pattern": 66,
-          "incomplete-directed-pattern": 37
+          "incomplete-boat-pattern": 66
         }
       },
       "groups": [
@@ -1354,24 +1394,22 @@
           "id": "801:bus",
           "agency": "PostAuto AG",
           "trips": 1325,
-          "admittedTrips": 1288,
+          "admittedTrips": 1325,
           "scheduledTrips": 1325,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 1288,
+          "admittedScheduledTrips": 1325,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 24421,
-          "matchedScheduledSegmentOccurrences": 24280,
+          "matchedScheduledSegmentOccurrences": 24421,
           "segmentOccurrences": 24421,
-          "matchedSegmentOccurrences": 24280,
-          "admittedSegmentOccurrences": 23798,
+          "matchedSegmentOccurrences": 24421,
+          "admittedSegmentOccurrences": 24421,
           "directedPairs": 1731,
-          "matchedDirectedPairs": 1720,
+          "matchedDirectedPairs": 1731,
           "patterns": 186,
-          "completePatterns": 182,
-          "admittedPatterns": 182,
-          "excludedTrips": {
-            "incomplete-directed-pattern": 37
-          }
+          "completePatterns": 186,
+          "admittedPatterns": 186,
+          "excludedTrips": {}
         },
         {
           "id": "896:bus",
@@ -1409,6 +1447,10 @@
         "rejectedPatterns": 4,
         "scheduledSegmentOccurrences": 36391
       },
+      "wittenbachCoverage": {
+        "trips": 37,
+        "patterns": 4
+      },
       "boatCoverage": {
         "trips": 26,
         "patterns": 6,
@@ -1431,8 +1473,8 @@
       },
       "timing": {
         "zeroDurationSegmentOccurrences": 9201,
-        "admittedZeroDurationSegmentOccurrences": 8920,
-        "admittedJourneysWithZeroDurationSegments": 2947,
+        "admittedZeroDurationSegmentOccurrences": 8951,
+        "admittedJourneysWithZeroDurationSegments": 2978,
         "maximumPositiveDurationSegmentByMode": [
           {
             "tripId": ".ojp-91-8-E.1.TA.858.j26",
@@ -1475,7 +1517,7 @@
       },
       "carryInTrips": 58,
       "admittedCarryInTrips": 55,
-      "admittedOutsideCantonPlatforms": 536,
+      "admittedOutsideCantonPlatforms": 541,
       "directedPatternChecks": {
         "directionIds": [
           "0",
@@ -1488,12 +1530,12 @@
       },
       "payload": {
         "manifest": {
-          "bytes": 1395580,
-          "gzipBytes": 284969
+          "bytes": 1401499,
+          "gzipBytes": 286941
         },
         "morning": {
-          "trips": 667,
-          "gzipBytes": 362505
+          "trips": 674,
+          "gzipBytes": 365283
         },
         "chunks": [
           {
@@ -1503,7 +1545,7 @@
             "path": "day-chunks/00-02.json",
             "tripCount": 73,
             "bytes": 66328,
-            "sha256": "00edf97887d457592ca90fec32fec59dbbce8290b8f2ba763ff3949cf6853187",
+            "sha256": "9cf644078321c06b31b594beffa7c930bdc465ccff01e11a515de5ff904c92f6",
             "gzipBytes": 12025
           },
           {
@@ -1521,90 +1563,90 @@
             "windowStart": 14400,
             "windowEnd": 21600,
             "path": "day-chunks/04-06.json",
-            "tripCount": 182,
-            "bytes": 173713,
-            "sha256": "1e4e513d9a28295a8ad863684ce6a3838c02e0432b954a47b62f951f68bcce75",
-            "gzipBytes": 28543
+            "tripCount": 184,
+            "bytes": 175759,
+            "sha256": "bf7cf5487b2bc0dd2341391ebf3b503f8e570a771aa5584de218d070c571d6b6",
+            "gzipBytes": 28841
           },
           {
             "id": "06-08",
             "windowStart": 21600,
             "windowEnd": 28800,
             "path": "day-chunks/06-08.json",
-            "tripCount": 658,
-            "bytes": 613441,
-            "sha256": "cfbba542dde024dacab35d93f63ec14e6160d1c0ff67ec32f07a78ee1df5578b",
-            "gzipBytes": 77228
+            "tripCount": 665,
+            "bytes": 620549,
+            "sha256": "c6352d6aad90192a6ab6c9debf26ffd662011664e3c93a764d24ff9bea8bc45f",
+            "gzipBytes": 78083
           },
           {
             "id": "08-10",
             "windowStart": 28800,
             "windowEnd": 36000,
             "path": "day-chunks/08-10.json",
-            "tripCount": 604,
-            "bytes": 570775,
-            "sha256": "32041d94218c3573c3dd25a153a2cf63951068755d93c2c7a77c9891cd4e9309",
-            "gzipBytes": 72963
+            "tripCount": 610,
+            "bytes": 576885,
+            "sha256": "27e97df3767e98a1c5365e3ec058a4788126c8068c81f59a4161143d864cbd46",
+            "gzipBytes": 73728
           },
           {
             "id": "10-12",
             "windowStart": 36000,
             "windowEnd": 43200,
             "path": "day-chunks/10-12.json",
-            "tripCount": 600,
-            "bytes": 565726,
-            "sha256": "bd9864ce85377a1dced71d8457b189b6e75186c59cdf59095f8f09edd0b52959",
-            "gzipBytes": 72248
+            "tripCount": 605,
+            "bytes": 570836,
+            "sha256": "8ce8a70671594429a3fca4125191bbf89e17198be57461de8f0a99cb5c527a92",
+            "gzipBytes": 72844
           },
           {
             "id": "12-14",
             "windowStart": 43200,
             "windowEnd": 50400,
             "path": "day-chunks/12-14.json",
-            "tripCount": 613,
-            "bytes": 577548,
-            "sha256": "fe6de9a07614ad6ff35b2ad8cc569d5212bcb5db4fca62d672e752bfd3845dc3",
-            "gzipBytes": 73423
+            "tripCount": 618,
+            "bytes": 582660,
+            "sha256": "e6b31e06dd141871e976d7cfd628954826af6620f829886b2c1e24128046898e",
+            "gzipBytes": 74000
           },
           {
             "id": "14-16",
             "windowStart": 50400,
             "windowEnd": 57600,
             "path": "day-chunks/14-16.json",
-            "tripCount": 609,
-            "bytes": 572401,
-            "sha256": "f2096d71f7b5d474741f30724a18cf4456d724f9cb5e8ecb99b5fca3011b1e2f",
-            "gzipBytes": 72833
+            "tripCount": 614,
+            "bytes": 577513,
+            "sha256": "618b11ae76fb04ac8a9b7a3179f0929d6aa3b4af9a4bac6d1231218998d6a27b",
+            "gzipBytes": 73463
           },
           {
             "id": "16-18",
             "windowStart": 57600,
             "windowEnd": 64800,
             "path": "day-chunks/16-18.json",
-            "tripCount": 675,
-            "bytes": 630461,
-            "sha256": "6168d7a206f41d7024543d0cbfc22902a61bf2304ceb49be75405e2b8a42a811",
-            "gzipBytes": 79370
+            "tripCount": 682,
+            "bytes": 637559,
+            "sha256": "ff29b528ddbccbc2f521bb912b3c37367b97d89f271b4bb70f793721a2da8d28",
+            "gzipBytes": 80192
           },
           {
             "id": "18-20",
             "windowStart": 64800,
             "windowEnd": 72000,
             "path": "day-chunks/18-20.json",
-            "tripCount": 620,
-            "bytes": 586609,
-            "sha256": "87642eb959ed4f38bcfc0cd0cb2daf60c97b7c6460037dc6b5ef909f050311d6",
-            "gzipBytes": 75622
+            "tripCount": 627,
+            "bytes": 593707,
+            "sha256": "9a9570efe5750be161d87dbbb57f52d58be05ba1e340981a53e80f2dc91863d3",
+            "gzipBytes": 76499
           },
           {
             "id": "20-22",
             "windowStart": 72000,
             "windowEnd": 79200,
             "path": "day-chunks/20-22.json",
-            "tripCount": 352,
-            "bytes": 340728,
-            "sha256": "44ce2fd796fe62204f4f299ff4ab1ccab3112517b24723870cdfa6d578e8ffef",
-            "gzipBytes": 49683
+            "tripCount": 354,
+            "bytes": 342772,
+            "sha256": "24a99d48986777559976a13b9bdecfc81594770dd7997b32ad336a36cab7429d",
+            "gzipBytes": 49981
           },
           {
             "id": "22-24",
@@ -1613,8 +1655,8 @@
             "path": "day-chunks/22-24.json",
             "tripCount": 230,
             "bytes": 223143,
-            "sha256": "d5eda91364c4ebe4102d57a1de30b70750d1003db4fa1309a53812babed14fe0",
-            "gzipBytes": 33063
+            "sha256": "05d8f6deb0fdb0962a52cd3edc5e9fe35b06754d2ad2d37aaa03c9a78e6e758f",
+            "gzipBytes": 33046
           }
         ]
       },
@@ -1640,6 +1682,8 @@
         "requests": "9d9c7384a964488579af9101a3b52385a1f06955287cd05024f72c50b2b19fdc",
         "cityRoads": "91eb32f2c2c18617c005d6ccef01d02d085ccc2389e8857fd4989c07d06cd203",
         "regionalRoads": "d7319885a74631ae6ac5858b172b8f167c56a3b37f3a68e35567aabc35270192",
+        "wittenbachPolicy": "6e92df06f0e5c2de065ffce58a9e670e794e91be8f6ecd12b6731b56cc756d6a",
+        "wittenbachSource": "595ec1f66bb62e2525659c52731a2d4d3ef60ccaea0bed27a435d2f14836dabd",
         "boatPolicy": "8a7a0293a868a975bddca2649174562aeb14981bcb1ba21656686379704aeede",
         "boatSource": "85ac4ddb721a12452b562fa91bb875fe60d48f0eeded4a7355a43418dcd8ac1a",
         "railPolicy": "a1c3e6b34553aa0345f8d628e626e024994d45a52a692e5ba2e795d3ea6d60be",
@@ -1930,6 +1974,10 @@
         "rejectedPatterns": 0,
         "scheduledSegmentOccurrences": 22700
       },
+      "wittenbachCoverage": {
+        "trips": 0,
+        "patterns": 0
+      },
       "boatCoverage": {
         "trips": 26,
         "patterns": 6,
@@ -2009,12 +2057,12 @@
       },
       "payload": {
         "manifest": {
-          "bytes": 1323964,
-          "gzipBytes": 273882
+          "bytes": 1326257,
+          "gzipBytes": 274757
         },
         "morning": {
           "trips": 341,
-          "gzipBytes": 317794
+          "gzipBytes": 318775
         },
         "chunks": [
           {

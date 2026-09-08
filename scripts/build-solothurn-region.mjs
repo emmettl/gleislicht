@@ -47,6 +47,9 @@ export async function buildSolothurnRegion() {
   const accessBaseline = JSON.parse(await readFile('data/solothurn-access-baseline.json'))
   assert.deepEqual(accessBaseline.sourceHashes, sourceHashes)
   const accessReview = { baselineCommit: accessBaseline.commit, sourceHashes, source: supplements.metadata.accessRoads, candidates: supplements.accessRoadReview, days: [] }
+  const terminalBaseline = JSON.parse(await readFile('data/solothurn-bern-terminal-baseline.json'))
+  assert.deepEqual(terminalBaseline.sourceHashes, sourceHashes)
+  const terminalReview = { baselineCommit: terminalBaseline.commit, sourceHashes, source: supplements.metadata.bernTerminal, days: [] }
   const provenance = { supplements: supplements.metadata, ...source.metadata, timetable: {
     publisher: 'SBB / Open data platform mobility Switzerland', attribution: 'opentransportdata.swiss',
     sha256: SO_GTFS_SHA, feed: census.feed, sourceUrl: census.sourceUrl,
@@ -73,6 +76,13 @@ export async function buildSolothurnRegion() {
     accessReview.days.push({ date: raw.metadata.serviceDate, before: accessBefore.coverage, after: coverage, lostAdmittedPatterns: accessLost,
       newlyAdmittedPatterns: result.patterns.filter(p => p.admittedTrips && !accessPrevious.has(p.id)).map(({ pathSegments, ...p }) => p),
       sourcePairs: result.pairs.filter(p => p.geometrySource === 'osm-solothurn-access-road-inference').map(({ pathIndex, ...p }) => p) })
+    const terminalBefore = terminalBaseline.days.find(d => d.date === raw.metadata.serviceDate)
+    const terminalPrevious = new Set(terminalBefore.admittedPatternIds)
+    const terminalLost = [...terminalPrevious].filter(id => !result.patterns.some(p => p.id === id && p.admittedTrips))
+    assert.equal(terminalLost.length, 0, 'Bern terminal review regressed an admitted pattern')
+    terminalReview.days.push({ date: raw.metadata.serviceDate, before: terminalBefore.coverage, after: coverage, lostAdmittedPatterns: terminalLost,
+      newlyAdmittedPatterns: result.patterns.filter(p => p.admittedTrips && !terminalPrevious.has(p.id)).map(({ pathSegments, ...p }) => p),
+      sourcePairs: result.pairs.filter(p => p.geometrySource === 'fot-reviewed-bern-eastern-terminal').map(({ pathIndex, ...p }) => p) })
     const busBefore = busBaseline.days.find(d => d.date === raw.metadata.serviceDate)
     const busPrevious = new Set(busBefore.admittedPatternIds)
     const busLost = [...busPrevious].filter(id => !result.patterns.some(p => p.id === id && p.admittedTrips))
@@ -228,6 +238,7 @@ export async function buildSolothurnRegion() {
   await writeJson(join(auditDir, 's29-precedence-review.json'), s29Review, true)
   await writeJson(join(auditDir, 'bus-junction-review.json'), busReview, true)
   await writeJson(join(auditDir, 'access-road-review.json'), accessReview, true)
+  await writeJson(join(auditDir, 'bern-terminal-review.json'), terminalReview, true)
   await writeJson(join(auditDir, 'summary.json'), summary, true)
   await writeJson(join(auditDir, 'routes.json'), inventory, true)
   await writeJson(join(auditDir, 'stops.json'), timetable.sourceStopInventory)

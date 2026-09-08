@@ -1,0 +1,1 @@
+[out:json][timeout:30][date:"2026-09-02T00:00:00Z"];way(id:1111858974,26647200);relation(bw)[type=restriction];out meta;

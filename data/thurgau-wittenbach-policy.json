@@ -1,0 +1,106 @@
+{
+  "sourceSha256": "595ec1f66bb62e2525659c52731a2d4d3ef60ccaea0bed27a435d2f14836dabd",
+  "timetableSha256": "9403d675c79184b4885e8a0ca0f3d02da55363cefafab2f403cb7e5ae95dcff5",
+  "regionalRoadsSha256": "d7319885a74631ae6ac5858b172b8f167c56a3b37f3a68e35567aabc35270192",
+  "previousReviewSha256": "0c732972262cee18660538aa5893cd18225d49f56fa86182aea69d796dc24813",
+  "snapshot": "2026-09-02T00:00:00Z",
+  "wayIds": [
+    1111858974,
+    26647200
+  ],
+  "sharedNode": 292227795,
+  "features": [
+    {
+      "type": "way",
+      "id": 1111858974,
+      "version": 9,
+      "timestamp": "2026-08-02T12:13:18Z",
+      "sha256": "d305b6d71a4b660a89b47a38d456cac15bf6d12641f9d8e7810b5250a581c1f2"
+    },
+    {
+      "type": "way",
+      "id": 26647200,
+      "version": 14,
+      "timestamp": "2024-01-29T22:56:35Z",
+      "sha256": "e6c2daf7a5c6bf279c04aff87d1b948015252f014423069e236759f8c9d1f133"
+    },
+    {
+      "type": "relation",
+      "id": 17128888,
+      "version": 7,
+      "timestamp": "2026-04-25T12:43:26Z",
+      "sha256": "5e3fedd7bd3836db86885cbc7a3f5e1121265db3817d0ea82616523fb34f54ed"
+    },
+    {
+      "type": "relation",
+      "id": 17128889,
+      "version": 8,
+      "timestamp": "2026-04-25T12:43:26Z",
+      "sha256": "1dd42a17f9d3613a508ac91e78c80d4b440dcc4bc7e8077cd186ce24c01a89eb"
+    },
+    {
+      "type": "relation",
+      "id": 16238506,
+      "version": 15,
+      "timestamp": "2026-04-25T12:43:26Z",
+      "sha256": "db5eaef6643007de5d49a854b0ba552f3cdd00188736fce1f6314b28916f8810"
+    },
+    {
+      "type": "relation",
+      "id": 16238511,
+      "version": 17,
+      "timestamp": "2026-04-25T12:43:26Z",
+      "sha256": "81317dd7370de3621db11772d4af280f0f5afbb41fe39608eb481d6a81272c81"
+    }
+  ],
+  "from": [
+    9.38822117,
+    47.45994728,
+    "Wittenbach, Zentrum",
+    "2",
+    "ch:1:sloid:73966:0:341297"
+  ],
+  "to": [
+    9.38803252,
+    47.4598501,
+    "Wittenbach, Zentrum",
+    "1",
+    "ch:1:sloid:73966:0:256909"
+  ],
+  "patterns": [
+    {
+      "roadPatternId": "39704299f82afbd7426c69bf",
+      "routeId": "96-220-5-j26-1",
+      "agencyId": "801",
+      "directionId": "1",
+      "line": "200"
+    },
+    {
+      "roadPatternId": "6d13f2e71b61cec7b03c9466",
+      "routeId": "96-220-6-j26-1",
+      "agencyId": "801",
+      "directionId": "1",
+      "line": "207"
+    },
+    {
+      "roadPatternId": "840dc32cdab1f9279cf319fb",
+      "routeId": "96-220-5-j26-1",
+      "agencyId": "801",
+      "directionId": "1",
+      "line": "200"
+    },
+    {
+      "roadPatternId": "b73c972dec1e4001ea561e68",
+      "routeId": "96-220-5-j26-1",
+      "agencyId": "801",
+      "directionId": "1",
+      "line": "200"
+    }
+  ],
+  "limits": {
+    "attachmentMetres": 15,
+    "maximumRoadMetres": 400,
+    "minimumRoadMetres": 150
+  },
+  "scope": "Only segment zero of the four preserved full 200/207 patterns, after the original matcher records missing-shape and equal zero shape distances. Every subsequent segment must exist in that exact original pattern cache; no cross-pattern borrowing or reverse-pair override. Original GTFS platforms, calls, permissions and times are unchanged."
+}

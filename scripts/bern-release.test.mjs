@@ -25,7 +25,7 @@ describe('Bern display release', () => {
     try {
       for (const date of ['2026-09-04', '2026-09-06']) {
         const report = await buildBernDay({ date, output })
-        expect(report.movements.total).toBe(date.endsWith('04') ? 36627 : 31774)
+        expect(report.movements.total).toBe(date.endsWith('04') ? 36633 : 31855)
         const { files } = await readRegionalDirectory(output, ['bern-region'], date)
         const archive = JSON.parse(await readFile(`public/data/bern-region/${date}/bern-region-day-manifest.json`))
         for (const chunk of archive.chunks) expect(files.get(`bern-region-${chunk.path}`).equals(await readFile(`public/data/bern-region/${date}/${chunk.path}`))).toBe(true)

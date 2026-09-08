@@ -1,0 +1,199 @@
+{
+  "schemaVersion": 1,
+  "sourceDirectory": "data/solothurn-bern-terminal-sources",
+  "sources": [
+    {
+      "file": "sbb-bern-plan-2026-08.pdf",
+      "sha256": "fc8996f20bd75a4293448ccf96a11b443f5df2419282ab75cea80efd252486eb",
+      "url": "https://company.sbb.ch/content/dam/infrastruktur/trafimage/bahnhofplaene/plan-bern-a4.pdf",
+      "retrievedAt": "2026-09-08T20:18:29.309Z",
+      "documentDate": "2026-08",
+      "role": "SBB station exterior plan, page 3: tracks 49/50 at western end of Bern. Station extent and platform identity evidence; not a surveyed track/switch alignment."
+    }
+  ],
+  "sourceSha256": "2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+  "contextSha256": "6a3fb3b6d119bf3118969bce3f42bd9592fb484a4f088a0ee8b456ff769c146d",
+  "node": {
+    "id": "ch14uvag00088813",
+    "number": "8507000",
+    "name": "Bern",
+    "coordinate": [
+      7.439136,
+      46.948831
+    ]
+  },
+  "stationCurve": {
+    "id": "ch14uvag00087328",
+    "start": "ch14uvag00089324",
+    "end": "ch14uvag00088813",
+    "length": 781.1577614377883,
+    "points": [
+      [
+        7.428931,
+        46.948284
+      ],
+      [
+        7.429906,
+        46.948018
+      ],
+      [
+        7.430804,
+        46.947885
+      ],
+      [
+        7.432114,
+        46.947828
+      ],
+      [
+        7.433162,
+        46.947876
+      ],
+      [
+        7.437213,
+        46.948635
+      ],
+      [
+        7.43793,
+        46.948857
+      ],
+      [
+        7.438694,
+        46.949225
+      ]
+    ],
+    "gauge": "mm1435",
+    "dataStand": "2021-07-06",
+    "validFrom": "2005-02-11",
+    "validUntil": null,
+    "infrastructureOperator": "SBB CFF FFS"
+  },
+  "easternApproach": {
+    "id": "ch14uvag00139673",
+    "start": "ch14uvag00139694",
+    "end": "ch14uvag00088813",
+    "length": 2787.4735732175945,
+    "points": [
+      [
+        7.46029,
+        46.966596
+      ],
+      [
+        7.451745,
+        46.964523
+      ],
+      [
+        7.448704,
+        46.963673
+      ],
+      [
+        7.447217,
+        46.963104
+      ],
+      [
+        7.44607,
+        46.962366
+      ],
+      [
+        7.443934,
+        46.960208
+      ],
+      [
+        7.44333,
+        46.95941
+      ],
+      [
+        7.442972,
+        46.958454
+      ],
+      [
+        7.442844,
+        46.956118
+      ],
+      [
+        7.442585,
+        46.955238
+      ],
+      [
+        7.439723,
+        46.950113
+      ],
+      [
+        7.439325,
+        46.949649
+      ],
+      [
+        7.438694,
+        46.949225
+      ]
+    ],
+    "gauge": "mm1435",
+    "dataStand": "2021-07-06",
+    "validFrom": "2015-10-21",
+    "validUntil": null,
+    "infrastructureOperator": "SBB CFF FFS"
+  },
+  "stops": [
+    [
+      7.4333344,
+      46.94822398,
+      "Bern",
+      "49",
+      "ch:1:sloid:7000:55:49"
+    ],
+    [
+      7.43355898,
+      46.94830984,
+      "Bern",
+      "50",
+      "ch:1:sloid:7000:55:50"
+    ]
+  ],
+  "maximumProjectionMetres": 75,
+  "minimumSpurMetres": 200,
+  "maximumSpurMetres": 600,
+  "routes": [
+    {
+      "routeId": "91-16-B-j26-1",
+      "agencyId": "11",
+      "line": "IR16"
+    },
+    {
+      "routeId": "91-35-A-j26-1",
+      "agencyId": "82",
+      "line": "IR35"
+    },
+    {
+      "routeId": "91-35-B-j26-1",
+      "agencyId": "11",
+      "line": "IR35"
+    },
+    {
+      "routeId": "91-35-D-j26-1",
+      "agencyId": "33",
+      "line": "IR35"
+    },
+    {
+      "routeId": "91-4U-Y-j26-1",
+      "agencyId": "11",
+      "line": "IR"
+    }
+  ],
+  "adjacentOperatingPoints": {
+    "91-16-B-j26-1": [
+      "8500218"
+    ],
+    "91-35-A-j26-1": [
+      "8508005"
+    ],
+    "91-35-B-j26-1": [
+      "8508005"
+    ],
+    "91-35-D-j26-1": [
+      "8508005"
+    ],
+    "91-4U-Y-j26-1": [
+      "8508005"
+    ]
+  },
+  "method": "Only exact reviewed route/operator identities with one terminal Bern call on original platforms 49/50 and the explicit adjacent operating point. Project platform onto the pinned SBB station curve and retain its station-centre side as an inferred terminal spur. Original Bern node stays in place; only Bern Wyler eastern approach remains connected at that node in the pattern-local graph. Full-context consensus and existing source validity, station/topology attachment, detour and stop-order guards remain. Preserve all previous successful paths. No running-track, switch or present-day itinerary certification."
+}

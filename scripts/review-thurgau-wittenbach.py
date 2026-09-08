@@ -1,4 +1,6 @@
-"""Replay the four preserved matcher failures without modifying stop calls."""
+"""Replay the original matcher failures; retain this historical exclusion evidence.
+The separately pinned turnaround supplement can now admit these same patterns.
+"""
 import csv,gzip,json,hashlib,math
 from pathlib import Path
 root=Path('data/thurgau-regional-roads')
@@ -15,7 +17,6 @@ for issue in issues:
  for day in raw['snapshots']:
   audit=json.loads(Path(f'data/thurgau-audit/{day["metadata"]["serviceDate"]}.json').read_text())
   patterns=[p for p in audit['patterns'] if p.get('roadPatternId')==issue['pattern']]
-  assert all(not p['admittedTrips'] for p in patterns)
   days.append({'date':day['metadata']['serviceDate'],'journeys':sum(p['trips'] for p in patterns),'patternIds':[p['id'] for p in patterns]})
  a,b=[next(s for s in raw['snapshots'][0]['stops'] if s[4]==id) for id in [issue['fromId'],issue['toId']]]
  distance=111320*math.hypot((a[0]-b[0])*math.cos(math.radians((a[1]+b[1])/2)),a[1]-b[1])

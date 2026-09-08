@@ -13,6 +13,7 @@ import { loadBernRegionalRoads, applyBernRegionalRoads } from './bern-regional-r
 import { loadBernMountains, applyBernMountains } from './bern-mountain-geometry.mjs'
 import { loadBernRail, applyBernRail } from './bern-rail-geometry.mjs'
 import { loadBernRegionalRail, applyBernRegionalRail } from './bern-regional-rail.mjs'
+import { loadBernCrosscantonRail, applyBernCrosscantonRail } from './bern-crosscanton-rail.mjs'
 
 const sha = bytes => createHash('sha256').update(bytes).digest('hex')
 async function hashFile(path) {
@@ -159,6 +160,9 @@ export async function buildBernRegion({ archive, sourceDirectory = 'data/bern-so
   const regionalRail = await loadBernRegionalRail()
   hashes.regionalRailPolicy = regionalRail.metadata.policySha256
   provenance.regionalRailSupplement = regionalRail.metadata
+  const crosscantonRail = await loadBernCrosscantonRail()
+  hashes.crosscantonRailPolicy = crosscantonRail.metadata.policySha256
+  provenance.crosscantonRailSupplement = crosscantonRail.metadata
   hashes.urbanCache = urban.metadata.cacheSha256
   hashes.urbanPolicy = urban.metadata.policySha256
   provenance.urbanSupplement = urban.metadata
@@ -168,7 +172,8 @@ export async function buildBernRegion({ archive, sourceDirectory = 'data/bern-so
   for (const raw of timetable.snapshots) {
     console.log(`Matching every directed Bern pattern for ${raw.metadata.serviceDate}…`)
     const base = applyBernUrban(raw, applyBernGeometry(raw, routes, source, crosswalk), source, urban)
-    const result = applyBernRegionalRail(raw, applyBernRail(raw, applyBernMountains(raw, applyBernRegionalRoads(raw, base, source, regionalRoads), routes, mountain), routes, rail), routes, regionalRail)
+    const regionalResult = applyBernRegionalRail(raw, applyBernRail(raw, applyBernMountains(raw, applyBernRegionalRoads(raw, base, source, regionalRoads), routes, mountain), routes, rail), routes, regionalRail)
+    const result = applyBernCrosscantonRail(raw, regionalResult, routes, crosscantonRail)
     routeCrosswalk = result.routeCrosswalk
     const groups = []
     for (const key of [...new Set(result.trains.map(t => `${t.agencyId}:${routes.get(t.routeId).mode}`))].sort()) {
@@ -192,6 +197,7 @@ export async function buildBernRegion({ archive, sourceDirectory = 'data/bern-so
         mountainSupplement: mountain.metadata,
         railSupplement: rail.metadata,
         regionalRailSupplement: regionalRail.metadata,
+        crosscantonRailSupplement: crosscantonRail.metadata,
         limits: BERN_LIMITS, direction: 'Centreline inference from ordered calls. No road one-way or rail running-track certification. Only the explicitly scoped tram 6 station approach has dated diversion evidence; no realtime verification.',
         localMetadata: '../sources.json', localTerms: ['../terms_of_use_de.pdf', '../terms_of_use_fr.pdf'] },
     }

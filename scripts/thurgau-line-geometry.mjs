@@ -3,6 +3,7 @@ import { applyBernGeometry, bernPatternId } from './bern-line-geometry.mjs'
 import { applyThurgauRegionalRoads } from './thurgau-regional-roads.mjs'
 import { applyThurgauRail } from './thurgau-rail-geometry.mjs'
 import { applyThurgauBoats } from './thurgau-boat-geometry.mjs'
+import { applyThurgauWittenbach } from './thurgau-wittenbach.mjs'
 import { applyThurgauCityRoads } from './thurgau-city-roads.mjs'
 
 export { bernPatternId as thurgauPatternId }
@@ -30,8 +31,8 @@ export function thurgauFeatureMatch(route, feature, crosswalk) {
   return entry.featureIds.includes(feature.id)
 }
 
-export function applyThurgauGeometry(raw, routes, source, crosswalk, cityRoads, regionalRoads, rail, boats) {
+export function applyThurgauGeometry(raw, routes, source, crosswalk, cityRoads, regionalRoads, rail, boats, wittenbach) {
   const result = applyBernGeometry(raw, routes, source, crosswalk,
     { featureMatch: thurgauFeatureMatch, limits: THURGAU_LIMITS, lineId: f => f.id })
-  return applyThurgauBoats(raw, applyThurgauRail(raw, applyThurgauRegionalRoads(raw, applyThurgauCityRoads(raw, result, cityRoads), regionalRoads, routes), rail), boats, routes)
+  return applyThurgauBoats(raw, applyThurgauRail(raw, applyThurgauWittenbach(raw, applyThurgauRegionalRoads(raw, applyThurgauCityRoads(raw, result, cityRoads), regionalRoads, routes), wittenbach, regionalRoads), rail), boats, routes)
 }

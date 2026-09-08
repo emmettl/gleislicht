@@ -6,13 +6,13 @@ Generated from the [Bern audit](BERN-STUDY.md). Counts are admitted / candidate 
 
 | GTFS agency | Source name | Annual route records | Friday admitted / candidate | Sunday admitted / candidate |
 | --- | --- | --- | --- | --- |
-| 11 | Schweizerische Bundesbahnen SBB | 62 | 435 / 846 | 427 / 771 |
+| 11 | Schweizerische Bundesbahnen SBB | 62 | 436 / 846 | 429 / 771 |
 | 32 | Lauterbrunnen-Mürren | 2 | 181 / 181 | 181 / 181 |
-| 33 | BLS AG (bls) | 53 | 1,149 / 1,405 | 1,012 / 1,255 |
+| 33 | BLS AG (bls) | 53 | 1,149 / 1,405 | 1,013 / 1,255 |
 | 35 | Berner Oberland-Bahnen | 2 | 130 / 130 | 144 / 144 |
 | 38 | Aare Seeland mobil (bti) | 1 | 116 / 116 | 77 / 77 |
 | 43 | Chemins de fer du Jura | 2 | 69 / 110 | 42 / 77 |
-| 53 | Transports publics fribourgeois | 8 | 28 / 114 | 28 / 184 |
+| 53 | Transports publics fribourgeois | 8 | 33 / 114 | 106 / 184 |
 | 56 | Aare Seeland mobil (rvo) | 1 | 73 / 73 | 71 / 71 |
 | 64 | Montreux-Oberland Bernois | 10 | 19 / 103 | 10 / 82 |
 | 81 | Aare Seeland mobil (snb) | 1 | 154 / 154 | 96 / 96 |
@@ -127,8 +127,8 @@ Generated from the [Bern audit](BERN-STUDY.md). Counts are admitted / candidate 
 | 91-29-Y-j26-1 | 11: IC | rail | partially-admitted | 1 / 1 | 3 / 5 | 230_IC, 300_IC_a, 300_IC_b, 301_IC, 310_IC, 410_IC | — | incomplete-directed-pattern |
 | 91-2H-Y-j26-1 | 11: IC | rail | excluded | 0 / 5 | 0 / 10 | 230_IC, 300_IC_a, 300_IC_b, 301_IC, 310_IC, 410_IC | — | incomplete-directed-pattern |
 | 91-2J-Y-j26-1 | 11: IC | rail | inactive-on-validation-dates | 0 / 0 | 0 / 0 | 230_IC, 300_IC_a, 300_IC_b, 301_IC, 310_IC, 410_IC | — | Not active on these dates |
-| 91-3W-Y-j26-1 | 11: IC | rail | partially-admitted | 0 / 0 | 1 / 2 | 230_IC, 300_IC_a, 300_IC_b, 301_IC, 310_IC, 410_IC | — | incomplete-directed-pattern |
-| 91-4R-Y-j26-1 | 11: IC | rail | excluded | 0 / 0 | 0 / 1 | 230_IC, 300_IC_a, 300_IC_b, 301_IC, 310_IC, 410_IC | — | incomplete-directed-pattern |
+| 91-3W-Y-j26-1 | 11: IC | rail | admitted-all-dated-trips | 0 / 0 | 2 / 2 | 230_IC, 300_IC_a, 300_IC_b, 301_IC, 310_IC, 410_IC | bern-crosscanton-fot-rail-20210706 | — |
+| 91-4R-Y-j26-1 | 11: IC | rail | admitted-all-dated-trips | 0 / 0 | 1 / 1 | 230_IC, 300_IC_a, 300_IC_b, 301_IC, 310_IC, 410_IC | bern-crosscanton-fot-rail-20210706 | — |
 | 91-9N-Y-j26-1 | 11: IC | rail | inactive-on-validation-dates | 0 / 0 | 0 / 0 | 230_IC, 300_IC_a, 300_IC_b, 301_IC, 310_IC, 410_IC | — | Not active on these dates |
 | 91-CB-Y-j26-1 | 11: IC | rail | excluded | 0 / 0 | 0 / 1 | 230_IC, 300_IC_a, 300_IC_b, 301_IC, 310_IC, 410_IC | — | incomplete-directed-pattern |
 | 91-1-D-j26-1 | 11: IC1 | rail | excluded | 0 / 41 | 0 / 31 | — | — | no-verified-operator-line-crosswalk |
@@ -160,7 +160,7 @@ Generated from the [Bern audit](BERN-STUDY.md). Counts are admitted / candidate 
 | 91-16-G-j26-1 | 11: R16 | rail | excluded | 0 / 20 | 0 / 18 | — | — | no-verified-operator-line-crosswalk |
 | 91-41-E-j26-1 | 11: R41 | rail | admitted-all-dated-trips | 73 / 73 | 70 / 70 | 225_R | — | — |
 | 91-42-E-j26-1 | 11: R42 | rail | admitted-all-dated-trips | 62 / 62 | 41 / 41 | 226 | — | — |
-| 91-1X-Y-j26-1 | 11: RE | rail | excluded | 0 / 1 | 0 / 0 | 240_RE | — | incomplete-directed-pattern |
+| 91-1X-Y-j26-1 | 11: RE | rail | admitted-all-dated-trips | 1 / 1 | 0 / 0 | 240_RE | bern-crosscanton-fot-rail-20210706 | — |
 | 91-54-Y-j26-1 | 11: RE | rail | excluded | 0 / 1 | 0 / 0 | 240_RE | — | incomplete-directed-pattern |
 | 91-FN-Y-j26-1 | 11: RE | rail | inactive-on-validation-dates | 0 / 0 | 0 / 0 | 240_RE | — | Not active on these dates |
 | 91-4-M-j26-1 | 11: RE4 | rail | admitted-all-dated-trips | 29 / 29 | 30 / 30 | 225_RE | — | — |
@@ -201,7 +201,7 @@ Generated from the [Bern audit](BERN-STUDY.md). Counts are admitted / candidate 
 | 91-12-M-j26-1 | 33: R12 | rail | admitted-all-dated-trips | 14 / 14 | 12 / 12 | 330_R | — | — |
 | 91-1-N-j26-1 | 33: RE1 | rail | partially-admitted | 31 / 63 | 7 / 65 | 330_RE | — | incomplete-directed-pattern |
 | 91-7-L-j26-1 | 33: RE7 | rail | partially-admitted | 5 / 38 | 9 / 40 | 460_RE | — | incomplete-directed-pattern |
-| 91-8-L-j26-1 | 33: RE8 | rail | partially-admitted | 8 / 10 | 4 / 7 | 320_RE | — | incomplete-directed-pattern |
+| 91-8-L-j26-1 | 33: RE8 | rail | partially-admitted | 8 / 10 | 5 / 7 | 320_RE | bern-crosscanton-fot-rail-20210706 | incomplete-directed-pattern |
 | 91-9-L-j26-1 | 33: RE9 | rail | admitted-all-dated-trips | 18 / 18 | 18 / 18 | 310_R | — | — |
 | 91-11-O-j26-1 | 33: RE11 | rail | excluded | 0 / 0 | 0 / 2 | — | — | no-verified-operator-line-crosswalk |
 | 91-12-D-j26-1 | 33: RE12 | rail | excluded | 0 / 0 | 0 / 2 | — | — | no-verified-operator-line-crosswalk |
@@ -239,8 +239,8 @@ Generated from the [Bern audit](BERN-STUDY.md). Counts are admitted / candidate 
 | 91-2-M-j26-1 | 53: RE2 | rail | admitted-all-dated-trips | 28 / 28 | 28 / 28 | 254_RE | — | — |
 | 91-8S-Y-j26-1 | 53: S | rail | inactive-on-validation-dates | 0 / 0 | 0 / 0 | — | — | Not active on these dates |
 | 91-8T-Y-j26-1 | 53: S | rail | inactive-on-validation-dates | 0 / 0 | 0 / 0 | — | — | Not active on these dates |
-| 91-20-B-j26-1 | 53: S20 | rail | excluded | 0 / 43 | 0 / 78 | 255_a | — | incomplete-directed-pattern |
-| 91-21-A-j26-1 | 53: S21 | rail | excluded | 0 / 43 | 0 / 78 | 255_b | — | incomplete-directed-pattern |
+| 91-20-B-j26-1 | 53: S20 | rail | partially-admitted | 2 / 43 | 38 / 78 | 255_a | bern-crosscanton-fot-rail-20210706 | incomplete-directed-pattern |
+| 91-21-A-j26-1 | 53: S21 | rail | partially-admitted | 3 / 43 | 40 / 78 | 255_b | bern-crosscanton-fot-rail-20210706 | incomplete-directed-pattern |
 | 91-50-j26-1 | 53: S50 | rail | inactive-on-validation-dates | 0 / 0 | 0 / 0 | — | — | Not active on these dates |
 | 91-12-L-j26-1 | 56: S12 | rail | admitted-all-dated-trips | 73 / 73 | 71 / 71 | 414 | — | — |
 | 91-30-D-j26-1 | 64: 30 | rail | inactive-on-validation-dates | 0 / 0 | 0 / 0 | — | — | Not active on these dates |

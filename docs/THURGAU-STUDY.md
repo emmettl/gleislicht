@@ -2,7 +2,7 @@
 
 Audit date: **8 September 2026**. Starting point: [Swiss transit source inventory](SWISS-TRANSIT-SOURCE-INVENTORY.md#tg).
 
-The complete canton-scoped GTFS inventory contains **132 route records across 15 agency identities**, with calls in all **five districts**. The regional feed admits **4269 Friday journeys and 2675 Sunday journeys**, each retaining every original call and a validated path for every directed segment. **This is partial geometry coverage, not a complete canton service feed.** 102 route records have all dated journeys admitted, 4 have partial admission, 5 are excluded, and 21 are inactive on both validation dates.
+The complete canton-scoped GTFS inventory contains **132 route records across 15 agency identities**, with calls in all **five districts**. The regional feed admits **4306 Friday journeys and 2675 Sunday journeys**, each retaining every original call and a validated path for every directed segment. **This is partial geometry coverage, not a complete canton service feed.** 104 route records have all dated journeys admitted, 2 have partial admission, 5 are excluded, and 21 are inactive on both validation dates.
 
 ## Deliverables
 
@@ -43,7 +43,7 @@ District route counts overlap. Journeys retain **every call outside Thurgau**, i
 | 727 | Verkehrsbetriebe Kreuzlingen | 6 | 487 / 487 | 200 / 200 |
 | 744 | Automobildienst Appenzeller Bahnen | 2 | 1 / 1 | 0 / 0 |
 | 797 | Stadtbus Frauenfeld | 11 | 574 / 589 | 194 / 224 |
-| 801 | PostAuto AG | 40 | 1288 / 1325 | 868 / 868 |
+| 801 | PostAuto AG | 40 | 1325 / 1325 | 868 / 868 |
 | 896 | Regiobus Gossau SG | 1 | 58 / 58 | 0 / 0 |
 | 3182 | Solarfährbetrieb Thomas Geiger Reichenau | 1 | 18 / 18 | 18 / 18 |
 | 7231 | SBB Infrastruktur AG Bahnersatz | 13 | 0 / 0 | 0 / 0 |
@@ -63,6 +63,7 @@ Four official call-taxi polygons are separately recorded in the audit: Bischofsz
 | Federal rail network | Checksum-verified FOT XTF; catalogue 2021-07-06, asset updated 2025-01-18, reused 2026-09-08; used segment Stand dates 2021-07-06 | © Federal Office of Transport (FOT); opendata.swiss terms_by, source attribution required; retain proprietary catalogue label without relabelling it CC |
 | SBB graphical lines | Pinned selected responses reused 2026-09-08; catalogue modified 2026-07-29T06:16:28+00:00, data processed 2026-09-02T03:01:34+00:00; no feature survey date supplied | SBB Infrastructure / data.sbb.ch; terms_by, commercial and non-commercial use with attribution |
 | Official shipping and lake shorelines | swissTLMRegio source acquired 2026-09-08; collection updated 2026-06-25 with temporal extent through 2025-12-02; individual shipping-feature vintage unknown. Original FOEN Bodensee and Untersee features retain 2007 shoreline reference. | © swisstopo; shoreline © FOEN, swisstopo; swisstopo free-geodata terms. Literal proprietary STAC label preserved, not relabelled CC. |
+| Wittenbach turnaround | Historical OSM state 2026-09-02; acquired 2026-09-08. Selected road version 9 (2026-08-02), roundabout version 14 (2024-01-29). Full original responses and scoped restriction query retained. | © OpenStreetMap contributors; separate ODbL 1.0 inferred turnaround database. |
 | Bregenz OSM rail corridor | Historical Overpass query 2026-09-02T00:00:00Z; acquired 2026-09-08; 521 ways individually inventoried | © OpenStreetMap contributors; separate border path database under ODbL 1.0 |
 | City and regional road supplements | Geofabrik Switzerland 2026-09-02 plus OSM border extract 2026-09-08; pinned PBF SHA d5c675456e935cfbcab88fe894fe9145dc5bd1fbd4318cea30ffd838a9aad02b | © OpenStreetMap contributors; derived path database under ODbL 1.0 |
 
@@ -124,13 +125,29 @@ The regional supplement adds **2108 Friday / 1251 Sunday journeys** to the city-
 
 Across **59 fixed route records**, **292 of 296** routing patterns pass every road-segment check. Matcher runs on **8 September 2026** use the same pinned binary, unmodified bus configuration and Swiss/border OSM source as the city supplement. The 120 m snap, max(6 × direct, 1,500 m) detour and 5 m simplification limits are unchanged. Original patterns, log, shapes, trips, stop times and run receipts are preserved separately for each operator. Verification pins binary/config/source hashes and reimports every accepted and rejected segment from those original outputs. These are inferred road shapes, not newly acquired operator alignment data.
 
-Complete official patterns retain their original paths. For an incomplete official pattern, the road supplement must provide the **entire exact ordered platform-and-coordinate chain**; it cannot patch a gap with another pattern's segment. Missing cache identities fail the build. Known rejected road patterns retain their official geometry diagnostics and remain excluded as whole journeys. Each admitted train keeps its own pattern geometry, even when another pattern traverses the same directed stop pair differently.
+Complete official patterns retain their original paths. For an incomplete official pattern, the road supplement must provide the **entire exact ordered platform-and-coordinate chain**; it cannot patch a gap with another pattern's segment. Missing cache identities fail the build. The four original matcher rejections retain their diagnostics; the explicit Wittenbach supplement below resolves only their scoped missing first segment. Each admitted train keeps its own pattern geometry, even when another pattern traverses the same directed stop pair differently.
 
-**Wittenbach Zentrum:** four PostAuto routing patterns on 200 and 207 give distinct platforms 73966:0:341297 and 73966:0:256909 identical matcher shape distances (0.0). The importer cannot extract a positive-length road segment. Their **37 Friday journeys** remain excluded with missing-shape evidence; neither call is dropped and no connector is invented.
+**Wittenbach Zentrum:** the original matcher gives distinct platforms 73966:0:341297 and 73966:0:256909 identical shape distances (0.0) in four PostAuto patterns. That failure remains preserved. A separately pinned road-turnaround inference now admits their **37 Friday journeys**, retaining both calls and every subsequent segment from the same full-pattern cache.
 
 **RUB:** route 92-8-Y-j26-1 is GTFS type **715**, which denotes demand-responsive bus service in the [extended GTFS route reference](https://developers.google.com/transit/gtfs/reference/extended-route-types), last updated 16 October 2024 and checked 8 September 2026. Ordinary pickup/drop-off flags alone do not establish fixed operation. Its **30 Friday and 29 Sunday** instances remain excluded, alongside Frauenfeld NT. [Review notes](../data/thurgau-regional-roads/review-sources.json) preserve the source interpretation; they do not claim an original HTML snapshot.
 
-A [fresh Wittenbach replay](../data/thurgau-audit/wittenbach-review.json) confirms the four failed patterns against the preserved matcher stop-times: distinct platforms 2 and 1 are 17.85 m apart, but both shape distances are 0.0. Their 37 Friday journeys remain excluded pending evidenced turnaround geometry. Reproduce with `python3 scripts/review-thurgau-wittenbach.py`.
+The [original Wittenbach replay](../data/thurgau-audit/wittenbach-review.json) preserves the historical four-pattern failure against the original matcher stop-times. The platforms are **17.85 m apart**, but both shape distances remain 0.0. Reproduce this historical evidence with `python3 scripts/review-thurgau-wittenbach.py`; the original cache and its rejected slices are unchanged.
+
+### Scoped Wittenbach turnaround
+
+The [new source archive](../data/thurgau-wittenbach-sources/sources.json), [policy](../data/thurgau-wittenbach-policy.json), [source inventory](../data/thurgau-wittenbach-sources/inventory.json), [full-pattern review](../data/thurgau-wittenbach-sources/path-review.json) and [distributed ODbL path database](../public/data/thurgau-region/wittenbach-paths.json) record the resolution. An Overpass query requests **2 September 2026 at 00:00 UTC**, acquired **8 September 2026**. All 7,856 unique source elements are preserved, with 1,312 ways/relations inventoried. Only two ways supply new movement geometry: **1111858974**, Romanshornerstrasse, version **9** dated **2 August 2026**, and **26647200**, the roundabout, version **14** dated **29 January 2024**.
+
+The source-road path runs west from the original platform-2 projection, traverses the **entire mapped roundabout in source order**, then returns east to the original platform-1 projection. The road and circle share exact node **292227795**. The **224.02 m** road path follows existing vertices and retains the closed ring; it cannot reverse instantly at the junction or replace the circle with a chord. Platform connectors measure **6.72 / 4.08 m**, within the explicit **15 m** cap. The platforms must lie on opposite right-hand sides of the directed approach. The selected road must remain bidirectional, the ring must remain a counterclockwise roundabout, and road length must remain within **150–400 m**. No GTFS coordinate is moved.
+
+OSM arrival relations **17128888 (200)** and **16238506 (207)** include the selected approach and roundabout. Their departure counterparts **17128889 / 16238511** begin at the outbound source stop and omit the turnaround. These records support the terminus context but **do not verify the complete two-call movement**. The full ring is an explicit road inference from the ordered GTFS platforms. The [OSM roundabout definition](https://wiki.openstreetmap.org/wiki/Tag:junction%3Droundabout) specifies source traffic direction and implied one-way circulation. A separate dated query acquires all restrictions referencing the selected ways: **14866387**, an only-right-turn from another side road, lies outside the traversed subpath and is recorded as inapplicable. This is source validation, not legal, lane or operator certification.
+
+Admission is restricted to segment zero of four exact **agency 801 / routes 200 and 207 / direction 1** patterns whose original cache has one missing first segment and complete subsequent slices. Changed route, platform coordinates, direction, source features or restrictions fail validation; other patterns cannot borrow this turnaround. Every later segment comes from that same preserved matcher pattern. Previously admitted bus, rail and boat journeys retain their paths and times unchanged. Sunday has no corresponding failed pattern and gains no journeys.
+
+![Scoped turnaround and four complete patterns](assets/thurgau-wittenbach-turn-review.png)
+
+The local road/roundabout and all four full-pattern overlays were inspected. The OSM-derived turnaround retains **© OpenStreetMap contributors / ODbL 1.0** attribution. Reproduce with `node scripts/prepare-thurgau-wittenbach.mjs`, `node scripts/review-thurgau-wittenbach-turn.mjs` and `scripts/review-thurgau-wittenbach-turn.py`, then rebuild and check the regional feed.
+
+**All dated fixed bus journeys now have complete geometry: 3,361 Friday / 1,754 Sunday.** Together with all 919 / 895 rail journeys, the remaining dated exclusions are boats and explicitly demand-responsive services. This does not establish year-round coverage or certified physical routing.
 
 The review plots overlay all 296 routing patterns across 59 route records: [page 1](assets/thurgau-regional-road-review-1.png), [page 2](assets/thurgau-regional-road-review-2.png), [page 3](assets/thurgau-regional-road-review-3.png), [page 4](assets/thurgau-regional-road-review-4.png). Every panel was inspected for branch shapes and endpoint loops. Grey paths include valid segments from incomplete patterns; their presence in a review plot is not feed admission. The plots have no basemap and do not certify temporary diversions or physical street restrictions. The complete regional derived database is distributed under **ODbL 1.0**, credited to **OpenStreetMap contributors**, separately from the cantonal CC BY geometry.
 
@@ -218,18 +235,18 @@ Reproduce offline with `node scripts/prepare-thurgau-boats.mjs`, `node scripts/r
 
 The date model is **local civil day 00:00–24:00**, including previous-service-day spillover (Thursday into Friday and Saturday into Sunday). Calendar exceptions apply. Frequency expansion and reservation permissions are handled; this selected fixture has zero active frequency templates. Original calls and pickup/drop-off permissions remain in exported journeys. A reservation/on-demand call, type-715 route or any failed segment excludes the entire journey.
 
-The admitted feeds retain **8920 / 4714 zero-duration segment occurrences (Friday / Sunday)** where different stops share a timetable minute. No artificial seconds are inserted and no finite speed is assigned to those segments. Each day's timing diagnostics also retain the largest positive-duration implied speed by mode; the Sunday rail maximum is about 215 km/h on an SN30 segment. These are source-timing/model limitations, not measured or certified operating speeds. Geometry admission does not establish physically realistic timing at every call.
+The admitted feeds retain **8951 / 4714 zero-duration segment occurrences (Friday / Sunday)** where different stops share a timetable minute. No artificial seconds are inserted and no finite speed is assigned to those segments. Each day's timing diagnostics also retain the largest positive-duration implied speed by mode; the Sunday rail maximum is about 215 km/h on an SN30 segment. These are source-timing/model limitations, not measured or certified operating speeds. Geometry admission does not establish physically realistic timing at every call.
 
 Pattern identity is GTFS **route ID + direction_id + full ordered original platform IDs**, including repeated calls and out-of-canton stops. Stop pairs remain ordered and route-scoped. A matched directed pair means at least one pattern context has a path. Segment-occurrence coverage is counted from each pattern’s own paths; a successful context does not confer coverage on a failed context of the same pair. Both include otherwise excluded incomplete journeys and must not be confused with admitted-feed counts.
 
 | Measure | Friday 4 September | Sunday 6 September |
 | --- | --- | --- |
 | Dated journeys | 4417 | 2795 |
-| Admitted journeys | 4269 (96.6%) | 2675 (95.7%) |
-| Complete admitted patterns / all patterns | 533 / 563 | 417 / 442 |
-| Matched directed pairs / all directed pairs | 3377 / 3529 (95.7%) | 3284 / 3425 (95.9%) |
-| Matched scheduled segments / all occurrences | 63732 / 64684 (98.5%) | 40124 / 41271 (97.2%) |
-| Segments in admitted journeys | 63250 | 40124 |
+| Admitted journeys | 4306 (97.5%) | 2675 (95.7%) |
+| Complete admitted patterns / all patterns | 537 / 563 | 417 / 442 |
+| Matched directed pairs / all directed pairs | 3388 / 3529 (96.0%) | 3284 / 3425 (95.9%) |
+| Matched scheduled segments / all occurrences | 63873 / 64684 (98.7%) | 40124 / 41271 (97.2%) |
+| Segments in admitted journeys | 63873 | 40124 |
 | Carry-in journeys: admitted / total | 55 / 58 | 129 / 167 |
 | Night-labelled journeys: admitted / total | 0 / 15 | 75 / 105 |
 | Patterns revisiting platforms: admitted / total | 20 / 21 | 12 / 13 |
@@ -239,9 +256,9 @@ Pattern identity is GTFS **route ID + direction_id + full ordered original platf
 | Unmatched directed-pair reason | Friday | Sunday |
 | --- | --- | --- |
 | missing-line | 141 | 141 |
-| endpoint-gap | 6 | 0 |
-| disconnected-line | 4 | 0 |
-| collapsed-path | 1 | 0 |
+| endpoint-gap | 0 | 0 |
+| disconnected-line | 0 | 0 |
+| collapsed-path | 0 | 0 |
 | implausible-detour | 0 | 0 |
 
 Endpoint gaps can reflect source extent, missing termini, stop offsets or stale alignment; disconnections reflect exact source topology. No threshold was increased to hide these failures. All rejected pairs, their endpoint names and gap diagnostics are saved in each day's audit.
@@ -316,11 +333,11 @@ Counts below refer only to the two validated civil dates. Multiple records can s
 | 797 | 813 | 92-813-B-j26-1 | 4 / 4 | 28 / 28 |
 | 797 | 814 | 92-814-B-j26-1 | 4 / 4 | 28 / 28 |
 | 797 | 815 | 92-815-B-j26-1 | 4 / 4 | 28 / 28 |
-| 801 | 200 | 96-220-5-j26-1 | 48 / 79 | 76 / 76 |
+| 801 | 200 | 96-220-5-j26-1 | 79 / 79 | 76 / 76 |
 | 801 | 200 | 96-220-A-j26-1 | 0 / 0 | 7 / 7 |
 | 801 | 201 | 96-250-A-j26-1 | 72 / 72 | 0 / 0 |
 | 801 | 205 | 96-221-4-j26-1 | 20 / 20 | 0 / 0 |
-| 801 | 207 | 96-220-6-j26-1 | 6 / 12 | 0 / 0 |
+| 801 | 207 | 96-220-6-j26-1 | 12 / 12 | 0 / 0 |
 | 801 | 210 | 96-250-8-j26-1 | 66 / 66 | 35 / 35 |
 | 801 | 211 | 96-220-8-j26-1 | 68 / 68 | 37 / 37 |
 | 801 | 211 | 96-220-B-j26-1 | 0 / 0 | 5 / 5 |
@@ -381,7 +398,7 @@ node scripts/build-thurgau-region.mjs \
 # stop, path, edge and journey; reconcile routes, groups, patterns and chunks.
 node scripts/check-thurgau-region.mjs
 node scripts/document-thurgau-study.mjs
-npx vitest run scripts/thurgau-boat-geometry.test.mjs scripts/water-paths.test.mjs scripts/zug-boat-geometry.test.mjs scripts/thurgau-border-rail.test.mjs scripts/thurgau-sbb-rail.test.mjs scripts/thurgau-rail-geometry.test.mjs scripts/luzern-rail-geometry.test.mjs scripts/thurgau-regional-roads.test.mjs scripts/thurgau-region.test.mjs scripts/thurgau-city-roads.test.mjs scripts/bern-region.test.mjs
+npx vitest run scripts/thurgau-wittenbach.test.mjs scripts/thurgau-boat-geometry.test.mjs scripts/water-paths.test.mjs scripts/zug-boat-geometry.test.mjs scripts/thurgau-border-rail.test.mjs scripts/thurgau-sbb-rail.test.mjs scripts/thurgau-rail-geometry.test.mjs scripts/luzern-rail-geometry.test.mjs scripts/thurgau-regional-roads.test.mjs scripts/thurgau-region.test.mjs scripts/thurgau-city-roads.test.mjs scripts/bern-region.test.mjs
 python3 scripts/test_thurgau_sources.py
 ```
 
@@ -391,6 +408,6 @@ To rebuild the city supplement, run `node scripts/prepare-thurgau-city-roads.mjs
 
 To rebuild the regional supplement, run `node scripts/prepare-thurgau-regional-roads.mjs`, then the same matcher separately for agency directories 138, 744, 801 and 896, using input `/private/tmp/thurgau-regional-road-feeds/AGENCY` and output `/private/tmp/thurgau-regional-road-matched/AGENCY`. Run `node scripts/import-thurgau-regional-roads.mjs`, `node scripts/check-thurgau-regional-roads.mjs` and `scripts/review-thurgau-regional-roads.py` with a Pillow-enabled Python, inspect every panel and rejection, then rebuild and check the regional feed. Pinned review notes distinguish source dates and admission decisions.
 
-To reproduce federal rail preparation from the existing pinned national snapshot, run `node scripts/prepare-thurgau-rail.mjs data/aargau-rail-sources`, then rebuild and run the Thurgau checker. The committed `data/thurgau-rail-sources` files already support an entirely offline feed build; the Aargau directory is only the default acquisition-reuse input. Generate the supplemental review with `scripts/review-thurgau-rail.py` using a Pillow-enabled Python. Reproduce SBB preparation with `node scripts/prepare-thurgau-sbb-rail.mjs`, using the already preserved Bregenz query; plot with `scripts/review-thurgau-rail.py --sbb`. Reproduce border source preparation offline with `node scripts/prepare-thurgau-border-rail.mjs`, generate path diagnostics with `node scripts/review-thurgau-border-rail.mjs` and its plot with `scripts/review-thurgau-border-rail.py`. Reproduce the water screening offline with `node scripts/review-thurgau-water.mjs`. The checker replays all rail and boat paths and additionally proves every previously admitted bus and rail path unchanged by the boat supplement.
+To reproduce federal rail preparation from the existing pinned national snapshot, run `node scripts/prepare-thurgau-rail.mjs data/aargau-rail-sources`, then rebuild and run the Thurgau checker. The committed `data/thurgau-rail-sources` files already support an entirely offline feed build; the Aargau directory is only the default acquisition-reuse input. Generate the supplemental review with `scripts/review-thurgau-rail.py` using a Pillow-enabled Python. Reproduce SBB preparation with `node scripts/prepare-thurgau-sbb-rail.mjs`, using the already preserved Bregenz query; plot with `scripts/review-thurgau-rail.py --sbb`. Reproduce border source preparation offline with `node scripts/prepare-thurgau-border-rail.mjs`, generate path diagnostics with `node scripts/review-thurgau-border-rail.mjs` and its plot with `scripts/review-thurgau-border-rail.py`. Reproduce the water screening offline with `node scripts/review-thurgau-water.mjs`. The checker replays all supplements and proves every previously admitted bus, rail and boat path unchanged by the scoped turnaround. All fixed buses and all rail journeys must have complete dated geometry.
 
 Validation covers source hashes, GML counts/axes/IDs, full canton/district membership, operator/line identity, direction and loop preservation, midnight spillover, whole-pattern rejection, repeated geometry replay, exact exported paths, complete calls, finite ordered times, all 24 chunk hashes and trip identities. **Two September days do not establish public-holiday, winter, summer-only or year-round completeness.** Temporary diversions and physical one-way/track legality remain unverified.
