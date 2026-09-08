@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "label": "Basel: BVB/BLT and Swiss-side regional rail",
+  "serviceDates": ["2026-09-08", "2026-09-13"],
+  "geometryServiceDates": ["2026-09-07", "2026-09-08", "2026-09-12", "2026-09-13"],
+  "railSource": "https://www.tnw.ch/assets/files/content/linienplan_trireno_2026.pdf",
+  "railStations": {
+    "8500010": "Basel SBB", "8500020": "Muttenz", "8500021": "Pratteln",
+    "8517131": "Pratteln Salina Raurica", "8500300": "Kaiseraugst",
+    "8500313": "Rheinfelden Augarten", "8500301": "Rheinfelden",
+    "8500022": "Frenkendorf-Füllinsdorf", "8500023": "Liestal", "8500024": "Lausen",
+    "8500025": "Itingen", "8500026": "Sissach", "8500136": "Basel Dreispitz",
+    "8500119": "Münchenstein", "8500118": "Dornach-Arlesheim", "8500117": "Aesch BL",
+    "8500116": "Duggingen", "8500115": "Grellingen", "8500114": "Zwingen", "8500113": "Laufen",
+    "8500090": "Basel Bad Bf", "8517010": "Riehen Niederholz", "8516764": "Riehen",
+    "8500016": "Basel St. Johann"
+  },
+  "stationAliases": { "8014431": "8500090" },
+  "roadExclusions": [
+    {
+      "agencyId": "823", "line": "33",
+      "fromId": "ch:1:sloid:89315:1:4", "toId": "ch:1:sloid:89365:1:1",
+      "reason": "reviewed-corridor-mismatch",
+      "sourceUrl": "https://www.bvb.ch/wp-content/bvb/dokumente/baustelleninformationen/2026/Wanderstrasse_September_2026.pdf",
+      "note": "The 50 m station-candidate profile doubles back along the approach from the provisional General Guisan-Strasse stop. The official plan instead continues around the southern loop to St. Galler-Ring. Do not accept the shortcut."
+    }
+  ],
+  "railServices": [
+    { "agencyId": "11", "line": "S1", "type": 109 },
+    { "agencyId": "11", "line": "S11", "type": 109 },
+    { "agencyId": "11", "line": "S3", "type": 109 },
+    { "agencyId": "11", "line": "S31", "type": 109 },
+    { "agencyId": "11", "line": "S32", "type": 109 },
+    { "agencyId": "11", "line": "S33", "type": 109 },
+    { "agencyId": "351", "line": "S6", "type": 109 },
+    { "agencyId": "L7____", "line": "S6", "type": 109 },
+    { "agencyId": "11", "line": "TER", "type": 106 }
+  ],
+  "railCorridors": [
+    ["8500010", "8500020", "8500021", "8517131", "8500300", "8500313", "8500301"],
+    ["8500010", "8500020", "8500021", "8500022", "8500023", "8500024", "8500025", "8500026"],
+    ["8500010", "8500136", "8500119", "8500118", "8500117", "8500116", "8500115", "8500114", "8500113"],
+    ["8500010", "8500090", "8517010", "8516764"],
+    ["8500010", "8500016"]
+  ],
+  "exclusions": [
+    "Long-distance and regional-express rail; S5, S9, RB27 and RB30",
+    "Rail calls beyond Laufen, Sissach, Rheinfelden, Riehen and Basel St. Johann",
+    "Other local operators, including AAGL, SWEG and distribus; this is not complete TNW or trireno"
+  ]
+}

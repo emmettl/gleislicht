@@ -1,5 +1,7 @@
 # Basel local network: timetable and geometry audit
 
+**Current milestone:** the [Basel core candidate](BASEL-CORE.md) now adds bounded regional rail, civil-day overnight services, a reviewed FOT tram fallback and supplemental bus patterns. This document preserves the earlier local service-day baseline and its measurements.
+
 Started **8 September 2026**, following the [regional source survey](REGIONAL-NETWORK-SURVEY.md). The candidate now combines a reproducible BVB/BLT timetable, both Basel-Stadt line layers, FOT tram 19 infrastructure, a per-pattern OSM bus fallback, and narrowly scoped September tram diversions. It is not yet an application study or a complete TNW network.
 
 The timetable foundation works, including foreign stops. **All four operator/mode groups now pass the 95% geometry gate on both dates**, with payloads inside the existing budgets. This is a technical candidate, not a release approval: individual routes still have gaps, running tracks and one-way choices need review, and regional rail plus app integration remain outstanding.

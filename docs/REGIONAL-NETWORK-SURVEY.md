@@ -8,7 +8,7 @@ Surveyed **8 September 2026**. Lausanne is already being tackled separately; see
 
 This is a source survey and engineering assessment, not an implementation or a claim that geometry is production-ready. Rankings and proposed boundaries below are our judgement. Live source checks and the older reproducible timetable fixture are dated separately.
 
-**Basel follow-up:** the [BVB/BLT audit](BASEL-STUDY.md) now measures complete weekday/Sunday source journeys, the full BS line layers and isolated FOT infrastructure for tram 19. A per-pattern OSM bus fallback and dated tram-corridor inference now bring all four operator/mode groups above 95% on both dates. Provisional platforms and some tram joins remain unresolved, and the candidate is not yet integrated into the app. Baselland's shapefile acquisition and the unsuccessful public-map WFS probes are documented there. The measured audit takes precedence over the preliminary readiness estimates here.
+**Basel follow-up:** the [reviewed core candidate](BASEL-CORE.md) now includes complete BVB/BLT local journeys, bounded Swiss-side regional rail and preceding-day services. Tuesday/Sunday contain 8,808/6,163 trip records; all five geometry groups pass 95% and payload budgets pass. The handoff documents exact rail boundaries, dated tram topology, a rejected bus shortcut and remaining provisional-platform/rail-approach gaps. It is ready for schematic study integration but is not yet published or complete TNW. The [earlier local audit](BASEL-STUDY.md) retains the official-source acquisition findings and service-day baseline. These measured audits take precedence over the preliminary readiness estimates here.
 
 ## Shortlist
 

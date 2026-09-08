@@ -1,5 +1,7 @@
 # Rebuilding Basel's bus and diversion geometry
 
+For the current civil-day candidate, see the [Basel core handoff](BASEL-CORE.md). It adds a supplemental bus cache, an explicit rejection of an incorrect line-33 return, and FOT topology for the dated tram corridors. The procedure below reproduces the original service-day baseline.
+
 The [Basel study audit](BASEL-STUDY.md) combines three explicit geometry sources: original BS line paths, the isolated FOT tram 19 branch, and an OSM bus fallback. Reviewed tram diversion corridors can additionally use the existing BS tram infrastructure. No timetable trips are dropped to raise geometry coverage.
 
 ## Bus cache preparation

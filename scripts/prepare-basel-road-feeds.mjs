@@ -51,9 +51,13 @@ export function mergeBaselBusCandidates(candidates, routes) {
       const route = routes.get(train.routeId)
       assert(route && BASEL_BUS_AGENCIES.some(agency => agency.id === route.agencyId), 'Unexpected Basel road agency')
       assert.equal(route.name, train.route)
+      // A civil-day carry-in can start before zero. Restore its source-day
+      // times for the offline GTFS matcher, preserving every interval; GTFS
+      // cannot encode negative hours. This does not alter the study artifact.
+      const offset = train.stops.some(([, arrival, departure]) => arrival < 0 || departure < 0) ? 86400 : 0
       // Dates distinguish source journeys in this offline pattern union. The
       // output calendar is only a matcher input, not a published timetable.
-      trains.push({ ...train, id: `${date}:${train.id}`, stops: train.stops.map(([index, ...times]) => [remap[index], ...times]) })
+      trains.push({ ...train, id: `${date}:${train.id}`, stops: train.stops.map(([index, ...times]) => [remap[index], ...times.map(time => time + offset)]) })
     }
   }
   return { stops, trains, metadata: { feedVersion, serviceDate: [...dates][0], serviceDates: [...dates],
