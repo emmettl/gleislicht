@@ -61,8 +61,8 @@ export async function loadZugRoads(policy, raw, timetableHash) {
   }
   // Re-import retained warnings and shapes; a rejected matcher hop cannot be
   // laundered into a successful fallback merely by editing the derived cache.
-  await verifyLuzernRoadEvidence(cache)
-  return { source: cache.metadata, candidates: roadConsensus(cache, policy.limits),
+  await verifyLuzernRoadEvidence(cache, cache.metadata.source.description)
+  return { source: cache.metadata, candidates: roadConsensus(cache, policy.limits, policy.osmSha256),
     inventory: Object.entries(cache.agencies).flatMap(([agencyId, a]) => Object.entries(a.identities).map(([id, p]) => ({ id, agencyId, routeId: p.routeId, stopIds: p.stops.map(s => s[4]) }))) }
 }
 

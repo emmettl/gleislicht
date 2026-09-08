@@ -123,14 +123,14 @@ ${table(['Line','From → to','Inferred length','Complete-pattern contexts'], [.
 
 A second, separately pinned [road cache](../data/zug-road-expansion-cache.json) and [matcher evidence](../data/zug-road-expansion-evidence/) cover **all 19 remaining incomplete bus route records**: 18 ZVB routes and GTFS agency 7231's EV1 replacement bus. The preparation retains **73 complete patterns** (71 ZVB, two EV1), including already-admitted branches on those routes. All original calls, coordinates, carry-in service dates and call rules survive admission. Road source date, ODbL attribution, binary/configuration hashes, import limits and consensus rules are the same as above. Each agency was independently matched on **8 September 2026**. The two road cache scopes must be disjoint; the original 653/N73 evidence remains unchanged.
 
-This adds **${days[0].admittedTripsUsingRoadExpansion} Friday** and **${days[1].admittedTripsUsingRoadExpansion} Sunday** trips, raising the feed to **${count(days[0].admittedTrips)} / ${count(days[1].admittedTrips)}**. Road paths replace only failed official adjacent-call paths, so a complete trip may still use successful official geometry elsewhere. Every previously matched pair from the preceding committed feed retains its geometry hash. Scope here is the two source civil dates, not a claim of seasonal bus completeness or verified September diversions.
+The original expansion contributes **${days[0].admittedTripsUsingRoadExpansion} Friday** and **${days[1].admittedTripsUsingRoadExpansion} Sunday** trips. The current combined feed contains **${count(days[0].admittedTrips)} / ${count(days[1].admittedTrips)}**. Road paths replace only failed official adjacent-call paths, so a complete trip may still use successful official geometry elsewhere. Every previously matched pair from the preceding committed feed retains its geometry hash. Scope here is the two source civil dates, not a claim of seasonal bus completeness or verified September diversions.
 
 ${table(['Agency / line','Friday admitted / source','Sunday admitted / source','Remaining reasons'],audit.inventory.filter(r=>expansionIds.has(r.routeId)).map(r=>[`${r.agencyId} / ${r.line}`,...r.days.map(d=>`${d.admittedTrips} / ${d.trips}`),[...new Set(r.days.flatMap(d=>d.reasons))].join(', ')||'none on fixtures']))}
 
 The remaining bus exclusions are specific:
 
 - **604, Zug Grienbach:** the official stop projection fails at roughly 155 m. The road matcher places Grienbach **188.7 m** from its returned shape, beyond the unchanged 120 m limit. Both adjacent pairs fail; **67 Friday / 38 Sunday** complete trips remain excluded.
-- **619, Unterägeri Zentrum–Chlösterli, both directions:** pfaedle reports fallback hops. Those inferred direct hops are rejected during import; **8 Friday / 9 Sunday** trips remain excluded. Other 619 patterns pass (**30 / 16 trips**).
+- **619, original run:** both Chlösterli hops are rejected as matcher fallbacks. The scoped service-road review below resolves these **8 Friday / 9 Sunday** trips; the earlier **30 / 16** successful trips keep their previous paths.
 - **N6, Hünenberg Dorf–Sins Bahnhof:** complete input patterns disagree on this directed pair's road path. Consensus rejects it, retaining **3 Sunday excluded trips**, while three other N6 trips pass. A convenient successful branch cannot substitute for this conflicting context.
 
 The raw road run also rejects two Walchwil 626 segments (missing shape and a 149.2 m snap), but the official Zug source already supplies those pairs successfully. The road fallback supplies only its different, previously collapsed official pair; all eight complete Friday 626 trips therefore pass the combined source checks. This distinction is preserved in the road cache's import report and the feed's per-pair provenance.
@@ -167,6 +167,24 @@ ${table(['Date','Agency / mode','Trips admitted / all','Patterns admitted / all'
 
 Failures are also broken down by operator/mode, reason, unique directed route-stop pair, scheduled occurrence, affected pattern and trip in days[].groups[].failures. A trip can have several reasons; affected-trip counts across reasons must not be summed.
 
+## Line 619: scoped service-road review
+
+A separate local OSM run completes both **Unterägeri Zentrum → Chlösterli** and **Chlösterli → Zentrum**, adding **eight Friday** and **nine Sunday** trips. All **38 Friday / 25 Sunday** line 619 trips now pass, including the previously admitted Klinik Adelheid branches. The accepted paths are reverse orientations of the same approximately **1,055.3 m** inferred road alignment; their direct endpoint distance is **807.8 m**. Their source GTFS calls, times, platform identities and complete patterns are unchanged.
+
+The failure was reproducible: the original bus configuration does not retain ordinary service roads. [OSM way 27823989](https://www.openstreetmap.org/way/27823989), Chlösterlistrasse, is tagged **highway=service** and connects the Chlösterli stop to Bühlstrasse. Its retained version is **7**, timestamp **2020-07-03T10:31:36Z**, with no access or bus prohibition tag. This supports reviewing service-road inclusion for this specific mapped destination; it does not certify the operator's route or current access rights.
+
+Both experiments use the same fresh local roads, identical full four-pattern GTFS input and the same matcher binary. The control retains the original configuration and rejects both Chlösterli hops, covering **46/63** trip-segment occurrences. The amended configuration adds only **highway=service** to the bus/coach keep filter and covers **63/63** occurrences without fallback warnings. Existing drop filters, routing direction/restriction settings and numerical limits are unchanged. The importer still enforces **120 m** maximum snap and **5 m** simplification; the largest snap in the complete trial is **32.88 m**. Zug's subsequent consensus/detour checks also remain unchanged.
+
+The loader reimports **both original matcher outputs**, verifies that they used the same complete route scope, asserts the exact one-line configuration change, and requires the control to reject each admitted exception. It permits only the two explicit route/stop-ID pairs after the prior matcher failure. Successful official or earlier road paths remain untouched. Every new pair retains the previous road failure, the underlying official failure, the new control failure, complete road-pattern ID and geometry hash. All other line 619 input patterns remain in the experiment even though their earlier successful geometry is used in the feed.
+
+[Source catalogue](../data/zug-service-road-sources/sources.json), [local OSM JSON](../data/zug-service-road-sources/roads.json.gz), [routing XML](../data/zug-service-road-sources/roads.osm.gz), [query](../data/zug-service-road-sources/roads.overpass), [configuration](../data/zug-service-road-sources/pfaedle.cfg), [trial cache](../data/zug-service-road-sources/cache.json), [control cache](../data/zug-service-road-sources/control-cache.json) and both compressed matcher-evidence bundles are preserved. The bounded query includes road ways, their nodes, public-transport nodes, local restriction relations and their recursive members: **${audit.serviceRoadSource.elementCount} OSM elements**. Road source timestamp: **${audit.serviceRoadSource.osmBase}**; retrieved **${audit.serviceRoadSource.retrieved}**. This is a September 8 snapshot, not proof that every road element was identical on September 4 or 6. Credit: **© OpenStreetMap contributors**, **ODbL-1.0**, with [attribution/licence requirements](https://www.openstreetmap.org/copyright).
+
+### Remaining bus evidence
+
+The [retained ZVB notices](../data/zug-service-road-sources/zvb-notices.html), retrieved September 8, distinguish publication dates from effective dates. The Zug-bound Grienbach/Oberallmend notices posted September 7 apply **September 11–14**, after both fixtures. They do not justify changing the two fixture stop coordinates or relaxing Grienbach's projection limit. Baar-bound relocations apply **August 18, 2025–October 31, 2026**. Grienbach therefore remains a specific unresolved geometry/stop-location mismatch in the frozen source.
+
+N6 still has differing complete-pattern paths into Sins Bahnhof. It remains excluded where all-context consensus fails. The same operator page also reports the Langweid closure affecting N6 through October 31. We preserve the pinned GTFS calls and distinguish this scheduled-source model from current operational advice; these notices do not supply replacement route geometry. [Live operator notices](https://www.zvb.ch/fahrplan/betriebsmeldungen/).
+
 ## All municipalities
 
 Counts overlap: a whole trip or annual route can serve several municipalities. These rows must not be summed into a canton total. Stop counts include uncalled source stop records. Source polygons retain holes and all parts; all 945 canton stop records have municipal membership.
@@ -181,7 +199,7 @@ Each row is an exact GTFS route_id, not a unique passenger-facing line. Counts a
 
 ${table(['GTFS route ID','Agency','Line / mode','Annual trips','Friday','Sunday','Failure reasons'],audit.inventory.map(r=>[r.routeId,r.agencyId,`${r.line} / ${r.mode}`,r.annualTripRecords,...r.days.map(d=>d.trips?`${d.admittedTrips}/${d.trips}`:'inactive'),[...new Set(r.days.flatMap(d=>d.reasons))].join(', ')||'—']))}
 
-Principal exclusions: complete EC patterns still lack credible alignment geometry for Chiasso–Como S. Giovanni; the preserved federal source has no exact foreign operating point and the examined SBB foreign record is schematic. S26, RE6 and IR75 are now complete on both fixtures through the explicit SBB supplement. Zugersee retains one Friday and two Sunday trips with remote shoreline crossings; every Ägerisee trip on the two fixtures passes the shipping checks. Bus exclusions remain limited to the specific 604, 619 and N6 failures above. Full pair details, source call identities and stop names are in the machine audit.
+Principal exclusions: complete EC patterns still lack credible alignment geometry for Chiasso–Como S. Giovanni; the preserved federal source has no exact foreign operating point and the examined SBB foreign record is schematic. S26, RE6 and IR75 are now complete on both fixtures through the explicit SBB supplement. Zugersee retains one Friday and two Sunday trips with remote shoreline crossings; every Ägerisee trip on the two fixtures passes the shipping checks. Bus exclusions remain limited to the specific 604 and N6 failures above. Full pair details, source call identities and stop names are in the machine audit.
 
 ## Every source line label
 
@@ -206,7 +224,7 @@ npm run data:zug
 npm run data:zug:check
 npm run data:zug:report
 python3 -m unittest discover -s scripts -p test_prepare_zug_sources.py
-npx vitest run scripts/zug-boat-geometry.test.mjs scripts/zug-sbb-rail-supplement.test.mjs scripts/zug-road-geometry.test.mjs scripts/luzern-road-geometry.test.mjs scripts/enrich-postbus-roads.test.mjs scripts/zug-mountain-geometry.test.mjs scripts/zug-region.test.mjs scripts/zug-bus-supplement.test.mjs scripts/zug-rail-geometry.test.mjs scripts/luzern-region.test.mjs \\
+npx vitest run scripts/zug-service-road-geometry.test.mjs scripts/zug-boat-geometry.test.mjs scripts/zug-sbb-rail-supplement.test.mjs scripts/zug-road-geometry.test.mjs scripts/luzern-road-geometry.test.mjs scripts/enrich-postbus-roads.test.mjs scripts/zug-mountain-geometry.test.mjs scripts/zug-region.test.mjs scripts/zug-bus-supplement.test.mjs scripts/zug-rail-geometry.test.mjs scripts/luzern-region.test.mjs \\
   scripts/civil-day.test.mjs scripts/gtfs-frequencies.test.mjs
 \`\`\`
 

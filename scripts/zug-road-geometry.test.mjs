@@ -27,11 +27,11 @@ describe('Zug complete-pattern OSM fallback', () => {
     expect(mergeZugRoadCandidates(base, expansion).size).toBe(base.candidates.size + expansion.candidates.size)
     expect(() => mergeZugRoadCandidates(base, base)).toThrow('Overlapping road source')
   })
-  it('keeps Grienbach, Chlösterli and conflicting N6 paths excluded', () => {
+  it('keeps Grienbach and conflicting N6 paths excluded after the scoped service-road review', () => {
     const audit = JSON.parse(readFileSync('data/zug-study-audit.json'))
     for (const day of audit.days) {
       const failedBus = day.directedStopPairs.filter(p => p.mode === 'bus' && !p.matched)
-      expect([...new Set(failedBus.map(p => p.line))].sort()).toEqual(day.date === '2026-09-04' ? ['604', '619'] : ['604', '619', 'N6'])
+      expect([...new Set(failedBus.map(p => p.line))].sort()).toEqual(day.date === '2026-09-04' ? ['604'] : ['604', 'N6'])
       for (const p of failedBus) expect(p.reason).toBe(p.line === 'N6' ? 'road-pattern-dependent-path' : 'road-matcher-rejected')
       expect(day.routes.find(r => r.line === '631').admittedTrips).toBe(day.routes.find(r => r.line === '631').trips)
     }

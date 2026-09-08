@@ -1,0 +1,2 @@
+[out:json][timeout:35];
+(way[highway](47.120,8.555,47.155,8.615);node[public_transport](47.120,8.555,47.155,8.615);node[highway=bus_stop](47.120,8.555,47.155,8.615);relation[type~"^restriction"](47.120,8.555,47.155,8.615););(._;>>;);out meta;

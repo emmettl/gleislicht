@@ -1,0 +1,71 @@
+{
+  "description": "Local Unteraegeri OSM service-road extract retrieved 2026-09-08",
+  "sourceUrl": "https://overpass-api.de/api/interpreter",
+  "osmBase": "2026-09-08T19:33:43Z",
+  "retrieved": "2026-09-08",
+  "osmSha256": "dda8b5297aec7ab007c88c18011b0bd5b412e40741b97d8df4ff2bfbf6d15496",
+  "matcherCommit": "99f2cd466696ecc6bdb73b2b3bb9008557fcb84a",
+  "attribution": "© OpenStreetMap contributors",
+  "license": "ODbL-1.0",
+  "licenseUrl": "https://www.openstreetmap.org/copyright",
+  "elementCount": 8938,
+  "serviceAccessWay": {
+    "id": 27823989,
+    "version": 7,
+    "timestamp": "2020-07-03T10:31:36Z",
+    "tags": {
+      "highway": "service",
+      "name": "Chlösterlistrasse",
+      "surface": "asphalt"
+    }
+  },
+  "configurationChange": "Only add highway=service to osm_filter_keep in [bus, coach]. Retain all existing exclusions, snap levels, direction rules and numerical limits. Used only for exact line 619 scope.",
+  "scope": "All four full line 619 patterns on both dates; replace only the two explicitly listed Chloesterli pairs after the original sources fail.",
+  "direction": "Inferred OSM routing with matcher direction/restriction settings, not operator-certified street or current-diversion coverage.",
+  "notices": {
+    "retrieved": "2026-09-08",
+    "url": "https://www.zvb.ch/fahrplan/betriebsmeldungen/",
+    "review": "Zug-bound Grienbach/Oberallmend notices posted September 7 apply September 11–14, after the two fixtures; do not apply them retrospectively. Baar-bound relocations apply August 18 2025–October 31 2026. Langweid closure affecting N6 lasts through October 31; full GTFS source calls remain unchanged."
+  },
+  "files": [
+    {
+      "file": "roads.json.gz",
+      "sha256": "c109d24a35514719b312097ea6456b6fce11dbb3cf534f51941669754ddd508a",
+      "url": "https://overpass-api.de/api/interpreter",
+      "queryFile": "roads.overpass"
+    },
+    {
+      "file": "roads.osm.gz",
+      "sha256": "d868187961eeb2fa84fc2a45bf48e2caa5e79571bbc7ee8ee1a5407226e06d5f"
+    },
+    {
+      "file": "roads.overpass",
+      "sha256": "10f83e43c69e920f083438c0239f6371930a2fc053dc187f8613a59cf3859fc0"
+    },
+    {
+      "file": "pfaedle.cfg",
+      "sha256": "c3c04e020b9872765dfa299e59ab75063662d93b0ea8370468112617936764e7"
+    },
+    {
+      "file": "zvb-notices.html",
+      "sha256": "342f64c7667b2f9b3f459bcdcc4927ebc5c1373bdd12c99add9e856dffeec962",
+      "url": "https://www.zvb.ch/fahrplan/betriebsmeldungen/"
+    },
+    {
+      "file": "cache.json",
+      "sha256": "87055bf73ac372ea7b4431dbc5fa4de6d5cecfe06d37b0fd22073d7ff1102b1d"
+    },
+    {
+      "file": "control-cache.json",
+      "sha256": "8837e8a920af6a9b1d80fadfd5a00f0aad3862c301271f52d8d15a3acafe2e2b"
+    },
+    {
+      "file": "evidence/839.json.gz",
+      "sha256": "45e1116e2a2adf0bbedeee71b63962b027bb7dfdf8fb420535c2a9b8288e30bb"
+    },
+    {
+      "file": "control-evidence/839.json.gz",
+      "sha256": "44a858042098b0b4f9d2e1b4fb831121639510fbcaa607434152cc9f7e778af1"
+    }
+  ]
+}

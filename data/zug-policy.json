@@ -212,12 +212,12 @@
       "evidence": "Pinned GTFS annual canton census; https://www.zvb.ch/fahrplan/fahrplan-zvb-2026/"
     }
   },
-  "admission": "Admit only complete directed stop patterns on explicitly mapped operator/line geometry. All source calls, branches, call rules and border termini retained. Every pair must pass projection, connectivity and detour checks. Historic official corridor inference, not certified street directions, current diversions or observed movement. Three individually pinned sub-metre topology connectors are inferred and reported per pair and trip; no other gap filling. Failed bus pairs may use complete exact-identity Luzern 2026 paths; successful original pairs are retained and every source switch is recorded at a scheduled stop. Zugerbergbahn uses exact federal installation and operating-point identities, retaining its full curve and reporting GTFS endpoint connectors. Explicitly reviewed bus pairs may use OSM road inference only after the official paths fail, with whole-pattern identity and all-context path consensus. Failed S26/RE6 Däniken–Schönenwerd and IR75 Kreuzlingen–Konstanz pairs may use four exact standard-gauge SBB graphical segments, with full source curves and measured endpoint attachments. Federal source failures and the Däniken gauge conflict remain recorded. Two exact boat route/agency identities may use their explicitly inventoried swissTLMRegio lake graphs. GTFS dock attachment is capped at 200 m, with no new graph links. Every path segment is split at every Vector25 shoreline intersection; outside-water intervals must lie wholly within 200 m of one actual endpoint dock and are disclosed. Other land crossings reject the complete trip. These generalized cartographic paths are not navigational shipping lanes.",
+  "admission": "Admit only complete directed stop patterns on explicitly mapped operator/line geometry. All source calls, branches, call rules and border termini retained. Every pair must pass projection, connectivity and detour checks. Historic official corridor inference, not certified street directions, current diversions or observed movement. Three individually pinned sub-metre topology connectors are inferred and reported per pair and trip; no other gap filling. Failed bus pairs may use complete exact-identity Luzern 2026 paths; successful original pairs are retained and every source switch is recorded at a scheduled stop. Zugerbergbahn uses exact federal installation and operating-point identities, retaining its full curve and reporting GTFS endpoint connectors. Explicitly reviewed bus pairs may use OSM road inference only after the official paths fail, with whole-pattern identity and all-context path consensus. Failed S26/RE6 Däniken–Schönenwerd and IR75 Kreuzlingen–Konstanz pairs may use four exact standard-gauge SBB graphical segments, with full source curves and measured endpoint attachments. Federal source failures and the Däniken gauge conflict remain recorded. Two exact boat route/agency identities may use their explicitly inventoried swissTLMRegio lake graphs. GTFS dock attachment is capped at 200 m, with no new graph links. Every path segment is split at every Vector25 shoreline intersection; outside-water intervals must lie wholly within 200 m of one actual endpoint dock and are disclosed. Other land crossings reject the complete trip. These generalized cartographic paths are not navigational shipping lanes. Only the two reviewed line 619 Zentrum/Chloesterli pairs may use a separately pinned local OSM service-road run after the previous road matcher rejects them. Both the service-road run and an unchanged-configuration control retain all four route patterns; both are reimported offline. All previous successful geometry remains unchanged.",
   "scopeLimits": [
     "Annual membership is complete for the pinned national timetable and official canton polygon, not proof of unrepresented real-world services.",
     "Friday/Sunday plus preceding-day carry-in do not establish seasonal, holiday or year-round coverage.",
     "No-stop through traffic is outside this passenger-service inventory.",
-    "Geometry admission uses mapped Zug Buslinien, exact Luzern 2026 bus supplements, standard-gauge FOT infrastructure and the exact federal Zugerbergbahn installation. Unresolved boat/rail/bus patterns remain in the coverage denominator. Both lake services have explicitly attributed swissTLMRegio inference, with 2007 shoreline evidence and recorded dock-area discrepancies; remote land crossings remain excluded. Failed explicitly inventoried bus pairs may use separately attributed OSM road inference; these paths are not operator-verified. The separately attributed SBB graphical supplement covers two explicit rail corridors; foreign schematic records are excluded.",
+    "Geometry admission uses mapped Zug Buslinien, exact Luzern 2026 bus supplements, standard-gauge FOT infrastructure and the exact federal Zugerbergbahn installation. Unresolved boat/rail/bus patterns remain in the coverage denominator. Both lake services have explicitly attributed swissTLMRegio inference, with 2007 shoreline evidence and recorded dock-area discrepancies; remote land crossings remain excluded. Failed explicitly inventoried bus pairs may use separately attributed OSM road inference; these paths are not operator-verified. The separately attributed SBB graphical supplement covers two explicit rail corridors; foreign schematic records are excluded. The scoped line 619 service-road supplement retains raw local OSM, both control and amended matcher outputs and the exact single configuration change; it is still inferred routing.",
     "The WFS matches the archive within 1 mm but proves no 2026 alignment validity. No realtime."
   ],
   "topologyJoins": {
@@ -693,13 +693,13 @@
             "DK",
             "DKO",
             45673.43,
-            46100.0
+            46100
           ],
           [
             540,
             "DKO",
             "SCOE",
-            46100.0,
+            46100,
             48129.6
           ]
         ]
@@ -824,6 +824,43 @@
           "ch:1:sloid:30857"
         ]
       }
+    ]
+  },
+  "roadServiceAccess": {
+    "sourceDirectory": "data/zug-service-road-sources",
+    "sourceSha256": "072cb8fc0a3ebe19ef8a5e1830fa0d37ef67d28c6c214cce27fbc313cdc3b0c8",
+    "cacheFile": "data/zug-service-road-sources/cache.json",
+    "cacheSha256": "87055bf73ac372ea7b4431dbc5fa4de6d5cecfe06d37b0fd22073d7ff1102b1d",
+    "configFile": "data/zug-service-road-sources/pfaedle.cfg",
+    "configSha256": "c3c04e020b9872765dfa299e59ab75063662d93b0ea8370468112617936764e7",
+    "binarySha256": "6d193a755bc22c45516f8bce7594bb30e07a2632a5ef049a95915b262406cbd8",
+    "osmSha256": "dda8b5297aec7ab007c88c18011b0bd5b412e40741b97d8df4ff2bfbf6d15496",
+    "controlCacheFile": "data/zug-service-road-sources/control-cache.json",
+    "controlCacheSha256": "8837e8a920af6a9b1d80fadfd5a00f0aad3862c301271f52d8d15a3acafe2e2b",
+    "routes": [
+      {
+        "routeId": "92-619-j26-1",
+        "agencyId": "839",
+        "line": "619"
+      }
+    ],
+    "limits": {
+      "snapMetres": 120,
+      "detourRatio": 4.5,
+      "detourFloorMetres": 1200,
+      "alternativeSnapMetres": 5
+    },
+    "reviewedPairs": [
+      [
+        "92-619-j26-1",
+        "ch:1:sloid:2286:0:2",
+        "ch:1:sloid:95727:0:1"
+      ],
+      [
+        "92-619-j26-1",
+        "ch:1:sloid:95727:0:1",
+        "ch:1:sloid:2286:0:2"
+      ]
     ]
   }
 }
