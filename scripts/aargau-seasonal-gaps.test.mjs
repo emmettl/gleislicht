@@ -57,6 +57,20 @@ test('Brig to Domodossola remains explicitly excluded without a foreign operatin
   expect(policy.rules.some(r => r.stops.some(s => s[4] === '8301003'))).toBe(false)
 })
 
+test('seasonal evidence tolerates platform rounding but rejects changed measurements and source identities', async () => {
+  const sources = await seasonalGapSources()
+  const original = policy.rules.find(r => r.kind === 'seasonal-rail' && r.segments.some(s => s.evidence.stationAttachmentsMetres))
+  for (const change of ['rounding', 'distance', 'source']) {
+    const rule = structuredClone(original)
+    const evidence = rule.segments.find(s => s.evidence.stationAttachmentsMetres).evidence
+    if (change === 'source') evidence.directedSourceSegments[0].id = 'changed'
+    else evidence.stationAttachmentsMetres[1] += change === 'rounding' ? 1e-12 : 1e-6
+    const match = () => seasonalGapMatcher({ rules: [rule] }, sources, rule.date).matchPattern(train(rule), rule.stops)
+    if (change === 'rounding') expect(match().some(Boolean)).toBe(true)
+    else expect(match).toThrow(/Changed reviewed seasonal source evidence/)
+  }
+})
+
 test('new-route fallback evidence survives an exact JSON round trip when no earlier rail policy applied', async () => {
   const raw = JSON.parse(gunzipSync(await readFile('data/aargau-seasonal/input/2026-04-03-timetable.json.gz')))
   raw.trains = raw.trains.filter(t => t.routeId === '91-5F-Y-j26-1')
