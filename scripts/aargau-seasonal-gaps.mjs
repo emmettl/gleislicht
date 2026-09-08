@@ -7,6 +7,7 @@ import { parseRailNetworkXtf } from './enrich-swiss-rail-geometry.mjs'
 import { aargauRailMatcher } from './aargau-rail-geometry.mjs'
 import { aargauGapMatcher } from './aargau-gap-geometry.mjs'
 import { aargauPlatformMatcher } from './aargau-platform-geometry.mjs'
+import { assertGeometryMeasurementsEqual } from './compare-geometry-measurements.mjs'
 
 const read = async file => JSON.parse(await readFile(file, 'utf8'))
 export const SEASONAL_GAP_POLICY = 'data/aargau-seasonal-gap-policy.json'
@@ -58,7 +59,7 @@ export function seasonalGapMatcher(policy, sources, date) {
       assert(segment?.path, `Reviewed seasonal path no longer matches: ${rule.id}`)
       const { path, ...evidence } = segment
       assert.equal(geometryDigest(path), expected.pathSha256, 'Changed reviewed seasonal path')
-      assert.deepEqual(evidence, expected.evidence, 'Changed reviewed seasonal source evidence')
+      assert.doesNotThrow(() => assertGeometryMeasurementsEqual(evidence, expected.evidence), 'Changed reviewed seasonal source evidence')
       output[expected.index] = { ...segment, seasonalGapRuleId: rule.id }
     }
     return output
