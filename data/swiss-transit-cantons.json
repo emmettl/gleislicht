@@ -366,8 +366,8 @@
           "2026-09-06"
         ],
         "admittedTrips": [
-          5301,
-          3614
+          5375,
+          3686
         ],
         "publicRedistributionCleared": true,
         "roadPatternsTested": 614,
@@ -377,7 +377,8 @@
         "worksAudit": "data/fribourg-audit/works.json",
         "railReview": "data/fribourg-rail-review-policy.json",
         "bernPlatformReview": "data/fribourg-bern-platform-policy.json",
-        "avryReview": "data/fribourg-avry-policy.json"
+        "avryReview": "data/fribourg-avry-policy.json",
+        "montCarmelReview": "data/fribourg-mont-carmel-policy.json"
       }
     },
     {

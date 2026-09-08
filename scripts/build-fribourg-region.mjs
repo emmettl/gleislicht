@@ -55,7 +55,11 @@ export async function buildFribourgRegion({ archive, sourceDirectory = 'data/fri
   const roads = crosswalk.roads ? await loadFribourgRoads(timetable, crosswalk.roads) : undefined
   if (roads) {
     hashes.roads = crosswalk.roads.cacheSha256
-    provenance.roads = { ...roads.metadata, policy: crosswalk.roads, completePatternsTested: roads.patterns }
+    if (roads.montCarmel) {
+      hashes.montCarmel = crosswalk.roads.montCarmel.sha256
+      await writeJson(join(auditDirectory, 'mont-carmel.json'), roads.montCarmel, true)
+    }
+    provenance.roads = { ...roads.metadata, ...(roads.montCarmel ? { montCarmel: roads.montCarmel.policy } : {}), policy: crosswalk.roads, completePatternsTested: roads.patterns }
   }
   const rail = crosswalk.rail ? await loadFribourgRail(timetable, crosswalk.rail) : undefined
   if (rail) {

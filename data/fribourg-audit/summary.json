@@ -3,9 +3,10 @@
   "sourceHashes": {
     "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
     "source": "e8523af34fcedca7f8b0cbe495446ff93a75d8563c62b243da942c39c5243f47",
-    "crosswalk": "67222b799da58d65df3b5b36a2d1f6ce8c740c248cda2fa7e80554a64cb76510",
+    "crosswalk": "ee13423e453c4f4cff253608373233f77e56a42446552551d1722da838f9d1f1",
     "provenance": "7d23e09a35768de1cfd598a7ca824ac7c93d03242ff8955e70ca778213549086",
     "roads": "87f4d4be2662ff0982cea837e95f73863096d4bc37bd19ecc09ea88e064c465e",
+    "montCarmel": "a9b44b222fdf7b2c9dc26899c350520a8de3945d06a13bff75a357b6133a3b27",
     "rail": "7ea92c8c1120a49e9497ec3ae6d7a0d2fc2d761e8b19d790191ed7a6c0212c79",
     "railInputs": "434a02eb6906bb141a00ba6b7c77622767b78262617326d6aed56fa683cd8046",
     "avry": "8d20a93732eea409915103c410816075ac428693b7dc8fcb6dc37c1f97849e19",
@@ -311,6 +312,493 @@
       "license": "ODbL-1.0",
       "licenseUrl": "https://www.openstreetmap.org/copyright",
       "model": "Inferred bus road paths; complete-pattern consensus fallback only; not operator-verified",
+      "montCarmel": {
+        "schemaVersion": 1,
+        "id": "mont-carmel-terminal",
+        "sourceDirectory": "data/fribourg-mont-carmel-sources",
+        "sources": [
+          {
+            "file": "map.osm.gz",
+            "url": "https://www.openstreetmap.org/api/0.6/map?bbox=7.132,46.808,7.141,46.815",
+            "attribution": "© OpenStreetMap contributors",
+            "license": "ODbL-1.0",
+            "role": "Complete raw bounding-box response, deterministic gzip; detailed directed road topology and stop identities.",
+            "sha256": "afe8dbfa202e125225adb3034b06856d8c3f86bd4583556467d5a2d09a9a1a63",
+            "retrievedAt": "2026-09-08T20:54:43.664Z"
+          },
+          {
+            "file": "tpf-agglo.html",
+            "url": "https://www.tpf.ch/fr/horaires-et-reseaux/horaire-par-reseaux/agglo",
+            "attribution": "TPF",
+            "role": "Current operator line-3 Mont-Carmel–Charmettes identity, timetable valid from 2025-12-14; not proof of a terminal manoeuvre.",
+            "sha256": "92170b5a5ca729ddcd11853bfc83ed157286151fda9a38027b7d06696455dd40",
+            "retrievedAt": "2026-09-08T20:54:44.568Z"
+          },
+          {
+            "file": "givisiez-works.html",
+            "url": "https://www.givisiez.ch/article/deplacement-provisoire-de-larret-de-bus-mont-carmel-26052026",
+            "attribution": "Commune de Givisiez",
+            "documentDate": "2026-05-26",
+            "role": "Temporary stop displacement towards Belfaux on Route de la Chassotte; does not establish closure of the roundabout or justify moving the original GTFS stops.",
+            "sha256": "98b95b77765a111d7d5c7a6aed72b503dc634f057de3e448527e11bec5bf13b1",
+            "retrievedAt": "2026-09-08T20:54:46.618Z"
+          }
+        ],
+        "roadCacheSha256": "87f4d4be2662ff0982cea837e95f73863096d4bc37bd19ecc09ea88e064c465e",
+        "agencyId": "834",
+        "routeId": "92-3-A-j26-1",
+        "dates": [
+          "2026-09-04",
+          "2026-09-06"
+        ],
+        "stops": [
+          [
+            7.13694425,
+            46.81190474,
+            "Givisiez, Mont Carmel",
+            "",
+            "ch:1:sloid:87238:0:15107"
+          ],
+          [
+            7.13709697,
+            46.81168956,
+            "Givisiez, Mont Carmel",
+            "",
+            "ch:1:sloid:87238:0:15108"
+          ]
+        ],
+        "patterns": [
+          {
+            "id": "2cc0f7a654f3dee2adbb7208",
+            "routeId": "92-3-A-j26-1",
+            "stops": [
+              [
+                7.15726414,
+                46.7947121,
+                "Fribourg, Charmettes",
+                "",
+                "ch:1:sloid:77741:0:15044"
+              ],
+              [
+                7.15525192,
+                46.79648942,
+                "Fribourg, Industrie",
+                "",
+                "ch:1:sloid:89154:0:15080"
+              ],
+              [
+                7.15306901,
+                46.79883244,
+                "Fribourg, J. Vogt",
+                "",
+                "ch:1:sloid:88858:0:15171"
+              ],
+              [
+                7.15227849,
+                46.80056043,
+                "Fribourg, Fries",
+                "",
+                "ch:1:sloid:89155:0:15062"
+              ],
+              [
+                7.15203595,
+                46.80310004,
+                "Fribourg/Freiburg, Pl. Gare",
+                "C",
+                "ch:1:sloid:92374:0:3"
+              ],
+              [
+                7.15566514,
+                46.80399165,
+                "Fribourg, St-Pierre",
+                "",
+                "ch:1:sloid:89161:0:15156"
+              ],
+              [
+                7.15575497,
+                46.80487094,
+                "Fribourg, Place Georges Python",
+                "",
+                "ch:1:sloid:77810:0:15136"
+              ],
+              [
+                7.15287138,
+                46.80741649,
+                "Fribourg, Université",
+                "",
+                "ch:1:sloid:77811:0:15161"
+              ],
+              [
+                7.15056271,
+                46.80902124,
+                "Fribourg, Miséricorde",
+                "",
+                "ch:1:sloid:92382:0:15100"
+              ],
+              [
+                7.14829896,
+                46.80950081,
+                "Fribourg, Ste-Thérèse",
+                "",
+                "ch:1:sloid:77812:0:15152"
+              ],
+              [
+                7.14245093,
+                46.80910117,
+                "Fribourg, Champ-des-Fontaines",
+                "",
+                "ch:1:sloid:92369:0:15040"
+              ],
+              [
+                7.14033988,
+                46.80947622,
+                "Fribourg, Champ-Fleuri",
+                "",
+                "ch:1:sloid:92370:0:15038"
+              ],
+              [
+                7.13949547,
+                46.81088416,
+                "Fribourg, Jura Chassotte",
+                "",
+                "ch:1:sloid:92379:0:15088"
+              ],
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ]
+            ]
+          },
+          {
+            "id": "6b32b1bf0b9b2ad1a50a2927",
+            "routeId": "92-3-A-j26-1",
+            "stops": [
+              [
+                7.15203595,
+                46.80310004,
+                "Fribourg/Freiburg, Pl. Gare",
+                "C",
+                "ch:1:sloid:92374:0:3"
+              ],
+              [
+                7.15566514,
+                46.80399165,
+                "Fribourg, St-Pierre",
+                "",
+                "ch:1:sloid:89161:0:15156"
+              ],
+              [
+                7.15575497,
+                46.80487094,
+                "Fribourg, Place Georges Python",
+                "",
+                "ch:1:sloid:77810:0:15136"
+              ],
+              [
+                7.15287138,
+                46.80741649,
+                "Fribourg, Université",
+                "",
+                "ch:1:sloid:77811:0:15161"
+              ],
+              [
+                7.15056271,
+                46.80902124,
+                "Fribourg, Miséricorde",
+                "",
+                "ch:1:sloid:92382:0:15100"
+              ],
+              [
+                7.14829896,
+                46.80950081,
+                "Fribourg, Ste-Thérèse",
+                "",
+                "ch:1:sloid:77812:0:15152"
+              ],
+              [
+                7.14245093,
+                46.80910117,
+                "Fribourg, Champ-des-Fontaines",
+                "",
+                "ch:1:sloid:92369:0:15040"
+              ],
+              [
+                7.14033988,
+                46.80947622,
+                "Fribourg, Champ-Fleuri",
+                "",
+                "ch:1:sloid:92370:0:15038"
+              ],
+              [
+                7.13949547,
+                46.81088416,
+                "Fribourg, Jura Chassotte",
+                "",
+                "ch:1:sloid:92379:0:15088"
+              ],
+              [
+                7.13694425,
+                46.81190474,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15107"
+              ],
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ]
+            ]
+          },
+          {
+            "id": "9a96322530f92c8786068589",
+            "routeId": "92-3-A-j26-1",
+            "stops": [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              [
+                7.13932479,
+                46.81079809,
+                "Fribourg, Jura Chassotte",
+                "",
+                "ch:1:sloid:92379:0:15089"
+              ],
+              [
+                7.1403848,
+                46.80939014,
+                "Fribourg, Champ-Fleuri",
+                "",
+                "ch:1:sloid:92370:0:15039"
+              ],
+              [
+                7.14239703,
+                46.80901509,
+                "Fribourg, Champ-des-Fontaines",
+                "",
+                "ch:1:sloid:92369:0:15041"
+              ],
+              [
+                7.14582859,
+                46.80943933,
+                "Fribourg, Vuille",
+                "B",
+                "ch:1:sloid:77820:0:15174"
+              ],
+              [
+                7.1489188,
+                46.8093594,
+                "Fribourg, Ste-Thérèse",
+                "",
+                "ch:1:sloid:77812:0:15153"
+              ],
+              [
+                7.15119153,
+                46.80853552,
+                "Fribourg, Miséricorde",
+                "",
+                "ch:1:sloid:92382:0:15101"
+              ],
+              [
+                7.15312291,
+                46.80676474,
+                "Fribourg, Université",
+                "",
+                "ch:1:sloid:77811:0:15162"
+              ],
+              [
+                7.15558429,
+                46.80466802,
+                "Fribourg, Place Georges Python",
+                "",
+                "ch:1:sloid:77810:0:15137"
+              ],
+              [
+                7.15513514,
+                46.80391171,
+                "Fribourg, St-Pierre",
+                "",
+                "ch:1:sloid:89161:0:15157"
+              ],
+              [
+                7.15136221,
+                46.80288483,
+                "Fribourg/Freiburg, Pl. Gare",
+                "B",
+                "ch:1:sloid:92374:0:2"
+              ],
+              [
+                7.15212578,
+                46.80054198,
+                "Fribourg, Fries",
+                "",
+                "ch:1:sloid:89155:0:15063"
+              ],
+              [
+                7.15303308,
+                46.79856186,
+                "Fribourg, J. Vogt",
+                "",
+                "ch:1:sloid:88858:0:15172"
+              ],
+              [
+                7.15538667,
+                46.79619423,
+                "Fribourg, Industrie",
+                "",
+                "ch:1:sloid:89154:0:15081"
+              ],
+              [
+                7.15726414,
+                46.7947121,
+                "Fribourg, Charmettes",
+                "",
+                "ch:1:sloid:77741:0:15044"
+              ]
+            ]
+          },
+          {
+            "id": "ea7a4bdb395b10c8c6bfdc36",
+            "routeId": "92-3-A-j26-1",
+            "stops": [
+              [
+                7.13709697,
+                46.81168956,
+                "Givisiez, Mont Carmel",
+                "",
+                "ch:1:sloid:87238:0:15108"
+              ],
+              [
+                7.13932479,
+                46.81079809,
+                "Fribourg, Jura Chassotte",
+                "",
+                "ch:1:sloid:92379:0:15089"
+              ],
+              [
+                7.1403848,
+                46.80939014,
+                "Fribourg, Champ-Fleuri",
+                "",
+                "ch:1:sloid:92370:0:15039"
+              ],
+              [
+                7.14239703,
+                46.80901509,
+                "Fribourg, Champ-des-Fontaines",
+                "",
+                "ch:1:sloid:92369:0:15041"
+              ],
+              [
+                7.14582859,
+                46.80943933,
+                "Fribourg, Vuille",
+                "B",
+                "ch:1:sloid:77820:0:15174"
+              ],
+              [
+                7.1489188,
+                46.8093594,
+                "Fribourg, Ste-Thérèse",
+                "",
+                "ch:1:sloid:77812:0:15153"
+              ],
+              [
+                7.15119153,
+                46.80853552,
+                "Fribourg, Miséricorde",
+                "",
+                "ch:1:sloid:92382:0:15101"
+              ],
+              [
+                7.15312291,
+                46.80676474,
+                "Fribourg, Université",
+                "",
+                "ch:1:sloid:77811:0:15162"
+              ],
+              [
+                7.15558429,
+                46.80466802,
+                "Fribourg, Place Georges Python",
+                "",
+                "ch:1:sloid:77810:0:15137"
+              ],
+              [
+                7.15513514,
+                46.80391171,
+                "Fribourg, St-Pierre",
+                "",
+                "ch:1:sloid:89161:0:15157"
+              ],
+              [
+                7.15136221,
+                46.80288483,
+                "Fribourg/Freiburg, Pl. Gare",
+                "B",
+                "ch:1:sloid:92374:0:2"
+              ]
+            ]
+          }
+        ],
+        "maximumAttachmentMetres": 15,
+        "chain": [
+          {
+            "wayId": "1097802067",
+            "from": "947021993",
+            "to": "292013103"
+          },
+          {
+            "wayId": "55700630",
+            "from": "292013103",
+            "to": "699975410"
+          },
+          {
+            "wayId": "1095950865",
+            "from": "699975410",
+            "to": "947021971"
+          }
+        ],
+        "relations": [
+          {
+            "id": "2464722",
+            "stopNode": "947021993",
+            "role": "stop_exit_only"
+          },
+          {
+            "id": "12589725",
+            "stopNode": "947021993",
+            "role": "stop_exit_only"
+          },
+          {
+            "id": "1224330",
+            "stopNode": "947021971",
+            "role": "stop_entry_only"
+          },
+          {
+            "id": "12589724",
+            "stopNode": "947021971",
+            "role": "stop_entry_only"
+          }
+        ],
+        "admission": "One exact final directed pair on TPF 3, in every complete contributing pattern. Three original OSM ways, shared node identity, forward-only one-way/roundabout traversal, trolley wires and no intersecting returned turn restrictions. Preserve both original calls and coordinates; no collapsing duplicate stop names. Inferred centreline movement, not operator-certified running lanes or a guarantee of temporary access. Route-relation j23 references are historical identity evidence only."
+      },
       "policy": {
         "cacheFile": "data/fribourg-road-cache.json",
         "cacheSha256": "87f4d4be2662ff0982cea837e95f73863096d4bc37bd19ecc09ea88e064c465e",
@@ -328,7 +816,11 @@
         "attribution": "© OpenStreetMap contributors",
         "license": "ODbL-1.0",
         "licenseUrl": "https://opendatacommons.org/licenses/odbl/1-0/",
-        "directionNote": "Inferred paths using bus/PSV access and direction tags. The pinned pfaedle profile uses penalties, not an absolute one-way prohibition; legal direction and temporary restrictions are not certified."
+        "directionNote": "Inferred paths using bus/PSV access and direction tags. The pinned pfaedle profile uses penalties, not an absolute one-way prohibition; legal direction and temporary restrictions are not certified.",
+        "montCarmel": {
+          "file": "data/fribourg-mont-carmel-policy.json",
+          "sha256": "a9b44b222fdf7b2c9dc26899c350520a8de3945d06a13bff75a357b6133a3b27"
+        }
       },
       "completePatternsTested": 614
     },
@@ -1370,10 +1862,10 @@
     "key": "GTFS route identity + direction_id + full ordered original platform IDs, including repeats and out-of-canton calls"
   },
   "routesByStatus": {
-    "admitted-all-dated-trips": 113,
+    "admitted-all-dated-trips": 114,
     "inactive-on-validation-dates": 48,
     "excluded": 21,
-    "partially-admitted": 25
+    "partially-admitted": 24
   },
   "districts": [
     {
@@ -1736,9 +2228,10 @@
       "sourceHashes": {
         "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
         "source": "e8523af34fcedca7f8b0cbe495446ff93a75d8563c62b243da942c39c5243f47",
-        "crosswalk": "67222b799da58d65df3b5b36a2d1f6ce8c740c248cda2fa7e80554a64cb76510",
+        "crosswalk": "ee13423e453c4f4cff253608373233f77e56a42446552551d1722da838f9d1f1",
         "provenance": "7d23e09a35768de1cfd598a7ca824ac7c93d03242ff8955e70ca778213549086",
         "roads": "87f4d4be2662ff0982cea837e95f73863096d4bc37bd19ecc09ea88e064c465e",
+        "montCarmel": "a9b44b222fdf7b2c9dc26899c350520a8de3945d06a13bff75a357b6133a3b27",
         "rail": "7ea92c8c1120a49e9497ec3ae6d7a0d2fc2d761e8b19d790191ed7a6c0212c79",
         "railInputs": "434a02eb6906bb141a00ba6b7c77622767b78262617326d6aed56fa683cd8046",
         "avry": "8d20a93732eea409915103c410816075ac428693b7dc8fcb6dc37c1f97849e19",
@@ -1747,23 +2240,23 @@
       },
       "coverage": {
         "trips": 8556,
-        "admittedTrips": 5301,
+        "admittedTrips": 5375,
         "scheduledTrips": 5812,
         "representativeHeadwayTrips": 2744,
-        "admittedScheduledTrips": 5301,
+        "admittedScheduledTrips": 5375,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 89328,
-        "matchedScheduledSegmentOccurrences": 87255,
+        "matchedScheduledSegmentOccurrences": 87329,
         "segmentOccurrences": 92072,
-        "matchedSegmentOccurrences": 87255,
-        "admittedSegmentOccurrences": 81784,
+        "matchedSegmentOccurrences": 87329,
+        "admittedSegmentOccurrences": 82740,
         "directedPairs": 4509,
-        "matchedDirectedPairs": 4201,
+        "matchedDirectedPairs": 4202,
         "patterns": 849,
-        "completePatterns": 713,
-        "admittedPatterns": 713,
+        "completePatterns": 715,
+        "admittedPatterns": 715,
         "excludedTrips": {
-          "incomplete-directed-pattern": 390,
+          "incomplete-directed-pattern": 316,
           "no-verified-operator-line-crosswalk": 2856,
           "provisional-boundary-membership": 9
         }
@@ -2069,23 +2562,23 @@
           "id": "834:bus",
           "agency": "Service d'automobiles TPF",
           "trips": 3918,
-          "admittedTrips": 3747,
+          "admittedTrips": 3821,
           "scheduledTrips": 3918,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 3747,
+          "admittedScheduledTrips": 3821,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 65387,
-          "matchedScheduledSegmentOccurrences": 65213,
+          "matchedScheduledSegmentOccurrences": 65287,
           "segmentOccurrences": 65387,
-          "matchedSegmentOccurrences": 65213,
-          "admittedSegmentOccurrences": 62505,
+          "matchedSegmentOccurrences": 65287,
+          "admittedSegmentOccurrences": 63461,
           "directedPairs": 2555,
-          "matchedDirectedPairs": 2539,
+          "matchedDirectedPairs": 2540,
           "patterns": 396,
-          "completePatterns": 359,
-          "admittedPatterns": 359,
+          "completePatterns": 361,
+          "admittedPatterns": 361,
           "excludedTrips": {
-            "incomplete-directed-pattern": 171
+            "incomplete-directed-pattern": 97
           }
         },
         {
@@ -2113,8 +2606,8 @@
         }
       ],
       "timing": {
-        "zeroDurationSegmentOccurrences": 5699,
-        "zeroDurationOver100m": 5695,
+        "zeroDurationSegmentOccurrences": 5921,
+        "zeroDurationOver100m": 5917,
         "maximumPositiveDurationSpeedKmh": 144.56527036688541,
         "note": "Original GTFS times retained, including minute-rounded equal timestamps. Zero-duration segments are not speed observations and no artificial travel time is invented."
       },
@@ -2231,11 +2724,11 @@
           }
         },
         "patternsTestedAcrossBothDates": 614,
-        "newlyAdmittedTrips": 2063,
+        "newlyAdmittedTrips": 2137,
         "lostAdmittedTrips": 0,
-        "matchedDirectedPairs": 533,
-        "matchedSegmentOccurrences": 6289,
-        "admittedSegmentOccurrences": 5593
+        "matchedDirectedPairs": 534,
+        "matchedSegmentOccurrences": 6363,
+        "admittedSegmentOccurrences": 5741
       },
       "railEffect": {
         "patternsTestedAcrossBothDates": 412,
@@ -2253,8 +2746,8 @@
           "segmentOccurrences": 32
         },
         "endpoint-gap": {
-          "directedPairs": 26,
-          "segmentOccurrences": 266
+          "directedPairs": 25,
+          "segmentOccurrences": 192
         },
         "implausible-detour": {
           "directedPairs": 3,
@@ -2266,7 +2759,7 @@
         }
       },
       "carryInTrips": 97,
-      "admittedCarryInTrips": 89,
+      "admittedCarryInTrips": 90,
       "admittedOutsideCantonPlatforms": 555,
       "directedPatternChecks": {
         "directionIds": [
@@ -2280,12 +2773,12 @@
       },
       "payload": {
         "manifest": {
-          "bytes": 6177168,
-          "gzipBytes": 1483333
+          "bytes": 6186707,
+          "gzipBytes": 1485701
         },
         "morning": {
-          "trips": 893,
-          "gzipBytes": 1592240
+          "trips": 903,
+          "gzipBytes": 1595248
         },
         "chunks": [
           {
@@ -2293,10 +2786,10 @@
             "windowStart": 0,
             "windowEnd": 7200,
             "path": "day-chunks/00-02.json",
-            "tripCount": 93,
-            "bytes": 80283,
-            "sha256": "3ed677b9697e3a72a405ded67e64677d41f4bf3703828ee53ef29b06720c90b2",
-            "gzipBytes": 14327
+            "tripCount": 94,
+            "bytes": 81137,
+            "sha256": "b4df6361e64e5230b321dd6bafe3392262571d67c9a59e173d5e60972f88519e",
+            "gzipBytes": 14474
           },
           {
             "id": "02-04",
@@ -2313,100 +2806,100 @@
             "windowStart": 14400,
             "windowEnd": 21600,
             "path": "day-chunks/04-06.json",
-            "tripCount": 230,
-            "bytes": 222411,
-            "sha256": "15a5857bfd34ce8f0d51a96995da007aedabc82e3c6aed9f0983cef480cda45e",
-            "gzipBytes": 35214
+            "tripCount": 231,
+            "bytes": 223398,
+            "sha256": "92d28dba248453806045f9f11dc9b76182d58cedf7ce43b605172a6708dbe405",
+            "gzipBytes": 35438
           },
           {
             "id": "06-08",
             "windowStart": 21600,
             "windowEnd": 28800,
             "path": "day-chunks/06-08.json",
-            "tripCount": 891,
-            "bytes": 838697,
-            "sha256": "1481e00efec7f5f775054baf3a5d54920b28c15a853a0d046bdb490c6a4d4e46",
-            "gzipBytes": 107585
+            "tripCount": 900,
+            "bytes": 847580,
+            "sha256": "b66b0f2b5061df768d1fa885e395baa8e7bb664112187570a180e4e14ba53d3a",
+            "gzipBytes": 108621
           },
           {
             "id": "08-10",
             "windowStart": 28800,
             "windowEnd": 36000,
             "path": "day-chunks/08-10.json",
-            "tripCount": 703,
-            "bytes": 692436,
-            "sha256": "e8331b1b7c2c4aec032fb096f7db4d011a76e601d1d71dd01302536390d48932",
-            "gzipBytes": 91229
+            "tripCount": 713,
+            "bytes": 702306,
+            "sha256": "47261d1c715191905fba769317452cde36d5bc718e0aa478c4cd99471763e5aa",
+            "gzipBytes": 92333
           },
           {
             "id": "10-12",
             "windowStart": 36000,
             "windowEnd": 43200,
             "path": "day-chunks/10-12.json",
-            "tripCount": 671,
-            "bytes": 664598,
-            "sha256": "54348fcf378539c37b92111f0e0bb400a6872c3ea83ad8f3625f6550b30adbf3",
-            "gzipBytes": 87730
+            "tripCount": 681,
+            "bytes": 674468,
+            "sha256": "89176922888c20e43cf074581a51566972ff5106ead9c4a76ffffe397e310b93",
+            "gzipBytes": 88845
           },
           {
             "id": "12-14",
             "windowStart": 43200,
             "windowEnd": 50400,
             "path": "day-chunks/12-14.json",
-            "tripCount": 802,
-            "bytes": 766658,
-            "sha256": "cfc31429946e251e576e0e619b60772f479dcab61352dc33fd028cac7b889e19",
-            "gzipBytes": 100676
+            "tripCount": 812,
+            "bytes": 776528,
+            "sha256": "926e8730caf9ecac516e621834ed37fea57006df9845138d7c8ee47cc92183b9",
+            "gzipBytes": 101755
           },
           {
             "id": "14-16",
             "windowStart": 50400,
             "windowEnd": 57600,
             "path": "day-chunks/14-16.json",
-            "tripCount": 687,
-            "bytes": 674726,
-            "sha256": "a47915004c14eb82912d5be66008184b68abeeab05fb3c80b11c9118c5ac8e41",
-            "gzipBytes": 89164
+            "tripCount": 697,
+            "bytes": 684596,
+            "sha256": "bea0effa6140e79041d796c4db81c64bdb3fefc1c0dc34aae2b58b2410e9b39a",
+            "gzipBytes": 90300
           },
           {
             "id": "16-18",
             "windowStart": 57600,
             "windowEnd": 64800,
             "path": "day-chunks/16-18.json",
-            "tripCount": 890,
-            "bytes": 855213,
-            "sha256": "b61dc477a48436f633d938310adb6717f8facf8c1fa9a797002bd8c998e30dc9",
-            "gzipBytes": 109402
+            "tripCount": 900,
+            "bytes": 865083,
+            "sha256": "dd102306e464f8ba4de567d9d36f4a1ee6f03c9bf6e2d74d5bab3bedf7d328c7",
+            "gzipBytes": 110566
           },
           {
             "id": "18-20",
             "windowStart": 64800,
             "windowEnd": 72000,
             "path": "day-chunks/18-20.json",
-            "tripCount": 812,
-            "bytes": 786156,
-            "sha256": "840ccce6a9d59012cabc7640bc25469f7cc5f3de1a67ed14b4d05995fa09f85c",
-            "gzipBytes": 100859
+            "tripCount": 822,
+            "bytes": 795687,
+            "sha256": "27dfbef35df3fc154f21d357f346d4fab90efe3ccbcf0f5636e13e8be406c87f",
+            "gzipBytes": 101996
           },
           {
             "id": "20-22",
             "windowStart": 72000,
             "windowEnd": 79200,
             "path": "day-chunks/20-22.json",
-            "tripCount": 481,
-            "bytes": 477501,
-            "sha256": "fc2fe33d0450265470a69ae660a96d4971a4f5032b88fe215a2a29a4e27c4b03",
-            "gzipBytes": 64349
+            "tripCount": 490,
+            "bytes": 485367,
+            "sha256": "390b34f41b26c69e89e4e02bc9352488da49fe6d7808a4e5a1f7ee62e6890741",
+            "gzipBytes": 65129
           },
           {
             "id": "22-24",
             "windowStart": 79200,
             "windowEnd": 86400,
             "path": "day-chunks/22-24.json",
-            "tripCount": 368,
-            "bytes": 356093,
-            "sha256": "8661f8c99f7281fcaf41239d6e23e07f3e997b342916ce6ce1fdcade101649bc",
-            "gzipBytes": 48832
+            "tripCount": 377,
+            "bytes": 363959,
+            "sha256": "89ca2f50a50f9dc45a2a74256a14c51287394d3a47012bb1ed8ecb630b3a1ef7",
+            "gzipBytes": 49661
           }
         ]
       },
@@ -2428,9 +2921,10 @@
       "sourceHashes": {
         "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
         "source": "e8523af34fcedca7f8b0cbe495446ff93a75d8563c62b243da942c39c5243f47",
-        "crosswalk": "67222b799da58d65df3b5b36a2d1f6ce8c740c248cda2fa7e80554a64cb76510",
+        "crosswalk": "ee13423e453c4f4cff253608373233f77e56a42446552551d1722da838f9d1f1",
         "provenance": "7d23e09a35768de1cfd598a7ca824ac7c93d03242ff8955e70ca778213549086",
         "roads": "87f4d4be2662ff0982cea837e95f73863096d4bc37bd19ecc09ea88e064c465e",
+        "montCarmel": "a9b44b222fdf7b2c9dc26899c350520a8de3945d06a13bff75a357b6133a3b27",
         "rail": "7ea92c8c1120a49e9497ec3ae6d7a0d2fc2d761e8b19d790191ed7a6c0212c79",
         "railInputs": "434a02eb6906bb141a00ba6b7c77622767b78262617326d6aed56fa683cd8046",
         "avry": "8d20a93732eea409915103c410816075ac428693b7dc8fcb6dc37c1f97849e19",
@@ -2439,23 +2933,23 @@
       },
       "coverage": {
         "trips": 6326,
-        "admittedTrips": 3614,
+        "admittedTrips": 3686,
         "scheduledTrips": 4062,
         "representativeHeadwayTrips": 2264,
-        "admittedScheduledTrips": 3614,
+        "admittedScheduledTrips": 3686,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 62231,
-        "matchedScheduledSegmentOccurrences": 60573,
+        "matchedScheduledSegmentOccurrences": 60645,
         "segmentOccurrences": 64495,
-        "matchedSegmentOccurrences": 60573,
-        "admittedSegmentOccurrences": 56923,
+        "matchedSegmentOccurrences": 60645,
+        "admittedSegmentOccurrences": 57643,
         "directedPairs": 4607,
-        "matchedDirectedPairs": 4351,
+        "matchedDirectedPairs": 4352,
         "patterns": 588,
-        "completePatterns": 495,
-        "admittedPatterns": 495,
+        "completePatterns": 496,
+        "admittedPatterns": 496,
         "excludedTrips": {
-          "incomplete-directed-pattern": 347,
+          "incomplete-directed-pattern": 275,
           "no-verified-operator-line-crosswalk": 2365
         }
       },
@@ -2781,23 +3275,23 @@
           "id": "834:bus",
           "agency": "Service d'automobiles TPF",
           "trips": 2435,
-          "admittedTrips": 2298,
+          "admittedTrips": 2370,
           "scheduledTrips": 2435,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 2298,
+          "admittedScheduledTrips": 2370,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 43081,
-          "matchedScheduledSegmentOccurrences": 42940,
+          "matchedScheduledSegmentOccurrences": 43012,
           "segmentOccurrences": 43081,
-          "matchedSegmentOccurrences": 42940,
-          "admittedSegmentOccurrences": 41295,
+          "matchedSegmentOccurrences": 43012,
+          "admittedSegmentOccurrences": 42015,
           "directedPairs": 2797,
-          "matchedDirectedPairs": 2783,
+          "matchedDirectedPairs": 2784,
           "patterns": 205,
-          "completePatterns": 189,
-          "admittedPatterns": 189,
+          "completePatterns": 190,
+          "admittedPatterns": 190,
           "excludedTrips": {
-            "incomplete-directed-pattern": 137
+            "incomplete-directed-pattern": 65
           }
         },
         {
@@ -2825,8 +3319,8 @@
         }
       ],
       "timing": {
-        "zeroDurationSegmentOccurrences": 4367,
-        "zeroDurationOver100m": 4367,
+        "zeroDurationSegmentOccurrences": 4583,
+        "zeroDurationOver100m": 4583,
         "maximumPositiveDurationSpeedKmh": 160.05716324720422,
         "note": "Original GTFS times retained, including minute-rounded equal timestamps. Zero-duration segments are not speed observations and no artificial travel time is invented."
       },
@@ -2915,11 +3409,11 @@
           }
         },
         "patternsTestedAcrossBothDates": 614,
-        "newlyAdmittedTrips": 1216,
+        "newlyAdmittedTrips": 1288,
         "lostAdmittedTrips": 0,
-        "matchedDirectedPairs": 509,
-        "matchedSegmentOccurrences": 4018,
-        "admittedSegmentOccurrences": 3240
+        "matchedDirectedPairs": 510,
+        "matchedSegmentOccurrences": 4090,
+        "admittedSegmentOccurrences": 3384
       },
       "railEffect": {
         "patternsTestedAcrossBothDates": 412,
@@ -2937,8 +3431,8 @@
           "segmentOccurrences": 16
         },
         "endpoint-gap": {
-          "directedPairs": 12,
-          "segmentOccurrences": 153
+          "directedPairs": 11,
+          "segmentOccurrences": 81
         },
         "implausible-detour": {
           "directedPairs": 3,
@@ -2950,7 +3444,7 @@
         }
       },
       "carryInTrips": 179,
-      "admittedCarryInTrips": 152,
+      "admittedCarryInTrips": 154,
       "admittedOutsideCantonPlatforms": 507,
       "directedPatternChecks": {
         "directionIds": [
@@ -2964,12 +3458,12 @@
       },
       "payload": {
         "manifest": {
-          "bytes": 5964290,
-          "gzipBytes": 1473233
+          "bytes": 5972805,
+          "gzipBytes": 1475075
         },
         "morning": {
-          "trips": 470,
-          "gzipBytes": 1535019
+          "trips": 478,
+          "gzipBytes": 1537932
         },
         "chunks": [
           {
@@ -2977,10 +3471,10 @@
             "windowStart": 0,
             "windowEnd": 7200,
             "path": "day-chunks/00-02.json",
-            "tripCount": 134,
-            "bytes": 125543,
-            "sha256": "68ed1af482437dea8a3aa6ad86622ec75948aee74bb5d35914a916589b5b5342",
-            "gzipBytes": 22851
+            "tripCount": 136,
+            "bytes": 127247,
+            "sha256": "32ac17ccbd9a7a19808818580d091afe05d96a036320b17b160fd6787cc8ff8d",
+            "gzipBytes": 23060
           },
           {
             "id": "02-04",
@@ -2989,8 +3483,8 @@
             "path": "day-chunks/02-04.json",
             "tripCount": 43,
             "bytes": 54040,
-            "sha256": "c436da5b9c36b2a68b02be743cc4d7b9b36cf24de54833282665ed6d8a3edeea",
-            "gzipBytes": 10883
+            "sha256": "eaec43fd74912f40e6a4ff61d8f88a62a8a2f4041f19675f439b8fc0307c7be8",
+            "gzipBytes": 10895
           },
           {
             "id": "04-06",
@@ -2999,98 +3493,98 @@
             "path": "day-chunks/04-06.json",
             "tripCount": 114,
             "bytes": 113060,
-            "sha256": "1ce60ff2287dc52c93e042b69c8c87c5b6bde2964436b3078bdd2d19a2970fd3",
-            "gzipBytes": 18763
+            "sha256": "5d8ffd18035c9b129cd2ee5515d83edcf5a689d3f495e4e23c0ee1f10adaee57",
+            "gzipBytes": 18778
           },
           {
             "id": "06-08",
             "windowStart": 21600,
             "windowEnd": 28800,
             "path": "day-chunks/06-08.json",
-            "tripCount": 391,
-            "bytes": 376431,
-            "sha256": "fba7cfca49cac1f32944ef076b8f562be5762be9dfd8fa4d6081efac5d53ba09",
-            "gzipBytes": 53166
+            "tripCount": 397,
+            "bytes": 381675,
+            "sha256": "be7c236c4eb9574e05b6558b7df070497b66c9bba60cd8e65bcbbbf89a7a1969",
+            "gzipBytes": 53719
           },
           {
             "id": "08-10",
             "windowStart": 28800,
             "windowEnd": 36000,
             "path": "day-chunks/08-10.json",
-            "tripCount": 504,
-            "bytes": 494482,
-            "sha256": "e4bfc4b70ec9d854242a02e5087ec7a169760cdcff684545106543dd0d3c0891",
-            "gzipBytes": 67418
+            "tripCount": 513,
+            "bytes": 502348,
+            "sha256": "afe190b900f2495dd29ce6ed5a5c038d553cf9034dad1f7bdfe9d93ffac25d5c",
+            "gzipBytes": 68220
           },
           {
             "id": "10-12",
             "windowStart": 36000,
             "windowEnd": 43200,
             "path": "day-chunks/10-12.json",
-            "tripCount": 517,
-            "bytes": 503937,
-            "sha256": "44b8689970ca696dbb8ff69f10ac49bb07cbf538c95ebc91200550b307da7c36",
-            "gzipBytes": 68327
+            "tripCount": 526,
+            "bytes": 511803,
+            "sha256": "d78fb39129a5da9d0a5d37717d8d06e6baefe34e9131792d1ec3fa552c9dc023",
+            "gzipBytes": 69088
           },
           {
             "id": "12-14",
             "windowStart": 43200,
             "windowEnd": 50400,
             "path": "day-chunks/12-14.json",
-            "tripCount": 518,
-            "bytes": 503328,
-            "sha256": "a66e77acfa4bbb0326f56adb263e13e2a517bc65ed5c3fb9e4ed21efb6f0c3b8",
-            "gzipBytes": 68486
+            "tripCount": 527,
+            "bytes": 511194,
+            "sha256": "d3bf621bee6af7f22907066d5c7f94b2b2617a87bc55aec25df7a52c95bca5fa",
+            "gzipBytes": 69266
           },
           {
             "id": "14-16",
             "windowStart": 50400,
             "windowEnd": 57600,
             "path": "day-chunks/14-16.json",
-            "tripCount": 506,
-            "bytes": 493987,
-            "sha256": "a9ef939985309e0b2455b3b87470041648b7ffd512c491de8775e29ef6964c0f",
-            "gzipBytes": 66962
+            "tripCount": 515,
+            "bytes": 501853,
+            "sha256": "1e34e2e0bcc9c6df7dcf9488b143886c2af50fae43c56e7158d49625f84aafb4",
+            "gzipBytes": 67757
           },
           {
             "id": "16-18",
             "windowStart": 57600,
             "windowEnd": 64800,
             "path": "day-chunks/16-18.json",
-            "tripCount": 543,
-            "bytes": 525715,
-            "sha256": "3b5e077f3d9bc9cf269b9c847ce9b381d35fdcd68a0b39045df5e6d2fb68e5fd",
-            "gzipBytes": 71201
+            "tripCount": 552,
+            "bytes": 533581,
+            "sha256": "388c49f93e974725b7e6b93cb82326be102bff5ea353e8437833093b1b6e1f3f",
+            "gzipBytes": 71977
           },
           {
             "id": "18-20",
             "windowStart": 64800,
             "windowEnd": 72000,
             "path": "day-chunks/18-20.json",
-            "tripCount": 500,
-            "bytes": 487798,
-            "sha256": "a534e95d30b96aa8043560a8efe328c7f28612baeb2d6fc41996d5c059957a2c",
-            "gzipBytes": 66257
+            "tripCount": 509,
+            "bytes": 495664,
+            "sha256": "d4fbfb6ecc71cd941f167764fa4a46cdd374ed34a96b6fc993882125d8162c01",
+            "gzipBytes": 67067
           },
           {
             "id": "20-22",
             "windowStart": 72000,
             "windowEnd": 79200,
             "path": "day-chunks/20-22.json",
-            "tripCount": 419,
-            "bytes": 415913,
-            "sha256": "03752391a5da17415537b2abbb9d054add1f41df7031b5bcf51be055a486cfc2",
-            "gzipBytes": 56523
+            "tripCount": 428,
+            "bytes": 423779,
+            "sha256": "156df7c17ef7ca7aa0fdd6dfae79898b3fd053550f66d09764690edb2946ca2e",
+            "gzipBytes": 57283
           },
           {
             "id": "22-24",
             "windowStart": 79200,
             "windowEnd": 86400,
             "path": "day-chunks/22-24.json",
-            "tripCount": 352,
-            "bytes": 342021,
-            "sha256": "d6d750f4ea6a25b5ff5e31045785449ba3f74dbb525a3a0efd5876c7b937bc0c",
-            "gzipBytes": 46918
+            "tripCount": 361,
+            "bytes": 349887,
+            "sha256": "9e8fda57042d377cc6783c7087edd2b79f7bf53fb9f60802ce33422bc0a4b462",
+            "gzipBytes": 47679
           }
         ]
       },

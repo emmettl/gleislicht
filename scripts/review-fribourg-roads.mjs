@@ -1,11 +1,10 @@
 import { readFile, writeFile, mkdir } from 'node:fs/promises'
 import { gunzipSync } from 'node:zlib'
-import { roadConsensus } from './luzern-road-geometry.mjs'
-import { FRIBOURG_ROAD_LIMITS } from './fribourg-road-geometry.mjs'
+import { loadFribourgRoads } from './fribourg-road-geometry.mjs'
 import { bernWgs84 } from './bern-spatial.mjs'
 
 const json = async path => JSON.parse(await readFile(path, 'utf8'))
-const roads = roadConsensus(await json('data/fribourg-road-cache.json'), FRIBOURG_ROAD_LIMITS)
+const roads = (await loadFribourgRoads(undefined, (await json('data/fribourg-policy.json')).roads)).candidates
 const report = await json('data/fribourg-audit/2026-09-04.json'), routes = await json('data/fribourg-audit/routes.json')
 const source = JSON.parse(gunzipSync(await readFile('data/fribourg-sources/decoded.json.gz')))
 const panels = ['1', '2', '3', '4'].map((line, i) => {

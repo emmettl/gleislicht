@@ -183,7 +183,11 @@
     "attribution": "© OpenStreetMap contributors",
     "license": "ODbL-1.0",
     "licenseUrl": "https://opendatacommons.org/licenses/odbl/1-0/",
-    "directionNote": "Inferred paths using bus/PSV access and direction tags. The pinned pfaedle profile uses penalties, not an absolute one-way prohibition; legal direction and temporary restrictions are not certified."
+    "directionNote": "Inferred paths using bus/PSV access and direction tags. The pinned pfaedle profile uses penalties, not an absolute one-way prohibition; legal direction and temporary restrictions are not certified.",
+    "montCarmel": {
+      "file": "data/fribourg-mont-carmel-policy.json",
+      "sha256": "a9b44b222fdf7b2c9dc26899c350520a8de3945d06a13bff75a357b6133a3b27"
+    }
   },
   "rail": {
     "sourceDirectory": "data/fribourg-rail-sources",

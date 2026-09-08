@@ -1,0 +1,487 @@
+{
+  "schemaVersion": 1,
+  "id": "mont-carmel-terminal",
+  "sourceDirectory": "data/fribourg-mont-carmel-sources",
+  "sources": [
+    {
+      "file": "map.osm.gz",
+      "url": "https://www.openstreetmap.org/api/0.6/map?bbox=7.132,46.808,7.141,46.815",
+      "attribution": "© OpenStreetMap contributors",
+      "license": "ODbL-1.0",
+      "role": "Complete raw bounding-box response, deterministic gzip; detailed directed road topology and stop identities.",
+      "sha256": "afe8dbfa202e125225adb3034b06856d8c3f86bd4583556467d5a2d09a9a1a63",
+      "retrievedAt": "2026-09-08T20:54:43.664Z"
+    },
+    {
+      "file": "tpf-agglo.html",
+      "url": "https://www.tpf.ch/fr/horaires-et-reseaux/horaire-par-reseaux/agglo",
+      "attribution": "TPF",
+      "role": "Current operator line-3 Mont-Carmel–Charmettes identity, timetable valid from 2025-12-14; not proof of a terminal manoeuvre.",
+      "sha256": "92170b5a5ca729ddcd11853bfc83ed157286151fda9a38027b7d06696455dd40",
+      "retrievedAt": "2026-09-08T20:54:44.568Z"
+    },
+    {
+      "file": "givisiez-works.html",
+      "url": "https://www.givisiez.ch/article/deplacement-provisoire-de-larret-de-bus-mont-carmel-26052026",
+      "attribution": "Commune de Givisiez",
+      "documentDate": "2026-05-26",
+      "role": "Temporary stop displacement towards Belfaux on Route de la Chassotte; does not establish closure of the roundabout or justify moving the original GTFS stops.",
+      "sha256": "98b95b77765a111d7d5c7a6aed72b503dc634f057de3e448527e11bec5bf13b1",
+      "retrievedAt": "2026-09-08T20:54:46.618Z"
+    }
+  ],
+  "roadCacheSha256": "87f4d4be2662ff0982cea837e95f73863096d4bc37bd19ecc09ea88e064c465e",
+  "agencyId": "834",
+  "routeId": "92-3-A-j26-1",
+  "dates": [
+    "2026-09-04",
+    "2026-09-06"
+  ],
+  "stops": [
+    [
+      7.13694425,
+      46.81190474,
+      "Givisiez, Mont Carmel",
+      "",
+      "ch:1:sloid:87238:0:15107"
+    ],
+    [
+      7.13709697,
+      46.81168956,
+      "Givisiez, Mont Carmel",
+      "",
+      "ch:1:sloid:87238:0:15108"
+    ]
+  ],
+  "patterns": [
+    {
+      "id": "2cc0f7a654f3dee2adbb7208",
+      "routeId": "92-3-A-j26-1",
+      "stops": [
+        [
+          7.15726414,
+          46.7947121,
+          "Fribourg, Charmettes",
+          "",
+          "ch:1:sloid:77741:0:15044"
+        ],
+        [
+          7.15525192,
+          46.79648942,
+          "Fribourg, Industrie",
+          "",
+          "ch:1:sloid:89154:0:15080"
+        ],
+        [
+          7.15306901,
+          46.79883244,
+          "Fribourg, J. Vogt",
+          "",
+          "ch:1:sloid:88858:0:15171"
+        ],
+        [
+          7.15227849,
+          46.80056043,
+          "Fribourg, Fries",
+          "",
+          "ch:1:sloid:89155:0:15062"
+        ],
+        [
+          7.15203595,
+          46.80310004,
+          "Fribourg/Freiburg, Pl. Gare",
+          "C",
+          "ch:1:sloid:92374:0:3"
+        ],
+        [
+          7.15566514,
+          46.80399165,
+          "Fribourg, St-Pierre",
+          "",
+          "ch:1:sloid:89161:0:15156"
+        ],
+        [
+          7.15575497,
+          46.80487094,
+          "Fribourg, Place Georges Python",
+          "",
+          "ch:1:sloid:77810:0:15136"
+        ],
+        [
+          7.15287138,
+          46.80741649,
+          "Fribourg, Université",
+          "",
+          "ch:1:sloid:77811:0:15161"
+        ],
+        [
+          7.15056271,
+          46.80902124,
+          "Fribourg, Miséricorde",
+          "",
+          "ch:1:sloid:92382:0:15100"
+        ],
+        [
+          7.14829896,
+          46.80950081,
+          "Fribourg, Ste-Thérèse",
+          "",
+          "ch:1:sloid:77812:0:15152"
+        ],
+        [
+          7.14245093,
+          46.80910117,
+          "Fribourg, Champ-des-Fontaines",
+          "",
+          "ch:1:sloid:92369:0:15040"
+        ],
+        [
+          7.14033988,
+          46.80947622,
+          "Fribourg, Champ-Fleuri",
+          "",
+          "ch:1:sloid:92370:0:15038"
+        ],
+        [
+          7.13949547,
+          46.81088416,
+          "Fribourg, Jura Chassotte",
+          "",
+          "ch:1:sloid:92379:0:15088"
+        ],
+        [
+          7.13694425,
+          46.81190474,
+          "Givisiez, Mont Carmel",
+          "",
+          "ch:1:sloid:87238:0:15107"
+        ],
+        [
+          7.13709697,
+          46.81168956,
+          "Givisiez, Mont Carmel",
+          "",
+          "ch:1:sloid:87238:0:15108"
+        ]
+      ]
+    },
+    {
+      "id": "6b32b1bf0b9b2ad1a50a2927",
+      "routeId": "92-3-A-j26-1",
+      "stops": [
+        [
+          7.15203595,
+          46.80310004,
+          "Fribourg/Freiburg, Pl. Gare",
+          "C",
+          "ch:1:sloid:92374:0:3"
+        ],
+        [
+          7.15566514,
+          46.80399165,
+          "Fribourg, St-Pierre",
+          "",
+          "ch:1:sloid:89161:0:15156"
+        ],
+        [
+          7.15575497,
+          46.80487094,
+          "Fribourg, Place Georges Python",
+          "",
+          "ch:1:sloid:77810:0:15136"
+        ],
+        [
+          7.15287138,
+          46.80741649,
+          "Fribourg, Université",
+          "",
+          "ch:1:sloid:77811:0:15161"
+        ],
+        [
+          7.15056271,
+          46.80902124,
+          "Fribourg, Miséricorde",
+          "",
+          "ch:1:sloid:92382:0:15100"
+        ],
+        [
+          7.14829896,
+          46.80950081,
+          "Fribourg, Ste-Thérèse",
+          "",
+          "ch:1:sloid:77812:0:15152"
+        ],
+        [
+          7.14245093,
+          46.80910117,
+          "Fribourg, Champ-des-Fontaines",
+          "",
+          "ch:1:sloid:92369:0:15040"
+        ],
+        [
+          7.14033988,
+          46.80947622,
+          "Fribourg, Champ-Fleuri",
+          "",
+          "ch:1:sloid:92370:0:15038"
+        ],
+        [
+          7.13949547,
+          46.81088416,
+          "Fribourg, Jura Chassotte",
+          "",
+          "ch:1:sloid:92379:0:15088"
+        ],
+        [
+          7.13694425,
+          46.81190474,
+          "Givisiez, Mont Carmel",
+          "",
+          "ch:1:sloid:87238:0:15107"
+        ],
+        [
+          7.13709697,
+          46.81168956,
+          "Givisiez, Mont Carmel",
+          "",
+          "ch:1:sloid:87238:0:15108"
+        ]
+      ]
+    },
+    {
+      "id": "9a96322530f92c8786068589",
+      "routeId": "92-3-A-j26-1",
+      "stops": [
+        [
+          7.13709697,
+          46.81168956,
+          "Givisiez, Mont Carmel",
+          "",
+          "ch:1:sloid:87238:0:15108"
+        ],
+        [
+          7.13932479,
+          46.81079809,
+          "Fribourg, Jura Chassotte",
+          "",
+          "ch:1:sloid:92379:0:15089"
+        ],
+        [
+          7.1403848,
+          46.80939014,
+          "Fribourg, Champ-Fleuri",
+          "",
+          "ch:1:sloid:92370:0:15039"
+        ],
+        [
+          7.14239703,
+          46.80901509,
+          "Fribourg, Champ-des-Fontaines",
+          "",
+          "ch:1:sloid:92369:0:15041"
+        ],
+        [
+          7.14582859,
+          46.80943933,
+          "Fribourg, Vuille",
+          "B",
+          "ch:1:sloid:77820:0:15174"
+        ],
+        [
+          7.1489188,
+          46.8093594,
+          "Fribourg, Ste-Thérèse",
+          "",
+          "ch:1:sloid:77812:0:15153"
+        ],
+        [
+          7.15119153,
+          46.80853552,
+          "Fribourg, Miséricorde",
+          "",
+          "ch:1:sloid:92382:0:15101"
+        ],
+        [
+          7.15312291,
+          46.80676474,
+          "Fribourg, Université",
+          "",
+          "ch:1:sloid:77811:0:15162"
+        ],
+        [
+          7.15558429,
+          46.80466802,
+          "Fribourg, Place Georges Python",
+          "",
+          "ch:1:sloid:77810:0:15137"
+        ],
+        [
+          7.15513514,
+          46.80391171,
+          "Fribourg, St-Pierre",
+          "",
+          "ch:1:sloid:89161:0:15157"
+        ],
+        [
+          7.15136221,
+          46.80288483,
+          "Fribourg/Freiburg, Pl. Gare",
+          "B",
+          "ch:1:sloid:92374:0:2"
+        ],
+        [
+          7.15212578,
+          46.80054198,
+          "Fribourg, Fries",
+          "",
+          "ch:1:sloid:89155:0:15063"
+        ],
+        [
+          7.15303308,
+          46.79856186,
+          "Fribourg, J. Vogt",
+          "",
+          "ch:1:sloid:88858:0:15172"
+        ],
+        [
+          7.15538667,
+          46.79619423,
+          "Fribourg, Industrie",
+          "",
+          "ch:1:sloid:89154:0:15081"
+        ],
+        [
+          7.15726414,
+          46.7947121,
+          "Fribourg, Charmettes",
+          "",
+          "ch:1:sloid:77741:0:15044"
+        ]
+      ]
+    },
+    {
+      "id": "ea7a4bdb395b10c8c6bfdc36",
+      "routeId": "92-3-A-j26-1",
+      "stops": [
+        [
+          7.13709697,
+          46.81168956,
+          "Givisiez, Mont Carmel",
+          "",
+          "ch:1:sloid:87238:0:15108"
+        ],
+        [
+          7.13932479,
+          46.81079809,
+          "Fribourg, Jura Chassotte",
+          "",
+          "ch:1:sloid:92379:0:15089"
+        ],
+        [
+          7.1403848,
+          46.80939014,
+          "Fribourg, Champ-Fleuri",
+          "",
+          "ch:1:sloid:92370:0:15039"
+        ],
+        [
+          7.14239703,
+          46.80901509,
+          "Fribourg, Champ-des-Fontaines",
+          "",
+          "ch:1:sloid:92369:0:15041"
+        ],
+        [
+          7.14582859,
+          46.80943933,
+          "Fribourg, Vuille",
+          "B",
+          "ch:1:sloid:77820:0:15174"
+        ],
+        [
+          7.1489188,
+          46.8093594,
+          "Fribourg, Ste-Thérèse",
+          "",
+          "ch:1:sloid:77812:0:15153"
+        ],
+        [
+          7.15119153,
+          46.80853552,
+          "Fribourg, Miséricorde",
+          "",
+          "ch:1:sloid:92382:0:15101"
+        ],
+        [
+          7.15312291,
+          46.80676474,
+          "Fribourg, Université",
+          "",
+          "ch:1:sloid:77811:0:15162"
+        ],
+        [
+          7.15558429,
+          46.80466802,
+          "Fribourg, Place Georges Python",
+          "",
+          "ch:1:sloid:77810:0:15137"
+        ],
+        [
+          7.15513514,
+          46.80391171,
+          "Fribourg, St-Pierre",
+          "",
+          "ch:1:sloid:89161:0:15157"
+        ],
+        [
+          7.15136221,
+          46.80288483,
+          "Fribourg/Freiburg, Pl. Gare",
+          "B",
+          "ch:1:sloid:92374:0:2"
+        ]
+      ]
+    }
+  ],
+  "maximumAttachmentMetres": 15,
+  "chain": [
+    {
+      "wayId": "1097802067",
+      "from": "947021993",
+      "to": "292013103"
+    },
+    {
+      "wayId": "55700630",
+      "from": "292013103",
+      "to": "699975410"
+    },
+    {
+      "wayId": "1095950865",
+      "from": "699975410",
+      "to": "947021971"
+    }
+  ],
+  "relations": [
+    {
+      "id": "2464722",
+      "stopNode": "947021993",
+      "role": "stop_exit_only"
+    },
+    {
+      "id": "12589725",
+      "stopNode": "947021993",
+      "role": "stop_exit_only"
+    },
+    {
+      "id": "1224330",
+      "stopNode": "947021971",
+      "role": "stop_entry_only"
+    },
+    {
+      "id": "12589724",
+      "stopNode": "947021971",
+      "role": "stop_entry_only"
+    }
+  ],
+  "admission": "One exact final directed pair on TPF 3, in every complete contributing pattern. Three original OSM ways, shared node identity, forward-only one-way/roundabout traversal, trolley wires and no intersecting returned turn restrictions. Preserve both original calls and coordinates; no collapsing duplicate stop names. Inferred centreline movement, not operator-certified running lanes or a guarantee of temporary access. Route-relation j23 references are historical identity evidence only."
+}
