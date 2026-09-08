@@ -1,0 +1,200 @@
+{
+  "schemaVersion": 1,
+  "complete": true,
+  "dates": [
+    "2026-09-04",
+    "2026-09-06"
+  ],
+  "files": [
+    {
+      "path": "basel-metadata.json.gz",
+      "source": "basel",
+      "role": "metadata",
+      "serviceDate": null,
+      "url": "https://data.bs.ch/api/explore/v2.1/catalog/datasets/100006",
+      "acquiredAt": "2026-09-08T17:38:35.235563+00:00",
+      "bytes": 27954,
+      "sha256": "2d5d5dd7caec74ecd310530c1c9e180a7c1d7b9c3eebdcc16f78a0347e2f74a3"
+    },
+    {
+      "path": "basel-stations-metadata.json.gz",
+      "source": "basel",
+      "role": "station-metadata",
+      "serviceDate": null,
+      "url": "https://data.bs.ch/api/explore/v2.1/catalog/datasets/100038",
+      "acquiredAt": "2026-09-08T17:38:35.384280+00:00",
+      "bytes": 10479,
+      "sha256": "9f6843bcf359a49f8b0c85f15c9a6a0f31c261103a5d3238863e0c73a21b06ba"
+    },
+    {
+      "path": "basel-stations.json.gz",
+      "source": "basel",
+      "role": "stations",
+      "serviceDate": null,
+      "url": "https://data.bs.ch/api/explore/v2.1/catalog/datasets/100038/exports/json",
+      "acquiredAt": "2026-09-08T17:38:36.127827+00:00",
+      "bytes": 223582,
+      "sha256": "9c62f1caac96c0678276063c6dd676953e7d3fedb396a0c9865b52271cd59de2"
+    },
+    {
+      "path": "basel-2026-09-04-count.json.gz",
+      "source": "basel",
+      "role": "count",
+      "serviceDate": "2026-09-04",
+      "url": "https://data.bs.ch/api/explore/v2.1/catalog/datasets/100006/records?where=datetimefrom+%3E%3D+%222026-09-04T00%3A00%3A00%2B02%3A00%22+AND+datetimefrom+%3C+%222026-09-05T00%3A00%3A00%2B02%3A00%22&limit=0",
+      "acquiredAt": "2026-09-08T17:38:36.354293+00:00",
+      "bytes": 36,
+      "sha256": "e9aaaafef7d81e8931a243d370aa5e94e32b790b3e0f726372a95c947722487a"
+    },
+    {
+      "path": "basel-2026-09-04.json.gz",
+      "source": "basel",
+      "role": "observations",
+      "serviceDate": "2026-09-04",
+      "url": "https://data.bs.ch/api/explore/v2.1/catalog/datasets/100006/exports/json?where=datetimefrom+%3E%3D+%222026-09-04T00%3A00%3A00%2B02%3A00%22+AND+datetimefrom+%3C+%222026-09-05T00%3A00%3A00%2B02%3A00%22",
+      "acquiredAt": "2026-09-08T17:38:36.957619+00:00",
+      "bytes": 1051169,
+      "sha256": "d8d64eee10dddbb522c62e4f6f9940a2195439d46a72f6e47a472f1a9c494586"
+    },
+    {
+      "path": "basel-2026-09-06-count.json.gz",
+      "source": "basel",
+      "role": "count",
+      "serviceDate": "2026-09-06",
+      "url": "https://data.bs.ch/api/explore/v2.1/catalog/datasets/100006/records?where=datetimefrom+%3E%3D+%222026-09-06T00%3A00%3A00%2B02%3A00%22+AND+datetimefrom+%3C+%222026-09-07T00%3A00%3A00%2B02%3A00%22&limit=0",
+      "acquiredAt": "2026-09-08T17:38:37.299950+00:00",
+      "bytes": 36,
+      "sha256": "d96b941cb9a91f1b68d62bd47ac461791c41a1bda6cd283ba4b2620217d6c0f2"
+    },
+    {
+      "path": "basel-2026-09-06.json.gz",
+      "source": "basel",
+      "role": "observations",
+      "serviceDate": "2026-09-06",
+      "url": "https://data.bs.ch/api/explore/v2.1/catalog/datasets/100006/exports/json?where=datetimefrom+%3E%3D+%222026-09-06T00%3A00%3A00%2B02%3A00%22+AND+datetimefrom+%3C+%222026-09-07T00%3A00%3A00%2B02%3A00%22",
+      "acquiredAt": "2026-09-08T17:38:37.962082+00:00",
+      "bytes": 1032854,
+      "sha256": "c7e42baf587cefef00f8af04796c6a080fa1b25f5669f7aa8979e1a2660bbc5a"
+    },
+    {
+      "path": "thurgau-metadata.json.gz",
+      "source": "thurgau",
+      "role": "metadata",
+      "serviceDate": null,
+      "url": "https://data.tg.ch/api/explore/v2.1/catalog/datasets/dbu-tba-2",
+      "acquiredAt": "2026-09-08T17:38:38.173498+00:00",
+      "bytes": 26198,
+      "sha256": "529d3b257dd57c60b7845fd66356c1e17d115dcc9070819e4c52df7d5018a933"
+    },
+    {
+      "path": "thurgau-2026-09-04-count.json.gz",
+      "source": "thurgau",
+      "role": "count",
+      "serviceDate": "2026-09-04",
+      "url": "https://data.tg.ch/api/explore/v2.1/catalog/datasets/dbu-tba-2/records?where=datum+%3D+date%272026-09-04%27&limit=0",
+      "acquiredAt": "2026-09-08T17:38:38.382552+00:00",
+      "bytes": 36,
+      "sha256": "898bea9e4b46c45f4dd14c2b8bd728fef6277a9786e8176772e5e020bdddbfb1"
+    },
+    {
+      "path": "thurgau-2026-09-04.json.gz",
+      "source": "thurgau",
+      "role": "observations",
+      "serviceDate": "2026-09-04",
+      "url": "https://data.tg.ch/api/explore/v2.1/catalog/datasets/dbu-tba-2/exports/json?where=datum+%3D+date%272026-09-04%27",
+      "acquiredAt": "2026-09-08T17:38:39.649819+00:00",
+      "bytes": 2259652,
+      "sha256": "e2e12136d6fc171871f3b85707d1c99e68c7dbd2f26f96f8475ea4d512b50b97"
+    },
+    {
+      "path": "thurgau-2026-09-06-count.json.gz",
+      "source": "thurgau",
+      "role": "count",
+      "serviceDate": "2026-09-06",
+      "url": "https://data.tg.ch/api/explore/v2.1/catalog/datasets/dbu-tba-2/records?where=datum+%3D+date%272026-09-06%27&limit=0",
+      "acquiredAt": "2026-09-08T17:38:39.923201+00:00",
+      "bytes": 36,
+      "sha256": "d6d2d60b7fb71c70f1c749f436f411fd7edc3e790bac4f1c956257b25ff8bbd5"
+    },
+    {
+      "path": "thurgau-2026-09-06.json.gz",
+      "source": "thurgau",
+      "role": "observations",
+      "serviceDate": "2026-09-06",
+      "url": "https://data.tg.ch/api/explore/v2.1/catalog/datasets/dbu-tba-2/exports/json?where=datum+%3D+date%272026-09-06%27",
+      "acquiredAt": "2026-09-08T17:38:41.887318+00:00",
+      "bytes": 2198520,
+      "sha256": "315681b9eaad7e24f0c8d05734aef1d9d3b76dc5d3375b86a025c3c7ef9c70e7"
+    },
+    {
+      "path": "zurich-city-metadata.json.gz",
+      "source": "zurich-city",
+      "role": "metadata",
+      "serviceDate": null,
+      "url": "https://data.stadt-zuerich.ch/api/3/action/package_show?id=sid_dav_verkehrszaehlung_miv_od2031",
+      "acquiredAt": "2026-09-08T17:38:42.200363+00:00",
+      "bytes": 62689,
+      "sha256": "62589dc0ed94ebcf9e47d4d85eceb10bd0c2e3650f8d82b91709ec04892e3fd2"
+    },
+    {
+      "path": "zurich-city-2026-09-04-count.json.gz",
+      "source": "zurich-city",
+      "role": "count",
+      "serviceDate": "2026-09-04",
+      "url": "https://data.stadt-zuerich.ch/api/3/action/datastore_search_sql?sql=SELECT+count%28%2A%29+AS+n+FROM+%22e9af01b4-a18a-4076-b0a4-a88708f6f6e2%22+WHERE+%22MessungDatZeit%22+%3E%3D+%272026-09-04T00%3A00%3A00%27+AND+%22MessungDatZeit%22+%3C+%272026-09-05T00%3A00%3A00%27",
+      "acquiredAt": "2026-09-08T17:38:42.702874+00:00",
+      "bytes": 368,
+      "sha256": "9ce0fed5cf12c9c54f5caebc14bfa8e02a3f73704b50b954ebcc222a81e5b80d"
+    },
+    {
+      "path": "zurich-city-2026-09-04-0.json.gz",
+      "source": "zurich-city",
+      "role": "observations",
+      "serviceDate": "2026-09-04",
+      "url": "https://data.stadt-zuerich.ch/api/3/action/datastore_search_sql?sql=SELECT+%22_id%22%2C%22MSID%22%2C%22MSName%22%2C%22ZSID%22%2C%22ZSName%22%2C%22Achse%22%2C%22HNr%22%2C%22Hoehe%22%2C%22EKoord%22%2C%22NKoord%22%2C%22Richtung%22%2C%22Knummer%22%2C%22Kname%22%2C%22AnzDetektoren%22%2C%22D1ID%22%2C%22D2ID%22%2C%22D3ID%22%2C%22D4ID%22%2C%22MessungDatZeit%22%2C%22LieferDat%22%2C%22AnzFahrzeuge%22%2C%22AnzFahrzeugeStatus%22+FROM+%22e9af01b4-a18a-4076-b0a4-a88708f6f6e2%22+WHERE+%22MessungDatZeit%22+%3E%3D+%272026-09-04T00%3A00%3A00%27+AND+%22MessungDatZeit%22+%3C+%272026-09-05T00%3A00%3A00%27+ORDER+BY+%22_id%22+LIMIT+5000+OFFSET+0",
+      "acquiredAt": "2026-09-08T17:38:43.857686+00:00",
+      "bytes": 2786903,
+      "sha256": "4926fb95f636d51475bacd76b5379ec3966551e18256f89455b95afd18de21a7"
+    },
+    {
+      "path": "zurich-city-2026-09-04-5000.json.gz",
+      "source": "zurich-city",
+      "role": "observations",
+      "serviceDate": "2026-09-04",
+      "url": "https://data.stadt-zuerich.ch/api/3/action/datastore_search_sql?sql=SELECT+%22_id%22%2C%22MSID%22%2C%22MSName%22%2C%22ZSID%22%2C%22ZSName%22%2C%22Achse%22%2C%22HNr%22%2C%22Hoehe%22%2C%22EKoord%22%2C%22NKoord%22%2C%22Richtung%22%2C%22Knummer%22%2C%22Kname%22%2C%22AnzDetektoren%22%2C%22D1ID%22%2C%22D2ID%22%2C%22D3ID%22%2C%22D4ID%22%2C%22MessungDatZeit%22%2C%22LieferDat%22%2C%22AnzFahrzeuge%22%2C%22AnzFahrzeugeStatus%22+FROM+%22e9af01b4-a18a-4076-b0a4-a88708f6f6e2%22+WHERE+%22MessungDatZeit%22+%3E%3D+%272026-09-04T00%3A00%3A00%27+AND+%22MessungDatZeit%22+%3C+%272026-09-05T00%3A00%3A00%27+ORDER+BY+%22_id%22+LIMIT+5000+OFFSET+5000",
+      "acquiredAt": "2026-09-08T17:38:44.526609+00:00",
+      "bytes": 123931,
+      "sha256": "8df728e0bffc12e4ae7c9dd7d3c15e54d67ec0376cccf067bd36c90848342d1b"
+    },
+    {
+      "path": "zurich-city-2026-09-06-count.json.gz",
+      "source": "zurich-city",
+      "role": "count",
+      "serviceDate": "2026-09-06",
+      "url": "https://data.stadt-zuerich.ch/api/3/action/datastore_search_sql?sql=SELECT+count%28%2A%29+AS+n+FROM+%22e9af01b4-a18a-4076-b0a4-a88708f6f6e2%22+WHERE+%22MessungDatZeit%22+%3E%3D+%272026-09-06T00%3A00%3A00%27+AND+%22MessungDatZeit%22+%3C+%272026-09-07T00%3A00%3A00%27",
+      "acquiredAt": "2026-09-08T17:38:45.150572+00:00",
+      "bytes": 368,
+      "sha256": "140ce95a50cd53073e537857b17e187a1104788a025e0c511320636a7e7c0398"
+    },
+    {
+      "path": "zurich-city-2026-09-06-0.json.gz",
+      "source": "zurich-city",
+      "role": "observations",
+      "serviceDate": "2026-09-06",
+      "url": "https://data.stadt-zuerich.ch/api/3/action/datastore_search_sql?sql=SELECT+%22_id%22%2C%22MSID%22%2C%22MSName%22%2C%22ZSID%22%2C%22ZSName%22%2C%22Achse%22%2C%22HNr%22%2C%22Hoehe%22%2C%22EKoord%22%2C%22NKoord%22%2C%22Richtung%22%2C%22Knummer%22%2C%22Kname%22%2C%22AnzDetektoren%22%2C%22D1ID%22%2C%22D2ID%22%2C%22D3ID%22%2C%22D4ID%22%2C%22MessungDatZeit%22%2C%22LieferDat%22%2C%22AnzFahrzeuge%22%2C%22AnzFahrzeugeStatus%22+FROM+%22e9af01b4-a18a-4076-b0a4-a88708f6f6e2%22+WHERE+%22MessungDatZeit%22+%3E%3D+%272026-09-06T00%3A00%3A00%27+AND+%22MessungDatZeit%22+%3C+%272026-09-07T00%3A00%3A00%27+ORDER+BY+%22_id%22+LIMIT+5000+OFFSET+0",
+      "acquiredAt": "2026-09-08T17:38:46.412941+00:00",
+      "bytes": 2786525,
+      "sha256": "9867ff60d225970dd0cabf379ae67a6412d7fce201e521a6a2b047e29297e7db"
+    },
+    {
+      "path": "zurich-city-2026-09-06-5000.json.gz",
+      "source": "zurich-city",
+      "role": "observations",
+      "serviceDate": "2026-09-06",
+      "url": "https://data.stadt-zuerich.ch/api/3/action/datastore_search_sql?sql=SELECT+%22_id%22%2C%22MSID%22%2C%22MSName%22%2C%22ZSID%22%2C%22ZSName%22%2C%22Achse%22%2C%22HNr%22%2C%22Hoehe%22%2C%22EKoord%22%2C%22NKoord%22%2C%22Richtung%22%2C%22Knummer%22%2C%22Kname%22%2C%22AnzDetektoren%22%2C%22D1ID%22%2C%22D2ID%22%2C%22D3ID%22%2C%22D4ID%22%2C%22MessungDatZeit%22%2C%22LieferDat%22%2C%22AnzFahrzeuge%22%2C%22AnzFahrzeugeStatus%22+FROM+%22e9af01b4-a18a-4076-b0a4-a88708f6f6e2%22+WHERE+%22MessungDatZeit%22+%3E%3D+%272026-09-06T00%3A00%3A00%27+AND+%22MessungDatZeit%22+%3C+%272026-09-07T00%3A00%3A00%27+ORDER+BY+%22_id%22+LIMIT+5000+OFFSET+5000",
+      "acquiredAt": "2026-09-08T17:38:47.093520+00:00",
+      "bytes": 123902,
+      "sha256": "be4cd203916f6a41ffc6ab26b764c09686f18322c2c468c91b1cd277f759c838"
+    }
+  ]
+}
