@@ -260,7 +260,9 @@ Status refers to the strongest **local line-geometry evidence**, not the availab
 
 The city’s hash-pinned 1:500 engineering overview is explicitly published under **Endzustand** and depicts planned Grienbach/Oberallmend stops. Its printed project date (4 August 2025), PDF creation (31 July) and ArcGIS upload dates are distinguished. It provides no fixture-valid temporary-platform/SLOID mapping; no drawing coordinates enter the feed and all 105 inbound exclusions remain.
 
-**Next action:** Resolve the remaining inbound 604 Grienbach inconsistency, verify current alignments and street directions, and validate seasonal/holiday dates before claiming complete cantonal motion coverage.
+The [annual directed-pattern and calendar audit](ZUG-ANNUAL-PATTERNS.md) now retains all 22,676 annual trips and 303,937 complete calls, with 5,036 service calendars and 724,022 exception rows. It reproduces both civil fixtures exactly and identifies 3,614 exact platform patterns: 511 seen on the fixtures and 3,103 additional active patterns. Explicit parent-station comparison distinguishes 221 additional station sequences from platform variants. All 41 additional bus patterns, including replacement services, retain full call order and active dates. These annual comparisons add no geometry admissions.
+
+**Next action:** Validate additional annual platform patterns and date-specific operating conditions using the retained service-date inventory; resolve inbound 604 Grienbach before claiming complete cantonal motion coverage.
 
 **Checked references:** [zg-catalogue](https://zg.ch/de/planen-bauen/geoinformation/geoinformationen-nutzen/geoinformationen-von-a-bis-z), [zg-wfs](https://services.geo.zg.ch/ows/buslinien?REQUEST=GetCapabilities&SERVICE=WFS), [zg-download](https://services.geo.zg.ch/datarepo/Buslinien/data.zip), [zg-terms](https://zg.ch/de/planen-bauen/geoinformation/geoinformationen-nutzen/nutzungsbedingungen).
 

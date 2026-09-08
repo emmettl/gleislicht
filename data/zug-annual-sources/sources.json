@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "prepared": "2026-09-09",
+  "archiveUrl": "https://data.opentransportdata.swiss/dataset/3d2c18f9-9ef1-463f-a249-5c67604efd74/resource/c09aba2a-41e9-4117-88af-3fdfe589d64a/download/gtfs_fp2026_20260902.zip",
+  "archiveSha256": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+  "fixtureSha256": "4e06a722d5403334a733d79f3332d204fbeeb0d05ede5c0344dbe7c16c05398d",
+  "boundarySha256": "6e0aaab028069c0843c8094e6d232f5a913d5324643a3307c59f3a09ebccedc2",
+  "feed": {
+    "feed_publisher_name": "SBB",
+    "feed_publisher_url": "https://sbb.ch",
+    "feed_lang": "DE",
+    "feed_start_date": "20251214",
+    "feed_end_date": "20261212",
+    "feed_version": "20260902"
+  },
+  "scope": {
+    "description": "Every annual GTFS trip with at least one source stop inside the complete official Zug polygon, across every agency and mode. Fixture trips retain every source call, including cross-canton termini. No straight-line crossing test for nonstopping through traffic.",
+    "annualStopTimeRows": 34499152,
+    "annualScopedTripRecords": 22676,
+    "cantonStopRecords": 945,
+    "calledCantonStopRecords": 620
+  },
+  "attribution": "SBB / opentransportdata.swiss",
+  "termsUrl": "https://opentransportdata.swiss/en/terms-of-use/",
+  "method": "Full national stop-time census without route or operator whitelist; retain complete scoped trips and all their calendar/exception/frequency rows. Preserve all national stop, route and agency records. CSV fields are re-encoded without value changes; no geometry or extra feed dates are admitted.",
+  "files": [
+    {
+      "file": "trips.txt.gz",
+      "sha256": "4bfa6c5dcd2dc0def59f90abcba2eb655b3dbaf889b78985d2a7ea82cf72eac8",
+      "rows": 22676,
+      "nationalRows": 2143227,
+      "archiveEntry": "trips.txt",
+      "archiveEntryBytes": 314535727,
+      "archiveEntryCrc32": "89be858f"
+    },
+    {
+      "file": "stop_times.txt.gz",
+      "sha256": "9e0edd002dca639968cb3d812053837beb36419a28c78de79f99cde548143afe",
+      "rows": 303937,
+      "nationalRows": 34499152,
+      "archiveEntry": "stop_times.txt",
+      "archiveEntryBytes": 3012287071,
+      "archiveEntryCrc32": "c4c6d7ac"
+    },
+    {
+      "file": "calendar.txt.gz",
+      "sha256": "cf0c47174e65afe138a953215d48b06c4ec00ed85caa69725288ff6e304684c2",
+      "rows": 5036,
+      "nationalRows": 81554,
+      "archiveEntry": "calendar.txt",
+      "archiveEntryBytes": 5087510,
+      "archiveEntryCrc32": "957a4c8e"
+    },
+    {
+      "file": "calendar_dates.txt.gz",
+      "sha256": "3c7c4f4adc4ae7f5a672e0f1336b040761e8fec665b86edde4e76be22ccdee55",
+      "rows": 724022,
+      "nationalRows": 10761400,
+      "archiveEntry": "calendar_dates.txt",
+      "archiveEntryBytes": 291181470,
+      "archiveEntryCrc32": "d1bcaaa9"
+    },
+    {
+      "file": "frequencies.txt.gz",
+      "sha256": "ea74515313fc62d920236adb43475674f992ae4ad382eefbd705c26cbcbf2cff",
+      "rows": 0,
+      "nationalRows": 1885,
+      "archiveEntry": "frequencies.txt",
+      "archiveEntryBytes": 112272,
+      "archiveEntryCrc32": "23a0de10"
+    },
+    {
+      "file": "stops.txt.gz",
+      "sha256": "e406a41aff55cd0b76f5a2cc98d4c6ff647517edebd992d958fea8f2eba03839",
+      "rows": 104322,
+      "nationalRows": 104322,
+      "archiveEntry": "stops.txt",
+      "archiveEntryBytes": 13556435,
+      "archiveEntryCrc32": "7183f817"
+    },
+    {
+      "file": "routes.txt.gz",
+      "sha256": "77aec475ab33770210a53dc28952ff92e8f42537bf1e80dc3afcb0bca2a338bb",
+      "rows": 5142,
+      "nationalRows": 5142,
+      "archiveEntry": "routes.txt",
+      "archiveEntryBytes": 220821,
+      "archiveEntryCrc32": "5875587f"
+    },
+    {
+      "file": "agency.txt.gz",
+      "sha256": "643c56da31b98c0bf2234c48e1103462b93707d9e0a3441d999a26dcb3d82a65",
+      "rows": 473,
+      "nationalRows": 473,
+      "archiveEntry": "agency.txt",
+      "archiveEntryBytes": 38397,
+      "archiveEntryCrc32": "3d4b2189"
+    },
+    {
+      "file": "feed_info.txt.gz",
+      "sha256": "1967b3a7a64e0828795e8d8e1814b02a3795182f9efc83b89f7b599068669e4e",
+      "rows": 1,
+      "nationalRows": 1,
+      "archiveEntry": "feed_info.txt",
+      "archiveEntryBytes": 158,
+      "archiveEntryCrc32": "7af0ad9b"
+    }
+  ]
+}
