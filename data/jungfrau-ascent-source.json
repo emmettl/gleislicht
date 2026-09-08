@@ -1,0 +1,3319 @@
+{
+  "serviceDate": "2026-09-04",
+  "feedVersion": "20260902",
+  "sha256": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+  "sourceUrl": "https://opentransportdata.swiss/en/cookbook/timetable-cookbook/gtfs/",
+  "operator": {
+    "url": "https://www.jungfrau.ch/en-gb/arriving/",
+    "checked": "2026-09-08",
+    "boardingLeadSeconds": 600,
+    "note": "Kleine Scheidegg: operator asks passengers to pass the turnstiles at least ten minutes before departure. Allow this in addition to the GTFS transfer minimum. Reservation and availability are not validated by this composition."
+  },
+  "editorial": {
+    "lauterbrunnenMinimumSeconds": 600,
+    "maximumWaitSeconds": 3600,
+    "note": "No internal Lauterbrunnen transfer row in this archive. Ten minutes is an editorial allowance, not a published transfer rule; waits over one hour are excluded."
+  },
+  "transfers": [
+    {
+      "from_stop_id": "ch:1:sloid:7374",
+      "to_stop_id": "ch:1:sloid:7374",
+      "from_route_id": "",
+      "to_route_id": "",
+      "from_trip_id": "",
+      "to_trip_id": "",
+      "transfer_type": "2",
+      "min_transfer_time": "180",
+      "service_id": ""
+    },
+    {
+      "from_stop_id": "ch:1:sloid:7374",
+      "to_stop_id": "ch:1:sloid:7374:0:533952",
+      "from_route_id": "",
+      "to_route_id": "",
+      "from_trip_id": "",
+      "to_trip_id": "",
+      "transfer_type": "2",
+      "min_transfer_time": "180",
+      "service_id": ""
+    },
+    {
+      "from_stop_id": "ch:1:sloid:7374",
+      "to_stop_id": "ch:1:sloid:7374:0:564901",
+      "from_route_id": "",
+      "to_route_id": "",
+      "from_trip_id": "",
+      "to_trip_id": "",
+      "transfer_type": "2",
+      "min_transfer_time": "180",
+      "service_id": ""
+    },
+    {
+      "from_stop_id": "ch:1:sloid:7374",
+      "to_stop_id": "ch:1:sloid:7374:0:679042",
+      "from_route_id": "",
+      "to_route_id": "",
+      "from_trip_id": "",
+      "to_trip_id": "",
+      "transfer_type": "2",
+      "min_transfer_time": "180",
+      "service_id": ""
+    },
+    {
+      "from_stop_id": "ch:1:sloid:7374:0:533952",
+      "to_stop_id": "ch:1:sloid:7374",
+      "from_route_id": "",
+      "to_route_id": "",
+      "from_trip_id": "",
+      "to_trip_id": "",
+      "transfer_type": "2",
+      "min_transfer_time": "180",
+      "service_id": ""
+    },
+    {
+      "from_stop_id": "ch:1:sloid:7374:0:533952",
+      "to_stop_id": "ch:1:sloid:7374:0:564901",
+      "from_route_id": "",
+      "to_route_id": "",
+      "from_trip_id": "",
+      "to_trip_id": "",
+      "transfer_type": "2",
+      "min_transfer_time": "180",
+      "service_id": ""
+    },
+    {
+      "from_stop_id": "ch:1:sloid:7374:0:533952",
+      "to_stop_id": "ch:1:sloid:7374:0:679042",
+      "from_route_id": "",
+      "to_route_id": "",
+      "from_trip_id": "",
+      "to_trip_id": "",
+      "transfer_type": "2",
+      "min_transfer_time": "180",
+      "service_id": ""
+    },
+    {
+      "from_stop_id": "ch:1:sloid:7374:0:564901",
+      "to_stop_id": "ch:1:sloid:7374",
+      "from_route_id": "",
+      "to_route_id": "",
+      "from_trip_id": "",
+      "to_trip_id": "",
+      "transfer_type": "2",
+      "min_transfer_time": "180",
+      "service_id": ""
+    },
+    {
+      "from_stop_id": "ch:1:sloid:7374:0:564901",
+      "to_stop_id": "ch:1:sloid:7374:0:533952",
+      "from_route_id": "",
+      "to_route_id": "",
+      "from_trip_id": "",
+      "to_trip_id": "",
+      "transfer_type": "2",
+      "min_transfer_time": "180",
+      "service_id": ""
+    },
+    {
+      "from_stop_id": "ch:1:sloid:7374:0:564901",
+      "to_stop_id": "ch:1:sloid:7374:0:679042",
+      "from_route_id": "",
+      "to_route_id": "",
+      "from_trip_id": "",
+      "to_trip_id": "",
+      "transfer_type": "2",
+      "min_transfer_time": "180",
+      "service_id": ""
+    },
+    {
+      "from_stop_id": "ch:1:sloid:7374:0:679042",
+      "to_stop_id": "ch:1:sloid:7374",
+      "from_route_id": "",
+      "to_route_id": "",
+      "from_trip_id": "",
+      "to_trip_id": "",
+      "transfer_type": "2",
+      "min_transfer_time": "180",
+      "service_id": ""
+    },
+    {
+      "from_stop_id": "ch:1:sloid:7374:0:679042",
+      "to_stop_id": "ch:1:sloid:7374:0:533952",
+      "from_route_id": "",
+      "to_route_id": "",
+      "from_trip_id": "",
+      "to_trip_id": "",
+      "transfer_type": "2",
+      "min_transfer_time": "180",
+      "service_id": ""
+    },
+    {
+      "from_stop_id": "ch:1:sloid:7374:0:679042",
+      "to_stop_id": "ch:1:sloid:7374:0:564901",
+      "from_route_id": "",
+      "to_route_id": "",
+      "from_trip_id": "",
+      "to_trip_id": "",
+      "transfer_type": "2",
+      "min_transfer_time": "180",
+      "service_id": ""
+    }
+  ],
+  "trips": {
+    ".ojp-91-62.1.TA.1.j26": {
+      "routeId": "91-62-j26-1",
+      "agencyId": "35",
+      "routeType": 106,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7492_gen:ch:1:sloid:7492:0:94927_pf:2A",
+          "arrival": 75840,
+          "departure": 75840,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:10470_gen:ch:1:sloid:10470:0:18393_pf:1AB",
+          "arrival": 75960,
+          "departure": 76020,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7388_gen:ch:1:sloid:7388:0:982127_pf:2AB",
+          "arrival": 76140,
+          "departure": 76200,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 4,
+          "stopId": "ch:1:sloid:7389_gen:ch:1:sloid:7389:0:409683_pf:1AB",
+          "arrival": 76560,
+          "departure": 76620,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 5,
+          "stopId": "ch:1:sloid:7384:0:556843",
+          "arrival": 77160,
+          "departure": 77160,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-91-62.1.TA.10.j26": {
+      "routeId": "91-62-j26-1",
+      "agencyId": "35",
+      "routeType": 106,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7492_gen:ch:1:sloid:7492:0:94927_pf:2A",
+          "arrival": 56040,
+          "departure": 56040,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:10470_gen:ch:1:sloid:10470:0:18393_pf:1AB",
+          "arrival": 56160,
+          "departure": 56220,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7388_gen:ch:1:sloid:7388:0:982127_pf:2AB",
+          "arrival": 56340,
+          "departure": 56400,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 4,
+          "stopId": "ch:1:sloid:7389_gen:ch:1:sloid:7389:0:409683_pf:1AB",
+          "arrival": 56760,
+          "departure": 56820,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 5,
+          "stopId": "ch:1:sloid:7384:0:556843",
+          "arrival": 57360,
+          "departure": 57360,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-91-62.1.TA.11.j26": {
+      "routeId": "91-62-j26-1",
+      "agencyId": "35",
+      "routeType": 106,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7492_gen:ch:1:sloid:7492:0:94927_pf:2A",
+          "arrival": 45240,
+          "departure": 45240,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:10470_gen:ch:1:sloid:10470:0:18393_pf:1AB",
+          "arrival": 45360,
+          "departure": 45420,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7388_gen:ch:1:sloid:7388:0:982127_pf:2AB",
+          "arrival": 45540,
+          "departure": 45600,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 4,
+          "stopId": "ch:1:sloid:7389_gen:ch:1:sloid:7389:0:409683_pf:1AB",
+          "arrival": 45960,
+          "departure": 46020,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 5,
+          "stopId": "ch:1:sloid:7384:0:556843",
+          "arrival": 46560,
+          "departure": 46560,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-91-62.1.TA.12.j26": {
+      "routeId": "91-62-j26-1",
+      "agencyId": "35",
+      "routeType": 106,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7492_gen:ch:1:sloid:7492:0:94927_pf:2A",
+          "arrival": 29040,
+          "departure": 29040,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:10470_gen:ch:1:sloid:10470:0:18393_pf:1AB",
+          "arrival": 29160,
+          "departure": 29220,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7388_gen:ch:1:sloid:7388:0:982127_pf:2AB",
+          "arrival": 29340,
+          "departure": 29400,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 4,
+          "stopId": "ch:1:sloid:7389_gen:ch:1:sloid:7389:0:409683_pf:1AB",
+          "arrival": 29760,
+          "departure": 29820,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 5,
+          "stopId": "ch:1:sloid:7384:0:556843",
+          "arrival": 30360,
+          "departure": 30360,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-91-62.1.TA.13.j26": {
+      "routeId": "91-62-j26-1",
+      "agencyId": "35",
+      "routeType": 106,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7492_gen:ch:1:sloid:7492:0:94927_pf:2A",
+          "arrival": 25440,
+          "departure": 25440,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:10470_gen:ch:1:sloid:10470:0:18393_pf:1AB",
+          "arrival": 25560,
+          "departure": 25620,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7388_gen:ch:1:sloid:7388:0:982127_pf:2AB",
+          "arrival": 25740,
+          "departure": 25800,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 4,
+          "stopId": "ch:1:sloid:7389_gen:ch:1:sloid:7389:0:409683_pf:1AB",
+          "arrival": 26160,
+          "departure": 26220,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 5,
+          "stopId": "ch:1:sloid:7384:0:556843",
+          "arrival": 26760,
+          "departure": 26760,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-91-62.1.TA.14.j26": {
+      "routeId": "91-62-j26-1",
+      "agencyId": "35",
+      "routeType": 106,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7492_gen:ch:1:sloid:7492:0:94927_pf:2A",
+          "arrival": 57840,
+          "departure": 57840,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:10470_gen:ch:1:sloid:10470:0:18393_pf:1AB",
+          "arrival": 57960,
+          "departure": 58020,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7388_gen:ch:1:sloid:7388:0:982127_pf:2AB",
+          "arrival": 58140,
+          "departure": 58200,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 4,
+          "stopId": "ch:1:sloid:7389_gen:ch:1:sloid:7389:0:409683_pf:1AB",
+          "arrival": 58560,
+          "departure": 58620,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 5,
+          "stopId": "ch:1:sloid:7384:0:556843",
+          "arrival": 59160,
+          "departure": 59160,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-91-62.1.TA.15.j26": {
+      "routeId": "91-62-j26-1",
+      "agencyId": "35",
+      "routeType": 106,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7492_gen:ch:1:sloid:7492:0:94927_pf:2A",
+          "arrival": 39840,
+          "departure": 39840,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:10470_gen:ch:1:sloid:10470:0:18393_pf:1AB",
+          "arrival": 39960,
+          "departure": 40020,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7388_gen:ch:1:sloid:7388:0:982127_pf:2AB",
+          "arrival": 40140,
+          "departure": 40200,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 4,
+          "stopId": "ch:1:sloid:7389_gen:ch:1:sloid:7389:0:409683_pf:1AB",
+          "arrival": 40560,
+          "departure": 40620,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 5,
+          "stopId": "ch:1:sloid:7384:0:556843",
+          "arrival": 41160,
+          "departure": 41160,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-91-62.1.TA.16.j26": {
+      "routeId": "91-62-j26-1",
+      "agencyId": "35",
+      "routeType": 106,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7492_gen:ch:1:sloid:7492:0:94927_pf:2A",
+          "arrival": 74040,
+          "departure": 74040,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:10470_gen:ch:1:sloid:10470:0:18393_pf:1AB",
+          "arrival": 74160,
+          "departure": 74220,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7388_gen:ch:1:sloid:7388:0:982127_pf:2AB",
+          "arrival": 74340,
+          "departure": 74400,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 4,
+          "stopId": "ch:1:sloid:7389_gen:ch:1:sloid:7389:0:409683_pf:1AB",
+          "arrival": 74760,
+          "departure": 74820,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 5,
+          "stopId": "ch:1:sloid:7384:0:556843",
+          "arrival": 75360,
+          "departure": 75360,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-91-62.1.TA.17.j26": {
+      "routeId": "91-62-j26-1",
+      "agencyId": "35",
+      "routeType": 106,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7492_gen:ch:1:sloid:7492:0:94927_pf:2A",
+          "arrival": 65040,
+          "departure": 65040,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:10470_gen:ch:1:sloid:10470:0:18393_pf:1AB",
+          "arrival": 65160,
+          "departure": 65220,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7388_gen:ch:1:sloid:7388:0:982127_pf:2AB",
+          "arrival": 65340,
+          "departure": 65400,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 4,
+          "stopId": "ch:1:sloid:7389_gen:ch:1:sloid:7389:0:409683_pf:1AB",
+          "arrival": 65760,
+          "departure": 65820,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 5,
+          "stopId": "ch:1:sloid:7384:0:556843",
+          "arrival": 66360,
+          "departure": 66360,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-91-62.1.TA.18.j26": {
+      "routeId": "91-62-j26-1",
+      "agencyId": "35",
+      "routeType": 106,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7492_gen:ch:1:sloid:7492:0:94927_pf:2A",
+          "arrival": 23640,
+          "departure": 23640,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:10470_gen:ch:1:sloid:10470:0:18393_pf:1AB",
+          "arrival": 23760,
+          "departure": 23820,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7388_gen:ch:1:sloid:7388:0:982127_pf:2AB",
+          "arrival": 23940,
+          "departure": 24000,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 4,
+          "stopId": "ch:1:sloid:7389_gen:ch:1:sloid:7389:0:409683_pf:1AB",
+          "arrival": 24360,
+          "departure": 24420,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 5,
+          "stopId": "ch:1:sloid:7384:0:556843",
+          "arrival": 24960,
+          "departure": 24960,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-91-62.1.TA.19.j26": {
+      "routeId": "91-62-j26-1",
+      "agencyId": "35",
+      "routeType": 106,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7492_gen:ch:1:sloid:7492:0:94927_pf:2A",
+          "arrival": 66840,
+          "departure": 66840,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:10470_gen:ch:1:sloid:10470:0:18393_pf:1AB",
+          "arrival": 66960,
+          "departure": 67020,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7388_gen:ch:1:sloid:7388:0:982127_pf:2AB",
+          "arrival": 67140,
+          "departure": 67200,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 4,
+          "stopId": "ch:1:sloid:7389_gen:ch:1:sloid:7389:0:409683_pf:1AB",
+          "arrival": 67560,
+          "departure": 67620,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 5,
+          "stopId": "ch:1:sloid:7384:0:556843",
+          "arrival": 68160,
+          "departure": 68160,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-91-62.1.TA.2.j26": {
+      "routeId": "91-62-j26-1",
+      "agencyId": "35",
+      "routeType": 106,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7492_gen:ch:1:sloid:7492:0:94927_pf:2A",
+          "arrival": 70440,
+          "departure": 70440,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:10470_gen:ch:1:sloid:10470:0:18393_pf:1AB",
+          "arrival": 70560,
+          "departure": 70620,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7388_gen:ch:1:sloid:7388:0:982127_pf:2AB",
+          "arrival": 70740,
+          "departure": 70800,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 4,
+          "stopId": "ch:1:sloid:7389_gen:ch:1:sloid:7389:0:409683_pf:1AB",
+          "arrival": 71160,
+          "departure": 71220,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 5,
+          "stopId": "ch:1:sloid:7384:0:556843",
+          "arrival": 71760,
+          "departure": 71760,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-91-62.1.TA.20.j26": {
+      "routeId": "91-62-j26-1",
+      "agencyId": "35",
+      "routeType": 106,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7492_gen:ch:1:sloid:7492:0:94927_pf:2A",
+          "arrival": 36240,
+          "departure": 36240,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:10470_gen:ch:1:sloid:10470:0:18393_pf:1AB",
+          "arrival": 36360,
+          "departure": 36420,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7388_gen:ch:1:sloid:7388:0:982127_pf:2AB",
+          "arrival": 36540,
+          "departure": 36600,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 4,
+          "stopId": "ch:1:sloid:7389_gen:ch:1:sloid:7389:0:409683_pf:1AB",
+          "arrival": 36960,
+          "departure": 37020,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 5,
+          "stopId": "ch:1:sloid:7384:0:556843",
+          "arrival": 37560,
+          "departure": 37560,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-91-62.1.TA.21.j26": {
+      "routeId": "91-62-j26-1",
+      "agencyId": "35",
+      "routeType": 106,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7492_gen:ch:1:sloid:7492:0:94927_pf:2A",
+          "arrival": 63240,
+          "departure": 63240,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:10470_gen:ch:1:sloid:10470:0:18393_pf:1AB",
+          "arrival": 63360,
+          "departure": 63420,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7388_gen:ch:1:sloid:7388:0:982127_pf:2AB",
+          "arrival": 63540,
+          "departure": 63600,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 4,
+          "stopId": "ch:1:sloid:7389_gen:ch:1:sloid:7389:0:409683_pf:1AB",
+          "arrival": 63960,
+          "departure": 64020,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 5,
+          "stopId": "ch:1:sloid:7384:0:556843",
+          "arrival": 64560,
+          "departure": 64560,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-91-62.1.TA.22.j26": {
+      "routeId": "91-62-j26-1",
+      "agencyId": "35",
+      "routeType": 106,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7492_gen:ch:1:sloid:7492:0:94927_pf:2A",
+          "arrival": 32640,
+          "departure": 32640,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:10470_gen:ch:1:sloid:10470:0:18393_pf:1AB",
+          "arrival": 32760,
+          "departure": 32820,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7388_gen:ch:1:sloid:7388:0:982127_pf:2AB",
+          "arrival": 32940,
+          "departure": 33000,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 4,
+          "stopId": "ch:1:sloid:7389_gen:ch:1:sloid:7389:0:409683_pf:1AB",
+          "arrival": 33360,
+          "departure": 33420,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 5,
+          "stopId": "ch:1:sloid:7384:0:556843",
+          "arrival": 33960,
+          "departure": 33960,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-91-62.1.TA.23.j26": {
+      "routeId": "91-62-j26-1",
+      "agencyId": "35",
+      "routeType": 106,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7492_gen:ch:1:sloid:7492:0:94927_pf:2A",
+          "arrival": 47040,
+          "departure": 47040,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:10470_gen:ch:1:sloid:10470:0:18393_pf:1AB",
+          "arrival": 47160,
+          "departure": 47220,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7388_gen:ch:1:sloid:7388:0:982127_pf:2AB",
+          "arrival": 47340,
+          "departure": 47400,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 4,
+          "stopId": "ch:1:sloid:7389_gen:ch:1:sloid:7389:0:409683_pf:1AB",
+          "arrival": 47760,
+          "departure": 47820,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 5,
+          "stopId": "ch:1:sloid:7384:0:556843",
+          "arrival": 48360,
+          "departure": 48360,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-91-62.1.TA.24.j26": {
+      "routeId": "91-62-j26-1",
+      "agencyId": "35",
+      "routeType": 106,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7492_gen:ch:1:sloid:7492:0:94927_pf:2A",
+          "arrival": 54240,
+          "departure": 54240,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:10470_gen:ch:1:sloid:10470:0:18393_pf:1AB",
+          "arrival": 54360,
+          "departure": 54420,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7388_gen:ch:1:sloid:7388:0:982127_pf:2AB",
+          "arrival": 54540,
+          "departure": 54600,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 4,
+          "stopId": "ch:1:sloid:7389_gen:ch:1:sloid:7389:0:409683_pf:1AB",
+          "arrival": 54960,
+          "departure": 55020,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 5,
+          "stopId": "ch:1:sloid:7384:0:556843",
+          "arrival": 55560,
+          "departure": 55560,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-91-62.1.TA.25.j26": {
+      "routeId": "91-62-j26-1",
+      "agencyId": "35",
+      "routeType": 106,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7492_gen:ch:1:sloid:7492:0:94927_pf:2A",
+          "arrival": 72240,
+          "departure": 72240,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:10470_gen:ch:1:sloid:10470:0:18393_pf:1AB",
+          "arrival": 72360,
+          "departure": 72420,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7388_gen:ch:1:sloid:7388:0:982127_pf:2AB",
+          "arrival": 72540,
+          "departure": 72600,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 4,
+          "stopId": "ch:1:sloid:7389_gen:ch:1:sloid:7389:0:409683_pf:1AB",
+          "arrival": 72960,
+          "departure": 73020,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 5,
+          "stopId": "ch:1:sloid:7384:0:556843",
+          "arrival": 73560,
+          "departure": 73560,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-91-62.1.TA.26.j26": {
+      "routeId": "91-62-j26-1",
+      "agencyId": "35",
+      "routeType": 106,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7492_gen:ch:1:sloid:7492:0:94927_pf:2A",
+          "arrival": 38040,
+          "departure": 38040,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:10470_gen:ch:1:sloid:10470:0:18393_pf:1AB",
+          "arrival": 38160,
+          "departure": 38220,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7388_gen:ch:1:sloid:7388:0:982127_pf:2AB",
+          "arrival": 38340,
+          "departure": 38400,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 4,
+          "stopId": "ch:1:sloid:7389_gen:ch:1:sloid:7389:0:409683_pf:1AB",
+          "arrival": 38760,
+          "departure": 38820,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 5,
+          "stopId": "ch:1:sloid:7384:0:556843",
+          "arrival": 39360,
+          "departure": 39360,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-91-62.1.TA.27.j26": {
+      "routeId": "91-62-j26-1",
+      "agencyId": "35",
+      "routeType": 106,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7492_gen:ch:1:sloid:7492:0:94927_pf:2A",
+          "arrival": 68640,
+          "departure": 68640,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:10470_gen:ch:1:sloid:10470:0:18393_pf:1AB",
+          "arrival": 68760,
+          "departure": 68820,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7388_gen:ch:1:sloid:7388:0:982127_pf:2AB",
+          "arrival": 68940,
+          "departure": 69000,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 4,
+          "stopId": "ch:1:sloid:7389_gen:ch:1:sloid:7389:0:409683_pf:1AB",
+          "arrival": 69360,
+          "departure": 69420,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 5,
+          "stopId": "ch:1:sloid:7384:0:556843",
+          "arrival": 69960,
+          "departure": 69960,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-91-62.1.TA.28.j26": {
+      "routeId": "91-62-j26-1",
+      "agencyId": "35",
+      "routeType": 106,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7492_gen:ch:1:sloid:7492:0:94927_pf:2A",
+          "arrival": 79500,
+          "departure": 79500,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:10470_gen:ch:1:sloid:10470:0:18393_pf:1AB",
+          "arrival": 79620,
+          "departure": 79680,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7388_gen:ch:1:sloid:7388:0:982127_pf:2AB",
+          "arrival": 79800,
+          "departure": 79860,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 4,
+          "stopId": "ch:1:sloid:7389_gen:ch:1:sloid:7389:0:409683_pf:1AB",
+          "arrival": 80220,
+          "departure": 80280,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 5,
+          "stopId": "ch:1:sloid:7384:0:556843",
+          "arrival": 80820,
+          "departure": 80820,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-91-62.1.TA.29.j26": {
+      "routeId": "91-62-j26-1",
+      "agencyId": "35",
+      "routeType": 106,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7492_gen:ch:1:sloid:7492:0:94927_pf:2A",
+          "arrival": 43440,
+          "departure": 43440,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:10470_gen:ch:1:sloid:10470:0:18393_pf:1AB",
+          "arrival": 43560,
+          "departure": 43620,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7388_gen:ch:1:sloid:7388:0:982127_pf:2AB",
+          "arrival": 43740,
+          "departure": 43800,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 4,
+          "stopId": "ch:1:sloid:7389_gen:ch:1:sloid:7389:0:409683_pf:1AB",
+          "arrival": 44160,
+          "departure": 44220,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 5,
+          "stopId": "ch:1:sloid:7384:0:556843",
+          "arrival": 44760,
+          "departure": 44760,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-91-62.1.TA.3.j26": {
+      "routeId": "91-62-j26-1",
+      "agencyId": "35",
+      "routeType": 106,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7492_gen:ch:1:sloid:7492:0:94927_pf:2A",
+          "arrival": 21720,
+          "departure": 21720,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:10470_gen:ch:1:sloid:10470:0:18393_pf:1AB",
+          "arrival": 21840,
+          "departure": 21900,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7388_gen:ch:1:sloid:7388:0:982127_pf:2AB",
+          "arrival": 22020,
+          "departure": 22080,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 4,
+          "stopId": "ch:1:sloid:7389_gen:ch:1:sloid:7389:0:409683_pf:1AB",
+          "arrival": 22440,
+          "departure": 22500,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 5,
+          "stopId": "ch:1:sloid:7384:0:556843",
+          "arrival": 23040,
+          "departure": 23040,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-91-62.1.TA.30.j26": {
+      "routeId": "91-62-j26-1",
+      "agencyId": "35",
+      "routeType": 106,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7492_gen:ch:1:sloid:7492:0:94927_pf:2A",
+          "arrival": 34440,
+          "departure": 34440,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:10470_gen:ch:1:sloid:10470:0:18393_pf:1AB",
+          "arrival": 34560,
+          "departure": 34620,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7388_gen:ch:1:sloid:7388:0:982127_pf:2AB",
+          "arrival": 34740,
+          "departure": 34800,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 4,
+          "stopId": "ch:1:sloid:7389_gen:ch:1:sloid:7389:0:409683_pf:1AB",
+          "arrival": 35160,
+          "departure": 35220,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 5,
+          "stopId": "ch:1:sloid:7384:0:556843",
+          "arrival": 35760,
+          "departure": 35760,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-91-62.1.TA.31.j26": {
+      "routeId": "91-62-j26-1",
+      "agencyId": "35",
+      "routeType": 106,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7492_gen:ch:1:sloid:7492:0:94927_pf:2A",
+          "arrival": 48840,
+          "departure": 48840,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:10470_gen:ch:1:sloid:10470:0:18393_pf:1AB",
+          "arrival": 48960,
+          "departure": 49020,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7388_gen:ch:1:sloid:7388:0:982127_pf:2AB",
+          "arrival": 49140,
+          "departure": 49200,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 4,
+          "stopId": "ch:1:sloid:7389_gen:ch:1:sloid:7389:0:409683_pf:1AB",
+          "arrival": 49560,
+          "departure": 49620,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 5,
+          "stopId": "ch:1:sloid:7384:0:556843",
+          "arrival": 50160,
+          "departure": 50160,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-91-62.1.TA.32.j26": {
+      "routeId": "91-62-j26-1",
+      "agencyId": "35",
+      "routeType": 106,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7492_gen:ch:1:sloid:7492:0:94927_pf:2A",
+          "arrival": 61440,
+          "departure": 61440,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:10470_gen:ch:1:sloid:10470:0:18393_pf:1AB",
+          "arrival": 61560,
+          "departure": 61620,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7388_gen:ch:1:sloid:7388:0:982127_pf:2AB",
+          "arrival": 61740,
+          "departure": 61800,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 4,
+          "stopId": "ch:1:sloid:7389_gen:ch:1:sloid:7389:0:409683_pf:1AB",
+          "arrival": 62160,
+          "departure": 62220,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 5,
+          "stopId": "ch:1:sloid:7384:0:556843",
+          "arrival": 62760,
+          "departure": 62760,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-91-62.1.TA.4.j26": {
+      "routeId": "91-62-j26-1",
+      "agencyId": "35",
+      "routeType": 106,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7492_gen:ch:1:sloid:7492:0:94927_pf:2A",
+          "arrival": 59640,
+          "departure": 59640,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:10470_gen:ch:1:sloid:10470:0:18393_pf:1AB",
+          "arrival": 59760,
+          "departure": 59820,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7388_gen:ch:1:sloid:7388:0:982127_pf:2AB",
+          "arrival": 59940,
+          "departure": 60000,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 4,
+          "stopId": "ch:1:sloid:7389_gen:ch:1:sloid:7389:0:409683_pf:1AB",
+          "arrival": 60360,
+          "departure": 60420,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 5,
+          "stopId": "ch:1:sloid:7384:0:556843",
+          "arrival": 60960,
+          "departure": 60960,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-91-62.1.TA.5.j26": {
+      "routeId": "91-62-j26-1",
+      "agencyId": "35",
+      "routeType": 106,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7492_gen:ch:1:sloid:7492:0:94927_pf:2A",
+          "arrival": 41640,
+          "departure": 41640,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:10470_gen:ch:1:sloid:10470:0:18393_pf:1AB",
+          "arrival": 41760,
+          "departure": 41820,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7388_gen:ch:1:sloid:7388:0:982127_pf:2AB",
+          "arrival": 41940,
+          "departure": 42000,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 4,
+          "stopId": "ch:1:sloid:7389_gen:ch:1:sloid:7389:0:409683_pf:1AB",
+          "arrival": 42360,
+          "departure": 42420,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 5,
+          "stopId": "ch:1:sloid:7384:0:556843",
+          "arrival": 42960,
+          "departure": 42960,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-91-62.1.TA.6.j26": {
+      "routeId": "91-62-j26-1",
+      "agencyId": "35",
+      "routeType": 106,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7492_gen:ch:1:sloid:7492:0:94927_pf:2A",
+          "arrival": 30840,
+          "departure": 30840,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:10470_gen:ch:1:sloid:10470:0:18393_pf:1AB",
+          "arrival": 30960,
+          "departure": 31020,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7388_gen:ch:1:sloid:7388:0:982127_pf:2AB",
+          "arrival": 31140,
+          "departure": 31200,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 4,
+          "stopId": "ch:1:sloid:7389_gen:ch:1:sloid:7389:0:409683_pf:1AB",
+          "arrival": 31560,
+          "departure": 31620,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 5,
+          "stopId": "ch:1:sloid:7384:0:556843",
+          "arrival": 32160,
+          "departure": 32160,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-91-62.1.TA.7.j26": {
+      "routeId": "91-62-j26-1",
+      "agencyId": "35",
+      "routeType": 106,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7492_gen:ch:1:sloid:7492:0:94927_pf:2A",
+          "arrival": 50640,
+          "departure": 50640,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:10470_gen:ch:1:sloid:10470:0:18393_pf:1AB",
+          "arrival": 50760,
+          "departure": 50820,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7388_gen:ch:1:sloid:7388:0:982127_pf:2AB",
+          "arrival": 50940,
+          "departure": 51000,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 4,
+          "stopId": "ch:1:sloid:7389_gen:ch:1:sloid:7389:0:409683_pf:1AB",
+          "arrival": 51360,
+          "departure": 51420,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 5,
+          "stopId": "ch:1:sloid:7384:0:556843",
+          "arrival": 51960,
+          "departure": 51960,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-91-62.1.TA.8.j26": {
+      "routeId": "91-62-j26-1",
+      "agencyId": "35",
+      "routeType": 106,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7492_gen:ch:1:sloid:7492:0:94927_pf:2A",
+          "arrival": 52440,
+          "departure": 52440,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:10470_gen:ch:1:sloid:10470:0:18393_pf:1AB",
+          "arrival": 52560,
+          "departure": 52620,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7388_gen:ch:1:sloid:7388:0:982127_pf:2AB",
+          "arrival": 52740,
+          "departure": 52800,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 4,
+          "stopId": "ch:1:sloid:7389_gen:ch:1:sloid:7389:0:409683_pf:1AB",
+          "arrival": 53160,
+          "departure": 53220,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 5,
+          "stopId": "ch:1:sloid:7384:0:556843",
+          "arrival": 53760,
+          "departure": 53760,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-91-62.1.TA.9.j26": {
+      "routeId": "91-62-j26-1",
+      "agencyId": "35",
+      "routeType": 106,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7492_gen:ch:1:sloid:7492:0:94927_pf:2A",
+          "arrival": 27240,
+          "departure": 27240,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:10470_gen:ch:1:sloid:10470:0:18393_pf:1AB",
+          "arrival": 27360,
+          "departure": 27420,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7388_gen:ch:1:sloid:7388:0:982127_pf:2AB",
+          "arrival": 27540,
+          "departure": 27600,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 4,
+          "stopId": "ch:1:sloid:7389_gen:ch:1:sloid:7389:0:409683_pf:1AB",
+          "arrival": 27960,
+          "departure": 28020,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 5,
+          "stopId": "ch:1:sloid:7384:0:556843",
+          "arrival": 28560,
+          "departure": 28560,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-93-63.1.TA.100.j26": {
+      "routeId": "93-63-j26-1",
+      "agencyId": "157",
+      "routeType": 116,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7384:0:326658",
+          "arrival": 63000,
+          "departure": 63000,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:7555:0:251093",
+          "arrival": 63420,
+          "departure": 63420,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7372:0:185358",
+          "arrival": 63660,
+          "departure": 63960,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 4,
+          "stopId": "ch:1:sloid:7550:0:762109",
+          "arrival": 64260,
+          "departure": 64260,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 5,
+          "stopId": "ch:1:sloid:7373:0:108715",
+          "arrival": 64740,
+          "departure": 64800,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 6,
+          "stopId": "ch:1:sloid:7374:0:564901",
+          "arrival": 65280,
+          "departure": 65280,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-93-63.1.TA.101.j26": {
+      "routeId": "93-63-j26-1",
+      "agencyId": "157",
+      "routeType": 116,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7384:0:326658",
+          "arrival": 48600,
+          "departure": 48600,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:7555:0:251093",
+          "arrival": 49020,
+          "departure": 49020,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7372:0:185358",
+          "arrival": 49260,
+          "departure": 49560,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 4,
+          "stopId": "ch:1:sloid:7550:0:762109",
+          "arrival": 49860,
+          "departure": 49860,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 5,
+          "stopId": "ch:1:sloid:7373:0:108715",
+          "arrival": 50340,
+          "departure": 50400,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 6,
+          "stopId": "ch:1:sloid:7374:0:564901",
+          "arrival": 50880,
+          "departure": 50880,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-93-63.1.TA.102.j26": {
+      "routeId": "93-63-j26-1",
+      "agencyId": "157",
+      "routeType": 116,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7384:0:326658",
+          "arrival": 37800,
+          "departure": 37800,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:7555:0:251093",
+          "arrival": 38220,
+          "departure": 38220,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7372:0:185358",
+          "arrival": 38460,
+          "departure": 38760,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 4,
+          "stopId": "ch:1:sloid:7550:0:762109",
+          "arrival": 39060,
+          "departure": 39060,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 5,
+          "stopId": "ch:1:sloid:7373:0:108715",
+          "arrival": 39540,
+          "departure": 39600,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 6,
+          "stopId": "ch:1:sloid:7374:0:564901",
+          "arrival": 40080,
+          "departure": 40080,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-93-63.1.TA.103.j26": {
+      "routeId": "93-63-j26-1",
+      "agencyId": "157",
+      "routeType": 116,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7384:0:326658",
+          "arrival": 61200,
+          "departure": 61200,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:7555:0:251093",
+          "arrival": 61620,
+          "departure": 61620,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7372:0:185358",
+          "arrival": 61860,
+          "departure": 62160,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 4,
+          "stopId": "ch:1:sloid:7550:0:762109",
+          "arrival": 62460,
+          "departure": 62460,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 5,
+          "stopId": "ch:1:sloid:7373:0:108715",
+          "arrival": 62940,
+          "departure": 63000,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 6,
+          "stopId": "ch:1:sloid:7374:0:564901",
+          "arrival": 63480,
+          "departure": 63480,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-93-63.1.TA.104.j26": {
+      "routeId": "93-63-j26-1",
+      "agencyId": "157",
+      "routeType": 116,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7384:0:326658",
+          "arrival": 54000,
+          "departure": 54000,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:7555:0:251093",
+          "arrival": 54420,
+          "departure": 54420,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7372:0:185358",
+          "arrival": 54660,
+          "departure": 54960,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 4,
+          "stopId": "ch:1:sloid:7550:0:762109",
+          "arrival": 55260,
+          "departure": 55260,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 5,
+          "stopId": "ch:1:sloid:7373:0:108715",
+          "arrival": 55740,
+          "departure": 55800,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 6,
+          "stopId": "ch:1:sloid:7374:0:564901",
+          "arrival": 56280,
+          "departure": 56280,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-93-63.1.TA.105.j26": {
+      "routeId": "93-63-j26-1",
+      "agencyId": "157",
+      "routeType": 116,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7384:0:326658",
+          "arrival": 27000,
+          "departure": 27000,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:7555:0:251093",
+          "arrival": 27420,
+          "departure": 27420,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7372:0:185358",
+          "arrival": 27660,
+          "departure": 27960,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 4,
+          "stopId": "ch:1:sloid:7550:0:762109",
+          "arrival": 28260,
+          "departure": 28260,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 5,
+          "stopId": "ch:1:sloid:7373:0:108715",
+          "arrival": 28740,
+          "departure": 28800,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 6,
+          "stopId": "ch:1:sloid:7374:0:564901",
+          "arrival": 29280,
+          "departure": 29280,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-93-63.1.TA.106.j26": {
+      "routeId": "93-63-j26-1",
+      "agencyId": "157",
+      "routeType": 116,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7384:0:326658",
+          "arrival": 59400,
+          "departure": 59400,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:7555:0:251093",
+          "arrival": 59820,
+          "departure": 59820,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7372:0:185358",
+          "arrival": 60060,
+          "departure": 60360,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 4,
+          "stopId": "ch:1:sloid:7550:0:762109",
+          "arrival": 60660,
+          "departure": 60660,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 5,
+          "stopId": "ch:1:sloid:7373:0:108715",
+          "arrival": 61140,
+          "departure": 61200,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 6,
+          "stopId": "ch:1:sloid:7374:0:564901",
+          "arrival": 61680,
+          "departure": 61680,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-93-63.1.TA.107.j26": {
+      "routeId": "93-63-j26-1",
+      "agencyId": "157",
+      "routeType": 116,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7384:0:326658",
+          "arrival": 57600,
+          "departure": 57600,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:7555:0:251093",
+          "arrival": 58020,
+          "departure": 58020,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7372:0:185358",
+          "arrival": 58260,
+          "departure": 58560,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 4,
+          "stopId": "ch:1:sloid:7550:0:762109",
+          "arrival": 58860,
+          "departure": 58860,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 5,
+          "stopId": "ch:1:sloid:7373:0:108715",
+          "arrival": 59340,
+          "departure": 59400,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 6,
+          "stopId": "ch:1:sloid:7374:0:564901",
+          "arrival": 59880,
+          "departure": 59880,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-93-63.1.TA.108.j26": {
+      "routeId": "93-63-j26-1",
+      "agencyId": "157",
+      "routeType": 116,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7384:0:326658",
+          "arrival": 55800,
+          "departure": 55800,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:7555:0:251093",
+          "arrival": 56220,
+          "departure": 56220,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7372:0:185358",
+          "arrival": 56460,
+          "departure": 56760,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 4,
+          "stopId": "ch:1:sloid:7550:0:762109",
+          "arrival": 57060,
+          "departure": 57060,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 5,
+          "stopId": "ch:1:sloid:7373:0:108715",
+          "arrival": 57540,
+          "departure": 57600,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 6,
+          "stopId": "ch:1:sloid:7374:0:564901",
+          "arrival": 58080,
+          "departure": 58080,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-93-63.1.TA.109.j26": {
+      "routeId": "93-63-j26-1",
+      "agencyId": "157",
+      "routeType": 116,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7384:0:326658",
+          "arrival": 34200,
+          "departure": 34200,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:7555:0:251093",
+          "arrival": 34620,
+          "departure": 34620,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7372:0:185358",
+          "arrival": 34860,
+          "departure": 35160,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 4,
+          "stopId": "ch:1:sloid:7550:0:762109",
+          "arrival": 35460,
+          "departure": 35460,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 5,
+          "stopId": "ch:1:sloid:7373:0:108715",
+          "arrival": 35940,
+          "departure": 36000,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 6,
+          "stopId": "ch:1:sloid:7374:0:564901",
+          "arrival": 36480,
+          "departure": 36480,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-93-63.1.TA.110.j26": {
+      "routeId": "93-63-j26-1",
+      "agencyId": "157",
+      "routeType": 116,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7384:0:326658",
+          "arrival": 32400,
+          "departure": 32400,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:7555:0:251093",
+          "arrival": 32820,
+          "departure": 32820,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7372:0:185358",
+          "arrival": 33060,
+          "departure": 33360,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 4,
+          "stopId": "ch:1:sloid:7550:0:762109",
+          "arrival": 33660,
+          "departure": 33660,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 5,
+          "stopId": "ch:1:sloid:7373:0:108715",
+          "arrival": 34140,
+          "departure": 34200,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 6,
+          "stopId": "ch:1:sloid:7374:0:564901",
+          "arrival": 34680,
+          "departure": 34680,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-93-63.1.TA.111.j26": {
+      "routeId": "93-63-j26-1",
+      "agencyId": "157",
+      "routeType": 116,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7384:0:326658",
+          "arrival": 36000,
+          "departure": 36000,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:7555:0:251093",
+          "arrival": 36420,
+          "departure": 36420,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7372:0:185358",
+          "arrival": 36660,
+          "departure": 36960,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 4,
+          "stopId": "ch:1:sloid:7550:0:762109",
+          "arrival": 37260,
+          "departure": 37260,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 5,
+          "stopId": "ch:1:sloid:7373:0:108715",
+          "arrival": 37740,
+          "departure": 37800,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 6,
+          "stopId": "ch:1:sloid:7374:0:564901",
+          "arrival": 38280,
+          "departure": 38280,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-93-63.1.TA.112.j26": {
+      "routeId": "93-63-j26-1",
+      "agencyId": "157",
+      "routeType": 116,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7384:0:326658",
+          "arrival": 46800,
+          "departure": 46800,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:7555:0:251093",
+          "arrival": 47220,
+          "departure": 47220,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7372:0:185358",
+          "arrival": 47460,
+          "departure": 47760,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 4,
+          "stopId": "ch:1:sloid:7550:0:762109",
+          "arrival": 48060,
+          "departure": 48060,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 5,
+          "stopId": "ch:1:sloid:7373:0:108715",
+          "arrival": 48540,
+          "departure": 48600,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 6,
+          "stopId": "ch:1:sloid:7374:0:564901",
+          "arrival": 49080,
+          "departure": 49080,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-93-63.1.TA.113.j26": {
+      "routeId": "93-63-j26-1",
+      "agencyId": "157",
+      "routeType": 116,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7384:0:326658",
+          "arrival": 50400,
+          "departure": 50400,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:7555:0:251093",
+          "arrival": 50820,
+          "departure": 50820,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7372:0:185358",
+          "arrival": 51060,
+          "departure": 51360,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 4,
+          "stopId": "ch:1:sloid:7550:0:762109",
+          "arrival": 51660,
+          "departure": 51660,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 5,
+          "stopId": "ch:1:sloid:7373:0:108715",
+          "arrival": 52140,
+          "departure": 52200,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 6,
+          "stopId": "ch:1:sloid:7374:0:564901",
+          "arrival": 52680,
+          "departure": 52680,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-93-63.1.TA.114.j26": {
+      "routeId": "93-63-j26-1",
+      "agencyId": "157",
+      "routeType": 116,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7384:0:326658",
+          "arrival": 45000,
+          "departure": 45000,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:7555:0:251093",
+          "arrival": 45420,
+          "departure": 45420,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7372:0:185358",
+          "arrival": 45660,
+          "departure": 45960,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 4,
+          "stopId": "ch:1:sloid:7550:0:762109",
+          "arrival": 46260,
+          "departure": 46260,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 5,
+          "stopId": "ch:1:sloid:7373:0:108715",
+          "arrival": 46740,
+          "departure": 46800,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 6,
+          "stopId": "ch:1:sloid:7374:0:564901",
+          "arrival": 47280,
+          "departure": 47280,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-93-63.1.TA.115.j26": {
+      "routeId": "93-63-j26-1",
+      "agencyId": "157",
+      "routeType": 116,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7384:0:326658",
+          "arrival": 28800,
+          "departure": 28800,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:7555:0:251093",
+          "arrival": 29220,
+          "departure": 29220,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7372:0:185358",
+          "arrival": 29460,
+          "departure": 29760,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 4,
+          "stopId": "ch:1:sloid:7550:0:762109",
+          "arrival": 30060,
+          "departure": 30060,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 5,
+          "stopId": "ch:1:sloid:7373:0:108715",
+          "arrival": 30540,
+          "departure": 30600,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 6,
+          "stopId": "ch:1:sloid:7374:0:564901",
+          "arrival": 31080,
+          "departure": 31080,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-93-63.1.TA.116.j26": {
+      "routeId": "93-63-j26-1",
+      "agencyId": "157",
+      "routeType": 116,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7384:0:326658",
+          "arrival": 41400,
+          "departure": 41400,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:7555:0:251093",
+          "arrival": 41820,
+          "departure": 41820,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7372:0:185358",
+          "arrival": 42060,
+          "departure": 42360,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 4,
+          "stopId": "ch:1:sloid:7550:0:762109",
+          "arrival": 42660,
+          "departure": 42660,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 5,
+          "stopId": "ch:1:sloid:7373:0:108715",
+          "arrival": 43140,
+          "departure": 43200,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 6,
+          "stopId": "ch:1:sloid:7374:0:564901",
+          "arrival": 43680,
+          "departure": 43680,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-93-63.1.TA.117.j26": {
+      "routeId": "93-63-j26-1",
+      "agencyId": "157",
+      "routeType": 116,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7384:0:326658",
+          "arrival": 39600,
+          "departure": 39600,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:7555:0:251093",
+          "arrival": 40020,
+          "departure": 40020,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7372:0:185358",
+          "arrival": 40260,
+          "departure": 40560,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 4,
+          "stopId": "ch:1:sloid:7550:0:762109",
+          "arrival": 40860,
+          "departure": 40860,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 5,
+          "stopId": "ch:1:sloid:7373:0:108715",
+          "arrival": 41340,
+          "departure": 41400,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 6,
+          "stopId": "ch:1:sloid:7374:0:564901",
+          "arrival": 41880,
+          "departure": 41880,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-93-63.1.TA.119.j26": {
+      "routeId": "93-63-j26-1",
+      "agencyId": "157",
+      "routeType": 116,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7384:0:326658",
+          "arrival": 43200,
+          "departure": 43200,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:7555:0:251093",
+          "arrival": 43620,
+          "departure": 43620,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7372:0:185358",
+          "arrival": 43860,
+          "departure": 44160,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 4,
+          "stopId": "ch:1:sloid:7550:0:762109",
+          "arrival": 44460,
+          "departure": 44460,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 5,
+          "stopId": "ch:1:sloid:7373:0:108715",
+          "arrival": 44940,
+          "departure": 45000,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 6,
+          "stopId": "ch:1:sloid:7374:0:564901",
+          "arrival": 45480,
+          "departure": 45480,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-93-63.1.TA.120.j26": {
+      "routeId": "93-63-j26-1",
+      "agencyId": "157",
+      "routeType": 116,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7384:0:326658",
+          "arrival": 30600,
+          "departure": 30600,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:7555:0:251093",
+          "arrival": 31020,
+          "departure": 31020,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7372:0:185358",
+          "arrival": 31260,
+          "departure": 31560,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 4,
+          "stopId": "ch:1:sloid:7550:0:762109",
+          "arrival": 31860,
+          "departure": 31860,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 5,
+          "stopId": "ch:1:sloid:7373:0:108715",
+          "arrival": 32340,
+          "departure": 32400,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 6,
+          "stopId": "ch:1:sloid:7374:0:564901",
+          "arrival": 32880,
+          "departure": 32880,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-93-63.1.TA.121.j26": {
+      "routeId": "93-63-j26-1",
+      "agencyId": "157",
+      "routeType": 116,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7384:0:326658",
+          "arrival": 52200,
+          "departure": 52200,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:7555:0:251093",
+          "arrival": 52620,
+          "departure": 52620,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7372:0:185358",
+          "arrival": 52860,
+          "departure": 53160,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 4,
+          "stopId": "ch:1:sloid:7550:0:762109",
+          "arrival": 53460,
+          "departure": 53460,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 5,
+          "stopId": "ch:1:sloid:7373:0:108715",
+          "arrival": 53940,
+          "departure": 54000,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 6,
+          "stopId": "ch:1:sloid:7374:0:564901",
+          "arrival": 54480,
+          "departure": 54480,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-93-65.1.TA.129.j26": {
+      "routeId": "93-65-j26-1",
+      "agencyId": "124",
+      "routeType": 116,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7374:0:533952",
+          "arrival": 46680,
+          "departure": 46680,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:7361:0:177364",
+          "arrival": 46980,
+          "departure": 46980,
+          "pickup": "1",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7364:0:952862",
+          "arrival": 49260,
+          "departure": 49260,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-93-65.1.TA.131.j26": {
+      "routeId": "93-65-j26-1",
+      "agencyId": "124",
+      "routeType": 116,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7374:0:533952",
+          "arrival": 44880,
+          "departure": 44880,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:7361:0:177364",
+          "arrival": 45180,
+          "departure": 45180,
+          "pickup": "1",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7364:0:952862",
+          "arrival": 47460,
+          "departure": 47460,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-93-65.1.TA.134.j26": {
+      "routeId": "93-65-j26-1",
+      "agencyId": "124",
+      "routeType": 116,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7374:0:533952",
+          "arrival": 52080,
+          "departure": 52080,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:7361:0:177364",
+          "arrival": 52380,
+          "departure": 52380,
+          "pickup": "1",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7364:0:952862",
+          "arrival": 54660,
+          "departure": 54660,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-93-65.1.TA.138.j26": {
+      "routeId": "93-65-j26-1",
+      "agencyId": "124",
+      "routeType": 116,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7374:0:533952",
+          "arrival": 53880,
+          "departure": 53880,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:7361:0:177364",
+          "arrival": 54180,
+          "departure": 54180,
+          "pickup": "1",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7364:0:952862",
+          "arrival": 56460,
+          "departure": 56460,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-93-65.1.TA.139.j26": {
+      "routeId": "93-65-j26-1",
+      "agencyId": "124",
+      "routeType": 116,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7374:0:533952",
+          "arrival": 48480,
+          "departure": 48480,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:7361:0:177364",
+          "arrival": 48780,
+          "departure": 48780,
+          "pickup": "1",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7364:0:952862",
+          "arrival": 51060,
+          "departure": 51060,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-93-65.1.TA.141.j26": {
+      "routeId": "93-65-j26-1",
+      "agencyId": "124",
+      "routeType": 116,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7374:0:533952",
+          "arrival": 41280,
+          "departure": 41280,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:7361:0:177364",
+          "arrival": 41580,
+          "departure": 41580,
+          "pickup": "1",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7364:0:952862",
+          "arrival": 43860,
+          "departure": 43860,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-93-65.1.TA.142.j26": {
+      "routeId": "93-65-j26-1",
+      "agencyId": "124",
+      "routeType": 116,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7374:0:533952",
+          "arrival": 50280,
+          "departure": 50280,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:7361:0:177364",
+          "arrival": 50580,
+          "departure": 50580,
+          "pickup": "1",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7364:0:952862",
+          "arrival": 52860,
+          "departure": 52860,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-93-65.1.TA.143.j26": {
+      "routeId": "93-65-j26-1",
+      "agencyId": "124",
+      "routeType": 116,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7374:0:533952",
+          "arrival": 55680,
+          "departure": 55680,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:7361:0:177364",
+          "arrival": 55980,
+          "departure": 55980,
+          "pickup": "1",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7364:0:952862",
+          "arrival": 58260,
+          "departure": 58260,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-93-65.1.TA.144.j26": {
+      "routeId": "93-65-j26-1",
+      "agencyId": "124",
+      "routeType": 116,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7374:0:533952",
+          "arrival": 43080,
+          "departure": 43080,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:7361:0:177364",
+          "arrival": 43380,
+          "departure": 43380,
+          "pickup": "1",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7364:0:952862",
+          "arrival": 45660,
+          "departure": 45660,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-93-65.1.TA.146.j26": {
+      "routeId": "93-65-j26-1",
+      "agencyId": "124",
+      "routeType": 116,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7374:0:533952",
+          "arrival": 59280,
+          "departure": 59280,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:7361:0:177364",
+          "arrival": 59580,
+          "departure": 59580,
+          "pickup": "1",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7364:0:952862",
+          "arrival": 61860,
+          "departure": 61860,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-93-65.1.TA.150.j26": {
+      "routeId": "93-65-j26-1",
+      "agencyId": "124",
+      "routeType": 116,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7374:0:533952",
+          "arrival": 39480,
+          "departure": 39480,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:7361:0:177364",
+          "arrival": 39780,
+          "departure": 39780,
+          "pickup": "1",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7364:0:952862",
+          "arrival": 42060,
+          "departure": 42060,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-93-65.1.TA.151.j26": {
+      "routeId": "93-65-j26-1",
+      "agencyId": "124",
+      "routeType": 116,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7374:0:533952",
+          "arrival": 57480,
+          "departure": 57480,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:7361:0:177364",
+          "arrival": 57780,
+          "departure": 57780,
+          "pickup": "1",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7364:0:952862",
+          "arrival": 60060,
+          "departure": 60060,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-93-65.1.TA.153.j26": {
+      "routeId": "93-65-j26-1",
+      "agencyId": "124",
+      "routeType": 116,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7374:0:533952",
+          "arrival": 34080,
+          "departure": 34080,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:7361:0:177364",
+          "arrival": 34380,
+          "departure": 34380,
+          "pickup": "1",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7364:0:952862",
+          "arrival": 36660,
+          "departure": 36660,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-93-65.1.TA.154.j26": {
+      "routeId": "93-65-j26-1",
+      "agencyId": "124",
+      "routeType": 116,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7374:0:533952",
+          "arrival": 37680,
+          "departure": 37680,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:7361:0:177364",
+          "arrival": 37980,
+          "departure": 37980,
+          "pickup": "1",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7364:0:952862",
+          "arrival": 40260,
+          "departure": 40260,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-93-65.1.TA.156.j26": {
+      "routeId": "93-65-j26-1",
+      "agencyId": "124",
+      "routeType": 116,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7374:0:533952",
+          "arrival": 32280,
+          "departure": 32280,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:7361:0:177364",
+          "arrival": 32580,
+          "departure": 32580,
+          "pickup": "1",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7364:0:952862",
+          "arrival": 34860,
+          "departure": 34860,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    },
+    ".ojp-93-65.1.TA.158.j26": {
+      "routeId": "93-65-j26-1",
+      "agencyId": "124",
+      "routeType": 116,
+      "calls": [
+        {
+          "sequence": 1,
+          "stopId": "ch:1:sloid:7374:0:533952",
+          "arrival": 35880,
+          "departure": 35880,
+          "pickup": "0",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 2,
+          "stopId": "ch:1:sloid:7361:0:177364",
+          "arrival": 36180,
+          "departure": 36180,
+          "pickup": "1",
+          "dropOff": "0"
+        },
+        {
+          "sequence": 3,
+          "stopId": "ch:1:sloid:7364:0:952862",
+          "arrival": 38460,
+          "departure": 38460,
+          "pickup": "0",
+          "dropOff": "0"
+        }
+      ]
+    }
+  }
+}

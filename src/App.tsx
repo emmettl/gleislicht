@@ -152,6 +152,8 @@ const AlpineQuiet = lazy(() =>
 
 const RigiTimetableTerrain = lazy(() => import('./studies/RigiTimetableTerrain.tsx'))
 const JungfrauPlaces = lazy(() => import('./studies/JungfrauPlaces.tsx'))
+const JungfrauGuide = lazy(() => import('./studies/JungfrauGuide.tsx'))
+const JungfrauAscent = lazy(() => import('./studies/JungfrauAscent.tsx'))
 const RigiGuide = lazy(() => import('./studies/RigiGuide.tsx'))
 const RigiDayRhythm = lazy(() => import('./studies/RigiDayRhythm.tsx'))
 const RigiSequence = lazy(() => import('./studies/RigiSequence.tsx'))
@@ -335,6 +337,8 @@ export function App({ edition }: AppProps) {
   const [rigiNetwork, setRigiNetwork] = useState<NetworkSnapshot>()
   const [jungfrauNetwork, setJungfrauNetwork] = useState<NetworkSnapshot>()
   const [jungfrauAttempt, setJungfrauAttempt] = useState(0)
+  const [jungfrauGuideActive, setJungfrauGuideActive] = useState(false)
+  const [jungfrauAscentActive, setJungfrauAscentActive] = useState(false)
   const [rigiSequenceActive, setRigiSequenceActive] = useState(false)
   const [rigiRhythmActive, setRigiRhythmActive] = useState(false)
   const [rigiGuideActive, setRigiGuideActive] = useState(false)
@@ -922,8 +926,10 @@ export function App({ edition }: AppProps) {
   const ignoreNetworkTime = useCallback(() => {}, [])
 
   const releaseSelection = useCallback(() => {
+    setJungfrauGuideActive(false)
     setRigiRhythmActive(false)
     setRigiSequenceActive(false)
+    setJungfrauAscentActive(false)
     setRigiTerrainBinding(undefined)
     setSelectedTrainId(undefined)
     setSelectedStationName(undefined)
@@ -933,13 +939,13 @@ export function App({ edition }: AppProps) {
     setSelectedRoadId(undefined)
     setSearchQuery('')
     setActiveSearchIndex(-1)
-  }, [setRigiSequenceActive])
+  }, [setRigiSequenceActive, setJungfrauAscentActive, setJungfrauGuideActive])
 
-  const seekRigiSequence = useCallback((time: number) => {
+  const seekMountainSequence = useCallback((time: number) => {
     setNetworkTime(time)
     setIsPlaying(false)
   }, [])
-  const followRigiSequence = useCallback((trainId: string | undefined, station: string | undefined) => {
+  const followMountainSequence = useCallback((trainId: string | undefined, station: string | undefined) => {
     setSelectedTrainId(trainId)
     setSelectedStationName(station)
     if (station) setMapCameraCommand(current => ({ id: current.id + 1, action: 'reveal-station' }))
@@ -952,6 +958,15 @@ export function App({ edition }: AppProps) {
     setSearchOpen(false)
     setIsPlaying(false)
     setRigiSequenceActive(true)
+  }
+
+  const startJungfrauAscent = () => {
+    releaseSelection()
+    setSelectedCategory(undefined)
+    setDirectorMode(false)
+    setSearchOpen(false)
+    setIsPlaying(false)
+    setJungfrauAscentActive(true)
   }
 
   const toggleOperationsMode = useCallback(() => {
@@ -975,6 +990,7 @@ export function App({ edition }: AppProps) {
 
   const selectStation = useCallback((station: StationIndexEntry) => {
     setRigiSequenceActive(false)
+    setJungfrauAscentActive(false)
     setSbbEnabled(true)
     setAirCategorySelected(false)
     setRoadCategorySelected(false)
@@ -992,11 +1008,12 @@ export function App({ edition }: AppProps) {
       id: current.id + 1,
       action: 'reveal-station',
     }))
-  }, [setRigiSequenceActive])
+  }, [setRigiSequenceActive, setJungfrauAscentActive])
 
   const selectRoute = useCallback(
     (route: NetworkRouteIndexEntry) => {
       setRigiSequenceActive(false)
+      setJungfrauAscentActive(false)
       setSbbEnabled(true)
       setAirCategorySelected(false)
       setRoadCategorySelected(false)
@@ -1015,13 +1032,14 @@ export function App({ edition }: AppProps) {
       setView('network')
       setIsPlaying(true)
     },
-    [categoryLabel, setRigiSequenceActive],
+    [categoryLabel, setRigiSequenceActive, setJungfrauAscentActive],
   )
 
   const selectTrain = useCallback(
     (train: NetworkTrain) => {
       if (!network) return
       setRigiSequenceActive(false)
+      setJungfrauAscentActive(false)
       setSbbEnabled(true)
       setAirCategorySelected(false)
       setRoadCategorySelected(false)
@@ -1046,7 +1064,7 @@ export function App({ edition }: AppProps) {
       setView('network')
       setIsPlaying(true)
     },
-    [network, networkTime, setRigiSequenceActive],
+    [network, networkTime, setRigiSequenceActive, setJungfrauAscentActive],
   )
 
   const selectAirTrack = useCallback(
@@ -1176,10 +1194,11 @@ export function App({ edition }: AppProps) {
       setCorridorError(false)
       setSearchOpen(false)
       setRigiSequenceActive(false)
+      setJungfrauAscentActive(false)
       setView('journey')
       setIsPlaying(true)
     },
-    [setRigiSequenceActive],
+    [setRigiSequenceActive, setJungfrauAscentActive],
   )
 
   const enterTerrainCorridor = useCallback(() => {
@@ -2862,15 +2881,22 @@ export function App({ edition }: AppProps) {
         </nav>
       )}
 
+      {isNetwork && isJungfrau && jungfrauGuideActive && jungfrauNetwork && <Suspense fallback={null}><JungfrauGuide network={jungfrauNetwork} language={language} onClose={() => setJungfrauGuideActive(false)} onStart={startJungfrauAscent} onSelect={name => {
+        const station = stationIndex.find(entry => entry.name === name)
+        if (station) { setJungfrauGuideActive(false); setSelectedCategory(undefined); selectStation(station) }
+      }} /></Suspense>}
+
       {isNetwork && isRigi && rigiGuideActive && rigiNetwork && <Suspense fallback={null}><RigiGuide network={rigiNetwork} language={language} onClose={() => setRigiGuideActive(false)} onSelect={name => {
         const station = stationIndex.find(entry => entry.name === name)
         if (station) { setRigiGuideActive(false); setSelectedCategory(undefined); setRigiRhythmActive(false); selectStation(station) }
       }} /></Suspense>}
 
-      {isNetwork && isRigi && rigiRhythmActive && rigiNetwork && !selectedTrain && !selectedStation && !selectedRoute ? (
-        <Suspense fallback={null}><RigiDayRhythm network={rigiNetwork} time={networkTime} language={language} onSeek={time => { setSelectedCategory(undefined); setDirectorMode(false); seekRigiSequence(time) }} onExit={releaseSelection} /></Suspense>
+      {isNetwork && isJungfrau && jungfrauAscentActive && jungfrauNetwork ? (
+        <Suspense fallback={null}><JungfrauAscent network={jungfrauNetwork} language={language} time={networkTime} onSeek={seekMountainSequence} onFollow={followMountainSequence} onFinish={finishRigiTerrain} onExit={releaseSelection} /></Suspense>
+      ) : isNetwork && isRigi && rigiRhythmActive && rigiNetwork && !selectedTrain && !selectedStation && !selectedRoute ? (
+        <Suspense fallback={null}><RigiDayRhythm network={rigiNetwork} time={networkTime} language={language} onSeek={time => { setSelectedCategory(undefined); setDirectorMode(false); seekMountainSequence(time) }} onExit={releaseSelection} /></Suspense>
       ) : isNetwork && isRigi && rigiSequenceActive && rigiNetwork ? (
-        <Suspense fallback={null}><RigiSequence network={rigiNetwork} time={networkTime} language={language} onSeek={seekRigiSequence} onFollow={followRigiSequence} onTimetableTerrain={setRigiTerrainBinding} onExit={releaseSelection} onTerrain={() => openTerrainCorridor('vitznau-rigi')} /></Suspense>
+        <Suspense fallback={null}><RigiSequence network={rigiNetwork} time={networkTime} language={language} onSeek={seekMountainSequence} onFollow={followMountainSequence} onTimetableTerrain={setRigiTerrainBinding} onExit={releaseSelection} onTerrain={() => openTerrainCorridor('vitznau-rigi')} /></Suspense>
       ) : isHub ? (
         <section
           className="journey-card hub-card"
@@ -3403,6 +3429,7 @@ export function App({ edition }: AppProps) {
                   : text.scheduledRail}
               {hasHeadwayMotion && <> {frequencyCopy.mixed}</>}
           </p>
+          {isJungfrau && jungfrauNetwork && !regionalNetworkError && <><button type="button" className="corridor-entry" onClick={event => { event.currentTarget.focus(); setJungfrauGuideActive(true) }}>{jungfrauCopy?.guide} →</button><button type="button" className="corridor-entry" onClick={startJungfrauAscent}>{jungfrauCopy?.ascent} →</button></>}
           {isJungfrau && jungfrauNetwork && !regionalNetworkError && <Suspense fallback={null}><JungfrauPlaces language={language} onSelect={name => { const station = stationIndex.find(s => s.name === name); if (station) { setSelectedCategory(undefined); selectStation(station) } }} /></Suspense>}
           {isJungfrau && regionalNetworkError && <button type="button" className="corridor-entry" onClick={() => { setRegionalNetworkError(false); setRegionalNetworkLoading(true); setJungfrauAttempt(n => n + 1) }}>{exploreCopy.retry}</button>}
           {isRigi && rigiNetwork && !regionalNetworkError && <button type="button" className="corridor-entry" onClick={event => { event.currentTarget.focus(); setRigiGuideActive(true) }}>{rigiCopy.connections} →</button>}
@@ -3980,6 +4007,7 @@ export function App({ edition }: AppProps) {
                     setSelectedCategory(undefined)
                     setAirCategorySelected(false)
                     setRigiSequenceActive(false)
+                    setJungfrauAscentActive(false)
                     setView(isHub ? 'network' : 'hub')
                   }}
                 >
@@ -4070,6 +4098,7 @@ export function App({ edition }: AppProps) {
                 setSelectedCategory(undefined)
                 setAirCategorySelected(false)
                 setRigiSequenceActive(false)
+                setJungfrauAscentActive(false)
                 setView(isHub ? 'network' : 'hub')
               }}
             >

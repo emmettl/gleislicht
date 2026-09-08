@@ -63,9 +63,35 @@ Use `--output`, `--audit-output` and `--cable-source` for an independent candida
 
 Unit checks cover source scope, exact record counts, path completeness, missing-geometry rejection, original stop identities, guarded projections and platform resolution, exact cableway identity, reverse traversal and the disclosed endpoint gaps. Browser checks cover deferred loading, both valley branches, operator/Eiger Express search, cogwheel filtering, phone disclosures, direct dated links and request retry. The national opening budget remains unchanged.
 
+## Approach guide and dated ascent
+
+**Three approaches to Jungfraujoch** now opens an optional guide for the routes through Lauterbrunnen/Wengen, Grindelwald/Kleine Scheidegg and Eiger Express. Each displayed connection requires a forward call pair on its exact source route, agency and mode. Station buttons open the map’s services while preserving its clock. The guide is a schematic; the distinct cableway/railway endpoints at Terminal and Eigergletscher do not imply a walking path.
+
+**Follow the ascent via Wengen** offers **17 dated compositions**, each using three public, source-reconciled train journeys. The default is:
+
+| Stage | Source service | Dated times |
+| --- | --- | --- |
+| Interlaken Ost → Lauterbrunnen | BOB R62, 159 | 12:04–12:26 |
+| Wait at Lauterbrunnen | 34 minutes | 12:26–13:00 |
+| Lauterbrunnen → Kleine Scheidegg | WAB 63, 361 | 13:00–13:38 |
+| Wait at Kleine Scheidegg | 20 minutes | 13:38–13:58 |
+| Kleine Scheidegg → Jungfraujoch | JB 65, 81561 | 13:58–14:41 |
+
+The source contains **no internal Lauterbrunnen transfer row** for the BOB/WAB change. The composition uses an explicitly editorial minimum of ten minutes there; this is not presented as a published transfer rule. At Kleine Scheidegg, exact platform pair `ch:1:sloid:7374:0:564901` → `ch:1:sloid:7374:0:533952` has a **180-second** GTFS minimum. The [operator’s arrival and boarding guidance](https://www.jungfrau.ch/en-gb/arriving/), checked on 8 September 2026, asks passengers to pass the turnstiles at least ten minutes before departure. The composition conservatively adds that lead to the transfer minimum, requiring at least **13 minutes** at Kleine Scheidegg. It retains the resulting actual timetable wait. Each wait is capped at one hour as an editorial composition limit. The display does not establish availability, reservations or a guaranteed passenger connection; it links to the operator’s current rules.
+
+The shared clock drives train following, stationary interchange focus, backward scrubbing and replay. Selecting a different departure pauses at its start. Playback pauses on reaching Jungfraujoch; selecting a station, route or service manually leaves the ascent. All controls and notes are translated into EN / DE / FR / IT. The guide, ascent and their evidence load only on demand.
+
+`data/jungfrau-ascent-source.json` retains **69 upward source trips**, all calls including pickup/drop-off restrictions, and **13 internal transfer records** at the two change locations. Its generator verifies the archive hash, active service day, source trip/route/agency/mode joins and every delivered call. Runtime composition requires matching date, feed and hash, exact call identities and times, public boarding/alighting, chronological calls and complete finite path geometry. Changed or incomplete evidence suppresses the affected choices.
+
+```sh
+node scripts/audit-jungfrau-ascent.mjs --archive /path/GTFS_FP2026_20260902.zip
+```
+
+This increment adds the authored map journey. Measured terrain, tunnel-aware heights, Eiger Express ascent playback and independently audited operating dates remain future increments.
+
 ## Next Jungfrau increments
 
-1. Add a source-audited interchange/approach guide and authored valley-to-Jungfraujoch sequence, retaining transfer and boarding constraints.
+1. Extend the completed approach guide and Wengen ascent with independently audited Grindelwald and Eiger Express compositions, retaining transfer and boarding constraints.
 2. Add measured terrain for open-air railway sections. Establish tunnel-aware vertical semantics before extending terrain to the Jungfraujoch section.
 3. Audit Eiger Express vertical geometry and operating semantics before introducing an illustrative continuous cabin system.
 4. Compare independently generated operating dates and quiet periods. Audit Mürren, First, Männlichen and other branches separately before expanding this composition.

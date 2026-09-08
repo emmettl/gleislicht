@@ -1,0 +1,44 @@
+.jungfrau-guide { width: min(760px, calc(100vw - 24px)); max-height: 88dvh; overflow: auto; padding: 20px; border: 1px solid #9dcdd64d; border-radius: 14px; background: #0b1020; color: #f8f7ff; box-shadow: 0 30px 100px #000b; }
+.jungfrau-guide::backdrop { background: #020410b8; backdrop-filter: blur(6px); }
+.jungfrau-guide header, .jungfrau-ascent header { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.jungfrau-guide h2 { font-size: 20px; margin: 0; font-weight: 500; }
+.jungfrau-guide header button, .jungfrau-ascent header button { color: inherit; background: transparent; border: 0; font-size: 24px; min-width: 44px; min-height: 44px; cursor: pointer; }
+.jungfrau-guide p { font-size: 12px; line-height: 1.55; color: #c6cbdc; }
+.jungfrau-guide small { font-size: 10px; color: #aab4c9; }
+.jungfrau-approaches { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0; }
+.jungfrau-approaches section { --ascent-color: #ead395; border-top: 2px solid var(--ascent-color); }
+.jungfrau-approaches [data-approach="grindelwald"] { --ascent-color: #beadee; }
+.jungfrau-approaches [data-approach="eiger"] { --ascent-color: #96dbc5; }
+.jungfrau-approaches h3 { font-size: 13px; color: var(--ascent-color); font-weight: 500; }
+.jungfrau-approaches ol { list-style: none; margin: 12px 0 0 8px; padding: 0 0 0 12px; border-left: 2px solid var(--ascent-color); }
+.jungfrau-approaches li { position: relative; margin: 5px 0; }
+.jungfrau-approaches li::before { content: ''; position: absolute; left: -17px; top: 18px; width: 6px; height: 6px; border-radius: 50%; background: var(--ascent-color); border: 1px solid #0b1020; }
+.jungfrau-approaches button, .jungfrau-start { color: #eeeaff; background: #10172b; border: 1px solid #8e9cc04d; min-height: 44px; padding: 8px; cursor: pointer; font: inherit; font-size: 12px; text-align: left; }
+.jungfrau-approaches button { width: 100%; }
+.jungfrau-guide a, .jungfrau-ascent a { color: #b5dce9; }
+.journey-card.jungfrau-ascent { top: 22%; max-height: calc(78vh - 52px); overflow: auto; clip-path: none; background: #0c0b21f2; }
+.jungfrau-ascent h2 { font-size: .88rem; color: #fff0b9; font-weight: 500; margin: 0; }
+.jungfrau-ascent label { display: grid; gap: 5px; font-size: .65rem; color: #c6c4d6; }
+.jungfrau-ascent select { width: 100%; min-height: 36px; background: #100e29; color: #eeeaff; border: 1px solid #c1ccff33; font: inherit; font-size: .75rem; }
+.jungfrau-ascent p, .jungfrau-ascent details { font-size: .65rem; line-height: 1.5; color: #c6c4d6; margin: 8px 0; }
+.jungfrau-ascent summary { padding: 6px 0; cursor: pointer; }
+.jungfrau-ascent-stages { display: grid; gap: 4px; position: relative; }
+.jungfrau-ascent-stages button { display: grid; gap: 3px; text-align: left; padding: 7px; border: 1px solid #c1ccff33; color: #ccc8e4; background: #0c0b21; font: inherit; font-size: .65rem; cursor: pointer; }
+.jungfrau-ascent-stages strong { font-size: .8rem; font-weight: 500; }
+.jungfrau-ascent-stages button[aria-current] { color: #fff0b9; border-color: #e5ce86; background: #84733822; }
+@media (min-width: 701px) and (max-width: 1500px) { .journey-card.jungfrau-ascent { left: 24px; width: 240px; padding: 12px; } }
+@media (max-width: 700px) {
+ .jungfrau-guide { padding: 12px; } .jungfrau-guide h2 { font-size: 17px; }
+ .jungfrau-approaches { grid-template-columns: 1fr; gap: 18px; }
+ .jungfrau-approaches ol { display: flex; flex-wrap: wrap; gap: 4px; border-left: none; margin-left: 0; padding-left: 0; }
+ .jungfrau-approaches li { flex: 1 1 44%; margin: 0; } .jungfrau-approaches li::before { display: none; }
+ .view-network .journey-card.jungfrau-ascent { top: calc(184px + env(safe-area-inset-top)); left: 16px; right: 16px; width: auto; padding: 10px 12px; max-height: calc(100dvh - 390px); }
+ .jungfrau-ascent-stages { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 138px; overflow-x: auto; padding-bottom: 8px; scroll-snap-type: x proximity; }
+ .jungfrau-ascent-stages button { scroll-snap-align: start; min-height: 72px; }
+ .jungfrau-ascent .ascent-date { font-size: .6rem; }
+}
+
+.jungfrau-ascent header { position: sticky; top: -12px; z-index: 1; background: #0c0b21; padding: 2px 0; }
+
+.jungfrau-guide header { position: sticky; top: -20px; z-index: 2; background: #0b1020; padding: 4px 0; }
+@media (max-width: 700px) { .jungfrau-guide header { top: -12px; } }
