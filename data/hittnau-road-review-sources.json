@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "collectors": {
+    "url": "https://vdp.zh.ch/pws/public-service/readCollectorsCfg",
+    "fetchedAt": "2026-09-08T20:49:34.054011+00:00",
+    "responseSha256": "7510b31f60ccd2dd26ee381ec7a9a4df1a42761bea14f501ae57b0677495c230",
+    "responseRecordCount": 369,
+    "records": [
+      {
+        "uID": {
+          "id": "M3091"
+        },
+        "name": "Hittnau: Tösstalstrasse",
+        "collectorStatus": "ACTIVE",
+        "detectors": [
+          {
+            "uID": {
+              "id": "M3091",
+              "sub": {
+                "id": "1"
+              }
+            },
+            "name": "Normalspur Richtung Pfäffikon"
+          },
+          {
+            "uID": {
+              "id": "M3091",
+              "sub": {
+                "id": "2"
+              }
+            },
+            "name": "Normalspur Richtung Saland"
+          }
+        ]
+      },
+      {
+        "uID": {
+          "id": "M2992"
+        },
+        "name": "Hittnau: Pfäffikerstrasse",
+        "collectorStatus": "ACTIVE",
+        "detectors": [
+          {
+            "uID": {
+              "id": "M2992",
+              "sub": {
+                "id": "1"
+              }
+            },
+            "name": "Normalspur Richtung Pfäffikon"
+          },
+          {
+            "uID": {
+              "id": "M2992",
+              "sub": {
+                "id": "2"
+              }
+            },
+            "name": "Normalspur Richtung Saland"
+          }
+        ]
+      }
+    ]
+  },
+  "station": {
+    "url": "https://maps.zh.ch/wfs/TBAVMSZHWFS?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=ms:verkehrszaehlstellen&SRSNAME=EPSG:2056&OUTPUTFORMAT=application%2Fjson&COUNT=10000&BBOX=2705500,1248700,2705900,1249200,EPSG:2056",
+    "fetchedAt": "2026-09-08T20:49:34.190773+00:00",
+    "responseSha256": "b5b688fed423b29d981c92af649dbe6dcca4dc51764c90e88f1a8eb9b8c234bc",
+    "collection": {
+      "type": "FeatureCollection",
+      "numberMatched": 1,
+      "name": "verkehrszaehlstellen",
+      "crs": {
+        "type": "name",
+        "properties": {
+          "name": "urn:ogc:def:crs:EPSG::2056"
+        }
+      },
+      "features": [
+        {
+          "type": "Feature",
+          "properties": {
+            "messst_nr": 3091,
+            "dtv": 7336,
+            "dtv_bezugsjahr": 2025,
+            "messst_typ": "permanent",
+            "nt": 423,
+            "nn": 72,
+            "v85": 86,
+            "dsv": 3.6,
+            "dlv": 5.8
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              2705704.3900000006,
+              1248957.7300000004
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "featureInfo": {
+    "url": "https://maps.zh.ch/wms/TBAVMSZHWMS?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=verkehrszaehlstellen&QUERY_LAYERS=verkehrszaehlstellen&CRS=EPSG:2056&BBOX=2705500,1248750,2705900,1249150&WIDTH=400&HEIGHT=400&I=204&J=192&INFO_FORMAT=text%2Fplain&FEATURE_COUNT=10",
+    "fetchedAt": "2026-09-08T20:51:19.896926+00:00",
+    "response": "GetFeatureInfo results:\n\nLayer 'verkehrszaehlstellen'\n  Feature 701: \n    messst_nr = '3091'\n    dtv = '7336'\n    dtv_bezugsjahr = '2025'\n    messst_typ = 'permanent'\n    nt = '423'\n    nn = '72'\n    v85 = '86'\n    dsv = '3.6'\n    dlv = '5.8'\n"
+  },
+  "handbook": {
+    "url": "https://www.zh.ch/content/dam/zhweb/bilder-dokumente/themen/mobilitaet/mobilitaetsplanung/verkehrsgrundlagen/verkehrsdaten/dokumente/741.03_handbuch_vde-anlagen.pdf",
+    "fetchedAt": "2026-09-08T20:54:23.683405+00:00",
+    "responseSha256": "09251222dca04bd32982de66bb10f0847548009116d88ccf4822970f12cafe04",
+    "version": "741.03 V4.1, 2025-02-12",
+    "pdfPages": 67,
+    "inspectedPdfPages": [
+      11,
+      55,
+      66
+    ],
+    "stationPlanSection": "1.8.1",
+    "exampleStationNumber": "0124",
+    "exampleRoad": "Girenbadstrasse, Turbenthal",
+    "limitation": "The inspected plan is for station 0124. The generic numbering diagram and construction requirements do not establish a detector-to-path binding at Hittnau 3091."
+  },
+  "metadata": {
+    "url": "https://geolion.zh.ch/geodatensatz/1243.html",
+    "reviewedOn": "2026-09-08",
+    "publicSubset": "223.2",
+    "fullModel": "223.1",
+    "fullModelDocumentField": "messst_dateiname",
+    "limitation": "The point is the centroid of the on-site loop arrangement. The fuller data model describes a station-document filename; the checked public WFS and WMS responses do not return that field."
+  },
+  "stationPlan": {
+    "status": "not-obtained",
+    "requiredStationNumber": 3091,
+    "limitation": "No station-specific plan was obtained in this review. This does not establish that none exists or that the publisher cannot provide it."
+  }
+}
