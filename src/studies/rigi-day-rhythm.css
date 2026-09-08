@@ -1,0 +1,29 @@
+.journey-card.rigi-day-rhythm { top: max(145px, 22%); width: 300px; max-height: calc(78vh - 100px); overflow: auto; clip-path: none; background: #0c0b21f2; }
+.rhythm-heading, .rhythm-label, .rhythm-axis { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.rhythm-heading strong { font-size: .86rem; font-weight: 500; }
+.rhythm-heading button { min-width: 36px; min-height: 36px; font-size: 1.5rem; border: 0; background: transparent; color: inherit; cursor: pointer; }
+.rhythm-scope, .rhythm-axis, .rhythm-label, .rhythm-ended, .rigi-day-rhythm details { font-size: .65rem; line-height: 1.5; }
+.rhythm-scope, .rhythm-axis, .rhythm-label span, .rhythm-ended { color: #c6c4d6; }
+.rhythm-scope { margin: 0 0 12px; }
+.rhythm-lane { margin-top: 10px; --rhythm-color: #eaca79; }
+.rhythm-lane[data-mode="boats"] { --rhythm-color: #72c6df; }
+.rhythm-lane[data-mode="arth"] { --rhythm-color: #b6a4ec; }
+.rhythm-lane[data-mode="cable"] { --rhythm-color: #9ed6b3; }
+.rhythm-label strong { color: var(--rhythm-color); font-weight: 500; }
+.rhythm-lane svg { display: block; width: 100%; height: 12px; margin: 4px 0; fill: var(--rhythm-color); }
+.rhythm-lane .rhythm-track { fill: #ffffff10; }
+.rhythm-lane line { stroke: #fff; stroke-width: .5; }
+.rhythm-next, .rhythm-first { display: grid; gap: 2px; width: 100%; min-height: 40px; padding: 5px 0; text-align: left; color: #ece7ff; background: transparent; border: 0; font: inherit; font-size: .65rem; cursor: pointer; }
+.rhythm-next small { color: #c6c4d6; font-size: .6rem; }
+.rhythm-first { border-top: 1px solid var(--line); margin-top: 8px; align-content: center; }
+.rigi-day-rhythm details { margin-top: 8px; color: #c6c4d6; }
+.rigi-day-rhythm summary { cursor: pointer; padding: 6px 0; }
+.rigi-day-rhythm a { color: #d8c7ff; }
+@media (max-width: 700px) {
+  .view-network .journey-card.rigi-day-rhythm { top: calc(184px + env(safe-area-inset-top)); left: 16px; right: 16px; width: auto; max-height: calc(100dvh - 390px); padding: 10px 12px; }
+  .rhythm-lane { margin-top: 6px; }
+  .rhythm-scope { margin-bottom: 6px; }
+}
+@media (min-width: 701px) and (max-width: 1500px) { .journey-card.rigi-day-rhythm { left: 24px; width: 240px; padding: 12px; max-height: calc(78vh - 52px); } }
+.rhythm-heading { position: sticky; top: -12px; z-index: 1; padding: 4px 0; background: #0c0b21; }
+.rhythm-next, .rhythm-first { justify-content: start; justify-items: start; }

@@ -148,6 +148,7 @@ const AlpineQuiet = lazy(() =>
 )
 
 const RigiTimetableTerrain = lazy(() => import('./studies/RigiTimetableTerrain.tsx'))
+const RigiDayRhythm = lazy(() => import('./studies/RigiDayRhythm.tsx'))
 const RigiSequence = lazy(() => import('./studies/RigiSequence.tsx'))
 const RigiTerrainProfile = lazy(() => import('./studies/RigiTerrainProfile.tsx'))
 const GleislichtScene = lazy(() =>
@@ -323,6 +324,7 @@ export function App({ edition }: AppProps) {
   const [zurichCityNetwork, setZurichCityNetwork] = useState<NetworkSnapshot>()
   const [rigiNetwork, setRigiNetwork] = useState<NetworkSnapshot>()
   const [rigiSequenceActive, setRigiSequenceActive] = useState(false)
+  const [rigiRhythmActive, setRigiRhythmActive] = useState(false)
   const [rigiTerrainBinding, setRigiTerrainBinding] = useState<RigiTerrainBinding>()
   const [zvvRegionNetwork, setZvvRegionNetwork] = useState<NetworkSnapshot>()
   const [genevaTpgNetwork, setGenevaTpgNetwork] = useState<NetworkSnapshot>()
@@ -417,7 +419,7 @@ export function App({ edition }: AppProps) {
   const [rigiLocale, setRigiLocale] = useState<typeof import('./studies/rigi-copy.ts')>()
   useEffect(() => { if (isRigi) void import('./studies/rigi-copy.ts').then(setRigiLocale) }, [isRigi])
   const rigiSelect = { en: 'Explore Lake Lucerne and Rigi', de: 'Vierwaldstättersee und Rigi entdecken', fr: 'Explorer le lac des Quatre-Cantons et le Rigi', it: 'Esplora il Lago dei Quattro Cantoni e il Rigi' }[language]
-  const rigiCopy = rigiLocale?.RIGI_COPY[language] ?? { sequence: '', select: rigiSelect, title: 'Rigi', placeholder: rigiSelect, modes: '', loading: text.loading, unavailable: text.loading, water: '', cable: '' }
+  const rigiCopy = rigiLocale?.RIGI_COPY[language] ?? { rhythm: 'A day on lake and mountain', sequence: '', select: rigiSelect, title: 'Rigi', placeholder: rigiSelect, modes: '', loading: text.loading, unavailable: text.loading, water: '', cable: '' }
   const isRigiTerrain = isRigiCorridorId(journeyCorridorId)
   const rigiOrigin = isRigiTerrain ? RIGI_ASCENTS[journeyCorridorId].name : 'Vitznau'
   const rigiTerrainCopy = terrainCopyForRigi(language, rigiOrigin)
@@ -934,6 +936,7 @@ export function App({ edition }: AppProps) {
   const ignoreNetworkTime = useCallback(() => {}, [])
 
   const releaseSelection = useCallback(() => {
+    setRigiRhythmActive(false)
     setRigiSequenceActive(false)
     setRigiTerrainBinding(undefined)
     setSelectedTrainId(undefined)
@@ -2847,7 +2850,9 @@ export function App({ edition }: AppProps) {
         </nav>
       )}
 
-      {isNetwork && isRigi && rigiSequenceActive && rigiNetwork ? (
+      {isNetwork && isRigi && rigiRhythmActive && rigiNetwork && !selectedTrain && !selectedStation && !selectedRoute ? (
+        <Suspense fallback={null}><RigiDayRhythm network={rigiNetwork} time={networkTime} language={language} onSeek={time => { setSelectedCategory(undefined); setDirectorMode(false); seekRigiSequence(time) }} onExit={releaseSelection} /></Suspense>
+      ) : isNetwork && isRigi && rigiSequenceActive && rigiNetwork ? (
         <Suspense fallback={null}><RigiSequence network={rigiNetwork} time={networkTime} language={language} onSeek={seekRigiSequence} onFollow={followRigiSequence} onTimetableTerrain={setRigiTerrainBinding} onExit={releaseSelection} onTerrain={() => openTerrainCorridor('vitznau-rigi')} /></Suspense>
       ) : isHub ? (
         <section
@@ -3378,6 +3383,7 @@ export function App({ edition }: AppProps) {
                   : text.scheduledRail}
               {hasHeadwayMotion && <> {frequencyCopy.mixed}</>}
           </p>
+          {isRigi && rigiNetwork && !regionalNetworkError && <button type="button" className="corridor-entry" onClick={() => { releaseSelection(); setSelectedCategory(undefined); setDirectorMode(false); setRigiRhythmActive(true) }}>{rigiCopy.rhythm} →</button>}
           {isRigi && network && !regionalNetworkError && <button type="button" className="corridor-entry" onClick={startRigiSequence}>{rigiCopy.sequence} →</button>}
           {isRigi && network && !regionalNetworkError && Object.entries(RIGI_ASCENTS).map(([id, approach]) => <button key={id} type="button" className="corridor-entry" onClick={() => openTerrainCorridor(id as RigiCorridorId)}>{terrainCopyForRigi(language, approach.name).enter} ↗</button>)}
           <div className="metric-grid">

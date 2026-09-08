@@ -6,6 +6,18 @@ The first fixture uses Swiss GTFS **20260902**, service date **4 September 2026*
 
 The complete dataset is about **13.1 KiB gzip**, with a tested **25 KiB study-data budget**, so it loads as one optional artifact rather than eight tiny movement chunks. Nothing from this study's data is requested for the initial national view. The default study time is noon; the full day remains searchable, including quiet hours. A failed request is disclosed and other studies remain accessible.
 
+## Quiet periods and the day rhythm
+
+Select **A day on lake and mountain** in the overview for four dated activity bands: lake boats, Vitznau railway, Arth-Goldau railway and Weggis cableway. The bands merge overlapping scheduled journeys, including intermediate station stops, and leave actual service gaps visible. “Underway” is a scheduled journey count, not a claim that every vehicle is moving at that instant. Both directions and all modes are included independently of the map filter.
+
+Each row shows the next later **origin departure** and its destination. Selecting it pauses the shared clock at that departure and restores all modes on the map. Opening and closing the panel preserve time and playback. The first-departure action explicitly goes back within this service day; it never invents a next-day service. The card, computation and EN / DE / FR / IT copy load only on entry, with no additional data artifact or terrain request.
+
+The retained fixture accounts for all 190 trips: **89 boats, 28 Vitznau trains, 22 Arth-Goldau trains and 51 cableway trips**. Route `93-88-j26-1` includes the two early partial Vitznau–Staffelhöhe runs alongside route `93-82-j26-1`; Arth-Goldau uses `93-81-j26-1`. Source agency and transport type are also required. First departures are **06:20** (boats), **06:35** (Vitznau), **07:30** (Arth-Goldau) and **06:40** (cableway). These describe this fixture, not general opening hours.
+
+Activity includes departure and excludes final arrival. One boat remains underway at 23:59 and finishes at **24:02**. Its band clips to the study’s **24:00 boundary**, where the card says the study window has ended rather than claiming all services have finished. There is no date selector or evidence of seasonal closure: an empty band only describes the loaded timetable. Seasonal and weekend comparisons remain open.
+
+Unit checks reconcile every service, merged intervals and gaps, early partial runs, reverse seeking, station dwell and midnight clipping. Desktop and emulated iPhone browser checks cover next-departure jumps, pause/time preservation, quiet periods, the study boundary, deferred loading and return to exploration.
+
 ## Geometry evidence
 
 | Mode | Current evidence | Limits |
