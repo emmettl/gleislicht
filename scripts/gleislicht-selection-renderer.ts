@@ -1,15 +1,15 @@
 import type { Plugin } from 'vite'
 
-/** Adapt selection picking and marker sizing in the pinned renderer. */
+/** Adapt selection picking, marker sizing and surface anchoring in the pinned renderer. */
 export function gleislichtSelectionRenderer(): Plugin {
   return {
     name: 'gleislicht-selection', enforce: 'pre',
     transform(source, id) {
       if (!id.split('?')[0].replaceAll('\\', '/').endsWith('/@motionstudies/three/NationalNetworkScene.js')) return
       let code = source
-      const replace = (before: string, after: string) => {
-        if (code.split(before).length !== 2) throw new Error(`Gleislicht selection hook needs review: ${before}`)
-        code = code.replace(before, after)
+      const replace = (before: string, after: string, count = 1) => {
+        if (code.split(before).length !== count + 1) throw new Error(`Gleislicht selection hook needs review: ${before}`)
+        code = code.replaceAll(before, after)
       }
       const start = code.indexOf('function StationTapTarget(')
       const end = code.indexOf('function StationLabels(', start)
@@ -20,7 +20,34 @@ export function gleislichtSelectionRenderer(): Plugin {
       replace('sprite.position.copy(label.position);',
         "sprite.position.copy(label.position);\n            sprite.userData.pickTarget = { kind: 'station', value: label.station };")
       replace('sprite.position.set(candidate.position[0], 0.76 + comparisonOffset, candidate.position[2]);',
-        "sprite.position.set(candidate.position[0], 0.76 + comparisonOffset, candidate.position[2]);\n            sprite.userData.pickTarget = { kind: 'train', value: candidate.train };")
+        "sprite.position.set(...candidate.position);\n            sprite.center.set(0.5, 0.5 + labelOffset / screenHeight);\n            sprite.userData.pickTarget = { kind: 'train', value: candidate.train };")
+      // World-space lift becomes hundreds of pixels in city views. Keep map
+      // overlays on one surface; renderOrder already provides their layering.
+      replace('const STATION_SURFACE_Y = 0.035;', 'const STATION_SURFACE_Y = 0.005;')
+      replace('return [point[0], 0.2, point[2]];', 'return [point[0], STATION_SURFACE_Y, point[2]];', 2)
+      replace('        0.2,\n        THREE.MathUtils.lerp(from[2]',
+        '        STATION_SURFACE_Y,\n        THREE.MathUtils.lerp(from[2]')
+      replace('projected.set(position[0], 0.76, position[2]);', 'projected.set(...position);')
+      replace('new THREE.Vector3(centre.x, 0.29, centre.z)', 'new THREE.Vector3(centre.x, STATION_SURFACE_Y, centre.z)')
+      replace('[centre.x, 0.3, centre.z]', '[centre.x, STATION_SURFACE_Y, centre.z]')
+      replace('new THREE.Vector3(x, 0.12, z)', 'new THREE.Vector3(x, STATION_SURFACE_Y, z)')
+      replace('appendLineSegments(positions, points, 0.14);', 'appendLineSegments(positions, points, STATION_SURFACE_Y);')
+      replace('appendLineSegments(pathPositions, points, 0.15);', 'appendLineSegments(pathPositions, points, STATION_SURFACE_Y);')
+      replace('[stop[0], 0.2, stop[2]]', '[stop[0], STATION_SURFACE_Y, stop[2]]')
+      replace('[stop[0], 0.19, stop[2]]', '[stop[0], STATION_SURFACE_Y, stop[2]]')
+      replace('position: [0, -0.035, 0]', 'position: [0, 0, 0]')
+      // Anchor badges to their vehicles with a four-pixel gap. Use the same
+      // screen offset for collision boxes, including stacked comparison labels.
+      replace('const width = trainLabelScreenWidth(text, screenHeight);',
+        `const width = trainLabelScreenWidth(text, screenHeight);
+            const labelOffset = screenHeight / 2 + 4 + Math.max(0, candidate.comparisonIndex) * (screenHeight + 4);`)
+      replace('top: candidate.y - screenHeight / 2,\n                bottom: candidate.y + screenHeight / 2,',
+        'top: candidate.y - labelOffset - screenHeight / 2,\n                bottom: candidate.y - labelOffset + screenHeight / 2,')
+      replace(`            const comparisonOffset = candidate.comparisonIndex < 0
+                ? 0
+                : candidate.comparisonIndex === 0
+                    ? -0.22
+                    : 0.22;\n`, '')
       replace('const offset = activeCounts[markerKind] * 3;',
         'const offset = activeCounts[markerKind] * 3;\n            (mutableGeometry.userData.pickTrains ??= [])[activeCounts[markerKind]] = train;')
       replace('mutableColors[offset] = color.r * intensity;',
@@ -41,7 +68,7 @@ export function gleislichtSelectionRenderer(): Plugin {
             selectionMarker.current.scale.setScalar(selectionMarkerScale(camera, selectionMarker.current.position, size.height, 0.535, 10));
     });`)
       replace('_jsxs("group", { position: [centre.x, 0.28, centre.z], children:',
-        '_jsxs("group", { ref: selectionMarker, position: [centre.x, 0.28, centre.z], children:')
+        '_jsxs("group", { ref: selectionMarker, position: [centre.x, STATION_SURFACE_Y, centre.z], children:')
       replace('marker.current.scale.setScalar(pulse);',
         'marker.current.scale.setScalar(pulse * selectionMarkerScale(state.camera, marker.current.position, state.size.height, 0.24, 3.5));')
       return { code: 'import { GleislichtMapSelection } from "/src/studies/GleislichtMapSelection.tsx";\nimport { selectionMarkerScale } from "/src/studies/selection-marker-scale.ts";\n' + code, map: null }

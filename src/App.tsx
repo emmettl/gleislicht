@@ -20,6 +20,7 @@ import {
   searchAirTracks,
 } from '@motionstudies/core/air-search'
 import { MobilePicker } from '@motionstudies/web/components/MobilePicker'
+import { searchAirports, type StudyAirport } from '@motionstudies/core/domain/airport'
 import {
   activeAirTracks,
   positionForAirTrack,
@@ -304,6 +305,7 @@ export function App({ edition }: AppProps) {
   const [airSnapshot, setAirSnapshot] = useState<AirSnapshot>()
   const [airLoadState, setAirLoadState] = useState<AirLoadState>('idle')
   const [selectedAirTrackId, setSelectedAirTrackId] = useState<string>()
+  const [selectedAirport, setSelectedAirport] = useState<StudyAirport>()
   const [roadEnabled, setRoadEnabled] = useState(false)
   const [roadCategorySelected, setRoadCategorySelected] = useState(false)
   const [roadSnapshot, setRoadSnapshot] = useState<RoadTrafficSnapshot>()
@@ -680,6 +682,10 @@ export function App({ edition }: AppProps) {
         : [],
     [roadEnabled, roadTopology?.roads, searchQuery],
   )
+  const airportSearchResults = useMemo(
+    () => searchAirports(SWITZERLAND_AIRPORTS, searchQuery),
+    [searchQuery],
+  )
   const airSearchResults = useMemo(
     () =>
       airEnabled
@@ -701,6 +707,7 @@ export function App({ edition }: AppProps) {
     stationSearchResults.length +
     routeSearchResults.length +
     roadSearchResults.length +
+    airportSearchResults.length +
     airSearchResults.length +
     searchResults.length
   const resolvedActiveSearchIndex =
@@ -770,6 +777,7 @@ export function App({ edition }: AppProps) {
     setSelectedStationName(undefined)
     setSelectedRouteId(undefined)
     setSelectedAirTrackId(undefined)
+    setSelectedAirport(undefined)
     setSelectedRoadId(undefined)
     setSearchQuery('')
     setActiveSearchIndex(-1)
@@ -790,6 +798,7 @@ export function App({ edition }: AppProps) {
     setAirCategorySelected(false)
     setRoadCategorySelected(false)
     setSelectedAirTrackId(undefined)
+    setSelectedAirport(undefined)
     setSelectedTrainId(undefined)
     setSelectedRouteId(undefined)
     setSelectedRoadId(undefined)
@@ -811,6 +820,7 @@ export function App({ edition }: AppProps) {
       setRoadCategorySelected(false)
       setSelectedTrainId(undefined)
       setSelectedAirTrackId(undefined)
+      setSelectedAirport(undefined)
       setSelectedStationName(undefined)
       setSelectedRoadId(undefined)
       setSelectedRouteId(route.id)
@@ -843,6 +853,7 @@ export function App({ edition }: AppProps) {
       setNetworkTime(targetTime)
       setSelectedTrainId(train.id)
       setSelectedAirTrackId(undefined)
+      setSelectedAirport(undefined)
       setSelectedStationName(undefined)
       setSelectedRouteId(undefined)
       setSelectedRoadId(undefined)
@@ -875,6 +886,7 @@ export function App({ edition }: AppProps) {
       setSelectedRoadId(undefined)
       setSelectedCategory(undefined)
       setSelectedAirTrackId(trackId)
+      setSelectedAirport(undefined)
       setSearchQuery(track ? airTrackSearchValue(track) : '')
       setSearchOpen(false)
       setActiveSearchIndex(-1)
@@ -899,6 +911,7 @@ export function App({ edition }: AppProps) {
       setAirEnabled(false)
       setAirCategorySelected(false)
       setSelectedAirTrackId(undefined)
+      setSelectedAirport(undefined)
       return
     }
     releaseSelection()
@@ -942,6 +955,7 @@ export function App({ edition }: AppProps) {
     setSelectedStationName(undefined)
     setSelectedRouteId(undefined)
     setSelectedAirTrackId(undefined)
+    setSelectedAirport(undefined)
     setSelectedCategory(undefined)
     setAirCategorySelected(false)
     setRoadCategorySelected(true)
@@ -1054,6 +1068,23 @@ export function App({ edition }: AppProps) {
     ],
   )
 
+  const selectAirport = useCallback((airport: StudyAirport) => {
+    selectNetworkStudy('national')
+    if (!airEnabled) toggleAirLayer()
+    setAirCategorySelected(false)
+    setRoadCategorySelected(false)
+    setSelectedAirport(airport)
+    setSearchQuery(airport.name)
+    setSearchOpen(false)
+    setActiveSearchIndex(-1)
+    setMapCameraCommand(current => ({
+      id: current.id + 1,
+      action: 'focus-location',
+      focus: [airport.longitude, airport.latitude],
+      distanceScale: 0.12,
+    }))
+  }, [airEnabled, selectNetworkStudy, toggleAirLayer])
+
   const handleContextAction = useCallback(() => {
     setDirectorMode(false)
     if (
@@ -1062,6 +1093,7 @@ export function App({ edition }: AppProps) {
         selectedStationName ||
         selectedRouteId ||
         selectedAirTrackId ||
+        selectedAirport ||
         selectedRoadId)
     ) {
       releaseSelection()
@@ -1071,6 +1103,7 @@ export function App({ edition }: AppProps) {
   }, [
     releaseSelection,
     selectedAirTrackId,
+    selectedAirport,
     selectedRoadId,
     selectedRouteId,
     selectedStationName,
@@ -1659,7 +1692,7 @@ export function App({ edition }: AppProps) {
       data-sbb-enabled={sbbEnabled}
       data-quiet-map={quietMap}
       data-quiet-playing={quietMap ? isPlaying : undefined}
-      className={`experience view-${view}${isContrast ? ' is-contrast' : ''}${airEnabled ? ' has-air-layer' : ''}${airCategorySelected ? ' has-air-category' : ''}${roadEnabled ? ' has-road-layer' : ''}${roadCategorySelected ? ' has-road-category' : ''}${selectedTrain || selectedStation || selectedRoute || selectedAirTrack || selectedRoad ? ' has-selection' : ''}${!isTimetable ? ` corridor-${journeyCorridorId}` : ''}`}
+      className={`experience view-${view}${isContrast ? ' is-contrast' : ''}${airEnabled ? ' has-air-layer' : ''}${airCategorySelected ? ' has-air-category' : ''}${roadEnabled ? ' has-road-layer' : ''}${roadCategorySelected ? ' has-road-category' : ''}${selectedTrain || selectedStation || selectedRoute || selectedAirTrack || selectedAirport || selectedRoad ? ' has-selection' : ''}${!isTimetable ? ` corridor-${journeyCorridorId}` : ''}`}
     >
       <div className="scene" aria-hidden={webglAvailable ? true : undefined}>
         <Suspense fallback={null}>
@@ -1790,6 +1823,7 @@ export function App({ edition }: AppProps) {
             roadCategorySelected={roadCategorySelected}
             selectedRoadId={selectedRoadId}
             selectedAirTrack={selectedAirTrack}
+            selectedAirport={airEnabled ? selectedAirport : undefined}
             onSelectAirTrack={selectAirTrack}
             cameraFraming={
               networkStudy === 'zurich-city' && zurichCityNetwork
@@ -2029,82 +2063,15 @@ export function App({ edition }: AppProps) {
             role="search"
             onSubmit={(event) => {
               event.preventDefault()
-              if (
-                resolvedActiveSearchIndex >= 0 &&
-                resolvedActiveSearchIndex < stationSearchResults.length
-              ) {
-                selectStation(stationSearchResults[resolvedActiveSearchIndex])
-              } else if (
-                resolvedActiveSearchIndex >= stationSearchResults.length &&
-                resolvedActiveSearchIndex <
-                  stationSearchResults.length + routeSearchResults.length
-              ) {
-                const route =
-                  routeSearchResults[
-                    resolvedActiveSearchIndex - stationSearchResults.length
-                  ]
-                if (route) selectRoute(route)
-              } else if (
-                resolvedActiveSearchIndex >=
-                  stationSearchResults.length + routeSearchResults.length &&
-                resolvedActiveSearchIndex <
-                  stationSearchResults.length +
-                    routeSearchResults.length +
-                    roadSearchResults.length
-              ) {
-                const road =
-                  roadSearchResults[
-                    resolvedActiveSearchIndex -
-                      stationSearchResults.length -
-                      routeSearchResults.length
-                  ]
-                if (road) selectRoad(road)
-              } else if (
-                resolvedActiveSearchIndex >=
-                  stationSearchResults.length +
-                    routeSearchResults.length +
-                    roadSearchResults.length &&
-                resolvedActiveSearchIndex <
-                  stationSearchResults.length +
-                    routeSearchResults.length +
-                    roadSearchResults.length +
-                    airSearchResults.length
-              ) {
-                const aircraft =
-                  airSearchResults[
-                    resolvedActiveSearchIndex -
-                      stationSearchResults.length -
-                      routeSearchResults.length -
-                      roadSearchResults.length
-                  ]
-                if (aircraft) selectAirTrack(aircraft.id)
-              } else if (
-                resolvedActiveSearchIndex >=
-                  stationSearchResults.length +
-                  routeSearchResults.length +
-                  roadSearchResults.length +
-                  airSearchResults.length
-              ) {
-                const train =
-                  searchResults[
-                    resolvedActiveSearchIndex -
-                      stationSearchResults.length -
-                      routeSearchResults.length -
-                      roadSearchResults.length -
-                      airSearchResults.length
-                  ]
-                if (train) selectTrain(train)
-              } else if (stationSearchResults[0]) {
-                selectStation(stationSearchResults[0])
-              } else if (routeSearchResults[0]) {
-                selectRoute(routeSearchResults[0])
-              } else if (roadSearchResults[0]) {
-                selectRoad(roadSearchResults[0])
-              } else if (airSearchResults[0]) {
-                selectAirTrack(airSearchResults[0].id)
-              } else if (searchResults[0]) {
-                selectTrain(searchResults[0])
-              }
+              const actions = [
+                ...stationSearchResults.map(station => () => selectStation(station)),
+                ...routeSearchResults.map(route => () => selectRoute(route)),
+                ...roadSearchResults.map(road => () => selectRoad(road)),
+                ...airportSearchResults.map(airport => () => selectAirport(airport)),
+                ...airSearchResults.map(track => () => selectAirTrack(track.id)),
+                ...searchResults.map(train => () => selectTrain(train)),
+              ]
+              actions[Math.max(0, resolvedActiveSearchIndex)]?.()
             }}
           >
             <span className="search-mark" aria-hidden="true" />
@@ -2141,6 +2108,7 @@ export function App({ edition }: AppProps) {
                   setSearchQuery(event.target.value)
                   setSearchOpen(true)
                   setActiveSearchIndex(-1)
+                  setSelectedAirport(undefined)
                   if (!event.target.value) releaseSelection()
                   else if (event.target.value !== selectedStation?.name) {
                     setSelectedStationName(undefined)
@@ -2472,11 +2440,32 @@ export function App({ edition }: AppProps) {
                   </button>
                 )
               })}
+              {airportSearchResults.map((airport, airportIndex) => {
+                const index = stationSearchResults.length + routeSearchResults.length +
+                  roadSearchResults.length + airportIndex
+                return (
+                  <button
+                    id={`train-search-result-${index}`}
+                    className={`air-result${resolvedActiveSearchIndex === index ? ' is-active' : ''}`}
+                    key={`airport:${airport.id}`}
+                    type="button"
+                    role="option"
+                    aria-selected={airport.id === selectedAirport?.id}
+                    onMouseEnter={() => setActiveSearchIndex(index)}
+                    onClick={() => selectAirport(airport)}
+                  >
+                    <span className="air-result-mark" aria-hidden="true">✈</span>
+                    <span className="result-service">{airport.name}</span>
+                    <span className="result-route">{airport.iata} · {airport.icao}</span>
+                  </button>
+                )
+              })}
               {airSearchResults.map((track, airIndex) => {
                 const index =
                   stationSearchResults.length +
                   routeSearchResults.length +
                   roadSearchResults.length +
+                  airportSearchResults.length +
                   airIndex
                 return (
                   <button
@@ -2505,6 +2494,7 @@ export function App({ edition }: AppProps) {
                     stationSearchResults.length +
                     routeSearchResults.length +
                     roadSearchResults.length +
+                    airportSearchResults.length +
                     airSearchResults.length +
                     trainIndex
                   return (
@@ -2534,6 +2524,7 @@ export function App({ edition }: AppProps) {
               {!stationSearchResults.length &&
                 !routeSearchResults.length &&
                 !roadSearchResults.length &&
+                !airportSearchResults.length &&
                 !airSearchResults.length &&
                 !searchResults.length && (
                 <p>{isNationalDay ? text.noResultsDay : text.noResults}</p>
@@ -3485,8 +3476,8 @@ export function App({ edition }: AppProps) {
           <details className="mobile-more-controls">
             <summary aria-label={text.moreControls}>•••</summary>
             <div>
-              <button type="button" data-tooltip={selectedAirTrack || selectedTrain || selectedRoute || selectedStation ? help.release : isNetwork ? help.corridor : help.network} onClick={handleContextAction}>
-                {selectedAirTrack ||
+              <button type="button" data-tooltip={selectedAirTrack || selectedAirport || selectedTrain || selectedRoute || selectedStation ? help.release : isNetwork ? help.corridor : help.network} onClick={handleContextAction}>
+                {selectedAirport ? text.clearAirport : selectedAirTrack ||
                 selectedTrain ||
                 selectedRoute ||
                 selectedStation
@@ -3572,9 +3563,9 @@ export function App({ edition }: AppProps) {
             {isPlaying ? text.pauseMotion : text.resumeMotion}
             <kbd>{text.spaceKey}</kbd>
           </button>
-          <button type="button" data-tooltip={selectedAirTrack || selectedTrain || selectedRoute || selectedStation ? help.release : isNetwork ? help.corridor : help.network} onClick={handleContextAction}>
+          <button type="button" data-tooltip={selectedAirTrack || selectedAirport || selectedTrain || selectedRoute || selectedStation ? help.release : isNetwork ? help.corridor : help.network} onClick={handleContextAction}>
             <span className="button-icon camera-icon" aria-hidden="true" />
-            {selectedAirTrack ||
+            {selectedAirport ? text.clearAirport : selectedAirTrack ||
             selectedTrain ||
             selectedRoute ||
             selectedStation

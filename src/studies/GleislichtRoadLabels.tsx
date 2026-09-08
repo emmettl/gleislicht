@@ -4,6 +4,7 @@ import * as THREE from 'three'
 import type { RoadTopologySnapshot } from '@motionstudies/core/domain/road'
 import type { NetworkProjection } from '@motionstudies/three/NationalNetworkScene'
 import { roadLabelAnchors, visibleRoadLabels } from './road-labels.ts'
+import { MAP_SURFACE_Y } from './map-surface.ts'
 
 const LABEL_WIDTH = 38
 const LABEL_HEIGHT = 19
@@ -56,7 +57,7 @@ export function GleislichtRoadLabels({ topology, projection, selectedRoadId, sub
       const paths = topology.paths.filter(path => path.mainline && path.road === road).map(path =>
         path.points.map(([longitude, latitude]) => new THREE.Vector3(
           (longitude - projection.centreLongitude) * projection.longitudeScale * projection.scale,
-          0.09,
+          MAP_SURFACE_Y,
           -(latitude - projection.centreLatitude) * projection.scale,
         )),
       )
