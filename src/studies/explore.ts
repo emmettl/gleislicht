@@ -2,7 +2,7 @@ import pilotCatalog from '../../data/cantonal-road-pilots.json'
 import type { NetworkSnapshot } from '@motionstudies/core/domain/network'
 import type { SwitzerlandNetworkStudy } from '../editions/switzerland.ts'
 
-export const STUDY_IDS = ['national', 'postbus', 'zvv-region', 'geneva-tpg', 'zurich-city', 'rigi-lake', 'contrast', 'jungfrau', 'lausanne-region', 'basel-core', 'bern-region', 'gornergrat', 'solothurn-region', 'nyon-region', 'ticino-region', 'valais-region', 'graubuenden-region', 'pilatus'] as const
+export const STUDY_IDS = ['national', 'postbus', 'zvv-region', 'geneva-tpg', 'zurich-city', 'rigi-lake', 'contrast', 'jungfrau', 'lausanne-region', 'basel-core', 'bern-region', 'gornergrat', 'solothurn-region', 'nyon-region', 'ticino-region', 'valais-region', 'graubuenden-region', 'pilatus', 'rochers'] as const
 export const REGIONAL_DAYS = { 'valais-region': 'valais-region-day-manifest.json', 'graubuenden-region': 'graubuenden-region/2026-09-04/graubuenden-region-day-manifest.json', 'ticino-region': 'ticino-region/2026-09-04/ticino-region-day-manifest.json', 'nyon-region': 'nyon-region-day-manifest.json', 'solothurn-region': 'solothurn-region-day-manifest.json', 'bern-region': 'bern-region-day-manifest.json', 'basel-core': 'basel-core-day-manifest.json', 'lausanne-region': 'lausanne-region-day-manifest.json', 'zvv-region': 'zvv-region-day-manifest.json', 'geneva-tpg': 'geneva-tpg-day-manifest.json', 'zurich-city': 'zurich-city-day-manifest.json' } as const
 export const isRegionalDayStudy = (id: SwitzerlandNetworkStudy): id is keyof typeof REGIONAL_DAYS => id in REGIONAL_DAYS
 export function withinStudy(location: { longitude: number; latitude: number }, bounds?: NetworkSnapshot['bounds']) {

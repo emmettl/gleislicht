@@ -1,0 +1,39 @@
+{
+  "checkedOn": "2026-09-08",
+  "fixtureDate": "2026-09-04",
+  "line": {
+    "url": "https://www.mob.ch/en/stories/rochers-de-naye",
+    "operatorClassification": "cogwheel railway",
+    "gtfsClassification": {
+      "routeId": "91-37-F-j26-1",
+      "agencyId": "131",
+      "routeType": 106
+    },
+    "interpretation": "Preserve original GTFS regional-rail type 106; use the cogwheel presentation based on operator line identity."
+  },
+  "timetable": {
+    "url": "https://support.mob.ch/hc/en-ch/articles/17789323039901-What-are-the-train-timetable",
+    "pdfUrl": "https://assets.contenthub.dev/h24dbpy2mqzk/75a4c44f69d16cd96d6a20a43e5c5c00/WEB_Horaire_2026.pdf",
+    "table": "121",
+    "pages": [
+      21,
+      22
+    ],
+    "validFrom": "2025-12-14",
+    "validTo": "2026-12-12"
+  },
+  "laterClosure": {
+    "url": "https://infotrafic.mob.ch/en/576",
+    "from": "2026-09-14T00:35:00+02:00",
+    "to": "2026-10-17T04:30:00+02:00",
+    "scope": "Operator notice cancels rail service Montreux–Rochers-de-Naye and provides replacement buses only to Haut-de-Caux. This later period is not represented by the retained 4 September fixture."
+  },
+  "winterContext": "The operator line page describes Monday/Tuesday trains terminating at Haut-de-Caux in January–March. No winter date has been imported or validated for this study.",
+  "notEstablished": [
+    "live operation",
+    "replacement-bus geometry or timing",
+    "guaranteed connections",
+    "measured railway heights or terrain",
+    "request-stop guarantees from ordinary GTFS flags"
+  ]
+}

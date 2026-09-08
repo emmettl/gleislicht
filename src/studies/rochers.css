@@ -1,0 +1,41 @@
+.journey-card.rochers-journey { top: 22%; max-height: calc(78vh - 52px); overflow: auto; clip-path: none; background: #0c0b21f2; border-left-color: #efd490; }
+.rochers-journey header { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.rochers-journey h2 { color: #fff0b9; font-size: .9rem; font-weight: 500; }
+.rochers-journey header button { color: inherit; background: transparent; border: 0; min-width: 44px; min-height: 44px; font-size: 24px; cursor: pointer; }
+.rochers-journey p, .rochers-journey details, .rochers-journey label { color: #c6c4d6; font-size: .65rem; line-height: 1.5; }
+.rochers-journey label { display: grid; gap: 5px; }
+.rochers-journey select { width: 100%; min-height: 36px; color: #eeeaff; background: #100e29; border: 1px solid #c1ccff33; font: inherit; font-size: .75rem; }
+.rochers-journey nav { display: grid; gap: 4px; }
+.rochers-journey nav button { display: flex; justify-content: space-between; gap: 8px; min-height: 44px; padding: 8px; align-items: center; background: #0c0b21; border: 1px solid #c1ccff33; color: #ccc8e4; font: inherit; font-size: .7rem; cursor: pointer; text-align: left; }
+.rochers-journey nav strong { font-weight: 500; }
+.rochers-journey nav button[aria-current] { color: #fff0b9; border-color: #e5ce86; background: #84733822; }
+.rochers-journey summary { cursor: pointer; padding: 8px 0; }
+.rochers-journey a { color: #b5dce9; }
+@media(min-width:701px) and (max-width:1500px) { .journey-card.rochers-journey { left: 24px; width: 240px; padding: 12px; } }
+@media(max-width:700px) {
+ .view-network .journey-card.rochers-journey { top: calc(184px + env(safe-area-inset-top)); left: 16px; right: 16px; width: auto; padding: 10px 12px; max-height: calc(100dvh - 390px); }
+ .rochers-journey nav { grid-auto-flow: column; grid-auto-columns: 120px; overflow: auto; }
+ .rochers-journey nav button { flex-direction: column; align-items: start; min-height: 60px; }
+ .rochers-journey header { position: sticky; top: -10px; background: #0c0b21; }
+}
+.rochers-study:has(.rochers-journey) .mobile-map-tools { display: none; }
+@media(max-width:700px) {
+ .rochers-study .network-card .between { display: block; }
+ .rochers-study .network-card { max-width: 210px; }
+}
+
+.rochers-journey nav { max-height: 220px; overflow: auto; }
+.rochers-journey header { position: sticky; top: -12px; background: #0c0b21; z-index: 1; }
+.rochers-details-toggle { display: none; }
+@media(min-width:701px) {
+ .rochers-study .masthead h1 { font-size: clamp(28px, 3.3vw, 46px); max-width: 650px; }
+}
+@media(max-width:700px) {
+ .rochers-details-toggle { display: block; }
+ .rochers-journey h2 { flex: 1; }
+ .rochers-journey nav { max-height: none; }
+ .rochers-journey[data-expanded='false'] > label,
+ .rochers-journey[data-expanded='false'] > p:not([role='status']),
+ .rochers-journey[data-expanded='false'] > details,
+ .rochers-journey[data-expanded='false'][data-phase='rail'] > p[role='status'] { display: none; }
+}

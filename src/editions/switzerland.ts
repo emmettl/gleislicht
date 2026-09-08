@@ -53,6 +53,7 @@ export const SWITZERLAND_MAP_FRAMINGS = {
     minimumDistanceScale: 0.02,
   },
   pilatus: { homeDistanceScale: 0.06, minimumDistanceScale: 0.003, portraitMinimumDistanceScale: 0.003 },
+  rochers: { homeDistanceScale: 0.035, minimumDistanceScale: 0.003, portraitMinimumDistanceScale: 0.003 },
   gornergrat: { homeDistanceScale: 0.03, minimumDistanceScale: 0.004, portraitMinimumDistanceScale: 0.003 },
   jungfrau: {
     homeDistanceScale: 0.12,
@@ -120,6 +121,7 @@ export const SWITZERLAND_MAP_FRAMINGS = {
 
 export type SwitzerlandRegionalStudyId =
   | 'pilatus'
+  | 'rochers'
   | 'gornergrat'
   | 'jungfrau'
   | 'rigi-lake'
@@ -185,6 +187,7 @@ export const SWITZERLAND_EDITION: SwitzerlandEdition = {
     realtimeDemo: 'realtime-demo.json',
     regional: {
       'pilatus': 'pilatus-day.json',
+      'rochers': 'rochers-day.json',
       'gornergrat': 'gornergrat-day.json',
       'jungfrau': 'jungfrau-day.json',
       'rigi-lake': 'rigi-day.json',

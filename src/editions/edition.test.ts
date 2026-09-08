@@ -14,6 +14,7 @@ describe('Gleislicht edition', () => {
     )
     expect(Object.keys(SWITZERLAND_EDITION.data.regional)).toEqual([
       'pilatus',
+      'rochers',
       'gornergrat',
       'jungfrau',
       'rigi-lake',
