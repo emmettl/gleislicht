@@ -51,6 +51,16 @@ test('another calendar, mode, platform, course, source call or daily instance ca
  for(const stops of [moved,r.stops.slice(1),[...r.stops].reverse()])expect(matcher.matchPattern(t,stops)).toBeUndefined()
 })
 
+test('replayed measurements tolerate binary rounding but reject meaningful drift',()=>{
+ const r=policy.patterns[0],t=train(r),actual=evaluate(t,r.stops)
+ const rounded=structuredClone(actual);rounded[0].pathMetres+=1e-10
+ expect(()=>schupfartMatcher(policy,()=>rounded).matchPattern(t,r.stops)).not.toThrow()
+ for(const value of [actual[0].pathMetres+0.001,NaN,Infinity]){
+  const changed=structuredClone(actual);changed[0].pathMetres=value
+  expect(()=>schupfartMatcher(policy,()=>changed).matchPattern(t,r.stops)).toThrow('Changed Schupfart road evidence')
+ }
+})
+
 test('changed admitted or held geometry and source evidence fail closed',()=>{
  const r=policy.patterns.find(r=>r.segments.some(s=>s.timing.holdReason)),t=train(r),actual=evaluate(t,r.stops)
  for(const i of [0,r.segments.find(s=>s.timing.holdReason).index]){

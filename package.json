@@ -155,5 +155,10 @@
     "vitest": "^5.0.0",
     "wrangler": "^4.129.0"
   },
-  "packageManager": "npm@11.19.0"
+  "packageManager": "npm@11.19.0",
+  "overrides": {
+    "miniflare": {
+      "sharp": "0.35.4"
+    }
+  }
 }

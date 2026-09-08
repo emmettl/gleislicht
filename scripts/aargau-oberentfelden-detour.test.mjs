@@ -8,7 +8,15 @@ test('both signed directions exceed every one of the 153 unchanged two-minute so
  expect(result.sourceWays).toEqual(review.sourceWays)
  for(const p of review.patterns){
   const d=result.directions.find(d=>d.directionId===p.directionId)
-  expect(d).toEqual(p.detour);expect(d.taggedMinimumSeconds).toBeGreaterThan(132)
+  // Compare identities, source coordinates and ordered edges exactly; only
+  // derived lengths/times may differ at floating-point precision across hosts.
+  const expected = p.detour
+  expect(d).toEqual({ ...expected,
+   metres: expect.closeTo(expected.metres, 9),
+   untaggedMetres: expect.closeTo(expected.untaggedMetres, 9),
+   taggedMinimumSeconds: expect.closeTo(expected.taggedMinimumSeconds, 9),
+   edges: expected.edges.map(edge => ({ ...edge, metres: expect.closeTo(edge.metres, 9), seconds: expect.closeTo(edge.seconds, 9) })),
+  });expect(d.taggedMinimumSeconds).toBeGreaterThan(132)
   expect(d.taggedMinimumSeconds).toBeLessThan(137)
   for(const t of p.templates){expect(t.sourceSeconds).toBe(120);expect(t.arrival-t.departure).toBe(120);expect(d.taggedMinimumSeconds).toBeGreaterThan(t.sourceSeconds)}
  }

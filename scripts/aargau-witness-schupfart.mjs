@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict'
 import { readJson,readGzipJson } from './aargau-seasonal.mjs'
 import { hashFile } from './inventory-aargau.mjs'
+import { assertGeometryMeasurementsEqual } from './compare-geometry-measurements.mjs'
 import { witnessTemplateDigest } from './aargau-witness-rail.mjs'
 import { geometryDigest } from './aargau-alignment-corrections.mjs'
 import { avaRoadEvaluator,AVA_MEAN_SPEED_REVIEW_KMH } from './aargau-witness-ava.mjs'
@@ -42,7 +43,7 @@ export function schupfartMatcher(policy,evaluate){
   const actual=evaluate(t,stops);assert.equal(actual?.length,r.segments.length)
   return r.segments.map((expected,i)=>{
    const {path,...evidence}=actual[i];assert(path)
-   assert.equal(geometryDigest(path),expected.pathSha256,'Changed Schupfart diagnostic path');assert.deepEqual(evidence,expected.evidence,'Changed Schupfart road evidence')
+   assert.equal(geometryDigest(path),expected.pathSha256,'Changed Schupfart diagnostic path');assert.doesNotThrow(() => assertGeometryMeasurementsEqual(evidence, expected.evidence), 'Changed Schupfart road evidence')
    const timing=schupfartTiming([t],i,evidence.pathMetres)
    if(timing.holdReason){assert.equal(expected.disposition,'hold-source-timing');return undefined}
    assert.equal(expected.disposition,'admit-inferred-event-road')

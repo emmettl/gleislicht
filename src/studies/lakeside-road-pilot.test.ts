@@ -15,7 +15,9 @@ it('validates all 142 minutes and both directions of Kilchberg–Thalwil', () =>
 })
 describe('multiple recordings on the same road', () => {
   it('selects the requested identity and keeps Horgen as the default ZH 3 pilot', () => {
-    expect(cantonalPilotsForRoad('ZH:3')).toHaveLength(2)
+    expect(cantonalPilotsForRoad('ZH:3').map(recording => recording.id)).toEqual([
+      'horgen-2026-09-08', 'kilchberg-thalwil-2026-09-08', 'horgen-evening-2026-09-08',
+    ])
     expect(cantonalPilotForRoad('ZH:3')?.id).toBe('horgen-2026-09-08')
     expect(cantonalPilotForRoad('ZH:3', pilot.metadata.recordingId)?.id).toBe(pilot.metadata.recordingId)
     expect(() => validateCantonalPilot(pilot, cantonalPilotForRoad('ZH:3'))).toThrow('identity')

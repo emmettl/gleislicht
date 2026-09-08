@@ -65,3 +65,9 @@ and regional-data checks. The `pages` concurrency group now uses
 push is retained. An intermediate validated revision may publish before that
 newest revision; no validation or browser test is bypassed. This follows
 [GitHub's workflow concurrency semantics](https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/control-workflow-concurrency).
+
+## September 9 main regressions
+
+[Run 34290968691](https://github.com/emmettl/gleislicht/actions/runs/34290968691) failed four unit tests. Schupfart’s evidence replay and Oberentfelden’s detour diagnostic now allow only sub-micrometre/sub-nanosecond floating-point differences in derived measurements; source coordinates, ordered edges, identities, admission decisions and geometry hashes remain exact. A mutation test rejects meaningful measurement drift and non-finite values. Solothurn’s display files and release proof were regenerated after the shared simplifier changed; unchanged chunk bytes, source calls, endpoints and the 5 m bound remain checked. The ZH 3 regression now explicitly lists all three reviewed recordings, including Horgen evening. Local test discovery excludes nested worktrees and their dependency tests.
+
+Dependabot’s same-revision update failed because Miniflare pins `sharp` 0.35.2 exactly. A scoped npm override selects the patched 0.35.4 while retaining Wrangler’s existing version. Remove it when Miniflare adopts a patched version. The installed tree passes `npm audit`, native image encoding and both worker dry-run builds.

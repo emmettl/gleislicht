@@ -32,7 +32,19 @@ describe('Solothurn display release', () => {
         const { files } = await readRegionalDirectory(output, ['solothurn-region'], date)
         const archive = JSON.parse(await readFile(`public/data/solothurn-region/${date}/solothurn-region-day-manifest.json`))
         for (const chunk of archive.chunks) expect(files.get(`solothurn-region-${chunk.path}`).equals(await readFile(`public/data/solothurn-region/${date}/${chunk.path}`))).toBe(true)
-        if (date.endsWith('04')) for (const [path, bytes] of files) expect(bytes.equals(await readFile(join('public/data', path)))).toBe(true)
+        if (date.endsWith('04')) for (const [path, bytes] of files) {
+          const committedBytes = await readFile(join('public/data', path))
+          if (path === 'solothurn-region-day-manifest.json' || path === 'solothurn-region-morning.json') {
+            const actual = JSON.parse(bytes), committed = JSON.parse(committedBytes)
+            const measured = actual.metadata.solothurnRelease.simplification
+            const expected = committed.metadata.solothurnRelease.simplification
+            expect(measured.maximumDeviationMetres).toBeCloseTo(expected.maximumDeviationMetres, 9)
+            // All source coordinates, retained vertices, identities and calls
+            // still compare exactly; only the derived diagnostic can round.
+            measured.maximumDeviationMetres = expected.maximumDeviationMetres
+            expect(actual).toEqual(committed)
+          } else expect(bytes.equals(committedBytes), path).toBe(true)
+        }
       }
     } finally { await rm(output, { recursive: true, force: true }) }
   }, 30000)

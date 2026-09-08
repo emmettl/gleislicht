@@ -16,9 +16,9 @@
       "simplification": {
         "algorithm": "Douglas–Peucker; distance to retained chord in approximate LV95 metres",
         "toleranceMetres": 5,
-        "maximumDeviationMetres": 4.9964051669253955,
+        "maximumDeviationMetres": 4.9999447052830215,
         "originalVertices": 144882,
-        "displayVertices": 73799,
+        "displayVertices": 72718,
         "endpointsUnchanged": true
       },
       "payload": {
@@ -71,12 +71,12 @@
           "gzipBytes": 63813
         },
         "solothurn-region-day-manifest.json": {
-          "bytes": 2088994,
-          "gzipBytes": 412229
+          "bytes": 2064996,
+          "gzipBytes": 405701
         },
         "solothurn-region-morning.json": {
-          "bytes": 3000264,
-          "gzipBytes": 530534
+          "bytes": 2976266,
+          "gzipBytes": 522973
         }
       }
     },
@@ -94,9 +94,9 @@
       "simplification": {
         "algorithm": "Douglas–Peucker; distance to retained chord in approximate LV95 metres",
         "toleranceMetres": 5,
-        "maximumDeviationMetres": 4.9964051669253955,
+        "maximumDeviationMetres": 4.9999447052830215,
         "originalVertices": 154215,
-        "displayVertices": 82827,
+        "displayVertices": 81528,
         "endpointsUnchanged": true
       },
       "payload": {
@@ -149,12 +149,12 @@
           "gzipBytes": 61670
         },
         "solothurn-region-day-manifest.json": {
-          "bytes": 2289092,
-          "gzipBytes": 451027
+          "bytes": 2260551,
+          "gzipBytes": 444259
         },
         "solothurn-region-morning.json": {
-          "bytes": 2801227,
-          "gzipBytes": 520740
+          "bytes": 2772686,
+          "gzipBytes": 514142
         }
       }
     }
