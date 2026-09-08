@@ -12,7 +12,7 @@ Checked **8 September 2026**. Actual public responses, exports and two sample re
 
 These totals describe different things and must not be added together as coverage. Inventories include other owners and historical or inactive stations. Nothing from this survey has been added to public playback.
 
-**9 September implementation:** the [Aargau statistical importer](AARGAU-ROAD-STATISTICS.md) now retains all 10,093 MIV records, separates annual/period metrics, preserves missing dates, flags three invalid periods and attaches the reviewed holiday substitution. Public display remains unadmitted.
+**9 September implementation:** the [Aargau statistical importer and explorer](AARGAU-ROAD-STATISTICS.md) retain all 10,093 MIV records, separate annual/period metrics, preserve missing dates, flag three invalid periods and attach the reviewed holiday substitution. The road-recording picker now includes a separate statistical view; hourly playback remains unadmitted.
 
 ## Geneva
 

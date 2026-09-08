@@ -1,0 +1,9 @@
+.aargau-road-statistics h3 { font-size: 20px; margin-bottom: 4px; overflow-wrap: anywhere; }
+.aargau-road-statistics .regional-volume-controls { margin: 18px 0; }
+.aargau-statistic-meta { color: #c9d2dd; font-size: 14px; }
+.aargau-statistic-values { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.aargau-statistic-values > div { padding: 16px; border: 1px solid #8dfaff44; border-radius: 8px; background: #102332; }
+.aargau-statistic-values dd { font-size: 28px; overflow-wrap: anywhere; }
+.aargau-statistic-values span { display: block; font-size: 14px; color: #c9d2dd; }
+.aargau-statistic-quality { border-left: 3px solid #ffda89; padding: 10px 14px; color: #ffda89; }
+@media (max-width: 600px) { .aargau-statistic-values { grid-template-columns: 1fr; } }
