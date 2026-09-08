@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-09-08T15:38:09.489Z",
+  "geometryArtifactSha256": "e6672433b70989a1fb5228bfe5d61933d58394a60df3e36b8deba83e8c9f65ea",
+  "catalogSha256": "39af27ba04503d25f407e59d58712d49c7a7ca4e0f980dafc77609847e3dd9d9",
+  "entries": [
+    {
+      "id": "wallisellen-0088-opposing-lanes-2026-09-08",
+      "stationId": "ZH.CH:0088",
+      "pathId": "ZH:1:bfc74981f98f10f9",
+      "road": "ZH:1",
+      "method": "opposing-main-carriageway-lanes",
+      "anchorDetectorId": "ZH.CH:0088.02",
+      "reviewedDetectorId": "ZH.CH:0088.01",
+      "detectorAuditSha256": "5abde831068a2e07942fb1ee2beb9723e87d551794fe44ea75b8d1c64692cb1f",
+      "rationale": "Winterthur is independently validated along positive path order. The source catalog contains exactly two opposing main-carriageway lane1 detectors, explicitly labelled Zürich and Winterthur. The Zürich centre passes distance, road projection and local bearing checks (-0.92); only the large settlement extent crosses the station. The opposing lane is therefore negative along this same road path. This is a source-evidence inference for this pinned station, not surveyed vehicle movement or a relaxation of the general settlement-extent gate.",
+      "geometryReview": {
+        "sourceUrl": "https://maps.zh.ch/wfs/TBAStrZHWFS?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=ms:strassenachsen&SRSNAME=EPSG:2056&OUTPUTFORMAT=application%2Fjson&BBOX=2687500,1251300,2691000,1254100,EPSG:2056&COUNT=10000",
+        "sourceSha256": "15e7b7edbfc6bfc05254407d2b323b95ddb49a8d1b11fd9cfdf8b6b380f5cac1",
+        "note": "The official road-axis extract places the station on the single ZH 1 axis, southwest of the Bassersdorf counter. Local path order and the independently resolved Winterthur direction agree."
+      }
+    }
+  ]
+}

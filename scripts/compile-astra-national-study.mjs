@@ -1,6 +1,7 @@
 import { mkdir, readdir, readFile, writeFile } from 'node:fs/promises'
 import { basename, dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { cantonalMeasurementIssues } from './cantonal-measurement-quality.mjs'
 import {
   aggregateDirection,
   swissDateAndTime,
@@ -122,9 +123,9 @@ function compileCounterRoadStudy(
   const records = [...byMinute.entries()]
     .map(([measurementTime, measurements]) => {
       const local = swissDateAndTime(measurementTime)
-      const reportingIds = new Set(measurements.map(m => m.siteId))
+      const measurementsById = new Map(measurements.map(m => [m.siteId, m]))
       const values = acceptedSites.flatMap((site, index) => {
-        if (recordingScope === 'zurich-cantonal' && site.detectorIds.some(id => !reportingIds.has(id))) return []
+        if (recordingScope === 'zurich-cantonal' && site.detectorIds.some(id => cantonalMeasurementIssues(measurementsById.get(id)).length)) return []
         const conditions = aggregateDirection(measurements, [site.detectorIds])
         if (!Number.isFinite(conditions.lightFlowPerHour)) return []
         return [

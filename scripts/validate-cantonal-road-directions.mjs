@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url'
 import { projectOnRoad } from './ingest-cantonal-road-topology.mjs'
 import { wgs84ToLv95 } from './ingest-corridor-terrain.mjs'
 import { lv95ToWgs84 } from './ingest-national-road-topology.mjs'
+import { reviewCantonalDirection } from './review-cantonal-road-direction.mjs'
 
 const hash = value => createHash('sha256').update(value).digest('hex')
 const norm = value => value.trim().normalize('NFC').toLocaleLowerCase('de-CH')
@@ -82,7 +83,7 @@ function sectionPath(points, from, to) {
   }), end].map(lv95ToWgs84)
 }
 
-export function buildDirectionTopology(topology, catalog, places) {
+export function buildDirectionTopology(topology, catalog, places, reviews = []) {
   if (topology.metadata.recordingScope !== 'zurich-cantonal' || catalog.metadata.supplier !== 'ZH.CH') throw new Error('Expected Zürich topology and catalog')
   if (topology.metadata.measurementSiteTableVersion !== catalog.metadata.measurementSiteTableVersion) throw new Error('Topology and catalog versions differ')
   const paths = new Map(topology.paths.map(p => [p.id, { ...p, lv95: p.points.map(([lon, lat]) => wgs84ToLv95(lon, lat)) }]))
@@ -92,7 +93,7 @@ export function buildDirectionTopology(topology, catalog, places) {
     const path = paths.get(station.match.pathId)
     if (!path) throw new Error(`Missing path for ${station.id}`)
     const descriptions = new Map((station.detectorDescriptions ?? []).map(d => [d.id, d.description]))
-    const audit = station.detectorIds.flatMap(id => {
+    let audit = station.detectorIds.flatMap(id => {
       const detector = detectors.get(id)
       if (!detector) throw new Error(`Detector absent from catalog: ${id}`)
       if (detector.lane === 'emergencyLane') return []
@@ -100,6 +101,8 @@ export function buildDirectionTopology(topology, catalog, places) {
       const place = name && places.entries.find(p => norm(p.name) === norm(name))
       return [{ id, description, alertCDirection: detector.direction, ...(place ? orientDestination(station.preciseLv95, path.lv95, place.candidates) : { status: 'unresolved-description' }) }]
     })
+    const review = reviews.find(r => r.stationId === station.id)
+    if (review) audit = reviewCantonalDirection(station, audit, detectors, review)
     const complete = audit.length >= 2 && audit.every(d => d.status === 'validated') && new Set(audit.map(d => d.direction)).size === 2
     return { id: station.id, road: station.match.road, pathId: path.id, status: complete ? 'validated' : 'unresolved-direction-pair', detectors: audit }
   })
@@ -166,7 +169,18 @@ async function main() {
     places.entries.push({ ...entry, candidates: destinationCandidates(entry.name, JSON.parse(body)) })
   }
   const catalog = JSON.parse(await readFile('data/zurich-cantonal-road-counters.json', 'utf8'))
-  const result = buildDirectionTopology(topology, catalog, places)
+  const reviewSource = arg('reviews') ? await readFile(arg('reviews'), 'utf8') : undefined
+  const reviews = reviewSource ? JSON.parse(reviewSource) : undefined
+  if (reviews && (reviews.schemaVersion !== 1 || !Array.isArray(reviews.entries) || reviews.geometryArtifactSha256 !== hash(await readFile(topologyFile)) || reviews.catalogSha256 !== hash(await readFile('data/zurich-cantonal-road-counters.json')) || new Set(reviews.entries.map(r => r.stationId)).size !== reviews.entries.length || reviews.entries.some(r => !topology.stations.some(s => s.id === r.stationId && s.match)))) throw new Error('Direction review inputs have changed')
+  if (reviews) {
+    const junctionSources = JSON.parse(await readFile('data/zurich-cantonal-road-junction-sources.json', 'utf8'))
+    for (const review of reviews.entries) {
+      const source = junctionSources.entries.find(e => e.url === review.geometryReview?.sourceUrl)
+      if (!source || source.sha256 !== review.geometryReview.sourceSha256 || hash(JSON.stringify(source.collection)) !== source.sha256) throw new Error('Direction review road source has changed')
+    }
+  }
+  const result = buildDirectionTopology(topology, catalog, places, reviews?.entries)
+  if (reviewSource) result.metadata.directionReviewSha256 = hash(reviewSource)
   result.metadata.geometryArtifactSha256 = hash(await readFile(topologyFile))
   result.metadata.placesSha256 = hash(JSON.stringify(places))
   const output = arg('output') ?? 'data/zurich-cantonal-road-directions.json'

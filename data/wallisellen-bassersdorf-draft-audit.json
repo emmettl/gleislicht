@@ -1,0 +1,33 @@
+{
+  "publisher": "Tiefbauamt Kanton Zürich",
+  "recordingScope": "zurich-cantonal",
+  "serviceDate": "2026-09-08",
+  "windowStart": 51240,
+  "windowEnd": 57420,
+  "sourceUrl": "https://opentransportdata.swiss/en/cookbook/road-traffic-cookbook/rt-road-traffic-counters/",
+  "measurementSiteTableVersion": 23,
+  "measurementKind": "recorded",
+  "model": "Section traffic-flow reconstruction / no vehicle tracking",
+  "note": "Local compiled draft. Not enabled in AUTO. Reconstructed vehicle counts, not tracking; junction turns unmeasured.",
+  "sampleIntervalSeconds": 60,
+  "acceptedSites": 4,
+  "sections": 2,
+  "minimumSiteCoverage": 1,
+  "firstMeasurementTime": "2026-09-08T12:14:00.000Z",
+  "lastMeasurementTime": "2026-09-08T13:57:00.000Z",
+  "completeMinutes": 104,
+  "publicationStatus": "draft",
+  "directionTopologySha256": "2d020aea4bafa04c09fb9d15c406c3b44db6a21ca1b2b7fb52232d0b1659cbda",
+  "minimumRequiredSamples": 104,
+  "requiredSiteCoverage": 1,
+  "directionModel": "Destination projection and local bearing with complete opposing detector groups; positive follows stored path vertex order, not Alert-C",
+  "selectedRoad": "ZH:1",
+  "directionReviewSha256": "b8805066aaca14c0a0c5a79c53feb2c9c8d7efde41c5a73ec84d98dade18346d",
+  "lengthKm": 3.45699,
+  "playbackCheck": {
+    "minutes": 104,
+    "minimumVehicles": 37,
+    "maximumVehicles": 98
+  },
+  "junctionAudit": "data/zurich-cantonal-road-junction-audit.json"
+}

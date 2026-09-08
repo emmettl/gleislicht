@@ -170,6 +170,8 @@ Playback validation: **205 unit tests across 55 files**, **12 desktop Chromium /
 
 ## Further coverage work
 
+The [coverage and junction review](CANTONAL-COVERAGE-REVIEW.md) audits the first 245 scheduled minutes: Horgen's longest complete run is 28 minutes, while a pinned direction review yields a **104-minute Wallisellen–Bassersdorf draft**. It also identifies the three Horgen junction areas and documents the strengthened per-lane compiler gate. The second corridor is not yet enabled in AUTO.
+
 1. Expand accepted direction coverage using more precise destination references and reviewed junction geometry. Nearby destinations and settlement extents crossing a station account for many exclusions; weakening checks alone is not a solution.
 2. Review section assumptions at intersections and find longer complete observation windows before broadening the pilot. Recording, geometry and usable playback coverage remain separate measures.
 3. Add an explicit recording identity to shared study links before enabling pilot sharing.

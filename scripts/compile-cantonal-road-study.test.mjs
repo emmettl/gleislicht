@@ -34,4 +34,15 @@ describe('cantonal recorded pilot compiler', () => {
     expect(() => compileCantonalRoadStudy([snapshot('23')], topology, { minimumSamples: NaN })).toThrow('positive integer')
     expect(() => compileCantonalRoadStudy([snapshot('23')], { ...topology, sections: [] })).toThrow('directed sections')
   })
+  it('does not let a complete lane conceal another lane’s incomplete vehicle class', () => {
+    const multiLane = structuredClone(topology)
+    multiLane.sites[0].detectorIds.push('ZH.CH:1.02')
+    const sample = snapshot('23')
+    sample.measurements.push({ ...sample.measurements[0], siteId: 'ZH.CH:1.02', heavyFlowPerHour: 60 })
+    expect(() => compileCantonalRoadStudy([sample], multiLane, { minimumSamples: 1 })).toThrow('No sufficiently complete')
+    sample.measurements.at(-1).heavySpeedKmh = 40
+    expect(compileCantonalRoadStudy([sample], multiLane, { minimumSamples: 1 }).metadata.completeMinutes).toBe(1)
+    sample.measurements.at(-1).heavySpeedKmh = 0
+    expect(() => compileCantonalRoadStudy([sample], multiLane, { minimumSamples: 1 })).toThrow('No sufficiently complete')
+  })
 })

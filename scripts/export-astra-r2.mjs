@@ -132,7 +132,7 @@ async function main() {
     `Exported ${keys.length} R2 snapshots around ${serviceDate} to ${outputDirectory}`,
   )
   console.log(scope === 'zurich-cantonal'
-    ? 'Cantonal archive exported. Road matching and a cantonal playback compiler are still required.'
+    ? `Audit complete cantonal windows with: node scripts/audit-cantonal-road-coverage.mjs --date=${serviceDate}`
     : `Compile the Swiss service day with: npm run ${scope === 'national' ? 'data:road:compile:national' : 'data:road:compile'} -- --date=${serviceDate}`)
 }
 
