@@ -37,6 +37,12 @@ test('both changed path bytes and changed infrastructure evidence fail closed',a
   const r=reviewed.policy.patterns.find(r=>r.segments.some(s=>s.pathSha256)),t=trainFor(r)
   const rails=await loadAargauRail('data/aargau-rail-sources',WITNESS_RAIL_POLICY)
   const original=rails.matchPattern(t,r.stops),index=r.segments.findIndex(s=>s.pathSha256)
+  for (const drift of [1e-12, 1e-6]) {
+    const changed = structuredClone(original); changed[index].pathMetres += drift
+    const replay = () => witnessRailMatcher(reviewed.policy, { matchPattern: () => changed }).matchPattern(t, r.stops)
+    if (drift < 1e-7) expect(replay).not.toThrow()
+    else expect(replay).toThrow('Changed witness rail source evidence')
+  }
   const moved=structuredClone(original);moved[index].path[1][0]+=.00001
   expect(()=>witnessRailMatcher(reviewed.policy,{matchPattern:()=>moved}).matchPattern(t,r.stops)).toThrow('Changed witness rail path')
   const changed=structuredClone(original);changed[index].directedSourceSegments[0].id='other'

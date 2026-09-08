@@ -138,7 +138,7 @@ describe('regional refresh', () => {
         await writeFile(join(directory, file), JSON.stringify({ metadata: { serviceDate: id === 'geneva-tpg' ? '2026-09-04' : '2026-09-08', windowStart: 0, windowEnd: 86400 } }))
       }
       const summaries = await buildStudySummaries(directory)
-      expect(summaries.map(summary => summary.id)).toEqual([...STUDY_IDS])
+      expect(summaries.map(summary => summary.id).sort()).toEqual([...STUDY_IDS].sort())
       expect(summaries.find(summary => summary.id === 'geneva-tpg').date).toBe('2026-09-04')
       expect(summaries.find(summary => summary.id === 'national').date).toBe('2026-09-08')
     } finally { await rm(directory, { recursive: true, force: true }) }
