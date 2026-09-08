@@ -1,0 +1,1230 @@
+{
+  "baselineCommit": "4da95ceb4f0c7bc76863bdfc299bdd8b78d7d67b",
+  "sourceHashes": {
+    "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+    "source": "e8523af34fcedca7f8b0cbe495446ff93a75d8563c62b243da942c39c5243f47",
+    "crosswalk": "4541d66a8081f483125720a152bfbba16bf6a6c50d9758d792041811c49eff6c",
+    "provenance": "7d23e09a35768de1cfd598a7ca824ac7c93d03242ff8955e70ca778213549086",
+    "roads": "87f4d4be2662ff0982cea837e95f73863096d4bc37bd19ecc09ea88e064c465e",
+    "montCarmel": "a9b44b222fdf7b2c9dc26899c350520a8de3945d06a13bff75a357b6133a3b27",
+    "jongny": "df10b99f56fc6dd5cc4624713eea614bbeaf124802257ea433f0d12220713e2f",
+    "laupen": "bbf2165db04d73f6d50ac84d795ec411ddf934bb46115e30f34a2ec8023b04f4",
+    "broc": "a707ab9a3464d448a427c7cf80ce554e3d9644ae40006043488a20117dad7a0f",
+    "rail": "7ea92c8c1120a49e9497ec3ae6d7a0d2fc2d761e8b19d790191ed7a6c0212c79",
+    "railInputs": "434a02eb6906bb141a00ba6b7c77622767b78262617326d6aed56fa683cd8046",
+    "avry": "8d20a93732eea409915103c410816075ac428693b7dc8fcb6dc37c1f97849e19",
+    "bernPlatforms": "77b78fb2fccab61ff47e18bd0dc1ad161965968144c3d79d99bc0fd3765701ac",
+    "railReview": "5070023bef19b35c1df3fb12a5b27e090d7a4ff0788f75d433a3d8295c4cca64"
+  },
+  "assertions": "Every previously admitted journey retains its original stop identity, coordinates, call permissions, times, direction and segment geometry. Added journeys must carry reviewed Broc road evidence.",
+  "days": [
+    {
+      "date": "2026-09-04",
+      "previousJourneys": 5508,
+      "presentJourneys": 5528,
+      "addedJourneys": 20,
+      "unchangedOriginalSegmentOccurrences": 84587,
+      "lostJourneys": 0,
+      "newJourneys": [
+        {
+          "id": ".ojp-92-260.1.TA.273.j26",
+          "routeId": "92-260-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.09846941,
+                46.60395284,
+                "Broc-Village, gare",
+                "",
+                "ch:1:sloid:77727:0:10"
+              ],
+              26400,
+              26400
+            ],
+            [
+              [
+                7.09847839,
+                46.60409479,
+                "Broc-Village, gare",
+                "B",
+                "ch:1:sloid:77727:0:19835"
+              ],
+              26880,
+              26880
+            ]
+          ],
+          "reviewKinds": [
+            "broc-station-calls"
+          ]
+        },
+        {
+          "id": ".ojp-92-260.1.TA.281.j26",
+          "routeId": "92-260-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.09846941,
+                46.60395284,
+                "Broc-Village, gare",
+                "",
+                "ch:1:sloid:77727:0:10"
+              ],
+              24600,
+              24600
+            ],
+            [
+              [
+                7.09847839,
+                46.60409479,
+                "Broc-Village, gare",
+                "B",
+                "ch:1:sloid:77727:0:19835"
+              ],
+              25080,
+              25080
+            ]
+          ],
+          "reviewKinds": [
+            "broc-station-calls"
+          ]
+        },
+        {
+          "id": ".ojp-92-260.1.TA.325.j26",
+          "routeId": "92-260-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.09846941,
+                46.60395284,
+                "Broc-Village, gare",
+                "",
+                "ch:1:sloid:77727:0:10"
+              ],
+              22800,
+              22800
+            ],
+            [
+              [
+                7.09847839,
+                46.60409479,
+                "Broc-Village, gare",
+                "B",
+                "ch:1:sloid:77727:0:19835"
+              ],
+              23280,
+              23280
+            ]
+          ],
+          "reviewKinds": [
+            "broc-station-calls"
+          ]
+        },
+        {
+          "id": ".ojp-92-260.1.TA.315.j26",
+          "routeId": "92-260-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.09846941,
+                46.60395284,
+                "Broc-Village, gare",
+                "",
+                "ch:1:sloid:77727:0:10"
+              ],
+              31800,
+              31800
+            ],
+            [
+              [
+                7.09847839,
+                46.60409479,
+                "Broc-Village, gare",
+                "B",
+                "ch:1:sloid:77727:0:19835"
+              ],
+              32280,
+              32280
+            ]
+          ],
+          "reviewKinds": [
+            "broc-station-calls"
+          ]
+        },
+        {
+          "id": ".ojp-92-260.1.TA.319.j26",
+          "routeId": "92-260-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.09846941,
+                46.60395284,
+                "Broc-Village, gare",
+                "",
+                "ch:1:sloid:77727:0:10"
+              ],
+              35400,
+              35400
+            ],
+            [
+              [
+                7.09847839,
+                46.60409479,
+                "Broc-Village, gare",
+                "B",
+                "ch:1:sloid:77727:0:19835"
+              ],
+              35880,
+              35880
+            ]
+          ],
+          "reviewKinds": [
+            "broc-station-calls"
+          ]
+        },
+        {
+          "id": ".ojp-92-260.1.TA.294.j26",
+          "routeId": "92-260-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.09846941,
+                46.60395284,
+                "Broc-Village, gare",
+                "",
+                "ch:1:sloid:77727:0:10"
+              ],
+              39000,
+              39000
+            ],
+            [
+              [
+                7.09847839,
+                46.60409479,
+                "Broc-Village, gare",
+                "B",
+                "ch:1:sloid:77727:0:19835"
+              ],
+              39480,
+              39480
+            ]
+          ],
+          "reviewKinds": [
+            "broc-station-calls"
+          ]
+        },
+        {
+          "id": ".ojp-92-260.1.TA.303.j26",
+          "routeId": "92-260-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.09846941,
+                46.60395284,
+                "Broc-Village, gare",
+                "",
+                "ch:1:sloid:77727:0:10"
+              ],
+              42600,
+              42600
+            ],
+            [
+              [
+                7.09847839,
+                46.60409479,
+                "Broc-Village, gare",
+                "B",
+                "ch:1:sloid:77727:0:19835"
+              ],
+              43080,
+              43080
+            ]
+          ],
+          "reviewKinds": [
+            "broc-station-calls"
+          ]
+        },
+        {
+          "id": ".ojp-92-260.1.TA.284.j26",
+          "routeId": "92-260-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.09846941,
+                46.60395284,
+                "Broc-Village, gare",
+                "",
+                "ch:1:sloid:77727:0:10"
+              ],
+              46200,
+              46200
+            ],
+            [
+              [
+                7.09847839,
+                46.60409479,
+                "Broc-Village, gare",
+                "B",
+                "ch:1:sloid:77727:0:19835"
+              ],
+              46680,
+              46680
+            ]
+          ],
+          "reviewKinds": [
+            "broc-station-calls"
+          ]
+        },
+        {
+          "id": ".ojp-92-260.1.TA.295.j26",
+          "routeId": "92-260-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.09846941,
+                46.60395284,
+                "Broc-Village, gare",
+                "",
+                "ch:1:sloid:77727:0:10"
+              ],
+              49800,
+              49800
+            ],
+            [
+              [
+                7.09847839,
+                46.60409479,
+                "Broc-Village, gare",
+                "B",
+                "ch:1:sloid:77727:0:19835"
+              ],
+              50280,
+              50280
+            ]
+          ],
+          "reviewKinds": [
+            "broc-station-calls"
+          ]
+        },
+        {
+          "id": ".ojp-92-260.1.TA.308.j26",
+          "routeId": "92-260-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.09846941,
+                46.60395284,
+                "Broc-Village, gare",
+                "",
+                "ch:1:sloid:77727:0:10"
+              ],
+              57000,
+              57000
+            ],
+            [
+              [
+                7.09847839,
+                46.60409479,
+                "Broc-Village, gare",
+                "B",
+                "ch:1:sloid:77727:0:19835"
+              ],
+              57480,
+              57480
+            ]
+          ],
+          "reviewKinds": [
+            "broc-station-calls"
+          ]
+        },
+        {
+          "id": ".ojp-92-260.1.TA.318.j26",
+          "routeId": "92-260-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.09846941,
+                46.60395284,
+                "Broc-Village, gare",
+                "",
+                "ch:1:sloid:77727:0:10"
+              ],
+              53400,
+              53400
+            ],
+            [
+              [
+                7.09847839,
+                46.60409479,
+                "Broc-Village, gare",
+                "B",
+                "ch:1:sloid:77727:0:19835"
+              ],
+              53880,
+              53880
+            ]
+          ],
+          "reviewKinds": [
+            "broc-station-calls"
+          ]
+        },
+        {
+          "id": ".ojp-92-260.1.TA.278.j26",
+          "routeId": "92-260-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.09846941,
+                46.60395284,
+                "Broc-Village, gare",
+                "",
+                "ch:1:sloid:77727:0:10"
+              ],
+              60600,
+              60600
+            ],
+            [
+              [
+                7.09847839,
+                46.60409479,
+                "Broc-Village, gare",
+                "B",
+                "ch:1:sloid:77727:0:19835"
+              ],
+              61080,
+              61080
+            ]
+          ],
+          "reviewKinds": [
+            "broc-station-calls"
+          ]
+        },
+        {
+          "id": ".ojp-92-260.1.TA.307.j26",
+          "routeId": "92-260-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.09846941,
+                46.60395284,
+                "Broc-Village, gare",
+                "",
+                "ch:1:sloid:77727:0:10"
+              ],
+              62400,
+              62400
+            ],
+            [
+              [
+                7.09847839,
+                46.60409479,
+                "Broc-Village, gare",
+                "B",
+                "ch:1:sloid:77727:0:19835"
+              ],
+              62880,
+              62880
+            ]
+          ],
+          "reviewKinds": [
+            "broc-station-calls"
+          ]
+        },
+        {
+          "id": ".ojp-92-260.1.TA.317.j26",
+          "routeId": "92-260-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.09846941,
+                46.60395284,
+                "Broc-Village, gare",
+                "",
+                "ch:1:sloid:77727:0:10"
+              ],
+              64200,
+              64200
+            ],
+            [
+              [
+                7.09847839,
+                46.60409479,
+                "Broc-Village, gare",
+                "B",
+                "ch:1:sloid:77727:0:19835"
+              ],
+              64680,
+              64680
+            ]
+          ],
+          "reviewKinds": [
+            "broc-station-calls"
+          ]
+        },
+        {
+          "id": ".ojp-92-260.1.TA.287.j26",
+          "routeId": "92-260-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.09846941,
+                46.60395284,
+                "Broc-Village, gare",
+                "",
+                "ch:1:sloid:77727:0:10"
+              ],
+              67800,
+              67800
+            ],
+            [
+              [
+                7.09847839,
+                46.60409479,
+                "Broc-Village, gare",
+                "B",
+                "ch:1:sloid:77727:0:19835"
+              ],
+              68280,
+              68280
+            ]
+          ],
+          "reviewKinds": [
+            "broc-station-calls"
+          ]
+        },
+        {
+          "id": ".ojp-92-260.1.TA.316.j26",
+          "routeId": "92-260-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.09846941,
+                46.60395284,
+                "Broc-Village, gare",
+                "",
+                "ch:1:sloid:77727:0:10"
+              ],
+              71400,
+              71400
+            ],
+            [
+              [
+                7.09847839,
+                46.60409479,
+                "Broc-Village, gare",
+                "B",
+                "ch:1:sloid:77727:0:19835"
+              ],
+              71880,
+              71880
+            ]
+          ],
+          "reviewKinds": [
+            "broc-station-calls"
+          ]
+        },
+        {
+          "id": ".ojp-92-260.1.TA.212.j26",
+          "routeId": "92-260-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.09846941,
+                46.60395284,
+                "Broc-Village, gare",
+                "",
+                "ch:1:sloid:77727:0:10"
+              ],
+              78600,
+              78600
+            ],
+            [
+              [
+                7.09847839,
+                46.60409479,
+                "Broc-Village, gare",
+                "B",
+                "ch:1:sloid:77727:0:19835"
+              ],
+              79080,
+              79080
+            ]
+          ],
+          "reviewKinds": [
+            "broc-station-calls"
+          ]
+        },
+        {
+          "id": ".ojp-92-260.1.TA.214.j26",
+          "routeId": "92-260-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.09846941,
+                46.60395284,
+                "Broc-Village, gare",
+                "",
+                "ch:1:sloid:77727:0:10"
+              ],
+              75000,
+              75000
+            ],
+            [
+              [
+                7.09847839,
+                46.60409479,
+                "Broc-Village, gare",
+                "B",
+                "ch:1:sloid:77727:0:19835"
+              ],
+              75480,
+              75480
+            ]
+          ],
+          "reviewKinds": [
+            "broc-station-calls"
+          ]
+        },
+        {
+          "id": ".ojp-92-260.1.TA.210.j26",
+          "routeId": "92-260-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.09846941,
+                46.60395284,
+                "Broc-Village, gare",
+                "",
+                "ch:1:sloid:77727:0:10"
+              ],
+              84000,
+              84000
+            ],
+            [
+              [
+                7.09847839,
+                46.60409479,
+                "Broc-Village, gare",
+                "B",
+                "ch:1:sloid:77727:0:19835"
+              ],
+              84480,
+              84480
+            ]
+          ],
+          "reviewKinds": [
+            "broc-station-calls"
+          ]
+        },
+        {
+          "id": ".ojp-92-260.1.TA.215.j26",
+          "routeId": "92-260-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.09846941,
+                46.60395284,
+                "Broc-Village, gare",
+                "",
+                "ch:1:sloid:77727:0:10"
+              ],
+              82200,
+              82200
+            ],
+            [
+              [
+                7.09847839,
+                46.60409479,
+                "Broc-Village, gare",
+                "B",
+                "ch:1:sloid:77727:0:19835"
+              ],
+              82680,
+              82680
+            ]
+          ],
+          "reviewKinds": [
+            "broc-station-calls"
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-09-06",
+      "previousJourneys": 3763,
+      "presentJourneys": 3779,
+      "addedJourneys": 16,
+      "unchangedOriginalSegmentOccurrences": 58879,
+      "lostJourneys": 0,
+      "newJourneys": [
+        {
+          "id": ".ojp-92-260.1.TA.269.j26",
+          "routeId": "92-260-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.09846941,
+                46.60395284,
+                "Broc-Village, gare",
+                "",
+                "ch:1:sloid:77727:0:10"
+              ],
+              28200,
+              28200
+            ],
+            [
+              [
+                7.09847839,
+                46.60409479,
+                "Broc-Village, gare",
+                "B",
+                "ch:1:sloid:77727:0:19835"
+              ],
+              28680,
+              28680
+            ]
+          ],
+          "reviewKinds": [
+            "broc-station-calls"
+          ]
+        },
+        {
+          "id": ".ojp-92-260.1.TA.315.j26",
+          "routeId": "92-260-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.09846941,
+                46.60395284,
+                "Broc-Village, gare",
+                "",
+                "ch:1:sloid:77727:0:10"
+              ],
+              31800,
+              31800
+            ],
+            [
+              [
+                7.09847839,
+                46.60409479,
+                "Broc-Village, gare",
+                "B",
+                "ch:1:sloid:77727:0:19835"
+              ],
+              32280,
+              32280
+            ]
+          ],
+          "reviewKinds": [
+            "broc-station-calls"
+          ]
+        },
+        {
+          "id": ".ojp-92-260.1.TA.319.j26",
+          "routeId": "92-260-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.09846941,
+                46.60395284,
+                "Broc-Village, gare",
+                "",
+                "ch:1:sloid:77727:0:10"
+              ],
+              35400,
+              35400
+            ],
+            [
+              [
+                7.09847839,
+                46.60409479,
+                "Broc-Village, gare",
+                "B",
+                "ch:1:sloid:77727:0:19835"
+              ],
+              35880,
+              35880
+            ]
+          ],
+          "reviewKinds": [
+            "broc-station-calls"
+          ]
+        },
+        {
+          "id": ".ojp-92-260.1.TA.294.j26",
+          "routeId": "92-260-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.09846941,
+                46.60395284,
+                "Broc-Village, gare",
+                "",
+                "ch:1:sloid:77727:0:10"
+              ],
+              39000,
+              39000
+            ],
+            [
+              [
+                7.09847839,
+                46.60409479,
+                "Broc-Village, gare",
+                "B",
+                "ch:1:sloid:77727:0:19835"
+              ],
+              39480,
+              39480
+            ]
+          ],
+          "reviewKinds": [
+            "broc-station-calls"
+          ]
+        },
+        {
+          "id": ".ojp-92-260.1.TA.303.j26",
+          "routeId": "92-260-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.09846941,
+                46.60395284,
+                "Broc-Village, gare",
+                "",
+                "ch:1:sloid:77727:0:10"
+              ],
+              42600,
+              42600
+            ],
+            [
+              [
+                7.09847839,
+                46.60409479,
+                "Broc-Village, gare",
+                "B",
+                "ch:1:sloid:77727:0:19835"
+              ],
+              43080,
+              43080
+            ]
+          ],
+          "reviewKinds": [
+            "broc-station-calls"
+          ]
+        },
+        {
+          "id": ".ojp-92-260.1.TA.284.j26",
+          "routeId": "92-260-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.09846941,
+                46.60395284,
+                "Broc-Village, gare",
+                "",
+                "ch:1:sloid:77727:0:10"
+              ],
+              46200,
+              46200
+            ],
+            [
+              [
+                7.09847839,
+                46.60409479,
+                "Broc-Village, gare",
+                "B",
+                "ch:1:sloid:77727:0:19835"
+              ],
+              46680,
+              46680
+            ]
+          ],
+          "reviewKinds": [
+            "broc-station-calls"
+          ]
+        },
+        {
+          "id": ".ojp-92-260.1.TA.295.j26",
+          "routeId": "92-260-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.09846941,
+                46.60395284,
+                "Broc-Village, gare",
+                "",
+                "ch:1:sloid:77727:0:10"
+              ],
+              49800,
+              49800
+            ],
+            [
+              [
+                7.09847839,
+                46.60409479,
+                "Broc-Village, gare",
+                "B",
+                "ch:1:sloid:77727:0:19835"
+              ],
+              50280,
+              50280
+            ]
+          ],
+          "reviewKinds": [
+            "broc-station-calls"
+          ]
+        },
+        {
+          "id": ".ojp-92-260.1.TA.308.j26",
+          "routeId": "92-260-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.09846941,
+                46.60395284,
+                "Broc-Village, gare",
+                "",
+                "ch:1:sloid:77727:0:10"
+              ],
+              57000,
+              57000
+            ],
+            [
+              [
+                7.09847839,
+                46.60409479,
+                "Broc-Village, gare",
+                "B",
+                "ch:1:sloid:77727:0:19835"
+              ],
+              57480,
+              57480
+            ]
+          ],
+          "reviewKinds": [
+            "broc-station-calls"
+          ]
+        },
+        {
+          "id": ".ojp-92-260.1.TA.318.j26",
+          "routeId": "92-260-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.09846941,
+                46.60395284,
+                "Broc-Village, gare",
+                "",
+                "ch:1:sloid:77727:0:10"
+              ],
+              53400,
+              53400
+            ],
+            [
+              [
+                7.09847839,
+                46.60409479,
+                "Broc-Village, gare",
+                "B",
+                "ch:1:sloid:77727:0:19835"
+              ],
+              53880,
+              53880
+            ]
+          ],
+          "reviewKinds": [
+            "broc-station-calls"
+          ]
+        },
+        {
+          "id": ".ojp-92-260.1.TA.278.j26",
+          "routeId": "92-260-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.09846941,
+                46.60395284,
+                "Broc-Village, gare",
+                "",
+                "ch:1:sloid:77727:0:10"
+              ],
+              60600,
+              60600
+            ],
+            [
+              [
+                7.09847839,
+                46.60409479,
+                "Broc-Village, gare",
+                "B",
+                "ch:1:sloid:77727:0:19835"
+              ],
+              61080,
+              61080
+            ]
+          ],
+          "reviewKinds": [
+            "broc-station-calls"
+          ]
+        },
+        {
+          "id": ".ojp-92-260.1.TA.317.j26",
+          "routeId": "92-260-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.09846941,
+                46.60395284,
+                "Broc-Village, gare",
+                "",
+                "ch:1:sloid:77727:0:10"
+              ],
+              64200,
+              64200
+            ],
+            [
+              [
+                7.09847839,
+                46.60409479,
+                "Broc-Village, gare",
+                "B",
+                "ch:1:sloid:77727:0:19835"
+              ],
+              64680,
+              64680
+            ]
+          ],
+          "reviewKinds": [
+            "broc-station-calls"
+          ]
+        },
+        {
+          "id": ".ojp-92-260.1.TA.287.j26",
+          "routeId": "92-260-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.09846941,
+                46.60395284,
+                "Broc-Village, gare",
+                "",
+                "ch:1:sloid:77727:0:10"
+              ],
+              67800,
+              67800
+            ],
+            [
+              [
+                7.09847839,
+                46.60409479,
+                "Broc-Village, gare",
+                "B",
+                "ch:1:sloid:77727:0:19835"
+              ],
+              68280,
+              68280
+            ]
+          ],
+          "reviewKinds": [
+            "broc-station-calls"
+          ]
+        },
+        {
+          "id": ".ojp-92-260.1.TA.316.j26",
+          "routeId": "92-260-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.09846941,
+                46.60395284,
+                "Broc-Village, gare",
+                "",
+                "ch:1:sloid:77727:0:10"
+              ],
+              71400,
+              71400
+            ],
+            [
+              [
+                7.09847839,
+                46.60409479,
+                "Broc-Village, gare",
+                "B",
+                "ch:1:sloid:77727:0:19835"
+              ],
+              71880,
+              71880
+            ]
+          ],
+          "reviewKinds": [
+            "broc-station-calls"
+          ]
+        },
+        {
+          "id": ".ojp-92-260.1.TA.212.j26",
+          "routeId": "92-260-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.09846941,
+                46.60395284,
+                "Broc-Village, gare",
+                "",
+                "ch:1:sloid:77727:0:10"
+              ],
+              78600,
+              78600
+            ],
+            [
+              [
+                7.09847839,
+                46.60409479,
+                "Broc-Village, gare",
+                "B",
+                "ch:1:sloid:77727:0:19835"
+              ],
+              79080,
+              79080
+            ]
+          ],
+          "reviewKinds": [
+            "broc-station-calls"
+          ]
+        },
+        {
+          "id": ".ojp-92-260.1.TA.214.j26",
+          "routeId": "92-260-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.09846941,
+                46.60395284,
+                "Broc-Village, gare",
+                "",
+                "ch:1:sloid:77727:0:10"
+              ],
+              75000,
+              75000
+            ],
+            [
+              [
+                7.09847839,
+                46.60409479,
+                "Broc-Village, gare",
+                "B",
+                "ch:1:sloid:77727:0:19835"
+              ],
+              75480,
+              75480
+            ]
+          ],
+          "reviewKinds": [
+            "broc-station-calls"
+          ]
+        },
+        {
+          "id": ".ojp-92-260.1.TA.215.j26",
+          "routeId": "92-260-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "0",
+          "reviewedCalls": [
+            [
+              [
+                7.09846941,
+                46.60395284,
+                "Broc-Village, gare",
+                "",
+                "ch:1:sloid:77727:0:10"
+              ],
+              82200,
+              82200
+            ],
+            [
+              [
+                7.09847839,
+                46.60409479,
+                "Broc-Village, gare",
+                "B",
+                "ch:1:sloid:77727:0:19835"
+              ],
+              82680,
+              82680
+            ]
+          ],
+          "reviewKinds": [
+            "broc-station-calls"
+          ]
+        }
+      ]
+    }
+  ]
+}

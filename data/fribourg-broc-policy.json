@@ -1,0 +1,1102 @@
+{
+  "schemaVersion": 1,
+  "id": "broc-station-calls",
+  "sourceDirectory": "data/fribourg-broc-sources",
+  "sources": [
+    {
+      "file": "map.osm.gz",
+      "url": "https://www.openstreetmap.org/api/0.6/map?bbox=7.095,46.602,7.103,46.607",
+      "attribution": "© OpenStreetMap contributors",
+      "license": "ODbL-1.0",
+      "role": "Complete retained raw bbox response, deterministic gzip. Road 1395561049 is the source; adjacent station roads are context only. All selected object edits predate the fixtures; edit dates are not survey dates.",
+      "sha256": "ced6085a7ee3190b7dec15dceeed0a6ea45cc1f2b189a9eea6b272c79c5c6dae",
+      "retrievedAt": "2026-09-08T21:42:02.144Z"
+    },
+    {
+      "file": "tpf-platforms.pdf",
+      "url": "https://www.tpf.ch/Portals/0/Images/Fichiers/Horaires%20et%20plans/Interruptions/Plan%20des%20bus%20de%20remplacement/Broc-Village.pdf",
+      "attribution": "TPF",
+      "published": null,
+      "role": "Visually reviewed official station plan identifies platform B for line 260 towards Charmey–Jaun. Publication date unknown. No map geometry extracted; arrival record 10 is not assigned to platform A.",
+      "sha256": "422d0ba7f33f0162fc0584ba41cd3ac16e4fc75906aab6ed4288f1c39320397c",
+      "retrievedAt": "2026-09-08T21:41:17.286Z"
+    },
+    {
+      "file": "tpf-260-2026.pdf",
+      "url": "https://www.tpf.ch/Portals/0/Images/Fichiers/Horaires%20et%20plans/Horaires/Bus%20r%C3%A9gionaux/2026/260%20Gruy%C3%A8res%20-%20Jaun.pdf",
+      "attribution": "TPF TRAFIC",
+      "validFrom": "2026-08-27",
+      "validUntil": "2026-12-12",
+      "role": "Official timetable retains separate Broc arrival and departure rows. Supports call order and waiting interval; does not establish a physical shunting manoeuvre.",
+      "sha256": "bede3be34b46abcba13601dceb90f3a6b290bd43b062ecd4ba9f116c0b8d6a0e",
+      "retrievedAt": "2026-09-08T21:42:02.866Z"
+    }
+  ],
+  "agencyId": "834",
+  "routeId": "92-260-j26-1",
+  "roadCacheSha256": "87f4d4be2662ff0982cea837e95f73863096d4bc37bd19ecc09ea88e064c465e",
+  "dates": [
+    "2026-09-04",
+    "2026-09-06"
+  ],
+  "patterns": [
+    {
+      "id": "06604b47b1fce4239eb3b87f",
+      "routeId": "92-260-j26-1",
+      "stops": [
+        [
+          7.17006514,
+          46.61528918,
+          "Charmey (Gruyère), Le Chêne",
+          "",
+          "ch:1:sloid:77755:0:15918"
+        ],
+        [
+          7.16554661,
+          46.61854092,
+          "Charmey (Gruyère), village",
+          "",
+          "ch:1:sloid:4852:0:15908"
+        ],
+        [
+          7.15802771,
+          46.62076828,
+          "Charmey (Gruyère), Corbettaz",
+          "",
+          "ch:1:sloid:77754:0:15920"
+        ],
+        [
+          7.1485415,
+          46.62093486,
+          "Cerniat FR, bif.",
+          "",
+          "ch:1:sloid:4916:0:15902"
+        ],
+        [
+          7.13866003,
+          46.6174488,
+          "Crésuz, village",
+          "",
+          "ch:1:sloid:77753:0:15997"
+        ],
+        [
+          7.13032367,
+          46.6142587,
+          "Châtel-sur-Montsalvens, Rest.",
+          "",
+          "ch:1:sloid:4917:0:15912"
+        ],
+        [
+          7.12346952,
+          46.61117332,
+          "Châtel-sur-Montsalv.,Chésalles",
+          "",
+          "ch:1:sloid:77752:0:15914"
+        ],
+        [
+          7.11072243,
+          46.60903813,
+          "Broc, Bataille",
+          "",
+          "ch:1:sloid:6532:0:19460"
+        ],
+        [
+          7.10635662,
+          46.60223089,
+          "Broc, Le Home",
+          "",
+          "ch:1:sloid:77728:0:15875"
+        ],
+        [
+          7.09847839,
+          46.60409479,
+          "Broc-Village, gare",
+          "B",
+          "ch:1:sloid:77727:0:19835"
+        ]
+      ]
+    },
+    {
+      "id": "25222b15fce79be0acedbc54",
+      "routeId": "92-260-j26-1",
+      "stops": [
+        [
+          7.07285844,
+          46.58281043,
+          "Gruyères, gare",
+          "A",
+          "ch:1:sloid:77737:0:19908"
+        ],
+        [
+          7.08034141,
+          46.58230414,
+          "Gruyères, ville",
+          "",
+          "ch:1:sloid:4541:0:15973"
+        ]
+      ]
+    },
+    {
+      "id": "36fd11aa49e4cedacb7e8699",
+      "routeId": "92-260-j26-1",
+      "stops": [
+        [
+          7.09847839,
+          46.60409479,
+          "Broc-Village, gare",
+          "B",
+          "ch:1:sloid:77727:0:19835"
+        ],
+        [
+          7.10685069,
+          46.60206424,
+          "Broc, Le Home",
+          "",
+          "ch:1:sloid:77728:0:15874"
+        ],
+        [
+          7.11090209,
+          46.60888385,
+          "Broc, Bataille",
+          "",
+          "ch:1:sloid:6532:0:19461"
+        ],
+        [
+          7.12362224,
+          46.6111548,
+          "Châtel-sur-Montsalv.,Chésalles",
+          "",
+          "ch:1:sloid:77752:0:15913"
+        ],
+        [
+          7.13023384,
+          46.61407358,
+          "Châtel-sur-Montsalvens, Rest.",
+          "",
+          "ch:1:sloid:4917:0:15911"
+        ],
+        [
+          7.13827376,
+          46.61736241,
+          "Crésuz, village",
+          "",
+          "ch:1:sloid:77753:0:15996"
+        ],
+        [
+          7.14828099,
+          46.62060786,
+          "Cerniat FR, bif.",
+          "",
+          "ch:1:sloid:4916:0:15901"
+        ],
+        [
+          7.15962671,
+          46.62028086,
+          "Charmey (Gruyère), Corbettaz",
+          "",
+          "ch:1:sloid:77754:0:15919"
+        ],
+        [
+          7.16566339,
+          46.61836815,
+          "Charmey (Gruyère), village",
+          "",
+          "ch:1:sloid:4852:0:15907"
+        ],
+        [
+          7.16899614,
+          46.61451786,
+          "Charmey (Gruyère), Le Chêne",
+          "",
+          "ch:1:sloid:77755:0:15917"
+        ],
+        [
+          7.17298466,
+          46.61235195,
+          "Charmey (Gruyère), La Tzintre",
+          "",
+          "ch:1:sloid:77756:0:16084"
+        ],
+        [
+          7.18127611,
+          46.6103464,
+          "Charmey (Gruyère),La Fulateyre",
+          "A",
+          "ch:1:sloid:77757:0:15961"
+        ],
+        [
+          7.19615221,
+          46.60720526,
+          "Charmey (Gruyère), Les Fornis",
+          "",
+          "ch:1:sloid:4920:0:15958"
+        ],
+        [
+          7.20290754,
+          46.60205807,
+          "Im Fang, Praz-Jean",
+          "",
+          "ch:1:sloid:77758:0:16039"
+        ],
+        [
+          7.2183406,
+          46.59838562,
+          "Im Fang, La Bochenaz",
+          "",
+          "ch:1:sloid:77759:0:16132"
+        ],
+        [
+          7.23895694,
+          46.59970033,
+          "Im Fang, Dorf",
+          "",
+          "ch:1:sloid:4859:0:15977"
+        ],
+        [
+          7.25308744,
+          46.60441572,
+          "Im Fang, Zur Eich",
+          "",
+          "ch:1:sloid:4921:0:16106"
+        ],
+        [
+          7.275716,
+          46.61080923,
+          "Jaun, Dorf",
+          "",
+          "ch:1:sloid:4860:0:15983"
+        ],
+        [
+          7.28748393,
+          46.61021681,
+          "Jaun, Bergbahnen",
+          "",
+          "ch:1:sloid:4938:0:15987"
+        ]
+      ]
+    },
+    {
+      "id": "49024979106595f6bed48697",
+      "routeId": "92-260-j26-1",
+      "stops": [
+        [
+          7.08034141,
+          46.58230414,
+          "Gruyères, ville",
+          "",
+          "ch:1:sloid:4541:0:15973"
+        ],
+        [
+          7.07285844,
+          46.58281043,
+          "Gruyères, gare",
+          "A",
+          "ch:1:sloid:77737:0:19908"
+        ],
+        [
+          7.08450959,
+          46.58936083,
+          "Epagny, centre",
+          "",
+          "ch:1:sloid:10871:0:2"
+        ],
+        [
+          7.08677334,
+          46.59591661,
+          "Epagny, aérodrome",
+          "",
+          "ch:1:sloid:88862:0:15932"
+        ],
+        [
+          7.09263934,
+          46.60223089,
+          "Epagny, Prâ Dêrê",
+          "",
+          "ch:1:sloid:77726:0:15909"
+        ],
+        [
+          7.09846941,
+          46.60395284,
+          "Broc-Village, gare",
+          "",
+          "ch:1:sloid:77727:0:10"
+        ],
+        [
+          7.09847839,
+          46.60409479,
+          "Broc-Village, gare",
+          "B",
+          "ch:1:sloid:77727:0:19835"
+        ],
+        [
+          7.10685069,
+          46.60206424,
+          "Broc, Le Home",
+          "",
+          "ch:1:sloid:77728:0:15874"
+        ],
+        [
+          7.11090209,
+          46.60888385,
+          "Broc, Bataille",
+          "",
+          "ch:1:sloid:6532:0:19461"
+        ],
+        [
+          7.12362224,
+          46.6111548,
+          "Châtel-sur-Montsalv.,Chésalles",
+          "",
+          "ch:1:sloid:77752:0:15913"
+        ],
+        [
+          7.13023384,
+          46.61407358,
+          "Châtel-sur-Montsalvens, Rest.",
+          "",
+          "ch:1:sloid:4917:0:15911"
+        ],
+        [
+          7.13827376,
+          46.61736241,
+          "Crésuz, village",
+          "",
+          "ch:1:sloid:77753:0:15996"
+        ],
+        [
+          7.14828099,
+          46.62060786,
+          "Cerniat FR, bif.",
+          "",
+          "ch:1:sloid:4916:0:15901"
+        ],
+        [
+          7.15962671,
+          46.62028086,
+          "Charmey (Gruyère), Corbettaz",
+          "",
+          "ch:1:sloid:77754:0:15919"
+        ],
+        [
+          7.16566339,
+          46.61836815,
+          "Charmey (Gruyère), village",
+          "",
+          "ch:1:sloid:4852:0:15907"
+        ],
+        [
+          7.16899614,
+          46.61451786,
+          "Charmey (Gruyère), Le Chêne",
+          "",
+          "ch:1:sloid:77755:0:15917"
+        ],
+        [
+          7.17298466,
+          46.61235195,
+          "Charmey (Gruyère), La Tzintre",
+          "",
+          "ch:1:sloid:77756:0:16084"
+        ],
+        [
+          7.18127611,
+          46.6103464,
+          "Charmey (Gruyère),La Fulateyre",
+          "A",
+          "ch:1:sloid:77757:0:15961"
+        ],
+        [
+          7.19615221,
+          46.60720526,
+          "Charmey (Gruyère), Les Fornis",
+          "",
+          "ch:1:sloid:4920:0:15958"
+        ],
+        [
+          7.20290754,
+          46.60205807,
+          "Im Fang, Praz-Jean",
+          "",
+          "ch:1:sloid:77758:0:16039"
+        ],
+        [
+          7.2183406,
+          46.59838562,
+          "Im Fang, La Bochenaz",
+          "",
+          "ch:1:sloid:77759:0:16132"
+        ],
+        [
+          7.23895694,
+          46.59970033,
+          "Im Fang, Dorf",
+          "",
+          "ch:1:sloid:4859:0:15977"
+        ],
+        [
+          7.25308744,
+          46.60441572,
+          "Im Fang, Zur Eich",
+          "",
+          "ch:1:sloid:4921:0:16106"
+        ],
+        [
+          7.275716,
+          46.61080923,
+          "Jaun, Dorf",
+          "",
+          "ch:1:sloid:4860:0:15983"
+        ],
+        [
+          7.28748393,
+          46.61021681,
+          "Jaun, Bergbahnen",
+          "",
+          "ch:1:sloid:4938:0:15987"
+        ]
+      ]
+    },
+    {
+      "id": "6a9b8467cae083537336afe7",
+      "routeId": "92-260-j26-1",
+      "stops": [
+        [
+          7.28748393,
+          46.61021681,
+          "Jaun, Bergbahnen",
+          "",
+          "ch:1:sloid:4938:0:15987"
+        ],
+        [
+          7.27629092,
+          46.61099436,
+          "Jaun, Dorf",
+          "",
+          "ch:1:sloid:4860:0:15984"
+        ],
+        [
+          7.25202742,
+          46.60408862,
+          "Im Fang, Zur Eich",
+          "",
+          "ch:1:sloid:4921:0:16107"
+        ],
+        [
+          7.23791489,
+          46.59971884,
+          "Im Fang, Dorf",
+          "",
+          "ch:1:sloid:4859:0:15978"
+        ],
+        [
+          7.2182328,
+          46.59844735,
+          "Im Fang, La Bochenaz",
+          "",
+          "ch:1:sloid:77759:0:16133"
+        ],
+        [
+          7.20295246,
+          46.60210128,
+          "Im Fang, Praz-Jean",
+          "",
+          "ch:1:sloid:77758:0:16040"
+        ],
+        [
+          7.19607136,
+          46.60727931,
+          "Charmey (Gruyère), Les Fornis",
+          "",
+          "ch:1:sloid:4920:0:15957"
+        ],
+        [
+          7.18173425,
+          46.61031555,
+          "Charmey (Gruyère),La Fulateyre",
+          "B",
+          "ch:1:sloid:77757:0:15962"
+        ],
+        [
+          7.17185278,
+          46.61279008,
+          "Charmey (Gruyère), La Tzintre",
+          "",
+          "ch:1:sloid:77756:0:16085"
+        ],
+        [
+          7.17006514,
+          46.61528918,
+          "Charmey (Gruyère), Le Chêne",
+          "",
+          "ch:1:sloid:77755:0:15918"
+        ],
+        [
+          7.16554661,
+          46.61854092,
+          "Charmey (Gruyère), village",
+          "",
+          "ch:1:sloid:4852:0:15908"
+        ],
+        [
+          7.15802771,
+          46.62076828,
+          "Charmey (Gruyère), Corbettaz",
+          "",
+          "ch:1:sloid:77754:0:15920"
+        ],
+        [
+          7.1485415,
+          46.62093486,
+          "Cerniat FR, bif.",
+          "",
+          "ch:1:sloid:4916:0:15902"
+        ],
+        [
+          7.13866003,
+          46.6174488,
+          "Crésuz, village",
+          "",
+          "ch:1:sloid:77753:0:15997"
+        ],
+        [
+          7.13032367,
+          46.6142587,
+          "Châtel-sur-Montsalvens, Rest.",
+          "",
+          "ch:1:sloid:4917:0:15912"
+        ],
+        [
+          7.12346952,
+          46.61117332,
+          "Châtel-sur-Montsalv.,Chésalles",
+          "",
+          "ch:1:sloid:77752:0:15914"
+        ],
+        [
+          7.11072243,
+          46.60903813,
+          "Broc, Bataille",
+          "",
+          "ch:1:sloid:6532:0:19460"
+        ],
+        [
+          7.10635662,
+          46.60223089,
+          "Broc, Le Home",
+          "",
+          "ch:1:sloid:77728:0:15875"
+        ],
+        [
+          7.09846941,
+          46.60395284,
+          "Broc-Village, gare",
+          "",
+          "ch:1:sloid:77727:0:10"
+        ]
+      ]
+    },
+    {
+      "id": "87c72c0ee09be73aa21f9399",
+      "routeId": "92-260-j26-1",
+      "stops": [
+        [
+          7.28748393,
+          46.61021681,
+          "Jaun, Bergbahnen",
+          "",
+          "ch:1:sloid:4938:0:15987"
+        ],
+        [
+          7.27629092,
+          46.61099436,
+          "Jaun, Dorf",
+          "",
+          "ch:1:sloid:4860:0:15984"
+        ],
+        [
+          7.25202742,
+          46.60408862,
+          "Im Fang, Zur Eich",
+          "",
+          "ch:1:sloid:4921:0:16107"
+        ],
+        [
+          7.23791489,
+          46.59971884,
+          "Im Fang, Dorf",
+          "",
+          "ch:1:sloid:4859:0:15978"
+        ],
+        [
+          7.2182328,
+          46.59844735,
+          "Im Fang, La Bochenaz",
+          "",
+          "ch:1:sloid:77759:0:16133"
+        ],
+        [
+          7.20295246,
+          46.60210128,
+          "Im Fang, Praz-Jean",
+          "",
+          "ch:1:sloid:77758:0:16040"
+        ],
+        [
+          7.19607136,
+          46.60727931,
+          "Charmey (Gruyère), Les Fornis",
+          "",
+          "ch:1:sloid:4920:0:15957"
+        ],
+        [
+          7.18173425,
+          46.61031555,
+          "Charmey (Gruyère),La Fulateyre",
+          "B",
+          "ch:1:sloid:77757:0:15962"
+        ],
+        [
+          7.17185278,
+          46.61279008,
+          "Charmey (Gruyère), La Tzintre",
+          "",
+          "ch:1:sloid:77756:0:16085"
+        ],
+        [
+          7.17006514,
+          46.61528918,
+          "Charmey (Gruyère), Le Chêne",
+          "",
+          "ch:1:sloid:77755:0:15918"
+        ],
+        [
+          7.16554661,
+          46.61854092,
+          "Charmey (Gruyère), village",
+          "",
+          "ch:1:sloid:4852:0:15908"
+        ],
+        [
+          7.15802771,
+          46.62076828,
+          "Charmey (Gruyère), Corbettaz",
+          "",
+          "ch:1:sloid:77754:0:15920"
+        ],
+        [
+          7.1485415,
+          46.62093486,
+          "Cerniat FR, bif.",
+          "",
+          "ch:1:sloid:4916:0:15902"
+        ],
+        [
+          7.13866003,
+          46.6174488,
+          "Crésuz, village",
+          "",
+          "ch:1:sloid:77753:0:15997"
+        ],
+        [
+          7.13032367,
+          46.6142587,
+          "Châtel-sur-Montsalvens, Rest.",
+          "",
+          "ch:1:sloid:4917:0:15912"
+        ],
+        [
+          7.12346952,
+          46.61117332,
+          "Châtel-sur-Montsalv.,Chésalles",
+          "",
+          "ch:1:sloid:77752:0:15914"
+        ],
+        [
+          7.11072243,
+          46.60903813,
+          "Broc, Bataille",
+          "",
+          "ch:1:sloid:6532:0:19460"
+        ],
+        [
+          7.10635662,
+          46.60223089,
+          "Broc, Le Home",
+          "",
+          "ch:1:sloid:77728:0:15875"
+        ],
+        [
+          7.09846941,
+          46.60395284,
+          "Broc-Village, gare",
+          "",
+          "ch:1:sloid:77727:0:10"
+        ],
+        [
+          7.0978855,
+          46.60414416,
+          "Broc-Village, gare",
+          "C",
+          "ch:1:sloid:77727:0:19836"
+        ],
+        [
+          7.09220815,
+          46.60218768,
+          "Epagny, Prâ Dêrê",
+          "",
+          "ch:1:sloid:77726:0:15910"
+        ],
+        [
+          7.08653978,
+          46.59584871,
+          "Epagny, aérodrome",
+          "",
+          "ch:1:sloid:88862:0:15933"
+        ],
+        [
+          7.08440179,
+          46.58920649,
+          "Epagny, centre",
+          "",
+          "ch:1:sloid:10871:0:1"
+        ],
+        [
+          7.07285844,
+          46.58281043,
+          "Gruyères, gare",
+          "A",
+          "ch:1:sloid:77737:0:19908"
+        ],
+        [
+          7.08034141,
+          46.58230414,
+          "Gruyères, ville",
+          "",
+          "ch:1:sloid:4541:0:15973"
+        ]
+      ]
+    },
+    {
+      "id": "ac21897d5702c03e2713cd92",
+      "routeId": "92-260-j26-1",
+      "stops": [
+        [
+          7.07285844,
+          46.58281043,
+          "Gruyères, gare",
+          "A",
+          "ch:1:sloid:77737:0:19908"
+        ],
+        [
+          7.08450959,
+          46.58936083,
+          "Epagny, centre",
+          "",
+          "ch:1:sloid:10871:0:2"
+        ],
+        [
+          7.08677334,
+          46.59591661,
+          "Epagny, aérodrome",
+          "",
+          "ch:1:sloid:88862:0:15932"
+        ],
+        [
+          7.09263934,
+          46.60223089,
+          "Epagny, Prâ Dêrê",
+          "",
+          "ch:1:sloid:77726:0:15909"
+        ],
+        [
+          7.09846941,
+          46.60395284,
+          "Broc-Village, gare",
+          "",
+          "ch:1:sloid:77727:0:10"
+        ],
+        [
+          7.09847839,
+          46.60409479,
+          "Broc-Village, gare",
+          "B",
+          "ch:1:sloid:77727:0:19835"
+        ],
+        [
+          7.10685069,
+          46.60206424,
+          "Broc, Le Home",
+          "",
+          "ch:1:sloid:77728:0:15874"
+        ],
+        [
+          7.11090209,
+          46.60888385,
+          "Broc, Bataille",
+          "",
+          "ch:1:sloid:6532:0:19461"
+        ],
+        [
+          7.12362224,
+          46.6111548,
+          "Châtel-sur-Montsalv.,Chésalles",
+          "",
+          "ch:1:sloid:77752:0:15913"
+        ],
+        [
+          7.13023384,
+          46.61407358,
+          "Châtel-sur-Montsalvens, Rest.",
+          "",
+          "ch:1:sloid:4917:0:15911"
+        ],
+        [
+          7.13827376,
+          46.61736241,
+          "Crésuz, village",
+          "",
+          "ch:1:sloid:77753:0:15996"
+        ],
+        [
+          7.14828099,
+          46.62060786,
+          "Cerniat FR, bif.",
+          "",
+          "ch:1:sloid:4916:0:15901"
+        ],
+        [
+          7.15962671,
+          46.62028086,
+          "Charmey (Gruyère), Corbettaz",
+          "",
+          "ch:1:sloid:77754:0:15919"
+        ],
+        [
+          7.16566339,
+          46.61836815,
+          "Charmey (Gruyère), village",
+          "",
+          "ch:1:sloid:4852:0:15907"
+        ],
+        [
+          7.16899614,
+          46.61451786,
+          "Charmey (Gruyère), Le Chêne",
+          "",
+          "ch:1:sloid:77755:0:15917"
+        ],
+        [
+          7.17298466,
+          46.61235195,
+          "Charmey (Gruyère), La Tzintre",
+          "",
+          "ch:1:sloid:77756:0:16084"
+        ],
+        [
+          7.18127611,
+          46.6103464,
+          "Charmey (Gruyère),La Fulateyre",
+          "A",
+          "ch:1:sloid:77757:0:15961"
+        ],
+        [
+          7.19615221,
+          46.60720526,
+          "Charmey (Gruyère), Les Fornis",
+          "",
+          "ch:1:sloid:4920:0:15958"
+        ],
+        [
+          7.20290754,
+          46.60205807,
+          "Im Fang, Praz-Jean",
+          "",
+          "ch:1:sloid:77758:0:16039"
+        ],
+        [
+          7.2183406,
+          46.59838562,
+          "Im Fang, La Bochenaz",
+          "",
+          "ch:1:sloid:77759:0:16132"
+        ],
+        [
+          7.23895694,
+          46.59970033,
+          "Im Fang, Dorf",
+          "",
+          "ch:1:sloid:4859:0:15977"
+        ],
+        [
+          7.25308744,
+          46.60441572,
+          "Im Fang, Zur Eich",
+          "",
+          "ch:1:sloid:4921:0:16106"
+        ],
+        [
+          7.275716,
+          46.61080923,
+          "Jaun, Dorf",
+          "",
+          "ch:1:sloid:4860:0:15983"
+        ],
+        [
+          7.28748393,
+          46.61021681,
+          "Jaun, Bergbahnen",
+          "",
+          "ch:1:sloid:4938:0:15987"
+        ]
+      ]
+    },
+    {
+      "id": "baf5899435db205967a25b64",
+      "routeId": "92-260-j26-1",
+      "stops": [
+        [
+          7.09847839,
+          46.60409479,
+          "Broc-Village, gare",
+          "B",
+          "ch:1:sloid:77727:0:19835"
+        ],
+        [
+          7.10685069,
+          46.60206424,
+          "Broc, Le Home",
+          "",
+          "ch:1:sloid:77728:0:15874"
+        ],
+        [
+          7.11090209,
+          46.60888385,
+          "Broc, Bataille",
+          "",
+          "ch:1:sloid:6532:0:19461"
+        ],
+        [
+          7.12362224,
+          46.6111548,
+          "Châtel-sur-Montsalv.,Chésalles",
+          "",
+          "ch:1:sloid:77752:0:15913"
+        ],
+        [
+          7.13023384,
+          46.61407358,
+          "Châtel-sur-Montsalvens, Rest.",
+          "",
+          "ch:1:sloid:4917:0:15911"
+        ],
+        [
+          7.13827376,
+          46.61736241,
+          "Crésuz, village",
+          "",
+          "ch:1:sloid:77753:0:15996"
+        ],
+        [
+          7.14828099,
+          46.62060786,
+          "Cerniat FR, bif.",
+          "",
+          "ch:1:sloid:4916:0:15901"
+        ],
+        [
+          7.15962671,
+          46.62028086,
+          "Charmey (Gruyère), Corbettaz",
+          "",
+          "ch:1:sloid:77754:0:15919"
+        ],
+        [
+          7.16566339,
+          46.61836815,
+          "Charmey (Gruyère), village",
+          "",
+          "ch:1:sloid:4852:0:15907"
+        ],
+        [
+          7.16899614,
+          46.61451786,
+          "Charmey (Gruyère), Le Chêne",
+          "",
+          "ch:1:sloid:77755:0:15917"
+        ]
+      ]
+    },
+    {
+      "id": "c6ff49a25a4d3728dca02afb",
+      "routeId": "92-260-j26-1",
+      "stops": [
+        [
+          7.08422213,
+          46.59036709,
+          "Epagny, Les Gottes",
+          "",
+          "ch:1:sloid:4884:0:15934"
+        ],
+        [
+          7.08677334,
+          46.59591661,
+          "Epagny, aérodrome",
+          "",
+          "ch:1:sloid:88862:0:15932"
+        ],
+        [
+          7.09263934,
+          46.60223089,
+          "Epagny, Prâ Dêrê",
+          "",
+          "ch:1:sloid:77726:0:15909"
+        ]
+      ]
+    },
+    {
+      "id": "f30dd62cee33f27b2a6cdb1a",
+      "routeId": "92-260-j26-1",
+      "stops": [
+        [
+          7.08034141,
+          46.58230414,
+          "Gruyères, ville",
+          "",
+          "ch:1:sloid:4541:0:15973"
+        ],
+        [
+          7.07285844,
+          46.58281043,
+          "Gruyères, gare",
+          "A",
+          "ch:1:sloid:77737:0:19908"
+        ]
+      ]
+    }
+  ],
+  "stops": [
+    [
+      7.09846941,
+      46.60395284,
+      "Broc-Village, gare",
+      "",
+      "ch:1:sloid:77727:0:10"
+    ],
+    [
+      7.09847839,
+      46.60409479,
+      "Broc-Village, gare",
+      "B",
+      "ch:1:sloid:77727:0:19835"
+    ]
+  ],
+  "maximumAttachmentMetres": 10,
+  "maximumLengthMetres": 35,
+  "admission": "Only original arrival record 10 → departure platform B (19835) in both contributing complete route-260 patterns, with exact Epagny Prâ Dêrê / Broc Le Home neighbours. Project the unchanged arrival coordinate onto directed OSM way 1395561049 and follow its remaining 5–20 m to source stop-position 3313999352. Each original call connector is at most 10 m, total geometry 15–35 m. Preserve both call times and the waiting interval. The short centreline section is an inferred geometric connection, not evidence that the bus moves throughout its wait. No generic short-path exemption, platform merging or assignment of unlabelled arrival 10 to platform A.",
+  "exclusions": [
+    "Reverse direction and platform C remain unchanged",
+    "Station loop, platform-A assignment and invented turnaround",
+    "Other routes, changed full contexts or validation dates",
+    "Certifying the timetable waiting interval as physical movement time"
+  ]
+}

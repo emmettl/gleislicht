@@ -82,7 +82,7 @@ Generated from the [Fribourg audit](FRIBOURG-STUDY.md). Every one of the 207 ann
 | 834 | 245 | 92-245-j26-1 | bus | La Gruyère, La Sarine | 50 | 8/8; 2/2 | 12/12; 2/2 | All dated trips admitted |
 | 834 | 258 | 92-258-j26-1 | bus | La Glâne, La Gruyère, La Veveyse | 51 | 10/19; 4/7 | 4/8; 1/2 | Partially admitted |
 | 834 | 259 | 92-259-j26-1 | bus | La Gruyère | — | 0/12; 0/2 | 0/10; 0/2 | Excluded |
-| 834 | 260 | 92-260-j26-1 | bus | La Gruyère | 52 | 65/85; 8/10 | 53/69; 5/7 | Partially admitted |
+| 834 | 260 | 92-260-j26-1 | bus | La Gruyère | 52 | 85/85; 10/10 | 69/69; 7/7 | All dated trips admitted |
 | 834 | 262 | 92-262-j26-1 | bus | La Gruyère | 53 | 25/25; 6/6 | 4/4; 2/2 | All dated trips admitted |
 | 834 | 263 | 92-263-j26-1 | bus | La Gruyère | — | 39/43; 3/6 | 13/26; 1/2 | Partially admitted |
 | 834 | 264 | 92-264-j26-1 | bus | La Gruyère | 54 | 32/32; 2/2 | 16/16; 2/2 | All dated trips admitted |
