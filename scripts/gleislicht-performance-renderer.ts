@@ -41,10 +41,29 @@ export function gleislichtPerformanceRenderer(): Plugin {
         replace('const lastReport = useRef(0);', 'const lastReport = useRef(0);\n    const uiFrameBudget = useMemo(() => new TrailFrameBudget(), []);')
         replace('state.clock.elapsedTime - lastReport.current > 0.1',
           'state.clock.elapsedTime - lastReport.current > (selectedTrain || comparisonTrains?.length ? 0.1 : uiFrameBudget.interval(delta) * 3)')
-        replace('const lastUpdate = useRef(-1);', 'const lastUpdate = useRef(-1);\n    const trailFrameBudget = useMemo(() => new TrailFrameBudget(), []);')
+        replace('const lastUpdate = useRef(-1);', 'const lastUpdate = useRef(-1);\n    const trailFrameBudget = useMemo(() => new TrailFrameBudget(), []);\n    const trailWorker = useMemo(() => new TrailWorkerClient(), []);')
+        replace('    }), [snapshot.trains.length]);', `    }), [snapshot.trains.length]);
+    const trailSelection = useMemo(() => ({}), [selectedTrain, comparisonTrains, selectedRoute,
+      selectedCategory, airCategorySelected, selectedStation, cameraFraming, isPlaying, isPlaying ? undefined : time]);
+    useEffect(() => {
+      if (!snapshot.trains.length) { trailWorker.dispose(); return; }
+      trailWorker.reset(() => ({ trains: snapshot.trains, stops: projectedStops, paths: projectedPaths,
+        detours: [...lakeAvoidingPaths], colors: snapshot.trains.map(train => {
+          const color = trainPalette.get(train.id) ?? palette[train.category] ?? palette.other;
+          return [color.r, color.g, color.b];
+        }) }));
+      return () => trailWorker.dispose();
+    }, [trailWorker, snapshot.trains, projectedStops, projectedPaths, lakeAvoidingPaths, trainPalette, palette]);`)
         replace('if (clock.elapsedTime - lastUpdate.current < 1 / 30)',
-          'if (!trailFrameBudget.shouldUpdateTrail(delta, clock.elapsedTime - lastUpdate.current))')
-        code = 'import { TrailFrameBudget } from "/src/studies/trail-frame-budget.ts";\n' + code
+          `trailWorker.select(trailSelection, String(vehicleIsVisibleAtZoom('bus', camera.position.y, cameraFraming)) + String(vehicleIsVisibleAtZoom('tram', camera.position.y, cameraFraming)));
+        const completedTrailFrame = trailWorker.takeFrame();
+        if (completedTrailFrame) applyTrailBuffers(geometries, completedTrailFrame);
+        if (!trailFrameBudget.shouldUpdateTrail(delta, clock.elapsedTime - lastUpdate.current))`)
+        replace('const sampleTimes = vehicleTrailSampleTimes(localTime.current);',
+          'const workerActive = trailWorker.available;\n        const workerTrainIds = [];\n        const sampleTimes = vehicleTrailSampleTimes(localTime.current);')
+        replace('        geometries.forEach((geometry, index) => {',
+          '        if (workerActive) { trailWorker.submit(localTime.current, workerTrainIds); return; }\n        geometries.forEach((geometry, index) => {')
+        code = 'import { TrailWorkerClient } from "/src/studies/trail-worker-client.ts";\nimport { TrailFrameBudget } from "/src/studies/trail-frame-budget.ts";\n' + code
         replace("import { positionForTrain, } from '@motionstudies/core/domain/network';",
           'import { positionForTrain } from "/src/studies/train-position.ts";')
         // Buffers have capacity for the whole timetable, not just active trips.
@@ -62,13 +81,14 @@ export function gleislichtPerformanceRenderer(): Plugin {
         // Most candidates in the coarse time bucket have no trail at this time.
         replace('const samples = sampleTimes.map((sampleTime) => projectedTrainPosition(train, sampleTime, projectedStops, projectedPaths, lakeAvoidingPaths));',
           `if (train.realtime?.status === 'cancelled' || localTime.current < train.start || sampleTimes[VEHICLE_TRAIL_SEGMENTS] > train.end) continue;
+            if (workerActive) { workerTrainIds.push(train.id); continue; }
             const samples = sampleTimes.map((sampleTime) => projectedTrainPosition(train, sampleTime, projectedStops, projectedPaths, lakeAvoidingPaths));`)
         replace('colorArrays[index].set([color.r, color.g, color.b, color.r, color.g, color.b], offset);',
           `const colors = colorArrays[index];
                 colors[offset] = colors[offset + 3] = color.r;
                 colors[offset + 1] = colors[offset + 4] = color.g;
                 colors[offset + 2] = colors[offset + 5] = color.b;`)
-        code = 'import { updateActiveGeometry } from "/src/studies/active-geometry.ts";\n' + code
+        code = 'import { updateActiveGeometry, applyTrailBuffers } from "/src/studies/active-geometry.ts";\n' + code
       } else {
         // useRef's argument is evaluated on every React render, even after mount.
         // The frame callback supplies aircraftRef for labels and picking.

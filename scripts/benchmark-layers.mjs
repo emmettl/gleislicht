@@ -3,6 +3,7 @@ import { mkdir, writeFile } from 'node:fs/promises'
 
 const url = process.argv.find(value => /^https?:\/\//.test(value)) ?? 'http://127.0.0.1:4193/'
 const cpuRate = Number(process.env.CPU_RATE ?? 4)
+const cpuWarmupMs = Number(process.env.CPU_WARMUP_MS ?? 1500)
 const frames = 180
 const studies = (process.env.STUDIES ?? 'CH,24H,PA,ZH,ZVV,GE,comparison,hub,station,journey').split(',')
 const browser = await chromium.launch({ args: process.argv.includes('--metal') ? ['--use-angle=metal', '--enable-gpu'] : [] })
@@ -30,6 +31,7 @@ try {
     await page.waitForTimeout(1500)
     const client = await page.context().newCDPSession(page)
     await client.send('Emulation.setCPUThrottlingRate', { rate: cpuRate })
+    await page.waitForTimeout(cpuWarmupMs)
     await client.send('Performance.enable')
     await client.send('Profiler.enable')
     await client.send('Profiler.start')
@@ -63,7 +65,7 @@ try {
       totals.set(name, (totals.get(name) ?? 0) + (node.hitCount ?? 0))
     }
     const metric = (set, key) => set.metrics.find(metric => metric.name === key)?.value ?? 0
-    console.log(JSON.stringify({ study, url, cpuRate, ...timing,
+    console.log(JSON.stringify({ study, url, cpuRate, cpuWarmupMs, ...timing,
       scriptMsPerFrame: 1000 * (metric(after, 'ScriptDuration') - metric(before, 'ScriptDuration')) / frames,
       errors, topSamples: [...totals].sort((a, b) => b[1] - a[1]).slice(0, 12),
     }))

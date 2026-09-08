@@ -292,3 +292,79 @@ Chromium/WebKit production-build checks passed for schedule switching and
 PostBus playback, scrubbing and route selection. An earlier development-server
 run was invalidated by an experiment-triggered reload during the last WebKit
 test; all four checks were therefore rerun against the fixed production build.
+
+## Move trail calculation off the UI thread
+
+Further attempts at compiled trip trajectories, time-indexed trajectory buckets,
+static React layer memoization and sharing exact position results did not show
+consistent overall gains. Those experiments were removed.
+
+The retained implementation moves trail position and vertex/color-buffer
+calculation into a module Web Worker. Marker movement, selection/zoom filtering
+and GPU uploads remain on the main thread. The worker uses the same timetable
+lookup, path interpolation and three 45-second trail segments as the renderer;
+differential tests compare against the installed renderer and real PostBus data.
+The result is transferred as typed arrays, rather than JSON vertex objects.
+
+Each scene retains one in-flight job and one latest pending request. Results from
+old selections, layouts, backwards seeks and large forward jumps are rejected.
+Paused clocks do not submit the same calculation repeatedly. Projection changes
+are debounced for 200 ms before cloning the new dataset; the synchronous path
+continues during initialization and is retained if worker creation or execution
+fails. No worker starts for an empty train collection, including isolated Auto
+or LUFT configurations. Workers terminate when their scene/data is replaced.
+Worker data duplicates the immutable geometry in another thread; queue length
+is bounded, but this is a main-thread responsiveness improvement, not a claim
+that total CPU work or memory usage decreases. A completed trail can arrive on
+a later frame; markers retain their original per-frame updates.
+
+Local machine load varied noticeably during investigation. The benchmark now
+allows the CPU throttle to settle for 1.5 seconds before recording. A fresh
+control/worker comparison used the same isolated source, 1280 × 720, Chromium /
+M4 Max / ANGLE Metal, 24× CPU throttling and 180 measured frames per study:
+
+| Metric | Control (`49dfaad` performance changes) | Worker |
+| --- | ---: | ---: |
+| PostBus FPS | 13.7 | 17.3 |
+| PostBus main-thread scripting/frame | 65.46 ms | 50.50 ms |
+| PostBus p95 frame interval | 116.6 ms | 83.4 ms |
+| SBB FPS | 22.0 | 41.4 |
+| SBB main-thread scripting/frame | 37.88 ms | 19.23 ms |
+| SBB p95 frame interval | 66.8 ms | 50.0 ms |
+
+All runs reported no page errors. These single paired results show approximately
+23% less main-thread scripting for PostBus and 49% for SBB under the test
+conditions. Throttled desktop tests do not reproduce the laptop's complete CPU,
+GPU, worker scheduling or browser-policy environment, so Windows verification
+is still required.
+
+`scripts/benchmark-network-interactions.mjs` also measures repeated Enter-key
+activations of the already-loaded PostBus button. It groups Event Timing entries
+by interaction ID, taking each interaction's longest event so keydown, keypress,
+click and keyup do not count as four independent interactions. At 24× CPU,
+eight activations measured median 140 → 108 ms and maximum 184 → 128 ms. These
+are controlled local interaction samples, not field INP measurements or a
+reproduction of the user's 688 ms interaction.
+
+The initial-transfer budget now includes the separate worker asset, which Vite
+does not list among the main manifest's imports. The verified build uses
+354.9 KiB of initial JavaScript and 761.2 KiB total gzip transfer, within the
+existing 360/790 KiB budgets. The final isolated unit suite passed (228 tests), including the pinned
+trail-constant contract.
+
+Cold initialization at 24× CPU exposed a 1,538 ms synchronous dataset clone.
+Initialization now sends bounded batches of records/geometry, yielding to the
+browser after roughly 4 ms of copying. The repeated cold PostBus check sent
+659 batches: the longest individual copy was 11.9 ms and aggregate copying
+was 1,263 ms, with the worker reaching ready and no page errors. This spreads
+the work across tasks; it does not eliminate the copying cost. Single records
+stay intact even when they exceed the normal batch target.
+
+The final chunked version passed its production build, focused lint and bundle
+budgets. Unit coverage verifies chunk ordering, cancellation between batches,
+latest-request handling, transferred buffers and exact renderer parity.
+Six final production-browser checks passed across Chromium and iPhone WebKit:
+PostBus lazy loading and clock behavior; populated worker geometry, forward and
+backward seeks and worker teardown; and synchronous playback when workers are
+blocked. Earlier checks also passed for tram/journey/director playback and
+isolated Air/Auto rendering. Architecture boundaries passed.

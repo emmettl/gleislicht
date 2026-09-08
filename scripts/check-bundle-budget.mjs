@@ -1,8 +1,8 @@
-import { readFile } from 'node:fs/promises'
+import { readFile, readdir } from 'node:fs/promises'
 import { resolve } from 'node:path'
 import { gzipSync } from 'node:zlib'
 
-const DIST_DIRECTORY = resolve('dist')
+const DIST_DIRECTORY = resolve(process.argv[2] ?? 'dist')
 const INITIAL_DATA_FILES = [
   'data/swiss-rail-morning.json',
   'data/swiss-boundary.json',
@@ -48,7 +48,8 @@ function collectInitialFiles(manifest) {
   visit(entry[0])
   const openingScene = Object.entries(manifest).find(
     ([, chunk]) =>
-      chunk.src === 'node_modules/@motionstudies/three/NationalNetworkScene.js',
+      chunk.src === 'node_modules/@motionstudies/three/NationalNetworkScene.js' ||
+      chunk.src?.endsWith('/node_modules/@motionstudies/three/NationalNetworkScene.js'),
   )
   if (!openingScene) throw new Error('Vite manifest has no national network scene')
   visit(openingScene[0])
@@ -69,6 +70,12 @@ const manifest = JSON.parse(
   await readFile(resolve(DIST_DIRECTORY, '.vite/manifest.json'), 'utf8'),
 )
 const initial = collectInitialFiles(manifest)
+// Vite's worker assets are not listed as imports in its main manifest, but the
+// national scene starts this worker on first view, so include its transfer cost.
+const workers = (await readdir(resolve(DIST_DIRECTORY, 'assets')))
+  .filter(file => /^trail\.worker-[\w-]+\.js$/.test(file))
+if (workers.length !== 1) throw new Error('Expected one bundled trail worker')
+initial.scripts.push(...workers.map(file => `assets/${file}`))
 const javaScript = await totalGzipSize(DIST_DIRECTORY, initial.scripts)
 const css = await totalGzipSize(DIST_DIRECTORY, initial.styles)
 const data = await totalGzipSize(DIST_DIRECTORY, INITIAL_DATA_FILES)
