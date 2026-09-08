@@ -14,13 +14,22 @@ export function solothurnNight(route) {
   return route.type === 705 || /^(?:SN|[MN])\d/i.test(route.name) || /moonliner|nachtbus|nachtlinie|night bus/i.test(`${route.agency} ${route.longName}`)
 }
 
-export function solothurnGraphs(features) {
-  const graphs = new Map()
+export function solothurnGraphs(features, { joinEndpointInteriors = true } = {}) {
+  const graphs = new Map(), endpoints = new Map()
+  for (const feature of features) {
+    if (feature.properties.tunnel) continue
+    const lines = feature.geometry.type === 'LineString' ? [feature.geometry.coordinates] : feature.geometry.coordinates
+    for (const line of lines) for (const xy of [line[0], line.at(-1)]) {
+      const key = `${feature.properties.verkehrsmittel}:${xy.join(',')}`
+      const ids = endpoints.get(key) ?? new Set()
+      ids.add(feature.properties.T_Ili_Tid); endpoints.set(key, ids)
+    }
+  }
   for (const feature of features) {
     const mode = SO_MODES[feature.properties.verkehrsmittel]
     assert(mode, 'Unreviewed Solothurn source mode')
     assert(['LineString', 'MultiLineString'].includes(feature.geometry.type))
-    const graph = graphs.get(mode) ?? { points: [], indexes: new Map(), adjacency: [], edges: [], parts: [], sourceIds: [], tunnelRecords: 0 }
+    const graph = graphs.get(mode) ?? { points: [], indexes: new Map(), adjacency: [], edges: [], parts: [], sourceIds: [], tunnelRecords: 0, endpointInteriorJunctions: [] }
     graph.sourceIds.push(feature.properties.T_Ili_Tid)
     graph.tunnelRecords += Number(feature.properties.tunnel)
     const lines = feature.geometry.type === 'LineString' ? [feature.geometry.coordinates] : feature.geometry.coordinates
@@ -28,10 +37,17 @@ export function solothurnGraphs(features) {
       assert(line.length >= 2)
       const indexes = line.map((xy, i) => {
         assert(xy.length === 2 && xy.every(Number.isFinite) && xy[0] > 2400000 && xy[0] < 2900000 && xy[1] > 1000000 && xy[1] < 1400000)
-        // Join exact source endpoints only. Interior vertices do not create
-        // inferred junctions at crossings/stacked infrastructure. A tunnel may
-        // join surface infrastructure at its original endpoint, never midway.
-        const key = i === 0 || i === line.length - 1 ? xy.join(',') : `${feature.properties.T_Ili_Tid}:${partId}:${i}`
+        // A source endpoint at another feature's exact interior vertex is a
+        // supported T-junction. Never invent an interior/interior crossing,
+        // stitch a nearby coordinate, or node a tunnel interior onto surface.
+        const isEndpoint = i === 0 || i === line.length - 1
+        const endpointIds = endpoints.get(`${feature.properties.verkehrsmittel}:${xy.join(',')}`)
+        const joinInterior = joinEndpointInteriors && !isEndpoint && !feature.properties.tunnel
+          && endpointIds && [...endpointIds].some(id => id !== feature.properties.T_Ili_Tid)
+        if (joinInterior) graph.endpointInteriorJunctions.push({ coordinate: xy,
+          interiorFeature: feature.properties.T_Ili_Tid, part: partId, vertex: i,
+          endpointFeatures: [...endpointIds].filter(id => id !== feature.properties.T_Ili_Tid).sort() })
+        const key = isEndpoint || joinInterior ? xy.join(',') : `${feature.properties.T_Ili_Tid}:${partId}:${i}`
         if (!graph.indexes.has(key)) {
           graph.indexes.set(key, graph.points.length)
           graph.points.push(bernWgs84(xy)); graph.adjacency.push([])
@@ -60,6 +76,7 @@ export function solothurnGraphs(features) {
     }
     graph.topology = { sourceRecords: graph.sourceIds.length, tunnelRecords: graph.tunnelRecords,
       vertices: graph.points.length, edges: graph.edges.length, parts: graph.parts.length,
+      endpointInteriorJunctions: graph.endpointInteriorJunctions,
       components: components.length, componentVertices: components.sort((a, b) => b - a) }
   }
   return graphs

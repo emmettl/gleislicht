@@ -40,6 +40,21 @@ describe('Solothurn graph topology and source scope', () => {
     expect(crossing.topology.components).toBe(2)
     expect(matchBaselSegment(crossing, bernWgs84(A), bernWgs84([B[0], B[1] + 1000]), SO_LIMITS.bus).reason).toBe('disconnected-line')
   })
+  it('connects exact surface endpoint/interior T-junctions without joining tunnel interiors', () => {
+    const side = [B[0], B[1] + 1000]
+    const features = [feature('through', [A, B, C]), feature('branch', [B, side])]
+    const original = solothurnGraphs(features, { joinEndpointInteriors: false }).get('bus')
+    expect(original.topology.components).toBe(2)
+    const graph = solothurnGraphs(features).get('bus')
+    expect(graph.topology.components).toBe(1)
+    expect(graph.edges).toHaveLength(original.edges.length)
+    expect(graph.topology.endpointInteriorJunctions).toEqual([{ coordinate: B, interiorFeature: 'through', part: 0, vertex: 1, endpointFeatures: ['branch'] }])
+    expect(matchBaselSegment(graph, bernWgs84(A), bernWgs84(side), SO_LIMITS.bus).path).toBeDefined()
+    const tunnel = solothurnGraphs([feature('through', [A, B, C], 'Bus', true), feature('branch', [B, side])]).get('bus')
+    expect(tunnel.topology.components).toBe(2)
+    const tunnelEnd = solothurnGraphs([feature('through', [A, B, C]), feature('branch', [B, side], 'Bus', true)]).get('bus')
+    expect(tunnelEnd.topology.components).toBe(2)
+  })
   it('rejects collapsed stops, off-network endpoints and excessive detours', () => {
     const graph = solothurnGraphs([feature('a', [A, B, C])]).get('bus')
     expect(matchBaselSegment(graph, bernWgs84(A), bernWgs84(A), SO_LIMITS.bus).reason).toBe('collapsed-path')

@@ -69,7 +69,7 @@
     "refreshPolicy": "Pinned September 2026 study, not current service. Rebuild census, graph, both days and audit when updating either source."
   },
   "geometryModel": "Mode-filtered, bidirectional shortest-path inference on official network centrelines. No route/operator attributes, legal road direction, rail gauge/running-track or diversion certification.",
-  "topologyRule": "Exact LV95 source endpoints join within one mode. No interior crossing junctions, distance-based stitching or stop-to-stop straight-line fallback. Tunnel flags retained.",
+  "topologyRule": "Exact LV95 source endpoints join within one mode, including an endpoint on another feature’s exact non-tunnel interior vertex. No interior-only crossing junctions, tunnel-interior joins, distance-based stitching or stop-to-stop straight-line fallback. Tunnel flags retained.",
   "coordinateModel": "Original LV95 XY vertices; swisstopo approximate WGS84 conversion; seven-decimal output. Metre-level transformation, not survey precision.",
   "limits": {
     "bus": {

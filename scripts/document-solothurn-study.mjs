@@ -1,6 +1,7 @@
 import { readFile, writeFile } from 'node:fs/promises'
 const read = async name => JSON.parse(await readFile(`data/solothurn-audit/${name}.json`))
 const s = await read('summary'), routes = await read('routes')
+const topology = await read('topology-review')
 const reports = await Promise.all(s.days.map(d => read(d.serviceDate)))
 const n = x => Number(x).toLocaleString('en-CH')
 const percent = (a, b) => `${(100 * a / b).toFixed(1)}%`
@@ -59,7 +60,7 @@ The retained source has **3,951 MultiLineString network records and 775 point st
 
 ${table(['Source mode → adapter', 'Source records', 'Parts', 'Graph vertices', 'Graph edges', 'Components', 'Tunnel records'], Object.entries(s.sourceInventory.graph).map(([mode, g]) => [`${({ bus: 'Bus', rail: 'Bahn', cableway: 'Seilbahn' })[mode]} → ${mode}`, g.sourceRecords, g.parts, g.vertices, g.edges, g.components, g.tunnelRecords]))}
 
-The adapter creates one graph per supported mode. Exact original LV95 part endpoints connect; nearby endpoints are never stitched. Interior crossings do not create junctions, so stacked paths and tunnels are not joined midway. The original tunnel flags are retained and tunnel endpoints may join surface infrastructure. This conservative topology can exclude real connections; the component counts are measured graph components, not claims about operational networks.
+The adapter creates one graph per supported mode. Exact original LV95 part endpoints connect, including where a non-tunnel endpoint exactly equals another non-tunnel feature’s interior vertex. Nearby endpoints are never stitched. Interior-only crossings do not create junctions, and tunnel interiors are not joined to surface paths. The original tunnel flags are retained and tunnel endpoints may join surface infrastructure. This conservative topology can exclude real connections; the component counts are measured graph components, not claims about operational networks.
 
 Paths follow shortest bidirectional source centrelines between projected GTFS calls. Retry projections must be within 5 metres of the nearest projection and only resolve disconnection/detour failures. No route/operator association is inferred from a segment ID. The [network inventory](../data/solothurn-audit/source-network.json) retains all source feature identities, mode, tunnel, part/vertex counts and graph inclusion status. Graph inclusion is not measured use of every segment or proof of route alignment.
 
@@ -76,6 +77,14 @@ Night services are explicitly absent from the publisher's dataset. GTFS type 705
 Cross-canton journeys often extend beyond the graph or encounter disconnected parts. Endpoint gaps and disconnected patterns remain unresolved. Neither source topology nor shortest-path plausibility certifies road one-way compliance, a particular railway gauge/running track, bridge/tunnel engineering, the exact operator itinerary or temporary diversions. Further official route evidence is needed for that stronger claim.
 
 The [source-stop inventory](../data/solothurn-audit/source-stops.json) retains every source stop, normalizes five-digit DiDok with the Swiss 8500000 prefix and joins the GTFS didok field exactly. It compares canton-contained GTFS stops only: ${Object.entries(s.sourceInventory.sourceStopReconciliation.byStatus).map(([k, v]) => `${v} ${k}`).join('; ')}. ${s.sourceInventory.sourceStopReconciliation.outsideCanton} source stops lie outside the canton. A missing canton-only match does not establish missing national service. The stop layer is an independent reconciliation aid; it does not replace original GTFS call coordinates.
+
+## Exact source junction follow-up
+
+The initial endpoint-only graph left genuine source-vertex contacts disconnected. The follow-up nodes **42 bus locations and one rail location** where one non-tunnel feature ends exactly at an interior vertex of another. These represent 45 bus interior-vertex references and one rail reference. No new edge or coordinate is added; interior-only crossings, near misses and tunnel interiors remain separate. Bus graph components fall from 121 to 101, and rail components from 30 to 29.
+
+${table(['Date', 'Previously admitted journeys', 'Now admitted journeys', 'Additional complete patterns', 'Previously admitted patterns lost'], topology.days.map(d => [d.date, d.before.admittedTrips, d.after.admittedTrips, d.newlyAdmittedPatterns.length, d.lostAdmittedPatterns.length]))}
+
+The [topology review](../data/solothurn-audit/topology-review.json) preserves each exact LV95 junction, endpoint/interior feature IDs, before/after denominators and every newly admitted complete stop chain. The [baseline](../data/solothurn-topology-baseline.json) identifies the original committed source hashes and admitted patterns. Rebuild and checking assert that source edge counts are unchanged and every previously admitted pattern remains admitted. This repairs network representation; it does not change the documented limits on route itinerary and physical-direction certainty.
 
 ## Sources, dates and attribution
 

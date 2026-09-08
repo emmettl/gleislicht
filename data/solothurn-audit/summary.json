@@ -75,7 +75,7 @@
       "refreshPolicy": "Pinned September 2026 study, not current service. Rebuild census, graph, both days and audit when updating either source."
     },
     "geometryModel": "Mode-filtered, bidirectional shortest-path inference on official network centrelines. No route/operator attributes, legal road direction, rail gauge/running-track or diversion certification.",
-    "topologyRule": "Exact LV95 source endpoints join within one mode. No interior crossing junctions, distance-based stitching or stop-to-stop straight-line fallback. Tunnel flags retained.",
+    "topologyRule": "Exact LV95 source endpoints join within one mode, including an endpoint on another feature’s exact non-tunnel interior vertex. No interior-only crossing junctions, tunnel-interior joins, distance-based stitching or stop-to-stop straight-line fallback. Tunnel flags retained.",
     "coordinateModel": "Original LV95 XY vertices; swisstopo approximate WGS84 conversion; seven-decimal output. Metre-level transformation, not survey precision.",
     "limits": {
       "bus": {
@@ -260,44 +260,578 @@
       "bus": {
         "sourceRecords": 3612,
         "tunnelRecords": 0,
-        "vertices": 32045,
+        "vertices": 32000,
         "edges": 31988,
         "parts": 3634,
-        "components": 121,
+        "endpointInteriorJunctions": [
+          {
+            "coordinate": [
+              2609599.025,
+              1260585.399
+            ],
+            "interiorFeature": "f9fc76fb-5bb5-4788-85f2-c7d91224df2c",
+            "part": 0,
+            "vertex": 155,
+            "endpointFeatures": [
+              "08d23e0c-2bb2-4a55-b2e0-3b623645e5e0"
+            ]
+          },
+          {
+            "coordinate": [
+              2609601.054,
+              1260584.618
+            ],
+            "interiorFeature": "f9fc76fb-5bb5-4788-85f2-c7d91224df2c",
+            "part": 0,
+            "vertex": 156,
+            "endpointFeatures": [
+              "3e51708d-6c1b-4e29-a7b0-b59c86aa7bb3"
+            ]
+          },
+          {
+            "coordinate": [
+              2611348.067,
+              1260265.956
+            ],
+            "interiorFeature": "f9fc76fb-5bb5-4788-85f2-c7d91224df2c",
+            "part": 0,
+            "vertex": 235,
+            "endpointFeatures": [
+              "4d8e5103-7663-4ea7-b242-42ce7282ea2a"
+            ]
+          },
+          {
+            "coordinate": [
+              2612022.513,
+              1259916.669
+            ],
+            "interiorFeature": "cdaa4015-a7a9-4294-8a8e-0d603844867e",
+            "part": 0,
+            "vertex": 6,
+            "endpointFeatures": [
+              "a9b2c6e1-f687-4853-aacb-d04207f94883"
+            ]
+          },
+          {
+            "coordinate": [
+              2600797.451,
+              1226775.021
+            ],
+            "interiorFeature": "33ab0b84-9d65-4bfc-9390-5fc5e2ce4596",
+            "part": 0,
+            "vertex": 3,
+            "endpointFeatures": [
+              "a95a4c9b-dc52-4efd-97f7-75ab1fb38195"
+            ]
+          },
+          {
+            "coordinate": [
+              2605816.649,
+              1250050.205
+            ],
+            "interiorFeature": "4916e929-0edc-4093-bb42-65473711aa8f",
+            "part": 0,
+            "vertex": 56,
+            "endpointFeatures": [
+              "9bd0594c-f335-4f50-9ebc-785a329e662d"
+            ]
+          },
+          {
+            "coordinate": [
+              2600737.12,
+              1215452.954
+            ],
+            "interiorFeature": "59bc5342-018a-4684-986b-1ca5e03377ef",
+            "part": 0,
+            "vertex": 11,
+            "endpointFeatures": [
+              "f8ad7d14-8c93-48f9-a2d7-2d9d6a15fafa"
+            ]
+          },
+          {
+            "coordinate": [
+              2596307.641,
+              1217885.941
+            ],
+            "interiorFeature": "fc4817da-b78d-404e-8ad4-ba6a3164ba5d",
+            "part": 3,
+            "vertex": 181,
+            "endpointFeatures": [
+              "b675ef9e-e646-4eab-9ffa-8bef3a30183f"
+            ]
+          },
+          {
+            "coordinate": [
+              2599073.4,
+              1227408.206
+            ],
+            "interiorFeature": "d0c6efda-8300-4de1-aace-b4ef3253af4f",
+            "part": 0,
+            "vertex": 6,
+            "endpointFeatures": [
+              "02d0e16b-d262-49fe-9133-2d66a32ad56e",
+              "e92c3530-0e84-40f6-9d87-03cd999ddb72"
+            ]
+          },
+          {
+            "coordinate": [
+              2599076.213,
+              1227408.941
+            ],
+            "interiorFeature": "d0c6efda-8300-4de1-aace-b4ef3253af4f",
+            "part": 0,
+            "vertex": 7,
+            "endpointFeatures": [
+              "02d0e16b-d262-49fe-9133-2d66a32ad56e",
+              "86d7b415-3ed3-49a8-8666-23eb57d0eeec"
+            ]
+          },
+          {
+            "coordinate": [
+              2604737.135,
+              1231067.583
+            ],
+            "interiorFeature": "3edd02ef-c6ba-4e8e-85bc-e6cba91b0125",
+            "part": 0,
+            "vertex": 3,
+            "endpointFeatures": [
+              "339883c2-1e40-4d73-a8d6-a5272ec65753"
+            ]
+          },
+          {
+            "coordinate": [
+              2616326.296,
+              1253786.555
+            ],
+            "interiorFeature": "ab879d18-6de6-4291-a6c8-3ec313f1bc2b",
+            "part": 0,
+            "vertex": 1,
+            "endpointFeatures": [
+              "a5beca44-3aea-4825-9e1d-cdaa4b44642a"
+            ]
+          },
+          {
+            "coordinate": [
+              2617482.518,
+              1255406.545
+            ],
+            "interiorFeature": "fec18dfa-d833-4755-a1ca-1ae2f73ef291",
+            "part": 0,
+            "vertex": 7,
+            "endpointFeatures": [
+              "d1f3f6ed-eb3f-40c4-9bfb-e3ca08e3ecec"
+            ]
+          },
+          {
+            "coordinate": [
+              2640103.376,
+              1245733.002
+            ],
+            "interiorFeature": "db2f7689-94ee-424c-ba88-9fc1c8be7a12",
+            "part": 0,
+            "vertex": 20,
+            "endpointFeatures": [
+              "5616ac66-815c-401d-b9bf-e260588f240a"
+            ]
+          },
+          {
+            "coordinate": [
+              2640151.141,
+              1245093.844
+            ],
+            "interiorFeature": "db2f7689-94ee-424c-ba88-9fc1c8be7a12",
+            "part": 0,
+            "vertex": 94,
+            "endpointFeatures": [
+              "c473b51d-f065-478d-b264-7671b9ed6b0e"
+            ]
+          },
+          {
+            "coordinate": [
+              2611440.278,
+              1259771.203
+            ],
+            "interiorFeature": "3e51708d-6c1b-4e29-a7b0-b59c86aa7bb3",
+            "part": 0,
+            "vertex": 48,
+            "endpointFeatures": [
+              "f9fc76fb-5bb5-4788-85f2-c7d91224df2c"
+            ]
+          },
+          {
+            "coordinate": [
+              2611348.067,
+              1260265.956
+            ],
+            "interiorFeature": "3e51708d-6c1b-4e29-a7b0-b59c86aa7bb3",
+            "part": 0,
+            "vertex": 67,
+            "endpointFeatures": [
+              "4d8e5103-7663-4ea7-b242-42ce7282ea2a"
+            ]
+          },
+          {
+            "coordinate": [
+              2609020.515,
+              1225664.711
+            ],
+            "interiorFeature": "9ba1005c-4cce-4881-b660-1360d50c64b5",
+            "part": 0,
+            "vertex": 3,
+            "endpointFeatures": [
+              "b1d939ad-565c-466e-839e-38c5b1231a11"
+            ]
+          },
+          {
+            "coordinate": [
+              2612068.058,
+              1257900.403
+            ],
+            "interiorFeature": "5b9ca4d6-fdf9-4d3c-b64a-c4b9167661b5",
+            "part": 0,
+            "vertex": 131,
+            "endpointFeatures": [
+              "c6e0ccd4-25b5-4f70-900e-ac0d7f380794"
+            ]
+          },
+          {
+            "coordinate": [
+              2605839.681,
+              1229645.334
+            ],
+            "interiorFeature": "32620aae-c34f-4e2a-a7eb-2262788974ae",
+            "part": 0,
+            "vertex": 7,
+            "endpointFeatures": [
+              "65747743-0080-4bea-9b3f-a0840e7f88ea"
+            ]
+          },
+          {
+            "coordinate": [
+              2595803.389,
+              1227739.347
+            ],
+            "interiorFeature": "25c4dc28-5246-4b00-b8bc-127fe4f4e654",
+            "part": 0,
+            "vertex": 41,
+            "endpointFeatures": [
+              "5d6fcab4-1022-4aa2-9645-c26df033d3d7"
+            ]
+          },
+          {
+            "coordinate": [
+              2589969.576,
+              1213692.76
+            ],
+            "interiorFeature": "208977e8-aa43-4583-954d-c260eeef884e",
+            "part": 0,
+            "vertex": 7,
+            "endpointFeatures": [
+              "f6cc4e29-a672-4dad-b168-7f4a70c9ebf5",
+              "fc4817da-b78d-404e-8ad4-ba6a3164ba5d"
+            ]
+          },
+          {
+            "coordinate": [
+              2627170.123,
+              1240809.88
+            ],
+            "interiorFeature": "9c6e05db-d597-4b6b-8e98-7a21ccca5ed7",
+            "part": 0,
+            "vertex": 3,
+            "endpointFeatures": [
+              "45433c6f-20c5-41dd-944f-fbd45bf651fe"
+            ]
+          },
+          {
+            "coordinate": [
+              2640915.388,
+              1245182.105
+            ],
+            "interiorFeature": "3341382b-7b39-46bc-b9f8-dbfcad8735df",
+            "part": 0,
+            "vertex": 7,
+            "endpointFeatures": [
+              "69958768-60f7-4905-a8e6-4157f89be9c6"
+            ]
+          },
+          {
+            "coordinate": [
+              2613393.299,
+              1259753.892
+            ],
+            "interiorFeature": "68c17cfd-8674-48b2-9909-80e1b8f376ef",
+            "part": 0,
+            "vertex": 18,
+            "endpointFeatures": [
+              "311ec888-8aad-45b3-b517-316576d87535"
+            ]
+          },
+          {
+            "coordinate": [
+              2603958.165,
+              1229706.914
+            ],
+            "interiorFeature": "bc8ed3d8-8e1b-4dbd-b43b-4f1798c053f0",
+            "part": 0,
+            "vertex": 10,
+            "endpointFeatures": [
+              "3a2b9834-f26a-499e-8dca-ede0a182058f"
+            ]
+          },
+          {
+            "coordinate": [
+              2638189.161,
+              1244539.714
+            ],
+            "interiorFeature": "2d70d5b6-9468-432f-adf7-69d246dc2c5e",
+            "part": 0,
+            "vertex": 6,
+            "endpointFeatures": [
+              "5c7c5042-315e-41ac-a412-015b44c4d5e5"
+            ]
+          },
+          {
+            "coordinate": [
+              2613393.299,
+              1259753.892
+            ],
+            "interiorFeature": "ad55e8d8-454e-437a-a373-b9732e19aa00",
+            "part": 0,
+            "vertex": 31,
+            "endpointFeatures": [
+              "311ec888-8aad-45b3-b517-316576d87535"
+            ]
+          },
+          {
+            "coordinate": [
+              2596933.282,
+              1226531.881
+            ],
+            "interiorFeature": "64da638a-996d-4699-b675-d4d239a82ea6",
+            "part": 0,
+            "vertex": 4,
+            "endpointFeatures": [
+              "74c4a384-5126-46db-8b77-9ee0e4c1ec8c"
+            ]
+          },
+          {
+            "coordinate": [
+              2600741.87,
+              1215454.439
+            ],
+            "interiorFeature": "f8ad7d14-8c93-48f9-a2d7-2d9d6a15fafa",
+            "part": 0,
+            "vertex": 1,
+            "endpointFeatures": [
+              "59bc5342-018a-4684-986b-1ca5e03377ef"
+            ]
+          },
+          {
+            "coordinate": [
+              2605374.97,
+              1229471.479
+            ],
+            "interiorFeature": "3ed9e650-8dbf-415d-92d2-86c4de9fa89c",
+            "part": 0,
+            "vertex": 10,
+            "endpointFeatures": [
+              "65747743-0080-4bea-9b3f-a0840e7f88ea"
+            ]
+          },
+          {
+            "coordinate": [
+              2597041.569,
+              1214718.427
+            ],
+            "interiorFeature": "096a6d81-b6e0-4867-b7b1-328e2259a5e0",
+            "part": 0,
+            "vertex": 7,
+            "endpointFeatures": [
+              "dd5ffc40-146d-4bbc-a28a-9437a342932b"
+            ]
+          },
+          {
+            "coordinate": [
+              2597029.749,
+              1214751.048
+            ],
+            "interiorFeature": "096a6d81-b6e0-4867-b7b1-328e2259a5e0",
+            "part": 0,
+            "vertex": 8,
+            "endpointFeatures": [
+              "dd5ffc40-146d-4bbc-a28a-9437a342932b"
+            ]
+          },
+          {
+            "coordinate": [
+              2612022.513,
+              1259916.669
+            ],
+            "interiorFeature": "6884c8f9-378f-4c87-8af2-369805cc7ccb",
+            "part": 0,
+            "vertex": 84,
+            "endpointFeatures": [
+              "a9b2c6e1-f687-4853-aacb-d04207f94883"
+            ]
+          },
+          {
+            "coordinate": [
+              2608636.871,
+              1260946.201
+            ],
+            "interiorFeature": "08d23e0c-2bb2-4a55-b2e0-3b623645e5e0",
+            "part": 0,
+            "vertex": 54,
+            "endpointFeatures": [
+              "72778b04-c294-4d64-a69c-0b969d8df58c"
+            ]
+          },
+          {
+            "coordinate": [
+              2596110.221,
+              1227779.043
+            ],
+            "interiorFeature": "bf5927f4-c702-4475-896f-2bb237454254",
+            "part": 0,
+            "vertex": 18,
+            "endpointFeatures": [
+              "c433df4c-05c3-487c-a19c-24c5e22231f6"
+            ]
+          },
+          {
+            "coordinate": [
+              2635291.866,
+              1245885.657
+            ],
+            "interiorFeature": "ee44088b-deff-4e34-a062-f08f2d86eaac",
+            "part": 0,
+            "vertex": 1,
+            "endpointFeatures": [
+              "dc45c2e6-4a61-4b64-9502-8a4d33e409f2"
+            ]
+          },
+          {
+            "coordinate": [
+              2600797.451,
+              1226770.365
+            ],
+            "interiorFeature": "a95a4c9b-dc52-4efd-97f7-75ab1fb38195",
+            "part": 0,
+            "vertex": 11,
+            "endpointFeatures": [
+              "33ab0b84-9d65-4bfc-9390-5fc5e2ce4596"
+            ]
+          },
+          {
+            "coordinate": [
+              2635312.992,
+              1245867.938
+            ],
+            "interiorFeature": "dc45c2e6-4a61-4b64-9502-8a4d33e409f2",
+            "part": 0,
+            "vertex": 14,
+            "endpointFeatures": [
+              "ee44088b-deff-4e34-a062-f08f2d86eaac"
+            ]
+          },
+          {
+            "coordinate": [
+              2594735.969,
+              1225316.348
+            ],
+            "interiorFeature": "61d1a182-20a6-4197-b6e4-a37dd4a142da",
+            "part": 0,
+            "vertex": 13,
+            "endpointFeatures": [
+              "0c872684-e3f6-41a4-ba5b-4aeecadaaaf8"
+            ]
+          },
+          {
+            "coordinate": [
+              2594326.258,
+              1225169.608
+            ],
+            "interiorFeature": "61d1a182-20a6-4197-b6e4-a37dd4a142da",
+            "part": 0,
+            "vertex": 23,
+            "endpointFeatures": [
+              "f1c991db-25da-411b-b132-6567cd38a541"
+            ]
+          },
+          {
+            "coordinate": [
+              2594234.781,
+              1225553.924
+            ],
+            "interiorFeature": "61d1a182-20a6-4197-b6e4-a37dd4a142da",
+            "part": 0,
+            "vertex": 35,
+            "endpointFeatures": [
+              "c405cf00-02ad-4263-8c96-e969cb64797a"
+            ]
+          },
+          {
+            "coordinate": [
+              2592389.025,
+              1224906.14
+            ],
+            "interiorFeature": "c405cf00-02ad-4263-8c96-e969cb64797a",
+            "part": 0,
+            "vertex": 24,
+            "endpointFeatures": [
+              "f941a0b3-78bd-4748-b253-2252b3957fb9"
+            ]
+          },
+          {
+            "coordinate": [
+              2588431.215,
+              1223227.755
+            ],
+            "interiorFeature": "f941a0b3-78bd-4748-b253-2252b3957fb9",
+            "part": 0,
+            "vertex": 5,
+            "endpointFeatures": [
+              "ae7058a3-ed54-4bc4-b895-b7a594b1a8ae"
+            ]
+          },
+          {
+            "coordinate": [
+              2592378.864,
+              1224905.069
+            ],
+            "interiorFeature": "f941a0b3-78bd-4748-b253-2252b3957fb9",
+            "part": 0,
+            "vertex": 19,
+            "endpointFeatures": [
+              "c405cf00-02ad-4263-8c96-e969cb64797a"
+            ]
+          }
+        ],
+        "components": 101,
         "componentVertices": [
-          8646,
-          6397,
-          3395,
-          2441,
-          1284,
-          784,
+          10122,
+          8763,
+          3396,
+          1590,
+          1285,
           708,
           671,
-          492,
-          429,
           397,
-          341,
           287,
           266,
           263,
           239,
-          237,
+          239,
           203,
-          185,
+          193,
           177,
-          159,
-          149,
           148,
           142,
-          134,
           131,
-          126,
-          112,
-          109,
           104,
           102,
           99,
-          91,
           91,
           90,
           89,
@@ -318,33 +852,29 @@
           54,
           53,
           48,
+          48,
           47,
           46,
           42,
           41,
           40,
-          38,
           37,
           37,
           36,
           35,
           34,
           33,
-          30,
           29,
           29,
           28,
           28,
           27,
           26,
-          26,
           25,
           25,
           24,
           22,
           21,
-          21,
-          20,
           20,
           20,
           20,
@@ -356,18 +886,15 @@
           16,
           13,
           13,
-          13,
           12,
           12,
           12,
-          9,
           9,
           9,
           9,
           9,
           8,
           8,
-          7,
           7,
           6,
           5,
@@ -375,9 +902,7 @@
           5,
           4,
           4,
-          4,
           3,
-          2,
           2,
           2,
           2,
@@ -391,14 +916,28 @@
       "rail": {
         "sourceRecords": 338,
         "tunnelRecords": 2,
-        "vertices": 8114,
+        "vertices": 8113,
         "edges": 8087,
         "parts": 343,
-        "components": 30,
+        "endpointInteriorJunctions": [
+          {
+            "coordinate": [
+              2589885.745,
+              1214178.406
+            ],
+            "interiorFeature": "d51b3b8f-5e58-432a-8d12-d980ba83e63d",
+            "part": 0,
+            "vertex": 37,
+            "endpointFeatures": [
+              "62a7efbc-d362-4070-9b8a-b6852fe72dca"
+            ]
+          }
+        ],
+        "components": 29,
         "componentVertices": [
           1091,
           1073,
-          754,
+          931,
           727,
           644,
           569,
@@ -410,7 +949,6 @@
           240,
           212,
           193,
-          178,
           147,
           142,
           92,
@@ -434,6 +972,7 @@
         "vertices": 3,
         "edges": 2,
         "parts": 1,
+        "endpointInteriorJunctions": [],
         "components": 1,
         "componentVertices": [
           3
@@ -448,10 +987,10 @@
     "key": "GTFS route identity + direction_id + full ordered original platform IDs, including repeats and out-of-canton calls"
   },
   "routesByStatus": {
-    "admitted-all-dated-trips": 18,
-    "excluded": 101,
+    "admitted-all-dated-trips": 25,
+    "excluded": 96,
     "inactive-on-validation-dates": 42,
-    "partially-admitted": 32
+    "partially-admitted": 30
   },
   "districts": [
     {
@@ -511,7 +1050,7 @@
         "96-144-B-j26-1",
         "96-145-9-j26-1"
       ],
-      "admittedCalledPlatforms": 137,
+      "admittedCalledPlatforms": 152,
       "admittedRouteIds": [
         "91-21-C-j26-1",
         "91-51-B-j26-1",
@@ -519,6 +1058,7 @@
         "91-56-C-j26-1",
         "91-56-j26-1",
         "92-1-L-j26-1",
+        "92-20-E-j26-1",
         "92-21-D-j26-1",
         "92-22-E-j26-1",
         "92-24-B-j26-1",
@@ -572,8 +1112,9 @@
         "96-137-3-j26-1",
         "96-137-7-j26-1"
       ],
-      "admittedCalledPlatforms": 13,
+      "admittedCalledPlatforms": 24,
       "admittedRouteIds": [
+        "96-136-7-j26-1",
         "96-136-8-j26-1"
       ]
     },
@@ -656,14 +1197,16 @@
         "96-148-5-j26-1",
         "96-148-6-j26-1"
       ],
-      "admittedCalledPlatforms": 52,
+      "admittedCalledPlatforms": 70,
       "admittedRouteIds": [
         "91-5-O-j26-1",
         "91-8-B-j26-1",
         "92-1-L-j26-1",
+        "92-2-K-j26-1",
         "92-3-M-j26-1",
         "92-4-N-j26-1",
         "92-5-J-j26-1",
+        "92-6-M-j26-1",
         "92-7-J-j26-1",
         "92-8-F-j26-1",
         "92-9-I-j26-1",
@@ -688,12 +1231,13 @@
         "92-N57-j26-1",
         "96-140-2-j26-1"
       ],
-      "admittedCalledPlatforms": 75,
+      "admittedCalledPlatforms": 91,
       "admittedRouteIds": [
         "91-9-F-j26-1",
         "92-2-E-j26-1",
         "92-501-A-j26-1",
         "92-502-j26-1",
+        "92-506-j26-1",
         "92-507-j26-1",
         "92-519-j26-1"
       ]
@@ -787,6 +1331,7 @@
         "92-3-M-j26-1",
         "92-4-N-j26-1",
         "92-5-J-j26-1",
+        "92-6-M-j26-1",
         "92-7-J-j26-1",
         "92-8-F-j26-1",
         "92-9-I-j26-1",
@@ -892,12 +1437,13 @@
         "96-144-6-j26-1",
         "96-144-7-j26-1"
       ],
-      "admittedCalledPlatforms": 47,
+      "admittedCalledPlatforms": 66,
       "admittedRouteIds": [
         "91-29-j26-1",
         "92-501-A-j26-1",
         "92-502-j26-1",
         "92-505-j26-1",
+        "92-506-j26-1",
         "92-507-j26-1",
         "92-513-j26-1",
         "92-519-j26-1",
@@ -919,8 +1465,9 @@
         "96-148-5-j26-1",
         "96-148-6-j26-1"
       ],
-      "admittedCalledPlatforms": 40,
+      "admittedCalledPlatforms": 44,
       "admittedRouteIds": [
+        "92-362-j26-1",
         "92-363-j26-1",
         "92-8-F-j26-1",
         "96-148-2-j26-1",
@@ -939,23 +1486,23 @@
       },
       "coverage": {
         "trips": 7156,
-        "admittedTrips": 2723,
+        "admittedTrips": 3142,
         "scheduledTrips": 6078,
         "representativeHeadwayTrips": 1078,
-        "admittedScheduledTrips": 1645,
+        "admittedScheduledTrips": 2064,
         "admittedRepresentativeHeadwayTrips": 1078,
         "scheduledSegmentOccurrences": 97358,
-        "matchedScheduledSegmentOccurrences": 76945,
+        "matchedScheduledSegmentOccurrences": 78023,
         "segmentOccurrences": 98436,
-        "matchedSegmentOccurrences": 78023,
-        "admittedSegmentOccurrences": 22510,
+        "matchedSegmentOccurrences": 79101,
+        "admittedSegmentOccurrences": 30649,
         "directedPairs": 4259,
-        "matchedDirectedPairs": 2943,
+        "matchedDirectedPairs": 3004,
         "patterns": 921,
-        "completePatterns": 177,
-        "admittedPatterns": 177,
+        "completePatterns": 223,
+        "admittedPatterns": 223,
         "excludedTrips": {
-          "incomplete-directed-pattern": 4228,
+          "incomplete-directed-pattern": 3809,
           "no-compatible-source-mode": 205
         }
       },
@@ -1060,12 +1607,12 @@
           "admittedScheduledTrips": 0,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 1264,
-          "matchedScheduledSegmentOccurrences": 971,
+          "matchedScheduledSegmentOccurrences": 1038,
           "segmentOccurrences": 1264,
-          "matchedSegmentOccurrences": 971,
+          "matchedSegmentOccurrences": 1038,
           "admittedSegmentOccurrences": 0,
           "directedPairs": 36,
-          "matchedDirectedPairs": 26,
+          "matchedDirectedPairs": 28,
           "patterns": 6,
           "completePatterns": 0,
           "admittedPatterns": 0,
@@ -1100,46 +1647,46 @@
           "id": "793:bus",
           "agency": "Busbetrieb Olten-Gösgen-Gäu",
           "trips": 955,
-          "admittedTrips": 154,
+          "admittedTrips": 315,
           "scheduledTrips": 955,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 154,
+          "admittedScheduledTrips": 315,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 18099,
-          "matchedScheduledSegmentOccurrences": 16251,
+          "matchedScheduledSegmentOccurrences": 16468,
           "segmentOccurrences": 18099,
-          "matchedSegmentOccurrences": 16251,
-          "admittedSegmentOccurrences": 2132,
+          "matchedSegmentOccurrences": 16468,
+          "admittedSegmentOccurrences": 4628,
           "directedPairs": 497,
-          "matchedDirectedPairs": 437,
+          "matchedDirectedPairs": 443,
           "patterns": 87,
-          "completePatterns": 19,
-          "admittedPatterns": 19,
+          "completePatterns": 27,
+          "admittedPatterns": 27,
           "excludedTrips": {
-            "incomplete-directed-pattern": 801
+            "incomplete-directed-pattern": 640
           }
         },
         {
           "id": "801:bus",
           "agency": "PostAuto AG",
           "trips": 1394,
-          "admittedTrips": 568,
+          "admittedTrips": 580,
           "scheduledTrips": 1394,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 568,
+          "admittedScheduledTrips": 580,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 21366,
-          "matchedScheduledSegmentOccurrences": 18514,
+          "matchedScheduledSegmentOccurrences": 18771,
           "segmentOccurrences": 21366,
-          "matchedSegmentOccurrences": 18514,
-          "admittedSegmentOccurrences": 7652,
+          "matchedSegmentOccurrences": 18771,
+          "admittedSegmentOccurrences": 7767,
           "directedPairs": 1145,
-          "matchedDirectedPairs": 982,
+          "matchedDirectedPairs": 1007,
           "patterns": 206,
-          "completePatterns": 76,
-          "admittedPatterns": 76,
+          "completePatterns": 85,
+          "admittedPatterns": 85,
           "excludedTrips": {
-            "incomplete-directed-pattern": 826
+            "incomplete-directed-pattern": 814
           }
         },
         {
@@ -1215,46 +1762,46 @@
           "id": "850:bus",
           "agency": "Autobusbetrieb RBS",
           "trips": 205,
-          "admittedTrips": 2,
+          "admittedTrips": 32,
           "scheduledTrips": 205,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 2,
+          "admittedScheduledTrips": 32,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 2962,
-          "matchedScheduledSegmentOccurrences": 2559,
+          "matchedScheduledSegmentOccurrences": 2632,
           "segmentOccurrences": 2962,
-          "matchedSegmentOccurrences": 2559,
-          "admittedSegmentOccurrences": 9,
+          "matchedSegmentOccurrences": 2632,
+          "admittedSegmentOccurrences": 294,
           "directedPairs": 169,
-          "matchedDirectedPairs": 143,
+          "matchedDirectedPairs": 149,
           "patterns": 29,
-          "completePatterns": 2,
-          "admittedPatterns": 2,
+          "completePatterns": 4,
+          "admittedPatterns": 4,
           "excludedTrips": {
-            "incomplete-directed-pattern": 203
+            "incomplete-directed-pattern": 173
           }
         },
         {
           "id": "883:bus",
           "agency": "Busbetrieb Solothurn und Umgebung",
           "trips": 787,
-          "admittedTrips": 309,
+          "admittedTrips": 368,
           "scheduledTrips": 787,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 309,
+          "admittedScheduledTrips": 368,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 15417,
-          "matchedScheduledSegmentOccurrences": 14712,
+          "matchedScheduledSegmentOccurrences": 14943,
           "segmentOccurrences": 15417,
-          "matchedSegmentOccurrences": 14712,
-          "admittedSegmentOccurrences": 5456,
+          "matchedSegmentOccurrences": 14943,
+          "admittedSegmentOccurrences": 6578,
           "directedPairs": 485,
-          "matchedDirectedPairs": 442,
+          "matchedDirectedPairs": 451,
           "patterns": 94,
-          "completePatterns": 27,
-          "admittedPatterns": 27,
+          "completePatterns": 42,
+          "admittedPatterns": 42,
           "excludedTrips": {
-            "incomplete-directed-pattern": 478
+            "incomplete-directed-pattern": 419
           }
         },
         {
@@ -1282,41 +1829,41 @@
           "id": "894:bus",
           "agency": "Busbetrieb Grenchen und Umgebung",
           "trips": 554,
-          "admittedTrips": 324,
+          "admittedTrips": 481,
           "scheduledTrips": 554,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 324,
+          "admittedScheduledTrips": 481,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 9913,
-          "matchedScheduledSegmentOccurrences": 9606,
+          "matchedScheduledSegmentOccurrences": 9839,
           "segmentOccurrences": 9913,
-          "matchedSegmentOccurrences": 9606,
-          "admittedSegmentOccurrences": 4503,
+          "matchedSegmentOccurrences": 9839,
+          "admittedSegmentOccurrences": 8624,
           "directedPairs": 358,
-          "matchedDirectedPairs": 339,
+          "matchedDirectedPairs": 352,
           "patterns": 45,
-          "completePatterns": 25,
-          "admittedPatterns": 25,
+          "completePatterns": 37,
+          "admittedPatterns": 37,
           "excludedTrips": {
-            "incomplete-directed-pattern": 230
+            "incomplete-directed-pattern": 73
           }
         }
       ],
       "carryInTrips": 149,
-      "admittedCarryInTrips": 27,
-      "admittedOutsideCantonPlatforms": 143,
+      "admittedCarryInTrips": 32,
+      "admittedOutsideCantonPlatforms": 162,
       "directedPatternChecks": {
         "directionIds": [
           "0",
           "1"
         ],
         "patternsRevisitingPlatforms": 21,
-        "admittedPatternsRevisitingPlatforms": 3,
+        "admittedPatternsRevisitingPlatforms": 5,
         "nightTrips": 0,
         "admittedNightTrips": 0
       },
       "timingResolution": {
-        "zeroDurationSegmentOccurrences": 1305,
+        "zeroDurationSegmentOccurrences": 1901,
         "zeroDurationDirectedPairs": [
           {
             "routeId": "92-1-L-j26-1",
@@ -1333,6 +1880,46 @@
             "seconds": 0,
             "mode": "bus",
             "metres": 382.32360438092036
+          },
+          {
+            "routeId": "92-20-E-j26-1",
+            "fromId": "ch:1:sloid:77945",
+            "toId": "ch:1:sloid:94123",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 240.12354372164467
+          },
+          {
+            "routeId": "92-20-E-j26-1",
+            "fromId": "ch:1:sloid:94138",
+            "toId": "ch:1:sloid:94132",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 303.36930595656656
+          },
+          {
+            "routeId": "92-20-E-j26-1",
+            "fromId": "ch:1:sloid:94125",
+            "toId": "ch:1:sloid:94126",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 316.87678981107257
+          },
+          {
+            "routeId": "92-20-E-j26-1",
+            "fromId": "ch:1:sloid:88208",
+            "toId": "ch:1:sloid:88209",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 226.0626830832249
+          },
+          {
+            "routeId": "92-20-E-j26-1",
+            "fromId": "ch:1:sloid:87445",
+            "toId": "ch:1:sloid:94092",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 228.23056129091847
           },
           {
             "routeId": "92-21-D-j26-1",
@@ -1368,6 +1955,14 @@
           },
           {
             "routeId": "92-22-E-j26-1",
+            "fromId": "ch:1:sloid:89878",
+            "toId": "ch:1:sloid:89879",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 298.53280628779555
+          },
+          {
+            "routeId": "92-22-E-j26-1",
             "fromId": "ch:1:sloid:94141",
             "toId": "ch:1:sloid:77972",
             "seconds": 0,
@@ -1392,6 +1987,22 @@
           },
           {
             "routeId": "92-24-B-j26-1",
+            "fromId": "ch:1:sloid:87630",
+            "toId": "ch:1:sloid:87628",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 815.7348624107791
+          },
+          {
+            "routeId": "92-24-B-j26-1",
+            "fromId": "ch:1:sloid:77945",
+            "toId": "ch:1:sloid:94123",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 240.12354372164467
+          },
+          {
+            "routeId": "92-24-B-j26-1",
             "fromId": "ch:1:sloid:94132",
             "toId": "ch:1:sloid:94138",
             "seconds": 0,
@@ -1407,20 +2018,28 @@
             "metres": 231.0828577693463
           },
           {
-            "routeId": "92-24-B-j26-1",
-            "fromId": "ch:1:sloid:77945",
-            "toId": "ch:1:sloid:94123",
-            "seconds": 0,
-            "mode": "bus",
-            "metres": 240.12354372164467
-          },
-          {
             "routeId": "92-25-C-j26-1",
             "fromId": "ch:1:sloid:94141",
             "toId": "ch:1:sloid:77972",
             "seconds": 0,
             "mode": "bus",
             "metres": 192.5153039533622
+          },
+          {
+            "routeId": "92-25-C-j26-1",
+            "fromId": "ch:1:sloid:77942",
+            "toId": "ch:1:sloid:77941",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 261.4479668294747
+          },
+          {
+            "routeId": "92-25-C-j26-1",
+            "fromId": "ch:1:sloid:94148",
+            "toId": "ch:1:sloid:77974",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 217.24117872039741
           },
           {
             "routeId": "92-27-B-j26-1",
@@ -1455,6 +2074,14 @@
             "metres": 223.74394880015407
           },
           {
+            "routeId": "92-362-j26-1",
+            "fromId": "ch:1:sloid:8874",
+            "toId": "ch:1:sloid:71463",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 285.4134290256206
+          },
+          {
             "routeId": "92-501-A-j26-1",
             "fromId": "ch:1:sloid:77987:0:01",
             "toId": "ch:1:sloid:10529:0:01",
@@ -1480,11 +2107,91 @@
           },
           {
             "routeId": "92-502-j26-1",
+            "fromId": "ch:1:sloid:72352:0:02",
+            "toId": "ch:1:sloid:598:0:01",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 208.2029385702381
+          },
+          {
+            "routeId": "92-502-j26-1",
+            "fromId": "ch:1:sloid:90420:0:01",
+            "toId": "ch:1:sloid:90424:0:01",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 293.7984838727867
+          },
+          {
+            "routeId": "92-502-j26-1",
+            "fromId": "ch:1:sloid:90420:0:02",
+            "toId": "ch:1:sloid:90423:0:02",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 198.53914526536119
+          },
+          {
+            "routeId": "92-502-j26-1",
             "fromId": "ch:1:sloid:78049:0:01",
             "toId": "ch:1:sloid:90290:0:01",
             "seconds": 0,
             "mode": "bus",
             "metres": 282.98318117330956
+          },
+          {
+            "routeId": "92-506-j26-1",
+            "fromId": "ch:1:sloid:78054:0:01",
+            "toId": "ch:1:sloid:78055:0:01",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 346.6766394968459
+          },
+          {
+            "routeId": "92-506-j26-1",
+            "fromId": "ch:1:sloid:78042:0:01",
+            "toId": "ch:1:sloid:78043:0:01",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 1394.8681969426825
+          },
+          {
+            "routeId": "92-506-j26-1",
+            "fromId": "ch:1:sloid:78043:0:01",
+            "toId": "ch:1:sloid:78042:0:01",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 1394.8681969426827
+          },
+          {
+            "routeId": "92-506-j26-1",
+            "fromId": "ch:1:sloid:78050:0:02",
+            "toId": "ch:1:sloid:78052:0:01",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 461.11353353211234
+          },
+          {
+            "routeId": "92-506-j26-1",
+            "fromId": "ch:1:sloid:78049:0:02",
+            "toId": "ch:1:sloid:78048:0:02",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 500.37933628279245
+          },
+          {
+            "routeId": "92-506-j26-1",
+            "fromId": "ch:1:sloid:78042:0:02",
+            "toId": "ch:1:sloid:78043:0:01",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 1413.171266456601
+          },
+          {
+            "routeId": "92-506-j26-1",
+            "fromId": "ch:1:sloid:78043:0:01",
+            "toId": "ch:1:sloid:78042:0:02",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 1413.171266456601
           },
           {
             "routeId": "92-507-j26-1",
@@ -1871,9 +2578,9 @@
         }
       },
       "pairFailureReasons": {
-        "disconnected-line": 518,
+        "disconnected-line": 469,
         "endpoint-gap": 665,
-        "implausible-detour": 40,
+        "implausible-detour": 28,
         "no-compatible-source-mode": 93
       },
       "validation": {
@@ -1896,23 +2603,23 @@
       },
       "coverage": {
         "trips": 5819,
-        "admittedTrips": 2385,
+        "admittedTrips": 2574,
         "scheduledTrips": 4711,
         "representativeHeadwayTrips": 1108,
-        "admittedScheduledTrips": 1277,
+        "admittedScheduledTrips": 1466,
         "admittedRepresentativeHeadwayTrips": 1108,
         "scheduledSegmentOccurrences": 68102,
-        "matchedScheduledSegmentOccurrences": 48719,
+        "matchedScheduledSegmentOccurrences": 49494,
         "segmentOccurrences": 69210,
-        "matchedSegmentOccurrences": 49827,
-        "admittedSegmentOccurrences": 16932,
+        "matchedSegmentOccurrences": 50602,
+        "admittedSegmentOccurrences": 20132,
         "directedPairs": 4467,
-        "matchedDirectedPairs": 2568,
+        "matchedDirectedPairs": 2611,
         "patterns": 777,
-        "completePatterns": 137,
-        "admittedPatterns": 137,
+        "completePatterns": 156,
+        "admittedPatterns": 156,
         "excludedTrips": {
-          "incomplete-directed-pattern": 3140,
+          "incomplete-directed-pattern": 2951,
           "night-network-excluded-by-source": 72,
           "no-compatible-source-mode": 222
         }
@@ -2019,12 +2726,12 @@
           "admittedScheduledTrips": 0,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 1052,
-          "matchedScheduledSegmentOccurrences": 808,
+          "matchedScheduledSegmentOccurrences": 864,
           "segmentOccurrences": 1052,
-          "matchedSegmentOccurrences": 808,
+          "matchedSegmentOccurrences": 864,
           "admittedSegmentOccurrences": 0,
           "directedPairs": 35,
-          "matchedDirectedPairs": 26,
+          "matchedDirectedPairs": 28,
           "patterns": 5,
           "completePatterns": 0,
           "admittedPatterns": 0,
@@ -2065,12 +2772,12 @@
           "admittedScheduledTrips": 0,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 1228,
-          "matchedScheduledSegmentOccurrences": 385,
+          "matchedScheduledSegmentOccurrences": 629,
           "segmentOccurrences": 1228,
-          "matchedSegmentOccurrences": 385,
+          "matchedSegmentOccurrences": 629,
           "admittedSegmentOccurrences": 0,
           "directedPairs": 93,
-          "matchedDirectedPairs": 24,
+          "matchedDirectedPairs": 38,
           "patterns": 18,
           "completePatterns": 0,
           "admittedPatterns": 0,
@@ -2105,23 +2812,23 @@
           "id": "793:bus",
           "agency": "Busbetrieb Olten-Gösgen-Gäu",
           "trips": 620,
-          "admittedTrips": 186,
+          "admittedTrips": 286,
           "scheduledTrips": 620,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 186,
+          "admittedScheduledTrips": 286,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 10678,
-          "matchedScheduledSegmentOccurrences": 9512,
+          "matchedScheduledSegmentOccurrences": 9612,
           "segmentOccurrences": 10678,
-          "matchedSegmentOccurrences": 9512,
-          "admittedSegmentOccurrences": 2765,
+          "matchedSegmentOccurrences": 9612,
+          "admittedSegmentOccurrences": 4329,
           "directedPairs": 515,
-          "matchedDirectedPairs": 334,
+          "matchedDirectedPairs": 338,
           "patterns": 49,
-          "completePatterns": 12,
-          "admittedPatterns": 12,
+          "completePatterns": 20,
+          "admittedPatterns": 20,
           "excludedTrips": {
-            "incomplete-directed-pattern": 410,
+            "incomplete-directed-pattern": 310,
             "night-network-excluded-by-source": 24
           }
         },
@@ -2129,23 +2836,23 @@
           "id": "801:bus",
           "agency": "PostAuto AG",
           "trips": 961,
-          "admittedTrips": 376,
+          "admittedTrips": 378,
           "scheduledTrips": 961,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 376,
+          "admittedScheduledTrips": 378,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 15377,
-          "matchedScheduledSegmentOccurrences": 13236,
+          "matchedScheduledSegmentOccurrences": 13430,
           "segmentOccurrences": 15377,
-          "matchedSegmentOccurrences": 13236,
-          "admittedSegmentOccurrences": 5035,
+          "matchedSegmentOccurrences": 13430,
+          "admittedSegmentOccurrences": 5041,
           "directedPairs": 1274,
-          "matchedDirectedPairs": 1057,
+          "matchedDirectedPairs": 1069,
           "patterns": 167,
-          "completePatterns": 61,
-          "admittedPatterns": 61,
+          "completePatterns": 63,
+          "admittedPatterns": 63,
           "excludedTrips": {
-            "incomplete-directed-pattern": 578,
+            "incomplete-directed-pattern": 576,
             "night-network-excluded-by-source": 7
           }
         },
@@ -2223,46 +2930,46 @@
           "id": "850:bus",
           "agency": "Autobusbetrieb RBS",
           "trips": 141,
-          "admittedTrips": 0,
+          "admittedTrips": 26,
           "scheduledTrips": 141,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 0,
+          "admittedScheduledTrips": 26,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 1936,
-          "matchedScheduledSegmentOccurrences": 1673,
+          "matchedScheduledSegmentOccurrences": 1725,
           "segmentOccurrences": 1936,
-          "matchedSegmentOccurrences": 1673,
-          "admittedSegmentOccurrences": 0,
+          "matchedSegmentOccurrences": 1725,
+          "admittedSegmentOccurrences": 247,
           "directedPairs": 112,
-          "matchedDirectedPairs": 95,
+          "matchedDirectedPairs": 99,
           "patterns": 15,
-          "completePatterns": 0,
-          "admittedPatterns": 0,
+          "completePatterns": 2,
+          "admittedPatterns": 2,
           "excludedTrips": {
-            "incomplete-directed-pattern": 141
+            "incomplete-directed-pattern": 115
           }
         },
         {
           "id": "883:bus",
           "agency": "Busbetrieb Solothurn und Umgebung",
           "trips": 424,
-          "admittedTrips": 186,
+          "admittedTrips": 222,
           "scheduledTrips": 424,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 186,
+          "admittedScheduledTrips": 222,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 8862,
-          "matchedScheduledSegmentOccurrences": 8045,
+          "matchedScheduledSegmentOccurrences": 8149,
           "segmentOccurrences": 8862,
-          "matchedSegmentOccurrences": 8045,
-          "admittedSegmentOccurrences": 3583,
+          "matchedSegmentOccurrences": 8149,
+          "admittedSegmentOccurrences": 4317,
           "directedPairs": 620,
-          "matchedDirectedPairs": 335,
+          "matchedDirectedPairs": 340,
           "patterns": 47,
-          "completePatterns": 13,
-          "admittedPatterns": 13,
+          "completePatterns": 18,
+          "admittedPatterns": 18,
           "excludedTrips": {
-            "incomplete-directed-pattern": 219,
+            "incomplete-directed-pattern": 183,
             "night-network-excluded-by-source": 19
           }
         },
@@ -2291,41 +2998,41 @@
           "id": "894:bus",
           "agency": "Busbetrieb Grenchen und Umgebung",
           "trips": 282,
-          "admittedTrips": 225,
+          "admittedTrips": 250,
           "scheduledTrips": 282,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 225,
+          "admittedScheduledTrips": 250,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 4175,
-          "matchedScheduledSegmentOccurrences": 4118,
+          "matchedScheduledSegmentOccurrences": 4143,
           "segmentOccurrences": 4175,
-          "matchedSegmentOccurrences": 4118,
-          "admittedSegmentOccurrences": 2969,
+          "matchedSegmentOccurrences": 4143,
+          "admittedSegmentOccurrences": 3618,
           "directedPairs": 184,
-          "matchedDirectedPairs": 180,
+          "matchedDirectedPairs": 182,
           "patterns": 22,
-          "completePatterns": 17,
-          "admittedPatterns": 17,
+          "completePatterns": 19,
+          "admittedPatterns": 19,
           "excludedTrips": {
-            "incomplete-directed-pattern": 57
+            "incomplete-directed-pattern": 32
           }
         }
       ],
       "carryInTrips": 359,
-      "admittedCarryInTrips": 84,
-      "admittedOutsideCantonPlatforms": 161,
+      "admittedCarryInTrips": 88,
+      "admittedOutsideCantonPlatforms": 171,
       "directedPatternChecks": {
         "directionIds": [
           "0",
           "1"
         ],
         "patternsRevisitingPlatforms": 18,
-        "admittedPatternsRevisitingPlatforms": 5,
+        "admittedPatternsRevisitingPlatforms": 7,
         "nightTrips": 72,
         "admittedNightTrips": 0
       },
       "timingResolution": {
-        "zeroDurationSegmentOccurrences": 999,
+        "zeroDurationSegmentOccurrences": 1257,
         "zeroDurationDirectedPairs": [
           {
             "routeId": "92-1-L-j26-1",
@@ -2416,6 +3123,14 @@
             "metres": 223.74394880015407
           },
           {
+            "routeId": "92-362-j26-1",
+            "fromId": "ch:1:sloid:8874",
+            "toId": "ch:1:sloid:71463",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 285.4134290256206
+          },
+          {
             "routeId": "92-501-A-j26-1",
             "fromId": "ch:1:sloid:77987:0:01",
             "toId": "ch:1:sloid:10529:0:01",
@@ -2438,6 +3153,102 @@
             "seconds": 0,
             "mode": "bus",
             "metres": 340.540726049051
+          },
+          {
+            "routeId": "92-502-j26-1",
+            "fromId": "ch:1:sloid:72352:0:02",
+            "toId": "ch:1:sloid:598:0:01",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 208.2029385702381
+          },
+          {
+            "routeId": "92-502-j26-1",
+            "fromId": "ch:1:sloid:90420:0:01",
+            "toId": "ch:1:sloid:90424:0:01",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 293.7984838727867
+          },
+          {
+            "routeId": "92-502-j26-1",
+            "fromId": "ch:1:sloid:78049:0:01",
+            "toId": "ch:1:sloid:90290:0:01",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 282.98318117330956
+          },
+          {
+            "routeId": "92-502-j26-1",
+            "fromId": "ch:1:sloid:90410:0:01",
+            "toId": "ch:1:sloid:90405:0:01",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 475.8458027150997
+          },
+          {
+            "routeId": "92-502-j26-1",
+            "fromId": "ch:1:sloid:90420:0:02",
+            "toId": "ch:1:sloid:90423:0:02",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 198.53914526536119
+          },
+          {
+            "routeId": "92-506-j26-1",
+            "fromId": "ch:1:sloid:78054:0:01",
+            "toId": "ch:1:sloid:78055:0:01",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 346.6766394968459
+          },
+          {
+            "routeId": "92-506-j26-1",
+            "fromId": "ch:1:sloid:78050:0:02",
+            "toId": "ch:1:sloid:78052:0:01",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 461.11353353211234
+          },
+          {
+            "routeId": "92-506-j26-1",
+            "fromId": "ch:1:sloid:78042:0:01",
+            "toId": "ch:1:sloid:78043:0:01",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 1394.8681969426825
+          },
+          {
+            "routeId": "92-506-j26-1",
+            "fromId": "ch:1:sloid:78043:0:01",
+            "toId": "ch:1:sloid:78042:0:01",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 1394.8681969426827
+          },
+          {
+            "routeId": "92-506-j26-1",
+            "fromId": "ch:1:sloid:78049:0:02",
+            "toId": "ch:1:sloid:78048:0:02",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 500.37933628279245
+          },
+          {
+            "routeId": "92-506-j26-1",
+            "fromId": "ch:1:sloid:78042:0:02",
+            "toId": "ch:1:sloid:78043:0:01",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 1413.171266456601
+          },
+          {
+            "routeId": "92-506-j26-1",
+            "fromId": "ch:1:sloid:78043:0:01",
+            "toId": "ch:1:sloid:78042:0:02",
+            "seconds": 0,
+            "mode": "bus",
+            "metres": 1413.171266456601
           },
           {
             "routeId": "92-507-j26-1",
@@ -2840,9 +3651,9 @@
         }
       },
       "pairFailureReasons": {
-        "disconnected-line": 451,
+        "disconnected-line": 417,
         "endpoint-gap": 679,
-        "implausible-detour": 25,
+        "implausible-detour": 16,
         "night-network-excluded-by-source": 651,
         "no-compatible-source-mode": 93
       },

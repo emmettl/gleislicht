@@ -1,6 +1,6 @@
 # Solothurn canton transit study
 
-Built from the pinned 2026 timetable and the cantonal public-transport network. **All 193 canton-serving route records across 19 GTFS agency identities and all ten districts are inventoried. 50 route records contribute admitted journeys.** This is a whole-canton census with partial geometry admission, not complete service coverage.
+Built from the pinned 2026 timetable and the cantonal public-transport network. **All 193 canton-serving route records across 19 GTFS agency identities and all ten districts are inventoried. 55 route records contribute admitted journeys.** This is a whole-canton census with partial geometry admission, not complete service coverage.
 
 Start with the [complete route admission/exclusion inventory](SOLOTHURN-ROUTE-INVENTORY.md), [machine audit](../data/solothurn-audit/summary.json) and [regional feed index](../public/data/solothurn-region/index.json). The original [national source inventory](SWISS-TRANSIT-SOURCE-INVENTORY.md#so) explains source discovery.
 
@@ -19,17 +19,17 @@ The 42 inactive route records remain in the annual inventory. “Annual” means
 | Civil-day journey instances | 7'156 | 5'819 |
 | Scheduled instances | 6'078 | 4'711 |
 | Representative headway instances | 1'078 | 1'108 |
-| Admitted scheduled instances | 1'645 | 1'277 |
+| Admitted scheduled instances | 2'064 | 1'466 |
 | Admitted representative headway instances | 1'078 | 1'108 |
-| Total admitted instances | 2'723 | 2'385 |
+| Total admitted instances | 3'142 | 2'574 |
 | Distinct directed patterns | 921 | 777 |
-| Admitted complete patterns | 177 | 137 |
-| Matched route-specific directed stop pairs | 2'943 / 4'259 (69.1%) | 2'568 / 4'467 (57.5%) |
-| Matched scheduled segment occurrences | 76'945 / 97'358 (79.0%) | 48'719 / 68'102 (71.5%) |
-| Matched all segment occurrences | 78'023 / 98'436 (79.3%) | 49'827 / 69'210 (72.0%) |
-| Segment occurrences in admitted whole journeys | 22'510 | 16'932 |
-| Previous-day carry-in / admitted | 149 / 27 | 359 / 84 |
-| Patterns revisiting a platform / admitted | 21 / 3 | 18 / 5 |
+| Admitted complete patterns | 223 | 156 |
+| Matched route-specific directed stop pairs | 3'004 / 4'259 (70.5%) | 2'611 / 4'467 (58.5%) |
+| Matched scheduled segment occurrences | 78'023 / 97'358 (80.1%) | 49'494 / 68'102 (72.7%) |
+| Matched all segment occurrences | 79'101 / 98'436 (80.4%) | 50'602 / 69'210 (73.1%) |
+| Segment occurrences in admitted whole journeys | 30'649 | 20'132 |
+| Previous-day carry-in / admitted | 149 / 32 | 359 / 88 |
+| Patterns revisiting a platform / admitted | 21 / 5 | 18 / 7 |
 | Explicit night journeys / admitted | 0 / 0 | 72 / 0 |
 
 Pattern identity includes the GTFS route ID, direction_id and the full ordered original platform IDs, including repeats and out-of-canton calls. Both directions 0 and 1 occur. There are **343 shared patterns**, **578 Friday-only** and **434 Sunday-only** patterns. Exact per-pattern matched masks, decisions and counts are retained in the [Friday audit](../data/solothurn-audit/2026-09-04.json) and [Sunday audit](../data/solothurn-audit/2026-09-06.json).
@@ -38,22 +38,22 @@ Every admitted journey keeps every original source call, has an oriented geometr
 
 Weissenstein accounts for all 1'078 / 1'108 representative exactTimes=0 headway instances. These are not that many observed cabins or exact scheduled departures. All motion is scheduled interpolation, not GPS or realtime observations.
 
-Original GTFS times can place distinct calls in the same minute. The admitted feeds retain **1'305 / 999 zero-duration segment occurrences**. These cannot imply finite measured speed; animation can jump at the common timestamp. The audit lists the affected directed pairs and nominal positive-duration speeds. Geometry admission is not certification of physical vehicle speed, and no sub-minute times are fabricated.
+Original GTFS times can place distinct calls in the same minute. The admitted feeds retain **1'901 / 1'257 zero-duration segment occurrences**. These cannot imply finite measured speed; animation can jump at the common timestamp. The audit lists the affected directed pairs and nominal positive-duration speeds. Geometry admission is not certification of physical vehicle speed, and no sub-minute times are fabricated.
 
 ## Entire-canton district coverage
 
 | District | Called GTFS platforms | Annual route records | Routes calling district in feed | Platforms called in feed |
 | --- | --- | --- | --- | --- |
-| Lebern | 210 | 52 | 17 | 137 |
+| Lebern | 210 | 52 | 18 | 152 |
 | Thierstein | 153 | 9 | 7 | 93 |
-| Dorneck | 163 | 10 | 1 | 13 |
+| Dorneck | 163 | 10 | 2 | 24 |
 | Gäu | 134 | 29 | 3 | 8 |
-| Wasseramt | 94 | 33 | 10 | 52 |
-| Gösgen | 161 | 13 | 6 | 75 |
+| Wasseramt | 94 | 33 | 12 | 70 |
+| Gösgen | 161 | 13 | 7 | 91 |
 | Thal | 129 | 7 | 5 | 116 |
-| Solothurn | 69 | 53 | 12 | 39 |
-| Olten | 354 | 94 | 8 | 47 |
-| Bucheggberg | 108 | 10 | 5 | 40 |
+| Solothurn | 69 | 53 | 13 | 39 |
+| Olten | 354 | 94 | 9 | 66 |
+| Bucheggberg | 108 | 10 | 6 | 44 |
 
 District route counts overlap because one route may serve multiple districts. Feed columns require an actually admitted journey calling the district; admission elsewhere on the same route does not count. The source polygon, not town-name matching, assigns districts. The census discloses 13 GTFS records within 10 metres of the boundary, including both sides at Salhöhe, Dornach Bahnhof, Bärschwil Station, Nuglar and Erlinsbach. They are reported without silently buffering the canton. The approximate coordinate transform has metre-level precision; this is a disclosed membership sensitivity, not a survey-accuracy claim.
 
@@ -63,11 +63,11 @@ The retained source has **3,951 MultiLineString network records and 775 point st
 
 | Source mode → adapter | Source records | Parts | Graph vertices | Graph edges | Components | Tunnel records |
 | --- | --- | --- | --- | --- | --- | --- |
-| Bus → bus | 3612 | 3634 | 32045 | 31988 | 121 | 0 |
-| Bahn → rail | 338 | 343 | 8114 | 8087 | 30 | 2 |
+| Bus → bus | 3612 | 3634 | 32000 | 31988 | 101 | 0 |
+| Bahn → rail | 338 | 343 | 8113 | 8087 | 29 | 2 |
 | Seilbahn → cableway | 1 | 1 | 3 | 2 | 1 | 0 |
 
-The adapter creates one graph per supported mode. Exact original LV95 part endpoints connect; nearby endpoints are never stitched. Interior crossings do not create junctions, so stacked paths and tunnels are not joined midway. The original tunnel flags are retained and tunnel endpoints may join surface infrastructure. This conservative topology can exclude real connections; the component counts are measured graph components, not claims about operational networks.
+The adapter creates one graph per supported mode. Exact original LV95 part endpoints connect, including where a non-tunnel endpoint exactly equals another non-tunnel feature’s interior vertex. Nearby endpoints are never stitched. Interior-only crossings do not create junctions, and tunnel interiors are not joined to surface paths. The original tunnel flags are retained and tunnel endpoints may join surface infrastructure. This conservative topology can exclude real connections; the component counts are measured graph components, not claims about operational networks.
 
 Paths follow shortest bidirectional source centrelines between projected GTFS calls. Retry projections must be within 5 metres of the nearest projection and only resolve disconnection/detour failures. No route/operator association is inferred from a segment ID. The [network inventory](../data/solothurn-audit/source-network.json) retains all source feature identities, mode, tunnel, part/vertex counts and graph inclusion status. Graph inclusion is not measured use of every segment or proof of route alignment.
 
@@ -81,15 +81,15 @@ The path must be no longer than the greater of the ratio limit and absolute allo
 
 | Journey exclusion | Friday | Sunday |
 | --- | --- | --- |
-| incomplete-directed-pattern | 4'228 | 3'140 |
+| incomplete-directed-pattern | 3'809 | 2'951 |
 | night-network-excluded-by-source | 0 | 72 |
 | no-compatible-source-mode | 205 | 222 |
 
 | Unmatched directed-pair reason | Friday | Sunday |
 | --- | --- | --- |
-| disconnected-line | 518 | 451 |
+| disconnected-line | 469 | 417 |
 | endpoint-gap | 665 | 679 |
-| implausible-detour | 40 | 25 |
+| implausible-detour | 28 | 16 |
 | night-network-excluded-by-source | 0 | 651 |
 | no-compatible-source-mode | 93 | 93 |
 
@@ -98,6 +98,17 @@ Night services are explicitly absent from the publisher's dataset. GTFS type 705
 Cross-canton journeys often extend beyond the graph or encounter disconnected parts. Endpoint gaps and disconnected patterns remain unresolved. Neither source topology nor shortest-path plausibility certifies road one-way compliance, a particular railway gauge/running track, bridge/tunnel engineering, the exact operator itinerary or temporary diversions. Further official route evidence is needed for that stronger claim.
 
 The [source-stop inventory](../data/solothurn-audit/source-stops.json) retains every source stop, normalizes five-digit DiDok with the Swiss 8500000 prefix and joins the GTFS didok field exactly. It compares canton-contained GTFS stops only: 743 didok-matches-called-canton-stop; 31 no-canton-stop-didok-match; 1 didok-matches-uncalled-canton-stop. 24 source stops lie outside the canton. A missing canton-only match does not establish missing national service. The stop layer is an independent reconciliation aid; it does not replace original GTFS call coordinates.
+
+## Exact source junction follow-up
+
+The initial endpoint-only graph left genuine source-vertex contacts disconnected. The follow-up nodes **42 bus locations and one rail location** where one non-tunnel feature ends exactly at an interior vertex of another. These represent 45 bus interior-vertex references and one rail reference. No new edge or coordinate is added; interior-only crossings, near misses and tunnel interiors remain separate. Bus graph components fall from 121 to 101, and rail components from 30 to 29.
+
+| Date | Previously admitted journeys | Now admitted journeys | Additional complete patterns | Previously admitted patterns lost |
+| --- | --- | --- | --- | --- |
+| 2026-09-04 | 2723 | 3142 | 46 | 0 |
+| 2026-09-06 | 2385 | 2574 | 19 | 0 |
+
+The [topology review](../data/solothurn-audit/topology-review.json) preserves each exact LV95 junction, endpoint/interior feature IDs, before/after denominators and every newly admitted complete stop chain. The [baseline](../data/solothurn-topology-baseline.json) identifies the original committed source hashes and admitted patterns. Rebuild and checking assert that source edge counts are unchanged and every previously admitted pattern remains admitted. This repairs network representation; it does not change the documented limits on route itinerary and physical-direction certainty.
 
 ## Sources, dates and attribution
 

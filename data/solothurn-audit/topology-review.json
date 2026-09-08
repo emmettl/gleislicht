@@ -1,0 +1,2364 @@
+{
+  "baselineCommit": "b06af77",
+  "sourceHashes": {
+    "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+    "source": "5f11586ad156f763d7b1b9a6ac05f14dd29865ca03bf5a1d42195a7da8c331e8"
+  },
+  "rule": "Exact non-tunnel endpoint/interior vertex noding; no added source edges or coordinates",
+  "days": [
+    {
+      "date": "2026-09-04",
+      "before": {
+        "trips": 7156,
+        "admittedTrips": 2723,
+        "scheduledTrips": 6078,
+        "representativeHeadwayTrips": 1078,
+        "admittedScheduledTrips": 1645,
+        "admittedRepresentativeHeadwayTrips": 1078,
+        "scheduledSegmentOccurrences": 97358,
+        "matchedScheduledSegmentOccurrences": 76945,
+        "segmentOccurrences": 98436,
+        "matchedSegmentOccurrences": 78023,
+        "admittedSegmentOccurrences": 22510,
+        "directedPairs": 4259,
+        "matchedDirectedPairs": 2943,
+        "patterns": 921,
+        "completePatterns": 177,
+        "admittedPatterns": 177,
+        "excludedTrips": {
+          "incomplete-directed-pattern": 4228,
+          "no-compatible-source-mode": 205
+        }
+      },
+      "after": {
+        "trips": 7156,
+        "admittedTrips": 3142,
+        "scheduledTrips": 6078,
+        "representativeHeadwayTrips": 1078,
+        "admittedScheduledTrips": 2064,
+        "admittedRepresentativeHeadwayTrips": 1078,
+        "scheduledSegmentOccurrences": 97358,
+        "matchedScheduledSegmentOccurrences": 78023,
+        "segmentOccurrences": 98436,
+        "matchedSegmentOccurrences": 79101,
+        "admittedSegmentOccurrences": 30649,
+        "directedPairs": 4259,
+        "matchedDirectedPairs": 3004,
+        "patterns": 921,
+        "completePatterns": 223,
+        "admittedPatterns": 223,
+        "excludedTrips": {
+          "incomplete-directed-pattern": 3809,
+          "no-compatible-source-mode": 205
+        }
+      },
+      "lostAdmittedPatterns": [],
+      "newlyAdmittedPatterns": [
+        {
+          "id": "d9aed9a6ac233d362880d4e8",
+          "routeId": "92-20-E-j26-1",
+          "line": "20",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:77945",
+            "ch:1:sloid:94123",
+            "ch:1:sloid:94143",
+            "ch:1:sloid:94116",
+            "ch:1:sloid:77943",
+            "ch:1:sloid:94137",
+            "ch:1:sloid:94134",
+            "ch:1:sloid:77913",
+            "ch:1:sloid:94121",
+            "ch:1:sloid:94117",
+            "ch:1:sloid:77914:0:1",
+            "ch:1:sloid:89214",
+            "ch:1:sloid:89213",
+            "ch:1:sloid:94110",
+            "ch:1:sloid:94138",
+            "ch:1:sloid:94132",
+            "ch:1:sloid:94125",
+            "ch:1:sloid:94126",
+            "ch:1:sloid:77964",
+            "ch:1:sloid:10223",
+            "ch:1:sloid:87445",
+            "ch:1:sloid:94092",
+            "ch:1:sloid:88209",
+            "ch:1:sloid:88208",
+            "ch:1:sloid:88207"
+          ],
+          "admittedTrips": 31
+        },
+        {
+          "id": "4fd9eed3747664fd79cad6f2",
+          "routeId": "92-20-E-j26-1",
+          "line": "20",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:88207",
+            "ch:1:sloid:88208",
+            "ch:1:sloid:88209",
+            "ch:1:sloid:87445",
+            "ch:1:sloid:94092",
+            "ch:1:sloid:10223",
+            "ch:1:sloid:77964",
+            "ch:1:sloid:94126",
+            "ch:1:sloid:94125",
+            "ch:1:sloid:94132",
+            "ch:1:sloid:94138",
+            "ch:1:sloid:94110",
+            "ch:1:sloid:89213",
+            "ch:1:sloid:89214",
+            "ch:1:sloid:77914:0:2",
+            "ch:1:sloid:94117",
+            "ch:1:sloid:94121",
+            "ch:1:sloid:77913",
+            "ch:1:sloid:94134",
+            "ch:1:sloid:94137",
+            "ch:1:sloid:77943",
+            "ch:1:sloid:94116",
+            "ch:1:sloid:77944",
+            "ch:1:sloid:94123",
+            "ch:1:sloid:77945"
+          ],
+          "admittedTrips": 30
+        },
+        {
+          "id": "adcc6c6cf580a8bfdbd173c6",
+          "routeId": "92-22-E-j26-1",
+          "line": "22",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:78076",
+            "ch:1:sloid:89882",
+            "ch:1:sloid:89881",
+            "ch:1:sloid:89880",
+            "ch:1:sloid:77969",
+            "ch:1:sloid:89879",
+            "ch:1:sloid:89878",
+            "ch:1:sloid:77971",
+            "ch:1:sloid:89877",
+            "ch:1:sloid:89074",
+            "ch:1:sloid:89876",
+            "ch:1:sloid:89875",
+            "ch:1:sloid:77966",
+            "ch:1:sloid:77965",
+            "ch:1:sloid:87445",
+            "ch:1:sloid:88209",
+            "ch:1:sloid:88208",
+            "ch:1:sloid:88207",
+            "ch:1:sloid:93864",
+            "ch:1:sloid:94096",
+            "ch:1:sloid:77963",
+            "ch:1:sloid:77962",
+            "ch:1:sloid:94117",
+            "ch:1:sloid:77914:0:2",
+            "ch:1:sloid:94146",
+            "ch:1:sloid:94134",
+            "ch:1:sloid:94137",
+            "ch:1:sloid:77943",
+            "ch:1:sloid:77942",
+            "ch:1:sloid:77941",
+            "ch:1:sloid:77972",
+            "ch:1:sloid:94141",
+            "ch:1:sloid:94109"
+          ],
+          "admittedTrips": 19
+        },
+        {
+          "id": "f91175e4ee7143a72a4d4370",
+          "routeId": "92-22-E-j26-1",
+          "line": "22",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:89878",
+            "ch:1:sloid:89879",
+            "ch:1:sloid:77969",
+            "ch:1:sloid:78076"
+          ],
+          "admittedTrips": 1
+        },
+        {
+          "id": "161f41993083e5220ee14300",
+          "routeId": "92-22-E-j26-1",
+          "line": "22",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:94109",
+            "ch:1:sloid:94142",
+            "ch:1:sloid:94141",
+            "ch:1:sloid:77972",
+            "ch:1:sloid:77941",
+            "ch:1:sloid:77942",
+            "ch:1:sloid:77943",
+            "ch:1:sloid:94137",
+            "ch:1:sloid:94134",
+            "ch:1:sloid:94146",
+            "ch:1:sloid:77914:0:1",
+            "ch:1:sloid:94117",
+            "ch:1:sloid:77962",
+            "ch:1:sloid:77963",
+            "ch:1:sloid:94115",
+            "ch:1:sloid:94096",
+            "ch:1:sloid:93864",
+            "ch:1:sloid:88207",
+            "ch:1:sloid:88208",
+            "ch:1:sloid:88209",
+            "ch:1:sloid:87445",
+            "ch:1:sloid:77965",
+            "ch:1:sloid:77966",
+            "ch:1:sloid:89875",
+            "ch:1:sloid:89876",
+            "ch:1:sloid:89074",
+            "ch:1:sloid:89877",
+            "ch:1:sloid:77971",
+            "ch:1:sloid:89878",
+            "ch:1:sloid:89879",
+            "ch:1:sloid:77969",
+            "ch:1:sloid:89880",
+            "ch:1:sloid:89881",
+            "ch:1:sloid:89882",
+            "ch:1:sloid:78076"
+          ],
+          "admittedTrips": 20
+        },
+        {
+          "id": "387058d5db32c59a1dceb5f5",
+          "routeId": "92-22-E-j26-1",
+          "line": "22",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:89882",
+            "ch:1:sloid:89881",
+            "ch:1:sloid:89880",
+            "ch:1:sloid:77969",
+            "ch:1:sloid:89879",
+            "ch:1:sloid:89878",
+            "ch:1:sloid:77971",
+            "ch:1:sloid:89877",
+            "ch:1:sloid:89074",
+            "ch:1:sloid:89876",
+            "ch:1:sloid:89875",
+            "ch:1:sloid:77966",
+            "ch:1:sloid:77965",
+            "ch:1:sloid:87445"
+          ],
+          "admittedTrips": 1
+        },
+        {
+          "id": "8cfa26b47f1845f1b35b7e98",
+          "routeId": "92-22-E-j26-1",
+          "line": "22",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:78076",
+            "ch:1:sloid:89882",
+            "ch:1:sloid:89881",
+            "ch:1:sloid:89880",
+            "ch:1:sloid:77969",
+            "ch:1:sloid:89879",
+            "ch:1:sloid:89878",
+            "ch:1:sloid:77971",
+            "ch:1:sloid:89877",
+            "ch:1:sloid:89074",
+            "ch:1:sloid:89876",
+            "ch:1:sloid:89875",
+            "ch:1:sloid:77966",
+            "ch:1:sloid:77965",
+            "ch:1:sloid:87445"
+          ],
+          "admittedTrips": 1
+        },
+        {
+          "id": "0b785f05c0804373822ba2de",
+          "routeId": "92-24-B-j26-1",
+          "line": "24",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:95606:0:01",
+            "ch:1:sloid:87618",
+            "ch:1:sloid:87626",
+            "ch:1:sloid:87898",
+            "ch:1:sloid:87630",
+            "ch:1:sloid:87628",
+            "ch:1:sloid:87631",
+            "ch:1:sloid:87629",
+            "ch:1:sloid:77949",
+            "ch:1:sloid:77947",
+            "ch:1:sloid:89215",
+            "ch:1:sloid:77946",
+            "ch:1:sloid:77945",
+            "ch:1:sloid:94123",
+            "ch:1:sloid:94143",
+            "ch:1:sloid:94116",
+            "ch:1:sloid:77943",
+            "ch:1:sloid:94137",
+            "ch:1:sloid:94134",
+            "ch:1:sloid:77914:0:1",
+            "ch:1:sloid:89214",
+            "ch:1:sloid:89213",
+            "ch:1:sloid:94110",
+            "ch:1:sloid:94138",
+            "ch:1:sloid:94132",
+            "ch:1:sloid:94125",
+            "ch:1:sloid:94126",
+            "ch:1:sloid:77964"
+          ],
+          "admittedTrips": 12
+        },
+        {
+          "id": "e5a3727c35f147d6bccb96c7",
+          "routeId": "92-24-B-j26-1",
+          "line": "24",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:77914:0:2",
+            "ch:1:sloid:94134",
+            "ch:1:sloid:94137",
+            "ch:1:sloid:77943",
+            "ch:1:sloid:94116",
+            "ch:1:sloid:77944",
+            "ch:1:sloid:94123",
+            "ch:1:sloid:77945",
+            "ch:1:sloid:77946",
+            "ch:1:sloid:89215",
+            "ch:1:sloid:77947",
+            "ch:1:sloid:77949",
+            "ch:1:sloid:87629",
+            "ch:1:sloid:87631",
+            "ch:1:sloid:87628",
+            "ch:1:sloid:87630",
+            "ch:1:sloid:87898",
+            "ch:1:sloid:87626",
+            "ch:1:sloid:87618",
+            "ch:1:sloid:87625",
+            "ch:1:sloid:95606:0:01"
+          ],
+          "admittedTrips": 1
+        },
+        {
+          "id": "0a7805644c976e885fd55e5c",
+          "routeId": "92-24-B-j26-1",
+          "line": "24",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:77964",
+            "ch:1:sloid:94126",
+            "ch:1:sloid:94125",
+            "ch:1:sloid:94132",
+            "ch:1:sloid:94138",
+            "ch:1:sloid:94110",
+            "ch:1:sloid:89213",
+            "ch:1:sloid:89214",
+            "ch:1:sloid:77914:0:2",
+            "ch:1:sloid:94134",
+            "ch:1:sloid:94137",
+            "ch:1:sloid:77943",
+            "ch:1:sloid:94116",
+            "ch:1:sloid:77944",
+            "ch:1:sloid:94123",
+            "ch:1:sloid:77945",
+            "ch:1:sloid:77946",
+            "ch:1:sloid:89215",
+            "ch:1:sloid:77947",
+            "ch:1:sloid:77949",
+            "ch:1:sloid:87629",
+            "ch:1:sloid:87631",
+            "ch:1:sloid:87628",
+            "ch:1:sloid:87630",
+            "ch:1:sloid:87898",
+            "ch:1:sloid:87626",
+            "ch:1:sloid:87618",
+            "ch:1:sloid:87625",
+            "ch:1:sloid:95606:0:01"
+          ],
+          "admittedTrips": 11
+        },
+        {
+          "id": "aa1c221c431ccf765692c394",
+          "routeId": "92-25-C-j26-1",
+          "line": "25",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:88207",
+            "ch:1:sloid:88208",
+            "ch:1:sloid:88209",
+            "ch:1:sloid:94095",
+            "ch:1:sloid:94090",
+            "ch:1:sloid:94115",
+            "ch:1:sloid:77963",
+            "ch:1:sloid:77962",
+            "ch:1:sloid:94117",
+            "ch:1:sloid:77914:0:2",
+            "ch:1:sloid:94146",
+            "ch:1:sloid:94134",
+            "ch:1:sloid:94137",
+            "ch:1:sloid:77943",
+            "ch:1:sloid:77942",
+            "ch:1:sloid:77941",
+            "ch:1:sloid:77972",
+            "ch:1:sloid:94141",
+            "ch:1:sloid:94109",
+            "ch:1:sloid:94148",
+            "ch:1:sloid:77974"
+          ],
+          "admittedTrips": 1
+        },
+        {
+          "id": "6f9578a99791545326088094",
+          "routeId": "92-25-C-j26-1",
+          "line": "25",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:93842",
+            "ch:1:sloid:94094",
+            "ch:1:sloid:94098",
+            "ch:1:sloid:88207",
+            "ch:1:sloid:88208",
+            "ch:1:sloid:88209",
+            "ch:1:sloid:94095",
+            "ch:1:sloid:94090",
+            "ch:1:sloid:94115",
+            "ch:1:sloid:77963",
+            "ch:1:sloid:77962",
+            "ch:1:sloid:94117",
+            "ch:1:sloid:77914:0:2",
+            "ch:1:sloid:94146",
+            "ch:1:sloid:94134",
+            "ch:1:sloid:94137",
+            "ch:1:sloid:77943",
+            "ch:1:sloid:77942",
+            "ch:1:sloid:77941",
+            "ch:1:sloid:77972",
+            "ch:1:sloid:94141",
+            "ch:1:sloid:94109",
+            "ch:1:sloid:94148",
+            "ch:1:sloid:77974"
+          ],
+          "admittedTrips": 29
+        },
+        {
+          "id": "d4a1b3ba4e7f27a3d95744c6",
+          "routeId": "92-2-K-j26-1",
+          "line": "2",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:72373:0:4",
+            "ch:1:sloid:78090",
+            "ch:1:sloid:453",
+            "ch:1:sloid:78091",
+            "ch:1:sloid:78092",
+            "ch:1:sloid:78093",
+            "ch:1:sloid:89216",
+            "ch:1:sloid:78087",
+            "ch:1:sloid:89239",
+            "ch:1:sloid:88331",
+            "ch:1:sloid:88131",
+            "ch:1:sloid:88130",
+            "ch:1:sloid:88129",
+            "ch:1:sloid:91787"
+          ],
+          "admittedTrips": 2
+        },
+        {
+          "id": "244eeb774b1d79c03b93b42e",
+          "routeId": "92-2-K-j26-1",
+          "line": "2",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:494:0:1",
+            "ch:1:sloid:88590",
+            "ch:1:sloid:72386",
+            "ch:1:sloid:72373:0:4",
+            "ch:1:sloid:78090",
+            "ch:1:sloid:453",
+            "ch:1:sloid:78091",
+            "ch:1:sloid:78092",
+            "ch:1:sloid:78093",
+            "ch:1:sloid:89216",
+            "ch:1:sloid:78087",
+            "ch:1:sloid:89239",
+            "ch:1:sloid:88331",
+            "ch:1:sloid:88131"
+          ],
+          "admittedTrips": 16
+        },
+        {
+          "id": "87e7464a45d21cd228f7d904",
+          "routeId": "92-2-K-j26-1",
+          "line": "2",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:88130",
+            "ch:1:sloid:88131",
+            "ch:1:sloid:88331",
+            "ch:1:sloid:89239",
+            "ch:1:sloid:78087",
+            "ch:1:sloid:89216",
+            "ch:1:sloid:78093",
+            "ch:1:sloid:78092",
+            "ch:1:sloid:78091",
+            "ch:1:sloid:453",
+            "ch:1:sloid:78090",
+            "ch:1:sloid:72373:0:2"
+          ],
+          "admittedTrips": 1
+        },
+        {
+          "id": "b01e88b2b5ab19d98878ed80",
+          "routeId": "92-2-K-j26-1",
+          "line": "2",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:88131",
+            "ch:1:sloid:88331",
+            "ch:1:sloid:89239",
+            "ch:1:sloid:78087",
+            "ch:1:sloid:89216",
+            "ch:1:sloid:78093",
+            "ch:1:sloid:78092",
+            "ch:1:sloid:78091",
+            "ch:1:sloid:453",
+            "ch:1:sloid:78090",
+            "ch:1:sloid:72373:0:2",
+            "ch:1:sloid:72386",
+            "ch:1:sloid:88590",
+            "ch:1:sloid:494:0:2"
+          ],
+          "admittedTrips": 13
+        },
+        {
+          "id": "bb1c3b14e99f02a0ade008bb",
+          "routeId": "92-2-K-j26-1",
+          "line": "2",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:5108",
+            "ch:1:sloid:88334",
+            "ch:1:sloid:88131",
+            "ch:1:sloid:88331",
+            "ch:1:sloid:89239",
+            "ch:1:sloid:78087",
+            "ch:1:sloid:89216",
+            "ch:1:sloid:78093",
+            "ch:1:sloid:78092",
+            "ch:1:sloid:78091",
+            "ch:1:sloid:453",
+            "ch:1:sloid:78090",
+            "ch:1:sloid:72373:0:2",
+            "ch:1:sloid:72386",
+            "ch:1:sloid:88590",
+            "ch:1:sloid:494:0:2"
+          ],
+          "admittedTrips": 2
+        },
+        {
+          "id": "c3d3697a95a5234a67d7d5cd",
+          "routeId": "92-2-K-j26-1",
+          "line": "2",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:91787",
+            "ch:1:sloid:88129",
+            "ch:1:sloid:88130",
+            "ch:1:sloid:88131",
+            "ch:1:sloid:88331",
+            "ch:1:sloid:89239",
+            "ch:1:sloid:78087",
+            "ch:1:sloid:89216",
+            "ch:1:sloid:78093",
+            "ch:1:sloid:78092",
+            "ch:1:sloid:78091",
+            "ch:1:sloid:453",
+            "ch:1:sloid:78090",
+            "ch:1:sloid:72373:0:2",
+            "ch:1:sloid:72386",
+            "ch:1:sloid:88590",
+            "ch:1:sloid:494:0:2"
+          ],
+          "admittedTrips": 1
+        },
+        {
+          "id": "7d85ea7b7be40c82410aa81b",
+          "routeId": "92-2-K-j26-1",
+          "line": "2",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:5108",
+            "ch:1:sloid:88334",
+            "ch:1:sloid:88131",
+            "ch:1:sloid:88331",
+            "ch:1:sloid:89239",
+            "ch:1:sloid:78087",
+            "ch:1:sloid:89216",
+            "ch:1:sloid:78093",
+            "ch:1:sloid:78092",
+            "ch:1:sloid:78091",
+            "ch:1:sloid:453",
+            "ch:1:sloid:78090",
+            "ch:1:sloid:72373:0:2",
+            "ch:1:sloid:72386",
+            "ch:1:sloid:88590",
+            "ch:1:sloid:494:0:2",
+            "ch:1:sloid:89956",
+            "ch:1:sloid:72374",
+            "ch:1:sloid:78080",
+            "ch:1:sloid:78079",
+            "ch:1:sloid:88559",
+            "ch:1:sloid:95915",
+            "ch:1:sloid:88584",
+            "ch:1:sloid:78078",
+            "ch:1:sloid:78077",
+            "ch:1:sloid:78076",
+            "ch:1:sloid:78073",
+            "ch:1:sloid:88588",
+            "ch:1:sloid:88585",
+            "ch:1:sloid:91782"
+          ],
+          "admittedTrips": 1
+        },
+        {
+          "id": "3f4b628f1917938dd58dbba6",
+          "routeId": "92-2-K-j26-1",
+          "line": "2",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:459",
+            "ch:1:sloid:5108",
+            "ch:1:sloid:88334",
+            "ch:1:sloid:88131",
+            "ch:1:sloid:88331",
+            "ch:1:sloid:89239",
+            "ch:1:sloid:78087",
+            "ch:1:sloid:89216",
+            "ch:1:sloid:78093",
+            "ch:1:sloid:78092",
+            "ch:1:sloid:78091",
+            "ch:1:sloid:453",
+            "ch:1:sloid:78090",
+            "ch:1:sloid:72373:0:2",
+            "ch:1:sloid:72386",
+            "ch:1:sloid:88590",
+            "ch:1:sloid:494:0:2",
+            "ch:1:sloid:89956",
+            "ch:1:sloid:72374",
+            "ch:1:sloid:78080",
+            "ch:1:sloid:78079",
+            "ch:1:sloid:88559",
+            "ch:1:sloid:95915",
+            "ch:1:sloid:88584",
+            "ch:1:sloid:78078",
+            "ch:1:sloid:78077",
+            "ch:1:sloid:78076",
+            "ch:1:sloid:78073",
+            "ch:1:sloid:88588",
+            "ch:1:sloid:88585",
+            "ch:1:sloid:91782"
+          ],
+          "admittedTrips": 6
+        },
+        {
+          "id": "db8889eb8f7bbb1015b2a9cd",
+          "routeId": "92-2-K-j26-1",
+          "line": "2",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:91787",
+            "ch:1:sloid:88129",
+            "ch:1:sloid:88130",
+            "ch:1:sloid:88131",
+            "ch:1:sloid:88331",
+            "ch:1:sloid:89239",
+            "ch:1:sloid:78087",
+            "ch:1:sloid:89216",
+            "ch:1:sloid:78093",
+            "ch:1:sloid:78092",
+            "ch:1:sloid:78091",
+            "ch:1:sloid:453",
+            "ch:1:sloid:78090",
+            "ch:1:sloid:72373:0:2",
+            "ch:1:sloid:72386",
+            "ch:1:sloid:88590",
+            "ch:1:sloid:494:0:2",
+            "ch:1:sloid:89956",
+            "ch:1:sloid:72374",
+            "ch:1:sloid:78080",
+            "ch:1:sloid:78079",
+            "ch:1:sloid:88559",
+            "ch:1:sloid:95915",
+            "ch:1:sloid:88584",
+            "ch:1:sloid:78078",
+            "ch:1:sloid:78077",
+            "ch:1:sloid:78076",
+            "ch:1:sloid:78073",
+            "ch:1:sloid:88588",
+            "ch:1:sloid:88585",
+            "ch:1:sloid:91782"
+          ],
+          "admittedTrips": 5
+        },
+        {
+          "id": "47542910073cca5d9267f741",
+          "routeId": "92-2-K-j26-1",
+          "line": "2",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:494:0:1",
+            "ch:1:sloid:88590",
+            "ch:1:sloid:72386",
+            "ch:1:sloid:72373:0:4",
+            "ch:1:sloid:78090",
+            "ch:1:sloid:453",
+            "ch:1:sloid:78091",
+            "ch:1:sloid:78092",
+            "ch:1:sloid:78093",
+            "ch:1:sloid:89216",
+            "ch:1:sloid:78087",
+            "ch:1:sloid:89239",
+            "ch:1:sloid:88331",
+            "ch:1:sloid:88131",
+            "ch:1:sloid:88334",
+            "ch:1:sloid:5108",
+            "ch:1:sloid:459"
+          ],
+          "admittedTrips": 1
+        },
+        {
+          "id": "e1fbb9e0fae87dc98a1af83c",
+          "routeId": "92-2-K-j26-1",
+          "line": "2",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:91782",
+            "ch:1:sloid:88585",
+            "ch:1:sloid:88588",
+            "ch:1:sloid:78073",
+            "ch:1:sloid:78076",
+            "ch:1:sloid:78077",
+            "ch:1:sloid:78078",
+            "ch:1:sloid:88584",
+            "ch:1:sloid:95915",
+            "ch:1:sloid:88559",
+            "ch:1:sloid:78079",
+            "ch:1:sloid:78080",
+            "ch:1:sloid:72374",
+            "ch:1:sloid:89956",
+            "ch:1:sloid:494:0:1",
+            "ch:1:sloid:88590",
+            "ch:1:sloid:72386",
+            "ch:1:sloid:72373:0:4",
+            "ch:1:sloid:78090",
+            "ch:1:sloid:453",
+            "ch:1:sloid:78091",
+            "ch:1:sloid:78092",
+            "ch:1:sloid:78093",
+            "ch:1:sloid:89216",
+            "ch:1:sloid:78087",
+            "ch:1:sloid:89239",
+            "ch:1:sloid:88331",
+            "ch:1:sloid:88131",
+            "ch:1:sloid:88130",
+            "ch:1:sloid:88129",
+            "ch:1:sloid:91787"
+          ],
+          "admittedTrips": 3
+        },
+        {
+          "id": "370e610e4a7561a8ad995ac4",
+          "routeId": "92-2-K-j26-1",
+          "line": "2",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:91782",
+            "ch:1:sloid:88585",
+            "ch:1:sloid:88588",
+            "ch:1:sloid:78073",
+            "ch:1:sloid:78076",
+            "ch:1:sloid:78077",
+            "ch:1:sloid:78078",
+            "ch:1:sloid:88584",
+            "ch:1:sloid:95915",
+            "ch:1:sloid:88559",
+            "ch:1:sloid:78079",
+            "ch:1:sloid:78080",
+            "ch:1:sloid:72374",
+            "ch:1:sloid:89956",
+            "ch:1:sloid:494:0:1",
+            "ch:1:sloid:88590",
+            "ch:1:sloid:72386",
+            "ch:1:sloid:72373:0:4",
+            "ch:1:sloid:78090",
+            "ch:1:sloid:453",
+            "ch:1:sloid:78091",
+            "ch:1:sloid:78092",
+            "ch:1:sloid:78093",
+            "ch:1:sloid:89216",
+            "ch:1:sloid:78087",
+            "ch:1:sloid:89239",
+            "ch:1:sloid:88331",
+            "ch:1:sloid:88131",
+            "ch:1:sloid:88334",
+            "ch:1:sloid:5108",
+            "ch:1:sloid:459"
+          ],
+          "admittedTrips": 5
+        },
+        {
+          "id": "b34c0cc379f985dd272ccd6c",
+          "routeId": "92-2-K-j26-1",
+          "line": "2",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:89882",
+            "ch:1:sloid:91782",
+            "ch:1:sloid:88585",
+            "ch:1:sloid:88588",
+            "ch:1:sloid:78073",
+            "ch:1:sloid:78076",
+            "ch:1:sloid:78077",
+            "ch:1:sloid:78078",
+            "ch:1:sloid:88584",
+            "ch:1:sloid:95915",
+            "ch:1:sloid:88559",
+            "ch:1:sloid:78079",
+            "ch:1:sloid:78080",
+            "ch:1:sloid:72374",
+            "ch:1:sloid:89956",
+            "ch:1:sloid:494:0:1",
+            "ch:1:sloid:88590",
+            "ch:1:sloid:72386",
+            "ch:1:sloid:72373:0:4",
+            "ch:1:sloid:78090",
+            "ch:1:sloid:453",
+            "ch:1:sloid:78091",
+            "ch:1:sloid:78092",
+            "ch:1:sloid:78093",
+            "ch:1:sloid:89216",
+            "ch:1:sloid:78087",
+            "ch:1:sloid:89239",
+            "ch:1:sloid:88331",
+            "ch:1:sloid:88131",
+            "ch:1:sloid:88334",
+            "ch:1:sloid:5108",
+            "ch:1:sloid:459"
+          ],
+          "admittedTrips": 1
+        },
+        {
+          "id": "856016d79cd15a4bebf54440",
+          "routeId": "92-362-j26-1",
+          "line": "362",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:76437:0:158338",
+            "ch:1:sloid:81782",
+            "ch:1:sloid:82619",
+            "ch:1:sloid:4776",
+            "ch:1:sloid:81783",
+            "ch:1:sloid:71461",
+            "ch:1:sloid:8873",
+            "ch:1:sloid:8874",
+            "ch:1:sloid:71463",
+            "ch:1:sloid:81120",
+            "ch:1:sloid:8786"
+          ],
+          "admittedTrips": 15
+        },
+        {
+          "id": "6333de3dbf32f9cfef7f9efa",
+          "routeId": "92-362-j26-1",
+          "line": "362",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:8786",
+            "ch:1:sloid:81120",
+            "ch:1:sloid:71463",
+            "ch:1:sloid:8874",
+            "ch:1:sloid:8873",
+            "ch:1:sloid:71461",
+            "ch:1:sloid:81783",
+            "ch:1:sloid:4776",
+            "ch:1:sloid:82619",
+            "ch:1:sloid:76437:0:158338"
+          ],
+          "admittedTrips": 15
+        },
+        {
+          "id": "1daebf025272b0073d984704",
+          "routeId": "92-502-j26-1",
+          "line": "502",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:72352:0:02",
+            "ch:1:sloid:598:0:01",
+            "ch:1:sloid:90417:0:01",
+            "ch:1:sloid:90423:0:01",
+            "ch:1:sloid:90420:0:01",
+            "ch:1:sloid:90424:0:01",
+            "ch:1:sloid:90434:0:01",
+            "ch:1:sloid:90410:0:01",
+            "ch:1:sloid:90405:0:01",
+            "ch:1:sloid:90411:0:01"
+          ],
+          "admittedTrips": 2
+        },
+        {
+          "id": "3ae0d689c581bb5572cb5886",
+          "routeId": "92-502-j26-1",
+          "line": "502",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:78046:0:01",
+            "ch:1:sloid:78047:0:01",
+            "ch:1:sloid:78048:0:01",
+            "ch:1:sloid:78049:0:01",
+            "ch:1:sloid:90290:0:01",
+            "ch:1:sloid:78054:0:01",
+            "ch:1:sloid:78055:0:01",
+            "ch:1:sloid:72352:0:02",
+            "ch:1:sloid:598:0:01",
+            "ch:1:sloid:90417:0:01",
+            "ch:1:sloid:90423:0:01",
+            "ch:1:sloid:90420:0:01",
+            "ch:1:sloid:90424:0:01",
+            "ch:1:sloid:90434:0:01",
+            "ch:1:sloid:90410:0:01",
+            "ch:1:sloid:90405:0:01",
+            "ch:1:sloid:90411:0:01"
+          ],
+          "admittedTrips": 66
+        },
+        {
+          "id": "e44610ef8ea01832089809e0",
+          "routeId": "92-502-j26-1",
+          "line": "502",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:90411:0:01",
+            "ch:1:sloid:90405:0:02",
+            "ch:1:sloid:90410:0:02",
+            "ch:1:sloid:90434:0:02",
+            "ch:1:sloid:90424:0:02",
+            "ch:1:sloid:90420:0:02",
+            "ch:1:sloid:90423:0:02",
+            "ch:1:sloid:90417:0:02",
+            "ch:1:sloid:598:0:03",
+            "ch:1:sloid:72352:0:06"
+          ],
+          "admittedTrips": 1
+        },
+        {
+          "id": "6bccb1db006cbabd2f425a43",
+          "routeId": "92-502-j26-1",
+          "line": "502",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:90411:0:01",
+            "ch:1:sloid:90405:0:02",
+            "ch:1:sloid:90410:0:02",
+            "ch:1:sloid:90434:0:02",
+            "ch:1:sloid:90424:0:02",
+            "ch:1:sloid:90420:0:02",
+            "ch:1:sloid:90423:0:02",
+            "ch:1:sloid:90417:0:02",
+            "ch:1:sloid:598:0:03",
+            "ch:1:sloid:72352:0:06",
+            "ch:1:sloid:78055:0:02",
+            "ch:1:sloid:78054:0:02",
+            "ch:1:sloid:90290:0:02",
+            "ch:1:sloid:78049:0:02",
+            "ch:1:sloid:78048:0:02",
+            "ch:1:sloid:78047:0:02",
+            "ch:1:sloid:78046:0:01"
+          ],
+          "admittedTrips": 66
+        },
+        {
+          "id": "650dc65968b205e03af08058",
+          "routeId": "92-506-j26-1",
+          "line": "506",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:388:0:01",
+            "ch:1:sloid:78040:0:01",
+            "ch:1:sloid:4345:0:01",
+            "ch:1:sloid:78042:0:01",
+            "ch:1:sloid:78044:0:01",
+            "ch:1:sloid:78046:0:01",
+            "ch:1:sloid:78047:0:01",
+            "ch:1:sloid:78048:0:01",
+            "ch:1:sloid:78049:0:01",
+            "ch:1:sloid:78050:0:02",
+            "ch:1:sloid:78052:0:01",
+            "ch:1:sloid:94311:0:01",
+            "ch:1:sloid:78054:0:01",
+            "ch:1:sloid:78055:0:01",
+            "ch:1:sloid:72352:0:10"
+          ],
+          "admittedTrips": 12
+        },
+        {
+          "id": "af1c866a3829663674143f9d",
+          "routeId": "92-506-j26-1",
+          "line": "506",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:388:0:01",
+            "ch:1:sloid:78040:0:01",
+            "ch:1:sloid:4345:0:01",
+            "ch:1:sloid:78042:0:01",
+            "ch:1:sloid:78043:0:01",
+            "ch:1:sloid:78042:0:01",
+            "ch:1:sloid:78044:0:01",
+            "ch:1:sloid:78046:0:01",
+            "ch:1:sloid:78047:0:01",
+            "ch:1:sloid:78048:0:01",
+            "ch:1:sloid:78049:0:01",
+            "ch:1:sloid:78050:0:02",
+            "ch:1:sloid:78052:0:01",
+            "ch:1:sloid:94311:0:01",
+            "ch:1:sloid:78054:0:01",
+            "ch:1:sloid:78055:0:01",
+            "ch:1:sloid:72352:0:10"
+          ],
+          "admittedTrips": 1
+        },
+        {
+          "id": "e979f65e43a053c6ad4d7e2b",
+          "routeId": "92-506-j26-1",
+          "line": "506",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:72352:0:10",
+            "ch:1:sloid:78056:0:02",
+            "ch:1:sloid:78053:0:02",
+            "ch:1:sloid:78052:0:02",
+            "ch:1:sloid:78050:0:01",
+            "ch:1:sloid:78049:0:02",
+            "ch:1:sloid:78048:0:02",
+            "ch:1:sloid:78047:0:02",
+            "ch:1:sloid:78046:0:02",
+            "ch:1:sloid:78044:0:02",
+            "ch:1:sloid:78042:0:02",
+            "ch:1:sloid:4345:0:02",
+            "ch:1:sloid:78040:0:02",
+            "ch:1:sloid:388:0:01"
+          ],
+          "admittedTrips": 11
+        },
+        {
+          "id": "10dce3bcae20cd2db8a99719",
+          "routeId": "92-506-j26-1",
+          "line": "506",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:72352:0:10",
+            "ch:1:sloid:78056:0:02",
+            "ch:1:sloid:78053:0:02",
+            "ch:1:sloid:78052:0:02",
+            "ch:1:sloid:78050:0:01",
+            "ch:1:sloid:78049:0:02",
+            "ch:1:sloid:78048:0:02",
+            "ch:1:sloid:78047:0:02",
+            "ch:1:sloid:78046:0:02",
+            "ch:1:sloid:78044:0:02",
+            "ch:1:sloid:78042:0:02",
+            "ch:1:sloid:78043:0:01",
+            "ch:1:sloid:78042:0:02",
+            "ch:1:sloid:4345:0:02",
+            "ch:1:sloid:78040:0:02",
+            "ch:1:sloid:388:0:01"
+          ],
+          "admittedTrips": 2
+        },
+        {
+          "id": "8287d4f242d1f9d13bef391d",
+          "routeId": "92-6-M-j26-1",
+          "line": "6",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:91785",
+            "ch:1:sloid:89216",
+            "ch:1:sloid:78086",
+            "ch:1:sloid:88332",
+            "ch:1:sloid:78085",
+            "ch:1:sloid:78084",
+            "ch:1:sloid:78083",
+            "ch:1:sloid:458",
+            "ch:1:sloid:991"
+          ],
+          "admittedTrips": 1
+        },
+        {
+          "id": "2fffafd17282a74e2d656ca8",
+          "routeId": "92-6-M-j26-1",
+          "line": "6",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:991",
+            "ch:1:sloid:458",
+            "ch:1:sloid:89959",
+            "ch:1:sloid:78083",
+            "ch:1:sloid:78084",
+            "ch:1:sloid:78085",
+            "ch:1:sloid:88332",
+            "ch:1:sloid:78086",
+            "ch:1:sloid:91785"
+          ],
+          "admittedTrips": 1
+        },
+        {
+          "id": "656a1a57c12eac07e4f04a14",
+          "routeId": "96-136-7-j26-1",
+          "line": "67",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:775",
+            "ch:1:sloid:72209",
+            "ch:1:sloid:956",
+            "ch:1:sloid:72208"
+          ],
+          "admittedTrips": 1
+        },
+        {
+          "id": "f0cfc58b0c5a354d9c5aa167",
+          "routeId": "96-136-7-j26-1",
+          "line": "67",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:72208:0:46965",
+            "ch:1:sloid:956:0:317136",
+            "ch:1:sloid:72209:0:118285",
+            "ch:1:sloid:775:0:568410"
+          ],
+          "admittedTrips": 1
+        },
+        {
+          "id": "57643a2d3d86bbadee011c77",
+          "routeId": "96-136-7-j26-1",
+          "line": "67",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:775:0:568410",
+            "ch:1:sloid:72209:0:277158",
+            "ch:1:sloid:956:0:172954",
+            "ch:1:sloid:72208:0:35740"
+          ],
+          "admittedTrips": 1
+        },
+        {
+          "id": "61e728461de81b773dbe6d21",
+          "routeId": "96-148-2-j26-1",
+          "line": "882",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:83663:0:669639",
+            "ch:1:sloid:81627:0:478385",
+            "ch:1:sloid:57107:0:695297",
+            "ch:1:sloid:8773:0:729758",
+            "ch:1:sloid:71520:0:913800",
+            "ch:1:sloid:8715:0:261082",
+            "ch:1:sloid:8786:0:324395",
+            "ch:1:sloid:81120:0:846051"
+          ],
+          "admittedTrips": 2
+        },
+        {
+          "id": "c3833276797ac01e684bf4d1",
+          "routeId": "96-148-2-j26-1",
+          "line": "882",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:81120",
+            "ch:1:sloid:81120:0:497879",
+            "ch:1:sloid:8786:0:771425",
+            "ch:1:sloid:8715:0:261082",
+            "ch:1:sloid:71520:0:105888",
+            "ch:1:sloid:8773:0:442188",
+            "ch:1:sloid:82984:0:318489",
+            "ch:1:sloid:83663:0:669639",
+            "ch:1:sloid:81627:0:478385",
+            "ch:1:sloid:57107:0:695297"
+          ],
+          "admittedTrips": 2
+        },
+        {
+          "id": "f95479e484508fee3279fbe4",
+          "routeId": "96-148-6-j26-1",
+          "line": "886",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:71480:0:4",
+            "ch:1:sloid:71481:0:982165",
+            "ch:1:sloid:83357:0:565178",
+            "ch:1:sloid:71482:0:851881",
+            "ch:1:sloid:71483:0:583579",
+            "ch:1:sloid:71484:0:546",
+            "ch:1:sloid:71485:0:761681",
+            "ch:1:sloid:71486:0:504116",
+            "ch:1:sloid:71498:0:157683",
+            "ch:1:sloid:71501:0:665846",
+            "ch:1:sloid:11666:0:175",
+            "ch:1:sloid:71503:0:753800",
+            "ch:1:sloid:71502:0:145678",
+            "ch:1:sloid:71504:0:655673",
+            "ch:1:sloid:81120",
+            "ch:1:sloid:8786:0:771425"
+          ],
+          "admittedTrips": 1
+        },
+        {
+          "id": "c08ad403e5fd0ad4a97f30ac",
+          "routeId": "96-148-6-j26-1",
+          "line": "886",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:71480:0:4",
+            "ch:1:sloid:71481:0:982165",
+            "ch:1:sloid:83357:0:565178",
+            "ch:1:sloid:71482:0:851881",
+            "ch:1:sloid:71483:0:583579",
+            "ch:1:sloid:71484:0:546",
+            "ch:1:sloid:71485:0:761681",
+            "ch:1:sloid:71486:0:504116",
+            "ch:1:sloid:71498:0:157683",
+            "ch:1:sloid:71501:0:665846",
+            "ch:1:sloid:11666:0:175",
+            "ch:1:sloid:71503:0:753800",
+            "ch:1:sloid:71502:0:145678",
+            "ch:1:sloid:71504:0:655673",
+            "ch:1:sloid:81120:0:846051",
+            "ch:1:sloid:8786:0:771425"
+          ],
+          "admittedTrips": 2
+        },
+        {
+          "id": "7982a7a3ecff4ed72cc7937b",
+          "routeId": "96-148-6-j26-1",
+          "line": "886",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:8786:0:324395",
+            "ch:1:sloid:81120:0:846051",
+            "ch:1:sloid:71504:0:97886",
+            "ch:1:sloid:71502:0:813162",
+            "ch:1:sloid:71503:0:949504",
+            "ch:1:sloid:11666:0:176",
+            "ch:1:sloid:71501:0:903878",
+            "ch:1:sloid:71498:0:157683",
+            "ch:1:sloid:71486:0:452932",
+            "ch:1:sloid:71485:0:323819",
+            "ch:1:sloid:71484:0:525861",
+            "ch:1:sloid:71483:0:511812",
+            "ch:1:sloid:71482:0:168311",
+            "ch:1:sloid:71481:0:219865",
+            "ch:1:sloid:71480:0:4"
+          ],
+          "admittedTrips": 1
+        },
+        {
+          "id": "4e2019b49a1ff641c52c3fd0",
+          "routeId": "96-148-6-j26-1",
+          "line": "886",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:8786:0:324395",
+            "ch:1:sloid:81120:0:846051",
+            "ch:1:sloid:71504:0:97886",
+            "ch:1:sloid:71502:0:813162",
+            "ch:1:sloid:71503:0:949504",
+            "ch:1:sloid:11666:0:176",
+            "ch:1:sloid:71501:0:903878",
+            "ch:1:sloid:71498:0:157683",
+            "ch:1:sloid:71486:0:452932",
+            "ch:1:sloid:71485:0:323819",
+            "ch:1:sloid:71484:0:525861",
+            "ch:1:sloid:71483:0:511812",
+            "ch:1:sloid:71482:0:168311",
+            "ch:1:sloid:83357:0:565178",
+            "ch:1:sloid:71481:0:219865",
+            "ch:1:sloid:71480:0:4"
+          ],
+          "admittedTrips": 1
+        }
+      ]
+    },
+    {
+      "date": "2026-09-06",
+      "before": {
+        "trips": 5819,
+        "admittedTrips": 2385,
+        "scheduledTrips": 4711,
+        "representativeHeadwayTrips": 1108,
+        "admittedScheduledTrips": 1277,
+        "admittedRepresentativeHeadwayTrips": 1108,
+        "scheduledSegmentOccurrences": 68102,
+        "matchedScheduledSegmentOccurrences": 48719,
+        "segmentOccurrences": 69210,
+        "matchedSegmentOccurrences": 49827,
+        "admittedSegmentOccurrences": 16932,
+        "directedPairs": 4467,
+        "matchedDirectedPairs": 2568,
+        "patterns": 777,
+        "completePatterns": 137,
+        "admittedPatterns": 137,
+        "excludedTrips": {
+          "incomplete-directed-pattern": 3140,
+          "night-network-excluded-by-source": 72,
+          "no-compatible-source-mode": 222
+        }
+      },
+      "after": {
+        "trips": 5819,
+        "admittedTrips": 2574,
+        "scheduledTrips": 4711,
+        "representativeHeadwayTrips": 1108,
+        "admittedScheduledTrips": 1466,
+        "admittedRepresentativeHeadwayTrips": 1108,
+        "scheduledSegmentOccurrences": 68102,
+        "matchedScheduledSegmentOccurrences": 49494,
+        "segmentOccurrences": 69210,
+        "matchedSegmentOccurrences": 50602,
+        "admittedSegmentOccurrences": 20132,
+        "directedPairs": 4467,
+        "matchedDirectedPairs": 2611,
+        "patterns": 777,
+        "completePatterns": 156,
+        "admittedPatterns": 156,
+        "excludedTrips": {
+          "incomplete-directed-pattern": 2951,
+          "night-network-excluded-by-source": 72,
+          "no-compatible-source-mode": 222
+        }
+      },
+      "lostAdmittedPatterns": [],
+      "newlyAdmittedPatterns": [
+        {
+          "id": "7931c360e0f29e265cd60b8d",
+          "routeId": "92-22-E-j26-1",
+          "line": "22",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:94109",
+            "ch:1:sloid:94142",
+            "ch:1:sloid:94141",
+            "ch:1:sloid:77972",
+            "ch:1:sloid:77941",
+            "ch:1:sloid:77942",
+            "ch:1:sloid:77943",
+            "ch:1:sloid:94137",
+            "ch:1:sloid:94134",
+            "ch:1:sloid:94146",
+            "ch:1:sloid:77914:0:1",
+            "ch:1:sloid:94117",
+            "ch:1:sloid:77962",
+            "ch:1:sloid:77963",
+            "ch:1:sloid:94115",
+            "ch:1:sloid:94096",
+            "ch:1:sloid:93864",
+            "ch:1:sloid:88207",
+            "ch:1:sloid:88208",
+            "ch:1:sloid:88209",
+            "ch:1:sloid:87445",
+            "ch:1:sloid:77965",
+            "ch:1:sloid:77966",
+            "ch:1:sloid:89875",
+            "ch:1:sloid:89876",
+            "ch:1:sloid:89074",
+            "ch:1:sloid:89877",
+            "ch:1:sloid:77971"
+          ],
+          "admittedTrips": 12
+        },
+        {
+          "id": "1b813890606e35358d3ae766",
+          "routeId": "92-22-E-j26-1",
+          "line": "22",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:77971",
+            "ch:1:sloid:89877",
+            "ch:1:sloid:89074",
+            "ch:1:sloid:89876",
+            "ch:1:sloid:89875",
+            "ch:1:sloid:77966",
+            "ch:1:sloid:77965",
+            "ch:1:sloid:87445",
+            "ch:1:sloid:88209",
+            "ch:1:sloid:88208",
+            "ch:1:sloid:88207",
+            "ch:1:sloid:93864",
+            "ch:1:sloid:94096",
+            "ch:1:sloid:77963",
+            "ch:1:sloid:77962",
+            "ch:1:sloid:94117",
+            "ch:1:sloid:77914:0:2",
+            "ch:1:sloid:94146",
+            "ch:1:sloid:94134",
+            "ch:1:sloid:94137",
+            "ch:1:sloid:77943",
+            "ch:1:sloid:77942",
+            "ch:1:sloid:77941",
+            "ch:1:sloid:77972",
+            "ch:1:sloid:94141",
+            "ch:1:sloid:94109"
+          ],
+          "admittedTrips": 13
+        },
+        {
+          "id": "d4a1b3ba4e7f27a3d95744c6",
+          "routeId": "92-2-K-j26-1",
+          "line": "2",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:72373:0:4",
+            "ch:1:sloid:78090",
+            "ch:1:sloid:453",
+            "ch:1:sloid:78091",
+            "ch:1:sloid:78092",
+            "ch:1:sloid:78093",
+            "ch:1:sloid:89216",
+            "ch:1:sloid:78087",
+            "ch:1:sloid:89239",
+            "ch:1:sloid:88331",
+            "ch:1:sloid:88131",
+            "ch:1:sloid:88130",
+            "ch:1:sloid:88129",
+            "ch:1:sloid:91787"
+          ],
+          "admittedTrips": 1
+        },
+        {
+          "id": "04c7385e01ab975ce7023df8",
+          "routeId": "92-2-K-j26-1",
+          "line": "2",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:91787",
+            "ch:1:sloid:88129",
+            "ch:1:sloid:88130",
+            "ch:1:sloid:88131",
+            "ch:1:sloid:88331",
+            "ch:1:sloid:89239",
+            "ch:1:sloid:78087",
+            "ch:1:sloid:89216",
+            "ch:1:sloid:78093",
+            "ch:1:sloid:78092",
+            "ch:1:sloid:78091",
+            "ch:1:sloid:453",
+            "ch:1:sloid:78090",
+            "ch:1:sloid:72373:0:2"
+          ],
+          "admittedTrips": 17
+        },
+        {
+          "id": "e1fbb9e0fae87dc98a1af83c",
+          "routeId": "92-2-K-j26-1",
+          "line": "2",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:91782",
+            "ch:1:sloid:88585",
+            "ch:1:sloid:88588",
+            "ch:1:sloid:78073",
+            "ch:1:sloid:78076",
+            "ch:1:sloid:78077",
+            "ch:1:sloid:78078",
+            "ch:1:sloid:88584",
+            "ch:1:sloid:95915",
+            "ch:1:sloid:88559",
+            "ch:1:sloid:78079",
+            "ch:1:sloid:78080",
+            "ch:1:sloid:72374",
+            "ch:1:sloid:89956",
+            "ch:1:sloid:494:0:1",
+            "ch:1:sloid:88590",
+            "ch:1:sloid:72386",
+            "ch:1:sloid:72373:0:4",
+            "ch:1:sloid:78090",
+            "ch:1:sloid:453",
+            "ch:1:sloid:78091",
+            "ch:1:sloid:78092",
+            "ch:1:sloid:78093",
+            "ch:1:sloid:89216",
+            "ch:1:sloid:78087",
+            "ch:1:sloid:89239",
+            "ch:1:sloid:88331",
+            "ch:1:sloid:88131",
+            "ch:1:sloid:88130",
+            "ch:1:sloid:88129",
+            "ch:1:sloid:91787"
+          ],
+          "admittedTrips": 16
+        },
+        {
+          "id": "856016d79cd15a4bebf54440",
+          "routeId": "92-362-j26-1",
+          "line": "362",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:76437:0:158338",
+            "ch:1:sloid:81782",
+            "ch:1:sloid:82619",
+            "ch:1:sloid:4776",
+            "ch:1:sloid:81783",
+            "ch:1:sloid:71461",
+            "ch:1:sloid:8873",
+            "ch:1:sloid:8874",
+            "ch:1:sloid:71463",
+            "ch:1:sloid:81120",
+            "ch:1:sloid:8786"
+          ],
+          "admittedTrips": 13
+        },
+        {
+          "id": "6333de3dbf32f9cfef7f9efa",
+          "routeId": "92-362-j26-1",
+          "line": "362",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:8786",
+            "ch:1:sloid:81120",
+            "ch:1:sloid:71463",
+            "ch:1:sloid:8874",
+            "ch:1:sloid:8873",
+            "ch:1:sloid:71461",
+            "ch:1:sloid:81783",
+            "ch:1:sloid:4776",
+            "ch:1:sloid:82619",
+            "ch:1:sloid:76437:0:158338"
+          ],
+          "admittedTrips": 13
+        },
+        {
+          "id": "3ae0d689c581bb5572cb5886",
+          "routeId": "92-502-j26-1",
+          "line": "502",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:78046:0:01",
+            "ch:1:sloid:78047:0:01",
+            "ch:1:sloid:78048:0:01",
+            "ch:1:sloid:78049:0:01",
+            "ch:1:sloid:90290:0:01",
+            "ch:1:sloid:78054:0:01",
+            "ch:1:sloid:78055:0:01",
+            "ch:1:sloid:72352:0:02",
+            "ch:1:sloid:598:0:01",
+            "ch:1:sloid:90417:0:01",
+            "ch:1:sloid:90423:0:01",
+            "ch:1:sloid:90420:0:01",
+            "ch:1:sloid:90424:0:01",
+            "ch:1:sloid:90434:0:01",
+            "ch:1:sloid:90410:0:01",
+            "ch:1:sloid:90405:0:01",
+            "ch:1:sloid:90411:0:01"
+          ],
+          "admittedTrips": 38
+        },
+        {
+          "id": "6bccb1db006cbabd2f425a43",
+          "routeId": "92-502-j26-1",
+          "line": "502",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:90411:0:01",
+            "ch:1:sloid:90405:0:02",
+            "ch:1:sloid:90410:0:02",
+            "ch:1:sloid:90434:0:02",
+            "ch:1:sloid:90424:0:02",
+            "ch:1:sloid:90420:0:02",
+            "ch:1:sloid:90423:0:02",
+            "ch:1:sloid:90417:0:02",
+            "ch:1:sloid:598:0:03",
+            "ch:1:sloid:72352:0:06",
+            "ch:1:sloid:78055:0:02",
+            "ch:1:sloid:78054:0:02",
+            "ch:1:sloid:90290:0:02",
+            "ch:1:sloid:78049:0:02",
+            "ch:1:sloid:78048:0:02",
+            "ch:1:sloid:78047:0:02",
+            "ch:1:sloid:78046:0:01"
+          ],
+          "admittedTrips": 38
+        },
+        {
+          "id": "650dc65968b205e03af08058",
+          "routeId": "92-506-j26-1",
+          "line": "506",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:388:0:01",
+            "ch:1:sloid:78040:0:01",
+            "ch:1:sloid:4345:0:01",
+            "ch:1:sloid:78042:0:01",
+            "ch:1:sloid:78044:0:01",
+            "ch:1:sloid:78046:0:01",
+            "ch:1:sloid:78047:0:01",
+            "ch:1:sloid:78048:0:01",
+            "ch:1:sloid:78049:0:01",
+            "ch:1:sloid:78050:0:02",
+            "ch:1:sloid:78052:0:01",
+            "ch:1:sloid:94311:0:01",
+            "ch:1:sloid:78054:0:01",
+            "ch:1:sloid:78055:0:01",
+            "ch:1:sloid:72352:0:10"
+          ],
+          "admittedTrips": 9
+        },
+        {
+          "id": "fa8495f01bb109b7295a161d",
+          "routeId": "92-506-j26-1",
+          "line": "506",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:388:0:01",
+            "ch:1:sloid:78040:0:01",
+            "ch:1:sloid:4345:0:01",
+            "ch:1:sloid:78042:0:03",
+            "ch:1:sloid:78043:0:01",
+            "ch:1:sloid:78042:0:01",
+            "ch:1:sloid:78044:0:01",
+            "ch:1:sloid:78046:0:01",
+            "ch:1:sloid:78047:0:01",
+            "ch:1:sloid:78048:0:01",
+            "ch:1:sloid:78049:0:01",
+            "ch:1:sloid:78050:0:02",
+            "ch:1:sloid:78052:0:01",
+            "ch:1:sloid:94311:0:01",
+            "ch:1:sloid:78054:0:01",
+            "ch:1:sloid:78055:0:01",
+            "ch:1:sloid:72352:0:10"
+          ],
+          "admittedTrips": 2
+        },
+        {
+          "id": "af1c866a3829663674143f9d",
+          "routeId": "92-506-j26-1",
+          "line": "506",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:388:0:01",
+            "ch:1:sloid:78040:0:01",
+            "ch:1:sloid:4345:0:01",
+            "ch:1:sloid:78042:0:01",
+            "ch:1:sloid:78043:0:01",
+            "ch:1:sloid:78042:0:01",
+            "ch:1:sloid:78044:0:01",
+            "ch:1:sloid:78046:0:01",
+            "ch:1:sloid:78047:0:01",
+            "ch:1:sloid:78048:0:01",
+            "ch:1:sloid:78049:0:01",
+            "ch:1:sloid:78050:0:02",
+            "ch:1:sloid:78052:0:01",
+            "ch:1:sloid:94311:0:01",
+            "ch:1:sloid:78054:0:01",
+            "ch:1:sloid:78055:0:01",
+            "ch:1:sloid:72352:0:10"
+          ],
+          "admittedTrips": 1
+        },
+        {
+          "id": "e979f65e43a053c6ad4d7e2b",
+          "routeId": "92-506-j26-1",
+          "line": "506",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:72352:0:10",
+            "ch:1:sloid:78056:0:02",
+            "ch:1:sloid:78053:0:02",
+            "ch:1:sloid:78052:0:02",
+            "ch:1:sloid:78050:0:01",
+            "ch:1:sloid:78049:0:02",
+            "ch:1:sloid:78048:0:02",
+            "ch:1:sloid:78047:0:02",
+            "ch:1:sloid:78046:0:02",
+            "ch:1:sloid:78044:0:02",
+            "ch:1:sloid:78042:0:02",
+            "ch:1:sloid:4345:0:02",
+            "ch:1:sloid:78040:0:02",
+            "ch:1:sloid:388:0:01"
+          ],
+          "admittedTrips": 3
+        },
+        {
+          "id": "ab21bb038bf58f158ded0b29",
+          "routeId": "92-506-j26-1",
+          "line": "506",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:72352:0:10",
+            "ch:1:sloid:78056:0:02",
+            "ch:1:sloid:78053:0:02",
+            "ch:1:sloid:78052:0:02",
+            "ch:1:sloid:78050:0:01",
+            "ch:1:sloid:78049:0:02",
+            "ch:1:sloid:78048:0:02",
+            "ch:1:sloid:78047:0:02",
+            "ch:1:sloid:78046:0:02",
+            "ch:1:sloid:78044:0:02",
+            "ch:1:sloid:78042:0:03",
+            "ch:1:sloid:78043:0:01",
+            "ch:1:sloid:78042:0:02",
+            "ch:1:sloid:4345:0:02",
+            "ch:1:sloid:78040:0:02",
+            "ch:1:sloid:388:0:01"
+          ],
+          "admittedTrips": 7
+        },
+        {
+          "id": "10dce3bcae20cd2db8a99719",
+          "routeId": "92-506-j26-1",
+          "line": "506",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:72352:0:10",
+            "ch:1:sloid:78056:0:02",
+            "ch:1:sloid:78053:0:02",
+            "ch:1:sloid:78052:0:02",
+            "ch:1:sloid:78050:0:01",
+            "ch:1:sloid:78049:0:02",
+            "ch:1:sloid:78048:0:02",
+            "ch:1:sloid:78047:0:02",
+            "ch:1:sloid:78046:0:02",
+            "ch:1:sloid:78044:0:02",
+            "ch:1:sloid:78042:0:02",
+            "ch:1:sloid:78043:0:01",
+            "ch:1:sloid:78042:0:02",
+            "ch:1:sloid:4345:0:02",
+            "ch:1:sloid:78040:0:02",
+            "ch:1:sloid:388:0:01"
+          ],
+          "admittedTrips": 2
+        },
+        {
+          "id": "8287d4f242d1f9d13bef391d",
+          "routeId": "92-6-M-j26-1",
+          "line": "6",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:91785",
+            "ch:1:sloid:89216",
+            "ch:1:sloid:78086",
+            "ch:1:sloid:88332",
+            "ch:1:sloid:78085",
+            "ch:1:sloid:78084",
+            "ch:1:sloid:78083",
+            "ch:1:sloid:458",
+            "ch:1:sloid:991"
+          ],
+          "admittedTrips": 1
+        },
+        {
+          "id": "f1921a37bbfe51eb8f6b865b",
+          "routeId": "92-6-M-j26-1",
+          "line": "6",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:72373:0:1",
+            "ch:1:sloid:498",
+            "ch:1:sloid:78081",
+            "ch:1:sloid:89960",
+            "ch:1:sloid:991",
+            "ch:1:sloid:458",
+            "ch:1:sloid:89959",
+            "ch:1:sloid:78083",
+            "ch:1:sloid:78084",
+            "ch:1:sloid:78085",
+            "ch:1:sloid:88332",
+            "ch:1:sloid:78086",
+            "ch:1:sloid:91785"
+          ],
+          "admittedTrips": 1
+        },
+        {
+          "id": "f0cfc58b0c5a354d9c5aa167",
+          "routeId": "96-136-7-j26-1",
+          "line": "67",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:72208:0:46965",
+            "ch:1:sloid:956:0:317136",
+            "ch:1:sloid:72209:0:118285",
+            "ch:1:sloid:775:0:568410"
+          ],
+          "admittedTrips": 1
+        },
+        {
+          "id": "57643a2d3d86bbadee011c77",
+          "routeId": "96-136-7-j26-1",
+          "line": "67",
+          "mode": "bus",
+          "stopIds": [
+            "ch:1:sloid:775:0:568410",
+            "ch:1:sloid:72209:0:277158",
+            "ch:1:sloid:956:0:172954",
+            "ch:1:sloid:72208:0:35740"
+          ],
+          "admittedTrips": 1
+        }
+      ]
+    }
+  ],
+  "junctions": {
+    "bus": [
+      {
+        "coordinate": [
+          2609599.025,
+          1260585.399
+        ],
+        "interiorFeature": "f9fc76fb-5bb5-4788-85f2-c7d91224df2c",
+        "part": 0,
+        "vertex": 155,
+        "endpointFeatures": [
+          "08d23e0c-2bb2-4a55-b2e0-3b623645e5e0"
+        ]
+      },
+      {
+        "coordinate": [
+          2609601.054,
+          1260584.618
+        ],
+        "interiorFeature": "f9fc76fb-5bb5-4788-85f2-c7d91224df2c",
+        "part": 0,
+        "vertex": 156,
+        "endpointFeatures": [
+          "3e51708d-6c1b-4e29-a7b0-b59c86aa7bb3"
+        ]
+      },
+      {
+        "coordinate": [
+          2611348.067,
+          1260265.956
+        ],
+        "interiorFeature": "f9fc76fb-5bb5-4788-85f2-c7d91224df2c",
+        "part": 0,
+        "vertex": 235,
+        "endpointFeatures": [
+          "4d8e5103-7663-4ea7-b242-42ce7282ea2a"
+        ]
+      },
+      {
+        "coordinate": [
+          2612022.513,
+          1259916.669
+        ],
+        "interiorFeature": "cdaa4015-a7a9-4294-8a8e-0d603844867e",
+        "part": 0,
+        "vertex": 6,
+        "endpointFeatures": [
+          "a9b2c6e1-f687-4853-aacb-d04207f94883"
+        ]
+      },
+      {
+        "coordinate": [
+          2600797.451,
+          1226775.021
+        ],
+        "interiorFeature": "33ab0b84-9d65-4bfc-9390-5fc5e2ce4596",
+        "part": 0,
+        "vertex": 3,
+        "endpointFeatures": [
+          "a95a4c9b-dc52-4efd-97f7-75ab1fb38195"
+        ]
+      },
+      {
+        "coordinate": [
+          2605816.649,
+          1250050.205
+        ],
+        "interiorFeature": "4916e929-0edc-4093-bb42-65473711aa8f",
+        "part": 0,
+        "vertex": 56,
+        "endpointFeatures": [
+          "9bd0594c-f335-4f50-9ebc-785a329e662d"
+        ]
+      },
+      {
+        "coordinate": [
+          2600737.12,
+          1215452.954
+        ],
+        "interiorFeature": "59bc5342-018a-4684-986b-1ca5e03377ef",
+        "part": 0,
+        "vertex": 11,
+        "endpointFeatures": [
+          "f8ad7d14-8c93-48f9-a2d7-2d9d6a15fafa"
+        ]
+      },
+      {
+        "coordinate": [
+          2596307.641,
+          1217885.941
+        ],
+        "interiorFeature": "fc4817da-b78d-404e-8ad4-ba6a3164ba5d",
+        "part": 3,
+        "vertex": 181,
+        "endpointFeatures": [
+          "b675ef9e-e646-4eab-9ffa-8bef3a30183f"
+        ]
+      },
+      {
+        "coordinate": [
+          2599073.4,
+          1227408.206
+        ],
+        "interiorFeature": "d0c6efda-8300-4de1-aace-b4ef3253af4f",
+        "part": 0,
+        "vertex": 6,
+        "endpointFeatures": [
+          "02d0e16b-d262-49fe-9133-2d66a32ad56e",
+          "e92c3530-0e84-40f6-9d87-03cd999ddb72"
+        ]
+      },
+      {
+        "coordinate": [
+          2599076.213,
+          1227408.941
+        ],
+        "interiorFeature": "d0c6efda-8300-4de1-aace-b4ef3253af4f",
+        "part": 0,
+        "vertex": 7,
+        "endpointFeatures": [
+          "02d0e16b-d262-49fe-9133-2d66a32ad56e",
+          "86d7b415-3ed3-49a8-8666-23eb57d0eeec"
+        ]
+      },
+      {
+        "coordinate": [
+          2604737.135,
+          1231067.583
+        ],
+        "interiorFeature": "3edd02ef-c6ba-4e8e-85bc-e6cba91b0125",
+        "part": 0,
+        "vertex": 3,
+        "endpointFeatures": [
+          "339883c2-1e40-4d73-a8d6-a5272ec65753"
+        ]
+      },
+      {
+        "coordinate": [
+          2616326.296,
+          1253786.555
+        ],
+        "interiorFeature": "ab879d18-6de6-4291-a6c8-3ec313f1bc2b",
+        "part": 0,
+        "vertex": 1,
+        "endpointFeatures": [
+          "a5beca44-3aea-4825-9e1d-cdaa4b44642a"
+        ]
+      },
+      {
+        "coordinate": [
+          2617482.518,
+          1255406.545
+        ],
+        "interiorFeature": "fec18dfa-d833-4755-a1ca-1ae2f73ef291",
+        "part": 0,
+        "vertex": 7,
+        "endpointFeatures": [
+          "d1f3f6ed-eb3f-40c4-9bfb-e3ca08e3ecec"
+        ]
+      },
+      {
+        "coordinate": [
+          2640103.376,
+          1245733.002
+        ],
+        "interiorFeature": "db2f7689-94ee-424c-ba88-9fc1c8be7a12",
+        "part": 0,
+        "vertex": 20,
+        "endpointFeatures": [
+          "5616ac66-815c-401d-b9bf-e260588f240a"
+        ]
+      },
+      {
+        "coordinate": [
+          2640151.141,
+          1245093.844
+        ],
+        "interiorFeature": "db2f7689-94ee-424c-ba88-9fc1c8be7a12",
+        "part": 0,
+        "vertex": 94,
+        "endpointFeatures": [
+          "c473b51d-f065-478d-b264-7671b9ed6b0e"
+        ]
+      },
+      {
+        "coordinate": [
+          2611440.278,
+          1259771.203
+        ],
+        "interiorFeature": "3e51708d-6c1b-4e29-a7b0-b59c86aa7bb3",
+        "part": 0,
+        "vertex": 48,
+        "endpointFeatures": [
+          "f9fc76fb-5bb5-4788-85f2-c7d91224df2c"
+        ]
+      },
+      {
+        "coordinate": [
+          2611348.067,
+          1260265.956
+        ],
+        "interiorFeature": "3e51708d-6c1b-4e29-a7b0-b59c86aa7bb3",
+        "part": 0,
+        "vertex": 67,
+        "endpointFeatures": [
+          "4d8e5103-7663-4ea7-b242-42ce7282ea2a"
+        ]
+      },
+      {
+        "coordinate": [
+          2609020.515,
+          1225664.711
+        ],
+        "interiorFeature": "9ba1005c-4cce-4881-b660-1360d50c64b5",
+        "part": 0,
+        "vertex": 3,
+        "endpointFeatures": [
+          "b1d939ad-565c-466e-839e-38c5b1231a11"
+        ]
+      },
+      {
+        "coordinate": [
+          2612068.058,
+          1257900.403
+        ],
+        "interiorFeature": "5b9ca4d6-fdf9-4d3c-b64a-c4b9167661b5",
+        "part": 0,
+        "vertex": 131,
+        "endpointFeatures": [
+          "c6e0ccd4-25b5-4f70-900e-ac0d7f380794"
+        ]
+      },
+      {
+        "coordinate": [
+          2605839.681,
+          1229645.334
+        ],
+        "interiorFeature": "32620aae-c34f-4e2a-a7eb-2262788974ae",
+        "part": 0,
+        "vertex": 7,
+        "endpointFeatures": [
+          "65747743-0080-4bea-9b3f-a0840e7f88ea"
+        ]
+      },
+      {
+        "coordinate": [
+          2595803.389,
+          1227739.347
+        ],
+        "interiorFeature": "25c4dc28-5246-4b00-b8bc-127fe4f4e654",
+        "part": 0,
+        "vertex": 41,
+        "endpointFeatures": [
+          "5d6fcab4-1022-4aa2-9645-c26df033d3d7"
+        ]
+      },
+      {
+        "coordinate": [
+          2589969.576,
+          1213692.76
+        ],
+        "interiorFeature": "208977e8-aa43-4583-954d-c260eeef884e",
+        "part": 0,
+        "vertex": 7,
+        "endpointFeatures": [
+          "f6cc4e29-a672-4dad-b168-7f4a70c9ebf5",
+          "fc4817da-b78d-404e-8ad4-ba6a3164ba5d"
+        ]
+      },
+      {
+        "coordinate": [
+          2627170.123,
+          1240809.88
+        ],
+        "interiorFeature": "9c6e05db-d597-4b6b-8e98-7a21ccca5ed7",
+        "part": 0,
+        "vertex": 3,
+        "endpointFeatures": [
+          "45433c6f-20c5-41dd-944f-fbd45bf651fe"
+        ]
+      },
+      {
+        "coordinate": [
+          2640915.388,
+          1245182.105
+        ],
+        "interiorFeature": "3341382b-7b39-46bc-b9f8-dbfcad8735df",
+        "part": 0,
+        "vertex": 7,
+        "endpointFeatures": [
+          "69958768-60f7-4905-a8e6-4157f89be9c6"
+        ]
+      },
+      {
+        "coordinate": [
+          2613393.299,
+          1259753.892
+        ],
+        "interiorFeature": "68c17cfd-8674-48b2-9909-80e1b8f376ef",
+        "part": 0,
+        "vertex": 18,
+        "endpointFeatures": [
+          "311ec888-8aad-45b3-b517-316576d87535"
+        ]
+      },
+      {
+        "coordinate": [
+          2603958.165,
+          1229706.914
+        ],
+        "interiorFeature": "bc8ed3d8-8e1b-4dbd-b43b-4f1798c053f0",
+        "part": 0,
+        "vertex": 10,
+        "endpointFeatures": [
+          "3a2b9834-f26a-499e-8dca-ede0a182058f"
+        ]
+      },
+      {
+        "coordinate": [
+          2638189.161,
+          1244539.714
+        ],
+        "interiorFeature": "2d70d5b6-9468-432f-adf7-69d246dc2c5e",
+        "part": 0,
+        "vertex": 6,
+        "endpointFeatures": [
+          "5c7c5042-315e-41ac-a412-015b44c4d5e5"
+        ]
+      },
+      {
+        "coordinate": [
+          2613393.299,
+          1259753.892
+        ],
+        "interiorFeature": "ad55e8d8-454e-437a-a373-b9732e19aa00",
+        "part": 0,
+        "vertex": 31,
+        "endpointFeatures": [
+          "311ec888-8aad-45b3-b517-316576d87535"
+        ]
+      },
+      {
+        "coordinate": [
+          2596933.282,
+          1226531.881
+        ],
+        "interiorFeature": "64da638a-996d-4699-b675-d4d239a82ea6",
+        "part": 0,
+        "vertex": 4,
+        "endpointFeatures": [
+          "74c4a384-5126-46db-8b77-9ee0e4c1ec8c"
+        ]
+      },
+      {
+        "coordinate": [
+          2600741.87,
+          1215454.439
+        ],
+        "interiorFeature": "f8ad7d14-8c93-48f9-a2d7-2d9d6a15fafa",
+        "part": 0,
+        "vertex": 1,
+        "endpointFeatures": [
+          "59bc5342-018a-4684-986b-1ca5e03377ef"
+        ]
+      },
+      {
+        "coordinate": [
+          2605374.97,
+          1229471.479
+        ],
+        "interiorFeature": "3ed9e650-8dbf-415d-92d2-86c4de9fa89c",
+        "part": 0,
+        "vertex": 10,
+        "endpointFeatures": [
+          "65747743-0080-4bea-9b3f-a0840e7f88ea"
+        ]
+      },
+      {
+        "coordinate": [
+          2597041.569,
+          1214718.427
+        ],
+        "interiorFeature": "096a6d81-b6e0-4867-b7b1-328e2259a5e0",
+        "part": 0,
+        "vertex": 7,
+        "endpointFeatures": [
+          "dd5ffc40-146d-4bbc-a28a-9437a342932b"
+        ]
+      },
+      {
+        "coordinate": [
+          2597029.749,
+          1214751.048
+        ],
+        "interiorFeature": "096a6d81-b6e0-4867-b7b1-328e2259a5e0",
+        "part": 0,
+        "vertex": 8,
+        "endpointFeatures": [
+          "dd5ffc40-146d-4bbc-a28a-9437a342932b"
+        ]
+      },
+      {
+        "coordinate": [
+          2612022.513,
+          1259916.669
+        ],
+        "interiorFeature": "6884c8f9-378f-4c87-8af2-369805cc7ccb",
+        "part": 0,
+        "vertex": 84,
+        "endpointFeatures": [
+          "a9b2c6e1-f687-4853-aacb-d04207f94883"
+        ]
+      },
+      {
+        "coordinate": [
+          2608636.871,
+          1260946.201
+        ],
+        "interiorFeature": "08d23e0c-2bb2-4a55-b2e0-3b623645e5e0",
+        "part": 0,
+        "vertex": 54,
+        "endpointFeatures": [
+          "72778b04-c294-4d64-a69c-0b969d8df58c"
+        ]
+      },
+      {
+        "coordinate": [
+          2596110.221,
+          1227779.043
+        ],
+        "interiorFeature": "bf5927f4-c702-4475-896f-2bb237454254",
+        "part": 0,
+        "vertex": 18,
+        "endpointFeatures": [
+          "c433df4c-05c3-487c-a19c-24c5e22231f6"
+        ]
+      },
+      {
+        "coordinate": [
+          2635291.866,
+          1245885.657
+        ],
+        "interiorFeature": "ee44088b-deff-4e34-a062-f08f2d86eaac",
+        "part": 0,
+        "vertex": 1,
+        "endpointFeatures": [
+          "dc45c2e6-4a61-4b64-9502-8a4d33e409f2"
+        ]
+      },
+      {
+        "coordinate": [
+          2600797.451,
+          1226770.365
+        ],
+        "interiorFeature": "a95a4c9b-dc52-4efd-97f7-75ab1fb38195",
+        "part": 0,
+        "vertex": 11,
+        "endpointFeatures": [
+          "33ab0b84-9d65-4bfc-9390-5fc5e2ce4596"
+        ]
+      },
+      {
+        "coordinate": [
+          2635312.992,
+          1245867.938
+        ],
+        "interiorFeature": "dc45c2e6-4a61-4b64-9502-8a4d33e409f2",
+        "part": 0,
+        "vertex": 14,
+        "endpointFeatures": [
+          "ee44088b-deff-4e34-a062-f08f2d86eaac"
+        ]
+      },
+      {
+        "coordinate": [
+          2594735.969,
+          1225316.348
+        ],
+        "interiorFeature": "61d1a182-20a6-4197-b6e4-a37dd4a142da",
+        "part": 0,
+        "vertex": 13,
+        "endpointFeatures": [
+          "0c872684-e3f6-41a4-ba5b-4aeecadaaaf8"
+        ]
+      },
+      {
+        "coordinate": [
+          2594326.258,
+          1225169.608
+        ],
+        "interiorFeature": "61d1a182-20a6-4197-b6e4-a37dd4a142da",
+        "part": 0,
+        "vertex": 23,
+        "endpointFeatures": [
+          "f1c991db-25da-411b-b132-6567cd38a541"
+        ]
+      },
+      {
+        "coordinate": [
+          2594234.781,
+          1225553.924
+        ],
+        "interiorFeature": "61d1a182-20a6-4197-b6e4-a37dd4a142da",
+        "part": 0,
+        "vertex": 35,
+        "endpointFeatures": [
+          "c405cf00-02ad-4263-8c96-e969cb64797a"
+        ]
+      },
+      {
+        "coordinate": [
+          2592389.025,
+          1224906.14
+        ],
+        "interiorFeature": "c405cf00-02ad-4263-8c96-e969cb64797a",
+        "part": 0,
+        "vertex": 24,
+        "endpointFeatures": [
+          "f941a0b3-78bd-4748-b253-2252b3957fb9"
+        ]
+      },
+      {
+        "coordinate": [
+          2588431.215,
+          1223227.755
+        ],
+        "interiorFeature": "f941a0b3-78bd-4748-b253-2252b3957fb9",
+        "part": 0,
+        "vertex": 5,
+        "endpointFeatures": [
+          "ae7058a3-ed54-4bc4-b895-b7a594b1a8ae"
+        ]
+      },
+      {
+        "coordinate": [
+          2592378.864,
+          1224905.069
+        ],
+        "interiorFeature": "f941a0b3-78bd-4748-b253-2252b3957fb9",
+        "part": 0,
+        "vertex": 19,
+        "endpointFeatures": [
+          "c405cf00-02ad-4263-8c96-e969cb64797a"
+        ]
+      }
+    ],
+    "rail": [
+      {
+        "coordinate": [
+          2589885.745,
+          1214178.406
+        ],
+        "interiorFeature": "d51b3b8f-5e58-432a-8d12-d980ba83e63d",
+        "part": 0,
+        "vertex": 37,
+        "endpointFeatures": [
+          "62a7efbc-d362-4070-9b8a-b6852fe72dca"
+        ]
+      }
+    ],
+    "cableway": []
+  }
+}

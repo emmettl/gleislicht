@@ -376,17 +376,35 @@
         "883",
         "894"
       ],
-      "geometryStatus": "download-inspected",
+      "geometryStatus": "network-adapter-partial-admission",
       "evidence": "ch.so.avt.oev GeoPackage downloaded: 3,951 MultiLineString network segments and 775 stops in EPSG:2056. Network fields only identify mode and tunnel status; there are no line/operator identifiers. Stops include DiDok. The empty linestructure helper table is not missing network coverage.",
       "vintage": "Published 17 December 2025. Metadata explicitly excludes night services.",
       "reuse": "Linked dataset terms permit commercial/noncommercial use; source attribution is recommended.",
-      "nextAction": "Use this as a mode-filtered network graph, not a line-to-route lookup. Measure topology and ordered-stop routing; add missing night-service paths explicitly.",
+      "nextAction": "Continue the implemented canton-wide network adapter: resolve disconnected/source-extent patterns, separately source night/tram/ferry service, and validate seasonal dates. See docs/SOLOTHURN-STUDY.md and data/solothurn-audit/topology-review.json.",
       "sourceIds": [
         "so-publications",
         "so-lines",
         "so-metadata",
         "so-terms"
-      ]
+      ],
+      "implementation": {
+        "study": "docs/SOLOTHURN-STUDY.md",
+        "feed": "public/data/solothurn-region/index.json",
+        "audit": "data/solothurn-audit/summary.json",
+        "annualRouteRecords": 193,
+        "agencyIdentities": 19,
+        "admittedRouteRecords": 55,
+        "serviceDates": [
+          "2026-09-04",
+          "2026-09-06"
+        ],
+        "admittedMovements": [
+          3142,
+          2574
+        ],
+        "physicalDirectionCertified": false,
+        "yearRoundCoverageEstablished": false
+      }
     },
     {
       "code": "BS",

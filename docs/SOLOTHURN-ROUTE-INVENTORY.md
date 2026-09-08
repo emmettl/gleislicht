@@ -16,12 +16,12 @@ All 193 original GTFS route identities with at least one annual call in the cant
 | 182 | Bielersee-Schifffahrts-Gesellschaft AG | 1 | 0 | 0 / 4 | 0 / 4 |
 | 202 | Seilbahn Weissenstein AG | 1 | 1 | 1078 / 1078 | 1108 / 1108 |
 | 723 | Aargau Verkehr AG | 1 | 0 | 0 / 0 | 0 / 4 |
-| 793 | Busbetrieb Olten-Gösgen-Gäu | 16 | 6 | 154 / 955 | 186 / 620 |
-| 801 | PostAuto AG | 30 | 16 | 568 / 1394 | 376 / 961 |
+| 793 | Busbetrieb Olten-Gösgen-Gäu | 16 | 7 | 315 / 955 | 286 / 620 |
+| 801 | PostAuto AG | 30 | 17 | 580 / 1394 | 378 / 961 |
 | 840 | Busbetrieb Aarau | 3 | 1 | 58 / 388 | 56 / 300 |
-| 850 | Autobusbetrieb RBS | 5 | 2 | 2 / 205 | 0 / 141 |
-| 883 | Busbetrieb Solothurn und Umgebung | 17 | 7 | 309 / 787 | 186 / 424 |
-| 894 | Busbetrieb Grenchen und Umgebung | 9 | 7 | 324 / 554 | 225 / 282 |
+| 850 | Autobusbetrieb RBS | 5 | 3 | 32 / 205 | 26 / 141 |
+| 883 | Busbetrieb Solothurn und Umgebung | 17 | 8 | 368 / 787 | 222 / 424 |
+| 894 | Busbetrieb Grenchen und Umgebung | 9 | 8 | 481 / 554 | 250 / 282 |
 | 7136 | Aare Seeland mobil Ersatzverkehr | 1 | 0 | 0 / 0 | 0 / 0 |
 | 7230 | BLS Netz AG Ersatzverkehr | 1 | 0 | 0 / 0 | 0 / 0 |
 | 7231 | SBB Infrastruktur AG Bahnersatz | 16 | 0 | 0 / 0 | 0 / 348 |
@@ -124,27 +124,27 @@ All 193 original GTFS route identities with at least one annual call in the cant
 | 92-15-B-j26-1 | 883 | 15 / bus | Wasseramt | excluded | 0 / 33 | 0 / 0 | incomplete-directed-pattern |
 | 92-16-D-j26-1 | 883 | 16 / bus | Solothurn, Wasseramt | excluded | 0 / 33 | 0 / 0 | incomplete-directed-pattern |
 | 92-1-L-j26-1 | 883 | 1 / bus | Lebern, Solothurn, Wasseramt | partially-admitted | 152 / 156 | 70 / 74 | incomplete-directed-pattern |
-| 92-20-E-j26-1 | 894 | 20 / bus | Lebern | excluded | 0 / 61 | 0 / 0 | incomplete-directed-pattern |
+| 92-20-E-j26-1 | 894 | 20 / bus | Lebern | admitted-all-dated-trips | 61 / 61 | 0 / 0 | All dated journeys pass |
 | 92-21-D-j26-1 | 894 | 21 / bus | Lebern | admitted-all-dated-trips | 139 / 139 | 70 / 70 | All dated journeys pass |
-| 92-22-E-j26-1 | 894 | 22 / bus | Lebern | partially-admitted | 41 / 84 | 46 / 71 | incomplete-directed-pattern |
+| 92-22-E-j26-1 | 894 | 22 / bus | Lebern | partially-admitted | 83 / 84 | 71 / 71 | incomplete-directed-pattern |
 | 92-23-C-j26-1 | 894 | 23 / bus | Lebern | excluded | 0 / 45 | 0 / 32 | incomplete-directed-pattern |
-| 92-24-B-j26-1 | 894 | 24 / bus | Lebern | partially-admitted | 53 / 77 | 69 / 69 | incomplete-directed-pattern |
-| 92-25-C-j26-1 | 894 | 25 / bus | Lebern | partially-admitted | 33 / 63 | 0 / 0 | incomplete-directed-pattern |
+| 92-24-B-j26-1 | 894 | 24 / bus | Lebern | admitted-all-dated-trips | 77 / 77 | 69 / 69 | All dated journeys pass |
+| 92-25-C-j26-1 | 894 | 25 / bus | Lebern | admitted-all-dated-trips | 63 / 63 | 0 / 0 | All dated journeys pass |
 | 92-26-A-j26-1 | 894 | 26 / bus | Lebern | partially-admitted | 32 / 59 | 22 / 22 | incomplete-directed-pattern |
 | 92-27-B-j26-1 | 894 | 27 / bus | Lebern | admitted-all-dated-trips | 18 / 18 | 0 / 0 | All dated journeys pass |
 | 92-28-C-j26-1 | 894 | 28 / bus | Lebern | admitted-all-dated-trips | 8 / 8 | 18 / 18 | All dated journeys pass |
 | 92-2-E-j26-1 | 840 | 2 / bus | Gösgen | partially-admitted | 58 / 254 | 56 / 214 | incomplete-directed-pattern |
-| 92-2-K-j26-1 | 883 | 2 / bus | Lebern, Solothurn, Wasseramt | partially-admitted | 7 / 106 | 20 / 54 | incomplete-directed-pattern |
-| 92-362-j26-1 | 850 | 362 / bus | Bucheggberg | excluded | 0 / 30 | 0 / 26 | incomplete-directed-pattern |
+| 92-2-K-j26-1 | 883 | 2 / bus | Lebern, Solothurn, Wasseramt | partially-admitted | 64 / 106 | 54 / 54 | incomplete-directed-pattern |
+| 92-362-j26-1 | 850 | 362 / bus | Bucheggberg | admitted-all-dated-trips | 30 / 30 | 26 / 26 | All dated journeys pass |
 | 92-363-j26-1 | 850 | 363 / bus | Bucheggberg | partially-admitted | 1 / 16 | 0 / 0 | incomplete-directed-pattern |
 | 92-3-J-j26-1 | 840 | 3 / bus | Olten | excluded | 0 / 134 | 0 / 78 | incomplete-directed-pattern |
 | 92-3-M-j26-1 | 883 | 3 / bus | Lebern, Solothurn, Wasseramt | partially-admitted | 5 / 73 | 19 / 54 | incomplete-directed-pattern |
 | 92-4-N-j26-1 | 883 | 4 / bus | Lebern, Solothurn, Wasseramt | admitted-all-dated-trips | 76 / 76 | 72 / 72 | All dated journeys pass |
 | 92-501-A-j26-1 | 793 | 501 / bus | Gäu, Gösgen, Olten | partially-admitted | 10 / 88 | 36 / 36 | incomplete-directed-pattern |
-| 92-502-j26-1 | 793 | 502 / bus | Gösgen, Olten | partially-admitted | 3 / 138 | 0 / 76 | incomplete-directed-pattern |
+| 92-502-j26-1 | 793 | 502 / bus | Gösgen, Olten | admitted-all-dated-trips | 138 / 138 | 76 / 76 | All dated journeys pass |
 | 92-503-A-j26-1 | 793 | 503 / bus | Olten | excluded | 0 / 67 | 0 / 38 | incomplete-directed-pattern |
 | 92-505-j26-1 | 793 | 505 / bus | Gäu, Olten | partially-admitted | 2 / 85 | 0 / 81 | incomplete-directed-pattern |
-| 92-506-j26-1 | 793 | 506 / bus | Gösgen, Olten | excluded | 0 / 26 | 0 / 24 | incomplete-directed-pattern |
+| 92-506-j26-1 | 793 | 506 / bus | Gösgen, Olten | admitted-all-dated-trips | 26 / 26 | 24 / 24 | All dated journeys pass |
 | 92-507-j26-1 | 793 | 507 / bus | Gäu, Gösgen, Olten | partially-admitted | 76 / 139 | 77 / 77 | incomplete-directed-pattern |
 | 92-508-j26-1 | 793 | 508 / bus | Olten | excluded | 0 / 147 | 0 / 143 | incomplete-directed-pattern |
 | 92-509-j26-1 | 793 | 509 / bus | Olten | excluded | 0 / 64 | 0 / 35 | incomplete-directed-pattern |
@@ -155,7 +155,7 @@ All 193 original GTFS route identities with at least one annual call in the cant
 | 92-56-j26-1 | 37 | 56 / bus | Dorneck | excluded | 0 / 92 | 0 / 76 | incomplete-directed-pattern |
 | 92-5-J-j26-1 | 883 | 5 / bus | Solothurn, Wasseramt | partially-admitted | 6 / 101 | 0 / 38 | incomplete-directed-pattern |
 | 92-66-D-j26-1 | 37 | 66 / bus | Dorneck | excluded | 0 / 67 | 0 / 56 | incomplete-directed-pattern |
-| 92-6-M-j26-1 | 883 | 6 / bus | Solothurn, Wasseramt | excluded | 0 / 78 | 0 / 71 | incomplete-directed-pattern |
+| 92-6-M-j26-1 | 883 | 6 / bus | Solothurn, Wasseramt | partially-admitted | 2 / 78 | 2 / 71 | incomplete-directed-pattern |
 | 92-7-J-j26-1 | 883 | 7 / bus | Solothurn, Wasseramt | partially-admitted | 5 / 43 | 5 / 42 | incomplete-directed-pattern |
 | 92-871-j26-1 | 850 | 871 / bus | Bucheggberg | excluded | 0 / 49 | 0 / 37 | incomplete-directed-pattern |
 | 92-898-j26-1 | 850 | 898 / bus | Bucheggberg | excluded | 0 / 52 | 0 / 40 | incomplete-directed-pattern |
@@ -201,7 +201,7 @@ All 193 original GTFS route identities with at least one annual call in the cant
 | 96-131-6-j26-1 | 801 | 116 / bus | Thierstein | admitted-all-dated-trips | 36 / 36 | 34 / 34 | All dated journeys pass |
 | 96-131-7-j26-1 | 801 | 117 / bus | Thierstein | admitted-all-dated-trips | 54 / 54 | 43 / 43 | All dated journeys pass |
 | 96-131-8-j26-1 | 801 | 118 / bus | Thierstein | excluded | 0 / 2 | 0 / 7 | incomplete-directed-pattern |
-| 96-136-7-j26-1 | 801 | 67 / bus | Dorneck | excluded | 0 / 73 | 0 / 70 | incomplete-directed-pattern |
+| 96-136-7-j26-1 | 801 | 67 / bus | Dorneck | partially-admitted | 3 / 73 | 2 / 70 | incomplete-directed-pattern |
 | 96-136-8-j26-1 | 801 | 68 / bus | Dorneck | partially-admitted | 2 / 69 | 0 / 39 | incomplete-directed-pattern |
 | 96-136-9-j26-1 | 801 | 69 / bus | Dorneck | excluded | 0 / 80 | 0 / 43 | incomplete-directed-pattern |
 | 96-137-3-j26-1 | 801 | 73 / bus | Dorneck | excluded | 0 / 18 | 0 / 0 | incomplete-directed-pattern |
@@ -220,8 +220,8 @@ All 193 original GTFS route identities with at least one annual call in the cant
 | 96-145-4-j26-1 | 801 | 124 / bus | Gäu | excluded | 0 / 0 | 0 / 14 | incomplete-directed-pattern |
 | 96-145-6-j26-1 | 801 | 131 / bus | Thal | partially-admitted | 0 / 0 | 3 / 12 | incomplete-directed-pattern |
 | 96-145-9-j26-1 | 801 | 12 / bus | Lebern, Solothurn | admitted-all-dated-trips | 50 / 50 | 28 / 28 | All dated journeys pass |
-| 96-148-2-j26-1 | 801 | 882 / bus | Bucheggberg | partially-admitted | 6 / 38 | 0 / 20 | incomplete-directed-pattern |
+| 96-148-2-j26-1 | 801 | 882 / bus | Bucheggberg | partially-admitted | 10 / 38 | 0 / 20 | incomplete-directed-pattern |
 | 96-148-5-j26-1 | 801 | 885 / bus | Bucheggberg, Wasseramt | partially-admitted | 4 / 39 | 0 / 18 | incomplete-directed-pattern |
-| 96-148-6-j26-1 | 801 | 886 / bus | Bucheggberg, Wasseramt | partially-admitted | 30 / 35 | 18 / 18 | incomplete-directed-pattern |
+| 96-148-6-j26-1 | 801 | 886 / bus | Bucheggberg, Wasseramt | admitted-all-dated-trips | 35 / 35 | 18 / 18 | All dated journeys pass |
 
 Machine detail: [routes](../data/solothurn-audit/routes.json), [Friday patterns and directed pairs](../data/solothurn-audit/2026-09-04.json), [Sunday patterns and directed pairs](../data/solothurn-audit/2026-09-06.json). Every failed pair retains a reason, and every excluded pattern retains its complete original stop chain.

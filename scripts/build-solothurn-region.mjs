@@ -26,6 +26,9 @@ export async function buildSolothurnRegion() {
   assert.equal(await hashFile(join(sourceDir, 'boundary-rows.json.gz')), source.metadata.boundary.snapshotSha256)
   const census = JSON.parse(await readFile('data/swiss-transit-agencies.json'))
   assert.equal(census.sourceSha256, SO_GTFS_SHA)
+  const baseline = JSON.parse(await readFile('data/solothurn-topology-baseline.json'))
+  assert.deepEqual(baseline.sourceHashes, sourceHashes)
+  const topologyReview = { baselineCommit: baseline.commit, sourceHashes, rule: 'Exact non-tunnel endpoint/interior vertex noding; no added source edges or coordinates', days: [] }
   const provenance = { ...source.metadata, timetable: {
     publisher: 'SBB / Open data platform mobility Switzerland', attribution: 'opentransportdata.swiss',
     sha256: SO_GTFS_SHA, feed: census.feed, sourceUrl: census.sourceUrl,
@@ -33,7 +36,7 @@ export async function buildSolothurnRegion() {
     termsUrl: 'https://opentransportdata.swiss/en/terms-of-use/', processedBy: 'Gleislicht',
     archivalStudy: true, refreshPolicy: 'Pinned September 2026 study, not current service. Rebuild census, graph, both days and audit when updating either source.' },
     geometryModel: 'Mode-filtered, bidirectional shortest-path inference on official network centrelines. No route/operator attributes, legal road direction, rail gauge/running-track or diversion certification.',
-    topologyRule: 'Exact LV95 source endpoints join within one mode. No interior crossing junctions, distance-based stitching or stop-to-stop straight-line fallback. Tunnel flags retained.',
+    topologyRule: 'Exact LV95 source endpoints join within one mode, including an endpoint on another feature’s exact non-tunnel interior vertex. No interior-only crossing junctions, tunnel-interior joins, distance-based stitching or stop-to-stop straight-line fallback. Tunnel flags retained.',
     coordinateModel: 'Original LV95 XY vertices; swisstopo approximate WGS84 conversion; seven-decimal output. Metre-level transformation, not survey precision.',
     limits: SO_LIMITS, endpointConnectors: 'GTFS platforms connect to projected graph points within the mode snap limit; these short connectors are inferred.',
   }
@@ -44,6 +47,12 @@ export async function buildSolothurnRegion() {
     console.log(`Routing Solothurn ${raw.metadata.serviceDate}: ${raw.trains.length} complete civil-day journeys…`)
     const result = applySolothurnGeometry(raw, routes, graphs, matchCache)
     const coverage = bernCoverage(result.trains, result.pairs, result.patterns)
+    const before = baseline.days.find(d => d.date === raw.metadata.serviceDate)
+    const admittedIds = new Set(result.patterns.filter(p => p.admittedTrips).map(p => p.id))
+    const lost = before.admittedPatternIds.filter(id => !admittedIds.has(id))
+    assert.equal(lost.length, 0, 'Exact noding regressed a previously admitted pattern')
+    topologyReview.days.push({ date: raw.metadata.serviceDate, before: before.coverage, after: coverage,
+      lostAdmittedPatterns: lost, newlyAdmittedPatterns: result.patterns.filter(p => p.admittedTrips && !before.admittedPatternIds.includes(p.id)).map(p => ({ id: p.id, routeId: p.routeId, line: p.line, mode: p.mode, stopIds: p.stopIds, admittedTrips: p.admittedTrips })) })
     for (const route of routes.values()) routeDays.get(route.id).push({ date: raw.metadata.serviceDate,
       ...bernCoverage(result.trains.filter(t => t.routeId === route.id), result.pairs.filter(p => p.routeId === route.id), result.patterns.filter(p => p.routeId === route.id)) })
     const groups = [...new Set(result.trains.map(t => `${t.agencyId}:${routes.get(t.routeId).mode}`))].sort().map(key => {
@@ -147,6 +156,9 @@ export async function buildSolothurnRegion() {
       'The source excludes night services. Night-labelled routes are excluded even if daytime road geometry overlaps. No supplemental night paths were established.',
       'Bahn is routed as rail only. Tram and ferry lack a separately verified compatible graph. No roads borrowed from other cantons or operators.',
     ] }
+  topologyReview.junctions = Object.fromEntries([...graphs].map(([mode, graph]) => [mode, graph.endpointInteriorJunctions]))
+  for (const [mode, graph] of graphs) assert.equal(graph.edges.length, baseline.graph[mode].edges, 'Noding must not invent edges')
+  await writeJson(join(auditDir, 'topology-review.json'), topologyReview, true)
   await writeJson(join(auditDir, 'summary.json'), summary, true)
   await writeJson(join(auditDir, 'routes.json'), inventory, true)
   await writeJson(join(auditDir, 'stops.json'), timetable.sourceStopInventory)
