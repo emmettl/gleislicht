@@ -1,23 +1,23 @@
 {
   "date": "2026-09-04",
   "trips": 24782,
-  "admittedTrips": 10426,
-  "excludedTrips": 14356,
+  "admittedTrips": 10500,
+  "excludedTrips": 14282,
   "carryInTrips": 221,
-  "admittedCarryInTrips": 159,
+  "admittedCarryInTrips": 161,
   "representativeHeadwayTrips": 11417,
   "admittedHeadwayTrips": 1239,
   "patterns": 1441,
-  "admittedPatterns": 991,
+  "admittedPatterns": 994,
   "directedPairs": 8427,
-  "matchedDirectedPairs": 7128,
+  "matchedDirectedPairs": 7130,
   "segmentOccurrences": 202330,
-  "matchedSegmentOccurrences": 176442,
+  "matchedSegmentOccurrences": 176516,
   "scheduledSegmentOccurrences": 189688,
-  "matchedScheduledSegmentOccurrences": 173978,
+  "matchedScheduledSegmentOccurrences": 174052,
   "representativeHeadwaySegmentOccurrences": 12642,
-  "repairedDirectedPairs": 0,
-  "admittedTripsUsingRepair": 0,
+  "repairedDirectedPairs": 2,
+  "admittedTripsUsingRepair": 74,
   "groups": [
     {
       "id": "65:rail",
@@ -160,14 +160,14 @@
       "mode": "bus",
       "routes": 54,
       "trips": 2619,
-      "admittedTrips": 2050,
+      "admittedTrips": 2124,
       "patterns": 181,
-      "admittedPatterns": 144,
+      "admittedPatterns": 147,
       "directedPairs": 1593,
-      "matchedDirectedPairs": 1408,
+      "matchedDirectedPairs": 1410,
       "segmentOccurrences": 38755,
-      "matchedSegmentOccurrences": 36328,
-      "geometryCoverage": 0.9373758224745194
+      "matchedSegmentOccurrences": 36402,
+      "geometryCoverage": 0.9392852535156754
     },
     {
       "id": "772:bus",
@@ -1446,11 +1446,11 @@
       "mode": "bus",
       "line": "321",
       "trips": 74,
-      "admittedTrips": 0,
+      "admittedTrips": 74,
       "segmentOccurrences": 2831,
-      "matchedSegmentOccurrences": 2757,
+      "matchedSegmentOccurrences": 2831,
       "carryInTrips": 2,
-      "admittedCarryInTrips": 0
+      "admittedCarryInTrips": 2
     },
     {
       "routeId": "92-322-j26-1",
@@ -3376,8 +3376,8 @@
   "exclusionReasons": {
     "endpoint-gap": 945,
     "missing-line": 13169,
-    "disconnected-line": 114,
-    "implausible-detour": 128
+    "implausible-detour": 128,
+    "disconnected-line": 40
   },
   "directedPatterns": [
     {
@@ -92216,11 +92216,9 @@
         "[\"92-321-j26-1\",\"ch:1:sloid:94592:0:02\",\"ch:1:sloid:6450:0:1\"]"
       ],
       "trips": 36,
-      "admitted": false,
-      "reasons": [
-        "disconnected-line"
-      ],
-      "geometryPairs": 38,
+      "admitted": true,
+      "reasons": [],
+      "geometryPairs": 39,
       "totalPairs": 39,
       "carryInTrips": 1,
       "representativeHeadwayTrips": 0
@@ -92513,11 +92511,9 @@
         "[\"92-321-j26-1\",\"ch:1:sloid:1201084\",\"ch:1:sloid:1201132\"]"
       ],
       "trips": 37,
-      "admitted": false,
-      "reasons": [
-        "disconnected-line"
-      ],
-      "geometryPairs": 37,
+      "admitted": true,
+      "reasons": [],
+      "geometryPairs": 38,
       "totalPairs": 38,
       "carryInTrips": 1,
       "representativeHeadwayTrips": 0
@@ -92691,11 +92687,9 @@
         "[\"92-321-j26-1\",\"ch:1:sloid:94592:0:02\",\"ch:1:sloid:6450:0:1\"]"
       ],
       "trips": 1,
-      "admitted": false,
-      "reasons": [
-        "disconnected-line"
-      ],
-      "geometryPairs": 20,
+      "admitted": true,
+      "reasons": [],
+      "geometryPairs": 21,
       "totalPairs": 21,
       "carryInTrips": 0,
       "representativeHeadwayTrips": 0
@@ -256054,7 +256048,7 @@
       "occurrences": 36,
       "scheduledOccurrences": 36,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 36,
       "matched": true
     },
     {
@@ -256076,7 +256070,7 @@
       "occurrences": 36,
       "scheduledOccurrences": 36,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 36,
       "matched": true
     },
     {
@@ -256098,7 +256092,7 @@
       "occurrences": 36,
       "scheduledOccurrences": 36,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 36,
       "matched": true
     },
     {
@@ -256120,7 +256114,7 @@
       "occurrences": 36,
       "scheduledOccurrences": 36,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 36,
       "matched": true
     },
     {
@@ -256142,7 +256136,7 @@
       "occurrences": 36,
       "scheduledOccurrences": 36,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 36,
       "matched": true
     },
     {
@@ -256164,7 +256158,7 @@
       "occurrences": 36,
       "scheduledOccurrences": 36,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 36,
       "matched": true
     },
     {
@@ -256186,7 +256180,7 @@
       "occurrences": 36,
       "scheduledOccurrences": 36,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 36,
       "matched": true
     },
     {
@@ -256208,7 +256202,7 @@
       "occurrences": 36,
       "scheduledOccurrences": 36,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 36,
       "matched": true
     },
     {
@@ -256230,7 +256224,7 @@
       "occurrences": 36,
       "scheduledOccurrences": 36,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 36,
       "matched": true
     },
     {
@@ -256252,7 +256246,7 @@
       "occurrences": 36,
       "scheduledOccurrences": 36,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 36,
       "matched": true
     },
     {
@@ -256274,7 +256268,7 @@
       "occurrences": 36,
       "scheduledOccurrences": 36,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 36,
       "matched": true
     },
     {
@@ -256296,7 +256290,7 @@
       "occurrences": 36,
       "scheduledOccurrences": 36,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 36,
       "matched": true
     },
     {
@@ -256318,7 +256312,7 @@
       "occurrences": 36,
       "scheduledOccurrences": 36,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 36,
       "matched": true
     },
     {
@@ -256340,7 +256334,7 @@
       "occurrences": 36,
       "scheduledOccurrences": 36,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 36,
       "matched": true
     },
     {
@@ -256362,7 +256356,7 @@
       "occurrences": 36,
       "scheduledOccurrences": 36,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 36,
       "matched": true
     },
     {
@@ -256384,7 +256378,7 @@
       "occurrences": 36,
       "scheduledOccurrences": 36,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 36,
       "matched": true
     },
     {
@@ -256406,7 +256400,7 @@
       "occurrences": 36,
       "scheduledOccurrences": 36,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 36,
       "matched": true
     },
     {
@@ -256428,7 +256422,7 @@
       "occurrences": 36,
       "scheduledOccurrences": 36,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 36,
       "matched": true
     },
     {
@@ -256450,7 +256444,7 @@
       "occurrences": 37,
       "scheduledOccurrences": 37,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 37,
       "matched": true
     },
     {
@@ -256463,17 +256457,25 @@
       "toId": "ch:1:sloid:78454:0:02",
       "from": "Heerbrugg, Schloss",
       "to": "Balgach, Optik",
-      "geometrySha256": null,
-      "reason": "disconnected-line",
+      "geometrySha256": "86e908e76611660cc85b462a4eca6f86afa299fb53a8e35fd07e84b1a8c4a6b5",
       "maximumSnapMetres": 6.606557691882915,
+      "pathMetres": 554.9201035719776,
       "sourceFeatures": [
         "bus:132"
+      ],
+      "geometryRepairIds": [
+        "balgach-321-source-gap"
+      ],
+      "repairSourceFeatures": [
+        "bus:10",
+        "bus:133",
+        "bus:136"
       ],
       "occurrences": 37,
       "scheduledOccurrences": 37,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
-      "matched": false
+      "admittedOccurrences": 37,
+      "matched": true
     },
     {
       "key": "[\"92-321-j26-1\",\"ch:1:sloid:78454:0:02\",\"ch:1:sloid:78455:0:02\"]",
@@ -256494,7 +256496,7 @@
       "occurrences": 37,
       "scheduledOccurrences": 37,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 37,
       "matched": true
     },
     {
@@ -256516,7 +256518,7 @@
       "occurrences": 37,
       "scheduledOccurrences": 37,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 37,
       "matched": true
     },
     {
@@ -256538,7 +256540,7 @@
       "occurrences": 37,
       "scheduledOccurrences": 37,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 37,
       "matched": true
     },
     {
@@ -256560,7 +256562,7 @@
       "occurrences": 37,
       "scheduledOccurrences": 37,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 37,
       "matched": true
     },
     {
@@ -256582,7 +256584,7 @@
       "occurrences": 37,
       "scheduledOccurrences": 37,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 37,
       "matched": true
     },
     {
@@ -256604,7 +256606,7 @@
       "occurrences": 37,
       "scheduledOccurrences": 37,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 37,
       "matched": true
     },
     {
@@ -256626,7 +256628,7 @@
       "occurrences": 37,
       "scheduledOccurrences": 37,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 37,
       "matched": true
     },
     {
@@ -256648,7 +256650,7 @@
       "occurrences": 37,
       "scheduledOccurrences": 37,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 37,
       "matched": true
     },
     {
@@ -256670,7 +256672,7 @@
       "occurrences": 37,
       "scheduledOccurrences": 37,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 37,
       "matched": true
     },
     {
@@ -256692,7 +256694,7 @@
       "occurrences": 37,
       "scheduledOccurrences": 37,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 37,
       "matched": true
     },
     {
@@ -256714,7 +256716,7 @@
       "occurrences": 37,
       "scheduledOccurrences": 37,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 37,
       "matched": true
     },
     {
@@ -256736,7 +256738,7 @@
       "occurrences": 37,
       "scheduledOccurrences": 37,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 37,
       "matched": true
     },
     {
@@ -256758,7 +256760,7 @@
       "occurrences": 37,
       "scheduledOccurrences": 37,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 37,
       "matched": true
     },
     {
@@ -256780,7 +256782,7 @@
       "occurrences": 37,
       "scheduledOccurrences": 37,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 37,
       "matched": true
     },
     {
@@ -256802,7 +256804,7 @@
       "occurrences": 37,
       "scheduledOccurrences": 37,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 37,
       "matched": true
     },
     {
@@ -256824,7 +256826,7 @@
       "occurrences": 37,
       "scheduledOccurrences": 37,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 37,
       "matched": true
     },
     {
@@ -256846,7 +256848,7 @@
       "occurrences": 37,
       "scheduledOccurrences": 37,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 37,
       "matched": true
     },
     {
@@ -256868,7 +256870,7 @@
       "occurrences": 37,
       "scheduledOccurrences": 37,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 37,
       "matched": true
     },
     {
@@ -256890,7 +256892,7 @@
       "occurrences": 37,
       "scheduledOccurrences": 37,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 37,
       "matched": true
     },
     {
@@ -256912,7 +256914,7 @@
       "occurrences": 37,
       "scheduledOccurrences": 37,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 37,
       "matched": true
     },
     {
@@ -256934,7 +256936,7 @@
       "occurrences": 37,
       "scheduledOccurrences": 37,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 37,
       "matched": true
     },
     {
@@ -256956,7 +256958,7 @@
       "occurrences": 37,
       "scheduledOccurrences": 37,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 37,
       "matched": true
     },
     {
@@ -256978,7 +256980,7 @@
       "occurrences": 37,
       "scheduledOccurrences": 37,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 37,
       "matched": true
     },
     {
@@ -257000,7 +257002,7 @@
       "occurrences": 37,
       "scheduledOccurrences": 37,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 37,
       "matched": true
     },
     {
@@ -257022,7 +257024,7 @@
       "occurrences": 37,
       "scheduledOccurrences": 37,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 37,
       "matched": true
     },
     {
@@ -257044,7 +257046,7 @@
       "occurrences": 37,
       "scheduledOccurrences": 37,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 37,
       "matched": true
     },
     {
@@ -257066,7 +257068,7 @@
       "occurrences": 37,
       "scheduledOccurrences": 37,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 37,
       "matched": true
     },
     {
@@ -257088,7 +257090,7 @@
       "occurrences": 37,
       "scheduledOccurrences": 37,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 37,
       "matched": true
     },
     {
@@ -257110,7 +257112,7 @@
       "occurrences": 37,
       "scheduledOccurrences": 37,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 37,
       "matched": true
     },
     {
@@ -257132,7 +257134,7 @@
       "occurrences": 37,
       "scheduledOccurrences": 37,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 37,
       "matched": true
     },
     {
@@ -257154,7 +257156,7 @@
       "occurrences": 37,
       "scheduledOccurrences": 37,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 37,
       "matched": true
     },
     {
@@ -257176,7 +257178,7 @@
       "occurrences": 37,
       "scheduledOccurrences": 37,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 37,
       "matched": true
     },
     {
@@ -257198,7 +257200,7 @@
       "occurrences": 37,
       "scheduledOccurrences": 37,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 37,
       "matched": true
     },
     {
@@ -257220,7 +257222,7 @@
       "occurrences": 37,
       "scheduledOccurrences": 37,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 37,
       "matched": true
     },
     {
@@ -257242,7 +257244,7 @@
       "occurrences": 37,
       "scheduledOccurrences": 37,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 37,
       "matched": true
     },
     {
@@ -257264,7 +257266,7 @@
       "occurrences": 37,
       "scheduledOccurrences": 37,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 37,
       "matched": true
     },
     {
@@ -257286,7 +257288,7 @@
       "occurrences": 37,
       "scheduledOccurrences": 37,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 37,
       "matched": true
     },
     {
@@ -257308,7 +257310,7 @@
       "occurrences": 37,
       "scheduledOccurrences": 37,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 37,
       "matched": true
     },
     {
@@ -257321,17 +257323,25 @@
       "toId": "ch:1:sloid:78453:0:01",
       "from": "Balgach, Optik",
       "to": "Heerbrugg, Schloss",
-      "geometrySha256": null,
-      "reason": "disconnected-line",
+      "geometrySha256": "52f531ba0a5241fe2eab2b75c24e0067cd7828902766d6b21a7e44bc05367f77",
       "maximumSnapMetres": 6.376280954605247,
+      "pathMetres": 381.94664710500086,
       "sourceFeatures": [
         "bus:132"
+      ],
+      "geometryRepairIds": [
+        "balgach-321-source-gap"
+      ],
+      "repairSourceFeatures": [
+        "bus:10",
+        "bus:133",
+        "bus:136"
       ],
       "occurrences": 37,
       "scheduledOccurrences": 37,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
-      "matched": false
+      "admittedOccurrences": 37,
+      "matched": true
     },
     {
       "key": "[\"92-321-j26-1\",\"ch:1:sloid:78453:0:01\",\"ch:1:sloid:74137:0:05\"]",
@@ -257352,7 +257362,7 @@
       "occurrences": 37,
       "scheduledOccurrences": 37,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 37,
       "matched": true
     },
     {
@@ -257374,7 +257384,7 @@
       "occurrences": 37,
       "scheduledOccurrences": 37,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 37,
       "matched": true
     },
     {
@@ -257396,7 +257406,7 @@
       "occurrences": 37,
       "scheduledOccurrences": 37,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 37,
       "matched": true
     },
     {
@@ -257418,7 +257428,7 @@
       "occurrences": 37,
       "scheduledOccurrences": 37,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 37,
       "matched": true
     },
     {
@@ -257440,7 +257450,7 @@
       "occurrences": 37,
       "scheduledOccurrences": 37,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 37,
       "matched": true
     },
     {
@@ -257462,7 +257472,7 @@
       "occurrences": 37,
       "scheduledOccurrences": 37,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 37,
       "matched": true
     },
     {
@@ -257484,7 +257494,7 @@
       "occurrences": 37,
       "scheduledOccurrences": 37,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 37,
       "matched": true
     },
     {
@@ -257506,7 +257516,7 @@
       "occurrences": 37,
       "scheduledOccurrences": 37,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 37,
       "matched": true
     },
     {
@@ -257528,7 +257538,7 @@
       "occurrences": 37,
       "scheduledOccurrences": 37,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 37,
       "matched": true
     },
     {
@@ -257550,7 +257560,7 @@
       "occurrences": 37,
       "scheduledOccurrences": 37,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 37,
       "matched": true
     },
     {
@@ -257572,7 +257582,7 @@
       "occurrences": 37,
       "scheduledOccurrences": 37,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 37,
       "matched": true
     },
     {
@@ -257594,7 +257604,7 @@
       "occurrences": 37,
       "scheduledOccurrences": 37,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 37,
       "matched": true
     },
     {
@@ -257616,7 +257626,7 @@
       "occurrences": 37,
       "scheduledOccurrences": 37,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 37,
       "matched": true
     },
     {
@@ -257638,7 +257648,7 @@
       "occurrences": 37,
       "scheduledOccurrences": 37,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 37,
       "matched": true
     },
     {
@@ -257660,7 +257670,7 @@
       "occurrences": 37,
       "scheduledOccurrences": 37,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 37,
       "matched": true
     },
     {
@@ -257682,7 +257692,7 @@
       "occurrences": 37,
       "scheduledOccurrences": 37,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 37,
       "matched": true
     },
     {
@@ -257704,7 +257714,7 @@
       "occurrences": 37,
       "scheduledOccurrences": 37,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 37,
       "matched": true
     },
     {
@@ -257726,7 +257736,7 @@
       "occurrences": 37,
       "scheduledOccurrences": 37,
       "representativeHeadwayOccurrences": 0,
-      "admittedOccurrences": 0,
+      "admittedOccurrences": 37,
       "matched": true
     },
     {
@@ -373792,68 +373802,68 @@
   ],
   "artifacts": {
     "directory": "data/st-gallen-region/local/2026-09-04",
-    "manifestGzipBytes": 1958709,
-    "morningGzipBytes": 2152046,
+    "manifestGzipBytes": 1971094,
+    "morningGzipBytes": 2166667,
     "chunks": [
       {
         "id": "00-02",
-        "gzipBytes": 29299,
-        "trips": 173
+        "gzipBytes": 30036,
+        "trips": 175
       },
       {
         "id": "02-04",
-        "gzipBytes": 588,
+        "gzipBytes": 589,
         "trips": 1
       },
       {
         "id": "04-06",
-        "gzipBytes": 71363,
-        "trips": 464
+        "gzipBytes": 72951,
+        "trips": 470
       },
       {
         "id": "06-08",
-        "gzipBytes": 189124,
-        "trips": 1498
+        "gzipBytes": 191909,
+        "trips": 1509
       },
       {
         "id": "08-10",
-        "gzipBytes": 177926,
-        "trips": 1528
+        "gzipBytes": 180760,
+        "trips": 1539
       },
       {
         "id": "10-12",
-        "gzipBytes": 173450,
-        "trips": 1493
+        "gzipBytes": 176270,
+        "trips": 1504
       },
       {
         "id": "12-14",
-        "gzipBytes": 177929,
-        "trips": 1555
+        "gzipBytes": 180789,
+        "trips": 1566
       },
       {
         "id": "14-16",
-        "gzipBytes": 171757,
-        "trips": 1495
+        "gzipBytes": 174349,
+        "trips": 1506
       },
       {
         "id": "16-18",
-        "gzipBytes": 192108,
-        "trips": 1673
+        "gzipBytes": 194862,
+        "trips": 1684
       },
       {
         "id": "18-20",
-        "gzipBytes": 174820,
-        "trips": 1329
+        "gzipBytes": 177533,
+        "trips": 1340
       },
       {
         "id": "20-22",
-        "gzipBytes": 113192,
-        "trips": 773
+        "gzipBytes": 115504,
+        "trips": 782
       },
       {
         "id": "22-24",
-        "gzipBytes": 87945,
-        "trips": 591
+        "gzipBytes": 89733,
+        "trips": 597
       }
     ]
   }

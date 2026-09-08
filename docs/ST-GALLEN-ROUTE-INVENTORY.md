@@ -132,7 +132,7 @@ Generated from the pinned census and validated audit. See [the study](ST-GALLEN-
 | 138 | 92-302-A-j26-1 | bus | 302 | 489 | 70/70; admitted | 63/63; admitted | — |
 | 138 | 92-304-A-j26-1 | bus | 304 | 602 | 71/71; admitted | 37/37; admitted | — |
 | 138 | 92-305-j26-1 | bus | 305 | 462 | 37/37; admitted | 26/26; admitted | — |
-| 138 | 92-321-j26-1 | bus | 321 | 1025 | 0/74; excluded | 1/68; partially-admitted | disconnected-line |
+| 138 | 92-321-j26-1 | bus | 321 | 1025 | 74/74; admitted | 68/68; admitted | — |
 | 138 | 92-322-j26-1 | bus | 322 | 120 | 24/24; admitted | 0/0; inactive-on-civil-day | — |
 | 138 | 92-323-j26-1 | bus | 323 | 1163 | 11/76; partially-admitted | 69/69; admitted | endpoint-gap |
 | 138 | 92-330-j26-1 | bus | 330 | 493 | 0/0; inactive-on-civil-day | 0/0; inactive-on-civil-day | Inactive on both fixtures; annual service retained |

@@ -8,7 +8,7 @@
     "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
     "boundary": "9fcbdc0a501919e7d8722827e0868784010be046dccffc02df0833f9de21f86a",
     "timetable": "fdbe77f9d44d9f7cf59a1da8cf09b87970a6afc0a78355421265b73f9981d49c",
-    "policy": "4b05773d1b0845b58954d712bc207c1d59de332fdba6ee8a6976a66af7fa4e23",
+    "policy": "1059f9f41a98aa5d734673d3a0c1586e7ffc091efd74c98cccf53c0ed7f74ea3",
     "catalogue": "a3ca9355f89503c16380dec23a518a1c3ad2b91308428da0d8ade6a3da782c8f"
   },
   "attribution": [
@@ -29,19 +29,19 @@
       "date": "2026-09-04",
       "manifest": "local/2026-09-04/st-gallen-region-day-manifest.json",
       "morning": "local/2026-09-04/st-gallen-region-morning.json",
-      "manifestSha256": "2fc31fda2a27e23e0bd56cc75ff1f94a1d63e8595008432d632e0c8a59979404",
-      "morningSha256": "8204afcc158a3d210dc4cc009022b625a67f087741a6ba30552df86336486b55",
-      "trips": 10426,
-      "patterns": 991
+      "manifestSha256": "6418590f781c320b93dd52ce39b72b360a27c37871c9716965d9dee6a9993beb",
+      "morningSha256": "7ed422df999238222201273c5a074b46ad71f575b8580def5ebaa2ebfd7f355e",
+      "trips": 10500,
+      "patterns": 994
     },
     {
       "date": "2026-09-06",
       "manifest": "local/2026-09-06/st-gallen-region-day-manifest.json",
       "morning": "local/2026-09-06/st-gallen-region-morning.json",
-      "manifestSha256": "28a16b3e2444afc34c1008f1f731a406f48b99e0922fe6a2663f7e5f02fdc5b6",
-      "morningSha256": "07432defca2b3cc885672b7d54932a023694dc9cc818b4894e33c453e6277975",
-      "trips": 7197,
-      "patterns": 760
+      "manifestSha256": "68c68a58b2097fc8963584ada0634bd155aeb09a05e5ad0c7a62394debca590f",
+      "morningSha256": "cc8eccc2b18a4a0db27e822cc0ec1e4cfe2ec2a55cf04af57f086f92369bf0b8",
+      "trips": 7264,
+      "patterns": 764
     }
   ],
   "note": "Feed payloads and original/decoded AL_OEV source vectors are generated locally and ignored by Git; they are excluded from public site assets. Resolve publisher permission before redistribution."

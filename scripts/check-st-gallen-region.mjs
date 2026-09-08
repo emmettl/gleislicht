@@ -2,6 +2,8 @@ import assert from 'node:assert/strict'
 import { readFile } from 'node:fs/promises'
 import { join, resolve } from 'node:path'
 import { pathToFileURL } from 'node:url'
+import { gunzipSync } from 'node:zlib'
+import { validatedStGallenRepairs } from './st-gallen-line-geometry.mjs'
 import { sha256 } from './download-luzern-sources.mjs'
 import { validateStGallenSnapshot } from './build-st-gallen-region.mjs'
 
@@ -18,6 +20,10 @@ export async function checkStGallenRegion({ auditPath = 'data/st-gallen-audit/lo
   assert.equal(new Set(audit.inventory.map(r => r.agencyId)).size, audit.annualAgencies)
   assert.equal(sum(audit.inventory, 'annualTripRecords'), audit.scope.annualScopedTripRecords)
   const sourceKeys = new Set(audit.sourceInventory.map(s => s.key))
+  const repairs = validatedStGallenRepairs({bus:JSON.parse(gunzipSync(await readFile(join(sourceDirectory,'bus.geojson.gz'))))},audit.policy)
+  const pointKey = p => p.slice(0,2).map(n=>n.toFixed(7)).join(',')
+  const edgeKey = (a,b) => [pointKey(a),pointKey(b)].sort().join('|')
+  const reviewedPaths = new Set()
   for (const route of audit.inventory) for (const key of route.sourceFeatures) assert(sourceKeys.has(key))
   let raw
   if (timetablePath) {
@@ -125,7 +131,17 @@ export async function checkStGallenRegion({ auditPath = 'data/st-gallen-audit/lo
       patternTrips.set(pattern.id, (patternTrips.get(pattern.id) ?? 0) + 1)
       assert.deepEqual(train.stops.map(([i]) => manifest.stops[i][4]), pattern.stopIds)
       assert.deepEqual(train.callRules, pattern.callRules)
-      for (let i = 0; i < train.pathSegments.length; i++) assert.equal(sha256(JSON.stringify(manifest.paths[train.pathSegments[i]])), pairs.get(pattern.pairKeys[i]).geometrySha256)
+      for (let i = 0; i < train.pathSegments.length; i++) {
+        const path=manifest.paths[train.pathSegments[i]], pair=pairs.get(pattern.pairKeys[i])
+        assert.equal(sha256(JSON.stringify(path)),pair.geometrySha256)
+        if (!reviewedPaths.has(pair.key)) {
+          const edges=new Set(path.slice(1).map((p,j)=>edgeKey(path[j],p)))
+          const used=repairs.filter(r=>pair.sourceFeatures.includes(r.targetFeature)&&[...r.edges].some(e=>edges.has(e)))
+          assert.deepEqual(used.map(r=>r.id),pair.geometryRepairIds??[],'Incorrect repair provenance')
+          if(used.length) assert.deepEqual([...new Set(used.flatMap(r=>r.sourceFeatures))],pair.repairSourceFeatures)
+          reviewedPaths.add(pair.key)
+        }
+      }
       if (sourceTrains) {
         const source = sourceTrains.get(train.id); assert(source)
         assert.equal(train.sourceServiceDate, source.sourceServiceDate)
@@ -147,6 +163,10 @@ export async function checkStGallenRegion({ auditPath = 'data/st-gallen-audit/lo
 // cache. The full check above additionally replays every original source trip.
 export async function checkStGallenAudit(directory = 'data/st-gallen-audit') {
   const summary = await json(join(directory, 'summary.json'))
+  if (summary.topologyReview) {
+    assert.equal(sha256(await readFile(summary.topologyReview.path)),summary.topologyReview.sha256)
+    assert.deepEqual((await json(summary.topologyReview.path)).sourceHashes,summary.sourceHashes)
+  }
   for (const [name, record] of Object.entries(summary.files)) assert.equal(sha256(await readFile(join(directory, name))), record.sha256, `Audit file ${name}`)
   assert.equal(sha256(await readFile('data/st-gallen-policy.json')), summary.sourceHashes.policy)
   assert.equal(sha256(await readFile('data/st-gallen-sources/sources.json')), summary.sourceHashes.catalogue)
@@ -190,6 +210,14 @@ export async function checkStGallenAudit(directory = 'data/st-gallen-audit') {
     assert.equal(day.scheduledSegmentOccurrences + day.representativeHeadwaySegmentOccurrences, day.segmentOccurrences)
     assert.equal(directedStopPairs.filter(p => p.matched).length, day.matchedDirectedPairs)
     const patterns = new Map(directedPatterns.map(p => [p.id,p])), pairs = new Map(directedStopPairs.map(p => [p.key,p]))
+    const repairs=new Map((summary.policy.geometryRepairs?.repairs??[]).map(r=>[r.id,r]))
+    assert.equal(directedStopPairs.filter(p=>p.geometryRepairIds?.length).length,day.repairedDirectedPairs)
+    assert.equal(sum(directedPatterns.filter(p=>p.admitted&&p.pairKeys.some(k=>pairs.get(k).geometryRepairIds?.length)),'trips'),day.admittedTripsUsingRepair)
+    for(const p of pairs.values()) for(const id of p.geometryRepairIds??[]) {
+      const repair=repairs.get(id);assert(repair&&p.matched)
+      assert(p.sourceFeatures.includes(repair.targetFeature))
+      for(const key of p.repairSourceFeatures)assert(keys.has(key))
+    }
     assert.equal(patterns.size, day.patterns); assert.equal(pairs.size, day.directedPairs)
     const occurrences = new Map(), admittedOccurrences = new Map(), reasons = new Map()
     for (const p of patterns.values()) {

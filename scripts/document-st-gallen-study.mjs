@@ -19,6 +19,11 @@ await save('data/st-gallen-audit/source-lines.json',sourceInventory)
 for (const day of days) await save(`data/st-gallen-audit/${day.date}.json`,day)
 summary.days=days.map(({directedPatterns:_p,directedStopPairs:_s,routes:_r,...day})=>day)
 summary.files={}
+if (audit.policy.geometryRepairs?.repairs.length) {
+  const path='data/st-gallen-topology-review.json', review=await read(path)
+  assert.deepEqual(review.sourceHashes,audit.sourceHashes,'Stale topology regression report')
+  summary.topologyReview={path,sha256:sha256(await readFile(path))}
+}
 for(const name of ['routes.json','source-lines.json',...days.map(d=>d.date+'.json')]) summary.files[name]={sha256:sha256(await readFile(join('data/st-gallen-audit',name)))}
 await save('data/st-gallen-audit/summary.json',summary)
 const index={schemaVersion:1,region:'st-gallen',label:'St. Gallen canton — admitted complete stop patterns',localOnly:true,redistributionApproved:false,
@@ -98,7 +103,7 @@ The source is EPSG:2056 LV95 PolyLine plus UTF-8 DBF. The adapter checks complet
 
 Operator codes, passenger-facing designations and modes jointly select a graph. KURSBUCHNR and numeric LINIENNR are not assumed to be GTFS line numbers: rail S21/S22, bus B24/N30 and night services retain their prefixes. Explicit record-name-checked exceptions bridge BOS Swiss sections to LIEmobil, LIEmobil's 12 Eilkurs to 12E, AB N21 to feed B21, Walensee table 3901 to feed BAT, BOS source lines 403/164 to their Buchserberg/Vorarlberg publishers, and individually reviewed N-prefixed or N-suffixed source night lines to numeric GTFS designations. The sole ZVV label maps specifically to VZO 885; BBO 624 maps to the municipal St. Gallenkappel feed identity. Every source feature retains raw operator, offer period, subsidy flag, source name, mapping rationale and resulting route IDs in the source inventory. Multiple same-line source parts can form one graph; counts of graph-candidate features do not mean every trip traverses every feature.
 
-Graphs connect **only exact shared vertices** on the same reviewed operator/line. Geometric crossings are not automatically junctions. No line borrowing, topology repairs, synthetic gap bridges or national road/rail fallbacks are applied. The nearest projection of each ordered stop pair must be within **120 m**; routing uses source edges and permits another disconnected source part's projection only within **5 m** of the nearest snap. Paths exceeding max(1,200 m, 4.5 × direct stop distance), collapsed paths, disconnected components and missing lines are rejected. Short endpoint connectors are explicitly inferred, not measured alignments.
+Graphs connect **only exact shared vertices** on the same reviewed operator/line. Geometric crossings are not automatically junctions. One reviewed **7.37 m** source-edge repair connects the two disconnected components of BOS line 321 at Balgach. It copies exactly two existing line-301 edges, independently present in line 322 and N31/N32; both ends are existing target vertices. The policy stores pinned record/part/vertex references rather than redistributing coordinates. Validation requires matching source names/operators, identical corroborating slices, disconnected target components and a 15 m cap. No proximity joins, invented gap bridges or national road/rail fallbacks are applied. Three other small gaps (LIEmobil 37, PostAuto 190 and night 741) have no corroborated short source path and remain excluded. [Repair regression](../data/st-gallen-topology-review.json) records the before/after results and unchanged existing journeys. The nearest projection of each ordered stop pair must be within **120 m**; routing uses source edges and permits another disconnected source part's projection only within **5 m** of the nearest snap. Paths exceeding max(1,200 m, 4.5 × direct stop distance), collapsed paths, disconnected components and missing lines are rejected. Short endpoint connectors are explicitly inferred, not measured alignments.
 
 Pattern identity includes route, direction_id, every ordered stop ID and pickup/drop-off rules. Every pair is evaluated in its actual direction, including loops and return paths; if any pair fails, the **entire trip pattern** is excluded. Source direction_id alone is never treated as proof of legal direction. AL_OEV expressly does not encode travel direction: successful patterns are inferred alignments, with no one-way street, lane, track, temporary-diversion or water-navigability certification. Sparse boat/cableway linework is retained at its source resolution. Every excluded route, pattern and pair keeps a specific failure reason; nothing is silently cropped to improve coverage.
 
@@ -113,6 +118,7 @@ ${table(['Metric',...days.map(d=>d.date)], [
  ['All segment occurrences matched / evaluated',...days.map(d=>`${num(d.matchedSegmentOccurrences)} / ${num(d.segmentOccurrences)} (${pct(d.matchedSegmentOccurrences,d.segmentOccurrences)})`)],
  ['Scheduled segment occurrences matched / evaluated',...days.map(d=>`${num(d.matchedScheduledSegmentOccurrences)} / ${num(d.scheduledSegmentOccurrences)} (${pct(d.matchedScheduledSegmentOccurrences,d.scheduledSegmentOccurrences)})`)],
  ['Representative headway movements admitted / evaluated',...days.map(d=>`${num(d.admittedHeadwayTrips)} / ${num(d.representativeHeadwayTrips)}`)],
+ ['Admitted movements using reviewed source repair',...days.map(d=>num(d.admittedTripsUsingRepair))],
  ['Preceding-day carry-ins admitted / evaluated',...days.map(d=>`${num(d.admittedCarryInTrips)} / ${num(d.carryInTrips)}`)],
 ])}
 
@@ -161,7 +167,9 @@ node scripts/check-st-gallen-region.mjs --audit-only
 node --test scripts/st-gallen-region.test.mjs
 \`\`\`
 
-The full checker verifies source hashes, annual-route reconciliation, every admitted and excluded source pattern, unchanged source calls/times/sequences, frequency and carry-in metadata, directed path endpoints, per-pair path hashes, chunk overlap consistency, morning-window membership and operator/mode/route/pair-occurrence totals. The audit-only check works from tracked files without the large source cache. Regression tests cover operator isolation, misleading timetable-book numbers, prefix handling, changed overrides, polygon holes/components, preceding-day service, conditional calls, disconnected source geometry and reversed artifact paths.
+The full checker verifies source hashes, annual-route reconciliation, every admitted and excluded source pattern, unchanged source calls/times/sequences, frequency and carry-in metadata, directed path endpoints, per-pair path hashes, chunk overlap consistency, morning-window membership and operator/mode/route/pair-occurrence totals. The audit-only check works from tracked files without the large source cache. The source-edge repair regression compares against the feed and policy from commit 2351822: every previously admitted movement, call and path and every previously matched pair must be unchanged, and only the reviewed line-321 patterns may be added. Run \`node scripts/check-st-gallen-topology-regression.mjs BASELINE_FEED_DIRECTORY BASELINE_AUDIT_JSON\` after building both versions with the exported \`buildStGallenRegion\` function and their respective policies. The saved report records the pinned baseline and result hashes.
+
+Regression tests cover operator isolation, misleading timetable-book numbers, prefix handling, changed overrides, polygon holes/components, preceding-day service, conditional calls, disconnected source geometry reversed artifact paths, and rejection of changed donor geometry, already-connected targets, unreviewed lengths and cross-operator repairs.
 
 Pending scope is explicit: unresolved geometry exclusions; seasonal and holiday validation; road/track/boat direction and plausibility review; publication rights; future refresh/realtime/UI work. Passing numerical checks establishes the stated admitted feed, not complete or observed cantonal transport movement.
 `

@@ -21,6 +21,8 @@
       "BERECHTIGT": "Nein",
       "BETREIBER": "BOS"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-12-C-j26-1"
     ],
@@ -48,6 +50,8 @@
       "BERECHTIGT": "Nein",
       "BETREIBER": "LIEmobil"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-13-B-j26-1"
     ],
@@ -76,6 +80,8 @@
       "BERECHTIGT": "Nein",
       "BETREIBER": "BOS"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-24-C-j26-1"
     ],
@@ -103,6 +109,8 @@
       "BERECHTIGT": "Nein",
       "BETREIBER": "LIEmobil"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-37-A-j26-1"
     ],
@@ -131,6 +139,8 @@
       "BERECHTIGT": "Nein",
       "BETREIBER": "LIEmobil"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-12E-j26-1"
     ],
@@ -158,6 +168,8 @@
       "BERECHTIGT": "Nein",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-221-7-j26-1"
     ],
@@ -187,6 +199,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "REGO"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-72-E-j26-1"
     ],
@@ -214,6 +228,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-221-2-j26-1"
     ],
@@ -241,6 +257,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "BOS"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-300-j26-1"
     ],
@@ -268,6 +286,10 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "BOS"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [
+      "balgach-321-source-gap"
+    ],
     "gtfsRoutes": [
       "92-301-A-j26-1"
     ],
@@ -295,6 +317,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "BOS"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-302-A-j26-1"
     ],
@@ -322,6 +346,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "BOS"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-304-A-j26-1"
     ],
@@ -349,6 +375,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "BOS"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-305-j26-1"
     ],
@@ -376,6 +404,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "BOS"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-331-B-j26-1",
       "92-331-j26-1"
@@ -404,6 +434,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "BOS"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-332-A-j26-1"
     ],
@@ -431,6 +463,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "BOS"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-335-j26-1"
     ],
@@ -459,6 +493,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "BOS"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-352-A-j26-1",
       "92-353-A-j26-1"
@@ -487,6 +523,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "BOS"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-400-A-j26-1",
       "92-400-j26-1"
@@ -515,6 +553,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "REGO"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-150-A-j26-1"
     ],
@@ -542,6 +582,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "REGO"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-151-j26-1"
     ],
@@ -569,6 +611,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "REGO"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-155-j26-1"
     ],
@@ -596,6 +640,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "REGO"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-159-j26-1"
     ],
@@ -623,6 +669,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-229-6-j26-1"
     ],
@@ -650,6 +698,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-220-4-j26-1"
     ],
@@ -677,6 +727,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-222-4-j26-1"
     ],
@@ -704,6 +756,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-221-0-j26-1"
     ],
@@ -731,6 +785,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-220-C-j26-1"
     ],
@@ -758,6 +814,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-220-7-j26-1"
     ],
@@ -787,6 +845,8 @@
       "BERECHTIGT": "Nein",
       "BETREIBER": "BOS"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-403-D-j26-1"
     ],
@@ -814,6 +874,8 @@
       "BERECHTIGT": "Nein",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [],
     "candidateRouteAdmittedTrips": 0,
     "status": "no-annual-St-Gallen-calling-route"
@@ -839,6 +901,8 @@
       "BERECHTIGT": "Nein",
       "BETREIBER": "BBO"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-624-j26-1"
     ],
@@ -868,6 +932,8 @@
       "BERECHTIGT": "Nein",
       "BETREIBER": "BOS"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-164-C-j26-1"
     ],
@@ -895,6 +961,8 @@
       "BERECHTIGT": "Nein",
       "BETREIBER": "LIEmobil"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-11-F-j26-1"
     ],
@@ -922,6 +990,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-229-4-j26-1"
     ],
@@ -949,6 +1019,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-229-3-j26-1"
     ],
@@ -976,6 +1048,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-232-1-j26-1"
     ],
@@ -1003,6 +1077,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-233-0-j26-1"
     ],
@@ -1030,6 +1106,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-233-1-j26-1"
     ],
@@ -1057,6 +1135,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "BOS"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-445-j26-1"
     ],
@@ -1084,6 +1164,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-220-3-j26-1"
     ],
@@ -1111,6 +1193,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-222-3-j26-1"
     ],
@@ -1138,6 +1222,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-220-5-j26-1",
       "96-220-A-j26-1"
@@ -1168,6 +1254,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-220-5-j26-1",
       "96-220-A-j26-1"
@@ -1196,6 +1284,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-249-4-j26-1"
     ],
@@ -1223,6 +1313,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "BRER"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-622-j26-1"
     ],
@@ -1250,6 +1342,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "BRER"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-623-A-j26-1",
       "92-623-j26-1"
@@ -1278,6 +1372,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-240-8-j26-1"
     ],
@@ -1305,6 +1401,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-240-4-j26-1"
     ],
@@ -1332,6 +1430,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-240-5-j26-1"
     ],
@@ -1359,6 +1459,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "BOS"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-401-A-j26-1"
     ],
@@ -1386,6 +1488,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "BOS"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-412-j26-1"
     ],
@@ -1413,6 +1517,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "BOS"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-415-A-j26-1"
     ],
@@ -1440,6 +1546,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "BOS"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-420-j26-1"
     ],
@@ -1467,6 +1575,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "BOS"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-431-A-j26-1"
     ],
@@ -1494,6 +1604,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "BOS"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-432-j26-1"
     ],
@@ -1521,6 +1633,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "BOS"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-433-j26-1"
     ],
@@ -1548,6 +1662,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-248-3-j26-1"
     ],
@@ -1575,6 +1691,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-248-4-j26-1"
     ],
@@ -1602,6 +1720,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "BOS"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-442-j26-1"
     ],
@@ -1629,6 +1749,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "REGO"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-152-j26-1"
     ],
@@ -1656,6 +1778,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-221-1-j26-1"
     ],
@@ -1683,6 +1807,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "REGO"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-158-j26-1"
     ],
@@ -1710,6 +1836,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-220-1-j26-1"
     ],
@@ -1737,6 +1865,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-220-1-j26-1"
     ],
@@ -1764,6 +1894,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "BOS"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-443-j26-1"
     ],
@@ -1791,6 +1923,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "BOS"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-444-j26-1"
     ],
@@ -1818,6 +1952,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-241-4-j26-1"
     ],
@@ -1845,6 +1981,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "AWA"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-650-j26-1"
     ],
@@ -1872,6 +2010,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-227-8-j26-1"
     ],
@@ -1899,6 +2039,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-228-1-j26-1",
       "96-228-A-j26-1"
@@ -1929,6 +2071,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-228-1-j26-1",
       "96-228-A-j26-1"
@@ -1957,6 +2101,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-228-4-j26-1"
     ],
@@ -1984,6 +2130,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-228-8-j26-1"
     ],
@@ -2011,6 +2159,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-227-9-j26-1"
     ],
@@ -2038,6 +2188,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "REGO"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-729-j26-1"
     ],
@@ -2065,6 +2217,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-228-2-j26-1"
     ],
@@ -2092,6 +2246,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-229-5-j26-1"
     ],
@@ -2119,6 +2275,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "BOS"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-761-B-j26-1"
     ],
@@ -2146,6 +2304,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-229-0-j26-1"
     ],
@@ -2173,6 +2333,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-228-9-j26-1"
     ],
@@ -2200,6 +2362,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-229-2-j26-1"
     ],
@@ -2227,6 +2391,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "BLWE"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-770-A-j26-1",
       "92-770-j26-1"
@@ -2255,6 +2421,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "BLWE"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-770-A-j26-1",
       "92-770-j26-1"
@@ -2285,6 +2453,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "BOS"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-302-A-j26-1"
     ],
@@ -2313,6 +2483,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "BOS"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-12-C-j26-1"
     ],
@@ -2341,6 +2513,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "BOS"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-429-j26-1",
       "92-430-j26-1"
@@ -2369,6 +2543,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-249-1-j26-1"
     ],
@@ -2396,6 +2572,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-249-3-j26-1"
     ],
@@ -2423,6 +2601,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-249-5-j26-1"
     ],
@@ -2450,6 +2630,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-249-6-j26-1"
     ],
@@ -2477,6 +2659,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-240-6-j26-1"
     ],
@@ -2504,6 +2688,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-250-A-j26-1"
     ],
@@ -2531,6 +2717,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-221-4-j26-1"
     ],
@@ -2558,6 +2746,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-220-6-j26-1"
     ],
@@ -2585,6 +2775,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-250-8-j26-1"
     ],
@@ -2612,6 +2804,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-220-8-j26-1",
       "96-220-B-j26-1"
@@ -2642,6 +2836,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-220-8-j26-1",
       "96-220-B-j26-1"
@@ -2670,6 +2866,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-224-3-j26-1"
     ],
@@ -2697,6 +2895,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-224-5-j26-1"
     ],
@@ -2724,6 +2924,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-224-4-j26-1"
     ],
@@ -2751,6 +2953,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-254-4-j26-1"
     ],
@@ -2778,6 +2982,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-224-6-j26-1"
     ],
@@ -2805,6 +3011,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-224-7-j26-1"
     ],
@@ -2832,6 +3040,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "BOS"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-333-j26-1"
     ],
@@ -2859,6 +3069,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "BRER"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-631-j26-1"
     ],
@@ -2886,6 +3098,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "BOS"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-722-A-j26-1"
     ],
@@ -2913,6 +3127,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-202-0-j26-1"
     ],
@@ -2940,6 +3156,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "BOS"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-732-M-j26-1",
       "92-732-N-j26-1"
@@ -2968,6 +3186,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "BOS"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-732-M-j26-1",
       "92-732-N-j26-1"
@@ -2996,6 +3216,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "BOS"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-733-I-j26-1"
     ],
@@ -3024,6 +3246,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "BOS"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-733-I-j26-1",
       "92-734-K-j26-1"
@@ -3052,6 +3276,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "BOS"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-734-K-j26-1"
     ],
@@ -3079,6 +3305,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "BOS"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-735-C-j26-1"
     ],
@@ -3106,6 +3334,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-228-3-j26-1",
       "96-228-B-j26-1"
@@ -3134,6 +3364,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-228-3-j26-1",
       "96-228-B-j26-1"
@@ -3162,6 +3394,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-229-1-j26-1"
     ],
@@ -3189,6 +3423,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-234-0-j26-1"
     ],
@@ -3216,6 +3452,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "BOS"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-942-A-j26-1"
     ],
@@ -3243,6 +3481,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "BOS"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-N50-A-j26-1"
     ],
@@ -3272,6 +3512,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "BLWE"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-770-A-j26-1",
       "92-770-j26-1"
@@ -3300,6 +3542,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "BOS"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-N90-B-j26-1"
     ],
@@ -3327,6 +3571,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "AB"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [],
     "candidateRouteAdmittedTrips": 0,
     "status": "no-annual-St-Gallen-calling-route"
@@ -3353,6 +3599,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "AB"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-B21-A-j26-1"
     ],
@@ -3381,6 +3629,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "AB"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-B21-A-j26-1"
     ],
@@ -3408,6 +3658,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "AB"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-B24-j26-1"
     ],
@@ -3435,6 +3687,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-272-5-j26-1"
     ],
@@ -3462,6 +3716,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "BuS"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-N30-j26-1"
     ],
@@ -3489,6 +3745,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-240-7-j26-1"
     ],
@@ -3516,6 +3774,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-228-5-j26-1",
       "96-228-C-j26-1"
@@ -3546,6 +3806,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-228-5-j26-1",
       "96-228-C-j26-1"
@@ -3574,6 +3836,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-229-8-j26-1"
     ],
@@ -3601,10 +3865,14 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "BOS"
     },
+    "geometryRepairIds": [
+      "balgach-321-source-gap"
+    ],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-321-j26-1"
     ],
-    "candidateRouteAdmittedTrips": 1,
+    "candidateRouteAdmittedTrips": 142,
     "status": "candidate-graph-for-admitted-patterns"
   },
   {
@@ -3628,6 +3896,10 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "BOS"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [
+      "balgach-321-source-gap"
+    ],
     "gtfsRoutes": [
       "92-322-j26-1"
     ],
@@ -3655,6 +3927,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "BOS"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-323-j26-1"
     ],
@@ -3682,6 +3956,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "BOS"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-411-A-j26-1"
     ],
@@ -3710,6 +3986,10 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "BOS"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [
+      "balgach-321-source-gap"
+    ],
     "gtfsRoutes": [
       "92-N31-A-j26-1",
       "92-N32-B-j26-1"
@@ -3739,6 +4019,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "BOS"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-24-C-j26-1"
     ],
@@ -3766,6 +4048,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "ZVV"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-885-j26-1"
     ],
@@ -3793,6 +4077,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-245-5-j26-1"
     ],
@@ -3820,6 +4106,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-240-3-j26-1"
     ],
@@ -3849,6 +4137,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "REGO"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-23-D-j26-1"
     ],
@@ -3876,6 +4166,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-224-1-j26-1",
       "96-224-A-j26-1"
@@ -3904,6 +4196,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-224-1-j26-1",
       "96-224-A-j26-1"
@@ -3932,6 +4226,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-224-2-j26-1",
       "96-224-B-j26-1"
@@ -3960,6 +4256,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-224-2-j26-1",
       "96-224-B-j26-1"
@@ -3989,6 +4287,8 @@
       "SYSTEM": "Rapperswil-Jona",
       "BETREIBER": "VZO"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-993-j26-1"
     ],
@@ -4017,6 +4317,8 @@
       "SYSTEM": "Rapperswil-Jona",
       "BETREIBER": "VZO"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-994-j26-1"
     ],
@@ -4045,6 +4347,8 @@
       "SYSTEM": "Rapperswil-Jona",
       "BETREIBER": "BRER"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-995-A-j26-1"
     ],
@@ -4073,6 +4377,8 @@
       "SYSTEM": "St.Gallen",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-222-A-j26-1"
     ],
@@ -4101,6 +4407,8 @@
       "SYSTEM": "St.Gallen",
       "BETREIBER": "VBSG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-7-C-j26-1"
     ],
@@ -4129,6 +4437,8 @@
       "SYSTEM": "St.Gallen",
       "BETREIBER": "VBSG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-8-B-j26-1"
     ],
@@ -4157,6 +4467,8 @@
       "SYSTEM": "St.Gallen",
       "BETREIBER": "VBSG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-9-A-j26-1"
     ],
@@ -4185,6 +4497,8 @@
       "SYSTEM": "St.Gallen",
       "BETREIBER": "VBSG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-10-C-j26-1"
     ],
@@ -4213,6 +4527,8 @@
       "SYSTEM": "Rapperswil-Jona",
       "BETREIBER": "VZO"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-996-j26-1"
     ],
@@ -4241,6 +4557,8 @@
       "SYSTEM": "St.Gallen",
       "BETREIBER": "VBSG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-1-D-j26-1"
     ],
@@ -4269,6 +4587,8 @@
       "SYSTEM": "St.Gallen",
       "BETREIBER": "VBSG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-2-B-j26-1"
     ],
@@ -4297,6 +4617,8 @@
       "SYSTEM": "St.Gallen",
       "BETREIBER": "VBSG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-2-B-j26-1"
     ],
@@ -4325,6 +4647,8 @@
       "SYSTEM": "St.Gallen",
       "BETREIBER": "VBSG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-3-G-j26-1"
     ],
@@ -4353,6 +4677,8 @@
       "SYSTEM": "St.Gallen",
       "BETREIBER": "VBSG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-3-G-j26-1"
     ],
@@ -4381,6 +4707,8 @@
       "SYSTEM": "St.Gallen",
       "BETREIBER": "VBSG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-4-E-j26-1"
     ],
@@ -4409,6 +4737,8 @@
       "SYSTEM": "St.Gallen",
       "BETREIBER": "VBSG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-4-E-j26-1"
     ],
@@ -4437,6 +4767,8 @@
       "SYSTEM": "St.Gallen",
       "BETREIBER": "VBSG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-5-B-j26-1"
     ],
@@ -4465,6 +4797,8 @@
       "SYSTEM": "St.Gallen",
       "BETREIBER": "VBSG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-5-B-j26-1"
     ],
@@ -4493,6 +4827,8 @@
       "SYSTEM": "St.Gallen",
       "BETREIBER": "VBSG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-6-A-j26-1"
     ],
@@ -4521,6 +4857,8 @@
       "SYSTEM": "Rapperswil-Jona",
       "BETREIBER": "VZO"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-991-j26-1"
     ],
@@ -4549,6 +4887,8 @@
       "SYSTEM": "Rapperswil-Jona",
       "BETREIBER": "VZO"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-992-j26-1"
     ],
@@ -4577,6 +4917,8 @@
       "SYSTEM": "Wil",
       "BETREIBER": "BOS"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-701-E-j26-1"
     ],
@@ -4605,6 +4947,8 @@
       "SYSTEM": "Wil",
       "BETREIBER": "BOS"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-702-D-j26-1"
     ],
@@ -4633,6 +4977,8 @@
       "SYSTEM": "Wil",
       "BETREIBER": "BOS"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-703-C-j26-1"
     ],
@@ -4661,6 +5007,8 @@
       "SYSTEM": "Wil",
       "BETREIBER": "BOS"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-704-C-j26-1"
     ],
@@ -4689,6 +5037,8 @@
       "SYSTEM": "Wil",
       "BETREIBER": "BOS"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-705-D-j26-1"
     ],
@@ -4717,6 +5067,8 @@
       "SYSTEM": "Wil",
       "BETREIBER": "BOS"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-706-C-j26-1"
     ],
@@ -4745,6 +5097,8 @@
       "SYSTEM": "Wil",
       "BETREIBER": "REGO"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-731-j26-1"
     ],
@@ -4773,6 +5127,8 @@
       "SYSTEM": "St.Gallen",
       "BETREIBER": "VBSG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-11-C-j26-1"
     ],
@@ -4801,6 +5157,8 @@
       "SYSTEM": "St.Gallen",
       "BETREIBER": "VBSG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-12-F-j26-1"
     ],
@@ -4829,6 +5187,8 @@
       "SYSTEM": "Rorschach - Goldach - Rorschacherberg",
       "BETREIBER": "BOS"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-251-B-j26-1"
     ],
@@ -4857,6 +5217,8 @@
       "SYSTEM": "Rorschach - Goldach - Rorschacherberg",
       "BETREIBER": "BOS"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-252-C-j26-1"
     ],
@@ -4885,6 +5247,8 @@
       "SYSTEM": "Rorschach - Goldach - Rorschacherberg",
       "BETREIBER": "BOS"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "92-253-C-j26-1"
     ],
@@ -4913,6 +5277,8 @@
       "SYSTEM": "Rorschach - Goldach - Rorschacherberg",
       "BETREIBER": "PAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "96-220-7-j26-1"
     ],
@@ -4940,6 +5306,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "AB"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "91-15-I-j26-1"
     ],
@@ -4967,6 +5335,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "Thurbo"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "91-7-B-j26-1"
     ],
@@ -4994,6 +5364,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "Thurbo"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "91-5-B-j26-1"
     ],
@@ -5021,6 +5393,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "AB"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "91-15-I-j26-1"
     ],
@@ -5048,6 +5422,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "Thurbo"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "91-35-j26-1"
     ],
@@ -5075,6 +5451,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "Thurbo"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "91-21-F-j26-1"
     ],
@@ -5102,6 +5480,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "Thurbo"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "91-13-F-j26-1"
     ],
@@ -5129,6 +5509,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "SBB"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "91-12-j26-1"
     ],
@@ -5157,6 +5539,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "AB"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "91-21-j26-1",
       "91-22-A-j26-1"
@@ -5185,6 +5569,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "Thurbo"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "91-2-E-j26-1"
     ],
@@ -5212,6 +5598,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "Thurbo"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "91-5-B-j26-1"
     ],
@@ -5239,6 +5627,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "Thurbo"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "91-22-B-j26-1"
     ],
@@ -5266,6 +5656,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "Thurbo"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "91-13-F-j26-1"
     ],
@@ -5293,6 +5685,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "Thurbo"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "91-9-E-j26-1"
     ],
@@ -5320,6 +5714,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "AB"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "91-23-A-j26-1"
     ],
@@ -5347,6 +5743,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "AB"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "91-24-A-j26-1"
     ],
@@ -5374,6 +5772,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "AB"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "91-26-B-j26-1"
     ],
@@ -5401,6 +5801,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "SOB"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "91-VAE-j26-1"
     ],
@@ -5428,6 +5830,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "Thurbo"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "91-12-A-j26-1"
     ],
@@ -5455,6 +5859,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "SBB"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "91-8-C-j26-1"
     ],
@@ -5482,6 +5888,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "SBB"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "91-2-B-j26-1"
     ],
@@ -5509,6 +5917,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "SOB"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "91-27-B-j26-1"
     ],
@@ -5536,6 +5946,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "SBB"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "91-25-j26-1"
     ],
@@ -5563,6 +5975,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "SBB"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "91-7-C-j26-1"
     ],
@@ -5590,6 +6004,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "SBB"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "91-15-C-j26-1"
     ],
@@ -5617,6 +6033,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "Thurbo"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "91-1-C-j26-1"
     ],
@@ -5644,6 +6062,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "Thurbo"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "91-1-P-j26-1"
     ],
@@ -5671,6 +6091,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "AB"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "91-25-A-j26-1"
     ],
@@ -5699,6 +6121,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "AB"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "91-21-j26-1",
       "91-22-A-j26-1"
@@ -5727,6 +6151,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "SOB"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "91-17-M-j26-1"
     ],
@@ -5754,6 +6180,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "Thurbo"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "91-1-C-j26-1"
     ],
@@ -5781,6 +6209,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "SOB"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "91-40-j26-1"
     ],
@@ -5808,6 +6238,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "SBB"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "91-16-A-j26-1"
     ],
@@ -5835,6 +6267,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "SOB"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "91-6-G-j26-1"
     ],
@@ -5862,6 +6296,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "SBB"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "91-5-C-j26-1"
     ],
@@ -5889,6 +6325,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "Thurbo"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "91-10-C-j26-1"
     ],
@@ -5916,6 +6354,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "SOB"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "91-81-C-j26-1"
     ],
@@ -5943,6 +6383,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "Thurbo"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "91-82-j26-1"
     ],
@@ -5970,6 +6412,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "SBB"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "91-5-G-j26-1"
     ],
@@ -5997,6 +6441,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "Thurbo"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "91-22-B-j26-1"
     ],
@@ -6024,6 +6470,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "Thurbo"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "91-72-B-j26-1"
     ],
@@ -6051,6 +6499,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "Thurbo"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "91-7-B-j26-1"
     ],
@@ -6078,6 +6528,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "SOB"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "91-4-j26-1"
     ],
@@ -6105,6 +6557,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "Thurbo"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "91-72-B-j26-1"
     ],
@@ -6132,6 +6586,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "Thurbo"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "91-2-E-j26-1"
     ],
@@ -6160,6 +6616,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "SW"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "94-R-Y-j26-1"
     ],
@@ -6187,6 +6645,8 @@
       "BERECHTIGT": "Ja",
       "BETREIBER": "LUFAG"
     },
+    "geometryRepairIds": [],
+    "repairDonorFor": [],
     "gtfsRoutes": [
       "93-279-0-j26-1"
     ],

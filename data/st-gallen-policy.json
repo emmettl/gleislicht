@@ -17,7 +17,7 @@
     "Complete annual pinned GTFS census of trips with at least one source stop in the full SG polygon; not all six OSTWIND cantons.",
     "Nonstopping through traffic, services absent from national GTFS and unscheduled/flexible products are outside the measured census.",
     "Weekday and Sunday September fixtures include preceding-service-day spillover; winter, holidays and other seasonal dates remain unvalidated.",
-    "No geometry substitution from other lines; no invented road, water or mountain connectors.",
+    "Only explicitly reviewed, bounded same-operator source-edge repairs; no invented road, water or mountain connectors.",
     "Regional feed and source vectors remain local pending resolution of publisher redistribution terms."
   ],
   "operatorCrosswalk": {
@@ -330,5 +330,37 @@
       "reviewedRouteId": "92-23-D-j26-1"
     }
   },
-  "sourceArchiveSha256": "fa6ad762d43c7792bf664f12fbf33b7e27f9fdbb826cdd75a9d0561b888e3260"
+  "sourceArchiveSha256": "fa6ad762d43c7792bf664f12fbf33b7e27f9fdbb826cdd75a9d0561b888e3260",
+  "geometryRepairs": {
+    "maximumLengthMetres": 15,
+    "repairs": [
+      {
+        "id": "balgach-321-source-gap",
+        "targetFeature": "bus:132",
+        "expectedTargetName": "321 Altstätten SG - Heerbrugg - Diepoldsau (- Hohenems)",
+        "donorFeature": "bus:10",
+        "expectedDonorName": "301 Altstätten SG - Lüchingen - Marbach SG - Rebstein - Balgach - Heerbrugg",
+        "partIndex": 3,
+        "startVertex": 394,
+        "endVertex": 396,
+        "pathMetres": 7.368011075696498,
+        "corroboratingSources": [
+          {
+            "feature": "bus:133",
+            "partIndex": 2,
+            "startVertex": 399,
+            "endVertex": 401
+          },
+          {
+            "feature": "bus:136",
+            "partIndex": 16,
+            "startVertex": 0,
+            "endVertex": 2,
+            "reverse": true
+          }
+        ],
+        "reason": "Two exact official BOS line-301 edges connect existing endpoints of two disconnected components in source line 321 at Balgach. Identical geometry is present in line 322 and night N31/N32. No proximity bridge or new coordinate; source-record/index references keep restricted vectors in the local cache."
+      }
+    ]
+  }
 }

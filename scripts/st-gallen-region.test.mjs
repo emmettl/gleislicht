@@ -1,10 +1,10 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
-import { featureIdentity, stGallenGraphs, matchStGallenPair, directedPatternKey } from './st-gallen-line-geometry.mjs'
+import { featureIdentity, stGallenGraphs, matchStGallenPair, directedPatternKey, validatedStGallenRepairs } from './st-gallen-line-geometry.mjs'
 import { inCanton, civilInstances, stGallenMode } from './st-gallen-timetable.mjs'
 import { validateStGallenSnapshot, stGallenCategory } from './build-st-gallen-region.mjs'
-const policy = JSON.parse(readFileSync(new URL('../data/st-gallen-policy.json', import.meta.url)))
+const policy = { ...JSON.parse(readFileSync(new URL('../data/st-gallen-policy.json', import.meta.url))), geometryRepairs: undefined }
 const feature = (properties = {}, coords = [[9.37,47.42],[9.38,47.42],[9.39,47.42]]) => ({type:'Feature',id:999,properties:{ANGEBOT:'Tag', BERECHTIGT:'Ja', BETREIBER:'VBSG', LINIENNR:'1', KURSBUCHNR:'80.001', LINIENNAME:'1 Winkeln - Stephanshorn', ...properties},geometry:{type:'LineString',coordinates:coords}})
 
 test('publisher line identity preserves prefixes and separates rail book numbers', () => {
@@ -53,3 +53,26 @@ test('artifact validator rejects reversed paths and missing call geometry', () =
 })
 
 test('boat feed uses native ferry category', () => { assert.equal(stGallenCategory({mode:'boat',line:'BAT',routeType:1000}),'ferry') })
+
+
+test('repairs use corroborated source slices and exact disconnected target vertices', () => {
+  const a=[9.37,47.42], b=[9.37004,47.42], mid=[9.37002,47.42]
+  const target={...feature(),id:1,properties:{...feature().properties,LINIENNAME:'target'},geometry:{type:'MultiLineString',coordinates:[[[9.369,47.42],a],[b,[9.371,47.42]]]}}
+  const donor={...feature({},[a,mid,b]),id:2,properties:{...feature().properties,LINIENNAME:'donor'}}
+  const sources={bus:{type:'FeatureCollection',features:[target,donor,{...structuredClone(donor),id:3},{...structuredClone(donor),id:4}]}}
+  const config={geometryRepairs:{maximumLengthMetres:15,repairs:[{id:'test',targetFeature:'bus:1',expectedTargetName:'target',donorFeature:'bus:2',expectedDonorName:'donor',partIndex:0,startVertex:0,endVertex:2,pathMetres:3.012864651,corroboratingSources:[{feature:'bus:3',partIndex:0,startVertex:0,endVertex:2},{feature:'bus:4',partIndex:0,startVertex:0,endVertex:2}]}]}}
+  // Derive the fixture distance from the actual spherical coordinate metric.
+  const candidate=stGallenGraphs({bus:{type:'FeatureCollection',features:[feature({},[a,mid,b])]}},policy).graphs.get(JSON.stringify(['885','bus','1']))
+  config.geometryRepairs.repairs[0].pathMetres=matchStGallenPair(candidate,a,b,policy.limits).pathMetres
+  assert.equal(validatedStGallenRepairs(sources,config).length,1)
+  const badLength=structuredClone(config);badLength.geometryRepairs.repairs[0].pathMetres=14
+  assert.throws(()=>validatedStGallenRepairs(sources,badLength),/length/)
+  const moved=structuredClone(sources);moved.bus.features[2].geometry.coordinates[1][1]+=0.0001
+  assert.throws(()=>validatedStGallenRepairs(moved,config),/geometry changed/)
+  const joined=structuredClone(sources);joined.bus.features[0].geometry.coordinates.push([a,b])
+  assert.throws(()=>validatedStGallenRepairs(joined,config),/already connected/)
+  const foreign=structuredClone(sources);foreign.bus.features[1].properties.BETREIBER='PAG'
+  assert.throws(()=>validatedStGallenRepairs(foreign,config),/operators/)
+  const shifted=structuredClone(config);shifted.geometryRepairs.repairs[0].startVertex=1
+  assert.throws(()=>validatedStGallenRepairs(sources,shifted))
+})

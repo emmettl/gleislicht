@@ -12,7 +12,7 @@
     "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
     "boundary": "9fcbdc0a501919e7d8722827e0868784010be046dccffc02df0833f9de21f86a",
     "timetable": "fdbe77f9d44d9f7cf59a1da8cf09b87970a6afc0a78355421265b73f9981d49c",
-    "policy": "4b05773d1b0845b58954d712bc207c1d59de332fdba6ee8a6976a66af7fa4e23",
+    "policy": "1059f9f41a98aa5d734673d3a0c1586e7ffc091efd74c98cccf53c0ed7f74ea3",
     "catalogue": "a3ca9355f89503c16380dec23a518a1c3ad2b91308428da0d8ade6a3da782c8f"
   },
   "scope": {
@@ -41,7 +41,7 @@
       "Complete annual pinned GTFS census of trips with at least one source stop in the full SG polygon; not all six OSTWIND cantons.",
       "Nonstopping through traffic, services absent from national GTFS and unscheduled/flexible products are outside the measured census.",
       "Weekday and Sunday September fixtures include preceding-service-day spillover; winter, holidays and other seasonal dates remain unvalidated.",
-      "No geometry substitution from other lines; no invented road, water or mountain connectors.",
+      "Only explicitly reviewed, bounded same-operator source-edge repairs; no invented road, water or mountain connectors.",
       "Regional feed and source vectors remain local pending resolution of publisher redistribution terms."
     ],
     "operatorCrosswalk": {
@@ -354,7 +354,39 @@
         "reviewedRouteId": "92-23-D-j26-1"
       }
     },
-    "sourceArchiveSha256": "fa6ad762d43c7792bf664f12fbf33b7e27f9fdbb826cdd75a9d0561b888e3260"
+    "sourceArchiveSha256": "fa6ad762d43c7792bf664f12fbf33b7e27f9fdbb826cdd75a9d0561b888e3260",
+    "geometryRepairs": {
+      "maximumLengthMetres": 15,
+      "repairs": [
+        {
+          "id": "balgach-321-source-gap",
+          "targetFeature": "bus:132",
+          "expectedTargetName": "321 Altstätten SG - Heerbrugg - Diepoldsau (- Hohenems)",
+          "donorFeature": "bus:10",
+          "expectedDonorName": "301 Altstätten SG - Lüchingen - Marbach SG - Rebstein - Balgach - Heerbrugg",
+          "partIndex": 3,
+          "startVertex": 394,
+          "endVertex": 396,
+          "pathMetres": 7.368011075696498,
+          "corroboratingSources": [
+            {
+              "feature": "bus:133",
+              "partIndex": 2,
+              "startVertex": 399,
+              "endVertex": 401
+            },
+            {
+              "feature": "bus:136",
+              "partIndex": 16,
+              "startVertex": 0,
+              "endVertex": 2,
+              "reverse": true
+            }
+          ],
+          "reason": "Two exact official BOS line-301 edges connect existing endpoints of two disconnected components in source line 321 at Balgach. Identical geometry is present in line 322 and night N31/N32. No proximity bridge or new coordinate; source-record/index references keep restricted vectors in the local cache."
+        }
+      ]
+    }
   },
   "annualRouteRecords": 343,
   "annualAgencies": 38,
@@ -528,23 +560,23 @@
     {
       "date": "2026-09-04",
       "trips": 24782,
-      "admittedTrips": 10426,
-      "excludedTrips": 14356,
+      "admittedTrips": 10500,
+      "excludedTrips": 14282,
       "carryInTrips": 221,
-      "admittedCarryInTrips": 159,
+      "admittedCarryInTrips": 161,
       "representativeHeadwayTrips": 11417,
       "admittedHeadwayTrips": 1239,
       "patterns": 1441,
-      "admittedPatterns": 991,
+      "admittedPatterns": 994,
       "directedPairs": 8427,
-      "matchedDirectedPairs": 7128,
+      "matchedDirectedPairs": 7130,
       "segmentOccurrences": 202330,
-      "matchedSegmentOccurrences": 176442,
+      "matchedSegmentOccurrences": 176516,
       "scheduledSegmentOccurrences": 189688,
-      "matchedScheduledSegmentOccurrences": 173978,
+      "matchedScheduledSegmentOccurrences": 174052,
       "representativeHeadwaySegmentOccurrences": 12642,
-      "repairedDirectedPairs": 0,
-      "admittedTripsUsingRepair": 0,
+      "repairedDirectedPairs": 2,
+      "admittedTripsUsingRepair": 74,
       "groups": [
         {
           "id": "65:rail",
@@ -687,14 +719,14 @@
           "mode": "bus",
           "routes": 54,
           "trips": 2619,
-          "admittedTrips": 2050,
+          "admittedTrips": 2124,
           "patterns": 181,
-          "admittedPatterns": 144,
+          "admittedPatterns": 147,
           "directedPairs": 1593,
-          "matchedDirectedPairs": 1408,
+          "matchedDirectedPairs": 1410,
           "segmentOccurrences": 38755,
-          "matchedSegmentOccurrences": 36328,
-          "geometryCoverage": 0.9373758224745194
+          "matchedSegmentOccurrences": 36402,
+          "geometryCoverage": 0.9392852535156754
         },
         {
           "id": "772:bus",
@@ -1045,73 +1077,73 @@
       "exclusionReasons": {
         "endpoint-gap": 945,
         "missing-line": 13169,
-        "disconnected-line": 114,
-        "implausible-detour": 128
+        "implausible-detour": 128,
+        "disconnected-line": 40
       },
       "artifacts": {
         "directory": "data/st-gallen-region/local/2026-09-04",
-        "manifestGzipBytes": 1958709,
-        "morningGzipBytes": 2152046,
+        "manifestGzipBytes": 1971094,
+        "morningGzipBytes": 2166667,
         "chunks": [
           {
             "id": "00-02",
-            "gzipBytes": 29299,
-            "trips": 173
+            "gzipBytes": 30036,
+            "trips": 175
           },
           {
             "id": "02-04",
-            "gzipBytes": 588,
+            "gzipBytes": 589,
             "trips": 1
           },
           {
             "id": "04-06",
-            "gzipBytes": 71363,
-            "trips": 464
+            "gzipBytes": 72951,
+            "trips": 470
           },
           {
             "id": "06-08",
-            "gzipBytes": 189124,
-            "trips": 1498
+            "gzipBytes": 191909,
+            "trips": 1509
           },
           {
             "id": "08-10",
-            "gzipBytes": 177926,
-            "trips": 1528
+            "gzipBytes": 180760,
+            "trips": 1539
           },
           {
             "id": "10-12",
-            "gzipBytes": 173450,
-            "trips": 1493
+            "gzipBytes": 176270,
+            "trips": 1504
           },
           {
             "id": "12-14",
-            "gzipBytes": 177929,
-            "trips": 1555
+            "gzipBytes": 180789,
+            "trips": 1566
           },
           {
             "id": "14-16",
-            "gzipBytes": 171757,
-            "trips": 1495
+            "gzipBytes": 174349,
+            "trips": 1506
           },
           {
             "id": "16-18",
-            "gzipBytes": 192108,
-            "trips": 1673
+            "gzipBytes": 194862,
+            "trips": 1684
           },
           {
             "id": "18-20",
-            "gzipBytes": 174820,
-            "trips": 1329
+            "gzipBytes": 177533,
+            "trips": 1340
           },
           {
             "id": "20-22",
-            "gzipBytes": 113192,
-            "trips": 773
+            "gzipBytes": 115504,
+            "trips": 782
           },
           {
             "id": "22-24",
-            "gzipBytes": 87945,
-            "trips": 591
+            "gzipBytes": 89733,
+            "trips": 597
           }
         ]
       }
@@ -1119,23 +1151,23 @@
     {
       "date": "2026-09-06",
       "trips": 22859,
-      "admittedTrips": 7197,
-      "excludedTrips": 15662,
+      "admittedTrips": 7264,
+      "excludedTrips": 15595,
       "carryInTrips": 663,
-      "admittedCarryInTrips": 366,
+      "admittedCarryInTrips": 369,
       "representativeHeadwayTrips": 12973,
       "admittedHeadwayTrips": 1239,
       "patterns": 1182,
-      "admittedPatterns": 760,
+      "admittedPatterns": 764,
       "directedPairs": 8589,
-      "matchedDirectedPairs": 7106,
+      "matchedDirectedPairs": 7108,
       "segmentOccurrences": 142563,
-      "matchedSegmentOccurrences": 115754,
+      "matchedSegmentOccurrences": 115821,
       "scheduledSegmentOccurrences": 128365,
-      "matchedScheduledSegmentOccurrences": 113290,
+      "matchedScheduledSegmentOccurrences": 113357,
       "representativeHeadwaySegmentOccurrences": 14198,
-      "repairedDirectedPairs": 0,
-      "admittedTripsUsingRepair": 0,
+      "repairedDirectedPairs": 2,
+      "admittedTripsUsingRepair": 67,
       "groups": [
         {
           "id": "65:rail",
@@ -1278,14 +1310,14 @@
           "mode": "bus",
           "routes": 54,
           "trips": 1522,
-          "admittedTrips": 1159,
+          "admittedTrips": 1226,
           "patterns": 120,
-          "admittedPatterns": 92,
+          "admittedPatterns": 96,
           "directedPairs": 1553,
-          "matchedDirectedPairs": 1383,
+          "matchedDirectedPairs": 1385,
           "segmentOccurrences": 22256,
-          "matchedSegmentOccurrences": 20143,
-          "geometryCoverage": 0.9050593098490295
+          "matchedSegmentOccurrences": 20210,
+          "geometryCoverage": 0.9080697340043135
         },
         {
           "id": "697:bus",
@@ -1681,73 +1713,73 @@
       "exclusionReasons": {
         "missing-line": 14960,
         "endpoint-gap": 573,
-        "disconnected-line": 70,
-        "implausible-detour": 59
+        "implausible-detour": 59,
+        "disconnected-line": 3
       },
       "artifacts": {
         "directory": "data/st-gallen-region/local/2026-09-06",
-        "manifestGzipBytes": 2049182,
-        "morningGzipBytes": 2158426,
+        "manifestGzipBytes": 2061478,
+        "morningGzipBytes": 2173009,
         "chunks": [
           {
             "id": "00-02",
-            "gzipBytes": 54996,
-            "trips": 319
+            "gzipBytes": 55890,
+            "trips": 322
           },
           {
             "id": "02-04",
-            "gzipBytes": 19917,
+            "gzipBytes": 19974,
             "trips": 111
           },
           {
             "id": "04-06",
-            "gzipBytes": 21405,
+            "gzipBytes": 21445,
             "trips": 126
           },
           {
             "id": "06-08",
-            "gzipBytes": 88868,
-            "trips": 647
+            "gzipBytes": 90714,
+            "trips": 655
           },
           {
             "id": "08-10",
-            "gzipBytes": 122657,
-            "trips": 1082
+            "gzipBytes": 124902,
+            "trips": 1092
           },
           {
             "id": "10-12",
-            "gzipBytes": 124303,
-            "trips": 1097
+            "gzipBytes": 126547,
+            "trips": 1107
           },
           {
             "id": "12-14",
-            "gzipBytes": 123791,
-            "trips": 1101
+            "gzipBytes": 126133,
+            "trips": 1111
           },
           {
             "id": "14-16",
-            "gzipBytes": 125579,
-            "trips": 1113
+            "gzipBytes": 127762,
+            "trips": 1123
           },
           {
             "id": "16-18",
-            "gzipBytes": 126536,
-            "trips": 1095
+            "gzipBytes": 128980,
+            "trips": 1105
           },
           {
             "id": "18-20",
-            "gzipBytes": 114483,
-            "trips": 818
+            "gzipBytes": 116771,
+            "trips": 828
           },
           {
             "id": "20-22",
-            "gzipBytes": 94958,
-            "trips": 647
+            "gzipBytes": 97003,
+            "trips": 655
           },
           {
             "id": "22-24",
-            "gzipBytes": 77072,
-            "trips": 517
+            "gzipBytes": 78474,
+            "trips": 521
           }
         ]
       }
@@ -1755,16 +1787,20 @@
   ],
   "files": {
     "routes.json": {
-      "sha256": "125fd6b472a43351717f97eaa62af8e222f32a4fa297b9a959ea10419c166ee1"
+      "sha256": "053d63b68de2b7abc1b8826c7e15fc4b71fc1c40710221193017be19da340080"
     },
     "source-lines.json": {
-      "sha256": "2296ee0b82105d9b17ec7281674a09d8ed138227fa9630169f19b4f6b51d4c0b"
+      "sha256": "81624b363b0b8be760726520d481456ea7e07b28d9ef8c001e737a25ce1e2fd8"
     },
     "2026-09-04.json": {
-      "sha256": "c13cffc6d601d6f09c28faed24d8b8c4631705eeec38d1d60486bd6d2cabd3e0"
+      "sha256": "16916667bd6799fa1ceb2e4787120f7b7c73c0945a5771fe79ef4cb53e1bae6b"
     },
     "2026-09-06.json": {
-      "sha256": "6c11d4585c4b0096fb0bc404edc2da667ebb399e90249dcd0b881bad97826ee3"
+      "sha256": "f472309fa26c58bd4b473b2fedeb94ca321dbc565b3d25fcd37287a39f5f0a33"
     }
+  },
+  "topologyReview": {
+    "path": "data/st-gallen-topology-review.json",
+    "sha256": "7fe800fd1d5c9f9705c14d9097562bd1c6db0b6d7dde80b7a9c0a49d2804067a"
   }
 }

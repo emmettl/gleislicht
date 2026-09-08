@@ -4208,20 +4208,16 @@
       {
         "date": "2026-09-04",
         "trips": 74,
-        "admittedTrips": 0,
-        "status": "excluded",
-        "reasons": [
-          "disconnected-line"
-        ]
+        "admittedTrips": 74,
+        "status": "admitted",
+        "reasons": []
       },
       {
         "date": "2026-09-06",
         "trips": 68,
-        "admittedTrips": 1,
-        "status": "partially-admitted",
-        "reasons": [
-          "disconnected-line"
-        ]
+        "admittedTrips": 68,
+        "status": "admitted",
+        "reasons": []
       }
     ]
   },

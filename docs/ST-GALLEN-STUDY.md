@@ -44,7 +44,7 @@ The source is EPSG:2056 LV95 PolyLine plus UTF-8 DBF. The adapter checks complet
 
 Operator codes, passenger-facing designations and modes jointly select a graph. KURSBUCHNR and numeric LINIENNR are not assumed to be GTFS line numbers: rail S21/S22, bus B24/N30 and night services retain their prefixes. Explicit record-name-checked exceptions bridge BOS Swiss sections to LIEmobil, LIEmobil's 12 Eilkurs to 12E, AB N21 to feed B21, Walensee table 3901 to feed BAT, BOS source lines 403/164 to their Buchserberg/Vorarlberg publishers, and individually reviewed N-prefixed or N-suffixed source night lines to numeric GTFS designations. The sole ZVV label maps specifically to VZO 885; BBO 624 maps to the municipal St. Gallenkappel feed identity. Every source feature retains raw operator, offer period, subsidy flag, source name, mapping rationale and resulting route IDs in the source inventory. Multiple same-line source parts can form one graph; counts of graph-candidate features do not mean every trip traverses every feature.
 
-Graphs connect **only exact shared vertices** on the same reviewed operator/line. Geometric crossings are not automatically junctions. No line borrowing, topology repairs, synthetic gap bridges or national road/rail fallbacks are applied. The nearest projection of each ordered stop pair must be within **120 m**; routing uses source edges and permits another disconnected source part's projection only within **5 m** of the nearest snap. Paths exceeding max(1,200 m, 4.5 × direct stop distance), collapsed paths, disconnected components and missing lines are rejected. Short endpoint connectors are explicitly inferred, not measured alignments.
+Graphs connect **only exact shared vertices** on the same reviewed operator/line. Geometric crossings are not automatically junctions. One reviewed **7.37 m** source-edge repair connects the two disconnected components of BOS line 321 at Balgach. It copies exactly two existing line-301 edges, independently present in line 322 and N31/N32; both ends are existing target vertices. The policy stores pinned record/part/vertex references rather than redistributing coordinates. Validation requires matching source names/operators, identical corroborating slices, disconnected target components and a 15 m cap. No proximity joins, invented gap bridges or national road/rail fallbacks are applied. Three other small gaps (LIEmobil 37, PostAuto 190 and night 741) have no corroborated short source path and remain excluded. [Repair regression](../data/st-gallen-topology-review.json) records the before/after results and unchanged existing journeys. The nearest projection of each ordered stop pair must be within **120 m**; routing uses source edges and permits another disconnected source part's projection only within **5 m** of the nearest snap. Paths exceeding max(1,200 m, 4.5 × direct stop distance), collapsed paths, disconnected components and missing lines are rejected. Short endpoint connectors are explicitly inferred, not measured alignments.
 
 Pattern identity includes route, direction_id, every ordered stop ID and pickup/drop-off rules. Every pair is evaluated in its actual direction, including loops and return paths; if any pair fails, the **entire trip pattern** is excluded. Source direction_id alone is never treated as proof of legal direction. AL_OEV expressly does not encode travel direction: successful patterns are inferred alignments, with no one-way street, lane, track, temporary-diversion or water-navigability certification. Sparse boat/cableway linework is retained at its source resolution. Every excluded route, pattern and pair keeps a specific failure reason; nothing is silently cropped to improve coverage.
 
@@ -53,21 +53,22 @@ Pattern identity includes route, direction_id, every ordered stop ID and pickup/
 | Metric | 2026-09-04 | 2026-09-06 |
 | --- | --- | --- |
 | Civil-day movement instances | 24'782 | 22'859 |
-| Admitted movement instances | 10'426 (42.1%) | 7'197 (31.5%) |
-| Excluded movement instances | 14'356 | 15'662 |
-| Complete directed patterns admitted / evaluated | 991 / 1'441 | 760 / 1'182 |
-| Directed route-stop pairs matched / evaluated | 7'128 / 8'427 (84.6%) | 7'106 / 8'589 (82.7%) |
-| All segment occurrences matched / evaluated | 176'442 / 202'330 (87.2%) | 115'754 / 142'563 (81.2%) |
-| Scheduled segment occurrences matched / evaluated | 173'978 / 189'688 (91.7%) | 113'290 / 128'365 (88.3%) |
+| Admitted movement instances | 10'500 (42.4%) | 7'264 (31.8%) |
+| Excluded movement instances | 14'282 | 15'595 |
+| Complete directed patterns admitted / evaluated | 994 / 1'441 | 764 / 1'182 |
+| Directed route-stop pairs matched / evaluated | 7'130 / 8'427 (84.6%) | 7'108 / 8'589 (82.8%) |
+| All segment occurrences matched / evaluated | 176'516 / 202'330 (87.2%) | 115'821 / 142'563 (81.2%) |
+| Scheduled segment occurrences matched / evaluated | 174'052 / 189'688 (91.8%) | 113'357 / 128'365 (88.3%) |
 | Representative headway movements admitted / evaluated | 1'239 / 11'417 | 1'239 / 12'973 |
-| Preceding-day carry-ins admitted / evaluated | 159 / 221 | 366 / 663 |
+| Admitted movements using reviewed source repair | 74 | 67 |
+| Preceding-day carry-ins admitted / evaluated | 161 / 221 | 369 / 663 |
 
 Pair and occurrence coverage includes matches inside excluded patterns, so it is distinct from emitted complete-trip coverage. All excluded modes remain in the denominators; frequent mountain headway instances must not be mistaken for scheduled departures.
 
 | Mode | Annual route records | 2026-09-04 admitted/all movements; pair-occurrence coverage | 2026-09-06 admitted/all movements; pair-occurrence coverage |
 | --- | --- | --- | --- |
 | boat | 5 | 22/69; 26.6% | 22/81; 24.2% |
-| bus | 222 | 8'018/9'020; 96.5% | 4'943/5'663; 94.6% |
+| bus | 222 | 8'092/9'020; 96.5% | 5'010/5'663; 94.6% |
 | mountain | 19 | 1'239/13'697; 16.5% | 1'239/15'401; 14.8% |
 | rail | 97 | 1'147/1'996; 71.5% | 993/1'714; 71.0% |
 
@@ -81,7 +82,7 @@ Pair and occurrence coverage includes matches inside excluded patterns, so it is
 | 81_VVV | Verkehrsverbund Vorarlberg | bus | 1 | 0 / 58 | 0 / 26 |
 | 82 | Schweizerische Südostbahn (sob) | rail | 18 | 253 / 338 | 249 / 334 |
 | 113 | Toggenburg Bergbahnen Unterwasser | mountain | 3 | 0 / 1'088 | 0 / 1'088 |
-| 138 | Bus Ostschweiz | bus | 63 | 2'050 / 2'619 | 1'159 / 1'522 |
+| 138 | Bus Ostschweiz | bus | 63 | 2'124 / 2'619 | 1'226 / 1'522 |
 | 194 | Zürichsee-Schifffahrtsgesellschaft AG (ZSG) | boat | 3 | 0 / 21 | 0 / 31 |
 | 195 | Schweizerische Bodensee-Schifffahrt AG | boat | 1 | 0 / 16 | 0 / 16 |
 | 197 | Schiffsbetrieb Walensee | boat | 1 | 22 / 32 | 22 / 34 |
@@ -118,7 +119,7 @@ Pair and occurrence coverage includes matches inside excluded patterns, so it is
 
 | Failure reason | 2026-09-04 affected trips | 2026-09-06 affected trips |
 | --- | --- | --- |
-| disconnected-line | 114 | 70 |
+| disconnected-line | 40 | 3 |
 | endpoint-gap | 945 | 573 |
 | implausible-detour | 128 | 59 |
 | missing-line | 13169 | 14960 |
@@ -189,7 +190,7 @@ Each value is admitted/all civil-day movement instances. Partial routes still ex
 | 138 | 92-302-A-j26-1 | 302 | 70/70 | 63/63 |
 | 138 | 92-304-A-j26-1 | 304 | 71/71 | 37/37 |
 | 138 | 92-305-j26-1 | 305 | 37/37 | 26/26 |
-| 138 | 92-321-j26-1 | 321 | 0/74 | 1/68 |
+| 138 | 92-321-j26-1 | 321 | 74/74 | 68/68 |
 | 138 | 92-322-j26-1 | 322 | 24/24 | 0/0 |
 | 138 | 92-323-j26-1 | 323 | 11/76 | 69/69 |
 | 138 | 92-331-j26-1 | 331 | 34/34 | 29/29 |
@@ -350,6 +351,8 @@ node scripts/check-st-gallen-region.mjs --audit-only
 node --test scripts/st-gallen-region.test.mjs
 ```
 
-The full checker verifies source hashes, annual-route reconciliation, every admitted and excluded source pattern, unchanged source calls/times/sequences, frequency and carry-in metadata, directed path endpoints, per-pair path hashes, chunk overlap consistency, morning-window membership and operator/mode/route/pair-occurrence totals. The audit-only check works from tracked files without the large source cache. Regression tests cover operator isolation, misleading timetable-book numbers, prefix handling, changed overrides, polygon holes/components, preceding-day service, conditional calls, disconnected source geometry and reversed artifact paths.
+The full checker verifies source hashes, annual-route reconciliation, every admitted and excluded source pattern, unchanged source calls/times/sequences, frequency and carry-in metadata, directed path endpoints, per-pair path hashes, chunk overlap consistency, morning-window membership and operator/mode/route/pair-occurrence totals. The audit-only check works from tracked files without the large source cache. The source-edge repair regression compares against the feed and policy from commit 2351822: every previously admitted movement, call and path and every previously matched pair must be unchanged, and only the reviewed line-321 patterns may be added. Run `node scripts/check-st-gallen-topology-regression.mjs BASELINE_FEED_DIRECTORY BASELINE_AUDIT_JSON` after building both versions with the exported `buildStGallenRegion` function and their respective policies. The saved report records the pinned baseline and result hashes.
+
+Regression tests cover operator isolation, misleading timetable-book numbers, prefix handling, changed overrides, polygon holes/components, preceding-day service, conditional calls, disconnected source geometry reversed artifact paths, and rejection of changed donor geometry, already-connected targets, unreviewed lengths and cross-operator repairs.
 
 Pending scope is explicit: unresolved geometry exclusions; seasonal and holiday validation; road/track/boat direction and plausibility review; publication rights; future refresh/realtime/UI work. Passing numerical checks establishes the stated admitted feed, not complete or observed cantonal transport movement.

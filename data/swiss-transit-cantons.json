@@ -607,11 +607,11 @@
         "885",
         "896"
       ],
-      "geometryStatus": "metadata-only",
-      "evidence": "AL_OEV subsidised-line model documented: annually maintained LV95 geometry, operator/line fields and explicitly no travel direction. Official download share opens, but the attempted archive endpoint returned 404. City schematic diagrams are not street geometry.",
-      "vintage": "Introduced with December 2025 timetable; actual downloaded geometry vintage unverified.",
-      "reuse": "General SG terms distinguish data acquisition from service embedding and restrict some redistribution. Establish which dataset terms govern AL_OEV before bundling derived vectors; do not label all SG geodata unrestricted.",
-      "nextAction": "Resolve actual archive acquisition and terms, then audit full operator/line coverage and directed patterns. SG does not stand in for all six OSTWIND cantons.",
+      "geometryStatus": "adapter-partial-local",
+      "evidence": "Full AL_OEV archive acquired: 226 features in five layers. Complete SG polygon census inventories 343 annual GTFS route records across 38 agencies. Weekday/Sunday full-pattern admission emits 10,500 / 7,264 movement instances; all exclusions retained. One corroborated 7.37 m source-edge repair restores line 321. See docs/ST-GALLEN-STUDY.md and data/st-gallen-audit/summary.json. Historical 404 probes remain preserved.",
+      "vintage": "2026 timetable alignment; archive and supplied documentation dated 24 March 2026. No per-feature survey date. Live September documentation date is distinct from pinned geometry vintage.",
+      "reuse": "Publisher-specific restricted terms. Supplied 2019 terms and current website terms retain redistribution/own-geoservice permission requirements. Raw/decoded vectors and regional payloads stay local outside public assets. Attribution, date, lack of legal effect and disclaimer documented.",
+      "nextAction": "Resolve redistribution permission, remaining geometry/direction exclusions and seasonal/holiday validation. Current source-edge repair preserves every previously admitted journey and matched path; no generic proximity stitching.",
       "sourceIds": [
         "sg-source-page",
         "sg-model",

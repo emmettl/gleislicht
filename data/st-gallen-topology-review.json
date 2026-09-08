@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "baselineCommit": "2351822",
+  "baselineSourceHashes": {
+    "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+    "boundary": "9fcbdc0a501919e7d8722827e0868784010be046dccffc02df0833f9de21f86a",
+    "timetable": "fdbe77f9d44d9f7cf59a1da8cf09b87970a6afc0a78355421265b73f9981d49c",
+    "policy": "4b05773d1b0845b58954d712bc207c1d59de332fdba6ee8a6976a66af7fa4e23",
+    "catalogue": "a3ca9355f89503c16380dec23a518a1c3ad2b91308428da0d8ade6a3da782c8f"
+  },
+  "sourceHashes": {
+    "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+    "boundary": "9fcbdc0a501919e7d8722827e0868784010be046dccffc02df0833f9de21f86a",
+    "timetable": "fdbe77f9d44d9f7cf59a1da8cf09b87970a6afc0a78355421265b73f9981d49c",
+    "policy": "1059f9f41a98aa5d734673d3a0c1586e7ffc091efd74c98cccf53c0ed7f74ea3",
+    "catalogue": "a3ca9355f89503c16380dec23a518a1c3ad2b91308428da0d8ade6a3da782c8f"
+  },
+  "repair": {
+    "id": "balgach-321-source-gap",
+    "targetFeature": "bus:132",
+    "expectedTargetName": "321 Altstätten SG - Heerbrugg - Diepoldsau (- Hohenems)",
+    "donorFeature": "bus:10",
+    "expectedDonorName": "301 Altstätten SG - Lüchingen - Marbach SG - Rebstein - Balgach - Heerbrugg",
+    "partIndex": 3,
+    "startVertex": 394,
+    "endVertex": 396,
+    "pathMetres": 7.368011075696498,
+    "corroboratingSources": [
+      {
+        "feature": "bus:133",
+        "partIndex": 2,
+        "startVertex": 399,
+        "endVertex": 401
+      },
+      {
+        "feature": "bus:136",
+        "partIndex": 16,
+        "startVertex": 0,
+        "endVertex": 2,
+        "reverse": true
+      }
+    ],
+    "reason": "Two exact official BOS line-301 edges connect existing endpoints of two disconnected components in source line 321 at Balgach. Identical geometry is present in line 322 and night N31/N32. No proximity bridge or new coordinate; source-record/index references keep restricted vectors in the local cache."
+  },
+  "days": [
+    {
+      "date": "2026-09-04",
+      "beforeTrips": 10426,
+      "afterTrips": 10500,
+      "addedTrips": 74,
+      "unchangedExistingTrips": 10426,
+      "addedTripIdsSha256": "b500fa629fe2f41b2dd757658203207c9dbe08f8d60aa0bc7aa132c530579f43",
+      "addedPatterns": 3,
+      "recoveredPairs": [
+        {
+          "key": "[\"92-321-j26-1\",\"ch:1:sloid:78453:0:02\",\"ch:1:sloid:78454:0:02\"]",
+          "from": "Heerbrugg, Schloss",
+          "to": "Balgach, Optik",
+          "occurrences": 37,
+          "geometryRepairIds": [
+            "balgach-321-source-gap"
+          ]
+        },
+        {
+          "key": "[\"92-321-j26-1\",\"ch:1:sloid:78454:0:01\",\"ch:1:sloid:78453:0:01\"]",
+          "from": "Balgach, Optik",
+          "to": "Heerbrugg, Schloss",
+          "occurrences": 37,
+          "geometryRepairIds": [
+            "balgach-321-source-gap"
+          ]
+        }
+      ],
+      "beforePatterns": 991,
+      "afterPatterns": 994
+    },
+    {
+      "date": "2026-09-06",
+      "beforeTrips": 7197,
+      "afterTrips": 7264,
+      "addedTrips": 67,
+      "unchangedExistingTrips": 7197,
+      "addedTripIdsSha256": "47c75ed7739ea6c0b70fc3f6281a3768f9c43f5e5ac2b1ace8fe70f49b789646",
+      "addedPatterns": 4,
+      "recoveredPairs": [
+        {
+          "key": "[\"92-321-j26-1\",\"ch:1:sloid:78454:0:01\",\"ch:1:sloid:78453:0:01\"]",
+          "from": "Balgach, Optik",
+          "to": "Heerbrugg, Schloss",
+          "occurrences": 34,
+          "geometryRepairIds": [
+            "balgach-321-source-gap"
+          ]
+        },
+        {
+          "key": "[\"92-321-j26-1\",\"ch:1:sloid:78453:0:02\",\"ch:1:sloid:78454:0:02\"]",
+          "from": "Heerbrugg, Schloss",
+          "to": "Balgach, Optik",
+          "occurrences": 33,
+          "geometryRepairIds": [
+            "balgach-321-source-gap"
+          ]
+        }
+      ],
+      "beforePatterns": 760,
+      "afterPatterns": 764
+    }
+  ],
+  "retainedExclusions": [
+    {
+      "feature": "bus:4",
+      "line": "37",
+      "location": "Ruggell",
+      "nearestComponentGapMetres": 0.9452,
+      "decision": "No existing short source-edge connection. A sub-metre gap is not by itself evidence for an authorised join."
+    },
+    {
+      "feature": "bus:6",
+      "line": "190",
+      "location": "Speicher",
+      "nearestComponentGapMetres": 10.3951,
+      "decision": "No existing short source-edge connection; retain complete-pattern exclusion."
+    },
+    {
+      "feature": "bus:130",
+      "line": "741N",
+      "location": "Flawil/Niederwil",
+      "nearestComponentGapMetres": 11.1233,
+      "decision": "No existing short source-edge connection; retain complete-pattern exclusion."
+    }
+  ],
+  "validation": {
+    "passed": true,
+    "allPreviouslyAdmittedCallsAndPathsUnchanged": true,
+    "allPreviouslyMatchedPairsUnchanged": true,
+    "onlyReviewedRouteAdded": true,
+    "redistributionApproved": false,
+    "directionCertified": false
+  }
+}

@@ -109,7 +109,7 @@ export async function buildStGallenRegion({ timetablePath, sourceDirectory, poli
       reuse: catalogue.reuse,
       geometry: { license: catalogue.reuse.license, metadataUrl: 'https://www.sg.ch/bauen/geoinformation/gi/geodaten/al.html', termsUrl: catalogue.reuse.termsUrl,
         archiveDate: '2026-03-24', geometryVintage: '2026 timetable; no per-feature survey date', documentationDate: '2026-03-24',
-        limits: policy.limits, ...catalogue.transformation,
+        limits: policy.limits, repairs: policy.geometryRepairs, ...catalogue.transformation,
         direction: 'Undirected source alignments; ordered GTFS calls determine travel direction. No one-way street certification.',
         disclaimer: 'For information only; no legal effect. Publisher disclaims completeness, currency and accuracy and liability for use.' },
       frequency: { headwayTrips: admitted.filter(t => t.frequency?.exactTimes === 0).length, exactFrequencyTrips: admitted.filter(t => t.frequency?.exactTimes === 1).length, model: 'Source-interval-anchored representative grid when exact_times=0; not scheduled departures.' } }
@@ -147,6 +147,8 @@ export async function buildStGallenRegion({ timetablePath, sourceDirectory, poli
     return { date: day.date, trips: c?.trips ?? 0, admittedTrips: c?.admittedTrips ?? 0, status: !c ? 'inactive-on-civil-day' : c.admittedTrips === c.trips ? 'admitted' : c.admittedTrips ? 'partially-admitted' : 'excluded', reasons: [...new Set(patterns.flatMap(p => p.reasons))] }
   }) }))
   for (const source of sourceInventory) {
+    source.geometryRepairIds = policy.geometryRepairs?.repairs.filter(r => r.targetFeature === source.key).map(r => r.id) ?? []
+    source.repairDonorFor = policy.geometryRepairs?.repairs.filter(r => r.donorFeature === source.key || r.corroboratingSources.some(s => s.feature === source.key)).map(r => r.id) ?? []
     source.gtfsRoutes = inventory.filter(r => r.sourceFeatures.includes(source.key)).map(r => r.routeId)
     source.candidateRouteAdmittedTrips = days.reduce((n, d) => n + d.routes.filter(r => source.gtfsRoutes.includes(r.routeId)).reduce((n, r) => n + r.admittedTrips, 0), 0)
     source.status = !source.agencyIds ? 'identity-or-vintage-exclusion' : !source.gtfsRoutes.length ? 'no-annual-St-Gallen-calling-route' : source.candidateRouteAdmittedTrips ? 'candidate-graph-for-admitted-patterns' : 'no-admitted-fixture-pattern'
