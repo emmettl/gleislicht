@@ -19,6 +19,7 @@ describe('Gleislicht edition', () => {
       'zurich-city',
       'zvv-region',
       'bern-region',
+      'nyon-region',
       'basel-core',
       'lausanne-region',
       'geneva-tpg',

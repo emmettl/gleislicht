@@ -268,7 +268,7 @@ Nyon/NStCM, the Riviera, and North Vaud, using the per-operator reports to resol
 geometry before exposing each area. Broader TPC/MOB/TPF corridors and lake
 services need their own boundary and geometry decisions.
 
-## Nyon/NStCM: geometry and complete operator data ready
+## Nyon/NStCM: integrated dated operator study
 
 The [complete-journey audit](../data/nyon-region/audit.json) now covers all active
 NStCM (66), TPN (738) and Bus Nyon-Prangins (741) journeys on both dates. Every
@@ -308,10 +308,26 @@ include twelve two-hour chunks, a manifest and a morning snapshot. Artifact
 checks cover content hashes, exact byte lengths, valid stop/path references,
 consistent duplicated journeys between chunks and complete directed geometry.
 
-**Application integration remains next:** these are audited operator datasets,
-not a released Nyon study. They exclude SBB mainline, PostAuto and lake services;
-they do not claim all transport in the Nyon district. Add discovery, framing,
-four-language copy, dated refresh/recovery and browser verification before release.
+The application now offers **Nyon · lake to Jura** (`?study=nyon-region`) in
+study discovery and desktop/mobile selectors. It defaults to the full civil day,
+with morning playback, station and service search, dated sharing, local map
+framing, retry controls and English, German, French and Italian copy. The operator
+scope and actual timetable date remain visible. This study excludes SBB mainline,
+PostAuto and lake services; it does not claim all transport in the Nyon district.
+
+`build-nyon-day.mjs` publishes the reviewed 2026-09-08 fixture (955 journeys).
+The Sunday fixture, 2026-09-13 (421 journeys), passes the same release checks.
+Release validation compares the exact topology, complete journeys and morning
+subset against the retained audit and canonical files. Chunks retain their
+content hashes. New unreviewed dates or failed builds recover a verified published
+study with its original date. A missing first-deployment manifest can bootstrap
+from the complete local fixture; missing published chunks fail without mixing data.
+
+Focused integration tests cover both dates, altered calls and paths, mixed source
+hashes, corrupt chunks, dated recovery and discovery/share links. Browser interaction
+and visual app verification remain unperformed in this pass. The next geographic
+expansion is the Riviera, followed by North Vaud; operator geometry review still
+gates those additions.
 
 Reproduce with Node 24:
 
@@ -320,6 +336,9 @@ Reproduce with Node 24:
 # --agencies 66,738,741 --bounds -180,-90,180,90 and a full 00:00–24:00 window.
 node scripts/build-nyon-study.mjs ARCHIVE RAIL COMPLETE_WEEKDAY COMPLETE_SUNDAY data/nyon-region
 node scripts/check-nyon-study.mjs data/nyon-region
+node scripts/build-nyon-day.mjs
+# Optional Sunday release to an isolated output:
+node scripts/build-nyon-day.mjs --date 2026-09-13 --output /tmp/nyon-sunday-release
 ```
 
 `prepare-nyon-road-feeds.mjs ARCHIVE VAUD_MANIFEST OUTPUT` produces matcher feeds.

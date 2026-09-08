@@ -6,10 +6,11 @@ import { join, resolve } from 'node:path'
 import { pathToFileURL } from 'node:url'
 import { previousServiceDate } from './civil-day.mjs'
 import { validateBaselRelease } from './basel-release-validation.mjs'
+import { validateNyonRelease } from './nyon-release-validation.mjs'
 import { validateBernRelease } from './bern-release-validation.mjs'
 import { LAUSANNE_WEST_GROUPS, LAUSANNE_MBC_GROUPS } from './lausanne-mbc.mjs'
 
-export const REGIONAL_IDS = ['zurich-city', 'zvv-region', 'geneva-tpg', 'lausanne-region', 'basel-core', 'bern-region']
+export const REGIONAL_IDS = ['zurich-city', 'zvv-region', 'geneva-tpg', 'lausanne-region', 'basel-core', 'bern-region', 'nyon-region']
 const digest = bytes => createHash('sha256').update(bytes).digest('hex')
 export async function readRegionalArtifacts(read, ids = REGIONAL_IDS, expectedDate) {
   const files = new Map()
@@ -32,7 +33,7 @@ export async function readRegionalArtifacts(read, ids = REGIONAL_IDS, expectedDa
     dates[id] = serviceDate
     assert(day.metadata.windowStart === 0 && day.metadata.windowEnd === 86400, `${id}: incomplete day`)
     assert(morning.metadata.windowStart === 24300 && morning.metadata.windowEnd === 31500, `${id}: wrong morning window`)
-    assert(day.tripCount > 1000 && morning.trains?.length > 100, `${id}: insufficient services`)
+    if (id !== 'nyon-region') assert(day.tripCount > 1000 && morning.trains?.length > 100, `${id}: insufficient services`)
     assert(day.chunks?.length === 12, `${id}: expected twelve two-hour chunks`)
     const local = day.metadata.geometry
     const rail = day.metadata.railGeometry
@@ -107,6 +108,7 @@ export async function readRegionalArtifacts(read, ids = REGIONAL_IDS, expectedDa
       })
     }
     assert.equal(unique.size, day.tripCount, `${id}: day trip count mismatch`)
+    if (id === 'nyon-region') validateNyonRelease(day, morning, [...unique.values()])
     if (id === 'bern-region') validateBernRelease(day, morning, [...unique.values()])
     if (id === 'basel-core') validateBaselRelease(day, morning, [...unique.values()])
   }

@@ -2,9 +2,24 @@ import { studyLinkUrl } from './share-link.ts'
 import { resolveSwissNow, swissInstant } from './swiss-now.ts'
 import { describe, expect, it } from 'vitest'
 import { readStudyLink, withinStudy } from './explore.ts'
+import { STUDY_IDS, REGIONAL_DAYS } from './explore.ts'
+import { EXPLORE_COPY } from './explore-copy.ts'
 import type { NetworkSnapshot } from '@motionstudies/core/domain/network'
 const metadata = (date: string, start = 0, end = 86400) => ({ serviceDate: date, windowStart: start, windowEnd: end }) as NetworkSnapshot['metadata']
 describe('Swiss Now and study links', () => {
+  it('discovers Nyon in every language and preserves its dated full-day or morning links', () => {
+    for (const copy of Object.values(EXPLORE_COPY)) {
+      expect(copy.names).toHaveLength(STUDY_IDS.length)
+      expect(copy.descriptions).toHaveLength(STUDY_IDS.length)
+      expect(copy.names[STUDY_IDS.indexOf('nyon-region')]).toContain('Nyon')
+    }
+    expect(REGIONAL_DAYS['nyon-region']).toBe('nyon-region-day-manifest.json')
+    expect(readStudyLink('?study=nyon-region')).toMatchObject({ study: 'nyon-region', range: 'day' })
+    for (const range of ['morning', 'day'] as const) {
+      const state = { study: 'nyon-region', range, date: '2026-09-08', station: 'Nyon', time: 27900 } as const
+      expect(readStudyLink(new URL(studyLinkUrl('https://example.org/', state)).search)).toMatchObject(state)
+    }
+  })
   it('opens Basel as a full civil day while preserving an explicit morning share', () => {
     expect(readStudyLink('?study=basel-core&time=600')).toMatchObject({ study: 'basel-core', range: 'day', time: 600 })
     const state = { study: 'basel-core', range: 'morning', date: '2026-09-08', station: 'Basel SBB', time: 27900 } as const

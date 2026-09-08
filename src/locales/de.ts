@@ -1,6 +1,10 @@
 import type { UiText } from './en.ts'
 
 const text = {
+  rigiTerrainUnavailable: "Rigi-Gelände nicht verfügbar. Aufstieg erneut wählen oder eine andere Reise öffnen.",
+  rigiTerrainEnter: "Aufstieg {origin} → Rigi Kulm",
+  roadRecordingsTitle: "Strassenaufzeichnungen",
+  pilotLinkUnavailable: "Dieser Aufzeichnungslink ist nicht verfügbar oder enthält ein ungültiges Datum oder eine ungültige Zeit. Die Morgenstudie wird angezeigt.",
   controlHelp: {
   "soundOn": "Musik starten, die sich den Bewegungen anpasst",
   "soundOff": "Den adaptiven Soundtrack stummschalten",
@@ -35,6 +39,15 @@ const text = {
   bernModes: "Ausgewählte Züge, Trams, Busse, Schiffe und Bergbahnen",
   bernView: "Kanton Bern",
   bernModel: "Teilweise Kantonsabdeckung · abgeleitete Wege · ≈ Taktbewegungen sind keine exakten Abfahrten",
+  nyonNetwork: "Nyon · vom See zum Jura",
+  nyonSubtitle: "Nyon und der Jura in Bewegung",
+  nyonNetworkStatus: "Status des Netzes Nyon",
+  nyonPlaceholder: "Nyon, La Cure oder Divonne suchen…",
+  nyonUnavailable: "Fahrplan Nyon nicht verfügbar",
+  nyonModes: "NStCM-Züge · TPN- und Nyon-Prangins-Busse",
+  nyonView: "Region Nyon",
+  nyonModel: "Fahrplanbewegungen · abgeleitete Schienen- und Strassenwege · keine Live-Positionen",
+  nyonScope: "Nur NStCM / TPN / Nyon-Prangins · Fahrplandatum",
   baselSubtitle: "Basel und seine Region in Bewegung",
   baselNetwork: "Basel · BVB/BLT und Regionalbahn",
   baselNetworkStatus: "Status des Basler Netzes",

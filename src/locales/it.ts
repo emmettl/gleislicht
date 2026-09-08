@@ -1,6 +1,10 @@
 import type { UiText } from './en.ts'
 
 const text = {
+  rigiTerrainUnavailable: "Terreno del Rigi non disponibile. Seleziona di nuovo la salita per riprovare o un altro percorso.",
+  rigiTerrainEnter: "Salita {origin} → Rigi Kulm",
+  roadRecordingsTitle: "Registrazioni stradali",
+  pilotLinkUnavailable: "Questo collegamento alla registrazione non è disponibile oppure contiene una data o un’ora non valida. Viene mostrato lo studio del mattino.",
   controlHelp: {
   "soundOn": "Avviare la musica che si adatta ai movimenti",
   "soundOff": "Disattivare la colonna sonora adattiva",
@@ -35,6 +39,15 @@ const text = {
   bernModes: "Selezione di treni, tram, autobus, battelli e trasporti di montagna",
   bernView: "Cantone di Berna",
   bernModel: "Copertura cantonale parziale · percorsi stimati · ≈ movimenti a frequenza, senza partenze esatte",
+  nyonNetwork: "Nyon · dal lago al Giura",
+  nyonSubtitle: "Nyon e il Giura in movimento",
+  nyonNetworkStatus: "Stato della rete di Nyon",
+  nyonPlaceholder: "Cerca Nyon, La Cure o Divonne…",
+  nyonUnavailable: "Orario di Nyon non disponibile",
+  nyonModes: "Treni NStCM · autobus TPN e Nyon-Prangins",
+  nyonView: "Regione di Nyon",
+  nyonModel: "Movimenti da orario · percorsi ferroviari e stradali stimati · nessuna posizione in diretta",
+  nyonScope: "Solo NStCM / TPN / Nyon-Prangins · data dell’orario",
   baselSubtitle: "Basilea e la sua regione in movimento",
   baselNetwork: "Basilea · BVB/BLT e treni regionali",
   baselNetworkStatus: "Stato della rete di Basilea",

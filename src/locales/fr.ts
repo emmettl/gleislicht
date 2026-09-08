@@ -1,6 +1,10 @@
 import type { UiText } from './en.ts'
 
 const text = {
+  rigiTerrainUnavailable: "Relief du Rigi indisponible. Sélectionnez à nouveau la montée pour réessayer ou un autre parcours.",
+  rigiTerrainEnter: "Monter de {origin} → Rigi Kulm",
+  roadRecordingsTitle: "Enregistrements routiers",
+  pilotLinkUnavailable: "Ce lien d’enregistrement est indisponible ou sa date ou son heure est invalide. L’étude du matin est affichée.",
   controlHelp: {
   "soundOn": "Lancer une musique qui suit les mouvements",
   "soundOff": "Couper la bande-son adaptative",
@@ -35,6 +39,15 @@ const text = {
   bernModes: "Sélection de trains, trams, bus, bateaux et transports de montagne",
   bernView: "Canton de Berne",
   bernModel: "Couverture cantonale partielle · tracés déduits · ≈ mouvements selon la fréquence, sans départs exacts",
+  nyonNetwork: "Nyon · du lac au Jura",
+  nyonSubtitle: "Nyon et le Jura en mouvement",
+  nyonNetworkStatus: "État du réseau de Nyon",
+  nyonPlaceholder: "Rechercher Nyon, La Cure ou Divonne…",
+  nyonUnavailable: "Horaires de Nyon indisponibles",
+  nyonModes: "Trains NStCM · bus TPN et Nyon-Prangins",
+  nyonView: "Région de Nyon",
+  nyonModel: "Mouvements selon l’horaire · tracés ferroviaires et routiers estimés · aucune position en direct",
+  nyonScope: "NStCM / TPN / Nyon-Prangins uniquement · date de l’horaire",
   baselSubtitle: "Bâle et sa région en mouvement",
   baselNetwork: "Bâle · BVB/BLT et trains régionaux",
   baselNetworkStatus: "État du réseau de Bâle",

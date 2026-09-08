@@ -74,6 +74,7 @@ export const SWITZERLAND_MAP_FRAMINGS = {
     portraitMinimumDistanceScale: 0.006,
     localDetailHierarchy: true,
   },
+  nyon: { homeDistanceScale: 0.16, minimumDistanceScale: 0.006, portraitMinimumDistanceScale: 0.006, localDetailHierarchy: true },
   basel: {
     homeDistanceScale: 0.18,
     minimumDistanceScale: 0.008,
@@ -109,6 +110,7 @@ export type SwitzerlandRegionalStudyId =
   | 'zvv-region'
   | 'lausanne-region'
   | 'bern-region'
+  | 'nyon-region'
   | 'basel-core'
   | 'geneva-tpg'
   | 'zurich-city'
@@ -168,6 +170,7 @@ export const SWITZERLAND_EDITION: SwitzerlandEdition = {
       'zurich-city': 'zurich-city-morning.json',
       'zvv-region': 'zvv-region-morning.json',
       'bern-region': 'bern-region-morning.json',
+      'nyon-region': 'nyon-region-morning.json',
       'basel-core': 'basel-core-morning.json',
       'lausanne-region': 'lausanne-region-morning.json',
       'geneva-tpg': 'geneva-tpg-morning.json',
