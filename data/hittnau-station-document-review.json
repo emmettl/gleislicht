@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "stationId": "ZH.CH:3091",
+  "road": "ZH:337",
+  "status": "annual-report-reviewed-no-direction-approval",
+  "reviewedOn": "2026-09-09",
+  "source": {
+    "url": "https://maps.zh.ch/system/docs/tbavertraege/Messstellen/3091.pdf",
+    "discoveredVia": "https://geo.zh.ch/maps?initialMapIds=TBAVMSZH&x=2705704.39&y=1248957.73&scale=1500",
+    "discoveryMethod": "Clicked the 3091 marker and followed Daten der Verkehrsmessstelle / Herunterladen in the official GIS info panel.",
+    "fetchedAt": "2026-09-08T22:29:54.158Z",
+    "responseSha256": "ccc6ec79e312c061e7602e20b681b1c068298b50dc63d05abd4d0c757c6ef7f0",
+    "responseBytes": 1620836,
+    "pages": 7,
+    "dataYear": 2025,
+    "reportDate": "2026-03-06"
+  },
+  "visualReview": {
+    "pagesInspected": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "findings": [
+      {
+        "page": 1,
+        "finding": "Station 3091 and route 337 identified, with a location map and annual-average hourly traffic split toward Pfäffikon and Saland. No detector arrows or loop/channel layout shown."
+      },
+      {
+        "page": 2,
+        "finding": "Annual DTV 7336; legend identifies R1 as Fahrtrichtung Pfäffikon and R2 as Fahrtrichtung Saland. These are report labels, not verified feed detector/channel assignments."
+      },
+      {
+        "pages": [
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "finding": "Traffic profiles, annual patterns, events area and holiday calendar. No surveyed detector bearing or station plan found."
+      }
+    ]
+  },
+  "missingEvidence": [
+    "Dated, georeferenced sensor/loop layout at station 3091, including north arrow and travel-direction arrows.",
+    "Mapping from installed channel/loop identifiers to feed detector ZH.CH:3091.02, or equivalent independent evidence.",
+    "Confirmation of applicability to the 8 September 2026 recording date."
+  ],
+  "accessChecks": [
+    {
+      "url": "https://www.notes.zh.ch/bd/tba/bdtbaerwtr.nsf",
+      "result": "KTZH WebLogin form; no authenticated session in the inspected browser."
+    },
+    {
+      "url": "https://vdp.zh.ch/spa/gis/verkehrsdaten-online/M3091",
+      "result": "Verkehr Online login form; no authenticated session in the inspected browser."
+    }
+  ],
+  "limitation": "Public annual-report discovery corrects the earlier unsuccessful guessed URL. It does not resolve the 1401.93 m Saland direct-distance failure, change any original scope or audit, or admit playback. No conclusion is drawn about whether station plans exist in the authenticated portals."
+}
