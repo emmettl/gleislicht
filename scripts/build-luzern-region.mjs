@@ -8,6 +8,7 @@ import { SERVICE_CATEGORIES } from '@motionstudies/core/theme'
 import { luzernGraphs, matchLuzernPair, directedPatternKey } from './luzern-line-geometry.mjs'
 import { luzernMode, inCanton } from './luzern-timetable.mjs'
 import { sha256, LUZERN_METADATA, LUZERN_TERMS } from './download-luzern-sources.mjs'
+import { roadConsensus, validateLuzernRoadScope } from './luzern-road-geometry.mjs'
 
 const json = async path => JSON.parse(await readFile(path, 'utf8'))
 const save = async (path, value, pretty = false) => { await mkdir(dirname(path), { recursive: true }); await writeFile(path, JSON.stringify(value, null, pretty ? 2 : undefined) + (pretty ? '\n' : '')) }
@@ -53,6 +54,16 @@ export async function buildLuzernRegion({ timetablePath, sourceDirectory, policy
   for (const source of catalogue.sources) assert.equal(sha256(await readFile(join(sourceDirectory, source.file))), source.sha256, `Changed source ${source.file}`)
   assert.equal(raw.sourceHashes.boundary, sha256(await readFile(join(sourceDirectory, 'boundary.json'))))
   const sourceHashes = { ...raw.sourceHashes, timetable: sha256(await readFile(timetablePath)), policy: sha256(await readFile(policyPath)), catalogue: sha256(await readFile(join(sourceDirectory, 'sources.json'))) }
+  let roadCache, roads = new Map()
+  if (policy.roadFallback) {
+    const bytes = await readFile(policy.roadFallback.cache)
+    assert.equal(sha256(bytes), policy.roadFallback.sha256, 'Changed road cache')
+    roadCache = JSON.parse(bytes)
+    assert.equal(roadCache.metadata.timetableSha256, sourceHashes.timetable)
+    validateLuzernRoadScope(raw, roadCache)
+    roads = roadConsensus(roadCache, policy.limits)
+    sourceHashes.roads = sha256(bytes)
+  }
   const collections = {}, layers = {}
   for (const layer of ['bus', 'rail', 'boat']) { collections[layer] = await json(join(sourceDirectory, `${layer}.geojson`)); layers[layer] = await json(join(sourceDirectory, `${layer}-layer.json`)) }
   const { graphs, inventory: sourceInventory } = luzernGraphs(collections, layers, policy)
@@ -74,7 +85,12 @@ export async function buildLuzernRegion({ timetablePath, sourceDirectory, policy
           const from = train.calls[i].id, to = call.id, key = JSON.stringify([route.routeId, from, to])
           if (!pairCache.has(key)) {
             const a = stops.get(from), b = stops.get(to)
-            const result = route.mode === 'boat' ? { reason: 'stale-or-missing-boat-source' } : matchLuzernPair(candidate, [Number(a.stop_lon), Number(a.stop_lat)], [Number(b.stop_lon), Number(b.stop_lat)], policy.limits)
+            let result = route.mode === 'boat' ? { reason: 'stale-or-missing-boat-source' } : matchLuzernPair(candidate, [Number(a.stop_lon), Number(a.stop_lat)], [Number(b.stop_lon), Number(b.stop_lat)], policy.limits)
+            if (result.path) result.geometrySource = 'official-line'
+            else if (route.mode === 'bus' && roads.has(key)) {
+              const road = roads.get(key)
+              result = road.path ? { ...road, officialAssessment: result } : { ...result, roadAssessment: road }
+            }
             const { path, ...assessment } = result
             let pathIndex = null
             if (path) { const signature = JSON.stringify(path); if (!pathIndices.has(signature)) { pathIndices.set(signature, paths.length); paths.push(path) } pathIndex = pathIndices.get(signature) }
@@ -99,7 +115,7 @@ export async function buildLuzernRegion({ timetablePath, sourceDirectory, policy
       count.trips++; count.admittedTrips += Number(pattern.admitted); count.segmentOccurrences += pattern.totalPairs; count.matchedSegmentOccurrences += pattern.geometryPairs
       count.carryInTrips += Number(train.sourceServiceDate !== day.date); count.admittedCarryInTrips += Number(pattern.admitted && train.sourceServiceDate !== day.date)
       routeCounts.set(route.routeId, count)
-      if (pattern.admitted) admitted.push({ ...train, route: route.line, agencyId: route.agencyId, routeType: route.routeType, transportMode: route.routeType === 116 ? 'cogwheel' : route.mode, category: category(route), patternId: pattern.id, pathSegments: pattern.pairKeys.map(k => pairCache.get(k).pathIndex) })
+      if (pattern.admitted) admitted.push({ ...train, route: route.line, agencyId: route.agencyId, routeType: route.routeType, transportMode: route.routeType === 116 ? 'cogwheel' : route.mode, category: category(route), patternId: pattern.id, pathSegments: pattern.pairKeys.map(k => pairCache.get(k).pathIndex), geometrySources: pattern.pairKeys.map(k => pairCache.get(k).geometrySource) })
       else for (const reason of pattern.reasons) reasons.set(reason, (reasons.get(reason) ?? 0) + 1)
     }
     const metadata = { publisher: 'Gleislicht, derived from SBB and official Luzern open data', feedVersion: raw.feed.feed_version, serviceDate: day.date,
@@ -112,6 +128,15 @@ export async function buildLuzernRegion({ timetablePath, sourceDirectory, policy
       geometry: { license: 'Open-By', metadataUrl: LUZERN_METADATA, termsUrl: LUZERN_TERMS, busVintage: '2026-05-26', railVintage: '2026-05-08', limits: policy.limits, sourceCrs: 'EPSG:2056', outputCrs: 'EPSG:4326', repairs: policy.geometryRepairs, direction: 'Undirected source alignments; ordered GTFS calls determine travel direction. No one-way street certification.' },
       frequency: { headwayTrips: admitted.filter(t => t.frequency?.exactTimes === 0).length, exactFrequencyTrips: admitted.filter(t => t.frequency?.exactTimes === 1).length, model: 'Source-interval-anchored representative grid when exact_times=0; not scheduled departures.' } }
     if (metadata.frequency.headwayTrips) metadata.model = 'scheduled and representative headway interpolation along inferred official alignments'
+    if (roadCache) {
+      metadata.model = 'scheduled interpolation along official alignments and inferred OSM bus roads'
+      metadata.attribution.push('© OpenStreetMap contributors (ODbL-1.0)')
+      metadata.geometry.license = 'Open-By (official alignments); ODbL-1.0 (OSM-derived road segments)'
+      metadata.geometry.roadFallback = { ...roadCache.metadata, cacheSha256: sourceHashes.roads,
+        licenseUrl: 'https://opendatacommons.org/licenses/odbl/1-0/',
+        consensus: 'Every complete bus pattern containing a pair must yield an identical accepted path',
+        limits: policy.limits, pathAttribution: 'Per-journey geometrySources identifies each official or OSM-derived segment' }
+    }
     const snapshot = compactLuzern(admitted, stops, paths, metadata)
     validateLuzernSnapshot(snapshot)
     const { manifest, chunks } = chunkNetworkSnapshot(snapshot, 7200, 'luzern-region-day-chunks')
@@ -137,6 +162,8 @@ export async function buildLuzernRegion({ timetablePath, sourceDirectory, policy
       representativeHeadwaySegmentOccurrences: pairList.reduce((n, p) => n + p.representativeHeadwayOccurrences, 0),
       repairedDirectedPairs: pairList.filter(p => p.geometryRepairIds?.length).length,
       admittedTripsUsingRepair: ps.filter(p => p.admitted && p.pairKeys.some(k => pairs.get(k).geometryRepairIds?.length)).reduce((n, p) => n + p.trips, 0),
+      roadDirectedPairs: pairList.filter(p => p.geometrySource === 'osm-road-inference').length,
+      admittedTripsUsingRoads: ps.filter(p => p.admitted && p.pairKeys.some(k => pairs.get(k).geometrySource === 'osm-road-inference')).reduce((n, p) => n + p.trips, 0),
       groups, routes: counts, exclusionReasons: Object.fromEntries(reasons), directedPatterns: ps, directedStopPairs: pairList.map(({ pathIndex, ...p }) => ({ ...p, matched: pathIndex !== null })),
       artifacts: { directory: destination, manifestGzipBytes: gz(manifest), morningGzipBytes: gz(morning), chunks: chunks.map(({ descriptor, payload }) => ({ id: descriptor.id, gzipBytes: gz(payload), trips: descriptor.tripCount })) } })
   }
@@ -148,11 +175,17 @@ export async function buildLuzernRegion({ timetablePath, sourceDirectory, policy
     source.geometryRepairIds = policy.geometryRepairs?.repairs.filter(r => r.targetFeature === source.key).map(r => r.id) ?? []
     source.repairDonorFor = policy.geometryRepairs?.repairs.filter(r => r.sourceFeatures.includes(source.key)).map(r => r.id) ?? []
     source.gtfsRoutes = inventory.filter(r => r.sourceFeatures.includes(source.key)).map(r => r.routeId)
-    source.admittedTrips = days.reduce((n, d) => n + d.routes.filter(r => source.gtfsRoutes.includes(r.routeId)).reduce((n, r) => n + r.admittedTrips, 0), 0)
+    source.admittedTrips = days.reduce((n, d) => {
+      const used = new Set(d.directedStopPairs.filter(p => p.matched && p.sourceFeatures?.includes(source.key)).map(p => p.key))
+      return n + d.directedPatterns.filter(p => p.admitted && p.pairKeys.some(k => used.has(k))).reduce((n, p) => n + p.trips, 0)
+    }, 0)
     source.status = !source.agencyIds ? 'identity-or-vintage-exclusion' : !source.gtfsRoutes.length ? 'no-annual-Luzern-calling-route' : source.admittedTrips ? 'used-for-admitted-patterns' : 'no-admitted-fixture-pattern'
   }
   const report = { schemaVersion: 1, feed: raw.feed, sourceHashes, scope: raw.scope, policy, annualRouteRecords: inventory.length, annualAgencies: new Set(inventory.map(r => r.agencyId)).size,
     catalogue, sourceInventory, sourceStopReview, inventory, days,
+    ...(roadCache ? { roads: { metadata: roadCache.metadata, agencies: Object.entries(roadCache.agencies).map(([agencyId, a]) => ({ agencyId, patterns: Object.keys(a.identities).length, matcher: a.cache.metadata.matcher, report: a.cache.report })),
+      consensusPairs: roads.size, acceptedConsensusPairs: [...roads.values()].filter(r => r.path).length,
+      rejectedConsensusPairs: [...roads].filter(([, r]) => !r.path).map(([key, r]) => ({ key, ...r })) } } : {}),
     validation: { passed: true, annualPinnedTimetableInventoryComplete: true, admittedGeometryComplete: true, cantonMotionCoverageComplete: false, publicationReady: false,
       meaning: 'All admitted complete directed patterns pass numerical and artifact checks. Coverage denominators include excluded modes/patterns. This does not certify road direction or establish year-round geometry coverage.',
       pending: ['Resolve every excluded route/pattern before claiming complete cantonal motion coverage', 'Review street directions, loops, rail branches and temporary diversions before presenting paths as direction-certified', 'Validate seasonal and holiday dates', 'Integrate UI selection and refresh separately if requested'] } }

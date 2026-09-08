@@ -5,6 +5,8 @@ import { pathToFileURL } from 'node:url'
 import { sha256, validateLuzernDownload } from './download-luzern-sources.mjs'
 import { validateLuzernSnapshot } from './build-luzern-region.mjs'
 import { validatedLuzernRepairs } from './luzern-line-geometry.mjs'
+import { roadConsensus, validateLuzernRoadScope, verifyLuzernRoadEvidence } from './luzern-road-geometry.mjs'
+import { roadPatternId } from './prepare-postbus-road-feed.mjs'
 
 const json = async path => JSON.parse(await readFile(path, 'utf8'))
 const sum = (items, key) => items.reduce((n, item) => n + item[key], 0)
@@ -22,10 +24,35 @@ export async function checkLuzernRegion({ auditPath = 'data/luzern-study-audit.j
   const sourceKeys = new Set(audit.sourceInventory.map(s => s.key))
   const repairs = validatedLuzernRepairs({ bus: await json(join(sourceDirectory, 'bus.geojson')) }, audit.policy)
   const repairIds = new Set(repairs.map(r => r.id))
+  let roadCache, roads = new Map()
+  if (audit.policy.roadFallback) {
+    const bytes = await readFile(audit.policy.roadFallback.cache)
+    assert.equal(sha256(bytes), audit.policy.roadFallback.sha256)
+    assert.equal(sha256(bytes), audit.sourceHashes.roads)
+    roadCache = JSON.parse(bytes)
+    assert.equal(roadCache.metadata.timetableSha256, audit.sourceHashes.timetable)
+    await verifyLuzernRoadEvidence(roadCache)
+    roads = roadConsensus(roadCache, audit.policy.limits)
+    assert.equal(audit.roads.consensusPairs, roads.size)
+    assert.equal(audit.roads.acceptedConsensusPairs, [...roads.values()].filter(p => p.path).length)
+    assert.deepEqual(audit.roads.rejectedConsensusPairs, [...roads].filter(([, r]) => !r.path).map(([key, r]) => ({ key, ...r })))
+    // Even without the 38 MB raw timetable, require the complete bus-pattern
+    // universe in the audit to agree with the retained routing evidence.
+    for (const [agencyId, agency] of Object.entries(roadCache.agencies)) {
+      const stops = [...new Map(Object.values(agency.identities).flatMap(p => p.stops).map(s => [s[4], s])).values()]
+      const indexes = new Map(stops.map((s, i) => [s[4], i]))
+      const ids = audit.days.flatMap(d => d.directedPatterns.filter(p => p.mode === 'bus' && p.agencyId === agencyId).map(p => {
+        assert(p.stopIds.every(id => indexes.has(id)))
+        return roadPatternId({ routeId: p.routeId, stops: p.stopIds.map(id => [indexes.get(id)]) }, stops)
+      }))
+      assert.deepEqual([...new Set(ids)].sort(), Object.keys(agency.identities).sort())
+    }
+  }
   for (const route of audit.inventory) for (const key of route.sourceFeatures) assert(sourceKeys.has(key))
   let raw
   if (timetablePath) {
     assert.equal(sha256(await readFile(timetablePath)), audit.sourceHashes.timetable); raw = await json(timetablePath)
+    if (roadCache) validateLuzernRoadScope(raw, roadCache)
     assert.equal(raw.inventory.length, audit.annualRouteRecords)
     for (const r of raw.inventory) {
       const result = audit.inventory.find(item => item.routeId === r.routeId); assert(result)
@@ -59,6 +86,22 @@ export async function checkLuzernRegion({ auditPath = 'data/luzern-study-audit.j
     const patterns = new Map(day.directedPatterns.map(p => [p.id, p])), pairs = new Map(day.directedStopPairs.map(p => [p.key, p]))
     assert.equal(day.directedStopPairs.filter(p => p.geometryRepairIds?.length).length, day.repairedDirectedPairs)
     assert.equal(sum(day.directedPatterns.filter(p => p.admitted && p.pairKeys.some(k => pairs.get(k).geometryRepairIds?.length)), 'trips'), day.admittedTripsUsingRepair)
+    assert.equal(day.directedStopPairs.filter(p => p.geometrySource === 'osm-road-inference').length, day.roadDirectedPairs)
+    assert.equal(sum(day.directedPatterns.filter(p => p.admitted && p.pairKeys.some(k => pairs.get(k).geometrySource === 'osm-road-inference')), 'trips'), day.admittedTripsUsingRoads)
+    if (roadCache) {
+      assert.equal(manifest.metadata.geometry.roadFallback.cacheSha256, audit.sourceHashes.roads)
+      assert.equal(manifest.metadata.geometry.roadFallback.license, 'ODbL-1.0')
+      assert(manifest.metadata.attribution.includes('© OpenStreetMap contributors (ODbL-1.0)'))
+    }
+    for (const pair of pairs.values()) {
+      if (pair.geometrySource === 'osm-road-inference') {
+        const road = roads.get(pair.key); assert(road?.path)
+        assert.equal(pair.mode, 'bus'); assert(pair.officialAssessment.reason)
+        assert.equal(pair.geometrySha256, sha256(JSON.stringify(road.path)))
+        assert.deepEqual(pair.roadPatternIds, road.roadPatternIds)
+        assert.equal(pair.roadContextOccurrences, road.roadContextOccurrences)
+      } else if (pair.roadAssessment) assert.deepEqual(pair.roadAssessment, roads.get(pair.key))
+    }
     for (const p of pairs.values()) for (const id of p.geometryRepairIds ?? []) assert(repairIds.has(id), 'Unknown geometry repair')
     assert.equal(patterns.size, day.patterns); assert.equal(pairs.size, day.directedPairs)
     assert.equal(sum(day.directedPatterns, 'trips'), day.trips)
@@ -109,6 +152,7 @@ export async function checkLuzernRegion({ auditPath = 'data/luzern-study-audit.j
       patternTrips.set(pattern.id, (patternTrips.get(pattern.id) ?? 0) + 1)
       assert.deepEqual(train.stops.map(([i]) => manifest.stops[i][4]), pattern.stopIds)
       assert.deepEqual(train.callRules, pattern.callRules)
+      assert.deepEqual(train.geometrySources, pattern.pairKeys.map(k => pairs.get(k).geometrySource))
       for (let i = 0; i < train.pathSegments.length; i++) assert.equal(sha256(JSON.stringify(manifest.paths[train.pathSegments[i]])), pairs.get(pattern.pairKeys[i]).geometrySha256)
       if (sourceTrains) {
         const source = sourceTrains.get(train.id); assert(source)
@@ -123,6 +167,17 @@ export async function checkLuzernRegion({ auditPath = 'data/luzern-study-audit.j
     assert.equal([...trains.values()].filter(t => t.sourceServiceDate !== day.date).length, day.admittedCarryInTrips)
     assert.equal([...trains.values()].filter(t => t.frequency?.exactTimes === 0).length, day.admittedHeadwayTrips)
     summaries.push({ date: day.date, admittedTrips: trains.size, completeDirectedPatterns: day.admittedPatterns, sourceCallReplay: Boolean(raw) })
+  }
+  if (roadCache) {
+    const regression = await json('data/luzern-road-regression.json')
+    for (const baseline of regression.days) {
+      const day = audit.days.find(d => d.date === baseline.date), pairs = new Map(day.directedStopPairs.map(p => [p.key, p]))
+      const officialPairs = day.directedStopPairs.filter(p => p.matched && p.geometrySource === 'official-line').map(p => [p.key, p.geometrySha256]).sort()
+      const officialPatterns = day.directedPatterns.filter(p => p.admitted && p.pairKeys.every(k => pairs.get(k).geometrySource === 'official-line')).map(p => [p.id, p.trips]).sort()
+      assert.equal(sha256(JSON.stringify(officialPairs)), baseline.matchedPairDigest, 'Previously accepted official paths changed')
+      assert.equal(sha256(JSON.stringify(officialPatterns)), baseline.admittedPatternDigest, 'Previously admitted patterns changed')
+      assert.equal(day.admittedTrips - day.admittedTripsUsingRoads, baseline.admittedTrips)
+    }
   }
   return { passed: true, annualRoutes: audit.annualRouteRecords, agencies: audit.annualAgencies, days: summaries }
 }

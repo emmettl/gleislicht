@@ -1,0 +1,18 @@
+{
+  "baselineCommit": "76bdc64",
+  "description": "Before OSM fallback: all official paths and admitted complete patterns must remain identical.",
+  "days": [
+    {
+      "date": "2026-09-04",
+      "admittedTrips": 8486,
+      "matchedPairDigest": "24523c8a6397063d533d82db4ec9f372d6c2feaed4cbf3167a03caad1235d4d4",
+      "admittedPatternDigest": "792ef541736c0860f50a528250429d2e2fba95d78873352621f119ad914aacbb"
+    },
+    {
+      "date": "2026-09-06",
+      "admittedTrips": 6292,
+      "matchedPairDigest": "0eaa6a0ad74ad9f07f3000ef84fc1798118dc7330bc3ea60e3e3ddb9603a8fed",
+      "admittedPatternDigest": "77f7b837a801e91ffda35897a67e52ac70182ed1a55ad93512ab384decad5ceb"
+    }
+  ]
+}

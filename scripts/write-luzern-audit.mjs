@@ -15,6 +15,8 @@ const measures = [
   ['Excluded movements', d => d.excludedTrips],
   ['Admitted journeys using reviewed donor edges', d => d.admittedTripsUsingRepair],
   ['Directed pairs traversing reviewed repairs', d => d.repairedDirectedPairs],
+  ['Admitted journeys using inferred OSM road fallback', d => d.admittedTripsUsingRoads],
+  ['Directed pairs using inferred OSM road fallback', d => d.roadDirectedPairs],
   ['Preceding-service-day carry-in / admitted', d => `${n(d.carryInTrips)} / ${n(d.admittedCarryInTrips)}`],
   ['Routes with at least one admitted pattern', d => d.routes.filter(r => r.admittedTrips).length],
   ['Directed stop patterns / admitted', d => `${n(d.patterns)} / ${n(d.admittedPatterns)}`],
@@ -32,7 +34,8 @@ const groups = groupIds.map(id => {
   return row([`${id} · ${first.agency}`, ...values])
 })
 const status = day => `${day.admittedTrips}/${day.trips} ${day.status.replaceAll('-on-civil-day', '')}`
-const routeRows = audit.inventory.map(r => row([`\`${r.routeId}\``, `${r.agencyId} · ${r.line}`, r.mode, r.annualTripRecords, ...r.days.map(status), r.sourceFeatures.join(', ') || '—', [...new Set(r.days.flatMap(d => d.reasons))].join(', ') || '—']))
+const roadRouteIds = new Set(audit.days.flatMap(d => d.directedStopPairs.filter(p => p.geometrySource === 'osm-road-inference' && p.admittedOccurrences).map(p => p.routeId)))
+const routeRows = audit.inventory.map(r => row([`\`${r.routeId}\``, `${r.agencyId} · ${r.line}`, r.mode, r.annualTripRecords, ...r.days.map(status), [...r.sourceFeatures, ...(roadRouteIds.has(r.routeId) ? ['OSM fallback'] : [])].join(', ') || '—', [...new Set(r.days.flatMap(d => d.reasons))].join(', ') || '—']))
 const unusedSources = audit.sourceInventory.filter(s => s.status !== 'used-for-admitted-patterns').map(s => row([s.key, s.properties.LINIENBEZ, s.status, s.gtfsRoutes.join(', ') || '—']))
 const unmatchedStops = audit.sourceStopReview.filter(s => !s.gtfsStopPresent).map(s => row([s.id, s.name, s.municipality]))
 const report = `# Luzern cantonal transit source adapter and audit
@@ -74,7 +77,7 @@ Frequency templates are expanded on their source interval, with exact_times=0 ma
 | Luzern regional stops, 1,448 records | Metadata: 6 August 2026 | \`${source('stops.geojson').sha256}\` |
 | swisstopo canton polygon | Retrieved ${source('boundary.json').retrievedAt}; API response gives no source vintage | \`${source('boundary.json').sha256}\` |
 
-The cantonal source snapshot was acquired on 8 September 2026. Retrieval timestamps do not replace the layer dates. Line sources are EPSG:2056; the ArcGIS query transforms them to EPSG:4326. Matching uses those returned coordinates, metre-distance calculations, exact shared vertices keyed to seven decimal places, and output coordinates rounded to seven decimals. No line simplification, proximity-based gap bridging, OSM fallback or nationwide rail fallback was applied. Five explicitly reviewed short gaps use exact edges copied from other lines in the same official bus source; their donor identities and coordinates are retained in the policy and feed metadata. The boundary is the returned API polygon, with its supplied precision; an exact cadastral boundary survey is not implied.
+The cantonal source snapshot was acquired on 8 September 2026. Retrieval timestamps do not replace the layer dates. Line sources are EPSG:2056; the ArcGIS query transforms them to EPSG:4326. Matching uses those returned coordinates, metre-distance calculations, exact shared vertices keyed to seven decimal places, and output coordinates rounded to seven decimals. Official paths are not simplified or joined by proximity. Five explicitly reviewed short gaps use exact edges copied from other lines in the same official bus source; their donor identities and coordinates are retained in the policy and feed metadata. Failed bus pairs additionally use the separately attributed OSM fallback described below. No nationwide rail fallback is applied. The boundary is the returned API polygon, with its supplied precision; an exact cadastral boundary survey is not implied.
 
 **Attribution:** Timetable: **SBB / opentransportdata.swiss**. Cantonal data: **© rawi Kanton Luzern; © Verkehrsverbund Luzern**. Canton boundary: **© swisstopo**. Processed regional feeds and this audit are by **Gleislicht**. Cantonal [product metadata](https://daten.geo.lu.ch/produkt/oevxxxxx_col_v5) and [Open-By terms](https://geoportal.lu.ch/Nutzungsbedingungen) permit use with source attribution; the acquired pages are retained. The [national timetable terms](https://opentransportdata.swiss/en/terms-of-use/) require attribution, raw-data refresh and authorship of processed results. The [swisstopo terms](https://www.swisstopo.admin.ch/en/terms-and-conditions) govern the boundary. No blanket CC0 licence is assigned to the combined feed. Frozen fixtures are dated study artifacts, not a continuously refreshed live service.
 
@@ -106,6 +109,22 @@ ${groups.join('\n')}
 
 ## Exclusions and source limitations
 
+### Inferred bus road fallback
+
+The [road cache](../data/luzern-road-cache.json) covers **${audit.roads.agencies.reduce((n, a) => n + a.patterns, 0)} complete bus stop patterns across ${audit.roads.agencies.length} agencies**, including every bus pattern on both fixtures. Routing inputs retain the entire ordered platform sequence and coordinates, route ID and cross-canton termini. Each agency is matched independently using [pfaedle](https://github.com/ad-freiburg/pfaedle) at commit 99f2cd466696ecc6bdb73b2b3bb9008557fcb84a, with bus access/direction rules, explicit fallback warnings and trie aggregation disabled. These remain inferred paths, not operator-verified or diversion-certified routes.
+
+Input roads are the **Geofabrik Swiss extract dated 2 September 2026 plus the border extract retrieved 8 September 2026**, reused from the [documented offline road pipeline](POSTBUS-ROAD-GEOMETRY.md). The combined filtered PBF SHA-256 is \`${audit.roads.metadata.source.osmSha256}\`. The dated extract is not replaced with today's mutable [Geofabrik download](https://download.geofabrik.de/europe/switzerland.html). Binary, configuration, input pattern, output shape, stop-time, trip and warning-log hashes are recorded per agency. The [compressed matcher evidence](../data/luzern-road-evidence) retains all original shapes, monotone stop distances, full pattern identities and explicit warnings, so the checker reconstructs and verifies every cached accepted or rejected segment offline.
+
+Road inference is consulted **only after official bus geometry fails**. A route-specific directed pair is accepted only when every occurrence in every complete input pattern yields an accepted, byte-identical road path. A failed context or a different branch blocks the pair; no successful representative hides another pattern's failure. Of ${n(audit.roads.consensusPairs)} bus pairs, ${n(audit.roads.acceptedConsensusPairs)} pass this road consensus and ${n(audit.roads.consensusPairs - audit.roads.acceptedConsensusPairs)} do not. These are fallback-candidate counts, not new delivered paths: successful official geometry always takes precedence. Final road paths retain the existing 120 m snapping and max(1,200 m, 4.5 × direct distance) detour limits, reject collapsed paths, and connect to the exact source platforms. Road interiors use the shared importer's 5 m simplification / six-decimal precision; final platform endpoints use seven decimals. Repeated calls are never removed.
+
+The fallback adds **${n(friday.admittedTripsUsingRoads)} Friday and ${n(sunday.admittedTripsUsingRoads)} Sunday complete journeys**, bringing bus admission to **7,368 / 7,374 Friday** and **5,249 / 5,250 Sunday**. Gains include Sörenberg–Glaubenbielen line 241, Tellbus 493, Rotkreuz 73, Küssnacht 502/508/622, vbl branches, EV1 replacement buses and night routes. Every delivered journey has a per-segment geometrySources array; every road pair records its full roadPatternIds and the original officialAssessment. [Regression digests](../data/luzern-road-regression.json), anchored to commit 76bdc64, prove that all earlier matched official paths and all 8,486 / 6,292 earlier admitted journeys remain unchanged.
+
+The remaining bus exclusions are **one Friday 101 journey through Baldegg Kantonsschule**, **three Friday 105 journeys with conflicting Hochdorf Oberstufenzentrum–Bankstrasse paths**, **two Friday 233 journeys through Heiligkreuz Witebach**, and **one Sunday EV3 journey through Entlebuch Bahnhof**. The detailed failed segments and reasons remain in the machine audit. Other modes still have the exclusions below; near-complete bus fixtures do not mean complete cantonal transport coverage.
+
+The road cache and OSM-derived path database are supplied under **[ODbL 1.0](https://opendatacommons.org/licenses/odbl/1-0/)** with **[© OpenStreetMap contributors](https://www.openstreetmap.org/copyright)** attribution. Official source paths retain Open-By attribution. Feed metadata identifies both licenses and the complete public manifest exposes all delivered paths, distinguished by the journey geometrySources references. A future map UI must display the source attribution. No source is presented as endorsing the inferred routing.
+
+[Eight geometry review panels](luzern-road-review.svg) were rendered and inspected: Sörenberg hairpins, both-source Tellbus routing, the 121 m Brüelstrasse platform turn, Dattenberg, Küssnacht, Rotkreuz, EV1 and N1. This is a geometry continuity and retained-call review without a basemap, not independent street-direction certification.
+
 All eight lake route records (SGV and Hallwilersee) remain in the annual inventory. The cantonal boat layer is a single 2015 settlement-service line; it has no complete 2026 route crosswalk. No water geometry is admitted. Pilatus/Kriens-Fräkmüntegg, Sörenberg, Marbachegg and Hammetschwand lack admitted source geometry. Rigi 82/88, Weggis–Rigi Kaltbad, Gütsch and Sonnenberg do have measured and admitted complete patterns.
 
 Long-distance SBB/SOB services without an exact source line are excluded. The VAE line is named across its full corridor but the acquired geometry is much shorter; no full VAE fixture journey passes. The BLS RE7 alignment stops short of Bern: the Konolfingen–Langnau pair is about 12.8 km away at the missing endpoint. It is excluded without trimming the journey. Other partial rail patterns, special services and replacement buses have their own rows and reasons.
@@ -121,7 +140,7 @@ Bus linework is strong but not complete. The first pass found real separated com
 | 399, Menziken | 8.5 m | 398 (B398) | Applied |
 | 622 / 653, Küssnacht–Immensee | 9.8 m gap; available path detours 3.775 km | No short source path | Rejected; remains disconnected |
 
-The five repairs recover **162 Friday and 144 Sunday complete journeys** over the initial adapter, without changing the inventory, schedules, snap thresholds or full-pattern admission rule. Every affected pair records geometryRepairIds and repairSourceFeatures; the checker validates the exact donor edges against the pinned bus snapshot. The original 8,324 / 6,148 counts are preserved in Git; the tables above describe the repaired feeds. Source endpoints also miss Rotkreuz Schulanlagen (73, roughly 160–193 m) and Küssnacht Plaza (508, about 211 m). Repeated Brüelstrasse calls on vbl 25 can collapse to the same graph point and are rejected. Full route-specific pair names, gaps and occurrence counts are in the JSON audit.
+The five repairs recover **162 Friday and 144 Sunday complete journeys** over the initial adapter, without changing the inventory, schedules, snap thresholds or full-pattern admission rule. Every affected pair records geometryRepairIds and repairSourceFeatures; the checker validates the exact donor edges against the pinned bus snapshot. The original 8,324 / 6,148 counts and subsequent 8,486 / 6,292 official-only counts are preserved in Git. Source endpoints also miss Rotkreuz Schulanlagen (73, roughly 160–193 m) and Küssnacht Plaza (508, about 211 m). Repeated Brüelstrasse calls on vbl 25 collapse in the official source. These failures remain recorded in officialAssessment where the independently inferred road fallback now succeeds. Full route-specific pair names, gaps and occurrence counts are in the JSON audit.
 
 The rawi stop-layer cross-check considers ${audit.sourceStopReview.length} source records inside the polygon. It compares DIDOK-derived SLOID identity, including GTFS generated platform IDs. The following direct identities do not occur among in-canton GTFS stop records; this is not automatic proof of missing service. Vitznau RB is represented in the Rigi fixture with GTFS's shared Vitznau identity 8508464 instead of the source's 8505070. The other discrepancies require source follow-up.
 
@@ -159,11 +178,31 @@ node scripts/write-luzern-audit.mjs
 # Offline source/artifact checks without the large national archive or cache.
 node scripts/check-luzern-region.mjs
 npx vitest run scripts/luzern-region.test.mjs \\
+  scripts/luzern-road-geometry.test.mjs scripts/enrich-postbus-roads.test.mjs \\
   scripts/basel-line-geometry.test.mjs scripts/gtfs-frequencies.test.mjs
 
 # Optional new acquisition: review vintages, domains and crosswalk before using.
 node scripts/download-luzern-sources.mjs /private/tmp/luzern-new-sources
 \`\`\`
+
+The committed road cache is required by the pinned policy, so ordinary reproduction needs no road matcher or network access. To regenerate the cache, use the same PBF and pinned matcher inputs from the offline pipeline above:
+
+\`\`\`sh
+node scripts/luzern-road-geometry.mjs prepare \\
+  /private/tmp/luzern-timetable.json /private/tmp/luzern-road-feed
+# Run for each agency listed in luzern-road-feed/index.json:
+node scripts/match-postbus-roads.mjs \\
+  --pfaedle /private/tmp/gleislicht-pfaedle/build/pfaedle \\
+  --osm /private/tmp/gleislicht-postbus-roads.osm.pbf \\
+  --config /private/tmp/gleislicht-pfaedle/pfaedle.cfg \\
+  --feed /private/tmp/luzern-road-feed/801 \\
+  --output /private/tmp/luzern-road-matched/801
+node scripts/luzern-road-geometry.mjs import \\
+  /private/tmp/luzern-road-feed /private/tmp/luzern-road-matched \\
+  /private/tmp/luzern-road-cache.json /private/tmp/luzern-road-evidence
+\`\`\`
+
+Review regenerated cache/evidence hashes before updating policy. Matcher elapsed times and warning-log timings can change between runs; the committed evidence preserves the measured run. No changed cache can silently replace the pinned input. All **46 scoped unit tests pass**, including consensus failure/conflict isolation, repeated-pair loops, reversed directions, changed identities, corrupt indices/endpoints, source hashes, detour/collapse limits and routing-only carry-in normalization.
 
 The checker independently verifies every stored source hash; exact ArcGIS object-ID sets; inventory totals; every chunk byte length/hash; duplicate journey consistency across chunks; morning membership; complete directed path endpoints; per-pattern, pair, route and agency totals; and admission/exclusion reconciliation. With the regenerated timetable cache it also replays **every admitted journey against all original GTFS calls, times, sequences, source-service-day identity and frequency metadata**. Unit tests cover exact donor-edge repairs and rejection of invented edges/changed snapshots/already-connected targets, truncated/duplicate pages, wrong CRS, changed operator domains/year, disconnected geometry, crossing-without-junction, reversal, loops, polygon holes, midnight carry-in, frequency semantics and rejection of malformed admitted paths.
 

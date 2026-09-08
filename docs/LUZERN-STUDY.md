@@ -1,6 +1,6 @@
 # Luzern cantonal transit source adapter and audit
 
-Built on 8 September 2026, starting from [the national source inventory](SWISS-TRANSIT-SOURCE-INVENTORY.md#lu). **The entire pinned national timetable was scanned for Luzern membership: 203 route records, 24 feed agencies and 100'275 annual trip records.** The delivered regional feeds contain **8'486 Friday and 6'292 Sunday journeys**, on 108 and 113 routes respectively. 131 distinct route records have an admitted pattern on at least one date.
+Built on 8 September 2026, starting from [the national source inventory](SWISS-TRANSIT-SOURCE-INVENTORY.md#lu). **The entire pinned national timetable was scanned for Luzern membership: 203 route records, 24 feed agencies and 100'275 annual trip records.** The delivered regional feeds contain **8'940 Friday and 6'781 Sunday journeys**, on 115 and 125 routes respectively. 143 distinct route records have an admitted pattern on at least one date.
 
 Only complete directed stop patterns with usable geometry are admitted. This is a complete **inventory of the scoped archive**, and a measured **partial regional motion feed**. It is not complete cantonal geometry, year-round validation or direction-certified street routing. The underlying official linework is undirected; the validation below establishes ordered source-call compatibility and plausible connected corridors.
 
@@ -37,7 +37,7 @@ Frequency templates are expanded on their source interval, with exact_times=0 ma
 | Luzern regional stops, 1,448 records | Metadata: 6 August 2026 | `6675b987883da42703cce8645ae2b28cc71336d1ce5dcb7a491ad934e7ca13c6` |
 | swisstopo canton polygon | Retrieved 2026-09-08T17:27:01.144Z; API response gives no source vintage | `efe44b38095a9c4b7d025199935e69bdfc027cc1baac32ee34354edfdb68a49e` |
 
-The cantonal source snapshot was acquired on 8 September 2026. Retrieval timestamps do not replace the layer dates. Line sources are EPSG:2056; the ArcGIS query transforms them to EPSG:4326. Matching uses those returned coordinates, metre-distance calculations, exact shared vertices keyed to seven decimal places, and output coordinates rounded to seven decimals. No line simplification, proximity-based gap bridging, OSM fallback or nationwide rail fallback was applied. Five explicitly reviewed short gaps use exact edges copied from other lines in the same official bus source; their donor identities and coordinates are retained in the policy and feed metadata. The boundary is the returned API polygon, with its supplied precision; an exact cadastral boundary survey is not implied.
+The cantonal source snapshot was acquired on 8 September 2026. Retrieval timestamps do not replace the layer dates. Line sources are EPSG:2056; the ArcGIS query transforms them to EPSG:4326. Matching uses those returned coordinates, metre-distance calculations, exact shared vertices keyed to seven decimal places, and output coordinates rounded to seven decimals. Official paths are not simplified or joined by proximity. Five explicitly reviewed short gaps use exact edges copied from other lines in the same official bus source; their donor identities and coordinates are retained in the policy and feed metadata. Failed bus pairs additionally use the separately attributed OSM fallback described below. No nationwide rail fallback is applied. The boundary is the returned API polygon, with its supplied precision; an exact cadastral boundary survey is not implied.
 
 **Attribution:** Timetable: **SBB / opentransportdata.swiss**. Cantonal data: **© rawi Kanton Luzern; © Verkehrsverbund Luzern**. Canton boundary: **© swisstopo**. Processed regional feeds and this audit are by **Gleislicht**. Cantonal [product metadata](https://daten.geo.lu.ch/produkt/oevxxxxx_col_v5) and [Open-By terms](https://geoportal.lu.ch/Nutzungsbedingungen) permit use with source attribution; the acquired pages are retained. The [national timetable terms](https://opentransportdata.swiss/en/terms-of-use/) require attribution, raw-data refresh and authorship of processed results. The [swisstopo terms](https://www.swisstopo.admin.ch/en/terms-and-conditions) govern the boundary. No blanket CC0 licence is assigned to the combined feed. Frozen fixtures are dated study artifacts, not a continuously refreshed live service.
 
@@ -62,21 +62,23 @@ The source has no one-way or direction field. A successful ordered match is an *
 | Annual-census routes active in civil day | 140 | 155 |
 | Civil-day movements, all modes | 13'649 | 11'550 |
 | Representative headway movements (not scheduled) | 1'020 | 1'020 |
-| Admitted scheduled movements | 8'486 | 6'292 |
-| Excluded movements | 5'163 | 5'258 |
+| Admitted scheduled movements | 8'940 | 6'781 |
+| Excluded movements | 4'709 | 4'769 |
 | Admitted journeys using reviewed donor edges | 162 | 144 |
 | Directed pairs traversing reviewed repairs | 12 | 13 |
-| Preceding-service-day carry-in / admitted | 263 / 226 | 424 / 341 |
-| Routes with at least one admitted pattern | 108 | 113 |
-| Directed stop patterns / admitted | 1'061 / 774 | 878 / 600 |
-| Route-specific directed stop pairs / matched | 4'919 / 4'258 | 5'474 / 4'736 |
-| Unique directed-pair geometry coverage | 86.56% | 86.52% |
-| Scheduled segment occurrences / matched | 139'294 / 130'993 | 105'124 / 96'424 |
-| Scheduled segment geometry coverage | 94.04% | 91.72% |
-| All segment occurrences / matched (including headways) | 140'314 / 130'993 | 106'144 / 96'424 |
-| All-movement segment geometry coverage | 93.36% | 90.84% |
+| Admitted journeys using inferred OSM road fallback | 454 | 489 |
+| Directed pairs using inferred OSM road fallback | 201 | 268 |
+| Preceding-service-day carry-in / admitted | 263 / 250 | 424 / 406 |
+| Routes with at least one admitted pattern | 115 | 125 |
+| Directed stop patterns / admitted | 1'061 / 848 | 878 / 692 |
+| Route-specific directed stop pairs / matched | 4'919 / 4'459 | 5'474 / 5'004 |
+| Unique directed-pair geometry coverage | 90.65% | 91.41% |
+| Scheduled segment occurrences / matched | 139'294 / 132'719 | 105'124 / 98'567 |
+| Scheduled segment geometry coverage | 95.28% | 93.76% |
+| All segment occurrences / matched (including headways) | 140'314 / 132'719 | 106'144 / 98'567 |
+| All-movement segment geometry coverage | 94.59% | 92.86% |
 
-All exported journeys have 100% matched segments **by the admission rule**. The unfiltered scheduled-segment coverage (94.04% / 91.72%) is the useful measure of remaining work. Unique-pair percentages are lower; frequently repeated urban trips cannot conceal missing regional or mountain patterns. The audit keeps scheduled occurrences and representative-headway occurrences separate for each pair.
+All exported journeys have 100% matched segments **by the admission rule**. The unfiltered scheduled-segment coverage (95.28% / 93.76%) is the useful measure of remaining work. Unique-pair percentages are lower; frequently repeated urban trips cannot conceal missing regional or mountain patterns. The audit keeps scheduled occurrences and representative-headway occurrences separate for each pair.
 
 | Agency:mode | Friday admitted/total trips | Friday admitted/total patterns | Friday all-segment geometry | Sunday admitted/total trips | Sunday admitted/total patterns | Sunday all-segment geometry |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -84,14 +86,14 @@ All exported journeys have 100% matched segments **by the admission rule**. The 
 | 82:rail · Schweizerische Südostbahn (sob) | 0 / 47 | 0 / 34 | 15.52% | 0 / 46 | 0 / 24 | 16.10% |
 | 86:rail · Zentralbahn | 278 / 279 | 89 / 90 | 99.87% | 241 / 242 | 55 / 56 | 99.86% |
 | 33:rail · BLS AG (bls) | 204 / 244 | 53 / 66 | 95.65% | 189 / 219 | 36 / 40 | 93.74% |
-| 839:bus · Zugerland Verkehrsbetriebe | 213 / 321 | 26 / 39 | 96.48% | 123 / 198 | 22 / 28 | 96.20% |
-| 820:bus · Verkehrsbetriebe Luzern AG | 3'874 / 3'960 | 130 / 144 | 99.64% | 2'717 / 2'822 | 129 / 156 | 99.16% |
-| 819:bus · Automobil Rottal AG | 472 / 475 | 51 / 53 | 99.71% | 302 / 308 | 26 / 29 | 99.56% |
-| 812:bus · Auto AG Rothenburg | 777 / 778 | 43 / 44 | 99.98% | 486 / 486 | 24 / 24 | 100.00% |
-| 816:bus · Auto AG Uri | 0 / 28 | 0 / 2 | 50.00% | 0 / 5 | 0 / 2 | 50.00% |
-| 841:bus · Auto AG Schwyz | 76 / 168 | 10 / 23 | 98.17% | 72 / 160 | 8 / 24 | 98.10% |
+| 839:bus · Zugerland Verkehrsbetriebe | 317 / 321 | 36 / 39 | 99.89% | 198 / 198 | 28 / 28 | 100.00% |
+| 820:bus · Verkehrsbetriebe Luzern AG | 3'960 / 3'960 | 144 / 144 | 100.00% | 2'822 / 2'822 | 156 / 156 | 100.00% |
+| 819:bus · Automobil Rottal AG | 475 / 475 | 53 / 53 | 100.00% | 308 / 308 | 29 / 29 | 100.00% |
+| 812:bus · Auto AG Rothenburg | 778 / 778 | 44 / 44 | 100.00% | 486 / 486 | 24 / 24 | 100.00% |
+| 816:bus · Auto AG Uri | 28 / 28 | 2 / 2 | 100.00% | 5 / 5 | 2 / 2 | 100.00% |
+| 841:bus · Auto AG Schwyz | 168 / 168 | 23 / 23 | 100.00% | 160 / 160 | 24 / 24 | 100.00% |
 | 723:bus · Aargau Verkehr AG | 161 / 161 | 22 / 22 | 100.00% | 97 / 97 | 17 / 17 | 100.00% |
-| 7230:bus · BLS Netz AG Ersatzverkehr | 0 / 2 | 0 / 2 | 0.00% | 0 / 74 | 0 / 4 | 0.00% |
+| 7230:bus · BLS Netz AG Ersatzverkehr | 2 / 2 | 2 / 2 | 100.00% | 74 / 74 | 4 / 4 | 100.00% |
 | 273:mountain · Marbach-Marbachegg | 0 / 1'082 | 0 / 2 | 0.00% | 0 / 1'142 | 0 / 2 | 0.00% |
 | 283:mountain · Bergbahnen Sörenberg AG | 0 / 1'140 | 0 / 4 | 0.00% | 0 / 1'140 | 0 / 4 | 0.00% |
 | 820:mountain · Verkehrsbetriebe Luzern AG | 626 / 626 | 2 / 2 | 100.00% | 626 / 626 | 2 / 2 | 100.00% |
@@ -102,11 +104,27 @@ All exported journeys have 100% matched segments **by the admission rule**. The 
 | 137:mountain · Rigi Bahnen AG | 28 / 28 | 7 / 7 | 100.00% | 32 / 32 | 8 / 8 | 100.00% |
 | 185:boat · Vierwaldstättersee | 0 / 83 | 0 / 30 | 0.00% | 0 / 95 | 0 / 41 | 0.00% |
 | 181:boat · Hallwilersee | 0 / 3 | 0 / 1 | 0.00% | 0 / 9 | 0 / 2 | 0.00% |
-| 801:bus · PostAuto AG | 1'341 / 1'481 | 203 / 235 | 94.40% | 963 / 1'095 | 152 / 184 | 92.82% |
-| 7079:bus · PRO REGIO HUTTWIL Verkehrsverein | 0 / 0 | 0 / 0 | — | 0 / 4 | 0 / 2 | 0.00% |
-| 7231:bus · SBB Infrastruktur AG Bahnersatz | 0 / 0 | 0 / 0 | — | 0 / 1 | 0 / 1 | 0.00% |
+| 801:bus · PostAuto AG | 1'479 / 1'481 | 233 / 235 | 99.98% | 1'095 / 1'095 | 184 / 184 | 100.00% |
+| 7079:bus · PRO REGIO HUTTWIL Verkehrsverein | 0 / 0 | 0 / 0 | — | 4 / 4 | 2 / 2 | 100.00% |
+| 7231:bus · SBB Infrastruktur AG Bahnersatz | 0 / 0 | 0 / 0 | — | 0 / 1 | 0 / 1 | 81.82% |
 
 ## Exclusions and source limitations
+
+### Inferred bus road fallback
+
+The [road cache](../data/luzern-road-cache.json) covers **700 complete bus stop patterns across 11 agencies**, including every bus pattern on both fixtures. Routing inputs retain the entire ordered platform sequence and coordinates, route ID and cross-canton termini. Each agency is matched independently using [pfaedle](https://github.com/ad-freiburg/pfaedle) at commit 99f2cd466696ecc6bdb73b2b3bb9008557fcb84a, with bus access/direction rules, explicit fallback warnings and trie aggregation disabled. These remain inferred paths, not operator-verified or diversion-certified routes.
+
+Input roads are the **Geofabrik Swiss extract dated 2 September 2026 plus the border extract retrieved 8 September 2026**, reused from the [documented offline road pipeline](POSTBUS-ROAD-GEOMETRY.md). The combined filtered PBF SHA-256 is `d5c675456e935cfbcab88fe894fe9145dc5bd1fbd4318cea30ffd838a9aad02b`. The dated extract is not replaced with today's mutable [Geofabrik download](https://download.geofabrik.de/europe/switzerland.html). Binary, configuration, input pattern, output shape, stop-time, trip and warning-log hashes are recorded per agency. The [compressed matcher evidence](../data/luzern-road-evidence) retains all original shapes, monotone stop distances, full pattern identities and explicit warnings, so the checker reconstructs and verifies every cached accepted or rejected segment offline.
+
+Road inference is consulted **only after official bus geometry fails**. A route-specific directed pair is accepted only when every occurrence in every complete input pattern yields an accepted, byte-identical road path. A failed context or a different branch blocks the pair; no successful representative hides another pattern's failure. Of 4'948 bus pairs, 4'897 pass this road consensus and 51 do not. These are fallback-candidate counts, not new delivered paths: successful official geometry always takes precedence. Final road paths retain the existing 120 m snapping and max(1,200 m, 4.5 × direct distance) detour limits, reject collapsed paths, and connect to the exact source platforms. Road interiors use the shared importer's 5 m simplification / six-decimal precision; final platform endpoints use seven decimals. Repeated calls are never removed.
+
+The fallback adds **454 Friday and 489 Sunday complete journeys**, bringing bus admission to **7,368 / 7,374 Friday** and **5,249 / 5,250 Sunday**. Gains include Sörenberg–Glaubenbielen line 241, Tellbus 493, Rotkreuz 73, Küssnacht 502/508/622, vbl branches, EV1 replacement buses and night routes. Every delivered journey has a per-segment geometrySources array; every road pair records its full roadPatternIds and the original officialAssessment. [Regression digests](../data/luzern-road-regression.json), anchored to commit 76bdc64, prove that all earlier matched official paths and all 8,486 / 6,292 earlier admitted journeys remain unchanged.
+
+The remaining bus exclusions are **one Friday 101 journey through Baldegg Kantonsschule**, **three Friday 105 journeys with conflicting Hochdorf Oberstufenzentrum–Bankstrasse paths**, **two Friday 233 journeys through Heiligkreuz Witebach**, and **one Sunday EV3 journey through Entlebuch Bahnhof**. The detailed failed segments and reasons remain in the machine audit. Other modes still have the exclusions below; near-complete bus fixtures do not mean complete cantonal transport coverage.
+
+The road cache and OSM-derived path database are supplied under **[ODbL 1.0](https://opendatacommons.org/licenses/odbl/1-0/)** with **[© OpenStreetMap contributors](https://www.openstreetmap.org/copyright)** attribution. Official source paths retain Open-By attribution. Feed metadata identifies both licenses and the complete public manifest exposes all delivered paths, distinguished by the journey geometrySources references. A future map UI must display the source attribution. No source is presented as endorsing the inferred routing.
+
+[Eight geometry review panels](luzern-road-review.svg) were rendered and inspected: Sörenberg hairpins, both-source Tellbus routing, the 121 m Brüelstrasse platform turn, Dattenberg, Küssnacht, Rotkreuz, EV1 and N1. This is a geometry continuity and retained-call review without a basemap, not independent street-direction certification.
 
 All eight lake route records (SGV and Hallwilersee) remain in the annual inventory. The cantonal boat layer is a single 2015 settlement-service line; it has no complete 2026 route crosswalk. No water geometry is admitted. Pilatus/Kriens-Fräkmüntegg, Sörenberg, Marbachegg and Hammetschwand lack admitted source geometry. Rigi 82/88, Weggis–Rigi Kaltbad, Gütsch and Sonnenberg do have measured and admitted complete patterns.
 
@@ -123,7 +141,7 @@ Bus linework is strong but not complete. The first pass found real separated com
 | 399, Menziken | 8.5 m | 398 (B398) | Applied |
 | 622 / 653, Küssnacht–Immensee | 9.8 m gap; available path detours 3.775 km | No short source path | Rejected; remains disconnected |
 
-The five repairs recover **162 Friday and 144 Sunday complete journeys** over the initial adapter, without changing the inventory, schedules, snap thresholds or full-pattern admission rule. Every affected pair records geometryRepairIds and repairSourceFeatures; the checker validates the exact donor edges against the pinned bus snapshot. The original 8,324 / 6,148 counts are preserved in Git; the tables above describe the repaired feeds. Source endpoints also miss Rotkreuz Schulanlagen (73, roughly 160–193 m) and Küssnacht Plaza (508, about 211 m). Repeated Brüelstrasse calls on vbl 25 can collapse to the same graph point and are rejected. Full route-specific pair names, gaps and occurrence counts are in the JSON audit.
+The five repairs recover **162 Friday and 144 Sunday complete journeys** over the initial adapter, without changing the inventory, schedules, snap thresholds or full-pattern admission rule. Every affected pair records geometryRepairIds and repairSourceFeatures; the checker validates the exact donor edges against the pinned bus snapshot. The original 8,324 / 6,148 counts and subsequent 8,486 / 6,292 official-only counts are preserved in Git. Source endpoints also miss Rotkreuz Schulanlagen (73, roughly 160–193 m) and Küssnacht Plaza (508, about 211 m). Repeated Brüelstrasse calls on vbl 25 collapse in the official source. These failures remain recorded in officialAssessment where the independently inferred road fallback now succeeds. Full route-specific pair names, gaps and occurrence counts are in the JSON audit.
 
 The rawi stop-layer cross-check considers 957 source records inside the polygon. It compares DIDOK-derived SLOID identity, including GTFS generated platform IDs. The following direct identities do not occur among in-canton GTFS stop records; this is not automatic proof of missing service. Vitznau RB is represented in the Rigi fixture with GTFS's shared Vitznau identity 8508464 instead of the source's 8505070. The other discrepancies require source follow-up.
 
@@ -139,13 +157,6 @@ Every source feature that produced no admitted fixture journey is listed here. �
 
 | Source feature | Description | Status | Exact annual GTFS route matches |
 | --- | --- | --- | --- |
-| bus:B653 | Rotkreuz - Küssnacht am Rigi - Weggis | no-admitted-fixture-pattern | 92-653-j26-1 |
-| bus:B933 | Küssnacht am Rigi - Vitznau - Gersau | no-admitted-fixture-pattern | 92-N33-A-j26-1 |
-| bus:TB | Luzern - Altdorf UR | no-admitted-fixture-pattern | 92-493-A-j26-1 |
-| bus:B502 | Arth - Arth-Goldau - Steinen - Schwyz - Brunnen - Gersau - Vitznau - Küssnacht a.R. | no-admitted-fixture-pattern | 92-502-A-j26-1 |
-| bus:B508 | Seewen - Schwyz - Brunnen - Gersau - Weggis - Küssnacht | no-admitted-fixture-pattern | 92-508-A-j26-1 |
-| bus:B973 | Luzern - Udligenswil (- Rotkreuz) | no-admitted-fixture-pattern | 96-359-A-j26-1 |
-| bus:B109 | Hochdorf - Hitzirch - Schongau - Hitzkirch - Hämikon | no-admitted-fixture-pattern | 92-109-B-j26-1 |
 | bus:B605 | Zofingen - Brittnau | no-annual-Luzern-calling-route | — |
 | rail:S12 | S12 Langenthal - St. Urban Ziegelei | no-annual-Luzern-calling-route | — |
 | rail:S14 | S14 Aarau - Menziken | no-annual-Luzern-calling-route | — |
@@ -215,31 +226,31 @@ Counts below are admitted/total **civil-day movements**; inactive records remain
 | `91-LIX-j26-1` | 86 · LIX | rail | 252 | 34/34 admitted | 34/34 admitted | rail:LIX | — |
 | `91-N7-j26-1` | 11 · N7 | rail | 134 | 0/0 inactive | 8/8 admitted | rail:NEX | — |
 | `91-VAE-j26-1` | 82 · VAE | rail | 828 | 0/26 excluded | 0/26 excluded | rail:VAE | endpoint-gap |
-| `92-1-B-j26-1` | 820 · 1 | bus | 4692 | 328/334 partially-admitted | 272/274 partially-admitted | bus:A01 | endpoint-gap |
-| `92-10-B-j26-1` | 820 · 10 | bus | 992 | 134/161 partially-admitted | 108/133 partially-admitted | bus:A10 | endpoint-gap |
-| `92-101-A-j26-1` | 839 · 101 | bus | 67 | 32/34 partially-admitted | 14/14 admitted | bus:B101 | endpoint-gap |
-| `92-105-j26-1` | 839 · 105 | bus | 115 | 46/50 partially-admitted | 26/26 admitted | bus:B105 | endpoint-gap |
+| `92-1-B-j26-1` | 820 · 1 | bus | 4692 | 334/334 admitted | 274/274 admitted | bus:A01, OSM fallback | — |
+| `92-10-B-j26-1` | 820 · 10 | bus | 992 | 161/161 admitted | 133/133 admitted | bus:A10, OSM fallback | — |
+| `92-101-A-j26-1` | 839 · 101 | bus | 67 | 33/34 partially-admitted | 14/14 admitted | bus:B101, OSM fallback | endpoint-gap |
+| `92-105-j26-1` | 839 · 105 | bus | 115 | 47/50 partially-admitted | 26/26 admitted | bus:B105, OSM fallback | endpoint-gap |
 | `92-106-A-j26-1` | 839 · 106 | bus | 93 | 45/45 admitted | 24/24 admitted | bus:B106 | — |
 | `92-107-B-j26-1` | 839 · 107 | bus | 107 | 43/43 admitted | 32/32 admitted | bus:B107 | — |
-| `92-109-B-j26-1` | 839 · 109 | bus | 12 | 0/4 excluded | 0/2 excluded | bus:B109 | endpoint-gap |
+| `92-109-B-j26-1` | 839 · 109 | bus | 12 | 4/4 admitted | 2/2 admitted | bus:B109, OSM fallback | — |
 | `92-11-D-j26-1` | 820 · 11 | bus | 612 | 86/86 admitted | 54/54 admitted | bus:A11 | — |
 | `92-111-j26-1` | 819 · 111 | bus | 66 | 56/56 admitted | 40/40 admitted | bus:B111 | — |
-| `92-12-A-j26-1` | 820 · 12 | bus | 1802 | 274/278 partially-admitted | 146/147 partially-admitted | bus:A12 | endpoint-gap |
-| `92-14-j26-1` | 820 · 14 | bus | 1813 | 181/183 partially-admitted | 149/150 partially-admitted | bus:A14 | endpoint-gap |
+| `92-12-A-j26-1` | 820 · 12 | bus | 1802 | 278/278 admitted | 147/147 admitted | bus:A12, OSM fallback | — |
+| `92-14-j26-1` | 820 · 14 | bus | 1813 | 183/183 admitted | 150/150 admitted | bus:A14, OSM fallback | — |
 | `92-15-j26-1` | 820 · 15 | bus | 305 | 123/123 admitted | 78/78 admitted | bus:A15 | — |
 | `92-16-j26-1` | 820 · 16 | bus | 353 | 68/68 admitted | 34/34 admitted | bus:A16 | — |
 | `92-18-j26-1` | 820 · 18 | bus | 1666 | 109/109 admitted | 78/78 admitted | bus:A18 | — |
-| `92-19-A-j26-1` | 820 · 19 | bus | 1091 | 242/245 partially-admitted | 200/203 partially-admitted | bus:A19 | endpoint-gap |
-| `92-2-C-j26-1` | 820 · 2 | bus | 3447 | 283/291 partially-admitted | 217/224 partially-admitted | bus:A02 | endpoint-gap |
-| `92-20-A-j26-1` | 820 · 20 | bus | 1532 | 174/178 partially-admitted | 156/159 partially-admitted | bus:A20 | endpoint-gap |
+| `92-19-A-j26-1` | 820 · 19 | bus | 1091 | 245/245 admitted | 203/203 admitted | bus:A19, OSM fallback | — |
+| `92-2-C-j26-1` | 820 · 2 | bus | 3447 | 291/291 admitted | 224/224 admitted | bus:A02, OSM fallback | — |
+| `92-20-A-j26-1` | 820 · 20 | bus | 1532 | 178/178 admitted | 159/159 admitted | bus:A20, OSM fallback | — |
 | `92-21-C-j26-1` | 820 · 21 | bus | 456 | 102/102 admitted | 68/68 admitted | bus:A21 | — |
 | `92-212-A-j26-1` | 819 · 212 | bus | 18 | 18/18 admitted | 0/0 inactive | bus:B212 | — |
 | `92-22-j26-1` | 820 · 22 | bus | 805 | 173/173 admitted | 79/79 admitted | bus:B022 | — |
 | `92-23-j26-1` | 820 · 23 | bus | 584 | 182/182 admitted | 83/83 admitted | bus:A23 | — |
-| `92-24-j26-1` | 820 · 24 | bus | 1493 | 158/165 partially-admitted | 136/138 partially-admitted | bus:A24 | endpoint-gap |
-| `92-25-A-j26-1` | 820 · 25 | bus | 557 | 58/81 partially-admitted | 71/79 partially-admitted | bus:A25 | endpoint-gap, collapsed-path |
+| `92-24-j26-1` | 820 · 24 | bus | 1493 | 165/165 admitted | 138/138 admitted | bus:A24, OSM fallback | — |
+| `92-25-A-j26-1` | 820 · 25 | bus | 557 | 81/81 admitted | 79/79 admitted | bus:A25, OSM fallback | — |
 | `92-26-j26-1` | 820 · 26 | bus | 651 | 80/80 admitted | 78/78 admitted | bus:A26 | — |
-| `92-27-C-j26-1` | 820 · 27 | bus | 33 | 0/0 inactive | 0/33 excluded | — | missing-line |
+| `92-27-C-j26-1` | 820 · 27 | bus | 33 | 0/0 inactive | 33/33 admitted | OSM fallback | — |
 | `92-30-A-j26-1` | 820 · 30 | bus | 601 | 120/120 admitted | 60/60 admitted | bus:B030 | — |
 | `92-348-j26-1` | 839 · 348 | bus | 128 | 46/46 admitted | 20/20 admitted | bus:B348 | — |
 | `92-4-D-j26-1` | 820 · 4 | bus | 1934 | 214/214 admitted | 154/154 admitted | bus:A04 | — |
@@ -249,58 +260,58 @@ Counts below are admitted/total **civil-day movements**; inactive records remain
 | `92-43-A-j26-1` | 812 · 43 | bus | 119 | 77/77 admitted | 75/75 admitted | bus:B043 | — |
 | `92-44-A-j26-1` | 812 · 44 | bus | 61 | 59/59 admitted | 0/0 inactive | bus:B044 | — |
 | `92-45-A-j26-1` | 812 · 45 | bus | 58 | 58/58 admitted | 0/0 inactive | bus:B045 | — |
-| `92-46-A-j26-1` | 812 · 46 | bus | 338 | 143/144 partially-admitted | 75/75 admitted | bus:B046 | endpoint-gap |
-| `92-493-A-j26-1` | 816 · 493 | bus | 93 | 0/28 excluded | 0/5 excluded | bus:TB | endpoint-gap |
-| `92-494-A-j26-1` | 7079 · 494 | bus | 4 | 0/0 inactive | 0/4 excluded | — | missing-line |
+| `92-46-A-j26-1` | 812 · 46 | bus | 338 | 144/144 admitted | 75/75 admitted | bus:B046, OSM fallback | — |
+| `92-493-A-j26-1` | 816 · 493 | bus | 93 | 28/28 admitted | 5/5 admitted | bus:TB, OSM fallback | — |
+| `92-494-A-j26-1` | 7079 · 494 | bus | 4 | 0/0 inactive | 4/4 admitted | OSM fallback | — |
 | `92-5-F-j26-1` | 820 · 5 | bus | 1238 | 179/179 admitted | 0/0 inactive | bus:A05 | — |
 | `92-50-B-j26-1` | 812 · 50 | bus | 47 | 40/40 admitted | 39/39 admitted | bus:B050 | — |
-| `92-502-A-j26-1` | 841 · 502 | bus | 4519 | 0/28 excluded | 0/29 excluded | bus:B502 | collapsed-path, endpoint-gap |
-| `92-508-A-j26-1` | 841 · 508 | bus | 11715 | 0/64 excluded | 0/54 excluded | bus:B508 | endpoint-gap |
+| `92-502-A-j26-1` | 841 · 502 | bus | 4519 | 28/28 admitted | 29/29 admitted | bus:B502, OSM fallback | — |
+| `92-508-A-j26-1` | 841 · 508 | bus | 11715 | 64/64 admitted | 54/54 admitted | bus:B508, OSM fallback | — |
 | `92-509-A-j26-1` | 841 · 509 | bus | 5456 | 28/28 admitted | 30/30 admitted | bus:B509 | — |
 | `92-51-C-j26-1` | 812 · 51 | bus | 80 | 73/73 admitted | 59/59 admitted | bus:B051 | — |
 | `92-510-j26-1` | 841 · 510 | bus | 3986 | 22/22 admitted | 18/18 admitted | bus:B510 | — |
 | `92-52-j26-1` | 812 · 52 | bus | 89 | 47/47 admitted | 40/40 admitted | bus:B052 | — |
 | `92-529-j26-1` | 841 · 529 | bus | 4859 | 26/26 admitted | 24/24 admitted | bus:B529 | — |
 | `92-6-D-j26-1` | 820 · 6 | bus | 1339 | 176/176 admitted | 129/129 admitted | bus:A06 | — |
-| `92-60-A-j26-1` | 819 · 60 | bus | 27 | 26/26 admitted | 1/2 partially-admitted | bus:B060 | endpoint-gap |
+| `92-60-A-j26-1` | 819 · 60 | bus | 27 | 26/26 admitted | 2/2 admitted | bus:B060, OSM fallback | — |
 | `92-604-C-j26-1` | 723 · 604 | bus | 50 | 30/30 admitted | 0/0 inactive | bus:B604 | — |
 | `92-608-A-j26-1` | 723 · 608 | bus | 152 | 66/66 admitted | 62/62 admitted | bus:B608 | — |
 | `92-609-A-j26-1` | 723 · 609 | bus | 158 | 65/65 admitted | 35/35 admitted | bus:B609 | — |
 | `92-61-A-j26-1` | 819 · 61 | bus | 116 | 82/82 admitted | 57/57 admitted | bus:B061 | — |
-| `92-62-A-j26-1` | 819 · 62 | bus | 86 | 78/81 partially-admitted | 34/36 partially-admitted | bus:B062 | endpoint-gap |
-| `92-622-A-j26-1` | 839 · 622 | bus | 456 | 1/79 partially-admitted | 0/73 excluded | bus:B622 | disconnected-line |
+| `92-62-A-j26-1` | 819 · 62 | bus | 86 | 81/81 admitted | 36/36 admitted | bus:B062, OSM fallback | — |
+| `92-622-A-j26-1` | 839 · 622 | bus | 456 | 79/79 admitted | 73/73 admitted | bus:B622, OSM fallback | — |
 | `92-63-A-j26-1` | 819 · 63 | bus | 73 | 69/69 admitted | 67/67 admitted | bus:B063 | — |
 | `92-64-A-j26-1` | 819 · 64 | bus | 97 | 65/65 admitted | 34/34 admitted | bus:B064 | — |
 | `92-65-A-j26-1` | 819 · 65 | bus | 126 | 62/62 admitted | 61/61 admitted | bus:B065 | — |
-| `92-653-j26-1` | 839 · 653 | bus | 20 | 0/20 excluded | 0/0 inactive | bus:B653 | disconnected-line |
+| `92-653-j26-1` | 839 · 653 | bus | 20 | 20/20 admitted | 0/0 inactive | bus:B653, OSM fallback | — |
 | `92-66-A-j26-1` | 819 · 66 | bus | 16 | 16/16 admitted | 0/0 inactive | bus:B066 | — |
 | `92-67-B-j26-1` | 819 · 67 | bus | 18 | 0/0 inactive | 0/0 inactive | — | — |
 | `92-7-A-j26-1` | 820 · 7 | bus | 2588 | 257/257 admitted | 193/193 admitted | bus:A07 | — |
-| `92-8-A-j26-1` | 820 · 8 | bus | 1886 | 173/175 partially-admitted | 130/132 partially-admitted | bus:A08 | endpoint-gap |
+| `92-8-A-j26-1` | 820 · 8 | bus | 1886 | 175/175 admitted | 132/132 admitted | bus:A08, OSM fallback | — |
 | `92-A02-A-j26-1` | 7231 · EV4 | bus | 8 | 0/0 inactive | 0/0 inactive | — | — |
 | `92-A04-O-j26-1` | 7231 · EV1 | bus | 1424 | 0/0 inactive | 0/0 inactive | — | — |
 | `92-A04-U-j26-1` | 7231 · EV2 | bus | 4 | 0/0 inactive | 0/0 inactive | — | — |
 | `92-A05-D-j26-1` | 7231 · EV2 | bus | 132 | 0/0 inactive | 0/0 inactive | — | — |
-| `92-A05-I-j26-1` | 7230 · EV1 | bus | 122 | 0/2 excluded | 0/74 excluded | — | missing-line |
+| `92-A05-I-j26-1` | 7230 · EV1 | bus | 122 | 2/2 admitted | 74/74 admitted | OSM fallback | — |
 | `92-A05-X-j26-1` | 7231 · EV3 | bus | 245 | 0/0 inactive | 0/1 excluded | — | missing-line |
 | `92-A0C-8-j26-1` | 7230 · EV3 | bus | 76 | 0/0 inactive | 0/0 inactive | — | — |
 | `92-E-H-j26-1` | 841 · E | bus | 1 | 0/0 inactive | 0/0 inactive | — | — |
 | `92-EV-F-j26-1` | 185 · EV | bus | 34 | 0/0 inactive | 0/0 inactive | — | — |
 | `92-EV2-L-j26-1` | 7231 · EV2 | bus | 48 | 0/0 inactive | 0/0 inactive | — | — |
 | `92-EV4-O-j26-1` | 7231 · EV4 | bus | 1 | 0/0 inactive | 0/0 inactive | — | — |
-| `92-N1-j26-1` | 820 · N1 | bus | 70 | 0/0 inactive | 2/14 partially-admitted | bus:B901 | disconnected-line |
+| `92-N1-j26-1` | 820 · N1 | bus | 70 | 0/0 inactive | 14/14 admitted | bus:B901, OSM fallback | — |
 | `92-N12-j26-1` | 820 · N12 | bus | 18 | 0/0 inactive | 6/6 admitted | bus:B912 | — |
 | `92-N14-j26-1` | 820 · N14 | bus | 24 | 0/0 inactive | 6/6 admitted | bus:B914 | — |
 | `92-N2-A-j26-1` | 820 · N2 | bus | 18 | 0/0 inactive | 6/6 admitted | bus:B902 | — |
 | `92-N20-A-j26-1` | 820 · N20 | bus | 23 | 0/0 inactive | 6/6 admitted | bus:B920 | — |
 | `92-N21-j26-1` | 820 · N21 | bus | 18 | 0/0 inactive | 6/6 admitted | bus:B921 | — |
 | `92-N3-B-j26-1` | 820 · N3 | bus | 7 | 0/0 inactive | 6/6 admitted | bus:B903 | — |
-| `92-N33-A-j26-1` | 841 · N33 | bus | 317 | 0/0 inactive | 0/5 excluded | bus:B933 | endpoint-gap |
-| `92-N4-A-j26-1` | 820 · N4 | bus | 12 | 0/0 inactive | 3/6 partially-admitted | bus:B904 | implausible-detour |
+| `92-N33-A-j26-1` | 841 · N33 | bus | 317 | 0/0 inactive | 5/5 admitted | bus:B933, OSM fallback | — |
+| `92-N4-A-j26-1` | 820 · N4 | bus | 12 | 0/0 inactive | 6/6 admitted | bus:B904, OSM fallback | — |
 | `92-N52-j26-1` | 812 · N52 | bus | 9 | 0/0 inactive | 6/6 admitted | bus:B952 | — |
-| `92-N6-j26-1` | 820 · N6 | bus | 29 | 0/0 inactive | 3/6 partially-admitted | bus:B906 | implausible-detour |
+| `92-N6-j26-1` | 820 · N6 | bus | 29 | 0/0 inactive | 6/6 admitted | bus:B906, OSM fallback | — |
 | `92-N60-C-j26-1` | 819 · N60 | bus | 6 | 0/0 inactive | 6/6 admitted | bus:B960 | — |
-| `92-N63-B-j26-1` | 819 · N63 | bus | 5 | 0/0 inactive | 2/5 partially-admitted | bus:B963 | endpoint-gap |
+| `92-N63-B-j26-1` | 819 · N63 | bus | 5 | 0/0 inactive | 5/5 admitted | bus:B963, OSM fallback | — |
 | `92-N9-j26-1` | 839 · N9 | bus | 8 | 0/0 inactive | 7/7 admitted | bus:B909 | — |
 | `93-250-0-j26-1` | 273 · 2500 | mountain | 2164 | 0/1082 excluded | 0/1142 excluded | — | missing-line |
 | `93-250-5-j26-1` | 283 · 2505 | mountain | 106 | 0/58 excluded | 0/58 excluded | — | missing-line |
@@ -324,7 +335,7 @@ Counts below are admitted/total **civil-day movements**; inactive records remain
 | `96-350-0-j26-1` | 801 · 282 | bus | 41 | 25/25 admitted | 16/16 admitted | bus:B282 | — |
 | `96-350-1-j26-1` | 801 · 281 | bus | 84 | 60/60 admitted | 24/24 admitted | bus:B281 | — |
 | `96-350-2-j26-1` | 801 · 272 | bus | 142 | 52/52 admitted | 38/38 admitted | bus:B272 | — |
-| `96-350-3-j26-1` | 801 · 271 | bus | 113 | 58/64 partially-admitted | 62/62 admitted | bus:B271 | endpoint-gap |
+| `96-350-3-j26-1` | 801 · 271 | bus | 113 | 64/64 admitted | 62/62 admitted | bus:B271, OSM fallback | — |
 | `96-350-4-j26-1` | 801 · 275 | bus | 25 | 25/25 admitted | 0/0 inactive | bus:B275 | — |
 | `96-350-5-j26-1` | 801 · 261 | bus | 66 | 20/20 admitted | 16/16 admitted | bus:B261 | — |
 | `96-350-6-j26-1` | 801 · 277 | bus | 14 | 14/14 admitted | 0/0 inactive | bus:B277 | — |
@@ -332,11 +343,11 @@ Counts below are admitted/total **civil-day movements**; inactive records remain
 | `96-352-0-j26-1` | 801 · 211 | bus | 102 | 37/37 admitted | 31/31 admitted | bus:B211 | — |
 | `96-352-1-j26-1` | 801 · 71 | bus | 133 | 18/18 admitted | 25/25 admitted | bus:B071 | — |
 | `96-352-2-j26-1` | 801 · 72 | bus | 98 | 45/45 admitted | 26/26 admitted | bus:B072 | — |
-| `96-352-3-j26-1` | 801 · 73 | bus | 274 | 63/143 partially-admitted | 45/111 partially-admitted | bus:B073 | endpoint-gap |
+| `96-352-3-j26-1` | 801 · 73 | bus | 274 | 143/143 admitted | 111/111 admitted | bus:B073, OSM fallback | — |
 | `96-352-4-j26-1` | 801 · 70 | bus | 76 | 77/77 admitted | 77/77 admitted | bus:B070 | — |
-| `96-353-9-j26-1` | 801 · 252 | bus | 20 | 0/0 inactive | 0/8 excluded | — | missing-line |
-| `96-354-0-j26-1` | 801 · 251 | bus | 149 | 53/54 partially-admitted | 39/39 admitted | bus:B251 | endpoint-gap |
-| `96-354-1-j26-1` | 801 · 241 | bus | 182 | 0/51 excluded | 0/50 excluded | — | missing-line |
+| `96-353-9-j26-1` | 801 · 252 | bus | 20 | 0/0 inactive | 8/8 admitted | OSM fallback | — |
+| `96-354-0-j26-1` | 801 · 251 | bus | 149 | 54/54 admitted | 39/39 admitted | bus:B251, OSM fallback | — |
+| `96-354-1-j26-1` | 801 · 241 | bus | 182 | 51/51 admitted | 50/50 admitted | OSM fallback | — |
 | `96-354-2-j26-1` | 801 · 234 | bus | 8 | 0/0 inactive | 8/8 admitted | bus:B234 | — |
 | `96-354-3-j26-1` | 801 · 221 | bus | 76 | 32/32 admitted | 24/24 admitted | bus:B221 | — |
 | `96-354-4-j26-1` | 801 · 233 | bus | 72 | 20/22 partially-admitted | 14/14 admitted | bus:B233 | endpoint-gap |
@@ -355,13 +366,13 @@ Counts below are admitted/total **civil-day movements**; inactive records remain
 | `96-357-8-j26-1` | 801 · 399 | bus | 38 | 35/35 admitted | 30/30 admitted | bus:B399 | — |
 | `96-357-9-j26-1` | 801 · 87 | bus | 28 | 28/28 admitted | 0/0 inactive | bus:B087 | — |
 | `96-358-0-j26-1` | 801 · 88 | bus | 60 | 30/30 admitted | 28/28 admitted | bus:B088 | — |
-| `96-359-A-j26-1` | 801 · N73 | bus | 7 | 0/0 inactive | 0/6 excluded | bus:B973 | disconnected-line |
+| `96-359-A-j26-1` | 801 · N73 | bus | 7 | 0/0 inactive | 6/6 admitted | bus:B973, OSM fallback | — |
 | `96-359-B-j26-1` | 801 · N81 | bus | 4 | 0/0 inactive | 4/4 admitted | bus:B981 | — |
 | `96-359-C-j26-1` | 801 · N72 | bus | 6 | 0/0 inactive | 6/6 admitted | bus:B972 | — |
 | `96-359-D-j26-1` | 801 · N84 | bus | 6 | 0/0 inactive | 6/6 admitted | bus:B984 | — |
 | `96-359-E-j26-1` | 801 · N85 | bus | 5 | 0/0 inactive | 5/5 admitted | bus:B985 | — |
 | `96-359-F-j26-1` | 801 · N66 | bus | 4 | 0/0 inactive | 4/4 admitted | bus:B966 | — |
-| `96-359-G-j26-1` | 801 · N5 | bus | 4 | 0/0 inactive | 2/4 partially-admitted | bus:B905 | endpoint-gap |
+| `96-359-G-j26-1` | 801 · N5 | bus | 4 | 0/0 inactive | 4/4 admitted | bus:B905, OSM fallback | — |
 | `96-359-H-j26-1` | 801 · N80 | bus | 4 | 0/0 inactive | 4/4 admitted | bus:B980 | — |
 
 ## Reproduction and validation
@@ -380,12 +391,32 @@ node scripts/write-luzern-audit.mjs
 # Offline source/artifact checks without the large national archive or cache.
 node scripts/check-luzern-region.mjs
 npx vitest run scripts/luzern-region.test.mjs \
+  scripts/luzern-road-geometry.test.mjs scripts/enrich-postbus-roads.test.mjs \
   scripts/basel-line-geometry.test.mjs scripts/gtfs-frequencies.test.mjs
 
 # Optional new acquisition: review vintages, domains and crosswalk before using.
 node scripts/download-luzern-sources.mjs /private/tmp/luzern-new-sources
 ```
 
+The committed road cache is required by the pinned policy, so ordinary reproduction needs no road matcher or network access. To regenerate the cache, use the same PBF and pinned matcher inputs from the offline pipeline above:
+
+```sh
+node scripts/luzern-road-geometry.mjs prepare \
+  /private/tmp/luzern-timetable.json /private/tmp/luzern-road-feed
+# Run for each agency listed in luzern-road-feed/index.json:
+node scripts/match-postbus-roads.mjs \
+  --pfaedle /private/tmp/gleislicht-pfaedle/build/pfaedle \
+  --osm /private/tmp/gleislicht-postbus-roads.osm.pbf \
+  --config /private/tmp/gleislicht-pfaedle/pfaedle.cfg \
+  --feed /private/tmp/luzern-road-feed/801 \
+  --output /private/tmp/luzern-road-matched/801
+node scripts/luzern-road-geometry.mjs import \
+  /private/tmp/luzern-road-feed /private/tmp/luzern-road-matched \
+  /private/tmp/luzern-road-cache.json /private/tmp/luzern-road-evidence
+```
+
+Review regenerated cache/evidence hashes before updating policy. Matcher elapsed times and warning-log timings can change between runs; the committed evidence preserves the measured run. No changed cache can silently replace the pinned input. All **46 scoped unit tests pass**, including consensus failure/conflict isolation, repeated-pair loops, reversed directions, changed identities, corrupt indices/endpoints, source hashes, detour/collapse limits and routing-only carry-in normalization.
+
 The checker independently verifies every stored source hash; exact ArcGIS object-ID sets; inventory totals; every chunk byte length/hash; duplicate journey consistency across chunks; morning membership; complete directed path endpoints; per-pattern, pair, route and agency totals; and admission/exclusion reconciliation. With the regenerated timetable cache it also replays **every admitted journey against all original GTFS calls, times, sequences, source-service-day identity and frequency metadata**. Unit tests cover exact donor-edge repairs and rejection of invented edges/changed snapshots/already-connected targets, truncated/duplicate pages, wrong CRS, changed operator domains/year, disconnected geometry, crossing-without-junction, reversal, loops, polygon holes, midnight carry-in, frequency semantics and rejection of malformed admitted paths.
 
-The large source-line paths make the initial compressed manifests about 1.35 / 1.45 MiB; compressed morning files are 1.49 / 1.53 MiB. The largest compressed two-hour chunks are 145.2 / 97.2 KiB. These are measured data artifacts, not a claim that existing UI payload budgets or route-direction review gates have passed.
+The large source-line paths make the initial compressed manifests about 1.43 / 1.54 MiB; compressed morning files are 1.59 / 1.63 MiB. The largest compressed two-hour chunks are 167.2 / 113.5 KiB. These are measured data artifacts, not a claim that existing UI payload budgets or route-direction review gates have passed.

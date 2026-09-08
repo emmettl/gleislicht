@@ -219,7 +219,7 @@
       "reason": "SBB night service: source Luzern–Zürich NEX, GTFS N7. Fixture complete ordered calls Zürich HB–Baar–Zug–Cham–Rotkreuz–Gisikon-Root–Ebikon–Luzern verify the corridor; every pair still tested."
     }
   },
-  "admission": "Complete directed stop patterns only, with every segment passing source identity, projection, connectivity and detour checks. Retain every original source call. No invented gap fillers. Geometry is inferred from undirected official alignments; it is not certified street direction, track assignment or observed vehicle movement.",
+  "admission": "Complete directed stop patterns only, with every segment passing identity, projection, connectivity and detour checks. Retain every original source call. Official geometry takes precedence; failed bus pairs may use pinned OSM road inference only when every complete pattern context agrees. Geometry is inferred, not certified street direction, track assignment or observed vehicle movement.",
   "boatExclusion": "The only cantonal boat line is dated 2015 and has no 2026 route identity; no current water route geometry validated.",
   "scopeLimits": [
     "Annual GTFS membership is a census of the pinned archive, not proof that all real-world or demand-responsive services are represented.",
@@ -354,5 +354,10 @@
         "reason": "No short connecting path in the official bus line network; the nearest connected route detours about 3.775 km. No bridge inserted."
       }
     ]
+  },
+  "roadFallback": {
+    "cache": "data/luzern-road-cache.json",
+    "sha256": "3190a2f3c1fef1dfc0a83f8902ba373721e233902e87990cc83960e43397a385",
+    "admission": "Only failed official bus pairs; all complete patterns across both dates must agree on an accepted identical road path. Full journeys and strict Luzern distance limits remain mandatory."
   }
 }
