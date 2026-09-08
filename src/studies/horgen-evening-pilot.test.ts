@@ -28,8 +28,8 @@ describe('Horgen evening recording', () => {
     expect(afternoon.gaps).toHaveLength(2)
     expect(() => validateCantonalPilot(afternoon, cantonalPilotForRecording(evening.metadata.recordingId))).toThrow('identity')
     expect(() => validateCantonalPilot(evening, cantonalPilotForRecording(afternoon.metadata.recordingId))).toThrow('identity')
-    const altered = structuredClone(evening)
-    altered.windows[0].minutes.splice(20, 1)
+    const altered = { ...evening, windows: evening.windows.map(window => ({ ...window, minutes: [...window.minutes] })) }
+    Object.assign(altered.windows[0], { minutes: altered.windows[0].minutes.filter((_, index) => index !== 20) })
     expect(() => validateCantonalPilot(altered)).toThrow('Incomplete')
   })
 })
