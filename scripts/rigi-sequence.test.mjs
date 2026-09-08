@@ -39,3 +39,48 @@ describe('source-backed lake-to-summit sequences', () => {
     expect(rigiSequences(n)).toEqual([])
   })
 })
+
+describe('Weggis cableway approach', () => {
+  const choices = rigiSequences(network, 'weggis'), noon = choices.find(s => s.start === 43920)
+  it('keeps the two longer waits and boards the railway at its intermediate Kaltbad stop', () => {
+    expect(choices).toHaveLength(10)
+    expect(noon).toMatchObject({ arrival: 46380, departure: 52500, end: 53220, cable: { departure: 49200, arrival: 49800 } })
+    expect(noon.cable.train.shortName).toBe('10025')
+    expect(noon.rail.shortName).toBe('1139')
+    expect(noon.rail.start).toBe(51300) // 14:15 Vitznau; we only board at 14:35.
+    expect(choices.every(s => s.cable.departure - s.arrival === 47 * 60 && s.departure - s.cable.arrival === 45 * 60)).toBe(true)
+    expect(sequenceFocus(noon, 'cable').trainId).toBe(noon.cable.train.id)
+    expect(sequenceFocus(noon, 'kaltbad')).toEqual({ trainId: undefined, station: 'Rigi Kaltbad (Luftseilbahn)' })
+  })
+  it('uses 20 minutes uphill at Weggis, including the exact boundary, instead of the 15-minute reverse rule', () => {
+    const earlierCable = 47400
+    for (const gap of [900, 1199, 1200]) {
+      const n = read(), b = n.trains.find(t => t.id === noon.boat.id)
+      b.stops.find(s => n.stops[s[0]][2] === 'Weggis')[1] = earlierCable - gap
+      const result = rigiSequences(n, 'weggis').find(s => s.id === noon.id)
+      expect(result.cable.departure).toBe(gap === 1200 ? earlierCable : 49200)
+    }
+  })
+  it('requires five minutes between the cableway arrival and railway departure', () => {
+    for (const gap of [299, 300]) {
+      const n = read(), c = n.trains.find(t => t.id === noon.cable.train.id)
+      c.stops.at(-1)[1] = noon.departure - gap
+      const result = rigiSequences(n, 'weggis').find(s => s.id === noon.id)
+      if (gap === 300) expect(result.rail.id).toBe(noon.rail.id)
+      else expect(result?.rail.id).not.toBe(noon.rail.id)
+    }
+  })
+  it('resolves all five stages in either direction, without following the railway before boarding', () => {
+    for (const [time, phase] of [[43919, 'before'], [43920, 'boat'], [46379, 'boat'], [46380, 'interchange'], [49199, 'interchange'], [49200, 'cable'], [49799, 'cable'], [49800, 'kaltbad'], [52499, 'kaltbad'], [52500, 'rail'], [53220, 'complete'], [51300, 'kaltbad'], [49200, 'cable'], [46380, 'interchange'], [43920, 'boat']]) expect(sequencePhase(noon, time)).toBe(phase)
+  })
+  it('rejects unsupported cable service, unknown interchange stop identities and changed dates', () => {
+    for (const patch of [{ pathSegments: [] }, { frequency: { exactTimes: 0 } }, { routeType: 3 }]) {
+      const n = read(); for (const t of n.trains.filter(t => t.routeType === 1300)) Object.assign(t, patch)
+      expect(rigiSequences(n, 'weggis')).toEqual([])
+    }
+    const n = read(); n.stops = n.stops.map(s => s[2] === 'Rigi Kaltbad-First' ? [...s.slice(0, 4), 'unknown'] : s)
+    expect(rigiSequences(n, 'weggis')).toEqual([])
+    const changed = read(); changed.metadata.serviceDate = '2026-09-05'
+    expect(rigiSequences(changed, 'weggis')).toEqual([])
+  })
+})

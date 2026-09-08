@@ -1,0 +1,207 @@
+{
+  "feedVersion": "20260902",
+  "serviceDate": "2026-09-04",
+  "sha256": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+  "sourceFiles": [
+    "stops.txt",
+    "transfers.txt"
+  ],
+  "stops": [
+    {
+      "stop_id": "ch:1:sloid:30388",
+      "stop_name": "Weggis (Luftseilbahn)",
+      "stop_lat": "47.03408875",
+      "stop_lon": "8.44073211",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:30388",
+      "platform_code": "",
+      "original_stop_id": "ch:1:sloid:30388",
+      "didok": "8530388"
+    },
+    {
+      "stop_id": "ch:1:sloid:30687",
+      "stop_name": "Rigi Kaltbad (Luftseilbahn)",
+      "stop_lat": "47.04335142",
+      "stop_lon": "8.46495069",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:30687",
+      "platform_code": "",
+      "original_stop_id": "ch:1:sloid:30687",
+      "didok": "8530687"
+    },
+    {
+      "stop_id": "ch:1:sloid:5074",
+      "stop_name": "Rigi Kaltbad-First",
+      "stop_lat": "47.04400642",
+      "stop_lon": "8.46670240",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:5074",
+      "platform_code": "",
+      "original_stop_id": "ch:1:sloid:5074",
+      "didok": "8505074"
+    },
+    {
+      "stop_id": "ch:1:sloid:5074:0:450724",
+      "stop_name": "Rigi Kaltbad-First",
+      "stop_lat": "47.04395132",
+      "stop_lon": "8.46658562",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:5074",
+      "platform_code": "1",
+      "original_stop_id": "ch:1:sloid:5074:0:450724",
+      "didok": "8505074"
+    },
+    {
+      "stop_id": "ch:1:sloid:5074:0:715663",
+      "stop_name": "Rigi Kaltbad-First",
+      "stop_lat": "47.04398805",
+      "stop_lon": "8.46665749",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:5074",
+      "platform_code": "2",
+      "original_stop_id": "ch:1:sloid:5074:0:715663",
+      "didok": "8505074"
+    },
+    {
+      "stop_id": "ch:1:sloid:8463_gen:missingSLOID_pf:1",
+      "stop_name": "Weggis",
+      "stop_lat": "47.03141923",
+      "stop_lon": "8.43322219",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:8463",
+      "platform_code": "1",
+      "original_stop_id": "",
+      "didok": "8508463"
+    },
+    {
+      "stop_id": "ch:1:sloid:8463_gen:missingSLOID_pf:2",
+      "stop_name": "Weggis",
+      "stop_lat": "47.03141923",
+      "stop_lon": "8.43322219",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:8463",
+      "platform_code": "2",
+      "original_stop_id": "",
+      "didok": "8508463"
+    }
+  ],
+  "records": [
+    {
+      "from_stop_id": "ch:1:sloid:30388",
+      "to_stop_id": "ch:1:sloid:8463_gen:missingSLOID_pf:1",
+      "from_route_id": "",
+      "to_route_id": "",
+      "from_trip_id": "",
+      "to_trip_id": "",
+      "transfer_type": "2",
+      "min_transfer_time": "900",
+      "service_id": ""
+    },
+    {
+      "from_stop_id": "ch:1:sloid:30388",
+      "to_stop_id": "ch:1:sloid:8463_gen:missingSLOID_pf:2",
+      "from_route_id": "",
+      "to_route_id": "",
+      "from_trip_id": "",
+      "to_trip_id": "",
+      "transfer_type": "2",
+      "min_transfer_time": "900",
+      "service_id": ""
+    },
+    {
+      "from_stop_id": "ch:1:sloid:30687",
+      "to_stop_id": "ch:1:sloid:5074",
+      "from_route_id": "",
+      "to_route_id": "",
+      "from_trip_id": "",
+      "to_trip_id": "",
+      "transfer_type": "2",
+      "min_transfer_time": "300",
+      "service_id": ""
+    },
+    {
+      "from_stop_id": "ch:1:sloid:30687",
+      "to_stop_id": "ch:1:sloid:5074:0:450724",
+      "from_route_id": "",
+      "to_route_id": "",
+      "from_trip_id": "",
+      "to_trip_id": "",
+      "transfer_type": "2",
+      "min_transfer_time": "300",
+      "service_id": ""
+    },
+    {
+      "from_stop_id": "ch:1:sloid:30687",
+      "to_stop_id": "ch:1:sloid:5074:0:715663",
+      "from_route_id": "",
+      "to_route_id": "",
+      "from_trip_id": "",
+      "to_trip_id": "",
+      "transfer_type": "2",
+      "min_transfer_time": "300",
+      "service_id": ""
+    },
+    {
+      "from_stop_id": "ch:1:sloid:5074",
+      "to_stop_id": "ch:1:sloid:30687",
+      "from_route_id": "",
+      "to_route_id": "",
+      "from_trip_id": "",
+      "to_trip_id": "",
+      "transfer_type": "2",
+      "min_transfer_time": "300",
+      "service_id": ""
+    },
+    {
+      "from_stop_id": "ch:1:sloid:5074:0:450724",
+      "to_stop_id": "ch:1:sloid:30687",
+      "from_route_id": "",
+      "to_route_id": "",
+      "from_trip_id": "",
+      "to_trip_id": "",
+      "transfer_type": "2",
+      "min_transfer_time": "300",
+      "service_id": ""
+    },
+    {
+      "from_stop_id": "ch:1:sloid:5074:0:715663",
+      "to_stop_id": "ch:1:sloid:30687",
+      "from_route_id": "",
+      "to_route_id": "",
+      "from_trip_id": "",
+      "to_trip_id": "",
+      "transfer_type": "2",
+      "min_transfer_time": "300",
+      "service_id": ""
+    },
+    {
+      "from_stop_id": "ch:1:sloid:8463_gen:missingSLOID_pf:1",
+      "to_stop_id": "ch:1:sloid:30388",
+      "from_route_id": "",
+      "to_route_id": "",
+      "from_trip_id": "",
+      "to_trip_id": "",
+      "transfer_type": "2",
+      "min_transfer_time": "1200",
+      "service_id": ""
+    },
+    {
+      "from_stop_id": "ch:1:sloid:8463_gen:missingSLOID_pf:2",
+      "to_stop_id": "ch:1:sloid:30388",
+      "from_route_id": "",
+      "to_route_id": "",
+      "from_trip_id": "",
+      "to_trip_id": "",
+      "transfer_type": "2",
+      "min_transfer_time": "1200",
+      "service_id": ""
+    }
+  ],
+  "pedestrianContext": {
+    "sourceUrl": "https://www.rigi.ch/en/inform/plan-your-trip/rigi-kulm/arrival",
+    "retrieved": "2026-09-08",
+    "weggisWalkMinutes": 15,
+    "kaltbadWalkMetres": 200,
+    "note": "Operator context is separate from directional timetable transfer minima; no walking geometry is supplied."
+  }
+}

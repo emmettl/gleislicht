@@ -36,7 +36,7 @@ Outputs:
 
 Tests cover source selection, cableway identity and reverse direction, rejected endpoints, full-day trip identities and path references, headlands, narrow islands and the actual emitted boat paths. Desktop Chromium and emulated iPhone WebKit checks cover lazy loading, study selection, full-day controls, operator search, mode labels and failure recovery. Physical-device review and publication remain separate steps.
 
-The **2D map** now links to both [measured Rigi terrain ascents from Vitznau and Arth-Goldau](RIGI-TERRAIN.md). Ground elevations beneath the railway are available. The first authored boat–interchange–railway sequence is described below; surveyed track heights, tunnels, cable behaviour, a sequence through the cableway, and pedestrian geometry remain open. Vitznau boat and railway share source stop `ch:1:sloid:8464`; Weggis pier and cableway retain distinct locations. A shared timetable stop does not mean there is no walk. Seasonal and weekend selection, validated shipping routes and the other Rigi-area cableways are later increments.
+The **2D map** now links to both [measured Rigi terrain ascents from Vitznau and Arth-Goldau](RIGI-TERRAIN.md). Ground elevations beneath the railway are available. The first authored boat–interchange–railway sequence is described below; surveyed track heights, tunnels, vertical cable behaviour and pedestrian geometry remain open. The alternate Weggis cableway sequence is described below. Vitznau boat and railway share source stop `ch:1:sloid:8464`; Weggis pier and cableway retain distinct locations. A shared timetable stop does not mean there is no walk. Seasonal and weekend selection, validated shipping routes and the other Rigi-area cableways are later increments.
 
 
 ## First lake-to-summit sequence
@@ -54,3 +54,26 @@ Evidence retained in `data/rigi-interchange-source.json`:
 Reproduce the transfer audit with `node scripts/audit-rigi-interchange.mjs /path/GTFS_FP2026_20260902.zip`. It hashes the archive against the study and rejects changed or more specific transfer rules for review. The optional sequence module derives pairs directly from the loaded fixture; mismatched dates, feed hashes, modes, operators, partial ascents, headway services and missing path geometry do not become sequences. It uses the boat's intermediate arrival, the railway's first departure and its terminal arrival, retaining both source trip IDs. The minimum is a timetable rule, **not a guaranteed connection** or a claim about suitable boarding margins.
 
 Focused tests cover pairing, exact transfer eligibility, source mismatches, stage boundaries and reverse scrubbing. Browser checks exercise automatic boat/rail handoffs, replay, departure choice, dismissal and manual selection on desktop Chromium and emulated iPhone WebKit. Sequence code, copy, styling and evidence load only on entry; the initial bundle budgets remain unchanged.
+
+
+## Alternate ascent via Weggis and the cableway
+
+The sequence now offers **Choose an approach → Via Weggis · cableway + cogwheel** alongside Vitznau. Ten daytime boats from Luzern connect to the first eligible uphill cableway and then the first eligible cogwheel train from **Rigi Kaltbad-First** to Rigi Kulm. The railway is boarded at its intermediate Kaltbad departure; its earlier Vitznau departure does not trigger the handoff.
+
+For the default boat **17**, the actual chain is:
+
+| Stage | Scheduled time |
+| --- | --- |
+| Boat: Luzern → Weggis | 12:12–12:53 |
+| Weggis walk and wait | 47 minutes |
+| Cableway 10025: Weggis → Rigi Kaltbad | 13:40–13:50 |
+| Kaltbad interchange | 45 minutes |
+| Cogwheel 1139: Rigi Kaltbad-First → Rigi Kulm | 14:35–14:47 |
+
+This is a slower alternative, not a recommended or guaranteed connection. The two long intervals remain on the same clock; clickable stages allow a viewer to skip ahead. The alternate composition admits interchange intervals up to 60 minutes, separately from Vitznau's 30-minute editorial limit. The 06:20 boat's 71-minute Weggis interval remains outside this composition. Neither limit is a timetable transfer rule.
+
+The retained source in `data/rigi-weggis-interchange-source.json` contains the exact seven stop records, their parent relationships, ten directional transfer rows and the archive hash. Both source Weggis pier IDs have a **1,200-second uphill** rule to `ch:1:sloid:30388`; the reverse direction is **900 seconds**. The 12:53 boat cannot therefore be paired with the 13:10 cableway. From cableway summit stop `ch:1:sloid:30687`, the rule to each of the three source Kaltbad railway stop IDs is **300 seconds**. More specific or changed source rules require review; neither a similar stop name nor proximity substitutes for the exact source identity.
+
+The operator's [Rigi Kulm arrival guide](https://www.rigi.ch/en/inform/plan-your-trip/rigi-kulm/arrival), retrieved 8 September 2026, describes a **15-minute walk** uphill from the Weggis pier and **200 metres** between the cableway and railway stations at Kaltbad. The operator's walking description and the feed's directional transfer allowance are separate evidence. The map holds at the alighting station during each interval; it does not invent a pedestrian path or imply zero walking distance. The cableway uses the existing mapped 2D alignment, without fabricated sag, vertical cabin motion or observed cabin positions. The terrain view remains a separate scenic playback.
+
+Reproduce with `node scripts/audit-rigi-weggis.mjs /path/GTFS_FP2026_20260902.zip`. The extractor checks the archive against the fixture, includes parent-level rule scope and rejects missing, additional or more specific rules for these interchange directions. Unit tests cover the 20-minute uphill versus 15-minute reverse rule, exact five-minute Kaltbad eligibility, intermediate railway boarding, all five stage boundaries, backwards scrubbing and unsupported sources. Desktop and emulated-phone checks cover both approaches, automatic cableway handoffs and return to the Vitznau sequence. All new sequence data, code and styling remain optional.

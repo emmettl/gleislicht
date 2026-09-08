@@ -26,3 +26,20 @@
 .rigi-sequence[data-phase="boat"] .sequence-phase,
 .rigi-sequence[data-phase="interchange"] .sequence-phase,
 .rigi-sequence[data-phase="rail"] .sequence-phase { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+
+.sequence-departure + .sequence-departure { margin-top: 8px; }
+.rigi-sequence[data-phase="cable"] .sequence-phase,
+.rigi-sequence[data-phase="kaltbad"] .sequence-phase { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+@media (max-width: 700px) {
+  .rigi-sequence[data-route="weggis"] .sequence-stages { position: relative; grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 112px; overflow-x: auto; padding-bottom: 8px; scroll-snap-type: x proximity; }
+  .rigi-sequence[data-route="weggis"] .sequence-stages button { scroll-snap-align: start; min-height: 70px; }
+}
+
+@media (min-width: 701px) {
+  .journey-card.rigi-sequence[data-route="weggis"] { top: max(130px, 18vh); max-height: calc(82vh - 52px); }
+  .rigi-sequence[data-route="weggis"] .sequence-stages small { display: none; }
+  .rigi-sequence[data-route="weggis"] .sequence-stages button { padding: 5px 8px; }
+}
+@media (max-width: 700px) {
+  .rigi-sequence .sequence-departure > span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+}
