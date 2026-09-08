@@ -64,7 +64,11 @@ describe('regional refresh', () => {
     const files = fixture()
     const result = await readRegionalArtifacts(path => files.get(path), ['zurich-city'], '2026-09-08')
     expect(result.dates).toEqual({ 'zurich-city': '2026-09-08' })
-    expect(result.files).toEqual(files)
+    // Compare binary contents directly instead of deeply traversing every byte.
+    expect([...result.files.keys()].sort()).toEqual([...files.keys()].sort())
+    for (const [path, bytes] of files) {
+      expect(result.files.get(path).equals(bytes), path).toBe(true)
+    }
     await expect(readRegionalArtifacts(path => files.get(path), ['zurich-city'], '2026-09-09')).rejects.toThrow('unexpected service date')
   })
   it('rejects mixed dates, unsafe chunk paths, damaged bytes and bad indices', async () => {
