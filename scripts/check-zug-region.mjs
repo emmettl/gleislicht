@@ -10,6 +10,7 @@ import { loadZugBusSupplement, matchZugBusPair } from './zug-bus-supplement.mjs'
 import { loadZugRoads, mergeZugRoadCandidates, matchZugRoadPair, zugOfficialAttempt } from './zug-road-geometry.mjs'
 import { loadZugMountain } from './zug-mountain-geometry.mjs'
 import { loadZugBoats } from './zug-boat-geometry.mjs'
+import { reviewZugBoats } from './review-zug-boats.mjs'
 import { reviewZugGrienbach } from './review-zug-grienbach.mjs'
 import { loadZugRoadContexts, matchZugRoadContext } from './zug-road-contexts.mjs'
 import { loadZugServiceRoads, matchZugServiceRoadPair } from './zug-service-road-geometry.mjs'
@@ -99,6 +100,9 @@ export async function checkZugRegion({ auditPath = 'data/zug-study-audit.json', 
   assert.deepEqual(audit.roadContextSource, roadContexts.source)
   assert.deepEqual(audit.roadContextInventory, roadContexts.inventory)
   assert.deepEqual(audit.roadContextStationWays, roadContexts.stationWays)
+  const boatReview = await reviewZugBoats(audit.policy.boatReview, audit.policy.boat, raw, audit.sourceHashes.timetable)
+  assert.equal(audit.sourceHashes.boatReview, audit.policy.boatReview.sourceSha256)
+  assert.deepEqual(audit.boatReview, boatReview)
   const grienbachReview = await reviewZugGrienbach(audit.policy.grienbachReview, audit.policy.roadExpansion, raw, audit.sourceHashes.timetable)
   assert.equal(audit.sourceHashes.grienbachReview, audit.policy.grienbachReview.sourceSha256)
   assert.deepEqual(audit.grienbachReview, grienbachReview)

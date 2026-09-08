@@ -1,0 +1,39 @@
+{
+  "reviewed": "2026-09-08",
+  "boatSourceSha256": "64af90150d88c4e2c86f30a08ff0a092fbe7946d5f33a4b9841608c05760e4ab",
+  "timetableSha256": "4e06a722d5403334a733d79f3332d204fbeeb0d05ede5c0344dbe7c16c05398d",
+  "method": "Diagnostic only. Remove whole original source edges crossing land outside the actual endpoint dock zones, then rerun the unchanged graph matcher. No new edges, coordinates, junctions or relaxed limits. Whole-edge removal is conservative and is not an exhaustive search over clipped source edges.",
+  "pairs": [
+    [
+      "94-366-0-j26-1",
+      "ch:1:sloid:2251",
+      "ch:1:sloid:2258"
+    ],
+    [
+      "94-366-0-j26-1",
+      "ch:1:sloid:2254",
+      "ch:1:sloid:2251"
+    ]
+  ],
+  "fleet": {
+    "url": "https://www.zugersee-schifffahrt.ch/ueber-uns/unsere-schiffe/",
+    "retrieved": "2026-09-08",
+    "pageDate": null,
+    "attribution": "Schifffahrtsgesellschaft für den Zugersee AG",
+    "use": "Technical specifications cited as review evidence; no republication licence inferred. Not a trip-specific vessel assignment.",
+    "maximumKmh": {
+      "MS Zug": 27,
+      "MS Rigi": 28
+    }
+  },
+  "decisions": [
+    "Retain exclusion. A water-valid source-network loop via the southern lake does not establish the actual non-stop service path. Its mean speed approaches published vessel maxima before allowing for manoeuvring; this is not proof of a speed violation or of the assigned vessel.",
+    "Retain exclusion. The filtered network still fails the unchanged detour limit; no replacement path is admitted."
+  ],
+  "files": [
+    {
+      "file": "fleet.html",
+      "sha256": "bfe5751dab7ee722d1318bbb281748fc158b1eecc829c35664168b27149ced88"
+    }
+  ]
+}

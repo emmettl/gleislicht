@@ -127,6 +127,22 @@ Retrieved **2026-09-08**. Shipping collection temporal extent: **2020-01-01T00:0
 | {1DB1599B-4EF7-44AA-8A8C-A80CAE55D94C} | 40 | zugersee |
 | {8AE7811A-C535-4CF2-8173-A83F3B4B1DF4} | 65 | outside the two reviewed lake graphs |
 
+### Water-aware alternate paths remain excluded
+
+The [alternate-path review catalogue](../data/zug-boat-review-sources/sources.json) pins the original shipping/shoreline catalogue and frozen timetable, plus the [operator fleet specifications](https://www.zugersee-schifffahrt.ch/ueber-uns/unsere-schiffe/) retrieved **8 September 2026**. The page gives maximum speeds of **27 km/h for MS Zug** and **28 km/h for MS Rigi**; it has no declared publication date or trip-specific vessel assignment. Credit: **Schifffahrtsgesellschaft für den Zugersee AG**. The retained HTML supports this review; no republication licence is inferred.
+
+For each failed directed pair, the diagnostic removes **four of 261 original lake-network edges** that cross land outside either actual endpoint's dock zone, then repeats the original matcher with unchanged snap, detour and dock-zone limits. The graph retains the other **257 edges**, exact source vertices and existing junctions. It adds no water shortcuts or junctions at crossings. Removed edge indices, source UUIDs, coordinates and exact shoreline intervals are retained. Whole-edge removal is conservative: this experiment does not exhaust every possible clipped-edge route.
+
+| Directed pair | Graph-only length | Full path including connectors | Frozen interval | Implied mean | Decision |
+| --- | --- | --- | --- | --- | --- |
+| Zug Bahnhofsteg (See) → Walchwil (See) | 14.719 km | 14.934 km | 33 min | 27.15 km/h | water-valid; service path unresolved |
+| Risch (See) → Zug Bahnhofsteg (See) | 16.484 km | no accepted candidate | 20 min | ≥ 49.45 km/h (graph only) | implausible-detour |
+
+Zug Bahnhofsteg → Walchwil has a water-valid **14.934 km** full candidate, but it loops through the southern lake before reaching Walchwil. Both fixtures allocate **33 minutes**, implying a **27.15 km/h** mean before allowing for manoeuvring. This is near the published vessel maxima, but is not proof of a speed violation or of which vessel operated. A valid line through water alone does not establish the service's actual path. Risch → Zug Bahnhofsteg remains an **implausible detour** under the original limit; its reported **16.484 km** excludes dock connectors, already implying at least **49.45 km/h** over the Sunday source interval of **20 minutes**. No failed-detour replacement geometry is emitted or claimed water-valid.
+
+The checker recomputes every trial and every affected source interval. The water-valid candidate and its hash remain diagnostic audit evidence only. **No trial is admitted**: the same one Friday and two Sunday trips remain excluded, and previously admitted paths and directed patterns are unchanged.
+
+
 ## Neighbouring official bus source
 
 Five exact-identity Luzern bus features were evaluated against the entire Zug timetable scope. The [supplement catalogue](../data/zug-luzern-sources/sources.json) preserves original URL, retrieval time and SHA-256 for the complete **114-feature** upstream page, its independent ID list, the operator enumeration, metadata and terms. The five selected features are checked byte-for-value against that page; no geometry edits or new connections are introduced. Source vintage is **26 May 2026**, all five FP_JAHR values are **2026**, and acquisition was **8 September 2026**. This is a reviewed source vintage, not a guarantee that every September diversion is represented.
@@ -463,7 +479,7 @@ npm run data:zug
 npm run data:zug:check
 npm run data:zug:report
 python3 -m unittest discover -s scripts -p test_prepare_zug_sources.py
-npx vitest run scripts/review-zug-grienbach.test.mjs scripts/zug-road-contexts.test.mjs scripts/zug-service-road-geometry.test.mjs scripts/zug-boat-geometry.test.mjs scripts/zug-sbb-rail-supplement.test.mjs scripts/zug-road-geometry.test.mjs scripts/luzern-road-geometry.test.mjs scripts/enrich-postbus-roads.test.mjs scripts/zug-mountain-geometry.test.mjs scripts/zug-region.test.mjs scripts/zug-bus-supplement.test.mjs scripts/zug-rail-geometry.test.mjs scripts/luzern-region.test.mjs \
+npx vitest run scripts/review-zug-boats.test.mjs scripts/review-zug-grienbach.test.mjs scripts/zug-road-contexts.test.mjs scripts/zug-service-road-geometry.test.mjs scripts/zug-boat-geometry.test.mjs scripts/zug-sbb-rail-supplement.test.mjs scripts/zug-road-geometry.test.mjs scripts/luzern-road-geometry.test.mjs scripts/enrich-postbus-roads.test.mjs scripts/zug-mountain-geometry.test.mjs scripts/zug-region.test.mjs scripts/zug-bus-supplement.test.mjs scripts/zug-rail-geometry.test.mjs scripts/luzern-region.test.mjs \
   scripts/civil-day.test.mjs scripts/gtfs-frequencies.test.mjs
 ```
 
