@@ -35,6 +35,47 @@ export function gleislichtPerformanceRenderer(): Plugin {
           '        return batchHubLines(lines.map(entry => entry.line)).map((line, index) => ({ key: `batch:${index}`, line }));\n    }, [calls, selectedCategory]);')
         code = 'import { batchHubLines } from "/src/studies/batch-hub-lines.ts";\n' + code
       } else if (moduleId.endsWith('/NationalNetworkScene.js')) {
+        // Limit full label searches, retaining per-frame movement and overlap
+        // checks for the labels that were actually displayed last frame.
+        const replaceIn = (start: string, end: string, before: string, after: string) => {
+          const first = code.indexOf(start), last = code.indexOf(end, first);
+          if (first < 0 || last < 0) throw new Error('Gleislicht component hook needs review');
+          const section = code.slice(first, last);
+          if (section.split(before).length !== 2) throw new Error(`Gleislicht component hook needs review: ${before}`);
+          code = code.slice(0, first) + section.replace(before, after) + code.slice(last);
+        };
+        const labelReplace = (before: string, after: string) => replaceIn('function TrainLabels(', 'function SelectedStationRouteLayer(', before, after);
+        labelReplace('    useFrame((_, delta) => {', `    const labelFrameBudget = useMemo(() => new LabelFrameBudget(), []);
+    const visibleLabelTrains = useRef([]);
+    const labelInputs = useMemo(() => ({}), [snapshot, projectedStops, projectedPaths,
+      selectedTrain, comparisonTrains, selectedRoute, selectedStation, selectedCategory,
+      airCategorySelected, roadCategorySelected, trainLabelMode, isPlaying, playbackRate,
+      trainTimeIndex, cameraFraming, layoutTransitioning, routeColors, routeColorMix, lakeAvoidingPaths]);
+    useFrame((_, delta) => {`);
+        labelReplace('        sprites.current.forEach((sprite) => {', `        const labelWork = labelFrameBudget.update(labelInputs, camera, size.width, size.height,
+          localTime.current, delta, isPlaying, playbackRate);
+        if (labelWork === 'idle') return;
+        const labelTrains = labelWork === 'all' ? trainsNearTime(trainTimeIndex, localTime.current) : visibleLabelTrains.current;
+        visibleLabelTrains.current = [];
+        sprites.current.forEach((sprite) => {`);
+        labelReplace('for (const train of trainsNearTime(trainTimeIndex, localTime.current)) {', 'for (const train of labelTrains) {');
+        labelReplace('            sprite.visible = true;', '            visibleLabelTrains.current.push(candidate.train);\n            sprite.visible = true;');
+        // Paused marker buffers depend on data, selection and zoom, not on frames.
+        const swarmReplace = (before: string, after: string) => replaceIn('function TrainSwarm(', 'function VehicleTrails(', before, after);
+        swarmReplace('    useFrame((state, delta) => {', `    const markerInputs = useMemo(() => ({}), [snapshot, projectedStops, projectedPaths,
+      selectedTrain, comparisonTrains, selectedRoute, selectedCategory, airCategorySelected,
+      selectedStation, trainTimeIndex, cameraFraming, trainPalette, palette, geometries,
+      realtimeGeometry, lakeAvoidingPaths, isPlaying, time]);
+    const previousMarkers = useRef({ inputs: undefined, cameraHeight: NaN, time: NaN });
+    useFrame((state, delta) => {
+        if (!isPlaying && previousMarkers.current.inputs === markerInputs &&
+            previousMarkers.current.cameraHeight === state.camera.position.y &&
+            previousMarkers.current.time === localTime.current) return;
+        previousMarkers.current.inputs = markerInputs;
+        previousMarkers.current.cameraHeight = state.camera.position.y;
+        previousMarkers.current.time = localTime.current;`);
+        code = 'import { LabelFrameBudget } from "/src/studies/label-frame-budget.ts";\n' + code;
+
         // Overview clock reports reconcile both the app and the R3F tree. Under
         // load, report at 5 Hz instead of 10 Hz; markers still advance each frame.
         // Focused markers consume the React clock, so preserve their cadence.
@@ -44,7 +85,9 @@ export function gleislichtPerformanceRenderer(): Plugin {
         replace('const lastUpdate = useRef(-1);', 'const lastUpdate = useRef(-1);\n    const trailFrameBudget = useMemo(() => new TrailFrameBudget(), []);\n    const trailWorker = useMemo(() => new TrailWorkerClient(), []);')
         replace('    }), [snapshot.trains.length]);', `    }), [snapshot.trains.length]);
     const trailSelection = useMemo(() => ({}), [selectedTrain, comparisonTrains, selectedRoute,
-      selectedCategory, airCategorySelected, selectedStation, cameraFraming, isPlaying, isPlaying ? undefined : time]);
+      selectedCategory, airCategorySelected, selectedStation, cameraFraming, isPlaying, isPlaying ? undefined : time,
+      snapshot, projectedStops, projectedPaths, lakeAvoidingPaths, trainPalette, palette, trainTimeIndex]);
+    const previousPausedTrail = useRef({ inputs: undefined, visibility: '', worker: false, time: NaN });
     useEffect(() => {
       if (!snapshot.trains.length) { trailWorker.dispose(); return; }
       trailWorker.reset(() => ({ trains: snapshot.trains, stops: projectedStops, paths: projectedPaths,
@@ -55,10 +98,20 @@ export function gleislichtPerformanceRenderer(): Plugin {
       return () => trailWorker.dispose();
     }, [trailWorker, snapshot.trains, projectedStops, projectedPaths, lakeAvoidingPaths, trainPalette, palette]);`)
         replace('if (clock.elapsedTime - lastUpdate.current < 1 / 30)',
-          `trailWorker.select(trailSelection, String(vehicleIsVisibleAtZoom('bus', camera.position.y, cameraFraming)) + String(vehicleIsVisibleAtZoom('tram', camera.position.y, cameraFraming)));
+          `const trailVisibility = String(vehicleIsVisibleAtZoom('bus', camera.position.y, cameraFraming)) + String(vehicleIsVisibleAtZoom('tram', camera.position.y, cameraFraming));
+        trailWorker.select(trailSelection, trailVisibility);
         const completedTrailFrame = trailWorker.takeFrame();
-        if (completedTrailFrame) applyTrailBuffers(geometries, completedTrailFrame);
+        if (completedTrailFrame) {
+          applyTrailBuffers(geometries, completedTrailFrame);
+          if (!trailWorker.available) previousPausedTrail.current.inputs = undefined;
+        }
+        if (!isPlaying && previousPausedTrail.current.inputs === trailSelection &&
+            previousPausedTrail.current.visibility === trailVisibility &&
+            previousPausedTrail.current.worker === trailWorker.available &&
+            previousPausedTrail.current.time === localTime.current) return;
         if (!trailFrameBudget.shouldUpdateTrail(delta, clock.elapsedTime - lastUpdate.current))`)
+        replace('lastUpdate.current = clock.elapsedTime;',
+          'lastUpdate.current = clock.elapsedTime;\n        previousPausedTrail.current = { inputs: trailSelection, visibility: trailVisibility, worker: trailWorker.available, time: localTime.current };')
         replace('const sampleTimes = vehicleTrailSampleTimes(localTime.current);',
           'const workerActive = trailWorker.available;\n        const workerTrainIds = [];\n        const sampleTimes = vehicleTrailSampleTimes(localTime.current);')
         replace('        geometries.forEach((geometry, index) => {',

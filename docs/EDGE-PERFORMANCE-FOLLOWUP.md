@@ -368,3 +368,44 @@ PostBus lazy loading and clock behavior; populated worker geometry, forward and
 backward seeks and worker teardown; and synchronous playback when workers are
 blocked. Earlier checks also passed for tram/journey/director playback and
 isolated Air/Auto rendering. Architecture boundaries passed.
+
+## Label search cadence and paused geometry
+
+Full-network train-label searches now run at most every 100 ms during steady
+playback. Between searches, visible labels still update their positions, opacity,
+scale and overlap checks every frame. Camera/projection, viewport, selection,
+layout, label-mode, data and substantial clock changes refresh the full list
+immediately. Newly eligible labels can therefore wait up to one refresh interval
+(or the next frame on a slower renderer); marker motion is unchanged.
+
+Paused scenes skip unchanged label work and marker buffer rebuilds. Trail
+candidate scans also stop after their paused frame is calculated, while completed
+worker results are still consumed. Data, zoom visibility, selection and actual
+clock changes invalidate the cached work. If a worker fails while paused, the
+synchronous path rebuilds after the worker clears its result; it cannot leave an
+empty trail permanently cached. The browser test exercises both worker and
+blocked-worker paths, seeks, resumed playback and unchanged buffer versions.
+
+A fixed-source production comparison used Chromium / M4 Max / ANGLE Metal,
+1280 × 720 and 24× CPU throttling. The paused benchmark holds 07:45, waits for
+initial camera motion and worker setup, and samples three seconds:
+
+| Paused main-thread scripting | Control | Final change |
+| --- | ---: | ---: |
+| SBB | 760.4 ms/second | 515.4 ms/second |
+| PostBus | 826.2 ms/second | 695.9 ms/second |
+
+These local samples show roughly 32% and 16% reductions, respectively. Rendering
+continues while paused, so this does not imply an idle GPU or zero CPU use.
+The playing comparison showed SBB scripting/frame 29.02 → 26.59 ms. A final
+sequential PostBus pair measured 51.81 → 48.31 ms/frame and 16.4 → 17.5 FPS,
+with no page errors. Playback improvements are modest and machine load varies;
+Windows measurements remain necessary.
+`scripts/benchmark-paused-network.mjs` reproduces the paused measurement.
+
+Validation: production build, focused lint, bundle budget (357.3 KiB initial JS,
+763.7 KiB total gzip), 297 isolated unit tests and browser checks for selection,
+label picking, tram layouts and terrain journeys passed. Four final paused
+geometry checks passed across Chromium and iPhone WebKit, including workers
+blocked at startup. An initial fallback failure was fixed and those four checks
+rerun successfully.
