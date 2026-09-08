@@ -1,4 +1,4 @@
-import test from 'node:test'
+import { test } from 'vitest'
 import assert from 'node:assert/strict'
 import { stGallenGraphs, matchStGallenPair } from './st-gallen-line-geometry.mjs'
 import { validatedStGallenSharedCorridors } from './st-gallen-shared-corridors.mjs'

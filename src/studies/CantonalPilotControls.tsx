@@ -1,8 +1,9 @@
+import { validateCantonalPilot } from './validate-cantonal-pilot.ts'
 import { useEffect, useEffectEvent, useRef, useState } from 'react'
 import { LANGUAGE_LOCALES, type UiLanguage } from '../i18n.ts'
 import { editionDataUrl } from '../editions/data-url.ts'
 import { formatServiceTime } from '@motionstudies/core/domain/network'
-import { validateCantonalPilot, type CantonalPilot, type CantonalPilotDefinition } from './cantonal-road-pilot.ts'
+import { type CantonalPilot, type CantonalPilotDefinition } from './cantonal-road-pilot.ts'
 import './cantonal-road-pilot.css'
 const COPY = {
   en: { open: (name: string) => `Play ${name} afternoon pilot`, close: 'Return to morning roads', error: 'Pilot could not be loaded. Try again.', loading: 'Loading pilot…', note: 'Recorded reconstruction · both directions. Junction turn flows are not measured.', available: 'Recorded windows', gaps: 'Missing observations', gap: 'No complete observations here. Traffic is hidden.', complete: (n: number) => `${n} complete recorded minutes · no gaps`, junctions: (n: number) => `Mapped junction areas: ${n}` },

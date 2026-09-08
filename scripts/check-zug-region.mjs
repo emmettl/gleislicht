@@ -13,6 +13,7 @@ import { loadZugBoats } from './zug-boat-geometry.mjs'
 import { loadZugSbbRailSupplement, matchZugRailWithSupplement } from './zug-sbb-rail-supplement.mjs'
 import { loadZugRail } from './zug-rail-geometry.mjs'
 import { inCanton } from './zug-timetable.mjs'
+import { assertGeometryMeasurementsEqual } from './compare-geometry-measurements.mjs'
 
 const json = async path => { const bytes = await readFile(path); return JSON.parse(path.endsWith('.gz') ? gunzipSync(bytes) : bytes.toString()) }
 const sum = (items, key) => items.reduce((n, item) => n + item[key], 0)
@@ -52,11 +53,11 @@ export async function checkZugRegion({ auditPath = 'data/zug-study-audit.json', 
   const rail = await loadZugRail(audit.policy.rail, audit.policy.dates)
   assert.equal(audit.sourceHashes.rail, audit.policy.rail.sourceSha256)
   assert.deepEqual(audit.railSource, rail.source)
-  assert.deepEqual(audit.railSourceInventory, rail.sourceInventory)
+  assertGeometryMeasurementsEqual(audit.railSourceInventory, rail.sourceInventory)
   const railSupplement = await loadZugSbbRailSupplement(audit.policy.railSupplement)
   assert.equal(audit.sourceHashes.railSupplement, audit.policy.railSupplement.sourceSha256)
   assert.deepEqual(audit.railSupplementSource, railSupplement.source)
-  assert.deepEqual(audit.railSupplementInventory, railSupplement.inventory)
+  assertGeometryMeasurementsEqual(audit.railSupplementInventory, railSupplement.inventory)
   const boats = await loadZugBoats(audit.policy.boat)
   assert.equal(audit.sourceHashes.boat, audit.policy.boat.sourceSha256)
   assert.deepEqual(audit.boatSource, boats.source)
@@ -64,7 +65,7 @@ export async function checkZugRegion({ auditPath = 'data/zug-study-audit.json', 
   const mountain = await loadZugMountain(audit.policy.mountain)
   assert.equal(audit.sourceHashes.mountain, audit.policy.mountain.sourceSha256)
   assert.deepEqual(audit.mountainSource, mountain.source)
-  assert.deepEqual(audit.mountainInventory, mountain.inventory)
+  assertGeometryMeasurementsEqual(audit.mountainInventory, mountain.inventory)
   const repairIds = new Set(repairs.map(r => r.id))
   for (const route of audit.inventory) for (const key of route.sourceFeatures) assert(sourceKeys.has(key))
   let raw
@@ -210,16 +211,16 @@ export async function checkZugRegion({ auditPath = 'data/zug-study-audit.json', 
       const train = pattern ? { routeId: pattern.routeId, directionId: pattern.directionId, calls: pattern.stopIds.map((id, i) => ({ id, pickupType: pattern.callRules[i][0], dropOffType: pattern.callRules[i][1] })) } : undefined
       let result = train ? matchZugRailWithSupplement(rail, railSupplement, train, sourceStops, r)[p.pairIndex] : r.mode === 'boat' ? boats.matchPair(r, a, b) : r.mode === 'mountain' ? mountain.matchPair(r, a, b) : r.mode !== 'bus' ? { reason: `no-reviewed-${r.mode}-geometry` } : matchZugBusPair(graphs.get(zugRouteKey(r)), supplement.graphs.get(zugRouteKey(r)), [Number(a.stop_lon), Number(a.stop_lat)], [Number(b.stop_lon), Number(b.stop_lat)], audit.policy.limits)
       if (r.mode === 'bus') result = matchZugRoadPair(result, roads, r.routeId, p.fromId, p.toId)
-      assert.deepEqual(result.officialFailure, p.officialFailure)
+      assertGeometryMeasurementsEqual(result.officialFailure, p.officialFailure)
       assert.deepEqual(result.roadPatternIds, p.roadPatternIds)
       assert.equal(result.roadContextOccurrences, p.roadContextOccurrences)
       assert.equal(Boolean(result.path), p.matched)
       assert.equal(result.reason, p.reason)
       assert.equal(result.geometrySource, p.geometrySource)
-      assert.deepEqual(result.primaryFailure, p.primaryFailure)
-      if (result.geometrySource === 'sbb-rail-inference') for (const field of ['corridor', 'sourceFeatures', 'fromOperatingPoint', 'toOperatingPoint', 'stationAttachmentsMetres']) assert.deepEqual(result[field], p[field])
+      assertGeometryMeasurementsEqual(result.primaryFailure, p.primaryFailure)
+      if (result.geometrySource === 'sbb-rail-inference') for (const field of ['corridor', 'sourceFeatures', 'fromOperatingPoint', 'toOperatingPoint', 'stationAttachmentsMetres']) assertGeometryMeasurementsEqual(result[field], p[field], field)
       if (r.mode === 'boat') for (const [field, value] of Object.entries(result)) if (field !== 'path') assert.deepEqual(p[field], value)
-      if (r.mode === 'mountain') for (const field of ['sourceFeatures', 'installation', 'operatingPointIds', 'attachmentMetres']) assert.deepEqual(result[field], p[field])
+      if (r.mode === 'mountain') for (const field of ['sourceFeatures', 'installation', 'operatingPointIds', 'attachmentMetres']) assertGeometryMeasurementsEqual(result[field], p[field], field)
       assert.equal(result.path ? sha256(JSON.stringify(result.path)) : null, p.geometrySha256)
     }
     const patternTrips = new Map(), pairOccurrences = new Map(), admittedOccurrences = new Map()

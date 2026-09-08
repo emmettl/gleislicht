@@ -113,12 +113,40 @@ class ClassFamilyTests(unittest.TestCase):
 
 
 class GeometrySnapshotTests(unittest.TestCase):
+    def assert_geometry_snapshot(self, actual, expected, key='', path='$'):
+        # libm differs by a few final binary digits on macOS and Linux.
+        # Permit only sub-micrometre drift in derived measurements/projections;
+        # source vertices, source hashes, observations and decisions stay exact.
+        measured = key.endswith('Metres') or key == 'projectedLv95'
+        if measured and type(actual) in (int, float) and type(expected) in (int, float):
+            self.assertTrue(math.isfinite(actual) and math.isfinite(expected), path)
+            self.assertAlmostEqual(actual, expected, delta=1e-7, msg=path)
+        elif isinstance(actual, dict) and isinstance(expected, dict):
+            self.assertEqual(actual.keys(), expected.keys(), path)
+            for field in actual:
+                self.assert_geometry_snapshot(actual[field], expected[field], field, f'{path}.{field}')
+        elif isinstance(actual, list) and isinstance(expected, list):
+            self.assertEqual(len(actual), len(expected), path)
+            for i, (a, b) in enumerate(zip(actual, expected)):
+                self.assert_geometry_snapshot(a, b, key, f'{path}[{i}]')
+        else:
+            self.assertEqual(actual, expected, path)
+
+    def test_snapshot_tolerance_does_not_hide_source_or_admission_changes(self):
+        original = {'lengthMetres': 573.540057, 'points': [[2600000, 1200000]],
+                    'status': 'axis-candidate', 'sourceSha256': 'a', 'count': 100}
+        self.assert_geometry_snapshot({**original, 'lengthMetres': 573.5400569999999}, original)
+        for changed in [{'lengthMetres': 573.540058}, {'points': [[2600000.000001, 1200000]]},
+                        {'status': 'excluded-axis-class'}, {'sourceSha256': 'b'}, {'count': 101}]:
+            with self.assertRaises(AssertionError):
+                self.assert_geometry_snapshot({**original, **changed}, original)
+
     def test_offline_reproduction_and_admission_gates(self):
         counter_audit = json.loads((ROOT/'data/regional-road-count-audit.json').read_bytes())
         counts = json.loads(gzip.decompress((ROOT/'data/regional-road-counts.json.gz').read_bytes()))
         artifact, audit = build_geometry(SNAPSHOT, counter_audit, counts)
-        self.assertEqual(artifact, json.loads(gzip.decompress((ROOT/'data/regional-road-geometry.json.gz').read_bytes())))
-        self.assertEqual(audit, json.loads((ROOT/'data/regional-road-geometry-audit.json').read_bytes()))
+        self.assert_geometry_snapshot(artifact, json.loads(gzip.decompress((ROOT/'data/regional-road-geometry.json.gz').read_bytes())))
+        self.assert_geometry_snapshot(audit, json.loads((ROOT/'data/regional-road-geometry-audit.json').read_bytes()))
         self.assertEqual(len(audit['counters']), 620)
         self.assertEqual(audit['thurgauClasses']['standaloneRows'], 5760)
         self.assertTrue(all(not row['playbackEligible'] for row in audit['counters']))

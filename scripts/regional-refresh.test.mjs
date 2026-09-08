@@ -1,6 +1,6 @@
-import { mkdtemp, readFile, readdir, rm, writeFile } from 'node:fs/promises'
+import { mkdtemp, mkdir, readFile, readdir, rm, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
-import { join } from 'node:path'
+import { dirname, join } from 'node:path'
 import { createHash } from 'node:crypto'
 import { describe, expect, it } from 'vitest'
 import { serviceDate } from './service-date.mjs'
@@ -133,7 +133,10 @@ describe('regional refresh', () => {
   it('derives browser dates from each actual artifact, including an older retained region', async () => {
     const directory = await mkdtemp(join(tmpdir(), 'study-summary-test-'))
     try {
-      for (const [id, file] of STUDY_SOURCES) await writeFile(join(directory, file), JSON.stringify({ metadata: { serviceDate: id === 'geneva-tpg' ? '2026-09-04' : '2026-09-08', windowStart: 0, windowEnd: 86400 } }))
+      for (const [id, file] of STUDY_SOURCES) {
+        await mkdir(dirname(join(directory, file)), { recursive: true })
+        await writeFile(join(directory, file), JSON.stringify({ metadata: { serviceDate: id === 'geneva-tpg' ? '2026-09-04' : '2026-09-08', windowStart: 0, windowEnd: 86400 } }))
+      }
       const summaries = await buildStudySummaries(directory)
       expect(summaries.map(summary => summary.id)).toEqual([...STUDY_IDS])
       expect(summaries.find(summary => summary.id === 'geneva-tpg').date).toBe('2026-09-04')
@@ -151,5 +154,5 @@ describe('regional refresh', () => {
       files.delete('lausanne-region-day-chunks/22-24.json')
       await expect(restorePublishedRegionalData(output, fetchData)).rejects.toThrow('returned 404')
     } finally { await rm(output, { recursive: true, force: true }) }
-  })
+  }, 30000)
 })

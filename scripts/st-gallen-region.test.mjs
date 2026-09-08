@@ -1,4 +1,4 @@
-import test from 'node:test'
+import { test } from 'vitest'
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import { featureIdentity, stGallenGraphs, matchStGallenPair, directedPatternKey, validatedStGallenRepairs } from './st-gallen-line-geometry.mjs'

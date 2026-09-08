@@ -1,8 +1,9 @@
+import { validateCantonalPilot } from './validate-cantonal-pilot.ts'
 import pilotSource from '../../public/data/zurich-cantonal-road-pilot.json'
 import wallisellenSource from '../../public/data/wallisellen-bassersdorf-road-pilot.json'
 import nationalSource from '../../public/data/swiss-road-topology.json'
 import { describe, expect, it } from 'vitest'
-import { cantonalPilotForRoad, cantonalPilotWindow, searchRoadsWithPilots, topologyWithPilot, validateCantonalPilot, type CantonalPilot } from './cantonal-road-pilot.ts'
+import { cantonalPilotForRoad, cantonalPilotWindow, searchRoadsWithPilots, topologyWithPilot, type CantonalPilot } from './cantonal-road-pilot.ts'
 import type { RoadTopologySnapshot } from '@motionstudies/core/domain/road'
 const pilot = pilotSource as unknown as CantonalPilot
 const national = nationalSource as unknown as RoadTopologySnapshot

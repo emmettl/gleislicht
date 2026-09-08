@@ -51,7 +51,7 @@ it('preserves every complete federal-only path and admission on both days', () =
       expect(changed.pathSegments.map(i => after.paths[i])).toEqual(t.pathSegments.map(i => before.paths[i]))
     }
   }
-})
+}, 30000) // Replays both complete service days twice on hosted CI hardware.
 
 it('rejects schematic geometry, a renamed source node, a changed gauge and an excessive join', () => {
   const index = page.results.findIndex(r => r.bp_anfang === 'KRGR' && r.bp_ende === 'KODB')
