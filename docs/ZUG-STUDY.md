@@ -2,7 +2,7 @@
 
 Inventory and source review: **8 September 2026**. Start point: [Swiss transit source inventory](SWISS-TRANSIT-SOURCE-INVENTORY.md#zg).
 
-**The annual timetable inventory covers the whole canton. The regional bus, rail, funicular and shipping feed has partial geometry coverage, including explicitly attributed OSM bus inference.** It admits only complete directed stop patterns passing the numerical source checks, on Friday **4 September 2026** and Sunday **6 September 2026**. Admission is not certification of a current 2026 alignment, one-way street, running track or temporary diversion.
+**The annual timetable inventory covers the whole canton. The regional bus, rail, funicular and shipping feed has partial geometry coverage, including explicitly attributed OSM bus and border-rail inference.** It admits only complete directed stop patterns passing the numerical source checks, on Friday **4 September 2026** and Sunday **6 September 2026**. Admission is not certification of a current 2026 alignment, one-way street, running track or temporary diversion.
 
 ## Scope and evidence
 
@@ -69,6 +69,25 @@ The federal cableway layer adds **72 Friday** and **70 Sunday** complete Zugerbe
 The two source operating-point numbers **8502291 (Schönegg)** and **8502292 (Zugerberg)** match the GTFS DiDok identities exactly. Both source station coordinates equal the line's endpoints. Each path includes an explicit short connector from its exact GTFS stop coordinate to that endpoint (approximately 1.3 m, with a **25 m** rejection limit), the full curve in source-call order, then the connector to the other GTFS stop. Reverse calls reverse the curve; names and nearest-station guesses cannot select an installation. Length must stay below **max(1,500 m, twice the direct distance)**. Each accepted pair records installation, feature, operating-point identities, attachment lengths and a geometry hash.
 
 [Original API response](../data/zug-mountain-sources/identify.json), [layer schema](../data/zug-mountain-sources/layer.json), [collection metadata](../data/zug-mountain-sources/collection.json) and [source catalogue with query URLs and hashes](../data/zug-mountain-sources/sources.json) are retained. Retrieval: **2026-09-08**. Collection temporal date: **2025-11-07T00:00:00Z**; collection updated: **2026-01-29T06:50:29.460765Z**. The API features have no individual source date; these collection timestamps do not establish September 2026 alignment validity. Attribution: **© Federal Office of Transport (FOT)**. The collection's literal licence is **proprietary**, with linked [attribution terms](https://opendata.swiss/en/terms-of-use/#terms_by). No alternate generic licence is assigned. [Official collection](https://data.geo.admin.ch/api/stac/v1/collections/ch.bav.seilbahnen-bundeskonzession).
+
+## Chiasso–Como: complete EC patterns
+
+The [Como source catalogue](../data/zug-como-rail-sources/sources.json) adds a separately attributed OSM corridor after the federal and SBB attempts fail. It admits **26 EC trips on each date**, completing **13 Friday / 11 Sunday patterns**, comprising **16 distinct full patterns** across the two fixtures. This includes Sunday’s Arth-Goldau → Rotkreuz → Zürich variant and the Basel Bad Bf extensions. Every source call, platform, pickup/drop-off rule, source trip ID and timestamp is retained. All rail trips represented on these two fixtures now pass; this does not validate the annual set of rail patterns.
+
+The historical Overpass query requests **2 September 2026 at 00:00 UTC**, retrieved **8 September 2026**. Its **715 railway ways** are fully inventoried: **100** meet the standard-gauge main/branch or explicitly main-track crossover graph rule; **615** are excluded from the candidate graph. The two actual paths use **13 / 14 ways**, all tagged standard-gauge main rail with passenger service and no siding/service tag. No siding exception is allowed. Original OSM node IDs establish connectivity; adjacent tracks and geometric crossings cannot become junctions through coordinate proximity. The requested historical snapshot is distinct from the response database timestamp. Individual way and node versions, edit timestamps and original tags remain in the raw extract.
+
+Exact UIC tags bind **8505307** to OSM Chiasso station **3092179807** and **8301307** to Como San Giovanni station **4126950607**. Only the two reviewed directed platform pairs may use this fallback, and only inside the exact EC route/agency and complete-pattern scope. Both require the pinned **Monte Olimpino I way 25148357**; the longer bypass cannot silently replace it. Station identity is checked within **350 m**, original stop-to-track projection within **60 m**, alternative projections within **5 m** of the closest, and the full path within **8 km**, with a **45°** maximum graph turn. These OSM limits do not change the federal adapter. Directed source way/node chains and geometry hashes are replayed by the checker.
+
+| Direction / source platform | Full path | Track attachments | Source interval / mean speed | Trips Friday / Sunday |
+| --- | --- | --- | --- | --- |
+| Chiasso platform 1 → Como | 4.124 km | 6.71 m / 9.43 m | 6 min / 41.24 km/h | 13 / 13 |
+| Como → Chiasso platform 6 | 4.229 km | 9.43 m / 23.54 m | 7 min / 36.25 km/h | 13 / 13 |
+
+The independent [Lombardia mobility layer](https://www.cartografia.servizirl.it/expo/rest/services/gpt/infrastrutture_mobilita/MapServer/3) supplies **eight** complete corridor-envelope rail records, reconciled against a separate object-ID query. Five records describe the Chiasso–Como approach/tunnel corridor; all their original vertices lie within **37.74 m** of the OSM southbound path. This is a vertex-to-polyline comparison, not a continuous Hausdorff bound or running-track certification. The other three records cover the Como Lago branch, onward southern line and longer tunnel bypass. All eight records, their properties and comparison distances are retained. The GeoJSON request failed; the native ArcGIS JSON request succeeded. No Lombardia coordinate is spliced into the feed.
+
+Lombardia’s metadata revision is **27 June 2024**, scale **1:10,000**; that is not an individual alignment survey date. Credit for the comparison source: **Regione Lombardia**. The retrieved dataset metadata does not identify a specific licence and the generic legal page lists several alternatives, so no licence is inferred. Feed geometry is solely the independently acquired OSM derivation, credited **© OpenStreetMap contributors**, under [ODbL 1.0](https://www.openstreetmap.org/copyright). The original federal failure and rejected SBB schematics remain visible. A successful corridor match does not certify which running track or permitted direction the operator used.
+
+![Reviewed Como corridor and Chiasso platform attachments](assets/zug-como-rail-review.svg)
 
 ## Zugersee and Ägerisee shipping inference
 
@@ -186,7 +205,7 @@ This admits **126 additional Friday trips** (all 653), and **62 additional Sunda
 
 A second, separately pinned [road cache](../data/zug-road-expansion-cache.json) and [matcher evidence](../data/zug-road-expansion-evidence/) cover **all 19 remaining incomplete bus route records**: 18 ZVB routes and GTFS agency 7231's EV1 replacement bus. The preparation retains **73 complete patterns** (71 ZVB, two EV1), including already-admitted branches on those routes. All original calls, coordinates, carry-in service dates and call rules survive admission. Road source date, ODbL attribution, binary/configuration hashes, import limits and consensus rules are the same as above. Each agency was independently matched on **8 September 2026**. The two road cache scopes must be disjoint; the original 653/N73 evidence remains unchanged.
 
-The original expansion supplies at least one pair to **304 Friday** and **205 Sunday** admitted trips (including trips completed by the later N6 context review). The current combined feed contains **3'503 / 2'197**. Road paths replace only failed official adjacent-call paths, so a complete trip may still use successful official geometry elsewhere. Every previously matched pair from the preceding committed feed retains its geometry hash. Scope here is the two source civil dates, not a claim of seasonal bus completeness or verified September diversions.
+The original expansion supplies at least one pair to **304 Friday** and **205 Sunday** admitted trips (including trips completed by the later N6 context review). The current combined feed contains **3'529 / 2'223**. Road paths replace only failed official adjacent-call paths, so a complete trip may still use successful official geometry elsewhere. Every previously matched pair from the preceding committed feed retains its geometry hash. Scope here is the two source civil dates, not a claim of seasonal bus completeness or verified September diversions.
 
 | Agency / line | Friday admitted / source | Sunday admitted / source | Remaining reasons |
 | --- | --- | --- | --- |
@@ -275,18 +294,18 @@ Calendar exceptions and preceding service-day spillover are applied. The civil d
 | Measure | 2026-09-04 | 2026-09-06 |
 | --- | --- | --- |
 | Civil-day trips | 3'597 | 2'263 |
-| Admitted / excluded trips | 3'503 / 94 | 2'197 / 66 |
-| Admitted / all directed patterns | 354 / 370 | 300 / 314 |
-| Matched / all routing-context pairs | 3661 / 3677 (99.56%) | 3274 / 3289 (99.54%) |
-| Fully matched / all unique directed route-stop pairs | 1670 / 1675 | 1670 / 1676 |
-| Matched / all scheduled segment occurrences | 51'519 / 51'680 (99.69%) | 33'153 / 33'257 (99.69%) |
+| Admitted / excluded trips | 3'529 / 68 | 2'223 / 40 |
+| Admitted / all directed patterns | 367 / 370 | 311 / 314 |
+| Matched / all routing-context pairs | 3674 / 3677 (99.92%) | 3285 / 3289 (99.88%) |
+| Fully matched / all unique directed route-stop pairs | 1672 / 1675 | 1672 / 1676 |
+| Matched / all scheduled segment occurrences | 51'545 / 51'680 (99.74%) | 33'179 / 33'257 (99.77%) |
 | All / admitted carry-in trips | 68 / 67 | 133 / 132 |
 
 Rail pair routing depends on the complete ordered pattern, so days[].directedPairs and group pair counts include pattern context for rail. Bus pairs retain the route/from/to key. The separate uniqueDirectedRouteStopPairs count collapses context; fullyMatchedUniqueDirectedRouteStopPairs requires success in every tested context. These denominators must not be confused when comparing the original bus-only release with this expansion. Matched occurrences include good pairs on ultimately excluded patterns. They are not a percentage of admitted full trips. All modes and excluded operators stay in the denominator. Every emitted trip has a non-null, correctly oriented path for every adjacent source call.
 
 | Date | Agency / mode | Trips admitted / all | Patterns admitted / all | Pairs matched / all | Occurrences matched / all |
 | --- | --- | --- | --- | --- | --- |
-| 2026-09-04 | 11:rail — Schweizerische Bundesbahnen SBB | 573 / 599 | 194 / 207 | 2357 / 2370 | 8158 / 8184 |
+| 2026-09-04 | 11:rail — Schweizerische Bundesbahnen SBB | 599 / 599 | 207 / 207 | 2370 / 2370 | 8184 / 8184 |
 | 2026-09-04 | 82:rail — Schweizerische Südostbahn (sob) | 18 / 18 | 11 / 11 | 184 / 184 | 324 / 324 |
 | 2026-09-04 | 820:bus — Verkehrsbetriebe Luzern AG | 24 / 24 | 2 / 2 | 38 / 38 | 456 / 456 |
 | 2026-09-04 | 839:bus — Zugerland Verkehrsbetriebe | 2624 / 2691 | 122 / 124 | 903 / 905 | 39220 / 39354 |
@@ -294,7 +313,7 @@ Rail pair routing depends on the complete ordered pattern, so days[].directedPai
 | 2026-09-04 | 186:boat — Schifffahrtsgesellschaft für den Zugersee AG | 5 / 6 | 5 / 6 | 13 / 14 | 18 / 19 |
 | 2026-09-04 | 179:boat — Ägerisee Schifffahrt AG | 3 / 3 | 2 / 2 | 7 / 7 | 22 / 22 |
 | 2026-09-04 | 801:bus — PostAuto AG | 184 / 184 | 16 / 16 | 157 / 157 | 3249 / 3249 |
-| 2026-09-06 | 11:rail — Schweizerische Bundesbahnen SBB | 480 / 506 | 167 / 178 | 1968 / 1979 | 7305 / 7331 |
+| 2026-09-06 | 11:rail — Schweizerische Bundesbahnen SBB | 506 / 506 | 178 / 178 | 1979 / 1979 | 7331 / 7331 |
 | 2026-09-06 | 82:rail — Schweizerische Südostbahn (sob) | 17 / 17 | 12 / 12 | 204 / 204 | 304 / 304 |
 | 2026-09-06 | 839:bus — Zugerland Verkehrsbetriebe | 1481 / 1519 | 92 / 93 | 851 / 853 | 22892 / 22968 |
 | 2026-09-06 | 7231:bus — SBB Infrastruktur AG Bahnersatz | 6 / 6 | 2 / 2 | 2 / 2 | 6 / 6 |
@@ -329,13 +348,13 @@ Counts overlap: a whole trip or annual route can serve several municipalities. T
 
 | Municipality | Source stops | Annual route records | Friday admitted / all trips | Sunday admitted / all trips |
 | --- | --- | --- | --- | --- |
-| Risch | 97 | 31 | 897 / 897 | 494 / 496 |
+| Risch | 97 | 31 | 897 / 897 | 495 / 496 |
 | Hünenberg | 42 | 7 | 538 / 538 | 240 / 240 |
 | Neuheim | 22 | 3 | 183 / 183 | 83 / 83 |
 | Steinhausen | 41 | 9 | 514 / 514 | 253 / 253 |
 | Oberägeri | 89 | 8 | 432 / 432 | 303 / 303 |
 | Baar | 164 | 25 | 1196 / 1263 | 759 / 797 |
-| Zug | 262 | 47 | 1890 / 1984 | 1295 / 1360 |
+| Zug | 262 | 47 | 1916 / 1984 | 1320 / 1360 |
 | Menzingen | 33 | 5 | 271 / 271 | 197 / 197 |
 | Cham | 109 | 17 | 922 / 922 | 481 / 481 |
 | Walchwil | 59 | 5 | 127 / 128 | 86 / 88 |
@@ -356,7 +375,7 @@ Each row is an exact GTFS route_id, not a unique passenger-facing line. Counts a
 | 91-21-D-j26-1 | 11 | IC21 / rail | 17 | inactive | inactive | — |
 | 91-24-j26-1 | 11 | S24 / rail | 1524 | 81/81 | 72/72 | — |
 | 91-26-j26-1 | 11 | S26 / rail | 2168 | 80/80 | 80/80 | — |
-| 91-2A-Y-j26-1 | 11 | EC / rail | 682 | 0/26 | 0/26 | rail-no-exact-operating-point |
+| 91-2A-Y-j26-1 | 11 | EC / rail | 682 | 26/26 | 26/26 | — |
 | 91-2L-Y-j26-1 | 11 | RE / rail | 59 | 1/1 | 1/1 | — |
 | 91-35-Y-j26-1 | 11 | IR / rail | 132 | 6/6 | 1/1 | — |
 | 91-46-C-j26-1 | 11 | IR46 / rail | 28 | inactive | 2/2 | — |
@@ -427,7 +446,7 @@ Each row is an exact GTFS route_id, not a unique passenger-facing line. Counts a
 | 96-357-7-j26-1 | 801 | 110 / bus | 53 | 52/52 | 28/28 | — |
 | 96-359-A-j26-1 | 801 | N73 / bus | 2 | inactive | 2/2 | — |
 
-Principal exclusions: complete EC patterns still lack credible alignment geometry for Chiasso–Como S. Giovanni; the preserved federal source has no exact foreign operating point and the examined SBB foreign record is schematic. S26, RE6 and IR75 are now complete on both fixtures through the explicit SBB supplement. Zugersee retains one Friday and two Sunday trips with remote shoreline crossings; every Ägerisee trip on the two fixtures passes the shipping checks. Bus exclusions remain limited to the specific 604 failures above. Full pair details, source call identities and stop names are in the machine audit.
+Principal exclusions: rail patterns on both fixtures now pass, including all EC calls through the separately reviewed OSM Chiasso–Como corridor. The federal missing-point failure and rejected SBB schematic remain preserved. S26, RE6 and IR75 use the explicit SBB supplement. Zugersee retains one Friday and two Sunday trips with remote shoreline crossings; every Ägerisee trip on the two fixtures passes the shipping checks. Bus exclusions remain limited to the specific 604 failures above. Full pair details, source call identities and stop names are in the machine audit.
 
 ## Every source line label
 
@@ -479,7 +498,8 @@ npm run data:zug
 npm run data:zug:check
 npm run data:zug:report
 python3 -m unittest discover -s scripts -p test_prepare_zug_sources.py
-npx vitest run scripts/review-zug-boats.test.mjs scripts/review-zug-grienbach.test.mjs scripts/zug-road-contexts.test.mjs scripts/zug-service-road-geometry.test.mjs scripts/zug-boat-geometry.test.mjs scripts/zug-sbb-rail-supplement.test.mjs scripts/zug-road-geometry.test.mjs scripts/luzern-road-geometry.test.mjs scripts/enrich-postbus-roads.test.mjs scripts/zug-mountain-geometry.test.mjs scripts/zug-region.test.mjs scripts/zug-bus-supplement.test.mjs scripts/zug-rail-geometry.test.mjs scripts/luzern-region.test.mjs \
+node scripts/render-zug-como-review.mjs
+npx vitest run scripts/zug-como-rail.test.mjs scripts/thurgau-border-rail.test.mjs scripts/review-zug-boats.test.mjs scripts/review-zug-grienbach.test.mjs scripts/zug-road-contexts.test.mjs scripts/zug-service-road-geometry.test.mjs scripts/zug-boat-geometry.test.mjs scripts/zug-sbb-rail-supplement.test.mjs scripts/zug-road-geometry.test.mjs scripts/luzern-road-geometry.test.mjs scripts/enrich-postbus-roads.test.mjs scripts/zug-mountain-geometry.test.mjs scripts/zug-region.test.mjs scripts/zug-bus-supplement.test.mjs scripts/zug-rail-geometry.test.mjs scripts/luzern-region.test.mjs \
   scripts/civil-day.test.mjs scripts/gtfs-frequencies.test.mjs
 ```
 
