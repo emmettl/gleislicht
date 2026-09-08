@@ -27,7 +27,7 @@ describe('reviewed S29 source precedence', () => {
     // General consensus still rejects different paths; only the explicit line
     // crosswalk changes the candidate source for the two reviewed pairs.
     expect(supplementConsensus(new Map([['other', [{ path: [[0, 0], [1, 1]] }, { path: [[0, 0], [2, 2]] }]]])).get('other').reason).toBe('supplement-pattern-dependent-path')
-  })
+  }, 30_000) // Replays every retained full context; shared CI runners exceed five seconds.
   it('does not extend precedence to reverse pairs, other platforms, lines, modes or operators', async () => {
     const review = await loadSolothurnS29Precedence(await loadSolothurnCorridors()), pair = review.metadata.policy.pairs[0]
     const original = { reason: 'existing-failure' }, c = { patternId: 'scope-test', stopIds: [pair.from[4], pair.to[4]] }
