@@ -656,14 +656,6 @@
   color: var(--cyan);
 }
 
-.service-dot {
-  width: 8px;
-  height: 8px;
-  flex: 0 0 auto;
-  border-radius: 50%;
-  box-shadow: 0 0 14px currentColor;
-}
-
 .arrow {
   color: var(--muted);
 }
@@ -1006,37 +998,6 @@
   font-size: 0.82rem;
   line-height: 1;
   text-shadow: 0 0 9px var(--pink);
-}
-
-.route-result-mark {
-  align-self: center;
-  font-size: 0.88rem;
-  line-height: 1;
-  text-shadow: 0 0 11px currentColor;
-}
-
-.air-result-mark {
-  align-self: center;
-  color: var(--pink);
-  font-size: 0.56rem;
-  line-height: 1;
-  text-shadow: 0 0 12px var(--pink);
-}
-
-.road-result-mark {
-  align-self: center;
-  color: #ffb36b;
-  font-size: 0.88rem;
-  line-height: 1;
-  text-shadow: 0 0 12px rgba(255, 157, 82, 0.78);
-}
-
-.result-swatch {
-  width: 7px;
-  height: 7px;
-  margin-top: 4px;
-  border-radius: 50%;
-  box-shadow: 0 0 10px currentColor;
 }
 
 .result-service {

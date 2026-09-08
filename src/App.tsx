@@ -8,6 +8,7 @@ import { roadTrafficSummary } from './studies/road-traffic-summary.ts'
 import { airTrafficSummary } from './studies/air-traffic-summary.ts'
 import { postbusRouteIndex, postbusRouteSnapshot, postbusTickFollowsSeek, POSTBUS_YELLOW, POSTBUS_ROUTE_COLORS } from './studies/postbus.ts'
 import { CONTROL_HELP } from './control-help.ts'
+import { TransportIcon } from './TransportIcon.tsx'
 import {
   lazy,
   Suspense,
@@ -2476,13 +2477,7 @@ export function App({ edition }: AppProps) {
                     onMouseEnter={() => setActiveSearchIndex(index)}
                     onClick={() => selectRoute(route)}
                   >
-                    <span
-                      className="route-result-mark"
-                      style={{ color: serviceColors[route.category] }}
-                      aria-hidden="true"
-                    >
-                      ━
-                    </span>
+                    <TransportIcon mode={isCogwheel ? 'cogwheel' : route.category} color={serviceColors[route.category]} />
                     <span className="result-service">
                       {isCogwheel ? cogwheelCopy.label : serviceCategoryLabel(language, route.category)} {route.name}
                     </span>
@@ -2511,7 +2506,7 @@ export function App({ edition }: AppProps) {
                     onMouseEnter={() => setActiveSearchIndex(index)}
                     onClick={() => selectRoad(road)}
                   >
-                    <span className="road-result-mark" aria-hidden="true">━</span>
+                    <TransportIcon mode="road" color="#ffb36b" />
                     <span className="result-service">
                       {road.label}
                     </span>
@@ -2536,7 +2531,7 @@ export function App({ edition }: AppProps) {
                     onMouseEnter={() => setActiveSearchIndex(index)}
                     onClick={() => selectAirport(airport)}
                   >
-                    <span className="air-result-mark" aria-hidden="true">✈</span>
+                    <TransportIcon mode="air" color="#ff5edb" />
                     <span className="result-service">{airport.name}</span>
                     <span className="result-route">{airport.iata} · {airport.icao}</span>
                   </button>
@@ -2560,7 +2555,7 @@ export function App({ edition }: AppProps) {
                     onMouseEnter={() => setActiveSearchIndex(index)}
                     onClick={() => selectAirTrack(track.id)}
                   >
-                    <span className="air-result-mark" aria-hidden="true">◆</span>
+                    <TransportIcon mode="air" color="#ff5edb" />
                     <span className="result-service">{track.callsign}</span>
                     <span className="result-route">
                       {text.luftraum} ·{' '}
@@ -2590,10 +2585,7 @@ export function App({ edition }: AppProps) {
                       onMouseEnter={() => setActiveSearchIndex(index)}
                       onClick={() => selectTrain(train)}
                     >
-                      <span
-                        className="result-swatch"
-                        style={{ backgroundColor: serviceColors[train.category] }}
-                      />
+                      <TransportIcon mode={isCogwheel ? 'cogwheel' : train.category} color={serviceColors[train.category]} />
                       <span className="result-service">
                         {train.route} <b>{train.shortName}</b>
                       </span>
@@ -2827,10 +2819,7 @@ export function App({ edition }: AppProps) {
       ) : isNetwork && selectedTrain ? (
         <section className="journey-card selected-card" aria-label={text.selectedTrain}>
           <div className="service-row">
-            <span
-              className="service-dot"
-              style={{ backgroundColor: serviceColors[selectedTrain.category] }}
-            />
+            <TransportIcon mode={isCogwheel ? 'cogwheel' : selectedTrain.category} color={serviceColors[selectedTrain.category]} />
             <span className="service">{selectedTrain.route}</span>
             <span className="arrow">→</span>
             <span>{selectedTrain.headsign}</span>
@@ -2877,10 +2866,7 @@ export function App({ edition }: AppProps) {
           }
         >
           <div className="service-row">
-            <span
-              className="service-dot"
-              style={{ backgroundColor: serviceColors[selectedRoute.category] }}
-            />
+            <TransportIcon mode={isCogwheel ? 'cogwheel' : selectedRoute.category} color={serviceColors[selectedRoute.category]} />
             <span className="service">
               {isCogwheel ? cogwheelCopy.label : serviceCategoryLabel(language, selectedRoute.category)}{' '}
               {selectedRoute.name}
@@ -3394,16 +3380,16 @@ export function App({ edition }: AppProps) {
                   }
                   options={[
                     { value: '', label: text.allServices },
-                    ...(isNetwork && networkStudy === 'national' ? [{ value: 'cogwheel', label: cogwheelCopy.label }] : []),
+                    ...(isNetwork && networkStudy === 'national' ? [{ value: 'cogwheel', label: <span className="transport-option"><TransportIcon mode="cogwheel" color="#fff3a6" />{cogwheelCopy.label}</span> }] : []),
                     ...(isNetwork && !railVisible ? [] : visibleServiceCategories).map((category) => ({
                       value: category.id,
-                      label: serviceCategoryLabel(language, category.id),
+                      label: <span className="transport-option"><TransportIcon mode={category.id} color={serviceColors[category.id]} />{serviceCategoryLabel(language, category.id)}</span>,
                     })),
                     ...(networkStudy === 'national' && airEnabled
-                      ? [{ value: 'air', label: text.luftraum }]
+                      ? [{ value: 'air', label: <span className="transport-option"><TransportIcon mode="air" color="#ff5edb" />{text.luftraum}</span> }]
                       : []),
                     ...(networkStudy === 'national' && roadEnabled
-                      ? [{ value: 'road', label: text.auto }]
+                      ? [{ value: 'road', label: <span className="transport-option"><TransportIcon mode="road" color="#ffb36b" />{text.auto}</span> }]
                       : []),
                   ]}
                   onChange={(category) => {
@@ -3474,7 +3460,7 @@ export function App({ edition }: AppProps) {
             <button type="button" aria-pressed={isCogwheel} onClick={toggleCogwheel}
               data-tooltip={cogwheelCopy.description}
               style={{ '--service-accent': '#fff3a6' } as CSSProperties}>
-              <i style={{ backgroundColor: '#fff3a6' }} />{cogwheelCopy.label}
+              <TransportIcon mode="cogwheel" />{cogwheelCopy.label}
             </button>
           )}
           {(isNetwork && !railVisible ? [] : visibleServiceCategories).map((category) => (
@@ -3498,7 +3484,7 @@ export function App({ edition }: AppProps) {
                   )
                 }}
               >
-                <i style={{ backgroundColor: serviceColors[category.id] }} />
+                <TransportIcon mode={category.id} />
                 {serviceCategoryLabel(language, category.id)}
               </button>
           ))}
@@ -3516,7 +3502,7 @@ export function App({ edition }: AppProps) {
                 setAirCategorySelected((current) => !current)
               }}
             >
-              <i style={{ backgroundColor: '#ff5edb' }} />
+              <TransportIcon mode="air" />
               {text.luftraum}
             </button>
           )}
@@ -3534,7 +3520,7 @@ export function App({ edition }: AppProps) {
                 setRoadCategorySelected((current) => !current)
               }}
             >
-              <i style={{ backgroundColor: '#ffb36b' }} />
+              <TransportIcon mode="road" />
               {text.auto}
             </button>
           )}

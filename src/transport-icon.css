@@ -1,0 +1,34 @@
+.transport-icon {
+  display: inline-block;
+  flex: 0 0 24px;
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+  background-color: currentColor;
+  mask: var(--transport-icon) center / contain no-repeat;
+}
+
+.service-legend .transport-icon {
+  color: var(--service-accent);
+}
+
+.experience .search-results > button {
+  grid-template-columns: 24px minmax(76px, auto) minmax(0, 1fr);
+}
+
+.search-results .transport-icon,
+.service-row .transport-icon {
+  align-self: center;
+}
+
+.transport-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+@media (min-width: 701px) {
+  .experience .service-legend {
+    flex-wrap: wrap;
+  }
+}
