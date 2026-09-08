@@ -1,0 +1,71 @@
+{
+  "retrieved": "2026-09-08",
+  "attribution": "Shipping geometry: © swisstopo; shoreline validation: © FOEN, swisstopo",
+  "publisher": "swisstopo; FOEN",
+  "productUrl": "https://www.swisstopo.admin.ch/en/landscape-model-swisstlmregio",
+  "license": "proprietary",
+  "termsUrl": "https://www.swisstopo.admin.ch/en/terms-of-use-free-geodata-and-geoservices",
+  "collectionTemporalExtent": [
+    [
+      "2020-01-01T00:00:00Z",
+      "2025-12-02T00:00:00Z"
+    ]
+  ],
+  "collectionUpdated": "2026-06-25T20:00:03.726130Z",
+  "shorelineDataStatus": "2007-01-01",
+  "featureSourceDates": "Not supplied by the shipping API; collection dates do not establish individual feature vintage.",
+  "model": "Gleislicht cartographic inference on generalized official passenger-shipping linework, with explicit GTFS dock connectors and separately audited dock-area shoreline discrepancies. Not navigational or operator-certified shipping lanes.",
+  "completeness": "35 shipping records in the regional envelope; all 18 selected records reconcile identically with the two lake-specific queries. Unrelated transport sublayers may be capped; this is not a national shipping census.",
+  "files": [
+    {
+      "file": "wide.json",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/identify?geometryType=esriGeometryEnvelope&geometry=8.35,47.02,8.68,47.20&geometryFormat=geojson&imageDisplay=1600,900,96&mapExtent=8.35,47.02,8.68,47.20&tolerance=0&layers=all:ch.swisstopo.vec200-transportation-oeffentliche-verkehr&returnGeometry=true&limit=200&sr=4326",
+      "sha256": "e9a140d02bae410fec090b83094e63cfc25b9553499ac7e8fc38d4e83aa28f3f"
+    },
+    {
+      "file": "zugersee.json",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/identify?geometryType=esriGeometryEnvelope&geometry=8.44,47.03,8.56,47.20&geometryFormat=geojson&imageDisplay=1600,900,96&mapExtent=8.44,47.03,8.56,47.20&tolerance=0&layers=all:ch.swisstopo.vec200-transportation-oeffentliche-verkehr&returnGeometry=true&limit=200&sr=4326",
+      "sha256": "0ec81f980f2cd325babf851b50ffa74476da1c5f50f7b3d0f47f3c9e1c894a6f"
+    },
+    {
+      "file": "aegerisee.json",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/identify?geometryType=esriGeometryEnvelope&geometry=8.55,47.10,8.69,47.17&geometryFormat=geojson&imageDisplay=1600,900,96&mapExtent=8.55,47.10,8.69,47.17&tolerance=0&layers=all:ch.swisstopo.vec200-transportation-oeffentliche-verkehr&returnGeometry=true&limit=200&sr=4326",
+      "sha256": "bd865740fecf20a6b79362c88a7185a9ac0fd5c39467cab188bb0e1db9ed07f9"
+    },
+    {
+      "file": "layer.json",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/ch.swisstopo.vec200-transportation-oeffentliche-verkehr?lang=en",
+      "sha256": "4b4367b1bdd2e5320bf07b7b0da274831f798a7d92f8b43475dc0ec46587ff75"
+    },
+    {
+      "file": "collection.json",
+      "url": "https://data.geo.admin.ch/api/stac/v1/collections/ch.swisstopo.swisstlmregio",
+      "sha256": "226392dc53ec9ff1341e6fc15fd47208fd79fba3ba3ae9faffbc7a01fdedbad4"
+    },
+    {
+      "file": "lakes.json",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/identify?geometryType=esriGeometryEnvelope&geometry=8.4,47.02,8.69,47.2&geometryFormat=geojson&imageDisplay=1600,900,96&mapExtent=8.4,47.02,8.69,47.2&tolerance=0&layers=all:ch.bafu.vec25-seen&returnGeometry=true&limit=200&sr=4326",
+      "sha256": "4f7ddb4ce8520af72b07b77b1dfac1602dbaf3fb6e89059bfa78238151a6a2f6"
+    },
+    {
+      "file": "lake-layer.json",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/ch.bafu.vec25-seen?lang=en",
+      "sha256": "8a70b3a7091871abfd6fd327eb5818b70d0cb3dd39ad5c6fba25723b66e8fc5a"
+    },
+    {
+      "file": "shoreline-legend.html",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/ch.bafu.vec25-seen/legend?lang=en",
+      "sha256": "5b54cf6acecdab60c0a66f8ac3b0cd24d40919a1df9d54047d46eda99645e5d6"
+    },
+    {
+      "file": "shoreline-product.html",
+      "url": "https://www.bafu.admin.ch/en/the-swiss-hydrographic-network",
+      "sha256": "5b93a6895e1fc407be8951e1392e84fd0c783b624bc763bb5f61e71e2846aea4"
+    },
+    {
+      "file": "terms.html",
+      "url": "https://www.swisstopo.admin.ch/en/terms-of-use-free-geodata-and-geoservices",
+      "sha256": "9f677abfdead1294bf88d822b3fc20aaecfb923e3b8744e0abea98eca70f5b84"
+    }
+  ]
+}

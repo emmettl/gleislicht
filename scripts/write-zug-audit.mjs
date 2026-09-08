@@ -14,7 +14,7 @@ const text = `# Zug canton: source adapter, regional feed and admission audit
 
 Inventory and source review: **8 September 2026**. Start point: [Swiss transit source inventory](SWISS-TRANSIT-SOURCE-INVENTORY.md#zg).
 
-**The annual timetable inventory covers the whole canton. The regional bus, rail and funicular feed has partial geometry coverage, including explicitly attributed OSM bus inference.** It admits only complete directed stop patterns passing the numerical source checks, on Friday **4 September 2026** and Sunday **6 September 2026**. Admission is not certification of a current 2026 alignment, one-way street, running track or temporary diversion.
+**The annual timetable inventory covers the whole canton. The regional bus, rail, funicular and shipping feed has partial geometry coverage, including explicitly attributed OSM bus inference.** It admits only complete directed stop patterns passing the numerical source checks, on Friday **4 September 2026** and Sunday **6 September 2026**. Admission is not certification of a current 2026 alignment, one-way street, running track or temporary diversion.
 
 ## Scope and evidence
 
@@ -76,6 +76,24 @@ The federal cableway layer adds **72 Friday** and **70 Sunday** complete Zugerbe
 The two source operating-point numbers **8502291 (Schönegg)** and **8502292 (Zugerberg)** match the GTFS DiDok identities exactly. Both source station coordinates equal the line's endpoints. Each path includes an explicit short connector from its exact GTFS stop coordinate to that endpoint (approximately 1.3 m, with a **25 m** rejection limit), the full curve in source-call order, then the connector to the other GTFS stop. Reverse calls reverse the curve; names and nearest-station guesses cannot select an installation. Length must stay below **max(1,500 m, twice the direct distance)**. Each accepted pair records installation, feature, operating-point identities, attachment lengths and a geometry hash.
 
 [Original API response](../data/zug-mountain-sources/identify.json), [layer schema](../data/zug-mountain-sources/layer.json), [collection metadata](../data/zug-mountain-sources/collection.json) and [source catalogue with query URLs and hashes](../data/zug-mountain-sources/sources.json) are retained. Retrieval: **${audit.mountainSource.retrieved}**. Collection temporal date: **${audit.mountainSource.collectionDate}**; collection updated: **${audit.mountainSource.collectionUpdated}**. The API features have no individual source date; these collection timestamps do not establish September 2026 alignment validity. Attribution: **${audit.mountainSource.attribution}**. The collection's literal licence is **proprietary**, with linked [attribution terms](https://opendata.swiss/en/terms-of-use/#terms_by). No alternate generic licence is assigned. [Official collection](https://data.geo.admin.ch/api/stac/v1/collections/ch.bav.seilbahnen-bundeskonzession).
+
+## Zugersee and Ägerisee shipping inference
+
+The [swissTLMRegio transportation layer](https://api3.geo.admin.ch/rest/services/ech/MapServer/ch.swisstopo.vec200-transportation-oeffentliche-verkehr?lang=en) supplies generalized passenger-shipping linework. We retain all **35 shipping records** in the regional envelope and independently reconcile **11 Zugersee** and **seven Ägerisee** records against tighter lake queries. Other transportation sublayers may be capped; these queries establish the reviewed regional shipping inventory, not a national transportation census. All original responses, schema, catalogue, shoreline metadata, terms, URLs and SHA-256 hashes are in [the boat source catalogue](../data/zug-boat-sources/sources.json).
+
+The source has no GTFS operator or passenger-line identity. The adapter therefore uses explicit reviewed lake/route mappings: **agency 186 / line 3660 / route 94-366-0-j26-1**, and **agency 179 / line 3661 / route 94-366-1-j26-1**, both type 1000. Each mapping lists the exact allowed GTFS dock IDs. It never selects another lake by nearest geometry or a matching name. Shared source vertices create an undirected graph; crossings and nearby endpoints add no connection. Source-call order determines direction. Every repeated Ägerisee call survives. The graph matcher rounds output to seven decimal places, retains source bends, and adds explicit GTFS dock connectors. Per-pair candidate feature IDs describe the whole lake graph, not a claim that every candidate segment was traversed.
+
+The mode-specific attachment limit is **200 m** (largest admitted snap **157.82 m**); detours must stay below **max(1,200 m, three times direct distance)**. The bus tolerance remains 120 m. A source line is insufficient by itself: every path segment is split at every intersection with the unsimplified Vector25 shoreline, including island holes and all polygon parts. Zugersee uses both source records **91 and 92**, GEWISS 9175; Ägerisee uses **116**, GEWISS 9270. An outside-water interval is allowed only when both ends lie inside the same **200 m zone around an actual endpoint dock**. These are disclosed cartographic dock-area discrepancies, not claims of water containment or current dock access. The largest individual admitted outside interval is **78.85 m**. Intervals away from docks reject the pair and every complete trip requiring it; the adapter does not invent a replacement water path.
+
+${table(['Lake / line','Friday admitted / all trips','Sunday admitted / all trips','Friday admitted / all patterns','Sunday admitted / all patterns'], audit.policy.boat.routes.map(r=>{const ds=days.map(d=>d.directedPatterns.filter(p=>p.routeId===r.routeId));return [r.lake+' / '+r.line,...ds.map(ps=>ps.filter(p=>p.admitted).reduce((n,p)=>n+p.trips,0)+'/'+ps.reduce((n,p)=>n+p.trips,0)),...ds.map(ps=>ps.filter(p=>p.admitted).length+'/'+ps.length)]}))}
+
+This adds **eight Friday trips and eleven Sunday trips**. Across all boat candidates, **20/21 Friday** and **25/27 Sunday** unique directed pairs pass. Zug Bahnhofsteg → Walchwil remains excluded on both dates; Risch → Zug Bahnhofsteg also fails on Sunday. Their selected source paths have approximately **159 m / 153 m** outside the shoreline away from either endpoint dock. The rejected path hash and exact outside intervals remain in the machine audit. All three Ägerisee trips and both complete repeat-stop patterns pass on each date.
+
+Shipping credit: **© swisstopo**; shoreline validation: **© FOEN, swisstopo**. The [swisstopo free-geodata terms](https://www.swisstopo.admin.ch/en/terms-of-use-free-geodata-and-geoservices) require source attribution; the preserved STAC catalogue's literal licence remains **proprietary**, not an invented Creative Commons licence. These are Gleislicht cartographic inferences, not operator-certified lanes or navigation instructions.
+
+Retrieved **${audit.boatSource.retrieved}**. Shipping collection temporal extent: **${audit.boatSource.collectionTemporalExtent[0].join(' – ')}**; collection updated: **${audit.boatSource.collectionUpdated}**. Shipping features supply no individual vintage. The [shoreline layer metadata](../data/zug-boat-sources/shoreline-legend.html) states **1 January 2007**; the [FOEN product description](https://www.bafu.admin.ch/en/the-swiss-hydrographic-network) identifies the Vector25 reference network. Neither retrieval nor collection processing timestamps establish September 2026 geometry validity. Seasonal shipping dates remain outside this two-day validation.
+
+${table(['Shipping source UUID','Vertices','Selected lake / exclusion'], audit.boatInventory.map(f=>[f.id.trim(),f.vertices,f.lakes.join(', ')||'outside the two reviewed lake graphs']))}
 
 ## Neighbouring official bus source
 
@@ -163,7 +181,7 @@ Each row is an exact GTFS route_id, not a unique passenger-facing line. Counts a
 
 ${table(['GTFS route ID','Agency','Line / mode','Annual trips','Friday','Sunday','Failure reasons'],audit.inventory.map(r=>[r.routeId,r.agencyId,`${r.line} / ${r.mode}`,r.annualTripRecords,...r.days.map(d=>d.trips?`${d.admittedTrips}/${d.trips}`:'inactive'),[...new Set(r.days.flatMap(d=>d.reasons))].join(', ')||'—']))}
 
-Principal exclusions: complete EC patterns still lack credible alignment geometry for Chiasso–Como S. Giovanni; the preserved federal source has no exact foreign operating point and the examined SBB foreign record is schematic. S26, RE6 and IR75 are now complete on both fixtures through the explicit SBB supplement. Zugersee and Ägerisee still have no reviewed water-route geometry. Bus exclusions remain limited to the specific 604, 619 and N6 failures above. Full pair details, source call identities and stop names are in the machine audit.
+Principal exclusions: complete EC patterns still lack credible alignment geometry for Chiasso–Como S. Giovanni; the preserved federal source has no exact foreign operating point and the examined SBB foreign record is schematic. S26, RE6 and IR75 are now complete on both fixtures through the explicit SBB supplement. Zugersee retains one Friday and two Sunday trips with remote shoreline crossings; every Ägerisee trip on the two fixtures passes the shipping checks. Bus exclusions remain limited to the specific 604, 619 and N6 failures above. Full pair details, source call identities and stop names are in the machine audit.
 
 ## Every source line label
 
@@ -188,7 +206,7 @@ npm run data:zug
 npm run data:zug:check
 npm run data:zug:report
 python3 -m unittest discover -s scripts -p test_prepare_zug_sources.py
-npx vitest run scripts/zug-sbb-rail-supplement.test.mjs scripts/zug-road-geometry.test.mjs scripts/luzern-road-geometry.test.mjs scripts/enrich-postbus-roads.test.mjs scripts/zug-mountain-geometry.test.mjs scripts/zug-region.test.mjs scripts/zug-bus-supplement.test.mjs scripts/zug-rail-geometry.test.mjs scripts/luzern-region.test.mjs \\
+npx vitest run scripts/zug-boat-geometry.test.mjs scripts/zug-sbb-rail-supplement.test.mjs scripts/zug-road-geometry.test.mjs scripts/luzern-road-geometry.test.mjs scripts/enrich-postbus-roads.test.mjs scripts/zug-mountain-geometry.test.mjs scripts/zug-region.test.mjs scripts/zug-bus-supplement.test.mjs scripts/zug-rail-geometry.test.mjs scripts/luzern-region.test.mjs \\
   scripts/civil-day.test.mjs scripts/gtfs-frequencies.test.mjs
 \`\`\`
 
