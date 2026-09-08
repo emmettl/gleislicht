@@ -1,0 +1,9 @@
+[out:json][timeout:180][date:"2026-09-08T00:00:00Z"];
+(
+ way[railway=rail](46.08,7.97,46.35,8.34);
+ node["uic_ref"](46.08,7.97,46.35,8.34);
+ relation[public_transport=stop_area](46.08,7.97,46.35,8.34);
+);
+out meta;
+>;
+out meta qt;

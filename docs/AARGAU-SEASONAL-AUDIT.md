@@ -2,7 +2,7 @@
 
 Checked **8 September 2026**, following the [Aargau canton inventory and source adapter](AARGAU-STUDY.md). The twelve-date sample independently verifies **110,050 complete journeys and 1,821,846 calls** against pinned GTFS 20260902. It finds **1,146 directed patterns absent from the two September fixtures**, **12 newly active route records**, and **45 archived canton-calling routes still inactive on the sampled dates**.
 
-**Application release checks have not passed.** The additional bus cache fills **16,364 previously unresolved seasonal occurrences**, preserving every earlier path and complete journey. A separate finite policy fills **583 further occurrences**, leaving only the two Brig–Domodossola legs unresolved. The archived September feeds replay exactly. A separate [Friday review candidate](../fixtures/aargau-reviewed/2026-09-04/aargau-region-day-manifest.json) corrects one evidenced line 136 branch error; 223 distinct bus pairs still need alignment review. No original feed, publication input hash, general distance guard, September platform/border policy or application selection changed. These results measure compatibility with pinned geometry; they do not establish that an alignment applied historically or will apply on a future service date.
+**Application release checks have not passed.** The additional bus cache fills **16,364 previously unresolved seasonal occurrences**, preserving every earlier path and complete journey. A separate finite policy fills **583 further occurrences**, and a separately scoped Simplon fallback fills the final **2 Brig–Domodossola occurrences**. Every adjacent-call occurrence now has geometry on all twelve sampled dates. The archived September feeds replay exactly. A separate [Friday review candidate](../fixtures/aargau-reviewed/2026-09-04/aargau-region-day-manifest.json) corrects one evidenced line 136 branch error; 223 distinct bus pairs still need alignment review. No original feed, publication input hash, general distance guard, September platform/border policy or application selection changed. These results measure compatibility with pinned geometry; they do not establish that an alignment applied historically or will apply on a future service date.
 
 ## Dates and complete-journey coverage
 
@@ -12,18 +12,18 @@ The sample covers winter weekdays/Sundays, Good Friday/Easter Sunday, summer wee
 | --- | --- | --- | --- | --- | --- | --- |
 | 2026-01-16 | 11,131 | 173,467 | 173,467 | 100.000% | 150 | 0 |
 | 2026-01-18 | 7,634 | 120,454 | 120,454 | 100.000% | 196 | 0 |
-| 2026-04-03 | 7,615 | 121,248 | 121,249 | 99.999% | 211 | 1 |
+| 2026-04-03 | 7,615 | 121,249 | 121,249 | 100.000% | 211 | 0 |
 | 2026-04-05 | 7,631 | 121,416 | 121,416 | 100.000% | 166 | 0 |
 | 2026-07-17 | 11,393 | 171,645 | 171,645 | 100.000% | 228 | 0 |
 | 2026-07-19 | 7,847 | 119,376 | 119,376 | 100.000% | 247 | 0 |
-| 2026-08-01 | 7,764 | 121,266 | 121,267 | 99.999% | 296 | 1 |
+| 2026-08-01 | 7,764 | 121,267 | 121,267 | 100.000% | 296 | 0 |
 | 2026-09-04 | 11,193 | 173,106 | 173,106 | 100.000% | 0 | 0 |
 | 2026-09-06 | 7,767 | 121,473 | 121,473 | 100.000% | 0 | 0 |
 | 2026-10-23 | 11,193 | 173,323 | 173,323 | 100.000% | 123 | 0 |
 | 2026-10-25 | 7,662 | 120,593 | 120,593 | 100.000% | 166 | 0 |
 | 2026-12-11 | 11,220 | 174,427 | 174,427 | 100.000% | 121 | 0 |
 
-Counts are adjacent calls over all complete retained journeys. New-pattern counts per day can overlap; the distinct union is 1,146. Compatibility uses one AGIS part/orientation per full pattern, the preserved OSM route/platform/coordinate caches plus a new twelve-date cache for missing bus patterns, the existing FOT route/operating-point policy, and 63 separately pinned seasonal gap rules. Additional dates are diagnostic inputs only: the publication builder's September fixture hashes are unchanged. The original Brugg, Bern and Waldshut exceptions retain their September-only scope. The separate seasonal policy admits only the reviewed exact date/full-coordinate patterns and preserves every previously matched path.
+Counts are adjacent calls over all complete retained journeys. New-pattern counts per day can overlap; the distinct union is 1,146. Compatibility uses one AGIS part/orientation per full pattern, the preserved OSM route/platform/coordinate caches plus a new twelve-date cache for missing bus patterns, the existing FOT route/operating-point policy, 63 separately pinned seasonal gap rules, and two exact Simplon journey rules. Additional dates are diagnostic inputs only: the publication builder's September fixture hashes are unchanged. The original Brugg, Bern and Waldshut exceptions retain their September-only scope. The separate seasonal policy admits only the reviewed exact date/full-coordinate patterns and preserves every previously matched path.
 
 **25 October is a wall-clock source-order test only.** The repeated local hour at the DST fallback is not disambiguated; that date is not delivered as an elapsed-time day feed. A September 2026 archive replayed on earlier dates is the publisher's archived schedule, not evidence of actual historical operation.
 
@@ -50,13 +50,7 @@ The [complete seasonal inventory](../data/aargau-seasonal/input/inventory.json) 
 
 The [release review](../data/aargau-seasonal/release-review.json) enumerates every unresolved date/pattern/adjacent-platform context, with original AGIS and fallback rejection reasons. Occurrence totals below sum sampled dates; they are not annual volumes.
 
-| Review category | Missing sampled occurrences |
-| --- | --- |
-| rail:no-exact-operating-point | 2 |
-
-| Route record | Agency / line | Missing sampled occurrences |
-| --- | --- | --- |
-| 91-29-Y-j26-1 | 11 / IC | 2 |
+No sampled geometry gaps remain. All complete journeys are retained; the bus alignment reviews below remain separate from automatic geometry coverage.
 
 ## AGIS and OSM alignment comparison
 
@@ -90,7 +84,7 @@ The [correction policy](../data/aargau-alignment-policy.json) selects one exact 
 
 The replacement uses the already accepted full-pattern OSM bypass, **3,586.8 m** and an implied **71.7 km/h**. It remains an infrastructure inference. The policy pins exact agency, route, direction, full platform IDs/coordinates, date, segment index and both old/new path hashes. It cannot apply to another date or a changed source path. The [candidate regression](../data/aargau-seasonal/alignment-correction-regression.json) verifies all 11,193 original journeys, 173,105 unchanged segment occurrences and exactly one corrected occurrence. The archived Friday fixture and seasonal September replay are preserved; the corrected candidate is separate pending the remaining release reviews.
 
-The two largest line 344 disagreements were also examined against field 50.344 (7 November 2025, page 1) and the Freiamt map. Those sources distinguish early direct, Benzenschwil spur and school workings, but do not by themselves settle the exact road used on every sparse-stop variant. They are retained as unresolved leads, not automatically replaced.
+The two largest line 344 disagreements were also examined against field 50.344 (7 November 2025, page 1) and the Freiamt map. Those sources distinguish early direct, Benzenschwil spur and school workings, but do not by themselves settle the exact road used on every sparse-stop variant. The [course-level follow-up](../data/aargau-seasonal/344-alignment-followup.json) pins courses 34403/34405 and 34409 with matching PDF call times. For Muri Industriegebiet → Beinwil Unterdorf, AGIS is 6,974.8 m (83.7 km/h over five minutes) versus OSM 3,730.9 m (44.8 km/h). For Benzenschwil → Beinwil Unterdorf, the alternatives are 4,583.0 m (68.7 km/h over four minutes) and 2,502.3 m (37.5 km/h). Those differences warrant a dated operator road itinerary; they do not by themselves establish the exact road. All three occurrences retain their original geometry and both pairs remain in the 223 pending reviews.
 
 ## Seasonal road-cache evidence
 
@@ -108,7 +102,17 @@ All seven selected Bern arrivals have the identical Baden–Brugg–Aarau–Olte
 
 The four SBB identities are **91-26-E-j26-1 (RE26 Basel–Luzern), 91-5F-Y-j26-1 (IC Olten–Lugano via Freiamt), 91-2H-Y-j26-1 (IC Zürich–Lausanne/Genève-Aéroport) and 91-AP-Y-j26-1 (EXT Mühlau–Luzern in both directions)**. Nine complete patterns pass the same exact unique operating points, ordered source topology, 350 m station attachment, 120 m topology attachment and detour guards. These paths remain infrastructure inferences; admitting an exact source route ID does not certify its running tracks.
 
-The **two remaining occurrences**, on 3 April and 1 August, are Brig platform 6 → Domodossola (I), route 91-29-Y-j26-1. The pinned FOT network has no operating point **8301003** or Domodossola node. Both complete journeys remain in the audit with their final path null. A nearby Swiss boundary point cannot stand in for the Italian destination; foreign geometry and exact identity evidence are still required.
+## Reviewed Simplon cross-border fallback
+
+The [Simplon policy](../data/aargau-simplon-policy.json) now resolves the final two occurrences: **IC 1303, Brig platform 6 → Domodossola (I), on 3 April and 1 August**, route 91-29-Y-j26-1. The original FOT network still has no Domodossola node; its failure remains recorded. The fallback is OSM rail infrastructure, separately counted as rail geometry with source **osm-rail**, never attributed to FOT or a bus road cache.
+
+The [official service-point record](https://data.sbb.ch/explore/dataset/dienststellen-gemass-opentransportdataswiss/) supplies the exact identity association: record **8501607**, Domodossola, explicitly states that its timetable is under **8301003**. That record was edited on **19 September 2024**, with validity from **15 December 2024**. The archived dataset metadata says data processed **29 July 2026**; neither date is presented as a track-geometry update. The [SBB border factsheet](https://company.sbb.ch/content/dam/internet/corporate/downloads/en/sbb-als-geschaeftspartner/flotte-unterhalt/onestopshop/Factsheet_Domodossola.pdf.sbbdownload.pdf), revised **6 August 2024**, page 3, independently distinguishes Domodossola FS **83-01003-3** from the FM and II operating points. No name-only or nearest-station alias is used, and the GTFS code stays unchanged.
+
+The OSM snapshot is pinned to **8 September 2026, 00:00 UTC**, including versioned rail ways and all referenced nodes. The **40,781.8 m** inferred path follows connected 1435 mm main tracks and the individually reviewed Simplon passenger crossover **643956810**. Track attachments are **1.68 m at Brig / 33.98 m at Domodossola**, within the 120 m guard; station identity distances are **67.32 / 19.24 m**, within 350 m. The graph admits no yard, siding or spur, no coordinate-based joining of tracks and no reversal sharper than 90 degrees. The other tunnel crossover remains excluded. Removing the reviewed crossover leaves the selected station tracks disconnected and correctly fails the test.
+
+The [official timetable field 145](https://widgets.oev-info.ch/publikation/jahresfpl/145.pdf), dated **26 May 2026**, page 1, corroborates SBB IC 1303 from Zürich and the non-stop Brig–Domodossola leg. That PDF panel covers 14 December–28 May and lists arrivals of 10:07/10:09; the pinned source calls remain **09:39–10:09 on 3 April and 09:39–10:16 on 1 August**. The [BLS construction page](https://www.bls.ch/de/unternehmen/projekte-und-hintergruende/bauprojekte/simplontunnel) is archived as operating context, not a general permission for all dates. Each rule pins date, exact source trip ID, train number, direction, full platform coordinates, every original call/time and the output path hash. It can fill only the original missing final segment. All previously accepted paths and the archived September feeds are regression-preserved; this is infrastructure compatibility, not certification of actual running tracks or historical operation.
+
+Source bytes, query, dataset metadata, operator evidence and attribution are archived under [Simplon sources](../data/aargau-simplon-sources). Rail geometry attribution: **© OpenStreetMap contributors, ODbL-1.0**. Station identities: **SBB Infrastruktur / opentransportdata.swiss / FOT**.
 
 ## Sources, reproduction and release
 
@@ -138,6 +142,8 @@ node scripts/check-aargau-reviewed.mjs --write
 
 # Rebuild or replay the shipped audit; no network access is required.
 node scripts/prepare-aargau-seasonal-gaps.mjs --check
+node scripts/prepare-aargau-simplon.mjs --check
+node scripts/review-aargau-344.mjs --check
 node scripts/audit-aargau-seasonal.mjs
 node scripts/check-aargau-seasonal.mjs
 node scripts/aargau-seasonal-roads.mjs --check
@@ -151,7 +157,6 @@ npx vitest run scripts/aargau-seasonal.test.mjs scripts/aargau-platform-geometry
 Next work, recorded in the release review:
 
 1. Review AGIS/OSM bus disagreements against dated operator itineraries and legal direction evidence; the 30 m diagnostic alone cannot choose the correct source.
-2. Acquire exact cross-border geometry and operating-point evidence for the two remaining Brig–Domodossola occurrences. All 16,364 seasonal bus-cache gaps and 583 scoped border/platform/new-route gaps are now filled without replacing prior paths.
-3. Find active witness dates for the 45 archived routes absent from all twelve samples; do not label them discontinued.
-4. Disambiguate the repeated local hour before promoting 25 October as an elapsed-time feed.
-5. Integrate reviewed fixtures into application study selection, date loading and attribution, then run browser release checks.
+2. Find active witness dates for the 45 archived routes absent from all twelve samples; do not label them discontinued.
+3. Disambiguate the repeated local hour before promoting 25 October as an elapsed-time feed.
+4. Integrate reviewed fixtures into application study selection, date loading and attribution, then run browser release checks.

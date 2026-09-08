@@ -1,0 +1,3333 @@
+{
+  "schemaVersion": 1,
+  "checkedOn": "2026-09-08",
+  "scope": "Two exact IC 1303 seasonal journeys, final Brig–Domodossola segment only. OSM standard-gauge infrastructure inference with official station-code evidence; not certified running track, historical operation or publication approval. Preserve every prior accepted path and all original timetable calls.",
+  "inputTimetableHashes": {
+    "2026-04-03": "95ead28b0bcbbcd79c2a62828c380dd71a9d90e65809f49d88a1b75be79d842a",
+    "2026-08-01": "2f6ce758d30be62318156c4cf40a8e81b471b79149ec05489d0742d0ef25dfab"
+  },
+  "files": {
+    "data/aargau-simplon-sources/osm.json.gz": "e71ad63e8ca955ccb43528f5c7eea6334ac846502206a82691ca9e8a4946ea3d",
+    "data/aargau-simplon-sources/rail.overpass": "0905ac79a9e7bf3ce2ab46d2f383153f90c8a6d9d972973905265f1d8b91a784",
+    "data/aargau-simplon-sources/sbb-domodossola-stations.json": "6030e87a90fab4a2c62a6aca647eb3c7431966fd0a9252da0fea8460fad72899",
+    "data/aargau-simplon-sources/sbb-station-catalogue.json": "4950eebe245762e21127cf8bff778adf0a6a99eba2578bf3fbf8d7d4dde5c3cc",
+    "data/aargau-simplon-sources/sbb-domodossola.pdf": "084eef06c89fcb2c742414b5b2fce36584c9a85d28115f72fb50e4788cb1d00a",
+    "data/aargau-simplon-sources/145-2026.pdf": "92be93d476d595034adc6bcf4c4870a1674401c2247fd1c710c3f5fc1a6b0d0d",
+    "data/aargau-simplon-sources/bls-closures.html.gz": "1c0d63fab25878ce81f42db4f1c422adf792ff5f348df9a5c3e89f76a5a4d0f8",
+    "data/aargau-seasonal/input/source-verification.json": "dff8db158cd119a389fd68b9b4e8ad71c461828d8052498b2b036fa8aa1d7852",
+    "data/aargau-seasonal/input/2026-04-03-timetable.json.gz": "95ead28b0bcbbcd79c2a62828c380dd71a9d90e65809f49d88a1b75be79d842a",
+    "data/aargau-seasonal/input/2026-08-01-timetable.json.gz": "2f6ce758d30be62318156c4cf40a8e81b471b79149ec05489d0742d0ef25dfab"
+  },
+  "evidence": [
+    {
+      "file": "osm.json.gz",
+      "url": "https://overpass-api.de/api/interpreter",
+      "sourceDate": "2026-09-08T00:00:00Z",
+      "attribution": "© OpenStreetMap contributors, ODbL-1.0",
+      "finding": "Pinned bounded rail ways, stop areas, UIC station nodes and complete referenced nodes. Exact shared-node topology only. Main standard-gauge lines plus the specifically reviewed 1435 mm passenger crossover 643956810; sidings, yards, spurs and non-rail features excluded. The other Simplon crossover is not admitted. No source tags or coordinates are edited."
+    },
+    {
+      "file": "rail.overpass",
+      "url": null,
+      "sourceDate": "2026-09-08T00:00:00Z",
+      "finding": "Exact reproducible Overpass query with snapshot and full element metadata."
+    },
+    {
+      "file": "sbb-domodossola-stations.json",
+      "url": "https://data.sbb.ch/api/explore/v2.1/catalog/datasets/dienststellen-gemass-opentransportdataswiss/records?where=search(%22Domodossola%22)&limit=20",
+      "sourceDate": "2024-09-19T15:24:12+00:00",
+      "attribution": "SBB Infrastruktur / opentransportdata.swiss / FOT service points",
+      "finding": "Exact record 8501607, Domodossola, assigned operating point, valid from 15 December 2024: FOT comment explicitly identifies timetable under 8301003 (foreign). This establishes the narrowly scoped code association; neither number is inferred from proximity or name alone."
+    },
+    {
+      "file": "sbb-station-catalogue.json",
+      "url": "https://data.sbb.ch/api/explore/v2.1/catalog/datasets",
+      "sourceDate": null,
+      "finding": "Archived dataset metadata; acquisition date is not the station record edition date."
+    },
+    {
+      "file": "sbb-domodossola.pdf",
+      "url": "https://company.sbb.ch/content/dam/internet/corporate/downloads/en/sbb-als-geschaeftspartner/flotte-unterhalt/onestopshop/Factsheet_Domodossola.pdf.sbbdownload.pdf",
+      "sourceDate": "2024-08-06",
+      "visuallyReviewedPage": 3,
+      "finding": "SBB Infrastructure diagram distinguishes passenger station Domodossola FS, 83-01003-3, from Domodossola FM and Domodossola II. These other operating points cannot substitute for the timetable destination."
+    },
+    {
+      "file": "145-2026.pdf",
+      "url": "https://widgets.oev-info.ch/publikation/jahresfpl/145.pdf",
+      "sourceDate": "2026-05-26",
+      "visuallyReviewedPage": 1,
+      "finding": "Official field 145 shows SBB IC 1303 from Zürich, Brig 09:39 to Domodossola without intermediate calls. Its first seasonal panel is limited to 14 December–28 May. The PDF has 10:07/10:09 arrivals; pinned GTFS has 10:09 on 3 April and 10:16 on 1 August. No PDF time or calendar is substituted for GTFS."
+    },
+    {
+      "file": "bls-closures.html.gz",
+      "url": "https://www.bls.ch/de/unternehmen/projekte-und-hintergruende/bauprojekte/simplontunnel",
+      "sourceDate": null,
+      "finding": "Rechecked 8 September. Operator describes 2026 construction and replacement services between Iselle and Domodossola, including weekday closures from 10:30. This mutable page is context only; the two pinned GTFS journeys and call times define admission, not a general all-date rail assumption."
+    }
+  ],
+  "graph": {
+    "snapshot": "2026-09-08T00:00:00Z",
+    "stations": [
+      {
+        "nodeId": 6771438097,
+        "number": "8501609",
+        "name": "Brig"
+      },
+      {
+        "nodeId": 2837216238,
+        "number": "8501607",
+        "name": "Domodossola"
+      }
+    ],
+    "reviewedCrossoverWayIds": [
+      643956810
+    ],
+    "limits": {
+      "stationIdentityMetres": 350,
+      "trackAttachmentMetres": 120,
+      "projectionAlternativeMetres": 5,
+      "maximumTurnDegrees": 90,
+      "maximumPathMetres": 50000
+    }
+  },
+  "pair": [
+    [
+      7.98911308,
+      46.31977928,
+      "Brig",
+      "6",
+      "ch:1:sloid:1609:3:6"
+    ],
+    [
+      8.29623809,
+      46.11529118,
+      "Domodossola (I)",
+      "",
+      "8301003"
+    ]
+  ],
+  "pathSha256": "d6d1ffaf6db1c5e236f206b08a9c1875de2c18c2616bc11cf1d274a0b41e5871",
+  "geometryEvidence": {
+    "pathMetres": 40781.829557817815,
+    "geometrySource": "osm-rail",
+    "gauge": "mm1435",
+    "fromOperatingPoint": "8501609",
+    "toOperatingPoint": "8301003",
+    "stationAttachmentsMetres": [
+      67.3164439714096,
+      19.24352592205202
+    ],
+    "trackAttachmentsMetres": [
+      1.676576557773049,
+      33.97658845563373
+    ],
+    "directedSourceSegments": [
+      {
+        "id": "osm-way:310411628",
+        "from": "start",
+        "to": 12676167564
+      },
+      {
+        "id": "osm-way:310411628",
+        "from": 12676167564,
+        "to": 1861762716
+      },
+      {
+        "id": "osm-way:310411628",
+        "from": 1861762716,
+        "to": 8883821800
+      },
+      {
+        "id": "osm-way:310411628",
+        "from": 8883821800,
+        "to": 11053503276
+      },
+      {
+        "id": "osm-way:310411628",
+        "from": 11053503276,
+        "to": 8883821801
+      },
+      {
+        "id": "osm-way:310411628",
+        "from": 8883821801,
+        "to": 1861762724
+      },
+      {
+        "id": "osm-way:310411628",
+        "from": 1861762724,
+        "to": 1861762727
+      },
+      {
+        "id": "osm-way:310411628",
+        "from": 1861762727,
+        "to": 8883821792
+      },
+      {
+        "id": "osm-way:310411628",
+        "from": 8883821792,
+        "to": 8883821793
+      },
+      {
+        "id": "osm-way:310411628",
+        "from": 8883821793,
+        "to": 8883821798
+      },
+      {
+        "id": "osm-way:310411628",
+        "from": 8883821798,
+        "to": 3158326275
+      },
+      {
+        "id": "osm-way:1339461945",
+        "from": 3158326275,
+        "to": 8883821794
+      },
+      {
+        "id": "osm-way:1339461945",
+        "from": 8883821794,
+        "to": 8883821795
+      },
+      {
+        "id": "osm-way:1339461945",
+        "from": 8883821795,
+        "to": 8883821796
+      },
+      {
+        "id": "osm-way:1339461945",
+        "from": 8883821796,
+        "to": 1861762743
+      },
+      {
+        "id": "osm-way:1339461945",
+        "from": 1861762743,
+        "to": 8883821797
+      },
+      {
+        "id": "osm-way:1339461945",
+        "from": 8883821797,
+        "to": 11053503278
+      },
+      {
+        "id": "osm-way:1339461945",
+        "from": 11053503278,
+        "to": 1861762780
+      },
+      {
+        "id": "osm-way:207991700",
+        "from": 1861762780,
+        "to": 1861662579
+      },
+      {
+        "id": "osm-way:207991700",
+        "from": 1861662579,
+        "to": 11053503281
+      },
+      {
+        "id": "osm-way:207991700",
+        "from": 11053503281,
+        "to": 8887592711
+      },
+      {
+        "id": "osm-way:207991700",
+        "from": 8887592711,
+        "to": 1861762803
+      },
+      {
+        "id": "osm-way:207991700",
+        "from": 1861762803,
+        "to": 8365126083
+      },
+      {
+        "id": "osm-way:1339461943",
+        "from": 8365126083,
+        "to": 1861762842
+      },
+      {
+        "id": "osm-way:310411603",
+        "from": 1861762842,
+        "to": 8887829346
+      },
+      {
+        "id": "osm-way:310411603",
+        "from": 8887829346,
+        "to": 1861762860
+      },
+      {
+        "id": "osm-way:310411603",
+        "from": 1861762860,
+        "to": 8887829347
+      },
+      {
+        "id": "osm-way:310411603",
+        "from": 8887829347,
+        "to": 8887829348
+      },
+      {
+        "id": "osm-way:310411603",
+        "from": 8887829348,
+        "to": 1861762888
+      },
+      {
+        "id": "osm-way:310422489",
+        "from": 1861762888,
+        "to": 8887829353
+      },
+      {
+        "id": "osm-way:310422489",
+        "from": 8887829353,
+        "to": 3158420722
+      },
+      {
+        "id": "osm-way:310422489",
+        "from": 3158420722,
+        "to": 1861762892
+      },
+      {
+        "id": "osm-way:310411590",
+        "from": 1861762892,
+        "to": 1861662586
+      },
+      {
+        "id": "osm-way:310411597",
+        "from": 1861662586,
+        "to": 8887829366
+      },
+      {
+        "id": "osm-way:310411597",
+        "from": 8887829366,
+        "to": 1861662589
+      },
+      {
+        "id": "osm-way:310411597",
+        "from": 1861662589,
+        "to": 3158420723
+      },
+      {
+        "id": "osm-way:310411597",
+        "from": 3158420723,
+        "to": 8887829367
+      },
+      {
+        "id": "osm-way:310411597",
+        "from": 8887829367,
+        "to": 1861662592
+      },
+      {
+        "id": "osm-way:1339461939",
+        "from": 1861662592,
+        "to": 8888216392
+      },
+      {
+        "id": "osm-way:310405898",
+        "from": 8888216392,
+        "to": 1861662639
+      },
+      {
+        "id": "osm-way:310405898",
+        "from": 1861662639,
+        "to": 8887898212
+      },
+      {
+        "id": "osm-way:310405898",
+        "from": 8887898212,
+        "to": 8887898213
+      },
+      {
+        "id": "osm-way:310405898",
+        "from": 8887898213,
+        "to": 8887909026
+      },
+      {
+        "id": "osm-way:1339469760",
+        "from": 8887909026,
+        "to": 8887898214
+      },
+      {
+        "id": "osm-way:1339469760",
+        "from": 8887898214,
+        "to": 1861662645
+      },
+      {
+        "id": "osm-way:1339469760",
+        "from": 1861662645,
+        "to": 8887898215
+      },
+      {
+        "id": "osm-way:1339469760",
+        "from": 8887898215,
+        "to": 60218138
+      },
+      {
+        "id": "osm-way:310405881",
+        "from": 60218138,
+        "to": 8887909018
+      },
+      {
+        "id": "osm-way:310405881",
+        "from": 8887909018,
+        "to": 3158266792
+      },
+      {
+        "id": "osm-way:310405881",
+        "from": 3158266792,
+        "to": 8887898204
+      },
+      {
+        "id": "osm-way:310405881",
+        "from": 8887898204,
+        "to": 1861917091
+      },
+      {
+        "id": "osm-way:1117399165",
+        "from": 1861917091,
+        "to": 8887898210
+      },
+      {
+        "id": "osm-way:1117399165",
+        "from": 8887898210,
+        "to": 1861711437
+      },
+      {
+        "id": "osm-way:310405853",
+        "from": 1861711437,
+        "to": 3158266804
+      },
+      {
+        "id": "osm-way:175631980",
+        "from": 3158266804,
+        "to": 1861662671
+      },
+      {
+        "id": "osm-way:175631980",
+        "from": 1861662671,
+        "to": 8887837211
+      },
+      {
+        "id": "osm-way:175631980",
+        "from": 8887837211,
+        "to": 1861662679
+      },
+      {
+        "id": "osm-way:175631980",
+        "from": 1861662679,
+        "to": 8887837212
+      },
+      {
+        "id": "osm-way:175631980",
+        "from": 8887837212,
+        "to": 8887840659
+      },
+      {
+        "id": "osm-way:175612625",
+        "from": 8887840659,
+        "to": 8887837213
+      },
+      {
+        "id": "osm-way:175612625",
+        "from": 8887837213,
+        "to": 60218141
+      },
+      {
+        "id": "osm-way:175612625",
+        "from": 60218141,
+        "to": 8887837214
+      },
+      {
+        "id": "osm-way:175612625",
+        "from": 8887837214,
+        "to": 8887837215
+      },
+      {
+        "id": "osm-way:175612625",
+        "from": 8887837215,
+        "to": 8887837216
+      },
+      {
+        "id": "osm-way:175612625",
+        "from": 8887837216,
+        "to": 8887856117
+      },
+      {
+        "id": "osm-way:175612625",
+        "from": 8887856117,
+        "to": 8887856118
+      },
+      {
+        "id": "osm-way:175612625",
+        "from": 8887856118,
+        "to": 1861662706
+      },
+      {
+        "id": "osm-way:175612625",
+        "from": 1861662706,
+        "to": 8887856119
+      },
+      {
+        "id": "osm-way:175612625",
+        "from": 8887856119,
+        "to": 8887856120
+      },
+      {
+        "id": "osm-way:175612625",
+        "from": 8887856120,
+        "to": 8887856121
+      },
+      {
+        "id": "osm-way:175612625",
+        "from": 8887856121,
+        "to": 8887856122
+      },
+      {
+        "id": "osm-way:175612625",
+        "from": 8887856122,
+        "to": 60218143
+      },
+      {
+        "id": "osm-way:175612625",
+        "from": 60218143,
+        "to": 8887856123
+      },
+      {
+        "id": "osm-way:175612625",
+        "from": 8887856123,
+        "to": 8887856124
+      },
+      {
+        "id": "osm-way:175612625",
+        "from": 8887856124,
+        "to": 8887856125
+      },
+      {
+        "id": "osm-way:175612625",
+        "from": 8887856125,
+        "to": 1861662717
+      },
+      {
+        "id": "osm-way:175612625",
+        "from": 1861662717,
+        "to": 8887856126
+      },
+      {
+        "id": "osm-way:175612625",
+        "from": 8887856126,
+        "to": 8887856130
+      },
+      {
+        "id": "osm-way:175612625",
+        "from": 8887856130,
+        "to": 1816343606
+      },
+      {
+        "id": "osm-way:1339473613",
+        "from": 1816343606,
+        "to": 8887856129
+      },
+      {
+        "id": "osm-way:1339473613",
+        "from": 8887856129,
+        "to": 8887856131
+      },
+      {
+        "id": "osm-way:1339473613",
+        "from": 8887856131,
+        "to": 8887856132
+      },
+      {
+        "id": "osm-way:1339473613",
+        "from": 8887856132,
+        "to": 60218144
+      },
+      {
+        "id": "osm-way:795403745",
+        "from": 60218144,
+        "to": 3158266807
+      },
+      {
+        "id": "osm-way:795403745",
+        "from": 3158266807,
+        "to": 12390275432
+      },
+      {
+        "id": "osm-way:795403745",
+        "from": 12390275432,
+        "to": 1861662702
+      },
+      {
+        "id": "osm-way:795403745",
+        "from": 1861662702,
+        "to": 12390275431
+      },
+      {
+        "id": "osm-way:795403745",
+        "from": 12390275431,
+        "to": 12390275436
+      },
+      {
+        "id": "osm-way:1340356603",
+        "from": 12390275436,
+        "to": 12390275435
+      },
+      {
+        "id": "osm-way:1340356603",
+        "from": 12390275435,
+        "to": 6030966415
+      },
+      {
+        "id": "osm-way:1340356603",
+        "from": 6030966415,
+        "to": 12398474931
+      },
+      {
+        "id": "osm-way:1340356604",
+        "from": 12398474931,
+        "to": 13747777304
+      },
+      {
+        "id": "osm-way:1340356604",
+        "from": 13747777304,
+        "to": 12398474944
+      },
+      {
+        "id": "osm-way:1340356609",
+        "from": 12398474944,
+        "to": 12398474945
+      },
+      {
+        "id": "osm-way:1340356608",
+        "from": 12398474945,
+        "to": 12398474966
+      },
+      {
+        "id": "osm-way:1340356618",
+        "from": 12398474966,
+        "to": 12398474967
+      },
+      {
+        "id": "osm-way:1340356617",
+        "from": 12398474967,
+        "to": 12398478434
+      },
+      {
+        "id": "osm-way:1340356627",
+        "from": 12398478434,
+        "to": 12398478435
+      },
+      {
+        "id": "osm-way:1340356626",
+        "from": 12398478435,
+        "to": 12398478438
+      },
+      {
+        "id": "osm-way:1340356631",
+        "from": 12398478438,
+        "to": 12398478439
+      },
+      {
+        "id": "osm-way:1340356630",
+        "from": 12398478439,
+        "to": 12398292784
+      },
+      {
+        "id": "osm-way:1340342314",
+        "from": 12398292784,
+        "to": 12398292785
+      },
+      {
+        "id": "osm-way:1340342313",
+        "from": 12398292785,
+        "to": 12397908813
+      },
+      {
+        "id": "osm-way:1340297084",
+        "from": 12397908813,
+        "to": 6058753376
+      },
+      {
+        "id": "osm-way:643956810",
+        "from": 6058753376,
+        "to": 12398560551
+      },
+      {
+        "id": "osm-way:643956810",
+        "from": 12398560551,
+        "to": 12398560550
+      },
+      {
+        "id": "osm-way:643956810",
+        "from": 12398560550,
+        "to": 6058753375
+      },
+      {
+        "id": "osm-way:1340297085",
+        "from": 6058753375,
+        "to": 12397908816
+      },
+      {
+        "id": "osm-way:1340297089",
+        "from": 12397908816,
+        "to": 12397908815
+      },
+      {
+        "id": "osm-way:1340297086",
+        "from": 12397908815,
+        "to": 6058753374
+      },
+      {
+        "id": "osm-way:1340297082",
+        "from": 6058753374,
+        "to": 12397908811
+      },
+      {
+        "id": "osm-way:1340363317",
+        "from": 12397908811,
+        "to": 12398530553
+      },
+      {
+        "id": "osm-way:1340363316",
+        "from": 12398530553,
+        "to": 12398530552
+      },
+      {
+        "id": "osm-way:1340363314",
+        "from": 12398530552,
+        "to": 12398530550
+      },
+      {
+        "id": "osm-way:1340363312",
+        "from": 12398530550,
+        "to": 12398530548
+      },
+      {
+        "id": "osm-way:170488516",
+        "from": 12398530548,
+        "to": 1861662552
+      },
+      {
+        "id": "osm-way:170488516",
+        "from": 1861662552,
+        "to": 6058753369
+      },
+      {
+        "id": "osm-way:170488516",
+        "from": 6058753369,
+        "to": 1861662550
+      },
+      {
+        "id": "osm-way:170488516",
+        "from": 1861662550,
+        "to": 1861662548
+      },
+      {
+        "id": "osm-way:170488516",
+        "from": 1861662548,
+        "to": 6058753368
+      },
+      {
+        "id": "osm-way:170488516",
+        "from": 6058753368,
+        "to": 1861662547
+      },
+      {
+        "id": "osm-way:170488516",
+        "from": 1861662547,
+        "to": 6058753371
+      },
+      {
+        "id": "osm-way:170488514",
+        "from": 6058753371,
+        "to": 1816343586
+      },
+      {
+        "id": "osm-way:1256682137",
+        "from": 1816343586,
+        "to": 6058787353
+      },
+      {
+        "id": "osm-way:170488515",
+        "from": 6058787353,
+        "to": 1816343584
+      },
+      {
+        "id": "osm-way:1340369452",
+        "from": 1816343584,
+        "to": 1861662544
+      },
+      {
+        "id": "osm-way:795314606",
+        "from": 1861662544,
+        "to": 6058787341
+      },
+      {
+        "id": "osm-way:170490878",
+        "from": 6058787341,
+        "to": 12591352913
+      },
+      {
+        "id": "osm-way:170490878",
+        "from": 12591352913,
+        "to": 12591352914
+      },
+      {
+        "id": "osm-way:170490878",
+        "from": 12591352914,
+        "to": 12591352915
+      },
+      {
+        "id": "osm-way:170490878",
+        "from": 12591352915,
+        "to": 12398530543
+      },
+      {
+        "id": "osm-way:170490878",
+        "from": 12398530543,
+        "to": 12591352985
+      },
+      {
+        "id": "osm-way:170490878",
+        "from": 12591352985,
+        "to": 12591352916
+      },
+      {
+        "id": "osm-way:170490878",
+        "from": 12591352916,
+        "to": 12591325879
+      },
+      {
+        "id": "osm-way:170490878",
+        "from": 12591325879,
+        "to": 12591353100
+      },
+      {
+        "id": "osm-way:170490878",
+        "from": 12591353100,
+        "to": 6058787338
+      },
+      {
+        "id": "osm-way:170490878",
+        "from": 6058787338,
+        "to": 12398530539
+      },
+      {
+        "id": "osm-way:170490878",
+        "from": 12398530539,
+        "to": 12591325878
+      },
+      {
+        "id": "osm-way:170490878",
+        "from": 12591325878,
+        "to": 1861662539
+      },
+      {
+        "id": "osm-way:170490878",
+        "from": 1861662539,
+        "to": 12591353020
+      },
+      {
+        "id": "osm-way:170490878",
+        "from": 12591353020,
+        "to": 12591325877
+      },
+      {
+        "id": "osm-way:170490878",
+        "from": 12591325877,
+        "to": 12591353017
+      },
+      {
+        "id": "osm-way:170490878",
+        "from": 12591353017,
+        "to": 12398530545
+      },
+      {
+        "id": "osm-way:1344805289",
+        "from": 12398530545,
+        "to": 6058787336
+      },
+      {
+        "id": "osm-way:1340363311",
+        "from": 6058787336,
+        "to": 1816428721
+      },
+      {
+        "id": "osm-way:795211995",
+        "from": 1816428721,
+        "to": 6058787325
+      },
+      {
+        "id": "osm-way:795211995",
+        "from": 6058787325,
+        "to": 12591352982
+      },
+      {
+        "id": "osm-way:795211995",
+        "from": 12591352982,
+        "to": 1816428718
+      },
+      {
+        "id": "osm-way:795211995",
+        "from": 1816428718,
+        "to": 7435821941
+      },
+      {
+        "id": "osm-way:795211995",
+        "from": 7435821941,
+        "to": 1816428710
+      },
+      {
+        "id": "osm-way:795211995",
+        "from": 1816428710,
+        "to": 7435821923
+      },
+      {
+        "id": "osm-way:795211995",
+        "from": 7435821923,
+        "to": 1816428704
+      },
+      {
+        "id": "osm-way:795211995",
+        "from": 1816428704,
+        "to": 7435821899
+      },
+      {
+        "id": "osm-way:795211995",
+        "from": 7435821899,
+        "to": 1816428714
+      },
+      {
+        "id": "osm-way:795211995",
+        "from": 1816428714,
+        "to": 7435821954
+      },
+      {
+        "id": "osm-way:795211995",
+        "from": 7435821954,
+        "to": 7435821937
+      },
+      {
+        "id": "osm-way:795211995",
+        "from": 7435821937,
+        "to": 7435821912
+      },
+      {
+        "id": "osm-way:795211995",
+        "from": 7435821912,
+        "to": 7435821888
+      },
+      {
+        "id": "osm-way:795211995",
+        "from": 7435821888,
+        "to": 7435821958
+      },
+      {
+        "id": "osm-way:795211995",
+        "from": 7435821958,
+        "to": 7435821934
+      },
+      {
+        "id": "osm-way:795211995",
+        "from": 7435821934,
+        "to": 7435821925
+      },
+      {
+        "id": "osm-way:795211995",
+        "from": 7435821925,
+        "to": 7435821901
+      },
+      {
+        "id": "osm-way:795211995",
+        "from": 7435821901,
+        "to": 7435821893
+      },
+      {
+        "id": "osm-way:795211995",
+        "from": 7435821893,
+        "to": 3955354540
+      },
+      {
+        "id": "osm-way:795211995",
+        "from": 3955354540,
+        "to": 7435821939
+      },
+      {
+        "id": "osm-way:795211995",
+        "from": 7435821939,
+        "to": 7435821921
+      },
+      {
+        "id": "osm-way:795211995",
+        "from": 7435821921,
+        "to": 7435821914
+      },
+      {
+        "id": "osm-way:795211995",
+        "from": 7435821914,
+        "to": 7435821897
+      },
+      {
+        "id": "osm-way:795211995",
+        "from": 7435821897,
+        "to": 3955354542
+      },
+      {
+        "id": "osm-way:795211995",
+        "from": 3955354542,
+        "to": 1816428768
+      },
+      {
+        "id": "osm-way:170490877",
+        "from": 1816428768,
+        "to": 7435736859
+      },
+      {
+        "id": "osm-way:170490877",
+        "from": 7435736859,
+        "to": 7435736855
+      },
+      {
+        "id": "osm-way:170490877",
+        "from": 7435736855,
+        "to": 7435772825
+      },
+      {
+        "id": "osm-way:170490877",
+        "from": 7435772825,
+        "to": 7437863719
+      },
+      {
+        "id": "osm-way:170490877",
+        "from": 7437863719,
+        "to": 7435736863
+      },
+      {
+        "id": "osm-way:170490877",
+        "from": 7435736863,
+        "to": 7437863720
+      },
+      {
+        "id": "osm-way:170490877",
+        "from": 7437863720,
+        "to": 1816428774
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 1816428774,
+        "to": 1861662556
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 1861662556,
+        "to": 7435821936
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7435821936,
+        "to": 7435821927
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7435821927,
+        "to": 7435821903
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7435821903,
+        "to": 7435821895
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7435821895,
+        "to": 7435821950
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7435821950,
+        "to": 7435821933
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7435821933,
+        "to": 7435821924
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7435821924,
+        "to": 7435821908
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7435821908,
+        "to": 1816428781
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 1816428781,
+        "to": 7435821892
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7435821892,
+        "to": 7435821885
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7435821885,
+        "to": 7435821946
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7435821946,
+        "to": 7435821929
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7435821929,
+        "to": 1861662558
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 1861662558,
+        "to": 7435821896
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7435821896,
+        "to": 7435821889
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7435821889,
+        "to": 7435821952
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7435821952,
+        "to": 1816428785
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 1816428785,
+        "to": 7435821926
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7435821926,
+        "to": 7435821918
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7435821918,
+        "to": 7435821902
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7435821902,
+        "to": 1816428789
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 1816428789,
+        "to": 7435821956
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7435821956,
+        "to": 7435821948
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7435821948,
+        "to": 7435821922
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7435821922,
+        "to": 7435821915
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7435821915,
+        "to": 7436095181
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095181,
+        "to": 7435772843
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7435772843,
+        "to": 1861662563
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 1861662563,
+        "to": 7436095046
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095046,
+        "to": 7436095020
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095020,
+        "to": 7436076373
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436076373,
+        "to": 7436095143
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095143,
+        "to": 7435746333
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7435746333,
+        "to": 7436095089
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095089,
+        "to": 7436095062
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095062,
+        "to": 7436094988
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436094988,
+        "to": 7436076365
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436076365,
+        "to": 7436095133
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095133,
+        "to": 7436095105
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095105,
+        "to": 7436095026
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095026,
+        "to": 7436095001
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095001,
+        "to": 7436095175
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095175,
+        "to": 7436095121
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095121,
+        "to": 1861662568
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 1861662568,
+        "to": 7436095095
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095095,
+        "to": 7436095016
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095016,
+        "to": 7435772915
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7435772915,
+        "to": 7436095166
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095166,
+        "to": 1816428809
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 1816428809,
+        "to": 7436095084
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095084,
+        "to": 7436095031
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095031,
+        "to": 7436095006
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095006,
+        "to": 7436076360
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436076360,
+        "to": 7436095182
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095182,
+        "to": 7436095100
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095100,
+        "to": 7436095073
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095073,
+        "to": 1861662573
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 1861662573,
+        "to": 7436095172
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095172,
+        "to": 7436095090
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095090,
+        "to": 7436095063
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095063,
+        "to": 7436095011
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095011,
+        "to": 7436076366
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436076366,
+        "to": 7436076341
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436076341,
+        "to": 7436095134
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095134,
+        "to": 7435772816
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7435772816,
+        "to": 7436095052
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095052,
+        "to": 7436095027
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095027,
+        "to": 7437863721
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7437863721,
+        "to": 7436095096
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095096,
+        "to": 7436095167
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095167,
+        "to": 7437863714
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7437863714,
+        "to": 7437863715
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7437863715,
+        "to": 1861662575
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 1861662575,
+        "to": 7436095085
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095085,
+        "to": 7437863717
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7437863717,
+        "to": 7435772831
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7435772831,
+        "to": 7437863716
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7437863716,
+        "to": 7436076384
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436076384,
+        "to": 7436095157
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095157,
+        "to": 7436095129
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095129,
+        "to": 7436095074
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095074,
+        "to": 7435746343
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7435746343,
+        "to": 7436095022
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095022,
+        "to": 7436076351
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436076351,
+        "to": 7435772911
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7435772911,
+        "to": 7436095091
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095091,
+        "to": 7436095064
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095064,
+        "to": 7436094990
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436094990,
+        "to": 7436076367
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436076367,
+        "to": 7436095135
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095135,
+        "to": 1861662571
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 1861662571,
+        "to": 7436095080
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095080,
+        "to": 7436095053
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095053,
+        "to": 7436076380
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436076380,
+        "to": 7436076357
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436076357,
+        "to": 7436095123
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095123,
+        "to": 7436095097
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095097,
+        "to": 7436095018
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095018,
+        "to": 7436094993
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436094993,
+        "to": 7436095168
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095168,
+        "to": 7436095141
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095141,
+        "to": 7436095086
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095086,
+        "to": 7436095059
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095059,
+        "to": 1816428805
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 1816428805,
+        "to": 7436094985
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436094985,
+        "to": 7436076362
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436076362,
+        "to": 7436095130
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095130,
+        "to": 1861662569
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 1861662569,
+        "to": 7436095048
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095048,
+        "to": 7436095023
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095023,
+        "to": 7436076352
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436076352,
+        "to": 7435772916
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7435772916,
+        "to": 7436095118
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095118,
+        "to": 7436095092
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095092,
+        "to": 7436095013
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095013,
+        "to": 7435772849
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7435772849,
+        "to": 7436095163
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095163,
+        "to": 1816428797
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 1816428797,
+        "to": 7436095081
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095081,
+        "to": 7436095054
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095054,
+        "to": 7436095152
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095152,
+        "to": 7436095124
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095124,
+        "to": 7436095044
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095044,
+        "to": 7435772929
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7435772929,
+        "to": 7436076371
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436076371,
+        "to": 1861662565
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 1861662565,
+        "to": 7435772885
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7435772885,
+        "to": 7436095113
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095113,
+        "to": 7436095034
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095034,
+        "to": 7436095008
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095008,
+        "to": 7436095185
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095185,
+        "to": 7436095159
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095159,
+        "to": 7436095076
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095076,
+        "to": 1816428793
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 1816428793,
+        "to": 7436094999
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436094999,
+        "to": 7436076376
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436076376,
+        "to": 7436095173
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095173,
+        "to": 7436095147
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095147,
+        "to": 7436095066
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095066,
+        "to": 7436095039
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095039,
+        "to": 7436076369
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436076369,
+        "to": 7435772876
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7435772876,
+        "to": 7436095137
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095137,
+        "to": 7436095055
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095055,
+        "to": 7435772832
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7435772832,
+        "to": 1861662560
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 1861662560,
+        "to": 7436076358
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436076358,
+        "to": 7436095179
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095179,
+        "to": 7436095099
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095099,
+        "to": 7436095071
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095071,
+        "to": 7436094995
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436094995,
+        "to": 7436076372
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436076372,
+        "to": 7436095142
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095142,
+        "to": 7436095114
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095114,
+        "to": 7706803781
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7706803781,
+        "to": 7435772890
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7435772890,
+        "to": 1816428778
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 1816428778,
+        "to": 7436094987
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436094987,
+        "to": 7436095186
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095186,
+        "to": 7436095160
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095160,
+        "to": 7436095077
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095077,
+        "to": 7436095050
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095050,
+        "to": 7436076377
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436076377,
+        "to": 7436076354
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436076354,
+        "to": 7436095120
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095120,
+        "to": 7436095094
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095094,
+        "to": 7436095015
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095015,
+        "to": 7436095138
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095138,
+        "to": 7436095056
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095056,
+        "to": 1816428765
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 1816428765,
+        "to": 7436076382
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436076382,
+        "to": 7436095180
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7436095180,
+        "to": 7435821949
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 7435821949,
+        "to": 1861662541
+      },
+      {
+        "id": "osm-way:170490876",
+        "from": 1861662541,
+        "to": 1816428749
+      },
+      {
+        "id": "osm-way:170491193",
+        "from": 1816428749,
+        "to": 3955343662
+      },
+      {
+        "id": "osm-way:170491193",
+        "from": 3955343662,
+        "to": 1816448633
+      },
+      {
+        "id": "osm-way:170491193",
+        "from": 1816448633,
+        "to": 1816448631
+      },
+      {
+        "id": "osm-way:170491193",
+        "from": 1816448631,
+        "to": 1816448630
+      },
+      {
+        "id": "osm-way:170491193",
+        "from": 1816448630,
+        "to": 1816448626
+      },
+      {
+        "id": "osm-way:170491193",
+        "from": 1816448626,
+        "to": 1816448623
+      },
+      {
+        "id": "osm-way:170491193",
+        "from": 1816448623,
+        "to": 1816448624
+      },
+      {
+        "id": "osm-way:1344989103",
+        "from": 1816448624,
+        "to": 1816448628
+      },
+      {
+        "id": "osm-way:1344989103",
+        "from": 1816448628,
+        "to": 3955340653
+      },
+      {
+        "id": "osm-way:1344989103",
+        "from": 3955340653,
+        "to": 1816448637
+      },
+      {
+        "id": "osm-way:1340372860",
+        "from": 1816448637,
+        "to": 1816448639
+      },
+      {
+        "id": "osm-way:170491194",
+        "from": 1816448639,
+        "to": 12591634412
+      },
+      {
+        "id": "osm-way:170491194",
+        "from": 12591634412,
+        "to": 12591634413
+      },
+      {
+        "id": "osm-way:170491194",
+        "from": 12591634413,
+        "to": 1816448642
+      },
+      {
+        "id": "osm-way:1340372863",
+        "from": 1816448642,
+        "to": 12591634415
+      },
+      {
+        "id": "osm-way:1340372863",
+        "from": 12591634415,
+        "to": 1816448647
+      },
+      {
+        "id": "osm-way:1340372863",
+        "from": 1816448647,
+        "to": 12591634416
+      },
+      {
+        "id": "osm-way:1340372863",
+        "from": 12591634416,
+        "to": 1816448659
+      },
+      {
+        "id": "osm-way:1340372863",
+        "from": 1816448659,
+        "to": 3955343677
+      },
+      {
+        "id": "osm-way:1340372863",
+        "from": 3955343677,
+        "to": 3955343675
+      },
+      {
+        "id": "osm-way:170491195",
+        "from": 3955343675,
+        "to": 12591634487
+      },
+      {
+        "id": "osm-way:170491195",
+        "from": 12591634487,
+        "to": 1816448649
+      },
+      {
+        "id": "osm-way:170491195",
+        "from": 1816448649,
+        "to": 12591634490
+      },
+      {
+        "id": "osm-way:170491195",
+        "from": 12591634490,
+        "to": 12591626999
+      },
+      {
+        "id": "osm-way:170491195",
+        "from": 12591626999,
+        "to": 3955343671
+      },
+      {
+        "id": "osm-way:170491195",
+        "from": 3955343671,
+        "to": 1816448645
+      },
+      {
+        "id": "osm-way:170491195",
+        "from": 1816448645,
+        "to": 12591634404
+      },
+      {
+        "id": "osm-way:170491195",
+        "from": 12591634404,
+        "to": 12591634405
+      },
+      {
+        "id": "osm-way:170491195",
+        "from": 12591634405,
+        "to": 3955343665
+      },
+      {
+        "id": "osm-way:170491195",
+        "from": 3955343665,
+        "to": 1816448635
+      },
+      {
+        "id": "osm-way:170491195",
+        "from": 1816448635,
+        "to": 3955340656
+      },
+      {
+        "id": "osm-way:1344989105",
+        "from": 3955340656,
+        "to": 12591634447
+      },
+      {
+        "id": "osm-way:1344989105",
+        "from": 12591634447,
+        "to": 10982345224
+      },
+      {
+        "id": "osm-way:1344989105",
+        "from": 10982345224,
+        "to": 12431480562
+      },
+      {
+        "id": "osm-way:1343555327",
+        "from": 12431480562,
+        "to": 12398596554
+      },
+      {
+        "id": "osm-way:1340372858",
+        "from": 12398596554,
+        "to": 3955340644
+      },
+      {
+        "id": "osm-way:1340372864",
+        "from": 3955340644,
+        "to": 1816448619
+      },
+      {
+        "id": "osm-way:170496424",
+        "from": 1816448619,
+        "to": 1816519821
+      },
+      {
+        "id": "osm-way:1343555325",
+        "from": 1816519821,
+        "to": 12591634647
+      },
+      {
+        "id": "osm-way:1343555325",
+        "from": 12591634647,
+        "to": 12591634648
+      },
+      {
+        "id": "osm-way:1343555325",
+        "from": 12591634648,
+        "to": 3955340640
+      },
+      {
+        "id": "osm-way:1343555325",
+        "from": 3955340640,
+        "to": 12591634649
+      },
+      {
+        "id": "osm-way:1343555325",
+        "from": 12591634649,
+        "to": 12591634650
+      },
+      {
+        "id": "osm-way:1343555325",
+        "from": 12591634650,
+        "to": 1816519819
+      },
+      {
+        "id": "osm-way:1343555325",
+        "from": 1816519819,
+        "to": 12591634651
+      },
+      {
+        "id": "osm-way:1343555325",
+        "from": 12591634651,
+        "to": 1816519817
+      },
+      {
+        "id": "osm-way:1343555325",
+        "from": 1816519817,
+        "to": 1816519815
+      },
+      {
+        "id": "osm-way:1343555325",
+        "from": 1816519815,
+        "to": 1816519805
+      },
+      {
+        "id": "osm-way:1343555325",
+        "from": 1816519805,
+        "to": 1816519803
+      },
+      {
+        "id": "osm-way:170496425",
+        "from": 1816519803,
+        "to": 1816519801
+      },
+      {
+        "id": "osm-way:170496425",
+        "from": 1816519801,
+        "to": 1816519799
+      },
+      {
+        "id": "osm-way:170496425",
+        "from": 1816519799,
+        "to": 1816519798
+      },
+      {
+        "id": "osm-way:170496425",
+        "from": 1816519798,
+        "to": 1816519797
+      },
+      {
+        "id": "osm-way:170496425",
+        "from": 1816519797,
+        "to": 1816519796
+      },
+      {
+        "id": "osm-way:170496425",
+        "from": 1816519796,
+        "to": 1816519795
+      },
+      {
+        "id": "osm-way:170496425",
+        "from": 1816519795,
+        "to": 1816519794
+      },
+      {
+        "id": "osm-way:170496425",
+        "from": 1816519794,
+        "to": 1816519793
+      },
+      {
+        "id": "osm-way:170496425",
+        "from": 1816519793,
+        "to": 3955340637
+      },
+      {
+        "id": "osm-way:170496425",
+        "from": 3955340637,
+        "to": 1816519792
+      },
+      {
+        "id": "osm-way:170496425",
+        "from": 1816519792,
+        "to": 3955340635
+      },
+      {
+        "id": "osm-way:170496425",
+        "from": 3955340635,
+        "to": 1816519791
+      },
+      {
+        "id": "osm-way:170496425",
+        "from": 1816519791,
+        "to": 1816519790
+      },
+      {
+        "id": "osm-way:170496425",
+        "from": 1816519790,
+        "to": 1816519787
+      },
+      {
+        "id": "osm-way:170496425",
+        "from": 1816519787,
+        "to": 3955340633
+      },
+      {
+        "id": "osm-way:170496425",
+        "from": 3955340633,
+        "to": 1816519786
+      },
+      {
+        "id": "osm-way:170496425",
+        "from": 1816519786,
+        "to": 3955340631
+      },
+      {
+        "id": "osm-way:170496425",
+        "from": 3955340631,
+        "to": 3955340630
+      },
+      {
+        "id": "osm-way:170496425",
+        "from": 3955340630,
+        "to": 1816519785
+      },
+      {
+        "id": "osm-way:170496425",
+        "from": 1816519785,
+        "to": 1816519784
+      },
+      {
+        "id": "osm-way:170496425",
+        "from": 1816519784,
+        "to": 3955340627
+      },
+      {
+        "id": "osm-way:170496425",
+        "from": 3955340627,
+        "to": 1816519775
+      },
+      {
+        "id": "osm-way:170496425",
+        "from": 1816519775,
+        "to": 1816519773
+      },
+      {
+        "id": "osm-way:170496425",
+        "from": 1816519773,
+        "to": 3955340623
+      },
+      {
+        "id": "osm-way:170496425",
+        "from": 3955340623,
+        "to": 1816519771
+      },
+      {
+        "id": "osm-way:170496425",
+        "from": 1816519771,
+        "to": 1816519769
+      },
+      {
+        "id": "osm-way:170496425",
+        "from": 1816519769,
+        "to": 3955340621
+      },
+      {
+        "id": "osm-way:170496425",
+        "from": 3955340621,
+        "to": 1816519767
+      },
+      {
+        "id": "osm-way:170496425",
+        "from": 1816519767,
+        "to": 1816519765
+      },
+      {
+        "id": "osm-way:170496425",
+        "from": 1816519765,
+        "to": 3955340620
+      },
+      {
+        "id": "osm-way:170496425",
+        "from": 3955340620,
+        "to": 1816519763
+      },
+      {
+        "id": "osm-way:170496425",
+        "from": 1816519763,
+        "to": 1816519760
+      },
+      {
+        "id": "osm-way:170496425",
+        "from": 1816519760,
+        "to": 3955340618
+      },
+      {
+        "id": "osm-way:170496425",
+        "from": 3955340618,
+        "to": 1816519758
+      },
+      {
+        "id": "osm-way:170496425",
+        "from": 1816519758,
+        "to": 1816519756
+      },
+      {
+        "id": "osm-way:170496425",
+        "from": 1816519756,
+        "to": 3955340614
+      },
+      {
+        "id": "osm-way:170496425",
+        "from": 3955340614,
+        "to": 1816519754
+      },
+      {
+        "id": "osm-way:170496425",
+        "from": 1816519754,
+        "to": 1816519752
+      },
+      {
+        "id": "osm-way:170496425",
+        "from": 1816519752,
+        "to": 3955340612
+      },
+      {
+        "id": "osm-way:170496425",
+        "from": 3955340612,
+        "to": 1816519751
+      },
+      {
+        "id": "osm-way:1343555324",
+        "from": 1816519751,
+        "to": 1816519750
+      },
+      {
+        "id": "osm-way:1343555324",
+        "from": 1816519750,
+        "to": 3955340610
+      },
+      {
+        "id": "osm-way:1343555324",
+        "from": 3955340610,
+        "to": 1816519749
+      },
+      {
+        "id": "osm-way:170496431",
+        "from": 1816519749,
+        "to": 1816519748
+      },
+      {
+        "id": "osm-way:170496431",
+        "from": 1816519748,
+        "to": 1816519747
+      },
+      {
+        "id": "osm-way:170496431",
+        "from": 1816519747,
+        "to": 1816519746
+      },
+      {
+        "id": "osm-way:170496431",
+        "from": 1816519746,
+        "to": 1816519741
+      },
+      {
+        "id": "osm-way:170496431",
+        "from": 1816519741,
+        "to": 1816519739
+      },
+      {
+        "id": "osm-way:170496429",
+        "from": 1816519739,
+        "to": 1816519736
+      },
+      {
+        "id": "osm-way:170496429",
+        "from": 1816519736,
+        "to": 3955340609
+      },
+      {
+        "id": "osm-way:170496429",
+        "from": 3955340609,
+        "to": 1816519734
+      },
+      {
+        "id": "osm-way:170496429",
+        "from": 1816519734,
+        "to": 1816519732
+      },
+      {
+        "id": "osm-way:170503895",
+        "from": 1816519732,
+        "to": 1816612783
+      },
+      {
+        "id": "osm-way:170503895",
+        "from": 1816612783,
+        "to": 1816612782
+      },
+      {
+        "id": "osm-way:170503895",
+        "from": 1816612782,
+        "to": 1816612780
+      },
+      {
+        "id": "osm-way:170503895",
+        "from": 1816612780,
+        "to": 14076817412
+      },
+      {
+        "id": "osm-way:170503895",
+        "from": 14076817412,
+        "to": 1816612779
+      },
+      {
+        "id": "osm-way:170503900",
+        "from": 1816612779,
+        "to": 1816612777
+      },
+      {
+        "id": "osm-way:170503900",
+        "from": 1816612777,
+        "to": 1816612772
+      },
+      {
+        "id": "osm-way:170503900",
+        "from": 1816612772,
+        "to": 1816612771
+      },
+      {
+        "id": "osm-way:170503900",
+        "from": 1816612771,
+        "to": 1816612769
+      },
+      {
+        "id": "osm-way:170503885",
+        "from": 1816612769,
+        "to": 14076817411
+      },
+      {
+        "id": "osm-way:170503885",
+        "from": 14076817411,
+        "to": 14076817405
+      },
+      {
+        "id": "osm-way:170503885",
+        "from": 14076817405,
+        "to": 14076817407
+      },
+      {
+        "id": "osm-way:170503885",
+        "from": 14076817407,
+        "to": 1816634062
+      },
+      {
+        "id": "osm-way:170503885",
+        "from": 1816634062,
+        "to": 3955340606
+      },
+      {
+        "id": "osm-way:170503885",
+        "from": 3955340606,
+        "to": 14076817409
+      },
+      {
+        "id": "osm-way:170503885",
+        "from": 14076817409,
+        "to": 1816612768
+      },
+      {
+        "id": "osm-way:170503879",
+        "from": 1816612768,
+        "to": 1816612767
+      },
+      {
+        "id": "osm-way:170503877",
+        "from": 1816612767,
+        "to": 1816612766
+      },
+      {
+        "id": "osm-way:170503876",
+        "from": 1816612766,
+        "to": 1816612764
+      },
+      {
+        "id": "osm-way:170503867",
+        "from": 1816612764,
+        "to": 3535818950
+      },
+      {
+        "id": "osm-way:170503867",
+        "from": 3535818950,
+        "to": 3535818948
+      },
+      {
+        "id": "osm-way:170503867",
+        "from": 3535818948,
+        "to": 1816612763
+      },
+      {
+        "id": "osm-way:170503867",
+        "from": 1816612763,
+        "to": 1816612761
+      },
+      {
+        "id": "osm-way:170503867",
+        "from": 1816612761,
+        "to": 1816612760
+      },
+      {
+        "id": "osm-way:170503867",
+        "from": 1816612760,
+        "to": 1816612756
+      },
+      {
+        "id": "osm-way:170503867",
+        "from": 1816612756,
+        "to": 12433077716
+      },
+      {
+        "id": "osm-way:170503867",
+        "from": 12433077716,
+        "to": 12431395902
+      },
+      {
+        "id": "osm-way:170503867",
+        "from": 12431395902,
+        "to": 12433077718
+      },
+      {
+        "id": "osm-way:170503867",
+        "from": 12433077718,
+        "to": 1816612754
+      },
+      {
+        "id": "osm-way:170503867",
+        "from": 1816612754,
+        "to": 1816612750
+      },
+      {
+        "id": "osm-way:170503867",
+        "from": 1816612750,
+        "to": 3955340598
+      },
+      {
+        "id": "osm-way:170503867",
+        "from": 3955340598,
+        "to": 1816612749
+      },
+      {
+        "id": "osm-way:170503867",
+        "from": 1816612749,
+        "to": 12399665895
+      },
+      {
+        "id": "osm-way:170503867",
+        "from": 12399665895,
+        "to": 12399665896
+      },
+      {
+        "id": "osm-way:170503867",
+        "from": 12399665896,
+        "to": 12399665897
+      },
+      {
+        "id": "osm-way:170503867",
+        "from": 12399665897,
+        "to": 12399665898
+      },
+      {
+        "id": "osm-way:170503867",
+        "from": 12399665898,
+        "to": 12399665899
+      },
+      {
+        "id": "osm-way:170503867",
+        "from": 12399665899,
+        "to": 1816612747
+      },
+      {
+        "id": "osm-way:170503867",
+        "from": 1816612747,
+        "to": 12399665900
+      },
+      {
+        "id": "osm-way:170503867",
+        "from": 12399665900,
+        "to": 12399833701
+      },
+      {
+        "id": "osm-way:170503867",
+        "from": 12399833701,
+        "to": 12399833702
+      },
+      {
+        "id": "osm-way:170503867",
+        "from": 12399833702,
+        "to": 12399833703
+      },
+      {
+        "id": "osm-way:170503867",
+        "from": 12399833703,
+        "to": 1816612742
+      },
+      {
+        "id": "osm-way:170503867",
+        "from": 1816612742,
+        "to": 12399833704
+      },
+      {
+        "id": "osm-way:170503867",
+        "from": 12399833704,
+        "to": 12399833705
+      },
+      {
+        "id": "osm-way:170503867",
+        "from": 12399833705,
+        "to": 12399833706
+      },
+      {
+        "id": "osm-way:170503867",
+        "from": 12399833706,
+        "to": 12399665894
+      },
+      {
+        "id": "osm-way:170503867",
+        "from": 12399665894,
+        "to": 12399833707
+      },
+      {
+        "id": "osm-way:170503867",
+        "from": 12399833707,
+        "to": 1816612741
+      },
+      {
+        "id": "osm-way:170503894",
+        "from": 1816612741,
+        "to": 1816612740
+      },
+      {
+        "id": "osm-way:170503894",
+        "from": 1816612740,
+        "to": 12591615160
+      },
+      {
+        "id": "osm-way:170503894",
+        "from": 12591615160,
+        "to": 1816612739
+      },
+      {
+        "id": "osm-way:170503894",
+        "from": 1816612739,
+        "to": 12591615158
+      },
+      {
+        "id": "osm-way:170503894",
+        "from": 12591615158,
+        "to": 3538163835
+      },
+      {
+        "id": "osm-way:170503894",
+        "from": 3538163835,
+        "to": 12591615156
+      },
+      {
+        "id": "osm-way:170503894",
+        "from": 12591615156,
+        "to": 1816612738
+      },
+      {
+        "id": "osm-way:170503886",
+        "from": 1816612738,
+        "to": 12591615127
+      },
+      {
+        "id": "osm-way:170503886",
+        "from": 12591615127,
+        "to": 12591615124
+      },
+      {
+        "id": "osm-way:170503886",
+        "from": 12591615124,
+        "to": 1816612737
+      },
+      {
+        "id": "osm-way:170503886",
+        "from": 1816612737,
+        "to": 12591615123
+      },
+      {
+        "id": "osm-way:170503886",
+        "from": 12591615123,
+        "to": 1816612736
+      },
+      {
+        "id": "osm-way:1340499976",
+        "from": 1816612736,
+        "to": 12591615122
+      },
+      {
+        "id": "osm-way:1340499976",
+        "from": 12591615122,
+        "to": 1816612735
+      },
+      {
+        "id": "osm-way:1340499976",
+        "from": 1816612735,
+        "to": 12591615121
+      },
+      {
+        "id": "osm-way:1340499976",
+        "from": 12591615121,
+        "to": 12591615120
+      },
+      {
+        "id": "osm-way:1340499976",
+        "from": 12591615120,
+        "to": 12591615119
+      },
+      {
+        "id": "osm-way:1340499976",
+        "from": 12591615119,
+        "to": 3950020010
+      },
+      {
+        "id": "osm-way:1340499979",
+        "from": 3950020010,
+        "to": 1816612733
+      },
+      {
+        "id": "osm-way:1340499979",
+        "from": 1816612733,
+        "to": 12591615153
+      },
+      {
+        "id": "osm-way:1340499979",
+        "from": 12591615153,
+        "to": 10982345225
+      },
+      {
+        "id": "osm-way:1340499979",
+        "from": 10982345225,
+        "to": 12591615115
+      },
+      {
+        "id": "osm-way:1340499979",
+        "from": 12591615115,
+        "to": 3950020007
+      },
+      {
+        "id": "osm-way:170503891",
+        "from": 3950020007,
+        "to": 1816612729
+      },
+      {
+        "id": "osm-way:170503891",
+        "from": 1816612729,
+        "to": 12591615109
+      },
+      {
+        "id": "osm-way:170503891",
+        "from": 12591615109,
+        "to": 12591615111
+      },
+      {
+        "id": "osm-way:170503891",
+        "from": 12591615111,
+        "to": 1816612727
+      },
+      {
+        "id": "osm-way:170503891",
+        "from": 1816612727,
+        "to": 3950020005
+      },
+      {
+        "id": "osm-way:170503891",
+        "from": 3950020005,
+        "to": 1816612726
+      },
+      {
+        "id": "osm-way:170503891",
+        "from": 1816612726,
+        "to": 1816612725
+      },
+      {
+        "id": "osm-way:170503891",
+        "from": 1816612725,
+        "to": 1816612723
+      },
+      {
+        "id": "osm-way:170503891",
+        "from": 1816612723,
+        "to": 1816612721
+      },
+      {
+        "id": "osm-way:170503891",
+        "from": 1816612721,
+        "to": 1816612720
+      },
+      {
+        "id": "osm-way:170503891",
+        "from": 1816612720,
+        "to": 1816612714
+      },
+      {
+        "id": "osm-way:170503891",
+        "from": 1816612714,
+        "to": 3953149563
+      },
+      {
+        "id": "osm-way:170503891",
+        "from": 3953149563,
+        "to": 1816612713
+      },
+      {
+        "id": "osm-way:170503891",
+        "from": 1816612713,
+        "to": 1816612712
+      },
+      {
+        "id": "osm-way:170503891",
+        "from": 1816612712,
+        "to": 1816612711
+      },
+      {
+        "id": "osm-way:170503891",
+        "from": 1816612711,
+        "to": 1816612710
+      },
+      {
+        "id": "osm-way:170503891",
+        "from": 1816612710,
+        "to": 1816612709
+      },
+      {
+        "id": "osm-way:170503891",
+        "from": 1816612709,
+        "to": 1816612708
+      },
+      {
+        "id": "osm-way:170503891",
+        "from": 1816612708,
+        "to": 3953149560
+      },
+      {
+        "id": "osm-way:170503891",
+        "from": 3953149560,
+        "to": 1816612707
+      },
+      {
+        "id": "osm-way:170503891",
+        "from": 1816612707,
+        "to": 3953149559
+      },
+      {
+        "id": "osm-way:170503891",
+        "from": 3953149559,
+        "to": 1816612706
+      },
+      {
+        "id": "osm-way:170503891",
+        "from": 1816612706,
+        "to": 1816612705
+      },
+      {
+        "id": "osm-way:170503891",
+        "from": 1816612705,
+        "to": 1816612704
+      },
+      {
+        "id": "osm-way:170503891",
+        "from": 1816612704,
+        "to": 1816612703
+      },
+      {
+        "id": "osm-way:170503891",
+        "from": 1816612703,
+        "to": 1816612701
+      },
+      {
+        "id": "osm-way:170503891",
+        "from": 1816612701,
+        "to": 1816612700
+      },
+      {
+        "id": "osm-way:170503891",
+        "from": 1816612700,
+        "to": 1816612698
+      },
+      {
+        "id": "osm-way:170503891",
+        "from": 1816612698,
+        "to": 1816612697
+      },
+      {
+        "id": "osm-way:170503891",
+        "from": 1816612697,
+        "to": 1816612695
+      },
+      {
+        "id": "osm-way:170503891",
+        "from": 1816612695,
+        "to": 1816612694
+      },
+      {
+        "id": "osm-way:170503891",
+        "from": 1816612694,
+        "to": 1816612692
+      },
+      {
+        "id": "osm-way:170503891",
+        "from": 1816612692,
+        "to": 1816612691
+      },
+      {
+        "id": "osm-way:170503891",
+        "from": 1816612691,
+        "to": 1816612684
+      },
+      {
+        "id": "osm-way:170503891",
+        "from": 1816612684,
+        "to": 1816612683
+      },
+      {
+        "id": "osm-way:170503891",
+        "from": 1816612683,
+        "to": 1816612682
+      },
+      {
+        "id": "osm-way:170503884",
+        "from": 1816612682,
+        "to": 1816612681
+      },
+      {
+        "id": "osm-way:1340484109",
+        "from": 1816612681,
+        "to": 12399665827
+      },
+      {
+        "id": "osm-way:1340484107",
+        "from": 12399665827,
+        "to": 12399665828
+      },
+      {
+        "id": "osm-way:170504709",
+        "from": 12399665828,
+        "to": 49492955
+      },
+      {
+        "id": "osm-way:1340484124",
+        "from": 49492955,
+        "to": 49492950
+      },
+      {
+        "id": "osm-way:1340484124",
+        "from": 49492950,
+        "to": 49492947
+      },
+      {
+        "id": "osm-way:1340484124",
+        "from": 49492947,
+        "to": 49492944
+      },
+      {
+        "id": "osm-way:1340484124",
+        "from": 49492944,
+        "to": 49492942
+      },
+      {
+        "id": "osm-way:1340484124",
+        "from": 49492942,
+        "to": 12399665831
+      },
+      {
+        "id": "osm-way:1340484113",
+        "from": 12399665831,
+        "to": 12399665835
+      },
+      {
+        "id": "osm-way:293880631",
+        "from": 12399665835,
+        "to": 49492936
+      },
+      {
+        "id": "osm-way:293880631",
+        "from": 49492936,
+        "to": 49492933
+      },
+      {
+        "id": "osm-way:293880631",
+        "from": 49492933,
+        "to": 2840115685
+      },
+      {
+        "id": "osm-way:293880631",
+        "from": 2840115685,
+        "to": 2837216252
+      },
+      {
+        "id": "osm-way:293880631",
+        "from": 2837216252,
+        "to": 2837216251
+      },
+      {
+        "id": "osm-way:293880631",
+        "from": 2837216251,
+        "to": 7900283020
+      },
+      {
+        "id": "osm-way:1340484132",
+        "from": 7900283020,
+        "to": 1550420146
+      },
+      {
+        "id": "osm-way:846725291",
+        "from": 1550420146,
+        "to": 2837255265
+      },
+      {
+        "id": "osm-way:846725291",
+        "from": 2837255265,
+        "to": 1550420144
+      },
+      {
+        "id": "osm-way:846725291",
+        "from": 1550420144,
+        "to": 2840115625
+      },
+      {
+        "id": "osm-way:846725291",
+        "from": 2840115625,
+        "to": 12441660457
+      },
+      {
+        "id": "osm-way:846725291",
+        "from": 12441660457,
+        "to": 2840115620
+      },
+      {
+        "id": "osm-way:1340484133",
+        "from": 2840115620,
+        "to": 1550420142
+      },
+      {
+        "id": "osm-way:1340484133",
+        "from": 1550420142,
+        "to": 6043925660
+      },
+      {
+        "id": "osm-way:1340484133",
+        "from": 6043925660,
+        "to": "end"
+      }
+    ],
+    "osmStationNumber": "8501607",
+    "identityEvidence": {
+      "recordNumber": 8501607,
+      "comment": "Fahrplan unter 8301003 (Ausland)",
+      "editionDate": "2024-09-19T15:24:12+00:00"
+    },
+    "reviewedCrossoverWayId": 643956810
+  },
+  "rules": [
+    {
+      "id": "2026-04-03-ic1303-simplon",
+      "date": "2026-04-03",
+      "sourceTripId": ".ojp-91-29-Y.1.TA.91.j26",
+      "routeId": "91-29-Y-j26-1",
+      "agencyId": "11",
+      "mode": "rail",
+      "line": "IC",
+      "directionId": "0",
+      "shortName": "1303",
+      "segmentIndex": 6,
+      "calls": [
+        [
+          "ch:1:sloid:3000:7:13",
+          27480,
+          27480,
+          "0",
+          "0"
+        ],
+        [
+          "ch:1:sloid:2119:3:3",
+          28620,
+          28680,
+          "0",
+          "0"
+        ],
+        [
+          "ch:1:sloid:7100:2:2",
+          31740,
+          31800,
+          "0",
+          "0"
+        ],
+        [
+          "ch:1:sloid:7483:0:954324",
+          32340,
+          32400,
+          "0",
+          "0"
+        ],
+        [
+          "ch:1:sloid:7478:0:259646",
+          33120,
+          33180,
+          "0",
+          "0"
+        ],
+        [
+          "ch:1:sloid:1605:4:7",
+          34140,
+          34200,
+          "0",
+          "0"
+        ],
+        [
+          "ch:1:sloid:1609:3:6",
+          34680,
+          34740,
+          "0",
+          "0"
+        ],
+        [
+          "8301003",
+          36540,
+          36540,
+          "0",
+          "0"
+        ]
+      ],
+      "stops": [
+        [
+          8.53660031,
+          47.37907039,
+          "Zürich HB",
+          "13",
+          "ch:1:sloid:3000:7:13"
+        ],
+        [
+          8.16953072,
+          47.39171521,
+          "Lenzburg",
+          "3",
+          "ch:1:sloid:2119:3:3"
+        ],
+        [
+          7.63022714,
+          46.75419299,
+          "Thun",
+          "2",
+          "ch:1:sloid:7100:2:2"
+        ],
+        [
+          7.6796255,
+          46.68651121,
+          "Spiez",
+          "3",
+          "ch:1:sloid:7483:0:954324"
+        ],
+        [
+          7.65153518,
+          46.58858297,
+          "Frutigen",
+          "2",
+          "ch:1:sloid:7478:0:259646"
+        ],
+        [
+          7.88230339,
+          46.29421258,
+          "Visp",
+          "7",
+          "ch:1:sloid:1605:4:7"
+        ],
+        [
+          7.98911308,
+          46.31977928,
+          "Brig",
+          "6",
+          "ch:1:sloid:1609:3:6"
+        ],
+        [
+          8.29623809,
+          46.11529118,
+          "Domodossola (I)",
+          "",
+          "8301003"
+        ]
+      ]
+    },
+    {
+      "id": "2026-08-01-ic1303-simplon",
+      "date": "2026-08-01",
+      "sourceTripId": ".ojp-91-29-Y.1.TA.77.j26",
+      "routeId": "91-29-Y-j26-1",
+      "agencyId": "11",
+      "mode": "rail",
+      "line": "IC",
+      "directionId": "0",
+      "shortName": "1303",
+      "segmentIndex": 6,
+      "calls": [
+        [
+          "ch:1:sloid:3000:10:18",
+          26160,
+          26160,
+          "0",
+          "0"
+        ],
+        [
+          "ch:1:sloid:2119:3:3",
+          27480,
+          27540,
+          "0",
+          "0"
+        ],
+        [
+          "ch:1:sloid:7100:2:2",
+          31740,
+          31800,
+          "0",
+          "0"
+        ],
+        [
+          "ch:1:sloid:7483:0:954324",
+          32340,
+          32400,
+          "0",
+          "0"
+        ],
+        [
+          "ch:1:sloid:7478:0:259646",
+          33120,
+          33180,
+          "0",
+          "0"
+        ],
+        [
+          "ch:1:sloid:1605:4:7",
+          34140,
+          34200,
+          "0",
+          "0"
+        ],
+        [
+          "ch:1:sloid:1609:3:6",
+          34680,
+          34740,
+          "0",
+          "0"
+        ],
+        [
+          "8301003",
+          36960,
+          36960,
+          "0",
+          "0"
+        ]
+      ],
+      "stops": [
+        [
+          8.53683388,
+          47.37941712,
+          "Zürich HB",
+          "18",
+          "ch:1:sloid:3000:10:18"
+        ],
+        [
+          8.16953072,
+          47.39171521,
+          "Lenzburg",
+          "3",
+          "ch:1:sloid:2119:3:3"
+        ],
+        [
+          7.63022714,
+          46.75419299,
+          "Thun",
+          "2",
+          "ch:1:sloid:7100:2:2"
+        ],
+        [
+          7.6796255,
+          46.68651121,
+          "Spiez",
+          "3",
+          "ch:1:sloid:7483:0:954324"
+        ],
+        [
+          7.65153518,
+          46.58858297,
+          "Frutigen",
+          "2",
+          "ch:1:sloid:7478:0:259646"
+        ],
+        [
+          7.88230339,
+          46.29421258,
+          "Visp",
+          "7",
+          "ch:1:sloid:1605:4:7"
+        ],
+        [
+          7.98911308,
+          46.31977928,
+          "Brig",
+          "6",
+          "ch:1:sloid:1609:3:6"
+        ],
+        [
+          8.29623809,
+          46.11529118,
+          "Domodossola (I)",
+          "",
+          "8301003"
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,337 @@
+{
+  "schemaVersion": 1,
+  "checkedOn": "2026-09-08",
+  "source": {
+    "timetableField": "50.344",
+    "sourceDate": "2025-11-07",
+    "page": 1,
+    "courses": [
+      "34403",
+      "34405",
+      "34409"
+    ]
+  },
+  "files": {
+    "fixtures/aargau/2026-09-04/audit.json": "daa9d08e47da73400166ff9159d3fced8edf13998956ea9682ed39ac2cfa7727",
+    "fixtures/aargau/2026-09-04/aargau-region-day-manifest.json": "54f90c5ba7a1a0b6e7df150e2e5f7ea286928ce629d9cdf88aa43e252001b26d",
+    "data/aargau/2026-09-04-timetable.json.gz": "5b19b53e396d6b21686cd6e3c4dc438eefbfc503e69fa2c71b1454982ca2a952",
+    "data/aargau-road-cache.json": "2a3424668d719989390175a1c50b3338dfc060b6a7ffbf83257310e7bc13a47d",
+    "data/aargau-alignment-sources/50.344-2026.pdf": "a8ca877a25e384b2200489e56367d39849ea3937444ee9d60b4d069cae75165a",
+    "data/aargau-alignment-sources/freiamt-2026.pdf": "7d974878e647d7758e88677e36860f04e464bb1a71b9f7a84ff7c9e1ec91a3f0"
+  },
+  "rows": [
+    {
+      "date": "2026-09-04",
+      "patternId": "4f68b304264b654efa3c",
+      "routeId": "96-173-3-j26-1",
+      "agencyId": "801",
+      "directionId": "0",
+      "stops": [
+        [
+          8.33977045,
+          47.27634598,
+          "Muri AG, Bahnhof",
+          "",
+          "ch:1:sloid:72744:0:370379"
+        ],
+        [
+          8.34121674,
+          47.27387755,
+          "Muri AG, Kreisel",
+          "",
+          "ch:1:sloid:81669:0:74473"
+        ],
+        [
+          8.34303134,
+          47.27112253,
+          "Muri AG, Luzernstrasse",
+          "",
+          "ch:1:sloid:81563:0:574244"
+        ],
+        [
+          8.34685816,
+          47.26771513,
+          "Muri AG, Dorf",
+          "",
+          "ch:1:sloid:83685:0:794477"
+        ],
+        [
+          8.34965192,
+          47.26483786,
+          "Muri AG, Industriestrasse",
+          "",
+          "ch:1:sloid:82256:0:103543"
+        ],
+        [
+          8.35259839,
+          47.26167391,
+          "Muri AG, Industriegebiet",
+          "",
+          "ch:1:sloid:72635:0:764900"
+        ],
+        [
+          8.34622036,
+          47.2315246,
+          "Beinwil (Freiamt), Unterdorf",
+          "",
+          "ch:1:sloid:72637:0:801787"
+        ],
+        [
+          8.34289659,
+          47.22942009,
+          "Beinwil (Freiamt), Dorf",
+          "",
+          "ch:1:sloid:2877:0:975111"
+        ]
+      ],
+      "segmentIndex": 5,
+      "journeys": [
+        {
+          "sourceTripId": ".ojp-96-173-3.1.TA.2.j26",
+          "course": "34405",
+          "calls": [
+            [
+              "ch:1:sloid:72744:0:370379",
+              23400,
+              23400,
+              "0",
+              "0"
+            ],
+            [
+              "ch:1:sloid:81669:0:74473",
+              23400,
+              23400,
+              "0",
+              "0"
+            ],
+            [
+              "ch:1:sloid:81563:0:574244",
+              23400,
+              23400,
+              "0",
+              "0"
+            ],
+            [
+              "ch:1:sloid:83685:0:794477",
+              23460,
+              23460,
+              "0",
+              "0"
+            ],
+            [
+              "ch:1:sloid:82256:0:103543",
+              23460,
+              23460,
+              "0",
+              "0"
+            ],
+            [
+              "ch:1:sloid:72635:0:764900",
+              23520,
+              23520,
+              "0",
+              "0"
+            ],
+            [
+              "ch:1:sloid:72637:0:801787",
+              23820,
+              23820,
+              "0",
+              "0"
+            ],
+            [
+              "ch:1:sloid:2877:0:975111",
+              23880,
+              23880,
+              "0",
+              "0"
+            ]
+          ],
+          "seconds": 300,
+          "agisImpliedKph": 83.69780799994835,
+          "osmImpliedKph": 44.77072443269886
+        },
+        {
+          "sourceTripId": ".ojp-96-173-3.1.TA.3.j26",
+          "course": "34403",
+          "calls": [
+            [
+              "ch:1:sloid:72744:0:370379",
+              21600,
+              21600,
+              "0",
+              "0"
+            ],
+            [
+              "ch:1:sloid:81669:0:74473",
+              21600,
+              21600,
+              "0",
+              "0"
+            ],
+            [
+              "ch:1:sloid:81563:0:574244",
+              21600,
+              21600,
+              "0",
+              "0"
+            ],
+            [
+              "ch:1:sloid:83685:0:794477",
+              21660,
+              21660,
+              "0",
+              "0"
+            ],
+            [
+              "ch:1:sloid:82256:0:103543",
+              21660,
+              21660,
+              "0",
+              "0"
+            ],
+            [
+              "ch:1:sloid:72635:0:764900",
+              21720,
+              21720,
+              "0",
+              "0"
+            ],
+            [
+              "ch:1:sloid:72637:0:801787",
+              22020,
+              22020,
+              "0",
+              "0"
+            ],
+            [
+              "ch:1:sloid:2877:0:975111",
+              22080,
+              22080,
+              "0",
+              "0"
+            ]
+          ],
+          "seconds": 300,
+          "agisImpliedKph": 83.69780799994835,
+          "osmImpliedKph": 44.77072443269886
+        }
+      ],
+      "agis": {
+        "featureId": 157,
+        "metres": 6974.817333329029,
+        "pathSha256": "cd980c5ce3f40af16e696af8143a2d12c3b8641304699d8283b33e535d9987ee"
+      },
+      "osm": {
+        "metres": 3730.893702724905,
+        "pathSha256": "ec5b91d51df93f2e0577b153978bda95fe5b37f4be3656bbda9ede65853ecee3"
+      },
+      "decision": "unresolved-retain-original",
+      "reason": "The official annual timetable matches the exact early course numbers and calls. The sparse-stop interval is compatible with different road itineraries; elapsed time and a schematic map alone do not certify the road choice. No source path is replaced."
+    },
+    {
+      "date": "2026-09-04",
+      "patternId": "e4a289f9cee3b5733926",
+      "routeId": "96-173-3-j26-1",
+      "agencyId": "801",
+      "directionId": "0",
+      "stops": [
+        [
+          8.3639531,
+          47.24791859,
+          "Benzenschwil, Bahnhof",
+          "",
+          "ch:1:sloid:72636:0:530754"
+        ],
+        [
+          8.34622036,
+          47.2315246,
+          "Beinwil (Freiamt), Unterdorf",
+          "",
+          "ch:1:sloid:72637:0:801787"
+        ],
+        [
+          8.34289659,
+          47.22942009,
+          "Beinwil (Freiamt), Dorf",
+          "",
+          "ch:1:sloid:2877:0:975111"
+        ],
+        [
+          8.34090233,
+          47.23234198,
+          "Beinwil (Freiamt), Ab.Winters.",
+          "",
+          "ch:1:sloid:72638:0:532223"
+        ],
+        [
+          8.32974525,
+          47.23252497,
+          "Brunnwil, Weiler",
+          "",
+          "ch:1:sloid:2569:0:401775"
+        ]
+      ],
+      "segmentIndex": 0,
+      "journeys": [
+        {
+          "sourceTripId": ".ojp-96-173-3.1.TA.1.j26",
+          "course": "34409",
+          "calls": [
+            [
+              "ch:1:sloid:72636:0:530754",
+              24480,
+              24480,
+              "0",
+              "0"
+            ],
+            [
+              "ch:1:sloid:72637:0:801787",
+              24720,
+              24720,
+              "0",
+              "0"
+            ],
+            [
+              "ch:1:sloid:2877:0:975111",
+              24780,
+              24780,
+              "0",
+              "0"
+            ],
+            [
+              "ch:1:sloid:72638:0:532223",
+              24840,
+              24840,
+              "0",
+              "0"
+            ],
+            [
+              "ch:1:sloid:2569:0:401775",
+              25200,
+              25200,
+              "0",
+              "0"
+            ]
+          ],
+          "seconds": 240,
+          "agisImpliedKph": 68.7454517124302,
+          "osmImpliedKph": 37.53477730053484
+        }
+      ],
+      "agis": {
+        "featureId": 157,
+        "metres": 4583.030114162013,
+        "pathSha256": "485d96315b10bad42334220a04b1a828ac392b9b230476d62c5714fb25f16396"
+      },
+      "osm": {
+        "metres": 2502.318486702323,
+        "pathSha256": "cb96b67c7c8f0c8aa2ed9040ca2c8759e1edf1d73efc773e5207e56019e150d5"
+      },
+      "decision": "unresolved-retain-original",
+      "reason": "The official annual timetable matches the exact early course numbers and calls. The sparse-stop interval is compatible with different road itineraries; elapsed time and a schematic map alone do not certify the road choice. No source path is replaced."
+    }
+  ],
+  "correctedOccurrences": 0,
+  "requiredEvidence": "A dated operator road itinerary for courses 34403/34405 and 34409, or an equivalent route-specific source that distinguishes the direct corridor from the Wallenschwil/Rüstenschwil branch."
+}

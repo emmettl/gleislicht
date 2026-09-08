@@ -12,6 +12,7 @@
     "data/aargau-platform-policy.json": "25b2bf41419ee205b02e2813fcff1271c9513f94605600f4faa7c0fc280cc54e",
     "data/aargau-seasonal-roads/source.json": "3ba82647b5bd620c94f082708d05204fee4a5f1e9ec540987267a596f4978e05",
     "data/aargau-seasonal-gap-policy.json": "e138ec216c2c4119941c675ed92660842df52a35b8bb9ab6f5d0db33581b9539",
+    "data/aargau-simplon-policy.json": "11ef73dd48c490bf1be4e5bbb3c5b62522b8665077cf6c2d6e117a83d7232699",
     "fixtures/aargau/2026-09-04/audit.json": "daa9d08e47da73400166ff9159d3fced8edf13998956ea9682ed39ac2cfa7727",
     "fixtures/aargau/2026-09-04/aargau-region-day-manifest.json": "54f90c5ba7a1a0b6e7df150e2e5f7ea286928ce629d9cdf88aa43e252001b26d",
     "fixtures/aargau/2026-09-06/audit.json": "19fdf2b592460e2894a3dcff13200a8f6e030b39905132fc1e2d500f1f36ab0e",
@@ -3496,6 +3497,11 @@
         "allPriorPathsPreserved": true,
         "preservedOccurrences": 173393,
         "addedOccurrences": 74
+      },
+      "simplonExtensionRegression": {
+        "allPriorPathsPreserved": true,
+        "preservedOccurrences": 173467,
+        "addedOccurrences": 0
       },
       "scopedGapOccurrences": {
         "bern-platform-49": 1,
@@ -7138,6 +7144,11 @@
         "preservedOccurrences": 120417,
         "addedOccurrences": 37
       },
+      "simplonExtensionRegression": {
+        "allPriorPathsPreserved": true,
+        "preservedOccurrences": 120454,
+        "addedOccurrences": 0
+      },
       "scopedGapOccurrences": {
         "bern-platform-49": 1,
         "waldshut": 36
@@ -7160,20 +7171,20 @@
       "date": "2026-04-03",
       "trips": 7615,
       "total": 121249,
-      "matched": 121248,
+      "matched": 121249,
       "officialMatched": 108432,
       "roadMatched": 9140,
-      "railMatched": 3676,
+      "railMatched": 3677,
       "cantonAdjacentTotal": 98143,
       "cantonAdjacentMatched": 98143,
-      "coverage": 0.9999917525092991,
+      "coverage": 1,
       "directedPatterns": 1029,
-      "fullyMatchedPatterns": 1028,
+      "fullyMatchedPatterns": 1029,
       "newPatterns": 211,
       "directedPairs": 7052,
-      "fullyMatchedPairs": 7051,
-      "unresolvedPatterns": 1,
-      "missingOccurrences": 1,
+      "fullyMatchedPairs": 7052,
+      "unresolvedPatterns": 0,
+      "missingOccurrences": 0,
       "routes": [
         {
           "routeId": "91-11-A-j26-1",
@@ -7559,16 +7570,16 @@
           "line": "IC",
           "mode": "rail",
           "trips": 1,
-          "matched": 6,
+          "matched": 7,
           "officialMatched": 0,
           "roadMatched": 0,
-          "railMatched": 6,
+          "railMatched": 7,
           "total": 7,
           "cantonAdjacentMatched": 2,
           "cantonAdjacentTotal": 2,
           "requestStopTrips": 0,
           "frequencyTrips": 0,
-          "coverage": 0.8571428571428571,
+          "coverage": 1,
           "cantonAdjacentCoverage": 1
         },
         {
@@ -10421,16 +10432,16 @@
           "agencyId": "11",
           "mode": "rail",
           "trips": 1262,
-          "matched": 14372,
+          "matched": 14373,
           "officialMatched": 11054,
           "roadMatched": 0,
-          "railMatched": 3318,
+          "railMatched": 3319,
           "total": 14373,
           "cantonAdjacentMatched": 7703,
           "cantonAdjacentTotal": 7703,
           "requestStopTrips": 0,
           "frequencyTrips": 0,
-          "coverage": 0.999930425102623,
+          "coverage": 1,
           "cantonAdjacentCoverage": 1
         },
         {
@@ -10724,6 +10735,11 @@
         "preservedOccurrences": 121189,
         "addedOccurrences": 59
       },
+      "simplonExtensionRegression": {
+        "allPriorPathsPreserved": true,
+        "preservedOccurrences": 121248,
+        "addedOccurrences": 1
+      },
       "scopedGapOccurrences": {
         "bern-platform-49": 1,
         "waldshut": 36,
@@ -10741,7 +10757,7 @@
       "scope": "Geometry compatibility against pinned sources with separate exact seasonal gap rules. Temporal alignment validity and release admission are not established.",
       "timeNote": null,
       "patternsFile": "2026-04-03-patterns.json.gz",
-      "patternsSha256": "8cf81039d6cc10f2da9a0092d07104a9ea337bb9e4f2342cc90bc2806b9c3a0e"
+      "patternsSha256": "d44e201dbfa7aa2007198be74a634f2683721a0af58378118dc11abb1bd6b514"
     },
     {
       "date": "2026-04-05",
@@ -14347,6 +14363,11 @@
         "preservedOccurrences": 121379,
         "addedOccurrences": 37
       },
+      "simplonExtensionRegression": {
+        "allPriorPathsPreserved": true,
+        "preservedOccurrences": 121416,
+        "addedOccurrences": 0
+      },
       "scopedGapOccurrences": {
         "bern-platform-49": 1,
         "waldshut": 36
@@ -17892,6 +17913,11 @@
         "allPriorPathsPreserved": true,
         "preservedOccurrences": 171566,
         "addedOccurrences": 79
+      },
+      "simplonExtensionRegression": {
+        "allPriorPathsPreserved": true,
+        "preservedOccurrences": 171645,
+        "addedOccurrences": 0
       },
       "scopedGapOccurrences": {
         "bern-platform-49": 1,
@@ -21731,6 +21757,11 @@
         "preservedOccurrences": 119330,
         "addedOccurrences": 46
       },
+      "simplonExtensionRegression": {
+        "allPriorPathsPreserved": true,
+        "preservedOccurrences": 119376,
+        "addedOccurrences": 0
+      },
       "scopedGapOccurrences": {
         "bern-platform-49": 1,
         "seasonal-rail": 9,
@@ -21754,20 +21785,20 @@
       "date": "2026-08-01",
       "trips": 7764,
       "total": 121267,
-      "matched": 121266,
+      "matched": 121267,
       "officialMatched": 107046,
       "roadMatched": 10470,
-      "railMatched": 3750,
+      "railMatched": 3751,
       "cantonAdjacentTotal": 97724,
       "cantonAdjacentMatched": 97724,
-      "coverage": 0.9999917537334971,
+      "coverage": 1,
       "directedPatterns": 1059,
-      "fullyMatchedPatterns": 1058,
+      "fullyMatchedPatterns": 1059,
       "newPatterns": 296,
       "directedPairs": 7323,
-      "fullyMatchedPairs": 7322,
-      "unresolvedPatterns": 1,
-      "missingOccurrences": 1,
+      "fullyMatchedPairs": 7323,
+      "unresolvedPatterns": 0,
+      "missingOccurrences": 0,
       "routes": [
         {
           "routeId": "91-11-A-j26-1",
@@ -22171,16 +22202,16 @@
           "line": "IC",
           "mode": "rail",
           "trips": 1,
-          "matched": 6,
+          "matched": 7,
           "officialMatched": 0,
           "roadMatched": 0,
-          "railMatched": 6,
+          "railMatched": 7,
           "total": 7,
           "cantonAdjacentMatched": 2,
           "cantonAdjacentTotal": 2,
           "requestStopTrips": 0,
           "frequencyTrips": 0,
-          "coverage": 0.8571428571428571,
+          "coverage": 1,
           "cantonAdjacentCoverage": 1
         },
         {
@@ -25141,16 +25172,16 @@
           "agencyId": "11",
           "mode": "rail",
           "trips": 1291,
-          "matched": 13848,
+          "matched": 13849,
           "officialMatched": 10457,
           "roadMatched": 0,
-          "railMatched": 3391,
+          "railMatched": 3392,
           "total": 13849,
           "cantonAdjacentMatched": 7124,
           "cantonAdjacentTotal": 7124,
           "requestStopTrips": 0,
           "frequencyTrips": 0,
-          "coverage": 0.9999277926204058,
+          "coverage": 1,
           "cantonAdjacentCoverage": 1
         },
         {
@@ -25476,6 +25507,11 @@
         "preservedOccurrences": 121230,
         "addedOccurrences": 36
       },
+      "simplonExtensionRegression": {
+        "allPriorPathsPreserved": true,
+        "preservedOccurrences": 121266,
+        "addedOccurrences": 1
+      },
       "scopedGapOccurrences": {
         "waldshut": 36
       },
@@ -25491,7 +25527,7 @@
       "scope": "Geometry compatibility against pinned sources with separate exact seasonal gap rules. Temporal alignment validity and release admission are not established.",
       "timeNote": null,
       "patternsFile": "2026-08-01-patterns.json.gz",
-      "patternsSha256": "25695e5c1bbb239f1007b49764fcde9df7f0feab2b523f066d8cfb80a7635b52"
+      "patternsSha256": "3f0a8956672a6e597ab7cf812bb844b418a651db20d9c5e5beed4a542afc6c9b"
     },
     {
       "date": "2026-09-04",
@@ -29069,6 +29105,11 @@
         "addedOccurrences": 0
       },
       "gapExtensionRegression": {
+        "allPriorPathsPreserved": true,
+        "preservedOccurrences": 173106,
+        "addedOccurrences": 0
+      },
+      "simplonExtensionRegression": {
         "allPriorPathsPreserved": true,
         "preservedOccurrences": 173106,
         "addedOccurrences": 0
@@ -32886,6 +32927,11 @@
         "preservedOccurrences": 121473,
         "addedOccurrences": 0
       },
+      "simplonExtensionRegression": {
+        "allPriorPathsPreserved": true,
+        "preservedOccurrences": 121473,
+        "addedOccurrences": 0
+      },
       "scopedGapOccurrences": {},
       "validation": {
         "completeSourceStopChains": true,
@@ -36412,6 +36458,11 @@
         "allPriorPathsPreserved": true,
         "preservedOccurrences": 173250,
         "addedOccurrences": 73
+      },
+      "simplonExtensionRegression": {
+        "allPriorPathsPreserved": true,
+        "preservedOccurrences": 173323,
+        "addedOccurrences": 0
       },
       "scopedGapOccurrences": {
         "waldshut": 37,
@@ -40157,6 +40208,11 @@
         "preservedOccurrences": 120525,
         "addedOccurrences": 68
       },
+      "simplonExtensionRegression": {
+        "allPriorPathsPreserved": true,
+        "preservedOccurrences": 120593,
+        "addedOccurrences": 0
+      },
       "scopedGapOccurrences": {
         "seasonal-rail": 32,
         "waldshut": 36
@@ -43669,6 +43725,11 @@
         "preservedOccurrences": 174353,
         "addedOccurrences": 74
       },
+      "simplonExtensionRegression": {
+        "allPriorPathsPreserved": true,
+        "preservedOccurrences": 174427,
+        "addedOccurrences": 0
+      },
       "scopedGapOccurrences": {
         "bern-platform-49": 1,
         "waldshut": 37,
@@ -46286,7 +46347,7 @@
         {
           "date": "2026-04-03",
           "trips": 1,
-          "matched": 6,
+          "matched": 7,
           "total": 7
         },
         {
@@ -46310,7 +46371,7 @@
         {
           "date": "2026-08-01",
           "trips": 1,
-          "matched": 6,
+          "matched": 7,
           "total": 7
         },
         {
@@ -46344,7 +46405,7 @@
           "total": 0
         }
       ],
-      "status": "active-with-geometry-gaps"
+      "status": "compatible-on-active-sampled-dates"
     },
     {
       "routeId": "91-2H-Y-j26-1",

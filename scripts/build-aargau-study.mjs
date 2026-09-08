@@ -72,7 +72,7 @@ export function applyAargauGeometry(raw, index, cantonStopIds, roads, rails, gap
       const matched = segment.pathIndex !== null, adjacent = inside.has(segment.fromId) || inside.has(segment.toId)
       if (matched) pair.matched++
       else pair.reasons.add(segment.reason)
-      for (const count of [group, route]) { count.total++; if (matched) { count.matched++; if (segment.geometrySource === 'osm') count.roadMatched++; else if (segment.geometrySource === 'fot') count.railMatched++; else count.officialMatched++ } if (adjacent) { count.cantonAdjacentTotal++; if (matched) count.cantonAdjacentMatched++ } }
+      for (const count of [group, route]) { count.total++; if (matched) { count.matched++; if (segment.geometrySource === 'osm') count.roadMatched++; else if (['fot', 'osm-rail'].includes(segment.geometrySource)) count.railMatched++; else count.officialMatched++ } if (adjacent) { count.cantonAdjacentTotal++; if (matched) count.cantonAdjacentMatched++ } }
       const a = indexedStops[i][0], b = indexedStops[i + 1][0], edgeKey = [a, b].sort((a, b) => a - b).join(':')
       const edge = edges.get(edgeKey) ?? { pair: [a, b].sort((a, b) => a - b), paths: new Set(), missing: false }
       if (matched) edge.paths.add(segment.pathIndex)

@@ -12,6 +12,7 @@ import { aargauGapMatcher } from './aargau-gap-geometry.mjs'
 import { loadAargauPlatforms } from './aargau-platform-geometry.mjs'
 import { loadSeasonalRoadBundle } from './aargau-seasonal-roads.mjs'
 import { loadSeasonalGaps, SEASONAL_GAP_POLICY } from './aargau-seasonal-gaps.mjs'
+import { loadSimplon, SIMPLON_POLICY } from './aargau-simplon.mjs'
 
 export const AARGAU_SEASONAL_DATES = ['2026-01-16', '2026-01-18', '2026-04-03', '2026-04-05', '2026-07-17', '2026-07-19', '2026-08-01', '2026-09-04', '2026-09-06', '2026-10-23', '2026-10-25', '2026-12-11']
 export const AARGAU_BASELINE_DATES = ['2026-09-04', '2026-09-06']
@@ -44,6 +45,7 @@ export async function loadSeasonalContext(directory) {
   bundle.supplement.supplement = seasonal.bundle
   const rails = await loadAargauRail('data/aargau-rail-sources', 'data/aargau-rail-policy.json')
   const seasonalGaps = await loadSeasonalGaps()
+  const simplon = await loadSimplon()
   for (const date of AARGAU_BASELINE_DATES) {
     const hash = await hashFile(`data/aargau/${date}-timetable.json.gz`)
     assert.equal(rails.policy.inputTimetableHashes[date], hash)
@@ -54,10 +56,11 @@ export async function loadSeasonalContext(directory) {
   const files = ['data/aargau/inventory.json', 'data/aargau-sources/sources.json', 'data/aargau-line-crosswalk.json', 'data/aargau-road-cache.json', 'data/aargau-rheinfelden-road-cache.json', 'data/aargau-rail-policy.json', 'data/aargau-rail-sources/source.json', 'data/aargau-platform-policy.json', 'data/aargau-seasonal-roads/source.json']
   const sourceHashes = Object.fromEntries(await Promise.all(files.map(async file => [file, await hashFile(file)])))
   sourceHashes[SEASONAL_GAP_POLICY] = await hashFile(SEASONAL_GAP_POLICY)
+  sourceHashes[SIMPLON_POLICY] = await hashFile(SIMPLON_POLICY)
   for (const date of AARGAU_BASELINE_DATES) for (const name of ['audit.json', 'aargau-region-day-manifest.json']) {
     const file = `fixtures/aargau/${date}/${name}`; sourceHashes[file] = await hashFile(file)
   }
-  return { inventory, verification, baseline, baselinePatterns, catalogue, collection, crosswalk, index: lineIndex(collection, crosswalk.mappings), roads: aargauRoadMatcher(bundle), previousRoads, rails, seasonalGaps, sourceHashes }
+  return { inventory, verification, baseline, baselinePatterns, catalogue, collection, crosswalk, index: lineIndex(collection, crosswalk.mappings), roads: aargauRoadMatcher(bundle), previousRoads, rails, seasonalGaps, simplon, sourceHashes }
 }
 
 export function assertPriorGeometryPreserved(before, after) {
@@ -120,8 +123,13 @@ export async function auditSeasonalDate(context, directory, date) {
   const before = applyAargauGeometry(raw, context.index, context.inventory.cantonStopIds, context.previousRoads, context.rails, gaps, platforms)
   const roadResult = applyAargauGeometry(raw, context.index, context.inventory.cantonStopIds, context.roads, context.rails, gaps, platforms)
   const roadExtensionRegression = assertPriorGeometryPreserved(before, roadResult)
-  const result = baselineDate ? roadResult : applyAargauGeometry(raw, context.index, context.inventory.cantonStopIds, context.roads, context.rails, gaps, context.seasonalGaps.forDate(date))
-  const gapExtensionRegression = assertPriorGeometryPreserved(roadResult, result)
+  const gapResult = baselineDate ? roadResult : applyAargauGeometry(raw, context.index, context.inventory.cantonStopIds, context.roads, context.rails, gaps, context.seasonalGaps.forDate(date))
+  const gapExtensionRegression = assertPriorGeometryPreserved(roadResult, gapResult)
+  const simplonDate = Object.hasOwn(context.simplon.policy.inputTimetableHashes, date)
+  if (simplonDate) assert.equal(await hashFile(rawFile), context.simplon.policy.inputTimetableHashes[date])
+  const result = simplonDate ? applyAargauGeometry(raw, context.index, context.inventory.cantonStopIds, context.roads, context.rails, gaps, context.seasonalGaps.forDate(date), context.simplon.forDate(date)) : gapResult
+  const simplonExtensionRegression = assertPriorGeometryPreserved(gapResult, result)
+  assert.equal(simplonExtensionRegression.addedOccurrences, simplonDate ? 1 : 0)
   const scopedGapOccurrences = {}
   for (const p of result.patterns) for (const s of p.segments) if (s.seasonalGapRuleId) {
     const rule = context.seasonalGaps.policy.rules.find(r => r.id === s.seasonalGapRuleId)
@@ -139,7 +147,7 @@ export async function auditSeasonalDate(context, directory, date) {
     for (const p of result.patterns) for (const s of p.segments) assert((!s.platformFixId && !s.gapMappingId) || s.seasonalGapRuleId, 'September-only exception leaked into another season')
   }
   const day = summarizeSeasonalGeometry(result, date, context.baselinePatterns)
-  return { ...day, timetableFixtureSha256: await hashFile(rawFile), sourceVerification: verified, roadExtensionRegression, gapExtensionRegression, scopedGapOccurrences,
+  return { ...day, timetableFixtureSha256: await hashFile(rawFile), sourceVerification: verified, roadExtensionRegression, gapExtensionRegression, simplonExtensionRegression, scopedGapOccurrences,
     validation: { ...checks, independentArchiveVerification: true, dateScopedExceptionsPreserved: true, septemberGeometryUnchanged: baselineDate,
       elapsedCivilTimeValidated: date === '2026-10-25' ? false : null },
     scope: baselineDate ? 'Exact replay of reviewed September fixture.' : 'Geometry compatibility against pinned sources with separate exact seasonal gap rules. Temporal alignment validity and release admission are not established.',

@@ -1,5 +1,8 @@
 {
   "schemaVersion": 1,
+  "line344ReviewSha256": "237ef174a6749dc5cf4193b04944575287db0fb001eebc2be2fb2bca6b4dfc4c",
+  "addedSimplonOccurrences": 2,
+  "simplonPolicySha256": "11ef73dd48c490bf1be4e5bbb3c5b62522b8665077cf6c2d6e117a83d7232699",
   "addedScopedGapOccurrences": 583,
   "scopedGapOccurrencesByKind": {
     "bern-platform-49": 7,
@@ -13,7 +16,7 @@
   "reviewCandidate": "fixtures/aargau-reviewed/2026-09-04/aargau-region-day-manifest.json",
   "addedRoadOccurrences": 16364,
   "pendingAlignmentFlags": 223,
-  "summarySha256": "4b38f26a1a44abff1caa68fb0191e34b10884fd61b94fa59aedc100253168114",
+  "summarySha256": "dcf7e625e8d08087bf3fa65538ab09f2b274ef20ee23ce25e10e4677d547621c",
   "alignmentReviewSha256": "2551f3e874e4ad883860253973ec5745c0999420311e4d6822f8ab7444ceed5a",
   "publicationReady": false,
   "productionFeedsChanged": false,
@@ -21,63 +24,15 @@
     "sampledSourceJourneys": true,
     "septemberReplay": true,
     "dateScopedExceptions": true,
-    "everySeasonalPatternHasGeometry": false,
+    "everySeasonalPatternHasGeometry": true,
     "busAlignmentDisagreementsResolved": false,
     "physicalRunningDirectionsCertified": false,
     "dstRepeatedHourDisambiguated": false
   },
   "uniqueNewDirectedPatterns": 1146,
-  "missingOccurrenceCategories": {
-    "rail:no-exact-operating-point": 2
-  },
-  "gapRoutes": [
-    {
-      "routeId": "91-29-Y-j26-1",
-      "agencyId": "11",
-      "line": "IC",
-      "mode": "rail",
-      "missingOccurrences": 2,
-      "dates": [
-        "2026-04-03",
-        "2026-08-01"
-      ],
-      "categories": [
-        "rail:no-exact-operating-point"
-      ]
-    }
-  ],
-  "unresolved": [
-    {
-      "date": "2026-04-03",
-      "patternId": "cd15074a382028ae225d",
-      "routeId": "91-29-Y-j26-1",
-      "agencyId": "11",
-      "line": "IC",
-      "mode": "rail",
-      "fromId": "ch:1:sloid:1609:3:6",
-      "toId": "8301003",
-      "occurrences": 1,
-      "review": "rail:no-exact-operating-point",
-      "agisRejection": "missing-operator-mode-line",
-      "roadFailure": null,
-      "railFailure": "no-exact-operating-point"
-    },
-    {
-      "date": "2026-08-01",
-      "patternId": "520e508355ad4f126fb1",
-      "routeId": "91-29-Y-j26-1",
-      "agencyId": "11",
-      "line": "IC",
-      "mode": "rail",
-      "fromId": "ch:1:sloid:1609:3:6",
-      "toId": "8301003",
-      "occurrences": 1,
-      "review": "rail:no-exact-operating-point",
-      "agisRejection": "missing-operator-mode-line",
-      "roadFailure": null,
-      "railFailure": "no-exact-operating-point"
-    }
-  ],
+  "missingOccurrenceCategories": {},
+  "gapRoutes": [],
+  "unresolved": [],
   "alignmentFlags": [
     {
       "routeId": "96-156-1-j26-1",
@@ -6090,7 +6045,6 @@
   ],
   "remainingWork": [
     "Review AGIS/OSM bus disagreements against dated operator itineraries and legal direction evidence; the 30 m diagnostic alone cannot choose the correct source.",
-    "Acquire exact cross-border geometry and operating-point evidence for the two remaining Brig–Domodossola occurrences. All 16,364 seasonal bus-cache gaps and 583 scoped border/platform/new-route gaps are now filled without replacing prior paths.",
     "Find active witness dates for the 45 archived routes absent from all twelve samples; do not label them discontinued.",
     "Disambiguate the repeated local hour before promoting 25 October as an elapsed-time feed.",
     "Integrate reviewed fixtures into application study selection, date loading and attribution, then run browser release checks."
