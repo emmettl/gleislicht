@@ -7,7 +7,7 @@ test('Basel loads on selection, searches rail and foreign stops, seeks and share
   await expect(page.locator('.scene canvas')).toBeVisible()
   expect(requests.some(url => url.includes('/data/basel-core'))).toBe(false)
   await page.getByRole('button', { name: 'Explore studies', exact: true }).click()
-  await page.getByRole('button', { name: /Basel · BVB\/BLT and regional rail/ }).click()
+  await page.getByRole('dialog').getByRole('button', { name: /Basel · BVB\/BLT and regional rail/ }).click()
   await expect(page.locator('.network-card .between')).toContainText('Full day')
   await expect(page.locator('.scrubber input')).toHaveAttribute('max', '86400')
   await expect(page.getByRole('link', { name: '© OpenStreetMap contributors · ODbL', exact: true })).toHaveAttribute('href', /openstreetmap.org/)
@@ -28,6 +28,9 @@ test('Basel loads on selection, searches rail and foreign stops, seeks and share
   await expect(page.locator('.scrubber input')).toHaveAttribute('max', '86400')
   await expect(page.locator('.station-card')).toContainText('Weil am Rhein')
   await expect.poll(async () => Math.abs(Number(await page.locator('.scrubber input').inputValue()) - 62100)).toBeLessThan(500)
+  await expect(page.locator('.scene canvas')).toBeVisible()
+  // Shared links restore the controls before the lazy scene and camera settle.
+  await page.waitForTimeout(1500)
   await page.screenshot({ path: testInfo.outputPath('basel-selection.png') })
 })
 

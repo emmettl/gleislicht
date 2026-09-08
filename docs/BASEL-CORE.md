@@ -1,6 +1,6 @@
-# Basel core candidate and integration handoff
+# Basel core study and release validation
 
-Reviewed **8 September 2026**. The candidate combines complete BVB/BLT bus and tram journeys with a bounded regional rail network, using a **civil day including preceding service-day services**. Both Tuesday and Sunday pass the existing payload budgets and a 95% movement-geometry gate in each of five groups. This is ready for application integration as a **schematic centreline study**; it is not published, a complete TNW/trireno network, or a representation of individual running tracks.
+Reviewed **8 September 2026**. The study combines complete BVB/BLT bus and tram journeys with a bounded regional rail network, using a **civil day including preceding service-day services**. Both Tuesday and Sunday pass the existing payload budgets and a 95% movement-geometry gate in each of five groups. The Tuesday fixture is integrated into the application as a **schematic centreline study**, with selection, full-day loading, sharing and translated labels. The scope remains smaller than the complete TNW/trireno network; paths represent inferred centrelines rather than individual running tracks.
 
 The earlier [local audit](BASEL-STUDY.md) remains a reproducible service-day baseline. Its counts should not be compared directly with the larger civil-day candidate without separating calendar and geometry changes.
 
@@ -77,14 +77,26 @@ The inspected PDF hashes are:
 
 ## Remaining geometry and release boundary
 
-There are **220 Tuesday / 146 Sunday directed route/platform pairs** with an unmatched occurrence. They remain in the timetable and use the app's ordinary stop interpolation when integrated.
+There are **220 Tuesday / 146 Sunday directed route/platform pairs** with an unmatched occurrence. They remain in the timetable and use the app's ordinary stop interpolation. The model label explicitly discloses straight stop connections and the rail boundary.
 
-- Basel SBB platforms **19/20** lie outside the selected FOT centreline snap guard. Their approaches account for all **85 / 72 unmatched rail movements**. S3 and weekday S31 remain below 95% individually; the rail group passes overall. A suitable station approach source is needed before asserting full rail geometry.
+- Basel SBB platforms **19/20** lie **123.86 / 133.21 m** from the nearest selected FOT centreline, outside the 120 m snap guard. Their approaches account for all **85 / 72 unmatched rail movements**. S3 and weekday S31 remain below 95% individually; the rail group passes overall. A suitable station approach source is needed before asserting full rail geometry.
 - BLT replacement service EV11 retains the Schaulager provisional-platform gap: **354 / 208 movements**, 123.75 m from its inferred match. The [BLT replacement-service notice](https://www.blt.ch/mobilitaet/betriebsinfos) confirms the Aesch–Dreispitz bus operation through 12 December, but does not resolve this geometric offset. The platform is not moved to force a match.
 - BVB line 33 retains **95 / 72 rejected return movements**. Tuesday also has **32** zero-interval shape movements between distinct Otto Wenk-Platz platforms on line 34.
 - Tram 6 around Heuwaage/Markthalle and infrequent depot/special patterns remain incomplete. Broader source acquisition or path review is required; the matcher does not invent joins or relax the guards.
 
-`integrationCandidateReady` means the scoped candidate passes the measured data gates and has a documented centreline review. `publicationReady` remains false. Before publication, implement selection, labels/translations, sharing, lazy chunks, source attribution, refresh/recovery, and desktop/phone verification. Retain the scope label, source headsign/boundary distinction and visible interpolation limitations. Date refresh must acquire/review a new dated policy; it must not silently reuse these four dates' diversion approval. Street direction and exact track certification remain outside this schematic model.
+The geometry follow-up tested nearby alternative FOT projections around Heuwaage/Markthalle without relaxing the snap or detour guards. It accepted no additional movements on either fixture, so no geometry change was retained. Street direction and exact track certification remain outside this schematic model.
+
+## Application and release status
+
+The study ID is `basel-core`, exposed as **BS** and through the study browser. Selection defaults to the civil full day; an explicit `range=morning` link remains supported. The app fetches the morning topology and two-hour day chunks on demand, supports route/station search (including retained foreign local stops), seeking, Now, station/time sharing and load retry. English, German, French and Italian labels describe the scope. Basel-Stadt, BAV and OSM attribution accompanies the map.
+
+[`build-basel-day.mjs`](../scripts/build-basel-day.mjs) promotes a reviewed candidate into the fourteen application artifacts. It requires a passing candidate gate and an unchanged policy hash, adds source credits and `baselReleaseVersion: 1`, then validates the complete staged set before replacing output files. The original candidate reports retain `publicationReady: false` as their historical data-only status; release readiness is established separately by this wrapper and the application checks.
+
+[`basel-release-validation.mjs`](../scripts/basel-release-validation.mjs) checks the reviewed civil/source dates, source identities, rail clipping ranges, consistent morning/day topology and trips, attribution, rail snap bound and all five movement-coverage groups. The regional validator also rejects inconsistent copies of journeys repeated in adjacent chunks.
+
+The existing regional refresh and Pages assembly now include Basel. [`refresh-basel-day.mjs`](../scripts/refresh-basel-day.mjs) rebuilds only dates explicitly admitted by the reviewed policy. For an unreviewed date or a failed source/build check, it retains a complete validated published Basel set with its **original timetable date**, while other regions can refresh. On first deployment only, a missing Basel manifest may select the complete checked-in fixture. Missing or corrupt chunks in an existing published set fail recovery; they cannot be mixed with fixture bytes. Extending the reviewed dates still requires a fresh diversion review.
+
+Local verification on 8 September passed all **386 unit tests**, TypeScript, the production build, edition boundaries, Pages artifact checks and the mobile first-view budget (**358.7 KiB JavaScript / 360 KiB**). Focused lint reports existing React warnings, with no errors. All **six Basel browser cases** passed across desktop Chromium and iPhone WebKit: selection/lazy loading/search/sharing, midnight chunk retry and preceding-day movement, and morning retry/translations/overflow. Desktop and phone screenshots were inspected. Both Tuesday and Sunday also passed the application release wrapper. These are local checks; a hosted deployment is verified separately.
 
 ## Reproduce
 
@@ -99,6 +111,16 @@ node scripts/build-basel-core.mjs \
 ```
 
 The default dates are 8 and 13 September 2026. Each date directory contains `basel-core-audit.json`, `basel-core-day-manifest.json`, `basel-core-morning.json` and `basel-core-day-chunks/`. The run used for the committed reports is retained under `/tmp/basel-core-reviewed/`.
+
+Promote a reviewed candidate, or substitute another output directory to validate the Sunday release without replacing the delivered Tuesday fixture:
+
+```sh
+node scripts/build-basel-day.mjs \
+  --candidate /tmp/basel-core-reviewed/2026-09-08 \
+  --output-directory public/data
+npx vitest run scripts/basel-release.test.mjs scripts/regional-refresh.test.mjs
+npx playwright test basel.spec.ts
+```
 
 To rebuild the supplemental cache, first run the builder with `--supplemental-bus-cache none`, then pass both generated **core manifests** to `prepare-basel-road-feeds.mjs` as described in the [bus pipeline](BASEL-GEOMETRY-PIPELINE.md). Use the pinned original `pfaedle.cfg` and replace its single literal `osm_max_station_cand_distance: 200` with `osm_max_station_cand_distance: 50`. Assert that exactly one replacement occurs; all other bytes remain unchanged. The resulting configuration SHA-256 is **`190cb02a00faeaf6a84638293984a3947b11673fab48dae10634a0e6c2e29c49`**. Match both agency feeds with the existing `--no-trie -W` wrapper, import using `basel-road-geometry.mjs`, then rerun the builder with `--supplemental-bus-cache /path/new-cache.json`. Policy exclusions still apply to rebuilt caches until explicitly reviewed.
 
