@@ -187,6 +187,10 @@
     "montCarmel": {
       "file": "data/fribourg-mont-carmel-policy.json",
       "sha256": "a9b44b222fdf7b2c9dc26899c350520a8de3945d06a13bff75a357b6133a3b27"
+    },
+    "jongny": {
+      "file": "data/fribourg-jongny-policy.json",
+      "sha256": "df10b99f56fc6dd5cc4624713eea614bbeaf124802257ea433f0d12220713e2f"
     }
   },
   "rail": {

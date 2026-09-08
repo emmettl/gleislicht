@@ -3,10 +3,11 @@
   "sourceHashes": {
     "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
     "source": "e8523af34fcedca7f8b0cbe495446ff93a75d8563c62b243da942c39c5243f47",
-    "crosswalk": "ee13423e453c4f4cff253608373233f77e56a42446552551d1722da838f9d1f1",
+    "crosswalk": "c3be9e15e633d44c32d3bd439469f2ef5979fe1fcd9764c102170ca3d751f343",
     "provenance": "7d23e09a35768de1cfd598a7ca824ac7c93d03242ff8955e70ca778213549086",
     "roads": "87f4d4be2662ff0982cea837e95f73863096d4bc37bd19ecc09ea88e064c465e",
     "montCarmel": "a9b44b222fdf7b2c9dc26899c350520a8de3945d06a13bff75a357b6133a3b27",
+    "jongny": "df10b99f56fc6dd5cc4624713eea614bbeaf124802257ea433f0d12220713e2f",
     "rail": "7ea92c8c1120a49e9497ec3ae6d7a0d2fc2d761e8b19d790191ed7a6c0212c79",
     "railInputs": "434a02eb6906bb141a00ba6b7c77622767b78262617326d6aed56fa683cd8046",
     "avry": "8d20a93732eea409915103c410816075ac428693b7dc8fcb6dc37c1f97849e19",
@@ -312,6 +313,1816 @@
       "license": "ODbL-1.0",
       "licenseUrl": "https://www.openstreetmap.org/copyright",
       "model": "Inferred bus road paths; complete-pattern consensus fallback only; not operator-verified",
+      "jongny": {
+        "schemaVersion": 1,
+        "id": "jongny-route-chain",
+        "sourceDirectory": "data/fribourg-jongny-sources",
+        "sources": [
+          {
+            "file": "map.osm.gz",
+            "url": "https://www.openstreetmap.org/api/0.6/map?bbox=6.835,46.471,6.850,46.478",
+            "attribution": "© OpenStreetMap contributors",
+            "license": "ODbL-1.0",
+            "role": "Complete raw bbox response, deterministic gzip; ten detailed ways and three 2026 route relations independently specify the directed road chain.",
+            "sha256": "a06e7afba4a93673c55c2ed19d2237e6e50406ca5cec49ee1a873aca38c8e4b8",
+            "retrievedAt": "2026-09-08T21:06:15.816Z"
+          },
+          {
+            "file": "vmcv-network-2026.pdf",
+            "url": "https://vmcv.cdn.prismic.io/vmcv/aTqBp3NYClf9oDK-_VMCV-Planr%C3%A9seauH26.pdf",
+            "attribution": "VMCV",
+            "timetableYear": 2026,
+            "validFrom": "2025-12-14",
+            "validUntil": "2026-12-12",
+            "role": "Official schematic network plan: lines 213/216/217 and consecutive Châtillon / Cure d’Attalens stops. Identity evidence only; no geometry extracted.",
+            "sha256": "ca21dc34890e9088ab0fb5587e131c0885de85bc5a8794359b574377d7fb2d04",
+            "retrievedAt": "2026-09-08T21:06:16.718Z"
+          }
+        ],
+        "roadCacheSha256": "87f4d4be2662ff0982cea837e95f73863096d4bc37bd19ecc09ea88e064c465e",
+        "cantonalSourceSha256": "e8523af34fcedca7f8b0cbe495446ff93a75d8563c62b243da942c39c5243f47",
+        "agencyId": "876",
+        "routeIds": [
+          "92-213-j26-1",
+          "92-216-j26-1",
+          "92-217-j26-1"
+        ],
+        "dates": [
+          "2026-09-04",
+          "2026-09-06"
+        ],
+        "stops": [
+          [
+            6.84276396,
+            46.47635603,
+            "Jongny, Châtillon",
+            "",
+            "ch:1:sloid:4959:0:2"
+          ],
+          [
+            6.84600688,
+            46.47330611,
+            "Corsier-Vevey, Cure d'Attalens",
+            "",
+            "ch:1:sloid:4963:0:4"
+          ]
+        ],
+        "patterns": [
+          {
+            "id": "06ff1ec906f3d19da12cfb1c",
+            "routeId": "92-213-j26-1",
+            "stops": [
+              [
+                6.89784866,
+                46.52544059,
+                "Châtel-St-Denis, centre",
+                "",
+                "ch:1:sloid:7241:0:18264"
+              ],
+              [
+                6.8971839,
+                46.52176295,
+                "Châtel-St-Denis, Bellière",
+                "",
+                "ch:1:sloid:4965:0:2"
+              ],
+              [
+                6.89036569,
+                46.50975789,
+                "Monts-de-Corsier, Mur-Blanc",
+                "",
+                "ch:1:sloid:79187:0:2"
+              ],
+              [
+                6.88776058,
+                46.50742086,
+                "Monts-de-Corsier, Banderette",
+                "",
+                "ch:1:sloid:4955:0:2"
+              ],
+              [
+                6.88215509,
+                46.50392749,
+                "Monts-de-Corsier, L'Hautigny",
+                "",
+                "ch:1:sloid:4956:0:2"
+              ],
+              [
+                6.87784318,
+                46.50107699,
+                "Mts-de-Corsier, Petit Hautigny",
+                "",
+                "ch:1:sloid:79184:0:2"
+              ],
+              [
+                6.87513925,
+                46.49821396,
+                "Monts-de-Corsier, Dautère",
+                "",
+                "ch:1:sloid:91902:0:2"
+              ],
+              [
+                6.87087225,
+                46.494015,
+                "Monts-de-Corsier, Longpraz",
+                "",
+                "ch:1:sloid:4962:0:2"
+              ],
+              [
+                6.86069434,
+                46.48727373,
+                "Monts-de-Corsier, La Chaux",
+                "C",
+                "ch:1:sloid:4961:0:4"
+              ],
+              [
+                6.84862996,
+                46.48306155,
+                "Jongny, Combette",
+                "",
+                "ch:1:sloid:79181:0:2"
+              ],
+              [
+                6.84441686,
+                46.48207186,
+                "Jongny, Reposoir",
+                "",
+                "ch:1:sloid:4728:0:2"
+              ],
+              [
+                6.84140751,
+                46.47927588,
+                "Jongny, village",
+                "",
+                "ch:1:sloid:4966:0:2"
+              ],
+              [
+                6.83619728,
+                46.4771355,
+                "Chardonne, rte de Châtel",
+                "",
+                "ch:1:sloid:4712:0:2"
+              ],
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              [
+                6.83976359,
+                46.47077572,
+                "Corseaux, Délassement",
+                "B",
+                "ch:1:sloid:4967:0:2"
+              ],
+              [
+                6.83648474,
+                46.46890724,
+                "Vevey, funiculaire",
+                "B",
+                "ch:1:sloid:93992:0:4"
+              ],
+              [
+                6.83672728,
+                46.46645708,
+                "Vevey, Bergère",
+                "",
+                "ch:1:sloid:93982:0:1"
+              ],
+              [
+                6.84129971,
+                46.46347467,
+                "Vevey, gare",
+                "D",
+                "ch:1:sloid:79174:0:5"
+              ]
+            ]
+          },
+          {
+            "id": "12bdac881967aca6c5a25454",
+            "routeId": "92-216-j26-1",
+            "stops": [
+              [
+                6.84129971,
+                46.46347467,
+                "Vevey, gare",
+                "D",
+                "ch:1:sloid:79174:0:5"
+              ],
+              [
+                6.83653864,
+                46.46669839,
+                "Vevey, Bergère",
+                "",
+                "ch:1:sloid:93982:0:2"
+              ],
+              [
+                6.83654762,
+                46.46878349,
+                "Vevey, funiculaire",
+                "C",
+                "ch:1:sloid:93992:0:3"
+              ],
+              [
+                6.83979952,
+                46.47065817,
+                "Corseaux, Délassement",
+                "A",
+                "ch:1:sloid:4967:0:1"
+              ],
+              [
+                6.84665367,
+                46.47305246,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:3"
+              ],
+              [
+                6.84374313,
+                46.47622612,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:1"
+              ],
+              [
+                6.8377873,
+                46.47726541,
+                "Chardonne, rte de Châtel",
+                "",
+                "ch:1:sloid:4712:0:1"
+              ],
+              [
+                6.84165005,
+                46.47930062,
+                "Jongny, village",
+                "",
+                "ch:1:sloid:4966:0:1"
+              ],
+              [
+                6.84446178,
+                46.48195433,
+                "Jongny, Reposoir",
+                "",
+                "ch:1:sloid:4728:0:1"
+              ],
+              [
+                6.84878268,
+                46.48301825,
+                "Jongny, Combette",
+                "",
+                "ch:1:sloid:79181:0:1"
+              ],
+              [
+                6.86006552,
+                46.48694592,
+                "Monts-de-Corsier, La Chaux",
+                "A",
+                "ch:1:sloid:4961:0:1"
+              ],
+              [
+                6.85246577,
+                46.48951885,
+                "Jongny, Chaudette",
+                "",
+                "ch:1:sloid:4958:0:1"
+              ],
+              [
+                6.85242085,
+                46.49390987,
+                "Attalens, Perrey",
+                "",
+                "ch:1:sloid:4957:0:1"
+              ],
+              [
+                6.85060626,
+                46.50640069,
+                "Attalens, La Fin",
+                "",
+                "ch:1:sloid:79191:0:1"
+              ],
+              [
+                6.84866589,
+                46.51025248,
+                "Attalens, village",
+                "",
+                "ch:1:sloid:4960:0:1"
+              ],
+              [
+                6.84907912,
+                46.51264503,
+                "Attalens, Corcelles",
+                "",
+                "ch:1:sloid:79193:0:1"
+              ],
+              [
+                6.84730944,
+                46.51589675,
+                "Attalens, Fin du Clos",
+                "",
+                "ch:1:sloid:95678:0:1"
+              ],
+              [
+                6.84866589,
+                46.52182476,
+                "Bossonnens, village",
+                "",
+                "ch:1:sloid:79194:0:1"
+              ],
+              [
+                6.85295086,
+                46.52574344,
+                "Bossonnens, gare",
+                "",
+                "ch:1:sloid:79195:0:2"
+              ]
+            ]
+          },
+          {
+            "id": "438f12c3a4bb0d2c7fddae0f",
+            "routeId": "92-213-j26-1",
+            "stops": [
+              [
+                6.89565677,
+                46.52788191,
+                "Châtel-St-Denis, gare",
+                "A",
+                "ch:1:sloid:77718:0:19381"
+              ],
+              [
+                6.89784866,
+                46.52544059,
+                "Châtel-St-Denis, centre",
+                "",
+                "ch:1:sloid:7241:0:18264"
+              ],
+              [
+                6.8971839,
+                46.52176295,
+                "Châtel-St-Denis, Bellière",
+                "",
+                "ch:1:sloid:4965:0:2"
+              ],
+              [
+                6.89036569,
+                46.50975789,
+                "Monts-de-Corsier, Mur-Blanc",
+                "",
+                "ch:1:sloid:79187:0:2"
+              ],
+              [
+                6.88776058,
+                46.50742086,
+                "Monts-de-Corsier, Banderette",
+                "",
+                "ch:1:sloid:4955:0:2"
+              ],
+              [
+                6.88215509,
+                46.50392749,
+                "Monts-de-Corsier, L'Hautigny",
+                "",
+                "ch:1:sloid:4956:0:2"
+              ],
+              [
+                6.87784318,
+                46.50107699,
+                "Mts-de-Corsier, Petit Hautigny",
+                "",
+                "ch:1:sloid:79184:0:2"
+              ],
+              [
+                6.87513925,
+                46.49821396,
+                "Monts-de-Corsier, Dautère",
+                "",
+                "ch:1:sloid:91902:0:2"
+              ],
+              [
+                6.87087225,
+                46.494015,
+                "Monts-de-Corsier, Longpraz",
+                "",
+                "ch:1:sloid:4962:0:2"
+              ],
+              [
+                6.86069434,
+                46.48727373,
+                "Monts-de-Corsier, La Chaux",
+                "C",
+                "ch:1:sloid:4961:0:4"
+              ]
+            ]
+          },
+          {
+            "id": "556949705d1c2e20e32c352f",
+            "routeId": "92-213-j26-1",
+            "stops": [
+              [
+                6.89565677,
+                46.52788191,
+                "Châtel-St-Denis, gare",
+                "A",
+                "ch:1:sloid:77718:0:19381"
+              ],
+              [
+                6.89784866,
+                46.52544059,
+                "Châtel-St-Denis, centre",
+                "",
+                "ch:1:sloid:7241:0:18264"
+              ],
+              [
+                6.8971839,
+                46.52176295,
+                "Châtel-St-Denis, Bellière",
+                "",
+                "ch:1:sloid:4965:0:2"
+              ],
+              [
+                6.89036569,
+                46.50975789,
+                "Monts-de-Corsier, Mur-Blanc",
+                "",
+                "ch:1:sloid:79187:0:2"
+              ],
+              [
+                6.88776058,
+                46.50742086,
+                "Monts-de-Corsier, Banderette",
+                "",
+                "ch:1:sloid:4955:0:2"
+              ],
+              [
+                6.88215509,
+                46.50392749,
+                "Monts-de-Corsier, L'Hautigny",
+                "",
+                "ch:1:sloid:4956:0:2"
+              ],
+              [
+                6.87784318,
+                46.50107699,
+                "Mts-de-Corsier, Petit Hautigny",
+                "",
+                "ch:1:sloid:79184:0:2"
+              ],
+              [
+                6.87513925,
+                46.49821396,
+                "Monts-de-Corsier, Dautère",
+                "",
+                "ch:1:sloid:91902:0:2"
+              ],
+              [
+                6.87087225,
+                46.494015,
+                "Monts-de-Corsier, Longpraz",
+                "",
+                "ch:1:sloid:4962:0:2"
+              ],
+              [
+                6.86069434,
+                46.48727373,
+                "Monts-de-Corsier, La Chaux",
+                "C",
+                "ch:1:sloid:4961:0:4"
+              ],
+              [
+                6.84862996,
+                46.48306155,
+                "Jongny, Combette",
+                "",
+                "ch:1:sloid:79181:0:2"
+              ],
+              [
+                6.84441686,
+                46.48207186,
+                "Jongny, Reposoir",
+                "",
+                "ch:1:sloid:4728:0:2"
+              ],
+              [
+                6.84140751,
+                46.47927588,
+                "Jongny, village",
+                "",
+                "ch:1:sloid:4966:0:2"
+              ],
+              [
+                6.83619728,
+                46.4771355,
+                "Chardonne, rte de Châtel",
+                "",
+                "ch:1:sloid:4712:0:2"
+              ],
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              [
+                6.83976359,
+                46.47077572,
+                "Corseaux, Délassement",
+                "B",
+                "ch:1:sloid:4967:0:2"
+              ],
+              [
+                6.83648474,
+                46.46890724,
+                "Vevey, funiculaire",
+                "B",
+                "ch:1:sloid:93992:0:4"
+              ],
+              [
+                6.83672728,
+                46.46645708,
+                "Vevey, Bergère",
+                "",
+                "ch:1:sloid:93982:0:1"
+              ],
+              [
+                6.84229684,
+                46.46233611,
+                "Vevey, gare",
+                "A",
+                "ch:1:sloid:79174:0:1"
+              ]
+            ]
+          },
+          {
+            "id": "6ebfcd767a0029d8d4ca7f78",
+            "routeId": "92-217-j26-1",
+            "stops": [
+              [
+                6.83753577,
+                46.54216917,
+                "Palézieux, gare",
+                "",
+                "ch:1:sloid:70440:0:933913"
+              ],
+              [
+                6.83217283,
+                46.5328631,
+                "Granges (Veveyse), Le Rupan",
+                "",
+                "ch:1:sloid:77713:0:16339"
+              ],
+              [
+                6.83099603,
+                46.52955678,
+                "Granges (Veveyse), La Cuvigne",
+                "",
+                "ch:1:sloid:77714:0:16191"
+              ],
+              [
+                6.82945093,
+                46.52469272,
+                "Granges (Veveyse), village",
+                "",
+                "ch:1:sloid:77715:0:16228"
+              ],
+              [
+                6.83228062,
+                46.5201002,
+                "Granges (Veveyse), Le Battiau",
+                "",
+                "ch:1:sloid:77717:0:16118"
+              ],
+              [
+                6.84523433,
+                46.51211955,
+                "Attalens, Montessinge",
+                "",
+                "ch:1:sloid:10497:0:2"
+              ],
+              [
+                6.84854013,
+                46.51002992,
+                "Attalens, village",
+                "",
+                "ch:1:sloid:4960:0:2"
+              ],
+              [
+                6.85035473,
+                46.50600499,
+                "Attalens, La Fin",
+                "",
+                "ch:1:sloid:79191:0:2"
+              ],
+              [
+                6.85242984,
+                46.49303169,
+                "Attalens, Perrey",
+                "",
+                "ch:1:sloid:4957:0:2"
+              ],
+              [
+                6.85212441,
+                46.48938897,
+                "Jongny, Chaudette",
+                "",
+                "ch:1:sloid:4958:0:2"
+              ],
+              [
+                6.85974212,
+                46.48727991,
+                "Monts-de-Corsier, La Chaux",
+                "B",
+                "ch:1:sloid:4961:0:2"
+              ],
+              [
+                6.84862996,
+                46.48306155,
+                "Jongny, Combette",
+                "",
+                "ch:1:sloid:79181:0:2"
+              ],
+              [
+                6.84441686,
+                46.48207186,
+                "Jongny, Reposoir",
+                "",
+                "ch:1:sloid:4728:0:2"
+              ],
+              [
+                6.84140751,
+                46.47927588,
+                "Jongny, village",
+                "",
+                "ch:1:sloid:4966:0:2"
+              ],
+              [
+                6.83619728,
+                46.4771355,
+                "Chardonne, rte de Châtel",
+                "",
+                "ch:1:sloid:4712:0:2"
+              ],
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              [
+                6.83976359,
+                46.47077572,
+                "Corseaux, Délassement",
+                "B",
+                "ch:1:sloid:4967:0:2"
+              ],
+              [
+                6.83648474,
+                46.46890724,
+                "Vevey, funiculaire",
+                "B",
+                "ch:1:sloid:93992:0:4"
+              ],
+              [
+                6.83672728,
+                46.46645708,
+                "Vevey, Bergère",
+                "",
+                "ch:1:sloid:93982:0:1"
+              ],
+              [
+                6.84229684,
+                46.46233611,
+                "Vevey, gare",
+                "A",
+                "ch:1:sloid:79174:0:1"
+              ]
+            ]
+          },
+          {
+            "id": "8ccc23ac58bcdf532ae6095b",
+            "routeId": "92-213-j26-1",
+            "stops": [
+              [
+                6.84129971,
+                46.46347467,
+                "Vevey, gare",
+                "D",
+                "ch:1:sloid:79174:0:5"
+              ],
+              [
+                6.83653864,
+                46.46669839,
+                "Vevey, Bergère",
+                "",
+                "ch:1:sloid:93982:0:2"
+              ],
+              [
+                6.83654762,
+                46.46878349,
+                "Vevey, funiculaire",
+                "C",
+                "ch:1:sloid:93992:0:3"
+              ],
+              [
+                6.83979952,
+                46.47065817,
+                "Corseaux, Délassement",
+                "A",
+                "ch:1:sloid:4967:0:1"
+              ],
+              [
+                6.84665367,
+                46.47305246,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:3"
+              ],
+              [
+                6.84374313,
+                46.47622612,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:1"
+              ],
+              [
+                6.8377873,
+                46.47726541,
+                "Chardonne, rte de Châtel",
+                "",
+                "ch:1:sloid:4712:0:1"
+              ],
+              [
+                6.84165005,
+                46.47930062,
+                "Jongny, village",
+                "",
+                "ch:1:sloid:4966:0:1"
+              ],
+              [
+                6.84446178,
+                46.48195433,
+                "Jongny, Reposoir",
+                "",
+                "ch:1:sloid:4728:0:1"
+              ],
+              [
+                6.84878268,
+                46.48301825,
+                "Jongny, Combette",
+                "",
+                "ch:1:sloid:79181:0:1"
+              ],
+              [
+                6.86006552,
+                46.48694592,
+                "Monts-de-Corsier, La Chaux",
+                "A",
+                "ch:1:sloid:4961:0:1"
+              ],
+              [
+                6.87104293,
+                46.49402119,
+                "Monts-de-Corsier, Longpraz",
+                "",
+                "ch:1:sloid:4962:0:1"
+              ],
+              [
+                6.87549857,
+                46.4985417,
+                "Monts-de-Corsier, Dautère",
+                "",
+                "ch:1:sloid:91902:0:1"
+              ],
+              [
+                6.87831928,
+                46.50153456,
+                "Mts-de-Corsier, Petit Hautigny",
+                "",
+                "ch:1:sloid:79184:0:1"
+              ],
+              [
+                6.88238865,
+                46.50394604,
+                "Monts-de-Corsier, L'Hautigny",
+                "",
+                "ch:1:sloid:4956:0:1"
+              ],
+              [
+                6.8889733,
+                46.50774854,
+                "Monts-de-Corsier, Banderette",
+                "",
+                "ch:1:sloid:4955:0:1"
+              ],
+              [
+                6.89053637,
+                46.50938075,
+                "Monts-de-Corsier, Mur-Blanc",
+                "",
+                "ch:1:sloid:79187:0:1"
+              ],
+              [
+                6.89713899,
+                46.52147243,
+                "Châtel-St-Denis, Bellière",
+                "",
+                "ch:1:sloid:4965:0:1"
+              ],
+              [
+                6.89784866,
+                46.52544059,
+                "Châtel-St-Denis, centre",
+                "",
+                "ch:1:sloid:7241:0:18264"
+              ],
+              [
+                6.89565677,
+                46.52788191,
+                "Châtel-St-Denis, gare",
+                "A",
+                "ch:1:sloid:77718:0:19381"
+              ]
+            ]
+          },
+          {
+            "id": "90866e5fe6d2264b97eda3ff",
+            "routeId": "92-216-j26-1",
+            "stops": [
+              [
+                6.85295086,
+                46.52574344,
+                "Bossonnens, gare",
+                "",
+                "ch:1:sloid:79195:0:2"
+              ],
+              [
+                6.84843233,
+                46.52175677,
+                "Bossonnens, village",
+                "",
+                "ch:1:sloid:79194:0:2"
+              ],
+              [
+                6.84734537,
+                46.51548875,
+                "Attalens, Fin du Clos",
+                "",
+                "ch:1:sloid:95678:0:2"
+              ],
+              [
+                6.84899827,
+                46.51247193,
+                "Attalens, Corcelles",
+                "",
+                "ch:1:sloid:79193:0:2"
+              ],
+              [
+                6.84854013,
+                46.51002992,
+                "Attalens, village",
+                "",
+                "ch:1:sloid:4960:0:2"
+              ],
+              [
+                6.85035473,
+                46.50600499,
+                "Attalens, La Fin",
+                "",
+                "ch:1:sloid:79191:0:2"
+              ],
+              [
+                6.85242984,
+                46.49303169,
+                "Attalens, Perrey",
+                "",
+                "ch:1:sloid:4957:0:2"
+              ],
+              [
+                6.85212441,
+                46.48938897,
+                "Jongny, Chaudette",
+                "",
+                "ch:1:sloid:4958:0:2"
+              ],
+              [
+                6.85974212,
+                46.48727991,
+                "Monts-de-Corsier, La Chaux",
+                "B",
+                "ch:1:sloid:4961:0:2"
+              ],
+              [
+                6.84862996,
+                46.48306155,
+                "Jongny, Combette",
+                "",
+                "ch:1:sloid:79181:0:2"
+              ],
+              [
+                6.84441686,
+                46.48207186,
+                "Jongny, Reposoir",
+                "",
+                "ch:1:sloid:4728:0:2"
+              ],
+              [
+                6.84140751,
+                46.47927588,
+                "Jongny, village",
+                "",
+                "ch:1:sloid:4966:0:2"
+              ],
+              [
+                6.83619728,
+                46.4771355,
+                "Chardonne, rte de Châtel",
+                "",
+                "ch:1:sloid:4712:0:2"
+              ],
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              [
+                6.83976359,
+                46.47077572,
+                "Corseaux, Délassement",
+                "B",
+                "ch:1:sloid:4967:0:2"
+              ],
+              [
+                6.83648474,
+                46.46890724,
+                "Vevey, funiculaire",
+                "B",
+                "ch:1:sloid:93992:0:4"
+              ],
+              [
+                6.83672728,
+                46.46645708,
+                "Vevey, Bergère",
+                "",
+                "ch:1:sloid:93982:0:1"
+              ],
+              [
+                6.84129971,
+                46.46347467,
+                "Vevey, gare",
+                "D",
+                "ch:1:sloid:79174:0:5"
+              ]
+            ]
+          },
+          {
+            "id": "a612d733f358efb00f574e9b",
+            "routeId": "92-213-j26-1",
+            "stops": [
+              [
+                6.89565677,
+                46.52788191,
+                "Châtel-St-Denis, gare",
+                "A",
+                "ch:1:sloid:77718:0:19381"
+              ],
+              [
+                6.89784866,
+                46.52544059,
+                "Châtel-St-Denis, centre",
+                "",
+                "ch:1:sloid:7241:0:18264"
+              ],
+              [
+                6.8971839,
+                46.52176295,
+                "Châtel-St-Denis, Bellière",
+                "",
+                "ch:1:sloid:4965:0:2"
+              ],
+              [
+                6.89036569,
+                46.50975789,
+                "Monts-de-Corsier, Mur-Blanc",
+                "",
+                "ch:1:sloid:79187:0:2"
+              ],
+              [
+                6.88776058,
+                46.50742086,
+                "Monts-de-Corsier, Banderette",
+                "",
+                "ch:1:sloid:4955:0:2"
+              ],
+              [
+                6.88215509,
+                46.50392749,
+                "Monts-de-Corsier, L'Hautigny",
+                "",
+                "ch:1:sloid:4956:0:2"
+              ],
+              [
+                6.87784318,
+                46.50107699,
+                "Mts-de-Corsier, Petit Hautigny",
+                "",
+                "ch:1:sloid:79184:0:2"
+              ],
+              [
+                6.87513925,
+                46.49821396,
+                "Monts-de-Corsier, Dautère",
+                "",
+                "ch:1:sloid:91902:0:2"
+              ],
+              [
+                6.87087225,
+                46.494015,
+                "Monts-de-Corsier, Longpraz",
+                "",
+                "ch:1:sloid:4962:0:2"
+              ],
+              [
+                6.86069434,
+                46.48727373,
+                "Monts-de-Corsier, La Chaux",
+                "C",
+                "ch:1:sloid:4961:0:4"
+              ],
+              [
+                6.84862996,
+                46.48306155,
+                "Jongny, Combette",
+                "",
+                "ch:1:sloid:79181:0:2"
+              ],
+              [
+                6.84441686,
+                46.48207186,
+                "Jongny, Reposoir",
+                "",
+                "ch:1:sloid:4728:0:2"
+              ],
+              [
+                6.84140751,
+                46.47927588,
+                "Jongny, village",
+                "",
+                "ch:1:sloid:4966:0:2"
+              ],
+              [
+                6.83619728,
+                46.4771355,
+                "Chardonne, rte de Châtel",
+                "",
+                "ch:1:sloid:4712:0:2"
+              ],
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              [
+                6.83976359,
+                46.47077572,
+                "Corseaux, Délassement",
+                "B",
+                "ch:1:sloid:4967:0:2"
+              ],
+              [
+                6.83648474,
+                46.46890724,
+                "Vevey, funiculaire",
+                "B",
+                "ch:1:sloid:93992:0:4"
+              ],
+              [
+                6.83672728,
+                46.46645708,
+                "Vevey, Bergère",
+                "",
+                "ch:1:sloid:93982:0:1"
+              ],
+              [
+                6.84129971,
+                46.46347467,
+                "Vevey, gare",
+                "D",
+                "ch:1:sloid:79174:0:5"
+              ]
+            ]
+          },
+          {
+            "id": "bf520d40061ef76165761622",
+            "routeId": "92-217-j26-1",
+            "stops": [
+              [
+                6.84129971,
+                46.46347467,
+                "Vevey, gare",
+                "D",
+                "ch:1:sloid:79174:0:5"
+              ],
+              [
+                6.83653864,
+                46.46669839,
+                "Vevey, Bergère",
+                "",
+                "ch:1:sloid:93982:0:2"
+              ],
+              [
+                6.83654762,
+                46.46878349,
+                "Vevey, funiculaire",
+                "C",
+                "ch:1:sloid:93992:0:3"
+              ],
+              [
+                6.83979952,
+                46.47065817,
+                "Corseaux, Délassement",
+                "A",
+                "ch:1:sloid:4967:0:1"
+              ],
+              [
+                6.84665367,
+                46.47305246,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:3"
+              ],
+              [
+                6.84374313,
+                46.47622612,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:1"
+              ],
+              [
+                6.8377873,
+                46.47726541,
+                "Chardonne, rte de Châtel",
+                "",
+                "ch:1:sloid:4712:0:1"
+              ],
+              [
+                6.84165005,
+                46.47930062,
+                "Jongny, village",
+                "",
+                "ch:1:sloid:4966:0:1"
+              ],
+              [
+                6.84446178,
+                46.48195433,
+                "Jongny, Reposoir",
+                "",
+                "ch:1:sloid:4728:0:1"
+              ],
+              [
+                6.84878268,
+                46.48301825,
+                "Jongny, Combette",
+                "",
+                "ch:1:sloid:79181:0:1"
+              ],
+              [
+                6.86006552,
+                46.48694592,
+                "Monts-de-Corsier, La Chaux",
+                "A",
+                "ch:1:sloid:4961:0:1"
+              ],
+              [
+                6.85246577,
+                46.48951885,
+                "Jongny, Chaudette",
+                "",
+                "ch:1:sloid:4958:0:1"
+              ],
+              [
+                6.85242085,
+                46.49390987,
+                "Attalens, Perrey",
+                "",
+                "ch:1:sloid:4957:0:1"
+              ],
+              [
+                6.85060626,
+                46.50640069,
+                "Attalens, La Fin",
+                "",
+                "ch:1:sloid:79191:0:1"
+              ],
+              [
+                6.84866589,
+                46.51025248,
+                "Attalens, village",
+                "",
+                "ch:1:sloid:4960:0:1"
+              ],
+              [
+                6.84506365,
+                46.51239156,
+                "Attalens, Montessinge",
+                "",
+                "ch:1:sloid:10497:0:1"
+              ],
+              [
+                6.83223571,
+                46.52022383,
+                "Granges (Veveyse), Le Battiau",
+                "",
+                "ch:1:sloid:77717:0:16119"
+              ],
+              [
+                6.82944195,
+                46.52457528,
+                "Granges (Veveyse), village",
+                "",
+                "ch:1:sloid:77715:0:16229"
+              ],
+              [
+                6.83110383,
+                46.52918596,
+                "Granges (Veveyse), La Cuvigne",
+                "",
+                "ch:1:sloid:77714:0:16192"
+              ],
+              [
+                6.83227164,
+                46.53371592,
+                "Granges (Veveyse), Le Rupan",
+                "",
+                "ch:1:sloid:77713:0:16340"
+              ],
+              [
+                6.83753577,
+                46.54216917,
+                "Palézieux, gare",
+                "",
+                "ch:1:sloid:70440:0:933913"
+              ]
+            ]
+          },
+          {
+            "id": "bffd6ea4edbdabd0de054d37",
+            "routeId": "92-216-j26-1",
+            "stops": [
+              [
+                6.85295086,
+                46.52574344,
+                "Bossonnens, gare",
+                "",
+                "ch:1:sloid:79195:0:2"
+              ],
+              [
+                6.84843233,
+                46.52175677,
+                "Bossonnens, village",
+                "",
+                "ch:1:sloid:79194:0:2"
+              ],
+              [
+                6.84734537,
+                46.51548875,
+                "Attalens, Fin du Clos",
+                "",
+                "ch:1:sloid:95678:0:2"
+              ],
+              [
+                6.84899827,
+                46.51247193,
+                "Attalens, Corcelles",
+                "",
+                "ch:1:sloid:79193:0:2"
+              ],
+              [
+                6.84854013,
+                46.51002992,
+                "Attalens, village",
+                "",
+                "ch:1:sloid:4960:0:2"
+              ],
+              [
+                6.85035473,
+                46.50600499,
+                "Attalens, La Fin",
+                "",
+                "ch:1:sloid:79191:0:2"
+              ],
+              [
+                6.85242984,
+                46.49303169,
+                "Attalens, Perrey",
+                "",
+                "ch:1:sloid:4957:0:2"
+              ],
+              [
+                6.85212441,
+                46.48938897,
+                "Jongny, Chaudette",
+                "",
+                "ch:1:sloid:4958:0:2"
+              ],
+              [
+                6.85974212,
+                46.48727991,
+                "Monts-de-Corsier, La Chaux",
+                "B",
+                "ch:1:sloid:4961:0:2"
+              ],
+              [
+                6.84862996,
+                46.48306155,
+                "Jongny, Combette",
+                "",
+                "ch:1:sloid:79181:0:2"
+              ],
+              [
+                6.84441686,
+                46.48207186,
+                "Jongny, Reposoir",
+                "",
+                "ch:1:sloid:4728:0:2"
+              ],
+              [
+                6.84140751,
+                46.47927588,
+                "Jongny, village",
+                "",
+                "ch:1:sloid:4966:0:2"
+              ],
+              [
+                6.83619728,
+                46.4771355,
+                "Chardonne, rte de Châtel",
+                "",
+                "ch:1:sloid:4712:0:2"
+              ],
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              [
+                6.83976359,
+                46.47077572,
+                "Corseaux, Délassement",
+                "B",
+                "ch:1:sloid:4967:0:2"
+              ],
+              [
+                6.83648474,
+                46.46890724,
+                "Vevey, funiculaire",
+                "B",
+                "ch:1:sloid:93992:0:4"
+              ],
+              [
+                6.83672728,
+                46.46645708,
+                "Vevey, Bergère",
+                "",
+                "ch:1:sloid:93982:0:1"
+              ],
+              [
+                6.84229684,
+                46.46233611,
+                "Vevey, gare",
+                "A",
+                "ch:1:sloid:79174:0:1"
+              ]
+            ]
+          },
+          {
+            "id": "d6d1ac4bedb5325efcd628ab",
+            "routeId": "92-217-j26-1",
+            "stops": [
+              [
+                6.83753577,
+                46.54216917,
+                "Palézieux, gare",
+                "",
+                "ch:1:sloid:70440:0:933913"
+              ],
+              [
+                6.83217283,
+                46.5328631,
+                "Granges (Veveyse), Le Rupan",
+                "",
+                "ch:1:sloid:77713:0:16339"
+              ],
+              [
+                6.83099603,
+                46.52955678,
+                "Granges (Veveyse), La Cuvigne",
+                "",
+                "ch:1:sloid:77714:0:16191"
+              ],
+              [
+                6.82945093,
+                46.52469272,
+                "Granges (Veveyse), village",
+                "",
+                "ch:1:sloid:77715:0:16228"
+              ],
+              [
+                6.83228062,
+                46.5201002,
+                "Granges (Veveyse), Le Battiau",
+                "",
+                "ch:1:sloid:77717:0:16118"
+              ],
+              [
+                6.84523433,
+                46.51211955,
+                "Attalens, Montessinge",
+                "",
+                "ch:1:sloid:10497:0:2"
+              ],
+              [
+                6.84854013,
+                46.51002992,
+                "Attalens, village",
+                "",
+                "ch:1:sloid:4960:0:2"
+              ],
+              [
+                6.85035473,
+                46.50600499,
+                "Attalens, La Fin",
+                "",
+                "ch:1:sloid:79191:0:2"
+              ],
+              [
+                6.85242984,
+                46.49303169,
+                "Attalens, Perrey",
+                "",
+                "ch:1:sloid:4957:0:2"
+              ],
+              [
+                6.85212441,
+                46.48938897,
+                "Jongny, Chaudette",
+                "",
+                "ch:1:sloid:4958:0:2"
+              ],
+              [
+                6.85974212,
+                46.48727991,
+                "Monts-de-Corsier, La Chaux",
+                "B",
+                "ch:1:sloid:4961:0:2"
+              ],
+              [
+                6.84862996,
+                46.48306155,
+                "Jongny, Combette",
+                "",
+                "ch:1:sloid:79181:0:2"
+              ],
+              [
+                6.84441686,
+                46.48207186,
+                "Jongny, Reposoir",
+                "",
+                "ch:1:sloid:4728:0:2"
+              ],
+              [
+                6.84140751,
+                46.47927588,
+                "Jongny, village",
+                "",
+                "ch:1:sloid:4966:0:2"
+              ],
+              [
+                6.83619728,
+                46.4771355,
+                "Chardonne, rte de Châtel",
+                "",
+                "ch:1:sloid:4712:0:2"
+              ],
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              [
+                6.83976359,
+                46.47077572,
+                "Corseaux, Délassement",
+                "B",
+                "ch:1:sloid:4967:0:2"
+              ],
+              [
+                6.83648474,
+                46.46890724,
+                "Vevey, funiculaire",
+                "B",
+                "ch:1:sloid:93992:0:4"
+              ],
+              [
+                6.83672728,
+                46.46645708,
+                "Vevey, Bergère",
+                "",
+                "ch:1:sloid:93982:0:1"
+              ],
+              [
+                6.84129971,
+                46.46347467,
+                "Vevey, gare",
+                "D",
+                "ch:1:sloid:79174:0:5"
+              ]
+            ]
+          },
+          {
+            "id": "d7f379646de95a8b5142d70b",
+            "routeId": "92-213-j26-1",
+            "stops": [
+              [
+                6.84129971,
+                46.46347467,
+                "Vevey, gare",
+                "D",
+                "ch:1:sloid:79174:0:5"
+              ],
+              [
+                6.83653864,
+                46.46669839,
+                "Vevey, Bergère",
+                "",
+                "ch:1:sloid:93982:0:2"
+              ],
+              [
+                6.83654762,
+                46.46878349,
+                "Vevey, funiculaire",
+                "C",
+                "ch:1:sloid:93992:0:3"
+              ],
+              [
+                6.83979952,
+                46.47065817,
+                "Corseaux, Délassement",
+                "A",
+                "ch:1:sloid:4967:0:1"
+              ],
+              [
+                6.84665367,
+                46.47305246,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:3"
+              ],
+              [
+                6.84374313,
+                46.47622612,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:1"
+              ],
+              [
+                6.8377873,
+                46.47726541,
+                "Chardonne, rte de Châtel",
+                "",
+                "ch:1:sloid:4712:0:1"
+              ],
+              [
+                6.84165005,
+                46.47930062,
+                "Jongny, village",
+                "",
+                "ch:1:sloid:4966:0:1"
+              ],
+              [
+                6.84446178,
+                46.48195433,
+                "Jongny, Reposoir",
+                "",
+                "ch:1:sloid:4728:0:1"
+              ],
+              [
+                6.84878268,
+                46.48301825,
+                "Jongny, Combette",
+                "",
+                "ch:1:sloid:79181:0:1"
+              ],
+              [
+                6.86006552,
+                46.48694592,
+                "Monts-de-Corsier, La Chaux",
+                "A",
+                "ch:1:sloid:4961:0:1"
+              ],
+              [
+                6.87104293,
+                46.49402119,
+                "Monts-de-Corsier, Longpraz",
+                "",
+                "ch:1:sloid:4962:0:1"
+              ],
+              [
+                6.87549857,
+                46.4985417,
+                "Monts-de-Corsier, Dautère",
+                "",
+                "ch:1:sloid:91902:0:1"
+              ],
+              [
+                6.87831928,
+                46.50153456,
+                "Mts-de-Corsier, Petit Hautigny",
+                "",
+                "ch:1:sloid:79184:0:1"
+              ],
+              [
+                6.88238865,
+                46.50394604,
+                "Monts-de-Corsier, L'Hautigny",
+                "",
+                "ch:1:sloid:4956:0:1"
+              ],
+              [
+                6.8889733,
+                46.50774854,
+                "Monts-de-Corsier, Banderette",
+                "",
+                "ch:1:sloid:4955:0:1"
+              ],
+              [
+                6.89053637,
+                46.50938075,
+                "Monts-de-Corsier, Mur-Blanc",
+                "",
+                "ch:1:sloid:79187:0:1"
+              ],
+              [
+                6.89713899,
+                46.52147243,
+                "Châtel-St-Denis, Bellière",
+                "",
+                "ch:1:sloid:4965:0:1"
+              ],
+              [
+                6.89784866,
+                46.52544059,
+                "Châtel-St-Denis, centre",
+                "",
+                "ch:1:sloid:7241:0:18264"
+              ]
+            ]
+          }
+        ],
+        "maximumAttachmentMetres": 15,
+        "maximumLengthMetres": 2050,
+        "chain": [
+          {
+            "wayId": "33834623",
+            "from": "3574221526",
+            "to": "294654205",
+            "direction": "forward"
+          },
+          {
+            "wayId": "26834441",
+            "from": "294654205",
+            "to": "294654202",
+            "direction": "backward"
+          },
+          {
+            "wayId": "296774233",
+            "from": "294654202",
+            "to": "294654190",
+            "direction": "backward"
+          },
+          {
+            "wayId": "353177811",
+            "from": "294654190",
+            "to": "330109326",
+            "direction": "backward"
+          },
+          {
+            "wayId": "56058308",
+            "from": "330109326",
+            "to": "387420834",
+            "direction": "backward"
+          },
+          {
+            "wayId": "26834440",
+            "from": "387420834",
+            "to": "11149836135",
+            "direction": "backward"
+          },
+          {
+            "wayId": "1320550996",
+            "from": "11149836135",
+            "to": "12220444344",
+            "direction": "forward"
+          },
+          {
+            "wayId": "26834438",
+            "from": "12220444344",
+            "to": "12220433894",
+            "direction": "forward"
+          },
+          {
+            "wayId": "1320550993",
+            "from": "12220433894",
+            "to": "83324695",
+            "direction": "forward"
+          },
+          {
+            "wayId": "1238158528",
+            "from": "83324695",
+            "to": "6763649067",
+            "direction": "backward"
+          }
+        ],
+        "relations": [
+          {
+            "id": "8291117",
+            "routeId": "92-213-j26-1"
+          },
+          {
+            "id": "8291116",
+            "routeId": "92-216-j26-1"
+          },
+          {
+            "id": "12495927",
+            "routeId": "92-217-j26-1"
+          }
+        ],
+        "admission": "Only three exact downhill platform pairs in all complete route contexts. Ten connected source ways must appear in the same order in all three exact j26 bus route relations. Preserve directions, source stop identities and calls; no intersecting returned restrictions or conditional access. A fixed 2050 m ceiling is scoped to this independently evidenced chain; general detour limits are unchanged. Both original cantonal and pfaedle failures remain retained. Inferred centreline geometry, not operator-certified running lanes or temporary access.",
+        "unavailableSources": [
+          {
+            "url": "https://horaire26.vmcv.ch/ligne-213/",
+            "reason": "Direct acquisition returned HTTP 403; not used as retained evidence."
+          }
+        ]
+      },
       "montCarmel": {
         "schemaVersion": 1,
         "id": "mont-carmel-terminal",
@@ -820,6 +2631,10 @@
         "montCarmel": {
           "file": "data/fribourg-mont-carmel-policy.json",
           "sha256": "a9b44b222fdf7b2c9dc26899c350520a8de3945d06a13bff75a357b6133a3b27"
+        },
+        "jongny": {
+          "file": "data/fribourg-jongny-policy.json",
+          "sha256": "df10b99f56fc6dd5cc4624713eea614bbeaf124802257ea433f0d12220713e2f"
         }
       },
       "completePatternsTested": 614
@@ -1862,10 +3677,10 @@
     "key": "GTFS route identity + direction_id + full ordered original platform IDs, including repeats and out-of-canton calls"
   },
   "routesByStatus": {
-    "admitted-all-dated-trips": 114,
+    "admitted-all-dated-trips": 117,
     "inactive-on-validation-dates": 48,
     "excluded": 21,
-    "partially-admitted": 24
+    "partially-admitted": 21
   },
   "districts": [
     {
@@ -2228,10 +4043,11 @@
       "sourceHashes": {
         "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
         "source": "e8523af34fcedca7f8b0cbe495446ff93a75d8563c62b243da942c39c5243f47",
-        "crosswalk": "ee13423e453c4f4cff253608373233f77e56a42446552551d1722da838f9d1f1",
+        "crosswalk": "c3be9e15e633d44c32d3bd439469f2ef5979fe1fcd9764c102170ca3d751f343",
         "provenance": "7d23e09a35768de1cfd598a7ca824ac7c93d03242ff8955e70ca778213549086",
         "roads": "87f4d4be2662ff0982cea837e95f73863096d4bc37bd19ecc09ea88e064c465e",
         "montCarmel": "a9b44b222fdf7b2c9dc26899c350520a8de3945d06a13bff75a357b6133a3b27",
+        "jongny": "df10b99f56fc6dd5cc4624713eea614bbeaf124802257ea433f0d12220713e2f",
         "rail": "7ea92c8c1120a49e9497ec3ae6d7a0d2fc2d761e8b19d790191ed7a6c0212c79",
         "railInputs": "434a02eb6906bb141a00ba6b7c77622767b78262617326d6aed56fa683cd8046",
         "avry": "8d20a93732eea409915103c410816075ac428693b7dc8fcb6dc37c1f97849e19",
@@ -2240,23 +4056,23 @@
       },
       "coverage": {
         "trips": 8556,
-        "admittedTrips": 5375,
+        "admittedTrips": 5449,
         "scheduledTrips": 5812,
         "representativeHeadwayTrips": 2744,
-        "admittedScheduledTrips": 5375,
+        "admittedScheduledTrips": 5449,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 89328,
-        "matchedScheduledSegmentOccurrences": 87329,
+        "matchedScheduledSegmentOccurrences": 87403,
         "segmentOccurrences": 92072,
-        "matchedSegmentOccurrences": 87329,
-        "admittedSegmentOccurrences": 82740,
+        "matchedSegmentOccurrences": 87403,
+        "admittedSegmentOccurrences": 84146,
         "directedPairs": 4509,
-        "matchedDirectedPairs": 4202,
+        "matchedDirectedPairs": 4205,
         "patterns": 849,
-        "completePatterns": 715,
-        "admittedPatterns": 715,
+        "completePatterns": 721,
+        "admittedPatterns": 721,
         "excludedTrips": {
-          "incomplete-directed-pattern": 316,
+          "incomplete-directed-pattern": 242,
           "no-verified-operator-line-crosswalk": 2856,
           "provisional-boundary-membership": 9
         }
@@ -2585,24 +4401,22 @@
           "id": "876:bus",
           "agency": "Transports publics Vevey-Montreux-Chillon-Villeneuve",
           "trips": 148,
-          "admittedTrips": 74,
+          "admittedTrips": 148,
           "scheduledTrips": 148,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 74,
+          "admittedScheduledTrips": 148,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 2803,
-          "matchedScheduledSegmentOccurrences": 2729,
+          "matchedScheduledSegmentOccurrences": 2803,
           "segmentOccurrences": 2803,
-          "matchedSegmentOccurrences": 2729,
-          "admittedSegmentOccurrences": 1397,
+          "matchedSegmentOccurrences": 2803,
+          "admittedSegmentOccurrences": 2803,
           "directedPairs": 117,
-          "matchedDirectedPairs": 114,
+          "matchedDirectedPairs": 117,
           "patterns": 10,
-          "completePatterns": 4,
-          "admittedPatterns": 4,
-          "excludedTrips": {
-            "incomplete-directed-pattern": 74
-          }
+          "completePatterns": 10,
+          "admittedPatterns": 10,
+          "excludedTrips": {}
         }
       ],
       "timing": {
@@ -2724,11 +4538,11 @@
           }
         },
         "patternsTestedAcrossBothDates": 614,
-        "newlyAdmittedTrips": 2137,
+        "newlyAdmittedTrips": 2211,
         "lostAdmittedTrips": 0,
-        "matchedDirectedPairs": 534,
-        "matchedSegmentOccurrences": 6363,
-        "admittedSegmentOccurrences": 5741
+        "matchedDirectedPairs": 537,
+        "matchedSegmentOccurrences": 6437,
+        "admittedSegmentOccurrences": 5890
       },
       "railEffect": {
         "patternsTestedAcrossBothDates": 412,
@@ -2749,18 +4563,14 @@
           "directedPairs": 25,
           "segmentOccurrences": 192
         },
-        "implausible-detour": {
-          "directedPairs": 3,
-          "segmentOccurrences": 74
-        },
         "missing-line": {
           "directedPairs": 276,
           "segmentOccurrences": 4445
         }
       },
       "carryInTrips": 97,
-      "admittedCarryInTrips": 90,
-      "admittedOutsideCantonPlatforms": 555,
+      "admittedCarryInTrips": 93,
+      "admittedOutsideCantonPlatforms": 568,
       "directedPatternChecks": {
         "directionIds": [
           "0",
@@ -2773,12 +4583,12 @@
       },
       "payload": {
         "manifest": {
-          "bytes": 6186707,
-          "gzipBytes": 1485701
+          "bytes": 6258702,
+          "gzipBytes": 1500010
         },
         "morning": {
-          "trips": 903,
-          "gzipBytes": 1595248
+          "trips": 913,
+          "gzipBytes": 1609813
         },
         "chunks": [
           {
@@ -2786,10 +4596,10 @@
             "windowStart": 0,
             "windowEnd": 7200,
             "path": "day-chunks/00-02.json",
-            "tripCount": 94,
-            "bytes": 81137,
-            "sha256": "b4df6361e64e5230b321dd6bafe3392262571d67c9a59e173d5e60972f88519e",
-            "gzipBytes": 14474
+            "tripCount": 97,
+            "bytes": 84435,
+            "sha256": "a1dcdceff2cf93114196da39ea3cf533929aa51383e7a378c2e21257ec3bf4db",
+            "gzipBytes": 15003
           },
           {
             "id": "02-04",
@@ -2806,100 +4616,100 @@
             "windowStart": 14400,
             "windowEnd": 21600,
             "path": "day-chunks/04-06.json",
-            "tripCount": 231,
-            "bytes": 223398,
-            "sha256": "92d28dba248453806045f9f11dc9b76182d58cedf7ce43b605172a6708dbe405",
-            "gzipBytes": 35438
+            "tripCount": 233,
+            "bytes": 225707,
+            "sha256": "1df434a106d9c892350c7bcf7b4a705706fc45a948808d6daa127cb6e7515d08",
+            "gzipBytes": 35826
           },
           {
             "id": "06-08",
             "windowStart": 21600,
             "windowEnd": 28800,
             "path": "day-chunks/06-08.json",
-            "tripCount": 900,
-            "bytes": 847580,
-            "sha256": "b66b0f2b5061df768d1fa885e395baa8e7bb664112187570a180e4e14ba53d3a",
-            "gzipBytes": 108621
+            "tripCount": 910,
+            "bytes": 859047,
+            "sha256": "2f3ad6273c676a3e75144a3dc8d6f6b4c45f947dd52c95ee9aa4e5745fdf438d",
+            "gzipBytes": 109981
           },
           {
             "id": "08-10",
             "windowStart": 28800,
             "windowEnd": 36000,
             "path": "day-chunks/08-10.json",
-            "tripCount": 713,
-            "bytes": 702306,
-            "sha256": "47261d1c715191905fba769317452cde36d5bc718e0aa478c4cd99471763e5aa",
-            "gzipBytes": 92333
+            "tripCount": 723,
+            "bytes": 713789,
+            "sha256": "3a67ddc745e01681f818eb38d01dcff87c6c6c49165f4f826cd8be4be1b6f53d",
+            "gzipBytes": 93698
           },
           {
             "id": "10-12",
             "windowStart": 36000,
             "windowEnd": 43200,
             "path": "day-chunks/10-12.json",
-            "tripCount": 681,
-            "bytes": 674468,
-            "sha256": "89176922888c20e43cf074581a51566972ff5106ead9c4a76ffffe397e310b93",
-            "gzipBytes": 88845
+            "tripCount": 691,
+            "bytes": 685919,
+            "sha256": "4d72a9ebcebdc097d505d33ed26680ed9f1b8f801a133bdff5ab17c4a959d8af",
+            "gzipBytes": 90172
           },
           {
             "id": "12-14",
             "windowStart": 43200,
             "windowEnd": 50400,
             "path": "day-chunks/12-14.json",
-            "tripCount": 812,
-            "bytes": 776528,
-            "sha256": "926e8730caf9ecac516e621834ed37fea57006df9845138d7c8ee47cc92183b9",
-            "gzipBytes": 101755
+            "tripCount": 822,
+            "bytes": 787993,
+            "sha256": "7c6f6ee0913ae11e72d56c9651ee6408ece3e319faedea2cac4144d98e996bf4",
+            "gzipBytes": 103000
           },
           {
             "id": "14-16",
             "windowStart": 50400,
             "windowEnd": 57600,
             "path": "day-chunks/14-16.json",
-            "tripCount": 697,
-            "bytes": 684596,
-            "sha256": "bea0effa6140e79041d796c4db81c64bdb3fefc1c0dc34aae2b58b2410e9b39a",
-            "gzipBytes": 90300
+            "tripCount": 707,
+            "bytes": 696039,
+            "sha256": "f341fc7a816790a390ceaab6ba8f6a3674b6314ac2ec60ce1d5bc35a85ef5231",
+            "gzipBytes": 91647
           },
           {
             "id": "16-18",
             "windowStart": 57600,
             "windowEnd": 64800,
             "path": "day-chunks/16-18.json",
-            "tripCount": 900,
-            "bytes": 865083,
-            "sha256": "dd102306e464f8ba4de567d9d36f4a1ee6f03c9bf6e2d74d5bab3bedf7d328c7",
-            "gzipBytes": 110566
+            "tripCount": 910,
+            "bytes": 876641,
+            "sha256": "dcaf75eab392df4116dcfceedf5d6a8c39a216f05bda4594473bb41d29ad5e68",
+            "gzipBytes": 111804
           },
           {
             "id": "18-20",
             "windowStart": 64800,
             "windowEnd": 72000,
             "path": "day-chunks/18-20.json",
-            "tripCount": 822,
-            "bytes": 795687,
-            "sha256": "27dfbef35df3fc154f21d357f346d4fab90efe3ccbcf0f5636e13e8be406c87f",
-            "gzipBytes": 101996
+            "tripCount": 832,
+            "bytes": 807157,
+            "sha256": "5dfc3d660241f6f51e1f1540bb9a827cbbbf247286096385e0afb7a8ca467a04",
+            "gzipBytes": 103305
           },
           {
             "id": "20-22",
             "windowStart": 72000,
             "windowEnd": 79200,
             "path": "day-chunks/20-22.json",
-            "tripCount": 490,
-            "bytes": 485367,
-            "sha256": "390b34f41b26c69e89e4e02bc9352488da49fe6d7808a4e5a1f7ee62e6890741",
-            "gzipBytes": 65129
+            "tripCount": 499,
+            "bytes": 495562,
+            "sha256": "5244e2376f0efc70c7fbee7e918a70653284960a917a353f4b751f06b7103f79",
+            "gzipBytes": 66434
           },
           {
             "id": "22-24",
             "windowStart": 79200,
             "windowEnd": 86400,
             "path": "day-chunks/22-24.json",
-            "tripCount": 377,
-            "bytes": 363959,
-            "sha256": "89ca2f50a50f9dc45a2a74256a14c51287394d3a47012bb1ed8ecb630b3a1ef7",
-            "gzipBytes": 49661
+            "tripCount": 384,
+            "bytes": 371904,
+            "sha256": "722aed04d7bfa15cd0a546d6283ec900a37ce1f6f7c88393857eb21b9eff7450",
+            "gzipBytes": 50698
           }
         ]
       },
@@ -2921,10 +4731,11 @@
       "sourceHashes": {
         "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
         "source": "e8523af34fcedca7f8b0cbe495446ff93a75d8563c62b243da942c39c5243f47",
-        "crosswalk": "ee13423e453c4f4cff253608373233f77e56a42446552551d1722da838f9d1f1",
+        "crosswalk": "c3be9e15e633d44c32d3bd439469f2ef5979fe1fcd9764c102170ca3d751f343",
         "provenance": "7d23e09a35768de1cfd598a7ca824ac7c93d03242ff8955e70ca778213549086",
         "roads": "87f4d4be2662ff0982cea837e95f73863096d4bc37bd19ecc09ea88e064c465e",
         "montCarmel": "a9b44b222fdf7b2c9dc26899c350520a8de3945d06a13bff75a357b6133a3b27",
+        "jongny": "df10b99f56fc6dd5cc4624713eea614bbeaf124802257ea433f0d12220713e2f",
         "rail": "7ea92c8c1120a49e9497ec3ae6d7a0d2fc2d761e8b19d790191ed7a6c0212c79",
         "railInputs": "434a02eb6906bb141a00ba6b7c77622767b78262617326d6aed56fa683cd8046",
         "avry": "8d20a93732eea409915103c410816075ac428693b7dc8fcb6dc37c1f97849e19",
@@ -2933,23 +4744,23 @@
       },
       "coverage": {
         "trips": 6326,
-        "admittedTrips": 3686,
+        "admittedTrips": 3743,
         "scheduledTrips": 4062,
         "representativeHeadwayTrips": 2264,
-        "admittedScheduledTrips": 3686,
+        "admittedScheduledTrips": 3743,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 62231,
-        "matchedScheduledSegmentOccurrences": 60645,
+        "matchedScheduledSegmentOccurrences": 60702,
         "segmentOccurrences": 64495,
-        "matchedSegmentOccurrences": 60645,
-        "admittedSegmentOccurrences": 57643,
+        "matchedSegmentOccurrences": 60702,
+        "admittedSegmentOccurrences": 58729,
         "directedPairs": 4607,
-        "matchedDirectedPairs": 4352,
+        "matchedDirectedPairs": 4355,
         "patterns": 588,
-        "completePatterns": 496,
-        "admittedPatterns": 496,
+        "completePatterns": 503,
+        "admittedPatterns": 503,
         "excludedTrips": {
-          "incomplete-directed-pattern": 275,
+          "incomplete-directed-pattern": 218,
           "no-verified-operator-line-crosswalk": 2365
         }
       },
@@ -3298,29 +5109,27 @@
           "id": "876:bus",
           "agency": "Transports publics Vevey-Montreux-Chillon-Villeneuve",
           "trips": 115,
-          "admittedTrips": 58,
+          "admittedTrips": 115,
           "scheduledTrips": 115,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 58,
+          "admittedScheduledTrips": 115,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 2190,
-          "matchedScheduledSegmentOccurrences": 2133,
+          "matchedScheduledSegmentOccurrences": 2190,
           "segmentOccurrences": 2190,
-          "matchedSegmentOccurrences": 2133,
-          "admittedSegmentOccurrences": 1104,
+          "matchedSegmentOccurrences": 2190,
+          "admittedSegmentOccurrences": 2190,
           "directedPairs": 117,
-          "matchedDirectedPairs": 114,
+          "matchedDirectedPairs": 117,
           "patterns": 11,
-          "completePatterns": 4,
-          "admittedPatterns": 4,
-          "excludedTrips": {
-            "incomplete-directed-pattern": 57
-          }
+          "completePatterns": 11,
+          "admittedPatterns": 11,
+          "excludedTrips": {}
         }
       ],
       "timing": {
-        "zeroDurationSegmentOccurrences": 4583,
-        "zeroDurationOver100m": 4583,
+        "zeroDurationSegmentOccurrences": 4584,
+        "zeroDurationOver100m": 4584,
         "maximumPositiveDurationSpeedKmh": 160.05716324720422,
         "note": "Original GTFS times retained, including minute-rounded equal timestamps. Zero-duration segments are not speed observations and no artificial travel time is invented."
       },
@@ -3409,11 +5218,11 @@
           }
         },
         "patternsTestedAcrossBothDates": 614,
-        "newlyAdmittedTrips": 1288,
+        "newlyAdmittedTrips": 1345,
         "lostAdmittedTrips": 0,
-        "matchedDirectedPairs": 510,
-        "matchedSegmentOccurrences": 4090,
-        "admittedSegmentOccurrences": 3384
+        "matchedDirectedPairs": 513,
+        "matchedSegmentOccurrences": 4147,
+        "admittedSegmentOccurrences": 3484
       },
       "railEffect": {
         "patternsTestedAcrossBothDates": 412,
@@ -3434,18 +5243,14 @@
           "directedPairs": 11,
           "segmentOccurrences": 81
         },
-        "implausible-detour": {
-          "directedPairs": 3,
-          "segmentOccurrences": 57
-        },
         "missing-line": {
           "directedPairs": 240,
           "segmentOccurrences": 3696
         }
       },
       "carryInTrips": 179,
-      "admittedCarryInTrips": 154,
-      "admittedOutsideCantonPlatforms": 507,
+      "admittedCarryInTrips": 159,
+      "admittedOutsideCantonPlatforms": 527,
       "directedPatternChecks": {
         "directionIds": [
           "0",
@@ -3458,12 +5263,12 @@
       },
       "payload": {
         "manifest": {
-          "bytes": 5972805,
-          "gzipBytes": 1475075
+          "bytes": 6053330,
+          "gzipBytes": 1491522
         },
         "morning": {
-          "trips": 478,
-          "gzipBytes": 1537932
+          "trips": 484,
+          "gzipBytes": 1556452
         },
         "chunks": [
           {
@@ -3471,120 +5276,120 @@
             "windowStart": 0,
             "windowEnd": 7200,
             "path": "day-chunks/00-02.json",
-            "tripCount": 136,
-            "bytes": 127247,
-            "sha256": "32ac17ccbd9a7a19808818580d091afe05d96a036320b17b160fd6787cc8ff8d",
-            "gzipBytes": 23060
+            "tripCount": 139,
+            "bytes": 130605,
+            "sha256": "656f8029b674afab87b260cc9f8362df69353607999c3bea4f741073bb2a5b27",
+            "gzipBytes": 23596
           },
           {
             "id": "02-04",
             "windowStart": 7200,
             "windowEnd": 14400,
             "path": "day-chunks/02-04.json",
-            "tripCount": 43,
-            "bytes": 54040,
-            "sha256": "eaec43fd74912f40e6a4ff61d8f88a62a8a2f4041f19675f439b8fc0307c7be8",
-            "gzipBytes": 10895
+            "tripCount": 45,
+            "bytes": 56330,
+            "sha256": "d4b5d3d18a9efe2c65f93bc2419ef334c3e92cac2059a8127d39f884c5949af2",
+            "gzipBytes": 11282
           },
           {
             "id": "04-06",
             "windowStart": 14400,
             "windowEnd": 21600,
             "path": "day-chunks/04-06.json",
-            "tripCount": 114,
-            "bytes": 113060,
-            "sha256": "5d8ffd18035c9b129cd2ee5515d83edcf5a689d3f495e4e23c0ee1f10adaee57",
-            "gzipBytes": 18778
+            "tripCount": 115,
+            "bytes": 114274,
+            "sha256": "0fcecaa1264f2c2daa22897b91fbf9b7113ba4b13b7f50d9509051bb2980d99a",
+            "gzipBytes": 18986
           },
           {
             "id": "06-08",
             "windowStart": 21600,
             "windowEnd": 28800,
             "path": "day-chunks/06-08.json",
-            "tripCount": 397,
-            "bytes": 381675,
-            "sha256": "be7c236c4eb9574e05b6558b7df070497b66c9bba60cd8e65bcbbbf89a7a1969",
-            "gzipBytes": 53719
+            "tripCount": 402,
+            "bytes": 387461,
+            "sha256": "057ef255c44cb6c52c56d1d31e062fa6691d1727bbc201c397422d3bd425d964",
+            "gzipBytes": 54554
           },
           {
             "id": "08-10",
             "windowStart": 28800,
             "windowEnd": 36000,
             "path": "day-chunks/08-10.json",
-            "tripCount": 513,
-            "bytes": 502348,
-            "sha256": "afe190b900f2495dd29ce6ed5a5c038d553cf9034dad1f7bdfe9d93ffac25d5c",
-            "gzipBytes": 68220
+            "tripCount": 520,
+            "bytes": 510393,
+            "sha256": "19639f32b1e20d5ffd321c6ba15872e222cdb053cc34804e4ef04da37abf3da3",
+            "gzipBytes": 69274
           },
           {
             "id": "10-12",
             "windowStart": 36000,
             "windowEnd": 43200,
             "path": "day-chunks/10-12.json",
-            "tripCount": 526,
-            "bytes": 511803,
-            "sha256": "d78fb39129a5da9d0a5d37717d8d06e6baefe34e9131792d1ec3fa552c9dc023",
-            "gzipBytes": 69088
+            "tripCount": 533,
+            "bytes": 519846,
+            "sha256": "6ead0d704167053a7c859e55693ffded3f9f7f6ec14fdc0c2c06f257efce1983",
+            "gzipBytes": 70092
           },
           {
             "id": "12-14",
             "windowStart": 43200,
             "windowEnd": 50400,
             "path": "day-chunks/12-14.json",
-            "tripCount": 527,
-            "bytes": 511194,
-            "sha256": "d3bf621bee6af7f22907066d5c7f94b2b2617a87bc55aec25df7a52c95bca5fa",
-            "gzipBytes": 69266
+            "tripCount": 534,
+            "bytes": 519239,
+            "sha256": "22aeed1b2e38066ae053b24ac00e13839a34d70421971a034f08b5127c890c19",
+            "gzipBytes": 70309
           },
           {
             "id": "14-16",
             "windowStart": 50400,
             "windowEnd": 57600,
             "path": "day-chunks/14-16.json",
-            "tripCount": 515,
-            "bytes": 501853,
-            "sha256": "1e34e2e0bcc9c6df7dcf9488b143886c2af50fae43c56e7158d49625f84aafb4",
-            "gzipBytes": 67757
+            "tripCount": 522,
+            "bytes": 509894,
+            "sha256": "eb02e73c9edb85826bc09e9250e9caa43727708c0986c4c93c25ac2b8d8784f1",
+            "gzipBytes": 68793
           },
           {
             "id": "16-18",
             "windowStart": 57600,
             "windowEnd": 64800,
             "path": "day-chunks/16-18.json",
-            "tripCount": 552,
-            "bytes": 533581,
-            "sha256": "388c49f93e974725b7e6b93cb82326be102bff5ea353e8437833093b1b6e1f3f",
-            "gzipBytes": 71977
+            "tripCount": 559,
+            "bytes": 541623,
+            "sha256": "44b1703e7a6fc6b381a9e6b2dad5335fd6995a0bd0607796d6671c7c92229993",
+            "gzipBytes": 73007
           },
           {
             "id": "18-20",
             "windowStart": 64800,
             "windowEnd": 72000,
             "path": "day-chunks/18-20.json",
-            "tripCount": 509,
-            "bytes": 495664,
-            "sha256": "d4fbfb6ecc71cd941f167764fa4a46cdd374ed34a96b6fc993882125d8162c01",
-            "gzipBytes": 67067
+            "tripCount": 516,
+            "bytes": 503705,
+            "sha256": "fb392d2da8330f66060266018d2f8a9821ba4a725afb3149a9df4878287a49d8",
+            "gzipBytes": 68099
           },
           {
             "id": "20-22",
             "windowStart": 72000,
             "windowEnd": 79200,
             "path": "day-chunks/20-22.json",
-            "tripCount": 428,
-            "bytes": 423779,
-            "sha256": "156df7c17ef7ca7aa0fdd6dfae79898b3fd053550f66d09764690edb2946ca2e",
-            "gzipBytes": 57283
+            "tripCount": 435,
+            "bytes": 431787,
+            "sha256": "4a1f170c346449b78d5876b40756b767778b8ef301ff4c33ce291cec4c9552d1",
+            "gzipBytes": 58401
           },
           {
             "id": "22-24",
             "windowStart": 79200,
             "windowEnd": 86400,
             "path": "day-chunks/22-24.json",
-            "tripCount": 361,
-            "bytes": 349887,
-            "sha256": "9e8fda57042d377cc6783c7087edd2b79f7bf53fb9f60802ce33422bc0a4b462",
-            "gzipBytes": 47679
+            "tripCount": 367,
+            "bytes": 356800,
+            "sha256": "8f6c7134cbfa5a971f9c29990cd69211f2c1ad1f5b9d3c26ee21eda5f5a40e1d",
+            "gzipBytes": 48633
           }
         ]
       },

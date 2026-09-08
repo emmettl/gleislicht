@@ -1,0 +1,9047 @@
+{
+  "policy": {
+    "schemaVersion": 1,
+    "id": "jongny-route-chain",
+    "sourceDirectory": "data/fribourg-jongny-sources",
+    "sources": [
+      {
+        "file": "map.osm.gz",
+        "url": "https://www.openstreetmap.org/api/0.6/map?bbox=6.835,46.471,6.850,46.478",
+        "attribution": "© OpenStreetMap contributors",
+        "license": "ODbL-1.0",
+        "role": "Complete raw bbox response, deterministic gzip; ten detailed ways and three 2026 route relations independently specify the directed road chain.",
+        "sha256": "a06e7afba4a93673c55c2ed19d2237e6e50406ca5cec49ee1a873aca38c8e4b8",
+        "retrievedAt": "2026-09-08T21:06:15.816Z"
+      },
+      {
+        "file": "vmcv-network-2026.pdf",
+        "url": "https://vmcv.cdn.prismic.io/vmcv/aTqBp3NYClf9oDK-_VMCV-Planr%C3%A9seauH26.pdf",
+        "attribution": "VMCV",
+        "timetableYear": 2026,
+        "validFrom": "2025-12-14",
+        "validUntil": "2026-12-12",
+        "role": "Official schematic network plan: lines 213/216/217 and consecutive Châtillon / Cure d’Attalens stops. Identity evidence only; no geometry extracted.",
+        "sha256": "ca21dc34890e9088ab0fb5587e131c0885de85bc5a8794359b574377d7fb2d04",
+        "retrievedAt": "2026-09-08T21:06:16.718Z"
+      }
+    ],
+    "roadCacheSha256": "87f4d4be2662ff0982cea837e95f73863096d4bc37bd19ecc09ea88e064c465e",
+    "cantonalSourceSha256": "e8523af34fcedca7f8b0cbe495446ff93a75d8563c62b243da942c39c5243f47",
+    "agencyId": "876",
+    "routeIds": [
+      "92-213-j26-1",
+      "92-216-j26-1",
+      "92-217-j26-1"
+    ],
+    "dates": [
+      "2026-09-04",
+      "2026-09-06"
+    ],
+    "stops": [
+      [
+        6.84276396,
+        46.47635603,
+        "Jongny, Châtillon",
+        "",
+        "ch:1:sloid:4959:0:2"
+      ],
+      [
+        6.84600688,
+        46.47330611,
+        "Corsier-Vevey, Cure d'Attalens",
+        "",
+        "ch:1:sloid:4963:0:4"
+      ]
+    ],
+    "patterns": [
+      {
+        "id": "06ff1ec906f3d19da12cfb1c",
+        "routeId": "92-213-j26-1",
+        "stops": [
+          [
+            6.89784866,
+            46.52544059,
+            "Châtel-St-Denis, centre",
+            "",
+            "ch:1:sloid:7241:0:18264"
+          ],
+          [
+            6.8971839,
+            46.52176295,
+            "Châtel-St-Denis, Bellière",
+            "",
+            "ch:1:sloid:4965:0:2"
+          ],
+          [
+            6.89036569,
+            46.50975789,
+            "Monts-de-Corsier, Mur-Blanc",
+            "",
+            "ch:1:sloid:79187:0:2"
+          ],
+          [
+            6.88776058,
+            46.50742086,
+            "Monts-de-Corsier, Banderette",
+            "",
+            "ch:1:sloid:4955:0:2"
+          ],
+          [
+            6.88215509,
+            46.50392749,
+            "Monts-de-Corsier, L'Hautigny",
+            "",
+            "ch:1:sloid:4956:0:2"
+          ],
+          [
+            6.87784318,
+            46.50107699,
+            "Mts-de-Corsier, Petit Hautigny",
+            "",
+            "ch:1:sloid:79184:0:2"
+          ],
+          [
+            6.87513925,
+            46.49821396,
+            "Monts-de-Corsier, Dautère",
+            "",
+            "ch:1:sloid:91902:0:2"
+          ],
+          [
+            6.87087225,
+            46.494015,
+            "Monts-de-Corsier, Longpraz",
+            "",
+            "ch:1:sloid:4962:0:2"
+          ],
+          [
+            6.86069434,
+            46.48727373,
+            "Monts-de-Corsier, La Chaux",
+            "C",
+            "ch:1:sloid:4961:0:4"
+          ],
+          [
+            6.84862996,
+            46.48306155,
+            "Jongny, Combette",
+            "",
+            "ch:1:sloid:79181:0:2"
+          ],
+          [
+            6.84441686,
+            46.48207186,
+            "Jongny, Reposoir",
+            "",
+            "ch:1:sloid:4728:0:2"
+          ],
+          [
+            6.84140751,
+            46.47927588,
+            "Jongny, village",
+            "",
+            "ch:1:sloid:4966:0:2"
+          ],
+          [
+            6.83619728,
+            46.4771355,
+            "Chardonne, rte de Châtel",
+            "",
+            "ch:1:sloid:4712:0:2"
+          ],
+          [
+            6.84276396,
+            46.47635603,
+            "Jongny, Châtillon",
+            "",
+            "ch:1:sloid:4959:0:2"
+          ],
+          [
+            6.84600688,
+            46.47330611,
+            "Corsier-Vevey, Cure d'Attalens",
+            "",
+            "ch:1:sloid:4963:0:4"
+          ],
+          [
+            6.83976359,
+            46.47077572,
+            "Corseaux, Délassement",
+            "B",
+            "ch:1:sloid:4967:0:2"
+          ],
+          [
+            6.83648474,
+            46.46890724,
+            "Vevey, funiculaire",
+            "B",
+            "ch:1:sloid:93992:0:4"
+          ],
+          [
+            6.83672728,
+            46.46645708,
+            "Vevey, Bergère",
+            "",
+            "ch:1:sloid:93982:0:1"
+          ],
+          [
+            6.84129971,
+            46.46347467,
+            "Vevey, gare",
+            "D",
+            "ch:1:sloid:79174:0:5"
+          ]
+        ]
+      },
+      {
+        "id": "12bdac881967aca6c5a25454",
+        "routeId": "92-216-j26-1",
+        "stops": [
+          [
+            6.84129971,
+            46.46347467,
+            "Vevey, gare",
+            "D",
+            "ch:1:sloid:79174:0:5"
+          ],
+          [
+            6.83653864,
+            46.46669839,
+            "Vevey, Bergère",
+            "",
+            "ch:1:sloid:93982:0:2"
+          ],
+          [
+            6.83654762,
+            46.46878349,
+            "Vevey, funiculaire",
+            "C",
+            "ch:1:sloid:93992:0:3"
+          ],
+          [
+            6.83979952,
+            46.47065817,
+            "Corseaux, Délassement",
+            "A",
+            "ch:1:sloid:4967:0:1"
+          ],
+          [
+            6.84665367,
+            46.47305246,
+            "Corsier-Vevey, Cure d'Attalens",
+            "",
+            "ch:1:sloid:4963:0:3"
+          ],
+          [
+            6.84374313,
+            46.47622612,
+            "Jongny, Châtillon",
+            "",
+            "ch:1:sloid:4959:0:1"
+          ],
+          [
+            6.8377873,
+            46.47726541,
+            "Chardonne, rte de Châtel",
+            "",
+            "ch:1:sloid:4712:0:1"
+          ],
+          [
+            6.84165005,
+            46.47930062,
+            "Jongny, village",
+            "",
+            "ch:1:sloid:4966:0:1"
+          ],
+          [
+            6.84446178,
+            46.48195433,
+            "Jongny, Reposoir",
+            "",
+            "ch:1:sloid:4728:0:1"
+          ],
+          [
+            6.84878268,
+            46.48301825,
+            "Jongny, Combette",
+            "",
+            "ch:1:sloid:79181:0:1"
+          ],
+          [
+            6.86006552,
+            46.48694592,
+            "Monts-de-Corsier, La Chaux",
+            "A",
+            "ch:1:sloid:4961:0:1"
+          ],
+          [
+            6.85246577,
+            46.48951885,
+            "Jongny, Chaudette",
+            "",
+            "ch:1:sloid:4958:0:1"
+          ],
+          [
+            6.85242085,
+            46.49390987,
+            "Attalens, Perrey",
+            "",
+            "ch:1:sloid:4957:0:1"
+          ],
+          [
+            6.85060626,
+            46.50640069,
+            "Attalens, La Fin",
+            "",
+            "ch:1:sloid:79191:0:1"
+          ],
+          [
+            6.84866589,
+            46.51025248,
+            "Attalens, village",
+            "",
+            "ch:1:sloid:4960:0:1"
+          ],
+          [
+            6.84907912,
+            46.51264503,
+            "Attalens, Corcelles",
+            "",
+            "ch:1:sloid:79193:0:1"
+          ],
+          [
+            6.84730944,
+            46.51589675,
+            "Attalens, Fin du Clos",
+            "",
+            "ch:1:sloid:95678:0:1"
+          ],
+          [
+            6.84866589,
+            46.52182476,
+            "Bossonnens, village",
+            "",
+            "ch:1:sloid:79194:0:1"
+          ],
+          [
+            6.85295086,
+            46.52574344,
+            "Bossonnens, gare",
+            "",
+            "ch:1:sloid:79195:0:2"
+          ]
+        ]
+      },
+      {
+        "id": "438f12c3a4bb0d2c7fddae0f",
+        "routeId": "92-213-j26-1",
+        "stops": [
+          [
+            6.89565677,
+            46.52788191,
+            "Châtel-St-Denis, gare",
+            "A",
+            "ch:1:sloid:77718:0:19381"
+          ],
+          [
+            6.89784866,
+            46.52544059,
+            "Châtel-St-Denis, centre",
+            "",
+            "ch:1:sloid:7241:0:18264"
+          ],
+          [
+            6.8971839,
+            46.52176295,
+            "Châtel-St-Denis, Bellière",
+            "",
+            "ch:1:sloid:4965:0:2"
+          ],
+          [
+            6.89036569,
+            46.50975789,
+            "Monts-de-Corsier, Mur-Blanc",
+            "",
+            "ch:1:sloid:79187:0:2"
+          ],
+          [
+            6.88776058,
+            46.50742086,
+            "Monts-de-Corsier, Banderette",
+            "",
+            "ch:1:sloid:4955:0:2"
+          ],
+          [
+            6.88215509,
+            46.50392749,
+            "Monts-de-Corsier, L'Hautigny",
+            "",
+            "ch:1:sloid:4956:0:2"
+          ],
+          [
+            6.87784318,
+            46.50107699,
+            "Mts-de-Corsier, Petit Hautigny",
+            "",
+            "ch:1:sloid:79184:0:2"
+          ],
+          [
+            6.87513925,
+            46.49821396,
+            "Monts-de-Corsier, Dautère",
+            "",
+            "ch:1:sloid:91902:0:2"
+          ],
+          [
+            6.87087225,
+            46.494015,
+            "Monts-de-Corsier, Longpraz",
+            "",
+            "ch:1:sloid:4962:0:2"
+          ],
+          [
+            6.86069434,
+            46.48727373,
+            "Monts-de-Corsier, La Chaux",
+            "C",
+            "ch:1:sloid:4961:0:4"
+          ]
+        ]
+      },
+      {
+        "id": "556949705d1c2e20e32c352f",
+        "routeId": "92-213-j26-1",
+        "stops": [
+          [
+            6.89565677,
+            46.52788191,
+            "Châtel-St-Denis, gare",
+            "A",
+            "ch:1:sloid:77718:0:19381"
+          ],
+          [
+            6.89784866,
+            46.52544059,
+            "Châtel-St-Denis, centre",
+            "",
+            "ch:1:sloid:7241:0:18264"
+          ],
+          [
+            6.8971839,
+            46.52176295,
+            "Châtel-St-Denis, Bellière",
+            "",
+            "ch:1:sloid:4965:0:2"
+          ],
+          [
+            6.89036569,
+            46.50975789,
+            "Monts-de-Corsier, Mur-Blanc",
+            "",
+            "ch:1:sloid:79187:0:2"
+          ],
+          [
+            6.88776058,
+            46.50742086,
+            "Monts-de-Corsier, Banderette",
+            "",
+            "ch:1:sloid:4955:0:2"
+          ],
+          [
+            6.88215509,
+            46.50392749,
+            "Monts-de-Corsier, L'Hautigny",
+            "",
+            "ch:1:sloid:4956:0:2"
+          ],
+          [
+            6.87784318,
+            46.50107699,
+            "Mts-de-Corsier, Petit Hautigny",
+            "",
+            "ch:1:sloid:79184:0:2"
+          ],
+          [
+            6.87513925,
+            46.49821396,
+            "Monts-de-Corsier, Dautère",
+            "",
+            "ch:1:sloid:91902:0:2"
+          ],
+          [
+            6.87087225,
+            46.494015,
+            "Monts-de-Corsier, Longpraz",
+            "",
+            "ch:1:sloid:4962:0:2"
+          ],
+          [
+            6.86069434,
+            46.48727373,
+            "Monts-de-Corsier, La Chaux",
+            "C",
+            "ch:1:sloid:4961:0:4"
+          ],
+          [
+            6.84862996,
+            46.48306155,
+            "Jongny, Combette",
+            "",
+            "ch:1:sloid:79181:0:2"
+          ],
+          [
+            6.84441686,
+            46.48207186,
+            "Jongny, Reposoir",
+            "",
+            "ch:1:sloid:4728:0:2"
+          ],
+          [
+            6.84140751,
+            46.47927588,
+            "Jongny, village",
+            "",
+            "ch:1:sloid:4966:0:2"
+          ],
+          [
+            6.83619728,
+            46.4771355,
+            "Chardonne, rte de Châtel",
+            "",
+            "ch:1:sloid:4712:0:2"
+          ],
+          [
+            6.84276396,
+            46.47635603,
+            "Jongny, Châtillon",
+            "",
+            "ch:1:sloid:4959:0:2"
+          ],
+          [
+            6.84600688,
+            46.47330611,
+            "Corsier-Vevey, Cure d'Attalens",
+            "",
+            "ch:1:sloid:4963:0:4"
+          ],
+          [
+            6.83976359,
+            46.47077572,
+            "Corseaux, Délassement",
+            "B",
+            "ch:1:sloid:4967:0:2"
+          ],
+          [
+            6.83648474,
+            46.46890724,
+            "Vevey, funiculaire",
+            "B",
+            "ch:1:sloid:93992:0:4"
+          ],
+          [
+            6.83672728,
+            46.46645708,
+            "Vevey, Bergère",
+            "",
+            "ch:1:sloid:93982:0:1"
+          ],
+          [
+            6.84229684,
+            46.46233611,
+            "Vevey, gare",
+            "A",
+            "ch:1:sloid:79174:0:1"
+          ]
+        ]
+      },
+      {
+        "id": "6ebfcd767a0029d8d4ca7f78",
+        "routeId": "92-217-j26-1",
+        "stops": [
+          [
+            6.83753577,
+            46.54216917,
+            "Palézieux, gare",
+            "",
+            "ch:1:sloid:70440:0:933913"
+          ],
+          [
+            6.83217283,
+            46.5328631,
+            "Granges (Veveyse), Le Rupan",
+            "",
+            "ch:1:sloid:77713:0:16339"
+          ],
+          [
+            6.83099603,
+            46.52955678,
+            "Granges (Veveyse), La Cuvigne",
+            "",
+            "ch:1:sloid:77714:0:16191"
+          ],
+          [
+            6.82945093,
+            46.52469272,
+            "Granges (Veveyse), village",
+            "",
+            "ch:1:sloid:77715:0:16228"
+          ],
+          [
+            6.83228062,
+            46.5201002,
+            "Granges (Veveyse), Le Battiau",
+            "",
+            "ch:1:sloid:77717:0:16118"
+          ],
+          [
+            6.84523433,
+            46.51211955,
+            "Attalens, Montessinge",
+            "",
+            "ch:1:sloid:10497:0:2"
+          ],
+          [
+            6.84854013,
+            46.51002992,
+            "Attalens, village",
+            "",
+            "ch:1:sloid:4960:0:2"
+          ],
+          [
+            6.85035473,
+            46.50600499,
+            "Attalens, La Fin",
+            "",
+            "ch:1:sloid:79191:0:2"
+          ],
+          [
+            6.85242984,
+            46.49303169,
+            "Attalens, Perrey",
+            "",
+            "ch:1:sloid:4957:0:2"
+          ],
+          [
+            6.85212441,
+            46.48938897,
+            "Jongny, Chaudette",
+            "",
+            "ch:1:sloid:4958:0:2"
+          ],
+          [
+            6.85974212,
+            46.48727991,
+            "Monts-de-Corsier, La Chaux",
+            "B",
+            "ch:1:sloid:4961:0:2"
+          ],
+          [
+            6.84862996,
+            46.48306155,
+            "Jongny, Combette",
+            "",
+            "ch:1:sloid:79181:0:2"
+          ],
+          [
+            6.84441686,
+            46.48207186,
+            "Jongny, Reposoir",
+            "",
+            "ch:1:sloid:4728:0:2"
+          ],
+          [
+            6.84140751,
+            46.47927588,
+            "Jongny, village",
+            "",
+            "ch:1:sloid:4966:0:2"
+          ],
+          [
+            6.83619728,
+            46.4771355,
+            "Chardonne, rte de Châtel",
+            "",
+            "ch:1:sloid:4712:0:2"
+          ],
+          [
+            6.84276396,
+            46.47635603,
+            "Jongny, Châtillon",
+            "",
+            "ch:1:sloid:4959:0:2"
+          ],
+          [
+            6.84600688,
+            46.47330611,
+            "Corsier-Vevey, Cure d'Attalens",
+            "",
+            "ch:1:sloid:4963:0:4"
+          ],
+          [
+            6.83976359,
+            46.47077572,
+            "Corseaux, Délassement",
+            "B",
+            "ch:1:sloid:4967:0:2"
+          ],
+          [
+            6.83648474,
+            46.46890724,
+            "Vevey, funiculaire",
+            "B",
+            "ch:1:sloid:93992:0:4"
+          ],
+          [
+            6.83672728,
+            46.46645708,
+            "Vevey, Bergère",
+            "",
+            "ch:1:sloid:93982:0:1"
+          ],
+          [
+            6.84229684,
+            46.46233611,
+            "Vevey, gare",
+            "A",
+            "ch:1:sloid:79174:0:1"
+          ]
+        ]
+      },
+      {
+        "id": "8ccc23ac58bcdf532ae6095b",
+        "routeId": "92-213-j26-1",
+        "stops": [
+          [
+            6.84129971,
+            46.46347467,
+            "Vevey, gare",
+            "D",
+            "ch:1:sloid:79174:0:5"
+          ],
+          [
+            6.83653864,
+            46.46669839,
+            "Vevey, Bergère",
+            "",
+            "ch:1:sloid:93982:0:2"
+          ],
+          [
+            6.83654762,
+            46.46878349,
+            "Vevey, funiculaire",
+            "C",
+            "ch:1:sloid:93992:0:3"
+          ],
+          [
+            6.83979952,
+            46.47065817,
+            "Corseaux, Délassement",
+            "A",
+            "ch:1:sloid:4967:0:1"
+          ],
+          [
+            6.84665367,
+            46.47305246,
+            "Corsier-Vevey, Cure d'Attalens",
+            "",
+            "ch:1:sloid:4963:0:3"
+          ],
+          [
+            6.84374313,
+            46.47622612,
+            "Jongny, Châtillon",
+            "",
+            "ch:1:sloid:4959:0:1"
+          ],
+          [
+            6.8377873,
+            46.47726541,
+            "Chardonne, rte de Châtel",
+            "",
+            "ch:1:sloid:4712:0:1"
+          ],
+          [
+            6.84165005,
+            46.47930062,
+            "Jongny, village",
+            "",
+            "ch:1:sloid:4966:0:1"
+          ],
+          [
+            6.84446178,
+            46.48195433,
+            "Jongny, Reposoir",
+            "",
+            "ch:1:sloid:4728:0:1"
+          ],
+          [
+            6.84878268,
+            46.48301825,
+            "Jongny, Combette",
+            "",
+            "ch:1:sloid:79181:0:1"
+          ],
+          [
+            6.86006552,
+            46.48694592,
+            "Monts-de-Corsier, La Chaux",
+            "A",
+            "ch:1:sloid:4961:0:1"
+          ],
+          [
+            6.87104293,
+            46.49402119,
+            "Monts-de-Corsier, Longpraz",
+            "",
+            "ch:1:sloid:4962:0:1"
+          ],
+          [
+            6.87549857,
+            46.4985417,
+            "Monts-de-Corsier, Dautère",
+            "",
+            "ch:1:sloid:91902:0:1"
+          ],
+          [
+            6.87831928,
+            46.50153456,
+            "Mts-de-Corsier, Petit Hautigny",
+            "",
+            "ch:1:sloid:79184:0:1"
+          ],
+          [
+            6.88238865,
+            46.50394604,
+            "Monts-de-Corsier, L'Hautigny",
+            "",
+            "ch:1:sloid:4956:0:1"
+          ],
+          [
+            6.8889733,
+            46.50774854,
+            "Monts-de-Corsier, Banderette",
+            "",
+            "ch:1:sloid:4955:0:1"
+          ],
+          [
+            6.89053637,
+            46.50938075,
+            "Monts-de-Corsier, Mur-Blanc",
+            "",
+            "ch:1:sloid:79187:0:1"
+          ],
+          [
+            6.89713899,
+            46.52147243,
+            "Châtel-St-Denis, Bellière",
+            "",
+            "ch:1:sloid:4965:0:1"
+          ],
+          [
+            6.89784866,
+            46.52544059,
+            "Châtel-St-Denis, centre",
+            "",
+            "ch:1:sloid:7241:0:18264"
+          ],
+          [
+            6.89565677,
+            46.52788191,
+            "Châtel-St-Denis, gare",
+            "A",
+            "ch:1:sloid:77718:0:19381"
+          ]
+        ]
+      },
+      {
+        "id": "90866e5fe6d2264b97eda3ff",
+        "routeId": "92-216-j26-1",
+        "stops": [
+          [
+            6.85295086,
+            46.52574344,
+            "Bossonnens, gare",
+            "",
+            "ch:1:sloid:79195:0:2"
+          ],
+          [
+            6.84843233,
+            46.52175677,
+            "Bossonnens, village",
+            "",
+            "ch:1:sloid:79194:0:2"
+          ],
+          [
+            6.84734537,
+            46.51548875,
+            "Attalens, Fin du Clos",
+            "",
+            "ch:1:sloid:95678:0:2"
+          ],
+          [
+            6.84899827,
+            46.51247193,
+            "Attalens, Corcelles",
+            "",
+            "ch:1:sloid:79193:0:2"
+          ],
+          [
+            6.84854013,
+            46.51002992,
+            "Attalens, village",
+            "",
+            "ch:1:sloid:4960:0:2"
+          ],
+          [
+            6.85035473,
+            46.50600499,
+            "Attalens, La Fin",
+            "",
+            "ch:1:sloid:79191:0:2"
+          ],
+          [
+            6.85242984,
+            46.49303169,
+            "Attalens, Perrey",
+            "",
+            "ch:1:sloid:4957:0:2"
+          ],
+          [
+            6.85212441,
+            46.48938897,
+            "Jongny, Chaudette",
+            "",
+            "ch:1:sloid:4958:0:2"
+          ],
+          [
+            6.85974212,
+            46.48727991,
+            "Monts-de-Corsier, La Chaux",
+            "B",
+            "ch:1:sloid:4961:0:2"
+          ],
+          [
+            6.84862996,
+            46.48306155,
+            "Jongny, Combette",
+            "",
+            "ch:1:sloid:79181:0:2"
+          ],
+          [
+            6.84441686,
+            46.48207186,
+            "Jongny, Reposoir",
+            "",
+            "ch:1:sloid:4728:0:2"
+          ],
+          [
+            6.84140751,
+            46.47927588,
+            "Jongny, village",
+            "",
+            "ch:1:sloid:4966:0:2"
+          ],
+          [
+            6.83619728,
+            46.4771355,
+            "Chardonne, rte de Châtel",
+            "",
+            "ch:1:sloid:4712:0:2"
+          ],
+          [
+            6.84276396,
+            46.47635603,
+            "Jongny, Châtillon",
+            "",
+            "ch:1:sloid:4959:0:2"
+          ],
+          [
+            6.84600688,
+            46.47330611,
+            "Corsier-Vevey, Cure d'Attalens",
+            "",
+            "ch:1:sloid:4963:0:4"
+          ],
+          [
+            6.83976359,
+            46.47077572,
+            "Corseaux, Délassement",
+            "B",
+            "ch:1:sloid:4967:0:2"
+          ],
+          [
+            6.83648474,
+            46.46890724,
+            "Vevey, funiculaire",
+            "B",
+            "ch:1:sloid:93992:0:4"
+          ],
+          [
+            6.83672728,
+            46.46645708,
+            "Vevey, Bergère",
+            "",
+            "ch:1:sloid:93982:0:1"
+          ],
+          [
+            6.84129971,
+            46.46347467,
+            "Vevey, gare",
+            "D",
+            "ch:1:sloid:79174:0:5"
+          ]
+        ]
+      },
+      {
+        "id": "a612d733f358efb00f574e9b",
+        "routeId": "92-213-j26-1",
+        "stops": [
+          [
+            6.89565677,
+            46.52788191,
+            "Châtel-St-Denis, gare",
+            "A",
+            "ch:1:sloid:77718:0:19381"
+          ],
+          [
+            6.89784866,
+            46.52544059,
+            "Châtel-St-Denis, centre",
+            "",
+            "ch:1:sloid:7241:0:18264"
+          ],
+          [
+            6.8971839,
+            46.52176295,
+            "Châtel-St-Denis, Bellière",
+            "",
+            "ch:1:sloid:4965:0:2"
+          ],
+          [
+            6.89036569,
+            46.50975789,
+            "Monts-de-Corsier, Mur-Blanc",
+            "",
+            "ch:1:sloid:79187:0:2"
+          ],
+          [
+            6.88776058,
+            46.50742086,
+            "Monts-de-Corsier, Banderette",
+            "",
+            "ch:1:sloid:4955:0:2"
+          ],
+          [
+            6.88215509,
+            46.50392749,
+            "Monts-de-Corsier, L'Hautigny",
+            "",
+            "ch:1:sloid:4956:0:2"
+          ],
+          [
+            6.87784318,
+            46.50107699,
+            "Mts-de-Corsier, Petit Hautigny",
+            "",
+            "ch:1:sloid:79184:0:2"
+          ],
+          [
+            6.87513925,
+            46.49821396,
+            "Monts-de-Corsier, Dautère",
+            "",
+            "ch:1:sloid:91902:0:2"
+          ],
+          [
+            6.87087225,
+            46.494015,
+            "Monts-de-Corsier, Longpraz",
+            "",
+            "ch:1:sloid:4962:0:2"
+          ],
+          [
+            6.86069434,
+            46.48727373,
+            "Monts-de-Corsier, La Chaux",
+            "C",
+            "ch:1:sloid:4961:0:4"
+          ],
+          [
+            6.84862996,
+            46.48306155,
+            "Jongny, Combette",
+            "",
+            "ch:1:sloid:79181:0:2"
+          ],
+          [
+            6.84441686,
+            46.48207186,
+            "Jongny, Reposoir",
+            "",
+            "ch:1:sloid:4728:0:2"
+          ],
+          [
+            6.84140751,
+            46.47927588,
+            "Jongny, village",
+            "",
+            "ch:1:sloid:4966:0:2"
+          ],
+          [
+            6.83619728,
+            46.4771355,
+            "Chardonne, rte de Châtel",
+            "",
+            "ch:1:sloid:4712:0:2"
+          ],
+          [
+            6.84276396,
+            46.47635603,
+            "Jongny, Châtillon",
+            "",
+            "ch:1:sloid:4959:0:2"
+          ],
+          [
+            6.84600688,
+            46.47330611,
+            "Corsier-Vevey, Cure d'Attalens",
+            "",
+            "ch:1:sloid:4963:0:4"
+          ],
+          [
+            6.83976359,
+            46.47077572,
+            "Corseaux, Délassement",
+            "B",
+            "ch:1:sloid:4967:0:2"
+          ],
+          [
+            6.83648474,
+            46.46890724,
+            "Vevey, funiculaire",
+            "B",
+            "ch:1:sloid:93992:0:4"
+          ],
+          [
+            6.83672728,
+            46.46645708,
+            "Vevey, Bergère",
+            "",
+            "ch:1:sloid:93982:0:1"
+          ],
+          [
+            6.84129971,
+            46.46347467,
+            "Vevey, gare",
+            "D",
+            "ch:1:sloid:79174:0:5"
+          ]
+        ]
+      },
+      {
+        "id": "bf520d40061ef76165761622",
+        "routeId": "92-217-j26-1",
+        "stops": [
+          [
+            6.84129971,
+            46.46347467,
+            "Vevey, gare",
+            "D",
+            "ch:1:sloid:79174:0:5"
+          ],
+          [
+            6.83653864,
+            46.46669839,
+            "Vevey, Bergère",
+            "",
+            "ch:1:sloid:93982:0:2"
+          ],
+          [
+            6.83654762,
+            46.46878349,
+            "Vevey, funiculaire",
+            "C",
+            "ch:1:sloid:93992:0:3"
+          ],
+          [
+            6.83979952,
+            46.47065817,
+            "Corseaux, Délassement",
+            "A",
+            "ch:1:sloid:4967:0:1"
+          ],
+          [
+            6.84665367,
+            46.47305246,
+            "Corsier-Vevey, Cure d'Attalens",
+            "",
+            "ch:1:sloid:4963:0:3"
+          ],
+          [
+            6.84374313,
+            46.47622612,
+            "Jongny, Châtillon",
+            "",
+            "ch:1:sloid:4959:0:1"
+          ],
+          [
+            6.8377873,
+            46.47726541,
+            "Chardonne, rte de Châtel",
+            "",
+            "ch:1:sloid:4712:0:1"
+          ],
+          [
+            6.84165005,
+            46.47930062,
+            "Jongny, village",
+            "",
+            "ch:1:sloid:4966:0:1"
+          ],
+          [
+            6.84446178,
+            46.48195433,
+            "Jongny, Reposoir",
+            "",
+            "ch:1:sloid:4728:0:1"
+          ],
+          [
+            6.84878268,
+            46.48301825,
+            "Jongny, Combette",
+            "",
+            "ch:1:sloid:79181:0:1"
+          ],
+          [
+            6.86006552,
+            46.48694592,
+            "Monts-de-Corsier, La Chaux",
+            "A",
+            "ch:1:sloid:4961:0:1"
+          ],
+          [
+            6.85246577,
+            46.48951885,
+            "Jongny, Chaudette",
+            "",
+            "ch:1:sloid:4958:0:1"
+          ],
+          [
+            6.85242085,
+            46.49390987,
+            "Attalens, Perrey",
+            "",
+            "ch:1:sloid:4957:0:1"
+          ],
+          [
+            6.85060626,
+            46.50640069,
+            "Attalens, La Fin",
+            "",
+            "ch:1:sloid:79191:0:1"
+          ],
+          [
+            6.84866589,
+            46.51025248,
+            "Attalens, village",
+            "",
+            "ch:1:sloid:4960:0:1"
+          ],
+          [
+            6.84506365,
+            46.51239156,
+            "Attalens, Montessinge",
+            "",
+            "ch:1:sloid:10497:0:1"
+          ],
+          [
+            6.83223571,
+            46.52022383,
+            "Granges (Veveyse), Le Battiau",
+            "",
+            "ch:1:sloid:77717:0:16119"
+          ],
+          [
+            6.82944195,
+            46.52457528,
+            "Granges (Veveyse), village",
+            "",
+            "ch:1:sloid:77715:0:16229"
+          ],
+          [
+            6.83110383,
+            46.52918596,
+            "Granges (Veveyse), La Cuvigne",
+            "",
+            "ch:1:sloid:77714:0:16192"
+          ],
+          [
+            6.83227164,
+            46.53371592,
+            "Granges (Veveyse), Le Rupan",
+            "",
+            "ch:1:sloid:77713:0:16340"
+          ],
+          [
+            6.83753577,
+            46.54216917,
+            "Palézieux, gare",
+            "",
+            "ch:1:sloid:70440:0:933913"
+          ]
+        ]
+      },
+      {
+        "id": "bffd6ea4edbdabd0de054d37",
+        "routeId": "92-216-j26-1",
+        "stops": [
+          [
+            6.85295086,
+            46.52574344,
+            "Bossonnens, gare",
+            "",
+            "ch:1:sloid:79195:0:2"
+          ],
+          [
+            6.84843233,
+            46.52175677,
+            "Bossonnens, village",
+            "",
+            "ch:1:sloid:79194:0:2"
+          ],
+          [
+            6.84734537,
+            46.51548875,
+            "Attalens, Fin du Clos",
+            "",
+            "ch:1:sloid:95678:0:2"
+          ],
+          [
+            6.84899827,
+            46.51247193,
+            "Attalens, Corcelles",
+            "",
+            "ch:1:sloid:79193:0:2"
+          ],
+          [
+            6.84854013,
+            46.51002992,
+            "Attalens, village",
+            "",
+            "ch:1:sloid:4960:0:2"
+          ],
+          [
+            6.85035473,
+            46.50600499,
+            "Attalens, La Fin",
+            "",
+            "ch:1:sloid:79191:0:2"
+          ],
+          [
+            6.85242984,
+            46.49303169,
+            "Attalens, Perrey",
+            "",
+            "ch:1:sloid:4957:0:2"
+          ],
+          [
+            6.85212441,
+            46.48938897,
+            "Jongny, Chaudette",
+            "",
+            "ch:1:sloid:4958:0:2"
+          ],
+          [
+            6.85974212,
+            46.48727991,
+            "Monts-de-Corsier, La Chaux",
+            "B",
+            "ch:1:sloid:4961:0:2"
+          ],
+          [
+            6.84862996,
+            46.48306155,
+            "Jongny, Combette",
+            "",
+            "ch:1:sloid:79181:0:2"
+          ],
+          [
+            6.84441686,
+            46.48207186,
+            "Jongny, Reposoir",
+            "",
+            "ch:1:sloid:4728:0:2"
+          ],
+          [
+            6.84140751,
+            46.47927588,
+            "Jongny, village",
+            "",
+            "ch:1:sloid:4966:0:2"
+          ],
+          [
+            6.83619728,
+            46.4771355,
+            "Chardonne, rte de Châtel",
+            "",
+            "ch:1:sloid:4712:0:2"
+          ],
+          [
+            6.84276396,
+            46.47635603,
+            "Jongny, Châtillon",
+            "",
+            "ch:1:sloid:4959:0:2"
+          ],
+          [
+            6.84600688,
+            46.47330611,
+            "Corsier-Vevey, Cure d'Attalens",
+            "",
+            "ch:1:sloid:4963:0:4"
+          ],
+          [
+            6.83976359,
+            46.47077572,
+            "Corseaux, Délassement",
+            "B",
+            "ch:1:sloid:4967:0:2"
+          ],
+          [
+            6.83648474,
+            46.46890724,
+            "Vevey, funiculaire",
+            "B",
+            "ch:1:sloid:93992:0:4"
+          ],
+          [
+            6.83672728,
+            46.46645708,
+            "Vevey, Bergère",
+            "",
+            "ch:1:sloid:93982:0:1"
+          ],
+          [
+            6.84229684,
+            46.46233611,
+            "Vevey, gare",
+            "A",
+            "ch:1:sloid:79174:0:1"
+          ]
+        ]
+      },
+      {
+        "id": "d6d1ac4bedb5325efcd628ab",
+        "routeId": "92-217-j26-1",
+        "stops": [
+          [
+            6.83753577,
+            46.54216917,
+            "Palézieux, gare",
+            "",
+            "ch:1:sloid:70440:0:933913"
+          ],
+          [
+            6.83217283,
+            46.5328631,
+            "Granges (Veveyse), Le Rupan",
+            "",
+            "ch:1:sloid:77713:0:16339"
+          ],
+          [
+            6.83099603,
+            46.52955678,
+            "Granges (Veveyse), La Cuvigne",
+            "",
+            "ch:1:sloid:77714:0:16191"
+          ],
+          [
+            6.82945093,
+            46.52469272,
+            "Granges (Veveyse), village",
+            "",
+            "ch:1:sloid:77715:0:16228"
+          ],
+          [
+            6.83228062,
+            46.5201002,
+            "Granges (Veveyse), Le Battiau",
+            "",
+            "ch:1:sloid:77717:0:16118"
+          ],
+          [
+            6.84523433,
+            46.51211955,
+            "Attalens, Montessinge",
+            "",
+            "ch:1:sloid:10497:0:2"
+          ],
+          [
+            6.84854013,
+            46.51002992,
+            "Attalens, village",
+            "",
+            "ch:1:sloid:4960:0:2"
+          ],
+          [
+            6.85035473,
+            46.50600499,
+            "Attalens, La Fin",
+            "",
+            "ch:1:sloid:79191:0:2"
+          ],
+          [
+            6.85242984,
+            46.49303169,
+            "Attalens, Perrey",
+            "",
+            "ch:1:sloid:4957:0:2"
+          ],
+          [
+            6.85212441,
+            46.48938897,
+            "Jongny, Chaudette",
+            "",
+            "ch:1:sloid:4958:0:2"
+          ],
+          [
+            6.85974212,
+            46.48727991,
+            "Monts-de-Corsier, La Chaux",
+            "B",
+            "ch:1:sloid:4961:0:2"
+          ],
+          [
+            6.84862996,
+            46.48306155,
+            "Jongny, Combette",
+            "",
+            "ch:1:sloid:79181:0:2"
+          ],
+          [
+            6.84441686,
+            46.48207186,
+            "Jongny, Reposoir",
+            "",
+            "ch:1:sloid:4728:0:2"
+          ],
+          [
+            6.84140751,
+            46.47927588,
+            "Jongny, village",
+            "",
+            "ch:1:sloid:4966:0:2"
+          ],
+          [
+            6.83619728,
+            46.4771355,
+            "Chardonne, rte de Châtel",
+            "",
+            "ch:1:sloid:4712:0:2"
+          ],
+          [
+            6.84276396,
+            46.47635603,
+            "Jongny, Châtillon",
+            "",
+            "ch:1:sloid:4959:0:2"
+          ],
+          [
+            6.84600688,
+            46.47330611,
+            "Corsier-Vevey, Cure d'Attalens",
+            "",
+            "ch:1:sloid:4963:0:4"
+          ],
+          [
+            6.83976359,
+            46.47077572,
+            "Corseaux, Délassement",
+            "B",
+            "ch:1:sloid:4967:0:2"
+          ],
+          [
+            6.83648474,
+            46.46890724,
+            "Vevey, funiculaire",
+            "B",
+            "ch:1:sloid:93992:0:4"
+          ],
+          [
+            6.83672728,
+            46.46645708,
+            "Vevey, Bergère",
+            "",
+            "ch:1:sloid:93982:0:1"
+          ],
+          [
+            6.84129971,
+            46.46347467,
+            "Vevey, gare",
+            "D",
+            "ch:1:sloid:79174:0:5"
+          ]
+        ]
+      },
+      {
+        "id": "d7f379646de95a8b5142d70b",
+        "routeId": "92-213-j26-1",
+        "stops": [
+          [
+            6.84129971,
+            46.46347467,
+            "Vevey, gare",
+            "D",
+            "ch:1:sloid:79174:0:5"
+          ],
+          [
+            6.83653864,
+            46.46669839,
+            "Vevey, Bergère",
+            "",
+            "ch:1:sloid:93982:0:2"
+          ],
+          [
+            6.83654762,
+            46.46878349,
+            "Vevey, funiculaire",
+            "C",
+            "ch:1:sloid:93992:0:3"
+          ],
+          [
+            6.83979952,
+            46.47065817,
+            "Corseaux, Délassement",
+            "A",
+            "ch:1:sloid:4967:0:1"
+          ],
+          [
+            6.84665367,
+            46.47305246,
+            "Corsier-Vevey, Cure d'Attalens",
+            "",
+            "ch:1:sloid:4963:0:3"
+          ],
+          [
+            6.84374313,
+            46.47622612,
+            "Jongny, Châtillon",
+            "",
+            "ch:1:sloid:4959:0:1"
+          ],
+          [
+            6.8377873,
+            46.47726541,
+            "Chardonne, rte de Châtel",
+            "",
+            "ch:1:sloid:4712:0:1"
+          ],
+          [
+            6.84165005,
+            46.47930062,
+            "Jongny, village",
+            "",
+            "ch:1:sloid:4966:0:1"
+          ],
+          [
+            6.84446178,
+            46.48195433,
+            "Jongny, Reposoir",
+            "",
+            "ch:1:sloid:4728:0:1"
+          ],
+          [
+            6.84878268,
+            46.48301825,
+            "Jongny, Combette",
+            "",
+            "ch:1:sloid:79181:0:1"
+          ],
+          [
+            6.86006552,
+            46.48694592,
+            "Monts-de-Corsier, La Chaux",
+            "A",
+            "ch:1:sloid:4961:0:1"
+          ],
+          [
+            6.87104293,
+            46.49402119,
+            "Monts-de-Corsier, Longpraz",
+            "",
+            "ch:1:sloid:4962:0:1"
+          ],
+          [
+            6.87549857,
+            46.4985417,
+            "Monts-de-Corsier, Dautère",
+            "",
+            "ch:1:sloid:91902:0:1"
+          ],
+          [
+            6.87831928,
+            46.50153456,
+            "Mts-de-Corsier, Petit Hautigny",
+            "",
+            "ch:1:sloid:79184:0:1"
+          ],
+          [
+            6.88238865,
+            46.50394604,
+            "Monts-de-Corsier, L'Hautigny",
+            "",
+            "ch:1:sloid:4956:0:1"
+          ],
+          [
+            6.8889733,
+            46.50774854,
+            "Monts-de-Corsier, Banderette",
+            "",
+            "ch:1:sloid:4955:0:1"
+          ],
+          [
+            6.89053637,
+            46.50938075,
+            "Monts-de-Corsier, Mur-Blanc",
+            "",
+            "ch:1:sloid:79187:0:1"
+          ],
+          [
+            6.89713899,
+            46.52147243,
+            "Châtel-St-Denis, Bellière",
+            "",
+            "ch:1:sloid:4965:0:1"
+          ],
+          [
+            6.89784866,
+            46.52544059,
+            "Châtel-St-Denis, centre",
+            "",
+            "ch:1:sloid:7241:0:18264"
+          ]
+        ]
+      }
+    ],
+    "maximumAttachmentMetres": 15,
+    "maximumLengthMetres": 2050,
+    "chain": [
+      {
+        "wayId": "33834623",
+        "from": "3574221526",
+        "to": "294654205",
+        "direction": "forward"
+      },
+      {
+        "wayId": "26834441",
+        "from": "294654205",
+        "to": "294654202",
+        "direction": "backward"
+      },
+      {
+        "wayId": "296774233",
+        "from": "294654202",
+        "to": "294654190",
+        "direction": "backward"
+      },
+      {
+        "wayId": "353177811",
+        "from": "294654190",
+        "to": "330109326",
+        "direction": "backward"
+      },
+      {
+        "wayId": "56058308",
+        "from": "330109326",
+        "to": "387420834",
+        "direction": "backward"
+      },
+      {
+        "wayId": "26834440",
+        "from": "387420834",
+        "to": "11149836135",
+        "direction": "backward"
+      },
+      {
+        "wayId": "1320550996",
+        "from": "11149836135",
+        "to": "12220444344",
+        "direction": "forward"
+      },
+      {
+        "wayId": "26834438",
+        "from": "12220444344",
+        "to": "12220433894",
+        "direction": "forward"
+      },
+      {
+        "wayId": "1320550993",
+        "from": "12220433894",
+        "to": "83324695",
+        "direction": "forward"
+      },
+      {
+        "wayId": "1238158528",
+        "from": "83324695",
+        "to": "6763649067",
+        "direction": "backward"
+      }
+    ],
+    "relations": [
+      {
+        "id": "8291117",
+        "routeId": "92-213-j26-1"
+      },
+      {
+        "id": "8291116",
+        "routeId": "92-216-j26-1"
+      },
+      {
+        "id": "12495927",
+        "routeId": "92-217-j26-1"
+      }
+    ],
+    "admission": "Only three exact downhill platform pairs in all complete route contexts. Ten connected source ways must appear in the same order in all three exact j26 bus route relations. Preserve directions, source stop identities and calls; no intersecting returned restrictions or conditional access. A fixed 2050 m ceiling is scoped to this independently evidenced chain; general detour limits are unchanged. Both original cantonal and pfaedle failures remain retained. Inferred centreline geometry, not operator-certified running lanes or temporary access.",
+    "unavailableSources": [
+      {
+        "url": "https://horaire26.vmcv.ch/ligne-213/",
+        "reason": "Direct acquisition returned HTTP 403; not used as retained evidence."
+      }
+    ]
+  },
+  "geometry": {
+    "path": [
+      [
+        6.842764,
+        46.476356
+      ],
+      [
+        6.842766,
+        46.4763874
+      ],
+      [
+        6.8429482,
+        46.4764023
+      ],
+      [
+        6.8430813,
+        46.4764128
+      ],
+      [
+        6.8431792,
+        46.4764119
+      ],
+      [
+        6.8432913,
+        46.4764
+      ],
+      [
+        6.8433991,
+        46.4763733
+      ],
+      [
+        6.8435272,
+        46.476322
+      ],
+      [
+        6.8435705,
+        46.4762945
+      ],
+      [
+        6.8436104,
+        46.4762647
+      ],
+      [
+        6.8436269,
+        46.4762496
+      ],
+      [
+        6.8436599,
+        46.4762195
+      ],
+      [
+        6.8437015,
+        46.4761706
+      ],
+      [
+        6.8437297,
+        46.4761205
+      ],
+      [
+        6.8437508,
+        46.4760688
+      ],
+      [
+        6.8437663,
+        46.4760072
+      ],
+      [
+        6.8437718,
+        46.4759449
+      ],
+      [
+        6.8437648,
+        46.475897
+      ],
+      [
+        6.8437506,
+        46.4758499
+      ],
+      [
+        6.8437293,
+        46.4758041
+      ],
+      [
+        6.8436982,
+        46.4757562
+      ],
+      [
+        6.8436595,
+        46.475711
+      ],
+      [
+        6.8436135,
+        46.4756692
+      ],
+      [
+        6.8435033,
+        46.4755967
+      ],
+      [
+        6.8433671,
+        46.4755384
+      ],
+      [
+        6.8431884,
+        46.4755059
+      ],
+      [
+        6.8429224,
+        46.4754753
+      ],
+      [
+        6.8422295,
+        46.4754066
+      ],
+      [
+        6.8403312,
+        46.4752115
+      ],
+      [
+        6.8394842,
+        46.4751234
+      ],
+      [
+        6.8391744,
+        46.4750911
+      ],
+      [
+        6.838846,
+        46.4750484
+      ],
+      [
+        6.8384075,
+        46.4749797
+      ],
+      [
+        6.8381659,
+        46.4749387
+      ],
+      [
+        6.8379128,
+        46.4748855
+      ],
+      [
+        6.8376317,
+        46.4748228
+      ],
+      [
+        6.8375229,
+        46.4747938
+      ],
+      [
+        6.8374254,
+        46.4747652
+      ],
+      [
+        6.8373462,
+        46.4747381
+      ],
+      [
+        6.837256,
+        46.4747
+      ],
+      [
+        6.8371798,
+        46.4746601
+      ],
+      [
+        6.8371209,
+        46.4746223
+      ],
+      [
+        6.8370616,
+        46.4745761
+      ],
+      [
+        6.8370186,
+        46.4745273
+      ],
+      [
+        6.8369846,
+        46.4744762
+      ],
+      [
+        6.8369645,
+        46.4744325
+      ],
+      [
+        6.8369507,
+        46.4743994
+      ],
+      [
+        6.8369416,
+        46.4743614
+      ],
+      [
+        6.8369364,
+        46.4743165
+      ],
+      [
+        6.8369389,
+        46.4742763
+      ],
+      [
+        6.8369501,
+        46.4742212
+      ],
+      [
+        6.8369676,
+        46.4741733
+      ],
+      [
+        6.8369953,
+        46.4741252
+      ],
+      [
+        6.8370246,
+        46.4740863
+      ],
+      [
+        6.8370518,
+        46.4740555
+      ],
+      [
+        6.8370903,
+        46.4740197
+      ],
+      [
+        6.8371339,
+        46.4739869
+      ],
+      [
+        6.8371825,
+        46.4739562
+      ],
+      [
+        6.8372506,
+        46.473926
+      ],
+      [
+        6.8373118,
+        46.4739027
+      ],
+      [
+        6.8374028,
+        46.4738766
+      ],
+      [
+        6.8375203,
+        46.4738549
+      ],
+      [
+        6.8377533,
+        46.4738291
+      ],
+      [
+        6.8385293,
+        46.4737644
+      ],
+      [
+        6.8388618,
+        46.4737444
+      ],
+      [
+        6.839027,
+        46.4737345
+      ],
+      [
+        6.8396107,
+        46.4737256
+      ],
+      [
+        6.8403487,
+        46.4737645
+      ],
+      [
+        6.8407001,
+        46.473788
+      ],
+      [
+        6.8409468,
+        46.4738047
+      ],
+      [
+        6.8414802,
+        46.4738409
+      ],
+      [
+        6.8417125,
+        46.4738566
+      ],
+      [
+        6.842232,
+        46.4738882
+      ],
+      [
+        6.8426142,
+        46.473913
+      ],
+      [
+        6.843083,
+        46.4739434
+      ],
+      [
+        6.8439386,
+        46.4740898
+      ],
+      [
+        6.8458512,
+        46.47455
+      ],
+      [
+        6.8462034,
+        46.4746182
+      ],
+      [
+        6.8463528,
+        46.4746366
+      ],
+      [
+        6.8466061,
+        46.4746443
+      ],
+      [
+        6.8467852,
+        46.4746362
+      ],
+      [
+        6.8469563,
+        46.4746171
+      ],
+      [
+        6.8471126,
+        46.4745868
+      ],
+      [
+        6.8472178,
+        46.4745566
+      ],
+      [
+        6.847338,
+        46.4745207
+      ],
+      [
+        6.8474652,
+        46.4744678
+      ],
+      [
+        6.8476,
+        46.4743999
+      ],
+      [
+        6.8477484,
+        46.4743158
+      ],
+      [
+        6.8478255,
+        46.4742662
+      ],
+      [
+        6.8478945,
+        46.4742203
+      ],
+      [
+        6.8479788,
+        46.4741626
+      ],
+      [
+        6.8480237,
+        46.4741266
+      ],
+      [
+        6.8480741,
+        46.4740818
+      ],
+      [
+        6.8481204,
+        46.4740377
+      ],
+      [
+        6.8486945,
+        46.4735213
+      ],
+      [
+        6.8487625,
+        46.4734347
+      ],
+      [
+        6.8488124,
+        46.4733434
+      ],
+      [
+        6.8488392,
+        46.4732463
+      ],
+      [
+        6.8488348,
+        46.4731404
+      ],
+      [
+        6.8488071,
+        46.4730451
+      ],
+      [
+        6.8487563,
+        46.4729455
+      ],
+      [
+        6.8487101,
+        46.4728767
+      ],
+      [
+        6.848669,
+        46.4728422
+      ],
+      [
+        6.8486263,
+        46.4728156
+      ],
+      [
+        6.8485796,
+        46.472789
+      ],
+      [
+        6.8485342,
+        46.4727661
+      ],
+      [
+        6.8484556,
+        46.4727337
+      ],
+      [
+        6.8483744,
+        46.4727098
+      ],
+      [
+        6.8483665,
+        46.4727092
+      ],
+      [
+        6.8483432,
+        46.4727052
+      ],
+      [
+        6.8483208,
+        46.4726989
+      ],
+      [
+        6.8482494,
+        46.472694
+      ],
+      [
+        6.8482012,
+        46.4726935
+      ],
+      [
+        6.8481314,
+        46.4726926
+      ],
+      [
+        6.8480811,
+        46.4726944
+      ],
+      [
+        6.8480268,
+        46.4726986
+      ],
+      [
+        6.8479692,
+        46.4727055
+      ],
+      [
+        6.8479168,
+        46.4727152
+      ],
+      [
+        6.8478692,
+        46.4727268
+      ],
+      [
+        6.8477935,
+        46.4727508
+      ],
+      [
+        6.8476701,
+        46.4727937
+      ],
+      [
+        6.8475849,
+        46.4728219
+      ],
+      [
+        6.8474978,
+        46.4728547
+      ],
+      [
+        6.8474475,
+        46.472875
+      ],
+      [
+        6.8474166,
+        46.4728898
+      ],
+      [
+        6.8473858,
+        46.4729046
+      ],
+      [
+        6.8473482,
+        46.4729263
+      ],
+      [
+        6.847302,
+        46.472953
+      ],
+      [
+        6.8472704,
+        46.4729701
+      ],
+      [
+        6.8472168,
+        46.4729928
+      ],
+      [
+        6.8471739,
+        46.4730112
+      ],
+      [
+        6.8471336,
+        46.4730255
+      ],
+      [
+        6.8470886,
+        46.4730358
+      ],
+      [
+        6.8470228,
+        46.4730462
+      ],
+      [
+        6.8468217,
+        46.4730739
+      ],
+      [
+        6.8467144,
+        46.4731042
+      ],
+      [
+        6.8465485,
+        46.473141
+      ],
+      [
+        6.8462337,
+        46.4731958
+      ],
+      [
+        6.8460149,
+        46.4732204
+      ],
+      [
+        6.8460069,
+        46.4733061
+      ]
+    ],
+    "lengthMetres": 2007.496161264396,
+    "directMetres": 420.808656823069,
+    "attachmentsMetres": [
+      3.495608441347933,
+      9.561027919923903
+    ],
+    "directedSourceSegments": [
+      {
+        "wayId": "33834623",
+        "from": "3574221526",
+        "to": "294654205",
+        "direction": "forward",
+        "nodeIds": [
+          "3574221526",
+          "1670395711",
+          "8554741383",
+          "294654223",
+          "1670395708",
+          "330109321",
+          "387494052",
+          "8554741375",
+          "330109319",
+          "983835979",
+          "8554741376",
+          "294654220",
+          "8554741377",
+          "330109316",
+          "8554741378",
+          "294654218",
+          "8554741379",
+          "8554741380",
+          "330109313",
+          "8554741381",
+          "8554741382",
+          "294654215",
+          "1670395312",
+          "330109312",
+          "1670395303",
+          "294654212",
+          "3158938163",
+          "412757212",
+          "330109310",
+          "9575285362",
+          "1670395269",
+          "294654209",
+          "9575285369",
+          "1137761530",
+          "1670395247",
+          "9575285370",
+          "294654207",
+          "1670395239",
+          "9575285371",
+          "330109302",
+          "330109307",
+          "9575285372",
+          "9575285373",
+          "9575285374",
+          "294654205"
+        ],
+        "version": "18",
+        "timestamp": "2023-06-25T15:20:53Z",
+        "tags": {
+          "cycleway": "lane",
+          "highway": "primary",
+          "lanes": "2",
+          "name": "Route de Châtel-Saint-Denis",
+          "rcrc_ref": "744b",
+          "ref": "12",
+          "surface": "asphalt"
+        }
+      },
+      {
+        "wayId": "26834441",
+        "from": "294654205",
+        "to": "294654202",
+        "direction": "backward",
+        "nodeIds": [
+          "294654205",
+          "330109301",
+          "9575285375",
+          "330109303",
+          "9575285376",
+          "330109305",
+          "9575285377",
+          "9575285378",
+          "294654202"
+        ],
+        "version": "14",
+        "timestamp": "2023-02-09T09:59:02Z",
+        "tags": {
+          "bridge": "yes",
+          "cycleway": "lane",
+          "cycleway:both": "no",
+          "highway": "primary",
+          "lanes": "2",
+          "layer": "1",
+          "name": "Route de Châtel-Saint-Denis",
+          "official_name": "Route de Châtel-St-Denis",
+          "rcrc_ref": "744b",
+          "ref": "12",
+          "surface": "asphalt"
+        }
+      },
+      {
+        "wayId": "296774233",
+        "from": "294654202",
+        "to": "294654190",
+        "direction": "backward",
+        "nodeIds": [
+          "294654202",
+          "9575285379",
+          "9575285380",
+          "330109304",
+          "9575285381",
+          "9575285382",
+          "330109306",
+          "9575285383",
+          "294654198",
+          "9575285384",
+          "362767454",
+          "10989755961",
+          "330109308",
+          "294654195",
+          "3005788729",
+          "1137760430",
+          "11091189916",
+          "11091189913",
+          "362767386",
+          "330109322",
+          "10989754824",
+          "294654192",
+          "330109324",
+          "9575331273",
+          "294654190"
+        ],
+        "version": "14",
+        "timestamp": "2023-10-10T20:25:03Z",
+        "tags": {
+          "cycleway": "lane",
+          "highway": "primary",
+          "lanes": "2",
+          "name": "Route de Châtel-Saint-Denis",
+          "official_name": "Route de Châtel-St-Denis",
+          "oneway": "no",
+          "rcrc_ref": "744b",
+          "ref": "12"
+        }
+      },
+      {
+        "wayId": "353177811",
+        "from": "294654190",
+        "to": "330109326",
+        "direction": "backward",
+        "nodeIds": [
+          "294654190",
+          "330109326"
+        ],
+        "version": "7",
+        "timestamp": "2021-09-05T16:59:00Z",
+        "tags": {
+          "bridge": "yes",
+          "cycleway:both": "no",
+          "highway": "primary",
+          "lanes": "2",
+          "layer": "1",
+          "maxspeed": "80",
+          "name": "Route de Châtel-Saint-Denis",
+          "oneway": "no",
+          "rcrc_ref": "744b",
+          "ref": "12",
+          "surface": "asphalt"
+        }
+      },
+      {
+        "wayId": "56058308",
+        "from": "330109326",
+        "to": "387420834",
+        "direction": "backward",
+        "nodeIds": [
+          "330109326",
+          "294654187",
+          "12220736206",
+          "4127955239",
+          "12220736205",
+          "330109328",
+          "9575331274",
+          "294654183",
+          "9575331275",
+          "1137760309",
+          "12220736204",
+          "12220736203",
+          "387420834"
+        ],
+        "version": "16",
+        "timestamp": "2024-10-04T03:52:09Z",
+        "tags": {
+          "cycleway:both": "no",
+          "highway": "primary",
+          "lanes": "2",
+          "lit": "yes",
+          "maxspeed": "60",
+          "name": "Route de Châtel-Saint-Denis",
+          "oneway": "no",
+          "rcrc_ref": "744b",
+          "ref": "12",
+          "sidewalk": "left",
+          "surface": "asphalt"
+        }
+      },
+      {
+        "wayId": "26834440",
+        "from": "387420834",
+        "to": "11149836135",
+        "direction": "backward",
+        "nodeIds": [
+          "387420834",
+          "12220736202",
+          "412774437",
+          "11284430293",
+          "294654179",
+          "11149836132",
+          "294654176",
+          "11149836133",
+          "330109332",
+          "11149836134",
+          "294654173",
+          "11149836135"
+        ],
+        "version": "22",
+        "timestamp": "2024-10-04T03:52:09Z",
+        "tags": {
+          "cycleway:left": "no",
+          "cycleway:right": "lane",
+          "cycleway:right:lane": "advisory",
+          "highway": "primary",
+          "lanes": "2",
+          "lit": "yes",
+          "maxspeed": "60",
+          "name": "Route de Châtel-Saint-Denis",
+          "rcrc_ref": "744b",
+          "ref": "12",
+          "sidewalk": "both",
+          "surface": "asphalt"
+        }
+      },
+      {
+        "wayId": "1320550996",
+        "from": "11149836135",
+        "to": "12220444344",
+        "direction": "forward",
+        "nodeIds": [
+          "11149836135",
+          "12220444339",
+          "12220444340",
+          "12220444341",
+          "12220444342",
+          "12220444343",
+          "12220444344"
+        ],
+        "version": "2",
+        "timestamp": "2025-02-01T08:28:20Z",
+        "tags": {
+          "highway": "primary",
+          "lanes": "1",
+          "lit": "yes",
+          "maxspeed": "60",
+          "name": "Route de Châtel-Saint-Denis",
+          "oneway": "yes",
+          "rcrc_ref": "744b",
+          "ref": "12",
+          "surface": "asphalt"
+        }
+      },
+      {
+        "wayId": "26834438",
+        "from": "12220444344",
+        "to": "12220433894",
+        "direction": "forward",
+        "nodeIds": [
+          "12220444344",
+          "3005791933",
+          "12220433871",
+          "12220433894"
+        ],
+        "version": "16",
+        "timestamp": "2026-03-02T01:23:19Z",
+        "tags": {
+          "cycleway:both": "no",
+          "foot": "no",
+          "highway": "primary",
+          "junction": "roundabout",
+          "lane_markings": "no",
+          "lit": "yes",
+          "ref": "12",
+          "surface": "asphalt"
+        }
+      },
+      {
+        "wayId": "1320550993",
+        "from": "12220433894",
+        "to": "83324695",
+        "direction": "forward",
+        "nodeIds": [
+          "12220433894",
+          "12220433895",
+          "12220433896",
+          "12220433897",
+          "12220433898",
+          "12220433899",
+          "12220433900",
+          "12220444301",
+          "12220444302",
+          "12220444303",
+          "12220444304",
+          "12220444305",
+          "12220444306",
+          "12220444307",
+          "12220444308",
+          "12220444309",
+          "12220444310",
+          "12220444311",
+          "12220444312",
+          "12220444313",
+          "12220444314",
+          "12220444315",
+          "12220444317",
+          "12220444316",
+          "83324695"
+        ],
+        "version": "1",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {
+          "cycleway:right": "share_busway",
+          "highway": "primary",
+          "lit": "yes",
+          "maxspeed": "60",
+          "name": "Route de Châtel-Saint-Denis",
+          "official_name": "Route de Châtel-St-Denis",
+          "oneway": "yes",
+          "rcrc_ref": "744b",
+          "ref": "12",
+          "surface": "asphalt"
+        }
+      },
+      {
+        "wayId": "1238158528",
+        "from": "83324695",
+        "to": "6763649067",
+        "direction": "backward",
+        "nodeIds": [
+          "83324695",
+          "6763649066",
+          "412774442",
+          "8554741385",
+          "6763649067"
+        ],
+        "version": "1",
+        "timestamp": "2024-01-08T22:32:06Z",
+        "tags": {
+          "cycleway:right": "share_busway",
+          "highway": "primary",
+          "lit": "yes",
+          "maxspeed": "60",
+          "name": "Route de Châtel-Saint-Denis",
+          "official_name": "Route de Châtel-St-Denis",
+          "rcrc_ref": "744b",
+          "ref": "12",
+          "surface": "asphalt"
+        }
+      }
+    ],
+    "restrictionRecordsChecked": 0
+  },
+  "assessments": [
+    {
+      "key": "[\"92-213-j26-1\",\"ch:1:sloid:4959:0:2\",\"ch:1:sloid:4963:0:4\"]",
+      "contributingPatterns": [
+        "06ff1ec906f3d19da12cfb1c",
+        "556949705d1c2e20e32c352f",
+        "a612d733f358efb00f574e9b"
+      ],
+      "primaryFailure": {
+        "agencyId": "876",
+        "geometrySource": "osm-road-inference",
+        "roadPatternIds": [
+          "06ff1ec906f3d19da12cfb1c",
+          "556949705d1c2e20e32c352f",
+          "a612d733f358efb00f574e9b"
+        ],
+        "roadContextOccurrences": 3,
+        "reason": "road-excessive-detour",
+        "sourceFeatures": []
+      }
+    },
+    {
+      "key": "[\"92-216-j26-1\",\"ch:1:sloid:4959:0:2\",\"ch:1:sloid:4963:0:4\"]",
+      "contributingPatterns": [
+        "90866e5fe6d2264b97eda3ff",
+        "bffd6ea4edbdabd0de054d37"
+      ],
+      "primaryFailure": {
+        "agencyId": "876",
+        "geometrySource": "osm-road-inference",
+        "roadPatternIds": [
+          "90866e5fe6d2264b97eda3ff",
+          "bffd6ea4edbdabd0de054d37"
+        ],
+        "roadContextOccurrences": 2,
+        "reason": "road-excessive-detour",
+        "sourceFeatures": []
+      }
+    },
+    {
+      "key": "[\"92-217-j26-1\",\"ch:1:sloid:4959:0:2\",\"ch:1:sloid:4963:0:4\"]",
+      "contributingPatterns": [
+        "6ebfcd767a0029d8d4ca7f78",
+        "d6d1ac4bedb5325efcd628ab"
+      ],
+      "primaryFailure": {
+        "agencyId": "876",
+        "geometrySource": "osm-road-inference",
+        "roadPatternIds": [
+          "6ebfcd767a0029d8d4ca7f78",
+          "d6d1ac4bedb5325efcd628ab"
+        ],
+        "roadContextOccurrences": 2,
+        "reason": "road-excessive-detour",
+        "sourceFeatures": []
+      }
+    }
+  ],
+  "sourceInventory": {
+    "ways": [
+      {
+        "id": "26834438",
+        "version": "16",
+        "timestamp": "2026-03-02T01:23:19Z",
+        "tags": {
+          "cycleway:both": "no",
+          "foot": "no",
+          "highway": "primary",
+          "junction": "roundabout",
+          "lane_markings": "no",
+          "lit": "yes",
+          "ref": "12",
+          "surface": "asphalt"
+        },
+        "nodes": [
+          "3005791937",
+          "12220433879",
+          "3005791938",
+          "12220433878",
+          "294654149",
+          "12220433877",
+          "1659203547",
+          "12220433876",
+          "294654151",
+          "12220433875",
+          "3005788730",
+          "12220433874",
+          "12220444318",
+          "3005788731",
+          "12220433873",
+          "294654154",
+          "12220433892",
+          "12220433893",
+          "3005788732",
+          "12220433872",
+          "12220444344",
+          "3005791933",
+          "12220433871",
+          "12220433894",
+          "294654161",
+          "1659203553",
+          "12220433890",
+          "12220433889",
+          "3005791934",
+          "12220433888",
+          "3005791935",
+          "12220433887",
+          "294654163",
+          "12220433886",
+          "12220433885",
+          "12220444380",
+          "12220433891",
+          "294654166",
+          "12220433884",
+          "3005791936",
+          "12220433883",
+          "294654168",
+          "12220433882",
+          "1659203519",
+          "12220433881",
+          "294654171",
+          "12220444379",
+          "12220433880",
+          "12220444363",
+          "3005791937"
+        ]
+      },
+      {
+        "id": "26834440",
+        "version": "22",
+        "timestamp": "2024-10-04T03:52:09Z",
+        "tags": {
+          "cycleway:left": "no",
+          "cycleway:right": "lane",
+          "cycleway:right:lane": "advisory",
+          "highway": "primary",
+          "lanes": "2",
+          "lit": "yes",
+          "maxspeed": "60",
+          "name": "Route de Châtel-Saint-Denis",
+          "rcrc_ref": "744b",
+          "ref": "12",
+          "sidewalk": "both",
+          "surface": "asphalt"
+        },
+        "nodes": [
+          "11149836135",
+          "294654173",
+          "11149836134",
+          "330109332",
+          "11149836133",
+          "294654176",
+          "11149836132",
+          "294654179",
+          "11284430293",
+          "412774437",
+          "12220736202",
+          "387420834"
+        ]
+      },
+      {
+        "id": "26834441",
+        "version": "14",
+        "timestamp": "2023-02-09T09:59:02Z",
+        "tags": {
+          "bridge": "yes",
+          "cycleway": "lane",
+          "cycleway:both": "no",
+          "highway": "primary",
+          "lanes": "2",
+          "layer": "1",
+          "name": "Route de Châtel-Saint-Denis",
+          "official_name": "Route de Châtel-St-Denis",
+          "rcrc_ref": "744b",
+          "ref": "12",
+          "surface": "asphalt"
+        },
+        "nodes": [
+          "294654202",
+          "9575285378",
+          "9575285377",
+          "330109305",
+          "9575285376",
+          "330109303",
+          "9575285375",
+          "330109301",
+          "294654205"
+        ]
+      },
+      {
+        "id": "33834623",
+        "version": "18",
+        "timestamp": "2023-06-25T15:20:53Z",
+        "tags": {
+          "cycleway": "lane",
+          "highway": "primary",
+          "lanes": "2",
+          "name": "Route de Châtel-Saint-Denis",
+          "rcrc_ref": "744b",
+          "ref": "12",
+          "surface": "asphalt"
+        },
+        "nodes": [
+          "1670395781",
+          "294654228",
+          "1670395766",
+          "1137761080",
+          "1670395666",
+          "294654226",
+          "1670395657",
+          "3574221522",
+          "3574221526",
+          "1670395711",
+          "8554741383",
+          "294654223",
+          "1670395708",
+          "330109321",
+          "387494052",
+          "8554741375",
+          "330109319",
+          "983835979",
+          "8554741376",
+          "294654220",
+          "8554741377",
+          "330109316",
+          "8554741378",
+          "294654218",
+          "8554741379",
+          "8554741380",
+          "330109313",
+          "8554741381",
+          "8554741382",
+          "294654215",
+          "1670395312",
+          "330109312",
+          "1670395303",
+          "294654212",
+          "3158938163",
+          "412757212",
+          "330109310",
+          "9575285362",
+          "1670395269",
+          "294654209",
+          "9575285369",
+          "1137761530",
+          "1670395247",
+          "9575285370",
+          "294654207",
+          "1670395239",
+          "9575285371",
+          "330109302",
+          "330109307",
+          "9575285372",
+          "9575285373",
+          "9575285374",
+          "294654205"
+        ]
+      },
+      {
+        "id": "56058308",
+        "version": "16",
+        "timestamp": "2024-10-04T03:52:09Z",
+        "tags": {
+          "cycleway:both": "no",
+          "highway": "primary",
+          "lanes": "2",
+          "lit": "yes",
+          "maxspeed": "60",
+          "name": "Route de Châtel-Saint-Denis",
+          "oneway": "no",
+          "rcrc_ref": "744b",
+          "ref": "12",
+          "sidewalk": "left",
+          "surface": "asphalt"
+        },
+        "nodes": [
+          "387420834",
+          "12220736203",
+          "12220736204",
+          "1137760309",
+          "9575331275",
+          "294654183",
+          "9575331274",
+          "330109328",
+          "12220736205",
+          "4127955239",
+          "12220736206",
+          "294654187",
+          "330109326"
+        ]
+      },
+      {
+        "id": "296774233",
+        "version": "14",
+        "timestamp": "2023-10-10T20:25:03Z",
+        "tags": {
+          "cycleway": "lane",
+          "highway": "primary",
+          "lanes": "2",
+          "name": "Route de Châtel-Saint-Denis",
+          "official_name": "Route de Châtel-St-Denis",
+          "oneway": "no",
+          "rcrc_ref": "744b",
+          "ref": "12"
+        },
+        "nodes": [
+          "294654190",
+          "9575331273",
+          "330109324",
+          "294654192",
+          "10989754824",
+          "330109322",
+          "362767386",
+          "11091189913",
+          "11091189916",
+          "1137760430",
+          "3005788729",
+          "294654195",
+          "330109308",
+          "10989755961",
+          "362767454",
+          "9575285384",
+          "294654198",
+          "9575285383",
+          "330109306",
+          "9575285382",
+          "9575285381",
+          "330109304",
+          "9575285380",
+          "9575285379",
+          "294654202"
+        ]
+      },
+      {
+        "id": "353177811",
+        "version": "7",
+        "timestamp": "2021-09-05T16:59:00Z",
+        "tags": {
+          "bridge": "yes",
+          "cycleway:both": "no",
+          "highway": "primary",
+          "lanes": "2",
+          "layer": "1",
+          "maxspeed": "80",
+          "name": "Route de Châtel-Saint-Denis",
+          "oneway": "no",
+          "rcrc_ref": "744b",
+          "ref": "12",
+          "surface": "asphalt"
+        },
+        "nodes": [
+          "330109326",
+          "294654190"
+        ]
+      },
+      {
+        "id": "1238158528",
+        "version": "1",
+        "timestamp": "2024-01-08T22:32:06Z",
+        "tags": {
+          "cycleway:right": "share_busway",
+          "highway": "primary",
+          "lit": "yes",
+          "maxspeed": "60",
+          "name": "Route de Châtel-Saint-Denis",
+          "official_name": "Route de Châtel-St-Denis",
+          "rcrc_ref": "744b",
+          "ref": "12",
+          "surface": "asphalt"
+        },
+        "nodes": [
+          "1659203595",
+          "8564927468",
+          "83324693",
+          "8564927467",
+          "8564927466",
+          "1659203604",
+          "8564927465",
+          "1659203605",
+          "8554741384",
+          "83324694",
+          "6763649067",
+          "8554741385",
+          "412774442",
+          "6763649066",
+          "83324695"
+        ]
+      },
+      {
+        "id": "1320550993",
+        "version": "1",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {
+          "cycleway:right": "share_busway",
+          "highway": "primary",
+          "lit": "yes",
+          "maxspeed": "60",
+          "name": "Route de Châtel-Saint-Denis",
+          "official_name": "Route de Châtel-St-Denis",
+          "oneway": "yes",
+          "rcrc_ref": "744b",
+          "ref": "12",
+          "surface": "asphalt"
+        },
+        "nodes": [
+          "12220433894",
+          "12220433895",
+          "12220433896",
+          "12220433897",
+          "12220433898",
+          "12220433899",
+          "12220433900",
+          "12220444301",
+          "12220444302",
+          "12220444303",
+          "12220444304",
+          "12220444305",
+          "12220444306",
+          "12220444307",
+          "12220444308",
+          "12220444309",
+          "12220444310",
+          "12220444311",
+          "12220444312",
+          "12220444313",
+          "12220444314",
+          "12220444315",
+          "12220444317",
+          "12220444316",
+          "83324695"
+        ]
+      },
+      {
+        "id": "1320550996",
+        "version": "2",
+        "timestamp": "2025-02-01T08:28:20Z",
+        "tags": {
+          "highway": "primary",
+          "lanes": "1",
+          "lit": "yes",
+          "maxspeed": "60",
+          "name": "Route de Châtel-Saint-Denis",
+          "oneway": "yes",
+          "rcrc_ref": "744b",
+          "ref": "12",
+          "surface": "asphalt"
+        },
+        "nodes": [
+          "11149836135",
+          "12220444339",
+          "12220444340",
+          "12220444341",
+          "12220444342",
+          "12220444343",
+          "12220444344"
+        ]
+      }
+    ],
+    "nodes": [
+      {
+        "id": "83324693",
+        "version": "3",
+        "timestamp": "2012-03-04T16:29:52Z",
+        "tags": {},
+        "coordinate": [
+          6.8445184,
+          46.4731051
+        ]
+      },
+      {
+        "id": "83324694",
+        "version": "4",
+        "timestamp": "2021-03-26T16:59:40Z",
+        "tags": {},
+        "coordinate": [
+          6.8459617,
+          46.4732239
+        ]
+      },
+      {
+        "id": "83324695",
+        "version": "6",
+        "timestamp": "2021-03-26T16:59:40Z",
+        "tags": {},
+        "coordinate": [
+          6.8468217,
+          46.4730739
+        ]
+      },
+      {
+        "id": "294654149",
+        "version": "6",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8485496,
+          46.472535
+        ]
+      },
+      {
+        "id": "294654151",
+        "version": "6",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8485693,
+          46.472605
+        ]
+      },
+      {
+        "id": "294654154",
+        "version": "6",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.848483,
+          46.4726954
+        ]
+      },
+      {
+        "id": "294654161",
+        "version": "6",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8482981,
+          46.4726897
+        ]
+      },
+      {
+        "id": "294654163",
+        "version": "6",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8482293,
+          46.4725615
+        ]
+      },
+      {
+        "id": "294654166",
+        "version": "6",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.848265,
+          46.4725143
+        ]
+      },
+      {
+        "id": "294654168",
+        "version": "6",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8483269,
+          46.4724825
+        ]
+      },
+      {
+        "id": "294654171",
+        "version": "6",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.848427,
+          46.4724741
+        ]
+      },
+      {
+        "id": "294654173",
+        "version": "4",
+        "timestamp": "2023-08-28T10:01:15Z",
+        "tags": {},
+        "coordinate": [
+          6.8487563,
+          46.4729455
+        ]
+      },
+      {
+        "id": "294654176",
+        "version": "3",
+        "timestamp": "2023-08-28T10:01:15Z",
+        "tags": {},
+        "coordinate": [
+          6.8488124,
+          46.4733434
+        ]
+      },
+      {
+        "id": "294654179",
+        "version": "3",
+        "timestamp": "2023-08-28T10:01:15Z",
+        "tags": {},
+        "coordinate": [
+          6.8486945,
+          46.4735213
+        ]
+      },
+      {
+        "id": "294654183",
+        "version": "3",
+        "timestamp": "2016-04-17T12:45:36Z",
+        "tags": {},
+        "coordinate": [
+          6.8474652,
+          46.4744678
+        ]
+      },
+      {
+        "id": "294654187",
+        "version": "4",
+        "timestamp": "2016-04-17T12:45:36Z",
+        "tags": {},
+        "coordinate": [
+          6.8466061,
+          46.4746443
+        ]
+      },
+      {
+        "id": "294654190",
+        "version": "5",
+        "timestamp": "2022-03-13T14:42:22Z",
+        "tags": {},
+        "coordinate": [
+          6.8462034,
+          46.4746182
+        ]
+      },
+      {
+        "id": "294654192",
+        "version": "3",
+        "timestamp": "2011-02-05T18:10:11Z",
+        "tags": {},
+        "coordinate": [
+          6.843083,
+          46.4739434
+        ]
+      },
+      {
+        "id": "294654195",
+        "version": "2",
+        "timestamp": "2012-03-09T22:12:11Z",
+        "tags": {},
+        "coordinate": [
+          6.8396107,
+          46.4737256
+        ]
+      },
+      {
+        "id": "294654198",
+        "version": "4",
+        "timestamp": "2022-03-13T14:22:05Z",
+        "tags": {},
+        "coordinate": [
+          6.8375203,
+          46.4738549
+        ]
+      },
+      {
+        "id": "294654202",
+        "version": "5",
+        "timestamp": "2022-03-13T14:22:05Z",
+        "tags": {},
+        "coordinate": [
+          6.8370246,
+          46.4740863
+        ]
+      },
+      {
+        "id": "294654205",
+        "version": "5",
+        "timestamp": "2022-03-13T14:22:05Z",
+        "tags": {},
+        "coordinate": [
+          6.8369645,
+          46.4744325
+        ]
+      },
+      {
+        "id": "294654207",
+        "version": "5",
+        "timestamp": "2022-03-13T14:22:05Z",
+        "tags": {},
+        "coordinate": [
+          6.8374254,
+          46.4747652
+        ]
+      },
+      {
+        "id": "294654209",
+        "version": "4",
+        "timestamp": "2012-03-11T14:40:05Z",
+        "tags": {},
+        "coordinate": [
+          6.8384075,
+          46.4749797
+        ]
+      },
+      {
+        "id": "294654212",
+        "version": "4",
+        "timestamp": "2021-03-23T18:18:21Z",
+        "tags": {},
+        "coordinate": [
+          6.8429224,
+          46.4754753
+        ]
+      },
+      {
+        "id": "294654215",
+        "version": "4",
+        "timestamp": "2021-03-23T18:18:21Z",
+        "tags": {},
+        "coordinate": [
+          6.8436135,
+          46.4756692
+        ]
+      },
+      {
+        "id": "294654218",
+        "version": "5",
+        "timestamp": "2021-03-23T18:18:21Z",
+        "tags": {},
+        "coordinate": [
+          6.8437718,
+          46.4759449
+        ]
+      },
+      {
+        "id": "294654220",
+        "version": "5",
+        "timestamp": "2021-03-23T18:18:21Z",
+        "tags": {},
+        "coordinate": [
+          6.8437015,
+          46.4761706
+        ]
+      },
+      {
+        "id": "294654223",
+        "version": "3",
+        "timestamp": "2021-03-23T18:18:21Z",
+        "tags": {},
+        "coordinate": [
+          6.8431792,
+          46.4764119
+        ]
+      },
+      {
+        "id": "294654226",
+        "version": "2",
+        "timestamp": "2011-02-05T18:10:27Z",
+        "tags": {},
+        "coordinate": [
+          6.8422251,
+          46.4763573
+        ]
+      },
+      {
+        "id": "294654228",
+        "version": "4",
+        "timestamp": "2012-03-11T14:40:06Z",
+        "tags": {},
+        "coordinate": [
+          6.8410549,
+          46.476454
+        ]
+      },
+      {
+        "id": "330109301",
+        "version": "4",
+        "timestamp": "2022-03-13T14:22:05Z",
+        "tags": {},
+        "coordinate": [
+          6.8369507,
+          46.4743994
+        ]
+      },
+      {
+        "id": "330109302",
+        "version": "4",
+        "timestamp": "2022-03-13T14:22:05Z",
+        "tags": {},
+        "coordinate": [
+          6.8371798,
+          46.4746601
+        ]
+      },
+      {
+        "id": "330109303",
+        "version": "4",
+        "timestamp": "2022-03-13T14:22:05Z",
+        "tags": {},
+        "coordinate": [
+          6.8369364,
+          46.4743165
+        ]
+      },
+      {
+        "id": "330109304",
+        "version": "3",
+        "timestamp": "2022-03-13T14:22:05Z",
+        "tags": {},
+        "coordinate": [
+          6.8371339,
+          46.4739869
+        ]
+      },
+      {
+        "id": "330109305",
+        "version": "4",
+        "timestamp": "2022-03-13T14:22:05Z",
+        "tags": {},
+        "coordinate": [
+          6.8369501,
+          46.4742212
+        ]
+      },
+      {
+        "id": "330109306",
+        "version": "3",
+        "timestamp": "2022-03-13T14:22:05Z",
+        "tags": {},
+        "coordinate": [
+          6.8373118,
+          46.4739027
+        ]
+      },
+      {
+        "id": "330109307",
+        "version": "4",
+        "timestamp": "2022-03-13T14:22:05Z",
+        "tags": {},
+        "coordinate": [
+          6.8371209,
+          46.4746223
+        ]
+      },
+      {
+        "id": "330109308",
+        "version": "2",
+        "timestamp": "2012-03-09T22:12:11Z",
+        "tags": {},
+        "coordinate": [
+          6.839027,
+          46.4737345
+        ]
+      },
+      {
+        "id": "330109310",
+        "version": "3",
+        "timestamp": "2012-03-11T14:40:08Z",
+        "tags": {},
+        "coordinate": [
+          6.8394842,
+          46.4751234
+        ]
+      },
+      {
+        "id": "330109312",
+        "version": "1",
+        "timestamp": "2009-01-07T21:59:55Z",
+        "tags": {},
+        "coordinate": [
+          6.8433671,
+          46.4755384
+        ]
+      },
+      {
+        "id": "330109313",
+        "version": "4",
+        "timestamp": "2021-03-23T18:18:21Z",
+        "tags": {},
+        "coordinate": [
+          6.8437293,
+          46.4758041
+        ]
+      },
+      {
+        "id": "330109316",
+        "version": "4",
+        "timestamp": "2021-03-23T18:18:21Z",
+        "tags": {},
+        "coordinate": [
+          6.8437508,
+          46.4760688
+        ]
+      },
+      {
+        "id": "330109319",
+        "version": "4",
+        "timestamp": "2021-03-23T18:18:21Z",
+        "tags": {},
+        "coordinate": [
+          6.8436104,
+          46.4762647
+        ]
+      },
+      {
+        "id": "330109321",
+        "version": "3",
+        "timestamp": "2021-03-23T18:18:21Z",
+        "tags": {},
+        "coordinate": [
+          6.8433991,
+          46.4763733
+        ]
+      },
+      {
+        "id": "330109322",
+        "version": "1",
+        "timestamp": "2009-01-07T21:59:55Z",
+        "tags": {},
+        "coordinate": [
+          6.842232,
+          46.4738882
+        ]
+      },
+      {
+        "id": "330109324",
+        "version": "2",
+        "timestamp": "2011-02-05T18:10:56Z",
+        "tags": {},
+        "coordinate": [
+          6.8439386,
+          46.4740898
+        ]
+      },
+      {
+        "id": "330109326",
+        "version": "3",
+        "timestamp": "2022-03-13T14:42:22Z",
+        "tags": {},
+        "coordinate": [
+          6.8463528,
+          46.4746366
+        ]
+      },
+      {
+        "id": "330109328",
+        "version": "3",
+        "timestamp": "2016-04-17T12:45:36Z",
+        "tags": {},
+        "coordinate": [
+          6.8472178,
+          46.4745566
+        ]
+      },
+      {
+        "id": "330109332",
+        "version": "3",
+        "timestamp": "2023-08-28T10:01:15Z",
+        "tags": {},
+        "coordinate": [
+          6.8488348,
+          46.4731404
+        ]
+      },
+      {
+        "id": "362767386",
+        "version": "2",
+        "timestamp": "2023-08-05T10:41:41Z",
+        "tags": {},
+        "coordinate": [
+          6.8417125,
+          46.4738566
+        ]
+      },
+      {
+        "id": "362767454",
+        "version": "3",
+        "timestamp": "2012-03-09T22:12:12Z",
+        "tags": {},
+        "coordinate": [
+          6.8385293,
+          46.4737644
+        ]
+      },
+      {
+        "id": "387420834",
+        "version": "4",
+        "timestamp": "2024-10-04T03:52:09Z",
+        "tags": {},
+        "coordinate": [
+          6.8479788,
+          46.4741626
+        ]
+      },
+      {
+        "id": "387494052",
+        "version": "3",
+        "timestamp": "2021-03-23T18:18:22Z",
+        "tags": {},
+        "coordinate": [
+          6.8435272,
+          46.476322
+        ]
+      },
+      {
+        "id": "412757212",
+        "version": "2",
+        "timestamp": "2022-03-13T14:22:05Z",
+        "tags": {},
+        "coordinate": [
+          6.8403312,
+          46.4752115
+        ]
+      },
+      {
+        "id": "412774437",
+        "version": "3",
+        "timestamp": "2024-10-04T03:52:09Z",
+        "tags": {},
+        "coordinate": [
+          6.8480741,
+          46.4740818
+        ]
+      },
+      {
+        "id": "412774442",
+        "version": "5",
+        "timestamp": "2021-03-26T16:59:40Z",
+        "tags": {},
+        "coordinate": [
+          6.8465485,
+          46.473141
+        ]
+      },
+      {
+        "id": "983835979",
+        "version": "11",
+        "timestamp": "2025-12-26T17:47:28Z",
+        "tags": {
+          "bus": "yes",
+          "highway": "bus_stop",
+          "name": "Châtillon",
+          "network": "Mobilis",
+          "network:short": "CTV",
+          "network:wikidata": "Q2394222",
+          "operator": "VMCV",
+          "operator:wikidata": "Q679651",
+          "public_transport": "stop_position",
+          "uic_name": "Jongny, Châtillon",
+          "uic_ref": "8504959"
+        },
+        "coordinate": [
+          6.8436269,
+          46.4762496
+        ]
+      },
+      {
+        "id": "1137760309",
+        "version": "3",
+        "timestamp": "2024-10-04T03:52:09Z",
+        "tags": {},
+        "coordinate": [
+          6.8477484,
+          46.4743158
+        ]
+      },
+      {
+        "id": "1137760430",
+        "version": "2",
+        "timestamp": "2023-08-05T10:41:41Z",
+        "tags": {},
+        "coordinate": [
+          6.8407001,
+          46.473788
+        ]
+      },
+      {
+        "id": "1137761080",
+        "version": "2",
+        "timestamp": "2012-03-11T14:40:02Z",
+        "tags": {},
+        "coordinate": [
+          6.8416404,
+          46.4764007
+        ]
+      },
+      {
+        "id": "1137761530",
+        "version": "2",
+        "timestamp": "2012-03-11T14:40:03Z",
+        "tags": {},
+        "coordinate": [
+          6.8379128,
+          46.4748855
+        ]
+      },
+      {
+        "id": "1659203519",
+        "version": "4",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8483761,
+          46.4724732
+        ]
+      },
+      {
+        "id": "1659203547",
+        "version": "4",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8485672,
+          46.472569
+        ]
+      },
+      {
+        "id": "1659203553",
+        "version": "4",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8482776,
+          46.4726782
+        ]
+      },
+      {
+        "id": "1659203595",
+        "version": "1",
+        "timestamp": "2012-03-04T16:28:01Z",
+        "tags": {},
+        "coordinate": [
+          6.8441341,
+          46.4729904
+        ]
+      },
+      {
+        "id": "1659203604",
+        "version": "1",
+        "timestamp": "2012-03-04T16:28:01Z",
+        "tags": {},
+        "coordinate": [
+          6.8451254,
+          46.473216
+        ]
+      },
+      {
+        "id": "1659203605",
+        "version": "2",
+        "timestamp": "2021-03-26T16:59:40Z",
+        "tags": {},
+        "coordinate": [
+          6.8455742,
+          46.4732401
+        ]
+      },
+      {
+        "id": "1670395239",
+        "version": "2",
+        "timestamp": "2022-03-13T14:22:05Z",
+        "tags": {},
+        "coordinate": [
+          6.8373462,
+          46.4747381
+        ]
+      },
+      {
+        "id": "1670395247",
+        "version": "2",
+        "timestamp": "2022-03-13T14:22:05Z",
+        "tags": {},
+        "coordinate": [
+          6.8376317,
+          46.4748228
+        ]
+      },
+      {
+        "id": "1670395269",
+        "version": "1",
+        "timestamp": "2012-03-11T14:37:21Z",
+        "tags": {},
+        "coordinate": [
+          6.838846,
+          46.4750484
+        ]
+      },
+      {
+        "id": "1670395303",
+        "version": "2",
+        "timestamp": "2021-03-23T18:18:23Z",
+        "tags": {},
+        "coordinate": [
+          6.8431884,
+          46.4755059
+        ]
+      },
+      {
+        "id": "1670395312",
+        "version": "1",
+        "timestamp": "2012-03-11T14:37:24Z",
+        "tags": {},
+        "coordinate": [
+          6.8435033,
+          46.4755967
+        ]
+      },
+      {
+        "id": "1670395657",
+        "version": "1",
+        "timestamp": "2012-03-11T14:37:37Z",
+        "tags": {},
+        "coordinate": [
+          6.8424962,
+          46.4763644
+        ]
+      },
+      {
+        "id": "1670395666",
+        "version": "1",
+        "timestamp": "2012-03-11T14:37:37Z",
+        "tags": {},
+        "coordinate": [
+          6.8419242,
+          46.4763729
+        ]
+      },
+      {
+        "id": "1670395708",
+        "version": "2",
+        "timestamp": "2021-03-23T18:18:23Z",
+        "tags": {},
+        "coordinate": [
+          6.8432913,
+          46.4764
+        ]
+      },
+      {
+        "id": "1670395711",
+        "version": "1",
+        "timestamp": "2012-03-11T14:37:38Z",
+        "tags": {},
+        "coordinate": [
+          6.8429482,
+          46.4764023
+        ]
+      },
+      {
+        "id": "1670395766",
+        "version": "1",
+        "timestamp": "2012-03-11T14:37:40Z",
+        "tags": {},
+        "coordinate": [
+          6.8412804,
+          46.4764386
+        ]
+      },
+      {
+        "id": "1670395781",
+        "version": "1",
+        "timestamp": "2012-03-11T14:37:40Z",
+        "tags": {},
+        "coordinate": [
+          6.8397674,
+          46.4764486
+        ]
+      },
+      {
+        "id": "3005788729",
+        "version": "2",
+        "timestamp": "2023-08-05T10:41:41Z",
+        "tags": {},
+        "coordinate": [
+          6.8403487,
+          46.4737645
+        ]
+      },
+      {
+        "id": "3005788730",
+        "version": "3",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.848558,
+          46.472636
+        ]
+      },
+      {
+        "id": "3005788731",
+        "version": "3",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8485199,
+          46.472676
+        ]
+      },
+      {
+        "id": "3005788732",
+        "version": "3",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8484146,
+          46.4727105
+        ]
+      },
+      {
+        "id": "3005791933",
+        "version": "3",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8483665,
+          46.4727092
+        ]
+      },
+      {
+        "id": "3005791934",
+        "version": "3",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8482344,
+          46.4726331
+        ]
+      },
+      {
+        "id": "3005791935",
+        "version": "3",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8482239,
+          46.4725975
+        ]
+      },
+      {
+        "id": "3005791936",
+        "version": "3",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8482933,
+          46.472496
+        ]
+      },
+      {
+        "id": "3005791937",
+        "version": "3",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8484754,
+          46.4724852
+        ]
+      },
+      {
+        "id": "3005791938",
+        "version": "3",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.848518,
+          46.4725062
+        ]
+      },
+      {
+        "id": "3158938163",
+        "version": "3",
+        "timestamp": "2024-01-17T20:33:29Z",
+        "tags": {},
+        "coordinate": [
+          6.8422295,
+          46.4754066
+        ]
+      },
+      {
+        "id": "3574221522",
+        "version": "2",
+        "timestamp": "2016-02-16T23:02:03Z",
+        "tags": {},
+        "coordinate": [
+          6.8426227,
+          46.4763715
+        ]
+      },
+      {
+        "id": "3574221526",
+        "version": "8",
+        "timestamp": "2025-12-26T17:47:28Z",
+        "tags": {
+          "bus": "yes",
+          "highway": "bus_stop",
+          "name": "Châtillon",
+          "network": "Mobilis",
+          "network:short": "CTV",
+          "network:wikidata": "Q2394222",
+          "operator": "VMCV",
+          "operator:wikidata": "Q679651",
+          "public_transport": "stop_position",
+          "uic_name": "Jongny, Châtillon",
+          "uic_ref": "8504959"
+        },
+        "coordinate": [
+          6.842766,
+          46.4763874
+        ]
+      },
+      {
+        "id": "4127955239",
+        "version": "1",
+        "timestamp": "2016-04-17T12:45:36Z",
+        "tags": {},
+        "coordinate": [
+          6.8469563,
+          46.4746171
+        ]
+      },
+      {
+        "id": "6763649066",
+        "version": "9",
+        "timestamp": "2024-01-15T13:04:21Z",
+        "tags": {
+          "bus": "yes",
+          "highway": "bus_stop",
+          "name": "Cure d'Attalens",
+          "network": "Mobilis",
+          "network:short": "CTV",
+          "network:wikidata": "Q2394222",
+          "operator": "VMCV",
+          "operator:wikidata": "Q679651",
+          "public_transport": "stop_position",
+          "uic_name": "Corsier-Vevey, Cure d'Attalens",
+          "uic_ref": "8504963"
+        },
+        "coordinate": [
+          6.8467144,
+          46.4731042
+        ]
+      },
+      {
+        "id": "6763649067",
+        "version": "9",
+        "timestamp": "2024-01-15T13:04:21Z",
+        "tags": {
+          "bus": "yes",
+          "highway": "bus_stop",
+          "name": "Cure d'Attalens",
+          "network": "Mobilis",
+          "network:short": "CTV",
+          "network:wikidata": "Q2394222",
+          "operator": "VMCV",
+          "operator:wikidata": "Q679651",
+          "public_transport": "stop_position",
+          "uic_name": "Corsier-Vevey, Cure d'Attalens",
+          "uic_ref": "8504963"
+        },
+        "coordinate": [
+          6.8460149,
+          46.4732204
+        ]
+      },
+      {
+        "id": "8554741375",
+        "version": "1",
+        "timestamp": "2021-03-23T18:18:20Z",
+        "tags": {},
+        "coordinate": [
+          6.8435705,
+          46.4762945
+        ]
+      },
+      {
+        "id": "8554741376",
+        "version": "1",
+        "timestamp": "2021-03-23T18:18:20Z",
+        "tags": {},
+        "coordinate": [
+          6.8436599,
+          46.4762195
+        ]
+      },
+      {
+        "id": "8554741377",
+        "version": "1",
+        "timestamp": "2021-03-23T18:18:20Z",
+        "tags": {},
+        "coordinate": [
+          6.8437297,
+          46.4761205
+        ]
+      },
+      {
+        "id": "8554741378",
+        "version": "1",
+        "timestamp": "2021-03-23T18:18:20Z",
+        "tags": {},
+        "coordinate": [
+          6.8437663,
+          46.4760072
+        ]
+      },
+      {
+        "id": "8554741379",
+        "version": "1",
+        "timestamp": "2021-03-23T18:18:20Z",
+        "tags": {},
+        "coordinate": [
+          6.8437648,
+          46.475897
+        ]
+      },
+      {
+        "id": "8554741380",
+        "version": "1",
+        "timestamp": "2021-03-23T18:18:20Z",
+        "tags": {},
+        "coordinate": [
+          6.8437506,
+          46.4758499
+        ]
+      },
+      {
+        "id": "8554741381",
+        "version": "1",
+        "timestamp": "2021-03-23T18:18:20Z",
+        "tags": {},
+        "coordinate": [
+          6.8436982,
+          46.4757562
+        ]
+      },
+      {
+        "id": "8554741382",
+        "version": "1",
+        "timestamp": "2021-03-23T18:18:20Z",
+        "tags": {},
+        "coordinate": [
+          6.8436595,
+          46.475711
+        ]
+      },
+      {
+        "id": "8554741383",
+        "version": "1",
+        "timestamp": "2021-03-23T18:18:20Z",
+        "tags": {},
+        "coordinate": [
+          6.8430813,
+          46.4764128
+        ]
+      },
+      {
+        "id": "8554741384",
+        "version": "2",
+        "timestamp": "2021-03-26T16:59:41Z",
+        "tags": {},
+        "coordinate": [
+          6.8457695,
+          46.4732352
+        ]
+      },
+      {
+        "id": "8554741385",
+        "version": "2",
+        "timestamp": "2021-03-26T16:59:41Z",
+        "tags": {},
+        "coordinate": [
+          6.8462337,
+          46.4731958
+        ]
+      },
+      {
+        "id": "8564927465",
+        "version": "1",
+        "timestamp": "2021-03-26T16:59:40Z",
+        "tags": {},
+        "coordinate": [
+          6.8453615,
+          46.4732331
+        ]
+      },
+      {
+        "id": "8564927466",
+        "version": "1",
+        "timestamp": "2021-03-26T16:59:40Z",
+        "tags": {},
+        "coordinate": [
+          6.84492,
+          46.4731874
+        ]
+      },
+      {
+        "id": "8564927467",
+        "version": "1",
+        "timestamp": "2021-03-26T16:59:40Z",
+        "tags": {},
+        "coordinate": [
+          6.8447174,
+          46.4731504
+        ]
+      },
+      {
+        "id": "8564927468",
+        "version": "1",
+        "timestamp": "2021-03-26T16:59:40Z",
+        "tags": {},
+        "coordinate": [
+          6.8443238,
+          46.4730517
+        ]
+      },
+      {
+        "id": "9575285362",
+        "version": "1",
+        "timestamp": "2022-03-13T14:22:05Z",
+        "tags": {},
+        "coordinate": [
+          6.8391744,
+          46.4750911
+        ]
+      },
+      {
+        "id": "9575285369",
+        "version": "1",
+        "timestamp": "2022-03-13T14:22:05Z",
+        "tags": {},
+        "coordinate": [
+          6.8381659,
+          46.4749387
+        ]
+      },
+      {
+        "id": "9575285370",
+        "version": "1",
+        "timestamp": "2022-03-13T14:22:05Z",
+        "tags": {},
+        "coordinate": [
+          6.8375229,
+          46.4747938
+        ]
+      },
+      {
+        "id": "9575285371",
+        "version": "1",
+        "timestamp": "2022-03-13T14:22:05Z",
+        "tags": {},
+        "coordinate": [
+          6.837256,
+          46.4747
+        ]
+      },
+      {
+        "id": "9575285372",
+        "version": "1",
+        "timestamp": "2022-03-13T14:22:05Z",
+        "tags": {},
+        "coordinate": [
+          6.8370616,
+          46.4745761
+        ]
+      },
+      {
+        "id": "9575285373",
+        "version": "1",
+        "timestamp": "2022-03-13T14:22:05Z",
+        "tags": {},
+        "coordinate": [
+          6.8370186,
+          46.4745273
+        ]
+      },
+      {
+        "id": "9575285374",
+        "version": "1",
+        "timestamp": "2022-03-13T14:22:05Z",
+        "tags": {},
+        "coordinate": [
+          6.8369846,
+          46.4744762
+        ]
+      },
+      {
+        "id": "9575285375",
+        "version": "1",
+        "timestamp": "2022-03-13T14:22:05Z",
+        "tags": {},
+        "coordinate": [
+          6.8369416,
+          46.4743614
+        ]
+      },
+      {
+        "id": "9575285376",
+        "version": "1",
+        "timestamp": "2022-03-13T14:22:05Z",
+        "tags": {},
+        "coordinate": [
+          6.8369389,
+          46.4742763
+        ]
+      },
+      {
+        "id": "9575285377",
+        "version": "1",
+        "timestamp": "2022-03-13T14:22:05Z",
+        "tags": {},
+        "coordinate": [
+          6.8369676,
+          46.4741733
+        ]
+      },
+      {
+        "id": "9575285378",
+        "version": "1",
+        "timestamp": "2022-03-13T14:22:05Z",
+        "tags": {},
+        "coordinate": [
+          6.8369953,
+          46.4741252
+        ]
+      },
+      {
+        "id": "9575285379",
+        "version": "1",
+        "timestamp": "2022-03-13T14:22:05Z",
+        "tags": {},
+        "coordinate": [
+          6.8370518,
+          46.4740555
+        ]
+      },
+      {
+        "id": "9575285380",
+        "version": "1",
+        "timestamp": "2022-03-13T14:22:05Z",
+        "tags": {},
+        "coordinate": [
+          6.8370903,
+          46.4740197
+        ]
+      },
+      {
+        "id": "9575285381",
+        "version": "1",
+        "timestamp": "2022-03-13T14:22:05Z",
+        "tags": {},
+        "coordinate": [
+          6.8371825,
+          46.4739562
+        ]
+      },
+      {
+        "id": "9575285382",
+        "version": "1",
+        "timestamp": "2022-03-13T14:22:05Z",
+        "tags": {},
+        "coordinate": [
+          6.8372506,
+          46.473926
+        ]
+      },
+      {
+        "id": "9575285383",
+        "version": "1",
+        "timestamp": "2022-03-13T14:22:05Z",
+        "tags": {},
+        "coordinate": [
+          6.8374028,
+          46.4738766
+        ]
+      },
+      {
+        "id": "9575285384",
+        "version": "1",
+        "timestamp": "2022-03-13T14:22:05Z",
+        "tags": {},
+        "coordinate": [
+          6.8377533,
+          46.4738291
+        ]
+      },
+      {
+        "id": "9575331273",
+        "version": "1",
+        "timestamp": "2022-03-13T14:42:22Z",
+        "tags": {},
+        "coordinate": [
+          6.8458512,
+          46.47455
+        ]
+      },
+      {
+        "id": "9575331274",
+        "version": "1",
+        "timestamp": "2022-03-13T14:42:22Z",
+        "tags": {},
+        "coordinate": [
+          6.847338,
+          46.4745207
+        ]
+      },
+      {
+        "id": "9575331275",
+        "version": "1",
+        "timestamp": "2022-03-13T14:42:22Z",
+        "tags": {},
+        "coordinate": [
+          6.8476,
+          46.4743999
+        ]
+      },
+      {
+        "id": "10989754824",
+        "version": "1",
+        "timestamp": "2023-06-19T15:32:08Z",
+        "tags": {},
+        "coordinate": [
+          6.8426142,
+          46.473913
+        ]
+      },
+      {
+        "id": "10989755961",
+        "version": "1",
+        "timestamp": "2023-06-19T15:37:31Z",
+        "tags": {},
+        "coordinate": [
+          6.8388618,
+          46.4737444
+        ]
+      },
+      {
+        "id": "11091189913",
+        "version": "1",
+        "timestamp": "2023-08-05T10:41:41Z",
+        "tags": {},
+        "coordinate": [
+          6.8414802,
+          46.4738409
+        ]
+      },
+      {
+        "id": "11091189916",
+        "version": "1",
+        "timestamp": "2023-08-05T10:41:41Z",
+        "tags": {},
+        "coordinate": [
+          6.8409468,
+          46.4738047
+        ]
+      },
+      {
+        "id": "11149836132",
+        "version": "1",
+        "timestamp": "2023-08-28T10:01:15Z",
+        "tags": {},
+        "coordinate": [
+          6.8487625,
+          46.4734347
+        ]
+      },
+      {
+        "id": "11149836133",
+        "version": "1",
+        "timestamp": "2023-08-28T10:01:15Z",
+        "tags": {},
+        "coordinate": [
+          6.8488392,
+          46.4732463
+        ]
+      },
+      {
+        "id": "11149836134",
+        "version": "1",
+        "timestamp": "2023-08-28T10:01:15Z",
+        "tags": {},
+        "coordinate": [
+          6.8488071,
+          46.4730451
+        ]
+      },
+      {
+        "id": "11149836135",
+        "version": "1",
+        "timestamp": "2023-08-28T10:01:15Z",
+        "tags": {},
+        "coordinate": [
+          6.8487101,
+          46.4728767
+        ]
+      },
+      {
+        "id": "11284430293",
+        "version": "3",
+        "timestamp": "2025-06-06T07:36:04Z",
+        "tags": {
+          "crossing": "uncontrolled",
+          "crossing:island": "yes",
+          "crossing:markings": "zebra",
+          "crossing:markings:colour": "yellow",
+          "highway": "crossing",
+          "tactile_paving": "no"
+        },
+        "coordinate": [
+          6.8481204,
+          46.4740377
+        ]
+      },
+      {
+        "id": "12220433871",
+        "version": "1",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8483432,
+          46.4727052
+        ]
+      },
+      {
+        "id": "12220433872",
+        "version": "1",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8483905,
+          46.472711
+        ]
+      },
+      {
+        "id": "12220433873",
+        "version": "1",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8485024,
+          46.4726865
+        ]
+      },
+      {
+        "id": "12220433874",
+        "version": "1",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8485479,
+          46.4726505
+        ]
+      },
+      {
+        "id": "12220433875",
+        "version": "1",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8485652,
+          46.4726208
+        ]
+      },
+      {
+        "id": "12220433876",
+        "version": "1",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8485703,
+          46.4725869
+        ]
+      },
+      {
+        "id": "12220433877",
+        "version": "1",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8485603,
+          46.4725515
+        ]
+      },
+      {
+        "id": "12220433878",
+        "version": "1",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8485354,
+          46.4725198
+        ]
+      },
+      {
+        "id": "12220433879",
+        "version": "1",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8484979,
+          46.4724946
+        ]
+      },
+      {
+        "id": "12220433880",
+        "version": "1",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8484518,
+          46.4724784
+        ]
+      },
+      {
+        "id": "12220433881",
+        "version": "1",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8484016,
+          46.4724723
+        ]
+      },
+      {
+        "id": "12220433882",
+        "version": "1",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.848351,
+          46.4724766
+        ]
+      },
+      {
+        "id": "12220433883",
+        "version": "1",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8483096,
+          46.4724886
+        ]
+      },
+      {
+        "id": "12220433884",
+        "version": "1",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8482784,
+          46.4725046
+        ]
+      },
+      {
+        "id": "12220433885",
+        "version": "1",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8482433,
+          46.4725365
+        ]
+      },
+      {
+        "id": "12220433886",
+        "version": "1",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8482353,
+          46.4725487
+        ]
+      },
+      {
+        "id": "12220433887",
+        "version": "1",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8482246,
+          46.4725794
+        ]
+      },
+      {
+        "id": "12220433888",
+        "version": "1",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8482272,
+          46.4726156
+        ]
+      },
+      {
+        "id": "12220433889",
+        "version": "1",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8482454,
+          46.4726496
+        ]
+      },
+      {
+        "id": "12220433890",
+        "version": "1",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8482599,
+          46.4726648
+        ]
+      },
+      {
+        "id": "12220433891",
+        "version": "1",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8482532,
+          46.472525
+        ]
+      },
+      {
+        "id": "12220433892",
+        "version": "1",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8484613,
+          46.4727026
+        ]
+      },
+      {
+        "id": "12220433893",
+        "version": "1",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8484383,
+          46.4727076
+        ]
+      },
+      {
+        "id": "12220433894",
+        "version": "1",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8483208,
+          46.4726989
+        ]
+      },
+      {
+        "id": "12220433895",
+        "version": "1",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8482494,
+          46.472694
+        ]
+      },
+      {
+        "id": "12220433896",
+        "version": "1",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8482012,
+          46.4726935
+        ]
+      },
+      {
+        "id": "12220433897",
+        "version": "1",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8481314,
+          46.4726926
+        ]
+      },
+      {
+        "id": "12220433898",
+        "version": "1",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8480811,
+          46.4726944
+        ]
+      },
+      {
+        "id": "12220433899",
+        "version": "1",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8480268,
+          46.4726986
+        ]
+      },
+      {
+        "id": "12220433900",
+        "version": "1",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8479692,
+          46.4727055
+        ]
+      },
+      {
+        "id": "12220444301",
+        "version": "1",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8479168,
+          46.4727152
+        ]
+      },
+      {
+        "id": "12220444302",
+        "version": "1",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8478692,
+          46.4727268
+        ]
+      },
+      {
+        "id": "12220444303",
+        "version": "1",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8477935,
+          46.4727508
+        ]
+      },
+      {
+        "id": "12220444304",
+        "version": "1",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8476701,
+          46.4727937
+        ]
+      },
+      {
+        "id": "12220444305",
+        "version": "1",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8475849,
+          46.4728219
+        ]
+      },
+      {
+        "id": "12220444306",
+        "version": "1",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8474978,
+          46.4728547
+        ]
+      },
+      {
+        "id": "12220444307",
+        "version": "1",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8474475,
+          46.472875
+        ]
+      },
+      {
+        "id": "12220444308",
+        "version": "1",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8474166,
+          46.4728898
+        ]
+      },
+      {
+        "id": "12220444309",
+        "version": "1",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8473858,
+          46.4729046
+        ]
+      },
+      {
+        "id": "12220444310",
+        "version": "1",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8473482,
+          46.4729263
+        ]
+      },
+      {
+        "id": "12220444311",
+        "version": "1",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.847302,
+          46.472953
+        ]
+      },
+      {
+        "id": "12220444312",
+        "version": "1",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8472704,
+          46.4729701
+        ]
+      },
+      {
+        "id": "12220444313",
+        "version": "1",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8472168,
+          46.4729928
+        ]
+      },
+      {
+        "id": "12220444314",
+        "version": "1",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8471739,
+          46.4730112
+        ]
+      },
+      {
+        "id": "12220444315",
+        "version": "1",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8471336,
+          46.4730255
+        ]
+      },
+      {
+        "id": "12220444316",
+        "version": "1",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8470228,
+          46.4730462
+        ]
+      },
+      {
+        "id": "12220444317",
+        "version": "1",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8470886,
+          46.4730358
+        ]
+      },
+      {
+        "id": "12220444318",
+        "version": "1",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8485351,
+          46.4726639
+        ]
+      },
+      {
+        "id": "12220444339",
+        "version": "1",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.848669,
+          46.4728422
+        ]
+      },
+      {
+        "id": "12220444340",
+        "version": "1",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8486263,
+          46.4728156
+        ]
+      },
+      {
+        "id": "12220444341",
+        "version": "1",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8485796,
+          46.472789
+        ]
+      },
+      {
+        "id": "12220444342",
+        "version": "2",
+        "timestamp": "2025-06-06T07:36:04Z",
+        "tags": {
+          "crossing": "uncontrolled",
+          "crossing:island": "no",
+          "crossing:markings": "zebra",
+          "crossing:markings:colour": "yellow",
+          "highway": "crossing"
+        },
+        "coordinate": [
+          6.8485342,
+          46.4727661
+        ]
+      },
+      {
+        "id": "12220444343",
+        "version": "1",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {
+          "direction": "forward",
+          "highway": "give_way"
+        },
+        "coordinate": [
+          6.8484556,
+          46.4727337
+        ]
+      },
+      {
+        "id": "12220444344",
+        "version": "1",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8483744,
+          46.4727098
+        ]
+      },
+      {
+        "id": "12220444363",
+        "version": "1",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8484656,
+          46.4724824
+        ]
+      },
+      {
+        "id": "12220444379",
+        "version": "1",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8484421,
+          46.4724767
+        ]
+      },
+      {
+        "id": "12220444380",
+        "version": "1",
+        "timestamp": "2024-10-04T03:12:16Z",
+        "tags": {},
+        "coordinate": [
+          6.8482484,
+          46.4725305
+        ]
+      },
+      {
+        "id": "12220736202",
+        "version": "1",
+        "timestamp": "2024-10-04T03:52:09Z",
+        "tags": {},
+        "coordinate": [
+          6.8480237,
+          46.4741266
+        ]
+      },
+      {
+        "id": "12220736203",
+        "version": "1",
+        "timestamp": "2024-10-04T03:52:09Z",
+        "tags": {},
+        "coordinate": [
+          6.8478945,
+          46.4742203
+        ]
+      },
+      {
+        "id": "12220736204",
+        "version": "1",
+        "timestamp": "2024-10-04T03:52:09Z",
+        "tags": {},
+        "coordinate": [
+          6.8478255,
+          46.4742662
+        ]
+      },
+      {
+        "id": "12220736205",
+        "version": "1",
+        "timestamp": "2024-10-04T03:52:09Z",
+        "tags": {},
+        "coordinate": [
+          6.8471126,
+          46.4745868
+        ]
+      },
+      {
+        "id": "12220736206",
+        "version": "1",
+        "timestamp": "2024-10-04T03:52:09Z",
+        "tags": {},
+        "coordinate": [
+          6.8467852,
+          46.4746362
+        ]
+      }
+    ],
+    "relations": [
+      {
+        "id": "8291116",
+        "version": "54",
+        "timestamp": "2026-03-03T09:46:49Z",
+        "tags": {
+          "colour": "#9F9F9F",
+          "from": "Bossonnens, Gare",
+          "gtfs:feed": "CH-Alle",
+          "gtfs:release_date": "2025-12-18",
+          "gtfs:route_id": "92-216-j26-1",
+          "gtfs:trip_id:like": "%92-216-j26-1.3.R",
+          "gtfs:trip_id:sample": "55.TA.92-216-j26-1.3.R",
+          "name": "Bus 216: Bossonnens, Gare → Vevey, Gare",
+          "nat_ref": "10.216",
+          "network": "Mobilis",
+          "network:short": "CTV",
+          "network:wikidata": "Q2394222",
+          "note": "trips ending at platform A (%92-216-j26-1.2.R)",
+          "operator": "VMCV",
+          "operator:wikidata": "Q679651",
+          "public_transport:version": "2",
+          "ref": "216",
+          "ref_trips": "92-216-j26-1.3.R",
+          "route": "bus",
+          "to": "Vevey, Gare",
+          "type": "route"
+        },
+        "members": [
+          {
+            "type": "node",
+            "ref": "8554747261",
+            "role": "stop"
+          },
+          {
+            "type": "node",
+            "ref": "983835181",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "8554747236",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "921428878",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "8554747241",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "921428879",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "983835194",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "921428882",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "5611916780",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "921428876",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "8554747256",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "921428884",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "8560222428",
+            "role": "stop"
+          },
+          {
+            "type": "node",
+            "ref": "8554741374",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "8554747226",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "921428873",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "7902515790",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "921428872",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "387581955",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "921428869",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "387584208",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "921428867",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "369779350",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "921428865",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "3574221527",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "921428862",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "3574221526",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "921428861",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "6763649067",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "921428859",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "2406963934",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "921428857",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "8560222421",
+            "role": "stop"
+          },
+          {
+            "type": "node",
+            "ref": "5611916779",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "412723864",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "921428854",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "6805331548",
+            "role": "stop"
+          },
+          {
+            "type": "node",
+            "ref": "428606259",
+            "role": "platform"
+          },
+          {
+            "type": "way",
+            "ref": "844172279",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1358503837",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1358503832",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "705422177",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1358503831",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1358503829",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "716745558",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "908226728",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "204989299",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1065170594",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1065170597",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1313043119",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "922600868",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1140803175",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1140803174",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "30046956",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1324257942",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1324257933",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "922054947",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "153088316",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "56058307",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1319992295",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "533876211",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1319992297",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1319992293",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "548005587",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "421102231",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "351595313",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "353073931",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "901732695",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "788584829",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1395573216",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "788584856",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "798112168",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "33834623",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "26834441",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "296774233",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "353177811",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "56058308",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "26834440",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1320550996",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "26834438",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1320550993",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1238158528",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "44858514",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "421066648",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "44858516",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1238158529",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "32140189",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1238158530",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "44858510",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "921428905",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "44858509",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "390297749",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1216716162",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "10113086",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "647523575",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "940339602",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "274652071",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "23395400",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "153272138",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "769647311",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "199096733",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "153886058",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1013508570",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1304107977",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "274652068",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "706221376",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "922172890",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "922172889",
+            "role": ""
+          }
+        ]
+      },
+      {
+        "id": "8291117",
+        "version": "62",
+        "timestamp": "2026-04-26T10:15:52Z",
+        "tags": {
+          "colour": "#E02080",
+          "duration": "00:32",
+          "from": "Châtel-St-Denis, Gare",
+          "gtfs:feed": "CH-Alle",
+          "gtfs:release_date": "2025-12-18",
+          "gtfs:route_id": "92-213-j26-1",
+          "gtfs:trip_id:like": "%92-213-j26-1.8.R",
+          "gtfs:trip_id:sample": "60.TA.92-213-j26-1.8.R",
+          "name": "Bus 213: Châtel-St-Denis, Gare→ Vevey, Gare",
+          "nat_ref": "10.213",
+          "network": "Mobilis",
+          "network:short": "CTV",
+          "network:wikidata": "Q2394222",
+          "note": "trips ending at platform A (%92-213-j26-1.7.R)",
+          "operator": "VMCV",
+          "operator:wikidata": "Q679651",
+          "public_transport:version": "2",
+          "ref": "213",
+          "ref_trips": "92-213-j26-1.8.R",
+          "route": "bus",
+          "to": "Vevey, Gare",
+          "type": "route"
+        },
+        "members": [
+          {
+            "type": "node",
+            "ref": "7036296565",
+            "role": "stop"
+          },
+          {
+            "type": "node",
+            "ref": "7036296568",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "5004985740",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "922132183",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "983835985",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "922132182",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "983835197",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "922132180",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "8560824312",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "922132177",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "983835962",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "922132176",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "8560824314",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "922132171",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "983835215",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "922132174",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "983835981",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "922132170",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "1670644572",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "921428870",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "387581955",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "921428869",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "387584208",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "921428867",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "369779350",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "921428865",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "3574221527",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "921428862",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "3574221526",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "921428861",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "6763649067",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "921428859",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "2406963934",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "921428857",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "8560222421",
+            "role": "stop"
+          },
+          {
+            "type": "node",
+            "ref": "5611916779",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "412723864",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "921428854",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "6805331548",
+            "role": "stop"
+          },
+          {
+            "type": "node",
+            "ref": "428606259",
+            "role": "platform"
+          },
+          {
+            "type": "way",
+            "ref": "1396204153",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1122269425",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "753040979",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "716065042",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "215861150",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1339765084",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "705741402",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1339765083",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "705741403",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1320607299",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "705741397",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1320607303",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "846880587",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "731271713",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "421102230",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1320607304",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "129293677",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "427719625",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1320517813",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1320517059",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1320517060",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1320517061",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1320516522",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "421158633",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1319998678",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1218277966",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "56058317",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1319994755",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1319994754",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "421158471",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1319992298",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "533876211",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1319992297",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1319992293",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "548005587",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "421102231",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "351595313",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "353073931",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "901732695",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "788584829",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1395573216",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "788584856",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "798112168",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "33834623",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "26834441",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "296774233",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "353177811",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "56058308",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "26834440",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1320550996",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "26834438",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1320550993",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1238158528",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "44858514",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "421066648",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "44858516",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1238158529",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "32140189",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1238158530",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "44858510",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "921428905",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "44858509",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "390297749",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1216716162",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "10113086",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "647523575",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "940339602",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "274652071",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "23395400",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "153272138",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "769647311",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "199096733",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "153886058",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1013508570",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1304107977",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "274652068",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "706221376",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "922172890",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "922172889",
+            "role": ""
+          }
+        ]
+      },
+      {
+        "id": "12495927",
+        "version": "33",
+        "timestamp": "2026-03-03T09:46:49Z",
+        "tags": {
+          "duration": "00:34",
+          "from": "Palézieux, Gare",
+          "gtfs:feed": "CH-Alle",
+          "gtfs:release_date": "2025-12-18",
+          "gtfs:route_id": "92-217-j26-1",
+          "gtfs:trip_id:like": "%92-217-j26-1.3.R",
+          "gtfs:trip_id:sample": "40.TA.92-217-j26-1.3.R",
+          "name": "Bus 217: Palézieux → Vevey",
+          "nat_ref": "10.217",
+          "network": "Mobilis",
+          "network:short": "CTV",
+          "network:wikidata": "Q2394222",
+          "note": "trips ending at platform A (%92-217-j26-1.2.R)",
+          "operator": "VMCV",
+          "operator:wikidata": "Q679651",
+          "public_transport:version": "2",
+          "ref": "217",
+          "ref_trips": "92-217-j26-1.3.R",
+          "route": "bus",
+          "to": "Vevey, Gare",
+          "type": "route"
+        },
+        "members": [
+          {
+            "type": "node",
+            "ref": "8642680430",
+            "role": "stop"
+          },
+          {
+            "type": "node",
+            "ref": "983848840",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "8696189635",
+            "role": "stop"
+          },
+          {
+            "type": "node",
+            "ref": "410724682",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "8696189634",
+            "role": "stop"
+          },
+          {
+            "type": "node",
+            "ref": "1663297558",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "1650106955",
+            "role": "stop"
+          },
+          {
+            "type": "node",
+            "ref": "10291516557",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "8564927440",
+            "role": "stop"
+          },
+          {
+            "type": "node",
+            "ref": "983835855",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "12153806692",
+            "role": "stop"
+          },
+          {
+            "type": "node",
+            "ref": "10291516553",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "5611916780",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "921428876",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "8554747256",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "921428884",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "8560222428",
+            "role": "stop"
+          },
+          {
+            "type": "node",
+            "ref": "8554741374",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "8554747226",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "921428873",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "7902515790",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "921428872",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "387581955",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "921428869",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "387584208",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "921428867",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "369779350",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "921428865",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "3574221527",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "921428862",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "3574221526",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "921428861",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "6763649067",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "921428859",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "2406963934",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "921428857",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "8560222421",
+            "role": "stop"
+          },
+          {
+            "type": "node",
+            "ref": "5611916779",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "412723864",
+            "role": "stop"
+          },
+          {
+            "type": "way",
+            "ref": "921428854",
+            "role": "platform"
+          },
+          {
+            "type": "node",
+            "ref": "6805331548",
+            "role": "stop"
+          },
+          {
+            "type": "node",
+            "ref": "428606259",
+            "role": "platform"
+          },
+          {
+            "type": "way",
+            "ref": "677444999",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1027698780",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "932317109",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "932337114",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "35016471",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "910617665",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "154476029",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "910617664",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "358214852",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1208432396",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "153701093",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "358214851",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "910556964",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "122061276",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1065170596",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1065170597",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1313043119",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "922600868",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1140803175",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1140803174",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "30046956",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1324257942",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1324257933",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "922054947",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "153088316",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "56058307",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1319992295",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "533876211",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1319992297",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1319992293",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "548005587",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "421102231",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "351595313",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "353073931",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "901732695",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "788584829",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1395573216",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "788584856",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "798112168",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "33834623",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "26834441",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "296774233",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "353177811",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "56058308",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "26834440",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1320550996",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "26834438",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1320550993",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1238158528",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "44858514",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "421066648",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "44858516",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1238158529",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "32140189",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1238158530",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "44858510",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "921428905",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "44858509",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "390297749",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1216716162",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "10113086",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "647523575",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "940339602",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "274652071",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "23395400",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "153272138",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "769647311",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "199096733",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "153886058",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1013508570",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "1304107977",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "274652068",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "706221376",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "922172890",
+            "role": ""
+          },
+          {
+            "type": "way",
+            "ref": "922172889",
+            "role": ""
+          }
+        ]
+      }
+    ],
+    "restrictions": [],
+    "xmlBounds": {
+      "minlat": "46.4710000",
+      "minlon": "6.8350000",
+      "maxlat": "46.4780000",
+      "maxlon": "6.8500000"
+    }
+  },
+  "cantonalComparison": [
+    {
+      "sourceId": 43,
+      "primary": {
+        "reason": "implausible-detour",
+        "maximumSnapMetres": 9.261402248185542,
+        "pathMetres": 2003.7370221333726
+      },
+      "diagnosticPath": [
+        [
+          6.842764,
+          46.476356
+        ],
+        [
+          6.8427569,
+          46.4763951
+        ],
+        [
+          6.8429462,
+          46.4764113
+        ],
+        [
+          6.843095,
+          46.476414
+        ],
+        [
+          6.8432164,
+          46.4764089
+        ],
+        [
+          6.8433102,
+          46.4763961
+        ],
+        [
+          6.8433959,
+          46.4763737
+        ],
+        [
+          6.8434651,
+          46.4763493
+        ],
+        [
+          6.8435149,
+          46.4763286
+        ],
+        [
+          6.8435954,
+          46.4762776
+        ],
+        [
+          6.8436483,
+          46.4762303
+        ],
+        [
+          6.8436957,
+          46.4761772
+        ],
+        [
+          6.8437295,
+          46.4761127
+        ],
+        [
+          6.8437551,
+          46.4760404
+        ],
+        [
+          6.8437642,
+          46.4759681
+        ],
+        [
+          6.8437567,
+          46.4758996
+        ],
+        [
+          6.8437327,
+          46.4758252
+        ],
+        [
+          6.8436948,
+          46.4757602
+        ],
+        [
+          6.8436321,
+          46.4756952
+        ],
+        [
+          6.8435693,
+          46.4756453
+        ],
+        [
+          6.8434871,
+          46.4755973
+        ],
+        [
+          6.8433828,
+          46.4755549
+        ],
+        [
+          6.8432785,
+          46.4755219
+        ],
+        [
+          6.8431244,
+          46.4755002
+        ],
+        [
+          6.8428601,
+          46.4754721
+        ],
+        [
+          6.8422599,
+          46.4754138
+        ],
+        [
+          6.842225,
+          46.4754101
+        ],
+        [
+          6.8415909,
+          46.4753436
+        ],
+        [
+          6.8409522,
+          46.4752793
+        ],
+        [
+          6.840331,
+          46.475218
+        ],
+        [
+          6.8401042,
+          46.475193
+        ],
+        [
+          6.8397409,
+          46.475153
+        ],
+        [
+          6.839427,
+          46.4751208
+        ],
+        [
+          6.8391573,
+          46.4750909
+        ],
+        [
+          6.8388875,
+          46.475059
+        ],
+        [
+          6.8386123,
+          46.4750194
+        ],
+        [
+          6.838406,
+          46.474986
+        ],
+        [
+          6.8381419,
+          46.4749389
+        ],
+        [
+          6.8378835,
+          46.4748842
+        ],
+        [
+          6.8376223,
+          46.4748276
+        ],
+        [
+          6.8374491,
+          46.474781
+        ],
+        [
+          6.8373256,
+          46.4747365
+        ],
+        [
+          6.8372269,
+          46.4746922
+        ],
+        [
+          6.8371448,
+          46.4746423
+        ],
+        [
+          6.8370682,
+          46.4745847
+        ],
+        [
+          6.8370046,
+          46.4745167
+        ],
+        [
+          6.8369689,
+          46.4744561
+        ],
+        [
+          6.8369442,
+          46.4743943
+        ],
+        [
+          6.8369364,
+          46.4743142
+        ],
+        [
+          6.8369447,
+          46.4742465
+        ],
+        [
+          6.8369454,
+          46.4742443
+        ],
+        [
+          6.836962,
+          46.4741914
+        ],
+        [
+          6.8369979,
+          46.4741223
+        ],
+        [
+          6.8370353,
+          46.4740737
+        ],
+        [
+          6.8371109,
+          46.4740076
+        ],
+        [
+          6.8371743,
+          46.4739646
+        ],
+        [
+          6.8372768,
+          46.4739156
+        ],
+        [
+          6.8373985,
+          46.4738801
+        ],
+        [
+          6.8375173,
+          46.4738578
+        ],
+        [
+          6.8377049,
+          46.4738379
+        ],
+        [
+          6.8379421,
+          46.4738182
+        ],
+        [
+          6.8382787,
+          46.4737895
+        ],
+        [
+          6.8385325,
+          46.4737699
+        ],
+        [
+          6.8388579,
+          46.4737469
+        ],
+        [
+          6.8391502,
+          46.4737313
+        ],
+        [
+          6.8394259,
+          46.4737289
+        ],
+        [
+          6.839729,
+          46.4737324
+        ],
+        [
+          6.8400155,
+          46.4737473
+        ],
+        [
+          6.8404011,
+          46.4737721
+        ],
+        [
+          6.8409023,
+          46.4738072
+        ],
+        [
+          6.8414448,
+          46.4738424
+        ],
+        [
+          6.8416182,
+          46.4738563
+        ],
+        [
+          6.8417036,
+          46.4738632
+        ],
+        [
+          6.8420838,
+          46.4738857
+        ],
+        [
+          6.8424446,
+          46.4739105
+        ],
+        [
+          6.8427391,
+          46.4739321
+        ],
+        [
+          6.842965,
+          46.4739532
+        ],
+        [
+          6.843221,
+          46.4739831
+        ],
+        [
+          6.8434604,
+          46.4740167
+        ],
+        [
+          6.8436529,
+          46.4740482
+        ],
+        [
+          6.8437738,
+          46.4740716
+        ],
+        [
+          6.8438708,
+          46.4740907
+        ],
+        [
+          6.8442496,
+          46.4741732
+        ],
+        [
+          6.8446372,
+          46.4742666
+        ],
+        [
+          6.8451623,
+          46.4743931
+        ],
+        [
+          6.8456186,
+          46.4745021
+        ],
+        [
+          6.8458825,
+          46.4745625
+        ],
+        [
+          6.8460668,
+          46.4745997
+        ],
+        [
+          6.8462209,
+          46.4746233
+        ],
+        [
+          6.846386,
+          46.474647
+        ],
+        [
+          6.8465402,
+          46.4746574
+        ],
+        [
+          6.8466532,
+          46.474658
+        ],
+        [
+          6.846769,
+          46.4746547
+        ],
+        [
+          6.8468821,
+          46.474642
+        ],
+        [
+          6.8470312,
+          46.474618
+        ],
+        [
+          6.8471583,
+          46.4745882
+        ],
+        [
+          6.8472994,
+          46.4745433
+        ],
+        [
+          6.8474461,
+          46.474485
+        ],
+        [
+          6.8475818,
+          46.4744191
+        ],
+        [
+          6.8477205,
+          46.4743398
+        ],
+        [
+          6.8478482,
+          46.4742529
+        ],
+        [
+          6.8479827,
+          46.4741524
+        ],
+        [
+          6.848053,
+          46.4740931
+        ],
+        [
+          6.8480929,
+          46.4740599
+        ],
+        [
+          6.848271,
+          46.4739009
+        ],
+        [
+          6.8484491,
+          46.4737419
+        ],
+        [
+          6.8486134,
+          46.4735904
+        ],
+        [
+          6.8487137,
+          46.4734862
+        ],
+        [
+          6.8487669,
+          46.4734103
+        ],
+        [
+          6.8488007,
+          46.4733419
+        ],
+        [
+          6.8488208,
+          46.4732678
+        ],
+        [
+          6.8488272,
+          46.4731917
+        ],
+        [
+          6.8488171,
+          46.4731002
+        ],
+        [
+          6.8487824,
+          46.473001
+        ],
+        [
+          6.8487255,
+          46.4729131
+        ],
+        [
+          6.8486441,
+          46.4728235
+        ],
+        [
+          6.8485981,
+          46.4727779
+        ],
+        [
+          6.8485728,
+          46.4727562
+        ],
+        [
+          6.8484428,
+          46.4726592
+        ],
+        [
+          6.8484353,
+          46.4726614
+        ],
+        [
+          6.8484275,
+          46.4726638
+        ],
+        [
+          6.8484195,
+          46.4726656
+        ],
+        [
+          6.8484113,
+          46.4726671
+        ],
+        [
+          6.8484023,
+          46.4726681
+        ],
+        [
+          6.8483945,
+          46.4726686
+        ],
+        [
+          6.8483856,
+          46.4726686
+        ],
+        [
+          6.8483772,
+          46.4726682
+        ],
+        [
+          6.8483688,
+          46.4726674
+        ],
+        [
+          6.8483606,
+          46.4726661
+        ],
+        [
+          6.8483525,
+          46.4726643
+        ],
+        [
+          6.8483447,
+          46.4726621
+        ],
+        [
+          6.8483371,
+          46.4726595
+        ],
+        [
+          6.8483298,
+          46.4726565
+        ],
+        [
+          6.8483224,
+          46.4726528
+        ],
+        [
+          6.8483165,
+          46.4726494
+        ],
+        [
+          6.84831,
+          46.4726449
+        ],
+        [
+          6.8483049,
+          46.4726409
+        ],
+        [
+          6.8482998,
+          46.4726362
+        ],
+        [
+          6.8482953,
+          46.4726312
+        ],
+        [
+          6.8482887,
+          46.472623
+        ],
+        [
+          6.8481875,
+          46.4726362
+        ],
+        [
+          6.8480882,
+          46.4726514
+        ],
+        [
+          6.8479515,
+          46.472675
+        ],
+        [
+          6.8478188,
+          46.4727114
+        ],
+        [
+          6.8475657,
+          46.4727972
+        ],
+        [
+          6.8473436,
+          46.4728832
+        ],
+        [
+          6.8471069,
+          46.4729776
+        ],
+        [
+          6.8469161,
+          46.4730394
+        ],
+        [
+          6.8467191,
+          46.4730941
+        ],
+        [
+          6.8465684,
+          46.4731351
+        ],
+        [
+          6.8464393,
+          46.4731598
+        ],
+        [
+          6.8463006,
+          46.4731833
+        ],
+        [
+          6.8461557,
+          46.4732054
+        ],
+        [
+          6.8459963,
+          46.4732232
+        ],
+        [
+          6.8459912,
+          46.4732236
+        ],
+        [
+          6.8460069,
+          46.4733061
+        ]
+      ],
+      "diagnosticLengthMetres": 2003.7370221333726,
+      "cantonalToOsmMetres": 8.16352614879125,
+      "osmToCantonalMetres": 7.148569555735896,
+      "method": "Maximum original vertex to other polyline distance, both directions; diagnostic only, not a lane/survey accuracy claim."
+    },
+    {
+      "sourceId": 44,
+      "primary": {
+        "reason": "implausible-detour",
+        "maximumSnapMetres": 9.261402248185542,
+        "pathMetres": 2003.7370221339488
+      },
+      "diagnosticPath": [
+        [
+          6.842764,
+          46.476356
+        ],
+        [
+          6.8427569,
+          46.4763951
+        ],
+        [
+          6.8429462,
+          46.4764113
+        ],
+        [
+          6.843095,
+          46.476414
+        ],
+        [
+          6.8432164,
+          46.4764089
+        ],
+        [
+          6.8433102,
+          46.4763961
+        ],
+        [
+          6.8433959,
+          46.4763737
+        ],
+        [
+          6.8434651,
+          46.4763493
+        ],
+        [
+          6.8435149,
+          46.4763286
+        ],
+        [
+          6.8435954,
+          46.4762776
+        ],
+        [
+          6.8436483,
+          46.4762303
+        ],
+        [
+          6.8436957,
+          46.4761772
+        ],
+        [
+          6.8437295,
+          46.4761127
+        ],
+        [
+          6.8437551,
+          46.4760404
+        ],
+        [
+          6.8437583,
+          46.4760152
+        ],
+        [
+          6.8437642,
+          46.4759681
+        ],
+        [
+          6.8437567,
+          46.4758996
+        ],
+        [
+          6.8437327,
+          46.4758252
+        ],
+        [
+          6.8436948,
+          46.4757602
+        ],
+        [
+          6.8436321,
+          46.4756952
+        ],
+        [
+          6.8435693,
+          46.4756453
+        ],
+        [
+          6.8434871,
+          46.4755973
+        ],
+        [
+          6.8433828,
+          46.4755549
+        ],
+        [
+          6.8432785,
+          46.4755219
+        ],
+        [
+          6.8431244,
+          46.4755002
+        ],
+        [
+          6.8428601,
+          46.4754721
+        ],
+        [
+          6.8422599,
+          46.4754138
+        ],
+        [
+          6.842225,
+          46.4754101
+        ],
+        [
+          6.8415909,
+          46.4753436
+        ],
+        [
+          6.8409522,
+          46.4752793
+        ],
+        [
+          6.840331,
+          46.475218
+        ],
+        [
+          6.8401042,
+          46.475193
+        ],
+        [
+          6.8397409,
+          46.475153
+        ],
+        [
+          6.839427,
+          46.4751208
+        ],
+        [
+          6.8391573,
+          46.4750909
+        ],
+        [
+          6.8388875,
+          46.475059
+        ],
+        [
+          6.8386123,
+          46.4750194
+        ],
+        [
+          6.838406,
+          46.474986
+        ],
+        [
+          6.8381419,
+          46.4749389
+        ],
+        [
+          6.8378835,
+          46.4748842
+        ],
+        [
+          6.8376223,
+          46.4748276
+        ],
+        [
+          6.8374623,
+          46.4747845
+        ],
+        [
+          6.8374491,
+          46.474781
+        ],
+        [
+          6.8373256,
+          46.4747365
+        ],
+        [
+          6.8372269,
+          46.4746922
+        ],
+        [
+          6.8371448,
+          46.4746423
+        ],
+        [
+          6.8370682,
+          46.4745847
+        ],
+        [
+          6.8370046,
+          46.4745167
+        ],
+        [
+          6.8369689,
+          46.4744561
+        ],
+        [
+          6.8369442,
+          46.4743943
+        ],
+        [
+          6.8369364,
+          46.4743142
+        ],
+        [
+          6.8369447,
+          46.4742465
+        ],
+        [
+          6.8369454,
+          46.4742443
+        ],
+        [
+          6.836962,
+          46.4741914
+        ],
+        [
+          6.8369979,
+          46.4741223
+        ],
+        [
+          6.8370353,
+          46.4740737
+        ],
+        [
+          6.8371109,
+          46.4740076
+        ],
+        [
+          6.8371743,
+          46.4739646
+        ],
+        [
+          6.8372768,
+          46.4739156
+        ],
+        [
+          6.8373985,
+          46.4738801
+        ],
+        [
+          6.8375173,
+          46.4738578
+        ],
+        [
+          6.8377049,
+          46.4738379
+        ],
+        [
+          6.8379421,
+          46.4738182
+        ],
+        [
+          6.8382787,
+          46.4737895
+        ],
+        [
+          6.8385325,
+          46.4737699
+        ],
+        [
+          6.8388579,
+          46.4737469
+        ],
+        [
+          6.8391502,
+          46.4737313
+        ],
+        [
+          6.8394259,
+          46.4737289
+        ],
+        [
+          6.839729,
+          46.4737324
+        ],
+        [
+          6.8400155,
+          46.4737473
+        ],
+        [
+          6.8404011,
+          46.4737721
+        ],
+        [
+          6.8409023,
+          46.4738072
+        ],
+        [
+          6.8414448,
+          46.4738424
+        ],
+        [
+          6.8416182,
+          46.4738563
+        ],
+        [
+          6.8417036,
+          46.4738632
+        ],
+        [
+          6.8420838,
+          46.4738857
+        ],
+        [
+          6.8424446,
+          46.4739105
+        ],
+        [
+          6.8427391,
+          46.4739321
+        ],
+        [
+          6.842965,
+          46.4739532
+        ],
+        [
+          6.843221,
+          46.4739831
+        ],
+        [
+          6.8434604,
+          46.4740167
+        ],
+        [
+          6.8436529,
+          46.4740482
+        ],
+        [
+          6.8437738,
+          46.4740716
+        ],
+        [
+          6.8438708,
+          46.4740907
+        ],
+        [
+          6.8442496,
+          46.4741732
+        ],
+        [
+          6.8446372,
+          46.4742666
+        ],
+        [
+          6.8451623,
+          46.4743931
+        ],
+        [
+          6.8456186,
+          46.4745021
+        ],
+        [
+          6.8456942,
+          46.4745194
+        ],
+        [
+          6.8458825,
+          46.4745625
+        ],
+        [
+          6.8460668,
+          46.4745997
+        ],
+        [
+          6.8462209,
+          46.4746233
+        ],
+        [
+          6.846386,
+          46.474647
+        ],
+        [
+          6.8465402,
+          46.4746574
+        ],
+        [
+          6.8466532,
+          46.474658
+        ],
+        [
+          6.846769,
+          46.4746547
+        ],
+        [
+          6.8468821,
+          46.474642
+        ],
+        [
+          6.8470312,
+          46.474618
+        ],
+        [
+          6.8471583,
+          46.4745882
+        ],
+        [
+          6.8472994,
+          46.4745433
+        ],
+        [
+          6.8474461,
+          46.474485
+        ],
+        [
+          6.8475818,
+          46.4744191
+        ],
+        [
+          6.8477205,
+          46.4743398
+        ],
+        [
+          6.8478482,
+          46.4742529
+        ],
+        [
+          6.8479827,
+          46.4741524
+        ],
+        [
+          6.848053,
+          46.4740931
+        ],
+        [
+          6.8480929,
+          46.4740599
+        ],
+        [
+          6.848271,
+          46.4739009
+        ],
+        [
+          6.8484491,
+          46.4737419
+        ],
+        [
+          6.8486134,
+          46.4735904
+        ],
+        [
+          6.8487137,
+          46.4734862
+        ],
+        [
+          6.8487669,
+          46.4734103
+        ],
+        [
+          6.8488007,
+          46.4733419
+        ],
+        [
+          6.8488208,
+          46.4732678
+        ],
+        [
+          6.8488272,
+          46.4731917
+        ],
+        [
+          6.8488171,
+          46.4731002
+        ],
+        [
+          6.8487824,
+          46.473001
+        ],
+        [
+          6.8487255,
+          46.4729131
+        ],
+        [
+          6.8486441,
+          46.4728235
+        ],
+        [
+          6.8485981,
+          46.4727779
+        ],
+        [
+          6.8485728,
+          46.4727562
+        ],
+        [
+          6.8484428,
+          46.4726592
+        ],
+        [
+          6.8484353,
+          46.4726614
+        ],
+        [
+          6.8484275,
+          46.4726638
+        ],
+        [
+          6.8484195,
+          46.4726656
+        ],
+        [
+          6.8484113,
+          46.4726671
+        ],
+        [
+          6.8484023,
+          46.4726681
+        ],
+        [
+          6.8483945,
+          46.4726686
+        ],
+        [
+          6.8483856,
+          46.4726686
+        ],
+        [
+          6.8483772,
+          46.4726682
+        ],
+        [
+          6.8483688,
+          46.4726674
+        ],
+        [
+          6.8483606,
+          46.4726661
+        ],
+        [
+          6.8483525,
+          46.4726643
+        ],
+        [
+          6.8483447,
+          46.4726621
+        ],
+        [
+          6.8483371,
+          46.4726595
+        ],
+        [
+          6.8483298,
+          46.4726565
+        ],
+        [
+          6.8483224,
+          46.4726528
+        ],
+        [
+          6.8483165,
+          46.4726494
+        ],
+        [
+          6.84831,
+          46.4726449
+        ],
+        [
+          6.8483049,
+          46.4726409
+        ],
+        [
+          6.8482998,
+          46.4726362
+        ],
+        [
+          6.8482953,
+          46.4726312
+        ],
+        [
+          6.8482887,
+          46.472623
+        ],
+        [
+          6.8481875,
+          46.4726362
+        ],
+        [
+          6.8480882,
+          46.4726514
+        ],
+        [
+          6.8479515,
+          46.472675
+        ],
+        [
+          6.8478188,
+          46.4727114
+        ],
+        [
+          6.8475657,
+          46.4727972
+        ],
+        [
+          6.8473436,
+          46.4728832
+        ],
+        [
+          6.8471069,
+          46.4729776
+        ],
+        [
+          6.8469161,
+          46.4730394
+        ],
+        [
+          6.8467191,
+          46.4730941
+        ],
+        [
+          6.8465684,
+          46.4731351
+        ],
+        [
+          6.8464393,
+          46.4731598
+        ],
+        [
+          6.8463006,
+          46.4731833
+        ],
+        [
+          6.8461557,
+          46.4732054
+        ],
+        [
+          6.8459963,
+          46.4732232
+        ],
+        [
+          6.8459912,
+          46.4732236
+        ],
+        [
+          6.8460069,
+          46.4733061
+        ]
+      ],
+      "diagnosticLengthMetres": 2003.7370221339488,
+      "cantonalToOsmMetres": 8.16352614879125,
+      "osmToCantonalMetres": 7.148569555735896,
+      "method": "Maximum original vertex to other polyline distance, both directions; diagnostic only, not a lane/survey accuracy claim."
+    },
+    {
+      "sourceId": 45,
+      "primary": {
+        "reason": "implausible-detour",
+        "maximumSnapMetres": 9.261402248185542,
+        "pathMetres": 2003.7399111814216
+      },
+      "diagnosticPath": [
+        [
+          6.842764,
+          46.476356
+        ],
+        [
+          6.8427569,
+          46.4763951
+        ],
+        [
+          6.8429462,
+          46.4764113
+        ],
+        [
+          6.843095,
+          46.476414
+        ],
+        [
+          6.8432164,
+          46.4764089
+        ],
+        [
+          6.8433102,
+          46.4763961
+        ],
+        [
+          6.8433959,
+          46.4763737
+        ],
+        [
+          6.8434651,
+          46.4763493
+        ],
+        [
+          6.8435149,
+          46.4763286
+        ],
+        [
+          6.8435954,
+          46.4762776
+        ],
+        [
+          6.8436483,
+          46.4762303
+        ],
+        [
+          6.8436957,
+          46.4761772
+        ],
+        [
+          6.8437295,
+          46.4761127
+        ],
+        [
+          6.8437551,
+          46.4760404
+        ],
+        [
+          6.8437583,
+          46.4760152
+        ],
+        [
+          6.8437642,
+          46.4759681
+        ],
+        [
+          6.8437567,
+          46.4758996
+        ],
+        [
+          6.8437327,
+          46.4758252
+        ],
+        [
+          6.8436948,
+          46.4757602
+        ],
+        [
+          6.8436321,
+          46.4756952
+        ],
+        [
+          6.8435693,
+          46.4756453
+        ],
+        [
+          6.8434871,
+          46.4755973
+        ],
+        [
+          6.8433828,
+          46.4755549
+        ],
+        [
+          6.8432785,
+          46.4755219
+        ],
+        [
+          6.8431244,
+          46.4755002
+        ],
+        [
+          6.8428601,
+          46.4754721
+        ],
+        [
+          6.8422599,
+          46.4754138
+        ],
+        [
+          6.842225,
+          46.4754101
+        ],
+        [
+          6.8415909,
+          46.4753436
+        ],
+        [
+          6.8409522,
+          46.4752793
+        ],
+        [
+          6.840331,
+          46.475218
+        ],
+        [
+          6.8401042,
+          46.475193
+        ],
+        [
+          6.8397409,
+          46.475153
+        ],
+        [
+          6.839427,
+          46.4751208
+        ],
+        [
+          6.8391573,
+          46.4750909
+        ],
+        [
+          6.8388875,
+          46.475059
+        ],
+        [
+          6.8386123,
+          46.4750194
+        ],
+        [
+          6.838406,
+          46.474986
+        ],
+        [
+          6.8381419,
+          46.4749389
+        ],
+        [
+          6.8378835,
+          46.4748842
+        ],
+        [
+          6.8376223,
+          46.4748276
+        ],
+        [
+          6.8374623,
+          46.4747845
+        ],
+        [
+          6.8374491,
+          46.474781
+        ],
+        [
+          6.8373256,
+          46.4747365
+        ],
+        [
+          6.8372269,
+          46.4746922
+        ],
+        [
+          6.8371448,
+          46.4746423
+        ],
+        [
+          6.8370682,
+          46.4745847
+        ],
+        [
+          6.8370046,
+          46.4745167
+        ],
+        [
+          6.8369689,
+          46.4744561
+        ],
+        [
+          6.8369442,
+          46.4743943
+        ],
+        [
+          6.8369364,
+          46.4743142
+        ],
+        [
+          6.8369447,
+          46.4742465
+        ],
+        [
+          6.8369454,
+          46.4742443
+        ],
+        [
+          6.836962,
+          46.4741914
+        ],
+        [
+          6.8369979,
+          46.4741223
+        ],
+        [
+          6.8370353,
+          46.4740737
+        ],
+        [
+          6.8371109,
+          46.4740076
+        ],
+        [
+          6.8371743,
+          46.4739646
+        ],
+        [
+          6.8372768,
+          46.4739156
+        ],
+        [
+          6.8373985,
+          46.4738801
+        ],
+        [
+          6.8375173,
+          46.4738578
+        ],
+        [
+          6.8377049,
+          46.4738379
+        ],
+        [
+          6.8379421,
+          46.4738182
+        ],
+        [
+          6.8382787,
+          46.4737895
+        ],
+        [
+          6.8385035,
+          46.4737754
+        ],
+        [
+          6.8388579,
+          46.4737469
+        ],
+        [
+          6.8391502,
+          46.4737313
+        ],
+        [
+          6.8394259,
+          46.4737289
+        ],
+        [
+          6.839729,
+          46.4737324
+        ],
+        [
+          6.8400155,
+          46.4737473
+        ],
+        [
+          6.8404011,
+          46.4737721
+        ],
+        [
+          6.8409023,
+          46.4738072
+        ],
+        [
+          6.8414448,
+          46.4738424
+        ],
+        [
+          6.8416182,
+          46.4738563
+        ],
+        [
+          6.8417036,
+          46.4738632
+        ],
+        [
+          6.8420838,
+          46.4738857
+        ],
+        [
+          6.8424446,
+          46.4739105
+        ],
+        [
+          6.8427391,
+          46.4739321
+        ],
+        [
+          6.842965,
+          46.4739532
+        ],
+        [
+          6.843221,
+          46.4739831
+        ],
+        [
+          6.8434604,
+          46.4740167
+        ],
+        [
+          6.8436529,
+          46.4740482
+        ],
+        [
+          6.8437738,
+          46.4740716
+        ],
+        [
+          6.8438708,
+          46.4740907
+        ],
+        [
+          6.8442496,
+          46.4741732
+        ],
+        [
+          6.8446372,
+          46.4742666
+        ],
+        [
+          6.8451623,
+          46.4743931
+        ],
+        [
+          6.8456186,
+          46.4745021
+        ],
+        [
+          6.8456942,
+          46.4745194
+        ],
+        [
+          6.8458825,
+          46.4745625
+        ],
+        [
+          6.8460668,
+          46.4745997
+        ],
+        [
+          6.8462209,
+          46.4746233
+        ],
+        [
+          6.846386,
+          46.474647
+        ],
+        [
+          6.8465402,
+          46.4746574
+        ],
+        [
+          6.8466532,
+          46.474658
+        ],
+        [
+          6.846769,
+          46.4746547
+        ],
+        [
+          6.8468821,
+          46.474642
+        ],
+        [
+          6.8470312,
+          46.474618
+        ],
+        [
+          6.8471583,
+          46.4745882
+        ],
+        [
+          6.8472994,
+          46.4745433
+        ],
+        [
+          6.8474461,
+          46.474485
+        ],
+        [
+          6.8475818,
+          46.4744191
+        ],
+        [
+          6.8477205,
+          46.4743398
+        ],
+        [
+          6.8478482,
+          46.4742529
+        ],
+        [
+          6.8479827,
+          46.4741524
+        ],
+        [
+          6.848053,
+          46.4740931
+        ],
+        [
+          6.8480929,
+          46.4740599
+        ],
+        [
+          6.848271,
+          46.4739009
+        ],
+        [
+          6.8484491,
+          46.4737419
+        ],
+        [
+          6.8486134,
+          46.4735904
+        ],
+        [
+          6.8487137,
+          46.4734862
+        ],
+        [
+          6.8487669,
+          46.4734103
+        ],
+        [
+          6.8488007,
+          46.4733419
+        ],
+        [
+          6.8488208,
+          46.4732678
+        ],
+        [
+          6.8488272,
+          46.4731917
+        ],
+        [
+          6.8488171,
+          46.4731002
+        ],
+        [
+          6.8487824,
+          46.473001
+        ],
+        [
+          6.8487255,
+          46.4729131
+        ],
+        [
+          6.8486441,
+          46.4728235
+        ],
+        [
+          6.8485981,
+          46.4727779
+        ],
+        [
+          6.8485728,
+          46.4727562
+        ],
+        [
+          6.8484428,
+          46.4726592
+        ],
+        [
+          6.8484353,
+          46.4726614
+        ],
+        [
+          6.8484275,
+          46.4726638
+        ],
+        [
+          6.8484195,
+          46.4726656
+        ],
+        [
+          6.8484113,
+          46.4726671
+        ],
+        [
+          6.8484023,
+          46.4726681
+        ],
+        [
+          6.8483945,
+          46.4726686
+        ],
+        [
+          6.8483856,
+          46.4726686
+        ],
+        [
+          6.8483772,
+          46.4726682
+        ],
+        [
+          6.8483688,
+          46.4726674
+        ],
+        [
+          6.8483606,
+          46.4726661
+        ],
+        [
+          6.8483525,
+          46.4726643
+        ],
+        [
+          6.8483447,
+          46.4726621
+        ],
+        [
+          6.8483371,
+          46.4726595
+        ],
+        [
+          6.8483298,
+          46.4726565
+        ],
+        [
+          6.8483224,
+          46.4726528
+        ],
+        [
+          6.8483165,
+          46.4726494
+        ],
+        [
+          6.84831,
+          46.4726449
+        ],
+        [
+          6.8483049,
+          46.4726409
+        ],
+        [
+          6.8482998,
+          46.4726362
+        ],
+        [
+          6.8482953,
+          46.4726312
+        ],
+        [
+          6.8482887,
+          46.472623
+        ],
+        [
+          6.8481875,
+          46.4726362
+        ],
+        [
+          6.8481451,
+          46.4726427
+        ],
+        [
+          6.8480882,
+          46.4726514
+        ],
+        [
+          6.8479515,
+          46.472675
+        ],
+        [
+          6.8478188,
+          46.4727114
+        ],
+        [
+          6.8475657,
+          46.4727972
+        ],
+        [
+          6.8473436,
+          46.4728832
+        ],
+        [
+          6.8471069,
+          46.4729776
+        ],
+        [
+          6.8469161,
+          46.4730394
+        ],
+        [
+          6.8467191,
+          46.4730941
+        ],
+        [
+          6.8465684,
+          46.4731351
+        ],
+        [
+          6.8464393,
+          46.4731598
+        ],
+        [
+          6.8463006,
+          46.4731833
+        ],
+        [
+          6.8461557,
+          46.4732054
+        ],
+        [
+          6.8459963,
+          46.4732232
+        ],
+        [
+          6.8459912,
+          46.4732236
+        ],
+        [
+          6.8460069,
+          46.4733061
+        ]
+      ],
+      "diagnosticLengthMetres": 2003.7399111814216,
+      "cantonalToOsmMetres": 8.16352614879125,
+      "osmToCantonalMetres": 7.148569555735896,
+      "method": "Maximum original vertex to other polyline distance, both directions; diagnostic only, not a lane/survey accuracy claim."
+    }
+  ]
+}

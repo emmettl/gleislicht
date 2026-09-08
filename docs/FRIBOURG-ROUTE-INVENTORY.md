@@ -71,9 +71,9 @@ Generated from the [Fribourg audit](FRIBOURG-STUDY.md). Every one of the 207 ann
 | 834 | 201 | 92-201-A-j26-1 | bus | La Gruyère | 40 | 130/130; 6/6 | 64/64; 6/6 | All dated trips admitted |
 | 834 | 202 | 92-202-A-j26-1 | bus | La Gruyère | 41 | 130/130; 4/4 | 64/64; 4/4 | All dated trips admitted |
 | 834 | 203 | 92-203-A-j26-1 | bus | La Gruyère | 42 | 61/61; 3/3 | 0/0; 0/0 | All dated trips admitted |
-| 876 | 213 | 92-213-j26-1 | bus | La Veveyse | 43 | 37/73; 2/4 | 21/42; 2/5 | Partially admitted |
-| 876 | 216 | 92-216-j26-1 | bus | La Veveyse | 44 | 18/37; 1/3 | 17/33; 1/3 | Partially admitted |
-| 876 | 217 | 92-217-j26-1 | bus | La Veveyse | 45 | 19/38; 1/3 | 20/40; 1/3 | Partially admitted |
+| 876 | 213 | 92-213-j26-1 | bus | La Veveyse | 43 | 73/73; 4/4 | 42/42; 5/5 | All dated trips admitted |
+| 876 | 216 | 92-216-j26-1 | bus | La Veveyse | 44 | 37/37; 3/3 | 33/33; 3/3 | All dated trips admitted |
+| 876 | 217 | 92-217-j26-1 | bus | La Veveyse | 45 | 38/38; 3/3 | 40/40; 3/3 | All dated trips admitted |
 | 834 | 231 | 92-231-j26-1 | bus | La Sarine | 46 | 25/25; 2/2 | 10/10; 2/2 | All dated trips admitted |
 | 834 | 233 | 92-233-j26-1 | bus | La Sarine | 47 | 45/45; 5/5 | 25/25; 2/2 | All dated trips admitted |
 | 834 | 234 | 92-234-j26-1 | bus | La Gruyère, La Sarine | 48 | 52/52; 7/7 | 41/41; 2/2 | All dated trips admitted |

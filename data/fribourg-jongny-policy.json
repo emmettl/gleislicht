@@ -1,0 +1,1810 @@
+{
+  "schemaVersion": 1,
+  "id": "jongny-route-chain",
+  "sourceDirectory": "data/fribourg-jongny-sources",
+  "sources": [
+    {
+      "file": "map.osm.gz",
+      "url": "https://www.openstreetmap.org/api/0.6/map?bbox=6.835,46.471,6.850,46.478",
+      "attribution": "© OpenStreetMap contributors",
+      "license": "ODbL-1.0",
+      "role": "Complete raw bbox response, deterministic gzip; ten detailed ways and three 2026 route relations independently specify the directed road chain.",
+      "sha256": "a06e7afba4a93673c55c2ed19d2237e6e50406ca5cec49ee1a873aca38c8e4b8",
+      "retrievedAt": "2026-09-08T21:06:15.816Z"
+    },
+    {
+      "file": "vmcv-network-2026.pdf",
+      "url": "https://vmcv.cdn.prismic.io/vmcv/aTqBp3NYClf9oDK-_VMCV-Planr%C3%A9seauH26.pdf",
+      "attribution": "VMCV",
+      "timetableYear": 2026,
+      "validFrom": "2025-12-14",
+      "validUntil": "2026-12-12",
+      "role": "Official schematic network plan: lines 213/216/217 and consecutive Châtillon / Cure d’Attalens stops. Identity evidence only; no geometry extracted.",
+      "sha256": "ca21dc34890e9088ab0fb5587e131c0885de85bc5a8794359b574377d7fb2d04",
+      "retrievedAt": "2026-09-08T21:06:16.718Z"
+    }
+  ],
+  "roadCacheSha256": "87f4d4be2662ff0982cea837e95f73863096d4bc37bd19ecc09ea88e064c465e",
+  "cantonalSourceSha256": "e8523af34fcedca7f8b0cbe495446ff93a75d8563c62b243da942c39c5243f47",
+  "agencyId": "876",
+  "routeIds": [
+    "92-213-j26-1",
+    "92-216-j26-1",
+    "92-217-j26-1"
+  ],
+  "dates": [
+    "2026-09-04",
+    "2026-09-06"
+  ],
+  "stops": [
+    [
+      6.84276396,
+      46.47635603,
+      "Jongny, Châtillon",
+      "",
+      "ch:1:sloid:4959:0:2"
+    ],
+    [
+      6.84600688,
+      46.47330611,
+      "Corsier-Vevey, Cure d'Attalens",
+      "",
+      "ch:1:sloid:4963:0:4"
+    ]
+  ],
+  "patterns": [
+    {
+      "id": "06ff1ec906f3d19da12cfb1c",
+      "routeId": "92-213-j26-1",
+      "stops": [
+        [
+          6.89784866,
+          46.52544059,
+          "Châtel-St-Denis, centre",
+          "",
+          "ch:1:sloid:7241:0:18264"
+        ],
+        [
+          6.8971839,
+          46.52176295,
+          "Châtel-St-Denis, Bellière",
+          "",
+          "ch:1:sloid:4965:0:2"
+        ],
+        [
+          6.89036569,
+          46.50975789,
+          "Monts-de-Corsier, Mur-Blanc",
+          "",
+          "ch:1:sloid:79187:0:2"
+        ],
+        [
+          6.88776058,
+          46.50742086,
+          "Monts-de-Corsier, Banderette",
+          "",
+          "ch:1:sloid:4955:0:2"
+        ],
+        [
+          6.88215509,
+          46.50392749,
+          "Monts-de-Corsier, L'Hautigny",
+          "",
+          "ch:1:sloid:4956:0:2"
+        ],
+        [
+          6.87784318,
+          46.50107699,
+          "Mts-de-Corsier, Petit Hautigny",
+          "",
+          "ch:1:sloid:79184:0:2"
+        ],
+        [
+          6.87513925,
+          46.49821396,
+          "Monts-de-Corsier, Dautère",
+          "",
+          "ch:1:sloid:91902:0:2"
+        ],
+        [
+          6.87087225,
+          46.494015,
+          "Monts-de-Corsier, Longpraz",
+          "",
+          "ch:1:sloid:4962:0:2"
+        ],
+        [
+          6.86069434,
+          46.48727373,
+          "Monts-de-Corsier, La Chaux",
+          "C",
+          "ch:1:sloid:4961:0:4"
+        ],
+        [
+          6.84862996,
+          46.48306155,
+          "Jongny, Combette",
+          "",
+          "ch:1:sloid:79181:0:2"
+        ],
+        [
+          6.84441686,
+          46.48207186,
+          "Jongny, Reposoir",
+          "",
+          "ch:1:sloid:4728:0:2"
+        ],
+        [
+          6.84140751,
+          46.47927588,
+          "Jongny, village",
+          "",
+          "ch:1:sloid:4966:0:2"
+        ],
+        [
+          6.83619728,
+          46.4771355,
+          "Chardonne, rte de Châtel",
+          "",
+          "ch:1:sloid:4712:0:2"
+        ],
+        [
+          6.84276396,
+          46.47635603,
+          "Jongny, Châtillon",
+          "",
+          "ch:1:sloid:4959:0:2"
+        ],
+        [
+          6.84600688,
+          46.47330611,
+          "Corsier-Vevey, Cure d'Attalens",
+          "",
+          "ch:1:sloid:4963:0:4"
+        ],
+        [
+          6.83976359,
+          46.47077572,
+          "Corseaux, Délassement",
+          "B",
+          "ch:1:sloid:4967:0:2"
+        ],
+        [
+          6.83648474,
+          46.46890724,
+          "Vevey, funiculaire",
+          "B",
+          "ch:1:sloid:93992:0:4"
+        ],
+        [
+          6.83672728,
+          46.46645708,
+          "Vevey, Bergère",
+          "",
+          "ch:1:sloid:93982:0:1"
+        ],
+        [
+          6.84129971,
+          46.46347467,
+          "Vevey, gare",
+          "D",
+          "ch:1:sloid:79174:0:5"
+        ]
+      ]
+    },
+    {
+      "id": "12bdac881967aca6c5a25454",
+      "routeId": "92-216-j26-1",
+      "stops": [
+        [
+          6.84129971,
+          46.46347467,
+          "Vevey, gare",
+          "D",
+          "ch:1:sloid:79174:0:5"
+        ],
+        [
+          6.83653864,
+          46.46669839,
+          "Vevey, Bergère",
+          "",
+          "ch:1:sloid:93982:0:2"
+        ],
+        [
+          6.83654762,
+          46.46878349,
+          "Vevey, funiculaire",
+          "C",
+          "ch:1:sloid:93992:0:3"
+        ],
+        [
+          6.83979952,
+          46.47065817,
+          "Corseaux, Délassement",
+          "A",
+          "ch:1:sloid:4967:0:1"
+        ],
+        [
+          6.84665367,
+          46.47305246,
+          "Corsier-Vevey, Cure d'Attalens",
+          "",
+          "ch:1:sloid:4963:0:3"
+        ],
+        [
+          6.84374313,
+          46.47622612,
+          "Jongny, Châtillon",
+          "",
+          "ch:1:sloid:4959:0:1"
+        ],
+        [
+          6.8377873,
+          46.47726541,
+          "Chardonne, rte de Châtel",
+          "",
+          "ch:1:sloid:4712:0:1"
+        ],
+        [
+          6.84165005,
+          46.47930062,
+          "Jongny, village",
+          "",
+          "ch:1:sloid:4966:0:1"
+        ],
+        [
+          6.84446178,
+          46.48195433,
+          "Jongny, Reposoir",
+          "",
+          "ch:1:sloid:4728:0:1"
+        ],
+        [
+          6.84878268,
+          46.48301825,
+          "Jongny, Combette",
+          "",
+          "ch:1:sloid:79181:0:1"
+        ],
+        [
+          6.86006552,
+          46.48694592,
+          "Monts-de-Corsier, La Chaux",
+          "A",
+          "ch:1:sloid:4961:0:1"
+        ],
+        [
+          6.85246577,
+          46.48951885,
+          "Jongny, Chaudette",
+          "",
+          "ch:1:sloid:4958:0:1"
+        ],
+        [
+          6.85242085,
+          46.49390987,
+          "Attalens, Perrey",
+          "",
+          "ch:1:sloid:4957:0:1"
+        ],
+        [
+          6.85060626,
+          46.50640069,
+          "Attalens, La Fin",
+          "",
+          "ch:1:sloid:79191:0:1"
+        ],
+        [
+          6.84866589,
+          46.51025248,
+          "Attalens, village",
+          "",
+          "ch:1:sloid:4960:0:1"
+        ],
+        [
+          6.84907912,
+          46.51264503,
+          "Attalens, Corcelles",
+          "",
+          "ch:1:sloid:79193:0:1"
+        ],
+        [
+          6.84730944,
+          46.51589675,
+          "Attalens, Fin du Clos",
+          "",
+          "ch:1:sloid:95678:0:1"
+        ],
+        [
+          6.84866589,
+          46.52182476,
+          "Bossonnens, village",
+          "",
+          "ch:1:sloid:79194:0:1"
+        ],
+        [
+          6.85295086,
+          46.52574344,
+          "Bossonnens, gare",
+          "",
+          "ch:1:sloid:79195:0:2"
+        ]
+      ]
+    },
+    {
+      "id": "438f12c3a4bb0d2c7fddae0f",
+      "routeId": "92-213-j26-1",
+      "stops": [
+        [
+          6.89565677,
+          46.52788191,
+          "Châtel-St-Denis, gare",
+          "A",
+          "ch:1:sloid:77718:0:19381"
+        ],
+        [
+          6.89784866,
+          46.52544059,
+          "Châtel-St-Denis, centre",
+          "",
+          "ch:1:sloid:7241:0:18264"
+        ],
+        [
+          6.8971839,
+          46.52176295,
+          "Châtel-St-Denis, Bellière",
+          "",
+          "ch:1:sloid:4965:0:2"
+        ],
+        [
+          6.89036569,
+          46.50975789,
+          "Monts-de-Corsier, Mur-Blanc",
+          "",
+          "ch:1:sloid:79187:0:2"
+        ],
+        [
+          6.88776058,
+          46.50742086,
+          "Monts-de-Corsier, Banderette",
+          "",
+          "ch:1:sloid:4955:0:2"
+        ],
+        [
+          6.88215509,
+          46.50392749,
+          "Monts-de-Corsier, L'Hautigny",
+          "",
+          "ch:1:sloid:4956:0:2"
+        ],
+        [
+          6.87784318,
+          46.50107699,
+          "Mts-de-Corsier, Petit Hautigny",
+          "",
+          "ch:1:sloid:79184:0:2"
+        ],
+        [
+          6.87513925,
+          46.49821396,
+          "Monts-de-Corsier, Dautère",
+          "",
+          "ch:1:sloid:91902:0:2"
+        ],
+        [
+          6.87087225,
+          46.494015,
+          "Monts-de-Corsier, Longpraz",
+          "",
+          "ch:1:sloid:4962:0:2"
+        ],
+        [
+          6.86069434,
+          46.48727373,
+          "Monts-de-Corsier, La Chaux",
+          "C",
+          "ch:1:sloid:4961:0:4"
+        ]
+      ]
+    },
+    {
+      "id": "556949705d1c2e20e32c352f",
+      "routeId": "92-213-j26-1",
+      "stops": [
+        [
+          6.89565677,
+          46.52788191,
+          "Châtel-St-Denis, gare",
+          "A",
+          "ch:1:sloid:77718:0:19381"
+        ],
+        [
+          6.89784866,
+          46.52544059,
+          "Châtel-St-Denis, centre",
+          "",
+          "ch:1:sloid:7241:0:18264"
+        ],
+        [
+          6.8971839,
+          46.52176295,
+          "Châtel-St-Denis, Bellière",
+          "",
+          "ch:1:sloid:4965:0:2"
+        ],
+        [
+          6.89036569,
+          46.50975789,
+          "Monts-de-Corsier, Mur-Blanc",
+          "",
+          "ch:1:sloid:79187:0:2"
+        ],
+        [
+          6.88776058,
+          46.50742086,
+          "Monts-de-Corsier, Banderette",
+          "",
+          "ch:1:sloid:4955:0:2"
+        ],
+        [
+          6.88215509,
+          46.50392749,
+          "Monts-de-Corsier, L'Hautigny",
+          "",
+          "ch:1:sloid:4956:0:2"
+        ],
+        [
+          6.87784318,
+          46.50107699,
+          "Mts-de-Corsier, Petit Hautigny",
+          "",
+          "ch:1:sloid:79184:0:2"
+        ],
+        [
+          6.87513925,
+          46.49821396,
+          "Monts-de-Corsier, Dautère",
+          "",
+          "ch:1:sloid:91902:0:2"
+        ],
+        [
+          6.87087225,
+          46.494015,
+          "Monts-de-Corsier, Longpraz",
+          "",
+          "ch:1:sloid:4962:0:2"
+        ],
+        [
+          6.86069434,
+          46.48727373,
+          "Monts-de-Corsier, La Chaux",
+          "C",
+          "ch:1:sloid:4961:0:4"
+        ],
+        [
+          6.84862996,
+          46.48306155,
+          "Jongny, Combette",
+          "",
+          "ch:1:sloid:79181:0:2"
+        ],
+        [
+          6.84441686,
+          46.48207186,
+          "Jongny, Reposoir",
+          "",
+          "ch:1:sloid:4728:0:2"
+        ],
+        [
+          6.84140751,
+          46.47927588,
+          "Jongny, village",
+          "",
+          "ch:1:sloid:4966:0:2"
+        ],
+        [
+          6.83619728,
+          46.4771355,
+          "Chardonne, rte de Châtel",
+          "",
+          "ch:1:sloid:4712:0:2"
+        ],
+        [
+          6.84276396,
+          46.47635603,
+          "Jongny, Châtillon",
+          "",
+          "ch:1:sloid:4959:0:2"
+        ],
+        [
+          6.84600688,
+          46.47330611,
+          "Corsier-Vevey, Cure d'Attalens",
+          "",
+          "ch:1:sloid:4963:0:4"
+        ],
+        [
+          6.83976359,
+          46.47077572,
+          "Corseaux, Délassement",
+          "B",
+          "ch:1:sloid:4967:0:2"
+        ],
+        [
+          6.83648474,
+          46.46890724,
+          "Vevey, funiculaire",
+          "B",
+          "ch:1:sloid:93992:0:4"
+        ],
+        [
+          6.83672728,
+          46.46645708,
+          "Vevey, Bergère",
+          "",
+          "ch:1:sloid:93982:0:1"
+        ],
+        [
+          6.84229684,
+          46.46233611,
+          "Vevey, gare",
+          "A",
+          "ch:1:sloid:79174:0:1"
+        ]
+      ]
+    },
+    {
+      "id": "6ebfcd767a0029d8d4ca7f78",
+      "routeId": "92-217-j26-1",
+      "stops": [
+        [
+          6.83753577,
+          46.54216917,
+          "Palézieux, gare",
+          "",
+          "ch:1:sloid:70440:0:933913"
+        ],
+        [
+          6.83217283,
+          46.5328631,
+          "Granges (Veveyse), Le Rupan",
+          "",
+          "ch:1:sloid:77713:0:16339"
+        ],
+        [
+          6.83099603,
+          46.52955678,
+          "Granges (Veveyse), La Cuvigne",
+          "",
+          "ch:1:sloid:77714:0:16191"
+        ],
+        [
+          6.82945093,
+          46.52469272,
+          "Granges (Veveyse), village",
+          "",
+          "ch:1:sloid:77715:0:16228"
+        ],
+        [
+          6.83228062,
+          46.5201002,
+          "Granges (Veveyse), Le Battiau",
+          "",
+          "ch:1:sloid:77717:0:16118"
+        ],
+        [
+          6.84523433,
+          46.51211955,
+          "Attalens, Montessinge",
+          "",
+          "ch:1:sloid:10497:0:2"
+        ],
+        [
+          6.84854013,
+          46.51002992,
+          "Attalens, village",
+          "",
+          "ch:1:sloid:4960:0:2"
+        ],
+        [
+          6.85035473,
+          46.50600499,
+          "Attalens, La Fin",
+          "",
+          "ch:1:sloid:79191:0:2"
+        ],
+        [
+          6.85242984,
+          46.49303169,
+          "Attalens, Perrey",
+          "",
+          "ch:1:sloid:4957:0:2"
+        ],
+        [
+          6.85212441,
+          46.48938897,
+          "Jongny, Chaudette",
+          "",
+          "ch:1:sloid:4958:0:2"
+        ],
+        [
+          6.85974212,
+          46.48727991,
+          "Monts-de-Corsier, La Chaux",
+          "B",
+          "ch:1:sloid:4961:0:2"
+        ],
+        [
+          6.84862996,
+          46.48306155,
+          "Jongny, Combette",
+          "",
+          "ch:1:sloid:79181:0:2"
+        ],
+        [
+          6.84441686,
+          46.48207186,
+          "Jongny, Reposoir",
+          "",
+          "ch:1:sloid:4728:0:2"
+        ],
+        [
+          6.84140751,
+          46.47927588,
+          "Jongny, village",
+          "",
+          "ch:1:sloid:4966:0:2"
+        ],
+        [
+          6.83619728,
+          46.4771355,
+          "Chardonne, rte de Châtel",
+          "",
+          "ch:1:sloid:4712:0:2"
+        ],
+        [
+          6.84276396,
+          46.47635603,
+          "Jongny, Châtillon",
+          "",
+          "ch:1:sloid:4959:0:2"
+        ],
+        [
+          6.84600688,
+          46.47330611,
+          "Corsier-Vevey, Cure d'Attalens",
+          "",
+          "ch:1:sloid:4963:0:4"
+        ],
+        [
+          6.83976359,
+          46.47077572,
+          "Corseaux, Délassement",
+          "B",
+          "ch:1:sloid:4967:0:2"
+        ],
+        [
+          6.83648474,
+          46.46890724,
+          "Vevey, funiculaire",
+          "B",
+          "ch:1:sloid:93992:0:4"
+        ],
+        [
+          6.83672728,
+          46.46645708,
+          "Vevey, Bergère",
+          "",
+          "ch:1:sloid:93982:0:1"
+        ],
+        [
+          6.84229684,
+          46.46233611,
+          "Vevey, gare",
+          "A",
+          "ch:1:sloid:79174:0:1"
+        ]
+      ]
+    },
+    {
+      "id": "8ccc23ac58bcdf532ae6095b",
+      "routeId": "92-213-j26-1",
+      "stops": [
+        [
+          6.84129971,
+          46.46347467,
+          "Vevey, gare",
+          "D",
+          "ch:1:sloid:79174:0:5"
+        ],
+        [
+          6.83653864,
+          46.46669839,
+          "Vevey, Bergère",
+          "",
+          "ch:1:sloid:93982:0:2"
+        ],
+        [
+          6.83654762,
+          46.46878349,
+          "Vevey, funiculaire",
+          "C",
+          "ch:1:sloid:93992:0:3"
+        ],
+        [
+          6.83979952,
+          46.47065817,
+          "Corseaux, Délassement",
+          "A",
+          "ch:1:sloid:4967:0:1"
+        ],
+        [
+          6.84665367,
+          46.47305246,
+          "Corsier-Vevey, Cure d'Attalens",
+          "",
+          "ch:1:sloid:4963:0:3"
+        ],
+        [
+          6.84374313,
+          46.47622612,
+          "Jongny, Châtillon",
+          "",
+          "ch:1:sloid:4959:0:1"
+        ],
+        [
+          6.8377873,
+          46.47726541,
+          "Chardonne, rte de Châtel",
+          "",
+          "ch:1:sloid:4712:0:1"
+        ],
+        [
+          6.84165005,
+          46.47930062,
+          "Jongny, village",
+          "",
+          "ch:1:sloid:4966:0:1"
+        ],
+        [
+          6.84446178,
+          46.48195433,
+          "Jongny, Reposoir",
+          "",
+          "ch:1:sloid:4728:0:1"
+        ],
+        [
+          6.84878268,
+          46.48301825,
+          "Jongny, Combette",
+          "",
+          "ch:1:sloid:79181:0:1"
+        ],
+        [
+          6.86006552,
+          46.48694592,
+          "Monts-de-Corsier, La Chaux",
+          "A",
+          "ch:1:sloid:4961:0:1"
+        ],
+        [
+          6.87104293,
+          46.49402119,
+          "Monts-de-Corsier, Longpraz",
+          "",
+          "ch:1:sloid:4962:0:1"
+        ],
+        [
+          6.87549857,
+          46.4985417,
+          "Monts-de-Corsier, Dautère",
+          "",
+          "ch:1:sloid:91902:0:1"
+        ],
+        [
+          6.87831928,
+          46.50153456,
+          "Mts-de-Corsier, Petit Hautigny",
+          "",
+          "ch:1:sloid:79184:0:1"
+        ],
+        [
+          6.88238865,
+          46.50394604,
+          "Monts-de-Corsier, L'Hautigny",
+          "",
+          "ch:1:sloid:4956:0:1"
+        ],
+        [
+          6.8889733,
+          46.50774854,
+          "Monts-de-Corsier, Banderette",
+          "",
+          "ch:1:sloid:4955:0:1"
+        ],
+        [
+          6.89053637,
+          46.50938075,
+          "Monts-de-Corsier, Mur-Blanc",
+          "",
+          "ch:1:sloid:79187:0:1"
+        ],
+        [
+          6.89713899,
+          46.52147243,
+          "Châtel-St-Denis, Bellière",
+          "",
+          "ch:1:sloid:4965:0:1"
+        ],
+        [
+          6.89784866,
+          46.52544059,
+          "Châtel-St-Denis, centre",
+          "",
+          "ch:1:sloid:7241:0:18264"
+        ],
+        [
+          6.89565677,
+          46.52788191,
+          "Châtel-St-Denis, gare",
+          "A",
+          "ch:1:sloid:77718:0:19381"
+        ]
+      ]
+    },
+    {
+      "id": "90866e5fe6d2264b97eda3ff",
+      "routeId": "92-216-j26-1",
+      "stops": [
+        [
+          6.85295086,
+          46.52574344,
+          "Bossonnens, gare",
+          "",
+          "ch:1:sloid:79195:0:2"
+        ],
+        [
+          6.84843233,
+          46.52175677,
+          "Bossonnens, village",
+          "",
+          "ch:1:sloid:79194:0:2"
+        ],
+        [
+          6.84734537,
+          46.51548875,
+          "Attalens, Fin du Clos",
+          "",
+          "ch:1:sloid:95678:0:2"
+        ],
+        [
+          6.84899827,
+          46.51247193,
+          "Attalens, Corcelles",
+          "",
+          "ch:1:sloid:79193:0:2"
+        ],
+        [
+          6.84854013,
+          46.51002992,
+          "Attalens, village",
+          "",
+          "ch:1:sloid:4960:0:2"
+        ],
+        [
+          6.85035473,
+          46.50600499,
+          "Attalens, La Fin",
+          "",
+          "ch:1:sloid:79191:0:2"
+        ],
+        [
+          6.85242984,
+          46.49303169,
+          "Attalens, Perrey",
+          "",
+          "ch:1:sloid:4957:0:2"
+        ],
+        [
+          6.85212441,
+          46.48938897,
+          "Jongny, Chaudette",
+          "",
+          "ch:1:sloid:4958:0:2"
+        ],
+        [
+          6.85974212,
+          46.48727991,
+          "Monts-de-Corsier, La Chaux",
+          "B",
+          "ch:1:sloid:4961:0:2"
+        ],
+        [
+          6.84862996,
+          46.48306155,
+          "Jongny, Combette",
+          "",
+          "ch:1:sloid:79181:0:2"
+        ],
+        [
+          6.84441686,
+          46.48207186,
+          "Jongny, Reposoir",
+          "",
+          "ch:1:sloid:4728:0:2"
+        ],
+        [
+          6.84140751,
+          46.47927588,
+          "Jongny, village",
+          "",
+          "ch:1:sloid:4966:0:2"
+        ],
+        [
+          6.83619728,
+          46.4771355,
+          "Chardonne, rte de Châtel",
+          "",
+          "ch:1:sloid:4712:0:2"
+        ],
+        [
+          6.84276396,
+          46.47635603,
+          "Jongny, Châtillon",
+          "",
+          "ch:1:sloid:4959:0:2"
+        ],
+        [
+          6.84600688,
+          46.47330611,
+          "Corsier-Vevey, Cure d'Attalens",
+          "",
+          "ch:1:sloid:4963:0:4"
+        ],
+        [
+          6.83976359,
+          46.47077572,
+          "Corseaux, Délassement",
+          "B",
+          "ch:1:sloid:4967:0:2"
+        ],
+        [
+          6.83648474,
+          46.46890724,
+          "Vevey, funiculaire",
+          "B",
+          "ch:1:sloid:93992:0:4"
+        ],
+        [
+          6.83672728,
+          46.46645708,
+          "Vevey, Bergère",
+          "",
+          "ch:1:sloid:93982:0:1"
+        ],
+        [
+          6.84129971,
+          46.46347467,
+          "Vevey, gare",
+          "D",
+          "ch:1:sloid:79174:0:5"
+        ]
+      ]
+    },
+    {
+      "id": "a612d733f358efb00f574e9b",
+      "routeId": "92-213-j26-1",
+      "stops": [
+        [
+          6.89565677,
+          46.52788191,
+          "Châtel-St-Denis, gare",
+          "A",
+          "ch:1:sloid:77718:0:19381"
+        ],
+        [
+          6.89784866,
+          46.52544059,
+          "Châtel-St-Denis, centre",
+          "",
+          "ch:1:sloid:7241:0:18264"
+        ],
+        [
+          6.8971839,
+          46.52176295,
+          "Châtel-St-Denis, Bellière",
+          "",
+          "ch:1:sloid:4965:0:2"
+        ],
+        [
+          6.89036569,
+          46.50975789,
+          "Monts-de-Corsier, Mur-Blanc",
+          "",
+          "ch:1:sloid:79187:0:2"
+        ],
+        [
+          6.88776058,
+          46.50742086,
+          "Monts-de-Corsier, Banderette",
+          "",
+          "ch:1:sloid:4955:0:2"
+        ],
+        [
+          6.88215509,
+          46.50392749,
+          "Monts-de-Corsier, L'Hautigny",
+          "",
+          "ch:1:sloid:4956:0:2"
+        ],
+        [
+          6.87784318,
+          46.50107699,
+          "Mts-de-Corsier, Petit Hautigny",
+          "",
+          "ch:1:sloid:79184:0:2"
+        ],
+        [
+          6.87513925,
+          46.49821396,
+          "Monts-de-Corsier, Dautère",
+          "",
+          "ch:1:sloid:91902:0:2"
+        ],
+        [
+          6.87087225,
+          46.494015,
+          "Monts-de-Corsier, Longpraz",
+          "",
+          "ch:1:sloid:4962:0:2"
+        ],
+        [
+          6.86069434,
+          46.48727373,
+          "Monts-de-Corsier, La Chaux",
+          "C",
+          "ch:1:sloid:4961:0:4"
+        ],
+        [
+          6.84862996,
+          46.48306155,
+          "Jongny, Combette",
+          "",
+          "ch:1:sloid:79181:0:2"
+        ],
+        [
+          6.84441686,
+          46.48207186,
+          "Jongny, Reposoir",
+          "",
+          "ch:1:sloid:4728:0:2"
+        ],
+        [
+          6.84140751,
+          46.47927588,
+          "Jongny, village",
+          "",
+          "ch:1:sloid:4966:0:2"
+        ],
+        [
+          6.83619728,
+          46.4771355,
+          "Chardonne, rte de Châtel",
+          "",
+          "ch:1:sloid:4712:0:2"
+        ],
+        [
+          6.84276396,
+          46.47635603,
+          "Jongny, Châtillon",
+          "",
+          "ch:1:sloid:4959:0:2"
+        ],
+        [
+          6.84600688,
+          46.47330611,
+          "Corsier-Vevey, Cure d'Attalens",
+          "",
+          "ch:1:sloid:4963:0:4"
+        ],
+        [
+          6.83976359,
+          46.47077572,
+          "Corseaux, Délassement",
+          "B",
+          "ch:1:sloid:4967:0:2"
+        ],
+        [
+          6.83648474,
+          46.46890724,
+          "Vevey, funiculaire",
+          "B",
+          "ch:1:sloid:93992:0:4"
+        ],
+        [
+          6.83672728,
+          46.46645708,
+          "Vevey, Bergère",
+          "",
+          "ch:1:sloid:93982:0:1"
+        ],
+        [
+          6.84129971,
+          46.46347467,
+          "Vevey, gare",
+          "D",
+          "ch:1:sloid:79174:0:5"
+        ]
+      ]
+    },
+    {
+      "id": "bf520d40061ef76165761622",
+      "routeId": "92-217-j26-1",
+      "stops": [
+        [
+          6.84129971,
+          46.46347467,
+          "Vevey, gare",
+          "D",
+          "ch:1:sloid:79174:0:5"
+        ],
+        [
+          6.83653864,
+          46.46669839,
+          "Vevey, Bergère",
+          "",
+          "ch:1:sloid:93982:0:2"
+        ],
+        [
+          6.83654762,
+          46.46878349,
+          "Vevey, funiculaire",
+          "C",
+          "ch:1:sloid:93992:0:3"
+        ],
+        [
+          6.83979952,
+          46.47065817,
+          "Corseaux, Délassement",
+          "A",
+          "ch:1:sloid:4967:0:1"
+        ],
+        [
+          6.84665367,
+          46.47305246,
+          "Corsier-Vevey, Cure d'Attalens",
+          "",
+          "ch:1:sloid:4963:0:3"
+        ],
+        [
+          6.84374313,
+          46.47622612,
+          "Jongny, Châtillon",
+          "",
+          "ch:1:sloid:4959:0:1"
+        ],
+        [
+          6.8377873,
+          46.47726541,
+          "Chardonne, rte de Châtel",
+          "",
+          "ch:1:sloid:4712:0:1"
+        ],
+        [
+          6.84165005,
+          46.47930062,
+          "Jongny, village",
+          "",
+          "ch:1:sloid:4966:0:1"
+        ],
+        [
+          6.84446178,
+          46.48195433,
+          "Jongny, Reposoir",
+          "",
+          "ch:1:sloid:4728:0:1"
+        ],
+        [
+          6.84878268,
+          46.48301825,
+          "Jongny, Combette",
+          "",
+          "ch:1:sloid:79181:0:1"
+        ],
+        [
+          6.86006552,
+          46.48694592,
+          "Monts-de-Corsier, La Chaux",
+          "A",
+          "ch:1:sloid:4961:0:1"
+        ],
+        [
+          6.85246577,
+          46.48951885,
+          "Jongny, Chaudette",
+          "",
+          "ch:1:sloid:4958:0:1"
+        ],
+        [
+          6.85242085,
+          46.49390987,
+          "Attalens, Perrey",
+          "",
+          "ch:1:sloid:4957:0:1"
+        ],
+        [
+          6.85060626,
+          46.50640069,
+          "Attalens, La Fin",
+          "",
+          "ch:1:sloid:79191:0:1"
+        ],
+        [
+          6.84866589,
+          46.51025248,
+          "Attalens, village",
+          "",
+          "ch:1:sloid:4960:0:1"
+        ],
+        [
+          6.84506365,
+          46.51239156,
+          "Attalens, Montessinge",
+          "",
+          "ch:1:sloid:10497:0:1"
+        ],
+        [
+          6.83223571,
+          46.52022383,
+          "Granges (Veveyse), Le Battiau",
+          "",
+          "ch:1:sloid:77717:0:16119"
+        ],
+        [
+          6.82944195,
+          46.52457528,
+          "Granges (Veveyse), village",
+          "",
+          "ch:1:sloid:77715:0:16229"
+        ],
+        [
+          6.83110383,
+          46.52918596,
+          "Granges (Veveyse), La Cuvigne",
+          "",
+          "ch:1:sloid:77714:0:16192"
+        ],
+        [
+          6.83227164,
+          46.53371592,
+          "Granges (Veveyse), Le Rupan",
+          "",
+          "ch:1:sloid:77713:0:16340"
+        ],
+        [
+          6.83753577,
+          46.54216917,
+          "Palézieux, gare",
+          "",
+          "ch:1:sloid:70440:0:933913"
+        ]
+      ]
+    },
+    {
+      "id": "bffd6ea4edbdabd0de054d37",
+      "routeId": "92-216-j26-1",
+      "stops": [
+        [
+          6.85295086,
+          46.52574344,
+          "Bossonnens, gare",
+          "",
+          "ch:1:sloid:79195:0:2"
+        ],
+        [
+          6.84843233,
+          46.52175677,
+          "Bossonnens, village",
+          "",
+          "ch:1:sloid:79194:0:2"
+        ],
+        [
+          6.84734537,
+          46.51548875,
+          "Attalens, Fin du Clos",
+          "",
+          "ch:1:sloid:95678:0:2"
+        ],
+        [
+          6.84899827,
+          46.51247193,
+          "Attalens, Corcelles",
+          "",
+          "ch:1:sloid:79193:0:2"
+        ],
+        [
+          6.84854013,
+          46.51002992,
+          "Attalens, village",
+          "",
+          "ch:1:sloid:4960:0:2"
+        ],
+        [
+          6.85035473,
+          46.50600499,
+          "Attalens, La Fin",
+          "",
+          "ch:1:sloid:79191:0:2"
+        ],
+        [
+          6.85242984,
+          46.49303169,
+          "Attalens, Perrey",
+          "",
+          "ch:1:sloid:4957:0:2"
+        ],
+        [
+          6.85212441,
+          46.48938897,
+          "Jongny, Chaudette",
+          "",
+          "ch:1:sloid:4958:0:2"
+        ],
+        [
+          6.85974212,
+          46.48727991,
+          "Monts-de-Corsier, La Chaux",
+          "B",
+          "ch:1:sloid:4961:0:2"
+        ],
+        [
+          6.84862996,
+          46.48306155,
+          "Jongny, Combette",
+          "",
+          "ch:1:sloid:79181:0:2"
+        ],
+        [
+          6.84441686,
+          46.48207186,
+          "Jongny, Reposoir",
+          "",
+          "ch:1:sloid:4728:0:2"
+        ],
+        [
+          6.84140751,
+          46.47927588,
+          "Jongny, village",
+          "",
+          "ch:1:sloid:4966:0:2"
+        ],
+        [
+          6.83619728,
+          46.4771355,
+          "Chardonne, rte de Châtel",
+          "",
+          "ch:1:sloid:4712:0:2"
+        ],
+        [
+          6.84276396,
+          46.47635603,
+          "Jongny, Châtillon",
+          "",
+          "ch:1:sloid:4959:0:2"
+        ],
+        [
+          6.84600688,
+          46.47330611,
+          "Corsier-Vevey, Cure d'Attalens",
+          "",
+          "ch:1:sloid:4963:0:4"
+        ],
+        [
+          6.83976359,
+          46.47077572,
+          "Corseaux, Délassement",
+          "B",
+          "ch:1:sloid:4967:0:2"
+        ],
+        [
+          6.83648474,
+          46.46890724,
+          "Vevey, funiculaire",
+          "B",
+          "ch:1:sloid:93992:0:4"
+        ],
+        [
+          6.83672728,
+          46.46645708,
+          "Vevey, Bergère",
+          "",
+          "ch:1:sloid:93982:0:1"
+        ],
+        [
+          6.84229684,
+          46.46233611,
+          "Vevey, gare",
+          "A",
+          "ch:1:sloid:79174:0:1"
+        ]
+      ]
+    },
+    {
+      "id": "d6d1ac4bedb5325efcd628ab",
+      "routeId": "92-217-j26-1",
+      "stops": [
+        [
+          6.83753577,
+          46.54216917,
+          "Palézieux, gare",
+          "",
+          "ch:1:sloid:70440:0:933913"
+        ],
+        [
+          6.83217283,
+          46.5328631,
+          "Granges (Veveyse), Le Rupan",
+          "",
+          "ch:1:sloid:77713:0:16339"
+        ],
+        [
+          6.83099603,
+          46.52955678,
+          "Granges (Veveyse), La Cuvigne",
+          "",
+          "ch:1:sloid:77714:0:16191"
+        ],
+        [
+          6.82945093,
+          46.52469272,
+          "Granges (Veveyse), village",
+          "",
+          "ch:1:sloid:77715:0:16228"
+        ],
+        [
+          6.83228062,
+          46.5201002,
+          "Granges (Veveyse), Le Battiau",
+          "",
+          "ch:1:sloid:77717:0:16118"
+        ],
+        [
+          6.84523433,
+          46.51211955,
+          "Attalens, Montessinge",
+          "",
+          "ch:1:sloid:10497:0:2"
+        ],
+        [
+          6.84854013,
+          46.51002992,
+          "Attalens, village",
+          "",
+          "ch:1:sloid:4960:0:2"
+        ],
+        [
+          6.85035473,
+          46.50600499,
+          "Attalens, La Fin",
+          "",
+          "ch:1:sloid:79191:0:2"
+        ],
+        [
+          6.85242984,
+          46.49303169,
+          "Attalens, Perrey",
+          "",
+          "ch:1:sloid:4957:0:2"
+        ],
+        [
+          6.85212441,
+          46.48938897,
+          "Jongny, Chaudette",
+          "",
+          "ch:1:sloid:4958:0:2"
+        ],
+        [
+          6.85974212,
+          46.48727991,
+          "Monts-de-Corsier, La Chaux",
+          "B",
+          "ch:1:sloid:4961:0:2"
+        ],
+        [
+          6.84862996,
+          46.48306155,
+          "Jongny, Combette",
+          "",
+          "ch:1:sloid:79181:0:2"
+        ],
+        [
+          6.84441686,
+          46.48207186,
+          "Jongny, Reposoir",
+          "",
+          "ch:1:sloid:4728:0:2"
+        ],
+        [
+          6.84140751,
+          46.47927588,
+          "Jongny, village",
+          "",
+          "ch:1:sloid:4966:0:2"
+        ],
+        [
+          6.83619728,
+          46.4771355,
+          "Chardonne, rte de Châtel",
+          "",
+          "ch:1:sloid:4712:0:2"
+        ],
+        [
+          6.84276396,
+          46.47635603,
+          "Jongny, Châtillon",
+          "",
+          "ch:1:sloid:4959:0:2"
+        ],
+        [
+          6.84600688,
+          46.47330611,
+          "Corsier-Vevey, Cure d'Attalens",
+          "",
+          "ch:1:sloid:4963:0:4"
+        ],
+        [
+          6.83976359,
+          46.47077572,
+          "Corseaux, Délassement",
+          "B",
+          "ch:1:sloid:4967:0:2"
+        ],
+        [
+          6.83648474,
+          46.46890724,
+          "Vevey, funiculaire",
+          "B",
+          "ch:1:sloid:93992:0:4"
+        ],
+        [
+          6.83672728,
+          46.46645708,
+          "Vevey, Bergère",
+          "",
+          "ch:1:sloid:93982:0:1"
+        ],
+        [
+          6.84129971,
+          46.46347467,
+          "Vevey, gare",
+          "D",
+          "ch:1:sloid:79174:0:5"
+        ]
+      ]
+    },
+    {
+      "id": "d7f379646de95a8b5142d70b",
+      "routeId": "92-213-j26-1",
+      "stops": [
+        [
+          6.84129971,
+          46.46347467,
+          "Vevey, gare",
+          "D",
+          "ch:1:sloid:79174:0:5"
+        ],
+        [
+          6.83653864,
+          46.46669839,
+          "Vevey, Bergère",
+          "",
+          "ch:1:sloid:93982:0:2"
+        ],
+        [
+          6.83654762,
+          46.46878349,
+          "Vevey, funiculaire",
+          "C",
+          "ch:1:sloid:93992:0:3"
+        ],
+        [
+          6.83979952,
+          46.47065817,
+          "Corseaux, Délassement",
+          "A",
+          "ch:1:sloid:4967:0:1"
+        ],
+        [
+          6.84665367,
+          46.47305246,
+          "Corsier-Vevey, Cure d'Attalens",
+          "",
+          "ch:1:sloid:4963:0:3"
+        ],
+        [
+          6.84374313,
+          46.47622612,
+          "Jongny, Châtillon",
+          "",
+          "ch:1:sloid:4959:0:1"
+        ],
+        [
+          6.8377873,
+          46.47726541,
+          "Chardonne, rte de Châtel",
+          "",
+          "ch:1:sloid:4712:0:1"
+        ],
+        [
+          6.84165005,
+          46.47930062,
+          "Jongny, village",
+          "",
+          "ch:1:sloid:4966:0:1"
+        ],
+        [
+          6.84446178,
+          46.48195433,
+          "Jongny, Reposoir",
+          "",
+          "ch:1:sloid:4728:0:1"
+        ],
+        [
+          6.84878268,
+          46.48301825,
+          "Jongny, Combette",
+          "",
+          "ch:1:sloid:79181:0:1"
+        ],
+        [
+          6.86006552,
+          46.48694592,
+          "Monts-de-Corsier, La Chaux",
+          "A",
+          "ch:1:sloid:4961:0:1"
+        ],
+        [
+          6.87104293,
+          46.49402119,
+          "Monts-de-Corsier, Longpraz",
+          "",
+          "ch:1:sloid:4962:0:1"
+        ],
+        [
+          6.87549857,
+          46.4985417,
+          "Monts-de-Corsier, Dautère",
+          "",
+          "ch:1:sloid:91902:0:1"
+        ],
+        [
+          6.87831928,
+          46.50153456,
+          "Mts-de-Corsier, Petit Hautigny",
+          "",
+          "ch:1:sloid:79184:0:1"
+        ],
+        [
+          6.88238865,
+          46.50394604,
+          "Monts-de-Corsier, L'Hautigny",
+          "",
+          "ch:1:sloid:4956:0:1"
+        ],
+        [
+          6.8889733,
+          46.50774854,
+          "Monts-de-Corsier, Banderette",
+          "",
+          "ch:1:sloid:4955:0:1"
+        ],
+        [
+          6.89053637,
+          46.50938075,
+          "Monts-de-Corsier, Mur-Blanc",
+          "",
+          "ch:1:sloid:79187:0:1"
+        ],
+        [
+          6.89713899,
+          46.52147243,
+          "Châtel-St-Denis, Bellière",
+          "",
+          "ch:1:sloid:4965:0:1"
+        ],
+        [
+          6.89784866,
+          46.52544059,
+          "Châtel-St-Denis, centre",
+          "",
+          "ch:1:sloid:7241:0:18264"
+        ]
+      ]
+    }
+  ],
+  "maximumAttachmentMetres": 15,
+  "maximumLengthMetres": 2050,
+  "chain": [
+    {
+      "wayId": "33834623",
+      "from": "3574221526",
+      "to": "294654205",
+      "direction": "forward"
+    },
+    {
+      "wayId": "26834441",
+      "from": "294654205",
+      "to": "294654202",
+      "direction": "backward"
+    },
+    {
+      "wayId": "296774233",
+      "from": "294654202",
+      "to": "294654190",
+      "direction": "backward"
+    },
+    {
+      "wayId": "353177811",
+      "from": "294654190",
+      "to": "330109326",
+      "direction": "backward"
+    },
+    {
+      "wayId": "56058308",
+      "from": "330109326",
+      "to": "387420834",
+      "direction": "backward"
+    },
+    {
+      "wayId": "26834440",
+      "from": "387420834",
+      "to": "11149836135",
+      "direction": "backward"
+    },
+    {
+      "wayId": "1320550996",
+      "from": "11149836135",
+      "to": "12220444344",
+      "direction": "forward"
+    },
+    {
+      "wayId": "26834438",
+      "from": "12220444344",
+      "to": "12220433894",
+      "direction": "forward"
+    },
+    {
+      "wayId": "1320550993",
+      "from": "12220433894",
+      "to": "83324695",
+      "direction": "forward"
+    },
+    {
+      "wayId": "1238158528",
+      "from": "83324695",
+      "to": "6763649067",
+      "direction": "backward"
+    }
+  ],
+  "relations": [
+    {
+      "id": "8291117",
+      "routeId": "92-213-j26-1"
+    },
+    {
+      "id": "8291116",
+      "routeId": "92-216-j26-1"
+    },
+    {
+      "id": "12495927",
+      "routeId": "92-217-j26-1"
+    }
+  ],
+  "admission": "Only three exact downhill platform pairs in all complete route contexts. Ten connected source ways must appear in the same order in all three exact j26 bus route relations. Preserve directions, source stop identities and calls; no intersecting returned restrictions or conditional access. A fixed 2050 m ceiling is scoped to this independently evidenced chain; general detour limits are unchanged. Both original cantonal and pfaedle failures remain retained. Inferred centreline geometry, not operator-certified running lanes or temporary access.",
+  "unavailableSources": [
+    {
+      "url": "https://horaire26.vmcv.ch/ligne-213/",
+      "reason": "Direct acquisition returned HTTP 403; not used as retained evidence."
+    }
+  ]
+}

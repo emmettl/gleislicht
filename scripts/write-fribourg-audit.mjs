@@ -6,6 +6,8 @@ const routes = await json('data/fribourg-audit/routes.json')
 const lines = await json('data/fribourg-audit/source-lines.json')
 const works = await json('data/fribourg-audit/works.json')
 const railReview = await json('data/fribourg-audit/rail-review.json')
+const jongny = await json('data/fribourg-audit/jongny.json')
+const jongnyRegression = await json('data/fribourg-audit/jongny-regression.json')
 const montCarmel = await json('data/fribourg-audit/mont-carmel.json')
 const terminalRegression = await json('data/fribourg-audit/mont-carmel-regression.json')
 const avry = await json('data/fribourg-audit/avry.json')
@@ -125,7 +127,7 @@ The [reproducible topology diagnostic](../data/fribourg-audit/topology-followup.
 
 The [road adapter](../scripts/fribourg-road-geometry.mjs) prepares all **${summary.sources.roads.completePatternsTested} distinct full bus patterns** across both civil days and six active bus agency identities: TPF, PostAuto, VMCV and the three active replacement operators. Inactive annual agencies remain in the canton census. All source calls, out-of-canton termini, repeated platforms, short branches and night patterns are retained. Routing-only carry-in timestamps are shifted by whole days to satisfy GTFS input constraints; delivered timestamps are unchanged.
 
-The matcher uses the pinned Geofabrik Switzerland **2 September 2026** road extract plus the **8 September 2026** border extract, SHA-256 **${summary.sources.roads.source.osmSha256}**, and pfaedle commit **${summary.sources.roads.source.matcherCommit}**. The copied configuration, binary hash, routing inputs, shapes, trips, stop times, complete warning logs and run hashes are retained in [road evidence](../data/fribourg-road-evidence). The checker reimports those outputs and verifies emitted pfaedle segments against them. The separately hashed Mont-Carmel terminal review below reconstructs its source path directly from retained OSM XML.
+The matcher uses the pinned Geofabrik Switzerland **2 September 2026** road extract plus the **8 September 2026** border extract, SHA-256 **${summary.sources.roads.source.osmSha256}**, and pfaedle commit **${summary.sources.roads.source.matcherCommit}**. The copied configuration, binary hash, routing inputs, shapes, trips, stop times, complete warning logs and run hashes are retained in [road evidence](../data/fribourg-road-evidence). The checker reimports those outputs and verifies emitted pfaedle segments against them. The separately hashed Mont-Carmel and Jongny reviews below reconstruct their source paths directly from retained OSM XML; rejected pfaedle geometry remains excluded.
 
 A failed cantonal pair receives a road path only when **every complete pattern context containing the same agency/route/directed-platform pair has a valid, identical path**. A successful context cannot hide a failed context. Differing branch paths remain rejected; no context exception is added. Source-matched pairs retain their original paths. Explicit pfaedle fallback hops are rejected even if the matcher writes a straight segment. Monotone shape-distance slicing preserves direction and loops. Road projection is limited to 120 m; simplification is 5 m, followed by the stricter final detour guard of max(600 m, 3 × direct distance). These tolerances apply to inferred roads, separately from the cantonal 80 m bus projection guard.
 
@@ -142,7 +144,7 @@ The original cantonal failure is preserved as officialFailure and the road asses
 
 ![Urban corridor geometry review](assets/fribourg-road-review.svg)
 
-The four updated urban panels and the Mont-Carmel terminal diagram were rendered and visually inspected for continuity, direction arrows, original endpoints and source/fallback separation; they are not independent operator evidence. Both dates and all other bus patterns are covered by the automated full-sequence and retained-output checks. The Mont-Carmel review below resolves the remaining TPF 3 terminal pair. Remaining larger exclusion groups include PostAuto 121, VMCV branches and Sunday replacement patterns; every failed pair and trip count remains in the machine audit.
+The four updated urban panels and the Mont-Carmel terminal diagram were rendered and visually inspected for continuity, direction arrows, original endpoints and source/fallback separation; they are not independent operator evidence. Both dates and all other bus patterns are covered by the automated full-sequence and retained-output checks. The Mont-Carmel review below resolves the remaining TPF 3 terminal pair. The Jongny review below also resolves the remaining VMCV 213/216/217 gaps. Remaining larger exclusion groups include PostAuto 121 and Sunday replacement patterns; every failed pair and trip count remains in the machine audit.
 
 ### Mont-Carmel: directed terminal review for TPF 3
 
@@ -154,9 +156,27 @@ The [TPF operator page](https://www.tpf.ch/fr/horaires-et-reseaux/horaire-par-re
 
 ${table(['Directed OSM way', 'Version', 'Object edited'], montCarmel.geometry.directedSourceSegments.map(s => [s.wayId, s.version, s.timestamp]))}
 
-The [complete terminal audit](../data/fribourg-audit/mont-carmel.json) retains the raw-source hashes, source dates, selected node chain, all restriction records, original failures and full contributing patterns. The two dated feeds add **74 Friday / 72 Sunday journeys**; TPF 3 now admits **147/147 and 143/143**. Every affected timetable journey keeps both terminal calls and their original 60-second interval, with a \`mont-carmel-terminal\` road-review marker. The [current regression checkpoint](../data/fribourg-audit/mont-carmel-regression.json), against **abd1fd8**, proves all **${n(terminalRegression.days.reduce((n, d) => n + d.previousJourneys, 0))} previous journeys and ${n(terminalRegression.days.reduce((n, d) => n + d.unchangedOriginalSegmentOccurrences, 0))} segment occurrences** retain identical calls, coordinates, permissions, times, directions and geometry.
+The [complete terminal audit](../data/fribourg-audit/mont-carmel.json) retains the raw-source hashes, source dates, selected node chain, all restriction records, original failures and full contributing patterns. The two dated feeds add **74 Friday / 72 Sunday journeys**; TPF 3 now admits **147/147 and 143/143**. Every affected timetable journey keeps both terminal calls and their original 60-second interval, with a \`mont-carmel-terminal\` road-review marker. At commit 102d51f, the [Mont-Carmel regression checkpoint](../data/fribourg-audit/mont-carmel-regression.json), against **abd1fd8**, proved all **${n(terminalRegression.days.reduce((n, d) => n + d.previousJourneys, 0))} previous journeys and ${n(terminalRegression.days.reduce((n, d) => n + d.unchangedOriginalSegmentOccurrences, 0))} segment occurrences** retain identical calls, coordinates, permissions, times, directions and geometry.
 
 ![Mont-Carmel terminal source review](assets/fribourg-mont-carmel.svg)
+
+### Jongny: independently corroborated VMCV road chain
+
+VMCV **213, 216 and 217** share one failed downhill pair: **Jongny, Châtillon platform 2 → Corsier-Vevey, Cure d’Attalens platform 4**, exact original IDs \`ch:1:sloid:4959:0:2 → ch:1:sloid:4963:0:4\`. The stops are 420.8 m apart. Each original cantonal curve measures approximately **2,003.7 m**, beyond its 4.5× detour guard. All seven pfaedle contexts produced the same shorter **1,818.2 m** path, still beyond the separate 3× road guard. Both original failures remain retained; neither general threshold changes.
+
+The [hashed review policy](../data/fribourg-jongny-policy.json) admits a separately reconstructed **${jongny.geometry.lengthMetres.toFixed(1)} m** source path, with a dedicated **2,050 m maximum**, only for the three exact directed route/platform pairs. Ten connected OSM road sections appear in the same order in all three independently read route relations: **8291117 (213), 8291116 (216), 12495927 (217)**. Each names its exact **j26 GTFS route**, VMCV operator, Vevey destination and the two consecutive source stop nodes. The adapter checks shared nodes, forward travel on one-way roads and the roundabout, ordinary vehicle access and all restrictions returned in the bounding box. This snapshot returns no restriction relations; that is bounded source evidence, not a guarantee that restrictions do not exist. Unknown conditional access, a conflicting relation sequence or an out-of-order called stop prevents admission.
+
+Exact UIC numbers **8504959 / 8504963**, names, route memberships and bounded platform attachments (**${jongny.geometry.attachmentsMetres.map(m => m.toFixed(1)).join(' / ')} m**, maximum 15 m) connect the original calls to source nodes. The complete **${jongny.policy.patterns.length} full route patterns** remain in the policy; all seven contributing contexts must agree. Reverse patterns and previously accepted pairs receive no change. The original pfaedle path remains excluded: its shorter alignment cuts part of the detailed source route.
+
+An independent diagnostic reconstruction of cantonal features **43/44/45** corroborates the longer path. The diagnostic permits a 5× ratio solely to retrieve the rejected source curves for comparison; it cannot admit them. Maximum vertex-to-other-polyline distances in both directions must remain below **10 m**. This check compares original vertices, not surveyed running lanes or continuous physical accuracy.
+
+${table(['Cantonal source', 'Original length', 'Cantonal vertices → OSM curve', 'OSM vertices → cantonal curve'], jongny.cantonalComparison.map(c => [c.sourceId, c.diagnosticLengthMetres.toFixed(1) + ' m', c.cantonalToOsmMetres.toFixed(1) + ' m', c.osmToCantonalMetres.toFixed(1) + ' m']))}
+
+The [official VMCV 2026 network plan](../data/fribourg-jongny-sources/vmcv-network-2026.pdf), valid **14 December 2025–12 December 2026**, was visually inspected. It supports the three line identities and consecutive stop relationship; no schematic geometry is extracted. The operator’s individual line-213 webpage returned HTTP 403 on direct acquisition and is recorded as unused. Source object edits span **2021–2026** and do not establish physical survey dates. Every exact version and timestamp is retained in the [source and full-pattern audit](../data/fribourg-audit/jongny.json). The reviewed path remains inferred centreline geometry, not operator-certified running lanes or temporary access.
+
+The change adds **74 Friday / 57 Sunday journeys**: 213 adds **36 / 21**, 216 adds **19 / 16**, and 217 adds **19 / 20**. All three routes now admit every dated journey: **73/73, 37/37, 38/38 Friday; 42/42, 33/33, 40/40 Sunday**. Original call intervals remain 120 or 180 seconds on Friday and 120 seconds on Sunday, with explicit \`jongny-route-chain\` markers. The [current regression checkpoint](../data/fribourg-audit/jongny-regression.json), against **102d51f**, preserves all **${n(jongnyRegression.days.reduce((n, d) => n + d.previousJourneys, 0))} previous journeys and ${n(jongnyRegression.days.reduce((n, d) => n + d.unchangedOriginalSegmentOccurrences, 0))} segment occurrences**, including identical call identities, coordinates, permissions, times, directions and geometry.
+
+![Jongny source-chain and rejected matcher review](assets/fribourg-jongny.svg)
 
 ## Federal railway supplement and dated works review
 
@@ -232,6 +252,8 @@ ${table(['Source', 'Pinned date / vintage', 'Attribution / reuse'], [
   ['OSM road supplement', 'Swiss extract 2026-09-02; border retrieved 2026-09-08', '© OpenStreetMap contributors; ODbL 1.0; inferred geometry database'],
   ['Mont-Carmel road topology', 'OSM API acquired 2026-09-08; three ways edited 2026-01-28; survey vintage unknown', '© OpenStreetMap contributors; ODbL 1.0'],
   ['Mont-Carmel operator / works evidence', 'TPF timetable from 2025-12-14; municipal notice 2026-05-26', 'TPF / Commune de Givisiez; supporting identity and works evidence'],
+  ['Jongny road / route relations', 'OSM API acquired 2026-09-08; individual way edits 2021–2026; survey vintage unknown', '© OpenStreetMap contributors; ODbL 1.0'],
+  ['VMCV network-plan evidence', 'Valid 2025-12-14–2026-12-12', 'VMCV; schematic identity evidence only'],
   ['SBB reviewed Däniken curve', `${railReview.source.dataProcessed}; individual survey vintage unknown`, 'SBB Infrastructure / data.sbb.ch; terms_by, reference required'],
   ...avry.policy.metadata.map(m => [`Avry SBB ${m.dataset}`, `Processed ${m.dataProcessed}; modified ${m.modified}; survey vintage unknown`, 'SBB Infrastructure / data.sbb.ch; terms_by, reference required']),
   ['Avry opening notice', 'Published 2025-11-12; announced opening 2025-12-14', 'Source: Etat de Fribourg; temporal evidence only'],
@@ -268,16 +290,17 @@ node --max-old-space-size=8192 scripts/build-fribourg-region.mjs \\
   --archive /private/tmp/GTFS_FP2026_20260902.zip \\
   --timetable-cache /private/tmp/fribourg-timetable.json.gz
 node scripts/check-fribourg-region.mjs
-node scripts/check-fribourg-mont-carmel-regression.mjs
+node scripts/check-fribourg-jongny-regression.mjs
 node scripts/audit-fribourg-topology.mjs
 node scripts/review-fribourg-roads.mjs
 node scripts/review-fribourg-rail.mjs
 node scripts/review-fribourg-bern-platforms.mjs
 node scripts/review-fribourg-avry.mjs
 node scripts/review-fribourg-mont-carmel.mjs
+node scripts/review-fribourg-jongny.mjs
 node scripts/write-fribourg-audit.mjs
 python3 scripts/test_fribourg_sources.py
-npx vitest run scripts/fribourg-region.test.mjs scripts/fribourg-road-geometry.test.mjs scripts/fribourg-rail-geometry.test.mjs scripts/fribourg-rail-review.test.mjs scripts/fribourg-bern-platforms.test.mjs scripts/fribourg-avry.test.mjs scripts/fribourg-mont-carmel.test.mjs scripts/luzern-rail-geometry.test.mjs scripts/bern-region.test.mjs
+npx vitest run scripts/fribourg-region.test.mjs scripts/fribourg-road-geometry.test.mjs scripts/fribourg-rail-geometry.test.mjs scripts/fribourg-rail-review.test.mjs scripts/fribourg-bern-platforms.test.mjs scripts/fribourg-avry.test.mjs scripts/fribourg-mont-carmel.test.mjs scripts/fribourg-jongny.test.mjs scripts/luzern-rail-geometry.test.mjs scripts/bern-region.test.mjs
 
 # Optional rail-input regeneration from the complete timetable cache and retained source bytes.
 node scripts/fribourg-rail-geometry.mjs /private/tmp/fribourg-timetable.json.gz
@@ -285,6 +308,7 @@ node scripts/prepare-fribourg-rail-review.mjs
 node scripts/prepare-fribourg-bern-platforms.mjs
 node scripts/prepare-fribourg-avry.mjs
 node scripts/prepare-fribourg-mont-carmel.mjs
+node scripts/prepare-fribourg-jongny.mjs
 
 # Optional offline road rebuild: prepare all patterns, match each agency directory
 # with scripts/match-postbus-roads.mjs --no-trie/-W wrapper and the pinned extract,

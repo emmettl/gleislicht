@@ -1,0 +1,4363 @@
+{
+  "baselineCommit": "102d51f2d6e5c391c07bd9c84070125d50c459d8",
+  "sourceHashes": {
+    "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+    "source": "e8523af34fcedca7f8b0cbe495446ff93a75d8563c62b243da942c39c5243f47",
+    "crosswalk": "c3be9e15e633d44c32d3bd439469f2ef5979fe1fcd9764c102170ca3d751f343",
+    "provenance": "7d23e09a35768de1cfd598a7ca824ac7c93d03242ff8955e70ca778213549086",
+    "roads": "87f4d4be2662ff0982cea837e95f73863096d4bc37bd19ecc09ea88e064c465e",
+    "montCarmel": "a9b44b222fdf7b2c9dc26899c350520a8de3945d06a13bff75a357b6133a3b27",
+    "jongny": "df10b99f56fc6dd5cc4624713eea614bbeaf124802257ea433f0d12220713e2f",
+    "rail": "7ea92c8c1120a49e9497ec3ae6d7a0d2fc2d761e8b19d790191ed7a6c0212c79",
+    "railInputs": "434a02eb6906bb141a00ba6b7c77622767b78262617326d6aed56fa683cd8046",
+    "avry": "8d20a93732eea409915103c410816075ac428693b7dc8fcb6dc37c1f97849e19",
+    "bernPlatforms": "77b78fb2fccab61ff47e18bd0dc1ad161965968144c3d79d99bc0fd3765701ac",
+    "railReview": "5070023bef19b35c1df3fb12a5b27e090d7a4ff0788f75d433a3d8295c4cca64"
+  },
+  "assertions": "Every previously admitted journey retains its original stop identity, coordinates, call permissions, times, direction and segment geometry. Added journeys must carry reviewed Jongny road evidence.",
+  "days": [
+    {
+      "date": "2026-09-04",
+      "previousJourneys": 5375,
+      "presentJourneys": 5449,
+      "addedJourneys": 74,
+      "unchangedOriginalSegmentOccurrences": 82740,
+      "lostJourneys": 0,
+      "newJourneys": [
+        {
+          "id": "service:2026-09-03:.ojp-92-213.1.TA.114.j26",
+          "routeId": "92-213-j26-1",
+          "sourceServiceDate": "2026-09-03",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              3180,
+              3180
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              3300,
+              3300
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": "service:2026-09-03:.ojp-92-213.1.TA.155.j26",
+          "routeId": "92-213-j26-1",
+          "sourceServiceDate": "2026-09-03",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              -300,
+              -300
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              -180,
+              -180
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": "service:2026-09-03:.ojp-92-217.1.TA.46.j26",
+          "routeId": "92-217-j26-1",
+          "sourceServiceDate": "2026-09-03",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              1860,
+              1860
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              1980,
+              1980
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-213.1.TA.200.j26",
+          "routeId": "92-213-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              22200,
+              22200
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              22380,
+              22380
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-216.1.TA.63.j26",
+          "routeId": "92-216-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              21480,
+              21480
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              21660,
+              21660
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-213.1.TA.181.j26",
+          "routeId": "92-213-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              24000,
+              24000
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              24180,
+              24180
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-213.1.TA.191.j26",
+          "routeId": "92-213-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              27600,
+              27600
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              27780,
+              27780
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-213.1.TA.193.j26",
+          "routeId": "92-213-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              25800,
+              25800
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              25980,
+              25980
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-213.1.TA.204.j26",
+          "routeId": "92-213-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              29400,
+              29400
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              29580,
+              29580
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-216.1.TA.65.j26",
+          "routeId": "92-216-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              28680,
+              28680
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              28860,
+              28860
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-216.1.TA.71.j26",
+          "routeId": "92-216-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              25080,
+              25080
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              25260,
+              25260
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-217.1.TA.53.j26",
+          "routeId": "92-217-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              26880,
+              26880
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              27060,
+              27060
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-217.1.TA.54.j26",
+          "routeId": "92-217-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              23280,
+              23280
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              23460,
+              23460
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-213.1.TA.166.j26",
+          "routeId": "92-213-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              36600,
+              36600
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              36780,
+              36780
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-213.1.TA.168.j26",
+          "routeId": "92-213-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              33000,
+              33000
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              33180,
+              33180
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-213.1.TA.175.j26",
+          "routeId": "92-213-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              34800,
+              34800
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              34980,
+              34980
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-213.1.TA.211.j26",
+          "routeId": "92-213-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              31200,
+              31200
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              31380,
+              31380
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-216.1.TA.70.j26",
+          "routeId": "92-216-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              35880,
+              35880
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              36060,
+              36060
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-216.1.TA.74.j26",
+          "routeId": "92-216-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              32280,
+              32280
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              32460,
+              32460
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-217.1.TA.49.j26",
+          "routeId": "92-217-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              34080,
+              34080
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              34260,
+              34260
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-217.1.TA.57.j26",
+          "routeId": "92-217-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              30480,
+              30480
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              30660,
+              30660
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-213.1.TA.167.j26",
+          "routeId": "92-213-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              40200,
+              40200
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              40380,
+              40380
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-213.1.TA.187.j26",
+          "routeId": "92-213-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              42000,
+              42000
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              42180,
+              42180
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-213.1.TA.202.j26",
+          "routeId": "92-213-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              38400,
+              38400
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              38580,
+              38580
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-213.1.TA.213.j26",
+          "routeId": "92-213-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              43800,
+              43800
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              43980,
+              43980
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-216.1.TA.61.j26",
+          "routeId": "92-216-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              43080,
+              43080
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              43260,
+              43260
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-216.1.TA.69.j26",
+          "routeId": "92-216-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              39480,
+              39480
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              39660,
+              39660
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-217.1.TA.51.j26",
+          "routeId": "92-217-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              37680,
+              37680
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              37860,
+              37860
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-217.1.TA.55.j26",
+          "routeId": "92-217-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              41280,
+              41280
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              41460,
+              41460
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-213.1.TA.171.j26",
+          "routeId": "92-213-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              47400,
+              47400
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              47580,
+              47580
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-213.1.TA.194.j26",
+          "routeId": "92-213-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              45600,
+              45600
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              45780,
+              45780
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-213.1.TA.214.j26",
+          "routeId": "92-213-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              51000,
+              51000
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              51180,
+              51180
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-213.1.TA.220.j26",
+          "routeId": "92-213-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              49200,
+              49200
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              49380,
+              49380
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-216.1.TA.60.j26",
+          "routeId": "92-216-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              50280,
+              50280
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              50460,
+              50460
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-216.1.TA.64.j26",
+          "routeId": "92-216-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              46680,
+              46680
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              46860,
+              46860
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-217.1.TA.56.j26",
+          "routeId": "92-217-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              44880,
+              44880
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              45060,
+              45060
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-217.1.TA.60.j26",
+          "routeId": "92-217-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              48480,
+              48480
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              48660,
+              48660
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-213.1.TA.178.j26",
+          "routeId": "92-213-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              56400,
+              56400
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              56580,
+              56580
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-213.1.TA.179.j26",
+          "routeId": "92-213-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              52800,
+              52800
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              52980,
+              52980
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-213.1.TA.197.j26",
+          "routeId": "92-213-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              58200,
+              58200
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              58380,
+              58380
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-213.1.TA.205.j26",
+          "routeId": "92-213-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              54600,
+              54600
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              54780,
+              54780
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-216.1.TA.67.j26",
+          "routeId": "92-216-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              53880,
+              53880
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              54060,
+              54060
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-216.1.TA.73.j26",
+          "routeId": "92-216-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              57480,
+              57480
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              57660,
+              57660
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-217.1.TA.52.j26",
+          "routeId": "92-217-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              55680,
+              55680
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              55860,
+              55860
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-217.1.TA.61.j26",
+          "routeId": "92-217-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              52080,
+              52080
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              52260,
+              52260
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-213.1.TA.195.j26",
+          "routeId": "92-213-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              63600,
+              63600
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              63780,
+              63780
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-213.1.TA.206.j26",
+          "routeId": "92-213-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              60000,
+              60000
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              60180,
+              60180
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-213.1.TA.215.j26",
+          "routeId": "92-213-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              61800,
+              61800
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              61980,
+              61980
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-213.1.TA.218.j26",
+          "routeId": "92-213-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              65400,
+              65400
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              65580,
+              65580
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-216.1.TA.66.j26",
+          "routeId": "92-216-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              64680,
+              64680
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              64860,
+              64860
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-216.1.TA.68.j26",
+          "routeId": "92-216-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              61080,
+              61080
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              61260,
+              61260
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-217.1.TA.50.j26",
+          "routeId": "92-217-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              59280,
+              59280
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              59460,
+              59460
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-217.1.TA.58.j26",
+          "routeId": "92-217-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              62880,
+              62880
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              63060,
+              63060
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-213.1.TA.122.j26",
+          "routeId": "92-213-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              72600,
+              72600
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              72780,
+              72780
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-213.1.TA.170.j26",
+          "routeId": "92-213-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              67200,
+              67200
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              67380,
+              67380
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-213.1.TA.185.j26",
+          "routeId": "92-213-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              69000,
+              69000
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              69180,
+              69180
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-213.1.TA.189.j26",
+          "routeId": "92-213-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              70800,
+              70800
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              70980,
+              70980
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-216.1.TA.40.j26",
+          "routeId": "92-216-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              71880,
+              71880
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              72060,
+              72060
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-216.1.TA.62.j26",
+          "routeId": "92-216-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              68280,
+              68280
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              68460,
+              68460
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-217.1.TA.59.j26",
+          "routeId": "92-217-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              66480,
+              66480
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              66660,
+              66660
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-217.1.TA.62.j26",
+          "routeId": "92-217-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              70080,
+              70080
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              70260,
+              70260
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-213.1.TA.116.j26",
+          "routeId": "92-213-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              74340,
+              74340
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              74520,
+              74520
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-213.1.TA.133.j26",
+          "routeId": "92-213-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              76020,
+              76020
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              76140,
+              76140
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-213.1.TA.161.j26",
+          "routeId": "92-213-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              79620,
+              79620
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              79740,
+              79740
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-216.1.TA.53.j26",
+          "routeId": "92-216-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              78420,
+              78420
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              78540,
+              78540
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-216.1.TA.59.j26",
+          "routeId": "92-216-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              74820,
+              74820
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              74940,
+              74940
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-217.1.TA.44.j26",
+          "routeId": "92-217-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              73680,
+              73680
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              73860,
+              73860
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-217.1.TA.70.j26",
+          "routeId": "92-217-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              77280,
+              77280
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              77400,
+              77400
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-213.1.TA.135.j26",
+          "routeId": "92-213-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              83220,
+              83220
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              83340,
+              83340
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-213.1.TA.160.j26",
+          "routeId": "92-213-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              86820,
+              86820
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              86940,
+              86940
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-216.1.TA.43.j26",
+          "routeId": "92-216-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              82020,
+              82020
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              82140,
+              82140
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-216.1.TA.50.j26",
+          "routeId": "92-216-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              85620,
+              85620
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              85740,
+              85740
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-217.1.TA.77.j26",
+          "routeId": "92-217-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              80880,
+              80880
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              81000,
+              81000
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-217.1.TA.79.j26",
+          "routeId": "92-217-j26-1",
+          "sourceServiceDate": "2026-09-04",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              84480,
+              84480
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              84600,
+              84600
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-09-06",
+      "previousJourneys": 3686,
+      "presentJourneys": 3743,
+      "addedJourneys": 57,
+      "unchangedOriginalSegmentOccurrences": 57643,
+      "lostJourneys": 0,
+      "newJourneys": [
+        {
+          "id": "service:2026-09-05:.ojp-92-213.1.TA.118.j26",
+          "routeId": "92-213-j26-1",
+          "sourceServiceDate": "2026-09-05",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              420,
+              420
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              540,
+              540
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": "service:2026-09-05:.ojp-92-213.1.TA.125.j26",
+          "routeId": "92-213-j26-1",
+          "sourceServiceDate": "2026-09-05",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              2460,
+              2460
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              2580,
+              2580
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": "service:2026-09-05:.ojp-92-217.1.TA.46.j26",
+          "routeId": "92-217-j26-1",
+          "sourceServiceDate": "2026-09-05",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              1860,
+              1860
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              1980,
+              1980
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": "service:2026-09-05:.ojp-92-213.1.TA.112.j26",
+          "routeId": "92-213-j26-1",
+          "sourceServiceDate": "2026-09-05",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              10560,
+              10560
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              10680,
+              10680
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": "service:2026-09-05:.ojp-92-217.1.TA.42.j26",
+          "routeId": "92-217-j26-1",
+          "sourceServiceDate": "2026-09-05",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              14160,
+              14160
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              14280,
+              14280
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-213.1.TA.142.j26",
+          "routeId": "92-213-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              29220,
+              29220
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              29340,
+              29340
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-213.1.TA.148.j26",
+          "routeId": "92-213-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              25620,
+              25620
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              25740,
+              25740
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-216.1.TA.58.j26",
+          "routeId": "92-216-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              28020,
+              28020
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              28140,
+              28140
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-217.1.TA.65.j26",
+          "routeId": "92-217-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              26880,
+              26880
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              27000,
+              27000
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-217.1.TA.74.j26",
+          "routeId": "92-217-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              23280,
+              23280
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              23400,
+              23400
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-213.1.TA.137.j26",
+          "routeId": "92-213-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              32820,
+              32820
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              32940,
+              32940
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-213.1.TA.163.j26",
+          "routeId": "92-213-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              36420,
+              36420
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              36540,
+              36540
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-216.1.TA.51.j26",
+          "routeId": "92-216-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              35220,
+              35220
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              35340,
+              35340
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-216.1.TA.52.j26",
+          "routeId": "92-216-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              31620,
+              31620
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              31740,
+              31740
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-217.1.TA.63.j26",
+          "routeId": "92-217-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              30480,
+              30480
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              30600,
+              30600
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-217.1.TA.64.j26",
+          "routeId": "92-217-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              34080,
+              34080
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              34200,
+              34200
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-213.1.TA.130.j26",
+          "routeId": "92-213-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              43620,
+              43620
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              43740,
+              43740
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-213.1.TA.156.j26",
+          "routeId": "92-213-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              40020,
+              40020
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              40140,
+              40140
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-216.1.TA.42.j26",
+          "routeId": "92-216-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              42420,
+              42420
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              42540,
+              42540
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-216.1.TA.57.j26",
+          "routeId": "92-216-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              38820,
+              38820
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              38940,
+              38940
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-217.1.TA.73.j26",
+          "routeId": "92-217-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              41280,
+              41280
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              41400,
+              41400
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-217.1.TA.78.j26",
+          "routeId": "92-217-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              37680,
+              37680
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              37800,
+              37800
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-213.1.TA.153.j26",
+          "routeId": "92-213-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              50820,
+              50820
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              50940,
+              50940
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-213.1.TA.162.j26",
+          "routeId": "92-213-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              47220,
+              47220
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              47340,
+              47340
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-216.1.TA.47.j26",
+          "routeId": "92-216-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              49620,
+              49620
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              49740,
+              49740
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-216.1.TA.48.j26",
+          "routeId": "92-216-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              46020,
+              46020
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              46140,
+              46140
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-217.1.TA.66.j26",
+          "routeId": "92-217-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              44880,
+              44880
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              45000,
+              45000
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-217.1.TA.67.j26",
+          "routeId": "92-217-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              48480,
+              48480
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              48600,
+              48600
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-213.1.TA.150.j26",
+          "routeId": "92-213-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              54420,
+              54420
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              54540,
+              54540
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-213.1.TA.159.j26",
+          "routeId": "92-213-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              58020,
+              58020
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              58140,
+              58140
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-216.1.TA.44.j26",
+          "routeId": "92-216-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              53220,
+              53220
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              53340,
+              53340
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-216.1.TA.45.j26",
+          "routeId": "92-216-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              56820,
+              56820
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              56940,
+              56940
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-217.1.TA.69.j26",
+          "routeId": "92-217-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              52080,
+              52080
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              52200,
+              52200
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-217.1.TA.75.j26",
+          "routeId": "92-217-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              55680,
+              55680
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              55800,
+              55800
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-213.1.TA.128.j26",
+          "routeId": "92-213-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              61620,
+              61620
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              61740,
+              61740
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-213.1.TA.164.j26",
+          "routeId": "92-213-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              65220,
+              65220
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              65340,
+              65340
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-216.1.TA.54.j26",
+          "routeId": "92-216-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              64020,
+              64020
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              64140,
+              64140
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-216.1.TA.56.j26",
+          "routeId": "92-216-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              60420,
+              60420
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              60540,
+              60540
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-217.1.TA.71.j26",
+          "routeId": "92-217-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              62880,
+              62880
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              63000,
+              63000
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-217.1.TA.80.j26",
+          "routeId": "92-217-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              59280,
+              59280
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              59400,
+              59400
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-213.1.TA.136.j26",
+          "routeId": "92-213-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              72420,
+              72420
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              72540,
+              72540
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-213.1.TA.138.j26",
+          "routeId": "92-213-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              68820,
+              68820
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              68940,
+              68940
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-216.1.TA.46.j26",
+          "routeId": "92-216-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              71220,
+              71220
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              71340,
+              71340
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-216.1.TA.55.j26",
+          "routeId": "92-216-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              67620,
+              67620
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              67740,
+              67740
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-217.1.TA.68.j26",
+          "routeId": "92-217-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              70080,
+              70080
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              70200,
+              70200
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-217.1.TA.72.j26",
+          "routeId": "92-217-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              66480,
+              66480
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              66600,
+              66600
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-213.1.TA.133.j26",
+          "routeId": "92-213-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              76020,
+              76020
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              76140,
+              76140
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-213.1.TA.161.j26",
+          "routeId": "92-213-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              79620,
+              79620
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              79740,
+              79740
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-216.1.TA.53.j26",
+          "routeId": "92-216-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              78420,
+              78420
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              78540,
+              78540
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-216.1.TA.59.j26",
+          "routeId": "92-216-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              74820,
+              74820
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              74940,
+              74940
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-217.1.TA.70.j26",
+          "routeId": "92-217-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              77280,
+              77280
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              77400,
+              77400
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-217.1.TA.76.j26",
+          "routeId": "92-217-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              73680,
+              73680
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              73800,
+              73800
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-213.1.TA.118.j26",
+          "routeId": "92-213-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              86820,
+              86820
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              86940,
+              86940
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-213.1.TA.135.j26",
+          "routeId": "92-213-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              83220,
+              83220
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              83340,
+              83340
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-216.1.TA.39.j26",
+          "routeId": "92-216-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              82020,
+              82020
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              82140,
+              82140
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-217.1.TA.77.j26",
+          "routeId": "92-217-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              80880,
+              80880
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              81000,
+              81000
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        },
+        {
+          "id": ".ojp-92-217.1.TA.79.j26",
+          "routeId": "92-217-j26-1",
+          "sourceServiceDate": "2026-09-06",
+          "directionId": "1",
+          "reviewedCalls": [
+            [
+              [
+                6.84276396,
+                46.47635603,
+                "Jongny, Châtillon",
+                "",
+                "ch:1:sloid:4959:0:2"
+              ],
+              84480,
+              84480
+            ],
+            [
+              [
+                6.84600688,
+                46.47330611,
+                "Corsier-Vevey, Cure d'Attalens",
+                "",
+                "ch:1:sloid:4963:0:4"
+              ],
+              84600,
+              84600
+            ]
+          ],
+          "reviewKinds": [
+            "jongny-route-chain"
+          ]
+        }
+      ]
+    }
+  ]
+}
