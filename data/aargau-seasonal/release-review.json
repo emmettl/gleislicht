@@ -2,6 +2,8 @@
   "schemaVersion": 1,
   "annualWitnessInventorySha256": "2fc02676fab68ad0137a5d4aa1141cf002eeba4c20abbf2c5b69cc313fce38fd",
   "annualWitnessGeometrySha256": "24dbbd03818066da85190c8c7a3104c3dea857825363659dd1f132b8ef032d21",
+  "annualWitnessRailReviewSha256": "9b904a0d3cc45425f3b7e9d09c372d28e5c803b13ec3bae5e8fa694b41166311",
+  "annualWitnessRailPolicySha256": "8643f87eecda101456489dce8d9694ef2be9508a4cb116897a264b9b2c5b5df2",
   "witnessedPreviouslyUnsampledRoutes": 45,
   "witnessDates": [
     "2026-05-23",
@@ -24,7 +26,7 @@
     "2026-10-03",
     "2026-10-10"
   ],
-  "unresolvedWitnessTemplateOccurrences": 10976,
+  "unresolvedWitnessTemplateOccurrences": 7360,
   "line344ReviewSha256": "237ef174a6749dc5cf4193b04944575287db0fb001eebc2be2fb2bca6b4dfc4c",
   "addedSimplonOccurrences": 2,
   "simplonPolicySha256": "11ef73dd48c490bf1be4e5bbb3c5b62522b8665077cf6c2d6e117a83d7232699",
@@ -6072,7 +6074,7 @@
   ],
   "remainingWork": [
     "Review AGIS/OSM bus disagreements against dated operator itineraries and legal direction evidence; the 30 m diagnostic alone cannot choose the correct source.",
-    "Review geometry for all 280 directed patterns of the 45 newly witnessed routes, then extract and independently validate full civil days before extending the release scope.",
+    "Resolve the remaining witness geometry: 173 rail template occurrences at Waldshut, Bern and Interlaken, and 7,187 bus template occurrences; then extract and independently validate full civil days before extending the release scope.",
     "Disambiguate the repeated local hour before promoting 25 October as an elapsed-time feed.",
     "Integrate reviewed fixtures into application study selection, date loading and attribution, then run browser release checks."
   ]
