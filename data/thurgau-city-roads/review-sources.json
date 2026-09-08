@@ -1,0 +1,21 @@
+[
+  {
+    "url": "https://www.frauenfeld.ch/wohnen-mobilitaet/mobilitaet/stadtbus/fahrplan.html/680",
+    "reviewedOn": "2026-09-08",
+    "retrieval": "Read via web tool; direct host curl returned HTTP 403, so no original HTML snapshot is claimed",
+    "findings": [
+      "Page states validity from 14 December 2025.",
+      "801–805 are Monday–Saturday daytime routes; 811–815 are evening/Sunday routes.",
+      "Night taxi carries passengers from Bahnhof to requested destinations in the city; no fixed drop-off path inferred."
+    ]
+  },
+  {
+    "url": "https://www.kreuzlingen.ch/lebenslagen/mobilitaet/oeffentlicher-verkehr",
+    "reviewedOn": "2026-09-08",
+    "retrieval": "Read via web tool; no original HTML snapshot retained",
+    "findings": [
+      "Five inner-city lines and one line to Tägerwilen.",
+      "Monday–Saturday quarter/half-hour service and Sunday half-hour service described."
+    ]
+  }
+]

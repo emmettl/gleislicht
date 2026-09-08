@@ -1,0 +1,130 @@
+[
+  {
+    "agencyId": "727",
+    "line": "901",
+    "patterns": 5,
+    "representativePattern": "fddda8c8850aea3e64957c20",
+    "first": "Kreuzlingen, Bahnhof",
+    "last": "Kreuzlingen, Besmer"
+  },
+  {
+    "agencyId": "727",
+    "line": "902",
+    "patterns": 13,
+    "representativePattern": "829e41f5bf248565577bee51",
+    "first": "Kreuzlingen, Schwimmbad",
+    "last": "Kreuzlingen Bernrain, Bahnhof"
+  },
+  {
+    "agencyId": "727",
+    "line": "903",
+    "patterns": 4,
+    "representativePattern": "a366bb4d4ec0351cfd1182e6",
+    "first": "Kreuzlingen, Ribistrasse",
+    "last": "Kreuzlingen, Konstanzerstrasse"
+  },
+  {
+    "agencyId": "727",
+    "line": "905",
+    "patterns": 4,
+    "representativePattern": "0c3e31b1435f05ceddafca37",
+    "first": "Kreuzlingen, Bahnhof",
+    "last": "Kreuzlingen, Bahnhof"
+  },
+  {
+    "agencyId": "727",
+    "line": "906",
+    "patterns": 2,
+    "representativePattern": "3c675966ff36a044e54cf71e",
+    "first": "Kreuzlingen, Bahnhof",
+    "last": "Kreuzlingen, Bahnhof"
+  },
+  {
+    "agencyId": "727",
+    "line": "907",
+    "patterns": 11,
+    "representativePattern": "0ebb28c790fe92db515c5381",
+    "first": "Tägerwilen, Hertler",
+    "last": "Kreuzlingen, Konstanzerstrasse"
+  },
+  {
+    "agencyId": "797",
+    "line": "801",
+    "patterns": 8,
+    "representativePattern": "3e877052fb975fc3bd5939b7",
+    "first": "Frauenfeld, Sonnmatt",
+    "last": "Frauenfeld, Obholz"
+  },
+  {
+    "agencyId": "797",
+    "line": "802",
+    "patterns": 7,
+    "representativePattern": "957cd62787e1f4cf6225f2f7",
+    "first": "Frauenfeld, Flurhof",
+    "last": "Niederwil TG, Egelsee"
+  },
+  {
+    "agencyId": "797",
+    "line": "803",
+    "patterns": 5,
+    "representativePattern": "a1b45e72bec7bbdf8e5f2269",
+    "first": "Frauenfeld, Plättli Zoo",
+    "last": "Frauenfeld, Oberwiesen"
+  },
+  {
+    "agencyId": "797",
+    "line": "804",
+    "patterns": 2,
+    "representativePattern": "55133431769b6d010148db92",
+    "first": "Frauenfeld, Bahnhof",
+    "last": "Frauenfeld, Huben"
+  },
+  {
+    "agencyId": "797",
+    "line": "805",
+    "patterns": 9,
+    "representativePattern": "502c4db9066bd0844c5918c7",
+    "first": "Frauenfeld, Langfeldkreisel",
+    "last": "Frauenfeld, Walzmühle"
+  },
+  {
+    "agencyId": "797",
+    "line": "811",
+    "patterns": 2,
+    "representativePattern": "ad46aa8c94887834123573ec",
+    "first": "Frauenfeld, Bahnhof",
+    "last": "Frauenfeld, Kantonsspital"
+  },
+  {
+    "agencyId": "797",
+    "line": "812",
+    "patterns": 2,
+    "representativePattern": "b17354ebe10018a87d2dbc6e",
+    "first": "Frauenfeld, Sandbüel",
+    "last": "Frauenfeld, Bahnhof"
+  },
+  {
+    "agencyId": "797",
+    "line": "813",
+    "patterns": 1,
+    "representativePattern": "5c09ddf7b9523b861572606a",
+    "first": "Frauenfeld, Bahnhof",
+    "last": "Frauenfeld, Bahnhof"
+  },
+  {
+    "agencyId": "797",
+    "line": "814",
+    "patterns": 1,
+    "representativePattern": "39b5027c8ae0ee40c55beb1e",
+    "first": "Frauenfeld, Bahnhof",
+    "last": "Frauenfeld, Bahnhof"
+  },
+  {
+    "agencyId": "797",
+    "line": "815",
+    "patterns": 1,
+    "representativePattern": "382a2f0f04c1f41b1bc86c56",
+    "first": "Frauenfeld, Bahnhof",
+    "last": "Frauenfeld, Bahnhof"
+  }
+]

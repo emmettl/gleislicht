@@ -7,6 +7,7 @@ import { gunzipSync } from 'node:zlib'
 import { thurgauFeatureMatch, thurgauPatternId } from './thurgau-line-geometry.mjs'
 import { compactBernFeed, validateBernSnapshot, validateBernChunks } from './build-bern-region.mjs'
 import { thurgauTimingDiagnostics } from './build-thurgau-region.mjs'
+import { checkThurgauCityRoads } from './check-thurgau-city-roads.mjs'
 
 const json = async path => JSON.parse(await readFile(path, 'utf8'))
 const sha = bytes => createHash('sha256').update(bytes).digest('hex')
@@ -17,6 +18,9 @@ export async function checkThurgauRegion({ output = 'public/data/thurgau-region'
   const sourceLines = await json(join(audit, 'source-lines.json'))
   const decodedBytes = await readFile(join(sources, 'decoded.json.gz')), decoded = JSON.parse(gunzipSync(decodedBytes))
   const crosswalk = await json('data/thurgau-line-crosswalk.json')
+  const cityRoads = await checkThurgauCityRoads()
+  assert.equal(sha(await readFile('data/thurgau-city-roads/cache.json.gz')), summary.sourceHashes.cityRoads)
+  assert.deepEqual(await json(join(output, 'city-road-paths.json')), cityRoads)
   assert.equal(sha(decodedBytes), summary.sourceHashes.source)
   assert.equal(sha(await readFile(join(sources, 'requests.json'))), summary.sourceHashes.requests)
   assert.equal(sha(await readFile('data/thurgau-line-crosswalk.json')), summary.sourceHashes.crosswalk)
@@ -59,7 +63,7 @@ export async function checkThurgauRegion({ output = 'public/data/thurgau-region'
     const report = await json(join(audit, `${day.serviceDate}.json`))
     assert.deepEqual(report.sourceHashes, summary.sourceHashes)
     assert.deepEqual(report.coverage, day.coverage)
-    const replay = applyThurgauGeometry(cache.snapshots.find(s => s.metadata.serviceDate === day.serviceDate), new Map(cache.routes.map(r => [r.id, r])), decoded, crosswalk)
+    const replay = applyThurgauGeometry(cache.snapshots.find(s => s.metadata.serviceDate === day.serviceDate), new Map(cache.routes.map(r => [r.id, r])), decoded, crosswalk, cityRoads)
     assert.deepEqual(report.patterns, replay.patterns.map(({ pathSegments, ...p }) => ({ ...p, matchedMask: pathSegments.map(i => i !== null) })))
     assert.deepEqual(report.directedPairs, replay.pairs.map(({ pathIndex, ...p }) => ({ ...p, matched: pathIndex !== null })))
     assert.deepEqual(report.timing, thurgauTimingDiagnostics(cache.snapshots.find(s => s.metadata.serviceDate === day.serviceDate), replay, new Map(cache.routes.map(r => [r.id, r]))))

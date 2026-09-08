@@ -65,6 +65,7 @@
       "bahnlinie_takt.8",
       "bahnlinie_takt.9"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "91-10-C-j26-1",
       "agencyId": "65",
@@ -172,6 +173,7 @@
       "bahnlinie_takt.8",
       "bahnlinie_takt.9"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "91-12-j26-1",
       "agencyId": "11",
@@ -305,6 +307,7 @@
       "bahnlinie_takt.8",
       "bahnlinie_takt.9"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "91-14-B-j26-1",
       "agencyId": "65",
@@ -448,6 +451,7 @@
       "bahnlinie_takt.8",
       "bahnlinie_takt.9"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "91-14-I-j26-1",
       "agencyId": "65",
@@ -550,6 +554,7 @@
       "bahnlinie_takt.15",
       "bahnlinie_takt.6"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "91-15-I-j26-1",
       "agencyId": "22",
@@ -686,6 +691,7 @@
       "bahnlinie_takt.8",
       "bahnlinie_takt.9"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "91-1-C-j26-1",
       "agencyId": "65",
@@ -798,6 +804,7 @@
       "bahnlinie_takt.8",
       "bahnlinie_takt.9"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "91-1-P-j26-1",
       "agencyId": "65",
@@ -904,6 +911,7 @@
       "bahnlinie_takt.8",
       "bahnlinie_takt.9"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "91-1S-Y-j26-1",
       "agencyId": "11",
@@ -1011,6 +1019,7 @@
       "bahnlinie_takt.8",
       "bahnlinie_takt.9"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "91-21-F-j26-1",
       "agencyId": "65",
@@ -1123,6 +1132,7 @@
       "bahnlinie_takt.8",
       "bahnlinie_takt.9"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "91-23-B-j26-1",
       "agencyId": "11",
@@ -1231,6 +1241,7 @@
       "bahnlinie_takt.8",
       "bahnlinie_takt.9"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "91-24-E-j26-1",
       "agencyId": "65",
@@ -1347,6 +1358,7 @@
       "bahnlinie_takt.8",
       "bahnlinie_takt.9"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "91-24-j26-1",
       "agencyId": "11",
@@ -1452,6 +1464,7 @@
       "bahnlinie_takt.8",
       "bahnlinie_takt.9"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "91-29-A-j26-1",
       "agencyId": "65",
@@ -1574,6 +1587,7 @@
       "bahnlinie_takt.8",
       "bahnlinie_takt.9"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "91-30-A-j26-1",
       "agencyId": "65",
@@ -1681,6 +1695,7 @@
       "bahnlinie_takt.8",
       "bahnlinie_takt.9"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "91-30-C-j26-1",
       "agencyId": "11",
@@ -1811,6 +1826,7 @@
       "bahnlinie_takt.8",
       "bahnlinie_takt.9"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "91-30-L-j26-1",
       "agencyId": "65",
@@ -1920,6 +1936,7 @@
       "bahnlinie_takt.8",
       "bahnlinie_takt.9"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "91-35-j26-1",
       "agencyId": "65",
@@ -2028,6 +2045,7 @@
       "bahnlinie_takt.8",
       "bahnlinie_takt.9"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "91-3-I-j26-1",
       "agencyId": "65",
@@ -2141,6 +2159,7 @@
       "bahnlinie_takt.8",
       "bahnlinie_takt.9"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "91-3-X-j26-1",
       "agencyId": "65",
@@ -2246,6 +2265,7 @@
       "bahnlinie_takt.8",
       "bahnlinie_takt.9"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "91-44-C-j26-1",
       "agencyId": "65",
@@ -2366,6 +2386,7 @@
       "bahnlinie_takt.8",
       "bahnlinie_takt.9"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "91-5-B-j26-1",
       "agencyId": "65",
@@ -2491,6 +2512,7 @@
       "bahnlinie_takt.8",
       "bahnlinie_takt.9"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "91-71-B-j26-1",
       "agencyId": "65",
@@ -2599,6 +2621,7 @@
       "bahnlinie_takt.8",
       "bahnlinie_takt.9"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "91-72-B-j26-1",
       "agencyId": "65",
@@ -2703,6 +2726,7 @@
       "bahnlinie_takt.8",
       "bahnlinie_takt.9"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "91-75-A-j26-1",
       "agencyId": "65",
@@ -2818,6 +2842,7 @@
       "bahnlinie_takt.8",
       "bahnlinie_takt.9"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "91-75-B-j26-1",
       "agencyId": "65",
@@ -2933,6 +2958,7 @@
       "bahnlinie_takt.8",
       "bahnlinie_takt.9"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "91-75-j26-1",
       "agencyId": "11",
@@ -3056,6 +3082,7 @@
       "bahnlinie_takt.8",
       "bahnlinie_takt.9"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "91-7-B-j26-1",
       "agencyId": "65",
@@ -3168,6 +3195,7 @@
       "bahnlinie_takt.8",
       "bahnlinie_takt.9"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "91-81-A-j26-1",
       "agencyId": "11",
@@ -3273,6 +3301,7 @@
       "bahnlinie_takt.8",
       "bahnlinie_takt.9"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "91-82-j26-1",
       "agencyId": "65",
@@ -3385,6 +3414,7 @@
       "bahnlinie_takt.8",
       "bahnlinie_takt.9"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "91-8-E-j26-1",
       "agencyId": "11",
@@ -3504,6 +3534,7 @@
       "bahnlinie_takt.8",
       "bahnlinie_takt.9"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "91-8-N-j26-1",
       "agencyId": "65",
@@ -3611,6 +3642,7 @@
       "bahnlinie_takt.8",
       "bahnlinie_takt.9"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "91-9-P-j26-1",
       "agencyId": "11",
@@ -3734,6 +3766,7 @@
       "bahnlinie_takt.8",
       "bahnlinie_takt.9"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "91-CH-Y-j26-1",
       "agencyId": "65",
@@ -3825,6 +3858,7 @@
     "sourceLines": [
       "buslinie.2200"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "92-702-D-j26-1",
       "agencyId": "138",
@@ -3924,6 +3958,7 @@
       "buslinie.2196",
       "buslinie.2201"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "92-706-C-j26-1",
       "agencyId": "138",
@@ -4051,6 +4086,7 @@
       "buslinie.1892",
       "buslinie.1893"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "92-722-A-j26-1",
       "agencyId": "138",
@@ -4151,6 +4187,7 @@
       "Münchwilen"
     ],
     "sourceLines": [],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "92-731-j26-1",
       "agencyId": "896",
@@ -4236,6 +4273,7 @@
       "buslinie.1863",
       "buslinie.1864"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "92-732-M-j26-1",
       "agencyId": "138",
@@ -4333,6 +4371,7 @@
       "buslinie.1863",
       "buslinie.1864"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "92-732-N-j26-1",
       "agencyId": "138",
@@ -4431,6 +4470,7 @@
       "buslinie.1983",
       "buslinie.1984"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "92-733-I-j26-1",
       "agencyId": "138",
@@ -4549,6 +4589,7 @@
       "buslinie.2208",
       "buslinie.2227"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "92-734-K-j26-1",
       "agencyId": "138",
@@ -4699,6 +4740,7 @@
       "buslinie.2029",
       "buslinie.2030"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "92-735-C-j26-1",
       "agencyId": "138",
@@ -4863,6 +4905,7 @@
       "buslinie.2028",
       "buslinie.2059"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "92-736-A-j26-1",
       "agencyId": "138",
@@ -5006,6 +5049,7 @@
       "buslinie.1979",
       "buslinie.2058"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "92-739-B-j26-1",
       "agencyId": "138",
@@ -5148,6 +5192,7 @@
       "Frauenfeld"
     ],
     "sourceLines": [],
+    "roadSupplement": "osm-city-road; full ordered pattern and coordinates required",
     "crosswalk": {
       "routeId": "92-801-A-j26-1",
       "agencyId": "797",
@@ -5160,24 +5205,22 @@
       {
         "date": "2026-09-04",
         "trips": 119,
-        "admittedTrips": 0,
+        "admittedTrips": 119,
         "scheduledTrips": 119,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 119,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 1991,
-        "matchedScheduledSegmentOccurrences": 0,
+        "matchedScheduledSegmentOccurrences": 1991,
         "segmentOccurrences": 1991,
-        "matchedSegmentOccurrences": 0,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 1991,
+        "admittedSegmentOccurrences": 1991,
         "directedPairs": 44,
-        "matchedDirectedPairs": 0,
+        "matchedDirectedPairs": 44,
         "patterns": 8,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "no-verified-operator-line-crosswalk": 119
-        }
+        "completePatterns": 8,
+        "admittedPatterns": 8,
+        "excludedTrips": {}
       },
       {
         "date": "2026-09-06",
@@ -5200,7 +5243,7 @@
         "excludedTrips": {}
       }
     ],
-    "status": "excluded"
+    "status": "admitted-all-dated-trips"
   },
   {
     "id": "92-802-A-j26-1",
@@ -5256,6 +5299,7 @@
       "Frauenfeld"
     ],
     "sourceLines": [],
+    "roadSupplement": "osm-city-road; full ordered pattern and coordinates required",
     "crosswalk": {
       "routeId": "92-802-A-j26-1",
       "agencyId": "797",
@@ -5268,24 +5312,22 @@
       {
         "date": "2026-09-04",
         "trips": 118,
-        "admittedTrips": 0,
+        "admittedTrips": 118,
         "scheduledTrips": 118,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 118,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 2068,
-        "matchedScheduledSegmentOccurrences": 0,
+        "matchedScheduledSegmentOccurrences": 2068,
         "segmentOccurrences": 2068,
-        "matchedSegmentOccurrences": 0,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 2068,
+        "admittedSegmentOccurrences": 2068,
         "directedPairs": 39,
-        "matchedDirectedPairs": 0,
+        "matchedDirectedPairs": 39,
         "patterns": 7,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "no-verified-operator-line-crosswalk": 118
-        }
+        "completePatterns": 7,
+        "admittedPatterns": 7,
+        "excludedTrips": {}
       },
       {
         "date": "2026-09-06",
@@ -5308,7 +5350,7 @@
         "excludedTrips": {}
       }
     ],
-    "status": "excluded"
+    "status": "admitted-all-dated-trips"
   },
   {
     "id": "92-803-A-j26-1",
@@ -5357,6 +5399,7 @@
       "Frauenfeld"
     ],
     "sourceLines": [],
+    "roadSupplement": "osm-city-road; full ordered pattern and coordinates required",
     "crosswalk": {
       "routeId": "92-803-A-j26-1",
       "agencyId": "797",
@@ -5369,24 +5412,22 @@
       {
         "date": "2026-09-04",
         "trips": 116,
-        "admittedTrips": 0,
+        "admittedTrips": 116,
         "scheduledTrips": 116,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 116,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 1699,
-        "matchedScheduledSegmentOccurrences": 0,
+        "matchedScheduledSegmentOccurrences": 1699,
         "segmentOccurrences": 1699,
-        "matchedSegmentOccurrences": 0,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 1699,
+        "admittedSegmentOccurrences": 1699,
         "directedPairs": 32,
-        "matchedDirectedPairs": 0,
+        "matchedDirectedPairs": 32,
         "patterns": 5,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "no-verified-operator-line-crosswalk": 116
-        }
+        "completePatterns": 5,
+        "admittedPatterns": 5,
+        "excludedTrips": {}
       },
       {
         "date": "2026-09-06",
@@ -5409,7 +5450,7 @@
         "excludedTrips": {}
       }
     ],
-    "status": "excluded"
+    "status": "admitted-all-dated-trips"
   },
   {
     "id": "92-804-A-j26-1",
@@ -5450,6 +5491,7 @@
       "Frauenfeld"
     ],
     "sourceLines": [],
+    "roadSupplement": "osm-city-road; full ordered pattern and coordinates required",
     "crosswalk": {
       "routeId": "92-804-A-j26-1",
       "agencyId": "797",
@@ -5462,24 +5504,22 @@
       {
         "date": "2026-09-04",
         "trips": 58,
-        "admittedTrips": 0,
+        "admittedTrips": 58,
         "scheduledTrips": 58,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 58,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 638,
-        "matchedScheduledSegmentOccurrences": 0,
+        "matchedScheduledSegmentOccurrences": 638,
         "segmentOccurrences": 638,
-        "matchedSegmentOccurrences": 0,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 638,
+        "admittedSegmentOccurrences": 638,
         "directedPairs": 22,
-        "matchedDirectedPairs": 0,
+        "matchedDirectedPairs": 22,
         "patterns": 2,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "no-verified-operator-line-crosswalk": 58
-        }
+        "completePatterns": 2,
+        "admittedPatterns": 2,
+        "excludedTrips": {}
       },
       {
         "date": "2026-09-06",
@@ -5502,7 +5542,7 @@
         "excludedTrips": {}
       }
     ],
-    "status": "excluded"
+    "status": "admitted-all-dated-trips"
   },
   {
     "id": "92-805-C-j26-1",
@@ -5551,6 +5591,7 @@
       "Frauenfeld"
     ],
     "sourceLines": [],
+    "roadSupplement": "osm-city-road; full ordered pattern and coordinates required",
     "crosswalk": {
       "routeId": "92-805-C-j26-1",
       "agencyId": "797",
@@ -5563,24 +5604,22 @@
       {
         "date": "2026-09-04",
         "trips": 137,
-        "admittedTrips": 0,
+        "admittedTrips": 137,
         "scheduledTrips": 137,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 137,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 1126,
-        "matchedScheduledSegmentOccurrences": 0,
+        "matchedScheduledSegmentOccurrences": 1126,
         "segmentOccurrences": 1126,
-        "matchedSegmentOccurrences": 0,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 1126,
+        "admittedSegmentOccurrences": 1126,
         "directedPairs": 30,
-        "matchedDirectedPairs": 0,
+        "matchedDirectedPairs": 30,
         "patterns": 9,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "no-verified-operator-line-crosswalk": 137
-        }
+        "completePatterns": 9,
+        "admittedPatterns": 9,
+        "excludedTrips": {}
       },
       {
         "date": "2026-09-06",
@@ -5603,7 +5642,7 @@
         "excludedTrips": {}
       }
     ],
-    "status": "excluded"
+    "status": "admitted-all-dated-trips"
   },
   {
     "id": "92-811-B-j26-1",
@@ -5633,6 +5672,7 @@
       "Frauenfeld"
     ],
     "sourceLines": [],
+    "roadSupplement": "osm-city-road; full ordered pattern and coordinates required",
     "crosswalk": {
       "routeId": "92-811-B-j26-1",
       "agencyId": "797",
@@ -5645,49 +5685,45 @@
       {
         "date": "2026-09-04",
         "trips": 6,
-        "admittedTrips": 0,
+        "admittedTrips": 6,
         "scheduledTrips": 6,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 6,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 36,
-        "matchedScheduledSegmentOccurrences": 0,
+        "matchedScheduledSegmentOccurrences": 36,
         "segmentOccurrences": 36,
-        "matchedSegmentOccurrences": 0,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 36,
+        "admittedSegmentOccurrences": 36,
         "directedPairs": 12,
-        "matchedDirectedPairs": 0,
+        "matchedDirectedPairs": 12,
         "patterns": 2,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "no-verified-operator-line-crosswalk": 6
-        }
+        "completePatterns": 2,
+        "admittedPatterns": 2,
+        "excludedTrips": {}
       },
       {
         "date": "2026-09-06",
         "trips": 54,
-        "admittedTrips": 0,
+        "admittedTrips": 54,
         "scheduledTrips": 54,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 54,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 324,
-        "matchedScheduledSegmentOccurrences": 0,
+        "matchedScheduledSegmentOccurrences": 324,
         "segmentOccurrences": 324,
-        "matchedSegmentOccurrences": 0,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 324,
+        "admittedSegmentOccurrences": 324,
         "directedPairs": 12,
-        "matchedDirectedPairs": 0,
+        "matchedDirectedPairs": 12,
         "patterns": 2,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "no-verified-operator-line-crosswalk": 54
-        }
+        "completePatterns": 2,
+        "admittedPatterns": 2,
+        "excludedTrips": {}
       }
     ],
-    "status": "excluded"
+    "status": "admitted-all-dated-trips"
   },
   {
     "id": "92-812-A-j26-1",
@@ -5728,6 +5764,7 @@
       "Frauenfeld"
     ],
     "sourceLines": [],
+    "roadSupplement": "osm-city-road; full ordered pattern and coordinates required",
     "crosswalk": {
       "routeId": "92-812-A-j26-1",
       "agencyId": "797",
@@ -5740,49 +5777,45 @@
       {
         "date": "2026-09-04",
         "trips": 8,
-        "admittedTrips": 0,
+        "admittedTrips": 8,
         "scheduledTrips": 8,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 8,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 84,
-        "matchedScheduledSegmentOccurrences": 0,
+        "matchedScheduledSegmentOccurrences": 84,
         "segmentOccurrences": 84,
-        "matchedSegmentOccurrences": 0,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 84,
+        "admittedSegmentOccurrences": 84,
         "directedPairs": 21,
-        "matchedDirectedPairs": 0,
+        "matchedDirectedPairs": 21,
         "patterns": 2,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "no-verified-operator-line-crosswalk": 8
-        }
+        "completePatterns": 2,
+        "admittedPatterns": 2,
+        "excludedTrips": {}
       },
       {
         "date": "2026-09-06",
         "trips": 56,
-        "admittedTrips": 0,
+        "admittedTrips": 56,
         "scheduledTrips": 56,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 56,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 588,
-        "matchedScheduledSegmentOccurrences": 0,
+        "matchedScheduledSegmentOccurrences": 588,
         "segmentOccurrences": 588,
-        "matchedSegmentOccurrences": 0,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 588,
+        "admittedSegmentOccurrences": 588,
         "directedPairs": 21,
-        "matchedDirectedPairs": 0,
+        "matchedDirectedPairs": 21,
         "patterns": 2,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "no-verified-operator-line-crosswalk": 56
-        }
+        "completePatterns": 2,
+        "admittedPatterns": 2,
+        "excludedTrips": {}
       }
     ],
-    "status": "excluded"
+    "status": "admitted-all-dated-trips"
   },
   {
     "id": "92-813-B-j26-1",
@@ -5819,6 +5852,7 @@
       "Frauenfeld"
     ],
     "sourceLines": [],
+    "roadSupplement": "osm-city-road; full ordered pattern and coordinates required",
     "crosswalk": {
       "routeId": "92-813-B-j26-1",
       "agencyId": "797",
@@ -5831,49 +5865,45 @@
       {
         "date": "2026-09-04",
         "trips": 4,
-        "admittedTrips": 0,
+        "admittedTrips": 4,
         "scheduledTrips": 4,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 4,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 76,
-        "matchedScheduledSegmentOccurrences": 0,
+        "matchedScheduledSegmentOccurrences": 76,
         "segmentOccurrences": 76,
-        "matchedSegmentOccurrences": 0,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 76,
+        "admittedSegmentOccurrences": 76,
         "directedPairs": 19,
-        "matchedDirectedPairs": 0,
+        "matchedDirectedPairs": 19,
         "patterns": 1,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "no-verified-operator-line-crosswalk": 4
-        }
+        "completePatterns": 1,
+        "admittedPatterns": 1,
+        "excludedTrips": {}
       },
       {
         "date": "2026-09-06",
         "trips": 28,
-        "admittedTrips": 0,
+        "admittedTrips": 28,
         "scheduledTrips": 28,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 28,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 532,
-        "matchedScheduledSegmentOccurrences": 0,
+        "matchedScheduledSegmentOccurrences": 532,
         "segmentOccurrences": 532,
-        "matchedSegmentOccurrences": 0,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 532,
+        "admittedSegmentOccurrences": 532,
         "directedPairs": 19,
-        "matchedDirectedPairs": 0,
+        "matchedDirectedPairs": 19,
         "patterns": 1,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "no-verified-operator-line-crosswalk": 28
-        }
+        "completePatterns": 1,
+        "admittedPatterns": 1,
+        "excludedTrips": {}
       }
     ],
-    "status": "excluded"
+    "status": "admitted-all-dated-trips"
   },
   {
     "id": "92-814-B-j26-1",
@@ -5912,6 +5942,7 @@
       "Frauenfeld"
     ],
     "sourceLines": [],
+    "roadSupplement": "osm-city-road; full ordered pattern and coordinates required",
     "crosswalk": {
       "routeId": "92-814-B-j26-1",
       "agencyId": "797",
@@ -5924,49 +5955,45 @@
       {
         "date": "2026-09-04",
         "trips": 4,
-        "admittedTrips": 0,
+        "admittedTrips": 4,
         "scheduledTrips": 4,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 4,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 84,
-        "matchedScheduledSegmentOccurrences": 0,
+        "matchedScheduledSegmentOccurrences": 84,
         "segmentOccurrences": 84,
-        "matchedSegmentOccurrences": 0,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 84,
+        "admittedSegmentOccurrences": 84,
         "directedPairs": 21,
-        "matchedDirectedPairs": 0,
+        "matchedDirectedPairs": 21,
         "patterns": 1,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "no-verified-operator-line-crosswalk": 4
-        }
+        "completePatterns": 1,
+        "admittedPatterns": 1,
+        "excludedTrips": {}
       },
       {
         "date": "2026-09-06",
         "trips": 28,
-        "admittedTrips": 0,
+        "admittedTrips": 28,
         "scheduledTrips": 28,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 28,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 588,
-        "matchedScheduledSegmentOccurrences": 0,
+        "matchedScheduledSegmentOccurrences": 588,
         "segmentOccurrences": 588,
-        "matchedSegmentOccurrences": 0,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 588,
+        "admittedSegmentOccurrences": 588,
         "directedPairs": 21,
-        "matchedDirectedPairs": 0,
+        "matchedDirectedPairs": 21,
         "patterns": 1,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "no-verified-operator-line-crosswalk": 28
-        }
+        "completePatterns": 1,
+        "admittedPatterns": 1,
+        "excludedTrips": {}
       }
     ],
-    "status": "excluded"
+    "status": "admitted-all-dated-trips"
   },
   {
     "id": "92-815-B-j26-1",
@@ -6008,6 +6035,7 @@
       "Frauenfeld"
     ],
     "sourceLines": [],
+    "roadSupplement": "osm-city-road; full ordered pattern and coordinates required",
     "crosswalk": {
       "routeId": "92-815-B-j26-1",
       "agencyId": "797",
@@ -6020,49 +6048,45 @@
       {
         "date": "2026-09-04",
         "trips": 4,
-        "admittedTrips": 0,
+        "admittedTrips": 4,
         "scheduledTrips": 4,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 4,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 80,
-        "matchedScheduledSegmentOccurrences": 0,
+        "matchedScheduledSegmentOccurrences": 80,
         "segmentOccurrences": 80,
-        "matchedSegmentOccurrences": 0,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 80,
+        "admittedSegmentOccurrences": 80,
         "directedPairs": 20,
-        "matchedDirectedPairs": 0,
+        "matchedDirectedPairs": 20,
         "patterns": 1,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "no-verified-operator-line-crosswalk": 4
-        }
+        "completePatterns": 1,
+        "admittedPatterns": 1,
+        "excludedTrips": {}
       },
       {
         "date": "2026-09-06",
         "trips": 28,
-        "admittedTrips": 0,
+        "admittedTrips": 28,
         "scheduledTrips": 28,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 28,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 560,
-        "matchedScheduledSegmentOccurrences": 0,
+        "matchedScheduledSegmentOccurrences": 560,
         "segmentOccurrences": 560,
-        "matchedSegmentOccurrences": 0,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 560,
+        "admittedSegmentOccurrences": 560,
         "directedPairs": 20,
-        "matchedDirectedPairs": 0,
+        "matchedDirectedPairs": 20,
         "patterns": 1,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "no-verified-operator-line-crosswalk": 28
-        }
+        "completePatterns": 1,
+        "admittedPatterns": 1,
+        "excludedTrips": {}
       }
     ],
-    "status": "excluded"
+    "status": "admitted-all-dated-trips"
   },
   {
     "id": "92-820-A-j26-1",
@@ -6087,6 +6111,7 @@
       "Kreuzlingen"
     ],
     "sourceLines": [],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "92-820-A-j26-1",
       "agencyId": "138",
@@ -6168,6 +6193,7 @@
       "Münchwilen"
     ],
     "sourceLines": [],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "92-841-j26-1",
       "agencyId": "744",
@@ -6243,6 +6269,7 @@
       "Münchwilen"
     ],
     "sourceLines": [],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "92-8-Y-j26-1",
       "agencyId": "138",
@@ -6338,6 +6365,7 @@
       "Kreuzlingen"
     ],
     "sourceLines": [],
+    "roadSupplement": "osm-city-road; full ordered pattern and coordinates required",
     "crosswalk": {
       "routeId": "92-901-j26-1",
       "agencyId": "727",
@@ -6350,49 +6378,45 @@
       {
         "date": "2026-09-04",
         "trips": 162,
-        "admittedTrips": 0,
+        "admittedTrips": 162,
         "scheduledTrips": 162,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 162,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 1146,
-        "matchedScheduledSegmentOccurrences": 0,
+        "matchedScheduledSegmentOccurrences": 1146,
         "segmentOccurrences": 1146,
-        "matchedSegmentOccurrences": 0,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 1146,
+        "admittedSegmentOccurrences": 1146,
         "directedPairs": 21,
-        "matchedDirectedPairs": 0,
+        "matchedDirectedPairs": 21,
         "patterns": 5,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "no-verified-operator-line-crosswalk": 162
-        }
+        "completePatterns": 5,
+        "admittedPatterns": 5,
+        "excludedTrips": {}
       },
       {
         "date": "2026-09-06",
         "trips": 72,
-        "admittedTrips": 0,
+        "admittedTrips": 72,
         "scheduledTrips": 72,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 72,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 501,
-        "matchedScheduledSegmentOccurrences": 0,
+        "matchedScheduledSegmentOccurrences": 501,
         "segmentOccurrences": 501,
-        "matchedSegmentOccurrences": 0,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 501,
+        "admittedSegmentOccurrences": 501,
         "directedPairs": 21,
-        "matchedDirectedPairs": 0,
+        "matchedDirectedPairs": 21,
         "patterns": 4,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "no-verified-operator-line-crosswalk": 72
-        }
+        "completePatterns": 4,
+        "admittedPatterns": 4,
+        "excludedTrips": {}
       }
     ],
-    "status": "excluded"
+    "status": "admitted-all-dated-trips"
   },
   {
     "id": "92-902-j26-1",
@@ -6435,6 +6459,7 @@
       "Kreuzlingen"
     ],
     "sourceLines": [],
+    "roadSupplement": "osm-city-road; full ordered pattern and coordinates required",
     "crosswalk": {
       "routeId": "92-902-j26-1",
       "agencyId": "727",
@@ -6447,49 +6472,45 @@
       {
         "date": "2026-09-04",
         "trips": 162,
-        "admittedTrips": 0,
+        "admittedTrips": 162,
         "scheduledTrips": 162,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 162,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 1380,
-        "matchedScheduledSegmentOccurrences": 0,
+        "matchedScheduledSegmentOccurrences": 1380,
         "segmentOccurrences": 1380,
-        "matchedSegmentOccurrences": 0,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 1380,
+        "admittedSegmentOccurrences": 1380,
         "directedPairs": 33,
-        "matchedDirectedPairs": 0,
+        "matchedDirectedPairs": 33,
         "patterns": 13,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "no-verified-operator-line-crosswalk": 162
-        }
+        "completePatterns": 13,
+        "admittedPatterns": 13,
+        "excludedTrips": {}
       },
       {
         "date": "2026-09-06",
         "trips": 71,
-        "admittedTrips": 0,
+        "admittedTrips": 71,
         "scheduledTrips": 71,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 71,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 682,
-        "matchedScheduledSegmentOccurrences": 0,
+        "matchedScheduledSegmentOccurrences": 682,
         "segmentOccurrences": 682,
-        "matchedSegmentOccurrences": 0,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 682,
+        "admittedSegmentOccurrences": 682,
         "directedPairs": 29,
-        "matchedDirectedPairs": 0,
+        "matchedDirectedPairs": 29,
         "patterns": 4,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "no-verified-operator-line-crosswalk": 71
-        }
+        "completePatterns": 4,
+        "admittedPatterns": 4,
+        "excludedTrips": {}
       }
     ],
-    "status": "excluded"
+    "status": "admitted-all-dated-trips"
   },
   {
     "id": "92-903-j26-1",
@@ -6525,6 +6546,7 @@
       "Kreuzlingen"
     ],
     "sourceLines": [],
+    "roadSupplement": "osm-city-road; full ordered pattern and coordinates required",
     "crosswalk": {
       "routeId": "92-903-j26-1",
       "agencyId": "727",
@@ -6537,24 +6559,22 @@
       {
         "date": "2026-09-04",
         "trips": 78,
-        "admittedTrips": 0,
+        "admittedTrips": 78,
         "scheduledTrips": 78,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 78,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 601,
-        "matchedScheduledSegmentOccurrences": 0,
+        "matchedScheduledSegmentOccurrences": 601,
         "segmentOccurrences": 601,
-        "matchedSegmentOccurrences": 0,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 601,
+        "admittedSegmentOccurrences": 601,
         "directedPairs": 27,
-        "matchedDirectedPairs": 0,
+        "matchedDirectedPairs": 27,
         "patterns": 4,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "no-verified-operator-line-crosswalk": 78
-        }
+        "completePatterns": 4,
+        "admittedPatterns": 4,
+        "excludedTrips": {}
       },
       {
         "date": "2026-09-06",
@@ -6577,7 +6597,7 @@
         "excludedTrips": {}
       }
     ],
-    "status": "excluded"
+    "status": "admitted-all-dated-trips"
   },
   {
     "id": "92-905-j26-1",
@@ -6624,6 +6644,7 @@
       "Kreuzlingen"
     ],
     "sourceLines": [],
+    "roadSupplement": "osm-city-road; full ordered pattern and coordinates required",
     "crosswalk": {
       "routeId": "92-905-j26-1",
       "agencyId": "727",
@@ -6636,49 +6657,45 @@
       {
         "date": "2026-09-04",
         "trips": 9,
-        "admittedTrips": 0,
+        "admittedTrips": 9,
         "scheduledTrips": 9,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 9,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 225,
-        "matchedScheduledSegmentOccurrences": 0,
+        "matchedScheduledSegmentOccurrences": 225,
         "segmentOccurrences": 225,
-        "matchedSegmentOccurrences": 0,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 225,
+        "admittedSegmentOccurrences": 225,
         "directedPairs": 25,
-        "matchedDirectedPairs": 0,
+        "matchedDirectedPairs": 25,
         "patterns": 1,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "no-verified-operator-line-crosswalk": 9
-        }
+        "completePatterns": 1,
+        "admittedPatterns": 1,
+        "excludedTrips": {}
       },
       {
         "date": "2026-09-06",
         "trips": 9,
-        "admittedTrips": 0,
+        "admittedTrips": 9,
         "scheduledTrips": 9,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 9,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 204,
-        "matchedScheduledSegmentOccurrences": 0,
+        "matchedScheduledSegmentOccurrences": 204,
         "segmentOccurrences": 204,
-        "matchedSegmentOccurrences": 0,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 204,
+        "admittedSegmentOccurrences": 204,
         "directedPairs": 29,
-        "matchedDirectedPairs": 0,
+        "matchedDirectedPairs": 29,
         "patterns": 4,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "no-verified-operator-line-crosswalk": 9
-        }
+        "completePatterns": 4,
+        "admittedPatterns": 4,
+        "excludedTrips": {}
       }
     ],
-    "status": "excluded"
+    "status": "admitted-all-dated-trips"
   },
   {
     "id": "92-906-j26-1",
@@ -6716,6 +6733,7 @@
       "Kreuzlingen"
     ],
     "sourceLines": [],
+    "roadSupplement": "osm-city-road; full ordered pattern and coordinates required",
     "crosswalk": {
       "routeId": "92-906-j26-1",
       "agencyId": "727",
@@ -6728,49 +6746,45 @@
       {
         "date": "2026-09-04",
         "trips": 9,
-        "admittedTrips": 0,
+        "admittedTrips": 9,
         "scheduledTrips": 9,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 9,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 171,
-        "matchedScheduledSegmentOccurrences": 0,
+        "matchedScheduledSegmentOccurrences": 171,
         "segmentOccurrences": 171,
-        "matchedSegmentOccurrences": 0,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 171,
+        "admittedSegmentOccurrences": 171,
         "directedPairs": 19,
-        "matchedDirectedPairs": 0,
+        "matchedDirectedPairs": 19,
         "patterns": 1,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "no-verified-operator-line-crosswalk": 9
-        }
+        "completePatterns": 1,
+        "admittedPatterns": 1,
+        "excludedTrips": {}
       },
       {
         "date": "2026-09-06",
         "trips": 2,
-        "admittedTrips": 0,
+        "admittedTrips": 2,
         "scheduledTrips": 2,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 2,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 28,
-        "matchedScheduledSegmentOccurrences": 0,
+        "matchedScheduledSegmentOccurrences": 28,
         "segmentOccurrences": 28,
-        "matchedSegmentOccurrences": 0,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 28,
+        "admittedSegmentOccurrences": 28,
         "directedPairs": 19,
-        "matchedDirectedPairs": 0,
+        "matchedDirectedPairs": 19,
         "patterns": 2,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "no-verified-operator-line-crosswalk": 2
-        }
+        "completePatterns": 2,
+        "admittedPatterns": 2,
+        "excludedTrips": {}
       }
     ],
-    "status": "excluded"
+    "status": "admitted-all-dated-trips"
   },
   {
     "id": "92-907-j26-1",
@@ -6820,6 +6834,7 @@
       "Kreuzlingen"
     ],
     "sourceLines": [],
+    "roadSupplement": "osm-city-road; full ordered pattern and coordinates required",
     "crosswalk": {
       "routeId": "92-907-j26-1",
       "agencyId": "727",
@@ -6832,49 +6847,45 @@
       {
         "date": "2026-09-04",
         "trips": 67,
-        "admittedTrips": 0,
+        "admittedTrips": 67,
         "scheduledTrips": 67,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 67,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 1016,
-        "matchedScheduledSegmentOccurrences": 0,
+        "matchedScheduledSegmentOccurrences": 1016,
         "segmentOccurrences": 1016,
-        "matchedSegmentOccurrences": 0,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 1016,
+        "admittedSegmentOccurrences": 1016,
         "directedPairs": 44,
-        "matchedDirectedPairs": 0,
+        "matchedDirectedPairs": 44,
         "patterns": 10,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "no-verified-operator-line-crosswalk": 67
-        }
+        "completePatterns": 10,
+        "admittedPatterns": 10,
+        "excludedTrips": {}
       },
       {
         "date": "2026-09-06",
         "trips": 46,
-        "admittedTrips": 0,
+        "admittedTrips": 46,
         "scheduledTrips": 46,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 46,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 552,
-        "matchedScheduledSegmentOccurrences": 0,
+        "matchedScheduledSegmentOccurrences": 552,
         "segmentOccurrences": 552,
-        "matchedSegmentOccurrences": 0,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 552,
+        "admittedSegmentOccurrences": 552,
         "directedPairs": 24,
-        "matchedDirectedPairs": 0,
+        "matchedDirectedPairs": 24,
         "patterns": 2,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "no-verified-operator-line-crosswalk": 46
-        }
+        "completePatterns": 2,
+        "admittedPatterns": 2,
+        "excludedTrips": {}
       }
     ],
-    "status": "excluded"
+    "status": "admitted-all-dated-trips"
   },
   {
     "id": "92-940-B-j26-1",
@@ -6982,6 +6993,7 @@
       "buslinie.2269",
       "buslinie.2270"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "92-940-B-j26-1",
       "agencyId": "138",
@@ -7192,6 +7204,7 @@
       "buslinie.2205",
       "buslinie.2220"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "92-941-A-j26-1",
       "agencyId": "138",
@@ -7347,6 +7360,7 @@
       "buslinie.1875",
       "buslinie.1888"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "92-942-A-j26-1",
       "agencyId": "138",
@@ -7487,6 +7501,7 @@
       "buslinie.1736",
       "buslinie.1737"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "92-943-A-j26-1",
       "agencyId": "138",
@@ -7626,6 +7641,7 @@
       "Weinfelden"
     ],
     "sourceLines": [],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "92-A01-O-j26-1",
       "agencyId": "7231",
@@ -7703,6 +7719,7 @@
       "Weinfelden"
     ],
     "sourceLines": [],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "92-A01-T-j26-1",
       "agencyId": "7231",
@@ -7779,6 +7796,7 @@
       "Weinfelden"
     ],
     "sourceLines": [],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "92-A02-Q-j26-1",
       "agencyId": "7231",
@@ -7870,6 +7888,7 @@
       "Kreuzlingen"
     ],
     "sourceLines": [],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "92-A02-R-j26-1",
       "agencyId": "7231",
@@ -8030,6 +8049,7 @@
       "Weinfelden"
     ],
     "sourceLines": [],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "92-A04-5-j26-1",
       "agencyId": "7231",
@@ -8109,6 +8129,7 @@
       "Weinfelden"
     ],
     "sourceLines": [],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "92-A04-7-j26-1",
       "agencyId": "7231",
@@ -8180,6 +8201,7 @@
       "Weinfelden"
     ],
     "sourceLines": [],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "92-A05-6-j26-1",
       "agencyId": "7231",
@@ -8249,6 +8271,7 @@
       "Frauenfeld"
     ],
     "sourceLines": [],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "92-A05-Z-j26-1",
       "agencyId": "744",
@@ -8318,6 +8341,7 @@
       "Weinfelden"
     ],
     "sourceLines": [],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "92-A07-8-j26-1",
       "agencyId": "7231",
@@ -8407,6 +8431,7 @@
       "Münchwilen"
     ],
     "sourceLines": [],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "92-A0A-6-j26-1",
       "agencyId": "7252",
@@ -8480,6 +8505,7 @@
       "Frauenfeld"
     ],
     "sourceLines": [],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "92-EV3-C-j26-1",
       "agencyId": "7231",
@@ -8550,6 +8576,7 @@
       "Weinfelden"
     ],
     "sourceLines": [],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "92-EV3-E-j26-1",
       "agencyId": "7231",
@@ -8637,6 +8664,7 @@
       "Weinfelden"
     ],
     "sourceLines": [],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "92-EV3-W-j26-1",
       "agencyId": "7231",
@@ -8706,6 +8734,7 @@
       "Frauenfeld"
     ],
     "sourceLines": [],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "92-EV4-I-j26-1",
       "agencyId": "7231",
@@ -8784,6 +8813,7 @@
       "Weinfelden"
     ],
     "sourceLines": [],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "92-EV4-L-j26-1",
       "agencyId": "7231",
@@ -8869,6 +8899,7 @@
       "buslinie.2140",
       "buslinie.2142"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "92-N50-A-j26-1",
       "agencyId": "138",
@@ -8963,6 +8994,7 @@
       "Münchwilen"
     ],
     "sourceLines": [],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "92-N90-B-j26-1",
       "agencyId": "138",
@@ -9107,6 +9139,7 @@
       "Frauenfeld"
     ],
     "sourceLines": [],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "92-NT-A-j26-1",
       "agencyId": "797",
@@ -9135,7 +9168,7 @@
         "completePatterns": 0,
         "admittedPatterns": 0,
         "excludedTrips": {
-          "no-verified-operator-line-crosswalk": 15
+          "demand-responsive-night-taxi": 15
         }
       },
       {
@@ -9157,7 +9190,7 @@
         "completePatterns": 0,
         "admittedPatterns": 0,
         "excludedTrips": {
-          "no-verified-operator-line-crosswalk": 30
+          "demand-responsive-night-taxi": 30
         }
       }
     ],
@@ -9187,6 +9220,7 @@
       "cantonal-water-or-boundary"
     ],
     "sourceLines": [],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "94-380-0-j26-1",
       "agencyId": "195",
@@ -9263,6 +9297,7 @@
       "cantonal-water-or-boundary"
     ],
     "sourceLines": [],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "94-380-1-j26-1",
       "agencyId": "195",
@@ -9335,6 +9370,7 @@
       "Arbon"
     ],
     "sourceLines": [],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "94-381-0-j26-1",
       "agencyId": "195",
@@ -9407,6 +9443,7 @@
       "Arbon"
     ],
     "sourceLines": [],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "94-381-A-j26-1",
       "agencyId": "360",
@@ -9488,6 +9525,7 @@
       "cantonal-water-or-boundary"
     ],
     "sourceLines": [],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "94-382-0-j26-1",
       "agencyId": "193",
@@ -9560,6 +9598,7 @@
       "Kreuzlingen"
     ],
     "sourceLines": [],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "94-382-A-j26-1",
       "agencyId": "360",
@@ -9632,6 +9671,7 @@
       "Kreuzlingen"
     ],
     "sourceLines": [],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "94-T-Y-j26-1",
       "agencyId": "3182",
@@ -9717,6 +9757,7 @@
       "buslinie.2056",
       "buslinie.2189"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "96-184-9-j26-1",
       "agencyId": "801",
@@ -9805,6 +9846,7 @@
       "Münchwilen"
     ],
     "sourceLines": [],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "96-185-1-j26-1",
       "agencyId": "801",
@@ -9882,6 +9924,7 @@
       "Frauenfeld"
     ],
     "sourceLines": [],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "96-185-9-j26-1",
       "agencyId": "801",
@@ -9968,6 +10011,7 @@
       "buslinie.2181",
       "buslinie.2236"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "96-189-4-j26-1",
       "agencyId": "801",
@@ -10116,6 +10160,7 @@
       "buslinie.2100",
       "buslinie.2108"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "96-200-2-j26-1",
       "agencyId": "801",
@@ -10307,6 +10352,7 @@
       "buslinie.2185",
       "buslinie.2236"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "96-200-3-j26-1",
       "agencyId": "801",
@@ -10521,6 +10567,7 @@
       "buslinie.2222",
       "buslinie.2223"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "96-200-4-j26-1",
       "agencyId": "801",
@@ -10752,6 +10799,7 @@
       "buslinie.2226",
       "buslinie.2231"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "96-200-6-j26-1",
       "agencyId": "801",
@@ -10945,6 +10993,7 @@
       "buslinie.1869",
       "buslinie.1964"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "96-200-7-j26-1",
       "agencyId": "801",
@@ -11146,6 +11195,7 @@
       "buslinie.2124",
       "buslinie.2126"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "96-200-8-j26-1",
       "agencyId": "801",
@@ -11325,6 +11375,7 @@
       "buslinie.2105",
       "buslinie.2209"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "96-200-9-j26-1",
       "agencyId": "801",
@@ -11517,6 +11568,7 @@
       "buslinie.2105",
       "buslinie.2109"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "96-201-0-j26-1",
       "agencyId": "801",
@@ -11684,6 +11736,7 @@
       "buslinie.2105",
       "buslinie.2210"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "96-201-2-j26-1",
       "agencyId": "801",
@@ -11830,6 +11883,7 @@
       "buslinie.2020",
       "buslinie.2125"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "96-201-3-j26-1",
       "agencyId": "801",
@@ -11992,6 +12046,7 @@
       "buslinie.1811",
       "buslinie.2125"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "96-201-4-j26-1",
       "agencyId": "801",
@@ -12182,6 +12237,7 @@
       "buslinie.1892",
       "buslinie.1893"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "96-202-0-j26-1",
       "agencyId": "801",
@@ -12369,6 +12425,7 @@
       "buslinie.1851",
       "buslinie.1853"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "96-202-1-j26-1",
       "agencyId": "801",
@@ -12571,6 +12628,7 @@
       "buslinie.2109",
       "buslinie.2248"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "96-202-5-j26-1",
       "agencyId": "801",
@@ -12706,6 +12764,7 @@
       "buslinie.1825",
       "buslinie.2099"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "96-202-7-j26-1",
       "agencyId": "801",
@@ -12836,6 +12895,7 @@
       "buslinie.1942",
       "buslinie.1960"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "96-203-0-j26-1",
       "agencyId": "801",
@@ -13039,6 +13099,7 @@
       "buslinie.2164",
       "buslinie.2217"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "96-203-1-j26-1",
       "agencyId": "801",
@@ -13259,6 +13320,7 @@
       "buslinie.2015",
       "buslinie.2016"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "96-203-2-j26-1",
       "agencyId": "801",
@@ -13461,6 +13523,7 @@
       "buslinie.2219",
       "buslinie.2249"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "96-203-3-j26-1",
       "agencyId": "801",
@@ -13688,6 +13751,7 @@
       "buslinie.2256",
       "buslinie.2257"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "96-203-5-j26-1",
       "agencyId": "801",
@@ -13916,6 +13980,7 @@
       "buslinie.2043",
       "buslinie.2219"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "96-203-6-j26-1",
       "agencyId": "801",
@@ -14070,6 +14135,7 @@
       "buslinie.1914",
       "buslinie.2039"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "96-203-7-j26-1",
       "agencyId": "801",
@@ -14221,6 +14287,7 @@
       "buslinie.2262",
       "buslinie.2263"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "96-203-8-j26-1",
       "agencyId": "801",
@@ -14357,6 +14424,7 @@
       "Frauenfeld"
     ],
     "sourceLines": [],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "96-203-9-j26-1",
       "agencyId": "801",
@@ -14452,6 +14520,7 @@
       "buslinie.2031",
       "buslinie.2111"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "96-204-0-j26-1",
       "agencyId": "801",
@@ -14595,6 +14664,7 @@
       "buslinie.2205",
       "buslinie.2220"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "96-220-5-j26-1",
       "agencyId": "801",
@@ -14734,6 +14804,7 @@
       "buslinie.2114",
       "buslinie.2115"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "96-220-6-j26-1",
       "agencyId": "801",
@@ -14866,6 +14937,7 @@
       "buslinie.1900",
       "buslinie.2266"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "96-220-8-j26-1",
       "agencyId": "801",
@@ -14986,6 +15058,7 @@
       "buslinie.2205",
       "buslinie.2220"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "96-220-A-j26-1",
       "agencyId": "801",
@@ -15111,6 +15184,7 @@
       "buslinie.1900",
       "buslinie.2266"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "96-220-B-j26-1",
       "agencyId": "801",
@@ -15207,6 +15281,7 @@
       "Arbon"
     ],
     "sourceLines": [],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "96-221-4-j26-1",
       "agencyId": "801",
@@ -15292,6 +15367,7 @@
     "sourceLines": [
       "buslinie.2141"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "96-228-3-j26-1",
       "agencyId": "801",
@@ -15399,6 +15475,7 @@
     "sourceLines": [
       "buslinie.1849"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "96-228-7-j26-1",
       "agencyId": "801",
@@ -15511,6 +15588,7 @@
     "sourceLines": [
       "buslinie.2141"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "96-228-B-j26-1",
       "agencyId": "801",
@@ -15608,6 +15686,7 @@
       "buslinie.2117",
       "buslinie.2266"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "96-250-8-j26-1",
       "agencyId": "801",
@@ -15722,6 +15801,7 @@
       "buslinie.1900",
       "buslinie.2114"
     ],
+    "roadSupplement": null,
     "crosswalk": {
       "routeId": "96-250-A-j26-1",
       "agencyId": "801",

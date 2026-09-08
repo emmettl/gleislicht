@@ -61,25 +61,25 @@ Generated from the pinned 2026 GTFS canton census. See [study and method](THURGA
 | 195 Schweizerische Bodensee-Schifffahrt AG | 3810 | ferry | 94-381-0-j26-1 | Arbon | 0 / 16 | 0 / 14 | Excluded: No water-compatible geometry in acquired sources |
 | 360 Bodensee-Schiffsbetriebe GmbH | 3810 | ferry | 94-381-A-j26-1 | Arbon | 0 / 16 | 0 / 14 | Excluded: No water-compatible geometry in acquired sources |
 | 360 Bodensee-Schiffsbetriebe GmbH | 3820 | ferry | 94-382-A-j26-1 | Kreuzlingen | 0 / 4 | 0 / 4 | Excluded: No water-compatible geometry in acquired sources |
-| 727 Verkehrsbetriebe Kreuzlingen | 901 | bus | 92-901-j26-1 | Kreuzlingen | 0 / 162 | 0 / 72 | Excluded: No verified source operator/line identity (includes city, replacement and demand services) |
-| 727 Verkehrsbetriebe Kreuzlingen | 902 | bus | 92-902-j26-1 | Kreuzlingen | 0 / 162 | 0 / 71 | Excluded: No verified source operator/line identity (includes city, replacement and demand services) |
-| 727 Verkehrsbetriebe Kreuzlingen | 903 | bus | 92-903-j26-1 | Kreuzlingen | 0 / 78 | 0 / 0 | Excluded: No verified source operator/line identity (includes city, replacement and demand services) |
-| 727 Verkehrsbetriebe Kreuzlingen | 905 | bus | 92-905-j26-1 | Kreuzlingen | 0 / 9 | 0 / 9 | Excluded: No verified source operator/line identity (includes city, replacement and demand services) |
-| 727 Verkehrsbetriebe Kreuzlingen | 906 | bus | 92-906-j26-1 | Kreuzlingen | 0 / 9 | 0 / 2 | Excluded: No verified source operator/line identity (includes city, replacement and demand services) |
-| 727 Verkehrsbetriebe Kreuzlingen | 907 | bus | 92-907-j26-1 | Kreuzlingen | 0 / 67 | 0 / 46 | Excluded: No verified source operator/line identity (includes city, replacement and demand services) |
+| 727 Verkehrsbetriebe Kreuzlingen | 901 | bus | 92-901-j26-1 | Kreuzlingen | 162 / 162 | 72 / 72 | All dated journeys admitted: Complete OSM-inferred city patterns; official line geometry absent |
+| 727 Verkehrsbetriebe Kreuzlingen | 902 | bus | 92-902-j26-1 | Kreuzlingen | 162 / 162 | 71 / 71 | All dated journeys admitted: Complete OSM-inferred city patterns; official line geometry absent |
+| 727 Verkehrsbetriebe Kreuzlingen | 903 | bus | 92-903-j26-1 | Kreuzlingen | 78 / 78 | 0 / 0 | All dated journeys admitted: Complete OSM-inferred city patterns; official line geometry absent |
+| 727 Verkehrsbetriebe Kreuzlingen | 905 | bus | 92-905-j26-1 | Kreuzlingen | 9 / 9 | 9 / 9 | All dated journeys admitted: Complete OSM-inferred city patterns; official line geometry absent |
+| 727 Verkehrsbetriebe Kreuzlingen | 906 | bus | 92-906-j26-1 | Kreuzlingen | 9 / 9 | 2 / 2 | All dated journeys admitted: Complete OSM-inferred city patterns; official line geometry absent |
+| 727 Verkehrsbetriebe Kreuzlingen | 907 | bus | 92-907-j26-1 | Kreuzlingen | 67 / 67 | 46 / 46 | All dated journeys admitted: Complete OSM-inferred city patterns; official line geometry absent |
 | 744 Automobildienst Appenzeller Bahnen | 841 | bus | 92-841-j26-1 | Frauenfeld, Münchwilen | 0 / 1 | 0 / 0 | Excluded: No verified source operator/line identity (includes city, replacement and demand services) |
 | 744 Automobildienst Appenzeller Bahnen | EV | bus | 92-A05-Z-j26-1 | Frauenfeld | 0 / 0 | 0 / 0 | Inactive on both dates: No verified source operator/line identity (includes city, replacement and demand services) |
-| 797 Stadtbus Frauenfeld | 801 | bus | 92-801-A-j26-1 | Frauenfeld | 0 / 119 | 0 / 0 | Excluded: No verified source operator/line identity (includes city, replacement and demand services) |
-| 797 Stadtbus Frauenfeld | 802 | bus | 92-802-A-j26-1 | Frauenfeld | 0 / 118 | 0 / 0 | Excluded: No verified source operator/line identity (includes city, replacement and demand services) |
-| 797 Stadtbus Frauenfeld | 803 | bus | 92-803-A-j26-1 | Frauenfeld | 0 / 116 | 0 / 0 | Excluded: No verified source operator/line identity (includes city, replacement and demand services) |
-| 797 Stadtbus Frauenfeld | 804 | bus | 92-804-A-j26-1 | Frauenfeld | 0 / 58 | 0 / 0 | Excluded: No verified source operator/line identity (includes city, replacement and demand services) |
-| 797 Stadtbus Frauenfeld | 805 | bus | 92-805-C-j26-1 | Frauenfeld | 0 / 137 | 0 / 0 | Excluded: No verified source operator/line identity (includes city, replacement and demand services) |
-| 797 Stadtbus Frauenfeld | 811 | bus | 92-811-B-j26-1 | Frauenfeld | 0 / 6 | 0 / 54 | Excluded: No verified source operator/line identity (includes city, replacement and demand services) |
-| 797 Stadtbus Frauenfeld | 812 | bus | 92-812-A-j26-1 | Frauenfeld | 0 / 8 | 0 / 56 | Excluded: No verified source operator/line identity (includes city, replacement and demand services) |
-| 797 Stadtbus Frauenfeld | 813 | bus | 92-813-B-j26-1 | Frauenfeld | 0 / 4 | 0 / 28 | Excluded: No verified source operator/line identity (includes city, replacement and demand services) |
-| 797 Stadtbus Frauenfeld | 814 | bus | 92-814-B-j26-1 | Frauenfeld | 0 / 4 | 0 / 28 | Excluded: No verified source operator/line identity (includes city, replacement and demand services) |
-| 797 Stadtbus Frauenfeld | 815 | bus | 92-815-B-j26-1 | Frauenfeld | 0 / 4 | 0 / 28 | Excluded: No verified source operator/line identity (includes city, replacement and demand services) |
-| 797 Stadtbus Frauenfeld | NT | bus | 92-NT-A-j26-1 | Frauenfeld | 0 / 15 | 0 / 30 | Excluded: No verified source operator/line identity (includes city, replacement and demand services) |
+| 797 Stadtbus Frauenfeld | 801 | bus | 92-801-A-j26-1 | Frauenfeld | 119 / 119 | 0 / 0 | All dated journeys admitted: Complete OSM-inferred city patterns; official line geometry absent |
+| 797 Stadtbus Frauenfeld | 802 | bus | 92-802-A-j26-1 | Frauenfeld | 118 / 118 | 0 / 0 | All dated journeys admitted: Complete OSM-inferred city patterns; official line geometry absent |
+| 797 Stadtbus Frauenfeld | 803 | bus | 92-803-A-j26-1 | Frauenfeld | 116 / 116 | 0 / 0 | All dated journeys admitted: Complete OSM-inferred city patterns; official line geometry absent |
+| 797 Stadtbus Frauenfeld | 804 | bus | 92-804-A-j26-1 | Frauenfeld | 58 / 58 | 0 / 0 | All dated journeys admitted: Complete OSM-inferred city patterns; official line geometry absent |
+| 797 Stadtbus Frauenfeld | 805 | bus | 92-805-C-j26-1 | Frauenfeld | 137 / 137 | 0 / 0 | All dated journeys admitted: Complete OSM-inferred city patterns; official line geometry absent |
+| 797 Stadtbus Frauenfeld | 811 | bus | 92-811-B-j26-1 | Frauenfeld | 6 / 6 | 54 / 54 | All dated journeys admitted: Complete OSM-inferred city patterns; official line geometry absent |
+| 797 Stadtbus Frauenfeld | 812 | bus | 92-812-A-j26-1 | Frauenfeld | 8 / 8 | 56 / 56 | All dated journeys admitted: Complete OSM-inferred city patterns; official line geometry absent |
+| 797 Stadtbus Frauenfeld | 813 | bus | 92-813-B-j26-1 | Frauenfeld | 4 / 4 | 28 / 28 | All dated journeys admitted: Complete OSM-inferred city patterns; official line geometry absent |
+| 797 Stadtbus Frauenfeld | 814 | bus | 92-814-B-j26-1 | Frauenfeld | 4 / 4 | 28 / 28 | All dated journeys admitted: Complete OSM-inferred city patterns; official line geometry absent |
+| 797 Stadtbus Frauenfeld | 815 | bus | 92-815-B-j26-1 | Frauenfeld | 4 / 4 | 28 / 28 | All dated journeys admitted: Complete OSM-inferred city patterns; official line geometry absent |
+| 797 Stadtbus Frauenfeld | NT | bus | 92-NT-A-j26-1 | Frauenfeld | 0 / 15 | 0 / 30 | Excluded: Demand-responsive night taxi; fixed drop-off paths not inferred |
 | 801 PostAuto AG | 200 | bus | 96-220-5-j26-1 | Arbon | 0 / 79 | 0 / 76 | Excluded: incomplete-directed-pattern |
 | 801 PostAuto AG | 200 | bus | 96-220-A-j26-1 | Arbon | 0 / 0 | 0 / 7 | Excluded: incomplete-directed-pattern |
 | 801 PostAuto AG | 201 | bus | 96-250-A-j26-1 | Arbon | 0 / 72 | 0 / 0 | Excluded: incomplete-directed-pattern |

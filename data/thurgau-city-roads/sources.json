@@ -1,0 +1,77 @@
+{
+  "publisher": "OpenStreetMap contributors",
+  "license": "ODbL-1.0",
+  "sourceUrl": "https://www.openstreetmap.org/copyright",
+  "source": "Geofabrik Switzerland 2026-09-02 plus OSM border extract 2026-09-08; pfaedle 99f2cd466696ecc6bdb73b2b3bb9008557fcb84a",
+  "processedBy": "Gleislicht",
+  "scope": "Only agencies 727/797; full ordered platform-and-coordinate patterns from both dated fixtures. Frauenfeld NT excluded as demand-responsive.",
+  "model": "Inferred OSM road paths; not operator-surveyed alignments or observed positions. Complete patterns only.",
+  "limits": {
+    "snapMetres": 120,
+    "maxDetourRatio": 6,
+    "detourAllowanceMetres": 1500,
+    "simplifyMetres": 5
+  },
+  "files": [
+    {
+      "path": "727/patterns.json.gz",
+      "bytes": 20761,
+      "sha256": "832f9d95dde29ffb34c1789ab3f34a4c81fa38732d0d3315ab77e4484bf6c95d"
+    },
+    {
+      "path": "727/matching.log.gz",
+      "bytes": 1016,
+      "sha256": "9150ab4b780c343764963145c961aa99c12c25fb7bc65b7bfe9310911e3c0b13"
+    },
+    {
+      "path": "727/shapes.txt.gz",
+      "bytes": 253749,
+      "sha256": "c940bf613a2166483ec82de7abdb7ea595a25d252052797ccb8e041516eec677"
+    },
+    {
+      "path": "727/trips.txt.gz",
+      "bytes": 3404,
+      "sha256": "c865617e8c75ed57b331caba85dba1015d184d01b70cd79c0eb96a06e4767586"
+    },
+    {
+      "path": "727/stop_times.txt.gz",
+      "bytes": 38176,
+      "sha256": "46390cff2f64bf6f34972f8e3a78e074e7a8ce022db7b310402cebd28a26ce41"
+    },
+    {
+      "path": "727/routing-run.json.gz",
+      "bytes": 843,
+      "sha256": "28913c1a78df6db477613cef91e7d732bd5627de18e2fd8c466dcb94518260e5"
+    },
+    {
+      "path": "797/patterns.json.gz",
+      "bytes": 27602,
+      "sha256": "039fc4af9b8f010ba8784faa1c2c080be886118a1c7c9d1fd1f701b02095f329"
+    },
+    {
+      "path": "797/matching.log.gz",
+      "bytes": 899,
+      "sha256": "1cd8b1df08c6a97eba2f97d7fea4eee46722dd5324fb530789885cba486a1661"
+    },
+    {
+      "path": "797/shapes.txt.gz",
+      "bytes": 209454,
+      "sha256": "2bce6626035174fc6d2d423cd069bd6a3059c7474ca0155ade03843492d67bb6"
+    },
+    {
+      "path": "797/trips.txt.gz",
+      "bytes": 3280,
+      "sha256": "3397484198c587e23b5fa841258f3813a478e839e6a6e261add1ad95117f0e9a"
+    },
+    {
+      "path": "797/stop_times.txt.gz",
+      "bytes": 42699,
+      "sha256": "3a1ac6a68b7a2f2c02e959c271aee0740a14cf07c0b1ef679c29b4e189c34ef2"
+    },
+    {
+      "path": "797/routing-run.json.gz",
+      "bytes": 843,
+      "sha256": "f9da31707c716e819552beac64e60aaa82dcc16448c1b7cb03ed962fdf1b3a69"
+    }
+  ]
+}
