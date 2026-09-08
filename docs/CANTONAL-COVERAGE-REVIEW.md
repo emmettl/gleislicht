@@ -120,3 +120,8 @@ The subsequent [official St. Gallen continuation review](CANTONAL-ROADS.md#meile
 ## Meilen Seestrasse follow-up
 
 A separate review now admits the adjacent **0491–0591 Meilen counter pair**: 2.902 km, both directions, and 142 uninterrupted minutes from 14:14–16:35 CEST. The archive has 241 complete minutes out of 245 for this pair. The new station evidence uses the verified KS17 continuation without broadening the original Meilen–Stäfa review. Three geometric junction areas are recorded in a new full-section extract. See [Meilen Seestrasse playback](CANTONAL-ROADS.md#meilen-seestrasse-playback) for provenance, limits and rebuild commands. Erlenbach's bearing conflict and Lindau's missing direction evidence remain unresolved.
+
+
+## Bauma–Wila follow-up
+
+The sixth recording admits the 3588–1623 counter pair: **4.822 km and 104 uninterrupted minutes, 14:14–15:57 CEST**. A complete SwissNames archive inventory verifies all 25 Wald settlements against the API responses. A separate pinned review selects Wald ZH because it alone passes every direction gate opposite the validated Winterthur anchors. At Bauma, a small Wald settlement passing in the Winterthur direction is explicitly excluded using the catalog’s opposing-normal-lane evidence. The automatic regional lookup remains ambiguous. Two geometric junction areas are documented. The neighbouring Stegstrasse counter 2891 remains excluded because its Wald bearing is −0.74. See [Bauma–Wila playback](CANTONAL-ROADS.md#baumawila-playback-and-qualified-wald-destination-review) for the evidence, limits and rebuild commands.

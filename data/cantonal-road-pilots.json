@@ -83,5 +83,22 @@
       "ZH.CH:0591"
     ],
     "junctionAreas": 3
+  },
+  {
+    "id": "bauma-wila-2026-09-08",
+    "road": "ZH:15",
+    "label": "Bauma–Wila",
+    "name": "Bauma–Wila · Tösstalstrasse",
+    "file": "bauma-wila-road-pilot.json",
+    "serviceDate": "2026-09-08",
+    "windowStart": 51240,
+    "windowEnd": 57420,
+    "initialTime": 51240,
+    "completeMinutes": 104,
+    "stationIds": [
+      "ZH.CH:3588",
+      "ZH.CH:1623"
+    ],
+    "junctionAreas": 2
   }
 ]

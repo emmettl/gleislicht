@@ -1,0 +1,1146 @@
+{
+  "status": "validated-for-pilot",
+  "sourceHashes": {
+    "public/data/zurich-cantonal-road-topology.json": "e6672433b70989a1fb5228bfe5d61933d58394a60df3e36b8deba83e8c9f65ea",
+    "data/zurich-cantonal-road-counters.json": "39af27ba04503d25f407e59d58712d49c7a7ca4e0f980dafc77609847e3dd9d9",
+    "data/zurich-cantonal-road-directions.json": "9667168eaa3efe7d2809d831efc05b50e5ea7229c109d623b7f2ebf7e72f66ca",
+    "data/bauma-wila-review-sources.json": "41fa34296bc146dd87fca85ddb8f159ca615546248878c3f90f73e7ec195816d",
+    "data/bauma-wila-direction-scope.json": "204befd3a9c8fb470c20b71442f0b3d203e1c56bcda98b0cf27c8ca545782c0d",
+    "data/bauma-wald-settlement-inventory.json": "15d27e2b210d2386b2c1a8792f65506e735e4c52c4ee56320d073f24d41ac2f9"
+  },
+  "destinationReviews": [
+    {
+      "stationId": "ZH.CH:3588",
+      "originalStatus": "unresolved-destination",
+      "qualifiedRegionalStatus": "ambiguous-destination",
+      "method": "explicit-qualified-destination-road-review",
+      "alternatives": [
+        {
+          "status": "destination-off-axis",
+          "destination": {
+            "name": "Wald AR",
+            "coordinate": [
+              2754775.5999999996,
+              1253776.45
+            ],
+            "bounds": [
+              2753802.3,
+              1253373.2,
+              2755748.9,
+              1254179.7
+            ],
+            "sourceFeatureId": 163031
+          },
+          "destinationDistanceMetres": 47459.08,
+          "destinationRoadDistanceMetres": 42524.22,
+          "offsetSeparationMetres": -6260.43,
+          "bearingAgreement": -0.38,
+          "offsetMetres": 22866.08
+        },
+        {
+          "status": "validated",
+          "direction": "negative",
+          "destination": {
+            "name": "Wald ZH",
+            "coordinate": [
+              2711225.1,
+              1237070.2
+            ],
+            "bounds": [
+              2709854,
+              1236023.4,
+              2712596.2,
+              1238117
+            ],
+            "sourceFeatureId": 206071
+          },
+          "destinationDistanceMetres": 11188.4,
+          "destinationRoadDistanceMetres": 210.79,
+          "offsetSeparationMetres": -15911.49,
+          "bearingAgreement": -0.98,
+          "offsetMetres": 22866.08
+        },
+        {
+          "status": "unresolved-destination",
+          "destination": {
+            "name": "Wald",
+            "coordinate": [
+              2627298.2,
+              1218385.4500000002
+            ],
+            "bounds": [
+              2627062.7,
+              1218203.6,
+              2627533.7,
+              1218567.3
+            ],
+            "sourceFeatureId": 68172
+          }
+        },
+        {
+          "status": "destination-off-axis",
+          "destination": {
+            "name": "Wald",
+            "coordinate": [
+              2734933.25,
+              1243645.55
+            ],
+            "bounds": [
+              2734224.4,
+              1243229.8,
+              2735642.1,
+              1244061.3
+            ],
+            "sourceFeatureId": 50641
+          },
+          "destinationDistanceMetres": 27524.02,
+          "destinationRoadDistanceMetres": 21949.79,
+          "offsetSeparationMetres": -6332.71,
+          "bearingAgreement": -0.62,
+          "offsetMetres": 22866.08
+        },
+        {
+          "status": "unresolved-destination",
+          "destination": {
+            "name": "Wald",
+            "coordinate": [
+              2731340.8499999996,
+              1198061.5499999998
+            ],
+            "bounds": [
+              2731076.8,
+              1197846.4,
+              2731604.9,
+              1198276.7
+            ],
+            "sourceFeatureId": 267087
+          }
+        },
+        {
+          "status": "destination-off-axis",
+          "destination": {
+            "name": "Wald",
+            "coordinate": [
+              2668969.95,
+              1221466.8
+            ],
+            "bounds": [
+              2668838,
+              1221317.3,
+              2669101.9,
+              1221616.3
+            ],
+            "sourceFeatureId": 250047
+          },
+          "destinationDistanceMetres": 46780.22,
+          "destinationRoadDistanceMetres": 38947.64,
+          "offsetSeparationMetres": -22866.08,
+          "bearingAgreement": -0.08,
+          "offsetMetres": 22866.08
+        },
+        {
+          "status": "unresolved-destination",
+          "destination": {
+            "name": "Wald",
+            "coordinate": [
+              2644152.55,
+              1193205.75
+            ],
+            "bounds": [
+              2644024.7,
+              1192984.4,
+              2644280.4,
+              1193427.1
+            ],
+            "sourceFeatureId": 143630
+          }
+        },
+        {
+          "status": "unresolved-destination",
+          "destination": {
+            "name": "Wald",
+            "coordinate": [
+              2633321.2,
+              1187219.9
+            ],
+            "bounds": [
+              2633206.8,
+              1187139.3,
+              2633435.6,
+              1187300.5
+            ],
+            "sourceFeatureId": 258834
+          }
+        },
+        {
+          "status": "unresolved-destination",
+          "destination": {
+            "name": "Wald",
+            "coordinate": [
+              2718460.5,
+              1195820.95
+            ],
+            "bounds": [
+              2718402.5,
+              1195652.4,
+              2718518.5,
+              1195989.5
+            ],
+            "sourceFeatureId": 110852
+          }
+        },
+        {
+          "status": "destination-off-axis",
+          "destination": {
+            "name": "Wald",
+            "coordinate": [
+              2724184.35,
+              1272731.3
+            ],
+            "bounds": [
+              2724112.1,
+              1272674.3,
+              2724256.6,
+              1272788.3
+            ],
+            "sourceFeatureId": 339765
+          },
+          "destinationDistanceMetres": 29974.22,
+          "destinationRoadDistanceMetres": 25172.99,
+          "offsetSeparationMetres": 8807.8,
+          "bearingAgreement": 0.45,
+          "offsetMetres": 22866.08
+        },
+        {
+          "status": "destination-off-axis",
+          "destination": {
+            "name": "Wald",
+            "coordinate": [
+              2711588.55,
+              1252629.35
+            ],
+            "bounds": [
+              2711545.4,
+              1252522.7,
+              2711631.7,
+              1252736
+            ],
+            "sourceFeatureId": 135348
+          },
+          "destinationDistanceMetres": 6280.07,
+          "destinationRoadDistanceMetres": 4559.29,
+          "offsetSeparationMetres": 4540.78,
+          "bearingAgreement": 0.38,
+          "offsetMetres": 22866.08
+        },
+        {
+          "status": "destination-off-axis",
+          "destination": {
+            "name": "Wald",
+            "coordinate": [
+              2713896.75,
+              1251391.2000000002
+            ],
+            "bounds": [
+              2713873,
+              1251356.6,
+              2713920.5,
+              1251425.8
+            ],
+            "sourceFeatureId": 188177
+          },
+          "destinationDistanceMetres": 7210.1,
+          "destinationRoadDistanceMetres": 5280.11,
+          "offsetSeparationMetres": -5302.86,
+          "bearingAgreement": 0.02,
+          "offsetMetres": 22866.08
+        },
+        {
+          "status": "unresolved-destination",
+          "destination": {
+            "name": "Wald",
+            "coordinate": [
+              2687126.5999999996,
+              1201549.75
+            ],
+            "bounds": [
+              2687049.9,
+              1201475,
+              2687203.3,
+              1201624.5
+            ],
+            "sourceFeatureId": 41998
+          }
+        },
+        {
+          "status": "unresolved-destination",
+          "destination": {
+            "name": "Wald",
+            "coordinate": [
+              2780778.6,
+              1203897.55
+            ],
+            "bounds": [
+              2780751.6,
+              1203865.6,
+              2780805.6,
+              1203929.5
+            ],
+            "sourceFeatureId": 181723
+          }
+        },
+        {
+          "status": "destination-off-axis",
+          "destination": {
+            "name": "Wald",
+            "coordinate": [
+              2710756.55,
+              1250611.0499999998
+            ],
+            "bounds": [
+              2710708.3,
+              1250559.7,
+              2710804.8,
+              1250662.4
+            ],
+            "sourceFeatureId": 395542
+          },
+          "destinationDistanceMetres": 4220.9,
+          "destinationRoadDistanceMetres": 3559.28,
+          "offsetSeparationMetres": -2970.84,
+          "bearingAgreement": 0.24,
+          "offsetMetres": 22866.08
+        },
+        {
+          "status": "validated",
+          "direction": "positive",
+          "destination": {
+            "name": "Wald",
+            "coordinate": [
+              2706103.8499999996,
+              1250022.95
+            ],
+            "bounds": [
+              2706017.4,
+              1249975.5,
+              2706190.3,
+              1250070.4
+            ],
+            "sourceFeatureId": 172370
+          },
+          "destinationDistanceMetres": 2830.14,
+          "destinationRoadDistanceMetres": 731.69,
+          "offsetSeparationMetres": 2614.43,
+          "bearingAgreement": 1,
+          "offsetMetres": 22866.08,
+          "reviewExclusion": "Same path direction as validated Winterthur anchor; catalog confirms opposing normal lanes"
+        },
+        {
+          "status": "destination-off-axis",
+          "destination": {
+            "name": "Wald",
+            "coordinate": [
+              2719611.95,
+              1250184.4
+            ],
+            "bounds": [
+              2719475.2,
+              1250056,
+              2719748.7,
+              1250312.8
+            ],
+            "sourceFeatureId": 399001
+          },
+          "destinationDistanceMetres": 12161.95,
+          "destinationRoadDistanceMetres": 8025.51,
+          "offsetSeparationMetres": -5464.78,
+          "bearingAgreement": -0.31,
+          "offsetMetres": 22866.08
+        },
+        {
+          "status": "destination-off-axis",
+          "destination": {
+            "name": "Wald",
+            "coordinate": [
+              2730939.6,
+              1238368.5
+            ],
+            "bounds": [
+              2730826.5,
+              1238290.2,
+              2731052.7,
+              1238446.8
+            ],
+            "sourceFeatureId": 328512
+          },
+          "destinationDistanceMetres": 25032.28,
+          "destinationRoadDistanceMetres": 19130.59,
+          "offsetSeparationMetres": -13700.25,
+          "bearingAgreement": -0.78,
+          "offsetMetres": 22866.08
+        },
+        {
+          "status": "destination-off-axis",
+          "destination": {
+            "name": "Wald",
+            "coordinate": [
+              2706154.7,
+              1268878.1
+            ],
+            "bounds": [
+              2706069.1,
+              1268782.4,
+              2706240.3,
+              1268973.8
+            ],
+            "sourceFeatureId": 247749
+          },
+          "destinationDistanceMetres": 21243.48,
+          "destinationRoadDistanceMetres": 10939.84,
+          "offsetSeparationMetres": 20184.36,
+          "bearingAgreement": 0.9,
+          "offsetMetres": 22866.08
+        },
+        {
+          "status": "destination-off-axis",
+          "destination": {
+            "name": "Wald",
+            "coordinate": [
+              2742108.9000000004,
+              1250487.1
+            ],
+            "bounds": [
+              2741940.6,
+              1250339.1,
+              2742277.2,
+              1250635.1
+            ],
+            "sourceFeatureId": 6975
+          },
+          "destinationDistanceMetres": 34514.08,
+          "destinationRoadDistanceMetres": 29470.4,
+          "offsetSeparationMetres": -6260.43,
+          "bearingAgreement": -0.42,
+          "offsetMetres": 22866.08
+        },
+        {
+          "status": "destination-off-axis",
+          "destination": {
+            "name": "Wald",
+            "coordinate": [
+              2732558.6500000004,
+              1249493.4
+            ],
+            "bounds": [
+              2732512.2,
+              1249431.2,
+              2732605.1,
+              1249555.6
+            ],
+            "sourceFeatureId": 359066
+          },
+          "destinationDistanceMetres": 24915.66,
+          "destinationRoadDistanceMetres": 19898.68,
+          "offsetSeparationMetres": -6260.43,
+          "bearingAgreement": -0.43,
+          "offsetMetres": 22866.08
+        },
+        {
+          "status": "destination-off-axis",
+          "destination": {
+            "name": "Wald",
+            "coordinate": [
+              2679997.15,
+              1228522.65
+            ],
+            "bounds": [
+              2679940.4,
+              1228431.5,
+              2680053.9,
+              1228613.8
+            ],
+            "sourceFeatureId": 78282
+          },
+          "destinationDistanceMetres": 33694.94,
+          "destinationRoadDistanceMetres": 26431.37,
+          "offsetSeparationMetres": -22866.08,
+          "bearingAgreement": -0.09,
+          "offsetMetres": 22866.08
+        },
+        {
+          "status": "unresolved-destination",
+          "destination": {
+            "name": "Wald",
+            "coordinate": [
+              2626112.5999999996,
+              1246754.95
+            ],
+            "bounds": [
+              2626040.4,
+              1246701.5,
+              2626184.8,
+              1246808.4
+            ],
+            "sourceFeatureId": 107771
+          }
+        },
+        {
+          "status": "unresolved-destination",
+          "destination": {
+            "name": "Wald",
+            "coordinate": [
+              2633974.05,
+              1215996.75
+            ],
+            "bounds": [
+              2633918,
+              1215940.7,
+              2634030.1,
+              1216052.8
+            ],
+            "sourceFeatureId": 296630
+          }
+        },
+        {
+          "status": "unresolved-destination",
+          "destination": {
+            "name": "Wald",
+            "coordinate": [
+              2655207.0999999996,
+              1237355.4500000002
+            ],
+            "bounds": [
+              2655158.4,
+              1237315.1,
+              2655255.8,
+              1237395.8
+            ],
+            "sourceFeatureId": 324035
+          }
+        }
+      ],
+      "selected": "Wald ZH",
+      "anchorDetectorId": "ZH.CH:3588.01"
+    },
+    {
+      "stationId": "ZH.CH:1623",
+      "originalStatus": "unresolved-destination",
+      "qualifiedRegionalStatus": "ambiguous-destination",
+      "method": "explicit-qualified-destination-road-review",
+      "alternatives": [
+        {
+          "status": "destination-off-axis",
+          "destination": {
+            "name": "Wald AR",
+            "coordinate": [
+              2754775.5999999996,
+              1253776.45
+            ],
+            "bounds": [
+              2753802.3,
+              1253373.2,
+              2755748.9,
+              1254179.7
+            ],
+            "sourceFeatureId": 163031
+          },
+          "destinationDistanceMetres": 47763,
+          "destinationRoadDistanceMetres": 42524.22,
+          "offsetSeparationMetres": -11082.47,
+          "bearingAgreement": -0.32,
+          "offsetMetres": 27688.12
+        },
+        {
+          "status": "validated",
+          "direction": "negative",
+          "destination": {
+            "name": "Wald ZH",
+            "coordinate": [
+              2711225.1,
+              1237070.2
+            ],
+            "bounds": [
+              2709854,
+              1236023.4,
+              2712596.2,
+              1238117
+            ],
+            "sourceFeatureId": 206071
+          },
+          "destinationDistanceMetres": 15404.15,
+          "destinationRoadDistanceMetres": 210.79,
+          "offsetSeparationMetres": -20733.53,
+          "bearingAgreement": -1,
+          "offsetMetres": 27688.12
+        },
+        {
+          "status": "unresolved-destination",
+          "destination": {
+            "name": "Wald",
+            "coordinate": [
+              2627298.2,
+              1218385.4500000002
+            ],
+            "bounds": [
+              2627062.7,
+              1218203.6,
+              2627533.7,
+              1218567.3
+            ],
+            "sourceFeatureId": 68172
+          }
+        },
+        {
+          "status": "destination-off-axis",
+          "destination": {
+            "name": "Wald",
+            "coordinate": [
+              2734933.25,
+              1243645.55
+            ],
+            "bounds": [
+              2734224.4,
+              1243229.8,
+              2735642.1,
+              1244061.3
+            ],
+            "sourceFeatureId": 50641
+          },
+          "destinationDistanceMetres": 29079.14,
+          "destinationRoadDistanceMetres": 21949.79,
+          "offsetSeparationMetres": -11154.75,
+          "bearingAgreement": -0.61,
+          "offsetMetres": 27688.12
+        },
+        {
+          "status": "unresolved-destination",
+          "destination": {
+            "name": "Wald",
+            "coordinate": [
+              2731340.8499999996,
+              1198061.5499999998
+            ],
+            "bounds": [
+              2731076.8,
+              1197846.4,
+              2731604.9,
+              1198276.7
+            ],
+            "sourceFeatureId": 267087
+          }
+        },
+        {
+          "status": "destination-off-axis",
+          "destination": {
+            "name": "Wald",
+            "coordinate": [
+              2668969.95,
+              1221466.8
+            ],
+            "bounds": [
+              2668838,
+              1221317.3,
+              2669101.9,
+              1221616.3
+            ],
+            "sourceFeatureId": 250047
+          },
+          "destinationDistanceMetres": 48745.18,
+          "destinationRoadDistanceMetres": 38947.64,
+          "offsetSeparationMetres": -27688.12,
+          "bearingAgreement": -0.31,
+          "offsetMetres": 27688.12
+        },
+        {
+          "status": "unresolved-destination",
+          "destination": {
+            "name": "Wald",
+            "coordinate": [
+              2644152.55,
+              1193205.75
+            ],
+            "bounds": [
+              2644024.7,
+              1192984.4,
+              2644280.4,
+              1193427.1
+            ],
+            "sourceFeatureId": 143630
+          }
+        },
+        {
+          "status": "unresolved-destination",
+          "destination": {
+            "name": "Wald",
+            "coordinate": [
+              2633321.2,
+              1187219.9
+            ],
+            "bounds": [
+              2633206.8,
+              1187139.3,
+              2633435.6,
+              1187300.5
+            ],
+            "sourceFeatureId": 258834
+          }
+        },
+        {
+          "status": "unresolved-destination",
+          "destination": {
+            "name": "Wald",
+            "coordinate": [
+              2718460.5,
+              1195820.95
+            ],
+            "bounds": [
+              2718402.5,
+              1195652.4,
+              2718518.5,
+              1195989.5
+            ],
+            "sourceFeatureId": 110852
+          }
+        },
+        {
+          "status": "destination-off-axis",
+          "destination": {
+            "name": "Wald",
+            "coordinate": [
+              2724184.35,
+              1272731.3
+            ],
+            "bounds": [
+              2724112.1,
+              1272674.3,
+              2724256.6,
+              1272788.3
+            ],
+            "sourceFeatureId": 339765
+          },
+          "destinationDistanceMetres": 26974.85,
+          "destinationRoadDistanceMetres": 25172.99,
+          "offsetSeparationMetres": 3985.76,
+          "bearingAgreement": 0.5,
+          "offsetMetres": 27688.12
+        },
+        {
+          "status": "destination-too-close",
+          "destination": {
+            "name": "Wald",
+            "coordinate": [
+              2711588.55,
+              1252629.35
+            ],
+            "bounds": [
+              2711545.4,
+              1252522.7,
+              2711631.7,
+              1252736
+            ],
+            "sourceFeatureId": 135348
+          },
+          "destinationDistanceMetres": 4597.58,
+          "destinationRoadDistanceMetres": 4559.29,
+          "offsetSeparationMetres": -281.25,
+          "bearingAgreement": -0.2,
+          "offsetMetres": 27688.12
+        },
+        {
+          "status": "destination-off-axis",
+          "destination": {
+            "name": "Wald",
+            "coordinate": [
+              2713896.75,
+              1251391.2000000002
+            ],
+            "bounds": [
+              2713873,
+              1251356.6,
+              2713920.5,
+              1251425.8
+            ],
+            "sourceFeatureId": 188177
+          },
+          "destinationDistanceMetres": 6865.88,
+          "destinationRoadDistanceMetres": 5280.11,
+          "offsetSeparationMetres": -10124.9,
+          "bearingAgreement": -0.42,
+          "offsetMetres": 27688.12
+        },
+        {
+          "status": "unresolved-destination",
+          "destination": {
+            "name": "Wald",
+            "coordinate": [
+              2687126.5999999996,
+              1201549.75
+            ],
+            "bounds": [
+              2687049.9,
+              1201475,
+              2687203.3,
+              1201624.5
+            ],
+            "sourceFeatureId": 41998
+          }
+        },
+        {
+          "status": "unresolved-destination",
+          "destination": {
+            "name": "Wald",
+            "coordinate": [
+              2780778.6,
+              1203897.55
+            ],
+            "bounds": [
+              2780751.6,
+              1203865.6,
+              2780805.6,
+              1203929.5
+            ],
+            "sourceFeatureId": 181723
+          }
+        },
+        {
+          "status": "destination-off-axis",
+          "destination": {
+            "name": "Wald",
+            "coordinate": [
+              2710756.55,
+              1250611.0499999998
+            ],
+            "bounds": [
+              2710708.3,
+              1250559.7,
+              2710804.8,
+              1250662.4
+            ],
+            "sourceFeatureId": 395542
+          },
+          "destinationDistanceMetres": 3923.9,
+          "destinationRoadDistanceMetres": 3559.28,
+          "offsetSeparationMetres": -7792.88,
+          "bearingAgreement": -0.64,
+          "offsetMetres": 27688.12
+        },
+        {
+          "status": "bearing-conflict",
+          "destination": {
+            "name": "Wald",
+            "coordinate": [
+              2706103.8499999996,
+              1250022.95
+            ],
+            "bounds": [
+              2706017.4,
+              1249975.5,
+              2706190.3,
+              1250070.4
+            ],
+            "sourceFeatureId": 172370
+          },
+          "destinationDistanceMetres": 2099.72,
+          "destinationRoadDistanceMetres": 731.69,
+          "offsetSeparationMetres": -2207.61,
+          "bearingAgreement": -0.68,
+          "offsetMetres": 27688.12
+        },
+        {
+          "status": "destination-off-axis",
+          "destination": {
+            "name": "Wald",
+            "coordinate": [
+              2719611.95,
+              1250184.4
+            ],
+            "bounds": [
+              2719475.2,
+              1250056,
+              2719748.7,
+              1250312.8
+            ],
+            "sourceFeatureId": 399001
+          },
+          "destinationDistanceMetres": 12678.66,
+          "destinationRoadDistanceMetres": 8025.51,
+          "offsetSeparationMetres": -10286.82,
+          "bearingAgreement": -0.48,
+          "offsetMetres": 27688.12
+        },
+        {
+          "status": "destination-off-axis",
+          "destination": {
+            "name": "Wald",
+            "coordinate": [
+              2730939.6,
+              1238368.5
+            ],
+            "bounds": [
+              2730826.5,
+              1238290.2,
+              2731052.7,
+              1238446.8
+            ],
+            "sourceFeatureId": 328512
+          },
+          "destinationDistanceMetres": 27454.89,
+          "destinationRoadDistanceMetres": 19130.59,
+          "offsetSeparationMetres": -18522.29,
+          "bearingAgreement": -0.77,
+          "offsetMetres": 27688.12
+        },
+        {
+          "status": "destination-off-axis",
+          "destination": {
+            "name": "Wald",
+            "coordinate": [
+              2706154.7,
+              1268878.1
+            ],
+            "bounds": [
+              2706069.1,
+              1268782.4,
+              2706240.3,
+              1268973.8
+            ],
+            "sourceFeatureId": 247749
+          },
+          "destinationDistanceMetres": 17004.03,
+          "destinationRoadDistanceMetres": 10939.84,
+          "offsetSeparationMetres": 15362.32,
+          "bearingAgreement": 0.95,
+          "offsetMetres": 27688.12
+        },
+        {
+          "status": "destination-off-axis",
+          "destination": {
+            "name": "Wald",
+            "coordinate": [
+              2742108.9000000004,
+              1250487.1
+            ],
+            "bounds": [
+              2741940.6,
+              1250339.1,
+              2742277.2,
+              1250635.1
+            ],
+            "sourceFeatureId": 6975
+          },
+          "destinationDistanceMetres": 35087.69,
+          "destinationRoadDistanceMetres": 29470.4,
+          "offsetSeparationMetres": -11082.47,
+          "bearingAgreement": -0.39,
+          "offsetMetres": 27688.12
+        },
+        {
+          "status": "destination-off-axis",
+          "destination": {
+            "name": "Wald",
+            "coordinate": [
+              2732558.6500000004,
+              1249493.4
+            ],
+            "bounds": [
+              2732512.2,
+              1249431.2,
+              2732605.1,
+              1249555.6
+            ],
+            "sourceFeatureId": 359066
+          },
+          "destinationDistanceMetres": 25622.13,
+          "destinationRoadDistanceMetres": 19898.68,
+          "offsetSeparationMetres": -11082.47,
+          "bearingAgreement": -0.44,
+          "offsetMetres": 27688.12
+        },
+        {
+          "status": "destination-off-axis",
+          "destination": {
+            "name": "Wald",
+            "coordinate": [
+              2679997.15,
+              1228522.65
+            ],
+            "bounds": [
+              2679940.4,
+              1228431.5,
+              2680053.9,
+              1228613.8
+            ],
+            "sourceFeatureId": 78282
+          },
+          "destinationDistanceMetres": 35752.25,
+          "destinationRoadDistanceMetres": 26431.37,
+          "offsetSeparationMetres": -27688.12,
+          "bearingAgreement": -0.34,
+          "offsetMetres": 27688.12
+        },
+        {
+          "status": "unresolved-destination",
+          "destination": {
+            "name": "Wald",
+            "coordinate": [
+              2626112.5999999996,
+              1246754.95
+            ],
+            "bounds": [
+              2626040.4,
+              1246701.5,
+              2626184.8,
+              1246808.4
+            ],
+            "sourceFeatureId": 107771
+          }
+        },
+        {
+          "status": "unresolved-destination",
+          "destination": {
+            "name": "Wald",
+            "coordinate": [
+              2633974.05,
+              1215996.75
+            ],
+            "bounds": [
+              2633918,
+              1215940.7,
+              2634030.1,
+              1216052.8
+            ],
+            "sourceFeatureId": 296630
+          }
+        },
+        {
+          "status": "unresolved-destination",
+          "destination": {
+            "name": "Wald",
+            "coordinate": [
+              2655207.0999999996,
+              1237355.4500000002
+            ],
+            "bounds": [
+              2655158.4,
+              1237315.1,
+              2655255.8,
+              1237395.8
+            ],
+            "sourceFeatureId": 324035
+          }
+        }
+      ],
+      "selected": "Wald ZH",
+      "anchorDetectorId": "ZH.CH:1623.01"
+    }
+  ],
+  "junctions": [
+    {
+      "offsetMetres": 1917,
+      "axes": [
+        "806"
+      ],
+      "sourceIds": [
+        1504
+      ],
+      "members": [
+        {
+          "axis": "806",
+          "sourceId": 1504,
+          "coordinate": [
+            2707083.0540999994,
+            1249320.8433500007
+          ],
+          "offsetMetres": 1917.1297096209496,
+          "separationMetres": 3.6607772566460692
+        }
+      ],
+      "status": "geometric-junction-candidate"
+    },
+    {
+      "offsetMetres": 2600,
+      "axes": [
+        "337"
+      ],
+      "sourceIds": [
+        169
+      ],
+      "members": [
+        {
+          "axis": "337",
+          "sourceId": 169,
+          "coordinate": [
+            2706823.975499999,
+            1249879.2674499974
+          ],
+          "offsetMetres": 2600.413240052485,
+          "separationMetres": 0.7485640853397233
+        }
+      ],
+      "status": "geometric-junction-candidate"
+    }
+  ],
+  "excludedReview": {
+    "stationId": "ZH.CH:2891",
+    "status": "not-admitted",
+    "qualifiedDestinationResult": {
+      "status": "bearing-conflict",
+      "destination": {
+        "name": "Wald ZH",
+        "coordinate": [
+          2711225.1,
+          1237070.2
+        ],
+        "bounds": [
+          2709854,
+          1236023.4,
+          2712596.2,
+          1238117
+        ],
+        "sourceFeatureId": 206071
+      },
+      "destinationDistanceMetres": 9539.32,
+      "destinationRoadDistanceMetres": 210.79,
+      "offsetSeparationMetres": -11680.79,
+      "bearingAgreement": -0.74,
+      "offsetMetres": 18635.38
+    }
+  },
+  "sections": [
+    {
+      "id": "ZH:15:84dba2b1e4cc6ff9:positive:ZH.CH:3588:ZH.CH:1623",
+      "road": "ZH:15",
+      "direction": "positive",
+      "fromSiteId": "ZH.CH:3588:axis-positive",
+      "toSiteId": "ZH.CH:1623:axis-positive",
+      "fromCoordinate": [
+        8.86473,
+        47.37126
+      ],
+      "toCoordinate": [
+        8.85698,
+        47.40918
+      ],
+      "distanceKm": 4.82204,
+      "pathPoints": 41
+    },
+    {
+      "id": "ZH:15:84dba2b1e4cc6ff9:negative:ZH.CH:3588:ZH.CH:1623",
+      "road": "ZH:15",
+      "direction": "negative",
+      "fromSiteId": "ZH.CH:1623:axis-negative",
+      "toSiteId": "ZH.CH:3588:axis-negative",
+      "fromCoordinate": [
+        8.85698,
+        47.40918
+      ],
+      "toCoordinate": [
+        8.86473,
+        47.37126
+      ],
+      "distanceKm": 4.82204,
+      "pathPoints": 41
+    }
+  ],
+  "limitation": "Explicit station-scoped homonym inference. Geometric junction candidates are not surveyed turns or an inventory of all private access. Turning flows and individual trajectories are not measured."
+}

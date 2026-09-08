@@ -215,7 +215,7 @@ Unknown recordings, conflicting dates and out-of-window or non-finite times prod
 
 **Road recordings** in the main network view opens a catalog of the published pilots, without fetching their recording JSON. Each entry displays its recording date, Swiss time window, complete-minute count and whether it contains observation gaps. Selecting an entry follows its canonical recording link and opens paused. The current recording is marked, and closing the picker returns focus to the opening button without changing playback. Labels and disclosures support all four UI languages.
 
-The picker now lists Horgen, Wallisellen–Bassersdorf, Kilchberg–Thalwil, Meilen–Stäfa, and Meilen. The [Bassersdorf–Lindau follow-up](CANTONAL-COVERAGE-REVIEW.md#bassersdorflindau-follow-up) confirms 245 complete minutes but leaves both Lindau detector directions unresolved after checking detailed official geometry. It is not listed as a playable recording. A detector-specific directional reference is needed before that corridor can pass review.
+The picker now lists Horgen, Wallisellen–Bassersdorf, Kilchberg–Thalwil, Meilen–Stäfa, Meilen, and Bauma–Wila. The [Bassersdorf–Lindau follow-up](CANTONAL-COVERAGE-REVIEW.md#bassersdorflindau-follow-up) confirms 245 complete minutes but leaves both Lindau detector directions unresolved after checking detailed official geometry. It is not listed as a playable recording. A detector-specific directional reference is needed before that corridor can pass review.
 
 ### Kilchberg–Thalwil playback
 
@@ -284,3 +284,36 @@ node scripts/build-cantonal-road-pilot.mjs \
 ```
 
 Validation: 45 targeted tests across 10 files, eight desktop Chromium / iPhone WebKit browser checks, production build, architecture and lint checks pass. The published artifact rebuilds byte-for-byte from the archive. First-view transfer is 766.3 KiB gzip within the 790 KiB budget; recording data remains an on-demand download.
+
+### Bauma–Wila playback and qualified Wald destination review
+
+The sixth recording follows **4.822 km of ZH 15 / Tösstalstrasse**, from Bauma counter `ZH.CH:3588` to Wila counter `ZH.CH:1623`. It has **104 uninterrupted minutes on 8 September 2026, 14:14–15:57 CEST**, with complete light/heavy observations in both directions. The full afternoon archive has 225/245 complete minutes for this pair; publication selects the longest complete run. Open **Road recordings → Bauma–Wila**, or `?recording=bauma-wila-2026-09-08`. Shared links preserve time through the final observation, including after retrying a failed download.
+
+The original exact lookup of “Wald” exceeded the conservative 200-result gate, so the automatic builder discarded its candidates. A fresh query returns 359 representations, including smaller settlements. Looking only at Wald ZH and Wald AR would omit these alternatives. The review therefore uses the **complete downloadable 2026 SwissNames dataset**, scanning all three CSV members for every settlement named “Wald” or beginning with “Wald ”. The [inventory](../data/bauma-wald-settlement-inventory.json) contains **25 distinct settlements**: 23 unqualified Wald entries, Wald ZH and Wald AR. It records the archive/member hashes, row totals and source rows. The qualified Wald BE query adds no settlement candidate.
+
+All 25 inventory rows must map one-to-one to the named settlement bounds in the [pinned API responses](../data/bauma-wila-review-sources.json). This independently checks completeness of the saturated response without changing the general result-limit gate. An omitted settlement or ambiguous crosswalk fails the build. The regional result still remains ambiguous at both counters.
+
+The [explicit station review](../data/bauma-wila-direction-scope.json) evaluates every alternative against the official road path named “Rüti - Wald - Turbenthal - Winterthur …”. **Wald ZH is 210.79 m from it**, passes every destination/extent/bearing gate, and follows negative path order at both counters (bearing **−0.98 / −1.00**). **Wald AR is 42,524.22 m off the axis**. Other settlements fail the regional or geometric checks, with one exception at Bauma: a small unqualified Wald settlement passes in the **positive** direction, the same direction as the independently validated Winterthur lane. The catalog confirms exactly two opposing normal main-carriageway lanes there, allowing that same-direction alternative to be excluded. At Wila the small settlement fails bearing; Wald ZH is the sole fully passing alternative. The [review report](../data/bauma-wila-review.json) preserves all 25 results per station and the explicit same-direction exclusion.
+
+This is a documented road-and-lane destination inference, not a surveyed detector bearing. Alert-C signs confirm lane opposition where required; they are not mapped directly to path directions. The builder admits only these two pinned counters and requires exactly one fully passing candidate opposite the Winterthur anchor. It rejects changed geometry, catalog, station evidence, source responses, missing settlements, a second passing candidate in the opposing direction, or missing catalog support for a same-direction exclusion. The general automatic homonym, result-limit and geometric gates remain unchanged.
+
+The earlier Bauma Stegstrasse counter `ZH.CH:2891` remains excluded. Even with Wald ZH explicitly selected, it fails local bearing (**−0.74**, against the required 0.75 magnitude). Its 4.231 km section to counter 3588 is not published. No bearing threshold has been relaxed.
+
+The full-section official road-axis extract identifies **two geometric junction areas**, around **1,917 m (axis 806)** and **2,600 m (axis 337)** from counter 3588. The builder verifies extract coverage and rejects incomplete WFS responses. These are not surveyed turn permissions, measured turn flows or a complete inventory of private access. Playback remains a reconstruction between counters.
+
+Rebuild using committed evidence and the private observation archive:
+
+```sh
+node scripts/build-bauma-wila-directions.mjs
+node scripts/build-cantonal-road-pilot.mjs \
+  --pilot=bauma-wila-2026-09-08 \
+  --topology=/tmp/bauma-wila-directions.json
+```
+
+Rebuild the complete settlement inventory from the official [2026 CSV archive](https://data.geo.admin.ch/ch.swisstopo.swissnames3d/swissnames3d_2026/swissnames3d_2026_2056.csv.zip) before the direction build when independently reproducing the source extraction:
+
+```sh
+python3 scripts/prepare-bauma-wald-inventory.py --archive=/tmp/swissnames3d_2026_2056.csv.zip
+```
+
+Validation: 50 targeted tests across 11 files, ten desktop Chromium / iPhone WebKit browser checks, production build, architecture and lint checks pass. The complete settlement inventory and public recording rebuild identically. The expanded homonym review leaves every playback observation and section unchanged. First-view transfer is 766.4 KiB gzip within the 790 KiB budget; recording JSON is downloaded only when selected.
