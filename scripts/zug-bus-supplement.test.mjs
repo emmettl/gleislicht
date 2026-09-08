@@ -47,12 +47,16 @@ describe('Zug neighbouring official bus supplement', () => {
     expect(result.reason).toBe('endpoint-gap')
     expect(result.primaryFailure.reason).toBe('endpoint-gap')
   })
-  it('retains unsuccessful 653 and N73 attempts in the emitted audit', () => {
+  it('retains failed official 653 and N73 attempts when roads complete the trips', () => {
     const audit=read('data/zug-study-audit.json')
     for(const entry of audit.supplementInventory.filter(s=>['653','N73'].includes(s.line))) {
-      expect(entry.days.every(d=>d.admittedTrips===0)).toBe(true)
+      expect(entry.days.some(d=>d.admittedTrips>0)).toBe(true)
       expect(entry.days.some(d=>d.failures.length>0)).toBe(true)
+      for (const day of entry.days) for (const failure of day.failures) {
+        const pair = audit.days.find(d=>d.date===day.date).directedStopPairs.find(p=>entry.routeIds.includes(p.routeId)&&p.fromId===failure.fromId&&p.toId===failure.toId)
+        expect(pair).toMatchObject({ matched: true, geometrySource: 'osm-road-inference', officialFailure: { reason: failure.reason, sourceFeatures: [entry.key] } })
+      }
     }
-    expect(audit.days.map(d=>d.admittedTripsUsingSupplement)).toEqual([156,94])
+    expect(audit.days.map(d=>d.admittedTripsUsingSupplement)).toEqual([282,156])
   })
 })

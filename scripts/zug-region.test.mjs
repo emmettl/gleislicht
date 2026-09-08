@@ -80,8 +80,8 @@ describe('Zug source adapter and complete cantonal feed', () => {
   it('replays both entire civil days, every directed pair and every emitted chunk against source hashes', async () => {
     const result=await checkZugRegion()
     expect(result).toMatchObject({passed:true,annualRoutes:77,agencies:9})
-    expect(result.days.map(d=>d.admittedTrips)).toEqual([2995,1844])
-    expect(result.days.map(d=>d.completeDirectedPatterns)).toEqual([289,235])
+    expect(result.days.map(d=>d.admittedTrips)).toEqual([3121,1906])
+    expect(result.days.map(d=>d.completeDirectedPatterns)).toEqual([295,239])
     expect(sha256(JSON.stringify(collection))).toBe(policy.topologyJoins.sourceSha256)
   }, 30000)
 })

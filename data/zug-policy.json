@@ -212,12 +212,12 @@
       "evidence": "Pinned GTFS annual canton census; https://www.zvb.ch/fahrplan/fahrplan-zvb-2026/"
     }
   },
-  "admission": "Admit only complete directed stop patterns on explicitly mapped operator/line geometry. All source calls, branches, call rules and border termini retained. Every pair must pass projection, connectivity and detour checks. Historic official corridor inference, not certified street directions, current diversions or observed movement. Three individually pinned sub-metre topology connectors are inferred and reported per pair and trip; no other gap filling. Failed bus pairs may use complete exact-identity Luzern 2026 paths; successful original pairs are retained and every source switch is recorded at a scheduled stop. Zugerbergbahn uses exact federal installation and operating-point identities, retaining its full curve and reporting GTFS endpoint connectors.",
+  "admission": "Admit only complete directed stop patterns on explicitly mapped operator/line geometry. All source calls, branches, call rules and border termini retained. Every pair must pass projection, connectivity and detour checks. Historic official corridor inference, not certified street directions, current diversions or observed movement. Three individually pinned sub-metre topology connectors are inferred and reported per pair and trip; no other gap filling. Failed bus pairs may use complete exact-identity Luzern 2026 paths; successful original pairs are retained and every source switch is recorded at a scheduled stop. Zugerbergbahn uses exact federal installation and operating-point identities, retaining its full curve and reporting GTFS endpoint connectors. Explicitly reviewed 653/N73 pairs may use OSM road inference only after the official paths fail, with whole-pattern identity and all-context path consensus.",
   "scopeLimits": [
     "Annual membership is complete for the pinned national timetable and official canton polygon, not proof of unrepresented real-world services.",
     "Friday/Sunday plus preceding-day carry-in do not establish seasonal, holiday or year-round coverage.",
     "No-stop through traffic is outside this passenger-service inventory.",
-    "Geometry admission uses mapped Zug Buslinien, exact Luzern 2026 bus supplements, standard-gauge FOT infrastructure and the exact federal Zugerbergbahn installation. Boat and unresolved rail/bus patterns remain in the coverage denominator.",
+    "Geometry admission uses mapped Zug Buslinien, exact Luzern 2026 bus supplements, standard-gauge FOT infrastructure and the exact federal Zugerbergbahn installation. Boat and unresolved rail/bus patterns remain in the coverage denominator. Failed 653/N73 pairs may use separately attributed OSM road inference; these paths are not operator-verified.",
     "The WFS matches the archive within 1 mm but proves no 2026 alignment validity. No realtime."
   ],
   "topologyJoins": {
@@ -498,5 +498,33 @@
     "stationAttachmentMetres": 25,
     "detourRatio": 2,
     "detourFloorMetres": 1500
+  },
+  "road": {
+    "cacheFile": "data/zug-road-cache.json",
+    "cacheSha256": "70f1de8a9f49db9b2003343ae315d7ee61595b1505b510df3768ca3f5e584bad",
+    "configFile": "data/zug-road-evidence/pfaedle.cfg",
+    "configSha256": "31deee35fee9cb6fadc89cc5298e501a95cc4e8d78d7ae7fe6b60932cbf23db4",
+    "binarySha256": "6d193a755bc22c45516f8bce7594bb30e07a2632a5ef049a95915b262406cbd8",
+    "routes": [
+      {
+        "routeId": "92-653-j26-1",
+        "agencyId": "839",
+        "line": "653",
+        "routeType": 700
+      },
+      {
+        "routeId": "96-359-A-j26-1",
+        "agencyId": "801",
+        "line": "N73",
+        "routeType": 705
+      }
+    ],
+    "limits": {
+      "snapMetres": 120,
+      "detourRatio": 4.5,
+      "detourFloorMetres": 1200,
+      "alternativeSnapMetres": 5
+    },
+    "admission": "Fallback only after both official alternatives fail. Every complete scoped pattern on both civil days must be represented; all occurrences of a route-specific directed stop pair must have valid byte-identical paths. Inferred OSM roads, not operator-verified or diversion-certified."
   }
 }
