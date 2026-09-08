@@ -9,6 +9,7 @@ import { gzipSync } from 'node:zlib'
 import { rowsFromArchive } from '@motionstudies/data/gtfs'
 import { chunkNetworkSnapshot, extractNetworkWindow } from '@motionstudies/data/network-chunks'
 import { applyRailGeometry, parseRailNetworkXtf } from './enrich-swiss-rail-geometry.mjs'
+import { applyLausanneRailGeometry } from './lausanne-rail-geometry.mjs'
 import { applyRoadCache, distanceMetres } from './enrich-postbus-roads.mjs'
 import { prepareRoadFeed } from './prepare-postbus-road-feed.mjs'
 import { serviceDate } from './service-date.mjs'
@@ -135,7 +136,9 @@ export async function auditLausanneStudy({ archive, railPath, date, output, busC
     const snapshot = selectLausanneSnapshot(raw, routes)
     const rail = parseRailNetworkXtf(await readFile(railPath, 'utf8'), 10)
     const railTrains = snapshot.trains.filter(train => train.category !== 'bus')
-    const railGeometry = applyRailGeometry({ ...snapshot, trains: railTrains }, rail)
+    const railGeometry = applyLausanneRailGeometry({ ...snapshot, trains: railTrains }, rail, routes)
+    const baselineRail = applyRailGeometry({ ...snapshot, trains: railTrains }, rail)
+    const baselineRailGroups = summarizeLausanneGeometry({ ...snapshot, ...baselineRail }, routes).filter(group => group.id !== 'tl-bus')
     const busTrains = snapshot.trains.filter(train => train.category === 'bus')
     const cache = busCachePath ? JSON.parse(await readFile(busCachePath, 'utf8')) : undefined
     if (cache) {
@@ -151,17 +154,17 @@ export async function auditLausanneStudy({ archive, railPath, date, output, busC
     // onto a nearby railway through the generic topology fallback.
     const railPairs = new Set(railTrains.flatMap(train => train.stops.slice(1).map(([to], index) => [train.stops[index][0], to].sort((a, b) => a - b).join(':'))))
     snapshot.edgePaths = snapshot.edges.map(([a, b], i) => busGeometry.edgePaths[i] !== null ? busGeometry.edgePaths[i] + offset : railPairs.has(`${a}:${b}`) ? railGeometry.edgePaths[i] : null)
-    snapshot.metadata.note = 'AUDIT CANDIDATE. Scheduled motion; frequency-based services are representative. FOT rail matches need métro-specific correction. Bus paths are OSM/pfaedle inferences, not operator-verified routes. Unmatched segments retain stop interpolation. Not approved for publication.'
+    snapshot.metadata.note = 'AUDIT CANDIDATE. Scheduled motion; frequency-based services are representative. Rail and métro stops project onto their matched FOT corridors with short platform connectors. Bus paths are OSM/pfaedle inferences, not operator-verified routes. Unmatched segments retain stop interpolation. Not approved for publication.'
     const sourceHashes = { archive: await fileHash(archive), rail: await fileHash(railPath), snapshot: await fileHash(rawPath), ...(cache ? { busCache: await fileHash(busCachePath) } : {}) }
     snapshot.metadata.sourceHashes = sourceHashes
-    snapshot.metadata.railGeometry = { publisher: 'Federal Office of Transport', sourceUrl: 'https://data.geo.admin.ch/api/stac/v1/collections/ch.bav.schienennetz/items/schienennetz', sha256: sourceHashes.rail, simplifyMetres: 10 }
+    snapshot.metadata.railGeometry = { publisher: 'Federal Office of Transport', sourceUrl: 'https://data.geo.admin.ch/api/stac/v1/collections/ch.bav.schienennetz/items/schienennetz', sha256: sourceHashes.rail, simplifyMetres: 10, model: 'platform projection onto identified FOT rail corridors; short platform connectors; inferred track selection', matchedSegments: railGeometry.matchedSegments, totalSegments: railGeometry.totalSegments, maximumSnapMetres: Math.max(0, ...railGeometry.projectionAudit.snaps.map(stop => stop.snapMetres ?? 0)), limits: railGeometry.projectionAudit.limits }
     if (cache) snapshot.metadata.geometry = { ...cache.metadata, matchedSegments: busGeometry.matched, totalSegments: busGeometry.total, missingPatterns: busGeometry.missingPatterns }
     const groups = summarizeLausanneGeometry(snapshot, routes)
     const { manifest, chunks } = chunkNetworkSnapshot(snapshot, 7200, 'lausanne-region-day-chunks')
     const morning = extractNetworkWindow(snapshot, 24300, 31500, 27900)
     const payload = { manifestGzipBytes: gzipBytes(manifest), morningGzipBytes: gzipBytes(morning), chunks: chunks.map(({ descriptor, payload: chunk }) => ({ id: descriptor.id, trips: descriptor.tripCount, gzipBytes: gzipBytes(chunk) })) }
     const failures = lausanneTechnicalGate(groups, payload)
-    const report = { schemaVersion: 1, metadata: { serviceDate: date, feedVersion: feed[0].feed_version, sourceHashes, nodeVersion: process.version }, scope: { bounds: LAUSANNE_BOUNDS, description: snapshot.metadata.studyScope, extractedTrips: raw.trains.length, candidateTrips: snapshot.trains.length, excludedTrips: raw.trains.length - snapshot.trains.length, platforms: snapshot.stops.length, namedStops: new Set(snapshot.stops.map(stop => stop[2])).size }, groups, payload, gate: { passed: failures.length === 0, failures, limits: { minimumGeometryCoveragePerGroup: 0.95, maximumEndpointGapMetres: 120, gzipBytes: GZIP_LIMITS }, publicationReady: false, pending: ['Review the selected rail alignments and inferred bus routes visually', 'Audit weekend service and scope at boundary termini', 'Integrate lazy study selection, framing, translations, sharing, Now and refresh recovery; verify on desktop and phone'] } }
+    const report = { schemaVersion: 1, metadata: { serviceDate: date, feedVersion: feed[0].feed_version, sourceHashes, nodeVersion: process.version }, scope: { bounds: LAUSANNE_BOUNDS, description: snapshot.metadata.studyScope, extractedTrips: raw.trains.length, candidateTrips: snapshot.trains.length, excludedTrips: raw.trains.length - snapshot.trains.length, platforms: snapshot.stops.length, namedStops: new Set(snapshot.stops.map(stop => stop[2])).size }, groups, baselineRailGroups, railProjection: railGeometry.projectionAudit, payload, gate: { passed: failures.length === 0, failures, limits: { minimumGeometryCoveragePerGroup: 0.95, maximumEndpointGapMetres: 120, gzipBytes: GZIP_LIMITS }, publicationReady: false, pending: ['Review the selected rail alignments and inferred bus routes visually', 'Audit weekend service and scope at boundary termini', 'Integrate lazy study selection, framing, translations, sharing, Now and refresh recovery; verify on desktop and phone'] } }
     await mkdir(output, { recursive: true })
     for (const { descriptor, payload: chunk } of chunks) {
       const path = join(output, descriptor.path)

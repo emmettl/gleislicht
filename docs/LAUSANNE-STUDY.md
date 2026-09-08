@@ -1,9 +1,10 @@
-# Lausanne regional study: kickoff audit
+# Lausanne regional study: timetable and geometry
 
-The first Lausanne milestone is a reproducible full-day timetable and geometry
-candidate. It is **not yet a published study**. The audit found enough timetable
-coverage and ample payload headroom, but the existing rail matcher needs local
-station corrections before the métro can be presented credibly.
+The Lausanne candidate now passes the timetable, geometry and payload checks for
+the sampled weekday and Sunday. The rail matcher uses identified FOT corridors
+and projects platforms onto their alignments, correcting the métro and local rail
+failures found during kickoff. It is **not yet a published study**: overnight
+service-day handling, bus alignment review and browser integration remain.
 
 ## Scope
 
@@ -20,17 +21,21 @@ line numbers are never used to infer an operator. The compact application
 importer normally omits rail route IDs; the audit restores them by source trip
 identity without changing that importer or the shipped data.
 
-## Measured weekday baseline
+## Measured weekday baseline and corrected result
 
 Swiss GTFS feed `20260905`, service date **2026-09-08**, Node **24.20.0**:
 
-| Group | Trips | Source routes | Indexed geometry | Geometry with endpoints within 120 m |
+| Group | Trips | Source routes | Original indexed geometry | Original endpoints within 120 m |
 | --- | ---: | ---: | ---: | ---: |
 | tl buses | 6,624 | 38 | 100% | 100% |
 | m1 | 328 | 1 | 100% | 92.7% |
 | m2 | 749 | 1 | 68.8% | 62.4% |
 | LEB (R20) | 141 | 1 | 100% | 81.1% |
 | Other rail | 702 | 20 | 98.3% | 92.6% |
+
+After correction, **all five groups reach 100% accepted geometry** on this
+weekday. The audit retains the original rail results in `baselineRailGroups`,
+alongside the corrected `groups` and per-platform `railProjection` evidence.
 
 The candidate retains **8,544 trips**, 1,074 platform records and 506 distinct
 stop names. The initial all-mode extract contained 8,951 trips; 400 funicular and
@@ -41,22 +46,22 @@ An indexed rail path does not establish correct station matching. The separate
 120 m endpoint check is a proposed Lausanne acceptance check, not an official
 accuracy specification or proof that a route follows the correct track.
 
-The candidate has 12 two-hour chunks. Gzip measurements are **71.9 KiB** for the
-manifest, **175.6 KiB** for the morning snapshot and **105.2 KiB** for the largest
+The corrected candidate has 12 two-hour chunks. Gzip measurements are **77.0 KiB** for the
+manifest, **181.2 KiB** for the morning snapshot and **105.6 KiB** for the largest
 movement chunk. These fit the existing regional limits of 650/1,600/450 KiB.
 These are data-only measurements; application transfer and rendering performance
 remain to be checked after UI integration. No budget ceiling has changed.
 
-The machine-readable baseline, input hashes, every failed directed platform pair,
-and per-chunk measurements are in
+The machine-readable results, input hashes, original failed directed platform
+pairs, corrected projection evidence and per-chunk measurements are in
 [`data/lausanne-study-audit.json`](../data/lausanne-study-audit.json).
 
 The same feed was also audited for **Sunday 2026-09-13**: 6,740 candidate trips,
 including 5,193 tl buses, 213 m1 trips, 505 m2 trips, 79 LEB trips and 750 other
 rail trips. The weekday road cache covers **97.5%** of Sunday bus movements;
-unknown patterns remain explicitly unshaped. All four rail/métro groups still
-fail the endpoint-aware geometry gate. The largest Sunday chunk is 79.8 KiB
-gzip. See [`data/lausanne-study-sunday-audit.json`](../data/lausanne-study-sunday-audit.json).
+unknown patterns remain explicitly unshaped. All four rail/métro groups now
+reach **100% accepted geometry**, and the complete Sunday candidate passes the
+technical gate. The largest corrected Sunday chunk is 80.3 KiB gzip. See [`data/lausanne-study-sunday-audit.json`](../data/lausanne-study-sunday-audit.json).
 This is a second sampled service day, not a claim that every weekend or season
 has been covered. The report's pending checklist describes the remaining launch
 work, including broader calendar and boundary review.
@@ -96,26 +101,51 @@ The public Lausanne map and regional catalogues were also investigated, but this
 audit did not establish a usable official bus-shape download. This does not assert
 that no such source exists.
 
-## Geometry work identified
+## Geometry corrections
 
-1. **m2 at Flon:** the generic nearest-station resolver selects the nearby LEB
-   node. Resolve the m2-specific infrastructure before routing through the hub.
-2. **m2 Délices and Grancy:** these stops lie between FOT nodes; the current
-   resolver snaps them to Jordils and Gare respectively. Split/project onto the
-   correct m2 alignment instead of collapsing movements or drawing long chords.
-3. **Station endpoints:** inspect m1 at Renens (128.8 m gap), LEB at Les Ripes
-   (137.6 m) and Etagnières (308.1 m), plus Morges, Chavornay and Puidoux rail
-   endpoints. A nearby infrastructure reference point can explain a gap; do not
-   simply loosen the threshold and count it as reviewed.
-4. **Morges–La Gottaz:** the generic rail matcher leaves 68 weekday R56 movements
-   without a path. Resolve the correct local rail alignment independently of the
-   mainline station.
+The Lausanne matcher is separate from the existing national/regional matcher;
+other studies keep their current geometry. It selects infrastructure using source
+agency identity and stable FOT operating-point numbers:
 
-The proposed technical gate requires at least 95% accepted geometry in **each**
-of the five groups. A large bus fleet cannot conceal an incomplete métro. The
-weekday candidate currently fails this gate. The audit still writes its report
-and candidate so the failures can be inspected; `--check` returns a failing exit
-status for the technical gate. Passing that gate alone is not publication approval.
+- **m2:** the component anchored at Flon m2 (`8519589`), keeping LEB out of métro
+  matches. Délices and Grancy split the surveyed edges at their projected
+  positions instead of collapsing onto Jordils and Gare.
+- **m1:** the Flon m1 (`8519588`)–Renens (`8501118`) corridor. It is isolated from
+  the mainline graph even though the source networks connect at Renens.
+- **LEB:** the component anchored at Flon LEB (`8519590`). Projection fixes the
+  displaced reference-node endpoints at Les Ripes and Etagnières.
+- **MBC:** agency `29` uses the component anchored at La Gottaz (`8501054`),
+  reaching Morges on the correct local railway rather than the SBB station node.
+- **Other rail:** the component anchored at Lausanne (`8501120`), excluding the
+  m1 corridor. Platform projection corrects the mainline endpoint gaps too.
+
+Platforms must be within **120 m** of their selected corridor. The largest actual
+snap is **44.28 m** on both sampled days. The matcher inserts cuts into the source
+polylines, routes between those cuts and adds short connectors to the timetable
+platform coordinates. Paths keep their direction. Disconnected tracks, coincident
+projections, remote platforms and excessive detours remain unshaped; the detour
+limit remains the greater of 3 km or 4.5 times the direct distance. Missing or
+ambiguous FOT anchors fail the build. These limits were not loosened to pass the
+audit. Individual track/platform selection remains an inference, not an operator
+survey or a live position.
+
+Both sampled days have **zero rejected rail segments**: 18,795 weekday and 14,753
+Sunday rail/métro movements. All original trip identities, ordered stops and times
+are retained. Unused topology edges do not acquire a guessed rail path.
+
+The [alignment review](assets/lausanne-rail-review.svg) was inspected for m2 south
+of Flon, m1 at Renens, LEB at Les Ripes/Etagnières and MBC at Morges/La Gottaz.
+It overlays the corrected paths and timetable platforms on the FOT geometry.
+This verifies alignment continuity and network selection against those inputs;
+it is not independent operator verification. The retained regression fixture
+contains official source extracts, input identity, 18 journeys in both directions,
+and the affected platforms.
+
+The technical gate still requires at least 95% accepted geometry in **each** of
+five groups, alongside existing payload limits. Both weekday and Sunday now pass.
+A large bus fleet cannot conceal an incomplete métro. The audit writes its report
+and candidate for inspection; `--check` returns a failing exit status if the
+technical gate fails. Passing this gate alone is not publication approval.
 
 ## Reproduce
 
@@ -155,17 +185,18 @@ Re-run the audit with that cache. `--prepare-bus-feed` identifies the temporary
 feed as tl and uses French metadata; the existing PostAuto default remains
 available for its original pipeline.
 
-Verification for this kickoff: 29 focused tests passed across the Lausanne audit,
-existing road matching, GTFS importer and regional refresh/chunk suites. Both
+Verification after the rail corrections: 41 focused tests passed across Lausanne
+projection/auditing, existing rail and road matching, GTFS import and regional
+refresh/chunk suites. Both
 generated candidate days were independently checked for contiguous 24-hour
 coverage, exact byte counts and SHA-256 hashes, valid references, identical
 overlapping trips and unique day totals. This validates the candidate files;
-it does not clear the reported geometry or publication gates.
+it does not complete the outstanding publication work.
 
 ## Following implementation slice
 
-Correct and visually review the rail/métro matches, check weekend and boundary
-coverage, then register the lazy region in the study browser with map framing,
+Complete inferred bus route and boundary coverage review, then register the lazy
+region in the study browser with map framing,
 search, line isolation and all four languages. Reuse progressive day loading,
 Now and share links. Extend the daily regional refresh and verified recovery path,
 including the first deployment before a published Lausanne fallback exists.
