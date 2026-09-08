@@ -1,0 +1,452 @@
+{
+  "serviceDate": "2026-09-04",
+  "feedVersion": "20260902",
+  "sourceSha256": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+  "sourceUrl": "https://data.opentransportdata.swiss/en/dataset/timetable-2026-gtfs2020",
+  "method": "Selected agency IDs; calendar.txt plus calendar_dates.txt; distinct route_id and trip_id. Frequency templates remain separate from non-frequency records. No stop_times, spatial clipping, geometry join or frequency expansion.",
+  "limits": "Operator samples, not complete networks or study-size estimates. Includes calendar-active records after 24:00. Excludes SBB, BLS, PostAuto and other operators outside the listed samples. Route types describe all sample route records, including inactive routes.",
+  "samples": [
+    {
+      "region": "basel",
+      "agencies": [
+        {
+          "id": "823",
+          "name": "Basler Verkehrsbetriebe",
+          "routeRecords": 28,
+          "activeTripRecords": 5693,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0,
+          "routeTypes": [
+            700,
+            900
+          ],
+          "activeRouteRecords": 23,
+          "activeNonFrequencyTripRecords": 5693
+        },
+        {
+          "id": "37",
+          "name": "Baselland Transport",
+          "routeRecords": 30,
+          "activeTripRecords": 3395,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0,
+          "routeTypes": [
+            700,
+            900
+          ],
+          "activeRouteRecords": 26,
+          "activeNonFrequencyTripRecords": 3395
+        }
+      ]
+    },
+    {
+      "region": "bern",
+      "agencies": [
+        {
+          "id": "827",
+          "name": "Städtische Verkehrsbetriebe Bern",
+          "routeRecords": 63,
+          "activeTripRecords": 6050,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0,
+          "routeTypes": [
+            700,
+            705,
+            900
+          ],
+          "activeRouteRecords": 53,
+          "activeNonFrequencyTripRecords": 6050
+        },
+        {
+          "id": "88",
+          "name": "Regionalverkehr Bern-Solothurn",
+          "routeRecords": 4,
+          "activeTripRecords": 607,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0,
+          "routeTypes": [
+            106,
+            109
+          ],
+          "activeRouteRecords": 4,
+          "activeNonFrequencyTripRecords": 607
+        },
+        {
+          "id": "850",
+          "name": "Autobusbetrieb RBS",
+          "routeRecords": 22,
+          "activeTripRecords": 1614,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0,
+          "routeTypes": [
+            700
+          ],
+          "activeRouteRecords": 22,
+          "activeNonFrequencyTripRecords": 1614
+        }
+      ]
+    },
+    {
+      "region": "luzern",
+      "agencies": [
+        {
+          "id": "820",
+          "name": "Verkehrsbetriebe Luzern AG",
+          "routeRecords": 34,
+          "activeTripRecords": 4619,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0,
+          "routeTypes": [
+            700,
+            705,
+            1400
+          ],
+          "activeRouteRecords": 33,
+          "activeNonFrequencyTripRecords": 4619
+        },
+        {
+          "id": "86",
+          "name": "Zentralbahn",
+          "routeRecords": 17,
+          "activeTripRecords": 372,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0,
+          "routeTypes": [
+            103,
+            106,
+            107,
+            109,
+            117
+          ],
+          "activeRouteRecords": 10,
+          "activeNonFrequencyTripRecords": 372
+        }
+      ]
+    },
+    {
+      "region": "st-gallen",
+      "agencies": [
+        {
+          "id": "885",
+          "name": "Verkehrsbetriebe der Stadt St.Gallen",
+          "routeRecords": 12,
+          "activeTripRecords": 1738,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0,
+          "routeTypes": [
+            700
+          ],
+          "activeRouteRecords": 12,
+          "activeNonFrequencyTripRecords": 1738
+        },
+        {
+          "id": "22",
+          "name": "Appenzeller Bahnen (ab)",
+          "routeRecords": 9,
+          "activeTripRecords": 398,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0,
+          "routeTypes": [
+            102,
+            109
+          ],
+          "activeRouteRecords": 8,
+          "activeNonFrequencyTripRecords": 398
+        },
+        {
+          "id": "744",
+          "name": "Automobildienst Appenzeller Bahnen",
+          "routeRecords": 5,
+          "activeTripRecords": 18,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0,
+          "routeTypes": [
+            700,
+            705
+          ],
+          "activeRouteRecords": 4,
+          "activeNonFrequencyTripRecords": 18
+        },
+        {
+          "id": "65",
+          "name": "THURBO",
+          "routeRecords": 41,
+          "activeTripRecords": 1101,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0,
+          "routeTypes": [
+            103,
+            106,
+            109
+          ],
+          "activeRouteRecords": 22,
+          "activeNonFrequencyTripRecords": 1101
+        }
+      ]
+    },
+    {
+      "region": "ticino",
+      "agencies": [
+        {
+          "id": "955",
+          "name": "Trasporti Pubblici Luganesi SA",
+          "routeRecords": 15,
+          "activeTripRecords": 1599,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0,
+          "routeTypes": [
+            700
+          ],
+          "activeRouteRecords": 15,
+          "activeNonFrequencyTripRecords": 1599
+        },
+        {
+          "id": "3955",
+          "name": "Trasporti Pubblici Luganesi SA",
+          "routeRecords": 1,
+          "activeTripRecords": 2,
+          "activeFrequencyTemplates": 2,
+          "activeFrequencyIntervals": 2,
+          "routeTypes": [
+            1400
+          ],
+          "activeRouteRecords": 1,
+          "activeNonFrequencyTripRecords": 0
+        },
+        {
+          "id": "47",
+          "name": "Lugano-Ponte Tresa",
+          "routeRecords": 1,
+          "activeTripRecords": 134,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0,
+          "routeTypes": [
+            109
+          ],
+          "activeRouteRecords": 1,
+          "activeNonFrequencyTripRecords": 134
+        },
+        {
+          "id": "49",
+          "name": "Ferrovie Autolinee Regionali Ticinesi",
+          "routeRecords": 3,
+          "activeTripRecords": 53,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0,
+          "routeTypes": [
+            106,
+            107
+          ],
+          "activeRouteRecords": 3,
+          "activeNonFrequencyTripRecords": 53
+        },
+        {
+          "id": "817",
+          "name": "Autolinee FART",
+          "routeRecords": 11,
+          "activeTripRecords": 781,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0,
+          "routeTypes": [
+            700
+          ],
+          "activeRouteRecords": 11,
+          "activeNonFrequencyTripRecords": 781
+        },
+        {
+          "id": "858",
+          "name": "Autolinee Regionali Luganesi",
+          "routeRecords": 4,
+          "activeTripRecords": 232,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0,
+          "routeTypes": [
+            700
+          ],
+          "activeRouteRecords": 4,
+          "activeNonFrequencyTripRecords": 232
+        }
+      ]
+    },
+    {
+      "region": "graubuenden",
+      "agencies": [
+        {
+          "id": "72",
+          "name": "Rhätische Bahn",
+          "routeRecords": 36,
+          "activeTripRecords": 611,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0,
+          "routeTypes": [
+            103,
+            106,
+            107,
+            109,
+            117,
+            700
+          ],
+          "activeRouteRecords": 28,
+          "activeNonFrequencyTripRecords": 611
+        },
+        {
+          "id": "766",
+          "name": "Bus und Service AG (Chur)",
+          "routeRecords": 20,
+          "activeTripRecords": 1201,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0,
+          "routeTypes": [
+            700
+          ],
+          "activeRouteRecords": 18,
+          "activeNonFrequencyTripRecords": 1201
+        },
+        {
+          "id": "815",
+          "name": "Bus und Service AG (Engadin)",
+          "routeRecords": 9,
+          "activeTripRecords": 420,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0,
+          "routeTypes": [
+            700,
+            705
+          ],
+          "activeRouteRecords": 9,
+          "activeNonFrequencyTripRecords": 420
+        }
+      ]
+    },
+    {
+      "region": "fribourg",
+      "agencies": [
+        {
+          "id": "53",
+          "name": "Transports publics fribourgeois",
+          "routeRecords": 14,
+          "activeTripRecords": 261,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0,
+          "routeTypes": [
+            106,
+            109,
+            117
+          ],
+          "activeRouteRecords": 7,
+          "activeNonFrequencyTripRecords": 261
+        },
+        {
+          "id": "834",
+          "name": "Service d'automobiles TPF",
+          "routeRecords": 92,
+          "activeTripRecords": 3958,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0,
+          "routeTypes": [
+            700,
+            705
+          ],
+          "activeRouteRecords": 89,
+          "activeNonFrequencyTripRecords": 3958
+        },
+        {
+          "id": "3004",
+          "name": "Transports publics fribourgeois",
+          "routeRecords": 1,
+          "activeTripRecords": 0,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0,
+          "routeTypes": [
+            1400
+          ],
+          "activeRouteRecords": 0,
+          "activeNonFrequencyTripRecords": 0
+        }
+      ]
+    },
+    {
+      "region": "neuchatel",
+      "agencies": [
+        {
+          "id": "44",
+          "name": "Transports Publics Neuchâtelois SA (cmn)",
+          "routeRecords": 3,
+          "activeTripRecords": 168,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0,
+          "routeTypes": [
+            106
+          ],
+          "activeRouteRecords": 2,
+          "activeNonFrequencyTripRecords": 168
+        },
+        {
+          "id": "73",
+          "name": "Transports Publics Neuchâtelois SA (rvt)",
+          "routeRecords": 2,
+          "activeTripRecords": 68,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0,
+          "routeTypes": [
+            106
+          ],
+          "activeRouteRecords": 1,
+          "activeNonFrequencyTripRecords": 68
+        },
+        {
+          "id": "153",
+          "name": "Transports Publics Neuchâtelois SA (tn)",
+          "routeRecords": 25,
+          "activeTripRecords": 1408,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0,
+          "routeTypes": [
+            700
+          ],
+          "activeRouteRecords": 12,
+          "activeNonFrequencyTripRecords": 1408
+        },
+        {
+          "id": "792",
+          "name": "Transports Publics Neuchâtelois SA (tc)",
+          "routeRecords": 16,
+          "activeTripRecords": 1404,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0,
+          "routeTypes": [
+            700
+          ],
+          "activeRouteRecords": 14,
+          "activeNonFrequencyTripRecords": 1404
+        },
+        {
+          "id": "166",
+          "name": "Funiculaire Neuchâtel-Université - Neuchâtel-Gare",
+          "routeRecords": 1,
+          "activeTripRecords": 454,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0,
+          "routeTypes": [
+            1400
+          ],
+          "activeRouteRecords": 1,
+          "activeNonFrequencyTripRecords": 454
+        },
+        {
+          "id": "15300",
+          "name": "Transports Publics Neuchâtelois SA",
+          "routeRecords": 2,
+          "activeTripRecords": 336,
+          "activeFrequencyTemplates": 0,
+          "activeFrequencyIntervals": 0,
+          "routeTypes": [
+            1400
+          ],
+          "activeRouteRecords": 2,
+          "activeNonFrequencyTripRecords": 336
+        }
+      ]
+    }
+  ]
+}

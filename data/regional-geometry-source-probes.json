@@ -1,0 +1,87 @@
+{
+  "checkedOn": "2026-09-08",
+  "method": "Unauthenticated HTTPS GET from host network. Source counts are GIS features, not distinct transit lines. Geometry samples are not timetable joins or coverage audits. Response hashes identify the inspected bytes; full responses are not bundled.",
+  "probes": [
+    {
+      "id": "bs-tram",
+      "publisher": "Kanton Basel-Stadt",
+      "url": "https://wfs.geo.bs.ch/?service=WFS&version=2.0.0&request=GetFeature&typeNames=ms%3ALN_Tramlinie&count=3&outputFormat=geojson&srsName=EPSG%3A4326",
+      "httpStatus": 200,
+      "bytes": 21608,
+      "sha256": "08b56f34a603150f7b723c263dfdd1de81cab6c3e11b1c3a781bb6f0e3bfef6a",
+      "sampleFeatures": 3,
+      "geometryTypes": [
+        "LineString"
+      ],
+      "sampleProperties": {
+        "ln_verkehrsmittel": "Tram",
+        "ln_liniennr": "6",
+        "ln_strecke": "Schlaufe Riehen Grenze",
+        "ln_angebot": "ganzer Tag, Mo. bis So.",
+        "ln_tu": "BVB",
+        "ln_shape_length": 0.1
+      },
+      "countUrl": "https://wfs.geo.bs.ch/?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=ms%3ALN_Tramlinie&RESULTTYPE=hits",
+      "reportedFeatureCount": 46
+    },
+    {
+      "id": "bs-bus",
+      "publisher": "Kanton Basel-Stadt",
+      "url": "https://wfs.geo.bs.ch/?service=WFS&version=2.0.0&request=GetFeature&typeNames=ms%3ALN_Buslinie&count=3&outputFormat=geojson&srsName=EPSG%3A4326",
+      "httpStatus": 200,
+      "bytes": 80815,
+      "sha256": "06702dd827c5ff8a687ca52d991d86f484790608484a739d76455e243dd53b72",
+      "sampleFeatures": 3,
+      "geometryTypes": [
+        "LineString",
+        "MultiLineString"
+      ],
+      "sampleProperties": {
+        "ln_verkehrsmittel": "Bus",
+        "ln_liniennr": "42",
+        "ln_strecke": "Bettingen - Habermatten - Hoffmann-La Roche - Tinguely Museum - Bahnhof SBB",
+        "ln_angebot": "Abendspitze, Mo. - Fr.",
+        "ln_tu": "BVB",
+        "ln_shape_length": 10.0
+      },
+      "countUrl": "https://wfs.geo.bs.ch/?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=ms%3ALN_Buslinie&RESULTTYPE=hits",
+      "reportedFeatureCount": 86
+    },
+    {
+      "id": "bern-lines",
+      "publisher": "Kanton Bern",
+      "url": "https://geofiles.be.ch/geoportal/pub/download/OEVTP/oevtp_linie.parquet",
+      "httpStatus": 200,
+      "bytes": 1887084,
+      "sha256": "896ec4fc434a851e6801ef5c1b4771aa8740bb0e83295ff5c7d3e06421dcc308",
+      "verification": "PAR1 magic at both ends; schema/geometry not decoded. Fields documented separately in OEVTP_MODEL.pdf."
+    },
+    {
+      "id": "luzern-bus",
+      "publisher": "Verkehrsverbund Luzern / Kanton Luzern",
+      "url": "https://public.geo.lu.ch/ogd/rest/services/managed/OEVXXXXX_COL_V5_MP/MapServer/8/query?where=1%3D1&outFields=%2A&outSR=4326&returnGeometry=true&resultRecordCount=3&f=geojson",
+      "httpStatus": 200,
+      "bytes": 144572,
+      "sha256": "3c5684691f36ea9fe10fccb69729043f7962f473ac4263dede430ee3694fd364",
+      "sampleFeatures": 3,
+      "geometryTypes": [
+        "MultiLineString"
+      ],
+      "sampleProperties": {
+        "OBJECTID": 1,
+        "BUL_ROUTE": "B282",
+        "FP_JAHR": 2026,
+        "KURSBUCHNR": "60.282",
+        "LINIENNR": "Linie 282",
+        "LINIENBEZ": "Zell - Hüswil - Luthern Dorf - Luthern Bad",
+        "FP_URL": "https://widgets.oev-info.ch/publikation/jahresfpl/60.282.pdf",
+        "TU": 3,
+        "TU_URL": 3,
+        "TP_URL": 1,
+        "SHAPE_Length": 14441.954576438191
+      },
+      "countUrl": "https://public.geo.lu.ch/ogd/rest/services/managed/OEVXXXXX_COL_V5_MP/MapServer/8/query?where=1%3D1&returnCountOnly=true&f=json",
+      "reportedFeatureCount": 114
+    }
+  ]
+}

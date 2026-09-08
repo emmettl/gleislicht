@@ -2,6 +2,8 @@
 
 The national rail study should remain spacious. Multimodal detail belongs in separately generated, lazily loaded studies with their own camera scale, label density and visual hierarchy.
 
+For expansion beyond the Lausanne work, see the [regional network source and feasibility survey](REGIONAL-NETWORK-SURVEY.md), checked on 8 September 2026. It prioritises Basel/TNW, Bern and Luzern, with source/access evidence and follow-up scopes for St.Gallen, Ticino, Graubünden, Fribourg and Neuchâtel.
+
 ## The three scales
 
 1. **Switzerland — rail atlas.** The existing national view keeps rail only. It shows the long-distance timetable, the national silhouette and the cadence between cities without several thousand local bus movements obscuring it.
