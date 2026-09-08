@@ -14,7 +14,8 @@ import { reviewZugBoats } from './review-zug-boats.mjs'
 import { reviewZugGrienbach } from './review-zug-grienbach.mjs'
 import { loadZugRoadContexts, matchZugRoadContext } from './zug-road-contexts.mjs'
 import { loadZugServiceRoads, matchZugServiceRoadPair } from './zug-service-road-geometry.mjs'
-import { loadZugSbbRailSupplement, matchZugRailWithSupplement } from './zug-sbb-rail-supplement.mjs'
+import { loadZugComoRail, matchZugRailWithComo } from './zug-como-rail.mjs'
+import { loadZugSbbRailSupplement } from './zug-sbb-rail-supplement.mjs'
 import { loadZugRail } from './zug-rail-geometry.mjs'
 import { inCanton } from './zug-timetable.mjs'
 import { assertGeometryMeasurementsEqual } from './compare-geometry-measurements.mjs'
@@ -100,6 +101,13 @@ export async function checkZugRegion({ auditPath = 'data/zug-study-audit.json', 
   assert.deepEqual(audit.roadContextSource, roadContexts.source)
   assert.deepEqual(audit.roadContextInventory, roadContexts.inventory)
   assert.deepEqual(audit.roadContextStationWays, roadContexts.stationWays)
+  const comoRail = await loadZugComoRail(audit.policy.railComo, raw, audit.sourceHashes.timetable)
+  assert.equal(audit.sourceHashes.railComo, audit.policy.railComo.sourceSha256)
+  assert.deepEqual(audit.comoRailSource, comoRail.source)
+  assert.deepEqual(audit.comoRailInventory, comoRail.inventory)
+  assert.deepEqual(audit.comoRailPairs, comoRail.pairs)
+  assert.deepEqual(audit.comoRailTiming, comoRail.timing)
+  assert.deepEqual(audit.comoComparisonInventory, comoRail.comparisonInventory)
   const boatReview = await reviewZugBoats(audit.policy.boatReview, audit.policy.boat, raw, audit.sourceHashes.timetable)
   assert.equal(audit.sourceHashes.boatReview, audit.policy.boatReview.sourceSha256)
   assert.deepEqual(audit.boatReview, boatReview)
@@ -156,6 +164,8 @@ export async function checkZugRegion({ auditPath = 'data/zug-study-audit.json', 
     assert.equal(day.admittedTripsUsingServiceRoads, sum(day.directedPatterns.filter(p => p.admitted && p.pairKeys.some(k => serviceKeys.has(k))), 'trips'))
     assert.deepEqual(manifest.metadata.geometry.roadServiceAccess, { source: serviceRoads.source, policy: audit.policy.roadServiceAccess })
     assert(manifest.metadata.attribution.includes(serviceRoads.source.attribution))
+    assert.deepEqual(manifest.metadata.geometry.railComo, { source: comoRail.source, policy: audit.policy.railComo })
+    assert(manifest.metadata.attribution.includes(comoRail.source.attribution))
     assert.deepEqual(manifest.metadata.geometry.boat, { source: boats.source, policy: audit.policy.boat })
     assert(manifest.metadata.attribution.includes(boats.source.attribution))
     const railSupplementKeys = new Set(day.directedStopPairs.filter(p => p.geometrySource === 'sbb-rail-inference' && p.matched).map(p => p.key))
@@ -237,7 +247,7 @@ export async function checkZugRegion({ auditPath = 'data/zug-study-audit.json', 
       const r = rawRoutes.get(p.routeId), a = sourceStops.get(p.fromId), b = sourceStops.get(p.toId)
       const pattern = p.contextPatternId ? patterns.get(p.contextPatternId) : undefined
       const train = pattern ? { routeId: pattern.routeId, directionId: pattern.directionId, calls: pattern.stopIds.map((id, i) => ({ id, pickupType: pattern.callRules[i][0], dropOffType: pattern.callRules[i][1] })) } : undefined
-      let result = train && r.mode === 'rail' ? matchZugRailWithSupplement(rail, railSupplement, train, sourceStops, r)[p.pairIndex] : r.mode === 'boat' ? boats.matchPair(r, a, b) : r.mode === 'mountain' ? mountain.matchPair(r, a, b) : r.mode !== 'bus' ? { reason: `no-reviewed-${r.mode}-geometry` } : matchZugBusPair(graphs.get(zugRouteKey(r)), supplement.graphs.get(zugRouteKey(r)), [Number(a.stop_lon), Number(a.stop_lat)], [Number(b.stop_lon), Number(b.stop_lat)], audit.policy.limits)
+      let result = train && r.mode === 'rail' ? matchZugRailWithComo(rail, railSupplement, comoRail, train, sourceStops, r)[p.pairIndex] : r.mode === 'boat' ? boats.matchPair(r, a, b) : r.mode === 'mountain' ? mountain.matchPair(r, a, b) : r.mode !== 'bus' ? { reason: `no-reviewed-${r.mode}-geometry` } : matchZugBusPair(graphs.get(zugRouteKey(r)), supplement.graphs.get(zugRouteKey(r)), [Number(a.stop_lon), Number(a.stop_lat)], [Number(b.stop_lon), Number(b.stop_lat)], audit.policy.limits)
       if (r.mode === 'bus') {
         result = matchZugRoadPair(result, roads, r.routeId, p.fromId, p.toId)
         result = matchZugServiceRoadPair(result, serviceRoads, r.routeId, p.fromId, p.toId)
@@ -248,6 +258,7 @@ export async function checkZugRegion({ auditPath = 'data/zug-study-audit.json', 
           result = matchZugRoadContext(result, roadContexts, train, sourceStops, p.fromId, p.toId)
         }
       }
+      if (result.geometrySource === 'osm-como-rail-inference') for (const [field, value] of Object.entries(result)) if (field !== 'path') assert.deepEqual(p[field], value)
       if (result.geometrySource === 'osm-road-pattern-inference') for (const [field, value] of Object.entries(result)) if (field !== 'path') assert.deepEqual(p[field], value)
       if (result.geometrySource === 'osm-service-road-inference') for (const [field, value] of Object.entries(result)) if (field !== 'path') assert.deepEqual(p[field], value)
       assertGeometryMeasurementsEqual(result.officialFailure, p.officialFailure)

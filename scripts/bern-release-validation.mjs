@@ -18,14 +18,15 @@ export function validateBernRelease(day, morning, trains) {
   assert(/^[a-f0-9]{64}$/.test(release.archiveManifestSha256) && /^[a-f0-9]{64}$/.test(release.auditSha256), 'Bern: missing archive proof')
   assert(m.geometry.attribution.includes('Amt für öffentlichen Verkehr'))
   assert.equal(m.geometry.archiveSha256, m.sourceHashes.geometryArchive)
-  if (m.sourceHashes.ir66Policy) {
-    const r = m.geometry.ir66Supplement
-    assert.equal(r?.policySha256, m.sourceHashes.ir66Policy, 'Bern: missing IR66 evidence hash')
-    assert.equal(r.sourceId, 'bern-ir66-reviewed-fot-rail-20210706')
-    assert(r.source.attribution.includes('Federal Office of Transport'), 'Bern: missing IR66 source attribution')
+  for (const name of ['ir66', 'ir16']) {
+    if (!m.sourceHashes[`${name}Policy`]) continue
+    const r = m.geometry[`${name}Supplement`]
+    assert.equal(r?.policySha256, m.sourceHashes[`${name}Policy`], `Bern: missing ${name} evidence hash`)
+    assert.equal(r.sourceId, `bern-${name}-reviewed-fot-rail-20210706`)
+    assert(r.source.attribution.includes('Federal Office of Transport'), `Bern: missing ${name} source attribution`)
     assert.equal(r.source.sha256, m.geometry.railSupplement.source.sha256)
-    assert(r.documents.length === 2 && r.documents.every(d => d.attribution && d.url && /^[a-f0-9]{64}$/.test(d.sha256)), 'Bern: missing IR66 document attribution')
-    assert.deepEqual(r.fullEvidence, { path: 'bern-region/sources.json', field: 'ir66Supplement' })
+    assert(r.documents.length === 2 && r.documents.every(d => d.attribution && d.url && /^[a-f0-9]{64}$/.test(d.sha256)), `Bern: missing ${name} document attribution`)
+    assert.deepEqual(r.fullEvidence, { path: 'bern-region/sources.json', field: `${name}Supplement` })
   }
   const headway = trains.filter(t => t.frequency?.exactTimes === 0).length
   assert.deepEqual(release.movements, { total: trains.length, scheduled: trains.length - headway, representativeHeadway: headway })

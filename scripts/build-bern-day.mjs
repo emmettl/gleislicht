@@ -44,11 +44,12 @@ export async function buildBernDay({ date = '2026-09-04', sourceDirectory = 'pub
     localMetadata: 'bern-region/sources.json', localTerms: ['bern-region/terms_of_use_de.pdf', 'bern-region/terms_of_use_fr.pdf'] }
   // Full reviewed topology and projection evidence stays in the archive and
   // sources.json; the display payload carries its hash, dates and attribution.
-  if (geometry.ir66Supplement) {
-    const r = geometry.ir66Supplement
-    geometry.ir66Supplement = { policySha256: r.policySha256, source: r.source, sourceId: r.policy.sourceId,
-      model: r.policy.model, limits: r.policy.limits, documents: r.policy.documents,
-      fullEvidence: { path: 'bern-region/sources.json', field: 'ir66Supplement' } }
+  for (const field of ['railSupplement', 'regionalRailSupplement', 'crosscantonRailSupplement', 'ir66Supplement', 'ir16Supplement']) {
+    const r = geometry[field]
+    if (!r) continue
+    geometry[field] = { policySha256: r.policySha256, source: r.source, sourceId: r.policy.sourceId,
+      model: r.policy.model, limits: r.policy.limits, documents: r.policy.documents ?? [],
+      fullEvidence: { path: 'bern-region/sources.json', field } }
   }
   for (const snapshot of [day, morning]) { snapshot.paths = paths; Object.assign(snapshot.metadata, { bernRelease, geometry }) }
   files.set('bern-region-day-manifest.json', Buffer.from(JSON.stringify(day)))

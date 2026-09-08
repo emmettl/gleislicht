@@ -10,7 +10,10 @@ import { applyBernGeometry } from './bern-line-geometry.mjs'
 const BASELINE = '199a5421db479afc11671e87e5c0b985be16b65c'
 const sha = bytes => createHash('sha256').update(bytes).digest('hex')
 const old = path => execFileSync('git', ['show', `${BASELINE}:${path}`], { maxBuffer: 64 * 1024 * 1024 })
-const json = async path => JSON.parse(await readFile(path))
+// Historical IR66 release; IR16 terminal work has its own proof.
+const RELEASE = '9e7aeb6c63bb4830c906453919ccbf985a9adb85'
+const released = path => execFileSync('git', ['show', `${RELEASE}:${path}`], { maxBuffer: 64 * 1024 * 1024 })
+const json = async path => JSON.parse(released(path))
 assert(process.argv[2], 'Provide the verified Bern timetable cache')
 const raw = JSON.parse(gunzipSync(await readFile(process.argv[2])))
 const source = JSON.parse(gunzipSync(await readFile('data/bern-sources/decoded.json.gz')))
@@ -32,7 +35,7 @@ const canonical = (t, s) => {
 }
 const dates = []
 for (const snapshot of raw.snapshots) {
-  const date = snapshot.metadata.serviceDate, before = await day(old, date), after = await day(readFile, date)
+  const date = snapshot.metadata.serviceDate, before = await day(old, date), after = await day(released, date)
   for (const [id, t] of before.trains) {
     assert(after.trains.has(id), `Lost previous journey ${id}`)
     assert.equal(canonical(t, before.manifest), canonical(after.trains.get(id), after.manifest), `Changed previous movement ${id}`)
@@ -90,7 +93,7 @@ for (const snapshot of raw.snapshots) {
       allPreviouslyMatchedPairAssessmentsUnchanged: true, oldSourceHashesAndLimitsUnchanged: true, allIr66JourneysComplete: true } })
 }
 // This narrowly dated rail supplement must not silently change seasonal results.
-for (const path of ['data/bern-audit/seasonal-summary.json', 'data/bern-audit/seasonal-patterns.json.gz']) assert.deepEqual(await readFile(path), old(path))
+for (const path of ['data/bern-audit/seasonal-summary.json', 'data/bern-audit/seasonal-patterns.json.gz']) assert.deepEqual(released(path), old(path))
 const report = { schemaVersion: 1, baselineCommit: BASELINE, source: rail.metadata, dates, seasonalResultsUnchanged: true,
   scope: 'Exact BLS IR66 identity and nine reviewed terminal Bern platforms plus Kerzers tracks 4/6, September fixtures only. Exact operating-point and source-segment identities; all complete input-pattern contexts must agree. Federal source date is not a certification of current running tracks or alignment.' }
 await writeFile('data/bern-audit/ir66-followup.json', JSON.stringify(report, null, 2) + '\n')

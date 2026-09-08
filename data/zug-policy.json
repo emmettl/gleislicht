@@ -869,10 +869,91 @@
   },
   "grienbachReview": {
     "sourceDirectory": "data/zug-grienbach-review-sources",
-    "sourceSha256": "28ba652736255d7ee1acdb5257ede0223c62fc015f4a48b838adaf9812c52a30"
+    "sourceSha256": "4dae47d6db07eb41d418842c0866c6ced8174099ad7d7830516a6d07a4ab48e2"
   },
   "boatReview": {
     "sourceDirectory": "data/zug-boat-review-sources",
     "sourceSha256": "56ea686238834847edcf97a9336bab3d17c141cfd30336087c0f5d7f16ee7763"
+  },
+  "railComo": {
+    "sourceDirectory": "data/zug-como-rail-sources",
+    "sourceSha256": "7fac1511b68dbbd30f2339410a2d72ebc76c12b927b04cb1741ec001d203c2ca",
+    "snapshot": "2026-09-02T00:00:00Z",
+    "stations": [
+      {
+        "nodeId": 3092179807,
+        "number": "8505307",
+        "name": "Chiasso"
+      },
+      {
+        "nodeId": 4126950607,
+        "number": "8301307",
+        "name": "Como San Giovanni"
+      }
+    ],
+    "limits": {
+      "stationIdentityMetres": 350,
+      "trackAttachmentMetres": 60,
+      "projectionAlternativeMetres": 5,
+      "maximumTurnDegrees": 45,
+      "maximumPathMetres": 8000
+    },
+    "route": {
+      "routeId": "91-2A-Y-j26-1",
+      "agencyId": "11",
+      "line": "EC",
+      "mode": "rail",
+      "routeType": 102
+    },
+    "pairs": [
+      {
+        "stopIds": [
+          "ch:1:sloid:5307:1:1",
+          "8301307"
+        ],
+        "pathSha256": "3f11d8ec38d39cc84b2232572001a8fd7193b44039648f625c4445cc5d5c1c45",
+        "sourceWayIds": [
+          173953229,
+          173953278,
+          1497202734,
+          173953247,
+          173953257,
+          173953232,
+          173953274,
+          173953297,
+          25148357,
+          19748962,
+          19748961,
+          1541021585,
+          192093207
+        ],
+        "tunnelWayId": 25148357
+      },
+      {
+        "stopIds": [
+          "8301307",
+          "ch:1:sloid:5307:0:6"
+        ],
+        "pathSha256": "0404e323771fcb06f0b9870aaaaaacd18ed80e0fa8b83a6beb3e666b480a9905",
+        "sourceWayIds": [
+          192093207,
+          1541021585,
+          19748961,
+          19748962,
+          25148357,
+          173953297,
+          173953274,
+          173953232,
+          173953257,
+          173953247,
+          1497202734,
+          173953278,
+          173953229,
+          900954054
+        ],
+        "tunnelWayId": 25148357
+      }
+    ],
+    "comparisonMaximumVertexGapMetres": 50
   }
 }

@@ -28,7 +28,7 @@ describe('Solothurn display release', () => {
     try {
       for (const date of ['2026-09-04', '2026-09-06']) {
         const report = await buildSolothurnDay({ date, output })
-        expect(report.movements.total).toBe(date.endsWith('04') ? 7024 : 5678)
+        expect(report.movements.total).toBe(date.endsWith('04') ? 7026 : 5680)
         const { files } = await readRegionalDirectory(output, ['solothurn-region'], date)
         const archive = JSON.parse(await readFile(`public/data/solothurn-region/${date}/solothurn-region-day-manifest.json`))
         for (const chunk of archive.chunks) expect(files.get(`solothurn-region-${chunk.path}`).equals(await readFile(`public/data/solothurn-region/${date}/${chunk.path}`))).toBe(true)

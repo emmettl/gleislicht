@@ -1,0 +1,3798 @@
+{
+  "route": {
+    "routeId": "91-2A-Y-j26-1",
+    "agencyId": "11",
+    "line": "EC",
+    "mode": "rail",
+    "routeType": 102
+  },
+  "timetableSha256": "4e06a722d5403334a733d79f3332d204fbeeb0d05ede5c0344dbe7c16c05398d",
+  "patterns": [
+    {
+      "id": "73ef3921589012dc3f4a1f6b",
+      "key": "[\"91-2A-Y-j26-1\",\"0\",[[\"ch:1:sloid:3000:4:7\",\"0\",\"0\"],[\"ch:1:sloid:2204:1:2\",\"0\",\"0\"],[\"ch:1:sloid:5004:1:3\",\"0\",\"0\"],[\"ch:1:sloid:5213:2:3\",\"0\",\"0\"],[\"ch:1:sloid:5300:2:2\",\"0\",\"0\"],[\"ch:1:sloid:5307:1:1\",\"0\",\"0\"],[\"8301307\",\"0\",\"0\"]]]"
+    },
+    {
+      "id": "170e36918e90f79eb9bb39c3",
+      "key": "[\"91-2A-Y-j26-1\",\"0\",[[\"ch:1:sloid:3000:5:8\",\"0\",\"0\"],[\"ch:1:sloid:2204:1:2\",\"0\",\"0\"],[\"ch:1:sloid:5004:1:3\",\"0\",\"0\"],[\"ch:1:sloid:5213:2:3\",\"0\",\"0\"],[\"ch:1:sloid:5300:2:2\",\"0\",\"0\"],[\"ch:1:sloid:5307:1:1\",\"0\",\"0\"],[\"8301307\",\"0\",\"0\"]]]"
+    },
+    {
+      "id": "3df3d7647075a0b1a3e095e7",
+      "key": "[\"91-2A-Y-j26-1\",\"0\",[[\"ch:1:sloid:3000:5:9\",\"0\",\"0\"],[\"ch:1:sloid:2204:1:2\",\"0\",\"0\"],[\"ch:1:sloid:5004:1:3\",\"0\",\"0\"],[\"ch:1:sloid:5213:2:3\",\"0\",\"0\"],[\"ch:1:sloid:5300:2:2\",\"0\",\"0\"],[\"ch:1:sloid:5307:1:1\",\"0\",\"0\"],[\"8301307\",\"0\",\"0\"]]]"
+    },
+    {
+      "id": "22bd568a1b6d7125b0cb93d8",
+      "key": "[\"91-2A-Y-j26-1\",\"0\",[[\"ch:1:sloid:3000:6:11\",\"0\",\"0\"],[\"ch:1:sloid:2204:1:2\",\"0\",\"0\"],[\"ch:1:sloid:5004:1:3\",\"0\",\"0\"],[\"ch:1:sloid:5213:2:3\",\"0\",\"0\"],[\"ch:1:sloid:5300:2:2\",\"0\",\"0\"],[\"ch:1:sloid:5307:1:1\",\"0\",\"0\"],[\"8301307\",\"0\",\"0\"]]]"
+    },
+    {
+      "id": "5a6b8b651202d862fca71e5f",
+      "key": "[\"91-2A-Y-j26-1\",\"0\",[[\"ch:1:sloid:90\",\"0\",\"0\"],[\"ch:1:sloid:10:3:5\",\"0\",\"0\"],[\"ch:1:sloid:3000:6:10\",\"0\",\"0\"],[\"ch:1:sloid:2204:1:2\",\"0\",\"0\"],[\"ch:1:sloid:5004:1:3\",\"0\",\"0\"],[\"ch:1:sloid:5213:2:3\",\"0\",\"0\"],[\"ch:1:sloid:5300:2:2\",\"0\",\"0\"],[\"ch:1:sloid:5307:1:1\",\"0\",\"0\"],[\"8301307\",\"0\",\"0\"]]]"
+    },
+    {
+      "id": "7bde7d65cee353aff34f37da",
+      "key": "[\"91-2A-Y-j26-1\",\"1\",[[\"8301307\",\"0\",\"0\"],[\"ch:1:sloid:5307:0:6\",\"0\",\"0\"],[\"ch:1:sloid:5300:2:3\",\"0\",\"0\"],[\"ch:1:sloid:5213:1:1\",\"0\",\"0\"],[\"ch:1:sloid:5004:1:3\",\"0\",\"0\"],[\"ch:1:sloid:2204:2:3\",\"0\",\"0\"],[\"ch:1:sloid:3000:4:6\",\"0\",\"0\"]]]"
+    },
+    {
+      "id": "ce8b1a60cfd5e843e3ec32d6",
+      "key": "[\"91-2A-Y-j26-1\",\"1\",[[\"8301307\",\"0\",\"0\"],[\"ch:1:sloid:5307:0:6\",\"0\",\"0\"],[\"ch:1:sloid:5300:2:3\",\"0\",\"0\"],[\"ch:1:sloid:5213:1:1\",\"0\",\"0\"],[\"ch:1:sloid:5004:1:3\",\"0\",\"0\"],[\"ch:1:sloid:2204:2:3\",\"0\",\"0\"],[\"ch:1:sloid:3000:4:7\",\"0\",\"0\"]]]"
+    },
+    {
+      "id": "60dde691379507b15d2da3f3",
+      "key": "[\"91-2A-Y-j26-1\",\"1\",[[\"8301307\",\"0\",\"0\"],[\"ch:1:sloid:5307:0:6\",\"0\",\"0\"],[\"ch:1:sloid:5300:2:3\",\"0\",\"0\"],[\"ch:1:sloid:5213:1:1\",\"0\",\"0\"],[\"ch:1:sloid:5004:1:3\",\"0\",\"0\"],[\"ch:1:sloid:2204:2:3\",\"0\",\"0\"],[\"ch:1:sloid:3000:5:8\",\"0\",\"0\"]]]"
+    },
+    {
+      "id": "64e4f1be88358f149d0fabc4",
+      "key": "[\"91-2A-Y-j26-1\",\"1\",[[\"8301307\",\"0\",\"0\"],[\"ch:1:sloid:5307:0:6\",\"0\",\"0\"],[\"ch:1:sloid:5300:2:3\",\"0\",\"0\"],[\"ch:1:sloid:5213:1:1\",\"0\",\"0\"],[\"ch:1:sloid:5004:1:3\",\"0\",\"0\"],[\"ch:1:sloid:2204:2:3\",\"0\",\"0\"],[\"ch:1:sloid:3000:5:9\",\"0\",\"0\"]]]"
+    },
+    {
+      "id": "479b197242f0eb002269caae",
+      "key": "[\"91-2A-Y-j26-1\",\"1\",[[\"8301307\",\"0\",\"0\"],[\"ch:1:sloid:5307:0:6\",\"0\",\"0\"],[\"ch:1:sloid:5300:2:3\",\"0\",\"0\"],[\"ch:1:sloid:5213:1:1\",\"0\",\"0\"],[\"ch:1:sloid:5004:1:3\",\"0\",\"0\"],[\"ch:1:sloid:2204:2:3\",\"0\",\"0\"],[\"ch:1:sloid:3000:6:10\",\"0\",\"0\"]]]"
+    },
+    {
+      "id": "46f4a3cffaf06618ad8f7491",
+      "key": "[\"91-2A-Y-j26-1\",\"1\",[[\"8301307\",\"0\",\"0\"],[\"ch:1:sloid:5307:0:6\",\"0\",\"0\"],[\"ch:1:sloid:5300:2:3\",\"0\",\"0\"],[\"ch:1:sloid:5213:1:1\",\"0\",\"0\"],[\"ch:1:sloid:5004:1:3\",\"0\",\"0\"],[\"ch:1:sloid:2204:2:3\",\"0\",\"0\"],[\"ch:1:sloid:3000:6:11\",\"0\",\"0\"],[\"ch:1:sloid:10:5:10\",\"0\",\"0\"],[\"ch:1:sloid:90\",\"0\",\"0\"]]]"
+    },
+    {
+      "id": "99e78c34cd50f988e5804725",
+      "key": "[\"91-2A-Y-j26-1\",\"1\",[[\"8301307\",\"0\",\"0\"],[\"ch:1:sloid:5307:0:6\",\"0\",\"0\"],[\"ch:1:sloid:5300:2:3\",\"0\",\"0\"],[\"ch:1:sloid:5213:1:1\",\"0\",\"0\"],[\"ch:1:sloid:5004:1:3\",\"0\",\"0\"],[\"ch:1:sloid:2204:2:3\",\"0\",\"0\"],[\"ch:1:sloid:3000:6:11\",\"0\",\"0\"],[\"ch:1:sloid:10:5:9\",\"0\",\"0\"],[\"ch:1:sloid:90\",\"0\",\"0\"]]]"
+    },
+    {
+      "id": "ef0adcd7cd0e10b32b6539e9",
+      "key": "[\"91-2A-Y-j26-1\",\"1\",[[\"8301307\",\"0\",\"0\"],[\"ch:1:sloid:5307:0:6\",\"0\",\"0\"],[\"ch:1:sloid:5300:2:3\",\"0\",\"0\"],[\"ch:1:sloid:5213:1:1\",\"0\",\"0\"],[\"ch:1:sloid:5004:1:3\",\"0\",\"0\"],[\"ch:1:sloid:2204:2:3\",\"0\",\"0\"],[\"ch:1:sloid:3000:6:11\",\"0\",\"0\"]]]"
+    },
+    {
+      "id": "572813d18a0c04d36c99ec7d",
+      "key": "[\"91-2A-Y-j26-1\",\"1\",[[\"8301307\",\"0\",\"0\"],[\"ch:1:sloid:5307:0:6\",\"0\",\"0\"],[\"ch:1:sloid:5300:2:3\",\"0\",\"0\"],[\"ch:1:sloid:5213:1:1\",\"0\",\"0\"],[\"ch:1:sloid:5004:1:3\",\"0\",\"0\"],[\"ch:1:sloid:2204:2:3\",\"0\",\"0\"],[\"ch:1:sloid:3000:7:12\",\"0\",\"0\"]]]"
+    },
+    {
+      "id": "02c0eaa64a149d2aa56623c4",
+      "key": "[\"91-2A-Y-j26-1\",\"1\",[[\"8301307\",\"0\",\"0\"],[\"ch:1:sloid:5307:0:6\",\"0\",\"0\"],[\"ch:1:sloid:5300:2:3\",\"0\",\"0\"],[\"ch:1:sloid:5213:1:1\",\"0\",\"0\"],[\"ch:1:sloid:5004:1:3\",\"0\",\"0\"],[\"ch:1:sloid:2204:2:3\",\"0\",\"0\"],[\"ch:1:sloid:3000:8:14\",\"0\",\"0\"]]]"
+    },
+    {
+      "id": "0a96653a95391f6a120fe785",
+      "key": "[\"91-2A-Y-j26-1\",\"1\",[[\"8301307\",\"0\",\"0\"],[\"ch:1:sloid:5307:0:6\",\"0\",\"0\"],[\"ch:1:sloid:5300:2:3\",\"0\",\"0\"],[\"ch:1:sloid:5213:1:1\",\"0\",\"0\"],[\"ch:1:sloid:5004:4:6\",\"0\",\"0\"],[\"ch:1:sloid:2202:3:5\",\"0\",\"0\"],[\"ch:1:sloid:3000:5:8\",\"0\",\"0\"]]]"
+    }
+  ],
+  "stops": [
+    {
+      "stop_id": "8301307",
+      "stop_name": "Como S. Giovanni",
+      "stop_lat": "45.80896877",
+      "stop_lon": "9.07271488",
+      "location_type": "",
+      "parent_station": "Parent8301307",
+      "platform_code": "",
+      "original_stop_id": "8301307",
+      "didok": "8301307"
+    },
+    {
+      "stop_id": "ch:1:sloid:10:3:5",
+      "stop_name": "Basel SBB",
+      "stop_lat": "47.54692146",
+      "stop_lon": "7.59026109",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:10",
+      "platform_code": "5",
+      "original_stop_id": "ch:1:sloid:10:3:5",
+      "didok": "8500010"
+    },
+    {
+      "stop_id": "ch:1:sloid:10:5:10",
+      "stop_name": "Basel SBB",
+      "stop_lat": "47.54598768",
+      "stop_lon": "7.59171637",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:10",
+      "platform_code": "10",
+      "original_stop_id": "ch:1:sloid:10:5:10",
+      "didok": "8500010"
+    },
+    {
+      "stop_id": "ch:1:sloid:10:5:9",
+      "stop_name": "Basel SBB",
+      "stop_lat": "47.54584821",
+      "stop_lon": "7.59233620",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:10",
+      "platform_code": "9",
+      "original_stop_id": "ch:1:sloid:10:5:9",
+      "didok": "8500010"
+    },
+    {
+      "stop_id": "ch:1:sloid:2202:3:5",
+      "stop_name": "Rotkreuz",
+      "stop_lat": "47.14207964",
+      "stop_lon": "8.43055419",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:2202",
+      "platform_code": "5",
+      "original_stop_id": "ch:1:sloid:2202:3:5",
+      "didok": "8502202"
+    },
+    {
+      "stop_id": "ch:1:sloid:2204:1:2",
+      "stop_name": "Zug",
+      "stop_lat": "47.17485679",
+      "stop_lon": "8.51595703",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:2204",
+      "platform_code": "2",
+      "original_stop_id": "ch:1:sloid:2204:1:2",
+      "didok": "8502204"
+    },
+    {
+      "stop_id": "ch:1:sloid:2204:2:3",
+      "stop_name": "Zug",
+      "stop_lat": "47.17487511",
+      "stop_lon": "8.51585821",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:2204",
+      "platform_code": "3",
+      "original_stop_id": "ch:1:sloid:2204:2:3",
+      "didok": "8502204"
+    },
+    {
+      "stop_id": "ch:1:sloid:3000:4:6",
+      "stop_name": "Zürich HB",
+      "stop_lat": "47.37855334",
+      "stop_lon": "8.53633082",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:3000",
+      "platform_code": "6",
+      "original_stop_id": "ch:1:sloid:3000:4:6",
+      "didok": "8503000"
+    },
+    {
+      "stop_id": "ch:1:sloid:3000:4:7",
+      "stop_name": "Zürich HB",
+      "stop_lat": "47.37862634",
+      "stop_lon": "8.53639370",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:3000",
+      "platform_code": "7",
+      "original_stop_id": "ch:1:sloid:3000:4:7",
+      "didok": "8503000"
+    },
+    {
+      "stop_id": "ch:1:sloid:3000:5:8",
+      "stop_name": "Zürich HB",
+      "stop_lat": "47.37869325",
+      "stop_lon": "8.53642963",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:3000",
+      "platform_code": "8",
+      "original_stop_id": "ch:1:sloid:3000:5:8",
+      "didok": "8503000"
+    },
+    {
+      "stop_id": "ch:1:sloid:3000:5:9",
+      "stop_name": "Zürich HB",
+      "stop_lat": "47.37877233",
+      "stop_lon": "8.53648353",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:3000",
+      "platform_code": "9",
+      "original_stop_id": "ch:1:sloid:3000:5:9",
+      "didok": "8503000"
+    },
+    {
+      "stop_id": "ch:1:sloid:3000:6:10",
+      "stop_name": "Zürich HB",
+      "stop_lat": "47.37883316",
+      "stop_lon": "8.53652845",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:3000",
+      "platform_code": "10",
+      "original_stop_id": "ch:1:sloid:3000:6:10",
+      "didok": "8503000"
+    },
+    {
+      "stop_id": "ch:1:sloid:3000:6:11",
+      "stop_name": "Zürich HB",
+      "stop_lat": "47.37891224",
+      "stop_lon": "8.53657336",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:3000",
+      "platform_code": "11",
+      "original_stop_id": "ch:1:sloid:3000:6:11",
+      "didok": "8503000"
+    },
+    {
+      "stop_id": "ch:1:sloid:3000:7:12",
+      "stop_name": "Zürich HB",
+      "stop_lat": "47.37899740",
+      "stop_lon": "8.53655540",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:3000",
+      "platform_code": "12",
+      "original_stop_id": "ch:1:sloid:3000:7:12",
+      "didok": "8503000"
+    },
+    {
+      "stop_id": "ch:1:sloid:3000:8:14",
+      "stop_name": "Zürich HB",
+      "stop_lat": "47.37913122",
+      "stop_lon": "8.53667218",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:3000",
+      "platform_code": "14",
+      "original_stop_id": "ch:1:sloid:3000:8:14",
+      "didok": "8503000"
+    },
+    {
+      "stop_id": "ch:1:sloid:5004:1:3",
+      "stop_name": "Arth-Goldau",
+      "stop_lat": "47.04923388",
+      "stop_lon": "8.55028166",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:5004",
+      "platform_code": "3",
+      "original_stop_id": "ch:1:sloid:5004:1:3",
+      "didok": "8505004"
+    },
+    {
+      "stop_id": "ch:1:sloid:5004:4:6",
+      "stop_name": "Arth-Goldau",
+      "stop_lat": "47.04887274",
+      "stop_lon": "8.55016487",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:5004",
+      "platform_code": "6",
+      "original_stop_id": "ch:1:sloid:5004:4:6",
+      "didok": "8505004"
+    },
+    {
+      "stop_id": "ch:1:sloid:5213:1:1",
+      "stop_name": "Bellinzona",
+      "stop_lat": "46.19536462",
+      "stop_lon": "9.02955981",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:5213",
+      "platform_code": "1",
+      "original_stop_id": "ch:1:sloid:5213:1:1",
+      "didok": "8505213"
+    },
+    {
+      "stop_id": "ch:1:sloid:5213:2:3",
+      "stop_name": "Bellinzona",
+      "stop_lat": "46.19581854",
+      "stop_lon": "9.03035931",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:5213",
+      "platform_code": "3",
+      "original_stop_id": "ch:1:sloid:5213:2:3",
+      "didok": "8505213"
+    },
+    {
+      "stop_id": "ch:1:sloid:5300:2:2",
+      "stop_name": "Lugano",
+      "stop_lat": "46.00565822",
+      "stop_lon": "8.94652853",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:5300",
+      "platform_code": "2",
+      "original_stop_id": "ch:1:sloid:5300:2:2",
+      "didok": "8505300"
+    },
+    {
+      "stop_id": "ch:1:sloid:5300:2:3",
+      "stop_name": "Lugano",
+      "stop_lat": "46.00563950",
+      "stop_lon": "8.94640276",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:5300",
+      "platform_code": "3",
+      "original_stop_id": "ch:1:sloid:5300:2:3",
+      "didok": "8505300"
+    },
+    {
+      "stop_id": "ch:1:sloid:5307:0:6",
+      "stop_name": "Chiasso",
+      "stop_lat": "45.83204473",
+      "stop_lon": "9.03079050",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:5307",
+      "platform_code": "6",
+      "original_stop_id": "ch:1:sloid:5307:0:6",
+      "didok": "8505307"
+    },
+    {
+      "stop_id": "ch:1:sloid:5307:1:1",
+      "stop_name": "Chiasso",
+      "stop_lat": "45.83187573",
+      "stop_lon": "9.03196729",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:5307",
+      "platform_code": "1",
+      "original_stop_id": "ch:1:sloid:5307:1:1",
+      "didok": "8505307"
+    },
+    {
+      "stop_id": "ch:1:sloid:90",
+      "stop_name": "Basel Bad Bf",
+      "stop_lat": "47.56730906",
+      "stop_lon": "7.60691586",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:90",
+      "platform_code": "",
+      "original_stop_id": "ch:1:sloid:90",
+      "didok": "8500090"
+    }
+  ],
+  "days": [
+    {
+      "date": "2026-09-04",
+      "trips": [
+        {
+          "id": ".ojp-91-2A-Y.1.TA.1025.j26",
+          "sourceTripId": ".ojp-91-2A-Y.1.TA.1025.j26",
+          "directionId": "1",
+          "shortName": "150",
+          "sourceServiceDate": "2026-09-04",
+          "calls": [
+            {
+              "id": "8301307",
+              "sequence": 1,
+              "arrival": 42660,
+              "departure": 42660,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5307:0:6",
+              "sequence": 2,
+              "arrival": 43080,
+              "departure": 43500,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5300:2:3",
+              "sequence": 3,
+              "arrival": 44880,
+              "departure": 45000,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5213:1:1",
+              "sequence": 4,
+              "arrival": 45960,
+              "departure": 46020,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5004:1:3",
+              "sequence": 6,
+              "arrival": 49320,
+              "departure": 49500,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2204:2:3",
+              "sequence": 7,
+              "arrival": 50400,
+              "departure": 50460,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:3000:6:11",
+              "sequence": 9,
+              "arrival": 52020,
+              "departure": 52440,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:10:5:9",
+              "sequence": 11,
+              "arrival": 55560,
+              "departure": 56760,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:90",
+              "sequence": 12,
+              "arrival": 57180,
+              "departure": 57180,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-91-2A-Y.1.TA.303.j26",
+          "sourceTripId": ".ojp-91-2A-Y.1.TA.303.j26",
+          "directionId": "0",
+          "shortName": "123",
+          "sourceServiceDate": "2026-09-04",
+          "calls": [
+            {
+              "id": "ch:1:sloid:3000:6:11",
+              "sequence": 1,
+              "arrival": 55980,
+              "departure": 55980,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2204:1:2",
+              "sequence": 3,
+              "arrival": 57540,
+              "departure": 57600,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5004:1:3",
+              "sequence": 4,
+              "arrival": 58560,
+              "departure": 58680,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5213:2:3",
+              "sequence": 6,
+              "arrival": 61920,
+              "departure": 62040,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5300:2:2",
+              "sequence": 7,
+              "arrival": 62880,
+              "departure": 63000,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5307:1:1",
+              "sequence": 8,
+              "arrival": 64500,
+              "departure": 64920,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "8301307",
+              "sequence": 9,
+              "arrival": 65280,
+              "departure": 65280,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-91-2A-Y.1.TA.334.j26",
+          "sourceTripId": ".ojp-91-2A-Y.1.TA.334.j26",
+          "directionId": "0",
+          "shortName": "19",
+          "sourceServiceDate": "2026-09-04",
+          "calls": [
+            {
+              "id": "ch:1:sloid:3000:5:9",
+              "sequence": 1,
+              "arrival": 41580,
+              "departure": 41580,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2204:1:2",
+              "sequence": 3,
+              "arrival": 43140,
+              "departure": 43200,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5004:1:3",
+              "sequence": 4,
+              "arrival": 44160,
+              "departure": 44280,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5213:2:3",
+              "sequence": 6,
+              "arrival": 47520,
+              "departure": 47640,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5300:2:2",
+              "sequence": 7,
+              "arrival": 48480,
+              "departure": 48600,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5307:1:1",
+              "sequence": 8,
+              "arrival": 50100,
+              "departure": 50520,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "8301307",
+              "sequence": 9,
+              "arrival": 50880,
+              "departure": 50880,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-91-2A-Y.1.TA.336.j26",
+          "sourceTripId": ".ojp-91-2A-Y.1.TA.336.j26",
+          "directionId": "0",
+          "shortName": "25",
+          "sourceServiceDate": "2026-09-04",
+          "calls": [
+            {
+              "id": "ch:1:sloid:3000:5:9",
+              "sequence": 1,
+              "arrival": 63180,
+              "departure": 63180,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2204:1:2",
+              "sequence": 3,
+              "arrival": 64740,
+              "departure": 64800,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5004:1:3",
+              "sequence": 4,
+              "arrival": 65760,
+              "departure": 65880,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5213:2:3",
+              "sequence": 6,
+              "arrival": 69120,
+              "departure": 69240,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5300:2:2",
+              "sequence": 7,
+              "arrival": 70080,
+              "departure": 70200,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5307:1:1",
+              "sequence": 8,
+              "arrival": 71700,
+              "departure": 72120,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "8301307",
+              "sequence": 9,
+              "arrival": 72480,
+              "departure": 72480,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-91-2A-Y.1.TA.380.j26",
+          "sourceTripId": ".ojp-91-2A-Y.1.TA.380.j26",
+          "directionId": "0",
+          "shortName": "15",
+          "sourceServiceDate": "2026-09-04",
+          "calls": [
+            {
+              "id": "ch:1:sloid:3000:5:8",
+              "sequence": 1,
+              "arrival": 34380,
+              "departure": 34380,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2204:1:2",
+              "sequence": 3,
+              "arrival": 35940,
+              "departure": 36000,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5004:1:3",
+              "sequence": 4,
+              "arrival": 36960,
+              "departure": 37080,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5213:2:3",
+              "sequence": 6,
+              "arrival": 40320,
+              "departure": 40440,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5300:2:2",
+              "sequence": 7,
+              "arrival": 41280,
+              "departure": 41400,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5307:1:1",
+              "sequence": 8,
+              "arrival": 42900,
+              "departure": 43320,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "8301307",
+              "sequence": 9,
+              "arrival": 43680,
+              "departure": 43680,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-91-2A-Y.1.TA.385.j26",
+          "sourceTripId": ".ojp-91-2A-Y.1.TA.385.j26",
+          "directionId": "0",
+          "shortName": "37",
+          "sourceServiceDate": "2026-09-04",
+          "calls": [
+            {
+              "id": "ch:1:sloid:3000:5:8",
+              "sequence": 1,
+              "arrival": 52380,
+              "departure": 52380,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2204:1:2",
+              "sequence": 3,
+              "arrival": 53940,
+              "departure": 54000,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5004:1:3",
+              "sequence": 4,
+              "arrival": 54960,
+              "departure": 55080,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5213:2:3",
+              "sequence": 6,
+              "arrival": 58320,
+              "departure": 58440,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5300:2:2",
+              "sequence": 7,
+              "arrival": 59280,
+              "departure": 59400,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5307:1:1",
+              "sequence": 8,
+              "arrival": 60900,
+              "departure": 61320,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "8301307",
+              "sequence": 9,
+              "arrival": 61680,
+              "departure": 61680,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-91-2A-Y.1.TA.393.j26",
+          "sourceTripId": ".ojp-91-2A-Y.1.TA.393.j26",
+          "directionId": "0",
+          "shortName": "27",
+          "sourceServiceDate": "2026-09-04",
+          "calls": [
+            {
+              "id": "ch:1:sloid:3000:5:8",
+              "sequence": 1,
+              "arrival": 66780,
+              "departure": 66780,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2204:1:2",
+              "sequence": 3,
+              "arrival": 68340,
+              "departure": 68400,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5004:1:3",
+              "sequence": 4,
+              "arrival": 69360,
+              "departure": 69480,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5213:2:3",
+              "sequence": 6,
+              "arrival": 72720,
+              "departure": 72840,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5300:2:2",
+              "sequence": 7,
+              "arrival": 73680,
+              "departure": 73800,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5307:1:1",
+              "sequence": 8,
+              "arrival": 75300,
+              "departure": 75720,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "8301307",
+              "sequence": 9,
+              "arrival": 76080,
+              "departure": 76080,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-91-2A-Y.1.TA.396.j26",
+          "sourceTripId": ".ojp-91-2A-Y.1.TA.396.j26",
+          "directionId": "0",
+          "shortName": "31",
+          "sourceServiceDate": "2026-09-04",
+          "calls": [
+            {
+              "id": "ch:1:sloid:3000:5:8",
+              "sequence": 1,
+              "arrival": 30780,
+              "departure": 30780,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2204:1:2",
+              "sequence": 3,
+              "arrival": 32340,
+              "departure": 32400,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5004:1:3",
+              "sequence": 4,
+              "arrival": 33360,
+              "departure": 33480,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5213:2:3",
+              "sequence": 6,
+              "arrival": 36720,
+              "departure": 36840,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5300:2:2",
+              "sequence": 7,
+              "arrival": 37680,
+              "departure": 37800,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5307:1:1",
+              "sequence": 8,
+              "arrival": 39300,
+              "departure": 39720,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "8301307",
+              "sequence": 9,
+              "arrival": 40080,
+              "departure": 40080,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-91-2A-Y.1.TA.406.j26",
+          "sourceTripId": ".ojp-91-2A-Y.1.TA.406.j26",
+          "directionId": "0",
+          "shortName": "11",
+          "sourceServiceDate": "2026-09-04",
+          "calls": [
+            {
+              "id": "ch:1:sloid:3000:4:7",
+              "sequence": 1,
+              "arrival": 23580,
+              "departure": 23580,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2204:1:2",
+              "sequence": 3,
+              "arrival": 25140,
+              "departure": 25200,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5004:1:3",
+              "sequence": 4,
+              "arrival": 26160,
+              "departure": 26280,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5213:2:3",
+              "sequence": 6,
+              "arrival": 29520,
+              "departure": 29640,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5300:2:2",
+              "sequence": 7,
+              "arrival": 30480,
+              "departure": 30600,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5307:1:1",
+              "sequence": 8,
+              "arrival": 32100,
+              "departure": 32520,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "8301307",
+              "sequence": 9,
+              "arrival": 32880,
+              "departure": 32880,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-91-2A-Y.1.TA.409.j26",
+          "sourceTripId": ".ojp-91-2A-Y.1.TA.409.j26",
+          "directionId": "0",
+          "shortName": "29",
+          "sourceServiceDate": "2026-09-04",
+          "calls": [
+            {
+              "id": "ch:1:sloid:3000:4:7",
+              "sequence": 1,
+              "arrival": 70380,
+              "departure": 70380,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2204:1:2",
+              "sequence": 3,
+              "arrival": 71940,
+              "departure": 72000,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5004:1:3",
+              "sequence": 4,
+              "arrival": 72960,
+              "departure": 73080,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5213:2:3",
+              "sequence": 6,
+              "arrival": 76320,
+              "departure": 76440,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5300:2:2",
+              "sequence": 7,
+              "arrival": 77280,
+              "departure": 77400,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5307:1:1",
+              "sequence": 8,
+              "arrival": 78900,
+              "departure": 79320,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "8301307",
+              "sequence": 9,
+              "arrival": 79680,
+              "departure": 79680,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-91-2A-Y.1.TA.413.j26",
+          "sourceTripId": ".ojp-91-2A-Y.1.TA.413.j26",
+          "directionId": "0",
+          "shortName": "21",
+          "sourceServiceDate": "2026-09-04",
+          "calls": [
+            {
+              "id": "ch:1:sloid:3000:4:7",
+              "sequence": 1,
+              "arrival": 48780,
+              "departure": 48780,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2204:1:2",
+              "sequence": 3,
+              "arrival": 50340,
+              "departure": 50400,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5004:1:3",
+              "sequence": 4,
+              "arrival": 51360,
+              "departure": 51480,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5213:2:3",
+              "sequence": 6,
+              "arrival": 54720,
+              "departure": 54840,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5300:2:2",
+              "sequence": 7,
+              "arrival": 55680,
+              "departure": 55800,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5307:1:1",
+              "sequence": 8,
+              "arrival": 57300,
+              "departure": 57720,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "8301307",
+              "sequence": 9,
+              "arrival": 58080,
+              "departure": 58080,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-91-2A-Y.1.TA.418.j26",
+          "sourceTripId": ".ojp-91-2A-Y.1.TA.418.j26",
+          "directionId": "0",
+          "shortName": "153",
+          "sourceServiceDate": "2026-09-04",
+          "calls": [
+            {
+              "id": "ch:1:sloid:3000:4:7",
+              "sequence": 1,
+              "arrival": 37980,
+              "departure": 37980,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2204:1:2",
+              "sequence": 3,
+              "arrival": 39540,
+              "departure": 39600,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5004:1:3",
+              "sequence": 4,
+              "arrival": 40560,
+              "departure": 40680,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5213:2:3",
+              "sequence": 6,
+              "arrival": 43920,
+              "departure": 44040,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5300:2:2",
+              "sequence": 7,
+              "arrival": 44880,
+              "departure": 45000,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5307:1:1",
+              "sequence": 8,
+              "arrival": 46500,
+              "departure": 46920,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "8301307",
+              "sequence": 9,
+              "arrival": 47280,
+              "departure": 47280,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-91-2A-Y.1.TA.420.j26",
+          "sourceTripId": ".ojp-91-2A-Y.1.TA.420.j26",
+          "directionId": "0",
+          "shortName": "13",
+          "sourceServiceDate": "2026-09-04",
+          "calls": [
+            {
+              "id": "ch:1:sloid:3000:4:7",
+              "sequence": 1,
+              "arrival": 27180,
+              "departure": 27180,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2204:1:2",
+              "sequence": 3,
+              "arrival": 28740,
+              "departure": 28800,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5004:1:3",
+              "sequence": 4,
+              "arrival": 29760,
+              "departure": 29880,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5213:2:3",
+              "sequence": 6,
+              "arrival": 33120,
+              "departure": 33240,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5300:2:2",
+              "sequence": 7,
+              "arrival": 34080,
+              "departure": 34200,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5307:1:1",
+              "sequence": 8,
+              "arrival": 35700,
+              "departure": 36120,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "8301307",
+              "sequence": 9,
+              "arrival": 36480,
+              "departure": 36480,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-91-2A-Y.1.TA.501.j26",
+          "sourceTripId": ".ojp-91-2A-Y.1.TA.501.j26",
+          "directionId": "0",
+          "shortName": "151",
+          "sourceServiceDate": "2026-09-04",
+          "calls": [
+            {
+              "id": "ch:1:sloid:90",
+              "sequence": 1,
+              "arrival": 38820,
+              "departure": 38820,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:10:3:5",
+              "sequence": 2,
+              "arrival": 39240,
+              "departure": 40020,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:3000:6:10",
+              "sequence": 4,
+              "arrival": 43200,
+              "departure": 45180,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2204:1:2",
+              "sequence": 6,
+              "arrival": 46740,
+              "departure": 46800,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5004:1:3",
+              "sequence": 7,
+              "arrival": 47760,
+              "departure": 47880,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5213:2:3",
+              "sequence": 9,
+              "arrival": 51120,
+              "departure": 51240,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5300:2:2",
+              "sequence": 10,
+              "arrival": 52080,
+              "departure": 52200,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5307:1:1",
+              "sequence": 11,
+              "arrival": 53700,
+              "departure": 54120,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "8301307",
+              "sequence": 12,
+              "arrival": 54480,
+              "departure": 54480,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-91-2A-Y.1.TA.827.j26",
+          "sourceTripId": ".ojp-91-2A-Y.1.TA.827.j26",
+          "directionId": "1",
+          "shortName": "24",
+          "sourceServiceDate": "2026-09-04",
+          "calls": [
+            {
+              "id": "8301307",
+              "sequence": 1,
+              "arrival": 64260,
+              "departure": 64260,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5307:0:6",
+              "sequence": 2,
+              "arrival": 64680,
+              "departure": 65100,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5300:2:3",
+              "sequence": 3,
+              "arrival": 66480,
+              "departure": 66600,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5213:1:1",
+              "sequence": 4,
+              "arrival": 67560,
+              "departure": 67620,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5004:1:3",
+              "sequence": 6,
+              "arrival": 70920,
+              "departure": 71100,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2204:2:3",
+              "sequence": 7,
+              "arrival": 72000,
+              "departure": 72060,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:3000:7:12",
+              "sequence": 9,
+              "arrival": 73620,
+              "departure": 73620,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-91-2A-Y.1.TA.858.j26",
+          "sourceTripId": ".ojp-91-2A-Y.1.TA.858.j26",
+          "directionId": "1",
+          "shortName": "16",
+          "sourceServiceDate": "2026-09-04",
+          "calls": [
+            {
+              "id": "8301307",
+              "sequence": 1,
+              "arrival": 49860,
+              "departure": 49860,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5307:0:6",
+              "sequence": 2,
+              "arrival": 50280,
+              "departure": 50700,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5300:2:3",
+              "sequence": 3,
+              "arrival": 52080,
+              "departure": 52200,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5213:1:1",
+              "sequence": 4,
+              "arrival": 53160,
+              "departure": 53220,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5004:1:3",
+              "sequence": 6,
+              "arrival": 56520,
+              "departure": 56700,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2204:2:3",
+              "sequence": 7,
+              "arrival": 57600,
+              "departure": 57660,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:3000:5:9",
+              "sequence": 9,
+              "arrival": 59220,
+              "departure": 59220,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-91-2A-Y.1.TA.861.j26",
+          "sourceTripId": ".ojp-91-2A-Y.1.TA.861.j26",
+          "directionId": "1",
+          "shortName": "28",
+          "sourceServiceDate": "2026-09-04",
+          "calls": [
+            {
+              "id": "8301307",
+              "sequence": 1,
+              "arrival": 75060,
+              "departure": 75060,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5307:0:6",
+              "sequence": 2,
+              "arrival": 75480,
+              "departure": 75900,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5300:2:3",
+              "sequence": 3,
+              "arrival": 77280,
+              "departure": 77400,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5213:1:1",
+              "sequence": 4,
+              "arrival": 78360,
+              "departure": 78420,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5004:1:3",
+              "sequence": 6,
+              "arrival": 81720,
+              "departure": 81900,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2204:2:3",
+              "sequence": 7,
+              "arrival": 82800,
+              "departure": 82860,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:3000:5:9",
+              "sequence": 9,
+              "arrival": 84420,
+              "departure": 84420,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-91-2A-Y.1.TA.870.j26",
+          "sourceTripId": ".ojp-91-2A-Y.1.TA.870.j26",
+          "directionId": "1",
+          "shortName": "22",
+          "sourceServiceDate": "2026-09-04",
+          "calls": [
+            {
+              "id": "8301307",
+              "sequence": 1,
+              "arrival": 60660,
+              "departure": 60660,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5307:0:6",
+              "sequence": 2,
+              "arrival": 61080,
+              "departure": 61500,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5300:2:3",
+              "sequence": 3,
+              "arrival": 62880,
+              "departure": 63000,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5213:1:1",
+              "sequence": 4,
+              "arrival": 63960,
+              "departure": 64020,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5004:1:3",
+              "sequence": 6,
+              "arrival": 67320,
+              "departure": 67500,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2204:2:3",
+              "sequence": 7,
+              "arrival": 68400,
+              "departure": 68460,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:3000:5:9",
+              "sequence": 9,
+              "arrival": 70020,
+              "departure": 70020,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-91-2A-Y.1.TA.878.j26",
+          "sourceTripId": ".ojp-91-2A-Y.1.TA.878.j26",
+          "directionId": "1",
+          "shortName": "10",
+          "sourceServiceDate": "2026-09-04",
+          "calls": [
+            {
+              "id": "8301307",
+              "sequence": 1,
+              "arrival": 28260,
+              "departure": 28260,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5307:0:6",
+              "sequence": 2,
+              "arrival": 28680,
+              "departure": 29100,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5300:2:3",
+              "sequence": 3,
+              "arrival": 30480,
+              "departure": 30600,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5213:1:1",
+              "sequence": 4,
+              "arrival": 31560,
+              "departure": 31620,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5004:1:3",
+              "sequence": 6,
+              "arrival": 34920,
+              "departure": 35100,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2204:2:3",
+              "sequence": 7,
+              "arrival": 36000,
+              "departure": 36060,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:3000:5:9",
+              "sequence": 9,
+              "arrival": 37620,
+              "departure": 37620,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-91-2A-Y.1.TA.889.j26",
+          "sourceTripId": ".ojp-91-2A-Y.1.TA.889.j26",
+          "directionId": "1",
+          "shortName": "152",
+          "sourceServiceDate": "2026-09-04",
+          "calls": [
+            {
+              "id": "8301307",
+              "sequence": 1,
+              "arrival": 53460,
+              "departure": 53460,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5307:0:6",
+              "sequence": 2,
+              "arrival": 53880,
+              "departure": 54300,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5300:2:3",
+              "sequence": 3,
+              "arrival": 55680,
+              "departure": 55800,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5213:1:1",
+              "sequence": 4,
+              "arrival": 56760,
+              "departure": 56820,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5004:1:3",
+              "sequence": 6,
+              "arrival": 60120,
+              "departure": 60300,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2204:2:3",
+              "sequence": 7,
+              "arrival": 61200,
+              "departure": 61260,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:3000:5:8",
+              "sequence": 9,
+              "arrival": 62820,
+              "departure": 62820,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-91-2A-Y.1.TA.906.j26",
+          "sourceTripId": ".ojp-91-2A-Y.1.TA.906.j26",
+          "directionId": "1",
+          "shortName": "14",
+          "sourceServiceDate": "2026-09-04",
+          "calls": [
+            {
+              "id": "8301307",
+              "sequence": 1,
+              "arrival": 35460,
+              "departure": 35460,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5307:0:6",
+              "sequence": 2,
+              "arrival": 35880,
+              "departure": 36300,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5300:2:3",
+              "sequence": 3,
+              "arrival": 37680,
+              "departure": 37800,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5213:1:1",
+              "sequence": 4,
+              "arrival": 38760,
+              "departure": 38820,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5004:1:3",
+              "sequence": 6,
+              "arrival": 42120,
+              "departure": 42300,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2204:2:3",
+              "sequence": 7,
+              "arrival": 43200,
+              "departure": 43260,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:3000:4:7",
+              "sequence": 9,
+              "arrival": 44820,
+              "departure": 44820,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-91-2A-Y.1.TA.912.j26",
+          "sourceTripId": ".ojp-91-2A-Y.1.TA.912.j26",
+          "directionId": "1",
+          "shortName": "126",
+          "sourceServiceDate": "2026-09-04",
+          "calls": [
+            {
+              "id": "8301307",
+              "sequence": 1,
+              "arrival": 71460,
+              "departure": 71460,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5307:0:6",
+              "sequence": 2,
+              "arrival": 71880,
+              "departure": 72300,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5300:2:3",
+              "sequence": 3,
+              "arrival": 73680,
+              "departure": 73800,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5213:1:1",
+              "sequence": 4,
+              "arrival": 74760,
+              "departure": 74820,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5004:1:3",
+              "sequence": 6,
+              "arrival": 78120,
+              "departure": 78300,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2204:2:3",
+              "sequence": 7,
+              "arrival": 79200,
+              "departure": 79260,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:3000:4:7",
+              "sequence": 9,
+              "arrival": 80820,
+              "departure": 80820,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-91-2A-Y.1.TA.921.j26",
+          "sourceTripId": ".ojp-91-2A-Y.1.TA.921.j26",
+          "directionId": "1",
+          "shortName": "20",
+          "sourceServiceDate": "2026-09-04",
+          "calls": [
+            {
+              "id": "8301307",
+              "sequence": 1,
+              "arrival": 57060,
+              "departure": 57060,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5307:0:6",
+              "sequence": 2,
+              "arrival": 57480,
+              "departure": 57900,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5300:2:3",
+              "sequence": 3,
+              "arrival": 59280,
+              "departure": 59400,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5213:1:1",
+              "sequence": 4,
+              "arrival": 60360,
+              "departure": 60420,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5004:1:3",
+              "sequence": 6,
+              "arrival": 63720,
+              "departure": 63900,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2204:2:3",
+              "sequence": 7,
+              "arrival": 64800,
+              "departure": 64860,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:3000:4:7",
+              "sequence": 9,
+              "arrival": 66420,
+              "departure": 66420,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-91-2A-Y.1.TA.936.j26",
+          "sourceTripId": ".ojp-91-2A-Y.1.TA.936.j26",
+          "directionId": "1",
+          "shortName": "12",
+          "sourceServiceDate": "2026-09-04",
+          "calls": [
+            {
+              "id": "8301307",
+              "sequence": 1,
+              "arrival": 31860,
+              "departure": 31860,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5307:0:6",
+              "sequence": 2,
+              "arrival": 32280,
+              "departure": 32700,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5300:2:3",
+              "sequence": 3,
+              "arrival": 34080,
+              "departure": 34200,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5213:1:1",
+              "sequence": 4,
+              "arrival": 35160,
+              "departure": 35220,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5004:1:3",
+              "sequence": 6,
+              "arrival": 38520,
+              "departure": 38700,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2204:2:3",
+              "sequence": 7,
+              "arrival": 39600,
+              "departure": 39660,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:3000:6:10",
+              "sequence": 9,
+              "arrival": 41220,
+              "departure": 41220,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-91-2A-Y.1.TA.966.j26",
+          "sourceTripId": ".ojp-91-2A-Y.1.TA.966.j26",
+          "directionId": "1",
+          "shortName": "36",
+          "sourceServiceDate": "2026-09-04",
+          "calls": [
+            {
+              "id": "8301307",
+              "sequence": 1,
+              "arrival": 67860,
+              "departure": 67860,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5307:0:6",
+              "sequence": 2,
+              "arrival": 68280,
+              "departure": 68700,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5300:2:3",
+              "sequence": 3,
+              "arrival": 70080,
+              "departure": 70200,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5213:1:1",
+              "sequence": 4,
+              "arrival": 71160,
+              "departure": 71220,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5004:1:3",
+              "sequence": 6,
+              "arrival": 74520,
+              "departure": 74700,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2204:2:3",
+              "sequence": 7,
+              "arrival": 75600,
+              "departure": 75660,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:3000:8:14",
+              "sequence": 9,
+              "arrival": 77220,
+              "departure": 77220,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-91-2A-Y.1.TA.973.j26",
+          "sourceTripId": ".ojp-91-2A-Y.1.TA.973.j26",
+          "directionId": "1",
+          "shortName": "30",
+          "sourceServiceDate": "2026-09-04",
+          "calls": [
+            {
+              "id": "8301307",
+              "sequence": 1,
+              "arrival": 46260,
+              "departure": 46260,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5307:0:6",
+              "sequence": 2,
+              "arrival": 46680,
+              "departure": 47100,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5300:2:3",
+              "sequence": 3,
+              "arrival": 48480,
+              "departure": 48600,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5213:1:1",
+              "sequence": 4,
+              "arrival": 49560,
+              "departure": 49620,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5004:1:3",
+              "sequence": 6,
+              "arrival": 52920,
+              "departure": 53100,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2204:2:3",
+              "sequence": 7,
+              "arrival": 54000,
+              "departure": 54060,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:3000:4:6",
+              "sequence": 9,
+              "arrival": 55620,
+              "departure": 55620,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-09-06",
+      "trips": [
+        {
+          "id": ".ojp-91-2A-Y.1.TA.1028.j26",
+          "sourceTripId": ".ojp-91-2A-Y.1.TA.1028.j26",
+          "directionId": "1",
+          "shortName": "150",
+          "sourceServiceDate": "2026-09-06",
+          "calls": [
+            {
+              "id": "8301307",
+              "sequence": 1,
+              "arrival": 42660,
+              "departure": 42660,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5307:0:6",
+              "sequence": 2,
+              "arrival": 43080,
+              "departure": 43500,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5300:2:3",
+              "sequence": 3,
+              "arrival": 44880,
+              "departure": 45000,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5213:1:1",
+              "sequence": 4,
+              "arrival": 45960,
+              "departure": 46020,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5004:1:3",
+              "sequence": 6,
+              "arrival": 49320,
+              "departure": 49500,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2204:2:3",
+              "sequence": 7,
+              "arrival": 50400,
+              "departure": 50460,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:3000:6:11",
+              "sequence": 9,
+              "arrival": 52020,
+              "departure": 52440,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:10:5:10",
+              "sequence": 11,
+              "arrival": 55560,
+              "departure": 56760,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:90",
+              "sequence": 12,
+              "arrival": 57180,
+              "departure": 57180,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-91-2A-Y.1.TA.334.j26",
+          "sourceTripId": ".ojp-91-2A-Y.1.TA.334.j26",
+          "directionId": "0",
+          "shortName": "19",
+          "sourceServiceDate": "2026-09-06",
+          "calls": [
+            {
+              "id": "ch:1:sloid:3000:5:9",
+              "sequence": 1,
+              "arrival": 41580,
+              "departure": 41580,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2204:1:2",
+              "sequence": 3,
+              "arrival": 43140,
+              "departure": 43200,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5004:1:3",
+              "sequence": 4,
+              "arrival": 44160,
+              "departure": 44280,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5213:2:3",
+              "sequence": 6,
+              "arrival": 47520,
+              "departure": 47640,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5300:2:2",
+              "sequence": 7,
+              "arrival": 48480,
+              "departure": 48600,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5307:1:1",
+              "sequence": 8,
+              "arrival": 50100,
+              "departure": 50520,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "8301307",
+              "sequence": 9,
+              "arrival": 50880,
+              "departure": 50880,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-91-2A-Y.1.TA.343.j26",
+          "sourceTripId": ".ojp-91-2A-Y.1.TA.343.j26",
+          "directionId": "0",
+          "shortName": "15",
+          "sourceServiceDate": "2026-09-06",
+          "calls": [
+            {
+              "id": "ch:1:sloid:3000:5:9",
+              "sequence": 1,
+              "arrival": 34380,
+              "departure": 34380,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2204:1:2",
+              "sequence": 3,
+              "arrival": 35940,
+              "departure": 36000,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5004:1:3",
+              "sequence": 4,
+              "arrival": 36960,
+              "departure": 37080,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5213:2:3",
+              "sequence": 6,
+              "arrival": 40320,
+              "departure": 40440,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5300:2:2",
+              "sequence": 7,
+              "arrival": 41280,
+              "departure": 41400,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5307:1:1",
+              "sequence": 8,
+              "arrival": 42900,
+              "departure": 43320,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "8301307",
+              "sequence": 9,
+              "arrival": 43680,
+              "departure": 43680,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-91-2A-Y.1.TA.353.j26",
+          "sourceTripId": ".ojp-91-2A-Y.1.TA.353.j26",
+          "directionId": "0",
+          "shortName": "27",
+          "sourceServiceDate": "2026-09-06",
+          "calls": [
+            {
+              "id": "ch:1:sloid:3000:5:9",
+              "sequence": 1,
+              "arrival": 66780,
+              "departure": 66780,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2204:1:2",
+              "sequence": 3,
+              "arrival": 68340,
+              "departure": 68400,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5004:1:3",
+              "sequence": 4,
+              "arrival": 69360,
+              "departure": 69480,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5213:2:3",
+              "sequence": 6,
+              "arrival": 72720,
+              "departure": 72840,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5300:2:2",
+              "sequence": 7,
+              "arrival": 73680,
+              "departure": 73800,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5307:1:1",
+              "sequence": 8,
+              "arrival": 75300,
+              "departure": 75720,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "8301307",
+              "sequence": 9,
+              "arrival": 76080,
+              "departure": 76080,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-91-2A-Y.1.TA.363.j26",
+          "sourceTripId": ".ojp-91-2A-Y.1.TA.363.j26",
+          "directionId": "0",
+          "shortName": "123",
+          "sourceServiceDate": "2026-09-06",
+          "calls": [
+            {
+              "id": "ch:1:sloid:3000:5:8",
+              "sequence": 1,
+              "arrival": 55980,
+              "departure": 55980,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2204:1:2",
+              "sequence": 3,
+              "arrival": 57540,
+              "departure": 57600,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5004:1:3",
+              "sequence": 4,
+              "arrival": 58560,
+              "departure": 58680,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5213:2:3",
+              "sequence": 6,
+              "arrival": 61920,
+              "departure": 62040,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5300:2:2",
+              "sequence": 7,
+              "arrival": 62880,
+              "departure": 63000,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5307:1:1",
+              "sequence": 8,
+              "arrival": 64500,
+              "departure": 64920,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "8301307",
+              "sequence": 9,
+              "arrival": 65280,
+              "departure": 65280,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-91-2A-Y.1.TA.365.j26",
+          "sourceTripId": ".ojp-91-2A-Y.1.TA.365.j26",
+          "directionId": "0",
+          "shortName": "11",
+          "sourceServiceDate": "2026-09-06",
+          "calls": [
+            {
+              "id": "ch:1:sloid:3000:5:8",
+              "sequence": 1,
+              "arrival": 23580,
+              "departure": 23580,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2204:1:2",
+              "sequence": 3,
+              "arrival": 25140,
+              "departure": 25200,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5004:1:3",
+              "sequence": 4,
+              "arrival": 26160,
+              "departure": 26280,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5213:2:3",
+              "sequence": 6,
+              "arrival": 29520,
+              "departure": 29640,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5300:2:2",
+              "sequence": 7,
+              "arrival": 30480,
+              "departure": 30600,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5307:1:1",
+              "sequence": 8,
+              "arrival": 32100,
+              "departure": 32520,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "8301307",
+              "sequence": 9,
+              "arrival": 32880,
+              "departure": 32880,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-91-2A-Y.1.TA.371.j26",
+          "sourceTripId": ".ojp-91-2A-Y.1.TA.371.j26",
+          "directionId": "0",
+          "shortName": "25",
+          "sourceServiceDate": "2026-09-06",
+          "calls": [
+            {
+              "id": "ch:1:sloid:3000:5:8",
+              "sequence": 1,
+              "arrival": 63180,
+              "departure": 63180,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2204:1:2",
+              "sequence": 3,
+              "arrival": 64740,
+              "departure": 64800,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5004:1:3",
+              "sequence": 4,
+              "arrival": 65760,
+              "departure": 65880,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5213:2:3",
+              "sequence": 6,
+              "arrival": 69120,
+              "departure": 69240,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5300:2:2",
+              "sequence": 7,
+              "arrival": 70080,
+              "departure": 70200,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5307:1:1",
+              "sequence": 8,
+              "arrival": 71700,
+              "departure": 72120,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "8301307",
+              "sequence": 9,
+              "arrival": 72480,
+              "departure": 72480,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-91-2A-Y.1.TA.373.j26",
+          "sourceTripId": ".ojp-91-2A-Y.1.TA.373.j26",
+          "directionId": "0",
+          "shortName": "29",
+          "sourceServiceDate": "2026-09-06",
+          "calls": [
+            {
+              "id": "ch:1:sloid:3000:5:8",
+              "sequence": 1,
+              "arrival": 70380,
+              "departure": 70380,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2204:1:2",
+              "sequence": 3,
+              "arrival": 71940,
+              "departure": 72000,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5004:1:3",
+              "sequence": 4,
+              "arrival": 72960,
+              "departure": 73080,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5213:2:3",
+              "sequence": 6,
+              "arrival": 76320,
+              "departure": 76440,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5300:2:2",
+              "sequence": 7,
+              "arrival": 77280,
+              "departure": 77400,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5307:1:1",
+              "sequence": 8,
+              "arrival": 78900,
+              "departure": 79320,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "8301307",
+              "sequence": 9,
+              "arrival": 79680,
+              "departure": 79680,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-91-2A-Y.1.TA.385.j26",
+          "sourceTripId": ".ojp-91-2A-Y.1.TA.385.j26",
+          "directionId": "0",
+          "shortName": "37",
+          "sourceServiceDate": "2026-09-06",
+          "calls": [
+            {
+              "id": "ch:1:sloid:3000:5:8",
+              "sequence": 1,
+              "arrival": 52380,
+              "departure": 52380,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2204:1:2",
+              "sequence": 3,
+              "arrival": 53940,
+              "departure": 54000,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5004:1:3",
+              "sequence": 4,
+              "arrival": 54960,
+              "departure": 55080,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5213:2:3",
+              "sequence": 6,
+              "arrival": 58320,
+              "departure": 58440,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5300:2:2",
+              "sequence": 7,
+              "arrival": 59280,
+              "departure": 59400,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5307:1:1",
+              "sequence": 8,
+              "arrival": 60900,
+              "departure": 61320,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "8301307",
+              "sequence": 9,
+              "arrival": 61680,
+              "departure": 61680,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-91-2A-Y.1.TA.388.j26",
+          "sourceTripId": ".ojp-91-2A-Y.1.TA.388.j26",
+          "directionId": "0",
+          "shortName": "13",
+          "sourceServiceDate": "2026-09-06",
+          "calls": [
+            {
+              "id": "ch:1:sloid:3000:5:8",
+              "sequence": 1,
+              "arrival": 27180,
+              "departure": 27180,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2204:1:2",
+              "sequence": 3,
+              "arrival": 28740,
+              "departure": 28800,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5004:1:3",
+              "sequence": 4,
+              "arrival": 29760,
+              "departure": 29880,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5213:2:3",
+              "sequence": 6,
+              "arrival": 33120,
+              "departure": 33240,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5300:2:2",
+              "sequence": 7,
+              "arrival": 34080,
+              "departure": 34200,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5307:1:1",
+              "sequence": 8,
+              "arrival": 35700,
+              "departure": 36120,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "8301307",
+              "sequence": 9,
+              "arrival": 36480,
+              "departure": 36480,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-91-2A-Y.1.TA.413.j26",
+          "sourceTripId": ".ojp-91-2A-Y.1.TA.413.j26",
+          "directionId": "0",
+          "shortName": "21",
+          "sourceServiceDate": "2026-09-06",
+          "calls": [
+            {
+              "id": "ch:1:sloid:3000:4:7",
+              "sequence": 1,
+              "arrival": 48780,
+              "departure": 48780,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2204:1:2",
+              "sequence": 3,
+              "arrival": 50340,
+              "departure": 50400,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5004:1:3",
+              "sequence": 4,
+              "arrival": 51360,
+              "departure": 51480,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5213:2:3",
+              "sequence": 6,
+              "arrival": 54720,
+              "departure": 54840,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5300:2:2",
+              "sequence": 7,
+              "arrival": 55680,
+              "departure": 55800,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5307:1:1",
+              "sequence": 8,
+              "arrival": 57300,
+              "departure": 57720,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "8301307",
+              "sequence": 9,
+              "arrival": 58080,
+              "departure": 58080,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-91-2A-Y.1.TA.418.j26",
+          "sourceTripId": ".ojp-91-2A-Y.1.TA.418.j26",
+          "directionId": "0",
+          "shortName": "153",
+          "sourceServiceDate": "2026-09-06",
+          "calls": [
+            {
+              "id": "ch:1:sloid:3000:4:7",
+              "sequence": 1,
+              "arrival": 37980,
+              "departure": 37980,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2204:1:2",
+              "sequence": 3,
+              "arrival": 39540,
+              "departure": 39600,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5004:1:3",
+              "sequence": 4,
+              "arrival": 40560,
+              "departure": 40680,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5213:2:3",
+              "sequence": 6,
+              "arrival": 43920,
+              "departure": 44040,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5300:2:2",
+              "sequence": 7,
+              "arrival": 44880,
+              "departure": 45000,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5307:1:1",
+              "sequence": 8,
+              "arrival": 46500,
+              "departure": 46920,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "8301307",
+              "sequence": 9,
+              "arrival": 47280,
+              "departure": 47280,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-91-2A-Y.1.TA.422.j26",
+          "sourceTripId": ".ojp-91-2A-Y.1.TA.422.j26",
+          "directionId": "0",
+          "shortName": "301",
+          "sourceServiceDate": "2026-09-06",
+          "calls": [
+            {
+              "id": "ch:1:sloid:3000:4:7",
+              "sequence": 1,
+              "arrival": 30780,
+              "departure": 30780,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2204:1:2",
+              "sequence": 3,
+              "arrival": 32340,
+              "departure": 32400,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5004:1:3",
+              "sequence": 4,
+              "arrival": 33360,
+              "departure": 33480,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5213:2:3",
+              "sequence": 6,
+              "arrival": 36720,
+              "departure": 36840,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5300:2:2",
+              "sequence": 7,
+              "arrival": 37680,
+              "departure": 37800,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5307:1:1",
+              "sequence": 8,
+              "arrival": 39300,
+              "departure": 39720,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "8301307",
+              "sequence": 9,
+              "arrival": 40080,
+              "departure": 40080,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-91-2A-Y.1.TA.501.j26",
+          "sourceTripId": ".ojp-91-2A-Y.1.TA.501.j26",
+          "directionId": "0",
+          "shortName": "151",
+          "sourceServiceDate": "2026-09-06",
+          "calls": [
+            {
+              "id": "ch:1:sloid:90",
+              "sequence": 1,
+              "arrival": 38820,
+              "departure": 38820,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:10:3:5",
+              "sequence": 2,
+              "arrival": 39240,
+              "departure": 40020,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:3000:6:10",
+              "sequence": 4,
+              "arrival": 43200,
+              "departure": 45180,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2204:1:2",
+              "sequence": 6,
+              "arrival": 46740,
+              "departure": 46800,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5004:1:3",
+              "sequence": 7,
+              "arrival": 47760,
+              "departure": 47880,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5213:2:3",
+              "sequence": 9,
+              "arrival": 51120,
+              "departure": 51240,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5300:2:2",
+              "sequence": 10,
+              "arrival": 52080,
+              "departure": 52200,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5307:1:1",
+              "sequence": 11,
+              "arrival": 53700,
+              "departure": 54120,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "8301307",
+              "sequence": 12,
+              "arrival": 54480,
+              "departure": 54480,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-91-2A-Y.1.TA.686.j26",
+          "sourceTripId": ".ojp-91-2A-Y.1.TA.686.j26",
+          "directionId": "1",
+          "shortName": "28",
+          "sourceServiceDate": "2026-09-06",
+          "calls": [
+            {
+              "id": "8301307",
+              "sequence": 1,
+              "arrival": 75060,
+              "departure": 75060,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5307:0:6",
+              "sequence": 2,
+              "arrival": 75480,
+              "departure": 75900,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5300:2:3",
+              "sequence": 3,
+              "arrival": 77280,
+              "departure": 77400,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5213:1:1",
+              "sequence": 4,
+              "arrival": 78360,
+              "departure": 78420,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5004:4:6",
+              "sequence": 6,
+              "arrival": 81720,
+              "departure": 81900,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2202:3:5",
+              "sequence": 7,
+              "arrival": 82680,
+              "departure": 82800,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:3000:5:8",
+              "sequence": 8,
+              "arrival": 85500,
+              "departure": 85500,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-91-2A-Y.1.TA.823.j26",
+          "sourceTripId": ".ojp-91-2A-Y.1.TA.823.j26",
+          "directionId": "1",
+          "shortName": "126",
+          "sourceServiceDate": "2026-09-06",
+          "calls": [
+            {
+              "id": "8301307",
+              "sequence": 1,
+              "arrival": 71460,
+              "departure": 71460,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5307:0:6",
+              "sequence": 2,
+              "arrival": 71880,
+              "departure": 72300,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5300:2:3",
+              "sequence": 3,
+              "arrival": 73680,
+              "departure": 73800,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5213:1:1",
+              "sequence": 4,
+              "arrival": 74760,
+              "departure": 74820,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5004:1:3",
+              "sequence": 6,
+              "arrival": 78120,
+              "departure": 78300,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2204:2:3",
+              "sequence": 7,
+              "arrival": 79200,
+              "departure": 79260,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:3000:7:12",
+              "sequence": 9,
+              "arrival": 80820,
+              "departure": 80820,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-91-2A-Y.1.TA.849.j26",
+          "sourceTripId": ".ojp-91-2A-Y.1.TA.849.j26",
+          "directionId": "1",
+          "shortName": "24",
+          "sourceServiceDate": "2026-09-06",
+          "calls": [
+            {
+              "id": "8301307",
+              "sequence": 1,
+              "arrival": 64260,
+              "departure": 64260,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5307:0:6",
+              "sequence": 2,
+              "arrival": 64680,
+              "departure": 65100,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5300:2:3",
+              "sequence": 3,
+              "arrival": 66480,
+              "departure": 66600,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5213:1:1",
+              "sequence": 4,
+              "arrival": 67560,
+              "departure": 67620,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5004:1:3",
+              "sequence": 6,
+              "arrival": 70920,
+              "departure": 71100,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2204:2:3",
+              "sequence": 7,
+              "arrival": 72000,
+              "departure": 72060,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:3000:6:11",
+              "sequence": 9,
+              "arrival": 73620,
+              "departure": 73620,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-91-2A-Y.1.TA.863.j26",
+          "sourceTripId": ".ojp-91-2A-Y.1.TA.863.j26",
+          "directionId": "1",
+          "shortName": "152",
+          "sourceServiceDate": "2026-09-06",
+          "calls": [
+            {
+              "id": "8301307",
+              "sequence": 1,
+              "arrival": 53460,
+              "departure": 53460,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5307:0:6",
+              "sequence": 2,
+              "arrival": 53880,
+              "departure": 54300,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5300:2:3",
+              "sequence": 3,
+              "arrival": 55680,
+              "departure": 55800,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5213:1:1",
+              "sequence": 4,
+              "arrival": 56760,
+              "departure": 56820,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5004:1:3",
+              "sequence": 6,
+              "arrival": 60120,
+              "departure": 60300,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2204:2:3",
+              "sequence": 7,
+              "arrival": 61200,
+              "departure": 61260,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:3000:5:9",
+              "sequence": 9,
+              "arrival": 62820,
+              "departure": 62820,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-91-2A-Y.1.TA.878.j26",
+          "sourceTripId": ".ojp-91-2A-Y.1.TA.878.j26",
+          "directionId": "1",
+          "shortName": "10",
+          "sourceServiceDate": "2026-09-06",
+          "calls": [
+            {
+              "id": "8301307",
+              "sequence": 1,
+              "arrival": 28260,
+              "departure": 28260,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5307:0:6",
+              "sequence": 2,
+              "arrival": 28680,
+              "departure": 29100,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5300:2:3",
+              "sequence": 3,
+              "arrival": 30480,
+              "departure": 30600,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5213:1:1",
+              "sequence": 4,
+              "arrival": 31560,
+              "departure": 31620,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5004:1:3",
+              "sequence": 6,
+              "arrival": 34920,
+              "departure": 35100,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2204:2:3",
+              "sequence": 7,
+              "arrival": 36000,
+              "departure": 36060,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:3000:5:9",
+              "sequence": 9,
+              "arrival": 37620,
+              "departure": 37620,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-91-2A-Y.1.TA.880.j26",
+          "sourceTripId": ".ojp-91-2A-Y.1.TA.880.j26",
+          "directionId": "1",
+          "shortName": "306",
+          "sourceServiceDate": "2026-09-06",
+          "calls": [
+            {
+              "id": "8301307",
+              "sequence": 1,
+              "arrival": 67860,
+              "departure": 67860,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5307:0:6",
+              "sequence": 2,
+              "arrival": 68280,
+              "departure": 68700,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5300:2:3",
+              "sequence": 3,
+              "arrival": 70080,
+              "departure": 70200,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5213:1:1",
+              "sequence": 4,
+              "arrival": 71160,
+              "departure": 71220,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5004:1:3",
+              "sequence": 6,
+              "arrival": 74520,
+              "departure": 74700,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2204:2:3",
+              "sequence": 7,
+              "arrival": 75600,
+              "departure": 75660,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:3000:5:9",
+              "sequence": 9,
+              "arrival": 77220,
+              "departure": 77220,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-91-2A-Y.1.TA.884.j26",
+          "sourceTripId": ".ojp-91-2A-Y.1.TA.884.j26",
+          "directionId": "1",
+          "shortName": "16",
+          "sourceServiceDate": "2026-09-06",
+          "calls": [
+            {
+              "id": "8301307",
+              "sequence": 1,
+              "arrival": 49860,
+              "departure": 49860,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5307:0:6",
+              "sequence": 2,
+              "arrival": 50280,
+              "departure": 50700,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5300:2:3",
+              "sequence": 3,
+              "arrival": 52080,
+              "departure": 52200,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5213:1:1",
+              "sequence": 4,
+              "arrival": 53160,
+              "departure": 53220,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5004:1:3",
+              "sequence": 6,
+              "arrival": 56520,
+              "departure": 56700,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2204:2:3",
+              "sequence": 7,
+              "arrival": 57600,
+              "departure": 57660,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:3000:5:8",
+              "sequence": 9,
+              "arrival": 59220,
+              "departure": 59220,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-91-2A-Y.1.TA.899.j26",
+          "sourceTripId": ".ojp-91-2A-Y.1.TA.899.j26",
+          "directionId": "1",
+          "shortName": "20",
+          "sourceServiceDate": "2026-09-06",
+          "calls": [
+            {
+              "id": "8301307",
+              "sequence": 1,
+              "arrival": 57060,
+              "departure": 57060,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5307:0:6",
+              "sequence": 2,
+              "arrival": 57480,
+              "departure": 57900,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5300:2:3",
+              "sequence": 3,
+              "arrival": 59280,
+              "departure": 59400,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5213:1:1",
+              "sequence": 4,
+              "arrival": 60360,
+              "departure": 60420,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5004:1:3",
+              "sequence": 6,
+              "arrival": 63720,
+              "departure": 63900,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2204:2:3",
+              "sequence": 7,
+              "arrival": 64800,
+              "departure": 64860,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:3000:5:8",
+              "sequence": 9,
+              "arrival": 66420,
+              "departure": 66420,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-91-2A-Y.1.TA.906.j26",
+          "sourceTripId": ".ojp-91-2A-Y.1.TA.906.j26",
+          "directionId": "1",
+          "shortName": "14",
+          "sourceServiceDate": "2026-09-06",
+          "calls": [
+            {
+              "id": "8301307",
+              "sequence": 1,
+              "arrival": 35460,
+              "departure": 35460,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5307:0:6",
+              "sequence": 2,
+              "arrival": 35880,
+              "departure": 36300,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5300:2:3",
+              "sequence": 3,
+              "arrival": 37680,
+              "departure": 37800,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5213:1:1",
+              "sequence": 4,
+              "arrival": 38760,
+              "departure": 38820,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5004:1:3",
+              "sequence": 6,
+              "arrival": 42120,
+              "departure": 42300,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2204:2:3",
+              "sequence": 7,
+              "arrival": 43200,
+              "departure": 43260,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:3000:4:7",
+              "sequence": 9,
+              "arrival": 44820,
+              "departure": 44820,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-91-2A-Y.1.TA.909.j26",
+          "sourceTripId": ".ojp-91-2A-Y.1.TA.909.j26",
+          "directionId": "1",
+          "shortName": "12",
+          "sourceServiceDate": "2026-09-06",
+          "calls": [
+            {
+              "id": "8301307",
+              "sequence": 1,
+              "arrival": 31860,
+              "departure": 31860,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5307:0:6",
+              "sequence": 2,
+              "arrival": 32280,
+              "departure": 32700,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5300:2:3",
+              "sequence": 3,
+              "arrival": 34080,
+              "departure": 34200,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5213:1:1",
+              "sequence": 4,
+              "arrival": 35160,
+              "departure": 35220,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5004:1:3",
+              "sequence": 6,
+              "arrival": 38520,
+              "departure": 38700,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2204:2:3",
+              "sequence": 7,
+              "arrival": 39600,
+              "departure": 39660,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:3000:4:7",
+              "sequence": 9,
+              "arrival": 41220,
+              "departure": 41220,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-91-2A-Y.1.TA.914.j26",
+          "sourceTripId": ".ojp-91-2A-Y.1.TA.914.j26",
+          "directionId": "1",
+          "shortName": "22",
+          "sourceServiceDate": "2026-09-06",
+          "calls": [
+            {
+              "id": "8301307",
+              "sequence": 1,
+              "arrival": 60660,
+              "departure": 60660,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5307:0:6",
+              "sequence": 2,
+              "arrival": 61080,
+              "departure": 61500,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5300:2:3",
+              "sequence": 3,
+              "arrival": 62880,
+              "departure": 63000,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5213:1:1",
+              "sequence": 4,
+              "arrival": 63960,
+              "departure": 64020,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5004:1:3",
+              "sequence": 6,
+              "arrival": 67320,
+              "departure": 67500,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2204:2:3",
+              "sequence": 7,
+              "arrival": 68400,
+              "departure": 68460,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:3000:4:7",
+              "sequence": 9,
+              "arrival": 70020,
+              "departure": 70020,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-91-2A-Y.1.TA.917.j26",
+          "sourceTripId": ".ojp-91-2A-Y.1.TA.917.j26",
+          "directionId": "1",
+          "shortName": "30",
+          "sourceServiceDate": "2026-09-06",
+          "calls": [
+            {
+              "id": "8301307",
+              "sequence": 1,
+              "arrival": 46260,
+              "departure": 46260,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5307:0:6",
+              "sequence": 2,
+              "arrival": 46680,
+              "departure": 47100,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5300:2:3",
+              "sequence": 3,
+              "arrival": 48480,
+              "departure": 48600,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5213:1:1",
+              "sequence": 4,
+              "arrival": 49560,
+              "departure": 49620,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5004:1:3",
+              "sequence": 6,
+              "arrival": 52920,
+              "departure": 53100,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2204:2:3",
+              "sequence": 7,
+              "arrival": 54000,
+              "departure": 54060,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:3000:4:7",
+              "sequence": 9,
+              "arrival": 55620,
+              "departure": 55620,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

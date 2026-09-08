@@ -1,0 +1,85 @@
+{
+  "retrieved": "2026-09-08",
+  "snapshot": "2026-09-02T00:00:00Z",
+  "responseDatabaseTimestamp": "2026-09-08T20:49:16Z",
+  "attribution": "© OpenStreetMap contributors",
+  "license": "ODbL-1.0",
+  "licenseUrl": "https://www.openstreetmap.org/copyright",
+  "description": "Historical OSM rail extract; full source way node IDs, versions, timestamps and tags retained. Original shared nodes alone establish connectivity; no coordinate-based junctions or siding additions. The exact Monte Olimpino I path is an inferred corridor, not running-track or direction certification.",
+  "lombardia": {
+    "attribution": "Regione Lombardia",
+    "metadataRevised": "2024-06-27",
+    "scale": 10000,
+    "license": "Dataset licence not specified in the retrieved metadata; generic legal page lists several alternatives. No licence inferred.",
+    "use": "Independent corridor review only; no Lombardia geometry enters the feed. Native JSON and independent object-ID query retain all eight regional rail records. GeoJSON query failed; native JSON succeeded.",
+    "corridorIds": [
+      6015,
+      5634,
+      5637,
+      5639,
+      5693
+    ],
+    "otherIds": [
+      5695,
+      5697,
+      5735
+    ]
+  },
+  "files": [
+    {
+      "file": "osm.json.gz",
+      "url": "https://overpass-api.de/api/interpreter",
+      "sha256": "bf5c7ca419084051a352b782af72427fcf39c71936125aac0a2c5356c272c501"
+    },
+    {
+      "file": "query.txt",
+      "url": null,
+      "sha256": "324c94f813791ccf6be11630f2945ddcfcb6fb96f381ae1820fd102bd2f97048"
+    },
+    {
+      "file": "lombardia-service.json",
+      "url": "https://www.cartografia.servizirl.it/expo/rest/services/gpt/infrastrutture_mobilita/MapServer?f=pjson",
+      "sha256": "ed925cf5eb558bf3cbf1f014acba572b30884b8766c520d7893c34d9d8fba172"
+    },
+    {
+      "file": "lombardia-layer.json",
+      "url": "https://www.cartografia.servizirl.it/expo/rest/services/gpt/infrastrutture_mobilita/MapServer/3?f=pjson",
+      "sha256": "61660c87e014915661c287798e0b07716508a4a31ecc9e6e8071a9fc4fba3a01"
+    },
+    {
+      "file": "lombardia-rail.json",
+      "url": "https://www.cartografia.servizirl.it/expo/rest/services/gpt/infrastrutture_mobilita/MapServer/3/query?where=1%3D1&geometry=9.01%2C45.79%2C9.09%2C45.85&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=*&outSR=4326&f=json",
+      "sha256": "24e26946eb7b53fd98d5700e51274463a475ca557bf2af9e78fcbb5633e862fc"
+    },
+    {
+      "file": "lombardia-ids.json",
+      "url": "https://www.cartografia.servizirl.it/expo/rest/services/gpt/infrastrutture_mobilita/MapServer/3/query?where=1%3D1&geometry=9.01%2C45.79%2C9.09%2C45.85&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&returnIdsOnly=true&f=json",
+      "sha256": "e9cf6ae2aee74bd133eb3669fc5e59fd17b4861dc37bfea61511075579c9a038"
+    },
+    {
+      "file": "lombardia-stations.json",
+      "url": "https://www.cartografia.servizirl.it/expo/rest/services/gpt/infrastrutture_mobilita/MapServer/2/query?where=1%3D1&geometry=9.01%2C45.79%2C9.09%2C45.85&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=*&outSR=4326&f=geojson",
+      "sha256": "fb38dc4f62b00dbf8887b946b7fe668e91dddfd87028e6b80175010440b6a3e0"
+    },
+    {
+      "file": "lombardia-metadata.html.gz",
+      "url": "https://www.geoportale.regione.lombardia.it/web/geoportale/metadati?_detailSheetMetadata_WAR_gptmetadataportlet_identifier=r_lombar%3A3417cfea-5192-467e-a388-947bdd7a85f2&_jsfBridgeRedirect=true&p_p_id=detailSheetMetadata_WAR_gptmetadataportlet&p_p_lifecycle=0&p_p_mode=view&p_p_state=normal",
+      "sha256": "9000a6c9007e8d58a7d758e47e6d0ac6b9ee34a6afd326826fd9f25f4a495149"
+    },
+    {
+      "file": "lombardia-terms.html.gz",
+      "url": "https://www.geoportale.regione.lombardia.it/note-legali",
+      "sha256": "a425c9860861e6fd33c59f5c60b7153dd8528eb84d1d727be23bf58de8e458f5"
+    },
+    {
+      "file": "osm-terms.html.gz",
+      "url": "https://www.openstreetmap.org/copyright",
+      "sha256": "cde07b86d6a4b8128a950a006efb04238431ca9ef40682ac479bf5187103d515"
+    },
+    {
+      "file": "scope.json",
+      "url": null,
+      "sha256": "1310935eecab413af73669b17e3d11330b631b6fa5ddfe239f7cb9664c3cdb44"
+    }
+  ]
+}

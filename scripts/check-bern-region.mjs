@@ -13,6 +13,7 @@ import { loadBernRail, bernRailCandidates } from './bern-rail-geometry.mjs'
 import { loadBernRegionalRail } from './bern-regional-rail.mjs'
 import { loadBernCrosscantonRail } from './bern-crosscanton-rail.mjs'
 import { loadBernIr66 } from './bern-ir66-geometry.mjs'
+import { loadBernIr16 } from './bern-ir16-geometry.mjs'
 
 const json = async path => JSON.parse(await readFile(path, 'utf8'))
 const sha = bytes => createHash('sha256').update(bytes).digest('hex')
@@ -36,7 +37,11 @@ export async function checkBernRegion({ output = 'public/data/bern-region', audi
   assert.equal(summary.sourceHashes.ir66Policy, ir66.metadata.policySha256)
   assert.deepEqual(summary.sources.ir66Supplement, ir66.metadata)
   for (const doc of ir66.policy.documents) assert.equal(sha(await readFile(join(output, 'ir66-platforms', doc.file))), doc.sha256)
-  const railSuppliers = [rail, regionalRail, crosscantonRail, ir66]
+  const ir16 = await loadBernIr16()
+  assert.equal(summary.sourceHashes.ir16Policy, ir16.metadata.policySha256)
+  assert.deepEqual(summary.sources.ir16Supplement, ir16.metadata)
+  for (const doc of ir16.policy.documents) assert.equal(sha(await readFile(join(output, 'ir16-platforms', doc.file))), doc.sha256)
+  const railSuppliers = [rail, regionalRail, crosscantonRail, ir66, ir16]
   assert.equal(summary.sourceHashes.crosscantonRailPolicy, crosscantonRail.metadata.policySha256)
   assert.deepEqual(summary.sources.crosscantonRailSupplement, crosscantonRail.metadata)
   assert.equal(summary.sourceHashes.regionalRailPolicy, regionalRail.metadata.policySha256)

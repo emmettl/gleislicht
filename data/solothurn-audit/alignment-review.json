@@ -12,7 +12,7 @@
   "days": [
     {
       "date": "2026-09-04",
-      "totalExcludedTrips": 132,
+      "totalExcludedTrips": 130,
       "busComparisons": {
         "within-30m-vertex-distance": {
           "directedPairs": 2080,
@@ -46087,124 +46087,6 @@
           ]
         },
         {
-          "id": "a9253bcaf8bf56d58d6ef0ee",
-          "routeId": "91-3R-Y-j26-1",
-          "agencyId": "11",
-          "mode": "rail",
-          "line": "EC",
-          "directionId": "0",
-          "stopIds": [
-            "ch:1:sloid:10:3:5",
-            "ch:1:sloid:218:7:12",
-            "ch:1:sloid:5000:3:7",
-            "ch:1:sloid:5004:3:5",
-            "ch:1:sloid:5213:2:3",
-            "ch:1:sloid:5300:2:2",
-            "ch:1:sloid:5307:1:1",
-            "8301307"
-          ],
-          "segmentCount": 7,
-          "supplementAvailable": true,
-          "geometrySources": [
-            "fot"
-          ],
-          "matchedSegments": 6,
-          "trips": 1,
-          "admittedTrips": 0,
-          "carryInTrips": 0,
-          "representativeHeadwayTrips": 0,
-          "decisions": {
-            "incomplete-directed-pattern": 1
-          },
-          "matchedMask": [
-            true,
-            true,
-            true,
-            true,
-            true,
-            true,
-            false
-          ],
-          "unresolvedPairs": [
-            {
-              "routeId": "91-3R-Y-j26-1",
-              "agencyId": "11",
-              "mode": "rail",
-              "fromId": "ch:1:sloid:5307:1:1",
-              "toId": "8301307",
-              "from": "Chiasso",
-              "to": "Como S. Giovanni",
-              "directMetres": 4061.4872998287224,
-              "reason": "endpoint-gap",
-              "maximumSnapMetres": 168242.00572310033,
-              "supplementFailure": "rail-no-exact-operating-point",
-              "supplementAvailable": true,
-              "occurrences": 1,
-              "admittedOccurrences": 0,
-              "matched": false
-            }
-          ]
-        },
-        {
-          "id": "39a264d89d000ce3baf7cfde",
-          "routeId": "91-3R-Y-j26-1",
-          "agencyId": "11",
-          "mode": "rail",
-          "line": "EC",
-          "directionId": "1",
-          "stopIds": [
-            "8301307",
-            "ch:1:sloid:5307:0:6",
-            "ch:1:sloid:5300:2:3",
-            "ch:1:sloid:5213:1:1",
-            "ch:1:sloid:5004:3:5",
-            "ch:1:sloid:5000:3:7",
-            "ch:1:sloid:218:6:10",
-            "ch:1:sloid:10:3:5"
-          ],
-          "segmentCount": 7,
-          "supplementAvailable": true,
-          "geometrySources": [
-            "fot"
-          ],
-          "matchedSegments": 6,
-          "trips": 1,
-          "admittedTrips": 0,
-          "carryInTrips": 0,
-          "representativeHeadwayTrips": 0,
-          "decisions": {
-            "incomplete-directed-pattern": 1
-          },
-          "matchedMask": [
-            false,
-            true,
-            true,
-            true,
-            true,
-            true,
-            true
-          ],
-          "unresolvedPairs": [
-            {
-              "routeId": "91-3R-Y-j26-1",
-              "agencyId": "11",
-              "mode": "rail",
-              "fromId": "8301307",
-              "toId": "ch:1:sloid:5307:0:6",
-              "from": "Como S. Giovanni",
-              "to": "Chiasso",
-              "directMetres": 4144.573267121967,
-              "reason": "endpoint-gap",
-              "maximumSnapMetres": 168242.00572310033,
-              "supplementFailure": "rail-no-exact-operating-point",
-              "supplementAvailable": true,
-              "occurrences": 1,
-              "admittedOccurrences": 0,
-              "matched": false
-            }
-          ]
-        },
-        {
           "id": "4fea4d4a337f4c35a81f8219",
           "routeId": "91-54-Y-j26-1",
           "agencyId": "11",
@@ -46603,7 +46485,7 @@
     },
     {
       "date": "2026-09-06",
-      "totalExcludedTrips": 141,
+      "totalExcludedTrips": 139,
       "busComparisons": {
         "alignment-disagreement-over-30m": {
           "directedPairs": 328,
@@ -86912,124 +86794,6 @@
               "directMetres": 32767.376715199818,
               "reason": "endpoint-gap",
               "maximumSnapMetres": 113693.13097483097,
-              "supplementFailure": "rail-no-exact-operating-point",
-              "supplementAvailable": true,
-              "occurrences": 1,
-              "admittedOccurrences": 0,
-              "matched": false
-            }
-          ]
-        },
-        {
-          "id": "a9253bcaf8bf56d58d6ef0ee",
-          "routeId": "91-3R-Y-j26-1",
-          "agencyId": "11",
-          "mode": "rail",
-          "line": "EC",
-          "directionId": "0",
-          "stopIds": [
-            "ch:1:sloid:10:3:5",
-            "ch:1:sloid:218:7:12",
-            "ch:1:sloid:5000:3:7",
-            "ch:1:sloid:5004:3:5",
-            "ch:1:sloid:5213:2:3",
-            "ch:1:sloid:5300:2:2",
-            "ch:1:sloid:5307:1:1",
-            "8301307"
-          ],
-          "segmentCount": 7,
-          "supplementAvailable": true,
-          "geometrySources": [
-            "fot"
-          ],
-          "matchedSegments": 6,
-          "trips": 1,
-          "admittedTrips": 0,
-          "carryInTrips": 0,
-          "representativeHeadwayTrips": 0,
-          "decisions": {
-            "incomplete-directed-pattern": 1
-          },
-          "matchedMask": [
-            true,
-            true,
-            true,
-            true,
-            true,
-            true,
-            false
-          ],
-          "unresolvedPairs": [
-            {
-              "routeId": "91-3R-Y-j26-1",
-              "agencyId": "11",
-              "mode": "rail",
-              "fromId": "ch:1:sloid:5307:1:1",
-              "toId": "8301307",
-              "from": "Chiasso",
-              "to": "Como S. Giovanni",
-              "directMetres": 4061.4872998287224,
-              "reason": "endpoint-gap",
-              "maximumSnapMetres": 168242.00572310033,
-              "supplementFailure": "rail-no-exact-operating-point",
-              "supplementAvailable": true,
-              "occurrences": 1,
-              "admittedOccurrences": 0,
-              "matched": false
-            }
-          ]
-        },
-        {
-          "id": "39a264d89d000ce3baf7cfde",
-          "routeId": "91-3R-Y-j26-1",
-          "agencyId": "11",
-          "mode": "rail",
-          "line": "EC",
-          "directionId": "1",
-          "stopIds": [
-            "8301307",
-            "ch:1:sloid:5307:0:6",
-            "ch:1:sloid:5300:2:3",
-            "ch:1:sloid:5213:1:1",
-            "ch:1:sloid:5004:3:5",
-            "ch:1:sloid:5000:3:7",
-            "ch:1:sloid:218:6:10",
-            "ch:1:sloid:10:3:5"
-          ],
-          "segmentCount": 7,
-          "supplementAvailable": true,
-          "geometrySources": [
-            "fot"
-          ],
-          "matchedSegments": 6,
-          "trips": 1,
-          "admittedTrips": 0,
-          "carryInTrips": 0,
-          "representativeHeadwayTrips": 0,
-          "decisions": {
-            "incomplete-directed-pattern": 1
-          },
-          "matchedMask": [
-            false,
-            true,
-            true,
-            true,
-            true,
-            true,
-            true
-          ],
-          "unresolvedPairs": [
-            {
-              "routeId": "91-3R-Y-j26-1",
-              "agencyId": "11",
-              "mode": "rail",
-              "fromId": "8301307",
-              "toId": "ch:1:sloid:5307:0:6",
-              "from": "Como S. Giovanni",
-              "to": "Chiasso",
-              "directMetres": 4144.573267121967,
-              "reason": "endpoint-gap",
-              "maximumSnapMetres": 168242.00572310033,
               "supplementFailure": "rail-no-exact-operating-point",
               "supplementAvailable": true,
               "occurrences": 1,
