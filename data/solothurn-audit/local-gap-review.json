@@ -1,0 +1,168 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Retained-source diagnostics only; no additional admission or geometry correction.",
+  "sourceHashes": {
+    "network": "5f11586ad156f763d7b1b9a6ac05f14dd29865ca03bf5a1d42195a7da8c331e8",
+    "context": "6a3fb3b6d119bf3118969bce3f42bd9592fb484a4f088a0ee8b456ff769c146d",
+    "road": "a36d8ea303fe6fcd129ad1d16d817a52728f2d482b5ee6f64467b29d71157241",
+    "tram": "06a10a99b5ccc07257bd01afbf060d9726b3832ddbeeaf0217200afc248001af"
+  },
+  "arlesheim": {
+    "routeId": "91-10-j26-1",
+    "agencyId": "37",
+    "from": [
+      7.61928566,
+      47.49755951,
+      "Arlesheim, Im Lee",
+      "B",
+      "ch:1:sloid:88764:1:1"
+    ],
+    "to": [
+      7.61942041,
+      47.49339586,
+      "Arlesheim, Dorf",
+      "E",
+      "ch:1:sloid:77:1:5"
+    ],
+    "limits": {
+      "snapMetres": 80,
+      "detourRatio": 3,
+      "detourFloorMetres": 600,
+      "alternativeSnapMetres": 5
+    },
+    "assessment": {
+      "reason": "endpoint-gap",
+      "maximumSnapMetres": 138.40081506683404
+    },
+    "decision": "Excluded: original platform E exceeds the 80 m tram attachment limit; no coordinate substitution."
+  },
+  "liestal": {
+    "routeId": "96-131-1-j26-1",
+    "agencyId": "801",
+    "from": [
+      7.73155711,
+      47.4828821,
+      "Liestal, Bahnhof Süd",
+      "",
+      "ch:1:sloid:3662:0:869147"
+    ],
+    "to": [
+      7.73154812,
+      47.48470334,
+      "Liestal, Bahnhof",
+      "D",
+      "ch:1:sloid:72212:1:4"
+    ],
+    "endpoints": [
+      {
+        "id": "fdee9376-c614-4f36-b275-6d148c4a3d09",
+        "featureSha256": "6de00128b87541f31ca5c0229c46a879258987df075cd575929b7718709a486d",
+        "part": 0,
+        "vertex": 0,
+        "coordinate": [
+          2622051.739,
+          1259387.76
+        ]
+      },
+      {
+        "id": "4066c808-1c9b-4119-bef9-9dfa72651f9c",
+        "featureSha256": "b8102c6f7d5429ed8194a8225e9d59865ab08cb9aa83257e839383f28c89987f",
+        "part": 0,
+        "vertex": 0,
+        "coordinate": [
+          2622052.797,
+          1259387.76
+        ]
+      }
+    ],
+    "gapMetres": 1.0579999997280538,
+    "roadCandidates": [
+      {
+        "sha256": "2b36568401acb409185a5302e2b23157d9bee85f57cea44b17d7a04c0f00b5c1",
+        "pathIndex": 522,
+        "path": [
+          [
+            7.731557,
+            47.482882
+          ],
+          [
+            7.731667,
+            47.483524
+          ],
+          [
+            7.730556,
+            47.484238
+          ],
+          [
+            7.730482,
+            47.484398
+          ],
+          [
+            7.73156,
+            47.48518
+          ],
+          [
+            7.731144,
+            47.485416
+          ],
+          [
+            7.730514,
+            47.485405
+          ],
+          [
+            7.730535,
+            47.485291
+          ],
+          [
+            7.731147,
+            47.484871
+          ],
+          [
+            7.731492,
+            47.48465
+          ],
+          [
+            7.731548,
+            47.484703
+          ]
+        ],
+        "metres": 534.6042290950393,
+        "patternIds": [
+          "08b6b7d6bc4073eb5682f931",
+          "93eb1844bde9459299fc69ad"
+        ]
+      },
+      {
+        "sha256": "17409f16a89baa7d15068173db252f52239d3fbb2bfbb9287f121969cc73d968",
+        "pathIndex": 2023,
+        "path": [
+          [
+            7.731557,
+            47.482882
+          ],
+          [
+            7.731667,
+            47.483524
+          ],
+          [
+            7.730556,
+            47.484238
+          ],
+          [
+            7.730482,
+            47.484398
+          ],
+          [
+            7.731548,
+            47.484703
+          ]
+        ],
+        "metres": 293.0303524477589,
+        "patternIds": [
+          "494bfca4b2e14d6b9209f55f"
+        ]
+      }
+    ],
+    "decision": "Excluded: differing complete-pattern road candidates and a source-endpoint gap far above the separately reviewed 3 mm Oberbuchsiten limit. No route-specific operating evidence resolves the alternatives."
+  }
+}

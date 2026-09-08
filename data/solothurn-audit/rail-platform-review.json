@@ -97,23 +97,23 @@
       },
       "after": {
         "trips": 7156,
-        "admittedTrips": 6918,
+        "admittedTrips": 6955,
         "scheduledTrips": 6078,
         "representativeHeadwayTrips": 1078,
-        "admittedScheduledTrips": 5840,
+        "admittedScheduledTrips": 5877,
         "admittedRepresentativeHeadwayTrips": 1078,
         "scheduledSegmentOccurrences": 97358,
-        "matchedScheduledSegmentOccurrences": 97026,
+        "matchedScheduledSegmentOccurrences": 97063,
         "segmentOccurrences": 98436,
-        "matchedSegmentOccurrences": 98104,
-        "admittedSegmentOccurrences": 91365,
+        "matchedSegmentOccurrences": 98141,
+        "admittedSegmentOccurrences": 91880,
         "directedPairs": 4259,
-        "matchedDirectedPairs": 4238,
+        "matchedDirectedPairs": 4239,
         "patterns": 921,
-        "completePatterns": 870,
-        "admittedPatterns": 870,
+        "completePatterns": 874,
+        "admittedPatterns": 874,
         "excludedTrips": {
-          "incomplete-directed-pattern": 238
+          "incomplete-directed-pattern": 201
         }
       },
       "lostAdmittedPatterns": [],
@@ -1176,6 +1176,149 @@
           "decisions": {
             "admitted": 3
           }
+        },
+        {
+          "id": "efab9d6b5ae74fc1f69d01f7",
+          "routeId": "96-145-2-j26-1",
+          "agencyId": "801",
+          "mode": "bus",
+          "line": "126",
+          "directionId": "0",
+          "stopIds": [
+            "ch:1:sloid:89885:0:01",
+            "ch:1:sloid:81284:0:390682",
+            "ch:1:sloid:81285:0:911079",
+            "ch:1:sloid:81286:0:01",
+            "ch:1:sloid:81287:0:01",
+            "ch:1:sloid:78916:0:01",
+            "ch:1:sloid:385:0:01",
+            "ch:1:sloid:81290:0:933260"
+          ],
+          "segmentCount": 7,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "osm-road-inference",
+            "solothurn-network",
+            "solothurn-reviewed-bus-junction"
+          ],
+          "matchedSegments": 7,
+          "trips": 2,
+          "admittedTrips": 2,
+          "carryInTrips": 0,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 2
+          }
+        },
+        {
+          "id": "7c7bbc97ad48abc08c647b94",
+          "routeId": "96-145-2-j26-1",
+          "agencyId": "801",
+          "mode": "bus",
+          "line": "126",
+          "directionId": "0",
+          "stopIds": [
+            "ch:1:sloid:89885:0:01",
+            "ch:1:sloid:81284:0:390682",
+            "ch:1:sloid:81285:0:911079",
+            "ch:1:sloid:81286:0:01",
+            "ch:1:sloid:81287:0:01",
+            "ch:1:sloid:78916:0:01",
+            "ch:1:sloid:7326:0:440180",
+            "ch:1:sloid:81288:0:805818",
+            "ch:1:sloid:89884:0:38836",
+            "ch:1:sloid:83812:0:584985",
+            "ch:1:sloid:385:0:01",
+            "ch:1:sloid:81290:0:933260",
+            "ch:1:sloid:5100:0:58318",
+            "ch:1:sloid:72367",
+            "ch:1:sloid:986",
+            "ch:1:sloid:72368"
+          ],
+          "segmentCount": 15,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "osm-road-inference",
+            "solothurn-network",
+            "solothurn-reviewed-bus-junction"
+          ],
+          "matchedSegments": 15,
+          "trips": 1,
+          "admittedTrips": 1,
+          "carryInTrips": 0,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 1
+          }
+        },
+        {
+          "id": "8389689cfc6819b2fe013695",
+          "routeId": "96-145-2-j26-1",
+          "agencyId": "801",
+          "mode": "bus",
+          "line": "126",
+          "directionId": "0",
+          "stopIds": [
+            "ch:1:sloid:89885:0:01",
+            "ch:1:sloid:81284:0:390682",
+            "ch:1:sloid:81285:0:911079",
+            "ch:1:sloid:81286:0:01",
+            "ch:1:sloid:81287:0:01",
+            "ch:1:sloid:78916:0:01",
+            "ch:1:sloid:7326:0:440180",
+            "ch:1:sloid:81288:0:805818",
+            "ch:1:sloid:89884:0:38836",
+            "ch:1:sloid:83812:0:584985",
+            "ch:1:sloid:385:0:01",
+            "ch:1:sloid:81290:0:933260",
+            "ch:1:sloid:5100:0:58318",
+            "ch:1:sloid:72367:0:389242",
+            "ch:1:sloid:986:0:87035",
+            "ch:1:sloid:72368:0:754999"
+          ],
+          "segmentCount": 15,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "osm-road-inference",
+            "solothurn-network",
+            "solothurn-reviewed-bus-junction"
+          ],
+          "matchedSegments": 15,
+          "trips": 32,
+          "admittedTrips": 32,
+          "carryInTrips": 0,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 32
+          }
+        },
+        {
+          "id": "4198dfa4be6e8093d41c414d",
+          "routeId": "96-145-2-j26-1",
+          "agencyId": "801",
+          "mode": "bus",
+          "line": "126",
+          "directionId": "1",
+          "stopIds": [
+            "ch:1:sloid:81290:0:647104",
+            "ch:1:sloid:78020:0:02",
+            "ch:1:sloid:89885:0:01",
+            "ch:1:sloid:81284:0:390682"
+          ],
+          "segmentCount": 3,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "osm-road-inference",
+            "solothurn-reviewed-bus-junction"
+          ],
+          "matchedSegments": 3,
+          "trips": 2,
+          "admittedTrips": 2,
+          "carryInTrips": 0,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 2
+          }
         }
       ],
       "sourcePairs": [
@@ -1441,23 +1584,23 @@
       },
       "after": {
         "trips": 5819,
-        "admittedTrips": 5507,
+        "admittedTrips": 5525,
         "scheduledTrips": 4711,
         "representativeHeadwayTrips": 1108,
-        "admittedScheduledTrips": 4399,
+        "admittedScheduledTrips": 4417,
         "admittedRepresentativeHeadwayTrips": 1108,
         "scheduledSegmentOccurrences": 68102,
-        "matchedScheduledSegmentOccurrences": 67690,
+        "matchedScheduledSegmentOccurrences": 67708,
         "segmentOccurrences": 69210,
-        "matchedSegmentOccurrences": 68798,
-        "admittedSegmentOccurrences": 62727,
+        "matchedSegmentOccurrences": 68816,
+        "admittedSegmentOccurrences": 62997,
         "directedPairs": 4467,
-        "matchedDirectedPairs": 4443,
+        "matchedDirectedPairs": 4444,
         "patterns": 777,
-        "completePatterns": 722,
-        "admittedPatterns": 722,
+        "completePatterns": 724,
+        "admittedPatterns": 724,
         "excludedTrips": {
-          "incomplete-directed-pattern": 303,
+          "incomplete-directed-pattern": 285,
           "night-network-excluded-by-source": 9
         }
       },
@@ -2182,6 +2325,88 @@
           "representativeHeadwayTrips": 0,
           "decisions": {
             "admitted": 1
+          }
+        },
+        {
+          "id": "7c7bbc97ad48abc08c647b94",
+          "routeId": "96-145-2-j26-1",
+          "agencyId": "801",
+          "mode": "bus",
+          "line": "126",
+          "directionId": "0",
+          "stopIds": [
+            "ch:1:sloid:89885:0:01",
+            "ch:1:sloid:81284:0:390682",
+            "ch:1:sloid:81285:0:911079",
+            "ch:1:sloid:81286:0:01",
+            "ch:1:sloid:81287:0:01",
+            "ch:1:sloid:78916:0:01",
+            "ch:1:sloid:7326:0:440180",
+            "ch:1:sloid:81288:0:805818",
+            "ch:1:sloid:89884:0:38836",
+            "ch:1:sloid:83812:0:584985",
+            "ch:1:sloid:385:0:01",
+            "ch:1:sloid:81290:0:933260",
+            "ch:1:sloid:5100:0:58318",
+            "ch:1:sloid:72367",
+            "ch:1:sloid:986",
+            "ch:1:sloid:72368"
+          ],
+          "segmentCount": 15,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "osm-road-inference",
+            "solothurn-network",
+            "solothurn-reviewed-bus-junction"
+          ],
+          "matchedSegments": 15,
+          "trips": 1,
+          "admittedTrips": 1,
+          "carryInTrips": 1,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 1
+          }
+        },
+        {
+          "id": "8389689cfc6819b2fe013695",
+          "routeId": "96-145-2-j26-1",
+          "agencyId": "801",
+          "mode": "bus",
+          "line": "126",
+          "directionId": "0",
+          "stopIds": [
+            "ch:1:sloid:89885:0:01",
+            "ch:1:sloid:81284:0:390682",
+            "ch:1:sloid:81285:0:911079",
+            "ch:1:sloid:81286:0:01",
+            "ch:1:sloid:81287:0:01",
+            "ch:1:sloid:78916:0:01",
+            "ch:1:sloid:7326:0:440180",
+            "ch:1:sloid:81288:0:805818",
+            "ch:1:sloid:89884:0:38836",
+            "ch:1:sloid:83812:0:584985",
+            "ch:1:sloid:385:0:01",
+            "ch:1:sloid:81290:0:933260",
+            "ch:1:sloid:5100:0:58318",
+            "ch:1:sloid:72367:0:389242",
+            "ch:1:sloid:986:0:87035",
+            "ch:1:sloid:72368:0:754999"
+          ],
+          "segmentCount": 15,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "osm-road-inference",
+            "solothurn-network",
+            "solothurn-reviewed-bus-junction"
+          ],
+          "matchedSegments": 15,
+          "trips": 17,
+          "admittedTrips": 17,
+          "carryInTrips": 0,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 17
           }
         }
       ],

@@ -17,7 +17,7 @@ All 193 original GTFS route identities with at least one annual call in the cant
 | 202 | Seilbahn Weissenstein AG | 1 | 1 | 1078 / 1078 | 1108 / 1108 |
 | 723 | Aargau Verkehr AG | 1 | 1 | 0 / 0 | 4 / 4 |
 | 793 | Busbetrieb Olten-Gösgen-Gäu | 16 | 16 | 926 / 955 | 620 / 620 |
-| 801 | PostAuto AG | 30 | 30 | 1323 / 1394 | 905 / 961 |
+| 801 | PostAuto AG | 30 | 30 | 1360 / 1394 | 923 / 961 |
 | 840 | Busbetrieb Aarau | 3 | 3 | 388 / 388 | 296 / 300 |
 | 850 | Autobusbetrieb RBS | 5 | 5 | 205 / 205 | 141 / 141 |
 | 883 | Busbetrieb Solothurn und Umgebung | 17 | 16 | 787 / 787 | 419 / 424 |
@@ -216,7 +216,7 @@ All 193 original GTFS route identities with at least one annual call in the cant
 | 96-144-B-j26-1 | 801 | M55 / bus | Lebern, Solothurn | admitted-all-dated-trips | 0 / 0 | 2 / 2 | All dated journeys pass |
 | 96-145-0-j26-1 | 801 | 130 / bus | Thal, Thierstein | admitted-all-dated-trips | 69 / 69 | 43 / 43 | All dated journeys pass |
 | 96-145-1-j26-1 | 801 | 125 / bus | Gäu | admitted-all-dated-trips | 29 / 29 | 0 / 0 | All dated journeys pass |
-| 96-145-2-j26-1 | 801 | 126 / bus | Gäu | partially-admitted | 34 / 71 | 17 / 35 | incomplete-directed-pattern |
+| 96-145-2-j26-1 | 801 | 126 / bus | Gäu | admitted-all-dated-trips | 71 / 71 | 35 / 35 | All dated journeys pass |
 | 96-145-4-j26-1 | 801 | 124 / bus | Gäu | admitted-all-dated-trips | 0 / 0 | 14 / 14 | All dated journeys pass |
 | 96-145-6-j26-1 | 801 | 131 / bus | Thal | admitted-all-dated-trips | 0 / 0 | 12 / 12 | All dated journeys pass |
 | 96-145-9-j26-1 | 801 | 12 / bus | Lebern, Solothurn | admitted-all-dated-trips | 50 / 50 | 28 / 28 | All dated journeys pass |

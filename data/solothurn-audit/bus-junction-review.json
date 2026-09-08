@@ -1,0 +1,535 @@
+{
+  "baselineCommit": "ed820347068a09f1f672415aed7f90989bd9b8d0",
+  "sourceHashes": {
+    "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+    "source": "5f11586ad156f763d7b1b9a6ac05f14dd29865ca03bf5a1d42195a7da8c331e8"
+  },
+  "source": {
+    "policy": {
+      "schemaVersion": 1,
+      "sourceFile": "data/solothurn-sources/decoded.json.gz",
+      "sourceSha256": "5f11586ad156f763d7b1b9a6ac05f14dd29865ca03bf5a1d42195a7da8c331e8",
+      "routeId": "96-145-2-j26-1",
+      "agencyId": "801",
+      "line": "126",
+      "mode": "bus",
+      "from": [
+        7.77154112,
+        47.30536116,
+        "Oberbuchsiten, Bahnhof",
+        "",
+        "ch:1:sloid:89885:0:01"
+      ],
+      "to": [
+        7.76638479,
+        47.30955796,
+        "Oberbuchsiten, Löwen",
+        "",
+        "ch:1:sloid:81284:0:390682"
+      ],
+      "features": [
+        {
+          "id": "4562863f-1da7-42ea-9cf8-f580fb14b86c",
+          "sha256": "69ba89d5390472aa1d9a6a0057a13640651d18b4d258499cfd878f92b122a84f",
+          "part": 0,
+          "endpoint": 0,
+          "coordinate": [
+            2624747.1,
+            1239883.09
+          ]
+        },
+        {
+          "id": "64c5c5c2-6512-4ef1-a06e-4bac13d29b5d",
+          "sha256": "2bf1a6666c52334bfb5918f9d01cf0ef0c504066be5d764e3985ebc4b2599511",
+          "part": 0,
+          "endpoint": 0,
+          "coordinate": [
+            2624747.099,
+            1239883.092
+          ]
+        }
+      ],
+      "maximumJoinMetres": 0.003,
+      "method": "Explicitly reviewed 2.236 mm LV95 gap between two non-tunnel Bus source-feature endpoints at Oberbuchsiten. Preserve original vertices and add one separately identified inferred connector, only in a supplementary graph for exact PostAuto 126 route and directed platform pair. No global near-endpoint stitching, coordinate replacement, road direction or present-day operator itinerary certification."
+    },
+    "policySha256": "d8afeee5da1a39ed52112981f8b8b6ba88c222574857929f27bcd9966728ca14",
+    "source": {
+      "schemaVersion": 1,
+      "sourceCrs": "EPSG:2056",
+      "records": [
+        {
+          "file": "ch.so.avt.oev.gpkg.zip",
+          "url": "https://files.geo.so.ch/ch.so.avt.oev/aktuell/ch.so.avt.oev.gpkg.zip",
+          "sha256": "e1114b1dfcbd75f57a85da70da00185d64123d72c745c0379c6a8470f48c5045",
+          "bytes": 671829,
+          "acquiredAt": "2026-09-08T17:03:54.515155+00:00"
+        },
+        {
+          "file": "metadata.html",
+          "url": "https://files.geo.so.ch/ch.so.avt.oev/aktuell/meta/datenbeschreibung.html",
+          "sha256": "72a20b0a2757c30d72ee5d04f07f82b354220f434eba4b2ffac1328c847c9c97",
+          "bytes": 125613,
+          "acquiredAt": "2026-09-08T17:03:54.454634+00:00"
+        },
+        {
+          "file": "terms.html",
+          "url": "https://files.geo.so.ch/nutzungsbedingungen.html",
+          "sha256": "0154479bfb178f7c5011cb4da7b861110fabd0803709ecc7b8f04bc6d6b82f15",
+          "bytes": 120820,
+          "acquiredAt": "2026-09-08T17:10:59.082656+00:00"
+        },
+        {
+          "file": "publications.json",
+          "url": "https://data.geo.so.ch/themepublications?query=ch.so.avt.oev",
+          "sha256": "37645f96c2d70ca4e65fcef91477df2b21edb0b0fcbb8e5dd4861d2bb5b6481b",
+          "bytes": 3647,
+          "acquiredAt": "2026-09-08T17:02:37.178652+00:00"
+        }
+      ],
+      "packagePublished": "2025-12-17",
+      "geometrySurveyDate": null,
+      "vintageNote": "Publication date is not a survey date; no per-edge survey date supplied.",
+      "archiveSha256": "e1114b1dfcbd75f57a85da70da00185d64123d72c745c0379c6a8470f48c5045",
+      "geopackageSha256": "3e7a43cfa528866880d2bba61d9b309f5bbc660f7252914c9373f66096f2a263",
+      "attribution": "Öffentlicher Verkehr — Amt für Verkehr und Tiefbau / Amt für Geoinformation, Kanton Solothurn",
+      "metadataUrl": "https://files.geo.so.ch/ch.so.avt.oev/aktuell/meta/datenbeschreibung.html",
+      "termsUrl": "https://files.geo.so.ch/nutzungsbedingungen.html",
+      "license": "Free commercial and noncommercial use; attribution recommended. No Creative Commons licence assigned.",
+      "sourceExclusion": "Night services explicitly excluded by publisher.",
+      "boundary": {
+        "edition": "2026-01",
+        "sourceSha256": "1f122cb7a06f2d312a84b7c0a91116348ba907054d487f0a70b9d2302984e6fc",
+        "snapshotSha256": "68ad054cb9830453e9a90345d57a7bbde9b458dcc0160dce5903ce88a4811d28",
+        "attribution": "© swisstopo",
+        "sourceUrl": "https://data.geo.admin.ch/ch.swisstopo.swissboundaries3d/swissboundaries3d_2026-01/swissboundaries3d_2026-01_2056_5728.gpkg.zip",
+        "termsUrl": "https://www.swisstopo.admin.ch/en/terms-of-use-free-geodata-and-geoservices"
+      }
+    },
+    "evidence": {
+      "endpointsLv95": [
+        [
+          2624747.1,
+          1239883.09
+        ],
+        [
+          2624747.099,
+          1239883.092
+        ]
+      ],
+      "joinMetres": 0.0022360679275197854,
+      "sourceFeatureIds": [
+        "4562863f-1da7-42ea-9cf8-f580fb14b86c",
+        "64c5c5c2-6512-4ef1-a06e-4bac13d29b5d"
+      ],
+      "originalVertices": 56,
+      "originalEdges": 54,
+      "addedVertices": 0,
+      "addedEdges": 1
+    }
+  },
+  "days": [
+    {
+      "date": "2026-09-04",
+      "before": {
+        "trips": 7156,
+        "admittedTrips": 6918,
+        "scheduledTrips": 6078,
+        "representativeHeadwayTrips": 1078,
+        "admittedScheduledTrips": 5840,
+        "admittedRepresentativeHeadwayTrips": 1078,
+        "scheduledSegmentOccurrences": 97358,
+        "matchedScheduledSegmentOccurrences": 97026,
+        "segmentOccurrences": 98436,
+        "matchedSegmentOccurrences": 98104,
+        "admittedSegmentOccurrences": 91365,
+        "directedPairs": 4259,
+        "matchedDirectedPairs": 4238,
+        "patterns": 921,
+        "completePatterns": 870,
+        "admittedPatterns": 870,
+        "excludedTrips": {
+          "incomplete-directed-pattern": 238
+        }
+      },
+      "after": {
+        "trips": 7156,
+        "admittedTrips": 6955,
+        "scheduledTrips": 6078,
+        "representativeHeadwayTrips": 1078,
+        "admittedScheduledTrips": 5877,
+        "admittedRepresentativeHeadwayTrips": 1078,
+        "scheduledSegmentOccurrences": 97358,
+        "matchedScheduledSegmentOccurrences": 97063,
+        "segmentOccurrences": 98436,
+        "matchedSegmentOccurrences": 98141,
+        "admittedSegmentOccurrences": 91880,
+        "directedPairs": 4259,
+        "matchedDirectedPairs": 4239,
+        "patterns": 921,
+        "completePatterns": 874,
+        "admittedPatterns": 874,
+        "excludedTrips": {
+          "incomplete-directed-pattern": 201
+        }
+      },
+      "lostAdmittedPatterns": [],
+      "newlyAdmittedPatterns": [
+        {
+          "id": "efab9d6b5ae74fc1f69d01f7",
+          "routeId": "96-145-2-j26-1",
+          "agencyId": "801",
+          "mode": "bus",
+          "line": "126",
+          "directionId": "0",
+          "stopIds": [
+            "ch:1:sloid:89885:0:01",
+            "ch:1:sloid:81284:0:390682",
+            "ch:1:sloid:81285:0:911079",
+            "ch:1:sloid:81286:0:01",
+            "ch:1:sloid:81287:0:01",
+            "ch:1:sloid:78916:0:01",
+            "ch:1:sloid:385:0:01",
+            "ch:1:sloid:81290:0:933260"
+          ],
+          "segmentCount": 7,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "osm-road-inference",
+            "solothurn-network",
+            "solothurn-reviewed-bus-junction"
+          ],
+          "matchedSegments": 7,
+          "trips": 2,
+          "admittedTrips": 2,
+          "carryInTrips": 0,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 2
+          }
+        },
+        {
+          "id": "7c7bbc97ad48abc08c647b94",
+          "routeId": "96-145-2-j26-1",
+          "agencyId": "801",
+          "mode": "bus",
+          "line": "126",
+          "directionId": "0",
+          "stopIds": [
+            "ch:1:sloid:89885:0:01",
+            "ch:1:sloid:81284:0:390682",
+            "ch:1:sloid:81285:0:911079",
+            "ch:1:sloid:81286:0:01",
+            "ch:1:sloid:81287:0:01",
+            "ch:1:sloid:78916:0:01",
+            "ch:1:sloid:7326:0:440180",
+            "ch:1:sloid:81288:0:805818",
+            "ch:1:sloid:89884:0:38836",
+            "ch:1:sloid:83812:0:584985",
+            "ch:1:sloid:385:0:01",
+            "ch:1:sloid:81290:0:933260",
+            "ch:1:sloid:5100:0:58318",
+            "ch:1:sloid:72367",
+            "ch:1:sloid:986",
+            "ch:1:sloid:72368"
+          ],
+          "segmentCount": 15,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "osm-road-inference",
+            "solothurn-network",
+            "solothurn-reviewed-bus-junction"
+          ],
+          "matchedSegments": 15,
+          "trips": 1,
+          "admittedTrips": 1,
+          "carryInTrips": 0,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 1
+          }
+        },
+        {
+          "id": "8389689cfc6819b2fe013695",
+          "routeId": "96-145-2-j26-1",
+          "agencyId": "801",
+          "mode": "bus",
+          "line": "126",
+          "directionId": "0",
+          "stopIds": [
+            "ch:1:sloid:89885:0:01",
+            "ch:1:sloid:81284:0:390682",
+            "ch:1:sloid:81285:0:911079",
+            "ch:1:sloid:81286:0:01",
+            "ch:1:sloid:81287:0:01",
+            "ch:1:sloid:78916:0:01",
+            "ch:1:sloid:7326:0:440180",
+            "ch:1:sloid:81288:0:805818",
+            "ch:1:sloid:89884:0:38836",
+            "ch:1:sloid:83812:0:584985",
+            "ch:1:sloid:385:0:01",
+            "ch:1:sloid:81290:0:933260",
+            "ch:1:sloid:5100:0:58318",
+            "ch:1:sloid:72367:0:389242",
+            "ch:1:sloid:986:0:87035",
+            "ch:1:sloid:72368:0:754999"
+          ],
+          "segmentCount": 15,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "osm-road-inference",
+            "solothurn-network",
+            "solothurn-reviewed-bus-junction"
+          ],
+          "matchedSegments": 15,
+          "trips": 32,
+          "admittedTrips": 32,
+          "carryInTrips": 0,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 32
+          }
+        },
+        {
+          "id": "4198dfa4be6e8093d41c414d",
+          "routeId": "96-145-2-j26-1",
+          "agencyId": "801",
+          "mode": "bus",
+          "line": "126",
+          "directionId": "1",
+          "stopIds": [
+            "ch:1:sloid:81290:0:647104",
+            "ch:1:sloid:78020:0:02",
+            "ch:1:sloid:89885:0:01",
+            "ch:1:sloid:81284:0:390682"
+          ],
+          "segmentCount": 3,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "osm-road-inference",
+            "solothurn-reviewed-bus-junction"
+          ],
+          "matchedSegments": 3,
+          "trips": 2,
+          "admittedTrips": 2,
+          "carryInTrips": 0,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 2
+          }
+        }
+      ],
+      "sourcePairs": [
+        {
+          "routeId": "96-145-2-j26-1",
+          "agencyId": "801",
+          "mode": "bus",
+          "fromId": "ch:1:sloid:89885:0:01",
+          "toId": "ch:1:sloid:81284:0:390682",
+          "from": "Oberbuchsiten, Bahnhof",
+          "to": "Oberbuchsiten, Löwen",
+          "directMetres": 608.0701046612704,
+          "maximumSnapMetres": 5.952102579605288,
+          "pathMetres": 792.9325397010779,
+          "geometrySource": "solothurn-reviewed-bus-junction",
+          "sourceJunction": {
+            "endpointsLv95": [
+              [
+                2624747.1,
+                1239883.09
+              ],
+              [
+                2624747.099,
+                1239883.092
+              ]
+            ],
+            "joinMetres": 0.0022360679275197854,
+            "sourceFeatureIds": [
+              "4562863f-1da7-42ea-9cf8-f580fb14b86c",
+              "64c5c5c2-6512-4ef1-a06e-4bac13d29b5d"
+            ],
+            "originalVertices": 56,
+            "originalEdges": 54,
+            "addedVertices": 0,
+            "addedEdges": 1
+          },
+          "previousSupplementFailure": "road-pattern-dependent-path",
+          "primaryReason": "disconnected-line",
+          "occurrences": 37,
+          "admittedOccurrences": 37
+        }
+      ]
+    },
+    {
+      "date": "2026-09-06",
+      "before": {
+        "trips": 5819,
+        "admittedTrips": 5507,
+        "scheduledTrips": 4711,
+        "representativeHeadwayTrips": 1108,
+        "admittedScheduledTrips": 4399,
+        "admittedRepresentativeHeadwayTrips": 1108,
+        "scheduledSegmentOccurrences": 68102,
+        "matchedScheduledSegmentOccurrences": 67690,
+        "segmentOccurrences": 69210,
+        "matchedSegmentOccurrences": 68798,
+        "admittedSegmentOccurrences": 62727,
+        "directedPairs": 4467,
+        "matchedDirectedPairs": 4443,
+        "patterns": 777,
+        "completePatterns": 722,
+        "admittedPatterns": 722,
+        "excludedTrips": {
+          "incomplete-directed-pattern": 303,
+          "night-network-excluded-by-source": 9
+        }
+      },
+      "after": {
+        "trips": 5819,
+        "admittedTrips": 5525,
+        "scheduledTrips": 4711,
+        "representativeHeadwayTrips": 1108,
+        "admittedScheduledTrips": 4417,
+        "admittedRepresentativeHeadwayTrips": 1108,
+        "scheduledSegmentOccurrences": 68102,
+        "matchedScheduledSegmentOccurrences": 67708,
+        "segmentOccurrences": 69210,
+        "matchedSegmentOccurrences": 68816,
+        "admittedSegmentOccurrences": 62997,
+        "directedPairs": 4467,
+        "matchedDirectedPairs": 4444,
+        "patterns": 777,
+        "completePatterns": 724,
+        "admittedPatterns": 724,
+        "excludedTrips": {
+          "incomplete-directed-pattern": 285,
+          "night-network-excluded-by-source": 9
+        }
+      },
+      "lostAdmittedPatterns": [],
+      "newlyAdmittedPatterns": [
+        {
+          "id": "7c7bbc97ad48abc08c647b94",
+          "routeId": "96-145-2-j26-1",
+          "agencyId": "801",
+          "mode": "bus",
+          "line": "126",
+          "directionId": "0",
+          "stopIds": [
+            "ch:1:sloid:89885:0:01",
+            "ch:1:sloid:81284:0:390682",
+            "ch:1:sloid:81285:0:911079",
+            "ch:1:sloid:81286:0:01",
+            "ch:1:sloid:81287:0:01",
+            "ch:1:sloid:78916:0:01",
+            "ch:1:sloid:7326:0:440180",
+            "ch:1:sloid:81288:0:805818",
+            "ch:1:sloid:89884:0:38836",
+            "ch:1:sloid:83812:0:584985",
+            "ch:1:sloid:385:0:01",
+            "ch:1:sloid:81290:0:933260",
+            "ch:1:sloid:5100:0:58318",
+            "ch:1:sloid:72367",
+            "ch:1:sloid:986",
+            "ch:1:sloid:72368"
+          ],
+          "segmentCount": 15,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "osm-road-inference",
+            "solothurn-network",
+            "solothurn-reviewed-bus-junction"
+          ],
+          "matchedSegments": 15,
+          "trips": 1,
+          "admittedTrips": 1,
+          "carryInTrips": 1,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 1
+          }
+        },
+        {
+          "id": "8389689cfc6819b2fe013695",
+          "routeId": "96-145-2-j26-1",
+          "agencyId": "801",
+          "mode": "bus",
+          "line": "126",
+          "directionId": "0",
+          "stopIds": [
+            "ch:1:sloid:89885:0:01",
+            "ch:1:sloid:81284:0:390682",
+            "ch:1:sloid:81285:0:911079",
+            "ch:1:sloid:81286:0:01",
+            "ch:1:sloid:81287:0:01",
+            "ch:1:sloid:78916:0:01",
+            "ch:1:sloid:7326:0:440180",
+            "ch:1:sloid:81288:0:805818",
+            "ch:1:sloid:89884:0:38836",
+            "ch:1:sloid:83812:0:584985",
+            "ch:1:sloid:385:0:01",
+            "ch:1:sloid:81290:0:933260",
+            "ch:1:sloid:5100:0:58318",
+            "ch:1:sloid:72367:0:389242",
+            "ch:1:sloid:986:0:87035",
+            "ch:1:sloid:72368:0:754999"
+          ],
+          "segmentCount": 15,
+          "supplementAvailable": true,
+          "geometrySources": [
+            "osm-road-inference",
+            "solothurn-network",
+            "solothurn-reviewed-bus-junction"
+          ],
+          "matchedSegments": 15,
+          "trips": 17,
+          "admittedTrips": 17,
+          "carryInTrips": 0,
+          "representativeHeadwayTrips": 0,
+          "decisions": {
+            "admitted": 17
+          }
+        }
+      ],
+      "sourcePairs": [
+        {
+          "routeId": "96-145-2-j26-1",
+          "agencyId": "801",
+          "mode": "bus",
+          "fromId": "ch:1:sloid:89885:0:01",
+          "toId": "ch:1:sloid:81284:0:390682",
+          "from": "Oberbuchsiten, Bahnhof",
+          "to": "Oberbuchsiten, Löwen",
+          "directMetres": 608.0701046612704,
+          "maximumSnapMetres": 5.952102579605288,
+          "pathMetres": 792.9325397010779,
+          "geometrySource": "solothurn-reviewed-bus-junction",
+          "sourceJunction": {
+            "endpointsLv95": [
+              [
+                2624747.1,
+                1239883.09
+              ],
+              [
+                2624747.099,
+                1239883.092
+              ]
+            ],
+            "joinMetres": 0.0022360679275197854,
+            "sourceFeatureIds": [
+              "4562863f-1da7-42ea-9cf8-f580fb14b86c",
+              "64c5c5c2-6512-4ef1-a06e-4bac13d29b5d"
+            ],
+            "originalVertices": 56,
+            "originalEdges": 54,
+            "addedVertices": 0,
+            "addedEdges": 1
+          },
+          "previousSupplementFailure": "road-pattern-dependent-path",
+          "primaryReason": "disconnected-line",
+          "occurrences": 18,
+          "admittedOccurrences": 18
+        }
+      ]
+    }
+  ]
+}

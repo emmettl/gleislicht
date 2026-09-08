@@ -41,6 +41,9 @@ export async function buildSolothurnRegion() {
   const s29Baseline = JSON.parse(await readFile('data/solothurn-s29-baseline.json'))
   assert.deepEqual(s29Baseline.sourceHashes, sourceHashes)
   const s29Review = { baselineCommit: s29Baseline.commit, sourceHashes, source: supplements.metadata.s29Precedence, alternatives: supplements.s29PrecedenceReview, days: [] }
+  const busBaseline = JSON.parse(await readFile('data/solothurn-bus-junction-baseline.json'))
+  assert.deepEqual(busBaseline.sourceHashes, sourceHashes)
+  const busReview = { baselineCommit: busBaseline.commit, sourceHashes, source: supplements.metadata.busJunction, days: [] }
   const provenance = { supplements: supplements.metadata, ...source.metadata, timetable: {
     publisher: 'SBB / Open data platform mobility Switzerland', attribution: 'opentransportdata.swiss',
     sha256: SO_GTFS_SHA, feed: census.feed, sourceUrl: census.sourceUrl,
@@ -60,6 +63,13 @@ export async function buildSolothurnRegion() {
     const baseResult = applySolothurnGeometry(raw, routes, graphs, matchCache)
     const result = applySolothurnGeometry(raw, routes, graphs, matchCache, supplements)
     const coverage = bernCoverage(result.trains, result.pairs, result.patterns)
+    const busBefore = busBaseline.days.find(d => d.date === raw.metadata.serviceDate)
+    const busPrevious = new Set(busBefore.admittedPatternIds)
+    const busLost = [...busPrevious].filter(id => !result.patterns.some(p => p.id === id && p.admittedTrips))
+    assert.equal(busLost.length, 0, 'Reviewed bus junction regressed an admitted pattern')
+    busReview.days.push({ date: raw.metadata.serviceDate, before: busBefore.coverage, after: coverage, lostAdmittedPatterns: busLost,
+      newlyAdmittedPatterns: result.patterns.filter(p => p.admittedTrips && !busPrevious.has(p.id)).map(({ pathSegments, ...p }) => p),
+      sourcePairs: result.pairs.filter(p => p.geometrySource === 'solothurn-reviewed-bus-junction').map(({ pathIndex, ...p }) => p) })
     const s29Before = s29Baseline.days.find(d => d.date === raw.metadata.serviceDate)
     const s29Previous = new Set(s29Before.admittedPatternIds)
     const s29Lost = [...s29Previous].filter(id => !result.patterns.some(p => p.id === id && p.admittedTrips))
@@ -206,6 +216,7 @@ export async function buildSolothurnRegion() {
   await writeJson(join(auditDir, 'corridor-review.json'), corridorReview, true)
   await writeJson(join(auditDir, 'rail-platform-review.json'), railReview, true)
   await writeJson(join(auditDir, 's29-precedence-review.json'), s29Review, true)
+  await writeJson(join(auditDir, 'bus-junction-review.json'), busReview, true)
   await writeJson(join(auditDir, 'summary.json'), summary, true)
   await writeJson(join(auditDir, 'routes.json'), inventory, true)
   await writeJson(join(auditDir, 'stops.json'), timetable.sourceStopInventory)

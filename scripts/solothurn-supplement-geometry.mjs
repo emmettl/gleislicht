@@ -8,6 +8,7 @@ import { loadSolothurnCorridors } from './solothurn-corridor-geometry.mjs'
 import { loadSolothurnS29Precedence } from './solothurn-s29-precedence.mjs'
 import { loadSolothurnRailReview } from './solothurn-rail-review.mjs'
 import { loadZugRail } from './zug-rail-geometry.mjs'
+import { loadSolothurnBusJunction } from './solothurn-bus-junction.mjs'
 import { loadSolothurnRoads } from './solothurn-road-geometry.mjs'
 import { hashFile } from './solothurn-timetable.mjs'
 const sha = value => createHash('sha256').update(JSON.stringify(value)).digest('hex')
@@ -25,6 +26,7 @@ export function supplementConsensus(candidates) {
 }
 
 export async function loadSolothurnSupplements(timetable, { roads = true, verifyEvidence = false } = {}) {
+  const busJunction = await loadSolothurnBusJunction()
   const contextPath = 'data/solothurn-pattern-contexts.json.gz'
   const context = JSON.parse(gunzipSync(await readFile(contextPath)))
   assert.deepEqual(context.sourceHashes, timetable.sourceHashes)
@@ -75,10 +77,10 @@ export async function loadSolothurnSupplements(timetable, { roads = true, verify
     road = await loadSolothurnRoads(context, { verifyEvidence })
     for (const [key, value] of road.pairs) pairs.set(key, value)
   }
-  return { pairs, policy, s29PrecedenceReview: [...s29Precedence.review.values()], metadata: { s29Precedence: s29Precedence.metadata, railReview: railReview.metadata, corridors: corridors.metadata, contextSha256: await hashFile(contextPath), policySha256: await hashFile(policyPath), boat: policy.boat, tram: policy.tram, rail: { ...rail.source, limits: policy.rail.limits },
+  return { pairs, policy, s29PrecedenceReview: [...s29Precedence.review.values()], metadata: { busJunction: busJunction.metadata, s29Precedence: s29Precedence.metadata, railReview: railReview.metadata, corridors: corridors.metadata, contextSha256: await hashFile(contextPath), policySha256: await hashFile(policyPath), boat: policy.boat, tram: policy.tram, rail: { ...rail.source, limits: policy.rail.limits },
     ...(road ? { road: road.metadata, roadCacheSha256: road.sha256 } : {}) },
     match(route, from, to) {
-      const value = pairs.get(keyOf(route, from, to))
+      const value = busJunction.match(route, from, to, pairs.get(keyOf(route, from, to)))
       if (value?.path) assert.equal(value.agencyId, route.agencyId, 'Supplement changed operator identity')
       return value
     } }

@@ -1,3 +1,4 @@
+import { solothurnLocalGapReview } from './review-solothurn-local-gaps.mjs'
 import assert from 'node:assert/strict'
 import { createHash } from 'node:crypto'
 import { readFile } from 'node:fs/promises'
@@ -48,6 +49,11 @@ export async function checkSolothurnRegion({ output = 'public/data/solothurn-reg
   assert.deepEqual(s29Review.alternatives, supplements.s29PrecedenceReview)
   assert.deepEqual(s29Review.sourceHashes, summary.sourceHashes); assert.deepEqual(s29Baseline.sourceHashes, summary.sourceHashes)
   assert.equal(s29Review.baselineCommit, s29Baseline.commit)
+  const busReview = await json(join(audit, 'bus-junction-review.json')), busBaseline = await json('data/solothurn-bus-junction-baseline.json')
+  assert.deepEqual(busReview.source, supplements.metadata.busJunction)
+  assert.deepEqual(busReview.sourceHashes, summary.sourceHashes); assert.deepEqual(busBaseline.sourceHashes, summary.sourceHashes)
+  assert.equal(busReview.baselineCommit, busBaseline.commit)
+  assert.deepEqual(await json(join(audit, 'local-gap-review.json')), await solothurnLocalGapReview())
   const supplementReview = await json(join(audit, 'supplement-review.json'))
   const admittedRouteStops = new Map()
   const topologyReview = await json(join(audit, 'topology-review.json')), baseline = await json('data/solothurn-topology-baseline.json')
@@ -65,6 +71,12 @@ export async function checkSolothurnRegion({ output = 'public/data/solothurn-reg
     const report = await json(join(audit, `${day.serviceDate}.json`))
     assert.deepEqual(report.sourceHashes, summary.sourceHashes)
     assert.deepEqual(report.coverage, day.coverage)
+    const busDay = busReview.days.find(d => d.date === day.serviceDate), busBefore = busBaseline.days.find(d => d.date === day.serviceDate)
+    assert.deepEqual(busDay.before, busBefore.coverage); assert.deepEqual(busDay.after, report.coverage)
+    assert.deepEqual(busDay.lostAdmittedPatterns, [])
+    for (const id of busBefore.admittedPatternIds) assert(report.patterns.some(p => p.id === id && p.admittedTrips))
+    assert.deepEqual(busDay.newlyAdmittedPatterns.map(p => p.id).sort(), report.patterns.filter(p => p.admittedTrips && !busBefore.admittedPatternIds.includes(p.id)).map(p => p.id).sort())
+    assert.deepEqual(busDay.sourcePairs, report.directedPairs.filter(p => p.geometrySource === 'solothurn-reviewed-bus-junction').map(({ matched, ...p }) => p))
     const s29Day = s29Review.days.find(d => d.date === day.serviceDate), s29Before = s29Baseline.days.find(d => d.date === day.serviceDate)
     assert.deepEqual(s29Day.before, s29Before.coverage); assert.deepEqual(s29Day.after, report.coverage)
     assert.deepEqual(s29Day.lostAdmittedPatterns, [])

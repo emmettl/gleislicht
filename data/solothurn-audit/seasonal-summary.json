@@ -6,6 +6,129 @@
   },
   "timetableCacheSha256": "a5f559bc76649a6878d6f9f77c1a00f684664cb7553536dd92895f060c140aaf",
   "supplementSources": {
+    "busJunction": {
+      "policy": {
+        "schemaVersion": 1,
+        "sourceFile": "data/solothurn-sources/decoded.json.gz",
+        "sourceSha256": "5f11586ad156f763d7b1b9a6ac05f14dd29865ca03bf5a1d42195a7da8c331e8",
+        "routeId": "96-145-2-j26-1",
+        "agencyId": "801",
+        "line": "126",
+        "mode": "bus",
+        "from": [
+          7.77154112,
+          47.30536116,
+          "Oberbuchsiten, Bahnhof",
+          "",
+          "ch:1:sloid:89885:0:01"
+        ],
+        "to": [
+          7.76638479,
+          47.30955796,
+          "Oberbuchsiten, Löwen",
+          "",
+          "ch:1:sloid:81284:0:390682"
+        ],
+        "features": [
+          {
+            "id": "4562863f-1da7-42ea-9cf8-f580fb14b86c",
+            "sha256": "69ba89d5390472aa1d9a6a0057a13640651d18b4d258499cfd878f92b122a84f",
+            "part": 0,
+            "endpoint": 0,
+            "coordinate": [
+              2624747.1,
+              1239883.09
+            ]
+          },
+          {
+            "id": "64c5c5c2-6512-4ef1-a06e-4bac13d29b5d",
+            "sha256": "2bf1a6666c52334bfb5918f9d01cf0ef0c504066be5d764e3985ebc4b2599511",
+            "part": 0,
+            "endpoint": 0,
+            "coordinate": [
+              2624747.099,
+              1239883.092
+            ]
+          }
+        ],
+        "maximumJoinMetres": 0.003,
+        "method": "Explicitly reviewed 2.236 mm LV95 gap between two non-tunnel Bus source-feature endpoints at Oberbuchsiten. Preserve original vertices and add one separately identified inferred connector, only in a supplementary graph for exact PostAuto 126 route and directed platform pair. No global near-endpoint stitching, coordinate replacement, road direction or present-day operator itinerary certification."
+      },
+      "policySha256": "d8afeee5da1a39ed52112981f8b8b6ba88c222574857929f27bcd9966728ca14",
+      "source": {
+        "schemaVersion": 1,
+        "sourceCrs": "EPSG:2056",
+        "records": [
+          {
+            "file": "ch.so.avt.oev.gpkg.zip",
+            "url": "https://files.geo.so.ch/ch.so.avt.oev/aktuell/ch.so.avt.oev.gpkg.zip",
+            "sha256": "e1114b1dfcbd75f57a85da70da00185d64123d72c745c0379c6a8470f48c5045",
+            "bytes": 671829,
+            "acquiredAt": "2026-09-08T17:03:54.515155+00:00"
+          },
+          {
+            "file": "metadata.html",
+            "url": "https://files.geo.so.ch/ch.so.avt.oev/aktuell/meta/datenbeschreibung.html",
+            "sha256": "72a20b0a2757c30d72ee5d04f07f82b354220f434eba4b2ffac1328c847c9c97",
+            "bytes": 125613,
+            "acquiredAt": "2026-09-08T17:03:54.454634+00:00"
+          },
+          {
+            "file": "terms.html",
+            "url": "https://files.geo.so.ch/nutzungsbedingungen.html",
+            "sha256": "0154479bfb178f7c5011cb4da7b861110fabd0803709ecc7b8f04bc6d6b82f15",
+            "bytes": 120820,
+            "acquiredAt": "2026-09-08T17:10:59.082656+00:00"
+          },
+          {
+            "file": "publications.json",
+            "url": "https://data.geo.so.ch/themepublications?query=ch.so.avt.oev",
+            "sha256": "37645f96c2d70ca4e65fcef91477df2b21edb0b0fcbb8e5dd4861d2bb5b6481b",
+            "bytes": 3647,
+            "acquiredAt": "2026-09-08T17:02:37.178652+00:00"
+          }
+        ],
+        "packagePublished": "2025-12-17",
+        "geometrySurveyDate": null,
+        "vintageNote": "Publication date is not a survey date; no per-edge survey date supplied.",
+        "archiveSha256": "e1114b1dfcbd75f57a85da70da00185d64123d72c745c0379c6a8470f48c5045",
+        "geopackageSha256": "3e7a43cfa528866880d2bba61d9b309f5bbc660f7252914c9373f66096f2a263",
+        "attribution": "Öffentlicher Verkehr — Amt für Verkehr und Tiefbau / Amt für Geoinformation, Kanton Solothurn",
+        "metadataUrl": "https://files.geo.so.ch/ch.so.avt.oev/aktuell/meta/datenbeschreibung.html",
+        "termsUrl": "https://files.geo.so.ch/nutzungsbedingungen.html",
+        "license": "Free commercial and noncommercial use; attribution recommended. No Creative Commons licence assigned.",
+        "sourceExclusion": "Night services explicitly excluded by publisher.",
+        "boundary": {
+          "edition": "2026-01",
+          "sourceSha256": "1f122cb7a06f2d312a84b7c0a91116348ba907054d487f0a70b9d2302984e6fc",
+          "snapshotSha256": "68ad054cb9830453e9a90345d57a7bbde9b458dcc0160dce5903ce88a4811d28",
+          "attribution": "© swisstopo",
+          "sourceUrl": "https://data.geo.admin.ch/ch.swisstopo.swissboundaries3d/swissboundaries3d_2026-01/swissboundaries3d_2026-01_2056_5728.gpkg.zip",
+          "termsUrl": "https://www.swisstopo.admin.ch/en/terms-of-use-free-geodata-and-geoservices"
+        }
+      },
+      "evidence": {
+        "endpointsLv95": [
+          [
+            2624747.1,
+            1239883.09
+          ],
+          [
+            2624747.099,
+            1239883.092
+          ]
+        ],
+        "joinMetres": 0.0022360679275197854,
+        "sourceFeatureIds": [
+          "4562863f-1da7-42ea-9cf8-f580fb14b86c",
+          "64c5c5c2-6512-4ef1-a06e-4bac13d29b5d"
+        ],
+        "originalVertices": 56,
+        "originalEdges": 54,
+        "addedVertices": 0,
+        "addedEdges": 1
+      }
+    },
     "s29Precedence": {
       "policy": {
         "schemaVersion": 1,
@@ -633,23 +756,23 @@
     {
       "date": "2026-01-16",
       "trips": 7031,
-      "admittedTrips": 6732,
+      "admittedTrips": 6769,
       "scheduledTrips": 6073,
       "representativeHeadwayTrips": 958,
-      "admittedScheduledTrips": 5774,
+      "admittedScheduledTrips": 5811,
       "admittedRepresentativeHeadwayTrips": 958,
       "scheduledSegmentOccurrences": 97175,
-      "matchedScheduledSegmentOccurrences": 96753,
+      "matchedScheduledSegmentOccurrences": 96790,
       "segmentOccurrences": 98133,
-      "matchedSegmentOccurrences": 97711,
-      "admittedSegmentOccurrences": 89101,
+      "matchedSegmentOccurrences": 97748,
+      "admittedSegmentOccurrences": 89616,
       "directedPairs": 4177,
-      "matchedDirectedPairs": 4156,
+      "matchedDirectedPairs": 4157,
       "patterns": 900,
-      "completePatterns": 845,
-      "admittedPatterns": 845,
+      "completePatterns": 849,
+      "admittedPatterns": 849,
       "excludedTrips": {
-        "incomplete-directed-pattern": 299
+        "incomplete-directed-pattern": 262
       },
       "sourceServiceDates": [
         "2026-01-15",
@@ -667,23 +790,23 @@
     {
       "date": "2026-01-18",
       "trips": 5362,
-      "admittedTrips": 5147,
+      "admittedTrips": 5165,
       "scheduledTrips": 4374,
       "representativeHeadwayTrips": 988,
-      "admittedScheduledTrips": 4159,
+      "admittedScheduledTrips": 4177,
       "admittedRepresentativeHeadwayTrips": 988,
       "scheduledSegmentOccurrences": 68390,
-      "matchedScheduledSegmentOccurrences": 68075,
+      "matchedScheduledSegmentOccurrences": 68093,
       "segmentOccurrences": 69378,
-      "matchedSegmentOccurrences": 69063,
-      "admittedSegmentOccurrences": 63066,
+      "matchedSegmentOccurrences": 69081,
+      "admittedSegmentOccurrences": 63336,
       "directedPairs": 4409,
-      "matchedDirectedPairs": 4387,
+      "matchedDirectedPairs": 4388,
       "patterns": 748,
-      "completePatterns": 694,
-      "admittedPatterns": 694,
+      "completePatterns": 696,
+      "admittedPatterns": 696,
       "excludedTrips": {
-        "incomplete-directed-pattern": 202,
+        "incomplete-directed-pattern": 184,
         "night-network-excluded-by-source": 13
       },
       "sourceServiceDates": [
@@ -702,23 +825,23 @@
     {
       "date": "2026-04-03",
       "trips": 5450,
-      "admittedTrips": 5232,
+      "admittedTrips": 5251,
       "scheduledTrips": 4462,
       "representativeHeadwayTrips": 988,
-      "admittedScheduledTrips": 4244,
+      "admittedScheduledTrips": 4263,
       "admittedRepresentativeHeadwayTrips": 988,
       "scheduledSegmentOccurrences": 67878,
-      "matchedScheduledSegmentOccurrences": 67560,
+      "matchedScheduledSegmentOccurrences": 67579,
       "segmentOccurrences": 68866,
-      "matchedSegmentOccurrences": 68548,
-      "admittedSegmentOccurrences": 62518,
+      "matchedSegmentOccurrences": 68567,
+      "admittedSegmentOccurrences": 62803,
       "directedPairs": 4346,
-      "matchedDirectedPairs": 4322,
+      "matchedDirectedPairs": 4323,
       "patterns": 751,
-      "completePatterns": 690,
-      "admittedPatterns": 690,
+      "completePatterns": 692,
+      "admittedPatterns": 692,
       "excludedTrips": {
-        "incomplete-directed-pattern": 205,
+        "incomplete-directed-pattern": 186,
         "night-network-excluded-by-source": 13
       },
       "sourceServiceDates": [
@@ -737,23 +860,23 @@
     {
       "date": "2026-04-05",
       "trips": 5730,
-      "admittedTrips": 5495,
+      "admittedTrips": 5513,
       "scheduledTrips": 4742,
       "representativeHeadwayTrips": 988,
-      "admittedScheduledTrips": 4507,
+      "admittedScheduledTrips": 4525,
       "admittedRepresentativeHeadwayTrips": 988,
       "scheduledSegmentOccurrences": 67952,
-      "matchedScheduledSegmentOccurrences": 67617,
+      "matchedScheduledSegmentOccurrences": 67635,
       "segmentOccurrences": 68940,
-      "matchedSegmentOccurrences": 68605,
-      "admittedSegmentOccurrences": 62540,
+      "matchedSegmentOccurrences": 68623,
+      "admittedSegmentOccurrences": 62810,
       "directedPairs": 4354,
-      "matchedDirectedPairs": 4330,
+      "matchedDirectedPairs": 4331,
       "patterns": 755,
-      "completePatterns": 695,
-      "admittedPatterns": 695,
+      "completePatterns": 697,
+      "admittedPatterns": 697,
       "excludedTrips": {
-        "incomplete-directed-pattern": 222,
+        "incomplete-directed-pattern": 204,
         "night-network-excluded-by-source": 13
       },
       "sourceServiceDates": [
@@ -772,23 +895,23 @@
     {
       "date": "2026-07-17",
       "trips": 7127,
-      "admittedTrips": 6890,
+      "admittedTrips": 6923,
       "scheduledTrips": 6049,
       "representativeHeadwayTrips": 1078,
-      "admittedScheduledTrips": 5812,
+      "admittedScheduledTrips": 5845,
       "admittedRepresentativeHeadwayTrips": 1078,
       "scheduledSegmentOccurrences": 95846,
-      "matchedScheduledSegmentOccurrences": 95512,
+      "matchedScheduledSegmentOccurrences": 95545,
       "segmentOccurrences": 96924,
-      "matchedSegmentOccurrences": 96590,
-      "admittedSegmentOccurrences": 89886,
+      "matchedSegmentOccurrences": 96623,
+      "admittedSegmentOccurrences": 90348,
       "directedPairs": 4128,
-      "matchedDirectedPairs": 4106,
+      "matchedDirectedPairs": 4107,
       "patterns": 855,
-      "completePatterns": 805,
-      "admittedPatterns": 805,
+      "completePatterns": 807,
+      "admittedPatterns": 807,
       "excludedTrips": {
-        "incomplete-directed-pattern": 237
+        "incomplete-directed-pattern": 204
       },
       "sourceServiceDates": [
         "2026-07-16",
@@ -806,23 +929,23 @@
     {
       "date": "2026-07-19",
       "trips": 5523,
-      "admittedTrips": 5318,
+      "admittedTrips": 5336,
       "scheduledTrips": 4415,
       "representativeHeadwayTrips": 1108,
-      "admittedScheduledTrips": 4210,
+      "admittedScheduledTrips": 4228,
       "admittedRepresentativeHeadwayTrips": 1108,
       "scheduledSegmentOccurrences": 67663,
-      "matchedScheduledSegmentOccurrences": 67358,
+      "matchedScheduledSegmentOccurrences": 67376,
       "segmentOccurrences": 68771,
-      "matchedSegmentOccurrences": 68466,
-      "admittedSegmentOccurrences": 62587,
+      "matchedSegmentOccurrences": 68484,
+      "admittedSegmentOccurrences": 62857,
       "directedPairs": 4402,
-      "matchedDirectedPairs": 4383,
+      "matchedDirectedPairs": 4384,
       "patterns": 754,
-      "completePatterns": 708,
-      "admittedPatterns": 708,
+      "completePatterns": 710,
+      "admittedPatterns": 710,
       "excludedTrips": {
-        "incomplete-directed-pattern": 196,
+        "incomplete-directed-pattern": 178,
         "night-network-excluded-by-source": 9
       },
       "sourceServiceDates": [
@@ -841,23 +964,23 @@
     {
       "date": "2026-08-01",
       "trips": 5566,
-      "admittedTrips": 5379,
+      "admittedTrips": 5398,
       "scheduledTrips": 4458,
       "representativeHeadwayTrips": 1108,
-      "admittedScheduledTrips": 4271,
+      "admittedScheduledTrips": 4290,
       "admittedRepresentativeHeadwayTrips": 1108,
       "scheduledSegmentOccurrences": 67653,
-      "matchedScheduledSegmentOccurrences": 67365,
+      "matchedScheduledSegmentOccurrences": 67384,
       "segmentOccurrences": 68761,
-      "matchedSegmentOccurrences": 68473,
-      "admittedSegmentOccurrences": 63046,
+      "matchedSegmentOccurrences": 68492,
+      "admittedSegmentOccurrences": 63331,
       "directedPairs": 4377,
-      "matchedDirectedPairs": 4357,
+      "matchedDirectedPairs": 4358,
       "patterns": 766,
-      "completePatterns": 733,
-      "admittedPatterns": 733,
+      "completePatterns": 735,
+      "admittedPatterns": 735,
       "excludedTrips": {
-        "incomplete-directed-pattern": 178,
+        "incomplete-directed-pattern": 159,
         "night-network-excluded-by-source": 9
       },
       "sourceServiceDates": [
@@ -876,23 +999,23 @@
     {
       "date": "2026-09-04",
       "trips": 7156,
-      "admittedTrips": 6918,
+      "admittedTrips": 6955,
       "scheduledTrips": 6078,
       "representativeHeadwayTrips": 1078,
-      "admittedScheduledTrips": 5840,
+      "admittedScheduledTrips": 5877,
       "admittedRepresentativeHeadwayTrips": 1078,
       "scheduledSegmentOccurrences": 97358,
-      "matchedScheduledSegmentOccurrences": 97026,
+      "matchedScheduledSegmentOccurrences": 97063,
       "segmentOccurrences": 98436,
-      "matchedSegmentOccurrences": 98104,
-      "admittedSegmentOccurrences": 91365,
+      "matchedSegmentOccurrences": 98141,
+      "admittedSegmentOccurrences": 91880,
       "directedPairs": 4259,
-      "matchedDirectedPairs": 4238,
+      "matchedDirectedPairs": 4239,
       "patterns": 921,
-      "completePatterns": 870,
-      "admittedPatterns": 870,
+      "completePatterns": 874,
+      "admittedPatterns": 874,
       "excludedTrips": {
-        "incomplete-directed-pattern": 238
+        "incomplete-directed-pattern": 201
       },
       "sourceServiceDates": [
         "2026-09-03",
@@ -910,23 +1033,23 @@
     {
       "date": "2026-09-06",
       "trips": 5819,
-      "admittedTrips": 5507,
+      "admittedTrips": 5525,
       "scheduledTrips": 4711,
       "representativeHeadwayTrips": 1108,
-      "admittedScheduledTrips": 4399,
+      "admittedScheduledTrips": 4417,
       "admittedRepresentativeHeadwayTrips": 1108,
       "scheduledSegmentOccurrences": 68102,
-      "matchedScheduledSegmentOccurrences": 67690,
+      "matchedScheduledSegmentOccurrences": 67708,
       "segmentOccurrences": 69210,
-      "matchedSegmentOccurrences": 68798,
-      "admittedSegmentOccurrences": 62727,
+      "matchedSegmentOccurrences": 68816,
+      "admittedSegmentOccurrences": 62997,
       "directedPairs": 4467,
-      "matchedDirectedPairs": 4443,
+      "matchedDirectedPairs": 4444,
       "patterns": 777,
-      "completePatterns": 722,
-      "admittedPatterns": 722,
+      "completePatterns": 724,
+      "admittedPatterns": 724,
       "excludedTrips": {
-        "incomplete-directed-pattern": 303,
+        "incomplete-directed-pattern": 285,
         "night-network-excluded-by-source": 9
       },
       "sourceServiceDates": [
@@ -945,23 +1068,23 @@
     {
       "date": "2026-10-23",
       "trips": 7146,
-      "admittedTrips": 6909,
+      "admittedTrips": 6946,
       "scheduledTrips": 6068,
       "representativeHeadwayTrips": 1078,
-      "admittedScheduledTrips": 5831,
+      "admittedScheduledTrips": 5868,
       "admittedRepresentativeHeadwayTrips": 1078,
       "scheduledSegmentOccurrences": 97212,
-      "matchedScheduledSegmentOccurrences": 96881,
+      "matchedScheduledSegmentOccurrences": 96918,
       "segmentOccurrences": 98290,
-      "matchedSegmentOccurrences": 97959,
-      "admittedSegmentOccurrences": 91225,
+      "matchedSegmentOccurrences": 97996,
+      "admittedSegmentOccurrences": 91740,
       "directedPairs": 4182,
-      "matchedDirectedPairs": 4163,
+      "matchedDirectedPairs": 4164,
       "patterns": 917,
-      "completePatterns": 867,
-      "admittedPatterns": 867,
+      "completePatterns": 871,
+      "admittedPatterns": 871,
       "excludedTrips": {
-        "incomplete-directed-pattern": 237
+        "incomplete-directed-pattern": 200
       },
       "sourceServiceDates": [
         "2026-10-22",
@@ -979,23 +1102,23 @@
     {
       "date": "2026-10-25",
       "trips": 5527,
-      "admittedTrips": 5315,
+      "admittedTrips": 5333,
       "scheduledTrips": 4419,
       "representativeHeadwayTrips": 1108,
-      "admittedScheduledTrips": 4207,
+      "admittedScheduledTrips": 4225,
       "admittedRepresentativeHeadwayTrips": 1108,
       "scheduledSegmentOccurrences": 68700,
-      "matchedScheduledSegmentOccurrences": 68388,
+      "matchedScheduledSegmentOccurrences": 68406,
       "segmentOccurrences": 69808,
-      "matchedSegmentOccurrences": 69496,
-      "admittedSegmentOccurrences": 63564,
+      "matchedSegmentOccurrences": 69514,
+      "admittedSegmentOccurrences": 63834,
       "directedPairs": 4370,
-      "matchedDirectedPairs": 4349,
+      "matchedDirectedPairs": 4350,
       "patterns": 742,
-      "completePatterns": 689,
-      "admittedPatterns": 689,
+      "completePatterns": 691,
+      "admittedPatterns": 691,
       "excludedTrips": {
-        "incomplete-directed-pattern": 203,
+        "incomplete-directed-pattern": 185,
         "night-network-excluded-by-source": 9
       },
       "sourceServiceDates": [
@@ -1014,23 +1137,23 @@
     {
       "date": "2026-12-11",
       "trips": 7025,
-      "admittedTrips": 6787,
+      "admittedTrips": 6824,
       "scheduledTrips": 6067,
       "representativeHeadwayTrips": 958,
-      "admittedScheduledTrips": 5829,
+      "admittedScheduledTrips": 5866,
       "admittedRepresentativeHeadwayTrips": 958,
       "scheduledSegmentOccurrences": 97268,
-      "matchedScheduledSegmentOccurrences": 96936,
+      "matchedScheduledSegmentOccurrences": 96973,
       "segmentOccurrences": 98226,
-      "matchedSegmentOccurrences": 97894,
-      "admittedSegmentOccurrences": 91156,
+      "matchedSegmentOccurrences": 97931,
+      "admittedSegmentOccurrences": 91671,
       "directedPairs": 4138,
-      "matchedDirectedPairs": 4119,
+      "matchedDirectedPairs": 4120,
       "patterns": 892,
-      "completePatterns": 840,
-      "admittedPatterns": 840,
+      "completePatterns": 844,
+      "admittedPatterns": 844,
       "excludedTrips": {
-        "incomplete-directed-pattern": 238
+        "incomplete-directed-pattern": 201
       },
       "sourceServiceDates": [
         "2026-12-10",
@@ -14077,62 +14200,62 @@
         {
           "date": "2026-01-16",
           "trips": 71,
-          "admittedTrips": 34
+          "admittedTrips": 71
         },
         {
           "date": "2026-01-18",
           "trips": 35,
-          "admittedTrips": 17
+          "admittedTrips": 35
         },
         {
           "date": "2026-04-03",
           "trips": 37,
-          "admittedTrips": 18
+          "admittedTrips": 37
         },
         {
           "date": "2026-04-05",
           "trips": 35,
-          "admittedTrips": 17
+          "admittedTrips": 35
         },
         {
           "date": "2026-07-17",
           "trips": 67,
-          "admittedTrips": 34
+          "admittedTrips": 67
         },
         {
           "date": "2026-07-19",
           "trips": 35,
-          "admittedTrips": 17
+          "admittedTrips": 35
         },
         {
           "date": "2026-08-01",
           "trips": 37,
-          "admittedTrips": 18
+          "admittedTrips": 37
         },
         {
           "date": "2026-09-04",
           "trips": 71,
-          "admittedTrips": 34
+          "admittedTrips": 71
         },
         {
           "date": "2026-09-06",
           "trips": 35,
-          "admittedTrips": 17
+          "admittedTrips": 35
         },
         {
           "date": "2026-10-23",
           "trips": 71,
-          "admittedTrips": 34
+          "admittedTrips": 71
         },
         {
           "date": "2026-10-25",
           "trips": 35,
-          "admittedTrips": 17
+          "admittedTrips": 35
         },
         {
           "date": "2026-12-11",
           "trips": 71,
-          "admittedTrips": 34
+          "admittedTrips": 71
         }
       ],
       "status": "contributes-seasonal-patterns"

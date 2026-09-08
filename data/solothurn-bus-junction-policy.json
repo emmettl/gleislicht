@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "sourceFile": "data/solothurn-sources/decoded.json.gz",
+  "sourceSha256": "5f11586ad156f763d7b1b9a6ac05f14dd29865ca03bf5a1d42195a7da8c331e8",
+  "routeId": "96-145-2-j26-1",
+  "agencyId": "801",
+  "line": "126",
+  "mode": "bus",
+  "from": [
+    7.77154112,
+    47.30536116,
+    "Oberbuchsiten, Bahnhof",
+    "",
+    "ch:1:sloid:89885:0:01"
+  ],
+  "to": [
+    7.76638479,
+    47.30955796,
+    "Oberbuchsiten, Löwen",
+    "",
+    "ch:1:sloid:81284:0:390682"
+  ],
+  "features": [
+    {
+      "id": "4562863f-1da7-42ea-9cf8-f580fb14b86c",
+      "sha256": "69ba89d5390472aa1d9a6a0057a13640651d18b4d258499cfd878f92b122a84f",
+      "part": 0,
+      "endpoint": 0,
+      "coordinate": [
+        2624747.1,
+        1239883.09
+      ]
+    },
+    {
+      "id": "64c5c5c2-6512-4ef1-a06e-4bac13d29b5d",
+      "sha256": "2bf1a6666c52334bfb5918f9d01cf0ef0c504066be5d764e3985ebc4b2599511",
+      "part": 0,
+      "endpoint": 0,
+      "coordinate": [
+        2624747.099,
+        1239883.092
+      ]
+    }
+  ],
+  "maximumJoinMetres": 0.003,
+  "method": "Explicitly reviewed 2.236 mm LV95 gap between two non-tunnel Bus source-feature endpoints at Oberbuchsiten. Preserve original vertices and add one separately identified inferred connector, only in a supplementary graph for exact PostAuto 126 route and directed platform pair. No global near-endpoint stitching, coordinate replacement, road direction or present-day operator itinerary certification."
+}
