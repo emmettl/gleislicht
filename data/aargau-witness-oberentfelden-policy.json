@@ -1,0 +1,2458 @@
+{
+  "schemaVersion": 1,
+  "checkedOn": "2026-09-08",
+  "scope": "Separate annual-template audit: localize September AVA road-closure holds. Every emitted polyline segment must remain more than 20 m from the exact OSM closure corridor. Hold both Uerkenbrücke–Engelplatz directions pending detour and source-time review. All April decisions and prior accepted paths remain unchanged; no new geometry is synthesized.",
+  "files": {
+    "data/aargau-witness-ava-policy.json": "f96c56495dd7d0900c18ac43b8f439208399ef27fd08ff7ae2dbafd7d8bec567",
+    "data/aargau-witness-ava-sources/cache.json.gz": "158359a7c175432ddb71060dd88712449b0727be680247551587021876c0feab",
+    "data/aargau-witnesses/source-patterns.json.gz": "824d629c8dded53dc086de9ee6477810613e6c3c90a17fe1d1b7891cb3c4defc",
+    "data/aargau-witnesses/source-verification.json": "dc35791862fe84add38d6b71bacc6017ee86fc434b0a7817203c9c12e43f12bc",
+    "data/aargau-witnesses/ava-review-summary.json": "73896b7fb2366e3e9a3fda5c9b4454a162660135084bcdb2d9b50724a41eaff0",
+    "data/aargau-witnesses/ava-review-patterns.json.gz": "5cf74d920f102403b6de63f633bd19745602ce46c257ad84a9262dd8575649f9",
+    "data/aargau-witness-oberentfelden-sources/sources.json": "ef3eca94a0e49e1b4f7172995d30a2b0b29aac72ddb06b86b6ce77aa50bb606a",
+    "data/aargau-witness-oberentfelden-sources/overpass-query.txt": "1133504165f42564155494e69547fc6ddf91d860872217f4473923718f0b54d5",
+    "data/aargau-witness-oberentfelden-sources/municipal-notice.html.gz": "e6ec1187a475cd3ed2864aaff6cf7c1cc5fb7745ec2d370a164d428c28472371",
+    "data/aargau-witness-oberentfelden-sources/diversion-map.pdf.gz": "0d26d6856ad7a9c752688bd15d2c989763b492c55698f40f0a62f1f4127697ab",
+    "data/aargau-witness-oberentfelden-sources/osm.json.gz": "e657c9610417b0f24c7624702b0205799e3a6adc5a2c239ba68430ec44f1948b"
+  },
+  "source": {
+    "schemaVersion": 1,
+    "sources": [
+      {
+        "file": "municipal-notice.html.gz",
+        "url": "https://oberentfelden.ch/erhaltungsmassnahmen-k-208-trasse-aargau-verkehr-ava-abschnitt-isengueetlistrasse-suhrerstrasse",
+        "sourceDate": "2026-09-07",
+        "retrievedAt": "2026-09-08T21:55:38.506282+00:00",
+        "sha256": "e6ec1187a475cd3ed2864aaff6cf7c1cc5fb7745ec2d370a164d428c28472371",
+        "uncompressedSha256": "a77646d7fa998031419cd3d5772a375c42c56131fe77a0989cc20be3fc53d67b",
+        "attribution": "Gemeinde Oberentfelden",
+        "role": "Dated road-closure notice: 11 September 22:00 to 15 September 05:00, Isengüetlistrasse–Suhrerstrasse."
+      },
+      {
+        "file": "diversion-map.pdf.gz",
+        "url": "https://oberentfelden.ch/sites/default/files/2026-09/Umfahrung%20Baustelle%20AVA.pdf",
+        "sourceDate": "2026-08-11",
+        "retrievedAt": "2026-09-08T21:56:05.295332+00:00",
+        "sha256": "0d26d6856ad7a9c752688bd15d2c989763b492c55698f40f0a62f1f4127697ab",
+        "uncompressedSha256": "8c0bb4e4093c57e3764eece734ecbfdcdab1b8f127e5220c0b763038049860ae",
+        "attribution": "© geoPro Suisse AG; © swisstopo; Daten des Kantons Aargau",
+        "role": "Page 1 visually inspected. Closure and signed detour context only; no cartographic linework copied into feed geometry. Original restrictive rights statement retained in PDF."
+      },
+      {
+        "file": "osm.json.gz",
+        "url": "https://overpass-api.de/api/interpreter",
+        "sourceDate": "2026-09-02T00:00:00Z",
+        "retrievedAt": "2026-09-08T21:57:27.467504+00:00",
+        "sha256": "e657c9610417b0f24c7624702b0205799e3a6adc5a2c239ba68430ec44f1948b",
+        "uncompressedSha256": "c76a2e2e523b54ec511fa517b395d11d66190e01c8c8c45c41c8f3069a47d70b",
+        "attribution": "© OpenStreetMap contributors; ODbL-1.0",
+        "role": "Historical OSM ways and nodes: exact closure junctions and source corridor, not bus detour certification."
+      }
+    ],
+    "querySha256": "1133504165f42564155494e69547fc6ddf91d860872217f4473923718f0b54d5"
+  },
+  "closure": {
+    "sourceWays": [
+      {
+        "type": "way",
+        "id": 48878570,
+        "timestamp": "2026-03-28T15:19:54Z",
+        "version": 16,
+        "changeset": 180546609,
+        "user": "mottiger",
+        "uid": 7504544,
+        "nodes": [
+          2287973365,
+          1228162321,
+          266859063,
+          3190977481,
+          266859064,
+          2287973356,
+          266859065,
+          2287973349,
+          3190990388,
+          5140253013,
+          3190990384,
+          266859067,
+          10594900424,
+          266859068,
+          266859069,
+          3190990449
+        ],
+        "tags": {
+          "highway": "secondary",
+          "lanes": "2",
+          "lit": "yes",
+          "maxspeed": "50",
+          "name": "Aarauerstrasse",
+          "ref": "286",
+          "surface": "asphalt"
+        }
+      },
+      {
+        "type": "way",
+        "id": 769045499,
+        "timestamp": "2023-06-11T19:52:07Z",
+        "version": 3,
+        "changeset": 137217995,
+        "user": "mottiger",
+        "uid": 7504544,
+        "nodes": [
+          3190990449,
+          3190990450,
+          266859070,
+          3123152690,
+          3123152688,
+          266859071
+        ],
+        "tags": {
+          "highway": "secondary",
+          "lanes": "2",
+          "lit": "yes",
+          "maxspeed": "50",
+          "name": "Aarauerstrasse",
+          "ref": "286",
+          "surface": "asphalt"
+        }
+      }
+    ],
+    "northJunctionWays": [
+      {
+        "type": "way",
+        "id": 36784529,
+        "timestamp": "2023-03-30T18:50:19Z",
+        "version": 9,
+        "changeset": 134316709,
+        "user": "mottiger",
+        "uid": 7504544,
+        "nodes": [
+          266859069,
+          10773962352,
+          427663327,
+          2343726359,
+          10594900432,
+          3114530370,
+          651524145
+        ],
+        "tags": {
+          "highway": "residential",
+          "name": "Isegüetlistrasse"
+        }
+      }
+    ],
+    "southJunctionWays": [
+      {
+        "type": "way",
+        "id": 1489293250,
+        "timestamp": "2026-03-16T00:18:32Z",
+        "version": 1,
+        "changeset": 179922036,
+        "user": "d_berger",
+        "uid": 1234273,
+        "nodes": [
+          13651038292,
+          4243330702,
+          641306119,
+          427663317,
+          3123152686,
+          641306123,
+          266859071
+        ],
+        "tags": {
+          "highway": "primary",
+          "lanes": "2",
+          "lit": "yes",
+          "maxspeed": "50",
+          "name": "Suhrerstrasse",
+          "ref": "1",
+          "sidewalk:both": "yes",
+          "surface": "asphalt"
+        }
+      }
+    ],
+    "nodeIds": [
+      266859069,
+      3190990449,
+      3190990450,
+      266859070,
+      3123152690,
+      3123152688,
+      266859071
+    ],
+    "points": [
+      [
+        8.0462755,
+        47.3583974
+      ],
+      [
+        8.0464578,
+        47.3578709
+      ],
+      [
+        8.046533,
+        47.3576624
+      ],
+      [
+        8.0465668,
+        47.3575591
+      ],
+      [
+        8.0467358,
+        47.3569969
+      ],
+      [
+        8.0467703,
+        47.3569223
+      ],
+      [
+        8.0468597,
+        47.3568218
+      ]
+    ],
+    "lengthMetres": 181.50502208597015,
+    "noticeSpelling": "Isengüetlistrasse",
+    "osmSpelling": "Isegüetlistrasse",
+    "method": "Slice two exact historical OSM ways between the named junctions. Official map consulted for closure extent only; all coordinates are OSM."
+  },
+  "clearanceMetres": 20,
+  "expected": {
+    "patterns": 2,
+    "templates": 153,
+    "addedOccurrences": 1836,
+    "counts": {
+      "admit-clear-of-closure": 1836,
+      "hold-closed-road-crossing": 153
+    }
+  },
+  "patterns": [
+    {
+      "id": "6544c1889d1a77be9af9",
+      "agencyId": "7244",
+      "routeId": "92-A07-9-j26-1",
+      "line": "EV",
+      "directionId": "1",
+      "stops": [
+        [
+          8.05007276,
+          47.30559872,
+          "Schöftland, Bahnhof",
+          "",
+          "ch:1:sloid:72648"
+        ],
+        [
+          8.05121362,
+          47.31151311,
+          "Schöftland Nordweg, Bahnhof",
+          "",
+          "ch:1:sloid:89888"
+        ],
+        [
+          8.05301025,
+          47.32039867,
+          "Hirschthal, Bahnhof",
+          "",
+          "ch:1:sloid:10271"
+        ],
+        [
+          8.05563333,
+          47.32867996,
+          "Obermuhen, Bahnhof",
+          "",
+          "ch:1:sloid:10274"
+        ],
+        [
+          8.05488773,
+          47.33450653,
+          "Mittelmuhen, Bahnhof",
+          "",
+          "ch:1:sloid:10273"
+        ],
+        [
+          8.05363008,
+          47.33885321,
+          "Muhen, Bahnhof",
+          "",
+          "ch:1:sloid:10270"
+        ],
+        [
+          8.05224668,
+          47.34439257,
+          "Muhen Nord, Bahnhof",
+          "",
+          "ch:1:sloid:10269"
+        ],
+        [
+          8.04668611,
+          47.3561694,
+          "Oberentfelden, Engelplatz",
+          "",
+          "ch:1:sloid:10268"
+        ],
+        [
+          8.04511406,
+          47.3615244,
+          "Oberentfelden, Uerkenbrücke",
+          "B",
+          "ch:1:sloid:10267::2"
+        ],
+        [
+          8.0426886,
+          47.36499269,
+          "Unterentfelden, Oberdorf",
+          "B",
+          "ch:1:sloid:10266::2"
+        ],
+        [
+          8.04468286,
+          47.36903266,
+          "Unterentfelden, Post",
+          "B",
+          "ch:1:sloid:10265::2"
+        ],
+        [
+          8.0471712,
+          47.37232403,
+          "Unterentfelden, Am Distelberg",
+          "B",
+          "ch:1:sloid:10264::2"
+        ],
+        [
+          8.05073751,
+          47.38316402,
+          "Aarau, Binzenhof",
+          "B",
+          "ch:1:sloid:10263::2"
+        ],
+        [
+          8.05248024,
+          47.39104625,
+          "Aarau, Bahnhof Süd",
+          "",
+          "ch:1:sloid:11309"
+        ]
+      ],
+      "templates": [
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.192.j26",
+          "shortName": "9134",
+          "sha256": "44c6e8e270ad5708287255570d5f6e91f325d2ebd76d8aa89569b5c802a9ae6a",
+          "activeServiceDates": [
+            "2026-09-12"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.193.j26",
+          "shortName": "9184",
+          "sha256": "b6db2e188b7a0ea637b02eeaf089a97ec6edc1c9327b1962815cb85c5bc88e91",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.194.j26",
+          "shortName": "9108",
+          "sha256": "7d6022896ad6d22094a1dc55a2f350554ab54a20c354f4d489a0e8cc407df014",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.195.j26",
+          "shortName": "9164",
+          "sha256": "b1fedd09e426a47aa36db1ac87327c10a15bf7d8e5651049b64afc11bcdd302b",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.196.j26",
+          "shortName": "9212",
+          "sha256": "e273c6aed8fdf185bbecf2be0b154ec30015b90df95bf34e459c17425b2ae886",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.197.j26",
+          "shortName": "9162",
+          "sha256": "86b250b9eaa97cb97fcf3f32767f3adae3700b6c06f947e48ebe3faa658bb47f",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.198.j26",
+          "shortName": "9236",
+          "sha256": "be766d4eee6856f7e75ed1106e822512f03180e5378ee231c03d351281600b6b",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.199.j26",
+          "shortName": "9232",
+          "sha256": "1db9eac78c4a400a41c269ae9be2efb7318bcbb6af16832cc99bab9d3e298e94",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.200.j26",
+          "shortName": "9136",
+          "sha256": "4cdd9281bd968d4ff75ef3bb7a2f6c64093a2ff00db2ce068211954d8fcdcd40",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.201.j26",
+          "shortName": "9138",
+          "sha256": "aeb536b5e37c4c2180750c0834a4705f67cbd81446db813fc5dc330d70a992a4",
+          "activeServiceDates": [
+            "2026-09-12"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.202.j26",
+          "shortName": "9186",
+          "sha256": "b1bb4687c2571c931051a58296e9de40201140d3d81b1a9ee5283b8796998089",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.203.j26",
+          "shortName": "9182",
+          "sha256": "10703dc99121d057d582daea7e524336b71e70efa0979dc2443904d75342f1c0",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.204.j26",
+          "shortName": "9130",
+          "sha256": "c54f17a4352e4f6b75b3a0c67664af058be126b0b78b2da4cb96ea7c81b80333",
+          "activeServiceDates": [
+            "2026-09-12"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.205.j26",
+          "shortName": "9176",
+          "sha256": "2256e07b128751146b9c793edbd43c89e4fc0d46ea4cd25443ea911559f35a4f",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.206.j26",
+          "shortName": "9180",
+          "sha256": "0425f96d65fc9b0d1ca0f43ce805d54a9c371d87d134508689866dd789b0cad0",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.207.j26",
+          "shortName": "9244",
+          "sha256": "0b149a1ceda86e0fc8199480b3db7bc7c46002826db21b8c0b18c1213cb6e774",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.208.j26",
+          "shortName": "9158",
+          "sha256": "cb98a020a4788fd74c0bc7a039cffb22e5a87269e62ae21161b1924bb5424ed5",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.209.j26",
+          "shortName": "9140",
+          "sha256": "034990e467720452701db533748dd884dabc6bb1a0dc75aed1d76b44191a381d",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.210.j26",
+          "shortName": "9188",
+          "sha256": "7a5736019549276fb0a2cecc4161b8bf60da4f66260a377d7127adaae8c12290",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.211.j26",
+          "shortName": "9112",
+          "sha256": "059e9d54eaa0fc9268dd5f41d0520a341a6a29f8cecf53f578a677e0be95541f",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.212.j26",
+          "shortName": "9216",
+          "sha256": "504a6f1e793490a2f055aa278f979acde604d44a2ce2c73e51d96a54b43ff916",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.213.j26",
+          "shortName": "9242",
+          "sha256": "a070e1cf13fd0759adfeacc496589b88d61d40bc8a31bcca3412847574f81f30",
+          "activeServiceDates": [
+            "2026-09-12"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.214.j26",
+          "shortName": "9142",
+          "sha256": "55763c4ae9cc3789efa1dfc282e08001b0812861a097db653a7804029b953fb1",
+          "activeServiceDates": [
+            "2026-09-12"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.215.j26",
+          "shortName": "9104",
+          "sha256": "3b29ce55c48a8f5050fec0eec7cb8f01b48ee9eb5dadbf0d6ec6bac443a36fde",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.216.j26",
+          "shortName": "9128",
+          "sha256": "37495d3ff1cdaca57eb1724c3d53f00b174ea179b27d9096c67b8560ca99ee1d",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.217.j26",
+          "shortName": "9106",
+          "sha256": "cd8a3ec874c0462f1ae2e0ebe8c1bf900c8b0a6d707d8814aeab7143557e540d",
+          "activeServiceDates": [
+            "2026-09-12"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.218.j26",
+          "shortName": "9198",
+          "sha256": "58318e338766a9beaaabf5ce6bb12249a711af0d6243f2c7a7939ed67d27ae00",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.219.j26",
+          "shortName": "9178",
+          "sha256": "4ff5915e3761a5dadc7b537663b0f14ca8a168761ab48f515bde06e881cf2779",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.220.j26",
+          "shortName": "9238",
+          "sha256": "8359a849b7677f1a975148230e9b88d4a013186eb777e1d91e9cac57b189174a",
+          "activeServiceDates": [
+            "2026-09-12"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.221.j26",
+          "shortName": "9114",
+          "sha256": "b0d3f5c17ee97b6fd52b5ec0d32575ce366bb407b2cbd896f5bbdf35ee0093be",
+          "activeServiceDates": [
+            "2026-09-12"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.222.j26",
+          "shortName": "9102",
+          "sha256": "211c7a5454f31471992f37778a3256ab58f4cfe86b1ae85a264209e61606e0f1",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.223.j26",
+          "shortName": "102",
+          "sha256": "0adc471579b3881cf8c2034db2bd5858c7b1c3c77ee795b5e0033ca584a97203",
+          "activeServiceDates": [
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.224.j26",
+          "shortName": "9210",
+          "sha256": "fa46b5c851c5fa81339cdf224c29d3b9785cf9cd3e506c3319c8170e71adc4f1",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.225.j26",
+          "shortName": "9218",
+          "sha256": "5e9f5043d5eee865f08bd30c6b53d445b4e9100ca4e3fa1e806adb3d91a27db2",
+          "activeServiceDates": [
+            "2026-09-12"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.226.j26",
+          "shortName": "9146",
+          "sha256": "012a13b05db0e81d59f654f30f3869415f9d0cb794d59641190a0c2836b8a375",
+          "activeServiceDates": [
+            "2026-09-12"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.227.j26",
+          "shortName": "9144",
+          "sha256": "fc6f4b7fdb61e9ab976fc3fab9e0f6995b132277e6425b7e3faa9662c80c1c62",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.228.j26",
+          "shortName": "9226",
+          "sha256": "95854bb532f0330c193e5eb90f78dc5b4fab20c6aa50ad541328a47354624e4d",
+          "activeServiceDates": [
+            "2026-09-12"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.229.j26",
+          "shortName": "9222",
+          "sha256": "6e5cb2d84a4c49a87910b815cdf2ec8ef137076ce3a5d2d1c9c67788ad43e178",
+          "activeServiceDates": [
+            "2026-09-12"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.230.j26",
+          "shortName": "9190",
+          "sha256": "4eef44314de3cb8a5247b5c7b04b4ccfe66ef03b608bcef484ab364c5b302f35",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.231.j26",
+          "shortName": "9196",
+          "sha256": "e49b14ffd72577d6dac20d37f42c423029b70096d89694e06568ea95db1b1dc9",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.232.j26",
+          "shortName": "9110",
+          "sha256": "6f079ac2ed663fec36fe3660934150d0e56600e9f9a6c4bb55fd954907585160",
+          "activeServiceDates": [
+            "2026-09-12"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.233.j26",
+          "shortName": "9228",
+          "sha256": "1bd7662b528c4b079e1fc052bbf156815fa4c04161aa160fda1823aa13dc43ce",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.234.j26",
+          "shortName": "9240",
+          "sha256": "c8f89d4bf67e098f2a9ca4afa12b0eb83a0f2be5668fd7171b97dcb91d159ae8",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.235.j26",
+          "shortName": "9230",
+          "sha256": "9aa9a22875d0945c55c6268d98f07683f3c6603402ae78574ff5ee9709ccb715",
+          "activeServiceDates": [
+            "2026-09-12"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.236.j26",
+          "shortName": "9150",
+          "sha256": "fdc43eca540d4b7ac4b075a9e316d6991345bf7a75687f46d65a5e8eed59252c",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.237.j26",
+          "shortName": "9206",
+          "sha256": "a0cf18eb1374087486356920037c5e27865300685a14a72a75db7501843b7be9",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.238.j26",
+          "shortName": "9120",
+          "sha256": "0ba86166856bf70ce6ab71bcff9754929f3f90f543d97811eae271dbd30df898",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.239.j26",
+          "shortName": "9126",
+          "sha256": "9a3b16c2637511c32bec7f3a4aa10123dcb27ad8c05d08ec0c0a5b687cbfeeb0",
+          "activeServiceDates": [
+            "2026-09-12"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.240.j26",
+          "shortName": "9192",
+          "sha256": "fded6bda464efaa0740c843958500cfd7f247e7be88b8b8eb4e9240fab7e58a0",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.241.j26",
+          "shortName": "9124",
+          "sha256": "8147066ce065ef87d39cc569c017ce839c9138c403ef0c4f86403c69ad9cca4c",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.242.j26",
+          "shortName": "9116",
+          "sha256": "7ac697ac4baa4a48141f984b793c72f527bf6999e276fafc46fdaeddf328df50",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.243.j26",
+          "shortName": "9122",
+          "sha256": "f9de5b0179cc7ecb1105ba795820485c09b0f4572883bf814e8ebeaa66aaefff",
+          "activeServiceDates": [
+            "2026-09-12"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.244.j26",
+          "shortName": "9152",
+          "sha256": "6431cfb1eadd45e2e8fcc719d511dd9b5cdacd7672b030088e2bf38708f87044",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.245.j26",
+          "shortName": "9132",
+          "sha256": "ca28eeb92308e52f3f9c23c707333674967b8763692020db4041ddfd712c653b",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.246.j26",
+          "shortName": "9100",
+          "sha256": "baf9b7a8458fd48c2a6667663e6e41edde3bd2257075bdfd0e802bfc096d2b6a",
+          "activeServiceDates": [
+            "2026-09-12"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.247.j26",
+          "shortName": "9208",
+          "sha256": "545cc8dbbb66317c2d005cda6c2d93512d3eb984f36aca055032586a0b9b7d6e",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.248.j26",
+          "shortName": "9118",
+          "sha256": "5d862a4d4db2c08cf630550f6b3567994d83d42265fa0a28c63ec25ce503d0c7",
+          "activeServiceDates": [
+            "2026-09-12"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.249.j26",
+          "shortName": "9148",
+          "sha256": "1cd43c60fef3c3b2710115a5b74c820365c8c0a6310555910a043473b4ce9ab0",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.250.j26",
+          "shortName": "9172",
+          "sha256": "3f0b233be53211f780271fdedee2a258349aaf576b685454d1ce6dafc61f8bf5",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.251.j26",
+          "shortName": "9220",
+          "sha256": "f357aaffe65bc9b744ebb04749693d6a782585ee6860acdd7a0a5cfcf5a59f8f",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.252.j26",
+          "shortName": "9168",
+          "sha256": "a2bf2cfc5d448c6a32e3a283b5a758727a5d6e2bdb4eb904e144cd23544f26ac",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.253.j26",
+          "shortName": "9166",
+          "sha256": "99ba2ebd5b616a4aeba38587404ea54ae4e36b76c44ab8cdcfc0598a0e220dbf",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.254.j26",
+          "shortName": "9200",
+          "sha256": "98be967f6c19aba58f7af27d14a928fd558261af55227bb144b9eca461e9cb96",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.255.j26",
+          "shortName": "9246",
+          "sha256": "d1668b84607442f9a90829a11dd06a528bc7445307ba815bf3105e6240865f9b",
+          "activeServiceDates": [
+            "2026-09-12"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.256.j26",
+          "shortName": "9174",
+          "sha256": "7e58b9c9f8a38819b782379f2aacb80daacda393c9fd57517865fd56ae044e7e",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.257.j26",
+          "shortName": "9160",
+          "sha256": "9fcddb8189b575659a84935ce792cd6cd2ab9dee3d58fd290dd3534223844ff0",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.258.j26",
+          "shortName": "9194",
+          "sha256": "a6b6fdd5aadfe677e9df3977b2defd675dac659d43317f723c2493e8dd5d9284",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.259.j26",
+          "shortName": "9156",
+          "sha256": "83816428869fb71f6700b3482cbb50fe6e4a02b246539e30f8a207e01ae491dd",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.260.j26",
+          "shortName": "9170",
+          "sha256": "4b5fa01633b66196a00ad69e19e3b0fa1419e7c4d8676fb110288b975ed7a074",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.261.j26",
+          "shortName": "9204",
+          "sha256": "d6b2201db7592c507cecc54542258ad716ee3047d1f29afe6d73baebf65fd909",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.262.j26",
+          "shortName": "9154",
+          "sha256": "6cbcc46d3a475ddaee73ccf165e617706009ff0baf9ef8a746addbb76ad39f26",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.263.j26",
+          "shortName": "9234",
+          "sha256": "138e9ab75c4d58542a73407106a4d65705b72cd86628e2d59924a2e564ca5b37",
+          "activeServiceDates": [
+            "2026-09-12"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.264.j26",
+          "shortName": "9224",
+          "sha256": "6fa1c5b7b81a16ce4cc2def20853ad865e6d8e62af7a8421c8b7570ebb4a0853",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.265.j26",
+          "shortName": "9248",
+          "sha256": "de5cb75373684ea5d167c435afd7cd183120f41e27fc130126131ef667d43adb",
+          "activeServiceDates": [
+            "2026-09-12"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.266.j26",
+          "shortName": "9214",
+          "sha256": "880d5be81414ff4c574cabea40d2c86827af8503ab760eb2e96f21bf07d80052",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.267.j26",
+          "shortName": "9202",
+          "sha256": "e0fc909610f5e0103593a302f76169f9640812cd4b04b6095276620485344a35",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        }
+      ],
+      "segments": [
+        {
+          "index": 0,
+          "pathSha256": "03e5b35479520585e2afc91afc8a9ccb238b0fd1320666f3c5b285d423b4d4ec",
+          "evidence": {
+            "accepted": true,
+            "geometrySource": "osm",
+            "roadPatternId": "8edf99fe3bac2a0dd2de2fac",
+            "pathMetres": 805.4800160286651,
+            "endpointAdjustmentMetres": 0.03605198549544628
+          },
+          "minimumClosureDistanceMetres": 5048.759440443701,
+          "timing": {
+            "minimumSourceSeconds": 60,
+            "maximumSourceSeconds": 60,
+            "maximumRequiredMeanKmh": 48.32880096171991,
+            "held": false,
+            "interpretation": "Conservative review screen, not a legal speed limit or certification. Original minute-granularity calls are preserved without timing adjustments."
+          },
+          "disposition": "admit-clear-of-closure",
+          "priorAssessment": {
+            "fromId": "ch:1:sloid:72648",
+            "toId": "ch:1:sloid:89888",
+            "pathIndex": null,
+            "reason": "missing-operator-mode-line"
+          }
+        },
+        {
+          "index": 1,
+          "pathSha256": "c8218693b204c413e2a50616ecedc12d6d1e12f96f7cb7e8b0f33745887cb291",
+          "evidence": {
+            "accepted": true,
+            "geometrySource": "osm",
+            "roadPatternId": "8edf99fe3bac2a0dd2de2fac",
+            "pathMetres": 1068.1429630339444,
+            "endpointAdjustmentMetres": 0.04129680987979941
+          },
+          "minimumClosureDistanceMetres": 4076.478910489953,
+          "timing": {
+            "minimumSourceSeconds": 120,
+            "maximumSourceSeconds": 120,
+            "maximumRequiredMeanKmh": 32.04428889101833,
+            "held": false,
+            "interpretation": "Conservative review screen, not a legal speed limit or certification. Original minute-granularity calls are preserved without timing adjustments."
+          },
+          "disposition": "admit-clear-of-closure",
+          "priorAssessment": {
+            "fromId": "ch:1:sloid:89888",
+            "toId": "ch:1:sloid:10271",
+            "pathIndex": null,
+            "reason": "missing-operator-mode-line"
+          }
+        },
+        {
+          "index": 2,
+          "pathSha256": "cd622538b81174213afbac02580b5ed965066a5d0c193b8c53743832e79881d9",
+          "evidence": {
+            "accepted": true,
+            "geometrySource": "osm",
+            "roadPatternId": "8edf99fe3bac2a0dd2de2fac",
+            "pathMetres": 950.783268143906,
+            "endpointAdjustmentMetres": 0.04129680987979941
+          },
+          "minimumClosureDistanceMetres": 3198.2539880326954,
+          "timing": {
+            "minimumSourceSeconds": 60,
+            "maximumSourceSeconds": 60,
+            "maximumRequiredMeanKmh": 57.04699608863436,
+            "held": false,
+            "interpretation": "Conservative review screen, not a legal speed limit or certification. Original minute-granularity calls are preserved without timing adjustments."
+          },
+          "disposition": "admit-clear-of-closure",
+          "priorAssessment": {
+            "fromId": "ch:1:sloid:10271",
+            "toId": "ch:1:sloid:10274",
+            "pathIndex": null,
+            "reason": "missing-operator-mode-line"
+          }
+        },
+        {
+          "index": 3,
+          "pathSha256": "72e65eb2ed60a84ce2e855c138236ef92d7d47964fb59363e249ed8ff6fb4b40",
+          "evidence": {
+            "accepted": true,
+            "geometrySource": "osm",
+            "roadPatternId": "8edf99fe3bac2a0dd2de2fac",
+            "pathMetres": 692.3221468864458,
+            "endpointAdjustmentMetres": 0.056145794600949255
+          },
+          "minimumClosureDistanceMetres": 2540.802015442431,
+          "timing": {
+            "minimumSourceSeconds": 60,
+            "maximumSourceSeconds": 60,
+            "maximumRequiredMeanKmh": 41.53932881318675,
+            "held": false,
+            "interpretation": "Conservative review screen, not a legal speed limit or certification. Original minute-granularity calls are preserved without timing adjustments."
+          },
+          "disposition": "admit-clear-of-closure",
+          "priorAssessment": {
+            "fromId": "ch:1:sloid:10274",
+            "toId": "ch:1:sloid:10273",
+            "pathIndex": null,
+            "reason": "missing-operator-mode-line"
+          }
+        },
+        {
+          "index": 4,
+          "pathSha256": "7570884c37e57516b1131ad0f13a28ba2adf0c702d079f27813a9536b8ede484",
+          "evidence": {
+            "accepted": true,
+            "geometrySource": "osm",
+            "roadPatternId": "8edf99fe3bac2a0dd2de2fac",
+            "pathMetres": 498.29929820330153,
+            "endpointAdjustmentMetres": 0.056145794600949255
+          },
+          "minimumClosureDistanceMetres": 2062.0726742276574,
+          "timing": {
+            "minimumSourceSeconds": 60,
+            "maximumSourceSeconds": 60,
+            "maximumRequiredMeanKmh": 29.897957892198097,
+            "held": false,
+            "interpretation": "Conservative review screen, not a legal speed limit or certification. Original minute-granularity calls are preserved without timing adjustments."
+          },
+          "disposition": "admit-clear-of-closure",
+          "priorAssessment": {
+            "fromId": "ch:1:sloid:10273",
+            "toId": "ch:1:sloid:10270",
+            "pathIndex": null,
+            "reason": "missing-operator-mode-line"
+          }
+        },
+        {
+          "index": 5,
+          "pathSha256": "546c616e3a39e13c4c697773abc2d3815a54ea6a711319dd3d7077645c999611",
+          "evidence": {
+            "accepted": true,
+            "geometrySource": "osm",
+            "roadPatternId": "8edf99fe3bac2a0dd2de2fac",
+            "pathMetres": 695.5218492138883,
+            "endpointAdjustmentMetres": 0.05360895852132295
+          },
+          "minimumClosureDistanceMetres": 1435.180029195421,
+          "timing": {
+            "minimumSourceSeconds": 60,
+            "maximumSourceSeconds": 60,
+            "maximumRequiredMeanKmh": 41.731310952833304,
+            "held": false,
+            "interpretation": "Conservative review screen, not a legal speed limit or certification. Original minute-granularity calls are preserved without timing adjustments."
+          },
+          "disposition": "admit-clear-of-closure",
+          "priorAssessment": {
+            "fromId": "ch:1:sloid:10270",
+            "toId": "ch:1:sloid:10269",
+            "pathIndex": null,
+            "reason": "missing-operator-mode-line"
+          }
+        },
+        {
+          "index": 6,
+          "pathSha256": "348ccf7e6fdf40df4feecb67231ae15bd2aa473faaff00f1e6c8216238b154e1",
+          "evidence": {
+            "accepted": true,
+            "geometrySource": "osm",
+            "roadPatternId": "8edf99fe3bac2a0dd2de2fac",
+            "pathMetres": 1386.2607192910555,
+            "endpointAdjustmentMetres": 0.05360895852132295
+          },
+          "minimumClosureDistanceMetres": 73.7125548933576,
+          "timing": {
+            "minimumSourceSeconds": 120,
+            "maximumSourceSeconds": 120,
+            "maximumRequiredMeanKmh": 41.58782157873166,
+            "held": false,
+            "interpretation": "Conservative review screen, not a legal speed limit or certification. Original minute-granularity calls are preserved without timing adjustments."
+          },
+          "disposition": "admit-clear-of-closure",
+          "priorAssessment": {
+            "fromId": "ch:1:sloid:10269",
+            "toId": "ch:1:sloid:10268",
+            "pathIndex": null,
+            "reason": "missing-operator-mode-line"
+          }
+        },
+        {
+          "index": 7,
+          "pathSha256": "68a0f3c4091c506b32bc0b0d87a21decb370d97fc769ee50abe78035a7048a71",
+          "evidence": {
+            "accepted": true,
+            "geometrySource": "osm",
+            "roadPatternId": "8edf99fe3bac2a0dd2de2fac",
+            "pathMetres": 650.1374381678679,
+            "endpointAdjustmentMetres": 0.045294105570635075
+          },
+          "minimumClosureDistanceMetres": 0,
+          "timing": {
+            "minimumSourceSeconds": 120,
+            "maximumSourceSeconds": 120,
+            "maximumRequiredMeanKmh": 19.50412314503604,
+            "held": false,
+            "interpretation": "Conservative review screen, not a legal speed limit or certification. Original minute-granularity calls are preserved without timing adjustments."
+          },
+          "disposition": "hold-closed-road-crossing",
+          "priorAssessment": {
+            "fromId": "ch:1:sloid:10268",
+            "toId": "ch:1:sloid:10267::2",
+            "pathIndex": null,
+            "reason": "missing-operator-mode-line"
+          }
+        },
+        {
+          "index": 8,
+          "pathSha256": "4e45bf7d65d0651db781cb65657ecbb318cdc066ada1c1e8e9a772646d78983a",
+          "evidence": {
+            "accepted": true,
+            "geometrySource": "osm",
+            "roadPatternId": "8edf99fe3bac2a0dd2de2fac",
+            "pathMetres": 659.610880603552,
+            "endpointAdjustmentMetres": 0.04583129587457297
+          },
+          "minimumClosureDistanceMetres": 332.2690931647245,
+          "timing": {
+            "minimumSourceSeconds": 60,
+            "maximumSourceSeconds": 60,
+            "maximumRequiredMeanKmh": 39.57665283621312,
+            "held": false,
+            "interpretation": "Conservative review screen, not a legal speed limit or certification. Original minute-granularity calls are preserved without timing adjustments."
+          },
+          "disposition": "admit-clear-of-closure",
+          "priorAssessment": {
+            "fromId": "ch:1:sloid:10267::2",
+            "toId": "ch:1:sloid:10266::2",
+            "pathIndex": null,
+            "reason": "missing-operator-mode-line"
+          }
+        },
+        {
+          "index": 9,
+          "pathSha256": "43a3681427efe450962b4a901692cfdae70d89fda946bc2f74ed23d6618c9386",
+          "evidence": {
+            "accepted": true,
+            "geometrySource": "osm",
+            "roadPatternId": "8edf99fe3bac2a0dd2de2fac",
+            "pathMetres": 487.54830756073864,
+            "endpointAdjustmentMetres": 0.04583129587457297
+          },
+          "minimumClosureDistanceMetres": 781.5492049849764,
+          "timing": {
+            "minimumSourceSeconds": 120,
+            "maximumSourceSeconds": 120,
+            "maximumRequiredMeanKmh": 14.62644922682216,
+            "held": false,
+            "interpretation": "Conservative review screen, not a legal speed limit or certification. Original minute-granularity calls are preserved without timing adjustments."
+          },
+          "disposition": "admit-clear-of-closure",
+          "priorAssessment": {
+            "fromId": "ch:1:sloid:10266::2",
+            "toId": "ch:1:sloid:10265::2",
+            "pathIndex": null,
+            "reason": "missing-operator-mode-line"
+          }
+        },
+        {
+          "index": 10,
+          "pathSha256": "a3c14d77984df75bd652a3e45dd1785b8c3246e43d64fb8b9149232c04eafccc",
+          "evidence": {
+            "accepted": true,
+            "geometrySource": "osm",
+            "roadPatternId": "8edf99fe3bac2a0dd2de2fac",
+            "pathMetres": 549.543442687542,
+            "endpointAdjustmentMetres": 0.03929304500185501
+          },
+          "minimumClosureDistanceMetres": 1181.614059952404,
+          "timing": {
+            "minimumSourceSeconds": 60,
+            "maximumSourceSeconds": 60,
+            "maximumRequiredMeanKmh": 32.97260656125252,
+            "held": false,
+            "interpretation": "Conservative review screen, not a legal speed limit or certification. Original minute-granularity calls are preserved without timing adjustments."
+          },
+          "disposition": "admit-clear-of-closure",
+          "priorAssessment": {
+            "fromId": "ch:1:sloid:10265::2",
+            "toId": "ch:1:sloid:10264::2",
+            "pathIndex": null,
+            "reason": "missing-operator-mode-line"
+          }
+        },
+        {
+          "index": 11,
+          "pathSha256": "b7e3621f26c9bc5ac7e99aa03a14cac4ac3e52be7b4da576f69c67c86541703b",
+          "evidence": {
+            "accepted": true,
+            "geometrySource": "osm",
+            "roadPatternId": "8edf99fe3bac2a0dd2de2fac",
+            "pathMetres": 1275.9207527145882,
+            "endpointAdjustmentMetres": 0.037000259822700256
+          },
+          "minimumClosureDistanceMetres": 1550.0396347558296,
+          "timing": {
+            "minimumSourceSeconds": 120,
+            "maximumSourceSeconds": 120,
+            "maximumRequiredMeanKmh": 38.27762258143765,
+            "held": false,
+            "interpretation": "Conservative review screen, not a legal speed limit or certification. Original minute-granularity calls are preserved without timing adjustments."
+          },
+          "disposition": "admit-clear-of-closure",
+          "priorAssessment": {
+            "fromId": "ch:1:sloid:10264::2",
+            "toId": "ch:1:sloid:10263::2",
+            "pathIndex": null,
+            "reason": "missing-operator-mode-line"
+          }
+        },
+        {
+          "index": 12,
+          "pathSha256": "211f63ef7e709baa39200f371491bceb3e391f7d9c6761cd8ac92f9ce3c1e967",
+          "evidence": {
+            "accepted": true,
+            "geometrySource": "osm",
+            "roadPatternId": "8edf99fe3bac2a0dd2de2fac",
+            "pathMetres": 1154.919470942218,
+            "endpointAdjustmentMetres": 0.037000259822700256
+          },
+          "minimumClosureDistanceMetres": 2774.35608348633,
+          "timing": {
+            "minimumSourceSeconds": 300,
+            "maximumSourceSeconds": 300,
+            "maximumRequiredMeanKmh": 13.859033651306616,
+            "held": false,
+            "interpretation": "Conservative review screen, not a legal speed limit or certification. Original minute-granularity calls are preserved without timing adjustments."
+          },
+          "disposition": "admit-clear-of-closure",
+          "priorAssessment": {
+            "fromId": "ch:1:sloid:10263::2",
+            "toId": "ch:1:sloid:11309",
+            "pathIndex": null,
+            "reason": "missing-operator-mode-line"
+          }
+        }
+      ]
+    },
+    {
+      "id": "3ab4ac07008d40d49bca",
+      "agencyId": "7244",
+      "routeId": "92-A07-9-j26-1",
+      "line": "EV",
+      "directionId": "0",
+      "stops": [
+        [
+          8.05248024,
+          47.39104625,
+          "Aarau, Bahnhof Süd",
+          "",
+          "ch:1:sloid:11309"
+        ],
+        [
+          8.05066564,
+          47.38315794,
+          "Aarau, Binzenhof",
+          "A",
+          "ch:1:sloid:10263::1"
+        ],
+        [
+          8.04753052,
+          47.37280464,
+          "Unterentfelden, Am Distelberg",
+          "A",
+          "ch:1:sloid:10264::1"
+        ],
+        [
+          8.04458405,
+          47.36894748,
+          "Unterentfelden, Post",
+          "A",
+          "ch:1:sloid:10265::1"
+        ],
+        [
+          8.04214063,
+          47.36472497,
+          "Unterentfelden, Oberdorf",
+          "A",
+          "ch:1:sloid:10266::1"
+        ],
+        [
+          8.04544643,
+          47.36130535,
+          "Oberentfelden, Uerkenbrücke",
+          "A",
+          "ch:1:sloid:10267::1"
+        ],
+        [
+          8.04668611,
+          47.3561694,
+          "Oberentfelden, Engelplatz",
+          "",
+          "ch:1:sloid:10268"
+        ],
+        [
+          8.05224668,
+          47.34439257,
+          "Muhen Nord, Bahnhof",
+          "",
+          "ch:1:sloid:10269"
+        ],
+        [
+          8.05363008,
+          47.33885321,
+          "Muhen, Bahnhof",
+          "",
+          "ch:1:sloid:10270"
+        ],
+        [
+          8.05488773,
+          47.33450653,
+          "Mittelmuhen, Bahnhof",
+          "",
+          "ch:1:sloid:10273"
+        ],
+        [
+          8.05563333,
+          47.32867996,
+          "Obermuhen, Bahnhof",
+          "",
+          "ch:1:sloid:10274"
+        ],
+        [
+          8.05301025,
+          47.32039867,
+          "Hirschthal, Bahnhof",
+          "",
+          "ch:1:sloid:10271"
+        ],
+        [
+          8.05121362,
+          47.31151311,
+          "Schöftland Nordweg, Bahnhof",
+          "",
+          "ch:1:sloid:89888"
+        ],
+        [
+          8.05007276,
+          47.30559872,
+          "Schöftland, Bahnhof",
+          "",
+          "ch:1:sloid:72648"
+        ]
+      ],
+      "templates": [
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.23.j26",
+          "shortName": "9143",
+          "sha256": "ec799f9ca2b3b4611d92bfe77a17d8c5a243e915a1cac435bf9d01052ed3fb4d",
+          "activeServiceDates": [
+            "2026-09-12"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.24.j26",
+          "shortName": "9249",
+          "sha256": "7ae6e8a6eadb025ed69470073f3e9837b0d279204c3b8932653ad7b2de1d75db",
+          "activeServiceDates": [
+            "2026-09-12"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.25.j26",
+          "shortName": "9175",
+          "sha256": "08f05ff53da8064f5a91f7109632f9c8f61d5dd3ae6676b14256f53e746303fd",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.26.j26",
+          "shortName": "9107",
+          "sha256": "b6db3a263ac1753a4c9f9e60daa6a931c84db6a3c47020537743faf6b01bd200",
+          "activeServiceDates": [
+            "2026-09-12"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.27.j26",
+          "shortName": "9181",
+          "sha256": "0bbb9b30eeeced8ac6e377dc7a7e6f9ef1698c83641ae977fccc88547ab32b22",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.28.j26",
+          "shortName": "9183",
+          "sha256": "f99e656d80589df216e03c53431fe0e957d7c16fe9ba5019024a192f384164da",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.29.j26",
+          "shortName": "9219",
+          "sha256": "c7c7eeaaa0b2be47da169703ac65178564aa5e08b0e0dd2917c9367f6f25151a",
+          "activeServiceDates": [
+            "2026-09-12"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.30.j26",
+          "shortName": "9213",
+          "sha256": "f23a4417269413c12c25b9d00d0bcfc0a3ef05ef0c01e27da8446717cc93c629",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.31.j26",
+          "shortName": "9167",
+          "sha256": "2f9729dd6b929a9072cd87d20f02918869552f3ee03a98305f4965b1c0b3db44",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.32.j26",
+          "shortName": "9191",
+          "sha256": "21c94cb2c62fcbbda92f3f34c42a710f0831a1ddd3e70ec8981caca1177cacb3",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.33.j26",
+          "shortName": "9103",
+          "sha256": "81969b7d21c8f2b826a5f1e38e18ccd95df1684af568b67aaade55822042d39c",
+          "activeServiceDates": [
+            "2026-09-12"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.34.j26",
+          "shortName": "9111",
+          "sha256": "2aa6e30320aa228b45fd5eae6768d80c799134ae0df5b41f7780e20ed7fff84b",
+          "activeServiceDates": [
+            "2026-09-12"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.35.j26",
+          "shortName": "9151",
+          "sha256": "bc5b9b75de34ef5423d9c05fa2b00b1355ccb21fcfe6894134e37fc2ea56ca67",
+          "activeServiceDates": [
+            "2026-09-12"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.36.j26",
+          "shortName": "9101",
+          "sha256": "c52f7050b6cc302214d61835eda0be6a8912c6f2a5990bf71610539d5076fb7d",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.37.j26",
+          "shortName": "9177",
+          "sha256": "114aaa5ec2ad83b183709af9813ccabcf30c1750fae93ef840a2a6eddd6a7373",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.38.j26",
+          "shortName": "9189",
+          "sha256": "3ebcda5ca432cdb9bd7ba876c1de4633db98db9e7f53900affcbb56371b5510a",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.39.j26",
+          "shortName": "9113",
+          "sha256": "319d2cab2f64c3fe89a61ba3a42970b62989dc1c21ddfb3d72271e8095cb24ce",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.40.j26",
+          "shortName": "9203",
+          "sha256": "012e2488b8ceed020c2d15408833c08477b147f1c099cff5fd924521d6738788",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.41.j26",
+          "shortName": "9217",
+          "sha256": "92365b2239d811876dbf7fa3ef8d699ba09ac50f1844c0e458841662e5cbfa17",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.42.j26",
+          "shortName": "9205",
+          "sha256": "71fffd99f458b7f5680e4ec3707d5e9c329bd728a7a4e632f1bd67452ea15613",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.43.j26",
+          "shortName": "9105",
+          "sha256": "3141f02210ddd20323850110d4dc625fee015ab0ff88fe70ecc13b6caf5a0c35",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.44.j26",
+          "shortName": "9245",
+          "sha256": "cefbe3f8b374c23e7cb10e7d25dabed10b67fe6b31203579513fddd5f238752f",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.45.j26",
+          "shortName": "9171",
+          "sha256": "4b9162a43636602721867951e42ff2967c79f1f5ae77542cd05e57f504235f5a",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.46.j26",
+          "shortName": "9953",
+          "sha256": "d015d9dbac9c03a97e30be796e4b4cf3b177d84407491ac35cbd620c159b8a3f",
+          "activeServiceDates": [
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.47.j26",
+          "shortName": "9209",
+          "sha256": "f4619b735a775eb5460d9f7d69f4a6be9e9eae4c9b81618879a2ce2708c55ac5",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.48.j26",
+          "shortName": "9119",
+          "sha256": "4ef42adddcb0e90776bcfb8501cc447e6a45f5931260aef5a071d558a3c39e2d",
+          "activeServiceDates": [
+            "2026-09-12"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.49.j26",
+          "shortName": "9207",
+          "sha256": "3f913530b05778cb49607f11330a0e54af4c6a2dbd337eec4545d77c962855fe",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.50.j26",
+          "shortName": "9193",
+          "sha256": "1802e25b53de1931946d031e089081f8c6db7426bd5b97877da008b148f7e83e",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.51.j26",
+          "shortName": "9153",
+          "sha256": "0232d627dbd80d02c1becd20a6ee636a64cd00c5af99a0852b0f69742e3a4856",
+          "activeServiceDates": [
+            "2026-09-12"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.52.j26",
+          "shortName": "9161",
+          "sha256": "b3505d7afeafbad25b13af51a5d5c0c921cb7bd74f9776b57880b8a48132550a",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.53.j26",
+          "shortName": "9109",
+          "sha256": "f9545cf22bb09c7f1d9a4602ed96862009b0269df52bf71cc657c6f64ed5e3e4",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.54.j26",
+          "shortName": "9145",
+          "sha256": "9ecfcfe39aa6c59e0f4bd51d8f66063575fa318414730145d737cbf75838f605",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.55.j26",
+          "shortName": "9211",
+          "sha256": "e03a0ad81fe9048ffa014d67bf44f9f80ed595e4c0da3d88f7476a02789d20a7",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.56.j26",
+          "shortName": "9179",
+          "sha256": "53c2c25fa652711a4319f4fe0fb134757369676628d51ae10dc267c1102e0316",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.57.j26",
+          "shortName": "9173",
+          "sha256": "48a895bde8e62583fdb7f9a3b6241d001a8416081e98422292da4ffb4070dceb",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.58.j26",
+          "shortName": "9147",
+          "sha256": "58ffb02a6218bc4a21a1eb89db0b725fe8e57783a3067429033c68c623ead46d",
+          "activeServiceDates": [
+            "2026-09-12"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.59.j26",
+          "shortName": "9121",
+          "sha256": "afbdcd94c79e3e0e49ba007a52f96fb4dbe1788a9bc58ad2057648c2b15e8222",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.60.j26",
+          "shortName": "9117",
+          "sha256": "4e2e27e8f148bf01282db3699cd9d6b1eaec78405f1a0898fba522e45ffa5c5e",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.61.j26",
+          "shortName": "9135",
+          "sha256": "26c0bc4b38d226951174db1ad8e77e7b8f0cb7c7dcc94051d61a03aa36e3d774",
+          "activeServiceDates": [
+            "2026-09-12"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.62.j26",
+          "shortName": "9165",
+          "sha256": "a6cdff39f173441522d3fbadd92675310dfa505021305fe9a5eb40c13f4584e9",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.63.j26",
+          "shortName": "9137",
+          "sha256": "edd9e809febb8ce4cbfb2d52af1490972764cbfcf3853e49ebfeadcdb2140892",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.64.j26",
+          "shortName": "9131",
+          "sha256": "5c40a36abf6d2445e97b2537d6f10cdeb597cb51db1ba09bbc45006957c0b09f",
+          "activeServiceDates": [
+            "2026-09-12"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.65.j26",
+          "shortName": "9129",
+          "sha256": "5e59fa2354e39a88a8d912189c64aac5cf3f4a53153e51cd20abf76f12a018b0",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.66.j26",
+          "shortName": "9225",
+          "sha256": "5e8ebdae75fcb423a15c158cb53fc9b8af6b1ee62248e1980a4189c356fd1239",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.67.j26",
+          "shortName": "9127",
+          "sha256": "6d2c355bbd4881e11a9bb1ae64b4c80d4b681db9318a47acacafad97c0be1512",
+          "activeServiceDates": [
+            "2026-09-12"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.68.j26",
+          "shortName": "9123",
+          "sha256": "d9b306d9709b07083b1e39a903c0f3a632ad7d18961b0274d33fe88675767a68",
+          "activeServiceDates": [
+            "2026-09-12"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.69.j26",
+          "shortName": "9233",
+          "sha256": "3df4ee73cee2dd32407da170dad78b73ff1a5376143ebf5a7c24037dc895b49d",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.70.j26",
+          "shortName": "9231",
+          "sha256": "e8229cdf72f8706d2098fbb7a261f7334f40afcce31cfb397f498d2fe17bf989",
+          "activeServiceDates": [
+            "2026-09-12"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.71.j26",
+          "shortName": "9195",
+          "sha256": "e25e098214351e4891369b5adc7227726c931a23dd67fd6f59591bf157d9d197",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.72.j26",
+          "shortName": "9155",
+          "sha256": "0f6b7239addfd4252133ed0b7c98978e45e92452c49dc4b9da3519ea3975f615",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.73.j26",
+          "shortName": "9229",
+          "sha256": "3991e33de01b43739c7f378f561343d85c68f807ebf5e1118349d6c23924b5cb",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.74.j26",
+          "shortName": "9243",
+          "sha256": "387cce57687624c6fa62bb4fc8ca9f1a4ea0cefa1bfbbec3bbc05be815e9566c",
+          "activeServiceDates": [
+            "2026-09-12"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.75.j26",
+          "shortName": "9159",
+          "sha256": "b1ea7c640c45bdb37bf957ce70c1d5393c4c0f0b6af7ceabb8d64b7e608735a8",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.76.j26",
+          "shortName": "9237",
+          "sha256": "c88ee4a35849c7106d116c334422dd1073595c95d031122bd3c03dbdee439ba1",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.77.j26",
+          "shortName": "9197",
+          "sha256": "c01da86685c07eda4c61910a6278b1ad24886858e2fec188f694926dfac6c4e9",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.78.j26",
+          "shortName": "9115",
+          "sha256": "f0e97d632ea3c20bc0bf0c93d88456eca0d2d7d4a28b0c96bb92846f69fb74bb",
+          "activeServiceDates": [
+            "2026-09-12"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.79.j26",
+          "shortName": "9139",
+          "sha256": "d67db253bccfbd1e79076f9c61b864e1a5ee9b229d81bcdb0ca9a5b9fed8b0f4",
+          "activeServiceDates": [
+            "2026-09-12"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.80.j26",
+          "shortName": "9157",
+          "sha256": "892d63c5ba22561c099ab7feeee8621fbca285668e3df5333b4f0d81aa23639f",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.81.j26",
+          "shortName": "9141",
+          "sha256": "a5d051e2d3fe7de16057885a8c1f3fc4ab215c5fa751d01765645cd9c0d31342",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.82.j26",
+          "shortName": "9239",
+          "sha256": "4c9dc3994ccbbb7be1bd17541241c463dccd447b788bea1992982120fba1c2d8",
+          "activeServiceDates": [
+            "2026-09-12"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.83.j26",
+          "shortName": "9199",
+          "sha256": "13827b10825f20d3e6fa8bfd0bf6918c48affb08532488653467e2b8c676ddc7",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.84.j26",
+          "shortName": "9215",
+          "sha256": "fe65f6436fddadc4cfe163fd67aac78a38679cdd150bc647d3a4ca2d0de724bf",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.85.j26",
+          "shortName": "9187",
+          "sha256": "36ebe57abd9710ad0144dc9e7335a20ac412246905cfd6c35df18f55a9c9e034",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.86.j26",
+          "shortName": "9247",
+          "sha256": "5ded2c1b81370fdfefd10f9170bb1acdce5d04f3703477ee21b48927e4678c4f",
+          "activeServiceDates": [
+            "2026-09-12"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.87.j26",
+          "shortName": "9163",
+          "sha256": "e014d3c53069413d47bae8a12c10929bdd94eb8a51c1aac3205b5fbe8739eefe",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.88.j26",
+          "shortName": "9221",
+          "sha256": "98a98ce17d51bee84b5248966212f1196b7ab5925d4740157b2cb29b56083e8a",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.89.j26",
+          "shortName": "9169",
+          "sha256": "6cf149c6285571f46f2931741f0b4f9a65bb0818460814b6925f2c4393d40f89",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.90.j26",
+          "shortName": "9149",
+          "sha256": "fa27f946ddba77d436c17675cd034dcb369532e4b3780222ad2c0946470058a8",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.91.j26",
+          "shortName": "9185",
+          "sha256": "fe1b3cd2e01408e396fb5ccbe1e4774e18c5f2af5bc18c5bbcdfa93c6961bde5",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.92.j26",
+          "shortName": "9235",
+          "sha256": "073bc3f4f336735a0e894ca75176dcebaee694a853696b85180b93760397954b",
+          "activeServiceDates": [
+            "2026-09-12"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.93.j26",
+          "shortName": "9201",
+          "sha256": "e637e17f359ac1ad9a95d95b6ce6339be8ed53e9dd0ac52715780dd95ba5dd95",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.94.j26",
+          "shortName": "9133",
+          "sha256": "a53121e8f51ce47d3fbc092761ed98825a3894739d3ff64a2c70b80e9b61370b",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.95.j26",
+          "shortName": "9241",
+          "sha256": "0eeabbb3ff97a3709feacb3deaf34362bc097652b4c5bf7c8098f2dfcda8a31f",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.96.j26",
+          "shortName": "9125",
+          "sha256": "663386aeb3f7399fb0b58fd1ab5608592e4aaf6c01dbf4e32d527178f954ccbd",
+          "activeServiceDates": [
+            "2026-09-12",
+            "2026-09-13"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.97.j26",
+          "shortName": "9223",
+          "sha256": "dc1acabe40f177ca70ac032b5793e72220fbe81e9ff9bbc6832dd1a1fc77e53b",
+          "activeServiceDates": [
+            "2026-09-12"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.98.j26",
+          "shortName": "9227",
+          "sha256": "47492515b3c8c36d5cbf4c3c67b8564f21c7dde56b71f27d2465c67567f15c20",
+          "activeServiceDates": [
+            "2026-09-12"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-92-A07-9.1.TA.99.j26",
+          "shortName": "9951",
+          "sha256": "155ed5dfd6b10cffa9b39d084ad16a5790fd53bef95d200829e207f7af197f22",
+          "activeServiceDates": [
+            "2026-09-13"
+          ]
+        }
+      ],
+      "segments": [
+        {
+          "index": 0,
+          "pathSha256": "3b0a2a1edb84145599f6d7a9922953cde31456c71def6af2b37192f4f994a480",
+          "evidence": {
+            "accepted": true,
+            "geometrySource": "osm",
+            "roadPatternId": "36b0a72810597a2a32fb300d",
+            "pathMetres": 1184.6600885194623,
+            "endpointAdjustmentMetres": 0.03319110814591191
+          },
+          "minimumClosureDistanceMetres": 2773.034219573162,
+          "timing": {
+            "minimumSourceSeconds": 120,
+            "maximumSourceSeconds": 120,
+            "maximumRequiredMeanKmh": 35.53980265558387,
+            "held": false,
+            "interpretation": "Conservative review screen, not a legal speed limit or certification. Original minute-granularity calls are preserved without timing adjustments."
+          },
+          "disposition": "admit-clear-of-closure",
+          "priorAssessment": {
+            "fromId": "ch:1:sloid:11309",
+            "toId": "ch:1:sloid:10263::1",
+            "pathIndex": null,
+            "reason": "missing-operator-mode-line"
+          }
+        },
+        {
+          "index": 1,
+          "pathSha256": "dc8139a0c5bbc889c2b5f4449223fd60659fa8de8f390642a1ca12e6df6522b7",
+          "evidence": {
+            "accepted": true,
+            "geometrySource": "osm",
+            "roadPatternId": "36b0a72810597a2a32fb300d",
+            "pathMetres": 1220.6529542658386,
+            "endpointAdjustmentMetres": 0.05399528284173069
+          },
+          "minimumClosureDistanceMetres": 1595.0888581190022,
+          "timing": {
+            "minimumSourceSeconds": 120,
+            "maximumSourceSeconds": 120,
+            "maximumRequiredMeanKmh": 36.61958862797516,
+            "held": false,
+            "interpretation": "Conservative review screen, not a legal speed limit or certification. Original minute-granularity calls are preserved without timing adjustments."
+          },
+          "disposition": "admit-clear-of-closure",
+          "priorAssessment": {
+            "fromId": "ch:1:sloid:10263::1",
+            "toId": "ch:1:sloid:10264::1",
+            "pathIndex": null,
+            "reason": "missing-operator-mode-line"
+          }
+        },
+        {
+          "index": 2,
+          "pathSha256": "cb4bfa460acc425019a6e6333d788e79c73ccdf72f9c9f413015d89aba2583f0",
+          "evidence": {
+            "accepted": true,
+            "geometrySource": "osm",
+            "roadPatternId": "36b0a72810597a2a32fb300d",
+            "pathMetres": 503.3142250400351,
+            "endpointAdjustmentMetres": 0.05399528284173069
+          },
+          "minimumClosureDistanceMetres": 1180.0137351952121,
+          "timing": {
+            "minimumSourceSeconds": 60,
+            "maximumSourceSeconds": 60,
+            "maximumRequiredMeanKmh": 30.198853502402105,
+            "held": false,
+            "interpretation": "Conservative review screen, not a legal speed limit or certification. Original minute-granularity calls are preserved without timing adjustments."
+          },
+          "disposition": "admit-clear-of-closure",
+          "priorAssessment": {
+            "fromId": "ch:1:sloid:10264::1",
+            "toId": "ch:1:sloid:10265::1",
+            "pathIndex": null,
+            "reason": "missing-operator-mode-line"
+          }
+        },
+        {
+          "index": 3,
+          "pathSha256": "2df7c24d3d0fce5e54e0d2edc62a0f0eedc128e38e81065779ecae31cd8b300d",
+          "evidence": {
+            "accepted": true,
+            "geometrySource": "osm",
+            "roadPatternId": "36b0a72810597a2a32fb300d",
+            "pathMetres": 543.6028497729048,
+            "endpointAdjustmentMetres": 0.05356641096624603
+          },
+          "minimumClosureDistanceMetres": 765.4563981077126,
+          "timing": {
+            "minimumSourceSeconds": 60,
+            "maximumSourceSeconds": 60,
+            "maximumRequiredMeanKmh": 32.61617098637429,
+            "held": false,
+            "interpretation": "Conservative review screen, not a legal speed limit or certification. Original minute-granularity calls are preserved without timing adjustments."
+          },
+          "disposition": "admit-clear-of-closure",
+          "priorAssessment": {
+            "fromId": "ch:1:sloid:10265::1",
+            "toId": "ch:1:sloid:10266::1",
+            "pathIndex": null,
+            "reason": "missing-operator-mode-line"
+          }
+        },
+        {
+          "index": 4,
+          "pathSha256": "16e0c1ad78ec536fb2034a45167fabeda3cbf2ad9fedd81ad9fe2b5a36ee5266",
+          "evidence": {
+            "accepted": true,
+            "geometrySource": "osm",
+            "roadPatternId": "36b0a72810597a2a32fb300d",
+            "pathMetres": 534.1110403563322,
+            "endpointAdjustmentMetres": 0.050688926732095504
+          },
+          "minimumClosureDistanceMetres": 329.3245863913484,
+          "timing": {
+            "minimumSourceSeconds": 120,
+            "maximumSourceSeconds": 120,
+            "maximumRequiredMeanKmh": 16.023331210689967,
+            "held": false,
+            "interpretation": "Conservative review screen, not a legal speed limit or certification. Original minute-granularity calls are preserved without timing adjustments."
+          },
+          "disposition": "admit-clear-of-closure",
+          "priorAssessment": {
+            "fromId": "ch:1:sloid:10266::1",
+            "toId": "ch:1:sloid:10267::1",
+            "pathIndex": null,
+            "reason": "missing-operator-mode-line"
+          }
+        },
+        {
+          "index": 5,
+          "pathSha256": "0ea009237db8f5caed61dd25fd99d31bc0978f833da11a42dde5ea8aae1df150",
+          "evidence": {
+            "accepted": true,
+            "geometrySource": "osm",
+            "roadPatternId": "36b0a72810597a2a32fb300d",
+            "pathMetres": 615.0605301122862,
+            "endpointAdjustmentMetres": 0.050688926732095504
+          },
+          "minimumClosureDistanceMetres": 0,
+          "timing": {
+            "minimumSourceSeconds": 120,
+            "maximumSourceSeconds": 120,
+            "maximumRequiredMeanKmh": 18.451815903368587,
+            "held": false,
+            "interpretation": "Conservative review screen, not a legal speed limit or certification. Original minute-granularity calls are preserved without timing adjustments."
+          },
+          "disposition": "hold-closed-road-crossing",
+          "priorAssessment": {
+            "fromId": "ch:1:sloid:10267::1",
+            "toId": "ch:1:sloid:10268",
+            "pathIndex": null,
+            "reason": "missing-operator-mode-line"
+          }
+        },
+        {
+          "index": 6,
+          "pathSha256": "953f20b42c8bc3ba0446395ae46ea870a3633192bab4c1ca7c56da7ef8a4f444",
+          "evidence": {
+            "accepted": true,
+            "geometrySource": "osm",
+            "roadPatternId": "36b0a72810597a2a32fb300d",
+            "pathMetres": 1385.489632520445,
+            "endpointAdjustmentMetres": 0.05360895852132295
+          },
+          "minimumClosureDistanceMetres": 73.7125548933576,
+          "timing": {
+            "minimumSourceSeconds": 120,
+            "maximumSourceSeconds": 120,
+            "maximumRequiredMeanKmh": 41.56468897561335,
+            "held": false,
+            "interpretation": "Conservative review screen, not a legal speed limit or certification. Original minute-granularity calls are preserved without timing adjustments."
+          },
+          "disposition": "admit-clear-of-closure",
+          "priorAssessment": {
+            "fromId": "ch:1:sloid:10268",
+            "toId": "ch:1:sloid:10269",
+            "pathIndex": null,
+            "reason": "missing-operator-mode-line"
+          }
+        },
+        {
+          "index": 7,
+          "pathSha256": "8423280dd696b8ff0ab57992e1fc6ff2f198efd3ea06355936a12ee3a1bd2726",
+          "evidence": {
+            "accepted": true,
+            "geometrySource": "osm",
+            "roadPatternId": "36b0a72810597a2a32fb300d",
+            "pathMetres": 695.5218492138883,
+            "endpointAdjustmentMetres": 0.05360895852132295
+          },
+          "minimumClosureDistanceMetres": 1435.180029195421,
+          "timing": {
+            "minimumSourceSeconds": 60,
+            "maximumSourceSeconds": 60,
+            "maximumRequiredMeanKmh": 41.731310952833304,
+            "held": false,
+            "interpretation": "Conservative review screen, not a legal speed limit or certification. Original minute-granularity calls are preserved without timing adjustments."
+          },
+          "disposition": "admit-clear-of-closure",
+          "priorAssessment": {
+            "fromId": "ch:1:sloid:10269",
+            "toId": "ch:1:sloid:10270",
+            "pathIndex": null,
+            "reason": "missing-operator-mode-line"
+          }
+        },
+        {
+          "index": 8,
+          "pathSha256": "38bca7481f7f17ddd6f3cf040ef85b3ca0e085a941a6851e41251e96ebeff977",
+          "evidence": {
+            "accepted": true,
+            "geometrySource": "osm",
+            "roadPatternId": "36b0a72810597a2a32fb300d",
+            "pathMetres": 498.29929820330153,
+            "endpointAdjustmentMetres": 0.056145794600949255
+          },
+          "minimumClosureDistanceMetres": 2062.0726742276574,
+          "timing": {
+            "minimumSourceSeconds": 60,
+            "maximumSourceSeconds": 60,
+            "maximumRequiredMeanKmh": 29.897957892198097,
+            "held": false,
+            "interpretation": "Conservative review screen, not a legal speed limit or certification. Original minute-granularity calls are preserved without timing adjustments."
+          },
+          "disposition": "admit-clear-of-closure",
+          "priorAssessment": {
+            "fromId": "ch:1:sloid:10270",
+            "toId": "ch:1:sloid:10273",
+            "pathIndex": null,
+            "reason": "missing-operator-mode-line"
+          }
+        },
+        {
+          "index": 9,
+          "pathSha256": "ed72bd09c4f63a5f3d843caaa33f0f6b65afcc8924ba7ee2c0fff8340ece1c12",
+          "evidence": {
+            "accepted": true,
+            "geometrySource": "osm",
+            "roadPatternId": "36b0a72810597a2a32fb300d",
+            "pathMetres": 692.3221468864458,
+            "endpointAdjustmentMetres": 0.056145794600949255
+          },
+          "minimumClosureDistanceMetres": 2540.802015442431,
+          "timing": {
+            "minimumSourceSeconds": 120,
+            "maximumSourceSeconds": 120,
+            "maximumRequiredMeanKmh": 20.769664406593375,
+            "held": false,
+            "interpretation": "Conservative review screen, not a legal speed limit or certification. Original minute-granularity calls are preserved without timing adjustments."
+          },
+          "disposition": "admit-clear-of-closure",
+          "priorAssessment": {
+            "fromId": "ch:1:sloid:10273",
+            "toId": "ch:1:sloid:10274",
+            "pathIndex": null,
+            "reason": "missing-operator-mode-line"
+          }
+        },
+        {
+          "index": 10,
+          "pathSha256": "18aded0ac72884f32e415e81ecb5020f8da802742c3b7bba6555fe38974c4c01",
+          "evidence": {
+            "accepted": true,
+            "geometrySource": "osm",
+            "roadPatternId": "36b0a72810597a2a32fb300d",
+            "pathMetres": 950.783268143906,
+            "endpointAdjustmentMetres": 0.04129680987979941
+          },
+          "minimumClosureDistanceMetres": 3198.2539880326954,
+          "timing": {
+            "minimumSourceSeconds": 60,
+            "maximumSourceSeconds": 60,
+            "maximumRequiredMeanKmh": 57.04699608863436,
+            "held": false,
+            "interpretation": "Conservative review screen, not a legal speed limit or certification. Original minute-granularity calls are preserved without timing adjustments."
+          },
+          "disposition": "admit-clear-of-closure",
+          "priorAssessment": {
+            "fromId": "ch:1:sloid:10274",
+            "toId": "ch:1:sloid:10271",
+            "pathIndex": null,
+            "reason": "missing-operator-mode-line"
+          }
+        },
+        {
+          "index": 11,
+          "pathSha256": "5a8f726f6c5cce0fb3ac865e80d5fa517888be2e4d4bb28b99b6a563d562a365",
+          "evidence": {
+            "accepted": true,
+            "geometrySource": "osm",
+            "roadPatternId": "36b0a72810597a2a32fb300d",
+            "pathMetres": 1068.1429630339444,
+            "endpointAdjustmentMetres": 0.04129680987979941
+          },
+          "minimumClosureDistanceMetres": 4076.478910489953,
+          "timing": {
+            "minimumSourceSeconds": 60,
+            "maximumSourceSeconds": 60,
+            "maximumRequiredMeanKmh": 64.08857778203667,
+            "held": false,
+            "interpretation": "Conservative review screen, not a legal speed limit or certification. Original minute-granularity calls are preserved without timing adjustments."
+          },
+          "disposition": "admit-clear-of-closure",
+          "priorAssessment": {
+            "fromId": "ch:1:sloid:10271",
+            "toId": "ch:1:sloid:89888",
+            "pathIndex": null,
+            "reason": "missing-operator-mode-line"
+          }
+        },
+        {
+          "index": 12,
+          "pathSha256": "1a978a0c295688ea55d4903444ef7cb2dcdced2bad81c8c393c6e234e91a1ba7",
+          "evidence": {
+            "accepted": true,
+            "geometrySource": "osm",
+            "roadPatternId": "36b0a72810597a2a32fb300d",
+            "pathMetres": 900.1661088776906,
+            "endpointAdjustmentMetres": 0.03605198549544628
+          },
+          "minimumClosureDistanceMetres": 5048.759440443701,
+          "timing": {
+            "minimumSourceSeconds": 180,
+            "maximumSourceSeconds": 180,
+            "maximumRequiredMeanKmh": 18.003322177553812,
+            "held": false,
+            "interpretation": "Conservative review screen, not a legal speed limit or certification. Original minute-granularity calls are preserved without timing adjustments."
+          },
+          "disposition": "admit-clear-of-closure",
+          "priorAssessment": {
+            "fromId": "ch:1:sloid:89888",
+            "toId": "ch:1:sloid:72648",
+            "pathIndex": null,
+            "reason": "missing-operator-mode-line"
+          }
+        }
+      ]
+    }
+  ],
+  "publicationReady": false
+}

@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "sources": [
+    {
+      "file": "municipal-notice.html.gz",
+      "url": "https://oberentfelden.ch/erhaltungsmassnahmen-k-208-trasse-aargau-verkehr-ava-abschnitt-isengueetlistrasse-suhrerstrasse",
+      "sourceDate": "2026-09-07",
+      "retrievedAt": "2026-09-08T21:55:38.506282+00:00",
+      "sha256": "e6ec1187a475cd3ed2864aaff6cf7c1cc5fb7745ec2d370a164d428c28472371",
+      "uncompressedSha256": "a77646d7fa998031419cd3d5772a375c42c56131fe77a0989cc20be3fc53d67b",
+      "attribution": "Gemeinde Oberentfelden",
+      "role": "Dated road-closure notice: 11 September 22:00 to 15 September 05:00, Isengüetlistrasse–Suhrerstrasse."
+    },
+    {
+      "file": "diversion-map.pdf.gz",
+      "url": "https://oberentfelden.ch/sites/default/files/2026-09/Umfahrung%20Baustelle%20AVA.pdf",
+      "sourceDate": "2026-08-11",
+      "retrievedAt": "2026-09-08T21:56:05.295332+00:00",
+      "sha256": "0d26d6856ad7a9c752688bd15d2c989763b492c55698f40f0a62f1f4127697ab",
+      "uncompressedSha256": "8c0bb4e4093c57e3764eece734ecbfdcdab1b8f127e5220c0b763038049860ae",
+      "attribution": "© geoPro Suisse AG; © swisstopo; Daten des Kantons Aargau",
+      "role": "Page 1 visually inspected. Closure and signed detour context only; no cartographic linework copied into feed geometry. Original restrictive rights statement retained in PDF."
+    },
+    {
+      "file": "osm.json.gz",
+      "url": "https://overpass-api.de/api/interpreter",
+      "sourceDate": "2026-09-02T00:00:00Z",
+      "retrievedAt": "2026-09-08T21:57:27.467504+00:00",
+      "sha256": "e657c9610417b0f24c7624702b0205799e3a6adc5a2c239ba68430ec44f1948b",
+      "uncompressedSha256": "c76a2e2e523b54ec511fa517b395d11d66190e01c8c8c45c41c8f3069a47d70b",
+      "attribution": "© OpenStreetMap contributors; ODbL-1.0",
+      "role": "Historical OSM ways and nodes: exact closure junctions and source corridor, not bus detour certification."
+    }
+  ],
+  "querySha256": "1133504165f42564155494e69547fc6ddf91d860872217f4473923718f0b54d5"
+}
