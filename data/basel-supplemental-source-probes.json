@@ -43,5 +43,32 @@
     "validOn": null,
     "appliedScope": "Only BLT tram 19: the isolated Waldenburg–Liestal [Gleis 4] FOT component. Exact nodes and segments are in each audit report.",
     "geometryValidityNote": "Catalogue timestamps and a matching checksum establish the inspected bytes, not validity for September 2026 service patterns."
+  },
+  "busFallback": {
+    "cache": "data/basel-road-cache.json",
+    "sha256": "89b0b21422331830e9ffbc4f7ddbab19ac03e1e4b1d1a204c878dfbde75877cc",
+    "license": "ODbL-1.0",
+    "agencyIds": [
+      "823",
+      "37"
+    ],
+    "source": "Geofabrik Switzerland 2026-09-02 plus OSM border extract downloaded 2026-09-08",
+    "osmSha256": "d5c675456e935cfbcab88fe894fe9145dc5bd1fbd4318cea30ffd838a9aad02b",
+    "matcherVersion": "pfaedle v0.1.6-208-g99f2cd4",
+    "patternCounts": {
+      "37": 123,
+      "823": 103
+    },
+    "use": "Only fill failed bus segments by exact complete route/platform pattern. Preserve accepted official paths. Not operator-certified."
+  },
+  "tramDiversions": {
+    "policy": "data/basel-tram-diversions.json",
+    "sha256": "fe02486e50d315e196d88a56d973f15ed5466ceb340386fc4a732d07aa04d6bd",
+    "serviceDates": [
+      "2026-09-08",
+      "2026-09-13"
+    ],
+    "sourceUrl": "https://www.bvb.ch/de/aktuelle-informationen/baustelleninformationen/",
+    "use": "Explicit directed adjacent stop pairs on lines 3, 6, 8 and 17 only; BS tram infrastructure, no added graph joins. Running tracks unreviewed."
   }
 }

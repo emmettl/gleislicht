@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "reviewedOn": "2026-09-08",
+  "serviceDates": ["2026-09-08", "2026-09-13"],
+  "sourceUrl": "https://www.bvb.ch/de/aktuelle-informationen/baustelleninformationen/",
+  "networkPlanUrl": "https://www.bvb.ch/wp-content/bvb/dokumente/liniennetzplan/2026/Liniennetzplan_2026_Baustellen_September_Oktober.pdf",
+  "scope": "Only these two audited service dates and the directed adjacent stop pairs listed below. Official notices establish the diversion corridors; intermediate platform-stop names come from Swiss GTFS 20260905. This is route-corridor evidence, not a running-track or geometry-date certification.",
+  "rules": [
+    {
+      "id": "bvb-3-burgfelderstrasse",
+      "agencyId": "823",
+      "line": "3",
+      "noticeEnd": "2026-09-27",
+      "bothDirections": true,
+      "stops": ["Basel, Aeschenplatz", "Basel, Bahnhof SBB", "Basel, Markthalle", "Basel, Zoo Bachletten", "Basel, Schützenhaus", "Basel, Brausebad", "Basel, Birmannsgasse", "Basel, Hegenheimerstrasse", "Basel, Burgfelderplatz"]
+    },
+    {
+      "id": "bvb-6-holbeinstrasse-outbound",
+      "agencyId": "823",
+      "line": "6",
+      "noticeEnd": "End of March 2027; exact date unspecified",
+      "bothDirections": false,
+      "stops": ["Basel, Heuwaage", "Basel, Zoo Bachletten", "Basel, Schützenhaus", "Basel, Brausebad"]
+    },
+    {
+      "id": "bvb-6-holbeinstrasse-inbound",
+      "agencyId": "823",
+      "line": "6",
+      "noticeEnd": "End of March 2027; exact date unspecified",
+      "bothDirections": false,
+      "stops": ["Basel, Brausebad", "Basel, Schützenhaus", "Basel, Zoo Bachletten", "Basel, Markthalle", "Basel, Heuwaage"]
+    },
+    {
+      "id": "bvb-8-claraplatz",
+      "agencyId": "823",
+      "line": "8",
+      "noticeStart": "2026-09-07",
+      "noticeEnd": "2026-10-23",
+      "bothDirections": true,
+      "stops": ["Basel, Claraplatz", "Basel, Clarastrasse", "Basel, Messeplatz", "Basel, Riehenring", "Basel, Musical Theater", "Basel, Brombacherstrasse", "Basel, Dreirosenbrücke"]
+    },
+    {
+      "id": "blt-17-claraplatz",
+      "agencyId": "37",
+      "line": "17",
+      "noticeStart": "2026-09-07",
+      "noticeEnd": "2026-10-23",
+      "bothDirections": true,
+      "stops": ["Basel, Schifflände", "Basel, Universitätsspital", "Basel, Johanniterbrücke", "Basel, St. Johanns-Tor", "Basel, Mülhauserstrasse", "Basel, Voltaplatz", "Basel, Novartis Campus", "Basel, Dreirosenbrücke"]
+    }
+  ]
+}

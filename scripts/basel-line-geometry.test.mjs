@@ -77,6 +77,19 @@ describe('Basel official line inference', () => {
     expect(result.path.every(point => point[0] >= from[0])).toBe(true)
   })
 
+  it('can compare nearby infrastructure parts without changing ordinary successful line matches', () => {
+    const upperStart = [A[0], A[1] + 0.00003], upperEnd = [B[0], upperStart[1]]
+    const g = graph(feature(), feature('8', 'BVB', [upperStart, upperEnd]), feature('8', 'BVB', [A, upperStart]))
+    const from = [7.605, A[1]], to = [7.607, upperStart[1]]
+    const nearest = matchBaselSegment(g, from, to)
+    expect(nearest.path).toBeTruthy()
+    expect(nearest.projectionChoice).toBeUndefined()
+    const shorter = matchBaselSegment(g, from, to, undefined, { compareNearbyParts: true })
+    expect(shorter.projectionChoice.initialReason).toBe('longer-nearest-path')
+    expect(shorter.pathMetres).toBeLessThan(nearest.pathMetres / 2)
+    expect(shorter.projectionChoice.maximumAdditionalSnapMetres).toBeLessThan(5)
+  })
+
   it('rejects gaps, collapsed movements and implausible detours before adding endpoint connectors', () => {
     const g = graph(feature())
     expect(matchBaselSegment(g, [7.61, 47.56], B).reason).toBe('endpoint-gap')

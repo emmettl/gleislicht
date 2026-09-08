@@ -13,6 +13,8 @@ import { baselGraphs, applyBaselGeometry, BASEL_AGENCIES, BASEL_PATH_LIMITS } fr
 import { validateBaselDownload } from './download-basel-sources.mjs'
 import { parseRailNetworkXtf } from './enrich-swiss-rail-geometry.mjs'
 import { baselTram19Graph, BASEL_RAIL_SOURCE } from './basel-rail-geometry.mjs'
+import { applyBaselRoadFallback } from './basel-road-geometry.mjs'
+import { baselTramDiversions } from './basel-tram-diversions.mjs'
 
 const GZIP_LIMITS = { manifest: 650 * 1024, chunk: 450 * 1024, morning: 1600 * 1024 }
 const gzipBytes = value => gzipSync(JSON.stringify(value)).length
@@ -46,7 +48,7 @@ export function baselGate(groups, payload) {
   ]
 }
 
-export async function auditBaselStudy({ archive, sourceDirectory, date, output, snapshotPath, railPath }) {
+export async function auditBaselStudy({ archive, sourceDirectory, date, output, snapshotPath, railPath, busCachePath, diversionPolicyPath }) {
   const work = await mkdtemp(join(tmpdir(), 'gleislicht-basel-'))
   try {
     const rawPath = snapshotPath ?? join(work, 'raw.json')
@@ -118,31 +120,45 @@ export async function auditBaselStudy({ archive, sourceDirectory, date, output, 
       graphs.set('37:tram:19', graph)
       supplementalSources.push({ ...corridor, sha256: await hashFile(railPath), validOn: null })
     }
-    const geometry = applyBaselGeometry(raw, routes, graphs)
+    const diversions = diversionPolicyPath ? baselTramDiversions(collections, JSON.parse(await readFile(diversionPolicyPath, 'utf8')), date) : undefined
+    const official = applyBaselGeometry(raw, routes, graphs, diversions)
+    const busCache = busCachePath ? JSON.parse(await readFile(busCachePath, 'utf8')) : undefined
+    const geometry = busCache ? applyBaselRoadFallback(raw, official, routes, busCache) : official
     const sourceHashes = { archive: await hashFile(archive), snapshot: await hashFile(rawPath), catalogue: await hashFile(join(sourceDirectory, 'sources.json')) }
+    if (busCachePath) sourceHashes.busCache = await hashFile(busCachePath)
+    if (diversionPolicyPath) sourceHashes.diversionPolicy = await hashFile(diversionPolicyPath)
     const snapshot = { ...raw, paths: geometry.paths, trains: geometry.trains, edgePaths: geometry.edgePaths, metadata: { ...raw.metadata,
-      model: 'scheduled interpolation on inferred paths through official Basel-Stadt lines and optional FOT tram 19 infrastructure',
-      note: 'AUDIT CANDIDATE. BVB/BLT bus and tram source journeys, including foreign stops. No regional rail or other TNW operators. Line graphs are treated as undirected; one-way streets, tracks and source-date alignment remain unreviewed. Unmatched movements use stop interpolation.',
-      sourceHashes, geometry: { publisher: 'Kanton Basel-Stadt', sourceUrl: 'https://wfs.geo.bs.ch/', retrievedAt: catalogue.retrievedAt, validOn: null, inference: 'operator/mode/line graph; nearest projected endpoints with bounded source-part alternatives for topology failures; undirected shortest paths', limits: BASEL_PATH_LIMITS, sources: catalogue.sources, supplementalSources },
+      model: 'scheduled interpolation on official Basel-Stadt lines, optional FOT tram 19 infrastructure and optional OSM bus paths',
+      note: 'AUDIT CANDIDATE. Complete BVB/BLT bus and tram source journeys, including foreign stops. No regional rail or other TNW operators. Official line graphs are undirected. OSM bus fallback uses exact route/platform patterns and is not operator-verified. Directions and source-date alignment need review. Unmatched movements use stop interpolation.',
+      sourceHashes, geometry: { publisher: 'Kanton Basel-Stadt', sourceUrl: 'https://wfs.geo.bs.ch/', retrievedAt: catalogue.retrievedAt, validOn: null, inference: 'operator/mode/line graph; bounded source-part alternatives; undirected shortest paths; optional per-pattern OSM bus fallback', limits: BASEL_PATH_LIMITS, sources: catalogue.sources, supplementalSources,
+        ...(geometry.roadFallback ? { roadSources: geometry.roadFallback.sources, roadAddedMovements: geometry.roadFallback.addedMovements } : {}),
+        ...(diversions ? { tramDiversions: diversions.provenance } : {}),
+      },
     } }
     const { manifest, chunks } = chunkNetworkSnapshot(snapshot, 7200, 'basel-local-day-chunks')
     const morning = extractNetworkWindow(snapshot, 24300, 31500, 27900)
     const payload = { manifestGzipBytes: gzipBytes(manifest), morningGzipBytes: gzipBytes(morning), chunks: chunks.map(({ descriptor, payload: chunk }) => ({ id: descriptor.id, trips: descriptor.tripCount, gzipBytes: gzipBytes(chunk) })) }
     const failures = baselGate(geometry.groups, payload)
     const matched = geometry.segments.filter(segment => segment.pathIndex !== null)
+    const officialMatched = official.segments.filter(segment => segment.pathIndex !== null)
     const controls = ['St-Louis, Gare de Saint-Louis', 'Weil am Rhein, Bahnhof/Zentrum', 'Leymen, Station (F)'].map(name => {
       const indices = new Set(snapshot.stops.flatMap((stop, i) => stop[2] === name ? [i] : []))
       const stopIds = new Set([...indices].map(i => snapshot.stops[i][4]))
       const segments = geometry.segments.filter(segment => stopIds.has(segment.fromId) || stopIds.has(segment.toId))
       return { name, platforms: indices.size, trips: snapshot.trains.filter(train => train.stops.some(([i]) => indices.has(i))).length,
-        matchedAdjacentMovements: segments.filter(segment => segment.pathIndex !== null).reduce((sum, segment) => sum + segment.occurrences, 0),
+        matchedAdjacentMovements: segments.reduce((sum, segment) => sum + (segment.matchedOccurrences ?? (segment.pathIndex !== null ? segment.occurrences : 0)), 0),
         totalAdjacentMovements: segments.reduce((sum, segment) => sum + segment.occurrences, 0) }
     })
     assert(controls.every(control => control.trips > 0), 'A cross-border control is missing from the candidate')
-    const report = { schemaVersion: 1, metadata: { serviceDate: date, feedVersion: feed[0].feed_version, nodeVersion: process.version, sourceHashes, geometrySources: catalogue, supplementalSources },
+    const report = { schemaVersion: 2, metadata: { serviceDate: date, feedVersion: feed[0].feed_version, nodeVersion: process.version, sourceHashes, geometrySources: catalogue, supplementalSources },
       scope: { agencyIds: Object.keys(BASEL_AGENCIES), modes: ['tram', 'bus'], description: 'Complete BVB/BLT local source journeys starting before 24:00 on the selected service day; after-midnight calls retained. Previous service-day carry-in is not imported. Excludes rail, other TNW operators and frequency templates (fail closed if introduced).', trips: snapshot.trains.length, platforms: snapshot.stops.length, bounds: snapshot.bounds, completeSourceStopChainsVerified: true, crossBorderControls: controls },
       groups: geometry.groups, routes: geometry.routes.sort((a, b) => a.agencyId.localeCompare(b.agencyId) || a.mode.localeCompare(b.mode) || a.line.localeCompare(b.line, undefined, { numeric: true })),
-      geometry: { graphCount: graphs.size, paths: snapshot.paths.length, uniqueDirectedRouteStopPairs: geometry.segments.length, matchedUniqueDirectedRouteStopPairs: matched.length, uniquePairCoverage: matched.length / geometry.segments.length, maximumAcceptedSnapMetres: Math.max(...matched.map(segment => segment.maximumSnapMetres)), projectionAlternatives: matched.filter(segment => segment.projectionChoice), worstAcceptedSnaps: [...matched].sort((a, b) => b.maximumSnapMetres - a.maximumSnapMetres).slice(0, 30), issues: geometry.segments.filter(segment => segment.pathIndex === null) },
+      geometry: { graphCount: graphs.size, paths: snapshot.paths.length, uniqueDirectedRouteStopPairs: geometry.segments.length, matchedUniqueDirectedRouteStopPairs: matched.length, uniquePairCoverage: matched.length / geometry.segments.length,
+        pairCoverageDefinition: 'A directed route/platform pair is matched only when every scheduled occurrence matches. Report pathIndex is representative; train paths retain exact full-pattern identity.',
+        maximumAcceptedOfficialSnapMetres: Math.max(...officialMatched.map(segment => segment.maximumSnapMetres)), projectionAlternatives: officialMatched.filter(segment => segment.projectionChoice), worstAcceptedOfficialSnaps: [...officialMatched].sort((a, b) => b.maximumSnapMetres - a.maximumSnapMetres).slice(0, 30), issues: geometry.segments.filter(segment => segment.pathIndex === null),
+        ...(diversions ? { tramDiversions: { ...diversions.provenance, matches: officialMatched.filter(segment => segment.diversionRule) } } : {}),
+        ...(geometry.roadFallback ? { officialOnlyGroups: official.groups, roadFallback: geometry.roadFallback } : {}),
+      },
       payload, gate: { passed: failures.length === 0, failures, minimumPerGroupCoverage: 0.95, limits: BASEL_PATH_LIMITS, gzipLimits: GZIP_LIMITS, publicationReady: false, pending: ['Resolve missing BLT/BVB lines and inspect failed stop pairs', 'Establish geometry validity against dated diversions; review directions, loops and foreign branches', 'Add scoped regional rail and audit wider TNW membership', 'Integrate study UI, translations, sharing, refresh/recovery and phone verification'] } }
     await mkdir(output, { recursive: true })
     for (const { descriptor, payload: chunk } of chunks) { const path = join(output, descriptor.path); await mkdir(dirname(path), { recursive: true }); await writeFile(path, JSON.stringify(chunk)) }
@@ -158,7 +174,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1]
   for (const name of ['archive', 'sources', 'date', 'output-directory']) assert(arg(name), `Missing --${name}`)
   const output = resolve(arg('output-directory'))
   assert(output !== resolve('public') && !output.startsWith(`${resolve('public')}/`), 'Audit candidates must remain outside public/')
-  const report = await auditBaselStudy({ archive: resolve(arg('archive')), sourceDirectory: resolve(arg('sources')), date: arg('date'), output, snapshotPath: arg('snapshot'), railPath: arg('rail-geometry') })
+  const report = await auditBaselStudy({ archive: resolve(arg('archive')), sourceDirectory: resolve(arg('sources')), date: arg('date'), output, snapshotPath: arg('snapshot'), railPath: arg('rail-geometry'), busCachePath: arg('bus-cache'), diversionPolicyPath: arg('tram-diversions') })
   console.log(JSON.stringify({ scope: report.scope, groups: report.groups, payload: report.payload, gate: report.gate }, null, 2))
   if (process.argv.includes('--check') && !report.gate.passed) process.exitCode = 1
 }

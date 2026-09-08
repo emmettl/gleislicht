@@ -104,25 +104,31 @@ class Heap {
   }
 }
 
-export function matchBaselSegment(graph, from, to, limits = BASEL_PATH_LIMITS) {
+export function matchBaselSegment(graph, from, to, limits = BASEL_PATH_LIMITS, { compareNearbyParts = false } = {}) {
   if (!graph?.edges.length) return { reason: 'missing-line' }
   const starts = snap(graph, from), ends = snap(graph, to)
   const initial = projectedPath(graph, from, to, starts[0], ends[0], limits)
-  // Preserve successful nearest matches. Only retry topology failures using
+  // Preserve successful nearest line matches. Only retry topology failures using
   // another source part's nearest projection, within five metres of the best
   // gap at each endpoint. This adds no edges or cross-track connections.
-  if (!['disconnected-line', 'implausible-detour'].includes(initial.reason)) return initial
+  // A shared infrastructure graph can contain many near-coincident source
+  // lines. Diversions may compare their paths even when the nearest passes.
+  if (!['disconnected-line', 'implausible-detour'].includes(initial.reason) && !(compareNearbyParts && initial.path)) return initial
   const allowance = limits.alternativeSnapMetres ?? BASEL_PATH_LIMITS.alternativeSnapMetres
   const near = candidates => candidates.filter(candidate => candidate.gap <= limits.snapMetres && candidate.gap <= candidates[0].gap + allowance)
-  let best, score = Infinity
+  let best = compareNearbyParts && initial.path ? initial : undefined
+  let score = best ? best.pathMetres : Infinity, bestGap = starts[0].gap + ends[0].gap
   for (const start of near(starts)) for (const end of near(ends)) {
     if (start === starts[0] && end === ends[0]) continue
     const result = projectedPath(graph, from, to, start, end, limits)
     const gap = start.gap + end.gap
-    if (!result.path || gap > score || (gap === score && result.pathMetres >= best.pathMetres)) continue
-    score = gap
+    const nextScore = compareNearbyParts ? result.pathMetres : gap
+    const tieBreak = compareNearbyParts ? gap : result.pathMetres
+    const previousTieBreak = compareNearbyParts ? bestGap : best?.pathMetres
+    if (!result.path || nextScore > score || (nextScore === score && tieBreak >= previousTieBreak)) continue
+    score = nextScore; bestGap = gap
     best = { ...result, projectionChoice: {
-      initialReason: initial.reason, nearestMaximumSnapMetres: initial.maximumSnapMetres,
+      initialReason: initial.reason ?? 'longer-nearest-path', nearestMaximumSnapMetres: initial.maximumSnapMetres,
       maximumAdditionalSnapMetres: Math.max(start.gap - starts[0].gap, end.gap - ends[0].gap),
     } }
   }
@@ -173,7 +179,7 @@ function projectedPath(graph, from, to, start, end, limits) {
   return { path, maximumSnapMetres, pathMetres: best }
 }
 
-export function applyBaselGeometry(snapshot, routes, graphs) {
+export function applyBaselGeometry(snapshot, routes, graphs, diversions) {
   const paths = [], signatures = new Map(), segments = new Map(), groups = new Map(), routeCoverage = new Map(), edges = new Map()
   const trains = snapshot.trains.map(train => {
     const route = routes.get(train.routeId)
@@ -186,7 +192,12 @@ export function applyBaselGeometry(snapshot, routes, graphs) {
       const fromIndex = train.stops[i][0], from = snapshot.stops[fromIndex], to = snapshot.stops[toIndex]
       const key = `${train.routeId}:${from[4]}:${to[4]}`
       if (!segments.has(key)) {
-        const result = matchBaselSegment(graphs.get(routeKey(route.agencyId, train.category, train.route)), from, to)
+        let result = matchBaselSegment(graphs.get(routeKey(route.agencyId, train.category, train.route)), from, to)
+        if (!result.path && diversions) {
+          const candidate = diversions.match(route, train, from, to)
+          if (candidate?.path) result = { ...candidate, lineGeometryReason: result.reason }
+          else if (candidate) result = { ...result, diversionAttempt: candidate }
+        }
         let pathIndex = null
         if (result.path) {
           const signature = JSON.stringify(result.path)
