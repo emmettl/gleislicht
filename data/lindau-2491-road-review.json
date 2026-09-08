@@ -1,0 +1,1162 @@
+{
+  "schemaVersion": 1,
+  "status": "review-only-no-publication",
+  "scope": {
+    "schemaVersion": 1,
+    "batchScopeSha256": "cf993c04f006aefe5f34f36d22f39ae84daf1fa0825571687ef96721cc028aa3",
+    "sourcesSha256": "6450b09ac8f77f847c62fbbe70f7fb196644c165b0aba41c35d6e1b25b6513b3"
+  },
+  "stationId": "ZH.CH:2491",
+  "name": "Lindau: Lindauerstrasse",
+  "stationPointLv95": [
+    2693580.9400000013,
+    1254069.2600000016
+  ],
+  "originalGeometryStatus": "ambiguous-road",
+  "originalCandidates": [
+    {
+      "road": "ZH:766",
+      "pathId": "ZH:766:b12fd51e7208c37d",
+      "distanceMetres": 0,
+      "eligible": true
+    },
+    {
+      "road": "ZH:A1",
+      "pathId": "ZH:A1:83fb7f50a89a1abf",
+      "distanceMetres": 14.61,
+      "eligible": false
+    }
+  ],
+  "axes": [
+    {
+      "featureId": 2634,
+      "road": "766",
+      "ownership": "Kanton",
+      "distanceMetres": 0,
+      "pointsLv95": [
+        [
+          2693758.80195,
+          1253976.710000001
+        ],
+        [
+          2693747.3127500005,
+          1253976.885499999
+        ],
+        [
+          2693736.861200001,
+          1253977.9540000036
+        ],
+        [
+          2693725.555750001,
+          1253978.993950002
+        ],
+        [
+          2693714.262699999,
+          1253981.028549999
+        ],
+        [
+          2693702.2716999985,
+          1253983.6419499964
+        ],
+        [
+          2693690.8077999987,
+          1253987.0125999972
+        ],
+        [
+          2693679.5194999985,
+          1253991.1746999994
+        ],
+        [
+          2693668.9120500013,
+          1253995.7866000012
+        ],
+        [
+          2693658.150899999,
+          1254001.1671499982
+        ],
+        [
+          2693646.00615,
+          1254008.5463000014
+        ],
+        [
+          2693635.014350001,
+          1254016.4633999988
+        ],
+        [
+          2693625.7905,
+          1254023.9962500036
+        ],
+        [
+          2693614.875599999,
+          1254033.9887999967
+        ],
+        [
+          2693607.3159999996,
+          1254041.8384499997
+        ],
+        [
+          2693593.3660500012,
+          1254056.3236500025
+        ],
+        [
+          2693582.8226500005,
+          1254067.2716000006
+        ],
+        [
+          2693540.3929499984,
+          1254112.0073999986
+        ],
+        [
+          2693511.4409000017,
+          1254141.9012999982
+        ],
+        [
+          2693500.7492000014,
+          1254152.5930000022
+        ],
+        [
+          2693490.4795500003,
+          1254163.0033000037
+        ],
+        [
+          2693479.225200001,
+          1254173.5543000028
+        ],
+        [
+          2693467.6893999986,
+          1254183.5425999984
+        ],
+        [
+          2693457.2244499996,
+          1254192.7163000032
+        ],
+        [
+          2693446.463300001,
+          1254201.3252499998
+        ],
+        [
+          2693435.087200001,
+          1254210.5491499975
+        ],
+        [
+          2693422.812550001,
+          1254219.5566499978
+        ],
+        [
+          2693415.075100001,
+          1254224.6211500019
+        ],
+        [
+          2693390.5024500005,
+          1254241.588650003
+        ],
+        [
+          2693379.049249999,
+          1254247.3299499974
+        ]
+      ]
+    },
+    {
+      "featureId": 623,
+      "road": "10101",
+      "ownership": "Nationalstrasse",
+      "distanceMetres": 14.61,
+      "pointsLv95": [
+        [
+          2694356.3299000002,
+          1255244.4329999983
+        ],
+        [
+          2694183.0491999984,
+          1255126.6696000025
+        ],
+        [
+          2694143.9463,
+          1255099.492700003
+        ],
+        [
+          2694099.368999999,
+          1255067.036849998
+        ],
+        [
+          2694060.6571500003,
+          1255037.7092999965
+        ],
+        [
+          2694023.118349999,
+          1255006.8176499978
+        ],
+        [
+          2693978.9321000017,
+          1254969.4738999978
+        ],
+        [
+          2693941.002250001,
+          1254933.4987500012
+        ],
+        [
+          2693902.2903500013,
+          1254893.6133999974
+        ],
+        [
+          2693879.8389,
+          1254867.4197999984
+        ],
+        [
+          2693867.0977,
+          1254852.554899998
+        ],
+        [
+          2693837.3794,
+          1254816.384300001
+        ],
+        [
+          2693810.3983500004,
+          1254778.0631000027
+        ],
+        [
+          2693782.6352000013,
+          1254734.6583999991
+        ],
+        [
+          2693754.4809999987,
+          1254684.2151999995
+        ],
+        [
+          2693736.493549999,
+          1254647.849150002
+        ],
+        [
+          2693718.1151,
+          1254607.9637999982
+        ],
+        [
+          2693700.12765,
+          1254562.2129999995
+        ],
+        [
+          2693684.877349999,
+          1254518.026349999
+        ],
+        [
+          2693671.9732500017,
+          1254475.0127499998
+        ],
+        [
+          2693662.5884499997,
+          1254438.2556999996
+        ],
+        [
+          2693650.0753000006,
+          1254385.0753500015
+        ],
+        [
+          2693631.3055500016,
+          1254286.5352500007
+        ],
+        [
+          2693620.7475499995,
+          1254219.6687999964
+        ],
+        [
+          2693608.2346,
+          1254144.3955999985
+        ],
+        [
+          2693602.3691500016,
+          1254107.6388000026
+        ],
+        [
+          2693597.285700001,
+          1254077.1385499984
+        ],
+        [
+          2693593.3660500012,
+          1254056.3236500025
+        ],
+        [
+          2693585.9459000006,
+          1254016.919950001
+        ],
+        [
+          2693577.343199998,
+          1253976.252899997
+        ],
+        [
+          2693566.3943499997,
+          1253932.8486000001
+        ],
+        [
+          2693554.272500001,
+          1253891.7905000001
+        ],
+        [
+          2693538.240249999,
+          1253842.1296999976
+        ],
+        [
+          2693528.8555499986,
+          1253814.757600002
+        ],
+        [
+          2693506.175900001,
+          1253761.7730500028
+        ],
+        [
+          2693486.624499999,
+          1253717.9777000025
+        ],
+        [
+          2693461.598700002,
+          1253671.0540999994
+        ],
+        [
+          2693438.528000001,
+          1253632.3421000019
+        ],
+        [
+          2693417.4124500006,
+          1253597.931450002
+        ],
+        [
+          2693393.559749998,
+          1253564.3028500006
+        ],
+        [
+          2693360.322349999,
+          1253520.898500003
+        ],
+        [
+          2693329.040100001,
+          1253482.9685000032
+        ],
+        [
+          2693295.0207,
+          1253445.0385000035
+        ],
+        [
+          2693253.5716000013,
+          1253404.7623500004
+        ],
+        [
+          2693216.4230000004,
+          1253369.7647999972
+        ],
+        [
+          2693177.7102500014,
+          1253337.3088999987
+        ],
+        [
+          2693136.651299998,
+          1253306.4171499982
+        ],
+        [
+          2693083.4702499993,
+          1253270.0508499965
+        ],
+        [
+          2693036.1547500007,
+          1253241.7007500008
+        ],
+        [
+          2692985.710999999,
+          1253214.3281499967
+        ],
+        [
+          2692934.48525,
+          1253190.8659000024
+        ],
+        [
+          2692893.426449999,
+          1253173.660149999
+        ],
+        [
+          2692850.4124500006,
+          1253158.8006500006
+        ],
+        [
+          2692799.577750001,
+          1253143.9409999996
+        ],
+        [
+          2692745.2238,
+          1253129.0813499987
+        ],
+        [
+          2692695.1711999997,
+          1253117.7409999967
+        ],
+        [
+          2692649.420049999,
+          1253108.3558500037
+        ],
+        [
+          2692599.3675500005,
+          1253102.4899000004
+        ],
+        [
+          2692553.225400001,
+          1253098.970250003
+        ],
+        [
+          2692493.00595,
+          1253096.2324
+        ],
+        [
+          2692446.8638500012,
+          1253096.6230499968
+        ],
+        [
+          2692396.0293000005,
+          1253099.7507999986
+        ],
+        [
+          2692350.2782500014,
+          1253103.2696499974
+        ],
+        [
+          2692292.014150001,
+          1253109.9165999964
+        ],
+        [
+          2692226.320349999,
+          1253119.4962500036
+        ],
+        [
+          2692115.6581499986,
+          1253139.8299999982
+        ],
+        [
+          2692029.2402000017,
+          1253156.4495500028
+        ],
+        [
+          2691933.8286500014,
+          1253177.5660500005
+        ],
+        [
+          2691753.172249999,
+          1253218.8214000016
+        ],
+        [
+          2691685.5238500014,
+          1253231.9214999974
+        ],
+        [
+          2691632.7346,
+          1253241.6977500021
+        ],
+        [
+          2691581.1185000017,
+          1253249.9098000005
+        ],
+        [
+          2691530.6754,
+          1253256.7532500029
+        ],
+        [
+          2691479.8412999995,
+          1253261.4460500032
+        ],
+        [
+          2691431.744350001,
+          1253266.1387500018
+        ],
+        [
+          2691419.9039499983,
+          1253266.7308500037
+        ]
+      ]
+    },
+    {
+      "featureId": 614,
+      "road": "10010",
+      "ownership": "Nationalstrasse",
+      "distanceMetres": 31.21,
+      "pointsLv95": [
+        [
+          2691912.1054,
+          1253164.1587499976
+        ],
+        [
+          2691952.206149999,
+          1253155.2770500034
+        ],
+        [
+          2692023.764800001,
+          1253140.41725
+        ],
+        [
+          2692088.285,
+          1253127.512699999
+        ],
+        [
+          2692133.2535500005,
+          1253118.909599997
+        ],
+        [
+          2692199.729150001,
+          1253107.5697000027
+        ],
+        [
+          2692264.64085,
+          1253096.6214499995
+        ],
+        [
+          2692330.3346499987,
+          1253088.4104000032
+        ],
+        [
+          2692396.8105500005,
+          1253082.9365999997
+        ],
+        [
+          2692458.5940999985,
+          1253080.5909999982
+        ],
+        [
+          2692507.0824499987,
+          1253079.4183500037
+        ],
+        [
+          2692548.5321500003,
+          1253081.7649499997
+        ],
+        [
+          2692577.077750001,
+          1253084.5024000034
+        ],
+        [
+          2692620.091600001,
+          1253088.0221000016
+        ],
+        [
+          2692666.2337500006,
+          1253094.2789999992
+        ],
+        [
+          2692706.510450002,
+          1253103.2730500028
+        ],
+        [
+          2692759.691350002,
+          1253115.0044500008
+        ],
+        [
+          2692799.18595,
+          1253125.3671500012
+        ],
+        [
+          2692858.623399999,
+          1253143.3550999984
+        ],
+        [
+          2692913.3685000017,
+          1253163.6891499981
+        ],
+        [
+          2692952.081099998,
+          1253179.1352500021
+        ],
+        [
+          2692992.357900001,
+          1253198.296099998
+        ],
+        [
+          2693040.4554499984,
+          1253224.8865500018
+        ],
+        [
+          2693077.2128500007,
+          1253246.0025499985
+        ],
+        [
+          2693120.226950001,
+          1253274.3526500016
+        ],
+        [
+          2693159.7217000015,
+          1253301.7251000032
+        ],
+        [
+          2693200.3896499984,
+          1253334.1810000017
+        ],
+        [
+          2693237.929299999,
+          1253366.2458499968
+        ],
+        [
+          2693268.4301999994,
+          1253395.96435
+        ],
+        [
+          2693298.1482999995,
+          1253424.7051500008
+        ],
+        [
+          2693328.2575000003,
+          1253457.5517499968
+        ],
+        [
+          2693362.276900001,
+          1253495.8726499975
+        ],
+        [
+          2693392.386050001,
+          1253534.5847000033
+        ],
+        [
+          2693422.104249999,
+          1253575.0563500002
+        ],
+        [
+          2693447.5210999995,
+          1253614.1594000012
+        ],
+        [
+          2693471.3737999983,
+          1253655.6085499972
+        ],
+        [
+          2693490.9252500013,
+          1253690.0191999972
+        ],
+        [
+          2693511.6497500017,
+          1253730.4908500016
+        ],
+        [
+          2693531.9832499996,
+          1253778.1964500025
+        ],
+        [
+          2693550.3616000004,
+          1253827.075199999
+        ],
+        [
+          2693566.3938000016,
+          1253873.9987500012
+        ],
+        [
+          2693577.733649999,
+          1253912.7106999978
+        ],
+        [
+          2693590.246550001,
+          1253959.6342500001
+        ],
+        [
+          2693600.413400002,
+          1254008.1219500005
+        ],
+        [
+          2693607.3159999996,
+          1254041.8384499997
+        ],
+        [
+          2693610.5801500008,
+          1254057.7827000022
+        ],
+        [
+          2693619.964850001,
+          1254109.5940999985
+        ],
+        [
+          2693648.901299998,
+          1254284.9711999968
+        ],
+        [
+          2693663.7606999986,
+          1254362.3956499994
+        ],
+        [
+          2693674.31865,
+          1254411.27465
+        ],
+        [
+          2693685.2676,
+          1254458.9805999994
+        ],
+        [
+          2693698.1717500016,
+          1254503.5582500026
+        ],
+        [
+          2693715.3772,
+          1254554.3924999982
+        ],
+        [
+          2693733.36465,
+          1254598.1881500036
+        ],
+        [
+          2693751.3521,
+          1254639.6375999972
+        ],
+        [
+          2693771.68575,
+          1254680.1094999984
+        ],
+        [
+          2693795.5386000015,
+          1254722.341049999
+        ],
+        [
+          2693820.955600001,
+          1254762.6174499989
+        ],
+        [
+          2693846.7635499984,
+          1254799.374499999
+        ],
+        [
+          2693872.9624999985,
+          1254833.19895
+        ],
+        [
+          2693894.730700001,
+          1254859.804750003
+        ],
+        [
+          2693904.6358999982,
+          1254871.9112000018
+        ],
+        [
+          2693938.2644499987,
+          1254906.713150002
+        ],
+        [
+          2693973.4571,
+          1254941.9061499983
+        ],
+        [
+          2694003.1752999984,
+          1254967.909950003
+        ],
+        [
+          2694037.585900001,
+          1254997.6285500005
+        ],
+        [
+          2694075.9067,
+          1255028.1291500032
+        ],
+        [
+          2694121.2661000006,
+          1255062.9311999977
+        ],
+        [
+          2694165.8433500007,
+          1255094.6049500033
+        ],
+        [
+          2694346.1076500006,
+          1255215.630099997
+        ],
+        [
+          2694399.6785999984,
+          1255251.0187000036
+        ],
+        [
+          2694446.2980000004,
+          1255283.2672000006
+        ]
+      ]
+    }
+  ],
+  "competingAxisMarginMetres": 14.6,
+  "crossings": [
+    {
+      "mainFeatureId": 2634,
+      "motorwayFeatureId": 623,
+      "pointLv95": [
+        2693593.3660500012,
+        1254056.3236500025
+      ],
+      "stationDistanceMetres": 17.94,
+      "status": "shared-interior-xy-vertex-not-a-junction-approval"
+    },
+    {
+      "mainFeatureId": 2634,
+      "motorwayFeatureId": 614,
+      "pointLv95": [
+        2693607.3159999996,
+        1254041.8384499997
+      ],
+      "stationDistanceMetres": 38.05,
+      "status": "shared-interior-xy-vertex-not-a-junction-approval"
+    }
+  ],
+  "bindingStatus": "independent-station-road-level-review-required",
+  "conditionalDirectionCheck": {
+    "status": "diagnostic-only-assuming-ZH-766",
+    "pathId": "ZH:766:b12fd51e7208c37d",
+    "gates": {
+      "minimumDestinationDistanceMetres": 1500,
+      "minimumOffsetSeparationMetres": 750,
+      "maximumDestinationRoadDistanceMetres": 1500,
+      "minimumBearingAgreement": 0.75,
+      "maximumSectionMetres": 5000
+    },
+    "detectors": [
+      {
+        "id": "ZH.CH:2491.01",
+        "description": "Normalspur Richtung Lindau",
+        "status": "ambiguous-destination"
+      },
+      {
+        "id": "ZH.CH:2491.02",
+        "description": "Normalspur Richtung Effretikon",
+        "status": "destination-too-close",
+        "destination": {
+          "name": "Effretikon",
+          "coordinate": [
+            2694533.5,
+            1253762.65
+          ],
+          "bounds": [
+            2693618.8,
+            1252384.5,
+            2695448.2,
+            1255140.8
+          ],
+          "sourceFeatureId": 462080
+        },
+        "destinationDistanceMetres": 1000.69,
+        "destinationRoadDistanceMetres": 76.28,
+        "offsetSeparationMetres": -1054.26,
+        "bearingAgreement": -0.9,
+        "offsetMetres": 4593.36
+      }
+    ]
+  },
+  "lindauAlternatives": [
+    {
+      "stationId": "ZH.CH:2491",
+      "status": "individual-alternatives-diagnostic-no-name-selected",
+      "alternatives": [
+        {
+          "status": "destination-too-close",
+          "destination": {
+            "name": "Lindau",
+            "coordinate": [
+              2693274.5,
+              1255228.9
+            ],
+            "bounds": [
+              2692745.7,
+              1254793.4,
+              2693803.3,
+              1255664.4
+            ],
+            "sourceFeatureId": 272265
+          },
+          "destinationDistanceMetres": 1199.45,
+          "destinationRoadDistanceMetres": 306.06,
+          "offsetSeparationMetres": 1329.62,
+          "bearingAgreement": 0.85,
+          "offsetMetres": 4593.36
+        },
+        {
+          "status": "destination-off-axis",
+          "destination": {
+            "name": "Lindau",
+            "coordinate": [
+              2662928.9,
+              1217042.1
+            ],
+            "bounds": [
+              2662802.8,
+              1216933.5,
+              2663055,
+              1217150.7
+            ],
+            "sourceFeatureId": 416642
+          },
+          "destinationDistanceMetres": 48068.27,
+          "destinationRoadDistanceMetres": 47926.45,
+          "offsetSeparationMetres": 3028.38,
+          "bearingAgreement": -0.06,
+          "offsetMetres": 4593.36
+        },
+        {
+          "status": "destination-off-axis",
+          "destination": {
+            "name": "Lindau",
+            "coordinate": [
+              2665465,
+              1220072.6
+            ],
+            "bounds": [
+              2665441.2,
+              1220042.3,
+              2665488.8,
+              1220102.9
+            ],
+            "sourceFeatureId": 88405
+          },
+          "destinationDistanceMetres": 44116.65,
+          "destinationRoadDistanceMetres": 43982.49,
+          "offsetSeparationMetres": 3028.38,
+          "bearingAgreement": -0.06,
+          "offsetMetres": 4593.36
+        },
+        {
+          "status": "destination-off-axis",
+          "destination": {
+            "name": "Lindau",
+            "coordinate": [
+              2724444.95,
+              1259184.0499999998
+            ],
+            "bounds": [
+              2724388.4,
+              1259141.4,
+              2724501.5,
+              1259226.7
+            ],
+            "sourceFeatureId": 143694
+          },
+          "destinationDistanceMetres": 31284.95,
+          "destinationRoadDistanceMetres": 28343.61,
+          "offsetSeparationMetres": -4593.36,
+          "bearingAgreement": -0.61,
+          "offsetMetres": 4593.36
+        }
+      ]
+    },
+    {
+      "stationId": "ZH.CH:1320",
+      "status": "individual-alternatives-diagnostic-no-name-selected",
+      "alternatives": [
+        {
+          "status": "destination-too-close",
+          "destination": {
+            "name": "Lindau",
+            "coordinate": [
+              2693274.5,
+              1255228.9
+            ],
+            "bounds": [
+              2692745.7,
+              1254793.4,
+              2693803.3,
+              1255664.4
+            ],
+            "sourceFeatureId": 272265
+          },
+          "destinationDistanceMetres": 928.34,
+          "destinationRoadDistanceMetres": 306.06,
+          "offsetSeparationMetres": 924.13,
+          "bearingAgreement": 0.54,
+          "offsetMetres": 4998.86
+        },
+        {
+          "status": "destination-off-axis",
+          "destination": {
+            "name": "Lindau",
+            "coordinate": [
+              2662928.9,
+              1217042.1
+            ],
+            "bounds": [
+              2662802.8,
+              1216933.5,
+              2663055,
+              1217150.7
+            ],
+            "sourceFeatureId": 416642
+          },
+          "destinationDistanceMetres": 48040.19,
+          "destinationRoadDistanceMetres": 47926.45,
+          "offsetSeparationMetres": 2622.88,
+          "bearingAgreement": 0.09,
+          "offsetMetres": 4998.86
+        },
+        {
+          "status": "destination-off-axis",
+          "destination": {
+            "name": "Lindau",
+            "coordinate": [
+              2665465,
+              1220072.6
+            ],
+            "bounds": [
+              2665441.2,
+              1220042.3,
+              2665488.8,
+              1220102.9
+            ],
+            "sourceFeatureId": 88405
+          },
+          "destinationDistanceMetres": 44088.91,
+          "destinationRoadDistanceMetres": 43982.49,
+          "offsetSeparationMetres": 2622.88,
+          "bearingAgreement": 0.09,
+          "offsetMetres": 4998.86
+        },
+        {
+          "status": "destination-off-axis",
+          "destination": {
+            "name": "Lindau",
+            "coordinate": [
+              2724444.95,
+              1259184.0499999998
+            ],
+            "bounds": [
+              2724388.4,
+              1259141.4,
+              2724501.5,
+              1259226.7
+            ],
+            "sourceFeatureId": 143694
+          },
+          "destinationDistanceMetres": 31570.25,
+          "destinationRoadDistanceMetres": 28343.61,
+          "offsetSeparationMetres": -4998.86,
+          "bearingAgreement": -0.73,
+          "offsetMetres": 4998.86
+        }
+      ]
+    }
+  ],
+  "candidatePairs": [
+    {
+      "from": "ZH.CH:2491",
+      "to": "ZH.CH:1320",
+      "pathId": "ZH:766:b12fd51e7208c37d",
+      "distanceMetres": 405.5,
+      "completeMinutes": 228,
+      "longestRunMinutes": 104,
+      "hourWindows": [
+        {
+          "start": 51240,
+          "end": 57420,
+          "minutes": 104
+        }
+      ],
+      "publicationStatus": "not-admitted",
+      "otherEndpoint": {
+        "id": "ZH.CH:1320",
+        "road": "ZH:766",
+        "pathId": "ZH:766:b12fd51e7208c37d",
+        "status": "unresolved-direction-pair",
+        "detectors": [
+          {
+            "id": "ZH.CH:1320.03",
+            "description": "Normalspur Richtung Effretikon",
+            "alertCDirection": null,
+            "status": "destination-too-close",
+            "destination": {
+              "name": "Effretikon",
+              "coordinate": [
+                2694533.5,
+                1253762.65
+              ],
+              "bounds": [
+                2693618.8,
+                1252384.5,
+                2695448.2,
+                1255140.8
+              ],
+              "sourceFeatureId": 462080
+            },
+            "destinationDistanceMetres": 1387.45,
+            "destinationRoadDistanceMetres": 76.28,
+            "offsetSeparationMetres": -1459.75,
+            "bearingAgreement": -0.98,
+            "offsetMetres": 4998.86
+          },
+          {
+            "id": "ZH.CH:1320.04",
+            "description": "Normalspur Richtung Lindau",
+            "alertCDirection": null,
+            "status": "ambiguous-destination"
+          }
+        ]
+      }
+    },
+    {
+      "from": "ZH.CH:1292",
+      "to": "ZH.CH:2491",
+      "pathId": "ZH:766:b12fd51e7208c37d",
+      "distanceMetres": 3219.79,
+      "completeMinutes": 220,
+      "longestRunMinutes": 104,
+      "hourWindows": [
+        {
+          "start": 51240,
+          "end": 57420,
+          "minutes": 104
+        }
+      ],
+      "publicationStatus": "not-admitted",
+      "otherEndpoint": {
+        "id": "ZH.CH:1292",
+        "road": "ZH:766",
+        "pathId": "ZH:766:b12fd51e7208c37d",
+        "status": "unresolved-direction-pair",
+        "detectors": [
+          {
+            "id": "ZH.CH:1292.01",
+            "description": "Normalspur Richtung Illnau",
+            "alertCDirection": "positive",
+            "status": "destination-too-close",
+            "destination": {
+              "name": "Illnau",
+              "coordinate": [
+                2696880.8,
+                1251947.85
+              ],
+              "bounds": [
+                2695872.1,
+                1250964.9,
+                2697889.5,
+                1252930.8
+              ],
+              "sourceFeatureId": 411226
+            },
+            "destinationDistanceMetres": 929.04,
+            "destinationRoadDistanceMetres": 75.37,
+            "offsetSeparationMetres": -951.05,
+            "bearingAgreement": -0.98,
+            "offsetMetres": 1373.58
+          },
+          {
+            "id": "ZH.CH:1292.02",
+            "description": "Normalspur Richtung Effretikon",
+            "alertCDirection": "negative",
+            "status": "destination-extent-conflict",
+            "destination": {
+              "name": "Effretikon",
+              "coordinate": [
+                2694533.5,
+                1253762.65
+              ],
+              "bounds": [
+                2693618.8,
+                1252384.5,
+                2695448.2,
+                1255140.8
+              ],
+              "sourceFeatureId": 462080
+            },
+            "destinationDistanceMetres": 2091.17,
+            "destinationRoadDistanceMetres": 76.28,
+            "offsetSeparationMetres": 2165.53,
+            "bearingAgreement": 0.98,
+            "offsetMetres": 1373.58
+          }
+        ]
+      }
+    }
+  ],
+  "requiredEvidence": [
+    "A reviewed station-to-road-level binding at the A1 crossing. Shared XY vertices alone must not create a motorway junction or choose a road.",
+    "Independent detector-direction evidence at 2491 and 1320. The local Lindau and Effretikon references are too close; all other exact Lindau alternatives fail off-axis checks. No alias or threshold relaxation resolves these failures.",
+    "For the longer candidate, independent Illnau direction evidence at 1292 is needed before reconsidering its Effretikon extent conflict. There is no validated anchor for the existing opposing-lane extent review.",
+    "Only after endpoint reviews, audit the connecting section and junctions. The 104-minute observation windows do not approve either corridor."
+  ],
+  "limitation": "This is counter 2491 on ZH 766, distinct from counter 0908 on ZH 1. The original geometry and automatic place ambiguity remain unchanged. Individual settlement tests select no destination. No station is moved and no topology, direction mapping or playback is emitted."
+}
