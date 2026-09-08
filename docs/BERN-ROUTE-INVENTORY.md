@@ -8,7 +8,7 @@ Generated from the [Bern audit](BERN-STUDY.md). Counts are admitted / candidate 
 | --- | --- | --- | --- | --- |
 | 11 | Schweizerische Bundesbahnen SBB | 62 | 319 / 846 | 273 / 771 |
 | 32 | Lauterbrunnen-Mürren | 2 | 181 / 181 | 181 / 181 |
-| 33 | BLS AG (bls) | 53 | 926 / 1,405 | 823 / 1,255 |
+| 33 | BLS AG (bls) | 53 | 994 / 1,405 | 893 / 1,255 |
 | 35 | Berner Oberland-Bahnen | 2 | 130 / 130 | 144 / 144 |
 | 38 | Aare Seeland mobil (bti) | 1 | 116 / 116 | 77 / 77 |
 | 43 | Chemins de fer du Jura | 2 | 69 / 110 | 42 / 77 |
@@ -17,7 +17,7 @@ Generated from the [Bern audit](BERN-STUDY.md). Counts are admitted / candidate 
 | 64 | Montreux-Oberland Bernois | 10 | 19 / 103 | 10 / 82 |
 | 81 | Aare Seeland mobil (snb) | 1 | 154 / 154 | 96 / 96 |
 | 82 | Schweizerische Südostbahn (sob) | 3 | 0 / 22 | 0 / 21 |
-| 86 | Zentralbahn | 9 | 78 / 134 | 74 / 124 |
+| 86 | Zentralbahn | 9 | 134 / 134 | 124 / 124 |
 | 88 | Regionalverkehr Bern-Solothurn | 4 | 611 / 611 | 429 / 429 |
 | 101 | Verkehrsbetriebe Biel | 2 | 218 / 218 | 146 / 146 |
 | 103 | Verkehrsbetriebe Biel | 1 | 132 / 132 | 132 / 132 |
@@ -50,7 +50,7 @@ Generated from the [Bern audit](BERN-STUDY.md). Counts are admitted / candidate 
 | 225 | Bergbahnen Destination Gstaad AG | 5 | 2,700 / 2,700 | 2,700 / 2,700 |
 | 228 | Luftseilbahn Kandersteg-Sunnbüel (Gemmi) AG | 1 | 37 / 37 | 37 / 37 |
 | 239 | Niederhornbahn AG | 1 | 150 / 150 | 112 / 112 |
-| 256 | Stechelberg-Mürren-Schilthorn (lsms) | 3 | 107 / 173 | 109 / 177 |
+| 256 | Stechelberg-Mürren-Schilthorn (lsms) | 3 | 173 / 173 | 177 / 177 |
 | 264 | Stockhornbahn AG | 1 | 73 / 73 | 73 / 73 |
 | 268 | Luftseilbahn Mürren-Schilthorn | 2 | 0 / 78 | 0 / 78 |
 | 272 | Grindelwald-Pfingstegg | 1 | 52 / 52 | 52 / 52 |
@@ -194,7 +194,7 @@ Generated from the [Bern audit](BERN-STUDY.md). Counts are admitted / candidate 
 | 91-17-B-j26-1 | 33: IR17 | rail | excluded | 0 / 38 | 0 / 39 | — | no-verified-operator-line-crosswalk |
 | 91-35-D-j26-1 | 33: IR35 | rail | excluded | 0 / 1 | 0 / 1 | — | no-verified-operator-line-crosswalk |
 | 91-56-j26-1 | 33: IR56 | rail | excluded | 0 / 35 | 0 / 0 | — | no-verified-operator-line-crosswalk |
-| 91-65-j26-1 | 33: IR65 | rail | excluded | 0 / 68 | 0 / 70 | — | no-verified-operator-line-crosswalk |
+| 91-65-j26-1 | 33: IR65 | rail | admitted-all-dated-trips | 68 / 68 | 70 / 70 | 303_S_a | — |
 | 91-66-A-j26-1 | 33: IR66 | rail | excluded | 0 / 40 | 0 / 38 | 223_IR | incomplete-directed-pattern |
 | 91-2D-Y-j26-1 | 33: R | rail | inactive-on-validation-dates | 0 / 0 | 0 / 0 | — | Not active on these dates |
 | 91-11-N-j26-1 | 33: R11 | rail | admitted-all-dated-trips | 38 / 38 | 38 / 38 | 320_R | — |
@@ -265,7 +265,7 @@ Generated from the [Bern audit](BERN-STUDY.md). Counts are admitted / candidate 
 | 91-81-Y-j26-1 | 86: R | rail | inactive-on-validation-dates | 0 / 0 | 0 / 0 | 474 | Not active on these dates |
 | 91-W-Y-j26-1 | 86: R | rail | inactive-on-validation-dates | 0 / 0 | 0 / 0 | 474 | Not active on these dates |
 | 91-70-j26-1 | 86: R70 | rail | admitted-all-dated-trips | 38 / 38 | 34 / 34 | 470_R | — |
-| 91-71-j26-1 | 86: R71 | rail | excluded | 0 / 56 | 0 / 50 | — | no-verified-operator-line-crosswalk |
+| 91-71-j26-1 | 86: R71 | rail | admitted-all-dated-trips | 56 / 56 | 50 / 50 | 474 | — |
 | 91-5-O-j26-1 | 88: RE5 | rail | admitted-all-dated-trips | 127 / 127 | 74 / 74 | 308_RE | — |
 | 91-7-A-j26-1 | 88: S7 | rail | admitted-all-dated-trips | 210 / 210 | 126 / 126 | 307_S | — |
 | 91-8-B-j26-1 | 88: S8 | rail | admitted-all-dated-trips | 148 / 148 | 118 / 118 | 308_RE, 308_S | — |
@@ -384,7 +384,7 @@ Generated from the [Bern audit](BERN-STUDY.md). Counts are admitted / candidate 
 | 93-241-2-j26-1 | 228: 2412 | cableway | admitted-all-dated-trips | 37 / 37 | 37 / 37 | 2412_1 | — |
 | 93-235-6-j26-1 | 239: 2356 | cableway | admitted-all-dated-trips | 150 / 150 | 112 / 112 | 2356_1 | — |
 | 93-246-0-j26-1 | 256: 2460 | cableway | admitted-all-dated-trips | 107 / 107 | 109 / 109 | 2460_1, 2460_2 | — |
-| 93-246-D-j26-1 | 256: 24602 | cableway | excluded | 0 / 66 | 0 / 68 | — | no-verified-operator-line-crosswalk |
+| 93-246-D-j26-1 | 256: 24602 | cableway | admitted-all-dated-trips | 66 / 66 | 68 / 68 | 2460_1 | — |
 | 92-A08-C-j26-1 | 256: EV | bus | inactive-on-validation-dates | 0 / 0 | 0 / 0 | — | Not active on these dates |
 | 93-237-0-j26-1 | 264: 2370 | cableway | admitted-all-dated-trips | 73 / 73 | 73 / 73 | 2370_1 | — |
 | 93-246-B-j26-1 | 268: 24603 | cableway | excluded | 0 / 39 | 0 / 39 | — | no-verified-operator-line-crosswalk |

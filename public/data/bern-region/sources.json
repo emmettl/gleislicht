@@ -34,6 +34,39 @@
       "sha256": "01795d7f3dd3d19f31fc60f7c066100b5778db05b8473ba75c6507644d90c0a1",
       "attribution": "öv-info.ch / Regionalverkehr Bern-Solothurn RBS",
       "role": "Evidence for the dated shared corridor; timetable times continue to come from the pinned national GTFS."
+    },
+    {
+      "file": "corridor-303-2026.pdf",
+      "sourceUrl": "https://widgets.oev-info.ch/publikation/jahresfpl/303.pdf",
+      "title": "Fahrplanjahr 2026, field 303: Biel/Bienne–Lyss–Bern–Belp–Thun; IR65 and S3 shared corridor",
+      "sourceDate": "2025-10-01",
+      "validTimetableYear": 2026,
+      "acquiredAt": "2026-09-08T18:24:02.414586+00:00",
+      "sha256": "5b785a058f3a1ea38c9a593f0debfcc1ce1ffccf723f398995fd0ca72575f130",
+      "attribution": "öv-info.ch / BLS",
+      "role": "Evidence for the exact dated operator/line corridor; times and complete platform calls remain from pinned national GTFS."
+    },
+    {
+      "file": "corridor-474-2026.pdf",
+      "sourceUrl": "https://widgets.oev-info.ch/publikation/jahresfpl/474.pdf",
+      "title": "Fahrplanjahr 2026, field 474: Meiringen–Innertkirchen; R71",
+      "sourceDate": "2025-10-20",
+      "validTimetableYear": 2026,
+      "acquiredAt": "2026-09-08T18:24:02.415092+00:00",
+      "sha256": "9072d2980db67dfd14d958fbb5ddd495fd05354ee03c2b74b49af4ecacd4f8e9",
+      "attribution": "öv-info.ch / Zentralbahn",
+      "role": "Evidence for the exact dated operator/line corridor; times and complete platform calls remain from pinned national GTFS."
+    },
+    {
+      "file": "corridor-2460-2026.pdf",
+      "sourceUrl": "https://widgets.oev-info.ch/publikation/jahresfpl/2460.pdf",
+      "title": "Fahrplanjahr 2026, field 2460: Stechelberg–Mürren–Schilthorn; Gimmelwald–Mürren section",
+      "sourceDate": "2025-08-28",
+      "validTimetableYear": 2026,
+      "acquiredAt": "2026-09-08T18:24:02.415206+00:00",
+      "sha256": "256c81591b94b77439561b96d0e4079189a2603beacc7b2c8bb257fc225df961",
+      "attribution": "öv-info.ch / Schilthornbahn",
+      "role": "Evidence for the exact dated operator/line corridor; times and complete platform calls remain from pinned national GTFS."
     }
   ],
   "timetable": {

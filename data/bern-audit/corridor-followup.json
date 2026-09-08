@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "baselineCommit": "21ea85eed20ad79bac7e371a8564f89ce58b508a",
+  "dates": [
+    {
+      "date": "2026-09-04",
+      "preservedJourneys": 33086,
+      "addedScheduledJourneys": 190,
+      "totalAdmittedJourneys": 33276,
+      "previousSourceHashes": {
+        "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+        "source": "36146aab8e303a8bc9b6864f0974f2f726aed809cf340958f5233e5e08936956",
+        "crosswalk": "e300555440d56a0d4fa58437cdab1b746e40dc354b02c5765ef8d87231550c45",
+        "geometryArchive": "4e2a4fcca08cc219c871d42c957753c09318ace2172fb3614c4fe71b20a4fe19"
+      },
+      "sourceHashes": {
+        "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+        "source": "36146aab8e303a8bc9b6864f0974f2f726aed809cf340958f5233e5e08936956",
+        "crosswalk": "1f8b973c671575202eceecb9f89b1443e9a7f162630cb3beb208e5e5727180f8",
+        "geometryArchive": "4e2a4fcca08cc219c871d42c957753c09318ace2172fb3614c4fe71b20a4fe19"
+      },
+      "routes": [
+        {
+          "routeId": "91-65-j26-1",
+          "line": "IR65",
+          "addedScheduledJourneys": 68,
+          "directedPatterns": 9,
+          "directedPairs": 12,
+          "directionIds": [
+            "0",
+            "1"
+          ],
+          "precedingDayJourneys": 1,
+          "sourceLines": [
+            "303_S_a"
+          ],
+          "maximumSnapMetres": 53.65691024240847
+        },
+        {
+          "routeId": "91-71-j26-1",
+          "line": "R71",
+          "addedScheduledJourneys": 56,
+          "directedPatterns": 2,
+          "directedPairs": 12,
+          "directionIds": [
+            "0",
+            "1"
+          ],
+          "precedingDayJourneys": 0,
+          "sourceLines": [
+            "474"
+          ],
+          "maximumSnapMetres": 6.897648694297908
+        },
+        {
+          "routeId": "93-246-D-j26-1",
+          "line": "24602",
+          "addedScheduledJourneys": 66,
+          "directedPatterns": 2,
+          "directedPairs": 2,
+          "directionIds": [
+            "0",
+            "1"
+          ],
+          "precedingDayJourneys": 1,
+          "sourceLines": [
+            "2460_1"
+          ],
+          "maximumSnapMetres": 2.3958615385819613
+        }
+      ],
+      "checks": {
+        "allPreviousMovementsAndPathsUnchanged": true,
+        "unrelatedPairDecisionsUnchanged": true,
+        "allTargetPatternsComplete": true,
+        "noThresholdChanges": true,
+        "noSourceCallsRemoved": true
+      }
+    },
+    {
+      "date": "2026-09-06",
+      "preservedJourneys": 29015,
+      "addedScheduledJourneys": 188,
+      "totalAdmittedJourneys": 29203,
+      "previousSourceHashes": {
+        "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+        "source": "36146aab8e303a8bc9b6864f0974f2f726aed809cf340958f5233e5e08936956",
+        "crosswalk": "e300555440d56a0d4fa58437cdab1b746e40dc354b02c5765ef8d87231550c45",
+        "geometryArchive": "4e2a4fcca08cc219c871d42c957753c09318ace2172fb3614c4fe71b20a4fe19"
+      },
+      "sourceHashes": {
+        "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+        "source": "36146aab8e303a8bc9b6864f0974f2f726aed809cf340958f5233e5e08936956",
+        "crosswalk": "1f8b973c671575202eceecb9f89b1443e9a7f162630cb3beb208e5e5727180f8",
+        "geometryArchive": "4e2a4fcca08cc219c871d42c957753c09318ace2172fb3614c4fe71b20a4fe19"
+      },
+      "routes": [
+        {
+          "routeId": "91-65-j26-1",
+          "line": "IR65",
+          "addedScheduledJourneys": 70,
+          "directedPatterns": 6,
+          "directedPairs": 15,
+          "directionIds": [
+            "0",
+            "1"
+          ],
+          "precedingDayJourneys": 3,
+          "sourceLines": [
+            "303_S_a"
+          ],
+          "maximumSnapMetres": 53.65691024240847
+        },
+        {
+          "routeId": "91-71-j26-1",
+          "line": "R71",
+          "addedScheduledJourneys": 50,
+          "directedPatterns": 4,
+          "directedPairs": 12,
+          "directionIds": [
+            "0",
+            "1"
+          ],
+          "precedingDayJourneys": 0,
+          "sourceLines": [
+            "474"
+          ],
+          "maximumSnapMetres": 6.897648694297908
+        },
+        {
+          "routeId": "93-246-D-j26-1",
+          "line": "24602",
+          "addedScheduledJourneys": 68,
+          "directedPatterns": 2,
+          "directedPairs": 2,
+          "directionIds": [
+            "0",
+            "1"
+          ],
+          "precedingDayJourneys": 3,
+          "sourceLines": [
+            "2460_1"
+          ],
+          "maximumSnapMetres": 2.3958615385819613
+        }
+      ],
+      "checks": {
+        "allPreviousMovementsAndPathsUnchanged": true,
+        "unrelatedPairDecisionsUnchanged": true,
+        "allTargetPatternsComplete": true,
+        "noThresholdChanges": true,
+        "noSourceCallsRemoved": true
+      }
+    }
+  ]
+}

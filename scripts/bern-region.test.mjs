@@ -120,3 +120,21 @@ describe('Bern directed patterns and civil days', () => {
     expect(() => validateBernSnapshot(feed)).toThrow()
   })
 })
+
+it('scopes reviewed IR65, R71 and Gimmelwald–Mürren aliases without widening other operators or modes', () => {
+  const policy = JSON.parse(readFileSync('data/bern-operator-crosswalk.json'))
+  for (const [code, agencyId, mode, names, rejected] of [
+    ['303_S_a', '33', 'rail', ['S3', 'IR65'], ['S31', 'IR66', 'IR']],
+    ['474', '86', 'rail', ['R', 'R71'], ['R70', 'IR', '71']],
+    ['2460_1', '256', 'cableway', ['2460', '24602'], ['24603', '24604', '2460A']],
+  ]) {
+    const f = feature([A, B], { vkmtyp: mode === 'rail' ? 1 : 5, liniencode: code })
+    for (const name of names) {
+      expect(bernFeatureMatch({ ...route, agencyId, mode, name }, f, policy)).toBe(true)
+      expect(bernFeatureMatch({ ...route, agencyId: '11', mode, name }, f, policy)).toBe(false)
+      expect(bernFeatureMatch({ ...route, agencyId, mode: 'bus', name }, f, policy)).toBe(false)
+    }
+    for (const name of rejected) expect(bernFeatureMatch({ ...route, agencyId, mode, name }, f, policy)).toBe(false)
+    expect(policy.supportingDocuments.some(d => d.file === policy.featureOverrides[code].supportingDocument)).toBe(true)
+  }
+})
