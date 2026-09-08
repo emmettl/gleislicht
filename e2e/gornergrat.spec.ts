@@ -11,7 +11,7 @@ test('Gornergrat loads on demand and follows dated calls through arrival and rep
  await page.getByRole('button',{name:/Follow Zermatt to Gornergrat/}).click()
  const card=page.locator('.gornergrat-ascent'),clock=page.locator('.scrubber input')
  await expect(card).toHaveAttribute('data-phase','rail');expect(requests).toBe(1)
- await expect(card.locator('option')).toHaveCount(26)
+ await expect(card.getByRole('combobox',{name:'Choose a departure'}).locator('option')).toHaveCount(26)
  await expect(clock).toHaveValue('43200');await expect(card).toContainText('12:00 → 12:33')
  await card.getByRole('button').filter({hasText:'Riffelalp'}).click()
  await expect(card.locator('[aria-current="step"]')).toContainText('Riffelalp')

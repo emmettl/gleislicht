@@ -6,7 +6,7 @@ import type { NetworkSnapshot } from '@motionstudies/core/domain/network'
 import fixture from '../public/data/gornergrat-day.json'
 import terrain from '../public/data/gornergrat-ascent-terrain.json'
 import audit from '../data/gornergrat-terrain-audit.json'
-import { gornergratAscents } from '../src/studies/gornergrat.ts'
+import { gornergratAscents, gornergratDescents } from '../src/studies/gornergrat.ts'
 import { bindGornergratTerrain } from '../src/studies/gornergrat-terrain.ts'
 import { measuredTerrainPosition, railPoint, railSamples } from '../src/studies/measured-terrain.ts'
 const network=fixture as unknown as NetworkSnapshot, choices=gornergratAscents(network), noon=choices.find(t=>t.start===43200)!
@@ -43,12 +43,44 @@ describe('Gornergrat outdoor terrain',()=>{
    expect(railPoint(route.points,railSamples(route.points),call.progress)[2]).toBeCloseTo(station.railHeight,1)
   }
  })
- it('fails back to the map for wrong data, stale dates, invalid geometry and non-ascent services',()=>{
+ it('fails back to the map for wrong data, stale dates, invalid geometry and short services',()=>{
   const bad:unknown[]=[null,{}, {...terrain,id:'jungfrau-ascent-terrain'}, {...terrain,metadata:{...terrain.metadata,serviceDate:'2026-09-05'}}, {...terrain,metadata:{...terrain.metadata,timetableSha256:'wrong'}}]
   for(const mutate of [(v:typeof terrain)=>{v.routes[0].points[1]=v.routes[0].points[0]},(v:typeof terrain)=>{v.routes[0].stops.pop()},(v:typeof terrain)=>{v.routes[0].stops[1].id='ch:1:sloid:1690'},(v:typeof terrain)=>{v.terrain.elevations[0]=NaN},(v:typeof terrain)=>{v.routes[0].maskedRanges[0].end=2},(v:typeof terrain)=>{v.routes[0].vehicle='train'}]){const v=structuredClone(terrain);mutate(v);bad.push(v)}
   bad.push({...terrain,routes:[null]})
   for(const data of bad)expect(bindGornergratTerrain(data,network,noon)).toBeUndefined()
-  for(const train of network.trains.filter(t=>!choices.includes(t)))expect(bindGornergratTerrain(terrain,network,train)).toBeUndefined()
+  for(const train of network.trains.filter(t=>!choices.includes(t) && !gornergratDescents(network).includes(t)))expect(bindGornergratTerrain(terrain,network,train)).toBeUndefined()
+ })
+ it('binds all audited descents with reversed positions and structure masks on their own timetable',()=>{
+  const reversed=[...terrain.routes[0].points].reverse()
+  for(const train of gornergratDescents(network)){
+   const binding=bindGornergratTerrain(terrain,network,train)!
+   expect(binding).toBeDefined()
+   expect(binding.routes[0].route.points).toEqual(reversed)
+   expect(binding.routes[0].route.maskedRanges).toEqual([...terrain.routes[0].maskedRanges].reverse().map(r=>({...r,start:1-r.end,end:1-r.start})))
+   expect(binding.routes[0].calls.map(c=>[c.name,c.arrival,c.departure])).toEqual(train.stops.map(([i,a,d])=>[network.stops[i][2],a,d]))
+   for(const c of binding.routes[0].calls.slice(0,-1)){
+    const pos=measuredTerrainPosition(binding,c.departure)!
+    expect(pos.progress).toBe(c.progress);expect(pos.stopped).toBe(true)
+    const source=audit.routes[0].stops.find(s=>s.name===c.name)!
+    expect(railPoint(pos.route.points,railSamples(pos.route.points),pos.progress)[2]).toBeCloseTo(source.railHeight,1)
+   }
+   for(const w of binding.windows){
+    expect(measuredTerrainPosition(binding,w.start+.001)?.mask).toBeUndefined()
+    expect(measuredTerrainPosition(binding,w.end-.001)?.mask).toBeUndefined()
+   }
+   expect(measuredTerrainPosition(binding,train.stops.at(-1)![1])).toBeUndefined()
+  }
+  expect(audit.routes[0].descentAudit.count).toBe(26)
+  expect(audit.routes[0].descentAudit.maxReverseDifferenceMetres).toBe(0)
+ })
+ it('retains ascent playback but rejects downhill terrain without an explicit reversed-path audit',()=>{
+  const old={...terrain,routes:terrain.routes.map(r=>({...r,reverseTripIds:undefined}))}
+  expect(bindGornergratTerrain(old,network,noon)).toBeDefined()
+  const downhill=gornergratDescents(network)[0]
+  expect(bindGornergratTerrain(old,network,downhill)).toBeUndefined()
+  const unlisted={...terrain,routes:terrain.routes.map(r=>({...r,reverseTripIds:r.reverseTripIds.filter(id=>id!==downhill.id)}))}
+  expect(bindGornergratTerrain(unlisted,network,downhill)).toBeUndefined()
+  expect(bindGornergratTerrain({...terrain,routes:[null]},network,downhill)).toBeUndefined()
  })
  it('pins the federal source evidence and keeps the optional mesh below its budget',()=>{
   const hash=(path:string)=>createHash('sha256').update(readFileSync(path)).digest('hex')

@@ -3,7 +3,7 @@ import type { NetworkSnapshot } from '@motionstudies/core/domain/network'
 import fixture from '../public/data/gornergrat-day.json'
 import evidence from '../data/gornergrat-ascent-source.json'
 import audit from '../data/gornergrat-study-audit.json'
-import { gornergratAscents } from '../src/studies/gornergrat.ts'
+import { gornergratAscents, gornergratDescents } from '../src/studies/gornergrat.ts'
 const network=fixture as unknown as NetworkSnapshot
 describe('Gornergrat dated summit journeys',()=>{
  it('preserves 54 source services and offers only the 26 public complete summit ascents',()=>{
@@ -16,6 +16,20 @@ describe('Gornergrat dated summit journeys',()=>{
   expect(network.trains.some(t=>network.stops[t.stops.at(-1)![0]][2]==='Riffelalp')).toBe(true)
   for(const t of choices){const calls=evidence.trips[t.id as keyof typeof evidence.trips].calls;expect(t.stops.map(([i,a,d])=>[network.stops[i][4],a,d])).toEqual(calls.map(c=>[c.stopId,c.arrival,c.departure]))}
   expect(audit.geometry.occurrences).toBe(281);expect(audit.geometry.matched).toBe(281)
+ })
+ it('offers the 26 source-reconciled complete descents with their actual downhill call order',()=>{
+  const descents=gornergratDescents(network)
+  expect(descents).toHaveLength(26);expect(descents[0].start).toBe(27300)
+  expect(new Set(descents.map(t=>t.stops.length))).toEqual(new Set([6,7]))
+  const noon=descents.find(t=>t.start===42900)!
+  expect(noon.shortName).toBe('234');expect(noon.stops.at(-1)![1]).toBe(45540)
+  expect(noon.stops.map(([i])=>network.stops[i][2])).toEqual(['Gornergrat','Rotenboden','Riffelberg','Riffelalp','Findelbach','Zermatt GGB'])
+  for(const t of descents){const calls=evidence.trips[t.id as keyof typeof evidence.trips].calls;expect(t.stops.map(([i,a,d])=>[network.stops[i][4],a,d])).toEqual(calls.map(c=>[c.stopId,c.arrival,c.departure]))}
+  const changed=structuredClone(network),t=changed.trains.find(t=>t.id===noon.id)!
+  t.stops[1][2]++
+  expect(gornergratDescents(changed).some(t=>t.id===noon.id)).toBe(false)
+  expect(gornergratDescents({...network,metadata:{...network.metadata,serviceDate:'2026-09-05'}})).toEqual([])
+  expect(gornergratDescents({...network,paths:[]})).toEqual([])
  })
  it('fails closed for changed date, source identity, timetable calls or missing route geometry',()=>{
   expect(gornergratAscents({...network,metadata:{...network.metadata,serviceDate:'2026-09-05'}})).toEqual([])

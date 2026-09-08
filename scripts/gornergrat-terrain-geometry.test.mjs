@@ -21,6 +21,13 @@ describe('Gornergrat source geometry',()=>{
   expect(()=>mappedGornergratRoutes(network,{...source,features:source.features.filter(f=>f.properties.KUNSTBAUTE!=='Tunnel')},evidence)).toThrow('No valid TLM rail axis')
   expect(()=>mappedGornergratRoutes(network,{...source,features:source.features.map(f=>({...f,properties:{...f.properties,ZAHNRADBAH:'Falsch'}}))},evidence)).toThrow('No valid TLM rail axis')
  })
+ it('rejects a descent assigned to an unrelated path instead of reversing unverified geometry',()=>{
+  const candidate=structuredClone(network)
+  const descent=candidate.trains.find(t=>candidate.stops[t.stops[0][0]][2]==='Gornergrat')
+  descent.pathSegments=[...descent.pathSegments]
+  descent.pathSegments[0]=descent.pathSegments.at(-1)
+  expect(()=>mappedGornergratRoutes(candidate,source,evidence)).toThrow()
+ })
  it('rejects a changed path variant instead of silently reusing the canonical ascent',()=>{
   const candidate=structuredClone(network)
   // This path serves the additional Ferienhaus call; six-call trains use a combined path.
