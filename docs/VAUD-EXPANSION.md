@@ -347,3 +347,72 @@ For agency 738, decompress the retained Nyon OSM extract and use
 with `importRoadShapes`; original output hashes and warnings remain in each cache.
 `audit-nyon-geometry.mjs` remains the rectangular replay for comparison; the
 complete source-chain and artifact checks are in the new builder and checker.
+
+## Riviera: complete operator audit and rail/road geometry
+
+Nyon application integration was committed as `3d5a77d`. An isolated checkout of
+that change passed 30 focused tests, the production build and the 360 KiB opening
+JavaScript budget (359.3 KiB), without including concurrent study integrations.
+
+The next candidate now retains complete source journeys for agencies 42, 64, 131,
+125, 155, 876, 7040 and 7260. Its geographic extent follows those operators,
+including MOB through Zweisimmen to Lenk; it is not a Riviera administrative
+boundary. SBB, BLS onward GoldenPass services and boats are excluded. There are
+**1,907 weekday journeys and 1,334 Sunday journeys**. Every retained stop,
+arrival/departure time and preceding-day offset was checked against the original
+GTFS. Inactive operators are not invented on dates without scheduled service.
+
+| Operator / mode | 8 September | 13 September | Geometry coverage |
+| --- | ---: | ---: | --- |
+| MVR Vevey–Les Pléiades rail | 96 | 69 | 100% |
+| MOB Montreux–Zweisimmen–Lenk rail | 132 | 124 | 100% |
+| MVR Montreux–Rochers-de-Naye rail | 38 | 40 | 100% |
+| VMCV bus | 1,200 | 661 | 100% |
+| MOB replacement bus | 23 | 10 | 100% |
+| MVR replacement bus | 136 | 14 | 100% |
+| Les Avants–Sonloup funicular | 136 | 136 | Deferred |
+| Territet–Glion funicular | 146 | 148 | Deferred |
+| Vevey–Mont-Pèlerin funicular | 0 | 132 | Deferred |
+
+The rail correction uses explicit FOT operating-point corridors. The MVR/MOB
+connected component also reaches the SBB network, so component membership alone
+was insufficient. Vevey uses its separate tracks 6–7 anchor; Montreux uses distinct
+MOB and MVR-MTGN anchors. Mainline Vevey and Montreux are explicitly forbidden in
+those corridors. Regression tests reject a misleading shortcut through SBB.
+Agency 131 also publishes funicular journeys: these are explicitly excluded from
+the cogwheel geometry pass, avoiding an accidental partial match.
+
+All road patterns were matched against the retained Swiss OSM road extract, using
+the pinned matcher and 50 m station-candidate / 60 m search configuration already
+retained for Nyon. The importer's 120 m acceptance limit and detour checks remain
+unchanged. Weekday and Sunday maximum snaps are 44.04 m and 41.38 m respectively.
+The [source record](../data/riviera-sources/sources.json) and two compressed matcher
+archives retain the hashes, exact pattern inputs, warnings and output geometry.
+The [official VMCV network catalogue](https://www.vmcv.ch/page/le-reseau/) lists
+2026 route and platform plans; it provides a reference for further operator review,
+not independent confirmation of every inferred road path.
+
+The [weekday review](assets/riviera-geometry-review-2026-09-08.svg) and
+[Sunday review](assets/riviera-geometry-review-2026-09-13.svg) were rendered and
+inspected around Vevey, Montreux, Rochers-de-Naye, Fontanivent and Montbovon against
+retained OSM/FOT geometry. This is source-alignment review, not live app testing.
+Ten focused Nyon/Riviera tests pass. Both fourteen-file candidate sets pass checks
+for actual chunk hashes, byte lengths, complete journey counts, path indices,
+source provenance and zero accidental geometry on deferred funiculars.
+
+The [dated audit](../data/riviera-region/audit.json) and candidates remain outside
+`public/`. The overall admission gate deliberately fails until the three funicular
+alignments are independently sourced and checked. Those alignments, operator-level
+review of bus paths and subsequent app integration are next.
+
+```sh
+# Extract each date (2026-09-08 and 2026-09-13) with the official archive:
+node scripts/ingest-gtfs.mjs --archive ARCHIVE --date DATE --civil-day \
+  --modes all --agencies 42,64,131,125,155,876,7040,7260 \
+  --bounds -180,-90,180,90 --window-start 00:00 --window-end 24:00 \
+  --focus 07:45 --output COMPLETE_SNAPSHOT --hub-output none
+node scripts/prepare-riviera-road-feed.mjs ARCHIVE COMPLETE_SNAPSHOT MATCHER_FEED
+# match-postbus-roads.mjs + enrich-postbus-roads.mjs retain each dated road cache.
+node scripts/audit-riviera-study.mjs ARCHIVE RAIL COMPLETE_WEEKDAY COMPLETE_SUNDAY data/riviera-region
+node scripts/check-riviera-study.mjs data/riviera-region
+```

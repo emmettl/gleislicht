@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "timetable": {
+    "publisher": "SBB / opentransportdata.swiss",
+    "feedVersion": "20260905",
+    "serviceDates": [
+      "2026-09-08",
+      "2026-09-13"
+    ],
+    "source": "https://data.opentransportdata.swiss/en/dataset/timetable-2026-gtfs2020"
+  },
+  "roads": {
+    "publisher": "OpenStreetMap contributors",
+    "license": "ODbL-1.0",
+    "attributionUrl": "https://www.openstreetmap.org/copyright",
+    "description": "Retained Geofabrik Switzerland 2026-09-02 road extract plus OSM border supplement 2026-09-08; inferred pfaedle routes, not operator-verified geometry.",
+    "extractSource": "https://download.geofabrik.de/europe/switzerland.html",
+    "configPath": "data/vaud-sources/nyon-pfaedle.cfg",
+    "configSha256": "bf4ae13fe9c6370aeef08715fb4a2968916e63e6238df5306ae1b88cb0b5f65c"
+  },
+  "matcherEvidence": [
+    {
+      "date": "2026-09-08",
+      "archive": "matcher-2026-09-08.tar.gz",
+      "sha256": "88dab2a892b15816393b56a664f0074129a092b408c02ba6b4745c8cdde5cca1",
+      "run": {
+        "schemaVersion": 1,
+        "completed": true,
+        "noTrie": true,
+        "warnings": true,
+        "matcherVersion": "pfaedle v0.1.6-208-g99f2cd4",
+        "binarySha256": "6d193a755bc22c45516f8bce7594bb30e07a2632a5ef049a95915b262406cbd8",
+        "configSha256": "bf4ae13fe9c6370aeef08715fb4a2968916e63e6238df5306ae1b88cb0b5f65c",
+        "osmSha256": "ad19d050a1068f1cb76e1192c792841456c098c66c1878aec8f95d9a1f1c514b",
+        "patternsSha256": "250e8ef247cbc5a1ccfe3f679b76ce3132bcaa71b52817ead663194471952c68",
+        "logSha256": "0fef7564fbebb64d8b87c56ee47aaccf036181d0a18c0acc15ebd96851575204",
+        "shapesSha256": "c2053c2c064b41c5fa6503d552fed2d88918b136b21297e271ccda50319bd8af",
+        "tripsSha256": "ab478e4f2274e8c8a359ad452e023e899b14c47f52a1c6f0aac14f76d9423ca2",
+        "stopTimesSha256": "5b5e9a8dd7f14de8817faa28af566363f2682b0c35c756d227b1d480cd6c60a6",
+        "elapsedSeconds": 6
+      }
+    },
+    {
+      "date": "2026-09-13",
+      "archive": "matcher-2026-09-13.tar.gz",
+      "sha256": "962d4bc053f675a6d1b3ab7ffd45d41a1a1afba1af8f944ac2f77fadb42a59c0",
+      "run": {
+        "schemaVersion": 1,
+        "completed": true,
+        "noTrie": true,
+        "warnings": true,
+        "matcherVersion": "pfaedle v0.1.6-208-g99f2cd4",
+        "binarySha256": "6d193a755bc22c45516f8bce7594bb30e07a2632a5ef049a95915b262406cbd8",
+        "configSha256": "bf4ae13fe9c6370aeef08715fb4a2968916e63e6238df5306ae1b88cb0b5f65c",
+        "osmSha256": "ad19d050a1068f1cb76e1192c792841456c098c66c1878aec8f95d9a1f1c514b",
+        "patternsSha256": "c7673dd582d7088d3cda29042911e1e6af4cb917e7acc4838e1035535e59663a",
+        "logSha256": "6fa3846fd5e4713bfd7823b6f5bdb954e5927af5af32312e6992d64a46c404ac",
+        "shapesSha256": "390fdcc55761f6467c15500f1a561ce34a63457c194a35e0446ae3a56fc9755c",
+        "tripsSha256": "ee37bf478843242841a1b7c738e91aaa3666570dc320ceb0baa553f3fb023465",
+        "stopTimesSha256": "2afe90275925ce90f096472e4b31567d6cbeff5af85f0503362f47fd50382f81",
+        "elapsedSeconds": 6
+      }
+    }
+  ],
+  "operatorReference": {
+    "url": "https://www.vmcv.ch/page/le-reseau/",
+    "checked": "2026-09-08",
+    "note": "Official 2026 route and platform-map catalogue. Supports operator scope; does not independently verify all matched shapes."
+  }
+}

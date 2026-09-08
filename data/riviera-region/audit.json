@@ -1,0 +1,2287 @@
+{
+  "schemaVersion": 1,
+  "agencies": [
+    "42",
+    "64",
+    "131",
+    "125",
+    "155",
+    "876",
+    "7040",
+    "7260"
+  ],
+  "days": [
+    {
+      "date": "2026-09-08",
+      "trips": 1907,
+      "completeSourceJourneysChecked": 1907,
+      "groups": [
+        {
+          "id": "125:funicular",
+          "operator": "Montreux-Vevey-Riviera (las)",
+          "agencyId": "125",
+          "mode": "funicular",
+          "trips": 136,
+          "headwayTrips": 0,
+          "previousDayTrips": 0,
+          "totalSegments": 136,
+          "acceptedSegments": 0,
+          "routes": [
+            "93-LAS-j26-1"
+          ],
+          "coverage": 0,
+          "directedPairs": 2,
+          "acceptedDirectedPairs": 0,
+          "issues": [
+            {
+              "routeId": "93-LAS-j26-1",
+              "route": "LAS",
+              "from": "Les Avants (funi)",
+              "to": "Sonloup",
+              "fromId": "ch:1:sloid:1350",
+              "toId": "ch:1:sloid:1351",
+              "occurrences": 68,
+              "rejectedOccurrences": 68,
+              "reasons": [
+                "missing-path"
+              ]
+            },
+            {
+              "routeId": "93-LAS-j26-1",
+              "route": "LAS",
+              "from": "Sonloup",
+              "to": "Les Avants (funi)",
+              "fromId": "ch:1:sloid:1351",
+              "toId": "ch:1:sloid:1350",
+              "occurrences": 68,
+              "rejectedOccurrences": 68,
+              "reasons": [
+                "missing-path"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "131:funicular",
+          "operator": "Montreux-Vevey-Riviera (mtgn)",
+          "agencyId": "131",
+          "mode": "funicular",
+          "trips": 146,
+          "headwayTrips": 0,
+          "previousDayTrips": 6,
+          "totalSegments": 292,
+          "acceptedSegments": 0,
+          "routes": [
+            "93-TG-j26-1"
+          ],
+          "coverage": 0,
+          "directedPairs": 4,
+          "acceptedDirectedPairs": 0,
+          "issues": [
+            {
+              "routeId": "93-TG-j26-1",
+              "route": "TG",
+              "from": "Territet (funi)",
+              "to": "Collonge (funi)",
+              "fromId": "ch:1:sloid:30673",
+              "toId": "ch:1:sloid:92618",
+              "occurrences": 73,
+              "rejectedOccurrences": 73,
+              "reasons": [
+                "missing-path"
+              ]
+            },
+            {
+              "routeId": "93-TG-j26-1",
+              "route": "TG",
+              "from": "Collonge (funi)",
+              "to": "Glion (funi)",
+              "fromId": "ch:1:sloid:92618",
+              "toId": "ch:1:sloid:30031",
+              "occurrences": 73,
+              "rejectedOccurrences": 73,
+              "reasons": [
+                "missing-path"
+              ]
+            },
+            {
+              "routeId": "93-TG-j26-1",
+              "route": "TG",
+              "from": "Glion (funi)",
+              "to": "Collonge (funi)",
+              "fromId": "ch:1:sloid:30031",
+              "toId": "ch:1:sloid:92618",
+              "occurrences": 73,
+              "rejectedOccurrences": 73,
+              "reasons": [
+                "missing-path"
+              ]
+            },
+            {
+              "routeId": "93-TG-j26-1",
+              "route": "TG",
+              "from": "Collonge (funi)",
+              "to": "Territet (funi)",
+              "fromId": "ch:1:sloid:92618",
+              "toId": "ch:1:sloid:30673",
+              "occurrences": 73,
+              "rejectedOccurrences": 73,
+              "reasons": [
+                "missing-path"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "131:rail",
+          "operator": "Montreux-Vevey-Riviera (mtgn)",
+          "agencyId": "131",
+          "mode": "rail",
+          "trips": 38,
+          "headwayTrips": 0,
+          "previousDayTrips": 1,
+          "totalSegments": 461,
+          "acceptedSegments": 461,
+          "routes": [
+            "91-37-F-j26-1"
+          ],
+          "coverage": 1,
+          "directedPairs": 32,
+          "acceptedDirectedPairs": 32,
+          "issues": []
+        },
+        {
+          "id": "42:rail",
+          "operator": "Montreux-Vevey-Riviera (cev)",
+          "agencyId": "42",
+          "mode": "rail",
+          "trips": 96,
+          "headwayTrips": 0,
+          "previousDayTrips": 1,
+          "totalSegments": 967,
+          "acceptedSegments": 967,
+          "routes": [
+            "91-35-E-j26-1"
+          ],
+          "coverage": 1,
+          "directedPairs": 32,
+          "acceptedDirectedPairs": 32,
+          "issues": []
+        },
+        {
+          "id": "64:rail",
+          "operator": "Montreux-Oberland Bernois",
+          "agencyId": "64",
+          "mode": "rail",
+          "trips": 132,
+          "headwayTrips": 0,
+          "previousDayTrips": 1,
+          "totalSegments": 1550,
+          "acceptedSegments": 1550,
+          "routes": [
+            "91-30-J-j26-1",
+            "91-30-K-j26-1",
+            "91-31-C-j26-1",
+            "91-32-j26-1",
+            "91-34-j26-1",
+            "91-GPX-j26-1"
+          ],
+          "coverage": 1,
+          "directedPairs": 220,
+          "acceptedDirectedPairs": 220,
+          "issues": []
+        },
+        {
+          "id": "7040:bus",
+          "operator": "Montreux-Oberland Bernois Ersatzverkehr",
+          "agencyId": "7040",
+          "mode": "bus",
+          "trips": 23,
+          "headwayTrips": 0,
+          "previousDayTrips": 5,
+          "totalSegments": 241,
+          "acceptedSegments": 241,
+          "routes": [
+            "92-A03-W-j26-1",
+            "92-A0A-L-j26-1"
+          ],
+          "coverage": 1,
+          "directedPairs": 46,
+          "acceptedDirectedPairs": 46,
+          "issues": []
+        },
+        {
+          "id": "7260:bus",
+          "operator": "Montreux-Vevey-Riviera Ersatzverkehr",
+          "agencyId": "7260",
+          "mode": "bus",
+          "trips": 136,
+          "headwayTrips": 0,
+          "previousDayTrips": 2,
+          "totalSegments": 586,
+          "acceptedSegments": 586,
+          "routes": [
+            "92-A01-E-j26-1",
+            "92-A01-W-j26-1"
+          ],
+          "coverage": 1,
+          "directedPairs": 22,
+          "acceptedDirectedPairs": 22,
+          "issues": []
+        },
+        {
+          "id": "876:bus",
+          "operator": "Transports publics Vevey-Montreux-Chillon-Villeneuve",
+          "agencyId": "876",
+          "mode": "bus",
+          "trips": 1200,
+          "headwayTrips": 0,
+          "previousDayTrips": 17,
+          "totalSegments": 27051,
+          "acceptedSegments": 27051,
+          "routes": [
+            "92-201-j26-1",
+            "92-202-j26-1",
+            "92-203-j26-1",
+            "92-204-j26-1",
+            "92-205-j26-1",
+            "92-206-j26-1",
+            "92-208-j26-1",
+            "92-210-j26-1",
+            "92-211-j26-1",
+            "92-212-j26-1",
+            "92-213-j26-1",
+            "92-215-j26-1",
+            "92-216-j26-1",
+            "92-217-j26-1",
+            "92-218-j26-1"
+          ],
+          "coverage": 1,
+          "directedPairs": 565,
+          "acceptedDirectedPairs": 565,
+          "issues": []
+        }
+      ],
+      "payload": {
+        "manifest": 49264,
+        "morning": 79829,
+        "largestChunk": 31818
+      },
+      "railProjection": [
+        {
+          "agencyId": "42",
+          "corridor": {
+            "name": "MVR Vevey–Blonay–Les Pléiades",
+            "branches": [
+              [
+                "8519324",
+                "8501281",
+                "8501288"
+              ]
+            ],
+            "excluded": [
+              "8501200",
+              "8501300"
+            ]
+          },
+          "segmentIds": [
+            "ch14uvag00067940",
+            "ch14uvag00068322",
+            "ch14uvag00068238",
+            "ch14uvag00068352",
+            "ch14uvag00068220",
+            "ch14uvag00067816",
+            "ch14uvag00067804",
+            "ch14uvag00068406",
+            "ch14uvag00068222",
+            "ch14uvag00068166",
+            "ch14uvag00067694",
+            "ch14uvag00067870",
+            "ch14uvag00068483",
+            "ch14uvag00068168",
+            "ch14uvag00068283",
+            "ch14uvag00067670",
+            "ch14uvag00068434"
+          ],
+          "matchedSegments": 967,
+          "totalSegments": 967,
+          "projection": {
+            "limits": {
+              "snapMetres": 120,
+              "maxDetourRatio": 4.5,
+              "detourAllowanceMetres": 3000
+            },
+            "snaps": [
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1281",
+                "stop": "Blonay",
+                "segmentId": "ch14uvag00068166",
+                "snapMetres": 3.97
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1282",
+                "stop": "Prélaz-sur-Blonay",
+                "segmentId": "ch14uvag00068166",
+                "snapMetres": 1.85
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1283",
+                "stop": "Tusinge",
+                "segmentId": "ch14uvag00067870",
+                "snapMetres": 2.14
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1284",
+                "stop": "Les Chevalleyres",
+                "segmentId": "ch14uvag00067870",
+                "snapMetres": 4.7
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1266",
+                "stop": "Château-de-Blonay",
+                "segmentId": "ch14uvag00068406",
+                "snapMetres": 0.76
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1265",
+                "stop": "La Chiésaz",
+                "segmentId": "ch14uvag00068406",
+                "snapMetres": 2.52
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1264",
+                "stop": "St-Légier-Village",
+                "segmentId": "ch14uvag00067804",
+                "snapMetres": 5.28
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1280:0:571843",
+                "stop": "St-Légier-Gare",
+                "segmentId": "ch14uvag00068220",
+                "snapMetres": 7.69
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1263",
+                "stop": "Château-d'Hauteville",
+                "segmentId": "ch14uvag00068220",
+                "snapMetres": 1.05
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1262",
+                "stop": "Hauteville",
+                "segmentId": "ch14uvag00068238",
+                "snapMetres": 1.49
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:2476",
+                "stop": "Vevey Vignerons",
+                "segmentId": "ch14uvag00068322",
+                "snapMetres": 0.03
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1200:3:7",
+                "stop": "Vevey",
+                "segmentId": "ch14uvag00067940",
+                "snapMetres": 13.45
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1288",
+                "stop": "Les Pléiades",
+                "segmentId": "ch14uvag00068434",
+                "snapMetres": 1.55
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1287",
+                "stop": "Lally",
+                "segmentId": "ch14uvag00067670",
+                "snapMetres": 2.54
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1286",
+                "stop": "Ondallaz-L'Alliaz",
+                "segmentId": "ch14uvag00067670",
+                "snapMetres": 7.53
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1285",
+                "stop": "Fayaux",
+                "segmentId": "ch14uvag00068168",
+                "snapMetres": 5.52
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:30261",
+                "stop": "Bois-de-Chexbres",
+                "segmentId": "ch14uvag00068483",
+                "snapMetres": 1.58
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1280:0:186521",
+                "stop": "St-Légier-Gare",
+                "segmentId": "ch14uvag00068220",
+                "snapMetres": 2.8
+              }
+            ],
+            "issues": []
+          }
+        },
+        {
+          "agencyId": "64",
+          "corridor": {
+            "name": "MOB Montreux–Zweisimmen–Lenk",
+            "branches": [
+              [
+                "8501352",
+                "8504070",
+                "8519323",
+                "8507279"
+              ]
+            ],
+            "excluded": [
+              "8501300",
+              "8501200"
+            ]
+          },
+          "segmentIds": [
+            "ch14uvag00067622",
+            "ch14uvag00067623",
+            "ch14uvag00068239",
+            "ch14uvag00067951",
+            "ch14uvag00068140",
+            "ch14uvag00068058",
+            "ch14uvag00068300",
+            "ch14uvag00068227",
+            "ch14uvag00067796",
+            "ch14uvag00068215",
+            "ch14uvag00067784",
+            "ch14uvag00068476",
+            "ch14uvag00068481",
+            "ch14uvag00068101",
+            "ch14uvag00068510",
+            "ch14uvag00067927",
+            "ch14uvag00067614",
+            "ch14uvag00068429",
+            "ch14uvag00067736",
+            "ch14uvag00068399",
+            "ch14uvag00068221",
+            "ch14uvag00068419",
+            "ch14uvag00068495",
+            "ch14uvag00068487",
+            "ch14uvag00068296",
+            "ch14uvag00067739",
+            "ch14uvag00067754",
+            "ch14uvag00068345",
+            "ch14uvag00068338",
+            "ch14uvag00067771",
+            "ch14uvag00067755",
+            "ch14uvag00067668",
+            "ch14uvag00068348",
+            "ch14uvag00067926",
+            "ch14uvag00068162",
+            "ch14uvag00067825",
+            "ch14uvag00067813",
+            "ch14uvag00067608",
+            "ch14uvag00068167"
+          ],
+          "matchedSegments": 1550,
+          "totalSegments": 1550,
+          "projection": {
+            "limits": {
+              "snapMetres": 120,
+              "maxDetourRatio": 4.5,
+              "detourAllowanceMetres": 3000
+            },
+            "snaps": [
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1377",
+                "stop": "Les Avants",
+                "segmentId": "ch14uvag00068476",
+                "snapMetres": 14.92
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1386",
+                "stop": "Jor",
+                "segmentId": "ch14uvag00068481",
+                "snapMetres": 9.86
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1387",
+                "stop": "Les Cases",
+                "segmentId": "ch14uvag00068481",
+                "snapMetres": 16.61
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1378",
+                "stop": "Allières",
+                "segmentId": "ch14uvag00068510",
+                "snapMetres": 5.75
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1379:0:993503",
+                "stop": "Les Sciernes",
+                "segmentId": "ch14uvag00067927",
+                "snapMetres": 5.84
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:4070:0:916496",
+                "stop": "Montbovon",
+                "segmentId": "ch14uvag00067614",
+                "snapMetres": 9.27
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1300:2:5",
+                "stop": "Montreux",
+                "segmentId": "ch14uvag00067622",
+                "snapMetres": 23.19
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1374",
+                "stop": "Fontanivent",
+                "segmentId": "ch14uvag00068058",
+                "snapMetres": 5.45
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1375",
+                "stop": "Chernex",
+                "segmentId": "ch14uvag00068227",
+                "snapMetres": 11.16
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1384",
+                "stop": "Sonzier",
+                "segmentId": "ch14uvag00068227",
+                "snapMetres": 0.87
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1376",
+                "stop": "Chamby",
+                "segmentId": "ch14uvag00067796",
+                "snapMetres": 7.05
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1385",
+                "stop": "Sendy-Sollard",
+                "segmentId": "ch14uvag00067784",
+                "snapMetres": 2.64
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1394:0:536499",
+                "stop": "Château-d'Oex",
+                "segmentId": "ch14uvag00068399",
+                "snapMetres": 3.77
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1198",
+                "stop": "Château-d'Oex La Palaz",
+                "segmentId": "ch14uvag00068419",
+                "snapMetres": 1.92
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1395",
+                "stop": "Les Granges-Gérignoz",
+                "segmentId": "ch14uvag00068419",
+                "snapMetres": 0.51
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1388",
+                "stop": "Les Combes",
+                "segmentId": "ch14uvag00068487",
+                "snapMetres": 6.81
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1396",
+                "stop": "Flendruz",
+                "segmentId": "ch14uvag00068487",
+                "snapMetres": 8.24
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1397",
+                "stop": "Rougemont",
+                "segmentId": "ch14uvag00067739",
+                "snapMetres": 23.98
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1398",
+                "stop": "Saanen",
+                "segmentId": "ch14uvag00067739",
+                "snapMetres": 15.86
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1399:0:333044",
+                "stop": "Gstaad",
+                "segmentId": "ch14uvag00067754",
+                "snapMetres": 2.08
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:7270:0:242729",
+                "stop": "Gruben",
+                "segmentId": "ch14uvag00068338",
+                "snapMetres": 4.16
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:7271",
+                "stop": "Schönried",
+                "segmentId": "ch14uvag00067771",
+                "snapMetres": 10.74
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:7272:0:385913",
+                "stop": "Saanenmöser",
+                "segmentId": "ch14uvag00067755",
+                "snapMetres": 2.25
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:7273",
+                "stop": "Oeschseite",
+                "segmentId": "ch14uvag00067668",
+                "snapMetres": 0.33
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:7290:0:277188",
+                "stop": "Zweisimmen",
+                "segmentId": "ch14uvag00068348",
+                "snapMetres": 4.4
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1300:2:4",
+                "stop": "Montreux",
+                "segmentId": "ch14uvag00067622",
+                "snapMetres": 8.84
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1380",
+                "stop": "Montreux-Collège",
+                "segmentId": "ch14uvag00067623",
+                "snapMetres": 1.4
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1381",
+                "stop": "Vuarennes",
+                "segmentId": "ch14uvag00067623",
+                "snapMetres": 0.57
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1390",
+                "stop": "Belmont-sur-Montreux",
+                "segmentId": "ch14uvag00067951",
+                "snapMetres": 1.21
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1382",
+                "stop": "Châtelard VD",
+                "segmentId": "ch14uvag00067951",
+                "snapMetres": 2.17
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1383",
+                "stop": "Planchamp",
+                "segmentId": "ch14uvag00068140",
+                "snapMetres": 0.14
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:4070:0:691578",
+                "stop": "Montbovon",
+                "segmentId": "ch14uvag00067614",
+                "snapMetres": 0.78
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1300:3:7",
+                "stop": "Montreux",
+                "segmentId": "ch14uvag00067622",
+                "snapMetres": 10.14
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1391",
+                "stop": "La Tine",
+                "segmentId": "ch14uvag00067614",
+                "snapMetres": 12.8
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1392",
+                "stop": "Rossinière",
+                "segmentId": "ch14uvag00067736",
+                "snapMetres": 2.81
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1393",
+                "stop": "La Chaudanne-Les Moulins",
+                "segmentId": "ch14uvag00068399",
+                "snapMetres": 5.18
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1394:0:1967",
+                "stop": "Château-d'Oex",
+                "segmentId": "ch14uvag00068399",
+                "snapMetres": 9.91
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:7290:0:55218",
+                "stop": "Zweisimmen",
+                "segmentId": "ch14uvag00068348",
+                "snapMetres": 3.75
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1300:3:6",
+                "stop": "Montreux",
+                "segmentId": "ch14uvag00067622",
+                "snapMetres": 15.39
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1379:0:841759",
+                "stop": "Les Sciernes",
+                "segmentId": "ch14uvag00067927",
+                "snapMetres": 5.4
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:7272:0:969796",
+                "stop": "Saanenmöser",
+                "segmentId": "ch14uvag00067755",
+                "snapMetres": 10.51
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:7270:0:859564",
+                "stop": "Gruben",
+                "segmentId": "ch14uvag00068338",
+                "snapMetres": 5.29
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1399:0:528159",
+                "stop": "Gstaad",
+                "segmentId": "ch14uvag00067754",
+                "snapMetres": 6.73
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1394:0:918055",
+                "stop": "Château-d'Oex",
+                "segmentId": "ch14uvag00068399",
+                "snapMetres": 4.16
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:7290:0:761122",
+                "stop": "Zweisimmen",
+                "segmentId": "ch14uvag00067926",
+                "snapMetres": 9.97
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:7274",
+                "stop": "Blankenburg",
+                "segmentId": "ch14uvag00068162",
+                "snapMetres": 4.41
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:7275",
+                "stop": "Stöckli",
+                "segmentId": "ch14uvag00068162",
+                "snapMetres": 8.8
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:7276",
+                "stop": "St. Stephan",
+                "segmentId": "ch14uvag00067825",
+                "snapMetres": 18.84
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:7277",
+                "stop": "Matten i.S.",
+                "segmentId": "ch14uvag00067608",
+                "snapMetres": 5.48
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:7278",
+                "stop": "Boden",
+                "segmentId": "ch14uvag00067608",
+                "snapMetres": 7.64
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:7279",
+                "stop": "Lenk im Simmental",
+                "segmentId": "ch14uvag00068167",
+                "snapMetres": 8.29
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:7290:0:392834",
+                "stop": "Zweisimmen",
+                "segmentId": "ch14uvag00068348",
+                "snapMetres": 7.2
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1399:0:1968",
+                "stop": "Gstaad",
+                "segmentId": "ch14uvag00067754",
+                "snapMetres": 7.4
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:7290:0:930269",
+                "stop": "Zweisimmen",
+                "segmentId": "ch14uvag00067926",
+                "snapMetres": 25.82
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:7290:0:887399",
+                "stop": "Zweisimmen",
+                "segmentId": "ch14uvag00067926",
+                "snapMetres": 25.91
+              }
+            ],
+            "issues": []
+          }
+        },
+        {
+          "agencyId": "131",
+          "corridor": {
+            "name": "MVR Montreux–Rochers-de-Naye",
+            "branches": [
+              [
+                "8501353",
+                "8501369"
+              ]
+            ],
+            "excluded": [
+              "8501300",
+              "8501352"
+            ]
+          },
+          "segmentIds": [
+            "ch14uvag00067624",
+            "ch14uvag00068502",
+            "ch14uvag00067855",
+            "ch14uvag00067886",
+            "ch14uvag00068325",
+            "ch14uvag00068327",
+            "ch14uvag00068326",
+            "ch14uvag00068470",
+            "ch14uvag00068206",
+            "ch14uvag00068489",
+            "ch14uvag00068351",
+            "ch14uvag00068247",
+            "ch14uvag00067671",
+            "ch14uvag00068378",
+            "ch14uvag00068421"
+          ],
+          "matchedSegments": 461,
+          "totalSegments": 461,
+          "projection": {
+            "limits": {
+              "snapMetres": 120,
+              "maxDetourRatio": 4.5,
+              "detourAllowanceMetres": 3000
+            },
+            "snaps": [
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1300:3:8",
+                "stop": "Montreux",
+                "segmentId": "ch14uvag00067624",
+                "snapMetres": 58.55
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1360",
+                "stop": "Montreux-Les Planches",
+                "segmentId": "ch14uvag00068502",
+                "snapMetres": 0.44
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1361",
+                "stop": "Toveyre",
+                "segmentId": "ch14uvag00068502",
+                "snapMetres": 0.39
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1362",
+                "stop": "Valmont",
+                "segmentId": "ch14uvag00067855",
+                "snapMetres": 2.51
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1370",
+                "stop": "Glion",
+                "segmentId": "ch14uvag00068325",
+                "snapMetres": 11.2
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1230",
+                "stop": "Glion-Alpes",
+                "segmentId": "ch14uvag00068327",
+                "snapMetres": 3.7
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1308",
+                "stop": "Glion-Collège",
+                "segmentId": "ch14uvag00068326",
+                "snapMetres": 3.58
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1363",
+                "stop": "Le Tremblex",
+                "segmentId": "ch14uvag00068470",
+                "snapMetres": 6.18
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1371",
+                "stop": "Caux",
+                "segmentId": "ch14uvag00068206",
+                "snapMetres": 1.85
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1357",
+                "stop": "Haut-de-Caux",
+                "segmentId": "ch14uvag00068351",
+                "snapMetres": 6.23
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1364",
+                "stop": "Les Echets",
+                "segmentId": "ch14uvag00068489",
+                "snapMetres": 8.06
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1365",
+                "stop": "Crêt-d'y-Bau",
+                "segmentId": "ch14uvag00068247",
+                "snapMetres": 7.06
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1366",
+                "stop": "Paccot",
+                "segmentId": "ch14uvag00068247",
+                "snapMetres": 4.19
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1367",
+                "stop": "Jaman",
+                "segmentId": "ch14uvag00068378",
+                "snapMetres": 2.12
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1368",
+                "stop": "La Perche",
+                "segmentId": "ch14uvag00068421",
+                "snapMetres": 2.82
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1369",
+                "stop": "Rochers-de-Naye",
+                "segmentId": "ch14uvag00068421",
+                "snapMetres": 0.83
+              }
+            ],
+            "issues": []
+          }
+        }
+      ],
+      "gate": {
+        "passed": false,
+        "minimumCoverage": 0.95,
+        "deferred": [
+          "125:funicular",
+          "131:funicular"
+        ]
+      },
+      "sourceHashes": {
+        "archive": "4fa074044fc3a1ceae3c91597b72cf42b9bbce0477b9d43b7b4f658e3e9acfa5",
+        "rail": "2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+        "snapshot": "07d9b4083d2a131c44d93d4235ac76335707ff6ffa1c2adb3625d01cad1d64d3",
+        "busCache": "dbf08ab19c3b28b0604f0d61b6c808c96e6af3eb1de7c3fe3be134c5abe4e90a"
+      },
+      "feedVersion": "20260905",
+      "sourceServiceDates": [
+        "2026-09-07",
+        "2026-09-08"
+      ],
+      "scope": "Complete GTFS journeys for MOB, MVR CEV/MTGN/LAS/VCP, VMCV and their replacement agencies on two reviewed dates. Excludes SBB, BLS onward GoldenPass services and boats. Operator scope, not a Riviera geographic boundary."
+    },
+    {
+      "date": "2026-09-13",
+      "trips": 1334,
+      "completeSourceJourneysChecked": 1334,
+      "groups": [
+        {
+          "id": "125:funicular",
+          "operator": "Montreux-Vevey-Riviera (las)",
+          "agencyId": "125",
+          "mode": "funicular",
+          "trips": 136,
+          "headwayTrips": 0,
+          "previousDayTrips": 0,
+          "totalSegments": 136,
+          "acceptedSegments": 0,
+          "routes": [
+            "93-LAS-j26-1"
+          ],
+          "coverage": 0,
+          "directedPairs": 2,
+          "acceptedDirectedPairs": 0,
+          "issues": [
+            {
+              "routeId": "93-LAS-j26-1",
+              "route": "LAS",
+              "from": "Les Avants (funi)",
+              "to": "Sonloup",
+              "fromId": "ch:1:sloid:1350",
+              "toId": "ch:1:sloid:1351",
+              "occurrences": 68,
+              "rejectedOccurrences": 68,
+              "reasons": [
+                "missing-path"
+              ]
+            },
+            {
+              "routeId": "93-LAS-j26-1",
+              "route": "LAS",
+              "from": "Sonloup",
+              "to": "Les Avants (funi)",
+              "fromId": "ch:1:sloid:1351",
+              "toId": "ch:1:sloid:1350",
+              "occurrences": 68,
+              "rejectedOccurrences": 68,
+              "reasons": [
+                "missing-path"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "131:funicular",
+          "operator": "Montreux-Vevey-Riviera (mtgn)",
+          "agencyId": "131",
+          "mode": "funicular",
+          "trips": 148,
+          "headwayTrips": 0,
+          "previousDayTrips": 8,
+          "totalSegments": 296,
+          "acceptedSegments": 0,
+          "routes": [
+            "93-TG-j26-1"
+          ],
+          "coverage": 0,
+          "directedPairs": 4,
+          "acceptedDirectedPairs": 0,
+          "issues": [
+            {
+              "routeId": "93-TG-j26-1",
+              "route": "TG",
+              "from": "Territet (funi)",
+              "to": "Collonge (funi)",
+              "fromId": "ch:1:sloid:30673",
+              "toId": "ch:1:sloid:92618",
+              "occurrences": 74,
+              "rejectedOccurrences": 74,
+              "reasons": [
+                "missing-path"
+              ]
+            },
+            {
+              "routeId": "93-TG-j26-1",
+              "route": "TG",
+              "from": "Collonge (funi)",
+              "to": "Glion (funi)",
+              "fromId": "ch:1:sloid:92618",
+              "toId": "ch:1:sloid:30031",
+              "occurrences": 74,
+              "rejectedOccurrences": 74,
+              "reasons": [
+                "missing-path"
+              ]
+            },
+            {
+              "routeId": "93-TG-j26-1",
+              "route": "TG",
+              "from": "Glion (funi)",
+              "to": "Collonge (funi)",
+              "fromId": "ch:1:sloid:30031",
+              "toId": "ch:1:sloid:92618",
+              "occurrences": 74,
+              "rejectedOccurrences": 74,
+              "reasons": [
+                "missing-path"
+              ]
+            },
+            {
+              "routeId": "93-TG-j26-1",
+              "route": "TG",
+              "from": "Collonge (funi)",
+              "to": "Territet (funi)",
+              "fromId": "ch:1:sloid:92618",
+              "toId": "ch:1:sloid:30673",
+              "occurrences": 74,
+              "rejectedOccurrences": 74,
+              "reasons": [
+                "missing-path"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "131:rail",
+          "operator": "Montreux-Vevey-Riviera (mtgn)",
+          "agencyId": "131",
+          "mode": "rail",
+          "trips": 40,
+          "headwayTrips": 0,
+          "previousDayTrips": 3,
+          "totalSegments": 479,
+          "acceptedSegments": 479,
+          "routes": [
+            "91-37-F-j26-1"
+          ],
+          "coverage": 1,
+          "directedPairs": 32,
+          "acceptedDirectedPairs": 32,
+          "issues": []
+        },
+        {
+          "id": "155:funicular",
+          "operator": "Montreux-Vevey-Riviera (vcp)",
+          "agencyId": "155",
+          "mode": "funicular",
+          "trips": 132,
+          "headwayTrips": 0,
+          "previousDayTrips": 8,
+          "totalSegments": 660,
+          "acceptedSegments": 0,
+          "routes": [
+            "93-VCP-j26-1"
+          ],
+          "coverage": 0,
+          "directedPairs": 10,
+          "acceptedDirectedPairs": 0,
+          "issues": [
+            {
+              "routeId": "93-VCP-j26-1",
+              "route": "VCP",
+              "from": "Vevey (funi)",
+              "to": "Corseaux",
+              "fromId": "ch:1:sloid:1250",
+              "toId": "ch:1:sloid:1251",
+              "occurrences": 66,
+              "rejectedOccurrences": 66,
+              "reasons": [
+                "missing-path"
+              ]
+            },
+            {
+              "routeId": "93-VCP-j26-1",
+              "route": "VCP",
+              "from": "Corseaux",
+              "to": "Beau-Site",
+              "fromId": "ch:1:sloid:1251",
+              "toId": "ch:1:sloid:1252",
+              "occurrences": 66,
+              "rejectedOccurrences": 66,
+              "reasons": [
+                "missing-path"
+              ]
+            },
+            {
+              "routeId": "93-VCP-j26-1",
+              "route": "VCP",
+              "from": "Beau-Site",
+              "to": "Chardonne-Jongny",
+              "fromId": "ch:1:sloid:1252",
+              "toId": "ch:1:sloid:1253",
+              "occurrences": 66,
+              "rejectedOccurrences": 66,
+              "reasons": [
+                "missing-path"
+              ]
+            },
+            {
+              "routeId": "93-VCP-j26-1",
+              "route": "VCP",
+              "from": "Chardonne-Jongny",
+              "to": "La Baume",
+              "fromId": "ch:1:sloid:1253",
+              "toId": "ch:1:sloid:1254",
+              "occurrences": 66,
+              "rejectedOccurrences": 66,
+              "reasons": [
+                "missing-path"
+              ]
+            },
+            {
+              "routeId": "93-VCP-j26-1",
+              "route": "VCP",
+              "from": "La Baume",
+              "to": "Mont-Pèlerin",
+              "fromId": "ch:1:sloid:1254",
+              "toId": "ch:1:sloid:1255",
+              "occurrences": 66,
+              "rejectedOccurrences": 66,
+              "reasons": [
+                "missing-path"
+              ]
+            },
+            {
+              "routeId": "93-VCP-j26-1",
+              "route": "VCP",
+              "from": "Mont-Pèlerin",
+              "to": "La Baume",
+              "fromId": "ch:1:sloid:1255",
+              "toId": "ch:1:sloid:1254",
+              "occurrences": 66,
+              "rejectedOccurrences": 66,
+              "reasons": [
+                "missing-path"
+              ]
+            },
+            {
+              "routeId": "93-VCP-j26-1",
+              "route": "VCP",
+              "from": "La Baume",
+              "to": "Chardonne-Jongny",
+              "fromId": "ch:1:sloid:1254",
+              "toId": "ch:1:sloid:1253",
+              "occurrences": 66,
+              "rejectedOccurrences": 66,
+              "reasons": [
+                "missing-path"
+              ]
+            },
+            {
+              "routeId": "93-VCP-j26-1",
+              "route": "VCP",
+              "from": "Chardonne-Jongny",
+              "to": "Beau-Site",
+              "fromId": "ch:1:sloid:1253",
+              "toId": "ch:1:sloid:1252",
+              "occurrences": 66,
+              "rejectedOccurrences": 66,
+              "reasons": [
+                "missing-path"
+              ]
+            },
+            {
+              "routeId": "93-VCP-j26-1",
+              "route": "VCP",
+              "from": "Beau-Site",
+              "to": "Corseaux",
+              "fromId": "ch:1:sloid:1252",
+              "toId": "ch:1:sloid:1251",
+              "occurrences": 66,
+              "rejectedOccurrences": 66,
+              "reasons": [
+                "missing-path"
+              ]
+            },
+            {
+              "routeId": "93-VCP-j26-1",
+              "route": "VCP",
+              "from": "Corseaux",
+              "to": "Vevey (funi)",
+              "fromId": "ch:1:sloid:1251",
+              "toId": "ch:1:sloid:1250",
+              "occurrences": 66,
+              "rejectedOccurrences": 66,
+              "reasons": [
+                "missing-path"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "42:rail",
+          "operator": "Montreux-Vevey-Riviera (cev)",
+          "agencyId": "42",
+          "mode": "rail",
+          "trips": 69,
+          "headwayTrips": 0,
+          "previousDayTrips": 2,
+          "totalSegments": 712,
+          "acceptedSegments": 712,
+          "routes": [
+            "91-35-E-j26-1"
+          ],
+          "coverage": 1,
+          "directedPairs": 32,
+          "acceptedDirectedPairs": 32,
+          "issues": []
+        },
+        {
+          "id": "64:rail",
+          "operator": "Montreux-Oberland Bernois",
+          "agencyId": "64",
+          "mode": "rail",
+          "trips": 124,
+          "headwayTrips": 0,
+          "previousDayTrips": 4,
+          "totalSegments": 1593,
+          "acceptedSegments": 1593,
+          "routes": [
+            "91-30-J-j26-1",
+            "91-30-K-j26-1",
+            "91-31-C-j26-1",
+            "91-32-j26-1",
+            "91-34-j26-1",
+            "91-GPX-j26-1"
+          ],
+          "coverage": 1,
+          "directedPairs": 205,
+          "acceptedDirectedPairs": 205,
+          "issues": []
+        },
+        {
+          "id": "7040:bus",
+          "operator": "Montreux-Oberland Bernois Ersatzverkehr",
+          "agencyId": "7040",
+          "mode": "bus",
+          "trips": 10,
+          "headwayTrips": 0,
+          "previousDayTrips": 0,
+          "totalSegments": 131,
+          "acceptedSegments": 131,
+          "routes": [
+            "92-A03-W-j26-1"
+          ],
+          "coverage": 1,
+          "directedPairs": 30,
+          "acceptedDirectedPairs": 30,
+          "issues": []
+        },
+        {
+          "id": "7260:bus",
+          "operator": "Montreux-Vevey-Riviera Ersatzverkehr",
+          "agencyId": "7260",
+          "mode": "bus",
+          "trips": 14,
+          "headwayTrips": 0,
+          "previousDayTrips": 0,
+          "totalSegments": 98,
+          "acceptedSegments": 98,
+          "routes": [
+            "92-A01-E-j26-1"
+          ],
+          "coverage": 1,
+          "directedPairs": 14,
+          "acceptedDirectedPairs": 14,
+          "issues": []
+        },
+        {
+          "id": "876:bus",
+          "operator": "Transports publics Vevey-Montreux-Chillon-Villeneuve",
+          "agencyId": "876",
+          "mode": "bus",
+          "trips": 661,
+          "headwayTrips": 0,
+          "previousDayTrips": 31,
+          "totalSegments": 16080,
+          "acceptedSegments": 16080,
+          "routes": [
+            "92-201-j26-1",
+            "92-202-j26-1",
+            "92-203-j26-1",
+            "92-204-j26-1",
+            "92-205-j26-1",
+            "92-206-j26-1",
+            "92-211-j26-1",
+            "92-212-j26-1",
+            "92-213-j26-1",
+            "92-216-j26-1",
+            "92-217-j26-1",
+            "92-218-j26-1",
+            "92-290-j26-1",
+            "92-291-j26-1"
+          ],
+          "coverage": 1,
+          "directedPairs": 608,
+          "acceptedDirectedPairs": 608,
+          "issues": []
+        }
+      ],
+      "payload": {
+        "manifest": 46234,
+        "morning": 62058,
+        "largestChunk": 21934
+      },
+      "railProjection": [
+        {
+          "agencyId": "42",
+          "corridor": {
+            "name": "MVR Vevey–Blonay–Les Pléiades",
+            "branches": [
+              [
+                "8519324",
+                "8501281",
+                "8501288"
+              ]
+            ],
+            "excluded": [
+              "8501200",
+              "8501300"
+            ]
+          },
+          "segmentIds": [
+            "ch14uvag00067940",
+            "ch14uvag00068322",
+            "ch14uvag00068238",
+            "ch14uvag00068352",
+            "ch14uvag00068220",
+            "ch14uvag00067816",
+            "ch14uvag00067804",
+            "ch14uvag00068406",
+            "ch14uvag00068222",
+            "ch14uvag00068166",
+            "ch14uvag00067694",
+            "ch14uvag00067870",
+            "ch14uvag00068483",
+            "ch14uvag00068168",
+            "ch14uvag00068283",
+            "ch14uvag00067670",
+            "ch14uvag00068434"
+          ],
+          "matchedSegments": 712,
+          "totalSegments": 712,
+          "projection": {
+            "limits": {
+              "snapMetres": 120,
+              "maxDetourRatio": 4.5,
+              "detourAllowanceMetres": 3000
+            },
+            "snaps": [
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1281",
+                "stop": "Blonay",
+                "segmentId": "ch14uvag00068166",
+                "snapMetres": 3.97
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1282",
+                "stop": "Prélaz-sur-Blonay",
+                "segmentId": "ch14uvag00068166",
+                "snapMetres": 1.85
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1283",
+                "stop": "Tusinge",
+                "segmentId": "ch14uvag00067870",
+                "snapMetres": 2.14
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1284",
+                "stop": "Les Chevalleyres",
+                "segmentId": "ch14uvag00067870",
+                "snapMetres": 4.7
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1266",
+                "stop": "Château-de-Blonay",
+                "segmentId": "ch14uvag00068406",
+                "snapMetres": 0.76
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1265",
+                "stop": "La Chiésaz",
+                "segmentId": "ch14uvag00068406",
+                "snapMetres": 2.52
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1264",
+                "stop": "St-Légier-Village",
+                "segmentId": "ch14uvag00067804",
+                "snapMetres": 5.28
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1280:0:571843",
+                "stop": "St-Légier-Gare",
+                "segmentId": "ch14uvag00068220",
+                "snapMetres": 7.69
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1263",
+                "stop": "Château-d'Hauteville",
+                "segmentId": "ch14uvag00068220",
+                "snapMetres": 1.05
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1262",
+                "stop": "Hauteville",
+                "segmentId": "ch14uvag00068238",
+                "snapMetres": 1.49
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:2476",
+                "stop": "Vevey Vignerons",
+                "segmentId": "ch14uvag00068322",
+                "snapMetres": 0.03
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1200:3:7",
+                "stop": "Vevey",
+                "segmentId": "ch14uvag00067940",
+                "snapMetres": 13.45
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1288",
+                "stop": "Les Pléiades",
+                "segmentId": "ch14uvag00068434",
+                "snapMetres": 1.55
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1287",
+                "stop": "Lally",
+                "segmentId": "ch14uvag00067670",
+                "snapMetres": 2.54
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1286",
+                "stop": "Ondallaz-L'Alliaz",
+                "segmentId": "ch14uvag00067670",
+                "snapMetres": 7.53
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1285",
+                "stop": "Fayaux",
+                "segmentId": "ch14uvag00068168",
+                "snapMetres": 5.52
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:30261",
+                "stop": "Bois-de-Chexbres",
+                "segmentId": "ch14uvag00068483",
+                "snapMetres": 1.58
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1280:0:186521",
+                "stop": "St-Légier-Gare",
+                "segmentId": "ch14uvag00068220",
+                "snapMetres": 2.8
+              }
+            ],
+            "issues": []
+          }
+        },
+        {
+          "agencyId": "64",
+          "corridor": {
+            "name": "MOB Montreux–Zweisimmen–Lenk",
+            "branches": [
+              [
+                "8501352",
+                "8504070",
+                "8519323",
+                "8507279"
+              ]
+            ],
+            "excluded": [
+              "8501300",
+              "8501200"
+            ]
+          },
+          "segmentIds": [
+            "ch14uvag00067622",
+            "ch14uvag00067623",
+            "ch14uvag00068239",
+            "ch14uvag00067951",
+            "ch14uvag00068140",
+            "ch14uvag00068058",
+            "ch14uvag00068300",
+            "ch14uvag00068227",
+            "ch14uvag00067796",
+            "ch14uvag00068215",
+            "ch14uvag00067784",
+            "ch14uvag00068476",
+            "ch14uvag00068481",
+            "ch14uvag00068101",
+            "ch14uvag00068510",
+            "ch14uvag00067927",
+            "ch14uvag00067614",
+            "ch14uvag00068429",
+            "ch14uvag00067736",
+            "ch14uvag00068399",
+            "ch14uvag00068221",
+            "ch14uvag00068419",
+            "ch14uvag00068495",
+            "ch14uvag00068487",
+            "ch14uvag00068296",
+            "ch14uvag00067739",
+            "ch14uvag00067754",
+            "ch14uvag00068345",
+            "ch14uvag00068338",
+            "ch14uvag00067771",
+            "ch14uvag00067755",
+            "ch14uvag00067668",
+            "ch14uvag00068348",
+            "ch14uvag00067926",
+            "ch14uvag00068162",
+            "ch14uvag00067825",
+            "ch14uvag00067813",
+            "ch14uvag00067608",
+            "ch14uvag00068167"
+          ],
+          "matchedSegments": 1593,
+          "totalSegments": 1593,
+          "projection": {
+            "limits": {
+              "snapMetres": 120,
+              "maxDetourRatio": 4.5,
+              "detourAllowanceMetres": 3000
+            },
+            "snaps": [
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1300:2:5",
+                "stop": "Montreux",
+                "segmentId": "ch14uvag00067622",
+                "snapMetres": 23.19
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1374",
+                "stop": "Fontanivent",
+                "segmentId": "ch14uvag00068058",
+                "snapMetres": 5.45
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1375",
+                "stop": "Chernex",
+                "segmentId": "ch14uvag00068227",
+                "snapMetres": 11.16
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1384",
+                "stop": "Sonzier",
+                "segmentId": "ch14uvag00068227",
+                "snapMetres": 0.87
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1376",
+                "stop": "Chamby",
+                "segmentId": "ch14uvag00067796",
+                "snapMetres": 7.05
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1385",
+                "stop": "Sendy-Sollard",
+                "segmentId": "ch14uvag00067784",
+                "snapMetres": 2.64
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1377",
+                "stop": "Les Avants",
+                "segmentId": "ch14uvag00068476",
+                "snapMetres": 14.92
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1386",
+                "stop": "Jor",
+                "segmentId": "ch14uvag00068481",
+                "snapMetres": 9.86
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1387",
+                "stop": "Les Cases",
+                "segmentId": "ch14uvag00068481",
+                "snapMetres": 16.61
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1378",
+                "stop": "Allières",
+                "segmentId": "ch14uvag00068510",
+                "snapMetres": 5.75
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1379:0:993503",
+                "stop": "Les Sciernes",
+                "segmentId": "ch14uvag00067927",
+                "snapMetres": 5.84
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:4070:0:916496",
+                "stop": "Montbovon",
+                "segmentId": "ch14uvag00067614",
+                "snapMetres": 9.27
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1380",
+                "stop": "Montreux-Collège",
+                "segmentId": "ch14uvag00067623",
+                "snapMetres": 1.4
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1381",
+                "stop": "Vuarennes",
+                "segmentId": "ch14uvag00067623",
+                "snapMetres": 0.57
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1390",
+                "stop": "Belmont-sur-Montreux",
+                "segmentId": "ch14uvag00067951",
+                "snapMetres": 1.21
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1382",
+                "stop": "Châtelard VD",
+                "segmentId": "ch14uvag00067951",
+                "snapMetres": 2.17
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1383",
+                "stop": "Planchamp",
+                "segmentId": "ch14uvag00068140",
+                "snapMetres": 0.14
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:4070:0:691578",
+                "stop": "Montbovon",
+                "segmentId": "ch14uvag00067614",
+                "snapMetres": 0.78
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1300:2:4",
+                "stop": "Montreux",
+                "segmentId": "ch14uvag00067622",
+                "snapMetres": 8.84
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1300:3:7",
+                "stop": "Montreux",
+                "segmentId": "ch14uvag00067622",
+                "snapMetres": 10.14
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1391",
+                "stop": "La Tine",
+                "segmentId": "ch14uvag00067614",
+                "snapMetres": 12.8
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1392",
+                "stop": "Rossinière",
+                "segmentId": "ch14uvag00067736",
+                "snapMetres": 2.81
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1393",
+                "stop": "La Chaudanne-Les Moulins",
+                "segmentId": "ch14uvag00068399",
+                "snapMetres": 5.18
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1394:0:918055",
+                "stop": "Château-d'Oex",
+                "segmentId": "ch14uvag00068399",
+                "snapMetres": 4.16
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1198",
+                "stop": "Château-d'Oex La Palaz",
+                "segmentId": "ch14uvag00068419",
+                "snapMetres": 1.92
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1395",
+                "stop": "Les Granges-Gérignoz",
+                "segmentId": "ch14uvag00068419",
+                "snapMetres": 0.51
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1388",
+                "stop": "Les Combes",
+                "segmentId": "ch14uvag00068487",
+                "snapMetres": 6.81
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1396",
+                "stop": "Flendruz",
+                "segmentId": "ch14uvag00068487",
+                "snapMetres": 8.24
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1397",
+                "stop": "Rougemont",
+                "segmentId": "ch14uvag00067739",
+                "snapMetres": 23.98
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1394:0:1967",
+                "stop": "Château-d'Oex",
+                "segmentId": "ch14uvag00068399",
+                "snapMetres": 9.91
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1398",
+                "stop": "Saanen",
+                "segmentId": "ch14uvag00067739",
+                "snapMetres": 15.86
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1399:0:333044",
+                "stop": "Gstaad",
+                "segmentId": "ch14uvag00067754",
+                "snapMetres": 2.08
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:7270:0:242729",
+                "stop": "Gruben",
+                "segmentId": "ch14uvag00068338",
+                "snapMetres": 4.16
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:7271",
+                "stop": "Schönried",
+                "segmentId": "ch14uvag00067771",
+                "snapMetres": 10.74
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:7272:0:385913",
+                "stop": "Saanenmöser",
+                "segmentId": "ch14uvag00067755",
+                "snapMetres": 2.25
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:7273",
+                "stop": "Oeschseite",
+                "segmentId": "ch14uvag00067668",
+                "snapMetres": 0.33
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:7290:0:55218",
+                "stop": "Zweisimmen",
+                "segmentId": "ch14uvag00068348",
+                "snapMetres": 3.75
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1300:3:6",
+                "stop": "Montreux",
+                "segmentId": "ch14uvag00067622",
+                "snapMetres": 15.39
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:7272:0:969796",
+                "stop": "Saanenmöser",
+                "segmentId": "ch14uvag00067755",
+                "snapMetres": 10.51
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:7270:0:859564",
+                "stop": "Gruben",
+                "segmentId": "ch14uvag00068338",
+                "snapMetres": 5.29
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1399:0:528159",
+                "stop": "Gstaad",
+                "segmentId": "ch14uvag00067754",
+                "snapMetres": 6.73
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1394:0:536499",
+                "stop": "Château-d'Oex",
+                "segmentId": "ch14uvag00068399",
+                "snapMetres": 3.77
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1379:0:841759",
+                "stop": "Les Sciernes",
+                "segmentId": "ch14uvag00067927",
+                "snapMetres": 5.4
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:7290:0:277188",
+                "stop": "Zweisimmen",
+                "segmentId": "ch14uvag00068348",
+                "snapMetres": 4.4
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:7290:0:392834",
+                "stop": "Zweisimmen",
+                "segmentId": "ch14uvag00068348",
+                "snapMetres": 7.2
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:7274",
+                "stop": "Blankenburg",
+                "segmentId": "ch14uvag00068162",
+                "snapMetres": 4.41
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:7275",
+                "stop": "Stöckli",
+                "segmentId": "ch14uvag00068162",
+                "snapMetres": 8.8
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:7276",
+                "stop": "St. Stephan",
+                "segmentId": "ch14uvag00067825",
+                "snapMetres": 18.84
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:7277",
+                "stop": "Matten i.S.",
+                "segmentId": "ch14uvag00067608",
+                "snapMetres": 5.48
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:7278",
+                "stop": "Boden",
+                "segmentId": "ch14uvag00067608",
+                "snapMetres": 7.64
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:7279",
+                "stop": "Lenk im Simmental",
+                "segmentId": "ch14uvag00068167",
+                "snapMetres": 8.29
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:7290:0:761122",
+                "stop": "Zweisimmen",
+                "segmentId": "ch14uvag00067926",
+                "snapMetres": 9.97
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:7290:0:930269",
+                "stop": "Zweisimmen",
+                "segmentId": "ch14uvag00067926",
+                "snapMetres": 25.82
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:7290:0:887399",
+                "stop": "Zweisimmen",
+                "segmentId": "ch14uvag00067926",
+                "snapMetres": 25.91
+              }
+            ],
+            "issues": []
+          }
+        },
+        {
+          "agencyId": "131",
+          "corridor": {
+            "name": "MVR Montreux–Rochers-de-Naye",
+            "branches": [
+              [
+                "8501353",
+                "8501369"
+              ]
+            ],
+            "excluded": [
+              "8501300",
+              "8501352"
+            ]
+          },
+          "segmentIds": [
+            "ch14uvag00067624",
+            "ch14uvag00068502",
+            "ch14uvag00067855",
+            "ch14uvag00067886",
+            "ch14uvag00068325",
+            "ch14uvag00068327",
+            "ch14uvag00068326",
+            "ch14uvag00068470",
+            "ch14uvag00068206",
+            "ch14uvag00068489",
+            "ch14uvag00068351",
+            "ch14uvag00068247",
+            "ch14uvag00067671",
+            "ch14uvag00068378",
+            "ch14uvag00068421"
+          ],
+          "matchedSegments": 479,
+          "totalSegments": 479,
+          "projection": {
+            "limits": {
+              "snapMetres": 120,
+              "maxDetourRatio": 4.5,
+              "detourAllowanceMetres": 3000
+            },
+            "snaps": [
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1300:3:8",
+                "stop": "Montreux",
+                "segmentId": "ch14uvag00067624",
+                "snapMetres": 58.55
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1360",
+                "stop": "Montreux-Les Planches",
+                "segmentId": "ch14uvag00068502",
+                "snapMetres": 0.44
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1361",
+                "stop": "Toveyre",
+                "segmentId": "ch14uvag00068502",
+                "snapMetres": 0.39
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1362",
+                "stop": "Valmont",
+                "segmentId": "ch14uvag00067855",
+                "snapMetres": 2.51
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1370",
+                "stop": "Glion",
+                "segmentId": "ch14uvag00068325",
+                "snapMetres": 11.2
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1230",
+                "stop": "Glion-Alpes",
+                "segmentId": "ch14uvag00068327",
+                "snapMetres": 3.7
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1308",
+                "stop": "Glion-Collège",
+                "segmentId": "ch14uvag00068326",
+                "snapMetres": 3.58
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1363",
+                "stop": "Le Tremblex",
+                "segmentId": "ch14uvag00068470",
+                "snapMetres": 6.18
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1371",
+                "stop": "Caux",
+                "segmentId": "ch14uvag00068206",
+                "snapMetres": 1.85
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1357",
+                "stop": "Haut-de-Caux",
+                "segmentId": "ch14uvag00068351",
+                "snapMetres": 6.23
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1364",
+                "stop": "Les Echets",
+                "segmentId": "ch14uvag00068489",
+                "snapMetres": 8.06
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1365",
+                "stop": "Crêt-d'y-Bau",
+                "segmentId": "ch14uvag00068247",
+                "snapMetres": 7.06
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1366",
+                "stop": "Paccot",
+                "segmentId": "ch14uvag00068247",
+                "snapMetres": 4.19
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1367",
+                "stop": "Jaman",
+                "segmentId": "ch14uvag00068378",
+                "snapMetres": 2.12
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1368",
+                "stop": "La Perche",
+                "segmentId": "ch14uvag00068421",
+                "snapMetres": 2.82
+              },
+              {
+                "group": "rail",
+                "stopId": "ch:1:sloid:1369",
+                "stop": "Rochers-de-Naye",
+                "segmentId": "ch14uvag00068421",
+                "snapMetres": 0.83
+              }
+            ],
+            "issues": []
+          }
+        }
+      ],
+      "gate": {
+        "passed": false,
+        "minimumCoverage": 0.95,
+        "deferred": [
+          "125:funicular",
+          "131:funicular",
+          "155:funicular"
+        ]
+      },
+      "sourceHashes": {
+        "archive": "4fa074044fc3a1ceae3c91597b72cf42b9bbce0477b9d43b7b4f658e3e9acfa5",
+        "rail": "2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+        "snapshot": "112d523acc00dda2c87ad31d439e38362c2dc6070850b89ac0dbe4e2338d8700",
+        "busCache": "9bc74d4eea0ff09265ea07a9372c23b357e3bc28aa8b614d6e03a0c6e1d19e4d"
+      },
+      "feedVersion": "20260905",
+      "sourceServiceDates": [
+        "2026-09-12",
+        "2026-09-13"
+      ],
+      "scope": "Complete GTFS journeys for MOB, MVR CEV/MTGN/LAS/VCP, VMCV and their replacement agencies on two reviewed dates. Excludes SBB, BLS onward GoldenPass services and boats. Operator scope, not a Riviera geographic boundary."
+    }
+  ]
+}
