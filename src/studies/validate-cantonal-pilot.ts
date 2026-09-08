@@ -1,6 +1,6 @@
-import { cantonalPilotForRoad, type CantonalPilot } from './cantonal-road-pilot.ts'
+import { cantonalPilotForRecording, type CantonalPilot } from './cantonal-road-pilot.ts'
 
-export function validateCantonalPilot(value: CantonalPilot, expected = cantonalPilotForRoad(value?.metadata?.road)): CantonalPilot {
+export function validateCantonalPilot(value: CantonalPilot, expected = cantonalPilotForRecording(value?.metadata?.recordingId)): CantonalPilot {
   if (value?.metadata?.schemaVersion !== 1 || value.metadata.recordingScope !== 'zurich-cantonal' || !expected || value.metadata.road !== expected.road || value.metadata.recordingId !== expected.id || value.metadata.serviceDate !== expected.serviceDate || value.metadata.windowStart !== expected.windowStart || value.metadata.windowEnd !== expected.windowEnd || value.metadata.completeMinutes !== expected.completeMinutes || !Array.isArray(value.windows) || !value.windows.length || !Array.isArray(value.gaps) || !value.topology?.sections?.length) throw new Error('Invalid cantonal pilot identity or coverage')
   const { windowStart, windowEnd, serviceDate } = value.metadata
   const minuteAligned = (time: number) => Number.isInteger(time) && time >= 0 && time < 86400 && time % 60 === 0

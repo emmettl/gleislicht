@@ -1,3 +1,4 @@
+import pilots from '../data/cantonal-road-pilots.json' with { type: 'json' }
 import { expect, test } from '@playwright/test'
 
 test('road recordings are discoverable without fetching playback until selected', async ({ page }, info) => {
@@ -7,7 +8,7 @@ test('road recordings are discoverable without fetching playback until selected'
   const open = page.getByRole('button', { name: 'Road recordings', exact: true })
   await open.click()
   const dialog = page.getByRole('dialog', { name: 'Road recordings', exact: true })
-  await expect(dialog.getByRole('link')).toHaveCount(2)
+  await expect(dialog.getByRole('link')).toHaveCount(pilots.length)
   await expect(dialog).toContainText('40 recorded minutes')
   await expect(dialog).toContainText('Includes observation gaps')
   await expect(dialog).toContainText('104 recorded minutes')

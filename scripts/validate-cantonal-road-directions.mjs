@@ -173,7 +173,7 @@ async function main() {
   const reviews = reviewSource ? JSON.parse(reviewSource) : undefined
   if (reviews && (reviews.schemaVersion !== 1 || !Array.isArray(reviews.entries) || reviews.geometryArtifactSha256 !== hash(await readFile(topologyFile)) || reviews.catalogSha256 !== hash(await readFile('data/zurich-cantonal-road-counters.json')) || new Set(reviews.entries.map(r => r.stationId)).size !== reviews.entries.length || reviews.entries.some(r => !topology.stations.some(s => s.id === r.stationId && s.match)))) throw new Error('Direction review inputs have changed')
   if (reviews) {
-    const junctionSources = JSON.parse(await readFile('data/zurich-cantonal-road-junction-sources.json', 'utf8'))
+    const junctionSources = JSON.parse(await readFile(arg('junction-sources') ?? 'data/zurich-cantonal-road-junction-sources.json', 'utf8'))
     for (const review of reviews.entries) {
       const source = junctionSources.entries.find(e => e.url === review.geometryReview?.sourceUrl)
       if (!source || source.sha256 !== review.geometryReview.sourceSha256 || hash(JSON.stringify(source.collection)) !== source.sha256) throw new Error('Direction review road source has changed')

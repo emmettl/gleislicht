@@ -1,0 +1,58 @@
+{
+  "sourceHashes": {
+    "public/data/zurich-cantonal-road-topology.json": "e6672433b70989a1fb5228bfe5d61933d58394a60df3e36b8deba83e8c9f65ea",
+    "data/lakeside-road-review-sources.json": "760a2fd12644b3ffa3abdc2143856b52d4ebf6bb34fb67e0ef45bd1b032f0750"
+  },
+  "status": "not-published",
+  "reason": "Qualified place names resolve the regional destination, but it remains 2522.39 m from the available road axis, above the unchanged 1500 m gate. Further road-continuation evidence is needed before direction validation.",
+  "detectors": [
+    {
+      "stationId": "ZH.CH:0591",
+      "detectorId": "ZH.CH:0591.02",
+      "status": "destination-off-axis",
+      "destination": {
+        "name": "Rapperswil SG",
+        "coordinate": [
+          2704940.45,
+          1231758.2000000002
+        ],
+        "bounds": [
+          2703950,
+          1230841.3,
+          2705930.9,
+          1232675.1
+        ],
+        "sourceFeatureId": 392118
+      },
+      "destinationDistanceMetres": 12854.56,
+      "destinationRoadDistanceMetres": 2522.39,
+      "offsetSeparationMetres": 11416.49,
+      "bearingAgreement": 0.95,
+      "offsetMetres": 19479.07
+    },
+    {
+      "stationId": "ZH.CH:1091",
+      "detectorId": "ZH.CH:1091.02",
+      "status": "destination-off-axis",
+      "destination": {
+        "name": "Rapperswil SG",
+        "coordinate": [
+          2704940.45,
+          1231758.2000000002
+        ],
+        "bounds": [
+          2703950,
+          1230841.3,
+          2705930.9,
+          1232675.1
+        ],
+        "sourceFeatureId": 392118
+      },
+      "destinationDistanceMetres": 8946.53,
+      "destinationRoadDistanceMetres": 2522.39,
+      "offsetSeparationMetres": 7319.13,
+      "bearingAgreement": 0.96,
+      "offsetMetres": 23576.43
+    }
+  ]
+}

@@ -18,3 +18,5 @@
 .road-corridor-card.is-pilot .metric-grid { order: 1; }
 .road-corridor-card.is-pilot .cantonal-pilot { order: 2; }
 .road-corridor-card.is-pilot .road-traffic-summary { order: 3; }
+
+.pilot-recording-select { width: 100%; min-width: 0; margin-bottom: 10px; padding: 8px; border: 1px solid #8dfaff44; border-radius: 6px; background: #0b1020; color: #f8f7ff; font: inherit; }

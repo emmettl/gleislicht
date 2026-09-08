@@ -10,7 +10,10 @@
     "windowEnd": 51660,
     "initialTime": 49440,
     "completeMinutes": 40,
-    "stationIds": ["ZH.CH:4590", "ZH.CH:4290"],
+    "stationIds": [
+      "ZH.CH:4590",
+      "ZH.CH:4290"
+    ],
     "junctionAreas": 3
   },
   {
@@ -24,7 +27,27 @@
     "windowEnd": 57420,
     "initialTime": 51240,
     "completeMinutes": 104,
-    "stationIds": ["ZH.CH:0088", "ZH.CH:2092"],
+    "stationIds": [
+      "ZH.CH:0088",
+      "ZH.CH:2092"
+    ],
     "junctionAreas": 5
+  },
+  {
+    "id": "kilchberg-thalwil-2026-09-08",
+    "road": "ZH:3",
+    "label": "Kilchberg–Thalwil",
+    "name": "Kilchberg–Thalwil · Seestrasse",
+    "file": "kilchberg-thalwil-road-pilot.json",
+    "serviceDate": "2026-09-08",
+    "windowStart": 51240,
+    "windowEnd": 59700,
+    "initialTime": 51240,
+    "completeMinutes": 142,
+    "stationIds": [
+      "ZH.CH:0109",
+      "ZH.CH:4190"
+    ],
+    "junctionAreas": 3
   }
 ]

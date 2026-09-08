@@ -215,4 +215,30 @@ Unknown recordings, conflicting dates and out-of-window or non-finite times prod
 
 **Road recordings** in the main network view opens a catalog of the published pilots, without fetching their recording JSON. Each entry displays its recording date, Swiss time window, complete-minute count and whether it contains observation gaps. Selecting an entry follows its canonical recording link and opens paused. The current recording is marked, and closing the picker returns focus to the opening button without changing playback. Labels and disclosures support all four UI languages.
 
-The picker currently lists Horgen and Wallisellen–Bassersdorf. The [Bassersdorf–Lindau follow-up](CANTONAL-COVERAGE-REVIEW.md#bassersdorflindau-follow-up) confirms 245 complete minutes but leaves both Lindau detector directions unresolved after checking detailed official geometry. It is not listed as a playable recording. A detector-specific directional reference is needed before a third corridor can pass review.
+The picker now lists Horgen, Wallisellen–Bassersdorf and Kilchberg–Thalwil. The [Bassersdorf–Lindau follow-up](CANTONAL-COVERAGE-REVIEW.md#bassersdorflindau-follow-up) confirms 245 complete minutes but leaves both Lindau detector directions unresolved after checking detailed official geometry. It is not listed as a playable recording. A detector-specific directional reference is needed before a third corridor can pass review.
+
+### Kilchberg–Thalwil playback
+
+The third published recording follows **4.803 km of ZH 3 / Seestrasse** between Kilchberg counter `ZH.CH:0109` and Thalwil counter `ZH.CH:4190`. It contains **142 consecutive complete minutes on 8 September 2026, 14:14–16:35 CEST**, with both light/heavy vehicle classes in both directions and no gaps. Open **Road recordings → Kilchberg–Thalwil**, or use `?recording=kilchberg-thalwil-2026-09-08`. The recording opens paused at 14:14 and supports sharing through the final 16:35 observation.
+
+Horgen and Kilchberg–Thalwil share the same road identifier. Playback and validation now resolve their recording identities independently; the corridor card offers a recording selector where a road has multiple recordings. Search includes every published pilot's place names. Horgen remains the default ZH 3 recording for ordinary road selection, and its published observations are unchanged.
+
+The [pinned direction review](../data/kilchberg-thalwil-direction-reviews.json) uses the existing opposing-normal-lane method. At each counter the Horgen lane independently validates positive path order. The Zürich lane passes distance, projection and local bearing (−0.79 / −0.95); only Zürich's broad settlement extent fails. The reviewed lane therefore follows negative path order. Alert-C signs are not treated as path directions, and the general validation gates are unchanged.
+
+The [official source extracts](../data/lakeside-road-review-sources.json) and [junction audit](../data/lakeside-road-junction-audit.json) identify three geometric junction areas, around 1.512 km (municipal approach), 2.385 km (axis 680) and 4.745 km (axis 682) from Kilchberg. These are not measured turns or a complete inventory of private access. The recording remains a reconstruction between counters, not tracked vehicles or a claim of flow conservation through junctions.
+
+Rebuild from the private archived observations:
+
+```sh
+node scripts/validate-cantonal-road-directions.mjs \
+  --places=data/zurich-cantonal-road-directions.json \
+  --reviews=data/kilchberg-thalwil-direction-reviews.json \
+  --junction-sources=data/lakeside-road-review-sources.json \
+  --output=/tmp/kilchberg-thalwil-directions.json
+node scripts/audit-cantonal-road-junctions.mjs \
+  --sources=data/lakeside-road-review-sources.json \
+  --output=data/lakeside-road-junction-audit.json
+node scripts/build-cantonal-road-pilot.mjs \
+  --pilot=kilchberg-thalwil-2026-09-08 \
+  --topology=/tmp/kilchberg-thalwil-directions.json
+```

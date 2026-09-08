@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-09-08T19:25:41.432Z",
+  "geometryArtifactSha256": "e6672433b70989a1fb5228bfe5d61933d58394a60df3e36b8deba83e8c9f65ea",
+  "catalogSha256": "39af27ba04503d25f407e59d58712d49c7a7ca4e0f980dafc77609847e3dd9d9",
+  "entries": [
+    {
+      "id": "ZH.CH:0109-opposing-lanes-2026-09-08",
+      "stationId": "ZH.CH:0109",
+      "pathId": "ZH:3:f42ded4df18634ad",
+      "road": "ZH:3",
+      "method": "opposing-main-carriageway-lanes",
+      "anchorDetectorId": "ZH.CH:0109.02",
+      "reviewedDetectorId": "ZH.CH:0109.01",
+      "detectorAuditSha256": "72f8350bf870d5bae25273fe45f4cf2c8ba39418383cb685b3e62f2a4d84062a",
+      "rationale": "The independently validated Horgen normal lane follows positive stored path order. The catalog contains exactly two opposing main-carriageway lane1 detectors. The Zürich centre passes distance, projection and local bearing (-0.79); only the settlement extent fails. Its opposing lane follows negative stored path order. Alert-C signs are not used as path directions.",
+      "geometryReview": {
+        "sourceUrl": "https://maps.zh.ch/wfs/TBAStrZHWFS?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=ms:strassenachsen&SRSNAME=EPSG:2056&OUTPUTFORMAT=application%2Fjson&COUNT=10000&BBOX=2683000,1238500,2685800,1243600,EPSG:2056",
+        "sourceSha256": "b95e4734d8cbc4a520e63196a73f0451fb512325061cbc160b116ccb5b628806",
+        "note": "Official Seestrasse axis and intervening junctions reviewed; no measured turn flows."
+      }
+    },
+    {
+      "id": "ZH.CH:4190-opposing-lanes-2026-09-08",
+      "stationId": "ZH.CH:4190",
+      "pathId": "ZH:3:f42ded4df18634ad",
+      "road": "ZH:3",
+      "method": "opposing-main-carriageway-lanes",
+      "anchorDetectorId": "ZH.CH:4190.02",
+      "reviewedDetectorId": "ZH.CH:4190.01",
+      "detectorAuditSha256": "ad881321df606a1fc8aba22d5de8111b0c372e2248d878ba035329f20bd57499",
+      "rationale": "The independently validated Horgen normal lane follows positive stored path order. The catalog contains exactly two opposing main-carriageway lane1 detectors. The Zürich centre passes distance, projection and local bearing (-0.95); only the settlement extent fails. Its opposing lane follows negative stored path order. Alert-C signs are not used as path directions.",
+      "geometryReview": {
+        "sourceUrl": "https://maps.zh.ch/wfs/TBAStrZHWFS?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=ms:strassenachsen&SRSNAME=EPSG:2056&OUTPUTFORMAT=application%2Fjson&COUNT=10000&BBOX=2683000,1238500,2685800,1243600,EPSG:2056",
+        "sourceSha256": "b95e4734d8cbc4a520e63196a73f0451fb512325061cbc160b116ccb5b628806",
+        "note": "Official Seestrasse axis and intervening junctions reviewed; no measured turn flows."
+      }
+    }
+  ]
+}

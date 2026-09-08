@@ -3,13 +3,17 @@ import type { RoadTopologySnapshot } from '@motionstudies/core/domain/road'
 import pilotCatalog from '../../data/cantonal-road-pilots.json'
 import { searchRoadCorridors, type RoadSearchCorridor } from '@motionstudies/core/road-search'
 export const cantonalPilotForRecording = (id?: string) => pilotCatalog.find(p => p.id === id)
-export const cantonalPilotForRoad = (road?: string) => pilotCatalog.find(p => p.road === road)
+export const cantonalPilotsForRoad = (road?: string) => pilotCatalog.filter(p => p.road === road)
+export const cantonalPilotForRoad = (road?: string, recordingId?: string) => {
+  const pilots = cantonalPilotsForRoad(road)
+  return pilots.find(p => p.id === recordingId) ?? pilots[0]
+}
 export type CantonalPilotDefinition = typeof pilotCatalog[number]
 export function searchRoadsWithPilots<Road extends RoadSearchCorridor>(roads: readonly Road[], query: string): readonly Road[] {
   const originals = new Map(roads.map(road => [road.id, road]))
   const searchable = roads.map(road => {
-    const pilot = cantonalPilotForRoad(road.id)
-    return pilot ? { ...road, description: `${road.description ?? ''} ${pilot.name}` } : road
+    const pilots = cantonalPilotsForRoad(road.id)
+    return pilots.length ? { ...road, description: `${road.description ?? ''} ${pilots.map(p => p.name).join(' ')}` } : road
   })
   return searchRoadCorridors(searchable, query).map(road => originals.get(road.id)!)
 }

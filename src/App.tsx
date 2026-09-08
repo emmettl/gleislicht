@@ -410,7 +410,7 @@ export function App({ edition }: AppProps) {
   const [selectedRoadId, setSelectedRoadId] = useState<string | undefined>(linkedPilot?.road)
   const pilotClockBounds = useRef<{ windowStart: number; windowEnd: number } | undefined>(undefined)
   const [cantonalPilot, setCantonalPilot] = useState<CantonalPilot>()
-  const selectedPilotDefinition = cantonalPilotForRoad(selectedRoadId)
+  const selectedPilotDefinition = cantonalPilotForRoad(selectedRoadId, cantonalPilot?.metadata.recordingId ?? linkedPilot?.id)
   const activePilot = cantonalPilot && roadEnabled && selectedPilotDefinition?.id === cantonalPilot.metadata.recordingId && !sbbEnabled && !airEnabled && view === 'network' && networkStudy === 'national' ? cantonalPilot : undefined
   const playbackTopology = useMemo(() => roadTopology && activePilot ? topologyWithPilot(roadTopology, activePilot) : roadTopology, [roadTopology, activePilot])
   useEffect(() => {

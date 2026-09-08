@@ -34,12 +34,13 @@ export function junctionCandidates(path, roadAxis, collection) {
   }))
 }
 async function main() {
-  const sources = JSON.parse(await readFile('data/zurich-cantonal-road-junction-sources.json', 'utf8'))
+  const arg = name => process.argv.find(a => a.startsWith(`--${name}=`))?.slice(name.length + 3)
+  const sources = JSON.parse(await readFile(arg('sources') ?? 'data/zurich-cantonal-road-junction-sources.json', 'utf8'))
   const reports = sources.entries.map(entry => {
     if (createHash('sha256').update(JSON.stringify(entry.collection)).digest('hex') !== entry.sha256) throw new Error('Junction source hash mismatch')
     return { id: entry.id, road: entry.road, sourceUrl: entry.url, sourceSha256: entry.sha256, junctions: junctionCandidates(entry.path, entry.road.slice(3), entry.collection) }
   })
-  await writeFile('data/zurich-cantonal-road-junction-audit.json', JSON.stringify({ metadata: { schemaVersion: 1, fetchedAt: sources.fetchedAt, method: 'Other-axis endpoints within 15 m of the counter path; group approaches within 30 m along the path; exclude 25 m at counter ends.', limitation: 'Geometric candidates, not surveyed legal turn movements. The official road model omits some municipal roads and private access. No junction flow is measured.' }, reports }) + '\n')
+  await writeFile(arg('output') ?? 'data/zurich-cantonal-road-junction-audit.json', JSON.stringify({ metadata: { schemaVersion: 1, fetchedAt: sources.fetchedAt, method: 'Other-axis endpoints within 15 m of the counter path; group approaches within 30 m along the path; exclude 25 m at counter ends.', limitation: 'Geometric candidates, not surveyed legal turn movements. The official road model omits some municipal roads and private access. No junction flow is measured.' }, reports }) + '\n')
   console.log(JSON.stringify(reports.map(r => ({ id: r.id, junctions: r.junctions.map(j => ({ offsetMetres: j.offsetMetres, axes: j.axes })) })), null, 2))
 }
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) await main()

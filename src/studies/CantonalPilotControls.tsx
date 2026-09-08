@@ -1,9 +1,11 @@
+import { CANTONAL_RECORDING_COPY } from './cantonal-recording-copy.ts'
+import { studyLinkUrl } from './share-link.ts'
 import { validateCantonalPilot } from './validate-cantonal-pilot.ts'
 import { useEffect, useEffectEvent, useRef, useState } from 'react'
 import { LANGUAGE_LOCALES, type UiLanguage } from '../i18n.ts'
 import { editionDataUrl } from '../editions/data-url.ts'
 import { formatServiceTime } from '@motionstudies/core/domain/network'
-import { type CantonalPilot, type CantonalPilotDefinition } from './cantonal-road-pilot.ts'
+import { cantonalPilotsForRoad, type CantonalPilot, type CantonalPilotDefinition } from './cantonal-road-pilot.ts'
 import './cantonal-road-pilot.css'
 const COPY = {
   en: { open: (name: string) => `Play ${name} afternoon pilot`, close: 'Return to morning roads', error: 'Pilot could not be loaded. Try again.', loading: 'Loading pilot…', note: 'Recorded reconstruction · both directions. Junction turn flows are not measured.', available: 'Recorded windows', gaps: 'Missing observations', gap: 'No complete observations here. Traffic is hidden.', complete: (n: number) => `${n} complete recorded minutes · no gaps`, junctions: (n: number) => `Mapped junction areas: ${n}` },
@@ -33,13 +35,18 @@ export default function CantonalPilotControls({ definition, pilot, time, languag
       if (!request.signal.aborted) { setState('idle'); onStart(result, requestedTime.current ?? definition.initialTime); requestedTime.current = undefined }
     } catch { if (!request.signal.aborted) setState('error') }
   }
-  if (!pilot) return <div className="cantonal-pilot"><button disabled={state === 'loading'} onClick={() => { void open() }}>{state === 'loading' ? copy.loading : copy.open(definition.label)}</button>{state === 'error' && <p role="status">{copy.error}</p>}</div>
+  const recordings = cantonalPilotsForRoad(definition.road)
+  const picker = recordings.length > 1 ? <select className="pilot-recording-select" aria-label={CANTONAL_RECORDING_COPY[language].title} value={definition.id} onChange={event => {
+    window.location.assign(studyLinkUrl(window.location.href, { study: 'national', range: 'morning', recording: event.target.value }))
+  }}>{recordings.map(recording => <option key={recording.id} value={recording.id}>{recording.label}</option>)}</select> : null
+  if (!pilot) return <div className="cantonal-pilot">{picker}<button disabled={state === 'loading'} onClick={() => { void open() }}>{state === 'loading' ? copy.loading : copy.open(definition.label)}</button>{state === 'error' && <p role="status">{copy.error}</p>}</div>
   const available = pilot.windows.some(w => time >= w.metadata.windowStart && time <= w.metadata.windowEnd)
   const date = new Date(`${pilot.metadata.serviceDate}T12:00:00Z`)
   const dateLabel = new Intl.DateTimeFormat(LANGUAGE_LOCALES[language], { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Europe/Zurich' }).format(date)
   const zone = new Intl.DateTimeFormat(LANGUAGE_LOCALES[language], { timeZone: 'Europe/Zurich', timeZoneName: 'short' }).formatToParts(date).find(p => p.type === 'timeZoneName')?.value
   const length = new Intl.NumberFormat(LANGUAGE_LOCALES[language], { maximumFractionDigits: 1 }).format(pilot.topology.sections[0].distanceKm)
   return <div className="cantonal-pilot">
+    {picker}
     {!available && <p className="pilot-gap-status" role="status">{copy.gap}</p>}
     <strong>{definition.name} · {length} km</strong><p>{dateLabel} · {zone}</p><p>{copy.note}</p>
     <p>{copy.junctions(definition.junctionAreas)}</p>

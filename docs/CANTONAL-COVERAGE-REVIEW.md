@@ -105,3 +105,11 @@ node scripts/audit-lindau-road.mjs
 ```
 
 The audit recomputes the automatic directions and validates the source hashes and detector labels. Tests verify that complete observations do not authorize a direction override and that changed source evidence is rejected.
+
+## Lakeside follow-up: Kilchberg–Thalwil and Meilen–Stäfa
+
+Kilchberg–Thalwil passes the existing pinned opposing-lane direction review and is now [published in AUTO](CANTONAL-ROADS.md#kilchbergthalwil-playback): 4.803 km, 142 uninterrupted minutes from 14:14–16:35 CEST. Its complete observation count over the whole audited afternoon remains 227/245; publication selects the longest complete run rather than filling the other minutes.
+
+Meilen–Stäfa has 245 complete minutes and two validated Zürich directions, but remains unpublished. The original exact lookup of “Rapperswil” missed the canton-qualified SwissNames entries. Fresh exact searches for **Rapperswil SG** and **Rapperswil BE** return both alternatives; the existing 50 km regional check uniquely selects SG. Both reviewed directions then pass local bearing (0.95 / 0.96), but the destination is **2,522.39 m from the available ZH 17 path**, above the unchanged 1,500 m gate. Resolving the name therefore does not by itself validate the direction. Further road-continuation evidence is needed before publication; no override or broader automatic alias has been enabled.
+
+The [source extracts](../data/lakeside-road-review-sources.json) preserve exact query URLs, responses and hashes. The [destination review](../data/meilen-staefa-direction-review.json) records the remaining geometry failure. Reproduce it with `node scripts/audit-meilen-staefa-directions.mjs`. The same official axis extract gives two geometric junction candidates in this potential section, around 1.177 km (axis 718) and 2.749 km (axis 720); these remain review evidence, not a published traffic model.
