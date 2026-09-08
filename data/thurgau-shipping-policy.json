@@ -1,0 +1,1145 @@
+{
+  "sourceSha256": "dc6b1600af80a2281be3ef789aa573490401c354364501b201c94c1bde4bc73e",
+  "timetableSha256": "9403d675c79184b4885e8a0ca0f3d02da55363cefafab2f403cb7e5ae95dcff5",
+  "previousBoatReviewSha256": "3f1cd16a73406c601a43c700070715d673c266c6444cccac0bb05a14f0b6cf02",
+  "previousBoatPolicySha256": "8a7a0293a868a975bddca2649174562aeb14981bcb1ba21656686379704aeede",
+  "shorelineSha256": "769f79af5e0e7d7fde518c9d4d37eb0975b111c2ff674d6eefd7cb186684462f",
+  "snapshot": "2026-09-02T00:00:00Z",
+  "dates": [
+    "2026-09-04",
+    "2026-09-06"
+  ],
+  "routes": [
+    {
+      "routeId": "94-380-0-j26-1",
+      "agencyId": "195",
+      "line": "3800",
+      "type": 1000
+    },
+    {
+      "routeId": "94-380-1-j26-1",
+      "agencyId": "195",
+      "line": "3801",
+      "type": 1000
+    },
+    {
+      "routeId": "94-382-0-j26-1",
+      "agencyId": "193",
+      "line": "3820",
+      "type": 1000
+    }
+  ],
+  "patterns": [
+    {
+      "routeId": "94-380-0-j26-1",
+      "agencyId": "195",
+      "line": "3800",
+      "directionId": "0",
+      "calls": [
+        [
+          9.18264172,
+          47.65258652,
+          "Kreuzlingen Hafen (See)",
+          "",
+          "ch:1:sloid:6165"
+        ],
+        [
+          9.20071582,
+          47.70584682,
+          "Mainau (Bodensee)",
+          "",
+          "8099992"
+        ],
+        [
+          9.27226663,
+          47.6920259,
+          "Meersburg (Bodensee)",
+          "",
+          "8014611"
+        ]
+      ],
+      "days": {
+        "2026-09-04": 2,
+        "2026-09-06": 2
+      }
+    },
+    {
+      "routeId": "94-380-0-j26-1",
+      "agencyId": "195",
+      "line": "3800",
+      "directionId": "0",
+      "calls": [
+        [
+          9.49343186,
+          47.47889944,
+          "Rorschach Hafen (See)",
+          "",
+          "ch:1:sloid:6113"
+        ],
+        [
+          9.46295202,
+          47.49663698,
+          "Horn (See)",
+          "",
+          "ch:1:sloid:6111"
+        ],
+        [
+          9.44032346,
+          47.5126454,
+          "Arbon (See)",
+          "",
+          "ch:1:sloid:6110"
+        ],
+        [
+          9.37997463,
+          47.56556342,
+          "Romanshorn (See)",
+          "",
+          "ch:1:sloid:6112"
+        ]
+      ],
+      "days": {
+        "2026-09-04": 2,
+        "2026-09-06": 2
+      }
+    },
+    {
+      "routeId": "94-380-0-j26-1",
+      "agencyId": "195",
+      "line": "3800",
+      "directionId": "0",
+      "calls": [
+        [
+          9.37997463,
+          47.56556342,
+          "Romanshorn (See)",
+          "",
+          "ch:1:sloid:6112"
+        ],
+        [
+          9.34535356,
+          47.58643454,
+          "Uttwil (See)",
+          "",
+          "ch:1:sloid:30835"
+        ],
+        [
+          9.2690866,
+          47.62313274,
+          "Altnau (See)",
+          "",
+          "ch:1:sloid:30834"
+        ],
+        [
+          9.21189985,
+          47.64473744,
+          "Bottighofen (See)",
+          "",
+          "ch:1:sloid:30720"
+        ],
+        [
+          9.18264172,
+          47.65258652,
+          "Kreuzlingen Hafen (See)",
+          "",
+          "ch:1:sloid:6165"
+        ]
+      ],
+      "days": {
+        "2026-09-04": 2,
+        "2026-09-06": 2
+      }
+    },
+    {
+      "routeId": "94-380-0-j26-1",
+      "agencyId": "195",
+      "line": "3800",
+      "directionId": "1",
+      "calls": [
+        [
+          9.27226663,
+          47.6920259,
+          "Meersburg (Bodensee)",
+          "",
+          "8014611"
+        ],
+        [
+          9.18264172,
+          47.65258652,
+          "Kreuzlingen Hafen (See)",
+          "",
+          "ch:1:sloid:6165"
+        ]
+      ],
+      "days": {
+        "2026-09-04": 2,
+        "2026-09-06": 2
+      }
+    },
+    {
+      "routeId": "94-380-0-j26-1",
+      "agencyId": "195",
+      "line": "3800",
+      "directionId": "1",
+      "calls": [
+        [
+          9.44032346,
+          47.5126454,
+          "Arbon (See)",
+          "",
+          "ch:1:sloid:6110"
+        ],
+        [
+          9.53991069,
+          47.59515262,
+          "Langenargen Hafen",
+          "",
+          "8014650"
+        ]
+      ],
+      "days": {
+        "2026-09-04": 1
+      }
+    },
+    {
+      "routeId": "94-380-0-j26-1",
+      "agencyId": "195",
+      "line": "3800",
+      "directionId": "1",
+      "calls": [
+        [
+          9.37997463,
+          47.56556342,
+          "Romanshorn (See)",
+          "",
+          "ch:1:sloid:6112"
+        ],
+        [
+          9.44032346,
+          47.5126454,
+          "Arbon (See)",
+          "",
+          "ch:1:sloid:6110"
+        ],
+        [
+          9.53991069,
+          47.59515262,
+          "Langenargen Hafen",
+          "",
+          "8014650"
+        ],
+        [
+          9.49343186,
+          47.47889944,
+          "Rorschach Hafen (See)",
+          "",
+          "ch:1:sloid:6113"
+        ]
+      ],
+      "days": {
+        "2026-09-04": 2,
+        "2026-09-06": 2
+      }
+    },
+    {
+      "routeId": "94-380-0-j26-1",
+      "agencyId": "195",
+      "line": "3800",
+      "directionId": "1",
+      "calls": [
+        [
+          9.37997463,
+          47.56556342,
+          "Romanshorn (See)",
+          "",
+          "ch:1:sloid:6112"
+        ],
+        [
+          9.44032346,
+          47.5126454,
+          "Arbon (See)",
+          "",
+          "ch:1:sloid:6110"
+        ],
+        [
+          9.46295202,
+          47.49663698,
+          "Horn (See)",
+          "",
+          "ch:1:sloid:6111"
+        ],
+        [
+          9.49343186,
+          47.47889944,
+          "Rorschach Hafen (See)",
+          "",
+          "ch:1:sloid:6113"
+        ]
+      ],
+      "days": {
+        "2026-09-04": 1,
+        "2026-09-06": 1
+      }
+    },
+    {
+      "routeId": "94-380-0-j26-1",
+      "agencyId": "195",
+      "line": "3800",
+      "directionId": "1",
+      "calls": [
+        [
+          9.18264172,
+          47.65258652,
+          "Kreuzlingen Hafen (See)",
+          "",
+          "ch:1:sloid:6165"
+        ],
+        [
+          9.21189985,
+          47.64473744,
+          "Bottighofen (See)",
+          "",
+          "ch:1:sloid:30720"
+        ],
+        [
+          9.2690866,
+          47.62313274,
+          "Altnau (See)",
+          "",
+          "ch:1:sloid:30834"
+        ],
+        [
+          9.34535356,
+          47.58643454,
+          "Uttwil (See)",
+          "",
+          "ch:1:sloid:30835"
+        ],
+        [
+          9.37997463,
+          47.56556342,
+          "Romanshorn (See)",
+          "",
+          "ch:1:sloid:6112"
+        ]
+      ],
+      "days": {
+        "2026-09-04": 2,
+        "2026-09-06": 2
+      }
+    },
+    {
+      "routeId": "94-380-0-j26-1",
+      "agencyId": "195",
+      "line": "3800",
+      "directionId": "0",
+      "calls": [
+        [
+          9.53991069,
+          47.59515262,
+          "Langenargen Hafen",
+          "",
+          "8014650"
+        ],
+        [
+          9.44032346,
+          47.5126454,
+          "Arbon (See)",
+          "",
+          "ch:1:sloid:6110"
+        ],
+        [
+          9.37997463,
+          47.56556342,
+          "Romanshorn (See)",
+          "",
+          "ch:1:sloid:6112"
+        ]
+      ],
+      "days": {
+        "2026-09-04": 1,
+        "2026-09-06": 1
+      }
+    },
+    {
+      "routeId": "94-380-1-j26-1",
+      "agencyId": "195",
+      "line": "3801",
+      "directionId": "0",
+      "calls": [
+        [
+          9.36703889,
+          47.66232816,
+          "Immenstaad (Bodensee)",
+          "",
+          "8014614"
+        ],
+        [
+          9.31411914,
+          47.67351972,
+          "Hagnau (Bodensee)",
+          "",
+          "8014613"
+        ],
+        [
+          9.2690866,
+          47.62313274,
+          "Altnau (See)",
+          "",
+          "ch:1:sloid:30834"
+        ],
+        [
+          9.29601809,
+          47.61286905,
+          "Güttingen (See)",
+          "",
+          "ch:1:sloid:95982"
+        ],
+        [
+          9.37997463,
+          47.56556342,
+          "Romanshorn (See)",
+          "",
+          "ch:1:sloid:6112"
+        ]
+      ],
+      "days": {
+        "2026-09-04": 1,
+        "2026-09-06": 1
+      }
+    },
+    {
+      "routeId": "94-380-1-j26-1",
+      "agencyId": "195",
+      "line": "3801",
+      "directionId": "0",
+      "calls": [
+        [
+          9.37997463,
+          47.56556342,
+          "Romanshorn (See)",
+          "",
+          "ch:1:sloid:6112"
+        ],
+        [
+          9.36703889,
+          47.66232816,
+          "Immenstaad (Bodensee)",
+          "",
+          "8014614"
+        ],
+        [
+          9.31411914,
+          47.67351972,
+          "Hagnau (Bodensee)",
+          "",
+          "8014613"
+        ],
+        [
+          9.2690866,
+          47.62313274,
+          "Altnau (See)",
+          "",
+          "ch:1:sloid:30834"
+        ],
+        [
+          9.29601809,
+          47.61286905,
+          "Güttingen (See)",
+          "",
+          "ch:1:sloid:95982"
+        ],
+        [
+          9.36703889,
+          47.66232816,
+          "Immenstaad (Bodensee)",
+          "",
+          "8014614"
+        ]
+      ],
+      "days": {
+        "2026-09-04": 1,
+        "2026-09-06": 1
+      }
+    },
+    {
+      "routeId": "94-382-0-j26-1",
+      "agencyId": "193",
+      "line": "3820",
+      "directionId": "0",
+      "calls": [
+        [
+          8.6410115,
+          47.69529102,
+          "Schaffhausen (Schifflände)",
+          "",
+          "ch:1:sloid:6150"
+        ],
+        [
+          8.6933204,
+          47.69543008,
+          "Büsingen (Schifflände)",
+          "",
+          "ch:1:sloid:1101322"
+        ],
+        [
+          8.74886323,
+          47.69041746,
+          "Diessenhofen (Schifflände)",
+          "",
+          "ch:1:sloid:6152"
+        ]
+      ],
+      "days": {
+        "2026-09-04": 4,
+        "2026-09-06": 4
+      }
+    },
+    {
+      "routeId": "94-382-0-j26-1",
+      "agencyId": "193",
+      "line": "3820",
+      "directionId": "0",
+      "calls": [
+        [
+          8.85665208,
+          47.6599141,
+          "Stein am Rhein (Schifflände)",
+          "",
+          "ch:1:sloid:6153"
+        ],
+        [
+          8.89456997,
+          47.65209637,
+          "Öhningen (See)",
+          "",
+          "ch:1:sloid:1101745"
+        ],
+        [
+          8.91673141,
+          47.64828994,
+          "Mammern (See)",
+          "",
+          "ch:1:sloid:6155"
+        ],
+        [
+          8.930278,
+          47.65866165,
+          "Wangen (Bodensee)",
+          "",
+          "ch:1:sloid:1103929"
+        ],
+        [
+          8.96894149,
+          47.67198934,
+          "Hemmenhofen (See)",
+          "",
+          "ch:1:sloid:1101477"
+        ],
+        [
+          8.98143706,
+          47.66864413,
+          "Steckborn (See)",
+          "",
+          "ch:1:sloid:6157"
+        ],
+        [
+          8.98231741,
+          47.67945935,
+          "Gaienhofen (See)",
+          "",
+          "ch:1:sloid:1101424"
+        ],
+        [
+          9.01766611,
+          47.67534039,
+          "Berlingen (See)",
+          "",
+          "ch:1:sloid:6159"
+        ],
+        [
+          9.04843341,
+          47.67449358,
+          "Mannenbach (See)",
+          "",
+          "ch:1:sloid:6160"
+        ],
+        [
+          9.05422755,
+          47.6897402,
+          "Reichenau (See)",
+          "",
+          "ch:1:sloid:1101894"
+        ],
+        [
+          9.085444,
+          47.67523152,
+          "Ermatingen (See)",
+          "",
+          "ch:1:sloid:6162"
+        ],
+        [
+          9.13468066,
+          47.66466346,
+          "Gottlieben (Schifflände)",
+          "",
+          "ch:1:sloid:6163"
+        ],
+        [
+          9.17953355,
+          47.65986569,
+          "Konstanz Hafen",
+          "",
+          "8014587"
+        ],
+        [
+          9.18264172,
+          47.65258652,
+          "Kreuzlingen Hafen (See)",
+          "",
+          "ch:1:sloid:6165"
+        ]
+      ],
+      "days": {
+        "2026-09-04": 4,
+        "2026-09-06": 4
+      }
+    },
+    {
+      "routeId": "94-382-0-j26-1",
+      "agencyId": "193",
+      "line": "3820",
+      "directionId": "1",
+      "calls": [
+        [
+          8.74886323,
+          47.69041746,
+          "Diessenhofen (Schifflände)",
+          "",
+          "ch:1:sloid:6152"
+        ],
+        [
+          8.6933204,
+          47.69543008,
+          "Büsingen (Schifflände)",
+          "",
+          "ch:1:sloid:1101322"
+        ],
+        [
+          8.6410115,
+          47.69529102,
+          "Schaffhausen (Schifflände)",
+          "",
+          "ch:1:sloid:6150"
+        ]
+      ],
+      "days": {
+        "2026-09-04": 4,
+        "2026-09-06": 4
+      }
+    },
+    {
+      "routeId": "94-382-0-j26-1",
+      "agencyId": "193",
+      "line": "3820",
+      "directionId": "1",
+      "calls": [
+        [
+          9.18264172,
+          47.65258652,
+          "Kreuzlingen Hafen (See)",
+          "",
+          "ch:1:sloid:6165"
+        ],
+        [
+          9.17953355,
+          47.65986569,
+          "Konstanz Hafen",
+          "",
+          "8014587"
+        ],
+        [
+          9.13468066,
+          47.66466346,
+          "Gottlieben (Schifflände)",
+          "",
+          "ch:1:sloid:6163"
+        ],
+        [
+          9.085444,
+          47.67523152,
+          "Ermatingen (See)",
+          "",
+          "ch:1:sloid:6162"
+        ],
+        [
+          9.05422755,
+          47.6897402,
+          "Reichenau (See)",
+          "",
+          "ch:1:sloid:1101894"
+        ],
+        [
+          9.04843341,
+          47.67449358,
+          "Mannenbach (See)",
+          "",
+          "ch:1:sloid:6160"
+        ],
+        [
+          9.01766611,
+          47.67534039,
+          "Berlingen (See)",
+          "",
+          "ch:1:sloid:6159"
+        ],
+        [
+          8.98231741,
+          47.67945935,
+          "Gaienhofen (See)",
+          "",
+          "ch:1:sloid:1101424"
+        ],
+        [
+          8.98143706,
+          47.66864413,
+          "Steckborn (See)",
+          "",
+          "ch:1:sloid:6157"
+        ],
+        [
+          8.96894149,
+          47.67198934,
+          "Hemmenhofen (See)",
+          "",
+          "ch:1:sloid:1101477"
+        ]
+      ],
+      "days": {
+        "2026-09-04": 1,
+        "2026-09-06": 1
+      }
+    },
+    {
+      "routeId": "94-382-0-j26-1",
+      "agencyId": "193",
+      "line": "3820",
+      "directionId": "1",
+      "calls": [
+        [
+          9.18264172,
+          47.65258652,
+          "Kreuzlingen Hafen (See)",
+          "",
+          "ch:1:sloid:6165"
+        ],
+        [
+          9.17953355,
+          47.65986569,
+          "Konstanz Hafen",
+          "",
+          "8014587"
+        ],
+        [
+          9.13468066,
+          47.66466346,
+          "Gottlieben (Schifflände)",
+          "",
+          "ch:1:sloid:6163"
+        ],
+        [
+          9.085444,
+          47.67523152,
+          "Ermatingen (See)",
+          "",
+          "ch:1:sloid:6162"
+        ],
+        [
+          9.05422755,
+          47.6897402,
+          "Reichenau (See)",
+          "",
+          "ch:1:sloid:1101894"
+        ],
+        [
+          9.04843341,
+          47.67449358,
+          "Mannenbach (See)",
+          "",
+          "ch:1:sloid:6160"
+        ],
+        [
+          9.01766611,
+          47.67534039,
+          "Berlingen (See)",
+          "",
+          "ch:1:sloid:6159"
+        ],
+        [
+          8.98231741,
+          47.67945935,
+          "Gaienhofen (See)",
+          "",
+          "ch:1:sloid:1101424"
+        ],
+        [
+          8.98143706,
+          47.66864413,
+          "Steckborn (See)",
+          "",
+          "ch:1:sloid:6157"
+        ],
+        [
+          8.96894149,
+          47.67198934,
+          "Hemmenhofen (See)",
+          "",
+          "ch:1:sloid:1101477"
+        ],
+        [
+          8.930278,
+          47.65866165,
+          "Wangen (Bodensee)",
+          "",
+          "ch:1:sloid:1103929"
+        ],
+        [
+          8.91673141,
+          47.64828994,
+          "Mammern (See)",
+          "",
+          "ch:1:sloid:6155"
+        ],
+        [
+          8.89456997,
+          47.65209637,
+          "Öhningen (See)",
+          "",
+          "ch:1:sloid:1101745"
+        ],
+        [
+          8.85665208,
+          47.6599141,
+          "Stein am Rhein (Schifflände)",
+          "",
+          "ch:1:sloid:6153"
+        ]
+      ],
+      "days": {
+        "2026-09-04": 3,
+        "2026-09-06": 3
+      }
+    },
+    {
+      "routeId": "94-382-0-j26-1",
+      "agencyId": "193",
+      "line": "3820",
+      "directionId": "0",
+      "calls": [
+        [
+          8.96894149,
+          47.67198934,
+          "Hemmenhofen (See)",
+          "",
+          "ch:1:sloid:1101477"
+        ],
+        [
+          8.98143706,
+          47.66864413,
+          "Steckborn (See)",
+          "",
+          "ch:1:sloid:6157"
+        ],
+        [
+          8.98231741,
+          47.67945935,
+          "Gaienhofen (See)",
+          "",
+          "ch:1:sloid:1101424"
+        ],
+        [
+          9.01766611,
+          47.67534039,
+          "Berlingen (See)",
+          "",
+          "ch:1:sloid:6159"
+        ],
+        [
+          9.04843341,
+          47.67449358,
+          "Mannenbach (See)",
+          "",
+          "ch:1:sloid:6160"
+        ],
+        [
+          9.05422755,
+          47.6897402,
+          "Reichenau (See)",
+          "",
+          "ch:1:sloid:1101894"
+        ],
+        [
+          9.085444,
+          47.67523152,
+          "Ermatingen (See)",
+          "",
+          "ch:1:sloid:6162"
+        ],
+        [
+          9.13468066,
+          47.66466346,
+          "Gottlieben (Schifflände)",
+          "",
+          "ch:1:sloid:6163"
+        ],
+        [
+          9.17953355,
+          47.65986569,
+          "Konstanz Hafen",
+          "",
+          "8014587"
+        ],
+        [
+          9.18264172,
+          47.65258652,
+          "Kreuzlingen Hafen (See)",
+          "",
+          "ch:1:sloid:6165"
+        ]
+      ],
+      "days": {
+        "2026-09-04": 1,
+        "2026-09-06": 1
+      }
+    }
+  ],
+  "pairs": [
+    {
+      "wayId": 66929232,
+      "from": [
+        9.37997463,
+        47.56556342,
+        "Romanshorn (See)",
+        "",
+        "ch:1:sloid:6112"
+      ],
+      "to": [
+        9.44032346,
+        47.5126454,
+        "Arbon (See)",
+        "",
+        "ch:1:sloid:6110"
+      ],
+      "water": "bodensee-2007",
+      "version": 17,
+      "timestamp": "2025-10-05T08:43:51Z",
+      "selectedElementsSha256": "a7f7d7b67a718d0c6ae83fc8a6171b99ff193869302a9c10a3f0f7fc51e64510",
+      "limits": {
+        "snapMetres": 120,
+        "alternativeSnapMetres": 0,
+        "detourRatio": 3,
+        "detourFloorMetres": 1200
+      },
+      "dockZoneMetres": 25
+    },
+    {
+      "wayId": 1255664244,
+      "from": [
+        9.37997463,
+        47.56556342,
+        "Romanshorn (See)",
+        "",
+        "ch:1:sloid:6112"
+      ],
+      "to": [
+        9.34535356,
+        47.58643454,
+        "Uttwil (See)",
+        "",
+        "ch:1:sloid:30835"
+      ],
+      "water": "bodensee-2007",
+      "version": 8,
+      "timestamp": "2025-10-05T08:43:51Z",
+      "selectedElementsSha256": "5a3d84905a3a3ae8b86b5eb09467c54dded26bcd179105987abe8db675c3773b",
+      "limits": {
+        "snapMetres": 120,
+        "alternativeSnapMetres": 0,
+        "detourRatio": 3,
+        "detourFloorMetres": 1200
+      },
+      "dockZoneMetres": 25
+    },
+    {
+      "wayId": 66929246,
+      "from": [
+        9.18264172,
+        47.65258652,
+        "Kreuzlingen Hafen (See)",
+        "",
+        "ch:1:sloid:6165"
+      ],
+      "to": [
+        9.21189985,
+        47.64473744,
+        "Bottighofen (See)",
+        "",
+        "ch:1:sloid:30720"
+      ],
+      "water": "bodensee-2007",
+      "version": 19,
+      "timestamp": "2025-10-05T08:43:51Z",
+      "selectedElementsSha256": "ce75fb0b0d9f805b96608c5318b319c707ac545df07036b9a30d81c275854d17",
+      "limits": {
+        "snapMetres": 120,
+        "alternativeSnapMetres": 0,
+        "detourRatio": 3,
+        "detourFloorMetres": 1200
+      },
+      "dockZoneMetres": 25
+    },
+    {
+      "wayId": 1255942854,
+      "from": [
+        9.27226663,
+        47.6920259,
+        "Meersburg (Bodensee)",
+        "",
+        "8014611"
+      ],
+      "to": [
+        9.18264172,
+        47.65258652,
+        "Kreuzlingen Hafen (See)",
+        "",
+        "ch:1:sloid:6165"
+      ],
+      "water": "bodensee-2007",
+      "version": 11,
+      "timestamp": "2025-10-05T08:43:51Z",
+      "selectedElementsSha256": "37989c2be05ada2001bf052335dd8a89217721794ff302cd45c8f215310e5f86",
+      "limits": {
+        "snapMetres": 120,
+        "alternativeSnapMetres": 0,
+        "detourRatio": 3,
+        "detourFloorMetres": 1200
+      },
+      "dockZoneMetres": 100
+    },
+    {
+      "wayId": 96604650,
+      "from": [
+        9.44032346,
+        47.5126454,
+        "Arbon (See)",
+        "",
+        "ch:1:sloid:6110"
+      ],
+      "to": [
+        9.53991069,
+        47.59515262,
+        "Langenargen Hafen",
+        "",
+        "8014650"
+      ],
+      "water": "bodensee-2007",
+      "version": 6,
+      "timestamp": "2025-04-16T18:42:38Z",
+      "selectedElementsSha256": "72d83ac3eabf0699a1d1ce64130239c852518f14f9895c5ad3a08230a53787e3",
+      "limits": {
+        "snapMetres": 120,
+        "alternativeSnapMetres": 0,
+        "detourRatio": 3,
+        "detourFloorMetres": 1200
+      },
+      "dockZoneMetres": 25
+    },
+    {
+      "wayId": 66929242,
+      "from": [
+        9.29601809,
+        47.61286905,
+        "Güttingen (See)",
+        "",
+        "ch:1:sloid:95982"
+      ],
+      "to": [
+        9.37997463,
+        47.56556342,
+        "Romanshorn (See)",
+        "",
+        "ch:1:sloid:6112"
+      ],
+      "water": "bodensee-2007",
+      "version": 22,
+      "timestamp": "2025-10-05T08:43:51Z",
+      "selectedElementsSha256": "291a2444d595dc703cfa202d56a86def024ae4fe7d1a7f526a147f30fa685f15",
+      "limits": {
+        "snapMetres": 120,
+        "alternativeSnapMetres": 0,
+        "detourRatio": 3,
+        "detourFloorMetres": 1200
+      },
+      "dockZoneMetres": 25
+    },
+    {
+      "wayId": 25489146,
+      "from": [
+        8.6410115,
+        47.69529102,
+        "Schaffhausen (Schifflände)",
+        "",
+        "ch:1:sloid:6150"
+      ],
+      "to": [
+        8.6933204,
+        47.69543008,
+        "Büsingen (Schifflände)",
+        "",
+        "ch:1:sloid:1101322"
+      ],
+      "water": "rhine-osm",
+      "version": 15,
+      "timestamp": "2025-12-21T16:40:50Z",
+      "selectedElementsSha256": "528acae80c2bf4ac12882105dbafa22d93b72249782154c4c4c279fecc7f6353",
+      "limits": {
+        "snapMetres": 25,
+        "alternativeSnapMetres": 0,
+        "detourRatio": 3,
+        "detourFloorMetres": 1200
+      },
+      "dockZoneMetres": 10
+    },
+    {
+      "wayId": 25489986,
+      "from": [
+        8.6933204,
+        47.69543008,
+        "Büsingen (Schifflände)",
+        "",
+        "ch:1:sloid:1101322"
+      ],
+      "to": [
+        8.74886323,
+        47.69041746,
+        "Diessenhofen (Schifflände)",
+        "",
+        "ch:1:sloid:6152"
+      ],
+      "water": "rhine-osm",
+      "version": 9,
+      "timestamp": "2025-12-21T16:40:50Z",
+      "selectedElementsSha256": "10ac2f0834fbbf6179263612dec5dbc7580b7ab9515b72ae29fea54fc19e57b0",
+      "limits": {
+        "snapMetres": 25,
+        "alternativeSnapMetres": 0,
+        "detourRatio": 3,
+        "detourFloorMetres": 1200
+      },
+      "dockZoneMetres": 10
+    }
+  ],
+  "riverElementsSha256": "19b41ba886d1cc1d38bb881ea8bf22fc98b65bfe254b51f4a7b93c541d82c27e",
+  "scope": "Only the 17 originally rejected full directed dock/coordinate patterns of three exact SBS/URh route identities. Use each successful original official segment unchanged; for a failed segment, only its exact reviewed OSM way is available. Any unresolved segment excludes the full journey. Previous admitted journeys and demand-responsive exclusions are preserved.",
+  "shorelineRule": "Audit every source edge against all shoreline and island intersections. Lake OSM replacements use original Bodensee feature 124 with 120 m dock snaps and 25 m discrepancy zones except the explicitly reviewed Meersburg dock pair (100 m, below the original official 150 m policy); Rhine replacements use exact OSM relation 1679977 with its hole, 25 m snaps and 10 m discrepancy zones. Successful official segments retain their original 150 m policy. No remote outside-water interval is admitted."
+}
