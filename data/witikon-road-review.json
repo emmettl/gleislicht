@@ -1,0 +1,195 @@
+{
+  "schemaVersion": 1,
+  "status": "review-only-no-publication",
+  "scope": {
+    "schemaVersion": 1,
+    "batchScopeSha256": "cf993c04f006aefe5f34f36d22f39ae84daf1fa0825571687ef96721cc028aa3",
+    "classifiedSourceSha256": "5054645df379ea7fcbe49e959b70a46862f25e6ca25570781f2067cc2ee0434a"
+  },
+  "stationId": "ZH.CH:1101",
+  "name": "Zürich: Witikonerstrasse",
+  "stationPointLv95": [
+    2688841.8000000007,
+    1246421.5799999982
+  ],
+  "localConnection": {
+    "cityRoad": "30051",
+    "cityFeatureId": 7870,
+    "cantonRoad": "742",
+    "cantonFeatureId": 2697,
+    "sharedEndpointLv95": [
+      2688912.5121,
+      1246434.3011000007
+    ],
+    "stationToConnectionMetres": 71.85,
+    "cityFeatureLengthMetres": 87.54,
+    "cityAxisDistanceMetres": 0,
+    "classifiedAxisDistanceMetres": 71.85,
+    "status": "exact-endpoint-connection-observed"
+  },
+  "namedRoadNetwork": {
+    "roadNumbers": [
+      "30051",
+      "742"
+    ],
+    "sourceFeatureCount": 42,
+    "componentFeatureIds": [
+      445,
+      446,
+      447,
+      448,
+      2697,
+      2699,
+      2700,
+      4234,
+      4242,
+      4246,
+      4250,
+      4251,
+      4252,
+      4253,
+      4257,
+      4292,
+      4309,
+      4312,
+      4313,
+      4333,
+      4334,
+      4335,
+      4336,
+      4337,
+      4338,
+      4339,
+      4395,
+      4396,
+      4398,
+      4400,
+      4404,
+      4411,
+      4412,
+      4439,
+      6470,
+      6888,
+      6889,
+      7870
+    ],
+    "componentFeatureCount": 38,
+    "otherFeatureIds": [
+      2703,
+      2704,
+      2705,
+      2706
+    ],
+    "endpointToleranceMetres": 0.01,
+    "counterSearchToleranceMetres": 25
+  },
+  "relatedCounters": [
+    {
+      "id": "ZH.CH:0889",
+      "name": "Maur: Zürichstrasse",
+      "nearestDetailedFeatureId": 2704,
+      "nearestDistanceMetres": 0,
+      "withinReviewedComponentTolerance": false,
+      "distanceToReviewedComponentMetres": 678.58,
+      "originalGeometryStatus": "matched",
+      "observations": {
+        "completeMinutes": 0,
+        "longestRunMinutes": 0,
+        "detectorIssueMinutes": {
+          "ZH.CH:0889.01": {
+            "light-flow-missing-or-invalid": 245,
+            "heavy-flow-missing-or-invalid": 245
+          },
+          "ZH.CH:0889.02": {
+            "light-flow-missing-or-invalid": 245,
+            "heavy-flow-missing-or-invalid": 245
+          }
+        }
+      },
+      "directionAudit": {
+        "id": "ZH.CH:0889",
+        "road": "ZH:742",
+        "pathId": "ZH:742:1bbeb451fa3c2ff8",
+        "status": "unresolved-direction-pair",
+        "detectors": [
+          {
+            "id": "ZH.CH:0889.01",
+            "description": "Normalspur Richtung Zürich",
+            "alertCDirection": "positive",
+            "status": "destination-too-close",
+            "destination": {
+              "name": "Zürich",
+              "coordinate": [
+                2682880.1500000004,
+                1248023.1
+              ],
+              "bounds": [
+                2677461.6,
+                1241764.4,
+                2688298.7,
+                1254281.8
+              ],
+              "sourceFeatureId": 314086
+            },
+            "destinationDistanceMetres": 8016.66,
+            "destinationRoadDistanceMetres": 7506.58,
+            "offsetSeparationMetres": -531.8,
+            "bearingAgreement": -1,
+            "offsetMetres": 531.8
+          },
+          {
+            "id": "ZH.CH:0889.02",
+            "description": "Normalspur Richtung Maur",
+            "alertCDirection": "negative",
+            "status": "validated",
+            "direction": "positive",
+            "destination": {
+              "name": "Maur",
+              "coordinate": [
+                2692987.5,
+                1244082.15
+              ],
+              "bounds": [
+                2692040.8,
+                1243447.3,
+                2693934.2,
+                1244717
+              ],
+              "sourceFeatureId": 239794
+            },
+            "destinationDistanceMetres": 2880.99,
+            "destinationRoadDistanceMetres": 74.1,
+            "offsetSeparationMetres": 3345.2,
+            "bearingAgreement": 0.99,
+            "offsetMetres": 531.8
+          }
+        ]
+      }
+    },
+    {
+      "id": "ZH.CH:1101",
+      "name": "Zürich: Witikonerstrasse",
+      "nearestDetailedFeatureId": 7870,
+      "nearestDistanceMetres": 0,
+      "withinReviewedComponentTolerance": true,
+      "distanceToReviewedComponentMetres": 0,
+      "originalGeometryStatus": "off-network",
+      "observations": {
+        "completeMinutes": 245,
+        "longestRunMinutes": 245,
+        "detectorIssueMinutes": {}
+      },
+      "directionAudit": {
+        "id": "ZH.CH:1101",
+        "status": "unmatched-geometry",
+        "candidatePaths": [
+          "ZH:742:c063bc99e4da9933"
+        ],
+        "detectors": []
+      }
+    }
+  ],
+  "recordingReadiness": "no-supported-counter-pair",
+  "requiredEvidence": "An independently reviewed second counter and simultaneous complete observations on a reviewed connecting route, followed by direction and junction checks. City-road inclusion alone is insufficient.",
+  "limitation": "Connectivity is restricted to the published 30051 and 742 features and their endpoints; this is not a claim that the wider road network is disconnected. No links across other road numbers, geometry gaps or line crossings are synthesized. Nearby counters and station-only coverage do not establish a playback pair. No station is moved and no topology, travel direction or playback is emitted."
+}
