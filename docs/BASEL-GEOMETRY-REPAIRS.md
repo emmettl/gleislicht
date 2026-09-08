@@ -1,6 +1,6 @@
 # Basel geometry repairs, 8 September 2026
 
-The follow-up resolves **all remaining tram gaps**, adding **724 Tuesday / 350 Sunday movements** across 224 directed route/platform pairs in the two-date union. Together with the initial twelve repairs, this adds **1,406 / 806 movements**. All trams, BVB buses and regional rail now have accepted geometry for every movement in both fixtures. EV11 Freilager–Schaulager is the only remaining pair. This is centreline coverage, not certification of individual running tracks.
+The reviewed repairs now resolve **every remaining movement-geometry gap** in both Basel fixtures. The initial twelve repairs and tram follow-up added **1,406 Tuesday / 806 Sunday movements**; the final EV11 Freilager–Schaulager repair adds **177 / 104**, for **1,583 / 910** in total. All five groups have 100% inferred centreline coverage. This does not certify individual running tracks or exact temporary bus lanes.
 
 | Repair | Tuesday added | Sunday added | Maximum endpoint snap |
 | --- | ---: | ---: | ---: |
@@ -11,6 +11,7 @@ The follow-up resolves **all remaining tram gaps**, adding **724 Tuesday / 350 S
 | Bus 34: Otto Wenk-Platz A–B | 32 | 0 | 4.26 m |
 | EV11: Schaulager–MFP | 177 | 104 | 5.81 m |
 | Depot/special tram patterns, follow-up | 724 | 350 | 15.93 m |
+| EV11: Freilager–Schaulager, final follow-up | 177 | 104 | 11.28 m |
 
 ## Sources and route review
 
@@ -68,8 +69,29 @@ The follow-up passes **60 focused tests across nine files**, including refresh r
 
 The shared release blockers above were repaired in `7d2208b`: St. Gallen tests now use Vitest, refresh fixtures create nested regional directories, complete replay tests have bounded CI timeouts, and geometry snapshot checks tolerate only sub-micrometre differences in derived measurements across macOS/Linux. Source coordinates, source hashes and admission decisions remain exact. Cantonal pilot validation now loads with its existing lazy controls, bringing opening JavaScript within the unchanged 360 KiB budget. All 621 tests pass in the isolated integration checkout; all 22 affected road-pilot browser cases pass, with one iPhone selection timeout passing on retry. The [Linux release check](https://github.com/emmettl/gleislicht/actions/runs/34269155014) passes tests, typecheck, lint, architecture, worker builds, production build and publication budgets. The national/regional refresh and full browser jobs were still running when this note was written; deployment is not yet confirmed.
 
-## Still unresolved
+## EV11 Freilager–Schaulager: resolved for the centreline study
 
-**Freilager–Schaulager, EV11:** **177 Tuesday / 104 Sunday movements**, one directed route/platform pair on each date. A fresh [public OSM road probe](../data/basel-ev11-source-probe.json), with the complete compressed response retained, narrows the issue: the earlier pfaedle extract omitted service roads along Neapel-Strasse. Current OSM includes that corridor, but its northeast end is not connected to the Freilager approach. BLT's dated map shows the missing connection. The existing road candidate's alternate Emil Frey-Strasse route remains rejected. A matching open source for that connection, or a permitted official geometry export, is still needed. No synthetic connector, moved platform or relaxed tolerance was admitted.
+The final repair uses **13 continuous swissTLM3D 2026-02 road records** from Freilager along Neapel-Strasse and Ruchfeldstrasse. The first three are classified as **4m Strasse**, with no recorded traffic restriction or directional-road flag. They connect the Freilager forecourt to the wider Neapel-Strasse road. The [earlier OSM probe](../data/basel-ev11-source-probe.json) remains a valid account of that source: its motor-road graph omits this connection, classifying part of it as a footpath. The Basel-Stadt bus layer and Basel-Landschaft transit layer expose the regular network, while the cantonal road-axis layer does not cover this entrance.
 
-The remaining pair retains explicit stop interpolation. No other tram, rail or BVB bus movement remains unmatched in either fixture. The repairs do not expand the operator set, geographic boundary or approved dates.
+The accepted path is **793.6 m**, with a maximum endpoint snap of **11.28 m**. All joins are exact shared source endpoints; no gap-closing connector or moved GTFS stop is introduced. The chain follows the full western Neapel-Strasse curve before Ruchfeldstrasse. The earlier Genuastrasse turn and the direct Emil Frey-Strasse shortcut are excluded. Both were numerically attractive alternatives, but they do not follow the reviewed diversion corridor.
+
+The [dated BLT construction map](https://www.blt.ch/projekte/linie-11/bauprojekt), layer 5 / object 2 toward Aesch, remains the independent route reference. The maximum separation of the inferred path vertices from that reference line is **25.6 m**, concentrated near Freilager. The federal forecourt centreline and the drawn temporary-lane approach are not identical: admission is for the existing schematic centreline model, not a claim to reproduce the precise temporary kerb or lane alignment. BLT coordinates are not redistributed. The [swisstopo terms](https://www.swisstopo.admin.ch/de/kostenlose-geobasisdaten-ogd) permit reuse with attribution, retained in both the source bundle and application.
+
+![Reviewed EV11 road centreline](assets/basel-ev11-road-review.svg)
+
+The compressed [source subset](../data/basel-geometry-sources/ev11-tlm-roads-2026-02.json.gz) retains complete selected `TLM_STRASSE` records: original UUIDs, LV95 XY vertices, road classifications and attributes. The source SHP, DBF and PRJ hashes are recorded along with the archive URL. The existing `lv95ToWgs84` transform derives the display coordinates. Tests independently reproduce those coordinates from the retained records and reject changed vertices, footpaths, restricted roads and direction-specific roads.
+
+The [EV11 review](../data/basel-ev11-geometry-review.json) pins the full ordered platform sequence and coordinates of the single admitted pattern and lists every affected dated trip instance. The rule remains restricted to route `92-A01-I-j26-1`, agency `37`, the exact directed stop pair, feed `20260905`, the two reviewed civil dates and their reviewed source dates. No general road fallback or snap/detour limit changes.
+
+The [complete regression](../data/basel-ev11-geometry-regression.json) verifies **149,983 Tuesday / 101,656 Sunday previously accepted movements** byte for byte. All source calls, times, platforms, trip identities and rail clipping boundaries are unchanged. The only additions are **177 / 104 EV11 movements**; no unmatched movement remains in either fixture. Both complete application release sets pass validation. All **60 focused tests** and **six Basel browser cases** pass on desktop Chromium and iPhone WebKit. Focused lint and diff whitespace checks pass; the corridor and entrance review figure was visually inspected.
+
+```sh
+node scripts/check-basel-geometry-regression.mjs \
+  --before /tmp/basel-geometry-complete \
+  --after /tmp/basel-ev11-repair/candidates \
+  --allow-reviewed-geometry-update \
+  --output data/basel-ev11-geometry-regression.json
+npx vitest run scripts/basel-ev11-geometry.test.mjs scripts/basel-reviewed-geometry.test.mjs
+```
+
+To reproduce acquisition, extract `TLM_STRASSEN\swissTLM3D_TLM_STRASSE.{shp,dbf,prj}` from the archive recorded in the source subset and select the 13 retained UUIDs. Preserve each complete source coordinate array and attributes. Normal application rebuilds use the self-contained reviewed geometry bundle and do not need the multi-gigabyte national road layer.
