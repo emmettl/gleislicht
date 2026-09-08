@@ -4,6 +4,7 @@ import { gunzipSync } from 'node:zlib'
 import { resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { projectOnRoad, validateGeoCollection } from './ingest-cantonal-road-topology.mjs'
+import { buildDirectionTopology } from './validate-cantonal-road-directions.mjs'
 
 const hash = value => createHash('sha256').update(value).digest('hex')
 const digest = value => hash(JSON.stringify(value))
@@ -31,12 +32,15 @@ export async function loadUnmatchedRoadInputs() {
     if (source?.url !== url || source.file !== `data/cantonal-unmatched-sources/${name}.json.gz`) throw new Error('Unexpected complete road source')
     sources[name] = decodeCompleteRoadSource(await readFile(source.file), source)
   }
-  return { geometry: await read('public/data/zurich-cantonal-road-topology.json'), catalog: await read('data/zurich-cantonal-road-counters.json'), coverage: await read('data/zurich-cantonal-road-coverage-audit.json'), manifest, sources }
+  return { geometry: await read('public/data/zurich-cantonal-road-topology.json'), catalog: await read('data/zurich-cantonal-road-counters.json'), directions: await read('data/zurich-cantonal-road-directions.json'), coverage: await read('data/zurich-cantonal-road-coverage-audit.json'), manifest, sources }
 }
 
 export function auditUnmatchedRoads(inputs, scope) {
-  if (scope.schemaVersion !== 1 || ['geometry', 'catalog', 'coverage', 'manifest', 'sources'].some(key => scope.hashes[key] !== digest(inputs[key]))) throw new Error('Unmatched-road audit inputs changed')
-  const { geometry, catalog, coverage, sources, manifest } = inputs
+  if (scope.schemaVersion !== 1 || ['geometry', 'catalog', 'directions', 'coverage', 'manifest', 'sources'].some(key => scope.hashes[key] !== digest(inputs[key]))) throw new Error('Unmatched-road audit inputs changed')
+  const { geometry, catalog, directions, coverage, sources, manifest } = inputs
+  const baseline = buildDirectionTopology(geometry, catalog, directions.places)
+  if (digest(baseline.stationAudit) !== digest(directions.stationAudit)) throw new Error('Unmatched-road direction baseline changed')
+  const directionAudits = new Map(directions.stationAudit.map(s => [s.id, s]))
   if (manifest.schemaVersion !== 1 || Object.entries(SOURCE_URLS).some(([key, url]) => manifest.sources[key]?.url !== url)) throw new Error('Complete source URLs changed')
   const axes = validateGeoCollection(sources.axes, 'Complete detailed axes')
   const points = validateGeoCollection(sources.stations, 'Complete station inventory')
@@ -56,7 +60,11 @@ export function auditUnmatchedRoads(inputs, scope) {
     const observed = stationCoverage.get(station.id)
     if (!observed) throw new Error(`Missing archived station coverage: ${station.id}`)
     const related = coverage.candidatePairs.filter(p => [p.from, p.to].includes(station.id))
-    const base = { id: station.id, name: station.name, originalGeometryStatus: station.geometryStatus, publicationStatus: 'not-admitted', collectorIdentityMatches: true, originalCandidates: station.candidates ?? [], observations: { completeMinutes: observed.completeMinutes, longestRunMinutes: observed.longestRunMinutes }, archivedCandidatePairs: related.map(p => ({ from: p.from, to: p.to, pathId: p.pathId, distanceMetres: p.distanceMetres, longestRunMinutes: p.longestRunMinutes, status: p.status })) }
+    const base = { id: station.id, name: station.name, originalGeometryStatus: station.geometryStatus, publicationStatus: 'not-admitted', collectorIdentityMatches: true, originalCandidates: station.candidates ?? [], observations: { completeMinutes: observed.completeMinutes, longestRunMinutes: observed.longestRunMinutes }, archivedCandidatePairs: related.map(p => ({ from: p.from, to: p.to, pathId: p.pathId, distanceMetres: p.distanceMetres, longestRunMinutes: p.longestRunMinutes, status: p.status, endpointBlockers: [p.from, p.to].map(id => {
+      const audit = directionAudits.get(id)
+      if (!audit) throw new Error(`Missing endpoint direction audit: ${id}`)
+      return { id, status: audit.status, detectors: audit.detectors.filter(d => d.status !== 'validated').map(({ id, description, status }) => ({ id, description, status })) }
+    }) })) }
     if (!point) return { ...base, family: 'missing-station', evidenceStatus: 'station-id-required', candidates: [], nextEvidence: 'An exact public station-ID join or separately reviewed precise station source. Coarse detector coordinates cannot replace it.' }
     // Rank every detailed feature before retaining the closest five. Motorway,
     // planned and municipal features all compete, including adjacent fragments.

@@ -2,7 +2,7 @@
 
 **All 33 counters without an approved geometry match have now been checked against the complete public detailed-road service.** This is a diagnostic inventory, not a set of approved road bindings. It separates missing station identities, high-speed-road exclusions, municipal branches, city-owned roads and unresolved competing axes so follow-up work can target the right evidence.
 
-The [report](../data/cantonal-unmatched-road-audit.json) records every counter, its original geometry status, the closest five detailed features, competing-axis separation and archived station/pair coverage. All **7,427** detailed features compete before the five closest are retained. The sources also contain all **428** public station points and **369** public collector records. All 23 previously located unmatched counters retain exactly the same precise coordinates; all 33 collector identities and detector labels agree with the existing topology.
+The [report](../data/cantonal-unmatched-road-audit.json) records every counter, its original geometry status, the closest five detailed features, competing-axis separation and archived station/pair coverage. Each pair also retains both endpoints' unresolved direction checks from the independently recomputed baseline. All **7,427** detailed features compete before the five closest are retained. The sources also contain all **428** public station points and **369** public collector records. All 23 previously located unmatched counters retain exactly the same precise coordinates; all 33 collector identities and detector labels agree with the existing topology.
 
 ## Findings
 
@@ -31,7 +31,7 @@ The ten missing IDs are **0218, 0305, 0618, 1089, 1288, 1392, 1790, 1886, 5090 a
 | **2491 Lindau, Lindauerstrasse** | Road 766 passes through the point; a motorway feature is 14.61 m away. | Both archived neighbouring diagnostic pairs have 104 complete minutes. Resolve the road-level relationship without relaxing the margin. |
 | **3387 Stallikon, Schwandenstrasse** | Road 650 passes through the point; a motorway feature is 6.50 m away. | The 3287–3387 diagnostic pair has a 149-minute complete run. Seek explicit grade-separation/road-binding evidence. |
 
-These are coverage facts for existing diagnostic pairs, not guarantees of usable sections. In particular, the Witikonerstrasse station total must not be presented as a paired recording window. Direction, section/junction and playback compilation checks still follow any successful geometry review. **Dietikon 1921 is the next focused investigation**, because it has a long paired archive and a specific two-road ambiguity to resolve.
+These are coverage facts for existing diagnostic pairs, not guarantees of usable sections. In particular, the Witikonerstrasse station total must not be presented as a paired recording window. The [Dietikon follow-up](DIETIKON-ROAD-REVIEW.md) identifies two lane groups near parallel axes but obtains no detector-to-axis mapping; Oetwil 0214 independently fails its direction checks. Dietikon remains deferred pending evidence at both ends. Zürich Allmendstrasse 0197 is the next geometry lead, with 4087's extent conflict retained in the queue as a separate required review.
 
 ## Sources and reproduction
 
