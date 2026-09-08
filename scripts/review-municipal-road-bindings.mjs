@@ -51,4 +51,3 @@ export function reviewMunicipalRoadBindings(inputs, scope, { bindings, bbox }) {
   })
   return { reviewedGeometry, stationReviews }
 }
-
