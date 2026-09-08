@@ -83,7 +83,7 @@ function sectionPath(points, from, to) {
   }), end].map(lv95ToWgs84)
 }
 
-export function buildDirectionTopology(topology, catalog, places, reviews = []) {
+export function buildDirectionTopology(topology, catalog, places, reviews = [], directionContexts = new Map()) {
   if (topology.metadata.recordingScope !== 'zurich-cantonal' || catalog.metadata.supplier !== 'ZH.CH') throw new Error('Expected Zürich topology and catalog')
   if (topology.metadata.measurementSiteTableVersion !== catalog.metadata.measurementSiteTableVersion) throw new Error('Topology and catalog versions differ')
   const paths = new Map(topology.paths.map(p => [p.id, { ...p, lv95: p.points.map(([lon, lat]) => wgs84ToLv95(lon, lat)) }]))
@@ -92,14 +92,17 @@ export function buildDirectionTopology(topology, catalog, places, reviews = []) 
     if (!station.match) return { id: station.id, status: 'unmatched-geometry', candidatePaths: station.preciseLv95 ? (station.candidates ?? []).map(c => c.pathId) : [], detectors: [] }
     const path = paths.get(station.match.pathId)
     if (!path) throw new Error(`Missing path for ${station.id}`)
+    // Optional contexts are supplied by a separately pinned evidence builder.
+    // They affect direction checks only; published section geometry stays on this path.
+    const context = directionContexts.get(station.id)
     const descriptions = new Map((station.detectorDescriptions ?? []).map(d => [d.id, d.description]))
     let audit = station.detectorIds.flatMap(id => {
       const detector = detectors.get(id)
       if (!detector) throw new Error(`Detector absent from catalog: ${id}`)
       if (detector.lane === 'emergencyLane') return []
       const description = descriptions.get(id), name = directionDestination(description)
-      const place = name && places.entries.find(p => norm(p.name) === norm(name))
-      return [{ id, description, alertCDirection: detector.direction, ...(place ? orientDestination(station.preciseLv95, path.lv95, place.candidates) : { status: 'unresolved-description' }) }]
+      const place = name && (context?.places ?? places).entries.find(p => norm(p.name) === norm(name))
+      return [{ id, description, alertCDirection: detector.direction, ...(place ? orientDestination(station.preciseLv95, context?.points ?? path.lv95, place.candidates) : { status: 'unresolved-description' }) }]
     })
     const review = reviews.find(r => r.stationId === station.id)
     if (review) audit = reviewCantonalDirection(station, audit, detectors, review)

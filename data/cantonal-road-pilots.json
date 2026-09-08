@@ -49,5 +49,22 @@
       "ZH.CH:4190"
     ],
     "junctionAreas": 3
+  },
+  {
+    "id": "meilen-staefa-2026-09-08",
+    "road": "ZH:17",
+    "label": "Meilen–Stäfa",
+    "name": "Meilen–Stäfa · Seestrasse",
+    "file": "meilen-staefa-road-pilot.json",
+    "serviceDate": "2026-09-08",
+    "windowStart": 48180,
+    "windowEnd": 62820,
+    "initialTime": 48180,
+    "completeMinutes": 245,
+    "stationIds": [
+      "ZH.CH:0591",
+      "ZH.CH:1091"
+    ],
+    "junctionAreas": 2
   }
 ]

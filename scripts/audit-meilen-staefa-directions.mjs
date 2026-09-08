@@ -22,7 +22,7 @@ async function main() {
   const files = ['public/data/zurich-cantonal-road-topology.json', 'data/lakeside-road-review-sources.json']
   const bodies = await Promise.all(files.map(file => readFile(file, 'utf8')))
   const detectors = reviewMeilenDestinations(...bodies.map(body => JSON.parse(body)))
-  await writeFile('data/meilen-staefa-direction-review.json', JSON.stringify({ sourceHashes: Object.fromEntries(files.map((file, i) => [file, hash(bodies[i])])), status: 'not-published', reason: 'Qualified place names resolve the regional destination, but it remains 2522.39 m from the available road axis, above the unchanged 1500 m gate. Further road-continuation evidence is needed before direction validation.', detectors }, null, 2)+'\n')
+  await writeFile('data/meilen-staefa-direction-review.json', JSON.stringify({ sourceHashes: Object.fromEntries(files.map((file, i) => [file, hash(bodies[i])])), status: 'requires-road-continuation', scope: 'Original Zürich geometry only; the subsequent St. Gallen continuation review is recorded in data/meilen-staefa-continuation-review.json', reason: 'Qualified place names resolve the regional destination, but it remains 2522.39 m from the available road axis, above the unchanged 1500 m gate. Further road-continuation evidence is needed before direction validation.', detectors }, null, 2)+'\n')
   console.log(detectors.map(d => ({ stationId: d.stationId, status: d.status, destinationRoadDistanceMetres: d.destinationRoadDistanceMetres })))
 }
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) await main()

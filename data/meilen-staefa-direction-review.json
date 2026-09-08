@@ -3,7 +3,8 @@
     "public/data/zurich-cantonal-road-topology.json": "e6672433b70989a1fb5228bfe5d61933d58394a60df3e36b8deba83e8c9f65ea",
     "data/lakeside-road-review-sources.json": "760a2fd12644b3ffa3abdc2143856b52d4ebf6bb34fb67e0ef45bd1b032f0750"
   },
-  "status": "not-published",
+  "status": "requires-road-continuation",
+  "scope": "Original Zürich geometry only; the subsequent St. Gallen continuation review is recorded in data/meilen-staefa-continuation-review.json",
   "reason": "Qualified place names resolve the regional destination, but it remains 2522.39 m from the available road axis, above the unchanged 1500 m gate. Further road-continuation evidence is needed before direction validation.",
   "detectors": [
     {
