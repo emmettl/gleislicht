@@ -1,0 +1,627 @@
+{
+  "metadata": {
+    "publisher": "SBB",
+    "feedVersion": "20260902",
+    "serviceDate": "2026-09-04",
+    "windowStart": 0,
+    "windowEnd": 86400,
+    "focusTime": 43200,
+    "sourceUrl": "https://opentransportdata.swiss/en/cookbook/timetable-cookbook/gtfs/",
+    "model": "source timetable interpolation on mapped 2D rail and cableway alignments; Eiger Express records are not tracked physical cabins",
+    "note": "BOB valley branches, Wengernalpbahn, Jungfraubahn and Eiger Express only. No measured terrain, tunnel heights or walking geometry. After-midnight records remain on their original service day; preceding-day spillover is not included.",
+    "sources": {
+      "timetable": {
+        "sha256": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e"
+      },
+      "rail": {
+        "publisher": "Federal Office of Transport",
+        "sha256": "2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+        "simplificationToleranceMetres": 10
+      },
+      "cableway": {
+        "publisher": "Federal Office of Transport",
+        "sha256": "6c5f342973eaa1f89a6c7376b0bfa1ed75e88107d46a868605256896aadd0a98",
+        "installation": "75.014"
+      }
+    }
+  },
+  "counts": {
+    "trips": 1563,
+    "rail": 326,
+    "cableway": 1237,
+    "stops": 46,
+    "paths": 22,
+    "gzipBytes": 49544
+  },
+  "stationCorrections": [
+    {
+      "source": "10470",
+      "name": "Matten b. Interlaken",
+      "segment": "ch14uvag00068371",
+      "from": "Interlaken Ost [Gleis 1-2]",
+      "to": "Wilderswil",
+      "coordinate": [
+        7.872850057937285,
+        46.67418312306236
+      ],
+      "offsetMetres": 3.4096022290104733
+    },
+    {
+      "source": "5226",
+      "name": "Grindelwald Terminal",
+      "segment": "ch14uvag00067777",
+      "from": "Schwendi bei Grindelwald",
+      "to": "Grindelwald",
+      "coordinate": [
+        8.016721630669599,
+        46.625563628668246
+      ],
+      "offsetMetres": 5.6772845789576625
+    }
+  ],
+  "platformResolution": {
+    "gtfsStation": "ch:1:sloid:7492",
+    "platforms": [
+      "2",
+      "2A",
+      "2B"
+    ],
+    "fotNode": "ch14uvag00066282",
+    "fotNumber": "8519310",
+    "name": "Interlaken Ost [Gleis 1-2]",
+    "publishedStopIdsUnchanged": true
+  },
+  "cableway": [
+    {
+      "from": "ch:1:sloid:5226",
+      "to": "ch:1:sloid:7361",
+      "featureId": 1297,
+      "installation": "75.014",
+      "endpointOffsetsMetres": [
+        213.28225868355605,
+        135.87312393320312
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "routeId": "91-61-j26-1",
+      "operator": "Berner Oberland-Bahnen",
+      "trips": 65,
+      "segments": 515,
+      "matched": 515,
+      "maxEndpointOffsetMetres": 85.62888244930924
+    },
+    {
+      "routeId": "91-62-j26-1",
+      "operator": "Berner Oberland-Bahnen",
+      "trips": 65,
+      "segments": 257,
+      "matched": 257,
+      "maxEndpointOffsetMetres": 85.62888244930924
+    },
+    {
+      "routeId": "93-244-4-j26-1",
+      "operator": "Wengernalpbahn Grindelwald Grund - Eigergletscher",
+      "trips": 1237,
+      "segments": 1237,
+      "matched": 1237,
+      "maxEndpointOffsetMetres": 213.28225868355605
+    },
+    {
+      "routeId": "93-63-j26-1",
+      "operator": "Wengernalpbahn",
+      "trips": 75,
+      "segments": 276,
+      "matched": 276,
+      "maxEndpointOffsetMetres": 55.31531197980291
+    },
+    {
+      "routeId": "93-64-j26-1",
+      "operator": "Wengernalpbahn",
+      "trips": 48,
+      "segments": 174,
+      "matched": 174,
+      "maxEndpointOffsetMetres": 44.24463843667557
+    },
+    {
+      "routeId": "93-65-j26-1",
+      "operator": "Jungfraubahn",
+      "trips": 73,
+      "segments": 105,
+      "matched": 105,
+      "maxEndpointOffsetMetres": 46.12856352532407
+    }
+  ],
+  "pairs": [
+    {
+      "from": "Interlaken Ost",
+      "to": "Matten b. Interlaken",
+      "fromId": "ch:1:sloid:7492_gen:ch:1:sloid:7492:0:94927_pf:2B",
+      "toId": "ch:1:sloid:10470_gen:ch:1:sloid:10470:0:18393_pf:1CD",
+      "pathIndex": 0,
+      "endpointOffsetMetres": 60.940446620403684
+    },
+    {
+      "from": "Matten b. Interlaken",
+      "to": "Wilderswil",
+      "fromId": "ch:1:sloid:10470_gen:ch:1:sloid:10470:0:18393_pf:1CD",
+      "toId": "ch:1:sloid:7388_gen:ch:1:sloid:7388:0:982127_pf:2CD",
+      "pathIndex": 1,
+      "endpointOffsetMetres": 85.62888244930924
+    },
+    {
+      "from": "Wilderswil",
+      "to": "Zweilütschinen",
+      "fromId": "ch:1:sloid:7388_gen:ch:1:sloid:7388:0:982127_pf:2CD",
+      "toId": "ch:1:sloid:7389_gen:ch:1:sloid:7389:0:409683_pf:1CD",
+      "pathIndex": 2,
+      "endpointOffsetMetres": 85.62888244930924
+    },
+    {
+      "from": "Zweilütschinen",
+      "to": "Lütschental",
+      "fromId": "ch:1:sloid:7389_gen:ch:1:sloid:7389:0:409683_pf:1CD",
+      "toId": "ch:1:sloid:7383:0:140172",
+      "pathIndex": 3,
+      "endpointOffsetMetres": 12.014584063771178
+    },
+    {
+      "from": "Lütschental",
+      "to": "Burglauenen",
+      "fromId": "ch:1:sloid:7383:0:140172",
+      "toId": "ch:1:sloid:7382:0:300658",
+      "pathIndex": 4,
+      "endpointOffsetMetres": 12.014584063771178
+    },
+    {
+      "from": "Burglauenen",
+      "to": "Schwendi bei Grindelwald",
+      "fromId": "ch:1:sloid:7382:0:300658",
+      "toId": "ch:1:sloid:7381:0:674",
+      "pathIndex": 5,
+      "endpointOffsetMetres": 11.542527608071099
+    },
+    {
+      "from": "Schwendi bei Grindelwald",
+      "to": "Grindelwald Terminal",
+      "fromId": "ch:1:sloid:7381:0:674",
+      "toId": "ch:1:sloid:5226:0:642315",
+      "pathIndex": 6,
+      "endpointOffsetMetres": 10.972282992510776
+    },
+    {
+      "from": "Grindelwald Terminal",
+      "to": "Grindelwald",
+      "fromId": "ch:1:sloid:5226:0:642315",
+      "toId": "ch:1:sloid:7380:0:764814",
+      "pathIndex": 7,
+      "endpointOffsetMetres": 19.087643350468
+    },
+    {
+      "from": "Grindelwald",
+      "to": "Schwendi bei Grindelwald",
+      "fromId": "ch:1:sloid:7380:0:764814",
+      "toId": "ch:1:sloid:7381:0:674",
+      "pathIndex": 8,
+      "endpointOffsetMetres": 19.087643350468
+    },
+    {
+      "from": "Schwendi bei Grindelwald",
+      "to": "Burglauenen",
+      "fromId": "ch:1:sloid:7381:0:674",
+      "toId": "ch:1:sloid:7382:0:634108",
+      "pathIndex": 5,
+      "endpointOffsetMetres": 10.972282992510776
+    },
+    {
+      "from": "Burglauenen",
+      "to": "Lütschental",
+      "fromId": "ch:1:sloid:7382:0:634108",
+      "toId": "ch:1:sloid:7383:0:140172",
+      "pathIndex": 4,
+      "endpointOffsetMetres": 12.014584063771178
+    },
+    {
+      "from": "Grindelwald",
+      "to": "Grindelwald Terminal",
+      "fromId": "ch:1:sloid:7380:0:764814",
+      "toId": "ch:1:sloid:5226:0:642315",
+      "pathIndex": 7,
+      "endpointOffsetMetres": 19.087643350468
+    },
+    {
+      "from": "Grindelwald Terminal",
+      "to": "Schwendi bei Grindelwald",
+      "fromId": "ch:1:sloid:5226:0:642315",
+      "toId": "ch:1:sloid:7381:0:674",
+      "pathIndex": 6,
+      "endpointOffsetMetres": 10.972282992510776
+    },
+    {
+      "from": "Lütschental",
+      "to": "Zweilütschinen",
+      "fromId": "ch:1:sloid:7383:0:140172",
+      "toId": "ch:1:sloid:7389:0:409683",
+      "pathIndex": 3,
+      "endpointOffsetMetres": 12.014584063771178
+    },
+    {
+      "from": "Zweilütschinen",
+      "to": "Wilderswil",
+      "fromId": "ch:1:sloid:7389:0:409683",
+      "toId": "ch:1:sloid:7388:0:982127",
+      "pathIndex": 2,
+      "endpointOffsetMetres": 85.62888244930924
+    },
+    {
+      "from": "Wilderswil",
+      "to": "Matten b. Interlaken",
+      "fromId": "ch:1:sloid:7388:0:982127",
+      "toId": "ch:1:sloid:10470:0:18393",
+      "pathIndex": 1,
+      "endpointOffsetMetres": 85.62888244930924
+    },
+    {
+      "from": "Matten b. Interlaken",
+      "to": "Interlaken Ost",
+      "fromId": "ch:1:sloid:10470:0:18393",
+      "toId": "ch:1:sloid:7492:0:94927",
+      "pathIndex": 0,
+      "endpointOffsetMetres": 60.940446620403684
+    },
+    {
+      "from": "Interlaken Ost",
+      "to": "Matten b. Interlaken",
+      "fromId": "ch:1:sloid:7492_gen:ch:1:sloid:7492:0:94927_pf:2A",
+      "toId": "ch:1:sloid:10470_gen:ch:1:sloid:10470:0:18393_pf:1AB",
+      "pathIndex": 0,
+      "endpointOffsetMetres": 60.940446620403684
+    },
+    {
+      "from": "Matten b. Interlaken",
+      "to": "Wilderswil",
+      "fromId": "ch:1:sloid:10470_gen:ch:1:sloid:10470:0:18393_pf:1AB",
+      "toId": "ch:1:sloid:7388_gen:ch:1:sloid:7388:0:982127_pf:2AB",
+      "pathIndex": 1,
+      "endpointOffsetMetres": 85.62888244930924
+    },
+    {
+      "from": "Wilderswil",
+      "to": "Zweilütschinen",
+      "fromId": "ch:1:sloid:7388_gen:ch:1:sloid:7388:0:982127_pf:2AB",
+      "toId": "ch:1:sloid:7389_gen:ch:1:sloid:7389:0:409683_pf:1AB",
+      "pathIndex": 2,
+      "endpointOffsetMetres": 85.62888244930924
+    },
+    {
+      "from": "Zweilütschinen",
+      "to": "Lauterbrunnen",
+      "fromId": "ch:1:sloid:7389_gen:ch:1:sloid:7389:0:409683_pf:1AB",
+      "toId": "ch:1:sloid:7384:0:556843",
+      "pathIndex": 9,
+      "endpointOffsetMetres": 12.76552732897346
+    },
+    {
+      "from": "Lauterbrunnen",
+      "to": "Zweilütschinen",
+      "fromId": "ch:1:sloid:7384:0:556843",
+      "toId": "ch:1:sloid:7389:0:59838",
+      "pathIndex": 9,
+      "endpointOffsetMetres": 12.76552732897346
+    },
+    {
+      "from": "Lauterbrunnen",
+      "to": "Zweilütschinen",
+      "fromId": "ch:1:sloid:7384:0:556843",
+      "toId": "ch:1:sloid:7389:0:409683",
+      "pathIndex": 9,
+      "endpointOffsetMetres": 12.76552732897346
+    },
+    {
+      "from": "Grindelwald Terminal",
+      "to": "Eigergletscher",
+      "fromId": "ch:1:sloid:5226",
+      "toId": "ch:1:sloid:7361",
+      "pathIndex": 21,
+      "endpointOffsetMetres": 213.28225868355605
+    },
+    {
+      "from": "Eigergletscher",
+      "to": "Grindelwald Terminal",
+      "fromId": "ch:1:sloid:7361",
+      "toId": "ch:1:sloid:5226",
+      "pathIndex": 21,
+      "endpointOffsetMetres": 213.28225868355605
+    },
+    {
+      "from": "Lauterbrunnen",
+      "to": "Wengwald",
+      "fromId": "ch:1:sloid:7384:0:326658",
+      "toId": "ch:1:sloid:7555:0:251093",
+      "pathIndex": 10,
+      "endpointOffsetMetres": 14.510369605757045
+    },
+    {
+      "from": "Wengwald",
+      "to": "Wengen",
+      "fromId": "ch:1:sloid:7555:0:251093",
+      "toId": "ch:1:sloid:7372:0:185358",
+      "pathIndex": 11,
+      "endpointOffsetMetres": 29.13528640109511
+    },
+    {
+      "from": "Wengen",
+      "to": "Allmend",
+      "fromId": "ch:1:sloid:7372:0:185358",
+      "toId": "ch:1:sloid:7550:0:762109",
+      "pathIndex": 12,
+      "endpointOffsetMetres": 55.31531197980291
+    },
+    {
+      "from": "Allmend",
+      "to": "Wengernalp",
+      "fromId": "ch:1:sloid:7550:0:762109",
+      "toId": "ch:1:sloid:7373:0:108715",
+      "pathIndex": 13,
+      "endpointOffsetMetres": 55.31531197980291
+    },
+    {
+      "from": "Wengernalp",
+      "to": "Kleine Scheidegg",
+      "fromId": "ch:1:sloid:7373:0:108715",
+      "toId": "ch:1:sloid:7374:0:564901",
+      "pathIndex": 14,
+      "endpointOffsetMetres": 29.758964684387628
+    },
+    {
+      "from": "Wengen",
+      "to": "Wengwald",
+      "fromId": "ch:1:sloid:7372:0:156963",
+      "toId": "ch:1:sloid:7555:0:251093",
+      "pathIndex": 11,
+      "endpointOffsetMetres": 5.580749970613711
+    },
+    {
+      "from": "Wengwald",
+      "to": "Lauterbrunnen",
+      "fromId": "ch:1:sloid:7555:0:251093",
+      "toId": "ch:1:sloid:7384:0:326658",
+      "pathIndex": 10,
+      "endpointOffsetMetres": 14.510369605757045
+    },
+    {
+      "from": "Wengen",
+      "to": "Wengwald",
+      "fromId": "ch:1:sloid:7372:0:667002",
+      "toId": "ch:1:sloid:7555:0:251093",
+      "pathIndex": 11,
+      "endpointOffsetMetres": 38.04516488839061
+    },
+    {
+      "from": "Kleine Scheidegg",
+      "to": "Wengernalp",
+      "fromId": "ch:1:sloid:7374:0:564901",
+      "toId": "ch:1:sloid:7373:0:108715",
+      "pathIndex": 14,
+      "endpointOffsetMetres": 29.758964684387628
+    },
+    {
+      "from": "Wengernalp",
+      "to": "Allmend",
+      "fromId": "ch:1:sloid:7373:0:108715",
+      "toId": "ch:1:sloid:7550:0:762109",
+      "pathIndex": 13,
+      "endpointOffsetMetres": 55.31531197980291
+    },
+    {
+      "from": "Allmend",
+      "to": "Wengen",
+      "fromId": "ch:1:sloid:7550:0:762109",
+      "toId": "ch:1:sloid:7372:0:156963",
+      "pathIndex": 12,
+      "endpointOffsetMetres": 55.31531197980291
+    },
+    {
+      "from": "Wengwald",
+      "to": "Wengen",
+      "fromId": "ch:1:sloid:7555:0:251093",
+      "toId": "ch:1:sloid:7372:0:156963",
+      "pathIndex": 11,
+      "endpointOffsetMetres": 5.580749970613711
+    },
+    {
+      "from": "Wengwald",
+      "to": "Wengen",
+      "fromId": "ch:1:sloid:7555:0:251093",
+      "toId": "ch:1:sloid:7372:0:667002",
+      "pathIndex": 11,
+      "endpointOffsetMetres": 38.04516488839061
+    },
+    {
+      "from": "Grindelwald",
+      "to": "Grindelwald Grund",
+      "fromId": "ch:1:sloid:7380",
+      "toId": "ch:1:sloid:7376",
+      "pathIndex": 15,
+      "endpointOffsetMetres": 43.36283110982133
+    },
+    {
+      "from": "Grindelwald Grund",
+      "to": "Brandegg",
+      "fromId": "ch:1:sloid:7376",
+      "toId": "ch:1:sloid:7552",
+      "pathIndex": 16,
+      "endpointOffsetMetres": 12.280496229620255
+    },
+    {
+      "from": "Brandegg",
+      "to": "Alpiglen",
+      "fromId": "ch:1:sloid:7552",
+      "toId": "ch:1:sloid:7375",
+      "pathIndex": 17,
+      "endpointOffsetMetres": 9.877370583099374
+    },
+    {
+      "from": "Alpiglen",
+      "to": "Kleine Scheidegg",
+      "fromId": "ch:1:sloid:7375",
+      "toId": "ch:1:sloid:7374",
+      "pathIndex": 18,
+      "endpointOffsetMetres": 44.24463843667557
+    },
+    {
+      "from": "Grindelwald",
+      "to": "Grindelwald Grund",
+      "fromId": "ch:1:sloid:7380:0:736",
+      "toId": "ch:1:sloid:7376:0:580142",
+      "pathIndex": 15,
+      "endpointOffsetMetres": 16.309109005341337
+    },
+    {
+      "from": "Grindelwald Grund",
+      "to": "Brandegg",
+      "fromId": "ch:1:sloid:7376:0:580142",
+      "toId": "ch:1:sloid:7552:0:407744",
+      "pathIndex": 16,
+      "endpointOffsetMetres": 41.33454477577305
+    },
+    {
+      "from": "Brandegg",
+      "to": "Alpiglen",
+      "fromId": "ch:1:sloid:7552:0:407744",
+      "toId": "ch:1:sloid:7375:0:233235",
+      "pathIndex": 17,
+      "endpointOffsetMetres": 41.33454477577305
+    },
+    {
+      "from": "Alpiglen",
+      "to": "Kleine Scheidegg",
+      "fromId": "ch:1:sloid:7375:0:233235",
+      "toId": "ch:1:sloid:7374:0:679042",
+      "pathIndex": 18,
+      "endpointOffsetMetres": 27.966002455870854
+    },
+    {
+      "from": "Grindelwald Grund",
+      "to": "Grindelwald",
+      "fromId": "ch:1:sloid:7376",
+      "toId": "ch:1:sloid:7380",
+      "pathIndex": 15,
+      "endpointOffsetMetres": 43.36283110982133
+    },
+    {
+      "from": "Grindelwald Grund",
+      "to": "Grindelwald",
+      "fromId": "ch:1:sloid:7376:0:580142",
+      "toId": "ch:1:sloid:7380:0:736",
+      "pathIndex": 15,
+      "endpointOffsetMetres": 16.309109005341337
+    },
+    {
+      "from": "Kleine Scheidegg",
+      "to": "Alpiglen",
+      "fromId": "ch:1:sloid:7374",
+      "toId": "ch:1:sloid:7375",
+      "pathIndex": 18,
+      "endpointOffsetMetres": 44.24463843667557
+    },
+    {
+      "from": "Alpiglen",
+      "to": "Brandegg",
+      "fromId": "ch:1:sloid:7375",
+      "toId": "ch:1:sloid:7552",
+      "pathIndex": 17,
+      "endpointOffsetMetres": 9.877370583099374
+    },
+    {
+      "from": "Brandegg",
+      "to": "Grindelwald Grund",
+      "fromId": "ch:1:sloid:7552",
+      "toId": "ch:1:sloid:7376",
+      "pathIndex": 16,
+      "endpointOffsetMetres": 12.280496229620255
+    },
+    {
+      "from": "Kleine Scheidegg",
+      "to": "Alpiglen",
+      "fromId": "ch:1:sloid:7374:0:679042",
+      "toId": "ch:1:sloid:7375:0:233235",
+      "pathIndex": 18,
+      "endpointOffsetMetres": 27.966002455870854
+    },
+    {
+      "from": "Alpiglen",
+      "to": "Brandegg",
+      "fromId": "ch:1:sloid:7375:0:233235",
+      "toId": "ch:1:sloid:7552:0:407744",
+      "pathIndex": 17,
+      "endpointOffsetMetres": 41.33454477577305
+    },
+    {
+      "from": "Brandegg",
+      "to": "Grindelwald Grund",
+      "fromId": "ch:1:sloid:7552:0:407744",
+      "toId": "ch:1:sloid:7376:0:580142",
+      "pathIndex": 16,
+      "endpointOffsetMetres": 41.33454477577305
+    },
+    {
+      "from": "Kleine Scheidegg",
+      "to": "Eigergletscher",
+      "fromId": "ch:1:sloid:7374:0:533952",
+      "toId": "ch:1:sloid:7361:0:177364",
+      "pathIndex": 19,
+      "endpointOffsetMetres": 33.42790265577396
+    },
+    {
+      "from": "Eigergletscher",
+      "to": "Jungfraujoch",
+      "fromId": "ch:1:sloid:7361:0:177364",
+      "toId": "ch:1:sloid:7364:0:952862",
+      "pathIndex": 20,
+      "endpointOffsetMetres": 46.12856352532407
+    },
+    {
+      "from": "Eigergletscher",
+      "to": "Kleine Scheidegg",
+      "fromId": "ch:1:sloid:7361:0:838659",
+      "toId": "ch:1:sloid:7374:0:533952",
+      "pathIndex": 19,
+      "endpointOffsetMetres": 33.42790265577396
+    },
+    {
+      "from": "Jungfraujoch",
+      "to": "Eigergletscher",
+      "fromId": "ch:1:sloid:7364:0:144717",
+      "toId": "ch:1:sloid:7361:0:479206",
+      "pathIndex": 20,
+      "endpointOffsetMetres": 33.19997779223049
+    },
+    {
+      "from": "Jungfraujoch",
+      "to": "Eigergletscher",
+      "fromId": "ch:1:sloid:7364:0:952862",
+      "toId": "ch:1:sloid:7361:0:838659",
+      "pathIndex": 20,
+      "endpointOffsetMetres": 46.12856352532407
+    },
+    {
+      "from": "Kleine Scheidegg",
+      "to": "Eigergletscher",
+      "fromId": "ch:1:sloid:7374:0:533952",
+      "toId": "ch:1:sloid:7361:0:838659",
+      "pathIndex": 19,
+      "endpointOffsetMetres": 33.42790265577396
+    },
+    {
+      "from": "Eigergletscher",
+      "to": "Jungfraujoch",
+      "fromId": "ch:1:sloid:7361:0:479206",
+      "toId": "ch:1:sloid:7364:0:144717",
+      "pathIndex": 20,
+      "endpointOffsetMetres": 33.19997779223049
+    }
+  ],
+  "passed": true
+}

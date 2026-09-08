@@ -52,6 +52,11 @@ export const SWITZERLAND_MAP_FRAMINGS = {
     homeDistanceScale: 1,
     minimumDistanceScale: 0.02,
   },
+  jungfrau: {
+    homeDistanceScale: 0.12,
+    minimumDistanceScale: 0.006,
+    portraitMinimumDistanceScale: 0.006,
+  },
   rigi: {
     homeDistanceScale: 0.14,
     minimumDistanceScale: 0.008,
@@ -79,6 +84,7 @@ export const SWITZERLAND_MAP_FRAMINGS = {
 } as const satisfies Readonly<Record<string, MapCameraFraming>>
 
 export type SwitzerlandRegionalStudyId =
+  | 'jungfrau'
   | 'rigi-lake'
   | 'zvv-region'
   | 'geneva-tpg'
@@ -133,6 +139,7 @@ export const SWITZERLAND_EDITION: SwitzerlandEdition = {
     hubDay: 'swiss-hub-day.json',
     realtimeDemo: 'realtime-demo.json',
     regional: {
+      'jungfrau': 'jungfrau-day.json',
       'rigi-lake': 'rigi-day.json',
       'zurich-city': 'zurich-city-morning.json',
       'zvv-region': 'zvv-region-morning.json',

@@ -29,6 +29,7 @@
     "data:corridor:kiental": "node scripts/ingest-kiental-corridor.mjs",
     "data:gtfs": "node scripts/ingest-gtfs.mjs",
     "data:rigi": "node scripts/build-rigi-study.mjs",
+    "data:jungfrau": "node scripts/build-jungfrau-study.mjs",
     "data:rigi:terrain": "node scripts/ingest-rigi-terrain.mjs",
     "data:mountains": "node scripts/audit-mountain-transport.mjs",
     "data:rail:shapes": "node scripts/enrich-swiss-rail-geometry.mjs",

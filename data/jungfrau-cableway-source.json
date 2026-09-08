@@ -1,0 +1,75 @@
+{
+  "sourceUrl": "https://api3.geo.admin.ch/rest/services/ech/MapServer/find?layer=ch.bav.seilbahnen-bundeskonzession&searchText=Eigergletscher&searchField=anlagename&contains=true&returnGeometry=true&sr=4326",
+  "retrievedAt": "2026-09-08",
+  "publisher": "Federal Office of Transport",
+  "scope": "Retained exact installation 75.014 LineString from the source response; other installations and support points omitted.",
+  "results": [
+    {
+      "featureId": 1297,
+      "bbox": [
+        7.975647,
+        46.575376,
+        8.019497,
+        46.624521
+      ],
+      "layerBodId": "ch.bav.seilbahnen-bundeskonzession",
+      "layerName": "Seilbahnen mit Bundeskonzession",
+      "id": 1297,
+      "geometry": {
+        "paths": [
+          [
+            [
+              8.019497,
+              46.624521
+            ],
+            [
+              8.015004,
+              46.619479
+            ],
+            [
+              8.008226,
+              46.611894
+            ],
+            [
+              8.002705,
+              46.605714
+            ],
+            [
+              7.996658,
+              46.598934
+            ],
+            [
+              7.988512,
+              46.589807
+            ],
+            [
+              7.984368,
+              46.585158
+            ],
+            [
+              7.981069,
+              46.581459
+            ],
+            [
+              7.975647,
+              46.575376
+            ]
+          ]
+        ],
+        "spatialReference": {
+          "wkid": 4326
+        }
+      },
+      "attributes": {
+        "anlagenr": "75.014",
+        "anlagename": "Grindelwald Grund - Eigergletscher",
+        "betreiber_tuabkuerzung": "WAB",
+        "bahntyp": "Luftseilbahn",
+        "fahrzeugtyp": "Kabine",
+        "hoehendifferenz": 1385,
+        "laengeschief": 6483,
+        "label": "Grindelwald Grund - Eigergletscher"
+      }
+    }
+  ]
+}

@@ -11,6 +11,7 @@ export const STUDY_SOURCES = [
   ['zurich-city', 'zurich-city-day-manifest.json'],
   ['rigi-lake', 'rigi-day.json'],
   ['contrast', 'zurich-tram-day-manifest.json'],
+  ['jungfrau', 'jungfrau-day.json'],
 ]
 export async function buildStudySummaries(directory = 'public/data') {
   return Promise.all(STUDY_SOURCES.map(async ([id, file]) => {

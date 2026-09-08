@@ -2,7 +2,7 @@ import pilotCatalog from '../../data/cantonal-road-pilots.json'
 import type { NetworkSnapshot } from '@motionstudies/core/domain/network'
 import type { SwitzerlandNetworkStudy } from '../editions/switzerland.ts'
 
-export const STUDY_IDS = ['national', 'postbus', 'zvv-region', 'geneva-tpg', 'zurich-city', 'rigi-lake', 'contrast'] as const
+export const STUDY_IDS = ['national', 'postbus', 'zvv-region', 'geneva-tpg', 'zurich-city', 'rigi-lake', 'contrast', 'jungfrau'] as const
 export const REGIONAL_DAYS = { 'zvv-region': 'zvv-region-day-manifest.json', 'geneva-tpg': 'geneva-tpg-day-manifest.json', 'zurich-city': 'zurich-city-day-manifest.json' } as const
 export const isRegionalDayStudy = (id: SwitzerlandNetworkStudy): id is keyof typeof REGIONAL_DAYS => id in REGIONAL_DAYS
 export function withinStudy(location: { longitude: number; latitude: number }, bounds?: NetworkSnapshot['bounds']) {

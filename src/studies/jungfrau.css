@@ -1,0 +1,16 @@
+.jungfrau-places { font-size: .65rem; line-height: 1.5; color: #c6c4d6; }
+.jungfrau-places p { margin: 8px 0; }
+.jungfrau-places a { color: #d5d2ee; }
+.jungfrau-places summary { padding: 8px 0; cursor: pointer; color: #fff3a6; }
+.jungfrau-places nav { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+.jungfrau-places button { min-height: 40px; padding: 5px; border: 1px solid #c1ccff33; color: #eeeaff; background: #0c0b21; font: inherit; text-align: left; cursor: pointer; }
+.view-network .network-card:has(.jungfrau-places) { overflow: auto; max-height: calc(78vh - 80px); }
+@media (max-width: 700px) {
+  .view-network .network-card:has(.jungfrau-places) { top: calc(184px + env(safe-area-inset-top)); left: 16px; right: 16px; width: auto; max-height: calc(100dvh - 390px); padding: 10px 12px; }
+  .jungfrau-places { font-size: .62rem; }
+}
+
+.jungfrau-study .selected-card .jungfrau-model { display: block; font-size: .62rem; line-height: 1.4; }
+@media (min-width: 701px) and (max-width: 1500px) {
+  .view-network .network-card:has(.jungfrau-places) { left: 24px; width: 240px; padding: 12px; max-height: calc(78vh - 52px); }
+}

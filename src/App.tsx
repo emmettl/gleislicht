@@ -148,6 +148,7 @@ const AlpineQuiet = lazy(() =>
 )
 
 const RigiTimetableTerrain = lazy(() => import('./studies/RigiTimetableTerrain.tsx'))
+const JungfrauPlaces = lazy(() => import('./studies/JungfrauPlaces.tsx'))
 const RigiGuide = lazy(() => import('./studies/RigiGuide.tsx'))
 const RigiDayRhythm = lazy(() => import('./studies/RigiDayRhythm.tsx'))
 const RigiSequence = lazy(() => import('./studies/RigiSequence.tsx'))
@@ -327,6 +328,8 @@ export function App({ edition }: AppProps) {
   const [nationalDayError, setNationalDayError] = useState(false)
   const [zurichCityNetwork, setZurichCityNetwork] = useState<NetworkSnapshot>()
   const [rigiNetwork, setRigiNetwork] = useState<NetworkSnapshot>()
+  const [jungfrauNetwork, setJungfrauNetwork] = useState<NetworkSnapshot>()
+  const [jungfrauAttempt, setJungfrauAttempt] = useState(0)
   const [rigiSequenceActive, setRigiSequenceActive] = useState(false)
   const [rigiRhythmActive, setRigiRhythmActive] = useState(false)
   const [rigiGuideActive, setRigiGuideActive] = useState(false)
@@ -421,6 +424,12 @@ export function App({ edition }: AppProps) {
   const help = CONTROL_HELP[language]
   const performanceSample = useLocalPerformance(performanceEnabled)
   const isRigi = networkStudy === 'rigi-lake'
+  const isJungfrau = networkStudy === 'jungfrau'
+  const isMountainStudy = isRigi || isJungfrau
+  const [jungfrauLocale, setJungfrauLocale] = useState<typeof import('./studies/jungfrau-copy.ts')>()
+  useEffect(() => { if (isJungfrau) void import('./studies/jungfrau-copy.ts').then(setJungfrauLocale) }, [isJungfrau])
+  const jungfrauCopy = jungfrauLocale?.JUNGFRAU_COPY[language]
+  const jungfrauSelect = jungfrauCopy?.select ?? { en: 'Explore the Jungfrau railways', de: 'Jungfraubahnen entdecken', fr: 'Explorer les chemins de fer de la Jungfrau', it: 'Esplora le ferrovie della Jungfrau' }[language]
   const timedRigiTerrain = view === 'network' && isRigi && rigiSequenceActive && rigiTerrainBinding && networkTime >= rigiTerrainBinding.sequence.departure && networkTime <= rigiTerrainBinding.sequence.end ? rigiTerrainBinding : undefined
   const [rigiLocale, setRigiLocale] = useState<typeof import('./studies/rigi-copy.ts')>()
   useEffect(() => { if (isRigi) void import('./studies/rigi-copy.ts').then(setRigiLocale) }, [isRigi])
@@ -431,7 +440,7 @@ export function App({ edition }: AppProps) {
   const rigiTerrainCopy = terrainCopyForRigi(language, rigiOrigin)
   const isPostbus = networkStudy === 'postbus'
   const isContrast = networkStudy === 'contrast'
-  const serviceColors = useMemo(() => isPostbus || isContrast ? { ...SERVICE_COLORS, bus: POSTBUS_YELLOW } : (isRigi || cogwheelEnabled && networkStudy === 'national' && view === 'network') ? { ...SERVICE_COLORS, other: '#fff3a6' } : SERVICE_COLORS, [isPostbus, isContrast, isRigi, cogwheelEnabled, networkStudy, view])
+  const serviceColors = useMemo(() => isPostbus || isContrast ? { ...SERVICE_COLORS, bus: POSTBUS_YELLOW } : (isMountainStudy || cogwheelEnabled && networkStudy === 'national' && view === 'network') ? { ...SERVICE_COLORS, other: '#fff3a6' } : SERVICE_COLORS, [isPostbus, isContrast, isMountainStudy, cogwheelEnabled, networkStudy, view])
   const isRegionalDay = isRegionalDayStudy(networkStudy) && regionalRange === 'day'
   const regionalDay = useProgressiveNetworkDay(isRegionalDayStudy(networkStudy) ? REGIONAL_DAYS[networkStudy] : REGIONAL_DAYS['zvv-region'], isRegionalDay && regionalRetry, networkTime, editionDataUrl)
   const postbusDay = useProgressiveNetworkDay(edition.data.postbusDayManifest, isPostbus, networkTime, editionDataUrl)
@@ -491,7 +500,7 @@ export function App({ edition }: AppProps) {
       nationalDayChunks[nationalDayChunkDescriptor.id],
   )
   const baseNetwork =
-    isRegionalDay ? regionalDay.network : isRigi ? rigiNetwork : isPostbus ? postbusDay.network : isContrast
+    isRegionalDay ? regionalDay.network : isJungfrau ? jungfrauNetwork : isRigi ? rigiNetwork : isPostbus ? postbusDay.network : isContrast
       ? (zurichContrast.network ?? nationalNetwork)
       : networkStudy === 'zurich-city'
       ? (zurichCityNetwork ?? nationalNetwork)
@@ -545,7 +554,7 @@ export function App({ edition }: AppProps) {
   useEffect(() => { if (isCogwheel) void import('./studies/cogwheel-copy.ts').then(setCogwheelLocale) }, [isCogwheel])
   const cogwheelLabel = { en: 'Cogwheel', de: 'Zahnrad', fr: 'Crémaillère', it: 'Cremagliera' }[language]
   const cogwheelCopy = cogwheelLocale?.COGWHEEL_COPY[language] ?? { label: cogwheelLabel, description: cogwheelLabel, placeholder: cogwheelLabel, loading: text.loading, unavailable: text.loading }
-  const categoryLabel = useCallback((category: ServiceCategory) => isRigi && category === 'other' ? cogwheelCopy.label : serviceCategoryLabel(language, category), [isRigi, cogwheelCopy.label, language])
+  const categoryLabel = useCallback((category: ServiceCategory) => isMountainStudy && category === 'other' ? cogwheelCopy.label : serviceCategoryLabel(language, category), [isMountainStudy, cogwheelCopy.label, language])
   const network = useMemo(() => unfilteredNetwork && isCogwheel
     ? cogwheelNetwork(unfilteredNetwork, cogwheelCatalogue)
     : unfilteredNetwork && withFrequencyFerryPaths(unfilteredNetwork), [unfilteredNetwork, isCogwheel, cogwheelCatalogue])
@@ -876,9 +885,9 @@ export function App({ edition }: AppProps) {
           : (network?.trains.map((train) => train.category) ?? []),
     )
     return SERVICE_CATEGORIES.filter(
-      (category) => (category.id !== 'other' || isRigi) && present.has(category.id),
+      (category) => (category.id !== 'other' || isMountainStudy) && present.has(category.id),
     )
-  }, [hubCalls, isRigi, isContrast, kientalContrast.network, network, view, zurichContrast.network])
+  }, [hubCalls, isMountainStudy, isContrast, kientalContrast.network, network, view, zurichContrast.network])
 
   const handleJourneyProgress = useCallback((nextProgress: number) => {
     setJourneyProgress(nextProgress)
@@ -1243,7 +1252,7 @@ export function App({ edition }: AppProps) {
         setSelectedHubId('zurich')
       }
       const regionalSnapshot =
-        study === 'rigi-lake' ? rigiNetwork : study === 'zurich-city'
+        study === 'jungfrau' ? jungfrauNetwork : study === 'rigi-lake' ? rigiNetwork : study === 'zurich-city'
           ? zurichCityNetwork
           : study === 'zvv-region'
             ? zvvRegionNetwork
@@ -1256,7 +1265,7 @@ export function App({ edition }: AppProps) {
       if (study !== 'national' && study !== 'contrast' && study !== 'postbus') {
         setRegionalNetworkError(false)
       }
-      if (study === 'contrast' || study === 'rigi-lake') setNetworkTime(12 * 3600)
+      if (study === 'contrast' || study === 'rigi-lake' || study === 'jungfrau') setNetworkTime(12 * 3600)
       if (study === 'postbus') setNetworkTime(edition.defaultNetworkTime)
       if (study === 'national' && timeRange === 'day') {
         setNationalDayError(false)
@@ -1277,6 +1286,7 @@ export function App({ edition }: AppProps) {
       nationalDayNetwork,
       genevaTpgNetwork,
       rigiNetwork,
+      jungfrauNetwork,
       nationalDayManifest,
       nationalNetwork,
       nationalTimeRange,
@@ -1716,7 +1726,7 @@ export function App({ edition }: AppProps) {
   useEffect(() => {
     if (networkStudy === 'national' || networkStudy === 'contrast' || networkStudy === 'postbus') return
     const existingNetwork =
-      isRigi ? rigiNetwork : networkStudy === 'zurich-city'
+      isJungfrau ? jungfrauNetwork : isRigi ? rigiNetwork : networkStudy === 'zurich-city'
         ? zurichCityNetwork
         : networkStudy === 'zvv-region'
           ? zvvRegionNetwork
@@ -1731,13 +1741,14 @@ export function App({ edition }: AppProps) {
     })
       .then((response) => {
         if (!response.ok) {
-          const studyName = isRigi ? 'Lake Lucerne–Rigi' : isCity ? 'Zürich city' : isZvv ? 'ZVV' : 'Genève / TPG'
+          const studyName = isJungfrau ? 'Jungfrau' : isRigi ? 'Lake Lucerne–Rigi' : isCity ? 'Zürich city' : isZvv ? 'ZVV' : 'Genève / TPG'
           throw new Error(`${studyName} snapshot returned ${response.status}`)
         }
         return response.json() as Promise<NetworkSnapshot>
       })
       .then((snapshot) => {
-        if (isRigi) setRigiNetwork(snapshot)
+        if (isJungfrau) setJungfrauNetwork(snapshot)
+        else if (isRigi) setRigiNetwork(snapshot)
         else if (isCity) setZurichCityNetwork(snapshot)
         else if (isZvv) setZvvRegionNetwork(snapshot)
         else setGenevaTpgNetwork(snapshot)
@@ -1754,6 +1765,9 @@ export function App({ edition }: AppProps) {
     edition.data.regional,
     isRigi,
     rigiNetwork,
+    isJungfrau,
+    jungfrauNetwork,
+    jungfrauAttempt,
     genevaTpgNetwork,
     networkStudy,
     zurichCityNetwork,
@@ -1987,7 +2001,7 @@ export function App({ edition }: AppProps) {
       data-cogwheel-enabled={isCogwheel}
       data-quiet-map={quietMap}
       data-quiet-playing={quietMap ? isPlaying : undefined}
-      className={`experience view-${view}${timedRigiTerrain ? ' has-timed-rigi-terrain' : ''}${isContrast ? ' is-contrast' : ''}${airEnabled ? ' has-air-layer' : ''}${airCategorySelected ? ' has-air-category' : ''}${roadEnabled ? ' has-road-layer' : ''}${roadCategorySelected ? ' has-road-category' : ''}${selectedTrain || selectedStation || selectedRoute || selectedAirTrack || selectedAirport || selectedRoad ? ' has-selection' : ''}${!isTimetable ? ` corridor-${journeyCorridorId}` : ''}`}
+      className={`experience view-${view}${isJungfrau ? ' jungfrau-study' : ''}${timedRigiTerrain ? ' has-timed-rigi-terrain' : ''}${isContrast ? ' is-contrast' : ''}${airEnabled ? ' has-air-layer' : ''}${airCategorySelected ? ' has-air-category' : ''}${roadEnabled ? ' has-road-layer' : ''}${roadCategorySelected ? ' has-road-category' : ''}${selectedTrain || selectedStation || selectedRoute || selectedAirTrack || selectedAirport || selectedRoad ? ' has-selection' : ''}${!isTimetable ? ` corridor-${journeyCorridorId}` : ''}`}
     >
       <div className="scene" aria-hidden={webglAvailable ? true : undefined}>
         <Suspense fallback={null}>
@@ -2065,12 +2079,12 @@ export function App({ edition }: AppProps) {
             boundary={boundary}
             lakes={lakes}
             groundStyle={quietMap ? 'quiet' : 'grid'}
-            routeColors={isPostbus ? POSTBUS_ROUTE_COLORS : isCogwheel || isRigi ? COGWHEEL_ROUTE_COLORS : undefined}
+            routeColors={isPostbus ? POSTBUS_ROUTE_COLORS : isCogwheel || isMountainStudy ? COGWHEEL_ROUTE_COLORS : undefined}
             snapshot={sceneNetwork}
             trafficOverviewEmphasis={isPostbus ? 0.65 : undefined}
             referenceSnapshot={nationalNetwork ?? sceneNetwork}
             contextSnapshot={
-              networkStudy !== 'national' && !isPostbus && !isRigi &&
+              networkStudy !== 'national' && !isPostbus && !isMountainStudy &&
               (networkStudy === 'zurich-city'
                 ? zurichCityNetwork
                 : networkStudy === 'zvv-region'
@@ -2131,7 +2145,7 @@ export function App({ edition }: AppProps) {
             selectedAirport={airEnabled ? selectedAirport : undefined}
             onSelectAirTrack={selectAirTrack}
             cameraFraming={
-              isRigi ? MAP_FRAMINGS.rigi : networkStudy === 'zurich-city' && zurichCityNetwork
+              isJungfrau ? MAP_FRAMINGS.jungfrau : isRigi ? MAP_FRAMINGS.rigi : networkStudy === 'zurich-city' && zurichCityNetwork
                 ? MAP_FRAMINGS.zurich
                 : networkStudy === 'zvv-region' && zvvRegionNetwork
                   ? MAP_FRAMINGS.zvv
@@ -2208,7 +2222,7 @@ export function App({ edition }: AppProps) {
             }
           >
             {isNetwork
-              ? isRigi ? rigiCopy.title : isPostbus ? text.postbusSubtitle : isContrast
+              ? isJungfrau ? jungfrauCopy?.title ?? 'Jungfrau' : isRigi ? rigiCopy.title : isPostbus ? text.postbusSubtitle : isContrast
                 ? text.contrastSubtitle
                 : networkStudy === 'zurich-city'
                 ? text.zurichSubtitle
@@ -2391,7 +2405,7 @@ export function App({ edition }: AppProps) {
                 role="combobox"
                 value={searchQuery}
                 placeholder={
-                  isRigi ? rigiCopy.placeholder : isCogwheel ? cogwheelCopy.placeholder : isContrast
+                  isJungfrau ? jungfrauCopy?.placeholder ?? jungfrauSelect : isRigi ? rigiCopy.placeholder : isCogwheel ? cogwheelCopy.placeholder : isContrast
                     ? text.contrastPlaceholder
                     : isPostbus ? text.postbusPlaceholder : airEnabled
                       ? text.airSearchPlaceholder
@@ -2479,6 +2493,7 @@ export function App({ edition }: AppProps) {
               </button>
             )}
             <nav className="network-study-picker" aria-label={text.networkStudy}>
+              <button type="button" aria-label={jungfrauSelect} data-tooltip={jungfrauSelect} aria-pressed={isJungfrau} onClick={() => selectNetworkStudy('jungfrau')}>JUNG</button>
               <button type="button" aria-label={rigiCopy.select} data-tooltip={rigiCopy.select} aria-pressed={isRigi} onClick={() => selectNetworkStudy('rigi-lake')}>RIGI</button>
               <button type="button" className="postbus-study-toggle" aria-label={text.postbusNetwork} data-tooltip={text.postbusNetwork} aria-pressed={isPostbus} onClick={() => selectNetworkStudy('postbus')}>PA</button>
               <span className="sr-only">{text.scale}</span>
@@ -2601,13 +2616,14 @@ export function App({ edition }: AppProps) {
                   detail: text.contrastNetwork,
                 },
                 { value: 'postbus', label: 'PA', detail: text.postbusNetwork },
+                { value: 'jungfrau', label: 'JUNG', detail: jungfrauSelect },
                 { value: 'rigi-lake', label: 'RIGI', detail: rigiCopy.select },
                 { value: 'zvv-region', label: 'ZVV', detail: text.zvvNetwork },
                 { value: 'zurich-city', label: 'ZH', detail: text.zurichNetwork },
                 { value: 'geneva-tpg', label: 'GE', detail: text.genevaNetwork },
               ]}
               triggerLabel={
-                isRigi ? 'RIGI' : isPostbus ? 'PA' : isContrast
+                isJungfrau ? 'JUNG' : isRigi ? 'RIGI' : isPostbus ? 'PA' : isContrast
                   ? '↔'
                   : networkStudy === 'national' && nationalTimeRange === 'day'
                     ? '24H'
@@ -2708,7 +2724,7 @@ export function App({ edition }: AppProps) {
                     onMouseEnter={() => setActiveSearchIndex(index)}
                     onClick={() => selectRoute(route)}
                   >
-                    <TransportIcon mode={isCogwheel || isRigi && route.category === 'other' ? 'cogwheel' : route.category} color={serviceColors[route.category]} />
+                    <TransportIcon mode={isCogwheel || isMountainStudy && route.category === 'other' ? 'cogwheel' : route.category} color={serviceColors[route.category]} />
                     <span className="result-service">
                       {isCogwheel ? cogwheelCopy.label : categoryLabel(route.category)} {route.name}
                     </span>
@@ -2816,7 +2832,7 @@ export function App({ edition }: AppProps) {
                       onMouseEnter={() => setActiveSearchIndex(index)}
                       onClick={() => selectTrain(train)}
                     >
-                      <TransportIcon mode={isCogwheel || isRigi && train.category === 'other' ? 'cogwheel' : train.category} color={serviceColors[train.category]} />
+                      <TransportIcon mode={isCogwheel || isMountainStudy && train.category === 'other' ? 'cogwheel' : train.category} color={serviceColors[train.category]} />
                       <span className="result-service">
                         {train.route} <b>{train.shortName}</b>
                       </span>
@@ -2832,7 +2848,7 @@ export function App({ edition }: AppProps) {
                 !airportSearchResults.length &&
                 !airSearchResults.length &&
                 !searchResults.length && (
-                <p>{isNationalDay || isRigi ? text.noResultsDay : text.noResults}</p>
+                <p>{isNationalDay || isMountainStudy ? text.noResultsDay : text.noResults}</p>
               )}
             </div>
           )}
@@ -3058,7 +3074,7 @@ export function App({ edition }: AppProps) {
       ) : isNetwork && selectedTrain ? (
         <section className="journey-card selected-card" aria-label={text.selectedTrain}>
           <div className="service-row">
-            <TransportIcon mode={isCogwheel || isRigi && selectedTrain.category === 'other' ? 'cogwheel' : selectedTrain.category} color={serviceColors[selectedTrain.category]} />
+            <TransportIcon mode={isCogwheel || isMountainStudy && selectedTrain.category === 'other' ? 'cogwheel' : selectedTrain.category} color={serviceColors[selectedTrain.category]} />
             <span className="service">{selectedTrain.route}</span>
             <span className="arrow">→</span>
             <span>{selectedTrain.headsign}</span>
@@ -3080,6 +3096,7 @@ export function App({ edition }: AppProps) {
             </div>
           </div>
           {selectedHeadway && selectedFrequency && <p className="between frequency-note">{frequencyCopy.note}: <span style={{ whiteSpace: 'nowrap' }}>{numberFormat.format(selectedFrequency.headwaySeconds % 60 === 0 ? selectedFrequency.headwaySeconds / 60 : selectedFrequency.headwaySeconds)} {selectedFrequency.headwaySeconds % 60 === 0 ? 'min' : 's'}</span></p>}
+          {isJungfrau && <p className="between jungfrau-model">{rigiOperator(selectedTrain)} · {selectedTrain.category === 'cableway' ? jungfrauCopy?.cable : jungfrauCopy?.model}</p>}
           {isRigi && <p className="between">{rigiOperator(selectedTrain)}{selectedTrain.category === 'ferry' ? <> · {rigiCopy.water}</> : selectedTrain.category === 'cableway' ? <> · {rigiCopy.cable}</> : null}</p>}
           {isCogwheel && cogwheelCatalogue && (
             <p className="between">{cogwheelCatalogue.routes[cogwheelCatalogue.trips[selectedTrain.id]]?.operator}</p>
@@ -3106,7 +3123,7 @@ export function App({ edition }: AppProps) {
           }
         >
           <div className="service-row">
-            <TransportIcon mode={isCogwheel || isRigi && selectedRoute.category === 'other' ? 'cogwheel' : selectedRoute.category} color={serviceColors[selectedRoute.category]} />
+            <TransportIcon mode={isCogwheel || isMountainStudy && selectedRoute.category === 'other' ? 'cogwheel' : selectedRoute.category} color={serviceColors[selectedRoute.category]} />
             <span className="service">
               {isCogwheel ? cogwheelCopy.label : categoryLabel(selectedRoute.category)}{' '}
               {selectedRoute.name}
@@ -3114,7 +3131,7 @@ export function App({ edition }: AppProps) {
           </div>
           <p className="between">
             {selectedRoute.headsigns.slice(0, 2).join(' ↔ ') ||
-              (isNationalDay || isRigi ? text.fullDayStudy : text.morningStudy)}
+              (isNationalDay || isMountainStudy ? text.fullDayStudy : text.morningStudy)}
           </p>
           {isCogwheel && cogwheelCatalogue && <p className="between">{[...new Set(selectedRoute.trainIds.map(id => cogwheelCatalogue.routes[cogwheelCatalogue.trips[id]]?.operator).filter(Boolean))].join(' · ')}</p>}
           {selectionHasHeadwayMotion && <p className="between frequency-note">{frequencyCopy.mixed}</p>}
@@ -3122,7 +3139,7 @@ export function App({ edition }: AppProps) {
             <div>
               <span>{text.trips}</span>
               <strong>{numberFormat.format(selectedRoute.trainIds.length)}</strong>
-              <small>{isRigi ? '24h' : isNationalDay ? '3h' : '2h'}</small>
+              <small>{isMountainStudy ? '24h' : isNationalDay ? '3h' : '2h'}</small>
             </div>
             <div>
               <span>{text.stops}</span>
@@ -3163,12 +3180,12 @@ export function App({ edition }: AppProps) {
           </div>
           <p className="between">
             {text.allScheduledPaths} <span>/</span>{' '}
-            {isNationalDay || isRigi ? text.fullDayStudy : text.morningStudy}
+            {isNationalDay || isMountainStudy ? text.fullDayStudy : text.morningStudy}
             {selectionHasHeadwayMotion && <> {frequencyCopy.mixed}</>}
           </p>
           <div className="network-count-row">
             <strong>{numberFormat.format(activeTrainCount)}</strong>
-            <span>{networkStudy === 'national' ? text.trainsInMotion : text.vehiclesInMotion}</span>
+            <span>{networkStudy === 'national' ? text.trainsInMotion : isJungfrau ? jungfrauCopy?.movements : text.vehiclesInMotion}</span>
           </div>
           <div className="metric-grid">
             <div>
@@ -3179,7 +3196,7 @@ export function App({ edition }: AppProps) {
             <div>
               <span>{text.calls}</span>
               <strong>{selectedStation.trainIds.length}</strong>
-              <small>{isRigi ? '24h' : isNationalDay ? '3h' : '2h'}</small>
+              <small>{isMountainStudy ? '24h' : isNationalDay ? '3h' : '2h'}</small>
             </div>
           </div>
         </section>
@@ -3305,7 +3322,7 @@ export function App({ edition }: AppProps) {
         <section
           className="journey-card network-card"
           aria-label={
-            isRigi ? rigiCopy.select : isPostbus ? text.postbusNetwork : networkStudy === 'national'
+            isJungfrau ? jungfrauSelect : isRigi ? rigiCopy.select : isPostbus ? text.postbusNetwork : networkStudy === 'national'
               ? text.swissNetworkStatus
               : networkStudy === 'zvv-region'
                 ? text.zvvNetworkStatus
@@ -3323,7 +3340,7 @@ export function App({ edition }: AppProps) {
             <span>
               {networkStudy === 'national'
                 ? text.trainsInMotion
-                : text.vehiclesInMotion}
+                : isJungfrau ? jungfrauCopy?.movements : text.vehiclesInMotion}
             </span>
             {networkStudy === 'national' && (
               <button
@@ -3372,7 +3389,7 @@ export function App({ edition }: AppProps) {
             )}
           </div>
           <p className="between">
-              {isRegionalDay ? regionalDay.error ? exploreCopy.error : !regionalDay.chunkReady ? exploreCopy.loading : `${exploreCopy.day} · ${network?.metadata.geometry?.publisher ?? 'SBB'}` : isRigi ? regionalNetworkError ? rigiCopy.unavailable : regionalNetworkLoading ? rigiCopy.loading : rigiCopy.modes : isCogwheel ? cogwheel?.error ? cogwheelCopy.unavailable : !cogwheelCatalogue ? cogwheelCopy.loading : cogwheelCopy.description : isPostbus
+              {isRegionalDay ? regionalDay.error ? exploreCopy.error : !regionalDay.chunkReady ? exploreCopy.loading : `${exploreCopy.day} · ${network?.metadata.geometry?.publisher ?? 'SBB'}` : isJungfrau ? regionalNetworkError ? jungfrauCopy?.unavailable : regionalNetworkLoading ? jungfrauCopy?.loading : jungfrauCopy?.modes : isRigi ? regionalNetworkError ? rigiCopy.unavailable : regionalNetworkLoading ? rigiCopy.loading : rigiCopy.modes : isCogwheel ? cogwheel?.error ? cogwheelCopy.unavailable : !cogwheelCatalogue ? cogwheelCopy.loading : cogwheelCopy.description : isPostbus
                 ? postbusDay.error ? text.postbusUnavailable : postbusDay.loading ? text.loadingPostbus
                   : network?.metadata.geometry
                     ? text.postbusRoadModes.replace('{coverage}', (100 * network.metadata.geometry.matchedSegments / network.metadata.geometry.totalSegments).toFixed(1))
@@ -3408,6 +3425,8 @@ export function App({ edition }: AppProps) {
                   : text.scheduledRail}
               {hasHeadwayMotion && <> {frequencyCopy.mixed}</>}
           </p>
+          {isJungfrau && jungfrauNetwork && !regionalNetworkError && <Suspense fallback={null}><JungfrauPlaces language={language} onSelect={name => { const station = stationIndex.find(s => s.name === name); if (station) { setSelectedCategory(undefined); selectStation(station) } }} /></Suspense>}
+          {isJungfrau && regionalNetworkError && <button type="button" className="corridor-entry" onClick={() => { setRegionalNetworkError(false); setRegionalNetworkLoading(true); setJungfrauAttempt(n => n + 1) }}>{exploreCopy.retry}</button>}
           {isRigi && rigiNetwork && !regionalNetworkError && <button type="button" className="corridor-entry" onClick={event => { event.currentTarget.focus(); setRigiGuideActive(true) }}>{rigiCopy.connections} →</button>}
           {isRigi && rigiNetwork && !regionalNetworkError && <button type="button" className="corridor-entry" onClick={() => { releaseSelection(); setSelectedCategory(undefined); setDirectorMode(false); setRigiRhythmActive(true) }}>{rigiCopy.rhythm} →</button>}
           {isRigi && network && !regionalNetworkError && <button type="button" className="corridor-entry" onClick={startRigiSequence}>{rigiCopy.sequence} →</button>}
@@ -3424,7 +3443,7 @@ export function App({ edition }: AppProps) {
                     ? numberFormat.format(network.trains.length)
                     : '—'}
               </strong>
-              <small>{isNationalDay || isPostbus || isRigi || isRegionalDay ? '24h' : '2h'}</small>
+              <small>{isNationalDay || isPostbus || isMountainStudy || isRegionalDay ? '24h' : '2h'}</small>
             </div>
             <div>
               <span>{text.feed}</span>
@@ -3670,7 +3689,7 @@ export function App({ edition }: AppProps) {
                     ...(isNetwork && networkStudy === 'national' ? [{ value: 'cogwheel', label: <span className="transport-option"><TransportIcon mode="cogwheel" color="#fff3a6" />{cogwheelCopy.label}</span> }] : []),
                     ...(isNetwork && !railVisible ? [] : visibleServiceCategories).map((category) => ({
                       value: category.id,
-                      label: <span className="transport-option"><TransportIcon mode={isRigi && category.id === 'other' ? 'cogwheel' : category.id} color={serviceColors[category.id]} />{categoryLabel(category.id)}</span>,
+                      label: <span className="transport-option"><TransportIcon mode={isMountainStudy && category.id === 'other' ? 'cogwheel' : category.id} color={serviceColors[category.id]} />{categoryLabel(category.id)}</span>,
                     })),
                     ...(networkStudy === 'national' && airEnabled
                       ? [{ value: 'air', label: <span className="transport-option"><TransportIcon mode="air" color="#ff5edb" />{text.luftraum}</span> }]
@@ -3774,7 +3793,7 @@ export function App({ edition }: AppProps) {
                   )
                 }}
               >
-                <TransportIcon mode={isRigi && category.id === 'other' ? 'cogwheel' : category.id} />
+                <TransportIcon mode={isMountainStudy && category.id === 'other' ? 'cogwheel' : category.id} />
                 {categoryLabel(category.id)}
               </button>
           ))}
@@ -4168,7 +4187,7 @@ export function App({ edition }: AppProps) {
             {isNetwork && roadEnabled && roadTopology?.roads.some(road => road.id.startsWith('ZH:')) && (
               <a href="https://geolion.zh.ch/geodatensatz/3177" target="_blank" rel="noreferrer">AUTO · Kanton Zürich</a>
             )}
-            {isRigi && <a href="https://map.geo.admin.ch/?layers=ch.bav.seilbahnen-bundeskonzession,ch.bav.schienennetz" target="_blank" rel="noreferrer">FOT · Rail / Cableway</a>}
+            {isMountainStudy && <a href="https://map.geo.admin.ch/?layers=ch.bav.seilbahnen-bundeskonzession,ch.bav.schienennetz" target="_blank" rel="noreferrer">FOT · Rail / Cableway</a>}
             <a href="./methodology.html">{text.methodology}</a>
           </span>
         ) : (
@@ -4208,7 +4227,7 @@ export function App({ edition }: AppProps) {
           {isHub
             ? text.arrivalsDirection
             : isNetwork
-              ? timedRigiTerrain ? text.interpolation : isRigi ? rigiCopy.water : hasHeadwayMotion ? frequencyCopy.interpolation : text.interpolation
+              ? timedRigiTerrain ? text.interpolation : isJungfrau ? jungfrauCopy?.model : isRigi ? rigiCopy.water : hasHeadwayMotion ? frequencyCopy.interpolation : text.interpolation
               : text.simulation}
         </span>
       </footer>

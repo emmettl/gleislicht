@@ -1,0 +1,15 @@
+import type { UiLanguage } from '../i18n.ts'
+import './jungfrau.css'
+const en = {
+  title: 'Valleys → Jungfrau', select: 'Explore the Jungfrau railways', placeholder: 'Jungfraujoch, Wengen, Eiger Express…',
+  movements: 'timetable movements',
+  modes: '24 hours · valley railways, cogwheel trains and Eiger Express.', loading: 'Loading the Jungfrau railways…', unavailable: 'Jungfrau is unavailable. Choose another study or retry.',
+  model: 'Timetable interpolation · mapped 2D alignments', cable: 'Eiger Express timetable records · not tracked cabins',
+  scope: 'BOB, Wengernalpbahn, Jungfraubahn and Eiger Express. Terrain and tunnel heights are not modelled.', sources: 'Study evidence', places: 'Explore the approaches',
+}
+export const JUNGFRAU_COPY: Record<UiLanguage, typeof en> = {
+  en,
+  de: { movements: 'Fahrplanbewegungen', title: 'Täler → Jungfrau', select: 'Jungfraubahnen entdecken', placeholder: 'Jungfraujoch, Wengen, Eiger Express…', modes: '24 Stunden · Talbahnen, Zahnradbahnen und Eiger Express.', loading: 'Jungfraubahnen werden geladen…', unavailable: 'Jungfrau nicht verfügbar. Andere Studie wählen oder erneut versuchen.', model: 'Fahrplaninterpolation · kartierte 2D-Trassen', cable: 'Eiger-Express-Fahrplandaten · keine Kabinenortung', scope: 'BOB, Wengernalpbahn, Jungfraubahn und Eiger Express. Gelände- und Tunnelhöhen sind nicht modelliert.', sources: 'Studienbelege', places: 'Zugänge entdecken' },
+  fr: { movements: 'mouvements horaires', title: 'Vallées → Jungfrau', select: 'Explorer les chemins de fer de la Jungfrau', placeholder: 'Jungfraujoch, Wengen, Eiger Express…', modes: '24 heures · trains de vallée, trains à crémaillère et Eiger Express.', loading: 'Chargement des chemins de fer de la Jungfrau…', unavailable: 'Jungfrau indisponible. Choisissez une autre étude ou réessayez.', model: 'Interpolation horaire · tracés cartographiés en 2D', cable: 'Horaires Eiger Express · sans suivi des cabines', scope: 'BOB, Wengernalpbahn, Jungfraubahn et Eiger Express. Le relief et la hauteur des tunnels ne sont pas modélisés.', sources: 'Sources de l’étude', places: 'Explorer les accès' },
+  it: { movements: 'movimenti da orario', title: 'Valli → Jungfrau', select: 'Esplora le ferrovie della Jungfrau', placeholder: 'Jungfraujoch, Wengen, Eiger Express…', modes: '24 ore · ferrovie di valle, treni a cremagliera ed Eiger Express.', loading: 'Caricamento delle ferrovie della Jungfrau…', unavailable: 'Jungfrau non disponibile. Scegli un altro studio o riprova.', model: 'Interpolazione degli orari · tracciati cartografati in 2D', cable: 'Orari Eiger Express · nessun tracciamento delle cabine', scope: 'BOB, Wengernalpbahn, Jungfraubahn ed Eiger Express. Il terreno e le quote dei tunnel non sono modellati.', sources: 'Fonti dello studio', places: 'Esplora gli accessi' },
+}
