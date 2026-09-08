@@ -17,6 +17,6 @@
   ],
   "vars": {
     "STATIC_FEED_VERSION": "20260902",
-    "ALLOWED_ORIGINS": "https://emmettl.github.io,http://127.0.0.1:5173,http://localhost:5173"
+    "ALLOWED_ORIGINS": "https://motionstudies.app,https://emmettl.github.io,http://127.0.0.1:5173,http://localhost:5173"
   }
 }
