@@ -20,13 +20,18 @@ for (const [file, original, url] of specs) {
 }
 const source = { publisher: 'OpenStreetMap contributors', attribution: '© OpenStreetMap contributors', license: 'ODbL-1.0',
   termsUrl: 'https://www.openstreetmap.org/copyright', snapshot: '2026-09-02T00:00:00Z', acquired: '2026-09-08', files,
-  model: 'Shortest connected standard-gauge main/branch and explicitly main-track crossover OSM rail path between exact UIC station identities and bounded original platform projections. Original OSM node IDs define connectivity. No sidings, yards, spurs, coordinate merges or running-track certification.',
+  model: 'Shortest connected standard-gauge main/branch and explicitly main-track crossover OSM rail path between exact UIC station identities and bounded original platform projections. Original OSM node IDs define connectivity. One exact passenger-tagged siding connector is reviewed for platform 2; other sidings, yards and spurs remain excluded. No coordinate merges or running-track certification.',
   alternatives: { vogis: '136 original source records inventoried; CC BY 4.0 in dataset metadata, digitised from 2012 imagery. Known 2013 Rhine alignment change prevents treating this as verified contemporary border alignment.',
     oebb: 'GeoNetz 12-2024 catalogue states validity through 2025-12-13; no geometry admitted from that expired release.' } }
 await writeFile(`${dir}/sources.json`, JSON.stringify(source, null, 2) + '\n')
+const osm = JSON.parse(gunzipSync(await readFile(`${dir}/osm.json.gz`)))
+const connector = osm.elements.find(e => e.type === 'way' && e.id === 122064965)
+assert.equal(connector.version, 10); assert.equal(connector.timestamp, '2024-02-15T22:14:42Z')
 const policy = { sourceSha256: borderSha(await readFile(`${dir}/sources.json`)), timetableSha256: borderSha(await readFile('data/thurgau-audit/timetable-cache.json.gz')),
   snapshot: source.snapshot, route: { routeId: '91-7-B-j26-1', agencyId: '65', line: 'S7' },
   stations: [{ nodeId: 4886725252, number: '8506314', name: 'St. Margrethen SG' }, { nodeId: 2459480034, number: '8102336', name: 'Bregenz' }],
+  reviewedWays: [{ id: 122064965, sourceFeatureSha256: borderSha(JSON.stringify(connector)), endNodes: [1364831182, 1364831187], connectedMainWays: [275975818, 122064981],
+    evidence: 'Exact 2024-02-15 version 10 feature: service=siding plus passenger_lines=1, gauge=1435, maxspeed=95 and SBB operator. Its eight-node curve connects the 883 main track to the 880 main track at existing source node IDs. Permit only for the original platform-2 Bregenz pair after the primary graph fails; no general siding eligibility.' }],
   limits: { stationIdentityMetres: 350, trackAttachmentMetres: 60, projectionAlternativeMetres: 5, maximumPathMetres: 18000, maximumTurnDegrees: 120 },
   scope: 'Only the exact St. Margrethen–Bregenz pair within a reviewed whole S7 pattern. Preserve all successful FOT/SBB segments and every previously complete pattern. Each resulting full pattern must pass; keep original stops and timestamps.' }
 await writeFile('data/thurgau-border-rail-policy.json', JSON.stringify(policy, null, 2) + '\n')

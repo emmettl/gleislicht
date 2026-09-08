@@ -1929,7 +1929,8 @@
       "service": "siding",
       "voltage": "15000"
     },
-    "reason": "non-passenger-running-line"
+    "reason": null,
+    "admissionBasis": "exact-reviewed-passenger-connector"
   },
   {
     "id": 122064967,

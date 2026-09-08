@@ -84,7 +84,7 @@ export async function buildThurgauRegion({ archive, sourceDirectory = 'data/thur
   hashes.railSourceMetadata = rail.policy.sourceMetadataSha256
   hashes.borderRailPolicy = rail.border.policySha256
   hashes.borderRailSource = rail.border.policy.sourceSha256
-  provenance.borderRail = { ...rail.border.source, limits: rail.border.policy.limits, scope: rail.border.policy.scope }
+  provenance.borderRail = { ...rail.border.source, limits: rail.border.policy.limits, scope: rail.border.policy.scope, reviewedWays: rail.border.policy.reviewedWays }
   await writeJson(join(auditDirectory, 'border-rail-source-segments.json'), rail.border.inventory, true)
   const borderPaths = new Map()
   hashes.sbbRailPolicy = rail.sbb.policySha256

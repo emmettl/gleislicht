@@ -1,5 +1,5 @@
 {
-  "sourceSha256": "e1345fe23f6010dca221a8aa55317b094a96ee415687bbadebcd13a02dec0b90",
+  "sourceSha256": "5c52255a9cbaf6560fcac53e9c989e034605fbf11d75f146665ee536b74f9fd3",
   "timetableSha256": "9403d675c79184b4885e8a0ca0f3d02da55363cefafab2f403cb7e5ae95dcff5",
   "snapshot": "2026-09-02T00:00:00Z",
   "route": {
@@ -17,6 +17,21 @@
       "nodeId": 2459480034,
       "number": "8102336",
       "name": "Bregenz"
+    }
+  ],
+  "reviewedWays": [
+    {
+      "id": 122064965,
+      "sourceFeatureSha256": "151fc3edd03d3074d48be706e1b9c8b19c2e565cb1b724bc78bc2a4f9b1695d8",
+      "endNodes": [
+        1364831182,
+        1364831187
+      ],
+      "connectedMainWays": [
+        275975818,
+        122064981
+      ],
+      "evidence": "Exact 2024-02-15 version 10 feature: service=siding plus passenger_lines=1, gauge=1435, maxspeed=95 and SBB operator. Its eight-node curve connects the 883 main track to the 880 main track at existing source node IDs. Permit only for the original platform-2 Bregenz pair after the primary graph fails; no general siding eligibility."
     }
   ],
   "limits": {

@@ -438,7 +438,7 @@
         "retrieved": "2026-09-08"
       }
     ],
-    "model": "Shortest connected standard-gauge main/branch and explicitly main-track crossover OSM rail path between exact UIC station identities and bounded original platform projections. Original OSM node IDs define connectivity. No sidings, yards, spurs, coordinate merges or running-track certification.",
+    "model": "Shortest connected standard-gauge main/branch and explicitly main-track crossover OSM rail path between exact UIC station identities and bounded original platform projections. Original OSM node IDs define connectivity. One exact passenger-tagged siding connector is reviewed for platform 2; other sidings, yards and spurs remain excluded. No coordinate merges or running-track certification.",
     "alternatives": {
       "vogis": "136 original source records inventoried; CC BY 4.0 in dataset metadata, digitised from 2012 imagery. Known 2013 Rhine alignment change prevents treating this as verified contemporary border alignment.",
       "oebb": "GeoNetz 12-2024 catalogue states validity through 2025-12-13; no geometry admitted from that expired release."
@@ -450,7 +450,22 @@
       "maximumPathMetres": 18000,
       "maximumTurnDegrees": 120
     },
-    "scope": "Only the exact St. Margrethen–Bregenz pair within a reviewed whole S7 pattern. Preserve all successful FOT/SBB segments and every previously complete pattern. Each resulting full pattern must pass; keep original stops and timestamps."
+    "scope": "Only the exact St. Margrethen–Bregenz pair within a reviewed whole S7 pattern. Preserve all successful FOT/SBB segments and every previously complete pattern. Each resulting full pattern must pass; keep original stops and timestamps.",
+    "reviewedWays": [
+      {
+        "id": 122064965,
+        "sourceFeatureSha256": "151fc3edd03d3074d48be706e1b9c8b19c2e565cb1b724bc78bc2a4f9b1695d8",
+        "endNodes": [
+          1364831182,
+          1364831187
+        ],
+        "connectedMainWays": [
+          275975818,
+          122064981
+        ],
+        "evidence": "Exact 2024-02-15 version 10 feature: service=siding plus passenger_lines=1, gauge=1435, maxspeed=95 and SBB operator. Its eight-node curve connects the 883 main track to the 880 main track at existing source node IDs. Permit only for the original platform-2 Bregenz pair after the primary graph fails; no general siding eligibility."
+      }
+    ]
   },
   "sbbRail": {
     "publisher": "SBB Infrastructure",
