@@ -131,9 +131,9 @@ import { foldSearchText } from '@motionstudies/core/search-text'
 import { useProgressiveNetworkDay } from '@motionstudies/web/use-progressive-network-day'
 import { useProgressiveAirDay } from '@motionstudies/web/use-progressive-air-day'
 import { useProgressiveRoadStudy } from '@motionstudies/web/use-progressive-road-study'
-import { useLocalPerformance } from '@motionstudies/web/use-local-performance'
 
 const CantonalRecordingPicker = lazy(() => import('./studies/CantonalRecordingPicker.tsx'))
+const DetailCard = lazy(() => import('./studies/DetailCard.tsx'))
 const StudyBrowser = lazy(() => import('./studies/StudyBrowser.tsx'))
 
 const CantonalPilotControls = lazy(() => import('./studies/CantonalPilotControls.tsx'))
@@ -387,7 +387,6 @@ export function App({ edition }: AppProps) {
   const [corridorError, setCorridorError] = useState(false)
   const [hubFunctions, setHubFunctions] = useState<typeof import('@motionstudies/core/domain/hub')>()
   useEffect(() => { if (view === 'hub') { void import('@motionstudies/core/domain/hub').then(setHubFunctions); void import('./studies/hub-layout.css') } }, [view])
-  const platformCodeForCall = hubFunctions?.platformCodeForCall ?? (() => '—')
   const [hubDay, setHubDay] = useState<HubDaySnapshot>()
   const [dataError, setDataError] = useState(false)
   const [operationsMode, setOperationsMode] = useState<OperationsMode>(
@@ -467,7 +466,6 @@ export function App({ edition }: AppProps) {
     return () => { current = false }
   }, [language])
   const help = text.controlHelp
-  const performanceSample = useLocalPerformance(performanceEnabled)
   const isRigi = networkStudy === 'rigi-lake'
   const isValais = networkStudy === 'valais-region'
   const [valaisLocale, setValaisLocale] = useState<typeof import('./studies/valais-copy.ts')>()
@@ -603,6 +601,12 @@ export function App({ edition }: AppProps) {
     setMapCameraCommand(current => ({ id: current.id + 1, action: 'focus-location', focus: [validLocation.longitude, validLocation.latitude], distanceScale: 0.025 }))
   }, [validLocation])
   useEffect(() => { clearBrowserLocation() }, [networkStudy, clearBrowserLocation])
+
+  const regionalViewLabel = isValais ? valaisLabel : isTicino ? ticinoCopy?.view : isGraubuenden ? graubuendenCopy?.view : isSolothurn ? text.solothurnView : isBern ? text.bernView : isNyon ? text.nyonView : isBasel ? text.baselView : isLausanne ? text.lausanneView : isPostbus ? text.postbusNetwork : networkStudy === 'zvv-region'
+                        ? text.zvvView
+                        : networkStudy === 'geneva-tpg'
+                          ? text.genevaView
+                          : text.zurichView
 
   const realtimeApplication = useMemo<RealtimeApplication | undefined>(
     () =>
@@ -3069,119 +3073,9 @@ export function App({ edition }: AppProps) {
       ) : isNetwork && isRigi && rigiSequenceActive && rigiNetwork ? (
         <Suspense fallback={null}><RigiSequence network={rigiNetwork} time={networkTime} language={language} onSeek={seekMountainSequence} onFollow={followMountainSequence} onTimetableTerrain={setRigiTerrainBinding} onExit={releaseSelection} onTerrain={() => openTerrainCorridor('vitznau-rigi')} /></Suspense>
       ) : isHub ? (
-        <section
-          className="journey-card hub-card"
-          aria-label={`${selectedHub.name} ${hubStudy === 'pulse' ? text.pulse : text.stationFlow}`}
-        >
-          <div className="hub-card-header">
-            <p className="hub-kicker">
-              {hubStudy === 'pulse' ? text.taktLoop : text.stationPlatforms}
-            </p>
-            <div className="hub-study-picker" aria-label={text.taktVisualisation}>
-              <button
-                type="button"
-                data-tooltip={help.pulse}
-                aria-pressed={hubStudy === 'pulse'}
-                onClick={() => setHubStudy('pulse')}
-              >
-                {text.pulse}
-              </button>
-              <button
-                type="button"
-                data-tooltip={help.tracks}
-                aria-pressed={hubStudy === 'station'}
-                onClick={() => setHubStudy('station')}
-              >
-                {text.tracks}
-              </button>
-              {hubStudy === 'pulse' && (
-                <button
-                  type="button"
-                  data-tooltip={showTaktOverlay ? help.gridOff : help.gridOn}
-                  aria-pressed={showTaktOverlay}
-                  onClick={() => setShowTaktOverlay((value) => !value)}
-                >
-                  {text.quarterGrid}
-                </button>
-              )}
-            </div>
-          </div>
-          <div className="network-count-row">
-            <strong>{nearbyHubCalls.length}</strong>
-            <span>
-              {hubStudy === 'pulse'
-                ? text.orbitMovements
-                : text.stationMovements}
-            </span>
-          </div>
-          <p className="between">
-            {text.hubCharacter[selectedHub.id]} <span>/</span>{' '}
-            {hubStudy === 'station'
-              ? text.scheduledTracks(hubPlatforms.length)
-              : text.callsToday(numberFormat.format(hubCalls.length))}
-          </p>
-          <div className="metric-grid">
-            <div>
-              <span>{text.nextStrike}</span>
-              <strong>
-                {upcomingHubCall ? formatServiceTime(upcomingHubCall.arrival) : '—'}
-              </strong>
-              <small>
-                {upcomingHubCall
-                  ? `${upcomingHubCall.train.route} · ${text.trackShort} ${platformCodeForCall(upcomingHubCall)}`
-                  : text.end}
-              </small>
-            </div>
-            <div>
-              <span>{text.direction}</span>
-              <strong className="destination-metric">
-                {upcomingHubCall?.train.headsign ?? '—'}
-              </strong>
-            </div>
-          </div>
-        </section>
+        <Suspense fallback={null}><DetailCard kind="HubCard" selectedHub={selectedHub} hubStudy={hubStudy} setHubStudy={setHubStudy} showTaktOverlay={showTaktOverlay} onToggleGrid={() => setShowTaktOverlay(value => !value)} nearbyCallCount={nearbyHubCalls.length} platformCount={hubPlatforms.length} callCount={hubCalls.length} upcomingHubCall={upcomingHubCall} numberFormat={numberFormat} text={text} /></Suspense>
       ) : isNetwork && isContrast ? (
-        <section
-          className="journey-card network-card contrast-card"
-          aria-label={text.contrastNetworkStatus}
-        >
-          <p className="contrast-card-title">{text.cityValley}</p>
-          <div className="metric-grid">
-            <div>
-              <span>Zürich</span>
-              <strong>
-                {zurichContrast.chunkReady
-                  ? numberFormat.format(zurichContrastActiveCount)
-                  : '—'}
-              </strong>
-              <small>{serviceCategoryLabel(language, 'tram')}</small>
-            </div>
-            <div>
-              <span>Kiental</span>
-              <strong>
-                {kientalContrast.chunkReady
-                  ? numberFormat.format(kientalContrastActiveCount)
-                  : '—'}
-              </strong>
-              <small>PostBus 220</small>
-            </div>
-          </div>
-          <p className="between">
-            {zurichContrast.error || kientalContrast.error
-              ? text.contrastUnavailable
-              : zurichContrast.loading || kientalContrast.loading
-                ? text.loadingContrast
-                : text.synchronisedDay}
-          </p>
-          <button
-            className="corridor-entry contrast-corridor-entry"
-            type="button"
-            data-tooltip={help.corridor} onClick={enterKientalCorridor}
-          >
-            <span aria-hidden="true">↘</span>
-            {text.enterTerrain} · Kiental–Griesalp
-          </button>
-        </section>
+        <Suspense fallback={null}><DetailCard kind="ContrastCard" zurichReady={zurichContrast.chunkReady} kientalReady={kientalContrast.chunkReady} zurichContrastActiveCount={zurichContrastActiveCount} kientalContrastActiveCount={kientalContrastActiveCount} error={Boolean(zurichContrast.error || kientalContrast.error)} loading={zurichContrast.loading || kientalContrast.loading} enterKientalCorridor={enterKientalCorridor} numberFormat={numberFormat} language={language} text={text} /></Suspense>
       ) : isNetwork && selectedAirport ? (
         <Suspense fallback={null}><AirportHeroCard key={selectedAirport.id} className="edition-airport-card"
           airport={selectedAirport} language={language} aircraft={isNationalDay ? airDay.manifest?.aircraft ?? [] : activeAirSnapshot?.tracks ?? []}
@@ -3191,86 +3085,9 @@ export function App({ edition }: AppProps) {
           onSelectFlight={selectAirTrack}
         /></Suspense>
       ) : isNetwork && selectedAirTrack ? (
-        <section
-          className="journey-card selected-card air-card"
-          aria-label={text.observedAircraft}
-        >
-          <div className="service-row">
-            <span className="air-card-mark" aria-hidden="true">
-              ✦
-            </span>
-            <span className="service">{selectedAirTrack.callsign}</span>
-            <span className="arrow">↗</span>
-            <span>{text.luftraum}</span>
-          </div>
-          <p className="between">
-            {selectedAirPosition
-              ? `${text.heading} ${Math.round(selectedAirPosition.headingDegrees)
-                  .toString()
-                  .padStart(3, '0')}°`
-              : text.signalGap}{' '}
-            <span>/</span>{' '}
-            {(selectedAirTrack.icaoAddress ?? selectedAirTrack.id).toUpperCase()}
-          </p>
-          <p className="air-compact-metrics">
-            {selectedAirPosition
-              ? `${numberFormat.format(
-                  Math.round(selectedAirPosition.altitudeFeet / 100) * 100,
-                )} ft · ${numberFormat.format(
-                  Math.round(selectedAirPosition.groundSpeedKnots),
-                )} kt`
-              : text.signalGap}
-          </p>
-          <div className="metric-grid">
-            <div>
-              <span>{text.altitude}</span>
-              <strong>
-                {selectedAirPosition
-                  ? numberFormat.format(
-                      Math.round(selectedAirPosition.altitudeFeet / 100) * 100,
-                    )
-                  : '—'}
-              </strong>
-              <small>ft</small>
-            </div>
-            <div>
-              <span>{text.groundSpeed}</span>
-              <strong>
-                {selectedAirPosition
-                  ? numberFormat.format(
-                      Math.round(selectedAirPosition.groundSpeedKnots),
-                    )
-                  : '—'}
-              </strong>
-              <small>kt</small>
-            </div>
-          </div>
-        </section>
+        <Suspense fallback={null}><DetailCard kind="AircraftCard" selectedAirTrack={selectedAirTrack} selectedAirPosition={selectedAirPosition} numberFormat={numberFormat} text={text} /></Suspense>
       ) : isNetwork && selectedTrain ? (
-        <section className="journey-card selected-card" aria-label={text.selectedTrain}>
-          <div className="service-row">
-            <TransportIcon mode={isCogwheel || isMountainStudy && selectedTrain.category === 'other' ? 'cogwheel' : selectedTrain.category} color={serviceColors[selectedTrain.category]} />
-            <span className="service">{selectedTrain.route}</span>
-            <span className="arrow">→</span>
-            <span>{selectedTrain.headsign}</span>
-          </div>
-          <p className="between">
-            {selectedFrom ?? text.betweenStations} <span>/</span>{' '}
-            {selectedTo ?? selectedTrain.headsign}
-          </p>
-          <div className="metric-grid">
-            <div>
-              <span>{text.train}</span>
-              <strong>{selectedTrain.shortName || '—'}</strong>
-              <small>{isCogwheel ? cogwheelCopy.label : categoryLabel(selectedTrain.category)}</small>
-            </div>
-            <div>
-              <span>{selectedHeadway ? frequencyCopy.arrival : text.arrival}</span>
-              <strong>{selectedHeadway ? '≈' : ''}{formatServiceTime(selectedTrain.end)}</strong>
-              <small>{selectedHeadway ? frequencyCopy.label : text.plan}</small>
-            </div>
-          </div>
-          {selectedHeadway && selectedFrequency && <p className="between frequency-note">{frequencyCopy.note}: <span style={{ whiteSpace: 'nowrap' }}>{numberFormat.format(selectedFrequency.headwaySeconds % 60 === 0 ? selectedFrequency.headwaySeconds / 60 : selectedFrequency.headwaySeconds)} {selectedFrequency.headwaySeconds % 60 === 0 ? 'min' : 's'}</span></p>}
+        <Suspense fallback={null}><DetailCard kind="TrainCard" selectedTrain={selectedTrain} selectedFrom={selectedFrom} selectedTo={selectedTo} selectedHeadway={Boolean(selectedHeadway)} selectedFrequency={selectedFrequency} frequency={frequencyCopy} cogwheel={isCogwheel || isMountainStudy && selectedTrain.category === 'other'} color={serviceColors[selectedTrain.category]} categoryName={isCogwheel ? cogwheelCopy.label : categoryLabel(selectedTrain.category)} numberFormat={numberFormat} text={text}>
           {isJungfrau && <p className="between jungfrau-model">{rigiOperator(selectedTrain)} · {selectedTrain.category === 'cableway' ? jungfrauCopy?.cable : jungfrauCopy?.model}</p>}
           {isRigi && <p className="between">{rigiOperator(selectedTrain)}{selectedTrain.category === 'ferry' ? <> · {rigiCopy.water}</> : selectedTrain.category === 'cableway' ? <> · {rigiCopy.cable}</> : null}</p>}
           {isCogwheel && cogwheelCatalogue && (
@@ -3286,95 +3103,11 @@ export function App({ edition }: AppProps) {
               {selectedRigiCorridor ? text.rigiTerrainEnter.replace('{origin}', RIGI_ASCENTS[selectedRigiCorridor].name) : text.enterTerrain}
             </button>
           )}
-        </section>
+        </DetailCard></Suspense>
       ) : isNetwork && selectedRoute ? (
-        <section
-          className="journey-card route-card"
-          aria-label={`${text.selectedLine}: ${isCogwheel ? cogwheelCopy.label : categoryLabel(selectedRoute.category)} ${selectedRoute.name}`}
-          style={
-            {
-              '--service-accent': serviceColors[selectedRoute.category],
-            } as CSSProperties
-          }
-        >
-          <div className="service-row">
-            <TransportIcon mode={isCogwheel || isMountainStudy && selectedRoute.category === 'other' ? 'cogwheel' : selectedRoute.category} color={serviceColors[selectedRoute.category]} />
-            <span className="service">
-              {isCogwheel ? cogwheelCopy.label : categoryLabel(selectedRoute.category)}{' '}
-              {selectedRoute.name}
-            </span>
-          </div>
-          <p className="between">
-            {selectedRoute.headsigns.slice(0, 2).join(' ↔ ') ||
-              (isNationalDay || isRegionalDay || isMountainStudy ? text.fullDayStudy : text.morningStudy)}
-          </p>
-          {isCogwheel && cogwheelCatalogue && <p className="between">{[...new Set(selectedRoute.trainIds.map(id => cogwheelCatalogue.routes[cogwheelCatalogue.trips[id]]?.operator).filter(Boolean))].join(' · ')}</p>}
-          {selectionHasHeadwayMotion && <p className="between frequency-note">{frequencyCopy.mixed}</p>}
-          <div className="metric-grid">
-            <div>
-              <span>{text.trips}</span>
-              <strong>{numberFormat.format(selectedRoute.trainIds.length)}</strong>
-              <small>{isMountainStudy ? '24h' : isNationalDay ? '3h' : '2h'}</small>
-            </div>
-            <div>
-              <span>{text.stops}</span>
-              <strong>{numberFormat.format(selectedRoute.stopIndexes.length)}</strong>
-              <small>{text.unique}</small>
-            </div>
-          </div>
-        </section>
+        <Suspense fallback={null}><DetailCard kind="RouteCard" selectedRoute={selectedRoute} serviceColors={serviceColors} categoryName={isCogwheel ? cogwheelCopy.label : categoryLabel(selectedRoute.category)} cogwheel={isCogwheel || isMountainStudy && selectedRoute.category === 'other'} studyLabel={isNationalDay || isRegionalDay || isMountainStudy ? text.fullDayStudy : text.morningStudy} catalogue={isCogwheel ? cogwheelCatalogue : undefined} frequencyNote={selectionHasHeadwayMotion ? frequencyCopy.mixed : undefined} callWindow={isMountainStudy ? '24h' : isNationalDay ? '3h' : '2h'} numberFormat={numberFormat} text={text} /></Suspense>
       ) : isNetwork && selectedStation ? (
-        <section
-          className="journey-card station-card"
-          aria-label={text.routesServing(selectedStation.name)}
-        >
-          <div className="service-row">
-            <span className="station-card-mark" aria-hidden="true">◎</span>
-            <span className="service">{selectedStation.name}</span>
-          </div>
-          {isRigi && <button type="button" className="corridor-entry" onClick={event => { event.currentTarget.focus(); setRigiGuideActive(true) }}>{rigiCopy.connections} →</button>}
-          <div
-            className="station-route-strip"
-            aria-label={text.routesServing(selectedStation.name)}
-          >
-            {selectedStation.routes.slice(0, 4).map((route) => (
-              <span
-                key={`${route.category}:${route.name}`}
-                style={
-                  {
-                    '--route-accent': serviceColors[route.category],
-                  } as CSSProperties
-                }
-              >
-                {route.name}
-              </span>
-            ))}
-            {selectedStation.routes.length > 4 && (
-              <small>+{selectedStation.routes.length - 4}</small>
-            )}
-          </div>
-          <p className="between">
-            {text.allScheduledPaths} <span>/</span>{' '}
-            {isNationalDay || isRegionalDay || isMountainStudy ? text.fullDayStudy : text.morningStudy}
-            {selectionHasHeadwayMotion && <> {frequencyCopy.mixed}</>}
-          </p>
-          <div className="network-count-row">
-            <strong>{numberFormat.format(activeTrainCount)}</strong>
-            <span>{networkStudy === 'national' ? text.trainsInMotion : isJungfrau ? jungfrauCopy?.movements : text.vehiclesInMotion}</span>
-          </div>
-          <div className="metric-grid">
-            <div>
-              <span>{text.routes}</span>
-              <strong>{selectedStation.routes.length}</strong>
-              <small>{text.unique}</small>
-            </div>
-            <div>
-              <span>{text.calls}</span>
-              <strong>{selectedStation.trainIds.length}</strong>
-              <small>{isMountainStudy ? '24h' : isNationalDay ? '3h' : '2h'}</small>
-            </div>
-          </div>
-        </section>
+        <Suspense fallback={null}><DetailCard kind="StationCard" selectedStation={selectedStation} serviceColors={serviceColors} onConnections={isRigi ? () => setRigiGuideActive(true) : undefined} connectionsLabel={rigiCopy.connections} fullDay={isNationalDay || isRegionalDay || isMountainStudy} frequencyNote={selectionHasHeadwayMotion ? frequencyCopy.mixed : undefined} activeTrainCount={activeTrainCount} movementsLabel={networkStudy === 'national' ? text.trainsInMotion : isJungfrau ? jungfrauCopy?.movements : text.vehiclesInMotion} callWindow={isMountainStudy ? '24h' : isNationalDay ? '3h' : '2h'} numberFormat={numberFormat} text={text} /></Suspense>
       ) : isNetwork && selectedRoad ? (
         <section
           className={`journey-card road-corridor-card${activePilot ? ' is-pilot' : ''}`}
@@ -4195,11 +3928,7 @@ export function App({ edition }: AppProps) {
                     ? text.corridorStudy
                     : networkStudy === 'national'
                       ? text.nationalView
-                      : isValais ? valaisLabel : isTicino ? ticinoCopy?.view : isGraubuenden ? graubuendenCopy?.view : isSolothurn ? text.solothurnView : isBern ? text.bernView : isNyon ? text.nyonView : isBasel ? text.baselView : isLausanne ? text.lausanneView : isPostbus ? text.postbusNetwork : networkStudy === 'zvv-region'
-                        ? text.zvvView
-                        : networkStudy === 'geneva-tpg'
-                          ? text.genevaView
-                          : text.zurichView}
+                      : regionalViewLabel}
               </button>
               {isTimetable &&
                 !isContrast &&
@@ -4285,11 +4014,7 @@ export function App({ edition }: AppProps) {
                 ? text.corridorStudy
                 : networkStudy === 'national'
                   ? text.nationalView
-                  : isValais ? valaisLabel : isTicino ? ticinoCopy?.view : isGraubuenden ? graubuendenCopy?.view : isSolothurn ? text.solothurnView : isBern ? text.bernView : isNyon ? text.nyonView : isBasel ? text.baselView : isLausanne ? text.lausanneView : isPostbus ? text.postbusNetwork : networkStudy === 'zvv-region'
-                    ? text.zvvView
-                    : networkStudy === 'geneva-tpg'
-                      ? text.genevaView
-                      : text.zurichView}
+                  : regionalViewLabel}
             <kbd>C</kbd>
           </button>
           {isTimetable &&
@@ -4312,11 +4037,7 @@ export function App({ edition }: AppProps) {
               {isHub
                 ? networkStudy === 'national'
                   ? text.nationalView
-                  : isValais ? valaisLabel : isTicino ? ticinoCopy?.view : isGraubuenden ? graubuendenCopy?.view : isSolothurn ? text.solothurnView : isBern ? text.bernView : isNyon ? text.nyonView : isBasel ? text.baselView : isLausanne ? text.lausanneView : isPostbus ? text.postbusNetwork : networkStudy === 'zvv-region'
-                    ? text.zvvView
-                    : networkStudy === 'geneva-tpg'
-                      ? text.genevaView
-                    : text.zurichView
+                  : regionalViewLabel
                 : text.taktHubs}
             </button>
           )}
@@ -4334,15 +4055,7 @@ export function App({ edition }: AppProps) {
       </section>
 
       {performanceEnabled && (
-        <aside className="performance-monitor" aria-label="Local performance monitor">
-          <span>Local only · no analytics</span>
-          <strong>{performanceSample ? `${performanceSample.fps} FPS` : 'measuring…'}</strong>
-          <small>
-            {performanceSample
-              ? `${performanceSample.slowFramePercent}% slow frames`
-              : '1 second sample'}
-          </small>
-        </aside>
+        <Suspense fallback={null}><DetailCard kind="performance" /></Suspense>
       )}
 
       <footer>
