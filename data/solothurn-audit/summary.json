@@ -6,6 +6,211 @@
   },
   "sources": {
     "supplements": {
+      "corridors": {
+        "policySha256": "1afe8daa8603bbf5965ff58758d7e8fd8af104ec453566aa5d3aa8598852f1ce",
+        "asm": {
+          "sourceLine": "413",
+          "sourceOperator": "ASm",
+          "routeId": "91-11-M-j26-1",
+          "agencyId": "81",
+          "line": "S11",
+          "mode": "rail",
+          "sourceFile": "data/solothurn-sources/corridors/bern-413.json",
+          "sha256": "4f2b0e94dec7bd4dc15f53805591a565621a1234461b0bae3deb69edad902e1b",
+          "source": {
+            "schemaVersion": 1,
+            "sourceCrs": "EPSG:2056",
+            "coordinateModel": "original LV95 XY, no simplification; Z/M discarded only in derived geometry",
+            "sourceUrl": "https://geofiles.be.ch/geoportal/pub/download/OEVTP/oevtp.gpkg.zip",
+            "metadataUrl": "https://www.agi.dij.be.ch/de/start/geoportal/geodaten/detail.html?code=OEVTP&type=geoproduct",
+            "attribution": "Öffentlicher Verkehr © Amt für öffentlichen Verkehr und Verkehrskoordination des Kantons Bern",
+            "license": "Bern cantonal geodata terms 2026-01-20 (free use with attribution; no Creative Commons licence assigned)",
+            "termsFiles": [
+              "terms_of_use_de.pdf",
+              "terms_of_use_fr.pdf"
+            ],
+            "dataUpdated": "2026-01-01",
+            "packagePublished": "2026-07-09",
+            "acquiredAt": "2026-09-08T17:02:41.454390+00:00",
+            "archiveSha256": "4e2a4fcca08cc219c871d42c957753c09318ace2172fb3614c4fe71b20a4fe19",
+            "geopackageSha256": "de4c89d91f69a572dabe9fda7b14140da45fdfe016d45c6f5f900337b45b1e4d",
+            "boundary": {
+              "edition": "2026-01",
+              "sourceSha256": "1f122cb7a06f2d312a84b7c0a91116348ba907054d487f0a70b9d2302984e6fc",
+              "snapshotSha256": "b0bfb7d0d3d7357aaaec2de0335dfc1beb83274b2143d876260e86b227a41dd0",
+              "attribution": "© swisstopo",
+              "sourceUrl": "https://data.geo.admin.ch/ch.swisstopo.swissboundaries3d/swissboundaries3d_2026-01/swissboundaries3d_2026-01_2056_5728.gpkg.zip",
+              "termsUrl": "https://www.swisstopo.admin.ch/en/terms-of-use-free-geodata-and-geoservices"
+            }
+          },
+          "limits": {
+            "snapMetres": 120,
+            "detourRatio": 3,
+            "detourFloorMetres": 1500,
+            "alternativeSnapMetres": 5
+          },
+          "method": "Exact operator/line/route association to Bern feature 413. Original LV95 line graph; whole directed platform chain retained. No standard-gauge graph or invented connection."
+        },
+        "s29": {
+          "sourceLine": "450_S_b",
+          "sourceOperator": "SBB",
+          "routeId": "91-29-j26-1",
+          "agencyId": "11",
+          "line": "S29",
+          "mode": "rail",
+          "sourceFile": "data/solothurn-sources/corridors/bern-450_S_b.json",
+          "sha256": "6224b50080d4d806dd9beca66904c0911a6cb4ff2218e00c94295112e7272e3e",
+          "source": {
+            "schemaVersion": 1,
+            "sourceCrs": "EPSG:2056",
+            "coordinateModel": "original LV95 XY, no simplification; Z/M discarded only in derived geometry",
+            "sourceUrl": "https://geofiles.be.ch/geoportal/pub/download/OEVTP/oevtp.gpkg.zip",
+            "metadataUrl": "https://www.agi.dij.be.ch/de/start/geoportal/geodaten/detail.html?code=OEVTP&type=geoproduct",
+            "attribution": "Öffentlicher Verkehr © Amt für öffentlichen Verkehr und Verkehrskoordination des Kantons Bern",
+            "license": "Bern cantonal geodata terms 2026-01-20 (free use with attribution; no Creative Commons licence assigned)",
+            "termsFiles": [
+              "terms_of_use_de.pdf",
+              "terms_of_use_fr.pdf"
+            ],
+            "dataUpdated": "2026-01-01",
+            "packagePublished": "2026-07-09",
+            "acquiredAt": "2026-09-08T17:02:41.454390+00:00",
+            "archiveSha256": "4e2a4fcca08cc219c871d42c957753c09318ace2172fb3614c4fe71b20a4fe19",
+            "geopackageSha256": "de4c89d91f69a572dabe9fda7b14140da45fdfe016d45c6f5f900337b45b1e4d",
+            "boundary": {
+              "edition": "2026-01",
+              "sourceSha256": "1f122cb7a06f2d312a84b7c0a91116348ba907054d487f0a70b9d2302984e6fc",
+              "snapshotSha256": "b0bfb7d0d3d7357aaaec2de0335dfc1beb83274b2143d876260e86b227a41dd0",
+              "attribution": "© swisstopo",
+              "sourceUrl": "https://data.geo.admin.ch/ch.swisstopo.swissboundaries3d/swissboundaries3d_2026-01/swissboundaries3d_2026-01_2056_5728.gpkg.zip",
+              "termsUrl": "https://www.swisstopo.admin.ch/en/terms-of-use-free-geodata-and-geoservices"
+            }
+          },
+          "limits": {
+            "snapMetres": 120,
+            "detourRatio": 3,
+            "detourFloorMetres": 1500,
+            "alternativeSnapMetres": 5
+          },
+          "method": "Exact SBB S29 line association to Bern feature 450_S_b. Retains complete timetable calls including Aarau–Olten reversals; shortest paths on this official line remain inferred."
+        },
+        "sbb": {
+          "sourceDirectory": "data/solothurn-sources/corridors/sbb",
+          "sourceSha256": "c67745131e337136b47da452650f57c1c0dcc9a16f54fc659e6a0227f6fad030",
+          "limits": {
+            "stationAttachmentMetres": 100,
+            "detourRatio": 2,
+            "detourFloorMetres": 1500
+          },
+          "corridors": [
+            {
+              "id": "daeniken-schoenenwerd",
+              "agencyId": "11",
+              "routes": [
+                {
+                  "routeId": "91-23-j26-1",
+                  "line": "S23"
+                },
+                {
+                  "routeId": "91-26-j26-1",
+                  "line": "S26"
+                },
+                {
+                  "routeId": "91-29-j26-1",
+                  "line": "S29"
+                },
+                {
+                  "routeId": "91-11-E-j26-1",
+                  "line": "SN11"
+                },
+                {
+                  "routeId": "91-6-W-j26-1",
+                  "line": "RE6"
+                },
+                {
+                  "routeId": "91-5F-Y-j26-1",
+                  "line": "IC"
+                }
+              ],
+              "operatingPointIds": [
+                "8502111",
+                "8502112"
+              ],
+              "sourcePointCodes": [
+                "DK",
+                "SCOE"
+              ],
+              "features": [
+                [
+                  540,
+                  "DK",
+                  "DKO",
+                  45673.43,
+                  46100
+                ],
+                [
+                  540,
+                  "DKO",
+                  "SCOE",
+                  46100,
+                  48129.6
+                ]
+              ]
+            }
+          ],
+          "method": "Only the two complete, graphically sampled SBB segments DK–DKO–SCOE, in either directed call order. Exact operating-point IDs and six reviewed original route identities. All full seasonal contexts must agree. No schematic records or arbitrary graph stitching.",
+          "source": {
+            "publisher": "SBB Infrastructure",
+            "attribution": "SBB Infrastructure / data.sbb.ch",
+            "termsUrl": "https://data.sbb.ch/page/licence/",
+            "license": "terms_by",
+            "rights": "NonCommercialAllowed-CommercialAllowed-ReferenceRequired",
+            "retrieved": "2026-09-08",
+            "modified": "2026-07-29T06:16:28+00:00",
+            "dataProcessed": "2026-09-02T03:01:34+00:00",
+            "metadataProcessed": "2026-09-08T03:00:20.208000+00:00",
+            "alignmentValidity": "Publication and processing dates are not an individual feature survey date or proof of September diversions.",
+            "model": "Complete selected graphical linework with exact operating-point crosswalk and measured timetable endpoint connectors; no midpoint splicing, gauge edits or use of schematic two-point records.",
+            "files": [
+              {
+                "file": "metadata.json",
+                "url": "https://data.sbb.ch/api/explore/v2.1/catalog/datasets/linie-mit-polygon",
+                "sha256": "cbd14d2785da7865f4565fbf9aa37ca274ef3aafc44239bc03dd0992e3fd013c"
+              },
+              {
+                "file": "line540.json",
+                "url": "https://data.sbb.ch/api/explore/v2.1/catalog/datasets/linie-mit-polygon/records?where=linienr%3D540&limit=100",
+                "sha256": "d655c79dec3dd0407f11924d42de52f8f5debdb3f6ec09cbb1e6247a817f1550"
+              },
+              {
+                "file": "foreign-review.json",
+                "url": "https://data.sbb.ch/api/explore/v2.1/catalog/datasets/linie-mit-polygon/records?where=search%28%22Konstanz%22%29%20OR%20search%28%22Como%22%29&limit=100",
+                "sha256": "1a3358cc2c58e160a6cf032d199d41d1c92763acf0a440c0a86dcb4086c0debf"
+              },
+              {
+                "file": "schematic-metadata.json",
+                "url": "https://data.sbb.ch/api/explore/v2.1/catalog/datasets/linie",
+                "sha256": "8a99d0f248ed811245aefbb7fa097cd3b7dfbf8a8a870df570c28b8f1629d553"
+              },
+              {
+                "file": "schematic-line540.json",
+                "url": "https://data.sbb.ch/api/explore/v2.1/catalog/datasets/linie/records?where=linie%3D540&limit=100",
+                "sha256": "2a37569c4394fcc63846746a2e2cd230d22aca6d00dbc81a7b02e978e69bbdc1"
+              },
+              {
+                "file": "terms.html",
+                "url": "https://data.sbb.ch/page/licence/",
+                "sha256": "985a900c0c0020edaf1dc6239ad3547d9a09db0dc4b72c3a0482ccfd09289f77"
+              },
+              {
+                "file": "federal-daeniken.json",
+                "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/identify?geometryType=esriGeometryEnvelope&geometry=7.978,47.355,7.985,47.360&geometryFormat=geojson&imageDisplay=1600,900,96&mapExtent=7.978,47.355,7.985,47.360&tolerance=0&layers=all:ch.bav.schienennetz&returnGeometry=true&limit=200&sr=4326",
+                "sha256": "b68bcc6cbf242e2d90d15b1afbaa395235bd8b325e25698472049596fc22953a"
+              }
+            ]
+          }
+        }
+      },
       "contextSha256": "6a3fb3b6d119bf3118969bce3f42bd9592fb484a4f088a0ee8b456ff769c146d",
       "policySha256": "de5419174d655425c636e07f45ff9e6c5cf652f90768f136bd3745df5c349b7e",
       "boat": {
@@ -1220,8 +1425,8 @@
     "key": "GTFS route identity + direction_id + full ordered original platform IDs, including repeats and out-of-canton calls"
   },
   "routesByStatus": {
-    "admitted-all-dated-trips": 127,
-    "excluded": 7,
+    "admitted-all-dated-trips": 129,
+    "excluded": 5,
     "inactive-on-validation-dates": 42,
     "partially-admitted": 17
   },
@@ -1283,8 +1488,9 @@
         "96-144-B-j26-1",
         "96-145-9-j26-1"
       ],
-      "admittedCalledPlatforms": 197,
+      "admittedCalledPlatforms": 202,
       "admittedRouteIds": [
+        "91-11-M-j26-1",
         "91-20-A-j26-1",
         "91-21-C-j26-1",
         "91-51-B-j26-1",
@@ -1412,8 +1618,9 @@
         "96-145-2-j26-1",
         "96-145-4-j26-1"
       ],
-      "admittedCalledPlatforms": 107,
+      "admittedCalledPlatforms": 109,
       "admittedRouteIds": [
+        "91-11-M-j26-1",
         "91-20-A-j26-1",
         "91-22-j26-1",
         "91-55-C-j26-1",
@@ -1615,8 +1822,9 @@
         "96-144-B-j26-1",
         "96-145-9-j26-1"
       ],
-      "admittedCalledPlatforms": 61,
+      "admittedCalledPlatforms": 64,
       "admittedRouteIds": [
+        "91-11-M-j26-1",
         "91-20-A-j26-1",
         "91-21-C-j26-1",
         "91-41-F-j26-1",
@@ -1757,6 +1965,7 @@
       ],
       "admittedCalledPlatforms": 275,
       "admittedRouteIds": [
+        "91-11-E-j26-1",
         "91-12-K-j26-1",
         "91-16-B-j26-1",
         "91-17-B-j26-1",
@@ -1860,23 +2069,23 @@
       },
       "coverage": {
         "trips": 7156,
-        "admittedTrips": 6654,
+        "admittedTrips": 6863,
         "scheduledTrips": 6078,
         "representativeHeadwayTrips": 1078,
-        "admittedScheduledTrips": 5576,
+        "admittedScheduledTrips": 5785,
         "admittedRepresentativeHeadwayTrips": 1078,
         "scheduledSegmentOccurrences": 97358,
-        "matchedScheduledSegmentOccurrences": 96542,
+        "matchedScheduledSegmentOccurrences": 96971,
         "segmentOccurrences": 98436,
-        "matchedSegmentOccurrences": 97620,
-        "admittedSegmentOccurrences": 88214,
+        "matchedSegmentOccurrences": 98049,
+        "admittedSegmentOccurrences": 90928,
         "directedPairs": 4259,
-        "matchedDirectedPairs": 4211,
+        "matchedDirectedPairs": 4230,
         "patterns": 921,
-        "completePatterns": 811,
-        "admittedPatterns": 811,
+        "completePatterns": 838,
+        "admittedPatterns": 838,
         "excludedTrips": {
-          "incomplete-directed-pattern": 502
+          "incomplete-directed-pattern": 293
         }
       },
       "groups": [
@@ -1884,23 +2093,23 @@
           "id": "11:rail",
           "agency": "Schweizerische Bundesbahnen SBB",
           "trips": 950,
-          "admittedTrips": 811,
+          "admittedTrips": 870,
           "scheduledTrips": 950,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 811,
+          "admittedScheduledTrips": 870,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 9782,
-          "matchedScheduledSegmentOccurrences": 9643,
+          "matchedScheduledSegmentOccurrences": 9702,
           "segmentOccurrences": 9782,
-          "matchedSegmentOccurrences": 9643,
-          "admittedSegmentOccurrences": 8244,
+          "matchedSegmentOccurrences": 9702,
+          "admittedSegmentOccurrences": 9036,
           "directedPairs": 994,
-          "matchedDirectedPairs": 964,
+          "matchedDirectedPairs": 973,
           "patterns": 327,
-          "completePatterns": 256,
-          "admittedPatterns": 256,
+          "completePatterns": 271,
+          "admittedPatterns": 271,
           "excludedTrips": {
-            "incomplete-directed-pattern": 139
+            "incomplete-directed-pattern": 80
           }
         },
         {
@@ -2062,24 +2271,22 @@
           "id": "81:rail",
           "agency": "Aare Seeland mobil (snb)",
           "trips": 150,
-          "admittedTrips": 0,
+          "admittedTrips": 150,
           "scheduledTrips": 150,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 0,
+          "admittedScheduledTrips": 150,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 1922,
-          "matchedScheduledSegmentOccurrences": 1552,
+          "matchedScheduledSegmentOccurrences": 1922,
           "segmentOccurrences": 1922,
-          "matchedSegmentOccurrences": 1552,
-          "admittedSegmentOccurrences": 0,
+          "matchedSegmentOccurrences": 1922,
+          "admittedSegmentOccurrences": 1922,
           "directedPairs": 51,
-          "matchedDirectedPairs": 41,
+          "matchedDirectedPairs": 51,
           "patterns": 12,
-          "completePatterns": 0,
-          "admittedPatterns": 0,
-          "excludedTrips": {
-            "incomplete-directed-pattern": 150
-          }
+          "completePatterns": 12,
+          "admittedPatterns": 12,
+          "excludedTrips": {}
         },
         {
           "id": "82:rail",
@@ -2211,8 +2418,8 @@
         }
       ],
       "carryInTrips": 149,
-      "admittedCarryInTrips": 137,
-      "admittedOutsideCantonPlatforms": 849,
+      "admittedCarryInTrips": 142,
+      "admittedOutsideCantonPlatforms": 870,
       "directedPatternChecks": {
         "directionIds": [
           "0",
@@ -3693,7 +3900,7 @@
         }
       },
       "pairFailureReasons": {
-        "disconnected-line": 24,
+        "disconnected-line": 5,
         "endpoint-gap": 21,
         "implausible-detour": 1,
         "no-compatible-source-mode": 2
@@ -3718,24 +3925,24 @@
       },
       "coverage": {
         "trips": 5819,
-        "admittedTrips": 5310,
+        "admittedTrips": 5467,
         "scheduledTrips": 4711,
         "representativeHeadwayTrips": 1108,
-        "admittedScheduledTrips": 4202,
+        "admittedScheduledTrips": 4359,
         "admittedRepresentativeHeadwayTrips": 1108,
         "scheduledSegmentOccurrences": 68102,
-        "matchedScheduledSegmentOccurrences": 67350,
+        "matchedScheduledSegmentOccurrences": 67650,
         "segmentOccurrences": 69210,
-        "matchedSegmentOccurrences": 68458,
-        "admittedSegmentOccurrences": 60349,
+        "matchedSegmentOccurrences": 68758,
+        "admittedSegmentOccurrences": 62412,
         "directedPairs": 4467,
-        "matchedDirectedPairs": 4413,
+        "matchedDirectedPairs": 4435,
         "patterns": 777,
-        "completePatterns": 668,
-        "admittedPatterns": 668,
+        "completePatterns": 700,
+        "admittedPatterns": 700,
         "excludedTrips": {
-          "incomplete-directed-pattern": 496,
-          "night-network-excluded-by-source": 13
+          "incomplete-directed-pattern": 343,
+          "night-network-excluded-by-source": 9
         }
       },
       "groups": [
@@ -3743,24 +3950,23 @@
           "id": "11:rail",
           "agency": "Schweizerische Bundesbahnen SBB",
           "trips": 903,
-          "admittedTrips": 776,
+          "admittedTrips": 838,
           "scheduledTrips": 903,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 776,
+          "admittedScheduledTrips": 838,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 7943,
-          "matchedScheduledSegmentOccurrences": 7816,
+          "matchedScheduledSegmentOccurrences": 7878,
           "segmentOccurrences": 7943,
-          "matchedSegmentOccurrences": 7816,
-          "admittedSegmentOccurrences": 6481,
+          "matchedSegmentOccurrences": 7878,
+          "admittedSegmentOccurrences": 7329,
           "directedPairs": 999,
-          "matchedDirectedPairs": 970,
+          "matchedDirectedPairs": 982,
           "patterns": 336,
-          "completePatterns": 272,
-          "admittedPatterns": 272,
+          "completePatterns": 293,
+          "admittedPatterns": 293,
           "excludedTrips": {
-            "incomplete-directed-pattern": 123,
-            "night-network-excluded-by-source": 4
+            "incomplete-directed-pattern": 65
           }
         },
         {
@@ -3964,24 +4170,22 @@
           "id": "81:rail",
           "agency": "Aare Seeland mobil (snb)",
           "trips": 95,
-          "admittedTrips": 0,
+          "admittedTrips": 95,
           "scheduledTrips": 95,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 0,
+          "admittedScheduledTrips": 95,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 1215,
-          "matchedScheduledSegmentOccurrences": 977,
+          "matchedScheduledSegmentOccurrences": 1215,
           "segmentOccurrences": 1215,
-          "matchedSegmentOccurrences": 977,
-          "admittedSegmentOccurrences": 0,
+          "matchedSegmentOccurrences": 1215,
+          "admittedSegmentOccurrences": 1215,
           "directedPairs": 51,
-          "matchedDirectedPairs": 41,
+          "matchedDirectedPairs": 51,
           "patterns": 11,
-          "completePatterns": 0,
-          "admittedPatterns": 0,
-          "excludedTrips": {
-            "incomplete-directed-pattern": 95
-          }
+          "completePatterns": 11,
+          "admittedPatterns": 11,
+          "excludedTrips": {}
         },
         {
           "id": "82:rail",
@@ -4117,8 +4321,8 @@
         }
       ],
       "carryInTrips": 359,
-      "admittedCarryInTrips": 315,
-      "admittedOutsideCantonPlatforms": 931,
+      "admittedCarryInTrips": 324,
+      "admittedOutsideCantonPlatforms": 972,
       "directedPatternChecks": {
         "directionIds": [
           "0",
@@ -4127,7 +4331,7 @@
         "patternsRevisitingPlatforms": 18,
         "admittedPatternsRevisitingPlatforms": 17,
         "nightTrips": 72,
-        "admittedNightTrips": 59
+        "admittedNightTrips": 63
       },
       "timingResolution": {
         "zeroDurationSegmentOccurrences": 3069,
@@ -5935,9 +6139,9 @@
         }
       },
       "pairFailureReasons": {
-        "disconnected-line": 25,
+        "disconnected-line": 5,
         "endpoint-gap": 22,
-        "night-network-excluded-by-source": 5,
+        "night-network-excluded-by-source": 3,
         "no-compatible-source-mode": 2
       },
       "validation": {
@@ -5957,7 +6161,7 @@
     "Route membership uses original call coordinates inside the unsimplified canton polygon. Boundary-adjacent calls are disclosed; no buffer silently admits neighbouring-canton services.",
     "Full cross-canton journeys retained. Source extent, gaps and unsupported modes cause whole-pattern exclusion, never cropped calls.",
     "Source has no route/operator/direction identifiers. Geometric checks validate plausibility, not the exact operator itinerary, one-way legality, rail gauge, bridges, running tracks or temporary diversions.",
-    "Solothurn source excludes night services; admitted night journeys use separate OSM road or FOT infrastructure inference on every segment, never the daytime cantonal graph.",
+    "Solothurn source excludes night services; admitted night journeys use separate OSM road, FOT or reviewed SBB corridor inference on every segment, never the daytime cantonal graph.",
     "Bahn remains rail only. BLT tram 10 and BSG boat 3216 use exact official operator/line sources. Standard-gauge rail and bus road supplements retain full-pattern consensus, bounds and separate provenance."
   ]
 }

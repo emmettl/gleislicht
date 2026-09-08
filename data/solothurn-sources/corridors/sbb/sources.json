@@ -1,0 +1,50 @@
+{
+  "publisher": "SBB Infrastructure",
+  "attribution": "SBB Infrastructure / data.sbb.ch",
+  "termsUrl": "https://data.sbb.ch/page/licence/",
+  "license": "terms_by",
+  "rights": "NonCommercialAllowed-CommercialAllowed-ReferenceRequired",
+  "retrieved": "2026-09-08",
+  "modified": "2026-07-29T06:16:28+00:00",
+  "dataProcessed": "2026-09-02T03:01:34+00:00",
+  "metadataProcessed": "2026-09-08T03:00:20.208000+00:00",
+  "alignmentValidity": "Publication and processing dates are not an individual feature survey date or proof of September diversions.",
+  "model": "Complete selected graphical linework with exact operating-point crosswalk and measured timetable endpoint connectors; no midpoint splicing, gauge edits or use of schematic two-point records.",
+  "files": [
+    {
+      "file": "metadata.json",
+      "url": "https://data.sbb.ch/api/explore/v2.1/catalog/datasets/linie-mit-polygon",
+      "sha256": "cbd14d2785da7865f4565fbf9aa37ca274ef3aafc44239bc03dd0992e3fd013c"
+    },
+    {
+      "file": "line540.json",
+      "url": "https://data.sbb.ch/api/explore/v2.1/catalog/datasets/linie-mit-polygon/records?where=linienr%3D540&limit=100",
+      "sha256": "d655c79dec3dd0407f11924d42de52f8f5debdb3f6ec09cbb1e6247a817f1550"
+    },
+    {
+      "file": "foreign-review.json",
+      "url": "https://data.sbb.ch/api/explore/v2.1/catalog/datasets/linie-mit-polygon/records?where=search%28%22Konstanz%22%29%20OR%20search%28%22Como%22%29&limit=100",
+      "sha256": "1a3358cc2c58e160a6cf032d199d41d1c92763acf0a440c0a86dcb4086c0debf"
+    },
+    {
+      "file": "schematic-metadata.json",
+      "url": "https://data.sbb.ch/api/explore/v2.1/catalog/datasets/linie",
+      "sha256": "8a99d0f248ed811245aefbb7fa097cd3b7dfbf8a8a870df570c28b8f1629d553"
+    },
+    {
+      "file": "schematic-line540.json",
+      "url": "https://data.sbb.ch/api/explore/v2.1/catalog/datasets/linie/records?where=linie%3D540&limit=100",
+      "sha256": "2a37569c4394fcc63846746a2e2cd230d22aca6d00dbc81a7b02e978e69bbdc1"
+    },
+    {
+      "file": "terms.html",
+      "url": "https://data.sbb.ch/page/licence/",
+      "sha256": "985a900c0c0020edaf1dc6239ad3547d9a09db0dc4b72c3a0482ccfd09289f77"
+    },
+    {
+      "file": "federal-daeniken.json",
+      "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/identify?geometryType=esriGeometryEnvelope&geometry=7.978,47.355,7.985,47.360&geometryFormat=geojson&imageDisplay=1600,900,96&mapExtent=7.978,47.355,7.985,47.360&tolerance=0&layers=all:ch.bav.schienennetz&returnGeometry=true&limit=200&sr=4326",
+      "sha256": "b68bcc6cbf242e2d90d15b1afbaa395235bd8b325e25698472049596fc22953a"
+    }
+  ]
+}

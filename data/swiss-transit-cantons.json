@@ -403,7 +403,7 @@
       "evidence": "ch.so.avt.oev GeoPackage downloaded: 3,951 MultiLineString network segments and 775 stops in EPSG:2056. Network fields only identify mode and tunnel status; there are no line/operator identifiers. Stops include DiDok. The empty linestructure helper table is not missing network coverage.",
       "vintage": "Published 17 December 2025. Metadata explicitly excludes night services.",
       "reuse": "Linked dataset terms permit commercial/noncommercial use; source attribution is recommended.",
-      "nextAction": "Review recorded alignment disagreements and unresolved narrow-gauge/platform/foreign-rail patterns. Twelve seasonal dates audited; physical direction and year-round coverage remain uncertified. Solothurn app integration retains a verified dated release.",
+      "nextAction": "Review remaining platform/foreign-rail gaps and conflicting full-pattern alignments. Exact Bern S11/S29 and SBB Däniken–Schönenwerd sources add 209 Friday / 157 Sunday movements; twelve seasonal dates audited. Physical direction and year-round coverage remain uncertified.",
       "sourceIds": [
         "so-publications",
         "so-lines",
@@ -416,21 +416,22 @@
         "audit": "data/solothurn-audit/summary.json",
         "annualRouteRecords": 193,
         "agencyIdentities": 19,
-        "admittedRouteRecords": 144,
+        "admittedRouteRecords": 146,
         "serviceDates": [
           "2026-09-04",
           "2026-09-06"
         ],
         "admittedMovements": [
-          6654,
-          5310
+          6863,
+          5467
         ],
         "physicalDirectionCertified": false,
         "yearRoundCoverageEstablished": false,
         "seasonalDatesAudited": 12,
         "seasonalAudit": "data/solothurn-audit/seasonal-summary.json",
         "alignmentAudit": "data/solothurn-audit/alignment-review.json",
-        "appManifest": "public/data/solothurn-region-day-manifest.json"
+        "appManifest": "public/data/solothurn-region-day-manifest.json",
+        "corridorAudit": "data/solothurn-audit/corridor-review.json"
       }
     },
     {

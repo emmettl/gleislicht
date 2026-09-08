@@ -4,6 +4,7 @@ import { gunzipSync } from 'node:zlib'
 import { createHash } from 'node:crypto'
 import { baselGraphs, matchBaselSegment } from './basel-line-geometry.mjs'
 import { bernGraph, bernPatternId } from './bern-line-geometry.mjs'
+import { loadSolothurnCorridors } from './solothurn-corridor-geometry.mjs'
 import { loadZugRail } from './zug-rail-geometry.mjs'
 import { loadSolothurnRoads } from './solothurn-road-geometry.mjs'
 import { hashFile } from './solothurn-timetable.mjs'
@@ -30,6 +31,7 @@ export async function loadSolothurnSupplements(timetable, { roads = true, verify
   const boat = JSON.parse(await readFile(policy.boat.file)), tramCollection = JSON.parse(gunzipSync(await readFile(policy.tram.file)))
   const graphs = { ferry: bernGraph([boat]), tram: baselGraphs([tramCollection]).get('37:tram:10') }
   assert(graphs.tram)
+  const corridors = await loadSolothurnCorridors()
   const rail = await loadZugRail(policy.rail, context.snapshots.map(s => s.metadata.serviceDate))
   const railIds = new Set(policy.rail.routes.map(r => r.routeId)), routes = new Map(timetable.routes.map(r => [r.id, r]))
   const candidates = new Map(), seen = new Set(), graphCache = new Map()
@@ -40,7 +42,8 @@ export async function loadSolothurnSupplements(timetable, { roads = true, verify
       if (seen.has(id) || !['rail', 'ferry', 'tram'].includes(route.mode)) continue
       seen.add(id)
       let results
-      if (railIds.has(route.id)) results = rail.matchPattern({ ...train, calls: train.stops.map(([i]) => ({ id: raw.stops[i][4] })) }, stops, { ...route, line: route.name })
+      if (route.id === '91-11-M-j26-1') results = train.stops.slice(1).map(([index], i) => corridors.match(route, raw.stops[train.stops[i][0]], raw.stops[index]))
+      else if (railIds.has(route.id)) results = rail.matchPattern({ ...train, calls: train.stops.map(([i]) => ({ id: raw.stops[i][4] })) }, stops, { ...route, line: route.name })
       else {
         const config = route.mode === 'ferry' ? policy.boat : route.mode === 'tram' ? policy.tram : undefined
         if (!config || config.routeId !== route.id || config.agencyId !== route.agencyId || config.line !== route.name) continue
@@ -54,7 +57,8 @@ export async function loadSolothurnSupplements(timetable, { roads = true, verify
       for (const [i, result] of results.entries()) {
         const from = raw.stops[train.stops[i][0]], to = raw.stops[train.stops[i + 1][0]], key = keyOf(route, from, to)
         const list = candidates.get(key) ?? []
-        list.push({ ...result, ...(result.path ? { path: result.path.map(p => p.slice(0, 2).map(v => Number(v.toFixed(7)))) } : {}), agencyId: route.agencyId })
+        const selected = route.mode === 'rail' ? corridors.match(route, from, to, result) : result
+        list.push({ ...selected, ...(selected.path ? { path: selected.path.map(p => p.slice(0, 2).map(v => Number(v.toFixed(7)))) } : {}), agencyId: route.agencyId })
         candidates.set(key, list)
       }
     }
@@ -65,7 +69,7 @@ export async function loadSolothurnSupplements(timetable, { roads = true, verify
     road = await loadSolothurnRoads(context, { verifyEvidence })
     for (const [key, value] of road.pairs) pairs.set(key, value)
   }
-  return { pairs, policy, metadata: { contextSha256: await hashFile(contextPath), policySha256: await hashFile(policyPath), boat: policy.boat, tram: policy.tram, rail: { ...rail.source, limits: policy.rail.limits },
+  return { pairs, policy, metadata: { corridors: corridors.metadata, contextSha256: await hashFile(contextPath), policySha256: await hashFile(policyPath), boat: policy.boat, tram: policy.tram, rail: { ...rail.source, limits: policy.rail.limits },
     ...(road ? { road: road.metadata, roadCacheSha256: road.sha256 } : {}) },
     match(route, from, to) {
       const value = pairs.get(keyOf(route, from, to))

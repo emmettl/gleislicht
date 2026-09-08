@@ -1,6 +1,6 @@
 # Solothurn canton transit study
 
-Built from the pinned 2026 timetable, the cantonal public-transport network and separately attributed road, rail, boat and tram supplements. **All 193 canton-serving route records across 19 GTFS agency identities and all ten districts are inventoried. 144 route records contribute admitted journeys.** This is a whole-canton census with partial geometry admission, not complete service coverage.
+Built from the pinned 2026 timetable, the cantonal public-transport network and separately attributed road, rail, boat and tram supplements. **All 193 canton-serving route records across 19 GTFS agency identities and all ten districts are inventoried. 146 route records contribute admitted journeys.** This is a whole-canton census with partial geometry admission, not complete service coverage.
 
 Start with the [complete route admission/exclusion inventory](SOLOTHURN-ROUTE-INVENTORY.md), [machine audit](../data/solothurn-audit/summary.json) and [regional feed index](../public/data/solothurn-region/index.json). The original [national source inventory](SWISS-TRANSIT-SOURCE-INVENTORY.md#so) explains source discovery.
 
@@ -19,18 +19,18 @@ The 42 inactive route records remain in the annual inventory. “Annual” means
 | Civil-day journey instances | 7'156 | 5'819 |
 | Scheduled instances | 6'078 | 4'711 |
 | Representative headway instances | 1'078 | 1'108 |
-| Admitted scheduled instances | 5'576 | 4'202 |
+| Admitted scheduled instances | 5'785 | 4'359 |
 | Admitted representative headway instances | 1'078 | 1'108 |
-| Total admitted instances | 6'654 | 5'310 |
+| Total admitted instances | 6'863 | 5'467 |
 | Distinct directed patterns | 921 | 777 |
-| Admitted complete patterns | 811 | 668 |
-| Matched route-specific directed stop pairs | 4'211 / 4'259 (98.9%) | 4'413 / 4'467 (98.8%) |
-| Matched scheduled segment occurrences | 96'542 / 97'358 (99.2%) | 67'350 / 68'102 (98.9%) |
-| Matched all segment occurrences | 97'620 / 98'436 (99.2%) | 68'458 / 69'210 (98.9%) |
-| Segment occurrences in admitted whole journeys | 88'214 | 60'349 |
-| Previous-day carry-in / admitted | 149 / 137 | 359 / 315 |
+| Admitted complete patterns | 838 | 700 |
+| Matched route-specific directed stop pairs | 4'230 / 4'259 (99.3%) | 4'435 / 4'467 (99.3%) |
+| Matched scheduled segment occurrences | 96'971 / 97'358 (99.6%) | 67'650 / 68'102 (99.3%) |
+| Matched all segment occurrences | 98'049 / 98'436 (99.6%) | 68'758 / 69'210 (99.3%) |
+| Segment occurrences in admitted whole journeys | 90'928 | 62'412 |
+| Previous-day carry-in / admitted | 149 / 142 | 359 / 324 |
 | Patterns revisiting a platform / admitted | 21 / 21 | 18 / 17 |
-| Explicit night journeys / admitted | 0 / 0 | 72 / 59 |
+| Explicit night journeys / admitted | 0 / 0 | 72 / 63 |
 
 Pattern identity includes the GTFS route ID, direction_id and the full ordered original platform IDs, including repeats and out-of-canton calls. Both directions 0 and 1 occur. There are **343 shared patterns**, **578 Friday-only** and **434 Sunday-only** patterns. Exact per-pattern matched masks, decisions and counts are retained in the [Friday audit](../data/solothurn-audit/2026-09-04.json) and [Sunday audit](../data/solothurn-audit/2026-09-06.json).
 
@@ -44,15 +44,15 @@ Original GTFS times can place distinct calls in the same minute. The admitted fe
 
 | District | Called GTFS platforms | Annual route records | Routes calling district in feed | Platforms called in feed |
 | --- | --- | --- | --- | --- |
-| Lebern | 210 | 52 | 36 | 197 |
+| Lebern | 210 | 52 | 37 | 202 |
 | Thierstein | 153 | 9 | 9 | 147 |
 | Dorneck | 163 | 10 | 9 | 154 |
-| Gäu | 134 | 29 | 19 | 107 |
+| Gäu | 134 | 29 | 20 | 109 |
 | Wasseramt | 94 | 33 | 25 | 94 |
 | Gösgen | 161 | 13 | 12 | 112 |
 | Thal | 129 | 7 | 5 | 129 |
-| Solothurn | 69 | 53 | 37 | 61 |
-| Olten | 354 | 94 | 61 | 275 |
+| Solothurn | 69 | 53 | 38 | 64 |
+| Olten | 354 | 94 | 62 | 275 |
 | Bucheggberg | 108 | 10 | 10 | 108 |
 
 District route counts overlap because one route may serve multiple districts. Feed columns require an actually admitted journey calling the district; admission elsewhere on the same route does not count. The source polygon, not town-name matching, assigns districts. The census discloses 13 GTFS records within 10 metres of the boundary, including both sides at Salhöhe, Dornach Bahnhof, Bärschwil Station, Nuglar and Erlinsbach. They are reported without silently buffering the canton. The approximate coordinate transform has metre-level precision; this is a disclosed membership sensitivity, not a survey-accuracy claim.
@@ -81,15 +81,15 @@ The path must be no longer than the greater of the ratio limit and absolute allo
 
 | Journey exclusion | Friday | Sunday |
 | --- | --- | --- |
-| incomplete-directed-pattern | 502 | 496 |
-| night-network-excluded-by-source | 0 | 13 |
+| incomplete-directed-pattern | 293 | 343 |
+| night-network-excluded-by-source | 0 | 9 |
 
 | Unmatched directed-pair reason | Friday | Sunday |
 | --- | --- | --- |
-| disconnected-line | 24 | 25 |
+| disconnected-line | 5 | 5 |
 | endpoint-gap | 21 | 22 |
 | implausible-detour | 1 | 0 |
-| night-network-excluded-by-source | 0 | 5 |
+| night-network-excluded-by-source | 0 | 3 |
 | no-compatible-source-mode | 2 | 2 |
 
 Night services are explicitly absent from the Solothurn publisher's dataset. GTFS type 705, N/M/SN numeric labels and explicit night/Moonliner labels therefore require a separately sourced path on **every** segment; overlapping daytime geometry never supplies a night leg. Ordinary service-day carry-in is distinct from a marketed night route. BLT tram 10 and BSG boat 3216 use their own official line/operator geometry; Bahn is not treated as tram. Reservation/on-demand calls remain excluded, with no such exclusion required on these two dates.
@@ -113,16 +113,19 @@ The [topology review](../data/solothurn-audit/topology-review.json) preserves ea
 
 | Date | Cantonal-only admission | With supplements | Additional complete patterns | Prior patterns lost |
 | --- | --- | --- | --- | --- |
-| 2026-09-04 | 3142 | 6654 | 588 | 0 |
-| 2026-09-06 | 2574 | 5310 | 512 | 0 |
+| 2026-09-04 | 3142 | 6863 | 615 | 0 |
+| 2026-09-06 | 2574 | 5467 | 544 | 0 |
 
 | Geometry source | Friday directed pairs / admitted occurrences | Sunday directed pairs / admitted occurrences |
 | --- | --- | --- |
 | basel-official-tram-10 | 77 / 3709 | 77 / 3927 |
+| bern-official-413 | 10 / 370 | 10 / 238 |
+| bern-official-450_S_b | 9 / 59 | 10 / 58 |
 | bern-official-boat-3216 | 14 / 28 | 14 / 28 |
-| fot | 850 / 4600 | 887 / 3724 |
+| fot | 850 / 4894 | 887 / 4074 |
 | osm-road-inference | 266 / 5449 | 824 / 5042 |
-| solothurn-network | 3004 / 74428 | 2611 / 47628 |
+| sbb-rail-inference | 0 / 0 | 2 / 4 |
+| solothurn-network | 3004 / 76419 | 2611 / 49041 |
 
 - **Roads:** 805 complete bus patterns from 96 original route IDs across all twelve dates are matched with pfaedle, retaining real agency and platform identities. The bus profile respects supported OSM access, direction and turn restrictions. Every occurrence of a route-specific directed pair across complete pattern contexts must have a successful, identical path; failed matcher warnings, context disagreement and detours are rejected. Bus detours remain bounded by 3 × direct distance or 600 m. Raw routing inputs/results, logs, binary/config/source hashes and derived cache are retained in [road evidence](../data/solothurn-road-evidence/all.json.gz). This is inferred road geometry, not an operator itinerary certificate.
 - **Standard-gauge rail:** 85 explicit annual SBB, BLS, SOB and OeBB route records may use FOT geometry. Only 1435 mm source segments are eligible. Original operating-point numbers, declared topology, source validity fields and full stop order constrain paths; other scheduled operating points cannot be shortcut between adjacent calls. Platform attachment is capped at 350 m, infrastructure attachment at 120 m and detour at 4.5 × or 3,000 m. FOT paths are simplified by 5 m before WGS84 conversion. asm and RBS records do not enter this standard-gauge supplement. No particular running track is certified.
@@ -137,24 +140,39 @@ The [supplement review](../data/solothurn-audit/supplement-review.json) records 
 | no-consensus-comparator | 75 | 53 |
 | within-30m-vertex-distance | 2064 | 1750 |
 
-**502 Friday and 509 Sunday journeys remain excluded.** Source gaps, narrow-gauge topology, unverified foreign rail connections, platform gaps and failed full-pattern consensus remain explicit. Disagreement with OSM remains a review flag on already admitted cantonal paths. Current operator itineraries, temporary diversions and physical direction are not certified by these internal checks.
+**293 Friday and 352 Sunday journeys remain excluded.** Source gaps, unverified foreign rail connections, platform gaps and failed full-pattern consensus remain explicit. Disagreement with OSM remains a review flag on already admitted cantonal paths. Current operator itineraries, temporary diversions and physical direction are not certified by these internal checks.
+
+## Reviewed rail corridor follow-up
+
+| Date | Previously admitted | Now admitted | Additional complete patterns | Previous patterns lost |
+| --- | --- | --- | --- | --- |
+| 2026-09-04 | 6654 | 6863 | 27 | 0 |
+| 2026-09-06 | 5310 | 5467 | 32 | 0 |
+
+The [corridor review](../data/solothurn-audit/corridor-review.json) and [source policy](../data/solothurn-corridor-policy.json) add three exact associations without broadening snap/detour limits:
+
+- **asm S11:** Bern feature **413**, operator **ASm**, line **S11**, original GTFS route **91-11-M-j26-1 / agency 81**. All 51 distinct directed platform pairs in the twelve-date sample match within 13 m. Only gaps in the earlier cantonal geometry use this operator-specific graph. **150 Friday and 95 Sunday journeys are now admitted**, preserving the full Solothurn–Oensingen–Langenthal stop chain.
+- **SBB S29:** Bern feature **450_S_b**, operator **SBB**, line **S29**, route **91-29-j26-1 / agency 11**. The Aarau–Olten return legs now have line-specific geometry, with platform snaps below 48 m on the two published dates. Admission rises to **64/86 Friday and 65/86 Sunday** journeys. Other full-pattern contexts still produce conflicting paths, so their whole journeys remain excluded.
+- **Däniken–Schönenwerd:** two complete graphical SBB line-540 records **DK–DKO–SCOE**, with exact operating-point IDs 8502111/8502112, standard gauge N, intact coordinate joins and at most 100 m station attachment. Six explicitly listed SBB GTFS route identities can use this corridor; all full seasonal contexts must agree. It completes **all four Sunday SN11 journeys**. Schematic two-point records and unrelated foreign source records are retained for review but never supply this corridor.
+
+Every earlier admitted pattern remains admitted. These are bounded source-alignment improvements, not certification of current physical running tracks or diversions. The S11 and S29 route-specific Bern graphs remain bidirectional; direction comes from the original ordered GTFS calls. Complete seasonal contexts, route/operator identity and unsuccessful alternatives remain auditable.
 
 ## Seasonal and holiday sample
 
 | Civil date | Source journeys | Admitted journeys | Complete admitted patterns |
 | --- | --- | --- | --- |
-| 2026-01-16 | 7031 | 6469 | 789 |
-| 2026-01-18 | 5362 | 4934 | 630 |
-| 2026-04-03 | 5450 | 5025 | 633 |
-| 2026-04-05 | 5730 | 5283 | 636 |
-| 2026-07-17 | 7127 | 6644 | 754 |
-| 2026-07-19 | 5523 | 5152 | 656 |
-| 2026-08-01 | 5566 | 5169 | 673 |
-| 2026-09-04 | 7156 | 6654 | 811 |
-| 2026-09-06 | 5819 | 5310 | 668 |
-| 2026-10-23 | 7146 | 6681 | 838 |
-| 2026-10-25 | 5527 | 5138 | 657 |
-| 2026-12-11 | 7025 | 6557 | 809 |
+| 2026-01-16 | 7031 | 6679 | 813 |
+| 2026-01-18 | 5362 | 5095 | 660 |
+| 2026-04-03 | 5450 | 5178 | 657 |
+| 2026-04-05 | 5730 | 5440 | 662 |
+| 2026-07-17 | 7127 | 6835 | 770 |
+| 2026-07-19 | 5523 | 5264 | 674 |
+| 2026-08-01 | 5566 | 5342 | 702 |
+| 2026-09-04 | 7156 | 6863 | 838 |
+| 2026-09-06 | 5819 | 5467 | 700 |
+| 2026-10-23 | 7146 | 6888 | 862 |
+| 2026-10-25 | 5527 | 5294 | 685 |
+| 2026-12-11 | 7025 | 6766 | 834 |
 
 The sample applies the pinned GTFS calendars and exceptions to winter weekdays/Sundays, Good Friday, Easter Sunday, summer, Swiss National Day and autumn. **9** of the September-inactive route records become active; **33** remain inactive on all twelve dates. The [seasonal inventory](../data/solothurn-audit/seasonal-summary.json) lists every annual route on every date, and the [pattern audit](../data/solothurn-audit/seasonal-patterns.json.gz) retains every directed stop chain, decision and matched mask. A durable [context snapshot](../data/solothurn-pattern-contexts.json.gz) retains 2,824 complete representative source patterns for offline revalidation and supplementary consensus.
 
@@ -169,6 +187,7 @@ Geometry from the recorded source vintages is applied to this timetable sample; 
 - **OSM roads:** © OpenStreetMap contributors, ODbL-1.0; Geofabrik Switzerland **2026-09-02** plus border extract acquired **2026-09-08**. [Source](https://download.geofabrik.de/europe/switzerland.html), [terms](https://www.openstreetmap.org/copyright). Extract SHA-256: `d5c675456e935cfbcab88fe894fe9145dc5bd1fbd4318cea30ffd838a9aad02b`.
 - **FOT rail:** © Federal Office of Transport. Catalogue date **2021-07-06**, asset update **2025-01-18**, checked **2026-09-08**; no effective 2026 alignment date established. [Source](https://data.geo.admin.ch/ch.bav.schienennetz/schienennetz/schienennetz_2056_de.xtf), [attribution terms](https://opendata.swiss/terms-of-use/#terms_by). Source XTF SHA-256: `2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828`. The catalogue's proprietary licence label is preserved; no open licence is invented.
 - **Bern boat geometry:** Öffentlicher Verkehr © Amt für öffentlichen Verkehr und Verkehrskoordination des Kantons Bern. Data updated **2026-01-01**, package published **2026-07-09**, acquired **2026-09-08**. [Metadata](https://www.agi.dij.be.ch/de/start/geoportal/geodaten/detail.html?code=OEVTP&type=geoproduct), [German terms](../public/data/solothurn-region/supplements/terms_of_use_de.pdf), [French terms](../public/data/solothurn-region/supplements/terms_of_use_fr.pdf). Bern archive SHA-256: `4e2a4fcca08cc219c871d42c957753c09318ace2172fb3614c4fe71b20a4fe19`.
+- **SBB graphical railway corridors:** SBB Infrastructure / data.sbb.ch, attribution required under the retained terms_by licence. Dataset modified **2026-07-29**, data processed **2026-09-02**, acquired **2026-09-08**; these are publication/processing dates, not proof of each alignment's effective date. [Graphical dataset](https://data.sbb.ch/explore/dataset/linie-mit-polygon/), [retained terms](../public/data/solothurn-region/supplements/sbb-terms.html), [source hashes and URLs](../data/solothurn-sources/corridors/sbb/sources.json). Bern S11/S29 use the same dated Bern package and attribution as the boat source above.
 - **Basel tram geometry:** Geodaten Kanton Basel-Stadt, acquired **2026-09-08**; no geometry effective date supplied. [Catalogue](https://shop.geo.bs.ch/geodaten-katalog/), [model](https://models.geo.bs.ch/Modellbeschreibungen/LN_LiniennetzOeV_KGDM_V1_0.pdf), [reuse context](https://www.bs.ch/news/2026-anpassung-der-kgeoiv). The exact line/operator layer and acquisition catalogue are retained. Uncompressed GeoJSON SHA-256: `687be2ce2fed8ffc48a00ef5a7fd694be71d446b937f5f269cb432beeae83df1`.
 
 Solothurn's saved terms allow commercial and noncommercial use and recommend attribution; no Creative Commons licence is substituted. Source credit, links and exact acquisition times/hashes are embedded in every regional manifest and [sources.json](../public/data/solothurn-region/sources.json). Raw Solothurn ZIP, metadata, publication catalogue, terms and publisher validation log are retained in [data/solothurn-sources](../data/solothurn-sources/sources.json). The published feed also carries metadata and terms. National timetable attribution is opentransportdata.swiss; the processed results are authored by **Gleislicht**. This is an archival study, not a currently refreshed live timetable. Updating timetable, geometry or boundaries requires rebuilding both days and the admission audit.
@@ -177,7 +196,7 @@ Solothurn's saved terms allow commercial and noncommercial use and recommend att
 
 The [feed index](../public/data/solothurn-region/index.json) links a full-day manifest and 06:45–08:45 morning snapshot for each date. Each day uses twelve two-hour chunks. The manifest carries stops, paths, edges, provenance and exact chunk hashes. Solothurn is available in the app's study picker and opens as a full civil day. Its feeds load on selection. Search covers admitted routes and out-of-canton stops; shares retain study, date, time and focus. English, German, French and Italian copy explicitly labels partial coverage and representative headway motion. Source credits and local terms remain accessible.
 
-The app release uses the Friday fixture in [top-level manifest](../public/data/solothurn-region-day-manifest.json), morning snapshot and twelve verified chunks. [Display release proof](../data/solothurn-audit/display-release.json) records both dates: display simplification is bounded by 5 m with unchanged endpoints, calls and movements. The Friday manifest is 329'360 bytes gzipped. Source archives remain unchanged by display simplification; FOT has its separately declared 5 m source transformation.
+The app release uses the Friday fixture in [top-level manifest](../public/data/solothurn-region-day-manifest.json), morning snapshot and twelve verified chunks. [Display release proof](../data/solothurn-audit/display-release.json) records both dates: display simplification is bounded by 5 m with unchanged endpoints, calls and movements. The Friday manifest is 335'300 bytes gzipped. Source archives remain unchanged by display simplification; FOT has its separately declared 5 m source transformation.
 
 Regional refresh integration can promote only the two reviewed dates. For another date or a failed candidate build it retains a complete, validated published study (or the reviewed fixture on first-deployment 404), keeping its actual service date. A damaged published chunk never gets silently combined with another release. This integration is ready for deployment; no live deployment is part of this task.
 
@@ -195,6 +214,7 @@ npm run data:solothurn:census -- /private/tmp/GTFS_FP2026_20260902.zip --seasona
 node scripts/prepare-solothurn-contexts.mjs
 # Supplemental source preparation can reuse committed snapshots offline.
 node scripts/prepare-solothurn-supplements.mjs
+node scripts/prepare-solothurn-corridors.mjs
 
 # Build complete directed patterns, both feeds and all machine audits.
 npm run data:solothurn
@@ -204,7 +224,7 @@ npm run data:solothurn:seasonal:check
 npm run data:solothurn:alignments
 npm run data:solothurn:release
 npm run data:solothurn:docs
-npx vitest run scripts/solothurn-region.test.mjs scripts/solothurn-release.test.mjs
+npx vitest run scripts/solothurn-region.test.mjs scripts/solothurn-corridor.test.mjs scripts/solothurn-release.test.mjs
 npx playwright test --config playwright.solothurn.config.ts
 python3 -m unittest discover -s scripts -p 'test_bern_sources.py'
 ```

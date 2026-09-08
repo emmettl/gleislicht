@@ -32,6 +32,9 @@ export async function buildSolothurnRegion() {
   const topologyReview = { baselineCommit: baseline.commit, sourceHashes, rule: 'Exact non-tunnel endpoint/interior vertex noding; no added source edges or coordinates', days: [] }
   const supplements = await loadSolothurnSupplements(timetable)
   const supplementReview = { sourceHashes, sources: supplements.metadata, days: [] }
+  const corridorBaseline = JSON.parse(await readFile('data/solothurn-corridor-baseline.json'))
+  assert.deepEqual(corridorBaseline.sourceHashes, sourceHashes)
+  const corridorReview = { baselineCommit: corridorBaseline.commit, sources: supplements.metadata.corridors, days: [] }
   const provenance = { supplements: supplements.metadata, ...source.metadata, timetable: {
     publisher: 'SBB / Open data platform mobility Switzerland', attribution: 'opentransportdata.swiss',
     sha256: SO_GTFS_SHA, feed: census.feed, sourceUrl: census.sourceUrl,
@@ -51,6 +54,13 @@ export async function buildSolothurnRegion() {
     const baseResult = applySolothurnGeometry(raw, routes, graphs, matchCache)
     const result = applySolothurnGeometry(raw, routes, graphs, matchCache, supplements)
     const coverage = bernCoverage(result.trains, result.pairs, result.patterns)
+    const previous = corridorBaseline.days.find(d => d.date === raw.metadata.serviceDate)
+    const previousIds = new Set(previous.admittedPatternIds)
+    const lostCorridorPatterns = [...previousIds].filter(id => !result.patterns.some(p => p.id === id && p.admittedTrips))
+    assert.equal(lostCorridorPatterns.length, 0, 'Corridor supplement regressed an admitted pattern')
+    corridorReview.days.push({ date: raw.metadata.serviceDate, before: previous.coverage, after: coverage, lostAdmittedPatterns: lostCorridorPatterns,
+      newlyAdmittedPatterns: result.patterns.filter(p => p.admittedTrips && !previousIds.has(p.id)).map(({ pathSegments, ...p }) => p),
+      sourcePairs: result.pairs.filter(p => ['bern-official-413', 'bern-official-450_S_b', 'sbb-rail-inference'].includes(p.geometrySource)).map(({ pathIndex, ...p }) => p) })
     const baseIds = new Set(baseResult.patterns.filter(p => p.admittedTrips).map(p => p.id))
     const lostBase = [...baseIds].filter(id => !result.patterns.some(p => p.id === id && p.admittedTrips))
     assert.equal(lostBase.length, 0, 'Supplement regressed an admitted cantonal pattern')
@@ -81,7 +91,7 @@ export async function buildSolothurnRegion() {
       admittedRouteStops.set(train.routeId, ids)
     }
     snapshot.metadata = { ...raw.metadata, publisher: 'Gleislicht', label: 'Solothurn canton — inferred network paths',
-      attribution: 'opentransportdata.swiss; Kanton Solothurn; Geodaten Kanton Basel-Stadt; Kanton Bern; © Federal Office of Transport; © OpenStreetMap contributors (ODbL-1.0); © swisstopo',
+      attribution: 'opentransportdata.swiss; Kanton Solothurn; Geodaten Kanton Basel-Stadt; Kanton Bern; © Federal Office of Transport; SBB Infrastructure / data.sbb.ch; © OpenStreetMap contributors (ODbL-1.0); © swisstopo',
       sourceHashes, sources: provenance, scope: timetable.census.boundaryRule,
       model: 'Scheduled interpolation on inferred official-network paths. Headway exactTimes=0 instances are representative, not exact departures. No observed vehicle positions.',
       admission: 'Complete original directed patterns only. Cantonal gaps may use separately attributed, compatible supplements with full-pattern consensus. Night services require supplementary geometry on every segment. Reservation/demand and unresolved patterns excluded.',
@@ -167,13 +177,14 @@ export async function buildSolothurnRegion() {
       'Route membership uses original call coordinates inside the unsimplified canton polygon. Boundary-adjacent calls are disclosed; no buffer silently admits neighbouring-canton services.',
       'Full cross-canton journeys retained. Source extent, gaps and unsupported modes cause whole-pattern exclusion, never cropped calls.',
       'Source has no route/operator/direction identifiers. Geometric checks validate plausibility, not the exact operator itinerary, one-way legality, rail gauge, bridges, running tracks or temporary diversions.',
-      'Solothurn source excludes night services; admitted night journeys use separate OSM road or FOT infrastructure inference on every segment, never the daytime cantonal graph.',
+      'Solothurn source excludes night services; admitted night journeys use separate OSM road, FOT or reviewed SBB corridor inference on every segment, never the daytime cantonal graph.',
       'Bahn remains rail only. BLT tram 10 and BSG boat 3216 use exact official operator/line sources. Standard-gauge rail and bus road supplements retain full-pattern consensus, bounds and separate provenance.',
     ] }
   topologyReview.junctions = Object.fromEntries([...graphs].map(([mode, graph]) => [mode, graph.endpointInteriorJunctions]))
   for (const [mode, graph] of graphs) assert.equal(graph.edges.length, baseline.graph[mode].edges, 'Noding must not invent edges')
   await writeJson(join(auditDir, 'topology-review.json'), topologyReview, true)
   await writeJson(join(auditDir, 'supplement-review.json'), supplementReview, true)
+  await writeJson(join(auditDir, 'corridor-review.json'), corridorReview, true)
   await writeJson(join(auditDir, 'summary.json'), summary, true)
   await writeJson(join(auditDir, 'routes.json'), inventory, true)
   await writeJson(join(auditDir, 'stops.json'), timetable.sourceStopInventory)
@@ -184,6 +195,7 @@ export async function buildSolothurnRegion() {
   await writeJson(join(output, 'sources.json'), provenance, true)
   await mkdir(join(output, 'supplements'), { recursive: true })
   for (const name of ['terms_of_use_de.pdf', 'terms_of_use_fr.pdf']) await copyFile(join(sourceDir, 'supplements', name), join(output, 'supplements', name))
+  await copyFile(join(sourceDir, 'corridors/sbb/terms.html'), join(output, 'supplements/sbb-terms.html'))
   for (const name of ['metadata.html', 'terms.html', 'publications.json']) await copyFile(join(sourceDir, name), join(output, name))
   await writeJson(join(output, 'index.json'), { label: 'Solothurn canton regional feed', sourceHashes, dates: SO_DATES.map(date => ({ date,
     manifest: `${date}/solothurn-region-day-manifest.json`, morning: `${date}/solothurn-region-morning.json` })),

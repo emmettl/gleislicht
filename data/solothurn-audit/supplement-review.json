@@ -4,6 +4,211 @@
     "source": "5f11586ad156f763d7b1b9a6ac05f14dd29865ca03bf5a1d42195a7da8c331e8"
   },
   "sources": {
+    "corridors": {
+      "policySha256": "1afe8daa8603bbf5965ff58758d7e8fd8af104ec453566aa5d3aa8598852f1ce",
+      "asm": {
+        "sourceLine": "413",
+        "sourceOperator": "ASm",
+        "routeId": "91-11-M-j26-1",
+        "agencyId": "81",
+        "line": "S11",
+        "mode": "rail",
+        "sourceFile": "data/solothurn-sources/corridors/bern-413.json",
+        "sha256": "4f2b0e94dec7bd4dc15f53805591a565621a1234461b0bae3deb69edad902e1b",
+        "source": {
+          "schemaVersion": 1,
+          "sourceCrs": "EPSG:2056",
+          "coordinateModel": "original LV95 XY, no simplification; Z/M discarded only in derived geometry",
+          "sourceUrl": "https://geofiles.be.ch/geoportal/pub/download/OEVTP/oevtp.gpkg.zip",
+          "metadataUrl": "https://www.agi.dij.be.ch/de/start/geoportal/geodaten/detail.html?code=OEVTP&type=geoproduct",
+          "attribution": "Öffentlicher Verkehr © Amt für öffentlichen Verkehr und Verkehrskoordination des Kantons Bern",
+          "license": "Bern cantonal geodata terms 2026-01-20 (free use with attribution; no Creative Commons licence assigned)",
+          "termsFiles": [
+            "terms_of_use_de.pdf",
+            "terms_of_use_fr.pdf"
+          ],
+          "dataUpdated": "2026-01-01",
+          "packagePublished": "2026-07-09",
+          "acquiredAt": "2026-09-08T17:02:41.454390+00:00",
+          "archiveSha256": "4e2a4fcca08cc219c871d42c957753c09318ace2172fb3614c4fe71b20a4fe19",
+          "geopackageSha256": "de4c89d91f69a572dabe9fda7b14140da45fdfe016d45c6f5f900337b45b1e4d",
+          "boundary": {
+            "edition": "2026-01",
+            "sourceSha256": "1f122cb7a06f2d312a84b7c0a91116348ba907054d487f0a70b9d2302984e6fc",
+            "snapshotSha256": "b0bfb7d0d3d7357aaaec2de0335dfc1beb83274b2143d876260e86b227a41dd0",
+            "attribution": "© swisstopo",
+            "sourceUrl": "https://data.geo.admin.ch/ch.swisstopo.swissboundaries3d/swissboundaries3d_2026-01/swissboundaries3d_2026-01_2056_5728.gpkg.zip",
+            "termsUrl": "https://www.swisstopo.admin.ch/en/terms-of-use-free-geodata-and-geoservices"
+          }
+        },
+        "limits": {
+          "snapMetres": 120,
+          "detourRatio": 3,
+          "detourFloorMetres": 1500,
+          "alternativeSnapMetres": 5
+        },
+        "method": "Exact operator/line/route association to Bern feature 413. Original LV95 line graph; whole directed platform chain retained. No standard-gauge graph or invented connection."
+      },
+      "s29": {
+        "sourceLine": "450_S_b",
+        "sourceOperator": "SBB",
+        "routeId": "91-29-j26-1",
+        "agencyId": "11",
+        "line": "S29",
+        "mode": "rail",
+        "sourceFile": "data/solothurn-sources/corridors/bern-450_S_b.json",
+        "sha256": "6224b50080d4d806dd9beca66904c0911a6cb4ff2218e00c94295112e7272e3e",
+        "source": {
+          "schemaVersion": 1,
+          "sourceCrs": "EPSG:2056",
+          "coordinateModel": "original LV95 XY, no simplification; Z/M discarded only in derived geometry",
+          "sourceUrl": "https://geofiles.be.ch/geoportal/pub/download/OEVTP/oevtp.gpkg.zip",
+          "metadataUrl": "https://www.agi.dij.be.ch/de/start/geoportal/geodaten/detail.html?code=OEVTP&type=geoproduct",
+          "attribution": "Öffentlicher Verkehr © Amt für öffentlichen Verkehr und Verkehrskoordination des Kantons Bern",
+          "license": "Bern cantonal geodata terms 2026-01-20 (free use with attribution; no Creative Commons licence assigned)",
+          "termsFiles": [
+            "terms_of_use_de.pdf",
+            "terms_of_use_fr.pdf"
+          ],
+          "dataUpdated": "2026-01-01",
+          "packagePublished": "2026-07-09",
+          "acquiredAt": "2026-09-08T17:02:41.454390+00:00",
+          "archiveSha256": "4e2a4fcca08cc219c871d42c957753c09318ace2172fb3614c4fe71b20a4fe19",
+          "geopackageSha256": "de4c89d91f69a572dabe9fda7b14140da45fdfe016d45c6f5f900337b45b1e4d",
+          "boundary": {
+            "edition": "2026-01",
+            "sourceSha256": "1f122cb7a06f2d312a84b7c0a91116348ba907054d487f0a70b9d2302984e6fc",
+            "snapshotSha256": "b0bfb7d0d3d7357aaaec2de0335dfc1beb83274b2143d876260e86b227a41dd0",
+            "attribution": "© swisstopo",
+            "sourceUrl": "https://data.geo.admin.ch/ch.swisstopo.swissboundaries3d/swissboundaries3d_2026-01/swissboundaries3d_2026-01_2056_5728.gpkg.zip",
+            "termsUrl": "https://www.swisstopo.admin.ch/en/terms-of-use-free-geodata-and-geoservices"
+          }
+        },
+        "limits": {
+          "snapMetres": 120,
+          "detourRatio": 3,
+          "detourFloorMetres": 1500,
+          "alternativeSnapMetres": 5
+        },
+        "method": "Exact SBB S29 line association to Bern feature 450_S_b. Retains complete timetable calls including Aarau–Olten reversals; shortest paths on this official line remain inferred."
+      },
+      "sbb": {
+        "sourceDirectory": "data/solothurn-sources/corridors/sbb",
+        "sourceSha256": "c67745131e337136b47da452650f57c1c0dcc9a16f54fc659e6a0227f6fad030",
+        "limits": {
+          "stationAttachmentMetres": 100,
+          "detourRatio": 2,
+          "detourFloorMetres": 1500
+        },
+        "corridors": [
+          {
+            "id": "daeniken-schoenenwerd",
+            "agencyId": "11",
+            "routes": [
+              {
+                "routeId": "91-23-j26-1",
+                "line": "S23"
+              },
+              {
+                "routeId": "91-26-j26-1",
+                "line": "S26"
+              },
+              {
+                "routeId": "91-29-j26-1",
+                "line": "S29"
+              },
+              {
+                "routeId": "91-11-E-j26-1",
+                "line": "SN11"
+              },
+              {
+                "routeId": "91-6-W-j26-1",
+                "line": "RE6"
+              },
+              {
+                "routeId": "91-5F-Y-j26-1",
+                "line": "IC"
+              }
+            ],
+            "operatingPointIds": [
+              "8502111",
+              "8502112"
+            ],
+            "sourcePointCodes": [
+              "DK",
+              "SCOE"
+            ],
+            "features": [
+              [
+                540,
+                "DK",
+                "DKO",
+                45673.43,
+                46100
+              ],
+              [
+                540,
+                "DKO",
+                "SCOE",
+                46100,
+                48129.6
+              ]
+            ]
+          }
+        ],
+        "method": "Only the two complete, graphically sampled SBB segments DK–DKO–SCOE, in either directed call order. Exact operating-point IDs and six reviewed original route identities. All full seasonal contexts must agree. No schematic records or arbitrary graph stitching.",
+        "source": {
+          "publisher": "SBB Infrastructure",
+          "attribution": "SBB Infrastructure / data.sbb.ch",
+          "termsUrl": "https://data.sbb.ch/page/licence/",
+          "license": "terms_by",
+          "rights": "NonCommercialAllowed-CommercialAllowed-ReferenceRequired",
+          "retrieved": "2026-09-08",
+          "modified": "2026-07-29T06:16:28+00:00",
+          "dataProcessed": "2026-09-02T03:01:34+00:00",
+          "metadataProcessed": "2026-09-08T03:00:20.208000+00:00",
+          "alignmentValidity": "Publication and processing dates are not an individual feature survey date or proof of September diversions.",
+          "model": "Complete selected graphical linework with exact operating-point crosswalk and measured timetable endpoint connectors; no midpoint splicing, gauge edits or use of schematic two-point records.",
+          "files": [
+            {
+              "file": "metadata.json",
+              "url": "https://data.sbb.ch/api/explore/v2.1/catalog/datasets/linie-mit-polygon",
+              "sha256": "cbd14d2785da7865f4565fbf9aa37ca274ef3aafc44239bc03dd0992e3fd013c"
+            },
+            {
+              "file": "line540.json",
+              "url": "https://data.sbb.ch/api/explore/v2.1/catalog/datasets/linie-mit-polygon/records?where=linienr%3D540&limit=100",
+              "sha256": "d655c79dec3dd0407f11924d42de52f8f5debdb3f6ec09cbb1e6247a817f1550"
+            },
+            {
+              "file": "foreign-review.json",
+              "url": "https://data.sbb.ch/api/explore/v2.1/catalog/datasets/linie-mit-polygon/records?where=search%28%22Konstanz%22%29%20OR%20search%28%22Como%22%29&limit=100",
+              "sha256": "1a3358cc2c58e160a6cf032d199d41d1c92763acf0a440c0a86dcb4086c0debf"
+            },
+            {
+              "file": "schematic-metadata.json",
+              "url": "https://data.sbb.ch/api/explore/v2.1/catalog/datasets/linie",
+              "sha256": "8a99d0f248ed811245aefbb7fa097cd3b7dfbf8a8a870df570c28b8f1629d553"
+            },
+            {
+              "file": "schematic-line540.json",
+              "url": "https://data.sbb.ch/api/explore/v2.1/catalog/datasets/linie/records?where=linie%3D540&limit=100",
+              "sha256": "2a37569c4394fcc63846746a2e2cd230d22aca6d00dbc81a7b02e978e69bbdc1"
+            },
+            {
+              "file": "terms.html",
+              "url": "https://data.sbb.ch/page/licence/",
+              "sha256": "985a900c0c0020edaf1dc6239ad3547d9a09db0dc4b72c3a0482ccfd09289f77"
+            },
+            {
+              "file": "federal-daeniken.json",
+              "url": "https://api3.geo.admin.ch/rest/services/ech/MapServer/identify?geometryType=esriGeometryEnvelope&geometry=7.978,47.355,7.985,47.360&geometryFormat=geojson&imageDisplay=1600,900,96&mapExtent=7.978,47.355,7.985,47.360&tolerance=0&layers=all:ch.bav.schienennetz&returnGeometry=true&limit=200&sr=4326",
+              "sha256": "b68bcc6cbf242e2d90d15b1afbaa395235bd8b325e25698472049596fc22953a"
+            }
+          ]
+        }
+      }
+    },
     "contextSha256": "6a3fb3b6d119bf3118969bce3f42bd9592fb484a4f088a0ee8b456ff769c146d",
     "policySha256": "de5419174d655425c636e07f45ff9e6c5cf652f90768f136bd3745df5c349b7e",
     "boat": {
@@ -263,23 +468,23 @@
       },
       "after": {
         "trips": 7156,
-        "admittedTrips": 6654,
+        "admittedTrips": 6863,
         "scheduledTrips": 6078,
         "representativeHeadwayTrips": 1078,
-        "admittedScheduledTrips": 5576,
+        "admittedScheduledTrips": 5785,
         "admittedRepresentativeHeadwayTrips": 1078,
         "scheduledSegmentOccurrences": 97358,
-        "matchedScheduledSegmentOccurrences": 96542,
+        "matchedScheduledSegmentOccurrences": 96971,
         "segmentOccurrences": 98436,
-        "matchedSegmentOccurrences": 97620,
-        "admittedSegmentOccurrences": 88214,
+        "matchedSegmentOccurrences": 98049,
+        "admittedSegmentOccurrences": 90928,
         "directedPairs": 4259,
-        "matchedDirectedPairs": 4211,
+        "matchedDirectedPairs": 4230,
         "patterns": 921,
-        "completePatterns": 811,
-        "admittedPatterns": 811,
+        "completePatterns": 838,
+        "admittedPatterns": 838,
         "excludedTrips": {
-          "incomplete-directed-pattern": 502
+          "incomplete-directed-pattern": 293
         }
       },
       "lostAdmittedPatterns": [],
@@ -468,6 +673,300 @@
           "admittedTrips": 62,
           "geometrySources": [
             "basel-official-tram-10"
+          ]
+        },
+        {
+          "id": "5b216014843696a295143be7",
+          "routeId": "91-11-M-j26-1",
+          "line": "S11",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:207::161812",
+            "ch:1:sloid:280",
+            "ch:1:sloid:272",
+            "ch:1:sloid:273",
+            "ch:1:sloid:274",
+            "ch:1:sloid:275",
+            "ch:1:sloid:283",
+            "ch:1:sloid:285",
+            "ch:1:sloid:286::2863",
+            "ch:1:sloid:287"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "bern-official-413",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "d43850cf99a090a107d8f656",
+          "routeId": "91-11-M-j26-1",
+          "line": "S11",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:207::161812",
+            "ch:1:sloid:280",
+            "ch:1:sloid:272",
+            "ch:1:sloid:273",
+            "ch:1:sloid:274",
+            "ch:1:sloid:275",
+            "ch:1:sloid:283",
+            "ch:1:sloid:285",
+            "ch:1:sloid:286::2863",
+            "ch:1:sloid:287",
+            "ch:1:sloid:288",
+            "ch:1:sloid:289",
+            "ch:1:sloid:211_gen:ch:1:sloid:211::161532_pf:11A"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "bern-official-413",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "9fcf5582225aeacd2cf7e13b",
+          "routeId": "91-11-M-j26-1",
+          "line": "S11",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:212::187921",
+            "ch:1:sloid:18690",
+            "ch:1:sloid:211_gen:ch:1:sloid:211::161532_pf:11B",
+            "ch:1:sloid:8159",
+            "ch:1:sloid:8158",
+            "ch:1:sloid:8157",
+            "ch:1:sloid:8155",
+            "ch:1:sloid:8154",
+            "ch:1:sloid:8153",
+            "ch:1:sloid:8193",
+            "ch:1:sloid:8152",
+            "ch:1:sloid:8151",
+            "ch:1:sloid:8100:3:5"
+          ],
+          "admittedTrips": 35,
+          "geometrySources": [
+            "bern-official-413",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "8681491dafed95886bb20ab2",
+          "routeId": "91-11-M-j26-1",
+          "line": "S11",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:207::161812",
+            "ch:1:sloid:280",
+            "ch:1:sloid:272",
+            "ch:1:sloid:273",
+            "ch:1:sloid:274",
+            "ch:1:sloid:275",
+            "ch:1:sloid:283",
+            "ch:1:sloid:285",
+            "ch:1:sloid:286::2863",
+            "ch:1:sloid:287",
+            "ch:1:sloid:288",
+            "ch:1:sloid:289",
+            "ch:1:sloid:211_gen:ch:1:sloid:211::161532_pf:11A",
+            "ch:1:sloid:18690",
+            "ch:1:sloid:212::187921"
+          ],
+          "admittedTrips": 34,
+          "geometrySources": [
+            "bern-official-413",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "09560b14508ea461ed54a5bb",
+          "routeId": "91-11-M-j26-1",
+          "line": "S11",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:207::161812",
+            "ch:1:sloid:280",
+            "ch:1:sloid:272",
+            "ch:1:sloid:273",
+            "ch:1:sloid:274",
+            "ch:1:sloid:275",
+            "ch:1:sloid:283",
+            "ch:1:sloid:285",
+            "ch:1:sloid:286::2863",
+            "ch:1:sloid:287",
+            "ch:1:sloid:288",
+            "ch:1:sloid:289",
+            "ch:1:sloid:211_gen:ch:1:sloid:211::161532_pf:11A",
+            "ch:1:sloid:18690",
+            "ch:1:sloid:212::187923"
+          ],
+          "admittedTrips": 2,
+          "geometrySources": [
+            "bern-official-413",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "c40f4a6460c88ba43b2824b4",
+          "routeId": "91-11-M-j26-1",
+          "line": "S11",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:212::187923",
+            "ch:1:sloid:18690",
+            "ch:1:sloid:211_gen:ch:1:sloid:211::161532_pf:11A",
+            "ch:1:sloid:289",
+            "ch:1:sloid:288",
+            "ch:1:sloid:287"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "bern-official-413",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "82f72bd597cf2c0f77eb2c46",
+          "routeId": "91-11-M-j26-1",
+          "line": "S11",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:287",
+            "ch:1:sloid:288",
+            "ch:1:sloid:289",
+            "ch:1:sloid:211_gen:ch:1:sloid:211::161532_pf:11A",
+            "ch:1:sloid:18690",
+            "ch:1:sloid:212::187921"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "bern-official-413",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "a8647e31185b237cdc386d8b",
+          "routeId": "91-11-M-j26-1",
+          "line": "S11",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:287",
+            "ch:1:sloid:288",
+            "ch:1:sloid:289",
+            "ch:1:sloid:211_gen:ch:1:sloid:211::161532_pf:11A",
+            "ch:1:sloid:18690",
+            "ch:1:sloid:212::187923"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "bern-official-413",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "30b6f852b55933022e88b2e4",
+          "routeId": "91-11-M-j26-1",
+          "line": "S11",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:8100:3:5",
+            "ch:1:sloid:8151",
+            "ch:1:sloid:8152",
+            "ch:1:sloid:8193",
+            "ch:1:sloid:8153",
+            "ch:1:sloid:8154",
+            "ch:1:sloid:8155",
+            "ch:1:sloid:8157",
+            "ch:1:sloid:8158",
+            "ch:1:sloid:8159",
+            "ch:1:sloid:211_gen:ch:1:sloid:211::161532_pf:11A",
+            "ch:1:sloid:18690",
+            "ch:1:sloid:212::187921"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "bern-official-413",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "67d9c1a889b37befb03b9613",
+          "routeId": "91-11-M-j26-1",
+          "line": "S11",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:8100:3:5",
+            "ch:1:sloid:8151",
+            "ch:1:sloid:8152",
+            "ch:1:sloid:8193",
+            "ch:1:sloid:8153",
+            "ch:1:sloid:8154",
+            "ch:1:sloid:8155",
+            "ch:1:sloid:8157",
+            "ch:1:sloid:8158",
+            "ch:1:sloid:8159",
+            "ch:1:sloid:211_gen:ch:1:sloid:211::161532_pf:11A",
+            "ch:1:sloid:18690",
+            "ch:1:sloid:212::187923"
+          ],
+          "admittedTrips": 35,
+          "geometrySources": [
+            "bern-official-413",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "84424436eb22feab49da8aae",
+          "routeId": "91-11-M-j26-1",
+          "line": "S11",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:211_gen:ch:1:sloid:211::161532_pf:11A",
+            "ch:1:sloid:289",
+            "ch:1:sloid:288",
+            "ch:1:sloid:287",
+            "ch:1:sloid:286::2862",
+            "ch:1:sloid:285",
+            "ch:1:sloid:283",
+            "ch:1:sloid:275",
+            "ch:1:sloid:274",
+            "ch:1:sloid:273",
+            "ch:1:sloid:272",
+            "ch:1:sloid:280",
+            "ch:1:sloid:207::161812"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "bern-official-413",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "3e9aec553abbd440fd19fe66",
+          "routeId": "91-11-M-j26-1",
+          "line": "S11",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:212::187923",
+            "ch:1:sloid:18690",
+            "ch:1:sloid:211_gen:ch:1:sloid:211::161532_pf:11A",
+            "ch:1:sloid:289",
+            "ch:1:sloid:288",
+            "ch:1:sloid:287",
+            "ch:1:sloid:286::2862",
+            "ch:1:sloid:285",
+            "ch:1:sloid:283",
+            "ch:1:sloid:275",
+            "ch:1:sloid:274",
+            "ch:1:sloid:273",
+            "ch:1:sloid:272",
+            "ch:1:sloid:280",
+            "ch:1:sloid:207::161812"
+          ],
+          "admittedTrips": 37,
+          "geometrySources": [
+            "bern-official-413",
+            "solothurn-network"
           ]
         },
         {
@@ -4245,6 +4744,54 @@
           ]
         },
         {
+          "id": "7344f70c473770ce230ca07d",
+          "routeId": "91-29-j26-1",
+          "line": "S29",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:3503:2:2",
+            "ch:1:sloid:309:3:4",
+            "ch:1:sloid:2116:1:1",
+            "ch:1:sloid:2128:1:1",
+            "ch:1:sloid:2115:0:1",
+            "ch:1:sloid:2114:1:1",
+            "ch:1:sloid:2113:3:4",
+            "ch:1:sloid:218:5:9",
+            "ch:1:sloid:2000:2:3",
+            "ch:1:sloid:2001:1:1"
+          ],
+          "admittedTrips": 15,
+          "geometrySources": [
+            "bern-official-450_S_b",
+            "fot",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "b0c1cc9c52d203e320e3e961",
+          "routeId": "91-29-j26-1",
+          "line": "S29",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:3503:2:2",
+            "ch:1:sloid:309:3:4",
+            "ch:1:sloid:2116:1:1",
+            "ch:1:sloid:2128:1:1",
+            "ch:1:sloid:2115:0:1",
+            "ch:1:sloid:2114:1:1",
+            "ch:1:sloid:2113:3:5",
+            "ch:1:sloid:218:5:9",
+            "ch:1:sloid:2000:2:3",
+            "ch:1:sloid:2001:1:1"
+          ],
+          "admittedTrips": 3,
+          "geometrySources": [
+            "bern-official-450_S_b",
+            "fot",
+            "solothurn-network"
+          ]
+        },
+        {
           "id": "b8f70f8510b205f6451dda99",
           "routeId": "91-29-j26-1",
           "line": "S29",
@@ -4270,6 +4817,215 @@
           ]
         },
         {
+          "id": "af2fdec3c98af1ffc9f2e76d",
+          "routeId": "91-29-j26-1",
+          "line": "S29",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:309:3:4",
+            "ch:1:sloid:2116:1:1",
+            "ch:1:sloid:2128:1:1",
+            "ch:1:sloid:2115:0:1",
+            "ch:1:sloid:2114:1:1",
+            "ch:1:sloid:2113:3:5",
+            "ch:1:sloid:218:6:11",
+            "ch:1:sloid:2000:2:3",
+            "ch:1:sloid:2001:2:2",
+            "ch:1:sloid:2002:2:3",
+            "ch:1:sloid:2003:1:1",
+            "ch:1:sloid:2004:1:2",
+            "ch:1:sloid:2005:3:3",
+            "ch:1:sloid:2006:1:1",
+            "ch:1:sloid:2010:1:1",
+            "ch:1:sloid:2007_gen:ch:1:sloid:2007:0:448589_pf:2AB"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "bern-official-450_S_b",
+            "fot",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "18bcf474240d58f0aa811868",
+          "routeId": "91-29-j26-1",
+          "line": "S29",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:3503:2:2",
+            "ch:1:sloid:309:3:4",
+            "ch:1:sloid:2116:1:1",
+            "ch:1:sloid:2128:1:1",
+            "ch:1:sloid:2115:0:1",
+            "ch:1:sloid:2114:1:1",
+            "ch:1:sloid:2113:3:5",
+            "ch:1:sloid:218:6:11",
+            "ch:1:sloid:2000:2:3",
+            "ch:1:sloid:2001:2:2",
+            "ch:1:sloid:2002:2:3",
+            "ch:1:sloid:2003:1:1",
+            "ch:1:sloid:2004:1:2",
+            "ch:1:sloid:2005:3:3",
+            "ch:1:sloid:2006:1:1",
+            "ch:1:sloid:2010:1:1",
+            "ch:1:sloid:2007:1:1"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "bern-official-450_S_b",
+            "fot",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "9fcb5995b285173bd78d9036",
+          "routeId": "91-29-j26-1",
+          "line": "S29",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:3503:2:2",
+            "ch:1:sloid:309:3:4",
+            "ch:1:sloid:2116:1:1",
+            "ch:1:sloid:2128:1:1",
+            "ch:1:sloid:2115:0:1",
+            "ch:1:sloid:2114:1:1",
+            "ch:1:sloid:2113:3:5",
+            "ch:1:sloid:218:6:11",
+            "ch:1:sloid:2000:2:3",
+            "ch:1:sloid:2001:2:2",
+            "ch:1:sloid:2002:2:3",
+            "ch:1:sloid:2003:1:1",
+            "ch:1:sloid:2004:1:2",
+            "ch:1:sloid:2005:3:3",
+            "ch:1:sloid:2006:1:1",
+            "ch:1:sloid:2010:1:1",
+            "ch:1:sloid:2007:0:448589"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "bern-official-450_S_b",
+            "fot",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "1aaaca04d7593de9f97bef1f",
+          "routeId": "91-29-j26-1",
+          "line": "S29",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:3503:2:2",
+            "ch:1:sloid:309:3:4",
+            "ch:1:sloid:2116:1:1",
+            "ch:1:sloid:2128:1:1",
+            "ch:1:sloid:2115:0:1",
+            "ch:1:sloid:2114:1:1",
+            "ch:1:sloid:2113:3:5",
+            "ch:1:sloid:218:6:11",
+            "ch:1:sloid:2000:2:3",
+            "ch:1:sloid:2001:2:2",
+            "ch:1:sloid:2002:2:3",
+            "ch:1:sloid:2003:1:1",
+            "ch:1:sloid:2004:1:2",
+            "ch:1:sloid:2005:3:3",
+            "ch:1:sloid:2006:1:1",
+            "ch:1:sloid:2010:1:1",
+            "ch:1:sloid:2007_gen:ch:1:sloid:2007:0:448589_pf:2AB"
+          ],
+          "admittedTrips": 16,
+          "geometrySources": [
+            "bern-official-450_S_b",
+            "fot",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "165d8f4b801ec558afac4f81",
+          "routeId": "91-29-j26-1",
+          "line": "S29",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:3503:2:2",
+            "ch:1:sloid:309:3:4",
+            "ch:1:sloid:2116:1:1",
+            "ch:1:sloid:2128:1:1",
+            "ch:1:sloid:2115:0:1",
+            "ch:1:sloid:2114:1:1",
+            "ch:1:sloid:2113:3:5",
+            "ch:1:sloid:218:6:10",
+            "ch:1:sloid:2000:2:3",
+            "ch:1:sloid:2001:2:2",
+            "ch:1:sloid:2002:2:3",
+            "ch:1:sloid:2003:1:1",
+            "ch:1:sloid:2004:1:2",
+            "ch:1:sloid:2005:3:3",
+            "ch:1:sloid:2006:1:1",
+            "ch:1:sloid:2010:1:1",
+            "ch:1:sloid:2007:1:1"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "bern-official-450_S_b",
+            "fot",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "f45d179059fbc4cab0669afd",
+          "routeId": "91-29-j26-1",
+          "line": "S29",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:3503:2:2",
+            "ch:1:sloid:309:3:4",
+            "ch:1:sloid:2116:1:1",
+            "ch:1:sloid:2128:1:1",
+            "ch:1:sloid:2115:0:1",
+            "ch:1:sloid:2114:1:1",
+            "ch:1:sloid:2113:3:5",
+            "ch:1:sloid:218:6:10",
+            "ch:1:sloid:2000:2:3",
+            "ch:1:sloid:2001:2:2",
+            "ch:1:sloid:2002:2:3",
+            "ch:1:sloid:2003:1:1",
+            "ch:1:sloid:2004:1:2",
+            "ch:1:sloid:2005:3:3",
+            "ch:1:sloid:2006:1:1",
+            "ch:1:sloid:2010:1:1",
+            "ch:1:sloid:2007_gen:ch:1:sloid:2007:0:448589_pf:2AB"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "bern-official-450_S_b",
+            "fot",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "823ff0a32b0063349263a6c4",
+          "routeId": "91-29-j26-1",
+          "line": "S29",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:2001:1:1",
+            "ch:1:sloid:2000:2:2",
+            "ch:1:sloid:218:5:9",
+            "ch:1:sloid:2113:2:3",
+            "ch:1:sloid:2114:2:4",
+            "ch:1:sloid:2115:1:2",
+            "ch:1:sloid:2128:2:2",
+            "ch:1:sloid:2116:2:2",
+            "ch:1:sloid:309:2:3",
+            "ch:1:sloid:3503:2:2"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "bern-official-450_S_b",
+            "fot",
+            "solothurn-network"
+          ]
+        },
+        {
           "id": "54190e0093e8a3d28bc3f94b",
           "routeId": "91-29-j26-1",
           "line": "S29",
@@ -4289,6 +5045,174 @@
           ],
           "admittedTrips": 1,
           "geometrySources": [
+            "fot",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "387368572bea95ef4cf2b97a",
+          "routeId": "91-29-j26-1",
+          "line": "S29",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:2007:1:1",
+            "ch:1:sloid:2010:2:2",
+            "ch:1:sloid:2006:2:2",
+            "ch:1:sloid:2005:2:2",
+            "ch:1:sloid:2004:2:3",
+            "ch:1:sloid:2003:2:2",
+            "ch:1:sloid:2002:1:2",
+            "ch:1:sloid:2001:2:3",
+            "ch:1:sloid:2000:2:2",
+            "ch:1:sloid:218:5:8",
+            "ch:1:sloid:2113:2:2",
+            "ch:1:sloid:2114:2:4",
+            "ch:1:sloid:2115:1:2",
+            "ch:1:sloid:2128:2:2",
+            "ch:1:sloid:2116:2:2",
+            "ch:1:sloid:309:2:3",
+            "ch:1:sloid:3503:2:2"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "bern-official-450_S_b",
+            "fot",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "c1bb67f665318bcbf72330d1",
+          "routeId": "91-29-j26-1",
+          "line": "S29",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:2007_gen:ch:1:sloid:2007:0:448589_pf:2AB",
+            "ch:1:sloid:2010:2:2",
+            "ch:1:sloid:2006:2:2",
+            "ch:1:sloid:2005:2:2",
+            "ch:1:sloid:2004:2:3",
+            "ch:1:sloid:2003:2:2",
+            "ch:1:sloid:2002:1:2",
+            "ch:1:sloid:2001:2:3",
+            "ch:1:sloid:2000:2:2",
+            "ch:1:sloid:218:6:10",
+            "ch:1:sloid:2113:1:1",
+            "ch:1:sloid:2114:2:4",
+            "ch:1:sloid:2115:1:2",
+            "ch:1:sloid:2128:2:2",
+            "ch:1:sloid:2116:2:2",
+            "ch:1:sloid:309:2:3",
+            "ch:1:sloid:3503:2:2"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "bern-official-450_S_b",
+            "fot",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "6941a6673ea79681654d79eb",
+          "routeId": "91-29-j26-1",
+          "line": "S29",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:2007_gen:ch:1:sloid:2007:0:448589_pf:2AB",
+            "ch:1:sloid:2010:2:2",
+            "ch:1:sloid:2006:2:2",
+            "ch:1:sloid:2005:2:2",
+            "ch:1:sloid:2004:2:3",
+            "ch:1:sloid:2003:2:2",
+            "ch:1:sloid:2002:1:2",
+            "ch:1:sloid:2001:2:3",
+            "ch:1:sloid:2000:2:2",
+            "ch:1:sloid:218:5:9",
+            "ch:1:sloid:2113:1:1",
+            "ch:1:sloid:2114:2:4",
+            "ch:1:sloid:2115:1:2",
+            "ch:1:sloid:2128:2:2",
+            "ch:1:sloid:2116:2:2",
+            "ch:1:sloid:309:2:3",
+            "ch:1:sloid:3503:2:2"
+          ],
+          "admittedTrips": 14,
+          "geometrySources": [
+            "bern-official-450_S_b",
+            "fot",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "219eb662e6af2a32f283176c",
+          "routeId": "91-29-j26-1",
+          "line": "S29",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:2007_gen:ch:1:sloid:2007:0:448589_pf:2AB",
+            "ch:1:sloid:2010:2:2",
+            "ch:1:sloid:2006:2:2",
+            "ch:1:sloid:2005:2:2",
+            "ch:1:sloid:2004:2:3",
+            "ch:1:sloid:2003:2:2",
+            "ch:1:sloid:2002:1:2",
+            "ch:1:sloid:2001:2:3",
+            "ch:1:sloid:2000:2:2",
+            "ch:1:sloid:218:5:9",
+            "ch:1:sloid:2113:2:2",
+            "ch:1:sloid:2114:2:4",
+            "ch:1:sloid:2115:1:2",
+            "ch:1:sloid:2128:2:2",
+            "ch:1:sloid:2116:2:2",
+            "ch:1:sloid:309:2:3",
+            "ch:1:sloid:3503:2:2"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "bern-official-450_S_b",
+            "fot",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "f673f2be261f93089109c360",
+          "routeId": "91-29-j26-1",
+          "line": "S29",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:3503:2:2",
+            "ch:1:sloid:309:3:4",
+            "ch:1:sloid:2116:1:1",
+            "ch:1:sloid:2128:1:1",
+            "ch:1:sloid:2115:0:1",
+            "ch:1:sloid:2114:1:1",
+            "ch:1:sloid:2113:3:5",
+            "ch:1:sloid:218:6:11"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "bern-official-450_S_b",
+            "fot",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "eb030303b8ea6ec16c1cc96d",
+          "routeId": "91-29-j26-1",
+          "line": "S29",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:3503:2:2",
+            "ch:1:sloid:309:3:4",
+            "ch:1:sloid:2116:1:1",
+            "ch:1:sloid:2128:1:1",
+            "ch:1:sloid:2115:0:1",
+            "ch:1:sloid:2114:1:1",
+            "ch:1:sloid:2113:3:5",
+            "ch:1:sloid:218:5:9"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "bern-official-450_S_b",
             "fot",
             "solothurn-network"
           ]
@@ -16063,11 +16987,19 @@
         },
         "solothurn-network": {
           "directedPairs": 3004,
-          "admittedOccurrences": 74428
+          "admittedOccurrences": 76419
+        },
+        "bern-official-413": {
+          "directedPairs": 10,
+          "admittedOccurrences": 370
         },
         "fot": {
           "directedPairs": 850,
-          "admittedOccurrences": 4600
+          "admittedOccurrences": 4894
+        },
+        "bern-official-450_S_b": {
+          "directedPairs": 9,
+          "admittedOccurrences": 59
         },
         "osm-road-inference": {
           "directedPairs": 266,
@@ -16106,24 +17038,24 @@
       },
       "after": {
         "trips": 5819,
-        "admittedTrips": 5310,
+        "admittedTrips": 5467,
         "scheduledTrips": 4711,
         "representativeHeadwayTrips": 1108,
-        "admittedScheduledTrips": 4202,
+        "admittedScheduledTrips": 4359,
         "admittedRepresentativeHeadwayTrips": 1108,
         "scheduledSegmentOccurrences": 68102,
-        "matchedScheduledSegmentOccurrences": 67350,
+        "matchedScheduledSegmentOccurrences": 67650,
         "segmentOccurrences": 69210,
-        "matchedSegmentOccurrences": 68458,
-        "admittedSegmentOccurrences": 60349,
+        "matchedSegmentOccurrences": 68758,
+        "admittedSegmentOccurrences": 62412,
         "directedPairs": 4467,
-        "matchedDirectedPairs": 4413,
+        "matchedDirectedPairs": 4435,
         "patterns": 777,
-        "completePatterns": 668,
-        "admittedPatterns": 668,
+        "completePatterns": 700,
+        "admittedPatterns": 700,
         "excludedTrips": {
-          "incomplete-directed-pattern": 496,
-          "night-network-excluded-by-source": 13
+          "incomplete-directed-pattern": 343,
+          "night-network-excluded-by-source": 9
         }
       },
       "lostAdmittedPatterns": [],
@@ -16360,6 +17292,405 @@
           "admittedTrips": 42,
           "geometrySources": [
             "basel-official-tram-10"
+          ]
+        },
+        {
+          "id": "181257306966659cf37a2446",
+          "routeId": "91-11-E-j26-1",
+          "line": "SN11",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:218:5:8",
+            "ch:1:sloid:2110:1:1",
+            "ch:1:sloid:2111:3:4",
+            "ch:1:sloid:2112:2:2",
+            "ch:1:sloid:2113:2:2",
+            "ch:1:sloid:2114:2:4",
+            "ch:1:sloid:2119:3:2",
+            "ch:1:sloid:2105:2:3",
+            "ch:1:sloid:2106:2:3",
+            "ch:1:sloid:16219:1:1",
+            "ch:1:sloid:3506:3:5",
+            "ch:1:sloid:3508:2:4",
+            "ch:1:sloid:3512:2:2",
+            "ch:1:sloid:3509:2:4",
+            "ch:1:sloid:3001:3:4",
+            "ch:1:sloid:3020:1:1",
+            "ch:1:sloid:3000:503:43"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "fot",
+            "sbb-rail-inference"
+          ]
+        },
+        {
+          "id": "fd25ce25eb52296959817894",
+          "routeId": "91-11-E-j26-1",
+          "line": "SN11",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:6000:2:3",
+            "ch:1:sloid:3304:1:3",
+            "ch:1:sloid:3305:2:3",
+            "ch:1:sloid:3306:2:3",
+            "ch:1:sloid:3147:1:1",
+            "ch:1:sloid:3003:1:1",
+            "ch:1:sloid:3000:502:42",
+            "ch:1:sloid:3020:3:4",
+            "ch:1:sloid:3001:3:3",
+            "ch:1:sloid:3509:2:3",
+            "ch:1:sloid:3512:1:1",
+            "ch:1:sloid:3508:2:3",
+            "ch:1:sloid:3506:2:4",
+            "ch:1:sloid:16219:2:2",
+            "ch:1:sloid:2106:0:1",
+            "ch:1:sloid:2105:2:2",
+            "ch:1:sloid:2119:3:3",
+            "ch:1:sloid:2114:1:1",
+            "ch:1:sloid:2113:3:5",
+            "ch:1:sloid:2112:1:1",
+            "ch:1:sloid:2111:2:3",
+            "ch:1:sloid:2110:2:2",
+            "ch:1:sloid:218:5:8"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "fot",
+            "sbb-rail-inference"
+          ]
+        },
+        {
+          "id": "c6a70492aafb5864104895be",
+          "routeId": "91-11-E-j26-1",
+          "line": "SN11",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:6000:3:4",
+            "ch:1:sloid:3304:1:3",
+            "ch:1:sloid:3305:2:3",
+            "ch:1:sloid:3306:2:3",
+            "ch:1:sloid:3147:1:1",
+            "ch:1:sloid:3003:1:1",
+            "ch:1:sloid:3000:502:42",
+            "ch:1:sloid:3020:3:4",
+            "ch:1:sloid:3001:3:3",
+            "ch:1:sloid:3509:2:3",
+            "ch:1:sloid:3512:1:1",
+            "ch:1:sloid:3508:2:3",
+            "ch:1:sloid:3506:2:4",
+            "ch:1:sloid:16219:2:2",
+            "ch:1:sloid:2106:0:1",
+            "ch:1:sloid:2105:2:2",
+            "ch:1:sloid:2119:3:3",
+            "ch:1:sloid:2114:1:1",
+            "ch:1:sloid:2113:3:5",
+            "ch:1:sloid:2112:1:1",
+            "ch:1:sloid:2111:2:3",
+            "ch:1:sloid:2110:2:2",
+            "ch:1:sloid:218:5:8"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "fot",
+            "sbb-rail-inference"
+          ]
+        },
+        {
+          "id": "c8c4a14e800b9bba0800895e",
+          "routeId": "91-11-E-j26-1",
+          "line": "SN11",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:218:5:8",
+            "ch:1:sloid:2110:1:1",
+            "ch:1:sloid:2111:3:4",
+            "ch:1:sloid:2112:2:2",
+            "ch:1:sloid:2113:2:2",
+            "ch:1:sloid:2114:2:4",
+            "ch:1:sloid:2119:3:2",
+            "ch:1:sloid:2105:2:3",
+            "ch:1:sloid:2106:2:3",
+            "ch:1:sloid:16219:1:1",
+            "ch:1:sloid:3506:3:5",
+            "ch:1:sloid:3508:2:4",
+            "ch:1:sloid:3512:2:2",
+            "ch:1:sloid:3509:2:4",
+            "ch:1:sloid:3001:3:4",
+            "ch:1:sloid:3000:501:34"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "fot",
+            "sbb-rail-inference"
+          ]
+        },
+        {
+          "id": "5b216014843696a295143be7",
+          "routeId": "91-11-M-j26-1",
+          "line": "S11",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:207::161812",
+            "ch:1:sloid:280",
+            "ch:1:sloid:272",
+            "ch:1:sloid:273",
+            "ch:1:sloid:274",
+            "ch:1:sloid:275",
+            "ch:1:sloid:283",
+            "ch:1:sloid:285",
+            "ch:1:sloid:286::2863",
+            "ch:1:sloid:287"
+          ],
+          "admittedTrips": 2,
+          "geometrySources": [
+            "bern-official-413",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "9fcf5582225aeacd2cf7e13b",
+          "routeId": "91-11-M-j26-1",
+          "line": "S11",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:212::187921",
+            "ch:1:sloid:18690",
+            "ch:1:sloid:211_gen:ch:1:sloid:211::161532_pf:11B",
+            "ch:1:sloid:8159",
+            "ch:1:sloid:8158",
+            "ch:1:sloid:8157",
+            "ch:1:sloid:8155",
+            "ch:1:sloid:8154",
+            "ch:1:sloid:8153",
+            "ch:1:sloid:8193",
+            "ch:1:sloid:8152",
+            "ch:1:sloid:8151",
+            "ch:1:sloid:8100:3:5"
+          ],
+          "admittedTrips": 19,
+          "geometrySources": [
+            "bern-official-413",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "8681491dafed95886bb20ab2",
+          "routeId": "91-11-M-j26-1",
+          "line": "S11",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:207::161812",
+            "ch:1:sloid:280",
+            "ch:1:sloid:272",
+            "ch:1:sloid:273",
+            "ch:1:sloid:274",
+            "ch:1:sloid:275",
+            "ch:1:sloid:283",
+            "ch:1:sloid:285",
+            "ch:1:sloid:286::2863",
+            "ch:1:sloid:287",
+            "ch:1:sloid:288",
+            "ch:1:sloid:289",
+            "ch:1:sloid:211_gen:ch:1:sloid:211::161532_pf:11A",
+            "ch:1:sloid:18690",
+            "ch:1:sloid:212::187921"
+          ],
+          "admittedTrips": 17,
+          "geometrySources": [
+            "bern-official-413",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "09560b14508ea461ed54a5bb",
+          "routeId": "91-11-M-j26-1",
+          "line": "S11",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:207::161812",
+            "ch:1:sloid:280",
+            "ch:1:sloid:272",
+            "ch:1:sloid:273",
+            "ch:1:sloid:274",
+            "ch:1:sloid:275",
+            "ch:1:sloid:283",
+            "ch:1:sloid:285",
+            "ch:1:sloid:286::2863",
+            "ch:1:sloid:287",
+            "ch:1:sloid:288",
+            "ch:1:sloid:289",
+            "ch:1:sloid:211_gen:ch:1:sloid:211::161532_pf:11A",
+            "ch:1:sloid:18690",
+            "ch:1:sloid:212::187923"
+          ],
+          "admittedTrips": 8,
+          "geometrySources": [
+            "bern-official-413",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "c40f4a6460c88ba43b2824b4",
+          "routeId": "91-11-M-j26-1",
+          "line": "S11",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:212::187923",
+            "ch:1:sloid:18690",
+            "ch:1:sloid:211_gen:ch:1:sloid:211::161532_pf:11A",
+            "ch:1:sloid:289",
+            "ch:1:sloid:288",
+            "ch:1:sloid:287"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "bern-official-413",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "82f72bd597cf2c0f77eb2c46",
+          "routeId": "91-11-M-j26-1",
+          "line": "S11",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:287",
+            "ch:1:sloid:288",
+            "ch:1:sloid:289",
+            "ch:1:sloid:211_gen:ch:1:sloid:211::161532_pf:11A",
+            "ch:1:sloid:18690",
+            "ch:1:sloid:212::187921"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "bern-official-413",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "a8647e31185b237cdc386d8b",
+          "routeId": "91-11-M-j26-1",
+          "line": "S11",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:287",
+            "ch:1:sloid:288",
+            "ch:1:sloid:289",
+            "ch:1:sloid:211_gen:ch:1:sloid:211::161532_pf:11A",
+            "ch:1:sloid:18690",
+            "ch:1:sloid:212::187923"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "bern-official-413",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "30b6f852b55933022e88b2e4",
+          "routeId": "91-11-M-j26-1",
+          "line": "S11",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:8100:3:5",
+            "ch:1:sloid:8151",
+            "ch:1:sloid:8152",
+            "ch:1:sloid:8193",
+            "ch:1:sloid:8153",
+            "ch:1:sloid:8154",
+            "ch:1:sloid:8155",
+            "ch:1:sloid:8157",
+            "ch:1:sloid:8158",
+            "ch:1:sloid:8159",
+            "ch:1:sloid:211_gen:ch:1:sloid:211::161532_pf:11A",
+            "ch:1:sloid:18690",
+            "ch:1:sloid:212::187921"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "bern-official-413",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "67d9c1a889b37befb03b9613",
+          "routeId": "91-11-M-j26-1",
+          "line": "S11",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:8100:3:5",
+            "ch:1:sloid:8151",
+            "ch:1:sloid:8152",
+            "ch:1:sloid:8193",
+            "ch:1:sloid:8153",
+            "ch:1:sloid:8154",
+            "ch:1:sloid:8155",
+            "ch:1:sloid:8157",
+            "ch:1:sloid:8158",
+            "ch:1:sloid:8159",
+            "ch:1:sloid:211_gen:ch:1:sloid:211::161532_pf:11A",
+            "ch:1:sloid:18690",
+            "ch:1:sloid:212::187923"
+          ],
+          "admittedTrips": 18,
+          "geometrySources": [
+            "bern-official-413",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "84424436eb22feab49da8aae",
+          "routeId": "91-11-M-j26-1",
+          "line": "S11",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:211_gen:ch:1:sloid:211::161532_pf:11A",
+            "ch:1:sloid:289",
+            "ch:1:sloid:288",
+            "ch:1:sloid:287",
+            "ch:1:sloid:286::2862",
+            "ch:1:sloid:285",
+            "ch:1:sloid:283",
+            "ch:1:sloid:275",
+            "ch:1:sloid:274",
+            "ch:1:sloid:273",
+            "ch:1:sloid:272",
+            "ch:1:sloid:280",
+            "ch:1:sloid:207::161812"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "bern-official-413",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "3e9aec553abbd440fd19fe66",
+          "routeId": "91-11-M-j26-1",
+          "line": "S11",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:212::187923",
+            "ch:1:sloid:18690",
+            "ch:1:sloid:211_gen:ch:1:sloid:211::161532_pf:11A",
+            "ch:1:sloid:289",
+            "ch:1:sloid:288",
+            "ch:1:sloid:287",
+            "ch:1:sloid:286::2862",
+            "ch:1:sloid:285",
+            "ch:1:sloid:283",
+            "ch:1:sloid:275",
+            "ch:1:sloid:274",
+            "ch:1:sloid:273",
+            "ch:1:sloid:272",
+            "ch:1:sloid:280",
+            "ch:1:sloid:207::161812"
+          ],
+          "admittedTrips": 26,
+          "geometrySources": [
+            "bern-official-413",
+            "solothurn-network"
           ]
         },
         {
@@ -20116,6 +21447,30 @@
           ]
         },
         {
+          "id": "7344f70c473770ce230ca07d",
+          "routeId": "91-29-j26-1",
+          "line": "S29",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:3503:2:2",
+            "ch:1:sloid:309:3:4",
+            "ch:1:sloid:2116:1:1",
+            "ch:1:sloid:2128:1:1",
+            "ch:1:sloid:2115:0:1",
+            "ch:1:sloid:2114:1:1",
+            "ch:1:sloid:2113:3:4",
+            "ch:1:sloid:218:5:9",
+            "ch:1:sloid:2000:2:3",
+            "ch:1:sloid:2001:1:1"
+          ],
+          "admittedTrips": 5,
+          "geometrySources": [
+            "bern-official-450_S_b",
+            "fot",
+            "solothurn-network"
+          ]
+        },
+        {
           "id": "52c86ac6c6329bfd6d70e85b",
           "routeId": "91-29-j26-1",
           "line": "S29",
@@ -20136,6 +21491,246 @@
           ],
           "admittedTrips": 1,
           "geometrySources": [
+            "fot",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "48d78923cdb8fd8f78284823",
+          "routeId": "91-29-j26-1",
+          "line": "S29",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:309:3:5",
+            "ch:1:sloid:2116:1:1",
+            "ch:1:sloid:2128:1:1",
+            "ch:1:sloid:2115:0:1",
+            "ch:1:sloid:2114:1:1",
+            "ch:1:sloid:2113:3:5",
+            "ch:1:sloid:218:6:11",
+            "ch:1:sloid:2000:2:3",
+            "ch:1:sloid:2001:2:2",
+            "ch:1:sloid:2002:2:3",
+            "ch:1:sloid:2003:1:1",
+            "ch:1:sloid:2004:1:2",
+            "ch:1:sloid:2005:3:3",
+            "ch:1:sloid:2006:1:1",
+            "ch:1:sloid:2010:1:1",
+            "ch:1:sloid:2007_gen:ch:1:sloid:2007:0:448589_pf:2AB"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "bern-official-450_S_b",
+            "fot",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "8a0006148486f67d7bd93241",
+          "routeId": "91-29-j26-1",
+          "line": "S29",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:3503:2:2",
+            "ch:1:sloid:309:2:2",
+            "ch:1:sloid:2116:1:1",
+            "ch:1:sloid:2128:1:1",
+            "ch:1:sloid:2115:0:1",
+            "ch:1:sloid:2114:1:1",
+            "ch:1:sloid:2113:3:5",
+            "ch:1:sloid:218:6:11",
+            "ch:1:sloid:2000:2:3",
+            "ch:1:sloid:2001:2:2",
+            "ch:1:sloid:2002:2:3",
+            "ch:1:sloid:2003:1:1",
+            "ch:1:sloid:2004:1:2",
+            "ch:1:sloid:2005:3:3",
+            "ch:1:sloid:2006:1:1",
+            "ch:1:sloid:2010:1:1",
+            "ch:1:sloid:2007_gen:ch:1:sloid:2007:0:448589_pf:2AB"
+          ],
+          "admittedTrips": 10,
+          "geometrySources": [
+            "bern-official-450_S_b",
+            "fot",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "205ee1cc87dd94dee15ad30d",
+          "routeId": "91-29-j26-1",
+          "line": "S29",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:3503:2:2",
+            "ch:1:sloid:309:2:3",
+            "ch:1:sloid:2116:1:1",
+            "ch:1:sloid:2128:1:1",
+            "ch:1:sloid:2115:0:1",
+            "ch:1:sloid:2114:1:1",
+            "ch:1:sloid:2113:3:5",
+            "ch:1:sloid:218:6:11",
+            "ch:1:sloid:2000:2:3",
+            "ch:1:sloid:2001:2:2",
+            "ch:1:sloid:2002:2:3",
+            "ch:1:sloid:2003:1:1",
+            "ch:1:sloid:2004:1:2",
+            "ch:1:sloid:2005:3:3",
+            "ch:1:sloid:2006:1:1",
+            "ch:1:sloid:2010:1:1",
+            "ch:1:sloid:2007:1:1"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "bern-official-450_S_b",
+            "fot",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "c706d016be1b495ad3cdf6ec",
+          "routeId": "91-29-j26-1",
+          "line": "S29",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:3503:2:2",
+            "ch:1:sloid:309:2:3",
+            "ch:1:sloid:2116:1:1",
+            "ch:1:sloid:2128:1:1",
+            "ch:1:sloid:2115:0:1",
+            "ch:1:sloid:2114:1:1",
+            "ch:1:sloid:2113:3:5",
+            "ch:1:sloid:218:6:11",
+            "ch:1:sloid:2000:2:3",
+            "ch:1:sloid:2001:2:2",
+            "ch:1:sloid:2002:2:3",
+            "ch:1:sloid:2003:1:1",
+            "ch:1:sloid:2004:1:2",
+            "ch:1:sloid:2005:3:3",
+            "ch:1:sloid:2006:1:1",
+            "ch:1:sloid:2010:1:1",
+            "ch:1:sloid:2007:0:448589"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "bern-official-450_S_b",
+            "fot",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "c8a8b717b6a6800af0ffe123",
+          "routeId": "91-29-j26-1",
+          "line": "S29",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:3503:2:2",
+            "ch:1:sloid:309:2:3",
+            "ch:1:sloid:2116:1:1",
+            "ch:1:sloid:2128:1:1",
+            "ch:1:sloid:2115:0:1",
+            "ch:1:sloid:2114:1:1",
+            "ch:1:sloid:2113:3:5",
+            "ch:1:sloid:218:2:3",
+            "ch:1:sloid:2000:2:3",
+            "ch:1:sloid:2001:2:2",
+            "ch:1:sloid:2002:2:3",
+            "ch:1:sloid:2003:1:1",
+            "ch:1:sloid:2004:1:2",
+            "ch:1:sloid:2005:3:3",
+            "ch:1:sloid:2006:1:1",
+            "ch:1:sloid:2010:1:1",
+            "ch:1:sloid:2007:1:1"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "bern-official-450_S_b",
+            "fot",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "1aaaca04d7593de9f97bef1f",
+          "routeId": "91-29-j26-1",
+          "line": "S29",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:3503:2:2",
+            "ch:1:sloid:309:3:4",
+            "ch:1:sloid:2116:1:1",
+            "ch:1:sloid:2128:1:1",
+            "ch:1:sloid:2115:0:1",
+            "ch:1:sloid:2114:1:1",
+            "ch:1:sloid:2113:3:5",
+            "ch:1:sloid:218:6:11",
+            "ch:1:sloid:2000:2:3",
+            "ch:1:sloid:2001:2:2",
+            "ch:1:sloid:2002:2:3",
+            "ch:1:sloid:2003:1:1",
+            "ch:1:sloid:2004:1:2",
+            "ch:1:sloid:2005:3:3",
+            "ch:1:sloid:2006:1:1",
+            "ch:1:sloid:2010:1:1",
+            "ch:1:sloid:2007_gen:ch:1:sloid:2007:0:448589_pf:2AB"
+          ],
+          "admittedTrips": 6,
+          "geometrySources": [
+            "bern-official-450_S_b",
+            "fot",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "f45d179059fbc4cab0669afd",
+          "routeId": "91-29-j26-1",
+          "line": "S29",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:3503:2:2",
+            "ch:1:sloid:309:3:4",
+            "ch:1:sloid:2116:1:1",
+            "ch:1:sloid:2128:1:1",
+            "ch:1:sloid:2115:0:1",
+            "ch:1:sloid:2114:1:1",
+            "ch:1:sloid:2113:3:5",
+            "ch:1:sloid:218:6:10",
+            "ch:1:sloid:2000:2:3",
+            "ch:1:sloid:2001:2:2",
+            "ch:1:sloid:2002:2:3",
+            "ch:1:sloid:2003:1:1",
+            "ch:1:sloid:2004:1:2",
+            "ch:1:sloid:2005:3:3",
+            "ch:1:sloid:2006:1:1",
+            "ch:1:sloid:2010:1:1",
+            "ch:1:sloid:2007_gen:ch:1:sloid:2007:0:448589_pf:2AB"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "bern-official-450_S_b",
+            "fot",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "823ff0a32b0063349263a6c4",
+          "routeId": "91-29-j26-1",
+          "line": "S29",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:2001:1:1",
+            "ch:1:sloid:2000:2:2",
+            "ch:1:sloid:218:5:9",
+            "ch:1:sloid:2113:2:3",
+            "ch:1:sloid:2114:2:4",
+            "ch:1:sloid:2115:1:2",
+            "ch:1:sloid:2128:2:2",
+            "ch:1:sloid:2116:2:2",
+            "ch:1:sloid:309:2:3",
+            "ch:1:sloid:3503:2:2"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "bern-official-450_S_b",
             "fot",
             "solothurn-network"
           ]
@@ -20165,6 +21760,130 @@
           ]
         },
         {
+          "id": "4c5bd50f203f1ca4eb375361",
+          "routeId": "91-29-j26-1",
+          "line": "S29",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:2007:2:3",
+            "ch:1:sloid:2010:2:2",
+            "ch:1:sloid:2006:2:2",
+            "ch:1:sloid:2005:2:2",
+            "ch:1:sloid:2004:2:3",
+            "ch:1:sloid:2003:2:2",
+            "ch:1:sloid:2002:1:2",
+            "ch:1:sloid:2001:2:3",
+            "ch:1:sloid:2000:2:2",
+            "ch:1:sloid:218:5:8",
+            "ch:1:sloid:2113:2:2",
+            "ch:1:sloid:2114:2:4",
+            "ch:1:sloid:2115:1:2",
+            "ch:1:sloid:2128:2:2",
+            "ch:1:sloid:2116:2:2",
+            "ch:1:sloid:309:2:3",
+            "ch:1:sloid:3503:2:2"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "bern-official-450_S_b",
+            "fot",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "c1bb67f665318bcbf72330d1",
+          "routeId": "91-29-j26-1",
+          "line": "S29",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:2007_gen:ch:1:sloid:2007:0:448589_pf:2AB",
+            "ch:1:sloid:2010:2:2",
+            "ch:1:sloid:2006:2:2",
+            "ch:1:sloid:2005:2:2",
+            "ch:1:sloid:2004:2:3",
+            "ch:1:sloid:2003:2:2",
+            "ch:1:sloid:2002:1:2",
+            "ch:1:sloid:2001:2:3",
+            "ch:1:sloid:2000:2:2",
+            "ch:1:sloid:218:6:10",
+            "ch:1:sloid:2113:1:1",
+            "ch:1:sloid:2114:2:4",
+            "ch:1:sloid:2115:1:2",
+            "ch:1:sloid:2128:2:2",
+            "ch:1:sloid:2116:2:2",
+            "ch:1:sloid:309:2:3",
+            "ch:1:sloid:3503:2:2"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "bern-official-450_S_b",
+            "fot",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "1c1bb196fd8a062419ab7ca1",
+          "routeId": "91-29-j26-1",
+          "line": "S29",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:2007_gen:ch:1:sloid:2007:0:448589_pf:2AB",
+            "ch:1:sloid:2010:2:2",
+            "ch:1:sloid:2006:2:2",
+            "ch:1:sloid:2005:2:2",
+            "ch:1:sloid:2004:2:3",
+            "ch:1:sloid:2003:2:2",
+            "ch:1:sloid:2002:1:2",
+            "ch:1:sloid:2001:2:3",
+            "ch:1:sloid:2000:2:2",
+            "ch:1:sloid:218:5:9",
+            "ch:1:sloid:2113:1:1",
+            "ch:1:sloid:2114:2:4",
+            "ch:1:sloid:2115:1:2",
+            "ch:1:sloid:2128:2:2",
+            "ch:1:sloid:2116:2:2",
+            "ch:1:sloid:309:2:2",
+            "ch:1:sloid:3503:2:2"
+          ],
+          "admittedTrips": 10,
+          "geometrySources": [
+            "bern-official-450_S_b",
+            "fot",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "6941a6673ea79681654d79eb",
+          "routeId": "91-29-j26-1",
+          "line": "S29",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:2007_gen:ch:1:sloid:2007:0:448589_pf:2AB",
+            "ch:1:sloid:2010:2:2",
+            "ch:1:sloid:2006:2:2",
+            "ch:1:sloid:2005:2:2",
+            "ch:1:sloid:2004:2:3",
+            "ch:1:sloid:2003:2:2",
+            "ch:1:sloid:2002:1:2",
+            "ch:1:sloid:2001:2:3",
+            "ch:1:sloid:2000:2:2",
+            "ch:1:sloid:218:5:9",
+            "ch:1:sloid:2113:1:1",
+            "ch:1:sloid:2114:2:4",
+            "ch:1:sloid:2115:1:2",
+            "ch:1:sloid:2128:2:2",
+            "ch:1:sloid:2116:2:2",
+            "ch:1:sloid:309:2:3",
+            "ch:1:sloid:3503:2:2"
+          ],
+          "admittedTrips": 5,
+          "geometrySources": [
+            "bern-official-450_S_b",
+            "fot",
+            "solothurn-network"
+          ]
+        },
+        {
           "id": "ecf5e7fa0822bd896963792c",
           "routeId": "91-29-j26-1",
           "line": "S29",
@@ -20177,6 +21896,99 @@
           ],
           "admittedTrips": 1,
           "geometrySources": [
+            "fot",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "75ab001687f46c8a90bd4fdb",
+          "routeId": "91-29-j26-1",
+          "line": "S29",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:3503:2:2",
+            "ch:1:sloid:309:2:3",
+            "ch:1:sloid:2116:1:1",
+            "ch:1:sloid:2128:1:1",
+            "ch:1:sloid:2115:0:1",
+            "ch:1:sloid:2114:1:1",
+            "ch:1:sloid:2113:3:5",
+            "ch:1:sloid:218:5:9"
+          ],
+          "admittedTrips": 2,
+          "geometrySources": [
+            "bern-official-450_S_b",
+            "fot",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "f1c05904787581a453b2d849",
+          "routeId": "91-29-j26-1",
+          "line": "S29",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:309:3:4",
+            "ch:1:sloid:2116:1:1",
+            "ch:1:sloid:2128:1:1",
+            "ch:1:sloid:2115:0:1",
+            "ch:1:sloid:2114:1:1",
+            "ch:1:sloid:2113:3:4",
+            "ch:1:sloid:218:5:9",
+            "ch:1:sloid:2000:2:3",
+            "ch:1:sloid:2001:1:1"
+          ],
+          "admittedTrips": 10,
+          "geometrySources": [
+            "bern-official-450_S_b",
+            "fot",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "5996b78067a38ac4fb584b29",
+          "routeId": "91-29-j26-1",
+          "line": "S29",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:3503:2:2",
+            "ch:1:sloid:309:2:3",
+            "ch:1:sloid:2116:1:1",
+            "ch:1:sloid:2128:1:1",
+            "ch:1:sloid:2115:0:1",
+            "ch:1:sloid:2114:1:1",
+            "ch:1:sloid:2113:3:4",
+            "ch:1:sloid:218:5:9",
+            "ch:1:sloid:2000:2:3",
+            "ch:1:sloid:2001:1:1"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "bern-official-450_S_b",
+            "fot",
+            "solothurn-network"
+          ]
+        },
+        {
+          "id": "150582767720f20e7f11d5ec",
+          "routeId": "91-29-j26-1",
+          "line": "S29",
+          "mode": "rail",
+          "stopIds": [
+            "ch:1:sloid:3503:2:2",
+            "ch:1:sloid:309:3:4",
+            "ch:1:sloid:2116:1:1",
+            "ch:1:sloid:2128:1:1",
+            "ch:1:sloid:2115:0:1",
+            "ch:1:sloid:2114:1:1",
+            "ch:1:sloid:2113:3:4",
+            "ch:1:sloid:218:6:10",
+            "ch:1:sloid:2000:2:3",
+            "ch:1:sloid:2001:1:1"
+          ],
+          "admittedTrips": 1,
+          "geometrySources": [
+            "bern-official-450_S_b",
             "fot",
             "solothurn-network"
           ]
@@ -29022,11 +30834,23 @@
         },
         "fot": {
           "directedPairs": 887,
-          "admittedOccurrences": 3724
+          "admittedOccurrences": 4074
+        },
+        "sbb-rail-inference": {
+          "directedPairs": 2,
+          "admittedOccurrences": 4
         },
         "solothurn-network": {
           "directedPairs": 2611,
-          "admittedOccurrences": 47628
+          "admittedOccurrences": 49041
+        },
+        "bern-official-413": {
+          "directedPairs": 10,
+          "admittedOccurrences": 238
+        },
+        "bern-official-450_S_b": {
+          "directedPairs": 10,
+          "admittedOccurrences": 58
         },
         "osm-road-inference": {
           "directedPairs": 824,

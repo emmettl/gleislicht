@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "asm": {
+    "sourceLine": "413",
+    "sourceOperator": "ASm",
+    "routeId": "91-11-M-j26-1",
+    "agencyId": "81",
+    "line": "S11",
+    "mode": "rail",
+    "sourceFile": "data/solothurn-sources/corridors/bern-413.json",
+    "sha256": "4f2b0e94dec7bd4dc15f53805591a565621a1234461b0bae3deb69edad902e1b",
+    "source": {
+      "schemaVersion": 1,
+      "sourceCrs": "EPSG:2056",
+      "coordinateModel": "original LV95 XY, no simplification; Z/M discarded only in derived geometry",
+      "sourceUrl": "https://geofiles.be.ch/geoportal/pub/download/OEVTP/oevtp.gpkg.zip",
+      "metadataUrl": "https://www.agi.dij.be.ch/de/start/geoportal/geodaten/detail.html?code=OEVTP&type=geoproduct",
+      "attribution": "Öffentlicher Verkehr © Amt für öffentlichen Verkehr und Verkehrskoordination des Kantons Bern",
+      "license": "Bern cantonal geodata terms 2026-01-20 (free use with attribution; no Creative Commons licence assigned)",
+      "termsFiles": [
+        "terms_of_use_de.pdf",
+        "terms_of_use_fr.pdf"
+      ],
+      "dataUpdated": "2026-01-01",
+      "packagePublished": "2026-07-09",
+      "acquiredAt": "2026-09-08T17:02:41.454390+00:00",
+      "archiveSha256": "4e2a4fcca08cc219c871d42c957753c09318ace2172fb3614c4fe71b20a4fe19",
+      "geopackageSha256": "de4c89d91f69a572dabe9fda7b14140da45fdfe016d45c6f5f900337b45b1e4d",
+      "boundary": {
+        "edition": "2026-01",
+        "sourceSha256": "1f122cb7a06f2d312a84b7c0a91116348ba907054d487f0a70b9d2302984e6fc",
+        "snapshotSha256": "b0bfb7d0d3d7357aaaec2de0335dfc1beb83274b2143d876260e86b227a41dd0",
+        "attribution": "© swisstopo",
+        "sourceUrl": "https://data.geo.admin.ch/ch.swisstopo.swissboundaries3d/swissboundaries3d_2026-01/swissboundaries3d_2026-01_2056_5728.gpkg.zip",
+        "termsUrl": "https://www.swisstopo.admin.ch/en/terms-of-use-free-geodata-and-geoservices"
+      }
+    },
+    "limits": {
+      "snapMetres": 120,
+      "detourRatio": 3,
+      "detourFloorMetres": 1500,
+      "alternativeSnapMetres": 5
+    },
+    "method": "Exact operator/line/route association to Bern feature 413. Original LV95 line graph; whole directed platform chain retained. No standard-gauge graph or invented connection."
+  },
+  "s29": {
+    "sourceLine": "450_S_b",
+    "sourceOperator": "SBB",
+    "routeId": "91-29-j26-1",
+    "agencyId": "11",
+    "line": "S29",
+    "mode": "rail",
+    "sourceFile": "data/solothurn-sources/corridors/bern-450_S_b.json",
+    "sha256": "6224b50080d4d806dd9beca66904c0911a6cb4ff2218e00c94295112e7272e3e",
+    "source": {
+      "schemaVersion": 1,
+      "sourceCrs": "EPSG:2056",
+      "coordinateModel": "original LV95 XY, no simplification; Z/M discarded only in derived geometry",
+      "sourceUrl": "https://geofiles.be.ch/geoportal/pub/download/OEVTP/oevtp.gpkg.zip",
+      "metadataUrl": "https://www.agi.dij.be.ch/de/start/geoportal/geodaten/detail.html?code=OEVTP&type=geoproduct",
+      "attribution": "Öffentlicher Verkehr © Amt für öffentlichen Verkehr und Verkehrskoordination des Kantons Bern",
+      "license": "Bern cantonal geodata terms 2026-01-20 (free use with attribution; no Creative Commons licence assigned)",
+      "termsFiles": [
+        "terms_of_use_de.pdf",
+        "terms_of_use_fr.pdf"
+      ],
+      "dataUpdated": "2026-01-01",
+      "packagePublished": "2026-07-09",
+      "acquiredAt": "2026-09-08T17:02:41.454390+00:00",
+      "archiveSha256": "4e2a4fcca08cc219c871d42c957753c09318ace2172fb3614c4fe71b20a4fe19",
+      "geopackageSha256": "de4c89d91f69a572dabe9fda7b14140da45fdfe016d45c6f5f900337b45b1e4d",
+      "boundary": {
+        "edition": "2026-01",
+        "sourceSha256": "1f122cb7a06f2d312a84b7c0a91116348ba907054d487f0a70b9d2302984e6fc",
+        "snapshotSha256": "b0bfb7d0d3d7357aaaec2de0335dfc1beb83274b2143d876260e86b227a41dd0",
+        "attribution": "© swisstopo",
+        "sourceUrl": "https://data.geo.admin.ch/ch.swisstopo.swissboundaries3d/swissboundaries3d_2026-01/swissboundaries3d_2026-01_2056_5728.gpkg.zip",
+        "termsUrl": "https://www.swisstopo.admin.ch/en/terms-of-use-free-geodata-and-geoservices"
+      }
+    },
+    "limits": {
+      "snapMetres": 120,
+      "detourRatio": 3,
+      "detourFloorMetres": 1500,
+      "alternativeSnapMetres": 5
+    },
+    "method": "Exact SBB S29 line association to Bern feature 450_S_b. Retains complete timetable calls including Aarau–Olten reversals; shortest paths on this official line remain inferred."
+  },
+  "sbb": {
+    "sourceDirectory": "data/solothurn-sources/corridors/sbb",
+    "sourceSha256": "c67745131e337136b47da452650f57c1c0dcc9a16f54fc659e6a0227f6fad030",
+    "limits": {
+      "stationAttachmentMetres": 100,
+      "detourRatio": 2,
+      "detourFloorMetres": 1500
+    },
+    "corridors": [
+      {
+        "id": "daeniken-schoenenwerd",
+        "agencyId": "11",
+        "routes": [
+          {
+            "routeId": "91-23-j26-1",
+            "line": "S23"
+          },
+          {
+            "routeId": "91-26-j26-1",
+            "line": "S26"
+          },
+          {
+            "routeId": "91-29-j26-1",
+            "line": "S29"
+          },
+          {
+            "routeId": "91-11-E-j26-1",
+            "line": "SN11"
+          },
+          {
+            "routeId": "91-6-W-j26-1",
+            "line": "RE6"
+          },
+          {
+            "routeId": "91-5F-Y-j26-1",
+            "line": "IC"
+          }
+        ],
+        "operatingPointIds": [
+          "8502111",
+          "8502112"
+        ],
+        "sourcePointCodes": [
+          "DK",
+          "SCOE"
+        ],
+        "features": [
+          [
+            540,
+            "DK",
+            "DKO",
+            45673.43,
+            46100
+          ],
+          [
+            540,
+            "DKO",
+            "SCOE",
+            46100,
+            48129.6
+          ]
+        ]
+      }
+    ],
+    "method": "Only the two complete, graphically sampled SBB segments DK–DKO–SCOE, in either directed call order. Exact operating-point IDs and six reviewed original route identities. All full seasonal contexts must agree. No schematic records or arbitrary graph stitching."
+  },
+  "admission": "These corridors supply only previously unmatched supplement pairs. Cantonal and already successful supplementary paths remain unchanged. No current running-track or diversion certification."
+}
