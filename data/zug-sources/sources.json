@@ -1,0 +1,447 @@
+{
+  "sources": [
+    {
+      "id": "zg-download",
+      "url": "https://services.geo.zg.ch/datarepo/Buslinien/data.zip",
+      "checkedAt": "2026-09-08T16:54:06.746373+00:00",
+      "curlExitCode": 0,
+      "httpStatus": 200,
+      "resolvedUrl": "https://services.geo.zg.ch/datarepo/Buslinien/data.zip",
+      "contentType": "application/zip",
+      "bytes": 785045,
+      "sha256": "bcc43b676a4459a6cfa6b330fbe24dd7d66a84238aee4dd9e72a9b95628337a5",
+      "bodyKind": "zip",
+      "entries": [
+        {
+          "name": "Geoinformationen nutzen.url",
+          "bytes": 94
+        },
+        {
+          "name": "dxf/",
+          "bytes": 0
+        },
+        {
+          "name": "dxf/Buslinien.dxf",
+          "bytes": 792322
+        },
+        {
+          "name": "dxf/Buslinien_Test.dxf",
+          "bytes": 813402
+        },
+        {
+          "name": "geopackage/",
+          "bytes": 0
+        },
+        {
+          "name": "geopackage/Buslinien.gpkg",
+          "bytes": 442368
+        },
+        {
+          "name": "interlis/",
+          "bytes": 0
+        },
+        {
+          "name": "interlis/buslinien.xtf",
+          "bytes": 1070317
+        },
+        {
+          "name": "interlis/models.geo.zg.ch.url",
+          "bytes": 129
+        },
+        {
+          "name": "shapefile/",
+          "bytes": 0
+        },
+        {
+          "name": "shapefile/Buslinien.cpg",
+          "bytes": 5
+        },
+        {
+          "name": "shapefile/Buslinien.dbf",
+          "bytes": 46648
+        },
+        {
+          "name": "shapefile/Buslinien.prj",
+          "bytes": 495
+        },
+        {
+          "name": "shapefile/Buslinien.shp",
+          "bytes": 282348
+        },
+        {
+          "name": "shapefile/Buslinien.shx",
+          "bytes": 1500
+        }
+      ],
+      "dbfTables": [
+        {
+          "name": "shapefile/Buslinien.dbf",
+          "recordCount": 175,
+          "fields": [
+            {
+              "name": "t_id",
+              "type": "N",
+              "length": 11
+            },
+            {
+              "name": "liniennumm",
+              "type": "C",
+              "length": 254
+            }
+          ],
+          "sampleProperties": [
+            {
+              "t_id": "0",
+              "liniennumm": "602,603,605,611,612,613,614"
+            },
+            {
+              "t_id": "1",
+              "liniennumm": "609"
+            }
+          ],
+          "limits": "DBF properties only; shapefile coordinates are not decoded."
+        }
+      ],
+      "responseHeaders": [
+        "etag: \"68cbf70b-bfa95\"",
+        "last-modified: Thu, 18 Sep 2025 12:11:55 GMT"
+      ],
+      "expectedBodyReceived": true,
+      "geoPackages": [
+        {
+          "name": "geopackage/Buslinien.gpkg",
+          "tables": [
+            {
+              "name": "Buslinien",
+              "dataType": "features",
+              "srsId": 2056,
+              "bounds": [
+                2664708.904007756,
+                1207005.808804268,
+                2692926.080009879,
+                1233277.013997022
+              ],
+              "recordCount": 175,
+              "fields": [
+                {
+                  "name": "id",
+                  "type": "INTEGER"
+                },
+                {
+                  "name": "geom",
+                  "type": "LINESTRING"
+                },
+                {
+                  "name": "t_id",
+                  "type": "MEDIUMINT"
+                },
+                {
+                  "name": "liniennummer",
+                  "type": "TEXT"
+                }
+              ],
+              "geometryColumns": [
+                [
+                  "geom",
+                  "LINESTRING",
+                  2056,
+                  0,
+                  0
+                ]
+              ],
+              "sampleProperties": [
+                {
+                  "id": 1,
+                  "t_id": 0,
+                  "liniennummer": "602,603,605,611,612,613,614"
+                },
+                {
+                  "id": 2,
+                  "t_id": 1,
+                  "liniennummer": "609"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "file": "buslinien.zip"
+    },
+    {
+      "id": "zg-wfs",
+      "url": "https://services.geo.zg.ch/ows/buslinien?REQUEST=GetCapabilities&SERVICE=WFS",
+      "checkedAt": "2026-09-08T16:54:07.507634+00:00",
+      "curlExitCode": 0,
+      "httpStatus": 200,
+      "resolvedUrl": "https://services.geo.zg.ch/ows/buslinien?REQUEST=GetCapabilities&SERVICE=WFS",
+      "contentType": "text/xml; charset=utf-8",
+      "bytes": 18237,
+      "sha256": "4d4e63cc3552f847bb36f580fb185c734007ffd8e88d69e795c0ad362bbda842",
+      "bodyKind": "xml",
+      "rootElement": "{http://www.opengis.net/wfs}WFS_Capabilities",
+      "serviceExceptions": [],
+      "layers": [
+        {
+          "Name": "zg_buslinie_612",
+          "Title": "Linie 612",
+          "DefaultSRS": "EPSG:2056"
+        },
+        {
+          "Name": "zg_buslinie_602",
+          "Title": "Linie 602",
+          "DefaultSRS": "EPSG:2056"
+        },
+        {
+          "Name": "zg_buslinie_603",
+          "Title": "Linie 603",
+          "DefaultSRS": "EPSG:2056"
+        },
+        {
+          "Name": "zg_buslinie_604",
+          "Title": "Linie 604",
+          "DefaultSRS": "EPSG:2056"
+        },
+        {
+          "Name": "zg_buslinie_605",
+          "Title": "Linie 605",
+          "DefaultSRS": "EPSG:2056"
+        },
+        {
+          "Name": "zg_buslinie_606",
+          "Title": "Linie 606",
+          "DefaultSRS": "EPSG:2056"
+        },
+        {
+          "Name": "zg_buslinie_607",
+          "Title": "Linie 607",
+          "DefaultSRS": "EPSG:2056"
+        },
+        {
+          "Name": "zg_buslinie_609",
+          "Title": "Linie 609",
+          "DefaultSRS": "EPSG:2056"
+        },
+        {
+          "Name": "zg_buslinie_610",
+          "Title": "Linie 610",
+          "DefaultSRS": "EPSG:2056"
+        },
+        {
+          "Name": "zg_buslinie_611",
+          "Title": "Linie 611",
+          "DefaultSRS": "EPSG:2056"
+        },
+        {
+          "Name": "zg_buslinie_613",
+          "Title": "Linie 613",
+          "DefaultSRS": "EPSG:2056"
+        },
+        {
+          "Name": "zg_buslinie_614",
+          "Title": "Linie 614",
+          "DefaultSRS": "EPSG:2056"
+        },
+        {
+          "Name": "zg_buslinie_616",
+          "Title": "Linie 616",
+          "DefaultSRS": "EPSG:2056"
+        },
+        {
+          "Name": "zg_buslinie_626",
+          "Title": "Linie 626",
+          "DefaultSRS": "EPSG:2056"
+        },
+        {
+          "Name": "zg_buslinie_528",
+          "Title": "Linie 528",
+          "DefaultSRS": "EPSG:2056"
+        },
+        {
+          "Name": "zg_buslinie_631",
+          "Title": "Linie 631",
+          "DefaultSRS": "EPSG:2056"
+        },
+        {
+          "Name": "zg_buslinie_634",
+          "Title": "Linie 634",
+          "DefaultSRS": "EPSG:2056"
+        },
+        {
+          "Name": "zg_buslinie_636",
+          "Title": "Linie 636",
+          "DefaultSRS": "EPSG:2056"
+        },
+        {
+          "Name": "zg_buslinie_641",
+          "Title": "Linie 641",
+          "DefaultSRS": "EPSG:2056"
+        },
+        {
+          "Name": "zg_buslinie_642",
+          "Title": "Linie 642",
+          "DefaultSRS": "EPSG:2056"
+        },
+        {
+          "Name": "zg_buslinie_643",
+          "Title": "Linie 643",
+          "DefaultSRS": "EPSG:2056"
+        },
+        {
+          "Name": "zg_buslinie_648",
+          "Title": "Linie 648",
+          "DefaultSRS": "EPSG:2056"
+        },
+        {
+          "Name": "zg_buslinie_651",
+          "Title": "Linie 651",
+          "DefaultSRS": "EPSG:2056"
+        },
+        {
+          "Name": "zg_buslinie_653",
+          "Title": "Linie 653",
+          "DefaultSRS": "EPSG:2056"
+        },
+        {
+          "Name": "zg_buslinie_73",
+          "Title": "Linie 73",
+          "DefaultSRS": "EPSG:2056"
+        },
+        {
+          "Name": "zg_buslinie_110",
+          "Title": "Linie 110",
+          "DefaultSRS": "EPSG:2056"
+        },
+        {
+          "Name": "zg_buslinie_632",
+          "Title": "Linie 632",
+          "DefaultSRS": "EPSG:2056"
+        },
+        {
+          "Name": "zg_buslinie_601",
+          "Title": "Linie 601",
+          "DefaultSRS": "EPSG:2056"
+        },
+        {
+          "Name": "zg_buslinien_280",
+          "Title": "Linie 280",
+          "DefaultSRS": "EPSG:2056"
+        },
+        {
+          "Name": "zg_buslinien_tooltip",
+          "Title": "Buslinien Tooltip",
+          "DefaultSRS": "EPSG:2056"
+        }
+      ],
+      "responseHeaders": [],
+      "expectedBodyReceived": true,
+      "serviceMetadata": [
+        {
+          "key": "Fees",
+          "value": "conditions unknown"
+        },
+        {
+          "key": "AccessConstraints",
+          "value": "None"
+        }
+      ],
+      "layerCount": 30,
+      "file": "capabilities.xml"
+    },
+    {
+      "id": "zg-terms",
+      "url": "https://zg.ch/de/planen-bauen/geoinformation/geoinformationen-nutzen/nutzungsbedingungen",
+      "checkedAt": "2026-09-08T17:01:20.048298+00:00",
+      "curlExitCode": 0,
+      "httpStatus": 200,
+      "resolvedUrl": "https://zg.ch/de/planen-bauen/geoinformation/geoinformationen-nutzen/nutzungsbedingungen",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 317097,
+      "sha256": "b1d66c59261b8034261764e209771c7a089125fc82ab7ab0f347d909b5a9e5f0",
+      "bodyKind": "html",
+      "title": "Datenmodellablage",
+      "responseHeaders": [],
+      "expectedBodyReceived": true,
+      "file": "terms.html"
+    },
+    {
+      "id": "zg-catalogue",
+      "url": "https://zg.ch/de/planen-bauen/geoinformation/geoinformationen-nutzen/geoinformationen-von-a-bis-z",
+      "checkedAt": "2026-09-08T16:54:07.158952+00:00",
+      "curlExitCode": 0,
+      "httpStatus": 200,
+      "resolvedUrl": "https://zg.ch/de/planen-bauen/geoinformation/geoinformationen-nutzen/geoinformationen-von-a-bis-z",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 911074,
+      "sha256": "bc2fc741a11c6791c57eced119a608383164df1955e3fff21f8788b0b502f1c1",
+      "bodyKind": "html",
+      "title": "Geoinformationen von A bis Z",
+      "responseHeaders": [],
+      "expectedBodyReceived": true,
+      "file": "catalogue.html"
+    },
+    {
+      "file": "wfs.gml",
+      "url": "https://services.geo.zg.ch/ows/buslinien?SERVICE=WFS&VERSION=1.1.0&REQUEST=GetFeature&TYPENAME=zg_buslinien_tooltip&SRSNAME=EPSG:2056",
+      "retrievedAt": "2026-09-08T17:55:36.913867+00:00",
+      "sha256": "11c14b2ba23dea2711b9ae8a5cdddfebeef01f0dbbbfa1dae6ab8971802595ac",
+      "bytes": 515154
+    },
+    {
+      "file": "wfs-hits.xml",
+      "url": "https://services.geo.zg.ch/ows/buslinien?SERVICE=WFS&VERSION=1.1.0&REQUEST=GetFeature&TYPENAME=zg_buslinien_tooltip&RESULTTYPE=hits",
+      "retrievedAt": "2026-09-08T17:56:31.683312+00:00",
+      "sha256": "18003f3bd8572fd678620ee47f713ea82a47c36599f30606ef5ae67ecc50434f",
+      "bytes": 695
+    },
+    {
+      "file": "zvb-2026.html",
+      "url": "https://www.zvb.ch/fahrplan/fahrplan-zvb-2026/",
+      "retrievedAt": "2026-09-08T17:56:32.119616+00:00",
+      "sha256": "4b4d7c18ba0dc4193be0a9d64a7811531968bc3190b83a95e310133c667cab87",
+      "bytes": 161635
+    },
+    {
+      "file": "boundary.json",
+      "url": "https://api3.geo.admin.ch/rest/services/api/MapServer/ch.swisstopo.swissboundaries3d-kanton-flaeche.fill/9?sr=4326&geometryFormat=geojson",
+      "retrievedAt": "2026-09-08T17:55:32.392713+00:00",
+      "sha256": "6e0aaab028069c0843c8094e6d232f5a913d5324643a3307c59f3a09ebccedc2",
+      "bytes": 68235
+    },
+    {
+      "file": "municipality-rows.json.gz",
+      "sha256": "80df1f869bda9b21ad0183d04e49411bf9cad9e16beb7eea1848f0c7641d80bd",
+      "bytes": 145723,
+      "vintage": "2026-01",
+      "attribution": "© swisstopo",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissboundaries3d/swissboundaries3d_2026-01/swissboundaries3d_2026-01_2056_5728.gpkg.zip"
+    },
+    {
+      "file": "bus.geojson",
+      "sha256": "bb183567a70481624c9a952b4c7251c3941655e13e7f48ff0ae5dd61cb7cccf1",
+      "bytes": 669443,
+      "derivedFrom": "buslinien.zip"
+    },
+    {
+      "file": "municipalities.geojson",
+      "sha256": "c7360f0141fab21e0cd2368bc19a5d28f170624e8724c05f850228b3cc70d768",
+      "bytes": 388914,
+      "derivedFrom": "municipality-rows.json.gz"
+    }
+  ],
+  "schemaVersion": 1,
+  "archiveLastModified": "2025-09-18T12:11:55Z",
+  "geopackageLastChange": "2024-03-26T15:27:03.260Z",
+  "attribution": "Quelle: GIS Kanton Zug",
+  "license": "Free commercial/noncommercial use with mandatory source credit; no CC licence assigned",
+  "sourceCrs": "EPSG:2056",
+  "outputCrs": "EPSG:4326",
+  "transformation": "swisstopo approximate polynomial; no simplification; full floating precision, graph vertex identity rounded to 7 decimal places",
+  "comparison": {
+    "archiveFeatures": 175,
+    "wfsFeatures": 175,
+    "equalWithinOneMillimetre": true,
+    "maximumCoordinateDeltaMetres": 0.0009563679341226816,
+    "comparison": "Every t_id, exact comma-separated line label, ordered vertex count and each LV95 ordinate, with 1 mm tolerance for export precision. WFS feature IDs differ from GeoPackage IDs.",
+    "vintageConclusion": "Current WFS repeats the archive geometry within export precision. Neither a 2026 alignment date nor current diversions are established."
+  }
+}

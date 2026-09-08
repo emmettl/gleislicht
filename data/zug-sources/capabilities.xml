@@ -1,0 +1,541 @@
+<WFS_Capabilities xmlns:ogc="http://www.opengis.net/ogc" xmlns:ows="http://www.opengis.net/ows" xsi:schemaLocation="http://www.opengis.net/wfs http://schemas.opengis.net/wfs/1.1.0/wfs.xsd" xmlns:gml="http://www.opengis.net/gml" updateSequence="0" xmlns="http://www.opengis.net/wfs" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.1.0" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <ows:ServiceIdentification>
+  <ows:Title>Buslinien</ows:Title>
+  <ows:Abstract><![CDATA[Buslinien im Kanton Zug.]]></ows:Abstract>
+  <ows:Keywords>
+   <ows:Keyword>Verkehr</ows:Keyword>
+   <ows:Keyword>öffentlicher Verkehr</ows:Keyword>
+  </ows:Keywords>
+  <ows:ServiceType>WFS</ows:ServiceType>
+  <ows:ServiceTypeVersion>1.1.0</ows:ServiceTypeVersion>
+  <ows:Fees>conditions unknown</ows:Fees>
+  <ows:AccessConstraints>None</ows:AccessConstraints>
+ </ows:ServiceIdentification>
+ <ows:ServiceProvider>
+  <ows:ProviderName>Amt für Raum und Verkehr</ows:ProviderName>
+ </ows:ServiceProvider>
+ <ows:OperationsMetadata>
+  <ows:Operation name="GetCapabilities">
+   <ows:DCP>
+    <ows:HTTP>
+     <ows:Get xlink:href="https://services.geo.zg.ch/ows/buslinien"/>
+     <ows:Post xlink:href="https://services.geo.zg.ch/ows/buslinien"/>
+    </ows:HTTP>
+   </ows:DCP>
+   <ows:Parameter name="service">
+    <ows:Value>WFS</ows:Value>
+   </ows:Parameter>
+   <ows:Parameter name="AcceptVersions">
+    <ows:Value>1.1.0</ows:Value>
+    <ows:Value>1.0.0</ows:Value>
+   </ows:Parameter>
+   <ows:Parameter name="AcceptFormats">
+    <ows:Value>text/xml</ows:Value>
+   </ows:Parameter>
+  </ows:Operation>
+  <ows:Operation name="DescribeFeatureType">
+   <ows:DCP>
+    <ows:HTTP>
+     <ows:Get xlink:href="https://services.geo.zg.ch/ows/buslinien"/>
+     <ows:Post xlink:href="https://services.geo.zg.ch/ows/buslinien"/>
+    </ows:HTTP>
+   </ows:DCP>
+   <ows:Parameter name="outputFormat">
+    <ows:Value>XMLSCHEMA</ows:Value>
+    <ows:Value>text/xml; subtype=gml/2.1.2</ows:Value>
+    <ows:Value>text/xml; subtype=gml/3.1.1</ows:Value>
+   </ows:Parameter>
+  </ows:Operation>
+  <ows:Operation name="GetFeature">
+   <ows:DCP>
+    <ows:HTTP>
+     <ows:Get xlink:href="https://services.geo.zg.ch/ows/buslinien"/>
+     <ows:Post xlink:href="https://services.geo.zg.ch/ows/buslinien"/>
+    </ows:HTTP>
+   </ows:DCP>
+   <ows:Parameter name="outputFormat">
+    <ows:Value>text/xml; subtype=gml/2.1.2</ows:Value>
+    <ows:Value>text/xml; subtype=gml/3.1.1</ows:Value>
+    <ows:Value>application/vnd.geo+json</ows:Value>
+   </ows:Parameter>
+   <ows:Parameter name="resultType">
+    <ows:Value>results</ows:Value>
+    <ows:Value>hits</ows:Value>
+   </ows:Parameter>
+  </ows:Operation>
+  <ows:Operation name="Transaction">
+   <ows:DCP>
+    <ows:HTTP>
+     <ows:Get xlink:href="https://services.geo.zg.ch/ows/buslinien"/>
+     <ows:Post xlink:href="https://services.geo.zg.ch/ows/buslinien"/>
+    </ows:HTTP>
+   </ows:DCP>
+   <ows:Parameter name="inputFormat">
+    <ows:Value>text/xml; subtype=gml/2.1.2</ows:Value>
+    <ows:Value>text/xml; subtype=gml/3.1.1</ows:Value>
+    <ows:Value>application/vnd.geo+json</ows:Value>
+   </ows:Parameter>
+  </ows:Operation>
+ </ows:OperationsMetadata>
+ <FeatureTypeList>
+  <Operations>
+   <Operation>Query</Operation>
+  </Operations>
+  <FeatureType>
+   <Name>zg_buslinie_612</Name>
+   <Title>Linie 612</Title>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.512871 47.134129</ows:LowerCorner>
+    <ows:UpperCorner>8.612905 47.178787</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>zg_buslinie_602</Name>
+   <Title>Linie 602</Title>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.513494 47.165243</ows:LowerCorner>
+    <ows:UpperCorner>8.604551 47.183027</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>zg_buslinie_603</Name>
+   <Title>Linie 603</Title>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.513191 47.150818</ows:LowerCorner>
+    <ows:UpperCorner>8.539207 47.201304</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>zg_buslinie_604</Name>
+   <Title>Linie 604</Title>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.514351 47.171756</ows:LowerCorner>
+    <ows:UpperCorner>8.532537 47.20204</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>zg_buslinie_605</Name>
+   <Title>Linie 605</Title>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.494984 47.092574</ows:LowerCorner>
+    <ows:UpperCorner>8.52244 47.173234</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>zg_buslinie_606</Name>
+   <Title>Linie 606</Title>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.456103 47.167977</ows:LowerCorner>
+    <ows:UpperCorner>8.517549 47.197701</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>zg_buslinie_607</Name>
+   <Title>Linie 607</Title>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.473908 47.167977</ows:LowerCorner>
+    <ows:UpperCorner>8.517403 47.190284</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>zg_buslinie_609</Name>
+   <Title>Linie 609</Title>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.609588 47.078437</ows:LowerCorner>
+    <ows:UpperCorner>8.643815 47.135161</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>zg_buslinie_610</Name>
+   <Title>Linie 610</Title>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.610799 47.133591</ows:LowerCorner>
+    <ows:UpperCorner>8.663792 47.145533</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>zg_buslinie_611</Name>
+   <Title>Linie 611</Title>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.503873 47.142621</ows:LowerCorner>
+    <ows:UpperCorner>8.517263 47.18304</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>zg_buslinie_613</Name>
+   <Title>Linie 613</Title>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.513494 47.165967</ows:LowerCorner>
+    <ows:UpperCorner>8.530586 47.173076</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>zg_buslinie_614</Name>
+   <Title>Linie 614</Title>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.513221 47.152301</ows:LowerCorner>
+    <ows:UpperCorner>8.53661 47.185415</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>zg_buslinie_616</Name>
+   <Title>Linie 616</Title>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.474345 47.171896</ows:LowerCorner>
+    <ows:UpperCorner>8.517549 47.197539</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>zg_buslinie_626</Name>
+   <Title>Linie 626</Title>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.512781 47.095885</ows:LowerCorner>
+    <ows:UpperCorner>8.523202 47.105514</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>zg_buslinie_528</Name>
+   <Title>Linie 528</Title>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.420269 47.009348</ows:LowerCorner>
+    <ows:UpperCorner>8.48612 47.152237</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>zg_buslinie_631</Name>
+   <Title>Linie 631</Title>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.523052 47.193187</ows:LowerCorner>
+    <ows:UpperCorner>8.576882 47.217797</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>zg_buslinie_634</Name>
+   <Title>Linie 634</Title>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.521864 47.134129</ows:LowerCorner>
+    <ows:UpperCorner>8.613302 47.196755</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>zg_buslinie_636</Name>
+   <Title>Linie 636</Title>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.47808 47.184897</ows:LowerCorner>
+    <ows:UpperCorner>8.526425 47.197942</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>zg_buslinie_641</Name>
+   <Title>Linie 641</Title>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.425975 47.168843</ows:LowerCorner>
+    <ows:UpperCorner>8.458066 47.180915</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>zg_buslinie_642</Name>
+   <Title>Linie 642</Title>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.435418 47.177833</ows:LowerCorner>
+    <ows:UpperCorner>8.469635 47.225013</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>zg_buslinie_643</Name>
+   <Title>Linie 643</Title>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.429774 47.177918</ows:LowerCorner>
+    <ows:UpperCorner>8.459771 47.212936</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>zg_buslinie_648</Name>
+   <Title>Linie 648</Title>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.427618 47.141764</ows:LowerCorner>
+    <ows:UpperCorner>8.456283 47.178189</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>zg_buslinie_651</Name>
+   <Title>Linie 651</Title>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.422642 47.133287</ows:LowerCorner>
+    <ows:UpperCorner>8.445232 47.181013</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>zg_buslinie_653</Name>
+   <Title>Linie 653</Title>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.429394 47.068741</ows:LowerCorner>
+    <ows:UpperCorner>8.466279 47.141626</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>zg_buslinie_73</Name>
+   <Title>Linie 73</Title>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.430415 47.124074</ows:LowerCorner>
+    <ows:UpperCorner>8.445584 47.141626</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>zg_buslinie_110</Name>
+   <Title>Linie 110</Title>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.291386 47.12096</ows:LowerCorner>
+    <ows:UpperCorner>8.431456 47.166599</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>zg_buslinie_632</Name>
+   <Title>Linie 632</Title>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.522629 47.172017</ows:LowerCorner>
+    <ows:UpperCorner>8.605084 47.207361</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>zg_buslinie_601</Name>
+   <Title>Linie 601</Title>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.51391 47.134129</ows:LowerCorner>
+    <ows:UpperCorner>8.613155 47.190159</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>zg_buslinien_280</Name>
+   <Title>Linie 280</Title>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.498901 47.195057</ows:LowerCorner>
+    <ows:UpperCorner>8.551859 47.245524</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>zg_buslinien_tooltip</Name>
+   <Title>Buslinien Tooltip</Title>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.28962 47.007596</ows:LowerCorner>
+    <ows:UpperCorner>8.66606 47.247241</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+ </FeatureTypeList>
+ <ogc:Filter_Capabilities>
+  <ogc:Spatial_Capabilities>
+   <ogc:GeometryOperands>
+    <ogc:GeometryOperand>gml:Point</ogc:GeometryOperand>
+    <ogc:GeometryOperand>gml:LineString</ogc:GeometryOperand>
+    <ogc:GeometryOperand>gml:Polygon</ogc:GeometryOperand>
+    <ogc:GeometryOperand>gml:Envelope</ogc:GeometryOperand>
+   </ogc:GeometryOperands>
+   <ogc:SpatialOperators>
+    <ogc:SpatialOperator name="Equals"/>
+    <ogc:SpatialOperator name="Disjoint"/>
+    <ogc:SpatialOperator name="Touches"/>
+    <ogc:SpatialOperator name="Within"/>
+    <ogc:SpatialOperator name="Overlaps"/>
+    <ogc:SpatialOperator name="Crosses"/>
+    <ogc:SpatialOperator name="Intersects"/>
+    <ogc:SpatialOperator name="Contains"/>
+    <ogc:SpatialOperator name="BBOX"/>
+   </ogc:SpatialOperators>
+  </ogc:Spatial_Capabilities>
+  <ogc:Scalar_Capabilities>
+   <ogc:LogicalOperators/>
+   <ogc:ComparisonOperators>
+    <ogc:ComparisonOperator>LessThan</ogc:ComparisonOperator>
+    <ogc:ComparisonOperator>GreaterThan</ogc:ComparisonOperator>
+    <ogc:ComparisonOperator>LessThanEqualTo</ogc:ComparisonOperator>
+    <ogc:ComparisonOperator>GreaterThanEqualTo</ogc:ComparisonOperator>
+    <ogc:ComparisonOperator>EqualTo</ogc:ComparisonOperator>
+    <ogc:ComparisonOperator>Like</ogc:ComparisonOperator>
+    <ogc:ComparisonOperator>Between</ogc:ComparisonOperator>
+   </ogc:ComparisonOperators>
+  </ogc:Scalar_Capabilities>
+  <ogc:Id_Capabilities>
+   <ogc:FID/>
+  </ogc:Id_Capabilities>
+ </ogc:Filter_Capabilities>
+</WFS_Capabilities>

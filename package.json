@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "type": "module",
-  "description": "Switzerland in motion — a cinematic railway visualisation built from Swiss open transport data.",
+  "description": "Switzerland in motion \u2014 a cinematic railway visualisation built from Swiss open transport data.",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
@@ -72,7 +72,12 @@
     "data:luzern:census": "node scripts/luzern-timetable.mjs",
     "data:luzern": "node scripts/build-luzern-region.mjs",
     "data:luzern:check": "node scripts/check-luzern-region.mjs",
-    "data:luzern:report": "node scripts/write-luzern-audit.mjs"
+    "data:luzern:report": "node scripts/write-luzern-audit.mjs",
+    "data:zug:sources": "python3 scripts/prepare-zug-sources.py",
+    "data:zug:census": "node scripts/zug-timetable.mjs",
+    "data:zug": "node scripts/build-zug-region.mjs data/zug-timetable.json.gz",
+    "data:zug:check": "node scripts/check-zug-region.mjs",
+    "data:zug:report": "node scripts/write-zug-audit.mjs"
   },
   "engines": {
     "node": ">=24.0.0"

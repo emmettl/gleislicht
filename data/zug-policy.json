@@ -1,0 +1,288 @@
+{
+  "schemaVersion": 1,
+  "dates": [
+    "2026-09-04",
+    "2026-09-06"
+  ],
+  "feedSha256": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+  "limits": {
+    "snapMetres": 120,
+    "detourRatio": 4.5,
+    "detourFloorMetres": 1200,
+    "alternativeSnapMetres": 5
+  },
+  "lineCrosswalk": {
+    "73": {
+      "agencyIds": [
+        "801"
+      ],
+      "reason": "Exact passenger-facing line and GTFS agency identity; complete ordered stop patterns independently tested.",
+      "evidence": "Pinned GTFS annual canton census; national PostAuto route record"
+    },
+    "110": {
+      "agencyIds": [
+        "801"
+      ],
+      "reason": "Exact passenger-facing line and GTFS agency identity; complete ordered stop patterns independently tested.",
+      "evidence": "Pinned GTFS annual canton census; national PostAuto route record"
+    },
+    "280": {
+      "agencyIds": [
+        "801"
+      ],
+      "reason": "Exact passenger-facing line and GTFS agency identity; complete ordered stop patterns independently tested.",
+      "evidence": "Pinned GTFS annual canton census; national PostAuto route record"
+    },
+    "528": {
+      "reason": "Historic source label 528 has no annual Zug-calling GTFS route. Do not silently rename it to 525/526 or borrow its corridor."
+    },
+    "601": {
+      "agencyIds": [
+        "839"
+      ],
+      "reason": "Exact passenger-facing line and GTFS agency identity; complete ordered stop patterns independently tested.",
+      "evidence": "Pinned GTFS annual canton census; https://www.zvb.ch/fahrplan/fahrplan-zvb-2026/"
+    },
+    "602": {
+      "agencyIds": [
+        "839"
+      ],
+      "reason": "Exact passenger-facing line and GTFS agency identity; complete ordered stop patterns independently tested.",
+      "evidence": "Pinned GTFS annual canton census; https://www.zvb.ch/fahrplan/fahrplan-zvb-2026/"
+    },
+    "603": {
+      "agencyIds": [
+        "839"
+      ],
+      "reason": "Exact passenger-facing line and GTFS agency identity; complete ordered stop patterns independently tested.",
+      "evidence": "Pinned GTFS annual canton census; https://www.zvb.ch/fahrplan/fahrplan-zvb-2026/"
+    },
+    "604": {
+      "agencyIds": [
+        "839"
+      ],
+      "reason": "Exact passenger-facing line and GTFS agency identity; complete ordered stop patterns independently tested.",
+      "evidence": "Pinned GTFS annual canton census; https://www.zvb.ch/fahrplan/fahrplan-zvb-2026/"
+    },
+    "605": {
+      "agencyIds": [
+        "839"
+      ],
+      "reason": "Exact passenger-facing line and GTFS agency identity; complete ordered stop patterns independently tested.",
+      "evidence": "Pinned GTFS annual canton census; https://www.zvb.ch/fahrplan/fahrplan-zvb-2026/"
+    },
+    "606": {
+      "agencyIds": [
+        "839"
+      ],
+      "reason": "Exact passenger-facing line and GTFS agency identity; complete ordered stop patterns independently tested.",
+      "evidence": "Pinned GTFS annual canton census; https://www.zvb.ch/fahrplan/fahrplan-zvb-2026/"
+    },
+    "607": {
+      "agencyIds": [
+        "839"
+      ],
+      "reason": "Exact passenger-facing line and GTFS agency identity; complete ordered stop patterns independently tested.",
+      "evidence": "Pinned GTFS annual canton census; https://www.zvb.ch/fahrplan/fahrplan-zvb-2026/"
+    },
+    "609": {
+      "agencyIds": [
+        "839"
+      ],
+      "reason": "Exact passenger-facing line and GTFS agency identity; complete ordered stop patterns independently tested.",
+      "evidence": "Pinned GTFS annual canton census; https://www.zvb.ch/fahrplan/fahrplan-zvb-2026/"
+    },
+    "610": {
+      "agencyIds": [
+        "839"
+      ],
+      "reason": "Exact passenger-facing line and GTFS agency identity; complete ordered stop patterns independently tested.",
+      "evidence": "Pinned GTFS annual canton census; https://www.zvb.ch/fahrplan/fahrplan-zvb-2026/"
+    },
+    "611": {
+      "agencyIds": [
+        "839"
+      ],
+      "reason": "Exact passenger-facing line and GTFS agency identity; complete ordered stop patterns independently tested.",
+      "evidence": "Pinned GTFS annual canton census; https://www.zvb.ch/fahrplan/fahrplan-zvb-2026/"
+    },
+    "612": {
+      "agencyIds": [
+        "839"
+      ],
+      "reason": "Exact passenger-facing line and GTFS agency identity; complete ordered stop patterns independently tested.",
+      "evidence": "Pinned GTFS annual canton census; https://www.zvb.ch/fahrplan/fahrplan-zvb-2026/"
+    },
+    "613": {
+      "agencyIds": [
+        "839"
+      ],
+      "reason": "Exact passenger-facing line and GTFS agency identity; complete ordered stop patterns independently tested.",
+      "evidence": "Pinned GTFS annual canton census; https://www.zvb.ch/fahrplan/fahrplan-zvb-2026/"
+    },
+    "614": {
+      "agencyIds": [
+        "839"
+      ],
+      "reason": "Exact passenger-facing line and GTFS agency identity; complete ordered stop patterns independently tested.",
+      "evidence": "Pinned GTFS annual canton census; https://www.zvb.ch/fahrplan/fahrplan-zvb-2026/"
+    },
+    "616": {
+      "agencyIds": [
+        "839"
+      ],
+      "reason": "Exact passenger-facing line and GTFS agency identity; complete ordered stop patterns independently tested.",
+      "evidence": "Pinned GTFS annual canton census; https://www.zvb.ch/fahrplan/fahrplan-zvb-2026/"
+    },
+    "626": {
+      "agencyIds": [
+        "839"
+      ],
+      "reason": "Exact passenger-facing line and GTFS agency identity; complete ordered stop patterns independently tested.",
+      "evidence": "Pinned GTFS annual canton census; https://www.zvb.ch/fahrplan/fahrplan-zvb-2026/"
+    },
+    "631": {
+      "agencyIds": [
+        "839"
+      ],
+      "reason": "Exact passenger-facing line and GTFS agency identity; complete ordered stop patterns independently tested.",
+      "evidence": "Pinned GTFS annual canton census; https://www.zvb.ch/fahrplan/fahrplan-zvb-2026/"
+    },
+    "632": {
+      "agencyIds": [
+        "839"
+      ],
+      "reason": "Exact passenger-facing line and GTFS agency identity; complete ordered stop patterns independently tested.",
+      "evidence": "Pinned GTFS annual canton census; https://www.zvb.ch/fahrplan/fahrplan-zvb-2026/"
+    },
+    "634": {
+      "agencyIds": [
+        "839"
+      ],
+      "reason": "Exact passenger-facing line and GTFS agency identity; complete ordered stop patterns independently tested.",
+      "evidence": "Pinned GTFS annual canton census; https://www.zvb.ch/fahrplan/fahrplan-zvb-2026/"
+    },
+    "636": {
+      "agencyIds": [
+        "839"
+      ],
+      "reason": "Exact passenger-facing line and GTFS agency identity; complete ordered stop patterns independently tested.",
+      "evidence": "Pinned GTFS annual canton census; https://www.zvb.ch/fahrplan/fahrplan-zvb-2026/"
+    },
+    "641": {
+      "agencyIds": [
+        "839"
+      ],
+      "reason": "Exact passenger-facing line and GTFS agency identity; complete ordered stop patterns independently tested.",
+      "evidence": "Pinned GTFS annual canton census; https://www.zvb.ch/fahrplan/fahrplan-zvb-2026/"
+    },
+    "642": {
+      "agencyIds": [
+        "839"
+      ],
+      "reason": "Exact passenger-facing line and GTFS agency identity; complete ordered stop patterns independently tested.",
+      "evidence": "Pinned GTFS annual canton census; https://www.zvb.ch/fahrplan/fahrplan-zvb-2026/"
+    },
+    "643": {
+      "agencyIds": [
+        "839"
+      ],
+      "reason": "Exact passenger-facing line and GTFS agency identity; complete ordered stop patterns independently tested.",
+      "evidence": "Pinned GTFS annual canton census; https://www.zvb.ch/fahrplan/fahrplan-zvb-2026/"
+    },
+    "648": {
+      "agencyIds": [
+        "839"
+      ],
+      "reason": "Exact passenger-facing line and GTFS agency identity; complete ordered stop patterns independently tested.",
+      "evidence": "Pinned GTFS annual canton census; https://www.zvb.ch/fahrplan/fahrplan-zvb-2026/"
+    },
+    "651": {
+      "agencyIds": [
+        "839"
+      ],
+      "reason": "Exact passenger-facing line and GTFS agency identity; complete ordered stop patterns independently tested.",
+      "evidence": "Pinned GTFS annual canton census; https://www.zvb.ch/fahrplan/fahrplan-zvb-2026/"
+    },
+    "653": {
+      "agencyIds": [
+        "839"
+      ],
+      "reason": "Exact passenger-facing line and GTFS agency identity; complete ordered stop patterns independently tested.",
+      "evidence": "Pinned GTFS annual canton census; https://www.zvb.ch/fahrplan/fahrplan-zvb-2026/"
+    }
+  },
+  "admission": "Admit only complete directed stop patterns on explicitly mapped operator/line geometry. All source calls, branches, call rules and border termini retained. Every pair must pass projection, connectivity and detour checks. Historic official corridor inference, not certified street directions, current diversions or observed movement. Three individually pinned sub-metre topology connectors are inferred and reported per pair and trip; no other gap filling.",
+  "scopeLimits": [
+    "Annual membership is complete for the pinned national timetable and official canton polygon, not proof of unrepresented real-world services.",
+    "Friday/Sunday plus preceding-day carry-in do not establish seasonal, holiday or year-round coverage.",
+    "No-stop through traffic is outside this passenger-service inventory.",
+    "Geometry admission covers only the mapped official Buslinien source. Rail, mountain, boat and unmatched bus routes remain in the coverage denominator.",
+    "The WFS matches the archive within 1 mm but proves no 2026 alignment validity. No realtime."
+  ],
+  "topologyJoins": {
+    "sourceSha256": "bb183567a70481624c9a952b4c7251c3941655e13e7f48ff0ae5dd61cb7cccf1",
+    "maximumMetres": 1,
+    "method": "Three explicitly reviewed sub-metre source endpoint-to-vertex discontinuities on identical line labels. Short straight connectors are inferred geometry, not publisher linework. No automatic proximity joins.",
+    "joins": [
+      {
+        "id": "riedmatt",
+        "lines": [
+          "606",
+          "607",
+          "616"
+        ],
+        "vertices": [
+          {
+            "featureId": 133,
+            "index": 0
+          },
+          {
+            "featureId": 72,
+            "index": 0
+          }
+        ],
+        "metres": 0.1273061078426732,
+        "reason": "Same-line source endpoint meets an existing vertex of a separate component less than one metre away. Explicit topology normalization; street direction is not certified."
+      },
+      {
+        "id": "birkenhalde",
+        "lines": [
+          "606",
+          "616",
+          "636"
+        ],
+        "vertices": [
+          {
+            "featureId": 80,
+            "index": 29
+          },
+          {
+            "featureId": 79,
+            "index": 20
+          }
+        ],
+        "metres": 0.6683951502819045,
+        "reason": "Same-line source endpoint meets an existing vertex of a separate component less than one metre away. Explicit topology normalization; street direction is not certified."
+      },
+      {
+        "id": "cham-bahnhof",
+        "lines": [
+          "641"
+        ],
+        "vertices": [
+          {
+            "featureId": 85,
+            "index": 142
+          },
+          {
+            "featureId": 149,
+            "index": 25
+          }
+        ],
+        "metres": 0.6021309837548492,
+        "reason": "Same-line source endpoint meets an existing vertex of a separate component less than one metre away. Explicit topology normalization; street direction is not certified."
+      }
+    ]
+  }
+}

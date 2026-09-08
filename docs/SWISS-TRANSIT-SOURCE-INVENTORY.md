@@ -95,7 +95,7 @@ Status refers to the strongest **local line-geometry evidence**, not the availab
 | [OW — Obwalden](#ow) | No line export verified | Passepartout |
 | [NW — Nidwalden](#nw) | Map layer only | Passepartout |
 | [GL — Glarus](#gl) | No line export verified | OSTWIND |
-| [ZG — Zug](#zg) | Download inspected | Tarifverbund Zug, Z-Pass |
+| [ZG — Zug](#zg) | Cantonal inventory and bus adapter; partial admission | Tarifverbund Zug, Z-Pass |
 | [FR — Fribourg / Freiburg](#fr) | Vector sample verified | Frimobil |
 | [SO — Solothurn](#so) | Download inspected | Libero, A-Welle, TNW |
 | [BS — Basel-Stadt](#bs) | Existing integration in part | TNW, Triregio, HochRhein Ticket |
@@ -252,11 +252,13 @@ Status refers to the strongest **local line-geometry evidence**, not the availab
 
 **Evidence:** Official Buslinien ZIP downloaded: Shapefile, GeoPackage, INTERLIS and DXF. GeoPackage has 175 LineString records in EPSG:2056 with id, t_id and liniennummer. WFS exposes line-specific layers. Future vehicle-length/planning layers are separate products.
 
-**Vintage:** Archive Last-Modified 18 September 2025; 2026 alignment validity is not proven by the current portal.
+**Vintage:** Archive Last-Modified 18 September 2025; internal GeoPackage last_change 26 March 2024. The full current WFS matches all 175 records within 1 mm but does not establish 2026 alignment validity.
 
 **Reuse:** Free commercial/noncommercial use with mandatory credit: Quelle: GIS Kanton Zug.
 
-**Next action:** Compare WFS and archive versions, normalise line labels and test operator/direction/branch joins against current ZVB services. Representative GTFS agencies: `11`, `82`, `158`, `186`, `801`, `839`.
+**Implementation:** [Zug study and full admission/exclusion audit](ZUG-STUDY.md) inventories 77 annual route records across nine agencies and all eleven municipalities, retains the source bytes, implements exact shared-segment line membership and tests every Friday/Sunday directed stop pattern. The regional feed admits 2,238 Friday trips and 1,249 Sunday trips; rail, mountain, boat and unresolved bus geometry remain explicit exclusions. Three pinned sub-metre topology joins are disclosed as inferred geometry. The census adds agencies `179`, `820` and `7231` to the representative survey list `11`, `82`, `158`, `186`, `801`, `839`.
+
+**Next action:** Resolve the documented route/branch gaps, verify current alignments and street directions, acquire mode-appropriate rail/water/mountain geometry, and validate seasonal/holiday dates before claiming complete cantonal motion coverage.
 
 **Checked references:** [zg-catalogue](https://zg.ch/de/planen-bauen/geoinformation/geoinformationen-nutzen/geoinformationen-von-a-bis-z), [zg-wfs](https://services.geo.zg.ch/ows/buslinien?REQUEST=GetCapabilities&SERVICE=WFS), [zg-download](https://services.geo.zg.ch/datarepo/Buslinien/data.zip), [zg-terms](https://zg.ch/de/planen-bauen/geoinformation/geoinformationen-nutzen/nutzungsbedingungen).
 
@@ -540,7 +542,7 @@ This ordering is engineering judgement based on the evidence above, not a measur
 
 1. **Complete the existing Basel and Lausanne audits on their own terms.** Their latest detailed reports take precedence over this broad survey for measured route/path admission. Keep Zürich and Genève source refreshes distinct from geographical expansion.
 2. **Implement reusable official-line adapters for Bern and Aargau; extend to Luzern.** Bern has line/operator attributes and documented reuse, Aargau adds direction and GO codes, and Luzern has explicit 2026 line identifiers. Do not assume their code systems are interchangeable. These are the most useful next full joins.
-3. **Evaluate Zug, Fribourg and Thurgau next.** Their geometry is more concrete than the earlier shortlist suggested. Zug needs archive/WFS date reconciliation; Fribourg needs full retrieval, licensing and timetable-field mapping; Thurgau needs a full GML export, current vintage and reuse confirmation.
+3. **Continue Zug coverage; evaluate Fribourg and Thurgau.** Zug's archive/WFS reconciliation and full-canton timetable inventory now support a partial regional bus feed; the [detailed audit](ZUG-STUDY.md) records remaining branches, modes and vintage limits. Fribourg needs full retrieval, licensing and timetable-field mapping; Thurgau needs a full GML export, current vintage and reuse confirmation.
 4. **Treat Solothurn as a network-routing adapter.** Its many segments do not imply thousands of route shapes. Establish connectivity and mode filtering, then measure stop-chain routing and the explicitly excluded night network.
 5. **Resolve distribution for SG, BL, VD, JU and NW.** SG has a documented data model and unresolved download/terms; BL advertises an export; VD has a priced order workflow; JU/NW expose transport maps. The canton entries record the precise next action without pretending acquisition succeeded.
 6. **Continue source discovery or measured road matching for UR, SZ, OW, GL, SH, AR, AI, TI, GR, VS and NE.** Prioritise a regional route inventory first so that an official source, operator contribution or inferred path can be judged against an explicit denominator.
