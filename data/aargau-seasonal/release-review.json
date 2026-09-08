@@ -1,5 +1,7 @@
 {
   "schemaVersion": 1,
+  "annualWitnessEdgeReviewSha256": "4617cbbff345c50990d3b0b55bcb983e6f5cef3fe8581293e1f3f108d2c9d72f",
+  "annualWitnessEdgePolicySha256": "5c407589e22452b2758a6f8fd833cb6f2569d0b9c0be6356931f112dcbd89ef0",
   "annualWitnessInventorySha256": "2fc02676fab68ad0137a5d4aa1141cf002eeba4c20abbf2c5b69cc313fce38fd",
   "annualWitnessGeometrySha256": "24dbbd03818066da85190c8c7a3104c3dea857825363659dd1f132b8ef032d21",
   "annualWitnessRailReviewSha256": "9b904a0d3cc45425f3b7e9d09c372d28e5c803b13ec3bae5e8fa694b41166311",
@@ -28,7 +30,7 @@
     "2026-10-03",
     "2026-10-10"
   ],
-  "unresolvedWitnessTemplateOccurrences": 7198,
+  "unresolvedWitnessTemplateOccurrences": 7187,
   "line344ReviewSha256": "237ef174a6749dc5cf4193b04944575287db0fb001eebc2be2fb2bca6b4dfc4c",
   "addedSimplonOccurrences": 2,
   "simplonPolicySha256": "11ef73dd48c490bf1be4e5bbb3c5b62522b8665077cf6c2d6e117a83d7232699",
@@ -6076,7 +6078,7 @@
   ],
   "remainingWork": [
     "Review AGIS/OSM bus disagreements against dated operator itineraries and legal direction evidence; the 30 m diagnostic alone cannot choose the correct source.",
-    "Resolve the remaining witness geometry: 11 rail template occurrences at Waldshut and Bern, and 7,187 bus template occurrences; then extract and independently validate full civil days before extending the release scope.",
+    "Resolve the remaining witness geometry: 7,187 bus template occurrences across 86 patterns; then extract and independently validate full civil days before extending the release scope.",
     "Disambiguate the repeated local hour before promoting 25 October as an elapsed-time feed.",
     "Integrate reviewed fixtures into application study selection, date loading and attribution, then run browser release checks."
   ]

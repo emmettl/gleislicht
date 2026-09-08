@@ -3,14 +3,14 @@ import { writeFile } from 'node:fs/promises'
 import { hashFile } from './inventory-aargau.mjs'
 import { readJson } from './aargau-seasonal.mjs'
 const root = 'data/aargau-witnesses'
-const inventory = await readJson(`${root}/inventory.json`), geometry = await readJson(`${root}/interlaken-review-summary.json`), verification = await readJson(`${root}/source-verification.json`)
+const inventory = await readJson(`${root}/inventory.json`), geometry = await readJson(`${root}/edge-review-summary.json`), verification = await readJson(`${root}/source-verification.json`)
 assert.equal(geometry.inventorySha256, await hashFile(`${root}/inventory.json`))
 assert.equal(geometry.sourceVerificationSha256, await hashFile(`${root}/source-verification.json`))
 assert.equal(geometry.geometryPatternsSha256, await hashFile(`${root}/${geometry.geometryPatternsFile}`))
 assert(verification.passed)
-assert.equal(geometry.policySha256, await hashFile('data/aargau-witness-interlaken-policy.json'))
-assert.equal(geometry.previousReviewSha256, await hashFile(`${root}/rail-review-summary.json`))
-assert.equal(geometry.previousPatternsSha256, await hashFile(`${root}/rail-review-patterns.json.gz`))
+assert.equal(geometry.policySha256, await hashFile('data/aargau-witness-edge-policy.json'))
+assert.equal(geometry.previousReviewSha256, await hashFile(`${root}/interlaken-review-summary.json`))
+assert.equal(geometry.previousPatternsSha256, await hashFile(`${root}/interlaken-review-patterns.json.gz`))
 const fmt = n => n.toLocaleString('en-US')
 const table = (headers, rows) => `| ${headers.join(' | ')} |\n| ${headers.map(() => '---').join(' | ')} |\n${rows.map(row => `| ${row.join(' | ')} |`).join('\n')}`
 const byRoute = new Map(geometry.routes.map(r => [r.routeId,r]))
@@ -50,7 +50,7 @@ ${table(['Route record', 'Witness civil date', 'Source service date', 'Source co
 
 ## Geometry still requiring evidence
 
-The separately scoped rail-review candidate is compatible with **${fmt(geometry.compatibleOccurrences)} of ${fmt(geometry.segmentOccurrences)} template segment occurrences**. **${geometry.fullyCompatiblePatterns} of ${geometry.directedPatterns} directed patterns** have complete geometry; **${fmt(geometry.missingOccurrences)} occurrences remain unresolved**. All journeys and their exact platform coordinates stay in the denominator. The [Interlaken follow-up audit](../data/aargau-witnesses/interlaken-review-summary.json) enumerates every missing pattern/pair with the original source and fallback rejection reasons. The [reviewed pattern detail](../data/aargau-witnesses/interlaken-review-patterns.json.gz) retains admitted paths and source evidence.
+The separately scoped rail-review candidate is compatible with **${fmt(geometry.compatibleOccurrences)} of ${fmt(geometry.segmentOccurrences)} template segment occurrences**. **${geometry.fullyCompatiblePatterns} of ${geometry.directedPatterns} directed patterns** have complete geometry; **${fmt(geometry.missingOccurrences)} occurrences remain unresolved**. All journeys and their exact platform coordinates stay in the denominator. The [final rail follow-up audit](../data/aargau-witnesses/edge-review-summary.json) enumerates every missing pattern/pair with the original source and fallback rejection reasons. The [reviewed pattern detail](../data/aargau-witnesses/edge-review-patterns.json.gz) retains admitted paths and source evidence.
 
 ${table(['Mode', 'Routes', 'Trip templates', 'Directed patterns', 'Compatible occurrences', 'Unresolved occurrences'],byMode)}
 
@@ -68,16 +68,38 @@ This supplies all **162** formerly rejected Interlaken occurrences across **59**
 
 The child node states validity from **13 December 2015**, edit date **27 May 2021**, and data date **6 July 2021**; the parent was edited **2 July 2021**. The archived raw node records are included in the policy, and the entire source file is hashed. The asset's **18 January 2025** update is distinct from these record dates. These records establish the source hierarchy, not current running-track validity. All paths remain explicitly inferred infrastructure geometry.
 
+## Bern platform 50 and Waldshut–Koblenz
+
+The [final finite rail policy](../data/aargau-witness-edge-policy.json) fills the remaining **11 rail occurrences in seven full directed patterns**, preserving all **3,790** previously accepted occurrences and every other assessment. All **194 rail patterns on 29 route records** now have complete infrastructure geometry. These additions stay in the separate annual-template candidate.
+
+**Correction:** the earlier witness audit called the Bern platform “49”. These four archived templates actually call **platform 50**, stop **ch:1:sloid:7000:55:50**. The GTFS source, calls and platform coordinates were always correct. The original September platform-49 rules remain valid for their own different calls.
+
+The archived [SBB station plan](../data/aargau-witness-edge-sources/sbb-bern-plan-2026-08.pdf), exterior view on page 3, places platforms 49/50 at the western end. Its printed date is **August 2026**, retrieved **8 September 2026**. It is station-layout evidence, not surveyed switches or proof of a June/July operating alignment; it postdates two reviewed templates. Attribution on the plan is **© OpenStreetMap © SBB 08/2026**.
+
+Platform 50 is **427.77 m** from the generic FOT station point, beyond the unchanged 350 m guard, but only **38.59 m** from the pinned western station curve **ch14uvag00087328**. The adapter projects onto that one curve within **75 m**, then splits its interior at **371.07 m** from the western source end. Both source endpoints, the station-centre node and all other edges retain their original geometry. The internal node and its synthetic lookup number **9990050** are explicitly marked as derived, never exported as a GTFS or source operating-point identity. The platform connector remains inferred.
+
+The Fribourg arrival must use the western half and cannot pass through Bern's centre; the subsequent departure uses the centre-side half. This prevents an artificial out-and-back path at an intermediate call. The other three reviewed approaches use only the centre-side half. Every old accepted segment in these full journeys remains unchanged.
+
+${table(['Route / course', 'Active source service dates', 'Newly compatible adjacent calls'],[
+ ['91-3A-Y-j26-1 / 31025','2026-06-30','Fribourg platform 2 → Bern 50; Bern 50 → Lenzburg 1'],
+ ['91-3A-Y-j26-1 / 31569','2026-07-14','Bern 50 → Olten 2'],
+ ['91-4U-Y-j26-1 / 2382','2026-08-16 and 2026-09-27','Burgdorf 2 → Bern 50; two distinct full upstream platform patterns'],
+ ['91-36-B-j26-1 / 22891, 22893, 22895','2026-04-13 through 2026-04-16','Waldshut 5 → Koblenz 4'],
+ ['91-36-B-j26-1 / 22884','2026-04-13 through 2026-04-16','Koblenz 3 → Waldshut 5'],
+ ['91-36-B-j26-1 / 22886, 22888','2026-04-13 through 2026-04-16','Koblenz 4 → Waldshut 5'],
+])}
+
+The six SBB **S36** templates reuse only **AGIS feature 364, part 0**, whose source identity remains **11 / rail / S41**, itinerary Waldshut–Koblenz–Bad Zurzach–Bülach–Winterthur. This is an explicit corridor association, not a global S41-to-S36 relabelling. All three full two-stop patterns project in their own directed order onto the same feature, including both Koblenz platforms; the sliced source distance is **3,275.13 m**, with maximum endpoint projection **55.97 m**, within the unchanged **120 m** guard. The source direction label is unspecified; coordinate order is forward for Waldshut departures and reversed for Koblenz departures.
+
+These April 13–16 templates lie outside the archived operator notice's **14 September–2 October** Koblenz–Waldshut closure. The notice does not certify April operation. The **23 April 2026** AGIS normal-line snapshot also postdates these templates. Accepted paths establish compatibility with the archived corridor, not the historical tracks actually used. The earlier date-scoped THURBO rule is unchanged and is not inherited by SBB.
+
+Every added path, directed source segment, projection, full platform chain and exact template digest is pinned. Changed calls, source courses, calendars, coordinates, daily-feed instances or relaxed limits cannot inherit this policy. Replay verifies both border directions, all ten exact templates, western and centre-side Bern approaches, and unchanged original source topology outside the one split curve.
+
 ## Remaining exclusions
 
-The **11 unresolved rail occurrences** remain explicit exclusions:
+There are **no unresolved rail occurrences** in this annual-template candidate. The **86 bus patterns on 16 routes** still have **7,187 unresolved template occurrences**. Dated operator and road evidence remains necessary for their replacement and special workings; all 86 remain incomplete.
 
-- **6 Waldshut–Koblenz occurrences**, SBB route 91-36-B-j26-1: foreign operating-point 8014474 has no exact FOT identity. Existing THURBO border rules do not transfer to this route identity or its dates.
-- **5 Bern platform 49 occurrences**, routes 91-3A-Y-j26-1 and 91-4U-Y-j26-1: the source platform is **427.8 m** from the FOT station point, beyond the unchanged 350 m limit. The earlier date-scoped Bern platform fixes are not inherited.
-
-The **86 bus patterns on 16 routes** still have **7,187 unresolved template occurrences**. Dated operator and road evidence remains necessary for their replacement and special workings. Together with the rail exclusions, **93 patterns** remain incomplete.
-
-This candidate uses the existing AGIS and OSM baseline plus the exact-template FOT and Interlaken hierarchy policies. The September border/platform rules, twelve-date seasonal rules, Simplon journeys and bus alignment corrections retain their exact date scopes and are not applied here. In particular, a witness during a planned disruption does not establish that a normal-line shape is the replacement itinerary. New replacement-bus routes need dated operator and road evidence; the two remaining rail failure groups need scoped source evidence before filling their gaps.
+This candidate uses the existing AGIS and OSM baseline plus exact-template FOT, Interlaken hierarchy, Bern projection and Waldshut corridor policies. The September border/platform rules, twelve-date seasonal rules, Simplon journeys and bus alignment corrections retain their exact date scopes and are not applied here. In particular, a witness during a planned disruption does not establish that a normal-line shape is the replacement itinerary. New replacement-bus routes need dated operator and road evidence.
 
 Source geometry keeps its existing dates and limitations: **AGIS 23 April 2026**, normal timetable only; FOT catalogue **6 July 2021**, asset update **18 January 2025**, current validity unconfirmed; OSM snapshots and routing evidence remain pinned by the referenced cache/source hashes. Required attribution remains **Timetable: opentransportdata.swiss**, **Daten des Kantons Aargau**, **© swisstopo**, **© OpenStreetMap contributors; ODbL-1.0**, and the original FOT attribution recorded in the machine audit.
 
@@ -93,9 +115,11 @@ node scripts/prepare-aargau-witness-rail.mjs
 node scripts/review-aargau-witness-rail.mjs
 node scripts/prepare-aargau-witness-interlaken.mjs
 node scripts/review-aargau-witness-interlaken.mjs
+node scripts/prepare-aargau-witness-edges.mjs
+node scripts/review-aargau-witness-edges.mjs
 node scripts/document-aargau-witnesses.mjs
 python3 scripts/aargau-witnesses.test.py
-npx vitest run scripts/aargau-witness-interlaken.test.mjs scripts/aargau-witness-rail.test.mjs scripts/aargau-rail-geometry.test.mjs
+npx vitest run scripts/aargau-witness-edges.test.mjs scripts/aargau-witness-interlaken.test.mjs scripts/aargau-witness-rail.test.mjs scripts/aargau-rail-geometry.test.mjs
 # Append --check to each inventory, verification, audit or documentation command to replay without rewriting.
 \`\`\`
 `

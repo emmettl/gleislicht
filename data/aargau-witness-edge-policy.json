@@ -1,0 +1,1674 @@
+{
+  "schemaVersion": 1,
+  "checkedOn": "2026-09-08",
+  "scope": "Offline annual witness templates only. Seven exact full patterns: five previously missing Bern platform-50 occurrences and six April SBB S36 border occurrences. All prior geometry, original GTFS calls, coordinates and calendars preserved. Infrastructure compatibility only, not an operating-date or running-track certification.",
+  "files": {
+    "data/aargau-witness-interlaken-policy.json": "084d7606f7c6f21fda38a4a07014ead2e904ba9070bcbf63861634cbe2a01068",
+    "data/aargau-witnesses/interlaken-review-summary.json": "97422f3f44b69fbc52a6d3798af2a99181eefc1778a0beb922fdaeadc91260b2",
+    "data/aargau-witnesses/interlaken-review-patterns.json.gz": "096e18cec2e9b7ca684c4a688878ee4303101cbef6fbaedb6fba264be245de93",
+    "data/aargau-witnesses/source-patterns.json.gz": "824d629c8dded53dc086de9ee6477810613e6c3c90a17fe1d1b7891cb3c4defc",
+    "data/aargau-witnesses/source-verification.json": "dc35791862fe84add38d6b71bacc6017ee86fc434b0a7817203c9c12e43f12bc",
+    "data/aargau-rail-sources/source.json": "deeaa5552be1c671511cee21d9ba2787d5787d008dda4d4a36b82d4d4e64462c",
+    "data/aargau-rail-sources/network.xtf.gz": "f83afc9c922ab368070faa151fcf8be02fbb66bc1f4ae9b1011c68c86be21af3",
+    "data/aargau-sources/sources.json": "63eb1888d48d8de45f1b67b571ed5c619d3d1499515978c5f4d49489613a3652",
+    "data/aargau-sources/lines.json.gz": "96413b71f134ecbfb73ea375f077d1b1bc6cb1772d23ec04be0348f89d320a20",
+    "data/aargau-witness-edge-sources/sbb-bern-plan-2026-08.pdf": "fc8996f20bd75a4293448ccf96a11b443f5df2419282ab75cea80efd252486eb",
+    "data/aargau-supplemental-sources/thurbo-closures-2026.html.gz": "d6fd39c40adaa63f7999b7295d1493c3269f3d4bacd6dbde608fce5f139ed936"
+  },
+  "source": {
+    "fot": {
+      "schemaVersion": 1,
+      "publisher": "Federal Office of Transport - FOT",
+      "attribution": "© Federal Office of Transport (FOT)",
+      "license": "proprietary",
+      "termsUrl": "https://opendata.swiss/terms-of-use/#terms_by",
+      "catalogueDate": "2021-07-06T00:00:00Z",
+      "assetUpdated": "2025-01-18T04:23:13.735821Z",
+      "catalogueCheckedOn": "2026-09-08",
+      "sourceUrl": "https://data.geo.admin.ch/ch.bav.schienennetz/schienennetz/schienennetz_2056_de.xtf",
+      "sha256": "2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+      "publishedChecksum": "12202895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+      "validOn": null,
+      "validityNote": "Catalogue dates and verified bytes do not establish September 2026 alignment validity. Inferred infrastructure paths, not certified service running tracks.",
+      "nodes": 3210,
+      "segments": 3424,
+      "transformation": "Existing XTF parser; LV95 simplification 5 m and swisstopo approximate LV95-to-WGS84 transformation rounded to 6 decimals.",
+      "files": {
+        "network.xtf.gz": "f83afc9c922ab368070faa151fcf8be02fbb66bc1f4ae9b1011c68c86be21af3",
+        "catalogue.json": "4c54793b444d6d453e4f3e9c5ddd424f72d16b76325366fea6a10f60e749cf60",
+        "collection.json": "a4c61b24a114dcc3c710194deb742c7cd80400584bf9261da534019ed1f22c02"
+      }
+    },
+    "agis": {
+      "url": "https://api.geo.ag.ch/v1/data/downloads/AGIS.avk_oevlinien/download/Shapefile/kanton_aargau",
+      "retrievedAt": "2026-09-08T17:03:55.430769+00:00",
+      "dataDate": "2026-04-23",
+      "normalTimetableOnly": true,
+      "features": 366,
+      "attribution": "Daten des Kantons Aargau",
+      "terms": "supplied-terms.pdf",
+      "metadata": "supplied-metadata.pdf"
+    },
+    "bernPlan": {
+      "file": "data/aargau-witness-edge-sources/sbb-bern-plan-2026-08.pdf",
+      "sha256": "fc8996f20bd75a4293448ccf96a11b443f5df2419282ab75cea80efd252486eb",
+      "url": "https://company.sbb.ch/content/dam/infrastruktur/trafimage/bahnhofplaene/plan-bern-a4.pdf",
+      "retrievedAt": "2026-09-08T20:18:29.309Z",
+      "documentDate": "2026-08",
+      "page": 3,
+      "attribution": "© OpenStreetMap © SBB 08/2026",
+      "role": "Visually inspected station exterior plan: platforms 49/50 at western end. Not a surveyed running-track alignment; plan postdates the June/July witness templates."
+    },
+    "waldshutFeature": {
+      "VM_NAME": "Zug",
+      "NR": "S41",
+      "RICHTUNG": "",
+      "STRECKE": "Waldshut - Koblenz - Bad Zurzach - Bülach - Winterthur",
+      "FAHRPLANNR": "761",
+      "GO_NR": "11",
+      "GO_ABK": "SBB",
+      "GO_NAME": "Schweizerische Bundesbahnen SBB",
+      "FAHRPLANFE": "https://widgets.oev-info.ch/publikation/jahresfpl/761.pdf",
+      "SHAPE_STLe": 51096.7655646
+    },
+    "closureEvidence": {
+      "url": "https://www.thurbo.ch/erkunden/ausblick/thurboleben/ki-baustellen/",
+      "file": "data/aargau-supplemental-sources/thurbo-closures-2026.html.gz",
+      "closureStart": "2026-09-14",
+      "closureEnd": "2026-10-02",
+      "interpretation": "The reviewed templates are dated April 13–16, outside this closure. This notice does not prove that an April journey actually operated."
+    }
+  },
+  "railLimits": {
+    "stationAttachmentMetres": 350,
+    "topologyAttachmentMetres": 120,
+    "detourRatio": 4.5,
+    "detourAllowanceMetres": 3000,
+    "simplificationMetres": 5
+  },
+  "agisLimits": {
+    "snapMetres": 120,
+    "detourRatio": 4.5,
+    "detourFloorMetres": 1200,
+    "simplifyMetres": 5,
+    "projectionCandidates": "local distance minima within snap limit",
+    "closedLoopMaximumLaps": 1
+  },
+  "routes": [
+    {
+      "routeId": "91-36-B-j26-1",
+      "agencyId": "11",
+      "line": "S36"
+    },
+    {
+      "routeId": "91-3A-Y-j26-1",
+      "agencyId": "11",
+      "line": "EXT"
+    },
+    {
+      "routeId": "91-4U-Y-j26-1",
+      "agencyId": "11",
+      "line": "IR"
+    }
+  ],
+  "expected": {
+    "patterns": 7,
+    "addedOccurrences": 11,
+    "bernOccurrences": 5,
+    "waldshutOccurrences": 6
+  },
+  "patterns": [
+    {
+      "id": "e53bb02beda477346f87",
+      "agencyId": "11",
+      "routeId": "91-36-B-j26-1",
+      "line": "S36",
+      "directionId": "0",
+      "stops": [
+        [
+          8.21952197,
+          47.6213708,
+          "Waldshut",
+          "5",
+          "8014474_gen:missingSLOID_pf:5"
+        ],
+        [
+          8.22738223,
+          47.6001744,
+          "Koblenz",
+          "4",
+          "ch:1:sloid:329:2:4"
+        ]
+      ],
+      "templates": [
+        {
+          "sourceTripId": ".ojp-91-36-B.1.TA.1.j26",
+          "sha256": "6bc4a3d32d8883700c761b1efee880d78014a167db00ec517f217e016a7840cf"
+        },
+        {
+          "sourceTripId": ".ojp-91-36-B.1.TA.2.j26",
+          "sha256": "a7122d149023de6529938a7b9e7be401c8c5df3cef08d76bfd441849874ef566"
+        },
+        {
+          "sourceTripId": ".ojp-91-36-B.1.TA.3.j26",
+          "sha256": "def33435d9932e15463d50cb061ae37e9f852b4acd1d3a3505031592b918d96d"
+        }
+      ],
+      "sourceCourses": [
+        {
+          "sourceTripId": ".ojp-91-36-B.1.TA.1.j26",
+          "shortName": "22891",
+          "activeServiceDates": [
+            "2026-04-13",
+            "2026-04-14",
+            "2026-04-15",
+            "2026-04-16"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-91-36-B.1.TA.2.j26",
+          "shortName": "22895",
+          "activeServiceDates": [
+            "2026-04-13",
+            "2026-04-14",
+            "2026-04-15",
+            "2026-04-16"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-91-36-B.1.TA.3.j26",
+          "shortName": "22893",
+          "activeServiceDates": [
+            "2026-04-13",
+            "2026-04-14",
+            "2026-04-15",
+            "2026-04-16"
+          ]
+        }
+      ],
+      "segments": [
+        {
+          "index": 0,
+          "priorAssessment": {
+            "fromId": "8014474_gen:missingSLOID_pf:5",
+            "toId": "ch:1:sloid:329:2:4",
+            "pathIndex": null,
+            "reason": "missing-operator-mode-line",
+            "railFailure": "no-exact-operating-point",
+            "fromOperatingPoint": "8014474",
+            "toOperatingPoint": "8500329",
+            "stationAttachmentsMetres": [
+              null,
+              30.62346844879237
+            ]
+          },
+          "pathSha256": "252d7facda9ffa8396ab61827895caeec5386e06d83c25032af10fd3f6e2d68f",
+          "evidence": {
+            "accepted": true,
+            "pathMetres": 3275.1273003868664,
+            "maximumSnapMetres": 55.97414136193809,
+            "geometrySource": "agis",
+            "gapSource": {
+              "featureId": 364,
+              "part": 0,
+              "sourceDirection": "unspecified",
+              "coordinateOrder": "forward",
+              "closedLoop": false,
+              "stopProgressMetres": [
+                0,
+                3275.1273003868664
+              ]
+            },
+            "sourceCorridor": {
+              "featureId": 364,
+              "sourceKey": "11:rail:S41",
+              "targetRouteId": "91-36-B-j26-1",
+              "targetLine": "S36",
+              "interpretation": "Exact April templates on the archived normal-line Waldshut–Koblenz corridor; not a historical running-track certification."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "ed8e05faf01461aeb43a",
+      "agencyId": "11",
+      "routeId": "91-36-B-j26-1",
+      "line": "S36",
+      "directionId": "1",
+      "stops": [
+        [
+          8.22728341,
+          47.60019257,
+          "Koblenz",
+          "3",
+          "ch:1:sloid:329:2:3"
+        ],
+        [
+          8.21952197,
+          47.6213708,
+          "Waldshut",
+          "5",
+          "8014474_gen:missingSLOID_pf:5"
+        ]
+      ],
+      "templates": [
+        {
+          "sourceTripId": ".ojp-91-36-B.1.TA.4.j26",
+          "sha256": "a08caebeed61b6d22a1aad6ac34f9b30ee261e4d36c2ca26151eb79d7a1df7fb"
+        }
+      ],
+      "sourceCourses": [
+        {
+          "sourceTripId": ".ojp-91-36-B.1.TA.4.j26",
+          "shortName": "22884",
+          "activeServiceDates": [
+            "2026-04-13",
+            "2026-04-14",
+            "2026-04-15",
+            "2026-04-16"
+          ]
+        }
+      ],
+      "segments": [
+        {
+          "index": 0,
+          "priorAssessment": {
+            "fromId": "ch:1:sloid:329:2:3",
+            "toId": "8014474_gen:missingSLOID_pf:5",
+            "pathIndex": null,
+            "reason": "missing-operator-mode-line",
+            "railFailure": "no-exact-operating-point",
+            "fromOperatingPoint": "8500329",
+            "toOperatingPoint": "8014474",
+            "stationAttachmentsMetres": [
+              23.573972464934656,
+              null
+            ]
+          },
+          "pathSha256": "3661d38c24963f12463cc3648d7275b5d4ce877ccd46376e277e710341902244",
+          "evidence": {
+            "accepted": true,
+            "pathMetres": 3275.12730038687,
+            "maximumSnapMetres": 55.97414136193809,
+            "geometrySource": "agis",
+            "gapSource": {
+              "featureId": 364,
+              "part": 0,
+              "sourceDirection": "unspecified",
+              "coordinateOrder": "reversed",
+              "closedLoop": false,
+              "stopProgressMetres": [
+                47777.321912511994,
+                51052.449212898864
+              ]
+            },
+            "sourceCorridor": {
+              "featureId": 364,
+              "sourceKey": "11:rail:S41",
+              "targetRouteId": "91-36-B-j26-1",
+              "targetLine": "S36",
+              "interpretation": "Exact April templates on the archived normal-line Waldshut–Koblenz corridor; not a historical running-track certification."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "62dbe6d4fab0cb5303bc",
+      "agencyId": "11",
+      "routeId": "91-36-B-j26-1",
+      "line": "S36",
+      "directionId": "1",
+      "stops": [
+        [
+          8.22738223,
+          47.6001744,
+          "Koblenz",
+          "4",
+          "ch:1:sloid:329:2:4"
+        ],
+        [
+          8.21952197,
+          47.6213708,
+          "Waldshut",
+          "5",
+          "8014474_gen:missingSLOID_pf:5"
+        ]
+      ],
+      "templates": [
+        {
+          "sourceTripId": ".ojp-91-36-B.1.TA.5.j26",
+          "sha256": "7f6350b213e368a6a04edc9f88881c71479bc03913918a4830ccc370d1315e8b"
+        },
+        {
+          "sourceTripId": ".ojp-91-36-B.1.TA.6.j26",
+          "sha256": "3e8e396a0cfc2d9eb2ce79e5a7dfffc1dd34ed05abb9eef5b9b76a44f2671000"
+        }
+      ],
+      "sourceCourses": [
+        {
+          "sourceTripId": ".ojp-91-36-B.1.TA.5.j26",
+          "shortName": "22886",
+          "activeServiceDates": [
+            "2026-04-13",
+            "2026-04-14",
+            "2026-04-15",
+            "2026-04-16"
+          ]
+        },
+        {
+          "sourceTripId": ".ojp-91-36-B.1.TA.6.j26",
+          "shortName": "22888",
+          "activeServiceDates": [
+            "2026-04-13",
+            "2026-04-14",
+            "2026-04-15",
+            "2026-04-16"
+          ]
+        }
+      ],
+      "segments": [
+        {
+          "index": 0,
+          "priorAssessment": {
+            "fromId": "ch:1:sloid:329:2:4",
+            "toId": "8014474_gen:missingSLOID_pf:5",
+            "pathIndex": null,
+            "reason": "missing-operator-mode-line",
+            "railFailure": "no-exact-operating-point",
+            "fromOperatingPoint": "8500329",
+            "toOperatingPoint": "8014474",
+            "stationAttachmentsMetres": [
+              30.62346844879237,
+              null
+            ]
+          },
+          "pathSha256": "290c1cae3356d36ff95ba1a55e5839b9202eabc3fd231c126499eb33209adbd6",
+          "evidence": {
+            "accepted": true,
+            "pathMetres": 3275.12730038687,
+            "maximumSnapMetres": 55.97414136193809,
+            "geometrySource": "agis",
+            "gapSource": {
+              "featureId": 364,
+              "part": 0,
+              "sourceDirection": "unspecified",
+              "coordinateOrder": "reversed",
+              "closedLoop": false,
+              "stopProgressMetres": [
+                47777.321912511994,
+                51052.449212898864
+              ]
+            },
+            "sourceCorridor": {
+              "featureId": 364,
+              "sourceKey": "11:rail:S41",
+              "targetRouteId": "91-36-B-j26-1",
+              "targetLine": "S36",
+              "interpretation": "Exact April templates on the archived normal-line Waldshut–Koblenz corridor; not a historical running-track certification."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "07e675fbe24c69a2265b",
+      "agencyId": "11",
+      "routeId": "91-3A-Y-j26-1",
+      "line": "EXT",
+      "directionId": "1",
+      "stops": [
+        [
+          7.15039203,
+          46.80255892,
+          "Fribourg/Freiburg",
+          "2",
+          "ch:1:sloid:4100:2:2"
+        ],
+        [
+          7.43355898,
+          46.94830984,
+          "Bern",
+          "50",
+          "ch:1:sloid:7000:55:50"
+        ],
+        [
+          8.16929716,
+          47.39193415,
+          "Lenzburg",
+          "1",
+          "ch:1:sloid:2119:4:1"
+        ],
+        [
+          8.48942079,
+          47.39172738,
+          "Zürich Altstetten",
+          "6",
+          "ch:1:sloid:3001:4:6"
+        ],
+        [
+          8.53621404,
+          47.37834652,
+          "Zürich HB",
+          "3",
+          "ch:1:sloid:3000:2:3"
+        ]
+      ],
+      "templates": [
+        {
+          "sourceTripId": ".ojp-91-3A-Y.1.TA.15.j26",
+          "sha256": "afb35fced5fadef16548209e8089ea088d76175a9fc048f3b373d129ee24954f"
+        }
+      ],
+      "sourceCourses": [
+        {
+          "sourceTripId": ".ojp-91-3A-Y.1.TA.15.j26",
+          "shortName": "31025",
+          "activeServiceDates": [
+            "2026-06-30"
+          ]
+        }
+      ],
+      "segments": [
+        {
+          "index": 0,
+          "priorAssessment": {
+            "fromId": "ch:1:sloid:4100:2:2",
+            "toId": "ch:1:sloid:7000:55:50",
+            "pathIndex": null,
+            "reason": "missing-operator-mode-line",
+            "railFailure": "station-attachment-too-far",
+            "fromOperatingPoint": "8504100",
+            "toOperatingPoint": "8507000",
+            "stationAttachmentsMetres": [
+              82.63539118181578,
+              427.7674779011608
+            ]
+          },
+          "pathSha256": "cef1b474066337bb67eb3dcd53f625d303e963f934bbcb7125fca707acb12a36",
+          "evidence": {
+            "geometrySource": "fot",
+            "fromOperatingPoint": "8504100",
+            "toOperatingPoint": "8507000",
+            "stationAttachmentsMetres": [
+              82.63539118181578,
+              38.5882576366288
+            ],
+            "pathMetres": 30991.62758794515,
+            "maximumTopologyAttachmentMetres": 22.457666155411108,
+            "directedSourceSegments": [
+              {
+                "id": "ch14uvag00087314",
+                "from": "ch14uvag00089134",
+                "to": "ch14uvag00089137"
+              },
+              {
+                "id": "ch14uvag00139676",
+                "from": "ch14uvag00089137",
+                "to": "ch14uvag00139698"
+              },
+              {
+                "id": "ch14uvag00139672",
+                "from": "ch14uvag00139698",
+                "to": "ch14uvag00089049"
+              },
+              {
+                "id": "ch14uvag00087316",
+                "from": "ch14uvag00089049",
+                "to": "ch14uvag00089867"
+              },
+              {
+                "id": "ch14uvag00087317",
+                "from": "ch14uvag00089867",
+                "to": "ch14uvag00090147"
+              },
+              {
+                "id": "ch14uvag00087318",
+                "from": "ch14uvag00090147",
+                "to": "ch14uvag00089123"
+              },
+              {
+                "id": "ch14uvag00087319",
+                "from": "ch14uvag00089123",
+                "to": "ch14uvag00090010"
+              },
+              {
+                "id": "ch14uvag00087320",
+                "from": "ch14uvag00090010",
+                "to": "ch14uvag00090009"
+              },
+              {
+                "id": "ch14uvag00087321",
+                "from": "ch14uvag00090009",
+                "to": "ch14uvag00089681"
+              },
+              {
+                "id": "ch14uvag00087322",
+                "from": "ch14uvag00089681",
+                "to": "ch14uvag00089641"
+              },
+              {
+                "id": "ch14uvag00087323",
+                "from": "ch14uvag00089641",
+                "to": "ch14uvag00088817"
+              },
+              {
+                "id": "ch14uvag00087324",
+                "from": "ch14uvag00088817",
+                "to": "ch14uvag00088815"
+              },
+              {
+                "id": "ch14uvag00087325",
+                "from": "ch14uvag00088815",
+                "to": "ch14uvag00088823"
+              },
+              {
+                "id": "ch14uvag00087326",
+                "from": "ch14uvag00088823",
+                "to": "ch14uvag00088913"
+              },
+              {
+                "id": "ch14uvag00087327",
+                "from": "ch14uvag00088913",
+                "to": "ch14uvag00089324"
+              },
+              {
+                "id": "ch14uvag00087328:west-to-platform50",
+                "from": "ch14uvag00089324",
+                "to": "aargau:witness:bern-platform-50"
+              }
+            ],
+            "platformProjection": {
+              "sourceCurve": {
+                "id": "ch14uvag00087328",
+                "start": "ch14uvag00089324",
+                "end": "ch14uvag00088813",
+                "length": 781.1577614377883,
+                "points": [
+                  [
+                    7.428931,
+                    46.948284
+                  ],
+                  [
+                    7.429906,
+                    46.948018
+                  ],
+                  [
+                    7.430804,
+                    46.947885
+                  ],
+                  [
+                    7.432114,
+                    46.947828
+                  ],
+                  [
+                    7.433162,
+                    46.947876
+                  ],
+                  [
+                    7.437213,
+                    46.948635
+                  ],
+                  [
+                    7.43793,
+                    46.948857
+                  ],
+                  [
+                    7.438694,
+                    46.949225
+                  ]
+                ]
+              },
+              "sourceCentre": {
+                "id": "ch14uvag00088813",
+                "number": "8507000",
+                "name": "Bern",
+                "coordinate": [
+                  7.439136,
+                  46.948831
+                ]
+              },
+              "sourceWestNode": {
+                "id": "ch14uvag00089324",
+                "number": "8507012",
+                "name": "Bern JKLM",
+                "coordinate": [
+                  7.428899,
+                  46.948241
+                ]
+              },
+              "gtfsStop": [
+                7.43355898,
+                46.94830984,
+                "Bern",
+                "50",
+                "ch:1:sloid:7000:55:50"
+              ],
+              "projection": {
+                "segmentId": "ch14uvag00087328",
+                "distance": 371.0715188452774,
+                "point": [
+                  7.433693375534491,
+                  46.94797555912878
+                ],
+                "snapMetres": 38.5882576366288
+              },
+              "virtualNodeId": "aargau:witness:bern-platform-50",
+              "virtualLookupNumber": "9990050",
+              "virtualNumberIsNotSourceIdentity": true,
+              "sourceOperatingPoint": "8507000",
+              "originalStationDistanceMetres": 427.7674779011608,
+              "splitSegmentIds": [
+                "ch14uvag00087328:west-to-platform50",
+                "ch14uvag00087328:platform50-to-centre"
+              ],
+              "method": "Interior projection onto one pinned FOT station curve; both original endpoints and all other topology preserved. Platform connector and running track remain inferred."
+            }
+          }
+        },
+        {
+          "index": 1,
+          "priorAssessment": {
+            "fromId": "ch:1:sloid:7000:55:50",
+            "toId": "ch:1:sloid:2119:4:1",
+            "pathIndex": null,
+            "reason": "missing-operator-mode-line",
+            "railFailure": "station-attachment-too-far",
+            "fromOperatingPoint": "8507000",
+            "toOperatingPoint": "8502119",
+            "stationAttachmentsMetres": [
+              427.7674779011608,
+              116.60694797742214
+            ]
+          },
+          "pathSha256": "f8048ea354c82cd17fb97256d16ba210439a83f9e4f60a30e226d72eb012c661",
+          "evidence": {
+            "geometrySource": "fot",
+            "fromOperatingPoint": "8507000",
+            "toOperatingPoint": "8502119",
+            "stationAttachmentsMetres": [
+              38.5882576366288,
+              116.60694797742214
+            ],
+            "pathMetres": 86378.16852059247,
+            "maximumTopologyAttachmentMetres": 55.24405007731446,
+            "directedSourceSegments": [
+              {
+                "id": "ch14uvag00087328:platform50-to-centre",
+                "from": "aargau:witness:bern-platform-50",
+                "to": "ch14uvag00088813"
+              },
+              {
+                "id": "ch14uvag00139673",
+                "from": "ch14uvag00088813",
+                "to": "ch14uvag00139694"
+              },
+              {
+                "id": "ch14uvag00139692",
+                "from": "ch14uvag00139694",
+                "to": "ch14uvag00088827"
+              },
+              {
+                "id": "ch14uvag00087662",
+                "from": "ch14uvag00088827",
+                "to": "ch14uvag00088825"
+              },
+              {
+                "id": "ch14uvag00087661",
+                "from": "ch14uvag00088825",
+                "to": "ch14uvag00089425"
+              },
+              {
+                "id": "ch14uvag00087660",
+                "from": "ch14uvag00089425",
+                "to": "ch14uvag00089426"
+              },
+              {
+                "id": "ch14uvag00087522",
+                "from": "ch14uvag00089426",
+                "to": "ch14uvag00088706"
+              },
+              {
+                "id": "ch14uvag00087523",
+                "from": "ch14uvag00088706",
+                "to": "ch14uvag00090093"
+              },
+              {
+                "id": "ch14uvag00087524",
+                "from": "ch14uvag00090093",
+                "to": "ch14uvag00089799"
+              },
+              {
+                "id": "ch14uvag00087638",
+                "from": "ch14uvag00089799",
+                "to": "ch14uvag00089798"
+              },
+              {
+                "id": "ch14uvag00087637",
+                "from": "ch14uvag00089798",
+                "to": "ch14uvag00089666"
+              },
+              {
+                "id": "ch14uvag00087767",
+                "from": "ch14uvag00089666",
+                "to": "ch14uvag00089662"
+              },
+              {
+                "id": "ch14uvag00087833",
+                "from": "ch14uvag00089662",
+                "to": "ch14uvag00089665"
+              },
+              {
+                "id": "ch14uvag00087834",
+                "from": "ch14uvag00089665",
+                "to": "ch14uvag00089047"
+              },
+              {
+                "id": "ch14uvag00087835",
+                "from": "ch14uvag00089047",
+                "to": "ch14uvag00089023"
+              },
+              {
+                "id": "ch14uvag00087836",
+                "from": "ch14uvag00089023",
+                "to": "ch14uvag00089021"
+              },
+              {
+                "id": "ch14uvag00087837",
+                "from": "ch14uvag00089021",
+                "to": "ch14uvag00089022"
+              },
+              {
+                "id": "ch14uvag00087838",
+                "from": "ch14uvag00089022",
+                "to": "ch14uvag00089868"
+              },
+              {
+                "id": "ch14uvag00087839",
+                "from": "ch14uvag00089868",
+                "to": "ch14uvag00090133"
+              },
+              {
+                "id": "ch14uvag00087988",
+                "from": "ch14uvag00090133",
+                "to": "ch14uvag00090134"
+              },
+              {
+                "id": "ch14uvag00240353",
+                "from": "ch14uvag00090134",
+                "to": "ch14uvag00088692"
+              },
+              {
+                "id": "ch14uvag00087986",
+                "from": "ch14uvag00088692",
+                "to": "ch14uvag00088693"
+              },
+              {
+                "id": "ch14uvag00087985",
+                "from": "ch14uvag00088693",
+                "to": "ch14uvag00089802"
+              },
+              {
+                "id": "ch14uvag00087984",
+                "from": "ch14uvag00089802",
+                "to": "ch14uvag00089404"
+              },
+              {
+                "id": "ch14uvag00087983",
+                "from": "ch14uvag00089404",
+                "to": "ch14uvag00089398"
+              }
+            ],
+            "platformProjection": {
+              "sourceCurve": {
+                "id": "ch14uvag00087328",
+                "start": "ch14uvag00089324",
+                "end": "ch14uvag00088813",
+                "length": 781.1577614377883,
+                "points": [
+                  [
+                    7.428931,
+                    46.948284
+                  ],
+                  [
+                    7.429906,
+                    46.948018
+                  ],
+                  [
+                    7.430804,
+                    46.947885
+                  ],
+                  [
+                    7.432114,
+                    46.947828
+                  ],
+                  [
+                    7.433162,
+                    46.947876
+                  ],
+                  [
+                    7.437213,
+                    46.948635
+                  ],
+                  [
+                    7.43793,
+                    46.948857
+                  ],
+                  [
+                    7.438694,
+                    46.949225
+                  ]
+                ]
+              },
+              "sourceCentre": {
+                "id": "ch14uvag00088813",
+                "number": "8507000",
+                "name": "Bern",
+                "coordinate": [
+                  7.439136,
+                  46.948831
+                ]
+              },
+              "sourceWestNode": {
+                "id": "ch14uvag00089324",
+                "number": "8507012",
+                "name": "Bern JKLM",
+                "coordinate": [
+                  7.428899,
+                  46.948241
+                ]
+              },
+              "gtfsStop": [
+                7.43355898,
+                46.94830984,
+                "Bern",
+                "50",
+                "ch:1:sloid:7000:55:50"
+              ],
+              "projection": {
+                "segmentId": "ch14uvag00087328",
+                "distance": 371.0715188452774,
+                "point": [
+                  7.433693375534491,
+                  46.94797555912878
+                ],
+                "snapMetres": 38.5882576366288
+              },
+              "virtualNodeId": "aargau:witness:bern-platform-50",
+              "virtualLookupNumber": "9990050",
+              "virtualNumberIsNotSourceIdentity": true,
+              "sourceOperatingPoint": "8507000",
+              "originalStationDistanceMetres": 427.7674779011608,
+              "splitSegmentIds": [
+                "ch14uvag00087328:west-to-platform50",
+                "ch14uvag00087328:platform50-to-centre"
+              ],
+              "method": "Interior projection onto one pinned FOT station curve; both original endpoints and all other topology preserved. Platform connector and running track remain inferred."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "a7e48d11621de5f05f18",
+      "agencyId": "11",
+      "routeId": "91-3A-Y-j26-1",
+      "line": "EXT",
+      "directionId": "1",
+      "stops": [
+        [
+          7.43355898,
+          46.94830984,
+          "Bern",
+          "50",
+          "ch:1:sloid:7000:55:50"
+        ],
+        [
+          7.90723164,
+          47.35217105,
+          "Olten",
+          "2",
+          "ch:1:sloid:218:2:2"
+        ],
+        [
+          8.05143819,
+          47.39124694,
+          "Aarau",
+          "2",
+          "ch:1:sloid:2113:2:2"
+        ],
+        [
+          8.48942079,
+          47.39172738,
+          "Zürich Altstetten",
+          "6",
+          "ch:1:sloid:3001:4:6"
+        ],
+        [
+          8.53625895,
+          47.37840735,
+          "Zürich HB",
+          "4",
+          "ch:1:sloid:3000:3:4"
+        ]
+      ],
+      "templates": [
+        {
+          "sourceTripId": ".ojp-91-3A-Y.1.TA.16.j26",
+          "sha256": "a71465d5e873a0c67ad0b733103bf4f313c2fd53b6152be6d3568267349c1712"
+        }
+      ],
+      "sourceCourses": [
+        {
+          "sourceTripId": ".ojp-91-3A-Y.1.TA.16.j26",
+          "shortName": "31569",
+          "activeServiceDates": [
+            "2026-07-14"
+          ]
+        }
+      ],
+      "segments": [
+        {
+          "index": 0,
+          "priorAssessment": {
+            "fromId": "ch:1:sloid:7000:55:50",
+            "toId": "ch:1:sloid:218:2:2",
+            "pathIndex": null,
+            "reason": "missing-operator-mode-line",
+            "railFailure": "station-attachment-too-far",
+            "fromOperatingPoint": "8507000",
+            "toOperatingPoint": "8500218",
+            "stationAttachmentsMetres": [
+              427.7674779011608,
+              44.52685661722092
+            ]
+          },
+          "pathSha256": "9650e858766cda15b036bec71914464cf8af81cc9e774870f747800b008c5a81",
+          "evidence": {
+            "geometrySource": "fot",
+            "fromOperatingPoint": "8507000",
+            "toOperatingPoint": "8500218",
+            "stationAttachmentsMetres": [
+              38.5882576366288,
+              44.52685661722092
+            ],
+            "pathMetres": 62975.40511101996,
+            "maximumTopologyAttachmentMetres": 55.24405007731446,
+            "directedSourceSegments": [
+              {
+                "id": "ch14uvag00087328:platform50-to-centre",
+                "from": "aargau:witness:bern-platform-50",
+                "to": "ch14uvag00088813"
+              },
+              {
+                "id": "ch14uvag00139673",
+                "from": "ch14uvag00088813",
+                "to": "ch14uvag00139694"
+              },
+              {
+                "id": "ch14uvag00139692",
+                "from": "ch14uvag00139694",
+                "to": "ch14uvag00088827"
+              },
+              {
+                "id": "ch14uvag00087662",
+                "from": "ch14uvag00088827",
+                "to": "ch14uvag00088825"
+              },
+              {
+                "id": "ch14uvag00087661",
+                "from": "ch14uvag00088825",
+                "to": "ch14uvag00089425"
+              },
+              {
+                "id": "ch14uvag00087660",
+                "from": "ch14uvag00089425",
+                "to": "ch14uvag00089426"
+              },
+              {
+                "id": "ch14uvag00087522",
+                "from": "ch14uvag00089426",
+                "to": "ch14uvag00088706"
+              },
+              {
+                "id": "ch14uvag00087523",
+                "from": "ch14uvag00088706",
+                "to": "ch14uvag00090093"
+              },
+              {
+                "id": "ch14uvag00087524",
+                "from": "ch14uvag00090093",
+                "to": "ch14uvag00089799"
+              },
+              {
+                "id": "ch14uvag00087638",
+                "from": "ch14uvag00089799",
+                "to": "ch14uvag00089798"
+              },
+              {
+                "id": "ch14uvag00087637",
+                "from": "ch14uvag00089798",
+                "to": "ch14uvag00089666"
+              },
+              {
+                "id": "ch14uvag00087767",
+                "from": "ch14uvag00089666",
+                "to": "ch14uvag00089662"
+              }
+            ],
+            "platformProjection": {
+              "sourceCurve": {
+                "id": "ch14uvag00087328",
+                "start": "ch14uvag00089324",
+                "end": "ch14uvag00088813",
+                "length": 781.1577614377883,
+                "points": [
+                  [
+                    7.428931,
+                    46.948284
+                  ],
+                  [
+                    7.429906,
+                    46.948018
+                  ],
+                  [
+                    7.430804,
+                    46.947885
+                  ],
+                  [
+                    7.432114,
+                    46.947828
+                  ],
+                  [
+                    7.433162,
+                    46.947876
+                  ],
+                  [
+                    7.437213,
+                    46.948635
+                  ],
+                  [
+                    7.43793,
+                    46.948857
+                  ],
+                  [
+                    7.438694,
+                    46.949225
+                  ]
+                ]
+              },
+              "sourceCentre": {
+                "id": "ch14uvag00088813",
+                "number": "8507000",
+                "name": "Bern",
+                "coordinate": [
+                  7.439136,
+                  46.948831
+                ]
+              },
+              "sourceWestNode": {
+                "id": "ch14uvag00089324",
+                "number": "8507012",
+                "name": "Bern JKLM",
+                "coordinate": [
+                  7.428899,
+                  46.948241
+                ]
+              },
+              "gtfsStop": [
+                7.43355898,
+                46.94830984,
+                "Bern",
+                "50",
+                "ch:1:sloid:7000:55:50"
+              ],
+              "projection": {
+                "segmentId": "ch14uvag00087328",
+                "distance": 371.0715188452774,
+                "point": [
+                  7.433693375534491,
+                  46.94797555912878
+                ],
+                "snapMetres": 38.5882576366288
+              },
+              "virtualNodeId": "aargau:witness:bern-platform-50",
+              "virtualLookupNumber": "9990050",
+              "virtualNumberIsNotSourceIdentity": true,
+              "sourceOperatingPoint": "8507000",
+              "originalStationDistanceMetres": 427.7674779011608,
+              "splitSegmentIds": [
+                "ch14uvag00087328:west-to-platform50",
+                "ch14uvag00087328:platform50-to-centre"
+              ],
+              "method": "Interior projection onto one pinned FOT station curve; both original endpoints and all other topology preserved. Platform connector and running track remain inferred."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "307451d91b95df175e83",
+      "agencyId": "11",
+      "routeId": "91-4U-Y-j26-1",
+      "line": "IR",
+      "directionId": "0",
+      "stops": [
+        [
+          8.53667218,
+          47.37913122,
+          "Zürich HB",
+          "14",
+          "ch:1:sloid:3000:8:14"
+        ],
+        [
+          8.16953072,
+          47.39171521,
+          "Lenzburg",
+          "3",
+          "ch:1:sloid:2119:3:3"
+        ],
+        [
+          7.90805809,
+          47.3521954,
+          "Olten",
+          "9",
+          "ch:1:sloid:218:5:9"
+        ],
+        [
+          7.78391092,
+          47.21698045,
+          "Langenthal",
+          "2",
+          "ch:1:sloid:8100:2:2"
+        ],
+        [
+          7.70074489,
+          47.18756272,
+          "Herzogenbuchsee",
+          "1",
+          "ch:1:sloid:8008:1:1"
+        ],
+        [
+          7.62177399,
+          47.06081326,
+          "Burgdorf",
+          "2",
+          "ch:1:sloid:8005:2:2"
+        ],
+        [
+          7.43355898,
+          46.94830984,
+          "Bern",
+          "50",
+          "ch:1:sloid:7000:55:50"
+        ]
+      ],
+      "templates": [
+        {
+          "sourceTripId": ".ojp-91-4U-Y.1.TA.50.j26",
+          "sha256": "79f446e90f556414fcded04ba8bb4c7ac41dbe0f2d071b8acf2a03131f903f0b"
+        }
+      ],
+      "sourceCourses": [
+        {
+          "sourceTripId": ".ojp-91-4U-Y.1.TA.50.j26",
+          "shortName": "2382",
+          "activeServiceDates": [
+            "2026-09-27"
+          ]
+        }
+      ],
+      "segments": [
+        {
+          "index": 5,
+          "priorAssessment": {
+            "fromId": "ch:1:sloid:8005:2:2",
+            "toId": "ch:1:sloid:7000:55:50",
+            "pathIndex": null,
+            "reason": "missing-operator-mode-line",
+            "railFailure": "station-attachment-too-far",
+            "fromOperatingPoint": "8508005",
+            "toOperatingPoint": "8507000",
+            "stationAttachmentsMetres": [
+              14.003947826673501,
+              427.7674779011608
+            ]
+          },
+          "pathSha256": "bcdf8a10f093a227750486e414957b8aadb40c374c74ab1f76f0af859686cdb6",
+          "evidence": {
+            "geometrySource": "fot",
+            "fromOperatingPoint": "8508005",
+            "toOperatingPoint": "8507000",
+            "stationAttachmentsMetres": [
+              14.003947826673501,
+              38.5882576366288
+            ],
+            "pathMetres": 22317.197962953538,
+            "maximumTopologyAttachmentMetres": 55.24405007731446,
+            "directedSourceSegments": [
+              {
+                "id": "ch14uvag00087648",
+                "from": "ch14uvag00088760",
+                "to": "ch14uvag00088763"
+              },
+              {
+                "id": "ch14uvag00087649",
+                "from": "ch14uvag00088763",
+                "to": "ch14uvag00089503"
+              },
+              {
+                "id": "ch14uvag00087650",
+                "from": "ch14uvag00089503",
+                "to": "ch14uvag00089823"
+              },
+              {
+                "id": "ch14uvag00087651",
+                "from": "ch14uvag00089823",
+                "to": "ch14uvag00089257"
+              },
+              {
+                "id": "ch14uvag00087652",
+                "from": "ch14uvag00089257",
+                "to": "ch14uvag00089292"
+              },
+              {
+                "id": "ch14uvag00087671",
+                "from": "ch14uvag00089292",
+                "to": "ch14uvag00089659"
+              },
+              {
+                "id": "ch14uvag00087670",
+                "from": "ch14uvag00089659",
+                "to": "ch14uvag00088706"
+              },
+              {
+                "id": "ch14uvag00087522",
+                "from": "ch14uvag00088706",
+                "to": "ch14uvag00089426"
+              },
+              {
+                "id": "ch14uvag00087660",
+                "from": "ch14uvag00089426",
+                "to": "ch14uvag00089425"
+              },
+              {
+                "id": "ch14uvag00087661",
+                "from": "ch14uvag00089425",
+                "to": "ch14uvag00088825"
+              },
+              {
+                "id": "ch14uvag00087662",
+                "from": "ch14uvag00088825",
+                "to": "ch14uvag00088827"
+              },
+              {
+                "id": "ch14uvag00139692",
+                "from": "ch14uvag00088827",
+                "to": "ch14uvag00139694"
+              },
+              {
+                "id": "ch14uvag00139673",
+                "from": "ch14uvag00139694",
+                "to": "ch14uvag00088813"
+              },
+              {
+                "id": "ch14uvag00087328:platform50-to-centre",
+                "from": "ch14uvag00088813",
+                "to": "aargau:witness:bern-platform-50"
+              }
+            ],
+            "platformProjection": {
+              "sourceCurve": {
+                "id": "ch14uvag00087328",
+                "start": "ch14uvag00089324",
+                "end": "ch14uvag00088813",
+                "length": 781.1577614377883,
+                "points": [
+                  [
+                    7.428931,
+                    46.948284
+                  ],
+                  [
+                    7.429906,
+                    46.948018
+                  ],
+                  [
+                    7.430804,
+                    46.947885
+                  ],
+                  [
+                    7.432114,
+                    46.947828
+                  ],
+                  [
+                    7.433162,
+                    46.947876
+                  ],
+                  [
+                    7.437213,
+                    46.948635
+                  ],
+                  [
+                    7.43793,
+                    46.948857
+                  ],
+                  [
+                    7.438694,
+                    46.949225
+                  ]
+                ]
+              },
+              "sourceCentre": {
+                "id": "ch14uvag00088813",
+                "number": "8507000",
+                "name": "Bern",
+                "coordinate": [
+                  7.439136,
+                  46.948831
+                ]
+              },
+              "sourceWestNode": {
+                "id": "ch14uvag00089324",
+                "number": "8507012",
+                "name": "Bern JKLM",
+                "coordinate": [
+                  7.428899,
+                  46.948241
+                ]
+              },
+              "gtfsStop": [
+                7.43355898,
+                46.94830984,
+                "Bern",
+                "50",
+                "ch:1:sloid:7000:55:50"
+              ],
+              "projection": {
+                "segmentId": "ch14uvag00087328",
+                "distance": 371.0715188452774,
+                "point": [
+                  7.433693375534491,
+                  46.94797555912878
+                ],
+                "snapMetres": 38.5882576366288
+              },
+              "virtualNodeId": "aargau:witness:bern-platform-50",
+              "virtualLookupNumber": "9990050",
+              "virtualNumberIsNotSourceIdentity": true,
+              "sourceOperatingPoint": "8507000",
+              "originalStationDistanceMetres": 427.7674779011608,
+              "splitSegmentIds": [
+                "ch14uvag00087328:west-to-platform50",
+                "ch14uvag00087328:platform50-to-centre"
+              ],
+              "method": "Interior projection onto one pinned FOT station curve; both original endpoints and all other topology preserved. Platform connector and running track remain inferred."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "aab53b630b1c540b6ff0",
+      "agencyId": "11",
+      "routeId": "91-4U-Y-j26-1",
+      "line": "IR",
+      "directionId": "0",
+      "stops": [
+        [
+          8.53667218,
+          47.37913122,
+          "Zürich HB",
+          "14",
+          "ch:1:sloid:3000:8:14"
+        ],
+        [
+          8.16953072,
+          47.39171521,
+          "Lenzburg",
+          "3",
+          "ch:1:sloid:2119:3:3"
+        ],
+        [
+          7.90794131,
+          47.35220757,
+          "Olten",
+          "8",
+          "ch:1:sloid:218:5:8"
+        ],
+        [
+          7.78398279,
+          47.21710858,
+          "Langenthal",
+          "3",
+          "ch:1:sloid:8100:2:3"
+        ],
+        [
+          7.70074489,
+          47.18756272,
+          "Herzogenbuchsee",
+          "1",
+          "ch:1:sloid:8008:1:1"
+        ],
+        [
+          7.62177399,
+          47.06081326,
+          "Burgdorf",
+          "2",
+          "ch:1:sloid:8005:2:2"
+        ],
+        [
+          7.43355898,
+          46.94830984,
+          "Bern",
+          "50",
+          "ch:1:sloid:7000:55:50"
+        ]
+      ],
+      "templates": [
+        {
+          "sourceTripId": ".ojp-91-4U-Y.1.TA.51.j26",
+          "sha256": "d84e8cf514ab104e283a07ddf238fc5329953e6286ee8ea0618142660f23b7cc"
+        }
+      ],
+      "sourceCourses": [
+        {
+          "sourceTripId": ".ojp-91-4U-Y.1.TA.51.j26",
+          "shortName": "2382",
+          "activeServiceDates": [
+            "2026-08-16"
+          ]
+        }
+      ],
+      "segments": [
+        {
+          "index": 5,
+          "priorAssessment": {
+            "fromId": "ch:1:sloid:8005:2:2",
+            "toId": "ch:1:sloid:7000:55:50",
+            "pathIndex": null,
+            "reason": "missing-operator-mode-line",
+            "railFailure": "station-attachment-too-far",
+            "fromOperatingPoint": "8508005",
+            "toOperatingPoint": "8507000",
+            "stationAttachmentsMetres": [
+              14.003947826673501,
+              427.7674779011608
+            ]
+          },
+          "pathSha256": "bcdf8a10f093a227750486e414957b8aadb40c374c74ab1f76f0af859686cdb6",
+          "evidence": {
+            "geometrySource": "fot",
+            "fromOperatingPoint": "8508005",
+            "toOperatingPoint": "8507000",
+            "stationAttachmentsMetres": [
+              14.003947826673501,
+              38.5882576366288
+            ],
+            "pathMetres": 22317.197962953538,
+            "maximumTopologyAttachmentMetres": 55.24405007731446,
+            "directedSourceSegments": [
+              {
+                "id": "ch14uvag00087648",
+                "from": "ch14uvag00088760",
+                "to": "ch14uvag00088763"
+              },
+              {
+                "id": "ch14uvag00087649",
+                "from": "ch14uvag00088763",
+                "to": "ch14uvag00089503"
+              },
+              {
+                "id": "ch14uvag00087650",
+                "from": "ch14uvag00089503",
+                "to": "ch14uvag00089823"
+              },
+              {
+                "id": "ch14uvag00087651",
+                "from": "ch14uvag00089823",
+                "to": "ch14uvag00089257"
+              },
+              {
+                "id": "ch14uvag00087652",
+                "from": "ch14uvag00089257",
+                "to": "ch14uvag00089292"
+              },
+              {
+                "id": "ch14uvag00087671",
+                "from": "ch14uvag00089292",
+                "to": "ch14uvag00089659"
+              },
+              {
+                "id": "ch14uvag00087670",
+                "from": "ch14uvag00089659",
+                "to": "ch14uvag00088706"
+              },
+              {
+                "id": "ch14uvag00087522",
+                "from": "ch14uvag00088706",
+                "to": "ch14uvag00089426"
+              },
+              {
+                "id": "ch14uvag00087660",
+                "from": "ch14uvag00089426",
+                "to": "ch14uvag00089425"
+              },
+              {
+                "id": "ch14uvag00087661",
+                "from": "ch14uvag00089425",
+                "to": "ch14uvag00088825"
+              },
+              {
+                "id": "ch14uvag00087662",
+                "from": "ch14uvag00088825",
+                "to": "ch14uvag00088827"
+              },
+              {
+                "id": "ch14uvag00139692",
+                "from": "ch14uvag00088827",
+                "to": "ch14uvag00139694"
+              },
+              {
+                "id": "ch14uvag00139673",
+                "from": "ch14uvag00139694",
+                "to": "ch14uvag00088813"
+              },
+              {
+                "id": "ch14uvag00087328:platform50-to-centre",
+                "from": "ch14uvag00088813",
+                "to": "aargau:witness:bern-platform-50"
+              }
+            ],
+            "platformProjection": {
+              "sourceCurve": {
+                "id": "ch14uvag00087328",
+                "start": "ch14uvag00089324",
+                "end": "ch14uvag00088813",
+                "length": 781.1577614377883,
+                "points": [
+                  [
+                    7.428931,
+                    46.948284
+                  ],
+                  [
+                    7.429906,
+                    46.948018
+                  ],
+                  [
+                    7.430804,
+                    46.947885
+                  ],
+                  [
+                    7.432114,
+                    46.947828
+                  ],
+                  [
+                    7.433162,
+                    46.947876
+                  ],
+                  [
+                    7.437213,
+                    46.948635
+                  ],
+                  [
+                    7.43793,
+                    46.948857
+                  ],
+                  [
+                    7.438694,
+                    46.949225
+                  ]
+                ]
+              },
+              "sourceCentre": {
+                "id": "ch14uvag00088813",
+                "number": "8507000",
+                "name": "Bern",
+                "coordinate": [
+                  7.439136,
+                  46.948831
+                ]
+              },
+              "sourceWestNode": {
+                "id": "ch14uvag00089324",
+                "number": "8507012",
+                "name": "Bern JKLM",
+                "coordinate": [
+                  7.428899,
+                  46.948241
+                ]
+              },
+              "gtfsStop": [
+                7.43355898,
+                46.94830984,
+                "Bern",
+                "50",
+                "ch:1:sloid:7000:55:50"
+              ],
+              "projection": {
+                "segmentId": "ch14uvag00087328",
+                "distance": 371.0715188452774,
+                "point": [
+                  7.433693375534491,
+                  46.94797555912878
+                ],
+                "snapMetres": 38.5882576366288
+              },
+              "virtualNodeId": "aargau:witness:bern-platform-50",
+              "virtualLookupNumber": "9990050",
+              "virtualNumberIsNotSourceIdentity": true,
+              "sourceOperatingPoint": "8507000",
+              "originalStationDistanceMetres": 427.7674779011608,
+              "splitSegmentIds": [
+                "ch14uvag00087328:west-to-platform50",
+                "ch14uvag00087328:platform50-to-centre"
+              ],
+              "method": "Interior projection onto one pinned FOT station curve; both original endpoints and all other topology preserved. Platform connector and running track remain inferred."
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "publicationReady": false
+}
