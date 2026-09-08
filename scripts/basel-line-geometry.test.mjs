@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest'
 import { baselGraphs, matchBaselSegment, applyBaselGeometry } from './basel-line-geometry.mjs'
 import { baselGate, compactBaselSnapshot } from './audit-basel-study.mjs'
 import { downloadBaselSources, validateBaselDownload } from './download-basel-sources.mjs'
+import { baselTram19Graph } from './basel-rail-geometry.mjs'
 import { mkdtemp, readdir, rm } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
@@ -42,6 +43,40 @@ describe('Basel official line inference', () => {
     expect(matchBaselSegment(maps.get('823:tram:8'), A, B).reason).toBe('missing-line')
   })
 
+  it('recovers a failed nearest match on close parallel source parts without connecting them', () => {
+    const otherA = [A[0], A[1] + 0.00003], otherB = [B[0], B[1] + 0.00003]
+    const g = graph(feature(), feature('8', 'BVB', [otherA, otherB]))
+    const result = matchBaselSegment(g, A, otherB)
+    expect(result.projectionChoice.initialReason).toBe('disconnected-line')
+    expect(result.projectionChoice.maximumAdditionalSnapMetres).toBeLessThan(4)
+    expect(result.pathMetres).toBeGreaterThan(1400)
+    expect(result.path[0]).toEqual(A)
+    expect(result.path.at(-1)).toEqual(otherB)
+    // All on-network vertices remain on one part; only the platform connector
+    // can leave it. The graph still consists of two disconnected edges.
+    expect(new Set(result.path.slice(1, -1).map(point => point[1])).size).toBe(1)
+    expect(g.edges).toHaveLength(2)
+    expect(matchBaselSegment(g, A, B).projectionChoice).toBeUndefined()
+  })
+
+  it('does not stretch the alternative allowance or the original endpoint limits', () => {
+    const otherA = [A[0], A[1] + 0.0001], otherB = [B[0], B[1] + 0.0001]
+    expect(matchBaselSegment(graph(feature(), feature('8', 'BVB', [otherA, otherB])), A, otherB).reason).toBe('disconnected-line')
+    const outside = [B[0], B[1] + 0.002]
+    expect(matchBaselSegment(graph(feature()), A, outside).reason).toBe('endpoint-gap')
+  })
+
+  it('avoids a multi-kilometre return to a distant join on opposite source parts', () => {
+    const lowerEnd = [7.64, A[1]], upperStart = [A[0], A[1] + 0.00003], upperEnd = [7.64, upperStart[1]]
+    const g = graph(feature('8', 'BVB', [A, lowerEnd]), feature('8', 'BVB', [upperStart, upperEnd]), feature('8', 'BVB', [A, upperStart]))
+    const from = [7.63, A[1]], to = [7.631, upperStart[1]]
+    expect(matchBaselSegment(g, from, to, { snapMetres: 120, detourRatio: 4.5, detourFloorMetres: 1200, alternativeSnapMetres: 0 }).reason).toBe('implausible-detour')
+    const result = matchBaselSegment(g, from, to)
+    expect(result.projectionChoice.initialReason).toBe('implausible-detour')
+    expect(result.pathMetres).toBeLessThan(100)
+    expect(result.path.every(point => point[0] >= from[0])).toBe(true)
+  })
+
   it('rejects gaps, collapsed movements and implausible detours before adding endpoint connectors', () => {
     const g = graph(feature())
     expect(matchBaselSegment(g, [7.61, 47.56], B).reason).toBe('endpoint-gap')
@@ -79,6 +114,40 @@ describe('Basel official line inference', () => {
     expect(baselGate(groups.slice(0, 3), payload)).toHaveLength(1)
     expect(baselGate([...groups.slice(0, 3), { id: 'BLT-bus', trips: 1000, coverage: 0.1 }], payload)).toHaveLength(1)
     expect(baselGate(groups, { ...payload, manifestGzipBytes: payload.manifestGzipBytes + 1 })).toHaveLength(1)
+  })
+})
+
+describe('Basel tram 19 infrastructure isolation', () => {
+  const network = () => ({
+    nodes: new Map([
+      ['w', { id: 'w', number: '8500087', name: 'Waldenburg' }],
+      ['m', { id: 'm', number: 'middle', name: 'Intermediate stop' }],
+      ['l', { id: 'l', number: '8519350', name: 'Liestal [Gleis 4]' }],
+      ['s', { id: 's', number: '8500023', name: 'Liestal' }],
+      ['x', { id: 'x', number: 'other', name: 'SBB track' }],
+    ]),
+    segments: [
+      { id: 'wm', start: 'w', end: 'm', points: [A, [7.61, 47.55]] },
+      { id: 'ml', start: 'm', end: 'l', points: [[7.61, 47.55], B] },
+      { id: 'sbb', start: 's', end: 'x', points: [B, [7.63, 47.55]] },
+    ],
+  })
+
+  it('selects the anchored branch and excludes even a geographically coincident SBB line', () => {
+    const { graph, corridor } = baselTram19Graph(network())
+    expect(corridor.segmentIds).toEqual(['wm', 'ml'])
+    expect(corridor.nodes.map(node => node.number)).not.toContain('8500023')
+    expect(matchBaselSegment(graph, A, B).path).toContainEqual([7.61, 47.55])
+    expect(matchBaselSegment(graph, A, [7.63, 47.55]).reason).toBe('endpoint-gap')
+  })
+
+  it('fails closed when anchor identity, branch topology or source coordinates change', () => {
+    const missing = network(); missing.nodes.delete('l')
+    expect(() => baselTram19Graph(missing)).toThrow('anchor')
+    const joined = network(); joined.segments.push({ id: 'join', start: 'l', end: 's', points: [B, B] })
+    expect(() => baselTram19Graph(joined)).toThrow('isolated chain')
+    const broken = network(); broken.segments[1].points[0] = [7.61001, 47.55]
+    expect(() => baselTram19Graph(broken)).toThrow('Disconnected tram 19 source coordinates')
   })
 })
 

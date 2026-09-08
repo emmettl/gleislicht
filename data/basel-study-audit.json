@@ -31,7 +31,106 @@
           "sha256": "2c45a197f9319b287078824cfc432987cc73da9f78f05c75ca4645de151e5c3c"
         }
       ]
-    }
+    },
+    "supplementalSources": [
+      {
+        "publisher": "Federal Office of Transport (FOT)",
+        "url": "https://data.geo.admin.ch/ch.bav.schienennetz/schienennetz/schienennetz_2056_de.xtf",
+        "route": {
+          "agencyId": "37",
+          "mode": "tram",
+          "line": "19"
+        },
+        "endpointNumbers": [
+          "8500087",
+          "8519350"
+        ],
+        "simplificationMetres": 2,
+        "nodes": [
+          {
+            "id": "ch14uvag00066680",
+            "number": "8500087",
+            "name": "Waldenburg"
+          },
+          {
+            "id": "ch14uvag00066413",
+            "number": "8500086",
+            "name": "Oberdorf BL"
+          },
+          {
+            "id": "ch14uvag00066414",
+            "number": "8500088",
+            "name": "Oberdorf BL Winkelweg"
+          },
+          {
+            "id": "ch14uvag00066393",
+            "number": "8500085",
+            "name": "Niederdorf"
+          },
+          {
+            "id": "ch14uvag00066267",
+            "number": "8500094",
+            "name": "Hirschlang"
+          },
+          {
+            "id": "ch14uvag00066746",
+            "number": "8500093",
+            "name": "Hölstein Weidbächli"
+          },
+          {
+            "id": "ch14uvag00066272",
+            "number": "8500092",
+            "name": "Hölstein Süd"
+          },
+          {
+            "id": "ch14uvag00066271",
+            "number": "8500084",
+            "name": "Hölstein"
+          },
+          {
+            "id": "ch14uvag00066319",
+            "number": "8500083",
+            "name": "Lampenberg-Ramlinsburg"
+          },
+          {
+            "id": "ch14uvag00066607",
+            "number": "8500080",
+            "name": "Talhaus"
+          },
+          {
+            "id": "ch14uvag00066065",
+            "number": "8500082",
+            "name": "Bubendorf"
+          },
+          {
+            "id": "ch14uvag00065971",
+            "number": "8500081",
+            "name": "Altmarkt"
+          },
+          {
+            "id": "ch14uvag00066334",
+            "number": "8519350",
+            "name": "Liestal [Gleis 4]"
+          }
+        ],
+        "segmentIds": [
+          "ch14uvag00067661",
+          "ch14uvag00067956",
+          "ch14uvag00068187",
+          "ch14uvag00068364",
+          "ch14uvag00068361",
+          "ch14uvag00068106",
+          "ch14uvag00068362",
+          "ch14uvag00068363",
+          "ch14uvag00068435",
+          "ch14uvag00067654",
+          "ch14uvag00067843",
+          "ch14uvag00067660"
+        ],
+        "sha256": "2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+        "validOn": null
+      }
+    ]
   },
   "scope": {
     "agencyIds": [
@@ -80,16 +179,16 @@
     {
       "id": "BVB-tram",
       "trips": 2316,
-      "matched": 38941,
+      "matched": 43694,
       "total": 49094,
-      "coverage": 0.7931926508330956
+      "coverage": 0.8900069254898766
     },
     {
       "id": "BLT-tram",
       "trips": 829,
-      "matched": 15008,
+      "matched": 17661,
       "total": 18025,
-      "coverage": 0.8326213592233009
+      "coverage": 0.9798058252427184
     },
     {
       "id": "BLT-bus",
@@ -333,9 +432,9 @@
       "line": "10",
       "mode": "tram",
       "trips": 300,
-      "matched": 9794,
+      "matched": 10064,
       "total": 10064,
-      "coverage": 0.9731717011128775
+      "coverage": 1
     },
     {
       "routeId": "91-11-j26-1",
@@ -343,9 +442,9 @@
       "line": "11",
       "mode": "tram",
       "trips": 286,
-      "matched": 3702,
+      "matched": 4556,
       "total": 4556,
-      "coverage": 0.8125548726953468
+      "coverage": 1
     },
     {
       "routeId": "91-17-j26-1",
@@ -363,9 +462,9 @@
       "line": "19",
       "mode": "tram",
       "trips": 139,
-      "matched": 0,
+      "matched": 1529,
       "total": 1529,
-      "coverage": 0
+      "coverage": 1
     },
     {
       "routeId": "92-30-j26-1",
@@ -523,9 +622,9 @@
       "line": "1",
       "mode": "tram",
       "trips": 284,
-      "matched": 3121,
+      "matched": 3942,
       "total": 4021,
-      "coverage": 0.7761750808256652
+      "coverage": 0.9803531459835861
     },
     {
       "routeId": "91-2-j26-1",
@@ -533,9 +632,9 @@
       "line": "2",
       "mode": "tram",
       "trips": 286,
-      "matched": 4440,
+      "matched": 4579,
       "total": 4723,
-      "coverage": 0.9400804573364387
+      "coverage": 0.9695109040863857
     },
     {
       "routeId": "91-3-j26-1",
@@ -543,9 +642,9 @@
       "line": "3",
       "mode": "tram",
       "trips": 280,
-      "matched": 3144,
+      "matched": 3962,
       "total": 6043,
-      "coverage": 0.5202713883832534
+      "coverage": 0.6556346185669369
     },
     {
       "routeId": "91-6-j26-1",
@@ -553,9 +652,9 @@
       "line": "6",
       "mode": "tram",
       "trips": 304,
-      "matched": 7454,
+      "matched": 8602,
       "total": 9681,
-      "coverage": 0.7699617808077678
+      "coverage": 0.8885445718417518
     },
     {
       "routeId": "91-8-A-j26-1",
@@ -563,9 +662,9 @@
       "line": "8",
       "mode": "tram",
       "trips": 302,
-      "matched": 5992,
+      "matched": 6141,
       "total": 7908,
-      "coverage": 0.7577137076378351
+      "coverage": 0.7765553869499241
     },
     {
       "routeId": "91-14-j26-1",
@@ -573,9 +672,9 @@
       "line": "14",
       "mode": "tram",
       "trips": 279,
-      "matched": 7011,
+      "matched": 7699,
       "total": 7758,
-      "coverage": 0.9037122969837587
+      "coverage": 0.9923949471513277
     },
     {
       "routeId": "91-15-j26-1",
@@ -583,9 +682,9 @@
       "line": "15",
       "mode": "tram",
       "trips": 272,
-      "matched": 3478,
+      "matched": 4159,
       "total": 4252,
-      "coverage": 0.8179680150517403
+      "coverage": 0.9781279397930386
     },
     {
       "routeId": "91-16-j26-1",
@@ -593,9 +692,9 @@
       "line": "16",
       "mode": "tram",
       "trips": 270,
-      "matched": 4012,
+      "matched": 4286,
       "total": 4372,
-      "coverage": 0.9176578225068619
+      "coverage": 0.9803293687099726
     },
     {
       "routeId": "91-21-B-j26-1",
@@ -603,19 +702,1066 @@
       "line": "21",
       "mode": "tram",
       "trips": 39,
-      "matched": 289,
+      "matched": 324,
       "total": 336,
-      "coverage": 0.8601190476190477
+      "coverage": 0.9642857142857143
     }
   ],
   "geometry": {
-    "graphCount": 29,
-    "paths": 1043,
+    "graphCount": 30,
+    "paths": 1123,
     "uniqueDirectedRouteStopPairs": 2027,
-    "matchedUniqueDirectedRouteStopPairs": 1127,
-    "uniquePairCoverage": 0.5559940799210656,
+    "matchedUniqueDirectedRouteStopPairs": 1207,
+    "uniquePairCoverage": 0.5954612728169709,
     "maximumAcceptedSnapMetres": 109.05497828729473,
+    "projectionAlternatives": [
+      {
+        "routeId": "91-1-j26-1",
+        "agencyId": "823",
+        "line": "1",
+        "mode": "tram",
+        "from": "Basel, Bahnhof St. Johann",
+        "to": "Basel, Kannenfeldplatz",
+        "fromId": "ch:1:sloid:92322:1:1",
+        "toId": "ch:1:sloid:78144:1:1",
+        "occurrences": 137,
+        "pathIndex": 3,
+        "maximumSnapMetres": 2.255360931302164,
+        "pathMetres": 552.5255977562557,
+        "projectionChoice": {
+          "initialReason": "implausible-detour",
+          "nearestMaximumSnapMetres": 1.750015798936659,
+          "maximumAdditionalSnapMetres": 0.5053451323655049
+        }
+      },
+      {
+        "routeId": "91-1-j26-1",
+        "agencyId": "823",
+        "line": "1",
+        "mode": "tram",
+        "from": "Basel, Burgfelderplatz",
+        "to": "Basel, Hegenheimerstrasse",
+        "fromId": "ch:1:sloid:89303:2:3",
+        "toId": "ch:1:sloid:89323:1:1",
+        "occurrences": 137,
+        "pathIndex": 5,
+        "maximumSnapMetres": 2.4437162146550806,
+        "pathMetres": 239.84812630561115,
+        "projectionChoice": {
+          "initialReason": "implausible-detour",
+          "nearestMaximumSnapMetres": 0.2529950842528751,
+          "maximumAdditionalSnapMetres": 2.1907211304022054
+        }
+      },
+      {
+        "routeId": "91-1-j26-1",
+        "agencyId": "823",
+        "line": "1",
+        "mode": "tram",
+        "from": "Basel, Markthalle",
+        "to": "Basel, Bahnhof SBB",
+        "fromId": "ch:1:sloid:193:1:9",
+        "toId": "ch:1:sloid:78143:2:36",
+        "occurrences": 93,
+        "pathIndex": 11,
+        "maximumSnapMetres": 0.5512086327861072,
+        "pathMetres": 311.6204097406154,
+        "projectionChoice": {
+          "initialReason": "implausible-detour",
+          "nearestMaximumSnapMetres": 0.550376350307701,
+          "maximumAdditionalSnapMetres": 0.0008322824784061655
+        }
+      },
+      {
+        "routeId": "91-1-j26-1",
+        "agencyId": "823",
+        "line": "1",
+        "mode": "tram",
+        "from": "Basel, Bahnhof SBB",
+        "to": "Basel, Markthalle",
+        "fromId": "ch:1:sloid:78143:1:31",
+        "toId": "ch:1:sloid:193:1:2",
+        "occurrences": 136,
+        "pathIndex": 21,
+        "maximumSnapMetres": 0.8290439494553611,
+        "pathMetres": 297.82558840592947,
+        "projectionChoice": {
+          "initialReason": "implausible-detour",
+          "nearestMaximumSnapMetres": 0.8290439494553611,
+          "maximumAdditionalSnapMetres": 0.006520734644111403
+        }
+      },
+      {
+        "routeId": "91-1-j26-1",
+        "agencyId": "823",
+        "line": "1",
+        "mode": "tram",
+        "from": "Basel, Hegenheimerstrasse",
+        "to": "Basel, Burgfelderplatz",
+        "fromId": "ch:1:sloid:89323:1:2",
+        "toId": "ch:1:sloid:89303:2:4",
+        "occurrences": 136,
+        "pathIndex": 26,
+        "maximumSnapMetres": 1.7332361356061337,
+        "pathMetres": 233.7106595110031,
+        "projectionChoice": {
+          "initialReason": "implausible-detour",
+          "nearestMaximumSnapMetres": 0.960463751650941,
+          "maximumAdditionalSnapMetres": 0.7727723839551927
+        }
+      },
+      {
+        "routeId": "91-1-j26-1",
+        "agencyId": "823",
+        "line": "1",
+        "mode": "tram",
+        "from": "Basel, Kannenfeldplatz",
+        "to": "Basel, Bahnhof St. Johann",
+        "fromId": "ch:1:sloid:78144:1:2",
+        "toId": "ch:1:sloid:92322:1:2",
+        "occurrences": 136,
+        "pathIndex": 28,
+        "maximumSnapMetres": 1.4400490955635517,
+        "pathMetres": 555.8936005139602,
+        "projectionChoice": {
+          "initialReason": "implausible-detour",
+          "nearestMaximumSnapMetres": 1.2651268167649936,
+          "maximumAdditionalSnapMetres": 0.17492227879855804
+        }
+      },
+      {
+        "routeId": "91-1-j26-1",
+        "agencyId": "823",
+        "line": "1",
+        "mode": "tram",
+        "from": "Basel, Wettsteinplatz",
+        "to": "Basel, Kunstmuseum",
+        "fromId": "ch:1:sloid:89376:1:2",
+        "toId": "ch:1:sloid:89336:1:2",
+        "occurrences": 46,
+        "pathIndex": 36,
+        "maximumSnapMetres": 1.5760630326549194,
+        "pathMetres": 608.4728698704326,
+        "projectionChoice": {
+          "initialReason": "implausible-detour",
+          "nearestMaximumSnapMetres": 1.1954084604585458,
+          "maximumAdditionalSnapMetres": 0.38065457219637366
+        }
+      },
+      {
+        "routeId": "91-10-j26-1",
+        "agencyId": "37",
+        "line": "10",
+        "mode": "tram",
+        "from": "Basel, Münchensteinerstrasse",
+        "to": "Basel, Peter-Merian",
+        "fromId": "ch:1:sloid:88778:1:1",
+        "toId": "ch:1:sloid:88071:1:1",
+        "occurrences": 135,
+        "pathIndex": 104,
+        "maximumSnapMetres": 1.9724554137974917,
+        "pathMetres": 425.62851380111374,
+        "projectionChoice": {
+          "initialReason": "implausible-detour",
+          "nearestMaximumSnapMetres": 0.7298047730070647,
+          "maximumAdditionalSnapMetres": 1.242650640790427
+        }
+      },
+      {
+        "routeId": "91-10-j26-1",
+        "agencyId": "37",
+        "line": "10",
+        "mode": "tram",
+        "from": "Basel, Peter-Merian",
+        "to": "Basel, Bahnhof SBB",
+        "fromId": "ch:1:sloid:88071:1:1",
+        "toId": "ch:1:sloid:78143:1:35",
+        "occurrences": 135,
+        "pathIndex": 105,
+        "maximumSnapMetres": 1.9724554137974917,
+        "pathMetres": 585.0592654426642,
+        "projectionChoice": {
+          "initialReason": "implausible-detour",
+          "nearestMaximumSnapMetres": 0.7298047730070647,
+          "maximumAdditionalSnapMetres": 1.242650640790427
+        }
+      },
+      {
+        "routeId": "91-11-j26-1",
+        "agencyId": "37",
+        "line": "11",
+        "mode": "tram",
+        "from": "Basel, Voltaplatz",
+        "to": "Basel, Mülhauserstrasse",
+        "fromId": "ch:1:sloid:88782:1:2",
+        "toId": "ch:1:sloid:88777:1:2",
+        "occurrences": 141,
+        "pathIndex": 122,
+        "maximumSnapMetres": 2.578184288040755,
+        "pathMetres": 193.2996632624769,
+        "projectionChoice": {
+          "initialReason": "implausible-detour",
+          "nearestMaximumSnapMetres": 0.8765494763682086,
+          "maximumAdditionalSnapMetres": 1.7016348116725464
+        }
+      },
+      {
+        "routeId": "91-11-j26-1",
+        "agencyId": "37",
+        "line": "11",
+        "mode": "tram",
+        "from": "Basel, St. Johanns-Tor",
+        "to": "Basel, Johanniterbrücke",
+        "fromId": "ch:1:sloid:88781:1:2",
+        "toId": "ch:1:sloid:88772:1:2",
+        "occurrences": 141,
+        "pathIndex": 124,
+        "maximumSnapMetres": 2.137983697570306,
+        "pathMetres": 303.18886916857866,
+        "projectionChoice": {
+          "initialReason": "implausible-detour",
+          "nearestMaximumSnapMetres": 1.1088826639191243,
+          "maximumAdditionalSnapMetres": 1.56230100963087
+        }
+      },
+      {
+        "routeId": "91-11-j26-1",
+        "agencyId": "37",
+        "line": "11",
+        "mode": "tram",
+        "from": "Basel, Münchensteinerstrasse",
+        "to": "Basel, Peter-Merian",
+        "fromId": "ch:1:sloid:88778:1:1",
+        "toId": "ch:1:sloid:88071:1:1",
+        "occurrences": 143,
+        "pathIndex": 138,
+        "maximumSnapMetres": 1.9734670825099774,
+        "pathMetres": 425.6246840973414,
+        "projectionChoice": {
+          "initialReason": "implausible-detour",
+          "nearestMaximumSnapMetres": 0.729097514806319,
+          "maximumAdditionalSnapMetres": 1.2443695677036584
+        }
+      },
+      {
+        "routeId": "91-11-j26-1",
+        "agencyId": "37",
+        "line": "11",
+        "mode": "tram",
+        "from": "Basel, Peter-Merian",
+        "to": "Basel, Bahnhof SBB",
+        "fromId": "ch:1:sloid:88071:1:1",
+        "toId": "ch:1:sloid:78143:1:35",
+        "occurrences": 143,
+        "pathIndex": 139,
+        "maximumSnapMetres": 1.9734670825099774,
+        "pathMetres": 585.0559647104034,
+        "projectionChoice": {
+          "initialReason": "implausible-detour",
+          "nearestMaximumSnapMetres": 0.729097514806319,
+          "maximumAdditionalSnapMetres": 1.2443695677036584
+        }
+      },
+      {
+        "routeId": "91-11-j26-1",
+        "agencyId": "37",
+        "line": "11",
+        "mode": "tram",
+        "from": "Basel, St. Johanns-Tor",
+        "to": "Basel, Mülhauserstrasse",
+        "fromId": "ch:1:sloid:88781:1:1",
+        "toId": "ch:1:sloid:88777:1:1",
+        "occurrences": 143,
+        "pathIndex": 148,
+        "maximumSnapMetres": 3.3751696739004884,
+        "pathMetres": 185.13846250014032,
+        "projectionChoice": {
+          "initialReason": "implausible-detour",
+          "nearestMaximumSnapMetres": 0.4606972017428559,
+          "maximumAdditionalSnapMetres": 3.3031583809177882
+        }
+      },
+      {
+        "routeId": "91-11-j26-1",
+        "agencyId": "37",
+        "line": "11",
+        "mode": "tram",
+        "from": "Basel, Mülhauserstrasse",
+        "to": "Basel, Voltaplatz",
+        "fromId": "ch:1:sloid:88777:1:1",
+        "toId": "ch:1:sloid:88782:1:1",
+        "occurrences": 143,
+        "pathIndex": 149,
+        "maximumSnapMetres": 3.3751696739004884,
+        "pathMetres": 263.8239335212062,
+        "projectionChoice": {
+          "initialReason": "implausible-detour",
+          "nearestMaximumSnapMetres": 0.10868714634192797,
+          "maximumAdditionalSnapMetres": 3.3031583809177882
+        }
+      },
+      {
+        "routeId": "91-14-j26-1",
+        "agencyId": "823",
+        "line": "14",
+        "mode": "tram",
+        "from": "Basel, Brombacherstrasse",
+        "to": "Basel, Musical Theater",
+        "fromId": "ch:1:sloid:89298:1:2",
+        "toId": "ch:1:sloid:89344:1:2",
+        "occurrences": 138,
+        "pathIndex": 153,
+        "maximumSnapMetres": 2.2923334853341446,
+        "pathMetres": 326.52112666899916,
+        "projectionChoice": {
+          "initialReason": "implausible-detour",
+          "nearestMaximumSnapMetres": 1.5490886733230294,
+          "maximumAdditionalSnapMetres": 0.7432448120111153
+        }
+      },
+      {
+        "routeId": "91-14-j26-1",
+        "agencyId": "823",
+        "line": "14",
+        "mode": "tram",
+        "from": "Muttenz, Schützenhausstrasse",
+        "to": "Muttenz, Dorf",
+        "fromId": "ch:1:sloid:17412:1:2",
+        "toId": "ch:1:sloid:256:1:2",
+        "occurrences": 139,
+        "pathIndex": 173,
+        "maximumSnapMetres": 1.546098645735703,
+        "pathMetres": 546.5836259164575,
+        "projectionChoice": {
+          "initialReason": "implausible-detour",
+          "nearestMaximumSnapMetres": 1.2703592323571407,
+          "maximumAdditionalSnapMetres": 0.27573941337856245
+        }
+      },
+      {
+        "routeId": "91-14-j26-1",
+        "agencyId": "823",
+        "line": "14",
+        "mode": "tram",
+        "from": "Muttenz, Dorf",
+        "to": "Muttenz, Rothausstrasse",
+        "fromId": "ch:1:sloid:256:1:2",
+        "toId": "ch:1:sloid:17411:1:2",
+        "occurrences": 139,
+        "pathIndex": 174,
+        "maximumSnapMetres": 1.546098645735703,
+        "pathMetres": 673.2713325438366,
+        "projectionChoice": {
+          "initialReason": "implausible-detour",
+          "nearestMaximumSnapMetres": 1.2703592323571407,
+          "maximumAdditionalSnapMetres": 0.27573941337856245
+        }
+      },
+      {
+        "routeId": "91-14-j26-1",
+        "agencyId": "823",
+        "line": "14",
+        "mode": "tram",
+        "from": "Pratteln, Kästeli",
+        "to": "Muttenz, Lachmatt",
+        "fromId": "ch:1:sloid:17416:1:1",
+        "toId": "ch:1:sloid:17417:1:1",
+        "occurrences": 136,
+        "pathIndex": 183,
+        "maximumSnapMetres": 1.6303444237524092,
+        "pathMetres": 691.1326900280172,
+        "projectionChoice": {
+          "initialReason": "implausible-detour",
+          "nearestMaximumSnapMetres": 1.5554652956676422,
+          "maximumAdditionalSnapMetres": 0.07487912808476693
+        }
+      },
+      {
+        "routeId": "91-14-j26-1",
+        "agencyId": "823",
+        "line": "14",
+        "mode": "tram",
+        "from": "Basel, Bankverein",
+        "to": "Basel, Theater",
+        "fromId": "ch:1:sloid:237:2:3",
+        "toId": "ch:1:sloid:994:1:2",
+        "occurrences": 1,
+        "pathIndex": 198,
+        "maximumSnapMetres": 109.05497828729473,
+        "pathMetres": 178.47675154163446,
+        "projectionChoice": {
+          "initialReason": "implausible-detour",
+          "nearestMaximumSnapMetres": 109.05497828729473,
+          "maximumAdditionalSnapMetres": 1.7447357718107601
+        }
+      },
+      {
+        "routeId": "91-14-j26-1",
+        "agencyId": "823",
+        "line": "14",
+        "mode": "tram",
+        "from": "Basel, Dreirosenbrücke",
+        "to": "Basel, Brombacherstrasse",
+        "fromId": "ch:1:sloid:88768:1:4",
+        "toId": "ch:1:sloid:89298:1:2",
+        "occurrences": 135,
+        "pathIndex": 210,
+        "maximumSnapMetres": 2.2923334853341446,
+        "pathMetres": 389.2045557115262,
+        "projectionChoice": {
+          "initialReason": "implausible-detour",
+          "nearestMaximumSnapMetres": 1.5490886733230294,
+          "maximumAdditionalSnapMetres": 0.7432448120111153
+        }
+      },
+      {
+        "routeId": "91-15-j26-1",
+        "agencyId": "823",
+        "line": "15",
+        "mode": "tram",
+        "from": "Basel, Bruderholz",
+        "to": "Basel, Airolostrasse",
+        "fromId": "ch:1:sloid:89299:1:1",
+        "toId": "ch:1:sloid:89291:1:1",
+        "occurrences": 134,
+        "pathIndex": 213,
+        "maximumSnapMetres": 3.207629346644344,
+        "pathMetres": 207.2384025681871,
+        "projectionChoice": {
+          "initialReason": "implausible-detour",
+          "nearestMaximumSnapMetres": 1.7204576410326589,
+          "maximumAdditionalSnapMetres": 1.4871717056116853
+        }
+      },
+      {
+        "routeId": "91-15-j26-1",
+        "agencyId": "823",
+        "line": "15",
+        "mode": "tram",
+        "from": "Basel, Studio Basel",
+        "to": "Basel, Lerchenstrasse",
+        "fromId": "ch:1:sloid:89367:1:1",
+        "toId": "ch:1:sloid:89339:1:1",
+        "occurrences": 134,
+        "pathIndex": 215,
+        "maximumSnapMetres": 2.245548460055955,
+        "pathMetres": 217.1072039060076,
+        "projectionChoice": {
+          "initialReason": "implausible-detour",
+          "nearestMaximumSnapMetres": 0.8828577899986625,
+          "maximumAdditionalSnapMetres": 1.3626906700572925
+        }
+      },
+      {
+        "routeId": "91-15-j26-1",
+        "agencyId": "823",
+        "line": "15",
+        "mode": "tram",
+        "from": "Basel, Lerchenstrasse",
+        "to": "Basel, Wolfschlucht",
+        "fromId": "ch:1:sloid:89339:1:1",
+        "toId": "ch:1:sloid:89379:1:1",
+        "occurrences": 134,
+        "pathIndex": 216,
+        "maximumSnapMetres": 2.245548460055955,
+        "pathMetres": 487.11849762198125,
+        "projectionChoice": {
+          "initialReason": "implausible-detour",
+          "nearestMaximumSnapMetres": 1.100274551466495,
+          "maximumAdditionalSnapMetres": 1.3626906700572925
+        }
+      },
+      {
+        "routeId": "91-15-j26-1",
+        "agencyId": "823",
+        "line": "15",
+        "mode": "tram",
+        "from": "Basel, Münchensteinerstrasse",
+        "to": "Basel, Heiliggeistkirche",
+        "fromId": "ch:1:sloid:88778:1:1",
+        "toId": "ch:1:sloid:147:1:2",
+        "occurrences": 3,
+        "pathIndex": 228,
+        "maximumSnapMetres": 50.23911340940023,
+        "pathMetres": 176.71723890049927,
+        "projectionChoice": {
+          "initialReason": "implausible-detour",
+          "nearestMaximumSnapMetres": 50.23911340940023,
+          "maximumAdditionalSnapMetres": 0.2550242644067071
+        }
+      },
+      {
+        "routeId": "91-15-j26-1",
+        "agencyId": "823",
+        "line": "15",
+        "mode": "tram",
+        "from": "Basel, Lerchenstrasse",
+        "to": "Basel, Studio Basel",
+        "fromId": "ch:1:sloid:89339:1:2",
+        "toId": "ch:1:sloid:89367:1:2",
+        "occurrences": 138,
+        "pathIndex": 233,
+        "maximumSnapMetres": 1.5270555902825576,
+        "pathMetres": 218.18013224259656,
+        "projectionChoice": {
+          "initialReason": "implausible-detour",
+          "nearestMaximumSnapMetres": 1.1521228316387981,
+          "maximumAdditionalSnapMetres": 0.3749327586437594
+        }
+      },
+      {
+        "routeId": "91-15-j26-1",
+        "agencyId": "823",
+        "line": "15",
+        "mode": "tram",
+        "from": "Basel, Studio Basel",
+        "to": "Basel, Airolostrasse",
+        "fromId": "ch:1:sloid:89367:1:2",
+        "toId": "ch:1:sloid:89291:1:2",
+        "occurrences": 138,
+        "pathIndex": 234,
+        "maximumSnapMetres": 1.5270555902825576,
+        "pathMetres": 299.9589491049472,
+        "projectionChoice": {
+          "initialReason": "implausible-detour",
+          "nearestMaximumSnapMetres": 1.1521228316387981,
+          "maximumAdditionalSnapMetres": 0.3749327586437594
+        }
+      },
+      {
+        "routeId": "91-16-j26-1",
+        "agencyId": "823",
+        "line": "16",
+        "mode": "tram",
+        "from": "Basel, Hauensteinstrasse",
+        "to": "Basel, Hechtliacker",
+        "fromId": "ch:1:sloid:89321:1:1",
+        "toId": "ch:1:sloid:89322:1:1",
+        "occurrences": 135,
+        "pathIndex": 249,
+        "maximumSnapMetres": 1.5457243691362381,
+        "pathMetres": 433.4291811592114,
+        "projectionChoice": {
+          "initialReason": "implausible-detour",
+          "nearestMaximumSnapMetres": 1.5452417978469044,
+          "maximumAdditionalSnapMetres": 0.00048257128933371085
+        }
+      },
+      {
+        "routeId": "91-16-j26-1",
+        "agencyId": "823",
+        "line": "16",
+        "mode": "tram",
+        "from": "Basel, Jakobsberg",
+        "to": "Basel, Leimgrubenweg",
+        "fromId": "ch:1:sloid:88063:1:1",
+        "toId": "ch:1:sloid:88946:1:1",
+        "occurrences": 135,
+        "pathIndex": 251,
+        "maximumSnapMetres": 1.913400014378614,
+        "pathMetres": 559.3646219644206,
+        "projectionChoice": {
+          "initialReason": "implausible-detour",
+          "nearestMaximumSnapMetres": 1.3362380276175323,
+          "maximumAdditionalSnapMetres": 0.5771619867610818
+        }
+      },
+      {
+        "routeId": "91-16-j26-1",
+        "agencyId": "823",
+        "line": "16",
+        "mode": "tram",
+        "from": "Basel, Heiliggeistkirche",
+        "to": "Basel, Zwinglihaus",
+        "fromId": "ch:1:sloid:147:1:2",
+        "toId": "ch:1:sloid:89383:1:2",
+        "occurrences": 4,
+        "pathIndex": 264,
+        "maximumSnapMetres": 20.84347828555504,
+        "pathMetres": 301.8275817484904,
+        "projectionChoice": {
+          "initialReason": "implausible-detour",
+          "nearestMaximumSnapMetres": 20.84347828555504,
+          "maximumAdditionalSnapMetres": 2.708427842175494
+        }
+      },
+      {
+        "routeId": "91-2-j26-1",
+        "agencyId": "823",
+        "line": "2",
+        "mode": "tram",
+        "from": "Basel, Wettsteinplatz",
+        "to": "Basel, Kunstmuseum",
+        "fromId": "ch:1:sloid:89376:1:2",
+        "toId": "ch:1:sloid:89336:1:2",
+        "occurrences": 136,
+        "pathIndex": 370,
+        "maximumSnapMetres": 1.5927473861958976,
+        "pathMetres": 608.4745866093293,
+        "projectionChoice": {
+          "initialReason": "implausible-detour",
+          "nearestMaximumSnapMetres": 1.1954084604585458,
+          "maximumAdditionalSnapMetres": 0.39733892573735186
+        }
+      },
+      {
+        "routeId": "91-2-j26-1",
+        "agencyId": "823",
+        "line": "2",
+        "mode": "tram",
+        "from": "Basel, Messeplatz",
+        "to": "Basel, Wettsteinplatz",
+        "fromId": "ch:1:sloid:899:1:4",
+        "toId": "ch:1:sloid:89376:1:2",
+        "occurrences": 3,
+        "pathIndex": 382,
+        "maximumSnapMetres": 1.5927473861958976,
+        "pathMetres": 485.6309663971985,
+        "projectionChoice": {
+          "initialReason": "implausible-detour",
+          "nearestMaximumSnapMetres": 1.1954084604585458,
+          "maximumAdditionalSnapMetres": 0.39733892573735186
+        }
+      },
+      {
+        "routeId": "91-21-B-j26-1",
+        "agencyId": "823",
+        "line": "21",
+        "mode": "tram",
+        "from": "Basel, Brombacherstrasse",
+        "to": "Basel, Musical Theater",
+        "fromId": "ch:1:sloid:89298:1:2",
+        "toId": "ch:1:sloid:89344:1:2",
+        "occurrences": 18,
+        "pathIndex": 405,
+        "maximumSnapMetres": 2.264698952168057,
+        "pathMetres": 326.58856758374526,
+        "projectionChoice": {
+          "initialReason": "implausible-detour",
+          "nearestMaximumSnapMetres": 1.4954913375827683,
+          "maximumAdditionalSnapMetres": 0.7692076145852886
+        }
+      },
+      {
+        "routeId": "91-21-B-j26-1",
+        "agencyId": "823",
+        "line": "21",
+        "mode": "tram",
+        "from": "Basel, Dreirosenbrücke",
+        "to": "Basel, Brombacherstrasse",
+        "fromId": "ch:1:sloid:88768:1:4",
+        "toId": "ch:1:sloid:89298:1:2",
+        "occurrences": 17,
+        "pathIndex": 410,
+        "maximumSnapMetres": 2.264698952168057,
+        "pathMetres": 389.37157081565147,
+        "projectionChoice": {
+          "initialReason": "implausible-detour",
+          "nearestMaximumSnapMetres": 1.4954913375827683,
+          "maximumAdditionalSnapMetres": 0.7692076145852886
+        }
+      },
+      {
+        "routeId": "91-3-j26-1",
+        "agencyId": "823",
+        "line": "3",
+        "mode": "tram",
+        "from": "Basel, St. Alban-Tor",
+        "to": "Basel, Waldenburgerstrasse",
+        "fromId": "ch:1:sloid:89364:1:2",
+        "toId": "ch:1:sloid:89372:1:2",
+        "occurrences": 138,
+        "pathIndex": 417,
+        "maximumSnapMetres": 2.3548964673191306,
+        "pathMetres": 445.41365651410285,
+        "projectionChoice": {
+          "initialReason": "implausible-detour",
+          "nearestMaximumSnapMetres": 1.0091664755177527,
+          "maximumAdditionalSnapMetres": 1.3457299918013779
+        }
+      },
+      {
+        "routeId": "91-3-j26-1",
+        "agencyId": "823",
+        "line": "3",
+        "mode": "tram",
+        "from": "Basel, Waldenburgerstrasse",
+        "to": "Basel, Breite",
+        "fromId": "ch:1:sloid:89372:1:2",
+        "toId": "ch:1:sloid:78306:1:2",
+        "occurrences": 138,
+        "pathIndex": 418,
+        "maximumSnapMetres": 3.343797721689291,
+        "pathMetres": 380.2521881654663,
+        "projectionChoice": {
+          "initialReason": "implausible-detour",
+          "nearestMaximumSnapMetres": 1.2365944643621638,
+          "maximumAdditionalSnapMetres": 2.703034740434905
+        }
+      },
+      {
+        "routeId": "91-3-j26-1",
+        "agencyId": "823",
+        "line": "3",
+        "mode": "tram",
+        "from": "Basel, Aeschenplatz",
+        "to": "Basel, Bankverein",
+        "fromId": "ch:1:sloid:73:4:41",
+        "toId": "ch:1:sloid:237:2:3",
+        "occurrences": 1,
+        "pathIndex": 427,
+        "maximumSnapMetres": 5.215463415157613,
+        "pathMetres": 308.57090223531134,
+        "projectionChoice": {
+          "initialReason": "implausible-detour",
+          "nearestMaximumSnapMetres": 5.215463415157613,
+          "maximumAdditionalSnapMetres": 1.7793734183187115
+        }
+      },
+      {
+        "routeId": "91-3-j26-1",
+        "agencyId": "823",
+        "line": "3",
+        "mode": "tram",
+        "from": "Basel, Bankverein",
+        "to": "Basel, Theater",
+        "fromId": "ch:1:sloid:237:2:3",
+        "toId": "ch:1:sloid:994:1:2",
+        "occurrences": 1,
+        "pathIndex": 428,
+        "maximumSnapMetres": 108.99254502986271,
+        "pathMetres": 178.50537724211358,
+        "projectionChoice": {
+          "initialReason": "implausible-detour",
+          "nearestMaximumSnapMetres": 108.99254502986271,
+          "maximumAdditionalSnapMetres": 1.7793734183187115
+        }
+      },
+      {
+        "routeId": "91-3-j26-1",
+        "agencyId": "823",
+        "line": "3",
+        "mode": "tram",
+        "from": "Basel, Hegenheimerstrasse",
+        "to": "Basel, Burgfelderplatz",
+        "fromId": "ch:1:sloid:89323:1:2",
+        "toId": "ch:1:sloid:89303:1:1",
+        "occurrences": 137,
+        "pathIndex": 429,
+        "maximumSnapMetres": 104.92342269318311,
+        "pathMetres": 212.68382498879024,
+        "projectionChoice": {
+          "initialReason": "implausible-detour",
+          "nearestMaximumSnapMetres": 102.22226827023925,
+          "maximumAdditionalSnapMetres": 2.7011544229438584
+        }
+      },
+      {
+        "routeId": "91-3-j26-1",
+        "agencyId": "823",
+        "line": "3",
+        "mode": "tram",
+        "from": "Basel, Aeschenplatz",
+        "to": "Basel, Bankverein",
+        "fromId": "ch:1:sloid:73:4:1",
+        "toId": "ch:1:sloid:237:2:3",
+        "occurrences": 1,
+        "pathIndex": 434,
+        "maximumSnapMetres": 39.1740417381932,
+        "pathMetres": 302.91907007763854,
+        "projectionChoice": {
+          "initialReason": "implausible-detour",
+          "nearestMaximumSnapMetres": 39.1740417381932,
+          "maximumAdditionalSnapMetres": 1.7793734183187115
+        }
+      },
+      {
+        "routeId": "91-3-j26-1",
+        "agencyId": "823",
+        "line": "3",
+        "mode": "tram",
+        "from": "Birsfelden, Bären",
+        "to": "Basel, Breite",
+        "fromId": "ch:1:sloid:89395:1:1",
+        "toId": "ch:1:sloid:78306:1:1",
+        "occurrences": 134,
+        "pathIndex": 442,
+        "maximumSnapMetres": 1.5688666474016517,
+        "pathMetres": 369.51925524714727,
+        "projectionChoice": {
+          "initialReason": "implausible-detour",
+          "nearestMaximumSnapMetres": 1.232989818723509,
+          "maximumAdditionalSnapMetres": 0.3358768286781426
+        }
+      },
+      {
+        "routeId": "91-3-j26-1",
+        "agencyId": "823",
+        "line": "3",
+        "mode": "tram",
+        "from": "Basel, Breite",
+        "to": "Basel, Waldenburgerstrasse",
+        "fromId": "ch:1:sloid:78306:1:1",
+        "toId": "ch:1:sloid:89372:1:1",
+        "occurrences": 134,
+        "pathIndex": 443,
+        "maximumSnapMetres": 1.5688666474016517,
+        "pathMetres": 381.675512307502,
+        "projectionChoice": {
+          "initialReason": "implausible-detour",
+          "nearestMaximumSnapMetres": 1.232989818723509,
+          "maximumAdditionalSnapMetres": 0.3358768286781426
+        }
+      },
+      {
+        "routeId": "91-3-j26-1",
+        "agencyId": "823",
+        "line": "3",
+        "mode": "tram",
+        "from": "Basel, Hardstrasse",
+        "to": "Basel, Aeschenplatz",
+        "fromId": "ch:1:sloid:89320:1:1",
+        "toId": "ch:1:sloid:73:4:2",
+        "occurrences": 134,
+        "pathIndex": 446,
+        "maximumSnapMetres": 101.55034057664407,
+        "pathMetres": 425.2782559994831,
+        "projectionChoice": {
+          "initialReason": "implausible-detour",
+          "nearestMaximumSnapMetres": 101.55034057664407,
+          "maximumAdditionalSnapMetres": 2.8746034605042032
+        }
+      },
+      {
+        "routeId": "91-6-j26-1",
+        "agencyId": "823",
+        "line": "6",
+        "mode": "tram",
+        "from": "Riehen, Weilstrasse",
+        "to": "Riehen, Fondation Beyeler",
+        "fromId": "ch:1:sloid:89485:1:2",
+        "toId": "ch:1:sloid:89451:1:2",
+        "occurrences": 131,
+        "pathIndex": 450,
+        "maximumSnapMetres": 2.22930414331769,
+        "pathMetres": 257.56502893902774,
+        "projectionChoice": {
+          "initialReason": "implausible-detour",
+          "nearestMaximumSnapMetres": 1.7033290373194063,
+          "maximumAdditionalSnapMetres": 0.5259751059982838
+        }
+      },
+      {
+        "routeId": "91-6-j26-1",
+        "agencyId": "823",
+        "line": "6",
+        "mode": "tram",
+        "from": "Riehen, Fondation Beyeler",
+        "to": "Riehen, Dorf",
+        "fromId": "ch:1:sloid:89451:1:2",
+        "toId": "ch:1:sloid:89450:1:2",
+        "occurrences": 131,
+        "pathIndex": 451,
+        "maximumSnapMetres": 2.427452939196733,
+        "pathMetres": 311.2596400595239,
+        "projectionChoice": {
+          "initialReason": "implausible-detour",
+          "nearestMaximumSnapMetres": 0.66130237693608,
+          "maximumAdditionalSnapMetres": 2.1156725915934786
+        }
+      },
+      {
+        "routeId": "91-6-j26-1",
+        "agencyId": "823",
+        "line": "6",
+        "mode": "tram",
+        "from": "Basel, Brausebad",
+        "to": "Basel, Allschwilerplatz",
+        "fromId": "ch:1:sloid:81062:1:2",
+        "toId": "ch:1:sloid:89293:1:2",
+        "occurrences": 144,
+        "pathIndex": 469,
+        "maximumSnapMetres": 15.922492915919255,
+        "pathMetres": 451.19512990025737,
+        "projectionChoice": {
+          "initialReason": "implausible-detour",
+          "nearestMaximumSnapMetres": 13.2201238172878,
+          "maximumAdditionalSnapMetres": 2.702369098631456
+        }
+      },
+      {
+        "routeId": "91-6-j26-1",
+        "agencyId": "823",
+        "line": "6",
+        "mode": "tram",
+        "from": "Allschwil, Kirche",
+        "to": "Allschwil, Ziegelei",
+        "fromId": "ch:1:sloid:89286:1:2",
+        "toId": "ch:1:sloid:89290:1:2",
+        "occurrences": 149,
+        "pathIndex": 474,
+        "maximumSnapMetres": 1.9487917534082841,
+        "pathMetres": 446.56594122515605,
+        "projectionChoice": {
+          "initialReason": "implausible-detour",
+          "nearestMaximumSnapMetres": 0.8523709592797402,
+          "maximumAdditionalSnapMetres": 1.096420794128544
+        }
+      },
+      {
+        "routeId": "91-6-j26-1",
+        "agencyId": "823",
+        "line": "6",
+        "mode": "tram",
+        "from": "Allschwil, Ziegelei",
+        "to": "Allschwil, Kirche",
+        "fromId": "ch:1:sloid:89290:1:1",
+        "toId": "ch:1:sloid:89286:1:1",
+        "occurrences": 146,
+        "pathIndex": 481,
+        "maximumSnapMetres": 2.1277969540176,
+        "pathMetres": 528.2244225547093,
+        "projectionChoice": {
+          "initialReason": "implausible-detour",
+          "nearestMaximumSnapMetres": 0.8525413777034947,
+          "maximumAdditionalSnapMetres": 1.454548127398379
+        }
+      },
+      {
+        "routeId": "91-6-j26-1",
+        "agencyId": "823",
+        "line": "6",
+        "mode": "tram",
+        "from": "Allschwil, Kirche",
+        "to": "Allschwil, Merkurstrasse",
+        "fromId": "ch:1:sloid:89286:1:1",
+        "toId": "ch:1:sloid:89288:1:1",
+        "occurrences": 146,
+        "pathIndex": 482,
+        "maximumSnapMetres": 1.5127304207075616,
+        "pathMetres": 306.939924012516,
+        "projectionChoice": {
+          "initialReason": "implausible-detour",
+          "nearestMaximumSnapMetres": 1.2858788699167438,
+          "maximumAdditionalSnapMetres": 0.22685155079081776
+        }
+      },
+      {
+        "routeId": "91-6-j26-1",
+        "agencyId": "823",
+        "line": "6",
+        "mode": "tram",
+        "from": "Riehen, Habermatten",
+        "to": "Riehen, Niederholzboden",
+        "fromId": "ch:1:sloid:89456:1:1",
+        "toId": "ch:1:sloid:89472:1:1",
+        "occurrences": 145,
+        "pathIndex": 501,
+        "maximumSnapMetres": 2.450187486081472,
+        "pathMetres": 488.7532040352836,
+        "projectionChoice": {
+          "initialReason": "implausible-detour",
+          "nearestMaximumSnapMetres": 0.37542914582472514,
+          "maximumAdditionalSnapMetres": 2.149239849322298
+        }
+      },
+      {
+        "routeId": "91-6-j26-1",
+        "agencyId": "823",
+        "line": "6",
+        "mode": "tram",
+        "from": "Riehen, Niederholzboden",
+        "to": "Riehen, Burgstrasse",
+        "fromId": "ch:1:sloid:89472:1:1",
+        "toId": "ch:1:sloid:89446:1:1",
+        "occurrences": 145,
+        "pathIndex": 502,
+        "maximumSnapMetres": 1.7998106352941283,
+        "pathMetres": 320.10362030358255,
+        "projectionChoice": {
+          "initialReason": "implausible-detour",
+          "nearestMaximumSnapMetres": 0.9758190701177379,
+          "maximumAdditionalSnapMetres": 0.8239915651763904
+        }
+      },
+      {
+        "routeId": "91-6-j26-1",
+        "agencyId": "823",
+        "line": "6",
+        "mode": "tram",
+        "from": "Riehen, Fondation Beyeler",
+        "to": "Riehen, Dorf",
+        "fromId": "ch:1:sloid:89451:1:3",
+        "toId": "ch:1:sloid:89450:1:2",
+        "occurrences": 11,
+        "pathIndex": 511,
+        "maximumSnapMetres": 7.894340824013042,
+        "pathMetres": 272.81694320061456,
+        "projectionChoice": {
+          "initialReason": "implausible-detour",
+          "nearestMaximumSnapMetres": 7.894340824013042,
+          "maximumAdditionalSnapMetres": 2.435743465949076
+        }
+      },
+      {
+        "routeId": "91-8-A-j26-1",
+        "agencyId": "823",
+        "line": "8",
+        "mode": "tram",
+        "from": "Basel, Claraplatz",
+        "to": "Basel, Rheingasse",
+        "fromId": "ch:1:sloid:898:3:4",
+        "toId": "ch:1:sloid:88779:1:2",
+        "occurrences": 148,
+        "pathIndex": 528,
+        "maximumSnapMetres": 33.263512131069966,
+        "pathMetres": 183.6234238747623,
+        "projectionChoice": {
+          "initialReason": "implausible-detour",
+          "nearestMaximumSnapMetres": 33.263512131069966,
+          "maximumAdditionalSnapMetres": 2.1798450682043247
+        }
+      },
+      {
+        "routeId": "91-8-A-j26-1",
+        "agencyId": "823",
+        "line": "8",
+        "mode": "tram",
+        "from": "Basel, Dreirosenbrücke",
+        "to": "Basel, Ciba",
+        "fromId": "ch:1:sloid:88768:1:4",
+        "toId": "ch:1:sloid:88767:1:1",
+        "occurrences": 1,
+        "pathIndex": 544,
+        "maximumSnapMetres": 32.319295864724516,
+        "pathMetres": 325.9688715710923,
+        "projectionChoice": {
+          "initialReason": "implausible-detour",
+          "nearestMaximumSnapMetres": 32.319295864724516,
+          "maximumAdditionalSnapMetres": 2.524921422224142
+        }
+      }
+    ],
     "worstAcceptedSnaps": [
+      {
+        "routeId": "91-14-j26-1",
+        "agencyId": "823",
+        "line": "14",
+        "mode": "tram",
+        "from": "Basel, Bankverein",
+        "to": "Basel, Theater",
+        "fromId": "ch:1:sloid:237:2:3",
+        "toId": "ch:1:sloid:994:1:2",
+        "occurrences": 1,
+        "pathIndex": 198,
+        "maximumSnapMetres": 109.05497828729473,
+        "pathMetres": 178.47675154163446,
+        "projectionChoice": {
+          "initialReason": "implausible-detour",
+          "nearestMaximumSnapMetres": 109.05497828729473,
+          "maximumAdditionalSnapMetres": 1.7447357718107601
+        }
+      },
       {
         "routeId": "91-14-j26-1",
         "agencyId": "823",
@@ -626,9 +1772,66 @@
         "fromId": "ch:1:sloid:897:1:2",
         "toId": "ch:1:sloid:994:1:2",
         "occurrences": 2,
-        "pathIndex": 190,
+        "pathIndex": 211,
         "maximumSnapMetres": 109.05497828729473,
         "pathMetres": 85.85212691005034
+      },
+      {
+        "routeId": "91-3-j26-1",
+        "agencyId": "823",
+        "line": "3",
+        "mode": "tram",
+        "from": "Basel, Bankverein",
+        "to": "Basel, Theater",
+        "fromId": "ch:1:sloid:237:2:3",
+        "toId": "ch:1:sloid:994:1:2",
+        "occurrences": 1,
+        "pathIndex": 428,
+        "maximumSnapMetres": 108.99254502986271,
+        "pathMetres": 178.50537724211358,
+        "projectionChoice": {
+          "initialReason": "implausible-detour",
+          "nearestMaximumSnapMetres": 108.99254502986271,
+          "maximumAdditionalSnapMetres": 1.7793734183187115
+        }
+      },
+      {
+        "routeId": "91-3-j26-1",
+        "agencyId": "823",
+        "line": "3",
+        "mode": "tram",
+        "from": "Basel, Hegenheimerstrasse",
+        "to": "Basel, Burgfelderplatz",
+        "fromId": "ch:1:sloid:89323:1:2",
+        "toId": "ch:1:sloid:89303:1:1",
+        "occurrences": 137,
+        "pathIndex": 429,
+        "maximumSnapMetres": 104.92342269318311,
+        "pathMetres": 212.68382498879024,
+        "projectionChoice": {
+          "initialReason": "implausible-detour",
+          "nearestMaximumSnapMetres": 102.22226827023925,
+          "maximumAdditionalSnapMetres": 2.7011544229438584
+        }
+      },
+      {
+        "routeId": "91-3-j26-1",
+        "agencyId": "823",
+        "line": "3",
+        "mode": "tram",
+        "from": "Basel, Hardstrasse",
+        "to": "Basel, Aeschenplatz",
+        "fromId": "ch:1:sloid:89320:1:1",
+        "toId": "ch:1:sloid:73:4:2",
+        "occurrences": 134,
+        "pathIndex": 446,
+        "maximumSnapMetres": 101.55034057664407,
+        "pathMetres": 425.2782559994831,
+        "projectionChoice": {
+          "initialReason": "implausible-detour",
+          "nearestMaximumSnapMetres": 101.55034057664407,
+          "maximumAdditionalSnapMetres": 2.8746034605042032
+        }
       },
       {
         "routeId": "91-15-j26-1",
@@ -640,7 +1843,7 @@
         "fromId": "ch:1:sloid:237:2:4",
         "toId": "ch:1:sloid:73:4:2",
         "occurrences": 4,
-        "pathIndex": 220,
+        "pathIndex": 247,
         "maximumSnapMetres": 98.68287885085527,
         "pathMetres": 222.66951519125394
       },
@@ -654,7 +1857,7 @@
         "fromId": "ch:1:sloid:89376:1:1",
         "toId": "ch:1:sloid:899:1:1",
         "occurrences": 4,
-        "pathIndex": 17,
+        "pathIndex": 20,
         "maximumSnapMetres": 96.35546374396546,
         "pathMetres": 2016.5077828144993
       },
@@ -668,7 +1871,7 @@
         "fromId": "ch:1:sloid:89376:1:1",
         "toId": "ch:1:sloid:899:1:1",
         "occurrences": 3,
-        "pathIndex": 297,
+        "pathIndex": 353,
         "maximumSnapMetres": 96.28634075121639,
         "pathMetres": 2016.782202084675
       },
@@ -682,7 +1885,7 @@
         "fromId": "ch:1:sloid:89316:1:2",
         "toId": "ch:1:sloid:899:1:1",
         "occurrences": 6,
-        "pathIndex": 310,
+        "pathIndex": 366,
         "maximumSnapMetres": 96.28634075121639,
         "pathMetres": 236.75609127626063
       },
@@ -696,7 +1899,7 @@
         "fromId": "ch:1:sloid:89316:1:2",
         "toId": "ch:1:sloid:899:1:1",
         "occurrences": 1,
-        "pathIndex": 434,
+        "pathIndex": 512,
         "maximumSnapMetres": 82.79301795434165,
         "pathMetres": 277.27652403575127
       },
@@ -710,7 +1913,7 @@
         "fromId": "ch:1:sloid:89376:1:1",
         "toId": "ch:1:sloid:899:1:1",
         "occurrences": 4,
-        "pathIndex": 203,
+        "pathIndex": 227,
         "maximumSnapMetres": 82.77235329523333,
         "pathMetres": 565.7697836555973
       },
@@ -724,9 +1927,37 @@
         "fromId": "ch:1:sloid:88779:1:1",
         "toId": "ch:1:sloid:898:3:3",
         "occurrences": 145,
-        "pathIndex": 480,
+        "pathIndex": 560,
         "maximumSnapMetres": 76.00276437449963,
         "pathMetres": 122.50708238165794
+      },
+      {
+        "routeId": "91-19-B-j26-1",
+        "agencyId": "37",
+        "line": "19",
+        "mode": "tram",
+        "from": "Liestal, Gräubern",
+        "to": "Liestal, Bahnhof",
+        "fromId": "ch:1:sloid:10616:1:21",
+        "toId": "ch:1:sloid:72212:1:51",
+        "occurrences": 70,
+        "pathIndex": 322,
+        "maximumSnapMetres": 75.74681406380354,
+        "pathMetres": 1441.8385222178601
+      },
+      {
+        "routeId": "91-19-B-j26-1",
+        "agencyId": "37",
+        "line": "19",
+        "mode": "tram",
+        "from": "Liestal, Bahnhof",
+        "to": "Liestal, Gräubern",
+        "fromId": "ch:1:sloid:72212:1:51",
+        "toId": "ch:1:sloid:10616:1:22",
+        "occurrences": 69,
+        "pathIndex": 325,
+        "maximumSnapMetres": 75.74681406380354,
+        "pathMetres": 1496.3016211229026
       },
       {
         "routeId": "92-36-j26-1",
@@ -738,7 +1969,7 @@
         "fromId": "ch:1:sloid:89300:1:4",
         "toId": "ch:1:sloid:89383:1:4",
         "occurrences": 143,
-        "pathIndex": 734,
+        "pathIndex": 814,
         "maximumSnapMetres": 74.3437893116698,
         "pathMetres": 332.0808099666785
       },
@@ -752,7 +1983,7 @@
         "fromId": "ch:1:sloid:89383:1:4",
         "toId": "ch:1:sloid:89343:1:4",
         "occurrences": 143,
-        "pathIndex": 735,
+        "pathIndex": 815,
         "maximumSnapMetres": 74.3437893116698,
         "pathMetres": 377.7980236450396
       },
@@ -766,7 +1997,7 @@
         "fromId": "ch:1:sloid:994:1:1",
         "toId": "ch:1:sloid:237:2:4",
         "occurrences": 2,
-        "pathIndex": 191,
+        "pathIndex": 212,
         "maximumSnapMetres": 72.52418674300081,
         "pathMetres": 271.1692161918065
       },
@@ -780,7 +2011,7 @@
         "fromId": "ch:1:sloid:89450:1:1",
         "toId": "ch:1:sloid:89451:1:1",
         "occurrences": 3,
-        "pathIndex": 305,
+        "pathIndex": 361,
         "maximumSnapMetres": 66.71910360640484,
         "pathMetres": 261.09977273600936
       },
@@ -794,7 +2025,7 @@
         "fromId": "ch:1:sloid:89381:1:2",
         "toId": "ch:1:sloid:89360:1:2",
         "occurrences": 1,
-        "pathIndex": 464,
+        "pathIndex": 543,
         "maximumSnapMetres": 65.71193276439362,
         "pathMetres": 345.7168811070102
       },
@@ -808,7 +2039,7 @@
         "fromId": "ch:1:sloid:78193:1:3",
         "toId": "ch:1:sloid:78194:1:1",
         "occurrences": 57,
-        "pathIndex": 943,
+        "pathIndex": 1023,
         "maximumSnapMetres": 63.94500144817484,
         "pathMetres": 321.26523536890664
       },
@@ -822,7 +2053,7 @@
         "fromId": "ch:1:sloid:78170:1:3",
         "toId": "ch:1:sloid:7228:1:2",
         "occurrences": 54,
-        "pathIndex": 986,
+        "pathIndex": 1066,
         "maximumSnapMetres": 60.789658212358184,
         "pathMetres": 339.6398294964105
       },
@@ -836,7 +2067,7 @@
         "fromId": "ch:1:sloid:7228:1:1",
         "toId": "ch:1:sloid:78170:1:3",
         "occurrences": 57,
-        "pathIndex": 995,
+        "pathIndex": 1075,
         "maximumSnapMetres": 60.789658212358184,
         "pathMetres": 251.2443479048312
       },
@@ -850,7 +2081,7 @@
         "fromId": "ch:1:sloid:89350:1:1",
         "toId": "ch:1:sloid:89375:1:2",
         "occurrences": 2,
-        "pathIndex": 890,
+        "pathIndex": 970,
         "maximumSnapMetres": 51.544400077576235,
         "pathMetres": 565.8062097240439
       },
@@ -864,9 +2095,56 @@
         "fromId": "ch:1:sloid:89329:1:2",
         "toId": "ch:1:sloid:89375:1:2",
         "occurrences": 5,
-        "pathIndex": 910,
+        "pathIndex": 990,
         "maximumSnapMetres": 51.544400077576235,
         "pathMetres": 390.6751913743826
+      },
+      {
+        "routeId": "91-15-j26-1",
+        "agencyId": "823",
+        "line": "15",
+        "mode": "tram",
+        "from": "Basel, Münchensteinerstrasse",
+        "to": "Basel, Heiliggeistkirche",
+        "fromId": "ch:1:sloid:88778:1:1",
+        "toId": "ch:1:sloid:147:1:2",
+        "occurrences": 3,
+        "pathIndex": 228,
+        "maximumSnapMetres": 50.23911340940023,
+        "pathMetres": 176.71723890049927,
+        "projectionChoice": {
+          "initialReason": "implausible-detour",
+          "nearestMaximumSnapMetres": 50.23911340940023,
+          "maximumAdditionalSnapMetres": 0.2550242644067071
+        }
+      },
+      {
+        "routeId": "91-19-B-j26-1",
+        "agencyId": "37",
+        "line": "19",
+        "mode": "tram",
+        "from": "Waldenburg, Station",
+        "to": "Oberdorf BL, Station",
+        "fromId": "ch:1:sloid:72351:1:31",
+        "toId": "ch:1:sloid:78240:1:21",
+        "occurrences": 2,
+        "pathIndex": 323,
+        "maximumSnapMetres": 48.789922729882385,
+        "pathMetres": 544.98131065733
+      },
+      {
+        "routeId": "91-19-B-j26-1",
+        "agencyId": "37",
+        "line": "19",
+        "mode": "tram",
+        "from": "Oberdorf BL, Station",
+        "to": "Waldenburg, Station",
+        "fromId": "ch:1:sloid:78240:1:22",
+        "toId": "ch:1:sloid:72351:1:31",
+        "occurrences": 4,
+        "pathIndex": 335,
+        "maximumSnapMetres": 48.789922729882385,
+        "pathMetres": 550.3969266698268
       },
       {
         "routeId": "91-6-j26-1",
@@ -878,9 +2156,28 @@
         "fromId": "ch:1:sloid:89293:1:1",
         "toId": "ch:1:sloid:81062:1:1",
         "occurrences": 146,
-        "pathIndex": 411,
+        "pathIndex": 486,
         "maximumSnapMetres": 47.80759885742414,
         "pathMetres": 440.5236032125114
+      },
+      {
+        "routeId": "91-3-j26-1",
+        "agencyId": "823",
+        "line": "3",
+        "mode": "tram",
+        "from": "Basel, Aeschenplatz",
+        "to": "Basel, Bankverein",
+        "fromId": "ch:1:sloid:73:4:1",
+        "toId": "ch:1:sloid:237:2:3",
+        "occurrences": 1,
+        "pathIndex": 434,
+        "maximumSnapMetres": 39.1740417381932,
+        "pathMetres": 302.91907007763854,
+        "projectionChoice": {
+          "initialReason": "implausible-detour",
+          "nearestMaximumSnapMetres": 39.1740417381932,
+          "maximumAdditionalSnapMetres": 1.7793734183187115
+        }
       },
       {
         "routeId": "91-8-A-j26-1",
@@ -892,197 +2189,12 @@
         "fromId": "ch:1:sloid:88768:1:83",
         "toId": "ch:1:sloid:88767:1:1",
         "occurrences": 145,
-        "pathIndex": 481,
+        "pathIndex": 561,
         "maximumSnapMetres": 38.20223829099087,
         "pathMetres": 327.0745300771689
-      },
-      {
-        "routeId": "91-6-j26-1",
-        "agencyId": "823",
-        "line": "6",
-        "mode": "tram",
-        "from": "Basel, Messeplatz",
-        "to": "Basel, Clarastrasse",
-        "fromId": "ch:1:sloid:899:1:2",
-        "toId": "ch:1:sloid:89305:1:2",
-        "occurrences": 2,
-        "pathIndex": 436,
-        "maximumSnapMetres": 38.178417843618,
-        "pathMetres": 197.68515273247755
-      },
-      {
-        "routeId": "92-34-j26-1",
-        "agencyId": "823",
-        "line": "34",
-        "mode": "bus",
-        "from": "Riehen Niederholz, Bahnhof",
-        "to": "Riehen, Otto Wenk-Platz",
-        "fromId": "ch:1:sloid:89473:1:2",
-        "toId": "ch:1:sloid:89474:1:2",
-        "occurrences": 36,
-        "pathIndex": 644,
-        "maximumSnapMetres": 32.56779504603543,
-        "pathMetres": 431.9735726063605
-      },
-      {
-        "routeId": "91-17-j26-1",
-        "agencyId": "37",
-        "line": "17",
-        "mode": "tram",
-        "from": "Basel, Dreirosenbrücke",
-        "to": "Basel, Ciba",
-        "fromId": "ch:1:sloid:88768:1:4",
-        "toId": "ch:1:sloid:88767:1:1",
-        "occurrences": 26,
-        "pathIndex": 280,
-        "maximumSnapMetres": 32.316087044708574,
-        "pathMetres": 1281.4909354710496
-      },
-      {
-        "routeId": "92-38-j26-1",
-        "agencyId": "823",
-        "line": "38",
-        "mode": "bus",
-        "from": "Basel, Ensisheimerstrasse",
-        "to": "Basel, Thomaskirche",
-        "fromId": "ch:1:sloid:89308:1:2",
-        "toId": "ch:1:sloid:78169:1:1",
-        "occurrences": 1,
-        "pathIndex": 883,
-        "maximumSnapMetres": 31.57038207826507,
-        "pathMetres": 226.43885384800907
-      },
-      {
-        "routeId": "92-47-B-j26-1",
-        "agencyId": "37",
-        "line": "47",
-        "mode": "bus",
-        "from": "Muttenz, Bahnhof",
-        "to": "Muttenz, Fachhochschule",
-        "fromId": "ch:1:sloid:78193:1:6",
-        "toId": "ch:1:sloid:78194:1:1",
-        "occurrences": 96,
-        "pathIndex": 952,
-        "maximumSnapMetres": 30.19725254990047,
-        "pathMetres": 449.7604699635004
-      },
-      {
-        "routeId": "91-21-B-j26-1",
-        "agencyId": "823",
-        "line": "21",
-        "mode": "tram",
-        "from": "Basel, Dreirosenbrücke",
-        "to": "Basel, Brombacherstrasse",
-        "fromId": "ch:1:sloid:88768:1:2",
-        "toId": "ch:1:sloid:89298:1:2",
-        "occurrences": 1,
-        "pathIndex": 346,
-        "maximumSnapMetres": 27.9006265064038,
-        "pathMetres": 359.7652384374272
-      },
-      {
-        "routeId": "91-14-j26-1",
-        "agencyId": "823",
-        "line": "14",
-        "mode": "tram",
-        "from": "Basel, Dreirosenbrücke",
-        "to": "Basel, Brombacherstrasse",
-        "fromId": "ch:1:sloid:88768:1:2",
-        "toId": "ch:1:sloid:89298:1:2",
-        "occurrences": 3,
-        "pathIndex": 137,
-        "maximumSnapMetres": 27.89606849327586,
-        "pathMetres": 359.7157019617385
-      },
-      {
-        "routeId": "92-42-B-j26-1",
-        "agencyId": "823",
-        "line": "42",
-        "mode": "bus",
-        "from": "Basel, Grosspeteranlage",
-        "to": "Basel, Tinguely Museum",
-        "fromId": "ch:1:sloid:7520:1:1",
-        "toId": "ch:1:sloid:89371:2:2",
-        "occurrences": 22,
-        "pathIndex": 885,
-        "maximumSnapMetres": 19.26298350639758,
-        "pathMetres": 2577.497257186717
-      },
-      {
-        "routeId": "92-42-B-j26-1",
-        "agencyId": "823",
-        "line": "42",
-        "mode": "bus",
-        "from": "Basel, Tinguely Museum",
-        "to": "Basel, Hoffmann-La Roche",
-        "fromId": "ch:1:sloid:89371:2:2",
-        "toId": "ch:1:sloid:89326:1:2",
-        "occurrences": 22,
-        "pathIndex": 886,
-        "maximumSnapMetres": 19.26298350639758,
-        "pathMetres": 191.5456439477233
-      },
-      {
-        "routeId": "92-37-B-j26-1",
-        "agencyId": "37",
-        "line": "37",
-        "mode": "bus",
-        "from": "Basel, Dreispitz",
-        "to": "Basel, St. Jakob",
-        "fromId": "ch:1:sloid:96:1:4",
-        "toId": "ch:1:sloid:88943",
-        "occurrences": 65,
-        "pathIndex": 790,
-        "maximumSnapMetres": 17.95657851971382,
-        "pathMetres": 856.8128092320478
       }
     ],
     "issues": [
-      {
-        "routeId": "91-1-j26-1",
-        "agencyId": "823",
-        "line": "1",
-        "mode": "tram",
-        "from": "Basel, Bahnhof St. Johann",
-        "to": "Basel, Kannenfeldplatz",
-        "fromId": "ch:1:sloid:92322:1:1",
-        "toId": "ch:1:sloid:78144:1:1",
-        "occurrences": 137,
-        "pathIndex": null,
-        "reason": "implausible-detour",
-        "maximumSnapMetres": 1.750015798936659,
-        "pathMetres": 5875.588797099088
-      },
-      {
-        "routeId": "91-1-j26-1",
-        "agencyId": "823",
-        "line": "1",
-        "mode": "tram",
-        "from": "Basel, Burgfelderplatz",
-        "to": "Basel, Hegenheimerstrasse",
-        "fromId": "ch:1:sloid:89303:2:3",
-        "toId": "ch:1:sloid:89323:1:1",
-        "occurrences": 137,
-        "pathIndex": null,
-        "reason": "implausible-detour",
-        "maximumSnapMetres": 0.2529950842528751,
-        "pathMetres": 4343.596757605168
-      },
-      {
-        "routeId": "91-1-j26-1",
-        "agencyId": "823",
-        "line": "1",
-        "mode": "tram",
-        "from": "Basel, Markthalle",
-        "to": "Basel, Bahnhof SBB",
-        "fromId": "ch:1:sloid:193:1:9",
-        "toId": "ch:1:sloid:78143:2:36",
-        "occurrences": 93,
-        "pathIndex": null,
-        "reason": "implausible-detour",
-        "maximumSnapMetres": 0.550376350307701,
-        "pathMetres": 2683.1457281369817
-      },
       {
         "routeId": "91-1-j26-1",
         "agencyId": "823",
@@ -1326,21 +2438,6 @@
         "agencyId": "823",
         "line": "1",
         "mode": "tram",
-        "from": "Basel, Bahnhof SBB",
-        "to": "Basel, Markthalle",
-        "fromId": "ch:1:sloid:78143:1:31",
-        "toId": "ch:1:sloid:193:1:2",
-        "occurrences": 136,
-        "pathIndex": null,
-        "reason": "implausible-detour",
-        "maximumSnapMetres": 0.8290439494553611,
-        "pathMetres": 2968.4920373391355
-      },
-      {
-        "routeId": "91-1-j26-1",
-        "agencyId": "823",
-        "line": "1",
-        "mode": "tram",
         "from": "Basel, Brausebad",
         "to": "Basel, Allschwilerplatz",
         "fromId": "ch:1:sloid:81062:1:2",
@@ -1363,51 +2460,6 @@
         "pathIndex": null,
         "reason": "endpoint-gap",
         "maximumSnapMetres": 324.93492203444345
-      },
-      {
-        "routeId": "91-1-j26-1",
-        "agencyId": "823",
-        "line": "1",
-        "mode": "tram",
-        "from": "Basel, Hegenheimerstrasse",
-        "to": "Basel, Burgfelderplatz",
-        "fromId": "ch:1:sloid:89323:1:2",
-        "toId": "ch:1:sloid:89303:2:4",
-        "occurrences": 136,
-        "pathIndex": null,
-        "reason": "implausible-detour",
-        "maximumSnapMetres": 0.960463751650941,
-        "pathMetres": 4421.694794969899
-      },
-      {
-        "routeId": "91-1-j26-1",
-        "agencyId": "823",
-        "line": "1",
-        "mode": "tram",
-        "from": "Basel, Kannenfeldplatz",
-        "to": "Basel, Bahnhof St. Johann",
-        "fromId": "ch:1:sloid:78144:1:2",
-        "toId": "ch:1:sloid:92322:1:2",
-        "occurrences": 136,
-        "pathIndex": null,
-        "reason": "implausible-detour",
-        "maximumSnapMetres": 1.2651268167649936,
-        "pathMetres": 5952.408420282832
-      },
-      {
-        "routeId": "91-1-j26-1",
-        "agencyId": "823",
-        "line": "1",
-        "mode": "tram",
-        "from": "Basel, Wettsteinplatz",
-        "to": "Basel, Kunstmuseum",
-        "fromId": "ch:1:sloid:89376:1:2",
-        "toId": "ch:1:sloid:89336:1:2",
-        "occurrences": 46,
-        "pathIndex": null,
-        "reason": "implausible-detour",
-        "maximumSnapMetres": 1.1954084604585458,
-        "pathMetres": 3250.064251930615
       },
       {
         "routeId": "91-1-j26-1",
@@ -1480,126 +2532,6 @@
         "maximumSnapMetres": 359.4603240511426
       },
       {
-        "routeId": "91-10-j26-1",
-        "agencyId": "37",
-        "line": "10",
-        "mode": "tram",
-        "from": "Basel, Münchensteinerstrasse",
-        "to": "Basel, Peter-Merian",
-        "fromId": "ch:1:sloid:88778:1:1",
-        "toId": "ch:1:sloid:88071:1:1",
-        "occurrences": 135,
-        "pathIndex": null,
-        "reason": "implausible-detour",
-        "maximumSnapMetres": 0.7298047730070647,
-        "pathMetres": 3399.967940870954
-      },
-      {
-        "routeId": "91-10-j26-1",
-        "agencyId": "37",
-        "line": "10",
-        "mode": "tram",
-        "from": "Basel, Peter-Merian",
-        "to": "Basel, Bahnhof SBB",
-        "fromId": "ch:1:sloid:88071:1:1",
-        "toId": "ch:1:sloid:78143:1:35",
-        "occurrences": 135,
-        "pathIndex": null,
-        "reason": "implausible-detour",
-        "maximumSnapMetres": 0.7298047730070647,
-        "pathMetres": 4410.6557201147325
-      },
-      {
-        "routeId": "91-11-j26-1",
-        "agencyId": "37",
-        "line": "11",
-        "mode": "tram",
-        "from": "Basel, Voltaplatz",
-        "to": "Basel, Mülhauserstrasse",
-        "fromId": "ch:1:sloid:88782:1:2",
-        "toId": "ch:1:sloid:88777:1:2",
-        "occurrences": 141,
-        "pathIndex": null,
-        "reason": "implausible-detour",
-        "maximumSnapMetres": 0.8765494763682086,
-        "pathMetres": 1770.558135575123
-      },
-      {
-        "routeId": "91-11-j26-1",
-        "agencyId": "37",
-        "line": "11",
-        "mode": "tram",
-        "from": "Basel, St. Johanns-Tor",
-        "to": "Basel, Johanniterbrücke",
-        "fromId": "ch:1:sloid:88781:1:2",
-        "toId": "ch:1:sloid:88772:1:2",
-        "occurrences": 141,
-        "pathIndex": null,
-        "reason": "implausible-detour",
-        "maximumSnapMetres": 1.1088826639191243,
-        "pathMetres": 2764.682656215739
-      },
-      {
-        "routeId": "91-11-j26-1",
-        "agencyId": "37",
-        "line": "11",
-        "mode": "tram",
-        "from": "Basel, Münchensteinerstrasse",
-        "to": "Basel, Peter-Merian",
-        "fromId": "ch:1:sloid:88778:1:1",
-        "toId": "ch:1:sloid:88071:1:1",
-        "occurrences": 143,
-        "pathIndex": null,
-        "reason": "implausible-detour",
-        "maximumSnapMetres": 0.729097514806319,
-        "pathMetres": 9268.994601907083
-      },
-      {
-        "routeId": "91-11-j26-1",
-        "agencyId": "37",
-        "line": "11",
-        "mode": "tram",
-        "from": "Basel, Peter-Merian",
-        "to": "Basel, Bahnhof SBB",
-        "fromId": "ch:1:sloid:88071:1:1",
-        "toId": "ch:1:sloid:78143:1:35",
-        "occurrences": 143,
-        "pathIndex": null,
-        "reason": "implausible-detour",
-        "maximumSnapMetres": 0.729097514806319,
-        "pathMetres": 8258.31395309934
-      },
-      {
-        "routeId": "91-11-j26-1",
-        "agencyId": "37",
-        "line": "11",
-        "mode": "tram",
-        "from": "Basel, St. Johanns-Tor",
-        "to": "Basel, Mülhauserstrasse",
-        "fromId": "ch:1:sloid:88781:1:1",
-        "toId": "ch:1:sloid:88777:1:1",
-        "occurrences": 143,
-        "pathIndex": null,
-        "reason": "implausible-detour",
-        "maximumSnapMetres": 0.4606972017428559,
-        "pathMetres": 2202.597681313244
-      },
-      {
-        "routeId": "91-11-j26-1",
-        "agencyId": "37",
-        "line": "11",
-        "mode": "tram",
-        "from": "Basel, Mülhauserstrasse",
-        "to": "Basel, Voltaplatz",
-        "fromId": "ch:1:sloid:88777:1:1",
-        "toId": "ch:1:sloid:88782:1:1",
-        "occurrences": 143,
-        "pathIndex": null,
-        "reason": "implausible-detour",
-        "maximumSnapMetres": 0.10868714634192797,
-        "pathMetres": 1753.6352852918976
-      },
-      {
         "routeId": "91-14-j26-1",
         "agencyId": "823",
         "line": "14",
@@ -1626,81 +2558,6 @@
         "pathIndex": null,
         "reason": "endpoint-gap",
         "maximumSnapMetres": 277.9115060299129
-      },
-      {
-        "routeId": "91-14-j26-1",
-        "agencyId": "823",
-        "line": "14",
-        "mode": "tram",
-        "from": "Basel, Brombacherstrasse",
-        "to": "Basel, Musical Theater",
-        "fromId": "ch:1:sloid:89298:1:2",
-        "toId": "ch:1:sloid:89344:1:2",
-        "occurrences": 138,
-        "pathIndex": null,
-        "reason": "implausible-detour",
-        "maximumSnapMetres": 1.5490886733230294,
-        "pathMetres": 24288.342455442198
-      },
-      {
-        "routeId": "91-14-j26-1",
-        "agencyId": "823",
-        "line": "14",
-        "mode": "tram",
-        "from": "Muttenz, Schützenhausstrasse",
-        "to": "Muttenz, Dorf",
-        "fromId": "ch:1:sloid:17412:1:2",
-        "toId": "ch:1:sloid:256:1:2",
-        "occurrences": 139,
-        "pathIndex": null,
-        "reason": "implausible-detour",
-        "maximumSnapMetres": 1.2703592323571407,
-        "pathMetres": 8192.520445489956
-      },
-      {
-        "routeId": "91-14-j26-1",
-        "agencyId": "823",
-        "line": "14",
-        "mode": "tram",
-        "from": "Muttenz, Dorf",
-        "to": "Muttenz, Rothausstrasse",
-        "fromId": "ch:1:sloid:256:1:2",
-        "toId": "ch:1:sloid:17411:1:2",
-        "occurrences": 139,
-        "pathIndex": null,
-        "reason": "implausible-detour",
-        "maximumSnapMetres": 1.2703592323571407,
-        "pathMetres": 6972.665487029662
-      },
-      {
-        "routeId": "91-14-j26-1",
-        "agencyId": "823",
-        "line": "14",
-        "mode": "tram",
-        "from": "Pratteln, Kästeli",
-        "to": "Muttenz, Lachmatt",
-        "fromId": "ch:1:sloid:17416:1:1",
-        "toId": "ch:1:sloid:17417:1:1",
-        "occurrences": 136,
-        "pathIndex": null,
-        "reason": "implausible-detour",
-        "maximumSnapMetres": 1.5554652956676422,
-        "pathMetres": 3245.5817354281066
-      },
-      {
-        "routeId": "91-14-j26-1",
-        "agencyId": "823",
-        "line": "14",
-        "mode": "tram",
-        "from": "Basel, Bankverein",
-        "to": "Basel, Theater",
-        "fromId": "ch:1:sloid:237:2:3",
-        "toId": "ch:1:sloid:994:1:2",
-        "occurrences": 1,
-        "pathIndex": null,
-        "reason": "implausible-detour",
-        "maximumSnapMetres": 109.05497828729473,
-        "pathMetres": 19007.364999811132
       },
       {
         "routeId": "91-14-j26-1",
@@ -1861,21 +2718,6 @@
         "agencyId": "823",
         "line": "14",
         "mode": "tram",
-        "from": "Basel, Dreirosenbrücke",
-        "to": "Basel, Brombacherstrasse",
-        "fromId": "ch:1:sloid:88768:1:4",
-        "toId": "ch:1:sloid:89298:1:2",
-        "occurrences": 135,
-        "pathIndex": null,
-        "reason": "implausible-detour",
-        "maximumSnapMetres": 1.5490886733230294,
-        "pathMetres": 25004.068137822716
-      },
-      {
-        "routeId": "91-14-j26-1",
-        "agencyId": "823",
-        "line": "14",
-        "mode": "tram",
         "from": "Basel, MParc",
         "to": "Basel, Münchensteinerstrasse",
         "fromId": "ch:1:sloid:88776:1:3",
@@ -2030,51 +2872,6 @@
         "agencyId": "823",
         "line": "15",
         "mode": "tram",
-        "from": "Basel, Bruderholz",
-        "to": "Basel, Airolostrasse",
-        "fromId": "ch:1:sloid:89299:1:1",
-        "toId": "ch:1:sloid:89291:1:1",
-        "occurrences": 134,
-        "pathIndex": null,
-        "reason": "implausible-detour",
-        "maximumSnapMetres": 1.7204576410326589,
-        "pathMetres": 10418.287100562125
-      },
-      {
-        "routeId": "91-15-j26-1",
-        "agencyId": "823",
-        "line": "15",
-        "mode": "tram",
-        "from": "Basel, Studio Basel",
-        "to": "Basel, Lerchenstrasse",
-        "fromId": "ch:1:sloid:89367:1:1",
-        "toId": "ch:1:sloid:89339:1:1",
-        "occurrences": 134,
-        "pathIndex": null,
-        "reason": "implausible-detour",
-        "maximumSnapMetres": 0.8828577899986625,
-        "pathMetres": 9409.714033744343
-      },
-      {
-        "routeId": "91-15-j26-1",
-        "agencyId": "823",
-        "line": "15",
-        "mode": "tram",
-        "from": "Basel, Lerchenstrasse",
-        "to": "Basel, Wolfschlucht",
-        "fromId": "ch:1:sloid:89339:1:1",
-        "toId": "ch:1:sloid:89379:1:1",
-        "occurrences": 134,
-        "pathIndex": null,
-        "reason": "implausible-detour",
-        "maximumSnapMetres": 1.100274551466495,
-        "pathMetres": 8705.488332216346
-      },
-      {
-        "routeId": "91-15-j26-1",
-        "agencyId": "823",
-        "line": "15",
-        "mode": "tram",
         "from": "Basel, Messeplatz",
         "to": "Basel, Riehenring",
         "fromId": "ch:1:sloid:899:1:1",
@@ -2167,51 +2964,6 @@
         "pathIndex": null,
         "reason": "endpoint-gap",
         "maximumSnapMetres": 684.8077410381514
-      },
-      {
-        "routeId": "91-15-j26-1",
-        "agencyId": "823",
-        "line": "15",
-        "mode": "tram",
-        "from": "Basel, Münchensteinerstrasse",
-        "to": "Basel, Heiliggeistkirche",
-        "fromId": "ch:1:sloid:88778:1:1",
-        "toId": "ch:1:sloid:147:1:2",
-        "occurrences": 3,
-        "pathIndex": null,
-        "reason": "implausible-detour",
-        "maximumSnapMetres": 50.23911340940023,
-        "pathMetres": 6071.082946076816
-      },
-      {
-        "routeId": "91-15-j26-1",
-        "agencyId": "823",
-        "line": "15",
-        "mode": "tram",
-        "from": "Basel, Lerchenstrasse",
-        "to": "Basel, Studio Basel",
-        "fromId": "ch:1:sloid:89339:1:2",
-        "toId": "ch:1:sloid:89367:1:2",
-        "occurrences": 138,
-        "pathIndex": null,
-        "reason": "implausible-detour",
-        "maximumSnapMetres": 1.1521228316387981,
-        "pathMetres": 9467.751238651408
-      },
-      {
-        "routeId": "91-15-j26-1",
-        "agencyId": "823",
-        "line": "15",
-        "mode": "tram",
-        "from": "Basel, Studio Basel",
-        "to": "Basel, Airolostrasse",
-        "fromId": "ch:1:sloid:89367:1:2",
-        "toId": "ch:1:sloid:89291:1:2",
-        "occurrences": 138,
-        "pathIndex": null,
-        "reason": "implausible-detour",
-        "maximumSnapMetres": 1.1521228316387981,
-        "pathMetres": 9985.890319998949
       },
       {
         "routeId": "91-15-j26-1",
@@ -2386,36 +3138,6 @@
         "agencyId": "823",
         "line": "16",
         "mode": "tram",
-        "from": "Basel, Hauensteinstrasse",
-        "to": "Basel, Hechtliacker",
-        "fromId": "ch:1:sloid:89321:1:1",
-        "toId": "ch:1:sloid:89322:1:1",
-        "occurrences": 135,
-        "pathIndex": null,
-        "reason": "implausible-detour",
-        "maximumSnapMetres": 1.5452417978469044,
-        "pathMetres": 9922.789340433026
-      },
-      {
-        "routeId": "91-16-j26-1",
-        "agencyId": "823",
-        "line": "16",
-        "mode": "tram",
-        "from": "Basel, Jakobsberg",
-        "to": "Basel, Leimgrubenweg",
-        "fromId": "ch:1:sloid:88063:1:1",
-        "toId": "ch:1:sloid:88946:1:1",
-        "occurrences": 135,
-        "pathIndex": null,
-        "reason": "implausible-detour",
-        "maximumSnapMetres": 1.3362380276175323,
-        "pathMetres": 8425.327164674663
-      },
-      {
-        "routeId": "91-16-j26-1",
-        "agencyId": "823",
-        "line": "16",
-        "mode": "tram",
         "from": "Basel, Schifflände",
         "to": "Basel, Universitätsspital",
         "fromId": "ch:1:sloid:88780:1:1",
@@ -2564,21 +3286,6 @@
         "pathIndex": null,
         "reason": "endpoint-gap",
         "maximumSnapMetres": 206.0401442499075
-      },
-      {
-        "routeId": "91-16-j26-1",
-        "agencyId": "823",
-        "line": "16",
-        "mode": "tram",
-        "from": "Basel, Heiliggeistkirche",
-        "to": "Basel, Zwinglihaus",
-        "fromId": "ch:1:sloid:147:1:2",
-        "toId": "ch:1:sloid:89383:1:2",
-        "occurrences": 4,
-        "pathIndex": null,
-        "reason": "implausible-detour",
-        "maximumSnapMetres": 20.84347828555504,
-        "pathMetres": 6140.960875167144
       },
       {
         "routeId": "91-16-j26-1",
@@ -2973,344 +3680,6 @@
         "maximumSnapMetres": 655.6039374141286
       },
       {
-        "routeId": "91-19-B-j26-1",
-        "agencyId": "37",
-        "line": "19",
-        "mode": "tram",
-        "from": "Waldenburg, Station",
-        "to": "Oberdorf BL, Station",
-        "fromId": "ch:1:sloid:72351:1:22",
-        "toId": "ch:1:sloid:78240:1:21",
-        "occurrences": 67,
-        "pathIndex": null,
-        "reason": "missing-line"
-      },
-      {
-        "routeId": "91-19-B-j26-1",
-        "agencyId": "37",
-        "line": "19",
-        "mode": "tram",
-        "from": "Oberdorf BL, Station",
-        "to": "Oberdorf BL, Winkelweg",
-        "fromId": "ch:1:sloid:78240:1:21",
-        "toId": "ch:1:sloid:78241:1:21",
-        "occurrences": 70,
-        "pathIndex": null,
-        "reason": "missing-line"
-      },
-      {
-        "routeId": "91-19-B-j26-1",
-        "agencyId": "37",
-        "line": "19",
-        "mode": "tram",
-        "from": "Oberdorf BL, Winkelweg",
-        "to": "Niederdorf, Station",
-        "fromId": "ch:1:sloid:78241:1:21",
-        "toId": "ch:1:sloid:92307:1:21",
-        "occurrences": 70,
-        "pathIndex": null,
-        "reason": "missing-line"
-      },
-      {
-        "routeId": "91-19-B-j26-1",
-        "agencyId": "37",
-        "line": "19",
-        "mode": "tram",
-        "from": "Niederdorf, Station",
-        "to": "Niederdorf, Hirschlang",
-        "fromId": "ch:1:sloid:92307:1:21",
-        "toId": "ch:1:sloid:92306:1:21",
-        "occurrences": 70,
-        "pathIndex": null,
-        "reason": "missing-line"
-      },
-      {
-        "routeId": "91-19-B-j26-1",
-        "agencyId": "37",
-        "line": "19",
-        "mode": "tram",
-        "from": "Niederdorf, Hirschlang",
-        "to": "Hölstein, Süd",
-        "fromId": "ch:1:sloid:92306:1:21",
-        "toId": "ch:1:sloid:92304:1:21",
-        "occurrences": 70,
-        "pathIndex": null,
-        "reason": "missing-line"
-      },
-      {
-        "routeId": "91-19-B-j26-1",
-        "agencyId": "37",
-        "line": "19",
-        "mode": "tram",
-        "from": "Hölstein, Süd",
-        "to": "Hölstein, Station",
-        "fromId": "ch:1:sloid:92304:1:21",
-        "toId": "ch:1:sloid:78250:1:21",
-        "occurrences": 70,
-        "pathIndex": null,
-        "reason": "missing-line"
-      },
-      {
-        "routeId": "91-19-B-j26-1",
-        "agencyId": "37",
-        "line": "19",
-        "mode": "tram",
-        "from": "Hölstein, Station",
-        "to": "Lampenberg-Ramlinsburg,Station",
-        "fromId": "ch:1:sloid:78250:1:21",
-        "toId": "ch:1:sloid:78256:1:21",
-        "occurrences": 70,
-        "pathIndex": null,
-        "reason": "missing-line"
-      },
-      {
-        "routeId": "91-19-B-j26-1",
-        "agencyId": "37",
-        "line": "19",
-        "mode": "tram",
-        "from": "Lampenberg-Ramlinsburg,Station",
-        "to": "Bubendorf, Talhaus",
-        "fromId": "ch:1:sloid:78256:1:21",
-        "toId": "ch:1:sloid:78258:1:21",
-        "occurrences": 70,
-        "pathIndex": null,
-        "reason": "missing-line"
-      },
-      {
-        "routeId": "91-19-B-j26-1",
-        "agencyId": "37",
-        "line": "19",
-        "mode": "tram",
-        "from": "Bubendorf, Talhaus",
-        "to": "Bubendorf, Bad",
-        "fromId": "ch:1:sloid:78258:1:21",
-        "toId": "ch:1:sloid:855:1:21",
-        "occurrences": 70,
-        "pathIndex": null,
-        "reason": "missing-line"
-      },
-      {
-        "routeId": "91-19-B-j26-1",
-        "agencyId": "37",
-        "line": "19",
-        "mode": "tram",
-        "from": "Bubendorf, Bad",
-        "to": "Liestal, Gräubern",
-        "fromId": "ch:1:sloid:855:1:21",
-        "toId": "ch:1:sloid:10616:1:21",
-        "occurrences": 70,
-        "pathIndex": null,
-        "reason": "missing-line"
-      },
-      {
-        "routeId": "91-19-B-j26-1",
-        "agencyId": "37",
-        "line": "19",
-        "mode": "tram",
-        "from": "Liestal, Gräubern",
-        "to": "Liestal, Bahnhof",
-        "fromId": "ch:1:sloid:10616:1:21",
-        "toId": "ch:1:sloid:72212:1:51",
-        "occurrences": 70,
-        "pathIndex": null,
-        "reason": "missing-line"
-      },
-      {
-        "routeId": "91-19-B-j26-1",
-        "agencyId": "37",
-        "line": "19",
-        "mode": "tram",
-        "from": "Waldenburg, Station",
-        "to": "Oberdorf BL, Station",
-        "fromId": "ch:1:sloid:72351:1:31",
-        "toId": "ch:1:sloid:78240:1:21",
-        "occurrences": 2,
-        "pathIndex": null,
-        "reason": "missing-line"
-      },
-      {
-        "routeId": "91-19-B-j26-1",
-        "agencyId": "37",
-        "line": "19",
-        "mode": "tram",
-        "from": "Waldenburg, Station",
-        "to": "Oberdorf BL, Station",
-        "fromId": "ch:1:sloid:72351:1:23",
-        "toId": "ch:1:sloid:78240:1:21",
-        "occurrences": 1,
-        "pathIndex": null,
-        "reason": "missing-line"
-      },
-      {
-        "routeId": "91-19-B-j26-1",
-        "agencyId": "37",
-        "line": "19",
-        "mode": "tram",
-        "from": "Liestal, Bahnhof",
-        "to": "Liestal, Gräubern",
-        "fromId": "ch:1:sloid:72212:1:51",
-        "toId": "ch:1:sloid:10616:1:22",
-        "occurrences": 69,
-        "pathIndex": null,
-        "reason": "missing-line"
-      },
-      {
-        "routeId": "91-19-B-j26-1",
-        "agencyId": "37",
-        "line": "19",
-        "mode": "tram",
-        "from": "Liestal, Gräubern",
-        "to": "Bubendorf, Bad",
-        "fromId": "ch:1:sloid:10616:1:22",
-        "toId": "ch:1:sloid:855:1:22",
-        "occurrences": 69,
-        "pathIndex": null,
-        "reason": "missing-line"
-      },
-      {
-        "routeId": "91-19-B-j26-1",
-        "agencyId": "37",
-        "line": "19",
-        "mode": "tram",
-        "from": "Bubendorf, Bad",
-        "to": "Bubendorf, Talhaus",
-        "fromId": "ch:1:sloid:855:1:22",
-        "toId": "ch:1:sloid:78258:1:22",
-        "occurrences": 69,
-        "pathIndex": null,
-        "reason": "missing-line"
-      },
-      {
-        "routeId": "91-19-B-j26-1",
-        "agencyId": "37",
-        "line": "19",
-        "mode": "tram",
-        "from": "Bubendorf, Talhaus",
-        "to": "Lampenberg-Ramlinsburg,Station",
-        "fromId": "ch:1:sloid:78258:1:22",
-        "toId": "ch:1:sloid:78256:1:22",
-        "occurrences": 69,
-        "pathIndex": null,
-        "reason": "missing-line"
-      },
-      {
-        "routeId": "91-19-B-j26-1",
-        "agencyId": "37",
-        "line": "19",
-        "mode": "tram",
-        "from": "Lampenberg-Ramlinsburg,Station",
-        "to": "Hölstein, Station",
-        "fromId": "ch:1:sloid:78256:1:22",
-        "toId": "ch:1:sloid:78250:1:22",
-        "occurrences": 69,
-        "pathIndex": null,
-        "reason": "missing-line"
-      },
-      {
-        "routeId": "91-19-B-j26-1",
-        "agencyId": "37",
-        "line": "19",
-        "mode": "tram",
-        "from": "Hölstein, Station",
-        "to": "Hölstein, Süd",
-        "fromId": "ch:1:sloid:78250:1:22",
-        "toId": "ch:1:sloid:92304:1:22",
-        "occurrences": 69,
-        "pathIndex": null,
-        "reason": "missing-line"
-      },
-      {
-        "routeId": "91-19-B-j26-1",
-        "agencyId": "37",
-        "line": "19",
-        "mode": "tram",
-        "from": "Hölstein, Süd",
-        "to": "Niederdorf, Hirschlang",
-        "fromId": "ch:1:sloid:92304:1:22",
-        "toId": "ch:1:sloid:92306:1:22",
-        "occurrences": 69,
-        "pathIndex": null,
-        "reason": "missing-line"
-      },
-      {
-        "routeId": "91-19-B-j26-1",
-        "agencyId": "37",
-        "line": "19",
-        "mode": "tram",
-        "from": "Niederdorf, Hirschlang",
-        "to": "Niederdorf, Station",
-        "fromId": "ch:1:sloid:92306:1:22",
-        "toId": "ch:1:sloid:92307:1:22",
-        "occurrences": 69,
-        "pathIndex": null,
-        "reason": "missing-line"
-      },
-      {
-        "routeId": "91-19-B-j26-1",
-        "agencyId": "37",
-        "line": "19",
-        "mode": "tram",
-        "from": "Niederdorf, Station",
-        "to": "Oberdorf BL, Winkelweg",
-        "fromId": "ch:1:sloid:92307:1:22",
-        "toId": "ch:1:sloid:78241:1:22",
-        "occurrences": 69,
-        "pathIndex": null,
-        "reason": "missing-line"
-      },
-      {
-        "routeId": "91-19-B-j26-1",
-        "agencyId": "37",
-        "line": "19",
-        "mode": "tram",
-        "from": "Oberdorf BL, Winkelweg",
-        "to": "Oberdorf BL, Station",
-        "fromId": "ch:1:sloid:78241:1:22",
-        "toId": "ch:1:sloid:78240:1:22",
-        "occurrences": 69,
-        "pathIndex": null,
-        "reason": "missing-line"
-      },
-      {
-        "routeId": "91-19-B-j26-1",
-        "agencyId": "37",
-        "line": "19",
-        "mode": "tram",
-        "from": "Oberdorf BL, Station",
-        "to": "Waldenburg, Station",
-        "fromId": "ch:1:sloid:78240:1:22",
-        "toId": "ch:1:sloid:72351:1:31",
-        "occurrences": 4,
-        "pathIndex": null,
-        "reason": "missing-line"
-      },
-      {
-        "routeId": "91-19-B-j26-1",
-        "agencyId": "37",
-        "line": "19",
-        "mode": "tram",
-        "from": "Oberdorf BL, Station",
-        "to": "Waldenburg, Station",
-        "fromId": "ch:1:sloid:78240:1:22",
-        "toId": "ch:1:sloid:72351:1:22",
-        "occurrences": 64,
-        "pathIndex": null,
-        "reason": "missing-line"
-      },
-      {
-        "routeId": "91-19-B-j26-1",
-        "agencyId": "37",
-        "line": "19",
-        "mode": "tram",
-        "from": "Oberdorf BL, Station",
-        "to": "Waldenburg, Station",
-        "fromId": "ch:1:sloid:78240:1:22",
-        "toId": "ch:1:sloid:72351:1:23",
-        "occurrences": 1,
-        "pathIndex": null,
-        "reason": "missing-line"
-      },
-      {
         "routeId": "91-2-j26-1",
         "agencyId": "823",
         "line": "2",
@@ -3525,21 +3894,6 @@
         "agencyId": "823",
         "line": "2",
         "mode": "tram",
-        "from": "Basel, Wettsteinplatz",
-        "to": "Basel, Kunstmuseum",
-        "fromId": "ch:1:sloid:89376:1:2",
-        "toId": "ch:1:sloid:89336:1:2",
-        "occurrences": 136,
-        "pathIndex": null,
-        "reason": "implausible-detour",
-        "maximumSnapMetres": 1.1954084604585458,
-        "pathMetres": 3250.0532265987213
-      },
-      {
-        "routeId": "91-2-j26-1",
-        "agencyId": "823",
-        "line": "2",
-        "mode": "tram",
         "from": "Basel, Riehenring",
         "to": "Basel, Messeplatz",
         "fromId": "ch:1:sloid:89352:1:2",
@@ -3548,21 +3902,6 @@
         "pathIndex": null,
         "reason": "endpoint-gap",
         "maximumSnapMetres": 359.4262408787532
-      },
-      {
-        "routeId": "91-2-j26-1",
-        "agencyId": "823",
-        "line": "2",
-        "mode": "tram",
-        "from": "Basel, Messeplatz",
-        "to": "Basel, Wettsteinplatz",
-        "fromId": "ch:1:sloid:899:1:4",
-        "toId": "ch:1:sloid:89376:1:2",
-        "occurrences": 3,
-        "pathIndex": null,
-        "reason": "implausible-detour",
-        "maximumSnapMetres": 1.1954084604585458,
-        "pathMetres": 2155.950350605848
       },
       {
         "routeId": "91-2-j26-1",
@@ -3675,36 +4014,6 @@
         "pathIndex": null,
         "reason": "endpoint-gap",
         "maximumSnapMetres": 277.9173041613909
-      },
-      {
-        "routeId": "91-21-B-j26-1",
-        "agencyId": "823",
-        "line": "21",
-        "mode": "tram",
-        "from": "Basel, Brombacherstrasse",
-        "to": "Basel, Musical Theater",
-        "fromId": "ch:1:sloid:89298:1:2",
-        "toId": "ch:1:sloid:89344:1:2",
-        "occurrences": 18,
-        "pathIndex": null,
-        "reason": "implausible-detour",
-        "maximumSnapMetres": 1.4954913375827683,
-        "pathMetres": 3098.9667383410606
-      },
-      {
-        "routeId": "91-21-B-j26-1",
-        "agencyId": "823",
-        "line": "21",
-        "mode": "tram",
-        "from": "Basel, Dreirosenbrücke",
-        "to": "Basel, Brombacherstrasse",
-        "fromId": "ch:1:sloid:88768:1:4",
-        "toId": "ch:1:sloid:89298:1:2",
-        "occurrences": 17,
-        "pathIndex": null,
-        "reason": "implausible-detour",
-        "maximumSnapMetres": 1.4954913375827683,
-        "pathMetres": 3067.286699630447
       },
       {
         "routeId": "91-21-B-j26-1",
@@ -3837,36 +4146,6 @@
         "agencyId": "823",
         "line": "3",
         "mode": "tram",
-        "from": "Basel, St. Alban-Tor",
-        "to": "Basel, Waldenburgerstrasse",
-        "fromId": "ch:1:sloid:89364:1:2",
-        "toId": "ch:1:sloid:89372:1:2",
-        "occurrences": 138,
-        "pathIndex": null,
-        "reason": "implausible-detour",
-        "maximumSnapMetres": 1.0091664755177527,
-        "pathMetres": 4240.3274830343935
-      },
-      {
-        "routeId": "91-3-j26-1",
-        "agencyId": "823",
-        "line": "3",
-        "mode": "tram",
-        "from": "Basel, Waldenburgerstrasse",
-        "to": "Basel, Breite",
-        "fromId": "ch:1:sloid:89372:1:2",
-        "toId": "ch:1:sloid:78306:1:2",
-        "occurrences": 138,
-        "pathIndex": null,
-        "reason": "implausible-detour",
-        "maximumSnapMetres": 1.2365944643621638,
-        "pathMetres": 3412.823207373848
-      },
-      {
-        "routeId": "91-3-j26-1",
-        "agencyId": "823",
-        "line": "3",
-        "mode": "tram",
         "from": "Basel, MParc",
         "to": "Basel, Münchensteinerstrasse",
         "fromId": "ch:1:sloid:88776:1:3",
@@ -3917,36 +4196,6 @@
         "pathIndex": null,
         "reason": "endpoint-gap",
         "maximumSnapMetres": 376.31275474513546
-      },
-      {
-        "routeId": "91-3-j26-1",
-        "agencyId": "823",
-        "line": "3",
-        "mode": "tram",
-        "from": "Basel, Aeschenplatz",
-        "to": "Basel, Bankverein",
-        "fromId": "ch:1:sloid:73:4:41",
-        "toId": "ch:1:sloid:237:2:3",
-        "occurrences": 1,
-        "pathIndex": null,
-        "reason": "implausible-detour",
-        "maximumSnapMetres": 5.215463415157613,
-        "pathMetres": 6545.9300051944765
-      },
-      {
-        "routeId": "91-3-j26-1",
-        "agencyId": "823",
-        "line": "3",
-        "mode": "tram",
-        "from": "Basel, Bankverein",
-        "to": "Basel, Theater",
-        "fromId": "ch:1:sloid:237:2:3",
-        "toId": "ch:1:sloid:994:1:2",
-        "occurrences": 1,
-        "pathIndex": null,
-        "reason": "implausible-detour",
-        "maximumSnapMetres": 108.99254502986271,
-        "pathMetres": 6837.344853354076
       },
       {
         "routeId": "91-3-j26-1",
@@ -4037,21 +4286,6 @@
         "agencyId": "823",
         "line": "3",
         "mode": "tram",
-        "from": "Basel, Hegenheimerstrasse",
-        "to": "Basel, Burgfelderplatz",
-        "fromId": "ch:1:sloid:89323:1:2",
-        "toId": "ch:1:sloid:89303:1:1",
-        "occurrences": 137,
-        "pathIndex": null,
-        "reason": "implausible-detour",
-        "maximumSnapMetres": 102.22226827023925,
-        "pathMetres": 3595.0127170162923
-      },
-      {
-        "routeId": "91-3-j26-1",
-        "agencyId": "823",
-        "line": "3",
-        "mode": "tram",
         "from": "Basel, Markthalle",
         "to": "Basel, Bahnhof SBB",
         "fromId": "ch:1:sloid:193:1:9",
@@ -4074,21 +4308,6 @@
         "pathIndex": null,
         "reason": "endpoint-gap",
         "maximumSnapMetres": 456.6110091677037
-      },
-      {
-        "routeId": "91-3-j26-1",
-        "agencyId": "823",
-        "line": "3",
-        "mode": "tram",
-        "from": "Basel, Aeschenplatz",
-        "to": "Basel, Bankverein",
-        "fromId": "ch:1:sloid:73:4:1",
-        "toId": "ch:1:sloid:237:2:3",
-        "occurrences": 1,
-        "pathIndex": null,
-        "reason": "implausible-detour",
-        "maximumSnapMetres": 39.1740417381932,
-        "pathMetres": 6551.58183735215
       },
       {
         "routeId": "91-3-j26-1",
@@ -4243,51 +4462,6 @@
         "pathIndex": null,
         "reason": "endpoint-gap",
         "maximumSnapMetres": 552.2602231689348
-      },
-      {
-        "routeId": "91-3-j26-1",
-        "agencyId": "823",
-        "line": "3",
-        "mode": "tram",
-        "from": "Birsfelden, Bären",
-        "to": "Basel, Breite",
-        "fromId": "ch:1:sloid:89395:1:1",
-        "toId": "ch:1:sloid:78306:1:1",
-        "occurrences": 134,
-        "pathIndex": null,
-        "reason": "implausible-detour",
-        "maximumSnapMetres": 1.232989818723509,
-        "pathMetres": 2745.1872731956046
-      },
-      {
-        "routeId": "91-3-j26-1",
-        "agencyId": "823",
-        "line": "3",
-        "mode": "tram",
-        "from": "Basel, Breite",
-        "to": "Basel, Waldenburgerstrasse",
-        "fromId": "ch:1:sloid:78306:1:1",
-        "toId": "ch:1:sloid:89372:1:1",
-        "occurrences": 134,
-        "pathIndex": null,
-        "reason": "implausible-detour",
-        "maximumSnapMetres": 1.232989818723509,
-        "pathMetres": 3496.3820407502535
-      },
-      {
-        "routeId": "91-3-j26-1",
-        "agencyId": "823",
-        "line": "3",
-        "mode": "tram",
-        "from": "Basel, Hardstrasse",
-        "to": "Basel, Aeschenplatz",
-        "fromId": "ch:1:sloid:89320:1:1",
-        "toId": "ch:1:sloid:73:4:2",
-        "occurrences": 134,
-        "pathIndex": null,
-        "reason": "implausible-detour",
-        "maximumSnapMetres": 101.55034057664407,
-        "pathMetres": 5842.698763527992
       },
       {
         "routeId": "91-3-j26-1",
@@ -4546,36 +4720,6 @@
         "agencyId": "823",
         "line": "6",
         "mode": "tram",
-        "from": "Riehen, Weilstrasse",
-        "to": "Riehen, Fondation Beyeler",
-        "fromId": "ch:1:sloid:89485:1:2",
-        "toId": "ch:1:sloid:89451:1:2",
-        "occurrences": 131,
-        "pathIndex": null,
-        "reason": "implausible-detour",
-        "maximumSnapMetres": 1.7033290373194063,
-        "pathMetres": 1574.8819016408763
-      },
-      {
-        "routeId": "91-6-j26-1",
-        "agencyId": "823",
-        "line": "6",
-        "mode": "tram",
-        "from": "Riehen, Fondation Beyeler",
-        "to": "Riehen, Dorf",
-        "fromId": "ch:1:sloid:89451:1:2",
-        "toId": "ch:1:sloid:89450:1:2",
-        "occurrences": 131,
-        "pathIndex": null,
-        "reason": "implausible-detour",
-        "maximumSnapMetres": 0.66130237693608,
-        "pathMetres": 2142.5116556756675
-      },
-      {
-        "routeId": "91-6-j26-1",
-        "agencyId": "823",
-        "line": "6",
-        "mode": "tram",
         "from": "Basel, Heuwaage",
         "to": "Basel, Zoo Bachletten",
         "fromId": "ch:1:sloid:79:1:2",
@@ -4612,66 +4756,6 @@
         "pathIndex": null,
         "reason": "endpoint-gap",
         "maximumSnapMetres": 181.97829515887977
-      },
-      {
-        "routeId": "91-6-j26-1",
-        "agencyId": "823",
-        "line": "6",
-        "mode": "tram",
-        "from": "Basel, Brausebad",
-        "to": "Basel, Allschwilerplatz",
-        "fromId": "ch:1:sloid:81062:1:2",
-        "toId": "ch:1:sloid:89293:1:2",
-        "occurrences": 144,
-        "pathIndex": null,
-        "reason": "implausible-detour",
-        "maximumSnapMetres": 13.2201238172878,
-        "pathMetres": 6292.973605984691
-      },
-      {
-        "routeId": "91-6-j26-1",
-        "agencyId": "823",
-        "line": "6",
-        "mode": "tram",
-        "from": "Allschwil, Kirche",
-        "to": "Allschwil, Ziegelei",
-        "fromId": "ch:1:sloid:89286:1:2",
-        "toId": "ch:1:sloid:89290:1:2",
-        "occurrences": 149,
-        "pathIndex": null,
-        "reason": "implausible-detour",
-        "maximumSnapMetres": 0.8523709592797402,
-        "pathMetres": 2596.900100877398
-      },
-      {
-        "routeId": "91-6-j26-1",
-        "agencyId": "823",
-        "line": "6",
-        "mode": "tram",
-        "from": "Allschwil, Ziegelei",
-        "to": "Allschwil, Kirche",
-        "fromId": "ch:1:sloid:89290:1:1",
-        "toId": "ch:1:sloid:89286:1:1",
-        "occurrences": 146,
-        "pathIndex": null,
-        "reason": "implausible-detour",
-        "maximumSnapMetres": 0.8525413777034947,
-        "pathMetres": 2473.5516228155575
-      },
-      {
-        "routeId": "91-6-j26-1",
-        "agencyId": "823",
-        "line": "6",
-        "mode": "tram",
-        "from": "Allschwil, Kirche",
-        "to": "Allschwil, Merkurstrasse",
-        "fromId": "ch:1:sloid:89286:1:1",
-        "toId": "ch:1:sloid:89288:1:1",
-        "occurrences": 146,
-        "pathIndex": null,
-        "reason": "implausible-detour",
-        "maximumSnapMetres": 1.2858788699167438,
-        "pathMetres": 3309.5961524483114
       },
       {
         "routeId": "91-6-j26-1",
@@ -4874,36 +4958,6 @@
         "agencyId": "823",
         "line": "6",
         "mode": "tram",
-        "from": "Riehen, Habermatten",
-        "to": "Riehen, Niederholzboden",
-        "fromId": "ch:1:sloid:89456:1:1",
-        "toId": "ch:1:sloid:89472:1:1",
-        "occurrences": 145,
-        "pathIndex": null,
-        "reason": "implausible-detour",
-        "maximumSnapMetres": 0.37542914582472514,
-        "pathMetres": 5886.2850384989815
-      },
-      {
-        "routeId": "91-6-j26-1",
-        "agencyId": "823",
-        "line": "6",
-        "mode": "tram",
-        "from": "Riehen, Niederholzboden",
-        "to": "Riehen, Burgstrasse",
-        "fromId": "ch:1:sloid:89472:1:1",
-        "toId": "ch:1:sloid:89446:1:1",
-        "occurrences": 145,
-        "pathIndex": null,
-        "reason": "implausible-detour",
-        "maximumSnapMetres": 0.9758190701177379,
-        "pathMetres": 5077.379021203086
-      },
-      {
-        "routeId": "91-6-j26-1",
-        "agencyId": "823",
-        "line": "6",
-        "mode": "tram",
         "from": "Basel, Zoo Bachletten",
         "to": "Basel, Markthalle",
         "fromId": "ch:1:sloid:89381:1:1",
@@ -4996,21 +5050,6 @@
         "pathIndex": null,
         "reason": "endpoint-gap",
         "maximumSnapMetres": 389.44755660534884
-      },
-      {
-        "routeId": "91-6-j26-1",
-        "agencyId": "823",
-        "line": "6",
-        "mode": "tram",
-        "from": "Riehen, Fondation Beyeler",
-        "to": "Riehen, Dorf",
-        "fromId": "ch:1:sloid:89451:1:3",
-        "toId": "ch:1:sloid:89450:1:2",
-        "occurrences": 11,
-        "pathIndex": null,
-        "reason": "implausible-detour",
-        "maximumSnapMetres": 7.894340824013042,
-        "pathMetres": 2182.9268557171063
       },
       {
         "routeId": "91-6-j26-1",
@@ -5381,21 +5420,6 @@
         "agencyId": "823",
         "line": "8",
         "mode": "tram",
-        "from": "Basel, Claraplatz",
-        "to": "Basel, Rheingasse",
-        "fromId": "ch:1:sloid:898:3:4",
-        "toId": "ch:1:sloid:88779:1:2",
-        "occurrences": 148,
-        "pathIndex": null,
-        "reason": "implausible-detour",
-        "maximumSnapMetres": 33.263512131069966,
-        "pathMetres": 4774.846508577809
-      },
-      {
-        "routeId": "91-8-A-j26-1",
-        "agencyId": "823",
-        "line": "8",
-        "mode": "tram",
         "from": "Basel, Schützenhaus",
         "to": "Basel, Brausebad",
         "fromId": "ch:1:sloid:89360:1:2",
@@ -5516,21 +5540,6 @@
         "pathIndex": null,
         "reason": "endpoint-gap",
         "maximumSnapMetres": 634.4108404821509
-      },
-      {
-        "routeId": "91-8-A-j26-1",
-        "agencyId": "823",
-        "line": "8",
-        "mode": "tram",
-        "from": "Basel, Dreirosenbrücke",
-        "to": "Basel, Ciba",
-        "fromId": "ch:1:sloid:88768:1:4",
-        "toId": "ch:1:sloid:88767:1:1",
-        "occurrences": 1,
-        "pathIndex": null,
-        "reason": "implausible-detour",
-        "maximumSnapMetres": 32.319295864724516,
-        "pathMetres": 2169.4252585663876
       },
       {
         "routeId": "91-8-A-j26-1",
@@ -13130,8 +13139,8 @@
     ]
   },
   "payload": {
-    "manifestGzipBytes": 240703,
-    "morningGzipBytes": 369313,
+    "manifestGzipBytes": 251415,
+    "morningGzipBytes": 380398,
     "chunks": [
       {
         "id": "00-02",
@@ -13146,52 +13155,52 @@
       {
         "id": "04-06",
         "trips": 369,
-        "gzipBytes": 37151
+        "gzipBytes": 37369
       },
       {
         "id": "06-08",
         "trips": 1234,
-        "gzipBytes": 120359
+        "gzipBytes": 120597
       },
       {
         "id": "08-10",
         "trips": 1204,
-        "gzipBytes": 119578
+        "gzipBytes": 119765
       },
       {
         "id": "10-12",
         "trips": 1051,
-        "gzipBytes": 107880
+        "gzipBytes": 108107
       },
       {
         "id": "12-14",
         "trips": 1075,
-        "gzipBytes": 109614
+        "gzipBytes": 109805
       },
       {
         "id": "14-16",
         "trips": 1114,
-        "gzipBytes": 114906
+        "gzipBytes": 115025
       },
       {
         "id": "16-18",
         "trips": 1319,
-        "gzipBytes": 133808
+        "gzipBytes": 134053
       },
       {
         "id": "18-20",
         "trips": 1211,
-        "gzipBytes": 123098
+        "gzipBytes": 123299
       },
       {
         "id": "20-22",
         "trips": 811,
-        "gzipBytes": 82480
+        "gzipBytes": 82685
       },
       {
         "id": "22-24",
         "trips": 581,
-        "gzipBytes": 60004
+        "gzipBytes": 60241
       }
     ]
   },
@@ -13200,14 +13209,14 @@
     "failures": [
       "BVB-tram: requires trips and at least 95% accepted geometry",
       "BVB-bus: requires trips and at least 95% accepted geometry",
-      "BLT-tram: requires trips and at least 95% accepted geometry",
       "BLT-bus: requires trips and at least 95% accepted geometry"
     ],
     "minimumPerGroupCoverage": 0.95,
     "limits": {
       "snapMetres": 120,
       "detourRatio": 4.5,
-      "detourFloorMetres": 1200
+      "detourFloorMetres": 1200,
+      "alternativeSnapMetres": 5
     },
     "gzipLimits": {
       "manifest": 665600,

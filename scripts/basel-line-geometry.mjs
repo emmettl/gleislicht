@@ -2,7 +2,7 @@ import assert from 'node:assert/strict'
 import { distanceMetres } from './enrich-postbus-roads.mjs'
 
 export const BASEL_AGENCIES = { '823': 'BVB', '37': 'BLT' }
-export const BASEL_PATH_LIMITS = { snapMetres: 120, detourRatio: 4.5, detourFloorMetres: 1200 }
+export const BASEL_PATH_LIMITS = { snapMetres: 120, detourRatio: 4.5, detourFloorMetres: 1200, alternativeSnapMetres: 5 }
 const routeKey = (agency, mode, line) => `${agency}:${mode}:${String(line).trim()}`
 const pointKey = point => point.map(value => value.toFixed(7)).join(',')
 
@@ -20,7 +20,7 @@ export function baselGraphs(collections) {
       for (const [agency, operator] of Object.entries(BASEL_AGENCIES)) {
         if (!operators.includes(operator)) continue
         const key = routeKey(agency, mode, p.ln_liniennr)
-        const graph = graphs.get(key) ?? { points: [], indexes: new Map(), adjacency: [], edges: [] }
+        const graph = graphs.get(key) ?? { points: [], indexes: new Map(), adjacency: [], edges: [], parts: [] }
         const index = point => {
           assert(point.length === 2 && point.every(Number.isFinite), 'Invalid Basel coordinates')
           assert(point[0] >= 7 && point[0] <= 8.5 && point[1] >= 47 && point[1] <= 48, 'Basel source is not WGS84 longitude/latitude')
@@ -34,16 +34,19 @@ export function baselGraphs(collections) {
         }
         for (const line of lines) {
           assert(line.length >= 2, 'Empty Basel line')
+          const part = []
           for (let i = 1; i < line.length; i++) {
             const a = index(line[i - 1]), b = index(line[i])
             if (a === b) continue
             const length = distanceMetres(graph.points[a], graph.points[b])
-            graph.edges.push({ a, b, length })
+            const edge = { a, b, length }
+            graph.edges.push(edge); part.push(edge)
             // The source does not declare a directed routing graph. These
             // inferred candidates need separate one-way/track review.
             graph.adjacency[a].push([b, length])
             graph.adjacency[b].push([a, length])
           }
+          graph.parts.push(part)
         }
         graphs.set(key, graph)
       }
@@ -61,12 +64,16 @@ function project(point, a, b) {
 }
 
 function snap(graph, stop) {
-  let best
-  for (const edge of graph.edges) {
-    const candidate = { ...project(stop, graph.points[edge.a], graph.points[edge.b]), edge }
-    if (!best || candidate.gap < best.gap) best = candidate
+  const candidates = []
+  for (const part of graph.parts) {
+    let best
+    for (const edge of part) {
+      const candidate = { ...project(stop, graph.points[edge.a], graph.points[edge.b]), edge }
+      if (!best || candidate.gap < best.gap) best = candidate
+    }
+    if (best) candidates.push(best)
   }
-  return best
+  return candidates.sort((a, b) => a.gap - b.gap)
 }
 
 class Heap {
@@ -99,7 +106,30 @@ class Heap {
 
 export function matchBaselSegment(graph, from, to, limits = BASEL_PATH_LIMITS) {
   if (!graph?.edges.length) return { reason: 'missing-line' }
-  const start = snap(graph, from), end = snap(graph, to)
+  const starts = snap(graph, from), ends = snap(graph, to)
+  const initial = projectedPath(graph, from, to, starts[0], ends[0], limits)
+  // Preserve successful nearest matches. Only retry topology failures using
+  // another source part's nearest projection, within five metres of the best
+  // gap at each endpoint. This adds no edges or cross-track connections.
+  if (!['disconnected-line', 'implausible-detour'].includes(initial.reason)) return initial
+  const allowance = limits.alternativeSnapMetres ?? BASEL_PATH_LIMITS.alternativeSnapMetres
+  const near = candidates => candidates.filter(candidate => candidate.gap <= limits.snapMetres && candidate.gap <= candidates[0].gap + allowance)
+  let best, score = Infinity
+  for (const start of near(starts)) for (const end of near(ends)) {
+    if (start === starts[0] && end === ends[0]) continue
+    const result = projectedPath(graph, from, to, start, end, limits)
+    const gap = start.gap + end.gap
+    if (!result.path || gap > score || (gap === score && result.pathMetres >= best.pathMetres)) continue
+    score = gap
+    best = { ...result, projectionChoice: {
+      initialReason: initial.reason, nearestMaximumSnapMetres: initial.maximumSnapMetres,
+      maximumAdditionalSnapMetres: Math.max(start.gap - starts[0].gap, end.gap - ends[0].gap),
+    } }
+  }
+  return best ?? initial
+}
+
+function projectedPath(graph, from, to, start, end, limits) {
   const maximumSnapMetres = Math.max(start.gap, end.gap)
   if (maximumSnapMetres > limits.snapMetres) return { reason: 'endpoint-gap', maximumSnapMetres }
   let best = Infinity, bestPoints

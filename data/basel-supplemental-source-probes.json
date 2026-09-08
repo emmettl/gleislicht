@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "checkedOn": "2026-09-08",
+  "baselland": {
+    "datasetId": "41-BL",
+    "metadataUrl": "https://www.geocat.ch/geonetwork/srv/api/records/add1f3ed-0310-40ce-9d78-ffd1163b54c9/formatters/bl_datadoku_html?language=ger",
+    "metadataUpdate": "2024-08-08",
+    "descriptionExtent": "TNW",
+    "metadataPerimeter": "Kanton Basel-Landschaft (BL)",
+    "format": "ESRI Shapefile",
+    "crs": "EPSG:2056",
+    "product": "VE_OEV_SHP",
+    "productUrl": "https://www.geo.bl.ch/geoshop/client5/index.html?menu=order&password=public&product=VE_OEV_SHP&user=public&view=bl_wms&x1=2593175&x2=2641825&y1=1237200&y2=1277800",
+    "acquisition": "Free GeoShop box/polygon order; client configuration exposes email as the delivery field. No order submitted.",
+    "exportAcquired": false,
+    "mapLayer": "oev_verkehrslinien",
+    "mapConfigurationUrl": "https://geoview.bl.ch/main/wsgi/viewer.js?lang=de&cache_version=aed31aade0f04ab78b82a9a8b02aeea2",
+    "probes": [
+      {
+        "url": "https://geoview.bl.ch/main/wsgi/mapserv_proxy?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetCapabilities",
+        "httpStatus": 403
+      },
+      {
+        "url": "https://geoview.bl.ch/main/wsgi/mapserv_proxy?SERVICE=WFS&VERSION=1.1.0&REQUEST=GetFeature&TYPENAME=oev_verkehrslinien&MAXFEATURES=1&SRSNAME=EPSG:4326",
+        "httpStatus": 403
+      }
+    ],
+    "conclusion": "The tested public-map WFS requests did not provide an export. GeoShop remains an acquisition path to investigate; actual schema, operator joins, current validity and cross-border coverage remain unverified."
+  },
+  "fot": {
+    "catalogueUrl": "https://data.geo.admin.ch/api/stac/v1/collections/ch.bav.schienennetz/items/schienennetz",
+    "assetUrl": "https://data.geo.admin.ch/ch.bav.schienennetz/schienennetz/schienennetz_2056_de.xtf",
+    "catalogueProperties": {
+      "datetime": "2021-07-06T00:00:00Z",
+      "title": "Railway network",
+      "created": "2021-11-26T08:41:49.639559Z",
+      "updated": "2025-01-18T04:23:13.874345Z"
+    },
+    "assetUpdated": "2025-01-18T04:23:13.735821Z",
+    "publishedChecksum": "12202895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+    "sha256": "2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+    "publishedChecksumVerified": true,
+    "validOn": null,
+    "appliedScope": "Only BLT tram 19: the isolated Waldenburg–Liestal [Gleis 4] FOT component. Exact nodes and segments are in each audit report.",
+    "geometryValidityNote": "Catalogue timestamps and a matching checksum establish the inspected bytes, not validity for September 2026 service patterns."
+  }
+}

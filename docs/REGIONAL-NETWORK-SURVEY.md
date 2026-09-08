@@ -6,7 +6,7 @@ Surveyed **8 September 2026**. Lausanne is already being tackled separately; see
 
 This is a source survey and engineering assessment, not an implementation or a claim that geometry is production-ready. Rankings and proposed boundaries below are our judgement. Live source checks and the older reproducible timetable fixture are dated separately.
 
-**Basel follow-up:** the [first BVB/BLT audit](BASEL-STUDY.md) now measures complete weekday/Sunday source journeys and the full BS line layers. It confirms the timetable and payload feasibility but identifies substantial geometry gaps, especially outside the BLT city core. The measured audit takes precedence over the preliminary readiness estimates here.
+**Basel follow-up:** the [BVB/BLT audit](BASEL-STUDY.md) now measures complete weekday/Sunday source journeys, the full BS line layers and isolated FOT infrastructure for tram 19. Corrected source-part matching raises BLT tram geometry above 95% on both dates; wider BLT buses and dated diversions remain incomplete. Baselland's shapefile acquisition and the unsuccessful public-map WFS probes are documented there. The measured audit takes precedence over the preliminary readiness estimates here.
 
 ## Shortlist
 
