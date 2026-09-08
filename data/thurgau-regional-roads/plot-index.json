@@ -1,0 +1,592 @@
+[
+  {
+    "agencyId": "138",
+    "line": "702",
+    "routeId": "92-702-D-j26-1",
+    "page": 1,
+    "patterns": 2,
+    "representativePattern": "8ad4c18be578beb9eb21c9a7",
+    "first": "Wilen bei Wil, Gemeindezentrum",
+    "last": "Rossrüti, Schule"
+  },
+  {
+    "agencyId": "138",
+    "line": "706",
+    "routeId": "92-706-C-j26-1",
+    "page": 1,
+    "patterns": 3,
+    "representativePattern": "fb30950d913673454248aa1c",
+    "first": "Wil SG, Bahnhof",
+    "last": "Braunau, Dorf"
+  },
+  {
+    "agencyId": "138",
+    "line": "722",
+    "routeId": "92-722-A-j26-1",
+    "page": 1,
+    "patterns": 8,
+    "representativePattern": "51f2e5744d49ef5587adefab",
+    "first": "Wil SG, Bahnhof",
+    "last": "Weinfelden, Bahnhof"
+  },
+  {
+    "agencyId": "138",
+    "line": "732",
+    "routeId": "92-732-M-j26-1",
+    "page": 1,
+    "patterns": 4,
+    "representativePattern": "80e8bb5c84756ab0b9c1c0ca",
+    "first": "Gähwil, Sportstrasse",
+    "last": "Wil SG, Bahnhof"
+  },
+  {
+    "agencyId": "138",
+    "line": "732",
+    "routeId": "92-732-N-j26-1",
+    "page": 1,
+    "patterns": 2,
+    "representativePattern": "27d08e84e4c499ec2dfb43db",
+    "first": "Wil SG, Bahnhof",
+    "last": "Gähwil, Sportstrasse"
+  },
+  {
+    "agencyId": "138",
+    "line": "733",
+    "routeId": "92-733-I-j26-1",
+    "page": 1,
+    "patterns": 4,
+    "representativePattern": "3f48005bcd1deaac32b24e67",
+    "first": "Wil SG, Bahnhof",
+    "last": "Littenheid, Klinik"
+  },
+  {
+    "agencyId": "138",
+    "line": "734",
+    "routeId": "92-734-K-j26-1",
+    "page": 1,
+    "patterns": 4,
+    "representativePattern": "66b1d3fe94abd304cf6d33dd",
+    "first": "Wil SG, Bahnhof",
+    "last": "Fischingen, Kloster"
+  },
+  {
+    "agencyId": "138",
+    "line": "735",
+    "routeId": "92-735-C-j26-1",
+    "page": 1,
+    "patterns": 2,
+    "representativePattern": "15e6c11d08cc558fdb7d2011",
+    "first": "Bichelsee, Dorf",
+    "last": "Wil SG, Bahnhof"
+  },
+  {
+    "agencyId": "138",
+    "line": "736",
+    "routeId": "92-736-A-j26-1",
+    "page": 1,
+    "patterns": 6,
+    "representativePattern": "dc7e217c94347a933cb9fa2a",
+    "first": "Tägerschen, Bahnhof",
+    "last": "Balterswil, Dorf"
+  },
+  {
+    "agencyId": "138",
+    "line": "739",
+    "routeId": "92-739-B-j26-1",
+    "page": 1,
+    "patterns": 2,
+    "representativePattern": "1a86d5f3dda50c83663e05a0",
+    "first": "Sirnach, Ebnet",
+    "last": "Münchwilen TG, Bahnhof Süd"
+  },
+  {
+    "agencyId": "138",
+    "line": "820",
+    "routeId": "92-820-A-j26-1",
+    "page": 1,
+    "patterns": 4,
+    "representativePattern": "1a336de9a014ce07424c6159",
+    "first": "Steckborn, Bahnhof",
+    "last": "Kreuzlingen, Bahnhof"
+  },
+  {
+    "agencyId": "138",
+    "line": "940",
+    "routeId": "92-940-B-j26-1",
+    "page": 1,
+    "patterns": 5,
+    "representativePattern": "b9e2a228fe31a70b7fb8c987",
+    "first": "Arbon, Bahnhof",
+    "last": "Romanshorn, Bahnhof"
+  },
+  {
+    "agencyId": "138",
+    "line": "941",
+    "routeId": "92-941-A-j26-1",
+    "page": 1,
+    "patterns": 3,
+    "representativePattern": "c9e4f38a1d79d58fad4edf69",
+    "first": "Arbon, Bahnhof",
+    "last": "Amriswil, Bahnhof"
+  },
+  {
+    "agencyId": "138",
+    "line": "942",
+    "routeId": "92-942-A-j26-1",
+    "page": 1,
+    "patterns": 4,
+    "representativePattern": "0208273ecce02651bfa61635",
+    "first": "Muolen, Bahnhof",
+    "last": "Amriswil, Bahnhof"
+  },
+  {
+    "agencyId": "138",
+    "line": "943",
+    "routeId": "92-943-A-j26-1",
+    "page": 1,
+    "patterns": 8,
+    "representativePattern": "3c0f4bca3923761967559de3",
+    "first": "Amriswil, Bahnhof",
+    "last": "Bischofszell Stadt, Bahnhof"
+  },
+  {
+    "agencyId": "138",
+    "line": "N50",
+    "routeId": "92-N50-A-j26-1",
+    "page": 1,
+    "patterns": 4,
+    "representativePattern": "277f310bbe16e8610fb2ae76",
+    "first": "Gossau SG, Bahnhof",
+    "last": "Sulgen, Bahnhof"
+  },
+  {
+    "agencyId": "138",
+    "line": "N90",
+    "routeId": "92-N90-B-j26-1",
+    "page": 2,
+    "patterns": 2,
+    "representativePattern": "3e9788a3784fa78c969950c2",
+    "first": "Wil SG, Bahnhof",
+    "last": "Lichtensteig, Bahnhof"
+  },
+  {
+    "agencyId": "744",
+    "line": "841",
+    "routeId": "92-841-j26-1",
+    "page": 2,
+    "patterns": 1,
+    "representativePattern": "632b845c0f31e3a9a6bb50a9",
+    "first": "Münchwilen TG, Bahnhof Süd",
+    "last": "Frauenfeld, Kantonsschule"
+  },
+  {
+    "agencyId": "801",
+    "line": "806",
+    "routeId": "96-184-9-j26-1",
+    "page": 2,
+    "patterns": 3,
+    "representativePattern": "9fd8d9532d946bc96778afd4",
+    "first": "Dussnang, Kirche/Klinik",
+    "last": "Turbenthal, Bahnhof"
+  },
+  {
+    "agencyId": "801",
+    "line": "807",
+    "routeId": "96-185-1-j26-1",
+    "page": 2,
+    "patterns": 3,
+    "representativePattern": "34ede3350e30662ae44db58b",
+    "first": "Turbenthal, Bahnhof",
+    "last": "Sitzberg, Sternen"
+  },
+  {
+    "agencyId": "801",
+    "line": "N65",
+    "routeId": "96-185-9-j26-1",
+    "page": 2,
+    "patterns": 1,
+    "representativePattern": "71377ad2fbb9c5bc0885c84c",
+    "first": "Andelfingen, Bahnhof",
+    "last": "Oberstammheim, Rietweg"
+  },
+  {
+    "agencyId": "801",
+    "line": "605",
+    "routeId": "96-189-4-j26-1",
+    "page": 2,
+    "patterns": 2,
+    "representativePattern": "447a0c97f522099c5d1e87ba",
+    "first": "Andelfingen, Bahnhof",
+    "last": "Oberstammheim, Rietweg"
+  },
+  {
+    "agencyId": "801",
+    "line": "822",
+    "routeId": "96-200-2-j26-1",
+    "page": 2,
+    "patterns": 4,
+    "representativePattern": "6aae08039c64671df015407d",
+    "first": "Oberneunforn, Gemeindehaus",
+    "last": "Frauenfeld, Bahnhof"
+  },
+  {
+    "agencyId": "801",
+    "line": "823",
+    "routeId": "96-200-3-j26-1",
+    "page": 2,
+    "patterns": 13,
+    "representativePattern": "6b681af1b99df068fcdb1609",
+    "first": "Diessenhofen, Bahnhof",
+    "last": "Frauenfeld, Bahnhof"
+  },
+  {
+    "agencyId": "801",
+    "line": "825",
+    "routeId": "96-200-4-j26-1",
+    "page": 2,
+    "patterns": 7,
+    "representativePattern": "83d2db86089de76aa9e151c2",
+    "first": "Frauenfeld, Bahnhof",
+    "last": "Stein am Rhein, Bahnhof"
+  },
+  {
+    "agencyId": "801",
+    "line": "826",
+    "routeId": "96-200-6-j26-1",
+    "page": 2,
+    "patterns": 12,
+    "representativePattern": "c872cb155a1b9751ed8f2520",
+    "first": "Frauenfeld, Bahnhof",
+    "last": "Steckborn, Bahnhof"
+  },
+  {
+    "agencyId": "801",
+    "line": "833",
+    "routeId": "96-200-7-j26-1",
+    "page": 2,
+    "patterns": 6,
+    "representativePattern": "dd9366876a6584ab8f7ff616",
+    "first": "Weinfelden, Bahnhof",
+    "last": "Ermatingen, Bahnhof"
+  },
+  {
+    "agencyId": "801",
+    "line": "829",
+    "routeId": "96-200-8-j26-1",
+    "page": 2,
+    "patterns": 7,
+    "representativePattern": "e94400b984cbb4151562f3eb",
+    "first": "Frauenfeld, Bahnhof",
+    "last": "Wigoltingen, Schulweg"
+  },
+  {
+    "agencyId": "801",
+    "line": "834",
+    "routeId": "96-200-9-j26-1",
+    "page": 2,
+    "patterns": 7,
+    "representativePattern": "022d78627e6f2911179c68d7",
+    "first": "Frauenfeld, Bahnhof",
+    "last": "Ettenhausen TG, Elggerstrasse"
+  },
+  {
+    "agencyId": "801",
+    "line": "838",
+    "routeId": "96-201-0-j26-1",
+    "page": 2,
+    "patterns": 7,
+    "representativePattern": "e302bae6c79aca208736b077",
+    "first": "Weinfelden, Bahnhof",
+    "last": "Frauenfeld, Bahnhof"
+  },
+  {
+    "agencyId": "801",
+    "line": "836",
+    "routeId": "96-201-2-j26-1",
+    "page": 2,
+    "patterns": 7,
+    "representativePattern": "89c0e2680bb68944bd9816ba",
+    "first": "Frauenfeld, Bahnhof",
+    "last": "Islikon, Bahnhof"
+  },
+  {
+    "agencyId": "801",
+    "line": "832",
+    "routeId": "96-201-3-j26-1",
+    "page": 2,
+    "patterns": 4,
+    "representativePattern": "45052fdf6716fdb097757a74",
+    "first": "Raperswilen, Schulhaus",
+    "last": "Müllheim-Wigoltingen, Bahnhof"
+  },
+  {
+    "agencyId": "801",
+    "line": "831",
+    "routeId": "96-201-4-j26-1",
+    "page": 3,
+    "patterns": 4,
+    "representativePattern": "115e464c929e9ea545177205",
+    "first": "Müllheim-Wigoltingen, Bahnhof",
+    "last": "Homburg, Dorf"
+  },
+  {
+    "agencyId": "801",
+    "line": "722",
+    "routeId": "96-202-0-j26-1",
+    "page": 3,
+    "patterns": 12,
+    "representativePattern": "2b9781e7420abd0cef5739c0",
+    "first": "Weinfelden, Bahnhof",
+    "last": "Wil SG, Bahnhof"
+  },
+  {
+    "agencyId": "801",
+    "line": "932",
+    "routeId": "96-202-1-j26-1",
+    "page": 3,
+    "patterns": 6,
+    "representativePattern": "acb7142059a79f411334adcd",
+    "first": "Weinfelden, Bahnhof",
+    "last": "Neukirch an der Thur, Dorf"
+  },
+  {
+    "agencyId": "801",
+    "line": "837",
+    "routeId": "96-202-5-j26-1",
+    "page": 3,
+    "patterns": 8,
+    "representativePattern": "e7c49dbd2b0e80d882ac7975",
+    "first": "Tobel-Affeltrangen, Bahnhof",
+    "last": "Frauenfeld, Bahnhof"
+  },
+  {
+    "agencyId": "801",
+    "line": "819",
+    "routeId": "96-202-7-j26-1",
+    "page": 3,
+    "patterns": 5,
+    "representativePattern": "20acc3d68e0635dd89ca57a2",
+    "first": "Frauenfeld, Bahnhof",
+    "last": "Warth, Kartause Ittingen"
+  },
+  {
+    "agencyId": "801",
+    "line": "908",
+    "routeId": "96-203-0-j26-1",
+    "page": 3,
+    "patterns": 4,
+    "representativePattern": "5bb3a03a2b158168a2ec2f9f",
+    "first": "Konstanz, Zähringerplatz",
+    "last": "Landschlacht, Schulstrasse"
+  },
+  {
+    "agencyId": "801",
+    "line": "920",
+    "routeId": "96-203-1-j26-1",
+    "page": 3,
+    "patterns": 6,
+    "representativePattern": "8460f2318628d824827e3d16",
+    "first": "Kreuzlingen, Bahnhof",
+    "last": "Frauenfeld, Bahnhof"
+  },
+  {
+    "agencyId": "801",
+    "line": "921",
+    "routeId": "96-203-2-j26-1",
+    "page": 3,
+    "patterns": 7,
+    "representativePattern": "37cea040e8a40e85d6c1ecf0",
+    "first": "Kreuzlingen, Kantonsschule",
+    "last": "Weinfelden, Bahnhof"
+  },
+  {
+    "agencyId": "801",
+    "line": "923",
+    "routeId": "96-203-3-j26-1",
+    "page": 3,
+    "patterns": 7,
+    "representativePattern": "1c41c8a7b3a03f3b97becca0",
+    "first": "Kreuzlingen, Bahnhof",
+    "last": "Altnau, Bahnhof"
+  },
+  {
+    "agencyId": "801",
+    "line": "924",
+    "routeId": "96-203-5-j26-1",
+    "page": 3,
+    "patterns": 7,
+    "representativePattern": "34f4eb1c35fd88cf48a53be8",
+    "first": "Weinfelden, Bahnhof",
+    "last": "Kreuzlingen, Kantonsschule"
+  },
+  {
+    "agencyId": "801",
+    "line": "925",
+    "routeId": "96-203-6-j26-1",
+    "page": 3,
+    "patterns": 6,
+    "representativePattern": "c025294a50853fcfc15a79a0",
+    "first": "Konstanz, Bahnhof",
+    "last": "Altnau, Kirche"
+  },
+  {
+    "agencyId": "801",
+    "line": "944",
+    "routeId": "96-203-7-j26-1",
+    "page": 3,
+    "patterns": 6,
+    "representativePattern": "735fd6df15067491d4c0dd30",
+    "first": "Amriswil, Bahnhof",
+    "last": "Obersommeri, Dorf"
+  },
+  {
+    "agencyId": "801",
+    "line": "931",
+    "routeId": "96-203-8-j26-1",
+    "page": 3,
+    "patterns": 2,
+    "representativePattern": "343864b8a25a84270073209a",
+    "first": "Amriswil, Bahnhof",
+    "last": "Münsterlingen, Spitaleingang"
+  },
+  {
+    "agencyId": "801",
+    "line": "848",
+    "routeId": "96-203-9-j26-1",
+    "page": 3,
+    "patterns": 5,
+    "representativePattern": "65349563e02df0468fafcb24",
+    "first": "Schlatt TG, Bahnhof",
+    "last": "Diessenhofen, Bahnhof"
+  },
+  {
+    "agencyId": "801",
+    "line": "847",
+    "routeId": "96-204-0-j26-1",
+    "page": 3,
+    "patterns": 3,
+    "representativePattern": "39005b920eb369d16e1768dd",
+    "first": "Marthalen, Bahnhof",
+    "last": "Diessenhofen, Bahnhof"
+  },
+  {
+    "agencyId": "801",
+    "line": "200",
+    "routeId": "96-220-5-j26-1",
+    "page": 3,
+    "patterns": 10,
+    "representativePattern": "20090661883e731185620a88",
+    "first": "Arbon, Bahnhof",
+    "last": "St. Gallen, Bahnhof"
+  },
+  {
+    "agencyId": "801",
+    "line": "207",
+    "routeId": "96-220-6-j26-1",
+    "page": 4,
+    "patterns": 2,
+    "representativePattern": "1103e31f9ef9cd75e08eef50",
+    "first": "Arbon, Bahnhof",
+    "last": "Wittenbach, Zentrum"
+  },
+  {
+    "agencyId": "801",
+    "line": "211",
+    "routeId": "96-220-8-j26-1",
+    "page": 4,
+    "patterns": 6,
+    "representativePattern": "a675661ccf851ed6770192a8",
+    "first": "Arbon, Bahnhof",
+    "last": "St. Gallen, Bahnhof"
+  },
+  {
+    "agencyId": "801",
+    "line": "200",
+    "routeId": "96-220-A-j26-1",
+    "page": 4,
+    "patterns": 3,
+    "representativePattern": "ec5c7813df69579417d72bdb",
+    "first": "St. Gallen, Bahnhof",
+    "last": "Arbon, Bahnhof"
+  },
+  {
+    "agencyId": "801",
+    "line": "211",
+    "routeId": "96-220-B-j26-1",
+    "page": 4,
+    "patterns": 2,
+    "representativePattern": "a2783798911f32f030d770ba",
+    "first": "St. Gallen, Bahnhof",
+    "last": "Arbon, Bahnhof"
+  },
+  {
+    "agencyId": "801",
+    "line": "205",
+    "routeId": "96-221-4-j26-1",
+    "page": 4,
+    "patterns": 3,
+    "representativePattern": "77c96dc00318f065165460b1",
+    "first": "Wittenbach, Bahnhof",
+    "last": "Häggenschwil-Winden, Bahnhof"
+  },
+  {
+    "agencyId": "801",
+    "line": "740",
+    "routeId": "96-228-3-j26-1",
+    "page": 4,
+    "patterns": 5,
+    "representativePattern": "600f24bd75c4040061c1e5db",
+    "first": "Uzwil, Bahnhof",
+    "last": "Bischofszell Stadt, Bahnhof"
+  },
+  {
+    "agencyId": "801",
+    "line": "950",
+    "routeId": "96-228-7-j26-1",
+    "page": 4,
+    "patterns": 10,
+    "representativePattern": "d0f3daeb0aaae4c1749519db",
+    "first": "Bischofszell Stadt, Bahnhof",
+    "last": "St. Pelagiberg, Kurhaus"
+  },
+  {
+    "agencyId": "801",
+    "line": "740",
+    "routeId": "96-228-B-j26-1",
+    "page": 4,
+    "patterns": 2,
+    "representativePattern": "3e4b13e6eaf01321145634c5",
+    "first": "Uzwil, Bahnhof",
+    "last": "Sitterdorf, Bruggfeld"
+  },
+  {
+    "agencyId": "801",
+    "line": "210",
+    "routeId": "96-250-8-j26-1",
+    "page": 4,
+    "patterns": 8,
+    "representativePattern": "f73c3965fa65f99d9af31998",
+    "first": "Arbon, Bahnhof",
+    "last": "St. Gallen, Bahnhof"
+  },
+  {
+    "agencyId": "801",
+    "line": "201",
+    "routeId": "96-250-A-j26-1",
+    "page": 4,
+    "patterns": 4,
+    "representativePattern": "322bd51d751837ca165b6049",
+    "first": "Arbon, Bahnhof",
+    "last": "St. Gallen, Bahnhof"
+  },
+  {
+    "agencyId": "896",
+    "line": "731",
+    "routeId": "92-731-j26-1",
+    "page": 4,
+    "patterns": 2,
+    "representativePattern": "eaa2d286bb387cabdc685bb1",
+    "first": "Wil SG, Bahnhof",
+    "last": "Kirchberg SG, Fetzhof"
+  }
+]

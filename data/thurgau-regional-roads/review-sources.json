@@ -1,0 +1,32 @@
+{
+  "reviewedOn": "2026-09-08",
+  "sourceGeometry": "Existing pinned Geofabrik Switzerland 2026-09-02 plus OSM border extract 2026-09-08; no new road acquisition in this extension.",
+  "method": "pfaedle unmodified bus profile with --no-trie -W; complete ordered route/platform/coordinate patterns only. Complete cantonal patterns take priority. No street or diversion certification.",
+  "reviewScope": "Four geometry overview pages, all 59 fixed regional route records and all 296 routing patterns overlaid. Grey includes matched segments of incomplete patterns. The plots have no basemap. Branches and endpoint loops were inspected; no additional geometric rejection identified from these overview plots.",
+  "routeTypeEvidence": {
+    "url": "https://developers.google.com/transit/gtfs/reference/extended-route-types",
+    "pageUpdated": "2024-10-16",
+    "readOn": "2026-09-08",
+    "acquisition": "Read using web tool; original HTML not preserved. Route code itself is preserved in the GTFS timetable fixture.",
+    "finding": "715 denotes Demand and Response Bus Service. RUB (92-8-Y-j26-1, agency 138) is type 715 despite reservationRequired=false. All 30 Friday and 29 Sunday instances excluded."
+  },
+  "wittenbachRejections": {
+    "routes": [
+      "96-220-5-j26-1",
+      "96-220-6-j26-1"
+    ],
+    "lines": [
+      "200",
+      "207"
+    ],
+    "fromId": "ch:1:sloid:73966:0:341297",
+    "toId": "ch:1:sloid:73966:0:256909",
+    "reason": "Distinct GTFS platform IDs at Wittenbach Zentrum receive identical matcher shape distances (0.0). No positive-length source slice exists. Four complete routing patterns / 37 Friday journeys remain excluded; do not drop the platform call or invent a connecting path."
+  },
+  "remainingLimits": [
+    "Rail and water geometry are unchanged.",
+    "Two September civil dates do not prove seasonal or holiday coverage.",
+    "Cantonal geometry effective date remains unknown.",
+    "OSM routing represents inferred archival alignments; temporary diversions and physical street legality are not independently certified."
+  ]
+}

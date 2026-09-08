@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict'
 import { applyBernGeometry, bernPatternId } from './bern-line-geometry.mjs'
+import { applyThurgauRegionalRoads } from './thurgau-regional-roads.mjs'
 import { applyThurgauCityRoads } from './thurgau-city-roads.mjs'
 
 export { bernPatternId as thurgauPatternId }
@@ -27,8 +28,8 @@ export function thurgauFeatureMatch(route, feature, crosswalk) {
   return entry.featureIds.includes(feature.id)
 }
 
-export function applyThurgauGeometry(raw, routes, source, crosswalk, cityRoads) {
+export function applyThurgauGeometry(raw, routes, source, crosswalk, cityRoads, regionalRoads) {
   const result = applyBernGeometry(raw, routes, source, crosswalk,
     { featureMatch: thurgauFeatureMatch, limits: THURGAU_LIMITS, lineId: f => f.id })
-  return applyThurgauCityRoads(raw, result, cityRoads)
+  return applyThurgauRegionalRoads(raw, applyThurgauCityRoads(raw, result, cityRoads), regionalRoads, routes)
 }

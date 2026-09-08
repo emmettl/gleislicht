@@ -7,6 +7,7 @@ import { gunzipSync } from 'node:zlib'
 import { thurgauFeatureMatch, thurgauPatternId } from './thurgau-line-geometry.mjs'
 import { compactBernFeed, validateBernSnapshot, validateBernChunks } from './build-bern-region.mjs'
 import { thurgauTimingDiagnostics } from './build-thurgau-region.mjs'
+import { checkThurgauRegionalRoads } from './check-thurgau-regional-roads.mjs'
 import { checkThurgauCityRoads } from './check-thurgau-city-roads.mjs'
 
 const json = async path => JSON.parse(await readFile(path, 'utf8'))
@@ -19,6 +20,9 @@ export async function checkThurgauRegion({ output = 'public/data/thurgau-region'
   const decodedBytes = await readFile(join(sources, 'decoded.json.gz')), decoded = JSON.parse(gunzipSync(decodedBytes))
   const crosswalk = await json('data/thurgau-line-crosswalk.json')
   const cityRoads = await checkThurgauCityRoads()
+  const regionalRoads = await checkThurgauRegionalRoads()
+  assert.equal(sha(await readFile('data/thurgau-regional-roads/cache.json.gz')), summary.sourceHashes.regionalRoads)
+  assert.deepEqual(await json(join(output, 'regional-road-paths.json')), regionalRoads)
   assert.equal(sha(await readFile('data/thurgau-city-roads/cache.json.gz')), summary.sourceHashes.cityRoads)
   assert.deepEqual(await json(join(output, 'city-road-paths.json')), cityRoads)
   assert.equal(sha(decodedBytes), summary.sourceHashes.source)
@@ -63,7 +67,7 @@ export async function checkThurgauRegion({ output = 'public/data/thurgau-region'
     const report = await json(join(audit, `${day.serviceDate}.json`))
     assert.deepEqual(report.sourceHashes, summary.sourceHashes)
     assert.deepEqual(report.coverage, day.coverage)
-    const replay = applyThurgauGeometry(cache.snapshots.find(s => s.metadata.serviceDate === day.serviceDate), new Map(cache.routes.map(r => [r.id, r])), decoded, crosswalk, cityRoads)
+    const replay = applyThurgauGeometry(cache.snapshots.find(s => s.metadata.serviceDate === day.serviceDate), new Map(cache.routes.map(r => [r.id, r])), decoded, crosswalk, cityRoads, regionalRoads)
     assert.deepEqual(report.patterns, replay.patterns.map(({ pathSegments, ...p }) => ({ ...p, matchedMask: pathSegments.map(i => i !== null) })))
     assert.deepEqual(report.directedPairs, replay.pairs.map(({ pathIndex, ...p }) => ({ ...p, matched: pathIndex !== null })))
     assert.deepEqual(report.timing, thurgauTimingDiagnostics(cache.snapshots.find(s => s.metadata.serviceDate === day.serviceDate), replay, new Map(cache.routes.map(r => [r.id, r]))))
@@ -80,7 +84,7 @@ export async function checkThurgauRegion({ output = 'public/data/thurgau-region'
       for (let i = 1; i < p.stopIds.length; i++) {
         const key = JSON.stringify([p.routeId, p.stopIds[i - 1], p.stopIds[i]])
         const pair = pairCounts.get(key) ?? { occurrences: 0, admitted: 0, matched: p.matchedMask[i - 1] }
-        assert.equal(pair.matched, p.matchedMask[i - 1])
+        pair.matched ||= p.matchedMask[i - 1]
         pair.occurrences += p.trips; pair.admitted += p.admittedTrips; pairCounts.set(key, pair)
       }
     }

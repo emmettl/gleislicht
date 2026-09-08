@@ -1,0 +1,142 @@
+{
+  "publisher": "OpenStreetMap contributors",
+  "license": "ODbL-1.0",
+  "sourceUrl": "https://www.openstreetmap.org/copyright",
+  "source": "Geofabrik Switzerland 2026-09-02 plus OSM border extract 2026-09-08; pfaedle 99f2cd466696ecc6bdb73b2b3bb9008557fcb84a",
+  "processedBy": "Gleislicht",
+  "matchedOn": "2026-09-08",
+  "reviewNotes": {
+    "path": "review-sources.json",
+    "sha256": "c0cbbb7369bd455208291029098ee7ceae0c9e898941dc2445cf28323cf3f203"
+  },
+  "scope": "Only fixed bus patterns for agencies 138/744/801/896; full ordered platform-and-coordinate patterns from both dated fixtures. GTFS type 715 and reservation/on-demand services excluded. Complete official patterns take priority; no partial road pattern is admitted.",
+  "model": "Inferred OSM road paths; not operator-surveyed alignments or observed positions. Complete patterns only.",
+  "limits": {
+    "snapMetres": 120,
+    "maxDetourRatio": 6,
+    "detourAllowanceMetres": 1500,
+    "simplifyMetres": 5
+  },
+  "files": [
+    {
+      "path": "138/patterns.json.gz",
+      "bytes": 56131,
+      "sha256": "a1f216da6ce9eb2333b2ad28935ccc9813084ec074c9820e9a626724ae60be27"
+    },
+    {
+      "path": "138/matching.log.gz",
+      "bytes": 868,
+      "sha256": "d83978293f3984ae132e7685029e1ed806a8d44586c6fe717a1cb953e9d12a61"
+    },
+    {
+      "path": "138/shapes.txt.gz",
+      "bytes": 782894,
+      "sha256": "d82b5f4135aed831f64bf9a00a3606d56b32bea15a8c5b06343fa759b5596744"
+    },
+    {
+      "path": "138/trips.txt.gz",
+      "bytes": 5573,
+      "sha256": "464eb5d67685e0653a122b190b726f8f0f569e7e64120425cf7aced18a395d5a"
+    },
+    {
+      "path": "138/stop_times.txt.gz",
+      "bytes": 87050,
+      "sha256": "bd1e5581107260f857fa8a968142f17bd48843654e7124c60b47c6776951ba2f"
+    },
+    {
+      "path": "138/routing-run.json.gz",
+      "bytes": 843,
+      "sha256": "70537798b1898856cc2efa29c405668b20d7c36694d265ea9f341031fa102e20"
+    },
+    {
+      "path": "744/patterns.json.gz",
+      "bytes": 1567,
+      "sha256": "c2c3b8769f4fffa0a6910c548a16cd8332508cadbbec18dad8caa23583499654"
+    },
+    {
+      "path": "744/matching.log.gz",
+      "bytes": 477,
+      "sha256": "876df0aa1ba6cb45bf0ea6ee23513376e352bd29c1fc44029cbc5c8bc8f02360"
+    },
+    {
+      "path": "744/shapes.txt.gz",
+      "bytes": 13633,
+      "sha256": "4d22e8f32018f80a32297c3b34bc789459e030c189803f9394b679d6fe5374f7"
+    },
+    {
+      "path": "744/trips.txt.gz",
+      "bytes": 210,
+      "sha256": "09f3394f22aadc68516d958f51c434b7e13ea7722c8c9e610683ff767f6c48b5"
+    },
+    {
+      "path": "744/stop_times.txt.gz",
+      "bytes": 763,
+      "sha256": "b8e4a9c790032c2961f250568f5f95506a941c9365859d5444dc1c764ee4a9ce"
+    },
+    {
+      "path": "744/routing-run.json.gz",
+      "bytes": 843,
+      "sha256": "633a6d78a3c00ae511ad6e9d1e180f149c4287cbeb262080047940ab392e5fda"
+    },
+    {
+      "path": "801/patterns.json.gz",
+      "bytes": 219399,
+      "sha256": "fdef72e3047084d230906484a01cf83b264fb091c7784d0151af9f037650b37b"
+    },
+    {
+      "path": "801/matching.log.gz",
+      "bytes": 870,
+      "sha256": "a6294c9718105db9b5b06bb5054a968a20a8ba375dc55e0ad15eb102687825f8"
+    },
+    {
+      "path": "801/shapes.txt.gz",
+      "bytes": 3553091,
+      "sha256": "2d86e7ea8694c9ce9af9bd9f0d07f6fbfbfcd0d5c9c90c78839592a28b98e98b"
+    },
+    {
+      "path": "801/trips.txt.gz",
+      "bytes": 18896,
+      "sha256": "c47142ca667bb5624ece5b875d95f38aecb375716e8af8031131fa7f727c4bee"
+    },
+    {
+      "path": "801/stop_times.txt.gz",
+      "bytes": 373297,
+      "sha256": "f446e2d236d64b1afe88dc41a75fbc62924883cd3c12d1f26b7ff15d2bc22327"
+    },
+    {
+      "path": "801/routing-run.json.gz",
+      "bytes": 843,
+      "sha256": "5c81f3a87e4829ccdbebec037498cff86336263dffa1837cf48506fb20c7c64a"
+    },
+    {
+      "path": "896/patterns.json.gz",
+      "bytes": 1959,
+      "sha256": "f264c5050d9efd69f58ee5f8178e13e3f404585e6d7e5e285037dad1eefd656f"
+    },
+    {
+      "path": "896/matching.log.gz",
+      "bytes": 516,
+      "sha256": "5fac003504e90fbb783bbca573d6aab729030952c04be8314cf49ca2b642eaf9"
+    },
+    {
+      "path": "896/shapes.txt.gz",
+      "bytes": 11492,
+      "sha256": "85adce37778cac27461b3b0692c4dd91fc6440b39f46d5212e661d10ad444072"
+    },
+    {
+      "path": "896/trips.txt.gz",
+      "bytes": 281,
+      "sha256": "f306dabd34b93e35a59bac28449c88dd851adec161ee144a02070e26fc9d6a8d"
+    },
+    {
+      "path": "896/stop_times.txt.gz",
+      "bytes": 1514,
+      "sha256": "edaf7eed4404f902b489e2a8736c2d9407a48e81fe35de7ce4dfe75eb54fbcce"
+    },
+    {
+      "path": "896/routing-run.json.gz",
+      "bytes": 843,
+      "sha256": "e58f17e86fc81f7590b8fc949dac6cb2a1c9517045676b0ca066627f51166b3d"
+    }
+  ]
+}
