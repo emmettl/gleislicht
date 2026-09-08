@@ -17,6 +17,7 @@ describe('Gleislicht edition', () => {
       'rigi-lake',
       'zurich-city',
       'zvv-region',
+      'lausanne-region',
       'geneva-tpg',
     ])
     expect(Object.values(SWITZERLAND_EDITION.data.corridors)).toHaveLength(4)

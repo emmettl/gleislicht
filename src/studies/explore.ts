@@ -2,8 +2,8 @@ import pilotCatalog from '../../data/cantonal-road-pilots.json'
 import type { NetworkSnapshot } from '@motionstudies/core/domain/network'
 import type { SwitzerlandNetworkStudy } from '../editions/switzerland.ts'
 
-export const STUDY_IDS = ['national', 'postbus', 'zvv-region', 'geneva-tpg', 'zurich-city', 'rigi-lake', 'contrast', 'jungfrau'] as const
-export const REGIONAL_DAYS = { 'zvv-region': 'zvv-region-day-manifest.json', 'geneva-tpg': 'geneva-tpg-day-manifest.json', 'zurich-city': 'zurich-city-day-manifest.json' } as const
+export const STUDY_IDS = ['national', 'postbus', 'zvv-region', 'geneva-tpg', 'zurich-city', 'rigi-lake', 'contrast', 'jungfrau', 'lausanne-region'] as const
+export const REGIONAL_DAYS = { 'lausanne-region': 'lausanne-region-day-manifest.json', 'zvv-region': 'zvv-region-day-manifest.json', 'geneva-tpg': 'geneva-tpg-day-manifest.json', 'zurich-city': 'zurich-city-day-manifest.json' } as const
 export const isRegionalDayStudy = (id: SwitzerlandNetworkStudy): id is keyof typeof REGIONAL_DAYS => id in REGIONAL_DAYS
 export function withinStudy(location: { longitude: number; latitude: number }, bounds?: NetworkSnapshot['bounds']) {
   return Boolean(bounds && location.longitude >= bounds.minLongitude && location.longitude <= bounds.maxLongitude && location.latitude >= bounds.minLatitude && location.latitude <= bounds.maxLatitude)
@@ -22,5 +22,5 @@ export function readStudyLink(search: string): StudyLink {
   const study = STUDY_IDS.includes(p.get('study') as SwitzerlandNetworkStudy) ? p.get('study') as SwitzerlandNetworkStudy : 'national'
   const time = p.has('time') ? Number(p.get('time')) : NaN
   const date = p.get('date') ?? ''
-  return { study, range: p.get('range') === 'day' ? 'day' : 'morning', time: Number.isFinite(time) && time >= 0 && time < 86400 ? time : undefined, date: /^\d{4}-\d{2}-\d{2}$/.test(date) ? date : undefined, station: p.get('station')?.slice(0, 200) || undefined, train: p.get('train')?.slice(0, 200) || undefined }
+  return { study, range: p.get('range') === 'day' || (study === 'lausanne-region' && p.get('range') !== 'morning') ? 'day' : 'morning', time: Number.isFinite(time) && time >= 0 && time < 86400 ? time : undefined, date: /^\d{4}-\d{2}-\d{2}$/.test(date) ? date : undefined, station: p.get('station')?.slice(0, 200) || undefined, train: p.get('train')?.slice(0, 200) || undefined }
 }

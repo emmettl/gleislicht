@@ -2,7 +2,7 @@ import { readFileSync } from 'node:fs'
 import { createHash } from 'node:crypto'
 import { gzipSync } from 'node:zlib'
 import { describe, expect, it } from 'vitest'
-for (const id of ['zurich-city', 'zvv-region', 'geneva-tpg']) describe(`${id} full day`, () => {
+for (const id of ['zurich-city', 'zvv-region', 'geneva-tpg', 'lausanne-region']) describe(`${id} full day`, () => {
   const manifest = JSON.parse(readFileSync(`public/data/${id}-day-manifest.json`))
   it('has a complete day of integrity-checked chunks and valid geometry indices', () => {
     expect(manifest.metadata.windowStart).toBe(0)

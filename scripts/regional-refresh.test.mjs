@@ -13,6 +13,7 @@ import { STUDY_IDS } from '../src/studies/explore.ts'
 function fixture(id = 'zurich-city') {
   const metadata = { serviceDate: '2026-09-08', feedVersion: '20260905', windowStart: 0, windowEnd: 86400,
     geometry: { matchedSegments: 100, totalSegments: 100 }, railGeometry: { matchedSegments: 100, totalSegments: 100, sha256: 'a'.repeat(64) }, sourceHashes: { archive: 'b'.repeat(64), zvv: 'c'.repeat(64) } }
+  if (id === 'lausanne-region') Object.assign(metadata, { dayModel: 'civil day with preceding service-day spillover', sourceServiceDates: ['2026-09-07', '2026-09-08'], geometry: { ...metadata.geometry, license: 'ODbL-1.0' }, railGeometry: { ...metadata.railGeometry, maximumSnapMetres: 45 }, lausanneGeometry: ['tl-bus', 'm1', 'm2', 'leb', 'rail'].map(id => ({ id, totalSegments: 100, acceptedSegments: 100 })) })
   const topology = { stops: [[8, 47, 'A'], [8.01, 47.01, 'B']], paths: [[[8, 47], [8.01, 47.01]]], edges: [[0, 1]], edgePaths: [0] }
   const trains = Array.from({ length: 1001 }, (_, i) => ({ id: `${i}`, start: 0, end: 86400, stops: [[0, 0, 0], [1, 86400, 86400]], pathSegments: [0] }))
   const files = new Map()
@@ -106,5 +107,17 @@ describe('regional refresh', () => {
       expect(summaries.find(summary => summary.id === 'geneva-tpg').date).toBe('2026-09-04')
       expect(summaries.find(summary => summary.id === 'national').date).toBe('2026-09-08')
     } finally { await rm(directory, { recursive: true, force: true }) }
+  })
+  it('bootstraps an unpublished Lausanne from a complete dated fixture, but rejects a damaged published chunk', async () => {
+    const output = await mkdtemp(join(tmpdir(), 'lausanne-bootstrap-test-'))
+    try {
+      const files = new Map(REGIONAL_IDS.filter(id => id !== 'lausanne-region').flatMap(id => [...fixture(id)]))
+      const fetchData = async url => { const bytes = files.get(url.pathname.replace('/gleislicht/data/', '')); return new Response(bytes ?? '', { status: bytes ? 200 : 404 }) }
+      const result = await restorePublishedRegionalData(output, fetchData)
+      expect(result.dates['lausanne-region']).toBe(JSON.parse(await readFile('public/data/lausanne-region-day-manifest.json')).metadata.serviceDate)
+      for (const [name, bytes] of fixture('lausanne-region')) files.set(name, bytes)
+      files.delete('lausanne-region-day-chunks/22-24.json')
+      await expect(restorePublishedRegionalData(output, fetchData)).rejects.toThrow('returned 404')
+    } finally { await rm(output, { recursive: true, force: true }) }
   })
 })

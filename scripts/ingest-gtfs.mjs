@@ -4,6 +4,7 @@ import { basename, dirname, extname, join, resolve } from 'node:path'
 import { chunkNetworkSnapshot } from '@motionstudies/data/network-chunks'
 import { activeServices, parseGtfsTime, rowsFromArchive, stopsById, transportModeForRouteType } from '@motionstudies/data/gtfs'
 import { expandFrequencyTrip, readFrequencyIntervals } from './gtfs-frequencies.mjs'
+import { civilTripInstance, previousServiceDate } from './civil-day.mjs'
 
 const DEFAULT_OUTPUT = 'public/data/swiss-rail-morning.json'
 const DEFAULT_HUB_OUTPUT = 'public/data/swiss-hub-day.json'
@@ -72,11 +73,11 @@ async function routesForModes(archive, modes) {
   return routes
 }
 
-async function activeTrips(archive, routes, services) {
+async function activeTrips(archive, routes, services, previousServices) {
   const trips = new Map()
   for await (const row of rowsFromArchive(archive, 'trips.txt')) {
     const route = routes.get(row.route_id)
-    if (!route || !services.has(row.service_id)) continue
+    if (!route || (!services.has(row.service_id) && !previousServices?.has(row.service_id))) continue
     trips.set(row.trip_id, {
       agencyId: route.agencyId,
       routeId: row.route_id,
@@ -85,6 +86,7 @@ async function activeTrips(archive, routes, services) {
       shortName: row.trip_short_name,
       category: route.category,
       mode: route.mode,
+      ...(previousServices ? { serviceOffsets: [...(services.has(row.service_id) ? [0] : []), ...(previousServices.has(row.service_id) ? [-86400] : [])] } : {}),
     })
   }
   return trips
@@ -209,11 +211,13 @@ export function createSnapshotBuilder({
     const start = indexedStops[0][2]
     const end = indexedStops.at(-1)[1]
     if (start > windowEnd || end < windowStart) return
+    if (metadata.sourceServiceDate && start >= windowEnd) return
 
     trains.push({
       id: tripId,
       route: metadata.route,
       ...(metadata.mode === 'bus' ? { routeId: metadata.routeId } : {}),
+      ...(metadata.sourceServiceDate ? { sourceTripId: metadata.sourceTripId, sourceServiceDate: metadata.sourceServiceDate } : {}),
       headsign: metadata.headsign,
       shortName: metadata.shortName,
       category: metadata.category,
@@ -274,7 +278,7 @@ function createHubDayBuilder({ trips, sourceStops }) {
   return { addTrip, finish }
 }
 
-export async function readStopTimes(archive, trips, builders, frequencies = new Map(), windowStart = 0, windowEnd = 86400) {
+export async function readStopTimes(archive, trips, builders, frequencies = new Map(), windowStart = 0, windowEnd = 86400, civilDate) {
   let currentTripId
   let currentStops = []
   let rowsRead = 0
@@ -283,6 +287,17 @@ export async function readStopTimes(archive, trips, builders, frequencies = new 
     if (!currentTripId || !trips.has(currentTripId)) return
     currentStops.sort((a, b) => a.sequence - b.sequence)
     const intervals = frequencies.get(currentTripId)
+    if (civilDate) {
+      const metadata = trips.get(currentTripId)
+      for (const offset of metadata.serviceOffsets) {
+        const instances = intervals ? expandFrequencyTrip(currentTripId, currentStops, intervals, windowStart - offset, windowEnd - offset) : [{ id: currentTripId, stops: currentStops }]
+        for (const instance of instances) {
+          const shifted = civilTripInstance(instance.id, instance.stops, { ...metadata, ...(instance.frequency ? { shortName: '', frequency: instance.frequency } : {}) }, offset, civilDate)
+          for (const builder of builders) builder.addTrip(shifted.id, shifted.stops, shifted.metadata)
+        }
+      }
+      return
+    }
     if (!intervals) {
       for (const builder of builders) builder.addTrip(currentTripId, currentStops)
       return
@@ -405,13 +420,14 @@ async function main() {
         '[--local-stop-archive /path/regional.zip] [--output morning.json] ' +
         '[--local-agencies 881,199] ' +
         '[--local-route-ids 96-930-j26-1] ' +
-        '[--hub-output day.json|none] [--chunk-hours 3]',
+        '[--hub-output day.json|none] [--chunk-hours 3] [--civil-day]',
     )
     return
   }
 
   const archive = resolve(requiredArgument('archive'))
   const serviceDate = argument('date', '2026-09-04')
+  const civilDate = process.argv.includes('--civil-day') ? serviceDate : undefined
   const windowStartLabel = argument('window-start', '06:45')
   const windowEndLabel = argument('window-end', '08:45')
   const focusLabel = argument('focus', '07:45')
@@ -447,7 +463,9 @@ async function main() {
     `Selected ${services.size} active services and ${routes.size} routes for ${[...modes].join(', ')}.`,
   )
 
-  const trips = await activeTrips(archive, routes, services)
+  if (civilDate && (!feed.feed_start_date || !feed.feed_end_date || previousServiceDate(civilDate).replaceAll('-', '') < feed.feed_start_date || civilDate.replaceAll('-', '') > feed.feed_end_date)) throw new Error('The feed does not cover both service days required for civil-day import')
+  const previousServices = civilDate ? await activeServices(archive, previousServiceDate(civilDate)) : undefined
+  const trips = await activeTrips(archive, routes, services, previousServices)
   const frequencies = await readFrequencyIntervals(archive, trips)
   console.log(`Selected ${trips.size} active trips. Reading stop times…`)
   const builder = createSnapshotBuilder({
@@ -469,6 +487,7 @@ async function main() {
     frequencies,
     hubBuilder ? Math.min(0, windowStart) : windowStart,
     hubBuilder ? Math.max(86400, windowEnd) : windowEnd,
+    civilDate,
   )
   const snapshot = builder.finish()
   const hubs = hubBuilder?.finish()
@@ -480,6 +499,7 @@ async function main() {
       publisher: feed.feed_publisher_name,
       feedVersion: feed.feed_version,
       serviceDate,
+      ...(civilDate ? { dayModel: 'civil day with preceding service-day spillover', sourceServiceDates: [previousServiceDate(civilDate), civilDate] } : {}),
       windowStart,
       windowEnd,
       focusTime,

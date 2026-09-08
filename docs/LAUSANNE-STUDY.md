@@ -1,10 +1,36 @@
 # Lausanne regional study: timetable and geometry
 
-The Lausanne candidate now passes the timetable, geometry and payload checks for
-the sampled weekday and Sunday. The rail matcher uses identified FOT corridors
-and projects platforms onto their alignments, correcting the métro and local rail
-failures found during kickoff. It is **not yet a published study**: overnight
-service-day handling, bus alignment review and browser integration remain.
+Lausanne is integrated locally as a lazy full-day regional study, with search,
+line selection, Now, share links and all four languages. The daily regional
+builder and verified publication recovery include it. Overnight imports include
+the preceding service day's spillover. This integration has not been deployed;
+the historical weekday/Sunday geometry audits below remain separate evidence.
+
+## Integrated civil-day fixture
+
+The **8 September 2026** fixture uses feed `20260905` and calendars for both
+7 and 8 September. It contains **8,848 trips**, 1,077 platform records and 506
+named stops. The 00:00–02:00 block contains **315 trips**, including journeys
+recorded beyond 24:00 on the preceding service day. Trips beginning exactly at
+the following midnight are excluded; journeys crossing either boundary retain
+their complete stop times and distinct service-date identities.
+
+Rail and métro geometry covers **100%** of 19,361 segment occurrences. Bus
+geometry covers **99.93%** (114,006 of 114,089); seven overnight patterns are
+absent from the retained cache and remain unshaped. This meets the unchanged
+95% gate for each group. It does not imply operator verification of inferred paths.
+
+Node 24 gzip sizes are **78.2 KiB** for the manifest, **188.9 KiB** for the morning
+snapshot and **112.1 KiB** for the largest movement chunk. All twelve chunk hashes,
+byte lengths and references validate. The morning window remains 06:45–08:45;
+Lausanne opens the full day by default. OpenStreetMap attribution is visible on
+desktop and above the playback controls on phones.
+
+`--civil-day` is opt-in in the streaming GTFS importer. It evaluates both source
+calendars and exceptions independently, preserves frequency phases, and rejects
+feeds without both days or GTFS times at/above 48:00. At the annual feed boundary,
+a feed lacking the preceding date fails validation rather than claiming complete
+overnight coverage. Other studies retain their existing service-day imports.
 
 ## Scope
 
@@ -19,7 +45,7 @@ Source route identity comes from `routes.txt` and `trips.txt`, including frequen
 template IDs where applicable. tl is agency `151`; LEB is agency `55`. Displayed
 line numbers are never used to infer an operator. The compact application
 importer normally omits rail route IDs; the audit restores them by source trip
-identity without changing that importer or the shipped data.
+identity. Civil-day records also retain their source trip and service date.
 
 ## Measured weekday baseline and corrected result
 
@@ -91,7 +117,8 @@ derived paths, pattern keys, matcher hashes and rejection report. It is an
 OpenStreetMap-derived database under **ODbL 1.0**, attributed to
 [OpenStreetMap contributors](https://www.openstreetmap.org/copyright). Any eventual
 published view must display that attribution and describe the paths as inferred.
-The cache is not imported by the browser or daily publication workflow yet.
+The daily publication builder reuses this cache; browsers load only its derived
+paths in the compact study artifacts.
 
 An exact route ID, ordered platform sequence and platform coordinates are required
 to reuse a path; changed times alone do not invalidate it. Unknown patterns remain
@@ -149,7 +176,7 @@ technical gate fails. Passing this gate alone is not publication approval.
 
 ## Reproduce
 
-Use Node 24 and keep generated candidates outside `public/`. With the official
+Use Node 24 and keep audit candidates outside `public/`. With the official
 GTFS and FOT files retained locally:
 
 ```sh
@@ -193,19 +220,37 @@ coverage, exact byte counts and SHA-256 hashes, valid references, identical
 overlapping trips and unique day totals. This validates the candidate files;
 it does not complete the outstanding publication work.
 
-## Following implementation slice
+## Application build and verification
 
-Complete inferred bus route and boundary coverage review, then register the lazy
-region in the study browser with map framing,
-search, line isolation and all four languages. Reuse progressive day loading,
-Now and share links. Extend the daily regional refresh and verified recovery path,
-including the first deployment before a published Lausanne fallback exists.
+To build the validated application artifacts (a supplied `--snapshot` must use
+civil-day import):
 
-Also resolve service-day versus civil-day rollover explicitly. The weekday
-candidate's 00:00–02:00 chunk is empty under the existing importer: trips recorded
-after 24:00 belong to their source service day, and preceding-day spillover is not
-included. An empty chunk must not be presented as evidence that Lausanne has no
-overnight service. Scheduled interpolation must remain distinct from live tracking.
+```sh
+node scripts/build-lausanne-day.mjs \
+  --archive /path/swiss-gtfs.zip --rail /path/rail.xtf \
+  --date 2026-09-08 --output-directory /tmp/lausanne-publication
+```
 
-Desktop and phone tests, exact chunk integrity, initial bundle budgets and a live
-refresh/recovery check are required before calling the study launched.
+The shared `npm run data:regional:days` invokes this same builder. Geometry gates
+and the complete fourteen-file set validate before output is written. Recovery
+loads the complete published set; only a missing Lausanne manifest (404) permits
+the first deployment to use the complete dated committed fixture. A missing chunk
+in an already published Lausanne study fails recovery. No files are mixed across
+those two sources and no retained service date is rewritten.
+
+The complete unit suite passes **307 tests**, including civil-day calendar
+exceptions, frequency identity, midnight boundaries and feed coverage failures.
+All **14 browser cases** for Lausanne and regional exploration pass in desktop
+Chromium and emulated iPhone WebKit: lazy selection, métro and station search,
+chunk seeking, sharing, overnight Now, recovery and language switching. These
+checks do not establish performance on physical phones.
+
+A fresh build through the regional refresh entry point passed using the retained
+official sources. Read-only recovery against the published site also succeeded,
+retaining the three published regions and bootstrapping Lausanne from its
+validated fixture. All 56 assembled regional files validate.
+
+Before calling this launched, deploy the integration and verify its hosted
+refresh. Further source review should cover the worst inferred bus snaps,
+directional variants and the seven missing overnight patterns, plus a civil-day
+Sunday build. The historical Sunday audit above used the service-day importer.

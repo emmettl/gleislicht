@@ -107,7 +107,7 @@ export async function auditLausanneStudy({ archive, railPath, date, output, busC
   try {
     const rawPath = snapshotPath ?? join(workspace, 'raw.json')
     if (!snapshotPath) {
-      const run = spawnSync(process.execPath, ['scripts/ingest-gtfs.mjs', '--archive', archive, '--date', date, '--modes', 'all', '--bounds', LAUSANNE_BOUNDS, '--local-agencies', '151', '--window-start', '00:00', '--window-end', '24:00', '--hub-output', 'none', '--output', rawPath], { stdio: 'inherit' })
+      const run = spawnSync(process.execPath, ['scripts/ingest-gtfs.mjs', '--archive', archive, '--date', date, '--civil-day', '--modes', 'all', '--bounds', LAUSANNE_BOUNDS, '--local-agencies', '151', '--window-start', '00:00', '--window-end', '24:00', '--hub-output', 'none', '--output', rawPath], { stdio: 'inherit' })
       assert.equal(run.status, 0, 'Lausanne timetable extraction failed')
     }
     const raw = JSON.parse(await readFile(rawPath, 'utf8'))
@@ -124,11 +124,11 @@ export async function auditLausanneStudy({ archive, railPath, date, output, busC
     for await (const row of rowsFromArchive(archive, 'routes.txt')) routes.set(row.route_id, { agencyId: row.agency_id, name: row.route_short_name, type: Number(row.route_type) })
     // The compact runtime importer keeps routeId only for buses. Restore rail
     // and métro identity from source trip IDs, never displayed line numbers.
-    const sourceIds = new Set(raw.trains.map(train => train.frequency?.sourceTripId ?? train.id))
+    const sourceIds = new Set(raw.trains.map(train => train.sourceTripId ?? train.frequency?.sourceTripId ?? train.id))
     const tripRoutes = new Map()
     for await (const row of rowsFromArchive(archive, 'trips.txt')) if (sourceIds.has(row.trip_id)) tripRoutes.set(row.trip_id, row.route_id)
     raw.trains = raw.trains.map(train => {
-      const routeId = tripRoutes.get(train.frequency?.sourceTripId ?? train.id)
+      const routeId = tripRoutes.get(train.sourceTripId ?? train.frequency?.sourceTripId ?? train.id)
       assert(routeId, `Trip absent from source archive: ${train.id}`)
       if (train.routeId) assert.equal(train.routeId, routeId, 'Snapshot and source route IDs differ')
       return { ...train, routeId }

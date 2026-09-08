@@ -821,6 +821,17 @@
   border-left: 1px solid rgba(193, 204, 255, 0.14);
 }
 
+@media (min-width: 701px) {
+  .train-search form { flex-wrap: wrap; }
+  .network-study-picker {
+    flex-basis: 100%;
+    justify-content: center;
+    padding: 5px;
+    border-left: 0;
+    border-top: 1px solid rgba(193, 204, 255, 0.14);
+  }
+}
+
 .network-study-picker button {
   min-width: 31px;
   min-height: 28px;
@@ -1116,6 +1127,21 @@
   display: flex;
   flex-wrap: wrap;
   gap: 5px 16px;
+}
+
+.mobile-map-attribution { display: none; }
+@media (max-width: 700px) {
+  .mobile-map-attribution {
+    display: block;
+    position: absolute;
+    bottom: calc(100% + 6px);
+    right: 0;
+    padding: 4px 6px;
+    background: rgba(6, 6, 20, 0.88);
+    color: #c3c8db;
+    font: 10px/1.4 'DM Mono', ui-monospace, monospace;
+    text-decoration: none;
+  }
 }
 
 @keyframes pulse {

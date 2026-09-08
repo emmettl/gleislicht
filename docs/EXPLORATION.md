@@ -12,7 +12,7 @@ Near me makes a single browser location request on activation. It shows accuracy
 
 ## Full-day regional data
 
-All three fixtures use national GTFS `20260902` on **4 September 2026**:
+The original three fixtures use national GTFS `20260902` on **4 September 2026**:
 
 | Study | Scheduled/representative services | Local geometry coverage |
 | --- | ---: | ---: |
@@ -20,11 +20,16 @@ All three fixtures use national GTFS `20260902` on **4 September 2026**:
 | ZVV region | 34,612 | 98.4% |
 | Genève / TPG | 10,805 | 96.7% |
 
+Lausanne adds **8,848 trips** for **8 September 2026**, feed `20260905`, with
+99.93% inferred bus geometry and 100% rail/métro geometry. Its civil-day import
+includes preceding-day overnight services. It opens the full day by default;
+see [LAUSANNE-STUDY.md](LAUSANNE-STUDY.md) for scope and provenance.
+
 Local geometry percentages count tram/bus segment occurrences. ZVV local services are constrained by its source stop catalogue; Genève retains agency 881 for local bus/tram service. Rail uses a separate official FOT graph join. Local and rail paths occupy distinct indices; rail enrichment never substitutes railway geometry for an unmatched bus movement. Frequency-based services retain their disclosed source intervals and illustrative status.
 
 The morning artifacts remain separate. Each full day uses twelve two-hour movement chunks with SHA-256 and byte-length verification. The manifest is limited to 650 KiB gzip and each movement chunk to 450 KiB; only the current block and its neighbours load. National opening data does not request these files. Failed or corrupt chunks show unavailable status and can be retried, with missing vehicle counts represented by a dash.
 
-Rebuild all three using retained official input files:
+Rebuild all four using retained official input files:
 
 ```sh
 npm run data:regional:days -- \
@@ -35,7 +40,7 @@ npm run data:regional:days -- \
   --date 2026-09-04
 ```
 
-An optional `--study zurich-city`, `zvv-region` or `geneva-tpg` rebuilds one region. The command performs no network requests and records input hashes, source metadata, coverage and the service date. Temporary full-day snapshots remain outside the repository. A new service date needs the matching source calendar. `npm run build` regenerates the browser summaries directly from the final artifact metadata.
+An optional `--study zurich-city`, `zvv-region`, `geneva-tpg` or `lausanne-region` rebuilds one region. The command performs no network requests and records input hashes, source metadata, coverage and the service date. Temporary full-day snapshots remain outside the repository. A new service date needs the matching source calendar. `npm run build` regenerates the browser summaries directly from the final artifact metadata.
 
 ## Discovery and links
 
@@ -47,12 +52,12 @@ Unit and data checks cover clock transitions, representative eligibility, URL va
 
 ## Automatic publication
 
-The existing daily Pages run (03:37 UTC), pushes to `main`, and manual runs now refresh Zürich city, ZVV and Genève alongside national rail and PostBus. A single Swiss civil date feeds both parallel data jobs. The annual source year changes on the second Sunday of December. The committed examples remain deterministic; fresh data are assembled in the publication runner.
+The existing daily Pages run (03:37 UTC), pushes to `main`, and manual runs now refresh Zürich city, ZVV, Genève and Lausanne alongside national rail and PostBus. A single Swiss civil date feeds both parallel data jobs. The annual source year changes on the second Sunday of December. The committed examples remain deterministic; fresh data are assembled in the publication runner.
 
-`node scripts/download-regional-sources.mjs /path/sources YYYY-MM-DD` downloads national GTFS, the matching ZVV archive, FOT rail geometry and all TPG line features. TPG retrieval first enumerates IDs, then checks every bounded batch to reject truncated responses. The builder accepts `--source-catalogue /path/sources/sources.json` to retain the exact source URLs and `--output-directory /path/output` for isolated builds. It generates all three full days and derives their 06:45–08:45 morning windows from the same source and geometry. Morning geometry coverage labels refer to the full-day join. Every requested study validates before any output is replaced; intermediate files are removed afterwards.
+`node scripts/download-regional-sources.mjs /path/sources YYYY-MM-DD` downloads national GTFS, the matching ZVV archive, FOT rail geometry and all TPG line features. TPG retrieval first enumerates IDs, then checks every bounded batch to reject truncated responses. The builder accepts `--source-catalogue /path/sources/sources.json` to retain the exact source URLs and `--output-directory /path/output` for isolated builds. It generates all four full days and derives their 06:45–08:45 morning windows from the same source and geometry. Morning geometry coverage labels refer to the full-day join. Every requested study validates before any output is replaced; intermediate files are removed afterwards.
 
 Each pair must have matching service dates and feed versions. Checks cover twelve contiguous two-hour chunks, bytes/SHA-256, unique day trip counts, finite coordinates and valid stop/path indices, source hashes, local/rail coverage and transfer ceilings (650 KiB manifest, 450 KiB chunk, 1,600 KiB morning, gzip). Run them with `node scripts/regional-artifacts.mjs /path/output` using the project's Node version.
 
-If a download fails, `node scripts/restore-published-regional-data.mjs /path/output` retrieves and validates the complete published set before writing anything. It retains the original dates, so the existing Now disclosure distinguishes today's timetable from a representative one. Failed generation, invalid fallback data or exceeded budgets stop deployment and leave the current site available. No aircraft, road-recording, Rigi, or contrast fixture is silently advanced to today's date.
+If a download fails, `node scripts/restore-published-regional-data.mjs /path/output` retrieves and validates the complete published set before writing anything. It retains the original dates, so the existing Now disclosure distinguishes today's timetable from a representative one. For Lausanne’s first deployment, a missing published manifest (404) permits a complete validated committed fixture; missing published chunks do not. Failed generation, invalid fallback data or exceeded budgets stop deployment and leave the current site available. No aircraft, road-recording, Rigi, or contrast fixture is silently advanced to today's date.
 
 The final build regenerates `study-summaries.json` from the actual national, PostBus, regional, Rigi and contrast artifacts. This also updates dates after national recovery or review-branch generation; a summary cannot claim a requested date that its source does not contain.

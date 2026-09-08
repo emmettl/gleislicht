@@ -5,7 +5,7 @@ import { EXPLORE_COPY } from './explore-copy.ts'
 import type { SwitzerlandNetworkStudy } from '../editions/switzerland.ts'
 import summaries from './study-summaries.json'
 import './study-browser.css'
-const patterns = ['M5 44L32 25L53 32L79 13L115 30 M32 25L40 58L92 47', 'M5 48Q25 10 48 35T115 18 M22 37L36 58', 'M15 15L100 55 M10 50L110 20 M45 6L65 66', 'M18 55Q35 25 90 12 M20 12L95 58 M48 30L110 35', 'M15 10V60 M42 10V60 M69 10V60 M96 10V60 M5 25H115 M5 48H115', 'M5 52Q20 40 42 50T75 50 M42 50L80 12L115 52 M65 50L80 12', 'M5 15H45 M5 30H45 M5 45H45 M65 55Q80 10 115 20']
+const patterns = ['M5 44L32 25L53 32L79 13L115 30 M32 25L40 58L92 47', 'M5 48Q25 10 48 35T115 18 M22 37L36 58', 'M15 15L100 55 M10 50L110 20 M45 6L65 66', 'M18 55Q35 25 90 12 M20 12L95 58 M48 30L110 35', 'M15 10V60 M42 10V60 M69 10V60 M96 10V60 M5 25H115 M5 48H115', 'M5 52Q20 40 42 50T75 50 M42 50L80 12L115 52 M65 50L80 12', 'M5 15H45 M5 30H45 M5 45H45 M65 55Q80 10 115 20', 'M8 58L32 38L55 20L72 9 M55 20L90 43L112 60 M32 38L90 43', 'M10 55L45 35L65 10 M45 35L90 60 M10 35L110 35']
 export default function StudyBrowser({ language, study, onSelect, onClose }: { language: UiLanguage; study: SwitzerlandNetworkStudy; onSelect: (id: SwitzerlandNetworkStudy) => void; onClose: () => void }) {
   const dialog = useRef<HTMLDialogElement>(null)
   const copy = EXPLORE_COPY[language]

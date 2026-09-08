@@ -4,8 +4,9 @@ import { createHash } from 'node:crypto'
 import { gzipSync } from 'node:zlib'
 import { join, resolve } from 'node:path'
 import { pathToFileURL } from 'node:url'
+import { previousServiceDate } from './civil-day.mjs'
 
-export const REGIONAL_IDS = ['zurich-city', 'zvv-region', 'geneva-tpg']
+export const REGIONAL_IDS = ['zurich-city', 'zvv-region', 'geneva-tpg', 'lausanne-region']
 const digest = bytes => createHash('sha256').update(bytes).digest('hex')
 export async function readRegionalArtifacts(read, ids = REGIONAL_IDS, expectedDate) {
   const files = new Map()
@@ -32,6 +33,16 @@ export async function readRegionalArtifacts(read, ids = REGIONAL_IDS, expectedDa
     assert(day.chunks?.length === 12, `${id}: expected twelve two-hour chunks`)
     const local = day.metadata.geometry
     const rail = day.metadata.railGeometry
+    if (id === 'lausanne-region') {
+      assert.equal(day.metadata.dayModel, 'civil day with preceding service-day spillover')
+      assert.deepEqual(day.metadata.sourceServiceDates, [previousServiceDate(serviceDate), serviceDate])
+      assert.equal(morning.metadata.dayModel, day.metadata.dayModel)
+      assert.deepEqual(morning.metadata.sourceServiceDates, day.metadata.sourceServiceDates)
+      assert.equal(local?.license, 'ODbL-1.0')
+      assert.deepEqual(day.metadata.lausanneGeometry?.map(group => group.id), ['tl-bus', 'm1', 'm2', 'leb', 'rail'])
+      assert(day.metadata.lausanneGeometry.every(group => group.totalSegments > 0 && group.acceptedSegments / group.totalSegments >= .95), 'Lausanne: insufficient per-mode geometry')
+      assert(rail?.maximumSnapMetres <= 120, 'Lausanne: rail projection exceeds limit')
+    }
     assert(local?.matchedSegments / local?.totalSegments >= (id === 'geneva-tpg' ? .7 : .8), `${id}: insufficient local geometry`)
     assert(rail?.matchedSegments / rail?.totalSegments >= .65, `${id}: insufficient rail geometry`)
     assert(/^[a-f0-9]{64}$/.test(rail?.sha256 ?? ''), `${id}: missing rail source hash`)

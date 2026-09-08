@@ -8,6 +8,7 @@ import { applyRailGeometry, parseRailNetworkXtf } from './enrich-swiss-rail-geom
 
 import { readRegionalDirectory, REGIONAL_IDS } from './regional-artifacts.mjs'
 import { serviceDate } from './service-date.mjs'
+import { buildLausanneDay } from './build-lausanne-day.mjs'
 
 const arg = name => { const index = process.argv.indexOf(`--${name}`); return index < 0 ? undefined : process.argv[index + 1] }
 for (const name of ['archive', 'zvv', 'tpg', 'rail', 'date']) if (!process.argv.includes(`--${name}`)) throw new Error(`Missing --${name}`)
@@ -30,9 +31,14 @@ try {
     ['zurich-city', '8.45,47.32,8.63,47.44'],
     ['zvv-region', '8.32,47.15,9.02,47.72'],
     ['geneva-tpg', '5.90,46.05,6.35,46.38'],
+    ['lausanne-region', '6.45,46.48,6.85,46.71'],
   ]
   for (const [id, bounds] of studies) {
     if (process.argv.includes('--study') && arg('study') !== id) continue
+    if (id === 'lausanne-region') {
+      await buildLausanneDay({ archive: arg('archive'), railPath: arg('rail'), date, output: staged })
+      continue
+    }
     const output = join(workspace, `${id}.json`)
     run('scripts/ingest-gtfs.mjs', ['--archive', arg('archive'), '--date', date, '--modes', 'all', '--bounds', bounds, '--window-start', '00:00', '--window-end', '24:00', '--output', output, '--hub-output', 'none', ...(id === 'geneva-tpg' ? ['--local-agencies', '881'] : ['--local-stop-archive', arg('zvv')])])
     run(id === 'geneva-tpg' ? 'scripts/enrich-geneva-shapes.mjs' : 'scripts/enrich-zurich-shapes.mjs', ['--snapshot', output, ...(id === 'geneva-tpg' ? ['--geometry', arg('tpg')] : ['--archive', arg('zvv')])])
