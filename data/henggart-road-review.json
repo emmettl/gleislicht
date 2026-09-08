@@ -1,0 +1,552 @@
+{
+  "schemaVersion": 1,
+  "status": "review-only-no-publication",
+  "scope": {
+    "schemaVersion": 1,
+    "batchScopeSha256": "cf993c04f006aefe5f34f36d22f39ae84daf1fa0825571687ef96721cc028aa3",
+    "classifiedSourceSha256": "5a6db502e173328f91d92c1fd53875f98021077915436598fb6723dded236557"
+  },
+  "stationId": "ZH.CH:1997",
+  "name": "Henggart: Weinlandstrasse",
+  "stationPointLv95": [
+    2694157.7600000016,
+    1268105.5500000007
+  ],
+  "originalGeometryStatus": "ambiguous-road",
+  "originalCandidates": [
+    {
+      "road": "ZH:15",
+      "pathId": "ZH:15:7ab46270483b3b05",
+      "distanceMetres": 0,
+      "eligible": true
+    },
+    {
+      "road": "ZH:A4",
+      "pathId": "ZH:A4:fd28328a347d079c",
+      "distanceMetres": 14.54,
+      "eligible": false
+    }
+  ],
+  "axes": [
+    {
+      "featureId": 3117,
+      "road": "15",
+      "ownership": "Kanton",
+      "roadClass": "Regionale Verbindungsstrassen (RVS) Kanton",
+      "distanceMetres": 0,
+      "projectedLv95": [
+        2694157.7575948136,
+        1268105.5515361454
+      ],
+      "storedTangent": [
+        0.5382639855799062,
+        0.8427762940588888
+      ],
+      "pointsLv95": [
+        [
+          2693940.8576500006,
+          1267633.7073
+        ],
+        [
+          2693941.947349999,
+          1267640.3351500034
+        ],
+        [
+          2693943.4762500003,
+          1267648.7013500035
+        ],
+        [
+          2693948.91835,
+          1267676.9664999992
+        ],
+        [
+          2693954.659400001,
+          1267701.809150003
+        ],
+        [
+          2693969.3249499984,
+          1267756.34815
+        ],
+        [
+          2693981.6941,
+          1267795.4387499988
+        ],
+        [
+          2693988.5310500003,
+          1267814.3838500008
+        ],
+        [
+          2694004.2404000014,
+          1267851.9087999985
+        ],
+        [
+          2694013.3214999996,
+          1267871.532399997
+        ],
+        [
+          2694031.95335,
+          1267908.7441499978
+        ],
+        [
+          2694061.2320500016,
+          1267960.5693000033
+        ],
+        [
+          2694135.7595000006,
+          1268071.108450003
+        ],
+        [
+          2694169.892099999,
+          1268124.5508999974
+        ],
+        [
+          2694198.91,
+          1268172.4612499997
+        ],
+        [
+          2694214.2481999993,
+          1268201.2461500019
+        ],
+        [
+          2694225.9969500005,
+          1268224.703400001
+        ],
+        [
+          2694236.3018499985,
+          1268246.5203500018
+        ],
+        [
+          2694246.664549999,
+          1268271.3612499982
+        ],
+        [
+          2694261.6433500014,
+          1268312.643550001
+        ],
+        [
+          2694269.1231000014,
+          1268337.587700002
+        ],
+        [
+          2694275.474100001,
+          1268363.0069499984
+        ],
+        [
+          2694282.3112000003,
+          1268395.2082000002
+        ],
+        [
+          2694289.5138499998,
+          1268446.6676499993
+        ],
+        [
+          2694291.1774999984,
+          1268464.3297500014
+        ],
+        [
+          2694292.020849999,
+          1268484.048100002
+        ],
+        [
+          2694291.9673499987,
+          1268511.2268999964
+        ],
+        [
+          2694291.2890500017,
+          1268534.5559
+        ],
+        [
+          2694286.8011999987,
+          1268584.1366500035
+        ],
+        [
+          2694280.7996999994,
+          1268624.0622000024
+        ],
+        [
+          2694273.54555,
+          1268652.2971
+        ],
+        [
+          2694263.682,
+          1268685.1248499975
+        ],
+        [
+          2694249.799849998,
+          1268721.4492999986
+        ],
+        [
+          2694235.969799999,
+          1268751.7718999982
+        ],
+        [
+          2694215.8248500004,
+          1268789.0358999968
+        ],
+        [
+          2694201.5441499986,
+          1268811.8691499978
+        ],
+        [
+          2694185.406300001,
+          1268835.3153000027
+        ],
+        [
+          2694174.44475,
+          1268849.6265999973
+        ],
+        [
+          2694112.280749999,
+          1268920.1784999967
+        ],
+        [
+          2694103.3467000015,
+          1268930.318049997
+        ],
+        [
+          2694090.1127999984,
+          1268947.0430999994
+        ],
+        [
+          2694082.54445,
+          1268957.9981499985
+        ]
+      ]
+    },
+    {
+      "featureId": 6531,
+      "road": "10040",
+      "ownership": "Nationalstrasse",
+      "roadClass": "HLS Bund nicht richtungsgetrennt",
+      "distanceMetres": 14.54,
+      "projectedLv95": [
+        2694170.0163742276,
+        1268097.7190795804
+      ],
+      "storedTangent": [
+        -0.5384116930083391,
+        -0.8426819381189407
+      ],
+      "pointsLv95": [
+        [
+          2694291.450750001,
+          1268656.9690499976
+        ],
+        [
+          2694295.268550001,
+          1268640.5269500017
+        ],
+        [
+          2694302.6421499997,
+          1268602.651349999
+        ],
+        [
+          2694307.1379499994,
+          1268562.2822000012
+        ],
+        [
+          2694310.0402499996,
+          1268518.2580000013
+        ],
+        [
+          2694309.7980500013,
+          1268482.4581499994
+        ],
+        [
+          2694307.378850002,
+          1268449.3191
+        ],
+        [
+          2694304.6515999995,
+          1268423.1620000005
+        ],
+        [
+          2694297.7027000003,
+          1268380.864050001
+        ],
+        [
+          2694289.295400001,
+          1268342.7765500024
+        ],
+        [
+          2694277.3603500016,
+          1268302.6913499981
+        ],
+        [
+          2694265.1658499986,
+          1268269.222149998
+        ],
+        [
+          2694251.0255500004,
+          1268236.5313000008
+        ],
+        [
+          2694236.2732999995,
+          1268206.3005499989
+        ],
+        [
+          2694221.1900499985,
+          1268179.1510500014
+        ],
+        [
+          2694203.091400001,
+          1268149.485650003
+        ],
+        [
+          2694149.1257000007,
+          1268065.0225500017
+        ],
+        [
+          2694148.8115000017,
+          1268064.5672499985
+        ]
+      ]
+    }
+  ],
+  "competingAxisMarginMetres": 14.54,
+  "storedTangentAgreement": -1,
+  "geometryFinding": "Detailed axes run locally alongside each other at the station. The A4 competitor is retained: its 14.54 m separation is below the unchanged 15 m ambiguity margin. Opposite vertex order is not a detector travel-direction reference.",
+  "bindingStatus": "independent-station-to-road-binding-required",
+  "conditionalDirectionCheck": {
+    "status": "diagnostic-only-assuming-ZH-15",
+    "pathId": "ZH:15:7ab46270483b3b05",
+    "gates": {
+      "minimumDestinationDistanceMetres": 1500,
+      "minimumOffsetSeparationMetres": 750,
+      "maximumDestinationRoadDistanceMetres": 1500,
+      "minimumBearingAgreement": 0.75,
+      "maximumSectionMetres": 5000
+    },
+    "detectors": [
+      {
+        "id": "ZH.CH:1997.01",
+        "description": "Normalspur Richtung Winterthur",
+        "status": "bearing-conflict",
+        "destination": {
+          "name": "Winterthur",
+          "coordinate": [
+            2697066.45,
+            1261571.4
+          ],
+          "bounds": [
+            2692884.4,
+            1258416.4,
+            2701248.5,
+            1264726.4
+          ],
+          "sourceFeatureId": 55851
+        },
+        "destinationDistanceMetres": 7152.31,
+        "destinationRoadDistanceMetres": 493.76,
+        "offsetSeparationMetres": -8678.82,
+        "bearingAgreement": -0.56,
+        "offsetMetres": 8678.82,
+        "bearingGatePasses": false
+      },
+      {
+        "id": "ZH.CH:1997.02",
+        "description": "Normalspur Richtung Schaffhausen",
+        "status": "destination-off-axis",
+        "destination": {
+          "name": "Schaffhausen",
+          "coordinate": [
+            2690193.4000000004,
+            1284840.9500000002
+          ],
+          "bounds": [
+            2687753.1,
+            1282433.3,
+            2692633.7,
+            1287248.6
+          ],
+          "sourceFeatureId": 83880
+        },
+        "destinationDistanceMetres": 17198.54,
+        "destinationRoadDistanceMetres": 1652.2,
+        "offsetSeparationMetres": 18875.31,
+        "bearingAgreement": 0.7,
+        "offsetMetres": 8678.82,
+        "bearingGatePasses": false
+      }
+    ]
+  },
+  "candidatePairs": [
+    {
+      "from": "ZH.CH:4789",
+      "to": "ZH.CH:1997",
+      "pathId": "ZH:15:7ab46270483b3b05",
+      "distanceMetres": 1677.85,
+      "completeMinutes": 225,
+      "longestRunMinutes": 104,
+      "hourWindows": [
+        {
+          "start": 51240,
+          "end": 57420,
+          "minutes": 104
+        }
+      ],
+      "publicationStatus": "not-admitted",
+      "otherEndpoint": {
+        "id": "ZH.CH:4789",
+        "name": "Neftenbach: Schaffhausenstrasse",
+        "collectorStatus": "ACTIVE",
+        "directionAudit": {
+          "id": "ZH.CH:4789",
+          "road": "ZH:15",
+          "pathId": "ZH:15:7ab46270483b3b05",
+          "status": "unresolved-direction-pair",
+          "detectors": [
+            {
+              "id": "ZH.CH:4789.01",
+              "description": "Normalspur Richtung Neftenbach",
+              "alertCDirection": "negative",
+              "status": "destination-off-axis",
+              "destination": {
+                "name": "Neftenbach",
+                "coordinate": [
+                  2692333.55,
+                  1264559.2
+                ],
+                "bounds": [
+                  2691475.7,
+                  1263508,
+                  2693191.4,
+                  1265610.4
+                ],
+                "sourceFeatureId": 2806
+              },
+              "destinationDistanceMetres": 2351.39,
+              "destinationRoadDistanceMetres": 2082.18,
+              "offsetSeparationMetres": -894.87,
+              "bearingAgreement": -0.86,
+              "offsetMetres": 7000.96
+            },
+            {
+              "id": "ZH.CH:4789.02",
+              "description": "Normalspur Richtung Schaffhausen",
+              "alertCDirection": "positive",
+              "status": "destination-off-axis",
+              "destination": {
+                "name": "Schaffhausen",
+                "coordinate": [
+                  2690193.4000000004,
+                  1284840.9500000002
+                ],
+                "bounds": [
+                  2687753.1,
+                  1282433.3,
+                  2692633.7,
+                  1287248.6
+                ],
+                "sourceFeatureId": 83880
+              },
+              "destinationDistanceMetres": 18567.29,
+              "destinationRoadDistanceMetres": 1652.2,
+              "offsetSeparationMetres": 20553.17,
+              "bearingAgreement": 0.98,
+              "offsetMetres": 7000.96
+            }
+          ]
+        },
+        "detectorIssueMinutes": {
+          "ZH.CH:4789.01": {
+            "light-flow-missing-or-invalid": 20,
+            "heavy-flow-missing-or-invalid": 20
+          },
+          "ZH.CH:4789.02": {
+            "light-flow-missing-or-invalid": 20,
+            "heavy-flow-missing-or-invalid": 20
+          }
+        }
+      }
+    },
+    {
+      "from": "ZH.CH:1997",
+      "to": "ZH.CH:1900",
+      "pathId": "ZH:15:7ab46270483b3b05",
+      "distanceMetres": 2606.72,
+      "completeMinutes": 0,
+      "longestRunMinutes": 0,
+      "hourWindows": [],
+      "publicationStatus": "not-admitted",
+      "otherEndpoint": {
+        "id": "ZH.CH:1900",
+        "name": "Adlikon: Weinlandstrasse",
+        "collectorStatus": "DISABLED",
+        "directionAudit": {
+          "id": "ZH.CH:1900",
+          "road": "ZH:15",
+          "pathId": "ZH:15:7ab46270483b3b05",
+          "status": "unresolved-direction-pair",
+          "detectors": [
+            {
+              "id": "ZH.CH:1900.01",
+              "description": "Normalspur Richtung Winterthur",
+              "alertCDirection": "negative",
+              "status": "validated",
+              "direction": "negative",
+              "destination": {
+                "name": "Winterthur",
+                "coordinate": [
+                  2697066.45,
+                  1261571.4
+                ],
+                "bounds": [
+                  2692884.4,
+                  1258416.4,
+                  2701248.5,
+                  1264726.4
+                ],
+                "sourceFeatureId": 55851
+              },
+              "destinationDistanceMetres": 9597.14,
+              "destinationRoadDistanceMetres": 493.76,
+              "offsetSeparationMetres": -11285.54,
+              "bearingAgreement": -0.95,
+              "offsetMetres": 11285.54
+            },
+            {
+              "id": "ZH.CH:1900.02",
+              "description": "Normalspur Richtung Schaffhausen",
+              "alertCDirection": "positive",
+              "status": "destination-off-axis",
+              "destination": {
+                "name": "Schaffhausen",
+                "coordinate": [
+                  2690193.4000000004,
+                  1284840.9500000002
+                ],
+                "bounds": [
+                  2687753.1,
+                  1282433.3,
+                  2692633.7,
+                  1287248.6
+                ],
+                "sourceFeatureId": 83880
+              },
+              "destinationDistanceMetres": 14720.5,
+              "destinationRoadDistanceMetres": 1652.2,
+              "offsetSeparationMetres": 16268.59,
+              "bearingAgreement": 0.98,
+              "offsetMetres": 11285.54
+            }
+          ]
+        },
+        "detectorIssueMinutes": {
+          "ZH.CH:1900.01": {
+            "missing-detector": 245
+          },
+          "ZH.CH:1900.02": {
+            "missing-detector": 245
+          }
+        }
+      }
+    }
+  ],
+  "requiredEvidence": [
+    "An independent station-specific road binding identifying 1997 on ZH 15 beside the A4; retain the original ambiguous match until reviewed.",
+    "Independent direction evidence for both Henggart detectors. The candidate-path diagnostic fails the Winterthur bearing and the Schaffhausen off-axis and bearing checks. Neither supplies an anchor for an opposing-lane extent review.",
+    "For the southern candidate, independently resolve both Neftenbach 4789 destination checks, then review the section and junctions. For the northern candidate, Adlikon 1900 also needs complete observations and Schaffhausen direction evidence."
+  ],
+  "limitation": "All direction results at 1997 are conditional diagnostics, not approvals. Geometry proximity, local parallelism, collector destination labels and observation windows do not override the existing gates. No station is moved and no topology, direction mapping or playback is emitted."
+}
