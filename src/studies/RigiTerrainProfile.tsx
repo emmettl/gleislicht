@@ -2,14 +2,14 @@ import { useMemo } from 'react'
 import './rigi-terrain-profile.css'
 import type { CorridorSnapshot } from '@motionstudies/core/domain/corridor'
 import type { UiLanguage } from '../i18n.ts'
-const PROFILE_COPY: Record<UiLanguage, { ground: string; rise: string; profile: string; model: string }> = {
-  en: { ground: 'Ground elevation', rise: 'Rise from {origin}', profile: 'Ground profile beneath the railway', model: 'Scenic playback · ground beneath mapped rail · stylised train · no track-height or tunnel survey' },
-  de: { ground: 'Geländehöhe', rise: 'Anstieg ab {origin}', profile: 'Geländeprofil unter der Bahntrasse', model: 'Szenische Wiedergabe · Gelände unter kartierter Trasse · stilisierter Zug · keine Gleishöhen- oder Tunnelvermessung' },
-  fr: { ground: 'Altitude du terrain', rise: 'Montée depuis {origin}', profile: 'Profil du terrain sous la voie', model: 'Animation panoramique · terrain sous le tracé cartographié · train stylisé · sans relevé des voies ni des tunnels' },
-  it: { ground: 'Quota del terreno', rise: 'Salita da {origin}', profile: 'Profilo del terreno sotto la ferrovia', model: 'Animazione panoramica · terreno sotto il tracciato cartografato · treno stilizzato · nessun rilievo di binari o gallerie' },
+const PROFILE_COPY: Record<UiLanguage, { ground: string; rise: string; profile: string; model: string; timedModel: string }> = {
+  en: { timedModel: 'Scheduled interpolation · ground beneath mapped rail · no track-height or tunnel survey', ground: 'Ground elevation', rise: 'Rise from {origin}', profile: 'Ground profile beneath the railway', model: 'Scenic playback · ground beneath mapped rail · stylised train · no track-height or tunnel survey' },
+  de: { timedModel: 'Fahrplaninterpolation · Gelände unter kartierter Trasse · keine Gleishöhen- oder Tunnelvermessung', ground: 'Geländehöhe', rise: 'Anstieg ab {origin}', profile: 'Geländeprofil unter der Bahntrasse', model: 'Szenische Wiedergabe · Gelände unter kartierter Trasse · stilisierter Zug · keine Gleishöhen- oder Tunnelvermessung' },
+  fr: { timedModel: 'Interpolation horaire · terrain sous le tracé cartographié · sans relevé des voies ni des tunnels', ground: 'Altitude du terrain', rise: 'Montée depuis {origin}', profile: 'Profil du terrain sous la voie', model: 'Animation panoramique · terrain sous le tracé cartographié · train stylisé · sans relevé des voies ni des tunnels' },
+  it: { timedModel: 'Interpolazione oraria · terreno sotto il tracciato cartografato · nessun rilievo di binari o gallerie', ground: 'Quota del terreno', rise: 'Salita da {origin}', profile: 'Profilo del terreno sotto la ferrovia', model: 'Animazione panoramica · terreno sotto il tracciato cartografato · treno stilizzato · nessun rilievo di binari o gallerie' },
 }
 
-export default function RigiTerrainProfile({ corridor, progress, language }: { corridor: CorridorSnapshot; progress: number; language: UiLanguage }) {
+export default function RigiTerrainProfile({ corridor, progress, language, timed = false }: { corridor: CorridorSnapshot; progress: number; language: UiLanguage; timed?: boolean }) {
   const copy = PROFILE_COPY[language]
   const origin = corridor.route.stops[0].name.replace(/ RB$/, '')
   const profile = useMemo(() => {
@@ -39,6 +39,6 @@ export default function RigiTerrainProfile({ corridor, progress, language }: { c
       <polyline points={profile.samples.map(s => `${4 + 252 * s.distance / profile.length},${y(s.elevation)}`).join(' ')} fill="none" stroke="#fff3a6" strokeWidth="1.5" />
       <circle cx={4 + 252 * fraction} cy={y(elevation)} r="3" fill="#8dfaff" />
     </svg>
-    <p className="between">{copy.model}</p>
+    <p className="between">{timed ? copy.timedModel : copy.model}</p>
   </div>
 }

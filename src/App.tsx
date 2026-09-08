@@ -6,6 +6,7 @@ import { EXPLORE_EN, type ExploreUiCopy } from './studies/explore-ui-en.ts'
 import { networkWithRailVisibility } from './studies/network-layers.ts'
 import { COGWHEEL_ROUTE_COLORS, cogwheelNetwork } from './studies/cogwheel.ts'
 import { useCogwheelCatalogue } from './studies/use-cogwheel-catalogue.ts'
+import type { RigiTerrainBinding } from './studies/rigi-timetable-terrain.ts'
 import { rigiOperator } from './studies/rigi.ts'
 import { rigiTerrainCopy as terrainCopyForRigi } from './studies/rigi-terrain.ts'
 import { isHeadwayTrain, serviceFrequency, withFrequencyFerryPaths } from './studies/frequency.ts'
@@ -146,6 +147,7 @@ const AlpineQuiet = lazy(() =>
   import('./studies/AlpineQuiet.tsx').then(({ AlpineQuiet: Scene }) => ({ default: Scene })),
 )
 
+const RigiTimetableTerrain = lazy(() => import('./studies/RigiTimetableTerrain.tsx'))
 const RigiSequence = lazy(() => import('./studies/RigiSequence.tsx'))
 const RigiTerrainProfile = lazy(() => import('./studies/RigiTerrainProfile.tsx'))
 const GleislichtScene = lazy(() =>
@@ -321,6 +323,7 @@ export function App({ edition }: AppProps) {
   const [zurichCityNetwork, setZurichCityNetwork] = useState<NetworkSnapshot>()
   const [rigiNetwork, setRigiNetwork] = useState<NetworkSnapshot>()
   const [rigiSequenceActive, setRigiSequenceActive] = useState(false)
+  const [rigiTerrainBinding, setRigiTerrainBinding] = useState<RigiTerrainBinding>()
   const [zvvRegionNetwork, setZvvRegionNetwork] = useState<NetworkSnapshot>()
   const [genevaTpgNetwork, setGenevaTpgNetwork] = useState<NetworkSnapshot>()
   const [regionalNetworkLoading, setRegionalNetworkLoading] = useState(initialLink.study !== 'national' && initialLink.study !== 'postbus' && initialLink.study !== 'contrast')
@@ -410,6 +413,7 @@ export function App({ edition }: AppProps) {
   const help = CONTROL_HELP[language]
   const performanceSample = useLocalPerformance(performanceEnabled)
   const isRigi = networkStudy === 'rigi-lake'
+  const timedRigiTerrain = view === 'network' && isRigi && rigiSequenceActive && rigiTerrainBinding && networkTime >= rigiTerrainBinding.sequence.departure && networkTime <= rigiTerrainBinding.sequence.end ? rigiTerrainBinding : undefined
   const [rigiLocale, setRigiLocale] = useState<typeof import('./studies/rigi-copy.ts')>()
   useEffect(() => { if (isRigi) void import('./studies/rigi-copy.ts').then(setRigiLocale) }, [isRigi])
   const rigiSelect = { en: 'Explore Lake Lucerne and Rigi', de: 'Vierwaldstättersee und Rigi entdecken', fr: 'Explorer le lac des Quatre-Cantons et le Rigi', it: 'Esplora il Lago dei Quattro Cantoni e il Rigi' }[language]
@@ -931,6 +935,7 @@ export function App({ edition }: AppProps) {
 
   const releaseSelection = useCallback(() => {
     setRigiSequenceActive(false)
+    setRigiTerrainBinding(undefined)
     setSelectedTrainId(undefined)
     setSelectedStationName(undefined)
     setSelectedRouteId(undefined)
@@ -950,6 +955,7 @@ export function App({ edition }: AppProps) {
     setSelectedStationName(station)
     if (station) setMapCameraCommand(current => ({ id: current.id + 1, action: 'reveal-station' }))
   }, [])
+  const finishRigiTerrain = useCallback(() => setIsPlaying(false), [])
   const startRigiSequence = () => {
     releaseSelection()
     setSelectedCategory(undefined)
@@ -1960,7 +1966,7 @@ export function App({ edition }: AppProps) {
       data-cogwheel-enabled={isCogwheel}
       data-quiet-map={quietMap}
       data-quiet-playing={quietMap ? isPlaying : undefined}
-      className={`experience view-${view}${isContrast ? ' is-contrast' : ''}${airEnabled ? ' has-air-layer' : ''}${airCategorySelected ? ' has-air-category' : ''}${roadEnabled ? ' has-road-layer' : ''}${roadCategorySelected ? ' has-road-category' : ''}${selectedTrain || selectedStation || selectedRoute || selectedAirTrack || selectedAirport || selectedRoad ? ' has-selection' : ''}${!isTimetable ? ` corridor-${journeyCorridorId}` : ''}`}
+      className={`experience view-${view}${timedRigiTerrain ? ' has-timed-rigi-terrain' : ''}${isContrast ? ' is-contrast' : ''}${airEnabled ? ' has-air-layer' : ''}${airCategorySelected ? ' has-air-category' : ''}${roadEnabled ? ' has-road-layer' : ''}${roadCategorySelected ? ' has-road-category' : ''}${selectedTrain || selectedStation || selectedRoute || selectedAirTrack || selectedAirport || selectedRoad ? ' has-selection' : ''}${!isTimetable ? ` corridor-${journeyCorridorId}` : ''}`}
     >
       <div className="scene" aria-hidden={webglAvailable ? true : undefined}>
         <Suspense fallback={null}>
@@ -1971,6 +1977,8 @@ export function App({ edition }: AppProps) {
             <p>{text.webglUnavailableDescription}</p>
             <a href="./methodology.html">{text.readMethodology}</a>
           </section>
+        ) : timedRigiTerrain ? (
+          <RigiTimetableTerrain binding={timedRigiTerrain} time={networkTime} isPlaying={isPlaying} rate={playbackRate} onTime={handleNetworkTime} onEnd={finishRigiTerrain} />
         ) : isNetwork && isContrast ? (
           <div className="contrast-scenes">
             <section className="contrast-panel contrast-panel-city">
@@ -2840,7 +2848,7 @@ export function App({ edition }: AppProps) {
       )}
 
       {isNetwork && isRigi && rigiSequenceActive && rigiNetwork ? (
-        <Suspense fallback={null}><RigiSequence network={rigiNetwork} time={networkTime} language={language} onSeek={seekRigiSequence} onFollow={followRigiSequence} onExit={releaseSelection} onTerrain={() => openTerrainCorridor('vitznau-rigi')} /></Suspense>
+        <Suspense fallback={null}><RigiSequence network={rigiNetwork} time={networkTime} language={language} onSeek={seekRigiSequence} onFollow={followRigiSequence} onTimetableTerrain={setRigiTerrainBinding} onExit={releaseSelection} onTerrain={() => openTerrainCorridor('vitznau-rigi')} /></Suspense>
       ) : isHub ? (
         <section
           className="journey-card hub-card"
@@ -4166,7 +4174,7 @@ export function App({ edition }: AppProps) {
           {isHub
             ? text.arrivalsDirection
             : isNetwork
-              ? isRigi ? rigiCopy.water : hasHeadwayMotion ? frequencyCopy.interpolation : text.interpolation
+              ? timedRigiTerrain ? text.interpolation : isRigi ? rigiCopy.water : hasHeadwayMotion ? frequencyCopy.interpolation : text.interpolation
               : text.simulation}
         </span>
       </footer>

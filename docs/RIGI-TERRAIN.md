@@ -37,3 +37,10 @@ The terrain artifacts are **81.8 KiB gzip** for Vitznau and **63.0 KiB** for Art
 Automated checks cover raster pixel centres and invalid cells, source run selection, reversed path geometry, missing/disconnected paths, lake clipping, finite terrain, provenance hashes and payload size. Desktop Chromium and emulated iPhone WebKit cover lazy loading, the ground profile endpoints, selected-trip entry, switching journeys and retry after failure. Phone layout and screenshots are reviewed; physical-device testing remains open.
 
 Both measured cogwheel ascents are available. Surveyed vertical railway/tunnel detail, cable motion and a clock-linked boat–rail–cable sequence with sourced walking/interchange intervals remain later increments. The Vitznau artifact rebuild remains byte-for-byte unchanged after generalising the ingester.
+
+
+## Following the ascent sequences
+
+The lake-to-summit sequences can now use this terrain during their selected railway leg, on the same dated timetable clock. **Follow this train in terrain** preserves time and playback state; **Return to map** preserves them again. Progress follows matched station fractions and selected-service arrival/departure times, including dwell holds. The Weggis chain enters at Rigi Kaltbad rather than replaying Vitznau–Kaltbad. The selected summit arrival pauses the clock. Scrubbing outside the boarded rail interval restores the sequence map, with terrain following available again when that interval is re-entered.
+
+This timed view is separate from the independent scenic ascent controls. It reuses the same measured-ground artifact and discloses the same limits on track heights, tunnels and stylised vehicle geometry. Source/date mismatches, unmatched station fractions and invalid chronology do not receive a representative-service fallback. See [the sequence clock and evidence](RIGI-STUDY.md#railway-legs-on-the-terrain-clock).
