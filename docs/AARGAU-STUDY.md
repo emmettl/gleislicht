@@ -6,10 +6,13 @@ Completed **8 September 2026** from the [national source inventory](SWISS-TRANSI
 
 The final feed retains **11,193 Friday journeys and 7,767 Sunday journeys**, with complete source stop chains. Accepted geometry covers **every retained segment occurrence on both dates**, including all occurrences touching an Aargau stop. **Every retained directed pattern and stop-pair occurrence now has geometry.** The final platform fixes resolve Brugg Aare AG and Bern platform 49 with explicit source evidence and unchanged distance guards. This is complete automatic coverage of these two timetable fixtures, not year-round or actual-running-track certification. Bus fallback is an explicitly labelled OSM inference, including replacement services; it does not certify the actual diversion used.
 
+The [seasonal compatibility and release audit](AARGAU-SEASONAL-AUDIT.md) extends validation to twelve dates: **110,050 complete journeys, 1,821,846 calls and 1,146 directed patterns absent from September**. It finds 12 newly active routes, 45 still inactive in the sample, and additional geometry gaps. The September AGIS/OSM comparison flags 224 distinct directed bus pairs for itinerary review. The original September feeds still replay exactly; application release remains pending these reviews.
+
 ## Deliverables
 
 | Artifact | Contents |
 | --- | --- |
+| [Seasonal audit](AARGAU-SEASONAL-AUDIT.md) / [release review](../data/aargau-seasonal/release-review.json) | Twelve independently verified source fixtures, every seasonal pattern decision, exact September replay and ranked geometry/alignment review priorities |
 | [Full route inventory](../data/aargau/inventory.json) | All 5,142 routes with membership/admission reasons, source identities, archived Aargau calls and daily eligibility; complete national agency lookup |
 | [Friday audit](../fixtures/aargau/2026-09-04/audit.json) / [Sunday audit](../fixtures/aargau/2026-09-06/audit.json) | Every directed pattern and pair, accepted/failed occurrences, source feature/part/orientation, snap distances, monotone progress, source dates, geometry exclusions and all 366 GIS records |
 | [Friday regional feed](../fixtures/aargau/2026-09-04/aargau-region-day-manifest.json) / [Sunday regional feed](../fixtures/aargau/2026-09-06/aargau-region-day-manifest.json) | Manifest with stops, shared paths and twelve hashed two-hour movement chunks per date |
@@ -282,4 +285,4 @@ python3 scripts/prepare-aargau-sources.py \
   --output data/aargau-sources
 ```
 
-The source preparer deliberately rejects an AGIS archive differing from the survey's pinned hash. A refresh requires a newly reviewed catalogue/vintage and regeneration of dependent inventory/audit hashes; a mutable download URL must not silently replace this evidence. `publicationReady` remains false because directional/seasonal review and application release work remain, despite complete timetable preservation and passing consistency/payload checks.
+The source preparer deliberately rejects an AGIS archive differing from the survey's pinned hash. A refresh requires a newly reviewed catalogue/vintage and regeneration of dependent inventory/audit hashes; a mutable download URL must not silently replace this evidence. `publicationReady` remains false: the twelve-date follow-up exposes seasonal geometry gaps and AGIS/OSM alignment disagreements requiring itinerary review before application release. Complete timetable preservation and consistency/payload checks pass; source compatibility does not certify actual historical or future operation.

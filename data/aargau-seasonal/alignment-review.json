@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "sourceHashes": {
+    "data/aargau-road-cache.json": "2a3424668d719989390175a1c50b3338dfc060b6a7ffbf83257310e7bc13a47d",
+    "data/aargau-rheinfelden-road-cache.json": "2a4188c6358ef12d2c7130f02fe023b987fa09da71369eb895e331e6f124b3a2",
+    "data/aargau-platform-policy.json": "25b2bf41419ee205b02e2813fcff1271c9513f94605600f4faa7c0fc280cc54e",
+    "fixtures/aargau/2026-09-04/audit.json": "daa9d08e47da73400166ff9159d3fced8edf13998956ea9682ed39ac2cfa7727",
+    "fixtures/aargau/2026-09-04/aargau-region-day-manifest.json": "54f90c5ba7a1a0b6e7df150e2e5f7ea286928ce629d9cdf88aa43e252001b26d",
+    "fixtures/aargau/2026-09-06/audit.json": "19fdf2b592460e2894a3dcff13200a8f6e030b39905132fc1e2d500f1f36ab0e",
+    "fixtures/aargau/2026-09-06/aargau-region-day-manifest.json": "3bca46d35037ed6a2b6732e2005606f7126f1c518dc9e3b52bb32e4c562b2187"
+  },
+  "thresholdMetres": 30,
+  "method": "Compare existing AGIS bus segment paths with accepted OSM paths for the exact full ordered route/platform/coordinate pattern. Symmetric source-vertex to polyline separation in approximate LV95 metres. The road cache was prepared for fallback patterns only, so absence of a comparator is not an alignment failure. This direction-insensitive diagnostic does not certify legal one-way operation, lane choice, running tracks or temporal diversion validity. No geometry or admission is changed.",
+  "publicationReady": false,
+  "days": [
+    {
+      "date": "2026-09-04",
+      "reviewedBusSegmentContexts": 12842,
+      "counters": {
+        "alignment-disagreement-over-30m": {
+          "contexts": 305,
+          "occurrences": 3130
+        },
+        "no-accepted-full-pattern-comparator": {
+          "contexts": 10502,
+          "occurrences": 112339
+        },
+        "within-30m-vertex-distance": {
+          "contexts": 2035,
+          "occurrences": 21705
+        }
+      },
+      "comparisonsFile": "2026-09-04-alignment-comparisons.json.gz",
+      "comparisonsSha256": "4ca03c86d4850ab5c8ec5cf2e35c21c4228811e99a0aebd89adce84c94bfaf4c"
+    },
+    {
+      "date": "2026-09-06",
+      "reviewedBusSegmentContexts": 7803,
+      "counters": {
+        "alignment-disagreement-over-30m": {
+          "contexts": 211,
+          "occurrences": 2256
+        },
+        "no-accepted-full-pattern-comparator": {
+          "contexts": 6217,
+          "occurrences": 67896
+        },
+        "within-30m-vertex-distance": {
+          "contexts": 1375,
+          "occurrences": 17485
+        }
+      },
+      "comparisonsFile": "2026-09-06-alignment-comparisons.json.gz",
+      "comparisonsSha256": "12adadbd133909be5282a2cff023e557eb09b547e7f79505796a41c5ccdcbcc9"
+    }
+  ]
+}

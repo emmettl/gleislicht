@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "archiveSha256": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+  "inventorySha256": "0abc19535b2935917269cba1f83d1be536d0422aaf89bf2cbff87761d1cc122b",
+  "fixtures": {
+    "2026-01-16-timetable.json.gz": "ec4e8ae4724a1fd7dc852c45082758f89a8f89a74b269e82e2f12c18c7d86d75",
+    "2026-01-18-timetable.json.gz": "e70677041670ed4a8640a9bdfeb3f468956937701699640064bfc0f637502ff2",
+    "2026-04-03-timetable.json.gz": "95ead28b0bcbbcd79c2a62828c380dd71a9d90e65809f49d88a1b75be79d842a",
+    "2026-04-05-timetable.json.gz": "2ffcbf2a1ce4f6d83f79cd21b2945f34018eaf4144f708601e1557f5ffe9c427",
+    "2026-07-17-timetable.json.gz": "3169c1bd55f94fb101107725caf3ffd5bebd198fde289816a5df7c6fb091b228",
+    "2026-07-19-timetable.json.gz": "f8767b27690bb2d6b55d3f593f3f33cfa91050ef804adbd92c419b259dd989a3",
+    "2026-08-01-timetable.json.gz": "2f6ce758d30be62318156c4cf40a8e81b471b79149ec05489d0742d0ef25dfab",
+    "2026-09-04-timetable.json.gz": "09ecffefdea5596e91193767f446804289e3ca185cf280ffe9e965bb299063de",
+    "2026-09-06-timetable.json.gz": "e2b0b618815ba8f991d98a56a746be3005906e00768cdeec8c0db9a4263ba6bc",
+    "2026-10-23-timetable.json.gz": "859d0069bc08a0f3fd052b86d548fddb1c78e5c79fd0da38132b43c3ae14c1f7",
+    "2026-10-25-timetable.json.gz": "4f2c251a768afea15967af4a4679ec5fd1c25c94a2b520911f011477d124fa65",
+    "2026-12-11-timetable.json.gz": "86208dd8ecb458e7eb894da5614e9a2da66cef7588fc000d04842ddbce3f6397"
+  },
+  "method": "Independent Python csv/zip calendar and exception expansion across all national routes. Exact full source platform coordinates, names, identity, ordered calls, boarding rules and shifted times; selected and preceding service dates; missing and unexpected journey set equality. Membership uses the pinned canton stop inventory.",
+  "sourceStopTimeRows": 34499152,
+  "days": [
+    {
+      "date": "2026-01-16",
+      "journeys": 11131,
+      "calls": 184598,
+      "precedingServiceDayJourneys": 284,
+      "frequencyJourneys": 0
+    },
+    {
+      "date": "2026-01-18",
+      "journeys": 7634,
+      "calls": 128088,
+      "precedingServiceDayJourneys": 521,
+      "frequencyJourneys": 0
+    },
+    {
+      "date": "2026-04-03",
+      "journeys": 7615,
+      "calls": 128864,
+      "precedingServiceDayJourneys": 488,
+      "frequencyJourneys": 0
+    },
+    {
+      "date": "2026-04-05",
+      "journeys": 7631,
+      "calls": 129047,
+      "precedingServiceDayJourneys": 510,
+      "frequencyJourneys": 0
+    },
+    {
+      "date": "2026-07-17",
+      "journeys": 11393,
+      "calls": 183038,
+      "precedingServiceDayJourneys": 302,
+      "frequencyJourneys": 0
+    },
+    {
+      "date": "2026-07-19",
+      "journeys": 7847,
+      "calls": 127223,
+      "precedingServiceDayJourneys": 523,
+      "frequencyJourneys": 0
+    },
+    {
+      "date": "2026-08-01",
+      "journeys": 7764,
+      "calls": 129031,
+      "precedingServiceDayJourneys": 530,
+      "frequencyJourneys": 0
+    },
+    {
+      "date": "2026-09-04",
+      "journeys": 11193,
+      "calls": 184299,
+      "precedingServiceDayJourneys": 290,
+      "frequencyJourneys": 0
+    },
+    {
+      "date": "2026-09-06",
+      "journeys": 7767,
+      "calls": 129240,
+      "precedingServiceDayJourneys": 518,
+      "frequencyJourneys": 0
+    },
+    {
+      "date": "2026-10-23",
+      "journeys": 11193,
+      "calls": 184516,
+      "precedingServiceDayJourneys": 295,
+      "frequencyJourneys": 0
+    },
+    {
+      "date": "2026-10-25",
+      "journeys": 7662,
+      "calls": 128255,
+      "precedingServiceDayJourneys": 513,
+      "frequencyJourneys": 0
+    },
+    {
+      "date": "2026-12-11",
+      "journeys": 11220,
+      "calls": 185647,
+      "precedingServiceDayJourneys": 288,
+      "frequencyJourneys": 0
+    }
+  ],
+  "passed": true
+}
