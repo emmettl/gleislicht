@@ -25,7 +25,7 @@ The original direction audit conservatively includes nearby candidate paths for 
 
 The next apparent adjacency becomes **0188–2788**, with a projected separation of **3,521.59 m**. It remains **not admitted**: Wetzikon 2788 (Usterstrasse) has an unresolved road association, 97 m from ZH 340. Uster 0188 still requires its Wetzikon homonym and opposing-lane extent review. No observation window is inferred for this new pair from the removed pairs, and no connecting section is approved merely because two false candidates were removed.
 
-The next geometry investigation is therefore counter **2788**. Municipal-road playback, if pursued separately, would also need its own network, direction and section evidence; these exclusions do not authorize that expansion.
+The subsequent [Wetzikon review](WETZIKON-ROAD-REVIEW.md) establishes that **2788** also measures a municipal branch. It rejects the apparent 0188–2788 follow-up pair and closes the eastward extension for the current catalog/path. Municipal-road playback, if pursued separately, would need its own network, direction and section evidence; these exclusions do not authorize that expansion.
 
 ## Implementation and validation
 

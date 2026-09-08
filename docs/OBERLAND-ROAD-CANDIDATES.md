@@ -41,7 +41,7 @@ The short-destination status can mean either less than **1,500 m** direct distan
 
 The [Hittnau source follow-up](HITTNAU-ROAD-REVIEW.md) confirms 3091's public collector labels and precise station point, but obtains no station-specific direction plan. The canton handbook identifies the needed plan contents; its example belongs to another station. Hittnau remains excluded pending that independent directional reference, followed by the homonym review and section/junction audit. Do not infer 3091's direction from complete observations or from 2992 alone.
 
-The [Seegräben geometry investigation](SEEGRAEBEN-ROAD-REVIEW.md) establishes that 2988 and nearby 0392 lie on municipality-owned branch axes. Their ZH 340 candidate associations are rejected in the follow-up review. The original 14-pair audit remains the pinned historical diagnostic; 0188–2988 is now retired from that queue. The next apparent pair, 0188–2788, still needs a verified road binding at 2788 and must not be admitted by skipping the municipal counters alone.
+The [Seegräben geometry investigation](SEEGRAEBEN-ROAD-REVIEW.md) establishes that 2988 and nearby 0392 lie on municipality-owned branch axes. Their ZH 340 candidate associations are rejected in the follow-up review. The original 14-pair audit remains the pinned historical diagnostic; 0188–2988 is now retired from that queue. The subsequent [Wetzikon review](WETZIKON-ROAD-REVIEW.md) also excludes 2788 as a municipal-branch counter, rejecting the apparent 0188–2788 follow-up pair and closing this eastward extension for the current catalog/path.
 
 ## Reproduce
 

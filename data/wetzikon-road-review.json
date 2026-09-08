@@ -1,0 +1,185 @@
+{
+  "schemaVersion": 1,
+  "status": "review-only-no-publication",
+  "inputHashes": {
+    "geometry": "3647bbd230f40391ba3a1ddcba2364ec439183cd0d0cab80c84afcdcf1812e08",
+    "catalog": "ffce5a7cc2681d4a87f89a7a579e1eab3dd077e15e61574a0d5506da92479a09",
+    "directions": "dd1c125e6886a7ab61b0323d7174e5cdf15942b16d117a213e8f2276a88b7c55",
+    "coverage": "e82703beb1fe81e1cc355c7e3faafc3505eba77641337312daef5b3db8e0248e",
+    "sources": "3325f13c91e2697403576f26b4a76fff496588f200031542f12b7e33d03e6b6f",
+    "seegraebenSources": "2ab9c045352620f261a300032589824c9f206ee3798372c2c3e0188eb5e58b9e",
+    "seegraebenScope": "598cdcd4ca298d5d10c67e57aaef1d76a336e08257020c98a35e9592c34c3ca5",
+    "seegraebenReview": "cd39b2eb2f92b3af87a989f70679ca80c50316860367a203706439ff537306e2"
+  },
+  "stationReview": {
+    "id": "ZH.CH:2788",
+    "name": "Wetzikon: Usterstrasse",
+    "stationPointLv95": [
+      2701466.1799999997,
+      1242980.539999999
+    ],
+    "status": "excluded-from-ZH-340",
+    "detailedAxisFeatureId": 2165,
+    "ownership": "Gemeinde",
+    "detailedAxisClass": "Gemeindestrassen",
+    "axisDistanceMetres": 0,
+    "nearestCompetingAxisDistanceMetres": 97,
+    "rejectedPathId": "ZH:340:0176d9b8f03adcfd",
+    "classifiedRoadDistanceMetres": 97,
+    "junctions": [
+      {
+        "pointLv95": [
+          2701327.6247499995,
+          1242969.362499997
+        ],
+        "mainRoadFeatureId": 317,
+        "distanceMetres": 0
+      },
+      {
+        "pointLv95": [
+          2701327.6247499995,
+          1242969.362499997
+        ],
+        "mainRoadFeatureId": 487,
+        "distanceMetres": 0
+      }
+    ],
+    "evidence": "Exact station identity and unchanged point lie on a municipality-owned detailed axis, which meets ZH 340 at a separate junction. Collector road and destination labels remain unchanged. No travel direction is inferred."
+  },
+  "priorExclusions": [
+    {
+      "id": "ZH.CH:2988",
+      "detailedAxisFeatureId": 7862,
+      "status": "excluded-from-ZH-340"
+    },
+    {
+      "id": "ZH.CH:0392",
+      "detailedAxisFeatureId": 274,
+      "status": "excluded-from-ZH-340"
+    }
+  ],
+  "rejectedFollowUpPairs": [
+    {
+      "pathId": "ZH:340:0176d9b8f03adcfd",
+      "from": "ZH.CH:0188",
+      "to": "ZH.CH:2788",
+      "distanceMetres": 3521.59,
+      "status": "unresolved-endpoint",
+      "publicationStatus": "rejected-wrong-road",
+      "endpoints": [
+        {
+          "id": "ZH.CH:0188",
+          "name": "Uster: Aathalstrasse",
+          "status": "unresolved-direction-pair"
+        },
+        {
+          "id": "ZH.CH:2788",
+          "name": "Wetzikon: Usterstrasse",
+          "status": "unmatched-geometry"
+        }
+      ],
+      "reason": "Counter 2788 measures a municipal Usterstrasse branch, not ZH 340. The apparent 0188–2788 adjacency cannot form a same-road recording."
+    }
+  ],
+  "remainingPairsTouchingUster": [
+    {
+      "pathId": "ZH:340:0176d9b8f03adcfd",
+      "from": "ZH.CH:2188",
+      "to": "ZH.CH:0188",
+      "distanceMetres": 875.54,
+      "status": "unresolved-endpoint",
+      "publicationStatus": "not-admitted",
+      "endpointAudits": [
+        {
+          "id": "ZH.CH:2188",
+          "road": "ZH:340",
+          "pathId": "ZH:340:0176d9b8f03adcfd",
+          "status": "unresolved-direction-pair",
+          "detectors": [
+            {
+              "id": "ZH.CH:2188.01",
+              "description": "Normalspur Richtung Uster",
+              "alertCDirection": "negative",
+              "status": "destination-too-close",
+              "destination": {
+                "name": "Uster",
+                "coordinate": [
+                  2696655.35,
+                  1245193.6
+                ],
+                "bounds": [
+                  2694605.6,
+                  1243520.9,
+                  2698705.1,
+                  1246866.3
+                ],
+                "sourceFeatureId": 302470
+              },
+              "destinationDistanceMetres": 1138.25,
+              "destinationRoadDistanceMetres": 196.17,
+              "offsetSeparationMetres": -1208.84,
+              "bearingAgreement": -0.99,
+              "offsetMetres": 13664.59
+            },
+            {
+              "id": "ZH.CH:2188.02",
+              "description": "Normalspur Richtung Wetzikon",
+              "alertCDirection": "positive",
+              "status": "unresolved-destination"
+            }
+          ]
+        },
+        {
+          "id": "ZH.CH:0188",
+          "road": "ZH:340",
+          "pathId": "ZH:340:0176d9b8f03adcfd",
+          "status": "unresolved-direction-pair",
+          "detectors": [
+            {
+              "id": "ZH.CH:0188.01",
+              "description": "Normalspur Richtung Uster",
+              "alertCDirection": "negative",
+              "status": "destination-extent-conflict",
+              "destination": {
+                "name": "Uster",
+                "coordinate": [
+                  2696655.35,
+                  1245193.6
+                ],
+                "bounds": [
+                  2694605.6,
+                  1243520.9,
+                  2698705.1,
+                  1246866.3
+                ],
+                "sourceFeatureId": 302470
+              },
+              "destinationDistanceMetres": 1901.04,
+              "destinationRoadDistanceMetres": 196.17,
+              "offsetSeparationMetres": -2084.39,
+              "bearingAgreement": -0.99,
+              "offsetMetres": 14540.13
+            },
+            {
+              "id": "ZH.CH:0188.02",
+              "description": "Normalspur Richtung Wetzikon",
+              "alertCDirection": "positive",
+              "status": "unresolved-destination"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "easternExtension": {
+    "anchorStationId": "ZH.CH:0188",
+    "pathId": "ZH:340:0176d9b8f03adcfd",
+    "status": "no-further-counter-on-reviewed-path",
+    "reviewedExcludedStations": [
+      "ZH.CH:2988",
+      "ZH.CH:0392",
+      "ZH.CH:2788"
+    ]
+  },
+  "limitation": "This closes the proposed eastward ZH 340 recording from Uster 0188 for the current catalog and reviewed path. It does not prove that other counters or road datasets do not exist. No municipal playback, connecting section, travel direction or observation window is inferred. Original geometry, coverage and prior reviews remain intact."
+}
