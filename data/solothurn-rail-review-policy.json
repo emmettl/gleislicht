@@ -22,6 +22,11 @@
       "routeId": "91-3-Y-j26-1",
       "agencyId": "11",
       "line": "ICE"
+    },
+    {
+      "routeId": "91-81-A-j26-1",
+      "agencyId": "11",
+      "line": "IC81"
     }
   ],
   "stops": [
@@ -41,5 +46,5 @@
     ]
   ],
   "sourceNumber": "8507492",
-  "method": "Exact IC61/ICE route and original Interlaken Ost platform 5/7 crosswalk to the FOT node explicitly labelled tracks 5–8. Coordinates, platform labels and all original calls remain unchanged. Full-pattern standard-gauge routing and all-context consensus still apply. Only previously unmatched segments can use reviewed results; no attachment or detour limits are widened."
+  "method": "Exact IC61/ICE/IC81 route and original Interlaken Ost platform 5/7 crosswalk to the FOT node explicitly labelled tracks 5–8. Coordinates, platform labels and all original calls remain unchanged. Full-pattern standard-gauge routing and all-context consensus still apply. Only previously unmatched segments can use reviewed results; no attachment or detour limits are widened."
 }

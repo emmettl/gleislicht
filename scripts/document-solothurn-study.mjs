@@ -2,7 +2,7 @@ import { readFile, writeFile } from 'node:fs/promises'
 const read = async name => JSON.parse(await readFile(`data/solothurn-audit/${name}.json`))
 const s = await read('summary'), routes = await read('routes')
 const corridors = await read('corridor-review'), railPlatforms = await read('rail-platform-review'), s29Precedence = await read('s29-precedence-review'), busJunction = await read('bus-junction-review'), accessRoads = await read('access-road-review'), bernTerminal = await read('bern-terminal-review'), s26 = await read('s26-review'), como = await read('como-review'), simplon = await read('simplon-review'), delle = await read('delle-review'), roadDetour = await read('road-detour-review'), m53 = await read('m53-review')
-const topology = await read('topology-review'), supplements = await read('supplement-review'), seasonal = await read('seasonal-summary'), alignments = await read('alignment-review'), display = await read('display-release')
+const topology = await read('topology-review'), supplements = await read('supplement-review'), seasonal = await read('seasonal-summary'), alignments = await read('alignment-review'), display = await read('display-release'), residual = await read('residual-gap-review')
 const reports = await Promise.all(s.days.map(d => read(d.serviceDate)))
 const n = x => Number(x).toLocaleString('en-CH')
 const percent = (a, b) => `${(100 * a / b).toFixed(1)}%`
@@ -279,6 +279,26 @@ The sample applies the pinned GTFS calendars and exceptions to winter weekdays/S
 
 Geometry from the recorded source vintages is applied to this timetable sample; historical/seasonal alignment validity is unproven. **25 October is the DST fallback day:** source stop order and geometry are tested, but the repeated local hour is not disambiguated into 25 elapsed hours. It is not promoted to an app day feed. Only the reviewed September Friday/Sunday can be promoted; this sample does not assert daily or year-round completeness.
 
+## Seasonal platform follow-up and residual evidence
+
+The [residual-gap audit](../data/solothurn-audit/residual-gap-review.json) extends the already reviewed station associations to **SBB IC81 / agency 11 / route 91-81-A-j26-1** at Interlaken Ost and **BLS IR17 / agency 33 / route 91-17-B-j26-1** at Bern. It checks **all five IC81 and all 27 IR17 complete retained contexts**. IC81 uses only original Interlaken Ost platforms **5/7** and the existing FOT node explicitly labelled **tracks 5–8**. IR17 uses only the terminal **Burgdorf platform 2 → Bern platform 50** pair, the original Bern station point and the already reviewed eastern approach and station curve. Neither association changes station coordinates, gauge filters, attachment limits, stop-order guards or full-context consensus.
+
+${table(['Date', 'Before admitted', 'Now admitted', 'Additional journeys'], residual.days.filter(d => d.addedJourneys).map(d => [d.date, d.beforeAdmitted, d.admitted, d.addedJourneys]))}
+
+This adds **seven IC81 journeys on 1 August** and **one IR17 journey on each of five dates**, for **12 additional seasonal journey instances** across seven complete patterns. September Friday/Sunday counts are unchanged. The source vintages remain those recorded for the FOT infrastructure and the **August 2026 SBB Bern station plan** above; the review does not turn those sources into a certification of historical running tracks. Applying the August plan to earlier timetable dates remains an explicit inference. All **2,824 complete source contexts** are replayed against the [previous segment-hash baseline](../data/solothurn-seasonal-platform-baseline.json.gz): every previously selected segment and every previously admitted complete pattern is preserved.
+
+The audit also inventories **${residual.residualPairs.length} still-unmatched route-specific directed pairs** across all twelve dates, retaining original coordinates, platform IDs, full-pattern references and per-date occurrences. These include winter BOGG 507/N51 and summer S23/S26/A01 gaps as well as the three September locations. A journey with two failed pairs is counted once in the per-route exclusion totals; failed-pair occurrence counts must not be summed as unique journeys. The linked seasonal pattern audit retains all original calls and matched masks.
+
+New [residual source evidence](../data/solothurn-residual-sources/sources.json), reviewed **9 September 2026**, supports retaining the following exclusions:
+
+- **Pieterlen EV4:** the official [SBB replacement-bus plan](../data/solothurn-residual-sources/pieterlen-replacement-plan.pdf), dated **May 2025**, marks the boarding location and dotted pedestrian access from the railway platforms. Those dotted paths are not bus routes. The plan predates the 2026 works and does not choose between the two retained full-context departure paths. Credits as printed: **SBB / OpenStreetMap contributors / imagico / trafimage.ch / mapset.ch**.
+- **Egerkingen 501:** the mapped bus relation uses **${residual.egerkingenAlternatives.relationPathMetres.toFixed(1)} m** of original road geometry, ending **${residual.egerkingenAlternatives.toStopGapMetres.toFixed(1)} m** from the original GTFS Bahnhof coordinate. It differs from the **1,213.2 m** road-matcher and **1,316.4 m** cantonal candidates. The municipal [planning report](../data/solothurn-residual-sources/egerkingen-planning-2020.pdf), dated **10 November 2020**, proposes a direct bus link and relocated stops; its target-state map is not evidence that the works were completed. Credit: **Einwohnergemeinde Egerkingen / KFB Pfister AG**, with an **AVT 19 October 2017** conceptual map on page 6. BOGG's retained current stop-plan page supplies an Olten plan but no reviewed Egerkingen itinerary. No stop substitution or detour exception is admitted.
+- **Arlesheim tram 10:** the original platform E coordinate remains unsupported by both the retained official line and historical tram tracks. The previously recorded **138.4 / 120.7 m** gaps and unchanged **80 m** attachment limit remain decisive; no source-supported platform correction was established.
+
+![Egerkingen source-path alternatives](../data/solothurn-audit/egerkingen-alternatives.svg)
+
+The cantonal path in this comparison is obtained with an explicitly **diagnostic-only 1,400 m search**; it does not change the admission limits. All three paths remain excluded. The new PDFs are retained as review context; no reuse licence is inferred and no PDF geometry enters the feed. The residual audit states what additional operating or platform evidence each September case needs. Year-round coverage and current physical directions remain uncertified.
+
 ## Sources, dates and attribution
 
 - **National timetable:** SBB / Open data platform mobility Switzerland, feed **20260902**, valid **2025-12-14–2026-12-12**. [Dataset](https://data.opentransportdata.swiss/en/dataset/timetable-2026-gtfs2020), [pinned ZIP](${s.sources.timetable.downloadUrl}), [terms](${s.sources.timetable.termsUrl}). SHA-256: \`${s.sourceHashes.archive}\`.
@@ -328,8 +348,10 @@ npm run data:solothurn:seasonal
 npm run data:solothurn:seasonal:check
 npm run data:solothurn:alignments
 npm run data:solothurn:release
+node scripts/review-solothurn-residual-gaps.mjs
+node scripts/review-solothurn-residual-gaps.mjs --check
 npm run data:solothurn:docs
-npx vitest run scripts/solothurn-region.test.mjs scripts/solothurn-corridor.test.mjs scripts/solothurn-rail-review.test.mjs scripts/solothurn-s29-precedence.test.mjs scripts/solothurn-bus-junction.test.mjs scripts/solothurn-access-roads.test.mjs scripts/solothurn-bern-terminal.test.mjs scripts/solothurn-s26-review.test.mjs scripts/solothurn-como-rail.test.mjs scripts/solothurn-simplon-rail.test.mjs scripts/solothurn-delle-rail.test.mjs scripts/solothurn-road-detours.test.mjs scripts/solothurn-m53-corridor.test.mjs scripts/solothurn-release.test.mjs
+npx vitest run scripts/solothurn-region.test.mjs scripts/solothurn-corridor.test.mjs scripts/solothurn-rail-review.test.mjs scripts/solothurn-s29-precedence.test.mjs scripts/solothurn-bus-junction.test.mjs scripts/solothurn-access-roads.test.mjs scripts/solothurn-bern-terminal.test.mjs scripts/solothurn-s26-review.test.mjs scripts/solothurn-como-rail.test.mjs scripts/solothurn-simplon-rail.test.mjs scripts/solothurn-delle-rail.test.mjs scripts/solothurn-road-detours.test.mjs scripts/solothurn-m53-corridor.test.mjs scripts/solothurn-residual-gaps.test.mjs scripts/solothurn-release.test.mjs
 npx playwright test --config playwright.solothurn.config.ts
 python3 -m unittest discover -s scripts -p 'test_bern_sources.py'
 \`\`\`

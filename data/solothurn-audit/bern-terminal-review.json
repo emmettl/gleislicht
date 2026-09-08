@@ -165,6 +165,11 @@
           "line": "IR16"
         },
         {
+          "routeId": "91-17-B-j26-1",
+          "agencyId": "33",
+          "line": "IR17"
+        },
+        {
           "routeId": "91-35-A-j26-1",
           "agencyId": "82",
           "line": "IR35"
@@ -200,11 +205,14 @@
         ],
         "91-4U-Y-j26-1": [
           "8508005"
+        ],
+        "91-17-B-j26-1": [
+          "8508005"
         ]
       },
       "method": "Only exact reviewed route/operator identities with one terminal Bern call on original platforms 49/50 and the explicit adjacent operating point. Project platform onto the pinned SBB station curve and retain its station-centre side as an inferred terminal spur. Original Bern node stays in place; only Bern Wyler eastern approach remains connected at that node in the pattern-local graph. Full-context consensus and existing source validity, station/topology attachment, detour and stop-order guards remain. Preserve all previous successful paths. No running-track, switch or present-day itinerary certification."
     },
-    "policySha256": "3b67c0919902b95d2a08fbc26f653677a907ce95b286fb02d14bc1d511611d5d",
+    "policySha256": "c91ba742b97d2e0368b3efd0ede7298b57094a8684211be5c7cd3536bf5c4735",
     "evidence": [
       {
         "stopId": "ch:1:sloid:7000:55:49",

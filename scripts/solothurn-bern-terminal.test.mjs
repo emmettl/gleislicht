@@ -26,6 +26,25 @@ describe('Solothurn Bern eastern terminal review', () => {
     expect(()=>solothurnBernTerminalNetwork(changed,policy,policy.stops[0])).toThrow('Changed reviewed Bern source curve')
     expect(()=>solothurnBernTerminalNetwork(network,policy,[...policy.stops[0].slice(0,4),'other'])).toThrow('Unreviewed Bern platform')
   })
+  it('checks all 27 complete BLS IR17 contexts and admits only the two reviewed Burgdorf-to-Bern-50 patterns', async () => {
+    const matcher = await load(), route = context.routes.find(r => r.id === '91-17-B-j26-1')
+    let contexts = 0, matches = 0
+    for (const day of context.snapshots) for (const train of day.trains.filter(t => t.routeId === route.id)) {
+      contexts++
+      const original = train.stops.slice(1).map(() => ({ reason: 'old-failure' })), result = matcher.matchPattern(train, day.stops, route, original)
+      for (const [i, segment] of result.entries()) if (segment.path) {
+        matches++
+        const from = day.stops[train.stops[i][0]], to = day.stops[train.stops[i + 1][0]]
+        expect([from[4], to[4]]).toEqual(['ch:1:sloid:8005:2:2', 'ch:1:sloid:7000:55:50'])
+        expect(segment.path[0]).toEqual(from.slice(0, 2)); expect(segment.path.at(-1)).toEqual(to.slice(0, 2))
+        expect(segment.directedSourceSegments.some(s => s.id === policy.easternApproach.id)).toBe(true)
+      }
+      const prior = original.map(() => ({ path: [[1, 2], [3, 4]] }))
+      expect(matcher.matchPattern(train, day.stops, route, prior)).toEqual(prior)
+      expect(matcher.matchPattern(train, day.stops, { ...route, agencyId: '11' }, original)).toBe(original)
+    }
+    expect(contexts).toBe(27); expect(matches).toBe(2)
+  })
   it('preserves successful paths and rejects through calls, changed identities and unknown platforms', async () => {
     const matcher = await load(), day=context.snapshots.find(d=>d.metadata.serviceDate==='2026-09-04')
     const train=day.trains.find(t=>t.routeId==='91-35-A-j26-1' && t.stops.some(([i])=>day.stops[i][4]===policy.stops[1][4]))

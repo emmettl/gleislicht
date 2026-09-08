@@ -1,0 +1,5734 @@
+{
+  "schemaVersion": 1,
+  "baselineCommit": "2f31ee939bf96207ae92e52ae1150f6a79cade97",
+  "baselineSha256": "e2513748fd94889311313c11dd5f72f06daabe4c93914df6087545c85f60c9f1",
+  "contextSha256": "6a3fb3b6d119bf3118969bce3f42bd9592fb484a4f088a0ee8b456ff769c146d",
+  "sourceHashes": {
+    "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+    "source": "5f11586ad156f763d7b1b9a6ac05f14dd29865ca03bf5a1d42195a7da8c331e8"
+  },
+  "sourceEvidenceSha256": "84e73b3bb4c24e4d46a43388d1a9662312cb623bb843434eac6bdf2a113a4809",
+  "evidence": {
+    "schemaVersion": 1,
+    "acquiredAt": "2026-09-08T22:03:20.231314+00:00",
+    "files": [
+      {
+        "file": "pieterlen-replacement-plan.pdf",
+        "sha256": "0261f08d4773678f2db7d29d4cdd87ef32ab1480ae7d13534c2d884f56c3c205",
+        "url": "https://company.sbb.ch/content/dam/infrastruktur/trafimage/bahnersatz/bep-pieterlen.pdf.sbbdownload.pdf"
+      },
+      {
+        "file": "egerkingen-planning-2020.pdf",
+        "sha256": "57497e029da2a5d1d177faefc0783f9dd642c91eddbb2c2c53e28cc26de84af4",
+        "url": "https://www.egerkingen.ch/_docn/2857217/20201110_Raumplanungsbericht_V-Erschliessung_Areal_Gaupark.pdf"
+      },
+      {
+        "file": "bogg-situations.html.gz",
+        "sha256": "76de0782757c933ddfc307727605ac2014d3e48dff8d43b0a33a70b7daa18e1a",
+        "url": "https://bogg.ch/fahrplaene-und-netz/situationsplaene/"
+      }
+    ],
+    "pieterlen": {
+      "date": "2025-05",
+      "attribution": "SBB / OpenStreetMap contributors / imagico / trafimage.ch / mapset.ch (credits as printed)",
+      "role": "Boarding location and pedestrian access only. Red dotted paths are walking access from rail platforms, not a bus itinerary. The plan predates the 2026 works.",
+      "downloadNote": "www.sbb.ch asset returned HTTP 403 in sandbox and host retry; identical public asset path is available on company.sbb.ch.",
+      "decision": "Neither full EV4 road candidate is selected by this plan."
+    },
+    "egerkingen": {
+      "date": "2020-11-10",
+      "attribution": "Einwohnergemeinde Egerkingen / KFB Pfister AG; AVT conceptual map dated 2017-10-19 on page 6",
+      "role": "Planned future direct bus connection and proposed relocated stops. The Zielzustand map is not a completed-works or operational alignment certificate.",
+      "decision": "Neither retained road candidate nor the mapped bus relation is confirmed for September 2026."
+    },
+    "licensing": "Review context; no PDF reuse licence inferred. No geometry is extracted into the feed.",
+    "bogg": {
+      "reviewDate": "2026-09-09",
+      "attribution": "Busbetrieb Olten Gösgen Gäu AG",
+      "role": "Current site supplies an Olten stop plan and says individual line/stop PDFs will be added for the next timetable change. It supplies no reviewed Egerkingen itinerary. The publisher prints 14.12.2026; that date is retained as its claim, not a correction to the pinned GTFS calendar."
+    }
+  },
+  "method": "Revalidate all 2,824 complete original contexts and preserve every prior non-null segment geometry hash. Add only reviewed BLS IR17 Bern terminal and SBB IC81 Interlaken platform associations, with existing full-pattern consensus and unchanged limits. Count excluded journeys once per route; failed-pair occurrences may overlap.",
+  "stationSources": {
+    "interlaken": {
+      "policy": {
+        "schemaVersion": 1,
+        "sourceDirectory": "data/zug-rail-sources",
+        "sourceSha256": "2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+        "sourceMetadataSha256": "deeaa5552be1c671511cee21d9ba2787d5787d008dda4d4a36b82d4d4e64462c",
+        "node": {
+          "id": "ch14uvag00165678",
+          "number": "8519309",
+          "name": "Interlaken Ost [Gleis 5-8]"
+        },
+        "segment": {
+          "id": "ch14uvag00087489",
+          "gauge": "mm1435"
+        },
+        "routes": [
+          {
+            "routeId": "91-61-A-j26-1",
+            "agencyId": "11",
+            "line": "IC61"
+          },
+          {
+            "routeId": "91-3-Y-j26-1",
+            "agencyId": "11",
+            "line": "ICE"
+          },
+          {
+            "routeId": "91-81-A-j26-1",
+            "agencyId": "11",
+            "line": "IC81"
+          }
+        ],
+        "stops": [
+          [
+            7.86973596,
+            46.69089863,
+            "Interlaken Ost",
+            "5",
+            "ch:1:sloid:7492:0:581416"
+          ],
+          [
+            7.86979884,
+            46.69105267,
+            "Interlaken Ost",
+            "7",
+            "ch:1:sloid:7492:0:460848"
+          ]
+        ],
+        "sourceNumber": "8507492",
+        "method": "Exact IC61/ICE/IC81 route and original Interlaken Ost platform 5/7 crosswalk to the FOT node explicitly labelled tracks 5–8. Coordinates, platform labels and all original calls remain unchanged. Full-pattern standard-gauge routing and all-context consensus still apply. Only previously unmatched segments can use reviewed results; no attachment or detour limits are widened."
+      },
+      "policySha256": "8e72f805d4db3d175c2c00ed6e2cb7ced613e85969de262392445571c687483b",
+      "node": {
+        "id": "ch14uvag00165678",
+        "number": "8519309",
+        "name": "Interlaken Ost [Gleis 5-8]",
+        "coordinate": [
+          7.868937,
+          46.690837
+        ]
+      },
+      "segment": {
+        "id": "ch14uvag00087489",
+        "gauge": "mm1435",
+        "dataStand": "2021-07-06",
+        "validFrom": "2014-09-03",
+        "validUntil": null,
+        "infrastructureOperator": "BLS",
+        "attachmentMetres": 9.202513384655338,
+        "reason": null
+      }
+    },
+    "bern": {
+      "policy": {
+        "schemaVersion": 1,
+        "sourceDirectory": "data/solothurn-bern-terminal-sources",
+        "sources": [
+          {
+            "file": "sbb-bern-plan-2026-08.pdf",
+            "sha256": "fc8996f20bd75a4293448ccf96a11b443f5df2419282ab75cea80efd252486eb",
+            "url": "https://company.sbb.ch/content/dam/infrastruktur/trafimage/bahnhofplaene/plan-bern-a4.pdf",
+            "retrievedAt": "2026-09-08T20:18:29.309Z",
+            "documentDate": "2026-08",
+            "role": "SBB station exterior plan, page 3: tracks 49/50 at western end of Bern. Station extent and platform identity evidence; not a surveyed track/switch alignment."
+          }
+        ],
+        "sourceSha256": "2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+        "contextSha256": "6a3fb3b6d119bf3118969bce3f42bd9592fb484a4f088a0ee8b456ff769c146d",
+        "node": {
+          "id": "ch14uvag00088813",
+          "number": "8507000",
+          "name": "Bern",
+          "coordinate": [
+            7.439136,
+            46.948831
+          ]
+        },
+        "stationCurve": {
+          "id": "ch14uvag00087328",
+          "start": "ch14uvag00089324",
+          "end": "ch14uvag00088813",
+          "length": 781.1577614377883,
+          "points": [
+            [
+              7.428931,
+              46.948284
+            ],
+            [
+              7.429906,
+              46.948018
+            ],
+            [
+              7.430804,
+              46.947885
+            ],
+            [
+              7.432114,
+              46.947828
+            ],
+            [
+              7.433162,
+              46.947876
+            ],
+            [
+              7.437213,
+              46.948635
+            ],
+            [
+              7.43793,
+              46.948857
+            ],
+            [
+              7.438694,
+              46.949225
+            ]
+          ],
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2005-02-11",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS"
+        },
+        "easternApproach": {
+          "id": "ch14uvag00139673",
+          "start": "ch14uvag00139694",
+          "end": "ch14uvag00088813",
+          "length": 2787.4735732175945,
+          "points": [
+            [
+              7.46029,
+              46.966596
+            ],
+            [
+              7.451745,
+              46.964523
+            ],
+            [
+              7.448704,
+              46.963673
+            ],
+            [
+              7.447217,
+              46.963104
+            ],
+            [
+              7.44607,
+              46.962366
+            ],
+            [
+              7.443934,
+              46.960208
+            ],
+            [
+              7.44333,
+              46.95941
+            ],
+            [
+              7.442972,
+              46.958454
+            ],
+            [
+              7.442844,
+              46.956118
+            ],
+            [
+              7.442585,
+              46.955238
+            ],
+            [
+              7.439723,
+              46.950113
+            ],
+            [
+              7.439325,
+              46.949649
+            ],
+            [
+              7.438694,
+              46.949225
+            ]
+          ],
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2015-10-21",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS"
+        },
+        "stops": [
+          [
+            7.4333344,
+            46.94822398,
+            "Bern",
+            "49",
+            "ch:1:sloid:7000:55:49"
+          ],
+          [
+            7.43355898,
+            46.94830984,
+            "Bern",
+            "50",
+            "ch:1:sloid:7000:55:50"
+          ]
+        ],
+        "maximumProjectionMetres": 75,
+        "minimumSpurMetres": 200,
+        "maximumSpurMetres": 600,
+        "routes": [
+          {
+            "routeId": "91-16-B-j26-1",
+            "agencyId": "11",
+            "line": "IR16"
+          },
+          {
+            "routeId": "91-17-B-j26-1",
+            "agencyId": "33",
+            "line": "IR17"
+          },
+          {
+            "routeId": "91-35-A-j26-1",
+            "agencyId": "82",
+            "line": "IR35"
+          },
+          {
+            "routeId": "91-35-B-j26-1",
+            "agencyId": "11",
+            "line": "IR35"
+          },
+          {
+            "routeId": "91-35-D-j26-1",
+            "agencyId": "33",
+            "line": "IR35"
+          },
+          {
+            "routeId": "91-4U-Y-j26-1",
+            "agencyId": "11",
+            "line": "IR"
+          }
+        ],
+        "adjacentOperatingPoints": {
+          "91-16-B-j26-1": [
+            "8500218"
+          ],
+          "91-35-A-j26-1": [
+            "8508005"
+          ],
+          "91-35-B-j26-1": [
+            "8508005"
+          ],
+          "91-35-D-j26-1": [
+            "8508005"
+          ],
+          "91-4U-Y-j26-1": [
+            "8508005"
+          ],
+          "91-17-B-j26-1": [
+            "8508005"
+          ]
+        },
+        "method": "Only exact reviewed route/operator identities with one terminal Bern call on original platforms 49/50 and the explicit adjacent operating point. Project platform onto the pinned SBB station curve and retain its station-centre side as an inferred terminal spur. Original Bern node stays in place; only Bern Wyler eastern approach remains connected at that node in the pattern-local graph. Full-context consensus and existing source validity, station/topology attachment, detour and stop-order guards remain. Preserve all previous successful paths. No running-track, switch or present-day itinerary certification."
+      },
+      "policySha256": "c91ba742b97d2e0368b3efd0ede7298b57094a8684211be5c7cd3536bf5c4735",
+      "evidence": [
+        {
+          "stopId": "ch:1:sloid:7000:55:49",
+          "originalOperatingPoint": {
+            "id": "ch14uvag00088813",
+            "number": "8507000",
+            "name": "Bern",
+            "coordinate": [
+              7.439136,
+              46.948831
+            ]
+          },
+          "terminal": {
+            "id": "solothurn:bern-terminal:49",
+            "number": "SO-BERN-49",
+            "name": "Bern reviewed platform 49",
+            "coordinate": [
+              7.4334524,
+              46.9479304
+            ]
+          },
+          "projection": {
+            "segmentIndex": 4,
+            "fraction": 0.07169237022045111,
+            "point": [
+              7.4334524,
+              46.9479304
+            ],
+            "attachmentMetres": 33.88924546124847
+          },
+          "retainedMetres": 427.2349973477947,
+          "sourceCurveId": "ch14uvag00087328",
+          "easternApproachId": "ch14uvag00139673",
+          "spurId": "solothurn:bern-terminal:49:inferred-station-spur",
+          "removedConnections": [
+            "ch14uvag00087195",
+            "ch14uvag00087196",
+            "ch14uvag00087328"
+          ]
+        },
+        {
+          "stopId": "ch:1:sloid:7000:55:50",
+          "originalOperatingPoint": {
+            "id": "ch14uvag00088813",
+            "number": "8507000",
+            "name": "Bern",
+            "coordinate": [
+              7.439136,
+              46.948831
+            ]
+          },
+          "terminal": {
+            "id": "solothurn:bern-terminal:50",
+            "number": "SO-BERN-50",
+            "name": "Bern reviewed platform 50",
+            "coordinate": [
+              7.4336934,
+              46.9479756
+            ]
+          },
+          "projection": {
+            "segmentIndex": 4,
+            "fraction": 0.1311714476650292,
+            "point": [
+              7.4336934,
+              46.9479756
+            ],
+            "attachmentMetres": 38.584362303324
+          },
+          "retainedMetres": 408.2418313977731,
+          "sourceCurveId": "ch14uvag00087328",
+          "easternApproachId": "ch14uvag00139673",
+          "spurId": "solothurn:bern-terminal:50:inferred-station-spur",
+          "removedConnections": [
+            "ch14uvag00087195",
+            "ch14uvag00087196",
+            "ch14uvag00087328"
+          ]
+        }
+      ]
+    }
+  },
+  "verifiedCompleteContexts": 2824,
+  "reviewed": [
+    {
+      "id": "a312fe079c59d42305d04e3e",
+      "routeId": "91-17-B-j26-1",
+      "agencyId": "33",
+      "line": "IR17",
+      "directionId": "0",
+      "stops": [
+        [
+          7.43776309,
+          46.94908252,
+          "Bern",
+          "10",
+          "ch:1:sloid:7000:5:10"
+        ],
+        [
+          7.62177399,
+          47.06086834,
+          "Burgdorf",
+          "3",
+          "ch:1:sloid:8005:2:3"
+        ],
+        [
+          7.6636265,
+          47.10538755,
+          "Wynigen",
+          "2",
+          "ch:1:sloid:8006:2:2"
+        ],
+        [
+          7.70069998,
+          47.18773976,
+          "Herzogenbuchsee",
+          "2",
+          "ch:1:sloid:8008:2:2"
+        ],
+        [
+          7.78398279,
+          47.21710858,
+          "Langenthal",
+          "3",
+          "ch:1:sloid:8100:2:3"
+        ],
+        [
+          7.90805809,
+          47.3521954,
+          "Olten",
+          "9",
+          "ch:1:sloid:218:5:9"
+        ]
+      ],
+      "beforeAdmitted": true,
+      "afterAdmitted": true,
+      "addedSegments": []
+    },
+    {
+      "id": "5c5128b91a7df3a15a2d4af9",
+      "routeId": "91-17-B-j26-1",
+      "agencyId": "33",
+      "line": "IR17",
+      "directionId": "0",
+      "stops": [
+        [
+          7.43798767,
+          46.94841409,
+          "Bern",
+          "1A-D",
+          "ch:1:sloid:7000:1:1"
+        ],
+        [
+          7.62177399,
+          47.06086834,
+          "Burgdorf",
+          "3",
+          "ch:1:sloid:8005:2:3"
+        ],
+        [
+          7.6636265,
+          47.10538755,
+          "Wynigen",
+          "2",
+          "ch:1:sloid:8006:2:2"
+        ],
+        [
+          7.70069998,
+          47.18773976,
+          "Herzogenbuchsee",
+          "2",
+          "ch:1:sloid:8008:2:2"
+        ],
+        [
+          7.78398279,
+          47.21710858,
+          "Langenthal",
+          "3",
+          "ch:1:sloid:8100:2:3"
+        ],
+        [
+          7.90805809,
+          47.3521954,
+          "Olten",
+          "9",
+          "ch:1:sloid:218:5:9"
+        ]
+      ],
+      "beforeAdmitted": true,
+      "afterAdmitted": true,
+      "addedSegments": []
+    },
+    {
+      "id": "58eb8f1d6675dbf25c925f9f",
+      "routeId": "91-17-B-j26-1",
+      "agencyId": "33",
+      "line": "IR17",
+      "directionId": "1",
+      "stops": [
+        [
+          7.90821081,
+          47.35253621,
+          "Olten",
+          "10",
+          "ch:1:sloid:218:6:10"
+        ],
+        [
+          7.78391092,
+          47.21698045,
+          "Langenthal",
+          "2",
+          "ch:1:sloid:8100:2:2"
+        ],
+        [
+          7.70074489,
+          47.18756272,
+          "Herzogenbuchsee",
+          "1",
+          "ch:1:sloid:8008:1:1"
+        ],
+        [
+          7.66366244,
+          47.10532029,
+          "Wynigen",
+          "1",
+          "ch:1:sloid:8006:1:1"
+        ],
+        [
+          7.62177399,
+          47.06081326,
+          "Burgdorf",
+          "2",
+          "ch:1:sloid:8005:2:2"
+        ],
+        [
+          7.43757445,
+          46.94892921,
+          "Bern",
+          "9",
+          "ch:1:sloid:7000:5:9"
+        ]
+      ],
+      "beforeAdmitted": true,
+      "afterAdmitted": true,
+      "addedSegments": []
+    },
+    {
+      "id": "02ab5cdb1a7f5126d533d67e",
+      "routeId": "91-17-B-j26-1",
+      "agencyId": "33",
+      "line": "IR17",
+      "directionId": "1",
+      "stops": [
+        [
+          7.90821081,
+          47.35253621,
+          "Olten",
+          "10",
+          "ch:1:sloid:218:6:10"
+        ],
+        [
+          7.78391092,
+          47.21698045,
+          "Langenthal",
+          "2",
+          "ch:1:sloid:8100:2:2"
+        ],
+        [
+          7.70074489,
+          47.18756272,
+          "Herzogenbuchsee",
+          "1",
+          "ch:1:sloid:8008:1:1"
+        ],
+        [
+          7.66366244,
+          47.10532029,
+          "Wynigen",
+          "1",
+          "ch:1:sloid:8006:1:1"
+        ],
+        [
+          7.62177399,
+          47.06081326,
+          "Burgdorf",
+          "2",
+          "ch:1:sloid:8005:2:2"
+        ],
+        [
+          7.43770919,
+          46.94929102,
+          "Bern",
+          "12D-F",
+          "ch:1:sloid:7000:6:32"
+        ]
+      ],
+      "beforeAdmitted": true,
+      "afterAdmitted": true,
+      "addedSegments": []
+    },
+    {
+      "id": "954a8ecaac5842be009a0c00",
+      "routeId": "91-17-B-j26-1",
+      "agencyId": "33",
+      "line": "IR17",
+      "directionId": "1",
+      "stops": [
+        [
+          7.90845335,
+          47.35263359,
+          "Olten",
+          "12",
+          "ch:1:sloid:218:7:12"
+        ],
+        [
+          7.78391092,
+          47.21698045,
+          "Langenthal",
+          "2",
+          "ch:1:sloid:8100:2:2"
+        ],
+        [
+          7.70074489,
+          47.18756272,
+          "Herzogenbuchsee",
+          "1",
+          "ch:1:sloid:8008:1:1"
+        ],
+        [
+          7.66366244,
+          47.10532029,
+          "Wynigen",
+          "1",
+          "ch:1:sloid:8006:1:1"
+        ],
+        [
+          7.6204894,
+          47.06081326,
+          "Burgdorf",
+          "1",
+          "ch:1:sloid:8005:1:1"
+        ],
+        [
+          7.43798767,
+          46.94841409,
+          "Bern",
+          "1A-D",
+          "ch:1:sloid:7000:1:1"
+        ]
+      ],
+      "beforeAdmitted": true,
+      "afterAdmitted": true,
+      "addedSegments": []
+    },
+    {
+      "id": "cee036862da2c56f8006f557",
+      "routeId": "91-17-B-j26-1",
+      "agencyId": "33",
+      "line": "IR17",
+      "directionId": "0",
+      "stops": [
+        [
+          7.43757445,
+          46.94892921,
+          "Bern",
+          "9",
+          "ch:1:sloid:7000:5:9"
+        ],
+        [
+          7.62177399,
+          47.06086834,
+          "Burgdorf",
+          "3",
+          "ch:1:sloid:8005:2:3"
+        ],
+        [
+          7.6636265,
+          47.10538755,
+          "Wynigen",
+          "2",
+          "ch:1:sloid:8006:2:2"
+        ],
+        [
+          7.70069998,
+          47.18773976,
+          "Herzogenbuchsee",
+          "2",
+          "ch:1:sloid:8008:2:2"
+        ],
+        [
+          7.78398279,
+          47.21710858,
+          "Langenthal",
+          "3",
+          "ch:1:sloid:8100:2:3"
+        ],
+        [
+          7.90821081,
+          47.35253621,
+          "Olten",
+          "10",
+          "ch:1:sloid:218:6:10"
+        ]
+      ],
+      "beforeAdmitted": true,
+      "afterAdmitted": true,
+      "addedSegments": []
+    },
+    {
+      "id": "85d6f4f66eb1a84e1c0af5ff",
+      "routeId": "91-17-B-j26-1",
+      "agencyId": "33",
+      "line": "IR17",
+      "directionId": "1",
+      "stops": [
+        [
+          7.90805809,
+          47.3521954,
+          "Olten",
+          "9",
+          "ch:1:sloid:218:5:9"
+        ],
+        [
+          7.78391092,
+          47.21698045,
+          "Langenthal",
+          "2",
+          "ch:1:sloid:8100:2:2"
+        ],
+        [
+          7.70074489,
+          47.18756272,
+          "Herzogenbuchsee",
+          "1",
+          "ch:1:sloid:8008:1:1"
+        ],
+        [
+          7.66366244,
+          47.10532029,
+          "Wynigen",
+          "1",
+          "ch:1:sloid:8006:1:1"
+        ],
+        [
+          7.62177399,
+          47.06081326,
+          "Burgdorf",
+          "2",
+          "ch:1:sloid:8005:2:2"
+        ],
+        [
+          7.43757445,
+          46.94892921,
+          "Bern",
+          "9",
+          "ch:1:sloid:7000:5:9"
+        ]
+      ],
+      "beforeAdmitted": true,
+      "afterAdmitted": true,
+      "addedSegments": []
+    },
+    {
+      "id": "bd4e8c3487c9193753744499",
+      "routeId": "91-17-B-j26-1",
+      "agencyId": "33",
+      "line": "IR17",
+      "directionId": "0",
+      "stops": [
+        [
+          7.43757445,
+          46.94892921,
+          "Bern",
+          "9",
+          "ch:1:sloid:7000:5:9"
+        ],
+        [
+          7.62177399,
+          47.06086834,
+          "Burgdorf",
+          "3",
+          "ch:1:sloid:8005:2:3"
+        ],
+        [
+          7.6636265,
+          47.10538755,
+          "Wynigen",
+          "2",
+          "ch:1:sloid:8006:2:2"
+        ],
+        [
+          7.70069998,
+          47.18773976,
+          "Herzogenbuchsee",
+          "2",
+          "ch:1:sloid:8008:2:2"
+        ],
+        [
+          7.78398279,
+          47.21710858,
+          "Langenthal",
+          "3",
+          "ch:1:sloid:8100:2:3"
+        ],
+        [
+          7.90805809,
+          47.3521954,
+          "Olten",
+          "9",
+          "ch:1:sloid:218:5:9"
+        ]
+      ],
+      "beforeAdmitted": true,
+      "afterAdmitted": true,
+      "addedSegments": []
+    },
+    {
+      "id": "2f9b0e8dfd79358c3648a0e4",
+      "routeId": "91-17-B-j26-1",
+      "agencyId": "33",
+      "line": "IR17",
+      "directionId": "0",
+      "stops": [
+        [
+          7.43783496,
+          46.94845702,
+          "Bern",
+          "2",
+          "ch:1:sloid:7000:1:2"
+        ],
+        [
+          7.62177399,
+          47.06086834,
+          "Burgdorf",
+          "3",
+          "ch:1:sloid:8005:2:3"
+        ],
+        [
+          7.6636265,
+          47.10538755,
+          "Wynigen",
+          "2",
+          "ch:1:sloid:8006:2:2"
+        ],
+        [
+          7.70069998,
+          47.18773976,
+          "Herzogenbuchsee",
+          "2",
+          "ch:1:sloid:8008:2:2"
+        ],
+        [
+          7.78398279,
+          47.21710858,
+          "Langenthal",
+          "3",
+          "ch:1:sloid:8100:2:3"
+        ],
+        [
+          7.90805809,
+          47.3521954,
+          "Olten",
+          "9",
+          "ch:1:sloid:218:5:9"
+        ]
+      ],
+      "beforeAdmitted": true,
+      "afterAdmitted": true,
+      "addedSegments": []
+    },
+    {
+      "id": "7495e2769d6a3a8406cee4bc",
+      "routeId": "91-17-B-j26-1",
+      "agencyId": "33",
+      "line": "IR17",
+      "directionId": "0",
+      "stops": [
+        [
+          7.43778106,
+          46.9492113,
+          "Bern",
+          "12A-C",
+          "ch:1:sloid:7000_gen:ch:1:sloid:7000:6:12_pf:12A-C"
+        ],
+        [
+          7.62177399,
+          47.06086834,
+          "Burgdorf",
+          "3",
+          "ch:1:sloid:8005:2:3"
+        ],
+        [
+          7.6636265,
+          47.10538755,
+          "Wynigen",
+          "2",
+          "ch:1:sloid:8006:2:2"
+        ],
+        [
+          7.70069998,
+          47.18773976,
+          "Herzogenbuchsee",
+          "2",
+          "ch:1:sloid:8008:2:2"
+        ],
+        [
+          7.78398279,
+          47.21710858,
+          "Langenthal",
+          "3",
+          "ch:1:sloid:8100:2:3"
+        ],
+        [
+          7.90832759,
+          47.35252404,
+          "Olten",
+          "11",
+          "ch:1:sloid:218:6:11"
+        ]
+      ],
+      "beforeAdmitted": true,
+      "afterAdmitted": true,
+      "addedSegments": []
+    },
+    {
+      "id": "0a5ddfd4cf99cbec8a5ffa87",
+      "routeId": "91-17-B-j26-1",
+      "agencyId": "33",
+      "line": "IR17",
+      "directionId": "0",
+      "stops": [
+        [
+          7.43770919,
+          46.94929102,
+          "Bern",
+          "12D-F",
+          "ch:1:sloid:7000:6:32"
+        ],
+        [
+          7.62177399,
+          47.06086834,
+          "Burgdorf",
+          "3",
+          "ch:1:sloid:8005:2:3"
+        ],
+        [
+          7.6636265,
+          47.10538755,
+          "Wynigen",
+          "2",
+          "ch:1:sloid:8006:2:2"
+        ],
+        [
+          7.70069998,
+          47.18773976,
+          "Herzogenbuchsee",
+          "2",
+          "ch:1:sloid:8008:2:2"
+        ],
+        [
+          7.78398279,
+          47.21710858,
+          "Langenthal",
+          "3",
+          "ch:1:sloid:8100:2:3"
+        ],
+        [
+          7.90821081,
+          47.35253621,
+          "Olten",
+          "10",
+          "ch:1:sloid:218:6:10"
+        ]
+      ],
+      "beforeAdmitted": true,
+      "afterAdmitted": true,
+      "addedSegments": []
+    },
+    {
+      "id": "36655636d2578b41e73319d2",
+      "routeId": "91-17-B-j26-1",
+      "agencyId": "33",
+      "line": "IR17",
+      "directionId": "1",
+      "stops": [
+        [
+          7.90832759,
+          47.35252404,
+          "Olten",
+          "11",
+          "ch:1:sloid:218:6:11"
+        ],
+        [
+          7.78391092,
+          47.21698045,
+          "Langenthal",
+          "2",
+          "ch:1:sloid:8100:2:2"
+        ],
+        [
+          7.70074489,
+          47.18756272,
+          "Herzogenbuchsee",
+          "1",
+          "ch:1:sloid:8008:1:1"
+        ],
+        [
+          7.66366244,
+          47.10532029,
+          "Wynigen",
+          "1",
+          "ch:1:sloid:8006:1:1"
+        ],
+        [
+          7.6204894,
+          47.06081326,
+          "Burgdorf",
+          "1",
+          "ch:1:sloid:8005:1:1"
+        ],
+        [
+          7.43783496,
+          46.94845702,
+          "Bern",
+          "2",
+          "ch:1:sloid:7000:1:2"
+        ]
+      ],
+      "beforeAdmitted": true,
+      "afterAdmitted": true,
+      "addedSegments": []
+    },
+    {
+      "id": "f8d64bd9c0c4f1994198d555",
+      "routeId": "91-17-B-j26-1",
+      "agencyId": "33",
+      "line": "IR17",
+      "directionId": "1",
+      "stops": [
+        [
+          7.90845335,
+          47.35263359,
+          "Olten",
+          "12",
+          "ch:1:sloid:218:7:12"
+        ],
+        [
+          7.78391092,
+          47.21698045,
+          "Langenthal",
+          "2",
+          "ch:1:sloid:8100:2:2"
+        ],
+        [
+          7.70074489,
+          47.18756272,
+          "Herzogenbuchsee",
+          "1",
+          "ch:1:sloid:8008:1:1"
+        ],
+        [
+          7.66366244,
+          47.10532029,
+          "Wynigen",
+          "1",
+          "ch:1:sloid:8006:1:1"
+        ],
+        [
+          7.6204894,
+          47.06081326,
+          "Burgdorf",
+          "1",
+          "ch:1:sloid:8005:1:1"
+        ],
+        [
+          7.43783496,
+          46.94845702,
+          "Bern",
+          "2",
+          "ch:1:sloid:7000:1:2"
+        ]
+      ],
+      "beforeAdmitted": true,
+      "afterAdmitted": true,
+      "addedSegments": []
+    },
+    {
+      "id": "efc9f8cce15d547e61b02e28",
+      "routeId": "91-17-B-j26-1",
+      "agencyId": "33",
+      "line": "IR17",
+      "directionId": "1",
+      "stops": [
+        [
+          7.90805809,
+          47.3521954,
+          "Olten",
+          "9",
+          "ch:1:sloid:218:5:9"
+        ],
+        [
+          7.78391092,
+          47.21698045,
+          "Langenthal",
+          "2",
+          "ch:1:sloid:8100:2:2"
+        ],
+        [
+          7.70074489,
+          47.18756272,
+          "Herzogenbuchsee",
+          "1",
+          "ch:1:sloid:8008:1:1"
+        ],
+        [
+          7.66366244,
+          47.10532029,
+          "Wynigen",
+          "1",
+          "ch:1:sloid:8006:1:1"
+        ],
+        [
+          7.62177399,
+          47.06081326,
+          "Burgdorf",
+          "2",
+          "ch:1:sloid:8005:2:2"
+        ],
+        [
+          7.43355898,
+          46.94830984,
+          "Bern",
+          "50",
+          "ch:1:sloid:7000:55:50"
+        ]
+      ],
+      "beforeAdmitted": false,
+      "afterAdmitted": true,
+      "addedSegments": [
+        {
+          "fromId": "ch:1:sloid:8005:2:2",
+          "toId": "ch:1:sloid:7000:55:50",
+          "path": [
+            [
+              7.621774,
+              47.0608133
+            ],
+            [
+              7.6217,
+              47.060698
+            ],
+            [
+              7.621713,
+              47.060815
+            ],
+            [
+              7.615562,
+              47.061181
+            ],
+            [
+              7.614282,
+              47.061389
+            ],
+            [
+              7.606886,
+              47.063008
+            ],
+            [
+              7.605486,
+              47.063258
+            ],
+            [
+              7.587637,
+              47.065019
+            ],
+            [
+              7.585929,
+              47.065043
+            ],
+            [
+              7.584252,
+              47.064822
+            ],
+            [
+              7.582798,
+              47.064404
+            ],
+            [
+              7.581365,
+              47.063729
+            ],
+            [
+              7.581329,
+              47.063759
+            ],
+            [
+              7.581365,
+              47.063729
+            ],
+            [
+              7.574746,
+              47.059917
+            ],
+            [
+              7.574789,
+              47.059883
+            ],
+            [
+              7.574746,
+              47.059917
+            ],
+            [
+              7.569802,
+              47.057088
+            ],
+            [
+              7.56826,
+              47.056401
+            ],
+            [
+              7.545448,
+              47.049512
+            ],
+            [
+              7.545416,
+              47.049562
+            ],
+            [
+              7.545448,
+              47.049512
+            ],
+            [
+              7.538102,
+              47.0473
+            ],
+            [
+              7.536979,
+              47.046834
+            ],
+            [
+              7.536077,
+              47.04631
+            ],
+            [
+              7.534927,
+              47.04533
+            ],
+            [
+              7.527953,
+              47.037785
+            ],
+            [
+              7.527064,
+              47.036786
+            ],
+            [
+              7.526567,
+              47.036052
+            ],
+            [
+              7.526211,
+              47.03528
+            ],
+            [
+              7.525921,
+              47.034232
+            ],
+            [
+              7.525046,
+              47.031418
+            ],
+            [
+              7.523534,
+              47.028398
+            ],
+            [
+              7.522577,
+              47.026345
+            ],
+            [
+              7.521574,
+              47.024586
+            ],
+            [
+              7.512598,
+              47.010974
+            ],
+            [
+              7.511517,
+              47.009534
+            ],
+            [
+              7.510375,
+              47.00822
+            ],
+            [
+              7.509118,
+              47.006956
+            ],
+            [
+              7.507751,
+              47.005746
+            ],
+            [
+              7.50546,
+              47.004011
+            ],
+            [
+              7.502943,
+              47.002429
+            ],
+            [
+              7.500224,
+              47.001014
+            ],
+            [
+              7.497438,
+              46.999821
+            ],
+            [
+              7.494748,
+              46.998877
+            ],
+            [
+              7.491954,
+              46.998088
+            ],
+            [
+              7.48958,
+              46.997556
+            ],
+            [
+              7.483626,
+              46.996429
+            ],
+            [
+              7.47959,
+              46.995345
+            ],
+            [
+              7.477245,
+              46.994532
+            ],
+            [
+              7.474991,
+              46.993606
+            ],
+            [
+              7.472839,
+              46.992573
+            ],
+            [
+              7.470702,
+              46.991378
+            ],
+            [
+              7.468804,
+              46.990134
+            ],
+            [
+              7.467569,
+              46.989083
+            ],
+            [
+              7.466509,
+              46.987842
+            ],
+            [
+              7.465739,
+              46.986504
+            ],
+            [
+              7.465277,
+              46.985102
+            ],
+            [
+              7.465135,
+              46.983577
+            ],
+            [
+              7.465357,
+              46.982057
+            ],
+            [
+              7.465923,
+              46.98058
+            ],
+            [
+              7.46596,
+              46.980589
+            ],
+            [
+              7.465923,
+              46.98058
+            ],
+            [
+              7.470234,
+              46.972849
+            ],
+            [
+              7.470422,
+              46.972142
+            ],
+            [
+              7.470431,
+              46.971513
+            ],
+            [
+              7.470266,
+              46.970803
+            ],
+            [
+              7.469972,
+              46.970198
+            ],
+            [
+              7.470071,
+              46.970169
+            ],
+            [
+              7.469972,
+              46.970198
+            ],
+            [
+              7.46924,
+              46.969348
+            ],
+            [
+              7.468316,
+              46.968711
+            ],
+            [
+              7.4672,
+              46.968241
+            ],
+            [
+              7.465487,
+              46.967816
+            ],
+            [
+              7.465483,
+              46.967824
+            ],
+            [
+              7.465487,
+              46.967816
+            ],
+            [
+              7.460774,
+              46.966711
+            ],
+            [
+              7.460813,
+              46.966632
+            ],
+            [
+              7.460774,
+              46.966711
+            ],
+            [
+              7.46029,
+              46.966596
+            ],
+            [
+              7.451745,
+              46.964523
+            ],
+            [
+              7.448704,
+              46.963673
+            ],
+            [
+              7.447217,
+              46.963104
+            ],
+            [
+              7.44607,
+              46.962366
+            ],
+            [
+              7.443934,
+              46.960208
+            ],
+            [
+              7.44333,
+              46.95941
+            ],
+            [
+              7.442972,
+              46.958454
+            ],
+            [
+              7.442844,
+              46.956118
+            ],
+            [
+              7.442585,
+              46.955238
+            ],
+            [
+              7.439723,
+              46.950113
+            ],
+            [
+              7.439325,
+              46.949649
+            ],
+            [
+              7.438694,
+              46.949225
+            ],
+            [
+              7.439136,
+              46.948831
+            ],
+            [
+              7.438694,
+              46.949225
+            ],
+            [
+              7.43793,
+              46.948857
+            ],
+            [
+              7.437213,
+              46.948635
+            ],
+            [
+              7.4336934,
+              46.9479756
+            ],
+            [
+              7.433559,
+              46.9483098
+            ]
+          ],
+          "geometrySha256": "b82216bfbcc18b155420e612822f02e8df9d3ffc8f9bbd3fda689e53ea500823"
+        }
+      ]
+    },
+    {
+      "id": "fc3cc4254124869abf598f98",
+      "routeId": "91-17-B-j26-1",
+      "agencyId": "33",
+      "line": "IR17",
+      "directionId": "0",
+      "stops": [
+        [
+          7.43798767,
+          46.94841409,
+          "Bern",
+          "1A-D",
+          "ch:1:sloid:7000:1:1"
+        ],
+        [
+          7.62177399,
+          47.06086834,
+          "Burgdorf",
+          "3",
+          "ch:1:sloid:8005:2:3"
+        ],
+        [
+          7.6636265,
+          47.10538755,
+          "Wynigen",
+          "2",
+          "ch:1:sloid:8006:2:2"
+        ],
+        [
+          7.70069998,
+          47.18773976,
+          "Herzogenbuchsee",
+          "2",
+          "ch:1:sloid:8008:2:2"
+        ],
+        [
+          7.78398279,
+          47.21710858,
+          "Langenthal",
+          "3",
+          "ch:1:sloid:8100:2:3"
+        ],
+        [
+          7.90832759,
+          47.35252404,
+          "Olten",
+          "11",
+          "ch:1:sloid:218:6:11"
+        ]
+      ],
+      "beforeAdmitted": true,
+      "afterAdmitted": true,
+      "addedSegments": []
+    },
+    {
+      "id": "26aca07ca3f345d19b9d7d79",
+      "routeId": "91-17-B-j26-1",
+      "agencyId": "33",
+      "line": "IR17",
+      "directionId": "1",
+      "stops": [
+        [
+          7.90821081,
+          47.35253621,
+          "Olten",
+          "10",
+          "ch:1:sloid:218:6:10"
+        ],
+        [
+          7.78391092,
+          47.21698045,
+          "Langenthal",
+          "2",
+          "ch:1:sloid:8100:2:2"
+        ],
+        [
+          7.70074489,
+          47.18756272,
+          "Herzogenbuchsee",
+          "1",
+          "ch:1:sloid:8008:1:1"
+        ],
+        [
+          7.66366244,
+          47.10532029,
+          "Wynigen",
+          "1",
+          "ch:1:sloid:8006:1:1"
+        ],
+        [
+          7.62177399,
+          47.06081326,
+          "Burgdorf",
+          "2",
+          "ch:1:sloid:8005:2:2"
+        ],
+        [
+          7.43355898,
+          46.94830984,
+          "Bern",
+          "50",
+          "ch:1:sloid:7000:55:50"
+        ]
+      ],
+      "beforeAdmitted": false,
+      "afterAdmitted": true,
+      "addedSegments": [
+        {
+          "fromId": "ch:1:sloid:8005:2:2",
+          "toId": "ch:1:sloid:7000:55:50",
+          "path": [
+            [
+              7.621774,
+              47.0608133
+            ],
+            [
+              7.6217,
+              47.060698
+            ],
+            [
+              7.621713,
+              47.060815
+            ],
+            [
+              7.615562,
+              47.061181
+            ],
+            [
+              7.614282,
+              47.061389
+            ],
+            [
+              7.606886,
+              47.063008
+            ],
+            [
+              7.605486,
+              47.063258
+            ],
+            [
+              7.587637,
+              47.065019
+            ],
+            [
+              7.585929,
+              47.065043
+            ],
+            [
+              7.584252,
+              47.064822
+            ],
+            [
+              7.582798,
+              47.064404
+            ],
+            [
+              7.581365,
+              47.063729
+            ],
+            [
+              7.581329,
+              47.063759
+            ],
+            [
+              7.581365,
+              47.063729
+            ],
+            [
+              7.574746,
+              47.059917
+            ],
+            [
+              7.574789,
+              47.059883
+            ],
+            [
+              7.574746,
+              47.059917
+            ],
+            [
+              7.569802,
+              47.057088
+            ],
+            [
+              7.56826,
+              47.056401
+            ],
+            [
+              7.545448,
+              47.049512
+            ],
+            [
+              7.545416,
+              47.049562
+            ],
+            [
+              7.545448,
+              47.049512
+            ],
+            [
+              7.538102,
+              47.0473
+            ],
+            [
+              7.536979,
+              47.046834
+            ],
+            [
+              7.536077,
+              47.04631
+            ],
+            [
+              7.534927,
+              47.04533
+            ],
+            [
+              7.527953,
+              47.037785
+            ],
+            [
+              7.527064,
+              47.036786
+            ],
+            [
+              7.526567,
+              47.036052
+            ],
+            [
+              7.526211,
+              47.03528
+            ],
+            [
+              7.525921,
+              47.034232
+            ],
+            [
+              7.525046,
+              47.031418
+            ],
+            [
+              7.523534,
+              47.028398
+            ],
+            [
+              7.522577,
+              47.026345
+            ],
+            [
+              7.521574,
+              47.024586
+            ],
+            [
+              7.512598,
+              47.010974
+            ],
+            [
+              7.511517,
+              47.009534
+            ],
+            [
+              7.510375,
+              47.00822
+            ],
+            [
+              7.509118,
+              47.006956
+            ],
+            [
+              7.507751,
+              47.005746
+            ],
+            [
+              7.50546,
+              47.004011
+            ],
+            [
+              7.502943,
+              47.002429
+            ],
+            [
+              7.500224,
+              47.001014
+            ],
+            [
+              7.497438,
+              46.999821
+            ],
+            [
+              7.494748,
+              46.998877
+            ],
+            [
+              7.491954,
+              46.998088
+            ],
+            [
+              7.48958,
+              46.997556
+            ],
+            [
+              7.483626,
+              46.996429
+            ],
+            [
+              7.47959,
+              46.995345
+            ],
+            [
+              7.477245,
+              46.994532
+            ],
+            [
+              7.474991,
+              46.993606
+            ],
+            [
+              7.472839,
+              46.992573
+            ],
+            [
+              7.470702,
+              46.991378
+            ],
+            [
+              7.468804,
+              46.990134
+            ],
+            [
+              7.467569,
+              46.989083
+            ],
+            [
+              7.466509,
+              46.987842
+            ],
+            [
+              7.465739,
+              46.986504
+            ],
+            [
+              7.465277,
+              46.985102
+            ],
+            [
+              7.465135,
+              46.983577
+            ],
+            [
+              7.465357,
+              46.982057
+            ],
+            [
+              7.465923,
+              46.98058
+            ],
+            [
+              7.46596,
+              46.980589
+            ],
+            [
+              7.465923,
+              46.98058
+            ],
+            [
+              7.470234,
+              46.972849
+            ],
+            [
+              7.470422,
+              46.972142
+            ],
+            [
+              7.470431,
+              46.971513
+            ],
+            [
+              7.470266,
+              46.970803
+            ],
+            [
+              7.469972,
+              46.970198
+            ],
+            [
+              7.470071,
+              46.970169
+            ],
+            [
+              7.469972,
+              46.970198
+            ],
+            [
+              7.46924,
+              46.969348
+            ],
+            [
+              7.468316,
+              46.968711
+            ],
+            [
+              7.4672,
+              46.968241
+            ],
+            [
+              7.465487,
+              46.967816
+            ],
+            [
+              7.465483,
+              46.967824
+            ],
+            [
+              7.465487,
+              46.967816
+            ],
+            [
+              7.460774,
+              46.966711
+            ],
+            [
+              7.460813,
+              46.966632
+            ],
+            [
+              7.460774,
+              46.966711
+            ],
+            [
+              7.46029,
+              46.966596
+            ],
+            [
+              7.451745,
+              46.964523
+            ],
+            [
+              7.448704,
+              46.963673
+            ],
+            [
+              7.447217,
+              46.963104
+            ],
+            [
+              7.44607,
+              46.962366
+            ],
+            [
+              7.443934,
+              46.960208
+            ],
+            [
+              7.44333,
+              46.95941
+            ],
+            [
+              7.442972,
+              46.958454
+            ],
+            [
+              7.442844,
+              46.956118
+            ],
+            [
+              7.442585,
+              46.955238
+            ],
+            [
+              7.439723,
+              46.950113
+            ],
+            [
+              7.439325,
+              46.949649
+            ],
+            [
+              7.438694,
+              46.949225
+            ],
+            [
+              7.439136,
+              46.948831
+            ],
+            [
+              7.438694,
+              46.949225
+            ],
+            [
+              7.43793,
+              46.948857
+            ],
+            [
+              7.437213,
+              46.948635
+            ],
+            [
+              7.4336934,
+              46.9479756
+            ],
+            [
+              7.433559,
+              46.9483098
+            ]
+          ],
+          "geometrySha256": "b82216bfbcc18b155420e612822f02e8df9d3ffc8f9bbd3fda689e53ea500823"
+        }
+      ]
+    },
+    {
+      "id": "cceabdb320a7b185db055965",
+      "routeId": "91-17-B-j26-1",
+      "agencyId": "33",
+      "line": "IR17",
+      "directionId": "1",
+      "stops": [
+        [
+          7.90805809,
+          47.3521954,
+          "Olten",
+          "9",
+          "ch:1:sloid:218:5:9"
+        ],
+        [
+          7.78391092,
+          47.21698045,
+          "Langenthal",
+          "2",
+          "ch:1:sloid:8100:2:2"
+        ],
+        [
+          7.70074489,
+          47.18756272,
+          "Herzogenbuchsee",
+          "1",
+          "ch:1:sloid:8008:1:1"
+        ],
+        [
+          7.66366244,
+          47.10532029,
+          "Wynigen",
+          "1",
+          "ch:1:sloid:8006:1:1"
+        ],
+        [
+          7.6204894,
+          47.06081326,
+          "Burgdorf",
+          "1",
+          "ch:1:sloid:8005:1:1"
+        ],
+        [
+          7.43814038,
+          46.94846315,
+          "Bern",
+          "1",
+          "ch:1:sloid:7000:1:21"
+        ]
+      ],
+      "beforeAdmitted": true,
+      "afterAdmitted": true,
+      "addedSegments": []
+    },
+    {
+      "id": "0d9e85bf802427bb42116a00",
+      "routeId": "91-17-B-j26-1",
+      "agencyId": "33",
+      "line": "IR17",
+      "directionId": "0",
+      "stops": [
+        [
+          7.62217824,
+          47.06091729,
+          "Burgdorf",
+          "4",
+          "ch:1:sloid:8005:3:4"
+        ],
+        [
+          7.70069998,
+          47.18773976,
+          "Herzogenbuchsee",
+          "2",
+          "ch:1:sloid:8008:2:2"
+        ],
+        [
+          7.78398279,
+          47.21710858,
+          "Langenthal",
+          "3",
+          "ch:1:sloid:8100:2:3"
+        ],
+        [
+          7.90794131,
+          47.35220757,
+          "Olten",
+          "8",
+          "ch:1:sloid:218:5:8"
+        ]
+      ],
+      "beforeAdmitted": true,
+      "afterAdmitted": true,
+      "addedSegments": []
+    },
+    {
+      "id": "71e35516aac57cc235ce50fc",
+      "routeId": "91-17-B-j26-1",
+      "agencyId": "33",
+      "line": "IR17",
+      "directionId": "0",
+      "stops": [
+        [
+          7.43720614,
+          46.94850608,
+          "Bern",
+          "5",
+          "ch:1:sloid:7000:3:5"
+        ],
+        [
+          7.62177399,
+          47.06086834,
+          "Burgdorf",
+          "3",
+          "ch:1:sloid:8005:2:3"
+        ],
+        [
+          7.6636265,
+          47.10538755,
+          "Wynigen",
+          "2",
+          "ch:1:sloid:8006:2:2"
+        ],
+        [
+          7.70069998,
+          47.18773976,
+          "Herzogenbuchsee",
+          "2",
+          "ch:1:sloid:8008:2:2"
+        ],
+        [
+          7.78398279,
+          47.21710858,
+          "Langenthal",
+          "3",
+          "ch:1:sloid:8100:2:3"
+        ],
+        [
+          7.90832759,
+          47.35252404,
+          "Olten",
+          "11",
+          "ch:1:sloid:218:6:11"
+        ]
+      ],
+      "beforeAdmitted": true,
+      "afterAdmitted": true,
+      "addedSegments": []
+    },
+    {
+      "id": "29aedca2c8f9aec5a45a2ce0",
+      "routeId": "91-17-B-j26-1",
+      "agencyId": "33",
+      "line": "IR17",
+      "directionId": "1",
+      "stops": [
+        [
+          7.90845335,
+          47.35263359,
+          "Olten",
+          "12",
+          "ch:1:sloid:218:7:12"
+        ],
+        [
+          7.78391092,
+          47.21698045,
+          "Langenthal",
+          "2",
+          "ch:1:sloid:8100:2:2"
+        ],
+        [
+          7.70074489,
+          47.18756272,
+          "Herzogenbuchsee",
+          "1",
+          "ch:1:sloid:8008:1:1"
+        ],
+        [
+          7.6204894,
+          47.06081326,
+          "Burgdorf",
+          "1",
+          "ch:1:sloid:8005:1:1"
+        ]
+      ],
+      "beforeAdmitted": true,
+      "afterAdmitted": true,
+      "addedSegments": []
+    },
+    {
+      "id": "60bd92ff25cf5a93d2ce8a24",
+      "routeId": "91-17-B-j26-1",
+      "agencyId": "33",
+      "line": "IR17",
+      "directionId": "1",
+      "stops": [
+        [
+          7.90794131,
+          47.35220757,
+          "Olten",
+          "8",
+          "ch:1:sloid:218:5:8"
+        ],
+        [
+          7.78391092,
+          47.21698045,
+          "Langenthal",
+          "2",
+          "ch:1:sloid:8100:2:2"
+        ],
+        [
+          7.70074489,
+          47.18756272,
+          "Herzogenbuchsee",
+          "1",
+          "ch:1:sloid:8008:1:1"
+        ],
+        [
+          7.6204894,
+          47.06081326,
+          "Burgdorf",
+          "1",
+          "ch:1:sloid:8005:1:1"
+        ]
+      ],
+      "beforeAdmitted": true,
+      "afterAdmitted": true,
+      "addedSegments": []
+    },
+    {
+      "id": "7ed85ee1c75fde11531c2f35",
+      "routeId": "91-17-B-j26-1",
+      "agencyId": "33",
+      "line": "IR17",
+      "directionId": "1",
+      "stops": [
+        [
+          7.90845335,
+          47.35263359,
+          "Olten",
+          "12",
+          "ch:1:sloid:218:7:12"
+        ],
+        [
+          7.78391092,
+          47.21698045,
+          "Langenthal",
+          "2",
+          "ch:1:sloid:8100:2:2"
+        ],
+        [
+          7.70074489,
+          47.18756272,
+          "Herzogenbuchsee",
+          "1",
+          "ch:1:sloid:8008:1:1"
+        ],
+        [
+          7.66366244,
+          47.10532029,
+          "Wynigen",
+          "1",
+          "ch:1:sloid:8006:1:1"
+        ],
+        [
+          7.6204894,
+          47.06081326,
+          "Burgdorf",
+          "1",
+          "ch:1:sloid:8005:1:1"
+        ]
+      ],
+      "beforeAdmitted": true,
+      "afterAdmitted": true,
+      "addedSegments": []
+    },
+    {
+      "id": "77cf20a6965a81361235ed3b",
+      "routeId": "91-17-B-j26-1",
+      "agencyId": "33",
+      "line": "IR17",
+      "directionId": "0",
+      "stops": [
+        [
+          7.62217824,
+          47.06091729,
+          "Burgdorf",
+          "4",
+          "ch:1:sloid:8005:3:4"
+        ],
+        [
+          7.6636265,
+          47.10538755,
+          "Wynigen",
+          "2",
+          "ch:1:sloid:8006:2:2"
+        ],
+        [
+          7.70069998,
+          47.18773976,
+          "Herzogenbuchsee",
+          "2",
+          "ch:1:sloid:8008:2:2"
+        ],
+        [
+          7.78398279,
+          47.21710858,
+          "Langenthal",
+          "3",
+          "ch:1:sloid:8100:2:3"
+        ],
+        [
+          7.90805809,
+          47.3521954,
+          "Olten",
+          "9",
+          "ch:1:sloid:218:5:9"
+        ]
+      ],
+      "beforeAdmitted": true,
+      "afterAdmitted": true,
+      "addedSegments": []
+    },
+    {
+      "id": "5c926ec05c54bb47e7b06238",
+      "routeId": "91-17-B-j26-1",
+      "agencyId": "33",
+      "line": "IR17",
+      "directionId": "1",
+      "stops": [
+        [
+          7.90805809,
+          47.3521954,
+          "Olten",
+          "9",
+          "ch:1:sloid:218:5:9"
+        ],
+        [
+          7.78391092,
+          47.21698045,
+          "Langenthal",
+          "2",
+          "ch:1:sloid:8100:2:2"
+        ],
+        [
+          7.70074489,
+          47.18756272,
+          "Herzogenbuchsee",
+          "1",
+          "ch:1:sloid:8008:1:1"
+        ],
+        [
+          7.66366244,
+          47.10532029,
+          "Wynigen",
+          "1",
+          "ch:1:sloid:8006:1:1"
+        ],
+        [
+          7.62177399,
+          47.06081326,
+          "Burgdorf",
+          "2",
+          "ch:1:sloid:8005:2:2"
+        ],
+        [
+          7.43720614,
+          46.94850608,
+          "Bern",
+          "5",
+          "ch:1:sloid:7000:3:5"
+        ]
+      ],
+      "beforeAdmitted": true,
+      "afterAdmitted": true,
+      "addedSegments": []
+    },
+    {
+      "id": "1540baa7da2842eae92f23a7",
+      "routeId": "91-81-A-j26-1",
+      "agencyId": "11",
+      "line": "IC81",
+      "directionId": "0",
+      "stops": [
+        [
+          8.53683388,
+          47.37925288,
+          "Zürich HB",
+          "16",
+          "ch:1:sloid:3000:9:16"
+        ],
+        [
+          7.90805809,
+          47.3521954,
+          "Olten",
+          "9",
+          "ch:1:sloid:218:5:9"
+        ],
+        [
+          7.43677494,
+          46.94864099,
+          "Bern",
+          "8",
+          "ch:1:sloid:7000:4:8"
+        ],
+        [
+          7.63045172,
+          46.7541376,
+          "Thun",
+          "1",
+          "ch:1:sloid:7100:1:1"
+        ],
+        [
+          7.67977821,
+          46.68659749,
+          "Spiez",
+          "1",
+          "ch:1:sloid:7483:0:90840"
+        ],
+        [
+          7.85146423,
+          46.68262879,
+          "Interlaken West",
+          "1",
+          "ch:1:sloid:7493:0:470772"
+        ],
+        [
+          7.86973596,
+          46.69089863,
+          "Interlaken Ost",
+          "5",
+          "ch:1:sloid:7492:0:581416"
+        ]
+      ],
+      "beforeAdmitted": false,
+      "afterAdmitted": true,
+      "addedSegments": [
+        {
+          "fromId": "ch:1:sloid:7493:0:470772",
+          "toId": "ch:1:sloid:7492:0:581416",
+          "path": [
+            [
+              7.8514642,
+              46.6826288
+            ],
+            [
+              7.851453,
+              46.682623
+            ],
+            [
+              7.851334,
+              46.682636
+            ],
+            [
+              7.851765,
+              46.684501
+            ],
+            [
+              7.852129,
+              46.685269
+            ],
+            [
+              7.852541,
+              46.685727
+            ],
+            [
+              7.854233,
+              46.687096
+            ],
+            [
+              7.855851,
+              46.689747
+            ],
+            [
+              7.856299,
+              46.690188
+            ],
+            [
+              7.856894,
+              46.690538
+            ],
+            [
+              7.857846,
+              46.690828
+            ],
+            [
+              7.858882,
+              46.690904
+            ],
+            [
+              7.859525,
+              46.69083
+            ],
+            [
+              7.861252,
+              46.690416
+            ],
+            [
+              7.862419,
+              46.690334
+            ],
+            [
+              7.863973,
+              46.690473
+            ],
+            [
+              7.865713,
+              46.690854
+            ],
+            [
+              7.867794,
+              46.690751
+            ],
+            [
+              7.868937,
+              46.690837
+            ],
+            [
+              7.869736,
+              46.6908986
+            ]
+          ],
+          "geometrySha256": "b5ebb2aa66a3bbdfa9186cc18bd9446ce3dd4dce002b804270b85a80af62d060"
+        }
+      ]
+    },
+    {
+      "id": "3bf7f5e2c505642ad3270ba3",
+      "routeId": "91-81-A-j26-1",
+      "agencyId": "11",
+      "line": "IC81",
+      "directionId": "0",
+      "stops": [
+        [
+          8.53672608,
+          47.37920422,
+          "Zürich HB",
+          "15",
+          "ch:1:sloid:3000:8:15"
+        ],
+        [
+          7.90805809,
+          47.3521954,
+          "Olten",
+          "9",
+          "ch:1:sloid:218:5:9"
+        ],
+        [
+          7.43677494,
+          46.94864099,
+          "Bern",
+          "8",
+          "ch:1:sloid:7000:4:8"
+        ],
+        [
+          7.63017324,
+          46.75411913,
+          "Thun",
+          "3",
+          "ch:1:sloid:7100:2:3"
+        ],
+        [
+          7.67977821,
+          46.68659749,
+          "Spiez",
+          "1",
+          "ch:1:sloid:7483:0:90840"
+        ],
+        [
+          7.85146423,
+          46.68262879,
+          "Interlaken West",
+          "1",
+          "ch:1:sloid:7493:0:470772"
+        ],
+        [
+          7.86979884,
+          46.69105267,
+          "Interlaken Ost",
+          "7",
+          "ch:1:sloid:7492:0:460848"
+        ]
+      ],
+      "beforeAdmitted": false,
+      "afterAdmitted": true,
+      "addedSegments": [
+        {
+          "fromId": "ch:1:sloid:7493:0:470772",
+          "toId": "ch:1:sloid:7492:0:460848",
+          "path": [
+            [
+              7.8514642,
+              46.6826288
+            ],
+            [
+              7.851453,
+              46.682623
+            ],
+            [
+              7.851334,
+              46.682636
+            ],
+            [
+              7.851765,
+              46.684501
+            ],
+            [
+              7.852129,
+              46.685269
+            ],
+            [
+              7.852541,
+              46.685727
+            ],
+            [
+              7.854233,
+              46.687096
+            ],
+            [
+              7.855851,
+              46.689747
+            ],
+            [
+              7.856299,
+              46.690188
+            ],
+            [
+              7.856894,
+              46.690538
+            ],
+            [
+              7.857846,
+              46.690828
+            ],
+            [
+              7.858882,
+              46.690904
+            ],
+            [
+              7.859525,
+              46.69083
+            ],
+            [
+              7.861252,
+              46.690416
+            ],
+            [
+              7.862419,
+              46.690334
+            ],
+            [
+              7.863973,
+              46.690473
+            ],
+            [
+              7.865713,
+              46.690854
+            ],
+            [
+              7.867794,
+              46.690751
+            ],
+            [
+              7.868937,
+              46.690837
+            ],
+            [
+              7.8697988,
+              46.6910527
+            ]
+          ],
+          "geometrySha256": "730f652ecc1b73f5a06801067e7463f1e9dc9971efc0c0fe67a360b45cd3c977"
+        }
+      ]
+    },
+    {
+      "id": "60e6a4c38db163539fa1f2a5",
+      "routeId": "91-81-A-j26-1",
+      "agencyId": "11",
+      "line": "IC81",
+      "directionId": "0",
+      "stops": [
+        [
+          8.53672608,
+          47.37920422,
+          "Zürich HB",
+          "15",
+          "ch:1:sloid:3000:8:15"
+        ],
+        [
+          7.90805809,
+          47.3521954,
+          "Olten",
+          "9",
+          "ch:1:sloid:218:5:9"
+        ],
+        [
+          7.43677494,
+          46.94864099,
+          "Bern",
+          "8",
+          "ch:1:sloid:7000:4:8"
+        ],
+        [
+          7.63045172,
+          46.7541376,
+          "Thun",
+          "1",
+          "ch:1:sloid:7100:1:1"
+        ],
+        [
+          7.67977821,
+          46.68659749,
+          "Spiez",
+          "1",
+          "ch:1:sloid:7483:0:90840"
+        ],
+        [
+          7.85146423,
+          46.68262879,
+          "Interlaken West",
+          "1",
+          "ch:1:sloid:7493:0:470772"
+        ],
+        [
+          7.86979884,
+          46.69105267,
+          "Interlaken Ost",
+          "7",
+          "ch:1:sloid:7492:0:460848"
+        ]
+      ],
+      "beforeAdmitted": false,
+      "afterAdmitted": true,
+      "addedSegments": [
+        {
+          "fromId": "ch:1:sloid:7493:0:470772",
+          "toId": "ch:1:sloid:7492:0:460848",
+          "path": [
+            [
+              7.8514642,
+              46.6826288
+            ],
+            [
+              7.851453,
+              46.682623
+            ],
+            [
+              7.851334,
+              46.682636
+            ],
+            [
+              7.851765,
+              46.684501
+            ],
+            [
+              7.852129,
+              46.685269
+            ],
+            [
+              7.852541,
+              46.685727
+            ],
+            [
+              7.854233,
+              46.687096
+            ],
+            [
+              7.855851,
+              46.689747
+            ],
+            [
+              7.856299,
+              46.690188
+            ],
+            [
+              7.856894,
+              46.690538
+            ],
+            [
+              7.857846,
+              46.690828
+            ],
+            [
+              7.858882,
+              46.690904
+            ],
+            [
+              7.859525,
+              46.69083
+            ],
+            [
+              7.861252,
+              46.690416
+            ],
+            [
+              7.862419,
+              46.690334
+            ],
+            [
+              7.863973,
+              46.690473
+            ],
+            [
+              7.865713,
+              46.690854
+            ],
+            [
+              7.867794,
+              46.690751
+            ],
+            [
+              7.868937,
+              46.690837
+            ],
+            [
+              7.8697988,
+              46.6910527
+            ]
+          ],
+          "geometrySha256": "730f652ecc1b73f5a06801067e7463f1e9dc9971efc0c0fe67a360b45cd3c977"
+        }
+      ]
+    },
+    {
+      "id": "7450e899f29852bab16747b0",
+      "routeId": "91-81-A-j26-1",
+      "agencyId": "11",
+      "line": "IC81",
+      "directionId": "0",
+      "stops": [
+        [
+          8.53672608,
+          47.37920422,
+          "Zürich HB",
+          "15",
+          "ch:1:sloid:3000:8:15"
+        ],
+        [
+          7.90805809,
+          47.3521954,
+          "Olten",
+          "9",
+          "ch:1:sloid:218:5:9"
+        ],
+        [
+          7.43677494,
+          46.94864099,
+          "Bern",
+          "8",
+          "ch:1:sloid:7000:4:8"
+        ],
+        [
+          7.63045172,
+          46.7541376,
+          "Thun",
+          "1",
+          "ch:1:sloid:7100:1:1"
+        ],
+        [
+          7.67977821,
+          46.68659749,
+          "Spiez",
+          "1",
+          "ch:1:sloid:7483:0:90840"
+        ],
+        [
+          7.85146423,
+          46.68262879,
+          "Interlaken West",
+          "1",
+          "ch:1:sloid:7493:0:470772"
+        ],
+        [
+          7.86973596,
+          46.69089863,
+          "Interlaken Ost",
+          "5",
+          "ch:1:sloid:7492:0:581416"
+        ]
+      ],
+      "beforeAdmitted": false,
+      "afterAdmitted": true,
+      "addedSegments": [
+        {
+          "fromId": "ch:1:sloid:7493:0:470772",
+          "toId": "ch:1:sloid:7492:0:581416",
+          "path": [
+            [
+              7.8514642,
+              46.6826288
+            ],
+            [
+              7.851453,
+              46.682623
+            ],
+            [
+              7.851334,
+              46.682636
+            ],
+            [
+              7.851765,
+              46.684501
+            ],
+            [
+              7.852129,
+              46.685269
+            ],
+            [
+              7.852541,
+              46.685727
+            ],
+            [
+              7.854233,
+              46.687096
+            ],
+            [
+              7.855851,
+              46.689747
+            ],
+            [
+              7.856299,
+              46.690188
+            ],
+            [
+              7.856894,
+              46.690538
+            ],
+            [
+              7.857846,
+              46.690828
+            ],
+            [
+              7.858882,
+              46.690904
+            ],
+            [
+              7.859525,
+              46.69083
+            ],
+            [
+              7.861252,
+              46.690416
+            ],
+            [
+              7.862419,
+              46.690334
+            ],
+            [
+              7.863973,
+              46.690473
+            ],
+            [
+              7.865713,
+              46.690854
+            ],
+            [
+              7.867794,
+              46.690751
+            ],
+            [
+              7.868937,
+              46.690837
+            ],
+            [
+              7.869736,
+              46.6908986
+            ]
+          ],
+          "geometrySha256": "b5ebb2aa66a3bbdfa9186cc18bd9446ce3dd4dce002b804270b85a80af62d060"
+        }
+      ]
+    },
+    {
+      "id": "5b64e2169db21ed69f9479d2",
+      "routeId": "91-81-A-j26-1",
+      "agencyId": "11",
+      "line": "IC81",
+      "directionId": "0",
+      "stops": [
+        [
+          8.53667218,
+          47.37913122,
+          "Zürich HB",
+          "14",
+          "ch:1:sloid:3000:8:14"
+        ],
+        [
+          7.90805809,
+          47.3521954,
+          "Olten",
+          "9",
+          "ch:1:sloid:218:5:9"
+        ],
+        [
+          7.43677494,
+          46.94864099,
+          "Bern",
+          "8",
+          "ch:1:sloid:7000:4:8"
+        ],
+        [
+          7.63045172,
+          46.7541376,
+          "Thun",
+          "1",
+          "ch:1:sloid:7100:1:1"
+        ],
+        [
+          7.67977821,
+          46.68659749,
+          "Spiez",
+          "1",
+          "ch:1:sloid:7483:0:90840"
+        ],
+        [
+          7.85146423,
+          46.68262879,
+          "Interlaken West",
+          "1",
+          "ch:1:sloid:7493:0:470772"
+        ],
+        [
+          7.86979884,
+          46.69105267,
+          "Interlaken Ost",
+          "7",
+          "ch:1:sloid:7492:0:460848"
+        ]
+      ],
+      "beforeAdmitted": false,
+      "afterAdmitted": true,
+      "addedSegments": [
+        {
+          "fromId": "ch:1:sloid:7493:0:470772",
+          "toId": "ch:1:sloid:7492:0:460848",
+          "path": [
+            [
+              7.8514642,
+              46.6826288
+            ],
+            [
+              7.851453,
+              46.682623
+            ],
+            [
+              7.851334,
+              46.682636
+            ],
+            [
+              7.851765,
+              46.684501
+            ],
+            [
+              7.852129,
+              46.685269
+            ],
+            [
+              7.852541,
+              46.685727
+            ],
+            [
+              7.854233,
+              46.687096
+            ],
+            [
+              7.855851,
+              46.689747
+            ],
+            [
+              7.856299,
+              46.690188
+            ],
+            [
+              7.856894,
+              46.690538
+            ],
+            [
+              7.857846,
+              46.690828
+            ],
+            [
+              7.858882,
+              46.690904
+            ],
+            [
+              7.859525,
+              46.69083
+            ],
+            [
+              7.861252,
+              46.690416
+            ],
+            [
+              7.862419,
+              46.690334
+            ],
+            [
+              7.863973,
+              46.690473
+            ],
+            [
+              7.865713,
+              46.690854
+            ],
+            [
+              7.867794,
+              46.690751
+            ],
+            [
+              7.868937,
+              46.690837
+            ],
+            [
+              7.8697988,
+              46.6910527
+            ]
+          ],
+          "geometrySha256": "730f652ecc1b73f5a06801067e7463f1e9dc9971efc0c0fe67a360b45cd3c977"
+        }
+      ]
+    },
+    {
+      "id": "9df07aa333537211250e477a",
+      "routeId": "91-17-B-j26-1",
+      "agencyId": "33",
+      "line": "IR17",
+      "directionId": "1",
+      "stops": [
+        [
+          7.90805809,
+          47.3521954,
+          "Olten",
+          "9",
+          "ch:1:sloid:218:5:9"
+        ],
+        [
+          7.78391092,
+          47.21698045,
+          "Langenthal",
+          "2",
+          "ch:1:sloid:8100:2:2"
+        ],
+        [
+          7.70074489,
+          47.18756272,
+          "Herzogenbuchsee",
+          "1",
+          "ch:1:sloid:8008:1:1"
+        ],
+        [
+          7.66366244,
+          47.10532029,
+          "Wynigen",
+          "1",
+          "ch:1:sloid:8006:1:1"
+        ],
+        [
+          7.62177399,
+          47.06081326,
+          "Burgdorf",
+          "2",
+          "ch:1:sloid:8005:2:2"
+        ],
+        [
+          7.43814038,
+          46.94846315,
+          "Bern",
+          "1",
+          "ch:1:sloid:7000:1:21"
+        ]
+      ],
+      "beforeAdmitted": true,
+      "afterAdmitted": true,
+      "addedSegments": []
+    },
+    {
+      "id": "60dc8168449c2c0a266a5699",
+      "routeId": "91-17-B-j26-1",
+      "agencyId": "33",
+      "line": "IR17",
+      "directionId": "1",
+      "stops": [
+        [
+          7.90845335,
+          47.35263359,
+          "Olten",
+          "12",
+          "ch:1:sloid:218:7:12"
+        ],
+        [
+          7.78391092,
+          47.21698045,
+          "Langenthal",
+          "2",
+          "ch:1:sloid:8100:2:2"
+        ],
+        [
+          7.70074489,
+          47.18756272,
+          "Herzogenbuchsee",
+          "1",
+          "ch:1:sloid:8008:1:1"
+        ],
+        [
+          7.66366244,
+          47.10532029,
+          "Wynigen",
+          "1",
+          "ch:1:sloid:8006:1:1"
+        ],
+        [
+          7.62177399,
+          47.06081326,
+          "Burgdorf",
+          "2",
+          "ch:1:sloid:8005:2:2"
+        ],
+        [
+          7.43798767,
+          46.94841409,
+          "Bern",
+          "1A-D",
+          "ch:1:sloid:7000:1:1"
+        ]
+      ],
+      "beforeAdmitted": true,
+      "afterAdmitted": true,
+      "addedSegments": []
+    },
+    {
+      "id": "812d33d8cbb8f6c20d837ecf",
+      "routeId": "91-17-B-j26-1",
+      "agencyId": "33",
+      "line": "IR17",
+      "directionId": "1",
+      "stops": [
+        [
+          7.90845335,
+          47.35263359,
+          "Olten",
+          "12",
+          "ch:1:sloid:218:7:12"
+        ],
+        [
+          7.78391092,
+          47.21698045,
+          "Langenthal",
+          "2",
+          "ch:1:sloid:8100:2:2"
+        ],
+        [
+          7.70074489,
+          47.18756272,
+          "Herzogenbuchsee",
+          "1",
+          "ch:1:sloid:8008:1:1"
+        ],
+        [
+          7.66366244,
+          47.10532029,
+          "Wynigen",
+          "1",
+          "ch:1:sloid:8006:1:1"
+        ],
+        [
+          7.62177399,
+          47.06086834,
+          "Burgdorf",
+          "3",
+          "ch:1:sloid:8005:2:3"
+        ],
+        [
+          7.43798767,
+          46.94841409,
+          "Bern",
+          "1A-D",
+          "ch:1:sloid:7000:1:1"
+        ]
+      ],
+      "beforeAdmitted": true,
+      "afterAdmitted": true,
+      "addedSegments": []
+    }
+  ],
+  "days": [
+    {
+      "date": "2026-01-16",
+      "beforeAdmitted": 6845,
+      "admitted": 6845,
+      "addedJourneys": 0,
+      "addedPatterns": [],
+      "excludedJourneys": 186,
+      "excludedByRoute": {
+        "91-10-j26-1": 94,
+        "92-501-A-j26-1": 29,
+        "92-507-j26-1": 63
+      }
+    },
+    {
+      "date": "2026-01-18",
+      "beforeAdmitted": 5254,
+      "admitted": 5255,
+      "addedJourneys": 1,
+      "addedPatterns": [
+        {
+          "id": "efc9f8cce15d547e61b02e28",
+          "routeId": "91-17-B-j26-1",
+          "journeys": 1
+        }
+      ],
+      "excludedJourneys": 107,
+      "excludedByRoute": {
+        "91-10-j26-1": 103,
+        "92-N51-j26-1": 4
+      }
+    },
+    {
+      "date": "2026-04-03",
+      "beforeAdmitted": 5342,
+      "admitted": 5343,
+      "addedJourneys": 1,
+      "addedPatterns": [
+        {
+          "id": "26aca07ca3f345d19b9d7d79",
+          "routeId": "91-17-B-j26-1",
+          "journeys": 1
+        }
+      ],
+      "excludedJourneys": 107,
+      "excludedByRoute": {
+        "91-10-j26-1": 103,
+        "92-N51-j26-1": 4
+      }
+    },
+    {
+      "date": "2026-04-05",
+      "beforeAdmitted": 5605,
+      "admitted": 5606,
+      "addedJourneys": 1,
+      "addedPatterns": [
+        {
+          "id": "efc9f8cce15d547e61b02e28",
+          "routeId": "91-17-B-j26-1",
+          "journeys": 1
+        }
+      ],
+      "excludedJourneys": 124,
+      "excludedByRoute": {
+        "91-10-j26-1": 103,
+        "92-EV4-M-j26-1": 17,
+        "92-N51-j26-1": 4
+      }
+    },
+    {
+      "date": "2026-07-17",
+      "beforeAdmitted": 6994,
+      "admitted": 6994,
+      "addedJourneys": 0,
+      "addedPatterns": [],
+      "excludedJourneys": 133,
+      "excludedByRoute": {
+        "91-10-j26-1": 94,
+        "91-23-j26-1": 2,
+        "91-26-j26-1": 2,
+        "92-501-A-j26-1": 29,
+        "92-A01-T-j26-1": 6
+      }
+    },
+    {
+      "date": "2026-07-19",
+      "beforeAdmitted": 5419,
+      "admitted": 5420,
+      "addedJourneys": 1,
+      "addedPatterns": [
+        {
+          "id": "efc9f8cce15d547e61b02e28",
+          "routeId": "91-17-B-j26-1",
+          "journeys": 1
+        }
+      ],
+      "excludedJourneys": 103,
+      "excludedByRoute": {
+        "91-10-j26-1": 103
+      }
+    },
+    {
+      "date": "2026-08-01",
+      "beforeAdmitted": 5458,
+      "admitted": 5465,
+      "addedJourneys": 7,
+      "addedPatterns": [
+        {
+          "id": "1540baa7da2842eae92f23a7",
+          "routeId": "91-81-A-j26-1",
+          "journeys": 1
+        },
+        {
+          "id": "3bf7f5e2c505642ad3270ba3",
+          "routeId": "91-81-A-j26-1",
+          "journeys": 1
+        },
+        {
+          "id": "60e6a4c38db163539fa1f2a5",
+          "routeId": "91-81-A-j26-1",
+          "journeys": 3
+        },
+        {
+          "id": "7450e899f29852bab16747b0",
+          "routeId": "91-81-A-j26-1",
+          "journeys": 1
+        },
+        {
+          "id": "5b64e2169db21ed69f9479d2",
+          "routeId": "91-81-A-j26-1",
+          "journeys": 1
+        }
+      ],
+      "excludedJourneys": 101,
+      "excludedByRoute": {
+        "91-10-j26-1": 101
+      }
+    },
+    {
+      "date": "2026-09-04",
+      "beforeAdmitted": 7033,
+      "admitted": 7033,
+      "addedJourneys": 0,
+      "addedPatterns": [],
+      "excludedJourneys": 123,
+      "excludedByRoute": {
+        "91-10-j26-1": 94,
+        "92-501-A-j26-1": 29
+      }
+    },
+    {
+      "date": "2026-09-06",
+      "beforeAdmitted": 5695,
+      "admitted": 5695,
+      "addedJourneys": 0,
+      "addedPatterns": [],
+      "excludedJourneys": 124,
+      "excludedByRoute": {
+        "91-10-j26-1": 103,
+        "92-EV4-M-j26-1": 21
+      }
+    },
+    {
+      "date": "2026-10-23",
+      "beforeAdmitted": 7023,
+      "admitted": 7023,
+      "addedJourneys": 0,
+      "addedPatterns": [],
+      "excludedJourneys": 123,
+      "excludedByRoute": {
+        "91-10-j26-1": 94,
+        "92-501-A-j26-1": 29
+      }
+    },
+    {
+      "date": "2026-10-25",
+      "beforeAdmitted": 5423,
+      "admitted": 5424,
+      "addedJourneys": 1,
+      "addedPatterns": [
+        {
+          "id": "efc9f8cce15d547e61b02e28",
+          "routeId": "91-17-B-j26-1",
+          "journeys": 1
+        }
+      ],
+      "excludedJourneys": 103,
+      "excludedByRoute": {
+        "91-10-j26-1": 103
+      }
+    },
+    {
+      "date": "2026-12-11",
+      "beforeAdmitted": 6902,
+      "admitted": 6902,
+      "addedJourneys": 0,
+      "addedPatterns": [],
+      "excludedJourneys": 123,
+      "excludedByRoute": {
+        "91-10-j26-1": 94,
+        "92-501-A-j26-1": 29
+      }
+    }
+  ],
+  "residualPairs": [
+    {
+      "routeId": "91-10-j26-1",
+      "agencyId": "37",
+      "line": "10",
+      "mode": "tram",
+      "from": [
+        7.61928566,
+        47.49755951,
+        "Arlesheim, Im Lee",
+        "B",
+        "ch:1:sloid:88764:1:1"
+      ],
+      "to": [
+        7.61942041,
+        47.49339586,
+        "Arlesheim, Dorf",
+        "E",
+        "ch:1:sloid:77:1:5"
+      ],
+      "patternIds": [
+        "c9dd96b623f1720a3056a1df",
+        "4fe88485373c971290b2fa4b",
+        "7acb34664029ae5a7e240fea",
+        "e1839be8d81c9f3a81cef4cf",
+        "08256b8cf01fc9768e4a6c03",
+        "af5b18806b640f10b33983fd"
+      ],
+      "occurrencesByDate": {
+        "2026-01-16": 94,
+        "2026-01-18": 103,
+        "2026-04-03": 103,
+        "2026-04-05": 103,
+        "2026-07-17": 94,
+        "2026-07-19": 103,
+        "2026-08-01": 101,
+        "2026-09-04": 94,
+        "2026-09-06": 103,
+        "2026-10-23": 94,
+        "2026-10-25": 103,
+        "2026-12-11": 94
+      }
+    },
+    {
+      "routeId": "91-10-j26-1",
+      "agencyId": "37",
+      "line": "10",
+      "mode": "tram",
+      "from": [
+        7.61942041,
+        47.49339586,
+        "Arlesheim, Dorf",
+        "E",
+        "ch:1:sloid:77:1:5"
+      ],
+      "to": [
+        7.61132659,
+        47.49296491,
+        "Arlesheim, Stollenrain",
+        "B",
+        "ch:1:sloid:88765:1:1"
+      ],
+      "patternIds": [
+        "c9dd96b623f1720a3056a1df",
+        "4fe88485373c971290b2fa4b",
+        "7acb34664029ae5a7e240fea",
+        "e1839be8d81c9f3a81cef4cf"
+      ],
+      "occurrencesByDate": {
+        "2026-01-16": 94,
+        "2026-01-18": 100,
+        "2026-04-03": 100,
+        "2026-04-05": 100,
+        "2026-07-17": 94,
+        "2026-07-19": 100,
+        "2026-08-01": 101,
+        "2026-09-04": 94,
+        "2026-09-06": 100,
+        "2026-10-23": 94,
+        "2026-10-25": 100,
+        "2026-12-11": 94
+      }
+    },
+    {
+      "routeId": "92-501-A-j26-1",
+      "agencyId": "793",
+      "line": "501",
+      "mode": "bus",
+      "from": [
+        7.80351216,
+        47.31700053,
+        "Egerkingen, Gäu Park",
+        "",
+        "ch:1:sloid:88076"
+      ],
+      "to": [
+        7.79908347,
+        47.31506386,
+        "Egerkingen, Bahnhof",
+        "",
+        "ch:1:sloid:78916"
+      ],
+      "patternIds": [
+        "683bdd2cd2e36b8452f9871d",
+        "66010207813107b636715fec",
+        "7873d9a6d4bca211f917dd99"
+      ],
+      "occurrencesByDate": {
+        "2026-01-16": 29
+      }
+    },
+    {
+      "routeId": "92-507-j26-1",
+      "agencyId": "793",
+      "line": "507",
+      "mode": "bus",
+      "from": [
+        7.86640321,
+        47.33666774,
+        "Wangen b. Olten, Am Kreuzbach",
+        "",
+        "ch:1:sloid:87634"
+      ],
+      "to": [
+        7.86865798,
+        47.33897496,
+        "Wangen b. Olten, Gäuerstübli",
+        "",
+        "ch:1:sloid:87635"
+      ],
+      "patternIds": [
+        "166ad1ea3474e8f1cbe92a9b",
+        "f397772befff7deb89edddf6",
+        "d19db9a9b61447325dd228ee",
+        "a7f604a153447d9205ad08f8"
+      ],
+      "occurrencesByDate": {
+        "2026-01-16": 31
+      }
+    },
+    {
+      "routeId": "92-507-j26-1",
+      "agencyId": "793",
+      "line": "507",
+      "mode": "bus",
+      "from": [
+        7.86865798,
+        47.33897496,
+        "Wangen b. Olten, Gäuerstübli",
+        "",
+        "ch:1:sloid:87635"
+      ],
+      "to": [
+        7.86640321,
+        47.33666774,
+        "Wangen b. Olten, Am Kreuzbach",
+        "",
+        "ch:1:sloid:87634"
+      ],
+      "patternIds": [
+        "5bc33b300d62db9ed04caf57",
+        "c51006447e9a797e28bce440",
+        "eaef2e4257c4ac79a2a2741f",
+        "7f36fa9943642c5a158c398c",
+        "16d3fdd14768e6e607722ed8"
+      ],
+      "occurrencesByDate": {
+        "2026-01-16": 32
+      }
+    },
+    {
+      "routeId": "92-507-j26-1",
+      "agencyId": "793",
+      "line": "507",
+      "mode": "bus",
+      "from": [
+        7.86640321,
+        47.33666774,
+        "Wangen b. Olten, Am Kreuzbach",
+        "",
+        "ch:1:sloid:87634"
+      ],
+      "to": [
+        7.85113185,
+        47.32551374,
+        "Kappel SO, Schulhaus",
+        "",
+        "ch:1:sloid:78025"
+      ],
+      "patternIds": [
+        "c51006447e9a797e28bce440",
+        "7f36fa9943642c5a158c398c",
+        "16d3fdd14768e6e607722ed8"
+      ],
+      "occurrencesByDate": {
+        "2026-01-16": 29
+      }
+    },
+    {
+      "routeId": "92-N51-j26-1",
+      "agencyId": "793",
+      "line": "N51",
+      "mode": "bus",
+      "from": [
+        7.84541857,
+        47.33364811,
+        "Hägendorf, Gässli",
+        "",
+        "ch:1:sloid:78027"
+      ],
+      "to": [
+        7.84117852,
+        47.33217476,
+        "Hägendorf, Solothurnerstrasse",
+        "",
+        "ch:1:sloid:78026"
+      ],
+      "patternIds": [
+        "0fa8514e267addf0d7143dce",
+        "d8f56e8b04133756f4913a03",
+        "5ffa4724cef9c7154688c5d3"
+      ],
+      "occurrencesByDate": {
+        "2026-01-18": 4,
+        "2026-04-03": 4,
+        "2026-04-05": 4
+      }
+    },
+    {
+      "routeId": "92-EV4-M-j26-1",
+      "agencyId": "7231",
+      "line": "EV4",
+      "mode": "bus",
+      "from": [
+        7.34037673,
+        47.17224318,
+        "Pieterlen, Bahnhof",
+        "",
+        "ch:1:sloid:87627"
+      ],
+      "to": [
+        7.24317902,
+        47.13148353,
+        "Biel/Bienne, Carterminal",
+        "",
+        "ch:1:sloid:10672"
+      ],
+      "patternIds": [
+        "3574e2c03a12547d5cffd5bc",
+        "16d738474bafafed1094bd50"
+      ],
+      "occurrencesByDate": {
+        "2026-04-05": 17,
+        "2026-09-06": 21
+      }
+    },
+    {
+      "routeId": "91-23-j26-1",
+      "agencyId": "11",
+      "line": "S23",
+      "mode": "rail",
+      "from": [
+        7.97828838,
+        47.35631546,
+        "Däniken SO",
+        "2",
+        "ch:1:sloid:2111:2:2"
+      ],
+      "to": [
+        8.05147413,
+        47.39117396,
+        "Aarau",
+        "3",
+        "ch:1:sloid:2113:2:3"
+      ],
+      "patternIds": [
+        "59e46f4c6f0b24bd6ce5464a"
+      ],
+      "occurrencesByDate": {
+        "2026-07-17": 1
+      }
+    },
+    {
+      "routeId": "91-23-j26-1",
+      "agencyId": "11",
+      "line": "S23",
+      "mode": "rail",
+      "from": [
+        7.97828838,
+        47.35631546,
+        "Däniken SO",
+        "2",
+        "ch:1:sloid:2111:2:2"
+      ],
+      "to": [
+        8.05143819,
+        47.39124694,
+        "Aarau",
+        "2",
+        "ch:1:sloid:2113:2:2"
+      ],
+      "patternIds": [
+        "a5f12163a6c4025555865649"
+      ],
+      "occurrencesByDate": {
+        "2026-07-17": 1
+      }
+    },
+    {
+      "routeId": "91-26-j26-1",
+      "agencyId": "11",
+      "line": "S26",
+      "mode": "rail",
+      "from": [
+        7.97828838,
+        47.35631546,
+        "Däniken SO",
+        "2",
+        "ch:1:sloid:2111:2:2"
+      ],
+      "to": [
+        8.05143819,
+        47.39124694,
+        "Aarau",
+        "2",
+        "ch:1:sloid:2113:2:2"
+      ],
+      "patternIds": [
+        "9d6831e42d6f6f0c37b9eb08"
+      ],
+      "occurrencesByDate": {
+        "2026-07-17": 1
+      }
+    },
+    {
+      "routeId": "91-26-j26-1",
+      "agencyId": "11",
+      "line": "S26",
+      "mode": "rail",
+      "from": [
+        8.05159989,
+        47.39104625,
+        "Aarau",
+        "5",
+        "ch:1:sloid:2113:3:5"
+      ],
+      "to": [
+        7.94605683,
+        47.35402116,
+        "Dulliken",
+        "4",
+        "ch:1:sloid:2110:3:4"
+      ],
+      "patternIds": [
+        "91850c7d602026cdda3db9e4"
+      ],
+      "occurrencesByDate": {
+        "2026-07-17": 1
+      }
+    },
+    {
+      "routeId": "92-501-A-j26-1",
+      "agencyId": "793",
+      "line": "501",
+      "mode": "bus",
+      "from": [
+        7.80344928,
+        47.31707361,
+        "Egerkingen, Gäu Park",
+        "",
+        "ch:1:sloid:88076:0:01"
+      ],
+      "to": [
+        7.80003568,
+        47.31521611,
+        "Egerkingen, Bahnhof",
+        "",
+        "ch:1:sloid:78916:0:02"
+      ],
+      "patternIds": [
+        "987dad2c48152ad71c79fef4",
+        "6a54781f2355f75adcbf20db",
+        "f2aac8d2ce14d146dbd15a8e"
+      ],
+      "occurrencesByDate": {
+        "2026-07-17": 29,
+        "2026-09-04": 29,
+        "2026-10-23": 29,
+        "2026-12-11": 29
+      }
+    },
+    {
+      "routeId": "92-A01-T-j26-1",
+      "agencyId": "7231",
+      "line": "EV1",
+      "mode": "bus",
+      "from": [
+        7.97946517,
+        47.35603552,
+        "Däniken, Post",
+        "",
+        "ch:1:sloid:82651"
+      ],
+      "to": [
+        7.94650599,
+        47.35311437,
+        "Dulliken, Bahnhof",
+        "",
+        "ch:1:sloid:90406"
+      ],
+      "patternIds": [
+        "a75f25f513b40fcf1d168afb",
+        "37267d9218375ed76ee446f1"
+      ],
+      "occurrencesByDate": {
+        "2026-07-17": 3
+      }
+    },
+    {
+      "routeId": "92-A01-T-j26-1",
+      "agencyId": "7231",
+      "line": "EV1",
+      "mode": "bus",
+      "from": [
+        7.97946517,
+        47.35603552,
+        "Däniken, Post",
+        "",
+        "ch:1:sloid:82651"
+      ],
+      "to": [
+        8.00031507,
+        47.37135063,
+        "Schönenwerd SO, Bahnhof",
+        "",
+        "ch:1:sloid:88650"
+      ],
+      "patternIds": [
+        "9219c20117617eb0e8c4f617",
+        "17fc068964fba46363d2d9c5"
+      ],
+      "occurrencesByDate": {
+        "2026-07-17": 3
+      }
+    },
+    {
+      "routeId": "92-A01-T-j26-1",
+      "agencyId": "7231",
+      "line": "EV1",
+      "mode": "bus",
+      "from": [
+        8.00031507,
+        47.37135063,
+        "Schönenwerd SO, Bahnhof",
+        "",
+        "ch:1:sloid:88650"
+      ],
+      "to": [
+        8.051007,
+        47.39186117,
+        "Aarau, Bahnhof",
+        "",
+        "ch:1:sloid:2996"
+      ],
+      "patternIds": [
+        "9219c20117617eb0e8c4f617",
+        "17fc068964fba46363d2d9c5"
+      ],
+      "occurrencesByDate": {
+        "2026-07-17": 3
+      }
+    }
+  ],
+  "egerkingenAlternatives": {
+    "from": [
+      7.80344928,
+      47.31707361,
+      "Egerkingen, Gäu Park",
+      "",
+      "ch:1:sloid:88076:0:01"
+    ],
+    "to": [
+      7.80003568,
+      47.31521611,
+      "Egerkingen, Bahnhof",
+      "",
+      "ch:1:sloid:78916:0:02"
+    ],
+    "relationId": 6455364,
+    "relationPath": [
+      [
+        7.8034923,
+        47.3171107
+      ],
+      [
+        7.8041001,
+        47.3173373
+      ],
+      [
+        7.804375,
+        47.3174425
+      ],
+      [
+        7.8045052,
+        47.3174923
+      ],
+      [
+        7.8047614,
+        47.3175823
+      ],
+      [
+        7.8048579,
+        47.3176162
+      ],
+      [
+        7.8051431,
+        47.3177222
+      ],
+      [
+        7.8052363,
+        47.3177626
+      ],
+      [
+        7.8052987,
+        47.3178065
+      ],
+      [
+        7.8053422,
+        47.3178572
+      ],
+      [
+        7.8053611,
+        47.3178914
+      ],
+      [
+        7.8053742,
+        47.3179337
+      ],
+      [
+        7.8053778,
+        47.317979
+      ],
+      [
+        7.8053717,
+        47.3180804
+      ],
+      [
+        7.8053717,
+        47.3181372
+      ],
+      [
+        7.8053342,
+        47.3185595
+      ],
+      [
+        7.80531,
+        47.3187272
+      ],
+      [
+        7.8052893,
+        47.3187986
+      ],
+      [
+        7.8052644,
+        47.3188836
+      ],
+      [
+        7.8052281,
+        47.3189283
+      ],
+      [
+        7.8051582,
+        47.3189749
+      ],
+      [
+        7.8051015,
+        47.3189795
+      ],
+      [
+        7.8050427,
+        47.3189786
+      ],
+      [
+        7.8049191,
+        47.3189659
+      ],
+      [
+        7.8043867,
+        47.3188945
+      ],
+      [
+        7.8038818,
+        47.31885
+      ],
+      [
+        7.8031871,
+        47.3187923
+      ],
+      [
+        7.8028278,
+        47.318755
+      ],
+      [
+        7.8026091,
+        47.3187277
+      ],
+      [
+        7.8023905,
+        47.3186941
+      ],
+      [
+        7.8019465,
+        47.3186195
+      ],
+      [
+        7.8016059,
+        47.3185568
+      ],
+      [
+        7.8014745,
+        47.3185286
+      ],
+      [
+        7.8013659,
+        47.3184995
+      ],
+      [
+        7.8012572,
+        47.3184613
+      ],
+      [
+        7.801198,
+        47.3184308
+      ],
+      [
+        7.8011343,
+        47.3183933
+      ],
+      [
+        7.8010772,
+        47.3183548
+      ],
+      [
+        7.8009675,
+        47.3182822
+      ],
+      [
+        7.8008733,
+        47.3182258
+      ],
+      [
+        7.8008328,
+        47.3182154
+      ],
+      [
+        7.8007919,
+        47.3182108
+      ],
+      [
+        7.8007382,
+        47.3182131
+      ],
+      [
+        7.8006799,
+        47.3182368
+      ],
+      [
+        7.8006485,
+        47.31826
+      ],
+      [
+        7.8006242,
+        47.3182918
+      ],
+      [
+        7.8006096,
+        47.3183467
+      ],
+      [
+        7.8006297,
+        47.3183701
+      ],
+      [
+        7.8006406,
+        47.3183961
+      ],
+      [
+        7.8006415,
+        47.3184232
+      ],
+      [
+        7.8006324,
+        47.3184495
+      ],
+      [
+        7.8006122,
+        47.3184751
+      ],
+      [
+        7.8005827,
+        47.3184961
+      ],
+      [
+        7.800546,
+        47.318511
+      ],
+      [
+        7.8005047,
+        47.3185186
+      ],
+      [
+        7.8004619,
+        47.3185186
+      ],
+      [
+        7.8004207,
+        47.3185107
+      ],
+      [
+        7.8003841,
+        47.3184957
+      ],
+      [
+        7.8003546,
+        47.3184745
+      ],
+      [
+        7.8003346,
+        47.3184487
+      ],
+      [
+        7.8003256,
+        47.3184202
+      ],
+      [
+        7.8003282,
+        47.3183911
+      ],
+      [
+        7.8003422,
+        47.3183636
+      ],
+      [
+        7.8002974,
+        47.3183519
+      ],
+      [
+        7.800201,
+        47.3183269
+      ],
+      [
+        7.7998396,
+        47.3182128
+      ],
+      [
+        7.7992646,
+        47.3180312
+      ],
+      [
+        7.7987594,
+        47.3178688
+      ],
+      [
+        7.7982913,
+        47.3177194
+      ],
+      [
+        7.7979346,
+        47.3175944
+      ],
+      [
+        7.7973628,
+        47.3173891
+      ],
+      [
+        7.7969617,
+        47.3172477
+      ],
+      [
+        7.7966458,
+        47.3171221
+      ],
+      [
+        7.7962836,
+        47.3169647
+      ],
+      [
+        7.7960505,
+        47.3168728
+      ],
+      [
+        7.7958305,
+        47.3167781
+      ],
+      [
+        7.7955674,
+        47.3166649
+      ],
+      [
+        7.7956465,
+        47.3165633
+      ],
+      [
+        7.7961073,
+        47.3160168
+      ],
+      [
+        7.7964127,
+        47.315636
+      ],
+      [
+        7.7967032,
+        47.3152957
+      ],
+      [
+        7.7970264,
+        47.3149124
+      ],
+      [
+        7.7969171,
+        47.3148617
+      ],
+      [
+        7.796842,
+        47.3148262
+      ],
+      [
+        7.7967777,
+        47.3147917
+      ],
+      [
+        7.79672,
+        47.3147544
+      ],
+      [
+        7.7966704,
+        47.314698
+      ],
+      [
+        7.7966449,
+        47.3146407
+      ],
+      [
+        7.7966382,
+        47.3145916
+      ],
+      [
+        7.7966462,
+        47.3145407
+      ],
+      [
+        7.7966693,
+        47.3144982
+      ],
+      [
+        7.7967034,
+        47.314454
+      ],
+      [
+        7.796752,
+        47.314408
+      ],
+      [
+        7.7968258,
+        47.3143686
+      ],
+      [
+        7.7968905,
+        47.3143473
+      ],
+      [
+        7.7969552,
+        47.3143363
+      ],
+      [
+        7.7970253,
+        47.3143307
+      ],
+      [
+        7.7971007,
+        47.314334
+      ],
+      [
+        7.7971641,
+        47.3143498
+      ],
+      [
+        7.797208,
+        47.3143607
+      ],
+      [
+        7.7974576,
+        47.31445
+      ],
+      [
+        7.7976206,
+        47.3145093
+      ],
+      [
+        7.7977009,
+        47.3145386
+      ],
+      [
+        7.7978289,
+        47.3145851
+      ],
+      [
+        7.7980238,
+        47.3147019
+      ],
+      [
+        7.7983856,
+        47.3148265
+      ],
+      [
+        7.798606,
+        47.3149032
+      ],
+      [
+        7.798978,
+        47.3150272
+      ],
+      [
+        7.799032,
+        47.3150452
+      ],
+      [
+        7.7991177,
+        47.3150742
+      ],
+      [
+        7.7992541,
+        47.3151055
+      ]
+    ],
+    "relationPathMetres": 1628.1476726322567,
+    "fromStopGapMetres": 5.252446493707767,
+    "toStopGapMetres": 60.258129380497614,
+    "cantonalCandidate": {
+      "path": [
+        [
+          7.8034493,
+          47.3170736
+        ],
+        [
+          7.8034297,
+          47.3170978
+        ],
+        [
+          7.8033571,
+          47.3170708
+        ],
+        [
+          7.8026965,
+          47.3168199
+        ],
+        [
+          7.8025209,
+          47.3167609
+        ],
+        [
+          7.8024224,
+          47.3167426
+        ],
+        [
+          7.8023289,
+          47.3167373
+        ],
+        [
+          7.8022388,
+          47.3167394
+        ],
+        [
+          7.802143,
+          47.3167453
+        ],
+        [
+          7.8020481,
+          47.316766
+        ],
+        [
+          7.8019549,
+          47.3167979
+        ],
+        [
+          7.8018734,
+          47.3168447
+        ],
+        [
+          7.8018158,
+          47.3168877
+        ],
+        [
+          7.8017427,
+          47.3169549
+        ],
+        [
+          7.801463,
+          47.3172757
+        ],
+        [
+          7.8013317,
+          47.3174258
+        ],
+        [
+          7.8010537,
+          47.3177439
+        ],
+        [
+          7.8007312,
+          47.3181055
+        ],
+        [
+          7.8007099,
+          47.3181295
+        ],
+        [
+          7.8006131,
+          47.3182383
+        ],
+        [
+          7.8005861,
+          47.3182774
+        ],
+        [
+          7.8005215,
+          47.3183859
+        ],
+        [
+          7.800466,
+          47.3183714
+        ],
+        [
+          7.800124,
+          47.3182824
+        ],
+        [
+          7.7992485,
+          47.3180323
+        ],
+        [
+          7.7986912,
+          47.3178556
+        ],
+        [
+          7.7983041,
+          47.3177192
+        ],
+        [
+          7.7979974,
+          47.3176004
+        ],
+        [
+          7.7973602,
+          47.3173703
+        ],
+        [
+          7.7965828,
+          47.3170757
+        ],
+        [
+          7.7955921,
+          47.3166521
+        ],
+        [
+          7.7956987,
+          47.3165141
+        ],
+        [
+          7.7970272,
+          47.3149378
+        ],
+        [
+          7.7968888,
+          47.3148861
+        ],
+        [
+          7.7968176,
+          47.3148598
+        ],
+        [
+          7.7967529,
+          47.3148244
+        ],
+        [
+          7.7966997,
+          47.3147785
+        ],
+        [
+          7.7966579,
+          47.3147165
+        ],
+        [
+          7.7966393,
+          47.3146474
+        ],
+        [
+          7.7966438,
+          47.3145941
+        ],
+        [
+          7.7966592,
+          47.3145408
+        ],
+        [
+          7.7966829,
+          47.3144982
+        ],
+        [
+          7.7967165,
+          47.3144538
+        ],
+        [
+          7.7967658,
+          47.3144074
+        ],
+        [
+          7.7968407,
+          47.3143664
+        ],
+        [
+          7.7969034,
+          47.3143467
+        ],
+        [
+          7.7969686,
+          47.3143358
+        ],
+        [
+          7.7970388,
+          47.3143302
+        ],
+        [
+          7.7971141,
+          47.3143337
+        ],
+        [
+          7.7972217,
+          47.3143599
+        ],
+        [
+          7.7974024,
+          47.314425
+        ],
+        [
+          7.7974943,
+          47.3144571
+        ],
+        [
+          7.7980321,
+          47.3146448
+        ],
+        [
+          7.7981448,
+          47.314696
+        ],
+        [
+          7.7982734,
+          47.3147594
+        ],
+        [
+          7.7983986,
+          47.3148265
+        ],
+        [
+          7.7985089,
+          47.3148757
+        ],
+        [
+          7.7991129,
+          47.3150886
+        ],
+        [
+          7.7991891,
+          47.3151044
+        ],
+        [
+          7.7992776,
+          47.3151148
+        ],
+        [
+          7.7992925,
+          47.3151163
+        ],
+        [
+          7.7994604,
+          47.3151336
+        ],
+        [
+          7.7995962,
+          47.3151617
+        ],
+        [
+          7.7999721,
+          47.3152972
+        ],
+        [
+          7.8000357,
+          47.3152161
+        ]
+      ],
+      "maximumSnapMetres": 10.217813287055314,
+      "pathMetres": 1316.365816300614,
+      "diagnosticOnly": true,
+      "detourFloorMetres": 1400,
+      "geometrySha256": "d83b281cfff4253d1e2b4a98e9eefde4a1e7a9ede349d0dd3b7435e750061032"
+    },
+    "roadCandidates": [
+      {
+        "id": "391aec2b2b3a1cc140d197bc",
+        "stops": [
+          [
+            7.80344928,
+            47.31707361,
+            "Egerkingen, Gäu Park",
+            "",
+            "ch:1:sloid:88076:0:01"
+          ],
+          [
+            7.80003568,
+            47.31521611,
+            "Egerkingen, Bahnhof",
+            "",
+            "ch:1:sloid:78916:0:02"
+          ],
+          [
+            7.7981043,
+            47.3175669,
+            "Egerkingen, Widenfeld",
+            "",
+            "ch:1:sloid:81287:0:02"
+          ],
+          [
+            7.79458291,
+            47.32089193,
+            "Egerkingen, Zentrum",
+            "",
+            "ch:1:sloid:81286:0:02"
+          ],
+          [
+            7.79808634,
+            47.32262135,
+            "Egerkingen, Bielgraben",
+            "",
+            "ch:1:sloid:95922:0:01"
+          ],
+          [
+            7.80528184,
+            47.32368699,
+            "Egerkingen, Thalrich",
+            "",
+            "ch:1:sloid:87636:0:01"
+          ],
+          [
+            7.83385725,
+            47.32969068,
+            "Hägendorf, Halbrüti",
+            "",
+            "ch:1:sloid:94780:0:01"
+          ],
+          [
+            7.84176242,
+            47.33235741,
+            "Hägendorf, Solothurnerstrasse",
+            "",
+            "ch:1:sloid:78026:0:01"
+          ],
+          [
+            7.84521196,
+            47.33341067,
+            "Hägendorf, Gässli",
+            "",
+            "ch:1:sloid:78027:0:01"
+          ],
+          [
+            7.85124863,
+            47.33597982,
+            "Hägendorf, Nellen",
+            "",
+            "ch:1:sloid:78028:0:01"
+          ],
+          [
+            7.85725836,
+            47.33980286,
+            "Rickenbach SO, Dorf",
+            "",
+            "ch:1:sloid:387:0:01"
+          ],
+          [
+            7.86329504,
+            47.34188471,
+            "Wangen b. Olten, Kleider Frey",
+            "",
+            "ch:1:sloid:78029:0:01"
+          ],
+          [
+            7.87059834,
+            47.34290126,
+            "Wangen b. Olten, Dorf",
+            "",
+            "ch:1:sloid:78030:0:01"
+          ],
+          [
+            7.87534145,
+            47.34428301,
+            "Wangen b. Olten, Ochsen",
+            "",
+            "ch:1:sloid:78031:0:01"
+          ],
+          [
+            7.88119847,
+            47.34525082,
+            "Wangen b. Olten, Neuhüsli",
+            "",
+            "ch:1:sloid:78032:0:01"
+          ],
+          [
+            7.88463901,
+            47.34662642,
+            "Olten, Chalchofen",
+            "",
+            "ch:1:sloid:78033:0:01"
+          ],
+          [
+            7.88943602,
+            47.34847064,
+            "Olten, Usego",
+            "",
+            "ch:1:sloid:78034:0:01"
+          ],
+          [
+            7.89263402,
+            47.3510573,
+            "Olten, Hammermühle",
+            "",
+            "ch:1:sloid:78035:0:01"
+          ],
+          [
+            7.89645186,
+            47.35001657,
+            "Olten, Bornblick",
+            "",
+            "ch:1:sloid:88649:0:01"
+          ],
+          [
+            7.89858087,
+            47.35007134,
+            "Olten, Hammer BOGG",
+            "A",
+            "ch:1:sloid:78037:0:01"
+          ],
+          [
+            7.9018148,
+            47.35060693,
+            "Olten, Museen",
+            "",
+            "ch:1:sloid:78038:0:01"
+          ],
+          [
+            7.90269515,
+            47.35174503,
+            "Olten, Baslerstrasse",
+            "",
+            "ch:1:sloid:78039:0:01"
+          ],
+          [
+            7.90689028,
+            47.35263359,
+            "Olten, Bahnhof",
+            "E",
+            "ch:1:sloid:72352:0:11"
+          ],
+          [
+            7.90895641,
+            47.35818368,
+            "Olten, Trimbacherbrücke",
+            "",
+            "ch:1:sloid:77982:0:02"
+          ],
+          [
+            7.9120556,
+            47.36082463,
+            "Olten, Gerolag Center",
+            "",
+            "ch:1:sloid:77983:0:02"
+          ],
+          [
+            7.91511885,
+            47.36285698,
+            "Olten, Industriewerk",
+            "",
+            "ch:1:sloid:77984:0:02"
+          ],
+          [
+            7.91917924,
+            47.36580801,
+            "Olten, Haslistrasse",
+            "",
+            "ch:1:sloid:77985:0:02"
+          ]
+        ],
+        "path": [
+          [
+            7.803449,
+            47.317074
+          ],
+          [
+            7.805299,
+            47.317806
+          ],
+          [
+            7.805374,
+            47.317932
+          ],
+          [
+            7.805334,
+            47.318558
+          ],
+          [
+            7.805158,
+            47.318974
+          ],
+          [
+            7.802828,
+            47.318756
+          ],
+          [
+            7.801606,
+            47.318558
+          ],
+          [
+            7.800792,
+            47.318211
+          ],
+          [
+            7.800624,
+            47.318291
+          ],
+          [
+            7.800583,
+            47.318497
+          ],
+          [
+            7.800384,
+            47.318497
+          ],
+          [
+            7.800342,
+            47.318363
+          ],
+          [
+            7.800718,
+            47.318108
+          ],
+          [
+            7.800079,
+            47.317894
+          ],
+          [
+            7.800055,
+            47.317818
+          ],
+          [
+            7.800798,
+            47.317032
+          ],
+          [
+            7.800198,
+            47.316544
+          ],
+          [
+            7.799804,
+            47.316341
+          ],
+          [
+            7.80057,
+            47.315933
+          ],
+          [
+            7.80076,
+            47.315678
+          ],
+          [
+            7.800618,
+            47.31554
+          ],
+          [
+            7.799976,
+            47.315308
+          ],
+          [
+            7.800036,
+            47.315216
+          ]
+        ],
+        "pathMetres": 1213.215689577984,
+        "geometrySha256": "83686a4121646d2a1d623e1fee705cf352830e82c872ddd6de8fcc4780f383d2"
+      },
+      {
+        "id": "994b0e7b6a7888e1b43ea65e",
+        "stops": [
+          [
+            7.80344928,
+            47.31707361,
+            "Egerkingen, Gäu Park",
+            "",
+            "ch:1:sloid:88076:0:01"
+          ],
+          [
+            7.80003568,
+            47.31521611,
+            "Egerkingen, Bahnhof",
+            "",
+            "ch:1:sloid:78916:0:02"
+          ],
+          [
+            7.7981043,
+            47.3175669,
+            "Egerkingen, Widenfeld",
+            "",
+            "ch:1:sloid:81287:0:02"
+          ],
+          [
+            7.79458291,
+            47.32089193,
+            "Egerkingen, Zentrum",
+            "",
+            "ch:1:sloid:81286:0:02"
+          ],
+          [
+            7.79808634,
+            47.32262135,
+            "Egerkingen, Bielgraben",
+            "",
+            "ch:1:sloid:95922:0:01"
+          ],
+          [
+            7.80528184,
+            47.32368699,
+            "Egerkingen, Thalrich",
+            "",
+            "ch:1:sloid:87636:0:01"
+          ],
+          [
+            7.83385725,
+            47.32969068,
+            "Hägendorf, Halbrüti",
+            "",
+            "ch:1:sloid:94780:0:01"
+          ],
+          [
+            7.84176242,
+            47.33235741,
+            "Hägendorf, Solothurnerstrasse",
+            "",
+            "ch:1:sloid:78026:0:01"
+          ],
+          [
+            7.84521196,
+            47.33341067,
+            "Hägendorf, Gässli",
+            "",
+            "ch:1:sloid:78027:0:01"
+          ],
+          [
+            7.85124863,
+            47.33597982,
+            "Hägendorf, Nellen",
+            "",
+            "ch:1:sloid:78028:0:01"
+          ],
+          [
+            7.85725836,
+            47.33980286,
+            "Rickenbach SO, Dorf",
+            "",
+            "ch:1:sloid:387:0:01"
+          ],
+          [
+            7.86329504,
+            47.34188471,
+            "Wangen b. Olten, Kleider Frey",
+            "",
+            "ch:1:sloid:78029:0:01"
+          ],
+          [
+            7.87059834,
+            47.34290126,
+            "Wangen b. Olten, Dorf",
+            "",
+            "ch:1:sloid:78030:0:01"
+          ],
+          [
+            7.87534145,
+            47.34428301,
+            "Wangen b. Olten, Ochsen",
+            "",
+            "ch:1:sloid:78031:0:01"
+          ],
+          [
+            7.88119847,
+            47.34525082,
+            "Wangen b. Olten, Neuhüsli",
+            "",
+            "ch:1:sloid:78032:0:01"
+          ],
+          [
+            7.88463901,
+            47.34662642,
+            "Olten, Chalchofen",
+            "",
+            "ch:1:sloid:78033:0:01"
+          ],
+          [
+            7.88943602,
+            47.34847064,
+            "Olten, Usego",
+            "",
+            "ch:1:sloid:78034:0:01"
+          ],
+          [
+            7.89263402,
+            47.3510573,
+            "Olten, Hammermühle",
+            "",
+            "ch:1:sloid:78035:0:01"
+          ],
+          [
+            7.89645186,
+            47.35001657,
+            "Olten, Bornblick",
+            "",
+            "ch:1:sloid:88649:0:01"
+          ],
+          [
+            7.89858087,
+            47.35007134,
+            "Olten, Hammer BOGG",
+            "A",
+            "ch:1:sloid:78037:0:01"
+          ],
+          [
+            7.9018148,
+            47.35060693,
+            "Olten, Museen",
+            "",
+            "ch:1:sloid:78038:0:01"
+          ],
+          [
+            7.90269515,
+            47.35174503,
+            "Olten, Baslerstrasse",
+            "",
+            "ch:1:sloid:78039:0:01"
+          ],
+          [
+            7.90689028,
+            47.35263359,
+            "Olten, Bahnhof",
+            "E",
+            "ch:1:sloid:72352:0:11"
+          ]
+        ],
+        "path": [
+          [
+            7.803449,
+            47.317074
+          ],
+          [
+            7.805299,
+            47.317806
+          ],
+          [
+            7.805374,
+            47.317932
+          ],
+          [
+            7.805334,
+            47.318558
+          ],
+          [
+            7.805158,
+            47.318974
+          ],
+          [
+            7.802828,
+            47.318756
+          ],
+          [
+            7.801606,
+            47.318558
+          ],
+          [
+            7.800792,
+            47.318211
+          ],
+          [
+            7.800624,
+            47.318291
+          ],
+          [
+            7.800583,
+            47.318497
+          ],
+          [
+            7.800384,
+            47.318497
+          ],
+          [
+            7.800342,
+            47.318363
+          ],
+          [
+            7.800718,
+            47.318108
+          ],
+          [
+            7.800079,
+            47.317894
+          ],
+          [
+            7.800055,
+            47.317818
+          ],
+          [
+            7.800798,
+            47.317032
+          ],
+          [
+            7.800198,
+            47.316544
+          ],
+          [
+            7.799804,
+            47.316341
+          ],
+          [
+            7.80057,
+            47.315933
+          ],
+          [
+            7.80076,
+            47.315678
+          ],
+          [
+            7.800618,
+            47.31554
+          ],
+          [
+            7.799976,
+            47.315308
+          ],
+          [
+            7.800036,
+            47.315216
+          ]
+        ],
+        "pathMetres": 1213.215689577984,
+        "geometrySha256": "83686a4121646d2a1d623e1fee705cf352830e82c872ddd6de8fcc4780f383d2"
+      },
+      {
+        "id": "a126a4eae532ed92402e624f",
+        "stops": [
+          [
+            7.80344928,
+            47.31707361,
+            "Egerkingen, Gäu Park",
+            "",
+            "ch:1:sloid:88076:0:01"
+          ],
+          [
+            7.80003568,
+            47.31521611,
+            "Egerkingen, Bahnhof",
+            "",
+            "ch:1:sloid:78916:0:02"
+          ],
+          [
+            7.7981043,
+            47.3175669,
+            "Egerkingen, Widenfeld",
+            "",
+            "ch:1:sloid:81287:0:02"
+          ],
+          [
+            7.79458291,
+            47.32089193,
+            "Egerkingen, Zentrum",
+            "",
+            "ch:1:sloid:81286:0:02"
+          ],
+          [
+            7.79808634,
+            47.32262135,
+            "Egerkingen, Bielgraben",
+            "",
+            "ch:1:sloid:95922:0:01"
+          ],
+          [
+            7.80528184,
+            47.32368699,
+            "Egerkingen, Thalrich",
+            "",
+            "ch:1:sloid:87636:0:01"
+          ],
+          [
+            7.83385725,
+            47.32969068,
+            "Hägendorf, Halbrüti",
+            "",
+            "ch:1:sloid:94780:0:01"
+          ],
+          [
+            7.84176242,
+            47.33235741,
+            "Hägendorf, Solothurnerstrasse",
+            "",
+            "ch:1:sloid:78026:0:01"
+          ],
+          [
+            7.84521196,
+            47.33341067,
+            "Hägendorf, Gässli",
+            "",
+            "ch:1:sloid:78027:0:01"
+          ],
+          [
+            7.85124863,
+            47.33597982,
+            "Hägendorf, Nellen",
+            "",
+            "ch:1:sloid:78028:0:01"
+          ],
+          [
+            7.85725836,
+            47.33980286,
+            "Rickenbach SO, Dorf",
+            "",
+            "ch:1:sloid:387:0:01"
+          ],
+          [
+            7.86329504,
+            47.34188471,
+            "Wangen b. Olten, Kleider Frey",
+            "",
+            "ch:1:sloid:78029:0:01"
+          ],
+          [
+            7.87059834,
+            47.34290126,
+            "Wangen b. Olten, Dorf",
+            "",
+            "ch:1:sloid:78030:0:01"
+          ],
+          [
+            7.87534145,
+            47.34428301,
+            "Wangen b. Olten, Ochsen",
+            "",
+            "ch:1:sloid:78031:0:01"
+          ],
+          [
+            7.88119847,
+            47.34525082,
+            "Wangen b. Olten, Neuhüsli",
+            "",
+            "ch:1:sloid:78032:0:01"
+          ],
+          [
+            7.88463901,
+            47.34662642,
+            "Olten, Chalchofen",
+            "",
+            "ch:1:sloid:78033:0:01"
+          ],
+          [
+            7.88943602,
+            47.34847064,
+            "Olten, Usego",
+            "",
+            "ch:1:sloid:78034:0:01"
+          ],
+          [
+            7.89263402,
+            47.3510573,
+            "Olten, Hammermühle",
+            "",
+            "ch:1:sloid:78035:0:01"
+          ],
+          [
+            7.89645186,
+            47.35001657,
+            "Olten, Bornblick",
+            "",
+            "ch:1:sloid:88649:0:01"
+          ],
+          [
+            7.89858087,
+            47.35007134,
+            "Olten, Hammer BOGG",
+            "A",
+            "ch:1:sloid:78037:0:01"
+          ],
+          [
+            7.9018148,
+            47.35060693,
+            "Olten, Museen",
+            "",
+            "ch:1:sloid:78038:0:01"
+          ],
+          [
+            7.90269515,
+            47.35174503,
+            "Olten, Baslerstrasse",
+            "",
+            "ch:1:sloid:78039:0:01"
+          ],
+          [
+            7.90689028,
+            47.35263359,
+            "Olten, Bahnhof",
+            "E",
+            "ch:1:sloid:72352:0:11"
+          ],
+          [
+            7.90895641,
+            47.35818368,
+            "Olten, Trimbacherbrücke",
+            "",
+            "ch:1:sloid:77982:0:02"
+          ],
+          [
+            7.9120556,
+            47.36082463,
+            "Olten, Gerolag Center",
+            "",
+            "ch:1:sloid:77983:0:02"
+          ],
+          [
+            7.91511885,
+            47.36285698,
+            "Olten, Industriewerk",
+            "",
+            "ch:1:sloid:77984:0:02"
+          ],
+          [
+            7.91917924,
+            47.36580801,
+            "Olten, Haslistrasse",
+            "",
+            "ch:1:sloid:77985:0:02"
+          ],
+          [
+            7.92464099,
+            47.36594795,
+            "Winznau, Ausserdorf",
+            "",
+            "ch:1:sloid:77986:0:02"
+          ],
+          [
+            7.92818035,
+            47.36434773,
+            "Winznau, Huttler",
+            "",
+            "ch:1:sloid:10529:0:02"
+          ],
+          [
+            7.9326899,
+            47.3645972,
+            "Winznau, Dorf",
+            "",
+            "ch:1:sloid:77987:0:02"
+          ],
+          [
+            7.93821454,
+            47.36392789,
+            "Winznau, Säliblick",
+            "",
+            "ch:1:sloid:77988:0:02"
+          ],
+          [
+            7.94747617,
+            47.36333159,
+            "Obergösgen, Schulhaus",
+            "",
+            "ch:1:sloid:77989:0:02"
+          ],
+          [
+            7.95093468,
+            47.36433556,
+            "Obergösgen, Dorf",
+            "B",
+            "ch:1:sloid:77990:0:1715"
+          ],
+          [
+            7.95805832,
+            47.36650163,
+            "Obergösgen, Bollenfeld",
+            "",
+            "ch:1:sloid:78016:0:01"
+          ],
+          [
+            7.97042812,
+            47.36975666,
+            "Niedergösgen, Mühledorf",
+            "",
+            "ch:1:sloid:78015:0:02"
+          ],
+          [
+            7.9774799,
+            47.36965323,
+            "Niedergösgen, Kraftwerk",
+            "",
+            "ch:1:sloid:90413:0:02"
+          ],
+          [
+            7.98460354,
+            47.37111945,
+            "Niedergösgen, Knoblez",
+            "",
+            "ch:1:sloid:78013:0:02"
+          ],
+          [
+            7.99201464,
+            47.37201984,
+            "Niedergösgen, Falkenstein",
+            "",
+            "ch:1:sloid:78012:0:02"
+          ],
+          [
+            7.99569773,
+            47.37271947,
+            "Niedergösgen, Bank",
+            "",
+            "ch:1:sloid:10534:0:01"
+          ],
+          [
+            7.99942574,
+            47.37223886,
+            "Schönenwerd SO, Bahnhof Nord",
+            "",
+            "ch:1:sloid:10229:0:01"
+          ],
+          [
+            8.00179729,
+            47.37288981,
+            "Schönenwerd SO, Tannheim",
+            "",
+            "ch:1:sloid:88651:0:02"
+          ],
+          [
+            8.00018032,
+            47.37111945,
+            "Schönenwerd SO, Bahnhof",
+            "B",
+            "ch:1:sloid:88650:0:02"
+          ]
+        ],
+        "path": [
+          [
+            7.803449,
+            47.317074
+          ],
+          [
+            7.805299,
+            47.317806
+          ],
+          [
+            7.805374,
+            47.317932
+          ],
+          [
+            7.805334,
+            47.318558
+          ],
+          [
+            7.805158,
+            47.318974
+          ],
+          [
+            7.802828,
+            47.318756
+          ],
+          [
+            7.801606,
+            47.318558
+          ],
+          [
+            7.800792,
+            47.318211
+          ],
+          [
+            7.800624,
+            47.318291
+          ],
+          [
+            7.800583,
+            47.318497
+          ],
+          [
+            7.800384,
+            47.318497
+          ],
+          [
+            7.800342,
+            47.318363
+          ],
+          [
+            7.800718,
+            47.318108
+          ],
+          [
+            7.800079,
+            47.317894
+          ],
+          [
+            7.800055,
+            47.317818
+          ],
+          [
+            7.800798,
+            47.317032
+          ],
+          [
+            7.800198,
+            47.316544
+          ],
+          [
+            7.799804,
+            47.316341
+          ],
+          [
+            7.80057,
+            47.315933
+          ],
+          [
+            7.80076,
+            47.315678
+          ],
+          [
+            7.800618,
+            47.31554
+          ],
+          [
+            7.799976,
+            47.315308
+          ],
+          [
+            7.800036,
+            47.315216
+          ]
+        ],
+        "pathMetres": 1213.215689577984,
+        "geometrySha256": "83686a4121646d2a1d623e1fee705cf352830e82c872ddd6de8fcc4780f383d2"
+      }
+    ],
+    "decision": "Excluded. The 2020 target-state plan does not confirm a completed route. The original relation stop position differs from the GTFS stop; no endpoint substitution or new detour override."
+  },
+  "remainingEvidenceNeeded": {
+    "arlesheim": "Dated operator/platform evidence resolving the original tram platform E coordinate without inventing track geometry.",
+    "egerkingen": "A dated operating itinerary and station boarding position to resolve the three conflicting approaches.",
+    "pieterlen": "Direction-specific replacement-bus departure/turning evidence; the boarding/walking plan alone does not select either full-context alternative.",
+    "seasonal": "Further original-platform and full-pattern reviews for the retained winter and summer residual pairs. No year-round certification."
+  }
+}

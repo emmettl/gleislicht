@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "acquiredAt": "2026-09-08T22:03:20.231314+00:00",
+  "files": [
+    {
+      "file": "pieterlen-replacement-plan.pdf",
+      "sha256": "0261f08d4773678f2db7d29d4cdd87ef32ab1480ae7d13534c2d884f56c3c205",
+      "url": "https://company.sbb.ch/content/dam/infrastruktur/trafimage/bahnersatz/bep-pieterlen.pdf.sbbdownload.pdf"
+    },
+    {
+      "file": "egerkingen-planning-2020.pdf",
+      "sha256": "57497e029da2a5d1d177faefc0783f9dd642c91eddbb2c2c53e28cc26de84af4",
+      "url": "https://www.egerkingen.ch/_docn/2857217/20201110_Raumplanungsbericht_V-Erschliessung_Areal_Gaupark.pdf"
+    },
+    {
+      "file": "bogg-situations.html.gz",
+      "sha256": "76de0782757c933ddfc307727605ac2014d3e48dff8d43b0a33a70b7daa18e1a",
+      "url": "https://bogg.ch/fahrplaene-und-netz/situationsplaene/"
+    }
+  ],
+  "pieterlen": {
+    "date": "2025-05",
+    "attribution": "SBB / OpenStreetMap contributors / imagico / trafimage.ch / mapset.ch (credits as printed)",
+    "role": "Boarding location and pedestrian access only. Red dotted paths are walking access from rail platforms, not a bus itinerary. The plan predates the 2026 works.",
+    "downloadNote": "www.sbb.ch asset returned HTTP 403 in sandbox and host retry; identical public asset path is available on company.sbb.ch.",
+    "decision": "Neither full EV4 road candidate is selected by this plan."
+  },
+  "egerkingen": {
+    "date": "2020-11-10",
+    "attribution": "Einwohnergemeinde Egerkingen / KFB Pfister AG; AVT conceptual map dated 2017-10-19 on page 6",
+    "role": "Planned future direct bus connection and proposed relocated stops. The Zielzustand map is not a completed-works or operational alignment certificate.",
+    "decision": "Neither retained road candidate nor the mapped bus relation is confirmed for September 2026."
+  },
+  "licensing": "Review context; no PDF reuse licence inferred. No geometry is extracted into the feed.",
+  "bogg": {
+    "reviewDate": "2026-09-09",
+    "attribution": "Busbetrieb Olten Gösgen Gäu AG",
+    "role": "Current site supplies an Olten stop plan and says individual line/stop PDFs will be added for the next timetable change. It supplies no reviewed Egerkingen itinerary. The publisher prints 14.12.2026; that date is retained as its claim, not a correction to the pinned GTFS calendar."
+  }
+}
