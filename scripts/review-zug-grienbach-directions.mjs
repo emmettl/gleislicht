@@ -57,6 +57,26 @@ export async function reviewZugGrienbachDirections(policy, fullPolicy, raw, time
     const b = await readFile(join(policy.sourceDirectory, f.file)); assert.equal(sha256(b), f.sha256, `Changed direction-review evidence ${f.file}`)
     files.set(f.file, f.file.endsWith('.gz') ? gunzipSync(b) : b)
   }
+  // The engineering PDF is an end-state design, not evidence of a temporary
+  // platform being in service on either fixture. Replay its publication context.
+  const plan = source.projectPlan, item = JSON.parse(files.get('project-plan-item.json'))
+  assert.equal(item.id, plan.itemId)
+  assert.equal(item.size, files.get('project-plan.pdf').length)
+  assert.equal(item.created, plan.itemCreated); assert.equal(item.modified, plan.itemModified)
+  assert.equal(item.type, 'PDF'); assert.equal(item.access, 'public')
+  assert.deepEqual(item.extent, [])
+  assert(item.spatialReference === null && item.licenseInfo === null && item.accessInformation === null)
+  const storyBytes = await readFile(join(fullPolicy.grienbachReview.sourceDirectory, plan.storyFile))
+  assert.equal(sha256(storyBytes), plan.storySha256, 'Changed engineering-plan publication context')
+  const story = JSON.parse(gunzipSync(storyBytes).toString().match(/<script id="__NEXT_DATA__" type="application\/json">(.*?)<\/script>/s)[1]).props.publishedData
+  assert.equal(story.nodes[plan.storyNode].data.url, plan.url)
+  assert.equal(story.nodes[plan.storySectionNode].data.text, plan.storySection)
+  const sequence = Object.values(story.nodes).find(n => n.type === 'story').children
+  assert.equal(sequence.indexOf(plan.storyNode), sequence.indexOf(plan.storySectionNode) + 2, 'Plan moved out of end-state section')
+  const planText = files.get('project-plan.txt').toString().replace(/\s+/g, ' ')
+  assert(plan.stopLabels.every(label => planText.includes(label)))
+  const compactPlanText = planText.replace(/\s/g, '')
+  assert(compactPlanText.includes('04.08.2025') && compactPlanText.includes(plan.projectNumber) && planText.includes(plan.stage))
   assert(files.get('routes.overpass').toString().includes(`[date:"${source.snapshot}"]`))
   const osm = JSON.parse(files.get('routes.json.gz')), elements = new Map(osm.elements.map(e => [`${e.type}/${e.id}`, e]))
   assert(!osm.remark && osm.elements.length === source.elementCount && elements.size === source.elementCount, 'Incomplete direction extract')

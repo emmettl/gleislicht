@@ -74,6 +74,51 @@
     {
       "file": "routes.overpass",
       "sha256": "c913fae83d49c90ea3252eaaf95cb0101420caf8449047bd77dcfb27096e1d94"
+    },
+    {
+      "file": "project-plan.pdf",
+      "sha256": "d20903d725d0b93062850755d3c0a73fe7c1b2413891f3a7dd34fb4f6d2cf6e3"
+    },
+    {
+      "file": "project-plan-item.json",
+      "sha256": "cd1b3021070b9e74600cf57f1b23847cd28303cae242492d228453d402e52b10"
+    },
+    {
+      "file": "project-plan.txt",
+      "sha256": "003db0ccb4d5a128ca90b1595b6a9e5b112132318c1ccfb1d3e40d34606cd017"
+    },
+    {
+      "file": "project-plan-info.txt",
+      "sha256": "f2aa47a5ce5ec8e0d1159e94040c7181dc6e758db2f5682d71b5cf0c6f55eb86"
     }
-  ]
+  ],
+  "projectPlan": {
+    "url": "https://bdfsmart.maps.arcgis.com/sharing/rest/content/items/88e14f36b11646ed8a072b6f0a1bb6cf/data",
+    "metadataUrl": "https://bdfsmart.maps.arcgis.com/sharing/rest/content/items/88e14f36b11646ed8a072b6f0a1bb6cf?f=pjson",
+    "itemId": "88e14f36b11646ed8a072b6f0a1bb6cf",
+    "retrieved": "2026-09-09",
+    "storyFile": "construction-story.html.gz",
+    "storySha256": "609aee61207bc97ff32a542b1005deda86c3ab42cfcce32291cfc6b92819c3c9",
+    "storyNode": "n-RQh07b",
+    "storySectionNode": "n-354Vjo",
+    "storySection": "Endzustand",
+    "printedProjectDate": "2025-08-04",
+    "pdfCreationDate": "2025-07-31T00:43:00+02:00",
+    "itemCreated": 1753950697000,
+    "itemModified": 1753950716000,
+    "projectNumber": "21.023",
+    "stage": "Bauprojekt",
+    "scale": "1:500",
+    "pages": 1,
+    "stopLabels": [
+      "Grienbach Süd",
+      "Grienbach Nord",
+      "Oberallmend Ost",
+      "Oberallmend West"
+    ],
+    "attribution": "Stadt Zug, Gemeinde Baar, WWZ, Korporation Baar-Dorf; drawing: Bänziger Partner AG and Go Bau AG",
+    "extraction": "pdftotext; entire page rendered and visually reviewed, with enlarged title block",
+    "use": "End-state design evidence only. The city story explicitly places the PDF under Endzustand. It supplies no fixture-valid temporary platform designation, SLOID mapping, or operating-direction certificate. No coordinates are digitised or used in the feed. ArcGIS extent, spatialReference, accessInformation and licenseInfo are empty; no geometry-reuse licence is inferred.",
+    "dateCaveat": "The printed project date is later than both PDF creation and ArcGIS upload. All are recorded literally and none is treated as an in-service or survey date."
+  }
 }

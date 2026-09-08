@@ -1,0 +1,16 @@
+Producer:        ODA PDF Export v23.10.0.0 (v23.10.0.0)
+CreationDate:    Thu Jul 31 00:43:00 2025 CEST
+Custom Metadata: no
+Metadata Stream: no
+Tagged:          no
+UserProperties:  no
+Suspects:        no
+Form:            none
+JavaScript:      no
+Pages:           1
+Encrypted:       no
+Page size:       3573 x 2527 pts
+Page rot:        0
+File size:       3368862 bytes
+Optimized:       no
+PDF version:     1.7
