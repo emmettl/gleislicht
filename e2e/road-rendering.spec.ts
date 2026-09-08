@@ -23,7 +23,8 @@ async function renderedRoads(page: Page) {
     return {
       lines,
       camera: camera.matrixWorld.toArray(),
-      anchors: group.children.map(sprite => ({ id: sprite.name, position: sprite.position.toArray() })),
+      anchors: (group.userData.anchors as { id: string; position: THREE.Vector3 }[]).map(anchor => ({ id: anchor.id, position: anchor.position.toArray() })),
+      attached: group.children.map(sprite => ({ id: sprite.name, position: sprite.position.toArray(), visible: sprite.visible })),
       visible: group.children.filter(sprite => sprite.visible).map(sprite => sprite.name),
     }
   })
@@ -44,6 +45,11 @@ test('motorway geometry and fixed labels survive empty traffic and road selectio
   await expect(page.locator('.network-card .road-count')).toHaveAttribute('aria-label', /^0 estimated road vehicles/)
   await expect.poll(async () => (await renderedRoads(page))?.visible.length ?? 0).toBeGreaterThan(0)
   const overview = (await renderedRoads(page))!
+  expect(overview.attached.length).toBeLessThan(overview.anchors.length)
+  for (const sprite of overview.attached) {
+    expect(sprite.visible).toBe(true)
+    expect(sprite.position).toEqual(overview.anchors.find(anchor => anchor.id === sprite.id)?.position)
+  }
   expect(overview.lines).toHaveLength(2)
   for (const line of overview.lines) {
     expect(line.vertices).toBeGreaterThan(0)
@@ -60,6 +66,10 @@ test('motorway geometry and fixed labels survive empty traffic and road selectio
   const original = new Map(overview.anchors.map(anchor => [anchor.id, anchor.position]))
   expect(selected.anchors).toHaveLength(overview.anchors.length)
   for (const anchor of selected.anchors) expect(anchor.position).toEqual(original.get(anchor.id))
+  for (const sprite of selected.attached) {
+    expect(sprite.visible).toBe(true)
+    expect(sprite.position).toEqual(original.get(sprite.id))
+  }
   for (const line of selected.lines) {
     expect(line.vertices).toBeGreaterThan(0)
     expect(line.opacity).toBeGreaterThanOrEqual(0.15)

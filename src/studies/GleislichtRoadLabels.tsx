@@ -71,12 +71,15 @@ export function GleislichtRoadLabels({ topology, projection, selectedRoadId, sub
         sprite.position.copy(anchor.position)
         sprite.visible = false
         sprite.renderOrder = 19
-        group.add(sprite)
         return { anchor, sprite }
       })
       return { texture, material, sprites, anchors }
     })
-    return { group, entries, anchors: entries.flatMap(entry => entry.anchors), visible: new Set<string>() }
+    const anchors = entries.flatMap(entry => entry.anchors)
+    // Keep canonical anchors available independently of which pooled sprites are
+    // attached. Hidden badges must not incur scene-graph updates every frame.
+    group.userData.anchors = anchors
+    return { group, entries, anchors, visible: new Set<string>() }
   }, [projection, selectedRoadId, subdued, topology])
 
   useEffect(() => () => {
@@ -103,6 +106,8 @@ export function GleislichtRoadLabels({ topology, projection, selectedRoadId, sub
         sprite.scale.set(LABEL_WIDTH * pixelScale, LABEL_HEIGHT * pixelScale, 1)
         // oxlint-disable-next-line react/immutability -- Three.js scene objects are updated imperatively in useFrame.
         sprite.visible = resources.visible.has(anchor.id)
+        if (sprite.visible && sprite.parent !== resources.group) resources.group.add(sprite)
+        else if (!sprite.visible && sprite.parent === resources.group) resources.group.remove(sprite)
       }
     }
   })
