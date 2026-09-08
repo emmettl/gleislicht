@@ -48,6 +48,8 @@ npm run worker:build
 npm run check:bundle
 ```
 
+CI checks the fixture build and payload budget first, then runs two Chromium shards, one iPhone WebKit runner and the live timetable build concurrently. Each browser runner uses one worker; deployment waits for every browser shard and the live publication gates. Reports include wall time and the ten slowest tests. See [CI timings and local shard commands](docs/CI.md).
+
 Keyboard controls: `Space` pauses or resumes; `C` returns to or switches from the national view.
 
 Search the national view by station, service, train number, origin, or destination. The result list supports arrow-key navigation, Home/End, Enter to select, and Escape to close. Selecting a train isolates its scheduled path and carries the camera down to follow it. Selecting a station centres the map, marks the station, and illuminates the complete scheduled paths of every service calling there in the morning study. Train lights are colour-coded by service class from international and InterCity through S-Bahn and regional services.

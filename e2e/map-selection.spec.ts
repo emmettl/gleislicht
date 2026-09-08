@@ -6,8 +6,8 @@ import type { StationIndexEntry } from '@motionstudies/core/domain/network'
 
 // Read the renderer's public R3F root in the development test server. No
 // production debug endpoint or duplicate train-position calculation is needed.
-async function renderedTarget(page: Page, kind: 'station' | 'train') {
-  return page.evaluate(async kind => {
+async function renderedTarget(page: Page, kind: 'station' | 'train', touch: boolean) {
+  return page.evaluate(async ({ kind, touch }) => {
     const fiberUrl = performance.getEntriesByType('resource').find(entry => entry.name.includes('/@react-three_fiber.js'))?.name
     if (!fiberUrl) return
     const { _roots } = await import(fiberUrl)
@@ -26,10 +26,11 @@ async function renderedTarget(page: Page, kind: 'station' | 'train') {
     const add = (position: THREE.Vector3, text: string) => {
       position.project(camera)
       if (position.z < -1 || position.z > 1) return
-      const x = rect.left + (position.x * 0.5 + 0.5) * rect.width
-      const y = rect.top + (0.5 - position.y * 0.5) * rect.height
+      // Validate the integer coordinates that Playwright actually taps.
+      const x = Math.round(rect.left + (position.x * 0.5 + 0.5) * rect.width)
+      const y = Math.round(rect.top + (0.5 - position.y * 0.5) * rect.height)
       if (document.elementFromPoint(x, y) !== gl.domElement) return
-      const hit = pickMapTarget(scene, camera, rect, x, y, false, stations)
+      const hit = pickMapTarget(scene, camera, rect, x, y, touch, stations)
       const hitText = hit?.kind === 'station' ? hit.value.name
         : hit?.kind === 'train' ? `${hit.value.route} ${hit.value.shortName} → ${hit.value.headsign}` : undefined
       if (hit?.kind === kind && text === hitText) candidates.push({ x, y, text })
@@ -53,8 +54,9 @@ async function renderedTarget(page: Page, kind: 'station' | 'train') {
         }
       }
     })
-    return candidates[0]
-  }, kind)
+    const target = candidates[0]
+    return target && { ...target, camera: camera.matrixWorld.elements.map(value => value.toFixed(5)).join(',') }
+  }, { kind, touch })
 }
 
 for (const kind of ['station', 'train'] as const) {
@@ -65,7 +67,15 @@ for (const kind of ['station', 'train'] as const) {
     // playing to exercise callbacks changing while a pointer is held down.
     if (kind === 'train') await page.getByRole('button', { name: /Pause motion/i }).click()
     let target: Awaited<ReturnType<typeof renderedTarget>>
-    await expect.poll(async () => { target = await renderedTarget(page, kind); return Boolean(target) }).toBe(true)
+    let previousCamera = ''
+    // A visible label can precede the opening camera transition finishing.
+    // Keep playback active, but wait for stable screen coordinates before tapping.
+    await expect.poll(async () => {
+      target = await renderedTarget(page, kind, isMobile)
+      const settled = Boolean(target && target.camera === previousCamera)
+      previousCamera = target?.camera ?? ''
+      return settled
+    }).toBe(true)
     if (isMobile) await page.touchscreen.tap(target!.x, target!.y)
     else {
       await page.mouse.move(target!.x, target!.y)

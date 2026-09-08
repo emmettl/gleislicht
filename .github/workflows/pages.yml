@@ -18,7 +18,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
+  check:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -51,20 +51,57 @@ jobs:
       - name: Check realtime edge adapter
         run: npm run worker:check && npm run worker:build
 
-      - name: Install browser test engines
-        run: npx playwright install --with-deps chromium webkit
+      # Catch code and payload regressions before starting the expensive jobs.
+      - name: Build committed fixtures and check publication budgets
+        run: npm run build && npm run check:bundle && npm run pages:prepare
 
+  e2e:
+    needs: check
+    name: Browser tests (${{ matrix.project }}, ${{ matrix.shard }}/${{ matrix.shards }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        # Chromium took ~15 minutes versus WebKit's ~6 in run 34226664670.
+        # Split individual Chromium tests; keep one WebGL worker per machine.
+        include:
+          - { project: desktop-chromium, browser: chromium, shard: 1, shards: 2 }
+          - { project: desktop-chromium, browser: chromium, shard: 2, shards: 2 }
+          - { project: iphone-webkit, browser: webkit, shard: 1, shards: 1 }
+    env:
+      E2E_SUITE: ${{ matrix.project }}-${{ matrix.shard }}
+      E2E_PROJECT: ${{ matrix.project }}
+      E2E_SHARD: ${{ matrix.shard }}/${{ matrix.shards }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Node
+        uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Set up npm
+        run: npm install --global npm@11.19.0 --ignore-scripts
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install browser test engine
+        run: npx playwright install --with-deps ${{ matrix.browser }}
+
+      # Renderer assertions inspect Vite's development R3F module. Each runner
+      # retains the committed demo fixtures, independently of the live refresh.
       - name: Browser regression tests
         id: e2e
-        env:
-          E2E_SUITE: Gleislicht
-        run: npm run test:e2e:ci
+        run: npm run test:e2e:ci -- --project="$E2E_PROJECT" --shard="$E2E_SHARD" --workers=1
       - name: Upload E2E report, screenshots and traces
         id: e2e-report
         if: ${{ !cancelled() && (steps.e2e.outcome == 'success' || steps.e2e.outcome == 'failure') }}
         uses: actions/upload-artifact@v7
         with:
-          name: e2e-report
+          name: e2e-report-${{ matrix.project }}-${{ matrix.shard }}
           path: |
             playwright-report/
             test-results/
@@ -77,9 +114,26 @@ jobs:
         run: |
           printf '\n[Download E2E reports, screenshots and traces](%s)\n' "$REPORT_URL" >> "$GITHUB_STEP_SUMMARY"
 
-      # Keep the browser suite on the committed demo fixtures. The live
-      # timetable deliberately has a different feed version until the
-      # compatibility gate below approves its realtime counterpart.
+  build:
+    needs: check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Node
+        uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Set up npm
+        run: npm install --global npm@11.19.0 --ignore-scripts
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Refresh live data while the isolated browser runners test demo fixtures.
       - name: Resolve current Swiss service date
         id: edition
         shell: bash
@@ -164,7 +218,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    needs: build
+    needs: [build, e2e]
     steps:
       - name: Deploy to GitHub Pages
         id: deployment

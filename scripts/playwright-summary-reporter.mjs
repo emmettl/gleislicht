@@ -5,6 +5,7 @@ import { stripVTControlCharacters } from 'node:util'
 const escape = value => stripVTControlCharacters(value).replace(/[&<>]/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' })[character])
 const code = value => `<code>${escape(value)}</code>`
 const errorText = error => error.message || error.value || 'No error message supplied'
+const duration = milliseconds => `${(milliseconds / 1000).toFixed(1)}s`
 
 /** Append final outcomes, including retries and runner errors, to the Actions run summary. */
 export default class PlaywrightSummaryReporter {
@@ -30,6 +31,8 @@ export default class PlaywrightSummaryReporter {
       '',
       `**Run status: ${result.status}.** ${groups.unexpected.length} failed · ${groups.flaky.length} flaky (passed on retry) · ${groups.expected.length} expected outcomes · ${groups.skipped.length} skipped.`,
       '',
+      `Wall time: **${duration(result.duration)}**. Test time including retries: **${duration(tests.reduce((total, test) => total + test.results.reduce((sum, attempt) => sum + attempt.duration, 0), 0))}**.`,
+      '',
     ]
     for (const [heading, entries] of [['Failed tests', groups.unexpected], ['Flaky tests', groups.flaky]]) {
       if (!entries.length) continue
@@ -49,8 +52,20 @@ export default class PlaywrightSummaryReporter {
     if (this.errors.length) {
       lines.push('### Runner errors', '', ...this.errors.map(error => `<pre>${escape(errorText(error).slice(0, 3000))}</pre>\n`))
     }
+    const slowest = tests
+      .filter(test => test.results.some(attempt => attempt.status !== 'skipped'))
+      .map(test => ({ test, elapsed: test.results.reduce((sum, attempt) => sum + attempt.duration, 0) }))
+      .sort((first, second) => second.elapsed - first.elapsed)
+      .slice(0, 10)
+    if (slowest.length) {
+      lines.push('### Slowest tests (including retries)', '')
+      for (const { test, elapsed } of slowest) {
+        lines.push(`- **${duration(elapsed)}** — ${code(test.parent.project()?.name || 'default')} — ${code(test.titlePath().slice(3).join(' › ') || test.title)} (${test.results.length} attempt(s))`)
+      }
+      lines.push('')
+    }
     if (!tests.length) lines.push('No tests completed discovery. Check runner errors or the E2E step for setup failures.', '')
-    lines.push('The **e2e-report** artifact contains the HTML reports, screenshots and traces.', '')
+    lines.push('This job’s **e2e-report-…** artifact contains the HTML reports, screenshots and traces.', '')
     appendFileSync(process.env.GITHUB_STEP_SUMMARY, `${lines.join('\n')}\n`)
   }
 }

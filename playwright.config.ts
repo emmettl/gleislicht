@@ -6,17 +6,17 @@ const runningInCi = Boolean(
 
 export default defineConfig({
   testDir: './e2e',
-  fullyParallel: false,
+  // Let CI shards divide individual tests, including the large core spec.
+  // workers: 1 below still prevents concurrent WebGL rendering on a runner.
+  fullyParallel: runningInCi,
   timeout: 90_000,
   expect: { timeout: 15_000 },
   forbidOnly: true,
-  // Hosted WebKit occasionally loses a software-rendered WebGL context while
-  // the Chromium project is rendering in parallel. Retry that isolated test
-  // once in CI; local runs remain strict and immediate.
+  // Retry transient hosted software-renderer failures once in CI.
   retries: runningInCi ? 1 : 0,
   // Two continuously rendered WebGL editions can starve Chromium's input and
   // animation loop on the shared CI runner. Keep local feedback parallel, but
-  // make the publication gate deterministic.
+  // run CI shards on separate runners with one worker each.
   workers: runningInCi ? 1 : 2,
   reporter: runningInCi
     ? [
