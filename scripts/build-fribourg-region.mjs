@@ -61,7 +61,11 @@ export async function buildFribourgRegion({ archive, sourceDirectory = 'data/fri
   if (rail) {
     hashes.rail = crosswalk.rail.sourceMetadataSha256
     hashes.railInputs = crosswalk.rail.inputsSha256
-    provenance.rail = { ...rail.source, policy: crosswalk.rail, completePatternsTested: rail.patterns.length }
+    if (rail.review) {
+      hashes.railReview = rail.review.policySha256
+      await writeJson(join(auditDirectory, 'rail-review.json'), rail.review, true)
+    }
+    provenance.rail = { ...rail.source, ...(rail.review ? { reviewedSupplement: { policySha256: rail.review.policySha256, source: rail.review.source, policy: rail.review.policy } } : {}), policy: crosswalk.rail, completePatternsTested: rail.patterns.length }
     await writeJson(join(auditDirectory, 'rail-patterns.json'), rail.patterns)
     await writeJson(join(auditDirectory, 'rail-source-segments.json'), rail.sourceInventory, true)
   }
@@ -99,12 +103,15 @@ export async function buildFribourgRegion({ archive, sourceDirectory = 'data/fri
     assert.equal(roadEffect.lostAdmittedTrips, 0)
     const beforeRail = new Set(result.trains.filter(t => t.admission === 'admitted').map(t => t.id))
     if (rail) applyFribourgRail(result, rail)
+    const reviewedPaths = new Set(result.pairs.filter(p => p.railFallback?.railReview && p.pathIndex !== null).map(p => JSON.stringify([p.routeId, p.pathIndex])))
     const railEffect = { patternsTestedAcrossBothDates: rail?.patterns.length ?? 0,
       newlyAdmittedTrips: result.trains.filter(t => t.admission === 'admitted' && !beforeRail.has(t.id)).length,
       lostAdmittedTrips: result.trains.filter(t => t.admission !== 'admitted' && beforeRail.has(t.id)).length,
       matchedDirectedPairs: result.pairs.filter(p => p.geometrySource === 'fot-rail-inference').length,
       matchedSegmentOccurrences: result.pairs.filter(p => p.geometrySource === 'fot-rail-inference').reduce((n, p) => n + p.occurrences, 0),
-      admittedSegmentOccurrences: result.pairs.filter(p => p.geometrySource === 'fot-rail-inference').reduce((n, p) => n + p.admittedOccurrences, 0) }
+      admittedSegmentOccurrences: result.pairs.filter(p => p.geometrySource === 'fot-rail-inference').reduce((n, p) => n + p.admittedOccurrences, 0),
+      reviewedPairs: result.pairs.filter(p => p.railFallback?.railReview).length,
+      reviewedJourneys: result.trains.filter(t => t.admission === 'admitted' && t.pathSegments.some(i => reviewedPaths.has(JSON.stringify([t.routeId, i])))).length }
     assert.equal(railEffect.lostAdmittedTrips, 0)
     routeCrosswalk = result.routeCrosswalk
     const groups = []
@@ -123,10 +130,10 @@ export async function buildFribourgRegion({ archive, sourceDirectory = 'data/fri
     const snapshot = compactBernFeed(raw, result)
     snapshot.metadata = { ...snapshot.metadata, publisher: 'Gleislicht', timetablePublisher: 'SBB', attribution: 'opentransportdata.swiss',
       label: 'Fribourg canton — archival source-line study', releaseStatus: 'archival-study', publicRedistributionCleared: source.metadata.publicRedistributionCleared, sourceHashes: hashes, timetable: provenance.timetable,
-      model: 'Scheduled interpolation along cantonal source centrelines and explicitly tagged inferred OSM road/FOT rail fallback; exactTimes=0 instances are representative headway motion, not exact departures or observed vehicles.',
+      model: 'Scheduled interpolation along cantonal source centrelines and explicitly tagged inferred OSM road and FOT/SBB rail fallback; exactTimes=0 instances are representative headway motion, not exact departures or observed vehicles.',
       ...(rail ? { railGeometry: provenance.rail } : {}),
       ...(roads ? { roadGeometry: provenance.roads, derivedGeometryDatabaseLicense: { name: 'ODbL-1.0', url: crosswalk.roads.licenseUrl,
-        attribution: 'Source: Etat de Fribourg; © OpenStreetMap contributors; © Federal Office of Transport (FOT)', note: 'Combined derived geometry database; timetable and boundary sources retain their separate credits and terms.' } } : {}),
+        attribution: 'Source: Etat de Fribourg; © OpenStreetMap contributors; © Federal Office of Transport (FOT); SBB Infrastructure / data.sbb.ch', note: 'Combined derived geometry database; timetable and boundary sources retain their separate credits and terms.' } } : {}),
       scope: timetable.census.boundaryRule, admission: 'Only complete directed patterns with every segment passing geometry limits and no reservation/on-demand call. Exclusions retained in the canton audit.',
       geometry: { ...source.metadata, transformation: 'swisstopo approximate CH1903+/WGS84 formula; original LV95 vertices, no simplification, seven-decimal output coordinates',
         crosswalkSupportingDocuments: crosswalk.supportingDocuments ?? [],
@@ -216,7 +223,7 @@ export async function buildFribourgRegion({ archive, sourceDirectory = 'data/fri
     scopeLimits: ['GTFS fixed-stop archive and all cantonal line records inventoried; services absent from both sources and GTFS-Flex service areas are not a verified census of every real-world service.',
       'Two September civil days do not establish holiday, winter or year-round pattern coverage.',
       'Cross-boundary journeys keep all calls. Entire patterns still failing any segment after the audited road and rail fallback are excluded; a source extent alone never truncates a trip.',
-      'Geometry combines cantonal line, inferred OSM road and inferred FOT rail paths; not observed movement, legal one-way validation, running-track selection or temporary diversion confirmation.'],
+      'Geometry combines cantonal line, inferred OSM road and inferred FOT/SBB rail paths; not observed movement, legal one-way validation, running-track selection or temporary diversion confirmation.'],
   }
   await writeJson(join(auditDirectory, 'summary.json'), summary, true)
   await writeJson(join(auditDirectory, 'routes.json'), inventory, true)
@@ -227,7 +234,7 @@ export async function buildFribourgRegion({ archive, sourceDirectory = 'data/fri
   for (const document of crosswalk.supportingDocuments ?? []) await copyFile(join(sourceDirectory, document.file), join(output, document.file))
   await writeJson(join(output, 'index.json'), { label: 'Fribourg canton local archival regional feed', publicRedistributionCleared: source.metadata.publicRedistributionCleared,
     ...(roads ? { derivedGeometryDatabaseLicense: 'ODbL-1.0', licenseUrl: crosswalk.roads.licenseUrl,
-      attribution: 'opentransportdata.swiss; Source: Etat de Fribourg; © OpenStreetMap contributors; © Federal Office of Transport (FOT); © swisstopo' } : {}), sourceHashes: hashes, dates: dates.map(date => ({ date,
+      attribution: 'opentransportdata.swiss; Source: Etat de Fribourg; © OpenStreetMap contributors; © Federal Office of Transport (FOT); SBB Infrastructure / data.sbb.ch; © swisstopo' } : {}), sourceHashes: hashes, dates: dates.map(date => ({ date,
     manifest: `${date}/fribourg-region-day-manifest.json`, morning: `${date}/fribourg-region-morning.json` })), admission: 'Complete geometry patterns only; see docs/FRIBOURG-STUDY.md and data/fribourg-audit for exclusions.' }, true)
   return summary
 }

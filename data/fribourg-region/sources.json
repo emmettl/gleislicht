@@ -360,6 +360,169 @@
         "retrievedAt": "2026-09-08T19:34:51.906Z"
       }
     ],
+    "reviewedSupplement": {
+      "policySha256": "5070023bef19b35c1df3fb12a5b27e090d7a4ff0788f75d433a3d8295c4cca64",
+      "source": {
+        "publisher": "SBB Infrastructure / BLS Netz AG",
+        "attribution": "SBB Infrastructure / data.sbb.ch; BLS Netz AG (platform evidence)",
+        "termsUrl": "https://data.sbb.ch/page/licence/",
+        "license": "terms_by",
+        "rights": "NonCommercialAllowed-CommercialAllowed-ReferenceRequired",
+        "modified": "2026-07-29T06:16:28+00:00",
+        "dataProcessed": "2026-09-02T03:01:34+00:00",
+        "note": "One detailed SBB geometry record and two reviewed BLS platform identities. Processing and document dates do not certify actual September running tracks or diversions.",
+        "files": [
+          {
+            "file": "bls-platforms-2026.pdf",
+            "url": "https://www.bls.ch/-/media/bls/pdf/uebrige-pdfs/trassen-netzzugang/infrastruktur-trassen-betriebspunkte.pdf",
+            "role": "BLS platform table: state 2026-05-28, valid from 2026-06-06; Bern–Neuchâtel Kerzers physical tracks 4 and 6.",
+            "sha256": "29a84015910664fe859298c89e347887b7fa5df352c226486691ad77a3f4bd88",
+            "retrievedAt": "2026-09-08T19:51:53.526Z"
+          },
+          {
+            "file": "bls-kerzers.svg",
+            "url": "https://www.bls.ch/-/media/bls/bilder/fahren/fahrplan/lageplaene-ersatzverkehr/kerzers.svg",
+            "role": "BLS station plan version 1.0, state 2023-03-09, valid 2023-03-11; tracks 4/6 on the western branch, distinct from 1/3. Layout evidence, not source geometry.",
+            "sha256": "e0d90a92435d9b17c4851c79e0d7c6c276c208db3c9fbd469a5d34a06f336786",
+            "retrievedAt": "2026-09-08T19:52:27.243Z"
+          },
+          {
+            "file": "sbb-daeniken.json",
+            "url": "https://data.sbb.ch/api/explore/v2.1/catalog/datasets/linie-mit-polygon/records?where=search%28%22D%C3%A4niken%22%29&limit=100",
+            "role": "Complete 21-record query; only line 540 DK→DKO is used, with 44 original vertices and normal-gauge N.",
+            "sha256": "04e0d786dadfd72f0b11230a9e14345b26f61a5b81876cd1a6e9c6348735ca70",
+            "retrievedAt": "2026-09-08T19:51:34.851Z"
+          },
+          {
+            "file": "sbb-metadata.json",
+            "url": "https://data.sbb.ch/api/explore/v2.1/catalog/datasets/linie-mit-polygon",
+            "role": "SBB source metadata and attribution-required licence.",
+            "sha256": "cbd14d2785da7865f4565fbf9aa37ca274ef3aafc44239bc03dd0992e3fd013c",
+            "retrievedAt": "2026-09-08T19:52:27.571Z"
+          },
+          {
+            "file": "sbb-terms.html",
+            "url": "https://data.sbb.ch/page/licence/",
+            "role": "Retained SBB data reuse terms.",
+            "sha256": "985a900c0c0020edaf1dc6239ad3547d9a09db0dc4b72c3a0482ccfd09289f77",
+            "retrievedAt": "2026-09-08T19:52:28.044Z"
+          }
+        ]
+      },
+      "policy": {
+        "schemaVersion": 1,
+        "id": "kerzers-bls-and-daeniken-sbb",
+        "sourceDirectory": "data/fribourg-rail-review-sources",
+        "sourceSha256": "6d3f03156b90d522a0daed2f031d57062c9416f5c73dcd8cbb3e96e9a0882ce6",
+        "fotSha256": "2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+        "inputsSha256": "434a02eb6906bb141a00ba6b7c77622767b78262617326d6aed56fa683cd8046",
+        "limits": {
+          "simplificationMetres": 5,
+          "stationAttachmentMetres": 350,
+          "topologyAttachmentMetres": 120,
+          "detourRatio": 2.5,
+          "detourFloorMetres": 3000
+        },
+        "routes": [
+          {
+            "routeId": "91-1-D-j26-1",
+            "agencyId": "11",
+            "line": "IC1",
+            "gauge": "mm1435"
+          },
+          {
+            "routeId": "91-66-A-j26-1",
+            "agencyId": "33",
+            "line": "IR66",
+            "gauge": "mm1435"
+          }
+        ],
+        "kerzers": {
+          "routeId": "91-66-A-j26-1",
+          "sourceNumber": "8504400",
+          "node": {
+            "id": "ch14uvag00089383",
+            "number": "8516192",
+            "name": "Kerzers BLS",
+            "coordinate": [
+              7.19169,
+              46.975655
+            ]
+          },
+          "stops": [
+            {
+              "stop_id": "ch:1:sloid:4400:2:4",
+              "stop_name": "Kerzers",
+              "platform_code": "4",
+              "stop_lon": 7.19124741,
+              "stop_lat": 46.97639508
+            },
+            {
+              "stop_id": "ch:1:sloid:4400:3:6",
+              "stop_name": "Kerzers",
+              "platform_code": "6",
+              "stop_lon": 7.19112165,
+              "stop_lat": 46.97630315
+            }
+          ],
+          "explanation": "Only BLS IR66 calls on reviewed physical platforms 4/6 use FOT Kerzers BLS 8516192. Original GTFS IDs and coordinates remain unchanged; no SBB-side station merge or nearest-name substitution."
+        },
+        "daeniken": {
+          "routeId": "91-1-D-j26-1",
+          "id": "sbb-540-dk-dko",
+          "feature": [
+            540,
+            "DK",
+            "DKO",
+            45673.43,
+            46100
+          ],
+          "vertices": 44,
+          "nodes": [
+            {
+              "id": "ch14uvag00089021",
+              "number": "8502111",
+              "name": "Däniken SO",
+              "coordinate": [
+                7.978776,
+                47.356387
+              ]
+            },
+            {
+              "id": "ch14uvag00089022",
+              "number": "8502143",
+              "name": "Däniken Ost",
+              "coordinate": [
+                7.983524,
+                47.358475
+              ]
+            }
+          ],
+          "originalSegment": {
+            "id": "ch14uvag00087837",
+            "start": "ch14uvag00089021",
+            "end": "ch14uvag00089022",
+            "length": 426.57032662591087,
+            "points": [
+              [
+                7.978716,
+                47.356458
+              ],
+              [
+                7.983591,
+                47.358392
+              ]
+            ],
+            "gauge": "mm1000",
+            "sourceDate": "2021-07-06",
+            "validFrom": "2013-07-03",
+            "operator": "SBB CFF FFS"
+          },
+          "explanation": "FOT DK–DKO says mm1000. Retain that rejection unchanged; add the independent SBB N-gauge 44-vertex record for IC1 only. Other SBB query records are excluded from this review."
+        },
+        "admission": "Fill only previously failed pairs with a complete-context consensus carrying the specific review evidence. Existing admitted geometry and all call identities/times remain unchanged. No global gauge correction or station-distance increase."
+      }
+    },
     "policy": {
       "sourceDirectory": "data/fribourg-rail-sources",
       "sourceMetadataSha256": "7ea92c8c1120a49e9497ec3ae6d7a0d2fc2d761e8b19d790191ed7a6c0212c79",
@@ -582,13 +745,17 @@
           "gauge": "mm1435"
         }
       ],
-      "admission": "Fill failed cantonal rail pairs using exact operating-point numbers and standard-gauge infrastructure. All full directed pattern contexts must agree; block other called stations out of order. Keep all original calls and existing accepted paths. No nearest-station, operator-name or platform override. Meter-gauge, gauge-changing and unreviewed TPF special routes remain outside this supplement.",
+      "admission": "Fill failed cantonal rail pairs using exact operating-point numbers and standard-gauge infrastructure. All full directed pattern contexts must agree; block other called stations out of order. Keep all original calls and existing accepted paths. No general nearest-station or operator-name substitution; only separately hashed Kerzers platform and SBB Däniken reviews may fill the original failures. Meter-gauge, gauge-changing and unreviewed TPF special routes remain outside this supplement.",
       "inputs": "data/fribourg-rail-inputs.json",
       "timetableSourceHashes": {
         "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
         "source": "e8523af34fcedca7f8b0cbe495446ff93a75d8563c62b243da942c39c5243f47"
       },
-      "inputsSha256": "434a02eb6906bb141a00ba6b7c77622767b78262617326d6aed56fa683cd8046"
+      "inputsSha256": "434a02eb6906bb141a00ba6b7c77622767b78262617326d6aed56fa683cd8046",
+      "review": {
+        "file": "data/fribourg-rail-review-policy.json",
+        "sha256": "5070023bef19b35c1df3fb12a5b27e090d7a4ff0788f75d433a3d8295c4cca64"
+      }
     },
     "completePatternsTested": 412
   }

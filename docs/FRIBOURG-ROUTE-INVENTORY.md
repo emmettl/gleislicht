@@ -5,7 +5,7 @@ Generated from the [Fribourg audit](FRIBOURG-STUDY.md). Every one of the 207 ann
 | Agency | Line | GTFS route ID | Mode | Districts | Source feature IDs | Friday trips; patterns | Sunday trips; patterns | Status |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 11 | IR15 | 91-15-B-j26-1 | rail | La Glâne, La Sarine, Sense | — | 42/44; 23/25 | 42/44; 19/21 | Partially admitted |
-| 11 | IC1 | 91-1-D-j26-1 | rail | La Glâne, La Sarine | — | 33/37; 18/22 | 24/27; 15/18 | Partially admitted |
+| 11 | IC1 | 91-1-D-j26-1 | rail | La Glâne, La Sarine | — | 36/37; 21/22 | 27/27; 18/18 | Partially admitted |
 | 33 | S | 91-1D-Y-j26-1 | rail | Sense | — | 0/0; 0/0 | 0/0; 0/0 | Inactive on both dates |
 | 33 | S1 | 91-1-E-j26-1 | rail | La Sarine, Sense | 12 | 80/80; 14/14 | 81/82; 20/21 | Partially admitted |
 | 53 | S20 | 91-20-B-j26-1 | rail | La Sarine, See | 10 | 43/43; 14/14 | 78/78; 14/14 | All dated trips admitted |
@@ -35,7 +35,7 @@ Generated from the [Fribourg audit](FRIBOURG-STUDY.md). Every one of the 207 ann
 | 33 | S52 | 91-52-j26-1 | rail | La Broye, See | 15 | 90/90; 20/20 | 40/40; 8/8 | All dated trips admitted |
 | 33 | S5 | 91-5-j26-1 | rail | See | 14 | 118/118; 23/23 | 108/108; 18/18 | All dated trips admitted |
 | 33 | S | 91-5O-Y-j26-1 | rail | See | — | 0/0; 0/0 | 0/0; 0/0 | Inactive on both dates |
-| 33 | IR66 | 91-66-A-j26-1 | rail | See | — | 0/40; 0/11 | 0/38; 0/13 | Excluded |
+| 33 | IR66 | 91-66-A-j26-1 | rail | See | — | 23/40; 8/11 | 22/38; 8/13 | Partially admitted |
 | 53 | EXT | 91-7C-Y-j26-1 | rail | La Broye, La Sarine | — | 0/0; 0/0 | 0/0; 0/0 | Inactive on both dates |
 | 11 | R7 | 91-7-N-j26-1 | rail | La Glâne | — | 0/0; 0/0 | 0/0; 0/0 | Inactive on both dates |
 | 11 | EXT | 91-7N-Y-j26-1 | rail | La Broye, La Glâne, See | — | 0/0; 0/0 | 0/0; 0/0 | Inactive on both dates |

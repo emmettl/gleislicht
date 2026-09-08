@@ -4,6 +4,7 @@ import { join, resolve } from 'node:path'
 import { pathToFileURL } from 'node:url'
 import { gunzipSync } from 'node:zlib'
 import { loadLuzernRail, luzernRailInputs } from './luzern-rail-geometry.mjs'
+import { loadFribourgRailReview } from './fribourg-rail-review.mjs'
 import { sha256, hashFile } from './fribourg-timetable.mjs'
 
 const json = async file => JSON.parse(await readFile(file, 'utf8'))
@@ -36,6 +37,7 @@ export async function prepareFribourgRail(timetablePath) {
     assert.equal(await hashFile(join('data/thurgau-rail-sources', file)), hash)
     await copyFile(join('data/thurgau-rail-sources', file), join(directory, file))
   }
+  const previous = await json(join(directory, 'source.json')).catch(error => { if (error.code !== 'ENOENT') throw error; return { supportingDocuments: [] } })
   const evidence = [
     { file: 'tpf-network-statement-2026-vn.pdf', dataUpdated: '2026-01-01', version: '3.5', url: 'https://www.tpf.ch/Portals/0/Images/Fichiers//A%20propos%20des%20TPF//activite%20infra/33000_20260101_network_statement%202026%20final%20VN_v3.5.pdf', purpose: 'TPF standard-gauge Fribourg–Ins and Broc–Romont corridors; gauge evidence, not geometry vintage.' },
     { file: 'tpf-verrerie-works.html', url: 'https://www.tpf.ch/fr/horaires-et-reseaux/perturbations-et-travaux/travaux-sur-le-troncon-ferroviaire-la-verrerie-vaulruz-sud', purpose: 'Sunday 6 September 2026 from 21:00: no S50/S51 trains Bulle–Semsales. Also identifies 2025–2027 metric-line rebuilding; no new FOT admission of that altered corridor.' },
@@ -44,7 +46,9 @@ export async function prepareFribourgRail(timetablePath) {
     const file = join(directory, record.file), bytes = await readFile(file)
     if (record.file.endsWith('.pdf')) assert.equal(bytes.subarray(0, 5).toString(), '%PDF-', 'Expected a PDF, not a soft-404 HTML page')
     else assert(bytes.toString().includes('Semsales') && bytes.toString().includes('2026'), 'Missing works notice content')
-    record.sha256 = sha256(bytes); record.retrievedAt = (await stat(file)).mtime.toISOString()
+    record.sha256 = sha256(bytes)
+    const retained = previous.supportingDocuments?.find(d => d.file === record.file && d.sha256 === record.sha256)
+    record.retrievedAt = retained?.retrievedAt ?? (await stat(file)).mtime.toISOString()
   }
   const provenance = { ...source, catalogueLicense: source.license,
     reuseNote: 'Reused the hashed national FOT snapshot already acquired for Thurgau. No fresh acquisition or current-alignment claim. Explicit TPF gauge and dated works evidence accompany this Fribourg application.',
@@ -52,9 +56,10 @@ export async function prepareFribourgRail(timetablePath) {
   delete provenance.license
   await writeFile(join(directory, 'source.json'), JSON.stringify(provenance, null, 2) + '\n')
   const policyPath = 'data/fribourg-policy.json', policy = await json(policyPath)
-  policy.rail = { sourceDirectory: directory, sourceMetadataSha256: await hashFile(join(directory, 'source.json')), limits: FRIBOURG_RAIL_LIMITS,
+  const review = policy.rail?.review
+  policy.rail = { ...(review ? { review } : {}), sourceDirectory: directory, sourceMetadataSha256: await hashFile(join(directory, 'source.json')), limits: FRIBOURG_RAIL_LIMITS,
     routes: fribourgRailScope(timetable),
-    admission: 'Fill failed cantonal rail pairs using exact operating-point numbers and standard-gauge infrastructure. All full directed pattern contexts must agree; block other called stations out of order. Keep all original calls and existing accepted paths. No nearest-station, operator-name or platform override. Meter-gauge, gauge-changing and unreviewed TPF special routes remain outside this supplement.',
+    admission: 'Fill failed cantonal rail pairs using exact operating-point numbers and standard-gauge infrastructure. All full directed pattern contexts must agree; block other called stations out of order. Keep all original calls and existing accepted paths. No general nearest-station or operator-name substitution; only separately hashed Kerzers platform and SBB Däniken reviews may fill the original failures. Meter-gauge, gauge-changing and unreviewed TPF special routes remain outside this supplement.',
     inputs: 'data/fribourg-rail-inputs.json', timetableSourceHashes: timetable.sourceHashes }
   const inputs = luzernRailInputs(fribourgRailRaw(timetable), policy.rail)
   await writeFile(policy.rail.inputs, JSON.stringify(inputs) + '\n')
@@ -71,7 +76,8 @@ export async function loadFribourgRail(timetable, policy) {
   }
   const result = await loadLuzernRail(policy, timetable ? fribourgRailRaw(timetable) : undefined)
   for (const doc of result.source.supportingDocuments) assert.equal(await hashFile(join(policy.sourceDirectory, doc.file)), doc.sha256)
-  return { ...result, policy }
+  const reviewed = policy.review ? await loadFribourgRailReview(policy, result) : {}
+  return { ...result, ...reviewed, policy }
 }
 
 export function applyFribourgRail(result, rail) {
@@ -98,6 +104,7 @@ export function applyFribourgRail(result, rail) {
     p.pathSegments = p.stopIds.slice(1).map((to, i) => pairs.get(JSON.stringify([p.routeId, p.stopIds[i], to])).pathIndex)
     p.matchedSegments = p.pathSegments.filter(i => i !== null).length
     p.railSegments = p.stopIds.slice(1).filter((to, i) => pairs.get(JSON.stringify([p.routeId, p.stopIds[i], to])).geometrySource === 'fot-rail-inference').length
+    p.railReviewKinds = [...new Set(p.stopIds.slice(1).map((to, i) => pairs.get(JSON.stringify([p.routeId, p.stopIds[i], to])).railFallback?.railReview?.kind).filter(Boolean))].sort()
     p.admittedTrips = 0; p.decisions = {}
   }
   for (const pair of result.pairs.filter(p => p.mode === 'rail')) pair.admittedOccurrences = 0
@@ -108,6 +115,10 @@ export function applyFribourgRail(result, rail) {
     if (p.railSegments) {
       train.admission = train.reservationRequired ? 'reservation-or-demand-responsive' : p.matchedSegments === p.segmentCount ? 'admitted' : 'incomplete-directed-pattern'
       train.geometrySource = 'cantonal-lines-with-fot-rail-inference'; train.railSegmentCount = p.railSegments
+    }
+    if (p.railReviewKinds.length) {
+      train.railReviewKinds = p.railReviewKinds
+      train.geometrySource = 'cantonal-lines-with-reviewed-rail-inference'
     }
     const admitted = train.admission === 'admitted'
     p.admittedTrips += Number(admitted); p.decisions[train.admission] = (p.decisions[train.admission] ?? 0) + 1

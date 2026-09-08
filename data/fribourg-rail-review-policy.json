@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "id": "kerzers-bls-and-daeniken-sbb",
+  "sourceDirectory": "data/fribourg-rail-review-sources",
+  "sourceSha256": "6d3f03156b90d522a0daed2f031d57062c9416f5c73dcd8cbb3e96e9a0882ce6",
+  "fotSha256": "2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+  "inputsSha256": "434a02eb6906bb141a00ba6b7c77622767b78262617326d6aed56fa683cd8046",
+  "limits": {
+    "simplificationMetres": 5,
+    "stationAttachmentMetres": 350,
+    "topologyAttachmentMetres": 120,
+    "detourRatio": 2.5,
+    "detourFloorMetres": 3000
+  },
+  "routes": [
+    {
+      "routeId": "91-1-D-j26-1",
+      "agencyId": "11",
+      "line": "IC1",
+      "gauge": "mm1435"
+    },
+    {
+      "routeId": "91-66-A-j26-1",
+      "agencyId": "33",
+      "line": "IR66",
+      "gauge": "mm1435"
+    }
+  ],
+  "kerzers": {
+    "routeId": "91-66-A-j26-1",
+    "sourceNumber": "8504400",
+    "node": {
+      "id": "ch14uvag00089383",
+      "number": "8516192",
+      "name": "Kerzers BLS",
+      "coordinate": [
+        7.19169,
+        46.975655
+      ]
+    },
+    "stops": [
+      {
+        "stop_id": "ch:1:sloid:4400:2:4",
+        "stop_name": "Kerzers",
+        "platform_code": "4",
+        "stop_lon": 7.19124741,
+        "stop_lat": 46.97639508
+      },
+      {
+        "stop_id": "ch:1:sloid:4400:3:6",
+        "stop_name": "Kerzers",
+        "platform_code": "6",
+        "stop_lon": 7.19112165,
+        "stop_lat": 46.97630315
+      }
+    ],
+    "explanation": "Only BLS IR66 calls on reviewed physical platforms 4/6 use FOT Kerzers BLS 8516192. Original GTFS IDs and coordinates remain unchanged; no SBB-side station merge or nearest-name substitution."
+  },
+  "daeniken": {
+    "routeId": "91-1-D-j26-1",
+    "id": "sbb-540-dk-dko",
+    "feature": [
+      540,
+      "DK",
+      "DKO",
+      45673.43,
+      46100
+    ],
+    "vertices": 44,
+    "nodes": [
+      {
+        "id": "ch14uvag00089021",
+        "number": "8502111",
+        "name": "Däniken SO",
+        "coordinate": [
+          7.978776,
+          47.356387
+        ]
+      },
+      {
+        "id": "ch14uvag00089022",
+        "number": "8502143",
+        "name": "Däniken Ost",
+        "coordinate": [
+          7.983524,
+          47.358475
+        ]
+      }
+    ],
+    "originalSegment": {
+      "id": "ch14uvag00087837",
+      "start": "ch14uvag00089021",
+      "end": "ch14uvag00089022",
+      "length": 426.57032662591087,
+      "points": [
+        [
+          7.978716,
+          47.356458
+        ],
+        [
+          7.983591,
+          47.358392
+        ]
+      ],
+      "gauge": "mm1000",
+      "sourceDate": "2021-07-06",
+      "validFrom": "2013-07-03",
+      "operator": "SBB CFF FFS"
+    },
+    "explanation": "FOT DK–DKO says mm1000. Retain that rejection unchanged; add the independent SBB N-gauge 44-vertex record for IC1 only. Other SBB query records are excluded from this review."
+  },
+  "admission": "Fill only previously failed pairs with a complete-context consensus carrying the specific review evidence. Existing admitted geometry and all call identities/times remain unchanged. No global gauge correction or station-distance increase."
+}

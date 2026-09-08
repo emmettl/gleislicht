@@ -1,0 +1,393 @@
+{
+  "baselineCommit": "0f9e9a38b3d95c915e79c7823e444ed8371c291d",
+  "sourceHashes": {
+    "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+    "source": "e8523af34fcedca7f8b0cbe495446ff93a75d8563c62b243da942c39c5243f47",
+    "crosswalk": "7aef66abab825ccae7069180040e6b4df5c2e2321c336d45655e22d65be3419c",
+    "provenance": "7d23e09a35768de1cfd598a7ca824ac7c93d03242ff8955e70ca778213549086",
+    "roads": "87f4d4be2662ff0982cea837e95f73863096d4bc37bd19ecc09ea88e064c465e",
+    "rail": "7ea92c8c1120a49e9497ec3ae6d7a0d2fc2d761e8b19d790191ed7a6c0212c79",
+    "railInputs": "434a02eb6906bb141a00ba6b7c77622767b78262617326d6aed56fa683cd8046",
+    "railReview": "5070023bef19b35c1df3fb12a5b27e090d7a4ff0788f75d433a3d8295c4cca64"
+  },
+  "assertions": "Every previously admitted journey retains its original stop identity, coordinates, call permissions, times, direction and segment geometry. Added journeys must carry reviewed rail evidence.",
+  "days": [
+    {
+      "date": "2026-09-04",
+      "previousJourneys": 5255,
+      "presentJourneys": 5281,
+      "addedJourneys": 26,
+      "unchangedOriginalSegmentOccurrences": 81433,
+      "lostJourneys": 0,
+      "newJourneys": [
+        {
+          "id": "service:2026-09-03:.ojp-91-1-D.1.TA.324.j26",
+          "routeId": "91-1-D-j26-1",
+          "reviewKinds": [
+            "sbb-daeniken-curve"
+          ]
+        },
+        {
+          "id": "service:2026-09-03:.ojp-91-66-A.1.TA.125.j26",
+          "routeId": "91-66-A-j26-1",
+          "reviewKinds": [
+            "kerzers-bls-platform"
+          ]
+        },
+        {
+          "id": ".ojp-91-1-D.1.TA.2157.j26",
+          "routeId": "91-1-D-j26-1",
+          "reviewKinds": [
+            "sbb-daeniken-curve"
+          ]
+        },
+        {
+          "id": ".ojp-91-66-A.1.TA.474.j26",
+          "routeId": "91-66-A-j26-1",
+          "reviewKinds": [
+            "kerzers-bls-platform"
+          ]
+        },
+        {
+          "id": ".ojp-91-66-A.1.TA.102.j26",
+          "routeId": "91-66-A-j26-1",
+          "reviewKinds": [
+            "kerzers-bls-platform"
+          ]
+        },
+        {
+          "id": ".ojp-91-66-A.1.TA.443.j26",
+          "routeId": "91-66-A-j26-1",
+          "reviewKinds": [
+            "kerzers-bls-platform"
+          ]
+        },
+        {
+          "id": ".ojp-91-66-A.1.TA.523.j26",
+          "routeId": "91-66-A-j26-1",
+          "reviewKinds": [
+            "kerzers-bls-platform"
+          ]
+        },
+        {
+          "id": ".ojp-91-66-A.1.TA.204.j26",
+          "routeId": "91-66-A-j26-1",
+          "reviewKinds": [
+            "kerzers-bls-platform"
+          ]
+        },
+        {
+          "id": ".ojp-91-66-A.1.TA.438.j26",
+          "routeId": "91-66-A-j26-1",
+          "reviewKinds": [
+            "kerzers-bls-platform"
+          ]
+        },
+        {
+          "id": ".ojp-91-66-A.1.TA.520.j26",
+          "routeId": "91-66-A-j26-1",
+          "reviewKinds": [
+            "kerzers-bls-platform"
+          ]
+        },
+        {
+          "id": ".ojp-91-66-A.1.TA.427.j26",
+          "routeId": "91-66-A-j26-1",
+          "reviewKinds": [
+            "kerzers-bls-platform"
+          ]
+        },
+        {
+          "id": ".ojp-91-66-A.1.TA.512.j26",
+          "routeId": "91-66-A-j26-1",
+          "reviewKinds": [
+            "kerzers-bls-platform"
+          ]
+        },
+        {
+          "id": ".ojp-91-66-A.1.TA.435.j26",
+          "routeId": "91-66-A-j26-1",
+          "reviewKinds": [
+            "kerzers-bls-platform"
+          ]
+        },
+        {
+          "id": ".ojp-91-66-A.1.TA.506.j26",
+          "routeId": "91-66-A-j26-1",
+          "reviewKinds": [
+            "kerzers-bls-platform"
+          ]
+        },
+        {
+          "id": ".ojp-91-66-A.1.TA.416.j26",
+          "routeId": "91-66-A-j26-1",
+          "reviewKinds": [
+            "kerzers-bls-platform"
+          ]
+        },
+        {
+          "id": ".ojp-91-66-A.1.TA.531.j26",
+          "routeId": "91-66-A-j26-1",
+          "reviewKinds": [
+            "kerzers-bls-platform"
+          ]
+        },
+        {
+          "id": ".ojp-91-66-A.1.TA.303.j26",
+          "routeId": "91-66-A-j26-1",
+          "reviewKinds": [
+            "kerzers-bls-platform"
+          ]
+        },
+        {
+          "id": ".ojp-91-66-A.1.TA.420.j26",
+          "routeId": "91-66-A-j26-1",
+          "reviewKinds": [
+            "kerzers-bls-platform"
+          ]
+        },
+        {
+          "id": ".ojp-91-66-A.1.TA.526.j26",
+          "routeId": "91-66-A-j26-1",
+          "reviewKinds": [
+            "kerzers-bls-platform"
+          ]
+        },
+        {
+          "id": ".ojp-91-66-A.1.TA.432.j26",
+          "routeId": "91-66-A-j26-1",
+          "reviewKinds": [
+            "kerzers-bls-platform"
+          ]
+        },
+        {
+          "id": ".ojp-91-66-A.1.TA.517.j26",
+          "routeId": "91-66-A-j26-1",
+          "reviewKinds": [
+            "kerzers-bls-platform"
+          ]
+        },
+        {
+          "id": ".ojp-91-66-A.1.TA.509.j26",
+          "routeId": "91-66-A-j26-1",
+          "reviewKinds": [
+            "kerzers-bls-platform"
+          ]
+        },
+        {
+          "id": ".ojp-91-66-A.1.TA.534.j26",
+          "routeId": "91-66-A-j26-1",
+          "reviewKinds": [
+            "kerzers-bls-platform"
+          ]
+        },
+        {
+          "id": ".ojp-91-1-D.1.TA.314.j26",
+          "routeId": "91-1-D-j26-1",
+          "reviewKinds": [
+            "sbb-daeniken-curve"
+          ]
+        },
+        {
+          "id": ".ojp-91-66-A.1.TA.150.j26",
+          "routeId": "91-66-A-j26-1",
+          "reviewKinds": [
+            "kerzers-bls-platform"
+          ]
+        },
+        {
+          "id": ".ojp-91-66-A.1.TA.465.j26",
+          "routeId": "91-66-A-j26-1",
+          "reviewKinds": [
+            "kerzers-bls-platform"
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-09-06",
+      "previousJourneys": 3567,
+      "presentJourneys": 3592,
+      "addedJourneys": 25,
+      "unchangedOriginalSegmentOccurrences": 56533,
+      "lostJourneys": 0,
+      "newJourneys": [
+        {
+          "id": "service:2026-09-05:.ojp-91-1-D.1.TA.314.j26",
+          "routeId": "91-1-D-j26-1",
+          "reviewKinds": [
+            "sbb-daeniken-curve"
+          ]
+        },
+        {
+          "id": ".ojp-91-1-D.1.TA.2225.j26",
+          "routeId": "91-1-D-j26-1",
+          "reviewKinds": [
+            "sbb-daeniken-curve"
+          ]
+        },
+        {
+          "id": ".ojp-91-66-A.1.TA.458.j26",
+          "routeId": "91-66-A-j26-1",
+          "reviewKinds": [
+            "kerzers-bls-platform"
+          ]
+        },
+        {
+          "id": ".ojp-91-66-A.1.TA.263.j26",
+          "routeId": "91-66-A-j26-1",
+          "reviewKinds": [
+            "kerzers-bls-platform"
+          ]
+        },
+        {
+          "id": ".ojp-91-66-A.1.TA.425.j26",
+          "routeId": "91-66-A-j26-1",
+          "reviewKinds": [
+            "kerzers-bls-platform"
+          ]
+        },
+        {
+          "id": ".ojp-91-66-A.1.TA.449.j26",
+          "routeId": "91-66-A-j26-1",
+          "reviewKinds": [
+            "kerzers-bls-platform"
+          ]
+        },
+        {
+          "id": ".ojp-91-66-A.1.TA.423.j26",
+          "routeId": "91-66-A-j26-1",
+          "reviewKinds": [
+            "kerzers-bls-platform"
+          ]
+        },
+        {
+          "id": ".ojp-91-66-A.1.TA.439.j26",
+          "routeId": "91-66-A-j26-1",
+          "reviewKinds": [
+            "kerzers-bls-platform"
+          ]
+        },
+        {
+          "id": ".ojp-91-66-A.1.TA.413.j26",
+          "routeId": "91-66-A-j26-1",
+          "reviewKinds": [
+            "kerzers-bls-platform"
+          ]
+        },
+        {
+          "id": ".ojp-91-66-A.1.TA.428.j26",
+          "routeId": "91-66-A-j26-1",
+          "reviewKinds": [
+            "kerzers-bls-platform"
+          ]
+        },
+        {
+          "id": ".ojp-91-66-A.1.TA.411.j26",
+          "routeId": "91-66-A-j26-1",
+          "reviewKinds": [
+            "kerzers-bls-platform"
+          ]
+        },
+        {
+          "id": ".ojp-91-66-A.1.TA.436.j26",
+          "routeId": "91-66-A-j26-1",
+          "reviewKinds": [
+            "kerzers-bls-platform"
+          ]
+        },
+        {
+          "id": ".ojp-91-66-A.1.TA.261.j26",
+          "routeId": "91-66-A-j26-1",
+          "reviewKinds": [
+            "kerzers-bls-platform"
+          ]
+        },
+        {
+          "id": ".ojp-91-66-A.1.TA.417.j26",
+          "routeId": "91-66-A-j26-1",
+          "reviewKinds": [
+            "kerzers-bls-platform"
+          ]
+        },
+        {
+          "id": ".ojp-91-66-A.1.TA.441.j26",
+          "routeId": "91-66-A-j26-1",
+          "reviewKinds": [
+            "kerzers-bls-platform"
+          ]
+        },
+        {
+          "id": ".ojp-91-66-A.1.TA.421.j26",
+          "routeId": "91-66-A-j26-1",
+          "reviewKinds": [
+            "kerzers-bls-platform"
+          ]
+        },
+        {
+          "id": ".ojp-91-66-A.1.TA.430.j26",
+          "routeId": "91-66-A-j26-1",
+          "reviewKinds": [
+            "kerzers-bls-platform"
+          ]
+        },
+        {
+          "id": ".ojp-91-66-A.1.TA.259.j26",
+          "routeId": "91-66-A-j26-1",
+          "reviewKinds": [
+            "kerzers-bls-platform"
+          ]
+        },
+        {
+          "id": ".ojp-91-66-A.1.TA.418.j26",
+          "routeId": "91-66-A-j26-1",
+          "reviewKinds": [
+            "kerzers-bls-platform"
+          ]
+        },
+        {
+          "id": ".ojp-91-66-A.1.TA.433.j26",
+          "routeId": "91-66-A-j26-1",
+          "reviewKinds": [
+            "kerzers-bls-platform"
+          ]
+        },
+        {
+          "id": ".ojp-91-66-A.1.TA.510.j26",
+          "routeId": "91-66-A-j26-1",
+          "reviewKinds": [
+            "kerzers-bls-platform"
+          ]
+        },
+        {
+          "id": ".ojp-91-66-A.1.TA.535.j26",
+          "routeId": "91-66-A-j26-1",
+          "reviewKinds": [
+            "kerzers-bls-platform"
+          ]
+        },
+        {
+          "id": ".ojp-91-1-D.1.TA.324.j26",
+          "routeId": "91-1-D-j26-1",
+          "reviewKinds": [
+            "sbb-daeniken-curve"
+          ]
+        },
+        {
+          "id": ".ojp-91-66-A.1.TA.126.j26",
+          "routeId": "91-66-A-j26-1",
+          "reviewKinds": [
+            "kerzers-bls-platform"
+          ]
+        },
+        {
+          "id": ".ojp-91-66-A.1.TA.466.j26",
+          "routeId": "91-66-A-j26-1",
+          "reviewKinds": [
+            "kerzers-bls-platform"
+          ]
+        }
+      ]
+    }
+  ]
+}

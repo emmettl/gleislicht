@@ -1,0 +1,47 @@
+{
+  "publisher": "SBB Infrastructure / BLS Netz AG",
+  "attribution": "SBB Infrastructure / data.sbb.ch; BLS Netz AG (platform evidence)",
+  "termsUrl": "https://data.sbb.ch/page/licence/",
+  "license": "terms_by",
+  "rights": "NonCommercialAllowed-CommercialAllowed-ReferenceRequired",
+  "modified": "2026-07-29T06:16:28+00:00",
+  "dataProcessed": "2026-09-02T03:01:34+00:00",
+  "note": "One detailed SBB geometry record and two reviewed BLS platform identities. Processing and document dates do not certify actual September running tracks or diversions.",
+  "files": [
+    {
+      "file": "bls-platforms-2026.pdf",
+      "url": "https://www.bls.ch/-/media/bls/pdf/uebrige-pdfs/trassen-netzzugang/infrastruktur-trassen-betriebspunkte.pdf",
+      "role": "BLS platform table: state 2026-05-28, valid from 2026-06-06; Bern–Neuchâtel Kerzers physical tracks 4 and 6.",
+      "sha256": "29a84015910664fe859298c89e347887b7fa5df352c226486691ad77a3f4bd88",
+      "retrievedAt": "2026-09-08T19:51:53.526Z"
+    },
+    {
+      "file": "bls-kerzers.svg",
+      "url": "https://www.bls.ch/-/media/bls/bilder/fahren/fahrplan/lageplaene-ersatzverkehr/kerzers.svg",
+      "role": "BLS station plan version 1.0, state 2023-03-09, valid 2023-03-11; tracks 4/6 on the western branch, distinct from 1/3. Layout evidence, not source geometry.",
+      "sha256": "e0d90a92435d9b17c4851c79e0d7c6c276c208db3c9fbd469a5d34a06f336786",
+      "retrievedAt": "2026-09-08T19:52:27.243Z"
+    },
+    {
+      "file": "sbb-daeniken.json",
+      "url": "https://data.sbb.ch/api/explore/v2.1/catalog/datasets/linie-mit-polygon/records?where=search%28%22D%C3%A4niken%22%29&limit=100",
+      "role": "Complete 21-record query; only line 540 DK→DKO is used, with 44 original vertices and normal-gauge N.",
+      "sha256": "04e0d786dadfd72f0b11230a9e14345b26f61a5b81876cd1a6e9c6348735ca70",
+      "retrievedAt": "2026-09-08T19:51:34.851Z"
+    },
+    {
+      "file": "sbb-metadata.json",
+      "url": "https://data.sbb.ch/api/explore/v2.1/catalog/datasets/linie-mit-polygon",
+      "role": "SBB source metadata and attribution-required licence.",
+      "sha256": "cbd14d2785da7865f4565fbf9aa37ca274ef3aafc44239bc03dd0992e3fd013c",
+      "retrievedAt": "2026-09-08T19:52:27.571Z"
+    },
+    {
+      "file": "sbb-terms.html",
+      "url": "https://data.sbb.ch/page/licence/",
+      "role": "Retained SBB data reuse terms.",
+      "sha256": "985a900c0c0020edaf1dc6239ad3547d9a09db0dc4b72c3a0482ccfd09289f77",
+      "retrievedAt": "2026-09-08T19:52:28.044Z"
+    }
+  ]
+}

@@ -22,6 +22,8 @@ export async function checkFribourgRegion({ output = 'data/fribourg-region', aud
   const crosswalk = await json('data/fribourg-policy.json')
   const roads = await loadFribourgRoads(undefined, crosswalk.roads, { verifyEvidence: true })
   const rail = await loadFribourgRail(undefined, crosswalk.rail)
+  assert.equal(summary.sourceHashes.railReview, crosswalk.rail.review.sha256)
+  assert.deepEqual(await json(join(audit, 'rail-review.json')), rail.review)
   assert.deepEqual(crosswalk.rail.routes, fribourgRailScope({ routes }))
   assert.equal(summary.sourceHashes.rail, crosswalk.rail.sourceMetadataSha256)
   assert.equal(summary.sourceHashes.railInputs, crosswalk.rail.inputsSha256)
@@ -149,6 +151,8 @@ export async function checkFribourgRegion({ output = 'data/fribourg-region', aud
     assert.equal(report.roadEffect.lostAdmittedTrips, 0)
     assert.equal(c.admittedTrips, report.roadEffect.officialCoverage.admittedTrips + report.roadEffect.newlyAdmittedTrips + report.railEffect.newlyAdmittedTrips)
     assert.equal(report.railEffect.lostAdmittedTrips, 0)
+    assert.equal(report.railEffect.reviewedPairs, report.directedPairs.filter(p => p.railFallback?.railReview).length)
+    assert.equal(report.railEffect.reviewedJourneys, sum(report.patterns.filter(p => p.railReviewKinds?.length), p => p.admittedTrips))
     assert.equal(report.railEffect.matchedDirectedPairs, report.directedPairs.filter(p => p.geometrySource === 'fot-rail-inference').length)
     assert.equal(report.railEffect.admittedSegmentOccurrences, sum(report.directedPairs.filter(p => p.geometrySource === 'fot-rail-inference'), p => p.admittedOccurrences))
     assert.equal(report.roadEffect.matchedDirectedPairs, report.directedPairs.filter(p => p.geometrySource === 'osm-road-inference').length)
@@ -179,6 +183,7 @@ export async function checkFribourgRegion({ output = 'data/fribourg-region', aud
       assert.deepEqual(train.stops.map(([i]) => snapshot.stops[i][4]), pattern.stopIds)
       assert.equal(train.roadSegmentCount ?? 0, pattern.roadSegments)
       assert.equal(train.railSegmentCount ?? 0, pattern.railSegments ?? 0)
+      assert.deepEqual(train.railReviewKinds ?? [], pattern.railReviewKinds ?? [])
       for (let i = 1; i < train.stops.length; i++) {
         const pair = report.directedPairs.find(p => p.routeId === train.routeId && p.fromId === pattern.stopIds[i - 1] && p.toId === pattern.stopIds[i])
         if (pair.geometrySource === 'fot-rail-inference') {

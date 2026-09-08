@@ -3,15 +3,16 @@
   "publicRedistributionCleared": true,
   "derivedGeometryDatabaseLicense": "ODbL-1.0",
   "licenseUrl": "https://opendatacommons.org/licenses/odbl/1-0/",
-  "attribution": "opentransportdata.swiss; Source: Etat de Fribourg; © OpenStreetMap contributors; © Federal Office of Transport (FOT); © swisstopo",
+  "attribution": "opentransportdata.swiss; Source: Etat de Fribourg; © OpenStreetMap contributors; © Federal Office of Transport (FOT); SBB Infrastructure / data.sbb.ch; © swisstopo",
   "sourceHashes": {
     "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
     "source": "e8523af34fcedca7f8b0cbe495446ff93a75d8563c62b243da942c39c5243f47",
-    "crosswalk": "1d69f7205796b0adc909530cdce46053f5a93ca2ddcbf5ba4ff997c73e66edbd",
+    "crosswalk": "7aef66abab825ccae7069180040e6b4df5c2e2321c336d45655e22d65be3419c",
     "provenance": "7d23e09a35768de1cfd598a7ca824ac7c93d03242ff8955e70ca778213549086",
     "roads": "87f4d4be2662ff0982cea837e95f73863096d4bc37bd19ecc09ea88e064c465e",
     "rail": "7ea92c8c1120a49e9497ec3ae6d7a0d2fc2d761e8b19d790191ed7a6c0212c79",
-    "railInputs": "434a02eb6906bb141a00ba6b7c77622767b78262617326d6aed56fa683cd8046"
+    "railInputs": "434a02eb6906bb141a00ba6b7c77622767b78262617326d6aed56fa683cd8046",
+    "railReview": "5070023bef19b35c1df3fb12a5b27e090d7a4ff0788f75d433a3d8295c4cca64"
   },
   "dates": [
     {
