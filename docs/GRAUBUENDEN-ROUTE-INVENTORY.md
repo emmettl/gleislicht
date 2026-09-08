@@ -205,7 +205,7 @@ All 380 annual canton-calling route records. Date columns count complete admitte
 | 93-6Z-Y-j26-1 | 147 / Bergbahnen Engadin St. Moritz AG | mountain / FUN | 4 | 0/0 | 0/0 | inactive-on-validation-dates; — | St. Moritz (Standseilbahn); Chantarella |
 | 93-7-Y-j26-1 | 208 / Davos Klosters Bergbahnen (lkp) | mountain / PB | 6 | 0/33 | 0/33 | excluded; cableway-unreviewed-route | Klosters Platz (Gotschnabahn); Gotschnaboden |
 | 93-70-Y-j26-1 | 207 / Davos Klosters Bergbahnen (bbbj) | mountain / PB | 2 | 0/0 | 0/0 | inactive-on-validation-dates; — | Ischalp (Talst. Jakobshorn); Jakobshorn |
-| 93-71-Y-j26-1 | 109 / Davos Klosters Bergbahnen (dpb) | mountain / FUN | 2 | 0/48 | 0/48 | excluded; cableway-unreviewed-route | Höhenweg; Weissfluhjoch |
+| 93-71-Y-j26-1 | 109 / Davos Klosters Bergbahnen (dpb) | mountain / FUN | 2 | 48/48 | 48/48 | admitted-all-dated-trips; — | Höhenweg; Weissfluhjoch |
 | 93-76-Y-j26-1 | 147 / Bergbahnen Engadin St. Moritz AG | mountain / FUN | 4 | 0/0 | 0/0 | inactive-on-validation-dates; — | Chantarella; Corviglia (Talstat. Piz Nair) |
 | 93-77-Y-j26-1 | 109 / Davos Klosters Bergbahnen (dpb) | mountain / PB | 2 | 0/44 | 0/44 | excluded; cableway-unreviewed-route | Weissfluhjoch; Weissfluhgipfel |
 | 93-7F-Y-j26-1 | 147 / Bergbahnen Engadin St. Moritz AG | mountain / PB | 4 | 0/46 | 0/46 | excluded; cableway-unreviewed-route | Corviglia (Talstat. Piz Nair); Piz Nair |

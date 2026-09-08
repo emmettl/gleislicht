@@ -1,6 +1,6 @@
 # Graubünden: Bern platform 50 and Basel rail completion
 
-This review adds **30 Friday and 31 Sunday complete rail journeys**. Rail admission reaches **854/856** and **840/842**; rail and bus admission remains **6,545** and **5,324** complete journeys. The subsequent [cableway review](GRAUBUENDEN-CABLEWAYS.md) brings all-mode application totals to **9,001** and **7,778** instances. Both dated whole-canton denominators stay unchanged. Every earlier complete journey and every previously successful directed pair remain identical.
+This review adds **30 Friday and 31 Sunday complete rail journeys**. Rail admission reaches **854/856** and **840/842**; rail and bus admission remains **6,545** and **5,324** complete journeys. The subsequent [cableway review](GRAUBUENDEN-CABLEWAYS.md) brings all-mode application totals to **9,049** and **7,826** instances. Both dated whole-canton denominators stay unchanged. Every earlier complete journey and every previously successful directed pair remain identical.
 
 [Before/after audit](../data/graubuenden-audit/rail-completion-review.json) · [Explicit policy](../data/graubuenden-rail-completion/policy.json) · [Official evidence](../data/graubuenden-rail-completion/evidence.json) · [Source probes](../data/graubuenden-rail-completion/probes.json) · [All annual routes and exclusions](GRAUBUENDEN-ROUTE-INVENTORY.md)
 
@@ -11,11 +11,11 @@ This review adds **30 Friday and 31 Sunday complete rail journeys**. Rail admiss
 | Metric | Friday 4 September | Sunday 6 September |
 | --- | ---: | ---: |
 | All-mode candidate journeys | 39'402 | 38'425 |
-| Admitted with this rail review disabled | 8'971 | 7'747 |
-| Admitted with this rail review enabled | 9'001 | 7'778 |
+| Admitted with this rail review disabled | 9'019 | 7'795 |
+| Admitted with this rail review enabled | 9'049 | 7'826 |
 | Newly complete rail journeys | 30 | 31 |
-| Earlier complete journeys preserved | 8'971 | 7'747 |
-| Earlier matched pair occurrences preserved | 89'129 | 74'974 |
+| Earlier complete journeys preserved | 9'019 | 7'795 |
+| Earlier matched pair occurrences preserved | 89'177 | 75'022 |
 | All rail candidates | 856 | 842 |
 | Admitted complete rail journeys | 854 | 840 |
 

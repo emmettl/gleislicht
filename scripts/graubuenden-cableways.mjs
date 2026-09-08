@@ -12,7 +12,24 @@ export function graubuendenCablewayPattern(network, review, train, route, stops)
   if (!review.patternIds.includes(sha256(directedPatternKey(train)).slice(0, 20))) return excluded('cableway-unreviewed-complete-pattern')
   const identity = review.routes.find(r => r.routeId === route.routeId)
   const matcher = identity.routeType === 1400 ? matchFederalFunicular : matchLuzernCableway
-  return train.calls.slice(1).map((call, i) => matcher(network, review, route, stops.get(train.calls[i].id), stops.get(call.id), review.dates))
+  const exception = identity.stationAttachmentReview
+  if (exception) {
+    assert(exception.reason && Number.isFinite(exception.maximumMetres) && exception.maximumMetres > review.limits.stationAttachmentMetres)
+    assert(identity.segments.some(s => s.installation === exception.installation && s.stopNumbers.some((n, i) => n === exception.timetable && s.sourceStationNumbers[i] === exception.source && n !== exception.source && s.aliasReason)), 'Attachment exception needs its exact reviewed alias')
+  }
+  const config = exception ? { ...review, limits: { ...review.limits, stationAttachmentMetres: exception.maximumMetres } } : review
+  return train.calls.slice(1).map((call, i) => {
+    const pair = matcher(network, config, route, stops.get(train.calls[i].id), stops.get(call.id), review.dates)
+    if (!exception || !pair.stationAttachmentsMetres) return pair
+    const numbers = [stops.get(train.calls[i].id).didok, stops.get(call.id).didok]
+    const limits = pair.sourceStationNumbers.map((n, j) => pair.installation === exception.installation && n === exception.source && numbers[j] === exception.timetable ? exception.maximumMetres : review.limits.stationAttachmentMetres)
+    const evidence = { ...pair, stationAttachmentLimitsMetres: limits, stationAttachmentReview: exception }
+    if (pair.stationAttachmentsMetres.some((n, j) => n > limits[j])) {
+      delete evidence.path; delete evidence.pathMetres
+      evidence.reason = 'cableway-endpoint-gap'
+    }
+    return evidence
+  })
 }
 export async function loadGraubuendenCableways(policy, raw) {
   if (!policy.cablewayReview) return null
@@ -35,6 +52,7 @@ export async function loadGraubuendenCableways(policy, raw) {
   const funicularEvidence = JSON.parse(funicularBytes)
   for (const r of funicularEvidence.responses) assert.equal(sha256(await readFile(`data/graubuenden-cableway-sources/${r.file}`)), r.sha256)
   assert.equal(sha256(await readFile('data/graubuenden-cableway-sources/six-route-policy.json')), review.sixRoutePolicySha256, 'Changed six-route baseline')
+  assert.equal(sha256(await readFile('data/graubuenden-cableway-sources/nine-route-paths.json')), review.nineRoutePathsSha256, 'Changed nine-route baseline')
   const { source, network } = await loadLuzernCableways(review, raw)
   const stops = new Map(raw.stops.map(s => [s.stop_id, s]))
   return { source: { ...source, supportingEvidence: evidence, expansionEvidence, funicularEvidence }, network, review, match: (train, route) => graubuendenCablewayPattern(network, review, train, route, stops) }

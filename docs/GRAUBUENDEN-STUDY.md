@@ -24,7 +24,7 @@ The geographical scope includes Chur/Rheintal, Prättigau and Davos, Surselva, I
 
 The live [metadata catalogue](https://katalog.geo.gr.ch/) and its directly embedded service-list endpoint still return **HTTP 200 with ORA-24415**, so neither is a valid catalogue response. The [current GeoGR data page](https://geogr.ch/geodaten) is reachable and explains registered GeoShop ordering, lists directly available datasets including cableways, and links WMS/WFS guidance. Its former links.html URL returns 404. The map page is reachable but its advertised dynamic.json returns 404 in the unauthenticated probe. Exploratory `/oev` WMS/WFS capabilities probes also return 404; these guessed endpoints do not establish that no other service exists. Every request, effective URL, status, body hash, timestamp and error remains in [probes.json](../data/graubuenden-sources/probes.json), with compressed response evidence.
 
-No current canton-wide local bus-line export with verified route/operator identifiers, dated alignment and dataset-specific redistribution terms was established. Official planning layers (for example regional-plan rail infrastructure) and mountain-transport catalogue entries are separate products, not evidence of an operational bus line export. No local vector data was silently substituted, traced from a schematic map, or labelled open based solely on portal availability. A subsequent live GeoShop inspection identified the canton-wide cableway/ski-lift product and its description, while the Verkehr search showed only the slow-traffic product. The shop is functional despite the separate metadata-catalogue errors. No operational bus export or local mountain dataset with verified vintage/reuse was obtained; the national FOT cableway archive was subsequently reviewed separately and is now incorporated for nine routes (see the cableway review); see the [preserved observation](../data/graubuenden-rail-completion/geogr-catalogue-review.json). Follow-up: obtain the operating transport layer metadata/export via the functioning GeoGR/ALG channel, establish dataset-specific terms and currency, and then crosswalk all local operator lines against this complete inventory.
+No current canton-wide local bus-line export with verified route/operator identifiers, dated alignment and dataset-specific redistribution terms was established. Official planning layers (for example regional-plan rail infrastructure) and mountain-transport catalogue entries are separate products, not evidence of an operational bus line export. No local vector data was silently substituted, traced from a schematic map, or labelled open based solely on portal availability. A subsequent live GeoShop inspection identified the canton-wide cableway/ski-lift product and its description, while the Verkehr search showed only the slow-traffic product. The shop is functional despite the separate metadata-catalogue errors. No operational bus export or local mountain dataset with verified vintage/reuse was obtained; the national FOT cableway archive was subsequently reviewed separately and is now incorporated for ten routes (see the cableway review); see the [preserved observation](../data/graubuenden-rail-completion/geogr-catalogue-review.json). Follow-up: obtain the operating transport layer metadata/export via the functioning GeoGR/ALG channel, establish dataset-specific terms and currency, and then crosswalk all local operator lines against this complete inventory.
 
 ## Geometry admission
 
@@ -58,21 +58,21 @@ Bus limits: 120 m road snap, max(1,500 m, 6 × direct distance) detour, 5 m simp
 
 A subsequent [whole-pattern bus review](GRAUBUENDEN-BUS-REVIEW.md) evaluates all 187 fixture patterns on all 24 routes with a previously excluded bus journey. A separately pinned, GR-filtered OSM graph retaining service roads recovers 35 complete road patterns, adding 145 Friday and 119 Sunday journeys. Every previously complete primary path and its evidence remain identical. Whole-pattern replacement, exact route/operator identities, original source calls and all primary importer limits are enforced. Bus admission is now 5,691/5,762 and 4,484/4,561; that bus increment leaves rail unchanged. The linked review documents all trial dispositions, official diagram evidence, failed graph reuse and the separately attributed derived database.
 
-If any pair fails, **the whole directed journey is excluded**. No partial fragments, stop chords, route cropping, last-known geometry or unsourced fallback enters the admitted application feed. Six aerial cableways and three funiculars now have reviewed federal axes; all other mountain routes, boats and the GTFS-coded Alpintrans tram service remain inventoried without admitted geometry. See the linked cableway review for every annual mountain route, source vintage and official timetable discrepancies. The raw mode classification is retained; a feed category does not establish the physical vehicle type.
+If any pair fails, **the whole directed journey is excluded**. No partial fragments, stop chords, route cropping, last-known geometry or unsourced fallback enters the admitted application feed. Six aerial cableways and four funiculars now have reviewed federal axes; all other mountain routes, boats and the GTFS-coded Alpintrans tram service remain inventoried without admitted geometry. See the linked cableway review for every annual mountain route, source vintage and official timetable discrepancies. The raw mode classification is retained; a feed category does not establish the physical vehicle type.
 
 ## Coverage against all candidates
 
 | Metric | Friday 2026-09-04 | Sunday 2026-09-06 |
 | --- | ---: | ---: |
 | Civil-day movement instances | 39'402 | 38'425 |
-| Admitted complete journeys | 9'001 | 7'778 |
-| Excluded whole journeys | 30'401 | 30'647 |
+| Admitted complete journeys | 9'049 | 7'826 |
+| Excluded whole journeys | 30'353 | 30'599 |
 | Complete directed patterns | 1'567 | 1'292 |
-| Admitted complete patterns | 1'445 | 1'167 |
+| Admitted complete patterns | 1'447 | 1'169 |
 | Pattern-specific directed pairs | 17'605 | 14'862 |
-| Matched pattern-specific directed pairs | 17'433 | 14'687 |
+| Matched pattern-specific directed pairs | 17'435 | 14'689 |
 | All segment occurrences | 119'682 | 105'774 |
-| Matched segment occurrences | 89'159 | 75'005 |
+| Matched segment occurrences | 89'207 | 75'053 |
 | Scheduled segment occurrences | 101'604 | 87'516 |
 | Matched scheduled segment occurrences | 86'764 | 72'610 |
 | Representative headway instances | 18'078 | 18'258 |
@@ -83,7 +83,7 @@ If any pair fails, **the whole directed journey is excluded**. No partial fragme
 | --- | ---: | ---: | ---: |
 | boat | 1 | 0 / 6 (0.0%) | 0 / 6 (0.0%) |
 | bus | 266 | 5'691 / 5'762 (98.8%) | 4'484 / 4'561 (98.3%) |
-| mountain | 57 | 2'456 / 32'764 (7.5%) | 2'454 / 33'002 (7.4%) |
+| mountain | 57 | 2'504 / 32'764 (7.6%) | 2'502 / 33'002 (7.6%) |
 | rail | 55 | 854 / 856 (99.8%) | 840 / 842 (99.8%) |
 | tram | 1 | 0 / 14 (0.0%) | 0 / 14 (0.0%) |
 
@@ -98,7 +98,7 @@ All-mode admission is deliberately low because large mountain-service and headwa
 | 65 | THURBO | 3 | 76 / 76 | 72 / 72 |
 | 72 | Rhätische Bahn | 36 | 608 / 608 | 594 / 594 |
 | 82 | Schweizerische Südostbahn (sob) | 4 | 58 / 58 | 59 / 59 |
-| 109 | Davos Klosters Bergbahnen (dpb) | 4 | 49 / 141 | 49 / 141 |
+| 109 | Davos Klosters Bergbahnen (dpb) | 4 | 97 / 141 | 97 / 141 |
 | 111 | Sportbahnen Davos | 1 | 102 / 102 | 102 / 102 |
 | 133 | Celeriner Bergbahnen - Punt Muragl-Muottas Muragl | 1 | 62 / 62 | 62 / 62 |
 | 147 | Bergbahnen Engadin St. Moritz AG | 4 | 0 / 97 | 0 / 97 |
@@ -166,7 +166,7 @@ All-mode admission is deliberately low because large mountain-service and headwa
 | Reason | Friday affected journeys | Sunday affected journeys |
 | --- | ---: | ---: |
 | cableway-summer-installation-conflict | 34 | 34 |
-| cableway-unreviewed-route | 30'274 | 30'514 |
+| cableway-unreviewed-route | 30'226 | 30'466 |
 | no-reviewed-boat-geometry | 6 | 6 |
 | no-reviewed-tram-geometry | 14 | 14 |
 | road-excessive-detour | 22 | 20 |

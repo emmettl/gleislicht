@@ -6,6 +6,7 @@ import { directedPatternKey } from './zug-line-geometry.mjs'
 import { graubuendenCablewayPattern } from './graubuenden-cableways.mjs'
 import { graubuendenCablewayTrials } from './graubuenden-cableway-trials.mjs'
 import { sha256 } from './download-luzern-sources.mjs'
+import { matchLuzernCableway } from './luzern-cableway-geometry.mjs'
 const raw = await readJson('data/graubuenden-audit/timetable.json.gz'), policy = await readJson('data/graubuenden-policy.json')
 const current = await loadGraubuendenGeometry(policy, raw), baseline = await loadGraubuendenGeometry({ ...policy, cablewayReview: null }, raw)
 const routes = new Map(raw.inventory.map(r => [r.routeId, r])), stopMap = new Map([...raw.cantonStops, ...raw.stops].map(s => [s.stop_id, s]))
@@ -13,6 +14,9 @@ const sixRoutes = await readJson('data/graubuenden-cableway-sources/six-route-po
 const priorPathsBytes = await readFile('data/graubuenden-cableway-sources/six-route-paths.json')
 assert.equal(sha256(priorPathsBytes), current.cableways.review.sixRoutePathsSha256)
 const priorPaths = new Map(JSON.parse(priorPathsBytes).map(p => [p.id, p]))
+const ninePathsBytes = await readFile('data/graubuenden-cableway-sources/nine-route-paths.json')
+assert.equal(sha256(ninePathsBytes), current.cableways.review.nineRoutePathsSha256)
+const ninePaths = new Map(JSON.parse(ninePathsBytes).map(p => [p.id, p]))
 const initial = await readJson('data/graubuenden-cableway-sources/initial-policy.json'), stops = new Map(raw.stops.map(s => [s.stop_id, s]))
 const memo = new Map(), days = [], admitted = (t, pairs) => pairs.every(p => p.path) && t.calls.every(c => !['2', '3'].includes(c.pickupType) && !['2', '3'].includes(c.dropOffType))
 for (const day of raw.snapshots) {
@@ -27,6 +31,8 @@ for (const day of raw.snapshots) {
       if (admitted(t, priorSix)) assert.deepEqual(after, priorSix, 'Changed six-route baseline geometry')
       const saved = priorPaths.get(sha256(key).slice(0, 20))
       if (saved) assert.deepEqual(after, saved.pairs, 'Changed preserved pre-refactor cableway paths')
+      const nineSaved = ninePaths.get(sha256(key).slice(0, 20))
+      if (nineSaved) assert.deepEqual(after, nineSaved.pairs, 'Changed nine-route baseline geometry')
       if (admitted(t, previous)) assert.deepEqual(after, previous, 'Changed prior cableway scope geometry')
       if (route.mode !== 'mountain') assert.deepEqual(after, before, 'Changed existing rail/bus/other geometry')
       if (admitted(t, before)) assert.deepEqual(after, before, 'Changed previously admitted journey')
@@ -49,6 +55,9 @@ for (const day of raw.snapshots) {
 const additions = [...memo.values()].filter(p => !admitted(p.train, p.before) && admitted(p.train, p.after))
 assert.deepEqual(additions.map(p => p.id).sort(), current.cableways.review.patternIds, 'Review must admit exactly its complete patterns')
 const network = current.cableways.network
+const samnaunIdentity = { routeId: '93-7J-Y-j26-1', agencyId: '3161', line: 'PB', sourceOperator: '1146', segments: [{ installation: '71.133', stopNumbers: ['8530609', '8530610'], sourceStationNumbers: ['8531284', '8531285'], aliasReason: 'Diagnostic only: shared Samnaun timetable stops tested against the separate Ravaisch I / Alptrider Sattel I source stations. The operating L2 crosswalk and long connectors remain unapproved.' }] }
+const samnaun = network.installations.find(i => i.number === '71.133')
+const samnaunPatterns = [...memo.values()].filter(p => p.routeId === samnaunIdentity.routeId).map(p => ({ id: p.id, stopIds: p.train.calls.map(c => c.id), pairs: p.train.calls.slice(1).map((c, i) => matchLuzernCableway(network, { routes: [samnaunIdentity], limits: { ...current.cableways.review.limits, stationAttachmentMetres: 130 } }, routes.get(p.routeId), stops.get(p.train.calls[i].id), stops.get(c.id), raw.dates)) }))
 const inventory = raw.inventory.filter(r => r.mode === 'mountain').map(r => {
   const trains = raw.snapshots.flatMap(d => d.trains.filter(t => t.routeId === r.routeId))
   const ids = new Set([...r.annualCantonStopIds, ...trains.flatMap(t => t.calls.map(c => c.id))])
@@ -69,6 +78,8 @@ const review = { schemaVersion: 1, timetableSha256: policy.timetableSha256, poli
   scope: 'Every annual canton-calling mountain route. Identity leads are exact station-number overlaps only; they do not approve installations, operators, aliases, routes or journeys. Inactive routes use annual in-canton calls, not an invented dated full journey.',
   annualMountainRoutes: inventory.length, sourceInstallations: network.installations.length, sourceStations: network.stations.length, sourceSegments: network.segments.length,
   funicularReview: { sixRoutePolicySha256: current.cableways.review.sixRoutePolicySha256, preservedPaths: priorPaths.size, inventory: inventory.filter(r => r.routeType === 1400) },
+  sectionReview: { nineRoutePathsSha256: current.cableways.review.nineRoutePathsSha256, preservedPaths: ninePaths.size, upperParsenn: current.cableways.review.routes.find(r => r.routeId === '93-71-Y-j26-1'),
+    samnaunAlternative: { disposition: 'diagnostic-only-not-admitted', note: '71.133 Ravaisch I is an alternative source lead, not an approved L2 identity. The 130 m diagnostic ceiling exposes both full paths; it grants no runtime exception. The measured 45.79/117.08 m shared-stop attachments need independent installation and access review.', identity: samnaunIdentity, installation: samnaun, stations: network.stations.filter(s => s.installation === samnaun.id), segments: network.segments.filter(s => s.installation === samnaun.id), patterns: samnaunPatterns } },
   expansion: { initialPolicySha256: current.cableways.review.initialPolicySha256, limitsUnchanged: true, trials: graubuendenCablewayTrials(raw, network, initial, current.cableways.review) },
   days, patterns: additions.map(p => ({ id: p.id, routeId: p.routeId, stopIds: p.train.calls.map(c => c.id), pairs: p.after })), inventory }
 await saveJson('data/graubuenden-audit/cableways.json', review)
