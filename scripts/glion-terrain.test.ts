@@ -3,13 +3,57 @@ import type {NetworkSnapshot} from '@motionstudies/core/domain/network'
 import funicular from '../public/data/territet-day.json'
 import railway from '../public/data/rochers-day.json'
 import terrain from '../public/data/rochers-ascent-terrain.json'
+import funicularTerrain from '../public/data/territet-ascent-terrain.json'
 import {glionJourneys} from '../src/studies/glion.ts'
-import {bindGlionTerrain} from '../src/studies/glion-terrain.ts'
+import {bindGlionTerrain, bindGlionFunicularTerrain} from '../src/studies/glion-terrain.ts'
+import {bindTerritetTerrain} from '../src/studies/territet-terrain.ts'
 import {bindRochersTerrain} from '../src/studies/rochers-terrain.ts'
 import {measuredTerrainPosition, railPoint, railSamples} from '../src/studies/measured-terrain.ts'
 const f = funicular as unknown as NetworkSnapshot, r = railway as unknown as NetworkSnapshot
 
 describe('Glion combined railway terrain', () => {
+ it('preserves the separate funicular binding and its masks for every checked combined journey', () => {
+  for (const direction of ['ascent', 'descent'] as const) for (const {connection: c} of glionJourneys(f, r, direction)) {
+   const b = bindGlionFunicularTerrain(funicularTerrain, f, r, c.railwayTripId)!
+   const leg = c.legs.find(l => l.tripId !== c.railwayTripId)!, train = f.trains.find(t => t.id === leg.tripId)!
+   const full = bindTerritetTerrain(funicularTerrain, f, train)!
+   expect(b).toEqual(full)
+   expect(b.data.terrain.columns).toBe(193); expect(b.data.terrain.rows).toBe(321)
+   expect(b.data.viewScale).toBe(180); expect(b.data.contextTracks).toHaveLength(2)
+   expect(b.routes[0].calls.map(c => [c.arrival, c.departure])).toEqual(leg.calls.map(c => [c.arrival, c.departure]))
+   const rail = bindGlionTerrain(terrain, f, r, c.railwayTripId)!
+   expect(rail.data.terrain.columns).toBe(257)
+   expect(rail.data.contextTracks).toBeUndefined()
+   for (const w of b.windows) {
+    const t = (w.start + w.end) / 2
+    expect(measuredTerrainPosition(b, t)).toEqual(measuredTerrainPosition(full, t))
+    expect(rail.windows.some(w => t >= w.start && t < w.end)).toBe(false)
+   }
+   for (const t of [c.start - 1, c.transfer.arrival, (c.transfer.arrival + c.transfer.departure) / 2, c.end]) {
+    expect(measuredTerrainPosition(b, t)).toBeUndefined()
+    expect(measuredTerrainPosition(rail, t)).toBeUndefined()
+   }
+   for (const mask of b.routes[0].route.maskedRanges) {
+    const calls = b.routes[0].calls, p = (mask.start + mask.end) / 2
+    const i = calls.findIndex((call, i) => calls[i + 1] && p >= call.progress && p <= calls[i + 1].progress)
+    const a = calls[i], z = calls[i + 1], t = a.departure + (z.arrival - a.departure) * (p - a.progress) / (z.progress - a.progress)
+    expect(b.windows.some(w => t >= w.start && t < w.end)).toBe(false)
+   }
+  }
+ })
+ it('refuses mismatched pairs and one leg’s terrain without affecting the valid other binding', () => {
+  const id = '.ojp-91-37-F.1.TA.89.j26'
+  const changed = structuredClone(funicularTerrain); changed.contextTracks.pop()
+  expect(bindGlionFunicularTerrain(changed, f, r, id)).toBeUndefined()
+  expect(bindGlionTerrain(terrain, f, r, id)).toBeDefined()
+  expect(bindGlionFunicularTerrain(funicularTerrain, f, r, id)).toBeDefined()
+  expect(bindGlionFunicularTerrain(terrain, f, r, id)).toBeUndefined()
+  expect(bindGlionTerrain(funicularTerrain, f, r, id)).toBeUndefined()
+  expect(bindGlionFunicularTerrain(funicularTerrain, f, r, 'unknown')).toBeUndefined()
+  const changedRail = structuredClone(r); (changedRail.trains.find(t => t.id === id)!.stops[4] as number[])[1]++
+  expect(bindGlionFunicularTerrain(funicularTerrain, f, changedRail, id)).toBeUndefined()
+  expect(bindGlionFunicularTerrain(funicularTerrain, {...f, metadata: {...f.metadata, serviceDate: '2026-09-05'}}, r, id)).toBeUndefined()
+ })
  it('retains original XYZ, progress and masks for all 20 checked railway legs', () => {
   for (const direction of ['ascent', 'descent'] as const) for (const {connection: c} of glionJourneys(f, r, direction)) {
    const b = bindGlionTerrain(terrain, f, r, c.railwayTripId)!

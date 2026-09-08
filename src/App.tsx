@@ -365,6 +365,7 @@ export function App({ edition, suspended = false }: AppProps) {
   const [rigiGuideActive, setRigiGuideActive] = useState(false)
   const [rochersTerrainBinding, setRochersTerrainBinding] = useState<MeasuredTerrainBinding>()
   const [glionTerrainBinding, setGlionTerrainBinding] = useState<MeasuredTerrainBinding>()
+  const [territetTerrainBinding, setTerritetTerrainBinding] = useState<MeasuredTerrainBinding>()
   const [pilatusTerrainBinding, setPilatusTerrainBinding] = useState<MeasuredTerrainBinding>()
   const [gornergratTerrainBinding, setGornergratTerrainBinding] = useState<MeasuredTerrainBinding>()
   const [jungfrauTerrainBinding, setJungfrauTerrainBinding] = useState<MeasuredTerrainBinding>()
@@ -519,6 +520,7 @@ export function App({ edition, suspended = false }: AppProps) {
   useEffect(() => { if (isJungfrau) void import('./studies/jungfrau-copy.ts').then(setJungfrauLocale) }, [isJungfrau])
   const jungfrauCopy = jungfrauLocale?.JUNGFRAU_COPY[language]
   const jungfrauSelect = jungfrauCopy?.select ?? { en: 'Explore the Jungfrau railways', de: 'Jungfraubahnen entdecken', fr: 'Explorer les chemins de fer de la Jungfrau', it: 'Esplora le ferrovie della Jungfrau' }[language]
+  const territetTerrainWindow = view === 'network' && isTerritet && territetJourneyActive ? territetTerrainBinding?.windows.find(w => networkTime >= w.start && networkTime < w.end) : undefined
   const glionTerrainWindow = view === 'network' && isTerritet && glionJourneyActive ? glionTerrainBinding?.windows.find(w => networkTime >= w.start && networkTime < w.end) : undefined
   const rochersTerrainWindow = view === 'network' && isRochers && rochersJourneyActive ? rochersTerrainBinding?.windows.find(w => networkTime >= w.start && networkTime < w.end) : undefined
   const pilatusTerrainWindow = view === 'network' && isPilatus && pilatusJourneyActive ? pilatusTerrainBinding?.windows.find(w => networkTime >= w.start && networkTime < w.end) : undefined
@@ -2174,7 +2176,7 @@ export function App({ edition, suspended = false }: AppProps) {
       data-cogwheel-enabled={isCogwheel}
       data-quiet-map={quietMap}
       data-quiet-playing={quietMap ? isPlaying : undefined}
-      className={`experience view-${view}${isJungfrau ? ' jungfrau-study' : ''}${isGornergrat ? ' gornergrat-study' : ''}${isTerritet ? ' territet-study' : ''}${isRochers ? ' rochers-study' : ''}${isPilatus ? ' pilatus-study' : ''}${timedRigiTerrain || jungfrauTerrainWindow || gornergratTerrainWindow || pilatusTerrainWindow || rochersTerrainWindow || glionTerrainWindow ? ' has-timed-rigi-terrain' : ''}${isContrast ? ' is-contrast' : ''}${airEnabled ? ' has-air-layer' : ''}${airCategorySelected ? ' has-air-category' : ''}${roadEnabled ? ' has-road-layer' : ''}${roadCategorySelected ? ' has-road-category' : ''}${selectedTrain || selectedStation || selectedRoute || selectedAirTrack || selectedAirport || selectedRoad ? ' has-selection' : ''}${!isTimetable ? ` corridor-${journeyCorridorId}` : ''}`}
+      className={`experience view-${view}${isJungfrau ? ' jungfrau-study' : ''}${isGornergrat ? ' gornergrat-study' : ''}${isTerritet ? ' territet-study' : ''}${isRochers ? ' rochers-study' : ''}${isPilatus ? ' pilatus-study' : ''}${timedRigiTerrain || jungfrauTerrainWindow || gornergratTerrainWindow || pilatusTerrainWindow || rochersTerrainWindow || glionTerrainWindow || territetTerrainWindow ? ' has-timed-rigi-terrain' : ''}${isContrast ? ' is-contrast' : ''}${airEnabled ? ' has-air-layer' : ''}${airCategorySelected ? ' has-air-category' : ''}${roadEnabled ? ' has-road-layer' : ''}${roadCategorySelected ? ' has-road-category' : ''}${selectedTrain || selectedStation || selectedRoute || selectedAirTrack || selectedAirport || selectedRoad ? ' has-selection' : ''}${!isTimetable ? ` corridor-${journeyCorridorId}` : ''}`}
     >
       <div className="scene" aria-hidden={webglAvailable ? true : undefined}>
         <Suspense fallback={null}>
@@ -2185,6 +2187,8 @@ export function App({ edition, suspended = false }: AppProps) {
             <p>{text.webglUnavailableDescription}</p>
             <a href="./methodology.html">{text.readMethodology}</a>
           </section>
+        ) : territetTerrainWindow && territetTerrainBinding ? (
+          <MeasuredTerrainScene binding={territetTerrainBinding} window={territetTerrainWindow} time={networkTime} isPlaying={isPlaying} rate={playbackRate} onTime={handleNetworkTime} />
         ) : glionTerrainWindow && glionTerrainBinding ? (
           <MeasuredTerrainScene binding={glionTerrainBinding} window={glionTerrainWindow} time={networkTime} isPlaying={isPlaying} rate={playbackRate} onTime={handleNetworkTime} />
         ) : rochersTerrainWindow && rochersTerrainBinding ? (
@@ -3100,9 +3104,9 @@ export function App({ edition, suspended = false }: AppProps) {
       }} /></Suspense>}
 
       {isNetwork && isTerritet && glionJourneyActive && territetNetwork ? (
-        <Suspense fallback={null}><GlionJourney onTerrain={setGlionTerrainBinding} terrainUrl={editionDataUrl('rochers-ascent-terrain.json')} initialLink={glionLink} funicular={territetNetwork} railwayUrl={editionDataUrl(edition.data.regional.rochers)} language={language} time={networkTime} onNetwork={setGlionNetwork} onSeek={seekMountainSequence} onFollow={followMountainSequence} onFinish={finishRigiTerrain} onExit={releaseSelection}/></Suspense>
+        <Suspense fallback={null}><GlionJourney funicularTerrainUrl={editionDataUrl('territet-ascent-terrain.json')} onTerrain={setGlionTerrainBinding} terrainUrl={editionDataUrl('rochers-ascent-terrain.json')} initialLink={glionLink} funicular={territetNetwork} railwayUrl={editionDataUrl(edition.data.regional.rochers)} language={language} time={networkTime} onNetwork={setGlionNetwork} onSeek={seekMountainSequence} onFollow={followMountainSequence} onFinish={finishRigiTerrain} onExit={releaseSelection}/></Suspense>
       ) : isNetwork && isTerritet && territetJourneyActive && territetNetwork ? (
-        <Suspense fallback={null}><TerritetJourney network={territetNetwork} language={language} time={networkTime} onSeek={seekMountainSequence} onFollow={followMountainSequence} onFinish={finishRigiTerrain} onExit={releaseSelection}/></Suspense>
+        <Suspense fallback={null}><TerritetJourney onTerrain={setTerritetTerrainBinding} terrainUrl={editionDataUrl('territet-ascent-terrain.json')} network={territetNetwork} language={language} time={networkTime} onSeek={seekMountainSequence} onFollow={followMountainSequence} onFinish={finishRigiTerrain} onExit={releaseSelection}/></Suspense>
       ) : isNetwork && isRochers && rochersJourneyActive && rochersNetwork ? (
         <Suspense fallback={null}><RochersJourney onTerrain={setRochersTerrainBinding} network={rochersNetwork} language={language} time={networkTime} onSeek={seekMountainSequence} onFollow={followMountainSequence} onFinish={finishRigiTerrain} onExit={releaseSelection}/></Suspense>
       ) : isNetwork && isPilatus && pilatusJourneyActive && pilatusNetwork ? (
@@ -4213,7 +4217,7 @@ export function App({ edition, suspended = false }: AppProps) {
           {isHub
             ? text.arrivalsDirection
             : isNetwork
-              ? isValais ? (valaisCopy?.valaisScope ?? '') : isTicino ? ticinoCopy?.model : isGraubuenden ? graubuendenCopy?.model : isSolothurn ? text.solothurnModel : isBern ? text.bernModel : isNyon ? text.nyonModel : isBasel ? text.baselModel : isLausanne ? text.lausanneModel : timedRigiTerrain || jungfrauTerrainWindow || gornergratTerrainWindow || pilatusTerrainWindow || rochersTerrainWindow || glionTerrainWindow ? text.interpolation : isPilatus ? pilatusCopy?.model : isRochers ? rochersCopy?.model : isTerritet ? glionJourneyActive || glionNetwork ? territetCopy?.combinedModel : territetCopy?.model : isGornergrat ? gornergratCopy?.model : isJungfrau ? jungfrauCopy?.model : isRigi ? rigiCopy.water : hasHeadwayMotion ? frequencyCopy.interpolation : text.interpolation
+              ? isValais ? (valaisCopy?.valaisScope ?? '') : isTicino ? ticinoCopy?.model : isGraubuenden ? graubuendenCopy?.model : isSolothurn ? text.solothurnModel : isBern ? text.bernModel : isNyon ? text.nyonModel : isBasel ? text.baselModel : isLausanne ? text.lausanneModel : timedRigiTerrain || jungfrauTerrainWindow || gornergratTerrainWindow || pilatusTerrainWindow || rochersTerrainWindow || glionTerrainWindow || territetTerrainWindow ? text.interpolation : isPilatus ? pilatusCopy?.model : isRochers ? rochersCopy?.model : isTerritet ? glionJourneyActive || glionNetwork ? territetCopy?.combinedModel : territetCopy?.model : isGornergrat ? gornergratCopy?.model : isJungfrau ? jungfrauCopy?.model : isRigi ? rigiCopy.water : hasHeadwayMotion ? frequencyCopy.interpolation : text.interpolation
               : text.simulation}
         </span>
       </footer>

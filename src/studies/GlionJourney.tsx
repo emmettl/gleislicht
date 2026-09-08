@@ -5,15 +5,31 @@ import {glionDirection, glionJourneys, glionPhase} from './glion.ts'
 import type {StudyLink} from './explore.ts'
 import {TERRITET_COPY} from './territet-copy.ts'
 import {GLION_COPY} from './glion-copy.ts'
-import {bindGlionTerrain} from './glion-terrain.ts'
+import {bindGlionTerrain, bindGlionFunicularTerrain} from './glion-terrain.ts'
 import {measuredTerrainPosition, railPoint, railSamples, type MeasuredTerrainBinding} from './measured-terrain.ts'
 import {measuredTerrainCopy} from './measured-terrain-copy.ts'
+import {territetTerrainCopy} from './territet-terrain-copy.ts'
 import type {TerritetDirection} from './territet.ts'
 
-export default function GlionJourney({initialLink, funicular, railwayUrl, terrainUrl, language, time, onNetwork, onSeek, onFollow, onFinish, onExit, onTerrain}: {
+function useTerrainAsset(url: string, wanted: boolean) {
+ const [data, setData] = useState<{url: string; value: unknown}>(), [errorUrl, setErrorUrl] = useState<string>(), [attempt, setAttempt] = useState(0)
+ const loaded = data?.url === url ? data : undefined
+ useEffect(() => {
+  if (!wanted || loaded) return
+  const controller = new AbortController()
+  void fetch(url, {signal: controller.signal}).then(response => {
+   if (!response.ok) throw new Error('Terrain unavailable')
+   return response.json() as Promise<unknown>
+  }).then(value => {if (!controller.signal.aborted) setData({url, value})}).catch(() => {if (!controller.signal.aborted) setErrorUrl(url)})
+  return () => controller.abort()
+ }, [wanted, loaded, url, attempt])
+ return {data: loaded, failed: !loaded && errorUrl === url, retry: () => {setData(undefined); setErrorUrl(undefined); setAttempt(n => n + 1)}}
+}
+
+export default function GlionJourney({initialLink, funicular, railwayUrl, terrainUrl, funicularTerrainUrl, language, time, onNetwork, onSeek, onFollow, onFinish, onExit, onTerrain}: {
  initialLink?: StudyLink;
  onTerrain: (binding: MeasuredTerrainBinding | undefined) => void;
- funicular: NetworkSnapshot; railwayUrl: string; terrainUrl: string; language: UiLanguage; time: number;
+ funicular: NetworkSnapshot; railwayUrl: string; terrainUrl: string; funicularTerrainUrl: string; language: UiLanguage; time: number;
  onNetwork: (network: NetworkSnapshot | undefined) => void; onSeek: (time: number) => void;
  onFollow: (id: string | undefined, station: string | undefined) => void; onFinish: () => void; onExit: () => void;
 }) {
@@ -33,24 +49,22 @@ export default function GlionJourney({initialLink, funicular, railwayUrl, terrai
  const choices = useMemo(() => railway ? glionJourneys(funicular, railway, direction) : [], [funicular, railway, direction])
  const selected = id ? choices.find(j => j.connection.railwayTripId === id) : choices.reduce<typeof choices[number] | undefined>((a, b) => !a || Math.abs(b.connection.start - 43200) < Math.abs(a.connection.start - 43200) ? b : a, undefined)
  const c = selected?.connection, network = selected?.network, phase = c ? glionPhase(c, time) : failed || railway ? 'unavailable' : 'loading'
- const terrainCopy = {...measuredTerrainCopy(language, 42), error: copy.terrainError}
- const [terrainWanted, setTerrainWanted] = useState(false), [terrainData, setTerrainData] = useState<{value: unknown}>(), [terrainError, setTerrainError] = useState(false), [terrainAttempt, setTerrainAttempt] = useState(0)
- useEffect(() => {
-  if (!terrainWanted || terrainData) return
-  const controller = new AbortController()
-  void fetch(terrainUrl, {signal: controller.signal}).then(response => {
-   if (!response.ok) throw new Error('Terrain unavailable')
-   return response.json() as Promise<unknown>
-  }).then(value => {if (!controller.signal.aborted) setTerrainData({value})}).catch(() => {if (!controller.signal.aborted) setTerrainError(true)})
-  return () => controller.abort()
- }, [terrainWanted, terrainData, terrainUrl, terrainAttempt])
- const terrain = useMemo(() => c && railway && terrainData ? bindGlionTerrain(terrainData.value, funicular, railway, c.railwayTripId) : undefined, [c, railway, terrainData, funicular])
+ const [terrainWanted, setTerrainWanted] = useState(false)
+ const railwayAsset = useTerrainAsset(terrainUrl, terrainWanted), funicularAsset = useTerrainAsset(funicularTerrainUrl, terrainWanted)
+ const railwayTerrain = useMemo(() => c && railway && railwayAsset.data ? bindGlionTerrain(railwayAsset.data.value, funicular, railway, c.railwayTripId) : undefined, [c, railway, railwayAsset.data, funicular])
+ const funicularTerrain = useMemo(() => c && railway && funicularAsset.data ? bindGlionFunicularTerrain(funicularAsset.data.value, funicular, railway, c.railwayTripId) : undefined, [c, railway, funicularAsset.data, funicular])
+ const activeLeg = c?.legs.find(l => time >= l.calls[0].departure && time < l.calls.at(-1)!.arrival)
+ const terrainLeg = activeLeg ? activeLeg.tripId === c?.railwayTripId ? 'railway' : 'funicular' : undefined
+ const terrain = terrainLeg === 'funicular' ? funicularTerrain : terrainLeg === 'railway' ? railwayTerrain : undefined
+ const asset = terrainLeg === 'funicular' ? funicularAsset : terrainLeg === 'railway' ? railwayAsset : undefined
+ const funicularCopy = territetTerrainCopy(language)
+ const terrainCopy = {...(terrainLeg === 'funicular' ? funicularCopy : measuredTerrainCopy(language, 42)), error: copy.terrainError}
  useEffect(() => {onTerrain(terrainWanted ? terrain : undefined); return () => onTerrain(undefined)}, [terrain, terrainWanted, onTerrain])
  const terrainPosition = terrainWanted && terrain ? measuredTerrainPosition(terrain, time) : undefined
  const terrainVisible = terrainWanted && terrain?.windows.some(w => time >= w.start && time < w.end)
- const terrainFailed = terrainError || Boolean(terrainData && !terrain)
+ const terrainFailed = Boolean(asset?.failed || asset?.data && !terrain)
  const railHeight = terrainPosition ? Math.round(railPoint(terrainPosition.route.points, railSamples(terrainPosition.route.points), terrainPosition.progress)[2]) : undefined
- const terrainStatus = terrainFailed ? 'error' : !terrain ? 'loading' : phase === 'interchange' ? 'interchange' : phase === 'complete' ? 'complete' : phase === 'before' ? 'before' : !terrainPosition ? 'funicular' : terrainVisible ? 'outdoor' : terrainPosition.mask?.reason ?? 'wait'
+ const terrainStatus = phase === 'interchange' ? 'interchange' : phase === 'complete' ? 'complete' : phase === 'before' ? 'before' : terrainFailed ? 'error' : !terrain ? 'loading' : terrainVisible ? 'outdoor' : terrainPosition?.mask?.reason ?? 'wait'
 
  useEffect(() => {
   onNetwork(network)
@@ -81,12 +95,12 @@ export default function GlionJourney({initialLink, funicular, railwayUrl, terrai
    <p>{network.metadata.serviceDate} · MVR · {network.trains.map(t => t.shortName).join(' → ')}</p>
    <nav ref={nav} aria-label={common.guide}>{calls.map((call, i) => <button key={`${i}-${call.id}`} aria-current={active === i ? 'step' : undefined} onClick={() => {onSeek(call.seek); setExpanded(false)}}><strong>{call.name}</strong><span>{formatServiceTime(call.arrival)}{call.arrival !== call.departure ? ` → ${formatServiceTime(call.departure)}` : ''}</span></button>)}</nav>
    <p role="status">{phase === 'complete' ? `${common.arrived} · ${calls.at(-1)?.name}` : phase === 'before' ? common.before : phase === 'interchange' ? `${copy.interchange} · ${copy.remaining} ${Math.floor(countdown / 60)}:${String(countdown % 60).padStart(2, '0')}` : `${phase === 'first-leg' ? copy.first : copy.second} · ${network.trains[phase === 'first-leg' ? 0 : 1].route}`}</p>
-   <div className="glion-terrain-control">
-    <button className="glion-terrain-button" aria-pressed={terrainWanted} onClick={() => {setTerrainError(false); setTerrainWanted(v => !v)}}>{terrainWanted ? terrainCopy.hide : terrainCopy.show}</button>
+   <div className="glion-terrain-control" data-terrain-leg={terrainLeg}>
+    <button className="glion-terrain-button" aria-pressed={terrainWanted} onClick={() => setTerrainWanted(v => !v)}>{terrainWanted ? terrainCopy.hide : terrainCopy.show}</button>
     {terrainPosition && <p className="terrain-leg-label">{terrainPosition.from}{terrainPosition.from !== terrainPosition.to ? ` → ${terrainPosition.to}` : ''}</p>}
-    {terrainWanted && <p role="status" data-terrain-status={terrainStatus}>{terrainStatus === 'error' ? terrainCopy.error : terrainStatus === 'loading' ? terrainCopy.loading : terrainStatus === 'interchange' ? copy.interchange : terrainStatus === 'funicular' ? copy.funicularMap : terrainStatus === 'complete' ? common.arrived : terrainStatus === 'before' ? common.before : terrainCopy[terrainStatus]}</p>}
-    {terrainWanted && terrainFailed && <button className="glion-terrain-button" onClick={() => {setTerrainError(false); setTerrainData(undefined); setTerrainAttempt(n => n + 1)}}>{terrainCopy.retry}</button>}
-    {terrainWanted && terrain && <details><summary>{terrainCopy.sources}{railHeight !== undefined ? ` · ${railHeight.toLocaleString(language)} m` : ''}</summary><p>{terrainCopy.model}</p>{railHeight !== undefined && <p>{terrainCopy.elevation}: {railHeight.toLocaleString(language)} m (LN02)</p>}<p>© swisstopo · swissALTIRegio {terrain.data.metadata.terrainRelease} · swissTLM3D 2026-02</p><a href="./methodology.html#glion-terrain" target="_blank" rel="noreferrer">{terrainCopy.sources} ↗</a></details>}
+    {terrainWanted && <p role="status" data-terrain-status={terrainStatus}>{terrainStatus === 'error' ? terrainCopy.error : terrainStatus === 'loading' ? terrainCopy.loading : terrainStatus === 'interchange' ? copy.interchange : terrainStatus === 'complete' ? common.arrived : terrainStatus === 'before' ? common.before : terrainPosition?.mask?.kinds.includes('Ground clearance') ? funicularCopy.clearance : terrainCopy[terrainStatus]}</p>}
+    {terrainWanted && terrainFailed && <button className="glion-terrain-button" onClick={() => asset?.retry()}>{terrainCopy.retry}</button>}
+    {terrainWanted && terrain && <details><summary>{terrainCopy.sources}{railHeight !== undefined ? ` · ${railHeight.toLocaleString(language)} m` : ''}</summary><p>{terrainCopy.model}</p>{railHeight !== undefined && <p>{terrainCopy.elevation}: {railHeight.toLocaleString(language)} m (LN02)</p>}<p>© swisstopo · {terrainLeg === 'funicular' ? 'swissALTI3D' : 'swissALTIRegio'} {terrain.data.metadata.terrainRelease} · swissTLM3D 2026-02</p><a href={terrainLeg === 'funicular' ? './methodology.html#territet-terrain' : './methodology.html#glion-terrain'} target="_blank" rel="noreferrer">{terrainCopy.sources} ↗</a></details>}
    </div>
    <div className="glion-transfer"><button onClick={() => {onSeek(c.transfer.arrival); setExpanded(false)}}>{copy.interchange} · {formatServiceTime(c.transfer.arrival)} → {formatServiceTime(c.transfer.departure)}</button><span>{copy.minimum} · {copy.scheduled}</span></div>
    <details><summary>{copy.evidence}</summary><p>{copy.path}</p><p>{copy.access}</p><a href="./methodology.html#glion" target="_blank" rel="noreferrer">{copy.evidence} ↗</a> · <a href="https://support.mob.ch/hc/en-ch/articles/15555078258845-Access-information-for-our-funiculars" target="_blank" rel="noreferrer">MOB ↗</a></details>

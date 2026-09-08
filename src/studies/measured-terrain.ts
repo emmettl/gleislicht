@@ -1,9 +1,9 @@
 import type { NetworkSnapshot } from '@motionstudies/core/domain/network'
 
 export type TerrainPoint = [number, number, number]
-export type MeasuredTerrainRoute = { routeId: string; legIndex: number; vehicle: 'train' | 'cogwheel'; points: TerrainPoint[]; stops: { id: string; name: string; progress: number }[]; maskedRanges: { start: number; end: number; names: string[]; kinds: string[]; reason: 'tunnel' | 'covered' | 'alignment' }[] }
+export type MeasuredTerrainRoute = { routeId: string; legIndex: number; vehicle: 'train' | 'cogwheel' | 'funicular'; points: TerrainPoint[]; stops: { id: string; name: string; progress: number }[]; maskedRanges: { start: number; end: number; names: string[]; kinds: string[]; reason: 'tunnel' | 'covered' | 'alignment' }[] }
 export type MeasuredTerrain = {
- id: string; version: 1
+ id: string; version: 1; viewScale?: number; contextTracks?: TerrainPoint[][]
  metadata: { serviceDate: string; feedVersion: string; timetableSha256: string; source: string; terrainRelease: string; terrainProductUrl: string; railProductUrl: string; attribution: string }
  origin: { easting: number; northing: number }
  terrain: { rows: number; columns: number; widthMetres: number; depthMetres: number; minElevation: number; maxElevation: number; elevations: number[] }
@@ -13,13 +13,15 @@ export type TerrainWindow = { start: number; end: number; legIndex: number }
 export type MeasuredTerrainBinding = { data: MeasuredTerrain; routes: { route: MeasuredTerrainRoute; calls: { name: string; arrival: number; departure: number; progress: number }[] }[]; windows: TerrainWindow[] }
 const root = (id: string | undefined) => id?.match(/^ch:1:sloid:\d+/)?.[0]
 const visible = (route: MeasuredTerrainRoute, progress: number) => !route.maskedRanges.some(r => progress>=r.start && progress<=r.end)
-export function bindMeasuredTerrain(value: unknown, network: NetworkSnapshot, sequence: { id: string; legs: { train: NetworkSnapshot['trains'][number]; departure: number; arrival: number; vehicle: 'train' | 'cogwheel' }[]; allowOmittedStops?: boolean }): MeasuredTerrainBinding | undefined {
+export function bindMeasuredTerrain(value: unknown, network: NetworkSnapshot, sequence: { id: string; legs: { train: NetworkSnapshot['trains'][number]; departure: number; arrival: number; vehicle: 'train' | 'cogwheel' | 'funicular' }[]; allowOmittedStops?: boolean }): MeasuredTerrainBinding | undefined {
  try {
  const data=value as MeasuredTerrain | undefined
  const metadata=network.metadata as NetworkSnapshot['metadata'] & {sources?: {timetable?: {sha256?: string}}}
  if (!data || data.id!==sequence.id || data.version!==1 || data.metadata?.serviceDate!==metadata.serviceDate || data.metadata?.feedVersion!==metadata.feedVersion || !metadata.sources?.timetable?.sha256 || data.metadata?.timetableSha256!==metadata.sources.timetable.sha256) return
  const grid=data.terrain
  if(!grid || !Number.isInteger(grid.rows) || !Number.isInteger(grid.columns) || grid.rows<2 || grid.columns<2 || grid.rows*grid.columns>150000 || grid.widthMetres<=0 || grid.depthMetres<=0 || ![grid.widthMetres,grid.depthMetres,grid.minElevation,grid.maxElevation,data.origin?.easting,data.origin?.northing].every(Number.isFinite) || !Array.isArray(grid.elevations) || grid.elevations.length!==grid.rows*grid.columns || grid.elevations.some(h=>!Number.isFinite(h) || h<0 || h>5000)) return
+ if(data.viewScale!==undefined && (!Number.isFinite(data.viewScale) || data.viewScale<100 || data.viewScale>1000))return
+ if(data.contextTracks!==undefined && (!Array.isArray(data.contextTracks) || data.contextTracks.length>8 || data.contextTracks.some(line=>!Array.isArray(line) || line.length<2 || line.length>1000 || line.some(p=>!Array.isArray(p) || p.length!==3 || !p.every(Number.isFinite) || Math.abs(p[0])>grid.widthMetres/2 || Math.abs(p[1])>grid.depthMetres/2 || p[2]<0 || p[2]>4500))))return
  if(!Array.isArray(data.routes) || data.routes.length!==sequence.legs.length) return
  const routes: MeasuredTerrainBinding['routes']=[], windows: TerrainWindow[]=[]
  for(let i=0;i<sequence.legs.length;i++) {

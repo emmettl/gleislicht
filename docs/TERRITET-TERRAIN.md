@@ -1,6 +1,6 @@
 # Territet–Glion measured geometry audit
 
-The pinned swissTLM3D source supports **two complete measured XYZ routes** through the Territet–Glion funicular. They share the track below and above a passing loop. Both alternatives are retained; neither is assigned to an uphill or downhill vehicle. This audit is preparation for terrain playback and introduces no runtime artifact or terrain raster.
+The pinned swissTLM3D source supports **two complete measured XYZ routes** through the Territet–Glion funicular. They share the track below and above a passing loop. Both alternatives are retained; neither is assigned to an uphill or downhill vehicle. The geometry audit is now followed by optional standalone terrain playback for all **140** dated services; the original source audit remains reproducible.
 
 ## Sources and identity
 
@@ -41,11 +41,25 @@ All pass the existing **15 m** attachment gate. The lower stop projects onto the
 
 Terrain playback can use measured common track below and above the loop, with both branches visible as context. While the selected vehicle traverses the unresolved loop interval, it should return to the existing map and retain timetable continuity. Assigning a branch to a vehicle or deriving mechanically synchronized motion needs separate evidence.
 
-The audit calculates the loop interval independently for both geometric hypotheses and retains their union for each of the **140** dated services. Interpolation uses each service's own departures, arrivals and original Collonge time. The model uses horizontal distance within the affected Glion–Collonge segment, consistently with existing measured railway playback. The results are proposed fallback intervals, not observed vehicle positions or runtime trip authorisations.
+The initial geometry audit calculates the loop interval independently for both geometric hypotheses and retains their union for each of the **140** dated services. Interpolation uses each service's own departures, arrivals and original Collonge time. That preliminary audit uses horizontal distance within the affected Glion–Collonge segment. These are proposed fallback intervals, not observed vehicle positions or runtime trip authorisations. The implemented measured-terrain model below uses XYZ polyline distance, matching the shared terrain engine; it recalculates both hypotheses instead of reusing the preliminary horizontal timings.
 
 For the default 12:04 pair, the proposed uphill fallback is approximately **12:06:06–12:07:03**, while the downhill interval is **12:05:46–12:06:20**. Their difference preserves the feed's distinct intermediate timing. It does not simulate two vehicles coupled by a cable.
 
-Next implementation: obtain and validate a suitably detailed terrain grid for this short route; retain both loop branches as context; implement the conservative map fallback, bridge handling and LN02 evidence; validate standalone and combined Glion journeys in both directions. Other operating dates remain separate.
+All 20 checked [combined Glion journeys](GLION-INTERCHANGE.md) now reuse this funicular terrain alongside the original Rochers terrain. Each leg keeps its own source grid, scale, contextual geometry and masks. The interchange remains on the map; an unavailable terrain asset affects only its own leg. Other operating dates remain separate.
+
+## Optional standalone terrain playback
+
+The optional artifact is **94.0 KiB gzip**. It combines a **193 × 321**, **5 m** landscape grid with the original measured railway, cropped to the three station attachments. The primary timing polyline contains **26 vertices**, including the inserted Collonge anchor and clipped upper endpoint. XYZ coordinates retain millimetre precision; rail heights are never moved to the ground surface. The landscape and railway use equal horizontal and vertical scale, with a closer camera for the short funicular and an enlarged vehicle marker.
+
+The landscape comes from two official [swissALTI3D](https://www.swisstopo.admin.ch/en/height-model-swissalti3d) **2 m** tiles, `swissalti3d_2021_2560-1141` and `swissalti3d_2021_2560-1142`. Their STAC metadata is retained in `data/territet-elevation-source.json`; full TIFF bytes must match SHA-256 `c014f0d3fe982c2edf7e024dda5b8cf3d410dd75f108b6dec7728f569816920a` and `82d4835622108b1e190073335c563d9936720c288d89a0273b4d0b623c344f62`. The item year is **2021**, distinct from the 2026-02 railway product release and 2026 timetable. Native origins, CRS, dimensions, resolution and no-data values are checked. Pixel-centre bilinear sampling spans the tile seam as one mosaic; sampled heights are rounded to 0.1 m. This bare-earth surface does not model buildings or vegetation.
+
+Both loop branches remain visible as context, independently of the animated track. Each hypothesis's loop bounds are recalculated by XYZ distance within the Collonge–Glion timed segment. Their union, expanded by one rail metre at each end, returns playback to the map. No animated vehicle is placed on either loop branch. The default ascent's implemented loop fallback is approximately **12:06:05–12:07:03**.
+
+Rail/ground comparisons also run at one-metre intervals against both the native elevation mosaic and the exact triangles rendered by the 5 m grid. Where ground is more than **2.5 m above** the source rail, a three-metre margin produces a map fallback. Two short intervals qualify: the lower station approach and another section below the passing loop. The default ascent uses the map for roughly its first three seconds and **12:05:21–12:05:31**. Their retained evidence explains the discrepancy; neither source height is altered. Bridge records remain measured track context, without invented bridge structures.
+
+Every original trip is explicitly authorised in its source direction. Runtime binding checks the complete reviewed route, masks, contextual branches, grid dimensions, provenance and camera setting before accepting the optional data; malformed elevations or changed dated calls return to the map. Downhill coordinates, call progress and masks reverse together. The original **12:05 uphill / 12:07 downhill Collonge calls** remain unchanged.
+
+Opt-in loading, cached toggles, retry, elevation and source controls, direction/departure selection, station seeking, arrival pause and replay use the shared timetable clock. Exiting the guide or inspecting a station removes the terrain scene. Controls and the passing-loop/height-discrepancy explanations are available in English, German, French and Italian.
 
 ## Reproduction and validation
 
@@ -55,12 +69,16 @@ python3 scripts/prepare-jungfrau-terrain-source.py \
   --bounds 2560250 1141780 2560550 1142450 \
   --output data/territet-terrain-source.json
 node scripts/audit-territet-terrain.mjs
+node scripts/ingest-territet-terrain.mjs /path/to/elevation-cache
 npx vitest run scripts/territet-terrain-geometry.test.mjs \
-  scripts/territet.test.ts scripts/glion-terrain.test.ts --exclude '**/.claude/**'
+  scripts/territet-terrain.test.ts scripts/territet.test.ts \
+  scripts/glion-terrain.test.ts scripts/rochers-terrain.test.ts \
+  scripts/jungfrau-terrain.test.ts scripts/gornergrat-terrain.test.ts \
+  scripts/pilatus-terrain.test.ts --exclude '**/.claude/**'
 npx oxlint scripts/audit-territet-terrain.mjs \
   scripts/territet-terrain-geometry.test.mjs
 ```
 
-The source and audit reproduce from the hash-verified cache. **11 tests across three suites** pass, including the five new audit tests. They check complete source topology, original XYZ vertices and joins, both branch alternatives, all 140 fallback intervals, exact original calls, and rejection of changed coordinates, dates, route identity, boarding flags, structures, missing branches and source provenance. Targeted lint and diff whitespace checks pass. Browser tests are unnecessary for this data-only audit; terrain playback and physical-device review remain pending.
+The source audit and terrain artifact reproduce from hash-verified caches. **34 tests across eight suites** cover the source topology, trimmed XYZ, both contextual branches, spatial loop hypotheses for every trip, all 140 directional bindings, exact calls, reversed heights, clearance masks, payload size and rejection of changed or malformed source data. Existing measured-railway binding regressions pass. Build/type checks, targeted lint and edition-boundary checks pass. All **16 desktop Chromium / iPhone WebKit browser cases** pass across standalone terrain, standalone map journeys, combined Glion terrain and Rochers terrain. They cover opt-in loading, retry, rejected branches, both directions, all station seeks, live transitions to map fallbacks, clock-preserving toggles, arrival pause, replay, departure changes and station-inspection cleanup. Production screenshots were reviewed at Collonge, on the upper line and downhill. The opening remains within budget at **358.9 KiB JavaScript**, **10.0 KiB CSS** and **765.6 KiB total gzip**; the optional 94.0 KiB terrain loads only when requested. Physical-device review remains separate.
 
-Artifacts: `data/territet-terrain-source.json`, `data/territet-terrain-audit.json`. Geometry: © swisstopo. Installation context: Federal Office of Transport. Timetable: opentransportdata.swiss.
+Artifacts: `data/territet-terrain-source.json`, `data/territet-terrain-audit.json`, `data/territet-elevation-source.json`, `data/territet-terrain-binding.json`, `data/territet-terrain-playback-audit.json`, `public/data/territet-ascent-terrain.json`. Geometry: © swisstopo. Installation context: Federal Office of Transport. Timetable: opentransportdata.swiss.

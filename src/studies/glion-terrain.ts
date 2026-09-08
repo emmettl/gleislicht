@@ -1,7 +1,22 @@
 import type {NetworkSnapshot} from '@motionstudies/core/domain/network'
 import {glionDirection, glionJourneys} from './glion.ts'
 import {bindRochersTerrain} from './rochers-terrain.ts'
+import {bindTerritetTerrain} from './territet-terrain.ts'
 import type {MeasuredTerrainBinding} from './measured-terrain.ts'
+
+/** Keep the funicular's own grid, camera scale, branch context and masks. */
+export function bindGlionFunicularTerrain(value: unknown, funicular: NetworkSnapshot, railway: NetworkSnapshot, railwayTripId: string): MeasuredTerrainBinding | undefined {
+ const direction = glionDirection(railwayTripId)
+ if (!direction) return
+ const journey = glionJourneys(funicular, railway, direction).find(j => j.connection.railwayTripId === railwayTripId)
+ if (!journey) return
+ const leg = journey.connection.legs.find(l => l.tripId !== railwayTripId)!
+ const train = funicular.trains.find(t => t.id === leg.tripId)
+ if (!train) return
+ const full = bindTerritetTerrain(value, funicular, train)
+ if (!full || full.routes[0].calls.length !== leg.calls.length || !full.routes[0].calls.every((c, i) => c.arrival === leg.calls[i].arrival && c.departure === leg.calls[i].departure)) return
+ return full
+}
 
 /** Bind the complete source railway first, then retain only the checked combined leg. */
 export function bindGlionTerrain(value: unknown, funicular: NetworkSnapshot, railway: NetworkSnapshot, railwayTripId: string): MeasuredTerrainBinding | undefined {

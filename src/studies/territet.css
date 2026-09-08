@@ -31,18 +31,18 @@
 .glion-transfer { display: grid; gap: 5px; margin: 10px 0; color: #c6c4d6; font-size: .65rem; line-height: 1.5; }
 .glion-transfer button { min-height: 44px; padding: 8px; text-align: left; color: #fff0b9; background: #84733822; border: 1px solid #e5ce8666; font: inherit; cursor: pointer; }
 .glion-journey[data-phase='interchange'] .glion-transfer { border-left: 2px solid #efd490; padding-left: 8px; }
-.glion-terrain-control { border-top: 1px solid #c1ccff33; padding-top: 8px; }
-.glion-terrain-control > button { width: 100%; }
-.glion-terrain-button { color: #eeeaff; background: #10172b; border: 1px solid #8e9cc04d; min-height: 44px; padding: 8px; cursor: pointer; font: inherit; font-size: 12px; }
-.glion-terrain-button[aria-pressed='true'] { color: #a9e2cf; border-color: #a9e2cf88; }
-.glion-journey[data-terrain-wanted='true'] .territet-details-toggle { display: block; }
-.glion-journey[data-compact='true'] > label,
-.glion-journey[data-compact='true'] > nav,
-.glion-journey[data-compact='true'] > p:not([role='status']),
-.glion-journey[data-compact='true'] > details,
-.glion-journey[data-compact='true'] > .glion-transfer { display: none; }
-.glion-journey[data-compact='true']:is([data-phase='first-leg'], [data-phase='second-leg']) > p[role='status'] { display: none; }
-.glion-journey .terrain-leg-label { color: #fff0b9; }
+.glion-terrain-control, .territet-terrain-control { border-top: 1px solid #c1ccff33; padding-top: 8px; }
+.glion-terrain-control > button, .territet-terrain-control > button { width: 100%; }
+.glion-terrain-button, .territet-terrain-button { color: #eeeaff; background: #10172b; border: 1px solid #8e9cc04d; min-height: 44px; padding: 8px; cursor: pointer; font: inherit; font-size: 12px; }
+.glion-terrain-button[aria-pressed='true'], .territet-terrain-button[aria-pressed='true'] { color: #a9e2cf; border-color: #a9e2cf88; }
+.territet-journey[data-terrain-wanted='true'] .territet-details-toggle { display: block; }
+.territet-journey[data-compact='true'] > label,
+.territet-journey[data-compact='true'] > nav,
+.territet-journey[data-compact='true'] > p:not([role='status']),
+.territet-journey[data-compact='true'] > details,
+.territet-journey[data-compact='true'] > .glion-transfer { display: none; }
+.territet-journey[data-compact='true']:is([data-phase='first-leg'], [data-phase='second-leg'], [data-phase='rail']) > p[role='status'] { display: none; }
+.territet-journey .terrain-leg-label { color: #fff0b9; }
 .territet-study.has-timed-rigi-terrain .map-navigation,
 .territet-study.has-timed-rigi-terrain .mobile-map-tools,
 .territet-study.has-timed-rigi-terrain .prototype-note,

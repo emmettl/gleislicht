@@ -3,8 +3,8 @@ import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { BufferGeometry, Float32BufferAttribute, PerspectiveCamera, Vector3 } from 'three'
 import { measuredTerrainPosition, railPoint, railSamples, type MeasuredTerrainBinding, type TerrainWindow } from './measured-terrain.ts'
 
-const SCALE = 650
 function Landscape({ binding, time, onReady }: { binding: MeasuredTerrainBinding; time: number; onReady: () => void }) {
+  const SCALE = binding.data.viewScale ?? 650
   const { camera, size } = useThree(), grid = binding.data.terrain
   const frames = useRef(0)
   useFrame(() => { if (++frames.current === 3) onReady() })
@@ -19,7 +19,7 @@ function Landscape({ binding, time, onReady }: { binding: MeasuredTerrainBinding
     }
     mesh.setAttribute('position',new Float32BufferAttribute(vertices,3));mesh.setAttribute('color',new Float32BufferAttribute(colors,3));mesh.setIndex(indices);mesh.computeVertexNormals()
     return mesh
-  },[grid])
+  },[grid,SCALE])
   const lines = useMemo(() => binding.routes.map(({route}) => {
     const distances=railSamples(route.points), vertices:number[]=[]
     for(let i=1;i<route.points.length;i++) {
@@ -28,13 +28,17 @@ function Landscape({ binding, time, onReady }: { binding: MeasuredTerrainBinding
       for(const p of [route.points[i-1],route.points[i]])vertices.push(p[0]/SCALE,p[2]/SCALE,p[1]/SCALE)
     }
     return { geometry:new BufferGeometry().setAttribute('position',new Float32BufferAttribute(vertices,3)),distances }
-  }),[binding.routes])
-  useEffect(()=>()=>{geometry.dispose();for(const l of lines)l.geometry.dispose()},[geometry,lines])
+  }),[binding.routes,SCALE])
+  const context = useMemo(() => (binding.data.contextTracks ?? []).map(points => {
+    const vertices = points.slice(1).flatMap((p,i) => [points[i],p].flatMap(q => [q[0]/SCALE,q[2]/SCALE,q[1]/SCALE]))
+    return new BufferGeometry().setAttribute('position',new Float32BufferAttribute(vertices,3))
+  }),[binding.data.contextTracks,SCALE])
+  useEffect(()=>()=>{geometry.dispose();for(const l of lines)l.geometry.dispose();for(const g of context)g.dispose()},[geometry,lines,context])
   const position=measuredTerrainPosition(binding,time)!
   const points=position.route.points, distances=lines[position.legIndex].distances
   const p=railPoint(points,distances,position.progress), ahead=railPoint(points,distances,Math.min(1,position.progress+.004))
   const [px,pz,ph]=p
-  const target=useMemo(()=>new Vector3(px/SCALE,ph/SCALE,pz/SCALE),[px,pz,ph])
+  const target=useMemo(()=>new Vector3(px/SCALE,ph/SCALE,pz/SCALE),[px,pz,ph,SCALE])
   useLayoutEffect(()=>{
     // The viewing position clears the sampled landscape; railway height stays on the source axis.
     const x=target.x+1.8,z=target.z+2.3
@@ -46,13 +50,14 @@ function Landscape({ binding, time, onReady }: { binding: MeasuredTerrainBinding
       else camera.clearViewOffset()
     }
     camera.lookAt(target)
-  },[camera,grid,size.width,size.height,target])
+  },[camera,grid,size.width,size.height,target,SCALE])
   return <>
     <color attach="background" args={['#080e20']} /><fog attach="fog" args={['#080e20',8,27]} />
     <ambientLight intensity={1.4}/><directionalLight position={[-8,18,8]} intensity={2.3} color="#e6e5d9"/>
     <mesh geometry={geometry}><meshStandardMaterial vertexColors roughness={1} /></mesh>
     <mesh geometry={geometry}><meshBasicMaterial color="#9dc6d8" wireframe transparent opacity={.055} depthWrite={false} /></mesh>
     {lines.map((line,i)=><lineSegments key={i} geometry={line.geometry} renderOrder={2}><lineBasicMaterial color={['#ead395','#c3b4f4','#94dec9'][i]} depthTest={false} transparent opacity={i===position.legIndex?1:.45}/></lineSegments>)}
+    {context.map((geometry,i)=><lineSegments key={`context-${i}`} geometry={geometry} renderOrder={2}><lineBasicMaterial color="#b8c9d9" depthTest={false} transparent opacity={.6}/></lineSegments>)}
     <group position={target} rotation={[0,Math.atan2(ahead[0]-p[0],ahead[1]-p[1]),0]}>
       <mesh position={[0,.018,0]} renderOrder={3}><boxGeometry args={[.022,.025,.09]}/><meshBasicMaterial color="#fff3c7" depthTest={false}/></mesh>
       <mesh rotation={[-Math.PI/2,0,0]} renderOrder={3}><ringGeometry args={[.06,.066,40]}/><meshBasicMaterial color="#ffda85" depthTest={false} transparent opacity={.65}/></mesh>
@@ -77,7 +82,7 @@ export default function MeasuredTerrainScene({ binding, window: activeWindow, ti
   },[isPlaying,rate,activeWindow])
   const position=measuredTerrainPosition(binding,time)
   if(!position)return null
-  return <div className={`${binding.data.id.replace('-ascent','')}-scene`} data-rendered={ready} data-progress={position.progress} data-stopped={position.stopped} data-leg={position.legIndex} style={{width:'100%',height:'100%'}}>
+  return <div className={`${binding.data.id.replace('-ascent','')}-scene`} data-rendered={ready} data-progress={position.progress} data-stopped={position.stopped} data-leg={position.legIndex} data-context-tracks={binding.data.contextTracks?.length} style={{width:'100%',height:'100%'}}>
     <Canvas dpr={[1,1.5]} camera={{fov:45,near:.01,far:80}}><Landscape binding={binding} time={time} onReady={() => setReady(true)}/></Canvas>
   </div>
 }
