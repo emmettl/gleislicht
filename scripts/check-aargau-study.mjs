@@ -8,6 +8,7 @@ import { gunzipSync, gzipSync } from 'node:zlib'
 import { hashFile } from './inventory-aargau.mjs'
 import { validateAargauFeed } from './build-aargau-study.mjs'
 import { identityKey, lineIndex } from './aargau-line-geometry.mjs'
+import { aargauRoadMatcher } from './aargau-road-geometry.mjs'
 
 const read = async path => JSON.parse(await readFile(path, 'utf8'))
 const input = 'data/aargau', sourceDirectory = 'data/aargau-sources'
@@ -31,6 +32,13 @@ for (const date of inventory.metadata.dates) {
   const manifest=await read(join(directory,'aargau-region-day-manifest.json'))
   const audit=await read(join(directory,'audit.json'))
   const raw=JSON.parse(gunzipSync(await readFile(join(input,`${date}-timetable.json.gz`))))
+  const roads=manifest.metadata.geometry.roadFallback ? aargauRoadMatcher(await read('data/aargau-road-cache.json')) : undefined
+  if (roads) {
+    assert.equal(manifest.metadata.geometry.roadFallback.cacheSha256,await hashFile('data/aargau-road-cache.json'))
+    const regression=await read(join(input,'road-regression.json'))
+    assert(regression.passed)
+    assert.equal(regression.days.find(day=>day.date===date)?.manifestSha256,await hashFile(join(directory,'aargau-region-day-manifest.json')))
+  }
   const fixtureHash=await hashFile(join(input,`${date}-timetable.json.gz`))
   assert.equal(audit.metadata.timetableFixtureSha256,fixtureHash)
   assert.equal(verification.fixtures[`${date}-timetable.json.gz`],fixtureHash)
@@ -54,6 +62,12 @@ for (const date of inventory.metadata.dates) {
     assert.equal(pattern.routeId,train.routeId);assert.equal(pattern.gtfsDirectionId,train.directionId)
     assert.deepEqual(pattern.stopIds,train.stops.map(([i])=>snapshot.stops[i][4]))
     assert.deepEqual(pattern.segments.map(s=>s.pathIndex),train.pathSegments)
+    const cached=roads?.matchPattern(train,snapshot.stops)
+    for(const [i,segment] of pattern.segments.entries()) if(segment.geometrySource==='osm') {
+      assert(cached?.[i]?.path,'OSM segment lacks an exact complete cached pattern')
+      assert.deepEqual(snapshot.paths[segment.pathIndex],cached[i].path)
+      assert(segment.agisRejection,'OSM replaced an admitted AGIS segment')
+    }
     const count=routeCounts.get(train.routeId)??{trips:0,matched:0,total:0};count.trips++
     train.pathSegments.forEach((path,i)=>{
       total++;count.total++
@@ -72,14 +86,20 @@ for (const date of inventory.metadata.dates) {
       const progress=pattern.source.stopProgressMetres.filter(p=>p!==null)
       for(let i=1;i<progress.length;i++)assert(progress[i]>=progress[i-1]-.01)
       if(pattern.source.closedLoop && progress.length)assert(progress.at(-1)-progress[0]<=part.length+.01)
-      for(const s of pattern.segments.filter(s=>s.pathIndex!==null))assert(s.maximumSnapMetres<=120 && s.pathMetres>=1)
-    } else assert(pattern.segments.every(s=>s.pathIndex===null))
+      for(const s of pattern.segments.filter(s=>s.pathIndex!==null&&s.geometrySource!=='osm'))assert(s.maximumSnapMetres<=120 && s.pathMetres>=1)
+    } else assert(pattern.segments.every(s=>s.pathIndex===null||s.geometrySource==='osm'))
   }
   for(const route of audit.routes)assert.deepEqual(routeCounts.get(route.routeId),{trips:route.trips,matched:route.matched,total:route.total})
   assert.equal(audit.pairs.length,pairCounts.size)
   for(const pair of audit.pairs)assert.deepEqual(pairCounts.get(JSON.stringify([pair.routeId,pair.fromId,pair.toId])),{occurrences:pair.occurrences,matched:pair.matched})
   assert.equal(audit.totals.trips,trains.size);assert.equal(audit.totals.total,total);assert.equal(audit.totals.matched,matched)
   assert.equal(audit.totals.coverage,matched/total)
+  if(roads) {
+    const roadCount=audit.patterns.reduce((n,p)=>n+p.occurrences*p.segments.filter(s=>s.geometrySource==='osm').length,0)
+    assert.equal(roadCount,audit.totals.roadMatched)
+    assert.equal(audit.totals.officialMatched+roadCount,matched)
+    for(const group of audit.groups)assert.equal(group.officialMatched+group.roadMatched,group.matched)
+  }
   assert.equal(audit.sourceRecords.length,collection.features.length)
   assert.equal(new Set(audit.sourceRecords.map(s=>s.featureId)).size,collection.features.length)
   assert(audit.checks.independentSourceArchiveVerification)

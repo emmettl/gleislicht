@@ -7,19 +7,24 @@ import { gunzipSync, gzipSync } from 'node:zlib'
 import { chunkNetworkSnapshot, extractNetworkWindow } from '@motionstudies/data/network-chunks'
 import { AARGAU_LIMITS, identityKey, lineIndex, matchAargauPattern } from './aargau-line-geometry.mjs'
 import { hashFile } from './inventory-aargau.mjs'
+import { aargauRoadMatcher } from './aargau-road-geometry.mjs'
 
 const digest = value => createHash('sha256').update(value).digest('hex')
 const gzipBytes = value => gzipSync(JSON.stringify(value)).length
 const category = (name, mode) => mode !== 'rail' ? mode : /^(EC|ICE|TGV|RJ|NJ|EN)/.test(name) ? 'international' : /^IC/.test(name) ? 'intercity' : /^IR/.test(name) ? 'interregio' : /^RE/.test(name) ? 'regional-express' : /^S[N]?\d/.test(name) ? 's-bahn' : 'regional'
 
-export function applyAargauGeometry(raw, index, cantonStopIds) {
+export function applyAargauGeometry(raw, index, cantonStopIds, roads) {
   const inside = new Set(cantonStopIds), stops = raw.stops, stopIndices = new Map(stops.map((s, i) => [s[4], i]))
   const patterns = new Map(), paths = [], pathIds = new Map(), pairs = new Map(), groups = new Map(), routeStats = new Map(), edges = new Map()
   const trains = raw.trains.map(train => {
     const key = JSON.stringify([train.routeId, train.directionId, train.calls.map(c => c[0])])
     if (!patterns.has(key)) {
       const match = matchAargauPattern(index.get(identityKey(train.agencyId, train.category, train.route)), train.calls.map(c => stops[stopIndices.get(c[0])]))
+      const roadSegments = roads?.matchPattern({ ...train, stops: train.calls.map(([id,a,d])=>[stopIndices.get(id),a,d]) }, stops)
       const segments = match.segments.map((segment, i) => {
+        if (segment.path) segment = { ...segment, geometrySource: 'agis' }
+        else if (roadSegments?.[i]?.path) segment = { ...roadSegments[i], agisRejection: segment.reason }
+        else if (roadSegments?.[i]) segment = { ...segment, ...roadSegments[i] }
         const { path, ...assessment } = segment
         let pathIndex = null
         if (path) {
@@ -37,7 +42,7 @@ export function applyAargauGeometry(raw, index, cantonStopIds) {
     const pattern = patterns.get(key); pattern.occurrences++
     const groupKey = `${train.agencyId}:${train.category}`
     const counter = (map, key, labels) => {
-      if (!map.has(key)) map.set(key, { ...labels, trips: 0, matched: 0, total: 0, cantonAdjacentMatched: 0, cantonAdjacentTotal: 0, requestStopTrips: 0, frequencyTrips: 0 })
+      if (!map.has(key)) map.set(key, { ...labels, trips: 0, matched: 0, officialMatched: 0, roadMatched: 0, total: 0, cantonAdjacentMatched: 0, cantonAdjacentTotal: 0, requestStopTrips: 0, frequencyTrips: 0 })
       return map.get(key)
     }
     const group = counter(groups, groupKey, { agencyId: train.agencyId, mode: train.category })
@@ -55,7 +60,7 @@ export function applyAargauGeometry(raw, index, cantonStopIds) {
       const matched = segment.pathIndex !== null, adjacent = inside.has(segment.fromId) || inside.has(segment.toId)
       if (matched) pair.matched++
       else pair.reasons.add(segment.reason)
-      for (const count of [group, route]) { count.total++; if (matched) count.matched++; if (adjacent) { count.cantonAdjacentTotal++; if (matched) count.cantonAdjacentMatched++ } }
+      for (const count of [group, route]) { count.total++; if (matched) { count.matched++; if (segment.geometrySource === 'osm') count.roadMatched++; else count.officialMatched++ } if (adjacent) { count.cantonAdjacentTotal++; if (matched) count.cantonAdjacentMatched++ } }
       const a = indexedStops[i][0], b = indexedStops[i + 1][0], edgeKey = [a, b].sort((a, b) => a - b).join(':')
       const edge = edges.get(edgeKey) ?? { pair: [a, b].sort((a, b) => a - b), paths: new Set(), missing: false }
       if (matched) edge.paths.add(segment.pathIndex)
@@ -112,7 +117,7 @@ export function validateAargauFeed(snapshot, raw, manifest, chunks) {
   return { completeSourceStopChains: true, exactPathEndpoints: true, chunkHashesAndReconstruction: true }
 }
 
-export async function buildAargauStudy({ sources, inventoryDirectory, date, output, stem = 'aargau-region', crosswalkPath }) {
+export async function buildAargauStudy({ sources, inventoryDirectory, date, output, stem = 'aargau-region', crosswalkPath, roadCachePath }) {
   const catalogue = JSON.parse(await readFile(join(sources, 'sources.json'), 'utf8'))
   for (const [name, record] of Object.entries(catalogue.files)) assert.equal(await hashFile(join(sources, name)), record.sha256)
   const inventory = JSON.parse(await readFile(join(inventoryDirectory, 'inventory.json'), 'utf8'))
@@ -124,9 +129,18 @@ export async function buildAargauStudy({ sources, inventoryDirectory, date, outp
   assert.equal(collection.features.length, catalogue.lines.features)
   const crosswalk = crosswalkPath ? JSON.parse(await readFile(crosswalkPath, 'utf8')) : { mappings: [] }
   const index = lineIndex(collection, crosswalk.mappings)
+  const roadBundle = roadCachePath ? JSON.parse(await readFile(roadCachePath,'utf8')) : undefined
+  if (roadBundle) for (const cache of Object.values(roadBundle.agencyCaches)) assert.equal(cache.metadata.inputTimetableHashes[date], await hashFile(join(inventoryDirectory,`${date}-timetable.json.gz`)), 'Road cache was not prepared for this timetable fixture')
+  const roads = roadBundle ? aargauRoadMatcher(roadBundle) : undefined
   console.log(`Matching ${date}: ${raw.trains.length} complete journeys…`)
-  const geometry = applyAargauGeometry(raw, index, inventory.cantonStopIds)
+  const geometry = applyAargauGeometry(raw, index, inventory.cantonStopIds, roads)
   geometry.snapshot.metadata.geometry = { dataDate: catalogue.lines.dataDate, retrievedAt: catalogue.lines.retrievedAt, sourceUrl: catalogue.lines.url, attribution: catalogue.lines.attribution, limits: AARGAU_LIMITS, sourceCatalogueSha256: inventory.metadata.sourceCatalogueSha256, ...(crosswalkPath ? { crosswalkSha256: await hashFile(crosswalkPath) } : {}) }
+  if (roads) {
+    geometry.snapshot.metadata.model = 'scheduled interpolation on AGIS normal lines and explicitly inferred OSM bus fallback'
+    geometry.snapshot.metadata.attribution.push('© OpenStreetMap contributors; ODbL-1.0')
+    geometry.snapshot.metadata.geometry.roadFallback = { cacheSha256: await hashFile(roadCachePath), sources: roads.sources, priority: 'Fill only missing AGIS segments; full agency/route/platform pattern required. OSM inferences are not operator-certified alignments.' }
+    geometry.snapshot.metadata.note += ' Missing bus segments may use OSM road inferences, identified separately in the audit; these do not establish the actual temporary diversion used.'
+  }
   const { manifest, chunks } = chunkNetworkSnapshot(geometry.snapshot, 7200, `${stem}-day-chunks`)
   const morning = extractNetworkWindow(geometry.snapshot, 24300, 31500, 27900)
   const checks = validateAargauFeed(geometry.snapshot, raw, manifest, chunks)
@@ -145,17 +159,17 @@ export async function buildAargauStudy({ sources, inventoryDirectory, date, outp
     const p = feature.properties
     const keys = [...index].filter(([, parts]) => parts.some(part => part.featureId === feature.id)).map(([key]) => key)
     const matches = inventory.routes.filter(r => keys.includes(identityKey(r.agencyId, r.mode, r.line)))
-    const patterns = geometry.patterns.filter(p => p.source.featureId === feature.id)
+    const patterns = geometry.patterns.filter(p => p.source.featureId === feature.id).map(p => ({...p,segments:p.segments.filter(s=>s.geometrySource!=='osm')}))
     return { featureId: feature.id, ...p, parts: feature.geometry.coordinates.length, vertices: feature.geometry.coordinates.reduce((sum, line) => sum + line.length, 0), matchingRouteIds: matches.map(r => r.routeId), cantonRouteIds: matches.filter(r => r.cantonSourceTrips).map(r => r.routeId), usedPatterns: patterns.length, acceptedOccurrences: patterns.reduce((sum, p) => sum + p.occurrences * p.segments.filter(s => s.pathIndex !== null).length, 0), status: patterns.some(p => p.segments.some(s => s.pathIndex !== null)) ? 'geometry-admitted' : !matches.length ? 'excluded-no-exact-identity-crosswalk' : !matches.some(r => r.cantonSourceTrips) ? 'excluded-no-canton-route-for-source-identity' : 'unused-inactive-or-pattern-mismatch' }
   })
-  const totals = geometry.groups.reduce((sum, g) => { for (const key of ['trips', 'matched', 'total', 'cantonAdjacentMatched', 'cantonAdjacentTotal']) sum[key] = (sum[key] ?? 0) + g[key]; return sum }, {})
+  const totals = geometry.groups.reduce((sum, g) => { for (const key of ['trips', 'matched', 'officialMatched', 'roadMatched', 'total', 'cantonAdjacentMatched', 'cantonAdjacentTotal']) sum[key] = (sum[key] ?? 0) + g[key]; return sum }, {})
   const night = geometry.patterns.filter(p => /^(N|SN)\d/.test(p.line) || routeMap.get(p.routeId).routeType === 705)
   const controls = Object.entries({ Aarau: 'Aarau', 'Baden/Wettingen': 'Baden', Brugg: 'Brugg AG', Lenzburg: 'Lenzburg', Freiamt: 'Muri AG', Fricktal: 'Frick', Zurzibiet: 'Koblenz' }).map(([area, name]) => {
     const ids = new Set(raw.stops.filter(s => s[2] === name || s[2].startsWith(`${name},`)).map(s => s[4]))
     return { area, anchor: name, platforms: ids.size, trips: raw.trains.filter(t => t.calls.some(c => ids.has(c[0]))).length }
   })
   assert(controls.every(c => c.trips > 0), 'An Aargau review-area control is missing')
-  const report = { schemaVersion: 1, metadata: { ...raw.metadata, timetableFixtureSha256: await hashFile(join(inventoryDirectory, `${date}-timetable.json.gz`)), inventorySha256: await hashFile(join(inventoryDirectory, 'inventory.json')), geometrySources: catalogue, crosswalk, sourceVerification }, scope: inventory.scope, checks,
+  const report = { schemaVersion: 1, metadata: { ...raw.metadata, timetableFixtureSha256: await hashFile(join(inventoryDirectory, `${date}-timetable.json.gz`)), inventorySha256: await hashFile(join(inventoryDirectory, 'inventory.json')), geometrySources: catalogue, crosswalk, sourceVerification, ...(roads ? {roadFallback:geometry.snapshot.metadata.geometry.roadFallback} : {}) }, scope: inventory.scope, checks,
     coverageDefinitions: { occurrence: 'Every adjacent stop pair in every retained complete journey, including calls outside the civil window and outside Aargau; not a count of live observations.', cantonAdjacent: 'An occurrence with at least one endpoint inside the canton polygon. This is not a clipped path-length coverage measure.', directedPattern: 'Exact GTFS route_id, direction_id and complete ordered platform-ID chain. A full match requires every segment; partial patterns retain all rejected segments.', directedPair: 'Exact route_id, from platform and to platform; fully matched only if all occurrences across all patterns match.', direction: 'Monotone projection on one source feature part, either coordinate orientation, at most one lap of an exactly closed part. RICHTUNG is retained, never equated to direction_id. This is ordered-path validation, not certified lane or track direction.' },
     reviewAreas: controls,
     nightService: { definition: 'N/SN line prefix or GTFS night-bus type 705', trips: night.reduce((s,p)=>s+p.occurrences,0), routes: [...new Set(night.map(p=>p.routeId))], patterns: night.length, total: night.reduce((s,p)=>s+p.occurrences*p.segments.length,0), matched: night.reduce((s,p)=>s+p.occurrences*p.segments.filter(s=>s.pathIndex!==null).length,0) },
@@ -164,6 +178,7 @@ export async function buildAargauStudy({ sources, inventoryDirectory, date, outp
     exclusions: inventory.routes.filter(r => r.cantonSourceTrips && !r.days.find(d => d.date === date)?.trips).map(r => ({ routeId: r.routeId, agencyId: r.agencyId, line: r.line, mode: r.mode, reason: r.admission === 'excluded-unsupported-mode' ? r.admission : 'no-eligible-service-on-date', day: r.days.find(d => d.date === date) })),
     payload: { manifestGzipBytes: gzipBytes(manifest), morningGzipBytes: gzipBytes(morning), chunks: chunks.map(c => ({ id: c.descriptor.id, gzipBytes: gzipBytes(c.payload) })) },
     readiness: { publicationReady: false, reason: 'Regional audit feed with explicit geometry gaps. Automated directed stop-order validation is not directional road/track certification. Temporary diversions and additional seasonal dates remain unvalidated.' } }
+  if (roads) report.coverageDefinitions.direction += ' This describes AGIS portions. OSM fallback uses agency-scoped complete ordered route/platform/coordinate patterns and monotone matched GTFS shape distances. A fully matched pattern can combine AGIS and OSM portions; segment geometrySource distinguishes them.'
   await mkdir(output, { recursive: true })
   for (const { descriptor, payload } of chunks) { await mkdir(dirname(join(output, descriptor.path)), { recursive: true }); await writeFile(join(output, descriptor.path), JSON.stringify(payload)) }
   await writeFile(join(output, `${stem}-day-manifest.json`), JSON.stringify(manifest))
@@ -175,5 +190,5 @@ export async function buildAargauStudy({ sources, inventoryDirectory, date, outp
 if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {
   const arg = name => process.argv[process.argv.indexOf(`--${name}`) + 1]
   for (const name of ['sources', 'inventory', 'date', 'output']) assert(process.argv.includes(`--${name}`), `Missing --${name}`)
-  await buildAargauStudy({ sources: arg('sources'), inventoryDirectory: arg('inventory'), date: arg('date'), output: arg('output'), crosswalkPath: process.argv.includes('--crosswalk') ? arg('crosswalk') : undefined })
+  await buildAargauStudy({ sources: arg('sources'), inventoryDirectory: arg('inventory'), date: arg('date'), output: arg('output'), crosswalkPath: process.argv.includes('--crosswalk') ? arg('crosswalk') : undefined, roadCachePath: process.argv.includes('--road-cache') ? arg('road-cache') : undefined })
 }
