@@ -42,7 +42,7 @@ For offline bus matching only, negative carry-in times are shifted back by one d
 | BVB tram | 2,389 | 50,486 / 50,486 — **100%** | 1,713 | 35,130 / 35,130 — **100%** |
 | BVB bus | 2,979 | 48,655 / 48,655 — **100%** | 2,030 | 31,027 / 31,027 — **100%** |
 | BLT tram | 860 | 18,635 / 18,635 — **100%** | 581 | 12,872 / 12,872 — **100%** |
-| BLT bus | 2,142 | 29,843 / 30,020 — **99.41%** | 1,518 | 20,459 / 20,563 — **99.49%** |
+| BLT bus | 2,142 | 30,020 / 30,020 — **100%** | 1,518 | 20,563 / 20,563 — **100%** |
 | Regional rail | 438 | 2,364 / 2,364 — **100%** | 321 | 2,168 / 2,168 — **100%** |
 | **Total** | **8,808** | | **6,163** | |
 
@@ -50,8 +50,8 @@ Tuesday has **1,297 platforms**, **219 preceding-day instances**, and **296 clip
 
 | Gzip payload | Tuesday | Sunday | Budget |
 | --- | ---: | ---: | ---: |
-| Manifest | 295.9 KiB | 266.9 KiB | 650 KiB |
-| Morning | 431.9 KiB | 325.3 KiB | 1,600 KiB |
+| Manifest | 296.7 KiB | 267.5 KiB | 650 KiB |
+| Morning | 432.4 KiB | 325.9 KiB | 1,600 KiB |
 | Largest two-hour chunk | 141.9 KiB | 88.6 KiB | 450 KiB |
 
 Both days have twelve chunks. Sunday's 02:00–04:00 chunk now contains 135 trip records; the earlier service-day artifact omitted previous-day services. Empty Tuesday 02:00–04:00 is retained as the timetable result, rather than filled with invented service.
@@ -83,7 +83,7 @@ The [reviewed geometry repairs](BASEL-GEOMETRY-REPAIRS.md) resolve the SBB 19/20
 
 The follow-up adds **724 Tuesday / 350 Sunday** depot and special tram movements, bringing every tram group to **100% geometry**. Each new rule pins its full ordered platform pattern, exact source parts and dated corridor evidence. All previously accepted paths and timetable calls remain unchanged.
 
-Only **one directed route/platform pair** remains unmatched on each date: EV11 **Freilager–Schaulager**, accounting for **177 / 104 movements**. A fresh public OSM probe finds the Neapel-Strasse service-road corridor but lacks its connection to the Freilager approach shown in BLT's dated diversion map. It remains interpolated. The [repair review](BASEL-GEOMETRY-REPAIRS.md) records the source gap, rejected alternatives and validation. Individual running-track certification remains outside the general schematic model.
+The final EV11 **Freilager–Schaulager** repair adds **177 Tuesday / 104 Sunday movements**, bringing every group to **100% inferred centreline coverage**. A continuous 13-record swissTLM3D road chain supplies the Freilager–Neapel-Strasse connection missing from the OSM motor-road graph, then follows Ruchfeldstrasse. The [repair review](BASEL-GEOMETRY-REPAIRS.md) records the exact sources, full-pattern restriction, rejected shortcuts and unchanged-path regression. The entrance is an inferred road centreline, not surveyed temporary lane geometry; individual running-track certification also remains outside the general schematic model.
 
 ## Application and release status
 
@@ -109,7 +109,7 @@ node scripts/build-basel-core.mjs \
   --output-directory /tmp/basel-core --check
 ```
 
-The default dates are 8 and 13 September 2026. Each date directory contains `basel-core-audit.json`, `basel-core-day-manifest.json`, `basel-core-morning.json` and `basel-core-day-chunks/`. The latest run used for the committed reports is retained under `/tmp/basel-geometry-complete/`.
+The default dates are 8 and 13 September 2026. Each date directory contains `basel-core-audit.json`, `basel-core-day-manifest.json`, `basel-core-morning.json` and `basel-core-day-chunks/`. The latest run used for the committed reports is retained under `/tmp/basel-ev11-repair/candidates/`; `/tmp/basel-geometry-complete/` is the preceding regression baseline.
 
 Promote a reviewed candidate, or substitute another output directory to validate the Sunday release without replacing the delivered Tuesday fixture:
 

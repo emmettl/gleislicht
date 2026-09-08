@@ -7,7 +7,7 @@
     "rail": "2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
     "busCache": "89b0b21422331830e9ffbc4f7ddbab19ac03e1e4b1d1a204c878dfbde75877cc",
     "supplementalBusCache": "1641bd0af101b79b56242977ed9bdb8a8d79f9f5454f4d69011c25026b9a61e2",
-    "reviewedGeometry": "86a78a68f0c88171c7a2ff4937bcff81b5998be73e0ef81ce9e993ecbbea1f3c",
+    "reviewedGeometry": "ebf0e6ad2877449f8c7e9f711403d00fb25b23105f0815446fd3d440d515fe2b",
     "diversionPolicy": "fe02486e50d315e196d88a56d973f15ed5466ceb340386fc4a732d07aa04d6bd",
     "policy": "b1c420dce9612e929db14b571a914e2c3a260df757fbb6bbf4f29c5c80cb1b72",
     "catalogue": "7661fac248774a03687396deb463d7a2dd80b9434b82cbdf92c79f52ecb1d6b5"
@@ -173,10 +173,10 @@
       "id": "BLT-bus",
       "mode": "bus",
       "trips": 1518,
-      "matched": 20459,
+      "matched": 20563,
       "total": 20563,
       "carryInTrips": 96,
-      "coverage": 0.994942372221952
+      "coverage": 1
     },
     {
       "id": "BLT-tram",
@@ -717,10 +717,10 @@
       "mode": "bus",
       "line": "EV",
       "trips": 209,
-      "matched": 3240,
+      "matched": 3344,
       "total": 3344,
       "carryInTrips": 20,
-      "coverage": 0.9688995215311005
+      "coverage": 1
     },
     {
       "id": "92-A01-M-j26-1",
@@ -3408,6 +3408,24 @@
         "retrievedOn": "2026-09-08",
         "validOn": null,
         "features": 46
+      },
+      "tlmRoad": {
+        "publisher": "swisstopo",
+        "url": "https://data.geo.admin.ch/ch.swisstopo.swisstlm3d/swisstlm3d_2026-02/swisstlm3d_2026-02_2056_5728.shp.zip",
+        "edition": "2026-02",
+        "retrievedOn": "2026-09-08",
+        "assetHashes": {
+          "swissTLM3D_TLM_STRASSE.shp": "725389dbf930aa61a47e08398c284593fe8ab91c18b2ae07488e608505cd29ac",
+          "swissTLM3D_TLM_STRASSE.dbf": "86c8c146bac1e39560da88cbe81aa4fa144d07268dccf9b63b2c69f29cb04851",
+          "swissTLM3D_TLM_STRASSE.prj": "f160fd6f149ff8288abd2a59f56556d034e87a0fda3dbf463761faf4210c30f5"
+        },
+        "retainedFile": "data/basel-geometry-sources/ev11-tlm-roads-2026-02.json.gz",
+        "retainedSha256": "26a871e67ca6c6c0dbb781ba781beaabac0b6ae183fa15335cfe9108ea93e4a0",
+        "attribution": "© swisstopo",
+        "termsUrl": "https://www.swisstopo.admin.ch/de/kostenlose-geobasisdaten-ogd",
+        "sourceCrs": "EPSG:2056 / LN02",
+        "coordinateTransform": "lv95ToWgs84 from ingest-national-road-topology.mjs; complete source LV95 XY coordinates retained",
+        "reviewBoundary": "Inferred road centreline through Freilager and Neapel-Strasse, not surveyed temporary lane or kerb geometry."
       }
     },
     "evidence": {
@@ -3436,7 +3454,7 @@
         "startTime": 1783893600000,
         "endTime": 1797030000000,
         "responseSha256": "bd9facf367e19bc27711843a16615605d29d05c8601de6c01f92c18b36a551a5",
-        "note": "BLT construction map used as corridor evidence only. Published geometry is independently sourced from OSM. Schaulager–MFP follows the southern carriageway and the GTFS platform access; Freilager–Schaulager rejected because the available OSM path disagrees with the dated official detour."
+        "note": "BLT dated construction map confirms the Neapel-Strasse–Ruchfeldstrasse corridor toward Aesch. Schaulager–MFP uses OSM. Freilager–Schaulager uses a continuous independent swissTLM3D road chain, including the northern 4m road omitted from the OSM motor-road graph. The largest separation from the dated BLT corridor is 25.6m; this is a schematic centreline inference, not the exact temporary carriageway. The direct Emil Frey-Strasse shortcut and the earlier Genuastrasse turn remain excluded."
       },
       "depotCorridors": {
         "url": "https://www.bvb.ch/wp-content/bvb/dokumente/liniennetzplan/2026/Liniennetzplan_2026_Baustellen_September_Oktober.pdf",
@@ -3458,7 +3476,7 @@
         ]
       }
     },
-    "addedMovements": 806,
+    "addedMovements": 910,
     "decisions": [
       {
         "ruleId": "tram-depot-79",
@@ -5730,13 +5748,40 @@
         "occurrences": 72
       },
       {
+        "ruleId": "bus-EV-freilager-schaulager",
+        "routeId": "92-A01-I-j26-1",
+        "mode": "bus",
+        "line": "EV",
+        "fromId": "ch:1:sloid:235",
+        "toId": "ch:1:sloid:88073:1:9",
+        "pathIndex": 1657,
+        "sourceFeatureIds": [
+          "tlm-road:{6389C93B-1407-4CF7-BEC5-6E2426CEAC55}",
+          "tlm-road:{5D2F6A40-75C7-4DA7-88B4-354015FC3A1B}",
+          "tlm-road:{19ACD968-C71D-488C-BE17-70EB446AA560}",
+          "tlm-road:{F1960B93-6D8E-4C24-8450-26022AD9FFC4}",
+          "tlm-road:{FD380C35-3D39-472C-AA33-D6F550F96D05}",
+          "tlm-road:{FB921487-9146-46C0-B448-40D4059174E9}",
+          "tlm-road:{011D9877-9CD4-48E9-8052-6E709AAD62F6}",
+          "tlm-road:{D693E65E-C38F-4A78-99F4-9D262186B0D1}",
+          "tlm-road:{248F15B4-56B1-4760-8136-842D0C093CA7}",
+          "tlm-road:{DCD252EE-6B93-42FB-8E93-360E4CBD8CE9}",
+          "tlm-road:{67B94B5B-0380-43C0-A94E-BC44646CE79B}",
+          "tlm-road:{ADB1DC25-C0DA-4A59-AF12-4598B35AEE03}",
+          "tlm-road:{741CC173-35E6-4110-BB29-B2C17EEE1BDB}"
+        ],
+        "pathMetres": 793.6048313389188,
+        "maximumSnapMetres": 11.277169680258316,
+        "occurrences": 104
+      },
+      {
         "ruleId": "bus-EV-schaulager-mfp",
         "routeId": "92-A01-I-j26-1",
         "mode": "bus",
         "line": "EV",
         "fromId": "ch:1:sloid:88073:1:9",
         "toId": "ch:1:sloid:78180:1:2",
-        "pathIndex": 1657,
+        "pathIndex": 1658,
         "sourceFeatureIds": [
           "osm:1218941738",
           "osm:148799394",
@@ -5758,18 +5803,7 @@
       }
     ]
   },
-  "remainingGeometry": [
-    {
-      "routeId": "92-A01-I-j26-1",
-      "line": "EV",
-      "mode": "bus",
-      "fromId": "ch:1:sloid:235",
-      "toId": "ch:1:sloid:88073:1:9",
-      "from": "Münchenstein, Freilager",
-      "to": "Münchenstein, Schaulager",
-      "occurrences": 104
-    }
-  ],
+  "remainingGeometry": [],
   "roadFallback": {
     "initial": {
       "addedMovements": 17981,
@@ -8197,68 +8231,68 @@
     }
   },
   "payload": {
-    "manifestGzipBytes": 273262,
-    "morningGzipBytes": 333113,
+    "manifestGzipBytes": 273927,
+    "morningGzipBytes": 333708,
     "chunks": [
       {
         "id": "00-02",
         "trips": 376,
-        "gzipBytes": 41428
+        "gzipBytes": 41424
       },
       {
         "id": "02-04",
         "trips": 135,
-        "gzipBytes": 17937
+        "gzipBytes": 17934
       },
       {
         "id": "04-06",
         "trips": 256,
-        "gzipBytes": 30849
+        "gzipBytes": 30843
       },
       {
         "id": "06-08",
         "trips": 520,
-        "gzipBytes": 56193
+        "gzipBytes": 56190
       },
       {
         "id": "08-10",
         "trips": 624,
-        "gzipBytes": 65506
+        "gzipBytes": 65505
       },
       {
         "id": "10-12",
         "trips": 778,
-        "gzipBytes": 80607
+        "gzipBytes": 80604
       },
       {
         "id": "12-14",
         "trips": 865,
-        "gzipBytes": 89771
+        "gzipBytes": 89768
       },
       {
         "id": "14-16",
         "trips": 875,
-        "gzipBytes": 90374
+        "gzipBytes": 90371
       },
       {
         "id": "16-18",
         "trips": 871,
-        "gzipBytes": 90772
+        "gzipBytes": 90769
       },
       {
         "id": "18-20",
         "trips": 816,
-        "gzipBytes": 84358
+        "gzipBytes": 84356
       },
       {
         "id": "20-22",
         "trips": 669,
-        "gzipBytes": 68305
+        "gzipBytes": 68301
       },
       {
         "id": "22-24",
         "trips": 571,
-        "gzipBytes": 60192
+        "gzipBytes": 60189
       }
     ]
   },

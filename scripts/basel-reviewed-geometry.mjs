@@ -5,6 +5,7 @@ import { projectRailStop } from './lausanne-rail-geometry.mjs'
 import { BASEL_CORE_RAIL_LIMITS, coreEdgePaths } from './basel-core-geometry.mjs'
 import { BASEL_DIVERSION_LIMITS } from './basel-tram-diversions.mjs'
 import { BASEL_PATH_LIMITS } from './basel-line-geometry.mjs'
+import { lv95ToWgs84 } from './ingest-national-road-topology.mjs'
 
 const measure = points => {
   let distance = 0
@@ -34,6 +35,12 @@ export function reviewedBaselPath(rule, bundle, from, to) {
     assert(points.length >= 2 && points.every(p => p.length === 2 && p.every(Number.isFinite)), 'Invalid reviewed geometry coordinates')
     assert([part.from, part.to].every(i => Number.isInteger(i) && i >= 0 && i < points.length) && part.from !== part.to, 'Invalid reviewed source range')
     const reverse = part.from > part.to
+    if (feature.source === 'tlmRoad') {
+      assert(/^\d+m Strasse$/.test(feature.properties.OBJEKTART), 'Reviewed TLM bus corridor is not a road')
+      assert.equal(feature.properties.VERKEHRSBE, 'Keine', 'Reviewed TLM road has a traffic restriction')
+      assert.equal(feature.properties.RICHTUNGSG, 'Falsch', 'Review direction-specific TLM road before use')
+      assert.deepEqual(points, feature.sourceCoordinates.map(lv95ToWgs84), 'Reviewed TLM road differs from source coordinates')
+    }
     if (feature.source === 'osm') {
       assert(!['yes', '1'].includes(feature.properties.oneway) || !reverse, 'Reviewed road runs against one-way source')
       assert(feature.properties.oneway !== '-1' || reverse, 'Reviewed road runs against reverse one-way source')
