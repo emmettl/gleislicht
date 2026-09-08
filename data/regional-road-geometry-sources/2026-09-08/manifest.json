@@ -1,0 +1,221 @@
+{
+  "schemaVersion": 1,
+  "purpose": "regional-road-geometry",
+  "complete": true,
+  "dates": [
+    "2026-09-04",
+    "2026-09-06"
+  ],
+  "files": [
+    {
+      "id": "basel-roads-metadata",
+      "source": "basel",
+      "path": "basel-roads-metadata.json.gz",
+      "format": "json",
+      "url": "https://data.bs.ch/api/explore/v2.1/catalog/datasets/100250",
+      "bytes": 13225,
+      "sha256": "f8b3b40ca9da6d8cdc2b8b3dcc7179740a3183d35c222e73a078719e4d6a7b93",
+      "acquiredAt": "2026-09-08T17:53:46.499159+00:00"
+    },
+    {
+      "id": "basel-roads-count",
+      "source": "basel",
+      "path": "basel-roads-count.json.gz",
+      "format": "json",
+      "url": "https://data.bs.ch/api/explore/v2.1/catalog/datasets/100250/records?limit=0",
+      "bytes": 36,
+      "sha256": "f8ad535f740051f8cc6e53466a77b3618daf6d66ff6b5ca66ef05181c37a8a19",
+      "acquiredAt": "2026-09-08T17:53:46.624426+00:00"
+    },
+    {
+      "id": "basel-roads",
+      "source": "basel",
+      "path": "basel-roads.json.gz",
+      "format": "json",
+      "url": "https://data.bs.ch/api/explore/v2.1/catalog/datasets/100250/exports/json",
+      "bytes": 6239349,
+      "sha256": "26bbda21123ed491605cd7dc47c4acf7dab28bc98016dfbccc089e1c1eab7424",
+      "acquiredAt": "2026-09-08T17:53:49.280605+00:00"
+    },
+    {
+      "id": "thurgau-roads-metadata",
+      "source": "thurgau",
+      "path": "thurgau-roads-metadata.json.gz",
+      "format": "json",
+      "url": "https://data.tg.ch/api/explore/v2.1/catalog/datasets/kantonsstrassenachsen",
+      "bytes": 3575,
+      "sha256": "fe696e65ccf824fef6d846fc8a8be1a9b024243feb0fd410b8f558efd3db602a",
+      "acquiredAt": "2026-09-08T17:53:49.553101+00:00"
+    },
+    {
+      "id": "thurgau-roads-hits",
+      "source": "thurgau",
+      "path": "thurgau-roads-hits.xml.gz",
+      "format": "xml",
+      "url": "https://ows.geo.tg.ch/geofy_access_proxy/kantonsstrassen?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=ms%3Akantonsstrassenachsen&SRSNAME=EPSG%3A2056&RESULTTYPE=hits",
+      "bytes": 795,
+      "sha256": "42df2194eb8392539d8d3ed70404eb6bb11dd8f5a915a1db5376a67945c55ce8",
+      "acquiredAt": "2026-09-08T17:53:49.640889+00:00"
+    },
+    {
+      "id": "thurgau-roads",
+      "source": "thurgau",
+      "path": "thurgau-roads.json.gz",
+      "format": "json",
+      "url": "https://ows.geo.tg.ch/geofy_access_proxy/kantonsstrassen?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=ms%3Akantonsstrassenachsen&SRSNAME=EPSG%3A2056&OUTPUTFORMAT=GEOJSON&COUNT=100000",
+      "bytes": 1710298,
+      "sha256": "91c35af7cc66ef129bda9c0dda7a7d78f97611fa460490ec05f743edadcf20b8",
+      "acquiredAt": "2026-09-08T17:53:50.308877+00:00"
+    },
+    {
+      "id": "zurich-roads-metadata",
+      "source": "zurich-city",
+      "path": "zurich-roads-metadata.json.gz",
+      "format": "json",
+      "url": "https://data.stadt-zuerich.ch/api/3/action/package_show?id=geo_verkehrsachsensystem_stadt_zuerich",
+      "bytes": 18703,
+      "sha256": "fd4689ca9ccfa40936665d7dce859f3ca879ae030cd04c33e19291b02af5c01c",
+      "acquiredAt": "2026-09-08T17:53:50.629289+00:00"
+    },
+    {
+      "id": "zurich-stations-metadata",
+      "source": "zurich-city",
+      "path": "zurich-stations-metadata.json.gz",
+      "format": "json",
+      "url": "https://data.stadt-zuerich.ch/api/3/action/package_show?id=geo_standorte_der_verkehrszaehlungen_miv",
+      "bytes": 12183,
+      "sha256": "3383c2eccc8bcce189866c77872da73be80458e545c5ff146e062817918d0e36",
+      "acquiredAt": "2026-09-08T17:53:50.786929+00:00"
+    },
+    {
+      "id": "zurich-stations-hits",
+      "source": "zurich-city",
+      "path": "zurich-stations-hits.xml.gz",
+      "format": "xml",
+      "url": "https://www.ogd.stadt-zuerich.ch/wfs/geoportal/Standorte_der_Verkehrszaehlungen_MIV?SERVICE=WFS&VERSION=1.1.0&REQUEST=GetFeature&TYPENAME=tbl_standort_zaehlung_miv_p&SRSNAME=EPSG%3A2056&RESULTTYPE=hits",
+      "bytes": 745,
+      "sha256": "a682b9daaebf2dbe3354170d4e114d3493a17e5a121f50659cf1255037e918f5",
+      "acquiredAt": "2026-09-08T17:53:51.130828+00:00"
+    },
+    {
+      "id": "zurich-stations",
+      "source": "zurich-city",
+      "path": "zurich-stations.json.gz",
+      "format": "json",
+      "url": "https://www.ogd.stadt-zuerich.ch/wfs/geoportal/Standorte_der_Verkehrszaehlungen_MIV?SERVICE=WFS&VERSION=1.1.0&REQUEST=GetFeature&TYPENAME=tbl_standort_zaehlung_miv_p&SRSNAME=EPSG%3A2056&OUTPUTFORMAT=application%2Fvnd.geo%2Bjson&MAXFEATURES=100000",
+      "bytes": 48664,
+      "sha256": "91085cb69e90c3b2f532711a93edb68fbe85a07f2ee2a3419f63db2ddec3bbf7",
+      "acquiredAt": "2026-09-08T17:53:51.271137+00:00"
+    },
+    {
+      "id": "zurich-roads-hits",
+      "source": "zurich-city",
+      "path": "zurich-roads-hits.xml.gz",
+      "format": "xml",
+      "url": "https://www.ogd.stadt-zuerich.ch/wfs/geoportal/Verkehrsachsensystem_Stadt_Zuerich?SERVICE=WFS&VERSION=1.1.0&REQUEST=GetFeature&TYPENAME=vas_basis&SRSNAME=EPSG%3A2056&RESULTTYPE=hits",
+      "bytes": 726,
+      "sha256": "a992b14a204fd16323f9d91d9e3826285cb6709f82a5cd53945dc5a559e6399f",
+      "acquiredAt": "2026-09-08T17:53:52.175998+00:00"
+    },
+    {
+      "id": "zurich-roads",
+      "source": "zurich-city",
+      "path": "zurich-roads.json.gz",
+      "format": "json",
+      "url": "https://www.ogd.stadt-zuerich.ch/wfs/geoportal/Verkehrsachsensystem_Stadt_Zuerich?SERVICE=WFS&VERSION=1.1.0&REQUEST=GetFeature&TYPENAME=vas_basis&SRSNAME=EPSG%3A2056&OUTPUTFORMAT=application%2Fvnd.geo%2Bjson&MAXFEATURES=100000",
+      "bytes": 17093544,
+      "sha256": "2a9cbedfc4acf795686f04579d07b326bc1c0c1171c8e767d561d03a407a605c",
+      "acquiredAt": "2026-09-08T17:53:55.282920+00:00"
+    },
+    {
+      "id": "zurich-road-modes-hits",
+      "source": "zurich-city",
+      "path": "zurich-road-modes-hits.xml.gz",
+      "format": "xml",
+      "url": "https://www.ogd.stadt-zuerich.ch/wfs/geoportal/Verkehrsachsensystem_Stadt_Zuerich?SERVICE=WFS&VERSION=1.1.0&REQUEST=GetFeature&TYPENAME=vas_e_verkehrstraeger&SRSNAME=EPSG%3A2056&RESULTTYPE=hits",
+      "bytes": 738,
+      "sha256": "0da9fbcb9013b9a0d8595113e1aede925c76303b25d1a9326ad7e489ea58973a",
+      "acquiredAt": "2026-09-08T17:53:55.481812+00:00"
+    },
+    {
+      "id": "zurich-road-modes",
+      "source": "zurich-city",
+      "path": "zurich-road-modes.json.gz",
+      "format": "json",
+      "url": "https://www.ogd.stadt-zuerich.ch/wfs/geoportal/Verkehrsachsensystem_Stadt_Zuerich?SERVICE=WFS&VERSION=1.1.0&REQUEST=GetFeature&TYPENAME=vas_e_verkehrstraeger&SRSNAME=EPSG%3A2056&OUTPUTFORMAT=application%2Fvnd.geo%2Bjson&MAXFEATURES=100000",
+      "bytes": 2615815,
+      "sha256": "e4484e09392635f99c5c726573786386470f60c4167fd2d1c73fc5d38bc2e8e0",
+      "acquiredAt": "2026-09-08T17:53:55.998726+00:00"
+    },
+    {
+      "id": "zurich-road-directions-hits",
+      "source": "zurich-city",
+      "path": "zurich-road-directions-hits.xml.gz",
+      "format": "xml",
+      "url": "https://www.ogd.stadt-zuerich.ch/wfs/geoportal/Verkehrsachsensystem_Stadt_Zuerich?SERVICE=WFS&VERSION=1.1.0&REQUEST=GetFeature&TYPENAME=vas_e_einbahn_ist&SRSNAME=EPSG%3A2056&RESULTTYPE=hits",
+      "bytes": 734,
+      "sha256": "f0e3e2028396009fcabec453a4becb6f64467901fb91e7cdbe0726383944b15b",
+      "acquiredAt": "2026-09-08T17:58:33.527656+00:00"
+    },
+    {
+      "id": "zurich-road-directions",
+      "source": "zurich-city",
+      "path": "zurich-road-directions.json.gz",
+      "format": "json",
+      "url": "https://www.ogd.stadt-zuerich.ch/wfs/geoportal/Verkehrsachsensystem_Stadt_Zuerich?SERVICE=WFS&VERSION=1.1.0&REQUEST=GetFeature&TYPENAME=vas_e_einbahn_ist&SRSNAME=EPSG%3A2056&OUTPUTFORMAT=application%2Fvnd.geo%2Bjson&MAXFEATURES=100000",
+      "bytes": 634171,
+      "sha256": "67ba7910db2302562f6ddc19f83ffbb8dafa1247fad15dc0333000fa7f9419b4",
+      "acquiredAt": "2026-09-08T17:58:33.779503+00:00"
+    },
+    {
+      "id": "thurgau-classes-metadata",
+      "source": "thurgau",
+      "path": "thurgau-classes-metadata.json.gz",
+      "format": "json",
+      "url": "https://data.tg.ch/api/explore/v2.1/catalog/datasets/dbu-tba-1",
+      "bytes": 28079,
+      "sha256": "b89e73bdcbcabc63f50d76bc81e357c4c08934a556f6ffbd343f50a82cfe4d68",
+      "acquiredAt": "2026-09-08T17:58:33.933322+00:00"
+    },
+    {
+      "id": "thurgau-classes-2026-09-04-count",
+      "source": "thurgau",
+      "path": "thurgau-classes-2026-09-04-count.json.gz",
+      "format": "json",
+      "url": "https://data.tg.ch/api/explore/v2.1/catalog/datasets/dbu-tba-1/records?where=datum+%3D+date%272026-09-04%27&limit=0",
+      "bytes": 36,
+      "sha256": "28adf3e1f60717a931c1d8f62971ff836d2ce78a18d62aa27361412d7cb47549",
+      "acquiredAt": "2026-09-08T17:58:34.242095+00:00"
+    },
+    {
+      "id": "thurgau-classes-2026-09-04",
+      "source": "thurgau",
+      "path": "thurgau-classes-2026-09-04.json.gz",
+      "format": "json",
+      "url": "https://data.tg.ch/api/explore/v2.1/catalog/datasets/dbu-tba-1/exports/json?where=datum+%3D+date%272026-09-04%27",
+      "bytes": 1485648,
+      "sha256": "d5895369b45b64c2c6c4149e1ca8f896e854a41283c3ec2d2d14df0cd14fc6d6",
+      "acquiredAt": "2026-09-08T17:58:34.852045+00:00"
+    },
+    {
+      "id": "thurgau-classes-2026-09-06-count",
+      "source": "thurgau",
+      "path": "thurgau-classes-2026-09-06-count.json.gz",
+      "format": "json",
+      "url": "https://data.tg.ch/api/explore/v2.1/catalog/datasets/dbu-tba-1/records?where=datum+%3D+date%272026-09-06%27&limit=0",
+      "bytes": 36,
+      "sha256": "28adf3e1f60717a931c1d8f62971ff836d2ce78a18d62aa27361412d7cb47549",
+      "acquiredAt": "2026-09-08T17:58:34.989920+00:00"
+    },
+    {
+      "id": "thurgau-classes-2026-09-06",
+      "source": "thurgau",
+      "path": "thurgau-classes-2026-09-06.json.gz",
+      "format": "json",
+      "url": "https://data.tg.ch/api/explore/v2.1/catalog/datasets/dbu-tba-1/exports/json?where=datum+%3D+date%272026-09-06%27",
+      "bytes": 1483793,
+      "sha256": "866245b73cf7414b8da21a30052d4603908f9132d8db2478fb2b8371dc95343c",
+      "acquiredAt": "2026-09-08T17:58:35.851825+00:00"
+    }
+  ]
+}

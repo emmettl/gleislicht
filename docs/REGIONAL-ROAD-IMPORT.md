@@ -2,6 +2,8 @@
 
 Started **8 September 2026**, following the [regional road source survey](REGIONAL-ROAD-SOURCE-SURVEY.md). The first implementation acquires and normalizes complete requested day slices, audits measurement quality and gaps, and prepares counter inventories for geometry review. It does **not** add these sources to AUTO playback or the live DATEX recorder.
 
+The [geometry and class-coverage follow-up](REGIONAL-ROAD-GEOMETRY.md) now matches these counts against official axes in all three regions, checks the Zürich station inventory, and adds Thurgau's separate 60-station class family. The figures below remain the reproducible baseline for the first count import.
+
 ## Pinned first comparison
 
 Friday **4 September 2026** and Sunday **6 September 2026** are Swiss civil dates. All six exports reconcile against separate publisher count queries. The snapshot contains **23,832 original observations**, **252 station identities** and **500 source-specific directional/lane or measurement-site series**. Station identities are namespaced; these are not 252 independently verified physical locations.
@@ -79,9 +81,8 @@ python3 -B -m unittest discover -s scripts -p test_regional_road_counts.py
 
 The pinned suite verifies offline artifact reproduction, export truncation, source-hash tampering, duplicate conflicts, date boundaries, 23/25-hour days, ambiguous/nonexistent hours, zero/missing/imputed semantics, validation flags, class differences and municipal aggregate identity.
 
-## Next implementation increment
+## Follow-up status
 
-1. **Basel:** select urban stations with complete counts on both dates; acquire authoritative road axes and validate directional joins with the matched station inventory. Review the mixed detector families and the LSA discrepancy before joining more historical products.
-2. **Thurgau:** acquire the separate class product and durable annual history; obtain station/road geometry, classify access/through-road/ramp scope, and investigate the Weinfelden Sunday absence before selecting corridors.
-3. **Zürich city:** acquire detector plans/current station geometry, resolve MSID direction and turning scope, and review the nearby federal/cantonal candidates. Geographic proximity alone must not deduplicate the sources.
-4. After those reviews, build an explicitly labelled hourly volume presentation or a separately declared motion model. Measured speed and travel conditions cannot be recovered from these counts alone. Public study registration is a later gate, following source scope, path and clock validation.
+Official axes for all three sources, the municipal station map and Thurgau class counts are now acquired and audited in the [second increment](REGIONAL-ROAD-GEOMETRY.md). Detector-direction reviews, corridor continuity, detailed counter-overlap resolution and annual history remain. The Basel LSA discrepancy and Weinfelden Sunday absences remain visible.
+
+After those reviews, build an explicitly labelled hourly volume presentation or a separately declared motion model. Measured speed and travel conditions cannot be recovered from these counts alone. Public study registration is a later gate, following source scope, path and clock validation.
