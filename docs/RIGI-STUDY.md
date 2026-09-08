@@ -6,6 +6,18 @@ The first fixture uses Swiss GTFS **20260902**, service date **4 September 2026*
 
 The complete dataset is about **13.1 KiB gzip**, with a tested **25 KiB study-data budget**, so it loads as one optional artifact rather than eight tiny movement chunks. Nothing from this study's data is requested for the initial national view. The default study time is noon; the full day remains searchable, including quiet hours. A failed request is disclosed and other studies remain accessible.
 
+## Selectable Rigi connections
+
+Select **Explore the Rigi connections** from the RIGI overview or a selected Rigi station. An optional schematic shows both railway approaches reaching **Rigi Staffel and Rigi Kulm**, with lake connections through Luzern, Weggis and Vitznau, plus the Weggis–Kaltbad cableway. Eleven buttons select actual source stops and reveal their services on the map without changing the shared clock or playback state. The native dialog supports keyboard selection, Escape, focus return and scrolling on smaller screens. Space activates a station without triggering the map’s playback shortcut. EN / DE / FR / IT labels and all diagram code load on entry; no additional timetable or terrain request is needed.
+
+Stop matching uses exact source roots and their platform/generated-pier suffixes, never proximity or a name guess. Rigi Staffel’s two platforms and Rigi Kulm’s three source rows resolve to their shared station entries. Weggis pier and valley cableway station remain distinct, as do Kaltbad railway and cableway stations. Vitznau is one shared source timetable stop, with both boat and railway calls. Each button’s accessible label includes the unique scheduled-service count for that stop.
+
+The twelve drawn links comprise ten transport links supported by source service calls and two interchanges supported by the retained, matching-feed Weggis/Kaltbad evidence. Unsupported stops and transport links are omitted; walking links require the audited service date, feed version and archive hash. Missing support is disclosed in the guide. The railway approaches are distinguished using audited operator, transport-type and route IDs, including Vitznau’s partial route 88 services.
+
+This is an editorial **schematic of selected connections**, not geographic or walking geometry, a track layout, or a complete stop list. Intermediate stops are omitted. The two coloured lines above Staffel express both approaches serving the same onward stations, without claiming a specific track allocation. Dashed links mean an interchange; they do not remove walking time or guarantee a connection. The authored sequences retain their separately audited transfer constraints.
+
+Unit checks cover source identities, shared platforms, distinct interchanges, both approaches, partial services, absent stops and changed transfer evidence. Desktop Chromium and emulated iPhone WebKit checks cover station selection, map handoff, preserved time/pause, lazy loading, keyboard activation, Escape and focus restoration. Physical-device review remains open.
+
 ## Quiet periods and the day rhythm
 
 Select **A day on lake and mountain** in the overview for four dated activity bands: lake boats, Vitznau railway, Arth-Goldau railway and Weggis cableway. The bands merge overlapping scheduled journeys, including intermediate station stops, and leave actual service gaps visible. “Underway” is a scheduled journey count, not a claim that every vehicle is moving at that instant. Both directions and all modes are included independently of the map filter.

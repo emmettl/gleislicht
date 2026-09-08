@@ -1,0 +1,27 @@
+.rigi-guide { width: min(470px, calc(100vw - 24px)); max-height: 88dvh; padding: 18px; overflow: auto; border: 1px solid #9dcdd64d; border-radius: 14px; color: #f8f7ff; background: #0b1020; box-shadow: 0 30px 100px #000b; }
+.rigi-guide::backdrop { background: #020410b8; backdrop-filter: blur(6px); }
+.rigi-guide header { position: sticky; top: -18px; z-index: 2; display: flex; justify-content: space-between; align-items: center; gap: 12px; background: #0b1020; padding: 4px 0; }
+.rigi-guide h2 { font-size: 18px; margin: 0; font-weight: 500; }
+.rigi-guide header button { min-width: 44px; min-height: 44px; border: 0; background: transparent; color: inherit; font-size: 26px; cursor: pointer; }
+.rigi-guide-intro { font-size: 12px; line-height: 1.5; color: #d1d2e0; margin: 8px 0; }
+.rigi-guide-date { font-size: 10px; color: #b7bacb; }
+.rigi-guide-legend { display: flex; flex-wrap: wrap; gap: 6px 12px; font-size: 10px; margin: 12px 0; }
+.rigi-guide [data-mode="vitznau"] { --guide-color: #eaca79; }
+.rigi-guide [data-mode="arth"] { --guide-color: #b6a4ec; }
+.rigi-guide [data-mode="boats"] { --guide-color: #72c6df; }
+.rigi-guide [data-mode="cable"] { --guide-color: #9ed6b3; }
+.rigi-guide [data-mode="walk"] { --guide-color: #b9bdc9; }
+.rigi-guide-legend span::before { content: ''; display: inline-block; width: 14px; border-top: 2px solid var(--guide-color); margin-right: 5px; vertical-align: middle; }
+.rigi-guide-legend [data-mode="walk"]::before { border-top-style: dashed; }
+.rigi-guide-diagram { position: relative; height: 380px; }
+.rigi-guide-diagram svg { width: 100%; height: 100%; overflow: visible; }
+.rigi-guide-diagram path { stroke: var(--guide-color); stroke-width: 3; fill: none; }
+.rigi-guide-diagram [data-mode="walk"] { stroke-width: 1.5; stroke-dasharray: 4 4; }
+.rigi-guide-stop { position: absolute; transform: translate(-50%, -50%); width: 29%; min-height: 44px; display: grid; align-content: center; gap: 3px; padding: 5px 3px; text-align: center; border: 1px solid #71869d66; border-radius: 6px; background: #0b1020; color: inherit; cursor: pointer; font: inherit; }
+.rigi-guide-stop strong { font-size: 11px; font-weight: 500; line-height: 1.25; }
+.rigi-guide-stop small { font-size: 9px; line-height: 1.2; color: #b7bacb; }
+.rigi-guide-stop:hover, .rigi-guide-stop:focus-visible { border-color: #8dfaff; background: #152536; }
+.rigi-guide details { margin-top: 12px; font-size: 11px; line-height: 1.5; color: #c4c8d8; }
+.rigi-guide summary { padding: 8px 0; cursor: pointer; }
+.rigi-guide a { color: #aad8e5; }
+@media (max-width: 700px) { .rigi-guide { padding: 12px; } .rigi-guide header { top: -12px; } .rigi-guide h2 { font-size: 16px; } }

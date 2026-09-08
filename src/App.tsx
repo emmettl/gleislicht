@@ -148,6 +148,7 @@ const AlpineQuiet = lazy(() =>
 )
 
 const RigiTimetableTerrain = lazy(() => import('./studies/RigiTimetableTerrain.tsx'))
+const RigiGuide = lazy(() => import('./studies/RigiGuide.tsx'))
 const RigiDayRhythm = lazy(() => import('./studies/RigiDayRhythm.tsx'))
 const RigiSequence = lazy(() => import('./studies/RigiSequence.tsx'))
 const RigiTerrainProfile = lazy(() => import('./studies/RigiTerrainProfile.tsx'))
@@ -325,6 +326,7 @@ export function App({ edition }: AppProps) {
   const [rigiNetwork, setRigiNetwork] = useState<NetworkSnapshot>()
   const [rigiSequenceActive, setRigiSequenceActive] = useState(false)
   const [rigiRhythmActive, setRigiRhythmActive] = useState(false)
+  const [rigiGuideActive, setRigiGuideActive] = useState(false)
   const [rigiTerrainBinding, setRigiTerrainBinding] = useState<RigiTerrainBinding>()
   const [zvvRegionNetwork, setZvvRegionNetwork] = useState<NetworkSnapshot>()
   const [genevaTpgNetwork, setGenevaTpgNetwork] = useState<NetworkSnapshot>()
@@ -419,7 +421,7 @@ export function App({ edition }: AppProps) {
   const [rigiLocale, setRigiLocale] = useState<typeof import('./studies/rigi-copy.ts')>()
   useEffect(() => { if (isRigi) void import('./studies/rigi-copy.ts').then(setRigiLocale) }, [isRigi])
   const rigiSelect = { en: 'Explore Lake Lucerne and Rigi', de: 'Vierwaldstättersee und Rigi entdecken', fr: 'Explorer le lac des Quatre-Cantons et le Rigi', it: 'Esplora il Lago dei Quattro Cantoni e il Rigi' }[language]
-  const rigiCopy = rigiLocale?.RIGI_COPY[language] ?? { rhythm: 'A day on lake and mountain', sequence: '', select: rigiSelect, title: 'Rigi', placeholder: rigiSelect, modes: '', loading: text.loading, unavailable: text.loading, water: '', cable: '' }
+  const rigiCopy = rigiLocale?.RIGI_COPY[language] ?? { connections: '', rhythm: 'A day on lake and mountain', sequence: '', select: rigiSelect, title: 'Rigi', placeholder: rigiSelect, modes: '', loading: text.loading, unavailable: text.loading, water: '', cable: '' }
   const isRigiTerrain = isRigiCorridorId(journeyCorridorId)
   const rigiOrigin = isRigiTerrain ? RIGI_ASCENTS[journeyCorridorId].name : 'Vitznau'
   const rigiTerrainCopy = terrainCopyForRigi(language, rigiOrigin)
@@ -2850,6 +2852,11 @@ export function App({ edition }: AppProps) {
         </nav>
       )}
 
+      {isNetwork && isRigi && rigiGuideActive && rigiNetwork && <Suspense fallback={null}><RigiGuide network={rigiNetwork} language={language} onClose={() => setRigiGuideActive(false)} onSelect={name => {
+        const station = stationIndex.find(entry => entry.name === name)
+        if (station) { setRigiGuideActive(false); setSelectedCategory(undefined); setRigiRhythmActive(false); selectStation(station) }
+      }} /></Suspense>}
+
       {isNetwork && isRigi && rigiRhythmActive && rigiNetwork && !selectedTrain && !selectedStation && !selectedRoute ? (
         <Suspense fallback={null}><RigiDayRhythm network={rigiNetwork} time={networkTime} language={language} onSeek={time => { setSelectedCategory(undefined); setDirectorMode(false); seekRigiSequence(time) }} onExit={releaseSelection} /></Suspense>
       ) : isNetwork && isRigi && rigiSequenceActive && rigiNetwork ? (
@@ -3117,6 +3124,7 @@ export function App({ edition }: AppProps) {
             <span className="station-card-mark" aria-hidden="true">◎</span>
             <span className="service">{selectedStation.name}</span>
           </div>
+          {isRigi && <button type="button" className="corridor-entry" onClick={event => { event.currentTarget.focus(); setRigiGuideActive(true) }}>{rigiCopy.connections} →</button>}
           <div
             className="station-route-strip"
             aria-label={text.routesServing(selectedStation.name)}
@@ -3383,6 +3391,7 @@ export function App({ edition }: AppProps) {
                   : text.scheduledRail}
               {hasHeadwayMotion && <> {frequencyCopy.mixed}</>}
           </p>
+          {isRigi && rigiNetwork && !regionalNetworkError && <button type="button" className="corridor-entry" onClick={event => { event.currentTarget.focus(); setRigiGuideActive(true) }}>{rigiCopy.connections} →</button>}
           {isRigi && rigiNetwork && !regionalNetworkError && <button type="button" className="corridor-entry" onClick={() => { releaseSelection(); setSelectedCategory(undefined); setDirectorMode(false); setRigiRhythmActive(true) }}>{rigiCopy.rhythm} →</button>}
           {isRigi && network && !regionalNetworkError && <button type="button" className="corridor-entry" onClick={startRigiSequence}>{rigiCopy.sequence} →</button>}
           {isRigi && network && !regionalNetworkError && Object.entries(RIGI_ASCENTS).map(([id, approach]) => <button key={id} type="button" className="corridor-entry" onClick={() => openTerrainCorridor(id as RigiCorridorId)}>{terrainCopyForRigi(language, approach.name).enter} ↗</button>)}
