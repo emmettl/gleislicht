@@ -2,6 +2,7 @@ import { readFile, writeFile } from 'node:fs/promises'
 
 const json = async path => JSON.parse(await readFile(path, 'utf8'))
 const summary = await json('data/bern-audit/summary.json'), routes = await json('data/bern-audit/routes.json')
+const displayRelease = await json('data/bern-audit/display-release.json')
 const sourceLines = await json('data/bern-audit/source-lines.json')
 const days = await Promise.all(summary.days.map(d => json(`data/bern-audit/${d.serviceDate}.json`)))
 const n = value => value.toLocaleString('en-GB')
@@ -35,7 +36,7 @@ The full-source census identifies **${n(summary.routeCount)} GTFS route records 
 
 ## Deliverables
 
-- [Feed index](../public/data/bern-region/index.json), [Friday manifest](../public/data/bern-region/2026-09-04/bern-region-day-manifest.json), [Sunday manifest](../public/data/bern-region/2026-09-06/bern-region-day-manifest.json). Each date has twelve two-hour chunks and a 06:45–08:45 morning extract. These use the existing network snapshot/chunk schema. Application study-picker integration is outside this data deliverable.
+- [Feed index](../public/data/bern-region/index.json), [Friday manifest](../public/data/bern-region/2026-09-04/bern-region-day-manifest.json), [Sunday manifest](../public/data/bern-region/2026-09-06/bern-region-day-manifest.json). Each date has twelve two-hour chunks and a 06:45–08:45 morning extract. These use the existing network snapshot/chunk schema. The selectable application study uses a separately validated display release; the full-detail archives remain unchanged.
 - [Complete route and operator inventory](BERN-ROUTE-INVENTORY.md): every route, its exact GTFS identity, source line codes, status and weekday/Sunday admitted versus candidate counts. [Machine-readable routes](../data/bern-audit/routes.json) include per-date exclusions, directed pairs, patterns and geometry counts.
 - [Audit summary](../data/bern-audit/summary.json), [Friday pattern/pair evidence](../data/bern-audit/2026-09-04.json), [Sunday pattern/pair evidence](../data/bern-audit/2026-09-06.json), [all source-line records](../data/bern-audit/source-lines.json), [cantonal GTFS stop records](../data/bern-audit/stops.json).
 - [Explicit operator and exceptional line crosswalk](../data/bern-operator-crosswalk.json), [source adapter](../scripts/bern-line-geometry.mjs), [canton timetable census](../scripts/bern-timetable.mjs), [builder](../scripts/build-bern-region.mjs), [independent artifact checker](../scripts/check-bern-region.mjs).
@@ -111,6 +112,24 @@ Concrete cases preserved for follow-up:
 - **Matte lift 2352 and Wiriehorn 2365:** no matching acquired OEVTP line. **SBB/BLS/SOB and MOB long-distance or changed labels**, replacement buses, and complete journeys beyond the source extent remain explicitly excluded or partial. No whole operator is claimed complete from its admitted subset.
 - **Biel/Seeland, Oberaargau, Emmental and regional bus terminal/platform gaps:** many routes have high segment coverage yet fail whole-pattern admission. The route and directed-pair files identify each failure; high occurrence coverage does not excuse a missing terminal movement.
 
+## Application display release
+
+Bern is selectable as **Bern · canton and Alpine connections**, with full-day loading by default, morning playback, stop/route search, links that restore the date and selection, and retry after failed loads. English, German, French and Italian labels identify partial coverage and representative motion. The default application timetable is **4 September 2026**. An unavailable linked date is explicitly reported; it is never silently stamped onto older journeys. A Sunday display release can be built from the separately audited 6 September fixture. Winter, holidays and other dates still require a new admission audit.
+
+The [display-release audit](../data/bern-audit/display-release.json) records both dates, original manifest and admission-audit hashes, movement counts, geometry error and payloads. Display geometry uses Douglas–Peucker with a **5 m maximum distance to each retained chord in approximate LV95**. A separate verifier checks every original subchain, retained vertex order and exact segment endpoints. This bounds display position, not arc-length distortion or survey accuracy. All original source calls, journey identities, schedules, frequency semantics, directed segment indices and chunk bytes remain unchanged. Admission still uses the unsimplified geometry.
+
+| Payload (gzip bytes) | Friday | Sunday | Budget |
+| --- | ---: | ---: | ---: |
+| Manifest | ${displayRelease.dates.map(d => n(d.payload['bern-region-day-manifest.json'].gzipBytes)).join(' | ')} | 665,600 |
+| Morning | ${displayRelease.dates.map(d => n(d.payload['bern-region-morning.json'].gzipBytes)).join(' | ')} | 1,638,400 |
+| Largest two-hour chunk | ${displayRelease.dates.map(d => n(Math.max(...Object.entries(d.payload).filter(([path]) => path.includes('day-chunks/')).map(([, value]) => value.gzipBytes)))).join(' | ')} | 460,800 |
+
+The delivered [application manifest](../public/data/bern-region-day-manifest.json) and [morning snapshot](../public/data/bern-region-morning.json) use the shared regional loading and integrity checks. A refresh only builds explicitly reviewed dates. Other requested dates, failed builds or acquisition failures retain a verified published study; a missing first-deployment manifest may use the complete checked-in release. Missing chunks never trigger a mixture of published and local files. Geometry uses the cantonal source for every mode; the release does not claim BAV rail or OSM road provenance.
+
+The integration checks reproduced both dates byte-for-byte at the movement level and exercised tampered geometry/counts/credit, excessive simplification, changed dates, first publication and damaged recovery. Desktop Chromium and iPhone WebKit checks cover lazy selection, S8 and Solothurn search, sharing, afternoon seeking, midnight retry, morning retry and all four languages. The production build and original cantonal audit checks pass.
+
+A follow-up inspection of the separately retained [BAV Eiger Express source](../data/jungfrau-cableway-source.json) and its [endpoint audit](../data/jungfrau-study-audit.json) found approximately 213.3 m / 135.9 m offsets at the shared timetable stops. This does not resolve the 80 m Bern endpoint gate. It remains excluded here; the Jungfrau study's installation-specific display policy must not silently weaken the canton adapter. The other route-specific and seasonal exclusions above remain open research work.
+
 ## Source dates, attribution and reuse
 
 ${table(['Source', 'Data vintage / release', 'Preserved evidence and attribution'], [
@@ -151,6 +170,12 @@ npm run data:bern -- --archive /private/tmp/GTFS_FP2026_20260902.zip
 # Independent offline checks of emitted bytes and all audit denominators.
 npm run data:bern:check
 npm run data:bern:docs
+
+# Publish the reviewed Friday display, or build the Sunday release separately.
+npm run data:bern:release
+npm run data:bern:release -- --date 2026-09-06 --output /private/tmp/bern-sunday-display
+npx vitest run scripts/bern-release.test.mjs scripts/regional-refresh.test.mjs
+npx playwright test e2e/bern.spec.ts
 npx vitest run scripts/bern-region.test.mjs scripts/basel-line-geometry.test.mjs \\
   scripts/civil-day.test.mjs scripts/gtfs-frequencies.test.mjs
 python3 scripts/test_bern_sources.py

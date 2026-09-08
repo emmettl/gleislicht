@@ -6,9 +6,10 @@ import { join, resolve } from 'node:path'
 import { pathToFileURL } from 'node:url'
 import { previousServiceDate } from './civil-day.mjs'
 import { validateBaselRelease } from './basel-release-validation.mjs'
+import { validateBernRelease } from './bern-release-validation.mjs'
 import { LAUSANNE_WEST_GROUPS } from './lausanne-mbc.mjs'
 
-export const REGIONAL_IDS = ['zurich-city', 'zvv-region', 'geneva-tpg', 'lausanne-region', 'basel-core']
+export const REGIONAL_IDS = ['zurich-city', 'zvv-region', 'geneva-tpg', 'lausanne-region', 'basel-core', 'bern-region']
 const digest = bytes => createHash('sha256').update(bytes).digest('hex')
 export async function readRegionalArtifacts(read, ids = REGIONAL_IDS, expectedDate) {
   const files = new Map()
@@ -57,9 +58,11 @@ export async function readRegionalArtifacts(read, ids = REGIONAL_IDS, expectedDa
       assert(day.metadata.lausanneGeometry.every(group => group.totalSegments > 0 && group.acceptedSegments / group.totalSegments >= .95), 'Lausanne: insufficient per-mode geometry')
       assert(rail?.maximumSnapMetres <= 120, 'Lausanne: rail projection exceeds limit')
     }
-    assert(local?.matchedSegments / local?.totalSegments >= (id === 'geneva-tpg' ? .7 : .8), `${id}: insufficient local geometry`)
-    assert(rail?.matchedSegments / rail?.totalSegments >= .65, `${id}: insufficient rail geometry`)
-    assert(/^[a-f0-9]{64}$/.test(rail?.sha256 ?? ''), `${id}: missing rail source hash`)
+    if (id !== 'bern-region') {
+      assert(local?.matchedSegments / local?.totalSegments >= (id === 'geneva-tpg' ? .7 : .8), `${id}: insufficient local geometry`)
+      assert(rail?.matchedSegments / rail?.totalSegments >= .65, `${id}: insufficient rail geometry`)
+      assert(/^[a-f0-9]{64}$/.test(rail?.sha256 ?? ''), `${id}: missing rail source hash`)
+    }
     assert(Object.values(day.metadata.sourceHashes ?? {}).length >= 2 && Object.values(day.metadata.sourceHashes).every(hash => /^[a-f0-9]{64}$/.test(hash)), `${id}: missing source hashes`)
     const checkGeometry = snapshot => {
       assert(snapshot.stops?.length && snapshot.edges?.length && snapshot.paths?.length, `${id}: missing topology`)
@@ -98,6 +101,7 @@ export async function readRegionalArtifacts(read, ids = REGIONAL_IDS, expectedDa
       })
     }
     assert.equal(unique.size, day.tripCount, `${id}: day trip count mismatch`)
+    if (id === 'bern-region') validateBernRelease(day, morning, [...unique.values()])
     if (id === 'basel-core') validateBaselRelease(day, morning, [...unique.values()])
   }
   return { files, dates }

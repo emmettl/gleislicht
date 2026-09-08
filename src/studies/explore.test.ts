@@ -63,3 +63,8 @@ describe('cantonal recording links', () => {
     expect(() => studyLinkUrl('https://example.org', { study: 'national', range: 'morning', recording: 'unknown' })).toThrow('Invalid recording link')
   })
 })
+
+it('opens Bern as a full-day study and preserves explicit morning links', () => {
+  expect(readStudyLink('?study=bern-region&date=2026-09-04&time=62100')).toMatchObject({ study: 'bern-region', range: 'day', date: '2026-09-04', time: 62100 })
+  expect(readStudyLink('?study=bern-region&range=morning').range).toBe('morning')
+})

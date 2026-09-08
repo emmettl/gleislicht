@@ -68,6 +68,7 @@
     "data:bern:sources": "python3 scripts/prepare-bern-sources.py",
     "data:bern": "node --max-old-space-size=8192 scripts/build-bern-region.mjs",
     "data:bern:check": "node scripts/check-bern-region.mjs",
+    "data:bern:release": "node scripts/build-bern-day.mjs",
     "data:bern:docs": "node scripts/document-bern-study.mjs",
     "data:luzern:census": "node scripts/luzern-timetable.mjs",
     "data:luzern": "node scripts/build-luzern-region.mjs",

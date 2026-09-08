@@ -13,9 +13,9 @@ import { readFileSync } from 'node:fs'
 import { LAUSANNE_WEST_GROUPS } from './lausanne-mbc.mjs'
 
 function fixture(id = 'zurich-city') {
-  if (id === 'basel-core') {
-    const files = new Map(['basel-core-day-manifest.json', 'basel-core-morning.json'].map(name => [name, readFileSync(join('public/data', name))]))
-    for (const chunk of JSON.parse(files.get('basel-core-day-manifest.json')).chunks) files.set(chunk.path, readFileSync(join('public/data', chunk.path)))
+  if (['basel-core', 'bern-region'].includes(id)) {
+    const files = new Map([`${id}-day-manifest.json`, `${id}-morning.json`].map(name => [name, readFileSync(join('public/data', name))]))
+    for (const chunk of JSON.parse(files.get(`${id}-day-manifest.json`)).chunks) files.set(chunk.path, readFileSync(join('public/data', chunk.path)))
     return files
   }
   const metadata = { serviceDate: '2026-09-08', feedVersion: '20260905', windowStart: 0, windowEnd: 86400,

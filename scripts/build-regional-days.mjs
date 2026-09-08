@@ -9,6 +9,7 @@ import { applyRailGeometry, parseRailNetworkXtf } from './enrich-swiss-rail-geom
 import { readRegionalDirectory, REGIONAL_IDS } from './regional-artifacts.mjs'
 import { serviceDate } from './service-date.mjs'
 import { buildLausanneDay } from './build-lausanne-day.mjs'
+import { refreshBernDay } from './refresh-bern-day.mjs'
 import { refreshBaselDay } from './refresh-basel-day.mjs'
 
 const arg = name => { const index = process.argv.indexOf(`--${name}`); return index < 0 ? undefined : process.argv[index + 1] }
@@ -75,8 +76,13 @@ try {
   }
 
   const requested = arg('study') ? [arg('study')] : REGIONAL_IDS
-  const dated = requested.filter(id => id !== 'basel-core')
+  const dated = requested.filter(id => !['basel-core', 'bern-region'].includes(id))
   const { files } = await readRegionalDirectory(staged, dated, date)
+  if (requested.includes('bern-region')) {
+    await refreshBernDay({ date, output: staged })
+    const bern = await readRegionalDirectory(staged, ['bern-region'])
+    for (const [path, bytes] of bern.files) files.set(path, bytes)
+  }
   if (requested.includes('basel-core')) {
     await refreshBaselDay({ archive: arg('archive'), railPath: arg('rail'), date, output: staged, sourceDirectory: arg('basel-sources') })
     const basel = await readRegionalDirectory(staged, ['basel-core'])
