@@ -2,7 +2,7 @@
 
 Study by **Gleislicht**, using the pinned national timetable and the canton’s OEVTP source. Validation dates: **Friday 4 September and Sunday 6 September 2026**, each a Europe/Zurich civil day including the preceding service day’s after-midnight journeys. This is a reproducible historical regional feed, not a live service or a claim of year-round completeness.
 
-The full-source census identifies **705 GTFS route records from 101 agency identities**, covering **all ten districts** of Bern. All **518 OEVTP line records and 5,321 OEVTP stop records** are retained in the source snapshot. The regional feed admits complete directed stop patterns only: **36,633 Friday and 31,855 Sunday journey instances**. Failed patterns remain in the audit; no unsourced straight-line segments are emitted as admitted journeys.
+The full-source census identifies **705 GTFS route records from 101 agency identities**, covering **all ten districts** of Bern. All **518 OEVTP line records and 5,321 OEVTP stop records** are retained in the source snapshot. The regional feed admits complete directed stop patterns only: **36,673 Friday and 31,893 Sunday journey instances**. Failed patterns remain in the audit; no unsourced straight-line segments are emitted as admitted journeys.
 
 ## Deliverables
 
@@ -33,7 +33,7 @@ For each selected dated journey, **every original call is retained**, including 
 
 District route counts overlap. They cover Bern-Mittelland; Biel/Seeland; Oberaargau; Emmental; Thun; all three Oberland districts; and **Jura bernois**, which a Bern-city or Libero-only scope would miss. The 2026 polygon excludes **Moutier**; a regression test fixes that boundary behaviour. Three source stop records within ten metres of the border, including two records for Brienzer Rothorn cable station on the outside, are listed in the audit’s `census.nearBoundary`. Approximate coordinate transformation uncertainty is not resolved by silently enlarging the polygon.
 
-Admitted journeys retain 769 Friday and 771 Sunday out-of-canton stop records. Full cross-canton journeys fail admission if the official source does not cover their complete chain. Rail and bus replacement services remain separate GTFS identities.
+Admitted journeys retain 774 Friday and 775 Sunday out-of-canton stop records. Full cross-canton journeys fail admission if the official source does not cover their complete chain. Rail and bus replacement services remain separate GTFS identities.
 
 ## Directed-pattern and geometry results
 
@@ -42,15 +42,15 @@ Admitted journeys retain 769 Friday and 771 Sunday out-of-canton stop records. F
 | Candidate journey instances | 43,653 | 38,587 |
 | Scheduled journey instances | 28,696 | 22,462 |
 | Representative headway instances (exact_times=0) | 14,957 | 16,125 |
-| Admitted scheduled instances | 21,676 | 15,730 |
+| Admitted scheduled instances | 21,716 | 15,768 |
 | Admitted representative headway instances | 14,957 | 16,125 |
-| Admitted total instances | 36,633 | 31,855 |
-| Directed stop patterns: complete / candidate | 1,935 / 2,582 | 1,505 / 2,108 |
-| Route-specific directed stop pairs: matched / candidate | 10,755 / 12,321 | 11,411 / 13,244 |
-| All modeled segment occurrences: matched / candidate | 294,883 / 314,668 | 211,598 / 229,859 |
-| All modeled segment occurrence coverage | 93.71% | 92.06% |
-| Scheduled-only segment occurrence coverage | 93.30% | 91.28% |
-| Carry-in journeys: admitted / candidate | 248 / 334 | 553 / 816 |
+| Admitted total instances | 36,673 | 31,893 |
+| Directed stop patterns: complete / candidate | 1,946 / 2,582 | 1,518 / 2,108 |
+| Route-specific directed stop pairs: matched / candidate | 10,779 / 12,321 | 11,431 / 13,244 |
+| All modeled segment occurrences: matched / candidate | 295,042 / 314,668 | 211,747 / 229,859 |
+| All modeled segment occurrence coverage | 93.76% | 92.12% |
+| Scheduled-only segment occurrence coverage | 93.36% | 91.35% |
+| Carry-in journeys: admitted / candidate | 249 / 334 | 554 / 816 |
 | Night-route journeys: admitted / candidate | 0 / 14 | 158 / 307 |
 | Patterns revisiting a platform: admitted / candidate | 46 / 65 | 41 / 59 |
 
@@ -62,7 +62,7 @@ There are **1,317 shared**, **1,265 Friday-only** and **791 Sunday-only** patter
 | --- | --- | --- |
 | bus | 13,570 / 15,623; 95.28% | 8,458 / 10,453; 93.47% |
 | tram | 1,550 / 1,588; 99.30% | 1,220 / 1,252; 99.20% |
-| rail | 3,256 / 4,150; 87.25% | 2,908 / 3,698; 86.76% |
+| rail | 3,296 / 4,150; 87.67% | 2,946 / 3,698; 87.24% |
 | ferry | 36 / 40; 93.63% | 34 / 38; 93.55% |
 | funicular | 2,753 / 2,753; 100.00% | 2,605 / 2,605; 100.00% |
 | cableway | 15,468 / 19,499; 83.81% | 16,630 / 20,541; 84.91% |
@@ -87,13 +87,13 @@ Within cantonal graphs, alternative source-part projections may be at most 5 m f
 
 ## Exclusions and review evidence
 
-Across both dates: **318 routes admit all dated journeys**, **82 admit some**, **122 admit none**, and **183 are inactive on both dates**. The complete route appendix distinguishes these states; inactive annual records are not silently erased or described as failed geometry.
+Across both dates: **319 routes admit all dated journeys**, **82 admit some**, **121 admit none**, and **183 are inactive on both dates**. The complete route appendix distinguishes these states; inactive annual records are not silently erased or described as failed geometry.
 
 | Unmatched geometry reason | Friday directed pairs / occurrences | Sunday directed pairs / occurrences |
 | --- | --- | --- |
 | collapsed-path | 2 / 15 | 0 / 0 |
 | disconnected-line | 53 / 643 | 67 / 367 |
-| endpoint-gap | 549 / 5,533 | 589 / 5,605 |
+| endpoint-gap | 525 / 5,374 | 569 / 5,456 |
 | implausible-detour | 12 / 109 | 12 / 72 |
 | missing-line | 950 / 13,485 | 1,165 / 12,217 |
 
@@ -128,9 +128,9 @@ The [display-release audit](../data/bern-audit/display-release.json) records bot
 
 | Payload (gzip bytes) | Friday | Sunday | Budget |
 | --- | ---: | ---: | ---: |
-| Manifest | 643,716 | 657,463 | 665,600 |
-| Morning | 965,875 | 837,958 | 1,638,400 |
-| Largest two-hour chunk | 400,766 | 332,366 | 460,800 |
+| Manifest | 649,342 | 662,190 | 665,600 |
+| Morning | 971,025 | 842,686 | 1,638,400 |
+| Largest two-hour chunk | 401,516 | 333,379 | 460,800 |
 
 The delivered [application manifest](../public/data/bern-region-day-manifest.json) and [morning snapshot](../public/data/bern-region-morning.json) use the shared regional loading and integrity checks. A refresh only builds explicitly reviewed dates. Other requested dates, failed builds or acquisition failures retain a verified published study; a missing first-deployment manifest may use the complete checked-in release. Missing chunks never trigger a mixture of published and local files. Geometry uses the cantonal source for every mode; the release does not claim BAV rail or OSM road provenance.
 
@@ -264,6 +264,33 @@ Three occasional route records now pass every dated journey. **TPF S20/S21 remai
 Accepted federal pairs attach original stops within **102.09 m**, and selected source topology attachments are below **51 m**. Full raw-pattern contexts must agree on the same directed source-segment sequence. All original GTFS coordinates, calls, times and permissions remain intact, including out-of-canton endpoints. Complete geometry is required before a whole journey enters the feed.
 
 This review reuses the retained federal XTF with catalogue date **6 July 2021**, asset update **18 January 2025**, and checksum recheck **8 September 2026**. It introduces no newer geometry or broader validity claim. **© Federal Office of Transport (FOT)**, source dates, original bytes, transformation details and terms link remain in the regional feed's combined provenance. The same **4.5× / 3,000 m** detour rule, 120 m topology guard and output precision apply. Current alignment/running tracks remain unconfirmed, and the seven seasonal audits are unchanged.
+
+## IR66: Bern terminal and Kerzers platform review
+
+The [IR66 audit](../data/bern-audit/ir66-followup.json) compares against release 199a542. It adds **40 Friday / 38 Sunday scheduled journeys**, completing **all 11 Friday / 13 Sunday directed patterns** of BLS route **91-66-A-j26-1**, agency **33**, with its existing OEVTP **223_IR** association. Both directions pass. Every one of the previously admitted **36,633 Friday / 31,855 Sunday journeys** retains its complete source fields, calls, times and full-detail paths. All previously matched pair assessments, other route exclusions, earlier source hashes and seven seasonal audits remain unchanged.
+
+The [separate policy](../data/bern-ir66-policy.json) pins **41 directed platform pairs** and their ordered segment identities. Two explicit reviews resolve the original failures:
+
+- **Kerzers:** the [BLS platform table](../data/bern-sources/ir66-platforms/bls-platforms-2026.pdf), state **28 May 2026**, valid from **6 June 2026**, identifies physical tracks **4/6** on the Bern–Neuchâtel line (page 1). Only their two original GTFS platform IDs use the federal node **8516192, Kerzers BLS**. The generic Kerzers node remains unchanged, and unreviewed platforms cannot inherit this crosswalk.
+- **Bern:** the [SBB station plan](../data/bern-sources/ir66-platforms/sbb-bern-plan-2026-08.pdf), **August 2026**, labels ordinary platforms and sections on page 1 and the western 49/50 platforms on pages 1/3. Nine exact original GTFS platform records are reviewed as terminal calls. Each may project within **75 m** onto the pinned BLS approach **ch14uvag00087196**. The pattern-local graph clips that original curve at the projection, removes the station-centre portion and every other connection at the local terminal, and retains the western approach. A Bern intermediate/repeated call, unknown platform, changed coordinate or unreviewed adjacent operating point is rejected.
+
+| Original Bern platform | GTFS platform ID | Attachment to curve (m) | Station-centre curve trimmed (m) |
+| --- | --- | --- | --- |
+| 12A-C | ch:1:sloid:7000_gen:ch:1:sloid:7000:6:12_pf:12A-C | 12.65 | 54.79 |
+| 4 | ch:1:sloid:7000:2:4 | 71.92 | 121.93 |
+| 5 | ch:1:sloid:7000:3:5 | 64.31 | 122.58 |
+| 6 | ch:1:sloid:7000:3:6 | 56.84 | 124.76 |
+| 7 | ch:1:sloid:7000:4:7 | 47.42 | 146.59 |
+| 8 | ch:1:sloid:7000:4:8 | 38.30 | 147.41 |
+| 49 | ch:1:sloid:7000:55:49 | 63.06 | 402.17 |
+| 50 | ch:1:sloid:7000:55:50 | 53.39 | 381.10 |
+| 12 | ch:1:sloid:7000:6:12 | 12.65 | 54.79 |
+
+These are **explicitly inferred terminal centrelines**, not surveyed running tracks or switches. The nine original GTFS records remain in place, including platform **12A–C**; original IDs, labels, coordinates, calls and permissions are never rewritten. The pinned policy bounds the source-curve trim to **50–450 m**; measured trims are **54.79–402.17 m** and projections **12.65–71.92 m**. This is a separately reviewed IR66 scope and does not broaden another route's platform policy.
+
+The eligible graph uses **34 original FOT segments**, with the Bern approach represented by **nine explicitly identified clipped variants**; the audit therefore lists **42 graph segment variants**, not 42 independent source records. Every complete input-pattern context must agree on the path before a missing pair can be filled. The original **120 m station / 120 m topology** and **4.5× / 3,000 m detour** guards remain in force. Maximum accepted station attachment is **88.99 m**, and source topology attachments are below **51 m**. The original XTF remains unchanged at zero-metre simplification tolerance; successful cantonal geometry remains authoritative.
+
+The federal source retains catalogue date **6 July 2021**, asset update **18 January 2025**, and checksum recheck **8 September 2026**; current alignment validity remains unconfirmed. Credit: **© Federal Office of Transport (FOT)**, **SBB / © OpenStreetMap** for the station plan, and **BLS Netz AG** for the platform table. Both original, hashed PDFs accompany the feed under [ir66-platforms](../public/data/bern-region/ir66-platforms/sbb-bern-plan-2026-08.pdf); their URLs, acquisition times, document dates and roles are in the combined [source provenance](../public/data/bern-region/sources.json). The display feed carries source dates, credits and the policy hash with a reference to the full evidence; the archival feed and audit retain every projection and source-segment binding. Both display fixtures still pass the existing payload budgets without changing any path or raising the 5 m display simplification tolerance.
 
 ## Winter and holiday fixtures
 

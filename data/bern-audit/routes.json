@@ -8423,49 +8423,45 @@
       {
         "date": "2026-09-04",
         "trips": 40,
-        "admittedTrips": 0,
+        "admittedTrips": 40,
         "scheduledTrips": 40,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 40,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 311,
-        "matchedScheduledSegmentOccurrences": 152,
+        "matchedScheduledSegmentOccurrences": 311,
         "segmentOccurrences": 311,
-        "matchedSegmentOccurrences": 152,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 311,
+        "admittedSegmentOccurrences": 311,
         "directedPairs": 33,
-        "matchedDirectedPairs": 9,
+        "matchedDirectedPairs": 33,
         "patterns": 11,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "incomplete-directed-pattern": 40
-        }
+        "completePatterns": 11,
+        "admittedPatterns": 11,
+        "excludedTrips": {}
       },
       {
         "date": "2026-09-06",
         "trips": 38,
-        "admittedTrips": 0,
+        "admittedTrips": 38,
         "scheduledTrips": 38,
         "representativeHeadwayTrips": 0,
-        "admittedScheduledTrips": 0,
+        "admittedScheduledTrips": 38,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 301,
-        "matchedScheduledSegmentOccurrences": 152,
+        "matchedScheduledSegmentOccurrences": 301,
         "segmentOccurrences": 301,
-        "matchedSegmentOccurrences": 152,
-        "admittedSegmentOccurrences": 0,
+        "matchedSegmentOccurrences": 301,
+        "admittedSegmentOccurrences": 301,
         "directedPairs": 30,
-        "matchedDirectedPairs": 10,
+        "matchedDirectedPairs": 30,
         "patterns": 13,
-        "completePatterns": 0,
-        "admittedPatterns": 0,
-        "excludedTrips": {
-          "incomplete-directed-pattern": 38
-        }
+        "completePatterns": 13,
+        "admittedPatterns": 13,
+        "excludedTrips": {}
       }
     ],
-    "status": "excluded"
+    "status": "admitted-all-dated-trips"
   },
   {
     "id": "91-66-j26-1",
