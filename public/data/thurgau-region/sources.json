@@ -387,6 +387,94 @@
     "archivalStudy": true,
     "refreshPolicy": "Pinned September 2026 research fixtures; not a live or current-service feed. A new timetable or geometry release requires a complete rebuild and admission audit."
   },
+  "shipping": {
+    "publisher": "OpenStreetMap contributors",
+    "attribution": "© OpenStreetMap contributors",
+    "license": "ODbL-1.0",
+    "termsUrl": "https://www.openstreetmap.org/copyright",
+    "endpoint": "https://overpass-api.de/api/interpreter",
+    "snapshot": "2026-09-02T00:00:00Z",
+    "acquired": "2026-09-08",
+    "files": [
+      {
+        "file": "osm.json.gz",
+        "sha256": "f5632dbc18c704b29a9b082f14924eb2afd0746d7b6b96f1c0a828fe821e0187"
+      },
+      {
+        "file": "query.txt",
+        "sha256": "4dc684ca573a2327f07aa89d837d284c7763c28be45c60eaa591fc382ade2a02"
+      },
+      {
+        "file": "water.json.gz",
+        "sha256": "e26bc2996e078525b790c527c4c5455de249d6c5b8367e1c725e2b1ffb8ed63f"
+      },
+      {
+        "file": "water-query.txt",
+        "sha256": "7c2c557fc380447855ba6b7abf2a33b9d53aaef9856eb7dc22f00c6e6f9317f1"
+      }
+    ],
+    "acquisition": {
+      "shippingBounds": [
+        8.6,
+        47.45,
+        9.6,
+        47.78
+      ],
+      "waterBounds": [
+        8.62,
+        47.68,
+        8.77,
+        47.71
+      ],
+      "shippingResponseElements": 2412,
+      "shippingUniqueElements": 2311,
+      "waterResponseElements": 3020,
+      "waterUniqueElements": 3020,
+      "scope": "All ferry ways/relations and all natural-water/riverbank ways/relations intersecting the respective envelopes, with recursive members. All response duplicates agree. Referenced geometry extends beyond query envelopes; this is not a census of every real-world service or all OSM water in the canton."
+    },
+    "model": "Exact named OSM ferry ways substitute only failed complete stop-to-stop segments within the original directed GTFS patterns. Successful official shipping segments remain unchanged. No cross-source mid-segment join, new water path, topology bridge or dock relocation. All calls are required for admission.",
+    "sourceIdentityLimit": "Way 1255942854 is named Meersburg–Kreuzlingen but carries an URh operator tag, conflicting with this SBS GTFS route. It is used solely as cartographic connection evidence; operator identity comes from the exact GTFS route and public connection context, not that tag. All source tags remain preserved.",
+    "operatorContext": [
+      {
+        "url": "https://www.urh.ch/fahrplan_sommer_nw",
+        "checked": "2026-09-08",
+        "finding": "Published low-water timetable runs Schaffhausen–Diessenhofen round trips from 27 June to 4 October 2026, while Diessenhofen–Stein am Rhein is interrupted. The original selected GTFS patterns already reflect that separation. No movement is inserted across the interrupted section."
+      },
+      {
+        "url": "https://stadtinfo.rorschach.ch/stadtrat/tageskarten-der-schifffahrtsbetriebe-zum-vorzugspreis/",
+        "checked": "2026-09-08",
+        "finding": "City of Rorschach describes the SBS shore service through Romanshorn and Kreuzlingen to Meersburg. Used as connection/operator context, not source geometry or trip-level operating evidence."
+      }
+    ],
+    "shoreline": {
+      "source": "data/thurgau-boat-sources/lakes.json.gz",
+      "featureId": 124,
+      "dataStatus": "2007-01-01",
+      "attribution": "© FOEN, swisstopo",
+      "termsUrl": "https://www.swisstopo.admin.ch/en/terms-of-use-free-geodata-and-geoservices"
+    },
+    "river": {
+      "relationId": 1679977,
+      "version": 3,
+      "timestamp": "2026-01-19T00:37:15Z",
+      "tags": {
+        "natural": "water",
+        "source": "Landsat",
+        "type": "multipolygon",
+        "water": "river"
+      },
+      "outerWayId": 122858269,
+      "innerWayIds": [
+        937838731
+      ],
+      "outerVertices": 1208,
+      "innerVertices": 15,
+      "limitation": "OSM water area retains source=Landsat and one island hole. Edit date is not a survey date, water-level observation, depth model or navigability certification."
+    },
+    "vintage": "Historical state requested 2 September 2026; acquired 8 September 2026. Selected way and node edit dates are retained in the inventory and original responses, with no independently verified survey or operating-lane date.",
+    "scope": "Only the 17 originally rejected full directed dock/coordinate patterns of three exact SBS/URh route identities. Use each successful original official segment unchanged; for a failed segment, only its exact reviewed OSM way is available. Any unresolved segment excludes the full journey. Previous admitted journeys and demand-responsive exclusions are preserved.",
+    "shorelineRule": "Audit every source edge against all shoreline and island intersections. Lake OSM replacements use original Bodensee feature 124 with 120 m dock snaps and 25 m discrepancy zones except the explicitly reviewed Meersburg dock pair (100 m, below the original official 150 m policy); Rhine replacements use exact OSM relation 1679977 with its hole, 25 m snaps and 10 m discrepancy zones. Successful official segments retain their original 150 m policy. No remote outside-water interval is admitted."
+  },
   "ferry": {
     "publisher": "OpenStreetMap contributors",
     "attribution": "© OpenStreetMap contributors",

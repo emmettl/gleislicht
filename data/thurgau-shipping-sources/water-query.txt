@@ -1,0 +1,1 @@
+[out:json][timeout:90][date:"2026-09-02T00:00:00Z"];(way[natural=water](47.68,8.62,47.71,8.77);relation[natural=water](47.68,8.62,47.71,8.77);way[waterway=riverbank](47.68,8.62,47.71,8.77);relation[waterway=riverbank](47.68,8.62,47.71,8.77););out meta;>;out meta;

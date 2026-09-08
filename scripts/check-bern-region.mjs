@@ -14,6 +14,7 @@ import { loadBernRegionalRail } from './bern-regional-rail.mjs'
 import { loadBernCrosscantonRail } from './bern-crosscanton-rail.mjs'
 import { loadBernIr66 } from './bern-ir66-geometry.mjs'
 import { loadBernIr16 } from './bern-ir16-geometry.mjs'
+import { loadBernTpfTerminal } from './bern-tpf-terminal.mjs'
 
 const json = async path => JSON.parse(await readFile(path, 'utf8'))
 const sha = bytes => createHash('sha256').update(bytes).digest('hex')
@@ -41,7 +42,11 @@ export async function checkBernRegion({ output = 'public/data/bern-region', audi
   assert.equal(summary.sourceHashes.ir16Policy, ir16.metadata.policySha256)
   assert.deepEqual(summary.sources.ir16Supplement, ir16.metadata)
   for (const doc of ir16.policy.documents) assert.equal(sha(await readFile(join(output, 'ir16-platforms', doc.file))), doc.sha256)
-  const railSuppliers = [rail, regionalRail, crosscantonRail, ir66, ir16]
+  const tpfTerminal = await loadBernTpfTerminal()
+  assert.equal(summary.sourceHashes.tpfTerminalPolicy, tpfTerminal.metadata.policySha256)
+  assert.deepEqual(summary.sources.tpfTerminalSupplement, tpfTerminal.metadata)
+  for (const doc of tpfTerminal.policy.documents) assert.equal(sha(await readFile(join(output, 'tpf-platforms', doc.file))), doc.sha256)
+  const railSuppliers = [rail, regionalRail, crosscantonRail, ir66, ir16, tpfTerminal]
   assert.equal(summary.sourceHashes.crosscantonRailPolicy, crosscantonRail.metadata.policySha256)
   assert.deepEqual(summary.sources.crosscantonRailSupplement, crosscantonRail.metadata)
   assert.equal(summary.sourceHashes.regionalRailPolicy, regionalRail.metadata.policySha256)

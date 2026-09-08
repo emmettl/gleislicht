@@ -1,0 +1,1438 @@
+{
+  "routes": [
+    {
+      "routeId": "94-366-0-j26-1",
+      "agencyId": "186",
+      "agency": "Schifffahrtsgesellschaft für den Zugersee AG",
+      "line": "3660",
+      "longName": "",
+      "routeType": 1000,
+      "mode": "boat",
+      "annualTripRecords": 10,
+      "activeSourceTripRecords": {
+        "2026-09-04": 6,
+        "2026-09-06": 10
+      },
+      "annualCantonStopIds": [
+        "ch:1:sloid:2250",
+        "ch:1:sloid:2251",
+        "ch:1:sloid:2252",
+        "ch:1:sloid:2253",
+        "ch:1:sloid:2254",
+        "ch:1:sloid:2258"
+      ]
+    },
+    {
+      "routeId": "94-366-1-j26-1",
+      "agencyId": "179",
+      "agency": "Ägerisee Schifffahrt AG",
+      "line": "3661",
+      "longName": "",
+      "routeType": 1000,
+      "mode": "boat",
+      "annualTripRecords": 3,
+      "activeSourceTripRecords": {
+        "2026-09-04": 3,
+        "2026-09-06": 3
+      },
+      "annualCantonStopIds": [
+        "ch:1:sloid:30633",
+        "ch:1:sloid:30634",
+        "ch:1:sloid:30635",
+        "ch:1:sloid:30636",
+        "ch:1:sloid:30742",
+        "ch:1:sloid:30743",
+        "ch:1:sloid:30857"
+      ]
+    }
+  ],
+  "days": [
+    {
+      "date": "2026-09-04",
+      "trains": [
+        {
+          "id": ".ojp-94-366-0.1.TA.1.j26",
+          "sourceTripId": ".ojp-94-366-0.1.TA.1.j26",
+          "sourceServiceDate": "2026-09-04",
+          "routeId": "94-366-0-j26-1",
+          "directionId": "0",
+          "headsign": "Arth am See (Schiff)",
+          "shortName": "1",
+          "calls": [
+            {
+              "id": "ch:1:sloid:2251",
+              "sequence": 1,
+              "arrival": 35100,
+              "departure": 35100,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2258",
+              "sequence": 2,
+              "arrival": 37080,
+              "departure": 37080,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5060",
+              "sequence": 3,
+              "arrival": 37980,
+              "departure": 37980,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-94-366-0.1.TA.3.j26",
+          "sourceTripId": ".ojp-94-366-0.1.TA.3.j26",
+          "sourceServiceDate": "2026-09-04",
+          "routeId": "94-366-0-j26-1",
+          "directionId": "0",
+          "headsign": "Arth am See (Schiff)",
+          "shortName": "5",
+          "calls": [
+            {
+              "id": "ch:1:sloid:2251",
+              "sequence": 1,
+              "arrival": 54900,
+              "departure": 54900,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2250",
+              "sequence": 2,
+              "arrival": 55980,
+              "departure": 55980,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2253",
+              "sequence": 3,
+              "arrival": 57120,
+              "departure": 57120,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2258",
+              "sequence": 4,
+              "arrival": 58440,
+              "departure": 58440,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5060",
+              "sequence": 5,
+              "arrival": 59400,
+              "departure": 59400,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-94-366-0.1.TA.4.j26",
+          "sourceTripId": ".ojp-94-366-0.1.TA.4.j26",
+          "sourceServiceDate": "2026-09-04",
+          "routeId": "94-366-0-j26-1",
+          "directionId": "0",
+          "headsign": "Arth am See (Schiff)",
+          "shortName": "3",
+          "calls": [
+            {
+              "id": "ch:1:sloid:2251",
+              "sequence": 1,
+              "arrival": 44100,
+              "departure": 44100,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2250",
+              "sequence": 2,
+              "arrival": 45180,
+              "departure": 45180,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2253",
+              "sequence": 3,
+              "arrival": 46200,
+              "departure": 46200,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2254",
+              "sequence": 4,
+              "arrival": 46980,
+              "departure": 46980,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2257",
+              "sequence": 5,
+              "arrival": 48300,
+              "departure": 48300,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5060",
+              "sequence": 6,
+              "arrival": 49680,
+              "departure": 49680,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-94-366-0.1.TA.6.j26",
+          "sourceTripId": ".ojp-94-366-0.1.TA.6.j26",
+          "sourceServiceDate": "2026-09-04",
+          "routeId": "94-366-0-j26-1",
+          "directionId": "1",
+          "headsign": "Zug Bahnhofsteg (See)",
+          "shortName": "6",
+          "calls": [
+            {
+              "id": "ch:1:sloid:5060",
+              "sequence": 1,
+              "arrival": 59700,
+              "departure": 59700,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2257",
+              "sequence": 2,
+              "arrival": 60840,
+              "departure": 60840,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2251",
+              "sequence": 3,
+              "arrival": 63000,
+              "departure": 63000,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-94-366-0.1.TA.7.j26",
+          "sourceTripId": ".ojp-94-366-0.1.TA.7.j26",
+          "sourceServiceDate": "2026-09-04",
+          "routeId": "94-366-0-j26-1",
+          "directionId": "1",
+          "headsign": "Zug Bahnhofsteg (See)",
+          "shortName": "2",
+          "calls": [
+            {
+              "id": "ch:1:sloid:5060",
+              "sequence": 1,
+              "arrival": 38400,
+              "departure": 38400,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2257",
+              "sequence": 2,
+              "arrival": 39600,
+              "departure": 39600,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2250",
+              "sequence": 3,
+              "arrival": 41700,
+              "departure": 41700,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2251",
+              "sequence": 4,
+              "arrival": 42900,
+              "departure": 42900,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-94-366-0.1.TA.8.j26",
+          "sourceTripId": ".ojp-94-366-0.1.TA.8.j26",
+          "sourceServiceDate": "2026-09-04",
+          "routeId": "94-366-0-j26-1",
+          "directionId": "1",
+          "headsign": "Zug Bahnhofsteg (See)",
+          "shortName": "4",
+          "calls": [
+            {
+              "id": "ch:1:sloid:5060",
+              "sequence": 1,
+              "arrival": 49980,
+              "departure": 49980,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2257",
+              "sequence": 2,
+              "arrival": 51360,
+              "departure": 51360,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2252",
+              "sequence": 3,
+              "arrival": 52920,
+              "departure": 52920,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2251",
+              "sequence": 4,
+              "arrival": 53520,
+              "departure": 53520,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-94-366-1.1.TA.1.j26",
+          "sourceTripId": ".ojp-94-366-1.1.TA.1.j26",
+          "sourceServiceDate": "2026-09-04",
+          "routeId": "94-366-1-j26-1",
+          "directionId": "0",
+          "headsign": "Unterägeri (See)",
+          "shortName": "52",
+          "calls": [
+            {
+              "id": "ch:1:sloid:30742",
+              "sequence": 1,
+              "arrival": 47700,
+              "departure": 47700,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:30743",
+              "sequence": 2,
+              "arrival": 48480,
+              "departure": 49200,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:30857",
+              "sequence": 3,
+              "arrival": 50100,
+              "departure": 50100,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:30633",
+              "sequence": 4,
+              "arrival": 50820,
+              "departure": 50820,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:30634",
+              "sequence": 5,
+              "arrival": 51540,
+              "departure": 51540,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:30635",
+              "sequence": 6,
+              "arrival": 51960,
+              "departure": 51960,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:30636",
+              "sequence": 7,
+              "arrival": 52920,
+              "departure": 52920,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:30742",
+              "sequence": 8,
+              "arrival": 54540,
+              "departure": 54540,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-94-366-1.1.TA.2.j26",
+          "sourceTripId": ".ojp-94-366-1.1.TA.2.j26",
+          "sourceServiceDate": "2026-09-04",
+          "routeId": "94-366-1-j26-1",
+          "directionId": "0",
+          "headsign": "Unterägeri (See)",
+          "shortName": "50",
+          "calls": [
+            {
+              "id": "ch:1:sloid:30742",
+              "sequence": 1,
+              "arrival": 40500,
+              "departure": 40500,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:30743",
+              "sequence": 2,
+              "arrival": 41400,
+              "departure": 42000,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:30857",
+              "sequence": 3,
+              "arrival": 42900,
+              "departure": 42900,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:30633",
+              "sequence": 4,
+              "arrival": 43620,
+              "departure": 43620,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:30634",
+              "sequence": 5,
+              "arrival": 44340,
+              "departure": 44340,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:30635",
+              "sequence": 6,
+              "arrival": 44760,
+              "departure": 44760,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:30636",
+              "sequence": 7,
+              "arrival": 45720,
+              "departure": 45720,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:30742",
+              "sequence": 8,
+              "arrival": 47340,
+              "departure": 47340,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-94-366-1.1.TA.3.j26",
+          "sourceTripId": ".ojp-94-366-1.1.TA.3.j26",
+          "sourceServiceDate": "2026-09-04",
+          "routeId": "94-366-1-j26-1",
+          "directionId": "0",
+          "headsign": "Oberägeri (See)",
+          "shortName": "54",
+          "calls": [
+            {
+              "id": "ch:1:sloid:30742",
+              "sequence": 1,
+              "arrival": 54900,
+              "departure": 54900,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:30743",
+              "sequence": 2,
+              "arrival": 55680,
+              "departure": 56700,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:30857",
+              "sequence": 3,
+              "arrival": 57600,
+              "departure": 57600,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:30633",
+              "sequence": 4,
+              "arrival": 58320,
+              "departure": 58320,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:30634",
+              "sequence": 5,
+              "arrival": 59040,
+              "departure": 59040,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:30635",
+              "sequence": 6,
+              "arrival": 59460,
+              "departure": 59460,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:30636",
+              "sequence": 7,
+              "arrival": 60420,
+              "departure": 60420,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:30742",
+              "sequence": 8,
+              "arrival": 62040,
+              "departure": 62040,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:30743",
+              "sequence": 9,
+              "arrival": 63000,
+              "departure": 63000,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-09-06",
+      "trains": [
+        {
+          "id": ".ojp-94-366-0.1.TA.1.j26",
+          "sourceTripId": ".ojp-94-366-0.1.TA.1.j26",
+          "sourceServiceDate": "2026-09-06",
+          "routeId": "94-366-0-j26-1",
+          "directionId": "0",
+          "headsign": "Arth am See (Schiff)",
+          "shortName": "1",
+          "calls": [
+            {
+              "id": "ch:1:sloid:2251",
+              "sequence": 1,
+              "arrival": 35100,
+              "departure": 35100,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2258",
+              "sequence": 2,
+              "arrival": 37080,
+              "departure": 37080,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5060",
+              "sequence": 3,
+              "arrival": 37980,
+              "departure": 37980,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-94-366-0.1.TA.10.j26",
+          "sourceTripId": ".ojp-94-366-0.1.TA.10.j26",
+          "sourceServiceDate": "2026-09-06",
+          "routeId": "94-366-0-j26-1",
+          "directionId": "1",
+          "headsign": "Zug Bahnhofsteg (See)",
+          "shortName": "18",
+          "calls": [
+            {
+              "id": "ch:1:sloid:5060",
+              "sequence": 1,
+              "arrival": 44820,
+              "departure": 44820,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2258",
+              "sequence": 2,
+              "arrival": 45840,
+              "departure": 45840,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2257",
+              "sequence": 3,
+              "arrival": 46920,
+              "departure": 46920,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2254",
+              "sequence": 4,
+              "arrival": 48300,
+              "departure": 48300,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2251",
+              "sequence": 5,
+              "arrival": 49500,
+              "departure": 49500,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-94-366-0.1.TA.2.j26",
+          "sourceTripId": ".ojp-94-366-0.1.TA.2.j26",
+          "sourceServiceDate": "2026-09-06",
+          "routeId": "94-366-0-j26-1",
+          "directionId": "0",
+          "headsign": "Arth am See (Schiff)",
+          "shortName": "19",
+          "calls": [
+            {
+              "id": "ch:1:sloid:2251",
+              "sequence": 1,
+              "arrival": 50400,
+              "departure": 50400,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2250",
+              "sequence": 2,
+              "arrival": 51480,
+              "departure": 51480,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2253",
+              "sequence": 3,
+              "arrival": 52560,
+              "departure": 52560,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2258",
+              "sequence": 4,
+              "arrival": 54180,
+              "departure": 54180,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5060",
+              "sequence": 5,
+              "arrival": 55020,
+              "departure": 55020,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-94-366-0.1.TA.3.j26",
+          "sourceTripId": ".ojp-94-366-0.1.TA.3.j26",
+          "sourceServiceDate": "2026-09-06",
+          "routeId": "94-366-0-j26-1",
+          "directionId": "0",
+          "headsign": "Arth am See (Schiff)",
+          "shortName": "5",
+          "calls": [
+            {
+              "id": "ch:1:sloid:2251",
+              "sequence": 1,
+              "arrival": 54900,
+              "departure": 54900,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2250",
+              "sequence": 2,
+              "arrival": 55980,
+              "departure": 55980,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2253",
+              "sequence": 3,
+              "arrival": 57120,
+              "departure": 57120,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2258",
+              "sequence": 4,
+              "arrival": 58440,
+              "departure": 58440,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5060",
+              "sequence": 5,
+              "arrival": 59400,
+              "departure": 59400,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-94-366-0.1.TA.4.j26",
+          "sourceTripId": ".ojp-94-366-0.1.TA.4.j26",
+          "sourceServiceDate": "2026-09-06",
+          "routeId": "94-366-0-j26-1",
+          "directionId": "0",
+          "headsign": "Arth am See (Schiff)",
+          "shortName": "3",
+          "calls": [
+            {
+              "id": "ch:1:sloid:2251",
+              "sequence": 1,
+              "arrival": 44100,
+              "departure": 44100,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2250",
+              "sequence": 2,
+              "arrival": 45180,
+              "departure": 45180,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2253",
+              "sequence": 3,
+              "arrival": 46200,
+              "departure": 46200,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2254",
+              "sequence": 4,
+              "arrival": 46980,
+              "departure": 46980,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2257",
+              "sequence": 5,
+              "arrival": 48300,
+              "departure": 48300,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5060",
+              "sequence": 6,
+              "arrival": 49680,
+              "departure": 49680,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-94-366-0.1.TA.5.j26",
+          "sourceTripId": ".ojp-94-366-0.1.TA.5.j26",
+          "sourceServiceDate": "2026-09-06",
+          "routeId": "94-366-0-j26-1",
+          "directionId": "0",
+          "headsign": "Arth am See (Schiff)",
+          "shortName": "17",
+          "calls": [
+            {
+              "id": "ch:1:sloid:2251",
+              "sequence": 1,
+              "arrival": 38700,
+              "departure": 38700,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2250",
+              "sequence": 2,
+              "arrival": 39840,
+              "departure": 39840,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2253",
+              "sequence": 3,
+              "arrival": 41100,
+              "departure": 41100,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2254",
+              "sequence": 4,
+              "arrival": 41820,
+              "departure": 41820,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2257",
+              "sequence": 5,
+              "arrival": 43200,
+              "departure": 43200,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:5060",
+              "sequence": 6,
+              "arrival": 44640,
+              "departure": 44640,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-94-366-0.1.TA.6.j26",
+          "sourceTripId": ".ojp-94-366-0.1.TA.6.j26",
+          "sourceServiceDate": "2026-09-06",
+          "routeId": "94-366-0-j26-1",
+          "directionId": "1",
+          "headsign": "Zug Bahnhofsteg (See)",
+          "shortName": "6",
+          "calls": [
+            {
+              "id": "ch:1:sloid:5060",
+              "sequence": 1,
+              "arrival": 59700,
+              "departure": 59700,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2257",
+              "sequence": 2,
+              "arrival": 60840,
+              "departure": 60840,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2251",
+              "sequence": 3,
+              "arrival": 63000,
+              "departure": 63000,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-94-366-0.1.TA.7.j26",
+          "sourceTripId": ".ojp-94-366-0.1.TA.7.j26",
+          "sourceServiceDate": "2026-09-06",
+          "routeId": "94-366-0-j26-1",
+          "directionId": "1",
+          "headsign": "Zug Bahnhofsteg (See)",
+          "shortName": "2",
+          "calls": [
+            {
+              "id": "ch:1:sloid:5060",
+              "sequence": 1,
+              "arrival": 38400,
+              "departure": 38400,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2257",
+              "sequence": 2,
+              "arrival": 39600,
+              "departure": 39600,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2250",
+              "sequence": 3,
+              "arrival": 41700,
+              "departure": 41700,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2251",
+              "sequence": 4,
+              "arrival": 42900,
+              "departure": 42900,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-94-366-0.1.TA.8.j26",
+          "sourceTripId": ".ojp-94-366-0.1.TA.8.j26",
+          "sourceServiceDate": "2026-09-06",
+          "routeId": "94-366-0-j26-1",
+          "directionId": "1",
+          "headsign": "Zug Bahnhofsteg (See)",
+          "shortName": "4",
+          "calls": [
+            {
+              "id": "ch:1:sloid:5060",
+              "sequence": 1,
+              "arrival": 49980,
+              "departure": 49980,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2257",
+              "sequence": 2,
+              "arrival": 51360,
+              "departure": 51360,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2252",
+              "sequence": 3,
+              "arrival": 52920,
+              "departure": 52920,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2251",
+              "sequence": 4,
+              "arrival": 53520,
+              "departure": 53520,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-94-366-0.1.TA.9.j26",
+          "sourceTripId": ".ojp-94-366-0.1.TA.9.j26",
+          "sourceServiceDate": "2026-09-06",
+          "routeId": "94-366-0-j26-1",
+          "directionId": "1",
+          "headsign": "Zug Bahnhofsteg (See)",
+          "shortName": "20",
+          "calls": [
+            {
+              "id": "ch:1:sloid:5060",
+              "sequence": 1,
+              "arrival": 55200,
+              "departure": 55200,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2257",
+              "sequence": 2,
+              "arrival": 56580,
+              "departure": 56580,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2253",
+              "sequence": 3,
+              "arrival": 58200,
+              "departure": 58200,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2250",
+              "sequence": 4,
+              "arrival": 59160,
+              "departure": 59160,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:2251",
+              "sequence": 5,
+              "arrival": 60300,
+              "departure": 60300,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-94-366-1.1.TA.1.j26",
+          "sourceTripId": ".ojp-94-366-1.1.TA.1.j26",
+          "sourceServiceDate": "2026-09-06",
+          "routeId": "94-366-1-j26-1",
+          "directionId": "0",
+          "headsign": "Unterägeri (See)",
+          "shortName": "52",
+          "calls": [
+            {
+              "id": "ch:1:sloid:30742",
+              "sequence": 1,
+              "arrival": 47700,
+              "departure": 47700,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:30743",
+              "sequence": 2,
+              "arrival": 48480,
+              "departure": 49200,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:30857",
+              "sequence": 3,
+              "arrival": 50100,
+              "departure": 50100,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:30633",
+              "sequence": 4,
+              "arrival": 50820,
+              "departure": 50820,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:30634",
+              "sequence": 5,
+              "arrival": 51540,
+              "departure": 51540,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:30635",
+              "sequence": 6,
+              "arrival": 51960,
+              "departure": 51960,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:30636",
+              "sequence": 7,
+              "arrival": 52920,
+              "departure": 52920,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:30742",
+              "sequence": 8,
+              "arrival": 54540,
+              "departure": 54540,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-94-366-1.1.TA.2.j26",
+          "sourceTripId": ".ojp-94-366-1.1.TA.2.j26",
+          "sourceServiceDate": "2026-09-06",
+          "routeId": "94-366-1-j26-1",
+          "directionId": "0",
+          "headsign": "Unterägeri (See)",
+          "shortName": "50",
+          "calls": [
+            {
+              "id": "ch:1:sloid:30742",
+              "sequence": 1,
+              "arrival": 40500,
+              "departure": 40500,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:30743",
+              "sequence": 2,
+              "arrival": 41400,
+              "departure": 42000,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:30857",
+              "sequence": 3,
+              "arrival": 42900,
+              "departure": 42900,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:30633",
+              "sequence": 4,
+              "arrival": 43620,
+              "departure": 43620,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:30634",
+              "sequence": 5,
+              "arrival": 44340,
+              "departure": 44340,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:30635",
+              "sequence": 6,
+              "arrival": 44760,
+              "departure": 44760,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:30636",
+              "sequence": 7,
+              "arrival": 45720,
+              "departure": 45720,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:30742",
+              "sequence": 8,
+              "arrival": 47340,
+              "departure": 47340,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        },
+        {
+          "id": ".ojp-94-366-1.1.TA.3.j26",
+          "sourceTripId": ".ojp-94-366-1.1.TA.3.j26",
+          "sourceServiceDate": "2026-09-06",
+          "routeId": "94-366-1-j26-1",
+          "directionId": "0",
+          "headsign": "Oberägeri (See)",
+          "shortName": "54",
+          "calls": [
+            {
+              "id": "ch:1:sloid:30742",
+              "sequence": 1,
+              "arrival": 54900,
+              "departure": 54900,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:30743",
+              "sequence": 2,
+              "arrival": 55680,
+              "departure": 56700,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:30857",
+              "sequence": 3,
+              "arrival": 57600,
+              "departure": 57600,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:30633",
+              "sequence": 4,
+              "arrival": 58320,
+              "departure": 58320,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:30634",
+              "sequence": 5,
+              "arrival": 59040,
+              "departure": 59040,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:30635",
+              "sequence": 6,
+              "arrival": 59460,
+              "departure": 59460,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:30636",
+              "sequence": 7,
+              "arrival": 60420,
+              "departure": 60420,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:30742",
+              "sequence": 8,
+              "arrival": 62040,
+              "departure": 62040,
+              "pickupType": "0",
+              "dropOffType": "0"
+            },
+            {
+              "id": "ch:1:sloid:30743",
+              "sequence": 9,
+              "arrival": 63000,
+              "departure": 63000,
+              "pickupType": "0",
+              "dropOffType": "0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "stops": [
+    {
+      "stop_id": "ch:1:sloid:2251",
+      "stop_name": "Zug Bahnhofsteg (See)",
+      "stop_lat": "47.17009967",
+      "stop_lon": "8.51333395",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:2251",
+      "platform_code": "",
+      "original_stop_id": "ch:1:sloid:2251",
+      "didok": "8502251"
+    },
+    {
+      "stop_id": "ch:1:sloid:2258",
+      "stop_name": "Walchwil (See)",
+      "stop_lat": "47.09967639",
+      "stop_lon": "8.51248953",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:2258",
+      "platform_code": "",
+      "original_stop_id": "ch:1:sloid:2258",
+      "didok": "8502258"
+    },
+    {
+      "stop_id": "ch:1:sloid:5060",
+      "stop_name": "Arth am See (Schiff)",
+      "stop_lat": "47.06471125",
+      "stop_lon": "8.52232608",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:5060",
+      "platform_code": "",
+      "original_stop_id": "ch:1:sloid:5060",
+      "didok": "8505060"
+    },
+    {
+      "stop_id": "ch:1:sloid:2257",
+      "stop_name": "Immensee (See)",
+      "stop_lat": "47.09653316",
+      "stop_lon": "8.46410627",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:2257",
+      "platform_code": "",
+      "original_stop_id": "ch:1:sloid:2257",
+      "didok": "8502257"
+    },
+    {
+      "stop_id": "ch:1:sloid:2254",
+      "stop_name": "Risch (See)",
+      "stop_lat": "47.13383025",
+      "stop_lon": "8.46797801",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:2254",
+      "platform_code": "",
+      "original_stop_id": "ch:1:sloid:2254",
+      "didok": "8502254"
+    },
+    {
+      "stop_id": "ch:1:sloid:2250",
+      "stop_name": "Cham (See)",
+      "stop_lat": "47.17866705",
+      "stop_lon": "8.46346847",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:2250",
+      "platform_code": "",
+      "original_stop_id": "ch:1:sloid:2250",
+      "didok": "8502250"
+    },
+    {
+      "stop_id": "ch:1:sloid:2253",
+      "stop_name": "Buonas (See)",
+      "stop_lat": "47.14222629",
+      "stop_lon": "8.45852773",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:2253",
+      "platform_code": "",
+      "original_stop_id": "ch:1:sloid:2253",
+      "didok": "8502253"
+    },
+    {
+      "stop_id": "ch:1:sloid:2252",
+      "stop_name": "Oberwil bei Zug (See)",
+      "stop_lat": "47.14900814",
+      "stop_lon": "8.50679421",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:2252",
+      "platform_code": "",
+      "original_stop_id": "ch:1:sloid:2252",
+      "didok": "8502252"
+    },
+    {
+      "stop_id": "ch:1:sloid:30742",
+      "stop_name": "Unterägeri (See)",
+      "stop_lat": "47.13804677",
+      "stop_lon": "8.58933142",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:30742",
+      "platform_code": "",
+      "original_stop_id": "ch:1:sloid:30742",
+      "didok": "8530742"
+    },
+    {
+      "stop_id": "ch:1:sloid:30743",
+      "stop_name": "Oberägeri (See)",
+      "stop_lat": "47.13356136",
+      "stop_lon": "8.60812418",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:30743",
+      "platform_code": "",
+      "original_stop_id": "ch:1:sloid:30743",
+      "didok": "8530743"
+    },
+    {
+      "stop_id": "ch:1:sloid:30857",
+      "stop_name": "Oberägeri Ländli (See)",
+      "stop_lat": "47.12954618",
+      "stop_lon": "8.62997120",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:30857",
+      "platform_code": "",
+      "original_stop_id": "ch:1:sloid:30857",
+      "didok": "8530857"
+    },
+    {
+      "stop_id": "ch:1:sloid:30633",
+      "stop_name": "Eierhals (See)",
+      "stop_lat": "47.11614781",
+      "stop_lon": "8.64087675",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:30633",
+      "platform_code": "",
+      "original_stop_id": "ch:1:sloid:30633",
+      "didok": "8530633"
+    },
+    {
+      "stop_id": "ch:1:sloid:30634",
+      "stop_name": "Morgarten Denkmal (See)",
+      "stop_lat": "47.10616407",
+      "stop_lon": "8.64129896",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:30634",
+      "platform_code": "",
+      "original_stop_id": "ch:1:sloid:30634",
+      "didok": "8530634"
+    },
+    {
+      "stop_id": "ch:1:sloid:30635",
+      "stop_name": "Morgarten Hotel (See)",
+      "stop_lat": "47.10379778",
+      "stop_lon": "8.64003234",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:30635",
+      "platform_code": "",
+      "original_stop_id": "ch:1:sloid:30635",
+      "didok": "8530635"
+    },
+    {
+      "stop_id": "ch:1:sloid:30636",
+      "stop_name": "Naas (See)",
+      "stop_lat": "47.11436273",
+      "stop_lon": "8.62139229",
+      "location_type": "",
+      "parent_station": "Parentch:1:sloid:30636",
+      "platform_code": "",
+      "original_stop_id": "ch:1:sloid:30636",
+      "didok": "8530636"
+    }
+  ]
+}

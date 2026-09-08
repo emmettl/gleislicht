@@ -12,7 +12,7 @@ Generated from the [Bern audit](BERN-STUDY.md). Counts are admitted / candidate 
 | 35 | Berner Oberland-Bahnen | 2 | 130 / 130 | 144 / 144 |
 | 38 | Aare Seeland mobil (bti) | 1 | 116 / 116 | 77 / 77 |
 | 43 | Chemins de fer du Jura | 2 | 69 / 110 | 42 / 77 |
-| 53 | Transports publics fribourgeois | 8 | 33 / 114 | 106 / 184 |
+| 53 | Transports publics fribourgeois | 8 | 114 / 114 | 184 / 184 |
 | 56 | Aare Seeland mobil (rvo) | 1 | 73 / 73 | 71 / 71 |
 | 64 | Montreux-Oberland Bernois | 10 | 19 / 103 | 10 / 82 |
 | 81 | Aare Seeland mobil (snb) | 1 | 154 / 154 | 96 / 96 |
@@ -239,8 +239,8 @@ Generated from the [Bern audit](BERN-STUDY.md). Counts are admitted / candidate 
 | 91-2-M-j26-1 | 53: RE2 | rail | admitted-all-dated-trips | 28 / 28 | 28 / 28 | 254_RE | — | — |
 | 91-8S-Y-j26-1 | 53: S | rail | inactive-on-validation-dates | 0 / 0 | 0 / 0 | — | — | Not active on these dates |
 | 91-8T-Y-j26-1 | 53: S | rail | inactive-on-validation-dates | 0 / 0 | 0 / 0 | — | — | Not active on these dates |
-| 91-20-B-j26-1 | 53: S20 | rail | partially-admitted | 2 / 43 | 38 / 78 | 255_a | bern-crosscanton-fot-rail-20210706 | incomplete-directed-pattern |
-| 91-21-A-j26-1 | 53: S21 | rail | partially-admitted | 3 / 43 | 40 / 78 | 255_b | bern-crosscanton-fot-rail-20210706 | incomplete-directed-pattern |
+| 91-20-B-j26-1 | 53: S20 | rail | admitted-all-dated-trips | 43 / 43 | 78 / 78 | 255_a | bern-crosscanton-fot-rail-20210706, bern-tpf-fribourg-reviewed-fot-rail-20210706 | — |
+| 91-21-A-j26-1 | 53: S21 | rail | admitted-all-dated-trips | 43 / 43 | 78 / 78 | 255_b | bern-tpf-fribourg-reviewed-fot-rail-20210706, bern-crosscanton-fot-rail-20210706 | — |
 | 91-50-j26-1 | 53: S50 | rail | inactive-on-validation-dates | 0 / 0 | 0 / 0 | — | — | Not active on these dates |
 | 91-12-L-j26-1 | 56: S12 | rail | admitted-all-dated-trips | 73 / 73 | 71 / 71 | 414 | — | — |
 | 91-30-D-j26-1 | 64: 30 | rail | inactive-on-validation-dates | 0 / 0 | 0 / 0 | — | — | Not active on these dates |

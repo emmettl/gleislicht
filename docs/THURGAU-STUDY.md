@@ -2,7 +2,7 @@
 
 Audit date: **8 September 2026**. Starting point: [Swiss transit source inventory](SWISS-TRANSIT-SOURCE-INVENTORY.md#tg).
 
-The complete canton-scoped GTFS inventory contains **132 route records across 15 agency identities**, with calls in all **five districts**. The regional feed admits **4338 Friday journeys and 2703 Sunday journeys**, each retaining every original call and a validated path for every directed segment. **This is partial geometry coverage, not a complete canton service feed.** 106 route records have all dated journeys admitted, 2 have partial admission, 3 are excluded, and 21 are inactive on both validation dates.
+The complete canton-scoped GTFS inventory contains **132 route records across 15 agency identities**, with calls in all **five districts**. The regional feed admits **4360 Friday journeys and 2724 Sunday journeys**, each retaining every original call and a validated path for every directed segment. **This is partial geometry coverage, not a complete canton service feed.** 106 route records have all dated journeys admitted, 3 have partial admission, 2 are excluded, and 21 are inactive on both validation dates.
 
 ## Deliverables
 
@@ -12,6 +12,7 @@ The complete canton-scoped GTFS inventory contains **132 route records across 15
 - [All source line records](../data/thurgau-audit/source-lines.json), [all 718 source stops](../data/thurgau-audit/source-stops.json), [canton GTFS stop inventory](../data/thurgau-audit/stops.json), [reviewed route crosswalk](../data/thurgau-line-crosswalk.json).
 - [Source metadata and request hashes](../data/thurgau-sources/sources.json), [raw request receipts](../data/thurgau-sources/requests.json). Original responses, boundary rows and the selected timetable fixture are preserved as gzip files in the repository.
 - [SBB border source](../data/thurgau-sbb-rail-sources/sources.json), [explicit Konstanz joins](../data/thurgau-sbb-rail-policy.json), [all SBB candidate records and exclusions](../data/thurgau-audit/sbb-rail-source-segments.json), and [lake-source screening](../data/thurgau-water-review/review.json).
+- [Lake/Rhine source responses](../data/thurgau-shipping-sources/sources.json), [eight exact dock-pair ways and policy](../data/thurgau-shipping-policy.json), [complete source-element inventory](../data/thurgau-audit/shipping-source-elements.json), [full-pattern review](../data/thurgau-shipping-sources/path-review.json), and [separate derived path database](../public/data/thurgau-region/shipping-paths.json).
 - [Scoped Romanshorn ferry source](../data/thurgau-ferry-sources/sources.json), [policy](../data/thurgau-ferry-policy.json), [source inventory](../data/thurgau-audit/ferry-source-elements.json), [directed path review](../data/thurgau-ferry-sources/path-review.json), and [separate ODbL path database](../public/data/thurgau-region/ferry-paths.json).
 - [Shipping source and attribution](../data/thurgau-boat-sources/sources.json), [exact boat policy](../data/thurgau-boat-policy.json), [all 69 shipping features](../data/thurgau-audit/boat-source-segments.json), and [full-pattern/dock review](../data/thurgau-boat-sources/path-review.json).
 - [Federal rail source](../data/thurgau-rail-sources/source.json), [exact rail policy](../data/thurgau-rail-policy.json) and [all federal source segments](../data/thurgau-audit/rail-source-segments.json).
@@ -38,8 +39,8 @@ District route counts overlap. Journeys retain **every call outside Thurgau**, i
 | 22 | Appenzeller Bahnen (ab) | 1 | 98 / 98 | 82 / 82 |
 | 65 | THURBO | 23 | 677 / 677 | 707 / 707 |
 | 138 | Bus Ostschweiz | 18 | 916 / 946 | 492 / 521 |
-| 193 | Schweiz. Schifffahrtsgesellschaft Untersee und Rhein AG | 1 | 0 / 17 | 0 / 17 |
-| 195 | Schweizerische Bodensee-Schifffahrt AG | 3 | 20 / 37 | 18 / 34 |
+| 193 | Schweiz. Schifffahrtsgesellschaft Untersee und Rhein AG | 1 | 8 / 17 | 8 / 17 |
+| 195 | Schweizerische Bodensee-Schifffahrt AG | 3 | 34 / 37 | 31 / 34 |
 | 360 | Bodensee-Schiffsbetriebe GmbH | 2 | 20 / 20 | 18 / 18 |
 | 727 | Verkehrsbetriebe Kreuzlingen | 6 | 487 / 487 | 200 / 200 |
 | 744 | Automobildienst Appenzeller Bahnen | 2 | 1 / 1 | 0 / 0 |
@@ -64,6 +65,7 @@ Four official call-taxi polygons are separately recorded in the audit: Bischofsz
 | Federal rail network | Checksum-verified FOT XTF; catalogue 2021-07-06, asset updated 2025-01-18, reused 2026-09-08; used segment Stand dates 2021-07-06 | © Federal Office of Transport (FOT); opendata.swiss terms_by, source attribution required; retain proprietary catalogue label without relabelling it CC |
 | SBB graphical lines | Pinned selected responses reused 2026-09-08; catalogue modified 2026-07-29T06:16:28+00:00, data processed 2026-09-02T03:01:34+00:00; no feature survey date supplied | SBB Infrastructure / data.sbb.ch; terms_by, commercial and non-commercial use with attribution |
 | Official shipping and lake shorelines | swissTLMRegio source acquired 2026-09-08; collection updated 2026-06-25 with temporal extent through 2025-12-02; individual shipping-feature vintage unknown. Original FOEN Bodensee and Untersee features retain 2007 shoreline reference. | © swisstopo; shoreline © FOEN, swisstopo; swisstopo free-geodata terms. Literal proprietary STAC label preserved, not relabelled CC. |
+| Lake/Rhine OSM supplement | Historical state 2026-09-02; acquired 2026-09-08. Eight selected ferry ways edited 2025-04-16–2025-12-21. Rhine water relation 1679977 v3 edited 2026-01-19, retaining source=Landsat and its island. Edit timestamps are not survey dates or observed water levels. | © OpenStreetMap contributors, ODbL 1.0; retained official segments and lake shoreline © swisstopo, FOEN with original terms. |
 | Romanshorn–Friedrichshafen ferry | OSM historical state 2026-09-02; acquired 2026-09-08. Way 26255860 version 25 dated 2025-11-05; individual node edit timestamps retained. No verified survey or operating-lane date. | © OpenStreetMap contributors; separate ODbL 1.0 ferry database. Original Bodensee shoreline © FOEN, swisstopo (2007 reference). |
 | Wittenbach turnaround | Historical OSM state 2026-09-02; acquired 2026-09-08. Selected road version 9 (2026-08-02), roundabout version 14 (2024-01-29). Full original responses and scoped restriction query retained. | © OpenStreetMap contributors; separate ODbL 1.0 inferred turnaround database. |
 | Bregenz OSM rail corridor | Historical Overpass query 2026-09-02T00:00:00Z; acquired 2026-09-08; 521 ways individually inventoried | © OpenStreetMap contributors; separate border path database under ODbL 1.0 |
@@ -203,15 +205,15 @@ The admitted OSM-derived border database is distributed separately under **ODbL 
 
 ## Lake and Rhine shipping supplement
 
-The [official shipping adapter](../scripts/thurgau-boat-geometry.mjs) adds **26 complete Friday / 26 complete Sunday boat journeys**. Six of the 27 unique dated boat patterns pass, with all original dock calls, direction IDs, timestamps and permissions retained. This original official-line stage rejects **66 Friday / 61 Sunday boat journeys**, including the Romanshorn–Friedrichshafen ferry and all URh Rhine journeys. The scoped ferry supplement below resolves 32 / 28 of them; **34 Friday / 33 Sunday boat journeys remain excluded**. Original segment-specific failures remain in each day's audit and the [full pattern review](../data/thurgau-boat-sources/path-review.json).
+The [official shipping adapter](../scripts/thurgau-boat-geometry.mjs) adds **26 complete Friday / 26 complete Sunday boat journeys**. Six of the 27 unique dated boat patterns pass, with all original dock calls, direction IDs, timestamps and permissions retained. This original official-line stage rejects **66 Friday / 61 Sunday boat journeys**, including the Romanshorn–Friedrichshafen ferry and all URh Rhine journeys. The scoped ferry supplement below resolves 32 / 28 of them; **34 Friday / 33 Sunday boat journeys remain after that stage**. The additional lake/Rhine supplement below resolves 22 / 21 more, leaving **12 boat journeys excluded on each date**. Original segment-specific failures remain in each day's audit and the [full pattern review](../data/thurgau-boat-sources/path-review.json).
 
 | Agency / line | GTFS route ID | Friday admitted / total | Sunday admitted / total |
 | --- | --- | --- | --- |
-| 195 / 3800 | 94-380-0-j26-1 | 1 / 16 | 1 / 15 |
-| 195 / 3801 | 94-380-1-j26-1 | 3 / 5 | 3 / 5 |
+| 195 / 3800 | 94-380-0-j26-1 | 14 / 16 | 13 / 15 |
+| 195 / 3801 | 94-380-1-j26-1 | 4 / 5 | 4 / 5 |
 | 195 / 3810 | 94-381-0-j26-1 | 16 / 16 | 14 / 14 |
 | 360 / 3810 | 94-381-A-j26-1 | 16 / 16 | 14 / 14 |
-| 193 / 3820 | 94-382-0-j26-1 | 0 / 17 | 0 / 17 |
+| 193 / 3820 | 94-382-0-j26-1 | 8 / 17 | 8 / 17 |
 | 360 / 3820 | 94-382-A-j26-1 | 4 / 4 | 4 / 4 |
 | 3182 / BAT | 94-T-Y-j26-1 | 18 / 18 | 18 / 18 |
 
@@ -221,7 +223,7 @@ All 18 Reichenau solar-ferry journeys and all four Radolfzell journeys pass on e
 
 **Directed matching:** exact route, agency, route type, direction and full original dock/coordinate chains are required. Source vertices alone establish graph connectivity. Original dock projections are bounded by **150 m**, alternatives by **5 m** from the nearest, and detours by max(**3 × direct distance**, **1,200 m**). The largest admitted dock projection is **142.33 m**. Source lines are not simplified or extended with topology bridges. Successful bus and rail paths remain unchanged.
 
-**Shoreline validation:** the original FOEN **Bodensee feature 124** (8,714 vertices) and **Untersee feature 171** (3,834 vertices) are acquired with all rings and islands. Their reference date remains **2007**. Every inferred path edge is split at every shoreline intersection; fixed-distance sampling cannot skip an island. An outside-water interval is allowed only when both endpoints lie within **150 m of the same actual endpoint dock**. Every such discrepancy is disclosed in the audit: **24 intervals across the six unique admitted patterns**, including repeated approaches. Intervals elsewhere reject the entire journey. This bounds disagreement between generalized shipping lines and the old dock/shoreline representation; it does not certify dock access. The longer dock-area discrepancies at Immenstaad and Radolfzell are visible in the detailed review. Missing Rhine water, distant Schaffhausen attachment and other harbour/shoreline failures remain unresolved; no threshold was raised to admit them.
+**Shoreline validation:** the original FOEN **Bodensee feature 124** (8,714 vertices) and **Untersee feature 171** (3,834 vertices) are acquired with all rings and islands. Their reference date remains **2007**. Every inferred path edge is split at every shoreline intersection; fixed-distance sampling cannot skip an island. An outside-water interval is allowed only when both endpoints lie within **150 m of the same actual endpoint dock**. Every such discrepancy is disclosed in the audit: **24 intervals across the six unique admitted patterns**, including repeated approaches. Intervals elsewhere reject the entire journey. This bounds disagreement between generalized shipping lines and the old dock/shoreline representation; it does not certify dock access. The longer dock-area discrepancies at Immenstaad and Radolfzell are visible in the detailed review. This original stage lacks Rhine water and fails the Schaffhausen attachment. The scoped lake/Rhine supplement below acquires that missing water polygon and distinct named ferry ways; the original source-policy limits remain unchanged.
 
 ![All admitted shipping patterns](assets/thurgau-boat-review.png)
 
@@ -247,7 +249,43 @@ Dock projection and outside-water zones are limited to **10 m**, with no alterna
 
 The full crossing and both dock panels were inspected. The feed identifies these journeys as **osm-romanshorn-ferry-inference** and distributes a separate **ODbL 1.0** path database credited to **OpenStreetMap contributors**, beside the pinned source response and policy. Shoreline validation retains **© FOEN, swisstopo** attribution and its original terms. All previously admitted bus, rail and boat paths, calls and permissions are regression-preserved.
 
-Together the two boat adapters now admit **58 Friday / 54 Sunday journeys across ten unique patterns and six route identities**. **34 / 33 boat journeys remain excluded as complete patterns**, including URh Rhine service and unresolved lake/harbour approaches. Demand-responsive exclusions remain unchanged. Reproduce offline with `node scripts/prepare-thurgau-ferry.mjs`, `node scripts/review-thurgau-ferry.mjs` and `scripts/review-thurgau-ferry.py` (Pillow), then rebuild and check the regional feed.
+Together these first two boat adapters admit **58 Friday / 54 Sunday journeys across ten unique patterns and six route identities**, leaving **34 / 33 boat journeys** for the following lake/Rhine stage. Demand-responsive exclusions remain unchanged. Reproduce offline with `node scripts/prepare-thurgau-ferry.mjs`, `node scripts/review-thurgau-ferry.mjs` and `scripts/review-thurgau-ferry.py` (Pillow), then rebuild and check the regional feed.
+
+### Additional lake and Rhine patterns
+
+The [lake/Rhine adapter](../scripts/thurgau-shipping.mjs) adds **22 Friday / 21 Sunday journeys** across **11 unique full patterns** (11 Friday, 10 Sunday). Line 3800 gains 13 / 12, line 3801 gains 1 / 1, and URh line 3820 gains **8 / 8**, covering all dated **Schaffhausen–Büsingen–Diessenhofen** journeys in both directions. All boat adapters together now admit **80 Friday / 75 Sunday journeys**, across all seven annual boat route identities. This brings the regional feed to **4,360 / 2,724 journeys**; fixed bus and rail coverage stays complete on these two dates.
+
+Each successful segment from the original official boat matcher is retained byte-for-byte. Only a failed stop-to-stop segment may use its **exact reviewed OSM way**; neither endpoint nor any intermediate GTFS call is removed. No curve is joined to another source halfway through a segment, and no artificial topology bridge or water path is drawn. Source selection is restricted to the **17 originally rejected full dock/coordinate patterns** of three exact SBS/URh route identities. Any remaining failed segment excludes the whole pattern.
+
+| OSM way | Reviewed dock pair | Version / edit date | Snap / outside-water zone |
+| --- | --- | --- | --- |
+| 66929232 | Romanshorn (See) ↔ Arbon (See) | 17 / 2025-10-05 | 120 m / 25 m |
+| 1255664244 | Romanshorn (See) ↔ Uttwil (See) | 8 / 2025-10-05 | 120 m / 25 m |
+| 66929246 | Kreuzlingen Hafen (See) ↔ Bottighofen (See) | 19 / 2025-10-05 | 120 m / 25 m |
+| 1255942854 | Meersburg (Bodensee) ↔ Kreuzlingen Hafen (See) | 11 / 2025-10-05 | 120 m / 100 m |
+| 96604650 | Arbon (See) ↔ Langenargen Hafen | 6 / 2025-04-16 | 120 m / 25 m |
+| 66929242 | Güttingen (See) ↔ Romanshorn (See) | 22 / 2025-10-05 | 120 m / 25 m |
+| 25489146 | Schaffhausen (Schifflände) ↔ Büsingen (Schifflände) | 15 / 2025-12-21 | 25 m / 10 m |
+| 25489986 | Büsingen (Schifflände) ↔ Diessenhofen (Schifflände) | 9 / 2025-12-21 | 25 m / 10 m |
+
+The lake replacements retain original **FOEN Bodensee feature 124**, including all island rings, while requiring **120 m** dock attachment with no alternate snap. Their discrepancy zones are **25 m**, except the explicitly reviewed **Meersburg–Kreuzlingen pair: 100 m**, still below the original official adapter's 150 m policy. At Meersburg the dock projection is **76.57 m** and an approximately **17 m** interval lies outside the 2007 shoreline. It is recorded, visible in the dock review and bounded by the actual GTFS dock; it does not certify harbour access. The largest replacement snap is **110.00 m**, on Arbon–Langenargen. Detours remain bounded by max(3 × direct distance, 1,200 m). Every edge is split at every shoreline intersection; remote outside-water intervals fail.
+
+**Source identity conflict:** OSM way **1255942854** is named Meersburg–Kreuzlingen but carries an **URh** operator tag, while this dated GTFS route belongs to **SBS**. The tag is preserved and explicitly not used to assign the operator. The way supplies cartographic connection geometry only. [Rorschach's municipal account, published 12 February 2026](https://stadtinfo.rorschach.ch/stadtrat/tageskarten-der-schifffahrtsbetriebe-zum-vorzugspreis/), identifies the SBS service through Romanshorn and Kreuzlingen to Meersburg. Neither that account nor this geometric match independently verifies the vessel's operating lane.
+
+**Rhine water:** the new source is **OSM relation 1679977**, version **3**, edited **19 January 2026**. Its exact outer way **122858269** contains **1,208 vertices**, and inner way **937838731** retains a **15-vertex island hole**. The adapter requires precisely those members and hashes every selected relation, way and node. No bounding rectangle or lake outline substitutes for the river. The source's **Landsat** tag is retained: this is a mapped water area, not a contemporary depth, water-level or navigability model. Both directed river paths pass with **25 m** attachments (maximum **10.93 m**) and **10 m** dock discrepancy zones. The small source discrepancies at Schaffhausen and Diessenhofen are approximately **3.54 m** and **6.67 m** respectively; there is no remote land crossing. Tests prove that removing the island fails source validation and that crossing its area fails the water test.
+
+The [URh low-water timetable page](https://www.urh.ch/fahrplan_sommer_nw), checked 8 September 2026, lists Schaffhausen–Diessenhofen round trips from **27 June to 4 October 2026** and the interruption between Diessenhofen and Stein am Rhein. The selected GTFS patterns already reflect this separation. The adapter adds no journey across the interrupted section and retains all original trip times. This corroborates the service structure without establishing observed operation of every trip.
+
+![Every newly admitted complete lake/Rhine pattern and the river island](assets/thurgau-shipping-review.png)
+
+![All eleven new OSM dock attachments and their discrepancy zones](assets/thurgau-shipping-dock-review.png)
+
+Both plots were inspected. The [source inventory](../data/thurgau-audit/shipping-source-elements.json) records every acquired way and relation, selected memberships, exclusions, versions and timestamps; all original nodes remain in the pinned raw responses. It includes **212 shipping-query way/relation records** and **76 water-query records**. Only eight shipping ways and the exact Rhine water relation with its two rings enter the supplement. The two requests have explicit envelopes and recursive members; response completeness is not a claim that every real-world service or canton water feature is represented.
+
+The feed labels these journeys **official-osm-shipping-inference**, with per-segment source evidence and the original failed matcher audit preserved. The separate derived database and raw OSM responses retain **ODbL 1.0 / © OpenStreetMap contributors** attribution; retained official geometry and lake shorelines retain **© swisstopo / FOEN** and their original terms. All previously admitted journeys retain their complete geometry, calls, permissions and times.
+
+**Remaining boat exclusions: 12 Friday / 12 Sunday journeys**, in six full patterns: two Kreuzlingen–Mainau–Meersburg journeys, one Romanshorn–Immenstaad loop, and nine longer URh lake/Seerhein journeys. Their original failures and unavailable reviewed replacements remain in the [pattern audit](../data/thurgau-shipping-sources/path-review.json). These are not shortened to their matching portions. Demand-responsive services remain excluded. Reproduce offline with `node scripts/prepare-thurgau-shipping.mjs`, `node scripts/review-thurgau-shipping.mjs` and `scripts/review-thurgau-shipping.py` (Pillow), followed by the regional rebuild and checker.
+
 
 
 ## Weekday and Sunday directed validation
@@ -261,11 +299,11 @@ Pattern identity is GTFS **route ID + direction_id + full ordered original platf
 | Measure | Friday 4 September | Sunday 6 September |
 | --- | --- | --- |
 | Dated journeys | 4417 | 2795 |
-| Admitted journeys | 4338 (98.2%) | 2703 (96.7%) |
-| Complete admitted patterns / all patterns | 541 / 563 | 421 / 442 |
-| Matched directed pairs / all directed pairs | 3392 / 3529 (96.1%) | 3288 / 3425 (96.0%) |
-| Matched scheduled segments / all occurrences | 63905 / 64684 (98.8%) | 40152 / 41271 (97.3%) |
-| Segments in admitted journeys | 63905 | 40152 |
+| Admitted journeys | 4360 (98.7%) | 2724 (97.5%) |
+| Complete admitted patterns / all patterns | 552 / 563 | 431 / 442 |
+| Matched directed pairs / all directed pairs | 3413 / 3529 (96.7%) | 3309 / 3425 (96.6%) |
+| Matched scheduled segments / all occurrences | 63961 / 64684 (98.9%) | 40207 / 41271 (97.4%) |
+| Segments in admitted journeys | 63961 | 40207 |
 | Carry-in journeys: admitted / total | 55 / 58 | 129 / 167 |
 | Night-labelled journeys: admitted / total | 0 / 15 | 75 / 105 |
 | Patterns revisiting platforms: admitted / total | 20 / 21 | 12 / 13 |
@@ -274,7 +312,7 @@ Pattern identity is GTFS **route ID + direction_id + full ordered original platf
 
 | Unmatched directed-pair reason | Friday | Sunday |
 | --- | --- | --- |
-| missing-line | 137 | 137 |
+| missing-line | 116 | 116 |
 | endpoint-gap | 0 | 0 |
 | disconnected-line | 0 | 0 |
 | collapsed-path | 0 | 0 |
@@ -332,8 +370,9 @@ Counts below refer only to the two validated civil dates. Multiple records can s
 | 138 | 943 | 92-943-A-j26-1 | 99 / 99 | 42 / 42 |
 | 138 | N50 | 92-N50-A-j26-1 | 0 / 0 | 6 / 6 |
 | 138 | N90 | 92-N90-B-j26-1 | 0 / 0 | 6 / 6 |
-| 195 | 3800 | 94-380-0-j26-1 | 1 / 16 | 1 / 15 |
-| 195 | 3801 | 94-380-1-j26-1 | 3 / 5 | 3 / 5 |
+| 193 | 3820 | 94-382-0-j26-1 | 8 / 17 | 8 / 17 |
+| 195 | 3800 | 94-380-0-j26-1 | 14 / 16 | 13 / 15 |
+| 195 | 3801 | 94-380-1-j26-1 | 4 / 5 | 4 / 5 |
 | 195 | 3810 | 94-381-0-j26-1 | 16 / 16 | 14 / 14 |
 | 360 | 3810 | 94-381-A-j26-1 | 16 / 16 | 14 / 14 |
 | 360 | 3820 | 94-382-A-j26-1 | 4 / 4 | 4 / 4 |
@@ -419,7 +458,7 @@ node scripts/build-thurgau-region.mjs \
 # stop, path, edge and journey; reconcile routes, groups, patterns and chunks.
 node scripts/check-thurgau-region.mjs
 node scripts/document-thurgau-study.mjs
-npx vitest run scripts/thurgau-ferry.test.mjs scripts/thurgau-wittenbach.test.mjs scripts/thurgau-boat-geometry.test.mjs scripts/water-paths.test.mjs scripts/zug-boat-geometry.test.mjs scripts/thurgau-border-rail.test.mjs scripts/thurgau-sbb-rail.test.mjs scripts/thurgau-rail-geometry.test.mjs scripts/luzern-rail-geometry.test.mjs scripts/thurgau-regional-roads.test.mjs scripts/thurgau-region.test.mjs scripts/thurgau-city-roads.test.mjs scripts/bern-region.test.mjs
+npx vitest run scripts/thurgau-shipping.test.mjs scripts/thurgau-ferry.test.mjs scripts/thurgau-wittenbach.test.mjs scripts/thurgau-boat-geometry.test.mjs scripts/water-paths.test.mjs scripts/zug-boat-geometry.test.mjs scripts/thurgau-border-rail.test.mjs scripts/thurgau-sbb-rail.test.mjs scripts/thurgau-rail-geometry.test.mjs scripts/luzern-rail-geometry.test.mjs scripts/thurgau-regional-roads.test.mjs scripts/thurgau-region.test.mjs scripts/thurgau-city-roads.test.mjs scripts/bern-region.test.mjs
 python3 scripts/test_thurgau_sources.py
 ```
 

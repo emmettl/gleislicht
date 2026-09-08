@@ -13,6 +13,7 @@ import { compactBernFeed, bernCoverage, validateBernSnapshot, validateBernChunks
 import { THURGAU_REGIONAL_BUS_AGENCIES } from './thurgau-regional-roads.mjs'
 import { loadThurgauRail, isThurgauRailSource } from './thurgau-rail-geometry.mjs'
 import { distanceMetres } from './enrich-postbus-roads.mjs'
+import { loadThurgauShipping, THURGAU_SHIPPING_SOURCE } from './thurgau-shipping.mjs'
 import { loadThurgauFerry, THURGAU_FERRY_SOURCE } from './thurgau-ferry.mjs'
 import { loadThurgauBoats } from './thurgau-boat-geometry.mjs'
 import { loadThurgauWittenbach } from './thurgau-wittenbach.mjs'
@@ -83,6 +84,10 @@ export async function buildThurgauRegion({ archive, sourceDirectory = 'data/thur
     timetable.sourceHashes = { archive: hashes.archive, source: hashes.source }
   }
   const rail = await loadThurgauRail(timetable), boats = await loadThurgauBoats(timetable)
+  const shipping = await loadThurgauShipping(timetable)
+  hashes.shippingPolicy = shipping.policySha256; hashes.shippingSource = shipping.policy.sourceSha256
+  provenance.shipping = { ...shipping.source, scope: shipping.policy.scope, shorelineRule: shipping.policy.shorelineRule }
+  await writeJson(join(auditDirectory, 'shipping-source-elements.json'), shipping.inventory, true)
   const ferry = await loadThurgauFerry(timetable)
   hashes.ferryPolicy = ferry.policySha256; hashes.ferrySource = ferry.policy.sourceSha256
   provenance.ferry = { ...ferry.source, limits: ferry.policy.limits, dockZoneMetres: ferry.policy.dockZoneMetres, scope: ferry.policy.scope, shorelineRule: ferry.policy.shorelineRule }
@@ -117,7 +122,7 @@ export async function buildThurgauRegion({ archive, sourceDirectory = 'data/thur
   let routeCrosswalk
   for (const raw of timetable.snapshots) {
     console.log(`Matching every directed Thurgau pattern for ${raw.metadata.serviceDate}…`)
-    const result = applyThurgauGeometry(raw, routes, source, crosswalk, cityRoads, regionalRoads, rail, boats, wittenbach, ferry)
+    const result = applyThurgauGeometry(raw, routes, source, crosswalk, cityRoads, regionalRoads, rail, boats, wittenbach, ferry, shipping)
     for (const p of result.patterns.filter(p => p.geometrySource === 'fot-osm-border-rail-inference')) p.railSupplement.segments.forEach((s, i) => {
       if (s.geometrySource === 'fot-osm-border-rail-inference') borderPaths.set(JSON.stringify([p.stopIds[i], p.stopIds[i + 1]]), { stopIds: [p.stopIds[i], p.stopIds[i + 1]], path: result.paths[p.pathSegments[i]], evidence: s })
     })
@@ -135,8 +140,9 @@ export async function buildThurgauRegion({ archive, sourceDirectory = 'data/thur
     const snapshot = compactBernFeed(raw, result)
     snapshot.metadata = { ...snapshot.metadata, publisher: 'Gleislicht', timetablePublisher: 'SBB', attribution: 'opentransportdata.swiss',
       label: 'Thurgau canton — bus, rail and selected boat patterns', sourceHashes: hashes, timetable: provenance.timetable,
-      model: 'Scheduled interpolation along cantonal centrelines, OSM-inferred bus roads, FOT/SBB and OSM border rail infrastructure, and official shipping lines or scoped OSM ferry geometry, with bounded stop/dock connectors; not observed vehicles.',
+      model: 'Scheduled interpolation along cantonal centrelines, OSM-inferred bus roads, FOT/SBB and OSM border rail infrastructure, and official shipping lines and scoped OSM lake/Rhine ways, with bounded stop/dock connectors; not observed vehicles.',
       wittenbach: { ...provenance.wittenbach, localPathDatabase: '../wittenbach-paths.json' },
+      shipping: { ...provenance.shipping, localPathDatabase: '../shipping-paths.json' },
       ferry: { ...provenance.ferry, localPathDatabase: '../ferry-paths.json' },
       boats: { ...provenance.boats, localSourceMetadata: '../boat-sources/sources.json' },
       cityRoads: { ...cityRoads.metadata, localPathDatabase: '../city-road-paths.json' },
@@ -174,11 +180,14 @@ export async function buildThurgauRegion({ archive, sourceDirectory = 'data/thur
         scheduledSegmentOccurrences: snapshot.trains.filter(t => t.geometrySource === 'osm-regional-road').reduce((n, t) => n + t.pathSegments.length, 0) },
       wittenbachCoverage: { trips: snapshot.trains.filter(t => t.geometrySource === 'osm-wittenbach-turnaround-inference').length,
         patterns: result.patterns.filter(p => p.geometrySource === 'osm-wittenbach-turnaround-inference').length },
+      shippingCoverage: { trips: snapshot.trains.filter(t => t.geometrySource === THURGAU_SHIPPING_SOURCE).length,
+        patterns: result.patterns.filter(p => p.geometrySource === THURGAU_SHIPPING_SOURCE).length,
+        rejectedPatterns: result.patterns.filter(p => p.shippingSupplement?.status === 'rejected-incomplete-pattern').length },
       ferryCoverage: { trips: snapshot.trains.filter(t => t.geometrySource === THURGAU_FERRY_SOURCE).length,
         patterns: result.patterns.filter(p => p.geometrySource === THURGAU_FERRY_SOURCE).length },
       boatCoverage: { trips: snapshot.trains.filter(t => t.geometrySource === 'swisstopo-boat-inference').length,
         patterns: result.patterns.filter(p => p.geometrySource === 'swisstopo-boat-inference').length,
-        rejectedPatterns: result.patterns.filter(p => p.boatSupplement?.status === 'rejected-incomplete-pattern' && p.ferrySupplement?.status !== 'admitted').length,
+        rejectedPatterns: result.patterns.filter(p => p.boatSupplement?.status === 'rejected-incomplete-pattern' && p.ferrySupplement?.status !== 'admitted' && p.shippingSupplement?.status !== 'admitted').length,
         originalRejectedPatterns: result.patterns.filter(p => p.boatSupplement?.status === 'rejected-incomplete-pattern').length },
       borderRailCoverage: { trips: snapshot.trains.filter(t => t.geometrySource === 'fot-osm-border-rail-inference').length,
         patterns: result.patterns.filter(p => p.geometrySource === 'fot-osm-border-rail-inference').length },
@@ -217,6 +226,7 @@ export async function buildThurgauRegion({ archive, sourceDirectory = 'data/thur
       roadSupplement: ['727', '797'].includes(route.agencyId) && route.name !== 'NT' ? 'osm-city-road; full ordered pattern and coordinates required'
         : THURGAU_REGIONAL_BUS_AGENCIES.includes(route.agencyId) && route.mode === 'bus' && route.type !== 715 ? 'osm-regional-road; complete official patterns take priority; complete road patterns only' : null,
       wittenbachSupplement: wittenbach.policy.patterns.some(p => p.routeId === route.id) ? 'exact scoped OSM roundabout inference for four patterns; original subsequent road slices retained' : null,
+      shippingSupplement: shipping.policy.routes.some(r => r.routeId === route.id) ? 'successful official segments retained; exact OSM lake/Rhine ways for failed pairs; full original patterns only' : null,
       ferrySupplement: ferry.policy.routes.some(r => r.routeId === route.id) ? 'scoped OSM way 26255860; two original docks, 10 m attachments and shoreline zones' : null,
       boatSupplement: route.mode === 'ferry' ? 'swisstopo-boat-inference; full original dock chain, bounded dock connectors and every shoreline intersection audited' : null,
       railSupplement: rail.policy.routes.some(r => r.routeId === route.id) ? 'fot/sbb-rail-inference; complete official patterns preserved, exact operating points and full ordered patterns required' : null,
@@ -254,7 +264,7 @@ export async function buildThurgauRegion({ archive, sourceDirectory = 'data/thur
     scopeLimits: ['GTFS fixed-stop archive and all Thurgau WFS transit layers inventoried; services absent from both sources and GTFS-Flex service areas are not a verified census of every real-world service.',
       'Two September civil days do not establish holiday, winter or year-round pattern coverage.',
       'Cross-boundary journeys keep all calls. Entire patterns failing any segment are excluded, including source extents shorter than their timetable journeys.',
-      'Geometry combines official-line centreline inference, OSM bus-road matching, FOT/SBB and OSM border rail infrastructure and selected official shipping paths or scoped OSM ferry geometry. No observed movement, legal one-way validation, running-track selection, navigational lane or temporary diversion confirmation.'],
+      'Geometry combines official-line centreline inference, OSM bus-road matching, FOT/SBB and OSM border rail infrastructure and selected official shipping paths and scoped OSM lake/Rhine ways. No observed movement, legal one-way validation, running-track selection, navigational lane or temporary diversion confirmation.'],
   }
   await writeJson(join(auditDirectory, 'summary.json'), summary, true)
   await writeJson(join(auditDirectory, 'routes.json'), inventory, true)
@@ -262,6 +272,9 @@ export async function buildThurgauRegion({ archive, sourceDirectory = 'data/thur
   await writeJson(join(auditDirectory, 'source-stops.json'), sourceStops, true)
   await writeJson(join(auditDirectory, 'stops.json'), timetable.sourceStopInventory, false)
   await writeJson(join(output, 'sources.json'), provenance, true)
+  await writeJson(join(output, 'shipping-paths.json'), { metadata: provenance.shipping, policy: shipping.policy, patterns: shipping.patterns, riverPolygon: shipping.riverPolygon }, true)
+  await mkdir(join(output, 'shipping-sources'), { recursive: true })
+  for (const file of ['sources.json', ...shipping.source.files.map(f => f.file)]) await writeFile(join(output, 'shipping-sources', file), await readFile(join('data/thurgau-shipping-sources', file)))
   await writeJson(join(output, 'ferry-paths.json'), { metadata: provenance.ferry, policy: ferry.policy, paths: ferry.paths }, true)
   await mkdir(join(output, 'ferry-sources'), { recursive: true })
   for (const file of ['sources.json', ...ferry.source.files.map(f => f.file)]) await writeFile(join(output, 'ferry-sources', file), await readFile(join('data/thurgau-ferry-sources', file)))

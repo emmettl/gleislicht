@@ -99,10 +99,10 @@ The mode-specific attachment limit is **200 m** (largest admitted snap **157.82 
 
 | Lake / line | Friday admitted / all trips | Sunday admitted / all trips | Friday admitted / all patterns | Sunday admitted / all patterns |
 | --- | --- | --- | --- | --- |
-| zugersee / 3660 | 5/6 | 8/10 | 5/6 | 6/8 |
+| zugersee / 3660 | 6/6 | 10/10 | 6/6 | 8/8 |
 | aegerisee / 3661 | 3/3 | 3/3 | 2/2 | 2/2 |
 
-This adds **eight Friday trips and eleven Sunday trips**. Across all boat candidates, **20/21 Friday** and **25/27 Sunday** unique directed pairs pass. Zug Bahnhofsteg → Walchwil remains excluded on both dates; Risch → Zug Bahnhofsteg also fails on Sunday. Their selected source paths have approximately **159 m / 153 m** outside the shoreline away from either endpoint dock. The rejected path hash and exact outside intervals remain in the machine audit. All three Ägerisee trips and both complete repeat-stop patterns pass on each date.
+The federal lake graphs alone admit **eight Friday trips and eleven Sunday trips**, covering **20/21 Friday** and **25/27 Sunday** unique directed pairs. Their Zug Bahnhofsteg → Walchwil path fails on both dates; Risch → Zug Bahnhofsteg also fails on Sunday. The separately reviewed OSM fallback below completes those three trips, bringing boat coverage to **9/9 Friday and 13/13 Sunday trips**, with **21/21 and 27/27 directed pairs**. Their selected source paths have approximately **159 m / 153 m** outside the shoreline away from either endpoint dock. The rejected path hash and exact outside intervals remain in the machine audit. All three Ägerisee trips and both complete repeat-stop patterns pass on each date.
 
 Shipping credit: **© swisstopo**; shoreline validation: **© FOEN, swisstopo**. The [swisstopo free-geodata terms](https://www.swisstopo.admin.ch/en/terms-of-use-free-geodata-and-geoservices) require source attribution; the preserved STAC catalogue's literal licence remains **proprietary**, not an invented Creative Commons licence. These are Gleislicht cartographic inferences, not operator-certified lanes or navigation instructions.
 
@@ -159,7 +159,29 @@ For each failed directed pair, the diagnostic removes **four of 261 original lak
 
 Zug Bahnhofsteg → Walchwil has a water-valid **14.934 km** full candidate, but it loops through the southern lake before reaching Walchwil. Both fixtures allocate **33 minutes**, implying a **27.15 km/h** mean before allowing for manoeuvring. This is near the published vessel maxima, but is not proof of a speed violation or of which vessel operated. A valid line through water alone does not establish the service's actual path. Risch → Zug Bahnhofsteg remains an **implausible detour** under the original limit; its reported **16.484 km** excludes dock connectors, already implying at least **49.45 km/h** over the Sunday source interval of **20 minutes**. No failed-detour replacement geometry is emitted or claimed water-valid.
 
-The checker recomputes every trial and every affected source interval. The water-valid candidate and its hash remain diagnostic audit evidence only. **No trial is admitted**: the same one Friday and two Sunday trips remain excluded, and previously admitted paths and directed patterns are unchanged.
+The checker recomputes every trial and every affected source interval. The water-valid candidate and its hash remain diagnostic audit evidence only. **No filtered-network trial is admitted**. Their original exclusions remain preserved as diagnostic evidence; the direct OSM ways below independently supply the three missing trips. Every previously successful pair retains its original geometry.
+
+
+### Direct OSM ferry ways complete the two-day boat service
+
+The [historical OSM source catalogue](../data/zug-osm-boat-sources/sources.json) preserves the entire response to a regional ferry/terminal query at **2 September 2026, 00:00 UTC**, retrieved **8 September 2026**. Recursive member retrieval retains **639 nodes, 50 ways and 19 relations**, including neighbouring-lake and source-only records. All element IDs, versions, timestamps, tags and original node lists remain available. Every relation member and way node must exist, and no element version may postdate the requested historical snapshot. The dock ledger covers all **31 ferry terminals** in the response: **15** match the frozen boat calls; the other **16** have no such binding. The SGZ-tagged Lotenbach, Baumgarten and Zug Landsgemeindeplatz docks remain source-only; OSM notes report no service in January 2025, but those notes do not establish an authoritative closure. No departure is inferred from a mapped dock. Credit: **© OpenStreetMap contributors**, [ODbL 1.0](https://www.openstreetmap.org/copyright).
+
+Eight SGZ/3660 relations and two AeS/3661 relations exactly match all **ten distinct full directed stop sequences** and all **22 boat trips** across the frozen fixtures. The adapter checks exact GTFS route/agency identities, operator/ref tags, UIC dock identities, ordered source-way connectivity, and repeated stops. It preserves all original calls, call rules, coordinates, service dates and times in the [scope fixture](../data/zug-osm-boat-sources/scope.json). OSM tags reference the **18 December 2025 GTFS release** and retain some **2025 notes**; these are identity evidence only. Service dates and durations come exclusively from the frozen September 2026 timetable.
+
+Only the two original direct ways below can replace the original **boat-land-crossing** failures, and only within their reviewed complete patterns. The adapter retains every OSM vertex and adds connectors to the actual GTFS dock coordinates. It performs no graph search, creates no water shortcuts, and preserves all existing successful shipping paths. Attachments have a separate **30 m** cap; the original detour limit and complete shoreline-intersection test remain unchanged. Full path distances include both connectors. Each interval must also pass a conservative **25 km/h mean-speed review limit**; this is a plausibility check, not vessel assignment or certification of an actual sailing lane.
+
+| Directed pair | OSM relation / way | Full length | Max dock attachment | Source interval / implied mean | Trips Friday / Sunday |
+| --- | --- | --- | --- | --- | --- |
+| Zug Bahnhofsteg (See) → Walchwil (See) | 18609138 / 1354042139 | 8.884 km | 5.07 m | 33 min / 16.15 km/h | 1 / 1 |
+| Risch (See) → Zug Bahnhofsteg (See) | 18609134 / 1354042135 | 5.417 km | 24.34 m | 20 min / 16.25 km/h | 0 / 1 |
+
+The Zug–Walchwil way is **version 5**, the Risch–Zug way **version 4**, both timestamped **1 May 2026, 12:40:17 UTC**. All intermediate-node vintages are retained separately; way timestamps do not establish current sailing practice. Neither path crosses land away from its actual endpoint docks. The largest added outside-water interval is **8.52 m**, at Walchwil; the old **2007** shoreline and dock-area exception remain explicitly disclosed. The rejected primary paths, their exact outside intervals and geometry hashes remain attached as per-pair provenance.
+
+![Reviewed direct Zugersee paths and original dock connections](assets/zug-osm-boat-review.svg)
+
+The checker reconstructs both paths from the original node lists, replays every full-pattern binding and source interval, and verifies each emitted pair and chunk. These paths add **one Friday and two Sunday trips**, completing both lakes on these two dates. Seasonal and holiday patterns remain outside this validation scope.
+
+An independent [swissTLM3D 2026-02 shipping-class inventory](../data/zug-osm-boat-sources/sources.json) retains the complete national **27-feature** SHP/SHX/DBF class and catalogue. Every original vertex contributes to its bounding-box inventory; no feature envelope overlaps either reviewed lake envelope. The class supplies passenger/car ferry crossings, with no replacement Zugersee or Ägerisee course-shipping network. Credit: **© swisstopo**. Catalogue date **24 February 2026**, asset update **20 August 2026**, retrieval **8 September 2026**; original feature revision fields remain in the machine audit. The bounded archive extraction verified member CRCs and recorded member hashes; the multi-gigabyte parent archive was not independently downloaded or hash-verified. None of this geometry enters the feed.
 
 
 ## Neighbouring official bus source
@@ -205,7 +227,7 @@ This admits **126 additional Friday trips** (all 653), and **62 additional Sunda
 
 A second, separately pinned [road cache](../data/zug-road-expansion-cache.json) and [matcher evidence](../data/zug-road-expansion-evidence/) cover **all 19 remaining incomplete bus route records**: 18 ZVB routes and GTFS agency 7231's EV1 replacement bus. The preparation retains **73 complete patterns** (71 ZVB, two EV1), including already-admitted branches on those routes. All original calls, coordinates, carry-in service dates and call rules survive admission. Road source date, ODbL attribution, binary/configuration hashes, import limits and consensus rules are the same as above. Each agency was independently matched on **8 September 2026**. The two road cache scopes must be disjoint; the original 653/N73 evidence remains unchanged.
 
-The original expansion supplies at least one pair to **304 Friday** and **205 Sunday** admitted trips (including trips completed by the later N6 context review). The current combined feed contains **3'529 / 2'223**. Road paths replace only failed official adjacent-call paths, so a complete trip may still use successful official geometry elsewhere. Every previously matched pair from the preceding committed feed retains its geometry hash. Scope here is the two source civil dates, not a claim of seasonal bus completeness or verified September diversions.
+The original expansion supplies at least one pair to **304 Friday** and **205 Sunday** admitted trips (including trips completed by the later N6 context review). The current combined feed contains **3'530 / 2'225**. Road paths replace only failed official adjacent-call paths, so a complete trip may still use successful official geometry elsewhere. Every previously matched pair from the preceding committed feed retains its geometry hash. Scope here is the two source civil dates, not a claim of seasonal bus completeness or verified September diversions.
 
 | Agency / line | Friday admitted / source | Sunday admitted / source | Remaining reasons |
 | --- | --- | --- | --- |
@@ -316,11 +338,11 @@ Calendar exceptions and preceding service-day spillover are applied. The civil d
 | Measure | 2026-09-04 | 2026-09-06 |
 | --- | --- | --- |
 | Civil-day trips | 3'597 | 2'263 |
-| Admitted / excluded trips | 3'529 / 68 | 2'223 / 40 |
-| Admitted / all directed patterns | 367 / 370 | 311 / 314 |
-| Matched / all routing-context pairs | 3674 / 3677 (99.92%) | 3285 / 3289 (99.88%) |
-| Fully matched / all unique directed route-stop pairs | 1672 / 1675 | 1672 / 1676 |
-| Matched / all scheduled segment occurrences | 51'545 / 51'680 (99.74%) | 33'179 / 33'257 (99.77%) |
+| Admitted / excluded trips | 3'530 / 67 | 2'225 / 38 |
+| Admitted / all directed patterns | 368 / 370 | 313 / 314 |
+| Matched / all routing-context pairs | 3675 / 3677 (99.95%) | 3287 / 3289 (99.94%) |
+| Fully matched / all unique directed route-stop pairs | 1673 / 1675 | 1674 / 1676 |
+| Matched / all scheduled segment occurrences | 51'546 / 51'680 (99.74%) | 33'181 / 33'257 (99.77%) |
 | All / admitted carry-in trips | 68 / 67 | 133 / 132 |
 
 Rail pair routing depends on the complete ordered pattern, so days[].directedPairs and group pair counts include pattern context for rail. Bus pairs retain the route/from/to key. The separate uniqueDirectedRouteStopPairs count collapses context; fullyMatchedUniqueDirectedRouteStopPairs requires success in every tested context. These denominators must not be confused when comparing the original bus-only release with this expansion. Matched occurrences include good pairs on ultimately excluded patterns. They are not a percentage of admitted full trips. All modes and excluded operators stay in the denominator. Every emitted trip has a non-null, correctly oriented path for every adjacent source call.
@@ -332,7 +354,7 @@ Rail pair routing depends on the complete ordered pattern, so days[].directedPai
 | 2026-09-04 | 820:bus — Verkehrsbetriebe Luzern AG | 24 / 24 | 2 / 2 | 38 / 38 | 456 / 456 |
 | 2026-09-04 | 839:bus — Zugerland Verkehrsbetriebe | 2624 / 2691 | 122 / 124 | 903 / 905 | 39220 / 39354 |
 | 2026-09-04 | 158:mountain — Zugerbergbahn | 72 / 72 | 2 / 2 | 2 / 2 | 72 / 72 |
-| 2026-09-04 | 186:boat — Schifffahrtsgesellschaft für den Zugersee AG | 5 / 6 | 5 / 6 | 13 / 14 | 18 / 19 |
+| 2026-09-04 | 186:boat — Schifffahrtsgesellschaft für den Zugersee AG | 6 / 6 | 6 / 6 | 14 / 14 | 19 / 19 |
 | 2026-09-04 | 179:boat — Ägerisee Schifffahrt AG | 3 / 3 | 2 / 2 | 7 / 7 | 22 / 22 |
 | 2026-09-04 | 801:bus — PostAuto AG | 184 / 184 | 16 / 16 | 157 / 157 | 3249 / 3249 |
 | 2026-09-06 | 11:rail — Schweizerische Bundesbahnen SBB | 506 / 506 | 178 / 178 | 1979 / 1979 | 7331 / 7331 |
@@ -340,7 +362,7 @@ Rail pair routing depends on the complete ordered pattern, so days[].directedPai
 | 2026-09-06 | 839:bus — Zugerland Verkehrsbetriebe | 1481 / 1519 | 92 / 93 | 851 / 853 | 22892 / 22968 |
 | 2026-09-06 | 7231:bus — SBB Infrastruktur AG Bahnersatz | 6 / 6 | 2 / 2 | 2 / 2 | 6 / 6 |
 | 2026-09-06 | 158:mountain — Zugerbergbahn | 70 / 70 | 2 / 2 | 2 / 2 | 70 / 70 |
-| 2026-09-06 | 186:boat — Schifffahrtsgesellschaft für den Zugersee AG | 8 / 10 | 6 / 8 | 18 / 20 | 34 / 36 |
+| 2026-09-06 | 186:boat — Schifffahrtsgesellschaft für den Zugersee AG | 10 / 10 | 8 / 8 | 20 / 20 | 36 / 36 |
 | 2026-09-06 | 179:boat — Ägerisee Schifffahrt AG | 3 / 3 | 2 / 2 | 7 / 7 | 22 / 22 |
 | 2026-09-06 | 801:bus — PostAuto AG | 132 / 132 | 17 / 17 | 222 / 222 | 2520 / 2520 |
 
@@ -370,16 +392,16 @@ Counts overlap: a whole trip or annual route can serve several municipalities. T
 
 | Municipality | Source stops | Annual route records | Friday admitted / all trips | Sunday admitted / all trips |
 | --- | --- | --- | --- | --- |
-| Risch | 97 | 31 | 897 / 897 | 495 / 496 |
+| Risch | 97 | 31 | 897 / 897 | 496 / 496 |
 | Hünenberg | 42 | 7 | 538 / 538 | 240 / 240 |
 | Neuheim | 22 | 3 | 183 / 183 | 83 / 83 |
 | Steinhausen | 41 | 9 | 514 / 514 | 253 / 253 |
 | Oberägeri | 89 | 8 | 432 / 432 | 303 / 303 |
 | Baar | 164 | 25 | 1196 / 1263 | 759 / 797 |
-| Zug | 262 | 47 | 1916 / 1984 | 1320 / 1360 |
+| Zug | 262 | 47 | 1917 / 1984 | 1322 / 1360 |
 | Menzingen | 33 | 5 | 271 / 271 | 197 / 197 |
 | Cham | 109 | 17 | 922 / 922 | 481 / 481 |
-| Walchwil | 59 | 5 | 127 / 128 | 86 / 88 |
+| Walchwil | 59 | 5 | 128 / 128 | 88 / 88 |
 | Unterägeri | 27 | 6 | 308 / 308 | 225 / 225 |
 
 Neuheim now has admitted Sunday service: road inference completes 631 and N2 patterns beyond the old official line geometry. Municipality counts include full trips calling in each area and may overlap across municipalities.
@@ -461,14 +483,14 @@ Each row is an exact GTFS route_id, not a unique passenger-facing line. Counts a
 | 92-N5-A-j26-1 | 839 | N5 / bus | 8 | inactive | 7/7 | — |
 | 92-N6-A-j26-1 | 839 | N6 / bus | 7 | inactive | 6/6 | — |
 | 93-256-6-j26-1 | 158 | 2566 / mountain | 71 | 72/72 | 70/70 | — |
-| 94-366-0-j26-1 | 186 | 3660 / boat | 10 | 5/6 | 8/10 | boat-land-crossing |
+| 94-366-0-j26-1 | 186 | 3660 / boat | 10 | 6/6 | 10/10 | — |
 | 94-366-1-j26-1 | 179 | 3661 / boat | 3 | 3/3 | 3/3 | — |
 | 96-180-1-j26-1 | 801 | 280 / bus | 1244 | 52/52 | 36/36 | — |
 | 96-352-3-j26-1 | 801 | 73 / bus | 143 | 80/80 | 66/66 | — |
 | 96-357-7-j26-1 | 801 | 110 / bus | 53 | 52/52 | 28/28 | — |
 | 96-359-A-j26-1 | 801 | N73 / bus | 2 | inactive | 2/2 | — |
 
-Principal exclusions: rail patterns on both fixtures now pass, including all EC calls through the separately reviewed OSM Chiasso–Como corridor. The federal missing-point failure and rejected SBB schematic remain preserved. S26, RE6 and IR75 use the explicit SBB supplement. Zugersee retains one Friday and two Sunday trips with remote shoreline crossings; every Ägerisee trip on the two fixtures passes the shipping checks. Bus exclusions remain limited to the specific 604 failures above. Full pair details, source call identities and stop names are in the machine audit.
+Principal exclusions: rail patterns on both fixtures now pass, including all EC calls through the separately reviewed OSM Chiasso–Como corridor. The federal missing-point failure and rejected SBB schematic remain preserved. S26, RE6 and IR75 use the explicit SBB supplement. Every Zugersee and Ägerisee trip on the two fixtures now passes: the two explicit OSM direct ways resolve the remaining three Zugersee trips while preserving the rejected federal-path evidence. Bus exclusions remain limited to the specific 604 failures above. Full pair details, source call identities and stop names are in the machine audit.
 
 ## Every source line label
 
@@ -521,7 +543,8 @@ npm run data:zug:check
 npm run data:zug:report
 python3 -m unittest discover -s scripts -p test_prepare_zug_sources.py
 node scripts/render-zug-como-review.mjs
-npx vitest run scripts/zug-como-rail.test.mjs scripts/thurgau-border-rail.test.mjs scripts/review-zug-boats.test.mjs scripts/review-zug-grienbach.test.mjs scripts/zug-road-contexts.test.mjs scripts/zug-service-road-geometry.test.mjs scripts/zug-boat-geometry.test.mjs scripts/zug-sbb-rail-supplement.test.mjs scripts/zug-road-geometry.test.mjs scripts/luzern-road-geometry.test.mjs scripts/enrich-postbus-roads.test.mjs scripts/zug-mountain-geometry.test.mjs scripts/zug-region.test.mjs scripts/zug-bus-supplement.test.mjs scripts/zug-rail-geometry.test.mjs scripts/luzern-region.test.mjs \
+node scripts/render-zug-osm-boat-review.mjs
+npx vitest run scripts/zug-osm-boats.test.mjs scripts/zug-como-rail.test.mjs scripts/thurgau-border-rail.test.mjs scripts/review-zug-boats.test.mjs scripts/review-zug-grienbach.test.mjs scripts/zug-road-contexts.test.mjs scripts/zug-service-road-geometry.test.mjs scripts/zug-boat-geometry.test.mjs scripts/zug-sbb-rail-supplement.test.mjs scripts/zug-road-geometry.test.mjs scripts/luzern-road-geometry.test.mjs scripts/enrich-postbus-roads.test.mjs scripts/zug-mountain-geometry.test.mjs scripts/zug-region.test.mjs scripts/zug-bus-supplement.test.mjs scripts/zug-rail-geometry.test.mjs scripts/luzern-region.test.mjs \
   scripts/civil-day.test.mjs scripts/gtfs-frequencies.test.mjs
 ```
 

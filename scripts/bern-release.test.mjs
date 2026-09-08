@@ -25,11 +25,11 @@ describe('Bern display release', () => {
     try {
       for (const date of ['2026-09-04', '2026-09-06']) {
         const report = await buildBernDay({ date, output })
-        expect(report.movements.total).toBe(date.endsWith('04') ? 36705 : 31924)
+        expect(report.movements.total).toBe(date.endsWith('04') ? 36786 : 32002)
         const { files } = await readRegionalDirectory(output, ['bern-region'], date)
         const archive = JSON.parse(await readFile(`public/data/bern-region/${date}/bern-region-day-manifest.json`))
         const display = JSON.parse(files.get('bern-region-day-manifest.json'))
-        for (const field of ['railSupplement', 'regionalRailSupplement', 'crosscantonRailSupplement', 'ir66Supplement', 'ir16Supplement']) {
+        for (const field of ['railSupplement', 'regionalRailSupplement', 'crosscantonRailSupplement', 'ir66Supplement', 'ir16Supplement', 'tpfTerminalSupplement']) {
           const compact = display.metadata.geometry[field], full = archive.metadata.geometry[field]
           expect(compact.policySha256).toBe(full.policySha256)
           expect(compact.source).toEqual(full.source)
@@ -61,6 +61,10 @@ describe('Bern display release', () => {
       d => { d.metadata.geometry.ir16Supplement.policySha256 = '0'.repeat(64) },
       d => { d.metadata.geometry.ir16Supplement.source.attribution = '' },
       d => { d.metadata.geometry.ir16Supplement.fullEvidence.path = 'missing.json' },
+      d => { d.metadata.geometry.tpfTerminalSupplement.policySha256 = '0'.repeat(64) },
+      d => { d.metadata.geometry.tpfTerminalSupplement.source.attribution = '' },
+      d => { d.metadata.geometry.tpfTerminalSupplement.documents = [] },
+      d => { d.metadata.geometry.tpfTerminalSupplement.fullEvidence.path = 'missing.json' },
       d => { d.metadata.bernRelease.movements.scheduled++ },
       d => { d.metadata.serviceDate = '2026-09-08' },
     ]) {
