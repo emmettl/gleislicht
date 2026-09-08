@@ -202,6 +202,24 @@ The remaining bus exclusions are specific:
 
 The raw road run also rejects two Walchwil 626 segments (missing shape and a 149.2 m snap), but the official Zug source already supplies those pairs successfully. The road fallback supplies only its different, previously collapsed official pair; all eight complete Friday 626 trips therefore pass the combined source checks. This distinction is preserved in the road cache's import report and the feed's per-pair provenance.
 
+## Grienbach: controlled trials remain excluded
+
+The [Grienbach review catalogue](../data/zug-grienbach-review-sources/sources.json) preserves a new control run and two diagnostic configurations, each using **all four complete line 604 patterns**, **209 civil-day trip instances** and **3,534 segment occurrences**. All runs use identical GTFS input, the same original OSM extract and the same pfaedle binary. Their original logs, shapes, trips, stop times, input patterns and run hashes are retained in separate compressed evidence bundles and reimported during every audit check.
+
+The control reproduces the **188.67 m** Grienbach offset. The bus configuration distinguishes an OSM station-candidate radius (**200 m**) from a road-edge projection radius (**100 m**); the importer independently rejects offsets above **120 m**. Trial one changes only the station-candidate radius from 200 to **100 m**. Trial two instead disables OSM station-node candidates, leaving GTFS-coordinate road projection and all other settings intact. Both trials pass the geometry importer and full-pattern pair consensus; neither changes any GTFS coordinate, call, time or source road.
+
+| Run | Matched / all occurrences | Importer maximum accepted snap | Grienbach → V-Zug length | Implied mean over 60 seconds | Admission |
+| --- | --- | --- | --- | --- | --- |
+| control | 3324/3534 | 56.44 m | rejected | — | excluded |
+| station-radius-100 | 3534/3534 | 56.44 m | 993.58 m | 59.61 km/h | excluded |
+| coordinate-only | 3534/3534 | 100.51 m | 981.38 m | 58.88 km/h | excluded |
+
+Both diagnostic Grienbach → V-Zug paths still travel north to a roundabout and return south, retaining repeated source vertices. The frozen timetable allocates **60 seconds** to that adjacent-call interval in **all 105 affected trips** (**67 Friday / 38 Sunday**). The approximately **981–994 m** candidate paths imply mean speeds of roughly **59–60 km/h**, before making any allowance for the roundabout or other slow movements. Timetable rounding means this is not proof of a speed-limit violation. It does leave the platform placement, directed approach and time allocation unreconciled. A smaller projection error alone is therefore insufficient to admit these paths.
+
+**No trial geometry enters the regional feed.** The review module exposes no matching API, and all original successes and exclusions stay unchanged. Every trial records its exact configuration change, complete-pattern IDs, geometry hashes, loop evidence and implied timing. The original rejection remains visible alongside the new finding; it is not silently replaced with a chosen trial path.
+
+Source geometry: Geofabrik Switzerland **2026-09-02** plus the border extract retrieved **2026-09-08**, with the original OSM SHA-256 retained in every run. Trials executed and reviewed **2026-09-08**. Attribution: **© OpenStreetMap contributors**, **ODbL-1.0**; [licence and attribution](https://www.openstreetmap.org/copyright). The matcher source commit and binary/configuration/input hashes are preserved. The September 11–14 works notices described below occur after the two fixtures and cannot reconcile this frozen-source mismatch retrospectively. Resolving it requires evidence for the actual stop placement and directed approach on the fixture dates, or a separately reviewed dated timetable refresh.
+
 ## N6: preserve the complete Sins Bahnhof approach contexts
 
 The retained road evidence contains three full N6 patterns with **Hünenberg Dorf → Sins Bahnhof**: one terminates at Sins and two continue to Mühlau through different later stop sequences. All three original matcher occurrences pass individually, but the route/stop-pair consensus rejects their two different shapes. This is a scope-of-reuse conflict, not a failed matcher hop. The new review admits **three additional Sunday trips**, completing **all six Sunday N6 trips**; Friday has no N6 source trips.
@@ -445,7 +463,7 @@ npm run data:zug
 npm run data:zug:check
 npm run data:zug:report
 python3 -m unittest discover -s scripts -p test_prepare_zug_sources.py
-npx vitest run scripts/zug-road-contexts.test.mjs scripts/zug-service-road-geometry.test.mjs scripts/zug-boat-geometry.test.mjs scripts/zug-sbb-rail-supplement.test.mjs scripts/zug-road-geometry.test.mjs scripts/luzern-road-geometry.test.mjs scripts/enrich-postbus-roads.test.mjs scripts/zug-mountain-geometry.test.mjs scripts/zug-region.test.mjs scripts/zug-bus-supplement.test.mjs scripts/zug-rail-geometry.test.mjs scripts/luzern-region.test.mjs \
+npx vitest run scripts/review-zug-grienbach.test.mjs scripts/zug-road-contexts.test.mjs scripts/zug-service-road-geometry.test.mjs scripts/zug-boat-geometry.test.mjs scripts/zug-sbb-rail-supplement.test.mjs scripts/zug-road-geometry.test.mjs scripts/luzern-road-geometry.test.mjs scripts/enrich-postbus-roads.test.mjs scripts/zug-mountain-geometry.test.mjs scripts/zug-region.test.mjs scripts/zug-bus-supplement.test.mjs scripts/zug-rail-geometry.test.mjs scripts/luzern-region.test.mjs \
   scripts/civil-day.test.mjs scripts/gtfs-frequencies.test.mjs
 ```
 

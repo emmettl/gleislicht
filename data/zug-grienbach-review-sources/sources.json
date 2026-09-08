@@ -1,0 +1,102 @@
+{
+  "reviewed": "2026-09-08",
+  "source": {
+    "description": "Geofabrik Switzerland 2026-09-02 plus OSM border extract retrieved 2026-09-08",
+    "swissDate": "2026-09-02",
+    "borderRetrieved": "2026-09-08",
+    "sourceUrl": "https://download.geofabrik.de/europe/switzerland.html",
+    "osmSha256": "d5c675456e935cfbcab88fe894fe9145dc5bd1fbd4318cea30ffd838a9aad02b",
+    "matcherCommit": "99f2cd466696ecc6bdb73b2b3bb9008557fcb84a"
+  },
+  "attribution": "© OpenStreetMap contributors",
+  "license": "ODbL-1.0",
+  "licenseUrl": "https://www.openstreetmap.org/copyright",
+  "route": {
+    "routeId": "92-604-B-j26-1",
+    "agencyId": "839",
+    "line": "604"
+  },
+  "pairs": [
+    [
+      "ch:1:sloid:87280:0:1",
+      "ch:1:sloid:93448:0:1"
+    ],
+    [
+      "ch:1:sloid:93448:0:1",
+      "ch:1:sloid:87279:0:1"
+    ]
+  ],
+  "runs": [
+    {
+      "id": "control",
+      "cacheFile": "data/zug-grienbach-review-sources/control.json",
+      "cacheSha256": "8058b0e7e07226726b27b741ca362998047e09f8bd83ba306fcb656562e50075",
+      "configFile": "data/zug-grienbach-review-sources/control.cfg",
+      "configSha256": "31deee35fee9cb6fadc89cc5298e501a95cc4e8d78d7ae7fe6b60932cbf23db4",
+      "binarySha256": "6d193a755bc22c45516f8bce7594bb30e07a2632a5ef049a95915b262406cbd8",
+      "patternsSha256": "ca948d466faebf5110f9edb84cc0564d87f5dc827009b100b57988d765a69f4e"
+    },
+    {
+      "id": "station-radius-100",
+      "cacheFile": "data/zug-grienbach-review-sources/station-radius-100.json",
+      "cacheSha256": "56a2f732de8721e92261d073388f118443706e244d34829b85cad1225146225d",
+      "configFile": "data/zug-grienbach-review-sources/station-radius-100.cfg",
+      "configSha256": "b5b3960fa8d49bb1f409b5dd5a1be57ae20f91aeacdc14049a724b1699eb4cbf",
+      "binarySha256": "6d193a755bc22c45516f8bce7594bb30e07a2632a5ef049a95915b262406cbd8",
+      "patternsSha256": "ca948d466faebf5110f9edb84cc0564d87f5dc827009b100b57988d765a69f4e"
+    },
+    {
+      "id": "coordinate-only",
+      "cacheFile": "data/zug-grienbach-review-sources/coordinate-only.json",
+      "cacheSha256": "466fef8c34daa6df59b564cc0fae29024e08a82eae4e47083a0533a309d6d669",
+      "configFile": "data/zug-grienbach-review-sources/coordinate-only.cfg",
+      "configSha256": "62c721b08e88843649730bf891c2bc4511e022c56636d15fcd4f61618c1d9acf",
+      "binarySha256": "6d193a755bc22c45516f8bce7594bb30e07a2632a5ef049a95915b262406cbd8",
+      "patternsSha256": "ca948d466faebf5110f9edb84cc0564d87f5dc827009b100b57988d765a69f4e"
+    }
+  ],
+  "decision": "No admission change. Both diagnostic configurations resolve projection rejection but retain a roundabout return on the one-minute Grienbach–V-Zug source interval. The correct direction/stop placement and time allocation remain unreconciled. Schedule precision prevents treating implied speed alone as proof of a violation; this is a conservative unresolved review.",
+  "configurationChanges": {
+    "control": "Unchanged original bus configuration.",
+    "station-radius-100": "Only osm_max_station_cand_distance changes from 200 to 100 metres; road-edge snap remains 100 metres.",
+    "coordinate-only": "Only routing_use_stations: false is added to [bus, coach]; coordinates, road graph, edge snap and all other routing settings remain unchanged."
+  },
+  "files": [
+    {
+      "file": "control.json",
+      "sha256": "8058b0e7e07226726b27b741ca362998047e09f8bd83ba306fcb656562e50075"
+    },
+    {
+      "file": "control.cfg",
+      "sha256": "31deee35fee9cb6fadc89cc5298e501a95cc4e8d78d7ae7fe6b60932cbf23db4"
+    },
+    {
+      "file": "control-evidence/839.json.gz",
+      "sha256": "6737664af118f5f1a00c531ef5c5c04660d12c2228cdd92b101ad212258b5b9d"
+    },
+    {
+      "file": "station-radius-100.json",
+      "sha256": "56a2f732de8721e92261d073388f118443706e244d34829b85cad1225146225d"
+    },
+    {
+      "file": "station-radius-100.cfg",
+      "sha256": "b5b3960fa8d49bb1f409b5dd5a1be57ae20f91aeacdc14049a724b1699eb4cbf"
+    },
+    {
+      "file": "station-radius-100-evidence/839.json.gz",
+      "sha256": "89d985b19a04d7e06d99abaa455d5e60340d9aae47deda94c69f41fdfa65ae96"
+    },
+    {
+      "file": "coordinate-only.json",
+      "sha256": "466fef8c34daa6df59b564cc0fae29024e08a82eae4e47083a0533a309d6d669"
+    },
+    {
+      "file": "coordinate-only.cfg",
+      "sha256": "62c721b08e88843649730bf891c2bc4511e022c56636d15fcd4f61618c1d9acf"
+    },
+    {
+      "file": "coordinate-only-evidence/839.json.gz",
+      "sha256": "ffc8a87339633a5b737117eb94ca1087ab5dd32df24cf39a0a946426d5456d76"
+    }
+  ]
+}

@@ -10,6 +10,7 @@ import { loadZugBusSupplement, matchZugBusPair } from './zug-bus-supplement.mjs'
 import { loadZugRoads, mergeZugRoadCandidates, matchZugRoadPair, zugOfficialAttempt } from './zug-road-geometry.mjs'
 import { loadZugMountain } from './zug-mountain-geometry.mjs'
 import { loadZugBoats } from './zug-boat-geometry.mjs'
+import { reviewZugGrienbach } from './review-zug-grienbach.mjs'
 import { loadZugRoadContexts, matchZugRoadContext } from './zug-road-contexts.mjs'
 import { loadZugServiceRoads, matchZugServiceRoadPair } from './zug-service-road-geometry.mjs'
 import { loadZugSbbRailSupplement, matchZugRailWithSupplement } from './zug-sbb-rail-supplement.mjs'
@@ -98,6 +99,9 @@ export async function checkZugRegion({ auditPath = 'data/zug-study-audit.json', 
   assert.deepEqual(audit.roadContextSource, roadContexts.source)
   assert.deepEqual(audit.roadContextInventory, roadContexts.inventory)
   assert.deepEqual(audit.roadContextStationWays, roadContexts.stationWays)
+  const grienbachReview = await reviewZugGrienbach(audit.policy.grienbachReview, audit.policy.roadExpansion, raw, audit.sourceHashes.timetable)
+  assert.equal(audit.sourceHashes.grienbachReview, audit.policy.grienbachReview.sourceSha256)
+  assert.deepEqual(audit.grienbachReview, grienbachReview)
   const municipalities = (await json(join(sourceDirectory, 'municipalities.geojson'))).features
   const assignedStops = new Set()
   for (const m of audit.municipalityReview) {

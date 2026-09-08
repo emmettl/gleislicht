@@ -866,5 +866,9 @@
   "roadContexts": {
     "sourceDirectory": "data/zug-road-context-sources",
     "sourceSha256": "a757a0ea24def16d13618a0f7177a349b2cd56eeef1f758bd7a672e234603bab"
+  },
+  "grienbachReview": {
+    "sourceDirectory": "data/zug-grienbach-review-sources",
+    "sourceSha256": "28ba652736255d7ee1acdb5257ede0223c62fc015f4a48b838adaf9812c52a30"
   }
 }
