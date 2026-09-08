@@ -36,6 +36,8 @@ The separately documented [Vaduz extension](ST-GALLEN-VADUZ-REVIEW.md) admits 28
 
 The [operator-map follow-up](ST-GALLEN-ENDPOINT-FOLLOWUP.md) retains ten candidate pairs on lines 451, 420 and 729. It pins three additional maps and identifies the line-729 N72 candidate loop via Gemeindehaus, Coop and Sonnmatt, which differs from the mapped direct branch.
 
+The [service-change review](ST-GALLEN-SERVICE-CHANGE-REVIEW.md) explains the remaining line-150 and line-631 gaps as a June extension and a June–October diversion. All-operator searches find no full replacement alignment. Four pairs affecting 102 Friday / 33 Sunday trips remain excluded; the separate August closure is kept outside the September fixtures.
+
 ## Line 323: Dornbirn Messeplatz
 
 Four failed directed platform pairs surround Messeplatz: Heinzenbeer → Messeplatz → Lustenau Schmitter and the reverse direction. The two Messeplatz platform projections are approximately **160.6 m / 159.9 m** from line 323's AL_OEV record `bus:134`. These affect **65 Friday trips across four patterns**, with no Sunday occurrences of these failures. No other individual BOS regional/city source feature supplies a passing candidate for these pairs.
