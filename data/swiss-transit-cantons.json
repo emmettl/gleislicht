@@ -367,7 +367,7 @@
         ],
         "admittedTrips": [
           5301,
-          3612
+          3614
         ],
         "publicRedistributionCleared": true,
         "roadPatternsTested": 614,
@@ -376,7 +376,8 @@
         "railInputs": "data/fribourg-rail-inputs.json",
         "worksAudit": "data/fribourg-audit/works.json",
         "railReview": "data/fribourg-rail-review-policy.json",
-        "bernPlatformReview": "data/fribourg-bern-platform-policy.json"
+        "bernPlatformReview": "data/fribourg-bern-platform-policy.json",
+        "avryReview": "data/fribourg-avry-policy.json"
       }
     },
     {

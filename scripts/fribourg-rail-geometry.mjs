@@ -6,6 +6,7 @@ import { gunzipSync } from 'node:zlib'
 import { loadLuzernRail, luzernRailInputs } from './luzern-rail-geometry.mjs'
 import { loadFribourgBernPlatforms } from './fribourg-bern-platforms.mjs'
 import { loadFribourgRailReview } from './fribourg-rail-review.mjs'
+import { loadFribourgAvry } from './fribourg-avry.mjs'
 import { sha256, hashFile } from './fribourg-timetable.mjs'
 
 const json = async file => JSON.parse(await readFile(file, 'utf8'))
@@ -57,10 +58,10 @@ export async function prepareFribourgRail(timetablePath) {
   delete provenance.license
   await writeFile(join(directory, 'source.json'), JSON.stringify(provenance, null, 2) + '\n')
   const policyPath = 'data/fribourg-policy.json', policy = await json(policyPath)
-  const review = policy.rail?.review, bernPlatforms = policy.rail?.bernPlatforms
-  policy.rail = { ...(review ? { review } : {}), ...(bernPlatforms ? { bernPlatforms } : {}), sourceDirectory: directory, sourceMetadataSha256: await hashFile(join(directory, 'source.json')), limits: FRIBOURG_RAIL_LIMITS,
+  const review = policy.rail?.review, bernPlatforms = policy.rail?.bernPlatforms, avry = policy.rail?.avry
+  policy.rail = { ...(review ? { review } : {}), ...(bernPlatforms ? { bernPlatforms } : {}), ...(avry ? { avry } : {}), sourceDirectory: directory, sourceMetadataSha256: await hashFile(join(directory, 'source.json')), limits: FRIBOURG_RAIL_LIMITS,
     routes: fribourgRailScope(timetable),
-    admission: 'Fill failed cantonal rail pairs using exact operating-point numbers and standard-gauge infrastructure. All full directed pattern contexts must agree; block other called stations out of order. Keep all original calls and existing accepted paths. No general nearest-station or operator-name substitution; only separately hashed Kerzers platform, SBB Däniken and Bern terminal reviews may fill the original failures. Meter-gauge, gauge-changing and unreviewed TPF special routes remain outside this supplement.',
+    admission: 'Fill failed cantonal rail pairs using exact operating-point numbers and standard-gauge infrastructure. All full directed pattern contexts must agree; block other called stations out of order. Keep all original calls and existing accepted paths. No general nearest-station or operator-name substitution; only separately hashed Kerzers platform, SBB Däniken, Bern terminal and Avry operating-point reviews may fill the original failures. Meter-gauge, gauge-changing and unreviewed TPF special routes remain outside this supplement.',
     inputs: 'data/fribourg-rail-inputs.json', timetableSourceHashes: timetable.sourceHashes }
   const inputs = luzernRailInputs(fribourgRailRaw(timetable), policy.rail)
   await writeFile(policy.rail.inputs, JSON.stringify(inputs) + '\n')
@@ -79,7 +80,8 @@ export async function loadFribourgRail(timetable, policy) {
   for (const doc of result.source.supportingDocuments) assert.equal(await hashFile(join(policy.sourceDirectory, doc.file)), doc.sha256)
   const reviewed = policy.review ? await loadFribourgRailReview(policy, result) : {}
   const baseline = { ...result, ...reviewed, policy }
-  return policy.bernPlatforms ? loadFribourgBernPlatforms(policy, baseline) : baseline
+  const bern = policy.bernPlatforms ? await loadFribourgBernPlatforms(policy, baseline) : baseline
+  return policy.avry ? loadFribourgAvry(policy, bern) : bern
 }
 
 export function applyFribourgRail(result, rail) {

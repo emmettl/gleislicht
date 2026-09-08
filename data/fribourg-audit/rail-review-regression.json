@@ -1,13 +1,14 @@
 {
-  "baselineCommit": "007a946a0df906ec459e135ad612032e72223b51",
+  "baselineCommit": "fab6dd96e50d5c7765ff4ed48dd97e23eb0111eb",
   "sourceHashes": {
     "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
     "source": "e8523af34fcedca7f8b0cbe495446ff93a75d8563c62b243da942c39c5243f47",
-    "crosswalk": "9a7b0cb1a7009d4bd8cf4c450a71187d679e66c6796427716697d06226c8ab3e",
+    "crosswalk": "67222b799da58d65df3b5b36a2d1f6ce8c740c248cda2fa7e80554a64cb76510",
     "provenance": "7d23e09a35768de1cfd598a7ca824ac7c93d03242ff8955e70ca778213549086",
     "roads": "87f4d4be2662ff0982cea837e95f73863096d4bc37bd19ecc09ea88e064c465e",
     "rail": "7ea92c8c1120a49e9497ec3ae6d7a0d2fc2d761e8b19d790191ed7a6c0212c79",
     "railInputs": "434a02eb6906bb141a00ba6b7c77622767b78262617326d6aed56fa683cd8046",
+    "avry": "8d20a93732eea409915103c410816075ac428693b7dc8fcb6dc37c1f97849e19",
     "bernPlatforms": "77b78fb2fccab61ff47e18bd0dc1ad161965968144c3d79d99bc0fd3765701ac",
     "railReview": "5070023bef19b35c1df3fb12a5b27e090d7a4ff0788f75d433a3d8295c4cca64"
   },
@@ -15,333 +16,33 @@
   "days": [
     {
       "date": "2026-09-04",
-      "previousJourneys": 5281,
+      "previousJourneys": 5301,
       "presentJourneys": 5301,
-      "addedJourneys": 20,
-      "unchangedOriginalSegmentOccurrences": 81630,
+      "addedJourneys": 0,
+      "unchangedOriginalSegmentOccurrences": 81784,
       "lostJourneys": 0,
-      "newJourneys": [
-        {
-          "id": "service:2026-09-03:.ojp-91-15-B.1.TA.199.j26",
-          "routeId": "91-15-B-j26-1",
-          "reviewKinds": [
-            "bern-western-terminal"
-          ]
-        },
-        {
-          "id": ".ojp-91-15-B.1.TA.1374.j26",
-          "routeId": "91-15-B-j26-1",
-          "reviewKinds": [
-            "bern-western-terminal"
-          ]
-        },
-        {
-          "id": ".ojp-91-1-D.1.TA.1669.j26",
-          "routeId": "91-1-D-j26-1",
-          "reviewKinds": [
-            "bern-western-terminal"
-          ]
-        },
-        {
-          "id": ".ojp-91-66-A.1.TA.257.j26",
-          "routeId": "91-66-A-j26-1",
-          "reviewKinds": [
-            "bern-western-terminal",
-            "kerzers-bls-platform"
-          ]
-        },
-        {
-          "id": ".ojp-91-66-A.1.TA.226.j26",
-          "routeId": "91-66-A-j26-1",
-          "reviewKinds": [
-            "bern-western-terminal",
-            "kerzers-bls-platform"
-          ]
-        },
-        {
-          "id": ".ojp-91-66-A.1.TA.274.j26",
-          "routeId": "91-66-A-j26-1",
-          "reviewKinds": [
-            "bern-western-terminal",
-            "kerzers-bls-platform"
-          ]
-        },
-        {
-          "id": ".ojp-91-66-A.1.TA.251.j26",
-          "routeId": "91-66-A-j26-1",
-          "reviewKinds": [
-            "bern-western-terminal",
-            "kerzers-bls-platform"
-          ]
-        },
-        {
-          "id": ".ojp-91-66-A.1.TA.218.j26",
-          "routeId": "91-66-A-j26-1",
-          "reviewKinds": [
-            "bern-western-terminal",
-            "kerzers-bls-platform"
-          ]
-        },
-        {
-          "id": ".ojp-91-66-A.1.TA.245.j26",
-          "routeId": "91-66-A-j26-1",
-          "reviewKinds": [
-            "bern-western-terminal",
-            "kerzers-bls-platform"
-          ]
-        },
-        {
-          "id": ".ojp-91-66-A.1.TA.239.j26",
-          "routeId": "91-66-A-j26-1",
-          "reviewKinds": [
-            "bern-western-terminal",
-            "kerzers-bls-platform"
-          ]
-        },
-        {
-          "id": ".ojp-91-66-A.1.TA.254.j26",
-          "routeId": "91-66-A-j26-1",
-          "reviewKinds": [
-            "bern-western-terminal",
-            "kerzers-bls-platform"
-          ]
-        },
-        {
-          "id": ".ojp-91-66-A.1.TA.229.j26",
-          "routeId": "91-66-A-j26-1",
-          "reviewKinds": [
-            "bern-western-terminal",
-            "kerzers-bls-platform"
-          ]
-        },
-        {
-          "id": ".ojp-91-66-A.1.TA.232.j26",
-          "routeId": "91-66-A-j26-1",
-          "reviewKinds": [
-            "bern-western-terminal",
-            "kerzers-bls-platform"
-          ]
-        },
-        {
-          "id": ".ojp-91-66-A.1.TA.215.j26",
-          "routeId": "91-66-A-j26-1",
-          "reviewKinds": [
-            "bern-western-terminal",
-            "kerzers-bls-platform"
-          ]
-        },
-        {
-          "id": ".ojp-91-66-A.1.TA.271.j26",
-          "routeId": "91-66-A-j26-1",
-          "reviewKinds": [
-            "bern-western-terminal",
-            "kerzers-bls-platform"
-          ]
-        },
-        {
-          "id": ".ojp-91-66-A.1.TA.221.j26",
-          "routeId": "91-66-A-j26-1",
-          "reviewKinds": [
-            "bern-western-terminal",
-            "kerzers-bls-platform"
-          ]
-        },
-        {
-          "id": ".ojp-91-66-A.1.TA.236.j26",
-          "routeId": "91-66-A-j26-1",
-          "reviewKinds": [
-            "bern-western-terminal",
-            "kerzers-bls-platform"
-          ]
-        },
-        {
-          "id": ".ojp-91-66-A.1.TA.242.j26",
-          "routeId": "91-66-A-j26-1",
-          "reviewKinds": [
-            "bern-western-terminal",
-            "kerzers-bls-platform"
-          ]
-        },
-        {
-          "id": ".ojp-91-66-A.1.TA.248.j26",
-          "routeId": "91-66-A-j26-1",
-          "reviewKinds": [
-            "bern-western-terminal",
-            "kerzers-bls-platform"
-          ]
-        },
-        {
-          "id": ".ojp-91-66-A.1.TA.129.j26",
-          "routeId": "91-66-A-j26-1",
-          "reviewKinds": [
-            "bern-western-terminal",
-            "kerzers-bls-platform"
-          ]
-        }
-      ]
+      "newJourneys": []
     },
     {
       "date": "2026-09-06",
-      "previousJourneys": 3592,
-      "presentJourneys": 3612,
-      "addedJourneys": 20,
-      "unchangedOriginalSegmentOccurrences": 56731,
+      "previousJourneys": 3612,
+      "presentJourneys": 3614,
+      "addedJourneys": 2,
+      "unchangedOriginalSegmentOccurrences": 56889,
       "lostJourneys": 0,
       "newJourneys": [
         {
-          "id": "service:2026-09-05:.ojp-91-2-A.1.TA.1033.j26",
-          "routeId": "91-2-A-j26-1",
+          "id": ".ojp-91-2B-Y.1.TA.25.j26",
+          "routeId": "91-2B-Y-j26-1",
           "reviewKinds": [
-            "bern-western-terminal"
+            "sbb-avry-operating-point"
           ]
         },
         {
-          "id": "service:2026-09-05:.ojp-91-66-A.1.TA.130.j26",
-          "routeId": "91-66-A-j26-1",
+          "id": ".ojp-91-2B-Y.1.TA.62.j26",
+          "routeId": "91-2B-Y-j26-1",
           "reviewKinds": [
-            "bern-western-terminal",
-            "kerzers-bls-platform"
-          ]
-        },
-        {
-          "id": ".ojp-91-1-E.1.TA.981.j26",
-          "routeId": "91-1-E-j26-1",
-          "reviewKinds": [
-            "bern-western-terminal"
-          ]
-        },
-        {
-          "id": ".ojp-91-66-A.1.TA.170.j26",
-          "routeId": "91-66-A-j26-1",
-          "reviewKinds": [
-            "bern-western-terminal",
-            "kerzers-bls-platform"
-          ]
-        },
-        {
-          "id": ".ojp-91-66-A.1.TA.227.j26",
-          "routeId": "91-66-A-j26-1",
-          "reviewKinds": [
-            "bern-western-terminal",
-            "kerzers-bls-platform"
-          ]
-        },
-        {
-          "id": ".ojp-91-66-A.1.TA.224.j26",
-          "routeId": "91-66-A-j26-1",
-          "reviewKinds": [
-            "bern-western-terminal",
-            "kerzers-bls-platform"
-          ]
-        },
-        {
-          "id": ".ojp-91-66-A.1.TA.252.j26",
-          "routeId": "91-66-A-j26-1",
-          "reviewKinds": [
-            "bern-western-terminal",
-            "kerzers-bls-platform"
-          ]
-        },
-        {
-          "id": ".ojp-91-66-A.1.TA.219.j26",
-          "routeId": "91-66-A-j26-1",
-          "reviewKinds": [
-            "bern-western-terminal",
-            "kerzers-bls-platform"
-          ]
-        },
-        {
-          "id": ".ojp-91-66-A.1.TA.246.j26",
-          "routeId": "91-66-A-j26-1",
-          "reviewKinds": [
-            "bern-western-terminal",
-            "kerzers-bls-platform"
-          ]
-        },
-        {
-          "id": ".ojp-91-66-A.1.TA.240.j26",
-          "routeId": "91-66-A-j26-1",
-          "reviewKinds": [
-            "bern-western-terminal",
-            "kerzers-bls-platform"
-          ]
-        },
-        {
-          "id": ".ojp-91-66-A.1.TA.255.j26",
-          "routeId": "91-66-A-j26-1",
-          "reviewKinds": [
-            "bern-western-terminal",
-            "kerzers-bls-platform"
-          ]
-        },
-        {
-          "id": ".ojp-91-66-A.1.TA.230.j26",
-          "routeId": "91-66-A-j26-1",
-          "reviewKinds": [
-            "bern-western-terminal",
-            "kerzers-bls-platform"
-          ]
-        },
-        {
-          "id": ".ojp-91-66-A.1.TA.216.j26",
-          "routeId": "91-66-A-j26-1",
-          "reviewKinds": [
-            "bern-western-terminal",
-            "kerzers-bls-platform"
-          ]
-        },
-        {
-          "id": ".ojp-91-66-A.1.TA.272.j26",
-          "routeId": "91-66-A-j26-1",
-          "reviewKinds": [
-            "bern-western-terminal",
-            "kerzers-bls-platform"
-          ]
-        },
-        {
-          "id": ".ojp-91-66-A.1.TA.237.j26",
-          "routeId": "91-66-A-j26-1",
-          "reviewKinds": [
-            "bern-western-terminal",
-            "kerzers-bls-platform"
-          ]
-        },
-        {
-          "id": ".ojp-91-66-A.1.TA.243.j26",
-          "routeId": "91-66-A-j26-1",
-          "reviewKinds": [
-            "bern-western-terminal",
-            "kerzers-bls-platform"
-          ]
-        },
-        {
-          "id": ".ojp-91-66-A.1.TA.249.j26",
-          "routeId": "91-66-A-j26-1",
-          "reviewKinds": [
-            "bern-western-terminal",
-            "kerzers-bls-platform"
-          ]
-        },
-        {
-          "id": ".ojp-91-15-B.1.TA.231.j26",
-          "routeId": "91-15-B-j26-1",
-          "reviewKinds": [
-            "bern-western-terminal"
-          ]
-        },
-        {
-          "id": ".ojp-91-15-B.1.TA.84.j26",
-          "routeId": "91-15-B-j26-1",
-          "reviewKinds": [
-            "bern-western-terminal"
-          ]
-        },
-        {
-          "id": ".ojp-91-66-A.1.TA.120.j26",
-          "routeId": "91-66-A-j26-1",
-          "reviewKinds": [
-            "bern-western-terminal",
-            "kerzers-bls-platform"
+            "sbb-avry-operating-point"
           ]
         }
       ]

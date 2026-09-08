@@ -407,7 +407,7 @@
         "gauge": "mm1435"
       }
     ],
-    "admission": "Fill failed cantonal rail pairs using exact operating-point numbers and standard-gauge infrastructure. All full directed pattern contexts must agree; block other called stations out of order. Keep all original calls and existing accepted paths. No general nearest-station or operator-name substitution; only separately hashed Kerzers platform, SBB Däniken and Bern terminal reviews may fill the original failures. Meter-gauge, gauge-changing and unreviewed TPF special routes remain outside this supplement.",
+    "admission": "Fill failed cantonal rail pairs using exact operating-point numbers and standard-gauge infrastructure. All full directed pattern contexts must agree; block other called stations out of order. Keep all original calls and existing accepted paths. No general nearest-station or operator-name substitution; only separately hashed Kerzers platform, SBB Däniken, Bern terminal and Avry operating-point reviews may fill the original failures. Meter-gauge, gauge-changing and unreviewed TPF special routes remain outside this supplement.",
     "inputs": "data/fribourg-rail-inputs.json",
     "timetableSourceHashes": {
       "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
@@ -421,6 +421,10 @@
     "bernPlatforms": {
       "file": "data/fribourg-bern-platform-policy.json",
       "sha256": "77b78fb2fccab61ff47e18bd0dc1ad161965968144c3d79d99bc0fd3765701ac"
+    },
+    "avry": {
+      "file": "data/fribourg-avry-policy.json",
+      "sha256": "8d20a93732eea409915103c410816075ac428693b7dc8fcb6dc37c1f97849e19"
     }
   }
 }

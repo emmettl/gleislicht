@@ -3,11 +3,12 @@
   "sourceHashes": {
     "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
     "source": "e8523af34fcedca7f8b0cbe495446ff93a75d8563c62b243da942c39c5243f47",
-    "crosswalk": "9a7b0cb1a7009d4bd8cf4c450a71187d679e66c6796427716697d06226c8ab3e",
+    "crosswalk": "67222b799da58d65df3b5b36a2d1f6ce8c740c248cda2fa7e80554a64cb76510",
     "provenance": "7d23e09a35768de1cfd598a7ca824ac7c93d03242ff8955e70ca778213549086",
     "roads": "87f4d4be2662ff0982cea837e95f73863096d4bc37bd19ecc09ea88e064c465e",
     "rail": "7ea92c8c1120a49e9497ec3ae6d7a0d2fc2d761e8b19d790191ed7a6c0212c79",
     "railInputs": "434a02eb6906bb141a00ba6b7c77622767b78262617326d6aed56fa683cd8046",
+    "avry": "8d20a93732eea409915103c410816075ac428693b7dc8fcb6dc37c1f97849e19",
     "bernPlatforms": "77b78fb2fccab61ff47e18bd0dc1ad161965968144c3d79d99bc0fd3765701ac",
     "railReview": "5070023bef19b35c1df3fb12a5b27e090d7a4ff0788f75d433a3d8295c4cca64"
   },
@@ -373,6 +374,254 @@
           "retrievedAt": "2026-09-08T19:34:51.906Z"
         }
       ],
+      "avry": {
+        "schemaVersion": 1,
+        "id": "sbb-avry-operating-point",
+        "sourceDirectory": "data/fribourg-avry-sources",
+        "sources": [
+          {
+            "file": "linie-mit-polygon.json",
+            "url": "https://data.sbb.ch/api/explore/v2.1/catalog/datasets/linie-mit-polygon/records?where=search%28%22Avry%22%29&limit=100",
+            "sha256": "ec93bfd9eae1c7e58c3fb02a0094da6391742460609e347e3d78175d1bec8e74",
+            "retrievedAt": "2026-09-08T20:33:01.923Z"
+          },
+          {
+            "file": "linie-mit-polygon-metadata.json",
+            "url": "https://data.sbb.ch/api/explore/v2.1/catalog/datasets/linie-mit-polygon",
+            "sha256": "cbd14d2785da7865f4565fbf9aa37ca274ef3aafc44239bc03dd0992e3fd013c",
+            "retrievedAt": "2026-09-08T20:35:38.305Z"
+          },
+          {
+            "file": "perron.json",
+            "url": "https://data.sbb.ch/api/explore/v2.1/catalog/datasets/perron/records?where=search%28%22Avry%22%29&limit=100",
+            "sha256": "a1cb5a9021429df60070a10a460f4613506bab906fe7375a8dbfc90a8068ab37",
+            "retrievedAt": "2026-09-08T20:33:01.441Z"
+          },
+          {
+            "file": "perron-metadata.json",
+            "url": "https://data.sbb.ch/api/explore/v2.1/catalog/datasets/perron",
+            "sha256": "a66f17fa0b383b243e0256f2ddb7f5c3949abbcf02ecfc77cc902f19535b0ee5",
+            "retrievedAt": "2026-09-08T20:35:38.005Z"
+          },
+          {
+            "file": "zugzahlen.json",
+            "url": "https://data.sbb.ch/api/explore/v2.1/catalog/datasets/zugzahlen/records?where=search%28%22Avry%22%29&limit=100",
+            "sha256": "aa5da8fce9893b1b92245478a0967319f5760e543f0d58bdd6123e15c13bc7b7",
+            "retrievedAt": "2026-09-08T20:33:02.287Z"
+          },
+          {
+            "file": "zugzahlen-metadata.json",
+            "url": "https://data.sbb.ch/api/explore/v2.1/catalog/datasets/zugzahlen",
+            "sha256": "67c5e8d21771f8f463d8c67fd8ae711df27750fcc77f0579b31eaa67684c37fd",
+            "retrievedAt": "2026-09-08T20:35:38.665Z"
+          },
+          {
+            "file": "opening-notice.html",
+            "url": "https://www.fr.ch/dime/actualites/gare-routiere-et-parc-relais-a-la-future-halte-ferroviaire-davry-matran",
+            "documentDate": "2025-11-12",
+            "role": "Canton announcement of planned commissioning on 14 December 2025; supporting temporal evidence only.",
+            "sha256": "f6f2fad98867b9dc780b8838bb1917939a775f167a20e95e99c6f21e147cd1c7",
+            "retrievedAt": "2026-09-08T20:35:38.906Z"
+          }
+        ],
+        "metadata": [
+          {
+            "dataset": "linie-mit-polygon",
+            "modified": "2026-07-29T06:16:28+00:00",
+            "dataProcessed": "2026-09-02T03:01:34+00:00",
+            "license": "terms_by",
+            "rights": "NonCommercialAllowed-CommercialAllowed-ReferenceRequired"
+          },
+          {
+            "dataset": "perron",
+            "modified": "2026-09-01T22:03:57+00:00",
+            "dataProcessed": "2026-09-01T22:03:57+00:00",
+            "license": "terms_by",
+            "rights": "NonCommercialAllowed-CommercialAllowed-ReferenceRequired"
+          },
+          {
+            "dataset": "zugzahlen",
+            "modified": "2026-02-23T15:08:04+00:00",
+            "dataProcessed": "2026-03-19T19:12:20+00:00",
+            "license": "terms_by",
+            "rights": "NonCommercialAllowed-CommercialAllowed-ReferenceRequired"
+          }
+        ],
+        "attribution": "SBB Infrastructure / data.sbb.ch; Source: Etat de Fribourg (opening notice)",
+        "fotSha256": "2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+        "inputsSha256": "434a02eb6906bb141a00ba6b7c77622767b78262617326d6aed56fa683cd8046",
+        "openingDate": "2025-12-14",
+        "node": {
+          "id": "sbb-avry-8501632",
+          "number": "8501632",
+          "name": "Avry-Matran",
+          "coordinate": [
+            7.080434558070221,
+            46.7860301702419
+          ]
+        },
+        "endpoints": [
+          {
+            "id": "ch14uvag00089788",
+            "number": "8504028",
+            "name": "Rosé",
+            "coordinate": [
+              7.061971,
+              46.782635
+            ]
+          },
+          {
+            "id": "ch14uvag00089587",
+            "number": "8504029",
+            "name": "Matran",
+            "coordinate": [
+              7.096331,
+              46.78894
+            ]
+          }
+        ],
+        "replacedSegment": {
+          "id": "ch14uvag00087311",
+          "start": "ch14uvag00089788",
+          "end": "ch14uvag00089587",
+          "length": 2841.627353392962,
+          "points": [
+            [
+              7.062046,
+              46.782495
+            ],
+            [
+              7.063704,
+              46.782741
+            ],
+            [
+              7.070636,
+              46.782962
+            ],
+            [
+              7.073849,
+              46.783381
+            ],
+            [
+              7.076325,
+              46.783964
+            ],
+            [
+              7.078185,
+              46.784622
+            ],
+            [
+              7.079425,
+              46.785282
+            ],
+            [
+              7.081684,
+              46.786907
+            ],
+            [
+              7.082544,
+              46.787317
+            ],
+            [
+              7.083611,
+              46.787659
+            ],
+            [
+              7.084877,
+              46.787882
+            ],
+            [
+              7.086183,
+              46.787928
+            ],
+            [
+              7.087347,
+              46.787809
+            ],
+            [
+              7.089866,
+              46.787322
+            ],
+            [
+              7.090779,
+              46.78727
+            ],
+            [
+              7.091693,
+              46.787312
+            ],
+            [
+              7.092587,
+              46.787448
+            ],
+            [
+              7.093441,
+              46.787675
+            ],
+            [
+              7.096398,
+              46.788863
+            ]
+          ],
+          "gauge": "mm1435",
+          "sourceDate": "2021-07-06",
+          "validFrom": "1994-11-01",
+          "operator": "SBB CFF FFS"
+        },
+        "stops": [
+          {
+            "stop_id": "ch:1:sloid:1632:0:1516",
+            "stop_name": "Avry-Matran",
+            "platform_code": "2",
+            "stop_lon": 7.08046717,
+            "stop_lat": 46.78600915
+          },
+          {
+            "stop_id": "ch:1:sloid:1632:0:1515",
+            "stop_name": "Avry-Matran",
+            "platform_code": "1",
+            "stop_lon": 7.08039531,
+            "stop_lat": 46.78603991
+          }
+        ],
+        "routes": [
+          {
+            "routeId": "91-2B-Y-j26-1",
+            "agencyId": "11",
+            "line": "SN",
+            "gauge": "mm1435"
+          }
+        ],
+        "curves": [
+          {
+            "id": "sbb-250-ros-avry",
+            "feature": [
+              250,
+              "ROS",
+              "AVRY",
+              57535.35,
+              59039
+            ],
+            "vertices": 152,
+            "start": "ch14uvag00089788",
+            "end": "sbb-avry-8501632"
+          },
+          {
+            "id": "sbb-250-avry-mtr",
+            "feature": [
+              250,
+              "AVRY",
+              "MTR",
+              59039,
+              60377
+            ],
+            "vertices": 135,
+            "start": "sbb-avry-8501632",
+            "end": "ch14uvag00089587"
+          }
+        ],
+        "admission": "Only SBB SN route 91-2B-Y-j26-1. Bind new operating point 8501632 to current SBB exact UIC identities and platform records; replace old Rosé–Matran edge with two detailed SBB normal-gauge curves in this route-local graph. Never use traffic-count two-point links as curves. Preserve all existing accepted pairs and every original call. All full directed contexts must agree under unchanged station/topology/detour guards. Source processing timestamps do not certify survey vintage or train-specific track paths."
+      },
       "bernPlatforms": {
         "schemaVersion": 1,
         "id": "bern-western-terminal",
@@ -982,7 +1231,7 @@
             "gauge": "mm1435"
           }
         ],
-        "admission": "Fill failed cantonal rail pairs using exact operating-point numbers and standard-gauge infrastructure. All full directed pattern contexts must agree; block other called stations out of order. Keep all original calls and existing accepted paths. No general nearest-station or operator-name substitution; only separately hashed Kerzers platform, SBB Däniken and Bern terminal reviews may fill the original failures. Meter-gauge, gauge-changing and unreviewed TPF special routes remain outside this supplement.",
+        "admission": "Fill failed cantonal rail pairs using exact operating-point numbers and standard-gauge infrastructure. All full directed pattern contexts must agree; block other called stations out of order. Keep all original calls and existing accepted paths. No general nearest-station or operator-name substitution; only separately hashed Kerzers platform, SBB Däniken, Bern terminal and Avry operating-point reviews may fill the original failures. Meter-gauge, gauge-changing and unreviewed TPF special routes remain outside this supplement.",
         "inputs": "data/fribourg-rail-inputs.json",
         "timetableSourceHashes": {
           "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
@@ -996,6 +1245,10 @@
         "bernPlatforms": {
           "file": "data/fribourg-bern-platform-policy.json",
           "sha256": "77b78fb2fccab61ff47e18bd0dc1ad161965968144c3d79d99bc0fd3765701ac"
+        },
+        "avry": {
+          "file": "data/fribourg-avry-policy.json",
+          "sha256": "8d20a93732eea409915103c410816075ac428693b7dc8fcb6dc37c1f97849e19"
         }
       },
       "completePatternsTested": 412
@@ -1117,10 +1370,10 @@
     "key": "GTFS route identity + direction_id + full ordered original platform IDs, including repeats and out-of-canton calls"
   },
   "routesByStatus": {
-    "admitted-all-dated-trips": 112,
+    "admitted-all-dated-trips": 113,
     "inactive-on-validation-dates": 48,
-    "partially-admitted": 26,
-    "excluded": 21
+    "excluded": 21,
+    "partially-admitted": 25
   },
   "districts": [
     {
@@ -1483,11 +1736,12 @@
       "sourceHashes": {
         "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
         "source": "e8523af34fcedca7f8b0cbe495446ff93a75d8563c62b243da942c39c5243f47",
-        "crosswalk": "9a7b0cb1a7009d4bd8cf4c450a71187d679e66c6796427716697d06226c8ab3e",
+        "crosswalk": "67222b799da58d65df3b5b36a2d1f6ce8c740c248cda2fa7e80554a64cb76510",
         "provenance": "7d23e09a35768de1cfd598a7ca824ac7c93d03242ff8955e70ca778213549086",
         "roads": "87f4d4be2662ff0982cea837e95f73863096d4bc37bd19ecc09ea88e064c465e",
         "rail": "7ea92c8c1120a49e9497ec3ae6d7a0d2fc2d761e8b19d790191ed7a6c0212c79",
         "railInputs": "434a02eb6906bb141a00ba6b7c77622767b78262617326d6aed56fa683cd8046",
+        "avry": "8d20a93732eea409915103c410816075ac428693b7dc8fcb6dc37c1f97849e19",
         "bernPlatforms": "77b78fb2fccab61ff47e18bd0dc1ad161965968144c3d79d99bc0fd3765701ac",
         "railReview": "5070023bef19b35c1df3fb12a5b27e090d7a4ff0788f75d433a3d8295c4cca64"
       },
@@ -2026,12 +2280,12 @@
       },
       "payload": {
         "manifest": {
-          "bytes": 6171955,
-          "gzipBytes": 1481251
+          "bytes": 6177168,
+          "gzipBytes": 1483333
         },
         "morning": {
           "trips": 893,
-          "gzipBytes": 1590725
+          "gzipBytes": 1592240
         },
         "chunks": [
           {
@@ -2174,33 +2428,34 @@
       "sourceHashes": {
         "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
         "source": "e8523af34fcedca7f8b0cbe495446ff93a75d8563c62b243da942c39c5243f47",
-        "crosswalk": "9a7b0cb1a7009d4bd8cf4c450a71187d679e66c6796427716697d06226c8ab3e",
+        "crosswalk": "67222b799da58d65df3b5b36a2d1f6ce8c740c248cda2fa7e80554a64cb76510",
         "provenance": "7d23e09a35768de1cfd598a7ca824ac7c93d03242ff8955e70ca778213549086",
         "roads": "87f4d4be2662ff0982cea837e95f73863096d4bc37bd19ecc09ea88e064c465e",
         "rail": "7ea92c8c1120a49e9497ec3ae6d7a0d2fc2d761e8b19d790191ed7a6c0212c79",
         "railInputs": "434a02eb6906bb141a00ba6b7c77622767b78262617326d6aed56fa683cd8046",
+        "avry": "8d20a93732eea409915103c410816075ac428693b7dc8fcb6dc37c1f97849e19",
         "bernPlatforms": "77b78fb2fccab61ff47e18bd0dc1ad161965968144c3d79d99bc0fd3765701ac",
         "railReview": "5070023bef19b35c1df3fb12a5b27e090d7a4ff0788f75d433a3d8295c4cca64"
       },
       "coverage": {
         "trips": 6326,
-        "admittedTrips": 3612,
+        "admittedTrips": 3614,
         "scheduledTrips": 4062,
         "representativeHeadwayTrips": 2264,
-        "admittedScheduledTrips": 3612,
+        "admittedScheduledTrips": 3614,
         "admittedRepresentativeHeadwayTrips": 0,
         "scheduledSegmentOccurrences": 62231,
-        "matchedScheduledSegmentOccurrences": 60569,
+        "matchedScheduledSegmentOccurrences": 60573,
         "segmentOccurrences": 64495,
-        "matchedSegmentOccurrences": 60569,
-        "admittedSegmentOccurrences": 56889,
+        "matchedSegmentOccurrences": 60573,
+        "admittedSegmentOccurrences": 56923,
         "directedPairs": 4607,
-        "matchedDirectedPairs": 4349,
+        "matchedDirectedPairs": 4351,
         "patterns": 588,
-        "completePatterns": 493,
-        "admittedPatterns": 493,
+        "completePatterns": 495,
+        "admittedPatterns": 495,
         "excludedTrips": {
-          "incomplete-directed-pattern": 349,
+          "incomplete-directed-pattern": 347,
           "no-verified-operator-line-crosswalk": 2365
         }
       },
@@ -2209,24 +2464,22 @@
           "id": "11:rail",
           "agency": "Schweizerische Bundesbahnen SBB",
           "trips": 334,
-          "admittedTrips": 332,
+          "admittedTrips": 334,
           "scheduledTrips": 334,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 332,
+          "admittedScheduledTrips": 334,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 4519,
-          "matchedScheduledSegmentOccurrences": 4515,
+          "matchedScheduledSegmentOccurrences": 4519,
           "segmentOccurrences": 4519,
-          "matchedSegmentOccurrences": 4515,
-          "admittedSegmentOccurrences": 4485,
+          "matchedSegmentOccurrences": 4519,
+          "admittedSegmentOccurrences": 4519,
           "directedPairs": 452,
-          "matchedDirectedPairs": 450,
+          "matchedDirectedPairs": 452,
           "patterns": 118,
-          "completePatterns": 116,
-          "admittedPatterns": 116,
-          "excludedTrips": {
-            "incomplete-directed-pattern": 2
-          }
+          "completePatterns": 118,
+          "admittedPatterns": 118,
+          "excludedTrips": {}
         },
         {
           "id": "182:ferry",
@@ -2670,13 +2923,13 @@
       },
       "railEffect": {
         "patternsTestedAcrossBothDates": 412,
-        "newlyAdmittedTrips": 704,
+        "newlyAdmittedTrips": 706,
         "lostAdmittedTrips": 0,
-        "matchedDirectedPairs": 416,
-        "matchedSegmentOccurrences": 3660,
-        "admittedSegmentOccurrences": 3630,
-        "reviewedPairs": 15,
-        "reviewedJourneys": 45
+        "matchedDirectedPairs": 418,
+        "matchedSegmentOccurrences": 3664,
+        "admittedSegmentOccurrences": 3664,
+        "reviewedPairs": 17,
+        "reviewedJourneys": 47
       },
       "pairFailures": {
         "collapsed-path": {
@@ -2692,8 +2945,8 @@
           "segmentOccurrences": 57
         },
         "missing-line": {
-          "directedPairs": 242,
-          "segmentOccurrences": 3700
+          "directedPairs": 240,
+          "segmentOccurrences": 3696
         }
       },
       "carryInTrips": 179,
@@ -2711,12 +2964,12 @@
       },
       "payload": {
         "manifest": {
-          "bytes": 5946675,
-          "gzipBytes": 1468245
+          "bytes": 5964290,
+          "gzipBytes": 1473233
         },
         "morning": {
           "trips": 470,
-          "gzipBytes": 1530635
+          "gzipBytes": 1535019
         },
         "chunks": [
           {
@@ -2724,20 +2977,20 @@
             "windowStart": 0,
             "windowEnd": 7200,
             "path": "day-chunks/00-02.json",
-            "tripCount": 133,
-            "bytes": 124499,
-            "sha256": "a4affec03b316bde3e339f66d328113424d5fb738d9e967170ce4d54897157ad",
-            "gzipBytes": 22616
+            "tripCount": 134,
+            "bytes": 125543,
+            "sha256": "68ed1af482437dea8a3aa6ad86622ec75948aee74bb5d35914a916589b5b5342",
+            "gzipBytes": 22851
           },
           {
             "id": "02-04",
             "windowStart": 7200,
             "windowEnd": 14400,
             "path": "day-chunks/02-04.json",
-            "tripCount": 41,
-            "bytes": 51916,
-            "sha256": "0bddb2ca073ce4997e52f91b53df249f8a3ee526f775d301bfc4473b03867742",
-            "gzipBytes": 10536
+            "tripCount": 43,
+            "bytes": 54040,
+            "sha256": "c436da5b9c36b2a68b02be743cc4d7b9b36cf24de54833282665ed6d8a3edeea",
+            "gzipBytes": 10883
           },
           {
             "id": "04-06",
@@ -2746,7 +2999,7 @@
             "path": "day-chunks/04-06.json",
             "tripCount": 114,
             "bytes": 113060,
-            "sha256": "8b9e9db04a45b8b040de4174640ea51ddcf78aa37c6937de400c281b64e24f52",
+            "sha256": "1ce60ff2287dc52c93e042b69c8c87c5b6bde2964436b3078bdd2d19a2970fd3",
             "gzipBytes": 18763
           },
           {
@@ -2756,8 +3009,8 @@
             "path": "day-chunks/06-08.json",
             "tripCount": 391,
             "bytes": 376431,
-            "sha256": "c80aae37777ea3bdfca07869c9fde67467d53ed5aea675b3cc3ff9c4493b2ad3",
-            "gzipBytes": 53163
+            "sha256": "fba7cfca49cac1f32944ef076b8f562be5762be9dfd8fa4d6081efac5d53ba09",
+            "gzipBytes": 53166
           },
           {
             "id": "08-10",
@@ -2766,8 +3019,8 @@
             "path": "day-chunks/08-10.json",
             "tripCount": 504,
             "bytes": 494482,
-            "sha256": "0a8d8adf61913cc0c6cafa02dad2db197a673eb97e874381e0ad2f0b5bf194e3",
-            "gzipBytes": 67413
+            "sha256": "e4bfc4b70ec9d854242a02e5087ec7a169760cdcff684545106543dd0d3c0891",
+            "gzipBytes": 67418
           },
           {
             "id": "10-12",
@@ -2776,8 +3029,8 @@
             "path": "day-chunks/10-12.json",
             "tripCount": 517,
             "bytes": 503937,
-            "sha256": "1512258fb70aee815a6be7dafd59558f8dc9f5612217c03c8be7b0479549645a",
-            "gzipBytes": 68325
+            "sha256": "44b8689970ca696dbb8ff69f10ac49bb07cbf538c95ebc91200550b307da7c36",
+            "gzipBytes": 68327
           },
           {
             "id": "12-14",
@@ -2786,8 +3039,8 @@
             "path": "day-chunks/12-14.json",
             "tripCount": 518,
             "bytes": 503328,
-            "sha256": "f9860cd984c8ea0e32f5a4b96c73881b869a81f6998253a5bb60c8f1aebab025",
-            "gzipBytes": 68478
+            "sha256": "a66e77acfa4bbb0326f56adb263e13e2a517bc65ed5c3fb9e4ed21efb6f0c3b8",
+            "gzipBytes": 68486
           },
           {
             "id": "14-16",
@@ -2796,8 +3049,8 @@
             "path": "day-chunks/14-16.json",
             "tripCount": 506,
             "bytes": 493987,
-            "sha256": "8bba6b1d867b035a2a176d92f6ceaacf58280d2f00ce3ce599b39bf9c640213d",
-            "gzipBytes": 66957
+            "sha256": "a9ef939985309e0b2455b3b87470041648b7ffd512c491de8775e29ef6964c0f",
+            "gzipBytes": 66962
           },
           {
             "id": "16-18",
@@ -2806,8 +3059,8 @@
             "path": "day-chunks/16-18.json",
             "tripCount": 543,
             "bytes": 525715,
-            "sha256": "1579d2ad591a636ff76e58ab762191907d3e5c92f03dd4dfc63cd6077dadf783",
-            "gzipBytes": 71196
+            "sha256": "3b5e077f3d9bc9cf269b9c847ce9b381d35fdcd68a0b39045df5e6d2fb68e5fd",
+            "gzipBytes": 71201
           },
           {
             "id": "18-20",
@@ -2816,8 +3069,8 @@
             "path": "day-chunks/18-20.json",
             "tripCount": 500,
             "bytes": 487798,
-            "sha256": "f560204b955e4029dbd3d3ddc9913466aeee77e1d5724823bf98940f51727635",
-            "gzipBytes": 66252
+            "sha256": "a534e95d30b96aa8043560a8efe328c7f28612baeb2d6fc41996d5c059957a2c",
+            "gzipBytes": 66257
           },
           {
             "id": "20-22",
@@ -2826,8 +3079,8 @@
             "path": "day-chunks/20-22.json",
             "tripCount": 419,
             "bytes": 415913,
-            "sha256": "db022c3c265cbd0c6423d467098a96ed1355ad1247fdf8403a56591dde0b9744",
-            "gzipBytes": 56520
+            "sha256": "03752391a5da17415537b2abbb9d054add1f41df7031b5bcf51be055a486cfc2",
+            "gzipBytes": 56523
           },
           {
             "id": "22-24",
@@ -2836,8 +3089,8 @@
             "path": "day-chunks/22-24.json",
             "tripCount": 352,
             "bytes": 342021,
-            "sha256": "8e38b83acf45077ee6e85823243e23655421361edf8e400c6c8ad968e07ae5d7",
-            "gzipBytes": 46915
+            "sha256": "d6d750f4ea6a25b5ff5e31045785449ba3f74dbb525a3a0efd5876c7b937bc0c",
+            "gzipBytes": 46918
           }
         ]
       },

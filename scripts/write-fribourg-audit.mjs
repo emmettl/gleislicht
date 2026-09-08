@@ -6,6 +6,8 @@ const routes = await json('data/fribourg-audit/routes.json')
 const lines = await json('data/fribourg-audit/source-lines.json')
 const works = await json('data/fribourg-audit/works.json')
 const railReview = await json('data/fribourg-audit/rail-review.json')
+const avry = await json('data/fribourg-audit/avry.json')
+const regression = await json('data/fribourg-audit/rail-review-regression.json')
 const bernPlatforms = await json('data/fribourg-audit/bern-platforms.json')
 const reports = await Promise.all(summary.days.map(d => json(`data/fribourg-audit/${d.serviceDate}.json`)))
 const n = value => value.toLocaleString('en-GB')
@@ -161,7 +163,7 @@ The [TPF 2026 standard-gauge network statement, version 3.5](../data/fribourg-ra
 
 TPF's [La Verrerie–Vaulruz-Sud works notice](https://www.tpf.ch/fr/horaires-et-reseaux/perturbations-et-travaux/travaux-sur-le-troncon-ferroviaire-la-verrerie-vaulruz-sud) reports metre-gauge rebuilding during 2025–2027 and **no S50/S51 rail service between Bulle and Semsales after 21:00 on Sunday 6 September 2026**. The [reproducible works audit](../data/fribourg-audit/works.json) retains complete S50/S51 calls from both dates. It finds **${works.assessment[0].eveningCorridorSegments} corridor segment occurrences on ${works.assessment[0].eveningCorridorTrips} Friday trains, and ${works.assessment[1].eveningCorridorSegments} on Sunday**, in the same 21:00–24:00 window. The builder fails if Sunday calls contradict the notice. This is one dated consistency check, not a comprehensive diversion census; replacement bus geometry remains independently assessed by the road adapter. No new FOT paths are admitted on the altered metre-gauge corridor.
 
-Remaining rail exclusions include the Sunday SN pattern through Avry-Matran (missing exact operating point in the pinned FOT source), most TPF S50/S51, unlabelled TPF special journeys and all MOB/GPX journeys. The route inventory records exact dated counts rather than treating an admitted route label as proof of every branch.
+The current SBB Avry-Matran supplement resolves the remaining Sunday SN failures. Remaining rail exclusions include most TPF S50/S51, unlabelled TPF special journeys and all MOB/GPX journeys. The route inventory records exact dated counts rather than treating an admitted route label as proof of every branch.
 
 ![Rail corridor geometry review](assets/fribourg-rail-review.svg)
 
@@ -186,9 +188,23 @@ ${table(['FOT approach', 'Track', 'Platform-to-curve connector', 'Source curve t
 
 The [full-pattern audit](../data/fribourg-audit/bern-platforms.json) retains ${bernPlatforms.patterns.length} complete directed pattern contexts, all projections, original station/segment identities and prior rail failures. It adds **20 Friday and 20 Sunday journeys**. IR66 now admits **40/40 and 38/38** dated journeys; all dated IR15, IC1, S1 and S2 journeys also have complete geometry. Every added journey carries the \`bern-western-terminal\` review marker. This remains centreline inference, not a surveyed running track or switch route.
 
-The [commit-baseline regression](../data/fribourg-audit/rail-review-regression.json) compares against **007a946**: all **8,873 previously admitted journeys and 138,361 segment occurrences** retain identical calls, coordinates, times, directions and geometry. All 40 additions carry the Bern terminal marker. The SBB plan and the derived clipping diagram were visually inspected. The separate SBB station-description page returned HTTP 403 on direct acquisition and is explicitly unused as retained evidence.
+At commit fab6dd9, the Bern review preserved all **8,873 previously admitted journeys and 138,361 segment occurrences**, with all 40 additions carrying the Bern terminal marker. The current regression checkpoint below covers the subsequent Avry review. The SBB plan and the derived clipping diagram were visually inspected. The separate SBB station-description page returned HTTP 403 on direct acquisition and is explicitly unused as retained evidence.
 
 ![Bern western-terminal geometry review](assets/fribourg-bern-platforms.svg)
+
+## Avry-Matran: current SBB operating point and curves
+
+The pinned 2021 FOT graph predates operating point **8501632, Avry-Matran**. The canton’s [12 November 2025 announcement](https://www.fr.ch/dime/actualites/gare-routiere-et-parc-relais-a-la-future-halte-ferroviaire-davry-matran) schedules opening on **14 December 2025**. Current SBB platform records explicitly identify **AVRY / 8501632**, line 250, platforms 1 and 2; both original GTFS platform coordinates agree within 15 m. Current SBB traffic-count records independently supply the same exact operating-point number, name and coordinate in every occurrence. Their two-point links are **excluded as route geometry**.
+
+The [hashed policy and source manifest](../data/fribourg-avry-policy.json) restrict this correction to SBB SN route \`91-2B-Y-j26-1\`. Its local graph replaces the old FOT Rosé–Matran edge with the two detailed, normal-gauge SBB curves below, joined at the new exact Avry node. The original FOT graph and all previously accepted paths remain unchanged. Every original call and direction is retained; all **${avry.patterns.length} complete SN patterns** are tested together, including patterns that do not need the correction. The full two-date validation adds **zero Friday / two Sunday journeys** and two previously missing directed pairs, Neyruz → Avry and Avry → Villars-sur-Glâne. Both additions run early on Sunday (source service date 6 September); their original service dates remain in the feed. Synthetic reverse-pattern tests also pass; these do not imply a dated reverse service exists.
+
+${table(['Detailed SBB feature (line / from / to / km)', 'Original vertices', 'Exact node attachment distances'], avry.assessments.map(a => [a.feature.join(' / '), a.vertices, a.attachmentsMetres.map(m => m.toFixed(1) + ' m').join(' / ')]))}
+
+The [full review audit](../data/fribourg-audit/avry.json) inventories all two curve records, two platform records and eight traffic-count records, with source URLs, hashes, retrieval timestamps, processing dates, reuse terms, complete patterns and original failures. The 350 m station, 120 m topology and 2.5× detour guards remain unchanged; traversal through another called station out of order is rejected. No curve is enabled before 14 December 2025. Source processing timestamps do not certify survey vintage, platform-specific running tracks or switches.
+
+The [current commit-baseline regression](../data/fribourg-audit/rail-review-regression.json) compares against **fab6dd9**: all **${n(regression.days.reduce((n, d) => n + d.previousJourneys, 0))} previously admitted journeys and ${n(regression.days.reduce((n, d) => n + d.unchangedOriginalSegmentOccurrences, 0))} segment occurrences** retain identical original calls, coordinates, permissions, times, directions and geometry. Only the two Sunday additions carry new \`sbb-avry-operating-point\` evidence. All dated SBB and BLS rail journeys are now admitted; this does not establish completeness for inactive or untested seasonal dates.
+
+![Avry-Matran source geometry review](assets/fribourg-avry.svg)
 
 ## Dates, reuse and attribution
 
@@ -199,6 +215,8 @@ ${table(['Source', 'Pinned date / vintage', 'Attribution / reuse'], [
   ['OGD catalogue item', `Created ${summary.sources.reuseEvidence.catalogueCreated}; modified ${summary.sources.reuseEvidence.catalogueModified}`, 'Catalogue timestamps, not geometry vintage'],
   ['OSM road supplement', 'Swiss extract 2026-09-02; border retrieved 2026-09-08', '© OpenStreetMap contributors; ODbL 1.0; inferred geometry database'],
   ['SBB reviewed Däniken curve', `${railReview.source.dataProcessed}; individual survey vintage unknown`, 'SBB Infrastructure / data.sbb.ch; terms_by, reference required'],
+  ...avry.policy.metadata.map(m => [`Avry SBB ${m.dataset}`, `Processed ${m.dataProcessed}; modified ${m.modified}; survey vintage unknown`, 'SBB Infrastructure / data.sbb.ch; terms_by, reference required']),
+  ['Avry opening notice', 'Published 2025-11-12; announced opening 2025-12-14', 'Source: Etat de Fribourg; temporal evidence only'],
   ['Bern platform evidence', 'SBB station plan 08/2026; acquired September 2026', 'SBB / OpenStreetMap; identity and extent evidence, no map geometry extracted'],
   ['BLS Kerzers platform evidence', 'Table state 2026-05-28, valid 2026-06-06; plan state 2023-03-09', 'BLS Netz AG; supporting identity evidence'],
   ['FOT railway network', `${summary.sources.rail.catalogueDate}; asset updated ${summary.sources.rail.assetUpdated}; 2026 alignment validity unknown`, '© Federal Office of Transport (FOT); attribution-required OGD terms'],
@@ -237,14 +255,16 @@ node scripts/audit-fribourg-topology.mjs
 node scripts/review-fribourg-roads.mjs
 node scripts/review-fribourg-rail.mjs
 node scripts/review-fribourg-bern-platforms.mjs
+node scripts/review-fribourg-avry.mjs
 node scripts/write-fribourg-audit.mjs
 python3 scripts/test_fribourg_sources.py
-npx vitest run scripts/fribourg-region.test.mjs scripts/fribourg-road-geometry.test.mjs scripts/fribourg-rail-geometry.test.mjs scripts/fribourg-rail-review.test.mjs scripts/fribourg-bern-platforms.test.mjs scripts/luzern-rail-geometry.test.mjs scripts/bern-region.test.mjs
+npx vitest run scripts/fribourg-region.test.mjs scripts/fribourg-road-geometry.test.mjs scripts/fribourg-rail-geometry.test.mjs scripts/fribourg-rail-review.test.mjs scripts/fribourg-bern-platforms.test.mjs scripts/fribourg-avry.test.mjs scripts/luzern-rail-geometry.test.mjs scripts/bern-region.test.mjs
 
 # Optional rail-input regeneration from the complete timetable cache and retained source bytes.
 node scripts/fribourg-rail-geometry.mjs /private/tmp/fribourg-timetable.json.gz
 node scripts/prepare-fribourg-rail-review.mjs
 node scripts/prepare-fribourg-bern-platforms.mjs
+node scripts/prepare-fribourg-avry.mjs
 
 # Optional offline road rebuild: prepare all patterns, match each agency directory
 # with scripts/match-postbus-roads.mjs --no-trie/-W wrapper and the pinned extract,

@@ -1,0 +1,248 @@
+{
+  "schemaVersion": 1,
+  "id": "sbb-avry-operating-point",
+  "sourceDirectory": "data/fribourg-avry-sources",
+  "sources": [
+    {
+      "file": "linie-mit-polygon.json",
+      "url": "https://data.sbb.ch/api/explore/v2.1/catalog/datasets/linie-mit-polygon/records?where=search%28%22Avry%22%29&limit=100",
+      "sha256": "ec93bfd9eae1c7e58c3fb02a0094da6391742460609e347e3d78175d1bec8e74",
+      "retrievedAt": "2026-09-08T20:33:01.923Z"
+    },
+    {
+      "file": "linie-mit-polygon-metadata.json",
+      "url": "https://data.sbb.ch/api/explore/v2.1/catalog/datasets/linie-mit-polygon",
+      "sha256": "cbd14d2785da7865f4565fbf9aa37ca274ef3aafc44239bc03dd0992e3fd013c",
+      "retrievedAt": "2026-09-08T20:35:38.305Z"
+    },
+    {
+      "file": "perron.json",
+      "url": "https://data.sbb.ch/api/explore/v2.1/catalog/datasets/perron/records?where=search%28%22Avry%22%29&limit=100",
+      "sha256": "a1cb5a9021429df60070a10a460f4613506bab906fe7375a8dbfc90a8068ab37",
+      "retrievedAt": "2026-09-08T20:33:01.441Z"
+    },
+    {
+      "file": "perron-metadata.json",
+      "url": "https://data.sbb.ch/api/explore/v2.1/catalog/datasets/perron",
+      "sha256": "a66f17fa0b383b243e0256f2ddb7f5c3949abbcf02ecfc77cc902f19535b0ee5",
+      "retrievedAt": "2026-09-08T20:35:38.005Z"
+    },
+    {
+      "file": "zugzahlen.json",
+      "url": "https://data.sbb.ch/api/explore/v2.1/catalog/datasets/zugzahlen/records?where=search%28%22Avry%22%29&limit=100",
+      "sha256": "aa5da8fce9893b1b92245478a0967319f5760e543f0d58bdd6123e15c13bc7b7",
+      "retrievedAt": "2026-09-08T20:33:02.287Z"
+    },
+    {
+      "file": "zugzahlen-metadata.json",
+      "url": "https://data.sbb.ch/api/explore/v2.1/catalog/datasets/zugzahlen",
+      "sha256": "67c5e8d21771f8f463d8c67fd8ae711df27750fcc77f0579b31eaa67684c37fd",
+      "retrievedAt": "2026-09-08T20:35:38.665Z"
+    },
+    {
+      "file": "opening-notice.html",
+      "url": "https://www.fr.ch/dime/actualites/gare-routiere-et-parc-relais-a-la-future-halte-ferroviaire-davry-matran",
+      "documentDate": "2025-11-12",
+      "role": "Canton announcement of planned commissioning on 14 December 2025; supporting temporal evidence only.",
+      "sha256": "f6f2fad98867b9dc780b8838bb1917939a775f167a20e95e99c6f21e147cd1c7",
+      "retrievedAt": "2026-09-08T20:35:38.906Z"
+    }
+  ],
+  "metadata": [
+    {
+      "dataset": "linie-mit-polygon",
+      "modified": "2026-07-29T06:16:28+00:00",
+      "dataProcessed": "2026-09-02T03:01:34+00:00",
+      "license": "terms_by",
+      "rights": "NonCommercialAllowed-CommercialAllowed-ReferenceRequired"
+    },
+    {
+      "dataset": "perron",
+      "modified": "2026-09-01T22:03:57+00:00",
+      "dataProcessed": "2026-09-01T22:03:57+00:00",
+      "license": "terms_by",
+      "rights": "NonCommercialAllowed-CommercialAllowed-ReferenceRequired"
+    },
+    {
+      "dataset": "zugzahlen",
+      "modified": "2026-02-23T15:08:04+00:00",
+      "dataProcessed": "2026-03-19T19:12:20+00:00",
+      "license": "terms_by",
+      "rights": "NonCommercialAllowed-CommercialAllowed-ReferenceRequired"
+    }
+  ],
+  "attribution": "SBB Infrastructure / data.sbb.ch; Source: Etat de Fribourg (opening notice)",
+  "fotSha256": "2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+  "inputsSha256": "434a02eb6906bb141a00ba6b7c77622767b78262617326d6aed56fa683cd8046",
+  "openingDate": "2025-12-14",
+  "node": {
+    "id": "sbb-avry-8501632",
+    "number": "8501632",
+    "name": "Avry-Matran",
+    "coordinate": [
+      7.080434558070221,
+      46.7860301702419
+    ]
+  },
+  "endpoints": [
+    {
+      "id": "ch14uvag00089788",
+      "number": "8504028",
+      "name": "Rosé",
+      "coordinate": [
+        7.061971,
+        46.782635
+      ]
+    },
+    {
+      "id": "ch14uvag00089587",
+      "number": "8504029",
+      "name": "Matran",
+      "coordinate": [
+        7.096331,
+        46.78894
+      ]
+    }
+  ],
+  "replacedSegment": {
+    "id": "ch14uvag00087311",
+    "start": "ch14uvag00089788",
+    "end": "ch14uvag00089587",
+    "length": 2841.627353392962,
+    "points": [
+      [
+        7.062046,
+        46.782495
+      ],
+      [
+        7.063704,
+        46.782741
+      ],
+      [
+        7.070636,
+        46.782962
+      ],
+      [
+        7.073849,
+        46.783381
+      ],
+      [
+        7.076325,
+        46.783964
+      ],
+      [
+        7.078185,
+        46.784622
+      ],
+      [
+        7.079425,
+        46.785282
+      ],
+      [
+        7.081684,
+        46.786907
+      ],
+      [
+        7.082544,
+        46.787317
+      ],
+      [
+        7.083611,
+        46.787659
+      ],
+      [
+        7.084877,
+        46.787882
+      ],
+      [
+        7.086183,
+        46.787928
+      ],
+      [
+        7.087347,
+        46.787809
+      ],
+      [
+        7.089866,
+        46.787322
+      ],
+      [
+        7.090779,
+        46.78727
+      ],
+      [
+        7.091693,
+        46.787312
+      ],
+      [
+        7.092587,
+        46.787448
+      ],
+      [
+        7.093441,
+        46.787675
+      ],
+      [
+        7.096398,
+        46.788863
+      ]
+    ],
+    "gauge": "mm1435",
+    "sourceDate": "2021-07-06",
+    "validFrom": "1994-11-01",
+    "operator": "SBB CFF FFS"
+  },
+  "stops": [
+    {
+      "stop_id": "ch:1:sloid:1632:0:1516",
+      "stop_name": "Avry-Matran",
+      "platform_code": "2",
+      "stop_lon": 7.08046717,
+      "stop_lat": 46.78600915
+    },
+    {
+      "stop_id": "ch:1:sloid:1632:0:1515",
+      "stop_name": "Avry-Matran",
+      "platform_code": "1",
+      "stop_lon": 7.08039531,
+      "stop_lat": 46.78603991
+    }
+  ],
+  "routes": [
+    {
+      "routeId": "91-2B-Y-j26-1",
+      "agencyId": "11",
+      "line": "SN",
+      "gauge": "mm1435"
+    }
+  ],
+  "curves": [
+    {
+      "id": "sbb-250-ros-avry",
+      "feature": [
+        250,
+        "ROS",
+        "AVRY",
+        57535.35,
+        59039
+      ],
+      "vertices": 152,
+      "start": "ch14uvag00089788",
+      "end": "sbb-avry-8501632"
+    },
+    {
+      "id": "sbb-250-avry-mtr",
+      "feature": [
+        250,
+        "AVRY",
+        "MTR",
+        59039,
+        60377
+      ],
+      "vertices": 135,
+      "start": "sbb-avry-8501632",
+      "end": "ch14uvag00089587"
+    }
+  ],
+  "admission": "Only SBB SN route 91-2B-Y-j26-1. Bind new operating point 8501632 to current SBB exact UIC identities and platform records; replace old Rosé–Matran edge with two detailed SBB normal-gauge curves in this route-local graph. Never use traffic-count two-point links as curves. Preserve all existing accepted pairs and every original call. All full directed contexts must agree under unchanged station/topology/detour guards. Source processing timestamps do not certify survey vintage or train-specific track paths."
+}

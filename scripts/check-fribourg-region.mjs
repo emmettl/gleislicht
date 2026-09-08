@@ -22,6 +22,8 @@ export async function checkFribourgRegion({ output = 'data/fribourg-region', aud
   const crosswalk = await json('data/fribourg-policy.json')
   const roads = await loadFribourgRoads(undefined, crosswalk.roads, { verifyEvidence: true })
   const rail = await loadFribourgRail(undefined, crosswalk.rail)
+  assert.equal(summary.sourceHashes.avry, crosswalk.rail.avry.sha256)
+  assert.deepEqual(await json(join(audit, 'avry.json')), rail.avry)
   assert.equal(summary.sourceHashes.bernPlatforms, crosswalk.rail.bernPlatforms.sha256)
   assert.deepEqual(await json(join(audit, 'bern-platforms.json')), rail.bernPlatforms)
   assert.equal(summary.sourceHashes.railReview, crosswalk.rail.review.sha256)

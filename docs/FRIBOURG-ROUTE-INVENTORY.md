@@ -11,7 +11,7 @@ Generated from the [Fribourg audit](FRIBOURG-STUDY.md). Every one of the 207 ann
 | 53 | S20 | 91-20-B-j26-1 | rail | La Sarine, See | 10 | 43/43; 14/14 | 78/78; 14/14 | All dated trips admitted |
 | 53 | S21 | 91-21-A-j26-1 | rail | La Sarine, See | 10 | 44/44; 16/16 | 78/78; 11/11 | All dated trips admitted |
 | 33 | S2 | 91-2-A-j26-1 | rail | Sense | 13 | 77/77; 12/12 | 78/78; 20/20 | All dated trips admitted |
-| 11 | SN | 91-2B-Y-j26-1 | rail | La Glâne, La Sarine | — | 0/0; 0/0 | 1/3; 1/3 | Partially admitted |
+| 11 | SN | 91-2B-Y-j26-1 | rail | La Glâne, La Sarine | — | 0/0; 0/0 | 3/3; 3/3 | All dated trips admitted |
 | 11 | IC | 91-2H-Y-j26-1 | rail | La Sarine | — | 0/0; 0/0 | 10/10; 9/9 | All dated trips admitted |
 | 53 | RE2 | 91-2-M-j26-1 | rail | La Glâne, La Gruyère, La Sarine, Sense | 3 | 40/40; 13/13 | 39/39; 10/10 | All dated trips admitted |
 | 11 | S30 | 91-30-j26-1 | rail | La Broye, La Sarine | 9 | 93/93; 21/21 | 82/82; 15/15 | All dated trips admitted |
