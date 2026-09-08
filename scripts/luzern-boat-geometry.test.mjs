@@ -13,15 +13,16 @@ it('retains all boat patterns, source candidates and opposite dock order without
   expect(boats.inventory.filter(f => f.lakes.length)).toHaveLength(65)
   expect(boats.patterns).toHaveLength(45)
   expect(boats.pairs.size).toBe(115)
-  expect([...boats.pairs.values()].filter(p => p.path)).toHaveLength(91)
+  expect([...boats.pairs.values()].filter(p => p.path)).toHaveLength(92)
   const key = ids => JSON.stringify(['94-360-2-j26-1', ...ids])
   const keys = [...boats.pairs.keys()].map(k => JSON.parse(k)).filter(k => k[0] === '94-360-2-j26-1')
   const [, a, b] = keys[0]
   expect(boats.pairs.get(key([a, b])).path).toEqual([...boats.pairs.get(key([b, a])).path].reverse())
   for (const [key, result] of boats.pairs) if (result.path) {
     const [, a, b] = JSON.parse(key), stop = id => inputs.stops.find(s => s.stop_id === id)
-    expect(result.path[0]).toEqual([+stop(a).stop_lon, +stop(a).stop_lat].map(n => +n.toFixed(7)))
-    expect(result.path.at(-1)).toEqual([+stop(b).stop_lon, +stop(b).stop_lat].map(n => +n.toFixed(7)))
+    const coordinate = id => [+stop(id).stop_lon, +stop(id).stop_lat].map(n => result.geometrySource === 'osm-boat-pattern-inference' ? n : +n.toFixed(7))
+    expect(result.path[0]).toEqual(coordinate(a))
+    expect(result.path.at(-1)).toEqual(coordinate(b))
     expect(result.water.landCrossing).toBe(false)
   }
   expect(luzernCategory({ mode: 'boat' })).toBe('ferry')

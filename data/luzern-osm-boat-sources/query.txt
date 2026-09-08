@@ -1,0 +1,4 @@
+[out:json][timeout:90][date:"2026-09-02T00:00:00Z"];
+(way["route"="ferry"](46.85,8.25,47.12,8.65);relation["route"="ferry"](46.85,8.25,47.12,8.65);node["amenity"="ferry_terminal"](46.85,8.25,47.12,8.65););
+(._;>>;);
+out meta;

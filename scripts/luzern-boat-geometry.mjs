@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict'
+import { loadLuzernOsmBoats } from './luzern-osm-boats.mjs'
 import { readFile } from 'node:fs/promises'
 import { join } from 'node:path'
 import { gunzipSync } from 'node:zlib'
@@ -127,5 +128,11 @@ export async function loadLuzernBoats(config, raw) {
     }
   }
   const sources = luzernBoatSources(pages, requests, policy)
-  return { source, policy, inputs, ...sources, ...luzernBoatConsensus(inputs, luzernBoatMatcher(sources.lakes, policy)) }
+  const consensus = luzernBoatConsensus(inputs, luzernBoatMatcher(sources.lakes, policy))
+  const osm = policy.osmSupplement ? await loadLuzernOsmBoats(policy.osmSupplement, inputs, sources.lakes, consensus.pairs, raw) : undefined
+  if (osm) {
+    assert.equal(osm.audit.policy.shorelineSourceSha256, policy.sourceSha256)
+    for (const [key, pair] of osm.pairs) consensus.pairs.set(key, pair)
+  }
+  return { source, policy, inputs, ...sources, ...consensus, ...(osm ? { osm: osm.audit } : {}) }
 }

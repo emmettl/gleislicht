@@ -939,6 +939,6 @@
   },
   "boatFallback": {
     "policyPath": "data/luzern-boat-policy.json",
-    "sha256": "fa8f5f09d77e53283a16c7940fd7b61b23c055c0f68c4340f6e9815cde8cd97e"
+    "sha256": "d1eec112bdbe240610dc673d82a25570f0dfef50e18091e61239c075e6fffab1"
   }
 }

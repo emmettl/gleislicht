@@ -306,5 +306,9 @@
   },
   "dockZoneMetres": 150,
   "scope": "All eight annual boat route records and every complete fixture pattern, including all calls outside Luzern. Every segment must pass before the whole journey is admitted. Route-specific directed pair reuse requires accepted identical paths in every full pattern. Only exact source-vertex joins at seven-decimal coordinate precision; no fabricated water paths or topology bridges.",
-  "shorelineRule": "Split each path edge at all original shoreline and island-ring intersections. An outside-water interval is retained only wholly within 150 m of one actual endpoint dock, and its full evidence is disclosed. Any remote land crossing excludes the whole pattern. Source and shoreline vintages do not establish current navigability."
+  "shorelineRule": "Split each path edge at all original shoreline and island-ring intersections. An outside-water interval is retained only wholly within 150 m of one actual endpoint dock, and its full evidence is disclosed. Any remote land crossing excludes the whole pattern. Source and shoreline vintages do not establish current navigability.",
+  "osmSupplement": {
+    "policyPath": "data/luzern-osm-boat-policy.json",
+    "sha256": "ddfacced588a922ffd89e73d7857da5cc6dcd27a10b419ba900a47ce94eb79ca"
+  }
 }
