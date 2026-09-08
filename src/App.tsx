@@ -1,3 +1,5 @@
+import { airportBoardMovements } from '@motionstudies/core/domain/airport'
+import { AIRPORT_LABELS, AIRPORT_NOTES } from './studies/airport-copy.ts'
 import { networkWithRailVisibility } from './studies/network-layers.ts'
 import { roadTrafficSummary } from './studies/road-traffic-summary.ts'
 import { CONTROL_HELP } from './control-help.ts'
@@ -123,6 +125,8 @@ import { useProgressiveNetworkDay } from '@motionstudies/web/use-progressive-net
 import { useProgressiveAirDay } from '@motionstudies/web/use-progressive-air-day'
 import { useProgressiveRoadStudy } from '@motionstudies/web/use-progressive-road-study'
 import { useLocalPerformance } from '@motionstudies/web/use-local-performance'
+
+const AirportHeroCard = lazy(() => import('./studies/AirportCard.tsx'))
 
 const AlpineQuiet = lazy(() =>
   import('./studies/AlpineQuiet.tsx').then(({ AlpineQuiet: Scene }) => ({ default: Scene })),
@@ -439,6 +443,7 @@ export function App({ edition }: AppProps) {
   const quietMap = view === 'network' && networkStudy === 'national' &&
     !sbbEnabled && !airEnabled && !roadEnabled && Boolean(network) && !dataError && webglAvailable
   const activeAirSnapshot = isNationalDay ? airDay.snapshot : airSnapshot
+  const airportMovements = useMemo(() => selectedAirport ? airportBoardMovements(isNationalDay ? airDay.manifest?.aircraft ?? [] : activeAirSnapshot?.tracks ?? [], selectedAirport) : { departures: [], arrivals: [] }, [selectedAirport, isNationalDay, airDay.manifest, activeAirSnapshot])
   const activeAirLoadState: AirLoadState = !airEnabled
     ? 'idle'
     : isNationalDay
@@ -2688,6 +2693,15 @@ export function App({ edition }: AppProps) {
             {text.enterTerrain} · Kiental–Griesalp
           </button>
         </section>
+      ) : isNetwork && selectedAirport ? (
+        <Suspense fallback={null}><AirportHeroCard key={selectedAirport.id} className="edition-airport-card"
+          airport={selectedAirport} departures={airportMovements.departures} arrivals={airportMovements.arrivals}
+          study={{ time: networkTime, windowStart: Math.max(network?.metadata.windowStart ?? 0, activeAirSnapshot?.metadata.windowStart ?? 0), windowEnd: Math.min(network?.metadata.windowEnd ?? 86400, activeAirSnapshot?.metadata.windowEnd ?? 86400) }}
+          maxRows={4} dateLabel="04.09.2026" labels={AIRPORT_LABELS[language]}
+          loading={isNationalDay ? !airDay.manifest : !airSnapshot} error={activeAirLoadState === 'error' ? text.airUnavailable : undefined}
+          onSelectFlight={selectAirTrack}
+          note={<><a href="https://www.adsb.lol/docs/open-data/historical/">ADSB.lol</a> · ODbL · <a href="https://ourairports.com/data/">OurAirports</a> · {AIRPORT_NOTES[language]}</>}
+        /></Suspense>
       ) : isNetwork && selectedAirTrack ? (
         <section
           className="journey-card selected-card air-card"

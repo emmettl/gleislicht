@@ -1,0 +1,21 @@
+/* Shared airport board: bounded overlay keeps the study controls reachable. */
+.edition-airport-card { position: absolute; z-index: 6; left: clamp(24px, 4vw, 58px); top: clamp(190px, 26vh, 240px); width: min(620px, calc(100vw - 100px)); max-height: calc(100svh - 370px); overflow: auto; padding: 12px; box-sizing: border-box; }
+.edition-airport-card .ms-airport-hero__identity { padding: 8px 0; gap: 12px; }
+.edition-airport-card .ms-airport-hero__code { font-size: 40px; }
+.edition-airport-card .ms-airport-hero__identity h2 { font-size: 20px; }
+.edition-airport-card .ms-airport-hero__runway { height: 32px; }
+.edition-airport-card .ms-airport-hero__directions { margin-bottom: 8px; }
+.edition-airport-card .ms-airport-hero__directions button { padding: 6px 0 8px; }
+.edition-airport-card .ms-airport-hero__window { margin-bottom: 8px; }
+.edition-airport-card .ms-split-flap-board { padding: 6px 8px 8px; }
+.edition-airport-card .ms-split-flap-board__table { border-spacing: 0 4px; }
+.edition-airport-card .ms-split-flap-board__select { min-height: 28px; }
+.edition-airport-card .ms-flap { font-size: 13px; }
+.edition-airport-card .ms-airport-hero__note { margin-top: 8px; font-size: 10px; line-height: 1.4; }
+.edition-airport-card .ms-airport-hero__note a { color: inherit; }
+.is-limited-chrome .edition-airport-card { opacity: 0; pointer-events: none; }
+@media (max-width: 720px) {
+  .edition-airport-card { top: 125px; left: 12px; width: calc(100vw - 70px); max-height: calc(100svh - 300px); }
+  .edition-airport-card .ms-airport-hero__identity h2 { font-size: 16px; min-width: 100px; }
+  .edition-airport-card .ms-airport-hero__clock { font-size: 10px; }
+}

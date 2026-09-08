@@ -50,16 +50,17 @@
     "data:road:export": "node scripts/export-astra-r2.mjs",
     "data:road:compile": "node scripts/compile-astra-road-study.mjs",
     "data:road:compile:national": "node scripts/compile-astra-national-study.mjs",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "data:air:routes": "node scripts/enrich-air-routes.mjs"
   },
   "engines": {
     "node": ">=24.0.0"
   },
   "dependencies": {
     "@driftbox/engine": "^0.6.0",
-    "@motionstudies/core": "0.1.0-alpha.4",
-    "@motionstudies/three": "0.1.0-alpha.4",
-    "@motionstudies/web": "0.1.0-alpha.4",
+    "@motionstudies/core": "0.1.0-alpha.5",
+    "@motionstudies/three": "0.1.0-alpha.5",
+    "@motionstudies/web": "0.1.0-alpha.5",
     "@react-three/fiber": "^9.7.0",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
@@ -81,7 +82,7 @@
     "vite": "^8.2.2",
     "vitest": "^5.0.0",
     "wrangler": "^4.129.0",
-    "@motionstudies/data": "0.1.0-alpha.4"
+    "@motionstudies/data": "0.1.0-alpha.5"
   },
   "packageManager": "npm@11.19.0"
 }
