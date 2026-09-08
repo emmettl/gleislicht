@@ -1,0 +1,1507 @@
+{
+  "schemaVersion": 1,
+  "metadata": {
+    "serviceDate": "2026-09-13",
+    "feedVersion": "20260905",
+    "sourceHashes": {
+      "archive": "4fa074044fc3a1ceae3c91597b72cf42b9bbce0477b9d43b7b4f658e3e9acfa5",
+      "rail": "2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+      "snapshot": "a23be405e1831b25a357009781bf93d86e36a88c0f35dd0037aa8e35ee1bbaca",
+      "busCache": "b71bf1a4ee293c8e641f415d6060ece08cc9dc8e0aa262aa24fdc0ee6938fb4b"
+    },
+    "nodeVersion": "v24.20.0"
+  },
+  "scope": {
+    "bounds": "6.45,46.48,6.85,46.71",
+    "description": "Lausanne region: tl buses, m1/m2, LEB and rail inside the study bounds; excludes lake services and funiculars. Not canton-wide Vaud coverage.",
+    "extractedTrips": 6979,
+    "candidateTrips": 6740,
+    "excludedTrips": 239,
+    "platforms": 1015,
+    "namedStops": 487
+  },
+  "groups": [
+    {
+      "id": "tl-bus",
+      "trips": 5193,
+      "routes": [
+        "92-1-V-j26-1",
+        "92-13-H-j26-1",
+        "92-16-E-j26-1",
+        "92-17-D-j26-1",
+        "92-18-B-j26-1",
+        "92-2-T-j26-1",
+        "92-20-C-j26-1",
+        "92-21-I-j26-1",
+        "92-24-G-j26-1",
+        "92-25-E-j26-1",
+        "92-3-S-j26-1",
+        "92-31-I-j26-1",
+        "92-32-I-j26-1",
+        "92-33-G-j26-1",
+        "92-35-D-j26-1",
+        "92-36-D-j26-1",
+        "92-38-E-j26-1",
+        "92-4-T-j26-1",
+        "92-41-G-j26-1",
+        "92-42-E-j26-1",
+        "92-44-F-j26-1",
+        "92-45-C-j26-1",
+        "92-46-F-j26-1",
+        "92-47-D-j26-1",
+        "92-48-E-j26-1",
+        "92-49-j26-1",
+        "92-54-B-j26-1",
+        "92-58-C-j26-1",
+        "92-6-Q-j26-1",
+        "92-60-C-j26-1",
+        "92-64-F-j26-1",
+        "92-68-A-j26-1",
+        "92-7-P-j26-1",
+        "92-8-L-j26-1",
+        "92-9-P-j26-1"
+      ],
+      "totalSegments": 87575,
+      "indexedSegments": 85425,
+      "acceptedSegments": 85425,
+      "issues": [
+        {
+          "routeId": "92-1-V-j26-1",
+          "route": "1",
+          "from": "Lausanne, Bel-Air",
+          "to": "Lausanne, St-François",
+          "fromId": "ch:1:sloid:91988:0:2983",
+          "toId": "ch:1:sloid:79254:0:969",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 1
+        },
+        {
+          "routeId": "92-1-V-j26-1",
+          "route": "1",
+          "from": "Lausanne, St-François",
+          "to": "Lausanne, Georgette",
+          "fromId": "ch:1:sloid:79254:0:969",
+          "toId": "ch:1:sloid:92051:0:870",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 1
+        },
+        {
+          "routeId": "92-1-V-j26-1",
+          "route": "1",
+          "from": "Lausanne, Georgette",
+          "to": "Lausanne, gare",
+          "fromId": "ch:1:sloid:92051:0:870",
+          "toId": "ch:1:sloid:92050:0:2892",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 1
+        },
+        {
+          "routeId": "92-1-V-j26-1",
+          "route": "1",
+          "from": "Lausanne, gare",
+          "to": "Lausanne, Epinettes",
+          "fromId": "ch:1:sloid:92050:0:2892",
+          "toId": "ch:1:sloid:92040:0:1198",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 1
+        },
+        {
+          "routeId": "92-1-V-j26-1",
+          "route": "1",
+          "from": "Lausanne, Epinettes",
+          "to": "Lausanne, Dapples",
+          "fromId": "ch:1:sloid:92040:0:1198",
+          "toId": "ch:1:sloid:92027:0:1208",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 1
+        },
+        {
+          "routeId": "92-1-V-j26-1",
+          "route": "1",
+          "from": "Lausanne, Dapples",
+          "to": "Lausanne, jardin botanique",
+          "fromId": "ch:1:sloid:92027:0:1208",
+          "toId": "ch:1:sloid:91985:0:3029",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 1
+        },
+        {
+          "routeId": "92-1-V-j26-1",
+          "route": "1",
+          "from": "Lausanne, jardin botanique",
+          "to": "Lausanne, Cèdres",
+          "fromId": "ch:1:sloid:91985:0:3029",
+          "toId": "ch:1:sloid:92005:0:1272",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 1
+        },
+        {
+          "routeId": "92-1-V-j26-1",
+          "route": "1",
+          "from": "Lausanne, Cèdres",
+          "to": "Lausanne, Riant-Cour",
+          "fromId": "ch:1:sloid:92005:0:1272",
+          "toId": "ch:1:sloid:92110:0:1308",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 1
+        },
+        {
+          "routeId": "92-1-V-j26-1",
+          "route": "1",
+          "from": "Lausanne, Riant-Cour",
+          "to": "Lausanne, Batelière",
+          "fromId": "ch:1:sloid:92110:0:1308",
+          "toId": "ch:1:sloid:91983:0:1348",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 1
+        },
+        {
+          "routeId": "92-1-V-j26-1",
+          "route": "1",
+          "from": "Lausanne, Batelière",
+          "to": "Lausanne, Montoie",
+          "fromId": "ch:1:sloid:91983:0:1348",
+          "toId": "ch:1:sloid:92080:0:1397",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 1
+        },
+        {
+          "routeId": "92-1-V-j26-1",
+          "route": "1",
+          "from": "Lausanne, Montoie",
+          "to": "Lausanne, Maladière",
+          "fromId": "ch:1:sloid:92080:0:1397",
+          "toId": "ch:1:sloid:92068:0:1466",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 1
+        },
+        {
+          "routeId": "92-18-B-j26-1",
+          "route": "18",
+          "from": "Lausanne, Clochatte",
+          "to": "Lausanne, Piécettes",
+          "fromId": "ch:1:sloid:92019:0:854",
+          "toId": "ch:1:sloid:92092:0:920",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 1
+        },
+        {
+          "routeId": "92-18-B-j26-1",
+          "route": "18",
+          "from": "Lausanne, Piécettes",
+          "to": "Lausanne, Pavement",
+          "fromId": "ch:1:sloid:92092:0:920",
+          "toId": "ch:1:sloid:92089:0:976",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 1
+        },
+        {
+          "routeId": "92-18-B-j26-1",
+          "route": "18",
+          "from": "Lausanne, Pavement",
+          "to": "Lausanne, Bellevaux",
+          "fromId": "ch:1:sloid:92089:0:976",
+          "toId": "ch:1:sloid:87357:0:981",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 1
+        },
+        {
+          "routeId": "92-18-B-j26-1",
+          "route": "18",
+          "from": "Lausanne, Bellevaux",
+          "to": "Lausanne, Forêt",
+          "fromId": "ch:1:sloid:87357:0:981",
+          "toId": "ch:1:sloid:92047:0:1005",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 1
+        },
+        {
+          "routeId": "92-18-B-j26-1",
+          "route": "18",
+          "from": "Lausanne, Forêt",
+          "to": "Lausanne, Motte",
+          "fromId": "ch:1:sloid:92047:0:1005",
+          "toId": "ch:1:sloid:92082:0:1004",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 1
+        },
+        {
+          "routeId": "92-24-G-j26-1",
+          "route": "24",
+          "from": "Lausanne, Bourdonnette",
+          "to": "Lausanne, sports UNIL-EPFL",
+          "fromId": "ch:1:sloid:1210:0:1616",
+          "toId": "ch:1:sloid:95937:0:1642",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 50
+        },
+        {
+          "routeId": "92-24-G-j26-1",
+          "route": "24",
+          "from": "Lausanne, sports UNIL-EPFL",
+          "to": "Lausanne, Parc Bourget",
+          "fromId": "ch:1:sloid:95937:0:1642",
+          "toId": "ch:1:sloid:95939:0:1583",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 50
+        },
+        {
+          "routeId": "92-24-G-j26-1",
+          "route": "24",
+          "from": "Lausanne, Parc Bourget",
+          "to": "Lausanne, Siège du CIO",
+          "fromId": "ch:1:sloid:95939:0:1583",
+          "toId": "ch:1:sloid:95934:0:1542",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 50
+        },
+        {
+          "routeId": "92-24-G-j26-1",
+          "route": "24",
+          "from": "Lausanne, Siège du CIO",
+          "to": "Lausanne, Stade de Coubertin",
+          "fromId": "ch:1:sloid:95934:0:1542",
+          "toId": "ch:1:sloid:95935:0:1497",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 50
+        },
+        {
+          "routeId": "92-24-G-j26-1",
+          "route": "24",
+          "from": "Lausanne, Stade de Coubertin",
+          "to": "Lausanne, Vidy-Port",
+          "fromId": "ch:1:sloid:95935:0:1497",
+          "toId": "ch:1:sloid:95938:0:1409",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 50
+        },
+        {
+          "routeId": "92-24-G-j26-1",
+          "route": "24",
+          "from": "Lausanne, Vidy-Port",
+          "to": "Lausanne, Théâtre de Vidy",
+          "fromId": "ch:1:sloid:95938:0:1409",
+          "toId": "ch:1:sloid:92121:0:1353",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 50
+        },
+        {
+          "routeId": "92-24-G-j26-1",
+          "route": "24",
+          "from": "Lausanne, Théâtre de Vidy",
+          "to": "Lausanne, Bellerive",
+          "fromId": "ch:1:sloid:92121:0:1353",
+          "toId": "ch:1:sloid:91989:0:1285",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 50
+        },
+        {
+          "routeId": "92-24-G-j26-1",
+          "route": "24",
+          "from": "Lausanne, Bellerive",
+          "to": "Lausanne, Pêcheurs",
+          "fromId": "ch:1:sloid:91989:0:1285",
+          "toId": "ch:1:sloid:92090:0:1264",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 50
+        },
+        {
+          "routeId": "92-24-G-j26-1",
+          "route": "24",
+          "from": "Lausanne, Pêcheurs",
+          "to": "Lausanne, Ouchy-Olympique",
+          "fromId": "ch:1:sloid:92090:0:1264",
+          "toId": "ch:1:sloid:92086:0:1197",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 50
+        },
+        {
+          "routeId": "92-24-G-j26-1",
+          "route": "24",
+          "from": "Lausanne, Ouchy-Olympique",
+          "to": "Lausanne, Beau-Rivage",
+          "fromId": "ch:1:sloid:92086:0:1197",
+          "toId": "ch:1:sloid:91986:0:1150",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 50
+        },
+        {
+          "routeId": "92-24-G-j26-1",
+          "route": "24",
+          "from": "Lausanne, Beau-Rivage",
+          "to": "Lausanne, Jordils",
+          "fromId": "ch:1:sloid:91986:0:1150",
+          "toId": "ch:1:sloid:92061:0:1130",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 50
+        },
+        {
+          "routeId": "92-24-G-j26-1",
+          "route": "24",
+          "from": "Lausanne, Jordils",
+          "to": "Lausanne, Elysée",
+          "fromId": "ch:1:sloid:92061:0:1130",
+          "toId": "ch:1:sloid:92039:0:1031",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 50
+        },
+        {
+          "routeId": "92-24-G-j26-1",
+          "route": "24",
+          "from": "Lausanne, Elysée",
+          "to": "Lausanne, Musée Olympique",
+          "fromId": "ch:1:sloid:92039:0:1031",
+          "toId": "ch:1:sloid:92084:0:931",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 50
+        },
+        {
+          "routeId": "92-24-G-j26-1",
+          "route": "24",
+          "from": "Lausanne, Musée Olympique",
+          "to": "Lausanne, Denantou",
+          "fromId": "ch:1:sloid:92084:0:931",
+          "toId": "ch:1:sloid:92029:0:858",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 50
+        },
+        {
+          "routeId": "92-24-G-j26-1",
+          "route": "24",
+          "from": "Lausanne, Denantou",
+          "to": "Lausanne, Tour Haldimand-Lac",
+          "fromId": "ch:1:sloid:92029:0:858",
+          "toId": "ch:1:sloid:95936:0:3052",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 49
+        },
+        {
+          "routeId": "92-24-G-j26-1",
+          "route": "24",
+          "from": "Lausanne, Tour Haldimand-Lac",
+          "to": "Pully, Tour Haldimand",
+          "fromId": "ch:1:sloid:95936:0:3052",
+          "toId": "ch:1:sloid:92197:0:803",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 49
+        },
+        {
+          "routeId": "92-24-G-j26-1",
+          "route": "24",
+          "from": "Pully, Tour Haldimand",
+          "to": "Lausanne, Denantou",
+          "fromId": "ch:1:sloid:92197:0:803",
+          "toId": "ch:1:sloid:92029:0:853",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 49
+        },
+        {
+          "routeId": "92-24-G-j26-1",
+          "route": "24",
+          "from": "Lausanne, Denantou",
+          "to": "Lausanne, Musée Olympique",
+          "fromId": "ch:1:sloid:92029:0:853",
+          "toId": "ch:1:sloid:92084:0:970",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 49
+        },
+        {
+          "routeId": "92-24-G-j26-1",
+          "route": "24",
+          "from": "Lausanne, Musée Olympique",
+          "to": "Lausanne, Elysée",
+          "fromId": "ch:1:sloid:92084:0:970",
+          "toId": "ch:1:sloid:92039:0:1035",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 49
+        },
+        {
+          "routeId": "92-24-G-j26-1",
+          "route": "24",
+          "from": "Lausanne, Elysée",
+          "to": "Lausanne, Jordils",
+          "fromId": "ch:1:sloid:92039:0:1035",
+          "toId": "ch:1:sloid:92061:0:1136",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 49
+        },
+        {
+          "routeId": "92-24-G-j26-1",
+          "route": "24",
+          "from": "Lausanne, Jordils",
+          "to": "Lausanne, Beau-Rivage",
+          "fromId": "ch:1:sloid:92061:0:1136",
+          "toId": "ch:1:sloid:91986:0:1155",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 49
+        },
+        {
+          "routeId": "92-24-G-j26-1",
+          "route": "24",
+          "from": "Lausanne, Beau-Rivage",
+          "to": "Lausanne, Ouchy-Olympique",
+          "fromId": "ch:1:sloid:91986:0:1155",
+          "toId": "ch:1:sloid:92086:0:1201",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 49
+        },
+        {
+          "routeId": "92-24-G-j26-1",
+          "route": "24",
+          "from": "Lausanne, Ouchy-Olympique",
+          "to": "Lausanne, Pêcheurs",
+          "fromId": "ch:1:sloid:92086:0:1201",
+          "toId": "ch:1:sloid:92090:0:1265",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 49
+        },
+        {
+          "routeId": "92-24-G-j26-1",
+          "route": "24",
+          "from": "Lausanne, Pêcheurs",
+          "to": "Lausanne, Bellerive",
+          "fromId": "ch:1:sloid:92090:0:1265",
+          "toId": "ch:1:sloid:91989:0:1304",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 49
+        },
+        {
+          "routeId": "92-24-G-j26-1",
+          "route": "24",
+          "from": "Lausanne, Bellerive",
+          "to": "Lausanne, Théâtre de Vidy",
+          "fromId": "ch:1:sloid:91989:0:1304",
+          "toId": "ch:1:sloid:92121:0:1358",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 49
+        },
+        {
+          "routeId": "92-24-G-j26-1",
+          "route": "24",
+          "from": "Lausanne, Théâtre de Vidy",
+          "to": "Lausanne, Vidy-Port",
+          "fromId": "ch:1:sloid:92121:0:1358",
+          "toId": "ch:1:sloid:95938:0:1411",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 49
+        },
+        {
+          "routeId": "92-24-G-j26-1",
+          "route": "24",
+          "from": "Lausanne, Vidy-Port",
+          "to": "Lausanne, Stade de Coubertin",
+          "fromId": "ch:1:sloid:95938:0:1411",
+          "toId": "ch:1:sloid:95935:0:1502",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 49
+        },
+        {
+          "routeId": "92-24-G-j26-1",
+          "route": "24",
+          "from": "Lausanne, Stade de Coubertin",
+          "to": "Lausanne, Siège du CIO",
+          "fromId": "ch:1:sloid:95935:0:1502",
+          "toId": "ch:1:sloid:95934:0:1545",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 49
+        },
+        {
+          "routeId": "92-24-G-j26-1",
+          "route": "24",
+          "from": "Lausanne, Siège du CIO",
+          "to": "Lausanne, Parc Bourget",
+          "fromId": "ch:1:sloid:95934:0:1545",
+          "toId": "ch:1:sloid:95939:0:1588",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 49
+        },
+        {
+          "routeId": "92-24-G-j26-1",
+          "route": "24",
+          "from": "Lausanne, Parc Bourget",
+          "to": "Lausanne, sports UNIL-EPFL",
+          "fromId": "ch:1:sloid:95939:0:1588",
+          "toId": "ch:1:sloid:95937:0:1643",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 49
+        },
+        {
+          "routeId": "92-24-G-j26-1",
+          "route": "24",
+          "from": "Lausanne, sports UNIL-EPFL",
+          "to": "Lausanne, Bourdonnette",
+          "fromId": "ch:1:sloid:95937:0:1643",
+          "toId": "ch:1:sloid:1210:0:1616",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 49
+        },
+        {
+          "routeId": "92-24-G-j26-1",
+          "route": "24",
+          "from": "Lausanne, Denantou",
+          "to": "Lausanne, Tour Haldimand-Lac",
+          "fromId": "ch:1:sloid:92029:0:858",
+          "toId": "ch:1:sloid:95936:0:840",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 1
+        },
+        {
+          "routeId": "92-35-D-j26-1",
+          "route": "35",
+          "from": "Bussigny, gare",
+          "to": "Bussigny, Grand-Record",
+          "fromId": "ch:1:sloid:81914:0:2889",
+          "toId": "ch:1:sloid:81918:0:2854",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 32
+        },
+        {
+          "routeId": "92-35-D-j26-1",
+          "route": "35",
+          "from": "Bussigny, Grand-Record",
+          "to": "Bussigny, St-Germain",
+          "fromId": "ch:1:sloid:81918:0:2854",
+          "toId": "ch:1:sloid:5529:0:2862",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 32
+        },
+        {
+          "routeId": "92-35-D-j26-1",
+          "route": "35",
+          "from": "Bussigny, St-Germain",
+          "to": "Bussigny, Jordil",
+          "fromId": "ch:1:sloid:5529:0:2862",
+          "toId": "ch:1:sloid:6907:0:2876",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 32
+        },
+        {
+          "routeId": "92-35-D-j26-1",
+          "route": "35",
+          "from": "Bussigny, Jordil",
+          "to": "Bussigny, Tatironne",
+          "fromId": "ch:1:sloid:6907:0:2876",
+          "toId": "ch:1:sloid:6905:0:2878",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 32
+        },
+        {
+          "routeId": "92-35-D-j26-1",
+          "route": "35",
+          "from": "Bussigny, Tatironne",
+          "to": "Bussigny, Sottelles",
+          "fromId": "ch:1:sloid:6905:0:2878",
+          "toId": "ch:1:sloid:6903:0:2880",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 32
+        },
+        {
+          "routeId": "92-35-D-j26-1",
+          "route": "35",
+          "from": "Bussigny, Sottelles",
+          "to": "Bussigny, Sauge",
+          "fromId": "ch:1:sloid:6903:0:2880",
+          "toId": "ch:1:sloid:81920:0:2882",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 32
+        },
+        {
+          "routeId": "92-35-D-j26-1",
+          "route": "35",
+          "from": "Bussigny, Sauge",
+          "to": "Bussigny, Vieux-Four",
+          "fromId": "ch:1:sloid:81920:0:2882",
+          "toId": "ch:1:sloid:81921:0:2884",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 32
+        },
+        {
+          "routeId": "92-35-D-j26-1",
+          "route": "35",
+          "from": "Bussigny, Vieux-Four",
+          "to": "Bussigny, Condémine",
+          "fromId": "ch:1:sloid:81921:0:2884",
+          "toId": "ch:1:sloid:81916:0:2859",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 32
+        },
+        {
+          "routeId": "92-35-D-j26-1",
+          "route": "35",
+          "from": "Bussigny, Condémine",
+          "to": "Bussigny, Cocagne",
+          "fromId": "ch:1:sloid:81916:0:2859",
+          "toId": "ch:1:sloid:94177:0:1930",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 32
+        },
+        {
+          "routeId": "92-35-D-j26-1",
+          "route": "35",
+          "from": "Bussigny, Cocagne",
+          "to": "Bussigny, Sullens",
+          "fromId": "ch:1:sloid:94177:0:1930",
+          "toId": "ch:1:sloid:81924:0:2886",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 32
+        },
+        {
+          "routeId": "92-35-D-j26-1",
+          "route": "35",
+          "from": "Bussigny, Sullens",
+          "to": "Bussigny, Riettaz",
+          "fromId": "ch:1:sloid:81924:0:2886",
+          "toId": "ch:1:sloid:81922:0:2887",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 32
+        },
+        {
+          "routeId": "92-35-D-j26-1",
+          "route": "35",
+          "from": "Bussigny, Riettaz",
+          "to": "Bussigny, Vieux-Four",
+          "fromId": "ch:1:sloid:81922:0:2887",
+          "toId": "ch:1:sloid:81921:0:2885",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 31
+        },
+        {
+          "routeId": "92-35-D-j26-1",
+          "route": "35",
+          "from": "Bussigny, Vieux-Four",
+          "to": "Bussigny, Sauge",
+          "fromId": "ch:1:sloid:81921:0:2885",
+          "toId": "ch:1:sloid:81920:0:2883",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 31
+        },
+        {
+          "routeId": "92-35-D-j26-1",
+          "route": "35",
+          "from": "Bussigny, Sauge",
+          "to": "Bussigny, Sottelles",
+          "fromId": "ch:1:sloid:81920:0:2883",
+          "toId": "ch:1:sloid:6903:0:2881",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 31
+        },
+        {
+          "routeId": "92-35-D-j26-1",
+          "route": "35",
+          "from": "Bussigny, Sottelles",
+          "to": "Bussigny, Tatironne",
+          "fromId": "ch:1:sloid:6903:0:2881",
+          "toId": "ch:1:sloid:6905:0:2879",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 31
+        },
+        {
+          "routeId": "92-35-D-j26-1",
+          "route": "35",
+          "from": "Bussigny, Tatironne",
+          "to": "Bussigny, Jordil",
+          "fromId": "ch:1:sloid:6905:0:2879",
+          "toId": "ch:1:sloid:6907:0:2877",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 31
+        },
+        {
+          "routeId": "92-35-D-j26-1",
+          "route": "35",
+          "from": "Bussigny, Jordil",
+          "to": "Bussigny, St-Germain",
+          "fromId": "ch:1:sloid:6907:0:2877",
+          "toId": "ch:1:sloid:5529:0:2863",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 31
+        },
+        {
+          "routeId": "92-35-D-j26-1",
+          "route": "35",
+          "from": "Bussigny, St-Germain",
+          "to": "Bussigny, Grand-Record",
+          "fromId": "ch:1:sloid:5529:0:2863",
+          "toId": "ch:1:sloid:81918:0:2853",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 31
+        },
+        {
+          "routeId": "92-35-D-j26-1",
+          "route": "35",
+          "from": "Bussigny, Grand-Record",
+          "to": "Bussigny, gare",
+          "fromId": "ch:1:sloid:81918:0:2853",
+          "toId": "ch:1:sloid:81914:0:2889",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 31
+        }
+      ],
+      "coverage": 0.9754496146160434
+    },
+    {
+      "id": "m1",
+      "trips": 213,
+      "routes": [
+        "91-m1-j26-1"
+      ],
+      "totalSegments": 2943,
+      "indexedSegments": 2943,
+      "acceptedSegments": 2732,
+      "issues": [
+        {
+          "routeId": "91-m1-j26-1",
+          "route": "m1",
+          "from": "Renens VD, gare",
+          "to": "Ecublens VD, Epenex",
+          "fromId": "ch:1:sloid:30749:0:1734",
+          "toId": "ch:1:sloid:1218:0:1789",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 128.8,
+          "occurrences": 104
+        },
+        {
+          "routeId": "91-m1-j26-1",
+          "route": "m1",
+          "from": "Ecublens VD, Epenex",
+          "to": "Renens VD, gare",
+          "fromId": "ch:1:sloid:1218:0:1778",
+          "toId": "ch:1:sloid:30749:0:1734",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 128.8,
+          "occurrences": 107
+        }
+      ],
+      "coverage": 0.9283044512402311
+    },
+    {
+      "id": "m2",
+      "trips": 505,
+      "routes": [
+        "91-m2-j26-1"
+      ],
+      "totalSegments": 6565,
+      "indexedSegments": 4545,
+      "acceptedSegments": 4040,
+      "issues": [
+        {
+          "routeId": "91-m2-j26-1",
+          "route": "m2",
+          "from": "Lausanne, Jordils",
+          "to": "Lausanne, Délices",
+          "fromId": "ch:1:sloid:92061:0:1159",
+          "toId": "ch:1:sloid:92028:0:1139",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 251
+        },
+        {
+          "routeId": "91-m2-j26-1",
+          "route": "m2",
+          "from": "Lausanne, Délices",
+          "to": "Lausanne, Grancy",
+          "fromId": "ch:1:sloid:92028:0:1139",
+          "toId": "ch:1:sloid:92052:0:1121",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 255.5,
+          "occurrences": 251
+        },
+        {
+          "routeId": "91-m2-j26-1",
+          "route": "m2",
+          "from": "Lausanne, Grancy",
+          "to": "Lausanne, gare",
+          "fromId": "ch:1:sloid:92052:0:1121",
+          "toId": "ch:1:sloid:92050:0:1096",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 251
+        },
+        {
+          "routeId": "91-m2-j26-1",
+          "route": "m2",
+          "from": "Lausanne, gare",
+          "to": "Lausanne, Flon",
+          "fromId": "ch:1:sloid:92050:0:1096",
+          "toId": "ch:1:sloid:91818:0:1061",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 251
+        },
+        {
+          "routeId": "91-m2-j26-1",
+          "route": "m2",
+          "from": "Lausanne, Flon",
+          "to": "Lausanne, Riponne-M. Béjart",
+          "fromId": "ch:1:sloid:91818:0:1061",
+          "toId": "ch:1:sloid:90442:0:1026",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 251
+        },
+        {
+          "routeId": "91-m2-j26-1",
+          "route": "m2",
+          "from": "Lausanne, Riponne-M. Béjart",
+          "to": "Lausanne, Flon",
+          "fromId": "ch:1:sloid:90442:0:1025",
+          "toId": "ch:1:sloid:91818:0:1063",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 254
+        },
+        {
+          "routeId": "91-m2-j26-1",
+          "route": "m2",
+          "from": "Lausanne, Flon",
+          "to": "Lausanne, gare",
+          "fromId": "ch:1:sloid:91818:0:1063",
+          "toId": "ch:1:sloid:92050:0:1101",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 254
+        },
+        {
+          "routeId": "91-m2-j26-1",
+          "route": "m2",
+          "from": "Lausanne, gare",
+          "to": "Lausanne, Grancy",
+          "fromId": "ch:1:sloid:92050:0:1101",
+          "toId": "ch:1:sloid:92052:0:1122",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 254
+        },
+        {
+          "routeId": "91-m2-j26-1",
+          "route": "m2",
+          "from": "Lausanne, Grancy",
+          "to": "Lausanne, Délices",
+          "fromId": "ch:1:sloid:92052:0:1122",
+          "toId": "ch:1:sloid:92028:0:1141",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 254.2,
+          "occurrences": 254
+        },
+        {
+          "routeId": "91-m2-j26-1",
+          "route": "m2",
+          "from": "Lausanne, Délices",
+          "to": "Lausanne, Jordils",
+          "fromId": "ch:1:sloid:92028:0:1141",
+          "toId": "ch:1:sloid:92061:0:1161",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 254
+        }
+      ],
+      "coverage": 0.6153846153846154
+    },
+    {
+      "id": "leb",
+      "trips": 79,
+      "routes": [
+        "91-20-I-j26-1"
+      ],
+      "totalSegments": 1365,
+      "indexedSegments": 1365,
+      "acceptedSegments": 1140,
+      "issues": [
+        {
+          "routeId": "91-20-I-j26-1",
+          "route": "R20",
+          "from": "Cheseaux",
+          "to": "Les Ripes",
+          "fromId": "ch:1:sloid:1169:0:1421",
+          "toId": "ch:1:sloid:87727:0:1388",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 137.6,
+          "occurrences": 37
+        },
+        {
+          "routeId": "91-20-I-j26-1",
+          "route": "R20",
+          "from": "Les Ripes",
+          "to": "Etagnières",
+          "fromId": "ch:1:sloid:87727:0:1388",
+          "toId": "ch:1:sloid:1171:0:1321",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 308.1,
+          "occurrences": 37
+        },
+        {
+          "routeId": "91-20-I-j26-1",
+          "route": "R20",
+          "from": "Etagnières",
+          "to": "Assens",
+          "fromId": "ch:1:sloid:1171:0:1321",
+          "toId": "ch:1:sloid:1172:0:1325",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 308.1,
+          "occurrences": 37
+        },
+        {
+          "routeId": "91-20-I-j26-1",
+          "route": "R20",
+          "from": "Assens",
+          "to": "Etagnières",
+          "fromId": "ch:1:sloid:1172:0:1238",
+          "toId": "ch:1:sloid:1171:0:1321",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 308.1,
+          "occurrences": 38
+        },
+        {
+          "routeId": "91-20-I-j26-1",
+          "route": "R20",
+          "from": "Etagnières",
+          "to": "Les Ripes",
+          "fromId": "ch:1:sloid:1171:0:1321",
+          "toId": "ch:1:sloid:87727:0:1387",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 308.1,
+          "occurrences": 38
+        },
+        {
+          "routeId": "91-20-I-j26-1",
+          "route": "R20",
+          "from": "Les Ripes",
+          "to": "Cheseaux",
+          "fromId": "ch:1:sloid:87727:0:1387",
+          "toId": "ch:1:sloid:1169:0:1529",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 137.6,
+          "occurrences": 38
+        }
+      ],
+      "coverage": 0.8351648351648352
+    },
+    {
+      "id": "rail",
+      "trips": 750,
+      "routes": [
+        "91-1-D-j26-1",
+        "91-1-M-j26-1",
+        "91-15-B-j26-1",
+        "91-2-R-j26-1",
+        "91-2B-Y-j26-1",
+        "91-2H-Y-j26-1",
+        "91-2Q-Y-j26-1",
+        "91-3-T-j26-1",
+        "91-33-C-j26-1",
+        "91-3N-Y-j26-1",
+        "91-4-L-j26-1",
+        "91-40-C-j26-1",
+        "91-41-D-j26-1",
+        "91-41-Y-j26-1",
+        "91-49-Y-j26-1",
+        "91-4P-Y-j26-1",
+        "91-5-A-j26-1",
+        "91-51-B-j26-1",
+        "91-56-A-j26-1",
+        "91-7-N-j26-1",
+        "91-7-Y-j26-1",
+        "91-8-J-j26-1",
+        "91-9-K-j26-1",
+        "91-90-j26-1",
+        "91-95-j26-1",
+        "91-CB-Y-j26-1",
+        "91-N1-j26-1"
+      ],
+      "totalSegments": 3880,
+      "indexedSegments": 3844,
+      "acceptedSegments": 3643,
+      "issues": [
+        {
+          "routeId": "91-1-M-j26-1",
+          "route": "R1",
+          "from": "Chavornay",
+          "to": "Bavois",
+          "fromId": "ch:1:sloid:1112:3:3",
+          "toId": "ch:1:sloid:1113:2:2",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 121.6,
+          "occurrences": 19
+        },
+        {
+          "routeId": "91-1-M-j26-1",
+          "route": "R1",
+          "from": "Bavois",
+          "to": "Chavornay",
+          "fromId": "ch:1:sloid:1113:1:1",
+          "toId": "ch:1:sloid:1112:2:2",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 120.3,
+          "occurrences": 19
+        },
+        {
+          "routeId": "91-1-M-j26-1",
+          "route": "R1",
+          "from": "Bavois",
+          "to": "Chavornay",
+          "fromId": "ch:1:sloid:1113:2:2",
+          "toId": "ch:1:sloid:1112:3:3",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 121.6,
+          "occurrences": 1
+        },
+        {
+          "routeId": "91-2-R-j26-1",
+          "route": "R2",
+          "from": "Chavornay",
+          "to": "Bavois",
+          "fromId": "ch:1:sloid:1112:3:3",
+          "toId": "ch:1:sloid:1113:2:2",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 121.6,
+          "occurrences": 20
+        },
+        {
+          "routeId": "91-2-R-j26-1",
+          "route": "R2",
+          "from": "Bavois",
+          "to": "Chavornay",
+          "fromId": "ch:1:sloid:1113:1:1",
+          "toId": "ch:1:sloid:1112:2:2",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 120.3,
+          "occurrences": 19
+        },
+        {
+          "routeId": "91-2-R-j26-1",
+          "route": "R2",
+          "from": "Bavois",
+          "to": "Chavornay",
+          "fromId": "ch:1:sloid:1113:2:2",
+          "toId": "ch:1:sloid:1112:3:3",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 121.6,
+          "occurrences": 1
+        },
+        {
+          "routeId": "91-2B-Y-j26-1",
+          "route": "SN",
+          "from": "Lausanne",
+          "to": "Pully-Nord",
+          "fromId": "ch:1:sloid:1120:0:20298",
+          "toId": "ch:1:sloid:4000:2:2",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 214.9,
+          "occurrences": 1
+        },
+        {
+          "routeId": "91-33-C-j26-1",
+          "route": "RE33",
+          "from": "Renens VD",
+          "to": "Morges",
+          "fromId": "ch:1:sloid:1118:1:1",
+          "toId": "ch:1:sloid:1037:1:1",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 134,
+          "occurrences": 11
+        },
+        {
+          "routeId": "91-33-C-j26-1",
+          "route": "RE33",
+          "from": "Renens VD",
+          "to": "Morges",
+          "fromId": "ch:1:sloid:1118:2:2",
+          "toId": "ch:1:sloid:1037:1:1",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 134,
+          "occurrences": 11
+        },
+        {
+          "routeId": "91-3N-Y-j26-1",
+          "route": "SN",
+          "from": "Morges-St-Jean",
+          "to": "Morges",
+          "fromId": "ch:1:sloid:1047:1:1",
+          "toId": "ch:1:sloid:1037:1:1",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 134,
+          "occurrences": 2
+        },
+        {
+          "routeId": "91-3N-Y-j26-1",
+          "route": "SN",
+          "from": "Morges",
+          "to": "St-Prex",
+          "fromId": "ch:1:sloid:1037:1:1",
+          "toId": "ch:1:sloid:1036:1:1",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 134,
+          "occurrences": 2
+        },
+        {
+          "routeId": "91-40-C-j26-1",
+          "route": "S40",
+          "from": "Pully-Nord",
+          "to": "Lausanne",
+          "fromId": "ch:1:sloid:4000:1:1",
+          "toId": "ch:1:sloid:1120:0:20298",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 214.9,
+          "occurrences": 15
+        },
+        {
+          "routeId": "91-40-C-j26-1",
+          "route": "S40",
+          "from": "Lausanne",
+          "to": "Pully-Nord",
+          "fromId": "ch:1:sloid:1120:0:20298",
+          "toId": "ch:1:sloid:4000:2:2",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 214.9,
+          "occurrences": 17
+        },
+        {
+          "routeId": "91-41-D-j26-1",
+          "route": "S41",
+          "from": "Lausanne",
+          "to": "Pully-Nord",
+          "fromId": "ch:1:sloid:1120:0:20298",
+          "toId": "ch:1:sloid:4000:2:2",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 214.9,
+          "occurrences": 15
+        },
+        {
+          "routeId": "91-41-D-j26-1",
+          "route": "S41",
+          "from": "Pully-Nord",
+          "to": "Lausanne",
+          "fromId": "ch:1:sloid:4000:1:1",
+          "toId": "ch:1:sloid:1120:0:20298",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 214.9,
+          "occurrences": 18
+        },
+        {
+          "routeId": "91-49-Y-j26-1",
+          "route": "SN",
+          "from": "Bavois",
+          "to": "Chavornay",
+          "fromId": "ch:1:sloid:1113:2:2",
+          "toId": "ch:1:sloid:1112:3:3",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 121.6,
+          "occurrences": 2
+        },
+        {
+          "routeId": "91-49-Y-j26-1",
+          "route": "SN",
+          "from": "Chavornay",
+          "to": "Bavois",
+          "fromId": "ch:1:sloid:1112:3:3",
+          "toId": "ch:1:sloid:1113:2:2",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 121.6,
+          "occurrences": 2
+        },
+        {
+          "routeId": "91-4P-Y-j26-1",
+          "route": "SN",
+          "from": "Pully-Nord",
+          "to": "Lausanne",
+          "fromId": "ch:1:sloid:4000:1:1",
+          "toId": "ch:1:sloid:1120:0:20298",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 214.9,
+          "occurrences": 1
+        },
+        {
+          "routeId": "91-4P-Y-j26-1",
+          "route": "SN",
+          "from": "Lausanne",
+          "to": "Pully-Nord",
+          "fromId": "ch:1:sloid:1120:0:20298",
+          "toId": "ch:1:sloid:4000:2:2",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 214.9,
+          "occurrences": 1
+        },
+        {
+          "routeId": "91-56-A-j26-1",
+          "route": "R56",
+          "from": "Morges",
+          "to": "La Gottaz",
+          "fromId": "ch:1:sloid:1037:4:5",
+          "toId": "ch:1:sloid:1054:0:319603",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 18
+        },
+        {
+          "routeId": "91-56-A-j26-1",
+          "route": "R56",
+          "from": "La Gottaz",
+          "to": "Morges",
+          "fromId": "ch:1:sloid:1054:0:319603",
+          "toId": "ch:1:sloid:1037:4:5",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 18
+        },
+        {
+          "routeId": "91-8-J-j26-1",
+          "route": "R8",
+          "from": "Lonay-Préverenges",
+          "to": "Morges",
+          "fromId": "ch:1:sloid:1048:1:1",
+          "toId": "ch:1:sloid:1037:1:1",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 134,
+          "occurrences": 3
+        },
+        {
+          "routeId": "91-8-J-j26-1",
+          "route": "R8",
+          "from": "Morges",
+          "to": "Lonay-Préverenges",
+          "fromId": "ch:1:sloid:1037:1:1",
+          "toId": "ch:1:sloid:1048:2:2",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 134,
+          "occurrences": 2
+        },
+        {
+          "routeId": "91-9-K-j26-1",
+          "route": "R9",
+          "from": "St-Prex",
+          "to": "Morges",
+          "fromId": "ch:1:sloid:1036:2:2",
+          "toId": "ch:1:sloid:1037:1:1",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 134,
+          "occurrences": 4
+        },
+        {
+          "routeId": "91-9-K-j26-1",
+          "route": "R9",
+          "from": "Lausanne",
+          "to": "Puidoux",
+          "fromId": "ch:1:sloid:1120:0:20298",
+          "toId": "ch:1:sloid:4012:1:1",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 214.9,
+          "occurrences": 1
+        },
+        {
+          "routeId": "91-9-K-j26-1",
+          "route": "R9",
+          "from": "Morges",
+          "to": "St-Prex",
+          "fromId": "ch:1:sloid:1037:1:1",
+          "toId": "ch:1:sloid:1036:1:1",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 134,
+          "occurrences": 4
+        },
+        {
+          "routeId": "91-95-j26-1",
+          "route": "IR95",
+          "from": "Renens VD",
+          "to": "Morges",
+          "fromId": "ch:1:sloid:1118:1:1",
+          "toId": "ch:1:sloid:1037:1:1",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 134,
+          "occurrences": 10
+        }
+      ],
+      "coverage": 0.9389175257731959
+    }
+  ],
+  "payload": {
+    "manifestGzipBytes": 67970,
+    "morningGzipBytes": 129612,
+    "chunks": [
+      {
+        "id": "00-02",
+        "trips": 13,
+        "gzipBytes": 1345
+      },
+      {
+        "id": "02-04",
+        "trips": 13,
+        "gzipBytes": 1387
+      },
+      {
+        "id": "04-06",
+        "trips": 266,
+        "gzipBytes": 24591
+      },
+      {
+        "id": "06-08",
+        "trips": 688,
+        "gzipBytes": 59778
+      },
+      {
+        "id": "08-10",
+        "trips": 815,
+        "gzipBytes": 70214
+      },
+      {
+        "id": "10-12",
+        "trips": 900,
+        "gzipBytes": 79252
+      },
+      {
+        "id": "12-14",
+        "trips": 922,
+        "gzipBytes": 80859
+      },
+      {
+        "id": "14-16",
+        "trips": 927,
+        "gzipBytes": 81249
+      },
+      {
+        "id": "16-18",
+        "trips": 927,
+        "gzipBytes": 81730
+      },
+      {
+        "id": "18-20",
+        "trips": 925,
+        "gzipBytes": 81553
+      },
+      {
+        "id": "20-22",
+        "trips": 874,
+        "gzipBytes": 76476
+      },
+      {
+        "id": "22-24",
+        "trips": 738,
+        "gzipBytes": 64678
+      }
+    ]
+  },
+  "gate": {
+    "passed": false,
+    "failures": [
+      "m1: requires services and at least 95% geometry with endpoints within 120 m",
+      "m2: requires services and at least 95% geometry with endpoints within 120 m",
+      "leb: requires services and at least 95% geometry with endpoints within 120 m",
+      "rail: requires services and at least 95% geometry with endpoints within 120 m"
+    ],
+    "limits": {
+      "minimumGeometryCoveragePerGroup": 0.95,
+      "maximumEndpointGapMetres": 120,
+      "gzipBytes": {
+        "manifest": 665600,
+        "chunk": 460800,
+        "morning": 1638400
+      }
+    },
+    "publicationReady": false,
+    "pending": [
+      "Review the selected rail alignments and inferred bus routes visually",
+      "Audit weekend service and scope at boundary termini",
+      "Integrate lazy study selection, framing, translations, sharing, Now and refresh recovery; verify on desktop and phone"
+    ]
+  }
+}

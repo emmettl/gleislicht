@@ -1,0 +1,656 @@
+{
+  "schemaVersion": 1,
+  "metadata": {
+    "serviceDate": "2026-09-08",
+    "feedVersion": "20260905",
+    "sourceHashes": {
+      "archive": "4fa074044fc3a1ceae3c91597b72cf42b9bbce0477b9d43b7b4f658e3e9acfa5",
+      "rail": "2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+      "snapshot": "026daedd780b024509a547372b9b0398051e7ff04f7badceec2813a58bfc31f6",
+      "busCache": "b71bf1a4ee293c8e641f415d6060ece08cc9dc8e0aa262aa24fdc0ee6938fb4b"
+    },
+    "nodeVersion": "v24.20.0"
+  },
+  "scope": {
+    "bounds": "6.45,46.48,6.85,46.71",
+    "description": "Lausanne region: tl buses, m1/m2, LEB and rail inside the study bounds; excludes lake services and funiculars. Not canton-wide Vaud coverage.",
+    "extractedTrips": 8951,
+    "candidateTrips": 8544,
+    "excludedTrips": 407,
+    "platforms": 1074,
+    "namedStops": 506
+  },
+  "groups": [
+    {
+      "id": "tl-bus",
+      "trips": 6624,
+      "routes": [
+        "92-1-V-j26-1",
+        "92-13-H-j26-1",
+        "92-16-E-j26-1",
+        "92-17-D-j26-1",
+        "92-18-B-j26-1",
+        "92-19-D-j26-1",
+        "92-2-T-j26-1",
+        "92-20-C-j26-1",
+        "92-21-I-j26-1",
+        "92-24-G-j26-1",
+        "92-25-E-j26-1",
+        "92-3-S-j26-1",
+        "92-31-I-j26-1",
+        "92-32-I-j26-1",
+        "92-33-G-j26-1",
+        "92-35-D-j26-1",
+        "92-36-D-j26-1",
+        "92-38-E-j26-1",
+        "92-4-T-j26-1",
+        "92-41-G-j26-1",
+        "92-42-E-j26-1",
+        "92-44-F-j26-1",
+        "92-45-C-j26-1",
+        "92-46-F-j26-1",
+        "92-47-D-j26-1",
+        "92-48-E-j26-1",
+        "92-49-j26-1",
+        "92-54-B-j26-1",
+        "92-56-A-j26-1",
+        "92-58-C-j26-1",
+        "92-6-Q-j26-1",
+        "92-60-C-j26-1",
+        "92-64-F-j26-1",
+        "92-68-A-j26-1",
+        "92-69-A-j26-1",
+        "92-7-P-j26-1",
+        "92-8-L-j26-1",
+        "92-9-P-j26-1"
+      ],
+      "totalSegments": 110388,
+      "indexedSegments": 110388,
+      "acceptedSegments": 110388,
+      "issues": [],
+      "coverage": 1
+    },
+    {
+      "id": "m1",
+      "trips": 328,
+      "routes": [
+        "91-m1-j26-1"
+      ],
+      "totalSegments": 4457,
+      "indexedSegments": 4457,
+      "acceptedSegments": 4132,
+      "issues": [
+        {
+          "routeId": "91-m1-j26-1",
+          "route": "m1",
+          "from": "Renens VD, gare",
+          "to": "Ecublens VD, Epenex",
+          "fromId": "ch:1:sloid:30749:0:1734",
+          "toId": "ch:1:sloid:1218:0:1789",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 128.8,
+          "occurrences": 161
+        },
+        {
+          "routeId": "91-m1-j26-1",
+          "route": "m1",
+          "from": "Ecublens VD, Epenex",
+          "to": "Renens VD, gare",
+          "fromId": "ch:1:sloid:1218:0:1778",
+          "toId": "ch:1:sloid:30749:0:1734",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 128.8,
+          "occurrences": 164
+        }
+      ],
+      "coverage": 0.9270809961857752
+    },
+    {
+      "id": "m2",
+      "trips": 749,
+      "routes": [
+        "91-m2-j26-1"
+      ],
+      "totalSegments": 8189,
+      "indexedSegments": 5637,
+      "acceptedSegments": 5110,
+      "issues": [
+        {
+          "routeId": "91-m2-j26-1",
+          "route": "m2",
+          "from": "Lausanne, gare",
+          "to": "Lausanne, Flon",
+          "fromId": "ch:1:sloid:92050:0:1096",
+          "toId": "ch:1:sloid:91818:0:1061",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 373
+        },
+        {
+          "routeId": "91-m2-j26-1",
+          "route": "m2",
+          "from": "Lausanne, Flon",
+          "to": "Lausanne, Riponne-M. Béjart",
+          "fromId": "ch:1:sloid:91818:0:1061",
+          "toId": "ch:1:sloid:90442:0:1026",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 373
+        },
+        {
+          "routeId": "91-m2-j26-1",
+          "route": "m2",
+          "from": "Lausanne, Jordils",
+          "to": "Lausanne, Délices",
+          "fromId": "ch:1:sloid:92061:0:1159",
+          "toId": "ch:1:sloid:92028:0:1139",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 262
+        },
+        {
+          "routeId": "91-m2-j26-1",
+          "route": "m2",
+          "from": "Lausanne, Délices",
+          "to": "Lausanne, Grancy",
+          "fromId": "ch:1:sloid:92028:0:1139",
+          "toId": "ch:1:sloid:92052:0:1121",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 255.5,
+          "occurrences": 262
+        },
+        {
+          "routeId": "91-m2-j26-1",
+          "route": "m2",
+          "from": "Lausanne, Grancy",
+          "to": "Lausanne, gare",
+          "fromId": "ch:1:sloid:92052:0:1121",
+          "toId": "ch:1:sloid:92050:0:1096",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 262
+        },
+        {
+          "routeId": "91-m2-j26-1",
+          "route": "m2",
+          "from": "Lausanne, Riponne-M. Béjart",
+          "to": "Lausanne, Flon",
+          "fromId": "ch:1:sloid:90442:0:1025",
+          "toId": "ch:1:sloid:91818:0:1063",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 376
+        },
+        {
+          "routeId": "91-m2-j26-1",
+          "route": "m2",
+          "from": "Lausanne, Flon",
+          "to": "Lausanne, gare",
+          "fromId": "ch:1:sloid:91818:0:1063",
+          "toId": "ch:1:sloid:92050:0:1096",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 111
+        },
+        {
+          "routeId": "91-m2-j26-1",
+          "route": "m2",
+          "from": "Lausanne, Flon",
+          "to": "Lausanne, gare",
+          "fromId": "ch:1:sloid:91818:0:1063",
+          "toId": "ch:1:sloid:92050:0:1101",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 265
+        },
+        {
+          "routeId": "91-m2-j26-1",
+          "route": "m2",
+          "from": "Lausanne, gare",
+          "to": "Lausanne, Grancy",
+          "fromId": "ch:1:sloid:92050:0:1101",
+          "toId": "ch:1:sloid:92052:0:1122",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 265
+        },
+        {
+          "routeId": "91-m2-j26-1",
+          "route": "m2",
+          "from": "Lausanne, Grancy",
+          "to": "Lausanne, Délices",
+          "fromId": "ch:1:sloid:92052:0:1122",
+          "toId": "ch:1:sloid:92028:0:1141",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 254.2,
+          "occurrences": 265
+        },
+        {
+          "routeId": "91-m2-j26-1",
+          "route": "m2",
+          "from": "Lausanne, Délices",
+          "to": "Lausanne, Jordils",
+          "fromId": "ch:1:sloid:92028:0:1141",
+          "toId": "ch:1:sloid:92061:0:1161",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 265
+        }
+      ],
+      "coverage": 0.6240078153620711
+    },
+    {
+      "id": "leb",
+      "trips": 141,
+      "routes": [
+        "91-20-I-j26-1"
+      ],
+      "totalSegments": 2171,
+      "indexedSegments": 2171,
+      "acceptedSegments": 1760,
+      "issues": [
+        {
+          "routeId": "91-20-I-j26-1",
+          "route": "R20",
+          "from": "Cheseaux",
+          "to": "Les Ripes",
+          "fromId": "ch:1:sloid:1169:0:1421",
+          "toId": "ch:1:sloid:87727:0:1388",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 137.6,
+          "occurrences": 68
+        },
+        {
+          "routeId": "91-20-I-j26-1",
+          "route": "R20",
+          "from": "Les Ripes",
+          "to": "Etagnières",
+          "fromId": "ch:1:sloid:87727:0:1388",
+          "toId": "ch:1:sloid:1171:0:1321",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 308.1,
+          "occurrences": 68
+        },
+        {
+          "routeId": "91-20-I-j26-1",
+          "route": "R20",
+          "from": "Etagnières",
+          "to": "Assens",
+          "fromId": "ch:1:sloid:1171:0:1321",
+          "toId": "ch:1:sloid:1172:0:1325",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 308.1,
+          "occurrences": 68
+        },
+        {
+          "routeId": "91-20-I-j26-1",
+          "route": "R20",
+          "from": "Assens",
+          "to": "Etagnières",
+          "fromId": "ch:1:sloid:1172:0:1238",
+          "toId": "ch:1:sloid:1171:0:1321",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 308.1,
+          "occurrences": 69
+        },
+        {
+          "routeId": "91-20-I-j26-1",
+          "route": "R20",
+          "from": "Etagnières",
+          "to": "Les Ripes",
+          "fromId": "ch:1:sloid:1171:0:1321",
+          "toId": "ch:1:sloid:87727:0:1387",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 308.1,
+          "occurrences": 69
+        },
+        {
+          "routeId": "91-20-I-j26-1",
+          "route": "R20",
+          "from": "Les Ripes",
+          "to": "Cheseaux",
+          "fromId": "ch:1:sloid:87727:0:1387",
+          "toId": "ch:1:sloid:1169:0:1529",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 137.6,
+          "occurrences": 69
+        }
+      ],
+      "coverage": 0.8106863196683556
+    },
+    {
+      "id": "rail",
+      "trips": 702,
+      "routes": [
+        "91-1-D-j26-1",
+        "91-1-M-j26-1",
+        "91-15-B-j26-1",
+        "91-2-R-j26-1",
+        "91-2Q-Y-j26-1",
+        "91-3-T-j26-1",
+        "91-33-C-j26-1",
+        "91-4-L-j26-1",
+        "91-40-C-j26-1",
+        "91-41-D-j26-1",
+        "91-5-A-j26-1",
+        "91-51-B-j26-1",
+        "91-56-A-j26-1",
+        "91-7-N-j26-1",
+        "91-7-Y-j26-1",
+        "91-8-J-j26-1",
+        "91-9-K-j26-1",
+        "91-90-j26-1",
+        "91-95-j26-1",
+        "91-B-Y-j26-1"
+      ],
+      "totalSegments": 3978,
+      "indexedSegments": 3910,
+      "acceptedSegments": 3684,
+      "issues": [
+        {
+          "routeId": "91-1-M-j26-1",
+          "route": "R1",
+          "from": "Chavornay",
+          "to": "Bavois",
+          "fromId": "ch:1:sloid:1112:3:3",
+          "toId": "ch:1:sloid:1113:2:2",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 121.6,
+          "occurrences": 19
+        },
+        {
+          "routeId": "91-1-M-j26-1",
+          "route": "R1",
+          "from": "Bavois",
+          "to": "Chavornay",
+          "fromId": "ch:1:sloid:1113:1:1",
+          "toId": "ch:1:sloid:1112:2:2",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 120.3,
+          "occurrences": 20
+        },
+        {
+          "routeId": "91-15-B-j26-1",
+          "route": "IR15",
+          "from": "Lausanne",
+          "to": "Morges",
+          "fromId": "ch:1:sloid:1120:0:42631",
+          "toId": "ch:1:sloid:1037:1:1",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 134,
+          "occurrences": 14
+        },
+        {
+          "routeId": "91-2-R-j26-1",
+          "route": "R2",
+          "from": "Chavornay",
+          "to": "Bavois",
+          "fromId": "ch:1:sloid:1112:3:3",
+          "toId": "ch:1:sloid:1113:2:2",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 121.6,
+          "occurrences": 20
+        },
+        {
+          "routeId": "91-2-R-j26-1",
+          "route": "R2",
+          "from": "Bavois",
+          "to": "Chavornay",
+          "fromId": "ch:1:sloid:1113:1:1",
+          "toId": "ch:1:sloid:1112:2:2",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 120.3,
+          "occurrences": 20
+        },
+        {
+          "routeId": "91-2Q-Y-j26-1",
+          "route": "IR",
+          "from": "Lausanne",
+          "to": "Morges",
+          "fromId": "ch:1:sloid:1120:0:638488",
+          "toId": "ch:1:sloid:1037:1:1",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 134,
+          "occurrences": 1
+        },
+        {
+          "routeId": "91-33-C-j26-1",
+          "route": "RE33",
+          "from": "Renens VD",
+          "to": "Morges",
+          "fromId": "ch:1:sloid:1118:2:2",
+          "toId": "ch:1:sloid:1037:1:1",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 134,
+          "occurrences": 39
+        },
+        {
+          "routeId": "91-40-C-j26-1",
+          "route": "S40",
+          "from": "Pully-Nord",
+          "to": "Lausanne",
+          "fromId": "ch:1:sloid:4000:1:1",
+          "toId": "ch:1:sloid:1120:0:20298",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 214.9,
+          "occurrences": 19
+        },
+        {
+          "routeId": "91-40-C-j26-1",
+          "route": "S40",
+          "from": "Lausanne",
+          "to": "Pully-Nord",
+          "fromId": "ch:1:sloid:1120:0:20298",
+          "toId": "ch:1:sloid:4000:2:2",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 214.9,
+          "occurrences": 18
+        },
+        {
+          "routeId": "91-41-D-j26-1",
+          "route": "S41",
+          "from": "Lausanne",
+          "to": "Pully-Nord",
+          "fromId": "ch:1:sloid:1120:0:20298",
+          "toId": "ch:1:sloid:4000:2:2",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 214.9,
+          "occurrences": 19
+        },
+        {
+          "routeId": "91-41-D-j26-1",
+          "route": "S41",
+          "from": "Pully-Nord",
+          "to": "Lausanne",
+          "fromId": "ch:1:sloid:4000:1:1",
+          "toId": "ch:1:sloid:1120:0:20298",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 214.9,
+          "occurrences": 18
+        },
+        {
+          "routeId": "91-56-A-j26-1",
+          "route": "R56",
+          "from": "Morges",
+          "to": "La Gottaz",
+          "fromId": "ch:1:sloid:1037:4:5",
+          "toId": "ch:1:sloid:1054:0:319603",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 34
+        },
+        {
+          "routeId": "91-56-A-j26-1",
+          "route": "R56",
+          "from": "La Gottaz",
+          "to": "Morges",
+          "fromId": "ch:1:sloid:1054:0:319603",
+          "toId": "ch:1:sloid:1037:4:5",
+          "accepted": false,
+          "reason": "missing-path",
+          "occurrences": 34
+        },
+        {
+          "routeId": "91-9-K-j26-1",
+          "route": "R9",
+          "from": "Lausanne",
+          "to": "Puidoux",
+          "fromId": "ch:1:sloid:1120:0:20298",
+          "toId": "ch:1:sloid:4012:2:2",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 214.9,
+          "occurrences": 1
+        },
+        {
+          "routeId": "91-95-j26-1",
+          "route": "IR95",
+          "from": "Lausanne",
+          "to": "Morges",
+          "fromId": "ch:1:sloid:1120:0:840061",
+          "toId": "ch:1:sloid:1037:1:1",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 134,
+          "occurrences": 3
+        },
+        {
+          "routeId": "91-95-j26-1",
+          "route": "IR95",
+          "from": "Renens VD",
+          "to": "Morges",
+          "fromId": "ch:1:sloid:1118:2:2",
+          "toId": "ch:1:sloid:1037:1:1",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 134,
+          "occurrences": 14
+        },
+        {
+          "routeId": "91-95-j26-1",
+          "route": "IR95",
+          "from": "Renens VD",
+          "to": "Morges",
+          "fromId": "ch:1:sloid:1118:3:5",
+          "toId": "ch:1:sloid:1037:1:1",
+          "accepted": false,
+          "reason": "endpoint-gap",
+          "endpointGapMetres": 134,
+          "occurrences": 1
+        }
+      ],
+      "coverage": 0.9260935143288085
+    }
+  ],
+  "payload": {
+    "manifestGzipBytes": 73669,
+    "morningGzipBytes": 179859,
+    "chunks": [
+      {
+        "id": "00-02",
+        "trips": 0,
+        "gzipBytes": 60
+      },
+      {
+        "id": "02-04",
+        "trips": 1,
+        "gzipBytes": 248
+      },
+      {
+        "id": "04-06",
+        "trips": 360,
+        "gzipBytes": 31865
+      },
+      {
+        "id": "06-08",
+        "trips": 1189,
+        "gzipBytes": 99248
+      },
+      {
+        "id": "08-10",
+        "trips": 1218,
+        "gzipBytes": 105244
+      },
+      {
+        "id": "10-12",
+        "trips": 1086,
+        "gzipBytes": 97429
+      },
+      {
+        "id": "12-14",
+        "trips": 1113,
+        "gzipBytes": 98249
+      },
+      {
+        "id": "14-16",
+        "trips": 1173,
+        "gzipBytes": 102057
+      },
+      {
+        "id": "16-18",
+        "trips": 1249,
+        "gzipBytes": 107703
+      },
+      {
+        "id": "18-20",
+        "trips": 1207,
+        "gzipBytes": 102946
+      },
+      {
+        "id": "20-22",
+        "trips": 941,
+        "gzipBytes": 82142
+      },
+      {
+        "id": "22-24",
+        "trips": 742,
+        "gzipBytes": 65267
+      }
+    ]
+  },
+  "gate": {
+    "passed": false,
+    "failures": [
+      "m1: requires services and at least 95% geometry with endpoints within 120 m",
+      "m2: requires services and at least 95% geometry with endpoints within 120 m",
+      "leb: requires services and at least 95% geometry with endpoints within 120 m",
+      "rail: requires services and at least 95% geometry with endpoints within 120 m"
+    ],
+    "limits": {
+      "minimumGeometryCoveragePerGroup": 0.95,
+      "maximumEndpointGapMetres": 120,
+      "gzipBytes": {
+        "manifest": 665600,
+        "chunk": 460800,
+        "morning": 1638400
+      }
+    },
+    "publicationReady": false,
+    "pending": [
+      "Review the selected rail alignments and inferred bus routes visually",
+      "Audit weekend service and scope at boundary termini",
+      "Integrate lazy study selection, framing, translations, sharing, Now and refresh recovery; verify on desktop and phone"
+    ]
+  }
+}

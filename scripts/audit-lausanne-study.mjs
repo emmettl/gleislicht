@@ -1,0 +1,190 @@
+import assert from 'node:assert/strict'
+import { createHash } from 'node:crypto'
+import { createReadStream } from 'node:fs'
+import { mkdir, mkdtemp, readFile, rm, writeFile } from 'node:fs/promises'
+import { tmpdir } from 'node:os'
+import { dirname, join, resolve } from 'node:path'
+import { spawnSync } from 'node:child_process'
+import { gzipSync } from 'node:zlib'
+import { rowsFromArchive } from '@motionstudies/data/gtfs'
+import { chunkNetworkSnapshot, extractNetworkWindow } from '@motionstudies/data/network-chunks'
+import { applyRailGeometry, parseRailNetworkXtf } from './enrich-swiss-rail-geometry.mjs'
+import { applyRoadCache, distanceMetres } from './enrich-postbus-roads.mjs'
+import { prepareRoadFeed } from './prepare-postbus-road-feed.mjs'
+import { serviceDate } from './service-date.mjs'
+
+export const LAUSANNE_BOUNDS = '6.45,46.48,6.85,46.71'
+export const LAUSANNE_AGENCY = { id: '151', name: 'Transports publics de la région lausannoise', url: 'https://www.t-l.ch', language: 'fr' }
+const RAIL = new Set(['international', 'intercity', 'interregio', 'regional-express', 's-bahn', 'regional', 'other'])
+const GZIP_LIMITS = { manifest: 650 * 1024, chunk: 450 * 1024, morning: 1600 * 1024 }
+const gzipBytes = value => gzipSync(JSON.stringify(value)).length
+async function fileHash(path) {
+  const digest = createHash('sha256')
+  for await (const bytes of createReadStream(path)) digest.update(bytes)
+  return digest.digest('hex')
+}
+
+export function lausanneGroup(train, routes) {
+  const route = routes.get(train.routeId)
+  assert(route, `Unknown source route ${train.routeId}`)
+  if (train.category === 'bus' && route.agencyId === '151') return 'tl-bus'
+  if (train.category === 'metro' && route.agencyId === '151' && ['m1', 'm2'].includes(train.route)) return train.route
+  if (RAIL.has(train.category)) return route.agencyId === '55' ? 'leb' : 'rail'
+  return undefined
+}
+
+// Remove out-of-scope modes and their unused topology; retain each selected
+// journey's ordered platforms and times. Scope is a rectangle, not all Vaud.
+export function selectLausanneSnapshot(snapshot, routes) {
+  const selected = snapshot.trains.filter(train => lausanneGroup(train, routes))
+  assert(selected.length, 'No Lausanne services in the requested day')
+  const used = [...new Set(selected.flatMap(train => train.stops.map(([index]) => index)))].sort((a, b) => a - b)
+  const remap = new Map(used.map((index, next) => [index, next]))
+  const stops = used.map(index => snapshot.stops[index])
+  const trains = selected.map(({ pathSegments: _paths, ...train }) => ({ ...train, stops: train.stops.map(([index, ...times]) => [remap.get(index), ...times]) })).sort((a, b) => a.id.localeCompare(b.id))
+  assert.equal(new Set(trains.map(train => train.id)).size, trains.length, 'Duplicate source trip')
+  const pairs = new Set(trains.flatMap(train => train.stops.slice(1).map(([to], index) => [train.stops[index][0], to].sort((a, b) => a - b).join(':'))))
+  const edges = [...pairs].sort().map(pair => pair.split(':').map(Number))
+  return { metadata: { ...snapshot.metadata, modes: ['rail', 'metro', 'bus'], studyScope: 'Lausanne region: tl buses, m1/m2, LEB and rail inside the study bounds; excludes lake services and funiculars. Not canton-wide Vaud coverage.' }, bounds: {
+    minLongitude: Math.min(...stops.map(stop => stop[0])), maxLongitude: Math.max(...stops.map(stop => stop[0])),
+    minLatitude: Math.min(...stops.map(stop => stop[1])), maxLatitude: Math.max(...stops.map(stop => stop[1])),
+  }, stops, edges, trains }
+}
+
+// FOT paths are undirected. An index alone is insufficient evidence: snapping
+// two métro stops to one rail node can collapse a real passenger movement.
+export function assessLausannePath(path, from, to) {
+  if (!path || path.length < 2) return { accepted: false, reason: 'missing-path' }
+  assert(path.every(point => point.length === 2 && point.every(Number.isFinite)), 'Invalid path coordinates')
+  const gap = Math.min(
+    Math.max(distanceMetres(path[0], from), distanceMetres(path.at(-1), to)),
+    Math.max(distanceMetres(path.at(-1), from), distanceMetres(path[0], to)),
+  )
+  return { accepted: gap <= 120, reason: gap <= 120 ? undefined : 'endpoint-gap', endpointGapMetres: Math.round(gap * 10) / 10 }
+}
+
+export function summarizeLausanneGeometry(snapshot, routes) {
+  const groups = new Map(['tl-bus', 'm1', 'm2', 'leb', 'rail'].map(id => [id, { id, trips: 0, routes: new Set(), totalSegments: 0, indexedSegments: 0, acceptedSegments: 0, issues: new Map() }]))
+  for (const train of snapshot.trains) {
+    const group = groups.get(lausanneGroup(train, routes))
+    assert(group, 'Unexpected mode in candidate')
+    group.trips++
+    group.routes.add(train.routeId)
+    for (let i = 1; i < train.stops.length; i++) {
+      group.totalSegments++
+      const index = train.pathSegments?.[i - 1]
+      if (index !== null && index !== undefined) {
+        assert(Number.isInteger(index) && index >= 0 && snapshot.paths[index], 'Invalid path reference')
+        group.indexedSegments++
+      }
+      const from = snapshot.stops[train.stops[i - 1][0]], to = snapshot.stops[train.stops[i][0]]
+      const result = assessLausannePath(snapshot.paths[index], from, to)
+      if (result.accepted) group.acceptedSegments++
+      else {
+        const key = `${train.routeId}:${from[4]}:${to[4]}:${result.reason}`
+        const issue = group.issues.get(key) ?? { routeId: train.routeId, route: train.route, from: from[2], to: to[2], fromId: from[4], toId: to[4], ...result, occurrences: 0 }
+        issue.occurrences++
+        group.issues.set(key, issue)
+      }
+    }
+  }
+  return [...groups.values()].map(group => ({ ...group, routes: [...group.routes].sort(), issues: [...group.issues.values()], coverage: group.totalSegments ? group.acceptedSegments / group.totalSegments : 0 }))
+}
+
+export function lausanneTechnicalGate(groups, payload) {
+  return [
+    ...groups.filter(group => !group.trips || group.coverage < 0.95).map(group => `${group.id}: requires services and at least 95% geometry with endpoints within 120 m`),
+    ...(payload.manifestGzipBytes > GZIP_LIMITS.manifest ? ['Manifest exceeds existing regional budget'] : []),
+    ...(payload.morningGzipBytes > GZIP_LIMITS.morning ? ['Morning exceeds existing regional budget'] : []),
+    ...payload.chunks.filter(chunk => chunk.gzipBytes > GZIP_LIMITS.chunk).map(chunk => `${chunk.id} exceeds existing regional chunk budget`),
+  ]
+}
+
+export async function auditLausanneStudy({ archive, railPath, date, output, busCachePath, snapshotPath, prepareBusFeed = false }) {
+  serviceDate(date)
+  const workspace = await mkdtemp(join(tmpdir(), 'gleislicht-lausanne-'))
+  try {
+    const rawPath = snapshotPath ?? join(workspace, 'raw.json')
+    if (!snapshotPath) {
+      const run = spawnSync(process.execPath, ['scripts/ingest-gtfs.mjs', '--archive', archive, '--date', date, '--modes', 'all', '--bounds', LAUSANNE_BOUNDS, '--local-agencies', '151', '--window-start', '00:00', '--window-end', '24:00', '--hub-output', 'none', '--output', rawPath], { stdio: 'inherit' })
+      assert.equal(run.status, 0, 'Lausanne timetable extraction failed')
+    }
+    const raw = JSON.parse(await readFile(rawPath, 'utf8'))
+    const feed = []
+    for await (const row of rowsFromArchive(archive, 'feed_info.txt')) feed.push(row)
+    assert.equal(raw.metadata.feedVersion, feed[0]?.feed_version, 'Archive and snapshot feed versions differ')
+    assert.equal(raw.metadata.serviceDate, date, 'Snapshot has the wrong service day')
+    assert.equal(raw.metadata.windowStart, 0)
+    assert.equal(raw.metadata.windowEnd, 86400)
+    assert.deepEqual(raw.metadata.localAgencyIds, ['151'])
+    const [west, south, east, north] = LAUSANNE_BOUNDS.split(',').map(Number)
+    assert(raw.stops.every(([lon, lat]) => lon >= west && lon <= east && lat >= south && lat <= north), 'Snapshot extends outside the audited Lausanne bounds')
+    const routes = new Map()
+    for await (const row of rowsFromArchive(archive, 'routes.txt')) routes.set(row.route_id, { agencyId: row.agency_id, name: row.route_short_name, type: Number(row.route_type) })
+    // The compact runtime importer keeps routeId only for buses. Restore rail
+    // and métro identity from source trip IDs, never displayed line numbers.
+    const sourceIds = new Set(raw.trains.map(train => train.frequency?.sourceTripId ?? train.id))
+    const tripRoutes = new Map()
+    for await (const row of rowsFromArchive(archive, 'trips.txt')) if (sourceIds.has(row.trip_id)) tripRoutes.set(row.trip_id, row.route_id)
+    raw.trains = raw.trains.map(train => {
+      const routeId = tripRoutes.get(train.frequency?.sourceTripId ?? train.id)
+      assert(routeId, `Trip absent from source archive: ${train.id}`)
+      if (train.routeId) assert.equal(train.routeId, routeId, 'Snapshot and source route IDs differ')
+      return { ...train, routeId }
+    })
+    const snapshot = selectLausanneSnapshot(raw, routes)
+    const rail = parseRailNetworkXtf(await readFile(railPath, 'utf8'), 10)
+    const railTrains = snapshot.trains.filter(train => train.category !== 'bus')
+    const railGeometry = applyRailGeometry({ ...snapshot, trains: railTrains }, rail)
+    const busTrains = snapshot.trains.filter(train => train.category === 'bus')
+    const cache = busCachePath ? JSON.parse(await readFile(busCachePath, 'utf8')) : undefined
+    if (cache) {
+      assert.equal(cache.metadata.license, 'ODbL-1.0')
+      assert.match(cache.metadata.sourceSha256, /^[a-f0-9]{64}$/)
+    }
+    const busGeometry = cache ? applyRoadCache(snapshot, busTrains, cache) : { paths: [], edgePaths: snapshot.edges.map(() => null), trains: busTrains }
+    const offset = railGeometry.paths.length
+    const updated = new Map([...railGeometry.trains, ...busGeometry.trains.map(train => ({ ...train, pathSegments: train.pathSegments?.map(index => index === null ? null : index + offset) }))].map(train => [train.id, train]))
+    snapshot.paths = [...railGeometry.paths, ...busGeometry.paths]
+    snapshot.trains = snapshot.trains.map(train => updated.get(train.id))
+    // Only rail-used edges may receive FOT geometry; never map a bus-only edge
+    // onto a nearby railway through the generic topology fallback.
+    const railPairs = new Set(railTrains.flatMap(train => train.stops.slice(1).map(([to], index) => [train.stops[index][0], to].sort((a, b) => a - b).join(':'))))
+    snapshot.edgePaths = snapshot.edges.map(([a, b], i) => busGeometry.edgePaths[i] !== null ? busGeometry.edgePaths[i] + offset : railPairs.has(`${a}:${b}`) ? railGeometry.edgePaths[i] : null)
+    snapshot.metadata.note = 'AUDIT CANDIDATE. Scheduled motion; frequency-based services are representative. FOT rail matches need métro-specific correction. Bus paths are OSM/pfaedle inferences, not operator-verified routes. Unmatched segments retain stop interpolation. Not approved for publication.'
+    const sourceHashes = { archive: await fileHash(archive), rail: await fileHash(railPath), snapshot: await fileHash(rawPath), ...(cache ? { busCache: await fileHash(busCachePath) } : {}) }
+    snapshot.metadata.sourceHashes = sourceHashes
+    snapshot.metadata.railGeometry = { publisher: 'Federal Office of Transport', sourceUrl: 'https://data.geo.admin.ch/api/stac/v1/collections/ch.bav.schienennetz/items/schienennetz', sha256: sourceHashes.rail, simplifyMetres: 10 }
+    if (cache) snapshot.metadata.geometry = { ...cache.metadata, matchedSegments: busGeometry.matched, totalSegments: busGeometry.total, missingPatterns: busGeometry.missingPatterns }
+    const groups = summarizeLausanneGeometry(snapshot, routes)
+    const { manifest, chunks } = chunkNetworkSnapshot(snapshot, 7200, 'lausanne-region-day-chunks')
+    const morning = extractNetworkWindow(snapshot, 24300, 31500, 27900)
+    const payload = { manifestGzipBytes: gzipBytes(manifest), morningGzipBytes: gzipBytes(morning), chunks: chunks.map(({ descriptor, payload: chunk }) => ({ id: descriptor.id, trips: descriptor.tripCount, gzipBytes: gzipBytes(chunk) })) }
+    const failures = lausanneTechnicalGate(groups, payload)
+    const report = { schemaVersion: 1, metadata: { serviceDate: date, feedVersion: feed[0].feed_version, sourceHashes, nodeVersion: process.version }, scope: { bounds: LAUSANNE_BOUNDS, description: snapshot.metadata.studyScope, extractedTrips: raw.trains.length, candidateTrips: snapshot.trains.length, excludedTrips: raw.trains.length - snapshot.trains.length, platforms: snapshot.stops.length, namedStops: new Set(snapshot.stops.map(stop => stop[2])).size }, groups, payload, gate: { passed: failures.length === 0, failures, limits: { minimumGeometryCoveragePerGroup: 0.95, maximumEndpointGapMetres: 120, gzipBytes: GZIP_LIMITS }, publicationReady: false, pending: ['Review the selected rail alignments and inferred bus routes visually', 'Audit weekend service and scope at boundary termini', 'Integrate lazy study selection, framing, translations, sharing, Now and refresh recovery; verify on desktop and phone'] } }
+    await mkdir(output, { recursive: true })
+    for (const { descriptor, payload: chunk } of chunks) {
+      const path = join(output, descriptor.path)
+      await mkdir(dirname(path), { recursive: true })
+      await writeFile(path, JSON.stringify(chunk))
+    }
+    await writeFile(join(output, 'lausanne-region-day-manifest.json'), JSON.stringify(manifest))
+    await writeFile(join(output, 'lausanne-region-morning.json'), JSON.stringify(morning))
+    await writeFile(join(output, 'lausanne-audit.json'), JSON.stringify(report, null, 2) + '\n')
+    if (prepareBusFeed) await prepareRoadFeed({ manifest: snapshot, trains: busTrains, output: join(output, 'bus-feed'), agency: LAUSANNE_AGENCY })
+    return report
+  } finally { await rm(workspace, { recursive: true, force: true }) }
+}
+
+if (import.meta.url === `file://${process.argv[1]}`) {
+  const arg = name => process.argv.includes(`--${name}`) ? process.argv[process.argv.indexOf(`--${name}`) + 1] : undefined
+  if (process.argv.includes('--help')) console.log('Audit a Lausanne candidate outside public/data: --archive GTFS.zip --rail FOT.xtf --date YYYY-MM-DD --output-directory DIR [--bus-cache CACHE.json] [--snapshot previously-extracted.json] [--prepare-bus-feed] [--check]')
+  else {
+    for (const name of ['archive', 'rail', 'date', 'output-directory']) assert(arg(name), `Missing --${name}`)
+    const output = resolve(arg('output-directory'))
+    assert(output !== resolve('public') && !output.startsWith(resolve('public') + '/'), 'Audit candidates must remain outside public/')
+    const report = await auditLausanneStudy({ archive: resolve(arg('archive')), railPath: resolve(arg('rail')), date: arg('date'), output, busCachePath: arg('bus-cache'), snapshotPath: arg('snapshot'), prepareBusFeed: process.argv.includes('--prepare-bus-feed') })
+    console.log(JSON.stringify({ scope: report.scope, groups: report.groups.map(({ issues: _issues, routes, ...group }) => ({ ...group, routes: routes.length })), payload: report.payload, gate: report.gate }, null, 2))
+    if (process.argv.includes('--check') && !report.gate.passed) process.exitCode = 1
+  }
+}

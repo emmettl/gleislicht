@@ -72,7 +72,7 @@ const csv = rows => `${rows.map(row => row.map(csvCell).join(',')).join('\n')}\n
 const gtfsTime = seconds => [Math.floor(seconds / 3600), Math.floor(seconds / 60) % 60, seconds % 60]
   .map(value => String(value).padStart(2, '0')).join(':')
 
-export async function prepareRoadFeed({ manifest, trains, output, pilot = 0 }) {
+export async function prepareRoadFeed({ manifest, trains, output, pilot = 0, agency = { id: '801', name: 'PostAuto AG', url: 'https://www.postauto.ch' } }) {
   const allPatterns = roadPatterns(trains, manifest.stops)
   const routes = pilot ? pilotRoutes(allPatterns, manifest.stops, pilot) : undefined
   const patterns = routes ? allPatterns.filter(pattern => routes.has(pattern.routeId)) : allPatterns
@@ -82,9 +82,9 @@ export async function prepareRoadFeed({ manifest, trains, output, pilot = 0 }) {
   await mkdir(output, { recursive: true })
   const tables = {
     'agency.txt': [['agency_id', 'agency_name', 'agency_url', 'agency_timezone'],
-      ['801', 'PostAuto AG', 'https://www.postauto.ch', 'Europe/Zurich']],
+      [agency.id, agency.name, agency.url, 'Europe/Zurich']],
     'routes.txt': [['route_id', 'agency_id', 'route_short_name', 'route_long_name', 'route_type'],
-      ...[...routeLabels].map(([id, label]) => [id, '801', label, '', 3])],
+      ...[...routeLabels].map(([id, label]) => [id, agency.id, label, '', 3])],
     'trips.txt': [['route_id', 'service_id', 'trip_id', 'trip_headsign'],
       ...patterns.map(pattern => [pattern.routeId, 'day', pattern.id, pattern.headsign])],
     'stops.txt': [['stop_id', 'stop_name', 'stop_lat', 'stop_lon'],
@@ -98,7 +98,7 @@ export async function prepareRoadFeed({ manifest, trains, output, pilot = 0 }) {
       ]))],
     'calendar_dates.txt': [['service_id', 'date', 'exception_type'], ['day', date, 1]],
     'feed_info.txt': [['feed_publisher_name', 'feed_publisher_url', 'feed_lang', 'feed_version'],
-      ['Gleislicht / Swiss GTFS PostAuto subset', manifest.metadata.sourceUrl, 'de', manifest.metadata.feedVersion]],
+      [`Gleislicht / Swiss GTFS ${agency.name} subset`, manifest.metadata.sourceUrl, agency.language ?? 'de', manifest.metadata.feedVersion]],
   }
   await Promise.all(Object.entries(tables).map(([name, rows]) => writeFile(resolve(output, name), csv(rows))))
   const index = { schemaVersion: 1, metadata: manifest.metadata, pilotRoutes: pilot || null,
