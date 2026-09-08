@@ -1,0 +1,581 @@
+# Swiss cantonal and regional transit source inventory
+
+Survey date: **8 September 2026**. This extends the [initial regional survey](REGIONAL-NETWORK-SURVEY.md) to **all 26 cantons**, with a complete census of **473 agency records** in the pinned national timetable, **90 public endpoint checks**, and all **181 entries** in the national realtime coverage catalogue.
+
+The geographical source survey is complete. Route-to-geometry validation is not: downloaded files, sample queries, map services and unresolved distribution leads are distinguished below. “Not found” means not verified in the documented sources searched, not that no such data exists. Tariff associations, commissioning authorities, operators and data publishers are different entities; none alone defines a complete service footprint.
+
+The strongest additions are **Aargau's attributed, directed line records; Zug's downloadable bus geometry; Fribourg's queryable bus lines; Solothurn's downloadable network graph; and Bern's decoded GeoPackage schema**. Jura and Nidwalden have explicit transport map layers, but no acquired vector export. Vaud advertises a comprehensive product through an order workflow. Valais lists a transport dataset with no published download channel. These findings change the earlier source ranking, especially for Fribourg.
+
+## Evidence and accompanying data
+
+| File | Contents |
+| --- | --- |
+| [Cantons](../data/swiss-transit-cantons.json) | Every canton once: authority/publisher, regional review areas, representative agency IDs, source references, vintage, reuse constraints and next action |
+| [Source requests](../data/swiss-transit-sources.json) | Exact URLs and expected response formats for 90 checks; multiple checks may concern one dataset |
+| [Probe evidence](../data/swiss-transit-source-probes.json) | UTC request times, HTTP results, redirects, response hashes, formats, sample fields, capabilities, archive contents and table counts |
+| [National agency census](../data/swiss-transit-agencies.json) | All 473 feed identities, raw source names/URLs, route types and Friday/Sunday service counts |
+| [Realtime catalogue](../data/swiss-transit-realtime-catalogue.json) | All 181 official entries, including duplicate operator entries, partial coverage and line exclusions |
+
+Public probes made unauthenticated GET requests, with at most four requests in flight. **78 returned HTTP 200; 77 passed the basic expected-format check.** Four returned 403, five 404, two 500 and one had a transport failure. An HTTP/format success is not semantic success: Graubünden's catalogue returned a database error inside a 200 HTML response. Conversely, rejected CKAN API requests did not prevent access through the official national dataset pages. Failed exploratory endpoints remain in the evidence instead of being silently discarded.
+
+GeoPackage inspection reads SQLite schemas, record counts, geometry declarations and sample attributes; it does not validate every coordinate or route. Aargau inspection reads the archive and DBF properties, not shapefile coordinates. Thurgau returned actual GML features; Fribourg, Luzern and Genève returned actual GeoJSON features. Bern's GeoParquet check verifies the file signature only; the separately acquired GeoPackage provides the stronger evidence.
+
+Downloaded response bodies are kept outside Git in `/private/tmp/gleislicht-national-survey`. Hashes identify what was examined; URLs containing `aktuell`, or services returning current data, are not immutable archives. Preserve the actual source files in a durable, terms-compatible snapshot before implementing an adapter. A fresh download need not reproduce these hashes.
+
+## Shared national sources
+
+**Timetable.** The national 2026 GTFS is the shared starting point for every canton, including many foreign and mountain operators. The agency census uses feed **20260902**, valid **14 December 2025–12 December 2026**, SHA-256 `d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e`. The current dataset page also advertised a newer 20260905 release at survey time; the census deliberately retains the earlier reproducible fixture. [Official dataset](https://data.opentransportdata.swiss/en/dataset/timetable-2026-gtfs2020), [pinned archive](https://data.opentransportdata.swiss/dataset/3d2c18f9-9ef1-463f-a249-5c67604efd74/resource/c09aba2a-41e9-4117-88af-3fdfe589d64a/download/gtfs_fp2026_20260902.zip).
+
+| Measure | Full archive | Friday 4 September | Sunday 6 September |
+| --- | ---: | ---: | ---: |
+| Agency identities | 473 | 411 active | 414 active |
+| Route records | 5,142 | 3,946 active | 3,073 active |
+| Trip records | 2,143,227 | 221,799 active | 148,207 active |
+| Active frequency templates | — | 579 | 597 |
+
+Calendar exceptions are applied. Active trip counts include frequency templates once, not their expanded departures; the census does not read stop times, clip to a civil day, assign geography or join geometry. A service inactive on both dates may operate in another season. These are **feed records, not counts of legal operators or unique passenger-facing lines**. Raw agency URLs can be generic or surprising and are not verified corporate homepages. A complete regional membership audit must select actual routes/stops, especially for SBB, PostAuto, BLS and cross-border agencies.
+
+The inspected archive has no `shapes.txt`. Stop coordinates describe stops, not the path between them. Other formats such as HRDF and flexible-service products can carry information that GTFS does not represent fully. See the [official GTFS documentation](https://opentransportdata.swiss/en/cookbook/timetable-cookbook/gtfs/) and the existing [data pipeline](DATA-PIPELINE.md).
+
+**Rail infrastructure.** The FOT/BAV railway network remains the shared rail-geometry baseline. Its current [STAC item](https://data.geo.admin.ch/api/stac/v1/collections/ch.bav.schienennetz/items/schienennetz) was checked. Infrastructure edges are not already directed passenger-trip shapes: gauge, operator scope, topology, border extensions, stop projection and plausible path choice still need the checks used by existing studies. Cableways, funiculars, water routes and road vehicles require their appropriate sources; rail coverage is not a substitute for them.
+
+**Realtime.** The public [operator coverage CSV](https://data.opentransportdata.swiss/dataset/27aba9bd-59ed-4d7c-bc71-a3813d1d1799/resource/83b8b8d0-e345-453b-857e-1192d48c4c64/download/go-realtime.csv) has 181 rows: `etAUS` is yes for 151, no for 3 and n.a. for 27; `complete` is yes for 106, no for 28 and n.a. for 47. These describe catalogue rows, not distinct GTFS operators. Preserve the source system, SBOID, VDV ID and comment together. Multiple PostAuto rows and operators split across rail/bus sources must not be deduplicated by brand. The saved catalogue contains exclusions such as tl m2 and particular TPG, AB, TPC and TMR lines.
+
+No authenticated live feed was exercised in this survey. Before enabling realtime for a region, verify its current line coverage, static/realtime identifier matching, freshness, cancellation behaviour and missing-data fallback. The platform's documentation states that **vehicle positions are not available**; trip updates must not be described as observed GPS tracks. See [GTFS Realtime documentation](https://opentransportdata.swiss/en/cookbook/realtime-prediction-cookbook/gtfs-rt/) and [the project's realtime design](REALTIME.md).
+
+**National access and reuse.** File downloads require neither registration nor payment; service access requires registration/access credentials and request limits. The platform terms require source attribution, regular refresh of raw data and publication of processed results under the user's authorship. Keep the actual terms with the source record rather than applying a generic CC licence. [Official terms](https://opentransportdata.swiss/en/terms-of-use/).
+
+**Road, boat and mountain gaps.** Where no suitable official line source is established, use the existing [PostBus road-geometry method](POSTBUS-ROAD-GEOMETRY.md) as an explicit inferred-path fallback. Reuse requires matching route identity and ordered stop pattern; another operator sharing the road is not automatically covered. Preserve OpenStreetMap provenance and applicable ODbL obligations. Review bridges, tunnels, one-way roads, loops and access restrictions. Boats need water-compatible routes; mountain modes and flexible services need the separate rules in [mountain transport](MOUNTAIN-TRANSPORT.md). Published schematic maps are membership/review aids, not street alignments or implicit redistribution permission.
+
+## Regional tariff and border cross-check
+
+SBB's [official network/product directory](https://www.sbb.ch/de/angebote/tarifverbuende) lists the following **23 entries**. This cross-check prevents treating the earlier eight cities as all regional networks. The areas below are review groupings, **not exact tariff-zone polygons**; validity and fare boundaries must come from each current product map. The directory was readable through web retrieval; the direct host probe returned 403.
+
+| Directory entry | Review area / relationship |
+| --- | --- |
+| A-Welle | Aargau and eastern Solothurn; interfaces with Z-Pass/TNW |
+| Arcobaleno | Ticino and adjoining southern Graubünden services |
+| Bodensee Ticket | Lake Constance cross-border journeys, including DE/AT/CH |
+| BÜGA | Graubünden-wide travel product; not a distinct geometry feed |
+| Engadin mobil | Upper Engadin; separate local bus review |
+| Frimobil | Fribourg and adjoining service areas |
+| HochRhein Ticket | High Rhine border corridor |
+| LémanPass | Greater Geneva cross-border network; distinct from Unireso |
+| Libero | Bern/Solothurn core and adjoining service areas |
+| Mobilis | Vaud regional network |
+| OndeVerte | Neuchâtel and adjoining service areas |
+| OSTWIND | SG, TG, SH, GL, AR and AI, with cross-boundary services |
+| Passepartout | LU, OW and NW |
+| TNW | Basel region, including BL and parts of AG/SO |
+| Transreno | Chur/Rhine valley |
+| Triregio | Basel tri-national travel product |
+| Tarifverbund Schwyz | Schwyz regional network |
+| Tarifverbund Zug | Zug regional network |
+| Unireso | Geneva cantonal network |
+| Vagabond | Jura regional network |
+| Verkehrsbetriebe Davos | Davos local network/product |
+| Z-Pass | Corridors combining ZVV and neighbouring networks |
+| ZVV | Zürich regional network, extending beyond canton boundaries |
+
+Uri and Valais still receive full canton records even though this directory does not give them a single equivalent canton-wide tariff association. UriTicket and local Valais products are supplementary review leads. National direct transport, local tickets, tourist passes and international products are not all independent transit authorities.
+
+Do not crop paths at administrative boundaries before reviewing the service: Basel–Weil/Saint-Louis, Geneva–France, Schaffhausen/Büsingen, the Lake Constance/Rhine area, Rheintal–Liechtenstein/Austria, Ticino–Italy, Tirano/Livigno and Jura–France all need explicit foreign endpoints. Also review domestic boundary changes against the chosen service date, canton exclaves such as Engelberg and Oberegg, Chablais across VD/VS, and the lake/mountain networks spanning cantons.
+
+## All 26 cantons
+
+Status refers to the strongest **local line-geometry evidence**, not the availability of the national timetable or completion of a canton-wide implementation. Representative agency IDs are starting points validated against the 473-record census, not complete memberships. Named public-transport bodies identify the planning/source relationship, not a claim that tariff bodies publish the vectors.
+
+| Canton | Local geometry evidence | Main network/product references |
+| --- | --- | --- |
+| [ZH — Zürich](#zh) | Existing integration in part | ZVV, Z-Pass |
+| [BE — Bern](#be) | Download inspected | Libero |
+| [LU — Luzern](#lu) | Vector sample verified | Passepartout |
+| [UR — Uri](#ur) | No line export verified | UriTicket (supplementary product) |
+| [SZ — Schwyz](#sz) | No line export verified | Tarifverbund Schwyz, Z-Pass, OSTWIND (edge services) |
+| [OW — Obwalden](#ow) | No line export verified | Passepartout |
+| [NW — Nidwalden](#nw) | Map layer only | Passepartout |
+| [GL — Glarus](#gl) | No line export verified | OSTWIND |
+| [ZG — Zug](#zg) | Download inspected | Tarifverbund Zug, Z-Pass |
+| [FR — Fribourg / Freiburg](#fr) | Vector sample verified | Frimobil |
+| [SO — Solothurn](#so) | Download inspected | Libero, A-Welle, TNW |
+| [BS — Basel-Stadt](#bs) | Existing integration in part | TNW, Triregio, HochRhein Ticket |
+| [BL — Basel-Landschaft](#bl) | Metadata / export unresolved | TNW, Triregio |
+| [SH — Schaffhausen](#sh) | No line export verified | OSTWIND, Z-Pass, Bodensee Ticket |
+| [AR — Appenzell Ausserrhoden](#ar) | No line export verified | OSTWIND |
+| [AI — Appenzell Innerrhoden](#ai) | No line export verified | OSTWIND |
+| [SG — St.Gallen](#sg) | Metadata / export unresolved | OSTWIND, Z-Pass, Bodensee Ticket |
+| [GR — Graubünden / Grigioni / Grischun](#gr) | Catalogue access error | BÜGA, Transreno, Engadin mobil, Verkehrsbetriebe Davos |
+| [AG — Aargau](#ag) | Download inspected | A-Welle, TNW, Z-Pass |
+| [TG — Thurgau](#tg) | Vector sample verified | OSTWIND, Bodensee Ticket |
+| [TI — Ticino](#ti) | No line export verified | Arcobaleno |
+| [VD — Vaud](#vd) | Metadata / export unresolved | Mobilis, LémanPass (border travel) |
+| [VS — Valais / Wallis](#vs) | Metadata / export unresolved | Regional/cross-border tickets (no single canton-wide tariff union in SBB list) |
+| [NE — Neuchâtel](#ne) | No line export verified | OndeVerte |
+| [JU — Jura](#ju) | Map layer only | Vagabond |
+| [GE — Genève](#ge) | Existing integration in part | Unireso, LémanPass |
+
+<a id="zh"></a>
+
+### ZH — Zürich
+
+**Authority/publisher:** ZVV; Stadt Zürich / VBZ data publisher. **Review areas:** Zürich; Winterthur; Glattal; Oberland; Zimmerberg; Weinland.
+
+**Evidence:** Integrated ZVV GTFS with shapes is the existing implementation baseline. The city catalogue API still resolves the 2026 download and declares cc-zero. This is a regional feed, not an independent feed for every operator.
+
+**Vintage:** 2026 archive advertised; existing measured integration retains its own pinned source date.
+
+**Reuse:** City catalogue declares CC0 for the feed; retain provenance and distinguish other cantonal layers.
+
+**Next action:** Refresh the pinned ZVV feed and assess all route patterns and cross-canton termini before expanding the existing footprint. Representative GTFS agencies: `11`, `65`, `82`, `773`, `807`, `838`, `849`, `882`.
+
+**Checked references:** [zh-gtfs-catalogue](https://data.stadt-zuerich.ch/api/3/action/package_show?id=vbz_fahrplandaten_gtfs).
+
+<a id="be"></a>
+
+### BE — Bern
+
+**Authority/publisher:** Canton Bern public transport planning; cantonal Geoportal / Amt für Geoinformation. **Review areas:** Bern; Biel/Seeland; Oberaargau; Emmental; Thun; Berner Oberland.
+
+**Evidence:** OEVTP GeoPackage downloaded and SQLite tables inspected: 518 line records, 5,321 stop records and 139 Libero polygons, plus catchment/accessibility layers. Line fields include liniencode, liniennr, tucode, tuname and kubunr. GeoParquet also downloaded, but only its signature was checked.
+
+**Vintage:** Line layer updated 1 January 2026; packaged metadata published 9 July 2026.
+
+**Reuse:** Packaged terms dated 20 January 2026 allow free private/commercial use and reproduction with attribution. Online applications must link metadata; pass terms on with redistributed data. Layer credit: Öffentlicher Verkehr © Amt für öffentlichen Verkehr und Verkehrskoordination des Kantons Bern.
+
+**Next action:** Build an explicit operator/line crosswalk and test directed stop patterns across the whole canton, not only BERNMOBIL/RBS. Representative GTFS agencies: `11`, `33`, `38`, `56`, `64`, `81`, `88`, `101`, `827`, `850`, `859`, `870`, `871`, `889`.
+
+**Checked references:** [be-metadata](https://www.agi.dij.be.ch/de/start/geoportal/geodaten/detail.html?code=OEVTP&type=geoproduct), [be-product-pdf](https://www.geo2.apps.be.ch/de/pdf/geoproduct/OEVTP), [be-gpkg](https://geofiles.be.ch/geoportal/pub/download/OEVTP/oevtp.gpkg.zip), [be-lines](https://geofiles.be.ch/geoportal/pub/download/OEVTP/oevtp_linie.parquet).
+
+<a id="lu"></a>
+
+### LU — Luzern
+
+**Authority/publisher:** Verkehrsverbund Luzern (VVL); rawi / Geoportal Luzern. **Review areas:** Luzern agglomeration; Entlebuch; Sursee; Willisau; Seetal; Lake Lucerne.
+
+**Evidence:** Cantonal bus layer advertises 114 features and returns GeoJSON. Fields include BUL_ROUTE, FP_JAHR, LINIENNR, KURSBUCHNR and a local TU enumeration. Rail, boat and stop products are also documented. Coverage includes bus lines with at least one section inside the canton.
+
+**Vintage:** Bus layer: 26 May 2026; annual timetable update. Stop layers have different dates.
+
+**Reuse:** Bus product is Open-By; retain the required rawi Kanton Luzern copyright and metadata. A public access class alone is not the licence.
+
+**Next action:** Download full lines, decode TU enums rather than treating them as GTFS IDs, and measure regional as well as vbl patterns. Representative GTFS agencies: `11`, `33`, `82`, `86`, `185`, `801`, `812`, `819`, `820`.
+
+**Checked references:** [lu-metadata](https://daten.geo.lu.ch/produkt/oevxxxxx_col_v5), [lu-layer](https://public.geo.lu.ch/ogd/rest/services/managed/OEVXXXXX_COL_V5_MP/MapServer?f=pjson), [lu-sample](https://public.geo.lu.ch/ogd/rest/services/managed/OEVXXXXX_COL_V5_MP/MapServer/8/query?where=1%3D1&outFields=*&outSR=4326&returnGeometry=true&resultRecordCount=3&f=geojson), [lu-terms](https://geoportal.lu.ch/Nutzungsbedingungen).
+
+<a id="ur"></a>
+
+### UR — Uri
+
+**Authority/publisher:** Canton Uri public transport planning; geo.ur.ch. **Review areas:** Reuss valley; Urseren; Andermatt; Lake Lucerne; Side valleys.
+
+**Evidence:** WFS capabilities expose a bus-stop inventory and cableway/ski-lift axes and stations. No bus-route vector layer was verified in the advertised service. Cableway axes need passenger/ski/freight filtering.
+
+**Vintage:** No bus-line vintage established; date each ancillary layer separately.
+
+**Reuse:** Layer-specific reuse terms remain to be established before importing the ancillary geometry.
+
+**Next action:** Scope Auto AG Uri, PostAuto and Andermatt services; obtain bus alignments or run a measured road-matching pilot. Representative GTFS agencies: `11`, `48`, `82`, `93`, `185`, `801`, `816`, `851`, `7095`.
+
+**Checked references:** [ur-portal](https://geo.ur.ch/), [ur-wfs](https://geo.ur.ch/wfs?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetCapabilities).
+
+<a id="sz"></a>
+
+### SZ — Schwyz
+
+**Authority/publisher:** Canton Schwyz public transport planning; cantonal geodata portal. **Review areas:** Schwyz/Brunnen; Einsiedeln; March/Höfe; Küssnacht; Rigi/Fronalp.
+
+**Evidence:** Published WMS catalogue checked. National rail/topographic and other transport-adjacent layers are present; no current bus-line vector export was established. Existing Rigi coverage does not establish cantonal bus coverage.
+
+**Vintage:** No local bus-line source vintage established.
+
+**Reuse:** No bus dataset-specific reuse permission established.
+
+**Next action:** Review Auto AG Schwyz, Freienbach and scoped PostAuto/SOB patterns, including links into Zug, Uri and Zürich. Representative GTFS agencies: `11`, `82`, `801`, `841`, `755`.
+
+**Checked references:** [sz-catalogue](https://data.geo.sz.ch/public/Themen/A100A/wms.html).
+
+<a id="ow"></a>
+
+### OW — Obwalden
+
+**Authority/publisher:** Canton Obwalden public transport planning; GIS Daten AG. **Review areas:** Sarnen valley; Lungern/Brünig; Engelberg exclave; Pilatus.
+
+**Evidence:** Official OW WMS capabilities checked; no public transport line layer identified. Regional Luzern sources may contain through-lines but are not canton-complete evidence. Engelberg must be reviewed as an OW exclave.
+
+**Vintage:** No cantonal bus-line vintage established.
+
+**Reuse:** No local line dataset licence established.
+
+**Next action:** Inventory PostAuto, Zentralbahn and Engelberg local services, then separate mountain geometry and winter/summer calendars. Representative GTFS agencies: `86`, `136`, `801`, `7058`.
+
+**Checked references:** [ow-wms](https://www.gis-daten.ch/wms/ow/service?REQUEST=GetCapabilities&SERVICE=WMS).
+
+<a id="nw"></a>
+
+### NW — Nidwalden
+
+**Authority/publisher:** Canton Nidwalden public transport planning; GIS Daten AG. **Review areas:** Stans; Buochs/Beckenried; Engelberg valley approaches; Lake Lucerne.
+
+**Evidence:** WMS advertises ch.nw.oeffentlicher-verkehr (NW075), a combined public transport map, and NW076 cableways. Rendering capability confirms a map exists; no reusable vector line download was acquired.
+
+**Vintage:** Layer data vintage unresolved.
+
+**Reuse:** WMS visibility does not establish vector redistribution rights.
+
+**Next action:** Locate the underlying NW075 line export, distinguish tariff/stop/quality polygons, and validate PostAuto and lake connections. Representative GTFS agencies: `86`, `107`, `145`, `185`, `801`, `3190`.
+
+**Checked references:** [nw-wms](https://www.gis-daten.ch/wms/nw/service?REQUEST=GetCapabilities&SERVICE=WMS).
+
+<a id="gl"></a>
+
+### GL — Glarus
+
+**Authority/publisher:** Canton Glarus public transport planning; cantonal geoinformation. **Review areas:** Glarus valley; Sernftal; Linth plain; Braunwald; Walensee.
+
+**Evidence:** Public WFS capabilities checked; no public transport route layer identified among the advertised layers. Roads and other line themes must not be mistaken for service paths.
+
+**Vintage:** No local bus-line vintage established.
+
+**Reuse:** General cantonal open-geodata policy is a lead; a particular transport dataset and its terms still need identification.
+
+**Next action:** Use national timetable and rail baseline; investigate Sernftal/PostAuto bus alignments and separately validate mountain/lake services. Representative GTFS agencies: `11`, `105`, `197`, `801`, `856`.
+
+**Checked references:** [gl-wfs](https://wfs.geo.gl.ch/?REQUEST=GetCapabilities&SERVICE=WFS&VERSION=1.1.0).
+
+<a id="zg"></a>
+
+### ZG — Zug
+
+**Authority/publisher:** Canton Zug public transport planning; GIS Kanton Zug. **Review areas:** Zug/Baar; Cham/Risch; Ägeri; Menzingen; Zugerberg/lake.
+
+**Evidence:** Official Buslinien ZIP downloaded: Shapefile, GeoPackage, INTERLIS and DXF. GeoPackage has 175 LineString records in EPSG:2056 with id, t_id and liniennummer. WFS exposes line-specific layers. Future vehicle-length/planning layers are separate products.
+
+**Vintage:** Archive Last-Modified 18 September 2025; 2026 alignment validity is not proven by the current portal.
+
+**Reuse:** Free commercial/noncommercial use with mandatory credit: Quelle: GIS Kanton Zug.
+
+**Next action:** Compare WFS and archive versions, normalise line labels and test operator/direction/branch joins against current ZVB services. Representative GTFS agencies: `11`, `82`, `158`, `186`, `801`, `839`.
+
+**Checked references:** [zg-catalogue](https://zg.ch/de/planen-bauen/geoinformation/geoinformationen-nutzen/geoinformationen-von-a-bis-z), [zg-wfs](https://services.geo.zg.ch/ows/buslinien?REQUEST=GetCapabilities&SERVICE=WFS), [zg-download](https://services.geo.zg.ch/datarepo/Buslinien/data.zip), [zg-terms](https://zg.ch/de/planen-bauen/geoinformation/geoinformationen-nutzen/nutzungsbedingungen).
+
+<a id="fr"></a>
+
+### FR — Fribourg / Freiburg
+
+**Authority/publisher:** Canton Fribourg mobility planning; cantonal geoportal / SIT. **Review areas:** Fribourg/Freiburg; Bulle/Gruyère; Romont/Glâne; Broye; Murten/Morat; Sense.
+
+**Evidence:** ArcGIS Theme_mobilite layer 2 is a queryable polyline source: 128 total features. GeoJSON samples include rail and actual TPF urban buses. NUMERO_LIGNE values such as 20.002 are timetable-field identifiers, not simply display line 2. Other fields include type, enterprise and name.
+
+**Vintage:** Current geometry vintage not established; service response date is only an access check.
+
+**Reuse:** General portal terms allow attributed map imagery (Source: Etat de Fribourg) but refer to supplier conditions; raw-vector redistribution remains unresolved.
+
+**Next action:** Acquire all pages and metadata/terms, map timetable-field IDs to agency/route IDs, and measure TPF bus patterns. This supersedes the earlier no-export-found result. Representative GTFS agencies: `11`, `53`, `801`, `834`, `3004`.
+
+**Checked references:** [fr-layer](https://map.geo.fr.ch/arcgis/rest/services/PortailCarto/Theme_mobilite/MapServer/2?f=pjson), [fr-count](https://map.geo.fr.ch/arcgis/rest/services/PortailCarto/Theme_mobilite/MapServer/2/query?where=1%3D1&returnCountOnly=true&f=json), [fr-sample](https://map.geo.fr.ch/arcgis/rest/services/PortailCarto/Theme_mobilite/MapServer/2/query?where=1%3D1&outFields=*&outSR=4326&returnGeometry=true&resultRecordCount=3&f=geojson), [fr-bus-sample](https://map.geo.fr.ch/arcgis/rest/services/PortailCarto/Theme_mobilite/MapServer/2/query?where=TYPE_LIGNE_VALEUR%20LIKE%20%27%25Bus%25%27&outFields=*&outSR=4326&returnGeometry=true&resultRecordCount=3&f=geojson), [fr-catalogue](https://geo.fr.ch/), [fr-terms-canonical](https://map.geo.fr.ch/help/fr/conditions_utilisation.htm).
+
+<a id="so"></a>
+
+### SO — Solothurn
+
+**Authority/publisher:** Amt für Verkehr und Tiefbau; Amt für Geoinformation Solothurn. **Review areas:** Solothurn/Grenchen; Olten/Gösgen/Gäu; Thal; Dorneck/Thierstein.
+
+**Evidence:** ch.so.avt.oev GeoPackage downloaded: 3,951 MultiLineString network segments and 775 stops in EPSG:2056. Network fields only identify mode and tunnel status; there are no line/operator identifiers. Stops include DiDok. The empty linestructure helper table is not missing network coverage.
+
+**Vintage:** Published 17 December 2025. Metadata explicitly excludes night services.
+
+**Reuse:** Linked dataset terms permit commercial/noncommercial use; source attribution is recommended.
+
+**Next action:** Use this as a mode-filtered network graph, not a line-to-route lookup. Measure topology and ordered-stop routing; add missing night-service paths explicitly. Representative GTFS agencies: `38`, `56`, `68`, `81`, `88`, `793`, `850`, `870`, `883`, `894`.
+
+**Checked references:** [so-publications](https://data.geo.so.ch/themepublications?query=ch.so.avt.oev), [so-lines](https://files.geo.so.ch/ch.so.avt.oev/aktuell/ch.so.avt.oev.gpkg.zip), [so-metadata](https://files.geo.so.ch/ch.so.avt.oev/aktuell/meta/datenbeschreibung.html), [so-terms](https://files.geo.so.ch/nutzungsbedingungen.html).
+
+<a id="bs"></a>
+
+### BS — Basel-Stadt
+
+**Authority/publisher:** Canton Basel-Stadt mobility planning; Geoportal / BVB. **Review areas:** Basel core; Riehen/Bettingen; Weil am Rhein; Saint-Louis.
+
+**Evidence:** Official line WFS remains reachable. The separate Basel study contains more advanced BVB/BLT joins and diversion handling; its current audit is authoritative for measured coverage. A successful BS source check is not a complete TNW claim.
+
+**Vintage:** Use the exact source snapshots and operating dates in the Basel audit.
+
+**Reuse:** Retain the BS source attribution and the dataset terms already tracked by the Basel pipeline.
+
+**Next action:** Extend from measured BVB/BLT patterns to all regional operators and cross-border branches, maintaining separate baseline and diversion geometry. Representative GTFS agencies: `11`, `37`, `823`, `801`.
+
+**Checked references:** [bs-wfs](https://wfs.geo.bs.ch/?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetCapabilities).
+
+<a id="bl"></a>
+
+### BL — Basel-Landschaft
+
+**Authority/publisher:** Canton Basel-Landschaft public transport planning; GeoView / GeoShop. **Review areas:** Liestal; Birseck/Leimental; Waldenburg; Laufental; Upper Baselbiet.
+
+**Evidence:** TNW/transport Shapefile is advertised in prior official metadata research, but this pass did not acquire the export. Direct metadata request returned 403. The existing Basel audit has stronger evidence for individual BVB/BLT paths, not the whole canton.
+
+**Vintage:** Advertised export vintage not independently established.
+
+**Reuse:** Resolve the exact dataset terms and automated acquisition, not just a portal login.
+
+**Next action:** Obtain the advertised export and audit AAGL, PostAuto and BLT regional bus patterns, including through-lines in the Aargau source. Representative GTFS agencies: `37`, `801`, `811`.
+
+**Checked references:** [bl-metadata](https://www.baselland.ch/politik-und-behorden/direktionen/volkswirtschafts-und-gesundheitsdirektion/amt-fur-geoinformation/geoportal/geodaten/verkehr).
+
+<a id="sh"></a>
+
+### SH — Schaffhausen
+
+**Authority/publisher:** Canton Schaffhausen public transport planning; cantonal GIS / vbsh. **Review areas:** Schaffhausen/Neuhausen; Klettgau; Reiat; Stein am Rhein; Büsingen interfaces.
+
+**Evidence:** Public OGD directory checked. Traffic-load data are available but are not transit service geometry. A portal journey planner using search.ch/OSM is not evidence of a reusable official line export. vbsh has multiple feed identities.
+
+**Vintage:** No bus-line source vintage established.
+
+**Reuse:** No bus-line dataset licence established.
+
+**Next action:** Inventory both vbsh identities and cross-border routes; obtain official alignments or validate road matching, including German enclaves and termini. Representative GTFS agencies: `11`, `65`, `193`, `836`, `846`.
+
+**Checked references:** [sh-catalogue](https://data.geo.sh.ch/ogd/).
+
+<a id="ar"></a>
+
+### AR — Appenzell Ausserrhoden
+
+**Authority/publisher:** Canton Appenzell Ausserrhoden public transport planning; Geoinformation und Vermessung. **Review areas:** Herisau; Teufen; Trogen; Heiden; Appenzeller Vorderland.
+
+**Evidence:** KTAR WMS capabilities checked; no actual public transport line network identified. The regional geodata shop advertises GeoPackage acquisition with registration, but that does not establish a bus dataset. SG subsidised-line coverage cannot be extended to all AR by assumption.
+
+**Vintage:** No local bus-line vintage established.
+
+**Reuse:** Cantonal data-source credit and dataset-specific terms need carrying through any acquired export.
+
+**Next action:** Review AB rail and bus separately, plus Herisau and PostAuto; investigate local export availability before road matching. Representative GTFS agencies: `22`, `82`, `744`, `799`, `801`.
+
+**Checked references:** [ar-wms](https://www.geoportal.ch/services/wms/ktar?SERVICE=WMS&REQUEST=GetCapabilities).
+
+<a id="ai"></a>
+
+### AI — Appenzell Innerrhoden
+
+**Authority/publisher:** Canton Appenzell Innerrhoden public transport planning; cantonal Geoportal. **Review areas:** Appenzell; Schwende-Rüte; Oberegg exclave; Alpstein.
+
+**Evidence:** KTAI WMS and official portal checked. Transport-related matches are rail-noise or contaminated-site layers, not passenger service paths. No bus-line export verified. Flexible PubliCar service areas cannot be rendered as fixed scheduled routes.
+
+**Vintage:** No bus-line vintage established.
+
+**Reuse:** No transport dataset-specific licence established.
+
+**Next action:** Separate fixed AB/PostAuto services, flexible bookings and mountain operators; include Oberegg rather than treating the canton as contiguous. Representative GTFS agencies: `22`, `801`.
+
+**Checked references:** [ai-portal](https://www.ai.ch/themen/planen-und-bauen/geodaten-und-plaene/geoportal), [ai-wms](https://www.geoportal.ch/services/wms/ktai?SERVICE=WMS&REQUEST=GetCapabilities).
+
+<a id="sg"></a>
+
+### SG — St.Gallen
+
+**Authority/publisher:** Amt für öffentlichen Verkehr; AREG / Geoportal St.Gallen. **Review areas:** St.Gallen; Fürstenland/Wil; Toggenburg; Rheintal; Sarganserland; Werdenberg; See-Gaster.
+
+**Evidence:** AL_OEV subsidised-line model documented: annually maintained LV95 geometry, operator/line fields and explicitly no travel direction. Official download share opens, but the attempted archive endpoint returned 404. City schematic diagrams are not street geometry.
+
+**Vintage:** Introduced with December 2025 timetable; actual downloaded geometry vintage unverified.
+
+**Reuse:** General SG terms distinguish data acquisition from service embedding and restrict some redistribution. Establish which dataset terms govern AL_OEV before bundling derived vectors; do not label all SG geodata unrestricted.
+
+**Next action:** Resolve actual archive acquisition and terms, then audit full operator/line coverage and directed patterns. SG does not stand in for all six OSTWIND cantons. Representative GTFS agencies: `22`, `65`, `82`, `138`, `744`, `805`, `810`, `832`, `885`, `896`.
+
+**Checked references:** [sg-source-page](https://www.sg.ch/bauen/geoinformation/aktuelles.html), [sg-model](https://services.geo.sg.ch/wss/service/metadaten/guest/datenbeschreibung/AOEV_AL_OEV_Datenbeschreibung.pdf), [sg-download-page](https://data.geo.sg.ch/s/RMgBWPofwkaCawf?dir=/Geodaten/3%20-%20Bev%C3%B6lkerung%20und%20Wirtschaft/P%20-%20Verkehr/AbgeltungsberechtigteLinien), [sg-archive](https://data.geo.sg.ch/s/RMgBWPofwkaCawf/download?path=%2FGeodaten%2F3%20-%20Bev%C3%B6lkerung%20und%20Wirtschaft%2FP%20-%20Verkehr%2FAbgeltungsberechtigteLinien), [sg-share-path](https://data.geo.sg.ch/s/RMgBWPofwkaCawf?path=%2FGeodaten%2F3%20-%20Bev%C3%B6lkerung%20und%20Wirtschaft%2FP%20-%20Verkehr%2FAbgeltungsberechtigteLinien), [sg-terms](https://www.sg.ch/bauen/geoinformation/datenbezug/agb.html).
+
+<a id="gr"></a>
+
+### GR — Graubünden / Grigioni / Grischun
+
+**Authority/publisher:** Amt für Energie und Verkehr; ALG / GeoGR. **Review areas:** Chur/Rheintal; Prättigau/Davos; Surselva; Engadin; Val Müstair; Poschiavo; Mesolcina/Calanca.
+
+**Evidence:** Cantonal catalogue returned HTTP 200 with an Oracle backend error (ORA-24415), so its body is not a successful catalogue result. GeoGR landing page is reachable; no current regional bus-line export was verified. National rail and existing road matching remain useful baselines.
+
+**Vintage:** No local bus-line vintage established; seasonal service dates must be explicit.
+
+**Reuse:** Public portal availability does not establish a particular bus dataset licence.
+
+**Next action:** Retry functioning catalogue/export discovery and review Chur, Davos, Engadin and valley operators independently, including Tirano/Livigno border geometry. Representative GTFS agencies: `48`, `72`, `712`, `716`, `740`, `766`, `801`, `815`, `865`.
+
+**Checked references:** [gr-catalogue](https://katalog.geo.gr.ch/), [gr-geogr](https://geogr.ch/geodaten).
+
+<a id="ag"></a>
+
+### AG — Aargau
+
+**Authority/publisher:** Abteilung Verkehr; AGIS Service Center. **Review areas:** Aarau; Baden/Wettingen; Brugg; Lenzburg; Freiamt; Fricktal; Zurzibiet.
+
+**Evidence:** AGIS.avk_oevlinien Shapefile acquired. DBF has 366 records with mode, line number, direction, itinerary, timetable field and GO operator code/name. It includes through-lines outside AG, e.g. AAGL 72. DBF properties and archive structure inspected; shapefile coordinates not yet decoded.
+
+**Vintage:** Dataset filename and metadata: 23 April 2026. Normal timetable only; temporary diversions explicitly excluded. HTTP Last-Modified in September is not the geometry date.
+
+**Reuse:** August 2024 terms: generally free use, required credit Daten des Kantons Aargau; API limit 20 requests/minute and WMS 10/minute. Preserve the supplied terms; do not relabel as CC0.
+
+**Next action:** Decode LV95 geometry and crosswalk GO_NR plus line/direction against ordered GTFS stops; audit night branches and handle diversions separately. Representative GTFS agencies: `11`, `723`, `801`, `811`, `840`, `873`, `886`, `899`.
+
+**Checked references:** [ag-metadata](https://www.ag.ch/geoportal/geodatenshop/Datendokumentation.aspx?Datensatzelement=6224), [ag-lines](https://api.geo.ag.ch/v1/data/downloads/AGIS.avk_oevlinien/download/Shapefile/kanton_aargau), [ag-terms](https://www.ag.ch/geoportal/geodatenshop/Nutzungsbedingungen.aspx?Typ=NutzungsbedingungenAGIS1), [ag-download-detail](https://www.ag.ch/de/verwaltung/dfr/geoportal/geodaten/geodatenliste?rewriteRemoteUrl=/details/AGIS.avk_oevlinien?searchcontext%3D%C3%B6V-Linien).
+
+<a id="tg"></a>
+
+### TG — Thurgau
+
+**Authority/publisher:** Canton Thurgau public transport planning; cantonal geoinformation. **Review areas:** Frauenfeld; Kreuzlingen; Weinfelden; Arbon/Romanshorn; Untersee; Hinterthurgau.
+
+**Evidence:** Official WFS exposes buslinie, buslinie_takt and other layers. GetFeature returned three real GML LineStrings; hits reports 337 buslinie features. Properties include liniennr_1, takt and betriebszeiten. Geometry output requested EPSG:4326; inspect GML axis order on conversion.
+
+**Vintage:** Current timetable vintage unresolved; a catalogue date of 1 January 2000 must not be read as a verified geometry date.
+
+**Reuse:** General terms distinguish access classes. Establish the specific bus-layer reuse conditions; service Fees/AccessConstraints values are not sufficient licence evidence.
+
+**Next action:** Download the complete GML layer, establish vintage and operator mapping, and measure directed stop patterns including cross-border lake services. Representative GTFS agencies: `11`, `65`, `195`, `727`, `797`, `801`.
+
+**Checked references:** [tg-wfs](https://ows.geo.tg.ch/geofy_access_proxy/oev?Request=GetCapabilities&Service=WFS&Version=2.0.0), [tg-count](https://ows.geo.tg.ch/geofy_access_proxy/oev?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=ms%3Abuslinie&RESULTTYPE=hits), [tg-sample](https://ows.geo.tg.ch/geofy_access_proxy/oev?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=ms%3Abuslinie&COUNT=3&SRSNAME=EPSG%3A4326), [tg-terms](https://shop.geo.tg.ch/sites/default/files/pdf/Nutzungsbedingungen_Geodaten.pdf).
+
+<a id="ti"></a>
+
+### TI — Ticino
+
+**Authority/publisher:** Sezione della mobilità / Ufficio dei trasporti pubblici; Centro di competenza geoinformazione. **Review areas:** Luganese; Bellinzonese; Locarnese; Mendrisiotto; Leventina/Blenio; Vallemaggia; Centovalli.
+
+**Evidence:** Cantonal services page and WFS capabilities checked. No current local bus-line export established. The TI-11 public transport network catalogue entry is a discovery lead, not evidence that vectors were downloaded. The WFS access constraints refer to a formal request.
+
+**Vintage:** No acquired bus-line dataset vintage established.
+
+**Reuse:** Access and dataset reuse conditions unresolved; a service-level no-fee statement does not override its request constraint.
+
+**Next action:** Obtain the TI-11 distribution details and review TPL, FART, ARL, AMSA and valley buses; check TILO and Italian termini by actual route membership. Representative GTFS agencies: `11`, `47`, `49`, `736`, `801`, `817`, `858`, `862`, `955`, `3955`.
+
+**Checked references:** [ti-services](https://www4.ti.ch/dt/sg/sai/ugeo/temi/geoportale-ticino/geoportale/geoservizi), [ti-wfs](https://wfs.geo.ti.ch/service?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetCapabilities).
+
+<a id="vd"></a>
+
+### VD — Vaud
+
+**Authority/publisher:** Direction générale de la mobilité et des routes; Direction du cadastre et de la géoinformation / viageo. **Review areas:** Lausanne; La Côte/Nyon; Morges; Nord vaudois; Broye; Riviera; Pays-d’Enhaut; Chablais.
+
+**Evidence:** Transports publics (complet) documents road, rail, lake lines and commercial stops. Lines continuing into neighbouring cantons are digitised in full. XML metadata links WMS road/rail/lake layers. The export is supplied through an order workflow; no vector export acquired.
+
+**Vintage:** Data 6 March 2026; metadata 5 June 2026; annual update in first quarter.
+
+**Reuse:** Catalogue advertises CHF 1/km², minimum CHF 1/maximum CHF 3,000 plus CHF 25 per order, with conditional exemptions. Licence/order conditions require resolution for the intended delivery; no exemption assumed.
+
+**Next action:** Resolve distribution cost and reuse terms, then audit the whole canton. Existing Lausanne/tl work is not evidence for Nyon, TRAVYS, Riviera or Chablais bus coverage. Representative GTFS agencies: `11`, `23`, `29`, `42`, `55`, `64`, `66`, `97`, `151`, `184`, `738`, `741`, `764`, `818`, `876`, `895`.
+
+**Checked references:** [vd-metadata](https://viageo.ch/md/599d9cd5-1218-4372-8783-43cd5c5bc4dc), [vd-xml](https://viageo.ch/geodonnee/metadonnee/599d9cd5-1218-4372-8783-43cd5c5bc4dc.xml).
+
+<a id="vs"></a>
+
+### VS — Valais / Wallis
+
+**Authority/publisher:** Service de la mobilité; Centre de compétence géomatique. **Review areas:** Monthey/Chablais; Martigny; Sion; Sierre; Leuk/Visp/Brig; Goms; Side valleys.
+
+**Evidence:** Official geodata inventory row 376 identifies Transport en commun / Öffentlicher Verkehr, owner SDM. Its publication/download channel cells are blank. This establishes a data lead, not a current open line export. Geoservices portal is reachable.
+
+**Vintage:** Inventory generated 26 August 2026; transport dataset row dated 5 July 2018.
+
+**Reuse:** No public-vector distribution channel or dataset licence established.
+
+**Next action:** Locate current SDM data and review Rhône valley plus each side valley, separating RegionAlps, TMR, MGB, TPC and local bus identities. Representative GTFS agencies: `23`, `48`, `61`, `74`, `93`, `142`, `713`, `714`, `765`, `801`, `814`, `818`, `835`, `855`.
+
+**Checked references:** [vs-inventory](https://www.vs.ch/documents/17311/17591/Inventaire%2Bdes%2Bg%C3%A9odonn%C3%A9es%2B-%2BInventar%2Bder%2BGeodaten/2fd849d0-ab9f-4bfc-965a-3920ebd18a08), [vs-services](https://geo.vs.ch/geoservices), [vs-portal](https://geo.vs.ch/).
+
+<a id="ne"></a>
+
+### NE — Neuchâtel
+
+**Authority/publisher:** Canton Neuchâtel transport planning; SITN. **Review areas:** Neuchâtel littoral; La Chaux-de-Fonds; Le Locle; Val-de-Ruz; Val-de-Travers.
+
+**Evidence:** Public SITN WMS capabilities and services documentation checked. No transport line export verified in that service. Published stop metadata and transport digitisation documentation are leads, not an acquired bus graph. transN spans multiple rail, bus and funicular identities.
+
+**Vintage:** No acquired line-layer vintage established.
+
+**Reuse:** No bus-line dataset-specific terms established.
+
+**Next action:** Resolve line-layer distribution with SITN metadata, then audit all transN feed identities and through operators rather than a single brand match. Representative GTFS agencies: `11`, `33`, `44`, `73`, `153`, `156`, `166`, `792`, `796`, `15300`.
+
+**Checked references:** [ne-services](https://sitn.ne.ch/services/), [ne-wms](https://sitn.ne.ch/services/wms?SERVICE=WMS&REQUEST=GetCapabilities).
+
+<a id="ju"></a>
+
+### JU — Jura
+
+**Authority/publisher:** Service du développement territorial / transports; SIT Jura. **Review areas:** Delémont; Ajoie/Porrentruy; Franches-Montagnes; Clos du Doubs; Moutier interface.
+
+**Evidence:** WMS advertises ju.sdt_09_07_lignes_de_bus, night-bus and railway layers. WFS does not advertise those transport layers. Bus-layer XML metadata returned, but its distribution links are rendered images; the PDF and geodata-inventory endpoints returned 500.
+
+**Vintage:** Bus-line geometry vintage unresolved.
+
+**Reuse:** WMS rendering and image download do not grant raw-vector redistribution rights.
+
+**Next action:** Locate vector distribution and terms, map MOBIJU branding to actual feed routes, and audit night lines, French termini and current administrative boundaries. Representative GTFS agencies: `11`, `43`, `801`, `833`.
+
+**Checked references:** [ju-wms](https://geoservices.jura.ch/wms?SERVICE=WMS&REQUEST=GetCapabilities), [ju-wfs](https://geoservices.jura.ch/wfs?SERVICE=WFS&REQUEST=GetCapabilities&VERSION=2.0.0), [ju-bus-wms-metadata](https://geoservices.jura.ch/wms?request=GetMetadata&layer=ju.sdt_09_07_lignes_de_bus), [ju-bus-metadata](https://geo.jura.ch/geodonnees/fiches/Fiche_SDT_9_07_Lignes_de_bus.pdf), [ju-inventory](https://geo.jura.ch/geodonnees).
+
+<a id="ge"></a>
+
+### GE — Genève
+
+**Authority/publisher:** Office cantonal des transports; TPG / SITG. **Review areas:** Genève core; Cantonal outskirts; French cross-border branches; Lake and Léman Express interfaces.
+
+**Evidence:** TPG_LIGNES metadata and ArcGIS GeoJSON samples are accessible. Fields include LIGNE, NOM_LIGNE, DIRECTION, VEHICULE and TYPE_SERVICE. OBJECTID is explicitly not a permanent identifier. Existing TPG integration is a baseline; lake and Léman Express are separate operator/geometry scopes.
+
+**Vintage:** Metadata advertises twice-yearly updating and publication 12 June 2025; metadata refresh on 8 September 2026 is not a new geometry vintage.
+
+**Reuse:** SITG marks access as free but dataset use restrictions are unfilled. Preserve existing SITG/TPG credits and resolve applicable reuse terms for any new redistribution.
+
+**Next action:** Refresh the pinned line data and revalidate directed branches and French termini; include boats and railway records through explicit route scoping. Representative GTFS agencies: `11`, `184`, `199`, `881`.
+
+**Checked references:** [ge-layer](https://sitg.ge.ch/donnees/tpg-lignes), [ge-service](https://vector.sitg.ge.ch/arcgis/rest/services/TPG_LIGNES/MapServer?f=pjson), [ge-sample](https://vector.sitg.ge.ch/arcgis/rest/services/TPG_LIGNES/MapServer/0/query?where=1%3D1&outFields=*&outSR=4326&resultRecordCount=3&f=geojson).
+
+## Recommended implementation sequence and remaining checks
+
+This ordering is engineering judgement based on the evidence above, not a measured ranking of entire regions.
+
+1. **Complete the existing Basel and Lausanne audits on their own terms.** Their latest detailed reports take precedence over this broad survey for measured route/path admission. Keep Zürich and Genève source refreshes distinct from geographical expansion.
+2. **Implement reusable official-line adapters for Bern and Aargau; extend to Luzern.** Bern has line/operator attributes and documented reuse, Aargau adds direction and GO codes, and Luzern has explicit 2026 line identifiers. Do not assume their code systems are interchangeable. These are the most useful next full joins.
+3. **Evaluate Zug, Fribourg and Thurgau next.** Their geometry is more concrete than the earlier shortlist suggested. Zug needs archive/WFS date reconciliation; Fribourg needs full retrieval, licensing and timetable-field mapping; Thurgau needs a full GML export, current vintage and reuse confirmation.
+4. **Treat Solothurn as a network-routing adapter.** Its many segments do not imply thousands of route shapes. Establish connectivity and mode filtering, then measure stop-chain routing and the explicitly excluded night network.
+5. **Resolve distribution for SG, BL, VD, JU and NW.** SG has a documented data model and unresolved download/terms; BL advertises an export; VD has a priced order workflow; JU/NW expose transport maps. The canton entries record the precise next action without pretending acquisition succeeded.
+6. **Continue source discovery or measured road matching for UR, SZ, OW, GL, SH, AR, AI, TI, GR, VS and NE.** Prioritise a regional route inventory first so that an official source, operator contribution or inferred path can be judged against an explicit denominator.
+
+Before calling a region complete, produce an admission/exclusion inventory for all selected routes and operators, with unambiguous border scope. Evaluate normal weekday, Sunday/holiday, night and seasonally distinct service dates; add winter mountain and summer pass/boat cases as appropriate. Two September service dates do not establish year-round completeness. Include demand-responsive services as such, rather than inventing fixed movements from their service areas.
+
+For each geometry adapter, preserve source hash, true data vintage, coordinate system, licence/credit, operator/line mapping and transformation parameters. Test every admitted directed stop pattern; report failures by operator/mode, unique directed stop pair and scheduled segment occurrence. Check terminals, loops, bridges, tunnels, stacked tracks, one-way streets and foreign termini. Distinguish surveyed normal alignments from temporary diversions. Do not suppress unresolved paths or label interpolation as measured movement. Existing [Basel](BASEL-STUDY.md) and [Lausanne](LAUSANNE-STUDY.md) reports provide the more detailed precedent.
+
+Source discovery is the completed deliverable here. The unresolved items are documented adapter, acquisition or licence questions; no full-canton geometry coverage percentage is implied by the source counts.
+
+## Reproduction and verification
+
+Run from the repository root. The agency census requires the repository's installed `@motionstudies/data` package, Node and `unzip`; probes use Python's standard library plus `curl`. Realtime parsing and offline checks do not require authenticated services.
+
+```sh
+# Offline cross-file consistency: no network or large archives required.
+node scripts/check-swiss-transit-survey.mjs
+
+# Regenerate the full agency census from the pinned downloaded archive.
+node scripts/audit-swiss-transit-agencies.mjs \
+  /private/tmp/GTFS_FP2026_20260902.zip \
+  2026-09-04,2026-09-06 data/swiss-transit-agencies.json
+
+# Refresh live public checks; results and hashes may change.
+python3 scripts/probe-transit-sources.py \
+  data/swiss-transit-sources.json data/swiss-transit-source-probes.json \
+  /private/tmp/gleislicht-national-survey
+
+# Preserve all official realtime flags/comments in machine-readable form.
+python3 scripts/catalogue-swiss-realtime.py \
+  /private/tmp/gleislicht-national-survey/national-rt-csv.body \
+  data/swiss-transit-source-probes.json data/swiss-transit-realtime-catalogue.json
+
+# Re-inspect previously downloaded bytes without fetching newer data.
+python3 scripts/probe-transit-sources.py \
+  data/swiss-transit-sources.json data/swiss-transit-source-probes.json \
+  /private/tmp/gleislicht-national-survey ALL --inspect-cache
+```
+
+An optional fourth probe argument selects comma-separated source IDs and merges results. Keep access checks narrowly scoped and respect each publisher's limits; a failed speculative URL is not evidence that the publisher lacks data. Review response contents and update the canton narrative after a refresh: the script's expected-format flag deliberately does not infer semantic validity, licences or transit completeness.
+
+Validation for this survey: all 26 standard canton codes occur once; all representative agency IDs exist in the pinned census; all cited probe IDs resolve; source/probe URLs and registry hash agree; agency daily aggregates and realtime category totals reconcile; each canton has a documentation anchor. Cached-response hashes were verified during offline reinspection. Source acquisition and these consistency checks are separate from the future geometry joins described above.

@@ -1,5 +1,7 @@
 # Regional network source and feasibility survey
 
+**National follow-up:** the [Swiss transit source inventory](SWISS-TRANSIT-SOURCE-INVENTORY.md) now covers all 26 cantons, all 473 agency records in the pinned feed, 90 endpoint checks and the complete realtime coverage catalogue. It adds downloaded AG/ZG/SO geometry, an inspected Bern GeoPackage and verified Fribourg bus samples. Use that inventory for current source status; the eight-region sample and its original measurements below remain a historical baseline.
+
 Surveyed **8 September 2026**. Lausanne is already being tackled separately; see [its kickoff audit](LAUSANNE-STUDY.md). Zürich/ZVV, Genève/TPG and the existing Lake Lucerne–Rigi composition are the reuse baseline, not new candidates.
 
 **Recommended next regional studies: Basel/TNW, Bern, then Luzern.** All three have official local line geometry as well as the shared Swiss timetable. Basel offers the strongest new cross-border urban composition; Bern offers a compact interchange-led network; Luzern can connect the existing lake-and-mountain study to everyday urban transport. St.Gallen is the next geometry-backed candidate. Ticino and Graubünden are worthwhile, but should begin with smaller areas while bus geometry and boundary coverage are resolved.
@@ -123,9 +125,9 @@ The publisher links a [public download folder](https://data.geo.sg.ch/s/RMgBWPof
 
 **First study:** Fribourg agglomeration and its RER approaches, then the Bulle–Romont connection. TPF publishes [2026 network plans](https://www.tpf.ch/fr/horaires-et-reseaux/plans-du-reseau/reseaux-tpf) for these distinct scopes; use them to review membership and interchange structure.
 
-**Sources and limits:** timetable identities are split between rail `53`, **bus `834` (Service d'automobiles TPF)** and funicular `3004`. Searching only for an agency named “Transports publics fribourgeois” misses the bus network. National rail geometry is reusable; no current machine-readable local bus geometry export was verified in this survey. Published network diagrams are not street alignments or a licensed replacement for them.
+**Sources and limits:** timetable identities are split between rail `53`, **bus `834` (Service d'automobiles TPF)** and funicular `3004`. Searching only for an agency named “Transports publics fribourgeois” misses the bus network. The original survey did not find a local bus export; the [national follow-up](SWISS-TRANSIT-SOURCE-INVENTORY.md#fr) now verifies an ArcGIS line layer with 128 features and actual TPF bus GeoJSON samples. Full acquisition, vintage, reuse terms and directed timetable joins remain unresolved.
 
-**Feasibility / next check:** a good compact follow-up once the generic road matcher is available for other agencies. Inventory the three agency families, match urban bus patterns, and inspect station loops and bridge approaches. The funicular requires a separately verified alignment and height treatment. Wider Frimobil includes more than TPF; add other operators through an explicit route inventory, not an operator-name shortcut.
+**Feasibility / next check:** evaluate the newly found official line source before selecting the geometry adapter. Inventory the three agency families, match urban bus patterns, and inspect station loops and bridge approaches. The funicular requires a separately verified alignment and height treatment. Wider Frimobil includes more than TPF; add other operators through an explicit route inventory, not an operator-name shortcut.
 
 ## 8. Neuchâtel / transN
 

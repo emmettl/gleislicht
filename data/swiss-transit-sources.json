@@ -1,0 +1,635 @@
+{
+  "schemaVersion": 1,
+  "sources": [
+    {
+      "id": "zg-catalogue",
+      "url": "https://zg.ch/de/planen-bauen/geoinformation/geoinformationen-nutzen/geoinformationen-von-a-bis-z",
+      "expectedKinds": [
+        "html"
+      ]
+    },
+    {
+      "id": "zg-wfs",
+      "url": "https://services.geo.zg.ch/ows/buslinien?REQUEST=GetCapabilities&SERVICE=WFS",
+      "expectedKinds": [
+        "xml"
+      ]
+    },
+    {
+      "id": "zg-download",
+      "url": "https://services.geo.zg.ch/datarepo/Buslinien/data.zip",
+      "expectedKinds": [
+        "zip"
+      ]
+    },
+    {
+      "id": "tg-wfs",
+      "url": "https://ows.geo.tg.ch/geofy_access_proxy/oev?Request=GetCapabilities&Service=WFS&Version=2.0.0",
+      "expectedKinds": [
+        "xml"
+      ]
+    },
+    {
+      "id": "fr-layer",
+      "url": "https://map.geo.fr.ch/arcgis/rest/services/PortailCarto/Theme_mobilite/MapServer/2?f=pjson",
+      "expectedKinds": [
+        "json"
+      ]
+    },
+    {
+      "id": "fr-sample",
+      "url": "https://map.geo.fr.ch/arcgis/rest/services/PortailCarto/Theme_mobilite/MapServer/2/query?where=1%3D1&outFields=*&outSR=4326&returnGeometry=true&resultRecordCount=3&f=geojson",
+      "expectedKinds": [
+        "geojson"
+      ]
+    },
+    {
+      "id": "fr-count",
+      "url": "https://map.geo.fr.ch/arcgis/rest/services/PortailCarto/Theme_mobilite/MapServer/2/query?where=1%3D1&returnCountOnly=true&f=json",
+      "expectedKinds": [
+        "json"
+      ]
+    },
+    {
+      "id": "so-catalogue",
+      "url": "https://data.geo.so.ch/?filter=ch.so.avt.oev",
+      "expectedKinds": [
+        "html"
+      ]
+    },
+    {
+      "id": "ag-catalogue",
+      "url": "https://www.ag.ch/geoportal/geodatenshop/Geodatenliste.aspx?Typ=ListeGeodaten",
+      "expectedKinds": [
+        "pdf"
+      ]
+    },
+    {
+      "id": "ag-map-doc",
+      "url": "https://www.ag.ch/geoportal/api/v1/mapservices/187/documentation",
+      "expectedKinds": [
+        "pdf"
+      ]
+    },
+    {
+      "id": "sh-catalogue",
+      "url": "https://data.geo.sh.ch/ogd/",
+      "expectedKinds": [
+        "html"
+      ]
+    },
+    {
+      "id": "nw-wms",
+      "url": "https://www.gis-daten.ch/wms/nw/service?REQUEST=GetCapabilities&SERVICE=WMS",
+      "expectedKinds": [
+        "xml"
+      ]
+    },
+    {
+      "id": "ow-wms",
+      "url": "https://www.gis-daten.ch/wms/ow/service?REQUEST=GetCapabilities&SERVICE=WMS",
+      "expectedKinds": [
+        "xml"
+      ]
+    },
+    {
+      "id": "ne-wms",
+      "url": "https://sitn.ne.ch/services/wms?SERVICE=WMS&REQUEST=GetCapabilities",
+      "expectedKinds": [
+        "xml"
+      ]
+    },
+    {
+      "id": "sz-catalogue",
+      "url": "https://data.geo.sz.ch/public/Themen/A100A/wms.html",
+      "expectedKinds": [
+        "html"
+      ]
+    },
+    {
+      "id": "be-lines",
+      "url": "https://geofiles.be.ch/geoportal/pub/download/OEVTP/oevtp_linie.parquet",
+      "expectedKinds": [
+        "parquet"
+      ]
+    },
+    {
+      "id": "lu-layer",
+      "url": "https://public.geo.lu.ch/ogd/rest/services/managed/OEVXXXXX_COL_V5_MP/MapServer?f=pjson",
+      "expectedKinds": [
+        "json"
+      ]
+    },
+    {
+      "id": "lu-sample",
+      "url": "https://public.geo.lu.ch/ogd/rest/services/managed/OEVXXXXX_COL_V5_MP/MapServer/8/query?where=1%3D1&outFields=*&outSR=4326&returnGeometry=true&resultRecordCount=3&f=geojson",
+      "expectedKinds": [
+        "geojson"
+      ]
+    },
+    {
+      "id": "bs-wfs",
+      "url": "https://wfs.geo.bs.ch/?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetCapabilities",
+      "expectedKinds": [
+        "xml"
+      ]
+    },
+    {
+      "id": "sg-download-page",
+      "url": "https://data.geo.sg.ch/s/RMgBWPofwkaCawf?dir=/Geodaten/3%20-%20Bev%C3%B6lkerung%20und%20Wirtschaft/P%20-%20Verkehr/AbgeltungsberechtigteLinien",
+      "expectedKinds": [
+        "html"
+      ]
+    },
+    {
+      "id": "ge-layer",
+      "url": "https://sitg.ge.ch/donnees/tpg-lignes",
+      "expectedKinds": [
+        "html"
+      ]
+    },
+    {
+      "id": "zh-gtfs-catalogue",
+      "url": "https://data.stadt-zuerich.ch/api/3/action/package_show?id=vbz_fahrplandaten_gtfs",
+      "expectedKinds": [
+        "json"
+      ]
+    },
+    {
+      "id": "national-rail",
+      "url": "https://data.geo.admin.ch/api/stac/v1/collections/ch.bav.schienennetz/items/schienennetz",
+      "expectedKinds": [
+        "json"
+      ]
+    },
+    {
+      "id": "national-gtfs",
+      "url": "https://data.opentransportdata.swiss/api/3/action/package_show?id=timetable-2026-gtfs2020",
+      "expectedKinds": [
+        "json"
+      ]
+    },
+    {
+      "id": "national-realtime",
+      "url": "https://data.opentransportdata.swiss/api/3/action/package_show?id=go-realtime",
+      "expectedKinds": [
+        "json"
+      ]
+    },
+    {
+      "id": "tg-sample",
+      "url": "https://ows.geo.tg.ch/geofy_access_proxy/oev?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=ms%3Abuslinie&COUNT=3&SRSNAME=EPSG%3A4326",
+      "expectedKinds": [
+        "xml"
+      ]
+    },
+    {
+      "id": "tg-count",
+      "url": "https://ows.geo.tg.ch/geofy_access_proxy/oev?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=ms%3Abuslinie&RESULTTYPE=hits",
+      "expectedKinds": [
+        "xml"
+      ]
+    },
+    {
+      "id": "fr-bus-sample",
+      "url": "https://map.geo.fr.ch/arcgis/rest/services/PortailCarto/Theme_mobilite/MapServer/2/query?where=TYPE_LIGNE_VALEUR%20LIKE%20%27%25Bus%25%27&outFields=*&outSR=4326&returnGeometry=true&resultRecordCount=3&f=geojson",
+      "expectedKinds": [
+        "geojson"
+      ]
+    },
+    {
+      "id": "ju-wfs",
+      "url": "https://geoservices.jura.ch/wfs?SERVICE=WFS&REQUEST=GetCapabilities&VERSION=2.0.0",
+      "expectedKinds": [
+        "xml"
+      ]
+    },
+    {
+      "id": "ar-wms",
+      "url": "https://www.geoportal.ch/services/wms/ktar?SERVICE=WMS&REQUEST=GetCapabilities",
+      "expectedKinds": [
+        "xml"
+      ]
+    },
+    {
+      "id": "ai-portal",
+      "url": "https://www.ai.ch/themen/planen-und-bauen/geodaten-und-plaene/geoportal",
+      "expectedKinds": [
+        "html"
+      ]
+    },
+    {
+      "id": "gl-wfs",
+      "url": "https://wfs.geo.gl.ch/?REQUEST=GetCapabilities&SERVICE=WFS&VERSION=1.1.0",
+      "expectedKinds": [
+        "xml"
+      ]
+    },
+    {
+      "id": "ur-portal",
+      "url": "https://geo.ur.ch/",
+      "expectedKinds": [
+        "html"
+      ]
+    },
+    {
+      "id": "gr-catalogue",
+      "url": "https://katalog.geo.gr.ch/",
+      "expectedKinds": [
+        "html"
+      ]
+    },
+    {
+      "id": "ti-services",
+      "url": "https://www4.ti.ch/dt/sg/sai/ugeo/temi/geoportale-ticino/geoportale/geoservizi",
+      "expectedKinds": [
+        "html"
+      ]
+    },
+    {
+      "id": "vd-metadata",
+      "url": "https://viageo.ch/md/599d9cd5-1218-4372-8783-43cd5c5bc4dc",
+      "expectedKinds": [
+        "html"
+      ]
+    },
+    {
+      "id": "vd-xml",
+      "url": "https://viageo.ch/geodonnee/metadonnee/599d9cd5-1218-4372-8783-43cd5c5bc4dc.xml",
+      "expectedKinds": [
+        "xml"
+      ]
+    },
+    {
+      "id": "vs-portal",
+      "url": "https://geo.vs.ch/",
+      "expectedKinds": [
+        "html"
+      ]
+    },
+    {
+      "id": "so-api",
+      "url": "https://geo.so.ch/api/data/v1/",
+      "expectedKinds": [
+        "json"
+      ]
+    },
+    {
+      "id": "sg-archive",
+      "url": "https://data.geo.sg.ch/s/RMgBWPofwkaCawf/download?path=%2FGeodaten%2F3%20-%20Bev%C3%B6lkerung%20und%20Wirtschaft%2FP%20-%20Verkehr%2FAbgeltungsberechtigteLinien",
+      "expectedKinds": [
+        "zip"
+      ]
+    },
+    {
+      "id": "be-metadata",
+      "url": "https://www.agi.dij.be.ch/de/start/geoportal/geodaten/detail.html?code=OEVTP&type=geoproduct",
+      "expectedKinds": [
+        "html"
+      ]
+    },
+    {
+      "id": "lu-metadata",
+      "url": "https://daten.geo.lu.ch/produkt/oevxxxxx_col_v5",
+      "expectedKinds": [
+        "html"
+      ]
+    },
+    {
+      "id": "national-gtfs-page",
+      "url": "https://data.opentransportdata.swiss/en/dataset/timetable-2026-gtfs2020",
+      "expectedKinds": [
+        "html"
+      ]
+    },
+    {
+      "id": "national-rt-page",
+      "url": "https://data.opentransportdata.swiss/en/dataset/go-realtime",
+      "expectedKinds": [
+        "html"
+      ]
+    },
+    {
+      "id": "ti-wfs",
+      "url": "https://wfs.geo.ti.ch/service?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetCapabilities",
+      "expectedKinds": [
+        "xml"
+      ]
+    },
+    {
+      "id": "ur-wfs",
+      "url": "https://geo.ur.ch/wfs?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetCapabilities",
+      "expectedKinds": [
+        "xml"
+      ]
+    },
+    {
+      "id": "ju-wms",
+      "url": "https://geoservices.jura.ch/wms?SERVICE=WMS&REQUEST=GetCapabilities",
+      "expectedKinds": [
+        "xml"
+      ]
+    },
+    {
+      "id": "vs-services",
+      "url": "https://geo.vs.ch/geoservices",
+      "expectedKinds": [
+        "html"
+      ]
+    },
+    {
+      "id": "vs-inventory",
+      "url": "https://www.vs.ch/documents/17311/17591/Inventaire%2Bdes%2Bg%C3%A9odonn%C3%A9es%2B-%2BInventar%2Bder%2BGeodaten/2fd849d0-ab9f-4bfc-965a-3920ebd18a08",
+      "expectedKinds": [
+        "pdf"
+      ]
+    },
+    {
+      "id": "ag-search",
+      "url": "https://www.ag.ch/geoportal/geodatenshop/datensuche.aspx?display=all&search=AGIS.avk_oevlinien",
+      "expectedKinds": [
+        "html"
+      ]
+    },
+    {
+      "id": "ag-metadata",
+      "url": "https://www.ag.ch/geoportal/geodatenshop/Datendokumentation.aspx?Datensatzelement=6224",
+      "expectedKinds": [
+        "pdf"
+      ]
+    },
+    {
+      "id": "ag-direct",
+      "url": "https://www.ag.ch/geoportal/api/v1/datasets/6224",
+      "expectedKinds": [
+        "json"
+      ]
+    },
+    {
+      "id": "so-api-dataset",
+      "url": "https://geo.so.ch/api/data/v1/ch.so.avt.oev",
+      "expectedKinds": [
+        "json"
+      ]
+    },
+    {
+      "id": "so-gpkg",
+      "url": "https://geo.so.ch/api/data/v1/ch.so.avt.oev/aktuell/ch.so.avt.oev.gpkg.zip",
+      "expectedKinds": [
+        "zip"
+      ]
+    },
+    {
+      "id": "so-app",
+      "url": "https://data.geo.so.ch/app/app.nocache.js",
+      "expectedKinds": [
+        "text"
+      ]
+    },
+    {
+      "id": "national-rt-csv",
+      "url": "https://data.opentransportdata.swiss/dataset/27aba9bd-59ed-4d7c-bc71-a3813d1d1799/resource/83b8b8d0-e345-453b-857e-1192d48c4c64/download/go-realtime.csv",
+      "expectedKinds": [
+        "text"
+      ]
+    },
+    {
+      "id": "ge-service",
+      "url": "https://vector.sitg.ge.ch/arcgis/rest/services/TPG_LIGNES/MapServer?f=pjson",
+      "expectedKinds": [
+        "json"
+      ]
+    },
+    {
+      "id": "bl-metadata",
+      "url": "https://www.baselland.ch/politik-und-behorden/direktionen/volkswirtschafts-und-gesundheitsdirektion/amt-fur-geoinformation/geoportal/geodaten/verkehr",
+      "expectedKinds": [
+        "html"
+      ]
+    },
+    {
+      "id": "sg-source-page",
+      "url": "https://www.sg.ch/bauen/geoinformation/aktuelles.html",
+      "expectedKinds": [
+        "html"
+      ]
+    },
+    {
+      "id": "sg-model",
+      "url": "https://services.geo.sg.ch/wss/service/metadaten/guest/datenbeschreibung/AOEV_AL_OEV_Datenbeschreibung.pdf",
+      "expectedKinds": [
+        "pdf"
+      ]
+    },
+    {
+      "id": "ag-download-page",
+      "url": "https://www.ag.ch/de/verwaltung/dfr/geoportal/geodaten/geodatenliste?search=%C3%B6V-Linien",
+      "expectedKinds": [
+        "html"
+      ]
+    },
+    {
+      "id": "so-app-code",
+      "url": "https://data.geo.so.ch/app/681C891399E0174AD21F26F7BC891AAF.cache.js",
+      "expectedKinds": [
+        "text"
+      ]
+    },
+    {
+      "id": "be-product-pdf",
+      "url": "https://www.geo2.apps.be.ch/de/pdf/geoproduct/OEVTP",
+      "expectedKinds": [
+        "pdf"
+      ]
+    },
+    {
+      "id": "zg-terms",
+      "url": "https://zg.ch/de/planen-bauen/geoinformation/geoinformationen-nutzen/nutzungsbedingungen",
+      "expectedKinds": [
+        "html"
+      ]
+    },
+    {
+      "id": "fr-terms",
+      "url": "https://www.map.geo.fr.ch/help/fr/conditions_utilisation.htm",
+      "expectedKinds": [
+        "html"
+      ]
+    },
+    {
+      "id": "tg-terms",
+      "url": "https://shop.geo.tg.ch/sites/default/files/pdf/Nutzungsbedingungen_Geodaten.pdf",
+      "expectedKinds": [
+        "pdf"
+      ]
+    },
+    {
+      "id": "ju-inventory",
+      "url": "https://geo.jura.ch/geodonnees",
+      "expectedKinds": [
+        "html"
+      ]
+    },
+    {
+      "id": "sg-share-path",
+      "url": "https://data.geo.sg.ch/s/RMgBWPofwkaCawf?path=%2FGeodaten%2F3%20-%20Bev%C3%B6lkerung%20und%20Wirtschaft%2FP%20-%20Verkehr%2FAbgeltungsberechtigteLinien",
+      "expectedKinds": [
+        "html"
+      ]
+    },
+    {
+      "id": "gr-geogr",
+      "url": "https://geogr.ch/geodaten",
+      "expectedKinds": [
+        "html"
+      ]
+    },
+    {
+      "id": "ai-wms",
+      "url": "https://www.geoportal.ch/services/wms/ktai?SERVICE=WMS&REQUEST=GetCapabilities",
+      "expectedKinds": [
+        "xml"
+      ]
+    },
+    {
+      "id": "ne-services",
+      "url": "https://sitn.ne.ch/services/",
+      "expectedKinds": [
+        "html"
+      ]
+    },
+    {
+      "id": "ag-download-detail",
+      "url": "https://www.ag.ch/de/verwaltung/dfr/geoportal/geodaten/geodatenliste?rewriteRemoteUrl=/details/AGIS.avk_oevlinien?searchcontext%3D%C3%B6V-Linien",
+      "expectedKinds": [
+        "html"
+      ]
+    },
+    {
+      "id": "so-publications",
+      "url": "https://data.geo.so.ch/themepublications?query=ch.so.avt.oev",
+      "expectedKinds": [
+        "json"
+      ]
+    },
+    {
+      "id": "be-gpkg",
+      "url": "https://geofiles.be.ch/geoportal/pub/download/OEVTP/oevtp.gpkg.zip",
+      "expectedKinds": [
+        "zip"
+      ]
+    },
+    {
+      "id": "ju-bus-metadata",
+      "url": "https://geo.jura.ch/geodonnees/fiches/Fiche_SDT_9_07_Lignes_de_bus.pdf",
+      "expectedKinds": [
+        "pdf"
+      ]
+    },
+    {
+      "id": "fr-terms-canonical",
+      "url": "https://map.geo.fr.ch/help/fr/conditions_utilisation.htm",
+      "expectedKinds": [
+        "html"
+      ]
+    },
+    {
+      "id": "sbb-associations",
+      "url": "https://www.sbb.ch/de/angebote/tarifverbuende",
+      "expectedKinds": [
+        "html"
+      ]
+    },
+    {
+      "id": "national-gtfs-doc",
+      "url": "https://opentransportdata.swiss/en/cookbook/timetable-cookbook/gtfs/",
+      "expectedKinds": [
+        "html"
+      ]
+    },
+    {
+      "id": "national-rt-doc",
+      "url": "https://opentransportdata.swiss/en/cookbook/realtime-prediction-cookbook/gtfs-rt/",
+      "expectedKinds": [
+        "html"
+      ]
+    },
+    {
+      "id": "national-terms",
+      "url": "https://opentransportdata.swiss/en/terms-of-use/",
+      "expectedKinds": [
+        "html"
+      ]
+    },
+    {
+      "id": "fr-catalogue",
+      "url": "https://geo.fr.ch/",
+      "expectedKinds": [
+        "html"
+      ]
+    },
+    {
+      "id": "sg-terms",
+      "url": "https://www.sg.ch/bauen/geoinformation/datenbezug/agb.html",
+      "expectedKinds": [
+        "html"
+      ]
+    },
+    {
+      "id": "lu-terms",
+      "url": "https://geoportal.lu.ch/Nutzungsbedingungen",
+      "expectedKinds": [
+        "html"
+      ]
+    },
+    {
+      "id": "ag-lines",
+      "url": "https://api.geo.ag.ch/v1/data/downloads/AGIS.avk_oevlinien/download/Shapefile/kanton_aargau",
+      "expectedKinds": [
+        "zip"
+      ]
+    },
+    {
+      "id": "ag-terms",
+      "url": "https://www.ag.ch/geoportal/geodatenshop/Nutzungsbedingungen.aspx?Typ=NutzungsbedingungenAGIS1",
+      "expectedKinds": [
+        "pdf"
+      ]
+    },
+    {
+      "id": "so-lines",
+      "url": "https://files.geo.so.ch/ch.so.avt.oev/aktuell/ch.so.avt.oev.gpkg.zip",
+      "expectedKinds": [
+        "zip"
+      ]
+    },
+    {
+      "id": "so-metadata",
+      "url": "https://files.geo.so.ch/ch.so.avt.oev/aktuell/meta/datenbeschreibung.html",
+      "expectedKinds": [
+        "html"
+      ]
+    },
+    {
+      "id": "ju-bus-wms-metadata",
+      "url": "https://geoservices.jura.ch/wms?request=GetMetadata&layer=ju.sdt_09_07_lignes_de_bus",
+      "expectedKinds": [
+        "xml"
+      ]
+    },
+    {
+      "id": "ge-sample",
+      "url": "https://vector.sitg.ge.ch/arcgis/rest/services/TPG_LIGNES/MapServer/0/query?where=1%3D1&outFields=*&outSR=4326&resultRecordCount=3&f=geojson",
+      "expectedKinds": [
+        "geojson"
+      ]
+    },
+    {
+      "id": "so-terms",
+      "url": "https://files.geo.so.ch/nutzungsbedingungen.html",
+      "expectedKinds": [
+        "html"
+      ]
+    }
+  ]
+}

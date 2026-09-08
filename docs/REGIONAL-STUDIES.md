@@ -2,7 +2,7 @@
 
 The national rail study should remain spacious. Multimodal detail belongs in separately generated, lazily loaded studies with their own camera scale, label density and visual hierarchy.
 
-For expansion beyond the Lausanne work, see the [regional network source and feasibility survey](REGIONAL-NETWORK-SURVEY.md), checked on 8 September 2026. It prioritises Basel/TNW, Bern and Luzern, with source/access evidence and follow-up scopes for St.Gallen, Ticino, Graubünden, Fribourg and Neuchâtel.
+For expansion beyond the Lausanne work, use the [Swiss transit source inventory](SWISS-TRANSIT-SOURCE-INVENTORY.md), checked on 8 September 2026. It covers all 26 cantons, national agency and realtime catalogues, and source access, formats, reuse terms and remaining validation. The [earlier regional survey](REGIONAL-NETWORK-SURVEY.md) retains the initial eight-region timetable samples and study recommendations.
 
 ## The three scales
 
