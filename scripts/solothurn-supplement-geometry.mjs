@@ -5,6 +5,7 @@ import { createHash } from 'node:crypto'
 import { baselGraphs, matchBaselSegment } from './basel-line-geometry.mjs'
 import { bernGraph, bernPatternId } from './bern-line-geometry.mjs'
 import { loadSolothurnCorridors } from './solothurn-corridor-geometry.mjs'
+import { loadSolothurnRailReview } from './solothurn-rail-review.mjs'
 import { loadZugRail } from './zug-rail-geometry.mjs'
 import { loadSolothurnRoads } from './solothurn-road-geometry.mjs'
 import { hashFile } from './solothurn-timetable.mjs'
@@ -33,6 +34,7 @@ export async function loadSolothurnSupplements(timetable, { roads = true, verify
   assert(graphs.tram)
   const corridors = await loadSolothurnCorridors()
   const rail = await loadZugRail(policy.rail, context.snapshots.map(s => s.metadata.serviceDate))
+  const railReview = await loadSolothurnRailReview(policy.rail, context.snapshots.map(s => s.metadata.serviceDate))
   const railIds = new Set(policy.rail.routes.map(r => r.routeId)), routes = new Map(timetable.routes.map(r => [r.id, r]))
   const candidates = new Map(), seen = new Set(), graphCache = new Map()
   for (const raw of context.snapshots) {
@@ -54,6 +56,7 @@ export async function loadSolothurnSupplements(timetable, { roads = true, verify
           return graphCache.get(key)
         })
       }
+      if (route.mode === 'rail') results = railReview.matchPattern(train, raw.stops, route, results)
       for (const [i, result] of results.entries()) {
         const from = raw.stops[train.stops[i][0]], to = raw.stops[train.stops[i + 1][0]], key = keyOf(route, from, to)
         const list = candidates.get(key) ?? []
@@ -69,7 +72,7 @@ export async function loadSolothurnSupplements(timetable, { roads = true, verify
     road = await loadSolothurnRoads(context, { verifyEvidence })
     for (const [key, value] of road.pairs) pairs.set(key, value)
   }
-  return { pairs, policy, metadata: { corridors: corridors.metadata, contextSha256: await hashFile(contextPath), policySha256: await hashFile(policyPath), boat: policy.boat, tram: policy.tram, rail: { ...rail.source, limits: policy.rail.limits },
+  return { pairs, policy, metadata: { railReview: railReview.metadata, corridors: corridors.metadata, contextSha256: await hashFile(contextPath), policySha256: await hashFile(policyPath), boat: policy.boat, tram: policy.tram, rail: { ...rail.source, limits: policy.rail.limits },
     ...(road ? { road: road.metadata, roadCacheSha256: road.sha256 } : {}) },
     match(route, from, to) {
       const value = pairs.get(keyOf(route, from, to))
