@@ -1,0 +1,266 @@
+{
+  "reviewed": "2026-09-08",
+  "sourceHashes": {
+    "data/thurgau-regional-roads/cache.json.gz": "d7319885a74631ae6ac5858b172b8f167c56a3b37f3a68e35567aabc35270192",
+    "data/thurgau-regional-roads/801/stop_times.txt.gz": "1fe8d9592539b0c7d99582220d0fc50eebae03b04ef990c9e52558ec90958455"
+  },
+  "patterns": [
+    {
+      "roadPatternId": "39704299f82afbd7426c69bf",
+      "routeId": "96-220-5-j26-1",
+      "from": [
+        9.38822117,
+        47.45994728,
+        "Wittenbach, Zentrum",
+        "2",
+        "ch:1:sloid:73966:0:341297"
+      ],
+      "to": [
+        9.38803252,
+        47.4598501,
+        "Wittenbach, Zentrum",
+        "1",
+        "ch:1:sloid:73966:0:256909"
+      ],
+      "directDistanceMetres": 17.850221482083928,
+      "matcherCalls": [
+        {
+          "trip_id": "39704299f82afbd7426c69bf",
+          "arrival_time": "19:59:00",
+          "departure_time": "19:59:00",
+          "stop_id": "ch:1:sloid:73966:0:341297",
+          "stop_sequence": "1",
+          "stop_headsign": "",
+          "pickup_type": "0",
+          "drop_off_type": "0",
+          "shape_dist_traveled": "0.0",
+          "timepoint": "1",
+          "continuous_pickup": "",
+          "continuous_drop_off": ""
+        },
+        {
+          "trip_id": "39704299f82afbd7426c69bf",
+          "arrival_time": "20:00:00",
+          "departure_time": "20:00:00",
+          "stop_id": "ch:1:sloid:73966:0:256909",
+          "stop_sequence": "2",
+          "stop_headsign": "",
+          "pickup_type": "0",
+          "drop_off_type": "0",
+          "shape_dist_traveled": "0.0",
+          "timepoint": "1",
+          "continuous_pickup": "",
+          "continuous_drop_off": ""
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "journeys": 1,
+          "patternIds": [
+            "ae1f1bcf5a26b4894f02145b"
+          ]
+        },
+        {
+          "date": "2026-09-06",
+          "journeys": 0,
+          "patternIds": []
+        }
+      ],
+      "decision": "Excluded: distinct platforms, zero source shape distance; no inferred turnaround or stop substitution."
+    },
+    {
+      "roadPatternId": "6d13f2e71b61cec7b03c9466",
+      "routeId": "96-220-6-j26-1",
+      "from": [
+        9.38822117,
+        47.45994728,
+        "Wittenbach, Zentrum",
+        "2",
+        "ch:1:sloid:73966:0:341297"
+      ],
+      "to": [
+        9.38803252,
+        47.4598501,
+        "Wittenbach, Zentrum",
+        "1",
+        "ch:1:sloid:73966:0:256909"
+      ],
+      "directDistanceMetres": 17.850221482083928,
+      "matcherCalls": [
+        {
+          "trip_id": "6d13f2e71b61cec7b03c9466",
+          "arrival_time": "06:14:00",
+          "departure_time": "06:14:00",
+          "stop_id": "ch:1:sloid:73966:0:341297",
+          "stop_sequence": "1",
+          "stop_headsign": "",
+          "pickup_type": "0",
+          "drop_off_type": "0",
+          "shape_dist_traveled": "0.0",
+          "timepoint": "1",
+          "continuous_pickup": "",
+          "continuous_drop_off": ""
+        },
+        {
+          "trip_id": "6d13f2e71b61cec7b03c9466",
+          "arrival_time": "06:16:00",
+          "departure_time": "06:16:00",
+          "stop_id": "ch:1:sloid:73966:0:256909",
+          "stop_sequence": "2",
+          "stop_headsign": "",
+          "pickup_type": "0",
+          "drop_off_type": "0",
+          "shape_dist_traveled": "0.0",
+          "timepoint": "1",
+          "continuous_pickup": "",
+          "continuous_drop_off": ""
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "journeys": 6,
+          "patternIds": [
+            "32dc3c70ce6367e54a1c1f1a"
+          ]
+        },
+        {
+          "date": "2026-09-06",
+          "journeys": 0,
+          "patternIds": []
+        }
+      ],
+      "decision": "Excluded: distinct platforms, zero source shape distance; no inferred turnaround or stop substitution."
+    },
+    {
+      "roadPatternId": "840dc32cdab1f9279cf319fb",
+      "routeId": "96-220-5-j26-1",
+      "from": [
+        9.38822117,
+        47.45994728,
+        "Wittenbach, Zentrum",
+        "2",
+        "ch:1:sloid:73966:0:341297"
+      ],
+      "to": [
+        9.38803252,
+        47.4598501,
+        "Wittenbach, Zentrum",
+        "1",
+        "ch:1:sloid:73966:0:256909"
+      ],
+      "directDistanceMetres": 17.850221482083928,
+      "matcherCalls": [
+        {
+          "trip_id": "840dc32cdab1f9279cf319fb",
+          "arrival_time": "20:29:00",
+          "departure_time": "20:29:00",
+          "stop_id": "ch:1:sloid:73966:0:341297",
+          "stop_sequence": "1",
+          "stop_headsign": "",
+          "pickup_type": "0",
+          "drop_off_type": "0",
+          "shape_dist_traveled": "0.0",
+          "timepoint": "1",
+          "continuous_pickup": "",
+          "continuous_drop_off": ""
+        },
+        {
+          "trip_id": "840dc32cdab1f9279cf319fb",
+          "arrival_time": "20:30:00",
+          "departure_time": "20:30:00",
+          "stop_id": "ch:1:sloid:73966:0:256909",
+          "stop_sequence": "2",
+          "stop_headsign": "",
+          "pickup_type": "0",
+          "drop_off_type": "0",
+          "shape_dist_traveled": "0.0",
+          "timepoint": "1",
+          "continuous_pickup": "",
+          "continuous_drop_off": ""
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "journeys": 1,
+          "patternIds": [
+            "15ae6f97c086fc20122e9da4"
+          ]
+        },
+        {
+          "date": "2026-09-06",
+          "journeys": 0,
+          "patternIds": []
+        }
+      ],
+      "decision": "Excluded: distinct platforms, zero source shape distance; no inferred turnaround or stop substitution."
+    },
+    {
+      "roadPatternId": "b73c972dec1e4001ea561e68",
+      "routeId": "96-220-5-j26-1",
+      "from": [
+        9.38822117,
+        47.45994728,
+        "Wittenbach, Zentrum",
+        "2",
+        "ch:1:sloid:73966:0:341297"
+      ],
+      "to": [
+        9.38803252,
+        47.4598501,
+        "Wittenbach, Zentrum",
+        "1",
+        "ch:1:sloid:73966:0:256909"
+      ],
+      "directDistanceMetres": 17.850221482083928,
+      "matcherCalls": [
+        {
+          "trip_id": "b73c972dec1e4001ea561e68",
+          "arrival_time": "13:59:00",
+          "departure_time": "13:59:00",
+          "stop_id": "ch:1:sloid:73966:0:341297",
+          "stop_sequence": "1",
+          "stop_headsign": "",
+          "pickup_type": "0",
+          "drop_off_type": "0",
+          "shape_dist_traveled": "0.0",
+          "timepoint": "1",
+          "continuous_pickup": "",
+          "continuous_drop_off": ""
+        },
+        {
+          "trip_id": "b73c972dec1e4001ea561e68",
+          "arrival_time": "14:00:00",
+          "departure_time": "14:00:00",
+          "stop_id": "ch:1:sloid:73966:0:256909",
+          "stop_sequence": "2",
+          "stop_headsign": "",
+          "pickup_type": "0",
+          "drop_off_type": "0",
+          "shape_dist_traveled": "0.0",
+          "timepoint": "1",
+          "continuous_pickup": "",
+          "continuous_drop_off": ""
+        }
+      ],
+      "days": [
+        {
+          "date": "2026-09-04",
+          "journeys": 29,
+          "patternIds": [
+            "33266bfd05278ef288855e0a"
+          ]
+        },
+        {
+          "date": "2026-09-06",
+          "journeys": 0,
+          "patternIds": []
+        }
+      ],
+      "decision": "Excluded: distinct platforms, zero source shape distance; no inferred turnaround or stop substitution."
+    }
+  ],
+  "nextEvidence": "Acquire a verified vehicle turnaround or operator-specific full-pattern geometry between Wittenbach Zentrum platforms 2 and 1. A straight connection between their coordinates is not evidence of a bus path."
+}

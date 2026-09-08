@@ -56,7 +56,13 @@ export async function checkThurgauRegion({ output = 'public/data/thurgau-region'
   assert.equal(sha(cacheBytes), summary.sourceHashes.timetableCache)
   const cache = JSON.parse(gunzipSync(cacheBytes))
   assert.deepEqual(cache.sourceHashes, { archive: summary.sourceHashes.archive, source: summary.sourceHashes.source })
-  const rail = await loadThurgauRail(cache), federalOnly = await loadThurgauRail(cache, { sbb: false })
+  const rail = await loadThurgauRail(cache), beforeBorder = await loadThurgauRail(cache, { border: false })
+  assert.equal(rail.border.policySha256, summary.sourceHashes.borderRailPolicy)
+  assert.equal(rail.border.policy.sourceSha256, summary.sourceHashes.borderRailSource)
+  assert.deepEqual(await json(join(audit, 'border-rail-source-segments.json')), rail.border.inventory)
+  for (const file of ['sources.json', 'query.txt']) assert.deepEqual(await readFile(join(output, 'border-rail-sources', file)), await readFile(join('data/thurgau-border-rail-sources', file)))
+  const borderDatabase = await json(join(output, 'border-rail-paths.json')), borderSeen = new Map()
+  assert.deepEqual(borderDatabase.metadata, summary.sources.borderRail)
   assert.equal(rail.sbb.policySha256, summary.sourceHashes.sbbRailPolicy)
   assert.equal(rail.sbb.policy.sourceSha256, summary.sourceHashes.sbbRailSource)
   assert.deepEqual(await json(join(audit, 'sbb-rail-source-segments.json')), { inventory: rail.sbb.inventory, joins: rail.sbb.joins })
@@ -78,13 +84,18 @@ export async function checkThurgauRegion({ output = 'public/data/thurgau-region'
     assert.deepEqual(report.sourceHashes, summary.sourceHashes)
     assert.deepEqual(report.coverage, day.coverage)
     const replay = applyThurgauGeometry(cache.snapshots.find(s => s.metadata.serviceDate === day.serviceDate), new Map(cache.routes.map(r => [r.id, r])), decoded, crosswalk, cityRoads, regionalRoads, rail)
-    const baseline = applyThurgauGeometry(cache.snapshots.find(s => s.metadata.serviceDate === day.serviceDate), new Map(cache.routes.map(r => [r.id, r])), decoded, crosswalk, cityRoads, regionalRoads, federalOnly)
+    const baseline = applyThurgauGeometry(cache.snapshots.find(s => s.metadata.serviceDate === day.serviceDate), new Map(cache.routes.map(r => [r.id, r])), decoded, crosswalk, cityRoads, regionalRoads, beforeBorder)
     const replayTrains = new Map(replay.trains.map(t => [t.id, t]))
     for (const train of baseline.trains.filter(t => t.admission === 'admitted')) {
       const after = replayTrains.get(train.id)
       assert.equal(after.admission, 'admitted', 'Rail supplement removed a previously admitted journey')
       assert.deepEqual(after.pathSegments.map(i => replay.paths[i]), train.pathSegments.map(i => baseline.paths[i]), 'Rail supplement changed complete existing paths')
     }
+    assert.equal(report.borderRailCoverage.trips, replay.trains.filter(t => t.geometrySource === 'fot-osm-border-rail-inference' && t.admission === 'admitted').length)
+    assert.equal(report.borderRailCoverage.patterns, replay.patterns.filter(p => p.geometrySource === 'fot-osm-border-rail-inference').length)
+    for (const p of replay.patterns.filter(p => p.geometrySource === 'fot-osm-border-rail-inference')) p.railSupplement.segments.forEach((s, i) => {
+      if (s.geometrySource === 'fot-osm-border-rail-inference') borderSeen.set(JSON.stringify([p.stopIds[i], p.stopIds[i + 1]]), { stopIds: [p.stopIds[i], p.stopIds[i + 1]], path: replay.paths[p.pathSegments[i]], evidence: s })
+    })
     assert.equal(report.sbbRailCoverage.trips, replay.trains.filter(t => t.geometrySource === 'fot-sbb-rail-inference' && t.admission === 'admitted').length)
     assert.equal(report.sbbRailCoverage.patterns, replay.patterns.filter(p => p.geometrySource === 'fot-sbb-rail-inference').length)
     assert.equal(report.railCoverage.trips, replay.trains.filter(t => isThurgauRailSource(t.geometrySource) && t.admission === 'admitted').length)
@@ -157,6 +168,7 @@ export async function checkThurgauRegion({ output = 'public/data/thurgau-region'
   assert.equal(summary.weekdaySundayPatterns.shared, [...patternSets[0]].filter(id => patternSets[1].has(id)).length)
   assert.equal(summary.weekdaySundayPatterns.weekdayOnly, [...patternSets[0]].filter(id => !patternSets[1].has(id)).length)
   assert.equal(summary.weekdaySundayPatterns.sundayOnly, [...patternSets[1]].filter(id => !patternSets[0].has(id)).length)
+  assert.deepEqual(borderDatabase.pairs, [...borderSeen.values()])
   console.log(`Thurgau audit reconciles: ${routes.length} routes, ${summary.agencyCount} agencies, all 5 districts, ${sourceLines.length} source lines`)
 }
 

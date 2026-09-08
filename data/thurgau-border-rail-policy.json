@@ -1,0 +1,30 @@
+{
+  "sourceSha256": "e1345fe23f6010dca221a8aa55317b094a96ee415687bbadebcd13a02dec0b90",
+  "timetableSha256": "9403d675c79184b4885e8a0ca0f3d02da55363cefafab2f403cb7e5ae95dcff5",
+  "snapshot": "2026-09-02T00:00:00Z",
+  "route": {
+    "routeId": "91-7-B-j26-1",
+    "agencyId": "65",
+    "line": "S7"
+  },
+  "stations": [
+    {
+      "nodeId": 4886725252,
+      "number": "8506314",
+      "name": "St. Margrethen SG"
+    },
+    {
+      "nodeId": 2459480034,
+      "number": "8102336",
+      "name": "Bregenz"
+    }
+  ],
+  "limits": {
+    "stationIdentityMetres": 350,
+    "trackAttachmentMetres": 60,
+    "projectionAlternativeMetres": 5,
+    "maximumPathMetres": 18000,
+    "maximumTurnDegrees": 120
+  },
+  "scope": "Only the exact St. Margrethen–Bregenz pair within a reviewed whole S7 pattern. Preserve all successful FOT/SBB segments and every previously complete pattern. Each resulting full pattern must pass; keep original stops and timestamps."
+}

@@ -2,7 +2,7 @@
 
 Audit date: **8 September 2026**. Starting point: [Swiss transit source inventory](SWISS-TRANSIT-SOURCE-INVENTORY.md#tg).
 
-The complete canton-scoped GTFS inventory contains **132 route records across 15 agency identities**, with calls in all **five districts**. The regional feed admits **4233 Friday journeys and 2635 Sunday journeys**, each retaining every original call and a validated path for every directed segment. **This is partial geometry coverage, not a complete canton service feed.** 99 route records have all dated journeys admitted, 3 have partial admission, 9 are excluded, and 21 are inactive on both validation dates.
+The complete canton-scoped GTFS inventory contains **132 route records across 15 agency identities**, with calls in all **five districts**. The regional feed admits **4238 Friday journeys and 2643 Sunday journeys**, each retaining every original call and a validated path for every directed segment. **This is partial geometry coverage, not a complete canton service feed.** 99 route records have all dated journeys admitted, 3 have partial admission, 9 are excluded, and 21 are inactive on both validation dates.
 
 ## Deliverables
 
@@ -34,7 +34,7 @@ District route counts overlap. Journeys retain **every call outside Thurgau**, i
 | --- | --- | --- | --- | --- |
 | 11 | Schweizerische Bundesbahnen SBB | 9 | 144 / 144 | 106 / 106 |
 | 22 | Appenzeller Bahnen (ab) | 1 | 98 / 98 | 82 / 82 |
-| 65 | THURBO | 23 | 667 / 677 | 693 / 707 |
+| 65 | THURBO | 23 | 672 / 677 | 701 / 707 |
 | 138 | Bus Ostschweiz | 18 | 916 / 946 | 492 / 521 |
 | 193 | Schweiz. Schifffahrtsgesellschaft Untersee und Rhein AG | 1 | 0 / 17 | 0 / 17 |
 | 195 | Schweizerische Bodensee-Schifffahrt AG | 3 | 0 / 37 | 0 / 34 |
@@ -61,6 +61,7 @@ Four official call-taxi polygons are separately recorded in the audit: Bischofsz
 | swissBOUNDARIES3D | 2026-01; all original canton and district geometry rows retained | © swisstopo; free-geodata terms |
 | Federal rail network | Checksum-verified FOT XTF; catalogue 2021-07-06, asset updated 2025-01-18, reused 2026-09-08; used segment Stand dates 2021-07-06 | © Federal Office of Transport (FOT); opendata.swiss terms_by, source attribution required; retain proprietary catalogue label without relabelling it CC |
 | SBB graphical lines | Pinned selected responses reused 2026-09-08; catalogue modified 2026-07-29T06:16:28+00:00, data processed 2026-09-02T03:01:34+00:00; no feature survey date supplied | SBB Infrastructure / data.sbb.ch; terms_by, commercial and non-commercial use with attribution |
+| Bregenz OSM rail corridor | Historical Overpass query 2026-09-02T00:00:00Z; acquired 2026-09-08; 521 ways individually inventoried | © OpenStreetMap contributors; separate border path database under ODbL 1.0 |
 | City and regional road supplements | Geofabrik Switzerland 2026-09-02 plus OSM border extract 2026-09-08; pinned PBF SHA d5c675456e935cfbcab88fe894fe9145dc5bd1fbd4318cea30ffd838a9aad02b | © OpenStreetMap contributors; derived path database under ODbL 1.0 |
 
 Official references: [national GTFS dataset](https://data.opentransportdata.swiss/en/dataset/timetable-2026-gtfs2020), [national terms](https://opentransportdata.swiss/en/terms-of-use/), [Thurgau catalogue API](https://data.tg.ch/api/explore/v2.1/catalog/datasets/netz-des-offentlichen-verkehrs), [Thurgau WFS](https://ows.geo.tg.ch/geofy_access_proxy/oev?Request=GetCapabilities&Service=WFS&Version=2.0.0), [general terms](https://shop.geo.tg.ch/sites/default/files/pdf/Nutzungsbedingungen_Geodaten.pdf), [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), [swisstopo terms](https://www.swisstopo.admin.ch/en/terms-of-use-free-geodata-and-geoservices).
@@ -127,6 +128,8 @@ Complete official patterns retain their original paths. For an incomplete offici
 
 **RUB:** route 92-8-Y-j26-1 is GTFS type **715**, which denotes demand-responsive bus service in the [extended GTFS route reference](https://developers.google.com/transit/gtfs/reference/extended-route-types), last updated 16 October 2024 and checked 8 September 2026. Ordinary pickup/drop-off flags alone do not establish fixed operation. Its **30 Friday and 29 Sunday** instances remain excluded, alongside Frauenfeld NT. [Review notes](../data/thurgau-regional-roads/review-sources.json) preserve the source interpretation; they do not claim an original HTML snapshot.
 
+A [fresh Wittenbach replay](../data/thurgau-audit/wittenbach-review.json) confirms the four failed patterns against the preserved matcher stop-times: distinct platforms 2 and 1 are 17.85 m apart, but both shape distances are 0.0. Their 37 Friday journeys remain excluded pending evidenced turnaround geometry. Reproduce with `python3 scripts/review-thurgau-wittenbach.py`.
+
 The review plots overlay all 296 routing patterns across 59 route records: [page 1](assets/thurgau-regional-road-review-1.png), [page 2](assets/thurgau-regional-road-review-2.png), [page 3](assets/thurgau-regional-road-review-3.png), [page 4](assets/thurgau-regional-road-review-4.png). Every panel was inspected for branch shapes and endpoint loops. Grey paths include valid segments from incomplete patterns; their presence in a review plot is not feed admission. The plots have no basemap and do not certify temporary diversions or physical street restrictions. The complete regional derived database is distributed under **ODbL 1.0**, credited to **OpenStreetMap contributors**, separately from the cantonal CC BY geometry.
 
 ## Federal rail supplement
@@ -143,7 +146,7 @@ The complete ordered stop chain constrains every directed search: other schedule
 
 **Interlaken Ost IC81:** the generic operating point 8507492 is disconnected from the standard-gauge graph. FOT separately identifies **8519309 / ch14uvag00165678** as **Interlaken Ost [Gleis 5-8]**, connected to the 1435 mm Interlaken West segment **ch14uvag00087489**. The policy maps only original IC81 platforms **ch:1:sloid:7492:0:460848 (7)** and **ch:1:sloid:7492:0:581416 (5)** to that source node. Source number, node name, gauge, route and platform labels are asserted; a changed or different platform cannot inherit the mapping. This admits all **15 Friday IC81 journeys**, preserving every original call. It is an explicit platform-group crosswalk, not a name or proximity guess.
 
-**Remaining rail exclusions:** Bregenz (8102336) still lacks an admitted detailed source connection. All **10 Friday / 14 Sunday Bregenz-reaching S7 journeys** remain excluded in full. The 8 September SBB Bregenz query returned 26 records, all schematic two-point lines; their original response and individual exclusions are preserved. Konstanz is resolved by the separate SBB supplement below. No border node substitutes for a foreign destination and no journey is cropped at the last Swiss call.
+**Remaining rail exclusions:** **5 Friday / 6 Sunday** Bregenz-reaching S7 journeys using **St. Margrethen platform 2** fail the separately reviewed OSM path/turn check below. The primary federal source has no Bregenz operating point; the SBB Bregenz query returned 26 schematic two-point records, all excluded. Platform-3 Bregenz patterns now have the independent OSM border supplement. No journey is cropped at its last Swiss call.
 
 The [rail review overview, page 1](assets/thurgau-rail-review-1.png) and [page 2](assets/thurgau-rail-review-2.png) overlay all 169 newly admitted patterns. Both were inspected for complete branches, termini and the long cross-canton IC8/IC81/IC9 paths. These are infrastructure-centreline inferences, not certified running tracks, actual train positions or temporary diversion geometry. The plots have no basemap. Timetable precision and physically plausible speeds remain separate from geometric admission.
 
@@ -160,6 +163,20 @@ The full ordered call chain is routed through the combined FOT/SBB graph only wh
 The SBB source catalogue was modified **29 July 2026** and data processed **2 September 2026**; the selected Konstanz response was acquired and reused **8 September 2026**. These are publication/processing dates, with **no individual feature survey or alignment-validity date established**. All SBB vertices are retained before seven-decimal output rounding; unlike FOT geometry, they receive no LV95 conversion or 5 m simplification. Credit is **SBB Infrastructure / data.sbb.ch**. The pinned dataset metadata explicitly declares **terms_by** and **NonCommercialAllowed-CommercialAllowed-ReferenceRequired**, with the [SBB licence page](https://data.sbb.ch/page/licence/) as its terms reference. Original responses, metadata, terms HTML and hashes accompany the feed under sbb-rail-sources, separately from FOT and ODbL components.
 
 The [six-route review](assets/thurgau-sbb-rail-review-1.png) overlays all 61 newly admitted patterns; the [border detail](assets/thurgau-sbb-border-review.png) shows both source curves and the Konstanz stop attachment. These are reviewed cartographic centreline inferences, not running-track, temporary-diversion or actual-movement certification.
+
+## Bregenz OSM border rail supplement
+
+This extension admits **5 Friday / 8 Sunday S7 journeys**, each through **St. Margrethen SG platform 3**, with complete original calls and successful federal segments unchanged. The [derived border path database](../public/data/thurgau-region/border-rail-paths.json), [source archive](../data/thurgau-border-rail-sources/sources.json), [route/station policy](../data/thurgau-border-rail-policy.json) and [source inventory](../data/thurgau-border-rail-sources/inventory.json) retain attribution, geometry and selection evidence. The [review plot](assets/thurgau-border-rail-review.png) compares the accepted directed border paths and the rejected platform-2 candidate.
+
+The Overpass query requests the historical state at **2026-09-02T00:00:00Z**, acquired **8 September 2026**; the server's database timestamp is separate from that requested snapshot. Original query and response bytes are preserved. All **521 rail ways** are inventoried: **240** are eligible standard-gauge main/branch tracks or crossovers explicitly tagged as main track. Yards, sidings, spurs and other gauges are excluded. All used ways carry gauge **1435**, and way version/timestamp evidence is retained. Original OSM node IDs define connectivity; equal coordinates on separate nodes do not create a junction.
+
+Station identity requires exact **uic_ref** and reviewed OSM station IDs: **4886725252 / 8506314 / St. Margrethen SG** and **2459480034 / 8102336 / Bregenz**. Original timetable coordinates remain unchanged. Station identity must be within **350 m**, track projection within **60 m**, and an alternative projection within **5 m** of the nearest. Paths are capped at **18 km**; direction changes greater than **120°** are rejected to prevent instantaneous reversal at switches. The accepted border path is approximately **12.281 km**, with track attachments **1.91 m** at St. Margrethen platform 3 and **0.51 m** at Bregenz. No coordinate merge joins this network to FOT: each original adjacent stop pair is matched independently within the full S7 call chain, and the whole pattern must pass.
+
+**Platform 2 is deliberately still excluded.** Its nearest reviewed track has no passing path under the turn constraint. A permissive graph search finds a longer route requiring a reversing movement at a junction. The adapter does not substitute platform 3, increase the projection allowance, or remove the platform-2 call. These **5 Friday / 6 Sunday** journeys retain complete-pattern exclusions and the original federal failure in their evidence. Physical running-track selection, legal direction, signalling and diversions remain unverified even for admitted patterns.
+
+The **Vorarlberg WFS** was fully acquired with **136 rail records**, count checks, source attributes and dataset metadata. The metadata declares **CC BY 4.0**, describes digitisation from **2012 aerial imagery**, and records revision **17 February 2025** and metadata date **29 July 2026**. Those later metadata dates do not establish an updated border alignment. [ÖBB's project account](https://infrastruktur.oebb.at/en/projekte-fuer-oesterreich/bahnstrecken/arlbergstrecke-innsbruck-bregenz/ausbau-st-margrethen-lauterach) documents the replacement Rhine crossing in March 2013. These records remain candidate evidence, with no geometry admitted from them. The [ÖBB Geo Netz catalogue](https://data.oebb.at/de/datensaetze~geo-netz~) lists its 12-2024 release as valid only through **13 December 2025**, so that alternative is also excluded from the 2026 feed.
+
+The admitted OSM-derived border database is distributed separately under **ODbL 1.0**, credited **© OpenStreetMap contributors**, with the [OSM copyright and licence page](https://www.openstreetmap.org/copyright). Patterns using it are labelled **fot-osm-border-rail-inference**. FOT geometry retains its own attribution and terms. This is an inferred archival rail path, not a certified train trajectory.
 
 ## Lake and Rhine source screening
 
@@ -178,11 +195,11 @@ Pattern identity is GTFS **route ID + direction_id + full ordered original platf
 | Measure | Friday 4 September | Sunday 6 September |
 | --- | --- | --- |
 | Dated journeys | 4417 | 2795 |
-| Admitted journeys | 4233 (95.8%) | 2635 (94.3%) |
-| Complete admitted patterns / all patterns | 521 / 563 | 405 / 442 |
-| Matched directed pairs / all directed pairs | 3354 / 3529 (95.0%) | 3262 / 3425 (95.2%) |
-| Matched scheduled segments / all occurrences | 63659 / 64684 (98.4%) | 40039 / 41271 (97.0%) |
-| Segments in admitted journeys | 63117 | 39955 |
+| Admitted journeys | 4238 (95.9%) | 2643 (94.6%) |
+| Complete admitted patterns / all patterns | 525 / 563 | 408 / 442 |
+| Matched directed pairs / all directed pairs | 3361 / 3529 (95.2%) | 3267 / 3425 (95.4%) |
+| Matched scheduled segments / all occurrences | 63674 / 64684 (98.4%) | 40063 / 41271 (97.1%) |
+| Segments in admitted journeys | 63162 | 40027 |
 | Carry-in journeys: admitted / total | 55 / 58 | 129 / 167 |
 | Night-labelled journeys: admitted / total | 0 / 15 | 75 / 105 |
 | Patterns revisiting platforms: admitted / total | 19 / 21 | 11 / 13 |
@@ -192,7 +209,7 @@ Pattern identity is GTFS **route ID + direction_id + full ordered original platf
 | Unmatched directed-pair reason | Friday | Sunday |
 | --- | --- | --- |
 | missing-line | 153 | 153 |
-| endpoint-gap | 17 | 10 |
+| endpoint-gap | 10 | 5 |
 | disconnected-line | 4 | 0 |
 | collapsed-path | 1 | 0 |
 | implausible-detour | 0 | 0 |
@@ -218,7 +235,7 @@ Counts below refer only to the two validated civil dates. Multiple records can s
 | 65 | RE75 | 91-75-B-j26-1 | 4 / 4 | 4 / 4 |
 | 65 | S1 | 91-1-C-j26-1 | 94 / 94 | 94 / 94 |
 | 65 | S5 | 91-5-B-j26-1 | 80 / 80 | 79 / 79 |
-| 65 | S7 | 91-7-B-j26-1 | 72 / 82 | 68 / 82 |
+| 65 | S7 | 91-7-B-j26-1 | 77 / 82 | 76 / 82 |
 | 65 | S10 | 91-10-C-j26-1 | 75 / 75 | 45 / 45 |
 | 65 | S14 | 91-14-B-j26-1 | 122 / 122 | 117 / 117 |
 | 65 | S29 | 91-29-A-j26-1 | 71 / 71 | 72 / 72 |
@@ -330,7 +347,7 @@ node scripts/build-thurgau-region.mjs \
 # stop, path, edge and journey; reconcile routes, groups, patterns and chunks.
 node scripts/check-thurgau-region.mjs
 node scripts/document-thurgau-study.mjs
-npx vitest run scripts/thurgau-sbb-rail.test.mjs scripts/thurgau-rail-geometry.test.mjs scripts/luzern-rail-geometry.test.mjs scripts/thurgau-regional-roads.test.mjs scripts/thurgau-region.test.mjs scripts/thurgau-city-roads.test.mjs scripts/bern-region.test.mjs
+npx vitest run scripts/thurgau-border-rail.test.mjs scripts/thurgau-sbb-rail.test.mjs scripts/thurgau-rail-geometry.test.mjs scripts/luzern-rail-geometry.test.mjs scripts/thurgau-regional-roads.test.mjs scripts/thurgau-region.test.mjs scripts/thurgau-city-roads.test.mjs scripts/bern-region.test.mjs
 python3 scripts/test_thurgau_sources.py
 ```
 
@@ -340,6 +357,6 @@ To rebuild the city supplement, run `node scripts/prepare-thurgau-city-roads.mjs
 
 To rebuild the regional supplement, run `node scripts/prepare-thurgau-regional-roads.mjs`, then the same matcher separately for agency directories 138, 744, 801 and 896, using input `/private/tmp/thurgau-regional-road-feeds/AGENCY` and output `/private/tmp/thurgau-regional-road-matched/AGENCY`. Run `node scripts/import-thurgau-regional-roads.mjs`, `node scripts/check-thurgau-regional-roads.mjs` and `scripts/review-thurgau-regional-roads.py` with a Pillow-enabled Python, inspect every panel and rejection, then rebuild and check the regional feed. Pinned review notes distinguish source dates and admission decisions.
 
-To reproduce federal rail preparation from the existing pinned national snapshot, run `node scripts/prepare-thurgau-rail.mjs data/aargau-rail-sources`, then rebuild and run the Thurgau checker. The committed `data/thurgau-rail-sources` files already support an entirely offline feed build; the Aargau directory is only the default acquisition-reuse input. Generate the supplemental review with `scripts/review-thurgau-rail.py` using a Pillow-enabled Python. Reproduce SBB preparation with `node scripts/prepare-thurgau-sbb-rail.mjs`, using the already preserved Bregenz query; plot with `scripts/review-thurgau-rail.py --sbb`. Reproduce the water screening offline with `node scripts/review-thurgau-water.mjs`. The checker replays all rail paths and additionally proves every previously admitted cantonal/city/regional-road and federal-only path unchanged.
+To reproduce federal rail preparation from the existing pinned national snapshot, run `node scripts/prepare-thurgau-rail.mjs data/aargau-rail-sources`, then rebuild and run the Thurgau checker. The committed `data/thurgau-rail-sources` files already support an entirely offline feed build; the Aargau directory is only the default acquisition-reuse input. Generate the supplemental review with `scripts/review-thurgau-rail.py` using a Pillow-enabled Python. Reproduce SBB preparation with `node scripts/prepare-thurgau-sbb-rail.mjs`, using the already preserved Bregenz query; plot with `scripts/review-thurgau-rail.py --sbb`. Reproduce border source preparation offline with `node scripts/prepare-thurgau-border-rail.mjs`, generate path diagnostics with `node scripts/review-thurgau-border-rail.mjs` and its plot with `scripts/review-thurgau-border-rail.py`. Reproduce the water screening offline with `node scripts/review-thurgau-water.mjs`. The checker replays all rail paths and additionally proves every previously admitted cantonal/city/regional-road and federal-only path unchanged.
 
 Validation covers source hashes, GML counts/axes/IDs, full canton/district membership, operator/line identity, direction and loop preservation, midnight spillover, whole-pattern rejection, repeated geometry replay, exact exported paths, complete calls, finite ordered times, all 24 chunk hashes and trip identities. **Two September days do not establish public-holiday, winter, summer-only or year-round completeness.** Temporary diversions and physical one-way/track legality remain unverified.

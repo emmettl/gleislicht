@@ -387,6 +387,71 @@
     "archivalStudy": true,
     "refreshPolicy": "Pinned September 2026 research fixtures; not a live or current-service feed. A new timetable or geometry release requires a complete rebuild and admission audit."
   },
+  "borderRail": {
+    "publisher": "OpenStreetMap contributors",
+    "attribution": "© OpenStreetMap contributors",
+    "license": "ODbL-1.0",
+    "termsUrl": "https://www.openstreetmap.org/copyright",
+    "snapshot": "2026-09-02T00:00:00Z",
+    "acquired": "2026-09-08",
+    "files": [
+      {
+        "file": "osm.json.gz",
+        "url": "https://overpass-api.de/api/interpreter",
+        "sha256": "c89b7ca0fdb0b2760ee60bbc5ff0301f0cf22459fd1137326e79f819defa87e2",
+        "retrieved": "2026-09-08"
+      },
+      {
+        "file": "query.txt",
+        "url": null,
+        "sha256": "6a4d650c1e714f68f0ed8cc4a6a82638424aa13cb113fb7cde0d44cc15681026",
+        "retrieved": "2026-09-08"
+      },
+      {
+        "file": "vogis-capabilities.xml.gz",
+        "url": "https://vogis.cnv.at/geoserver/wfs?service=WFS&request=GetCapabilities&version=2.0.0",
+        "sha256": "91d9d6effb9829230efc5e9a104464888623b6412baf2cbaa518606d370d4b89",
+        "retrieved": "2026-09-08"
+      },
+      {
+        "file": "vogis-rail.json.gz",
+        "url": "https://vogis.cnv.at/geoserver/wfs?service=WFS&request=GetFeature&version=2.0.0&typeNames=vogis:bahnlinie&outputFormat=application/json&srsName=EPSG:4326&count=10000",
+        "sha256": "baf2d733454c8cd67cbedc382a4de7466ae7e01f9683f921a7e35eb49f8dbff4",
+        "retrieved": "2026-09-08"
+      },
+      {
+        "file": "vogis-metadata.xml.gz",
+        "url": "https://vogis.cnv.at/geonetwork/srv/eng/csw?request=GetRecordById&service=CSW&version=2.0.2&outputSchema=http://www.isotc211.org/2005/gmd&ElementSetName=full&id=2d77b3dd-9040-47d2-b1ce-8b738a236984",
+        "sha256": "9da7b2b24c1eb889926c997fb2e40103ebeb53d8c5817eb85f4c3a796763f6e2",
+        "retrieved": "2026-09-08"
+      },
+      {
+        "file": "oebb-geonet.html.gz",
+        "url": "https://data.oebb.at/de/datensaetze~geo-netz~",
+        "sha256": "df6245a3b0422f55ea8727c83dff959c39027a77045a55fa097c2b8cca3ce5f0",
+        "retrieved": "2026-09-08"
+      },
+      {
+        "file": "oebb-upgrade.html.gz",
+        "url": "https://infrastruktur.oebb.at/en/projekte-fuer-oesterreich/bahnstrecken/arlbergstrecke-innsbruck-bregenz/ausbau-st-margrethen-lauterach",
+        "sha256": "77a60de06ba53e84c6f48da11a53713ec91bf26d415a897192fe6361c8b3c8e3",
+        "retrieved": "2026-09-08"
+      }
+    ],
+    "model": "Shortest connected standard-gauge main/branch and explicitly main-track crossover OSM rail path between exact UIC station identities and bounded original platform projections. Original OSM node IDs define connectivity. No sidings, yards, spurs, coordinate merges or running-track certification.",
+    "alternatives": {
+      "vogis": "136 original source records inventoried; CC BY 4.0 in dataset metadata, digitised from 2012 imagery. Known 2013 Rhine alignment change prevents treating this as verified contemporary border alignment.",
+      "oebb": "GeoNetz 12-2024 catalogue states validity through 2025-12-13; no geometry admitted from that expired release."
+    },
+    "limits": {
+      "stationIdentityMetres": 350,
+      "trackAttachmentMetres": 60,
+      "projectionAlternativeMetres": 5,
+      "maximumPathMetres": 18000,
+      "maximumTurnDegrees": 120
+    },
+    "scope": "Only the exact St. Margrethen–Bregenz pair within a reviewed whole S7 pattern. Preserve all successful FOT/SBB segments and every previously complete pattern. Each resulting full pattern must pass; keep original stops and timestamps."
+  },
   "sbbRail": {
     "publisher": "SBB Infrastructure",
     "attribution": "SBB Infrastructure / data.sbb.ch",

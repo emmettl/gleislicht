@@ -29,14 +29,14 @@ it('admits weekday and Sunday rail categories with directed source topology and 
     }
   }
 })
-it('retains the entire cross-border pattern when a foreign operating point is absent', () => {
+it('retains the entire cross-border pattern when the platform-2 border path fails', () => {
   for (const fixture of timetable.snapshots) {
     const train = fixture.trains.find(t => t.route === 'S7' && t.stops.some(([i]) => fixture.stops[i][4] === '8102336'))
     const result = match(fixture, [train])
     expect(result.trains[0].admission).not.toBe('admitted')
     expect(result.trains[0].stops).toEqual(train.stops)
     expect(result.patterns[0].railSupplement.status).toBe('rejected-incomplete-pattern')
-    expect(result.patterns[0].railSupplement.segments.some(s => s.reason === 'rail-missing-exact-operating-point')).toBe(true)
+    expect(result.patterns[0].railSupplement.segments.some(s => s.reason === 'border-disconnected-detour-or-turn' && s.primaryFailure === 'rail-missing-exact-operating-point')).toBe(true)
   }
 })
 it('uses the explicitly reviewed Interlaken tracks 5–8 node only for its exact IC81 platforms', () => {

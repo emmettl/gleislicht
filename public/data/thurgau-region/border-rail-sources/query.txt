@@ -1,0 +1,5 @@
+[out:json][timeout:60][date:"2026-09-02T00:00:00Z"];
+(way["railway"="rail"](47.435,9.625,47.510,9.755);node["railway"="station"](47.435,9.625,47.510,9.755););
+out meta;
+>;
+out skel qt;

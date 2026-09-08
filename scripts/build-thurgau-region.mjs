@@ -82,6 +82,11 @@ export async function buildThurgauRegion({ archive, sourceDirectory = 'data/thur
   const rail = await loadThurgauRail(timetable)
   hashes.railPolicy = rail.policySha256
   hashes.railSourceMetadata = rail.policy.sourceMetadataSha256
+  hashes.borderRailPolicy = rail.border.policySha256
+  hashes.borderRailSource = rail.border.policy.sourceSha256
+  provenance.borderRail = { ...rail.border.source, limits: rail.border.policy.limits, scope: rail.border.policy.scope }
+  await writeJson(join(auditDirectory, 'border-rail-source-segments.json'), rail.border.inventory, true)
+  const borderPaths = new Map()
   hashes.sbbRailPolicy = rail.sbb.policySha256
   hashes.sbbRailSource = rail.sbb.policy.sourceSha256
   provenance.sbbRail = { ...rail.sbb.source, scope: rail.sbb.policy.scope, limits: rail.sbb.policy.limits }
@@ -99,6 +104,9 @@ export async function buildThurgauRegion({ archive, sourceDirectory = 'data/thur
   for (const raw of timetable.snapshots) {
     console.log(`Matching every directed Thurgau pattern for ${raw.metadata.serviceDate}…`)
     const result = applyThurgauGeometry(raw, routes, source, crosswalk, cityRoads, regionalRoads, rail)
+    for (const p of result.patterns.filter(p => p.geometrySource === 'fot-osm-border-rail-inference')) p.railSupplement.segments.forEach((s, i) => {
+      if (s.geometrySource === 'fot-osm-border-rail-inference') borderPaths.set(JSON.stringify([p.stopIds[i], p.stopIds[i + 1]]), { stopIds: [p.stopIds[i], p.stopIds[i + 1]], path: result.paths[p.pathSegments[i]], evidence: s })
+    })
     routeCrosswalk = result.routeCrosswalk
     const groups = []
     for (const key of [...new Set(result.trains.map(t => `${t.agencyId}:${routes.get(t.routeId).mode}`))].sort()) {
@@ -113,9 +121,10 @@ export async function buildThurgauRegion({ archive, sourceDirectory = 'data/thur
     const snapshot = compactBernFeed(raw, result)
     snapshot.metadata = { ...snapshot.metadata, publisher: 'Gleislicht', timetablePublisher: 'SBB', attribution: 'opentransportdata.swiss',
       label: 'Thurgau canton — cantonal geometry, inferred bus roads and federal/SBB rail', sourceHashes: hashes, timetable: provenance.timetable,
-      model: 'Scheduled interpolation along cantonal centrelines, OSM-inferred bus roads and FOT/SBB rail infrastructure, with bounded stop-access connectors; not observed vehicles.',
+      model: 'Scheduled interpolation along cantonal centrelines, OSM-inferred bus roads and FOT/SBB and OSM border rail infrastructure, with bounded stop-access connectors; not observed vehicles.',
       cityRoads: { ...cityRoads.metadata, localPathDatabase: '../city-road-paths.json' },
       regionalRoads: { ...regionalRoads.metadata, localPathDatabase: '../regional-road-paths.json' },
+      borderRail: { ...provenance.borderRail, localPathDatabase: '../border-rail-paths.json' },
       sbbRail: { ...provenance.sbbRail, localSourceMetadata: '../sbb-rail-sources/sources.json' },
       rail: { ...provenance.rail, localSourceMetadata: '../rail-sources/source.json' },
       scope: timetable.census.boundaryRule, admission: 'Only complete directed patterns with every segment passing geometry limits and no reservation/on-demand call. Exclusions retained in the canton audit.',
@@ -146,6 +155,8 @@ export async function buildThurgauRegion({ archive, sourceDirectory = 'data/thur
         directedPairs: result.pairs.filter(p => p.geometrySources?.includes('osm-regional-road')).length,
         rejectedPatterns: result.patterns.filter(p => p.roadSupplement?.status === 'rejected-incomplete-pattern').length,
         scheduledSegmentOccurrences: snapshot.trains.filter(t => t.geometrySource === 'osm-regional-road').reduce((n, t) => n + t.pathSegments.length, 0) },
+      borderRailCoverage: { trips: snapshot.trains.filter(t => t.geometrySource === 'fot-osm-border-rail-inference').length,
+        patterns: result.patterns.filter(p => p.geometrySource === 'fot-osm-border-rail-inference').length },
       sbbRailCoverage: { trips: snapshot.trains.filter(t => t.geometrySource === 'fot-sbb-rail-inference').length,
         patterns: result.patterns.filter(p => p.geometrySource === 'fot-sbb-rail-inference').length },
       railCoverage: { trips: snapshot.trains.filter(t => isThurgauRailSource(t.geometrySource)).length,
@@ -215,7 +226,7 @@ export async function buildThurgauRegion({ archive, sourceDirectory = 'data/thur
     scopeLimits: ['GTFS fixed-stop archive and all Thurgau WFS transit layers inventoried; services absent from both sources and GTFS-Flex service areas are not a verified census of every real-world service.',
       'Two September civil days do not establish holiday, winter or year-round pattern coverage.',
       'Cross-boundary journeys keep all calls. Entire patterns failing any segment are excluded, including source extents shorter than their timetable journeys.',
-      'Geometry combines official-line centreline inference, OSM bus-road matching and FOT/SBB rail infrastructure, not observed movement, legal one-way validation, running-track selection or temporary diversion confirmation.'],
+      'Geometry combines official-line centreline inference, OSM bus-road matching and FOT/SBB and OSM border rail infrastructure, not observed movement, legal one-way validation, running-track selection or temporary diversion confirmation.'],
   }
   await writeJson(join(auditDirectory, 'summary.json'), summary, true)
   await writeJson(join(auditDirectory, 'routes.json'), inventory, true)
@@ -225,6 +236,9 @@ export async function buildThurgauRegion({ archive, sourceDirectory = 'data/thur
   await writeJson(join(output, 'sources.json'), provenance, true)
   await writeJson(join(output, 'city-road-paths.json'), cityRoads)
   await writeJson(join(output, 'regional-road-paths.json'), regionalRoads)
+  await writeJson(join(output, 'border-rail-paths.json'), { metadata: provenance.borderRail, pairs: [...borderPaths.values()] }, true)
+  await mkdir(join(output, 'border-rail-sources'), { recursive: true })
+  for (const file of ['sources.json', 'query.txt']) await writeFile(join(output, 'border-rail-sources', file), await readFile(join('data/thurgau-border-rail-sources', file)))
   await mkdir(join(output, 'sbb-rail-sources'), { recursive: true })
   for (const file of ['sources.json', ...rail.sbb.source.files.map(f => f.file)]) await writeFile(join(output, 'sbb-rail-sources', file), await readFile(join('data/thurgau-sbb-rail-sources', file)))
   await mkdir(join(output, 'rail-sources'), { recursive: true })
