@@ -1,0 +1,2028 @@
+{
+  "schemaVersion": 1,
+  "sourceId": "bern-regional-fot-rail-20210706",
+  "sourceDirectory": "data/bern-sources/fot-rail",
+  "sourceMetadataSha256": "46ab3ed91471fde35bcb1b678410efe7ecab6bf1cf02027729f547545b94aaad",
+  "sourceSha256": "2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+  "dates": [
+    "2026-09-04",
+    "2026-09-06"
+  ],
+  "limits": {
+    "stationAttachmentMetres": 120,
+    "topologyAttachmentMetres": 120,
+    "detourRatio": 4.5,
+    "detourFloorMetres": 3000,
+    "simplificationMetres": 0
+  },
+  "gauges": [
+    "mm1435"
+  ],
+  "infrastructureOperators": [
+    "SBB CFF FFS",
+    "BLSN"
+  ],
+  "routes": [
+    {
+      "routeId": "91-5-j26-1",
+      "agencyId": "33",
+      "line": "S5",
+      "mode": "rail",
+      "pairs": [
+        {
+          "fromId": "ch:1:sloid:4221:1:1",
+          "toId": "ch:1:sloid:4480",
+          "operatingPointPair": [
+            "8504221",
+            "8504480"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087170",
+            "ch14uvag00087215"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:4221:2:2",
+          "toId": "ch:1:sloid:4480",
+          "operatingPointPair": [
+            "8504221",
+            "8504480"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087170",
+            "ch14uvag00087215"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:4221_gen:ch:1:sloid:4221:1:1_pf:1AB",
+          "toId": "ch:1:sloid:4480",
+          "operatingPointPair": [
+            "8504221",
+            "8504480"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087170",
+            "ch14uvag00087215"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:4221_gen:ch:1:sloid:4221:1:1_pf:1CD",
+          "toId": "ch:1:sloid:4480",
+          "operatingPointPair": [
+            "8504221",
+            "8504480"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087170",
+            "ch14uvag00087215"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:4480",
+          "toId": "ch:1:sloid:4221:1:1",
+          "operatingPointPair": [
+            "8504480",
+            "8504221"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087215",
+            "ch14uvag00087170"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:4480",
+          "toId": "ch:1:sloid:4221:2:2",
+          "operatingPointPair": [
+            "8504480",
+            "8504221"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087215",
+            "ch14uvag00087170"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:4480",
+          "toId": "ch:1:sloid:4221_gen:ch:1:sloid:4221:1:1_pf:1AB",
+          "operatingPointPair": [
+            "8504480",
+            "8504221"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087215",
+            "ch14uvag00087170"
+          ]
+        }
+      ]
+    },
+    {
+      "routeId": "91-23-j26-1",
+      "agencyId": "11",
+      "line": "S23",
+      "mode": "rail",
+      "pairs": [
+        {
+          "fromId": "ch:1:sloid:2105:3:4",
+          "toId": "ch:1:sloid:2247:1:5",
+          "operatingPointPair": [
+            "8502105",
+            "8502247"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087969",
+            "ch14uvag00087968"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:2237:1:5",
+          "toId": "ch:1:sloid:309:3:4",
+          "operatingPointPair": [
+            "8502237",
+            "8500309"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087965",
+            "ch14uvag00087964"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:2237:1:5",
+          "toId": "ch:1:sloid:309:3:5",
+          "operatingPointPair": [
+            "8502237",
+            "8500309"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087965",
+            "ch14uvag00087964"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:2237:1:6",
+          "toId": "ch:1:sloid:2247:1:6",
+          "operatingPointPair": [
+            "8502237",
+            "8502247"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087966",
+            "ch14uvag00087967"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:2247:1:5",
+          "toId": "ch:1:sloid:2237:1:5",
+          "operatingPointPair": [
+            "8502247",
+            "8502237"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087967",
+            "ch14uvag00087966"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:2247:1:6",
+          "toId": "ch:1:sloid:2105:3:4",
+          "operatingPointPair": [
+            "8502247",
+            "8502105"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087968",
+            "ch14uvag00087969"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:309:3:4",
+          "toId": "ch:1:sloid:2237:1:6",
+          "operatingPointPair": [
+            "8500309",
+            "8502237"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087964",
+            "ch14uvag00087965"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:309:3:4",
+          "toId": "ch:1:sloid:3503:2:3",
+          "operatingPointPair": [
+            "8500309",
+            "8503503"
+          ],
+          "sourceSegments": [
+            "ch14uvag00088191"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:309:3:5",
+          "toId": "ch:1:sloid:2237:1:6",
+          "operatingPointPair": [
+            "8500309",
+            "8502237"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087964",
+            "ch14uvag00087965"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:309:3:5",
+          "toId": "ch:1:sloid:3503:2:3",
+          "operatingPointPair": [
+            "8500309",
+            "8503503"
+          ],
+          "sourceSegments": [
+            "ch14uvag00088191"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:3503:2:3",
+          "toId": "ch:1:sloid:3504:2:2",
+          "operatingPointPair": [
+            "8503503",
+            "8503504"
+          ],
+          "sourceSegments": [
+            "ch14uvag00088190"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:3503:3:4",
+          "toId": "ch:1:sloid:309:3:4",
+          "operatingPointPair": [
+            "8503503",
+            "8500309"
+          ],
+          "sourceSegments": [
+            "ch14uvag00088191"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:3503:3:4",
+          "toId": "ch:1:sloid:309:3:5",
+          "operatingPointPair": [
+            "8503503",
+            "8500309"
+          ],
+          "sourceSegments": [
+            "ch14uvag00088191"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:3504:2:2",
+          "toId": "ch:1:sloid:3503:3:4",
+          "operatingPointPair": [
+            "8503504",
+            "8503503"
+          ],
+          "sourceSegments": [
+            "ch14uvag00088190"
+          ]
+        }
+      ]
+    },
+    {
+      "routeId": "91-13-G-j26-1",
+      "agencyId": "11",
+      "line": "R13",
+      "mode": "rail",
+      "pairs": [
+        {
+          "fromId": "ch:1:sloid:4200:1:1",
+          "toId": "ch:1:sloid:4203:1:1",
+          "operatingPointPair": [
+            "8504200",
+            "8504203"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087157",
+            "ch14uvag00087158",
+            "ch14uvag00087159"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:4200_gen:ch:1:sloid:4200:2:3_pf:3AB",
+          "toId": "ch:1:sloid:4203:1:1",
+          "operatingPointPair": [
+            "8504200",
+            "8504203"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087157",
+            "ch14uvag00087158",
+            "ch14uvag00087159"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:4203:1:1",
+          "toId": "ch:1:sloid:4205:2:3",
+          "operatingPointPair": [
+            "8504203",
+            "8504205"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087160",
+            "ch14uvag00087161",
+            "ch14uvag00087162"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:4203:2:2",
+          "toId": "ch:1:sloid:4200_gen:ch:1:sloid:4200:2:3_pf:3AB",
+          "operatingPointPair": [
+            "8504203",
+            "8504200"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087159",
+            "ch14uvag00087158",
+            "ch14uvag00087157"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:4205:2:2",
+          "toId": "ch:1:sloid:4203:2:2",
+          "operatingPointPair": [
+            "8504205",
+            "8504203"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087162",
+            "ch14uvag00087161",
+            "ch14uvag00087160"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:4205:2:3",
+          "toId": "ch:1:sloid:4206:2:2",
+          "operatingPointPair": [
+            "8504205",
+            "8504206"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087163"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:4206:1:1",
+          "toId": "ch:1:sloid:4205:2:2",
+          "operatingPointPair": [
+            "8504206",
+            "8504205"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087163"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:4206:2:2",
+          "toId": "ch:1:sloid:4208:2:2",
+          "operatingPointPair": [
+            "8504206",
+            "8504208"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087164"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:4206:2:2",
+          "toId": "ch:1:sloid:4208:2:3",
+          "operatingPointPair": [
+            "8504206",
+            "8504208"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087164"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:4208:2:2",
+          "toId": "ch:1:sloid:4206:1:1",
+          "operatingPointPair": [
+            "8504208",
+            "8504206"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087164"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:4208:2:2",
+          "toId": "ch:1:sloid:4209:2:2",
+          "operatingPointPair": [
+            "8504208",
+            "8504209"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087165"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:4208:2:3",
+          "toId": "ch:1:sloid:4209:2:3",
+          "operatingPointPair": [
+            "8504208",
+            "8504209"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087165"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:4209:2:2",
+          "toId": "ch:1:sloid:4208:2:2",
+          "operatingPointPair": [
+            "8504209",
+            "8504208"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087165"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:4209:2:2",
+          "toId": "ch:1:sloid:4219:2:2",
+          "operatingPointPair": [
+            "8504209",
+            "8504219"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087166"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:4209:2:3",
+          "toId": "ch:1:sloid:4219:2:2",
+          "operatingPointPair": [
+            "8504209",
+            "8504219"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087166"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:4219:1:1",
+          "toId": "ch:1:sloid:4209:2:2",
+          "operatingPointPair": [
+            "8504219",
+            "8504209"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087166"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:4219:2:2",
+          "toId": "ch:1:sloid:4220:1:1",
+          "operatingPointPair": [
+            "8504219",
+            "8504220"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087167"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:4220:1:1",
+          "toId": "ch:1:sloid:4221:3:4",
+          "operatingPointPair": [
+            "8504220",
+            "8504221"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087168",
+            "ch14uvag00087169"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:4220:1:1",
+          "toId": "ch:1:sloid:4221:3:5",
+          "operatingPointPair": [
+            "8504220",
+            "8504221"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087168",
+            "ch14uvag00087169"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:4220:2:2",
+          "toId": "ch:1:sloid:4219:1:1",
+          "operatingPointPair": [
+            "8504220",
+            "8504219"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087167"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:4221:2:3",
+          "toId": "ch:1:sloid:4220:2:2",
+          "operatingPointPair": [
+            "8504221",
+            "8504220"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087169",
+            "ch14uvag00087168"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:4221:3:4",
+          "toId": "ch:1:sloid:4220:2:2",
+          "operatingPointPair": [
+            "8504221",
+            "8504220"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087169",
+            "ch14uvag00087168"
+          ]
+        }
+      ]
+    },
+    {
+      "routeId": "91-20-A-j26-1",
+      "agencyId": "11",
+      "line": "S20",
+      "mode": "rail",
+      "pairs": [
+        {
+          "fromId": "ch:1:sloid:206:2:2",
+          "toId": "ch:1:sloid:261",
+          "operatingPointPair": [
+            "8500206",
+            "8500261"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087538",
+            "ch14uvag00087568"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:261",
+          "toId": "ch:1:sloid:206:1:1",
+          "operatingPointPair": [
+            "8500261",
+            "8500206"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087568",
+            "ch14uvag00087538"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:261",
+          "toId": "ch:1:sloid:262",
+          "operatingPointPair": [
+            "8500261",
+            "8500262"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087569"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:262",
+          "toId": "ch:1:sloid:261",
+          "operatingPointPair": [
+            "8500262",
+            "8500261"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087569"
+          ]
+        }
+      ]
+    },
+    {
+      "routeId": "91-31-j26-1",
+      "agencyId": "33",
+      "line": "S31",
+      "mode": "rail",
+      "pairs": [
+        {
+          "fromId": "ch:1:sloid:4300:4:7",
+          "toId": "ch:1:sloid:4414:2:3",
+          "operatingPointPair": [
+            "8504300",
+            "8504414"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087553",
+            "ch14uvag00087389",
+            "ch14uvag00087388",
+            "ch14uvag00087387",
+            "ch14uvag00087386",
+            "ch14uvag00087385",
+            "ch14uvag00087384"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:4300:5:9",
+          "toId": "ch:1:sloid:4414:2:3",
+          "operatingPointPair": [
+            "8504300",
+            "8504414"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087553",
+            "ch14uvag00087389",
+            "ch14uvag00087388",
+            "ch14uvag00087387",
+            "ch14uvag00087386",
+            "ch14uvag00087385",
+            "ch14uvag00087384"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:4300_gen:ch:1:sloid:4300:4:7_pf:7AB",
+          "toId": "ch:1:sloid:4414:2:3",
+          "operatingPointPair": [
+            "8504300",
+            "8504414"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087553",
+            "ch14uvag00087389",
+            "ch14uvag00087388",
+            "ch14uvag00087387",
+            "ch14uvag00087386",
+            "ch14uvag00087385",
+            "ch14uvag00087384"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:4411:1:1",
+          "toId": "ch:1:sloid:4412:3:3",
+          "operatingPointPair": [
+            "8504411",
+            "8504412"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087381"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:4412:2:2",
+          "toId": "ch:1:sloid:4411:2:2",
+          "operatingPointPair": [
+            "8504412",
+            "8504411"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087381"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:4412:3:3",
+          "toId": "ch:1:sloid:4414:1:1",
+          "operatingPointPair": [
+            "8504412",
+            "8504414"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087382",
+            "ch14uvag00087383"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:4414:1:1",
+          "toId": "ch:1:sloid:4300:5:10",
+          "operatingPointPair": [
+            "8504414",
+            "8504300"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087384",
+            "ch14uvag00087385",
+            "ch14uvag00087386",
+            "ch14uvag00087387",
+            "ch14uvag00087388",
+            "ch14uvag00087389",
+            "ch14uvag00087553"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:4414:1:1",
+          "toId": "ch:1:sloid:4300:5:9",
+          "operatingPointPair": [
+            "8504414",
+            "8504300"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087384",
+            "ch14uvag00087385",
+            "ch14uvag00087386",
+            "ch14uvag00087387",
+            "ch14uvag00087388",
+            "ch14uvag00087389",
+            "ch14uvag00087553"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:4414:1:1",
+          "toId": "ch:1:sloid:4300_gen:ch:1:sloid:4300:5:10_pf:10AB",
+          "operatingPointPair": [
+            "8504414",
+            "8504300"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087384",
+            "ch14uvag00087385",
+            "ch14uvag00087386",
+            "ch14uvag00087387",
+            "ch14uvag00087388",
+            "ch14uvag00087389",
+            "ch14uvag00087553"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:4414:2:3",
+          "toId": "ch:1:sloid:4411:2:2",
+          "operatingPointPair": [
+            "8504414",
+            "8504411"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087383",
+            "ch14uvag00087382",
+            "ch14uvag00087381"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:4414:2:3",
+          "toId": "ch:1:sloid:4412:2:2",
+          "operatingPointPair": [
+            "8504414",
+            "8504412"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087383",
+            "ch14uvag00087382"
+          ]
+        }
+      ]
+    },
+    {
+      "routeId": "91-42-C-j26-1",
+      "agencyId": "33",
+      "line": "S42",
+      "mode": "rail",
+      "pairs": [
+        {
+          "fromId": "ch:1:sloid:8005:1:1",
+          "toId": "ch:1:sloid:8081:0:916973",
+          "operatingPointPair": [
+            "8508005",
+            "8508081"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087648",
+            "ch14uvag00087600",
+            "ch14uvag00087601"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:8005_gen:ch:1:sloid:8005:1:1_pf:1B",
+          "toId": "ch:1:sloid:8081:0:766017",
+          "operatingPointPair": [
+            "8508005",
+            "8508081"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087648",
+            "ch14uvag00087600",
+            "ch14uvag00087601"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:8080:0:138213",
+          "toId": "ch:1:sloid:8081:0:766017",
+          "operatingPointPair": [
+            "8508080",
+            "8508081"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087602"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:8080:0:138213",
+          "toId": "ch:1:sloid:8265:0:685660",
+          "operatingPointPair": [
+            "8508080",
+            "8508265"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087603"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:8080:0:930505",
+          "toId": "ch:1:sloid:8265:0:685660",
+          "operatingPointPair": [
+            "8508080",
+            "8508265"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087603"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:8081:0:766017",
+          "toId": "ch:1:sloid:8005:1:1",
+          "operatingPointPair": [
+            "8508081",
+            "8508005"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087601",
+            "ch14uvag00087600",
+            "ch14uvag00087648"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:8081:0:766017",
+          "toId": "ch:1:sloid:8005:3:4",
+          "operatingPointPair": [
+            "8508081",
+            "8508005"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087601",
+            "ch14uvag00087600",
+            "ch14uvag00087648"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:8081:0:766017",
+          "toId": "ch:1:sloid:8080:0:138213",
+          "operatingPointPair": [
+            "8508081",
+            "8508080"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087602"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:8081:0:916973",
+          "toId": "ch:1:sloid:8080:0:930505",
+          "operatingPointPair": [
+            "8508081",
+            "8508080"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087602"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:8265:0:660436",
+          "toId": "ch:1:sloid:8080:0:138213",
+          "operatingPointPair": [
+            "8508265",
+            "8508080"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087603"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:8265:0:685660",
+          "toId": "ch:1:sloid:8080:0:138213",
+          "operatingPointPair": [
+            "8508265",
+            "8508080"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087603"
+          ]
+        }
+      ]
+    },
+    {
+      "routeId": "91-41-F-j26-1",
+      "agencyId": "33",
+      "line": "S41",
+      "mode": "rail",
+      "pairs": [
+        {
+          "fromId": "ch:1:sloid:8251:0:223686",
+          "toId": "ch:1:sloid:7100:1:1",
+          "operatingPointPair": [
+            "8508251",
+            "8507100"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087598",
+            "ch14uvag00087599",
+            "ch14uvag00087408"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:8251:0:223686",
+          "toId": "ch:1:sloid:7100:2:3",
+          "operatingPointPair": [
+            "8508251",
+            "8507100"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087598",
+            "ch14uvag00087599",
+            "ch14uvag00087408"
+          ]
+        }
+      ]
+    },
+    {
+      "routeId": "91-15-B-j26-1",
+      "agencyId": "11",
+      "line": "IR15",
+      "mode": "rail",
+      "pairs": [
+        {
+          "fromId": "ch:1:sloid:1008:2:2",
+          "toId": "ch:1:sloid:1026:1:1",
+          "operatingPointPair": [
+            "8501008",
+            "8501026"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087073",
+            "ch14uvag00087074",
+            "ch14uvag00087075"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:1008:2:3",
+          "toId": "ch:1:sloid:1026:1:1",
+          "operatingPointPair": [
+            "8501008",
+            "8501026"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087073",
+            "ch14uvag00087074",
+            "ch14uvag00087075"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:1008:2:3",
+          "toId": "ch:1:sloid:1026:2:4",
+          "operatingPointPair": [
+            "8501008",
+            "8501026"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087073",
+            "ch14uvag00087074",
+            "ch14uvag00087075"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:1008:2:3",
+          "toId": "ch:1:sloid:1026_gen:ch:1:sloid:1026:1:1_pf:1E-H",
+          "operatingPointPair": [
+            "8501008",
+            "8501026"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087073",
+            "ch14uvag00087074",
+            "ch14uvag00087075"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:1008:3:4",
+          "toId": "ch:1:sloid:1030:2:2",
+          "operatingPointPair": [
+            "8501008",
+            "8501030"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087101",
+            "ch14uvag00087100",
+            "ch14uvag00087071",
+            "ch14uvag00087070",
+            "ch14uvag00087069",
+            "ch14uvag00087068",
+            "ch14uvag00240313",
+            "ch14uvag00087066",
+            "ch14uvag00087065",
+            "ch14uvag00087064",
+            "ch14uvag00087063",
+            "ch14uvag00087062",
+            "ch14uvag00087061",
+            "ch14uvag00087060",
+            "ch14uvag00087059",
+            "ch14uvag00087058",
+            "ch14uvag00087057",
+            "ch14uvag00087056",
+            "ch14uvag00087055",
+            "ch14uvag00087054"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:1008:3:4",
+          "toId": "ch:1:sloid:1030:2:3",
+          "operatingPointPair": [
+            "8501008",
+            "8501030"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087101",
+            "ch14uvag00087100",
+            "ch14uvag00087071",
+            "ch14uvag00087070",
+            "ch14uvag00087069",
+            "ch14uvag00087068",
+            "ch14uvag00240313",
+            "ch14uvag00087066",
+            "ch14uvag00087065",
+            "ch14uvag00087064",
+            "ch14uvag00087063",
+            "ch14uvag00087062",
+            "ch14uvag00087061",
+            "ch14uvag00087060",
+            "ch14uvag00087059",
+            "ch14uvag00087058",
+            "ch14uvag00087057",
+            "ch14uvag00087056",
+            "ch14uvag00087055",
+            "ch14uvag00087054"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:1026:1:1",
+          "toId": "ch:1:sloid:1008:3:4",
+          "operatingPointPair": [
+            "8501026",
+            "8501008"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087075",
+            "ch14uvag00087074",
+            "ch14uvag00087073"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:1026:1:2",
+          "toId": "ch:1:sloid:1008:3:4",
+          "operatingPointPair": [
+            "8501026",
+            "8501008"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087075",
+            "ch14uvag00087074",
+            "ch14uvag00087073"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:1026_gen:ch:1:sloid:1026:1:1_pf:1A-D",
+          "toId": "ch:1:sloid:1008:3:4",
+          "operatingPointPair": [
+            "8501026",
+            "8501008"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087075",
+            "ch14uvag00087074",
+            "ch14uvag00087073"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:1030:1:1",
+          "toId": "ch:1:sloid:1008:2:2",
+          "operatingPointPair": [
+            "8501030",
+            "8501008"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087054",
+            "ch14uvag00087055",
+            "ch14uvag00087056",
+            "ch14uvag00087057",
+            "ch14uvag00087058",
+            "ch14uvag00087059",
+            "ch14uvag00087060",
+            "ch14uvag00087061",
+            "ch14uvag00087062",
+            "ch14uvag00087063",
+            "ch14uvag00087064",
+            "ch14uvag00087065",
+            "ch14uvag00087066",
+            "ch14uvag00240313",
+            "ch14uvag00087068",
+            "ch14uvag00087069",
+            "ch14uvag00087070",
+            "ch14uvag00087071",
+            "ch14uvag00087100",
+            "ch14uvag00087101"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:1030:1:1",
+          "toId": "ch:1:sloid:1008:2:3",
+          "operatingPointPair": [
+            "8501030",
+            "8501008"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087054",
+            "ch14uvag00087055",
+            "ch14uvag00087056",
+            "ch14uvag00087057",
+            "ch14uvag00087058",
+            "ch14uvag00087059",
+            "ch14uvag00087060",
+            "ch14uvag00087061",
+            "ch14uvag00087062",
+            "ch14uvag00087063",
+            "ch14uvag00087064",
+            "ch14uvag00087065",
+            "ch14uvag00087066",
+            "ch14uvag00240313",
+            "ch14uvag00087068",
+            "ch14uvag00087069",
+            "ch14uvag00087070",
+            "ch14uvag00087071",
+            "ch14uvag00087100",
+            "ch14uvag00087101"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:1030:2:2",
+          "toId": "ch:1:sloid:1037:2:3",
+          "operatingPointPair": [
+            "8501030",
+            "8501037"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087053",
+            "ch14uvag00087052",
+            "ch14uvag00087051",
+            "ch14uvag00087050",
+            "ch14uvag00087049",
+            "ch14uvag00087048",
+            "ch14uvag00087047",
+            "ch14uvag00087046",
+            "ch14uvag00087045",
+            "ch14uvag00087044"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:1030:2:3",
+          "toId": "ch:1:sloid:1037:2:3",
+          "operatingPointPair": [
+            "8501030",
+            "8501037"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087053",
+            "ch14uvag00087052",
+            "ch14uvag00087051",
+            "ch14uvag00087050",
+            "ch14uvag00087049",
+            "ch14uvag00087048",
+            "ch14uvag00087047",
+            "ch14uvag00087046",
+            "ch14uvag00087045",
+            "ch14uvag00087044"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:1031:2:3",
+          "toId": "ch:1:sloid:1030:1:1",
+          "operatingPointPair": [
+            "8501031",
+            "8501030"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087052",
+            "ch14uvag00087053"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:1037:1:1",
+          "toId": "ch:1:sloid:1030:1:1",
+          "operatingPointPair": [
+            "8501037",
+            "8501030"
+          ],
+          "sourceSegments": []
+        },
+        {
+          "fromId": "ch:1:sloid:1037:2:2",
+          "toId": "ch:1:sloid:1031:2:3",
+          "operatingPointPair": [
+            "8501037",
+            "8501031"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087044",
+            "ch14uvag00087045",
+            "ch14uvag00087046",
+            "ch14uvag00087047",
+            "ch14uvag00087048",
+            "ch14uvag00087049",
+            "ch14uvag00087050",
+            "ch14uvag00087051"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:1037:2:3",
+          "toId": "ch:1:sloid:1120:0:668579",
+          "operatingPointPair": [
+            "8501037",
+            "8501120"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087043",
+            "ch14uvag00087042",
+            "ch14uvag00087041",
+            "ch14uvag00087040",
+            "ch14uvag00087110",
+            "ch14uvag00087105",
+            "ch14uvag00087104",
+            "ch14uvag00087103",
+            "ch14uvag00087102",
+            "ch14uvag00087034",
+            "ch14uvag00087033",
+            "ch14uvag00087032",
+            "ch14uvag00087031",
+            "ch14uvag00087030",
+            "ch14uvag00087029"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:1120:0:42631",
+          "toId": "ch:1:sloid:1037:1:1",
+          "operatingPointPair": [
+            "8501120",
+            "8501037"
+          ],
+          "sourceSegments": []
+        },
+        {
+          "fromId": "ch:1:sloid:1120:0:42631",
+          "toId": "ch:1:sloid:1037:2:2",
+          "operatingPointPair": [
+            "8501120",
+            "8501037"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087029",
+            "ch14uvag00087030",
+            "ch14uvag00087031",
+            "ch14uvag00087032",
+            "ch14uvag00087033",
+            "ch14uvag00087034",
+            "ch14uvag00087102",
+            "ch14uvag00087103",
+            "ch14uvag00087104",
+            "ch14uvag00087105",
+            "ch14uvag00087110",
+            "ch14uvag00087040",
+            "ch14uvag00087041",
+            "ch14uvag00087042",
+            "ch14uvag00087043"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:1120:0:668579",
+          "toId": "ch:1:sloid:4014:2:2",
+          "operatingPointPair": [
+            "8501120",
+            "8504014"
+          ],
+          "sourceSegments": [
+            "ch14uvag00086958",
+            "ch14uvag00087291",
+            "ch14uvag00087292",
+            "ch14uvag00087293",
+            "ch14uvag00087294",
+            "ch14uvag00087295",
+            "ch14uvag00087296",
+            "ch14uvag00087297"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:4014:1:1",
+          "toId": "ch:1:sloid:1120:0:276884",
+          "operatingPointPair": [
+            "8504014",
+            "8501120"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087297",
+            "ch14uvag00087296",
+            "ch14uvag00087295",
+            "ch14uvag00087294",
+            "ch14uvag00087293",
+            "ch14uvag00087292",
+            "ch14uvag00087291",
+            "ch14uvag00086958"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:4014:1:1",
+          "toId": "ch:1:sloid:1120:0:37997",
+          "operatingPointPair": [
+            "8504014",
+            "8501120"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087297",
+            "ch14uvag00087296",
+            "ch14uvag00087295",
+            "ch14uvag00087294",
+            "ch14uvag00087293",
+            "ch14uvag00087292",
+            "ch14uvag00087291",
+            "ch14uvag00086958"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:4014:1:1",
+          "toId": "ch:1:sloid:1120:0:42631",
+          "operatingPointPair": [
+            "8504014",
+            "8501120"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087297",
+            "ch14uvag00087296",
+            "ch14uvag00087295",
+            "ch14uvag00087294",
+            "ch14uvag00087293",
+            "ch14uvag00087292",
+            "ch14uvag00087291",
+            "ch14uvag00086958"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:4014:1:1",
+          "toId": "ch:1:sloid:1120:0:668579",
+          "operatingPointPair": [
+            "8504014",
+            "8501120"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087297",
+            "ch14uvag00087296",
+            "ch14uvag00087295",
+            "ch14uvag00087294",
+            "ch14uvag00087293",
+            "ch14uvag00087292",
+            "ch14uvag00087291",
+            "ch14uvag00086958"
+          ]
+        }
+      ]
+    },
+    {
+      "routeId": "91-5-A-j26-1",
+      "agencyId": "11",
+      "line": "IC5",
+      "mode": "rail",
+      "pairs": [
+        {
+          "fromId": "ch:1:sloid:1118:1:1",
+          "toId": "ch:1:sloid:4200:1:1",
+          "operatingPointPair": [
+            "8501118",
+            "8504200"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087034",
+            "ch14uvag00240367",
+            "ch14uvag00087134",
+            "ch14uvag00087135",
+            "ch14uvag00087136",
+            "ch14uvag00087137",
+            "ch14uvag00087138",
+            "ch14uvag00087148",
+            "ch14uvag00087149",
+            "ch14uvag00087150",
+            "ch14uvag00087151",
+            "ch14uvag00087152",
+            "ch14uvag00087153",
+            "ch14uvag00087154",
+            "ch14uvag00087155",
+            "ch14uvag00087156"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:1118:2:2",
+          "toId": "ch:1:sloid:4200:1:1",
+          "operatingPointPair": [
+            "8501118",
+            "8504200"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087034",
+            "ch14uvag00240367",
+            "ch14uvag00087134",
+            "ch14uvag00087135",
+            "ch14uvag00087136",
+            "ch14uvag00087137",
+            "ch14uvag00087138",
+            "ch14uvag00087148",
+            "ch14uvag00087149",
+            "ch14uvag00087150",
+            "ch14uvag00087151",
+            "ch14uvag00087152",
+            "ch14uvag00087153",
+            "ch14uvag00087154",
+            "ch14uvag00087155",
+            "ch14uvag00087156"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:1118:3:4",
+          "toId": "ch:1:sloid:1120:0:42631",
+          "operatingPointPair": [
+            "8501118",
+            "8501120"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087033",
+            "ch14uvag00087032",
+            "ch14uvag00087031",
+            "ch14uvag00087030",
+            "ch14uvag00087029"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:1118:3:4",
+          "toId": "ch:1:sloid:1120:0:668579",
+          "operatingPointPair": [
+            "8501118",
+            "8501120"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087033",
+            "ch14uvag00087032",
+            "ch14uvag00087031",
+            "ch14uvag00087030",
+            "ch14uvag00087029"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:1118:3:4",
+          "toId": "ch:1:sloid:1120:0:860143",
+          "operatingPointPair": [
+            "8501118",
+            "8501120"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087033",
+            "ch14uvag00087032",
+            "ch14uvag00087031",
+            "ch14uvag00087030",
+            "ch14uvag00087029"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:1120:0:42631",
+          "toId": "ch:1:sloid:1118:1:1",
+          "operatingPointPair": [
+            "8501120",
+            "8501118"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087029",
+            "ch14uvag00087030",
+            "ch14uvag00087031",
+            "ch14uvag00087032",
+            "ch14uvag00087033"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:1120:0:42631",
+          "toId": "ch:1:sloid:1118:2:2",
+          "operatingPointPair": [
+            "8501120",
+            "8501118"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087029",
+            "ch14uvag00087030",
+            "ch14uvag00087031",
+            "ch14uvag00087032",
+            "ch14uvag00087033"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:1120:0:840061",
+          "toId": "ch:1:sloid:1118:1:1",
+          "operatingPointPair": [
+            "8501120",
+            "8501118"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087029",
+            "ch14uvag00087030",
+            "ch14uvag00087031",
+            "ch14uvag00087032",
+            "ch14uvag00087033"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:1120:0:860143",
+          "toId": "ch:1:sloid:1118:2:2",
+          "operatingPointPair": [
+            "8501120",
+            "8501118"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087029",
+            "ch14uvag00087030",
+            "ch14uvag00087031",
+            "ch14uvag00087032",
+            "ch14uvag00087033"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:2113:2:3",
+          "toId": "ch:1:sloid:3000:501:33",
+          "operatingPointPair": [
+            "8502113",
+            "8503000"
+          ],
+          "sourceSegments": []
+        },
+        {
+          "fromId": "ch:1:sloid:2113:2:3",
+          "toId": "ch:1:sloid:3000:6:11",
+          "operatingPointPair": [
+            "8502113",
+            "8503000"
+          ],
+          "sourceSegments": []
+        },
+        {
+          "fromId": "ch:1:sloid:2113:2:3",
+          "toId": "ch:1:sloid:3000:7:12",
+          "operatingPointPair": [
+            "8502113",
+            "8503000"
+          ],
+          "sourceSegments": []
+        },
+        {
+          "fromId": "ch:1:sloid:2113:2:3",
+          "toId": "ch:1:sloid:3000:9:17",
+          "operatingPointPair": [
+            "8502113",
+            "8503000"
+          ],
+          "sourceSegments": []
+        },
+        {
+          "fromId": "ch:1:sloid:2119:3:2",
+          "toId": "ch:1:sloid:3000:3:5",
+          "operatingPointPair": [
+            "8502119",
+            "8503000"
+          ],
+          "sourceSegments": []
+        },
+        {
+          "fromId": "ch:1:sloid:2119:3:2",
+          "toId": "ch:1:sloid:3000:7:12",
+          "operatingPointPair": [
+            "8502119",
+            "8503000"
+          ],
+          "sourceSegments": []
+        },
+        {
+          "fromId": "ch:1:sloid:3000:500:32",
+          "toId": "ch:1:sloid:2113:3:4",
+          "operatingPointPair": [
+            "8503000",
+            "8502113"
+          ],
+          "sourceSegments": []
+        },
+        {
+          "fromId": "ch:1:sloid:3000:501:33",
+          "toId": "ch:1:sloid:3016:1:1",
+          "operatingPointPair": [
+            "8503000",
+            "8503016"
+          ],
+          "sourceSegments": []
+        },
+        {
+          "fromId": "ch:1:sloid:3000:8:14",
+          "toId": "ch:1:sloid:2113:3:4",
+          "operatingPointPair": [
+            "8503000",
+            "8502113"
+          ],
+          "sourceSegments": []
+        },
+        {
+          "fromId": "ch:1:sloid:3000:9:17",
+          "toId": "ch:1:sloid:2113:3:4",
+          "operatingPointPair": [
+            "8503000",
+            "8502113"
+          ],
+          "sourceSegments": []
+        },
+        {
+          "fromId": "ch:1:sloid:3016:1:1",
+          "toId": "ch:1:sloid:6000:3:5",
+          "operatingPointPair": [
+            "8503016",
+            "8506000"
+          ],
+          "sourceSegments": [
+            "ch14uvag00088356",
+            "ch14uvag00088380",
+            "ch14uvag00088381",
+            "ch14uvag00088367",
+            "ch14uvag00088368",
+            "ch14uvag00088369",
+            "ch14uvag00088370",
+            "ch14uvag00088371",
+            "ch14uvag00088372"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:3016:2:3",
+          "toId": "ch:1:sloid:3000:500:32",
+          "operatingPointPair": [
+            "8503016",
+            "8503000"
+          ],
+          "sourceSegments": []
+        },
+        {
+          "fromId": "ch:1:sloid:4200:1:1",
+          "toId": "ch:1:sloid:4221:3:5",
+          "operatingPointPair": [
+            "8504200",
+            "8504221"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087157",
+            "ch14uvag00087158",
+            "ch14uvag00087159",
+            "ch14uvag00087160",
+            "ch14uvag00087161",
+            "ch14uvag00087162",
+            "ch14uvag00087163",
+            "ch14uvag00087164",
+            "ch14uvag00087165",
+            "ch14uvag00087166",
+            "ch14uvag00087167",
+            "ch14uvag00087168",
+            "ch14uvag00087169"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:4200:2:2",
+          "toId": "ch:1:sloid:1118:3:4",
+          "operatingPointPair": [
+            "8504200",
+            "8501118"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087156",
+            "ch14uvag00087155",
+            "ch14uvag00087154",
+            "ch14uvag00087153",
+            "ch14uvag00087152",
+            "ch14uvag00087151",
+            "ch14uvag00087150",
+            "ch14uvag00087149",
+            "ch14uvag00087148",
+            "ch14uvag00087138",
+            "ch14uvag00087137",
+            "ch14uvag00087136",
+            "ch14uvag00087135",
+            "ch14uvag00087134",
+            "ch14uvag00240367",
+            "ch14uvag00087034"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:4221:2:3",
+          "toId": "ch:1:sloid:4200:2:2",
+          "operatingPointPair": [
+            "8504221",
+            "8504200"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087169",
+            "ch14uvag00087168",
+            "ch14uvag00087167",
+            "ch14uvag00087166",
+            "ch14uvag00087165",
+            "ch14uvag00087164",
+            "ch14uvag00087163",
+            "ch14uvag00087162",
+            "ch14uvag00087161",
+            "ch14uvag00087160",
+            "ch14uvag00087159",
+            "ch14uvag00087158",
+            "ch14uvag00087157"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:4221:3:5",
+          "toId": "ch:1:sloid:4300:2:2",
+          "operatingPointPair": [
+            "8504221",
+            "8504300"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087170",
+            "ch14uvag00087171",
+            "ch14uvag00087172",
+            "ch14uvag00087173",
+            "ch14uvag00087174",
+            "ch14uvag00087175",
+            "ch14uvag00087176",
+            "ch14uvag00087177",
+            "ch14uvag00087178",
+            "ch14uvag00087179",
+            "ch14uvag00087180",
+            "ch14uvag00087181"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:4221:3:5",
+          "toId": "ch:1:sloid:4300:2:3",
+          "operatingPointPair": [
+            "8504221",
+            "8504300"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087170",
+            "ch14uvag00087171",
+            "ch14uvag00087172",
+            "ch14uvag00087173",
+            "ch14uvag00087174",
+            "ch14uvag00087175",
+            "ch14uvag00087176",
+            "ch14uvag00087177",
+            "ch14uvag00087178",
+            "ch14uvag00087179",
+            "ch14uvag00087180",
+            "ch14uvag00087181"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:4221:3:5",
+          "toId": "ch:1:sloid:4300:3:4",
+          "operatingPointPair": [
+            "8504221",
+            "8504300"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087170",
+            "ch14uvag00087171",
+            "ch14uvag00087172",
+            "ch14uvag00087173",
+            "ch14uvag00087174",
+            "ch14uvag00087175",
+            "ch14uvag00087176",
+            "ch14uvag00087177",
+            "ch14uvag00087178",
+            "ch14uvag00087179",
+            "ch14uvag00087180",
+            "ch14uvag00087181"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:4221:3:5",
+          "toId": "ch:1:sloid:4300:3:5",
+          "operatingPointPair": [
+            "8504221",
+            "8504300"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087170",
+            "ch14uvag00087171",
+            "ch14uvag00087172",
+            "ch14uvag00087173",
+            "ch14uvag00087174",
+            "ch14uvag00087175",
+            "ch14uvag00087176",
+            "ch14uvag00087177",
+            "ch14uvag00087178",
+            "ch14uvag00087179",
+            "ch14uvag00087180",
+            "ch14uvag00087181"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:4300:2:3",
+          "toId": "ch:1:sloid:4221:2:3",
+          "operatingPointPair": [
+            "8504300",
+            "8504221"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087181",
+            "ch14uvag00087180",
+            "ch14uvag00087179",
+            "ch14uvag00087178",
+            "ch14uvag00087177",
+            "ch14uvag00087176",
+            "ch14uvag00087175",
+            "ch14uvag00087174",
+            "ch14uvag00087173",
+            "ch14uvag00087172",
+            "ch14uvag00087171",
+            "ch14uvag00087170"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:4300:3:4",
+          "toId": "ch:1:sloid:4221:2:3",
+          "operatingPointPair": [
+            "8504300",
+            "8504221"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087181",
+            "ch14uvag00087180",
+            "ch14uvag00087179",
+            "ch14uvag00087178",
+            "ch14uvag00087177",
+            "ch14uvag00087176",
+            "ch14uvag00087175",
+            "ch14uvag00087174",
+            "ch14uvag00087173",
+            "ch14uvag00087172",
+            "ch14uvag00087171",
+            "ch14uvag00087170"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:4300:3:5",
+          "toId": "ch:1:sloid:4221:2:3",
+          "operatingPointPair": [
+            "8504300",
+            "8504221"
+          ],
+          "sourceSegments": [
+            "ch14uvag00087181",
+            "ch14uvag00087180",
+            "ch14uvag00087179",
+            "ch14uvag00087178",
+            "ch14uvag00087177",
+            "ch14uvag00087176",
+            "ch14uvag00087175",
+            "ch14uvag00087174",
+            "ch14uvag00087173",
+            "ch14uvag00087172",
+            "ch14uvag00087171",
+            "ch14uvag00087170"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:6000:2:3",
+          "toId": "ch:1:sloid:3016:2:3",
+          "operatingPointPair": [
+            "8506000",
+            "8503016"
+          ],
+          "sourceSegments": [
+            "ch14uvag00088372",
+            "ch14uvag00088371",
+            "ch14uvag00088370",
+            "ch14uvag00088369",
+            "ch14uvag00088368",
+            "ch14uvag00088367",
+            "ch14uvag00088381",
+            "ch14uvag00088380",
+            "ch14uvag00088356"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:6000:3:5",
+          "toId": "ch:1:sloid:6302:2:2",
+          "operatingPointPair": [
+            "8506000",
+            "8506302"
+          ],
+          "sourceSegments": [
+            "ch14uvag00088373",
+            "ch14uvag00088567",
+            "ch14uvag00088566",
+            "ch14uvag00088565",
+            "ch14uvag00088564",
+            "ch14uvag00088563",
+            "ch14uvag00088562",
+            "ch14uvag00088561",
+            "ch14uvag00088560",
+            "ch14uvag00088559",
+            "ch14uvag00088558",
+            "ch14uvag00088557",
+            "ch14uvag00088556",
+            "ch14uvag00088555",
+            "ch14uvag00088554",
+            "ch14uvag00088553",
+            "ch14uvag00088552",
+            "ch14uvag00088551",
+            "ch14uvag00088550",
+            "ch14uvag00088549",
+            "ch14uvag00088548",
+            "ch14uvag00088547",
+            "ch14uvag00088546",
+            "ch14uvag00088545"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:6302:2:2",
+          "toId": "ch:1:sloid:6000:2:3",
+          "operatingPointPair": [
+            "8506302",
+            "8506000"
+          ],
+          "sourceSegments": [
+            "ch14uvag00088545",
+            "ch14uvag00088546",
+            "ch14uvag00088547",
+            "ch14uvag00088548",
+            "ch14uvag00088549",
+            "ch14uvag00088550",
+            "ch14uvag00088551",
+            "ch14uvag00088552",
+            "ch14uvag00088553",
+            "ch14uvag00088554",
+            "ch14uvag00088555",
+            "ch14uvag00088556",
+            "ch14uvag00088557",
+            "ch14uvag00088558",
+            "ch14uvag00088559",
+            "ch14uvag00088560",
+            "ch14uvag00088561",
+            "ch14uvag00088562",
+            "ch14uvag00088563",
+            "ch14uvag00088564",
+            "ch14uvag00088565",
+            "ch14uvag00088566",
+            "ch14uvag00088567",
+            "ch14uvag00088373"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:6302:2:2",
+          "toId": "ch:1:sloid:6311:3:4",
+          "operatingPointPair": [
+            "8506302",
+            "8506311"
+          ],
+          "sourceSegments": [
+            "ch14uvag00088641",
+            "ch14uvag00088640",
+            "ch14uvag00240376",
+            "ch14uvag00088637",
+            "ch14uvag00088636",
+            "ch14uvag00088635",
+            "ch14uvag00088634",
+            "ch14uvag00088633"
+          ]
+        },
+        {
+          "fromId": "ch:1:sloid:6311:3:4",
+          "toId": "ch:1:sloid:6302:2:2",
+          "operatingPointPair": [
+            "8506311",
+            "8506302"
+          ],
+          "sourceSegments": [
+            "ch14uvag00088633",
+            "ch14uvag00088634",
+            "ch14uvag00088635",
+            "ch14uvag00088636",
+            "ch14uvag00088637",
+            "ch14uvag00240376",
+            "ch14uvag00088640",
+            "ch14uvag00088641"
+          ]
+        }
+      ]
+    }
+  ],
+  "admission": "Only missing cantonal pairs on nine exact reviewed rail identities. Each original directed platform pair has an explicit operating-point and source-segment binding; empty segment bindings retain reviewed exclusions. All complete dated pattern contexts must agree. Preserve every original call and every previous path.",
+  "model": "Exact operating-point identities, standard gauge and FOT-declared SBB/BLS topology. Original rail limits unchanged; selected topology attachments below 51 m. Source catalogue 2021-07-06, asset updated 2025-01-18, checksum rechecked 2026-09-08. Inferred geometry; current alignment and running-track validity unconfirmed."
+}

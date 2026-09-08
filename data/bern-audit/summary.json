@@ -9,6 +9,7 @@
     "regionalRoadPolicy": "37a6f35b586acdcbc40cc6f9b9b58452f88779a94473efb5af421ff213e7a0a8",
     "mountainPolicy": "2255393078b1728f8150edc0c0333b75394ca76bee70505a21314a71acdefc89",
     "railPolicy": "04b675e0248a5ffb5ee7f4da38912b9222acad46166362120837ac839209c180",
+    "regionalRailPolicy": "3b533d59e49d3671c03dfb1a5a742093557d46822671f7e403f0388b17b2fb9f",
     "urbanCache": "5ef487abdf873508305508e5096c26ca0fbebd9abc9b0846195abc840af07d0f",
     "urbanPolicy": "1ca5bdf7f752349c915180c881292cfd31465398efb956e58afc5934b875f8fb"
   },
@@ -366,6 +367,3736 @@
         }
       ]
     },
+    "regionalRailSupplement": {
+      "policySha256": "3b533d59e49d3671c03dfb1a5a742093557d46822671f7e403f0388b17b2fb9f",
+      "policy": {
+        "schemaVersion": 1,
+        "sourceId": "bern-regional-fot-rail-20210706",
+        "sourceDirectory": "data/bern-sources/fot-rail",
+        "sourceMetadataSha256": "46ab3ed91471fde35bcb1b678410efe7ecab6bf1cf02027729f547545b94aaad",
+        "sourceSha256": "2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+        "dates": [
+          "2026-09-04",
+          "2026-09-06"
+        ],
+        "limits": {
+          "stationAttachmentMetres": 120,
+          "topologyAttachmentMetres": 120,
+          "detourRatio": 4.5,
+          "detourFloorMetres": 3000,
+          "simplificationMetres": 0
+        },
+        "gauges": [
+          "mm1435"
+        ],
+        "infrastructureOperators": [
+          "SBB CFF FFS",
+          "BLSN"
+        ],
+        "routes": [
+          {
+            "routeId": "91-5-j26-1",
+            "agencyId": "33",
+            "line": "S5",
+            "mode": "rail",
+            "pairs": [
+              {
+                "fromId": "ch:1:sloid:4221:1:1",
+                "toId": "ch:1:sloid:4480",
+                "operatingPointPair": [
+                  "8504221",
+                  "8504480"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087170",
+                  "ch14uvag00087215"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:4221:2:2",
+                "toId": "ch:1:sloid:4480",
+                "operatingPointPair": [
+                  "8504221",
+                  "8504480"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087170",
+                  "ch14uvag00087215"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:4221_gen:ch:1:sloid:4221:1:1_pf:1AB",
+                "toId": "ch:1:sloid:4480",
+                "operatingPointPair": [
+                  "8504221",
+                  "8504480"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087170",
+                  "ch14uvag00087215"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:4221_gen:ch:1:sloid:4221:1:1_pf:1CD",
+                "toId": "ch:1:sloid:4480",
+                "operatingPointPair": [
+                  "8504221",
+                  "8504480"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087170",
+                  "ch14uvag00087215"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:4480",
+                "toId": "ch:1:sloid:4221:1:1",
+                "operatingPointPair": [
+                  "8504480",
+                  "8504221"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087215",
+                  "ch14uvag00087170"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:4480",
+                "toId": "ch:1:sloid:4221:2:2",
+                "operatingPointPair": [
+                  "8504480",
+                  "8504221"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087215",
+                  "ch14uvag00087170"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:4480",
+                "toId": "ch:1:sloid:4221_gen:ch:1:sloid:4221:1:1_pf:1AB",
+                "operatingPointPair": [
+                  "8504480",
+                  "8504221"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087215",
+                  "ch14uvag00087170"
+                ]
+              }
+            ]
+          },
+          {
+            "routeId": "91-23-j26-1",
+            "agencyId": "11",
+            "line": "S23",
+            "mode": "rail",
+            "pairs": [
+              {
+                "fromId": "ch:1:sloid:2105:3:4",
+                "toId": "ch:1:sloid:2247:1:5",
+                "operatingPointPair": [
+                  "8502105",
+                  "8502247"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087969",
+                  "ch14uvag00087968"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:2237:1:5",
+                "toId": "ch:1:sloid:309:3:4",
+                "operatingPointPair": [
+                  "8502237",
+                  "8500309"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087965",
+                  "ch14uvag00087964"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:2237:1:5",
+                "toId": "ch:1:sloid:309:3:5",
+                "operatingPointPair": [
+                  "8502237",
+                  "8500309"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087965",
+                  "ch14uvag00087964"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:2237:1:6",
+                "toId": "ch:1:sloid:2247:1:6",
+                "operatingPointPair": [
+                  "8502237",
+                  "8502247"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087966",
+                  "ch14uvag00087967"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:2247:1:5",
+                "toId": "ch:1:sloid:2237:1:5",
+                "operatingPointPair": [
+                  "8502247",
+                  "8502237"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087967",
+                  "ch14uvag00087966"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:2247:1:6",
+                "toId": "ch:1:sloid:2105:3:4",
+                "operatingPointPair": [
+                  "8502247",
+                  "8502105"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087968",
+                  "ch14uvag00087969"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:309:3:4",
+                "toId": "ch:1:sloid:2237:1:6",
+                "operatingPointPair": [
+                  "8500309",
+                  "8502237"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087964",
+                  "ch14uvag00087965"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:309:3:4",
+                "toId": "ch:1:sloid:3503:2:3",
+                "operatingPointPair": [
+                  "8500309",
+                  "8503503"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00088191"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:309:3:5",
+                "toId": "ch:1:sloid:2237:1:6",
+                "operatingPointPair": [
+                  "8500309",
+                  "8502237"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087964",
+                  "ch14uvag00087965"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:309:3:5",
+                "toId": "ch:1:sloid:3503:2:3",
+                "operatingPointPair": [
+                  "8500309",
+                  "8503503"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00088191"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:3503:2:3",
+                "toId": "ch:1:sloid:3504:2:2",
+                "operatingPointPair": [
+                  "8503503",
+                  "8503504"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00088190"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:3503:3:4",
+                "toId": "ch:1:sloid:309:3:4",
+                "operatingPointPair": [
+                  "8503503",
+                  "8500309"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00088191"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:3503:3:4",
+                "toId": "ch:1:sloid:309:3:5",
+                "operatingPointPair": [
+                  "8503503",
+                  "8500309"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00088191"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:3504:2:2",
+                "toId": "ch:1:sloid:3503:3:4",
+                "operatingPointPair": [
+                  "8503504",
+                  "8503503"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00088190"
+                ]
+              }
+            ]
+          },
+          {
+            "routeId": "91-13-G-j26-1",
+            "agencyId": "11",
+            "line": "R13",
+            "mode": "rail",
+            "pairs": [
+              {
+                "fromId": "ch:1:sloid:4200:1:1",
+                "toId": "ch:1:sloid:4203:1:1",
+                "operatingPointPair": [
+                  "8504200",
+                  "8504203"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087157",
+                  "ch14uvag00087158",
+                  "ch14uvag00087159"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:4200_gen:ch:1:sloid:4200:2:3_pf:3AB",
+                "toId": "ch:1:sloid:4203:1:1",
+                "operatingPointPair": [
+                  "8504200",
+                  "8504203"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087157",
+                  "ch14uvag00087158",
+                  "ch14uvag00087159"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:4203:1:1",
+                "toId": "ch:1:sloid:4205:2:3",
+                "operatingPointPair": [
+                  "8504203",
+                  "8504205"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087160",
+                  "ch14uvag00087161",
+                  "ch14uvag00087162"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:4203:2:2",
+                "toId": "ch:1:sloid:4200_gen:ch:1:sloid:4200:2:3_pf:3AB",
+                "operatingPointPair": [
+                  "8504203",
+                  "8504200"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087159",
+                  "ch14uvag00087158",
+                  "ch14uvag00087157"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:4205:2:2",
+                "toId": "ch:1:sloid:4203:2:2",
+                "operatingPointPair": [
+                  "8504205",
+                  "8504203"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087162",
+                  "ch14uvag00087161",
+                  "ch14uvag00087160"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:4205:2:3",
+                "toId": "ch:1:sloid:4206:2:2",
+                "operatingPointPair": [
+                  "8504205",
+                  "8504206"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087163"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:4206:1:1",
+                "toId": "ch:1:sloid:4205:2:2",
+                "operatingPointPair": [
+                  "8504206",
+                  "8504205"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087163"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:4206:2:2",
+                "toId": "ch:1:sloid:4208:2:2",
+                "operatingPointPair": [
+                  "8504206",
+                  "8504208"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087164"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:4206:2:2",
+                "toId": "ch:1:sloid:4208:2:3",
+                "operatingPointPair": [
+                  "8504206",
+                  "8504208"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087164"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:4208:2:2",
+                "toId": "ch:1:sloid:4206:1:1",
+                "operatingPointPair": [
+                  "8504208",
+                  "8504206"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087164"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:4208:2:2",
+                "toId": "ch:1:sloid:4209:2:2",
+                "operatingPointPair": [
+                  "8504208",
+                  "8504209"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087165"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:4208:2:3",
+                "toId": "ch:1:sloid:4209:2:3",
+                "operatingPointPair": [
+                  "8504208",
+                  "8504209"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087165"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:4209:2:2",
+                "toId": "ch:1:sloid:4208:2:2",
+                "operatingPointPair": [
+                  "8504209",
+                  "8504208"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087165"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:4209:2:2",
+                "toId": "ch:1:sloid:4219:2:2",
+                "operatingPointPair": [
+                  "8504209",
+                  "8504219"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087166"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:4209:2:3",
+                "toId": "ch:1:sloid:4219:2:2",
+                "operatingPointPair": [
+                  "8504209",
+                  "8504219"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087166"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:4219:1:1",
+                "toId": "ch:1:sloid:4209:2:2",
+                "operatingPointPair": [
+                  "8504219",
+                  "8504209"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087166"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:4219:2:2",
+                "toId": "ch:1:sloid:4220:1:1",
+                "operatingPointPair": [
+                  "8504219",
+                  "8504220"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087167"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:4220:1:1",
+                "toId": "ch:1:sloid:4221:3:4",
+                "operatingPointPair": [
+                  "8504220",
+                  "8504221"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087168",
+                  "ch14uvag00087169"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:4220:1:1",
+                "toId": "ch:1:sloid:4221:3:5",
+                "operatingPointPair": [
+                  "8504220",
+                  "8504221"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087168",
+                  "ch14uvag00087169"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:4220:2:2",
+                "toId": "ch:1:sloid:4219:1:1",
+                "operatingPointPair": [
+                  "8504220",
+                  "8504219"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087167"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:4221:2:3",
+                "toId": "ch:1:sloid:4220:2:2",
+                "operatingPointPair": [
+                  "8504221",
+                  "8504220"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087169",
+                  "ch14uvag00087168"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:4221:3:4",
+                "toId": "ch:1:sloid:4220:2:2",
+                "operatingPointPair": [
+                  "8504221",
+                  "8504220"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087169",
+                  "ch14uvag00087168"
+                ]
+              }
+            ]
+          },
+          {
+            "routeId": "91-20-A-j26-1",
+            "agencyId": "11",
+            "line": "S20",
+            "mode": "rail",
+            "pairs": [
+              {
+                "fromId": "ch:1:sloid:206:2:2",
+                "toId": "ch:1:sloid:261",
+                "operatingPointPair": [
+                  "8500206",
+                  "8500261"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087538",
+                  "ch14uvag00087568"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:261",
+                "toId": "ch:1:sloid:206:1:1",
+                "operatingPointPair": [
+                  "8500261",
+                  "8500206"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087568",
+                  "ch14uvag00087538"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:261",
+                "toId": "ch:1:sloid:262",
+                "operatingPointPair": [
+                  "8500261",
+                  "8500262"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087569"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:262",
+                "toId": "ch:1:sloid:261",
+                "operatingPointPair": [
+                  "8500262",
+                  "8500261"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087569"
+                ]
+              }
+            ]
+          },
+          {
+            "routeId": "91-31-j26-1",
+            "agencyId": "33",
+            "line": "S31",
+            "mode": "rail",
+            "pairs": [
+              {
+                "fromId": "ch:1:sloid:4300:4:7",
+                "toId": "ch:1:sloid:4414:2:3",
+                "operatingPointPair": [
+                  "8504300",
+                  "8504414"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087553",
+                  "ch14uvag00087389",
+                  "ch14uvag00087388",
+                  "ch14uvag00087387",
+                  "ch14uvag00087386",
+                  "ch14uvag00087385",
+                  "ch14uvag00087384"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:4300:5:9",
+                "toId": "ch:1:sloid:4414:2:3",
+                "operatingPointPair": [
+                  "8504300",
+                  "8504414"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087553",
+                  "ch14uvag00087389",
+                  "ch14uvag00087388",
+                  "ch14uvag00087387",
+                  "ch14uvag00087386",
+                  "ch14uvag00087385",
+                  "ch14uvag00087384"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:4300_gen:ch:1:sloid:4300:4:7_pf:7AB",
+                "toId": "ch:1:sloid:4414:2:3",
+                "operatingPointPair": [
+                  "8504300",
+                  "8504414"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087553",
+                  "ch14uvag00087389",
+                  "ch14uvag00087388",
+                  "ch14uvag00087387",
+                  "ch14uvag00087386",
+                  "ch14uvag00087385",
+                  "ch14uvag00087384"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:4411:1:1",
+                "toId": "ch:1:sloid:4412:3:3",
+                "operatingPointPair": [
+                  "8504411",
+                  "8504412"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087381"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:4412:2:2",
+                "toId": "ch:1:sloid:4411:2:2",
+                "operatingPointPair": [
+                  "8504412",
+                  "8504411"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087381"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:4412:3:3",
+                "toId": "ch:1:sloid:4414:1:1",
+                "operatingPointPair": [
+                  "8504412",
+                  "8504414"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087382",
+                  "ch14uvag00087383"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:4414:1:1",
+                "toId": "ch:1:sloid:4300:5:10",
+                "operatingPointPair": [
+                  "8504414",
+                  "8504300"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087384",
+                  "ch14uvag00087385",
+                  "ch14uvag00087386",
+                  "ch14uvag00087387",
+                  "ch14uvag00087388",
+                  "ch14uvag00087389",
+                  "ch14uvag00087553"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:4414:1:1",
+                "toId": "ch:1:sloid:4300:5:9",
+                "operatingPointPair": [
+                  "8504414",
+                  "8504300"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087384",
+                  "ch14uvag00087385",
+                  "ch14uvag00087386",
+                  "ch14uvag00087387",
+                  "ch14uvag00087388",
+                  "ch14uvag00087389",
+                  "ch14uvag00087553"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:4414:1:1",
+                "toId": "ch:1:sloid:4300_gen:ch:1:sloid:4300:5:10_pf:10AB",
+                "operatingPointPair": [
+                  "8504414",
+                  "8504300"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087384",
+                  "ch14uvag00087385",
+                  "ch14uvag00087386",
+                  "ch14uvag00087387",
+                  "ch14uvag00087388",
+                  "ch14uvag00087389",
+                  "ch14uvag00087553"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:4414:2:3",
+                "toId": "ch:1:sloid:4411:2:2",
+                "operatingPointPair": [
+                  "8504414",
+                  "8504411"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087383",
+                  "ch14uvag00087382",
+                  "ch14uvag00087381"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:4414:2:3",
+                "toId": "ch:1:sloid:4412:2:2",
+                "operatingPointPair": [
+                  "8504414",
+                  "8504412"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087383",
+                  "ch14uvag00087382"
+                ]
+              }
+            ]
+          },
+          {
+            "routeId": "91-42-C-j26-1",
+            "agencyId": "33",
+            "line": "S42",
+            "mode": "rail",
+            "pairs": [
+              {
+                "fromId": "ch:1:sloid:8005:1:1",
+                "toId": "ch:1:sloid:8081:0:916973",
+                "operatingPointPair": [
+                  "8508005",
+                  "8508081"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087648",
+                  "ch14uvag00087600",
+                  "ch14uvag00087601"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:8005_gen:ch:1:sloid:8005:1:1_pf:1B",
+                "toId": "ch:1:sloid:8081:0:766017",
+                "operatingPointPair": [
+                  "8508005",
+                  "8508081"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087648",
+                  "ch14uvag00087600",
+                  "ch14uvag00087601"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:8080:0:138213",
+                "toId": "ch:1:sloid:8081:0:766017",
+                "operatingPointPair": [
+                  "8508080",
+                  "8508081"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087602"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:8080:0:138213",
+                "toId": "ch:1:sloid:8265:0:685660",
+                "operatingPointPair": [
+                  "8508080",
+                  "8508265"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087603"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:8080:0:930505",
+                "toId": "ch:1:sloid:8265:0:685660",
+                "operatingPointPair": [
+                  "8508080",
+                  "8508265"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087603"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:8081:0:766017",
+                "toId": "ch:1:sloid:8005:1:1",
+                "operatingPointPair": [
+                  "8508081",
+                  "8508005"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087601",
+                  "ch14uvag00087600",
+                  "ch14uvag00087648"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:8081:0:766017",
+                "toId": "ch:1:sloid:8005:3:4",
+                "operatingPointPair": [
+                  "8508081",
+                  "8508005"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087601",
+                  "ch14uvag00087600",
+                  "ch14uvag00087648"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:8081:0:766017",
+                "toId": "ch:1:sloid:8080:0:138213",
+                "operatingPointPair": [
+                  "8508081",
+                  "8508080"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087602"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:8081:0:916973",
+                "toId": "ch:1:sloid:8080:0:930505",
+                "operatingPointPair": [
+                  "8508081",
+                  "8508080"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087602"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:8265:0:660436",
+                "toId": "ch:1:sloid:8080:0:138213",
+                "operatingPointPair": [
+                  "8508265",
+                  "8508080"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087603"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:8265:0:685660",
+                "toId": "ch:1:sloid:8080:0:138213",
+                "operatingPointPair": [
+                  "8508265",
+                  "8508080"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087603"
+                ]
+              }
+            ]
+          },
+          {
+            "routeId": "91-41-F-j26-1",
+            "agencyId": "33",
+            "line": "S41",
+            "mode": "rail",
+            "pairs": [
+              {
+                "fromId": "ch:1:sloid:8251:0:223686",
+                "toId": "ch:1:sloid:7100:1:1",
+                "operatingPointPair": [
+                  "8508251",
+                  "8507100"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087598",
+                  "ch14uvag00087599",
+                  "ch14uvag00087408"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:8251:0:223686",
+                "toId": "ch:1:sloid:7100:2:3",
+                "operatingPointPair": [
+                  "8508251",
+                  "8507100"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087598",
+                  "ch14uvag00087599",
+                  "ch14uvag00087408"
+                ]
+              }
+            ]
+          },
+          {
+            "routeId": "91-15-B-j26-1",
+            "agencyId": "11",
+            "line": "IR15",
+            "mode": "rail",
+            "pairs": [
+              {
+                "fromId": "ch:1:sloid:1008:2:2",
+                "toId": "ch:1:sloid:1026:1:1",
+                "operatingPointPair": [
+                  "8501008",
+                  "8501026"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087073",
+                  "ch14uvag00087074",
+                  "ch14uvag00087075"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:1008:2:3",
+                "toId": "ch:1:sloid:1026:1:1",
+                "operatingPointPair": [
+                  "8501008",
+                  "8501026"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087073",
+                  "ch14uvag00087074",
+                  "ch14uvag00087075"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:1008:2:3",
+                "toId": "ch:1:sloid:1026:2:4",
+                "operatingPointPair": [
+                  "8501008",
+                  "8501026"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087073",
+                  "ch14uvag00087074",
+                  "ch14uvag00087075"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:1008:2:3",
+                "toId": "ch:1:sloid:1026_gen:ch:1:sloid:1026:1:1_pf:1E-H",
+                "operatingPointPair": [
+                  "8501008",
+                  "8501026"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087073",
+                  "ch14uvag00087074",
+                  "ch14uvag00087075"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:1008:3:4",
+                "toId": "ch:1:sloid:1030:2:2",
+                "operatingPointPair": [
+                  "8501008",
+                  "8501030"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087101",
+                  "ch14uvag00087100",
+                  "ch14uvag00087071",
+                  "ch14uvag00087070",
+                  "ch14uvag00087069",
+                  "ch14uvag00087068",
+                  "ch14uvag00240313",
+                  "ch14uvag00087066",
+                  "ch14uvag00087065",
+                  "ch14uvag00087064",
+                  "ch14uvag00087063",
+                  "ch14uvag00087062",
+                  "ch14uvag00087061",
+                  "ch14uvag00087060",
+                  "ch14uvag00087059",
+                  "ch14uvag00087058",
+                  "ch14uvag00087057",
+                  "ch14uvag00087056",
+                  "ch14uvag00087055",
+                  "ch14uvag00087054"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:1008:3:4",
+                "toId": "ch:1:sloid:1030:2:3",
+                "operatingPointPair": [
+                  "8501008",
+                  "8501030"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087101",
+                  "ch14uvag00087100",
+                  "ch14uvag00087071",
+                  "ch14uvag00087070",
+                  "ch14uvag00087069",
+                  "ch14uvag00087068",
+                  "ch14uvag00240313",
+                  "ch14uvag00087066",
+                  "ch14uvag00087065",
+                  "ch14uvag00087064",
+                  "ch14uvag00087063",
+                  "ch14uvag00087062",
+                  "ch14uvag00087061",
+                  "ch14uvag00087060",
+                  "ch14uvag00087059",
+                  "ch14uvag00087058",
+                  "ch14uvag00087057",
+                  "ch14uvag00087056",
+                  "ch14uvag00087055",
+                  "ch14uvag00087054"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:1026:1:1",
+                "toId": "ch:1:sloid:1008:3:4",
+                "operatingPointPair": [
+                  "8501026",
+                  "8501008"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087075",
+                  "ch14uvag00087074",
+                  "ch14uvag00087073"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:1026:1:2",
+                "toId": "ch:1:sloid:1008:3:4",
+                "operatingPointPair": [
+                  "8501026",
+                  "8501008"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087075",
+                  "ch14uvag00087074",
+                  "ch14uvag00087073"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:1026_gen:ch:1:sloid:1026:1:1_pf:1A-D",
+                "toId": "ch:1:sloid:1008:3:4",
+                "operatingPointPair": [
+                  "8501026",
+                  "8501008"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087075",
+                  "ch14uvag00087074",
+                  "ch14uvag00087073"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:1030:1:1",
+                "toId": "ch:1:sloid:1008:2:2",
+                "operatingPointPair": [
+                  "8501030",
+                  "8501008"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087054",
+                  "ch14uvag00087055",
+                  "ch14uvag00087056",
+                  "ch14uvag00087057",
+                  "ch14uvag00087058",
+                  "ch14uvag00087059",
+                  "ch14uvag00087060",
+                  "ch14uvag00087061",
+                  "ch14uvag00087062",
+                  "ch14uvag00087063",
+                  "ch14uvag00087064",
+                  "ch14uvag00087065",
+                  "ch14uvag00087066",
+                  "ch14uvag00240313",
+                  "ch14uvag00087068",
+                  "ch14uvag00087069",
+                  "ch14uvag00087070",
+                  "ch14uvag00087071",
+                  "ch14uvag00087100",
+                  "ch14uvag00087101"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:1030:1:1",
+                "toId": "ch:1:sloid:1008:2:3",
+                "operatingPointPair": [
+                  "8501030",
+                  "8501008"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087054",
+                  "ch14uvag00087055",
+                  "ch14uvag00087056",
+                  "ch14uvag00087057",
+                  "ch14uvag00087058",
+                  "ch14uvag00087059",
+                  "ch14uvag00087060",
+                  "ch14uvag00087061",
+                  "ch14uvag00087062",
+                  "ch14uvag00087063",
+                  "ch14uvag00087064",
+                  "ch14uvag00087065",
+                  "ch14uvag00087066",
+                  "ch14uvag00240313",
+                  "ch14uvag00087068",
+                  "ch14uvag00087069",
+                  "ch14uvag00087070",
+                  "ch14uvag00087071",
+                  "ch14uvag00087100",
+                  "ch14uvag00087101"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:1030:2:2",
+                "toId": "ch:1:sloid:1037:2:3",
+                "operatingPointPair": [
+                  "8501030",
+                  "8501037"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087053",
+                  "ch14uvag00087052",
+                  "ch14uvag00087051",
+                  "ch14uvag00087050",
+                  "ch14uvag00087049",
+                  "ch14uvag00087048",
+                  "ch14uvag00087047",
+                  "ch14uvag00087046",
+                  "ch14uvag00087045",
+                  "ch14uvag00087044"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:1030:2:3",
+                "toId": "ch:1:sloid:1037:2:3",
+                "operatingPointPair": [
+                  "8501030",
+                  "8501037"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087053",
+                  "ch14uvag00087052",
+                  "ch14uvag00087051",
+                  "ch14uvag00087050",
+                  "ch14uvag00087049",
+                  "ch14uvag00087048",
+                  "ch14uvag00087047",
+                  "ch14uvag00087046",
+                  "ch14uvag00087045",
+                  "ch14uvag00087044"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:1031:2:3",
+                "toId": "ch:1:sloid:1030:1:1",
+                "operatingPointPair": [
+                  "8501031",
+                  "8501030"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087052",
+                  "ch14uvag00087053"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:1037:1:1",
+                "toId": "ch:1:sloid:1030:1:1",
+                "operatingPointPair": [
+                  "8501037",
+                  "8501030"
+                ],
+                "sourceSegments": []
+              },
+              {
+                "fromId": "ch:1:sloid:1037:2:2",
+                "toId": "ch:1:sloid:1031:2:3",
+                "operatingPointPair": [
+                  "8501037",
+                  "8501031"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087044",
+                  "ch14uvag00087045",
+                  "ch14uvag00087046",
+                  "ch14uvag00087047",
+                  "ch14uvag00087048",
+                  "ch14uvag00087049",
+                  "ch14uvag00087050",
+                  "ch14uvag00087051"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:1037:2:3",
+                "toId": "ch:1:sloid:1120:0:668579",
+                "operatingPointPair": [
+                  "8501037",
+                  "8501120"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087043",
+                  "ch14uvag00087042",
+                  "ch14uvag00087041",
+                  "ch14uvag00087040",
+                  "ch14uvag00087110",
+                  "ch14uvag00087105",
+                  "ch14uvag00087104",
+                  "ch14uvag00087103",
+                  "ch14uvag00087102",
+                  "ch14uvag00087034",
+                  "ch14uvag00087033",
+                  "ch14uvag00087032",
+                  "ch14uvag00087031",
+                  "ch14uvag00087030",
+                  "ch14uvag00087029"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:1120:0:42631",
+                "toId": "ch:1:sloid:1037:1:1",
+                "operatingPointPair": [
+                  "8501120",
+                  "8501037"
+                ],
+                "sourceSegments": []
+              },
+              {
+                "fromId": "ch:1:sloid:1120:0:42631",
+                "toId": "ch:1:sloid:1037:2:2",
+                "operatingPointPair": [
+                  "8501120",
+                  "8501037"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087029",
+                  "ch14uvag00087030",
+                  "ch14uvag00087031",
+                  "ch14uvag00087032",
+                  "ch14uvag00087033",
+                  "ch14uvag00087034",
+                  "ch14uvag00087102",
+                  "ch14uvag00087103",
+                  "ch14uvag00087104",
+                  "ch14uvag00087105",
+                  "ch14uvag00087110",
+                  "ch14uvag00087040",
+                  "ch14uvag00087041",
+                  "ch14uvag00087042",
+                  "ch14uvag00087043"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:1120:0:668579",
+                "toId": "ch:1:sloid:4014:2:2",
+                "operatingPointPair": [
+                  "8501120",
+                  "8504014"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00086958",
+                  "ch14uvag00087291",
+                  "ch14uvag00087292",
+                  "ch14uvag00087293",
+                  "ch14uvag00087294",
+                  "ch14uvag00087295",
+                  "ch14uvag00087296",
+                  "ch14uvag00087297"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:4014:1:1",
+                "toId": "ch:1:sloid:1120:0:276884",
+                "operatingPointPair": [
+                  "8504014",
+                  "8501120"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087297",
+                  "ch14uvag00087296",
+                  "ch14uvag00087295",
+                  "ch14uvag00087294",
+                  "ch14uvag00087293",
+                  "ch14uvag00087292",
+                  "ch14uvag00087291",
+                  "ch14uvag00086958"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:4014:1:1",
+                "toId": "ch:1:sloid:1120:0:37997",
+                "operatingPointPair": [
+                  "8504014",
+                  "8501120"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087297",
+                  "ch14uvag00087296",
+                  "ch14uvag00087295",
+                  "ch14uvag00087294",
+                  "ch14uvag00087293",
+                  "ch14uvag00087292",
+                  "ch14uvag00087291",
+                  "ch14uvag00086958"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:4014:1:1",
+                "toId": "ch:1:sloid:1120:0:42631",
+                "operatingPointPair": [
+                  "8504014",
+                  "8501120"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087297",
+                  "ch14uvag00087296",
+                  "ch14uvag00087295",
+                  "ch14uvag00087294",
+                  "ch14uvag00087293",
+                  "ch14uvag00087292",
+                  "ch14uvag00087291",
+                  "ch14uvag00086958"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:4014:1:1",
+                "toId": "ch:1:sloid:1120:0:668579",
+                "operatingPointPair": [
+                  "8504014",
+                  "8501120"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087297",
+                  "ch14uvag00087296",
+                  "ch14uvag00087295",
+                  "ch14uvag00087294",
+                  "ch14uvag00087293",
+                  "ch14uvag00087292",
+                  "ch14uvag00087291",
+                  "ch14uvag00086958"
+                ]
+              }
+            ]
+          },
+          {
+            "routeId": "91-5-A-j26-1",
+            "agencyId": "11",
+            "line": "IC5",
+            "mode": "rail",
+            "pairs": [
+              {
+                "fromId": "ch:1:sloid:1118:1:1",
+                "toId": "ch:1:sloid:4200:1:1",
+                "operatingPointPair": [
+                  "8501118",
+                  "8504200"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087034",
+                  "ch14uvag00240367",
+                  "ch14uvag00087134",
+                  "ch14uvag00087135",
+                  "ch14uvag00087136",
+                  "ch14uvag00087137",
+                  "ch14uvag00087138",
+                  "ch14uvag00087148",
+                  "ch14uvag00087149",
+                  "ch14uvag00087150",
+                  "ch14uvag00087151",
+                  "ch14uvag00087152",
+                  "ch14uvag00087153",
+                  "ch14uvag00087154",
+                  "ch14uvag00087155",
+                  "ch14uvag00087156"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:1118:2:2",
+                "toId": "ch:1:sloid:4200:1:1",
+                "operatingPointPair": [
+                  "8501118",
+                  "8504200"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087034",
+                  "ch14uvag00240367",
+                  "ch14uvag00087134",
+                  "ch14uvag00087135",
+                  "ch14uvag00087136",
+                  "ch14uvag00087137",
+                  "ch14uvag00087138",
+                  "ch14uvag00087148",
+                  "ch14uvag00087149",
+                  "ch14uvag00087150",
+                  "ch14uvag00087151",
+                  "ch14uvag00087152",
+                  "ch14uvag00087153",
+                  "ch14uvag00087154",
+                  "ch14uvag00087155",
+                  "ch14uvag00087156"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:1118:3:4",
+                "toId": "ch:1:sloid:1120:0:42631",
+                "operatingPointPair": [
+                  "8501118",
+                  "8501120"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087033",
+                  "ch14uvag00087032",
+                  "ch14uvag00087031",
+                  "ch14uvag00087030",
+                  "ch14uvag00087029"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:1118:3:4",
+                "toId": "ch:1:sloid:1120:0:668579",
+                "operatingPointPair": [
+                  "8501118",
+                  "8501120"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087033",
+                  "ch14uvag00087032",
+                  "ch14uvag00087031",
+                  "ch14uvag00087030",
+                  "ch14uvag00087029"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:1118:3:4",
+                "toId": "ch:1:sloid:1120:0:860143",
+                "operatingPointPair": [
+                  "8501118",
+                  "8501120"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087033",
+                  "ch14uvag00087032",
+                  "ch14uvag00087031",
+                  "ch14uvag00087030",
+                  "ch14uvag00087029"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:1120:0:42631",
+                "toId": "ch:1:sloid:1118:1:1",
+                "operatingPointPair": [
+                  "8501120",
+                  "8501118"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087029",
+                  "ch14uvag00087030",
+                  "ch14uvag00087031",
+                  "ch14uvag00087032",
+                  "ch14uvag00087033"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:1120:0:42631",
+                "toId": "ch:1:sloid:1118:2:2",
+                "operatingPointPair": [
+                  "8501120",
+                  "8501118"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087029",
+                  "ch14uvag00087030",
+                  "ch14uvag00087031",
+                  "ch14uvag00087032",
+                  "ch14uvag00087033"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:1120:0:840061",
+                "toId": "ch:1:sloid:1118:1:1",
+                "operatingPointPair": [
+                  "8501120",
+                  "8501118"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087029",
+                  "ch14uvag00087030",
+                  "ch14uvag00087031",
+                  "ch14uvag00087032",
+                  "ch14uvag00087033"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:1120:0:860143",
+                "toId": "ch:1:sloid:1118:2:2",
+                "operatingPointPair": [
+                  "8501120",
+                  "8501118"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087029",
+                  "ch14uvag00087030",
+                  "ch14uvag00087031",
+                  "ch14uvag00087032",
+                  "ch14uvag00087033"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:2113:2:3",
+                "toId": "ch:1:sloid:3000:501:33",
+                "operatingPointPair": [
+                  "8502113",
+                  "8503000"
+                ],
+                "sourceSegments": []
+              },
+              {
+                "fromId": "ch:1:sloid:2113:2:3",
+                "toId": "ch:1:sloid:3000:6:11",
+                "operatingPointPair": [
+                  "8502113",
+                  "8503000"
+                ],
+                "sourceSegments": []
+              },
+              {
+                "fromId": "ch:1:sloid:2113:2:3",
+                "toId": "ch:1:sloid:3000:7:12",
+                "operatingPointPair": [
+                  "8502113",
+                  "8503000"
+                ],
+                "sourceSegments": []
+              },
+              {
+                "fromId": "ch:1:sloid:2113:2:3",
+                "toId": "ch:1:sloid:3000:9:17",
+                "operatingPointPair": [
+                  "8502113",
+                  "8503000"
+                ],
+                "sourceSegments": []
+              },
+              {
+                "fromId": "ch:1:sloid:2119:3:2",
+                "toId": "ch:1:sloid:3000:3:5",
+                "operatingPointPair": [
+                  "8502119",
+                  "8503000"
+                ],
+                "sourceSegments": []
+              },
+              {
+                "fromId": "ch:1:sloid:2119:3:2",
+                "toId": "ch:1:sloid:3000:7:12",
+                "operatingPointPair": [
+                  "8502119",
+                  "8503000"
+                ],
+                "sourceSegments": []
+              },
+              {
+                "fromId": "ch:1:sloid:3000:500:32",
+                "toId": "ch:1:sloid:2113:3:4",
+                "operatingPointPair": [
+                  "8503000",
+                  "8502113"
+                ],
+                "sourceSegments": []
+              },
+              {
+                "fromId": "ch:1:sloid:3000:501:33",
+                "toId": "ch:1:sloid:3016:1:1",
+                "operatingPointPair": [
+                  "8503000",
+                  "8503016"
+                ],
+                "sourceSegments": []
+              },
+              {
+                "fromId": "ch:1:sloid:3000:8:14",
+                "toId": "ch:1:sloid:2113:3:4",
+                "operatingPointPair": [
+                  "8503000",
+                  "8502113"
+                ],
+                "sourceSegments": []
+              },
+              {
+                "fromId": "ch:1:sloid:3000:9:17",
+                "toId": "ch:1:sloid:2113:3:4",
+                "operatingPointPair": [
+                  "8503000",
+                  "8502113"
+                ],
+                "sourceSegments": []
+              },
+              {
+                "fromId": "ch:1:sloid:3016:1:1",
+                "toId": "ch:1:sloid:6000:3:5",
+                "operatingPointPair": [
+                  "8503016",
+                  "8506000"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00088356",
+                  "ch14uvag00088380",
+                  "ch14uvag00088381",
+                  "ch14uvag00088367",
+                  "ch14uvag00088368",
+                  "ch14uvag00088369",
+                  "ch14uvag00088370",
+                  "ch14uvag00088371",
+                  "ch14uvag00088372"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:3016:2:3",
+                "toId": "ch:1:sloid:3000:500:32",
+                "operatingPointPair": [
+                  "8503016",
+                  "8503000"
+                ],
+                "sourceSegments": []
+              },
+              {
+                "fromId": "ch:1:sloid:4200:1:1",
+                "toId": "ch:1:sloid:4221:3:5",
+                "operatingPointPair": [
+                  "8504200",
+                  "8504221"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087157",
+                  "ch14uvag00087158",
+                  "ch14uvag00087159",
+                  "ch14uvag00087160",
+                  "ch14uvag00087161",
+                  "ch14uvag00087162",
+                  "ch14uvag00087163",
+                  "ch14uvag00087164",
+                  "ch14uvag00087165",
+                  "ch14uvag00087166",
+                  "ch14uvag00087167",
+                  "ch14uvag00087168",
+                  "ch14uvag00087169"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:4200:2:2",
+                "toId": "ch:1:sloid:1118:3:4",
+                "operatingPointPair": [
+                  "8504200",
+                  "8501118"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087156",
+                  "ch14uvag00087155",
+                  "ch14uvag00087154",
+                  "ch14uvag00087153",
+                  "ch14uvag00087152",
+                  "ch14uvag00087151",
+                  "ch14uvag00087150",
+                  "ch14uvag00087149",
+                  "ch14uvag00087148",
+                  "ch14uvag00087138",
+                  "ch14uvag00087137",
+                  "ch14uvag00087136",
+                  "ch14uvag00087135",
+                  "ch14uvag00087134",
+                  "ch14uvag00240367",
+                  "ch14uvag00087034"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:4221:2:3",
+                "toId": "ch:1:sloid:4200:2:2",
+                "operatingPointPair": [
+                  "8504221",
+                  "8504200"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087169",
+                  "ch14uvag00087168",
+                  "ch14uvag00087167",
+                  "ch14uvag00087166",
+                  "ch14uvag00087165",
+                  "ch14uvag00087164",
+                  "ch14uvag00087163",
+                  "ch14uvag00087162",
+                  "ch14uvag00087161",
+                  "ch14uvag00087160",
+                  "ch14uvag00087159",
+                  "ch14uvag00087158",
+                  "ch14uvag00087157"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:4221:3:5",
+                "toId": "ch:1:sloid:4300:2:2",
+                "operatingPointPair": [
+                  "8504221",
+                  "8504300"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087170",
+                  "ch14uvag00087171",
+                  "ch14uvag00087172",
+                  "ch14uvag00087173",
+                  "ch14uvag00087174",
+                  "ch14uvag00087175",
+                  "ch14uvag00087176",
+                  "ch14uvag00087177",
+                  "ch14uvag00087178",
+                  "ch14uvag00087179",
+                  "ch14uvag00087180",
+                  "ch14uvag00087181"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:4221:3:5",
+                "toId": "ch:1:sloid:4300:2:3",
+                "operatingPointPair": [
+                  "8504221",
+                  "8504300"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087170",
+                  "ch14uvag00087171",
+                  "ch14uvag00087172",
+                  "ch14uvag00087173",
+                  "ch14uvag00087174",
+                  "ch14uvag00087175",
+                  "ch14uvag00087176",
+                  "ch14uvag00087177",
+                  "ch14uvag00087178",
+                  "ch14uvag00087179",
+                  "ch14uvag00087180",
+                  "ch14uvag00087181"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:4221:3:5",
+                "toId": "ch:1:sloid:4300:3:4",
+                "operatingPointPair": [
+                  "8504221",
+                  "8504300"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087170",
+                  "ch14uvag00087171",
+                  "ch14uvag00087172",
+                  "ch14uvag00087173",
+                  "ch14uvag00087174",
+                  "ch14uvag00087175",
+                  "ch14uvag00087176",
+                  "ch14uvag00087177",
+                  "ch14uvag00087178",
+                  "ch14uvag00087179",
+                  "ch14uvag00087180",
+                  "ch14uvag00087181"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:4221:3:5",
+                "toId": "ch:1:sloid:4300:3:5",
+                "operatingPointPair": [
+                  "8504221",
+                  "8504300"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087170",
+                  "ch14uvag00087171",
+                  "ch14uvag00087172",
+                  "ch14uvag00087173",
+                  "ch14uvag00087174",
+                  "ch14uvag00087175",
+                  "ch14uvag00087176",
+                  "ch14uvag00087177",
+                  "ch14uvag00087178",
+                  "ch14uvag00087179",
+                  "ch14uvag00087180",
+                  "ch14uvag00087181"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:4300:2:3",
+                "toId": "ch:1:sloid:4221:2:3",
+                "operatingPointPair": [
+                  "8504300",
+                  "8504221"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087181",
+                  "ch14uvag00087180",
+                  "ch14uvag00087179",
+                  "ch14uvag00087178",
+                  "ch14uvag00087177",
+                  "ch14uvag00087176",
+                  "ch14uvag00087175",
+                  "ch14uvag00087174",
+                  "ch14uvag00087173",
+                  "ch14uvag00087172",
+                  "ch14uvag00087171",
+                  "ch14uvag00087170"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:4300:3:4",
+                "toId": "ch:1:sloid:4221:2:3",
+                "operatingPointPair": [
+                  "8504300",
+                  "8504221"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087181",
+                  "ch14uvag00087180",
+                  "ch14uvag00087179",
+                  "ch14uvag00087178",
+                  "ch14uvag00087177",
+                  "ch14uvag00087176",
+                  "ch14uvag00087175",
+                  "ch14uvag00087174",
+                  "ch14uvag00087173",
+                  "ch14uvag00087172",
+                  "ch14uvag00087171",
+                  "ch14uvag00087170"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:4300:3:5",
+                "toId": "ch:1:sloid:4221:2:3",
+                "operatingPointPair": [
+                  "8504300",
+                  "8504221"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00087181",
+                  "ch14uvag00087180",
+                  "ch14uvag00087179",
+                  "ch14uvag00087178",
+                  "ch14uvag00087177",
+                  "ch14uvag00087176",
+                  "ch14uvag00087175",
+                  "ch14uvag00087174",
+                  "ch14uvag00087173",
+                  "ch14uvag00087172",
+                  "ch14uvag00087171",
+                  "ch14uvag00087170"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:6000:2:3",
+                "toId": "ch:1:sloid:3016:2:3",
+                "operatingPointPair": [
+                  "8506000",
+                  "8503016"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00088372",
+                  "ch14uvag00088371",
+                  "ch14uvag00088370",
+                  "ch14uvag00088369",
+                  "ch14uvag00088368",
+                  "ch14uvag00088367",
+                  "ch14uvag00088381",
+                  "ch14uvag00088380",
+                  "ch14uvag00088356"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:6000:3:5",
+                "toId": "ch:1:sloid:6302:2:2",
+                "operatingPointPair": [
+                  "8506000",
+                  "8506302"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00088373",
+                  "ch14uvag00088567",
+                  "ch14uvag00088566",
+                  "ch14uvag00088565",
+                  "ch14uvag00088564",
+                  "ch14uvag00088563",
+                  "ch14uvag00088562",
+                  "ch14uvag00088561",
+                  "ch14uvag00088560",
+                  "ch14uvag00088559",
+                  "ch14uvag00088558",
+                  "ch14uvag00088557",
+                  "ch14uvag00088556",
+                  "ch14uvag00088555",
+                  "ch14uvag00088554",
+                  "ch14uvag00088553",
+                  "ch14uvag00088552",
+                  "ch14uvag00088551",
+                  "ch14uvag00088550",
+                  "ch14uvag00088549",
+                  "ch14uvag00088548",
+                  "ch14uvag00088547",
+                  "ch14uvag00088546",
+                  "ch14uvag00088545"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:6302:2:2",
+                "toId": "ch:1:sloid:6000:2:3",
+                "operatingPointPair": [
+                  "8506302",
+                  "8506000"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00088545",
+                  "ch14uvag00088546",
+                  "ch14uvag00088547",
+                  "ch14uvag00088548",
+                  "ch14uvag00088549",
+                  "ch14uvag00088550",
+                  "ch14uvag00088551",
+                  "ch14uvag00088552",
+                  "ch14uvag00088553",
+                  "ch14uvag00088554",
+                  "ch14uvag00088555",
+                  "ch14uvag00088556",
+                  "ch14uvag00088557",
+                  "ch14uvag00088558",
+                  "ch14uvag00088559",
+                  "ch14uvag00088560",
+                  "ch14uvag00088561",
+                  "ch14uvag00088562",
+                  "ch14uvag00088563",
+                  "ch14uvag00088564",
+                  "ch14uvag00088565",
+                  "ch14uvag00088566",
+                  "ch14uvag00088567",
+                  "ch14uvag00088373"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:6302:2:2",
+                "toId": "ch:1:sloid:6311:3:4",
+                "operatingPointPair": [
+                  "8506302",
+                  "8506311"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00088641",
+                  "ch14uvag00088640",
+                  "ch14uvag00240376",
+                  "ch14uvag00088637",
+                  "ch14uvag00088636",
+                  "ch14uvag00088635",
+                  "ch14uvag00088634",
+                  "ch14uvag00088633"
+                ]
+              },
+              {
+                "fromId": "ch:1:sloid:6311:3:4",
+                "toId": "ch:1:sloid:6302:2:2",
+                "operatingPointPair": [
+                  "8506311",
+                  "8506302"
+                ],
+                "sourceSegments": [
+                  "ch14uvag00088633",
+                  "ch14uvag00088634",
+                  "ch14uvag00088635",
+                  "ch14uvag00088636",
+                  "ch14uvag00088637",
+                  "ch14uvag00240376",
+                  "ch14uvag00088640",
+                  "ch14uvag00088641"
+                ]
+              }
+            ]
+          }
+        ],
+        "admission": "Only missing cantonal pairs on nine exact reviewed rail identities. Each original directed platform pair has an explicit operating-point and source-segment binding; empty segment bindings retain reviewed exclusions. All complete dated pattern contexts must agree. Preserve every original call and every previous path.",
+        "model": "Exact operating-point identities, standard gauge and FOT-declared SBB/BLS topology. Original rail limits unchanged; selected topology attachments below 51 m. Source catalogue 2021-07-06, asset updated 2025-01-18, checksum rechecked 2026-09-08. Inferred geometry; current alignment and running-track validity unconfirmed."
+      },
+      "source": {
+        "schemaVersion": 1,
+        "publisher": "Federal Office of Transport - FOT",
+        "attribution": "© Federal Office of Transport (FOT)",
+        "license": "proprietary",
+        "termsUrl": "https://opendata.swiss/terms-of-use/#terms_by",
+        "catalogueDate": "2021-07-06T00:00:00Z",
+        "assetUpdated": "2025-01-18T04:23:13.735821Z",
+        "catalogueCheckedOn": "2026-09-08",
+        "sourceUrl": "https://data.geo.admin.ch/ch.bav.schienennetz/schienennetz/schienennetz_2056_de.xtf",
+        "sha256": "2895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+        "publishedChecksum": "12202895811c6c338cdc3d32e946d2861ce58ca72ddde7d700fe9b73f2c393f7b828",
+        "validOn": null,
+        "validityNote": "Catalogue dates and verified bytes do not establish September 2026 alignment validity. Inferred infrastructure paths, not certified service running tracks.",
+        "nodes": 3210,
+        "segments": 3424,
+        "transformation": "Existing XTF parser with zero-metre Douglas–Peucker tolerance; collinear vertices may be removed. Approximate LV95-to-WGS84 transformation rounded to six decimals. Bern preserves original GTFS coordinates and rounds only final attachment endpoints to seven decimals.",
+        "files": {
+          "network.xtf.gz": "f83afc9c922ab368070faa151fcf8be02fbb66bc1f4ae9b1011c68c86be21af3",
+          "catalogue.json": "4c54793b444d6d453e4f3e9c5ddd424f72d16b76325366fea6a10f60e749cf60",
+          "collection.json": "a4c61b24a114dcc3c710194deb742c7cd80400584bf9261da534019ed1f22c02",
+          "catalogue-check-20260908.json": "4c54793b444d6d453e4f3e9c5ddd424f72d16b76325366fea6a10f60e749cf60"
+        },
+        "retainedForBernAt": "2026-09-08T19:43:28.383642+00:00",
+        "catalogueRecheckedOn": "2026-09-08",
+        "catalogueCheckUrl": "https://data.geo.admin.ch/api/stac/v1/collections/ch.bav.schienennetz/items/schienennetz"
+      },
+      "sourceSegments": [
+        {
+          "id": "ch14uvag00087601",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2007-12-11",
+          "validUntil": null,
+          "infrastructureOperator": "BLSN",
+          "attachmentMetres": 13.473553118409907,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00088641",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1993-03-24",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 34.08829240671933,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087031",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2011-11-21",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 9.2176289639996,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087065",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1993-06-23",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 7.921655307780712,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087648",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1991-12-12",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 13.061696429824888,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087069",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2019-10-11",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 1.9246169675128246,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087152",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1994-04-06",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 14.074786843004247,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087969",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2013-11-25",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 25.34232214358486,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087384",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1994-07-15",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 17.980485715090875,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00088634",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2010-12-16",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 4.566600116291531,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00088368",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2009-06-11",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 14.702813370708203,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087045",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1993-06-23",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 7.260305539392373,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087155",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2011-04-04",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 14.326298054204328,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087075",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1994-03-09",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 11.409289585875454,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00088372",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1993-12-30",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 13.086725174594097,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00240376",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2019-07-09",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 11.797460369324229,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087385",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1994-07-15",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 14.89340606927423,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087134",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1994-07-07",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 21.52179018044226,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087052",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1993-06-23",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 13.648689837983047,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087386",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1994-07-15",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 14.89340606927423,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087040",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2011-01-03",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 1.8703212552164605,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087168",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1996-10-03",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 7.638611651111108,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087064",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1993-06-23",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 10.008030530601943,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00088549",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1996-02-14",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 27.06848174564012,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087174",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1994-03-17",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 13.818203274777476,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087101",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1994-03-17",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 50.384114652505176,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087167",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1996-10-03",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 10.843085343436284,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087048",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1993-06-23",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 11.399144268317805,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087103",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1993-06-23",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 0.7727839622009578,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087599",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2007-12-12",
+          "validUntil": null,
+          "infrastructureOperator": "BLSN",
+          "attachmentMetres": 5.059943023650557,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087068",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1993-09-24",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 6.9281356768739535,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00088356",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1993-01-04",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 0,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087151",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1994-04-06",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 7.423367464586443,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087049",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1993-06-23",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 11.399144268317805,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00088635",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2010-12-16",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 14.632530389865202,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00240313",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1993-09-24",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 6.9281356768739535,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00088371",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1998-04-30",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 2.3352249084440935,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087032",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2011-11-21",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 9.2176289639996,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087965",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1994-03-31",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 20.85927274686023,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087538",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2013-05-16",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 7.947141560601754,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087047",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1993-06-23",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 9.840844314445206,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00086958",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1995-09-21",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 0,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087162",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2001-07-18",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 12.961402843310594,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087389",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1994-07-15",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 23.82608380791984,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087164",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1995-06-08",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 11.544635615459834,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087074",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2009-03-09",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 6.353059464162323,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087100",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1994-03-17",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 3.0060253402848462,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00088552",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1993-08-27",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 20.64313844703264,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087171",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1994-03-17",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 9.378924061684545,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087059",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2019-04-01",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 7.118233137556403,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087104",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2011-01-04",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 0.7727839622009578,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00088565",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2006-08-30",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 31.806534425453993,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087166",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1994-03-17",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 17.223135036451364,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087138",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2005-02-09",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 0.22930085433204836,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087159",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2001-07-20",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 15.964995819628118,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00088555",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1993-10-25",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 11.103628902803974,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087102",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1993-06-23",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 0,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087296",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1995-10-30",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 13.195163826912854,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087046",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1993-06-23",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 7.260305539392373,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087603",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2007-12-11",
+          "validUntil": null,
+          "infrastructureOperator": "BLSN",
+          "attachmentMetres": 10.468286804788207,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087178",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1994-03-17",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 13.010598430284722,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087060",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1993-06-23",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 7.118233137556403,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087175",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1994-03-17",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 10.073286286189427,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087966",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1994-03-31",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 20.85927274686023,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00088551",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1993-08-27",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 20.64313844703264,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00088547",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1993-08-27",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 9.653698647361606,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087180",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1994-07-07",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 0,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087062",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2019-10-11",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 6.370544761013043,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00088562",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2013-03-15",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 8.057620248366455,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087061",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2019-10-11",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 1.018553595848163,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00088554",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1993-10-25",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 21.11548653087499,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00088373",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1993-12-30",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 13.086725174594097,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087043",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1993-06-23",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 14.026729438682521,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00088563",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1993-10-26",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 12.868893881907832,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00088560",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1993-10-26",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 14.343322795730794,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087058",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2019-04-01",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 9.983774213950218,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087029",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1994-10-20",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 4.027089517243968,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00088191",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1993-07-08",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 24.593862745579546,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087294",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1994-11-01",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 9.647921623981619,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00088556",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1993-10-26",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 11.103628902803974,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087569",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2007-12-11",
+          "validUntil": null,
+          "infrastructureOperator": "BLSN",
+          "attachmentMetres": 8.576973956109033,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087968",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2013-11-25",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 5.347127580756107,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087157",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1995-06-08",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 13.686302153713221,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00240367",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1993-06-25",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 1.389611667782033,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087215",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2004-09-06",
+          "validUntil": null,
+          "infrastructureOperator": "BLSN",
+          "attachmentMetres": 14.968293962550899,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087602",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2007-12-11",
+          "validUntil": null,
+          "infrastructureOperator": "BLSN",
+          "attachmentMetres": 13.473553118409907,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00088637",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2008-06-25",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 11.797460369324229,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087105",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2011-01-04",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 2.705124591356166,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087179",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1994-07-07",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 13.010598430284722,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087030",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2005-04-21",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 4.027089517243968,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087041",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2011-01-03",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 6.1216745357853934,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087568",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2007-12-11",
+          "validUntil": null,
+          "infrastructureOperator": "BLSN",
+          "attachmentMetres": 8.576973956109033,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087170",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1994-03-17",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 24.072265843149427,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087056",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1993-06-23",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 7.34296291329548,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00088367",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2009-06-11",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 6.815405026619811,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087600",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2007-12-11",
+          "validUntil": null,
+          "infrastructureOperator": "BLSN",
+          "attachmentMetres": 15.357501131348604,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087071",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2005-02-04",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 29.97273844006061,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00088561",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2013-03-15",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 14.19479760570722,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087050",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1993-06-23",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 7.392087333965166,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087161",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2001-07-19",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 2.1125210206790794,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087967",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1994-03-31",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 6.0314954127317995,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087173",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1994-03-17",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 13.818203274777476,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087154",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1994-04-06",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 14.326298054204328,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087136",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1994-07-07",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 12.029554916026262,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087964",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1992-04-22",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 36.10971342143066,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087148",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2005-02-08",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 10.4529140456733,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00088557",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1993-10-26",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 10.366156136978375,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087160",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2001-07-20",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 2.1125210206790794,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087153",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1994-04-06",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 14.074786843004247,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087149",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1994-04-06",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 10.4529140456733,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087292",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1994-11-01",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 9.18210659155359,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087066",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1993-06-23",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 7.921655307780712,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087073",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2009-03-09",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 14.59637569213945,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087381",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1994-07-15",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 13.654119172388194,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00088636",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2008-06-25",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 14.632530389865202,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087054",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1994-05-13",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 5.903551181466908,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087044",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1993-06-23",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 12.907302568608063,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087169",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1996-10-03",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 24.072265843149427,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087070",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2019-10-11",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 0,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087165",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1995-06-08",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 17.223135036451364,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00088559",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1993-10-26",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 14.343322795730794,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087057",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1993-06-23",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 9.983774213950218,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087177",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1995-05-08",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 10.680490856727795,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087135",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1994-07-07",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 21.52179018044226,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00088564",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2006-08-30",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 12.868893881907832,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00088566",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2011-12-02",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 31.806534425453993,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087181",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1994-07-07",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 25.99312789874725,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087055",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1994-05-13",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 7.34296291329548,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087053",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1993-06-23",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 5.903551181466908,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087042",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1993-06-23",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 14.026729438682521,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087388",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1994-07-15",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 11.420589679799157,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087553",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1994-07-15",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 25.99312789874725,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087063",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1993-06-23",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 10.008030530601943,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087033",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1993-06-23",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 13.419814936120366,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00088546",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1993-08-27",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 9.653698647361606,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087034",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1993-06-23",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 13.419814936120366,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00088548",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1993-08-27",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 27.06848174564012,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087291",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1994-11-01",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 17.18033731277226,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00088640",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2008-05-05",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 27.497827119344482,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00088558",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1993-10-26",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 10.366156136978375,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00088380",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1992-12-11",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 12.867893222729135,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087110",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2011-01-04",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 4.542162122258013,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00088381",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1994-01-03",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 12.867893222729135,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00088567",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2011-12-02",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 1.9966872693124877,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087293",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1994-11-01",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 9.18210659155359,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087176",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1995-05-08",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 9.838225886470829,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00088545",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1993-08-27",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 34.08829240671933,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087387",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1994-07-15",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 11.420589679799157,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087051",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1993-06-23",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 13.648689837983047,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00088633",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2000-09-19",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 39.189154005345685,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087156",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2011-04-04",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 6.169616811186713,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00088550",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1996-02-14",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 6.687686754498649,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087598",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2007-12-12",
+          "validUntil": null,
+          "infrastructureOperator": "BLSN",
+          "attachmentMetres": 6.647393427211733,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00088370",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1998-04-30",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 12.189717927344851,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087137",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2005-02-09",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 12.029554916026262,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087158",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "2001-07-19",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 15.964995819628118,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087172",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1994-03-17",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 13.238553154901396,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087150",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1994-04-06",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 7.423367464586443,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087295",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1995-10-30",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 13.195163826912854,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087163",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1996-04-04",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 12.961402843310594,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00088553",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1993-08-27",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 21.11548653087499,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087408",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1994-05-11",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 12.956916355507694,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087383",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1994-07-15",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 17.980485715090875,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00088369",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1994-01-03",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 14.702813370708203,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087382",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1994-07-15",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 11.011614627875039,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00087297",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1994-11-01",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 10.54748377610169,
+          "reason": null
+        },
+        {
+          "id": "ch14uvag00088190",
+          "gauge": "mm1435",
+          "dataStand": "2021-07-06",
+          "validFrom": "1993-07-08",
+          "validUntil": null,
+          "infrastructureOperator": "SBB CFF FFS",
+          "attachmentMetres": 18.38449511061158,
+          "reason": null
+        }
+      ]
+    },
     "urbanSupplement": {
       "policy": {
         "schemaVersion": 1,
@@ -526,9 +4257,9 @@
     "key": "GTFS route identity + direction_id + full ordered original platform IDs, including repeats and out-of-canton calls"
   },
   "routesByStatus": {
-    "admitted-all-dated-trips": 308,
-    "excluded": 127,
-    "partially-admitted": 87,
+    "admitted-all-dated-trips": 315,
+    "excluded": 126,
+    "partially-admitted": 81,
     "inactive-on-validation-dates": 183
   },
   "districts": [
@@ -1578,28 +5309,29 @@
         "regionalRoadPolicy": "37a6f35b586acdcbc40cc6f9b9b58452f88779a94473efb5af421ff213e7a0a8",
         "mountainPolicy": "2255393078b1728f8150edc0c0333b75394ca76bee70505a21314a71acdefc89",
         "railPolicy": "04b675e0248a5ffb5ee7f4da38912b9222acad46166362120837ac839209c180",
+        "regionalRailPolicy": "3b533d59e49d3671c03dfb1a5a742093557d46822671f7e403f0388b17b2fb9f",
         "urbanCache": "5ef487abdf873508305508e5096c26ca0fbebd9abc9b0846195abc840af07d0f",
         "urbanPolicy": "1ca5bdf7f752349c915180c881292cfd31465398efb956e58afc5934b875f8fb"
       },
       "coverage": {
         "trips": 43653,
-        "admittedTrips": 36449,
+        "admittedTrips": 36627,
         "scheduledTrips": 28696,
         "representativeHeadwayTrips": 14957,
-        "admittedScheduledTrips": 21492,
+        "admittedScheduledTrips": 21670,
         "admittedRepresentativeHeadwayTrips": 14957,
         "scheduledSegmentOccurrences": 295359,
-        "matchedScheduledSegmentOccurrences": 274489,
+        "matchedScheduledSegmentOccurrences": 275444,
         "segmentOccurrences": 314668,
-        "matchedSegmentOccurrences": 293798,
-        "admittedSegmentOccurrences": 272886,
+        "matchedSegmentOccurrences": 294753,
+        "admittedSegmentOccurrences": 275077,
         "directedPairs": 12321,
-        "matchedDirectedPairs": 10622,
+        "matchedDirectedPairs": 10730,
         "patterns": 2582,
-        "completePatterns": 1860,
-        "admittedPatterns": 1860,
+        "completePatterns": 1930,
+        "admittedPatterns": 1930,
         "excludedTrips": {
-          "incomplete-directed-pattern": 4173,
+          "incomplete-directed-pattern": 3995,
           "no-verified-operator-line-crosswalk": 3031
         }
       },
@@ -1736,23 +5468,23 @@
           "id": "11:rail",
           "agency": "Schweizerische Bundesbahnen SBB",
           "trips": 846,
-          "admittedTrips": 319,
+          "admittedTrips": 435,
           "scheduledTrips": 846,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 319,
+          "admittedScheduledTrips": 435,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 8123,
-          "matchedScheduledSegmentOccurrences": 4746,
+          "matchedScheduledSegmentOccurrences": 5603,
           "segmentOccurrences": 8123,
-          "matchedSegmentOccurrences": 4746,
-          "admittedSegmentOccurrences": 2953,
+          "matchedSegmentOccurrences": 5603,
+          "admittedSegmentOccurrences": 4606,
           "directedPairs": 948,
-          "matchedDirectedPairs": 344,
+          "matchedDirectedPairs": 423,
           "patterns": 342,
-          "completePatterns": 76,
-          "admittedPatterns": 76,
+          "completePatterns": 119,
+          "admittedPatterns": 119,
           "excludedTrips": {
-            "incomplete-directed-pattern": 265,
+            "incomplete-directed-pattern": 149,
             "no-verified-operator-line-crosswalk": 262
           }
         },
@@ -2568,23 +6300,23 @@
           "id": "33:rail",
           "agency": "BLS AG (bls)",
           "trips": 1405,
-          "admittedTrips": 1087,
+          "admittedTrips": 1149,
           "scheduledTrips": 1405,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 1087,
+          "admittedScheduledTrips": 1149,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 14195,
-          "matchedScheduledSegmentOccurrences": 13076,
+          "matchedScheduledSegmentOccurrences": 13174,
           "segmentOccurrences": 14195,
-          "matchedSegmentOccurrences": 13076,
-          "admittedSegmentOccurrences": 11991,
+          "matchedSegmentOccurrences": 13174,
+          "admittedSegmentOccurrences": 12529,
           "directedPairs": 1066,
-          "matchedDirectedPairs": 879,
+          "matchedDirectedPairs": 908,
           "patterns": 328,
-          "completePatterns": 231,
-          "admittedPatterns": 231,
+          "completePatterns": 258,
+          "admittedPatterns": 258,
           "excludedTrips": {
-            "incomplete-directed-pattern": 170,
+            "incomplete-directed-pattern": 108,
             "no-verified-operator-line-crosswalk": 148
           }
         },
@@ -3526,8 +7258,8 @@
         }
       ],
       "carryInTrips": 334,
-      "admittedCarryInTrips": 240,
-      "admittedOutsideCantonPlatforms": 697,
+      "admittedCarryInTrips": 248,
+      "admittedOutsideCantonPlatforms": 768,
       "directedPatternChecks": {
         "directionIds": [
           "0",
@@ -3540,12 +7272,12 @@
       },
       "payload": {
         "manifest": {
-          "bytes": 8053210,
-          "gzipBytes": 1676129
+          "bytes": 9616861,
+          "gzipBytes": 2072908
         },
         "morning": {
-          "trips": 3390,
-          "gzipBytes": 1995324
+          "trips": 3428,
+          "gzipBytes": 2393898
         },
         "chunks": [
           {
@@ -3553,10 +7285,10 @@
             "windowStart": 0,
             "windowEnd": 7200,
             "path": "day-chunks/00-02.json",
-            "tripCount": 244,
-            "bytes": 197447,
-            "sha256": "a0f19528a2573bed00e1b9ec47e75ec0402625910c6e3a93a28f536189a39d1e",
-            "gzipBytes": 33649
+            "tripCount": 252,
+            "bytes": 203677,
+            "sha256": "1ed1f6e8df65632bf05bb8a7265c9e5de4e2f782e1fc52a10fc68da27012c209",
+            "gzipBytes": 34694
           },
           {
             "id": "02-04",
@@ -3573,100 +7305,100 @@
             "windowStart": 14400,
             "windowEnd": 21600,
             "path": "day-chunks/04-06.json",
-            "tripCount": 572,
-            "bytes": 491030,
-            "sha256": "7a861870dab300a3e1033002dc215389b3970fc0ef5130eff68003c0b92a3e9a",
-            "gzipBytes": 76711
+            "tripCount": 584,
+            "bytes": 500884,
+            "sha256": "22dd69be6c86bc2f4611cf813bca6bdf81fb1b0a4d08bcf99ebad5fa8ea60259",
+            "gzipBytes": 78490
           },
           {
             "id": "06-08",
             "windowStart": 21600,
             "windowEnd": 28800,
             "path": "day-chunks/06-08.json",
-            "tripCount": 3055,
-            "bytes": 2577970,
-            "sha256": "68e983dc7d6be404509c765eab2173dc29cef0c04f5acdfbe5623de79d157414",
-            "gzipBytes": 302080
+            "tripCount": 3090,
+            "bytes": 2606718,
+            "sha256": "8aa86425a68cb396b1b086fe8870a7be55d9e986d4510e5e48f04b31ab0937c5",
+            "gzipBytes": 306646
           },
           {
             "id": "08-10",
             "windowStart": 28800,
             "windowEnd": 36000,
             "path": "day-chunks/08-10.json",
-            "tripCount": 5035,
-            "bytes": 3788046,
-            "sha256": "cecac3e68f0464b8a6acb81c33ddac96551672554c2c47d0986754b5997a3709",
-            "gzipBytes": 339659
+            "tripCount": 5061,
+            "bytes": 3810264,
+            "sha256": "8724415f31490c8bc34f0e591177b531e3c1742eb8ecf770ae0d853d37bdf8d2",
+            "gzipBytes": 342466
           },
           {
             "id": "10-12",
             "windowStart": 36000,
             "windowEnd": 43200,
             "path": "day-chunks/10-12.json",
-            "tripCount": 7148,
-            "bytes": 5089633,
-            "sha256": "1b927208032c0f6aab84fd99be877f40baff6bc7e33bcf69cc3ff9eefa75b24f",
-            "gzipBytes": 382393
+            "tripCount": 7170,
+            "bytes": 5109001,
+            "sha256": "39f72d3c4f8126cfd0eaaed4eac4c07e96fdf867e575bd385f1621966cfd3633",
+            "gzipBytes": 385243
           },
           {
             "id": "12-14",
             "windowStart": 43200,
             "windowEnd": 50400,
             "path": "day-chunks/12-14.json",
-            "tripCount": 7322,
-            "bytes": 5229935,
-            "sha256": "173c998bcdceacb704c62dbf6c48dc7a363f1ed3af71b0161b556114e69a0bda",
-            "gzipBytes": 397955
+            "tripCount": 7345,
+            "bytes": 5249946,
+            "sha256": "a65023980d3139402533ca3ad8754ff0163d0aa8ccba918fd63778c7d374e2c4",
+            "gzipBytes": 400854
           },
           {
             "id": "14-16",
             "windowStart": 50400,
             "windowEnd": 57600,
             "path": "day-chunks/14-16.json",
-            "tripCount": 7239,
-            "bytes": 5157072,
-            "sha256": "7f410adea3e809969bf49b0e2a8ed1701e554e791790de5ada6ae9bfa1d59e15",
-            "gzipBytes": 389704
+            "tripCount": 7261,
+            "bytes": 5176503,
+            "sha256": "a9af011f7128158d296aabf9ef435f366a9764aecb5591b8c606765f18bfde13",
+            "gzipBytes": 392077
           },
           {
             "id": "16-18",
             "windowStart": 57600,
             "windowEnd": 64800,
             "path": "day-chunks/16-18.json",
-            "tripCount": 5446,
-            "bytes": 4137697,
-            "sha256": "f36120e42e342760affa9ae59f33feae5079e1a02e02b4ad7f111ba2174e44e8",
-            "gzipBytes": 373563
+            "tripCount": 5480,
+            "bytes": 4166220,
+            "sha256": "730c8864d740c30e591c9406bee66f64645da6011de972a3a75ec9366147a051",
+            "gzipBytes": 377899
           },
           {
             "id": "18-20",
             "windowStart": 64800,
             "windowEnd": 72000,
             "path": "day-chunks/18-20.json",
-            "tripCount": 2951,
-            "bytes": 2476015,
-            "sha256": "912e7c4495d61f21dcd0aefb1d1970be9cc815b2e06086f1c70b5678e17a75f6",
-            "gzipBytes": 286012
+            "tripCount": 2981,
+            "bytes": 2501509,
+            "sha256": "42e626320f9a78f1b0736463d1247dcb2205ddc8d2159d3cfd40a739e9ae28a2",
+            "gzipBytes": 289843
           },
           {
             "id": "20-22",
             "windowStart": 72000,
             "windowEnd": 79200,
             "path": "day-chunks/20-22.json",
-            "tripCount": 1713,
-            "bytes": 1461295,
-            "sha256": "6b1fa59dc01b74ded7c72c68c0cbfe14a754767dee79dcc602454c3fec9be479",
-            "gzipBytes": 178904
+            "tripCount": 1737,
+            "bytes": 1481303,
+            "sha256": "43c008499b7b341cb27a908681c91846ead527d500be4bd851c9559a5512818f",
+            "gzipBytes": 181967
           },
           {
             "id": "22-24",
             "windowStart": 79200,
             "windowEnd": 86400,
             "path": "day-chunks/22-24.json",
-            "tripCount": 1057,
-            "bytes": 921823,
-            "sha256": "c13568ab20cffe377351a391e2b2d5e6a116f2f610506a41d69b2c9525e5b494",
-            "gzipBytes": 122415
+            "tripCount": 1078,
+            "bytes": 938513,
+            "sha256": "693ae04da937353ef95f4c750795938f7d0ee026a246261d4752c320c4a3c251",
+            "gzipBytes": 125081
           }
         ]
       },
@@ -3693,28 +7425,29 @@
         "regionalRoadPolicy": "37a6f35b586acdcbc40cc6f9b9b58452f88779a94473efb5af421ff213e7a0a8",
         "mountainPolicy": "2255393078b1728f8150edc0c0333b75394ca76bee70505a21314a71acdefc89",
         "railPolicy": "04b675e0248a5ffb5ee7f4da38912b9222acad46166362120837ac839209c180",
+        "regionalRailPolicy": "3b533d59e49d3671c03dfb1a5a742093557d46822671f7e403f0388b17b2fb9f",
         "urbanCache": "5ef487abdf873508305508e5096c26ca0fbebd9abc9b0846195abc840af07d0f",
         "urbanPolicy": "1ca5bdf7f752349c915180c881292cfd31465398efb956e58afc5934b875f8fb"
       },
       "coverage": {
         "trips": 38587,
-        "admittedTrips": 31580,
+        "admittedTrips": 31774,
         "scheduledTrips": 22462,
         "representativeHeadwayTrips": 16125,
-        "admittedScheduledTrips": 15455,
+        "admittedScheduledTrips": 15649,
         "admittedRepresentativeHeadwayTrips": 16125,
         "scheduledSegmentOccurrences": 209388,
-        "matchedScheduledSegmentOccurrences": 190337,
+        "matchedScheduledSegmentOccurrences": 191002,
         "segmentOccurrences": 229859,
-        "matchedSegmentOccurrences": 210808,
-        "admittedSegmentOccurrences": 191398,
+        "matchedSegmentOccurrences": 211473,
+        "admittedSegmentOccurrences": 193309,
         "directedPairs": 13244,
-        "matchedDirectedPairs": 11332,
+        "matchedDirectedPairs": 11394,
         "patterns": 2108,
-        "completePatterns": 1442,
-        "admittedPatterns": 1442,
+        "completePatterns": 1493,
+        "admittedPatterns": 1493,
         "excludedTrips": {
-          "incomplete-directed-pattern": 3950,
+          "incomplete-directed-pattern": 3756,
           "no-verified-operator-line-crosswalk": 3057
         }
       },
@@ -3851,23 +7584,23 @@
           "id": "11:rail",
           "agency": "Schweizerische Bundesbahnen SBB",
           "trips": 771,
-          "admittedTrips": 273,
+          "admittedTrips": 427,
           "scheduledTrips": 771,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 273,
+          "admittedScheduledTrips": 427,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 6047,
-          "matchedScheduledSegmentOccurrences": 3374,
+          "matchedScheduledSegmentOccurrences": 3997,
           "segmentOccurrences": 6047,
-          "matchedSegmentOccurrences": 3374,
-          "admittedSegmentOccurrences": 2081,
+          "matchedSegmentOccurrences": 3997,
+          "admittedSegmentOccurrences": 3687,
           "directedPairs": 810,
-          "matchedDirectedPairs": 274,
+          "matchedDirectedPairs": 325,
           "patterns": 288,
-          "completePatterns": 64,
-          "admittedPatterns": 64,
+          "completePatterns": 106,
+          "admittedPatterns": 106,
           "excludedTrips": {
-            "incomplete-directed-pattern": 251,
+            "incomplete-directed-pattern": 97,
             "no-verified-operator-line-crosswalk": 247
           }
         },
@@ -4704,23 +8437,23 @@
           "id": "33:rail",
           "agency": "BLS AG (bls)",
           "trips": 1255,
-          "admittedTrips": 972,
+          "admittedTrips": 1012,
           "scheduledTrips": 1255,
           "representativeHeadwayTrips": 0,
-          "admittedScheduledTrips": 972,
+          "admittedScheduledTrips": 1012,
           "admittedRepresentativeHeadwayTrips": 0,
           "scheduledSegmentOccurrences": 12673,
-          "matchedScheduledSegmentOccurrences": 11764,
+          "matchedScheduledSegmentOccurrences": 11806,
           "segmentOccurrences": 12673,
-          "matchedSegmentOccurrences": 11764,
-          "admittedSegmentOccurrences": 10812,
+          "matchedSegmentOccurrences": 11806,
+          "admittedSegmentOccurrences": 11117,
           "directedPairs": 971,
-          "matchedDirectedPairs": 794,
+          "matchedDirectedPairs": 805,
           "patterns": 300,
-          "completePatterns": 219,
-          "admittedPatterns": 219,
+          "completePatterns": 228,
+          "admittedPatterns": 228,
           "excludedTrips": {
-            "incomplete-directed-pattern": 172,
+            "incomplete-directed-pattern": 132,
             "no-verified-operator-line-crosswalk": 111
           }
         },
@@ -5707,8 +9440,8 @@
         }
       ],
       "carryInTrips": 816,
-      "admittedCarryInTrips": 539,
-      "admittedOutsideCantonPlatforms": 703,
+      "admittedCarryInTrips": 550,
+      "admittedOutsideCantonPlatforms": 767,
       "directedPatternChecks": {
         "directionIds": [
           "0",
@@ -5721,12 +9454,12 @@
       },
       "payload": {
         "manifest": {
-          "bytes": 8103935,
-          "gzipBytes": 1760751
+          "bytes": 9639802,
+          "gzipBytes": 2155656
         },
         "morning": {
-          "trips": 2066,
-          "gzipBytes": 1937962
+          "trips": 2098,
+          "gzipBytes": 2335508
         },
         "chunks": [
           {
@@ -5734,10 +9467,10 @@
             "windowStart": 0,
             "windowEnd": 7200,
             "path": "day-chunks/00-02.json",
-            "tripCount": 439,
-            "bytes": 368584,
-            "sha256": "6009eb8afab7c00bf3f0c0ca234855768376737e2a0d97ab8fdefec2766859a2",
-            "gzipBytes": 59300
+            "tripCount": 450,
+            "bytes": 376391,
+            "sha256": "7fe5e9ec332113fd0781e14adcfaa4524f8f26a25d541e61d28bd7a59fc7e9f5",
+            "gzipBytes": 60600
           },
           {
             "id": "02-04",
@@ -5746,108 +9479,108 @@
             "path": "day-chunks/02-04.json",
             "tripCount": 125,
             "bytes": 121932,
-            "sha256": "449d6ff3c9f9e526c0ff248ff52fc97c3b65180c8e4c99d071e6e1c4e19d2c73",
-            "gzipBytes": 20043
+            "sha256": "9c646a6deec0d9efe884f6039a8bd16ce3c81260f003914ba6f36257794ac579",
+            "gzipBytes": 20074
           },
           {
             "id": "04-06",
             "windowStart": 14400,
             "windowEnd": 21600,
             "path": "day-chunks/04-06.json",
-            "tripCount": 242,
-            "bytes": 207508,
-            "sha256": "6ecbf3bd6cbd4b50305b6d4e4de914d1280b08c39c25e97ae18fdc33f902e16e",
-            "gzipBytes": 35640
+            "tripCount": 250,
+            "bytes": 213327,
+            "sha256": "f787bfa7067ce8d895e605dd736fb750697a7fc6aabbb62e4afa9aa909d4a34f",
+            "gzipBytes": 36819
           },
           {
             "id": "06-08",
             "windowStart": 21600,
             "windowEnd": 28800,
             "path": "day-chunks/06-08.json",
-            "tripCount": 1397,
-            "bytes": 1129208,
-            "sha256": "0e74b8a1c31d0ffd0e67a58280a5377d09148ce9c8744ae42018b827b24e8969",
-            "gzipBytes": 140035
+            "tripCount": 1426,
+            "bytes": 1151070,
+            "sha256": "f81f0cedda127cb8a2634b2bfc761817e439c1cb0cd6c779947a4783eb08a87b",
+            "gzipBytes": 143268
           },
           {
             "id": "08-10",
             "windowStart": 28800,
             "windowEnd": 36000,
             "path": "day-chunks/08-10.json",
-            "tripCount": 4496,
-            "bytes": 3183395,
-            "sha256": "a682b5e6fdc39aed74deaa0b3bc2aba57c505dbc3a83d9edf32c5f226815f33c",
-            "gzipBytes": 253850
+            "tripCount": 4529,
+            "bytes": 3208147,
+            "sha256": "6f2b940948e21c6cdec23fd52a602117b6ae6b63dd4d7507c150c7f306965753",
+            "gzipBytes": 257267
           },
           {
             "id": "10-12",
             "windowStart": 36000,
             "windowEnd": 43200,
             "path": "day-chunks/10-12.json",
-            "tripCount": 6732,
-            "bytes": 4627291,
-            "sha256": "9ccc2fd0058c2357db45c464e365aef8173bb0a6542b05fb8c831b642449e1e0",
-            "gzipBytes": 318750
+            "tripCount": 6764,
+            "bytes": 4650934,
+            "sha256": "aec7cd34c69b07e528c7d70d2b2d8da8661785add936d133ace7295ee9150c1f",
+            "gzipBytes": 321523
           },
           {
             "id": "12-14",
             "windowStart": 43200,
             "windowEnd": 50400,
             "path": "day-chunks/12-14.json",
-            "tripCount": 6781,
-            "bytes": 4685460,
-            "sha256": "d35dca1f8fc9188fc6c6dfb90a032a09d15a8d91cd856f4aa1f2048f6612c6db",
-            "gzipBytes": 323898
+            "tripCount": 6813,
+            "bytes": 4709027,
+            "sha256": "bd7edb98d996b685023fb9bc30fc9b578eb1567f6ea8bc84b1f6c279a5c7514e",
+            "gzipBytes": 326999
           },
           {
             "id": "14-16",
             "windowStart": 50400,
             "windowEnd": 57600,
             "path": "day-chunks/14-16.json",
-            "tripCount": 6833,
-            "bytes": 4730609,
-            "sha256": "916d08b656802be98c5bc668344163e2af4948aeb35b01141d7688e900958d45",
-            "gzipBytes": 328742
+            "tripCount": 6865,
+            "bytes": 4754227,
+            "sha256": "c4dc1d364ff8deae5b527d7245197dc7e6880fcdd037c774bfbbf257b7ff69fe",
+            "gzipBytes": 331799
           },
           {
             "id": "16-18",
             "windowStart": 57600,
             "windowEnd": 64800,
             "path": "day-chunks/16-18.json",
-            "tripCount": 4538,
-            "bytes": 3315924,
-            "sha256": "2b802f1ff1e2cc0aa45ce0eb440ae1c02e2c977f8d8b893398dbb5606ab3a0ca",
-            "gzipBytes": 278508
+            "tripCount": 4570,
+            "bytes": 3339620,
+            "sha256": "74378938ab967d5e52a4b08c6252db6e10c15f1911f43cfadc828825fbe4ab1b",
+            "gzipBytes": 281533
           },
           {
             "id": "18-20",
             "windowStart": 64800,
             "windowEnd": 72000,
             "path": "day-chunks/18-20.json",
-            "tripCount": 2009,
-            "bytes": 1661343,
-            "sha256": "80eb0851e0951fd562f18d177de804f1a2506f60c8463475c8cb15016036c02e",
-            "gzipBytes": 195782
+            "tripCount": 2041,
+            "bytes": 1685147,
+            "sha256": "3182b4b98f2272a5ac988ddd97ca8201eb25fc0e2d0164fcb0f52216ced93246",
+            "gzipBytes": 199004
           },
           {
             "id": "20-22",
             "windowStart": 72000,
             "windowEnd": 79200,
             "path": "day-chunks/20-22.json",
-            "tripCount": 1392,
-            "bytes": 1178578,
-            "sha256": "43659ac1cb204e3f3aef1fb19e7a317cea6d80217ff2964f646725de652895f3",
-            "gzipBytes": 145928
+            "tripCount": 1422,
+            "bytes": 1200795,
+            "sha256": "6b35d4ef43f2b1a14a50857007449ea2bcb345915eaeb626d3ea132c43404ce9",
+            "gzipBytes": 148815
           },
           {
             "id": "22-24",
             "windowStart": 79200,
             "windowEnd": 86400,
             "path": "day-chunks/22-24.json",
-            "tripCount": 943,
-            "bytes": 815972,
-            "sha256": "3b0a9e5cba37e45f19cfbdee31b52d6c958aae8331282bc57a39a5fd4bec658d",
-            "gzipBytes": 109066
+            "tripCount": 969,
+            "bytes": 834846,
+            "sha256": "7bebbf2baad4efde71857a03f05e1365c2b798419831ff5bf56c065d46f7cfd1",
+            "gzipBytes": 111816
           }
         ]
       },

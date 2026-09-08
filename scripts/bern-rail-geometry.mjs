@@ -10,16 +10,17 @@ import { previousServiceDate } from './civil-day.mjs'
 const sha = bytes => createHash('sha256').update(bytes).digest('hex')
 const key = (routeId, fromId, toId) => JSON.stringify([routeId, fromId, toId])
 export const BERN_RAIL_ROUTES = ['91-36-D-j26-1', '91-4-C-j26-1']
-export async function loadBernRail() {
-  const bytes = await readFile('data/bern-rail-policy.json'), policy = JSON.parse(bytes)
-  assert.deepEqual(policy.routes.map(r => r.routeId), BERN_RAIL_ROUTES)
+export async function loadBernRail({ policyPath = 'data/bern-rail-policy.json', scope = BERN_RAIL_ROUTES,
+  infrastructureOperators = ['SBB CFF FFS'] } = {}) {
+  const bytes = await readFile(policyPath), policy = JSON.parse(bytes)
+  assert.deepEqual(policy.routes.map(r => r.routeId), scope)
   assert.deepEqual(policy.dates, ['2026-09-04', '2026-09-06'])
   assert.equal(policy.limits.stationAttachmentMetres, BERN_LIMITS.rail.snapMetres)
   assert.equal(policy.limits.topologyAttachmentMetres, 120)
   assert.equal(policy.limits.detourRatio, BERN_LIMITS.rail.detourRatio)
   assert.equal(policy.limits.detourFloorMetres, BERN_LIMITS.rail.detourFloorMetres)
   assert.equal(policy.limits.simplificationMetres, 0)
-  assert.deepEqual(policy.gauges, ['mm1435']); assert.deepEqual(policy.infrastructureOperators, ['SBB CFF FFS'])
+  assert.deepEqual(policy.gauges, ['mm1435']); assert.deepEqual(policy.infrastructureOperators, infrastructureOperators)
   const sourceBytes = await readFile(join(policy.sourceDirectory, 'source.json')), source = JSON.parse(sourceBytes)
   assert.equal(sha(sourceBytes), policy.sourceMetadataSha256)
   for (const [file, hash] of Object.entries(source.files)) assert.equal(sha(await readFile(join(policy.sourceDirectory, file))), hash, `Changed Bern rail source ${file}`)
@@ -31,7 +32,7 @@ export async function loadBernRail() {
   }
   const network = parseZugRail(xml.toString(), 0)
   assert.equal(network.nodes.size, source.nodes); assert.equal(network.segments.length, source.segments)
-  const selected = new Set(policy.routes.flatMap(r => r.sourceSegments))
+  const selected = new Set(policy.routes.flatMap(r => (r.pairs ?? [r]).flatMap(p => p.sourceSegments)))
   const segments = network.segments.filter(s => selected.has(s.id))
   assert.equal(segments.length, selected.size, 'Missing reviewed federal segment')
   const matcher = zugRailMatcher({ ...network, segments }, policy, [previousServiceDate(policy.dates[0]), policy.dates.at(-1)])
@@ -65,12 +66,20 @@ export function bernRailCandidates(raw, routes, rail) {
     const results = rail.matcher.matchPattern({ ...t, calls }, stops, { ...route, line: route.name })
     for (let i = 1; i < calls.length; i++) {
       const numbers = [calls[i - 1].id, calls[i].id].map(operatingPointNumber)
-      const forward = JSON.stringify(numbers) === JSON.stringify(config.operatingPointPair)
-      const reverse = JSON.stringify(numbers) === JSON.stringify([...config.operatingPointPair].reverse())
-      if (!forward && !reverse) continue
+      const bindings = (config.pairs ?? [config]).flatMap(binding => {
+        // New reviews bind exact directed platform IDs. Legacy station-pair
+        // bindings retain their explicitly bidirectional behaviour.
+        if (binding.fromId && (binding.fromId !== calls[i - 1].id || binding.toId !== calls[i].id)) return []
+        const forward = JSON.stringify(numbers) === JSON.stringify(binding.operatingPointPair)
+        const reverse = !binding.fromId && JSON.stringify(numbers) === JSON.stringify([...binding.operatingPointPair].reverse())
+        return forward || reverse ? [{ binding, forward }] : []
+      })
+      assert(bindings.length <= 1, 'Ambiguous reviewed rail pair')
+      if (!bindings.length) continue
+      const { binding, forward } = bindings[0]
       const assessment = { ...results[i - 1] }
       if (assessment.path) {
-        assert.deepEqual(assessment.directedSourceSegments.map(s => s.id), forward ? config.sourceSegments : [...config.sourceSegments].reverse(), 'Unreviewed federal routing')
+        assert.deepEqual(assessment.directedSourceSegments.map(s => s.id), forward ? binding.sourceSegments : [...binding.sourceSegments].reverse(), 'Unreviewed federal routing')
         assessment.path = assessment.path.map((p, j, all) => j === 0 || j === all.length - 1 ? p.map(v => Number(v.toFixed(7))) : p)
         assessment.maximumSnapMetres = Math.max(...assessment.stationAttachmentsMetres)
       }

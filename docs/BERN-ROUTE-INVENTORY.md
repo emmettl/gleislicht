@@ -6,9 +6,9 @@ Generated from the [Bern audit](BERN-STUDY.md). Counts are admitted / candidate 
 
 | GTFS agency | Source name | Annual route records | Friday admitted / candidate | Sunday admitted / candidate |
 | --- | --- | --- | --- | --- |
-| 11 | Schweizerische Bundesbahnen SBB | 62 | 319 / 846 | 273 / 771 |
+| 11 | Schweizerische Bundesbahnen SBB | 62 | 435 / 846 | 427 / 771 |
 | 32 | Lauterbrunnen-Mürren | 2 | 181 / 181 | 181 / 181 |
-| 33 | BLS AG (bls) | 53 | 1,087 / 1,405 | 972 / 1,255 |
+| 33 | BLS AG (bls) | 53 | 1,149 / 1,405 | 1,012 / 1,255 |
 | 35 | Berner Oberland-Bahnen | 2 | 130 / 130 | 144 / 144 |
 | 38 | Aare Seeland mobil (bti) | 1 | 116 / 116 | 77 / 77 |
 | 43 | Chemins de fer du Jura | 2 | 69 / 110 | 42 / 77 |
@@ -132,7 +132,7 @@ Generated from the [Bern audit](BERN-STUDY.md). Counts are admitted / candidate 
 | 91-9N-Y-j26-1 | 11: IC | rail | inactive-on-validation-dates | 0 / 0 | 0 / 0 | 230_IC, 300_IC_a, 300_IC_b, 301_IC, 310_IC, 410_IC | — | Not active on these dates |
 | 91-CB-Y-j26-1 | 11: IC | rail | excluded | 0 / 0 | 0 / 1 | 230_IC, 300_IC_a, 300_IC_b, 301_IC, 310_IC, 410_IC | — | incomplete-directed-pattern |
 | 91-1-D-j26-1 | 11: IC1 | rail | excluded | 0 / 41 | 0 / 31 | — | — | no-verified-operator-line-crosswalk |
-| 91-5-A-j26-1 | 11: IC5 | rail | excluded | 0 / 42 | 0 / 38 | 410_IR | — | incomplete-directed-pattern |
+| 91-5-A-j26-1 | 11: IC5 | rail | partially-admitted | 1 / 42 | 38 / 38 | 410_IR | bern-regional-fot-rail-20210706 | incomplete-directed-pattern |
 | 91-6-H-j26-1 | 11: IC6 | rail | excluded | 0 / 31 | 0 / 24 | — | — | no-verified-operator-line-crosswalk |
 | 91-8-E-j26-1 | 11: IC8 | rail | excluded | 0 / 26 | 0 / 42 | — | — | no-verified-operator-line-crosswalk |
 | 91-9-P-j26-1 | 11: IC9 | rail | excluded | 0 / 0 | 0 / 1 | — | — | no-verified-operator-line-crosswalk |
@@ -144,7 +144,7 @@ Generated from the [Bern audit](BERN-STUDY.md). Counts are admitted / candidate 
 | 91-3U-Y-j26-1 | 11: IR | rail | excluded | 0 / 1 | 0 / 1 | 303_RE | — | incomplete-directed-pattern |
 | 91-4C-Y-j26-1 | 11: IR | rail | inactive-on-validation-dates | 0 / 0 | 0 / 0 | 303_RE | — | Not active on these dates |
 | 91-4U-Y-j26-1 | 11: IR | rail | excluded | 0 / 2 | 0 / 1 | 303_RE | — | incomplete-directed-pattern |
-| 91-15-B-j26-1 | 11: IR15 | rail | partially-admitted | 2 / 44 | 1 / 43 | 455_IR | — | incomplete-directed-pattern |
+| 91-15-B-j26-1 | 11: IR15 | rail | partially-admitted | 29 / 44 | 43 / 43 | 455_IR | bern-regional-fot-rail-20210706 | incomplete-directed-pattern |
 | 91-16-B-j26-1 | 11: IR16 | rail | excluded | 0 / 32 | 0 / 31 | 450_IR_b | — | incomplete-directed-pattern |
 | 91-17-F-j26-1 | 11: IR17 | rail | partially-admitted | 0 / 1 | 2 / 2 | 450_RE | — | incomplete-directed-pattern |
 | 91-35-B-j26-1 | 11: IR35 | rail | partially-admitted | 2 / 16 | 1 / 16 | 450_IR_a | — | incomplete-directed-pattern |
@@ -156,7 +156,7 @@ Generated from the [Bern audit](BERN-STUDY.md). Counts are admitted / candidate 
 | 91-1F-Y-j26-1 | 11: R | rail | inactive-on-validation-dates | 0 / 0 | 0 / 0 | — | — | Not active on these dates |
 | 91-5-Y-j26-1 | 11: R | rail | inactive-on-validation-dates | 0 / 0 | 0 / 0 | — | — | Not active on these dates |
 | 91-5B-Y-j26-1 | 11: R | rail | inactive-on-validation-dates | 0 / 0 | 0 / 0 | — | — | Not active on these dates |
-| 91-13-G-j26-1 | 11: R13 | rail | partially-admitted | 8 / 40 | 3 / 40 | 210 | — | incomplete-directed-pattern |
+| 91-13-G-j26-1 | 11: R13 | rail | admitted-all-dated-trips | 40 / 40 | 40 / 40 | 210 | bern-regional-fot-rail-20210706 | — |
 | 91-16-G-j26-1 | 11: R16 | rail | excluded | 0 / 20 | 0 / 18 | — | — | no-verified-operator-line-crosswalk |
 | 91-41-E-j26-1 | 11: R41 | rail | admitted-all-dated-trips | 73 / 73 | 70 / 70 | 225_R | — | — |
 | 91-42-E-j26-1 | 11: R42 | rail | admitted-all-dated-trips | 62 / 62 | 41 / 41 | 226 | — | — |
@@ -171,9 +171,9 @@ Generated from the [Bern audit](BERN-STUDY.md). Counts are admitted / candidate 
 | 91-50-Y-j26-1 | 11: S | rail | inactive-on-validation-dates | 0 / 0 | 0 / 0 | — | — | Not active on these dates |
 | 91-75-Y-j26-1 | 11: S | rail | inactive-on-validation-dates | 0 / 0 | 0 / 0 | — | — | Not active on these dates |
 | 91-19-C-j26-1 | 11: S19 | rail | inactive-on-validation-dates | 0 / 0 | 0 / 0 | — | — | Not active on these dates |
-| 91-20-A-j26-1 | 11: S20 | rail | partially-admitted | 102 / 120 | 80 / 80 | 410_R | — | incomplete-directed-pattern |
+| 91-20-A-j26-1 | 11: S20 | rail | admitted-all-dated-trips | 120 / 120 | 80 / 80 | 410_R | bern-regional-fot-rail-20210706 | — |
 | 91-21-C-j26-1 | 11: S21 | rail | partially-admitted | 2 / 38 | 2 / 36 | 411 | — | incomplete-directed-pattern |
-| 91-23-j26-1 | 11: S23 | rail | partially-admitted | 38 / 76 | 39 / 76 | 450_S_a | — | incomplete-directed-pattern |
+| 91-23-j26-1 | 11: S23 | rail | admitted-all-dated-trips | 76 / 76 | 76 / 76 | 450_S_a | bern-regional-fot-rail-20210706 | — |
 | 93-246-1-j26-1 | 32: 2461 | cableway | admitted-all-dated-trips | 91 / 91 | 91 / 91 | 313_b | — | — |
 | 91-66-j26-1 | 32: R66 | rail | admitted-all-dated-trips | 90 / 90 | 90 / 90 | 313_a | — | — |
 | 91-16-Y-j26-1 | 33: EXT | rail | inactive-on-validation-dates | 0 / 0 | 0 / 0 | — | — | Not active on these dates |
@@ -213,18 +213,18 @@ Generated from the [Bern audit](BERN-STUDY.md). Counts are admitted / candidate 
 | 91-2-A-j26-1 | 33: S2 | rail | admitted-all-dated-trips | 80 / 80 | 85 / 85 | 302_S | — | — |
 | 91-3-F-j26-1 | 33: S3 | rail | admitted-all-dated-trips | 82 / 82 | 81 / 81 | 303_S_a | — | — |
 | 91-4-C-j26-1 | 33: S4 | rail | admitted-all-dated-trips | 47 / 47 | 48 / 48 | 304_S | bern-fot-rail-20210706 | — |
-| 91-5-j26-1 | 33: S5 | rail | partially-admitted | 39 / 79 | 38 / 76 | 305_S_a | — | incomplete-directed-pattern |
+| 91-5-j26-1 | 33: S5 | rail | admitted-all-dated-trips | 79 / 79 | 76 / 76 | 305_S_a | bern-regional-fot-rail-20210706 | — |
 | 91-6-B-j26-1 | 33: S6 | rail | admitted-all-dated-trips | 76 / 76 | 71 / 71 | 306_S, 440_S_a, 460_S | — | — |
 | 91-6-F-j26-1 | 33: S6 | rail | admitted-all-dated-trips | 78 / 78 | 78 / 78 | 306_S, 440_S_a, 460_S | — | — |
 | 91-7-D-j26-1 | 33: S7 | rail | admitted-all-dated-trips | 37 / 37 | 17 / 17 | 440_S_b | — | — |
 | 91-11-P-j26-1 | 33: S11 | rail | excluded | 0 / 2 | 0 / 0 | — | — | no-verified-operator-line-crosswalk |
 | 91-21-H-j26-1 | 33: S21 | rail | excluded | 0 / 28 | 0 / 27 | — | — | no-verified-operator-line-crosswalk |
 | 91-22-C-j26-1 | 33: S22 | rail | inactive-on-validation-dates | 0 / 0 | 0 / 0 | — | — | Not active on these dates |
-| 91-31-j26-1 | 33: S31 | rail | partially-admitted | 44 / 60 | 0 / 0 | 303_S_b | — | incomplete-directed-pattern |
+| 91-31-j26-1 | 33: S31 | rail | admitted-all-dated-trips | 60 / 60 | 0 / 0 | 303_S_b | bern-regional-fot-rail-20210706 | — |
 | 91-35-F-j26-1 | 33: S35 | rail | admitted-all-dated-trips | 38 / 38 | 38 / 38 | 291_a | — | — |
 | 91-36-D-j26-1 | 33: S36 | rail | admitted-all-dated-trips | 50 / 50 | 38 / 38 | 291_b | bern-fot-rail-20210706 | — |
-| 91-41-F-j26-1 | 33: S41 | rail | partially-admitted | 43 / 45 | 42 / 43 | 340_R_b | — | incomplete-directed-pattern |
-| 91-42-C-j26-1 | 33: S42 | rail | partially-admitted | 36 / 40 | 37 / 38 | 340_R_a | — | incomplete-directed-pattern |
+| 91-41-F-j26-1 | 33: S41 | rail | admitted-all-dated-trips | 45 / 45 | 43 / 43 | 340_R_b | bern-regional-fot-rail-20210706 | — |
+| 91-42-C-j26-1 | 33: S42 | rail | admitted-all-dated-trips | 40 / 40 | 38 / 38 | 340_R_a | bern-regional-fot-rail-20210706 | — |
 | 91-44-j26-1 | 33: S44 | rail | admitted-all-dated-trips | 122 / 122 | 121 / 121 | 304_SE | — | — |
 | 91-45-A-j26-1 | 33: S45 | rail | excluded | 0 / 34 | 0 / 31 | — | — | no-verified-operator-line-crosswalk |
 | 91-46-D-j26-1 | 33: S46 | rail | excluded | 0 / 1 | 0 / 0 | — | — | no-verified-operator-line-crosswalk |

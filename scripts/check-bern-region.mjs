@@ -10,6 +10,7 @@ import { loadBernUrban } from './bern-urban-geometry.mjs'
 import { loadBernRegionalRoads } from './bern-regional-roads.mjs'
 import { loadBernMountains } from './bern-mountain-geometry.mjs'
 import { loadBernRail, bernRailCandidates } from './bern-rail-geometry.mjs'
+import { loadBernRegionalRail } from './bern-regional-rail.mjs'
 
 const json = async path => JSON.parse(await readFile(path, 'utf8'))
 const sha = bytes => createHash('sha256').update(bytes).digest('hex')
@@ -27,6 +28,9 @@ export async function checkBernRegion({ output = 'public/data/bern-region', audi
   assert.deepEqual(summary.sources.regionalRoadSupplement, regionalRoads.metadata)
   const mountain = await loadBernMountains()
   const rail = await loadBernRail()
+  const regionalRail = await loadBernRegionalRail()
+  assert.equal(summary.sourceHashes.regionalRailPolicy, regionalRail.metadata.policySha256)
+  assert.deepEqual(summary.sources.regionalRailSupplement, regionalRail.metadata)
   assert.equal(summary.sourceHashes.railPolicy, rail.metadata.policySha256)
   assert.deepEqual(summary.sources.railSupplement, rail.metadata)
   for (const file of ['source.json', ...Object.keys(rail.metadata.source.files)]) assert.deepEqual(await readFile(join(output, 'fot-rail', file)), await readFile(join(rail.policy.sourceDirectory, file)))
@@ -99,10 +103,11 @@ export async function checkBernRegion({ output = 'public/data/bern-region', audi
         assert(mountain.policy.admittedRouteIds.includes(p.routeId) && p.matched && p.maximumSnapMetres <= 80)
         assert(mountain.policy.bindings.some(b => b.routeId === p.routeId && b.installation === p.sourceId))
       } else if (p.sourceKind === 'fot-rail-topology') {
-        assert(rail.policy.routes.some(r => r.routeId === p.routeId) && p.matched && p.maximumSnapMetres <= 120)
-        assert.equal(p.sourceId, rail.policy.sourceId)
-        assert(p.maximumTopologyAttachmentMetres <= rail.policy.limits.topologyAttachmentMetres)
-        assert.equal(p.originalAssessment.reason, 'disconnected-line')
+        const supplier = p.sourceId === regionalRail.policy.sourceId ? regionalRail : rail
+        assert(supplier.policy.routes.some(r => r.routeId === p.routeId) && p.matched && p.maximumSnapMetres <= 120)
+        assert.equal(p.sourceId, supplier.policy.sourceId)
+        assert(p.maximumTopologyAttachmentMetres <= supplier.policy.limits.topologyAttachmentMetres)
+        assert(['disconnected-line', 'endpoint-gap', 'missing-line', 'implausible-detour', 'collapsed-path'].includes(p.originalAssessment.reason))
       } else assert(!p.sourceKind)
       assert.deepEqual(pairCounts.get(JSON.stringify([p.routeId, p.fromId, p.toId])), { occurrences: p.occurrences, admitted: p.admittedOccurrences, matched: p.matched })
       if (!p.matched) assert(['missing-line', 'endpoint-gap', 'disconnected-line', 'implausible-detour', 'collapsed-path'].includes(p.reason))
@@ -127,13 +132,16 @@ export async function checkBernRegion({ output = 'public/data/bern-region', audi
     const chunks = await Promise.all(manifest.chunks.map(async descriptor => ({ descriptor, payload: await json(join(directory, descriptor.path)) })))
     const trains = [...new Map(chunks.flatMap(c => c.payload.trains).map(t => [t.id, t])).values()]
     const snapshot = { ...manifest, trains }
-    const railCandidates = bernRailCandidates(snapshot, new Map(routes.map(r => [r.id, r])), rail)
+    const routeMap = new Map(routes.map(r => [r.id, r]))
+    const railCandidates = new Map([...bernRailCandidates(snapshot, routeMap, rail), ...bernRailCandidates(snapshot, routeMap, regionalRail)])
     const railPairs = new Map(report.directedPairs.filter(p => p.sourceKind === 'fot-rail-topology').map(p => [JSON.stringify([p.routeId, p.fromId, p.toId]), p]))
     for (const t of trains) for (let i = 1; i < t.stops.length; i++) {
       const key = JSON.stringify([t.routeId, snapshot.stops[t.stops[i - 1][0]][4], snapshot.stops[t.stops[i][0]][4]])
       if (!railPairs.has(key)) continue
       assert.deepEqual(snapshot.paths[t.pathSegments[i - 1]], railCandidates.get(key)?.path, 'Changed federal rail path')
-      assert.deepEqual(railPairs.get(key).railPatternIds, railCandidates.get(key).railPatternIds)
+      // Partial routes also retain contexts from excluded full journeys. The
+      // raw-cache follow-up checker reproduces that complete context set.
+      assert(railCandidates.get(key).railPatternIds.every(id => railPairs.get(key).railPatternIds.includes(id)))
     }
     validateBernSnapshot(snapshot); validateBernChunks(snapshot, manifest, chunks)
     assert.equal(trains.length, c.admittedTrips)

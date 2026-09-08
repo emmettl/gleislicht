@@ -12,6 +12,7 @@ import { loadBernUrban, applyBernUrban } from './bern-urban-geometry.mjs'
 import { loadBernRegionalRoads, applyBernRegionalRoads } from './bern-regional-roads.mjs'
 import { loadBernMountains, applyBernMountains } from './bern-mountain-geometry.mjs'
 import { loadBernRail, applyBernRail } from './bern-rail-geometry.mjs'
+import { loadBernRegionalRail, applyBernRegionalRail } from './bern-regional-rail.mjs'
 
 const sha = bytes => createHash('sha256').update(bytes).digest('hex')
 async function hashFile(path) {
@@ -155,6 +156,9 @@ export async function buildBernRegion({ archive, sourceDirectory = 'data/bern-so
   const rail = await loadBernRail()
   hashes.railPolicy = rail.metadata.policySha256
   provenance.railSupplement = rail.metadata
+  const regionalRail = await loadBernRegionalRail()
+  hashes.regionalRailPolicy = regionalRail.metadata.policySha256
+  provenance.regionalRailSupplement = regionalRail.metadata
   hashes.urbanCache = urban.metadata.cacheSha256
   hashes.urbanPolicy = urban.metadata.policySha256
   provenance.urbanSupplement = urban.metadata
@@ -164,7 +168,7 @@ export async function buildBernRegion({ archive, sourceDirectory = 'data/bern-so
   for (const raw of timetable.snapshots) {
     console.log(`Matching every directed Bern pattern for ${raw.metadata.serviceDate}…`)
     const base = applyBernUrban(raw, applyBernGeometry(raw, routes, source, crosswalk), source, urban)
-    const result = applyBernRail(raw, applyBernMountains(raw, applyBernRegionalRoads(raw, base, source, regionalRoads), routes, mountain), routes, rail)
+    const result = applyBernRegionalRail(raw, applyBernRail(raw, applyBernMountains(raw, applyBernRegionalRoads(raw, base, source, regionalRoads), routes, mountain), routes, rail), routes, regionalRail)
     routeCrosswalk = result.routeCrosswalk
     const groups = []
     for (const key of [...new Set(result.trains.map(t => `${t.agencyId}:${routes.get(t.routeId).mode}`))].sort()) {
@@ -187,6 +191,7 @@ export async function buildBernRegion({ archive, sourceDirectory = 'data/bern-so
         regionalRoadSupplement: regionalRoads.metadata,
         mountainSupplement: mountain.metadata,
         railSupplement: rail.metadata,
+        regionalRailSupplement: regionalRail.metadata,
         limits: BERN_LIMITS, direction: 'Centreline inference from ordered calls. No road one-way or rail running-track certification. Only the explicitly scoped tram 6 station approach has dated diversion evidence; no realtime verification.',
         localMetadata: '../sources.json', localTerms: ['../terms_of_use_de.pdf', '../terms_of_use_fr.pdf'] },
     }
