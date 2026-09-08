@@ -6,7 +6,7 @@ Generated from the [Bern audit](BERN-STUDY.md). Counts are admitted / candidate 
 
 | GTFS agency | Source name | Annual route records | Friday admitted / candidate | Sunday admitted / candidate |
 | --- | --- | --- | --- | --- |
-| 11 | Schweizerische Bundesbahnen SBB | 62 | 436 / 846 | 429 / 771 |
+| 11 | Schweizerische Bundesbahnen SBB | 62 | 468 / 846 | 460 / 771 |
 | 32 | Lauterbrunnen-Mürren | 2 | 181 / 181 | 181 / 181 |
 | 33 | BLS AG (bls) | 53 | 1,189 / 1,405 | 1,051 / 1,255 |
 | 35 | Berner Oberland-Bahnen | 2 | 130 / 130 | 144 / 144 |
@@ -145,7 +145,7 @@ Generated from the [Bern audit](BERN-STUDY.md). Counts are admitted / candidate 
 | 91-4C-Y-j26-1 | 11: IR | rail | inactive-on-validation-dates | 0 / 0 | 0 / 0 | 303_RE | — | Not active on these dates |
 | 91-4U-Y-j26-1 | 11: IR | rail | excluded | 0 / 2 | 0 / 1 | 303_RE | — | incomplete-directed-pattern |
 | 91-15-B-j26-1 | 11: IR15 | rail | partially-admitted | 29 / 44 | 43 / 43 | 455_IR | bern-regional-fot-rail-20210706 | incomplete-directed-pattern |
-| 91-16-B-j26-1 | 11: IR16 | rail | excluded | 0 / 32 | 0 / 31 | 450_IR_b | — | incomplete-directed-pattern |
+| 91-16-B-j26-1 | 11: IR16 | rail | admitted-all-dated-trips | 32 / 32 | 31 / 31 | 450_IR_b | bern-ir16-reviewed-fot-rail-20210706 | — |
 | 91-17-F-j26-1 | 11: IR17 | rail | partially-admitted | 0 / 1 | 2 / 2 | 450_RE | — | incomplete-directed-pattern |
 | 91-35-B-j26-1 | 11: IR35 | rail | partially-admitted | 2 / 16 | 1 / 16 | 450_IR_a | — | incomplete-directed-pattern |
 | 91-55-C-j26-1 | 11: IR55 | rail | excluded | 0 / 36 | 0 / 0 | — | — | no-verified-operator-line-crosswalk |
