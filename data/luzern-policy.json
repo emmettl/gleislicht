@@ -827,5 +827,31 @@
     },
     "inputs": "data/luzern-cableway-inputs.json",
     "inputsSha256": "4d0a61c4c67fd23284f212a9de6945cfaa2e9a2a3b2702a973ff99fc6df2a26a"
-  }
+  },
+  "roadPatternReviews": [
+    {
+      "id": "hochdorf-105-outbound-start",
+      "agencyId": "839",
+      "routeId": "92-105-j26-1",
+      "fromId": "ch:1:sloid:87716:0:1",
+      "toId": "ch:1:sloid:93391:0:1",
+      "patternId": "7c421ea6ce545a4505bcb04f",
+      "geometrySha256": "227a4649fc8c394830521f30d9c7372828a51368031e6ab01163185437945b83",
+      "reviewedOn": "2026-09-08",
+      "description": "Complete Oberstufenzentrum–Bankstrasse–Bahnhof–Beromünster pattern, with retained direct western approach.",
+      "qualification": "OSM full-pattern inference; not operator-confirmed street or diversion certification"
+    },
+    {
+      "id": "hochdorf-105-inbound-loop",
+      "agencyId": "839",
+      "routeId": "92-105-j26-1",
+      "fromId": "ch:1:sloid:87716:0:1",
+      "toId": "ch:1:sloid:93391:0:1",
+      "patternId": "ac40dfe4ea11e4b574a4875b",
+      "geometrySha256": "2a5dd5f3fce9130a8fb953b5afba67c5f80038ec34d8730ba932b0b2ca2f49de",
+      "reviewedOn": "2026-09-08",
+      "description": "Complete Beromünster–Bahnhof–Oberstufenzentrum–Bankstrasse–Bahnhof pattern, with retained northern loop.",
+      "qualification": "OSM full-pattern inference; not operator-confirmed street or diversion certification"
+    }
+  ]
 }

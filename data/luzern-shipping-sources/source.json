@@ -1,0 +1,25 @@
+{
+  "title": "swissTLM3D 2026-02, complete TLM_SCHIFFFAHRT class",
+  "catalogueUrl": "https://data.geo.admin.ch/api/stac/v1/collections/ch.swisstopo.swisstlm3d/items/swisstlm3d_2026-02",
+  "assetUrl": "https://data.geo.admin.ch/ch.swisstopo.swisstlm3d/swisstlm3d_2026-02/swisstlm3d_2026-02_2056_5728.shp.zip",
+  "catalogueDate": "2026-02-24T00:00:00Z",
+  "assetUpdated": "2026-08-20T11:00:52.010422Z",
+  "retrievedOn": "2026-09-08",
+  "sourceCrs": "EPSG:2056 / LN02",
+  "attribution": "© swisstopo",
+  "termsUrl": "https://www.swisstopo.admin.ch/en/terms-and-conditions",
+  "objectCatalogueUrl": "https://www.swisstopo.admin.ch/dam/de/sd-web/A3kQ2dAgenqG/2025-03",
+  "operatorNoticeUrl": "https://www.maihof-luzern.ch/rotsee/rotseefaehrewaerter",
+  "operatorNoticeAttribution": "Quartierverein Maihof Luzern",
+  "acquisition": "Complete DBF/SHP/SHX/PRJ members extracted using bounded HTTP Range requests and ZIP CRC checks. Member SHA-256 values below were measured locally. The multi-gigabyte parent archive was not downloaded or independently hash-verified.",
+  "publishedParentArchiveChecksum": "122075086B5AA7E721F5AD2EA080E14E9E3F42D5E0AFDEE31C2E3C162F412FAB4114",
+  "sha256": {
+    "catalogue.json": "ed1c47dd78b804829232ccf7d7449598b77fda5f8ca5bd1846c082a09202d4de",
+    "swissTLM3D_TLM_SCHIFFFAHRT.dbf": "b21d3cad6f7f65597b788dbbda060dd0220e08ef03713f2cb5b34de6df3f29d6",
+    "swissTLM3D_TLM_SCHIFFFAHRT.prj": "f160fd6f149ff8288abd2a59f56556d034e87a0fda3dbf463761faf4210c30f5",
+    "swissTLM3D_TLM_SCHIFFFAHRT.shp": "4c37fadd3050034ff26c5543f2d47de1aa189be09816c1d1cecf40aa049baa2b",
+    "swissTLM3D_TLM_SCHIFFFAHRT.shx": "44d7456f951c3a596af0ec93c3e9e3468f599dee23591906951d5b7a788b6de0",
+    "rotsee-status.html.gz": "f547b71cd7a4f4e38779732acb7920246e0cadd2696f52abb90736107acb7095"
+  },
+  "operatorNoticeUncompressedSha256": "b1d0f9fbe5fcd1a05056e8dce3594eb459b8150440c7ca4a9488e16777cac2ea"
+}

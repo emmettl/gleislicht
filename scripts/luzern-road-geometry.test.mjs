@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest'
-import { LUZERN_ROAD_SOURCE, roadConsensus, luzernRoadInputs, validateLuzernRoadScope } from './luzern-road-geometry.mjs'
+import { LUZERN_ROAD_SOURCE, roadConsensus, luzernRoadInputs, validateLuzernRoadScope, reviewedRoadContexts, roadContextKey, luzernRoadPatternId } from './luzern-road-geometry.mjs'
 import { roadPatternId } from './prepare-postbus-road-feed.mjs'
+import { sha256 } from './download-luzern-sources.mjs'
 
 const a = [8, 47, 'A', '', 'a'], b = [8.01, 47, 'B', '', 'b'], c = [8.02, 47, 'C', '', 'c']
 const limits = { detourRatio: 4.5, detourFloorMetres: 1200 }
@@ -74,5 +75,52 @@ describe('Luzern full-pattern road fallback', () => {
     expect(() => validateLuzernRoadScope(raw, cache)).not.toThrow()
     delete cache.agencies['801'].identities[Object.keys(cache.agencies['801'].identities)[0]]
     expect(() => validateLuzernRoadScope(raw, cache)).toThrow('every full bus pattern')
+  })
+})
+
+describe('reviewed Luzern road pattern exceptions', () => {
+  const detour = [a.slice(0, 2), [8.005, 47.002], b.slice(0, 2)]
+  function fixture() {
+    const cache = cacheFor([{ stops: [a, b], paths: [path] }, { stops: [a, b, c], paths: [detour, [b.slice(0, 2), c.slice(0, 2)]] }])
+    const ids = Object.keys(cache.agencies['801'].identities)
+    const reviews = ids.map((patternId, i) => ({ id: `review-${i}`, agencyId: '801', routeId: 'r', fromId: 'a', toId: 'b', patternId,
+      geometrySha256: sha256(JSON.stringify(i ? detour : path)) }))
+    return { cache, ids, reviews }
+  }
+  it('keeps two different accepted paths separate without changing reusable consensus', () => {
+    const { cache, ids, reviews } = fixture(), contexts = reviewedRoadContexts(cache, limits, reviews)
+    expect(roadConsensus(cache, limits).get(pair).path).toBeUndefined()
+    expect(contexts.get(roadContextKey('r', 'a', 'b', ids[0])).path).toEqual(path)
+    expect(contexts.get(roadContextKey('r', 'a', 'b', ids[1])).path).toEqual(detour)
+    expect(contexts.has(pair)).toBe(false)
+    expect(contexts.has(roadContextKey('r', 'b', 'a', ids[0]))).toBe(false)
+    expect(contexts.has(roadContextKey('other-route', 'a', 'b', ids[0]))).toBe(false)
+  })
+  it('only makes explicitly reviewed contexts available and pins their geometry', () => {
+    const { cache, reviews } = fixture()
+    expect(reviewedRoadContexts(cache, limits).size).toBe(0)
+    expect(reviewedRoadContexts(cache, limits, reviews.slice(0, 1)).size).toBe(1)
+    expect(() => reviewedRoadContexts(cache, limits, [reviews[0], reviews[0]])).toThrow('Duplicate')
+    expect(() => reviewedRoadContexts(cache, limits, [{ ...reviews[0], geometrySha256: 'changed' }])).toThrow('Changed reviewed context path')
+    expect(() => reviewedRoadContexts(cache, limits, [{ ...reviews[0], routeId: 'other' }])).toThrow('identity')
+  })
+  it('cannot rescue a failed occurrence, including another full pattern', () => {
+    const { cache, ids, reviews } = fixture()
+    cache.agencies['801'].cache.patterns[ids[1]][0] = null
+    expect(() => reviewedRoadContexts(cache, limits, [reviews[0]])).toThrow('valid but differing')
+    const loop = cacheFor([{ stops: [a, b, a, b], paths: [path, [...path].reverse(), detour] }])
+    const patternId = Object.keys(loop.agencies['801'].identities)[0]
+    expect(() => reviewedRoadContexts(loop, limits, [{ ...reviews[0], patternId }])).toThrow('ambiguous occurrence')
+  })
+  it('binds the full ordered coordinate/platform sequence, including repeated calls', () => {
+    const { cache, ids } = fixture()
+    const stops = new Map([a, b, c].map(s => [s[4], { stop_id: s[4], stop_lon: s[0], stop_lat: s[1], stop_name: s[2], platform_code: s[3] }]))
+    const train = { routeId: 'r', calls: [{ id: 'a' }, { id: 'b' }] }
+    expect(luzernRoadPatternId(train, stops)).toBe(ids[0])
+    expect(luzernRoadPatternId({ ...train, calls: [...train.calls, { id: 'c' }] }, stops)).toBe(ids[1])
+    expect(luzernRoadPatternId({ ...train, calls: [...train.calls, { id: 'a' }, { id: 'b' }] }, stops)).not.toBe(ids[0])
+    stops.get('a').stop_lon += 0.00001
+    expect(luzernRoadPatternId(train, stops)).not.toBe(ids[0])
+    expect(Object.keys(cache.agencies['801'].identities)).toEqual(ids)
   })
 })

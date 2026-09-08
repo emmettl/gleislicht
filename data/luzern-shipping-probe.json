@@ -1,0 +1,1642 @@
+{
+  "source": {
+    "title": "swissTLM3D 2026-02, complete TLM_SCHIFFFAHRT class",
+    "catalogueUrl": "https://data.geo.admin.ch/api/stac/v1/collections/ch.swisstopo.swisstlm3d/items/swisstlm3d_2026-02",
+    "assetUrl": "https://data.geo.admin.ch/ch.swisstopo.swisstlm3d/swisstlm3d_2026-02/swisstlm3d_2026-02_2056_5728.shp.zip",
+    "catalogueDate": "2026-02-24T00:00:00Z",
+    "assetUpdated": "2026-08-20T11:00:52.010422Z",
+    "retrievedOn": "2026-09-08",
+    "sourceCrs": "EPSG:2056 / LN02",
+    "attribution": "© swisstopo",
+    "termsUrl": "https://www.swisstopo.admin.ch/en/terms-and-conditions",
+    "objectCatalogueUrl": "https://www.swisstopo.admin.ch/dam/de/sd-web/A3kQ2dAgenqG/2025-03",
+    "operatorNoticeUrl": "https://www.maihof-luzern.ch/rotsee/rotseefaehrewaerter",
+    "operatorNoticeAttribution": "Quartierverein Maihof Luzern",
+    "acquisition": "Complete DBF/SHP/SHX/PRJ members extracted using bounded HTTP Range requests and ZIP CRC checks. Member SHA-256 values below were measured locally. The multi-gigabyte parent archive was not downloaded or independently hash-verified.",
+    "publishedParentArchiveChecksum": "122075086B5AA7E721F5AD2EA080E14E9E3F42D5E0AFDEE31C2E3C162F412FAB4114",
+    "sha256": {
+      "catalogue.json": "ed1c47dd78b804829232ccf7d7449598b77fda5f8ca5bd1846c082a09202d4de",
+      "swissTLM3D_TLM_SCHIFFFAHRT.dbf": "b21d3cad6f7f65597b788dbbda060dd0220e08ef03713f2cb5b34de6df3f29d6",
+      "swissTLM3D_TLM_SCHIFFFAHRT.prj": "f160fd6f149ff8288abd2a59f56556d034e87a0fda3dbf463761faf4210c30f5",
+      "swissTLM3D_TLM_SCHIFFFAHRT.shp": "4c37fadd3050034ff26c5543f2d47de1aa189be09816c1d1cecf40aa049baa2b",
+      "swissTLM3D_TLM_SCHIFFFAHRT.shx": "44d7456f951c3a596af0ec93c3e9e3468f599dee23591906951d5b7a788b6de0",
+      "rotsee-status.html.gz": "f547b71cd7a4f4e38779732acb7920246e0cadd2696f52abb90736107acb7095"
+    },
+    "operatorNoticeUncompressedSha256": "b1d0f9fbe5fcd1a05056e8dce3594eb459b8150440c7ca4a9488e16777cac2ea"
+  },
+  "classCount": 27,
+  "selection": "At least one source alignment endpoint in the full Luzern canton polygon; approximate LV95 to WGS84 transformation for inventory only",
+  "rows": [
+    {
+      "id": "{DD54A04F-A872-4AFF-801B-6A2815519317}",
+      "attributes": {
+        "UUID": "{DD54A04F-A872-4AFF-801B-6A2815519317}",
+        "DATUM_AEND": "20251208",
+        "DATUM_ERST": "20080109",
+        "ERSTELL_J": "2002",
+        "ERSTELL_M": "",
+        "REVISION_J": "2025",
+        "REVISION_M": "6",
+        "GRUND_AEND": "Verbessert",
+        "HERKUNFT": "swisstopo",
+        "HERKUNFT_J": "2025",
+        "HERKUNFT_M": "6",
+        "OBJEKTART": "Autofaehre",
+        "REVISION_Q": "Akt",
+        "OEV_NAME_U": "{9C06F47F-55E3-420E-A5C8-571516C4A554}",
+        "NAME": "Romanshorn-Friedrichshafen (D)"
+      },
+      "paths": [
+        [
+          [
+            2753676.9329999983,
+            1279819.0599999987,
+            397.72000000000116
+          ],
+          [
+            2753697.1559999995,
+            1279771.5089999996,
+            397.72000000000116
+          ],
+          [
+            2753549.035,
+            1279558.8929999992,
+            397.72000000000116
+          ],
+          [
+            2753514.8999999985,
+            1279482,
+            397.7189999999973
+          ],
+          [
+            2753504.6999999993,
+            1279400.8000000007,
+            397.7189999999973
+          ],
+          [
+            2753484.1000000015,
+            1279312,
+            397.7189999999973
+          ],
+          [
+            2753467.1999999993,
+            1279263.3000000007,
+            397.7189999999973
+          ],
+          [
+            2753446,
+            1279205.1000000015,
+            397.7189999999973
+          ],
+          [
+            2753411,
+            1279130.8000000007,
+            397.7189999999973
+          ],
+          [
+            2753370.3999999985,
+            1279058.8999999985,
+            397.7179999999935
+          ],
+          [
+            2753296.6000000015,
+            1278957,
+            397.7179999999935
+          ],
+          [
+            2753177.1999999993,
+            1278785.1000000015,
+            397.7179999999935
+          ],
+          [
+            2753017.8999999985,
+            1278557,
+            397.7170000000042
+          ],
+          [
+            2752822.8999999985,
+            1278279.5,
+            397.71600000000035
+          ],
+          [
+            2752689.6999999993,
+            1278089.5,
+            397.71600000000035
+          ],
+          [
+            2752625.3000000007,
+            1278000,
+            397.7149999999965
+          ],
+          [
+            2752510.1999999993,
+            1277839.5,
+            397.7149999999965
+          ],
+          [
+            2751893.6999999993,
+            1276971,
+            397.7109999999957
+          ],
+          [
+            2751201.1999999993,
+            1275993.5,
+            397.7069999999949
+          ],
+          [
+            2750862.5,
+            1275516,
+            397.70500000000175
+          ],
+          [
+            2750545,
+            1275069.8000000007,
+            397.7020000000048
+          ],
+          [
+            2750010,
+            1274317.3000000007,
+            397.6999999999971
+          ],
+          [
+            2749616.1999999993,
+            1273762.3000000007,
+            397.69899999999325
+          ],
+          [
+            2749316.1999999993,
+            1273342.3000000007,
+            397.6999999999971
+          ],
+          [
+            2748990,
+            1272884.8000000007,
+            397.69899999999325
+          ],
+          [
+            2748605,
+            1272342.3000000007,
+            397.6970000000001
+          ],
+          [
+            2748121.1999999993,
+            1271664.8000000007,
+            397.6959999999963
+          ],
+          [
+            2747661.1999999993,
+            1271021,
+            397.695000000007
+          ],
+          [
+            2747147.5,
+            1270299.8000000007,
+            397.69400000000314
+          ],
+          [
+            2747119.1999999993,
+            1270269.5,
+            397.69400000000314
+          ],
+          [
+            2747091.1999999993,
+            1270247.3000000007,
+            397.69400000000314
+          ],
+          [
+            2747053.1999999993,
+            1270226.8000000007,
+            397.6929999999993
+          ],
+          [
+            2747012.1999999993,
+            1270210.8000000007,
+            397.6929999999993
+          ],
+          [
+            2746970.6999999993,
+            1270203.8000000007,
+            397.6929999999993
+          ],
+          [
+            2746920,
+            1270201,
+            397.6929999999993
+          ],
+          [
+            2746718.5,
+            1270198.3000000007,
+            397.6929999999993
+          ],
+          [
+            2746417.1999999993,
+            1270194,
+            397.6929999999993
+          ],
+          [
+            2746314,
+            1270191.8000000007,
+            397.6929999999993
+          ],
+          [
+            2746253,
+            1270186.3000000007,
+            397.6929999999993
+          ],
+          [
+            2746221.1999999993,
+            1270176,
+            397.6929999999993
+          ],
+          [
+            2746200.5,
+            1270161.3000000007,
+            397.6929999999993
+          ],
+          [
+            2746186.6999999993,
+            1270144.8000000007,
+            397.6929999999993
+          ],
+          [
+            2746179,
+            1270124,
+            397.6929999999993
+          ],
+          [
+            2746174,
+            1270100,
+            397.69199999999546
+          ],
+          [
+            2746165.4010000005,
+            1270057.0610000007,
+            397.69199999999546
+          ],
+          [
+            2746165.8940000013,
+            1270030.421,
+            399.12600000000384
+          ]
+        ]
+      ],
+      "endpointsWgs84": [
+        [
+          9.4842308,
+          47.6509943
+        ],
+        [
+          9.3810678,
+          47.5647038
+        ]
+      ],
+      "endpointInCanton": [
+        false,
+        false
+      ],
+      "admitted": false
+    },
+    {
+      "id": "{510B7C72-C158-4B2C-942D-9F60A3A18764}",
+      "attributes": {
+        "UUID": "{510B7C72-C158-4B2C-942D-9F60A3A18764}",
+        "DATUM_AEND": "20211007",
+        "DATUM_ERST": "20080109",
+        "ERSTELL_J": "2002",
+        "ERSTELL_M": "",
+        "REVISION_J": "2019",
+        "REVISION_M": "6",
+        "GRUND_AEND": "Verbessert",
+        "HERKUNFT": "swisstopo",
+        "HERKUNFT_J": "2019",
+        "HERKUNFT_M": "6",
+        "OBJEKTART": "Personenfaehre",
+        "REVISION_Q": "2020_Akt",
+        "OEV_NAME_U": "{72413FE1-5F08-491F-A2AF-2E102AE346BA}",
+        "NAME": "Gertau-Degenau (Bischofszell)"
+      },
+      "paths": [
+        [
+          [
+            2740155.090999998,
+            1262406.8940000013,
+            485.02999999999884
+          ],
+          [
+            2740139.596999999,
+            1262370.515999999,
+            485.48399999999674
+          ]
+        ]
+      ],
+      "endpointsWgs84": [
+        [
+          9.2988177,
+          47.4974686
+        ],
+        [
+          9.2986007,
+          47.4971448
+        ]
+      ],
+      "endpointInCanton": [
+        false,
+        false
+      ],
+      "admitted": false
+    },
+    {
+      "id": "{C6B2F273-69CC-4298-87CC-8BDD2A176114}",
+      "attributes": {
+        "UUID": "{C6B2F273-69CC-4298-87CC-8BDD2A176114}",
+        "DATUM_AEND": "20140624",
+        "DATUM_ERST": "20080109",
+        "ERSTELL_J": "2000",
+        "ERSTELL_M": "",
+        "REVISION_J": "2019",
+        "REVISION_M": "6",
+        "GRUND_AEND": "Verbessert",
+        "HERKUNFT": "swisstopo",
+        "HERKUNFT_J": "2013",
+        "HERKUNFT_M": "6",
+        "OBJEKTART": "Personenfaehre",
+        "REVISION_Q": "2020_Akt",
+        "OEV_NAME_U": "{425C2D63-943A-4F50-85DE-3F959CDEFDFA}",
+        "NAME": "Kloster Fahr-Schlieren"
+      },
+      "paths": [
+        [
+          [
+            2675667.291000001,
+            1251138.6009999998,
+            388.57799999999406
+          ],
+          [
+            2675629.074000001,
+            1251166.1609999985,
+            388.57799999999406
+          ]
+        ]
+      ],
+      "endpointsWgs84": [
+        [
+          8.4411341,
+          47.4067134
+        ],
+        [
+          8.4406325,
+          47.4069657
+        ]
+      ],
+      "endpointInCanton": [
+        false,
+        false
+      ],
+      "admitted": false
+    },
+    {
+      "id": "{4F684DA2-B847-439A-8348-4BF6AD433281}",
+      "attributes": {
+        "UUID": "{4F684DA2-B847-439A-8348-4BF6AD433281}",
+        "DATUM_AEND": "20200227",
+        "DATUM_ERST": "20080109",
+        "ERSTELL_J": "2000",
+        "ERSTELL_M": "",
+        "REVISION_J": "2025",
+        "REVISION_M": "6",
+        "GRUND_AEND": "Verbessert",
+        "HERKUNFT": "swisstopo",
+        "HERKUNFT_J": "2019",
+        "HERKUNFT_M": "6",
+        "OBJEKTART": "Personenfaehre",
+        "REVISION_Q": "Akt",
+        "OEV_NAME_U": "{3E2ADCF4-161E-42D5-A4DB-67670D5DECD4}",
+        "NAME": "Ellikon-Nack"
+      },
+      "paths": [
+        [
+          [
+            2687084.0549999997,
+            1273426.0300000012,
+            345.61599999999453
+          ],
+          [
+            2686983.2980000004,
+            1273502.8460000008,
+            346.19899999999325
+          ]
+        ]
+      ],
+      "endpointsWgs84": [
+        [
+          8.5967272,
+          47.6057322
+        ],
+        [
+          8.5954025,
+          47.6064364
+        ]
+      ],
+      "endpointInCanton": [
+        false,
+        false
+      ],
+      "admitted": false
+    },
+    {
+      "id": "{F24C08D8-723C-461F-AD93-D969C6B58E8A}",
+      "attributes": {
+        "UUID": "{F24C08D8-723C-461F-AD93-D969C6B58E8A}",
+        "DATUM_AEND": "20200715",
+        "DATUM_ERST": "20080109",
+        "ERSTELL_J": "2000",
+        "ERSTELL_M": "",
+        "REVISION_J": "2025",
+        "REVISION_M": "6",
+        "GRUND_AEND": "Verbessert",
+        "HERKUNFT": "swisstopo",
+        "HERKUNFT_J": "2019",
+        "HERKUNFT_M": "6",
+        "OBJEKTART": "Personenfaehre",
+        "REVISION_Q": "Akt",
+        "OEV_NAME_U": "{4AB19A4C-9FAC-4399-9333-5BD236A1E3F1}",
+        "NAME": "Tössegg-Buchberg"
+      },
+      "paths": [
+        [
+          [
+            2684091.3539999984,
+            1267376.1220000014,
+            344.4640000000072
+          ],
+          [
+            2684280.34,
+            1267559.2719999999,
+            344.06299999999464
+          ]
+        ]
+      ],
+      "endpointsWgs84": [
+        [
+          8.5557894,
+          47.5517171
+        ],
+        [
+          8.5583344,
+          47.55334
+        ]
+      ],
+      "endpointInCanton": [
+        false,
+        false
+      ],
+      "admitted": false
+    },
+    {
+      "id": "{6A661DC4-73AE-45D9-BE7F-81D1D97A692A}",
+      "attributes": {
+        "UUID": "{6A661DC4-73AE-45D9-BE7F-81D1D97A692A}",
+        "DATUM_AEND": "20231102",
+        "DATUM_ERST": "20080109",
+        "ERSTELL_J": "2000",
+        "ERSTELL_M": "",
+        "REVISION_J": "2025",
+        "REVISION_M": "6",
+        "GRUND_AEND": "Verbessert",
+        "HERKUNFT": "swisstopo",
+        "HERKUNFT_J": "2022",
+        "HERKUNFT_M": "6",
+        "OBJEKTART": "Personenfaehre",
+        "REVISION_Q": "Akt",
+        "OEV_NAME_U": "{AF455AEC-C55F-4580-8823-3EA9346793E3}",
+        "NAME": "Schloss Laufen-Schlössli Wörth"
+      },
+      "paths": [
+        [
+          [
+            2688252.723000001,
+            1281345.574000001,
+            359.68300000000454
+          ],
+          [
+            2688073.7300000004,
+            1281430.5249999985,
+            359.7189999999973
+          ]
+        ]
+      ],
+      "endpointsWgs84": [
+        [
+          8.6138424,
+          47.6767922
+        ],
+        [
+          8.6114761,
+          47.6775802
+        ]
+      ],
+      "endpointInCanton": [
+        false,
+        false
+      ],
+      "admitted": false
+    },
+    {
+      "id": "{08F35FD6-DBD5-4F88-B983-389CC40600A5}",
+      "attributes": {
+        "UUID": "{08F35FD6-DBD5-4F88-B983-389CC40600A5}",
+        "DATUM_AEND": "20190522",
+        "DATUM_ERST": "20080109",
+        "ERSTELL_J": "1998",
+        "ERSTELL_M": "",
+        "REVISION_J": "2024",
+        "REVISION_M": "6",
+        "GRUND_AEND": "Verbessert",
+        "HERKUNFT": "swisstopo",
+        "HERKUNFT_J": "2018",
+        "HERKUNFT_M": "6",
+        "OBJEKTART": "Autofaehre",
+        "REVISION_Q": "Akt",
+        "OEV_NAME_U": "{F5815BF7-767A-47C9-8895-781A046A4A6B}",
+        "NAME": "Beckenried-Gersau"
+      },
+      "paths": [
+        [
+          [
+            2677691.322999999,
+            1202825.6259999983,
+            434.9389999999985
+          ],
+          [
+            2677699.278999999,
+            1202876.6479999982,
+            435.5390000000043
+          ],
+          [
+            2677711.4010000005,
+            1202905.6160000004,
+            435.5390000000043
+          ],
+          [
+            2677725.2010000013,
+            1202927.8299999982,
+            435.5390000000043
+          ],
+          [
+            2677740.0309999995,
+            1202943.9649999999,
+            435.5390000000043
+          ],
+          [
+            2677767.3850000016,
+            1202963.9739999995,
+            435.5390000000043
+          ],
+          [
+            2678539.528000001,
+            1203480.3960000016,
+            435.5369999999966
+          ],
+          [
+            2679319.6799999997,
+            1204006.4750000015,
+            435.5359999999928
+          ],
+          [
+            2680944.533,
+            1205095.300999999,
+            435.54099999999744
+          ]
+        ]
+      ],
+      "endpointsWgs84": [
+        [
+          8.4596213,
+          46.9719527
+        ],
+        [
+          8.5027729,
+          46.9919782
+        ]
+      ],
+      "endpointInCanton": [
+        false,
+        false
+      ],
+      "admitted": false
+    },
+    {
+      "id": "{8B4BA4F3-E643-4286-BBAD-9F3B9C0D7659}",
+      "attributes": {
+        "UUID": "{8B4BA4F3-E643-4286-BBAD-9F3B9C0D7659}",
+        "DATUM_AEND": "20201103",
+        "DATUM_ERST": "20080109",
+        "ERSTELL_J": "2000",
+        "ERSTELL_M": "",
+        "REVISION_J": "2019",
+        "REVISION_M": "6",
+        "GRUND_AEND": "Verbessert",
+        "HERKUNFT": "swisstopo",
+        "HERKUNFT_J": "2019",
+        "HERKUNFT_M": "6",
+        "OBJEKTART": "Personenfaehre",
+        "REVISION_Q": "2020_Akt",
+        "OEV_NAME_U": "{8F1BCDA3-192A-4B2E-87FB-71BC0C9B1B38}",
+        "NAME": "Insel Schwanau"
+      },
+      "paths": [
+        [
+          [
+            2688031.1779999994,
+            1209668.0430000015,
+            448.0880000000034
+          ],
+          [
+            2687982.0210000016,
+            1209542.6799999997,
+            448.58400000000256
+          ]
+        ]
+      ],
+      "endpointsWgs84": [
+        [
+          8.5968117,
+          47.0322039
+        ],
+        [
+          8.5961407,
+          47.0310829
+        ]
+      ],
+      "endpointInCanton": [
+        false,
+        false
+      ],
+      "admitted": false
+    },
+    {
+      "id": "{8C297A8A-BBCF-4379-BF9F-BA4F9E654EFB}",
+      "attributes": {
+        "UUID": "{8C297A8A-BBCF-4379-BF9F-BA4F9E654EFB}",
+        "DATUM_AEND": "20130108",
+        "DATUM_ERST": "20080109",
+        "ERSTELL_J": "2002",
+        "ERSTELL_M": "",
+        "REVISION_J": "2019",
+        "REVISION_M": "6",
+        "GRUND_AEND": "Verbessert",
+        "HERKUNFT": "swisstopo",
+        "HERKUNFT_J": "2010",
+        "HERKUNFT_M": "6",
+        "OBJEKTART": "Autofaehre",
+        "REVISION_Q": "2020_Akt",
+        "OEV_NAME_U": "{0760FE0F-F058-46D8-9679-95C3750A922A}",
+        "NAME": "Horgen-Meilen"
+      },
+      "paths": [
+        [
+          [
+            2688243.2749999985,
+            1234921.386,
+            407.8139999999985
+          ],
+          [
+            2690780.072999999,
+            1235901.7980000004,
+            407.81600000000617
+          ]
+        ]
+      ],
+      "endpointsWgs84": [
+        [
+          8.6045371,
+          47.2593007
+        ],
+        [
+          8.6382471,
+          47.2677742
+        ]
+      ],
+      "endpointInCanton": [
+        false,
+        false
+      ],
+      "admitted": false
+    },
+    {
+      "id": "{025D718D-FDD0-4056-8DFB-69CD5A7B759E}",
+      "attributes": {
+        "UUID": "{025D718D-FDD0-4056-8DFB-69CD5A7B759E}",
+        "DATUM_AEND": "20210908",
+        "DATUM_ERST": "20090105",
+        "ERSTELL_J": "2000",
+        "ERSTELL_M": "",
+        "REVISION_J": "2024",
+        "REVISION_M": "6",
+        "GRUND_AEND": "Verbessert",
+        "HERKUNFT": "swisstopo",
+        "HERKUNFT_J": "2021",
+        "HERKUNFT_M": "6",
+        "OBJEKTART": "Personenfaehre",
+        "REVISION_Q": "Akt",
+        "OEV_NAME_U": "{603B8447-55FA-4831-B2CB-9C263298F18E}",
+        "NAME": "Zurzach-Kadelburg"
+      },
+      "paths": [
+        [
+          [
+            2664357.25,
+            1273314.9290000014,
+            317.820000000007
+          ],
+          [
+            2664412.0810000002,
+            1273395.5949999988,
+            318.00999999999476
+          ]
+        ]
+      ],
+      "endpointsWgs84": [
+        [
+          8.2945048,
+          47.6073551
+        ],
+        [
+          8.2952456,
+          47.6080752
+        ]
+      ],
+      "endpointInCanton": [
+        false,
+        false
+      ],
+      "admitted": false
+    },
+    {
+      "id": "{35C3E853-452D-4B11-B3A0-A257DF32E615}",
+      "attributes": {
+        "UUID": "{35C3E853-452D-4B11-B3A0-A257DF32E615}",
+        "DATUM_AEND": "20141105",
+        "DATUM_ERST": "20090105",
+        "ERSTELL_J": "2000",
+        "ERSTELL_M": "",
+        "REVISION_J": "2024",
+        "REVISION_M": "6",
+        "GRUND_AEND": "Verbessert",
+        "HERKUNFT": "swisstopo",
+        "HERKUNFT_J": "2013",
+        "HERKUNFT_M": "6",
+        "OBJEKTART": "Personenfaehre",
+        "REVISION_Q": "Akt",
+        "OEV_NAME_U": "{73199D89-0A79-45B7-A986-201552C5F270}",
+        "NAME": "Rotsee"
+      },
+      "paths": [
+        [
+          [
+            2666540.1380000003,
+            1213749.8150000013,
+            419.8289999999979
+          ],
+          [
+            2666537.710999999,
+            1213745.9310000017,
+            419.8289999999979
+          ],
+          [
+            2666537.1750000007,
+            1213737.886,
+            419.8289999999979
+          ],
+          [
+            2666622.101,
+            1213522.0260000005,
+            419.8289999999979
+          ]
+        ]
+      ],
+      "endpointsWgs84": [
+        [
+          8.3146929,
+          47.0714217
+        ],
+        [
+          8.3157384,
+          47.0693647
+        ]
+      ],
+      "endpointInCanton": [
+        true,
+        true
+      ],
+      "admitted": false
+    },
+    {
+      "id": "{B09B692A-60D5-47CD-8A59-9FBA1BBEF0D6}",
+      "attributes": {
+        "UUID": "{B09B692A-60D5-47CD-8A59-9FBA1BBEF0D6}",
+        "DATUM_AEND": "20120905",
+        "DATUM_ERST": "20090105",
+        "ERSTELL_J": "2000",
+        "ERSTELL_M": "",
+        "REVISION_J": "2024",
+        "REVISION_M": "6",
+        "GRUND_AEND": "Verbessert",
+        "HERKUNFT": "swisstopo",
+        "HERKUNFT_J": "2010",
+        "HERKUNFT_M": "7",
+        "OBJEKTART": "Personenfaehre",
+        "REVISION_Q": "Akt",
+        "OEV_NAME_U": "{5BF2DA4D-B378-421A-A210-F9D827D8C749}",
+        "NAME": "Full-Waldshut"
+      },
+      "paths": [
+        [
+          [
+            2658346.1209999993,
+            1274540.7710000016,
+            311.7939999999944
+          ],
+          [
+            2658439.7349999994,
+            1274696.8249999993,
+            311.79499999999825
+          ]
+        ]
+      ],
+      "endpointsWgs84": [
+        [
+          8.2147309,
+          47.6189412
+        ],
+        [
+          8.2159966,
+          47.6203362
+        ]
+      ],
+      "endpointInCanton": [
+        false,
+        false
+      ],
+      "admitted": false
+    },
+    {
+      "id": "{74414DC9-4317-4561-B82F-EBDF9008F353}",
+      "attributes": {
+        "UUID": "{74414DC9-4317-4561-B82F-EBDF9008F353}",
+        "DATUM_AEND": "20141113",
+        "DATUM_ERST": "20090105",
+        "ERSTELL_J": "2006",
+        "ERSTELL_M": "",
+        "REVISION_J": "2024",
+        "REVISION_M": "6",
+        "GRUND_AEND": "Verbessert",
+        "HERKUNFT": "swisstopo",
+        "HERKUNFT_J": "2011",
+        "HERKUNFT_M": "3",
+        "OBJEKTART": "Personenfaehre",
+        "REVISION_Q": "Akt",
+        "OEV_NAME_U": "{8AB80E0B-8912-4423-A00D-BFCEE325F23A}",
+        "NAME": "Mumpf-Säckingen (D)"
+      },
+      "paths": [
+        [
+          [
+            2636449.833999999,
+            1266280.5899999999,
+            281.9170000000013
+          ],
+          [
+            2636470.2309999987,
+            1266419.495000001,
+            281.9170000000013
+          ]
+        ]
+      ],
+      "endpointsWgs84": [
+        [
+          7.9228082,
+          47.5462351
+        ],
+        [
+          7.9230906,
+          47.5474832
+        ]
+      ],
+      "endpointInCanton": [
+        false,
+        false
+      ],
+      "admitted": false
+    },
+    {
+      "id": "{92C2D515-6C27-4423-BC9B-36AC01822421}",
+      "attributes": {
+        "UUID": "{92C2D515-6C27-4423-BC9B-36AC01822421}",
+        "DATUM_AEND": "20241105",
+        "DATUM_ERST": "20090105",
+        "ERSTELL_J": "2005",
+        "ERSTELL_M": "",
+        "REVISION_J": "2024",
+        "REVISION_M": "6",
+        "GRUND_AEND": "Verbessert",
+        "HERKUNFT": "swisstopo",
+        "HERKUNFT_J": "2024",
+        "HERKUNFT_M": "6",
+        "OBJEKTART": "Personenfaehre",
+        "REVISION_Q": "Akt",
+        "OEV_NAME_U": "{2597F770-8474-4F29-B083-EA0931DD29AC}",
+        "NAME": "St. Johann Fähre \"Ueli\""
+      },
+      "paths": [
+        [
+          [
+            2610895.864,
+            1268751.6240000017,
+            246.38499999999476
+          ],
+          [
+            2611091.5639999993,
+            1268760.9530000016,
+            245.41300000000047
+          ]
+        ]
+      ],
+      "endpointsWgs84": [
+        [
+          7.5834314,
+          47.5693795
+        ],
+        [
+          7.5860323,
+          47.5694601
+        ]
+      ],
+      "endpointInCanton": [
+        false,
+        false
+      ],
+      "admitted": false
+    },
+    {
+      "id": "{A549747E-C3B2-4FCE-B204-252DAC0BEFF3}",
+      "attributes": {
+        "UUID": "{A549747E-C3B2-4FCE-B204-252DAC0BEFF3}",
+        "DATUM_AEND": "20241105",
+        "DATUM_ERST": "20090105",
+        "ERSTELL_J": "2005",
+        "ERSTELL_M": "",
+        "REVISION_J": "2024",
+        "REVISION_M": "6",
+        "GRUND_AEND": "Verbessert",
+        "HERKUNFT": "swisstopo",
+        "HERKUNFT_J": "2024",
+        "HERKUNFT_M": "6",
+        "OBJEKTART": "Personenfaehre",
+        "REVISION_Q": "Akt",
+        "OEV_NAME_U": "{907EB2F4-6F73-4DD1-B97C-5F2A25A14938}",
+        "NAME": "Klingental Fähre \"Vogel Gryff\""
+      },
+      "paths": [
+        [
+          [
+            2611128.6180000007,
+            1267927.046,
+            246.72999999999593
+          ],
+          [
+            2611277.460999999,
+            1268005.1900000013,
+            246.49499999999534
+          ]
+        ]
+      ],
+      "endpointsWgs84": [
+        [
+          7.5865039,
+          47.5619596
+        ],
+        [
+          7.5884835,
+          47.5626599
+        ]
+      ],
+      "endpointInCanton": [
+        false,
+        false
+      ],
+      "admitted": false
+    },
+    {
+      "id": "{1F68D76D-AA55-4C66-8140-FE53F4AD537A}",
+      "attributes": {
+        "UUID": "{1F68D76D-AA55-4C66-8140-FE53F4AD537A}",
+        "DATUM_AEND": "20241112",
+        "DATUM_ERST": "20090105",
+        "ERSTELL_J": "2005",
+        "ERSTELL_M": "",
+        "REVISION_J": "2024",
+        "REVISION_M": "6",
+        "GRUND_AEND": "Verbessert",
+        "HERKUNFT": "swisstopo",
+        "HERKUNFT_J": "2024",
+        "HERKUNFT_M": "6",
+        "OBJEKTART": "Personenfaehre",
+        "REVISION_Q": "Akt",
+        "OEV_NAME_U": "{76D12E5E-340D-4821-A512-CBF55438E335}",
+        "NAME": "Münster Fähre \"Leu\""
+      },
+      "paths": [
+        [
+          [
+            2611626.186999999,
+            1267385.9219999984,
+            247.29200000000128
+          ],
+          [
+            2611722.704,
+            1267501.4880000018,
+            247.0789999999979
+          ]
+        ]
+      ],
+      "endpointsWgs84": [
+        [
+          7.5931009,
+          47.5570843
+        ],
+        [
+          7.5943863,
+          47.5581219
+        ]
+      ],
+      "endpointInCanton": [
+        false,
+        false
+      ],
+      "admitted": false
+    },
+    {
+      "id": "{F3D18A35-3417-42E6-BEFD-3BD1DCEBED91}",
+      "attributes": {
+        "UUID": "{F3D18A35-3417-42E6-BEFD-3BD1DCEBED91}",
+        "DATUM_AEND": "20240911",
+        "DATUM_ERST": "20090105",
+        "ERSTELL_J": "2005",
+        "ERSTELL_M": "",
+        "REVISION_J": "2024",
+        "REVISION_M": "6",
+        "GRUND_AEND": "Verbessert",
+        "HERKUNFT": "swisstopo",
+        "HERKUNFT_J": "2024",
+        "HERKUNFT_M": "6",
+        "OBJEKTART": "Personenfaehre",
+        "REVISION_Q": "Akt",
+        "OEV_NAME_U": "{DBAF1221-7932-44AB-A0C6-B38432544F23}",
+        "NAME": "St. Alban Fähre \"Wild Maa\""
+      },
+      "paths": [
+        [
+          [
+            2612343.9510000013,
+            1267187.3460000008,
+            247.35899999999674
+          ],
+          [
+            2612322.7380000018,
+            1267350.0029999986,
+            247.4609999999957
+          ]
+        ]
+      ],
+      "endpointsWgs84": [
+        [
+          7.6026315,
+          47.5552853
+        ],
+        [
+          7.6023542,
+          47.5567486
+        ]
+      ],
+      "endpointInCanton": [
+        false,
+        false
+      ],
+      "admitted": false
+    },
+    {
+      "id": "{F7C32128-C4CF-4CEB-97F4-A87EEE18F3FD}",
+      "attributes": {
+        "UUID": "{F7C32128-C4CF-4CEB-97F4-A87EEE18F3FD}",
+        "DATUM_AEND": "20240719",
+        "DATUM_ERST": "20090105",
+        "ERSTELL_J": "2006",
+        "ERSTELL_M": "",
+        "REVISION_J": "2024",
+        "REVISION_M": "6",
+        "GRUND_AEND": "Verbessert",
+        "HERKUNFT": "swisstopo",
+        "HERKUNFT_J": "2024",
+        "HERKUNFT_M": "6",
+        "OBJEKTART": "Personenfaehre",
+        "REVISION_Q": "Akt",
+        "OEV_NAME_U": "{1366A40D-0640-4F42-AC0F-77046A87EFC6}",
+        "NAME": "Wolfwil-Wynau"
+      },
+      "paths": [
+        [
+          [
+            2627145.3260000013,
+            1235075.6009999998,
+            402.5280000000057
+          ],
+          [
+            2627218.822999999,
+            1235026.1290000007,
+            402.8929999999964
+          ]
+        ]
+      ],
+      "endpointsWgs84": [
+        [
+          7.7973229,
+          47.266025
+        ],
+        [
+          7.7982911,
+          47.265577
+        ]
+      ],
+      "endpointInCanton": [
+        false,
+        false
+      ],
+      "admitted": false
+    },
+    {
+      "id": "{265FCAFD-EA19-458F-9975-770018BE2EB6}",
+      "attributes": {
+        "UUID": "{265FCAFD-EA19-458F-9975-770018BE2EB6}",
+        "DATUM_AEND": "20250113",
+        "DATUM_ERST": "20090105",
+        "ERSTELL_J": "2004",
+        "ERSTELL_M": "",
+        "REVISION_J": "2024",
+        "REVISION_M": "6",
+        "GRUND_AEND": "Verbessert",
+        "HERKUNFT": "swisstopo",
+        "HERKUNFT_J": "2024",
+        "HERKUNFT_M": "6",
+        "OBJEKTART": "Personenfaehre",
+        "REVISION_Q": "Akt",
+        "OEV_NAME_U": "{BAF2499F-8382-4F5D-92FE-05F6A46173E2}",
+        "NAME": "Bodenacker (Muri bei Bern)-Nesslern (Kleinwabern)"
+      },
+      "paths": [
+        [
+          [
+            2602430.1149999984,
+            1197145.482999999,
+            504.8099999999977
+          ],
+          [
+            2602458.671,
+            1197168.9010000005,
+            504.5399999999936
+          ]
+        ]
+      ],
+      "endpointsWgs84": [
+        [
+          7.4705441,
+          46.9253997
+        ],
+        [
+          7.4709192,
+          46.9256102
+        ]
+      ],
+      "endpointInCanton": [
+        false,
+        false
+      ],
+      "admitted": false
+    },
+    {
+      "id": "{4F40569C-310A-47E1-8D40-92197DCDD077}",
+      "attributes": {
+        "UUID": "{4F40569C-310A-47E1-8D40-92197DCDD077}",
+        "DATUM_AEND": "20250212",
+        "DATUM_ERST": "20090105",
+        "ERSTELL_J": "2004",
+        "ERSTELL_M": "",
+        "REVISION_J": "2024",
+        "REVISION_M": "6",
+        "GRUND_AEND": "Verbessert",
+        "HERKUNFT": "swisstopo",
+        "HERKUNFT_J": "2024",
+        "HERKUNFT_M": "6",
+        "OBJEKTART": "Personenfaehre",
+        "REVISION_Q": "Akt",
+        "OEV_NAME_U": "{BBAB47FF-9045-4A98-9D89-3F557A64F3FD}",
+        "NAME": "Zehendermätteli (Engehalbinsel)-Bremgarten"
+      },
+      "paths": [
+        [
+          [
+            2600254.6330000013,
+            1203252.0069999993,
+            485.7979999999952
+          ],
+          [
+            2600219.2509999983,
+            1203286.3880000003,
+            485.49000000000524
+          ]
+        ]
+      ],
+      "endpointsWgs84": [
+        [
+          7.4419839,
+          46.9803334
+        ],
+        [
+          7.4415189,
+          46.9806427
+        ]
+      ],
+      "endpointInCanton": [
+        false,
+        false
+      ],
+      "admitted": false
+    },
+    {
+      "id": "{F236D009-FA38-4553-AB1D-5653E4AA339C}",
+      "attributes": {
+        "UUID": "{F236D009-FA38-4553-AB1D-5653E4AA339C}",
+        "DATUM_AEND": "20250206",
+        "DATUM_ERST": "20090105",
+        "ERSTELL_J": "2005",
+        "ERSTELL_M": "",
+        "REVISION_J": "2024",
+        "REVISION_M": "6",
+        "GRUND_AEND": "Verbessert",
+        "HERKUNFT": "swisstopo",
+        "HERKUNFT_J": "2024",
+        "HERKUNFT_M": "6",
+        "OBJEKTART": "Personenfaehre",
+        "REVISION_Q": "Akt",
+        "OEV_NAME_U": "{4B1A1C3B-BA1B-4FC0-B336-27B677F12BC4}",
+        "NAME": "Leuzigen-Altreu"
+      },
+      "paths": [
+        [
+          [
+            2600721.905000001,
+            1226565.2410000004,
+            426.62600000000384
+          ],
+          [
+            2600894.397999998,
+            1226438.8079999983,
+            426.8310000000056
+          ]
+        ]
+      ],
+      "endpointsWgs84": [
+        [
+          7.4481626,
+          47.1900347
+        ],
+        [
+          7.4504383,
+          47.1888972
+        ]
+      ],
+      "endpointInCanton": [
+        false,
+        false
+      ],
+      "admitted": false
+    },
+    {
+      "id": "{A233AE2D-2523-4C3C-B1C9-DB1D22DB661A}",
+      "attributes": {
+        "UUID": "{A233AE2D-2523-4C3C-B1C9-DB1D22DB661A}",
+        "DATUM_AEND": "20130613",
+        "DATUM_ERST": "20090513",
+        "ERSTELL_J": "2008",
+        "ERSTELL_M": "5",
+        "REVISION_J": "2025",
+        "REVISION_M": "6",
+        "GRUND_AEND": "Verbessert",
+        "HERKUNFT": "swisstopo",
+        "HERKUNFT_J": "2011",
+        "HERKUNFT_M": "5",
+        "OBJEKTART": "Personenfaehre",
+        "REVISION_Q": "Akt",
+        "OEV_NAME_U": "{5D8112FB-E000-4F0F-94C7-536C528258CE}",
+        "NAME": "Paradies/Schlatt-Büsingen (D)"
+      },
+      "paths": [
+        [
+          [
+            2692768.0890000015,
+            1282354.2980000004,
+            391.83400000000256
+          ],
+          [
+            2692699.7080000006,
+            1282490.572999999,
+            392.30899999999383
+          ]
+        ]
+      ],
+      "endpointsWgs84": [
+        [
+          8.6741728,
+          47.6852393
+        ],
+        [
+          8.6732907,
+          47.6864744
+        ]
+      ],
+      "endpointInCanton": [
+        false,
+        false
+      ],
+      "admitted": false
+    },
+    {
+      "id": "{91CF5270-2668-4DD3-AEF9-F9A7ED5E44C3}",
+      "attributes": {
+        "UUID": "{91CF5270-2668-4DD3-AEF9-F9A7ED5E44C3}",
+        "DATUM_AEND": "20250224",
+        "DATUM_ERST": "20110207",
+        "ERSTELL_J": "2010",
+        "ERSTELL_M": "3",
+        "REVISION_J": "2024",
+        "REVISION_M": "6",
+        "GRUND_AEND": "Verbessert",
+        "HERKUNFT": "swisstopo",
+        "HERKUNFT_J": "2024",
+        "HERKUNFT_M": "6",
+        "OBJEKTART": "Personenfaehre",
+        "REVISION_Q": "Akt",
+        "OEV_NAME_U": "{23F9460E-649D-49BA-A5E4-0ADF16976C4A}",
+        "NAME": "Reichenbach (Unterzollikofen)-Engehalbinsel"
+      },
+      "paths": [
+        [
+          [
+            2600924.8379999995,
+            1204323.8660000004,
+            486.4719999999943
+          ],
+          [
+            2600916.221999999,
+            1204357.938000001,
+            486.65899999999965
+          ]
+        ]
+      ],
+      "endpointsWgs84": [
+        [
+          7.4507947,
+          46.9899744
+        ],
+        [
+          7.4506816,
+          46.9902809
+        ]
+      ],
+      "endpointInCanton": [
+        false,
+        false
+      ],
+      "admitted": false
+    },
+    {
+      "id": "{74707C6F-C3A1-43E5-88D8-00BCED6BF5F5}",
+      "attributes": {
+        "UUID": "{74707C6F-C3A1-43E5-88D8-00BCED6BF5F5}",
+        "DATUM_AEND": "20250227",
+        "DATUM_ERST": "20110516",
+        "ERSTELL_J": "2010",
+        "ERSTELL_M": "4",
+        "REVISION_J": "2024",
+        "REVISION_M": "6",
+        "GRUND_AEND": "Verbessert",
+        "HERKUNFT": "swisstopo",
+        "HERKUNFT_J": "2024",
+        "HERKUNFT_M": "6",
+        "OBJEKTART": "Personenfaehre",
+        "REVISION_Q": "Akt",
+        "OEV_NAME_U": "{EB4F0896-B012-418E-A67F-F5F0CC50119E}",
+        "NAME": "Scherzligen-Bächimatt"
+      },
+      "paths": [
+        [
+          [
+            2615112.864,
+            1177414.136,
+            558.4100000000035
+          ],
+          [
+            2615177.1510000005,
+            1177464.2239999995,
+            557.7740000000049
+          ]
+        ]
+      ],
+      "endpointsWgs84": [
+        [
+          7.6364127,
+          46.7477423
+        ],
+        [
+          7.6372556,
+          46.7481914
+        ]
+      ],
+      "endpointInCanton": [
+        false,
+        false
+      ],
+      "admitted": false
+    },
+    {
+      "id": "{8916F99E-2AB7-408B-A1AB-0F7D47076039}",
+      "attributes": {
+        "UUID": "{8916F99E-2AB7-408B-A1AB-0F7D47076039}",
+        "DATUM_AEND": "20141113",
+        "DATUM_ERST": "20120831",
+        "ERSTELL_J": "2011",
+        "ERSTELL_M": "3",
+        "REVISION_J": "2024",
+        "REVISION_M": "6",
+        "GRUND_AEND": "Verbessert",
+        "HERKUNFT": "swisstopo",
+        "HERKUNFT_J": "2011",
+        "HERKUNFT_M": "3",
+        "OBJEKTART": "Personenfaehre",
+        "REVISION_Q": "Akt",
+        "OEV_NAME_U": "{F8052B38-95ED-4007-B6F6-DB123B22C1B5}",
+        "NAME": "Kaiseraugst-Herten"
+      },
+      "paths": [
+        [
+          [
+            2621640.1149999984,
+            1265694.8249999993,
+            261.3179999999993
+          ],
+          [
+            2621532.541000001,
+            1265850.0579999983,
+            261.3179999999993
+          ]
+        ]
+      ],
+      "endpointsWgs84": [
+        [
+          7.7260613,
+          47.5416216
+        ],
+        [
+          7.72464,
+          47.5430212
+        ]
+      ],
+      "endpointInCanton": [
+        false,
+        false
+      ],
+      "admitted": false
+    },
+    {
+      "id": "{FF078D76-6408-4EF8-9005-9B20D1A7FD25}",
+      "attributes": {
+        "UUID": "{FF078D76-6408-4EF8-9005-9B20D1A7FD25}",
+        "DATUM_AEND": "20210910",
+        "DATUM_ERST": "20130107",
+        "ERSTELL_J": "2010",
+        "ERSTELL_M": "6",
+        "REVISION_J": "2024",
+        "REVISION_M": "6",
+        "GRUND_AEND": "Verbessert",
+        "HERKUNFT": "swisstopo",
+        "HERKUNFT_J": "2021",
+        "HERKUNFT_M": "6",
+        "OBJEKTART": "Personenfaehre",
+        "REVISION_Q": "Akt",
+        "OEV_NAME_U": "{B1CBE52D-FD89-4247-A0CB-D79B6511B1E0}",
+        "NAME": "Sulz-Fischbach"
+      },
+      "paths": [
+        [
+          [
+            2666750.3619999997,
+            1247636.0799999982,
+            355.86900000000605
+          ],
+          [
+            2666718.4580000006,
+            1247697.824000001,
+            355.88700000000244
+          ]
+        ]
+      ],
+      "endpointsWgs84": [
+        [
+          8.3224838,
+          47.3761769
+        ],
+        [
+          8.3220706,
+          47.3767354
+        ]
+      ],
+      "endpointInCanton": [
+        false,
+        false
+      ],
+      "admitted": false
+    },
+    {
+      "id": "{8FE73957-EB88-4E29-BB78-3A3FB16BD9E0}",
+      "attributes": {
+        "UUID": "{8FE73957-EB88-4E29-BB78-3A3FB16BD9E0}",
+        "DATUM_AEND": "20230821",
+        "DATUM_ERST": "20180130",
+        "ERSTELL_J": "2017",
+        "ERSTELL_M": "6",
+        "REVISION_J": "2023",
+        "REVISION_M": "6",
+        "GRUND_AEND": "Verbessert",
+        "HERKUNFT": "swisstopo",
+        "HERKUNFT_J": "2023",
+        "HERKUNFT_M": "6",
+        "OBJEKTART": "Personenfaehre",
+        "REVISION_Q": "Akt",
+        "OEV_NAME_U": "{CC1FBB7E-8E71-4E61-8DD7-53EFA17C6DE5}",
+        "NAME": "Tariche"
+      },
+      "paths": [
+        [
+          [
+            2577458.1270000003,
+            1242735.5810000002,
+            445.1729999999952
+          ],
+          [
+            2577457.0639999993,
+            1242734.2619999982,
+            444.2780000000057
+          ],
+          [
+            2577435.0119999982,
+            1242690.6229999997,
+            444.23799999999756
+          ],
+          [
+            2577435.3090000004,
+            1242690.0940000005,
+            444.4609999999957
+          ]
+        ]
+      ],
+      "endpointsWgs84": [
+        [
+          7.1403943,
+          47.3350952
+        ],
+        [
+          7.1400947,
+          47.3346853
+        ]
+      ],
+      "endpointInCanton": [
+        false,
+        false
+      ],
+      "admitted": false
+    }
+  ],
+  "sourceOnlyExclusions": [
+    {
+      "sourceId": "{35C3E853-452D-4B11-B3A0-A257DF32E615}",
+      "name": "Rotsee",
+      "reason": "owner-reports-suspended-since-2025-04-01; no-reviewed-timetable-binding",
+      "geometryModified": "20141105",
+      "geometryRevisionYear": "2024",
+      "operatorNoticeUrl": "https://www.maihof-luzern.ch/rotsee/rotseefaehrewaerter",
+      "admitted": false
+    }
+  ],
+  "conclusion": "The national class contains ferry crossings, not a route-bound SGV or Hallwilersee course network. Beckenried–Gersau is a separate car ferry. No source feature is substituted for the eight annual lake-service routes.",
+  "scopeLimit": "This inventory does not infer a departure schedule from topographic geometry, enumerate all services absent from GTFS, or establish an exact cadastral boundary test."
+}

@@ -100,6 +100,41 @@ export function roadConsensus(cache, limits) {
   }))
 }
 
+export const roadContextKey = (routeId, fromId, toId, patternId) => JSON.stringify([routeId, fromId, toId, patternId])
+
+// Explicitly reviewed exceptions are bound to the COMPLETE routing input. They
+// never enter the reusable pair map. Repeated pairs within that input must still
+// agree, and a failed matcher occurrence can never be rescued by this mechanism.
+export function reviewedRoadContexts(cache, limits, reviews = []) {
+  const consensus = roadConsensus(cache, limits), result = new Map()
+  for (const review of reviews) {
+    const { agencyId, routeId, fromId, toId, patternId, geometrySha256 } = review
+    const agency = cache.agencies[agencyId], identity = agency?.identities[patternId]
+    assert(identity && identity.routeId === routeId, 'Changed reviewed road context identity')
+    const pairKey = JSON.stringify([routeId, fromId, toId]), shared = consensus.get(pairKey)
+    assert.equal(shared?.reason, 'road-pattern-dependent-path', 'Context exception requires valid but differing full-pattern paths')
+    const isolated = { schemaVersion: cache.schemaVersion, agencies: { [agencyId]: { ...agency,
+      identities: { [patternId]: identity }, cache: { ...agency.cache, patterns: { [patternId]: agency.cache.patterns[patternId] } } } } }
+    const road = roadConsensus(isolated, limits).get(pairKey)
+    assert(road?.path, 'Reviewed context has a failed or ambiguous occurrence')
+    assert.equal(sha256(JSON.stringify(road.path)), geometrySha256, 'Changed reviewed context path')
+    const key = roadContextKey(routeId, fromId, toId, patternId)
+    assert(!result.has(key), 'Duplicate reviewed road context')
+    result.set(key, { ...road, geometrySource: 'osm-road-pattern-inference', roadContextId: review.id,
+      roadPatternId: patternId, basePairKey: pairKey, sharedPairAssessment: shared })
+  }
+  return result
+}
+
+export function luzernRoadPatternId(train, stops) {
+  const selected = train.calls.map(c => {
+    const s = stops.get(c.id)
+    assert(s, 'Missing road context stop')
+    return [Number(s.stop_lon), Number(s.stop_lat), s.stop_name, s.platform_code, s.stop_id]
+  })
+  return roadPatternId({ routeId: train.routeId, stops: selected.map((_, i) => [i]) }, selected)
+}
+
 export function validateLuzernRoadScope(raw, cache) {
   assert.deepEqual(raw.dates, cache.metadata.dates)
   const { stops, agencies } = luzernRoadInputs(raw)
