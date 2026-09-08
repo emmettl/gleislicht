@@ -1,0 +1,4839 @@
+<WFS_Capabilities xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:gml="http://www.opengis.net/gml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.1.0" xmlns:ows="http://www.opengis.net/ows" xmlns="http://www.opengis.net/wfs" xsi:schemaLocation="http://www.opengis.net/wfs http://schemas.opengis.net/wfs/1.1.0/wfs.xsd" updateSequence="0" xmlns:ogc="http://www.opengis.net/ogc">
+ <ows:ServiceIdentification>
+  <ows:Title>Geoservizi WFS dei dati di competenza dell'Amministrazione Cantonale </ows:Title>
+  <ows:Abstract><![CDATA[Geoservizi WFS che espongono geodati relativi al territorio della Repubblica e Canton Ticino, di competenza dell'Amministrazion Cantonale.]]></ows:Abstract>
+  <ows:Keywords>
+   <ows:Keyword>Geodati di base</ows:Keyword>
+   <ows:Keyword>Dati territoriali</ows:Keyword>
+   <ows:Keyword>Dati spaziali</ows:Keyword>
+   <ows:Keyword>Misurazione ufficiale</ows:Keyword>
+   <ows:Keyword>Piani regolatori</ows:Keyword>
+  </ows:Keywords>
+  <ows:ServiceType>WFS</ows:ServiceType>
+  <ows:ServiceTypeVersion>1.1.0</ows:ServiceTypeVersion>
+  <ows:Fees>no conditions apply</ows:Fees>
+  <ows:AccessConstraints>Richiesta formale a ccgeo@ti.ch</ows:AccessConstraints>
+ </ows:ServiceIdentification>
+ <ows:ServiceProvider>
+  <ows:ProviderName>Repubblica e Cantone Ticino</ows:ProviderName>
+  <ows:ServiceContact>
+   <ows:IndividualName>Centro di competenza per la geoinformazione</ows:IndividualName>
+   <ows:PositionName>Via Franco Zorzi 13, 6500 Bellinzona</ows:PositionName>
+   <ows:Role>PointOfContact</ows:Role>
+  </ows:ServiceContact>
+ </ows:ServiceProvider>
+ <ows:OperationsMetadata>
+  <ows:Operation name="GetCapabilities">
+   <ows:DCP>
+    <ows:HTTP>
+     <ows:Get xlink:href="https://wfs.geo.ti.ch/wfs/?MAP=/project/wfs.qgz"/>
+     <ows:Post xlink:href="https://wfs.geo.ti.ch/wfs/?MAP=/project/wfs.qgz"/>
+    </ows:HTTP>
+   </ows:DCP>
+   <ows:Parameter name="service">
+    <ows:Value>WFS</ows:Value>
+   </ows:Parameter>
+   <ows:Parameter name="AcceptVersions">
+    <ows:Value>1.1.0</ows:Value>
+    <ows:Value>1.0.0</ows:Value>
+   </ows:Parameter>
+   <ows:Parameter name="AcceptFormats">
+    <ows:Value>text/xml</ows:Value>
+   </ows:Parameter>
+  </ows:Operation>
+  <ows:Operation name="DescribeFeatureType">
+   <ows:DCP>
+    <ows:HTTP>
+     <ows:Get xlink:href="https://wfs.geo.ti.ch/wfs/?MAP=/project/wfs.qgz"/>
+     <ows:Post xlink:href="https://wfs.geo.ti.ch/wfs/?MAP=/project/wfs.qgz"/>
+    </ows:HTTP>
+   </ows:DCP>
+   <ows:Parameter name="outputFormat">
+    <ows:Value>XMLSCHEMA</ows:Value>
+    <ows:Value>text/xml; subtype=gml/2.1.2</ows:Value>
+    <ows:Value>text/xml; subtype=gml/3.1.1</ows:Value>
+   </ows:Parameter>
+  </ows:Operation>
+  <ows:Operation name="GetFeature">
+   <ows:DCP>
+    <ows:HTTP>
+     <ows:Get xlink:href="https://wfs.geo.ti.ch/wfs/?MAP=/project/wfs.qgz"/>
+     <ows:Post xlink:href="https://wfs.geo.ti.ch/wfs/?MAP=/project/wfs.qgz"/>
+    </ows:HTTP>
+   </ows:DCP>
+   <ows:Parameter name="outputFormat">
+    <ows:Value>text/xml; subtype=gml/2.1.2</ows:Value>
+    <ows:Value>text/xml; subtype=gml/3.1.1</ows:Value>
+    <ows:Value>application/vnd.geo+json</ows:Value>
+   </ows:Parameter>
+   <ows:Parameter name="resultType">
+    <ows:Value>results</ows:Value>
+    <ows:Value>hits</ows:Value>
+   </ows:Parameter>
+  </ows:Operation>
+  <ows:Operation name="Transaction">
+   <ows:DCP>
+    <ows:HTTP>
+     <ows:Get xlink:href="https://wfs.geo.ti.ch/wfs/?MAP=/project/wfs.qgz"/>
+     <ows:Post xlink:href="https://wfs.geo.ti.ch/wfs/?MAP=/project/wfs.qgz"/>
+    </ows:HTTP>
+   </ows:DCP>
+   <ows:Parameter name="inputFormat">
+    <ows:Value>text/xml; subtype=gml/2.1.2</ows:Value>
+    <ows:Value>text/xml; subtype=gml/3.1.1</ows:Value>
+    <ows:Value>application/vnd.geo+json</ows:Value>
+   </ows:Parameter>
+  </ows:Operation>
+ </ows:OperationsMetadata>
+ <FeatureTypeList>
+  <Operations>
+   <Operation>Query</Operation>
+  </Operations>
+  <FeatureType>
+   <Name>ac_001_1_v1_1_disponibilita_catasto_rdpp</Name>
+   <Title>[AC-001.1] Disponibilità del Catasto RDPP</Title>
+   <Abstract>Disponibilità del Catasto RDPP</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.371285 45.816037</ows:LowerCorner>
+    <ows:UpperCorner>9.174333 46.638608</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_002_1_v1_1_limiti_giurisdizionali_indicativi_limiti_cantone</Name>
+   <Title>[AC-002.1] Limiti giurisdizionali indicativi - Limite cantone</Title>
+   <Abstract>Limite cantone</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.371279 45.816033</ows:LowerCorner>
+    <ows:UpperCorner>9.17434 46.638614</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_002_1_v1_1_limiti_giurisdizionali_indicativi_limiti_comune</Name>
+   <Title>[AC-002.1] Limiti giurisdizionali indicativi - Limiti comuni</Title>
+   <Abstract>Limiti comuni</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.371279 45.816033</ows:LowerCorner>
+    <ows:UpperCorner>9.17434 46.638614</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_002_1_v1_1_limiti_giurisdizionali_indicativi_limiti_distretto</Name>
+   <Title>[AC-002.1] Limiti giurisdizionali indicativi - Limiti distretti</Title>
+   <Abstract>Limiti distretti</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.371279 45.816033</ows:LowerCorner>
+    <ows:UpperCorner>9.17434 46.638614</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_002_1_v1_1_limiti_giurisdizionali_indicativi_limiti_sezione</Name>
+   <Title>[AC-002.1] Limiti giurisdizionali indicativi - Limiti sezioni</Title>
+   <Abstract>Limiti sezioni</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.371279 45.816033</ows:LowerCorner>
+    <ows:UpperCorner>9.17434 46.638614</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_003_1_v2_0_suddivisione_lotti_misurazione_ufficiale</Name>
+   <Title>[AC-003.1] Suddivisione lotti misurazione ufficiale</Title>
+   <Abstract>Suddivisione lotti misurazione ufficiale</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.371279 45.816033</ows:LowerCorner>
+    <ows:UpperCorner>9.174316 46.638614</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_004_1_v1_1_guida_letteraria_svizzera_italiana_citazioni</Name>
+   <Title>[AC-004.1] Guida letteraria della Svizzera italiana - Citazioni</Title>
+   <Abstract>Citazioni</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.37825 45.805515</ows:LowerCorner>
+    <ows:UpperCorner>10.163252 46.616678</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_004_1_v1_1_guida_letteraria_svizzera_italiana_luoghi</Name>
+   <Title>[AC-004.1] Guida letteraria della Svizzera italiana - Luoghi</Title>
+   <Abstract>Luoghi</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.512123 45.812578</ows:LowerCorner>
+    <ows:UpperCorner>10.072146 46.55579</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_005_1_v1_0_cancro_platano_punto_infezione</Name>
+   <Title>[AC-005.1] Cancro del platano - Punti infezione</Title>
+   <Abstract>Punti infezione</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.809101 45.839926</ows:LowerCorner>
+    <ows:UpperCorner>8.995412 46.044292</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_005_1_v1_0_cancro_platano_zona_focolaio</Name>
+   <Title>[AC-005.1] Cancro del platano - Zone focolaio</Title>
+   <Abstract>Zone focolaio</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.805173 45.837174</ows:LowerCorner>
+    <ows:UpperCorner>8.999364 46.047037</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_005_1_v1_0_cancro_platano_zona_tampone</Name>
+   <Title>[AC-005.1] Cancro del platano - Zone tampone</Title>
+   <Abstract>Zone tampone</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.796009 45.830754</ows:LowerCorner>
+    <ows:UpperCorner>9.008586 46.053443</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_006_1_v1_1_cantieri_stradali_linee</Name>
+   <Title>[AC-006.1] Cantieri stradali - Linee</Title>
+   <Abstract>Linee</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.463252 45.825653</ows:LowerCorner>
+    <ows:UpperCorner>9.061308 46.539352</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_006_1_v1_1_cantieri_stradali_punti</Name>
+   <Title>[AC-006.1] Cantieri stradali - Punti</Title>
+   <Abstract>Punti</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.473733 45.825807</ows:LowerCorner>
+    <ows:UpperCorner>9.06097 46.53734</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_008_1_v1_0_piani_evacuazione_punto_raccolta</Name>
+   <Title>[AC-008.1] Piani di evacuazione - Punti di raccolta</Title>
+   <Abstract>Punti di raccolta</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.515542 46.134</ows:LowerCorner>
+    <ows:UpperCorner>9.079565 46.57476</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_008_1_v1_0_piani_evacuazione_via_fuga</Name>
+   <Title>[AC-008.1] Piani di evacuazione - Vie di fuga</Title>
+   <Abstract>Vie di fuga</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.516607 46.133094</ows:LowerCorner>
+    <ows:UpperCorner>9.078812 46.574059</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_008_1_v1_0_piani_evacuazione_zona_evacuazione</Name>
+   <Title>[AC-008.1] Piani di evacuazione - Zone di evacuazione</Title>
+   <Abstract>Zone di evacuazione</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.508517 46.129209</ows:LowerCorner>
+    <ows:UpperCorner>9.091235 46.57543</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_009_1_v1_1_piano_direttore_cantonale_linea</Name>
+   <Title>[AC-009.1] Piano direttore cantonale - Linea</Title>
+   <Abstract>Linea</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.304586 45.82877</ows:LowerCorner>
+    <ows:UpperCorner>9.302414 46.723431</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_009_1_v1_1_piano_direttore_cantonale_poligono</Name>
+   <Title>[AC-009.1] Piano direttore cantonale - Poligono</Title>
+   <Abstract>Poligono</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.371515 45.816026</ows:LowerCorner>
+    <ows:UpperCorner>9.174524 46.638626</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_009_1_v1_1_piano_direttore_cantonale_punto</Name>
+   <Title>[AC-009.1] Piano direttore cantonale - Punto</Title>
+   <Abstract>Punto</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.405896 45.817603</ows:LowerCorner>
+    <ows:UpperCorner>9.12079 46.605725</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_010_1_v1_0_qualita_trasporti_pubblici_fermate</Name>
+   <Title>[AC-010.1] Qualità dei trasporti pubblici - Fermate</Title>
+   <Abstract>Fermate</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.291193 45.781756</ows:LowerCorner>
+    <ows:UpperCorner>9.244038 46.711662</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_010_1_v1_0_qualita_trasporti_pubblici_qualita</Name>
+   <Title>[AC-010.1] Qualità dei trasporti pubblici - Qualità</Title>
+   <Abstract>Qualità</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.284625 45.772661</ows:LowerCorner>
+    <ows:UpperCorner>9.250725 46.716209</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_011_1_v1_0_malattie_api_vecchi_focolai_peste_americana</Name>
+   <Title>[AC-011.1] Malattie delle api - Vecchi focolai peste americana</Title>
+   <Abstract>Vecchi focolai peste americana</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.58923 45.833863</ows:LowerCorner>
+    <ows:UpperCorner>9.033986 46.531144</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_011_1_v1_0_malattie_api_vecchi_focolai_peste_europea</Name>
+   <Title>[AC-011.1] Malattie delle api - Vecchi focolai peste europea</Title>
+   <Abstract>Vecchi focolai peste europea</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.718647 46.067155</ows:LowerCorner>
+    <ows:UpperCorner>8.999366 46.493894</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_011_1_v1_0_malattie_api_zone_sequestro_attive_peste_americana</Name>
+   <Title>[AC-011.1] Malattie delle api - Zone di sequestro attive peste americana</Title>
+   <Abstract>Zone di sequestro attive peste americana</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>0 0</ows:LowerCorner>
+    <ows:UpperCorner>0 0</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_011_1_v1_0_malattie_api_zone_sequestro_attive_peste_europea</Name>
+   <Title>[AC-011.1] Malattie delle api - Zone di sequestro attive peste europea</Title>
+   <Abstract>Zone di sequestro attive peste europea</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>0 0</ows:LowerCorner>
+    <ows:UpperCorner>0 0</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_012_1_v1_0_limitazioni_altezze</Name>
+   <Title>[AC-012.1] Limitazioni d'altezze</Title>
+   <Abstract>Limitazioni d'altezze</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.500249 45.830326</ows:LowerCorner>
+    <ows:UpperCorner>9.061592 46.553817</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_012_2_v1_0_restrizioni_circolazione</Name>
+   <Title>[AC-012.2] Restrizioni alla circolazione</Title>
+   <Abstract>Restrizioni alla circolazione</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.37632 45.819454</ows:LowerCorner>
+    <ows:UpperCorner>9.098855 46.583087</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_013_1_v1_0_prevenzione_incidenti_rilevanti_aree_coordinamento_opir</Name>
+   <Title>[AC-013.1] Prevenzione incidenti rilevanti - Aree di coordinamento OPIR</Title>
+   <Abstract>Aree di coordinamento OPIR</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.54122 45.828925</ows:LowerCorner>
+    <ows:UpperCorner>9.092162 46.583229</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_013_1_v1_0_prevenzione_incidenti_rilevanti_aziende_opir</Name>
+   <Title>[AC-013.1] Prevenzione incidenti rilevanti - Aziende OPIR</Title>
+   <Abstract>Aziende OPIR</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.72263 45.832429</ows:LowerCorner>
+    <ows:UpperCorner>9.054237 46.476492</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_013_1_v1_0_prevenzione_incidenti_rilevanti_strade_nazionali_opir</Name>
+   <Title>[AC-013.1] Prevenzione incidenti rilevanti - Strade nazionali OPIR</Title>
+   <Abstract>Strade nazionali OPIR</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.542523 45.829843</ows:LowerCorner>
+    <ows:UpperCorner>9.090831 46.582318</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_021_10_v1_0_spazio_riservato_grandi_corsi_acqua</Name>
+   <Title>[AC-021.10] Spazio riservato ai grandi corsi d'acqua</Title>
+   <Abstract>Spazio riservato ai grandi corsi d'acqua</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.464894 45.843952</ows:LowerCorner>
+    <ows:UpperCorner>9.091402 46.588836</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_021_1_v1_0_rete_rilevamento_meteo</Name>
+   <Title>[AC-021.1] Rete di rilevamento meteo</Title>
+   <Abstract>Rete di rilevamento meteo</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.483203 45.831406</ows:LowerCorner>
+    <ows:UpperCorner>9.237217 46.570439</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_021_3_v1_0_bilancio_idrologico_coefficiente_deflusso</Name>
+   <Title>[AC-021.3] Bilancio idrologico - Coefficiente di deflusso</Title>
+   <Abstract>Coefficiente di deflusso</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.351845 45.793283</ows:LowerCorner>
+    <ows:UpperCorner>9.332546 46.650464</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_021_3_v1_0_bilancio_idrologico_deflusso_specifico</Name>
+   <Title>[AC-021.3] Bilancio idrologico - Deflusso specifico</Title>
+   <Abstract>Deflusso specifico</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.351845 45.793283</ows:LowerCorner>
+    <ows:UpperCorner>9.332546 46.650464</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_021_3_v1_0_bilancio_idrologico_evaporazione</Name>
+   <Title>[AC-021.3] Bilancio idrologico - Evaporazione</Title>
+   <Abstract>Evaporazione</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.352178 45.813285</ows:LowerCorner>
+    <ows:UpperCorner>9.332546 46.650464</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_021_3_v1_0_bilancio_idrologico_precipitazioni_estreme</Name>
+   <Title>[AC-021.3] Bilancio idrologico - Precipitazioni estreme</Title>
+   <Abstract>Precipitazioni estreme</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.352217 45.815626</ows:LowerCorner>
+    <ows:UpperCorner>9.332546 46.650464</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_021_6_v1_0_consorzi_manutenzione_corsi_acqua</Name>
+   <Title>[AC-021.6] Consorzi manutenzione dei corsi d'acqua</Title>
+   <Abstract>Consorzi manutenzione dei corsi d'acqua</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.371265 45.816375</ows:LowerCorner>
+    <ows:UpperCorner>9.153328 46.638634</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_023_1_v1_0_rive_laghi_canneti_canneti_potenziali</Name>
+   <Title>[AC-023.1] Rive laghi - Canneti - Canneti potenziali</Title>
+   <Abstract>Canneti potenziali</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.869704 45.905975</ows:LowerCorner>
+    <ows:UpperCorner>9.018861 46.016084</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_023_1_v1_0_rive_laghi_canneti_canneti_rilevati</Name>
+   <Title>[AC-023.1] Rive laghi - Canneti - Canneti rilevati</Title>
+   <Abstract>Canneti rilevati</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.857309 45.901476</ows:LowerCorner>
+    <ows:UpperCorner>9.125723 46.037462</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_023_2_v1_0_rive_laghi_fruibilita_affaccio_puntuale</Name>
+   <Title>[AC-023.2] Rive laghi - Fruibilità - Affacci puntuali</Title>
+   <Abstract>Affacci puntuali</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.703272 45.905297</ows:LowerCorner>
+    <ows:UpperCorner>9.011521 46.180662</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_023_2_v1_0_rive_laghi_fruibilita_bagno_campeggio_lido</Name>
+   <Title>[AC-023.2] Rive laghi - Fruibilità - Bagni, campeggi e lidi</Title>
+   <Abstract>Bagni, campeggi e lidi</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.700286 45.904439</ows:LowerCorner>
+    <ows:UpperCorner>8.994613 46.178935</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_023_2_v1_0_rive_laghi_fruibilita_collegamento_trasversale</Name>
+   <Title>[AC-023.2] Rive laghi - Fruibilità - Collegamenti trasversali</Title>
+   <Abstract>Collegamenti trasversali</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.70414 45.904682</ows:LowerCorner>
+    <ows:UpperCorner>9.010798 46.156965</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_023_2_v1_0_rive_laghi_fruibilita_passeggiata_lago</Name>
+   <Title>[AC-023.2] Rive laghi - Fruibilità - Passeggiate a lago</Title>
+   <Abstract>Passeggiate a lago</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.702414 45.903915</ows:LowerCorner>
+    <ows:UpperCorner>9.026651 46.18149</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_023_3_v1_0_rive_laghi_batimetria_ceresio_curve_batimetriche_125</Name>
+   <Title>[AC-023.3] Rive laghi - Batimetria Ceresio - Curve batimetriche (1, 2 o 5m)</Title>
+   <Abstract>Curve batimetriche (1, 2 o 5m)</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.858033 45.904468</ows:LowerCorner>
+    <ows:UpperCorner>9.025509 46.016964</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_023_3_v1_0_rive_laghi_batimetria_ceresio_curve_batimetriche_cn25</Name>
+   <Title>[AC-023.3] Rive laghi - Batimetria Ceresio - Curve batimetriche (CN25)</Title>
+   <Abstract>Curve batimetriche (CN25)</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.857884 45.900552</ows:LowerCorner>
+    <ows:UpperCorner>9.124844 46.039348</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_030_1_v1_0_natura_paesaggio_area_protetta</Name>
+   <Title>[AC-030.1] Natura e paesaggio - Area protetta</Title>
+   <Abstract>Area protetta</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.371516 45.816068</ows:LowerCorner>
+    <ows:UpperCorner>9.174523 46.638626</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_030_1_v1_0_natura_paesaggio_corridoio_ecologico</Name>
+   <Title>[AC-030.1] Natura e paesaggio - Corridoio ecologico</Title>
+   <Abstract>Corridoio ecologico</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.372157 45.844119</ows:LowerCorner>
+    <ows:UpperCorner>9.098757 46.622092</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_030_1_v1_0_natura_paesaggio_habitat</Name>
+   <Title>[AC-030.1] Natura e paesaggio - Habitat</Title>
+   <Abstract>Habitat</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.623174 45.834619</ows:LowerCorner>
+    <ows:UpperCorner>9.102268 46.446441</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_030_1_v1_0_natura_paesaggio_inventario_poligono</Name>
+   <Title>[AC-030.1] Natura e paesaggio - Inventario - poligono</Title>
+   <Abstract>Inventario - poligono</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.403825 45.81612</ows:LowerCorner>
+    <ows:UpperCorner>9.174415 46.638348</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_030_1_v1_0_natura_paesaggio_inventario_punto</Name>
+   <Title>[AC-030.1] Natura e paesaggio - Inventario - punto</Title>
+   <Abstract>Inventario - punto</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.411598 45.830116</ows:LowerCorner>
+    <ows:UpperCorner>9.114144 46.575723</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_030_1_v1_0_natura_paesaggio_specie_linea</Name>
+   <Title>[AC-030.1] Natura e paesaggio - Specie - linea</Title>
+   <Abstract>Specie - linea</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.547025 45.827074</ows:LowerCorner>
+    <ows:UpperCorner>9.09337 46.558951</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_030_1_v1_0_natura_paesaggio_specie_punto</Name>
+   <Title>[AC-030.1] Natura e paesaggio - Specie - punto</Title>
+   <Abstract>Specie - punto</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.448783 45.822188</ows:LowerCorner>
+    <ows:UpperCorner>9.171114 46.613644</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_032_1_v1_0_mappa_archeologica</Name>
+   <Title>[AC-032.1] Mappa archeologica</Title>
+   <Abstract>Mappa archeologica</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.425473 45.820204</ows:LowerCorner>
+    <ows:UpperCorner>9.171578 46.58985</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_036_1_v1_0_rete_percorsi_mountain_bike</Name>
+   <Title>[AC-036.1] Rete dei percorsi in mountain bike</Title>
+   <Abstract>Percorsi</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.479603 45.833812</ows:LowerCorner>
+    <ows:UpperCorner>9.104896 46.582369</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_037_1_v1_0_curve_livello</Name>
+   <Title>[AC-037.1] Curve di livello</Title>
+   <Abstract>10 m</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.371274 45.816032</ows:LowerCorner>
+    <ows:UpperCorner>9.174328 46.638613</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_041_1_v1_7_punti_fissi_planimetrici_ausiliari</Name>
+   <Title>[AC-041.1] Punti fissi planimetrici ausiliari</Title>
+   <Abstract>Punti fissi ausiliari</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.375042 45.821678</ows:LowerCorner>
+    <ows:UpperCorner>9.156238 46.605219</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_044_1_v1_0_piani_altitudinali</Name>
+   <Title>[AC-044.1] Piani altitudinali</Title>
+   <Abstract>Piani altitudinali</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.258754 45.815604</ows:LowerCorner>
+    <ows:UpperCorner>9.186365 46.67808</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_046_1_v1_0_rilievi_prativa_contributo_situ</Name>
+   <Title>[AC-046.1] Rilievi "praTiva" e contributo "in situ"</Title>
+   <Abstract>Rilievi "praTiva" e contributo "in situ"</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.47042 45.87296</ows:LowerCorner>
+    <ows:UpperCorner>9.06004 46.579159</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_049_1_v1_0_stato_raggruppamento_terreni_rt</Name>
+   <Title>[AC-049.1] Stato Raggruppamento terreni (RT)</Title>
+   <Abstract>Stato Raggruppamento terreni (RT)</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.371255 45.816055</ows:LowerCorner>
+    <ows:UpperCorner>9.174337 46.638637</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_050_1_v1_7_edifici_misurazione_ufficiale_cs_edifici_e</Name>
+   <Title>[AC-050.1] Edifici della misurazione ufficiale - Edifici esistenti</Title>
+   <Abstract>Edifici esistenti</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.377289 45.818376</ows:LowerCorner>
+    <ows:UpperCorner>9.155977 46.619588</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_050_1_v1_7_edifici_misurazione_ufficiale_cs_edifici_ou</Name>
+   <Title>[AC-050.1] Edifici della misurazione ufficiale - Edifici esistenti ed edifici sotterranei</Title>
+   <Abstract>Edifici esistenti ed edifici sotterranei</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.377289 45.818376</ows:LowerCorner>
+    <ows:UpperCorner>9.155977 46.619588</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_050_1_v1_7_edifici_misurazione_ufficiale_cs_edifici_p</Name>
+   <Title>[AC-050.1] Edifici della misurazione ufficiale - Edifici in progetto</Title>
+   <Abstract>Edifici in progetto</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.590782 45.821829</ows:LowerCorner>
+    <ows:UpperCorner>9.132613 46.564558</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_051_1_v1_0_piani_mobilita_scolastica</Name>
+   <Title>[AC-051.1] Piani di mobilità scolastica</Title>
+   <Abstract>Piani di mobilità scolastica</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.371279 45.816033</ows:LowerCorner>
+    <ows:UpperCorner>9.17434 46.638614</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_052_1_v1_0_bandite_cantonali_caccia</Name>
+   <Title>[AC-052.1] Bandite cantonali di caccia</Title>
+   <Abstract>Bandite cantonali di caccia</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.375252 45.837949</ows:LowerCorner>
+    <ows:UpperCorner>9.172597 46.584475</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_055_1_v1_0_posti_controllo_selvaggina</Name>
+   <Title>[AC-055.1] Posti di controllo per la selvaggina</Title>
+   <Abstract>Posti di controllo per la selvaggina</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.599851 45.889402</ows:LowerCorner>
+    <ows:UpperCorner>8.988183 46.478787</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_057_1_v1_0_perimetri_protezione_condotte</Name>
+   <Title>[AC-057.1] Perimetri di protezione per le condotte</Title>
+   <Abstract>Perimetri di protezione per le condotte</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.890655 45.842505</ows:LowerCorner>
+    <ows:UpperCorner>8.983506 46.027289</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_060_1_v1_2_cappelle_dipinti_murali_devozionali</Name>
+   <Title>[AC-060.1] Cappelle e dipinti murali devozionali</Title>
+   <Abstract>Cappelle e dipinti murali devozionali</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.440904 45.82293</ows:LowerCorner>
+    <ows:UpperCorner>9.100635 46.609654</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_061_1_v1_1_centri_manutenzione_stradale_sedi</Name>
+   <Title>[AC-061.1] Centri di manutenzione stradale - Sedi</Title>
+   <Abstract>Sedi</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.730452 45.872751</ows:LowerCorner>
+    <ows:UpperCorner>9.000401 46.464086</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_061_1_v1_1_centri_manutenzione_stradale_settori</Name>
+   <Title>[AC-061.1] Centri di manutenzione stradale - Settori</Title>
+   <Abstract>Settori</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.371265 45.816062</ows:LowerCorner>
+    <ows:UpperCorner>9.174327 46.638634</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_063_1_v1_0_manufatti_strade_percorsi_ciclabili_linee</Name>
+   <Title>[AC-063.1] Manufatti su strade e percorsi ciclabili - Linee</Title>
+   <Abstract>Linee</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.412279 45.820451</ows:LowerCorner>
+    <ows:UpperCorner>9.096203 46.581593</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_063_1_v1_0_manufatti_strade_percorsi_ciclabili_punti</Name>
+   <Title>[AC-063.1] Manufatti su strade e percorsi ciclabili - Punti</Title>
+   <Abstract>Punti</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.412295 45.820452</ows:LowerCorner>
+    <ows:UpperCorner>9.096202 46.581748</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_064_1_v1_0_zone_protezione_ittica_linee</Name>
+   <Title>[AC-064.1] Zone di protezione ittica - Linee</Title>
+   <Abstract>Linee</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.573406 45.85176</ows:LowerCorner>
+    <ows:UpperCorner>9.063375 46.549846</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_064_1_v1_0_zone_protezione_ittica_poligoni</Name>
+   <Title>[AC-064.1] Zone di protezione ittica - Poligoni</Title>
+   <Abstract>Poligoni</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.57276 45.903459</ows:LowerCorner>
+    <ows:UpperCorner>9.089376 46.525744</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_065a_1_v1_0_disponibilita_piani_utilizzazione</Name>
+   <Title>[AC-065a.1] Disponibilità piani di utilizzazione</Title>
+   <Abstract>Disponibilità piani utilizzazione cantonali</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.431913 45.829459</ows:LowerCorner>
+    <ows:UpperCorner>9.151888 46.585735</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_065b_1_v1_0_disponibilita_piani_regolatori</Name>
+   <Title>[AC-065b.1] Disponibilità piani regolatori</Title>
+   <Abstract>Disponibilità piani regolatori</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.430123 45.816033</ows:LowerCorner>
+    <ows:UpperCorner>9.172767 46.589089</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_066_1_v1_1_monitoraggio_ghiacciai_fronte_ghiacciaio</Name>
+   <Title>[AC-066.1] Monitoraggio ghiacciai - Fronte ghiacciaio</Title>
+   <Abstract>Fronte ghiacciaio</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.3858 46.408549</ows:LowerCorner>
+    <ows:UpperCorner>9.038776 46.62014</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_066_1_v1_1_monitoraggio_ghiacciai_gruppo_ghiacciaio</Name>
+   <Title>[AC-066.1] Monitoraggio ghiacciai - Gruppo ghiacciaio</Title>
+   <Abstract>Gruppo ghiacciaio</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.391883 46.406992</ows:LowerCorner>
+    <ows:UpperCorner>9.039657 46.620942</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_067_1_v1_0_portate_piena</Name>
+   <Title>[AC-067.1] Portate di piena</Title>
+   <Abstract>Portate di piena</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.575808 45.839866</ows:LowerCorner>
+    <ows:UpperCorner>9.09247 46.560448</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_069_1_v1_0_deformazioni_gravitative_profonde_versante</Name>
+   <Title>[AC-069.1] Deformazioni gravitative profonde di versante</Title>
+   <Abstract>Deformazioni gravitative profonde di versante</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.443503 45.878724</ows:LowerCorner>
+    <ows:UpperCorner>9.147521 46.605416</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_070_1_v1_1_assi_strade_comunali_altri_enti_assi_stradali</Name>
+   <Title>[AC-070.1] Assi delle strade comunali e di altri enti - Assi stradali</Title>
+   <Abstract>Assi stradali</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.377292 45.818774</ows:LowerCorner>
+    <ows:UpperCorner>9.146598 46.610343</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_070_1_v1_1_assi_strade_comunali_altri_enti_punti_riferimento</Name>
+   <Title>[AC-070.1] Assi delle strade comunali e di altri enti - Punti di riferimento</Title>
+   <Abstract>Punti di riferimento</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.377292 45.818851</ows:LowerCorner>
+    <ows:UpperCorner>9.141401 46.610343</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_072_1_v1_0_rm_vallemaggia_immagini_aeree</Name>
+   <Title>[AC-072.1] RM Vallemaggia - Immagini aeree</Title>
+   <Abstract>RM Vallemaggia - Immagini aeree</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.523739 46.290831</ows:LowerCorner>
+    <ows:UpperCorner>8.664759 46.455825</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_073_1_v1_0_perimetri_indicativi_progetti_stradali_cantonali</Name>
+   <Title>[AC-073.1] Perimetri indicativi progetti stradali cantonali</Title>
+   <Abstract>Perimetri indicativi progetti stradali cantonali</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.500432 45.843616</ows:LowerCorner>
+    <ows:UpperCorner>9.016705 46.358161</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_074_1_v1_0_webcam_strade</Name>
+   <Title>[AC-074.1] Webcam sulle strade</Title>
+   <Abstract>Webcam</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.595346 45.838659</ows:LowerCorner>
+    <ows:UpperCorner>9.054943 46.530104</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_075_1_v1_0_radar_strade</Name>
+   <Title>[AC-075.1] Radar sulle strade</Title>
+   <Abstract>Radar</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>9.007781 45.843489</ows:LowerCorner>
+    <ows:UpperCorner>9.007782 45.84349</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_077_1_v1_0_repertorio_toponomastico_ticinese_rtt_comuni_ex_comuni</Name>
+   <Title>[AC-077.1] Repertorio toponomastico ticinese - Nome dei comuni, ex-comuni</Title>
+   <Abstract>Nome dei comuni, ex-comuni</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.493388 46.03189</ows:LowerCorner>
+    <ows:UpperCorner>9.042144 46.530251</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_077_1_v1_0_repertorio_toponomastico_ticinese_rtt_comuni_ex_comuni_poligoni</Name>
+   <Title>[AC-077.1] Repertorio toponomastico ticinese - Nome dei comuni, ex-comuni - poligoni</Title>
+   <Abstract>Nome dei comuni, ex-comuni - poligoni</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.42281 46.018927</ows:LowerCorner>
+    <ows:UpperCorner>9.050014 46.587758</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ac_077_1_v1_0_repertorio_toponomastico_ticinese_rtt_microtoponimi</Name>
+   <Title>[AC-077.1] Repertorio toponomastico ticinese - Microtoponimi</Title>
+   <Abstract>Microtoponimi</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.422897 46.019491</ows:LowerCorner>
+    <ows:UpperCorner>9.081111 46.587689</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_009_1_v1_0_registro_federale_edifici_abitazioni_rea</Name>
+   <Title>[CH-009.1] Registro federale degli edifici e delle abitazioni REA</Title>
+   <Abstract>Registro federale degli edifici e delle abitazioni REA</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.377364 45.818488</ows:LowerCorner>
+    <ows:UpperCorner>9.155859 46.619571</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_014_1_v1_1_censimento_circolazione_stradale_rete_regionale_locale</Name>
+   <Title>[CH-014.1] Censimento della circolazione stradale sulla rete regionale e locale</Title>
+   <Abstract>Censimento della circolazione stradale sulla rete regionale e locale</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.59753 45.820226</ows:LowerCorner>
+    <ows:UpperCorner>9.059695 46.56821</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_038_1_v2_1_swisstlm3d_copertura_suolo_ghiacciai_nevai</Name>
+   <Title>[CH-038.1] SwissTLM3D - Copertura del suolo - Ghiacciai e nevai</Title>
+   <Abstract>Copertura del suolo - Ghiacciai e nevai</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.33502 46.332567</ows:LowerCorner>
+    <ows:UpperCorner>9.151546 46.663353</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_038_1_v2_1_swisstlm3d_copertura_suolo_tipologia</Name>
+   <Title>[CH-038.1] SwissTLM3D - Copertura del suolo - Tipologia</Title>
+   <Abstract>Copertura del suolo - Tipologia</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.325264 45.815176</ows:LowerCorner>
+    <ows:UpperCorner>9.217023 46.666431</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_038_1_v2_1_swisstlm3d_costruzioni_approvvigionamento_energetico</Name>
+   <Title>[CH-038.1] SwissTLM3D - Costruzioni - Approvvigionamento energetico</Title>
+   <Abstract>Costruzioni - Approvvigionamento energetico</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.328556 45.82419</ows:LowerCorner>
+    <ows:UpperCorner>9.341573 46.63168</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_038_1_v2_1_swisstlm3d_costruzioni_edifici</Name>
+   <Title>[CH-038.1] SwissTLM3D - Costruzioni - Edifici</Title>
+   <Abstract>Costruzioni - Edifici</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.32554 45.813218</ows:LowerCorner>
+    <ows:UpperCorner>9.335588 46.662025</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_038_1_v2_1_swisstlm3d_costruzioni_impianti_sbarramento_acque</Name>
+   <Title>[CH-038.1] SwissTLM3D - Costruzioni - Impianti di sbarramento e bacini</Title>
+   <Abstract>Costruzioni - Impianti di sbarramento e bacini</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.357343 45.821905</ows:LowerCorner>
+    <ows:UpperCorner>9.246615 46.608784</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_038_1_v2_1_swisstlm3d_costruzioni_infrastrutture_sportive_linea</Name>
+   <Title>[CH-038.1] SwissTLM3D - Costruzioni - Infrastrutture sportive (linea)</Title>
+   <Abstract>Costruzioni - Infrastrutture sportive (linea)</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.456645 45.830632</ows:LowerCorner>
+    <ows:UpperCorner>9.227965 46.619903</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_038_1_v2_1_swisstlm3d_costruzioni_infrastrutture_sportive_poligono</Name>
+   <Title>[CH-038.1] SwissTLM3D - Costruzioni - Infrastrutture sportive (poligono)</Title>
+   <Abstract>Costruzioni - Infrastrutture sportive (poligono)</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.48876 45.821677</ows:LowerCorner>
+    <ows:UpperCorner>9.240417 46.596606</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_038_1_v2_1_swisstlm3d_costruzioni_infrastrutture_trasporti_linea</Name>
+   <Title>[CH-038.1] SwissTLM3D - Costruzioni - Infrastrutture trasporti (linea)</Title>
+   <Abstract>Costruzioni - Infrastrutture trasporti (linea)</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.70261 45.903897</ows:LowerCorner>
+    <ows:UpperCorner>8.979983 46.180393</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_038_1_v2_1_swisstlm3d_costruzioni_infrastrutture_trasporti_poligono</Name>
+   <Title>[CH-038.1] SwissTLM3D - Costruzioni - Infrastrutture trasporti (poligono)</Title>
+   <Abstract>Costruzioni - Infrastrutture trasporti (poligono)</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.3311 45.829756</ows:LowerCorner>
+    <ows:UpperCorner>9.110939 46.600331</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_038_1_v2_1_swisstlm3d_costruzioni_linee_elettriche</Name>
+   <Title>[CH-038.1] SwissTLM3D - Costruzioni - Linee elettriche</Title>
+   <Abstract>Costruzioni - Linee elettriche</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.325706 45.840984</ows:LowerCorner>
+    <ows:UpperCorner>9.308101 46.62145</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_038_1_v2_1_swisstlm3d_costruzioni_opere_protezione_pericoli_naturali</Name>
+   <Title>[CH-038.1] SwissTLM3D - Costruzioni - Opere di protezione dai pericoli naturali</Title>
+   <Abstract>Costruzioni - Opere di protezione dai pericoli naturali</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.330612 45.826566</ows:LowerCorner>
+    <ows:UpperCorner>9.315123 46.666388</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_038_1_v2_1_swisstlm3d_costruzioni_ruderi</Name>
+   <Title>[CH-038.1] SwissTLM3D - Costruzioni - Ruderi e diroccati</Title>
+   <Abstract>Costruzioni - Ruderi e diroccati</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.336052 45.823973</ows:LowerCorner>
+    <ows:UpperCorner>9.335421 46.660449</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_038_1_v2_1_swisstlm3d_oggetti_singoli_elementi_topografici_particolari</Name>
+   <Title>[CH-038.1] SwissTLM3D - Oggetti singoli - Elementi topografici particolari</Title>
+   <Abstract>Oggetti singoli - Elementi topografici particolari</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.330299 45.813234</ows:LowerCorner>
+    <ows:UpperCorner>9.352411 46.659669</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_038_1_v2_1_swisstlm3d_perimetri_aree_adibite_trasporti</Name>
+   <Title>[CH-038.1] SwissTLM3D - Perimetri - Aree adibite ai trasporti</Title>
+   <Abstract>Perimetri - Aree adibite ai trasporti</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.371028 45.826913</ows:LowerCorner>
+    <ows:UpperCorner>9.240864 46.618916</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_038_1_v2_1_swisstlm3d_perimetri_aree_specifiche</Name>
+   <Title>[CH-038.1] SwissTLM3D - Perimetri - Aree specifiche</Title>
+   <Abstract>Perimetri - Aree specifiche</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.335528 45.815042</ows:LowerCorner>
+    <ows:UpperCorner>9.270744 46.666289</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_038_1_v2_1_swisstlm3d_perimetri_aree_tempo_libero</Name>
+   <Title>[CH-038.1] SwissTLM3D - Perimetri - Aree per il tempo libero</Title>
+   <Abstract>Perimetri - Aree per il tempo libero</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.325442 45.825694</ows:LowerCorner>
+    <ows:UpperCorner>9.240535 46.599211</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_038_1_v2_1_swisstlm3d_rete_idrografica_corsi_acqua</Name>
+   <Title>[CH-038.1] SwissTLM3D - Rete idrografica - Corsi d'acqua</Title>
+   <Abstract>Rete idrografica - Corsi d'acqua</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.325282 45.813943</ows:LowerCorner>
+    <ows:UpperCorner>9.35996 46.666428</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_038_1_v2_1_swisstlm3d_rete_idrografica_perimetri_laghi</Name>
+   <Title>[CH-038.1] SwissTLM3D - Rete idrografica - Perimetri dei laghi</Title>
+   <Abstract>Rete idrografica - Perimetri dei laghi</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.32551 45.827942</ows:LowerCorner>
+    <ows:UpperCorner>9.364921 46.665602</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_038_1_v2_1_swisstlm3d_rete_idrografica_superfici_laghi</Name>
+   <Title>[CH-038.1] SwissTLM3D - Rete idrografica - Superfici dei laghi</Title>
+   <Abstract>Rete idrografica - Superfici dei laghi</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.323635 45.714442</ows:LowerCorner>
+    <ows:UpperCorner>9.198641 46.665602</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_038_1_v2_1_swisstlm3d_rete_trasporti_pubblici_fermate</Name>
+   <Title>[CH-038.1] SwissTLM3D - Rete trasporti pubblici - Fermate</Title>
+   <Abstract>Rete trasporti pubblici - Fermate</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.330749 45.815866</ows:LowerCorner>
+    <ows:UpperCorner>9.333915 46.620737</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_038_1_v2_1_swisstlm3d_rete_trasporti_pubblici_ferrovie</Name>
+   <Title>[CH-038.1] SwissTLM3D - Rete trasporti pubblici - Ferrovie</Title>
+   <Abstract>Rete trasporti pubblici - Ferrovie</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.32547 45.830136</ows:LowerCorner>
+    <ows:UpperCorner>9.058137 46.621449</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_038_1_v2_1_swisstlm3d_rete_trasporti_pubblici_trasporti_fune</Name>
+   <Title>[CH-038.1] SwissTLM3D - Rete trasporti pubblici - Trasporti a fune</Title>
+   <Abstract>Rete trasporti pubblici - Trasporti a fune</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.326842 45.911912</ows:LowerCorner>
+    <ows:UpperCorner>9.255592 46.621446</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_038_1_v2_1_swisstlm3d_rete_viaria_elementi_informazione</Name>
+   <Title>[CH-038.1] SwissTLM3D - Rete viaria - Elementi d'informazione</Title>
+   <Abstract>Rete viaria - Elementi d'informazione</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.325295 45.812851</ows:LowerCorner>
+    <ows:UpperCorner>9.362349 46.666263</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_038_1_v2_1_swisstlm3d_rete_viaria_strade_sentieri</Name>
+   <Title>[CH-038.1] SwissTLM3D - Rete viaria - Strade e sentieri</Title>
+   <Abstract>Rete viaria - Strade e sentieri</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.325265 45.812808</ows:LowerCorner>
+    <ows:UpperCorner>9.36495 46.66643</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_038_1_v2_1_swisstlm3d_rete_viaria_svincoli_autostradali</Name>
+   <Title>[CH-038.1] SwissTLM3D - Rete viaria - Svincoli autostradali</Title>
+   <Abstract>Rete viaria - Svincoli autostradali</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.570901 45.83605</ows:LowerCorner>
+    <ows:UpperCorner>9.237846 46.534513</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_038_1_v2_4_swisstlm3d_modello_topografico_paesaggio_copertura_suolo_ghiacciai_nevai</Name>
+   <Title>[CH-038.1] SwissTLM3D - Modello topografico del paesaggio - Copertura del suolo - Ghiacciai e nevai</Title>
+   <Abstract>Copertura del suolo - Ghiacciai e nevai</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.334948 46.32918</ows:LowerCorner>
+    <ows:UpperCorner>9.364877 46.664344</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_038_1_v2_4_swisstlm3d_modello_topografico_paesaggio_copertura_suolo_tipologia</Name>
+   <Title>[CH-038.1] SwissTLM3D - Modello topografico del paesaggio - Copertura del suolo - Tipologia</Title>
+   <Abstract>Copertura del suolo - Tipologia</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.325264 45.812807</ows:LowerCorner>
+    <ows:UpperCorner>9.364951 46.666431</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_038_1_v2_4_swisstlm3d_modello_topografico_paesaggio_costruzioni_approvvigionamento_energetico</Name>
+   <Title>[CH-038.1] SwissTLM3D - Modello topografico del paesaggio - Costruzioni - Approvvigionamento energetico</Title>
+   <Abstract>Costruzioni - Approvvigionamento energetico</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.328556 45.82419</ows:LowerCorner>
+    <ows:UpperCorner>9.341571 46.63168</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_038_1_v2_4_swisstlm3d_modello_topografico_paesaggio_costruzioni_edifici</Name>
+   <Title>[CH-038.1] SwissTLM3D - Modello topografico del paesaggio - Costruzioni - Edifici</Title>
+   <Abstract>Costruzioni - Edifici</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.325526 45.813222</ows:LowerCorner>
+    <ows:UpperCorner>9.335323 46.662028</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_038_1_v2_4_swisstlm3d_modello_topografico_paesaggio_costruzioni_impianti_sbarramento_acque</Name>
+   <Title>[CH-038.1] SwissTLM3D - Modello topografico del paesaggio - Costruzioni - Impianti di sbarramento e bacini</Title>
+   <Abstract>Costruzioni - Impianti di sbarramento e bacini</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.325455 45.821905</ows:LowerCorner>
+    <ows:UpperCorner>9.246615 46.609045</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_038_1_v2_4_swisstlm3d_modello_topografico_paesaggio_costruzioni_infrastrutture_sportive_linea</Name>
+   <Title>[CH-038.1] SwissTLM3D - Modello topografico del paesaggio - Costruzioni - Infrastrutture sportive (linea)</Title>
+   <Abstract>Costruzioni - Infrastrutture sportive (linea)</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.456645 45.830402</ows:LowerCorner>
+    <ows:UpperCorner>9.242756 46.619903</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_038_1_v2_4_swisstlm3d_modello_topografico_paesaggio_costruzioni_infrastrutture_sportive_poligono</Name>
+   <Title>[CH-038.1] SwissTLM3D - Modello topografico del paesaggio - Costruzioni - Infrastrutture sportive (poligono)</Title>
+   <Abstract>Costruzioni - Infrastrutture sportive (poligono)</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.48876 45.821677</ows:LowerCorner>
+    <ows:UpperCorner>9.240417 46.596606</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_038_1_v2_4_swisstlm3d_modello_topografico_paesaggio_costruzioni_infrastrutture_trasporti_linea</Name>
+   <Title>[CH-038.1] SwissTLM3D - Modello topografico del paesaggio - Costruzioni - Infrastrutture trasporti (linea)</Title>
+   <Abstract>Costruzioni - Infrastrutture trasporti (linea)</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.70261 45.903897</ows:LowerCorner>
+    <ows:UpperCorner>8.979983 46.180393</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_038_1_v2_4_swisstlm3d_modello_topografico_paesaggio_costruzioni_infrastrutture_trasporti_poligono</Name>
+   <Title>[CH-038.1] SwissTLM3D - Modello topografico del paesaggio - Costruzioni - Infrastrutture trasporti (poligono)</Title>
+   <Abstract>Costruzioni - Infrastrutture trasporti (poligono)</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.3311 45.830516</ows:LowerCorner>
+    <ows:UpperCorner>9.057697 46.600331</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_038_1_v2_4_swisstlm3d_modello_topografico_paesaggio_costruzioni_linee_elettriche</Name>
+   <Title>[CH-038.1] SwissTLM3D - Modello topografico del paesaggio - Costruzioni - Linee elettriche</Title>
+   <Abstract>Costruzioni - Linee elettriche</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.325706 45.840984</ows:LowerCorner>
+    <ows:UpperCorner>9.308101 46.62145</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_038_1_v2_4_swisstlm3d_modello_topografico_paesaggio_costruzioni_opere_protezione_pericoli_naturali</Name>
+   <Title>[CH-038.1] SwissTLM3D - Modello topografico del paesaggio - Costruzioni - Opere di protezione dai pericoli naturali</Title>
+   <Abstract>Costruzioni - Opere di protezione dai pericoli naturali</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.330612 45.826566</ows:LowerCorner>
+    <ows:UpperCorner>9.315123 46.666388</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_038_1_v2_4_swisstlm3d_modello_topografico_paesaggio_costruzioni_ruderi</Name>
+   <Title>[CH-038.1] SwissTLM3D - Modello topografico del paesaggio - Costruzioni - Ruderi e diroccati</Title>
+   <Abstract>Costruzioni - Ruderi e diroccati</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.336052 45.823973</ows:LowerCorner>
+    <ows:UpperCorner>9.33542 46.660441</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_038_1_v2_4_swisstlm3d_modello_topografico_paesaggio_oggetti_singoli_elementi_topografici_particolari</Name>
+   <Title>[CH-038.1] SwissTLM3D - Modello topografico del paesaggio - Oggetti singoli - Elementi topografici particolari</Title>
+   <Abstract>Oggetti singoli - Elementi topografici particolari</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.330299 45.813234</ows:LowerCorner>
+    <ows:UpperCorner>9.352411 46.659669</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_038_1_v2_4_swisstlm3d_modello_topografico_paesaggio_perimetri_aree_adibite_trasporti</Name>
+   <Title>[CH-038.1] SwissTLM3D - Modello topografico del paesaggio - Perimetri - Aree adibite ai trasporti</Title>
+   <Abstract>Perimetri - Aree adibite ai trasporti</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.371027 45.826902</ows:LowerCorner>
+    <ows:UpperCorner>9.241598 46.618916</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_038_1_v2_4_swisstlm3d_modello_topografico_paesaggio_perimetri_aree_specifiche</Name>
+   <Title>[CH-038.1] SwissTLM3D - Modello topografico del paesaggio - Perimetri - Aree specifiche</Title>
+   <Abstract>Perimetri - Aree specifiche</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.335528 45.815029</ows:LowerCorner>
+    <ows:UpperCorner>9.271573 46.666289</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_038_1_v2_4_swisstlm3d_modello_topografico_paesaggio_perimetri_aree_tempo_libero</Name>
+   <Title>[CH-038.1] SwissTLM3D - Modello topografico del paesaggio - Perimetri - Aree per il tempo libero</Title>
+   <Abstract>Perimetri - Aree per il tempo libero</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.325442 45.825694</ows:LowerCorner>
+    <ows:UpperCorner>9.240535 46.599211</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_038_1_v2_4_swisstlm3d_modello_topografico_paesaggio_rete_idrografica_corsi_acqua</Name>
+   <Title>[CH-038.1] SwissTLM3D - Modello topografico del paesaggio - Rete idrografica - Corsi d'acqua</Title>
+   <Abstract>Rete idrografica - Corsi d'acqua</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.325282 45.813943</ows:LowerCorner>
+    <ows:UpperCorner>9.35996 46.666428</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_038_1_v2_4_swisstlm3d_modello_topografico_paesaggio_rete_idrografica_perimetri_laghi</Name>
+   <Title>[CH-038.1] SwissTLM3D - Modello topografico del paesaggio - Rete idrografica - Perimetri dei laghi</Title>
+   <Abstract>Rete idrografica - Perimetri dei laghi</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.32551 45.827942</ows:LowerCorner>
+    <ows:UpperCorner>9.364921 46.665602</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_038_1_v2_4_swisstlm3d_modello_topografico_paesaggio_rete_idrografica_superfici_laghi</Name>
+   <Title>[CH-038.1] SwissTLM3D - Modello topografico del paesaggio - Rete idrografica - Superfici dei laghi</Title>
+   <Abstract>Rete idrografica - Superfici dei laghi</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.323371 45.711785</ows:LowerCorner>
+    <ows:UpperCorner>9.365646 46.665604</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_038_1_v2_4_swisstlm3d_modello_topografico_paesaggio_rete_trasporti_pubblici_fermate</Name>
+   <Title>[CH-038.1] SwissTLM3D - Modello topografico del paesaggio - Rete trasporti pubblici - Fermate</Title>
+   <Abstract>Rete trasporti pubblici - Fermate</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.330841 45.821533</ows:LowerCorner>
+    <ows:UpperCorner>9.333915 46.620737</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_038_1_v2_4_swisstlm3d_modello_topografico_paesaggio_rete_trasporti_pubblici_ferrovie</Name>
+   <Title>[CH-038.1] SwissTLM3D - Modello topografico del paesaggio - Rete trasporti pubblici - Ferrovie</Title>
+   <Abstract>Rete trasporti pubblici - Ferrovie</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.32547 45.830136</ows:LowerCorner>
+    <ows:UpperCorner>9.058137 46.621449</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_038_1_v2_4_swisstlm3d_modello_topografico_paesaggio_rete_trasporti_pubblici_trasporti_fune</Name>
+   <Title>[CH-038.1] SwissTLM3D - Modello topografico del paesaggio - Rete trasporti pubblici - Trasporti a fune</Title>
+   <Abstract>Rete trasporti pubblici - Trasporti a fune</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.326201 45.872286</ows:LowerCorner>
+    <ows:UpperCorner>9.262459 46.621446</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_038_1_v2_4_swisstlm3d_modello_topografico_paesaggio_rete_viaria_elementi_informazione</Name>
+   <Title>[CH-038.1] SwissTLM3D - Modello topografico del paesaggio - Rete viaria - Elementi d'informazione</Title>
+   <Abstract>Rete viaria - Elementi d'informazione</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.325299 45.812849</ows:LowerCorner>
+    <ows:UpperCorner>9.362507 46.666263</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_038_1_v2_4_swisstlm3d_modello_topografico_paesaggio_rete_viaria_strade_sentieri</Name>
+   <Title>[CH-038.1] SwissTLM3D - Modello topografico del paesaggio - Rete viaria - Strade e sentieri</Title>
+   <Abstract>Rete viaria - Strade e sentieri</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.325265 45.812808</ows:LowerCorner>
+    <ows:UpperCorner>9.36495 46.66643</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_038_1_v2_4_swisstlm3d_modello_topografico_paesaggio_rete_viaria_svincoli_autostradali</Name>
+   <Title>[CH-038.1] SwissTLM3D - Modello topografico del paesaggio - Rete viaria - Svincoli autostradali</Title>
+   <Abstract>Rete viaria - Svincoli autostradali</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.570901 45.83605</ows:LowerCorner>
+    <ows:UpperCorner>9.237846 46.534513</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_038_1_v2_4_swisstlm3d_modello_topografico_paesaggio_swisstlm_nomenclatura_entita_geografica</Name>
+   <Title>[CH-038.1] SwissTLM3D - Modello topografico del paesaggio - Nomenclatura - Entità geografica</Title>
+   <Abstract>Nomenclatura - Entità geografica</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.325447 45.82408</ows:LowerCorner>
+    <ows:UpperCorner>9.364951 46.666432</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_038_1_v2_4_swisstlm3d_modello_topografico_paesaggio_swisstlm_nomenclatura_insediamento_abitato</Name>
+   <Title>[CH-038.1] SwissTLM3D - Modello topografico del paesaggio - Nomenclatura - Insediamento abitato</Title>
+   <Abstract>Nomenclatura - Insediamento abitato</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.468432 45.819129</ows:LowerCorner>
+    <ows:UpperCorner>9.247916 46.645104</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_038_1_v2_4_swisstlm3d_modello_topografico_paesaggio_swisstlm_nomenclatura_insediamento_abitato_pto</Name>
+   <Title>[CH-038.1] SwissTLM3D - Modello topografico del paesaggio - Nomenclatura - Insediamento abitato (punti)</Title>
+   <Abstract>Nomenclatura - Insediamento abitato (punti)</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.469989 45.819486</ows:LowerCorner>
+    <ows:UpperCorner>9.246974 46.644777</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_038_1_v2_4_swisstlm3d_modello_topografico_paesaggio_swisstlm_nomenclatura_nome_locale</Name>
+   <Title>[CH-038.1] SwissTLM3D - Modello topografico del paesaggio - Nomenclatura - Nome locale</Title>
+   <Abstract>Nomenclatura - Nome locale</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.325856 45.814723</ows:LowerCorner>
+    <ows:UpperCorner>9.346389 46.666221</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_038_1_v2_4_swisstlm3d_modello_topografico_paesaggio_swisstlm_nomenclatura_regione</Name>
+   <Title>[CH-038.1] SwissTLM3D - Modello topografico del paesaggio - Nomenclatura - Regione</Title>
+   <Abstract>Nomenclatura - Regione</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.325268 45.813028</ows:LowerCorner>
+    <ows:UpperCorner>9.364951 46.666432</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_038_1_v2_4_swisstlm3d_modello_topografico_paesaggio_swisstlm_nomenclatura_toponimo</Name>
+   <Title>[CH-038.1] SwissTLM3D - Modello topografico del paesaggio - Nomenclatura - Toponimo</Title>
+   <Abstract>Nomenclatura - Toponimo</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.327893 45.817599</ows:LowerCorner>
+    <ows:UpperCorner>9.363616 46.665823</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_040_7_v1_0_nomi_geografici_misurazione_nazionale_linea</Name>
+   <Title>[CH-040.7] Nomi geografici (Misurazione nazionale) - Linea</Title>
+   <Abstract>Linea</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.391436 45.819545</ows:LowerCorner>
+    <ows:UpperCorner>9.21839 46.66997</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_040_7_v1_0_nomi_geografici_misurazione_nazionale_poligono</Name>
+   <Title>[CH-040.7] Nomi geografici (Misurazione nazionale) - Poligono</Title>
+   <Abstract>Poligono</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>7.973237 45.710302</ows:LowerCorner>
+    <ows:UpperCorner>9.459367 46.841169</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_040_7_v1_0_nomi_geografici_misurazione_nazionale_punto</Name>
+   <Title>[CH-040.7] Nomi geografici (Misurazione nazionale) - Punto</Title>
+   <Abstract>Punto</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.373961 45.817429</ows:LowerCorner>
+    <ows:UpperCorner>9.173369 46.628222</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_053_1_v24_0_punti_fissi_planimetrici_pfp_1</Name>
+   <Title>[CH-053.1] Punti fissi planimetrici PFP 1</Title>
+   <Abstract>PFP 1</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.419781 45.848884</ows:LowerCorner>
+    <ows:UpperCorner>9.14262 46.552745</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_053_2_v24_0_punti_fissi_altimetrici_pfa_1</Name>
+   <Title>[CH-053.2] Punti fissi altimetrici PFA 1</Title>
+   <Abstract>PFA 1</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.542061 45.829805</ows:LowerCorner>
+    <ows:UpperCorner>9.081203 46.577851</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_054_1_v1_1_punti_fissi_planimetrici_pfp_2</Name>
+   <Title>[CH-054.1] Punti fissi planimetrici PFP 2</Title>
+   <Abstract>PFP 2</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.373966 45.818543</ows:LowerCorner>
+    <ows:UpperCorner>9.173871 46.638592</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_054_1_v1_7_punti_fissi_planimetrici_pfp_3</Name>
+   <Title>[CH-054.1] Punti fissi planimetrici PFP 3</Title>
+   <Abstract>Punti fissi planimetrici 3</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.44697 45.81855</ows:LowerCorner>
+    <ows:UpperCorner>9.122818 46.585226</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_054_2_v1_1_punti_fissi_altimetrici_pfa_2</Name>
+   <Title>[CH-054.2] Punti fissi altimetrici PFA 2</Title>
+   <Abstract>PFA 2</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.462445 45.860742</ows:LowerCorner>
+    <ows:UpperCorner>9.076558 46.560965</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_055_1_v1_7_copertura_suolo_cs_punto_singolo</Name>
+   <Title>[CH-055.1] Copertura del suolo - Punto singolo</Title>
+   <Abstract>Punto singolo</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.37637 45.819387</ows:LowerCorner>
+    <ows:UpperCorner>9.145267 46.613729</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_055_1_v1_7_copertura_suolo_cs_superficiecs</Name>
+   <Title>[CH-055.1] Copertura del suolo - Valevole</Title>
+   <Abstract>Valevole</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.371277 45.816033</ows:LowerCorner>
+    <ows:UpperCorner>9.174341 46.638616</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_055_1_v1_7_copertura_suolo_cs_superficiecsprog</Name>
+   <Title>[CH-055.1] Copertura del suolo - In progetto</Title>
+   <Abstract>In progetto</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.590782 45.821829</ows:LowerCorner>
+    <ows:UpperCorner>9.132613 46.564558</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_056_1_v1_7_oggetti_singoli_os_elemento_con_superficie</Name>
+   <Title>[CH-056.1] Oggetti singoli - Superficie</Title>
+   <Abstract>Superficie</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.375956 45.817725</ows:LowerCorner>
+    <ows:UpperCorner>9.16962 46.601033</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_056_1_v1_7_oggetti_singoli_os_elemento_lineare</Name>
+   <Title>[CH-056.1] Oggetti singoli - Linea</Title>
+   <Abstract>Linea</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.371543 45.818273</ows:LowerCorner>
+    <ows:UpperCorner>9.173627 46.635189</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_056_1_v1_7_oggetti_singoli_os_elemento_puntiforme</Name>
+   <Title>[CH-056.1] Oggetti singoli - Punto</Title>
+   <Abstract>Punto</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.440989 45.827253</ows:LowerCorner>
+    <ows:UpperCorner>9.143863 46.584889</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_056_1_v1_7_oggetti_singoli_os_punto_singolo</Name>
+   <Title>[CH-056.1] Oggetti singoli - Punto singolo</Title>
+   <Abstract>Punto singolo</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.375981 45.819555</ows:LowerCorner>
+    <ows:UpperCorner>9.144133 46.593005</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_058_1_v1_7_nomenclatura_no_nome_del_luogo</Name>
+   <Title>[CH-058.1] Nomenclatura - Nome del luogo</Title>
+   <Abstract>Nome del luogo</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.374494 45.818061</ows:LowerCorner>
+    <ows:UpperCorner>9.167947 46.63726</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_058_1_v1_7_nomenclatura_no_nome_di_localita</Name>
+   <Title>[CH-058.1] Nomenclatura - Nome di località</Title>
+   <Abstract>Nome di località</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.479748 45.842268</ows:LowerCorner>
+    <ows:UpperCorner>9.084769 46.575776</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_058_1_v1_7_nomenclatura_no_nome_locale</Name>
+   <Title>[CH-058.1] Nomenclatura - Nome locale</Title>
+   <Abstract>Nome locale</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.446055 45.829766</ows:LowerCorner>
+    <ows:UpperCorner>9.172649 46.585237</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_059_1_v1_7_beni_immobili_bi_bene_immobile</Name>
+   <Title>[CH-059.1] Beni immobili - Fondo</Title>
+   <Abstract>Fondo</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.371277 45.816033</ows:LowerCorner>
+    <ows:UpperCorner>9.174341 46.638616</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_059_1_v1_7_beni_immobili_bi_dpssp</Name>
+   <Title>[CH-059.1] Beni immobili - Diritto per sè stante e permanente</Title>
+   <Abstract>Diritto per sè stante e permanente</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.455473 45.820324</ows:LowerCorner>
+    <ows:UpperCorner>9.149983 46.613004</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_059_1_v1_7_beni_immobili_bi_fondo</Name>
+   <Title>[CH-059.1] Beni immobili - Fondo e diritto per sé stante e permanente </Title>
+   <Abstract>Fondo e diritto per sé stante e permanente </Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.371277 45.816033</ows:LowerCorner>
+    <ows:UpperCorner>9.174341 46.638616</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_059_1_v1_7_beni_immobili_bi_punto_di_confine</Name>
+   <Title>[CH-059.1] Beni immobili - Punto di confine</Title>
+   <Abstract>Punto di confine</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.372989 45.816358</ows:LowerCorner>
+    <ows:UpperCorner>9.153986 46.623304</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_060_1_v1_7_indirizzi_edifici_misurazione_ufficiale_ied_entrata_edificio</Name>
+   <Title>[CH-060.1] Indirizzi degli edifici (Misurazione ufficiale) - Entrata edificio</Title>
+   <Abstract>Entrata edificio</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.377391 45.818708</ows:LowerCorner>
+    <ows:UpperCorner>9.144561 46.600972</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_060_1_v1_7_indirizzi_edifici_misurazione_ufficiale_ied_tronco_di_strada</Name>
+   <Title>[CH-060.1] Indirizzi degli edifici (Misurazione ufficiale) - Tronco di strada</Title>
+   <Abstract>Tronco di strada</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.376319 45.818715</ows:LowerCorner>
+    <ows:UpperCorner>9.150911 46.577814</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_060_1_v1_7_indirizzi_edifici_misurazione_ufficiale_ied_zonadenominata</Name>
+   <Title>[CH-060.1] Indirizzi degli edifici (Misurazione ufficiale) - Zona denominata</Title>
+   <Abstract>Zona denominata</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.376394 45.852955</ows:LowerCorner>
+    <ows:UpperCorner>9.090493 46.601882</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_061_1_v1_7_spostamenti_terreno_permanenti</Name>
+   <Title>[CH-061.1] Spostamenti di terreno permanenti</Title>
+   <Abstract>Zone di movimento</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.539193 46.29359</ows:LowerCorner>
+    <ows:UpperCorner>9.05908 46.510336</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_062_1_v1_7_confini_giurisdizionali_cca_cantonale</Name>
+   <Title>[CH-062.1] Confini giurisdizionali - Confine cantonale</Title>
+   <Abstract>Confine cantonale</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.371511 45.829766</ows:LowerCorner>
+    <ows:UpperCorner>9.174341 46.638616</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_062_1_v1_7_confini_giurisdizionali_cco_comunale</Name>
+   <Title>[CH-062.1] Confini giurisdizionali - Confine comunale</Title>
+   <Abstract>Confine comunale</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.371277 45.816033</ows:LowerCorner>
+    <ows:UpperCorner>9.174341 46.638616</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_062_1_v1_7_confini_giurisdizionali_cco_comunaleprog</Name>
+   <Title>[CH-062.1] Confini giurisdizionali - Confine comunale in progetto</Title>
+   <Abstract>Confine comunale in progetto</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>9.014206 45.851555</ows:LowerCorner>
+    <ows:UpperCorner>9.085477 45.901894</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_062_1_v1_7_confini_giurisdizionali_cco_pcgiurisdizionale</Name>
+   <Title>[CH-062.1] Confini giurisdizionali - Punto di confine comunale</Title>
+   <Abstract>Punto di confine comunale</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.371277 45.816033</ows:LowerCorner>
+    <ows:UpperCorner>9.174341 46.638616</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_062_1_v1_7_confini_giurisdizionali_cdi_distrettuali</Name>
+   <Title>[CH-062.1] Confini giurisdizionali - Confine distrettuale</Title>
+   <Abstract>Confine distrettuale</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.371511 45.829766</ows:LowerCorner>
+    <ows:UpperCorner>9.174341 46.638616</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_062_1_v1_7_confini_giurisdizionali_cna_nazionale</Name>
+   <Title>[CH-062.1] Confini giurisdizionali - Confine nazionale</Title>
+   <Abstract>Confine nazionale</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.373902 45.816033</ows:LowerCorner>
+    <ows:UpperCorner>9.168776 46.464755</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_063_1_v1_7_suddivisioni_amministrative_an</Name>
+   <Title>[CH-063.1] Suddivisioni amministrative - AN</Title>
+   <Abstract>Suddivisioni amministrative</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>5.908943 45.777333</ows:LowerCorner>
+    <ows:UpperCorner>10.558916 47.813931</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_063_2_v1_7_suddivisioni_amministrative_rp_gt_gradi_tolleranza</Name>
+   <Title>[CH-063.2] Suddivisioni amministrative - RP e GT - Gradi di tolleranza</Title>
+   <Abstract>Gradi di tolleranza</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.371277 45.816033</ows:LowerCorner>
+    <ows:UpperCorner>9.174341 46.638616</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_063_2_v1_7_suddivisioni_amministrative_rp_gt_ripartizione_piani</Name>
+   <Title>[CH-063.2] Suddivisioni amministrative - RP e GT - Ripartizione dei piani</Title>
+   <Abstract>Ripartizione dei piani</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.371277 45.816033</ows:LowerCorner>
+    <ows:UpperCorner>9.174341 46.638616</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_064_1_v1_7_condotte_sotterranee_co_elemento_con_superficie</Name>
+   <Title>[CH-064.1] Condotte sotterranee - Elemento con superficie</Title>
+   <Abstract>Elemento con superficie</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>0 0</ows:LowerCorner>
+    <ows:UpperCorner>0 0</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_064_1_v1_7_condotte_sotterranee_co_elemento_lineare</Name>
+   <Title>[CH-064.1] Condotte sotterranee - Elemento lineare</Title>
+   <Abstract>Elemento lineare</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.890783 45.842585</ows:LowerCorner>
+    <ows:UpperCorner>8.983369 46.026922</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_064_1_v1_7_condotte_sotterranee_co_elemento_puntiforme</Name>
+   <Title>[CH-064.1] Condotte sotterranee - Elemento puntiforme</Title>
+   <Abstract>Elemento puntiforme</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>0 0</ows:LowerCorner>
+    <ows:UpperCorner>0 0</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_064_1_v1_7_condotte_sotterranee_co_punto_singolo</Name>
+   <Title>[CH-064.1] Condotte sotterranee - Punto singolo</Title>
+   <Abstract>Punto singolo</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>9.021635 45.850013</ows:LowerCorner>
+    <ows:UpperCorner>9.02164 45.850015</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_064_1_v1_7_condotte_sotterranee_co_segnale</Name>
+   <Title>[CH-064.1] Condotte sotterranee - Segnale</Title>
+   <Abstract>Segnale</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.904585 45.842866</ows:LowerCorner>
+    <ows:UpperCorner>8.983349 46.024425</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_067_1_v1_0_rete_ciclabile_rete_2045</Name>
+   <Title>[CH-067.1] Rete ciclabile - Rete 2045</Title>
+   <Abstract>Rete 2045</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.479214 45.826056</ows:LowerCorner>
+    <ows:UpperCorner>9.092512 46.582171</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_067_1_v1_0_rete_ciclabile_rete_attuale_pianificata</Name>
+   <Title>[CH-067.1] Rete ciclabile - Rete attuale - Pianificata</Title>
+   <Abstract>Rete attuale - Pianificata</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.540643 45.826091</ows:LowerCorner>
+    <ows:UpperCorner>9.090034 46.581577</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_067_1_v1_0_rete_ciclabile_rete_attuale_servizio</Name>
+   <Title>[CH-067.1] Rete ciclabile - Rete attuale - In servizio</Title>
+   <Abstract>Rete attuale - In servizio</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.540643 45.826091</ows:LowerCorner>
+    <ows:UpperCorner>9.090034 46.581577</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_068_1_v1_0_superfici_avvicendamento_colture</Name>
+   <Title>[CH-068.1] Superfici per l'avvicendamento delle colture</Title>
+   <Abstract>Superfici per l'avvicendamento delle colture</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.589785 45.818741</ows:LowerCorner>
+    <ows:UpperCorner>9.088184 46.476949</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_073a_1_v1_2_piani_utilizzazione_cantonali_elemento_linea</Name>
+   <Title>[CH-073a.1] Piani di utilizzazione (cantonali) - Elementi lineari</Title>
+   <Abstract>Elementi lineari</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.65707 45.857948</ows:LowerCorner>
+    <ows:UpperCorner>9.051631 46.534497</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_073a_1_v1_2_piani_utilizzazione_cantonali_elemento_punto</Name>
+   <Title>[CH-073a.1] Piani di utilizzazione (cantonali) - Elementi puntuali</Title>
+   <Abstract>Elementi puntuali</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.673041 46.522346</ows:LowerCorner>
+    <ows:UpperCorner>8.761713 46.56549</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_073a_1_v1_2_piani_utilizzazione_cantonali_zona_base</Name>
+   <Title>[CH-073a.1] Piani di utilizzazione (cantonali) - Zone base</Title>
+   <Abstract>Zone base</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.371279 45.816033</ows:LowerCorner>
+    <ows:UpperCorner>9.17434 46.638614</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_073a_1_v1_2_piani_utilizzazione_cantonali_zona_sovrapposta</Name>
+   <Title>[CH-073a.1] Piani di utilizzazione (cantonali) - Zone sovrapposte</Title>
+   <Abstract>Zone sovrapposte</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.585384 45.830884</ows:LowerCorner>
+    <ows:UpperCorner>9.05265 46.567931</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_073b_1_v1_2_piani_utilizzazione_comunali_elemento_linea</Name>
+   <Title>[CH-073b.1] Piani di utilizzazione (comunali) - Elementi lineari</Title>
+   <Abstract>Elementi lineari</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.506134 45.839015</ows:LowerCorner>
+    <ows:UpperCorner>9.091266 46.583611</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_073b_1_v1_2_piani_utilizzazione_comunali_elemento_punto</Name>
+   <Title>[CH-073b.1] Piani di utilizzazione (comunali) - Elementi puntuali</Title>
+   <Abstract>Elementi puntuali</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.527606 45.840118</ows:LowerCorner>
+    <ows:UpperCorner>9.097352 46.580699</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_073b_1_v1_2_piani_utilizzazione_comunali_zona_base</Name>
+   <Title>[CH-073b.1] Piani di utilizzazione (comunali) - Zone base</Title>
+   <Abstract>Zone base</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.499157 45.838682</ows:LowerCorner>
+    <ows:UpperCorner>9.100276 46.587024</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_073b_1_v1_2_piani_utilizzazione_comunali_zona_sovrapposta</Name>
+   <Title>[CH-073b.1] Piani di utilizzazione (comunali) - Zone sovrapposte</Title>
+   <Abstract>Zone sovrapposte</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.499905 45.838682</ows:LowerCorner>
+    <ows:UpperCorner>9.100242 46.58589</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_076_1_v1_1_zone_pianificazione_zone</Name>
+   <Title>[CH-076.1] Zone di pianificazione - Zone</Title>
+   <Abstract>Zone</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.908503 45.841611</ows:LowerCorner>
+    <ows:UpperCorner>9.043044 46.054578</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_079_1_v1_0_reti_percorsi_pedonali_sentieri_rete</Name>
+   <Title>[CH-079.1] Reti di percorsi pedonali e sentieri - Rete</Title>
+   <Abstract>Rete</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.369934 45.816034</ows:LowerCorner>
+    <ows:UpperCorner>9.17344 46.626321</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_079_1_v1_0_reti_percorsi_pedonali_sentieri_segnaletica_verticale</Name>
+   <Title>[CH-079.1] Reti di percorsi pedonali e sentieri - Segnaletica verticale</Title>
+   <Abstract>Segnaletica verticale</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.366202 45.815408</ows:LowerCorner>
+    <ows:UpperCorner>9.265129 46.645813</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_081_1_v1_0_rete_misura_sedimenti_solid</Name>
+   <Title>[CH-081.1] Rete di misura dei sedimenti (SOLID)</Title>
+   <Abstract>Rete di misura dei sedimenti (SOLID)</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.589145 46.012741</ows:LowerCorner>
+    <ows:UpperCorner>9.096494 46.525967</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_081_2_v1_1_opere_protezione_pericoli_naturali_protectme_op_linea</Name>
+   <Title>[CH-081.2] Opere di protezione dai pericoli naturali (ProtectMe) - Linee</Title>
+   <Abstract>Linee</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.403601 45.818058</ows:LowerCorner>
+    <ows:UpperCorner>9.159229 46.578119</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_081_2_v1_1_opere_protezione_pericoli_naturali_protectme_op_poligono</Name>
+   <Title>[CH-081.2] Opere di protezione dai pericoli naturali (ProtectMe) - Poligoni</Title>
+   <Abstract>Poligoni</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.400694 45.820021</ows:LowerCorner>
+    <ows:UpperCorner>9.113872 46.577554</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_081_2_v1_1_opere_protezione_pericoli_naturali_protectme_op_punto</Name>
+   <Title>[CH-081.2] Opere di protezione dai pericoli naturali (ProtectMe) - Punti</Title>
+   <Abstract>Punti</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.483221 45.819578</ows:LowerCorner>
+    <ows:UpperCorner>9.081406 46.546245</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_086_1_v1_1_assi_strade_nazionali_assi_stradali</Name>
+   <Title>[CH-086.1] Assi delle strade nazionali - Assi stradali</Title>
+   <Abstract>Assi stradali</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.542663 45.836813</ows:LowerCorner>
+    <ows:UpperCorner>9.090835 46.582318</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_086_1_v1_1_assi_strade_nazionali_punti_riferimento</Name>
+   <Title>[CH-086.1] Assi delle strade nazionali - Punti di riferimento</Title>
+   <Abstract>Punti di riferimento</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.543188 45.83692</ows:LowerCorner>
+    <ows:UpperCorner>9.083377 46.582222</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_114_1_v1_2_impianti_incenerimento_rifiuti_urbani_iiru_discariche_tipo_poligoni</Name>
+   <Title>[CH-114.1] Impianti di incenerimento dei rifiuti urbani (IIRU), Discariche di tipo A - Poligoni</Title>
+   <Abstract>Poligoni</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.98818 46.170888</ows:LowerCorner>
+    <ows:UpperCorner>8.991873 46.173382</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_114_1_v1_2_impianti_incenerimento_rifiuti_urbani_iiru_discariche_tipo_punti</Name>
+   <Title>[CH-114.1] Impianti di incenerimento dei rifiuti urbani (IIRU), Discariche di tipo A - Punti</Title>
+   <Abstract>Punti</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.990026 46.172135</ows:LowerCorner>
+    <ows:UpperCorner>8.990027 46.172136</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_114_2_v1_5_discariche_tipo_bcd</Name>
+   <Title>[CH-114.2] Discariche di tipo B, C, D e E</Title>
+   <Abstract>Discariche di tipo B, C, D e E</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.481938 45.830915</ows:LowerCorner>
+    <ows:UpperCorner>9.033331 46.501287</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_116_1_v1_5_catasto_siti_inquinati</Name>
+   <Title>[CH-116.1] Catasto dei siti inquinati</Title>
+   <Abstract>Catasto dei siti inquinati</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.476326 45.819884</ows:LowerCorner>
+    <ows:UpperCorner>9.099748 46.577253</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_122_1_v1_1_rilevamenti_cantonali_inquinamento_atmosferico_reti_rilevamento</Name>
+   <Title>[CH-122.1] Rilevamenti cantonali dell'inquinamento atmosferico (reti di rilevamento)</Title>
+   <Abstract>Rilevamenti cantonali dell'inquinamento atmosferico (reti di rilevamento)</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.597305 45.837469</ows:LowerCorner>
+    <ows:UpperCorner>9.048094 46.528011</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_130_1_v1_2_settori_protezione_acque</Name>
+   <Title>[CH-130.1] Settori di protezione delle acque</Title>
+   <Abstract>Settori di protezione delle acque</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.5838 45.820017</ows:LowerCorner>
+    <ows:UpperCorner>9.147496 46.445247</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_131_1_v1_2_zone_protezione_acque_sotterranee_indicative</Name>
+   <Title>[CH-131.1] Zone di protezione delle acque sotterranee - Indicative</Title>
+   <Abstract>Indicative</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.43899 45.905497</ows:LowerCorner>
+    <ows:UpperCorner>9.135428 46.608825</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_131_1_v1_2_zone_protezione_acque_sotterranee_validate</Name>
+   <Title>[CH-131.1] Zone di protezione delle acque sotterranee - Validate</Title>
+   <Abstract>Validate</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.444549 45.820905</ows:LowerCorner>
+    <ows:UpperCorner>9.145274 46.57753</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_132_1_v1_2_aree_protezione_acque_sotterranee</Name>
+   <Title>[CH-132.1] Aree di protezione delle acque sotterranee</Title>
+   <Abstract>Aree di protezione delle acque sotterranee</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.734142 45.984663</ows:LowerCorner>
+    <ows:UpperCorner>9.040385 46.397389</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_134_4_v1_0_rete_rilevamento_temperatura_ubicazione_punti_misura</Name>
+   <Title>[CH-134.4] Rete di rilevamento della temperatura - Ubicazione dei punti di misura</Title>
+   <Abstract>Rete di rilevamento della temperatura - Ubicazione dei punti di misura</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.479986 45.830593</ows:LowerCorner>
+    <ows:UpperCorner>9.156024 46.547056</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_136_1_v1_0_rete_misura_livelli_deflussi_ubicazione_punti_deflussi</Name>
+   <Title>[CH-136.1] Rete di misura dei livelli e deflussi - Ubicazione dei punti di misura - Deflussi</Title>
+   <Abstract>Deflussi</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.479986 45.830593</ows:LowerCorner>
+    <ows:UpperCorner>9.156024 46.547056</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_136_1_v1_0_rete_misura_livelli_deflussi_ubicazione_punti_livelli</Name>
+   <Title>[CH-136.1] Rete di misura dei livelli e deflussi - Ubicazione dei punti di misura - Livelli</Title>
+   <Abstract>Livelli</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.479986 45.830593</ows:LowerCorner>
+    <ows:UpperCorner>9.156024 46.547056</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_145_1_v1_2_gradi_sensibilita_rumore_zone_utilizzazione_zone</Name>
+   <Title>[CH-145.1] Gradi di sensibilità al rumore (in zone d'utilizzazione) - Zone</Title>
+   <Abstract>Zone</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.498953 45.827381</ows:LowerCorner>
+    <ows:UpperCorner>9.151948 46.587024</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_151_1_v2_0_catasto_viticolo</Name>
+   <Title>[CH-151.1] Catasto viticolo</Title>
+   <Abstract>Catasto viticolo</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.568379 45.816155</ows:LowerCorner>
+    <ows:UpperCorner>9.200279 46.487316</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_153_1_v3_0_gestione_agricola_superfici_utilizzazione</Name>
+   <Title>[CH-153.1] Gestione agricola: superfici d'utilizzazione</Title>
+   <Abstract>Gestione agricola: superfici d'utilizzazione</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.371279 45.814786</ows:LowerCorner>
+    <ows:UpperCorner>9.256132 46.639864</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_157_1_v1_2_margini_statici_foresta_margini</Name>
+   <Title>[CH-157.1] Margini statici della foresta - Margini</Title>
+   <Abstract>Margini</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.482715 45.819522</ows:LowerCorner>
+    <ows:UpperCorner>9.100745 46.563249</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_160_1_v2_0_riserve_forestali</Name>
+   <Title>[CH-160.1] Riserve forestali</Title>
+   <Abstract>Riserve forestali</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.489103 45.842535</ows:LowerCorner>
+    <ows:UpperCorner>9.108561 46.549094</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_167_1_v1_0_catasto_eventi_naturali_storme_area_dettaglio_acqua_og</Name>
+   <Title>[CH-167.1] Catasto degli eventi naturali (StorMe) - Aree di dettaglio - acqua superficiale</Title>
+   <Abstract>Aree di dettaglio - acqua superficiale</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.4678 45.843844</ows:LowerCorner>
+    <ows:UpperCorner>9.065687 46.458263</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_167_1_v1_0_catasto_eventi_naturali_storme_area_dettaglio_acqua_u</Name>
+   <Title>[CH-167.1] Catasto degli eventi naturali (StorMe) - Aree di dettaglio - acqua erosione</Title>
+   <Abstract>Aree di dettaglio - acqua erosione</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.460277 45.827073</ows:LowerCorner>
+    <ows:UpperCorner>9.044411 46.53167</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_167_1_v1_0_catasto_eventi_naturali_storme_area_dettaglio_acqua_um</Name>
+   <Title>[CH-167.1] Catasto degli eventi naturali (StorMe) - Aree di dettaglio - acqua inondazione e colata</Title>
+   <Abstract>Aree di dettaglio - acqua inondazione e colata</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.458971 45.827749</ows:LowerCorner>
+    <ows:UpperCorner>9.132804 46.611924</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_167_1_v1_0_catasto_eventi_naturali_storme_area_dettaglio_altro</Name>
+   <Title>[CH-167.1] Catasto degli eventi naturali (StorMe) - Aree di dettaglio - altro</Title>
+   <Abstract>Aree di dettaglio - altro</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>0 0</ows:LowerCorner>
+    <ows:UpperCorner>0 0</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_167_1_v1_0_catasto_eventi_naturali_storme_area_dettaglio_cedimento</Name>
+   <Title>[CH-167.1] Catasto degli eventi naturali (StorMe) - Aree di dettaglio - cedimento</Title>
+   <Abstract>Aree di dettaglio - cedimento</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>0 0</ows:LowerCorner>
+    <ows:UpperCorner>0 0</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_167_1_v1_0_catasto_eventi_naturali_storme_area_dettaglio_crollo</Name>
+   <Title>[CH-167.1] Catasto degli eventi naturali (StorMe) - Aree di dettaglio - crollo</Title>
+   <Abstract>Aree di dettaglio - crollo</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.482204 45.849501</ows:LowerCorner>
+    <ows:UpperCorner>9.127645 46.583269</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_167_1_v1_0_catasto_eventi_naturali_storme_area_dettaglio_scivolamento</Name>
+   <Title>[CH-167.1] Catasto degli eventi naturali (StorMe) - Aree di dettaglio - scivolamento</Title>
+   <Abstract>Aree di dettaglio - scivolamento</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.419174 45.824745</ows:LowerCorner>
+    <ows:UpperCorner>9.116649 46.58482</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_167_1_v1_0_catasto_eventi_naturali_storme_area_dettaglio_sprofondamento</Name>
+   <Title>[CH-167.1] Catasto degli eventi naturali (StorMe) - Aree di dettaglio - sprofondamento</Title>
+   <Abstract>Aree di dettaglio - sprofondamento</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>0 0</ows:LowerCorner>
+    <ows:UpperCorner>0 0</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_167_1_v1_0_catasto_eventi_naturali_storme_area_dettaglio_valanga</Name>
+   <Title>[CH-167.1] Catasto degli eventi naturali (StorMe) - Aree di dettaglio - valanga</Title>
+   <Abstract>Aree di dettaglio - valanga</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.426107 45.907636</ows:LowerCorner>
+    <ows:UpperCorner>9.105813 46.585908</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_167_1_v1_0_catasto_eventi_naturali_storme_danni</Name>
+   <Title>[CH-167.1] Catasto degli eventi naturali (StorMe) - Danni - punti</Title>
+   <Abstract>Danni - punti</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.439127 45.822739</ows:LowerCorner>
+    <ows:UpperCorner>9.120491 46.583653</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_167_1_v1_0_catasto_eventi_naturali_storme_info_base</Name>
+   <Title>[CH-167.1] Catasto degli eventi naturali (StorMe) - Informazioni di base - punti</Title>
+   <Abstract>Informazioni di base - punti</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.419612 45.822647</ows:LowerCorner>
+    <ows:UpperCorner>9.126988 46.590142</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_181_1_v1_0_cap_localita</Name>
+   <Title>[CH-181.1] CAP e località</Title>
+   <Abstract>CAP e località</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.371279 45.816033</ows:LowerCorner>
+    <ows:UpperCorner>9.17434 46.638614</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_183_1_v1_2_sicurezza_approvvigionamento_elettrico_comprensori_rete</Name>
+   <Title>[CH-183.1] Sicurezza dell'approvvigionamento elettrico: comprensori di rete</Title>
+   <Abstract>Livello 7</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.371279 45.816033</ows:LowerCorner>
+    <ows:UpperCorner>9.17434 46.638614</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_184_1_v1_0_itinerari_cantonali_trasporti_speciali_itinerari</Name>
+   <Title>[CH-184.1] Itinerari cantonali dei trasporti speciali - Itinerari</Title>
+   <Abstract>Itinerari</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.592 45.834677</ows:LowerCorner>
+    <ows:UpperCorner>9.053106 46.533703</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_184_1_v1_0_itinerari_cantonali_trasporti_speciali_ostacoli</Name>
+   <Title>[CH-184.1] Itinerari cantonali dei trasporti speciali - Ostacoli</Title>
+   <Abstract>Ostacoli</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.696057 45.834711</ows:LowerCorner>
+    <ows:UpperCorner>9.04919 46.439593</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_185_1_v1_1_dissodamenti_compensazione_dissodamento_aree</Name>
+   <Title>[CH-185.1] Dissodamenti e compensazione del dissodamento - Aree</Title>
+   <Abstract>Aree</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.467232 45.830537</ows:LowerCorner>
+    <ows:UpperCorner>9.100288 46.570862</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_185_1_v1_1_dissodamenti_compensazione_dissodamento_punto_informazione</Name>
+   <Title>[CH-185.1] Dissodamenti e compensazione del dissodamento - Punto informazione</Title>
+   <Abstract>Punto informazione</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.472343 45.83223</ows:LowerCorner>
+    <ows:UpperCorner>9.087575 46.570156</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_188_1_v1_0_inventario_pbc_regionale_locale</Name>
+   <Title>[CH-188.1] Inventario PBC (regionale e locale)</Title>
+   <Abstract>Inventario PBC (regionale e locale)</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.480357 45.829568</ows:LowerCorner>
+    <ows:UpperCorner>9.075665 46.555978</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_190_1_v1_1_spazio_riservato_acque_zone</Name>
+   <Title>[CH-190.1] Spazio riservato alle acque - Zone</Title>
+   <Abstract>Zone</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.533017 45.840259</ows:LowerCorner>
+    <ows:UpperCorner>9.060467 46.533693</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_191_1_v1_1_pianificazione_rivitalizzazioni_corsi_acqua_beneficio_tratte</Name>
+   <Title>[CH-191.1] Pianificazione delle rivitalizzazioni dei corsi d'acqua - Beneficio</Title>
+   <Abstract>Beneficio</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.411636 45.818891</ows:LowerCorner>
+    <ows:UpperCorner>9.090694 46.573322</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_191_1_v1_1_pianificazione_rivitalizzazioni_corsi_acqua_ecomorfologia_tratte</Name>
+   <Title>[CH-191.1] Pianificazione delle rivitalizzazioni dei corsi d'acqua - Ecomorfologia</Title>
+   <Abstract>Ecomorfologia</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.411636 45.818891</ows:LowerCorner>
+    <ows:UpperCorner>9.090694 46.573322</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_191_1_v1_1_pianificazione_rivitalizzazioni_corsi_acqua_ecopotenziale_tratte</Name>
+   <Title>[CH-191.1] Pianificazione delle rivitalizzazioni dei corsi d'acqua - Ecopotenziale</Title>
+   <Abstract>Ecopotenziale</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.411636 45.818891</ows:LowerCorner>
+    <ows:UpperCorner>9.090694 46.573322</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_191_1_v1_1_pianificazione_rivitalizzazioni_corsi_acqua_manufatti_punti</Name>
+   <Title>[CH-191.1] Pianificazione delle rivitalizzazioni dei corsi d'acqua - Manufatti</Title>
+   <Abstract>Manufatti</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.430361 45.818938</ows:LowerCorner>
+    <ows:UpperCorner>9.088229 46.565036</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_191_1_v1_1_pianificazione_rivitalizzazioni_corsi_acqua_priorita_tratte</Name>
+   <Title>[CH-191.1] Pianificazione delle rivitalizzazioni dei corsi d'acqua - Priorità</Title>
+   <Abstract>Priorità</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.494214 45.83119</ows:LowerCorner>
+    <ows:UpperCorner>9.084046 46.530861</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_191_1_v1_1_pianificazione_rivitalizzazioni_corsi_acqua_soglie_punti</Name>
+   <Title>[CH-191.1] Pianificazione delle rivitalizzazioni dei corsi d'acqua - Soglie</Title>
+   <Abstract>Soglie</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.41192 45.822424</ows:LowerCorner>
+    <ows:UpperCorner>9.083626 46.562361</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_191_2_v1_2_pianificazione_rivitalizzazione_rive_lacustri_beneficio_natura_paesaggio</Name>
+   <Title>[CH-191.2] Pianificazione della rivitalizzazione delle rive lacustri - Beneficio natura paesaggio</Title>
+   <Abstract>Beneficio natura paesaggio</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.692263 45.90416</ows:LowerCorner>
+    <ows:UpperCorner>9.029735 46.181503</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_191_2_v1_2_pianificazione_rivitalizzazione_rive_lacustri_importanza_ecologica_paesaggistica</Name>
+   <Title>[CH-191.2] Pianificazione della rivitalizzazione delle rive lacustri - Importanza ecologica paesaggistica</Title>
+   <Abstract>Importanza ecologica paesaggistica</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.692263 45.90416</ows:LowerCorner>
+    <ows:UpperCorner>9.029735 46.181503</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_191_2_v1_2_pianificazione_rivitalizzazione_rive_lacustri_scadenze</Name>
+   <Title>[CH-191.2] Pianificazione della rivitalizzazione delle rive lacustri - Scadenze</Title>
+   <Abstract>Scadenze</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.692263 45.90416</ows:LowerCorner>
+    <ows:UpperCorner>9.029735 46.181503</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_191_2_v1_2_pianificazione_rivitalizzazione_rive_lacustri_stato_ecomorfologico_attuale</Name>
+   <Title>[CH-191.2] Pianificazione della rivitalizzazione delle rive lacustri - Stato ecomorfologico attuale</Title>
+   <Abstract>Stato ecomorfologico attuale</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.692263 45.90416</ows:LowerCorner>
+    <ows:UpperCorner>9.029735 46.181503</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_191_2_v1_2_pianificazione_rivitalizzazione_rive_lacustri_tratto_riva_lago</Name>
+   <Title>[CH-191.2] Pianificazione della rivitalizzazione delle rive lacustri - Tratto riva lago</Title>
+   <Abstract>Tratto riva lago</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.692263 45.90416</ows:LowerCorner>
+    <ows:UpperCorner>9.029735 46.181503</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_194_1_v1_0_impianti_accumulazione_sottoposti_vigilanza_cantonale</Name>
+   <Title>[CH-194.1] Impianti di accumulazione sottoposti a vigilanza cantonale</Title>
+   <Abstract>Impianti di accumulazione sottoposti a vigilanza cantonale</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.597241 46.181912</ows:LowerCorner>
+    <ows:UpperCorner>9.062641 46.548136</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_195_1_v2_1_zone_tranquillita_fauna_selvatica_sentieri</Name>
+   <Title>[CH-195.1] Zone di tranquillità per la fauna selvatica - Sentieri</Title>
+   <Abstract>Sentieri</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.450531 45.892626</ows:LowerCorner>
+    <ows:UpperCorner>9.054728 46.54794</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ch_195_1_v2_1_zone_tranquillita_fauna_selvatica_zone</Name>
+   <Title>[CH-195.1] Zone di tranquillità per la fauna selvatica - Zone</Title>
+   <Abstract>Zone</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.447724 45.891232</ows:LowerCorner>
+    <ows:UpperCorner>9.080833 46.550488</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ti_002_1_v1_0_decreti_protezione</Name>
+   <Title>[TI-002.1] Decreti di protezione</Title>
+   <Abstract>Decreti di protezione della natura</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.492733 45.838839</ows:LowerCorner>
+    <ows:UpperCorner>9.06262 46.564187</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ti_003_1_v1_0_incendi_bosco</Name>
+   <Title>[TI-003.1] Incendi di bosco</Title>
+   <Abstract>Incendi di bosco</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.444244 45.816219</ows:LowerCorner>
+    <ows:UpperCorner>9.160655 46.570576</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ti_004_1_v1_0_infrastrutture_antincendio</Name>
+   <Title>[TI-004.1] Infrastrutture antincendio</Title>
+   <Abstract>Infrastrutture antincendio</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.459555 45.819958</ows:LowerCorner>
+    <ows:UpperCorner>9.12592 46.575353</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ti_005_1_v1_0_impianti_fune_metallica_linee</Name>
+   <Title>[TI-005.1] Impianti a fune metallica - Linee</Title>
+   <Abstract>Linee</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.494022 45.846713</ows:LowerCorner>
+    <ows:UpperCorner>9.140508 46.563665</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ti_005_1_v1_0_impianti_fune_metallica_stazioni</Name>
+   <Title>[TI-005.1] Impianti a fune metallica - Stazioni</Title>
+   <Abstract>Stazioni</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.494022 45.846713</ows:LowerCorner>
+    <ows:UpperCorner>9.140508 46.563665</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ti_006_1_v1_0_boschi_particolare_pregio_formazioni_minoritarie</Name>
+   <Title>[TI-006.1] Boschi di particolare pregio - Formazioni minoritarie</Title>
+   <Abstract>Formazioni minoritarie</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.444891 45.817794</ows:LowerCorner>
+    <ows:UpperCorner>9.109982 46.564644</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ti_006_1_v1_0_boschi_particolare_pregio_lariceti_pascolati</Name>
+   <Title>[TI-006.1] Boschi di particolare pregio - Lariceti pascolati</Title>
+   <Abstract>Lariceti pascolati</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.4425 46.142075</ows:LowerCorner>
+    <ows:UpperCorner>9.145284 46.593099</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ti_006_1_v1_0_boschi_particolare_pregio_selve_castanili_gestite</Name>
+   <Title>[TI-006.1] Boschi di particolare pregio - Selve castanili gestite</Title>
+   <Abstract>Selve castanili gestite</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.518375 45.844072</ows:LowerCorner>
+    <ows:UpperCorner>9.081128 46.530632</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ti_007_1_v1_0_bosco_protezione_bosco_silvaprotect</Name>
+   <Title>[TI-007.1] Bosco di protezione - Bosco SilvaProtect</Title>
+   <Abstract>Bosco SilvaProtect</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.428405 45.816648</ows:LowerCorner>
+    <ows:UpperCorner>9.168935 46.601434</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ti_007_1_v1_0_bosco_protezione_comprensori_silvaprotect</Name>
+   <Title>[TI-007.1] Bosco di protezione - Comprensori SilvaProtect</Title>
+   <Abstract>Comprensori SilvaProtect</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.425909 45.816595</ows:LowerCorner>
+    <ows:UpperCorner>9.173114 46.62109</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ti_008_1_v1_0_strade_piste_forestali_barriera</Name>
+   <Title>[TI-008.1] Strade e piste forestali - Barriere</Title>
+   <Abstract>Barriere</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.467905 45.822153</ows:LowerCorner>
+    <ows:UpperCorner>9.11998 46.567754</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ti_008_1_v1_0_strade_piste_forestali_ostacolo</Name>
+   <Title>[TI-008.1] Strade e piste forestali - Ostacoli</Title>
+   <Abstract>Ostacoli</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.583075 45.833744</ows:LowerCorner>
+    <ows:UpperCorner>9.05481 46.536218</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ti_008_1_v1_0_strade_piste_forestali_piazzale</Name>
+   <Title>[TI-008.1] Strade e piste forestali - Piazzali</Title>
+   <Abstract>Piazzali</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.453637 45.821935</ows:LowerCorner>
+    <ows:UpperCorner>9.143714 46.563494</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ti_008_1_v1_0_strade_piste_forestali_strade_piste</Name>
+   <Title>[TI-008.1] Strade e piste forestali - Strade e piste</Title>
+   <Abstract>Strade e piste</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.452426 45.816426</ows:LowerCorner>
+    <ows:UpperCorner>9.145607 46.578273</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ti_009_1_v1_0_circondari_settori_forestali_circondari</Name>
+   <Title>[TI-009.1] Circondari e settori forestali - Circondari</Title>
+   <Abstract>Circondari</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.371279 45.816033</ows:LowerCorner>
+    <ows:UpperCorner>9.17434 46.638614</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ti_009_1_v1_0_circondari_settori_forestali_settori</Name>
+   <Title>[TI-009.1] Circondari e settori forestali - Settori</Title>
+   <Abstract>Settori</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.371279 45.816033</ows:LowerCorner>
+    <ows:UpperCorner>9.17434 46.638614</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ti_011_1_v1_1_assi_strade_cantonali_assi_stradali</Name>
+   <Title>[TI-011.1] Assi delle strade cantonali - Assi stradali</Title>
+   <Abstract>Assi stradali</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.37632 45.819454</ows:LowerCorner>
+    <ows:UpperCorner>9.098855 46.583087</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ti_011_1_v1_1_assi_strade_cantonali_punti_ettometrici</Name>
+   <Title>[TI-011.1] Assi delle strade cantonali - Punti ettometrici</Title>
+   <Abstract>Punti ettometrici</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.377532 45.820067</ows:LowerCorner>
+    <ows:UpperCorner>9.098457 46.58227</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ti_011_1_v1_1_assi_strade_cantonali_punti_riferimento</Name>
+   <Title>[TI-011.1] Assi delle strade cantonali - Punti di riferimento</Title>
+   <Abstract>Punti di riferimento</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.37632 45.819459</ows:LowerCorner>
+    <ows:UpperCorner>9.098855 46.583087</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ti_011_1_v1_1_assi_strade_cantonali_segmenti</Name>
+   <Title>[TI-011.1] Assi delle strade cantonali - Segmenti</Title>
+   <Abstract>Segmenti</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.37632 45.819454</ows:LowerCorner>
+    <ows:UpperCorner>9.098855 46.583087</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ti_011_2_v2_1_assi_strade_cantonali_rete_oate_nodi</Name>
+   <Title>[TI-011.2] Assi delle strade cantonali - Rete OATE - Nodi di rete</Title>
+   <Abstract>Nodi di rete</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.483299 45.833131</ows:LowerCorner>
+    <ows:UpperCorner>9.072148 46.561568</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ti_028a_1_version1_0_mn95_piani_utilizzazione_cantonali_elemento_linea</Name>
+   <Title>[TI-028a.1] Piani di utilizzazione cantonali - Elemento linea</Title>
+   <Abstract>Elemento linea</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.656698 45.841353</ows:LowerCorner>
+    <ows:UpperCorner>9.051633 46.534497</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ti_028a_1_version1_0_mn95_piani_utilizzazione_cantonali_elemento_poligono</Name>
+   <Title>[TI-028a.1] Piani di utilizzazione cantonali - Elemento poligono</Title>
+   <Abstract>Elemento poligono</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.585383 45.830883</ows:LowerCorner>
+    <ows:UpperCorner>9.052653 46.567932</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ti_028a_1_version1_0_mn95_piani_utilizzazione_cantonali_elemento_punto</Name>
+   <Title>[TI-028a.1] Piani di utilizzazione cantonali - Elemento punto</Title>
+   <Abstract>Elemento punto</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.657813 45.842468</ows:LowerCorner>
+    <ows:UpperCorner>9.040578 46.565491</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ti_028a_1_version1_0_mn95_piani_utilizzazione_cantonali_zona_base_poligono</Name>
+   <Title>[TI-028a.1] Piani di utilizzazione cantonali - Zona base</Title>
+   <Abstract>Zona base</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.371277 45.816033</ows:LowerCorner>
+    <ows:UpperCorner>9.174341 46.638616</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ti_028a_1_version1_0_mn95_piani_utilizzazione_cantonali_zona_sovrapposta_poligono</Name>
+   <Title>[TI-028a.1] Piani di utilizzazione cantonali - Zona sovrapposta</Title>
+   <Abstract>Zona sovrapposta</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.593325 45.830883</ows:LowerCorner>
+    <ows:UpperCorner>9.052653 46.567846</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ti_028b_1_version1_0_mn95_piani_regolatori_elemento_linea</Name>
+   <Title>[TI-028b.1] Piani regolatori - Elemento linea</Title>
+   <Abstract>Elemento linea</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.476487 45.816105</ows:LowerCorner>
+    <ows:UpperCorner>9.171983 46.58389</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ti_028b_1_version1_0_mn95_piani_regolatori_elemento_poligono</Name>
+   <Title>[TI-028b.1] Piani regolatori - Elemento poligono</Title>
+   <Abstract>Elemento poligono</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.476103 45.840101</ows:LowerCorner>
+    <ows:UpperCorner>9.134653 46.582227</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ti_028b_1_version1_0_mn95_piani_regolatori_elemento_punto</Name>
+   <Title>[TI-028b.1] Piani regolatori - Elemento punto</Title>
+   <Abstract>Elemento punto</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.479921 45.817252</ows:LowerCorner>
+    <ows:UpperCorner>9.171472 46.581155</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ti_028b_1_version1_0_mn95_piani_regolatori_zona_base_poligono</Name>
+   <Title>[TI-028b.1] Piani regolatori - Zona base</Title>
+   <Abstract>Zona base</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.430123 45.816033</ows:LowerCorner>
+    <ows:UpperCorner>9.172768 46.58909</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ti_028b_1_version1_0_mn95_piani_regolatori_zona_sovrapposta_poligono</Name>
+   <Title>[TI-028b.1] Piani regolatori - Zona sovrapposta</Title>
+   <Abstract>Zona sovrapposta</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.475717 45.816033</ows:LowerCorner>
+    <ows:UpperCorner>9.172686 46.586116</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ti_029_1_v1_0_bosco_funzione_svago</Name>
+   <Title>[TI-029.1] Bosco con funzione di svago</Title>
+   <Abstract>Bosco con funzione di svago</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.460857 45.817185</ows:LowerCorner>
+    <ows:UpperCorner>9.093078 46.57919</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ti_030_1_v1_0_accertamento_bosco_accertamento_generale_eseguito</Name>
+   <Title>[TI-030.1] Accertamento del bosco - Accertamento generale eseguito</Title>
+   <Abstract>Accertamento generale eseguito</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.371279 45.816033</ows:LowerCorner>
+    <ows:UpperCorner>9.174316 46.638614</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ti_030_1_v1_0_accertamento_bosco_accertamento_puntuale</Name>
+   <Title>[TI-030.1] Accertamento del bosco - Accertamento puntuale</Title>
+   <Abstract>Accertamento puntuale</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.479992 45.826796</ows:LowerCorner>
+    <ows:UpperCorner>9.13308 46.570005</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ti_030_1_v1_0_accertamento_bosco_limite_bosco</Name>
+   <Title>[TI-030.1] Accertamento del bosco - Limite del bosco</Title>
+   <Abstract>Limite del bosco</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.464832 45.817121</ows:LowerCorner>
+    <ows:UpperCorner>9.133147 46.582955</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ti_032_1_v1_0_aree_pianificate_progetti_stradali_cantonali_elemento_linea</Name>
+   <Title>[TI-032.1] Aree pianificate dai progetti stradali cantonali - Elemento linea</Title>
+   <Abstract>Elemento linea</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.733328 45.843616</ows:LowerCorner>
+    <ows:UpperCorner>9.016692 46.355341</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ti_032_1_v1_0_aree_pianificate_progetti_stradali_cantonali_elemento_punto</Name>
+   <Title>[TI-032.1] Aree pianificate dai progetti stradali cantonali - Elemento punto</Title>
+   <Abstract>Elemento punto</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>0 0</ows:LowerCorner>
+    <ows:UpperCorner>0 0</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ti_032_1_v1_0_aree_pianificate_progetti_stradali_cantonali_zona_base</Name>
+   <Title>[TI-032.1] Aree pianificate dai progetti stradali cantonali - Zona base</Title>
+   <Abstract>Zona base</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.500432 45.843635</ows:LowerCorner>
+    <ows:UpperCorner>9.01625 46.358161</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ti_032_1_v1_0_aree_pianificate_progetti_stradali_cantonali_zona_sovrapposta</Name>
+   <Title>[TI-032.1] Aree pianificate dai progetti stradali cantonali - Zona sovrapposta</Title>
+   <Abstract>Zona sovrapposta</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.945104 46.005943</ows:LowerCorner>
+    <ows:UpperCorner>8.945891 46.006973</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ti_034_1_v1_0_carta_pericoli_gradi_acqua</Name>
+   <Title>[TI-034.1] Carta dei pericoli - Gradi - Acqua</Title>
+   <Abstract>Acqua</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.459118 45.82313</ows:LowerCorner>
+    <ows:UpperCorner>9.091588 46.577061</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ti_034_1_v1_0_carta_pericoli_gradi_crollo</Name>
+   <Title>[TI-034.1] Carta dei pericoli - Gradi - Crollo</Title>
+   <Abstract>Crollo</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.524487 45.841887</ows:LowerCorner>
+    <ows:UpperCorner>9.078214 46.568728</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ti_034_1_v1_0_carta_pericoli_gradi_scivolamento</Name>
+   <Title>[TI-034.1] Carta dei pericoli - Gradi - Scivolamento</Title>
+   <Abstract>Scivolamento</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.52481 45.82215</ows:LowerCorner>
+    <ows:UpperCorner>9.094495 46.535147</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ti_034_1_v1_0_carta_pericoli_gradi_valanga</Name>
+   <Title>[TI-034.1] Carta dei pericoli - Gradi - Valanga</Title>
+   <Abstract>Valanga</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.44874 46.20433</ows:LowerCorner>
+    <ows:UpperCorner>9.004823 46.581736</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ti_034_2_v1_0_carta_pericoli_indicativi_acqua</Name>
+   <Title>[TI-034.2] Carta dei pericoli - Indicativi - Acqua</Title>
+   <Abstract>Acqua</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.417518 45.822948</ows:LowerCorner>
+    <ows:UpperCorner>9.104417 46.583792</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ti_034_2_v1_0_carta_pericoli_indicativi_crollo</Name>
+   <Title>[TI-034.2] Carta dei pericoli - Indicativi - Crollo</Title>
+   <Abstract>Crollo</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.394521 45.84014</ows:LowerCorner>
+    <ows:UpperCorner>9.133352 46.588049</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ti_034_2_v1_0_carta_pericoli_indicativi_scivolamento</Name>
+   <Title>[TI-034.2] Carta dei pericoli - Indicativi - Scivolamento</Title>
+   <Abstract>Scivolamento</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.437796 45.818541</ows:LowerCorner>
+    <ows:UpperCorner>9.160791 46.613611</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ti_034_2_v1_0_carta_pericoli_indicativi_valanga</Name>
+   <Title>[TI-034.2] Carta dei pericoli - Indicativi - Valanga</Title>
+   <Abstract>Valanga</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.384425 45.907189</ows:LowerCorner>
+    <ows:UpperCorner>9.137451 46.617652</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ti_035_1_v1_0_settori_pesca_fiumi</Name>
+   <Title>[TI-035.1] Settori di pesca - Fiumi</Title>
+   <Abstract>Fiumi</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.391436 45.820598</ows:LowerCorner>
+    <ows:UpperCorner>9.147225 46.62771</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ti_035_1_v1_0_settori_pesca_limitazioni</Name>
+   <Title>[TI-035.1] Settori di pesca - Limitazioni</Title>
+   <Abstract>Limitazioni</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.602594 46.148149</ows:LowerCorner>
+    <ows:UpperCorner>9.086159 46.420259</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ti_035_1_v1_0_settori_pesca_settori</Name>
+   <Title>[TI-035.1] Settori di pesca - Settori</Title>
+   <Abstract>Settori</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.371265 45.816062</ows:LowerCorner>
+    <ows:UpperCorner>9.174328 46.638634</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ti_036_1_v1_0_comparti_area_forestale_crescita</Name>
+   <Title>[TI-036.1] Comparti con area forestale in crescita</Title>
+   <Abstract>Comparti con area forestale in crescita</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.371279 45.816033</ows:LowerCorner>
+    <ows:UpperCorner>9.17434 46.638614</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ti_037_1_v1_0_aule_bosco</Name>
+   <Title>[TI-037.1] Aule nel bosco</Title>
+   <Abstract>Aule nel bosco</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.638265 45.838223</ows:LowerCorner>
+    <ows:UpperCorner>9.079242 46.528775</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ti_038_1_v1_0_autorizzazioni_taglio_bosco</Name>
+   <Title>[TI-038.1] Autorizzazioni di taglio del bosco</Title>
+   <Abstract>Autorizzazioni di taglio del bosco</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.455821 45.817427</ows:LowerCorner>
+    <ows:UpperCorner>9.131499 46.579848</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ti_040_1_v1_0_sfruttamento_termico_acque_geotermia_captazione</Name>
+   <Title>[TI-040.1] Sfruttamento termico delle acque e della geotermia - Idoneità captazioni</Title>
+   <Abstract>Idoneità captazioni</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.435036 45.816215</ows:LowerCorner>
+    <ows:UpperCorner>9.167093 46.604507</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ti_040_1_v1_0_sfruttamento_termico_acque_geotermia_sonda</Name>
+   <Title>[TI-040.1] Sfruttamento termico delle acque e della geotermia - Idoneità sonde geotermiche</Title>
+   <Abstract>Idoneità sonde geotermiche</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.435036 45.816215</ows:LowerCorner>
+    <ows:UpperCorner>9.167093 46.604507</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ti_041_1_v1_0_interventi_selvicolturali_superfici_consuntivate</Name>
+   <Title>[TI-041.1] Interventi selvicolturali - Superfici consuntivate</Title>
+   <Abstract>Superfici consuntivate</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.438707 45.816723</ows:LowerCorner>
+    <ows:UpperCorner>9.133666 46.578249</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+  <FeatureType>
+   <Name>ti_041_1_v1_0_interventi_selvicolturali_superfici_intervento</Name>
+   <Title>[TI-041.1] Interventi selvicolturali - Superfici d'intervento</Title>
+   <Abstract>Superfici d'intervento</Abstract>
+   <DefaultSRS>EPSG:2056</DefaultSRS>
+   <OtherSRS>EPSG:4326</OtherSRS>
+   <OtherSRS>EPSG:3857</OtherSRS>
+   <Operations>
+    <Operation>Query</Operation>
+   </Operations>
+   <ows:WGS84BoundingBox dimensions="2">
+    <ows:LowerCorner>8.441438 45.816539</ows:LowerCorner>
+    <ows:UpperCorner>9.136428 46.571421</ows:UpperCorner>
+   </ows:WGS84BoundingBox>
+  </FeatureType>
+ </FeatureTypeList>
+ <ogc:Filter_Capabilities>
+  <ogc:Spatial_Capabilities>
+   <ogc:GeometryOperands>
+    <ogc:GeometryOperand>gml:Point</ogc:GeometryOperand>
+    <ogc:GeometryOperand>gml:LineString</ogc:GeometryOperand>
+    <ogc:GeometryOperand>gml:Polygon</ogc:GeometryOperand>
+    <ogc:GeometryOperand>gml:Envelope</ogc:GeometryOperand>
+   </ogc:GeometryOperands>
+   <ogc:SpatialOperators>
+    <ogc:SpatialOperator name="Equals"/>
+    <ogc:SpatialOperator name="Disjoint"/>
+    <ogc:SpatialOperator name="Touches"/>
+    <ogc:SpatialOperator name="Within"/>
+    <ogc:SpatialOperator name="Overlaps"/>
+    <ogc:SpatialOperator name="Crosses"/>
+    <ogc:SpatialOperator name="Intersects"/>
+    <ogc:SpatialOperator name="Contains"/>
+    <ogc:SpatialOperator name="BBOX"/>
+   </ogc:SpatialOperators>
+  </ogc:Spatial_Capabilities>
+  <ogc:Scalar_Capabilities>
+   <ogc:LogicalOperators/>
+   <ogc:ComparisonOperators>
+    <ogc:ComparisonOperator>LessThan</ogc:ComparisonOperator>
+    <ogc:ComparisonOperator>GreaterThan</ogc:ComparisonOperator>
+    <ogc:ComparisonOperator>LessThanEqualTo</ogc:ComparisonOperator>
+    <ogc:ComparisonOperator>GreaterThanEqualTo</ogc:ComparisonOperator>
+    <ogc:ComparisonOperator>EqualTo</ogc:ComparisonOperator>
+    <ogc:ComparisonOperator>Like</ogc:ComparisonOperator>
+    <ogc:ComparisonOperator>Between</ogc:ComparisonOperator>
+   </ogc:ComparisonOperators>
+  </ogc:Scalar_Capabilities>
+  <ogc:Id_Capabilities>
+   <ogc:FID/>
+  </ogc:Id_Capabilities>
+ </ogc:Filter_Capabilities>
+</WFS_Capabilities>

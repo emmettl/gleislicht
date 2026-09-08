@@ -1,0 +1,18 @@
+{
+  "publisher": "OpenStreetMap contributors",
+  "license": "ODbL-1.0",
+  "termsUrl": "https://www.openstreetmap.org/copyright",
+  "sha256": "d5c675456e935cfbcab88fe894fe9145dc5bd1fbd4318cea30ffd838a9aad02b",
+  "bytes": 79200441,
+  "source": "Geofabrik Switzerland 2026-09-02 plus Overpass border extract retrieved 2026-09-08; merged by scripts/merge-postbus-osm.py",
+  "switzerlandUrl": "https://download.geofabrik.de/europe/switzerland-260902.osm.pbf",
+  "borderQuery": "scripts/postbus-border-roads.overpass",
+  "borderQuerySha256": "77f2c54e01bf67a1aa801a969c3b4c3ed92d86339cb8905e28cc7699bea11d05",
+  "sourceDates": {
+    "switzerland": "2026-09-02",
+    "borderRetrieved": "2026-09-08"
+  },
+  "matcher": "pfaedle 99f2cd466696ecc6bdb73b2b3bb9008557fcb84a; unmodified bus profile",
+  "derivedDatabase": "../ticino-road-cache.json.gz",
+  "inference": "Ordered route/platform/coordinate matching, not an operator route or diversion certificate."
+}

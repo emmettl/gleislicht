@@ -1,0 +1,68 @@
+{
+  "checkedAt": "2026-09-08T19:17:48.861690+00:00",
+  "status": "passed",
+  "checks": {
+    "independentNationalArchiveReconstruction": "passed for both dates",
+    "allCandidateJourneyAudit": "6660/9287 Friday; 4669/7166 Sunday; every excluded journey accounted for",
+    "targetedTests": {
+      "files": 5,
+      "passed": 27
+    },
+    "browserTests": {
+      "passed": 4,
+      "projects": [
+        "desktop-chromium",
+        "iphone-webkit"
+      ],
+      "coverage": [
+        "lazy loading",
+        "complete day and nested chunk loading",
+        "Friday/Sunday selection",
+        "station search",
+        "dated share reload",
+        "morning failure and retry",
+        "attribution link",
+        "responsive layout"
+      ]
+    },
+    "typecheck": "passed",
+    "productionBuild": "passed; isolated production preview used for browser tests",
+    "firstViewTransferBudget": "Mobile first-view transfer budget (gzip):\n  javaScript 360.0 KiB / 360.0 KiB\n  css        9.8 KiB / 10.0 KiB\n  data       396.7 KiB / 450.0 KiB\n  total      766.5 KiB / 790.0 KiB",
+    "architecture": "passed",
+    "lint": "passed with warnings",
+    "whitespace": "git diff --check passed",
+    "visualReview": "Desktop and iPhone screenshots inspected after camera transition"
+  },
+  "scope": "Validation of this initial two-day scope; no assertion of full canton geometry or year-round coverage. Shared workspace files may change in concurrent tasks.",
+  "fileHashes": {
+    "src/App.tsx": "6b29c34a7d393c818ee009607aff514e7c2b6a7804b15c2d9026999be7b34bf4",
+    "src/studies/ticino-copy.tsx": "3deffe7d4bc79485b4afcd1309f8b671f108431d75d84dee82257e2204e08381",
+    "src/editions/switzerland.ts": "d5af763c6e2e692af897fbffa40a0e06eb2f0b4b9414834d73df567ffc4da109",
+    "src/studies/explore.ts": "182d36854b3dadb355619978bb954e2cd28f8d6cfc7c64494e3617a09bfb52c7",
+    "e2e/ticino.spec.ts": "791ccd31dbc7686b8d9f854733c33153265cbbe0e517ca89b72d3f9b8028ca62",
+    "scripts/check-ticino-region.mjs": "ef3ae96c4270f70a2cd13162b6d70940259977f70391430c24ffc464215284ca",
+    "data/ticino-audit/summary.json": "81502fcafed8cb52c780cb9f6836d33d7ac727b3dc0d0c8ae90a20f43dc7f62d",
+    "data/ticino/source-verification.json": "da7191a320b10ca3d29ccc10df5a49422b5ea1c0bc5bca5735276055108410b6"
+  },
+  "commitPreparation": {
+    "checkedAt": "2026-09-08T19:25:32.162474+00:00",
+    "isolatedBranch": "codex/ticino-study",
+    "typecheck": "passed",
+    "targetedTests": 27,
+    "browserTests": 4,
+    "dailyCandidateAudits": "both passed",
+    "productionBuild": "passed",
+    "firstViewTransferBudget": "passed",
+    "note": "Revalidated the selectively assembled Ticino commit in an isolated worktree, preserving concurrently staged changes in the original checkout.",
+    "fileHashes": {
+      "src/App.tsx": "ce23f91666c748dba0a4b89541d71ac1ec60a81c4aa1fe9d1310d0bcf6e1d53b",
+      "src/studies/ticino-copy.tsx": "3deffe7d4bc79485b4afcd1309f8b671f108431d75d84dee82257e2204e08381",
+      "src/editions/switzerland.ts": "d5af763c6e2e692af897fbffa40a0e06eb2f0b4b9414834d73df567ffc4da109",
+      "src/studies/explore.ts": "182d36854b3dadb355619978bb954e2cd28f8d6cfc7c64494e3617a09bfb52c7",
+      "e2e/ticino.spec.ts": "791ccd31dbc7686b8d9f854733c33153265cbbe0e517ca89b72d3f9b8028ca62",
+      "scripts/check-ticino-region.mjs": "ef3ae96c4270f70a2cd13162b6d70940259977f70391430c24ffc464215284ca",
+      "data/ticino-audit/summary.json": "81502fcafed8cb52c780cb9f6836d33d7ac727b3dc0d0c8ae90a20f43dc7f62d",
+      "data/ticino/source-verification.json": "da7191a320b10ca3d29ccc10df5a49422b5ea1c0bc5bca5735276055108410b6"
+    }
+  }
+}

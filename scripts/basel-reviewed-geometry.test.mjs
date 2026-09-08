@@ -12,7 +12,7 @@ const match = (rule, data = bundle) => reviewedBaselPath(rule, data, stop(rule.f
 
 describe('reviewed Basel source corridors', () => {
   it('resolves all reviewed pairs within the unchanged snap guard', () => {
-    expect(bundle.rules).toHaveLength(236)
+    expect(bundle.rules).toHaveLength(237)
     for (const rule of bundle.rules) {
       const result = match(rule)
       expect(result.maximumSnapMetres).toBeLessThan(32)

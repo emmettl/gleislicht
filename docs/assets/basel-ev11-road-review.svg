@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="800" viewBox="0 0 1100 800"><rect width="1100" height="800" fill="#f8fafb"/>
+<text x="35" y="51" font-family="Arial,sans-serif" font-size="29" fill="#243542">EV11 · Freilager → Schaulager</text>
+<text x="35" y="82" font-family="Arial,sans-serif" font-size="17" fill="#243542">Reviewed road centreline · 8 and 13 September 2026</text>
+<polyline points="370.49,168.96 367.19,146.56" fill="none" stroke="#cfdae0" stroke-width="8" stroke-linejoin="round"/>
+<polyline points="371.80,178.70 370.49,170.90 370.49,168.96" fill="none" stroke="#cfdae0" stroke-width="8" stroke-linejoin="round"/>
+<polyline points="367.19,199.15 369.17,195.25 370.49,193.30 371.80,190.38 372.46,187.46 372.46,185.51 371.80,183.57 371.80,178.70" fill="none" stroke="#cfdae0" stroke-width="8" stroke-linejoin="round"/>
+<polyline points="221.64,328.68 230.20,315.04 237.45,305.30 244.69,297.51 252.59,290.70 271.03,279.01 278.94,273.17 282.23,270.24 288.82,262.45 292.77,257.58 298.04,252.71 311.21,243.95 328.33,234.21 337.55,231.29 345.46,229.34 359.95,224.47 365.88,221.55 369.83,215.70 370.49,212.78 370.49,210.83 370.49,206.94 369.17,203.04 367.19,199.15" fill="none" stroke="#cfdae0" stroke-width="8" stroke-linejoin="round"/>
+<polyline points="215.71,339.39 221.64,328.68" fill="none" stroke="#cfdae0" stroke-width="8" stroke-linejoin="round"/>
+<polyline points="213.08,489.37 203.86,484.50 197.93,480.61 192.66,474.77 189.37,468.92 188.05,465.03 188.05,464.05 188.05,463.08 187.39,459.18 188.05,450.42 191.34,422.17 194.63,393.93 195.95,385.17 198.59,375.43 200.56,370.56 206.49,357.90 215.71,339.39" fill="none" stroke="#cfdae0" stroke-width="8" stroke-linejoin="round"/>
+<polyline points="224.93,494.24 213.08,489.37" fill="none" stroke="#cfdae0" stroke-width="8" stroke-linejoin="round"/>
+<polyline points="350.73,567.29 348.75,557.55 345.46,548.78 342.17,542.94 338.21,537.10 331.63,530.28 324.38,525.41 317.80,521.51 309.89,518.59 277.62,510.80 253.91,504.96 238.76,500.09 224.93,494.24" fill="none" stroke="#cfdae0" stroke-width="8" stroke-linejoin="round"/>
+<polyline points="359.95,603.32 354.68,583.84 350.73,567.29" fill="none" stroke="#cfdae0" stroke-width="8" stroke-linejoin="round"/>
+<polyline points="361.27,610.14 359.95,603.32" fill="none" stroke="#cfdae0" stroke-width="8" stroke-linejoin="round"/>
+<polyline points="365.22,620.85 361.27,610.14" fill="none" stroke="#cfdae0" stroke-width="8" stroke-linejoin="round"/>
+<polyline points="373.12,640.33 368.51,630.59 365.22,620.85" fill="none" stroke="#cfdae0" stroke-width="8" stroke-linejoin="round"/>
+<polyline points="377.75,150.44 367.98,151.87 370.49,168.96 370.49,170.90 371.80,178.70 371.80,183.57 372.46,185.51 372.46,187.46 371.80,190.38 370.49,193.30 369.17,195.25 367.19,199.15 369.17,203.04 370.49,206.94 370.49,210.83 370.49,212.78 369.83,215.70 365.88,221.55 359.95,224.47 345.46,229.34 337.55,231.29 328.33,234.21 311.21,243.95 298.04,252.71 292.77,257.58 288.82,262.45 282.23,270.24 278.94,273.17 271.03,279.01 252.59,290.70 244.69,297.51 237.45,305.30 230.20,315.04 221.64,328.68 215.71,339.39 206.49,357.90 200.56,370.56 198.59,375.43 195.95,385.17 194.63,393.93 191.34,422.17 188.05,450.42 187.39,459.18 188.05,463.08 188.05,464.05 188.05,465.03 189.37,468.92 192.66,474.77 197.93,480.61 203.86,484.50 213.08,489.37 224.93,494.24 238.76,500.09 253.91,504.96 277.62,510.80 309.89,518.59 317.80,521.51 324.38,525.41 331.63,530.28 338.21,537.10 342.17,542.94 345.46,548.78 348.75,557.55 350.73,567.29 354.68,583.84 359.95,603.32 361.27,610.14 365.22,620.85 368.51,630.59 373.12,640.33 374.44,642.28 376.41,650.07 376.66,652.68 371.84,653.15" fill="none" stroke="#126e93" stroke-width="4" stroke-linejoin="round"/>
+<circle cx="377.75" cy="150.44" r="5" fill="#192e3b"/>
+<text x="277.75034970272384" y="137.4424347827368" font-family="Arial,sans-serif" font-size="17" fill="#243542">Freilager</text>
+<circle cx="371.84" cy="653.15" r="5" fill="#192e3b"/>
+<text x="236.83596496706787" y="680.147130434584" font-family="Arial,sans-serif" font-size="17" fill="#243542">Schaulager</text>
+<text x="70" y="347" font-family="Arial,sans-serif" font-size="17" fill="#243542">Neapel-Strasse</text>
+<text x="165" y="642" font-family="Arial,sans-serif" font-size="17" fill="#243542">Ruchfeldstrasse</text>
+<text x="620" y="147" font-family="Arial,sans-serif" font-size="22" fill="#243542">Freilager entrance</text>
+<text x="620" y="175" font-family="Arial,sans-serif" font-size="16" fill="#243542">Three connected 4m road records</text>
+<polyline points="812.38,331.90 799.76,246.06" fill="none" stroke="#cfdae0" stroke-width="8" stroke-linejoin="round"/>
+<polyline points="817.43,369.23 812.38,339.37 812.38,331.90" fill="none" stroke="#cfdae0" stroke-width="8" stroke-linejoin="round"/>
+<polyline points="799.76,447.61 807.33,432.68 812.38,425.21 817.43,414.01 819.95,402.82 819.95,395.35 817.43,387.89 817.43,369.23" fill="none" stroke="#cfdae0" stroke-width="8" stroke-linejoin="round"/>
+<polyline points="840.22,260.95 802.76,266.44 812.38,331.90 812.38,339.37 817.43,369.23 817.43,387.89 819.95,395.35 819.95,402.82 817.43,414.01 812.38,425.21 807.33,432.68 799.76,447.61" fill="none" stroke="#126e93" stroke-width="4" stroke-linejoin="round"/>
+<circle cx="840.22" cy="260.95" r="5" fill="#192e3b"/>
+<text x="800.2201134865817" y="247.9485915482245" font-family="Arial,sans-serif" font-size="14" fill="#243542">GTFS stop</text>
+<text x="625" y="523" font-family="Arial,sans-serif" font-size="18" fill="#243542">794 m road path · 11.3 m maximum snap</text>
+<text x="625" y="559" font-family="Arial,sans-serif" font-size="16" fill="#243542">13 source records · exact shared endpoints</text>
+<text x="625" y="593" font-family="Arial,sans-serif" font-size="16" fill="#243542">177 Tuesday + 104 Sunday movements</text>
+<text x="625" y="626" font-family="Arial,sans-serif" font-size="15" fill="#243542">Inferred centreline; temporary lane and kerb</text>
+<text x="625" y="651" font-family="Arial,sans-serif" font-size="15" fill="#243542">positions are not surveyed by this study.</text>
+<text x="35" y="746" font-family="Arial,sans-serif" font-size="15" fill="#243542">Source geometry: © swisstopo · swissTLM3D 2026-02 · TLM_STRASSE</text>
+<text x="35" y="771" font-family="Arial,sans-serif" font-size="13" fill="#243542">Independent corridor check: dated BLT diversion toward Aesch. Source vertices and GTFS stops are retained.</text>
+</svg>

@@ -33,7 +33,7 @@ export async function buildBaselDay({ candidateDirectory, archive, sourceDirecto
     const metadata = { baselReleaseVersion: 1, baselGeometry: report.groups,
       baselRouteAgencies: Object.fromEntries(report.routes.map(route => [route.id, route.agencyId])),
       note: 'Scheduled BVB/BLT local services and bounded Swiss-side regional rail, including preceding service-day services. Inferred centrelines with explicit stop interpolation where geometry is unresolved. Source headsigns may extend beyond the displayed rail boundary.',
-      geometry: { ...manifest.metadata.geometry, publisher: 'Basel-Stadt / BAV / OSM', sourceUrl: 'https://wfs.geo.bs.ch/', productUrl: 'https://www.openstreetmap.org/copyright', license: 'ODbL-1.0',
+      geometry: { ...manifest.metadata.geometry, publisher: 'Basel-Stadt / BAV / OSM / swisstopo', sourceUrl: 'https://wfs.geo.bs.ch/', productUrl: 'https://www.openstreetmap.org/copyright', license: 'ODbL-1.0',
         matchedSegments: local.reduce((sum, group) => sum + group.matched, 0), totalSegments: local.reduce((sum, group) => sum + group.total, 0) },
       railGeometry: { ...manifest.metadata.geometry.rail, matchedSegments: rail.matched, totalSegments: rail.total,
         maximumSnapMetres: Math.max(...report.infrastructure.decisions.filter(decision => decision.mode === 'rail' && decision.accepted).map(decision => decision.maximumSnapMetres),

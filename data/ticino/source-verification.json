@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "archiveSha256": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+  "inventorySha256": "5a0e4a18bf182aea08842d6c7f00b6338ab78edc3ca1c36406e024366d15ddc6",
+  "fixtures": {
+    "2026-09-04-timetable.json.gz": "20a1a67cb7a1a3e28b4d61845cdfac41d23dc5aac684c93648879c0b842398c0",
+    "2026-09-06-timetable.json.gz": "336e6acae279a264744711353cd63d128b2b209bdd9d7a789c4254d3c55989e1"
+  },
+  "method": "Independent Python csv/zip calendar and exception expansion across all national routes. Exact full source platform coordinates, names, identity, ordered calls, boarding rules and shifted times; selected and preceding service dates; missing and unexpected journey set equality. Membership uses the pinned canton stop inventory.",
+  "sourceStopTimeRows": 34499152,
+  "days": [
+    {
+      "date": "2026-09-04",
+      "journeys": 9287,
+      "calls": 145498,
+      "precedingServiceDayJourneys": 149,
+      "frequencyJourneys": 1905
+    },
+    {
+      "date": "2026-09-06",
+      "journeys": 7166,
+      "calls": 110329,
+      "precedingServiceDayJourneys": 196,
+      "frequencyJourneys": 1893
+    }
+  ],
+  "passed": true
+}
