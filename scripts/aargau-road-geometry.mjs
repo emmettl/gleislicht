@@ -27,6 +27,15 @@ export async function importAargauRoads(preparation, matched, source) {
 
 export function aargauRoadMatcher(bundle) {
   assert.equal(bundle.schemaVersion,1)
+  if (bundle.supplement) {
+    const base = aargauRoadMatcher({ ...bundle, supplement: undefined })
+    const extra = aargauRoadMatcher(bundle.supplement)
+    return { sources: [...base.sources, ...extra.sources.map(s => ({ ...s, supplemental: true }))], matchPattern(train, stops) {
+      const prior = base.matchPattern(train, stops), next = extra.matchPattern(train, stops)
+      if (!next) return prior
+      return next.map((segment, i) => prior?.[i]?.path ? prior[i] : segment.path ? { ...segment, roadSupplement: true, ...(prior?.[i]?.roadFailure ? { priorRoadRejection: prior[i].roadFailure } : {}) } : prior?.[i] ?? segment)
+    } }
+  }
   const rejected=new Map(), sources=[]
   for(const [agencyId,cache] of Object.entries(bundle.agencyCaches)) {
     assert.equal(cache.schemaVersion,1);assert.equal(cache.metadata.agencyId,agencyId)

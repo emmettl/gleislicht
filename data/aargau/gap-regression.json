@@ -1,21 +1,21 @@
 {
   "schemaVersion": 1,
-  "baselineCommit": "3b7a9ba9f95a2b0cc0a62aae115fee8b6af36480",
+  "baselineCommit": "460b942760c34758035147a0d7bde800a9ad9f1a",
   "passed": true,
   "method": "Every baseline journey identity, full calls, boarding rules and previously admitted geometry path compared with current feed. Newly admitted geometry can only fill prior gaps.",
   "days": [
     {
       "date": "2026-09-04",
       "journeys": 11193,
-      "preservedGeometryOccurrences": 168648,
-      "addedGeometryOccurrences": 4421,
+      "preservedGeometryOccurrences": 172477,
+      "addedGeometryOccurrences": 592,
       "manifestSha256": "617f09e23e1f53447cd6c6f35d728ae3a2871348bf50f86d93ad0ce0d6ddf251"
     },
     {
       "date": "2026-09-06",
       "journeys": 7767,
-      "preservedGeometryOccurrences": 117681,
-      "addedGeometryOccurrences": 3791,
+      "preservedGeometryOccurrences": 121153,
+      "addedGeometryOccurrences": 319,
       "manifestSha256": "457c5767bbcde81d52dfe7f26279da9f4e3f4051c61dd0a26af1b9a862b00ce6"
     }
   ]

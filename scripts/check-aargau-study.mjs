@@ -8,6 +8,7 @@ import { gunzipSync, gzipSync } from 'node:zlib'
 import { hashFile } from './inventory-aargau.mjs'
 import { validateAargauFeed } from './build-aargau-study.mjs'
 import { identityKey, lineIndex } from './aargau-line-geometry.mjs'
+import { aargauGapMatcher } from './aargau-gap-geometry.mjs'
 import { loadAargauRail } from './aargau-rail-geometry.mjs'
 import { aargauRoadMatcher } from './aargau-road-geometry.mjs'
 
@@ -26,6 +27,7 @@ assert.equal(inventory.routes.reduce((n,r)=>n+r.totalSourceTrips,0),inventory.me
 assert.equal(new Set(inventory.routes.map(r=>r.routeId)).size,inventory.routes.length)
 const collection = JSON.parse(gunzipSync(await readFile(join(sourceDirectory,'lines.json.gz'))))
 const crosswalk = await read('data/aargau-line-crosswalk.json')
+for(const row of [...crosswalk.mappings,...(crosswalk.gapMappings??[])])if(row.evidenceFile)assert.equal(await hashFile(row.evidenceFile),row.evidenceSha256)
 const index = lineIndex(collection,crosswalk.mappings)
 const rails=await loadAargauRail('data/aargau-rail-sources','data/aargau-rail-policy.json')
 const summaries=[]
@@ -34,7 +36,17 @@ for (const date of inventory.metadata.dates) {
   const manifest=await read(join(directory,'aargau-region-day-manifest.json'))
   const audit=await read(join(directory,'audit.json'))
   const raw=JSON.parse(gunzipSync(await readFile(join(input,`${date}-timetable.json.gz`))))
-  const roads=manifest.metadata.geometry.roadFallback ? aargauRoadMatcher(await read('data/aargau-road-cache.json')) : undefined
+  const roadBundle=await read('data/aargau-road-cache.json')
+  if(manifest.metadata.geometry.roadFallback.supplementCacheSha256) {
+    roadBundle.supplement=await read('data/aargau-rheinfelden-road-cache.json')
+    assert.equal(manifest.metadata.geometry.roadFallback.supplementCacheSha256,await hashFile('data/aargau-rheinfelden-road-cache.json'))
+    for(const cache of Object.values(roadBundle.supplement.agencyCaches))assert.equal(cache.metadata.query.sha256,await hashFile(cache.metadata.query.file))
+  }
+  const roads=aargauRoadMatcher(roadBundle)
+  const gaps=aargauGapMatcher(collection,crosswalk.gapMappings,date)
+  const gapRegression=await read(join(input,'gap-regression.json'))
+  assert(gapRegression.passed)
+  assert.equal(gapRegression.days.find(day=>day.date===date)?.manifestSha256,await hashFile(join(directory,'aargau-region-day-manifest.json')))
   if (roads) {
     assert.equal(manifest.metadata.geometry.roadFallback.cacheSha256,await hashFile('data/aargau-road-cache.json'))
     const regression=await read(join(input,'road-regression.json'))
@@ -75,6 +87,8 @@ for (const date of inventory.metadata.dates) {
       assert(cached?.[i]?.path,'OSM segment lacks an exact complete cached pattern')
       assert.deepEqual(snapshot.paths[segment.pathIndex],cached[i].path)
       assert(segment.agisRejection,'OSM replaced an admitted AGIS segment')
+      assert.equal(segment.roadSupplement,cached[i].roadSupplement)
+      assert.equal(segment.priorRoadRejection,cached[i].priorRoadRejection)
     }
     const count=routeCounts.get(train.routeId)??{trips:0,matched:0,total:0};count.trips++
     train.pathSegments.forEach((path,i)=>{
@@ -88,6 +102,15 @@ for (const date of inventory.metadata.dates) {
   for(const pattern of patterns.values()) {
     const stopIndex=new Map(snapshot.stops.map((s,i)=>[s[4],i]))
     const replay=rails.matchPattern({agencyId:pattern.agencyId,routeId:pattern.routeId,route:pattern.line,mode:pattern.mode,directionId:pattern.gtfsDirectionId,stops:pattern.stopIds.map(id=>[stopIndex.get(id),0,0])},snapshot.stops)
+    const gapReplay=gaps.matchPattern({agencyId:pattern.agencyId,category:pattern.mode,route:pattern.line,routeId:pattern.routeId,calls:pattern.stopIds.map(id=>[id,0,0])},pattern.stopIds.map(id=>snapshot.stops[stopIndex.get(id)]))
+    for(const [i,s]of pattern.segments.entries())if(s.gapMappingId){
+      assert.deepEqual(snapshot.paths[s.pathIndex],gapReplay[i]?.path)
+      assert.equal(s.gapMappingId,gapReplay[i].gapMappingId)
+      assert.deepEqual(s.gapSource,gapReplay[i].gapSource)
+      assert(s.maximumSnapMetres<=120)
+      assert(s.agisRejection)
+      if(s.railRejection)assert.equal(s.railRejection,replay[i].railFailure)
+    }
     for(const [i,s] of pattern.segments.entries()) if(s.geometrySource==='fot') {
       assert(s.agisRejection)
       assert.deepEqual(snapshot.paths[s.pathIndex],replay?.[i]?.path)
@@ -104,7 +127,7 @@ for (const date of inventory.metadata.dates) {
       for(let i=1;i<progress.length;i++)assert(progress[i]>=progress[i-1]-.01)
       if(pattern.source.closedLoop && progress.length)assert(progress.at(-1)-progress[0]<=part.length+.01)
       for(const s of pattern.segments.filter(s=>s.pathIndex!==null&&s.geometrySource==='agis'))assert(s.maximumSnapMetres<=120 && s.pathMetres>=1)
-    } else assert(pattern.segments.every(s=>s.pathIndex===null||['osm','fot'].includes(s.geometrySource)))
+    } else assert(pattern.segments.every(s=>s.pathIndex===null||['osm','fot'].includes(s.geometrySource)||s.gapMappingId))
   }
   for(const route of audit.routes)assert.deepEqual(routeCounts.get(route.routeId),{trips:route.trips,matched:route.matched,total:route.total})
   assert.equal(audit.pairs.length,pairCounts.size)
@@ -119,6 +142,9 @@ for (const date of inventory.metadata.dates) {
     assert.equal(audit.totals.officialMatched+roadCount+railCount,matched)
     for(const group of audit.groups)assert.equal(group.officialMatched+group.roadMatched+group.railMatched,group.matched)
   }
+  const sourceCounts=new Map()
+  for(const p of patterns.values())for(const segment of p.segments)if(segment.geometrySource==='agis'){const id=segment.gapSource?.featureId??p.source.featureId;sourceCounts.set(id,(sourceCounts.get(id)??0)+p.occurrences)}
+  for(const record of audit.sourceRecords)assert.equal(record.acceptedOccurrences,sourceCounts.get(record.featureId)??0)
   assert.equal(audit.sourceRecords.length,collection.features.length)
   assert.equal(new Set(audit.sourceRecords.map(s=>s.featureId)).size,collection.features.length)
   assert(audit.checks.independentSourceArchiveVerification)

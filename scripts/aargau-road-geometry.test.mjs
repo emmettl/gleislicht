@@ -40,3 +40,15 @@ test('OSM fills only missing official segments and reconciles separate source co
  expect(next.patterns[0].segments[1]).toMatchObject({geometrySource:'osm',agisRejection:'endpoint-gap'})
  expect(next.snapshot.trains[0].stops).toEqual(base.snapshot.trains[0].stops)
 })
+test('a supplemental road cache fills only old failures and preserves prior paths',()=>{
+ const base=bundle(),extra=bundle()
+ base.agencyCaches['801'].patterns[id][1]=null
+ base.agencyCaches['801'].report.issues=[{pattern:id,segment:1,reason:'matcher-fallback'}]
+ extra.agencyCaches['801'].paths[0][1]=[8.106,47.402]
+ const prior=aargauRoadMatcher(base).matchPattern(train,stops)
+ const combined=aargauRoadMatcher({...base,supplement:extra}).matchPattern(train,stops)
+ expect(combined[0]).toEqual(prior[0])
+ expect(combined[1]).toMatchObject({roadSupplement:true,priorRoadRejection:'matcher-fallback'})
+ expect(combined[1].path).toEqual(extra.agencyCaches['801'].paths[1])
+ expect(aargauRoadMatcher({...base,supplement:extra}).matchPattern({...train,agencyId:'899'},stops)).toBeUndefined()
+})

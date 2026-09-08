@@ -71,6 +71,69 @@
       "sourceUrl": "https://www.aargauverkehr.ch/images/easyblog_articles/229/AVA-Jahresbericht-2024.pdf",
       "sourceDate": "2024",
       "checkedAt": "2026-09-08"
+    },
+    {
+      "go": "181",
+      "sourceLine": "3651.1",
+      "mode": "ferry",
+      "agencyId": "181",
+      "line": "3653",
+      "evidence": "AGIS feature 315 itinerary agrees with the full ordered 20260902 GTFS route 94-365-3-j26-1 and operator summer 2026 timetable. Mosen loop: Delphin–Birrwil–Beinwil–Mosen–Aesch–Seerose–Delphin; Friday courses 44–46 and Sunday courses 24–27. Candidate geometry must pass the unchanged full-pattern, 120 m and one-lap guards. Source label is retained verbatim; no general numeric-label correction.",
+      "sourceUrl": "https://schifffahrt-hallwilersee.ch/_tmc_daten/File/Fahrplan_A4_2026_Sommer_v6_neg.pdf",
+      "sourceDate": "Summer 2026; weekday validity May 1–September 12; Sunday May 3–September 13",
+      "checkedAt": "2026-09-08",
+      "evidenceFile": "data/aargau-supplemental-sources/hallwilersee-summer-2026.pdf",
+      "evidenceSha256": "529341554bd5d0badbf443cd46d0610fabf98156d9141479fe126418a7de3ae5"
+    },
+    {
+      "go": "181",
+      "sourceLine": "6551.1",
+      "mode": "ferry",
+      "agencyId": "181",
+      "line": "3652",
+      "evidence": "AGIS feature 318 itinerary agrees with the full ordered 20260902 GTFS route 94-365-2-j26-1 and operator summer 2026 timetable. Full-lake loop: Delphin–Seerose–Aesch–Mosen–Beinwil–Birrwil–Boniswil–Seengen–Delphin; Sunday courses 30–34. Candidate geometry must pass the unchanged full-pattern, 120 m and one-lap guards. Source label is retained verbatim; no general numeric-label correction.",
+      "sourceUrl": "https://schifffahrt-hallwilersee.ch/_tmc_daten/File/Fahrplan_A4_2026_Sommer_v6_neg.pdf",
+      "sourceDate": "Summer 2026; weekday validity May 1–September 12; Sunday May 3–September 13",
+      "checkedAt": "2026-09-08",
+      "evidenceFile": "data/aargau-supplemental-sources/hallwilersee-summer-2026.pdf",
+      "evidenceSha256": "529341554bd5d0badbf443cd46d0610fabf98156d9141479fe126418a7de3ae5"
+    }
+  ],
+  "gapMappings": [
+    {
+      "id": "thurbo-s36-waldshut",
+      "agencyId": "65",
+      "mode": "rail",
+      "line": "S36",
+      "routeIds": [
+        "91-36-j26-1"
+      ],
+      "sourceFeatureId": 364,
+      "sourceKey": "11:rail:S41",
+      "directedPairs": [
+        [
+          "ch:1:sloid:329:2:3",
+          "8014474_gen:missingSLOID_pf:5"
+        ],
+        [
+          "8014474_gen:missingSLOID_pf:5",
+          "ch:1:sloid:329:2:3"
+        ]
+      ],
+      "evidence": "AGIS feature 364 explicitly runs Waldshut–Koblenz–Bad Zurzach–Bülach–Winterthur. Thurbo’s May 2026 construction notice explicitly identifies Koblenz–Waldshut as S36; the indexed 2026 network map also identifies Bülach–Koblenz–Waldshut (direct map download returned HTTP 404 at review). Reuse only the two exact directed Koblenz platform 3 / Waldshut platform 5 pairs in retained S36 routes, only when every segment of the entire ordered S36 pattern matches on this single source part. All other accepted AGIS/FOT paths are preserved.",
+      "sourceUrl": "https://www.thurbo.ch/erkunden/ausblick/thurboleben/ki-baustellen/",
+      "sourceDate": "Construction notice: May 2026; inspected September 8, 2026",
+      "checkedAt": "2026-09-08",
+      "serviceDates": [
+        "2026-09-04",
+        "2026-09-06"
+      ],
+      "restrictionNote": "Thurbo announces Koblenz–Waldshut S36 closure September 14–October 2, 2026. This reuse is limited to the two earlier reviewed dates.",
+      "restrictionSourceUrl": "https://www.thurbo.ch/erkunden/ausblick/thurboleben/ki-baustellen/",
+      "evidenceFile": "data/aargau-supplemental-sources/thurbo-closures-2026.html.gz",
+      "evidenceSha256": "d6fd39c40adaa63f7999b7295d1493c3269f3d4bacd6dbde608fce5f139ed936",
+      "networkMapReferenceUrl": "https://www.thurbo.ch/fileadmin/user_upload/1_Reisen/Reiseinfos/L-11_SBB-RV-Ostschweiz-A1-26-SID.pdf",
+      "networkMapDownloadStatus": 404
     }
   ]
 }

@@ -7,6 +7,7 @@ import { gunzipSync, gzipSync } from 'node:zlib'
 import { chunkNetworkSnapshot, extractNetworkWindow } from '@motionstudies/data/network-chunks'
 import { AARGAU_LIMITS, identityKey, lineIndex, matchAargauPattern } from './aargau-line-geometry.mjs'
 import { hashFile } from './inventory-aargau.mjs'
+import { aargauGapMatcher } from './aargau-gap-geometry.mjs'
 import { loadAargauRail } from './aargau-rail-geometry.mjs'
 import { aargauRoadMatcher } from './aargau-road-geometry.mjs'
 
@@ -14,7 +15,7 @@ const digest = value => createHash('sha256').update(value).digest('hex')
 const gzipBytes = value => gzipSync(JSON.stringify(value)).length
 const category = (name, mode) => mode !== 'rail' ? mode : /^(EC|ICE|TGV|RJ|NJ|EN)/.test(name) ? 'international' : /^IC/.test(name) ? 'intercity' : /^IR/.test(name) ? 'interregio' : /^RE/.test(name) ? 'regional-express' : /^S[N]?\d/.test(name) ? 's-bahn' : 'regional'
 
-export function applyAargauGeometry(raw, index, cantonStopIds, roads, rails) {
+export function applyAargauGeometry(raw, index, cantonStopIds, roads, rails, gaps) {
   const inside = new Set(cantonStopIds), stops = raw.stops, stopIndices = new Map(stops.map((s, i) => [s[4], i]))
   const patterns = new Map(), paths = [], pathIds = new Map(), pairs = new Map(), groups = new Map(), routeStats = new Map(), edges = new Map()
   const trains = raw.trains.map(train => {
@@ -23,12 +24,14 @@ export function applyAargauGeometry(raw, index, cantonStopIds, roads, rails) {
       const match = matchAargauPattern(index.get(identityKey(train.agencyId, train.category, train.route)), train.calls.map(c => stops[stopIndices.get(c[0])]))
       const roadSegments = roads?.matchPattern({ ...train, stops: train.calls.map(([id,a,d])=>[stopIndices.get(id),a,d]) }, stops)
       const railSegments = rails?.matchPattern({ ...train, stops: train.calls.map(([id,a,d])=>[stopIndices.get(id),a,d]) }, stops)
+      const gapSegments = gaps?.matchPattern(train, train.calls.map(c => stops[stopIndices.get(c[0])]))
       const segments = match.segments.map((segment, i) => {
         if (segment.path) segment = { ...segment, geometrySource: 'agis' }
         else if (roadSegments?.[i]?.path) segment = { ...roadSegments[i], agisRejection: segment.reason }
         else if (roadSegments?.[i]) segment = { ...segment, ...roadSegments[i] }
         if (!segment.path && railSegments?.[i]?.path) segment = { ...railSegments[i], agisRejection: segment.reason }
         else if (!segment.path && railSegments?.[i]) segment = { ...segment, ...railSegments[i] }
+        if (!segment.path && gapSegments?.[i]?.path) segment = { ...gapSegments[i], agisRejection: segment.reason, ...(segment.railFailure ? { railRejection: segment.railFailure } : {}) }
         const { path, ...assessment } = segment
         let pathIndex = null
         if (path) {
@@ -121,7 +124,7 @@ export function validateAargauFeed(snapshot, raw, manifest, chunks) {
   return { completeSourceStopChains: true, exactPathEndpoints: true, chunkHashesAndReconstruction: true }
 }
 
-export async function buildAargauStudy({ sources, inventoryDirectory, date, output, stem = 'aargau-region', crosswalkPath, roadCachePath, railSources, railPolicyPath }) {
+export async function buildAargauStudy({ sources, inventoryDirectory, date, output, stem = 'aargau-region', crosswalkPath, roadCachePath, railSources, railPolicyPath, roadSupplementPath }) {
   const catalogue = JSON.parse(await readFile(join(sources, 'sources.json'), 'utf8'))
   for (const [name, record] of Object.entries(catalogue.files)) assert.equal(await hashFile(join(sources, name)), record.sha256)
   const inventory = JSON.parse(await readFile(join(inventoryDirectory, 'inventory.json'), 'utf8'))
@@ -132,19 +135,25 @@ export async function buildAargauStudy({ sources, inventoryDirectory, date, outp
   const collection = JSON.parse(gunzipSync(await readFile(join(sources, 'lines.json.gz'))))
   assert.equal(collection.features.length, catalogue.lines.features)
   const crosswalk = crosswalkPath ? JSON.parse(await readFile(crosswalkPath, 'utf8')) : { mappings: [] }
+  for (const row of [...crosswalk.mappings, ...(crosswalk.gapMappings ?? [])]) if (row.evidenceFile) assert.equal(await hashFile(row.evidenceFile), row.evidenceSha256)
   const index = lineIndex(collection, crosswalk.mappings)
+  const gaps = aargauGapMatcher(collection, crosswalk.gapMappings, date)
   const roadBundle = roadCachePath ? JSON.parse(await readFile(roadCachePath,'utf8')) : undefined
-  if (roadBundle) for (const cache of Object.values(roadBundle.agencyCaches)) assert.equal(cache.metadata.inputTimetableHashes[date], await hashFile(join(inventoryDirectory,`${date}-timetable.json.gz`)), 'Road cache was not prepared for this timetable fixture')
+  if (roadSupplementPath) {
+    assert(roadBundle, 'Road supplement requires the preserved base cache')
+    roadBundle.supplement = JSON.parse(await readFile(roadSupplementPath, 'utf8'))
+  }
+  if (roadBundle) for (const cache of [...Object.values(roadBundle.agencyCaches), ...Object.values(roadBundle.supplement?.agencyCaches ?? {})]) assert.equal(cache.metadata.inputTimetableHashes[date], await hashFile(join(inventoryDirectory,`${date}-timetable.json.gz`)), 'Road cache was not prepared for this timetable fixture')
   const roads = roadBundle ? aargauRoadMatcher(roadBundle) : undefined
   console.log(`Matching ${date}: ${raw.trains.length} complete journeys…`)
   const rails = railSources ? await loadAargauRail(railSources, railPolicyPath) : undefined
   if (rails) assert.equal(rails.policy.inputTimetableHashes[date], await hashFile(join(inventoryDirectory, `${date}-timetable.json.gz`)), 'Rail policy is for another timetable fixture')
-  const geometry = applyAargauGeometry(raw, index, inventory.cantonStopIds, roads, rails)
+  const geometry = applyAargauGeometry(raw, index, inventory.cantonStopIds, roads, rails, gaps)
   geometry.snapshot.metadata.geometry = { dataDate: catalogue.lines.dataDate, retrievedAt: catalogue.lines.retrievedAt, sourceUrl: catalogue.lines.url, attribution: catalogue.lines.attribution, limits: AARGAU_LIMITS, sourceCatalogueSha256: inventory.metadata.sourceCatalogueSha256, ...(crosswalkPath ? { crosswalkSha256: await hashFile(crosswalkPath) } : {}) }
   if (roads) {
     geometry.snapshot.metadata.model = 'scheduled interpolation on AGIS normal lines and explicitly inferred OSM bus fallback'
     geometry.snapshot.metadata.attribution.push('© OpenStreetMap contributors; ODbL-1.0')
-    geometry.snapshot.metadata.geometry.roadFallback = { cacheSha256: await hashFile(roadCachePath), sources: roads.sources, priority: 'Fill only missing AGIS segments; full agency/route/platform pattern required. OSM inferences are not operator-certified alignments.' }
+    geometry.snapshot.metadata.geometry.roadFallback = { cacheSha256: await hashFile(roadCachePath), ...(roadSupplementPath ? { supplementCacheSha256: await hashFile(roadSupplementPath) } : {}), sources: roads.sources, priority: 'Fill only missing AGIS segments; full agency/route/platform pattern required. OSM inferences are not operator-certified alignments.' }
     geometry.snapshot.metadata.note += ' Missing bus segments may use OSM road inferences, identified separately in the audit; these do not establish the actual temporary diversion used.'
   }
   if (rails) {
@@ -170,8 +179,9 @@ export async function buildAargauStudy({ sources, inventoryDirectory, date, outp
   const sourcesInventory = collection.features.map(feature => {
     const p = feature.properties
     const keys = [...index].filter(([, parts]) => parts.some(part => part.featureId === feature.id)).map(([key]) => key)
-    const matches = inventory.routes.filter(r => keys.includes(identityKey(r.agencyId, r.mode, r.line)))
-    const patterns = geometry.patterns.filter(p => p.source.featureId === feature.id).map(p => ({...p,segments:p.segments.filter(s=>s.geometrySource==='agis')}))
+    const gapRouteIds = (crosswalk.gapMappings ?? []).filter(m => m.sourceFeatureId === feature.id && m.serviceDates.includes(date)).flatMap(m => m.routeIds)
+    const matches = inventory.routes.filter(r => keys.includes(identityKey(r.agencyId, r.mode, r.line)) || gapRouteIds.includes(r.routeId))
+    const patterns = geometry.patterns.map(p => ({...p,segments:p.segments.filter(s=>s.geometrySource==='agis' && (s.gapSource?.featureId ?? p.source.featureId) === feature.id)})).filter(p => p.segments.length || p.source.featureId === feature.id)
     return { featureId: feature.id, ...p, parts: feature.geometry.coordinates.length, vertices: feature.geometry.coordinates.reduce((sum, line) => sum + line.length, 0), matchingRouteIds: matches.map(r => r.routeId), cantonRouteIds: matches.filter(r => r.cantonSourceTrips).map(r => r.routeId), usedPatterns: patterns.length, acceptedOccurrences: patterns.reduce((sum, p) => sum + p.occurrences * p.segments.filter(s => s.pathIndex !== null).length, 0), status: patterns.some(p => p.segments.some(s => s.pathIndex !== null)) ? 'geometry-admitted' : !matches.length ? 'excluded-no-exact-identity-crosswalk' : !matches.some(r => r.cantonSourceTrips) ? 'excluded-no-canton-route-for-source-identity' : 'unused-inactive-or-pattern-mismatch' }
   })
   const totals = geometry.groups.reduce((sum, g) => { for (const key of ['trips', 'matched', 'officialMatched', 'roadMatched', 'railMatched', 'total', 'cantonAdjacentMatched', 'cantonAdjacentTotal']) sum[key] = (sum[key] ?? 0) + g[key]; return sum }, {})
@@ -203,5 +213,5 @@ export async function buildAargauStudy({ sources, inventoryDirectory, date, outp
 if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {
   const arg = name => process.argv[process.argv.indexOf(`--${name}`) + 1]
   for (const name of ['sources', 'inventory', 'date', 'output']) assert(process.argv.includes(`--${name}`), `Missing --${name}`)
-  await buildAargauStudy({ sources: arg('sources'), inventoryDirectory: arg('inventory'), date: arg('date'), output: arg('output'), crosswalkPath: process.argv.includes('--crosswalk') ? arg('crosswalk') : undefined, roadCachePath: process.argv.includes('--road-cache') ? arg('road-cache') : undefined, railSources: process.argv.includes('--rail-sources') ? arg('rail-sources') : undefined, railPolicyPath: process.argv.includes('--rail-policy') ? arg('rail-policy') : undefined })
+  await buildAargauStudy({ sources: arg('sources'), inventoryDirectory: arg('inventory'), date: arg('date'), output: arg('output'), crosswalkPath: process.argv.includes('--crosswalk') ? arg('crosswalk') : undefined, roadCachePath: process.argv.includes('--road-cache') ? arg('road-cache') : undefined, railSources: process.argv.includes('--rail-sources') ? arg('rail-sources') : undefined, railPolicyPath: process.argv.includes('--rail-policy') ? arg('rail-policy') : undefined, roadSupplementPath: process.argv.includes('--road-supplement') ? arg('road-supplement') : undefined })
 }
