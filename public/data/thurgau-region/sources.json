@@ -1,0 +1,171 @@
+{
+  "schemaVersion": 1,
+  "sourceCrs": "EPSG:2056",
+  "sourceUrl": "https://ows.geo.tg.ch/geofy_access_proxy/oev",
+  "metadataUrl": "https://data.tg.ch/explore/dataset/netz-des-offentlichen-verkehrs/information/",
+  "attribution": "© Kanton Thurgau, Abteilung Öffentlicher Verkehr; Amt für Geoinformation",
+  "license": "CC BY 4.0, explicitly declared in the cantonal dataset catalogue",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "termsFiles": [
+    "terms.pdf",
+    "catalogue.json"
+  ],
+  "dataUpdated": null,
+  "catalogueModified": "2026-07-31T18:00:13+00:00",
+  "catalogueCreated": "2000-01-01",
+  "vintageCaveat": "No geometry effective date declared. Catalogue creation 2000-01-01, modified timestamp and WFS response time are not verified timetable vintages.",
+  "coordinateModel": "Original LV95 east/north, no simplification or inferred joining edges",
+  "requests": [
+    {
+      "file": "buslinie.gml.gz",
+      "url": "https://ows.geo.tg.ch/geofy_access_proxy/oev?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=ms%3Abuslinie&SRSNAME=EPSG%3A2056",
+      "acquiredAt": "2026-09-08T17:59:19.401410+00:00",
+      "sha256": "4349826029e3fbeccbb328d0ec72312fa665e42aee48af7280404a0a7a478d84",
+      "bytes": 929936
+    },
+    {
+      "file": "bahnlinie_takt.gml.gz",
+      "url": "https://ows.geo.tg.ch/geofy_access_proxy/oev?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=ms%3Abahnlinie_takt&SRSNAME=EPSG%3A2056",
+      "acquiredAt": "2026-09-08T17:59:19.713917+00:00",
+      "sha256": "5029ea8ca8e53ff8dca2be15f0dc7e0fd16d1ea13b2fb8747b978944fde84983",
+      "bytes": 233477
+    },
+    {
+      "file": "buslinie_takt.gml.gz",
+      "url": "https://ows.geo.tg.ch/geofy_access_proxy/oev?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=ms%3Abuslinie_takt&SRSNAME=EPSG%3A2056",
+      "acquiredAt": "2026-09-08T17:59:20.198298+00:00",
+      "sha256": "684935d2fddff4c52257923ef9d66b3b1bdbf83ca50c419f9822cdd1cfb5a386",
+      "bytes": 936681
+    },
+    {
+      "file": "bushalte.gml.gz",
+      "url": "https://ows.geo.tg.ch/geofy_access_proxy/oev?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=ms%3Abushalte&SRSNAME=EPSG%3A2056",
+      "acquiredAt": "2026-09-08T17:59:20.553230+00:00",
+      "sha256": "597928fe780f9ef1415333377646dee7a692ebcb8ef116ace099a874cbbf04e6",
+      "bytes": 710997
+    },
+    {
+      "file": "sammeltaxi.gml.gz",
+      "url": "https://ows.geo.tg.ch/geofy_access_proxy/oev?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=ms%3Asammeltaxi&SRSNAME=EPSG%3A2056",
+      "acquiredAt": "2026-09-08T17:59:20.712515+00:00",
+      "sha256": "886297971df2a3c99b2361ded4863665001c20dbaa086b2c72efa6e5a5ecfa8f",
+      "bytes": 58245
+    },
+    {
+      "file": "capabilities.xml.gz",
+      "url": "https://ows.geo.tg.ch/geofy_access_proxy/oev?Request=GetCapabilities&Service=WFS&Version=2.0.0",
+      "acquiredAt": "2026-09-08T17:59:20.798108+00:00",
+      "sha256": "f3c083a28c8871861190b46893ba33a14bc1f493659d154cceffed0f9d5b95be",
+      "bytes": 20347
+    },
+    {
+      "file": "layer-metadata.xml.gz",
+      "url": "https://ows.geo.tg.ch/geofy_access_proxy/oev?request=GetMetadata&layer=buslinie",
+      "acquiredAt": "2026-09-08T17:59:20.974594+00:00",
+      "sha256": "eedfa5bdf3bff758506bc41ea8c0c8f53afcf38f0cc070980f2b1b1738d009aa",
+      "bytes": 12747
+    },
+    {
+      "file": "catalogue.json.gz",
+      "url": "https://data.tg.ch/api/explore/v2.1/catalog/datasets/netz-des-offentlichen-verkehrs",
+      "acquiredAt": "2026-09-08T17:59:21.137463+00:00",
+      "sha256": "e6df6c95699a052d5c0f85e9be71426ad5da215417336480a8231206b3a6a299",
+      "bytes": 3931
+    },
+    {
+      "file": "terms.pdf.gz",
+      "url": "https://shop.geo.tg.ch/sites/default/files/pdf/Nutzungsbedingungen_Geodaten.pdf",
+      "acquiredAt": "2026-09-08T17:59:21.307759+00:00",
+      "sha256": "74e9827feac4080e2d4813c418df287915e1a57ac63bf8f3e92df8c10cb522b9",
+      "bytes": 30957
+    }
+  ],
+  "layers": [
+    {
+      "layer": "buslinie",
+      "count": 337,
+      "responseTimestamp": "2026-09-08T19:59:19",
+      "fields": [
+        "betriebszeiten",
+        "liniennr_1",
+        "objectid",
+        "takt"
+      ]
+    },
+    {
+      "layer": "bahnlinie_takt",
+      "count": 17,
+      "responseTimestamp": "2026-09-08T19:59:19",
+      "fields": [
+        "liniennr",
+        "objectid",
+        "takt",
+        "verbindung"
+      ]
+    },
+    {
+      "layer": "buslinie_takt",
+      "count": 337,
+      "responseTimestamp": "2026-09-08T19:59:20",
+      "fields": [
+        "betriebszeiten",
+        "liniennr_1",
+        "objectid",
+        "takt"
+      ]
+    },
+    {
+      "layer": "bushalte",
+      "count": 718,
+      "responseTimestamp": "2026-09-08T19:59:20",
+      "fields": [
+        "behig_status",
+        "betriebszeiten",
+        "eigentum",
+        "id_didok",
+        "linien_nummer",
+        "name",
+        "name_transport",
+        "objectid"
+      ]
+    },
+    {
+      "layer": "sammeltaxi",
+      "count": 4,
+      "responseTimestamp": "2026-09-08T19:59:20",
+      "fields": [
+        "gemeinde",
+        "linien_nummer",
+        "objectid",
+        "ortsteil"
+      ]
+    }
+  ],
+  "boundary": {
+    "edition": "2026-01",
+    "sourceSha256": "1f122cb7a06f2d312a84b7c0a91116348ba907054d487f0a70b9d2302984e6fc",
+    "snapshotSha256": "13e646359513e3319dbe932ea981dc49fffc0205b5aedb4a5e0a948f32248724",
+    "attribution": "© swisstopo",
+    "sourceUrl": "https://data.geo.admin.ch/ch.swisstopo.swissboundaries3d/swissboundaries3d_2026-01/swissboundaries3d_2026-01_2056_5728.gpkg.zip",
+    "termsUrl": "https://www.swisstopo.admin.ch/en/terms-of-use-free-geodata-and-geoservices"
+  },
+  "timetable": {
+    "publisher": "SBB / Open data platform mobility Switzerland",
+    "attribution": "opentransportdata.swiss",
+    "sourceUrl": "https://data.opentransportdata.swiss/en/dataset/timetable-2026-gtfs2020",
+    "feed": {
+      "feed_publisher_name": "SBB",
+      "feed_publisher_url": "https://sbb.ch",
+      "feed_lang": "DE",
+      "feed_start_date": "20251214",
+      "feed_end_date": "20261212",
+      "feed_version": "20260902"
+    },
+    "sha256": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+    "downloadUrl": "https://data.opentransportdata.swiss/dataset/3d2c18f9-9ef1-463f-a249-5c67604efd74/resource/c09aba2a-41e9-4117-88af-3fdfe589d64a/download/gtfs_fp2026_20260902.zip",
+    "termsUrl": "https://opentransportdata.swiss/en/terms-of-use/",
+    "processedBy": "Gleislicht",
+    "archivalStudy": true,
+    "refreshPolicy": "Pinned September 2026 research fixtures; not a live or current-service feed. A new timetable or geometry release requires a complete rebuild and admission audit."
+  }
+}

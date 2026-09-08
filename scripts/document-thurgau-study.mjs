@@ -1,0 +1,163 @@
+import { readFile, writeFile } from 'node:fs/promises'
+
+const json = async path => JSON.parse(await readFile(path, 'utf8'))
+const summary = await json('data/thurgau-audit/summary.json')
+const routes = await json('data/thurgau-audit/routes.json')
+const sourceLines = await json('data/thurgau-audit/source-lines.json')
+const reports = await Promise.all(summary.days.map(d => json(`data/thurgau-audit/${d.serviceDate}.json`)))
+const sum = (rows, fn) => rows.reduce((n, row) => n + fn(row), 0)
+const percent = (a, b) => `${(100 * a / b).toFixed(1)}%`
+const table = (head, rows) => `| ${head.join(' | ')} |\n| ${head.map(() => '---').join(' | ')} |\n${rows.map(r => `| ${r.join(' | ')} |`).join('\n')}`
+const clean = s => String(s ?? '').replaceAll('|', '\\|').replaceAll('\n', ' ')
+const totals = summary.days.map(d => d.coverage)
+const labels = { 'admitted-all-dated-trips': 'All dated journeys admitted', 'partially-admitted': 'Some complete patterns admitted',
+  excluded: 'Excluded', 'inactive-on-validation-dates': 'Inactive on both dates' }
+const agencies = [...new Map(routes.map(r => [r.agencyId, r.agency])).entries()].sort((a, b) => a[0].localeCompare(b[0], undefined, { numeric: true }))
+const byStatus = status => routes.filter(r => r.status === status).length
+const gapReasons = ['missing-line', 'endpoint-gap', 'disconnected-line', 'collapsed-path', 'implausible-detour']
+const cross = summary.weekdaySundayPatterns
+const admitted = routes.filter(r => r.days.some(d => d.admittedTrips)).sort((a, b) => a.agencyId.localeCompare(b.agencyId, undefined, { numeric: true }) || a.name.localeCompare(b.name, undefined, { numeric: true }))
+
+const doc = `# Thurgau canton transit study
+
+Audit date: **8 September 2026**. Starting point: [Swiss transit source inventory](SWISS-TRANSIT-SOURCE-INVENTORY.md#tg).
+
+The complete canton-scoped GTFS inventory contains **${summary.routeCount} route records across ${summary.agencyCount} agency identities**, with calls in all **five districts**. The regional feed admits **${totals[0].admittedTrips} Friday journeys and ${totals[1].admittedTrips} Sunday journeys**, each retaining every original call and a validated path for every directed segment. **This is partial geometry coverage, not a complete canton service feed.** ${byStatus('admitted-all-dated-trips')} route records have all dated journeys admitted, ${byStatus('partially-admitted')} have partial admission, ${byStatus('excluded')} are excluded, and ${byStatus('inactive-on-validation-dates')} are inactive on both validation dates.
+
+## Deliverables
+
+- [Regional feed index](../public/data/thurgau-region/index.json): Friday **2026-09-04** and Sunday **2026-09-06**, each with a full civil-day manifest, twelve two-hour chunks and a 06:45–08:45 extract.
+- [Complete route inventory](THURGAU-ROUTE-INVENTORY.md): every selected annual route, operator, source join, dated admission and exclusion reason.
+- [Audit summary](../data/thurgau-audit/summary.json), [route records](../data/thurgau-audit/routes.json), [Friday patterns/pairs](../data/thurgau-audit/2026-09-04.json), [Sunday patterns/pairs](../data/thurgau-audit/2026-09-06.json).
+- [All source line records](../data/thurgau-audit/source-lines.json), [all 718 source stops](../data/thurgau-audit/source-stops.json), [canton GTFS stop inventory](../data/thurgau-audit/stops.json), [reviewed route crosswalk](../data/thurgau-line-crosswalk.json).
+- [Source metadata and request hashes](../data/thurgau-sources/sources.json), [raw request receipts](../data/thurgau-sources/requests.json). Original responses, boundary rows and the selected timetable fixture are preserved as gzip files in the repository.
+
+## Whole-canton membership
+
+The scanner reads **all ${summary.census.allYearTrips.toLocaleString('en-GB')} trip records and ${summary.census.stopTimeRows.toLocaleString('en-GB')} stop-time records** in the pinned national archive. A route belongs to the inventory if any original call falls in the unsimplified swissBOUNDARIES3D **2026-01** Thurgau polygon. No operator whitelist or rectangular crop selects membership. Parent/platform records are kept distinct; ${sum(summary.districts, d => d.calledPlatforms)} in-canton platform/stop IDs are actually called by these routes. Polygon membership, not the source bus-stop list, defines the denominator.
+
+${table(['District', 'Called GTFS stop IDs', 'Annual route records'], summary.districts.map(d => [d.district, d.calledPlatforms, d.routeIds.length]))}
+
+District route counts overlap. Journeys retain **every call outside Thurgau**, including Swiss and foreign termini; a route passing through without any in-canton stop does not enter this stop-based census. Full patterns extending beyond the available geometry are excluded, not shortened at the border. This includes the Lake Constance/Rhine services of URh, SBS, BSB and the Reichenau solar ferry. City, replacement, night and seasonal route records remain inventoried even when geometry is absent or no service operates on these dates.
+
+${table(['Agency ID', 'GTFS identity', 'Annual routes', 'Friday admitted / total', 'Sunday admitted / total'], agencies.map(([id, name]) => {
+  const rs = routes.filter(r => r.agencyId === id)
+  return [id, clean(name), rs.length, ...[0, 1].map(i => `${sum(rs, r => r.days[i].admittedTrips)} / ${sum(rs, r => r.days[i].trips)}`)]
+}))}
+
+Four official call-taxi polygons are separately recorded in the audit: Bischofszell (Schweizersholz/Halden), Hohentannen (Heldswil), Erlen (Buchackern/Eppishausen), and one unnamed feature. The first three carry **80.945**. They define service areas, not fixed movements, and are excluded from the vehicle feed. A fixed-stop GTFS scan cannot prove completeness for services absent from the archive or for unrepresented flexible-service areas.
+
+## Sources, dates and attribution
+
+${table(['Source', 'Pinned evidence / vintage', 'Credit and reuse'], [
+  ['National GTFS', 'Feed 20260902; valid 2025-12-14–2026-12-12. SHA-256 ' + summary.sourceHashes.archive, 'SBB / Open data platform mobility Switzerland; opentransportdata.swiss terms, not a blanket CC licence'],
+  ['Thurgau WFS', 'Full original GML responses acquired 2026-09-08; EPSG:2056. Geometry effective date UNKNOWN.', '© Kanton Thurgau, Abteilung Öffentlicher Verkehr; Amt für Geoinformation. CC BY 4.0 declared by the cantonal dataset catalogue'],
+  ['Cantonal catalogue', 'Modified ' + summary.sources.catalogueModified + '; creation 2000-01-01 is not a geometry vintage', 'Pinned catalogue.json records the dataset-specific licence and publisher'],
+  ['Thurgau general terms', '2018-02-20; preserved alongside the catalogue declaration', 'Visible attribution on publication/redistribution; retain dataset-specific CC BY evidence'],
+  ['swissBOUNDARIES3D', '2026-01; all original canton and district geometry rows retained', '© swisstopo; free-geodata terms'],
+])}
+
+Official references: [national GTFS dataset](https://data.opentransportdata.swiss/en/dataset/timetable-2026-gtfs2020), [national terms](https://opentransportdata.swiss/en/terms-of-use/), [Thurgau catalogue API](https://data.tg.ch/api/explore/v2.1/catalog/datasets/netz-des-offentlichen-verkehrs), [Thurgau WFS](https://ows.geo.tg.ch/geofy_access_proxy/oev?Request=GetCapabilities&Service=WFS&Version=2.0.0), [general terms](https://shop.geo.tg.ch/sites/default/files/pdf/Nutzungsbedingungen_Geodaten.pdf), [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), [swisstopo terms](https://www.swisstopo.admin.ch/en/terms-of-use-free-geodata-and-geoservices).
+
+The WFS layer metadata supplies no effective geometry date. Neither its response timestamp, the catalogue's July modification, nor its placeholder 2000 creation date proves a 2026 timetable alignment. This study explicitly labels the geometry vintage unknown. The [official 2026 eastern Switzerland rail map](https://www.thurbo.ch/fileadmin/user_upload/1_Reisen/Reiseinfos/L-11_SBB-RV-Ostschweiz-A1-26-SID.pdf) provides a network review aid (including S10 Wil–Weinfelden–Romanshorn and S15 Wil–Wängi–Frauenfeld); it is not used as digitized geometry or redistributed here.
+
+Gleislicht authors the processed feed. Modifications comprise route selection, source graph construction, stop projection, bounded stop-access connectors, conversion to WGS84, output rounding and scheduled interpolation. The feed carries attribution, licence/terms URLs and local copies of the Thurgau licence evidence. It is an archival study, not current operational or realtime data; a refresh requires a new source snapshot and full revalidation.
+
+## Source adapter and exclusions
+
+${table(['WFS layer', 'Records', 'Role'], summary.sourceLayerInventory.map(l => [l.layer, l.count, {
+  buslinie: 'Route-attributed bus centreline segments', bahnlinie_takt: '17 rail corridor segments, including two explicitly labelled S15',
+  buslinie_takt: 'Frequency-rendering duplicate; acquired and inventoried, not a second geometry source', bushalte: 'DiDok + line + operator evidence',
+  sammeltaxi: 'Service-area inventory; excluded from fixed movements',
+}[l.layer]]).concat([['dist_bahn / dist_bus', 'Not downloaded', 'Advertised accessibility-distance layers; excluded because they are not vehicle paths']]))}
+
+All **${sourceLines.length} bus/rail geometry records** are retained in the line audit; ${sourceLines.filter(l => l.routeIds.length).length} have route-crosswalk candidates. These are segmented source features, not that many passenger lines. Candidate status does not mean every vertex is used or every joined route is admitted.
+
+Bus joins require an exact prefixed line number, a reviewed operator label, and at least **two distinct shared DiDok stops** between the source stop layer and the canton-scoped GTFS route. Reviewed source labels are PostAuto → 801, Bus Ostschweiz → 138 and REGO → 896. Each route's evidence IDs are saved. The GTFS line names alone are not unique operator identities. Prefix 70 is explicitly assigned only to 605/806; other reviewed regular bus codes use 80. A source token **20.207** is retained as written and is never silently corrected to 80.207.
+
+Comma-separated source numbers are parsed independently. Parenthetical **nur zeitweise**, **Abendkurs** and **Kantibus** tokens are excluded from that route's graph because no operating-time rule is supplied; an unqualified token for another line on the same feature can still be used. **BN820** is not assumed to mean the GTFS line 820. Day and night labels are respected. Frauenfeld's 801–815/NT and Kreuzlingen's 901–907 have no verified line geometry here; the whole-canton inventory does not hide these city-network gaps. Replacement buses and unresolved operator 744 remain excluded.
+
+For rail, SBB/THURBO use the 15 unlabelled regional corridor features as a routing graph; these are not preassigned GTFS line shapes. AB **S15** uses only its two explicitly labelled Frauenfeld–Wängi–Wil features, separately from the other rail graph. Full stop-chain geometry tests determine admission. Lake services have no acquired water-compatible geometry and receive no road or rail substitute.
+
+Original **EPSG:2056 east/north** vertices form the graph. The parser asserts CRS, axis ranges, unique IDs and full WFS returned/matched counts. Exact source vertices define connectivity; no gap is bridged and no near-coincident tracks are merged. The established swisstopo approximate LV95/WGS84 conversion has metre-level precision. Output coordinates round to seven decimals.
+
+Every directed segment must project within **80 m for bus / 120 m for rail**. The path follows existing source edges; inferred connectors link the actual platform coordinates to the source line within those limits. Detours may not exceed the larger of 4.5 × straight-line distance and 1,200 m (bus) / 3,000 m (rail). Alternative projections can differ by at most 5 m from the nearest projection. No simplification or automatic connector between disconnected source parts is added.
+
+Direction comes from the ordered GTFS platform chain, not a source road-direction field. This does **not** certify one-way access, a specific running track, bridge/tunnel correctness, a loop's exact operational alignment, or temporary diversions. Shortest source-path inference and bounded stop-access connectors remain model assumptions. Complete geometry is necessary for admission; it is not observed movement.
+
+## Weekday and Sunday directed validation
+
+The date model is **local civil day 00:00–24:00**, including previous-service-day spillover (Thursday into Friday and Saturday into Sunday). Calendar exceptions apply. Frequency expansion and reservation permissions are handled; this selected fixture has zero active frequency templates. Original calls and pickup/drop-off permissions remain in exported journeys. A reservation/on-demand call or any failed segment excludes the entire journey.
+
+The admitted feeds retain **${summary.days.map(d => d.timing?.admittedZeroDurationSegmentOccurrences).join(' / ')} zero-duration segment occurrences (Friday / Sunday)** where different stops share a timetable minute. No artificial seconds are inserted and no finite speed is assigned to those segments. Each day's timing diagnostics also retain the largest positive-duration implied speed by mode; the Sunday rail maximum is about 214 km/h on an SN30 segment. These are source-timing/model limitations, not measured or certified operating speeds. Geometry admission does not establish physically realistic timing at every call.
+
+Pattern identity is GTFS **route ID + direction_id + full ordered original platform IDs**, including repeated calls and out-of-canton stops. Stop pairs remain ordered and route-scoped. Geometry counts for matched pairs include otherwise excluded incomplete journeys, so they must not be confused with the smaller admitted-feed count.
+
+${table(['Measure', 'Friday 4 September', 'Sunday 6 September'], [
+  ['Dated journeys', ...totals.map(d => d.trips)],
+  ['Admitted journeys', ...totals.map(d => d.admittedTrips + ' (' + percent(d.admittedTrips, d.trips) + ')')],
+  ['Complete admitted patterns / all patterns', ...totals.map(d => d.admittedPatterns + ' / ' + d.patterns)],
+  ['Matched directed pairs / all directed pairs', ...totals.map(d => d.matchedDirectedPairs + ' / ' + d.directedPairs + ' (' + percent(d.matchedDirectedPairs, d.directedPairs) + ')')],
+  ['Matched scheduled segments / all occurrences', ...totals.map(d => d.matchedScheduledSegmentOccurrences + ' / ' + d.scheduledSegmentOccurrences + ' (' + percent(d.matchedScheduledSegmentOccurrences, d.scheduledSegmentOccurrences) + ')')],
+  ['Segments in admitted journeys', ...totals.map(d => d.admittedSegmentOccurrences)],
+  ['Carry-in journeys: admitted / total', ...summary.days.map(d => d.admittedCarryInTrips + ' / ' + d.carryInTrips)],
+  ['Night-labelled journeys: admitted / total', ...summary.days.map(d => d.directedPatternChecks.admittedNightRouteTrips + ' / ' + d.directedPatternChecks.nightRouteTrips)],
+  ['Patterns revisiting platforms: admitted / total', ...summary.days.map(d => d.directedPatternChecks.admittedPatternsRevisitingPlatforms + ' / ' + d.directedPatternChecks.patternsRevisitingPlatforms)],
+])}
+
+**${cross.shared} patterns are shared**, **${cross.weekdayOnly} occur only on Friday**, and **${cross.sundayOnly} occur only on Sunday**. Both direction IDs 0 and 1 are evaluated. All exported journeys have geometry for 100% of their segments; this does not turn canton-wide coverage into 100%.
+
+${table(['Unmatched directed-pair reason', 'Friday', 'Sunday'], gapReasons.map(reason => [reason, ...reports.map(d => d.directedPairs.filter(p => p.reason === reason).length)]))}
+
+Endpoint gaps can reflect source extent, missing termini, stop offsets or stale alignment; disconnections reflect exact source topology. No threshold was increased to hide these failures. All rejected pairs, their endpoint names and gap diagnostics are saved in each day's audit.
+
+## Admitted routes
+
+Counts below refer only to the two validated civil dates. Multiple records can share a passenger-facing number.
+
+${table(['Agency', 'Line', 'GTFS route ID', 'Friday admitted / total', 'Sunday admitted / total'], admitted.map(r => [r.agencyId, r.name, r.id, ...r.days.map(d => d.admittedTrips + ' / ' + d.trips)]))}
+
+## Reproduction and checks
+
+Run from the repository root with Node, installed project dependencies, Python 3 and unzip. Source preparation uses Python's standard library; downloading additionally uses curl.
+
+\`\`\`sh
+# Re-decode preserved original GML and boundary rows without network access.
+python3 scripts/prepare-thurgau-sources.py
+
+# Full canton census and build from the pinned national archive (two complete
+# stop-times scans; no city/operator whitelist). The crosswalk must reproduce.
+node --max-old-space-size=8192 scripts/build-thurgau-region.mjs \\
+  --archive /private/tmp/GTFS_FP2026_20260902.zip
+
+# Faster identical build from the preserved selected timetable fixture.
+node scripts/build-thurgau-region.mjs \\
+  --archive /private/tmp/GTFS_FP2026_20260902.zip \\
+  --timetable-cache data/thurgau-audit/timetable-cache.json.gz
+
+# Recompute crosswalk evidence and every directed match; compare every exported
+# stop, path, edge and journey; reconcile routes, groups, patterns and chunks.
+node scripts/check-thurgau-region.mjs
+node scripts/document-thurgau-study.mjs
+npx vitest run scripts/thurgau-region.test.mjs scripts/bern-region.test.mjs
+python3 scripts/test_thurgau_sources.py
+\`\`\`
+
+For a new acquisition, use \`python3 scripts/prepare-thurgau-sources.py --download --boundary PATH_TO_2026_GPKG\`, run \`node --max-old-space-size=8192 scripts/thurgau-timetable.mjs PATH_TO_PINNED_GTFS\`, then \`node scripts/crosswalk-thurgau.mjs\` and review changes before rebuilding. A new source snapshot invalidates the old timetable cache. Do not reuse an unreviewed geometry vintage or relax admission rules merely to increase counts.
+
+Validation covers source hashes, GML counts/axes/IDs, full canton/district membership, operator/line identity, direction and loop preservation, midnight spillover, whole-pattern rejection, repeated geometry replay, exact exported paths, complete calls, finite ordered times, all 24 chunk hashes and trip identities. **Two September days do not establish public-holiday, winter, summer-only or year-round completeness.** Temporary diversions and physical one-way/track legality remain unverified.
+`
+await writeFile('docs/THURGAU-STUDY.md', doc)
+
+const inventory = `# Complete Thurgau route admission and exclusion inventory
+
+Generated from the pinned 2026 GTFS canton census. See [study and method](THURGAU-STUDY.md) and [machine-readable route evidence](../data/thurgau-audit/routes.json). All **${routes.length}** annual route records appear below, including records inactive on both September dates. Day values are **admitted / total civil-day journeys**. Source candidates alone do not imply complete geometry.
+
+${table(['Agency', 'Line', 'Mode', 'GTFS route ID', 'Districts', 'Friday', 'Sunday', 'Status / exclusion evidence'], [...routes].sort((a, b) => a.agencyId.localeCompare(b.agencyId, undefined, { numeric: true }) || a.name.localeCompare(b.name, undefined, { numeric: true }) || a.id.localeCompare(b.id)).map(r => {
+  const reasons = [...new Set(r.days.flatMap(d => Object.keys(d.excludedTrips)))]
+  const reason = r.crosswalk.exclusionReason ?? (r.status === 'inactive-on-validation-dates' ? 'No service on these dates; annual membership retained' : reasons.join('; ') || 'Every dated pattern complete')
+  return [r.agencyId + ' ' + clean(r.agency), clean(r.name), r.mode, r.id, r.districts.join(', '), ...r.days.map(d => d.admittedTrips + ' / ' + d.trips), labels[r.status] + ': ' + clean(reason)]
+}))}
+`
+await writeFile('docs/THURGAU-ROUTE-INVENTORY.md', inventory)
+console.log(`Documented ${routes.length} route records and ${admitted.length} routes with admitted journeys`)

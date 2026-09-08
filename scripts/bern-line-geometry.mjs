@@ -89,11 +89,11 @@ export function bernAdmission(train, pattern) {
   return 'admitted'
 }
 
-export function applyBernGeometry(raw, routes, source, crosswalk) {
+export function applyBernGeometry(raw, routes, source, crosswalk, { featureMatch = bernFeatureMatch, limits = BERN_LIMITS, lineId = f => f.properties.liniencode } = {}) {
   const paths = [], pathIndexes = new Map(), pairs = new Map(), patterns = new Map(), graphs = new Map()
   const routeCrosswalk = [...routes.values()].map(route => {
-    const features = source.lines.filter(f => bernFeatureMatch(route, f, crosswalk))
-    const sourceLines = features.map(f => f.properties.liniencode).sort()
+    const features = source.lines.filter(f => featureMatch(route, f, crosswalk))
+    const sourceLines = features.map(lineId).sort()
     return { routeId: route.id, agencyId: route.agencyId, line: route.name, mode: route.mode, sourceLines, features }
   })
   const byRoute = new Map(routeCrosswalk.map(item => [item.routeId, item]))
@@ -109,7 +109,7 @@ export function applyBernGeometry(raw, routes, source, crosswalk) {
         const key = JSON.stringify([train.routeId, from[4], to[4]])
         pairKeys.push(key)
         if (!pairs.has(key)) {
-          const match = matchBaselSegment(graph, from, to, BERN_LIMITS[route.mode])
+          const match = matchBaselSegment(graph, from, to, limits[route.mode])
           let pathIndex = null
           if (match.path) {
             const signature = JSON.stringify(match.path)

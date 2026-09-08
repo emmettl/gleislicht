@@ -1,0 +1,7461 @@
+[
+  {
+    "objectid": "2036",
+    "liniennr_1": "80.823",
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2036",
+    "vertexCount": 101,
+    "tokens": [
+      {
+        "code": "80.823",
+        "line": "823",
+        "qualification": null,
+        "raw": "80.823"
+      }
+    ],
+    "routeIds": [
+      "96-200-3-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2165",
+    "liniennr_1": "70.605, 80.823",
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2165",
+    "vertexCount": 22,
+    "tokens": [
+      {
+        "code": "70.605",
+        "line": "605",
+        "qualification": null,
+        "raw": "70.605"
+      },
+      {
+        "code": "80.823",
+        "line": "823",
+        "qualification": null,
+        "raw": "80.823"
+      }
+    ],
+    "routeIds": [
+      "96-189-4-j26-1",
+      "96-200-3-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1692",
+    "liniennr_1": "80.829, 80.920",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1692",
+    "vertexCount": 32,
+    "tokens": [
+      {
+        "code": "80.829",
+        "line": "829",
+        "qualification": null,
+        "raw": "80.829"
+      },
+      {
+        "code": "80.920",
+        "line": "920",
+        "qualification": null,
+        "raw": "80.920"
+      }
+    ],
+    "routeIds": [
+      "96-200-8-j26-1",
+      "96-203-1-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2236",
+    "liniennr_1": "70.605, 80.823",
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2236",
+    "vertexCount": 16,
+    "tokens": [
+      {
+        "code": "70.605",
+        "line": "605",
+        "qualification": null,
+        "raw": "70.605"
+      },
+      {
+        "code": "80.823",
+        "line": "823",
+        "qualification": null,
+        "raw": "80.823"
+      }
+    ],
+    "routeIds": [
+      "96-189-4-j26-1",
+      "96-200-3-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2124",
+    "liniennr_1": "80.829",
+    "takt": "Stundentakt mit Lücken",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2124",
+    "vertexCount": 146,
+    "tokens": [
+      {
+        "code": "80.829",
+        "line": "829",
+        "qualification": null,
+        "raw": "80.829"
+      }
+    ],
+    "routeIds": [
+      "96-200-8-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2125",
+    "liniennr_1": "80.831, 80.832",
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2125",
+    "vertexCount": 29,
+    "tokens": [
+      {
+        "code": "80.831",
+        "line": "831",
+        "qualification": null,
+        "raw": "80.831"
+      },
+      {
+        "code": "80.832",
+        "line": "832",
+        "qualification": null,
+        "raw": "80.832"
+      }
+    ],
+    "routeIds": [
+      "96-201-3-j26-1",
+      "96-201-4-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1473",
+    "liniennr_1": null,
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1473",
+    "vertexCount": 6,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "2126",
+    "liniennr_1": "80.829",
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2126",
+    "vertexCount": 40,
+    "tokens": [
+      {
+        "code": "80.829",
+        "line": "829",
+        "qualification": null,
+        "raw": "80.829"
+      }
+    ],
+    "routeIds": [
+      "96-200-8-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2130",
+    "liniennr_1": null,
+    "takt": "Keine Angaben",
+    "betriebszeiten": "Nachtnetz",
+    "liniencode": "buslinie.2130",
+    "vertexCount": 13,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "2140",
+    "liniennr_1": "80.N50",
+    "takt": "Keine Angaben",
+    "betriebszeiten": "Nachtnetz",
+    "liniencode": "buslinie.2140",
+    "vertexCount": 234,
+    "tokens": [
+      {
+        "code": "80.N50",
+        "line": "N50",
+        "qualification": null,
+        "raw": "80.N50"
+      }
+    ],
+    "routeIds": [
+      "92-N50-A-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2176",
+    "liniennr_1": "70.605",
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2176",
+    "vertexCount": 313,
+    "tokens": [
+      {
+        "code": "70.605",
+        "line": "605",
+        "qualification": null,
+        "raw": "70.605"
+      }
+    ],
+    "routeIds": [
+      "96-189-4-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2085",
+    "liniennr_1": null,
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2085",
+    "vertexCount": 2,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "2086",
+    "liniennr_1": null,
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2086",
+    "vertexCount": 2,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "2142",
+    "liniennr_1": "80.N50",
+    "takt": "Keine Angaben",
+    "betriebszeiten": "Nachtnetz",
+    "liniencode": "buslinie.2142",
+    "vertexCount": 113,
+    "tokens": [
+      {
+        "code": "80.N50",
+        "line": "N50",
+        "qualification": null,
+        "raw": "80.N50"
+      }
+    ],
+    "routeIds": [
+      "92-N50-A-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2147",
+    "liniennr_1": "80.205",
+    "takt": "Stundentakt mit Lücken",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2147",
+    "vertexCount": 17,
+    "tokens": [
+      {
+        "code": "80.205",
+        "line": "205",
+        "qualification": null,
+        "raw": "80.205"
+      }
+    ],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "2248",
+    "liniennr_1": "80.837",
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2248",
+    "vertexCount": 579,
+    "tokens": [
+      {
+        "code": "80.837",
+        "line": "837",
+        "qualification": null,
+        "raw": "80.837"
+      }
+    ],
+    "routeIds": [
+      "96-202-5-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1948",
+    "liniennr_1": null,
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1948",
+    "vertexCount": 2,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "2099",
+    "liniennr_1": "80.819, 80.822, 80.825",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2099",
+    "vertexCount": 52,
+    "tokens": [
+      {
+        "code": "80.819",
+        "line": "819",
+        "qualification": null,
+        "raw": "80.819"
+      },
+      {
+        "code": "80.822",
+        "line": "822",
+        "qualification": null,
+        "raw": "80.822"
+      },
+      {
+        "code": "80.825",
+        "line": "825",
+        "qualification": null,
+        "raw": "80.825"
+      }
+    ],
+    "routeIds": [
+      "96-200-2-j26-1",
+      "96-200-4-j26-1",
+      "96-202-7-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2179",
+    "liniennr_1": "70.605",
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2179",
+    "vertexCount": 266,
+    "tokens": [
+      {
+        "code": "70.605",
+        "line": "605",
+        "qualification": null,
+        "raw": "70.605"
+      }
+    ],
+    "routeIds": [
+      "96-189-4-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2249",
+    "liniennr_1": "80.923",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2249",
+    "vertexCount": 49,
+    "tokens": [
+      {
+        "code": "80.923",
+        "line": "923",
+        "qualification": null,
+        "raw": "80.923"
+      }
+    ],
+    "routeIds": [
+      "96-203-3-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2180",
+    "liniennr_1": "70.605",
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2180",
+    "vertexCount": 9,
+    "tokens": [
+      {
+        "code": "70.605",
+        "line": "605",
+        "qualification": null,
+        "raw": "70.605"
+      }
+    ],
+    "routeIds": [
+      "96-189-4-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2181",
+    "liniennr_1": "70.605",
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2181",
+    "vertexCount": 37,
+    "tokens": [
+      {
+        "code": "70.605",
+        "line": "605",
+        "qualification": null,
+        "raw": "70.605"
+      }
+    ],
+    "routeIds": [
+      "96-189-4-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2185",
+    "liniennr_1": "80.823",
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2185",
+    "vertexCount": 49,
+    "tokens": [
+      {
+        "code": "80.823",
+        "line": "823",
+        "qualification": null,
+        "raw": "80.823"
+      }
+    ],
+    "routeIds": [
+      "96-200-3-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2253",
+    "liniennr_1": null,
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2253",
+    "vertexCount": 2,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "2186",
+    "liniennr_1": null,
+    "takt": "Stundentakt mit Lücken",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2186",
+    "vertexCount": 39,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "2254",
+    "liniennr_1": null,
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tag- und Nachtnetz",
+    "liniencode": "buslinie.2254",
+    "vertexCount": 10,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "2164",
+    "liniennr_1": "80.920",
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2164",
+    "vertexCount": 76,
+    "tokens": [
+      {
+        "code": "80.920",
+        "line": "920",
+        "qualification": null,
+        "raw": "80.920"
+      }
+    ],
+    "routeIds": [
+      "96-203-1-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2255",
+    "liniennr_1": "80.920, 80.923, 80.925, 80.BN820",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tag- und Nachtnetz",
+    "liniencode": "buslinie.2255",
+    "vertexCount": 47,
+    "tokens": [
+      {
+        "code": "80.920",
+        "line": "920",
+        "qualification": null,
+        "raw": "80.920"
+      },
+      {
+        "code": "80.923",
+        "line": "923",
+        "qualification": null,
+        "raw": "80.923"
+      },
+      {
+        "code": "80.925",
+        "line": "925",
+        "qualification": null,
+        "raw": "80.925"
+      },
+      {
+        "code": "80.BN820",
+        "line": "BN820",
+        "qualification": null,
+        "raw": "80.BN820"
+      }
+    ],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "2256",
+    "liniennr_1": "80.924",
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2256",
+    "vertexCount": 41,
+    "tokens": [
+      {
+        "code": "80.924",
+        "line": "924",
+        "qualification": null,
+        "raw": "80.924"
+      }
+    ],
+    "routeIds": [
+      "96-203-5-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2189",
+    "liniennr_1": "70.806",
+    "takt": "Stundentakt mit Lücken",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2189",
+    "vertexCount": 80,
+    "tokens": [
+      {
+        "code": "70.806",
+        "line": "806",
+        "qualification": null,
+        "raw": "70.806"
+      }
+    ],
+    "routeIds": [
+      "96-184-9-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2257",
+    "liniennr_1": "80.924",
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2257",
+    "vertexCount": 58,
+    "tokens": [
+      {
+        "code": "80.924",
+        "line": "924",
+        "qualification": null,
+        "raw": "80.924"
+      }
+    ],
+    "routeIds": [
+      "96-203-5-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2190",
+    "liniennr_1": null,
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2190",
+    "vertexCount": 117,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1133",
+    "liniennr_1": "80.736",
+    "takt": "Stundentakt mit Lücken",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1133",
+    "vertexCount": 8,
+    "tokens": [
+      {
+        "code": "80.736",
+        "line": "736",
+        "qualification": null,
+        "raw": "80.736"
+      }
+    ],
+    "routeIds": [
+      "92-736-A-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2194",
+    "liniennr_1": "80.733 (Abendkurs), 80.734",
+    "takt": "Stundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2194",
+    "vertexCount": 43,
+    "tokens": [
+      {
+        "code": "80.733",
+        "line": "733",
+        "qualification": "Abendkurs",
+        "raw": "80.733 (Abendkurs)"
+      },
+      {
+        "code": "80.734",
+        "line": "734",
+        "qualification": null,
+        "raw": "80.734"
+      }
+    ],
+    "routeIds": [
+      "92-734-K-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2146",
+    "liniennr_1": "80.205",
+    "takt": "Stundentakt mit Lücken",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2146",
+    "vertexCount": 396,
+    "tokens": [
+      {
+        "code": "80.205",
+        "line": "205",
+        "qualification": null,
+        "raw": "80.205"
+      }
+    ],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "2163",
+    "liniennr_1": "80.920",
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2163",
+    "vertexCount": 199,
+    "tokens": [
+      {
+        "code": "80.920",
+        "line": "920",
+        "qualification": null,
+        "raw": "80.920"
+      }
+    ],
+    "routeIds": [
+      "96-203-1-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2141",
+    "liniennr_1": "80.740",
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2141",
+    "vertexCount": 278,
+    "tokens": [
+      {
+        "code": "80.740",
+        "line": "740",
+        "qualification": null,
+        "raw": "80.740"
+      }
+    ],
+    "routeIds": [
+      "96-228-3-j26-1",
+      "96-228-B-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2148",
+    "liniennr_1": "80.200, 20.207",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2148",
+    "vertexCount": 106,
+    "tokens": [
+      {
+        "code": "80.200",
+        "line": "200",
+        "qualification": null,
+        "raw": "80.200"
+      },
+      {
+        "code": "20.207",
+        "line": "207",
+        "qualification": null,
+        "raw": "20.207"
+      }
+    ],
+    "routeIds": [
+      "96-220-5-j26-1",
+      "96-220-A-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2195",
+    "liniennr_1": null,
+    "takt": null,
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2195",
+    "vertexCount": 3,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "2196",
+    "liniennr_1": "80.706",
+    "takt": "Stundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2196",
+    "vertexCount": 91,
+    "tokens": [
+      {
+        "code": "80.706",
+        "line": "706",
+        "qualification": null,
+        "raw": "80.706"
+      }
+    ],
+    "routeIds": [
+      "92-706-C-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1590",
+    "liniennr_1": null,
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1590",
+    "vertexCount": 2,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1851",
+    "liniennr_1": "80.932",
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1851",
+    "vertexCount": 486,
+    "tokens": [
+      {
+        "code": "80.932",
+        "line": "932",
+        "qualification": null,
+        "raw": "80.932"
+      }
+    ],
+    "routeIds": [
+      "96-202-1-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1291",
+    "liniennr_1": null,
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1291",
+    "vertexCount": 7,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1905",
+    "liniennr_1": "80.823",
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1905",
+    "vertexCount": 24,
+    "tokens": [
+      {
+        "code": "80.823",
+        "line": "823",
+        "qualification": null,
+        "raw": "80.823"
+      }
+    ],
+    "routeIds": [
+      "96-200-3-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2024",
+    "liniennr_1": null,
+    "takt": "Stundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2024",
+    "vertexCount": 12,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1691",
+    "liniennr_1": null,
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1691",
+    "vertexCount": 2,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1693",
+    "liniennr_1": "80.931, 80.942",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1693",
+    "vertexCount": 8,
+    "tokens": [
+      {
+        "code": "80.931",
+        "line": "931",
+        "qualification": null,
+        "raw": "80.931"
+      },
+      {
+        "code": "80.942",
+        "line": "942",
+        "qualification": null,
+        "raw": "80.942"
+      }
+    ],
+    "routeIds": [
+      "92-942-A-j26-1",
+      "96-203-8-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1972",
+    "liniennr_1": null,
+    "takt": null,
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1972",
+    "vertexCount": 3,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1704",
+    "liniennr_1": "80.908, 80.923, 80.931",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1704",
+    "vertexCount": 22,
+    "tokens": [
+      {
+        "code": "80.908",
+        "line": "908",
+        "qualification": null,
+        "raw": "80.908"
+      },
+      {
+        "code": "80.923",
+        "line": "923",
+        "qualification": null,
+        "raw": "80.923"
+      },
+      {
+        "code": "80.931",
+        "line": "931",
+        "qualification": null,
+        "raw": "80.931"
+      }
+    ],
+    "routeIds": [
+      "96-203-0-j26-1",
+      "96-203-3-j26-1",
+      "96-203-8-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2028",
+    "liniennr_1": "80.735, 80.736",
+    "takt": "Stundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2028",
+    "vertexCount": 19,
+    "tokens": [
+      {
+        "code": "80.735",
+        "line": "735",
+        "qualification": null,
+        "raw": "80.735"
+      },
+      {
+        "code": "80.736",
+        "line": "736",
+        "qualification": null,
+        "raw": "80.736"
+      }
+    ],
+    "routeIds": [
+      "92-735-C-j26-1",
+      "92-736-A-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1688",
+    "liniennr_1": "80.823",
+    "takt": "Stundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1688",
+    "vertexCount": 43,
+    "tokens": [
+      {
+        "code": "80.823",
+        "line": "823",
+        "qualification": null,
+        "raw": "80.823"
+      }
+    ],
+    "routeIds": [
+      "96-200-3-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1930",
+    "liniennr_1": "80.847, 80.848",
+    "takt": "Stundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1930",
+    "vertexCount": 34,
+    "tokens": [
+      {
+        "code": "80.847",
+        "line": "847",
+        "qualification": null,
+        "raw": "80.847"
+      },
+      {
+        "code": "80.848",
+        "line": "848",
+        "qualification": null,
+        "raw": "80.848"
+      }
+    ],
+    "routeIds": [
+      "96-204-0-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1706",
+    "liniennr_1": "80.908, 80.925",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1706",
+    "vertexCount": 41,
+    "tokens": [
+      {
+        "code": "80.908",
+        "line": "908",
+        "qualification": null,
+        "raw": "80.908"
+      },
+      {
+        "code": "80.925",
+        "line": "925",
+        "qualification": null,
+        "raw": "80.925"
+      }
+    ],
+    "routeIds": [
+      "96-203-0-j26-1",
+      "96-203-6-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1995",
+    "liniennr_1": "80.822, 80.823, 80.825, 80.826, 80.829, 80.920",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1995",
+    "vertexCount": 23,
+    "tokens": [
+      {
+        "code": "80.822",
+        "line": "822",
+        "qualification": null,
+        "raw": "80.822"
+      },
+      {
+        "code": "80.823",
+        "line": "823",
+        "qualification": null,
+        "raw": "80.823"
+      },
+      {
+        "code": "80.825",
+        "line": "825",
+        "qualification": null,
+        "raw": "80.825"
+      },
+      {
+        "code": "80.826",
+        "line": "826",
+        "qualification": null,
+        "raw": "80.826"
+      },
+      {
+        "code": "80.829",
+        "line": "829",
+        "qualification": null,
+        "raw": "80.829"
+      },
+      {
+        "code": "80.920",
+        "line": "920",
+        "qualification": null,
+        "raw": "80.920"
+      }
+    ],
+    "routeIds": [
+      "96-200-2-j26-1",
+      "96-200-3-j26-1",
+      "96-200-4-j26-1",
+      "96-200-6-j26-1",
+      "96-200-8-j26-1",
+      "96-203-1-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2109",
+    "liniennr_1": "80.837, 80.838",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2109",
+    "vertexCount": 88,
+    "tokens": [
+      {
+        "code": "80.837",
+        "line": "837",
+        "qualification": null,
+        "raw": "80.837"
+      },
+      {
+        "code": "80.838",
+        "line": "838",
+        "qualification": null,
+        "raw": "80.838"
+      }
+    ],
+    "routeIds": [
+      "96-201-0-j26-1",
+      "96-202-5-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2110",
+    "liniennr_1": "80.841 (Kantibus)",
+    "takt": "Keine Angaben",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2110",
+    "vertexCount": 25,
+    "tokens": [
+      {
+        "code": "80.841",
+        "line": "841",
+        "qualification": "Kantibus",
+        "raw": "80.841 (Kantibus)"
+      }
+    ],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "2111",
+    "liniennr_1": "80.847",
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2111",
+    "vertexCount": 48,
+    "tokens": [
+      {
+        "code": "80.847",
+        "line": "847",
+        "qualification": null,
+        "raw": "80.847"
+      }
+    ],
+    "routeIds": [
+      "96-204-0-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1745",
+    "liniennr_1": "80.847, 80.848",
+    "takt": "Stundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1745",
+    "vertexCount": 129,
+    "tokens": [
+      {
+        "code": "80.847",
+        "line": "847",
+        "qualification": null,
+        "raw": "80.847"
+      },
+      {
+        "code": "80.848",
+        "line": "848",
+        "qualification": null,
+        "raw": "80.848"
+      }
+    ],
+    "routeIds": [
+      "96-204-0-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1994",
+    "liniennr_1": "80.834, 80.837, 80.838",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1994",
+    "vertexCount": 81,
+    "tokens": [
+      {
+        "code": "80.834",
+        "line": "834",
+        "qualification": null,
+        "raw": "80.834"
+      },
+      {
+        "code": "80.837",
+        "line": "837",
+        "qualification": null,
+        "raw": "80.837"
+      },
+      {
+        "code": "80.838",
+        "line": "838",
+        "qualification": null,
+        "raw": "80.838"
+      }
+    ],
+    "routeIds": [
+      "96-200-9-j26-1",
+      "96-201-0-j26-1",
+      "96-202-5-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1744",
+    "liniennr_1": null,
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1744",
+    "vertexCount": 12,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1825",
+    "liniennr_1": "80.819, 80.823, 80.825",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1825",
+    "vertexCount": 103,
+    "tokens": [
+      {
+        "code": "80.819",
+        "line": "819",
+        "qualification": null,
+        "raw": "80.819"
+      },
+      {
+        "code": "80.823",
+        "line": "823",
+        "qualification": null,
+        "raw": "80.823"
+      },
+      {
+        "code": "80.825",
+        "line": "825",
+        "qualification": null,
+        "raw": "80.825"
+      }
+    ],
+    "routeIds": [
+      "96-200-3-j26-1",
+      "96-200-4-j26-1",
+      "96-202-7-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1732",
+    "liniennr_1": "80.941",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1732",
+    "vertexCount": 65,
+    "tokens": [
+      {
+        "code": "80.941",
+        "line": "941",
+        "qualification": null,
+        "raw": "80.941"
+      }
+    ],
+    "routeIds": [
+      "92-941-A-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1201",
+    "liniennr_1": "80.931, 80.942, 80.943",
+    "takt": "Halbstundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1201",
+    "vertexCount": 32,
+    "tokens": [
+      {
+        "code": "80.931",
+        "line": "931",
+        "qualification": null,
+        "raw": "80.931"
+      },
+      {
+        "code": "80.942",
+        "line": "942",
+        "qualification": null,
+        "raw": "80.942"
+      },
+      {
+        "code": "80.943",
+        "line": "943",
+        "qualification": null,
+        "raw": "80.943"
+      }
+    ],
+    "routeIds": [
+      "92-942-A-j26-1",
+      "92-943-A-j26-1",
+      "96-203-8-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1721",
+    "liniennr_1": "80.944",
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1721",
+    "vertexCount": 7,
+    "tokens": [
+      {
+        "code": "80.944",
+        "line": "944",
+        "qualification": null,
+        "raw": "80.944"
+      }
+    ],
+    "routeIds": [
+      "96-203-7-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1731",
+    "liniennr_1": "80.940",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1731",
+    "vertexCount": 42,
+    "tokens": [
+      {
+        "code": "80.940",
+        "line": "940",
+        "qualification": null,
+        "raw": "80.940"
+      }
+    ],
+    "routeIds": [
+      "92-940-B-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1737",
+    "liniennr_1": "80.943",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1737",
+    "vertexCount": 105,
+    "tokens": [
+      {
+        "code": "80.943",
+        "line": "943",
+        "qualification": null,
+        "raw": "80.943"
+      }
+    ],
+    "routeIds": [
+      "92-943-A-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1736",
+    "liniennr_1": "80.943, 80.N50",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1736",
+    "vertexCount": 101,
+    "tokens": [
+      {
+        "code": "80.943",
+        "line": "943",
+        "qualification": null,
+        "raw": "80.943"
+      },
+      {
+        "code": "80.N50",
+        "line": "N50",
+        "qualification": null,
+        "raw": "80.N50"
+      }
+    ],
+    "routeIds": [
+      "92-943-A-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1997",
+    "liniennr_1": "80.823, 80.847, 80.848",
+    "takt": "Stundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1997",
+    "vertexCount": 28,
+    "tokens": [
+      {
+        "code": "80.823",
+        "line": "823",
+        "qualification": null,
+        "raw": "80.823"
+      },
+      {
+        "code": "80.847",
+        "line": "847",
+        "qualification": null,
+        "raw": "80.847"
+      },
+      {
+        "code": "80.848",
+        "line": "848",
+        "qualification": null,
+        "raw": "80.848"
+      }
+    ],
+    "routeIds": [
+      "96-200-3-j26-1",
+      "96-204-0-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1755",
+    "liniennr_1": "80.207",
+    "takt": "Stundentakt mit Lücken",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1755",
+    "vertexCount": 154,
+    "tokens": [
+      {
+        "code": "80.207",
+        "line": "207",
+        "qualification": null,
+        "raw": "80.207"
+      }
+    ],
+    "routeIds": [
+      "96-220-6-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1796",
+    "liniennr_1": "80.832, 80.833, 80.920",
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1796",
+    "vertexCount": 46,
+    "tokens": [
+      {
+        "code": "80.832",
+        "line": "832",
+        "qualification": null,
+        "raw": "80.832"
+      },
+      {
+        "code": "80.833",
+        "line": "833",
+        "qualification": null,
+        "raw": "80.833"
+      },
+      {
+        "code": "80.920",
+        "line": "920",
+        "qualification": null,
+        "raw": "80.920"
+      }
+    ],
+    "routeIds": [
+      "96-200-7-j26-1",
+      "96-201-3-j26-1",
+      "96-203-1-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2117",
+    "liniennr_1": "80.210",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2117",
+    "vertexCount": 89,
+    "tokens": [
+      {
+        "code": "80.210",
+        "line": "210",
+        "qualification": null,
+        "raw": "80.210"
+      }
+    ],
+    "routeIds": [
+      "96-250-8-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1672",
+    "liniennr_1": "80.823, 80.825",
+    "takt": "Stundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1672",
+    "vertexCount": 37,
+    "tokens": [
+      {
+        "code": "80.823",
+        "line": "823",
+        "qualification": null,
+        "raw": "80.823"
+      },
+      {
+        "code": "80.825",
+        "line": "825",
+        "qualification": null,
+        "raw": "80.825"
+      }
+    ],
+    "routeIds": [
+      "96-200-3-j26-1",
+      "96-200-4-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1986",
+    "liniennr_1": "80.736",
+    "takt": "Stundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1986",
+    "vertexCount": 41,
+    "tokens": [
+      {
+        "code": "80.736",
+        "line": "736",
+        "qualification": null,
+        "raw": "80.736"
+      }
+    ],
+    "routeIds": [
+      "92-736-A-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1996",
+    "liniennr_1": null,
+    "takt": null,
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1996",
+    "vertexCount": 29,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "2029",
+    "liniennr_1": "80.735",
+    "takt": "Stundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2029",
+    "vertexCount": 14,
+    "tokens": [
+      {
+        "code": "80.735",
+        "line": "735",
+        "qualification": null,
+        "raw": "80.735"
+      }
+    ],
+    "routeIds": [
+      "92-735-C-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1797",
+    "liniennr_1": "80.832",
+    "takt": "Stundentakt mit Lücken",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1797",
+    "vertexCount": 84,
+    "tokens": [
+      {
+        "code": "80.832",
+        "line": "832",
+        "qualification": null,
+        "raw": "80.832"
+      }
+    ],
+    "routeIds": [
+      "96-201-3-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1998",
+    "liniennr_1": null,
+    "takt": "Stundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1998",
+    "vertexCount": 79,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1517",
+    "liniennr_1": "80.908, 80.923, 80.925",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1517",
+    "vertexCount": 24,
+    "tokens": [
+      {
+        "code": "80.908",
+        "line": "908",
+        "qualification": null,
+        "raw": "80.908"
+      },
+      {
+        "code": "80.923",
+        "line": "923",
+        "qualification": null,
+        "raw": "80.923"
+      },
+      {
+        "code": "80.925",
+        "line": "925",
+        "qualification": null,
+        "raw": "80.925"
+      }
+    ],
+    "routeIds": [
+      "96-203-0-j26-1",
+      "96-203-3-j26-1",
+      "96-203-6-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1802",
+    "liniennr_1": "80.831",
+    "takt": "Stundentakt mit Lücken",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1802",
+    "vertexCount": 76,
+    "tokens": [
+      {
+        "code": "80.831",
+        "line": "831",
+        "qualification": null,
+        "raw": "80.831"
+      }
+    ],
+    "routeIds": [
+      "96-201-4-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1801",
+    "liniennr_1": "80.831",
+    "takt": "Stundentakt mit Lücken",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1801",
+    "vertexCount": 143,
+    "tokens": [
+      {
+        "code": "80.831",
+        "line": "831",
+        "qualification": null,
+        "raw": "80.831"
+      }
+    ],
+    "routeIds": [
+      "96-201-4-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1798",
+    "liniennr_1": "80.832",
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1798",
+    "vertexCount": 21,
+    "tokens": [
+      {
+        "code": "80.832",
+        "line": "832",
+        "qualification": null,
+        "raw": "80.832"
+      }
+    ],
+    "routeIds": [
+      "96-201-3-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1638",
+    "liniennr_1": null,
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1638",
+    "vertexCount": 26,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1225",
+    "liniennr_1": "80.819",
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1225",
+    "vertexCount": 26,
+    "tokens": [
+      {
+        "code": "80.819",
+        "line": "819",
+        "qualification": null,
+        "raw": "80.819"
+      }
+    ],
+    "routeIds": [
+      "96-202-7-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1767",
+    "liniennr_1": "80.736",
+    "takt": "Stundentakt mit Lücken",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1767",
+    "vertexCount": 79,
+    "tokens": [
+      {
+        "code": "80.736",
+        "line": "736",
+        "qualification": null,
+        "raw": "80.736"
+      }
+    ],
+    "routeIds": [
+      "92-736-A-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1861",
+    "liniennr_1": "80.732",
+    "takt": "Halbstundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1861",
+    "vertexCount": 35,
+    "tokens": [
+      {
+        "code": "80.732",
+        "line": "732",
+        "qualification": null,
+        "raw": "80.732"
+      }
+    ],
+    "routeIds": [
+      "92-732-M-j26-1",
+      "92-732-N-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2058",
+    "liniennr_1": "80.739",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2058",
+    "vertexCount": 51,
+    "tokens": [
+      {
+        "code": "80.739",
+        "line": "739",
+        "qualification": null,
+        "raw": "80.739"
+      }
+    ],
+    "routeIds": [
+      "92-739-B-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2056",
+    "liniennr_1": "70.806",
+    "takt": "Stundentakt mit Lücken",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2056",
+    "vertexCount": 109,
+    "tokens": [
+      {
+        "code": "70.806",
+        "line": "806",
+        "qualification": null,
+        "raw": "70.806"
+      }
+    ],
+    "routeIds": [
+      "96-184-9-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1862",
+    "liniennr_1": "80.731",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1862",
+    "vertexCount": 54,
+    "tokens": [
+      {
+        "code": "80.731",
+        "line": "731",
+        "qualification": null,
+        "raw": "80.731"
+      }
+    ],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "2262",
+    "liniennr_1": "80.931",
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2262",
+    "vertexCount": 98,
+    "tokens": [
+      {
+        "code": "80.931",
+        "line": "931",
+        "qualification": null,
+        "raw": "80.931"
+      }
+    ],
+    "routeIds": [
+      "96-203-8-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1172",
+    "liniennr_1": null,
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1172",
+    "vertexCount": 21,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1805",
+    "liniennr_1": "80.826, 80.829, 80.920",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1805",
+    "vertexCount": 53,
+    "tokens": [
+      {
+        "code": "80.826",
+        "line": "826",
+        "qualification": null,
+        "raw": "80.826"
+      },
+      {
+        "code": "80.829",
+        "line": "829",
+        "qualification": null,
+        "raw": "80.829"
+      },
+      {
+        "code": "80.920",
+        "line": "920",
+        "qualification": null,
+        "raw": "80.920"
+      }
+    ],
+    "routeIds": [
+      "96-200-6-j26-1",
+      "96-200-8-j26-1",
+      "96-203-1-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1806",
+    "liniennr_1": "80.826",
+    "takt": "Stundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1806",
+    "vertexCount": 59,
+    "tokens": [
+      {
+        "code": "80.826",
+        "line": "826",
+        "qualification": null,
+        "raw": "80.826"
+      }
+    ],
+    "routeIds": [
+      "96-200-6-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1863",
+    "liniennr_1": "80.731, 80.732",
+    "takt": "Halbstundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1863",
+    "vertexCount": 44,
+    "tokens": [
+      {
+        "code": "80.731",
+        "line": "731",
+        "qualification": null,
+        "raw": "80.731"
+      },
+      {
+        "code": "80.732",
+        "line": "732",
+        "qualification": null,
+        "raw": "80.732"
+      }
+    ],
+    "routeIds": [
+      "92-732-M-j26-1",
+      "92-732-N-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2088",
+    "liniennr_1": null,
+    "takt": null,
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2088",
+    "vertexCount": 18,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1781",
+    "liniennr_1": "80.722",
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1781",
+    "vertexCount": 165,
+    "tokens": [
+      {
+        "code": "80.722",
+        "line": "722",
+        "qualification": null,
+        "raw": "80.722"
+      }
+    ],
+    "routeIds": [
+      "92-722-A-j26-1",
+      "96-202-0-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1807",
+    "liniennr_1": "80.826, 80.829, 80.920",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1807",
+    "vertexCount": 64,
+    "tokens": [
+      {
+        "code": "80.826",
+        "line": "826",
+        "qualification": null,
+        "raw": "80.826"
+      },
+      {
+        "code": "80.829",
+        "line": "829",
+        "qualification": null,
+        "raw": "80.829"
+      },
+      {
+        "code": "80.920",
+        "line": "920",
+        "qualification": null,
+        "raw": "80.920"
+      }
+    ],
+    "routeIds": [
+      "96-200-6-j26-1",
+      "96-200-8-j26-1",
+      "96-203-1-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1353",
+    "liniennr_1": "80.837",
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1353",
+    "vertexCount": 134,
+    "tokens": [
+      {
+        "code": "80.837",
+        "line": "837",
+        "qualification": null,
+        "raw": "80.837"
+      }
+    ],
+    "routeIds": [
+      "96-202-5-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1816",
+    "liniennr_1": "80.823",
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1816",
+    "vertexCount": 44,
+    "tokens": [
+      {
+        "code": "80.823",
+        "line": "823",
+        "qualification": null,
+        "raw": "80.823"
+      }
+    ],
+    "routeIds": [
+      "96-200-3-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1969",
+    "liniennr_1": "80.736, 80.739",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1969",
+    "vertexCount": 16,
+    "tokens": [
+      {
+        "code": "80.736",
+        "line": "736",
+        "qualification": null,
+        "raw": "80.736"
+      },
+      {
+        "code": "80.739",
+        "line": "739",
+        "qualification": null,
+        "raw": "80.739"
+      }
+    ],
+    "routeIds": [
+      "92-736-A-j26-1",
+      "92-739-B-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1784",
+    "liniennr_1": "80.838",
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1784",
+    "vertexCount": 121,
+    "tokens": [
+      {
+        "code": "80.838",
+        "line": "838",
+        "qualification": null,
+        "raw": "80.838"
+      }
+    ],
+    "routeIds": [
+      "96-201-0-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1942",
+    "liniennr_1": "80.908, 80.925",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1942",
+    "vertexCount": 65,
+    "tokens": [
+      {
+        "code": "80.908",
+        "line": "908",
+        "qualification": null,
+        "raw": "80.908"
+      },
+      {
+        "code": "80.925",
+        "line": "925",
+        "qualification": null,
+        "raw": "80.925"
+      }
+    ],
+    "routeIds": [
+      "96-203-0-j26-1",
+      "96-203-6-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1183",
+    "liniennr_1": null,
+    "takt": "Halbstundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1183",
+    "vertexCount": 14,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1980",
+    "liniennr_1": "80.923",
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1980",
+    "vertexCount": 32,
+    "tokens": [
+      {
+        "code": "80.923",
+        "line": "923",
+        "qualification": null,
+        "raw": "80.923"
+      }
+    ],
+    "routeIds": [
+      "96-203-3-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1936",
+    "liniennr_1": "80.847",
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1936",
+    "vertexCount": 132,
+    "tokens": [
+      {
+        "code": "80.847",
+        "line": "847",
+        "qualification": null,
+        "raw": "80.847"
+      }
+    ],
+    "routeIds": [
+      "96-204-0-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1879",
+    "liniennr_1": null,
+    "takt": null,
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1879",
+    "vertexCount": 2,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "2263",
+    "liniennr_1": "80.931",
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2263",
+    "vertexCount": 416,
+    "tokens": [
+      {
+        "code": "80.931",
+        "line": "931",
+        "qualification": null,
+        "raw": "80.931"
+      }
+    ],
+    "routeIds": [
+      "96-203-8-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1814",
+    "liniennr_1": "80.823",
+    "takt": "Stundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1814",
+    "vertexCount": 48,
+    "tokens": [
+      {
+        "code": "80.823",
+        "line": "823",
+        "qualification": null,
+        "raw": "80.823"
+      }
+    ],
+    "routeIds": [
+      "96-200-3-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1983",
+    "liniennr_1": "80.733",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1983",
+    "vertexCount": 18,
+    "tokens": [
+      {
+        "code": "80.733",
+        "line": "733",
+        "qualification": null,
+        "raw": "80.733"
+      }
+    ],
+    "routeIds": [
+      "92-733-I-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1947",
+    "liniennr_1": "80.200 (nur zeitweise)",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1947",
+    "vertexCount": 103,
+    "tokens": [
+      {
+        "code": "80.200",
+        "line": "200",
+        "qualification": "nur zeitweise",
+        "raw": "80.200 (nur zeitweise)"
+      }
+    ],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "2015",
+    "liniennr_1": "80.921",
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2015",
+    "vertexCount": 103,
+    "tokens": [
+      {
+        "code": "80.921",
+        "line": "921",
+        "qualification": null,
+        "raw": "80.921"
+      }
+    ],
+    "routeIds": [
+      "96-203-2-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1982",
+    "liniennr_1": null,
+    "takt": null,
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1982",
+    "vertexCount": 28,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1912",
+    "liniennr_1": "80.940",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1912",
+    "vertexCount": 52,
+    "tokens": [
+      {
+        "code": "80.940",
+        "line": "940",
+        "qualification": null,
+        "raw": "80.940"
+      }
+    ],
+    "routeIds": [
+      "92-940-B-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1116",
+    "liniennr_1": null,
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1116",
+    "vertexCount": 4,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "2264",
+    "liniennr_1": "80.848",
+    "takt": "Stundentakt mit Lücken",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2264",
+    "vertexCount": 32,
+    "tokens": [
+      {
+        "code": "80.848",
+        "line": "848",
+        "qualification": null,
+        "raw": "80.848"
+      }
+    ],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "2265",
+    "liniennr_1": "80.848",
+    "takt": "Stundentakt mit Lücken",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2265",
+    "vertexCount": 58,
+    "tokens": [
+      {
+        "code": "80.848",
+        "line": "848",
+        "qualification": null,
+        "raw": "80.848"
+      }
+    ],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "2031",
+    "liniennr_1": "80.847",
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2031",
+    "vertexCount": 52,
+    "tokens": [
+      {
+        "code": "80.847",
+        "line": "847",
+        "qualification": null,
+        "raw": "80.847"
+      }
+    ],
+    "routeIds": [
+      "96-204-0-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1848",
+    "liniennr_1": null,
+    "takt": "Stundentakt mit Lücken",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1848",
+    "vertexCount": 63,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1971",
+    "liniennr_1": "80.734",
+    "takt": "Stundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1971",
+    "vertexCount": 23,
+    "tokens": [
+      {
+        "code": "80.734",
+        "line": "734",
+        "qualification": null,
+        "raw": "80.734"
+      }
+    ],
+    "routeIds": [
+      "92-734-K-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1900",
+    "liniennr_1": "80.200 (nur zeitweise), 80.201, 80.210, 80.211",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1900",
+    "vertexCount": 28,
+    "tokens": [
+      {
+        "code": "80.200",
+        "line": "200",
+        "qualification": "nur zeitweise",
+        "raw": "80.200 (nur zeitweise)"
+      },
+      {
+        "code": "80.201",
+        "line": "201",
+        "qualification": null,
+        "raw": "80.201"
+      },
+      {
+        "code": "80.210",
+        "line": "210",
+        "qualification": null,
+        "raw": "80.210"
+      },
+      {
+        "code": "80.211",
+        "line": "211",
+        "qualification": null,
+        "raw": "80.211"
+      }
+    ],
+    "routeIds": [
+      "96-220-8-j26-1",
+      "96-220-B-j26-1",
+      "96-250-8-j26-1",
+      "96-250-A-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1967",
+    "liniennr_1": null,
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1967",
+    "vertexCount": 15,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "2266",
+    "liniennr_1": " 80.210 (nur zeitweise), 80.210, 80.211",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2266",
+    "vertexCount": 16,
+    "tokens": [
+      {
+        "code": "80.210",
+        "line": "210",
+        "qualification": "nur zeitweise",
+        "raw": "80.210 (nur zeitweise)"
+      },
+      {
+        "code": "80.210",
+        "line": "210",
+        "qualification": null,
+        "raw": "80.210"
+      },
+      {
+        "code": "80.211",
+        "line": "211",
+        "qualification": null,
+        "raw": "80.211"
+      }
+    ],
+    "routeIds": [
+      "96-220-8-j26-1",
+      "96-220-B-j26-1",
+      "96-250-8-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2060",
+    "liniennr_1": "80.706",
+    "takt": "Stundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2060",
+    "vertexCount": 55,
+    "tokens": [
+      {
+        "code": "80.706",
+        "line": "706",
+        "qualification": null,
+        "raw": "80.706"
+      }
+    ],
+    "routeIds": [
+      "92-706-C-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2061",
+    "liniennr_1": null,
+    "takt": null,
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2061",
+    "vertexCount": 22,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1864",
+    "liniennr_1": "80.732",
+    "takt": "Halbstundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1864",
+    "vertexCount": 230,
+    "tokens": [
+      {
+        "code": "80.732",
+        "line": "732",
+        "qualification": null,
+        "raw": "80.732"
+      }
+    ],
+    "routeIds": [
+      "92-732-M-j26-1",
+      "92-732-N-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1836",
+    "liniennr_1": "80.908, 80.931",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1836",
+    "vertexCount": 14,
+    "tokens": [
+      {
+        "code": "80.908",
+        "line": "908",
+        "qualification": null,
+        "raw": "80.908"
+      },
+      {
+        "code": "80.931",
+        "line": "931",
+        "qualification": null,
+        "raw": "80.931"
+      }
+    ],
+    "routeIds": [
+      "96-203-0-j26-1",
+      "96-203-8-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1914",
+    "liniennr_1": "80.944",
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1914",
+    "vertexCount": 155,
+    "tokens": [
+      {
+        "code": "80.944",
+        "line": "944",
+        "qualification": null,
+        "raw": "80.944"
+      }
+    ],
+    "routeIds": [
+      "96-203-7-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1837",
+    "liniennr_1": "80.923",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1837",
+    "vertexCount": 54,
+    "tokens": [
+      {
+        "code": "80.923",
+        "line": "923",
+        "qualification": null,
+        "raw": "80.923"
+      }
+    ],
+    "routeIds": [
+      "96-203-3-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2062",
+    "liniennr_1": null,
+    "takt": null,
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2062",
+    "vertexCount": 22,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1866",
+    "liniennr_1": null,
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1866",
+    "vertexCount": 171,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1917",
+    "liniennr_1": "80.941",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1917",
+    "vertexCount": 31,
+    "tokens": [
+      {
+        "code": "80.941",
+        "line": "941",
+        "qualification": null,
+        "raw": "80.941"
+      }
+    ],
+    "routeIds": [
+      "92-941-A-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2267",
+    "liniennr_1": null,
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tag- und Nachtnetz",
+    "liniencode": "buslinie.2267",
+    "vertexCount": 19,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "2268",
+    "liniennr_1": null,
+    "takt": "Stundentakt mit Lücken",
+    "betriebszeiten": "Tag- und Nachtnetz",
+    "liniencode": "buslinie.2268",
+    "vertexCount": 2,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "2017",
+    "liniennr_1": null,
+    "takt": null,
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2017",
+    "vertexCount": 40,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1830",
+    "liniennr_1": "80.921",
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1830",
+    "vertexCount": 221,
+    "tokens": [
+      {
+        "code": "80.921",
+        "line": "921",
+        "qualification": null,
+        "raw": "80.921"
+      }
+    ],
+    "routeIds": [
+      "96-203-2-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1831",
+    "liniennr_1": "80.924",
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1831",
+    "vertexCount": 202,
+    "tokens": [
+      {
+        "code": "80.924",
+        "line": "924",
+        "qualification": null,
+        "raw": "80.924"
+      }
+    ],
+    "routeIds": [
+      "96-203-5-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1757",
+    "liniennr_1": "80.734, 80.735, 80.739",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1757",
+    "vertexCount": 43,
+    "tokens": [
+      {
+        "code": "80.734",
+        "line": "734",
+        "qualification": null,
+        "raw": "80.734"
+      },
+      {
+        "code": "80.735",
+        "line": "735",
+        "qualification": null,
+        "raw": "80.735"
+      },
+      {
+        "code": "80.739",
+        "line": "739",
+        "qualification": null,
+        "raw": "80.739"
+      }
+    ],
+    "routeIds": [
+      "92-734-K-j26-1",
+      "92-735-C-j26-1",
+      "92-739-B-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1832",
+    "liniennr_1": "80.924",
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1832",
+    "vertexCount": 188,
+    "tokens": [
+      {
+        "code": "80.924",
+        "line": "924",
+        "qualification": null,
+        "raw": "80.924"
+      }
+    ],
+    "routeIds": [
+      "96-203-5-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1918",
+    "liniennr_1": "80.941",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1918",
+    "vertexCount": 34,
+    "tokens": [
+      {
+        "code": "80.941",
+        "line": "941",
+        "qualification": null,
+        "raw": "80.941"
+      }
+    ],
+    "routeIds": [
+      "92-941-A-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1593",
+    "liniennr_1": null,
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1593",
+    "vertexCount": 4,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1838",
+    "liniennr_1": "80.908, 80.923, 80.925",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1838",
+    "vertexCount": 114,
+    "tokens": [
+      {
+        "code": "80.908",
+        "line": "908",
+        "qualification": null,
+        "raw": "80.908"
+      },
+      {
+        "code": "80.923",
+        "line": "923",
+        "qualification": null,
+        "raw": "80.923"
+      },
+      {
+        "code": "80.925",
+        "line": "925",
+        "qualification": null,
+        "raw": "80.925"
+      }
+    ],
+    "routeIds": [
+      "96-203-0-j26-1",
+      "96-203-3-j26-1",
+      "96-203-6-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2016",
+    "liniennr_1": "80.921",
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2016",
+    "vertexCount": 108,
+    "tokens": [
+      {
+        "code": "80.921",
+        "line": "921",
+        "qualification": null,
+        "raw": "80.921"
+      }
+    ],
+    "routeIds": [
+      "96-203-2-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1526",
+    "liniennr_1": "80.925",
+    "takt": "Stundentakt mit Lücken",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1526",
+    "vertexCount": 19,
+    "tokens": [
+      {
+        "code": "80.925",
+        "line": "925",
+        "qualification": null,
+        "raw": "80.925"
+      }
+    ],
+    "routeIds": [
+      "96-203-6-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1960",
+    "liniennr_1": "80.908",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1960",
+    "vertexCount": 95,
+    "tokens": [
+      {
+        "code": "80.908",
+        "line": "908",
+        "qualification": null,
+        "raw": "80.908"
+      }
+    ],
+    "routeIds": [
+      "96-203-0-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1968",
+    "liniennr_1": "80.736",
+    "takt": "Stundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1968",
+    "vertexCount": 49,
+    "tokens": [
+      {
+        "code": "80.736",
+        "line": "736",
+        "qualification": null,
+        "raw": "80.736"
+      }
+    ],
+    "routeIds": [
+      "92-736-A-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1842",
+    "liniennr_1": "80.210",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1842",
+    "vertexCount": 76,
+    "tokens": [
+      {
+        "code": "80.210",
+        "line": "210",
+        "qualification": null,
+        "raw": "80.210"
+      }
+    ],
+    "routeIds": [
+      "96-250-8-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1843",
+    "liniennr_1": "80.211",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1843",
+    "vertexCount": 118,
+    "tokens": [
+      {
+        "code": "80.211",
+        "line": "211",
+        "qualification": null,
+        "raw": "80.211"
+      }
+    ],
+    "routeIds": [
+      "96-220-8-j26-1",
+      "96-220-B-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1844",
+    "liniennr_1": "80.210, 80.211",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1844",
+    "vertexCount": 227,
+    "tokens": [
+      {
+        "code": "80.210",
+        "line": "210",
+        "qualification": null,
+        "raw": "80.210"
+      },
+      {
+        "code": "80.211",
+        "line": "211",
+        "qualification": null,
+        "raw": "80.211"
+      }
+    ],
+    "routeIds": [
+      "96-220-8-j26-1",
+      "96-220-B-j26-1",
+      "96-250-8-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2200",
+    "liniennr_1": "80.702",
+    "takt": "Viertelstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2200",
+    "vertexCount": 140,
+    "tokens": [
+      {
+        "code": "80.702",
+        "line": "702",
+        "qualification": null,
+        "raw": "80.702"
+      }
+    ],
+    "routeIds": [
+      "92-702-D-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2201",
+    "liniennr_1": "80.706",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2201",
+    "vertexCount": 44,
+    "tokens": [
+      {
+        "code": "80.706",
+        "line": "706",
+        "qualification": null,
+        "raw": "80.706"
+      }
+    ],
+    "routeIds": [
+      "92-706-C-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1849",
+    "liniennr_1": "80.950",
+    "takt": "Stundentakt mit Lücken",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1849",
+    "vertexCount": 337,
+    "tokens": [
+      {
+        "code": "80.950",
+        "line": "950",
+        "qualification": null,
+        "raw": "80.950"
+      }
+    ],
+    "routeIds": [
+      "96-228-7-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1223",
+    "liniennr_1": "80.825",
+    "takt": "Stundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1223",
+    "vertexCount": 39,
+    "tokens": [
+      {
+        "code": "80.825",
+        "line": "825",
+        "qualification": null,
+        "raw": "80.825"
+      }
+    ],
+    "routeIds": [
+      "96-200-4-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1228",
+    "liniennr_1": null,
+    "takt": "Stundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1228",
+    "vertexCount": 3,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1268",
+    "liniennr_1": "80.829, 80.920",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1268",
+    "vertexCount": 66,
+    "tokens": [
+      {
+        "code": "80.829",
+        "line": "829",
+        "qualification": null,
+        "raw": "80.829"
+      },
+      {
+        "code": "80.920",
+        "line": "920",
+        "qualification": null,
+        "raw": "80.920"
+      }
+    ],
+    "routeIds": [
+      "96-200-8-j26-1",
+      "96-203-1-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1923",
+    "liniennr_1": "80.735, 80.736",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1923",
+    "vertexCount": 137,
+    "tokens": [
+      {
+        "code": "80.735",
+        "line": "735",
+        "qualification": null,
+        "raw": "80.735"
+      },
+      {
+        "code": "80.736",
+        "line": "736",
+        "qualification": null,
+        "raw": "80.736"
+      }
+    ],
+    "routeIds": [
+      "92-735-C-j26-1",
+      "92-736-A-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1465",
+    "liniennr_1": null,
+    "takt": "Stundentakt mit Lücken",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1465",
+    "vertexCount": 4,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1400",
+    "liniennr_1": null,
+    "takt": "Viertelstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1400",
+    "vertexCount": 2,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1525",
+    "liniennr_1": null,
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1525",
+    "vertexCount": 2,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1471",
+    "liniennr_1": null,
+    "takt": "Stundentakt mit Lücken",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1471",
+    "vertexCount": 5,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1522",
+    "liniennr_1": null,
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1522",
+    "vertexCount": 3,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1125",
+    "liniennr_1": "80.735, 80.736",
+    "takt": "Stundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1125",
+    "vertexCount": 7,
+    "tokens": [
+      {
+        "code": "80.735",
+        "line": "735",
+        "qualification": null,
+        "raw": "80.735"
+      },
+      {
+        "code": "80.736",
+        "line": "736",
+        "qualification": null,
+        "raw": "80.736"
+      }
+    ],
+    "routeIds": [
+      "92-735-C-j26-1",
+      "92-736-A-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1206",
+    "liniennr_1": null,
+    "takt": "Stundentakt mit Lücken",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1206",
+    "vertexCount": 7,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1258",
+    "liniennr_1": null,
+    "takt": "Stundentakt mit Lücken",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1258",
+    "vertexCount": 6,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1315",
+    "liniennr_1": null,
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1315",
+    "vertexCount": 9,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1316",
+    "liniennr_1": null,
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1316",
+    "vertexCount": 13,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1312",
+    "liniennr_1": "80.921, 80.924",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1312",
+    "vertexCount": 10,
+    "tokens": [
+      {
+        "code": "80.921",
+        "line": "921",
+        "qualification": null,
+        "raw": "80.921"
+      },
+      {
+        "code": "80.924",
+        "line": "924",
+        "qualification": null,
+        "raw": "80.924"
+      }
+    ],
+    "routeIds": [
+      "96-203-2-j26-1",
+      "96-203-5-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1406",
+    "liniennr_1": "80.201, 80.211",
+    "takt": "Halbstundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1406",
+    "vertexCount": 57,
+    "tokens": [
+      {
+        "code": "80.201",
+        "line": "201",
+        "qualification": null,
+        "raw": "80.201"
+      },
+      {
+        "code": "80.211",
+        "line": "211",
+        "qualification": null,
+        "raw": "80.211"
+      }
+    ],
+    "routeIds": [
+      "96-220-8-j26-1",
+      "96-220-B-j26-1",
+      "96-250-A-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1423",
+    "liniennr_1": "80.940, 80.941",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1423",
+    "vertexCount": 42,
+    "tokens": [
+      {
+        "code": "80.940",
+        "line": "940",
+        "qualification": null,
+        "raw": "80.940"
+      },
+      {
+        "code": "80.941",
+        "line": "941",
+        "qualification": null,
+        "raw": "80.941"
+      }
+    ],
+    "routeIds": [
+      "92-940-B-j26-1",
+      "92-941-A-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1868",
+    "liniennr_1": "80.838",
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1868",
+    "vertexCount": 448,
+    "tokens": [
+      {
+        "code": "80.838",
+        "line": "838",
+        "qualification": null,
+        "raw": "80.838"
+      }
+    ],
+    "routeIds": [
+      "96-201-0-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1869",
+    "liniennr_1": "80.833",
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1869",
+    "vertexCount": 390,
+    "tokens": [
+      {
+        "code": "80.833",
+        "line": "833",
+        "qualification": null,
+        "raw": "80.833"
+      }
+    ],
+    "routeIds": [
+      "96-200-7-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1979",
+    "liniennr_1": "80.739",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1979",
+    "vertexCount": 87,
+    "tokens": [
+      {
+        "code": "80.739",
+        "line": "739",
+        "qualification": null,
+        "raw": "80.739"
+      }
+    ],
+    "routeIds": [
+      "92-739-B-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1671",
+    "liniennr_1": "80.823, 80.825",
+    "takt": "Stundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1671",
+    "vertexCount": 24,
+    "tokens": [
+      {
+        "code": "80.823",
+        "line": "823",
+        "qualification": null,
+        "raw": "80.823"
+      },
+      {
+        "code": "80.825",
+        "line": "825",
+        "qualification": null,
+        "raw": "80.825"
+      }
+    ],
+    "routeIds": [
+      "96-200-3-j26-1",
+      "96-200-4-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1647",
+    "liniennr_1": null,
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1647",
+    "vertexCount": 14,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1984",
+    "liniennr_1": "80.733",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1984",
+    "vertexCount": 110,
+    "tokens": [
+      {
+        "code": "80.733",
+        "line": "733",
+        "qualification": null,
+        "raw": "80.733"
+      }
+    ],
+    "routeIds": [
+      "92-733-I-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1518",
+    "liniennr_1": "80.923",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1518",
+    "vertexCount": 30,
+    "tokens": [
+      {
+        "code": "80.923",
+        "line": "923",
+        "qualification": null,
+        "raw": "80.923"
+      }
+    ],
+    "routeIds": [
+      "96-203-3-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1520",
+    "liniennr_1": "80.908, 80.923, 80.925, 80.931",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1520",
+    "vertexCount": 26,
+    "tokens": [
+      {
+        "code": "80.908",
+        "line": "908",
+        "qualification": null,
+        "raw": "80.908"
+      },
+      {
+        "code": "80.923",
+        "line": "923",
+        "qualification": null,
+        "raw": "80.923"
+      },
+      {
+        "code": "80.925",
+        "line": "925",
+        "qualification": null,
+        "raw": "80.925"
+      },
+      {
+        "code": "80.931",
+        "line": "931",
+        "qualification": null,
+        "raw": "80.931"
+      }
+    ],
+    "routeIds": [
+      "96-203-0-j26-1",
+      "96-203-3-j26-1",
+      "96-203-6-j26-1",
+      "96-203-8-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2269",
+    "liniennr_1": "80.940",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2269",
+    "vertexCount": 132,
+    "tokens": [
+      {
+        "code": "80.940",
+        "line": "940",
+        "qualification": null,
+        "raw": "80.940"
+      }
+    ],
+    "routeIds": [
+      "92-940-B-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1988",
+    "liniennr_1": null,
+    "takt": null,
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1988",
+    "vertexCount": 15,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1637",
+    "liniennr_1": "80.201",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1637",
+    "vertexCount": 74,
+    "tokens": [
+      {
+        "code": "80.201",
+        "line": "201",
+        "qualification": null,
+        "raw": "80.201"
+      }
+    ],
+    "routeIds": [
+      "96-250-A-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1648",
+    "liniennr_1": "80.211",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1648",
+    "vertexCount": 52,
+    "tokens": [
+      {
+        "code": "80.211",
+        "line": "211",
+        "qualification": null,
+        "raw": "80.211"
+      }
+    ],
+    "routeIds": [
+      "96-220-8-j26-1",
+      "96-220-B-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1224",
+    "liniennr_1": "80.819, 80.825",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1224",
+    "vertexCount": 32,
+    "tokens": [
+      {
+        "code": "80.819",
+        "line": "819",
+        "qualification": null,
+        "raw": "80.819"
+      },
+      {
+        "code": "80.825",
+        "line": "825",
+        "qualification": null,
+        "raw": "80.825"
+      }
+    ],
+    "routeIds": [
+      "96-200-4-j26-1",
+      "96-202-7-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1886",
+    "liniennr_1": "80.200, 80.207",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1886",
+    "vertexCount": 40,
+    "tokens": [
+      {
+        "code": "80.200",
+        "line": "200",
+        "qualification": null,
+        "raw": "80.200"
+      },
+      {
+        "code": "80.207",
+        "line": "207",
+        "qualification": null,
+        "raw": "80.207"
+      }
+    ],
+    "routeIds": [
+      "96-220-5-j26-1",
+      "96-220-6-j26-1",
+      "96-220-A-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1301",
+    "liniennr_1": "80.832, 80.833",
+    "takt": "Stundentakt mit Lücken",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1301",
+    "vertexCount": 42,
+    "tokens": [
+      {
+        "code": "80.832",
+        "line": "832",
+        "qualification": null,
+        "raw": "80.832"
+      },
+      {
+        "code": "80.833",
+        "line": "833",
+        "qualification": null,
+        "raw": "80.833"
+      }
+    ],
+    "routeIds": [
+      "96-200-7-j26-1",
+      "96-201-3-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1494",
+    "liniennr_1": null,
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1494",
+    "vertexCount": 30,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1621",
+    "liniennr_1": null,
+    "takt": "Stundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1621",
+    "vertexCount": 2,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1507",
+    "liniennr_1": null,
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1507",
+    "vertexCount": 13,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1506",
+    "liniennr_1": null,
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1506",
+    "vertexCount": 7,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1508",
+    "liniennr_1": null,
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1508",
+    "vertexCount": 8,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1853",
+    "liniennr_1": "80.722, 80.932",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1853",
+    "vertexCount": 67,
+    "tokens": [
+      {
+        "code": "80.722",
+        "line": "722",
+        "qualification": null,
+        "raw": "80.722"
+      },
+      {
+        "code": "80.932",
+        "line": "932",
+        "qualification": null,
+        "raw": "80.932"
+      }
+    ],
+    "routeIds": [
+      "92-722-A-j26-1",
+      "96-202-0-j26-1",
+      "96-202-1-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1875",
+    "liniennr_1": "80.931, 80.940, 80.942",
+    "takt": "Halbstundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1875",
+    "vertexCount": 10,
+    "tokens": [
+      {
+        "code": "80.931",
+        "line": "931",
+        "qualification": null,
+        "raw": "80.931"
+      },
+      {
+        "code": "80.940",
+        "line": "940",
+        "qualification": null,
+        "raw": "80.940"
+      },
+      {
+        "code": "80.942",
+        "line": "942",
+        "qualification": null,
+        "raw": "80.942"
+      }
+    ],
+    "routeIds": [
+      "92-940-B-j26-1",
+      "92-942-A-j26-1",
+      "96-203-8-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1884",
+    "liniennr_1": "80.941",
+    "takt": "Halbstundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1884",
+    "vertexCount": 13,
+    "tokens": [
+      {
+        "code": "80.941",
+        "line": "941",
+        "qualification": null,
+        "raw": "80.941"
+      }
+    ],
+    "routeIds": [
+      "92-941-A-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2270",
+    "liniennr_1": "80.940",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2270",
+    "vertexCount": 82,
+    "tokens": [
+      {
+        "code": "80.940",
+        "line": "940",
+        "qualification": null,
+        "raw": "80.940"
+      }
+    ],
+    "routeIds": [
+      "92-940-B-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1876",
+    "liniennr_1": "80.201",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1876",
+    "vertexCount": 48,
+    "tokens": [
+      {
+        "code": "80.201",
+        "line": "201",
+        "qualification": null,
+        "raw": "80.201"
+      }
+    ],
+    "routeIds": [
+      "96-250-A-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1877",
+    "liniennr_1": "80.201, 80.207",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1877",
+    "vertexCount": 35,
+    "tokens": [
+      {
+        "code": "80.201",
+        "line": "201",
+        "qualification": null,
+        "raw": "80.201"
+      },
+      {
+        "code": "80.207",
+        "line": "207",
+        "qualification": null,
+        "raw": "80.207"
+      }
+    ],
+    "routeIds": [
+      "96-220-6-j26-1",
+      "96-250-A-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1885",
+    "liniennr_1": "80.200",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1885",
+    "vertexCount": 24,
+    "tokens": [
+      {
+        "code": "80.200",
+        "line": "200",
+        "qualification": null,
+        "raw": "80.200"
+      }
+    ],
+    "routeIds": [
+      "96-220-5-j26-1",
+      "96-220-A-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2059",
+    "liniennr_1": "80.736",
+    "takt": "Stundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2059",
+    "vertexCount": 127,
+    "tokens": [
+      {
+        "code": "80.736",
+        "line": "736",
+        "qualification": null,
+        "raw": "80.736"
+      }
+    ],
+    "routeIds": [
+      "92-736-A-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1878",
+    "liniennr_1": "80.200, 80.207",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1878",
+    "vertexCount": 42,
+    "tokens": [
+      {
+        "code": "80.200",
+        "line": "200",
+        "qualification": null,
+        "raw": "80.200"
+      },
+      {
+        "code": "80.207",
+        "line": "207",
+        "qualification": null,
+        "raw": "80.207"
+      }
+    ],
+    "routeIds": [
+      "96-220-5-j26-1",
+      "96-220-6-j26-1",
+      "96-220-A-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1398",
+    "liniennr_1": "80.200, 80.940",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1398",
+    "vertexCount": 34,
+    "tokens": [
+      {
+        "code": "80.200",
+        "line": "200",
+        "qualification": null,
+        "raw": "80.200"
+      },
+      {
+        "code": "80.940",
+        "line": "940",
+        "qualification": null,
+        "raw": "80.940"
+      }
+    ],
+    "routeIds": [
+      "92-940-B-j26-1",
+      "96-220-5-j26-1",
+      "96-220-A-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1888",
+    "liniennr_1": "80.942",
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1888",
+    "vertexCount": 135,
+    "tokens": [
+      {
+        "code": "80.942",
+        "line": "942",
+        "qualification": null,
+        "raw": "80.942"
+      }
+    ],
+    "routeIds": [
+      "92-942-A-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1761",
+    "liniennr_1": "80.734, 80.735",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1761",
+    "vertexCount": 33,
+    "tokens": [
+      {
+        "code": "80.734",
+        "line": "734",
+        "qualification": null,
+        "raw": "80.734"
+      },
+      {
+        "code": "80.735",
+        "line": "735",
+        "qualification": null,
+        "raw": "80.735"
+      }
+    ],
+    "routeIds": [
+      "92-734-K-j26-1",
+      "92-735-C-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1803",
+    "liniennr_1": "80.832",
+    "takt": "Stundentakt mit Lücken",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1803",
+    "vertexCount": 181,
+    "tokens": [
+      {
+        "code": "80.832",
+        "line": "832",
+        "qualification": null,
+        "raw": "80.832"
+      }
+    ],
+    "routeIds": [
+      "96-201-3-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1685",
+    "liniennr_1": null,
+    "takt": "Stundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1685",
+    "vertexCount": 2,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1890",
+    "liniennr_1": "80.832",
+    "takt": "Stundentakt mit Lücken",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1890",
+    "vertexCount": 120,
+    "tokens": [
+      {
+        "code": "80.832",
+        "line": "832",
+        "qualification": null,
+        "raw": "80.832"
+      }
+    ],
+    "routeIds": [
+      "96-201-3-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1892",
+    "liniennr_1": "80.722",
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1892",
+    "vertexCount": 180,
+    "tokens": [
+      {
+        "code": "80.722",
+        "line": "722",
+        "qualification": null,
+        "raw": "80.722"
+      }
+    ],
+    "routeIds": [
+      "92-722-A-j26-1",
+      "96-202-0-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1689",
+    "liniennr_1": null,
+    "takt": "Stundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1689",
+    "vertexCount": 2,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1893",
+    "liniennr_1": "80.722",
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1893",
+    "vertexCount": 99,
+    "tokens": [
+      {
+        "code": "80.722",
+        "line": "722",
+        "qualification": null,
+        "raw": "80.722"
+      }
+    ],
+    "routeIds": [
+      "92-722-A-j26-1",
+      "96-202-0-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1705",
+    "liniennr_1": null,
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1705",
+    "vertexCount": 7,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "2008",
+    "liniennr_1": "80.941",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2008",
+    "vertexCount": 101,
+    "tokens": [
+      {
+        "code": "80.941",
+        "line": "941",
+        "qualification": null,
+        "raw": "80.941"
+      }
+    ],
+    "routeIds": [
+      "92-941-A-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2047",
+    "liniennr_1": "80.923",
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2047",
+    "vertexCount": 102,
+    "tokens": [
+      {
+        "code": "80.923",
+        "line": "923",
+        "qualification": null,
+        "raw": "80.923"
+      }
+    ],
+    "routeIds": [
+      "96-203-3-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1963",
+    "liniennr_1": "80.834",
+    "takt": "Stundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1963",
+    "vertexCount": 354,
+    "tokens": [
+      {
+        "code": "80.834",
+        "line": "834",
+        "qualification": null,
+        "raw": "80.834"
+      }
+    ],
+    "routeIds": [
+      "96-200-9-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2105",
+    "liniennr_1": "80.834, 80.836, 80.837, 80.838",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2105",
+    "vertexCount": 22,
+    "tokens": [
+      {
+        "code": "80.834",
+        "line": "834",
+        "qualification": null,
+        "raw": "80.834"
+      },
+      {
+        "code": "80.836",
+        "line": "836",
+        "qualification": null,
+        "raw": "80.836"
+      },
+      {
+        "code": "80.837",
+        "line": "837",
+        "qualification": null,
+        "raw": "80.837"
+      },
+      {
+        "code": "80.838",
+        "line": "838",
+        "qualification": null,
+        "raw": "80.838"
+      }
+    ],
+    "routeIds": [
+      "96-200-9-j26-1",
+      "96-201-0-j26-1",
+      "96-201-2-j26-1",
+      "96-202-5-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1808",
+    "liniennr_1": "80.826",
+    "takt": "Stundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1808",
+    "vertexCount": 207,
+    "tokens": [
+      {
+        "code": "80.826",
+        "line": "826",
+        "qualification": null,
+        "raw": "80.826"
+      }
+    ],
+    "routeIds": [
+      "96-200-6-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2107",
+    "liniennr_1": null,
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2107",
+    "vertexCount": 6,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "2019",
+    "liniennr_1": "80.924",
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2019",
+    "vertexCount": 450,
+    "tokens": [
+      {
+        "code": "80.924",
+        "line": "924",
+        "qualification": null,
+        "raw": "80.924"
+      }
+    ],
+    "routeIds": [
+      "96-203-5-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1561",
+    "liniennr_1": "80.706",
+    "takt": "Stundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1561",
+    "vertexCount": 11,
+    "tokens": [
+      {
+        "code": "80.706",
+        "line": "706",
+        "qualification": null,
+        "raw": "80.706"
+      }
+    ],
+    "routeIds": [
+      "92-706-C-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2108",
+    "liniennr_1": "80.822, 80.825, 80.826, 80.829, 80.920",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2108",
+    "vertexCount": 6,
+    "tokens": [
+      {
+        "code": "80.822",
+        "line": "822",
+        "qualification": null,
+        "raw": "80.822"
+      },
+      {
+        "code": "80.825",
+        "line": "825",
+        "qualification": null,
+        "raw": "80.825"
+      },
+      {
+        "code": "80.826",
+        "line": "826",
+        "qualification": null,
+        "raw": "80.826"
+      },
+      {
+        "code": "80.829",
+        "line": "829",
+        "qualification": null,
+        "raw": "80.829"
+      },
+      {
+        "code": "80.920",
+        "line": "920",
+        "qualification": null,
+        "raw": "80.920"
+      }
+    ],
+    "routeIds": [
+      "96-200-2-j26-1",
+      "96-200-4-j26-1",
+      "96-200-6-j26-1",
+      "96-200-8-j26-1",
+      "96-203-1-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2116",
+    "liniennr_1": null,
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2116",
+    "vertexCount": 2,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "2100",
+    "liniennr_1": "80.822",
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2100",
+    "vertexCount": 329,
+    "tokens": [
+      {
+        "code": "80.822",
+        "line": "822",
+        "qualification": null,
+        "raw": "80.822"
+      }
+    ],
+    "routeIds": [
+      "96-200-2-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2074",
+    "liniennr_1": "BN820",
+    "takt": "Keine Angaben",
+    "betriebszeiten": "Nachtnetz",
+    "liniencode": "buslinie.2074",
+    "vertexCount": 221,
+    "tokens": [
+      {
+        "code": "BN820",
+        "line": "BN820",
+        "qualification": null,
+        "raw": "BN820"
+      }
+    ],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "2128",
+    "liniennr_1": "80.N50",
+    "takt": "Keine Angaben",
+    "betriebszeiten": "Nachtnetz",
+    "liniencode": "buslinie.2128",
+    "vertexCount": 287,
+    "tokens": [
+      {
+        "code": "80.N50",
+        "line": "N50",
+        "qualification": null,
+        "raw": "80.N50"
+      }
+    ],
+    "routeIds": [
+      "92-N50-A-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2129",
+    "liniennr_1": "80.N50",
+    "takt": "Keine Angaben",
+    "betriebszeiten": "Nachtnetz",
+    "liniencode": "buslinie.2129",
+    "vertexCount": 72,
+    "tokens": [
+      {
+        "code": "80.N50",
+        "line": "N50",
+        "qualification": null,
+        "raw": "80.N50"
+      }
+    ],
+    "routeIds": [
+      "92-N50-A-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1575",
+    "liniennr_1": null,
+    "takt": "Viertelstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1575",
+    "vertexCount": 15,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "2139",
+    "liniennr_1": "80.N50",
+    "takt": "Keine Angaben",
+    "betriebszeiten": "Nachtnetz",
+    "liniencode": "buslinie.2139",
+    "vertexCount": 427,
+    "tokens": [
+      {
+        "code": "80.N50",
+        "line": "N50",
+        "qualification": null,
+        "raw": "80.N50"
+      }
+    ],
+    "routeIds": [
+      "92-N50-A-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1576",
+    "liniennr_1": null,
+    "takt": "Viertelstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1576",
+    "vertexCount": 9,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1687",
+    "liniennr_1": null,
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1687",
+    "vertexCount": 2,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "2161",
+    "liniennr_1": "80.BN820",
+    "takt": "Keine Angaben",
+    "betriebszeiten": "Nachtnetz",
+    "liniencode": "buslinie.2161",
+    "vertexCount": 219,
+    "tokens": [
+      {
+        "code": "80.BN820",
+        "line": "BN820",
+        "qualification": null,
+        "raw": "80.BN820"
+      }
+    ],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "2202",
+    "liniennr_1": "80.841 (Kantibus)",
+    "takt": "Keine Angaben",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2202",
+    "vertexCount": 400,
+    "tokens": [
+      {
+        "code": "80.841",
+        "line": "841",
+        "qualification": "Kantibus",
+        "raw": "80.841 (Kantibus)"
+      }
+    ],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1696",
+    "liniennr_1": "80.722, 80.838, 80.932",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1696",
+    "vertexCount": 30,
+    "tokens": [
+      {
+        "code": "80.722",
+        "line": "722",
+        "qualification": null,
+        "raw": "80.722"
+      },
+      {
+        "code": "80.838",
+        "line": "838",
+        "qualification": null,
+        "raw": "80.838"
+      },
+      {
+        "code": "80.932",
+        "line": "932",
+        "qualification": null,
+        "raw": "80.932"
+      }
+    ],
+    "routeIds": [
+      "92-722-A-j26-1",
+      "96-201-0-j26-1",
+      "96-202-0-j26-1",
+      "96-202-1-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1698",
+    "liniennr_1": "80.722, 80.932",
+    "takt": "Stundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1698",
+    "vertexCount": 8,
+    "tokens": [
+      {
+        "code": "80.722",
+        "line": "722",
+        "qualification": null,
+        "raw": "80.722"
+      },
+      {
+        "code": "80.932",
+        "line": "932",
+        "qualification": null,
+        "raw": "80.932"
+      }
+    ],
+    "routeIds": [
+      "92-722-A-j26-1",
+      "96-202-0-j26-1",
+      "96-202-1-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2205",
+    "liniennr_1": "80.200, 80.941",
+    "takt": "Halbstundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2205",
+    "vertexCount": 39,
+    "tokens": [
+      {
+        "code": "80.200",
+        "line": "200",
+        "qualification": null,
+        "raw": "80.200"
+      },
+      {
+        "code": "80.941",
+        "line": "941",
+        "qualification": null,
+        "raw": "80.941"
+      }
+    ],
+    "routeIds": [
+      "92-941-A-j26-1",
+      "96-220-5-j26-1",
+      "96-220-A-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2206",
+    "liniennr_1": null,
+    "takt": "Halbstundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2206",
+    "vertexCount": 22,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1700",
+    "liniennr_1": null,
+    "takt": "Viertelstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1700",
+    "vertexCount": 5,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1707",
+    "liniennr_1": "80.201, 80.207, 80.211, 80.940",
+    "takt": "Halbstundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1707",
+    "vertexCount": 5,
+    "tokens": [
+      {
+        "code": "80.201",
+        "line": "201",
+        "qualification": null,
+        "raw": "80.201"
+      },
+      {
+        "code": "80.207",
+        "line": "207",
+        "qualification": null,
+        "raw": "80.207"
+      },
+      {
+        "code": "80.211",
+        "line": "211",
+        "qualification": null,
+        "raw": "80.211"
+      },
+      {
+        "code": "80.940",
+        "line": "940",
+        "qualification": null,
+        "raw": "80.940"
+      }
+    ],
+    "routeIds": [
+      "92-940-B-j26-1",
+      "96-220-6-j26-1",
+      "96-220-8-j26-1",
+      "96-220-B-j26-1",
+      "96-250-A-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1708",
+    "liniennr_1": "80.207, 80.940",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1708",
+    "vertexCount": 4,
+    "tokens": [
+      {
+        "code": "80.207",
+        "line": "207",
+        "qualification": null,
+        "raw": "80.207"
+      },
+      {
+        "code": "80.940",
+        "line": "940",
+        "qualification": null,
+        "raw": "80.940"
+      }
+    ],
+    "routeIds": [
+      "92-940-B-j26-1",
+      "96-220-6-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2027",
+    "liniennr_1": "80.735",
+    "takt": "Stundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2027",
+    "vertexCount": 10,
+    "tokens": [
+      {
+        "code": "80.735",
+        "line": "735",
+        "qualification": null,
+        "raw": "80.735"
+      }
+    ],
+    "routeIds": [
+      "92-735-C-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2208",
+    "liniennr_1": "80.734",
+    "takt": "Stundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2208",
+    "vertexCount": 95,
+    "tokens": [
+      {
+        "code": "80.734",
+        "line": "734",
+        "qualification": null,
+        "raw": "80.734"
+      }
+    ],
+    "routeIds": [
+      "92-734-K-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2211",
+    "liniennr_1": null,
+    "takt": "Stundentakt mit Lücken",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2211",
+    "vertexCount": 9,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "2209",
+    "liniennr_1": "80.834",
+    "takt": "Stundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2209",
+    "vertexCount": 95,
+    "tokens": [
+      {
+        "code": "80.834",
+        "line": "834",
+        "qualification": null,
+        "raw": "80.834"
+      }
+    ],
+    "routeIds": [
+      "96-200-9-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2210",
+    "liniennr_1": "80.836",
+    "takt": "Stundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2210",
+    "vertexCount": 336,
+    "tokens": [
+      {
+        "code": "80.836",
+        "line": "836",
+        "qualification": null,
+        "raw": "80.836"
+      }
+    ],
+    "routeIds": [
+      "96-201-2-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2214",
+    "liniennr_1": null,
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2214",
+    "vertexCount": 30,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "2217",
+    "liniennr_1": "80.920",
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2217",
+    "vertexCount": 55,
+    "tokens": [
+      {
+        "code": "80.920",
+        "line": "920",
+        "qualification": null,
+        "raw": "80.920"
+      }
+    ],
+    "routeIds": [
+      "96-203-1-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2219",
+    "liniennr_1": "80.923, 80.925",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2219",
+    "vertexCount": 33,
+    "tokens": [
+      {
+        "code": "80.923",
+        "line": "923",
+        "qualification": null,
+        "raw": "80.923"
+      },
+      {
+        "code": "80.925",
+        "line": "925",
+        "qualification": null,
+        "raw": "80.925"
+      }
+    ],
+    "routeIds": [
+      "96-203-3-j26-1",
+      "96-203-6-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2220",
+    "liniennr_1": "80.200, 80.941",
+    "takt": "Halbstundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2220",
+    "vertexCount": 40,
+    "tokens": [
+      {
+        "code": "80.200",
+        "line": "200",
+        "qualification": null,
+        "raw": "80.200"
+      },
+      {
+        "code": "80.941",
+        "line": "941",
+        "qualification": null,
+        "raw": "80.941"
+      }
+    ],
+    "routeIds": [
+      "92-941-A-j26-1",
+      "96-220-5-j26-1",
+      "96-220-A-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2221",
+    "liniennr_1": "80.731",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2221",
+    "vertexCount": 95,
+    "tokens": [
+      {
+        "code": "80.731",
+        "line": "731",
+        "qualification": null,
+        "raw": "80.731"
+      }
+    ],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1683",
+    "liniennr_1": "80.733 (Abendkurs), 80.735",
+    "takt": "Stundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1683",
+    "vertexCount": 93,
+    "tokens": [
+      {
+        "code": "80.733",
+        "line": "733",
+        "qualification": "Abendkurs",
+        "raw": "80.733 (Abendkurs)"
+      },
+      {
+        "code": "80.735",
+        "line": "735",
+        "qualification": null,
+        "raw": "80.735"
+      }
+    ],
+    "routeIds": [
+      "92-735-C-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2222",
+    "liniennr_1": "80.825",
+    "takt": "Stundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2222",
+    "vertexCount": 355,
+    "tokens": [
+      {
+        "code": "80.825",
+        "line": "825",
+        "qualification": null,
+        "raw": "80.825"
+      }
+    ],
+    "routeIds": [
+      "96-200-4-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1944",
+    "liniennr_1": "80.200",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1944",
+    "vertexCount": 2,
+    "tokens": [
+      {
+        "code": "80.200",
+        "line": "200",
+        "qualification": null,
+        "raw": "80.200"
+      }
+    ],
+    "routeIds": [
+      "96-220-5-j26-1",
+      "96-220-A-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2094",
+    "liniennr_1": "80.823",
+    "takt": "Stundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2094",
+    "vertexCount": 7,
+    "tokens": [
+      {
+        "code": "80.823",
+        "line": "823",
+        "qualification": null,
+        "raw": "80.823"
+      }
+    ],
+    "routeIds": [
+      "96-200-3-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2223",
+    "liniennr_1": "80.825",
+    "takt": "Stundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2223",
+    "vertexCount": 199,
+    "tokens": [
+      {
+        "code": "80.825",
+        "line": "825",
+        "qualification": null,
+        "raw": "80.825"
+      }
+    ],
+    "routeIds": [
+      "96-200-4-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2226",
+    "liniennr_1": "80.826",
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2226",
+    "vertexCount": 80,
+    "tokens": [
+      {
+        "code": "80.826",
+        "line": "826",
+        "qualification": null,
+        "raw": "80.826"
+      }
+    ],
+    "routeIds": [
+      "96-200-6-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1811",
+    "liniennr_1": "80.826, 80.831",
+    "takt": "Stundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1811",
+    "vertexCount": 20,
+    "tokens": [
+      {
+        "code": "80.826",
+        "line": "826",
+        "qualification": null,
+        "raw": "80.826"
+      },
+      {
+        "code": "80.831",
+        "line": "831",
+        "qualification": null,
+        "raw": "80.831"
+      }
+    ],
+    "routeIds": [
+      "96-200-6-j26-1",
+      "96-201-4-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2227",
+    "liniennr_1": "80.734",
+    "takt": "Stundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2227",
+    "vertexCount": 102,
+    "tokens": [
+      {
+        "code": "80.734",
+        "line": "734",
+        "qualification": null,
+        "raw": "80.734"
+      }
+    ],
+    "routeIds": [
+      "92-734-K-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1981",
+    "liniennr_1": "80.923",
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1981",
+    "vertexCount": 9,
+    "tokens": [
+      {
+        "code": "80.923",
+        "line": "923",
+        "qualification": null,
+        "raw": "80.923"
+      }
+    ],
+    "routeIds": [
+      "96-203-3-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2231",
+    "liniennr_1": "80.826",
+    "takt": "Stundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2231",
+    "vertexCount": 105,
+    "tokens": [
+      {
+        "code": "80.826",
+        "line": "826",
+        "qualification": null,
+        "raw": "80.826"
+      }
+    ],
+    "routeIds": [
+      "96-200-6-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2232",
+    "liniennr_1": null,
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2232",
+    "vertexCount": 2,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "2233",
+    "liniennr_1": null,
+    "takt": null,
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2233",
+    "vertexCount": 13,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "2234",
+    "liniennr_1": null,
+    "takt": null,
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2234",
+    "vertexCount": 2,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1181",
+    "liniennr_1": "80.941, 80.942, 80.943, 80.944",
+    "takt": "Halbstundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1181",
+    "vertexCount": 11,
+    "tokens": [
+      {
+        "code": "80.941",
+        "line": "941",
+        "qualification": null,
+        "raw": "80.941"
+      },
+      {
+        "code": "80.942",
+        "line": "942",
+        "qualification": null,
+        "raw": "80.942"
+      },
+      {
+        "code": "80.943",
+        "line": "943",
+        "qualification": null,
+        "raw": "80.943"
+      },
+      {
+        "code": "80.944",
+        "line": "944",
+        "qualification": null,
+        "raw": "80.944"
+      }
+    ],
+    "routeIds": [
+      "92-941-A-j26-1",
+      "92-942-A-j26-1",
+      "92-943-A-j26-1",
+      "96-203-7-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1452",
+    "liniennr_1": null,
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1452",
+    "vertexCount": 2,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1970",
+    "liniennr_1": "80.735, 80.739",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1970",
+    "vertexCount": 19,
+    "tokens": [
+      {
+        "code": "80.735",
+        "line": "735",
+        "qualification": null,
+        "raw": "80.735"
+      },
+      {
+        "code": "80.739",
+        "line": "739",
+        "qualification": null,
+        "raw": "80.739"
+      }
+    ],
+    "routeIds": [
+      "92-735-C-j26-1",
+      "92-739-B-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1332",
+    "liniennr_1": null,
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1332",
+    "vertexCount": 6,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "2112",
+    "liniennr_1": null,
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2112",
+    "vertexCount": 54,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1405",
+    "liniennr_1": null,
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1405",
+    "vertexCount": 2,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1402",
+    "liniennr_1": "80.210",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1402",
+    "vertexCount": 24,
+    "tokens": [
+      {
+        "code": "80.210",
+        "line": "210",
+        "qualification": null,
+        "raw": "80.210"
+      }
+    ],
+    "routeIds": [
+      "96-250-8-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1859",
+    "liniennr_1": "80.733, 80.735",
+    "takt": "Halbstundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1859",
+    "vertexCount": 32,
+    "tokens": [
+      {
+        "code": "80.733",
+        "line": "733",
+        "qualification": null,
+        "raw": "80.733"
+      },
+      {
+        "code": "80.735",
+        "line": "735",
+        "qualification": null,
+        "raw": "80.735"
+      }
+    ],
+    "routeIds": [
+      "92-733-I-j26-1",
+      "92-735-C-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1670",
+    "liniennr_1": "80.736",
+    "takt": "Stundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1670",
+    "vertexCount": 23,
+    "tokens": [
+      {
+        "code": "80.736",
+        "line": "736",
+        "qualification": null,
+        "raw": "80.736"
+      }
+    ],
+    "routeIds": [
+      "92-736-A-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1022",
+    "liniennr_1": null,
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1022",
+    "vertexCount": 5,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1310",
+    "liniennr_1": "80.833",
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1310",
+    "vertexCount": 3,
+    "tokens": [
+      {
+        "code": "80.833",
+        "line": "833",
+        "qualification": null,
+        "raw": "80.833"
+      }
+    ],
+    "routeIds": [
+      "96-200-7-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1202",
+    "liniennr_1": "80.942",
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1202",
+    "vertexCount": 18,
+    "tokens": [
+      {
+        "code": "80.942",
+        "line": "942",
+        "qualification": null,
+        "raw": "80.942"
+      }
+    ],
+    "routeIds": [
+      "92-942-A-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1800",
+    "liniennr_1": "80.831",
+    "takt": "Stundentakt mit Lücken",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1800",
+    "vertexCount": 62,
+    "tokens": [
+      {
+        "code": "80.831",
+        "line": "831",
+        "qualification": null,
+        "raw": "80.831"
+      }
+    ],
+    "routeIds": [
+      "96-201-4-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1794",
+    "liniennr_1": "80.920",
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1794",
+    "vertexCount": 68,
+    "tokens": [
+      {
+        "code": "80.920",
+        "line": "920",
+        "qualification": null,
+        "raw": "80.920"
+      }
+    ],
+    "routeIds": [
+      "96-203-1-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1795",
+    "liniennr_1": "80.832, 80.920",
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1795",
+    "vertexCount": 14,
+    "tokens": [
+      {
+        "code": "80.832",
+        "line": "832",
+        "qualification": null,
+        "raw": "80.832"
+      },
+      {
+        "code": "80.920",
+        "line": "920",
+        "qualification": null,
+        "raw": "80.920"
+      }
+    ],
+    "routeIds": [
+      "96-201-3-j26-1",
+      "96-203-1-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1874",
+    "liniennr_1": "80.722",
+    "takt": "Stundentakt mit Lücken",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1874",
+    "vertexCount": 104,
+    "tokens": [
+      {
+        "code": "80.722",
+        "line": "722",
+        "qualification": null,
+        "raw": "80.722"
+      }
+    ],
+    "routeIds": [
+      "92-722-A-j26-1",
+      "96-202-0-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1742",
+    "liniennr_1": "80.201",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1742",
+    "vertexCount": 24,
+    "tokens": [
+      {
+        "code": "80.201",
+        "line": "201",
+        "qualification": null,
+        "raw": "80.201"
+      }
+    ],
+    "routeIds": [
+      "96-250-A-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2020",
+    "liniennr_1": "80.829, 80.832",
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2020",
+    "vertexCount": 31,
+    "tokens": [
+      {
+        "code": "80.829",
+        "line": "829",
+        "qualification": null,
+        "raw": "80.829"
+      },
+      {
+        "code": "80.832",
+        "line": "832",
+        "qualification": null,
+        "raw": "80.832"
+      }
+    ],
+    "routeIds": [
+      "96-200-8-j26-1",
+      "96-201-3-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2115",
+    "liniennr_1": "80.207",
+    "takt": "Stundentakt mit Lücken",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2115",
+    "vertexCount": 70,
+    "tokens": [
+      {
+        "code": "80.207",
+        "line": "207",
+        "qualification": null,
+        "raw": "80.207"
+      }
+    ],
+    "routeIds": [
+      "96-220-6-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1909",
+    "liniennr_1": "80.940, 80.944",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1909",
+    "vertexCount": 9,
+    "tokens": [
+      {
+        "code": "80.940",
+        "line": "940",
+        "qualification": null,
+        "raw": "80.940"
+      },
+      {
+        "code": "80.944",
+        "line": "944",
+        "qualification": null,
+        "raw": "80.944"
+      }
+    ],
+    "routeIds": [
+      "92-940-B-j26-1",
+      "96-203-7-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2087",
+    "liniennr_1": null,
+    "takt": null,
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2087",
+    "vertexCount": 17,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1810",
+    "liniennr_1": null,
+    "takt": "Stundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1810",
+    "vertexCount": 16,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1815",
+    "liniennr_1": "80.823",
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1815",
+    "vertexCount": 65,
+    "tokens": [
+      {
+        "code": "80.823",
+        "line": "823",
+        "qualification": null,
+        "raw": "80.823"
+      }
+    ],
+    "routeIds": [
+      "96-200-3-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1395",
+    "liniennr_1": null,
+    "takt": "Halbstundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1395",
+    "vertexCount": 5,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "2069",
+    "liniennr_1": null,
+    "takt": null,
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2069",
+    "vertexCount": 2,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1964",
+    "liniennr_1": "80.833",
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1964",
+    "vertexCount": 33,
+    "tokens": [
+      {
+        "code": "80.833",
+        "line": "833",
+        "qualification": null,
+        "raw": "80.833"
+      }
+    ],
+    "routeIds": [
+      "96-200-7-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1474",
+    "liniennr_1": null,
+    "takt": "Stundentakt mit Lücken",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1474",
+    "vertexCount": 2,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1314",
+    "liniennr_1": null,
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1314",
+    "vertexCount": 4,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1987",
+    "liniennr_1": null,
+    "takt": "Stundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1987",
+    "vertexCount": 3,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1667",
+    "liniennr_1": "80.736, 80.739",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1667",
+    "vertexCount": 14,
+    "tokens": [
+      {
+        "code": "80.736",
+        "line": "736",
+        "qualification": null,
+        "raw": "80.736"
+      },
+      {
+        "code": "80.739",
+        "line": "739",
+        "qualification": null,
+        "raw": "80.739"
+      }
+    ],
+    "routeIds": [
+      "92-736-A-j26-1",
+      "92-739-B-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1292",
+    "liniennr_1": null,
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1292",
+    "vertexCount": 4,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1302",
+    "liniennr_1": null,
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1302",
+    "vertexCount": 19,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1182",
+    "liniennr_1": "80.940, 80.942, 80.943",
+    "takt": "Halbstundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1182",
+    "vertexCount": 12,
+    "tokens": [
+      {
+        "code": "80.940",
+        "line": "940",
+        "qualification": null,
+        "raw": "80.940"
+      },
+      {
+        "code": "80.942",
+        "line": "942",
+        "qualification": null,
+        "raw": "80.942"
+      },
+      {
+        "code": "80.943",
+        "line": "943",
+        "qualification": null,
+        "raw": "80.943"
+      }
+    ],
+    "routeIds": [
+      "92-940-B-j26-1",
+      "92-942-A-j26-1",
+      "92-943-A-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1414",
+    "liniennr_1": "80.940, 80.941",
+    "takt": "Halbstundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1414",
+    "vertexCount": 37,
+    "tokens": [
+      {
+        "code": "80.940",
+        "line": "940",
+        "qualification": null,
+        "raw": "80.940"
+      },
+      {
+        "code": "80.941",
+        "line": "941",
+        "qualification": null,
+        "raw": "80.941"
+      }
+    ],
+    "routeIds": [
+      "92-940-B-j26-1",
+      "92-941-A-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1897",
+    "liniennr_1": "80.200, 80.207",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1897",
+    "vertexCount": 23,
+    "tokens": [
+      {
+        "code": "80.200",
+        "line": "200",
+        "qualification": null,
+        "raw": "80.200"
+      },
+      {
+        "code": "80.207",
+        "line": "207",
+        "qualification": null,
+        "raw": "80.207"
+      }
+    ],
+    "routeIds": [
+      "96-220-5-j26-1",
+      "96-220-6-j26-1",
+      "96-220-A-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2040",
+    "liniennr_1": null,
+    "takt": null,
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2040",
+    "vertexCount": 3,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "2041",
+    "liniennr_1": null,
+    "takt": null,
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2041",
+    "vertexCount": 2,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "2025",
+    "liniennr_1": null,
+    "takt": "Stundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2025",
+    "vertexCount": 10,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "2106",
+    "liniennr_1": "80.823",
+    "takt": "Stundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2106",
+    "vertexCount": 42,
+    "tokens": [
+      {
+        "code": "80.823",
+        "line": "823",
+        "qualification": null,
+        "raw": "80.823"
+      }
+    ],
+    "routeIds": [
+      "96-200-3-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2030",
+    "liniennr_1": "80.735, 70.806",
+    "takt": "Stundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2030",
+    "vertexCount": 14,
+    "tokens": [
+      {
+        "code": "80.735",
+        "line": "735",
+        "qualification": null,
+        "raw": "80.735"
+      },
+      {
+        "code": "70.806",
+        "line": "806",
+        "qualification": null,
+        "raw": "70.806"
+      }
+    ],
+    "routeIds": [
+      "92-735-C-j26-1",
+      "96-184-9-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2101",
+    "liniennr_1": null,
+    "takt": null,
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2101",
+    "vertexCount": 2,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1854",
+    "liniennr_1": "80.825",
+    "takt": "Stundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1854",
+    "vertexCount": 55,
+    "tokens": [
+      {
+        "code": "80.825",
+        "line": "825",
+        "qualification": null,
+        "raw": "80.825"
+      }
+    ],
+    "routeIds": [
+      "96-200-4-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1789",
+    "liniennr_1": "80.833",
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1789",
+    "vertexCount": 190,
+    "tokens": [
+      {
+        "code": "80.833",
+        "line": "833",
+        "qualification": null,
+        "raw": "80.833"
+      }
+    ],
+    "routeIds": [
+      "96-200-7-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2014",
+    "liniennr_1": "80.921",
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2014",
+    "vertexCount": 47,
+    "tokens": [
+      {
+        "code": "80.921",
+        "line": "921",
+        "qualification": null,
+        "raw": "80.921"
+      }
+    ],
+    "routeIds": [
+      "96-203-2-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1132",
+    "liniennr_1": "80.736",
+    "takt": "Stundentakt mit Lücken",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1132",
+    "vertexCount": 48,
+    "tokens": [
+      {
+        "code": "80.736",
+        "line": "736",
+        "qualification": null,
+        "raw": "80.736"
+      }
+    ],
+    "routeIds": [
+      "92-736-A-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1852",
+    "liniennr_1": "80.722",
+    "takt": "Stundentakt mit Lücken",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1852",
+    "vertexCount": 108,
+    "tokens": [
+      {
+        "code": "80.722",
+        "line": "722",
+        "qualification": null,
+        "raw": "80.722"
+      }
+    ],
+    "routeIds": [
+      "92-722-A-j26-1",
+      "96-202-0-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1138",
+    "liniennr_1": "80.734 (Abendkurs)",
+    "takt": "Stundentakt mit Lücken",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1138",
+    "vertexCount": 69,
+    "tokens": [
+      {
+        "code": "80.734",
+        "line": "734",
+        "qualification": "Abendkurs",
+        "raw": "80.734 (Abendkurs)"
+      }
+    ],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1342",
+    "liniennr_1": null,
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1342",
+    "vertexCount": 12,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1702",
+    "liniennr_1": null,
+    "takt": "Viertelstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1702",
+    "vertexCount": 2,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1703",
+    "liniennr_1": null,
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1703",
+    "vertexCount": 3,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1697",
+    "liniennr_1": "80.833, 80.838",
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1697",
+    "vertexCount": 18,
+    "tokens": [
+      {
+        "code": "80.833",
+        "line": "833",
+        "qualification": null,
+        "raw": "80.833"
+      },
+      {
+        "code": "80.838",
+        "line": "838",
+        "qualification": null,
+        "raw": "80.838"
+      }
+    ],
+    "routeIds": [
+      "96-200-7-j26-1",
+      "96-201-0-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1743",
+    "liniennr_1": "80.908, 80.925",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1743",
+    "vertexCount": 16,
+    "tokens": [
+      {
+        "code": "80.908",
+        "line": "908",
+        "qualification": null,
+        "raw": "80.908"
+      },
+      {
+        "code": "80.925",
+        "line": "925",
+        "qualification": null,
+        "raw": "80.925"
+      }
+    ],
+    "routeIds": [
+      "96-203-0-j26-1",
+      "96-203-6-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2113",
+    "liniennr_1": null,
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2113",
+    "vertexCount": 21,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "2114",
+    "liniennr_1": "80.201, 80.207",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2114",
+    "vertexCount": 11,
+    "tokens": [
+      {
+        "code": "80.201",
+        "line": "201",
+        "qualification": null,
+        "raw": "80.201"
+      },
+      {
+        "code": "80.207",
+        "line": "207",
+        "qualification": null,
+        "raw": "80.207"
+      }
+    ],
+    "routeIds": [
+      "96-220-6-j26-1",
+      "96-250-A-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "979",
+    "liniennr_1": null,
+    "takt": "Stundentakt mit Lücken",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.979",
+    "vertexCount": 3,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "2000",
+    "liniennr_1": null,
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2000",
+    "vertexCount": 2,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1401",
+    "liniennr_1": null,
+    "takt": "Halbstundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1401",
+    "vertexCount": 2,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1907",
+    "liniennr_1": "70.806, 80.734",
+    "takt": "Stundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1907",
+    "vertexCount": 6,
+    "tokens": [
+      {
+        "code": "70.806",
+        "line": "806",
+        "qualification": null,
+        "raw": "70.806"
+      },
+      {
+        "code": "80.734",
+        "line": "734",
+        "qualification": null,
+        "raw": "80.734"
+      }
+    ],
+    "routeIds": [
+      "92-734-K-j26-1",
+      "96-184-9-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2021",
+    "liniennr_1": null,
+    "takt": "Stundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2021",
+    "vertexCount": 3,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "2001",
+    "liniennr_1": null,
+    "takt": null,
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2001",
+    "vertexCount": 49,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "2032",
+    "liniennr_1": "80.823",
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2032",
+    "vertexCount": 9,
+    "tokens": [
+      {
+        "code": "80.823",
+        "line": "823",
+        "qualification": null,
+        "raw": "80.823"
+      }
+    ],
+    "routeIds": [
+      "96-200-3-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1804",
+    "liniennr_1": "80.829, 80.920",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1804",
+    "vertexCount": 68,
+    "tokens": [
+      {
+        "code": "80.829",
+        "line": "829",
+        "qualification": null,
+        "raw": "80.829"
+      },
+      {
+        "code": "80.920",
+        "line": "920",
+        "qualification": null,
+        "raw": "80.920"
+      }
+    ],
+    "routeIds": [
+      "96-200-8-j26-1",
+      "96-203-1-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1938",
+    "liniennr_1": null,
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1938",
+    "vertexCount": 2,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1124",
+    "liniennr_1": null,
+    "takt": "Stundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1124",
+    "vertexCount": 4,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1985",
+    "liniennr_1": null,
+    "takt": "Stundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1985",
+    "vertexCount": 24,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1924",
+    "liniennr_1": null,
+    "takt": null,
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1924",
+    "vertexCount": 17,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1927",
+    "liniennr_1": "80.736, 80.841",
+    "takt": "Stundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1927",
+    "vertexCount": 8,
+    "tokens": [
+      {
+        "code": "80.736",
+        "line": "736",
+        "qualification": null,
+        "raw": "80.736"
+      },
+      {
+        "code": "80.841",
+        "line": "841",
+        "qualification": null,
+        "raw": "80.841"
+      }
+    ],
+    "routeIds": [
+      "92-736-A-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1975",
+    "liniennr_1": "80.734, 80.735, 80.739",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1975",
+    "vertexCount": 24,
+    "tokens": [
+      {
+        "code": "80.734",
+        "line": "734",
+        "qualification": null,
+        "raw": "80.734"
+      },
+      {
+        "code": "80.735",
+        "line": "735",
+        "qualification": null,
+        "raw": "80.735"
+      },
+      {
+        "code": "80.739",
+        "line": "739",
+        "qualification": null,
+        "raw": "80.739"
+      }
+    ],
+    "routeIds": [
+      "92-734-K-j26-1",
+      "92-735-C-j26-1",
+      "92-739-B-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1142",
+    "liniennr_1": "80.736, 80.739, 80.841",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1142",
+    "vertexCount": 6,
+    "tokens": [
+      {
+        "code": "80.736",
+        "line": "736",
+        "qualification": null,
+        "raw": "80.736"
+      },
+      {
+        "code": "80.739",
+        "line": "739",
+        "qualification": null,
+        "raw": "80.739"
+      },
+      {
+        "code": "80.841",
+        "line": "841",
+        "qualification": null,
+        "raw": "80.841"
+      }
+    ],
+    "routeIds": [
+      "92-736-A-j26-1",
+      "92-739-B-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1649",
+    "liniennr_1": null,
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1649",
+    "vertexCount": 11,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1515",
+    "liniennr_1": null,
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1515",
+    "vertexCount": 5,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1470",
+    "liniennr_1": null,
+    "takt": "Stundentakt mit Lücken",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1470",
+    "vertexCount": 21,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1303",
+    "liniennr_1": "80.833",
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1303",
+    "vertexCount": 9,
+    "tokens": [
+      {
+        "code": "80.833",
+        "line": "833",
+        "qualification": null,
+        "raw": "80.833"
+      }
+    ],
+    "routeIds": [
+      "96-200-7-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1882",
+    "liniennr_1": "80.200",
+    "takt": "Halbstundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1882",
+    "vertexCount": 72,
+    "tokens": [
+      {
+        "code": "80.200",
+        "line": "200",
+        "qualification": null,
+        "raw": "80.200"
+      }
+    ],
+    "routeIds": [
+      "96-220-5-j26-1",
+      "96-220-A-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "1891",
+    "liniennr_1": "80.722",
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.1891",
+    "vertexCount": 31,
+    "tokens": [
+      {
+        "code": "80.722",
+        "line": "722",
+        "qualification": null,
+        "raw": "80.722"
+      }
+    ],
+    "routeIds": [
+      "92-722-A-j26-1",
+      "96-202-0-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2043",
+    "liniennr_1": "80.923, 80.925",
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2043",
+    "vertexCount": 75,
+    "tokens": [
+      {
+        "code": "80.923",
+        "line": "923",
+        "qualification": null,
+        "raw": "80.923"
+      },
+      {
+        "code": "80.925",
+        "line": "925",
+        "qualification": null,
+        "raw": "80.925"
+      }
+    ],
+    "routeIds": [
+      "96-203-3-j26-1",
+      "96-203-6-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2044",
+    "liniennr_1": null,
+    "takt": null,
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2044",
+    "vertexCount": 2,
+    "tokens": [],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "2070",
+    "liniennr_1": "80.826",
+    "takt": "Stundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2070",
+    "vertexCount": 21,
+    "tokens": [
+      {
+        "code": "80.826",
+        "line": "826",
+        "qualification": null,
+        "raw": "80.826"
+      }
+    ],
+    "routeIds": [
+      "96-200-6-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2039",
+    "liniennr_1": "80.944",
+    "takt": "Stundentakt",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2039",
+    "vertexCount": 16,
+    "tokens": [
+      {
+        "code": "80.944",
+        "line": "944",
+        "qualification": null,
+        "raw": "80.944"
+      }
+    ],
+    "routeIds": [
+      "96-203-7-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2071",
+    "liniennr_1": "80.826",
+    "takt": "Stundentakt mit Verdichtung",
+    "betriebszeiten": "Tagnetz",
+    "liniencode": "buslinie.2071",
+    "vertexCount": 18,
+    "tokens": [
+      {
+        "code": "80.826",
+        "line": "826",
+        "qualification": null,
+        "raw": "80.826"
+      }
+    ],
+    "routeIds": [
+      "96-200-6-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2075",
+    "liniennr_1": "BN820",
+    "takt": "Keine Angaben",
+    "betriebszeiten": "Nachtnetz",
+    "liniencode": "buslinie.2075",
+    "vertexCount": 145,
+    "tokens": [
+      {
+        "code": "BN820",
+        "line": "BN820",
+        "qualification": null,
+        "raw": "BN820"
+      }
+    ],
+    "routeIds": [],
+    "status": "no-canton-gtfs-crosswalk",
+    "exclusionReason": "No verified route crosswalk; may be outside the canton, absent from GTFS, renamed or an unresolved source identifier. Not silently treated as timetable coverage."
+  },
+  {
+    "objectid": "1",
+    "takt": "Halbstundentakt",
+    "verbindung": "Etzwilen - Winterthur",
+    "liniennr": null,
+    "liniencode": "bahnlinie_takt.1",
+    "vertexCount": 868,
+    "tokens": [],
+    "routeIds": [
+      "91-10-C-j26-1",
+      "91-12-j26-1",
+      "91-14-B-j26-1",
+      "91-14-I-j26-1",
+      "91-1-C-j26-1",
+      "91-1-P-j26-1",
+      "91-1S-Y-j26-1",
+      "91-21-F-j26-1",
+      "91-23-B-j26-1",
+      "91-24-E-j26-1",
+      "91-24-j26-1",
+      "91-29-A-j26-1",
+      "91-30-A-j26-1",
+      "91-30-C-j26-1",
+      "91-30-L-j26-1",
+      "91-35-j26-1",
+      "91-3-I-j26-1",
+      "91-3-X-j26-1",
+      "91-44-C-j26-1",
+      "91-5-B-j26-1",
+      "91-71-B-j26-1",
+      "91-72-B-j26-1",
+      "91-75-A-j26-1",
+      "91-75-B-j26-1",
+      "91-75-j26-1",
+      "91-7-B-j26-1",
+      "91-81-A-j26-1",
+      "91-82-j26-1",
+      "91-8-E-j26-1",
+      "91-8-N-j26-1",
+      "91-9-P-j26-1",
+      "91-CH-Y-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "2",
+    "takt": "Halbstundentakt",
+    "verbindung": "Frauenfeld - Weinfelden",
+    "liniennr": null,
+    "liniencode": "bahnlinie_takt.2",
+    "vertexCount": 222,
+    "tokens": [],
+    "routeIds": [
+      "91-10-C-j26-1",
+      "91-12-j26-1",
+      "91-14-B-j26-1",
+      "91-14-I-j26-1",
+      "91-1-C-j26-1",
+      "91-1-P-j26-1",
+      "91-1S-Y-j26-1",
+      "91-21-F-j26-1",
+      "91-23-B-j26-1",
+      "91-24-E-j26-1",
+      "91-24-j26-1",
+      "91-29-A-j26-1",
+      "91-30-A-j26-1",
+      "91-30-C-j26-1",
+      "91-30-L-j26-1",
+      "91-35-j26-1",
+      "91-3-I-j26-1",
+      "91-3-X-j26-1",
+      "91-44-C-j26-1",
+      "91-5-B-j26-1",
+      "91-71-B-j26-1",
+      "91-72-B-j26-1",
+      "91-75-A-j26-1",
+      "91-75-B-j26-1",
+      "91-75-j26-1",
+      "91-7-B-j26-1",
+      "91-81-A-j26-1",
+      "91-82-j26-1",
+      "91-8-E-j26-1",
+      "91-8-N-j26-1",
+      "91-9-P-j26-1",
+      "91-CH-Y-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "3",
+    "takt": "Halbstundentakt",
+    "verbindung": "Romanshorn - Weinfelden",
+    "liniennr": null,
+    "liniencode": "bahnlinie_takt.3",
+    "vertexCount": 231,
+    "tokens": [],
+    "routeIds": [
+      "91-10-C-j26-1",
+      "91-12-j26-1",
+      "91-14-B-j26-1",
+      "91-14-I-j26-1",
+      "91-1-C-j26-1",
+      "91-1-P-j26-1",
+      "91-1S-Y-j26-1",
+      "91-21-F-j26-1",
+      "91-23-B-j26-1",
+      "91-24-E-j26-1",
+      "91-24-j26-1",
+      "91-29-A-j26-1",
+      "91-30-A-j26-1",
+      "91-30-C-j26-1",
+      "91-30-L-j26-1",
+      "91-35-j26-1",
+      "91-3-I-j26-1",
+      "91-3-X-j26-1",
+      "91-44-C-j26-1",
+      "91-5-B-j26-1",
+      "91-71-B-j26-1",
+      "91-72-B-j26-1",
+      "91-75-A-j26-1",
+      "91-75-B-j26-1",
+      "91-75-j26-1",
+      "91-7-B-j26-1",
+      "91-81-A-j26-1",
+      "91-82-j26-1",
+      "91-8-E-j26-1",
+      "91-8-N-j26-1",
+      "91-9-P-j26-1",
+      "91-CH-Y-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "4",
+    "takt": "Halbstundentakt",
+    "verbindung": "Weinfelden - Wil",
+    "liniennr": null,
+    "liniencode": "bahnlinie_takt.4",
+    "vertexCount": 652,
+    "tokens": [],
+    "routeIds": [
+      "91-10-C-j26-1",
+      "91-12-j26-1",
+      "91-14-B-j26-1",
+      "91-14-I-j26-1",
+      "91-1-C-j26-1",
+      "91-1-P-j26-1",
+      "91-1S-Y-j26-1",
+      "91-21-F-j26-1",
+      "91-23-B-j26-1",
+      "91-24-E-j26-1",
+      "91-24-j26-1",
+      "91-29-A-j26-1",
+      "91-30-A-j26-1",
+      "91-30-C-j26-1",
+      "91-30-L-j26-1",
+      "91-35-j26-1",
+      "91-3-I-j26-1",
+      "91-3-X-j26-1",
+      "91-44-C-j26-1",
+      "91-5-B-j26-1",
+      "91-71-B-j26-1",
+      "91-72-B-j26-1",
+      "91-75-A-j26-1",
+      "91-75-B-j26-1",
+      "91-75-j26-1",
+      "91-7-B-j26-1",
+      "91-81-A-j26-1",
+      "91-82-j26-1",
+      "91-8-E-j26-1",
+      "91-8-N-j26-1",
+      "91-9-P-j26-1",
+      "91-CH-Y-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "5",
+    "takt": "Halbstundentakt",
+    "verbindung": "Winterthur - Wil",
+    "liniennr": null,
+    "liniencode": "bahnlinie_takt.5",
+    "vertexCount": 607,
+    "tokens": [],
+    "routeIds": [
+      "91-10-C-j26-1",
+      "91-12-j26-1",
+      "91-14-B-j26-1",
+      "91-14-I-j26-1",
+      "91-1-C-j26-1",
+      "91-1-P-j26-1",
+      "91-1S-Y-j26-1",
+      "91-21-F-j26-1",
+      "91-23-B-j26-1",
+      "91-24-E-j26-1",
+      "91-24-j26-1",
+      "91-29-A-j26-1",
+      "91-30-A-j26-1",
+      "91-30-C-j26-1",
+      "91-30-L-j26-1",
+      "91-35-j26-1",
+      "91-3-I-j26-1",
+      "91-3-X-j26-1",
+      "91-44-C-j26-1",
+      "91-5-B-j26-1",
+      "91-71-B-j26-1",
+      "91-72-B-j26-1",
+      "91-75-A-j26-1",
+      "91-75-B-j26-1",
+      "91-75-j26-1",
+      "91-7-B-j26-1",
+      "91-81-A-j26-1",
+      "91-82-j26-1",
+      "91-8-E-j26-1",
+      "91-8-N-j26-1",
+      "91-9-P-j26-1",
+      "91-CH-Y-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "7",
+    "takt": "Halbstundentakt",
+    "verbindung": "Kreuzlingen - Weinfelden",
+    "liniennr": null,
+    "liniencode": "bahnlinie_takt.7",
+    "vertexCount": 625,
+    "tokens": [],
+    "routeIds": [
+      "91-10-C-j26-1",
+      "91-12-j26-1",
+      "91-14-B-j26-1",
+      "91-14-I-j26-1",
+      "91-1-C-j26-1",
+      "91-1-P-j26-1",
+      "91-1S-Y-j26-1",
+      "91-21-F-j26-1",
+      "91-23-B-j26-1",
+      "91-24-E-j26-1",
+      "91-24-j26-1",
+      "91-29-A-j26-1",
+      "91-30-A-j26-1",
+      "91-30-C-j26-1",
+      "91-30-L-j26-1",
+      "91-35-j26-1",
+      "91-3-I-j26-1",
+      "91-3-X-j26-1",
+      "91-44-C-j26-1",
+      "91-5-B-j26-1",
+      "91-71-B-j26-1",
+      "91-72-B-j26-1",
+      "91-75-A-j26-1",
+      "91-75-B-j26-1",
+      "91-75-j26-1",
+      "91-7-B-j26-1",
+      "91-81-A-j26-1",
+      "91-82-j26-1",
+      "91-8-E-j26-1",
+      "91-8-N-j26-1",
+      "91-9-P-j26-1",
+      "91-CH-Y-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "8",
+    "takt": "Halbstundentakt",
+    "verbindung": "Etzwilen - Schaffhausen",
+    "liniennr": null,
+    "liniencode": "bahnlinie_takt.8",
+    "vertexCount": 343,
+    "tokens": [],
+    "routeIds": [
+      "91-10-C-j26-1",
+      "91-12-j26-1",
+      "91-14-B-j26-1",
+      "91-14-I-j26-1",
+      "91-1-C-j26-1",
+      "91-1-P-j26-1",
+      "91-1S-Y-j26-1",
+      "91-21-F-j26-1",
+      "91-23-B-j26-1",
+      "91-24-E-j26-1",
+      "91-24-j26-1",
+      "91-29-A-j26-1",
+      "91-30-A-j26-1",
+      "91-30-C-j26-1",
+      "91-30-L-j26-1",
+      "91-35-j26-1",
+      "91-3-I-j26-1",
+      "91-3-X-j26-1",
+      "91-44-C-j26-1",
+      "91-5-B-j26-1",
+      "91-71-B-j26-1",
+      "91-72-B-j26-1",
+      "91-75-A-j26-1",
+      "91-75-B-j26-1",
+      "91-75-j26-1",
+      "91-7-B-j26-1",
+      "91-81-A-j26-1",
+      "91-82-j26-1",
+      "91-8-E-j26-1",
+      "91-8-N-j26-1",
+      "91-9-P-j26-1",
+      "91-CH-Y-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "9",
+    "takt": "Halbstundentakt",
+    "verbindung": "Etzwilen - Kreuzlingen",
+    "liniennr": null,
+    "liniencode": "bahnlinie_takt.9",
+    "vertexCount": 936,
+    "tokens": [],
+    "routeIds": [
+      "91-10-C-j26-1",
+      "91-12-j26-1",
+      "91-14-B-j26-1",
+      "91-14-I-j26-1",
+      "91-1-C-j26-1",
+      "91-1-P-j26-1",
+      "91-1S-Y-j26-1",
+      "91-21-F-j26-1",
+      "91-23-B-j26-1",
+      "91-24-E-j26-1",
+      "91-24-j26-1",
+      "91-29-A-j26-1",
+      "91-30-A-j26-1",
+      "91-30-C-j26-1",
+      "91-30-L-j26-1",
+      "91-35-j26-1",
+      "91-3-I-j26-1",
+      "91-3-X-j26-1",
+      "91-44-C-j26-1",
+      "91-5-B-j26-1",
+      "91-71-B-j26-1",
+      "91-72-B-j26-1",
+      "91-75-A-j26-1",
+      "91-75-B-j26-1",
+      "91-75-j26-1",
+      "91-7-B-j26-1",
+      "91-81-A-j26-1",
+      "91-82-j26-1",
+      "91-8-E-j26-1",
+      "91-8-N-j26-1",
+      "91-9-P-j26-1",
+      "91-CH-Y-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "10",
+    "takt": "Halbstundentakt",
+    "verbindung": "Knoten Kreuzlingen",
+    "liniennr": null,
+    "liniencode": "bahnlinie_takt.10",
+    "vertexCount": 47,
+    "tokens": [],
+    "routeIds": [
+      "91-10-C-j26-1",
+      "91-12-j26-1",
+      "91-14-B-j26-1",
+      "91-14-I-j26-1",
+      "91-1-C-j26-1",
+      "91-1-P-j26-1",
+      "91-1S-Y-j26-1",
+      "91-21-F-j26-1",
+      "91-23-B-j26-1",
+      "91-24-E-j26-1",
+      "91-24-j26-1",
+      "91-29-A-j26-1",
+      "91-30-A-j26-1",
+      "91-30-C-j26-1",
+      "91-30-L-j26-1",
+      "91-35-j26-1",
+      "91-3-I-j26-1",
+      "91-3-X-j26-1",
+      "91-44-C-j26-1",
+      "91-5-B-j26-1",
+      "91-71-B-j26-1",
+      "91-72-B-j26-1",
+      "91-75-A-j26-1",
+      "91-75-B-j26-1",
+      "91-75-j26-1",
+      "91-7-B-j26-1",
+      "91-81-A-j26-1",
+      "91-82-j26-1",
+      "91-8-E-j26-1",
+      "91-8-N-j26-1",
+      "91-9-P-j26-1",
+      "91-CH-Y-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "11",
+    "takt": "Halbstundentakt",
+    "verbindung": "Kreuzlingen - Romanshorn",
+    "liniennr": null,
+    "liniencode": "bahnlinie_takt.11",
+    "vertexCount": 279,
+    "tokens": [],
+    "routeIds": [
+      "91-10-C-j26-1",
+      "91-12-j26-1",
+      "91-14-B-j26-1",
+      "91-14-I-j26-1",
+      "91-1-C-j26-1",
+      "91-1-P-j26-1",
+      "91-1S-Y-j26-1",
+      "91-21-F-j26-1",
+      "91-23-B-j26-1",
+      "91-24-E-j26-1",
+      "91-24-j26-1",
+      "91-29-A-j26-1",
+      "91-30-A-j26-1",
+      "91-30-C-j26-1",
+      "91-30-L-j26-1",
+      "91-35-j26-1",
+      "91-3-I-j26-1",
+      "91-3-X-j26-1",
+      "91-44-C-j26-1",
+      "91-5-B-j26-1",
+      "91-71-B-j26-1",
+      "91-72-B-j26-1",
+      "91-75-A-j26-1",
+      "91-75-B-j26-1",
+      "91-75-j26-1",
+      "91-7-B-j26-1",
+      "91-81-A-j26-1",
+      "91-82-j26-1",
+      "91-8-E-j26-1",
+      "91-8-N-j26-1",
+      "91-9-P-j26-1",
+      "91-CH-Y-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "12",
+    "takt": "Halbstundentakt",
+    "verbindung": "Knoten Romanshorn",
+    "liniennr": null,
+    "liniencode": "bahnlinie_takt.12",
+    "vertexCount": 50,
+    "tokens": [],
+    "routeIds": [
+      "91-10-C-j26-1",
+      "91-12-j26-1",
+      "91-14-B-j26-1",
+      "91-14-I-j26-1",
+      "91-1-C-j26-1",
+      "91-1-P-j26-1",
+      "91-1S-Y-j26-1",
+      "91-21-F-j26-1",
+      "91-23-B-j26-1",
+      "91-24-E-j26-1",
+      "91-24-j26-1",
+      "91-29-A-j26-1",
+      "91-30-A-j26-1",
+      "91-30-C-j26-1",
+      "91-30-L-j26-1",
+      "91-35-j26-1",
+      "91-3-I-j26-1",
+      "91-3-X-j26-1",
+      "91-44-C-j26-1",
+      "91-5-B-j26-1",
+      "91-71-B-j26-1",
+      "91-72-B-j26-1",
+      "91-75-A-j26-1",
+      "91-75-B-j26-1",
+      "91-75-j26-1",
+      "91-7-B-j26-1",
+      "91-81-A-j26-1",
+      "91-82-j26-1",
+      "91-8-E-j26-1",
+      "91-8-N-j26-1",
+      "91-9-P-j26-1",
+      "91-CH-Y-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "13",
+    "takt": "Halbstundentakt",
+    "verbindung": "Romanshorn - Rorschach",
+    "liniennr": null,
+    "liniencode": "bahnlinie_takt.13",
+    "vertexCount": 238,
+    "tokens": [],
+    "routeIds": [
+      "91-10-C-j26-1",
+      "91-12-j26-1",
+      "91-14-B-j26-1",
+      "91-14-I-j26-1",
+      "91-1-C-j26-1",
+      "91-1-P-j26-1",
+      "91-1S-Y-j26-1",
+      "91-21-F-j26-1",
+      "91-23-B-j26-1",
+      "91-24-E-j26-1",
+      "91-24-j26-1",
+      "91-29-A-j26-1",
+      "91-30-A-j26-1",
+      "91-30-C-j26-1",
+      "91-30-L-j26-1",
+      "91-35-j26-1",
+      "91-3-I-j26-1",
+      "91-3-X-j26-1",
+      "91-44-C-j26-1",
+      "91-5-B-j26-1",
+      "91-71-B-j26-1",
+      "91-72-B-j26-1",
+      "91-75-A-j26-1",
+      "91-75-B-j26-1",
+      "91-75-j26-1",
+      "91-7-B-j26-1",
+      "91-81-A-j26-1",
+      "91-82-j26-1",
+      "91-8-E-j26-1",
+      "91-8-N-j26-1",
+      "91-9-P-j26-1",
+      "91-CH-Y-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "14",
+    "takt": "Halbstundentakt",
+    "verbindung": "Sulgen - St. Gallen",
+    "liniennr": null,
+    "liniencode": "bahnlinie_takt.14",
+    "vertexCount": 757,
+    "tokens": [],
+    "routeIds": [
+      "91-10-C-j26-1",
+      "91-12-j26-1",
+      "91-14-B-j26-1",
+      "91-14-I-j26-1",
+      "91-1-C-j26-1",
+      "91-1-P-j26-1",
+      "91-1S-Y-j26-1",
+      "91-21-F-j26-1",
+      "91-23-B-j26-1",
+      "91-24-E-j26-1",
+      "91-24-j26-1",
+      "91-29-A-j26-1",
+      "91-30-A-j26-1",
+      "91-30-C-j26-1",
+      "91-30-L-j26-1",
+      "91-35-j26-1",
+      "91-3-I-j26-1",
+      "91-3-X-j26-1",
+      "91-44-C-j26-1",
+      "91-5-B-j26-1",
+      "91-71-B-j26-1",
+      "91-72-B-j26-1",
+      "91-75-A-j26-1",
+      "91-75-B-j26-1",
+      "91-75-j26-1",
+      "91-7-B-j26-1",
+      "91-81-A-j26-1",
+      "91-82-j26-1",
+      "91-8-E-j26-1",
+      "91-8-N-j26-1",
+      "91-9-P-j26-1",
+      "91-CH-Y-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "16",
+    "takt": "Halbstundentakt",
+    "verbindung": "Frauenfeld - Winterthur",
+    "liniennr": null,
+    "liniencode": "bahnlinie_takt.16",
+    "vertexCount": 269,
+    "tokens": [],
+    "routeIds": [
+      "91-10-C-j26-1",
+      "91-12-j26-1",
+      "91-14-B-j26-1",
+      "91-14-I-j26-1",
+      "91-1-C-j26-1",
+      "91-1-P-j26-1",
+      "91-1S-Y-j26-1",
+      "91-21-F-j26-1",
+      "91-23-B-j26-1",
+      "91-24-E-j26-1",
+      "91-24-j26-1",
+      "91-29-A-j26-1",
+      "91-30-A-j26-1",
+      "91-30-C-j26-1",
+      "91-30-L-j26-1",
+      "91-35-j26-1",
+      "91-3-I-j26-1",
+      "91-3-X-j26-1",
+      "91-44-C-j26-1",
+      "91-5-B-j26-1",
+      "91-71-B-j26-1",
+      "91-72-B-j26-1",
+      "91-75-A-j26-1",
+      "91-75-B-j26-1",
+      "91-75-j26-1",
+      "91-7-B-j26-1",
+      "91-81-A-j26-1",
+      "91-82-j26-1",
+      "91-8-E-j26-1",
+      "91-8-N-j26-1",
+      "91-9-P-j26-1",
+      "91-CH-Y-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "17",
+    "takt": "Halbstundentakt",
+    "verbindung": "Romanshorn - St. Gallen",
+    "liniennr": null,
+    "liniencode": "bahnlinie_takt.17",
+    "vertexCount": 592,
+    "tokens": [],
+    "routeIds": [
+      "91-10-C-j26-1",
+      "91-12-j26-1",
+      "91-14-B-j26-1",
+      "91-14-I-j26-1",
+      "91-1-C-j26-1",
+      "91-1-P-j26-1",
+      "91-1S-Y-j26-1",
+      "91-21-F-j26-1",
+      "91-23-B-j26-1",
+      "91-24-E-j26-1",
+      "91-24-j26-1",
+      "91-29-A-j26-1",
+      "91-30-A-j26-1",
+      "91-30-C-j26-1",
+      "91-30-L-j26-1",
+      "91-35-j26-1",
+      "91-3-I-j26-1",
+      "91-3-X-j26-1",
+      "91-44-C-j26-1",
+      "91-5-B-j26-1",
+      "91-71-B-j26-1",
+      "91-72-B-j26-1",
+      "91-75-A-j26-1",
+      "91-75-B-j26-1",
+      "91-75-j26-1",
+      "91-7-B-j26-1",
+      "91-81-A-j26-1",
+      "91-82-j26-1",
+      "91-8-E-j26-1",
+      "91-8-N-j26-1",
+      "91-9-P-j26-1",
+      "91-CH-Y-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "15",
+    "takt": "Halbstundentakt mit Verdichtung",
+    "verbindung": "Wängi - Wil",
+    "liniennr": "S15",
+    "liniencode": "bahnlinie_takt.15",
+    "vertexCount": 242,
+    "tokens": [],
+    "routeIds": [
+      "91-15-I-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  },
+  {
+    "objectid": "6",
+    "takt": "Halbstundentakt",
+    "verbindung": "Frauenfeld - Wängi",
+    "liniennr": "S15",
+    "liniencode": "bahnlinie_takt.6",
+    "vertexCount": 334,
+    "tokens": [],
+    "routeIds": [
+      "91-15-I-j26-1"
+    ],
+    "status": "crosswalk-candidate"
+  }
+]

@@ -1,0 +1,23 @@
+{
+  "label": "Thurgau canton regional feed",
+  "sourceHashes": {
+    "archive": "d325fd0954a91ac50005ad53db1976b8e528ebb1c388e4e8fd5a4415e4139a1e",
+    "source": "eaafd8c4e12f743a11a817c131abbcb662b4c9b2d034e5962e4ca42435b68650",
+    "crosswalk": "b9de0980159211b9239694e03f28b7b7f37047ee5e460ff082042aed32e83ef0",
+    "requests": "9d9c7384a964488579af9101a3b52385a1f06955287cd05024f72c50b2b19fdc",
+    "timetableCache": "9403d675c79184b4885e8a0ca0f3d02da55363cefafab2f403cb7e5ae95dcff5"
+  },
+  "dates": [
+    {
+      "date": "2026-09-04",
+      "manifest": "2026-09-04/thurgau-region-day-manifest.json",
+      "morning": "2026-09-04/thurgau-region-morning.json"
+    },
+    {
+      "date": "2026-09-06",
+      "manifest": "2026-09-06/thurgau-region-day-manifest.json",
+      "morning": "2026-09-06/thurgau-region-morning.json"
+    }
+  ],
+  "admission": "Complete geometry patterns only; see docs/THURGAU-STUDY.md and data/thurgau-audit for exclusions."
+}

@@ -702,17 +702,23 @@
         "797",
         "801"
       ],
-      "geometryStatus": "vector-sample",
-      "evidence": "Official WFS exposes buslinie, buslinie_takt and other layers. GetFeature returned three real GML LineStrings; hits reports 337 buslinie features. Properties include liniennr_1, takt and betriebszeiten. Geometry output requested EPSG:4326; inspect GML axis order on conversion.",
-      "vintage": "Current timetable vintage unresolved; a catalogue date of 1 January 2000 must not be read as a verified geometry date.",
-      "reuse": "General terms distinguish access classes. Establish the specific bus-layer reuse conditions; service Fees/AccessConstraints values are not sufficient licence evidence.",
-      "nextAction": "Download the complete GML layer, establish vintage and operator mapping, and measure directed stop patterns including cross-border lake services.",
+      "geometryStatus": "cantonal-adapter-partial-admission",
+      "evidence": "Full original WFS GML preserved: 337 bus segments, 17 rail corridors, 337 bus-frequency features, 718 stops and four call-taxi areas. Canton-wide annual GTFS census: 132 routes, 15 agencies, all five districts. Friday/Sunday complete-pattern feeds admit 376/293 journeys; see docs/THURGAU-STUDY.md and data/thurgau-audit.",
+      "vintage": "Geometry effective date remains unknown. WFS acquired 2026-09-08; cantonal catalogue modified 2026-07-31; creation 2000-01-01 is not a geometry vintage. GTFS feed 20260902; boundaries 2026-01.",
+      "reuse": "Cantonal data.tg.ch dataset catalogue explicitly declares CC BY 4.0. Preserved catalogue and general terms accompany the feed; attribution to Kanton Thurgau, Abteilung Öffentlicher Verkehr / Amt für Geoinformation. GTFS and swisstopo retain separate terms.",
+      "nextAction": "Resolve city-bus, lake, boundary-extent and disconnected-path gaps; obtain true geometry vintage and validate seasonal/holiday service and physical direction. Whole-canton admission/exclusion inventory and reproducible adapter are implemented.",
       "sourceIds": [
         "tg-wfs",
         "tg-count",
         "tg-sample",
         "tg-terms"
-      ]
+      ],
+      "implementation": {
+        "study": "docs/THURGAU-STUDY.md",
+        "inventory": "docs/THURGAU-ROUTE-INVENTORY.md",
+        "audit": "data/thurgau-audit/summary.json",
+        "feed": "public/data/thurgau-region/index.json"
+      }
     },
     {
       "code": "TI",

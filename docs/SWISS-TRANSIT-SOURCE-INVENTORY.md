@@ -106,7 +106,7 @@ Status refers to the strongest **local line-geometry evidence**, not the availab
 | [SG — St.Gallen](#sg) | Cantonal adapter; local feed with partial admission | OSTWIND, Z-Pass, Bodensee Ticket |
 | [GR — Graubünden / Grigioni / Grischun](#gr) | Catalogue access error | BÜGA, Transreno, Engadin mobil, Verkehrsbetriebe Davos |
 | [AG — Aargau](#ag) | Download inspected | A-Welle, TNW, Z-Pass |
-| [TG — Thurgau](#tg) | Vector sample verified | OSTWIND, Bodensee Ticket |
+| [TG — Thurgau](#tg) | Cantonal adapter; partial service admission | OSTWIND, Bodensee Ticket |
 | [TI — Ticino](#ti) | No line export verified | Arcobaleno |
 | [VD — Vaud](#vd) | Metadata / export unresolved | Mobilis, LémanPass (border travel) |
 | [VS — Valais / Wallis](#vs) | Metadata / export unresolved | Regional/cross-border tickets (no single canton-wide tariff union in SBB list) |
@@ -432,13 +432,13 @@ Status refers to the strongest **local line-geometry evidence**, not the availab
 
 **Authority/publisher:** Canton Thurgau public transport planning; cantonal geoinformation. **Review areas:** Frauenfeld; Kreuzlingen; Weinfelden; Arbon/Romanshorn; Untersee; Hinterthurgau.
 
-**Evidence:** Official WFS exposes buslinie, buslinie_takt and other layers. GetFeature returned three real GML LineStrings; hits reports 337 buslinie features. Properties include liniennr_1, takt and betriebszeiten. Geometry output requested EPSG:4326; inspect GML axis order on conversion.
+**Evidence:** The [Thurgau cantonal study](THURGAU-STUDY.md) preserves the complete official WFS export: 337 bus-line segments, 17 rail corridors, 337 bus-frequency records, 718 bus stops and four call-taxi areas. EPSG:2056 GML is decoded with explicit east/north axis, count and ID validation. The two accessibility-distance layers are inventoried as non-vehicle geometry.
 
-**Vintage:** Current timetable vintage unresolved; a catalogue date of 1 January 2000 must not be read as a verified geometry date.
+**Vintage:** Geometry effective date remains unknown. WFS acquired 8 September 2026; the cantonal catalogue's modification timestamp is 31 July 2026. Its 1 January 2000 creation date and WFS response timestamps are not verified timetable vintages.
 
-**Reuse:** General terms distinguish access classes. Establish the specific bus-layer reuse conditions; service Fees/AccessConstraints values are not sufficient licence evidence.
+**Reuse:** The [cantonal dataset catalogue](https://data.tg.ch/api/explore/v2.1/catalog/datasets/netz-des-offentlichen-verkehrs) explicitly declares **CC BY 4.0**. The original declaration and general terms are preserved with source hashes and accompany the feed. Credit: Kanton Thurgau, Abteilung Öffentlicher Verkehr; Amt für Geoinformation. National GTFS and swisstopo boundaries retain their separate terms.
 
-**Next action:** Download the complete GML layer, establish vintage and operator mapping, and measure directed stop patterns including cross-border lake services. Representative GTFS agencies: `11`, `65`, `195`, `727`, `797`, `801`.
+**Implementation follow-up:** The [complete route inventory](THURGAU-ROUTE-INVENTORY.md) covers **132 annual GTFS route records across 15 agency identities and all five districts**, retaining cross-border calls, boats, city networks, night, replacement and inactive services. Directed Friday/Sunday validation admits **376 / 293 complete journeys** across 19 route records. [Regional feed](../public/data/thurgau-region/index.json); [machine-readable audit](../data/thurgau-audit/summary.json). City bus, lake, source-extent and disconnected-path gaps are explicit exclusions. This is a whole-canton inventory with partial geometry admission, not year-round or physical-direction certification.
 
 **Checked references:** [tg-wfs](https://ows.geo.tg.ch/geofy_access_proxy/oev?Request=GetCapabilities&Service=WFS&Version=2.0.0), [tg-count](https://ows.geo.tg.ch/geofy_access_proxy/oev?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=ms%3Abuslinie&RESULTTYPE=hits), [tg-sample](https://ows.geo.tg.ch/geofy_access_proxy/oev?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=ms%3Abuslinie&COUNT=3&SRSNAME=EPSG%3A4326), [tg-terms](https://shop.geo.tg.ch/sites/default/files/pdf/Nutzungsbedingungen_Geodaten.pdf).
 
@@ -544,7 +544,7 @@ This ordering is engineering judgement based on the evidence above, not a measur
 
 1. **Complete the existing Basel and Lausanne audits on their own terms.** Their latest detailed reports take precedence over this broad survey for measured route/path admission. Keep Zürich and Genève source refreshes distinct from geographical expansion.
 2. **Implement reusable official-line adapters for Bern and Aargau; extend to Luzern.** Bern has line/operator attributes and documented reuse, Aargau adds direction and GO codes, and Luzern has explicit 2026 line identifiers. Do not assume their code systems are interchangeable. These are the most useful next full joins.
-3. **Continue Zug coverage; evaluate Fribourg and Thurgau.** Zug's archive/WFS reconciliation and full-canton timetable inventory now support a partial regional bus/rail feed; the [detailed audit](ZUG-STUDY.md) records remaining branches, modes and vintage limits. Fribourg needs full retrieval, licensing and timetable-field mapping; Thurgau needs a full GML export, current vintage and reuse confirmation.
+3. **Continue Zug coverage; evaluate Fribourg and Thurgau.** Zug's archive/WFS reconciliation and full-canton timetable inventory now support a partial regional bus/rail feed; the [detailed audit](ZUG-STUDY.md) records remaining branches, modes and vintage limits. Fribourg needs full retrieval, licensing and timetable-field mapping; Thurgau now has a full source adapter and dated admission audit; city/lake geometry, source gaps and true geometry vintage remain unresolved.
 4. **Continue Solothurn network coverage.** The full-canton census, mode-filtered graph and exact-junction audit now produce complete Friday/Sunday stop patterns. Resolve remaining disconnected and out-of-extent paths, unsupported modes and the explicitly excluded night network; source segments are not operator route shapes.
 5. **Resolve SG redistribution and distribution for BL, VD, JU and NW.** SG now has an acquired source adapter and audited local feed, with publication permission unresolved; BL advertises an export; VD has a priced order workflow; JU/NW expose transport maps. The canton entries record the precise next action without pretending acquisition succeeded.
 6. **Continue source discovery or measured road matching for UR, SZ, OW, GL, SH, AR, AI, TI, GR, VS and NE.** Prioritise a regional route inventory first so that an official source, operator contribution or inferred path can be judged against an explicit denominator.

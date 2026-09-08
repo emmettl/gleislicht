@@ -89,7 +89,11 @@
     "data:st-gallen": "node --max-old-space-size=8192 scripts/build-st-gallen-region.mjs",
     "data:st-gallen:check": "node scripts/check-st-gallen-region.mjs",
     "data:st-gallen:report": "node scripts/document-st-gallen-study.mjs",
-    "data:st-gallen:audit": "node scripts/check-st-gallen-region.mjs --audit-only"
+    "data:st-gallen:audit": "node scripts/check-st-gallen-region.mjs --audit-only",
+    "data:thurgau:sources": "python3 scripts/prepare-thurgau-sources.py",
+    "data:thurgau": "node --max-old-space-size=8192 scripts/build-thurgau-region.mjs",
+    "data:thurgau:check": "node scripts/check-thurgau-region.mjs",
+    "data:thurgau:docs": "node scripts/document-thurgau-study.mjs"
   },
   "engines": {
     "node": ">=24.0.0"
