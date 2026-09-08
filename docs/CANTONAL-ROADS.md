@@ -215,7 +215,7 @@ Unknown recordings, conflicting dates and out-of-window or non-finite times prod
 
 **Road recordings** in the main network view opens a catalog of the published pilots, without fetching their recording JSON. Each entry displays its recording date, Swiss time window, complete-minute count and whether it contains observation gaps. Selecting an entry follows its canonical recording link and opens paused. The current recording is marked, and closing the picker returns focus to the opening button without changing playback. Labels and disclosures support all four UI languages.
 
-The picker now lists Horgen, Wallisellen–Bassersdorf, Kilchberg–Thalwil and Meilen–Stäfa. The [Bassersdorf–Lindau follow-up](CANTONAL-COVERAGE-REVIEW.md#bassersdorflindau-follow-up) confirms 245 complete minutes but leaves both Lindau detector directions unresolved after checking detailed official geometry. It is not listed as a playable recording. A detector-specific directional reference is needed before a third corridor can pass review.
+The picker now lists Horgen, Wallisellen–Bassersdorf, Kilchberg–Thalwil, Meilen–Stäfa, and Meilen. The [Bassersdorf–Lindau follow-up](CANTONAL-COVERAGE-REVIEW.md#bassersdorflindau-follow-up) confirms 245 complete minutes but leaves both Lindau detector directions unresolved after checking detailed official geometry. It is not listed as a playable recording. A detector-specific directional reference is needed before that corridor can pass review.
 
 ### Kilchberg–Thalwil playback
 
@@ -263,3 +263,24 @@ node scripts/build-cantonal-road-pilot.mjs \
   --pilot=meilen-staefa-2026-09-08 \
   --topology=/tmp/meilen-staefa-directions.json
 ```
+
+### Meilen Seestrasse playback
+
+The fifth recording adds the neighbouring **2.902 km** section between Meilen counters `ZH.CH:0491` and `ZH.CH:0591`, with **142 uninterrupted minutes on 8 September 2026, 14:14–16:35 CEST**. Choose **Road recordings → Meilen**, or open `?recording=meilen-seestrasse-2026-09-08`. Both directions have complete light/heavy observations. The afternoon archive contains 241/245 complete minutes for this pair; publication selects the longest complete run and does not fill missing observations.
+
+Meilen and Meilen–Stäfa have separate recording identities on ZH 17. The in-card recording selector switches between them, and shared links retain the selected counter pair and time through the final observation. Meilen–Stäfa remains the default for ordinary ZH 17 road selection; its published artifact and original direction review are unchanged.
+
+The [new station scope](../data/meilen-seestrasse-direction-scope.json) pins counter 0491's original detector audit as well as counter 0591. Both Zürich lanes independently validate negative stored path order. Reusing the fully checked KS17 continuation and both canton-qualified Rapperswil alternatives validates the Rapperswil lanes as positive, with bearing agreements **0.96 / 0.95** and destination-to-axis distance **85.38 m**. The builder admits only this pair, retains the original Zürich playback geometry, and rejects changes to the source geometry, catalog, station evidence or continuation. The existing Meilen–Stäfa builder still admits only its original pair.
+
+A separate [official Zürich road-axis extract](../data/meilen-seestrasse-junction-source.json) covers the entire section. The [review report](../data/meilen-seestrasse-review.json) records **three geometric junction areas** from counter 0491: a municipal approach around **711 m**, axis **703 at 877 m**, and axis **716 at 1,920 m**. These are geometric candidates, not surveyed turn permissions or a complete inventory of private access; turning flows and individual vehicle trajectories remain unmeasured. The builder rejects incomplete WFS responses and extracts that do not cover the playback section.
+
+Rebuild from committed evidence and the private observation archive:
+
+```sh
+node scripts/build-meilen-seestrasse-directions.mjs
+node scripts/build-cantonal-road-pilot.mjs \
+  --pilot=meilen-seestrasse-2026-09-08 \
+  --topology=/tmp/meilen-seestrasse-directions.json
+```
+
+Validation: 45 targeted tests across 10 files, eight desktop Chromium / iPhone WebKit browser checks, production build, architecture and lint checks pass. The published artifact rebuilds byte-for-byte from the archive. First-view transfer is 766.3 KiB gzip within the 790 KiB budget; recording data remains an on-demand download.
