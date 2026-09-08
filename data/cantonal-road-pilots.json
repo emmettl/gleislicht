@@ -66,5 +66,22 @@
       "ZH.CH:1091"
     ],
     "junctionAreas": 2
+  },
+  {
+    "id": "meilen-seestrasse-2026-09-08",
+    "road": "ZH:17",
+    "label": "Meilen",
+    "name": "Meilen · Seestrasse",
+    "file": "meilen-seestrasse-road-pilot.json",
+    "serviceDate": "2026-09-08",
+    "windowStart": 51240,
+    "windowEnd": 59700,
+    "initialTime": 51240,
+    "completeMinutes": 142,
+    "stationIds": [
+      "ZH.CH:0491",
+      "ZH.CH:0591"
+    ],
+    "junctionAreas": 3
   }
 ]

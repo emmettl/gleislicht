@@ -115,3 +115,8 @@ The initial Meilen–Stäfa review found 245 complete minutes and two validated 
 The [source extracts](../data/lakeside-road-review-sources.json) preserve exact query URLs, responses and hashes. The [destination review](../data/meilen-staefa-direction-review.json) records the remaining geometry failure. Reproduce it with `node scripts/audit-meilen-staefa-directions.mjs`. The same official axis extract gives two geometric junction candidates in this potential section, around 1.177 km (axis 718) and 2.749 km (axis 720); these remain review evidence, not measured turning flows.
 
 The subsequent [official St. Gallen continuation review](CANTONAL-ROADS.md#meilenstäfa-playback-and-official-road-continuation) resolves the gap: KS17 joins the Zürich endpoint within 0.379 m and reduces the destination-to-axis distance to 85.38 m. Both directions pass the unchanged gates, and the 245-minute Meilen–Stäfa recording is now published. The earlier Zürich-only result above is retained as provenance.
+
+
+## Meilen Seestrasse follow-up
+
+A separate review now admits the adjacent **0491–0591 Meilen counter pair**: 2.902 km, both directions, and 142 uninterrupted minutes from 14:14–16:35 CEST. The archive has 241 complete minutes out of 245 for this pair. The new station evidence uses the verified KS17 continuation without broadening the original Meilen–Stäfa review. Three geometric junction areas are recorded in a new full-section extract. See [Meilen Seestrasse playback](CANTONAL-ROADS.md#meilen-seestrasse-playback) for provenance, limits and rebuild commands. Erlenbach's bearing conflict and Lindau's missing direction evidence remain unresolved.

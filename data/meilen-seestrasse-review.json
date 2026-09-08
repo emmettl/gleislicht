@@ -1,0 +1,260 @@
+{
+  "status": "validated-for-pilot",
+  "sourceHashes": {
+    "public/data/zurich-cantonal-road-topology.json": "e6672433b70989a1fb5228bfe5d61933d58394a60df3e36b8deba83e8c9f65ea",
+    "data/zurich-cantonal-road-counters.json": "39af27ba04503d25f407e59d58712d49c7a7ca4e0f980dafc77609847e3dd9d9",
+    "data/zurich-cantonal-road-directions.json": "9667168eaa3efe7d2809d831efc05b50e5ea7229c109d623b7f2ebf7e72f66ca",
+    "data/lakeside-road-review-sources.json": "760a2fd12644b3ffa3abdc2143856b52d4ebf6bb34fb67e0ef45bd1b032f0750",
+    "data/meilen-staefa-axis-continuation.json": "7340784752f1b3efeffa7005a1c5b3603685dc62b1d86042202570907159ae35",
+    "data/meilen-seestrasse-direction-scope.json": "ad5dc4f7ba9bfd3928f8d5d8eb57af15ef5eaf40124ef4974e54cab47ede0576",
+    "data/meilen-seestrasse-junction-source.json": "5d9edc0cba44c91dcc0e0145b7842fc32620b514399d8990a8cdf35b802c1c5c"
+  },
+  "continuation": {
+    "pathId": "ZH:17:48a84c6fa4e6ad9c",
+    "stationIds": [
+      "ZH.CH:0491",
+      "ZH.CH:0591"
+    ],
+    "sourceUrl": "https://services.geo.sg.ch/wss/service/SG00098_WFS/guest?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=SG00098:Kantonsstrassen&SRSNAME=EPSG:2056&OUTPUTFORMAT=GEOJSON&BBOX=2701500,1230000,2707000,1235000,EPSG:2056&COUNT=10000",
+    "featureId": "Kantonsstrassen.8",
+    "joinMetres": 0.3786448142845488,
+    "note": "Continuation is used only for direction verification. Playback sections retain original Zürich geometry."
+  },
+  "detectors": [
+    {
+      "id": "ZH.CH:0491",
+      "road": "ZH:17",
+      "pathId": "ZH:17:48a84c6fa4e6ad9c",
+      "status": "validated",
+      "detectors": [
+        {
+          "id": "ZH.CH:0491.01",
+          "description": "Normalspur Richtung Zürich",
+          "alertCDirection": "positive",
+          "status": "validated",
+          "direction": "negative",
+          "destination": {
+            "name": "Zürich",
+            "coordinate": [
+              2682880.1500000004,
+              1248023.1
+            ],
+            "bounds": [
+              2677461.6,
+              1241764.4,
+              2688298.7,
+              1254281.8
+            ],
+            "sourceFeatureId": 314086
+          },
+          "destinationDistanceMetres": 13719.82,
+          "destinationRoadDistanceMetres": 908.92,
+          "offsetSeparationMetres": -14522.34,
+          "bearingAgreement": -0.91,
+          "offsetMetres": 16577.24
+        },
+        {
+          "id": "ZH.CH:0491.02",
+          "description": "Normalspur Richtung Rapperswil",
+          "alertCDirection": "negative",
+          "status": "validated",
+          "direction": "positive",
+          "destination": {
+            "name": "Rapperswil SG",
+            "coordinate": [
+              2704940.45,
+              1231758.2000000002
+            ],
+            "bounds": [
+              2703950,
+              1230841.3,
+              2705930.9,
+              1232675.1
+            ],
+            "sourceFeatureId": 392118
+          },
+          "destinationDistanceMetres": 15565.07,
+          "destinationRoadDistanceMetres": 85.38,
+          "offsetSeparationMetres": 17699.9,
+          "bearingAgreement": 0.96,
+          "offsetMetres": 16577.24,
+          "review": {
+            "method": "qualified-destination-and-official-axis-continuation",
+            "originalStatus": "unresolved-destination",
+            "continuationFeatureId": "Kantonsstrassen.8"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ZH.CH:0591",
+      "road": "ZH:17",
+      "pathId": "ZH:17:48a84c6fa4e6ad9c",
+      "status": "validated",
+      "detectors": [
+        {
+          "id": "ZH.CH:0591.01",
+          "description": "Normalspur Richtung Zürich",
+          "alertCDirection": "positive",
+          "status": "validated",
+          "direction": "negative",
+          "destination": {
+            "name": "Zürich",
+            "coordinate": [
+              2682880.1500000004,
+              1248023.1
+            ],
+            "bounds": [
+              2677461.6,
+              1241764.4,
+              2688298.7,
+              1254281.8
+            ],
+            "sourceFeatureId": 314086
+          },
+          "destinationDistanceMetres": 15909.52,
+          "destinationRoadDistanceMetres": 908.92,
+          "offsetSeparationMetres": -17424.17,
+          "bearingAgreement": -0.96,
+          "offsetMetres": 19479.07
+        },
+        {
+          "id": "ZH.CH:0591.02",
+          "description": "Normalspur Richtung Rapperswil",
+          "alertCDirection": "negative",
+          "status": "validated",
+          "direction": "positive",
+          "destination": {
+            "name": "Rapperswil SG",
+            "coordinate": [
+              2704940.45,
+              1231758.2000000002
+            ],
+            "bounds": [
+              2703950,
+              1230841.3,
+              2705930.9,
+              1232675.1
+            ],
+            "sourceFeatureId": 392118
+          },
+          "destinationDistanceMetres": 12854.56,
+          "destinationRoadDistanceMetres": 85.38,
+          "offsetSeparationMetres": 14798.07,
+          "bearingAgreement": 0.95,
+          "offsetMetres": 19479.07,
+          "review": {
+            "method": "qualified-destination-and-official-axis-continuation",
+            "originalStatus": "unresolved-destination",
+            "continuationFeatureId": "Kantonsstrassen.8"
+          }
+        }
+      ]
+    }
+  ],
+  "sections": [
+    {
+      "id": "ZH:17:48a84c6fa4e6ad9c:positive:ZH.CH:0491:ZH.CH:0591",
+      "road": "ZH:17",
+      "direction": "positive",
+      "fromSiteId": "ZH.CH:0491:axis-positive",
+      "toSiteId": "ZH.CH:0591:axis-positive",
+      "fromCoordinate": [
+        8.62886,
+        47.27176
+      ],
+      "toCoordinate": [
+        8.66256,
+        47.26344
+      ],
+      "distanceKm": 2.90183,
+      "pathPoints": 29
+    },
+    {
+      "id": "ZH:17:48a84c6fa4e6ad9c:negative:ZH.CH:0491:ZH.CH:0591",
+      "road": "ZH:17",
+      "direction": "negative",
+      "fromSiteId": "ZH.CH:0591:axis-negative",
+      "toSiteId": "ZH.CH:0491:axis-negative",
+      "fromCoordinate": [
+        8.66256,
+        47.26344
+      ],
+      "toCoordinate": [
+        8.62886,
+        47.27176
+      ],
+      "distanceKm": 2.90183,
+      "pathPoints": 29
+    }
+  ],
+  "junctions": [
+    {
+      "offsetMetres": 711,
+      "axes": [
+        "municipal"
+      ],
+      "sourceIds": [
+        4073
+      ],
+      "members": [
+        {
+          "axis": "municipal",
+          "sourceId": 4073,
+          "coordinate": [
+            2690725.9168,
+            1236129.9836999997
+          ],
+          "offsetMetres": 711.2776523794616,
+          "separationMetres": 1.941751094294431
+        }
+      ],
+      "status": "geometric-junction-candidate"
+    },
+    {
+      "offsetMetres": 877,
+      "axes": [
+        "703"
+      ],
+      "sourceIds": [
+        7624
+      ],
+      "members": [
+        {
+          "axis": "703",
+          "sourceId": 7624,
+          "coordinate": [
+            2690800.409600001,
+            1235983.2216999978
+          ],
+          "offsetMetres": 876.7433137454593,
+          "separationMetres": 3.2059704089852556
+        }
+      ],
+      "status": "geometric-junction-candidate"
+    },
+    {
+      "offsetMetres": 1920,
+      "axes": [
+        "716"
+      ],
+      "sourceIds": [
+        4065
+      ],
+      "members": [
+        {
+          "axis": "716",
+          "sourceId": 4065,
+          "coordinate": [
+            2691731.457249999,
+            1235728.8707500026
+          ],
+          "offsetMetres": 1920.3664635276732,
+          "separationMetres": 0.022732867351526406
+        }
+      ],
+      "status": "geometric-junction-candidate"
+    }
+  ],
+  "limitation": "Geometric junction candidates, not surveyed turns or an inventory of all private access. Turning flows and individual trajectories are not measured."
+}
