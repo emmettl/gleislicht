@@ -212,12 +212,12 @@
       "evidence": "Pinned GTFS annual canton census; https://www.zvb.ch/fahrplan/fahrplan-zvb-2026/"
     }
   },
-  "admission": "Admit only complete directed stop patterns on explicitly mapped operator/line geometry. All source calls, branches, call rules and border termini retained. Every pair must pass projection, connectivity and detour checks. Historic official corridor inference, not certified street directions, current diversions or observed movement. Three individually pinned sub-metre topology connectors are inferred and reported per pair and trip; no other gap filling. Failed bus pairs may use complete exact-identity Luzern 2026 paths; successful original pairs are retained and every source switch is recorded at a scheduled stop. Zugerbergbahn uses exact federal installation and operating-point identities, retaining its full curve and reporting GTFS endpoint connectors. Explicitly reviewed 653/N73 pairs may use OSM road inference only after the official paths fail, with whole-pattern identity and all-context path consensus.",
+  "admission": "Admit only complete directed stop patterns on explicitly mapped operator/line geometry. All source calls, branches, call rules and border termini retained. Every pair must pass projection, connectivity and detour checks. Historic official corridor inference, not certified street directions, current diversions or observed movement. Three individually pinned sub-metre topology connectors are inferred and reported per pair and trip; no other gap filling. Failed bus pairs may use complete exact-identity Luzern 2026 paths; successful original pairs are retained and every source switch is recorded at a scheduled stop. Zugerbergbahn uses exact federal installation and operating-point identities, retaining its full curve and reporting GTFS endpoint connectors. Explicitly reviewed bus pairs may use OSM road inference only after the official paths fail, with whole-pattern identity and all-context path consensus.",
   "scopeLimits": [
     "Annual membership is complete for the pinned national timetable and official canton polygon, not proof of unrepresented real-world services.",
     "Friday/Sunday plus preceding-day carry-in do not establish seasonal, holiday or year-round coverage.",
     "No-stop through traffic is outside this passenger-service inventory.",
-    "Geometry admission uses mapped Zug Buslinien, exact Luzern 2026 bus supplements, standard-gauge FOT infrastructure and the exact federal Zugerbergbahn installation. Boat and unresolved rail/bus patterns remain in the coverage denominator. Failed 653/N73 pairs may use separately attributed OSM road inference; these paths are not operator-verified.",
+    "Geometry admission uses mapped Zug Buslinien, exact Luzern 2026 bus supplements, standard-gauge FOT infrastructure and the exact federal Zugerbergbahn installation. Boat and unresolved rail/bus patterns remain in the coverage denominator. Failed explicitly inventoried bus pairs may use separately attributed OSM road inference; these paths are not operator-verified.",
     "The WFS matches the archive within 1 mm but proves no 2026 alignment validity. No realtime."
   ],
   "topologyJoins": {
@@ -516,6 +516,136 @@
         "routeId": "96-359-A-j26-1",
         "agencyId": "801",
         "line": "N73",
+        "routeType": 705
+      }
+    ],
+    "limits": {
+      "snapMetres": 120,
+      "detourRatio": 4.5,
+      "detourFloorMetres": 1200,
+      "alternativeSnapMetres": 5
+    },
+    "admission": "Fallback only after both official alternatives fail. Every complete scoped pattern on both civil days must be represented; all occurrences of a route-specific directed stop pair must have valid byte-identical paths. Inferred OSM roads, not operator-verified or diversion-certified."
+  },
+  "roadExpansion": {
+    "cacheFile": "data/zug-road-expansion-cache.json",
+    "cacheSha256": "1b4322de71c91d0fce20e999c02ed278444f21c9d1a5f0c49f288746dedcf641",
+    "configFile": "data/zug-road-evidence/pfaedle.cfg",
+    "configSha256": "31deee35fee9cb6fadc89cc5298e501a95cc4e8d78d7ae7fe6b60932cbf23db4",
+    "binarySha256": "6d193a755bc22c45516f8bce7594bb30e07a2632a5ef049a95915b262406cbd8",
+    "routes": [
+      {
+        "routeId": "92-525-j26-1",
+        "agencyId": "839",
+        "line": "525",
+        "routeType": 700
+      },
+      {
+        "routeId": "92-526-j26-1",
+        "agencyId": "839",
+        "line": "526",
+        "routeType": 700
+      },
+      {
+        "routeId": "92-602-A-j26-1",
+        "agencyId": "839",
+        "line": "602",
+        "routeType": 700
+      },
+      {
+        "routeId": "92-604-B-j26-1",
+        "agencyId": "839",
+        "line": "604",
+        "routeType": 700
+      },
+      {
+        "routeId": "92-609-j26-1",
+        "agencyId": "839",
+        "line": "609",
+        "routeType": 700
+      },
+      {
+        "routeId": "92-619-j26-1",
+        "agencyId": "839",
+        "line": "619",
+        "routeType": 700
+      },
+      {
+        "routeId": "92-626-A-j26-1",
+        "agencyId": "839",
+        "line": "626",
+        "routeType": 700
+      },
+      {
+        "routeId": "92-627-j26-1",
+        "agencyId": "839",
+        "line": "627",
+        "routeType": 700
+      },
+      {
+        "routeId": "92-631-A-j26-1",
+        "agencyId": "839",
+        "line": "631",
+        "routeType": 700
+      },
+      {
+        "routeId": "92-632-j26-1",
+        "agencyId": "839",
+        "line": "632",
+        "routeType": 700
+      },
+      {
+        "routeId": "92-648-j26-1",
+        "agencyId": "839",
+        "line": "648",
+        "routeType": 700
+      },
+      {
+        "routeId": "92-652-A-j26-1",
+        "agencyId": "839",
+        "line": "652",
+        "routeType": 700
+      },
+      {
+        "routeId": "92-EV1-Z-j26-1",
+        "agencyId": "7231",
+        "line": "EV1",
+        "routeType": 700
+      },
+      {
+        "routeId": "92-N1-D-j26-1",
+        "agencyId": "839",
+        "line": "N1",
+        "routeType": 705
+      },
+      {
+        "routeId": "92-N2-D-j26-1",
+        "agencyId": "839",
+        "line": "N2",
+        "routeType": 705
+      },
+      {
+        "routeId": "92-N3-E-j26-1",
+        "agencyId": "839",
+        "line": "N3",
+        "routeType": 705
+      },
+      {
+        "routeId": "92-N4-C-j26-1",
+        "agencyId": "839",
+        "line": "N4",
+        "routeType": 705
+      },
+      {
+        "routeId": "92-N5-A-j26-1",
+        "agencyId": "839",
+        "line": "N5",
+        "routeType": 705
+      },
+      {
+        "routeId": "92-N6-A-j26-1",
+        "agencyId": "839",
+        "line": "N6",
         "routeType": 705
       }
     ],

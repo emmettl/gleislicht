@@ -7,7 +7,7 @@ import { validateZugSnapshot } from './build-zug-region.mjs'
 import { reviewedZugJoins, zugGraphs, directedPatternKey, zugRouteKey } from './zug-line-geometry.mjs'
 import { gunzipSync } from 'node:zlib'
 import { loadZugBusSupplement, matchZugBusPair } from './zug-bus-supplement.mjs'
-import { loadZugRoads, matchZugRoadPair, zugOfficialAttempt } from './zug-road-geometry.mjs'
+import { loadZugRoads, mergeZugRoadCandidates, matchZugRoadPair, zugOfficialAttempt } from './zug-road-geometry.mjs'
 import { loadZugMountain } from './zug-mountain-geometry.mjs'
 import { loadZugRail } from './zug-rail-geometry.mjs'
 import { inCanton } from './zug-timetable.mjs'
@@ -70,6 +70,11 @@ export async function checkZugRegion({ auditPath = 'data/zug-study-audit.json', 
   assert.equal(audit.sourceHashes.road, audit.policy.road.cacheSha256)
   assert.deepEqual(audit.roadSource, roads.source)
   assert.deepEqual(audit.roadInventory, roads.inventory)
+  const roadExpansion = await loadZugRoads(audit.policy.roadExpansion, raw, audit.sourceHashes.timetable)
+  assert.equal(audit.sourceHashes.roadExpansion, audit.policy.roadExpansion.cacheSha256)
+  assert.deepEqual(audit.roadExpansionSource, roadExpansion.source)
+  assert.deepEqual(audit.roadExpansionInventory, roadExpansion.inventory)
+  roads.candidates = mergeZugRoadCandidates(roads, roadExpansion)
   const municipalities = (await json(join(sourceDirectory, 'municipalities.geojson'))).features
   const assignedStops = new Set()
   for (const m of audit.municipalityReview) {
@@ -113,9 +118,12 @@ export async function checkZugRegion({ auditPath = 'data/zug-study-audit.json', 
     const morning = await json(join(day.artifacts.directory, 'zug-region-morning.json'))
     assert.deepEqual(morning.trains.map(t => t.id).sort(), [...trains.values()].filter(t => t.start <= 31500 && t.end >= 24300).map(t => t.id).sort())
     const roadPairs = day.directedStopPairs.filter(p => p.geometrySource === 'osm-road-inference' && p.matched), roadKeys = new Set(roadPairs.map(p => p.key))
+    const expansionRoutes = new Set(audit.policy.roadExpansion.routes.map(r => r.routeId))
+    assert.equal(day.admittedTripsUsingRoadExpansion, sum(day.directedPatterns.filter(p => p.admitted && expansionRoutes.has(p.routeId) && p.pairKeys.some(k => roadKeys.has(k))), 'trips'))
     assert.equal(day.roadMatchedPairs, roadPairs.length)
     assert.equal(day.admittedTripsUsingRoads, sum(day.directedPatterns.filter(p => p.admitted && p.pairKeys.some(k => roadKeys.has(k))), 'trips'))
     assert.deepEqual(manifest.metadata.geometry.road.source, roads.source)
+    assert.deepEqual(manifest.metadata.geometry.roadExpansion.source, roadExpansion.source)
     assert(manifest.metadata.attribution.includes(roads.source.attribution))
     assert.equal(day.supplementalMatchedPairs, day.directedStopPairs.filter(p => p.geometrySource === 'luzern' && p.matched).length)
     const supplementKeys = new Set(day.directedStopPairs.filter(p => p.geometrySource === 'luzern' && p.matched).map(p => p.key))

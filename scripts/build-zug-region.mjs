@@ -7,7 +7,7 @@ import { chunkNetworkSnapshot, extractNetworkWindow } from '@motionstudies/data/
 import { zugGraphs, directedPatternKey } from './zug-line-geometry.mjs'
 import { zugMode, inCanton } from './zug-timetable.mjs'
 import { sha256 } from './download-luzern-sources.mjs'
-import { loadZugRoads, matchZugRoadPair, zugOfficialAttempt } from './zug-road-geometry.mjs'
+import { loadZugRoads, mergeZugRoadCandidates, matchZugRoadPair, zugOfficialAttempt } from './zug-road-geometry.mjs'
 import { loadZugMountain } from './zug-mountain-geometry.mjs'
 import { loadZugRail } from './zug-rail-geometry.mjs'
 import { loadZugBusSupplement, matchZugBusPair } from './zug-bus-supplement.mjs'
@@ -53,6 +53,10 @@ export async function buildZugRegion({ timetablePath, sourceDirectory, policyPat
   sourceHashes.mountain = policy.mountain.sourceSha256
   const roads = await loadZugRoads(policy.road, raw, sourceHashes.timetable)
   sourceHashes.road = policy.road.cacheSha256
+  const roadExpansion = await loadZugRoads(policy.roadExpansion, raw, sourceHashes.timetable)
+  sourceHashes.roadExpansion = policy.roadExpansion.cacheSha256
+  roads.candidates = mergeZugRoadCandidates(roads, roadExpansion)
+  const expansionRoutes = new Set(policy.roadExpansion.routes.map(r => r.routeId))
   const days = []
   for (const day of raw.snapshots) {
     console.log(`Matching ${day.date}: ${day.trains.length} full civil-day trips…`)
@@ -104,7 +108,7 @@ export async function buildZugRegion({ timetablePath, sourceDirectory, policyPat
       geometry: { license: catalogue.license, metadataUrl: 'https://zg.ch/de/planen-bauen/geoinformation/geoinformationen-nutzen/geoinformationen-von-a-bis-z',
         termsUrl: 'https://zg.ch/de/planen-bauen/geoinformation/geoinformationen-nutzen/nutzungsbedingungen',
         archiveLastModified: catalogue.archiveLastModified, geopackageLastChange: catalogue.geopackageLastChange, currentAlignmentValidity: 'unproven',
-        road: { source: roads.source, policy: policy.road }, mountain: { source: mountain.source, policy: policy.mountain }, busSupplement: { source: supplement.source, policy: policy.busSupplement }, topologyJoins: policy.topologyJoins, rail: { source: rail.source, policy: policy.rail },
+        road: { source: roads.source, policy: policy.road }, roadExpansion: { source: roadExpansion.source, policy: policy.roadExpansion }, mountain: { source: mountain.source, policy: policy.mountain }, busSupplement: { source: supplement.source, policy: policy.busSupplement }, topologyJoins: policy.topologyJoins, rail: { source: rail.source, policy: policy.rail },
         wfsComparison: catalogue.comparison, limits: policy.limits, sourceCrs: 'EPSG:2056', outputCrs: 'EPSG:4326',
         direction: 'Undirected source segments filtered by exact line membership. Ordered GTFS calls determine orientation; no one-way street certification.' },
       frequency: { headwayTrips: admitted.filter(t => t.frequency?.exactTimes === 0).length, exactFrequencyTrips: admitted.filter(t => t.frequency?.exactTimes === 1).length, model: 'Source-interval-anchored representative grid when exact_times=0; not scheduled departures.' } }
@@ -139,6 +143,7 @@ export async function buildZugRegion({ timetablePath, sourceDirectory, policyPat
       segmentOccurrences: counts.reduce((n, c) => n + c.segmentOccurrences, 0), matchedSegmentOccurrences: counts.reduce((n, c) => n + c.matchedSegmentOccurrences, 0),
       scheduledSegmentOccurrences: pairList.reduce((n, p) => n + p.scheduledOccurrences, 0), matchedScheduledSegmentOccurrences: pairList.filter(p => p.pathIndex !== null).reduce((n, p) => n + p.scheduledOccurrences, 0),
       representativeHeadwaySegmentOccurrences: pairList.reduce((n, p) => n + p.representativeHeadwayOccurrences, 0),
+      admittedTripsUsingRoadExpansion: ps.filter(p => p.admitted && expansionRoutes.has(p.routeId) && p.pairKeys.some(k => pairs.get(k).geometrySource === 'osm-road-inference')).reduce((n, p) => n + p.trips, 0),
       roadMatchedPairs: pairList.filter(p => p.geometrySource === 'osm-road-inference' && p.pathIndex !== null).length,
       admittedTripsUsingRoads: ps.filter(p => p.admitted && p.pairKeys.some(k => pairs.get(k).geometrySource === 'osm-road-inference')).reduce((n, p) => n + p.trips, 0),
       supplementalMatchedPairs: pairList.filter(p => p.geometrySource === 'luzern' && p.pathIndex !== null).length,
@@ -180,7 +185,7 @@ export async function buildZugRegion({ timetablePath, sourceDirectory, policyPat
     }) }
   })
   const report = { schemaVersion: 1, feed: raw.feed, sourceHashes, scope: raw.scope, policy, annualRouteRecords: inventory.length, annualAgencies: new Set(inventory.map(r => r.agencyId)).size,
-    catalogue, sourceInventory, roadSource: roads.source, roadInventory: roads.inventory, mountainSource: mountain.source, mountainInventory: mountain.inventory, supplementSource: supplement.source, supplementInventory, railSource: rail.source, railSourceInventory: rail.sourceInventory, municipalityReview, inventory, days,
+    catalogue, sourceInventory, roadSource: roads.source, roadInventory: roads.inventory, roadExpansionSource: roadExpansion.source, roadExpansionInventory: roadExpansion.inventory, mountainSource: mountain.source, mountainInventory: mountain.inventory, supplementSource: supplement.source, supplementInventory, railSource: rail.source, railSourceInventory: rail.sourceInventory, municipalityReview, inventory, days,
     validation: { passed: true, annualPinnedTimetableInventoryComplete: true, admittedGeometryComplete: true, cantonMotionCoverageComplete: false, publicationReady: false,
       meaning: 'All admitted complete directed patterns pass numerical and artifact checks. Coverage denominators include excluded modes/patterns. This does not certify road direction or establish year-round geometry coverage.',
       pending: ['Resolve every excluded route/pattern before claiming complete cantonal motion coverage', 'Review street directions, loops, rail branches and temporary diversions before presenting paths as direction-certified', 'Validate seasonal and holiday dates', 'Integrate UI selection and refresh separately if requested'] } }

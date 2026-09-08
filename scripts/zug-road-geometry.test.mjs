@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import { readFileSync } from 'node:fs'
 import { gunzipSync } from 'node:zlib'
-import { validateZugRoadScope, loadZugRoads, matchZugRoadPair, zugOfficialAttempt } from './zug-road-geometry.mjs'
+import { validateZugRoadScope, loadZugRoads, mergeZugRoadCandidates, matchZugRoadPair, zugOfficialAttempt } from './zug-road-geometry.mjs'
 import { roadConsensus } from './luzern-road-geometry.mjs'
 import { sha256 } from './download-luzern-sources.mjs'
 
@@ -16,6 +16,25 @@ describe('Zug complete-pattern OSM fallback', () => {
     expect(result.inventory.filter(p => p.agencyId === '801')).toHaveLength(2)
     expect(result.source.attribution).toBe('© OpenStreetMap contributors')
     expect(result.source.license).toBe('ODbL-1.0')
+  })
+  it('covers every expansion pattern and rejects overlapping source route scopes', async () => {
+    const expansionPolicy = JSON.parse(readFileSync('data/zug-policy.json')).roadExpansion
+    const base = await loadZugRoads(policy, raw, sha256(bytes))
+    const expansion = await loadZugRoads(expansionPolicy, raw, sha256(bytes))
+    expect(expansionPolicy.routes).toHaveLength(19)
+    expect(expansion.inventory.filter(p => p.agencyId === '839')).toHaveLength(71)
+    expect(expansion.inventory.filter(p => p.agencyId === '7231')).toHaveLength(2)
+    expect(mergeZugRoadCandidates(base, expansion).size).toBe(base.candidates.size + expansion.candidates.size)
+    expect(() => mergeZugRoadCandidates(base, base)).toThrow('Overlapping road source')
+  })
+  it('keeps Grienbach, Chlösterli and conflicting N6 paths excluded', () => {
+    const audit = JSON.parse(readFileSync('data/zug-study-audit.json'))
+    for (const day of audit.days) {
+      const failedBus = day.directedStopPairs.filter(p => p.mode === 'bus' && !p.matched)
+      expect([...new Set(failedBus.map(p => p.line))].sort()).toEqual(day.date === '2026-09-04' ? ['604', '619'] : ['604', '619', 'N6'])
+      for (const p of failedBus) expect(p.reason).toBe(p.line === 'N6' ? 'road-pattern-dependent-path' : 'road-matcher-rejected')
+      expect(day.routes.find(r => r.line === '631').admittedTrips).toBe(day.routes.find(r => r.line === '631').trips)
+    }
   })
   it('rejects missing short branches, changed stop coordinates and a wrong operator', () => {
     const missing = structuredClone(cache)

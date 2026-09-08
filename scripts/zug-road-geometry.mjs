@@ -32,12 +32,12 @@ export function validateZugRoadScope(raw, cache, policy) {
   }
 }
 
-export async function prepareZugRoads(timetablePath, policyPath, output) {
-  const bytes = await readFile(timetablePath), raw = JSON.parse(gunzipSync(bytes)), policy = (await json(policyPath)).road
+export async function prepareZugRoads(timetablePath, policyPath, output, policyKey = 'road') {
+  const bytes = await readFile(timetablePath), raw = JSON.parse(gunzipSync(bytes)), policy = (await json(policyPath))[policyKey]
   const { stops, agencies } = luzernRoadInputs(zugRoadScope(raw, policy))
   const metadata = { serviceDate: raw.dates[0], dates: raw.dates, feedVersion: raw.feed.feed_version,
     timetableSha256: sha256(bytes), sourceUrl: 'https://data.opentransportdata.swiss/en/dataset/timetable-2026-gtfs2020',
-    scope: 'Every complete Zug-calling 653 and N73 bus pattern across both civil days; all short branches, platform identities and cross-canton calls retained' }
+    scope: `Every complete Zug-calling bus pattern for ${policy.routes.map(r => `${r.agencyId}/${r.line}`).join(', ')} across both civil days; all short branches, platform identities and cross-canton calls retained` }
   await mkdir(output, { recursive: true })
   const summaries = []
   for (const agency of agencies.values()) summaries.push({ agencyId: agency.id, ...await prepareRoadFeed({
@@ -66,6 +66,21 @@ export async function loadZugRoads(policy, raw, timetableHash) {
     inventory: Object.entries(cache.agencies).flatMap(([agencyId, a]) => Object.entries(a.identities).map(([id, p]) => ({ id, agencyId, routeId: p.routeId, stopIds: p.stops.map(s => s[4]) }))) }
 }
 
+export function mergeZugRoadCandidates(...sources) {
+  const routes = new Set(), candidates = new Map()
+  for (const source of sources) {
+    for (const routeId of new Set(source.inventory.map(p => p.routeId))) {
+      assert(!routes.has(routeId), 'Overlapping road source route scopes')
+      routes.add(routeId)
+    }
+    for (const [key, value] of source.candidates) {
+      assert(!candidates.has(key), 'Overlapping road pair')
+      candidates.set(key, value)
+    }
+  }
+  return candidates
+}
+
 export function matchZugRoadPair(official, roads, routeId, fromId, toId) {
   if (official.path) return official
   const road = roads.candidates.get(JSON.stringify([routeId, fromId, toId]))
@@ -80,6 +95,6 @@ export function zugOfficialAttempt(pair) {
 
 if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {
   const [command, ...args] = process.argv.slice(2)
-  assert(['prepare', 'import'].includes(command), 'Usage: prepare TIMETABLE POLICY DIRECTORY | import PREPARED MATCHED CACHE EVIDENCE')
+  assert(['prepare', 'import'].includes(command), 'Usage: prepare TIMETABLE POLICY DIRECTORY [POLICY_KEY] | import PREPARED MATCHED CACHE EVIDENCE')
   console.log(command === 'prepare' ? await prepareZugRoads(...args) : await importLuzernRoads(...args))
 }

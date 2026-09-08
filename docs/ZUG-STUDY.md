@@ -84,6 +84,42 @@ This admits **126 additional Friday trips** (all 653), and **62 additional Sunda
 | N73 | Luzern, Luzernerhof → Luzern, Brüelstrasse | 2289.4 m | 1 |
 | N73 | Luzern, Brüelstrasse → Luzern, Haldensteig | 1890.9 m | 1 |
 
+## Remaining bus branches and night services
+
+A second, separately pinned [road cache](../data/zug-road-expansion-cache.json) and [matcher evidence](../data/zug-road-expansion-evidence/) cover **all 19 remaining incomplete bus route records**: 18 ZVB routes and GTFS agency 7231's EV1 replacement bus. The preparation retains **73 complete patterns** (71 ZVB, two EV1), including already-admitted branches on those routes. All original calls, coordinates, carry-in service dates and call rules survive admission. Road source date, ODbL attribution, binary/configuration hashes, import limits and consensus rules are the same as above. Each agency was independently matched on **8 September 2026**. The two road cache scopes must be disjoint; the original 653/N73 evidence remains unchanged.
+
+This adds **304 Friday** and **202 Sunday** trips, raising the feed to **3'425 / 2'108**. Road paths replace only failed official adjacent-call paths, so a complete trip may still use successful official geometry elsewhere. Every previously matched pair from the preceding committed feed retains its geometry hash. Scope here is the two source civil dates, not a claim of seasonal bus completeness or verified September diversions.
+
+| Agency / line | Friday admitted / source | Sunday admitted / source | Remaining reasons |
+| --- | --- | --- | --- |
+| 839 / 525 | 36 / 36 | 36 / 36 | none on fixtures |
+| 839 / 526 | 11 / 11 | 0 / 0 | none on fixtures |
+| 839 / 602 | 98 / 98 | 76 / 76 | none on fixtures |
+| 839 / 604 | 66 / 133 | 38 / 76 | road-matcher-rejected |
+| 839 / 609 | 84 / 84 | 53 / 53 | none on fixtures |
+| 839 / 619 | 30 / 38 | 16 / 25 | road-matcher-rejected |
+| 839 / 626 | 8 / 8 | 0 / 0 | none on fixtures |
+| 839 / 627 | 18 / 18 | 0 / 0 | none on fixtures |
+| 839 / 631 | 97 / 97 | 77 / 77 | none on fixtures |
+| 839 / 632 | 86 / 86 | 0 / 0 | none on fixtures |
+| 839 / 648 | 135 / 135 | 74 / 74 | none on fixtures |
+| 839 / 652 | 64 / 64 | 0 / 0 | none on fixtures |
+| 7231 / EV1 | 0 / 0 | 6 / 6 | none on fixtures |
+| 839 / N1 | 0 / 0 | 6 / 6 | none on fixtures |
+| 839 / N2 | 0 / 0 | 6 / 6 | none on fixtures |
+| 839 / N3 | 0 / 0 | 6 / 6 | none on fixtures |
+| 839 / N4 | 0 / 0 | 6 / 6 | none on fixtures |
+| 839 / N5 | 0 / 0 | 7 / 7 | none on fixtures |
+| 839 / N6 | 0 / 0 | 3 / 6 | road-pattern-dependent-path |
+
+The remaining bus exclusions are specific:
+
+- **604, Zug Grienbach:** the official stop projection fails at roughly 155 m. The road matcher places Grienbach **188.7 m** from its returned shape, beyond the unchanged 120 m limit. Both adjacent pairs fail; **67 Friday / 38 Sunday** complete trips remain excluded.
+- **619, Unterägeri Zentrum–Chlösterli, both directions:** pfaedle reports fallback hops. Those inferred direct hops are rejected during import; **8 Friday / 9 Sunday** trips remain excluded. Other 619 patterns pass (**30 / 16 trips**).
+- **N6, Hünenberg Dorf–Sins Bahnhof:** complete input patterns disagree on this directed pair's road path. Consensus rejects it, retaining **3 Sunday excluded trips**, while three other N6 trips pass. A convenient successful branch cannot substitute for this conflicting context.
+
+The raw road run also rejects two Walchwil 626 segments (missing shape and a 149.2 m snap), but the official Zug source already supplies those pairs successfully. The road fallback supplies only its different, previously collapsed official pair; all eight complete Friday 626 trips therefore pass the combined source checks. This distinction is preserved in the road cache's import report and the feed's per-pair provenance.
+
 ## Geometry and directed stop-pattern method
 
 Decode the original EPSG:2056 GeoPackage with strict geometry/schema checks. Transform XY with the existing swisstopo approximate LV95-to-WGS84 polynomial at full floating precision; no simplification. Graph identity uses seven decimal places. Shared source vertices connect only within the exact mapped line. Geometric crossings do not create junctions. The source has no direction attribute: shortest connected source corridors are oriented by the ordered GTFS calls and remain inferred alignments.
@@ -107,12 +143,12 @@ Calendar exceptions and preceding service-day spillover are applied. The civil d
 | Measure | 2026-09-04 | 2026-09-06 |
 | --- | --- | --- |
 | Civil-day trips | 3'597 | 2'263 |
-| Admitted / excluded trips | 3'121 / 476 | 1'906 / 357 |
-| Admitted / all directed patterns | 295 / 370 | 239 / 314 |
-| Matched / all routing-context pairs | 3533 / 3677 (96.08%) | 2971 / 3287 (90.39%) |
-| Fully matched / all unique directed route-stop pairs | 1564 / 1675 | 1386 / 1676 |
-| Matched / all scheduled segment occurrences | 49'944 / 51'680 (96.64%) | 31'765 / 33'257 (95.51%) |
-| All / admitted carry-in trips | 68 / 63 | 133 / 87 |
+| Admitted / excluded trips | 3'425 / 172 | 2'108 / 155 |
+| Admitted / all directed patterns | 319 / 370 | 265 / 314 |
+| Matched / all routing-context pairs | 3613 / 3677 (98.26%) | 3222 / 3287 (98.02%) |
+| Fully matched / all unique directed route-stop pairs | 1644 / 1675 | 1637 / 1676 |
+| Matched / all scheduled segment occurrences | 51'409 / 51'680 (99.48%) | 33'019 / 33'257 (99.28%) |
+| All / admitted carry-in trips | 68 / 65 | 133 / 126 |
 
 Rail pair routing depends on the complete ordered pattern, so days[].directedPairs and group pair counts include pattern context for rail. Bus pairs retain the route/from/to key. The separate uniqueDirectedRouteStopPairs count collapses context; fullyMatchedUniqueDirectedRouteStopPairs requires success in every tested context. These denominators must not be confused when comparing the original bus-only release with this expansion. Matched occurrences include good pairs on ultimately excluded patterns. They are not a percentage of admitted full trips. All modes and excluded operators stay in the denominator. Every emitted trip has a non-null, correctly oriented path for every adjacent source call.
 
@@ -121,15 +157,15 @@ Rail pair routing depends on the complete ordered pattern, so days[].directedPai
 | 2026-09-04 | 11:rail — Schweizerische Bundesbahnen SBB | 511 / 599 | 168 / 207 | 2331 / 2370 | 8096 / 8184 |
 | 2026-09-04 | 82:rail — Schweizerische Südostbahn (sob) | 18 / 18 | 11 / 11 | 184 / 184 | 324 / 324 |
 | 2026-09-04 | 820:bus — Verkehrsbetriebe Luzern AG | 24 / 24 | 2 / 2 | 38 / 38 | 456 / 456 |
-| 2026-09-04 | 839:bus — Zugerland Verkehrsbetriebe | 2312 / 2691 | 96 / 124 | 821 / 905 | 37747 / 39354 |
+| 2026-09-04 | 839:bus — Zugerland Verkehrsbetriebe | 2616 / 2691 | 120 / 124 | 901 / 905 | 39212 / 39354 |
 | 2026-09-04 | 158:mountain — Zugerbergbahn | 72 / 72 | 2 / 2 | 2 / 2 | 72 / 72 |
 | 2026-09-04 | 186:boat — Schifffahrtsgesellschaft für den Zugersee AG | 0 / 6 | 0 / 6 | 0 / 14 | 0 / 19 |
 | 2026-09-04 | 179:boat — Ägerisee Schifffahrt AG | 0 / 3 | 0 / 2 | 0 / 7 | 0 / 22 |
 | 2026-09-04 | 801:bus — PostAuto AG | 184 / 184 | 16 / 16 | 157 / 157 | 3249 / 3249 |
 | 2026-09-06 | 11:rail — Schweizerische Bundesbahnen SBB | 414 / 506 | 145 / 178 | 1946 / 1979 | 7239 / 7331 |
 | 2026-09-06 | 82:rail — Schweizerische Südostbahn (sob) | 17 / 17 | 12 / 12 | 204 / 204 | 304 / 304 |
-| 2026-09-06 | 839:bus — Zugerland Verkehrsbetriebe | 1273 / 1519 | 63 / 93 | 597 / 851 | 21632 / 22968 |
-| 2026-09-06 | 7231:bus — SBB Infrastruktur AG Bahnersatz | 0 / 6 | 0 / 2 | 0 / 2 | 0 / 6 |
+| 2026-09-06 | 839:bus — Zugerland Verkehrsbetriebe | 1469 / 1519 | 87 / 93 | 846 / 851 | 22880 / 22968 |
+| 2026-09-06 | 7231:bus — SBB Infrastruktur AG Bahnersatz | 6 / 6 | 2 / 2 | 2 / 2 | 6 / 6 |
 | 2026-09-06 | 158:mountain — Zugerbergbahn | 70 / 70 | 2 / 2 | 2 / 2 | 70 / 70 |
 | 2026-09-06 | 186:boat — Schifffahrtsgesellschaft für den Zugersee AG | 0 / 10 | 0 / 8 | 0 / 20 | 0 / 36 |
 | 2026-09-06 | 179:boat — Ägerisee Schifffahrt AG | 0 / 3 | 0 / 2 | 0 / 7 | 0 / 22 |
@@ -143,19 +179,19 @@ Counts overlap: a whole trip or annual route can serve several municipalities. T
 
 | Municipality | Source stops | Annual route records | Friday admitted / all trips | Sunday admitted / all trips |
 | --- | --- | --- | --- | --- |
-| Risch | 97 | 31 | 660 / 897 | 387 / 496 |
-| Hünenberg | 42 | 7 | 476 / 538 | 234 / 240 |
-| Neuheim | 22 | 3 | 140 / 183 | 0 / 83 |
-| Steinhausen | 41 | 9 | 514 / 514 | 247 / 253 |
-| Oberägeri | 89 | 8 | 379 / 432 | 262 / 303 |
-| Baar | 164 | 25 | 1131 / 1263 | 634 / 797 |
-| Zug | 262 | 47 | 1863 / 1984 | 1223 / 1360 |
-| Menzingen | 33 | 5 | 271 / 271 | 190 / 197 |
-| Cham | 109 | 17 | 857 / 922 | 463 / 481 |
-| Walchwil | 59 | 5 | 118 / 128 | 77 / 88 |
-| Unterägeri | 27 | 6 | 267 / 308 | 191 / 225 |
+| Risch | 97 | 31 | 833 / 897 | 423 / 496 |
+| Hünenberg | 42 | 7 | 538 / 538 | 237 / 240 |
+| Neuheim | 22 | 3 | 183 / 183 | 83 / 83 |
+| Steinhausen | 41 | 9 | 514 / 514 | 253 / 253 |
+| Oberägeri | 89 | 8 | 429 / 432 | 300 / 303 |
+| Baar | 164 | 25 | 1174 / 1263 | 733 / 797 |
+| Zug | 262 | 47 | 1863 / 1984 | 1258 / 1360 |
+| Menzingen | 33 | 5 | 271 / 271 | 197 / 197 |
+| Cham | 109 | 17 | 919 / 922 | 472 / 481 |
+| Walchwil | 59 | 5 | 126 / 128 | 84 / 88 |
+| Unterägeri | 27 | 6 | 297 / 308 | 213 / 225 |
 
-Neuheim has no admitted Sunday trip: current 631 patterns extend beyond the old line source and N2 has no mapped geometry. This is an explicit coverage gap, not absence of service.
+Neuheim now has admitted Sunday service: road inference completes 631 and N2 patterns beyond the old official line geometry. Municipality counts include full trips calling in each area and may overlap across municipalities.
 
 ## Complete annual route admission/exclusion inventory
 
@@ -191,48 +227,48 @@ Each row is an exact GTFS route_id, not a unique passenger-facing line. Counts a
 | 91-N7-j26-1 | 11 | N7 / rail | 134 | inactive | 8/8 | — |
 | 91-VAE-j26-1 | 82 | VAE / rail | 42 | inactive | inactive | — |
 | 92-23-j26-1 | 820 | 23 / bus | 44 | 24/24 | inactive | — |
-| 92-525-j26-1 | 839 | 525 / bus | 108 | 0/36 | 0/36 | missing-reviewed-line-geometry |
-| 92-526-j26-1 | 839 | 526 / bus | 22 | 0/11 | inactive | missing-reviewed-line-geometry |
+| 92-525-j26-1 | 839 | 525 / bus | 108 | 36/36 | 36/36 | — |
+| 92-526-j26-1 | 839 | 526 / bus | 22 | 11/11 | inactive | — |
 | 92-601-A-j26-1 | 839 | 601 / bus | 382 | 140/140 | 115/115 | — |
-| 92-602-A-j26-1 | 839 | 602 / bus | 257 | 98/98 | 75/76 | endpoint-gap |
+| 92-602-A-j26-1 | 839 | 602 / bus | 257 | 98/98 | 76/76 | — |
 | 92-602-C-j26-1 | 839 | 602 / bus | 1 | 1/1 | inactive | — |
 | 92-603-B-j26-1 | 839 | 603 / bus | 414 | 148/148 | 127/127 | — |
-| 92-604-B-j26-1 | 839 | 604 / bus | 348 | 66/133 | 38/76 | endpoint-gap |
+| 92-604-B-j26-1 | 839 | 604 / bus | 348 | 66/133 | 38/76 | road-matcher-rejected |
 | 92-605-A-j26-1 | 839 | 605 / bus | 128 | 50/50 | 37/37 | — |
 | 92-606-j26-1 | 839 | 606 / bus | 392 | 145/145 | 115/115 | — |
 | 92-607-j26-1 | 839 | 607 / bus | 214 | 115/115 | inactive | — |
-| 92-609-j26-1 | 839 | 609 / bus | 192 | 52/84 | 21/53 | endpoint-gap |
+| 92-609-j26-1 | 839 | 609 / bus | 192 | 84/84 | 53/53 | — |
 | 92-610-A-j26-1 | 839 | 610 / bus | 172 | 60/60 | 50/50 | — |
 | 92-611-B-j26-1 | 839 | 611 / bus | 764 | 143/143 | 117/117 | — |
 | 92-612-C-j26-1 | 839 | 612 / bus | 31 | 31/31 | inactive | — |
 | 92-613-C-j26-1 | 839 | 613 / bus | 325 | 129/129 | 71/71 | — |
 | 92-614-j26-1 | 839 | 614 / bus | 318 | 66/66 | 27/27 | — |
 | 92-616-A-j26-1 | 839 | 616 / bus | 62 | 46/46 | inactive | — |
-| 92-619-j26-1 | 839 | 619 / bus | 88 | 0/38 | 0/25 | missing-reviewed-line-geometry |
-| 92-626-A-j26-1 | 839 | 626 / bus | 8 | 0/8 | inactive | collapsed-path |
-| 92-627-j26-1 | 839 | 627 / bus | 18 | 0/18 | inactive | missing-reviewed-line-geometry |
-| 92-631-A-j26-1 | 839 | 631 / bus | 250 | 86/97 | 0/77 | endpoint-gap |
-| 92-632-j26-1 | 839 | 632 / bus | 136 | 54/86 | inactive | endpoint-gap |
+| 92-619-j26-1 | 839 | 619 / bus | 88 | 30/38 | 16/25 | road-matcher-rejected |
+| 92-626-A-j26-1 | 839 | 626 / bus | 8 | 8/8 | inactive | — |
+| 92-627-j26-1 | 839 | 627 / bus | 18 | 18/18 | inactive | — |
+| 92-631-A-j26-1 | 839 | 631 / bus | 250 | 97/97 | 77/77 | — |
+| 92-632-j26-1 | 839 | 632 / bus | 136 | 86/86 | inactive | — |
 | 92-634-j26-1 | 839 | 634 / bus | 248 | 97/97 | 76/76 | — |
 | 92-636-j26-1 | 839 | 636 / bus | 283 | 125/125 | 48/48 | — |
 | 92-641-A-j26-1 | 839 | 641 / bus | 350 | 139/139 | 77/77 | — |
 | 92-642-j26-1 | 839 | 642 / bus | 250 | 97/97 | 71/71 | — |
 | 92-643-j26-1 | 839 | 643 / bus | 362 | 135/135 | 74/74 | — |
-| 92-648-j26-1 | 839 | 648 / bus | 284 | 73/135 | 74/74 | endpoint-gap |
+| 92-648-j26-1 | 839 | 648 / bus | 284 | 135/135 | 74/74 | — |
 | 92-651-j26-1 | 839 | 651 / bus | 176 | 90/90 | inactive | — |
-| 92-652-A-j26-1 | 839 | 652 / bus | 118 | 0/64 | inactive | missing-reviewed-line-geometry |
+| 92-652-A-j26-1 | 839 | 652 / bus | 118 | 64/64 | inactive | — |
 | 92-653-j26-1 | 839 | 653 / bus | 314 | 126/126 | 60/60 | — |
 | 92-A04-R-j26-1 | 7231 | EV1 / bus | 10 | inactive | inactive | — |
 | 92-A0A-N-j26-1 | 7231 | EV2 / bus | 1 | inactive | inactive | — |
 | 92-A0A-W-j26-1 | 158 | EV1 / bus | 36 | inactive | inactive | — |
-| 92-EV1-Z-j26-1 | 7231 | EV1 / bus | 203 | inactive | 0/6 | missing-reviewed-line-geometry |
+| 92-EV1-Z-j26-1 | 7231 | EV1 / bus | 203 | inactive | 6/6 | — |
 | 92-EV2-S-j26-1 | 7231 | EV2 / bus | 5 | inactive | inactive | — |
-| 92-N1-D-j26-1 | 839 | N1 / bus | 6 | inactive | 0/6 | missing-reviewed-line-geometry |
-| 92-N2-D-j26-1 | 839 | N2 / bus | 6 | inactive | 0/6 | missing-reviewed-line-geometry |
-| 92-N3-E-j26-1 | 839 | N3 / bus | 6 | inactive | 0/6 | missing-reviewed-line-geometry |
-| 92-N4-C-j26-1 | 839 | N4 / bus | 6 | inactive | 0/6 | missing-reviewed-line-geometry |
-| 92-N5-A-j26-1 | 839 | N5 / bus | 8 | inactive | 0/7 | missing-reviewed-line-geometry |
-| 92-N6-A-j26-1 | 839 | N6 / bus | 7 | inactive | 0/6 | missing-reviewed-line-geometry |
+| 92-N1-D-j26-1 | 839 | N1 / bus | 6 | inactive | 6/6 | — |
+| 92-N2-D-j26-1 | 839 | N2 / bus | 6 | inactive | 6/6 | — |
+| 92-N3-E-j26-1 | 839 | N3 / bus | 6 | inactive | 6/6 | — |
+| 92-N4-C-j26-1 | 839 | N4 / bus | 6 | inactive | 6/6 | — |
+| 92-N5-A-j26-1 | 839 | N5 / bus | 8 | inactive | 7/7 | — |
+| 92-N6-A-j26-1 | 839 | N6 / bus | 7 | inactive | 3/6 | road-pattern-dependent-path |
 | 93-256-6-j26-1 | 158 | 2566 / mountain | 71 | 72/72 | 70/70 | — |
 | 94-366-0-j26-1 | 186 | 3660 / boat | 10 | 0/6 | 0/10 | no-reviewed-boat-geometry |
 | 94-366-1-j26-1 | 179 | 3661 / boat | 3 | 0/3 | 0/3 | no-reviewed-boat-geometry |
@@ -241,7 +277,7 @@ Each row is an exact GTFS route_id, not a unique passenger-facing line. Counts a
 | 96-357-7-j26-1 | 801 | 110 / bus | 53 | 52/52 | 28/28 | — |
 | 96-359-A-j26-1 | 801 | N73 / bus | 2 | inactive | 2/2 | — |
 
-Principal exclusions: complete international EC patterns at Chiasso–Como S. Giovanni and IR75 patterns at Kreuzlingen–Konstanz have no exact foreign operating-point match in the preserved rail source; S26/RE6 patterns using Däniken SO–Schönenwerd SO fail source connectivity/detour/stop-order checks. Their complete trips remain excluded. Zugerbergbahn is admitted through its separately reviewed federal funicular alignment; no reviewed water routes for Zugersee/Ägerisee; no mapped source lines for 525, 526, 619, 627, 652, replacement buses or ZVB night services; PostAuto N73 is admitted with the separate inferred-road fallback. Known source identity alone does not admit incomplete linework: 604's Grienbach stop projects about 155 m away; 609's Rothenthurm extension about 2.5 km; Neuheim branches exceed 1 km; 648's Knonau variant exceeds 4 km; the original Zug export lacks PostAuto 73's Luzern end and 110's Hochdorf station pair, now supplied by the exact Luzern supplement. Walchwil 626 has a collapsed projected pair. Full pair details and stop names are in the machine audit.
+Principal exclusions: complete international EC patterns at Chiasso–Como S. Giovanni and IR75 patterns at Kreuzlingen–Konstanz have no exact foreign operating-point match in the preserved rail source; S26/RE6 patterns using Däniken SO–Schönenwerd SO fail source connectivity/detour/stop-order checks. Their complete trips remain excluded. Zugersee and Ägerisee still have no reviewed water-route geometry. Bus exclusions are now limited to the specific 604, 619 and N6 failures above; their failed official attempts and rejected road evidence remain explicit. Full pair details, source call identities and stop names are in the machine audit.
 
 ## Every source line label
 
@@ -307,6 +343,11 @@ node scripts/match-postbus-roads.mjs --pfaedle /private/tmp/gleislicht-pfaedle/b
   --feed /private/tmp/zug-road-feed/839 --output /private/tmp/zug-road-matched/839
 node scripts/zug-road-geometry.mjs import /private/tmp/zug-road-feed /private/tmp/zug-road-matched \
   data/zug-road-cache.json data/zug-road-evidence
+# The independent expansion uses policy key roadExpansion:
+node scripts/zug-road-geometry.mjs prepare data/zug-timetable.json.gz data/zug-policy.json /private/tmp/zug-road-expansion-feed roadExpansion
+# Match agencies 839 and 7231 into /private/tmp/zug-road-expansion-matched as above.
+node scripts/zug-road-geometry.mjs import /private/tmp/zug-road-expansion-feed /private/tmp/zug-road-expansion-matched \
+  data/zug-road-expansion-cache.json data/zug-road-expansion-evidence
 ```
 
 The checker verifies source/policy/timetable hashes, annual census totals, all directed patterns including exclusions, all rematched pair hashes, source-specific bus alternatives, full road-pattern scope and retained matcher warning/shape replay, exact funicular installation/operating-point matches and rail pattern contexts, unique/context pair totals, operator and route aggregates, source call/timing replay, carry-in identities, path endpoints, morning membership and every chunk hash/length. Tests reject duplicate/truncated WFS responses, changed labels/coordinates, wrong operator joins, substring matching, arbitrary gaps/crossings, unreviewed topology joins and reversed or missing paths.

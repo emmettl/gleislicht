@@ -8,6 +8,7 @@ const percent = (a,b) => `${(100*a/b).toFixed(2)}%`
 const table = (headers,rows) => [`| ${headers.join(' | ')} |`,`| ${headers.map(()=>'---').join(' | ')} |`,...rows.map(row=>`| ${row.join(' | ')} |`)].join('\n')
 const days = audit.days
 const source = audit.catalogue
+const expansionIds = new Set(audit.policy.roadExpansion.routes.map(r=>r.routeId))
 const lines = [...new Set(audit.sourceInventory.map(s=>s.line))].sort((a,b)=>Number(a)-Number(b))
 const text = `# Zug canton: source adapter, regional feed and admission audit
 
@@ -78,7 +79,23 @@ Only pairs failing both available official sources can use the road fallback. Ev
 
 This admits **126 additional Friday trips** (all 653), and **62 additional Sunday trips** (60 on 653 and two N73). Both N73 trips belong to the preceding service day and intersect the Sunday civil day; neither is converted into a new Sunday service departure. Both directions are represented, with **six additional Friday directed patterns** and **four Sunday patterns**. Six Friday and four Sunday directed pairs use roads; two 653 pairs occur on both dates, so there are eight distinct road pairs overall.
 
-${table(['Line','From → to','Inferred length','Complete-pattern contexts'], [...new Map(days.flatMap(d=>d.directedStopPairs.filter(p=>p.geometrySource==='osm-road-inference'&&p.matched)).map(p=>[p.key,p])).values()].map(p=>[p.line,`${p.from} → ${p.to}`,`${p.lengthMetres.toFixed(1)} m`,p.roadContextOccurrences]))}
+${table(['Line','From → to','Inferred length','Complete-pattern contexts'], [...new Map(days.flatMap(d=>d.directedStopPairs.filter(p=>p.geometrySource==='osm-road-inference'&&p.matched&&!expansionIds.has(p.routeId))).map(p=>[p.key,p])).values()].map(p=>[p.line,`${p.from} → ${p.to}`,`${p.lengthMetres.toFixed(1)} m`,p.roadContextOccurrences]))}
+
+## Remaining bus branches and night services
+
+A second, separately pinned [road cache](../data/zug-road-expansion-cache.json) and [matcher evidence](../data/zug-road-expansion-evidence/) cover **all 19 remaining incomplete bus route records**: 18 ZVB routes and GTFS agency 7231's EV1 replacement bus. The preparation retains **73 complete patterns** (71 ZVB, two EV1), including already-admitted branches on those routes. All original calls, coordinates, carry-in service dates and call rules survive admission. Road source date, ODbL attribution, binary/configuration hashes, import limits and consensus rules are the same as above. Each agency was independently matched on **8 September 2026**. The two road cache scopes must be disjoint; the original 653/N73 evidence remains unchanged.
+
+This adds **${days[0].admittedTripsUsingRoadExpansion} Friday** and **${days[1].admittedTripsUsingRoadExpansion} Sunday** trips, raising the feed to **${count(days[0].admittedTrips)} / ${count(days[1].admittedTrips)}**. Road paths replace only failed official adjacent-call paths, so a complete trip may still use successful official geometry elsewhere. Every previously matched pair from the preceding committed feed retains its geometry hash. Scope here is the two source civil dates, not a claim of seasonal bus completeness or verified September diversions.
+
+${table(['Agency / line','Friday admitted / source','Sunday admitted / source','Remaining reasons'],audit.inventory.filter(r=>expansionIds.has(r.routeId)).map(r=>[`${r.agencyId} / ${r.line}`,...r.days.map(d=>`${d.admittedTrips} / ${d.trips}`),[...new Set(r.days.flatMap(d=>d.reasons))].join(', ')||'none on fixtures']))}
+
+The remaining bus exclusions are specific:
+
+- **604, Zug Grienbach:** the official stop projection fails at roughly 155 m. The road matcher places Grienbach **188.7 m** from its returned shape, beyond the unchanged 120 m limit. Both adjacent pairs fail; **67 Friday / 38 Sunday** complete trips remain excluded.
+- **619, Unterägeri Zentrum–Chlösterli, both directions:** pfaedle reports fallback hops. Those inferred direct hops are rejected during import; **8 Friday / 9 Sunday** trips remain excluded. Other 619 patterns pass (**30 / 16 trips**).
+- **N6, Hünenberg Dorf–Sins Bahnhof:** complete input patterns disagree on this directed pair's road path. Consensus rejects it, retaining **3 Sunday excluded trips**, while three other N6 trips pass. A convenient successful branch cannot substitute for this conflicting context.
+
+The raw road run also rejects two Walchwil 626 segments (missing shape and a 149.2 m snap), but the official Zug source already supplies those pairs successfully. The road fallback supplies only its different, previously collapsed official pair; all eight complete Friday 626 trips therefore pass the combined source checks. This distinction is preserved in the road cache's import report and the feed's per-pair provenance.
 
 ## Geometry and directed stop-pattern method
 
@@ -118,7 +135,7 @@ Counts overlap: a whole trip or annual route can serve several municipalities. T
 
 ${table(['Municipality','Source stops','Annual route records','Friday admitted / all trips','Sunday admitted / all trips'],audit.municipalityReview.map(m=>[m.name,m.cantonStopIds.length,m.annualRouteIds.length,...m.days.map(d=>`${d.admittedTrips} / ${d.trips}`)]))}
 
-Neuheim has no admitted Sunday trip: current 631 patterns extend beyond the old line source and N2 has no mapped geometry. This is an explicit coverage gap, not absence of service.
+Neuheim now has admitted Sunday service: road inference completes 631 and N2 patterns beyond the old official line geometry. Municipality counts include full trips calling in each area and may overlap across municipalities.
 
 ## Complete annual route admission/exclusion inventory
 
@@ -126,7 +143,7 @@ Each row is an exact GTFS route_id, not a unique passenger-facing line. Counts a
 
 ${table(['GTFS route ID','Agency','Line / mode','Annual trips','Friday','Sunday','Failure reasons'],audit.inventory.map(r=>[r.routeId,r.agencyId,`${r.line} / ${r.mode}`,r.annualTripRecords,...r.days.map(d=>d.trips?`${d.admittedTrips}/${d.trips}`:'inactive'),[...new Set(r.days.flatMap(d=>d.reasons))].join(', ')||'—']))}
 
-Principal exclusions: complete international EC patterns at Chiasso–Como S. Giovanni and IR75 patterns at Kreuzlingen–Konstanz have no exact foreign operating-point match in the preserved rail source; S26/RE6 patterns using Däniken SO–Schönenwerd SO fail source connectivity/detour/stop-order checks. Their complete trips remain excluded. Zugerbergbahn is admitted through its separately reviewed federal funicular alignment; no reviewed water routes for Zugersee/Ägerisee; no mapped source lines for 525, 526, 619, 627, 652, replacement buses or ZVB night services; PostAuto N73 is admitted with the separate inferred-road fallback. Known source identity alone does not admit incomplete linework: 604's Grienbach stop projects about 155 m away; 609's Rothenthurm extension about 2.5 km; Neuheim branches exceed 1 km; 648's Knonau variant exceeds 4 km; the original Zug export lacks PostAuto 73's Luzern end and 110's Hochdorf station pair, now supplied by the exact Luzern supplement. Walchwil 626 has a collapsed projected pair. Full pair details and stop names are in the machine audit.
+Principal exclusions: complete international EC patterns at Chiasso–Como S. Giovanni and IR75 patterns at Kreuzlingen–Konstanz have no exact foreign operating-point match in the preserved rail source; S26/RE6 patterns using Däniken SO–Schönenwerd SO fail source connectivity/detour/stop-order checks. Their complete trips remain excluded. Zugersee and Ägerisee still have no reviewed water-route geometry. Bus exclusions are now limited to the specific 604, 619 and N6 failures above; their failed official attempts and rejected road evidence remain explicit. Full pair details, source call identities and stop names are in the machine audit.
 
 ## Every source line label
 
@@ -165,6 +182,11 @@ node scripts/match-postbus-roads.mjs --pfaedle /private/tmp/gleislicht-pfaedle/b
   --feed /private/tmp/zug-road-feed/839 --output /private/tmp/zug-road-matched/839
 node scripts/zug-road-geometry.mjs import /private/tmp/zug-road-feed /private/tmp/zug-road-matched \\
   data/zug-road-cache.json data/zug-road-evidence
+# The independent expansion uses policy key roadExpansion:
+node scripts/zug-road-geometry.mjs prepare data/zug-timetable.json.gz data/zug-policy.json /private/tmp/zug-road-expansion-feed roadExpansion
+# Match agencies 839 and 7231 into /private/tmp/zug-road-expansion-matched as above.
+node scripts/zug-road-geometry.mjs import /private/tmp/zug-road-expansion-feed /private/tmp/zug-road-expansion-matched \\
+  data/zug-road-expansion-cache.json data/zug-road-expansion-evidence
 \`\`\`
 
 The checker verifies source/policy/timetable hashes, annual census totals, all directed patterns including exclusions, all rematched pair hashes, source-specific bus alternatives, full road-pattern scope and retained matcher warning/shape replay, exact funicular installation/operating-point matches and rail pattern contexts, unique/context pair totals, operator and route aggregates, source call/timing replay, carry-in identities, path endpoints, morning membership and every chunk hash/length. Tests reject duplicate/truncated WFS responses, changed labels/coordinates, wrong operator joins, substring matching, arbitrary gaps/crossings, unreviewed topology joins and reversed or missing paths.
