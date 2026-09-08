@@ -6,6 +6,8 @@ For expansion beyond the Lausanne work, use the [Swiss transit source inventory]
 
 The [eleven-canton opportunity review](UNSTUDIED-CANTONS.md), dated 9 September 2026, explicitly investigates UR, SZ, OW, NW, GL, SH, AR, AI, NE, JU and BL. It separates existing neighbouring-study coverage from missing cantonal work, proposes a first composition for each, and documents source gaps and priorities. Joint OW/NW and AR/AI studies, a Basel-Landschaft extension, and new Neuchâtel/Glarus compositions are the principal recommendations; these are research findings, not newly implemented feeds.
 
+The [existing-feed integration](REGIONAL-FEED-INTEGRATION.md) adds selectable Luzern, Zug, Thurgau and Fribourg studies with Friday/Sunday full-day playback. It records why Aargau and St Gallen remain outside the application.
+
 ## The three scales
 
 1. **Switzerland — rail atlas.** The existing national view keeps rail only. It shows the long-distance timetable, the national silhouette and the cadence between cities without several thousand local bus movements obscuring it.

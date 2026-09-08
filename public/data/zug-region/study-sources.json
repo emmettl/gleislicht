@@ -1,0 +1,181 @@
+{
+  "schemaVersion": 1,
+  "study": "zug-region",
+  "attribution": "SBB / opentransportdata.swiss · Quelle: GIS Kanton Zug · Luzern · FOT · SBB Infrastructure · swisstopo · OpenStreetMap contributors / ODbL",
+  "scope": "Partial canton coverage; complete admitted journeys with cross-boundary calls. Archival September 2026 fixtures; no automatic refresh or observed vehicle positions.",
+  "documentation": "https://github.com/emmettl/gleislicht/blob/main/docs/ZUG-STUDY.md",
+  "sourceCatalogue": "https://github.com/emmettl/gleislicht/blob/main/data/zug-sources/sources.json",
+  "sourceCatalogueSha256": "23c07007f1f3bc126e0c38d1ff919ccad1812b20decdfe4363ae8ae7e220cec0",
+  "geometryReuse": "Retain each publisher’s terms in the linked source catalogue. OpenStreetMap-derived geometry: ODbL-1.0; the display paths are supplied in the downloadable manifests.",
+  "osmLicense": "https://opendatacommons.org/licenses/odbl/1-0/",
+  "dates": [
+    {
+      "date": "2026-09-04",
+      "trips": 3530,
+      "archiveManifestSha256": "0096beeccc4dc7ae95af2ec389aff0d67216e28f9d002fbe855b68328127491e",
+      "archiveMorningSha256": "1945d5f677d9b0bb6afe8ce0a062fc9dbfca67a6ff9384d5e6a68298eb477d97",
+      "toleranceMetres": 5,
+      "maximumDeviationMetres": 4.998700214212796,
+      "originalVertices": 67703,
+      "displayVertices": 30400,
+      "endpointsUnchanged": true,
+      "timetableUnchanged": true,
+      "payload": {
+        "zug-region-day-chunks/00-02.json": {
+          "bytes": 62811,
+          "gzipBytes": 10631,
+          "sha256": "3ab9b0ab40e97931ed19dfbc983bef8c507369c7d1a240275165a461d22250b7"
+        },
+        "zug-region-day-chunks/02-04.json": {
+          "bytes": 50,
+          "gzipBytes": 62,
+          "sha256": "e02cd1fe8fa4533c5a8c598577052d6a8fe5236c265f0cfa8d5816b7fd86aa93"
+        },
+        "zug-region-day-chunks/04-06.json": {
+          "bytes": 99419,
+          "gzipBytes": 15512,
+          "sha256": "ccfc31dde5a0d105015f2773081919993f8b1073644d1d885441640649f8a7ac"
+        },
+        "zug-region-day-chunks/06-08.json": {
+          "bytes": 510810,
+          "gzipBytes": 59194,
+          "sha256": "46e38641fa9549991ae466f026bca6b422f6499ff636302bce9e46e3f51526b9"
+        },
+        "zug-region-day-chunks/08-10.json": {
+          "bytes": 485199,
+          "gzipBytes": 57400,
+          "sha256": "50740f9099a8ff30f3eb7cf76d25036dda6815227ff460cf34e978fdc58eaadd"
+        },
+        "zug-region-day-chunks/10-12.json": {
+          "bytes": 438247,
+          "gzipBytes": 52492,
+          "sha256": "00448fce9ff9d3552369a035dc21374abd238e3eed76719ebafd98d501a1ac80"
+        },
+        "zug-region-day-chunks/12-14.json": {
+          "bytes": 449923,
+          "gzipBytes": 53435,
+          "sha256": "f4895abec22effc599c339d7404ea3a826097a9b9d1881efd8597f39dbfe543d"
+        },
+        "zug-region-day-chunks/14-16.json": {
+          "bytes": 447897,
+          "gzipBytes": 53373,
+          "sha256": "1bde54dce910313af0d91847b15b63ec84ae5d3d442967b5419684038b7c8828"
+        },
+        "zug-region-day-chunks/16-18.json": {
+          "bytes": 544746,
+          "gzipBytes": 63371,
+          "sha256": "3af0e443b06c2b7abb8c31f2b83fd31e2a0016e0111c7a0761a87dbb7c522777"
+        },
+        "zug-region-day-chunks/18-20.json": {
+          "bytes": 484486,
+          "gzipBytes": 57624,
+          "sha256": "00d684d8c3be7f26ba6900727abe5b7568b88d4efbf8d0d37fa64cbbdd946f0b"
+        },
+        "zug-region-day-chunks/20-22.json": {
+          "bytes": 335192,
+          "gzipBytes": 41883,
+          "sha256": "e8c9e1e2da41f54f0bdff81d57f9da9f8f6ee8b8404a55bb38765dedd7297c30"
+        },
+        "zug-region-day-chunks/22-24.json": {
+          "bytes": 221554,
+          "gzipBytes": 29334,
+          "sha256": "4066086d904323d6fb6debc6a8ed76fb8e28f65a80365319ce68930bc08f855f"
+        },
+        "zug-region-day-manifest.json": {
+          "bytes": 794979,
+          "gzipBytes": 146929,
+          "sha256": "0b70a53b323105ae6617689eef218c345fa3acb45f9738e38eb513ecfde279f9"
+        },
+        "zug-region-morning.json": {
+          "bytes": 1342566,
+          "gzipBytes": 210059,
+          "sha256": "7e2c8f7c99aa5bf14b50e3ea86d633bf334bf4e7ca11024d527bfda66e4086c1"
+        }
+      }
+    },
+    {
+      "date": "2026-09-06",
+      "trips": 2225,
+      "archiveManifestSha256": "2c5be00fd5a9e31c06c470406e9d1038f4b4a401afc7d4d26de7fe7f780c4e9d",
+      "archiveMorningSha256": "f9a61d1e16344770030907ad7c0b393f370856984454cdac5aa794b4c1b7f1ab",
+      "toleranceMetres": 5,
+      "maximumDeviationMetres": 4.998700214212796,
+      "originalVertices": 64951,
+      "displayVertices": 32545,
+      "endpointsUnchanged": true,
+      "timetableUnchanged": true,
+      "payload": {
+        "zug-region-day-chunks/00-02.json": {
+          "bytes": 102014,
+          "gzipBytes": 16328,
+          "sha256": "1a24a63581f551a87fbfb9f4d11a334f112bbb06a6fcc3a4b465cbe61afe71c8"
+        },
+        "zug-region-day-chunks/02-04.json": {
+          "bytes": 31324,
+          "gzipBytes": 5124,
+          "sha256": "81012f54c131153b83ec7c76c331f0cda72bdeab9f9645550fbf9e066881e53f"
+        },
+        "zug-region-day-chunks/04-06.json": {
+          "bytes": 40656,
+          "gzipBytes": 7761,
+          "sha256": "a11046103095871e533167e9cd1e2e673f838c8959a89e9e48ce57ebe7571019"
+        },
+        "zug-region-day-chunks/06-08.json": {
+          "bytes": 199129,
+          "gzipBytes": 27294,
+          "sha256": "c93f21ae157f3b3317ce3aa1e8227ed5ec6896fab2f3eba0a520746731609403"
+        },
+        "zug-region-day-chunks/08-10.json": {
+          "bytes": 289337,
+          "gzipBytes": 36617,
+          "sha256": "ddeedd1ebd480ca4cff6df181a2ec411655e153e47bebdf5bc9297c0ca605067"
+        },
+        "zug-region-day-chunks/10-12.json": {
+          "bytes": 315862,
+          "gzipBytes": 39526,
+          "sha256": "05f1843a34b80ba986de2bca96863dab04c1c851c7899d3bf340eb0739276efc"
+        },
+        "zug-region-day-chunks/12-14.json": {
+          "bytes": 315965,
+          "gzipBytes": 39388,
+          "sha256": "77aae94c53218e76f5216ecfc02476aa66a31b67d0ac11568132ce432182f308"
+        },
+        "zug-region-day-chunks/14-16.json": {
+          "bytes": 319136,
+          "gzipBytes": 39710,
+          "sha256": "50d1e47e238e1f5adecef952a8f3e17bf1f76a5a39bb79a94cb7eec96a6c2b49"
+        },
+        "zug-region-day-chunks/16-18.json": {
+          "bytes": 320079,
+          "gzipBytes": 40196,
+          "sha256": "16bb360c4faa69042b455e477b2d7164872f076be14031b7950905fe0a8ff83d"
+        },
+        "zug-region-day-chunks/18-20.json": {
+          "bytes": 277799,
+          "gzipBytes": 35630,
+          "sha256": "8bded08fb757b0c5947059d8cf972af06d5d6dc57be427951ccc1d356b1ebb14"
+        },
+        "zug-region-day-chunks/20-22.json": {
+          "bytes": 235821,
+          "gzipBytes": 30944,
+          "sha256": "26bccc5d5bdea892acee2f2bb0421a9e1e48fa78433a45553c6f9ec7b2affa07"
+        },
+        "zug-region-day-chunks/22-24.json": {
+          "bytes": 198121,
+          "gzipBytes": 25913,
+          "sha256": "4d61e81655f5f94fe4651ca5dcb411ee9a10e2850e1b9096ed457c99dac1c70a"
+        },
+        "zug-region-day-manifest.json": {
+          "bytes": 836938,
+          "gzipBytes": 163013,
+          "sha256": "8df67c3e1a0b761a2966040cb0f130ce22bc8648fb6986407038f04dbd9b6c36"
+        },
+        "zug-region-morning.json": {
+          "bytes": 1084761,
+          "gzipBytes": 195399,
+          "sha256": "c1a6738bb3cf19f9eeb4b58e75532ee5b899257bc32c6e1131a744ec66bae34b"
+        }
+      }
+    }
+  ]
+}

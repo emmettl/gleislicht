@@ -1,0 +1,181 @@
+{
+  "schemaVersion": 1,
+  "study": "luzern-region",
+  "attribution": "SBB / opentransportdata.swiss · © rawi Kanton Luzern · © Verkehrsverbund Luzern · FOT · SBB Infrastructure · swisstopo · FOEN · OpenStreetMap contributors / ODbL",
+  "scope": "Partial canton coverage; complete admitted journeys with cross-boundary calls. Archival September 2026 fixtures; no automatic refresh or observed vehicle positions.",
+  "documentation": "https://github.com/emmettl/gleislicht/blob/main/docs/LUZERN-STUDY.md",
+  "sourceCatalogue": "https://github.com/emmettl/gleislicht/blob/main/data/luzern-sources/sources.json",
+  "sourceCatalogueSha256": "65e404e8972c7a9b14c0aa87179ed093acf87367a96428bca398bc516c3d1304",
+  "geometryReuse": "Retain each publisher’s terms in the linked source catalogue. OpenStreetMap-derived geometry: ODbL-1.0; the display paths are supplied in the downloadable manifests.",
+  "osmLicense": "https://opendatacommons.org/licenses/odbl/1-0/",
+  "dates": [
+    {
+      "date": "2026-09-04",
+      "trips": 12585,
+      "archiveManifestSha256": "553a6ee6e0528869d109490e46ce8b21d998550196652e3690df3f1e68b21f7b",
+      "archiveMorningSha256": "b9a66d23e91dc29d48946331c1d61a8a1725e8dc8847113f489fe3b4ab491308",
+      "toleranceMetres": 5,
+      "maximumDeviationMetres": 4.998393648860741,
+      "originalVertices": 325741,
+      "displayVertices": 62822,
+      "endpointsUnchanged": true,
+      "timetableUnchanged": true,
+      "payload": {
+        "luzern-region-day-chunks/00-02.json": {
+          "bytes": 297260,
+          "gzipBytes": 35515,
+          "sha256": "f0ade9c0a15d8b2fc06d405df6023191c8d50670eec8d52832fdc65dd153f9e9"
+        },
+        "luzern-region-day-chunks/02-04.json": {
+          "bytes": 50,
+          "gzipBytes": 62,
+          "sha256": "e02cd1fe8fa4533c5a8c598577052d6a8fe5236c265f0cfa8d5816b7fd86aa93"
+        },
+        "luzern-region-day-chunks/04-06.json": {
+          "bytes": 515753,
+          "gzipBytes": 58465,
+          "sha256": "9ec3d2bac5d3b838cf5730fb01e5931f73c1d8b5b095ecc078a8149c524f5769"
+        },
+        "luzern-region-day-chunks/06-08.json": {
+          "bytes": 1765538,
+          "gzipBytes": 172690,
+          "sha256": "5b0c6d19419b1632d0bd1af0166f8f48f1c854c5922c3f2626b84aa95c65b0a3"
+        },
+        "luzern-region-day-chunks/08-10.json": {
+          "bytes": 1858961,
+          "gzipBytes": 170559,
+          "sha256": "97edc6de28f6c96ff5cbe04549c2a250783da65dcfa6bc8555c305663cb15951"
+        },
+        "luzern-region-day-chunks/10-12.json": {
+          "bytes": 1929650,
+          "gzipBytes": 171096,
+          "sha256": "1ca0b8ccdff8f30d16d65634a4447ffa422febc2885f489809b4b81d1b560c6b"
+        },
+        "luzern-region-day-chunks/12-14.json": {
+          "bytes": 1958578,
+          "gzipBytes": 172562,
+          "sha256": "1ead5f131fd79552d138d6b06f86ac193fa9d8b6f819a49f690524b45866039d"
+        },
+        "luzern-region-day-chunks/14-16.json": {
+          "bytes": 1994905,
+          "gzipBytes": 176731,
+          "sha256": "ce9141ba9f225658852f809dabd547e4417f13e399397ffcb22017c73d8a931c"
+        },
+        "luzern-region-day-chunks/16-18.json": {
+          "bytes": 2186932,
+          "gzipBytes": 198347,
+          "sha256": "7efd5f23dcf9aa13525234ae4b5a34be6de65c395caf3638ae510fdf90578271"
+        },
+        "luzern-region-day-chunks/18-20.json": {
+          "bytes": 1697027,
+          "gzipBytes": 168298,
+          "sha256": "2d1c497b461f2202b85b4fde907ffc98e03748c4aecf10caba7e85ea5727d2e4"
+        },
+        "luzern-region-day-chunks/20-22.json": {
+          "bytes": 1029753,
+          "gzipBytes": 106747,
+          "sha256": "3762ee0e7a15040ad508af194de0e373355e6581591e1f8424f8ec1e287baac0"
+        },
+        "luzern-region-day-chunks/22-24.json": {
+          "bytes": 802678,
+          "gzipBytes": 84591,
+          "sha256": "fbc32241dac49294ad99ca199591c1854c7708b7daab0421935d3f49690b4909"
+        },
+        "luzern-region-day-manifest.json": {
+          "bytes": 1672847,
+          "gzipBytes": 322108,
+          "sha256": "fe4c97f8c80aed97f0cc771914a38beacfe73029ba25dac3b92f8306cb98a9ad"
+        },
+        "luzern-region-morning.json": {
+          "bytes": 3524746,
+          "gzipBytes": 501280,
+          "sha256": "ba16ad2edb5a0d446152f1e8aa2c3f31feb6fd7477563159a83f3fa8e552a17d"
+        }
+      }
+    },
+    {
+      "date": "2026-09-06",
+      "trips": 10478,
+      "archiveManifestSha256": "dbf97687fb40bf71efd0ba2033ee7727294938eff292134cc3dbfbaf9af5a86b",
+      "archiveMorningSha256": "c462d1978a1ddfa9c9e36add8b8e609c9035cc075ccca9fb9045ffe01685bb5e",
+      "toleranceMetres": 5,
+      "maximumDeviationMetres": 4.999969108431438,
+      "originalVertices": 326756,
+      "displayVertices": 64091,
+      "endpointsUnchanged": true,
+      "timetableUnchanged": true,
+      "payload": {
+        "luzern-region-day-chunks/00-02.json": {
+          "bytes": 404734,
+          "gzipBytes": 50226,
+          "sha256": "76e689167cffe6edcd95c5c553e653ddb0d3fc02b7b872776c2c62bbcf86eb4c"
+        },
+        "luzern-region-day-chunks/02-04.json": {
+          "bytes": 177554,
+          "gzipBytes": 21587,
+          "sha256": "a33e7809c46f72822862fda9bcdcb7dd1a3f599413146c07788745e55bf476b6"
+        },
+        "luzern-region-day-chunks/04-06.json": {
+          "bytes": 255310,
+          "gzipBytes": 32480,
+          "sha256": "1d5b2b4c9c17b52db426ef0b03fc36cda99e415a038673b2e0c44e54454c8c83"
+        },
+        "luzern-region-day-chunks/06-08.json": {
+          "bytes": 826826,
+          "gzipBytes": 86257,
+          "sha256": "d76bc0b293b08d9976d9d5a5353d9467557815b90baa3117b6576867377d4aa7"
+        },
+        "luzern-region-day-chunks/08-10.json": {
+          "bytes": 1456009,
+          "gzipBytes": 131937,
+          "sha256": "f7eaa6ea090ed8c340ef24f8c98fd6c6e4e7a9b2cec232092e9971dccaadd28a"
+        },
+        "luzern-region-day-chunks/10-12.json": {
+          "bytes": 1673419,
+          "gzipBytes": 146239,
+          "sha256": "fedbdd7546fe0070acefbc57b3aede40bfeeff6a01112615148a28da2187bf29"
+        },
+        "luzern-region-day-chunks/12-14.json": {
+          "bytes": 1700149,
+          "gzipBytes": 147255,
+          "sha256": "8001404b8fb90e3eac21e67405b32b1029a1e40e304b40c931de77e8b7c26905"
+        },
+        "luzern-region-day-chunks/14-16.json": {
+          "bytes": 1731704,
+          "gzipBytes": 149768,
+          "sha256": "01f0010ec22f078fbd7af7ec343003bd7df9aecaea6f4d8c53c7753cb754c2ad"
+        },
+        "luzern-region-day-chunks/16-18.json": {
+          "bytes": 1586183,
+          "gzipBytes": 142431,
+          "sha256": "3b6f5f9493c2eea6a1f30950caf27134e9a319ebd5f918f35cf80a57a101c2c8"
+        },
+        "luzern-region-day-chunks/18-20.json": {
+          "bytes": 1147245,
+          "gzipBytes": 116787,
+          "sha256": "e8b0c9ffc392fa61adbd98b05c8ae846aa5cba10663f16380c310ded49d8ab6c"
+        },
+        "luzern-region-day-chunks/20-22.json": {
+          "bytes": 862057,
+          "gzipBytes": 90247,
+          "sha256": "0f6b26b6b961da4077bf0341c74adb3ad03c0e3ccd629afa388cd3eaa35ba27e"
+        },
+        "luzern-region-day-chunks/22-24.json": {
+          "bytes": 733282,
+          "gzipBytes": 76613,
+          "sha256": "be80fce9a42b5b3919f23b48977cbb550c291ef29612bbb949f083aaa35f92ab"
+        },
+        "luzern-region-day-manifest.json": {
+          "bytes": 1696792,
+          "gzipBytes": 348194,
+          "sha256": "946bb96d5d87803921a88a2e754b071420e5e2ec65b0e165853ca84963543f1d"
+        },
+        "luzern-region-morning.json": {
+          "bytes": 2777249,
+          "gzipBytes": 453793,
+          "sha256": "7ea6b6488a4efff703174b7e1e0c5a28ee4edcbdda025dfbd7cf212dc599a02d"
+        }
+      }
+    }
+  ]
+}

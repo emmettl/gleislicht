@@ -26,6 +26,8 @@ async function renderedAirports(page: Page) {
 
 test('Air keeps airport labels above other labels through loading, filters and vehicle-label changes', async ({ page, isMobile }, testInfo) => {
   const errors: string[] = []
+  const rendererRequests: string[] = []
+  page.on('request', request => { if (request.url().includes('/AirTrafficLayer.js')) rendererRequests.push(request.url()) })
   page.on('pageerror', error => errors.push(error.message))
   let releaseFlights!: () => void
   const flightsReady = new Promise<void>(resolve => { releaseFlights = resolve })
@@ -36,6 +38,7 @@ test('Air keeps airport labels above other labels through loading, filters and v
   await page.goto('/')
   await expect(page.locator('.scene canvas')).toBeVisible()
   await expect.poll(async () => (await renderedAirports(page))?.airports.length).toBe(0)
+  expect(rendererRequests).toHaveLength(0)
   const toggle = page.locator(isMobile ? '.mobile-air-toggle' : '.network-study-picker .air-toggle')
   await toggle.click()
   const assertAirports = async () => {
@@ -51,6 +54,7 @@ test('Air keeps airport labels above other labels through loading, filters and v
   }
   // Airports appear before the flight snapshot arrives and never duplicate it.
   try { await assertAirports() } finally { releaseFlights() }
+  expect(rendererRequests.length).toBeGreaterThan(0)
   await expect(page.locator('.network-card .air-count')).toHaveAttribute('aria-label', /Aircraft aloft/)
   await assertAirports()
 

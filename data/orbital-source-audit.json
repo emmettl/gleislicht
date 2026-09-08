@@ -124,8 +124,8 @@
     {
       "id": "solothurn-region",
       "file": "solothurn-region-day-manifest.json",
-      "sha256": "c89dac9bfec9fde803c3a9943d6b87b854738462ad52afbfedbdc036db86a9a6",
-      "inputSha256": "4d617e5248b5317f7eb57288f80624d69549fe69b1cc6b40321926112d5f8439",
+      "sha256": "44a4f9e26784820b4975add2791454726a94aa1ecc89680ec1e0268f3b6b5cab",
+      "inputSha256": "468d4a67d062b16e0e6017d9dad869b19070ee89e9f75c94fa3564dae9b06acd",
       "date": "2026-09-04",
       "feedVersion": "20260902",
       "journeys": 7033,
@@ -182,6 +182,16 @@
       "retainedJourneys": 0
     },
     {
+      "id": "rochers",
+      "file": "rochers-day.json",
+      "sha256": "8e70fbec1896cbda34ac811f6f372e43156a4e4b6f9ec85249ca74310910de49",
+      "inputSha256": "8e70fbec1896cbda34ac811f6f372e43156a4e4b6f9ec85249ca74310910de49",
+      "date": "2026-09-04",
+      "feedVersion": "20260902",
+      "journeys": 37,
+      "retainedJourneys": 0
+    },
+    {
       "id": "territet",
       "file": "territet-day.json",
       "sha256": "fd5bfd43481f836b1bfdc74723c1914afb48cf4eafe896c238194160e8b44e9a",
@@ -192,14 +202,24 @@
       "retainedJourneys": 140
     },
     {
-      "id": "rochers",
-      "file": "rochers-day.json",
-      "sha256": "8e70fbec1896cbda34ac811f6f372e43156a4e4b6f9ec85249ca74310910de49",
-      "inputSha256": "8e70fbec1896cbda34ac811f6f372e43156a4e4b6f9ec85249ca74310910de49",
+      "id": "riviera-region",
+      "file": "riviera-region-day-manifest.json",
+      "sha256": "c99200ff35676746896194ce9243b30b262bfa6864be210ece05591d59c4bf00",
+      "inputSha256": "22e8a4e0b3f130207e2a5c2910ed9ede68fa14abdb6b25307fe7d12c9fc12ee7",
+      "date": "2026-09-08",
+      "feedVersion": "20260905",
+      "journeys": 1907,
+      "retainedJourneys": 1568
+    },
+    {
+      "id": "fribourg-region",
+      "file": "fribourg-region/2026-09-04/study/fribourg-region-day-manifest.json",
+      "sha256": "879cac0746378cf64e16629df51cfd0e1931a8b7da8671955ab0c04e0e833d2a",
+      "inputSha256": "daa57c210b50d67b310e17357ae368b124ec51b1623c7565832b23807da62511",
       "date": "2026-09-04",
       "feedVersion": "20260902",
-      "journeys": 37,
-      "retainedJourneys": 0
+      "journeys": 5578,
+      "retainedJourneys": 3934
     },
     {
       "id": "luzern",
@@ -249,12 +269,22 @@
       "reason": "weekend alternative; orbital uses a composite weekday"
     },
     {
+      "file": "fribourg-region/2026-09-06/study/fribourg-region-day-manifest.json",
+      "date": "2026-09-06",
+      "reason": "weekend alternative; orbital uses a composite weekday"
+    },
+    {
       "file": "graubuenden-region/2026-09-06/graubuenden-region-day-manifest.json",
       "date": "2026-09-06",
       "reason": "weekend alternative; orbital uses a composite weekday"
     },
     {
       "file": "luzern-region/2026-09-06/luzern-region-day-manifest.json",
+      "date": "2026-09-06",
+      "reason": "weekend alternative; orbital uses a composite weekday"
+    },
+    {
+      "file": "luzern-region/2026-09-06/study/luzern-region-day-manifest.json",
       "date": "2026-09-06",
       "reason": "weekend alternative; orbital uses a composite weekday"
     },
@@ -272,6 +302,11 @@
       "reason": "not a public-transport network snapshot"
     },
     {
+      "file": "thurgau-region/2026-09-06/study/thurgau-region-day-manifest.json",
+      "date": "2026-09-06",
+      "reason": "weekend alternative; orbital uses a composite weekday"
+    },
+    {
       "file": "thurgau-region/2026-09-06/thurgau-region-day-manifest.json",
       "date": "2026-09-06",
       "reason": "weekend alternative; orbital uses a composite weekday"
@@ -283,6 +318,11 @@
     },
     {
       "file": "valais-region/2026-09-06/valais-region-day-manifest.json",
+      "date": "2026-09-06",
+      "reason": "weekend alternative; orbital uses a composite weekday"
+    },
+    {
+      "file": "zug-region/2026-09-06/study/zug-region-day-manifest.json",
       "date": "2026-09-06",
       "reason": "weekend alternative; orbital uses a composite weekday"
     },
@@ -300,6 +340,14 @@
       "selectedFile": "bern-region-day-manifest.json"
     },
     {
+      "id": "luzern",
+      "file": "luzern-region/2026-09-04/study/luzern-region-day-manifest.json",
+      "date": "2026-09-04",
+      "sha256": "fe4c97f8c80aed97f0cc771914a38beacfe73029ba25dac3b92f8306cb98a9ad",
+      "reason": "alternate copy or older weekday",
+      "selectedFile": "luzern-region/2026-09-04/luzern-region-day-manifest.json"
+    },
+    {
       "id": "solothurn-region",
       "file": "solothurn-region/2026-09-04/solothurn-region-day-manifest.json",
       "date": "2026-09-04",
@@ -308,16 +356,32 @@
       "selectedFile": "solothurn-region-day-manifest.json"
     },
     {
+      "id": "thurgau",
+      "file": "thurgau-region/2026-09-04/study/thurgau-region-day-manifest.json",
+      "date": "2026-09-04",
+      "sha256": "5315aba7f13d7ab49fa4e88028df7a8690b80fc56edf98b6129b6c2db1de9795",
+      "reason": "alternate copy or older weekday",
+      "selectedFile": "thurgau-region/2026-09-04/thurgau-region-day-manifest.json"
+    },
+    {
       "id": "valais-region",
       "file": "valais-region/2026-09-04/valais-region-day-manifest.json",
       "date": "2026-09-04",
       "sha256": "5b07ee332e4a73e4bf89953e05d23c34be4313bab2e39ea90b2432fa11b0ef7a",
       "reason": "alternate copy or older weekday",
       "selectedFile": "valais-region-day-manifest.json"
+    },
+    {
+      "id": "zug",
+      "file": "zug-region/2026-09-04/study/zug-region-day-manifest.json",
+      "date": "2026-09-04",
+      "sha256": "0b70a53b323105ae6617689eef218c345fa3acb45f9738e38eb513ecfde279f9",
+      "reason": "alternate copy or older weekday",
+      "selectedFile": "zug-region/2026-09-04/zug-region-day-manifest.json"
     }
   ],
-  "journeys": 171544,
-  "peak": 5173,
+  "journeys": 177046,
+  "peak": 5344,
   "dates": [
     "2026-09-04",
     "2026-09-08"

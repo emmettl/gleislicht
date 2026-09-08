@@ -1,5 +1,7 @@
 # Zug canton: source adapter, regional feed and admission audit
 
+**Application integration (9 September 2026):** the admitted Friday/Sunday feed is now selectable through a separate compact display release. See [existing-feed integration](REGIONAL-FEED-INTEGRATION.md) for controls, attribution, preserved evidence, payload checks and remaining limits. Earlier statements below describe the original data-only delivery.
+
 Inventory and source review: **8 September 2026**. Start point: [Swiss transit source inventory](SWISS-TRANSIT-SOURCE-INVENTORY.md#zg).
 
 **The annual timetable inventory covers the whole canton. The regional bus, rail, funicular and shipping feed has partial geometry coverage, including explicitly attributed OSM bus and border-rail inference.** It admits only complete directed stop patterns passing the numerical source checks, on Friday **4 September 2026** and Sunday **6 September 2026**. Admission is not certification of a current 2026 alignment, one-way street, running track or temporary diversion.

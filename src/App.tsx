@@ -1,3 +1,4 @@
+import { ADDITIONAL_REGION_IDS, ADDITIONAL_REGIONS, additionalRegionDate, additionalRegionKey, isAdditionalRegion } from './studies/additional-regions.ts'
 import { useUiText } from './use-ui-text.ts'
 import { useNowClock } from '@motionstudies/web/use-now-clock'
 import { useBrowserLocation } from '@motionstudies/web/use-browser-location'
@@ -370,6 +371,9 @@ export function App({ edition, suspended = false }: AppProps) {
   const [jungfrauTerrainBinding, setJungfrauTerrainBinding] = useState<MeasuredTerrainBinding>()
   const [rigiTerrainBinding, setRigiTerrainBinding] = useState<RigiTerrainBinding>()
   const [zvvRegionNetwork, setZvvRegionNetwork] = useState<NetworkSnapshot>()
+  const [additionalSnapshot, setAdditionalSnapshot] = useState<{ key: string; network: NetworkSnapshot }>()
+  const [additionalDates, setAdditionalDates] = useState<Record<string, string>>(() => Object.fromEntries(ADDITIONAL_REGION_IDS.map(id => [id, additionalRegionDate(initialLink.study === id ? initialLink.date : undefined)])))
+  const [additionalAttempt, setAdditionalAttempt] = useState(0)
   const [valaisRegionNetwork, setValaisRegionNetwork] = useState<NetworkSnapshot>()
   const [ticinoRegionNetwork, setTicinoRegionNetwork] = useState<NetworkSnapshot>()
   const [valaisAttempt, setValaisAttempt] = useState(0)
@@ -481,6 +485,14 @@ export function App({ edition, suspended = false }: AppProps) {
     return () => { current = false }
   }, [language])
   const help = text.controlHelp
+  const additionalId = isAdditionalRegion(networkStudy) ? networkStudy : undefined
+  const additionalKey = additionalId ? additionalRegionKey(additionalId, additionalDates[additionalId]) : undefined
+  const additionalNetwork = additionalSnapshot?.key === additionalKey ? additionalSnapshot?.network : undefined
+  const [additionalLocale, setAdditionalLocale] = useState<typeof import('./studies/additional-regions-copy.tsx')>()
+  useEffect(() => { if (additionalId) void import('./studies/additional-regions-copy.tsx').then(setAdditionalLocale) }, [additionalId])
+  const additionalRegion = additionalId ? additionalLocale?.ADDITIONAL_REGION_DETAILS[additionalId] : undefined
+  const additionalCopy = additionalId ? additionalLocale?.additionalRegionCopy(language, additionalId) : undefined
+  const additionalLabel = additionalCopy?.name.split(' · ')[0] ?? (additionalId ? ADDITIONAL_REGIONS[additionalId].name : undefined)
   const isRigi = networkStudy === 'rigi-lake'
   const isValais = networkStudy === 'valais-region'
   const [valaisLocale, setValaisLocale] = useState<typeof import('./studies/valais-copy.ts')>()
@@ -545,8 +557,8 @@ export function App({ edition, suspended = false }: AppProps) {
   const isContrast = networkStudy === 'contrast'
   const serviceColors = useMemo(() => isPostbus || isContrast ? { ...SERVICE_COLORS, bus: POSTBUS_YELLOW } : (isMountainStudy || cogwheelEnabled && networkStudy === 'national' && view === 'network') ? { ...SERVICE_COLORS, other: '#fff3a6' } : SERVICE_COLORS, [isPostbus, isContrast, isMountainStudy, cogwheelEnabled, networkStudy, view])
   const isRegionalDay = isRegionalDayStudy(networkStudy) && regionalRange === 'day'
-  const regionalDate = isValais ? valaisDate : isTicino ? ticinoDate : isGraubuenden ? graubuendenDate : undefined
-  const regionalPrefix = regionalDate ? `${networkStudy}/${regionalDate}/` : ''
+  const regionalDate = additionalId ? additionalDates[additionalId] : isValais ? valaisDate : isTicino ? ticinoDate : isGraubuenden ? graubuendenDate : undefined
+  const regionalPrefix = additionalKey ? `${additionalKey}/` : regionalDate ? `${networkStudy}/${regionalDate}/` : ''
   const regionalAssetUrl = useCallback((path: string) => editionDataUrl(regionalPrefix && !path.startsWith(`${networkStudy}/`) ? `${regionalPrefix}${path}` : path), [regionalPrefix, networkStudy, editionDataUrl])
   const regionalDay = useProgressiveNetworkDay(regionalPrefix ? `${regionalPrefix}${networkStudy}-day-manifest.json` : isRegionalDayStudy(networkStudy) ? REGIONAL_DAYS[networkStudy] : REGIONAL_DAYS['zvv-region'], isRegionalDay && regionalRetry, networkTime, regionalAssetUrl)
   const postbusDay = useProgressiveNetworkDay(edition.data.postbusDayManifest, isPostbus, networkTime, editionDataUrl)
@@ -606,7 +618,7 @@ export function App({ edition, suspended = false }: AppProps) {
       nationalDayChunks[nationalDayChunkDescriptor.id],
   )
   const baseNetwork =
-    isRegionalDay ? regionalDay.network : isValais ? valaisRegionNetwork : isTicino ? ticinoRegionNetwork : isGraubuenden ? graubuendenRegionNetwork : isSolothurn ? solothurnRegionNetwork : isBern ? bernRegionNetwork : isRiviera ? rivieraRegionNetwork : isNyon ? nyonRegionNetwork : isBasel ? baselCoreNetwork : isLausanne ? lausanneRegionNetwork : isPilatus ? pilatusNetwork : isRochers ? rochersNetwork : isTerritet ? (glionNetwork ?? territetNetwork) : isGornergrat ? gornergratNetwork : isJungfrau ? jungfrauNetwork : isRigi ? rigiNetwork : isPostbus ? postbusDay.network : isContrast
+    isRegionalDay ? regionalDay.network : additionalId ? additionalNetwork : isValais ? valaisRegionNetwork : isTicino ? ticinoRegionNetwork : isGraubuenden ? graubuendenRegionNetwork : isSolothurn ? solothurnRegionNetwork : isBern ? bernRegionNetwork : isRiviera ? rivieraRegionNetwork : isNyon ? nyonRegionNetwork : isBasel ? baselCoreNetwork : isLausanne ? lausanneRegionNetwork : isPilatus ? pilatusNetwork : isRochers ? rochersNetwork : isTerritet ? (glionNetwork ?? territetNetwork) : isGornergrat ? gornergratNetwork : isJungfrau ? jungfrauNetwork : isRigi ? rigiNetwork : isPostbus ? postbusDay.network : isContrast
       ? (zurichContrast.network ?? nationalNetwork)
       : networkStudy === 'zurich-city'
       ? (zurichCityNetwork ?? nationalNetwork)
@@ -629,7 +641,7 @@ export function App({ edition, suspended = false }: AppProps) {
   }, [validLocation])
   useEffect(() => { clearBrowserLocation() }, [networkStudy, clearBrowserLocation])
 
-  const regionalViewLabel = isValais ? valaisLabel : isTicino ? ticinoCopy?.view : isGraubuenden ? graubuendenCopy?.view : isSolothurn ? text.solothurnView : isBern ? text.bernView : isRiviera ? (rivieraCopy?.view ?? rivieraLabel) : isNyon ? text.nyonView : isBasel ? text.baselView : isLausanne ? text.lausanneView : isPostbus ? text.postbusNetwork : networkStudy === 'zvv-region'
+  const regionalViewLabel = additionalId ? additionalLabel : isValais ? valaisLabel : isTicino ? ticinoCopy?.view : isGraubuenden ? graubuendenCopy?.view : isSolothurn ? text.solothurnView : isBern ? text.bernView : isRiviera ? (rivieraCopy?.view ?? rivieraLabel) : isNyon ? text.nyonView : isBasel ? text.baselView : isLausanne ? text.lausanneView : isPostbus ? text.postbusNetwork : networkStudy === 'zvv-region'
                         ? text.zvvView
                         : networkStudy === 'geneva-tpg'
                           ? text.genevaView
@@ -842,8 +854,8 @@ export function App({ edition, suspended = false }: AppProps) {
   const sceneNetwork = useMemo(
     () => network && (activePilot
       ? { ...networkWithRailVisibility(network, false), trains: [], metadata: { ...network.metadata, serviceDate: activePilot.metadata.serviceDate, windowStart: activePilot.metadata.windowStart, windowEnd: activePilot.metadata.windowEnd } }
-      : isTerritet && glionJourneyActive ? { ...network, trains: glionNetwork ? network.trains : [] } : (isPilatus || isRochers || isTerritet) && selectedTrain ? { ...network, trains: [selectedTrain] } : isPostbus ? postbusRouteSnapshot(network, selectedRoute) : isTicino ? { ...networkWithRailVisibility(network, railVisible), bounds: ticinoLocale?.TICINO_FOCUS_BOUNDS ?? network.bounds } : networkWithRailVisibility(network, railVisible)),
-    [network, railVisible, glionNetwork, glionJourneyActive, isTerritet, isRochers, isPilatus, selectedTrain, isPostbus, isTicino, ticinoLocale, selectedRoute, activePilot],
+      : isTerritet && glionJourneyActive ? { ...network, trains: glionNetwork ? network.trains : [] } : (isPilatus || isRochers || isTerritet) && selectedTrain ? { ...network, trains: [selectedTrain] } : isPostbus ? postbusRouteSnapshot(network, selectedRoute) : additionalRegion ? { ...networkWithRailVisibility(network, railVisible), bounds: additionalRegion.bounds } : isTicino ? { ...networkWithRailVisibility(network, railVisible), bounds: ticinoLocale?.TICINO_FOCUS_BOUNDS ?? network.bounds } : networkWithRailVisibility(network, railVisible)),
+    [additionalRegion, network, railVisible, glionNetwork, glionJourneyActive, isTerritet, isRochers, isPilatus, selectedTrain, isPostbus, isTicino, ticinoLocale, selectedRoute, activePilot],
   )
   const selectedPosition = useMemo(
     () => (selectedTrain ? positionForTrain(selectedTrain, networkTime) : undefined),
@@ -961,9 +973,9 @@ export function App({ edition, suspended = false }: AppProps) {
           : (network?.trains.map((train) => train.category) ?? []),
     )
     return SERVICE_CATEGORIES.filter(
-      (category) => (category.id !== 'other' || isMountainStudy) && present.has(category.id),
+      (category) => (category.id !== 'other' || isMountainStudy || Boolean(additionalId)) && present.has(category.id),
     )
-  }, [hubCalls, isMountainStudy, isContrast, kientalContrast.network, network, view, zurichContrast.network])
+  }, [additionalId, hubCalls, isMountainStudy, isContrast, kientalContrast.network, network, view, zurichContrast.network])
 
   const handleJourneyProgress = useCallback((nextProgress: number) => {
     setJourneyProgress(nextProgress)
@@ -1354,7 +1366,7 @@ export function App({ edition, suspended = false }: AppProps) {
       if (study !== 'national' || timeRange === 'day') {
         setRoadCategorySelected(false)
       }
-      if (study === 'graubuenden-region' || study === 'valais-region' || study === 'ticino-region' || study === 'solothurn-region' || study === 'bern-region' || study === 'lausanne-region' || study === 'basel-core' || study === 'nyon-region' || study === 'riviera-region') setRegionalRange('day')
+      if (isAdditionalRegion(study) || study === 'graubuenden-region' || study === 'valais-region' || study === 'ticino-region' || study === 'solothurn-region' || study === 'bern-region' || study === 'lausanne-region' || study === 'basel-core' || study === 'nyon-region' || study === 'riviera-region') setRegionalRange('day')
       if (study === 'national') setNationalTimeRange(timeRange)
       if (study === 'bern-region') setSelectedHubId('bern')
       if (study === 'basel-core') setSelectedHubId('basel')
@@ -1363,7 +1375,7 @@ export function App({ edition, suspended = false }: AppProps) {
         setSelectedHubId('zurich')
       }
       const regionalSnapshot =
-        study === 'valais-region' ? valaisRegionNetwork : study === 'ticino-region' ? ticinoRegionNetwork : study === 'graubuenden-region' ? graubuendenRegionNetwork : study === 'solothurn-region' ? solothurnRegionNetwork : study === 'bern-region' ? bernRegionNetwork : study === 'riviera-region' ? rivieraRegionNetwork : study === 'nyon-region' ? nyonRegionNetwork : study === 'basel-core' ? baselCoreNetwork : study === 'lausanne-region' ? lausanneRegionNetwork : study === 'pilatus' ? pilatusNetwork : study === 'rochers' ? rochersNetwork : study === 'territet' ? territetNetwork : study === 'gornergrat' ? gornergratNetwork : study === 'jungfrau' ? jungfrauNetwork : study === 'rigi-lake' ? rigiNetwork : study === 'zurich-city'
+        isAdditionalRegion(study) ? (additionalSnapshot?.key === additionalRegionKey(study, additionalDates[study]) ? additionalSnapshot.network : undefined) : study === 'valais-region' ? valaisRegionNetwork : study === 'ticino-region' ? ticinoRegionNetwork : study === 'graubuenden-region' ? graubuendenRegionNetwork : study === 'solothurn-region' ? solothurnRegionNetwork : study === 'bern-region' ? bernRegionNetwork : study === 'riviera-region' ? rivieraRegionNetwork : study === 'nyon-region' ? nyonRegionNetwork : study === 'basel-core' ? baselCoreNetwork : study === 'lausanne-region' ? lausanneRegionNetwork : study === 'pilatus' ? pilatusNetwork : study === 'rochers' ? rochersNetwork : study === 'territet' ? territetNetwork : study === 'gornergrat' ? gornergratNetwork : study === 'jungfrau' ? jungfrauNetwork : study === 'rigi-lake' ? rigiNetwork : study === 'zurich-city'
           ? zurichCityNetwork
           : study === 'zvv-region'
             ? zvvRegionNetwork
@@ -1394,6 +1406,8 @@ export function App({ edition, suspended = false }: AppProps) {
     },
     [
       stopNow,
+      additionalSnapshot,
+      additionalDates,
       edition.defaultNetworkTime,
       nationalDayNetwork,
       valaisRegionNetwork,
@@ -1849,9 +1863,9 @@ export function App({ edition, suspended = false }: AppProps) {
   ])
 
   useEffect(() => {
-    if (networkStudy === 'national' || networkStudy === 'contrast' || networkStudy === 'postbus') return
+    if (networkStudy === 'national' || networkStudy === 'contrast' || networkStudy === 'postbus' || (additionalId && isRegionalDay)) return
     const existingNetwork =
-      isValais ? valaisRegionNetwork : isTicino ? ticinoRegionNetwork : isGraubuenden ? graubuendenRegionNetwork : isSolothurn ? solothurnRegionNetwork : isBern ? bernRegionNetwork : isRiviera ? rivieraRegionNetwork : isNyon ? nyonRegionNetwork : isBasel ? baselCoreNetwork : isLausanne ? lausanneRegionNetwork : isPilatus ? pilatusNetwork : isRochers ? rochersNetwork : isTerritet ? territetNetwork : isGornergrat ? gornergratNetwork : isJungfrau ? jungfrauNetwork : isRigi ? rigiNetwork : networkStudy === 'zurich-city'
+      additionalId ? additionalNetwork : isValais ? valaisRegionNetwork : isTicino ? ticinoRegionNetwork : isGraubuenden ? graubuendenRegionNetwork : isSolothurn ? solothurnRegionNetwork : isBern ? bernRegionNetwork : isRiviera ? rivieraRegionNetwork : isNyon ? nyonRegionNetwork : isBasel ? baselCoreNetwork : isLausanne ? lausanneRegionNetwork : isPilatus ? pilatusNetwork : isRochers ? rochersNetwork : isTerritet ? territetNetwork : isGornergrat ? gornergratNetwork : isJungfrau ? jungfrauNetwork : isRigi ? rigiNetwork : networkStudy === 'zurich-city'
         ? zurichCityNetwork
         : networkStudy === 'zvv-region'
           ? zvvRegionNetwork
@@ -1872,7 +1886,8 @@ export function App({ edition, suspended = false }: AppProps) {
       })
       .then((snapshot) => {
         if (controller.signal.aborted) return
-        if (isGraubuenden) setGraubuendenRegionNetwork(snapshot)
+        if (additionalKey) setAdditionalSnapshot({ key: additionalKey, network: snapshot })
+        else if (isGraubuenden) setGraubuendenRegionNetwork(snapshot)
         else if (isValais) setValaisRegionNetwork(snapshot)
         else if (isTicino) setTicinoRegionNetwork(snapshot)
         else if (isSolothurn) setSolothurnRegionNetwork(snapshot)
@@ -1901,6 +1916,11 @@ export function App({ edition, suspended = false }: AppProps) {
     return () => controller.abort()
   }, [
     edition.data.regional,
+    additionalId,
+    additionalKey,
+    additionalNetwork,
+    additionalAttempt,
+    isRegionalDay,
     isRiviera,
     rivieraAttempt,
     isNyon,
@@ -2284,7 +2304,7 @@ export function App({ edition, suspended = false }: AppProps) {
             referenceSnapshot={nationalNetwork ?? sceneNetwork}
             contextSnapshot={
               networkStudy !== 'national' && !isPostbus && !isMountainStudy &&
-              (isValais ? valaisRegionNetwork : isTicino ? ticinoRegionNetwork : isGraubuenden ? graubuendenRegionNetwork : isSolothurn ? solothurnRegionNetwork : isBern ? bernRegionNetwork : isRiviera ? rivieraRegionNetwork : isNyon ? nyonRegionNetwork : isBasel ? baselCoreNetwork : isLausanne ? lausanneRegionNetwork : networkStudy === 'zurich-city'
+              (additionalId ? baseNetwork : isValais ? valaisRegionNetwork : isTicino ? ticinoRegionNetwork : isGraubuenden ? graubuendenRegionNetwork : isSolothurn ? solothurnRegionNetwork : isBern ? bernRegionNetwork : isRiviera ? rivieraRegionNetwork : isNyon ? nyonRegionNetwork : isBasel ? baselCoreNetwork : isLausanne ? lausanneRegionNetwork : networkStudy === 'zurich-city'
                 ? zurichCityNetwork
                 : networkStudy === 'zvv-region'
                   ? zvvRegionNetwork
@@ -2344,7 +2364,7 @@ export function App({ edition, suspended = false }: AppProps) {
             selectedAirport={airEnabled ? selectedAirport : undefined}
             onSelectAirTrack={selectAirTrack}
             cameraFraming={
-              isValais ? MAP_FRAMINGS.valais : isTicino ? MAP_FRAMINGS.ticino : isGraubuenden ? MAP_FRAMINGS.graubuenden : isSolothurn ? MAP_FRAMINGS.solothurn : isBern ? MAP_FRAMINGS.bern : isRiviera ? MAP_FRAMINGS.riviera : isNyon ? MAP_FRAMINGS.nyon : isBasel ? MAP_FRAMINGS.basel : isLausanne ? MAP_FRAMINGS.lausanne : isPilatus ? MAP_FRAMINGS.pilatus : isRochers ? MAP_FRAMINGS.rochers : isTerritet ? glionJourneyActive || glionNetwork ? { ...MAP_FRAMINGS.rochers, homeDistanceScale: 0.055 } : MAP_FRAMINGS.territet : isGornergrat ? MAP_FRAMINGS.gornergrat : isJungfrau ? MAP_FRAMINGS.jungfrau : isRigi ? MAP_FRAMINGS.rigi : networkStudy === 'zurich-city' && zurichCityNetwork
+              additionalRegion ? { homeDistanceScale: additionalRegion.scale, minimumDistanceScale: 0.006, portraitMinimumDistanceScale: 0.004, localDetailHierarchy: true } : isValais ? MAP_FRAMINGS.valais : isTicino ? MAP_FRAMINGS.ticino : isGraubuenden ? MAP_FRAMINGS.graubuenden : isSolothurn ? MAP_FRAMINGS.solothurn : isBern ? MAP_FRAMINGS.bern : isRiviera ? MAP_FRAMINGS.riviera : isNyon ? MAP_FRAMINGS.nyon : isBasel ? MAP_FRAMINGS.basel : isLausanne ? MAP_FRAMINGS.lausanne : isPilatus ? MAP_FRAMINGS.pilatus : isRochers ? MAP_FRAMINGS.rochers : isTerritet ? glionJourneyActive || glionNetwork ? { ...MAP_FRAMINGS.rochers, homeDistanceScale: 0.055 } : MAP_FRAMINGS.territet : isGornergrat ? MAP_FRAMINGS.gornergrat : isJungfrau ? MAP_FRAMINGS.jungfrau : isRigi ? MAP_FRAMINGS.rigi : networkStudy === 'zurich-city' && zurichCityNetwork
                 ? MAP_FRAMINGS.zurich
                 : networkStudy === 'zvv-region' && zvvRegionNetwork
                   ? MAP_FRAMINGS.zvv
@@ -2421,7 +2441,7 @@ export function App({ edition, suspended = false }: AppProps) {
             }
           >
             {isNetwork
-              ? isValais ? valaisLabel : isTicino ? (ticinoCopy?.subtitle ?? 'Ticino') : isGraubuenden ? graubuendenCopy?.subtitle : isSolothurn ? text.solothurnSubtitle : isBern ? text.bernSubtitle : isRiviera ? (rivieraCopy?.subtitle ?? rivieraLabel) : isNyon ? text.nyonSubtitle : isBasel ? text.baselSubtitle : isLausanne ? text.lausanneSubtitle : isPilatus ? pilatusCopy?.title ?? 'Pilatus' : isRochers ? rochersCopy?.title ?? 'Rochers' : isTerritet ? territetCopy?.title ?? 'Territet' : isGornergrat ? gornergratCopy?.title ?? 'Gornergrat' : isJungfrau ? jungfrauCopy?.title ?? 'Jungfrau' : isRigi ? rigiCopy.title : isPostbus ? text.postbusSubtitle : isContrast
+              ? additionalId ? additionalLabel : isValais ? valaisLabel : isTicino ? (ticinoCopy?.subtitle ?? 'Ticino') : isGraubuenden ? graubuendenCopy?.subtitle : isSolothurn ? text.solothurnSubtitle : isBern ? text.bernSubtitle : isRiviera ? (rivieraCopy?.subtitle ?? rivieraLabel) : isNyon ? text.nyonSubtitle : isBasel ? text.baselSubtitle : isLausanne ? text.lausanneSubtitle : isPilatus ? pilatusCopy?.title ?? 'Pilatus' : isRochers ? rochersCopy?.title ?? 'Rochers' : isTerritet ? territetCopy?.title ?? 'Territet' : isGornergrat ? gornergratCopy?.title ?? 'Gornergrat' : isJungfrau ? jungfrauCopy?.title ?? 'Jungfrau' : isRigi ? rigiCopy.title : isPostbus ? text.postbusSubtitle : isContrast
                 ? text.contrastSubtitle
                 : networkStudy === 'zurich-city'
                 ? text.zurichSubtitle
@@ -2605,7 +2625,7 @@ export function App({ edition, suspended = false }: AppProps) {
                 role="combobox"
                 value={searchQuery}
                 placeholder={
-                  isValais ? (valaisCopy?.valaisPlaceholder ?? 'Valais') : isTicino ? ticinoCopy?.placeholder : isGraubuenden ? graubuendenCopy?.placeholder : isSolothurn ? text.solothurnPlaceholder : isBern ? text.bernPlaceholder : isRiviera ? (rivieraCopy?.placeholder ?? rivieraLabel) : isNyon ? text.nyonPlaceholder : isBasel ? text.baselPlaceholder : isLausanne ? text.lausannePlaceholder : isPilatus ? pilatusCopy?.placeholder ?? 'Pilatus' : isRochers ? rochersCopy?.placeholder ?? 'Rochers' : isTerritet ? territetCopy?.placeholder ?? 'Territet' : isGornergrat ? gornergratCopy?.placeholder ?? 'Gornergrat' : isJungfrau ? jungfrauCopy?.placeholder ?? jungfrauSelect : isRigi ? rigiCopy.placeholder : isCogwheel ? cogwheelCopy.placeholder : isContrast
+                  additionalId ? additionalCopy?.search : isValais ? (valaisCopy?.valaisPlaceholder ?? 'Valais') : isTicino ? ticinoCopy?.placeholder : isGraubuenden ? graubuendenCopy?.placeholder : isSolothurn ? text.solothurnPlaceholder : isBern ? text.bernPlaceholder : isRiviera ? (rivieraCopy?.placeholder ?? rivieraLabel) : isNyon ? text.nyonPlaceholder : isBasel ? text.baselPlaceholder : isLausanne ? text.lausannePlaceholder : isPilatus ? pilatusCopy?.placeholder ?? 'Pilatus' : isRochers ? rochersCopy?.placeholder ?? 'Rochers' : isTerritet ? territetCopy?.placeholder ?? 'Territet' : isGornergrat ? gornergratCopy?.placeholder ?? 'Gornergrat' : isJungfrau ? jungfrauCopy?.placeholder ?? jungfrauSelect : isRigi ? rigiCopy.placeholder : isCogwheel ? cogwheelCopy.placeholder : isContrast
                     ? text.contrastPlaceholder
                     : isPostbus ? text.postbusPlaceholder : airEnabled
                       ? text.airSearchPlaceholder
@@ -2693,6 +2713,7 @@ export function App({ edition, suspended = false }: AppProps) {
               </button>
             )}
             <nav className="network-study-picker" aria-label={text.networkStudy}>
+              {ADDITIONAL_REGION_IDS.map(id => <button key={id} type="button" aria-label={additionalLocale?.additionalRegionCopy(language, id).name ?? ADDITIONAL_REGIONS[id].name} data-tooltip={ADDITIONAL_REGIONS[id].name} aria-pressed={networkStudy === id} onClick={() => selectNetworkStudy(id)}>{ADDITIONAL_REGIONS[id].code}</button>)}
               <button type="button" aria-label={(ticinoCopy?.network ?? 'Ticino')} data-tooltip={(ticinoCopy?.network ?? 'Ticino')} aria-pressed={isTicino} onClick={() => selectNetworkStudy('ticino-region')}>TI</button>
               <button type="button" aria-label={graubuendenCopy?.network} data-tooltip={graubuendenCopy?.network} aria-pressed={isGraubuenden} onClick={() => selectNetworkStudy('graubuenden-region')}>GR</button>
               <button type="button" aria-label={text.solothurnNetwork} data-tooltip={text.solothurnNetwork} aria-pressed={isSolothurn} onClick={() => selectNetworkStudy('solothurn-region')}>SO</button>
@@ -2825,6 +2846,7 @@ export function App({ edition, suspended = false }: AppProps) {
                     detail: text.contrastNetwork,
                   },
                   { value: 'postbus', label: 'PA', detail: text.postbusNetwork },
+                  ...ADDITIONAL_REGION_IDS.map(id => ({ value: id, label: ADDITIONAL_REGIONS[id].code, detail: additionalLocale?.additionalRegionCopy(language, id).name ?? ADDITIONAL_REGIONS[id].name })),
                   { value: 'valais-region', label: 'VS', detail: valaisLabel },
                   { value: 'ticino-region', label: 'TI', detail: (ticinoCopy?.network ?? 'Ticino') },
                   { value: 'graubuenden-region', label: 'GR', detail: graubuendenCopy?.network },
@@ -2837,7 +2859,7 @@ export function App({ edition, suspended = false }: AppProps) {
                   { value: 'jungfrau', label: 'JUNG', detail: jungfrauSelect },
                   { value: 'pilatus', label: 'PIL', detail: pilatusCopy?.select ?? 'Pilatus' },
                   { value: 'rochers', label: 'RDN', detail: rochersCopy?.select ?? 'Rochers' },
-                  { value: 'territet', label: 'TG', detail: territetCopy?.select ?? 'Territet' },
+                  { value: 'territet', label: 'TGL', detail: territetCopy?.select ?? 'Territet' },
                   { value: 'gornergrat', label: 'GGR', detail: gornergratCopy?.select ?? 'Gornergrat' },
                   { value: 'rigi-lake', label: 'RIGI', detail: rigiCopy.select },
                   { value: 'zvv-region', label: 'ZVV', detail: text.zvvNetwork },
@@ -2845,7 +2867,7 @@ export function App({ edition, suspended = false }: AppProps) {
                   { value: 'geneva-tpg', label: 'GE', detail: text.genevaNetwork },
                 ]}
                 triggerLabel={
-                  isValais ? 'VS' : isTicino ? 'TI' : isGraubuenden ? 'GR' : isSolothurn ? 'SO' : isBern ? 'BE' : isRiviera ? 'RV' : isNyon ? 'NY' : isBasel ? 'BS' : isLausanne ? 'LS' : isPilatus ? 'PIL' : isRochers ? 'RDN' : isTerritet ? 'TG' : isGornergrat ? 'GGR' : isJungfrau ? 'JUNG' : isRigi ? 'RIGI' : isPostbus ? 'PA' : isContrast
+                  additionalRegion ? additionalRegion.code : isValais ? 'VS' : isTicino ? 'TI' : isGraubuenden ? 'GR' : isSolothurn ? 'SO' : isBern ? 'BE' : isRiviera ? 'RV' : isNyon ? 'NY' : isBasel ? 'BS' : isLausanne ? 'LS' : isPilatus ? 'PIL' : isRochers ? 'RDN' : isTerritet ? 'TGL' : isGornergrat ? 'GGR' : isJungfrau ? 'JUNG' : isRigi ? 'RIGI' : isPostbus ? 'PA' : isContrast
                     ? '↔'
                     : networkStudy === 'national' && nationalTimeRange === 'day'
                       ? '24H'
@@ -3215,7 +3237,7 @@ export function App({ edition, suspended = false }: AppProps) {
         <section
           className="journey-card network-card"
           aria-label={
-            isValais ? valaisLabel : isTicino ? ticinoCopy?.networkStatus : isGraubuenden ? graubuendenCopy?.networkStatus : isSolothurn ? text.solothurnNetworkStatus : isBern ? text.bernNetworkStatus : isRiviera ? (rivieraCopy?.networkStatus ?? rivieraLabel) : isNyon ? text.nyonNetworkStatus : isBasel ? text.baselNetworkStatus : isLausanne ? text.lausanneNetworkStatus : isPilatus ? pilatusCopy?.select ?? 'Pilatus' : isRochers ? rochersCopy?.select ?? 'Rochers' : isTerritet ? territetCopy?.select ?? 'Territet' : isGornergrat ? gornergratCopy?.select ?? 'Gornergrat' : isJungfrau ? jungfrauSelect : isRigi ? rigiCopy.select : isPostbus ? text.postbusNetwork : networkStudy === 'national'
+            additionalId ? additionalLabel : isValais ? valaisLabel : isTicino ? ticinoCopy?.networkStatus : isGraubuenden ? graubuendenCopy?.networkStatus : isSolothurn ? text.solothurnNetworkStatus : isBern ? text.bernNetworkStatus : isRiviera ? (rivieraCopy?.networkStatus ?? rivieraLabel) : isNyon ? text.nyonNetworkStatus : isBasel ? text.baselNetworkStatus : isLausanne ? text.lausanneNetworkStatus : isPilatus ? pilatusCopy?.select ?? 'Pilatus' : isRochers ? rochersCopy?.select ?? 'Rochers' : isTerritet ? territetCopy?.select ?? 'Territet' : isGornergrat ? gornergratCopy?.select ?? 'Gornergrat' : isJungfrau ? jungfrauSelect : isRigi ? rigiCopy.select : isPostbus ? text.postbusNetwork : networkStudy === 'national'
               ? text.swissNetworkStatus
               : networkStudy === 'zvv-region'
                 ? text.zvvNetworkStatus
@@ -3282,7 +3304,7 @@ export function App({ edition, suspended = false }: AppProps) {
             )}
           </div>
           <p className="between">
-              {isRegionalDay ? regionalDay.error ? exploreCopy.error : !regionalDay.chunkReady ? exploreCopy.loading : `${exploreCopy.day} · ${network?.metadata.geometry?.publisher ?? 'SBB'}` : isGraubuenden ? regionalNetworkError ? graubuendenCopy?.unavailable : regionalNetworkLoading ? text.loading : graubuendenCopy?.modes : isValais ? regionalNetworkError ? exploreCopy.error : regionalNetworkLoading ? text.loading : valaisLabel : isTicino ? regionalNetworkError ? ticinoCopy?.unavailable : regionalNetworkLoading ? text.loading : ticinoCopy?.modes : isSolothurn ? regionalNetworkError ? text.solothurnUnavailable : regionalNetworkLoading ? text.loading : text.solothurnModes : isBern ? regionalNetworkError ? text.bernUnavailable : regionalNetworkLoading ? text.loading : text.bernModes : isRiviera ? regionalNetworkError ? (rivieraCopy?.unavailable ?? exploreCopy.error) : regionalNetworkLoading ? text.loading : rivieraCopy?.modes : isNyon ? regionalNetworkError ? text.nyonUnavailable : regionalNetworkLoading ? text.loading : text.nyonModes : isBasel ? regionalNetworkError ? text.baselUnavailable : regionalNetworkLoading ? text.loading : text.baselModes : isLausanne ? regionalNetworkError ? text.lausanneUnavailable : regionalNetworkLoading ? text.loading : text.lausanneModes : isPilatus ? regionalNetworkError ? pilatusCopy?.unavailable : regionalNetworkLoading ? pilatusCopy?.loading : pilatusCopy?.modes : isRochers ? regionalNetworkError ? rochersCopy?.unavailable : regionalNetworkLoading ? rochersCopy?.loading : rochersCopy?.modes : isTerritet ? regionalNetworkError ? territetCopy?.unavailable : regionalNetworkLoading ? territetCopy?.loading : territetCopy?.modes : isGornergrat ? regionalNetworkError ? gornergratCopy?.unavailable : regionalNetworkLoading ? gornergratCopy?.loading : gornergratCopy?.modes : isJungfrau ? regionalNetworkError ? jungfrauCopy?.unavailable : regionalNetworkLoading ? jungfrauCopy?.loading : jungfrauCopy?.modes : isRigi ? regionalNetworkError ? rigiCopy.unavailable : regionalNetworkLoading ? rigiCopy.loading : rigiCopy.modes : isCogwheel ? cogwheel?.error ? cogwheelCopy.unavailable : !cogwheelCatalogue ? cogwheelCopy.loading : cogwheelCopy.description : isPostbus
+              {isRegionalDay ? regionalDay.error ? exploreCopy.error : !regionalDay.chunkReady ? exploreCopy.loading : `${exploreCopy.day} · ${network?.metadata.geometry?.publisher ?? 'SBB'}` : additionalId ? regionalNetworkError ? exploreCopy.error : regionalNetworkLoading ? text.loading : additionalCopy?.modes : isGraubuenden ? regionalNetworkError ? graubuendenCopy?.unavailable : regionalNetworkLoading ? text.loading : graubuendenCopy?.modes : isValais ? regionalNetworkError ? exploreCopy.error : regionalNetworkLoading ? text.loading : valaisLabel : isTicino ? regionalNetworkError ? ticinoCopy?.unavailable : regionalNetworkLoading ? text.loading : ticinoCopy?.modes : isSolothurn ? regionalNetworkError ? text.solothurnUnavailable : regionalNetworkLoading ? text.loading : text.solothurnModes : isBern ? regionalNetworkError ? text.bernUnavailable : regionalNetworkLoading ? text.loading : text.bernModes : isRiviera ? regionalNetworkError ? (rivieraCopy?.unavailable ?? exploreCopy.error) : regionalNetworkLoading ? text.loading : rivieraCopy?.modes : isNyon ? regionalNetworkError ? text.nyonUnavailable : regionalNetworkLoading ? text.loading : text.nyonModes : isBasel ? regionalNetworkError ? text.baselUnavailable : regionalNetworkLoading ? text.loading : text.baselModes : isLausanne ? regionalNetworkError ? text.lausanneUnavailable : regionalNetworkLoading ? text.loading : text.lausanneModes : isPilatus ? regionalNetworkError ? pilatusCopy?.unavailable : regionalNetworkLoading ? pilatusCopy?.loading : pilatusCopy?.modes : isRochers ? regionalNetworkError ? rochersCopy?.unavailable : regionalNetworkLoading ? rochersCopy?.loading : rochersCopy?.modes : isTerritet ? regionalNetworkError ? territetCopy?.unavailable : regionalNetworkLoading ? territetCopy?.loading : territetCopy?.modes : isGornergrat ? regionalNetworkError ? gornergratCopy?.unavailable : regionalNetworkLoading ? gornergratCopy?.loading : gornergratCopy?.modes : isJungfrau ? regionalNetworkError ? jungfrauCopy?.unavailable : regionalNetworkLoading ? jungfrauCopy?.loading : jungfrauCopy?.modes : isRigi ? regionalNetworkError ? rigiCopy.unavailable : regionalNetworkLoading ? rigiCopy.loading : rigiCopy.modes : isCogwheel ? cogwheel?.error ? cogwheelCopy.unavailable : !cogwheelCatalogue ? cogwheelCopy.loading : cogwheelCopy.description : isPostbus
                 ? postbusDay.error ? text.postbusUnavailable : postbusDay.loading ? text.loadingPostbus
                   : network?.metadata.geometry
                     ? text.postbusRoadModes.replace('{coverage}', (100 * network.metadata.geometry.matchedSegments / network.metadata.geometry.totalSegments).toFixed(1))
@@ -3330,6 +3352,7 @@ export function App({ edition, suspended = false }: AppProps) {
           {isJungfrau && jungfrauNetwork && !regionalNetworkError && <><button type="button" className="corridor-entry" onClick={event => { event.currentTarget.focus(); setJungfrauGuideActive(true) }}>{jungfrauCopy?.guide} →</button><button type="button" className="corridor-entry" onClick={startJungfrauAscent}>{jungfrauCopy?.ascent} →</button></>}
           {isJungfrau && jungfrauNetwork && !regionalNetworkError && <Suspense fallback={null}><JungfrauPlaces language={language} onSelect={name => { const station = stationIndex.find(s => s.name === name); if (station) { setSelectedCategory(undefined); selectStation(station) } }} /></Suspense>}
           {isJungfrau && regionalNetworkError && <button type="button" className="corridor-entry" onClick={() => { setRegionalNetworkError(false); setRegionalNetworkLoading(true); setJungfrauAttempt(n => n + 1) }}>{exploreCopy.retry}</button>}
+          {additionalId && !isRegionalDay && regionalNetworkError && <button type="button" className="corridor-entry" onClick={() => { setRegionalNetworkError(false); setRegionalNetworkLoading(true); setAdditionalAttempt(n => n + 1) }}>{exploreCopy.retry}</button>}
           {(isValais || isTicino || isSolothurn || isBern || isNyon || isRiviera || isBasel) && !isRegionalDay && regionalNetworkError && <button type="button" className="corridor-entry" onClick={() => { setRegionalNetworkError(false); setRegionalNetworkLoading(true); (isValais ? setValaisAttempt : isTicino ? setTicinoAttempt : isSolothurn ? setSolothurnAttempt : isBern ? setBernAttempt : isRiviera ? setRivieraAttempt : isNyon ? setNyonAttempt : setBaselAttempt)(n => n + 1) }}>{exploreCopy.retry}</button>}
           {isRigi && rigiNetwork && !regionalNetworkError && <button type="button" className="corridor-entry" onClick={event => { event.currentTarget.focus(); setRigiGuideActive(true) }}>{rigiCopy.connections} →</button>}
           {isRigi && rigiNetwork && !regionalNetworkError && <button type="button" className="corridor-entry" onClick={() => { releaseSelection(); setSelectedCategory(undefined); setDirectorMode(false); setRigiRhythmActive(true) }}>{rigiCopy.rhythm} →</button>}
@@ -3676,6 +3699,7 @@ export function App({ edition, suspended = false }: AppProps) {
             {isTicino && ticinoLocale && <ticinoLocale.TicinoDatePicker language={language} date={ticinoDate} onDate={date => { stopNow(); linkPending.current = false; setTicinoDate(date); setTicinoRegionNetwork(undefined); setRegionalNetworkError(false); setRegionalNetworkLoading(true); setRegionalRetry(true); releaseSelection() }} />}
             <button ref={shareButton} type="button" aria-expanded={Boolean(shareUrl)} aria-controls={shareUrl ? 'study-share' : undefined} disabled={!network && !activePilot} onClick={() => void shareStudy()}>{exploreCopy.share}</button>
           </div>
+          {additionalId && additionalLocale && <additionalLocale.RegionalStudyDetails id={additionalId} language={language} date={additionalDates[additionalId]} serviceDate={network?.metadata.serviceDate} headway={hasHeadwayMotion} sourcesUrl={editionDataUrl(`${additionalId}/study-sources.json`)} onDate={date => { stopNow(); linkPending.current = false; setAdditionalDates(values => ({ ...values, [additionalId]: date })); setRegionalNetworkError(false); setRegionalNetworkLoading(true); setRegionalRetry(true); releaseSelection() }} />}
           {isValais && <p className="explore-status">{(valaisCopy?.valaisScope ?? '')} · {network?.metadata.serviceDate}</p>}
           {isTicino && <p className="explore-status">{ticinoCopy?.scope} · {network?.metadata.serviceDate}</p>}
           {isGraubuenden && <>
@@ -3978,13 +4002,13 @@ export function App({ edition, suspended = false }: AppProps) {
             {isNetwork && network?.metadata.geometry && (
               <a
                 href={
-                  isValais || isTicino || isGraubuenden || isSolothurn ? editionDataUrl(`${networkStudy}/sources.json`) : isBern ? 'https://www.agi.dij.be.ch/de/start/geoportal/geodaten/detail.html?code=OEVTP&type=geoproduct' : isBasel || isNyon || isRiviera ? 'https://www.openstreetmap.org/copyright' : network.metadata.geometry.productUrl ??
+                  additionalId ? editionDataUrl(`${additionalId}/study-sources.json`) : isValais || isTicino || isGraubuenden || isSolothurn ? editionDataUrl(`${networkStudy}/sources.json`) : isBern ? 'https://www.agi.dij.be.ch/de/start/geoportal/geodaten/detail.html?code=OEVTP&type=geoproduct' : isBasel || isNyon || isRiviera ? 'https://www.openstreetmap.org/copyright' : network.metadata.geometry.productUrl ??
                   network.metadata.geometry.sourceUrl
                 }
                 target="_blank"
                 rel="noreferrer"
               >
-                {isValais || isTicino ? 'SBB · FOT · © swisstopo · © OpenStreetMap contributors · ODbL' : isSolothurn ? 'Kanton Solothurn · © OpenStreetMap contributors · FOT · Kantone Bern / Basel-Stadt' : isBern ? 'Öffentlicher Verkehr © Amt für öffentlichen Verkehr und Verkehrskoordination des Kantons Bern' : isPostbus || isLausanne || isBasel || isNyon || isRiviera ? '© OpenStreetMap contributors · ODbL' : <>{text.stopGeometry} ·{' '}
+                {additionalRegion ? additionalRegion.credit : isValais || isTicino ? 'SBB · FOT · © swisstopo · © OpenStreetMap contributors · ODbL' : isSolothurn ? 'Kanton Solothurn · © OpenStreetMap contributors · FOT · Kantone Bern / Basel-Stadt' : isBern ? 'Öffentlicher Verkehr © Amt für öffentlichen Verkehr und Verkehrskoordination des Kantons Bern' : isPostbus || isLausanne || isBasel || isNyon || isRiviera ? '© OpenStreetMap contributors · ODbL' : <>{text.stopGeometry} ·{' '}
                 {networkStudy === 'national'
                   ? 'BAV / OFT'
                   : networkStudy === 'geneva-tpg'
@@ -4075,7 +4099,7 @@ export function App({ edition, suspended = false }: AppProps) {
           {isHub
             ? text.arrivalsDirection
             : isNetwork
-              ? isValais ? (valaisCopy?.valaisScope ?? '') : isTicino ? ticinoCopy?.model : isGraubuenden ? graubuendenCopy?.model : isSolothurn ? text.solothurnModel : isBern ? text.bernModel : isRiviera ? (rivieraCopy?.model ?? rivieraLabel) : isNyon ? text.nyonModel : isBasel ? text.baselModel : isLausanne ? text.lausanneModel : timedRigiTerrain || jungfrauTerrainWindow || gornergratTerrainWindow || pilatusTerrainWindow || rochersTerrainWindow || glionTerrainWindow || territetTerrainWindow ? text.interpolation : isPilatus ? pilatusCopy?.model : isRochers ? rochersCopy?.model : isTerritet ? glionJourneyActive || glionNetwork ? territetCopy?.combinedModel : territetCopy?.model : isGornergrat ? gornergratCopy?.model : isJungfrau ? jungfrauCopy?.model : isRigi ? rigiCopy.water : hasHeadwayMotion ? frequencyCopy.interpolation : text.interpolation
+              ? additionalId ? additionalCopy?.model : isValais ? (valaisCopy?.valaisScope ?? '') : isTicino ? ticinoCopy?.model : isGraubuenden ? graubuendenCopy?.model : isSolothurn ? text.solothurnModel : isBern ? text.bernModel : isRiviera ? (rivieraCopy?.model ?? rivieraLabel) : isNyon ? text.nyonModel : isBasel ? text.baselModel : isLausanne ? text.lausanneModel : timedRigiTerrain || jungfrauTerrainWindow || gornergratTerrainWindow || pilatusTerrainWindow || rochersTerrainWindow || glionTerrainWindow || territetTerrainWindow ? text.interpolation : isPilatus ? pilatusCopy?.model : isRochers ? rochersCopy?.model : isTerritet ? glionJourneyActive || glionNetwork ? territetCopy?.combinedModel : territetCopy?.model : isGornergrat ? gornergratCopy?.model : isJungfrau ? jungfrauCopy?.model : isRigi ? rigiCopy.water : hasHeadwayMotion ? frequencyCopy.interpolation : text.interpolation
               : text.simulation}
         </span>
       </footer>

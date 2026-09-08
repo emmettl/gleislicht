@@ -60,6 +60,8 @@ Use the **CH / 24H / ↔ / ZVV / GE / ZH** switch in the search bar to move betw
 
 The ZVV and Genève overviews deliberately open with a rail-led hierarchy: weighted local corridors remain visible, individual trams reveal after the first zoom descent, and buses appear closer in. Selecting any local category, line, station or vehicle immediately overrides that aggregation so search and comparison remain direct. Genève keeps TPG's French stop names and the real cross-border branches to Annemasse, Saint-Julien, Ferney and the wider French Genevois visible beyond the luminous Swiss outline.
 
+Luzern, Zug, Thurgau and Fribourg now have selectable regional studies, with archived Friday/Sunday full-day playback, search and shared links. See [existing-feed integration](docs/REGIONAL-FEED-INTEGRATION.md) for coverage, source attribution, reproducible packaging and feeds still awaiting release.
+
 The [regional network survey](docs/REGIONAL-NETWORK-SURVEY.md) documents eight candidates beyond the ongoing Lausanne work, including official data sources, verified downloads, geometry gaps and a recommended Basel–Bern–Luzern sequence.
 
 The **PA** study expands PostBus to its nationwide scheduled network: 32,390 daily trips across 821 active source routes on 8 September 2026. A separate topology and three-hour movement chunks load only when selected. Buses remain visible from the national overview, and destination-aware route search separates repeated line numbers across regions. Postgelb markers follow inferred OpenStreetMap road paths for 99.79% of scheduled stop-to-stop movements; unresolved segments retain the stop-based fallback. See [docs/POSTBUS-NATIONAL.md](./docs/POSTBUS-NATIONAL.md) for coverage, payload budgets and measured rendering performance.

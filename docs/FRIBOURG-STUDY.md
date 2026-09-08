@@ -1,5 +1,7 @@
 # Fribourg / Freiburg cantonal source study
 
+**Application integration (9 September 2026):** the admitted Friday/Sunday feed is now selectable through a separate compact display release. See [existing-feed integration](REGIONAL-FEED-INTEGRATION.md) for controls, attribution, preserved evidence, payload checks and remaining limits. Earlier statements below describe the original data-only delivery.
+
 Fixture audit updated: **9 September 2026**. Starting point: [Swiss transit source inventory](SWISS-TRANSIT-SOURCE-INVENTORY.md#fr).
 
 The entire canton is inventoried against the pinned annual national GTFS: **207 route records, 17 agency identities and all seven districts**, including detached territories and complete out-of-canton journeys. The regional feed admits **5,578 Friday journeys and 3,803 Sunday journeys** with complete directed stop patterns from cantonal lines and explicitly tagged inferred OSM road and FOT/SBB rail fallback. This is partial geometry admission, not full service coverage. One route is a provisional geographic member because its sole in-canton platform is within a metre of the boundary; see below.

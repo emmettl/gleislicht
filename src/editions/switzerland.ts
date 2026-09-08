@@ -130,6 +130,10 @@ export type SwitzerlandRegionalStudyId =
   | 'rigi-lake'
   | 'zvv-region'
   | 'lausanne-region'
+  | 'luzern-region'
+  | 'zug-region'
+  | 'thurgau-region'
+  | 'fribourg-region'
   | 'ticino-region'
   | 'graubuenden-region'
   | 'valais-region'
@@ -198,6 +202,10 @@ export const SWITZERLAND_EDITION: SwitzerlandEdition = {
       'rigi-lake': 'rigi-day.json',
       'zurich-city': 'zurich-city-morning.json',
       'zvv-region': 'zvv-region-morning.json',
+      'luzern-region': 'luzern-region/2026-09-04/study/luzern-region-morning.json',
+      'zug-region': 'zug-region/2026-09-04/study/zug-region-morning.json',
+      'thurgau-region': 'thurgau-region/2026-09-04/study/thurgau-region-morning.json',
+      'fribourg-region': 'fribourg-region/2026-09-04/study/fribourg-region-morning.json',
       'ticino-region': 'ticino-region/2026-09-04/ticino-region-morning.json',
       'graubuenden-region': 'graubuenden-region/2026-09-04/graubuenden-region-morning.json',
       'valais-region': 'valais-region-morning.json',

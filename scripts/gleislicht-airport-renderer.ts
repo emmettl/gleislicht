@@ -31,7 +31,13 @@ export function gleislichtAirportRenderer(): Plugin {
       if (!moduleId.endsWith('/@motionstudies/three/NationalNetworkScene.js')) return
       let code = source
       for (const [before, after] of [
-        ["import { AirTrafficLayer } from './AirTrafficLayer.js';", "import { AirTrafficLayer, AirportMarker } from './AirTrafficLayer.js';"],
+        // Neither aircraft nor airport meshes are used until the air layer opens.
+        // Keep their renderer out of the national and regional rail first view.
+        ["import { AirTrafficLayer } from './AirTrafficLayer.js';", `import { lazy as lazyAir, Suspense as AirSuspense } from 'react';
+const LazyAirTrafficLayer = lazyAir(() => import('./AirTrafficLayer.js').then(module => ({ default: module.AirTrafficLayer })));
+const LazyAirportMarker = lazyAir(() => import('./AirTrafficLayer.js').then(module => ({ default: module.AirportMarker })));
+const AirTrafficLayer = props => _jsx(AirSuspense, { fallback: null, children: _jsx(LazyAirTrafficLayer, { ...props }) });
+const AirportMarker = props => _jsx(AirSuspense, { fallback: null, children: _jsx(LazyAirportMarker, { ...props }) });`],
         ['props.airSnapshot && (_jsx(AirTrafficLayer,', 'props.airports?.map((airport) => _jsx(AirportMarker, { airport, projection, showLabel: true, selected: airport.id === props.selectedAirport?.id }, airport.id)), props.airSnapshot && (_jsx(AirTrafficLayer,'],
       ]) {
         if (code.split(before).length !== 2) throw new Error(`Gleislicht airport scene hook needs review: ${before}`)

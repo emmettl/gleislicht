@@ -1,5 +1,7 @@
 # Luzern cantonal transit source adapter and audit
 
+**Application integration (9 September 2026):** the admitted Friday/Sunday feed is now selectable through a separate compact display release. See [existing-feed integration](REGIONAL-FEED-INTEGRATION.md) for controls, attribution, preserved evidence, payload checks and remaining limits. Earlier statements below describe the original data-only delivery.
+
 Updated on 9 September 2026, starting from [the national source inventory](SWISS-TRANSIT-SOURCE-INVENTORY.md#lu). **The entire pinned national timetable was scanned for Luzern membership: 203 route records, 24 feed agencies and 100'275 annual trip records.** The delivered regional feeds contain **12'585 Friday and 10'478 Sunday journeys**, on 135 and 150 routes respectively. 169 distinct route records have an admitted pattern on at least one date.
 
 Only complete directed stop patterns with usable geometry are admitted. This is a complete **inventory of the scoped archive**, and a measured **partial regional motion feed**. It is not complete cantonal geometry, year-round validation or direction-certified street routing. The underlying official linework is undirected; the validation below establishes ordered source-call compatibility and plausible connected corridors.

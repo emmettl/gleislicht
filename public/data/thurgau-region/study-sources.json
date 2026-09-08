@@ -1,0 +1,181 @@
+{
+  "schemaVersion": 1,
+  "study": "thurgau-region",
+  "attribution": "SBB / opentransportdata.swiss · Kanton Thurgau · FOT · SBB Infrastructure · swisstopo · OpenStreetMap contributors / ODbL",
+  "scope": "Partial canton coverage; complete admitted journeys with cross-boundary calls. Archival September 2026 fixtures; no automatic refresh or observed vehicle positions.",
+  "documentation": "https://github.com/emmettl/gleislicht/blob/main/docs/THURGAU-STUDY.md",
+  "sourceCatalogue": "https://github.com/emmettl/gleislicht/blob/main/public/data/thurgau-region/sources.json",
+  "sourceCatalogueSha256": "a1135d21d5dc470a8a35fbcadf7f5d2b41ff83e06048c9f2b20a57aa19777015",
+  "geometryReuse": "Retain each publisher’s terms in the linked source catalogue. OpenStreetMap-derived geometry: ODbL-1.0; the display paths are supplied in the downloadable manifests.",
+  "osmLicense": "https://opendatacommons.org/licenses/odbl/1-0/",
+  "dates": [
+    {
+      "date": "2026-09-04",
+      "trips": 4360,
+      "archiveManifestSha256": "c951198d0e4345de89498f37f8e8381086cbe5959f49292ea389627acb6b7291",
+      "archiveMorningSha256": "d05e612ed9d6d3fa5f6c4d3d7a6cd6809c3cf3f4651102ab4147a089868a640b",
+      "toleranceMetres": 5,
+      "maximumDeviationMetres": 4.999361773762029,
+      "originalVertices": 53822,
+      "displayVertices": 37658,
+      "endpointsUnchanged": true,
+      "timetableUnchanged": true,
+      "payload": {
+        "day-chunks/00-02.json": {
+          "bytes": 66329,
+          "gzipBytes": 12039,
+          "sha256": "ef4ab553b4b636fc245778fd6d3916497e723d3d08a31cf7673ebd8c1c4df1cf"
+        },
+        "day-chunks/02-04.json": {
+          "bytes": 50,
+          "gzipBytes": 62,
+          "sha256": "e02cd1fe8fa4533c5a8c598577052d6a8fe5236c265f0cfa8d5816b7fd86aa93"
+        },
+        "day-chunks/04-06.json": {
+          "bytes": 176863,
+          "gzipBytes": 29065,
+          "sha256": "de37562d356279e4be2ec9cd864bca71b349bc5fa712f14f31df1b38e49ca152"
+        },
+        "day-chunks/06-08.json": {
+          "bytes": 623894,
+          "gzipBytes": 78628,
+          "sha256": "6f812c2eb15e46665134351d69d211aa79c8cee2a59c8ec5f654535870539f20"
+        },
+        "day-chunks/08-10.json": {
+          "bytes": 582023,
+          "gzipBytes": 74533,
+          "sha256": "5a5773070463d9692503e62318dcf749996febe903ecbae35b91492199c1fbe0"
+        },
+        "day-chunks/10-12.json": {
+          "bytes": 578884,
+          "gzipBytes": 73936,
+          "sha256": "fab0c6c03795349e6649edbe76b89a65cb7492e284c9537c44ce3585d11f800e"
+        },
+        "day-chunks/12-14.json": {
+          "bytes": 590735,
+          "gzipBytes": 75168,
+          "sha256": "8b2f9e736421a43d79dbe1d670d60c2f01fddc3799d7ebadac4decc1849e7292"
+        },
+        "day-chunks/14-16.json": {
+          "bytes": 584919,
+          "gzipBytes": 74457,
+          "sha256": "6765087ae696d2e3e0cec9c09953a05466d5ed370b464d3bc01e9fffe8f87587"
+        },
+        "day-chunks/16-18.json": {
+          "bytes": 643796,
+          "gzipBytes": 81061,
+          "sha256": "9f3106cf1015bd796e3f4ca7b5e133746c3daf4bd8c21f446e3235c8336e365e"
+        },
+        "day-chunks/18-20.json": {
+          "bytes": 598279,
+          "gzipBytes": 77176,
+          "sha256": "55cc13387f36223b4e89a17e844975b8c5dad8bf316df308db2f06f8023dd176"
+        },
+        "day-chunks/20-22.json": {
+          "bytes": 346221,
+          "gzipBytes": 50534,
+          "sha256": "1cc2c9c7571bc7c8f23931795a7a58274d5f18949e57fdf6610516626b97d8df"
+        },
+        "day-chunks/22-24.json": {
+          "bytes": 223786,
+          "gzipBytes": 33277,
+          "sha256": "97c6d03f2275174b273b6c324d9e3506bad6620abf531487061de1c7b70de2e3"
+        },
+        "thurgau-region-day-manifest.json": {
+          "bytes": 1061385,
+          "gzipBytes": 222868,
+          "sha256": "5315aba7f13d7ab49fa4e88028df7a8690b80fc56edf98b6129b6c2db1de9795"
+        },
+        "thurgau-region-morning.json": {
+          "bytes": 1691847,
+          "gzipBytes": 300707,
+          "sha256": "a453b12292674582625a63e846b1457e85aaa72ce4ca9c89e9107732193e175a"
+        }
+      }
+    },
+    {
+      "date": "2026-09-06",
+      "trips": 2724,
+      "archiveManifestSha256": "01160b311e592c87a9b078ba6284a1cc279237d81482b5da24ad9142e1abe0da",
+      "archiveMorningSha256": "cf3c3ff5246954c2505a8b9317c21e835faf98fcd1e07f7029cbb5dcdc303abe",
+      "toleranceMetres": 5,
+      "maximumDeviationMetres": 4.999361773762029,
+      "originalVertices": 51087,
+      "displayVertices": 35134,
+      "endpointsUnchanged": true,
+      "timetableUnchanged": true,
+      "payload": {
+        "day-chunks/00-02.json": {
+          "bytes": 130018,
+          "gzipBytes": 22677,
+          "sha256": "aa8f76f9c22e283229be06649331b2344e655c681119d424e602027f612f1328"
+        },
+        "day-chunks/02-04.json": {
+          "bytes": 56543,
+          "gzipBytes": 9570,
+          "sha256": "3e88b9698eae217a3033e3475b8f13f01ce7a657d57d57fdca73596ca1ee8988"
+        },
+        "day-chunks/04-06.json": {
+          "bytes": 62470,
+          "gzipBytes": 11591,
+          "sha256": "685edb40d291f597be819879a3919826d5ac31ff8c5496d00d8f40925c05e334"
+        },
+        "day-chunks/06-08.json": {
+          "bytes": 258316,
+          "gzipBytes": 39373,
+          "sha256": "f460f5ca607578b67c4bc9f3ea5836ad16450e9a54dedc5d5b5b30995c64901b"
+        },
+        "day-chunks/08-10.json": {
+          "bytes": 368712,
+          "gzipBytes": 51193,
+          "sha256": "5dcdb74e782fb3fbbf5b32b2be36500399daec5eb6fdc22a1c9f6e8d72ed5ef1"
+        },
+        "day-chunks/10-12.json": {
+          "bytes": 378631,
+          "gzipBytes": 51978,
+          "sha256": "0bee8b666125c390404ac0e212c4d7da2395584b4fbc68aaece7c51f97af9457"
+        },
+        "day-chunks/12-14.json": {
+          "bytes": 378172,
+          "gzipBytes": 52125,
+          "sha256": "b32562fa23c81a925c13070e560c4b1246e58b277deac93653534178b9f42b82"
+        },
+        "day-chunks/14-16.json": {
+          "bytes": 382903,
+          "gzipBytes": 52601,
+          "sha256": "fd17cc0439f030f76271aee9c25e91363e107af3fcb84b7d8421576c1818dcc7"
+        },
+        "day-chunks/16-18.json": {
+          "bytes": 383388,
+          "gzipBytes": 53047,
+          "sha256": "478fcf80163695485acc8cb9a792bf50a83a1aa7411036ff512fb855bb25b9ce"
+        },
+        "day-chunks/18-20.json": {
+          "bytes": 358242,
+          "gzipBytes": 50321,
+          "sha256": "42d797453d4fcdef0b7205f198b063db6ab4750455400b98ac73117d4e231581"
+        },
+        "day-chunks/20-22.json": {
+          "bytes": 254390,
+          "gzipBytes": 37538,
+          "sha256": "6d8e21745fa22504dc3a5406e9cc526251df18a2b85e22fb68b579d123d6851c"
+        },
+        "day-chunks/22-24.json": {
+          "bytes": 191390,
+          "gzipBytes": 28761,
+          "sha256": "7e2134bd0d8d3ce2c7917336864ac5cadab8046e5deb2b3b87b9257ed02f3a49"
+        },
+        "thurgau-region-day-manifest.json": {
+          "bytes": 990451,
+          "gzipBytes": 207483,
+          "sha256": "e81647683c3030252443b154d8362bb30fc8806afbdd67af8d188257b05745f1"
+        },
+        "thurgau-region-morning.json": {
+          "bytes": 1313625,
+          "gzipBytes": 252720,
+          "sha256": "efbde1df2de19af933c436810d33e175d7afec4f821dfb779d272f3e7865c73b"
+        }
+      }
+    }
+  ]
+}

@@ -62,6 +62,7 @@
     "data:postbus:roads": "node scripts/enrich-postbus-roads.mjs --apply",
     "data:road:catalog:cantonal": "node scripts/ingest-cantonal-road-counters.mjs",
     "data:road:topology:cantonal": "node scripts/ingest-cantonal-road-topology.mjs",
+    "data:regional:studies": "node scripts/package-regional-studies.mjs",
     "data:regional:days": "node scripts/build-regional-days.mjs",
     "data:vaud:audit": "node scripts/audit-vaud-study.mjs",
     "prebuild": "node scripts/build-study-summaries.mjs && node --max-old-space-size=8192 scripts/build-orbital-study.mjs",

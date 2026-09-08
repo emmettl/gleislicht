@@ -1,0 +1,181 @@
+{
+  "schemaVersion": 1,
+  "study": "fribourg-region",
+  "attribution": "SBB / opentransportdata.swiss · Source: Etat de Fribourg · FOT · SBB Infrastructure · swisstopo · OpenStreetMap contributors / ODbL",
+  "scope": "Partial canton coverage; complete admitted journeys with cross-boundary calls. Archival September 2026 fixtures; no automatic refresh or observed vehicle positions.",
+  "documentation": "https://github.com/emmettl/gleislicht/blob/main/docs/FRIBOURG-STUDY.md",
+  "sourceCatalogue": "https://github.com/emmettl/gleislicht/blob/main/data/fribourg-region/sources.json",
+  "sourceCatalogueSha256": "b3ec90b6fe8cfeb61d1eb19b99aa04b099f9ade51da62ccfa6ec53a785f0cffb",
+  "geometryReuse": "Retain each publisher’s terms in the linked source catalogue. OpenStreetMap-derived geometry: ODbL-1.0; the display paths are supplied in the downloadable manifests.",
+  "osmLicense": "https://opendatacommons.org/licenses/odbl/1-0/",
+  "dates": [
+    {
+      "date": "2026-09-04",
+      "trips": 5578,
+      "archiveManifestSha256": "9c3646c2f390a00082b928861eec952ed1381ded126e64303ec484a9b81e6bb5",
+      "archiveMorningSha256": "e8cd721b1405e52c3b697f46870b2a7b1bf0ada21a5d60778fae73d8a67712df",
+      "toleranceMetres": 5,
+      "maximumDeviationMetres": 4.999888612092265,
+      "originalVertices": 269306,
+      "displayVertices": 55348,
+      "endpointsUnchanged": true,
+      "timetableUnchanged": true,
+      "payload": {
+        "day-chunks/00-02.json": {
+          "bytes": 84457,
+          "gzipBytes": 14994,
+          "sha256": "5c0639ba964c9f789e1812074ec64458a296093c1830f0a63bf1c35b35a1350f"
+        },
+        "day-chunks/02-04.json": {
+          "bytes": 50,
+          "gzipBytes": 62,
+          "sha256": "e02cd1fe8fa4533c5a8c598577052d6a8fe5236c265f0cfa8d5816b7fd86aa93"
+        },
+        "day-chunks/04-06.json": {
+          "bytes": 229371,
+          "gzipBytes": 36515,
+          "sha256": "baedfb2678ec92da82d95c27f0589546f2320bdda15e10eebd6455940ed50127"
+        },
+        "day-chunks/06-08.json": {
+          "bytes": 883017,
+          "gzipBytes": 113040,
+          "sha256": "52c414c14890dad5034477d4ccb4d6e2a5f9b047f8f8cfb424c84cb4351b13c3"
+        },
+        "day-chunks/08-10.json": {
+          "bytes": 728033,
+          "gzipBytes": 95567,
+          "sha256": "acfeba416184c9cfe6e05b18fe01f62a16be56f686aed654bbb1b4c35075cc69"
+        },
+        "day-chunks/10-12.json": {
+          "bytes": 706792,
+          "gzipBytes": 93104,
+          "sha256": "36fe581129cd3ee731602cdf8a566ecaf223065a24312bac89082476bbffb39b"
+        },
+        "day-chunks/12-14.json": {
+          "bytes": 807078,
+          "gzipBytes": 105555,
+          "sha256": "bee45e7e1282f0d7811016118269d5e1049b5aee9db8daf46e5f71801291dad4"
+        },
+        "day-chunks/14-16.json": {
+          "bytes": 714542,
+          "gzipBytes": 93910,
+          "sha256": "67156d41790a9cdea9cde27355431683757555cea863543a4c635a7e32dfb26b"
+        },
+        "day-chunks/16-18.json": {
+          "bytes": 905688,
+          "gzipBytes": 115291,
+          "sha256": "53e364b286a964aa872fb3e569bcfbd79f0f597cfe038ee8cca3295e6b7e79a2"
+        },
+        "day-chunks/18-20.json": {
+          "bytes": 828470,
+          "gzipBytes": 106005,
+          "sha256": "35fdf9611d7978b097cad2811436659e2b0715997cbd8f19ef6f05011c12cc02"
+        },
+        "day-chunks/20-22.json": {
+          "bytes": 507301,
+          "gzipBytes": 68156,
+          "sha256": "7453622b31fdd4c2b20f2d68f11ec64d2ce2f0169ec7163f6fd8ea1fe452c2b0"
+        },
+        "day-chunks/22-24.json": {
+          "bytes": 378557,
+          "gzipBytes": 51796,
+          "sha256": "6ef1babd8a3fc0dacfd000ff4ba3c3630ab47ec8b0833c8514ad421673c55a49"
+        },
+        "fribourg-region-day-manifest.json": {
+          "bytes": 1631957,
+          "gzipBytes": 346339,
+          "sha256": "879cac0746378cf64e16629df51cfd0e1931a8b7da8671955ab0c04e0e833d2a"
+        },
+        "fribourg-region-morning.json": {
+          "bytes": 2523964,
+          "gzipBytes": 459543,
+          "sha256": "a5517dd3ffc8808daf0bcb0bc01d70aae90b40fd9fe0b7276b487435a11474e6"
+        }
+      }
+    },
+    {
+      "date": "2026-09-06",
+      "trips": 3803,
+      "archiveManifestSha256": "d34b6f942c21fe404c5365ef259ad5f959713c8820f758472a56a1c08d918c50",
+      "archiveMorningSha256": "a104d598d7f885c696fe15441062b16161dcdf67fc3e09c7c4254ce5cf375a1c",
+      "toleranceMetres": 5,
+      "maximumDeviationMetres": 4.999359600428737,
+      "originalVertices": 259409,
+      "displayVertices": 56688,
+      "endpointsUnchanged": true,
+      "timetableUnchanged": true,
+      "payload": {
+        "day-chunks/00-02.json": {
+          "bytes": 131684,
+          "gzipBytes": 23805,
+          "sha256": "838e23b2268b21fbdbd1a9a483527eae96d853e2767ec7d7af0699db0406d352"
+        },
+        "day-chunks/02-04.json": {
+          "bytes": 56370,
+          "gzipBytes": 11315,
+          "sha256": "7669eef835d9b84b5110eb7ef02aa3a4a1404b7684fed94a580766aa389b085f"
+        },
+        "day-chunks/04-06.json": {
+          "bytes": 114295,
+          "gzipBytes": 18977,
+          "sha256": "59abb907e934e6bc95b9901676fef459cb46c5ac58a8e1a114667befa7aebd26"
+        },
+        "day-chunks/06-08.json": {
+          "bytes": 391613,
+          "gzipBytes": 55422,
+          "sha256": "dcdd2d27cc70cf21bf20a517283db191d0e8dafd9ac5e999ebec57e3d32c0673"
+        },
+        "day-chunks/08-10.json": {
+          "bytes": 518828,
+          "gzipBytes": 70708,
+          "sha256": "5db15f9e81a67e75573b80656f21e6c0c4603390beac7ca16659ec4e8cbcbe4b"
+        },
+        "day-chunks/10-12.json": {
+          "bytes": 530096,
+          "gzipBytes": 71790,
+          "sha256": "52fd4cb8d9413036086e67de4593c1522f7b5effec76807027186d3882e5700f"
+        },
+        "day-chunks/12-14.json": {
+          "bytes": 530162,
+          "gzipBytes": 72085,
+          "sha256": "50290b63ce23a467347296b1ae775f40bbdb7d3ed16046b5f258e36cb3036394"
+        },
+        "day-chunks/14-16.json": {
+          "bytes": 519910,
+          "gzipBytes": 70423,
+          "sha256": "99ce63b147fd9f519271569df26b11d9e4886877081e35bac477a8d43f48be94"
+        },
+        "day-chunks/16-18.json": {
+          "bytes": 552547,
+          "gzipBytes": 74723,
+          "sha256": "ed1c7dc9cf536ce3e413e9e3d3419b5eeccd98d4234378b1b14905524ccf671a"
+        },
+        "day-chunks/18-20.json": {
+          "bytes": 513718,
+          "gzipBytes": 69791,
+          "sha256": "61344687fa69e37eb86aaf9fac23d33c67bcf3510215d2b8cc675cc546600dc3"
+        },
+        "day-chunks/20-22.json": {
+          "bytes": 439913,
+          "gzipBytes": 59777,
+          "sha256": "191494b5e773174bf0e37278f2347f3aaed163fd2d0e7eb4a2a6d28802116cb2"
+        },
+        "day-chunks/22-24.json": {
+          "bytes": 360392,
+          "gzipBytes": 49279,
+          "sha256": "65f1c988cb46a763ce9029bedb8f40142a59d0f16187e8c1ed65fa4ab12be282"
+        },
+        "fribourg-region-day-manifest.json": {
+          "bytes": 1632456,
+          "gzipBytes": 347127,
+          "sha256": "2bd63ae64c9c45c849d9ee65ce2a2beeea8db08d31f662ec65684f3ef909e9e3"
+        },
+        "fribourg-region-morning.json": {
+          "bytes": 2110298,
+          "gzipBytes": 412291,
+          "sha256": "e44202ff404cb0935ff0e8d3051e25c553f7cc8ad25cf1c11e7ea7e46c0116c0"
+        }
+      }
+    }
+  ]
+}

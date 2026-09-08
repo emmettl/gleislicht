@@ -1,5 +1,7 @@
 # Thurgau canton transit study
 
+**Application integration (9 September 2026):** the admitted Friday/Sunday feed is now selectable through a separate compact display release. See [existing-feed integration](REGIONAL-FEED-INTEGRATION.md) for controls, attribution, preserved evidence, payload checks and remaining limits. Earlier statements below describe the original data-only delivery.
+
 Audit date: **8 September 2026**. Starting point: [Swiss transit source inventory](SWISS-TRANSIT-SOURCE-INVENTORY.md#tg).
 
 The complete canton-scoped GTFS inventory contains **132 route records across 15 agency identities**, with calls in all **five districts**. The regional feed admits **4360 Friday journeys and 2724 Sunday journeys**, each retaining every original call and a validated path for every directed segment. **This is partial geometry coverage, not a complete canton service feed.** 106 route records have all dated journeys admitted, 3 have partial admission, 2 are excluded, and 21 are inactive on both validation dates.
