@@ -456,6 +456,7 @@ export function App({ edition }: AppProps) {
     !sbbEnabled && !airEnabled && !roadEnabled && Boolean(network) && !dataError && webglAvailable
   const activeAirSnapshot = isNationalDay ? airDay.snapshot : airSnapshot
   const airOnly = view === 'network' && networkStudy === 'national' && airEnabled && !sbbEnabled && !roadEnabled
+  const roadOnly = view === 'network' && networkStudy === 'national' && roadEnabled && !sbbEnabled && !airEnabled
   const airportMovements = useMemo(() => selectedAirport ? airportBoardMovements(isNationalDay ? airDay.manifest?.aircraft ?? [] : activeAirSnapshot?.tracks ?? [], selectedAirport) : { departures: [], arrivals: [] }, [selectedAirport, isNationalDay, airDay.manifest, activeAirSnapshot])
   const activeAirLoadState: AirLoadState = !airEnabled
     ? 'idle'
@@ -629,6 +630,12 @@ export function App({ edition }: AppProps) {
     [selectedRoadId, roadEnabled, networkTime, nationalRoadInWindow, nationalRoad.snapshot, roadSnapshot],
   )
   const roadMetricFormat = useMemo(() => new Intl.NumberFormat(LANGUAGE_LOCALES[language], { maximumFractionDigits: 1 }), [language])
+  const roadOverview = useMemo(
+    () => roadOnly
+      ? roadTrafficSummary(undefined, networkTime, nationalRoadInWindow ? nationalRoad.snapshot : undefined, roadSnapshot)
+      : undefined,
+    [roadOnly, networkTime, nationalRoadInWindow, nationalRoad.snapshot, roadSnapshot],
+  )
   const sceneNetwork = useMemo(
     () => network && (isPostbus ? postbusRouteSnapshot(network, selectedRoute) : networkWithRailVisibility(network, railVisible)),
     [network, railVisible, isPostbus, selectedRoute],
@@ -1978,7 +1985,7 @@ export function App({ edition }: AppProps) {
                     ? text.genevaSubtitle
                   : airOnly
                     ? text.airSubtitle
-                  : networkStudy === 'national' && !sbbEnabled && roadEnabled && !airEnabled
+                  : roadOnly
                     ? text.roadSubtitle
                   : text.subtitle
               : isHub
@@ -2974,6 +2981,31 @@ export function App({ edition }: AppProps) {
                 </>
               : roadLoadState === 'loading' ? text.loadingRoad : text.noRoadTraffic}
           </p>
+        </section>
+      ) : roadOnly ? (
+        <section className="journey-card network-card road-network-card" aria-label={text.estimatedVehicles}>
+          <div className="network-count-row">
+            <strong>{roadOverview ? `≈${numberFormat.format(roadOverview.vehicles)}` : '—'}</strong>
+            <span>{text.estimatedVehicles}</span>
+          </div>
+          <p className="between">
+            {roadOverview
+              ? roadOverview.representative ? text.representativeRoadTraffic : text.counterRoadTraffic
+              : roadLoadState === 'error' ? text.roadUnavailable
+                : roadLoadState !== 'ready' ? text.loadingRoad : text.noRoadTraffic}
+          </p>
+          <div className="metric-grid">
+            <div>
+              <span>{text.roadDensity}</span>
+              <strong>{roadOverview ? `≈${roadMetricFormat.format(roadOverview.density)}` : '—'}</strong>
+              <small>{text.roadDensityUnit}</small>
+            </div>
+            <div>
+              <span>{text.roadCoveredDistance}</span>
+              <strong>{roadOverview ? roadMetricFormat.format(roadOverview.carriagewayKm) : '—'}</strong>
+              <small>km</small>
+            </div>
+          </div>
         </section>
       ) : airOnly ? (
         <section className="journey-card network-card air-network-card" aria-label={text.aircraftInMotion}>

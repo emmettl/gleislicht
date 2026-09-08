@@ -18,6 +18,20 @@ function snapshot(flow = 600, speed = 60): NationalRoadStudySnapshot {
 }
 
 describe('motorway traffic summaries', () => {
+  it('summarizes all covered roads with density weighted by directional distance', () => {
+    const data = snapshot()
+    const overview = { ...data,
+      siteIds: ['a', 'b', 'c', 'd'],
+      sections: [...data.sections, { ...data.sections[0], id: 'other', road: 'N1', fromSiteIndex: 2, toSiteIndex: 3, distanceKm: 30 }],
+      minutes: [0, 60].map(time => [time, [[0, 600, 60, 0, 0], [1, 600, 60, 0, 0], [2, 1200, 60, 0, 0], [3, 1200, 60, 0, 0]]] as const),
+    }
+    expect(roadTrafficSummary(undefined, 30, overview)).toEqual({
+      vehicles: 700, density: 17.5, carriagewayKm: 40, representative: false,
+    })
+    expect(roadTrafficSummary(undefined, 30, snapshot(0, 0))?.vehicles).toBe(0)
+    expect(roadTrafficSummary(undefined, 30, { ...data, minutes: [] })).toBeUndefined()
+  })
+
   it('estimates the selected road using covered directional distance', () => {
     const data = snapshot()
     const other = { ...data.sections[0], id: 'other', road: 'N1', distanceKm: 100 }
@@ -55,5 +69,9 @@ describe('motorway traffic summaries', () => {
     expect(roadTrafficSummary('N1', 30, undefined, fallback)).toEqual({
       vehicles: 50, density: 10, carriagewayKm: 5, representative: true,
     })
+    expect(roadTrafficSummary(undefined, 30, undefined, fallback)).toEqual({
+      vehicles: 50, density: 10, carriagewayKm: 5, representative: true,
+    })
+    expect(roadTrafficSummary(undefined, 30, snapshot(), fallback)?.representative).toBe(false)
   })
 })

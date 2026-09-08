@@ -20,7 +20,7 @@ const density = (value: RoadTrafficConditions) =>
   trafficDensity(value.heavyFlowPerHour, value.heavySpeedKmh)
 
 /** Counts and density share the same covered directional distance; missing data is not zero. */
-export function roadTrafficSummary(road: string, time: number,
+export function roadTrafficSummary(road: string | undefined, time: number,
   national?: NationalRoadStudySnapshot, fallback?: RoadTrafficSnapshot): RoadTrafficSummary | undefined {
   let vehicles = 0
   let carriagewayKm = 0
@@ -37,7 +37,7 @@ export function roadTrafficSummary(road: string, time: number,
       const sitesBefore = new Map(before[1].map(value => [value[0], value]))
       const sitesAfter = new Map(after[1].map(value => [value[0], value]))
       for (const section of national.sections) {
-        if (section.road !== road || section.distanceKm <= 0) continue
+        if ((road !== undefined && section.road !== road) || section.distanceKm <= 0) continue
         const values = [section.fromSiteIndex, section.toSiteIndex].flatMap(index => [sitesBefore.get(index), sitesAfter.get(index)])
         if (values.some(value => !value || !usable({ lightFlowPerHour: value[1], lightSpeedKmh: value[2], heavyFlowPerHour: value[3], heavySpeedKmh: value[4] }))) continue
         const from = nationalRoadConditionsAtTime(national, section.fromSiteIndex, time)
@@ -56,7 +56,7 @@ export function roadTrafficSummary(road: string, time: number,
   if (!carriagewayKm && fallback && time >= fallback.metadata.windowStart && time <= fallback.metadata.windowEnd) {
     representative = fallback.metadata.measurementKind === 'representative-calibration'
     for (const corridor of fallback.corridors) {
-      if (corridor.road.replace(/^A/, 'N') !== road || corridor.distanceKm <= 0) continue
+      if ((road !== undefined && corridor.road.replace(/^A/, 'N') !== road) || corridor.distanceKm <= 0) continue
       for (const direction of corridor.directions) {
         if (!direction.samples.length || time < direction.samples[0][0] || time > direction.samples.at(-1)![0]) continue
         const conditions = roadConditionsAtTime(direction, time)
