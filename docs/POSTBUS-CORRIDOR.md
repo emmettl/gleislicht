@@ -38,6 +38,6 @@ Distances are sums of straight distances between scheduled stops, so they are se
 - Only route 220 is admitted as local bus traffic. Nearby BLS rail remains visible as the transfer spine at Reichenbach.
 - Both sides of the future contrast share one clock, speed and play state. Empty rural hours stay empty; they are part of the comparison.
 - The comparison map uses honest stop interpolation. Its selectable journey switches to a 13.9 km road-following trace derived from OpenStreetMap via OSRM, over a separate 257 × 359 swissALTI3D terrain crop.
-- The PostBus side keeps the existing orange service colour, with a warmer yellow terrain response reserved for the authored corridor view.
+- The PostBus map uses digital Postgelb (`#FFCC00`) for vehicles, trails and selection accents, matching the nationwide PostBus study.
 
 Regenerate the measurements with `npm run data:postbus:analyze`, the progressive artifact with `npm run data:postbus:kiental`, and the terrain journey with `npm run data:corridor:kiental`; details are in [DATA-PIPELINE.md](./DATA-PIPELINE.md). Terrain is © swisstopo. Road geometry is © OpenStreetMap contributors and distributed under the ODbL.

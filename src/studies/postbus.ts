@@ -1,5 +1,9 @@
 import type { NetworkSnapshot, NetworkRouteIndexEntry, NetworkTrain } from '@motionstudies/core/domain/network'
 
+// Swiss Post's digital Postgelb: Post-RGB-Barrierefreiheit-160922.pdf, p. 1.
+export const POSTBUS_YELLOW = '#ffcc00'
+export const POSTBUS_ROUTE_COLORS = { 'category:bus': POSTBUS_YELLOW } as const
+
 /** PostBus reuses display numbers across Switzerland; selection follows source identity. */
 export function postbusRouteIndex(snapshot: NetworkSnapshot): readonly NetworkRouteIndexEntry[] {
   const routes = new Map<string, { name: string; trains: string[]; stops: Set<number>; destinations: Set<string> }>()

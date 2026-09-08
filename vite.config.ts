@@ -4,8 +4,9 @@ import { gleislichtSelectionRenderer } from './scripts/gleislicht-selection-rend
 import { gleislichtRoadRenderer } from './scripts/gleislicht-road-renderer.ts'
 import { gleislichtAirportRenderer } from './scripts/gleislicht-airport-renderer.ts'
 import { gleislichtSurfaceRenderer } from './scripts/gleislicht-surface-renderer.ts'
+import { gleislichtPostbusRenderer } from './scripts/gleislicht-postbus-renderer.ts'
 export default defineConfig({
-  plugins: [gleislichtSelectionRenderer(), gleislichtRoadRenderer(), gleislichtAirportRenderer(), gleislichtSurfaceRenderer(), react()],
+  plugins: [gleislichtSelectionRenderer(), gleislichtRoadRenderer(), gleislichtAirportRenderer(), gleislichtSurfaceRenderer(), gleislichtPostbusRenderer(), react()],
   optimizeDeps: {
     exclude: ['@motionstudies/three'],
     include: ['@react-three/fiber', 'three'],

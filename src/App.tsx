@@ -2,7 +2,7 @@ import { airportBoardMovements } from '@motionstudies/core/domain/airport'
 import { AIRPORT_LABELS, AIRPORT_NOTES } from './studies/airport-copy.ts'
 import { networkWithRailVisibility } from './studies/network-layers.ts'
 import { roadTrafficSummary } from './studies/road-traffic-summary.ts'
-import { postbusRouteIndex, postbusRouteSnapshot, postbusTickFollowsSeek } from './studies/postbus.ts'
+import { postbusRouteIndex, postbusRouteSnapshot, postbusTickFollowsSeek, POSTBUS_YELLOW, POSTBUS_ROUTE_COLORS } from './studies/postbus.ts'
 import { CONTROL_HELP } from './control-help.ts'
 import {
   lazy,
@@ -349,6 +349,7 @@ export function App({ edition }: AppProps) {
   const performanceSample = useLocalPerformance(performanceEnabled)
   const isPostbus = networkStudy === 'postbus'
   const isContrast = networkStudy === 'contrast'
+  const serviceColors = useMemo(() => isPostbus || isContrast ? { ...SERVICE_COLORS, bus: POSTBUS_YELLOW } : SERVICE_COLORS, [isPostbus, isContrast])
   const postbusDay = useProgressiveNetworkDay(edition.data.postbusDayManifest, isPostbus, networkTime, editionDataUrl)
   const isNationalDay =
     networkStudy === 'national' && nationalTimeRange === 'day'
@@ -1768,6 +1769,7 @@ export function App({ edition }: AppProps) {
             <section className="contrast-panel contrast-panel-valley">
               {kientalContrast.network ? (
                 <NationalNetworkScene
+                  routeColors={POSTBUS_ROUTE_COLORS}
                   snapshot={kientalContrast.network}
                   referenceSnapshot={kientalContrast.network}
                   stations={kientalContrastStations}
@@ -1799,6 +1801,7 @@ export function App({ edition }: AppProps) {
             boundary={boundary}
             lakes={lakes}
             groundStyle={quietMap ? 'quiet' : 'grid'}
+            routeColors={isPostbus ? POSTBUS_ROUTE_COLORS : undefined}
             snapshot={sceneNetwork}
             trafficOverviewEmphasis={isPostbus ? 0.65 : undefined}
             referenceSnapshot={nationalNetwork ?? sceneNetwork}
@@ -2434,7 +2437,7 @@ export function App({ edition }: AppProps) {
                   >
                     <span
                       className="route-result-mark"
-                      style={{ color: SERVICE_COLORS[route.category] }}
+                      style={{ color: serviceColors[route.category] }}
                       aria-hidden="true"
                     >
                       ━
@@ -2548,7 +2551,7 @@ export function App({ edition }: AppProps) {
                     >
                       <span
                         className="result-swatch"
-                        style={{ backgroundColor: SERVICE_COLORS[train.category] }}
+                        style={{ backgroundColor: serviceColors[train.category] }}
                       />
                       <span className="result-service">
                         {train.route} <b>{train.shortName}</b>
@@ -2785,7 +2788,7 @@ export function App({ edition }: AppProps) {
           <div className="service-row">
             <span
               className="service-dot"
-              style={{ backgroundColor: SERVICE_COLORS[selectedTrain.category] }}
+              style={{ backgroundColor: serviceColors[selectedTrain.category] }}
             />
             <span className="service">{selectedTrain.route}</span>
             <span className="arrow">→</span>
@@ -2824,14 +2827,14 @@ export function App({ edition }: AppProps) {
           aria-label={`${text.selectedLine}: ${serviceCategoryLabel(language, selectedRoute.category)} ${selectedRoute.name}`}
           style={
             {
-              '--service-accent': SERVICE_COLORS[selectedRoute.category],
+              '--service-accent': serviceColors[selectedRoute.category],
             } as CSSProperties
           }
         >
           <div className="service-row">
             <span
               className="service-dot"
-              style={{ backgroundColor: SERVICE_COLORS[selectedRoute.category] }}
+              style={{ backgroundColor: serviceColors[selectedRoute.category] }}
             />
             <span className="service">
               {serviceCategoryLabel(language, selectedRoute.category)}{' '}
@@ -2873,7 +2876,7 @@ export function App({ edition }: AppProps) {
                 key={`${route.category}:${route.name}`}
                 style={
                   {
-                    '--route-accent': SERVICE_COLORS[route.category],
+                    '--route-accent': serviceColors[route.category],
                   } as CSSProperties
                 }
               >
@@ -3373,7 +3376,7 @@ export function App({ edition }: AppProps) {
                 aria-pressed={selectedCategory === category.id}
                 style={
                   {
-                    '--service-accent': category.color,
+                    '--service-accent': serviceColors[category.id],
                   } as CSSProperties
                 }
                 onClick={() => {
@@ -3385,7 +3388,7 @@ export function App({ edition }: AppProps) {
                   )
                 }}
               >
-                <i style={{ backgroundColor: category.color }} />
+                <i style={{ backgroundColor: serviceColors[category.id] }} />
                 {serviceCategoryLabel(language, category.id)}
               </button>
           ))}

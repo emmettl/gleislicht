@@ -1,6 +1,6 @@
 # Nationwide PostBus
 
-Select **PA** to explore the national PostBus timetable on a 24-hour clock. Buses remain visible from the national overview, with weighted connections and moving trails. Zoom, stop selection, journey selection and line search use the existing map controls. The opening rail view does not fetch PostBus data.
+Select **PA** to explore the national PostBus timetable on a 24-hour clock. Buses remain visible from the national overview, with weighted connections and moving trails. Markers, trails and selection accents use Swiss Post’s digital Postgelb (`#FFCC00`), as specified in its [RGB colour guidance](https://microsites.post.ch/-/media/post-maxisites/microsites/documents/Post-RGB-Barrierefreiheit-160922.pdf). Zoom, stop selection, journey selection and line search use the existing map controls. The opening rail view does not fetch PostBus data.
 
 ## Coverage
 
