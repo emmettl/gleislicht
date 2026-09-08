@@ -353,6 +353,7 @@ export function App({ edition }: AppProps) {
   const [rigiSequenceActive, setRigiSequenceActive] = useState(false)
   const [rigiRhythmActive, setRigiRhythmActive] = useState(false)
   const [rigiGuideActive, setRigiGuideActive] = useState(false)
+  const [rochersTerrainBinding, setRochersTerrainBinding] = useState<MeasuredTerrainBinding>()
   const [pilatusTerrainBinding, setPilatusTerrainBinding] = useState<MeasuredTerrainBinding>()
   const [gornergratTerrainBinding, setGornergratTerrainBinding] = useState<MeasuredTerrainBinding>()
   const [jungfrauTerrainBinding, setJungfrauTerrainBinding] = useState<MeasuredTerrainBinding>()
@@ -505,6 +506,7 @@ export function App({ edition }: AppProps) {
   useEffect(() => { if (isJungfrau) void import('./studies/jungfrau-copy.ts').then(setJungfrauLocale) }, [isJungfrau])
   const jungfrauCopy = jungfrauLocale?.JUNGFRAU_COPY[language]
   const jungfrauSelect = jungfrauCopy?.select ?? { en: 'Explore the Jungfrau railways', de: 'Jungfraubahnen entdecken', fr: 'Explorer les chemins de fer de la Jungfrau', it: 'Esplora le ferrovie della Jungfrau' }[language]
+  const rochersTerrainWindow = view === 'network' && isRochers && rochersJourneyActive ? rochersTerrainBinding?.windows.find(w => networkTime >= w.start && networkTime < w.end) : undefined
   const pilatusTerrainWindow = view === 'network' && isPilatus && pilatusJourneyActive ? pilatusTerrainBinding?.windows.find(w => networkTime >= w.start && networkTime < w.end) : undefined
   const gornergratTerrainWindow = view === 'network' && isGornergrat && gornergratAscentActive ? gornergratTerrainBinding?.windows.find(w => networkTime >= w.start && networkTime < w.end) : undefined
   const jungfrauTerrainWindow = view === 'network' && isJungfrau && jungfrauAscentActive ? jungfrauTerrainBinding?.windows.find(w => networkTime >= w.start && networkTime < w.end) : undefined
@@ -2137,7 +2139,7 @@ export function App({ edition }: AppProps) {
       data-cogwheel-enabled={isCogwheel}
       data-quiet-map={quietMap}
       data-quiet-playing={quietMap ? isPlaying : undefined}
-      className={`experience view-${view}${isJungfrau ? ' jungfrau-study' : ''}${isGornergrat ? ' gornergrat-study' : ''}${isRochers ? ' rochers-study' : ''}${isPilatus ? ' pilatus-study' : ''}${timedRigiTerrain || jungfrauTerrainWindow || gornergratTerrainWindow || pilatusTerrainWindow ? ' has-timed-rigi-terrain' : ''}${isContrast ? ' is-contrast' : ''}${airEnabled ? ' has-air-layer' : ''}${airCategorySelected ? ' has-air-category' : ''}${roadEnabled ? ' has-road-layer' : ''}${roadCategorySelected ? ' has-road-category' : ''}${selectedTrain || selectedStation || selectedRoute || selectedAirTrack || selectedAirport || selectedRoad ? ' has-selection' : ''}${!isTimetable ? ` corridor-${journeyCorridorId}` : ''}`}
+      className={`experience view-${view}${isJungfrau ? ' jungfrau-study' : ''}${isGornergrat ? ' gornergrat-study' : ''}${isRochers ? ' rochers-study' : ''}${isPilatus ? ' pilatus-study' : ''}${timedRigiTerrain || jungfrauTerrainWindow || gornergratTerrainWindow || pilatusTerrainWindow || rochersTerrainWindow ? ' has-timed-rigi-terrain' : ''}${isContrast ? ' is-contrast' : ''}${airEnabled ? ' has-air-layer' : ''}${airCategorySelected ? ' has-air-category' : ''}${roadEnabled ? ' has-road-layer' : ''}${roadCategorySelected ? ' has-road-category' : ''}${selectedTrain || selectedStation || selectedRoute || selectedAirTrack || selectedAirport || selectedRoad ? ' has-selection' : ''}${!isTimetable ? ` corridor-${journeyCorridorId}` : ''}`}
     >
       <div className="scene" aria-hidden={webglAvailable ? true : undefined}>
         <Suspense fallback={null}>
@@ -2148,6 +2150,8 @@ export function App({ edition }: AppProps) {
             <p>{text.webglUnavailableDescription}</p>
             <a href="./methodology.html">{text.readMethodology}</a>
           </section>
+        ) : rochersTerrainWindow && rochersTerrainBinding ? (
+          <MeasuredTerrainScene binding={rochersTerrainBinding} window={rochersTerrainWindow} time={networkTime} isPlaying={isPlaying} rate={playbackRate} onTime={handleNetworkTime} />
         ) : pilatusTerrainWindow && pilatusTerrainBinding ? (
           <MeasuredTerrainScene binding={pilatusTerrainBinding} window={pilatusTerrainWindow} time={networkTime} isPlaying={isPlaying} rate={playbackRate} onTime={handleNetworkTime} />
         ) : gornergratTerrainWindow && gornergratTerrainBinding ? (
@@ -3057,7 +3061,7 @@ export function App({ edition }: AppProps) {
       }} /></Suspense>}
 
       {isNetwork && isRochers && rochersJourneyActive && rochersNetwork ? (
-        <Suspense fallback={null}><RochersJourney network={rochersNetwork} language={language} time={networkTime} onSeek={seekMountainSequence} onFollow={followMountainSequence} onFinish={finishRigiTerrain} onExit={releaseSelection}/></Suspense>
+        <Suspense fallback={null}><RochersJourney onTerrain={setRochersTerrainBinding} network={rochersNetwork} language={language} time={networkTime} onSeek={seekMountainSequence} onFollow={followMountainSequence} onFinish={finishRigiTerrain} onExit={releaseSelection}/></Suspense>
       ) : isNetwork && isPilatus && pilatusJourneyActive && pilatusNetwork ? (
         <Suspense fallback={null}><PilatusJourney onTerrain={setPilatusTerrainBinding} network={pilatusNetwork} language={language} time={networkTime} onSeek={seekMountainSequence} onFollow={followMountainSequence} onFinish={finishRigiTerrain} onExit={releaseSelection}/></Suspense>
       ) : isNetwork && isGornergrat && gornergratAscentActive && gornergratNetwork ? (
@@ -4454,7 +4458,7 @@ export function App({ edition }: AppProps) {
           {isHub
             ? text.arrivalsDirection
             : isNetwork
-              ? isValais ? (valaisCopy?.valaisScope ?? '') : isTicino ? ticinoCopy?.model : isGraubuenden ? graubuendenCopy?.model : isSolothurn ? text.solothurnModel : isBern ? text.bernModel : isNyon ? text.nyonModel : isBasel ? text.baselModel : isLausanne ? text.lausanneModel : timedRigiTerrain || jungfrauTerrainWindow || gornergratTerrainWindow || pilatusTerrainWindow ? text.interpolation : isPilatus ? pilatusCopy?.model : isRochers ? rochersCopy?.model : isGornergrat ? gornergratCopy?.model : isJungfrau ? jungfrauCopy?.model : isRigi ? rigiCopy.water : hasHeadwayMotion ? frequencyCopy.interpolation : text.interpolation
+              ? isValais ? (valaisCopy?.valaisScope ?? '') : isTicino ? ticinoCopy?.model : isGraubuenden ? graubuendenCopy?.model : isSolothurn ? text.solothurnModel : isBern ? text.bernModel : isNyon ? text.nyonModel : isBasel ? text.baselModel : isLausanne ? text.lausanneModel : timedRigiTerrain || jungfrauTerrainWindow || gornergratTerrainWindow || pilatusTerrainWindow || rochersTerrainWindow ? text.interpolation : isPilatus ? pilatusCopy?.model : isRochers ? rochersCopy?.model : isGornergrat ? gornergratCopy?.model : isJungfrau ? jungfrauCopy?.model : isRigi ? rigiCopy.water : hasHeadwayMotion ? frequencyCopy.interpolation : text.interpolation
               : text.simulation}
         </span>
       </footer>
